@@ -10,7 +10,7 @@
 
 @class MISSING_TYPE, NSString;
 
-@interface _TtC7SwiftUIP33_32FACBD077E80DBEC9C9CF82638EFBF514CursorIdentity : NSObject <NSCopying>
+@interface _TtC7SwiftUIP33_77C2ECEAC70A3F976F39239D62EDB4A614CursorIdentity : NSObject <NSCopying>
 {
     MISSING_TYPE *base;
 }

@@ -8,7 +8,7 @@
 
 #import <SwiftUI/AXContainerDataSeries-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSAttributedString, NSString, UIBezierPath;
+@class MISSING_TYPE, NSArray, NSAttributedString, NSString, UIBezierPath, _TtC7SwiftUI17HostingScrollView;
 
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI17AccessibilityNode : NSObject <AXContainerDataSeries>
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, copy) NSArray *accessibilityUserInputLabels;
 @property (nonatomic, copy) NSString *accessibilityValue;
 @property (nonatomic) BOOL accessibilityViewIsModal;
+@property (nonatomic, readonly) _TtC7SwiftUI17HostingScrollView *enclosingHostingScrollView;
 @property (nonatomic) BOOL isAccessibilityElement;
 @property (nonatomic) BOOL shouldGroupAccessibilityChildren;
 
@@ -66,16 +67,23 @@ __attribute__((visibility("hidden")))
 - (id)_accessibilityDataSeriesUnitLabelForAxis:(long long)arg1;
 - (id)_accessibilityDataSeriesValueDescriptionForPosition:(double)arg1 axis:(long long)arg2;
 - (id)_accessibilityDataSeriesValuesForAxis:(long long)arg1;
+- (long long)_accessibilityExpandedStatus;
+- (double)_accessibilityMaxValue;
+- (double)_accessibilityMinValue;
+- (double)_accessibilityNumberValue;
 - (id)_accessibilityRoleDescription;
+- (BOOL)_accessibilityScrollToVisible;
 - (BOOL)_internal_handleCustomActionWithUiAction:(id)arg1;
 - (BOOL)accessibilityActivate;
 - (void)accessibilityDecrement;
+- (long long)accessibilityElementCount;
 - (void)accessibilityElementDidBecomeFocused;
 - (void)accessibilityElementDidLoseFocus;
 - (void)accessibilityIncrement;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityPerformMagicTap;
 - (BOOL)accessibilityScroll:(long long)arg1;
+- (id)accessibilityURL;
 - (void)dealloc;
 - (id)init;
 

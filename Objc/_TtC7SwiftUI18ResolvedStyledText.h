@@ -19,6 +19,7 @@
     MISSING_TYPE *maximumLineHeight;
     MISSING_TYPE *minimumLineHeight;
     MISSING_TYPE *hyphenationFactor;
+    MISSING_TYPE *alignment;
     MISSING_TYPE *bodyHeadOutdent;
     MISSING_TYPE *resolvableConfiguration;
     MISSING_TYPE *pixelLength;

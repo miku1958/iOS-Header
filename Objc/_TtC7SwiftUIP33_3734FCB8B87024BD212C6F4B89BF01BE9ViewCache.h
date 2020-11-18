@@ -23,6 +23,7 @@
     MISSING_TYPE *commitSeed;
     MISSING_TYPE *lastTransactionID;
     MISSING_TYPE *placementSeed;
+    MISSING_TYPE *failedSeed;
     MISSING_TYPE *hasSections;
     MISSING_TYPE *hasDepth;
     MISSING_TYPE *isFirstCommit;

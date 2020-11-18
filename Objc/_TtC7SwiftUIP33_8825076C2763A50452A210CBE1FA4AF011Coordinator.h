@@ -17,12 +17,12 @@
     MISSING_TYPE *children;
     MISSING_TYPE *lastSeenIndex;
     MISSING_TYPE *updateCount;
+    MISSING_TYPE *lastIDs;
 }
 
 - (void).cxx_destruct;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)init;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 

@@ -11,8 +11,9 @@
 @interface _TtC7SwiftUI23UIViewSnapshotResponder : _TtC7SwiftUI26DefaultLayoutViewResponder
 {
     MISSING_TYPE *space;
-    MISSING_TYPE *targetRect;
-    MISSING_TYPE *displayList;
+    MISSING_TYPE *baseSize;
+    MISSING_TYPE *baseTransform;
+    MISSING_TYPE *_displayList;
     MISSING_TYPE *displayListPosition;
 }
 

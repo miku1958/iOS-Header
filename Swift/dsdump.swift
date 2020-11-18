@@ -10,17 +10,6 @@
 	// setter
 	// modify coroutine
  }
- protocol SwiftUI._WidgetModifier // 4 requirements
- {
-	// class associated conformance access function
-	// class associated type access function
-	// method
-	// class method
- }
- protocol SwiftUI.PrimitiveWidgetModifier // 1 requirements
- {
-	// class base protocol
- }
  protocol SwiftUI.DatePickerStyle // 3 requirements
  {
 	// class associated conformance access function
@@ -50,7 +39,7 @@
 	// setter
 	// modify coroutine
  }
- protocol SwiftUI.TestHost // 17 requirements
+ protocol SwiftUI.TestHost // 16 requirements
  {
 	// class base protocol
 	// method
@@ -67,7 +56,6 @@
 	// method
 	// method
 	// method
-	// getter
 	// getter
  }
  protocol SwiftUI._BenchmarkHost // 2 requirements
@@ -261,7 +249,7 @@
 	// method
 	// method
  }
- protocol SwiftUI.IncrementalLayout // 15 requirements
+ protocol SwiftUI.IncrementalLayout // 16 requirements
  {
 	// class base protocol
 	// class base protocol
@@ -278,6 +266,7 @@
 	// getter
 	// getter
 	// class method
+	// class getter
  }
  protocol SwiftUI._AnimatableView // 2 requirements
  {
@@ -447,6 +436,10 @@
 	// class getter
 	// class getter
 	// class init
+	// method
+ }
+ protocol SwiftUI.AccessibilityCustomAttributeCodable // 1 requirements
+ {
 	// method
  }
  protocol SwiftUI.ViewInputFlag // 8 requirements
@@ -717,18 +710,7 @@
  {
 	// method
  }
- protocol SwiftUI._Widget // 4 requirements
- {
-	// class associated conformance access function
-	// class associated type access function
-	// getter
-	// class method
- }
- protocol SwiftUI.PrimitiveWidget // 1 requirements
- {
-	// class base protocol
- }
- protocol SwiftUI._WidgetTypeVisitor // 1 requirements
+ protocol SwiftUI.PresentationHostingControllerDelegate // 1 requirements
  {
 	// method
  }
@@ -860,10 +842,11 @@
 	// class associated type access function
 	// method
  }
- protocol SwiftUI.AccessibilityViewModifier // 6 requirements
+ protocol SwiftUI.AccessibilityViewModifier // 7 requirements
  {
 	// class base protocol
 	// class base protocol
+	// method
 	// method
 	// method
 	// method
@@ -1127,12 +1110,11 @@
 	// method
 	// method
  }
- protocol SwiftUI.BodyAccessor // 4 requirements
+ protocol SwiftUI.BodyAccessor // 3 requirements
  {
 	// class associated type access function
 	// class associated type access function
 	// method
-	// class getter
  }
  protocol SwiftUI.HitTestableEventType // 3 requirements
  {
@@ -1203,8 +1185,9 @@
 	// modify coroutine
 	// method
  }
- protocol SwiftUI.SceneStorageValueTransform // 2 requirements
+ protocol SwiftUI.SceneStorageValueTransform // 3 requirements
  {
+	// method
 	// method
 	// method
  }
@@ -1430,10 +1413,6 @@
 	// class method
 	// class method
  }
- protocol SwiftUI.SheetHostingControllerDelegate // 1 requirements
- {
-	// method
- }
  protocol SwiftUI.UnaryLayout // 11 requirements
  {
 	// class base protocol
@@ -1506,6 +1485,10 @@
 	// class associated type access function
 	// getter
  }
+ protocol SwiftUI.AXAnyViewTypeDescribingBox // 1 requirements
+ {
+	// getter
+ }
  protocol SwiftUI.Scrollable // 3 requirements
  {
 	// method
@@ -1519,7 +1502,7 @@
 	// getter
 	// method
  }
- protocol SwiftUI.ScrollableCollection // 8 requirements
+ protocol SwiftUI.ScrollableCollection // 9 requirements
  {
 	// class base protocol
 	// getter
@@ -1529,8 +1512,9 @@
 	// method
 	// method
 	// method
+	// class getter
  }
- protocol SwiftUI.ViewRendererHost // 32 requirements
+ protocol SwiftUI.ViewRendererHost // 29 requirements
  {
 	// class base protocol
 	// getter
@@ -1541,18 +1525,15 @@
 	// getter
 	// setter
 	// modify coroutine
+	// method
 	// getter
 	// setter
 	// modify coroutine
 	// getter
 	// setter
 	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
-	// getter
-	// setter
-	// modify coroutine
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -1732,6 +1713,12 @@
  }
  protocol SwiftUI.AlertActionDelegate // 0 requirements
  {
+ }
+ protocol SwiftUI.AccessibilityStridable // 3 requirements
+ {
+	// getter
+	// getter
+	// method
  }
  protocol SwiftUI.GraphInput // 1 requirements
  {
@@ -1973,9 +1960,10 @@
  {
 	// getter
  }
- protocol SwiftUI.UIKitButtonAdaptorContent // 4 requirements
+ protocol SwiftUI.UIKitButtonAdaptorContent // 5 requirements
  {
 	// class associated type access function
+	// method
 	// method
 	// method
 	// method
@@ -2037,7 +2025,8 @@
 
  enum __C.Style { }
 
- class __C.CGPath {
+ enum __C.CTTextAlignment { }
+
  struct __C.AnyWeakAttribute {
 
 	// Properties
@@ -2055,24 +2044,24 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var a : Kt
+	var a : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var b : Kt
+	var b : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c : Kt
+	var c : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var d : Kt
+	var d : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tx : Kt
+	var tx : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ty : Kt
+	var ty : {L
  }
 
  struct __C.AnyAttribute {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿
+	let rawValue : ?ô
  }
 
  class __C.Subgraph {
@@ -2093,6 +2082,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class __C.CGMutablePath {
+ class __C.CGPath {
  struct __C.CGRect {
 
 	// Properties
@@ -2106,9 +2096,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : Kt
+	var x : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : Kt
+	var y : {L
  }
 
  class __C.CGColor {
@@ -2116,9 +2106,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Kt
+	var width : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Kt
+	var height : {L
  }
 
  struct __C.NSKeyValueObservingOptions {
@@ -2143,7 +2133,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ±5
+	let rawValue : â
  }
 
  enum __C.AXAutomationType { }
@@ -2176,7 +2166,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _mantissa : ≈5
+	var _mantissa : ù
  }
 
  struct __C.RBColor {
@@ -2211,7 +2201,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿
+	let rawValue : ?ô
  }
 
  struct __C.Metadata {
@@ -2224,7 +2214,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var metadata : ©*
+	var metadata : y
 	var refCounts : InlineRefCountsPlaceholder
  }
 
@@ -2245,7 +2235,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawValue : À5
+	var rawValue : 
  }
 
  enum __C.CGPathElementType { }
@@ -2264,7 +2254,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var identifier : AnyAttribute
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿
+	var seed : ?ô
  }
 
  enum __C.Style { }
@@ -2322,14 +2312,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var lock : os_unfair_lock_s
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offset : w¿
+	var offset : ?ô
  }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : w¿
+	var _os_unfair_lock_opaque : ?ô
  }
 
  enum __C.SeparatorStyle { }
@@ -2338,7 +2328,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentType : X
+	let contentType : ∑5
 	let existingFile : NSFileWrapper?
  }
 
@@ -2346,7 +2336,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentType : X
+	let contentType : ∑5
 	let file : NSFileWrapper
  }
 
@@ -2375,7 +2365,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configuration : LabelStyleConfiguration // +0x0
 	var _scaledWidth : ScaledMetric // +0x0
 	var _sizeCategory : Environment // +0x30
-	var _sizeClass : Environment // +0x40
+	var _isEmphasized : Environment // +0x40
+	var _tint : Environment // +0x50
+	var _sizeClass : Environment // +0x60
  }
 
  struct SwiftUI.AppearanceAnimationView {
@@ -2391,7 +2383,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿
+	var seed : ?ô
 	var active : Bool
  }
 
@@ -2418,7 +2410,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : w¿ // +0x0
+	var value : ?ô // +0x0
  }
 
  struct SwiftUI.HasChangesVisitor {
@@ -2443,10 +2435,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var seed : VersionSeed // +0x10
  }
 
- struct SwiftUI._WidgetModifier_Content { }
-
- struct SwiftUI.BodyInput { }
-
  struct SwiftUI._ButtonGesture {
 
 	// Properties
@@ -2466,14 +2454,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : —· // +0x0
+	var _phase : ëπ // +0x0
  }
 
  struct SwiftUI.Child {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : Â· // +0x0
+	var _gesture : •π // +0x0
  }
 
  struct SwiftUI.Recognizer {
@@ -2481,7 +2469,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var bounds : CGRect // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outsetWidth : Kt // +0x28
+	var outsetWidth : {L // +0x28
  }
 
  struct SwiftUI.Value {
@@ -2496,31 +2484,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : 
+	var _modifier : ˚˜
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _isEnabled : 
+	var _isEnabled : Î˜
  }
 
  class SwiftUI.RenderBoxView : _UIGraphicsView {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x896840022ef08 (0x6840022ef08) in binary!
-	0x90da8  @objc RenderBoxView.(null) <stripped>
-WARNING: couldn't find address 0x8987c0022ef00 (0x7c0022ef00) in binary!
-	0x88cc0  @objc RenderBoxView.(null) <stripped>
-WARNING: couldn't find address 0x88e880022eea8 (0x6880022eea8) in binary!
-	0x89858  @objc RenderBoxView.(null) <stripped>
-WARNING: couldn't find address 0x8984c0022ee98 (0x4c0022ee98) in binary!
-	0x89660  @objc RenderBoxView.(null) <stripped>
-WARNING: couldn't find address 0x468000000c (0x468000000c) in binary!
-	0x59cfff66eb8  @objc RenderBoxView.(null) <stripped>
-	0x594fff67720  @objc RenderBoxView.Ïº <stripped>
-	0x58cfff67dc8  @objc RenderBoxView.t5H∏ˇ <stripped>
-	0x584fff688a0  @objc RenderBoxView.√IâE <stripped>
+WARNING: couldn't find address 0x8afc400222380 (0x7c400222380) in binary!
+	0x90308  @objc RenderBoxView.(null) <stripped>
+WARNING: couldn't find address 0x8b1ec00222378 (0x1ec00222378) in binary!
+	0x8a760  @objc RenderBoxView.(null) <stripped>
+WARNING: couldn't find address 0x8a92800222320 (0x12800222320) in binary!
+	0x8b1c8  @objc RenderBoxView.(null) <stripped>
+WARNING: couldn't find address 0x8b1bc00222310 (0x1bc00222310) in binary!
+	0x8afa0  @objc RenderBoxView.(null) <stripped>
+WARNING: couldn't find address 0x4e8000000c (0x4e8000000c) in binary!
+	0x26cfff65b68  @objc RenderBoxView.(null) <stripped>
+	0x264fff663d0  @objc RenderBoxView. <stripped>
+	0x25cfff66a78  @objc RenderBoxView.ÁHãu»ãM‘Ëõƒ <stripped>
+	0x254fff67550  @objc RenderBoxView.$Hã=ræ <stripped>
 
 	// Swift methods
-	0x173880  func RenderBoxView.rbInit() // method 
-	0x173c10  func RenderBoxView.draw(inDisplayList:) // method 
-	0x173c20  func RenderBoxView.rbLayerDraw(_:inDisplayList:) // method 
+	0x131b00  func RenderBoxView.rbInit() // method 
+	0x131e90  func RenderBoxView.draw(inDisplayList:) // method 
+	0x131ea0  func RenderBoxView.rbLayerDraw(_:inDisplayList:) // method 
  }
 
  struct SwiftUI._DatePickerStyleLabel { }
@@ -2572,7 +2560,7 @@ WARNING: couldn't find address 0x468000000c (0x468000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentIndentation : Kt // +0x0
+	var contentIndentation : {L // +0x0
  }
 
  struct SwiftUI.DisclosureGroupIndentationModifier {
@@ -2599,185 +2587,204 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var relationshipScope : AccessibilityRelationshipScope
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8a43c0022e5a0 (0x43c0022e5a0) in binary!
-	0x957b0  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x88c640022e598 (0x4640022e598) in binary!
-	0x88c58  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x88c4c0022e590 (0x44c0022e590) in binary!
-	0x88dfe  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x914620022e588 (0x4620022e588) in binary!
-	0x91456  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x9144a0022e580 (0x44a0022e580) in binary!
-	0x9143e  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x914320022e578 (0x4320022e578) in binary!
-	0x91426  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x9680b0022e570 (0xb0022e570) in binary!
-	0x8a3a0  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8970400230788 (0x70400230788) in binary!
-	0x91de4  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a37c00230848 (0x37c00230848) in binary!
-	0x87ef0  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x88ba400230800 (0x3a400230800) in binary!
-	0x88d6c  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x896bc00230790 (0x6bc00230790) in binary!
-	0x96344  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a33400230710 (0x33400230710) in binary!
-	0x87ea8  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a31c0022e4e8 (0x31c0022e4e8) in binary!
-	0x87e90  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a3040022e4e0 (0x3040022e4e0) in binary!
-	0x87e78  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a2ec0022e4d8 (0x2ec0022e4d8) in binary!
-	0x87e60  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a2d4002307b8 (0x2d4002307b8) in binary!
-	0x87e48  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a2bc0022e4b8 (0x2bc0022e4b8) in binary!
-	0x87e30  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a2a400230780 (0x2a400230780) in binary!
-	0x87e18  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a28c0022e498 (0x28c0022e498) in binary!
-	0x87e00  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a27400230748 (0x27400230748) in binary!
-	0x87de8  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x88aac00230698 (0x2ac00230698) in binary!
-	0x8da20  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a2440022f0f0 (0x2440022f0f0) in binary!
-	0x87db8  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x88c4c00230660 (0x44c00230660) in binary!
-	0x88c60  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x88a5400230640 (0x25400230640) in binary!
-	0x88c1c  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x88a3c0022e428 (0x23c0022e428) in binary!
-	0x88c04  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x88a240022e420 (0x2240022e420) in binary!
-	0x88bec  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x9554c002305f0 (0x54c002305f0) in binary!
-	0x961de  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a1b40022e408 (0x1b40022e408) in binary!
-	0x87d28  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8958c0022e400 (0x58c0022e400) in binary!
-	0x89580  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a184002305f8 (0x184002305f8) in binary!
-	0x87cf8  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x889ac0022e3e0 (0x1ac0022e3e0) in binary!
-	0x889a0  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8899400230558 (0x19400230558) in binary!
-	0x89538  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8952c0022e3c0 (0x52c0022e3c0) in binary!
-	0x8a130  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x9615500230520 (0x15500230520) in binary!
-	0x89508  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a10c0022e598 (0x10c0022e598) in binary!
-	0x894f0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bedc00221a70 (0x6dc00221a70) in binary!
+	0x974f0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a70400221a68 (0x70400221a68) in binary!
+	0x8a6f8  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a6ec00221a60 (0x6ec00221a60) in binary!
+	0x8a89e  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x9315200221a58 (0x15200221a58) in binary!
+	0x93146  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x9313a00221a50 (0x13a00221a50) in binary!
+	0x9312e  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x9312200221a48 (0x12200221a48) in binary!
+	0x93116  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x9855e00221a40 (0x55e00221a40) in binary!
+	0x97460  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a83200221a30 (0x3200221a30) in binary!
+	0x8a826  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a81a00221a28 (0x1a00221a28) in binary!
+	0x8be10  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8b01400223ca8 (0x1400223ca8) in binary!
+	0x93ad4  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bdec00223d90 (0x5ec00223d90) in binary!
+	0x89960  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a61400223d10 (0x61400223d10) in binary!
+	0x8a7dc  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8afcc00223cb8 (0x7cc00223cb8) in binary!
+	0x98054  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bda400223c28 (0x5a400223c28) in binary!
+	0x89918  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bd8c002219a0 (0x58c002219a0) in binary!
+	0x89900  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bd7400221998 (0x57400221998) in binary!
+	0x898e8  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bd5c00221990 (0x55c00221990) in binary!
+	0x898d0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bd4400223d00 (0x54400223d00) in binary!
+	0x898b8  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bd2c00221970 (0x52c00221970) in binary!
+	0x898a0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bd1400223cc8 (0x51400223cc8) in binary!
+	0x89888  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bcfc00221950 (0x4fc00221950) in binary!
+	0x89870  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bce400223c90 (0x4e400223c90) in binary!
+	0x89858  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a51c00222d40 (0x51c00222d40) in binary!
+	0x8f680  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bcb400222538 (0x4b400222538) in binary!
+	0x89828  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x972bc00223b90 (0x2bc00223b90) in binary!
+	0x8a6b0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a6c400223be8 (0x6c400223be8) in binary!
+	0x8a4b8  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a68000223bd8 (0x68000223bd8) in binary!
+	0x8a4a0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a66800223bc8 (0x66800223bc8) in binary!
+	0x8a488  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a65000223b48 (0x65000223b48) in binary!
+	0x97250  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x97eda002218a0 (0x6da002218a0) in binary!
+	0x8bc18  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8978c00221898 (0x78c00221898) in binary!
+	0x8aec0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8aeb400221890 (0x6b400221890) in binary!
+	0x8bbe8  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8975c00223b00 (0x75c00223b00) in binary!
+	0x8a410  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8a40400223a88 (0x40400223a88) in binary!
+	0x8a3f8  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8ae6c00221858 (0x66c00221858) in binary!
+	0x8ae60  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bb9400221850 (0x39400221850) in binary!
+	0x8bb88  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x97e4500223a30 (0x64500223a30) in binary!
+	0x8a3b0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bb6400222830 (0x36400222830) in binary!
+	0x8ae18  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bb4c00221a00 (0x34c00221a00) in binary!
+	0x8ae00  @objc AccessibilityNode.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x36cff6b9e18  @objc AccessibilityNode.(null) <stripped>
-	0x2ac0022eb30  @objc AccessibilityNode.ËkR <stripped>
-WARNING: couldn't find address 0x22eb1cff6e6018 (0x31cff6e6018) in binary!
+	0x784ff6723d8  @objc AccessibilityNode.(null) <stripped>
+	0x38c00221f48  @objc AccessibilityNode.âÚH∏ˇ <stripped>
+WARNING: couldn't find address 0x221f34ff69f328 (0x734ff69f328) in binary!
 	0x48000000c  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x91b080022ea98 (0x3080022ea98) in binary!
-	0x95420  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x8a0940022e520 (0x940022e520) in binary!
-	0x89478  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x937c800221eb0 (0x7c800221eb0) in binary!
+	0x97100  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8bad400221988 (0x2d400221988) in binary!
+	0x8ad88  @objc AccessibilityNode.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xff70d7a0  @objc AccessibilityNode.(null) <stripped>
+	0xff6c7100  @objc AccessibilityNode.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4dcff8ac7d8  @objc AccessibilityNode.(null) <stripped>
-	0xff8ad700  @objc AccessibilityNode.ÃQ <stripped>
+	0x144ff881fe8  @objc AccessibilityNode.(null) <stripped>
+	0xff882f10  @objc AccessibilityNode.ÚH∏ˇ <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xff91b058  @objc AccessibilityNode.(null) <stripped>
+	0xff8ef8a8  @objc AccessibilityNode.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x1f4ff930da0  @objc AccessibilityNode.(null) <stripped>
-	0x27cff930f18  @objc AccessibilityNode.∏LâÁË#7£ <stripped>
-	0x24ff931460  @objc AccessibilityNode.H∏ˇ <stripped>
-	0x3440022ec08  @objc AccessibilityNode.Ë√Ω <stripped>
-WARNING: couldn't find address 0x22e444ff945aa0 (0x444ff945aa0) in binary!
-	0x39c0022dff8  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0xff945b38 (0xff945b38) in binary!
-	0x3840022ef70  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0xff9ae9d0 (0xff9ae9d0) in binary!
-	0x77c0022e408  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x22dfbcff9ae858 (0x7bcff9ae858) in binary!
+	0x60cff9057b0  @objc AccessibilityNode.(null) <stripped>
+	0x694ff905928  @objc AccessibilityNode.ç5÷x« <stripped>
+	0x494ff905c20  @objc AccessibilityNode. <stripped>
+	0x58400222030  @objc AccessibilityNode. <stripped>
+WARNING: couldn't find address 0x2218acff91a340 (0xacff91a340) in binary!
+	0x4ac00221468  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff91a3d8 (0xff91a3d8) in binary!
+	0x49400222358  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff98aef0 (0xff98aef0) in binary!
+	0x1bc00221870  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x22142cff98ad78 (0x42cff98ad78) in binary!
 	0x48000000c  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x87adc0022f120 (0x2dc0022f120) in binary!
-	0x87ad0  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x89f440022e3d0 (0x7440022e3d0) in binary!
-	0x89328  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8951c00222538 (0x51c00222538) in binary!
+	0x89510  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8b98400221838 (0x18400221838) in binary!
+	0x8ac38  @objc AccessibilityNode.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x1b4ff9ddc70  @objc AccessibilityNode.(null) <stripped>
-	0x1acff9de718  @objc AccessibilityNode.GÚEÄÚÚEàÚGj^Lçm∏Ë•“ <stripped>
-	0x1a4ff9ded30  @objc AccessibilityNode.Hã}–Hãu»Dâ·Ë†q <stripped>
-	0x19cff9e0048  @objc AccessibilityNode.ÚMà1ˇËL'¯ˇHç}êHâGÚEÄÚÚEàÚGj^Lçm∏Ë•“ <stripped>
-	0x704ff9e0180  @objc AccessibilityNode.ﬂj8^jZË‹G£ <stripped>
-	0x2940022e918  @objc AccessibilityNode.H!¬Hã}–Hãu»Dâ·ËU] <stripped>
-WARNING: couldn't find address 0x22e16cff9f5750 (0x16cff9f5750) in binary!
-	0x53c0022e168  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x22f144ff9f5d58 (0x144ff9f5d58) in binary!
-	0x2640022dec0  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0xff9f5740 (0xff9f5740) in binary!
-	0x24c0022f170  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0xffa09158 (0xffa09158) in binary!
-	0x1c40022f190  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x22e2c4ffa1b540 (0x2c4ffa1b540) in binary!
-	0x21c0022de78  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0xffa1b5f8 (0xffa1b5f8) in binary!
-	0x7f40022e878  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x22e864ffa19e40 (0x64ffa19e40) in binary!
-	0x70c0022f150  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0xffa19f58 (0xffa19f58) in binary!
-	0x6f40022f1f8  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0xffa1c0d0 (0xffa1c0d0) in binary!
-	0x5cc0022e258  @objc AccessibilityNode.(null) <stripped>
-WARNING: couldn't find address 0x22f1ccffa1cdb8 (0x1ccffa1cdb8) in binary!
-	0x6c40022e810  @objc AccessibilityNode.(null) <stripped>
+	0x62cff9bd9b0  @objc AccessibilityNode.(null) <stripped>
+	0x624ff9be458  @objc AccessibilityNode.˙ <stripped>
+	0x61cff9beaa0  @objc AccessibilityNode.ÄÚÚEàÚGj^Lçm∏Ëµ˘ <stripped>
+	0x614ff9bfdb8  @objc AccessibilityNode.ÚKj^Lçm∏HâﬂË˙ <stripped>
+	0x374ff9bfef0  @objc AccessibilityNode.âCLâÚH∏ˇ <stripped>
+	0x3a400221d30  @objc AccessibilityNode.jZHâ«Ë”.§ <stripped>
+WARNING: couldn't find address 0x2215e4ff9d56d0 (0x5e4ff9d56d0) in binary!
+	0x7dc002215e0  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x222554ff9d5cd8 (0x554ff9d5cd8) in binary!
+	0x37400221330  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff9d56c0 (0xff9d56c0) in binary!
+	0x35c00221318  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff9dcb18 (0xff9dcb18) in binary!
+	0x8400222550  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff9ddb10 (0xff9ddb10) in binary!
+	0x32c00222558  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff9ebda8 (0xff9ebda8) in binary!
+	0x3d400222598  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x2216fcff9fef00 (0x6fcff9fef00) in binary!
+	0x2fc002212b8  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff9fefb8 (0xff9fefb8) in binary!
+	0xa400221c60  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x221c4cff9fd600 (0x44cff9fd600) in binary!
+	0x3dc00222558  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff9fd718 (0xff9fd718) in binary!
+	0x3c400222610  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0xff9ffad0 (0xff9ffad0) in binary!
+	0x7dc00221690  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x2225e4ffa007b8 (0x5e4ffa007b8) in binary!
+	0x39400221bf8  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x221234ffa00980 (0x234ffa00980) in binary!
+	0x68000000c  @objc AccessibilityNode.(null) <stripped>
+WARNING: couldn't find address 0x8e21a00221470 (0x21a00221470) in binary!
+	0x93474  @objc AccessibilityNode.(null) <stripped>
 
 	// Swift methods
-	0x1780d0  func AccessibilityNode.id.getter // getter 
-	0x1780f0  func AccessibilityNode.id.setter // setter 
-	0x178110  func AccessibilityNode.children.setter // setter 
-	0x178130  func AccessibilityNode.oldAttachmentForNotification.setter // setter 
-	0x178150  func AccessibilityNode.attachmentsStorage.setter // setter 
-	0x1781b0  func AccessibilityNode.attachmentsStorage.modify // modifyCoroutine 
-	0x1781f0  func AccessibilityNode.cachedCombinedAttachment.setter // setter 
-	0x178610  func AccessibilityNode.isPlatformNode.getter // getter 
-	0x178680  func AccessibilityNode.platformElement.getter // getter 
-	0x1786f0  func AccessibilityNode.properties.getter // getter 
-	0x178880  func AccessibilityNode.updatePlatformProperties(includingRelations:) // method 
-	0x178a50  func AccessibilityNode.attachment.getter // getter 
-	0x178ce0  func AccessibilityNode.addAttachment(_:reference:token:) // method 
-	0x179090  func AccessibilityNode.removeAttachment(token:) // method 
-	0x1796f0  func AccessibilityNode.attachmentIndex(of:) // method 
-	0x179790  func AccessibilityNode.removeAttachments(after:) // method 
-	0x179830  func AccessibilityNode.hasAttachment(token:) // method 
-	0x1798c0  func AccessibilityNode.updateAttachment(_:reference:token:) // method 
-	0x179b00  func AccessibilityNode.hasChangedFromAttachment(_:reference:token:) // method 
-	0x179d40  func AccessibilityNode.updateSize(_:token:) // method 
-	0x179e10  func AccessibilityNode.updateTransform(_:token:) // method 
-	0x179f00  func AccessibilityNode.hasPath(for:) // method 
-	0x179f80  func AccessibilityNode.updatePath() // method 
-	0x179fa0  func AccessibilityNode.updatePath(at:) // method 
-	0x17e6b0  func AccessibilityNode.updateViewResponders(_:token:) // method 
-	0x17e770  func AccessibilityNode.updateEnvironment(_:token:) // method 
-	0x17e8b0  func AccessibilityNode.updateGlobalFrame() // method 
-	0x17e930  func AccessibilityNode.updateGlobalFrame(at:) // method 
-	0x17ee00  func AccessibilityNode.sortedChildren.getter // getter 
-	0x17f030  func AccessibilityNode.childElements(sorted:) // method 
-	0x17f280  func AccessibilityNode.sendAction(named:) // method 
-	0x17f550  func AccessibilityNode.namedActions.getter // getter 
-	0x1803a0  func AccessibilityNode.impliedVisibility.getter // getter 
-	0x1804d0  func AccessibilityNode.environment.getter // getter 
-	0x1806b0  func AccessibilityNode.contentPath.getter // getter 
-	0x180db0  func AccessibilityNode.contentFrame.getter // getter 
-	0x180ee0  func AccessibilityNode.globalFrame.getter // getter 
-	0x181060  func AccessibilityNode.activationPoint.getter // getter 
-	0x1819d0  func AccessibilityNode.resolvedAttributedValue.getter // getter 
-	0x181b50  func AccessibilityNode.resolvedPlainTextValue.getter // getter 
-	0x181bd0  func AccessibilityNode.resolvedAttributedHint.getter // getter 
-	0x181bf0  func AccessibilityNode.resolvedPlainTextHint.getter // getter 
-	0x181c10  func AccessibilityNode.resolvedAttributedLabel.getter // getter 
-	0x181cb0  func AccessibilityNode.resolvedPlainTextLabel.getter // getter 
-	0x181d60  func AccessibilityNode.resolvedAttributedText(_:) // method 
-	0x181df0  func AccessibilityNode.resolvedPlainText(_:) // method 
-	0x181f00  func AccessibilityNode.relationshipScope.setter // setter 
+	0x136470  func AccessibilityNode.id.getter // getter 
+	0x136490  func AccessibilityNode.id.setter // setter 
+	0x1364b0  func AccessibilityNode.children.setter // setter 
+	0x1364d0  func AccessibilityNode.oldAttachmentForNotification.setter // setter 
+	0x1364f0  func AccessibilityNode.attachmentsStorage.setter // setter 
+	0x136550  func AccessibilityNode.attachmentsStorage.modify // modifyCoroutine 
+	0x136590  func AccessibilityNode.cachedCombinedAttachment.setter // setter 
+	0x1369b0  func AccessibilityNode.isPlatformNode.getter // getter 
+	0x136a20  func AccessibilityNode.platformElement.getter // getter 
+	0x136a90  func AccessibilityNode.properties.getter // getter 
+	0x136c20  func AccessibilityNode.updatePlatformProperties(includingRelations:) // method 
+	0x136df0  func AccessibilityNode.attachment.getter // getter 
+	0x137080  func AccessibilityNode.addAttachment(_:reference:isInPlatformItemList:token:) // method 
+	0x137a00  func AccessibilityNode.removeAttachment(isInPlatformItemList:token:) // method 
+	0x138130  func AccessibilityNode.attachmentIndex(of:) // method 
+	0x138220  func AccessibilityNode.removeAttachments(after:) // method 
+	0x1382d0  func AccessibilityNode.hasAttachment(token:) // method 
+	0x1383a0  func AccessibilityNode.updateAttachment(_:reference:isInPlatformItemList:token:) // method 
+	0x1387f0  func AccessibilityNode.needsUpdate(to:reference:token:) // method 
+	0x1394a0  func AccessibilityNode.updateSize(_:token:) // method 
+	0x139570  func AccessibilityNode.updateTransform(_:token:) // method 
+	0x139660  func AccessibilityNode.hasPath(for:) // method 
+	0x1396d0  func AccessibilityNode.updatePath() // method 
+	0x1396f0  func AccessibilityNode.updatePath(at:) // method 
+	0x13e830  func AccessibilityNode.updateViewResponders(_:token:) // method 
+	0x13e8f0  func AccessibilityNode.updateEnvironment(_:token:) // method 
+	0x13ea30  func AccessibilityNode.updateGlobalFrame() // method 
+	0x13eab0  func AccessibilityNode.updateGlobalFrame(at:) // method 
+	0x13ef80  func AccessibilityNode.sortedChildren.getter // getter 
+	0x13f1b0  func AccessibilityNode.childElements(sorted:) // method 
+	0x13f3d0  func AccessibilityNode.sendAction(named:) // method 
+	0x13f6a0  func AccessibilityNode.namedActions.getter // getter 
+	0x1404e0  func AccessibilityNode.impliedVisibility.getter // getter 
+	0x140650  func AccessibilityNode.environment.getter // getter 
+	0x140830  func AccessibilityNode.contentPath.getter // getter 
+	0x140f80  func AccessibilityNode.contentFrameFromChildren.getter // getter 
+	0x141bf0  func AccessibilityNode.contentFrameFromPath.getter // getter 
+	0x141cb0  func AccessibilityNode.contentFrame.getter // getter 
+	0x141de0  func AccessibilityNode.globalFrame.getter // getter 
+	0x141f60  func AccessibilityNode.activationPoint.getter // getter 
+	0x142a90  func AccessibilityNode.resolvedAttributedValue.getter // getter 
+	0x142c30  func AccessibilityNode.resolvedPlainTextValue.getter // getter 
+	0x142cb0  func AccessibilityNode.resolvedAttributedHint.getter // getter 
+	0x142cd0  func AccessibilityNode.resolvedPlainTextHint.getter // getter 
+	0x142cf0  func AccessibilityNode.resolvedAttributedLabel.getter // getter 
+	0x142d90  func AccessibilityNode.resolvedPlainTextLabel.getter // getter 
+	0x142e40  func AccessibilityNode.resolvedAttributedText(_:) // method 
+	0x142ed0  func AccessibilityNode.resolvedPlainText(_:) // method 
+	0x142fe0  func AccessibilityNode.relationshipScope.setter // setter 
+	0x143000  func AccessibilityNode.subgraph.getter // getter 
  }
 
  struct SwiftUI.AccessibilityAttachmentStorage {
@@ -2788,20 +2795,28 @@ WARNING: couldn't find address 0x22f1ccffa1cdb8 (0x1ccffa1cdb8) in binary!
 	var size : CGSize // +0x28
 	var globalFrame : CGRect // +0x40
 	var attachment : AccessibilityAttachment // +0x68
-	var reference : AccessibilityNode // +0x90
+	var weakReference : WeakBox // +0x90
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var viewResponders : O€ // +0x98
+	var viewResponders : µƒ // +0x98
 	var path : Path // +0xa0
-	let token : AnyAttribute // +0xc4
+	let token : AccessibilityAttachmentToken // +0xc4
+ }
+
+ enum SwiftUI.AccessibilityAttachmentToken {
+
+	// Properties
+	case attribute : AnyAttribute
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case identifier : ?ô
  }
 
  struct SwiftUI.LayoutPositionQuery {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parentPosition : 7± // +0x0
+	var _parentPosition : óƒ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _localPosition : 7± // +0x4
+	var _localPosition : óƒ // +0x4
 	var lastParentPosition : CGPoint // +0x8
  }
 
@@ -2809,7 +2824,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childGeometries : € // +0x0
+	var _childGeometries : Yƒ // +0x0
 	let index : Int // +0x8
  }
 
@@ -2817,9 +2832,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : €±
+	var _layout : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var childLayoutComputers :  empty-list 
  }
@@ -2831,7 +2846,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onDismiss : (_:)? // +0x8
 	let viewID : ID // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let itemID : s // +0x20
+	let itemID : I // +0x20
 	let overFullscreen : Bool // +0x48
 	let transaction : Transaction // +0x50
 	var environment : EnvironmentValues // +0x58
@@ -2896,9 +2911,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : Ÿ
+	var _modifier : c¬
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _traits : ˝ÿ
+	var _traits : C¬
  }
 
  struct SwiftUI.AnyTrait: AnyViewTrait {
@@ -2913,24 +2928,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : a”
+	var _base : Òº
  }
-
- struct SwiftUI._WidgetBuilder { }
 
  struct SwiftUI.LongPressGesture {
 
 	// Properties
 	var minimumDuration : Double // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _maximumDistance : Kt // +0x8
+	var _maximumDistance : {L // +0x8
  }
 
  struct SwiftUI.EnvironmentChangeModifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : ª
+	var keyPath : ˘	
 	var action : (_:)
  }
 
@@ -2938,16 +2951,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ª—
+	var _modifier : Qª
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _updateSeed : ù
+	var _updateSeed : u
 	var lastValue : A?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastSeed : w¿
+	var lastSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ttl : w¿
+	var ttl : ?ô
  }
 
  struct SwiftUI.AutocorrectionTypeKey { }
@@ -3034,23 +3047,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SwiftUI.ToolbarBridge {
  class SwiftUI.SwiftUIToolbar : UIToolbar /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x892ac0022eb30 (0x2ac0022eb30) in binary!
-	0x909d0  @objc SwiftUIToolbar.(null) <stripped>
+WARNING: couldn't find address 0x8ab8c00221f48 (0x38c00221f48) in binary!
+	0x8fed0  @objc SwiftUIToolbar.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x32cff6f4e98  @objc SwiftUIToolbar.(null) <stripped>
+	0x7a4ff6ae918  @objc SwiftUIToolbar.(null) <stripped>
  }
 
  struct SwiftUI.EdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : Kt // +0x0
+	var top : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var leading : Kt // +0x8
+	var leading : {L // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : Kt // +0x10
+	var bottom : {L // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var trailing : Kt // +0x18
+	var trailing : {L // +0x18
  }
 
  struct SwiftUI.CodableEdgeInsets {
@@ -3063,17 +3076,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : €±
+	var _effect : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ
+	var _layoutDirection : π∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7±
+	var _containerPosition : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : ÒÕ
+	var _content : Å∑
 	let identity : Identity
  }
 
@@ -3081,26 +3094,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x0
+	var _position : óƒ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x4
+	var _size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _pixelLength : Œ // +0x8
+	var _pixelLength : •∑ // +0x8
  }
 
  struct SwiftUI.GeometryEffectTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : €±
+	var _effect : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ
+	var _layoutDirection : π∑
  }
 
  class SwiftUI.PreferenceNode : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3112,10 +3125,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let next : PreferenceNode
 
 	// Swift methods
-	0x1b6130  func PreferenceNode.find(from:) // method 
-	0x1b6180  func PreferenceNode.combine(from:next:) // method 
-	0x1b61d0  func PreferenceNode.copy(next:) // method 
-	0x1b6220  func PreferenceNode.description.getter // getter 
+	0x177f40  func PreferenceNode.find(from:) // method 
+	0x177f90  func PreferenceNode.combine(from:next:) // method 
+	0x177fe0  func PreferenceNode.copy(next:) // method 
+	0x178030  func PreferenceNode.description.getter // getter 
  }
 
  class SwiftUI._PreferenceNode {
@@ -3184,16 +3197,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var makeRootScene : _SceneOutputs
 	var observers : HashableWeakBox
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _updateSeed : ù
+	var _updateSeed : u
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootScenePhase : £À
+	var _rootScenePhase : 5µ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootSceneList : ÖÀ
+	var _rootSceneList : µ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _focusedValues : áÀ
+	var _focusedValues : µ
 
 	// Swift methods
-	0x1baf20  class func AppGraph.__allocating_init<A>(app:) // init 
+	0x17cde0  class func AppGraph.__allocating_init<A>(app:) // init 
  }
 
  struct SwiftUI.AppBodyAccessor { }
@@ -3202,9 +3215,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x0
+	var _environment : ä // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : £À // +0x4
+	var _phase : 5µ // +0x4
  }
 
  struct SwiftUI.SceneList {
@@ -3240,11 +3253,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyColorBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1bd8a0  func AnyColorBox.resolve(in:) // method 
-	0x1bd8e0  func AnyColorBox.staticColor.getter // getter 
-	0x1bd920  func AnyColorBox.isEqual(to:) // method 
-	0x1bd960  func AnyColorBox.hash(into:) // method 
-	0x1bd9a0  func AnyColorBox.description.getter // getter 
+	0x17feb0  func AnyColorBox.resolve(in:) // method 
+	0x17fef0  func AnyColorBox.staticColor.getter // getter 
+	0x17ff30  func AnyColorBox.isEqual(to:) // method 
+	0x17ff70  func AnyColorBox.hash(into:) // method 
+	0x17ffb0  func AnyColorBox.description.getter // getter 
  }
 
  class SwiftUI.ColorBox {
@@ -3254,14 +3267,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let color : Color
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x91b080022ea98 (0x3080022ea98) in binary!
-	0x95420  @objc ObjcColor.(null) <stripped>
-WARNING: couldn't find address 0x8a0940022e520 (0x940022e520) in binary!
-	0x89478  @objc ObjcColor.(null) <stripped>
+WARNING: couldn't find address 0x937c800221eb0 (0x7c800221eb0) in binary!
+	0x97100  @objc ObjcColor.(null) <stripped>
+WARNING: couldn't find address 0x8bad400221988 (0x2d400221988) in binary!
+	0x8ad88  @objc ObjcColor.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xff70d7a0  @objc ObjcColor.(null) <stripped>
+	0xff6c7100  @objc ObjcColor.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4dcff8ac7d8  @objc ObjcColor.(null) <stripped>
+	0x144ff881fe8  @objc ObjcColor.(null) <stripped>
 
 	// Swift methods
  }
@@ -3340,7 +3353,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : 5…
+	var _view : «≤
 	var style : A
  }
 
@@ -3350,9 +3363,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : 5…
+	var _view : «≤
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _style : €±
+	var _style : {ƒ
  }
 
  struct SwiftUI._PullDownButtonValue {
@@ -3388,7 +3401,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : I»
+	var _base : €±
 	var style : A
  }
 
@@ -3398,9 +3411,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : I»
+	var _base : €±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _style : €±
+	var _style : {ƒ
  }
 
  struct SwiftUI.EventListener { }
@@ -3409,13 +3422,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „«
+	var _events : u±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	let preconvertedEventLocations : Bool
 	let allowsIncompleteEventSequences : Bool
 	let bindings : EventBindingManager
@@ -3441,17 +3454,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case privateSystem  
  }
 
+ struct SwiftUI.VectorImageInfo {
+
+	// Properties
+	var glyph : CUINamedVectorGlyph // +0x0
+	var orientation : Orientation // +0x8
+ }
+
  struct SwiftUI.VectorCacheKey {
 
 	// Properties
 	var name : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Kt // +0x10
+	var scale : {L // +0x10
 	var layoutDirection : LayoutDirection // +0x18
+	var colorScheme : ColorScheme // +0x19
+	let colorSchemeContrast : ColorSchemeContrast // +0x1a
 	var weight : Weight // +0x20
 	var size : _CUIThemeVectorGlyphSize // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pointSize : Kt // +0x30
+	var pointSize : {L // +0x30
 	var location : Location // +0x38
  }
 
@@ -3460,7 +3482,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var name : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Kt // +0x10
+	var scale : {L // +0x10
 	var layoutDirection : LayoutDirection // +0x18
 	var colorScheme : ColorScheme // +0x19
 	var contrast : ColorSchemeContrast // +0x1a
@@ -3473,25 +3495,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var cgImage : CGImage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Kt // +0x8
+	var scale : {L // +0x8
 	var orientation : Orientation // +0x10
 	var unrotatedPixelSize : CGSize // +0x18
 	var renderingMode : TemplateRenderingMode // +0x28
 	var resizingInfo : ResizingInfo // +0x30
- }
-
- struct SwiftUI.VectorImageInfo {
-
-	// Properties
-	var glyph : CUINamedVectorGlyph // +0x0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Kt // +0x8
-	var orientation : Orientation // +0x10
-	var bounds : CGRect // +0x18
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var baselineOffset : Kt // +0x38
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var capHeight : Kt // +0x40
  }
 
  struct SwiftUI.Namespace {
@@ -3534,6 +3542,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onIncrement : ()? // +0x0
 	let onDecrement : ()? // +0x10
 	let onEditingChanged : (_:) // +0x20
+	let accessibilityValue : AccessibilityAdjustableNumericValue // +0x30
  }
 
  struct SwiftUI.Label { }
@@ -3599,11 +3608,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case font : Font
 	case weight : Weight
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case kerning : Kt
+	case kerning : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case tracking : Kt
+	case tracking : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case baseline : Kt
+	case baseline : {L
 	case anyTextModifier : AnyTextModifier
 	case italic  
 	case rounded  
@@ -3611,17 +3620,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyTextStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1d5320  func AnyTextStorage.resolve(into:in:options:) // method 
-	0x1d5370  func AnyTextStorage.resolvesToEmpty(in:options:) // method 
-	0x1d54d0  func AnyTextStorage.isEqual(to:) // method 
-	0x1d5520  func AnyTextStorage.isStyled.getter // getter 
-	0x1d5570  func AnyTextStorage.localizationInfo.getter // getter 
+	0x197810  func AnyTextStorage.resolve(into:in:options:) // method 
+	0x197860  func AnyTextStorage.resolvesToEmpty(in:options:) // method 
+	0x1979c0  func AnyTextStorage.isEqual(to:) // method 
+	0x197a10  func AnyTextStorage.isStyled.getter // getter 
+	0x197a60  func AnyTextStorage.localizationInfo.getter // getter 
  }
 
  class SwiftUI.AnyTextModifier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1d55e0  func AnyTextModifier.modify(style:) // method 
-	0x1d5630  func AnyTextModifier.isEqual(to:) // method 
+	0x197ad0  func AnyTextModifier.modify(style:) // method 
+	0x197b20  func AnyTextModifier.isEqual(to:) // method 
  }
 
  class SwiftUI.StrikethroughTextModifier : AnyTextModifier {
@@ -3660,7 +3669,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.FindClass : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8a0740022e500 (0x740022e500) in binary!
+WARNING: couldn't find address 0x8bab400221968 (0x2b400221968) in binary!
 	0x38000000c  @objc FindClass.(null) <stripped>
  }
 
@@ -3686,7 +3695,7 @@ WARNING: couldn't find address 0x8a0740022e500 (0x740022e500) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onMove :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sourceOffsets : u¬
+	var sourceOffsets : ¨
 	var contentID : Int
  }
 
@@ -3698,7 +3707,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var globalLocation : CGPoint // +0x10
 	var location : CGPoint // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var radius : Kt // +0x30
+	var radius : {L // +0x30
  }
 
  struct SwiftUI.Element {
@@ -3720,7 +3729,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let stack : A
 	let axis : Axis
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minorSize : Kt
+	let minorSize : {L
 	let minorCount : Int
 	let minorGeometry : IncrementalStack
 WARNING: couldn't find address 0x0 (0x0) in binary!
@@ -3730,7 +3739,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var index : Int
 	var skipFirst : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var position : Kt
+	var position : {L
 	var stoppingCondition : StoppingCondition
 	var currentChildren : _IncrementalLayout_Child
 	var lastChildren : _IncrementalLayout_Child
@@ -3738,20 +3747,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var placedChildren : _IncrementalLayout_PlacedChild
 	var placedIndex : (min: Int, max: Int)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var placedPosition : +¡
+	var placedPosition : ∑™
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var placedQuery : +¡
+	var placedQuery : ∑™
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var measuredLength : ¡
+	var measuredLength : •™
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var measuredSpacing : ¡
+	var measuredSpacing : •™
  }
 
  struct SwiftUI._IncrementalStack_State {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minorSize : Kt
+	var minorSize : {L
 	var minorCount : Int
 	var minorGeometry : IncrementalStack
 	var placedIndices : Range<Int>
@@ -3760,9 +3769,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var visibleExtent :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var estimatedLength : Kt
+	var estimatedLength : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var estimatedSpacing : Kt
+	var estimatedSpacing : {L
  }
 
  enum SwiftUI.StoppingCondition {
@@ -3780,7 +3789,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var location : CGPoint // +0x10
 	var globalLocation : CGPoint // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var radius : Kt // +0x30
+	var radius : {L // +0x30
 	var force : Double // +0x38
 	var maximumPossibleForce : Double // +0x40
  }
@@ -3798,9 +3807,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var shape : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var startFraction : Kt
+	var startFraction : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var endFraction : Kt
+	var endFraction : {L
  }
 
  struct SwiftUI.Font {
@@ -3811,9 +3820,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyFontBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1e8600  func AnyFontBox.resolve(in:) // method 
-	0x1e8650  func AnyFontBox.isEqual(to:) // method 
-	0x1e86a0  func AnyFontBox.hash(into:) // method 
+	0x1aac00  func AnyFontBox.resolve(in:) // method 
+	0x1aac50  func AnyFontBox.isEqual(to:) // method 
+	0x1aaca0  func AnyFontBox.hash(into:) // method 
  }
 
  class SwiftUI.FontBox {
@@ -3895,7 +3904,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x0
+	var seed : ?ô // +0x0
  }
 
  struct SwiftUI._DraggingModifier {
@@ -3943,7 +3952,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var primaryFont : Font // +0x10
 	var layoutMargins : EdgeInsets // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var imageToTextSpacing : Kt // +0x38
+	var imageToTextSpacing : {L // +0x38
  }
 
  struct SwiftUI.Flags {
@@ -3998,13 +4007,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _data : €±
+	var _data : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 	let responder : LeafViewResponder
  }
 
@@ -4055,7 +4064,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ıº
+	var _base : ã¶
 	var style : A
  }
 
@@ -4065,9 +4074,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ıº
+	var _base : ã¶
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _style : €±
+	var _style : {ƒ
  }
 
  struct SwiftUI.SafeAreaRegions {
@@ -4103,15 +4112,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let regions : SafeAreaRegions // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x8
+	var _environment : ä // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0xc
+	var _size : gâ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x10
+	var _position : óƒ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x14
+	var _transform : «∑ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : º // +0x18
+	var _safeAreaInsets : ´• // +0x18
  }
 
  struct SwiftUI.Insets {
@@ -4119,9 +4128,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let space : UniqueID // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : º // +0x8
+	var _modifier : °• // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _next : º // +0xc
+	var _next : ´• // +0xc
  }
 
  struct SwiftUI.Transform {
@@ -4129,11 +4138,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let space : UniqueID // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x8
+	var _transform : «∑ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0xc
+	var _position : óƒ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x10
+	var _size : gâ // +0x10
  }
 
  struct SwiftUI.Element {
@@ -4149,7 +4158,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var image : Image // +0x0
 	var sourceRect : CGRect // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Kt // +0x28
+	var scale : {L // +0x28
  }
 
  struct SwiftUI._Paint {
@@ -4158,7 +4167,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var image : GraphicsImage // +0x0
 	var sourceRect : CGRect // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Kt // +0x88
+	var scale : {L // +0x88
  }
 
  enum SwiftUI.CodingKeys {
@@ -4199,7 +4208,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct SwiftUI.ObservableDocumentBoxInputView {
 
 	// Properties
-	var content : (_:) // +0x1bf460
+	var content : (_:) // +0x181aa0
  }
 
  struct SwiftUI.DocumentKey { }
@@ -4215,9 +4224,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _model : €±
+	var _model : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : +∫
+	var _content : À£
  }
 
  struct SwiftUI.PrimitiveButtonStyleConfiguration {
@@ -4274,7 +4283,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : U∑ // +0x0
+	var _state : Ô† // +0x0
 	var lastSize : CGSize // +0x8
  }
 
@@ -4282,19 +4291,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : A∑ // +0x0
+	var _list : €† // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _accessibilityEnabled :  // +0x4
+	var _accessibilityEnabled : Î˜ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr // +0x8
+	var _phase : ßJ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0xc
+	var _position : óƒ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x10
+	var _size : gâ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x14
+	var _transform : «∑ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿ // +0x18
+	var resetSeed : ?ô // +0x18
 	let updater : AccessibilityUpdater // +0x20
  }
 
@@ -4302,13 +4311,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : U∑ // +0x0
+	var _state : Ô† // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x4
+	var _size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0xc
+	var _containerPosition : óƒ // +0xc
 	let identity : Identity // +0x10
  }
 
@@ -4354,11 +4363,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var map : ID
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x87bdc0022ee30 (0x3dc0022ee30) in binary!
-	0x8a050  @objc KeyboardShortcutBridge.(null) <stripped>
-WARNING: couldn't find address 0x894340022e090 (0x4340022e090) in binary!
+WARNING: couldn't find address 0x8961c00222240 (0x61c00222240) in binary!
+	0x8ba90  @objc KeyboardShortcutBridge.(null) <stripped>
+WARNING: couldn't find address 0x8ad4400221500 (0x54400221500) in binary!
 	0x18000000c  @objc KeyboardShortcutBridge.(null) <stripped>
-WARNING: couldn't find address 0x87bac0022eee0 (0x3ac0022eee0) in binary!
+WARNING: couldn't find address 0x895ec002222f8 (0x5ec002222f8) in binary!
 	0x68000000c  @objc KeyboardShortcutBridge.(null) <stripped>
  }
 
@@ -4369,9 +4378,9 @@ WARNING: couldn't find address 0x87bac0022eee0 (0x3ac0022eee0) in binary!
 	let subgraph : Subgraph
 	let outputs : _ViewOutputs
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : a~
+	var _state : _[
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : C~
+	var _list : A[
 	let elements : _ViewList_Elements
 	let elementIndex : Int
 	let releaseElements : ()
@@ -4383,16 +4392,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var zIndex : Double
 	var insertionTransactionID : TransactionID
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var animationCount : ©5
+	var animationCount : y
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var usedSeed : w¿
+	var usedSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var placementSeed : w¿
+	var placementSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var commitSeed : w¿
+	var commitSeed : ?ô
 	var displayIndex : Int?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var removedSeed : w¿
+	var removedSeed : ?ô
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var failedSeed : ?ô
 	var placement : _Placement
 	var releaseSecondaryElements : ()?
 	var willEnableTransitions : Bool
@@ -4410,30 +4421,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let inputs : _ViewInputs
 	var outputs : _ViewOutputs
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : ◊u
+	var _list : N
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ
+	var _layoutDirection : π∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _accessibilityEnabled : 
+	var _accessibilityEnabled : Î˜
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _placedChildren : ~
+	var _placedChildren : [
 	var items : Canonical
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var usedSeed : w¿
+	var usedSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var commitSeed : w¿
+	var commitSeed : ?ô
 	var lastTransactionID : TransactionID
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var placementSeed : w¿
+	var placementSeed : ?ô
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var failedSeed : ?ô
 	var hasSections : Bool
 	var hasDepth : Bool
 	var isFirstCommit : Bool
 
 	// Swift methods
-	0x379d10  func ViewCache.reset() // method 
-	0x37caa0  func ViewCache.withMutableState<A, B>(type:_:) // method 
-	0x37caf0  func ViewCache.initialPlacement(at:in:wasInserted:oldPlacedChildren:) // method 
-	0x37cb40  func ViewCache.finalPlacement(at:in:wasRemoved:newPlacedChildren:) // method 
+	0x357f30  func ViewCache.invalidate() // method 
+	0x358210  func ViewCache.reset() // method 
+	0x35afe0  func ViewCache.withMutableState<A, B>(type:_:) // method 
+	0x35b030  func ViewCache.initialPlacement(at:in:wasInserted:oldPlacedChildren:) // method 
+	0x35b080  func ViewCache.finalPlacement(at:in:wasRemoved:newPlacedChildren:) // method 
  }
 
  class SwiftUI._ViewCache {
@@ -4448,7 +4462,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : ˝  // +0x0
+	var id : õ® // +0x0
 	var isHeader : Bool // +0x5
 	var isFooter : Bool // +0x6
  }
@@ -4457,7 +4471,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetDelta : w¿ // +0x0
+	var resetDelta : ?ô // +0x0
 	var phase : TransitionPhase // +0x4
 	var enableTransitions : Bool // +0x5
 	var isRemoved : Bool // +0x6
@@ -4470,18 +4484,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case section : _IncrementalLayout_Section
  }
 
- struct SwiftUI.CompareTransitionType {
-
-	// Properties
-	let existingType : Any.Type? // +0x0
-	var compatibleTypes : Bool // +0x8
- }
-
  struct SwiftUI.MakeChildTransition {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : a~ // +0x0
+	var _state : _[ // +0x0
 	let inputs : _ViewInputs // +0x8
 	let id : _ViewList_ID // +0x58
 	let makeElt : _ViewOutputs // +0x68
@@ -4494,11 +4501,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase1 : gr // +0x0
+	var _phase1 : ßJ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase2 : gr // +0x4
+	var _phase2 : ßJ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : a~ // +0x8
+	var _state : _[ // +0x8
  }
 
  struct SwiftUI.Data {
@@ -4508,8 +4515,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var id : _ViewList_ID // +0x28
 	var traits : ViewTraitCollection // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var list : O} // +0x40
+	var list : ?Z // +0x40
 	var section : Section // +0x48
+ }
+
+ struct SwiftUI.CompareTransitionType {
+
+	// Properties
+	let existingType : Any.Type? // +0x0
+	var compatibleTypes : Bool // +0x8
  }
 
  struct SwiftUI.UpdateChildTransition {
@@ -4523,9 +4537,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √± // +0x0
+	var _transaction : ÁY // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : a~ // +0x4
+	var _state : _[ // +0x4
 	var item : ViewCacheItem // +0x8
 	var lastPhase : TransitionPhase // +0x10
  }
@@ -4534,11 +4548,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : ~ // +0x0
+	var _children : [ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x4
+	var _size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ // +0x8
+	var _layoutDirection : π∑ // +0x8
 	let cache : ViewCache // +0x10
 	var item : ViewCacheItem // +0x18
  }
@@ -4548,7 +4562,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var cache : ViewCache // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : •} // +0x8
+	var context : õZ // +0x8
 	var data : Data // +0x10
  }
 
@@ -4557,7 +4571,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var cache : ViewCache // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : •} // +0x8
+	var context : õZ // +0x8
 	var node : _ViewList_Node // +0x10
 	var transform : _ViewList_SublistTransform // +0x68
 	var section : Section // +0x70
@@ -4567,13 +4581,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x0 : Kt // +0x0
+	var x0 : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x1 : Kt // +0x8
+	var x1 : {L // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y0 : Kt // +0x10
+	var y0 : {L // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y1 : Kt // +0x18
+	var y1 : {L // +0x18
 	var headerIndex : Int? // +0x20
 	var footerIndex : Int? // +0x30
  }
@@ -4591,13 +4605,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parent : ´|
+	var _parent : ìY
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : õ|
+	var _children : ÉY
 	let cache : _ViewCache
  }
 
@@ -4612,9 +4626,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : €±
+	var _layout : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 	var cache : ViewCache
  }
 
@@ -4622,7 +4636,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : ~ // +0x0
+	var _children : [ // +0x0
 	var outputs : _ViewOutputs // +0x8
  }
 
@@ -4630,7 +4644,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : ~ // +0x0
+	var _children : [ // +0x0
 	var cache : ViewCache // +0x8
  }
 
@@ -4638,31 +4652,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : €±
+	var _layout : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parent : ´|
+	var _parent : ìY
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutComputer : √|
+	var _layoutComputer : ´Y
 	var cache : ViewCache
 	var validRect : CGRect
 	var placedChildren : _IncrementalLayout_PlacedChild
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿
+	var resetSeed : ?ô
  }
 
  struct SwiftUI.IncrementalTransition {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : a~
+	var _state : _[
 	var item : ViewCacheItem
 	var lastValue : A
  }
@@ -4671,7 +4685,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : ~
+	var _children : [
 	var cache : ViewCache
  }
 
@@ -4682,7 +4696,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var transform : _ViewList_SublistTransform // +0x18
 	var cache : ViewCache // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : •} // +0x28
+	var context : õZ // +0x28
  }
 
  struct SwiftUI.EmptyView { }
@@ -4693,7 +4707,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ∑{
+	var _base : °X
  }
 
  struct SwiftUI.ViewValuePredicate {
@@ -4724,7 +4738,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : Wy
+	var _view : AV
 	var subscriptionLifetime : SubscriptionLifetime
 	var actionBox : MutableBox
  }
@@ -4734,7 +4748,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var actionBox : MutableBox
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var combineIdentifier : Iz
+	var combineIdentifier : 3W
  }
 
  struct SwiftUI.TestTouchID { }
@@ -4744,33 +4758,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let subgraph : Subgraph
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿
+	let uniqueId : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewCount : ©5
+	let viewCount : y
 	let outputs : _ViewOutputs
 	let needsTransitions : Bool
 	var listener : DynamicAnimationListener
 	var zIndex : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var removalOrder : w¿
+	var removalOrder : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var precedingViewCount : ©5
+	var precedingViewCount : y
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿
+	var resetSeed : ?ô
 	var phase : TransitionPhase
 
 	// Swift methods
-	0x3cd700  func DynamicContainer.ItemInfo.destroy() // method 
+	0x3aa560  func DynamicContainer.ItemInfo.destroy() // method 
  }
 
  class SwiftUI._ItemInfo {
  class SwiftUI.DynamicAnimationListener : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var viewGraph : ViewGraph // +0xadad30
+	var viewGraph : ViewGraph // +0xae35d0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let asyncSignal : ˚ˆ // +0x0
-	var count : Int // +0x3d2dc0
+	let asyncSignal : œä // +0x0
+	var count : Int // +0x3afc00
 
 	// Swift methods
  }
@@ -4781,22 +4795,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : Kw // +0x0
+	var _info : ’T // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr // +0x4
+	var _phase : ßJ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿ // +0x8
+	let uniqueId : ?ô // +0x8
  }
 
  struct SwiftUI.DynamicTransaction {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : Kw // +0x0
+	var _info : ’T // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √± // +0x4
+	var _transaction : ÁY // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿ // +0x8
+	let uniqueId : ?ô // +0x8
 	var wasRemoved : Bool // +0xc
  }
 
@@ -4804,9 +4818,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uniqueId : w¿ // +0x0
+	var uniqueId : ?ô // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var viewIndex : ©5 // +0x4
+	var viewIndex : y // +0x4
  }
 
  struct SwiftUI.AttachCombinerVisitor {
@@ -4814,25 +4828,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var combiner : AnyAttribute // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var container : Kw // +0x4
+	var container : ’T // +0x4
  }
 
  struct SwiftUI.DynamicContainerInfo {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _asyncSignal : %w
+	var _asyncSignal : ØT
 	var adaptor : A
 	let inputs : _ViewInputs
 	let outputs : _ViewOutputs
 	let parentSubgraph : Subgraph
 	var info : Info
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastUniqueId : w¿
+	var lastUniqueId : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastRemoved : w¿
+	var lastRemoved : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastResetSeed : w¿
+	var lastResetSeed : ?ô
 	var needsPhaseUpdate : Bool
  }
 
@@ -4848,7 +4862,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unusedCount : Int // +0x20
 	var allUnary : Bool // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x2c
+	var seed : ?ô // +0x2c
  }
 
  struct SwiftUI.AddCombinerVisitor {
@@ -4861,7 +4875,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : ›v
+	var _info : gT
  }
 
  struct SwiftUI.SequenceGesture {
@@ -4882,11 +4896,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase0 : uv
+	var _phase0 : ˇS
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase1 : Yv
+	var _phase1 : „S
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	var reset : GestureReset
  }
 
@@ -4894,9 +4908,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „«
+	var _events : u±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : ãv
+	var _phase : T
  }
 
  class SwiftUI.AccessibilityUpdater : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4915,16 +4929,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : w¿ // +0x0
+	var id : ?ô // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var other : w¿ // +0x4
+	var other : ?ô // +0x4
  }
 
  struct SwiftUI.EnvironmentTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x0
+	var _environment : ä // +0x0
  }
 
  struct SwiftUI.AttachmentStorage {
@@ -4933,23 +4947,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var attachments : AccessibilityAttachment // +0x0
 	var transform : ViewTransform // +0x8
 	var size : CGSize // +0x20
-	var token : AnyAttribute // +0x30
+	var token : AccessibilityAttachmentToken // +0x30
  }
 
  struct SwiftUI.LayoutProxy {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : •} // +0x0
+	var context : õZ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutComputer : √| // +0x4
+	var _layoutComputer : ´Y // +0x4
  }
 
  struct SwiftUI.LayoutProxyCollection {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : •} // +0x0
+	var context : õZ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var layoutComputers :  empty-list  // +0x8
  }
@@ -5028,7 +5042,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var link : CADisplayLink? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x87bac0022eee0 (0x3ac0022eee0) in binary!
+WARNING: couldn't find address 0x895ec002222f8 (0x5ec002222f8) in binary!
 	0x68000000c  @objc DisplayLink.(null) <stripped>
 
 	// Swift methods
@@ -5057,7 +5071,7 @@ WARNING: couldn't find address 0x87bac0022eee0 (0x3ac0022eee0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var amount : Kt // +0x0
+	var amount : {L // +0x0
  }
 
  struct SwiftUI.ContainerShapeModifier {
@@ -5072,9 +5086,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 	var id : UniqueID
  }
 
@@ -5082,11 +5096,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : +p
+	var _modifier : °M
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 	var id : UniqueID
  }
 
@@ -5107,7 +5121,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signal : ˚ˆ
+	let signal : œä
 	var location : StoredLocation
  }
 
@@ -5131,7 +5145,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : o
+	var _base : ÅL
  }
 
  struct SwiftUI.SidebarList {
@@ -5175,9 +5189,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var min : Kt // +0x0
+	var min : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var max : Ôb // +0x8
+	var max : YK // +0x8
  }
 
  enum SwiftUI.FillDirection {
@@ -5204,24 +5218,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SwiftUI.CursorIdentity : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var base : HoverResponder
+	var base : HoverResponder // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8c8aa0022e2a8 (0xaa0022e2a8) in binary!
-	0x91a64  @objc CursorIdentity.(null) <stripped>
-WARNING: couldn't find address 0x9537c0022e288 (0x37c0022e288) in binary!
-	0x89ff0  @objc CursorIdentity.(null) <stripped>
-WARNING: couldn't find address 0x89fe40022e470 (0x7e40022e470) in binary!
-	0x893c8  @objc CursorIdentity.(null) <stripped>
+WARNING: couldn't find address 0x8e4ca00221720 (0x4ca00221720) in binary!
+	0x93724  @objc CursorIdentity.(null) <stripped>
+WARNING: couldn't find address 0x9705c00221700 (0x5c00221700) in binary!
+	0x8ba30  @objc CursorIdentity.(null) <stripped>
+WARNING: couldn't find address 0x8ba24002218d8 (0x224002218d8) in binary!
+	0x8acd8  @objc CursorIdentity.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x444ff945aa0  @objc CursorIdentity.(null) <stripped>
-	0xff945b38  @objc CursorIdentity.Dâ·Ë <stripped>
+	0xacff91a340  @objc CursorIdentity.(null) <stripped>
+	0xff91a3d8  @objc CursorIdentity.CLâÚH∏ˇ <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xff9ae9d0  @objc CursorIdentity.(null) <stripped>
+	0xff98aef0  @objc CursorIdentity.(null) <stripped>
 
 	// Swift methods
-	0x3f9d00  func CursorIdentity.copy(with:) // method 
-	0x3fa090  func CursorIdentity.cursorStyle(host:) // method 
+	0x3d72a0  func CursorIdentity.copy(with:) // method 
+	0x3d7630  func CursorIdentity.cursorStyle(host:) // method 
  }
 
  struct SwiftUI._AccessibilityIgnoresInvertColorsViewModifier {
@@ -5234,9 +5248,9 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : —l // +0x0
+	var _modifier : ?J // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
  }
 
  struct SwiftUI.IgnoreColorInvertEffect {
@@ -5249,9 +5263,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : —l // +0x0
+	var _modifier : ?J // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
  }
 
  struct SwiftUI.IgnoreInvertColorsFilterActiveKey { }
@@ -5267,21 +5281,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentSize : 7Œ // +0x0
+	var _contentSize : gâ // +0x0
  }
 
  struct SwiftUI.ScrollableLayoutViewAdaptor {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _dataAndCount : Cl
+	var _dataAndCount : ±I
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : 5l
+	var _layout : £I
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : œk
+	var _state : =I
 	var items : [(A.Collection.Index, A.Sequence.Element)]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var itemsSeed : w¿
+	var itemsSeed : ?ô
 	var lastContentOffset : CGPoint
  }
 
@@ -5290,9 +5304,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var state : _ScrollableLayout
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stateSeed : w¿
+	var stateSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentSeed : w¿
+	var contentSeed : ?ô
 	var scrollLayout : _ScrollLayout
 	var identifiers : [A.Collection.Index]
 	var placements : _Placement
@@ -5304,15 +5318,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _data : Cl
+	var _data : ±I
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : 5l
+	var _layout : £I
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _scrollView : ;r
+	var _scrollView : {J
 	let template : TemplateView
 	var state : _ScrollableLayout
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stateSeed : w¿
+	var stateSeed : ?ô
 	var proxyStorage : Storage
 	var identifiers : [A.Collection.Index]
 	var placements : _Placement
@@ -5325,9 +5339,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _viewPhase : gr // +0x0
+	var _viewPhase : ßJ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _delta : ù // +0x4
+	var _delta : u // +0x4
  }
 
  struct SwiftUI._LayoutEngine {
@@ -5348,33 +5362,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _identifier : Ik
+	var _identifier : ∑H
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : œk
+	var _state : =I
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ
+	var _layoutDirection : π∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parentSize : 7Œ
+	var _parentSize : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √|
+	var _childLayoutComputer : ´Y
  }
 
  struct SwiftUI.ScrollableItemIdentifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : Kw
+	var _info : ’T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿
+	let uniqueId : ?ô
  }
 
  struct SwiftUI.TemplateView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : k
+	var _view : ÉH
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _delta : ù
+	var _delta : u
 	let subgraph : Subgraph
 	let outputs : _ViewOutputs
  }
@@ -5433,9 +5447,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ﬂh // +0x0
+	var _modifier : =F // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x4
+	var _children : )F // +0x4
 	let responder : AllowsHitTestingResponder // +0x8
  }
 
@@ -5443,9 +5457,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ﬂh // +0x0
+	var _modifier : =F // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
  }
 
  struct SwiftUI.AllowsHitTestingKey { }
@@ -5461,9 +5475,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : wh
+	var _modifier : ’E
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √±
+	var _transaction : ÁY
 	var lastValue : A?
 	var lastTransaction : Transaction
  }
@@ -5479,12 +5493,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : #h // +0x0
+	var _modifier : ÅE // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr // +0x4
+	var _phase : ßJ // +0x4
 	var lastValue : _AppearanceActionModifier // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : ˝  // +0x28
+	var resetSeed : õ® // +0x28
 	var isVisible : Bool // +0x2d
  }
 
@@ -5508,9 +5522,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case kdebug : À5
+	case kdebug : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case os_log : ©
+	case os_log : á
  }
 
  class SwiftUI.HitTestBindingResponder : DefaultLayoutViewResponder { }
@@ -5521,7 +5535,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x0
+	var _children : )F // +0x0
 	let responder : HitTestBindingResponder // +0x8
  }
 
@@ -5541,11 +5555,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : g // +0x0
+	var _modifier : iD // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √| // +0x8
+	var _childLayoutComputer : ´Y // +0x8
  }
 
  struct SwiftUI.WrappedLayout {
@@ -5568,17 +5582,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _isOn : Binding // +0x8 (0x11)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x87b440022ec08 (0x3440022ec08) in binary!
-	0x89fb8  @objc PlatformSwitchCoordinator.(null) <stripped>
-WARNING: couldn't find address 0x8939c0022dff8 (0x39c0022dff8) in binary!
+WARNING: couldn't find address 0x8958400222030 (0x58400222030) in binary!
+	0x8b9f8  @objc PlatformSwitchCoordinator.(null) <stripped>
+WARNING: couldn't find address 0x8acac00221468 (0x4ac00221468) in binary!
 	0x18000000c  @objc PlatformSwitchCoordinator.(null) <stripped>
-WARNING: couldn't find address 0x893840022ef70 (0x3840022ef70) in binary!
+WARNING: couldn't find address 0x8ac9400222358 (0x49400222358) in binary!
 	0x28000000c  @objc PlatformSwitchCoordinator.(null) <stripped>
 
 	// Swift methods
-	0x40e900  func PlatformSwitchCoordinator._isOn.getter // getter 
-	0x40e950  func PlatformSwitchCoordinator._isOn.setter // setter 
-	0x40e9e0  func PlatformSwitchCoordinator.isOnChanged(_:) // method 
+	0x3ebd30  func PlatformSwitchCoordinator._isOn.getter // getter 
+	0x3ebd80  func PlatformSwitchCoordinator._isOn.setter // setter 
+	0x3ebe10  func PlatformSwitchCoordinator.isOnChanged(_:) // method 
  }
 
  struct SwiftUI.Switch {
@@ -5592,7 +5606,7 @@ WARNING: couldn't find address 0x893840022ef70 (0x3840022ef70) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : 7f
+	var _modifier : áC
 	let responder : DefaultLayoutViewResponder
  }
 
@@ -5625,43 +5639,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var children : _VariadicView_Children // +0x8
  }
 
- struct SwiftUI.InvalidatableLeafLayoutComputer {
+ struct SwiftUI.LeafLayoutComputer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : Md
-	var rendererHost : ViewRendererHost
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let invalidationSignal : ˚ˆ
+	var _view : {ƒ
  }
 
  struct SwiftUI.LeafDisplayList {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7±
+	var _containerPosition : óƒ
 	let identity : Identity
 	var contentSeed : Seed
  }
 
- struct SwiftUI.LayoutEngine {
+ struct SwiftUI.LeafLayoutEngine {
 
 	// Properties
 	let view : A
 	var cache : Cache3
- }
-
- struct SwiftUI.LeafLayoutComputer {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
  }
 
  struct SwiftUI.TextEditor {
@@ -5682,23 +5686,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m11 : Kt // +0x0
+	var m11 : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m12 : Kt // +0x8
+	var m12 : {L // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m13 : Kt // +0x10
+	var m13 : {L // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m21 : Kt // +0x18
+	var m21 : {L // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m22 : Kt // +0x20
+	var m22 : {L // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m23 : Kt // +0x28
+	var m23 : {L // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m31 : Kt // +0x30
+	var m31 : {L // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m32 : Kt // +0x38
+	var m32 : {L // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m33 : Kt // +0x40
+	var m33 : {L // +0x40
  }
 
  struct SwiftUI.CodableProjectionTransform {
@@ -5718,9 +5722,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „« // +0x0
+	var _events : u± // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù // +0x4
+	var _resetSeed : u // +0x4
 	var failed : Bool // +0x8
 	var reset : GestureReset // +0xc
  }
@@ -5729,18 +5733,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _head : ãv
+	var _head : T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _tail : Kb
+	var _tail : Ÿ?
  }
 
  struct SwiftUI.TupleEvents {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „« // +0x0
+	var _events : u± // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù // +0x4
+	var _resetSeed : u // +0x4
 	var trackingID : EventID // +0x8
 	var reset : GestureReset // +0x18
  }
@@ -5779,9 +5783,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase1 : uv
+	var _phase1 : ˇS
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase2 : Yv
+	var _phase2 : „S
  }
 
  class SwiftUI.UIKitEventBindingBridge : EventBindingBridge {
@@ -5802,15 +5806,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : €±
+	var _modifier : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7±
+	var _containerPosition : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : ÒÕ
+	var _content : Å∑
 	let identity : Identity
  }
 
@@ -5841,11 +5845,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let red : Kt // +0x0
+	let red : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let green : Kt // +0x8
+	let green : {L // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blue : Kt // +0x10
+	let blue : {L // +0x10
 	let opacity : Float // +0x18
  }
 
@@ -5859,7 +5863,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : …`
+	var _view : W>
  }
 
  struct SwiftUI.EquatableProxyView {
@@ -5873,7 +5877,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : ù`
+	var _view : +>
 	var lastToken : B?
  }
 
@@ -5885,7 +5889,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : k`
+	var _base : ˘=
  }
 
  struct SwiftUI.InsetGroupedListStyle { }
@@ -5897,7 +5901,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var center : CGPoint // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var radius : Kt // +0x10
+	var radius : {L // +0x10
  }
 
  struct SwiftUI.BackgroundStyle { }
@@ -5971,7 +5975,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let cellHost : ListCoreCellHost // +0x0
 	let transaction : Transaction // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minHeight : Ôb // +0x10
+	let minHeight : YK // +0x10
  }
 
  struct SwiftUI.CellModifier {
@@ -5981,7 +5985,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var disclosureIndent : DisclosureGroupIndentation // +0x28
 	var listItemTint : ListItemTint // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minHeight : Kt // +0x40
+	var minHeight : {L // +0x40
 	var _horizontalMargin : Environment // +0x48
  }
 
@@ -5992,9 +5996,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var disclosureIndent : DisclosureGroupIndentation // +0x28
 	var listItemTint : ListItemTint // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minHeight : Kt // +0x40
+	var minHeight : {L // +0x40
 	var _configuration : Environment // +0x48
-	var _pixelLength : Environment // +0xb0
+	var _separatorThickness : Environment // +0xb0
 	var _horizontalMargin : Environment // +0xc0
  }
 
@@ -6003,7 +6007,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var insets : EdgeInsets // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minHeight : Kt // +0x20
+	var minHeight : {L // +0x20
  }
 
  struct SwiftUI._SizedShape {
@@ -6018,9 +6022,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 	var box : DataProviderBox
  }
 
@@ -6055,7 +6059,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿ // +0x0
+	let rawValue : ?ô // +0x0
  }
 
  class SwiftUI.AnyGestureResponder : UnaryViewResponder { }
@@ -6086,11 +6090,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : €±
+	var _modifier : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _viewPhase : gr
+	var _viewPhase : ßJ
 	let node : AnyGestureResponder
  }
 
@@ -6098,7 +6102,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh
+	var _children : )F
 	let responder : GestureResponder
 	let layoutResponder : DefaultLayoutViewResponder
  }
@@ -6121,26 +6125,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : ´X // +0x0
+	var _gesture : A6 // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù // +0x4
+	var _resetSeed : u // +0x4
 	let inputs : _GestureInputs // +0x8
 	let parentSubgraph : Subgraph // +0x68
 	var oldNode : AnyGestureResponder // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var oldSeed : w¿ // +0x78
+	var oldSeed : ?ô // +0x78
 	var childSubgraph : Subgraph // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childPhase : X // +0x88
+	var _childPhase : 6 // +0x88
  }
 
  struct SwiftUI.ContentPhase {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : ãv
+	var _phase : T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	var reset : GestureReset
  }
 
@@ -6174,7 +6178,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _document : Binding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fileURL : ÎT
+	var fileURL : ã2
 	var isEditable : Bool
  }
 
@@ -6240,7 +6244,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var contents : Contents // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Kt // +0x10
+	var scale : {L // +0x10
 	var unrotatedPixelSize : CGSize // +0x18
 	var orientation : Orientation // +0x28
 	var maskColor : _Resolved // +0x2c
@@ -6254,6 +6258,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let resolvedTintColor : _Resolved // +0x0
 	let resolvedAccentColor : _Resolved // +0x10
+	var _colorScheme : CodableCaseIterable // +0x20
+	var _colorSchemeContrast : CodableCaseIterable // +0x21
  }
 
  enum SwiftUI.CodingKeys {
@@ -6261,6 +6267,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case resolvedTintColor  
 	case resolvedAccentColor  
+	case colorScheme  
+	case colorSchemeContrast  
  }
 
  enum SwiftUI.MoveCommandDirection {
@@ -6272,13 +6280,61 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case right  
  }
 
+ enum SwiftUI.Value {
+
+	// Properties
+	case string : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case data : µ0
+	case nsNumber : NSNumber
+	case nsValue : NSValue
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case date : À0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case url : c–
+	case attributedString : NSAttributedString
+	case codableWrapper : AccessibilityCustomAttributeCodable
+ }
+
+ struct SwiftUI.CodableWrapper: AccessibilityCustomAttributeCodable {
+
+	// Properties
+	var codable : A
+ }
+
+ enum SwiftUI.CodingKeys {
+
+	// Properties
+	case attributes  
+ }
+
+ enum SwiftUI.CodingKeys {
+
+	// Properties
+	case string  
+	case data  
+	case nsNumber  
+	case nsValue  
+	case date  
+	case url  
+	case attributedString  
+ }
+
+ struct SwiftUI.CustomAttributesKey { }
+
+ struct SwiftUI.AccessibilityCustomAttributes {
+
+	// Properties
+	var attributes : Value // +0x0
+ }
+
  struct SwiftUI.NavigationPickerStyle { }
 
  struct SwiftUI.Body {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : âU
+	var _base : √1
  }
 
  struct SwiftUI.BodyRoot {
@@ -6356,13 +6412,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : «R
+	var _modifier : /
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „«
+	var _events : u±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : ãv
+	var _phase : T
 	let bindingManager : EventBindingManager
 	var reset : GestureReset
 	var acceptedFirstEvent : Bool
@@ -6381,9 +6437,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minLength : Kt // +0x0
+	let minLength : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxLength : Kt // +0x8
+	let maxLength : {L // +0x8
  }
 
  struct SwiftUI.InEachAxis {
@@ -6397,11 +6453,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var min : Kt // +0x0
+	var min : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ideal : Kt // +0x8
+	var ideal : {L // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var max : Kt // +0x10
+	var max : {L // +0x10
  }
 
  struct SwiftUI.CircularGaugeStyle {
@@ -6424,10 +6480,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var entries : Entry
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x89f7c0022e408 (0x77c0022e408) in binary!
-	0x89360  @objc UIKitToolbarCoordinator.(null) <stripped>
+WARNING: couldn't find address 0x8b9bc00221870 (0x1bc00221870) in binary!
+	0x8ac70  @objc UIKitToolbarCoordinator.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x11cff9d2f18  @objc UIKitToolbarCoordinator.(null) <stripped>
+	0x534ff9b2d88  @objc UIKitToolbarCoordinator.(null) <stripped>
  }
 
  class SwiftUI.UIBarItemTarget : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6438,7 +6494,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var action : ()
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x893840022ef70 (0x3840022ef70) in binary!
+WARNING: couldn't find address 0x8ac9400222358 (0x49400222358) in binary!
 	0x28000000c  @objc UIBarItemTarget.(null) <stripped>
 
 	// Swift methods
@@ -6476,9 +6532,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : ±L // +0x0
+	var _effect : Î( // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : ÒÕ // +0x4
+	var _content : Å∑ // +0x4
 	var effectVersion : Version // +0x8
  }
 
@@ -6532,12 +6588,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var changes : Element
  }
 
+ struct SwiftUI.Projection {
+
+	// Properties
+	let kind : Kind
+	let changes : Element
+	let startIndex : Int
+	let endIndex : Int
+ }
+
  enum SwiftUI.Element {
 
 	// Properties
 	case removed : Range<A>
 	case inserted : Range<B>
 	case matched : (Range<A>, Range<B>)
+ }
+
+ enum SwiftUI.Kind {
+
+	// Properties
+	case removed  
+	case inserted  
+	case matched  
  }
 
  struct SwiftUI._AnchorTransformModifier {
@@ -6551,13 +6624,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ØI
+	var _modifier : C%
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
  }
 
  struct SwiftUI.RedactionReasons {
@@ -6567,17 +6640,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  struct SwiftUI.RedactionReasonsKey { }
-
- class SwiftUI._WidgetGraph : GraphHost {
-
-	// Properties
-	let rootWidgetType : Any.Type
-	var makeRootWidget : _WidgetOutputs
-	var rootWidget : AnyAttribute
-
-	// Swift methods
-	0x48e9c0  class func _WidgetGraph.__allocating_init<A>(rootWidget:) // init 
- }
 
  struct SwiftUI._DisclosureIndicator {
 
@@ -6617,17 +6679,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _alignment : ˝G // +0x0
+	var _alignment : ´# // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ // +0x4
+	var _layoutDirection : π∑ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _primaryPosition : 7± // +0x8
+	var _primaryPosition : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _primarySize : 7Œ // +0xc
+	var _primarySize : gâ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _primaryLayoutComputer : √| // +0x10
+	var _primaryLayoutComputer : ´Y // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _secondaryLayoutComputer : √| // +0x14
+	var _secondaryLayoutComputer : ´Y // +0x14
  }
 
  struct SwiftUI._TexturedPullDownButtonStyle {
@@ -6652,21 +6714,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ßG
+	var _base : U#
  }
 
  struct SwiftUI.Body {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : √G
+	var _base : q#
  }
 
  struct SwiftUI.Body {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ﬂG
+	var _base : ç#
  }
 
  struct SwiftUI.SecureField {
@@ -6677,20 +6739,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var label : A
  }
 
+ struct SwiftUI.SystemPreferencesSidebarListStyle { }
+
+ struct SwiftUI.Body {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _base : ı"
+ }
+
+ struct SwiftUI.ContentSidebarList {
+
+	// Properties
+	var selection : Binding
+ }
+
  struct SwiftUI._ProposedSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Ôb // +0x0
+	var width : YK // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Ôb // +0x10
+	var height : YK // +0x10
  }
 
  struct SwiftUI.ViewIdentity {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let seed : w¿ // +0x0
+	let seed : ?ô // +0x0
  }
 
  struct SwiftUI.Tracker {
@@ -6698,7 +6775,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var id : ViewIdentity // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿ // +0x4
+	var resetSeed : ?ô // +0x4
  }
 
  struct SwiftUI.IdentityLink {
@@ -6724,7 +6801,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var aspectRatio : Ôb // +0x0
+	var aspectRatio : YK // +0x0
 	var contentMode : ContentMode // +0x9
  }
 
@@ -6736,7 +6813,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let visibleRect : CGRect // +0x20
 	let count : Int // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let identifiers : á // +0x48
+	let identifiers : ”b // +0x48
 	let sizeThatFits : CGSize // +0x58
 	var visibleItems : _ScrollableLayoutItem // +0x68
 	var contentSize : CGSize // +0x70
@@ -6747,7 +6824,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : WØ // +0x0
+	var id : 'à // +0x0
 	var _placement : _Placement // +0x28
  }
 
@@ -6755,7 +6832,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentSeed : w¿ // +0x0
+	var contentSeed : ?ô // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cache :  empty-list  // +0x8
  }
@@ -6764,7 +6841,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentSeed : w¿ // +0x0
+	var contentSeed : ?ô // +0x0
 	var size : CGSize // +0x8
 	var result : CGSize // +0x18
  }
@@ -6776,19 +6853,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isUpdating : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x87adc0022f120 (0x2dc0022f120) in binary!
-	0x87ad0  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x89f440022e3d0 (0x7440022e3d0) in binary!
-	0x89328  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8951c00222538 (0x51c00222538) in binary!
+	0x89510  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8b98400221838 (0x18400221838) in binary!
+	0x8ac38  @objc Coordinator.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x1b4ff9ddc70  @objc Coordinator.(null) <stripped>
-	0x1acff9de718  @objc Coordinator.GÚEÄÚÚEàÚGj^Lçm∏Ë•“ <stripped>
+	0x62cff9bd9b0  @objc Coordinator.(null) <stripped>
+	0x624ff9be458  @objc Coordinator.˙ <stripped>
 
 	// Swift methods
-	0x49bc00  func Coordinator.configuration.getter // getter 
-	0x49bc50  func Coordinator.configuration.setter // setter 
-	0x49bde0  func Coordinator.valueChanged(_:) // method 
-	0x49bfd0  func Coordinator.editingEnded(_:) // method 
+	0x484600  func Coordinator.configuration.getter // getter 
+	0x484650  func Coordinator.configuration.setter // setter 
+	0x4847e0  func Coordinator.valueChanged(_:) // method 
+	0x4849d0  func Coordinator.editingEnded(_:) // method 
  }
 
  struct SwiftUI.SystemSlider {
@@ -6887,9 +6964,9 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _root : €±
+	var _root : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : ◊u
+	var _list : N
 	let contentSubgraph : Subgraph
  }
 
@@ -6914,37 +6991,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configurationMap : IdentifiedDocumentGroupConfiguration
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x908340022e980 (0x340022e980) in binary!
-	0x87eca  @objc DocumentBrowserViewController.(null) <stripped>
-WARNING: couldn't find address 0x8911c0022e1b0 (0x11c0022e1b0) in binary!
-	0x87f10  @objc DocumentBrowserViewController.(null) <stripped>
-WARNING: couldn't find address 0x87f040022e1a8 (0x7040022e1a8) in binary!
-	0x87eb8  @objc DocumentBrowserViewController.(null) <stripped>
-WARNING: couldn't find address 0x907ec0022e1a0 (0x7ec0022e1a0) in binary!
-	0x907e0  @objc DocumentBrowserViewController.(null) <stripped>
-WARNING: couldn't find address 0x907d40022f0a0 (0x7d40022f0a0) in binary!
-	0x892a8  @objc DocumentBrowserViewController.(null) <stripped>
+WARNING: couldn't find address 0x8fd3400221d98 (0x53400221d98) in binary!
+	0x8990a  @objc DocumentBrowserViewController.(null) <stripped>
+WARNING: couldn't find address 0x8a9fc00221628 (0x1fc00221628) in binary!
+	0x89950  @objc DocumentBrowserViewController.(null) <stripped>
+WARNING: couldn't find address 0x8994400221620 (0x14400221620) in binary!
+	0x898f8  @objc DocumentBrowserViewController.(null) <stripped>
+WARNING: couldn't find address 0x8fcec00221618 (0x4ec00221618) in binary!
+	0x8fce0  @objc DocumentBrowserViewController.(null) <stripped>
+WARNING: couldn't find address 0x8fcd4002224b8 (0x4d4002224b8) in binary!
+	0x8abb8  @objc DocumentBrowserViewController.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x16cff9f5750  @objc DocumentBrowserViewController.(null) <stripped>
-	0x144ff9f5d58  @objc DocumentBrowserViewController. <stripped>
-	0xff9f5740  @objc DocumentBrowserViewController.ã=⁄<Ω <stripped>
+	0x5e4ff9d56d0  @objc DocumentBrowserViewController.(null) <stripped>
+	0x554ff9d5cd8  @objc DocumentBrowserViewController.E§t2HãU»H∏ˇ <stripped>
+	0xff9d56c0  @objc DocumentBrowserViewController.çrƒ <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffa09158  @objc DocumentBrowserViewController.(null) <stripped>
-WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x2c4ffa1b540  @objc DocumentBrowserViewController.(null) <stripped>
+	0xff9dcb18  @objc DocumentBrowserViewController.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xff9ddb10  @objc DocumentBrowserViewController.(null) <stripped>
 
 	// Swift methods
-	0x4a6870  func DocumentBrowserViewController.configurationMap.modify // modifyCoroutine 
-	0x4a6d20  func DocumentBrowserViewController.documentBrowser(_:didRequestDocumentCreationWithHandler:) // method 
-	0x4a76c0  func DocumentBrowserViewController.documentBrowser(_:didPickDocumentsAt:) // method 
-	0x4a7860  func DocumentBrowserViewController.documentBrowser(_:didImportDocumentAt:toDestinationURL:) // method 
-	0x4a7980  func DocumentBrowserViewController.documentBrowser(_:failedToImportDocumentAt:error:) // method 
-	0x4a7ed0  func DocumentBrowserViewController.presentDocuments(at:animated:) // method 
-	0x4a8020  func DocumentBrowserViewController.presentDocument(at:animated:) // method 
-	0x4a8660  func DocumentBrowserViewController.makeHost(document:configuration:) // method 
-	0x4a8a00  func DocumentBrowserViewController.updateHosts() // method 
-	0x4a8cf0  func DocumentBrowserViewController.animationController(forPresented:presenting:source:) // method 
-	0x4a8f70  func DocumentBrowserViewController.animationController(forDismissed:) // method 
+	0x48f140  func DocumentBrowserViewController.configurationMap.modify // modifyCoroutine 
+	0x48f5f0  func DocumentBrowserViewController.documentBrowser(_:didRequestDocumentCreationWithHandler:) // method 
+	0x48ff90  func DocumentBrowserViewController.documentBrowser(_:didPickDocumentsAt:) // method 
+	0x490130  func DocumentBrowserViewController.documentBrowser(_:didImportDocumentAt:toDestinationURL:) // method 
+	0x490250  func DocumentBrowserViewController.documentBrowser(_:failedToImportDocumentAt:error:) // method 
+	0x4907d0  func DocumentBrowserViewController.presentDocuments(at:animated:) // method 
+	0x490920  func DocumentBrowserViewController.presentDocument(at:animated:) // method 
+	0x490f60  func DocumentBrowserViewController.makeHost(document:configuration:) // method 
+	0x491300  func DocumentBrowserViewController.updateHosts() // method 
+	0x4915f0  func DocumentBrowserViewController.animationController(forPresented:presenting:source:) // method 
+	0x491870  func DocumentBrowserViewController.animationController(forDismissed:) // method 
  }
 
  struct SwiftUI.BloomFilter {
@@ -6957,13 +7034,13 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7±
+	var _containerPosition : óƒ
 	let identity : Identity
 	var contentSeed : Seed
  }
@@ -6972,7 +7049,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
  }
 
  struct SwiftUI.ArchivableFactory {
@@ -7048,11 +7125,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var fontModifier : CTFontDescriptor // +0x8
 	var color : Color // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var baselineOffset : Kt // +0x20
+	var baselineOffset : {L // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var kerning : Kt // +0x28
+	var kerning : {L // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tracking : Kt // +0x30
+	var tracking : {L // +0x30
 	var strikethrough : LineStyle // +0x38
 	var underline : LineStyle // +0x48
  }
@@ -7087,9 +7164,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : w¿ // +0x0
+	var id : ?ô // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var other : w¿ // +0x4
+	var other : ?ô // +0x4
  }
 
  enum SwiftUI.ArrayWith3InlineStorage {
@@ -7099,7 +7176,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case two : (A, A)
 	case three : (A, A, A)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case many : MÄ
+	case many : \
 	case empty  
  }
 
@@ -7109,7 +7186,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case one : A
 	case two : (A, A)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case many : MÄ
+	case many : \
 	case empty  
  }
 
@@ -7132,16 +7209,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var notificationObserver : Swift.AnyObject? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x892940022e918 (0x2940022e918) in binary!
-	0x8bd2f  @objc PlatformDocument.(null) <stripped>
-WARNING: couldn't find address 0x8bd3c0022e168 (0x53c0022e168) in binary!
-	0x90790  @objc PlatformDocument.(null) <stripped>
-WARNING: couldn't find address 0x892640022dec0 (0x2640022dec0) in binary!
+WARNING: couldn't find address 0x8aba400221d30 (0x3a400221d30) in binary!
+	0x8d7cf  @objc PlatformDocument.(null) <stripped>
+WARNING: couldn't find address 0x8d7dc002215e0 (0x7dc002215e0) in binary!
+	0x8fc90  @objc PlatformDocument.(null) <stripped>
+WARNING: couldn't find address 0x8ab7400221330 (0x37400221330) in binary!
 	0x18000000c  @objc PlatformDocument.(null) <stripped>
-WARNING: couldn't find address 0x8924c0022f170 (0x24c0022f170) in binary!
-	0x38000000c  @objc PlatformDocument.(null) <stripped>
-WARNING: couldn't find address 0x879c40022f190 (0x1c40022f190) in binary!
-	0x89e38  @objc PlatformDocument.(null) <stripped>
+WARNING: couldn't find address 0x8ab5c00221318 (0x35c00221318) in binary!
+	0x18000000c  @objc PlatformDocument.(null) <stripped>
+WARNING: couldn't find address 0x8b88400222550 (0x8400222550) in binary!
+	0x18000000c  @objc PlatformDocument.(null) <stripped>
 
 	// Swift methods
  }
@@ -7150,9 +7227,9 @@ WARNING: couldn't find address 0x879c40022f190 (0x1c40022f190) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : Kt // +0x0
+	var x : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : Kt // +0x8
+	var y : {L // +0x8
  }
 
  struct SwiftUI.CodableUnitPoint {
@@ -7168,7 +7245,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let widgetGraph : WidgetGraph
 
 	// Swift methods
-	0x4c1000  class func WidgetBundleHost.__allocating_init<A>(bundle:) // init 
+	0x4a9b30  class func WidgetBundleHost.__allocating_init<A>(bundle:) // init 
  }
 
  class SwiftUI.UIViewResponder : UnaryViewResponder {
@@ -7185,7 +7262,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var provider : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _focusedItem : o=
+	var _focusedItem : ´
 	var isFocusable : Bool
  }
 
@@ -7196,6 +7273,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configuration : PickerStyleConfiguration
  }
 
+ struct SwiftUI.Label { }
+
  struct SwiftUI.PickerStyleConfiguration {
 
 	// Properties
@@ -7203,8 +7282,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var label : Label
 	var content : Content
  }
-
- struct SwiftUI.Label { }
 
  struct SwiftUI.ResolvedPicker {
 
@@ -7233,7 +7310,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : s<
+	var _base : Ø
 	var style : A
  }
 
@@ -7243,21 +7320,65 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : s<
+	var _base : Ø
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _style : €±
+	var _style : {ƒ
  }
 
- struct SwiftUI.SystemScrollViewAccessibilityAttachment {
+ class SwiftUI.AccessibilityIncrementalLayoutNode : AccessibilityNode {
 
 	// Properties
-	var platformView : UIView // +0x0
+	var scrollableCollection : ScrollableCollection
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x8ab5c00221318 (0x35c00221318) in binary!
+	0x18000000c  @objc AccessibilityIncrementalLayoutNode.(null) <stripped>
+
+	// Swift methods
+	0x4ae680  class func AccessibilityIncrementalLayoutNode.__allocating_init(viewRendererHost:scrollableCollection:) // init 
  }
 
  struct SwiftUI.SystemScrollViewAccessibilityModifier {
 
 	// Properties
-	var attachment : AccessibilityAttachment // +0x0
+	var scrollView : HostingScrollView // +0x0
+ }
+
+ struct SwiftUI.IncrementalLayoutTransform {
+
+	// Properties
+	var role : AccessibilityLayoutRole // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _accessibilityEnabled : Î˜ // +0x4
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _nodeList :  // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _scrollables :  // +0xc
+	var previousNodes : AccessibilityNode // +0x10
+ }
+
+ struct SwiftUI.AccessibilityIncrementalLayoutScrollViewModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _scrollables :  // +0x0
+ }
+
+ struct SwiftUI.AccessibilityIncrementalLayoutContext {
+
+	// Properties
+	var role : AccessibilityLayoutRole // +0x0
+	var scrollableCollection : ScrollableCollection // +0x8
+	var collectionViewID : Canonical // +0x30
+ }
+
+ struct SwiftUI.IncrementalLayoutContextKey { }
+
+ enum SwiftUI.AccessibilityLayoutRole {
+
+	// Properties
+	case stack  
+	case grid  
  }
 
  struct SwiftUI.SegmentedPickerStyle { }
@@ -7266,7 +7387,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ˘;
+	var _base : ¡
  }
 
  struct SwiftUI.DisclosableListButton {
@@ -7298,32 +7419,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : €±
+	var _layout : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √|
+	var _childLayoutComputer : ´Y
  }
 
  struct SwiftUI.UnaryPositionAwareChildGeometry {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : €±
+	var _layout : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ
+	var _layoutDirection : π∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parentSize : 7Œ
+	var _parentSize : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √|
+	var _childLayoutComputer : ´Y
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : º
+	var _safeAreaInsets : ´•
  }
 
  struct SwiftUI.UnaryLayoutEngine {
@@ -7340,24 +7461,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parentSize : 7Œ
+	var _parentSize : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ
+	var _layoutDirection : π∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parentLayoutComputer : Ω:
+	var _parentLayoutComputer : W
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √|
+	var _childLayoutComputer : ´Y
  }
 
  struct SwiftUI.UnaryLayoutComputer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : €±
+	var _layout : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √|
+	var _childLayoutComputer : ´Y
  }
 
  struct SwiftUI._AnchoredShapeStyle {
@@ -7371,7 +7492,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : q:
+	var _view : 
  }
 
  struct SwiftUI.AnchoredResolvedPaint {
@@ -7421,11 +7542,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : W9 // +0x0
+	var _effect : Ò // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x4
+	var _position : óƒ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ // +0x8
+	var _layoutDirection : π∑ // +0x8
  }
 
  class SwiftUI.AttachmentTextStorage : AnyTextStorage {
@@ -7443,7 +7564,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var testRunner : ScrollTestRunner
 
 	// Swift methods
-	0x4d1700  func ScrollTest.run<A>(in:completion:) // method 
+	0x4bcf10  func ScrollTest.run<A>(in:completion:) // method 
  }
 
  class SwiftUI.ScrollProxyScrollTestRunner : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ScrollTestRunner {
@@ -7455,24 +7576,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var completion : ()
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8924c0022f170 (0x24c0022f170) in binary!
+WARNING: couldn't find address 0x8ab2c00222558 (0x32c00222558) in binary!
 	0x38000000c  @objc ScrollProxyScrollTestRunner.(null) <stripped>
 
 	// Swift methods
-	0x4d1dd0  func ScrollProxyScrollTestRunner.run() // method 
-	0x4d1f80  func ScrollProxyScrollTestRunner.incrementScrollTest() // method 
+	0x4bd5e0  func ScrollProxyScrollTestRunner.run() // method 
+	0x4bd790  func ScrollProxyScrollTestRunner.incrementScrollTest() // method 
  }
 
  struct SwiftUI.Parameters {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var startOffset : Kt // +0x0
+	var startOffset : {L // +0x0
 	var iterations : Int // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delta : Kt // +0x10
+	var delta : {L // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var length : Kt // +0x18
+	var length : {L // +0x18
 	var axis : Axis // +0x20
  }
 
@@ -7492,16 +7613,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let key : AlignmentKey // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let computeValue : °7 // +0x8
+	let computeValue : ; // +0x8
  }
 
  struct SwiftUI.AlignmentModifiedLayoutComputer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : 18 // +0x0
+	var _modifier : À // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √| // +0x4
+	var _childLayoutComputer : ´Y // +0x4
 	var oldModifier : _AlignmentWritingModifier // +0x8
  }
 
@@ -7518,7 +7639,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var image : Resolved
 
 	// Swift methods
-	0x4d54e0  class func ResolvedImageLayoutDelegate.__allocating_init(image:) // init 
+	0x4c0dd0  class func ResolvedImageLayoutDelegate.__allocating_init(image:) // init 
  }
 
  struct SwiftUI.Resolved {
@@ -7526,35 +7647,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var image : GraphicsImage // +0x0
 	var label : String? // +0x68
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var baselineOffset : Kt // +0x78
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var capHeight : Kt // +0x80
-	var platformItemImage : UIImage? // +0x88
-	var decorative : Bool // +0x90
+	var platformItemImage : UIImage? // +0x78
+	var decorative : Bool // +0x80
  }
 
  struct SwiftUI.ResolvedImageChildGeometry {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parentSize : 7Œ // +0x0
+	var _parentSize : gâ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : Ω: // +0x4
+	var _childLayoutComputer : W // +0x4
  }
 
  struct SwiftUI.ResolvedImageLayoutComputer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _image : Â7 // +0x0
+	var _image :  // +0x0
  }
 
  struct SwiftUI.PlatformRepresentation {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _image : Â7 // +0x0
+	var _image :  // +0x0
  }
 
  struct SwiftUI.EventModifiers {
@@ -7598,7 +7715,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var preferences : PreferencesOutputs // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : √| // +0xc
+	var _layout : ´Y // +0xc
  }
 
  struct SwiftUI.PreferencesOutputs {
@@ -7619,25 +7736,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7±
+	var _containerPosition : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _inputPosition : 7±
+	var _inputPosition : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _inputSize : 7Œ
+	var _inputSize : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _pixelLength : Œ
+	var _pixelLength : •∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : º
+	var _safeAreaInsets : ´•
 	let identity : Identity
 	let clipIdentity : Identity
 	var contentSeed : Seed
@@ -7660,52 +7777,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var centersRootView : Bool
 	let rootView : AnyAttribute
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootTransform : ±
+	var _rootTransform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _zeroPoint : 7±
+	var _zeroPoint : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _emptyViewResponders : Àh
+	var _emptyViewResponders : )F
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _proposedSize : 7Œ
+	var _proposedSize : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : º
+	var _safeAreaInsets : °•
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootGeometry : wk
+	var _rootGeometry : ÂH
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _dimensions : 7Œ
+	var _dimensions : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _updateSeed : ù
+	var _updateSeed : u
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gestureTime : Ér
+	var _gestureTime : œ;
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gestureEvents : „«
+	var _gestureEvents : u±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _inheritedPhase : ç5
+	var _inheritedPhase : !
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gestureResetSeed : ù
+	var _gestureResetSeed : u
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _failedPhase : 5
+	var _failedPhase : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootPhase : X
+	var _rootPhase : 6
 	var eventSubgraph : Subgraph
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _defaultLayoutComputer : Ω:
+	var _defaultLayoutComputer : W
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _focusedValues : áÀ
+	var _focusedValues : µ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootResponders : ]5
+	var _rootResponders : Ò
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootAccessibilityNodes : K5
+	var _rootAccessibilityNodes : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootLayoutComputer : √|
+	var _rootLayoutComputer : ´Y
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootDisplayList : =5
+	var _rootDisplayList : ﬂ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rootPlatformItemList : )5
+	var _rootPlatformItemList : À
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _viewDebugValues : 5
+	var _viewDebugValues : Ω
 	var cachedIdealSize : CGSize
 	var cachedSizeThatFits : CGSize
 	var sizeThatFitsObserver : SizeThatFitsObserver
@@ -7718,7 +7835,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var accessibilityRelationshipScope : AccessibilityRelationshipScope
 
 	// Swift methods
-	0x4db640  class func ViewGraph.__allocating_init<A>(rootViewType:requestedOutputs:) // init 
+	0x4c6ff0  class func ViewGraph.__allocating_init<A>(rootViewType:requestedOutputs:) // init 
  }
 
  struct SwiftUI.NextUpdate {
@@ -7731,7 +7848,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : À5 // +0x0
+	let rawValue :  // +0x0
  }
 
  struct SwiftUI.SizeThatFitsObserver {
@@ -7745,20 +7862,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x0
+	var _layoutDirection : ] // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _proposedSize : 7Œ // +0x4
+	var _proposedSize : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : ª4 // +0x8
+	var _safeAreaInsets : O // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √| // +0xc
+	var _childLayoutComputer : ´Y // +0xc
  }
 
  struct SwiftUI.RootDisplayList {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : A∑ // +0x0
+	var _content : €† // +0x0
  }
 
  struct SwiftUI.InlinePickerStyle { }
@@ -7767,7 +7884,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : U4 // +0x177470
+	var _base : È // +0x1357c0
 	var interfaceIdiom : AnyInterfaceIdiomType // +0x0
  }
 
@@ -7776,6 +7893,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var label : A
 	var content : B
+ }
+
+ struct SwiftUI.LazyMenuContent {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _menu : {ƒ
+	let inputs : _ViewInputs
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _itemList : À
  }
 
  struct SwiftUI._WidgetOutputs {
@@ -7801,11 +7928,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.UISegmentedControl : UISegmentedControl /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88ff40022e878 (0x7f40022e878) in binary!
-	0x90718  @objc UISegmentedControl.(null) <stripped>
-WARNING: couldn't find address 0x9070c0022f150 (0x70c0022f150) in binary!
+WARNING: couldn't find address 0x8a8a400221c60 (0xa400221c60) in binary!
+	0x8fbe8  @objc UISegmentedControl.(null) <stripped>
+WARNING: couldn't find address 0x8fbdc00222558 (0x3dc00222558) in binary!
 	0x18000000c  @objc UISegmentedControl.(null) <stripped>
-WARNING: couldn't find address 0x906f40022f1f8 (0x6f40022f1f8) in binary!
+WARNING: couldn't find address 0x8fbc400222610 (0x3c400222610) in binary!
 	0x48000000c  @objc UISegmentedControl.(null) <stripped>
  }
 
@@ -7816,19 +7943,19 @@ WARNING: couldn't find address 0x906f40022f1f8 (0x6f40022f1f8) in binary!
 	var itemChanges : CollectionChanges
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x879c40022f190 (0x1c40022f190) in binary!
-	0x89e38  @objc SegmentedControlCoordinator.(null) <stripped>
-WARNING: couldn't find address 0x8921c0022de78 (0x21c0022de78) in binary!
+WARNING: couldn't find address 0x893d400222598 (0x3d400222598) in binary!
+	0x8b848  @objc SegmentedControlCoordinator.(null) <stripped>
+WARNING: couldn't find address 0x8aafc002212b8 (0x2fc002212b8) in binary!
 	0x38000000c  @objc SegmentedControlCoordinator.(null) <stripped>
-WARNING: couldn't find address 0x88ff40022e878 (0x7f40022e878) in binary!
-	0x90718  @objc SegmentedControlCoordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a8a400221c60 (0xa400221c60) in binary!
+	0x8fbe8  @objc SegmentedControlCoordinator.(null) <stripped>
 
 	// Swift methods
-	0x4e3180  func SegmentedControlCoordinator.configuration.getter // getter 
-	0x4e31e0  func SegmentedControlCoordinator.configuration.setter // setter 
-	0x4e33f0  func SegmentedControlCoordinator.update(configuration:) // method 
-	0x4e34f0  func SegmentedControlCoordinator.apply(_:to:in:) // method 
-	0x4e4540  func SegmentedControlCoordinator.selectionChanged(_:) // method 
+	0x4cf500  func SegmentedControlCoordinator.configuration.getter // getter 
+	0x4cf560  func SegmentedControlCoordinator.configuration.setter // setter 
+	0x4cf770  func SegmentedControlCoordinator.update(configuration:) // method 
+	0x4cf870  func SegmentedControlCoordinator.apply(_:to:in:) // method 
+	0x4d0ac0  func SegmentedControlCoordinator.selectionChanged(_:) // method 
  }
 
  struct SwiftUI.SystemSegmentedControl {
@@ -7853,13 +7980,13 @@ WARNING: couldn't find address 0x88ff40022e878 (0x7f40022e878) in binary!
 	var clipTransform : CGAffineTransform
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x89dcc0022e258 (0x5cc0022e258) in binary!
-	0x906d0  @objc MaskLayer.(null) <stripped>
-WARNING: couldn't find address 0x906c40022e810 (0x6c40022e810) in binary!
-	0x89198  @objc MaskLayer.(null) <stripped>
+WARNING: couldn't find address 0x8b7dc00221690 (0x7dc00221690) in binary!
+	0x8fba0  @objc MaskLayer.(null) <stripped>
+WARNING: couldn't find address 0x8fb9400221bf8 (0x39400221bf8) in binary!
+	0x8aa78  @objc MaskLayer.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x774ffa2f8c0  @objc MaskLayer.(null) <stripped>
-	0x7fcffa2fa48  @objc MaskLayer. <stripped>
+	0x35cffa14030  @objc MaskLayer.(null) <stripped>
+	0x3e4ffa141b8  @objc MaskLayer.u»Dâ·Ë‚5 <stripped>
  }
 
  struct SwiftUI._DigitalCrownModifier {
@@ -7882,17 +8009,17 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var horizontalMargin : Kt
+	var horizontalMargin : {L
 	var scrollTarget : ScrollTarget
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updateSeed : w¿
+	var updateSeed : ?ô
  }
 
  struct SwiftUI.ScrollTarget {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var row : ó0
+	var row : 
 	var anchor : UnitPoint
 	var isAnimated : Bool
  }
@@ -7901,7 +8028,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : E1
+	var _state : π
 	var value : BridgedListState
  }
 
@@ -7909,11 +8036,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : i1
+	var _state : ›
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _dataSource : €±
+	var _dataSource : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : õ|
+	var _children : ÉY
 	var _lastUpdateSeed : MutableBox
  }
 
@@ -7933,31 +8060,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct SwiftUI.AccessibilityNodeAttachment {
 
 	// Properties
-	var storage : CodableAccessibilityAttachmentStorage // +0x0
-	var createsNode : Bool // +0x120
- }
-
- enum SwiftUI.CodingKeys {
-
-	// Properties
-	case storage  
-	case createsNode  
+	var storage : CodableAccessibilityAttachmentStorage
+	var createsNode : Bool
  }
 
  struct SwiftUI.CodableAccessibilityAttachmentStorage {
 
 	// Properties
-	var label : ResolvedStyledText // +0x0
-	var value : ResolvedStyledText // +0x8
-	var hint : ResolvedStyledText // +0x10
-	var identifier : String? // +0x18
-	var visibility : _AccessibilityVisibility // +0x28
-	var traits : AccessibilityTraitStorage // +0x2c
-	var sortPriority : Double? // +0x38
+	var label : ResolvedStyledText
+	var value : ResolvedStyledText
+	var hint : ResolvedStyledText
+	var identifier : String?
+	var visibility : _AccessibilityVisibility
+	var traits : AccessibilityTraitStorage
+	var sortPriority : Double?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _automationType : k~ // +0x48
-	var _roleDescription : CodableAttributedString // +0x58
-	var dataSeriesConfiguration : CodableAccessibilityDataSeriesConfiguration // +0x60
+	var _automationType : ïY
+	var _roleDescription : CodableAttributedString
+	var dataSeriesConfiguration : CodableAccessibilityDataSeriesConfiguration
+	var linkDestination : Configuration
+	var customAttributes : AccessibilityCustomAttributes
  }
 
  enum SwiftUI.CodingKeys {
@@ -7973,6 +8095,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case _automationType  
 	case _roleDescription  
 	case dataSeriesConfiguration  
+	case linkDestination  
+	case customAttributes  
+ }
+
+ enum SwiftUI.CodingKeys {
+
+	// Properties
+	case storage  
+	case createsNode  
  }
 
  struct SwiftUI.__IconLayout {
@@ -7982,7 +8113,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var rowCount : Int? // +0x8
 	var openFolderIndex : Int? // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var openFolderScale : Kt // +0x28
+	var openFolderScale : {L // +0x28
  }
 
  struct SwiftUI._WKStoryboardContent {
@@ -8043,7 +8174,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : Ûq
+	var keyPath : M
 	var value : A
  }
 
@@ -8051,9 +8182,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ì/
+	var _modifier : 
+
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _env : ◊˜
+	var _env : ä
 	var oldModifier : _EnvironmentKeyWritingModifier
  }
 
@@ -8064,20 +8196,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var base : ContextMenuResponder
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8c62a0022e028 (0x62a0022e028) in binary!
-	0x917e4  @objc ContextMenuIdentity.(null) <stripped>
-	0x89d70  specialized ViewDebugFilter.value.getter
-WARNING: couldn't find address 0x89d640022e1f0 (0x5640022e1f0) in binary!
-	0x89148  @objc ContextMenuIdentity.(null) <stripped>
-WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x24ffa35da0  @objc ContextMenuIdentity.(null) <stripped>
-	0x1cffa35ef8  @objc ContextMenuIdentity.âÚH∏ˇ <stripped>
-	0x554ffa364c0  @objc ContextMenuIdentity.Ëg‘£ <stripped>
+WARNING: couldn't find address 0x8e21a00221470 (0x21a00221470) in binary!
+	0x93474  @objc ContextMenuIdentity.(null) <stripped>
+WARNING: couldn't find address 0x96dac00221450 (0x5ac00221450) in binary!
+	0x8b780  @objc ContextMenuIdentity.(null) <stripped>
+WARNING: couldn't find address 0x8b77400221628 (0x77400221628) in binary!
+	0x8aa28  @objc ContextMenuIdentity.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x46cffa1b100  @objc ContextMenuIdentity.(null) <stripped>
+	0x5e4ffa1b5b8  @objc ContextMenuIdentity.!¬Hã}–Hãu»Dâ·ËN6 <stripped>
+	0xffa1b6d0  @objc ContextMenuIdentity.ˇH!¬Hã}–Hãu»Dâ·Ë¸¥ <stripped>
 
 	// Swift methods
-	0x4f8a40  func ContextMenuIdentity.menuID.getter // getter 
-	0x4f8aa0  func ContextMenuIdentity.copy(with:) // method 
-	0x4f8e40  func ContextMenuIdentity.preview(host:) // method 
+	0x4e5d70  func ContextMenuIdentity.menuID.getter // getter 
+	0x4e5dd0  func ContextMenuIdentity.copy(with:) // method 
+	0x4e6170  func ContextMenuIdentity.preview(host:) // method 
  }
 
  struct SwiftUI.AccessibilityChildBehavior {
@@ -8088,11 +8221,11 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 
  class SwiftUI.AnyBehaviorBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x4fb320  func AnyBehaviorBox.attachment(for:) // method 
-	0x4fb360  func AnyBehaviorBox.parentProperties(children:environment:) // method 
-	0x4fb3a0  func AnyBehaviorBox.shouldCreateNode(for:) // method 
-	0x4fb3e0  func AnyBehaviorBox.isEqual(to:) // method 
-	0x4fb420  func AnyBehaviorBox.hash(into:) // method 
+	0x4e88a0  func AnyBehaviorBox.attachment(for:) // method 
+	0x4e88e0  func AnyBehaviorBox.parentProperties(children:environment:) // method 
+	0x4e8920  func AnyBehaviorBox.shouldCreateNode(for:) // method 
+	0x4e8960  func AnyBehaviorBox.isEqual(to:) // method 
+	0x4e89a0  func AnyBehaviorBox.hash(into:) // method 
  }
 
  class SwiftUI.BehaviorBox {
@@ -8139,30 +8272,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var children : _VariadicView_Children
 	var lastSeenIndex : Int
 	var updateCount : Int
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lastIDs :  empty-list 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8eb300022e028 (0x3300022e028) in binary!
-	0x91820  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x91f6c0022e020 (0x76c0022e020) in binary!
-	0x87d30  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x89d140022e1a0 (0x5140022e1a0) in binary!
-	0x890f8  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x744ffa36650  @objc Coordinator.(null) <stripped>
-	0xffa36588  @objc Coordinator.îK <stripped>
-WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x104ffa36840  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x907b000221470 (0x7b000221470) in binary!
+	0x934b0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x93bdc002225f8 (0x3dc002225f8) in binary!
+	0x8b730  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a9e4002211a0 (0x1e4002211a0) in binary!
+	0x38000000c  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a78c00221b48 (0x78c00221b48) in binary!
+	0x8fad0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a9b400221170 (0x1b400221170) in binary!
+	0x48000000c  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0x4fe9c0  func Coordinator.selectedIndex.getter // getter 
-	0x4fea10  func Coordinator.selectedIndex.setter // setter 
-	0x4feb70  func Coordinator.update(toOffset:in:) // method 
-	0x4feec0  func Coordinator.scroll(_:isAnimated:) // method 
-	0x4fefb0  func Coordinator.index(at:in:) // method 
-	0x4ff010  func Coordinator.numberOfSections(in:) // method 
-	0x4ff040  func Coordinator.collectionView(_:numberOfItemsInSection:) // method 
-	0x4ff110  func Coordinator.collectionView(_:cellForItemAt:) // method 
-	0x4ff250  func Coordinator.collectionView(_:willDisplay:forItemAt:) // method 
+	0x4ec720  func Coordinator.selectedIndex.getter // getter 
+	0x4ec770  func Coordinator.selectedIndex.setter // setter 
+	0x4ec7b0  func Coordinator.lastIDs.setter // setter 
+	0x4ec950  func Coordinator.update(toOffset:in:) // method 
+	0x4ecca0  func Coordinator.updateDataSourceIfNeeded(_:) // method 
+	0x4ecde0  func Coordinator.scroll(_:isAnimated:) // method 
+	0x4eced0  func Coordinator.index(at:in:) // method 
+	0x4ecf30  func Coordinator.numberOfSections(in:) // method 
+	0x4ecf60  func Coordinator.collectionView(_:numberOfItemsInSection:) // method 
+	0x4ed030  func Coordinator.collectionView(_:cellForItemAt:) // method 
  }
 
  class SwiftUI.UIKitPagingCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -8171,35 +8306,36 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var host : _UIHostingView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88ed40022e758 (0x6d40022e758) in binary!
-	0x905f8  @objc UIKitPagingCell.(null) <stripped>
-WARNING: couldn't find address 0x890cc0022dd28 (0xcc0022dd28) in binary!
+WARNING: couldn't find address 0x8a78c00221b48 (0x78c00221b48) in binary!
+	0x8fad0  @objc UIKitPagingCell.(null) <stripped>
+WARNING: couldn't find address 0x8a9b400221170 (0x1b400221170) in binary!
 	0x48000000c  @objc UIKitPagingCell.(null) <stripped>
-WARNING: couldn't find address 0x890b40022f118 (0xb40022f118) in binary!
-	0x8c918  @objc UIKitPagingCell.(null) <stripped>
+WARNING: couldn't find address 0x8a99c00222570 (0x19c00222570) in binary!
+	0x8e510  @objc UIKitPagingCell.(null) <stripped>
 
 	// Swift methods
-	0x4ff800  func UIKitPagingCell.host.setter // setter 
+	0x4ed650  func UIKitPagingCell.host.setter // setter 
  }
 
  class SwiftUI.PagingCollectionView : UICollectionView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pendingIndexPath : I, // +0x0 (0x0)
+	var pendingIndexPath : π // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x890b40022f118 (0xb40022f118) in binary!
-	0x8c918  @objc PagingCollectionView.(null) <stripped>
-WARNING: couldn't find address 0x905bc0022e708 (0x5bc0022e708) in binary!
-	0x89090  @objc PagingCollectionView.(null) <stripped>
+WARNING: couldn't find address 0x8a99c00222570 (0x19c00222570) in binary!
+	0x8e510  @objc PagingCollectionView.(null) <stripped>
+WARNING: couldn't find address 0x8fa9400221af8 (0x29400221af8) in binary!
+	0x8a978  @objc PagingCollectionView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x784ffa42328  @objc PagingCollectionView.(null) <stripped>
-	0x4b4ffa426a0  @objc PagingCollectionView.ÚKj^Lçm∏HâﬂË+} <stripped>
+	0x3c4ffa284b0  @objc PagingCollectionView.(null) <stripped>
+	0xfcffa28828  @objc PagingCollectionView.j^Lçm∏HâﬂË∏¢ <stripped>
 
 	// Swift methods
-	0x4ffa00  func PagingCollectionView.attemptToScroll(to:isAnimated:) // method 
-	0x4ffb70  func PagingCollectionView.scrollToPendingIndexPathIfNeeded() // method 
+	0x4ed850  func PagingCollectionView.attemptToScroll(to:isAnimated:) // method 
+	0x4ed950  func PagingCollectionView.apply(changes:) // method 
+	0x4ee630  func PagingCollectionView.scrollToPendingIndexPathIfNeeded() // method 
  }
 
  struct SwiftUI.PageViewWrapper {
@@ -8250,8 +8386,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyImageProviderBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x502d00  func AnyImageProviderBox.resolve(in:style:) // method 
-	0x502d40  func AnyImageProviderBox.isEqual(to:) // method 
+	0x4f1860  func AnyImageProviderBox.resolve(in:style:) // method 
+	0x4f18a0  func AnyImageProviderBox.isEqual(to:) // method 
  }
 
  class SwiftUI.ImageProviderBox {
@@ -8269,11 +8405,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var containerInfo : Kw // +0x0
+	var containerInfo : ’T // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uniqueId : w¿ // +0x4
+	var uniqueId : ?ô // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var list : O} // +0x8
+	var list : ?Z // +0x8
 	var id : _ViewList_ID // +0x10
 	var inputs : _ViewInputs // +0x20
 	var makeElt : _ViewOutputs // +0x70
@@ -8284,9 +8420,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerInfo : Kw // +0x0
+	var _containerInfo : ’T // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childGeometries : € // +0x4
+	var _childGeometries : Yƒ // +0x4
 	let id : DynamicContainerID // +0x8
  }
 
@@ -8294,9 +8430,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _items : ◊u // +0x0
+	var _items : N // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childGeometries : € // +0x4
+	var _childGeometries : Yƒ // +0x4
 	var mutateLayoutComputerMap : DynamicLayoutComputerMap // +0x8
  }
 
@@ -8304,28 +8440,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : ◊u // +0x0
+	var _list : N // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childGeometries : € // +0x4
+	var _childGeometries : Yƒ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parent : ´| // +0x10
+	var _parent : ìY // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : õ| // +0x18
+	var _children : ÉY // +0x18
  }
 
  struct SwiftUI.DynamicLayoutComputer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layout : €±
+	var _layout : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerInfo : ›v
+	var _containerInfo : gT
 	var layoutComputerMap : DynamicLayoutComputerMap
  }
 
@@ -8333,11 +8469,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : C~
+	var _list : A[
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : Kw
+	var _info : ’T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿
+	let uniqueId : ?ô
 	var lastValue : A
 	var lastPhase : TransitionPhase
  }
@@ -8370,23 +8506,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _defaultValue : €±
+	var _defaultValue : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _weakValue : W*
+	var _weakValue : «
  }
 
  struct SwiftUI.DefaultRule {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _weakValue : '*
+	var _weakValue : ó
  }
 
  struct SwiftUI.DragGesture {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumDistance : Kt // +0x0
+	var minimumDistance : {L // +0x0
 	var coordinateSpace : CoordinateSpace // +0x8
 	var allowedDirections : _EventDirections // +0x30
  }
@@ -8395,7 +8531,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var time : (
+	var time : À0
 	var location : CGPoint
 	var startLocation : CGPoint
 	var velocity : _Velocity
@@ -8417,9 +8553,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var space : UniqueID
-	var targetRect : CGRect
+	var baseSize : CGSize
+	var baseTransform : ViewTransform
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var displayList : M)
+	var _displayList : √
 	var displayListPosition : CGPoint
 
 	// Swift methods
@@ -8431,13 +8568,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var displayList : DisplayList
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9059c0022e6e8 (0x59c0022e6e8) in binary!
-	0x8d450  @objc DisplayListView.(null) <stripped>
-WARNING: couldn't find address 0x88e540022e6d8 (0x6540022e6d8) in binary!
-	0x89058  @objc DisplayListView.(null) <stripped>
+WARNING: couldn't find address 0x8fa7400221ad8 (0x27400221ad8) in binary!
+	0x8f058  @objc DisplayListView.(null) <stripped>
+WARNING: couldn't find address 0x8a70c00221ac8 (0x70c00221ac8) in binary!
+	0x8a940  @objc DisplayListView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x6acffa4ea00  @objc DisplayListView.(null) <stripped>
-	0x47cffa4ebb8  @objc DisplayListView.^Lçm∏Hç}êËZ√ <stripped>
+	0x29cffa347d8  @objc DisplayListView.(null) <stripped>
+	0xc4ffa34990  @objc DisplayListView.]êHâCLâÚH∏ˇ <stripped>
 
 	// Swift methods
  }
@@ -8446,9 +8583,9 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x0
+	var _transform : «∑ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x4
+	var _position : óƒ // +0x4
 	let space : UniqueID // +0x8
  }
 
@@ -8560,16 +8697,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var customAccessibilityPlaceholder : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8d6330022f158 (0x6330022f158) in binary!
-	0x88e28  @objc SwiftUITextField.(null) <stripped>
-WARNING: couldn't find address 0x9054c0022e698 (0x54c0022e698) in binary!
-	0x89020  @objc SwiftUITextField.(null) <stripped>
+WARNING: couldn't find address 0x8f24b002225c8 (0x24b002225c8) in binary!
+	0x8a6e0  @objc SwiftUITextField.(null) <stripped>
+WARNING: couldn't find address 0x8fa2400221a88 (0x22400221a88) in binary!
+	0x8a908  @objc SwiftUITextField.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x9cffa67f88  @objc SwiftUITextField.(null) <stripped>
-	0x654ffa680c0  @objc SwiftUITextField.ˇH!¬Hã}–Hãu»Dâ·Ë¸U <stripped>
+	0x4dcffa4de20  @objc SwiftUITextField.(null) <stripped>
+	0x244ffa4df58  @objc SwiftUITextField.j^Lçm∏HâﬂËÈ‹ <stripped>
 
 	// Swift methods
-	0x517ca0  func SwiftUITextField.customAccessibilityPlaceholder.setter // setter 
+	0x506630  func SwiftUITextField.customAccessibilityPlaceholder.setter // setter 
  }
 
  struct SwiftUI.BodyContent {
@@ -8628,9 +8765,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var requestedPreferences : PreferenceKeys
 	var bridgedViewInputs : PropertyList
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _hostPreferenceKeys : ó&
+	var _hostPreferenceKeys : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _hostPreferencesCombiner : â&
+	var _hostPreferencesCombiner : 
 	var bridgedPreferences : BridgedPreference
 
 	// Swift methods
@@ -8647,9 +8784,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lhs : ã& // +0x0
+	var _lhs :  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rhs : ã& // +0x4
+	var _rhs :  // +0x4
  }
 
  struct SwiftUI.AddValue {
@@ -8714,6 +8851,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bar  
  }
 
+ struct SwiftUI.ValueDescription {
+
+	// Properties
+	var description : ResolvedStyledText // +0x0
+	var effectiveValueRange : Range<Double> // +0x8
+ }
+
+ struct SwiftUI.DataSeriesConfigurationKey { }
+
  struct SwiftUI.CodableAccessibilityDataSeriesConfiguration {
 
 	// Properties
@@ -8738,22 +8884,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var gridlinePositions : [Double] // +0x38
 	var values : [Double] // +0x40
 	var valueDescriptions : ValueDescription // +0x48
- }
-
- struct SwiftUI.ValueDescription {
-
-	// Properties
-	var description : ResolvedStyledText // +0x0
-	var effectiveValueRange : Range<Double> // +0x8
- }
-
- struct SwiftUI.DataSeriesConfigurationKey { }
-
- enum SwiftUI.CodingKeys {
-
-	// Properties
-	case description  
-	case effectiveValueRange  
  }
 
  enum SwiftUI.CodingKeys {
@@ -8782,6 +8912,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case yAxisConfiguration  
  }
 
+ enum SwiftUI.CodingKeys {
+
+	// Properties
+	case description  
+	case effectiveValueRange  
+ }
+
  struct SwiftUI._TransformEffect {
 
 	// Properties
@@ -8807,7 +8944,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onDismiss : ()? // +0x48
 	let viewID : ViewIdentity // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let itemID : s // +0x60
+	let itemID : I // +0x60
 	let sourceRect : CGRect // +0x88
  }
 
@@ -8843,7 +8980,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : m$
+	var _base : Â˛
  }
 
  struct SwiftUI.RenderingModeProvider {
@@ -8918,13 +9055,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.MissingLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8d92c0022df28 (0x12c0022df28) in binary!
-	0x89c10  @objc MissingLayer.(null) <stripped>
-WARNING: couldn't find address 0x905140022f010 (0x5140022f010) in binary!
-	0x90508  @objc MissingLayer.(null) <stripped>
+WARNING: couldn't find address 0x8f54400221368 (0x54400221368) in binary!
+	0x8b628  @objc MissingLayer.(null) <stripped>
+WARNING: couldn't find address 0x8f9ec00222430 (0x1ec00222430) in binary!
+	0x8f9e0  @objc MissingLayer.(null) <stripped>
 WARNING: couldn't find address 0xe8000000c (0xe8000000c) in binary!
-	0x7ecffa6b020  @objc MissingLayer.(null) <stripped>
-	0x6d4ffa6b288  @objc MissingLayer. <stripped>
+	0x3ecffa50e78  @objc MissingLayer.(null) <stripped>
+	0x314ffa510e0  @objc MissingLayer.ˆ«@t@HçÃuƒ <stripped>
  }
 
  struct SwiftUI.ViewDecoders {
@@ -8982,32 +9119,32 @@ WARNING: couldn't find address 0xe8000000c (0xe8000000c) in binary!
 	var host : weak UIView?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x884340022e3b0 (0x4340022e3b0) in binary!
-	0x88418  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x89bcc0022f9f0 (0x3cc0022f9f0) in binary!
-	0x89bc0  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x89bb40022ded0 (0x3b40022ded0) in binary!
-	0x88f98  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x88f8c0022f100 (0x78c0022f100) in binary!
-	0x915ec  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x88d940022deb0 (0x5940022deb0) in binary!
-	0x89b78  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x876ec0022dea0 (0x6ec0022dea0) in binary!
-	0x91da0  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x89b540022dfe0 (0x3540022dfe0) in binary!
-	0x88f38  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x89e4c00221798 (0x64c00221798) in binary!
+	0x89e30  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x8b5e400222eb0 (0x5e400222eb0) in binary!
+	0x8b5d8  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x8b5cc00221310 (0x5cc00221310) in binary!
+	0x8a880  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x8a87400222570 (0x7400222570) in binary!
+	0x93284  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x8a64c002212f0 (0x64c002212f0) in binary!
+	0x8b590  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x89104002212e0 (0x104002212e0) in binary!
+	0x93a18  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x8b56c00221420 (0x56c00221420) in binary!
+	0x8a820  @objc UIFocusableViewResponderItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffa7d9c0  @objc UIFocusableViewResponderItem.(null) <stripped>
+	0xffa647e8  @objc UIFocusableViewResponderItem.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x35cffa8ac08  @objc UIFocusableViewResponderItem.(null) <stripped>
-	0x50c0022def0  @objc UIFocusableViewResponderItem. <stripped>
-WARNING: couldn't find address 0x22deecffa8b318 (0x6ecffa8b318) in binary!
+	0x7a4ffa72100  @objc UIFocusableViewResponderItem.(null) <stripped>
+	0x5c400221330  @objc UIFocusableViewResponderItem.Lâ{(HâÿHÉƒX[A\A]A^A_]√fêUHâÂAWAVAUATSHÉÏXâ”IâˆHâ}»Iâ˜I¡Ô Hã¯æ <stripped>
+WARNING: couldn't find address 0x22132cffa72810 (0x32cffa72810) in binary!
 	0x58000000c  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x8765c002301c0 (0x65c002301c0) in binary!
-	0x963b6  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x876440022fc90 (0x6440022fc90) in binary!
-	0x89ab8  @objc UIFocusableViewResponderItem.(null) <stripped>
-WARNING: couldn't find address 0x88e9c0022daf8 (0x69c0022daf8) in binary!
+WARNING: couldn't find address 0x89074002236a0 (0x74002236a0) in binary!
+	0x9807e  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x8905c00223158 (0x5c00223158) in binary!
+	0x8b4d0  @objc UIFocusableViewResponderItem.(null) <stripped>
+WARNING: couldn't find address 0x8a78400220f40 (0x78400220f40) in binary!
 	0x38000000c  @objc UIFocusableViewResponderItem.(null) <stripped>
 
 	// Swift methods
@@ -9025,22 +9162,22 @@ WARNING: couldn't find address 0x88e9c0022daf8 (0x69c0022daf8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _item : ! // +0x0
+	var _item : {˚ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
  }
 
  struct SwiftUI.UpdateViewFocusItem {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ! // +0x0
+	var _modifier : è˚ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr // +0x4
+	var _phase : ßJ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _focusedItem : o= // +0x8
+	var _focusedItem : ´ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _canNavigateToAllControls :  // +0xc
+	var _canNavigateToAllControls : Î˜ // +0xc
 	var viewGraph : ViewGraph // +0x10
 	var identityTracker : Tracker // +0x18
 	var isFocused : Bool // +0x20
@@ -9052,15 +9189,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _item : ! // +0x0
+	var _item : {˚ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x4
+	var _transform : «∑ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0xc
+	var _size : gâ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x10
+	var _children : )F // +0x10
 	let responder : FocusableViewResponder // +0x18
  }
 
@@ -9091,7 +9228,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ˜
+	var _base : o˙
  }
 
  struct SwiftUI.SystemTabView {
@@ -9130,9 +9267,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ﬂ
+	var _modifier : W˘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 	var helper : Tracker
  }
 
@@ -9140,7 +9277,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var radius : Kt // +0x0
+	var radius : {L // +0x0
 	var isOpaque : Bool // +0x8
  }
 
@@ -9150,7 +9287,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : â
+	var _base : Ô¯
  }
 
  struct SwiftUI.CarouselTabView {
@@ -9204,7 +9341,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _document : ObservedObject
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fileURL : ÎT
+	var fileURL : ã2
 	var isEditable : Bool
  }
 
@@ -9334,10 +9471,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case unarchivingError  
  }
 
+ struct SwiftUI.CodableCaseIterable {
+
+	// Properties
+	var wrappedValue : A
+ }
+
  struct SwiftUI.ProxyCodable {
 
 	// Properties
 	var wrappedValue : A
+ }
+
+ enum SwiftUI.Error {
+
+	// Properties
+	case archivingError  
+	case unarchivingError  
  }
 
  struct SwiftUI.JSONCodable {
@@ -9370,7 +9520,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿ // +0x0
+	let rawValue : ?ô // +0x0
  }
 
  struct SwiftUI._GrayscaleEffect {
@@ -9381,7 +9531,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.PlatformViewCoordinator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x89b340022dfc0 (0x3340022dfc0) in binary!
+WARNING: couldn't find address 0x8b54c00221400 (0x54c00221400) in binary!
 	0x28000000c  @objc PlatformViewCoordinator.(null) <stripped>
  }
 
@@ -9405,20 +9555,20 @@ WARNING: couldn't find address 0x89b340022dfc0 (0x3340022dfc0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let objectWillChange : µ
+	let objectWillChange : Ù
 	var environment : EnvironmentValues
 	var focusedValues : FocusedValues
 
 	// Swift methods
-	0x5478c0  func _PreviewHost.environment.getter // getter 
-	0x547910  func _PreviewHost.environment.setter // setter 
-	0x547960  func _PreviewHost.environment.modify // modifyCoroutine 
-	0x547a40  func _PreviewHost.focusedValues.getter // getter 
-	0x547aa0  func _PreviewHost.focusedValues.setter // setter 
-	0x547b10  func _PreviewHost.focusedValues.modify // modifyCoroutine 
-	0x547c50  func _PreviewHost.invalidatePreviews() // method 
-	0x547c90  func _PreviewHost.invalidateEverything() // method 
-	0x547cd0  func _PreviewHost.previews.getter // getter 
+	0x5372a0  func _PreviewHost.environment.getter // getter 
+	0x5372f0  func _PreviewHost.environment.setter // setter 
+	0x537340  func _PreviewHost.environment.modify // modifyCoroutine 
+	0x537420  func _PreviewHost.focusedValues.getter // getter 
+	0x537480  func _PreviewHost.focusedValues.setter // setter 
+	0x5374f0  func _PreviewHost.focusedValues.modify // modifyCoroutine 
+	0x537630  func _PreviewHost.invalidatePreviews() // method 
+	0x537670  func _PreviewHost.invalidateEverything() // method 
+	0x5376b0  func _PreviewHost.previews.getter // getter 
  }
 
  class SwiftUI.PreviewHost {
@@ -9438,7 +9588,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : +
+	var _base : ÅÒ
  }
 
  struct SwiftUI.InsetList {
@@ -9496,20 +9646,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : k // +0x0
+	var _modifier : ¡Ô // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _displayList : A∑ // +0x4
+	var _children : )F // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x10
+	var _size : gâ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x14
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0x18
-	let responder : DragViewResponder // +0x20
+	var _containerPosition : óƒ // +0x14
+	let responder : DragViewResponder // +0x18
  }
 
  struct SwiftUI.HasDragItemsKey { }
@@ -9522,10 +9670,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var presentedPicker : PlatformFilePicker
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x89b1c0022dfa8 (0x31c0022dfa8) in binary!
-	0x88f00  @objc FileImportExportBridge.(null) <stripped>
+WARNING: couldn't find address 0x8b534002213e8 (0x534002213e8) in binary!
+	0x8a7e8  @objc FileImportExportBridge.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6ecffa8b318  @objc FileImportExportBridge.(null) <stripped>
+	0x32cffa72810  @objc FileImportExportBridge.(null) <stripped>
  }
 
  struct SwiftUI.PresentationState {
@@ -9567,23 +9715,35 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : - // +0x0
+	var _effect : }Ó // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : ]5 // +0x4
+	var _children : Ò // +0x4
 	let responder : OpacityViewResponder // +0x8
+ }
+
+ struct SwiftUI.OpacityRendererEffect {
+
+	// Properties
+	var opacity : Double // +0x0
+ }
+
+ enum SwiftUI.CodingKeys {
+
+	// Properties
+	case opacity  
  }
 
  struct SwiftUI.MultiEventListenerPhase {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „«
+	var _events : u±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	let preconvertedEventLocations : Bool
 	let allowsIncompleteEventSequences : Bool
 	let bindings : EventBindingManager
@@ -9610,24 +9770,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ü
+	var _modifier : ¡Ì
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _updateSeed : ù
+	var _updateSeed : u
 	var lastValue : A?
 	var lastAction : (_:)?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastSeed : w¿
+	var lastSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ttl : w¿
+	var ttl : ?ô
  }
 
+ class SwiftUI.PresentationHostingController {
  struct SwiftUI.WheelPickerStyle { }
 
  struct SwiftUI.Body {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : o
+	var _base : KÌ
  }
 
  struct SwiftUI.WheelPicker {
@@ -9646,25 +9807,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var children : _VariadicView_Children // +0x0
  }
 
- struct SwiftUI._WidgetDescriptor { }
-
- struct SwiftUI._WidgetBodyAccessor { }
-
  struct SwiftUI._LabeledViewStyleModifier {
 
 	// Properties
-	var style : A // +0xafac9c
+	var style : A // +0xb0484c
  }
 
  struct SwiftUI.AccessibilityCombinedLabelAndContentModifier { }
 
  struct SwiftUI.AccessibilityCombineLabelAndContent { }
 
- struct SwiftUI.LabeledViewContent { }
-
  struct SwiftUI.LabeledViewLabel { }
 
  struct SwiftUI.AccessibilitySeparateLabelAndContentModifier { }
+
+ struct SwiftUI.LabeledViewContent { }
 
  struct SwiftUI.ResolvedLabeledView {
 
@@ -9684,21 +9841,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _value : ≠
+	var _value : ÔÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √±
+	var _transaction : ÁY
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _updateSeed : ù
+	var _updateSeed : u
 	var oldValue : _AnimationModifier
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var oldSeed : ˝ 
+	var oldSeed : õ®
  }
 
  struct SwiftUI.__Random {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x0
+	var seed : ?ô // +0x0
  }
 
  struct SwiftUI.TitleBarWindowStyle { }
@@ -9741,7 +9898,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let name : Text
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : ¡
+	let id : Ë
  }
 
  struct SwiftUI.CommandGroupPlacementBox {
@@ -9767,9 +9924,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let style : Style
 	var children : _VariadicView_Children
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minRowHeight : Ôb
+	var minRowHeight : YK
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minHeaderHeight : Kt
+	var minHeaderHeight : {L
  }
 
  struct SwiftUI.HeaderContent {
@@ -9778,7 +9935,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _horizontalMargin : Environment
 	var _configuration : Environment
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let verticalInset : Kt
+	let verticalInset : {L
 	var traitInsets : EdgeInsets
 	var view : A
  }
@@ -9787,7 +9944,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var _configuration : Environment // +0x0
-	var _pixelLength : Environment // +0x60
+	var _separatorThickness : Environment // +0x60
 	var _horizontalMargin : Environment // +0x70
 	var traitInsets : EdgeInsets // +0x80
  }
@@ -9798,7 +9955,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let hostWrapper : ListCoreHeaderHost // +0x0
 	let transaction : Transaction // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minHeight : Kt // +0x10
+	let minHeight : {L // +0x10
 	let style : Style // +0x18
 	let isHeader : Bool // +0x20
 	let needsGeneratedEmptyHeader : Bool // +0x21
@@ -9841,7 +9998,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var systemTranslation : CGSize // +0x30
 	var contentOffsetMode : ContentOffsetMode // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updateSeed : w¿ // +0x48
+	var updateSeed : ?ô // +0x48
  }
 
  struct SwiftUI.SystemScrollView {
@@ -9855,7 +10012,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : „ // +0x0
+	var _state : 3Á // +0x0
 	var value : SystemScrollViewState // +0x8
  }
 
@@ -9872,26 +10029,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : e // +0x0
+	var _configuration : µÁ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _systemContentInsets : ”r // +0x4
+	var _systemContentInsets : ÛJ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentComputer : √| // +0x8
+	var _contentComputer : ´Y // +0x8
  }
 
  struct SwiftUI.SystemScrollViewResponder {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _scrollView : ˚ // +0x0
+	var _scrollView : QÁ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x4
+	var _position : óƒ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x8
+	var _size : gâ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : ]5 // +0x10
+	var _children : Ò // +0x10
 	let responder : HostingScrollViewResponder // +0x18
 	let layoutResponder : DefaultLayoutViewResponder // +0x20
  }
@@ -9900,21 +10057,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _scrollView : ˚ // +0x0
+	var _scrollView : QÁ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : e // +0x4
+	var _configuration : µÁ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0xc
+	var _size : gâ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0x10
+	var _containerPosition : óƒ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : ”r // +0x14
+	var _safeAreaInsets : ÛJ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _pixelLength : Œ // +0x18
+	var _pixelLength : •∑ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentList : ÒÕ // +0x1c
+	var _contentList : Å∑ // +0x1c
 	let identity : Identity // +0x20
  }
 
@@ -9923,34 +10080,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let scrollView : HostingScrollView // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : e // +0x8
+	var _configuration : µÁ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentFrame : C // +0xc
+	var _contentFrame : ìÁ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : ”r // +0x10
+	var _safeAreaInsets : ÛJ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ // +0x14
+	var _layoutDirection : π∑ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _adjustedState : Q // +0x18
+	var _adjustedState : °Á // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _isEnabled :  // +0x1c
+	var _isEnabled : Î˜ // +0x1c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastUpdateSeed : w¿ // +0x20
+	var lastUpdateSeed : ?ô // +0x20
  }
 
  struct SwiftUI.SystemScrollViewScrollable {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : Q // +0x0
+	var _state : °Á // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _adjustedState : Q // +0x4
+	var _adjustedState : °Á // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x8
+	var _size : gâ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentFrame : C // +0xc
+	var _contentFrame : ìÁ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : õ| // +0x10
+	var _children : ÉY // +0x10
 	var _lastUpdateSeed : MutableBox // +0x18
  }
 
@@ -9958,34 +10115,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : e // +0x0
+	var _configuration : µÁ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentOrigin : / // +0x4
+	var _contentOrigin : Á // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0xc
+	var _size : gâ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x10
+	var _transform : «∑ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : Q // +0x14
+	var _state : °Á // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : ”r // +0x18
+	var _safeAreaInsets : ÛJ // +0x18
  }
 
  struct SwiftUI.SystemScrollViewAdjustedState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x0
+	var _size : gâ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : e // +0x4
+	var _configuration : µÁ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : Q // +0x8
+	var _state : °Á // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentFrame : C // +0xc
+	var _contentFrame : ìÁ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _pixelLength : Œ // +0x10
+	var _pixelLength : •∑ // +0x10
 	var oldFrame : CGRect // +0x18
 	var oldSize : CGSize // +0x38
  }
@@ -9994,15 +10151,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x0
+	var _size : gâ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : e // +0x4
+	var _configuration : µÁ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _systemContentInsets : ”r // +0x8
+	var _systemContentInsets : ÛJ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _pixelLength : Œ // +0xc
+	var _pixelLength : •∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentComputer : √| // +0x10
+	var _contentComputer : ´Y // +0x10
  }
 
  enum SwiftUI.ContentOffsetMode {
@@ -10025,6 +10182,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct SwiftUI.ListRowBackgroundTraitKey { }
 
+ struct SwiftUI.TextEditingCommands { }
+
+ struct SwiftUI.TextFormattingCommands { }
+
  enum SwiftUI.ColorRenderingMode {
 
 	// Properties
@@ -10044,10 +10205,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _colorMode : ProxyCodable // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rbColorMode : #X // +0x4
+	var rbColorMode : „2 // +0x4
 	var _flags : CodableRawRepresentable // +0x9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxDrawableCount : ≠W // +0xa
+	var maxDrawableCount : m2 // +0xa
  }
 
  struct SwiftUI.CodableColorRenderingMode {
@@ -10060,17 +10221,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : ˇ // +0x0
+	var _effect : Ê // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x4
+	var _position : óƒ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x8
+	var _size : gâ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0x10
+	var _containerPosition : óƒ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : ÒÕ // +0x14
+	var _content : Å∑ // +0x14
 	var contentSeed : Seed // +0x18
 	let identity : Identity // +0x1c
 	var lastBounds : CGRect // +0x20
@@ -10098,7 +10259,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : À5 // +0x0
+	let rawValue :  // +0x0
  }
 
  class SwiftUI.UIItemHostingView {
@@ -10112,7 +10273,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onSelect : ()? // +0x20
 	var onDeselect : ()? // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var platformSelector : Û	 // +0x40
+	var platformSelector : ‰ // +0x40
  }
 
  struct SwiftUI.PlatformItemListView {
@@ -10142,6 +10303,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var text : NSAttributedString?
 	var platformIdentifier : String?
+	var platformTag : Int?
 	var isEnabled : Bool
 	var resolvedImage : Resolved
 	var systemItem : SystemItem
@@ -10164,16 +10326,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : 9
- // +0x0
+	var _modifier : Y‰ // +0x0
  }
 
  struct SwiftUI.Transform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : 
- // +0x0
+	var _modifier : ?‰ // +0x0
  }
 
  struct SwiftUI.PlatformItemListIncludeAX { }
@@ -10215,6 +10375,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let label : A?
 	let content : B
+	var _namespace : Namespace
  }
 
  struct SwiftUI.TextField {
@@ -10242,7 +10403,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : k
+	var _gesture : [‚
 	var inputs : _GestureInputs
 	var outputs : _GestureOutputs
 	let parentSubgraph : Subgraph
@@ -10255,25 +10416,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var item : AnyGestureStorageBase
 	var subgraph : Subgraph
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uniqueId : w¿
+	var uniqueId : ?ô
  }
 
  struct SwiftUI.AnyGestureChild {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : -
+	var _info : ‚
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿
+	let uniqueId : ?ô
  }
 
  struct SwiftUI.AnyResetSeed {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : 	
+	var _info : ˘·
  }
 
  struct SwiftUI._CompositingGroupEffect { }
@@ -10281,11 +10442,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct SwiftUI.DisclosureGroup {
 
 	// Properties
-	var label : A
-	var content : B
-	var _isExpanded : StateOrBinding
-	var _depth : Environment
+	var label : A // +0x579640
+	var content : B // +0x0
+	var _isExpanded : StateOrBinding // +0x0
+	var _depth : Environment // +0x0
  }
+
+ struct SwiftUI.IsExpandedTraitKey { }
 
  struct SwiftUI.DisclosureGroupConfiguration {
 
@@ -10310,7 +10473,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case fixed : '
+	case fixed : ﬂ
 	case device  
 	case sizeThatFits  
  }
@@ -10355,8 +10518,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var orientation : Axis // +0x0
-	var _pixelLength : Environment // +0x8
-	var _sizeCategory : Environment // +0x18
+	var _separatorThickness : Environment // +0x8
  }
 
  struct SwiftUI.BackdropView { }
@@ -10372,13 +10534,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ˝
+	var _modifier : €‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
  }
 
  struct SwiftUI.DefaultListToggleStyle { }
@@ -10401,7 +10563,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var alignment : HorizontalAlignment // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : Ôb // +0x8
+	var spacing : YK // +0x8
  }
 
  struct SwiftUI.SliderStyleLabel { }
@@ -10413,7 +10575,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var color : Color // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var radius : Kt // +0x8
+	var radius : {L // +0x8
 	var offset : CGSize // +0x10
  }
 
@@ -10503,7 +10665,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : ’ˇ
+	var _configuration : ≥Ÿ
  }
 
  struct SwiftUI.SystemListCell {
@@ -10513,7 +10675,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var selection : Binding
 	var _highlighting : State
 	var _rowInset : Environment
-	var _pixelLength : Environment
+	var _separatorThickness : Environment
 	var _defaultMinListRowHeight : Environment
  }
 
@@ -10523,7 +10685,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ◊˛
+	var _base : µÿ
  }
 
  struct SwiftUI.PlainList {
@@ -10558,11 +10720,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var direction : Direction // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var size : Ôb // +0x8
+	var size : YK // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var margin : Kt // +0x18
+	var margin : {L // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : Kt // +0x20
+	var spacing : {L // +0x20
 	var constrainedDeceleration : Bool // +0x28
  }
 
@@ -10587,12 +10749,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var size : Kt // +0x0
+	var size : {L // +0x0
 	var direction : Direction // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var margin : Kt // +0x10
+	var margin : {L // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : Kt // +0x18
+	var spacing : {L // +0x18
 	var constrainedDeceleration : Bool // +0x20
  }
 
@@ -10602,23 +10764,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let views : A
 	let config : _PagingViewConfig
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let itemSize : Kt
+	let itemSize : {L
 	let generation : Int
- }
-
- struct SwiftUI._TupleWidget {
-
-	// Properties
-	var value : A
- }
-
- struct SwiftUI.MakeList {
-
-	// Properties
-	var widget : _GraphValue
-	var inputs : _WidgetInputs
-	var offset : Int
-	var outputs : _WidgetOutputs
  }
 
  enum SwiftUI.TemplateRenderingMode {
@@ -10730,7 +10877,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ª˚
+	var _base : ≈’
  }
 
  enum SwiftUI.Operation {
@@ -10751,9 +10898,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let width : Ôb // +0x0
+	let width : YK // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : Ôb // +0x10
+	let height : YK // +0x10
 	let alignment : Alignment // +0x20
  }
 
@@ -10761,17 +10908,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minWidth : Ôb // +0x0
+	let minWidth : YK // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let idealWidth : Ôb // +0x10
+	let idealWidth : YK // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxWidth : Ôb // +0x20
+	let maxWidth : YK // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minHeight : Ôb // +0x30
+	let minHeight : YK // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let idealHeight : Ôb // +0x40
+	let idealHeight : YK // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxHeight : Ôb // +0x50
+	let maxHeight : YK // +0x50
 	let alignment : Alignment // +0x60
  }
 
@@ -10784,12 +10931,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.DynamicStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x5adee0  func DynamicStorage.contentType.getter // getter 
-	0x5adf30  func DynamicStorage.identifier.getter // getter 
-	0x5adf80  func DynamicStorage.needsTransitions.getter // getter 
-	0x5adfd0  func DynamicStorage.matchesIdentity(of:) // method 
-	0x5ae020  func DynamicStorage.makeView<A>(uniqueId:container:inputs:adaptor:) // method 
-	0x5ae070  func DynamicStorage.visitContent<A>(_:phase:) // method 
+	0x59d9d0  func DynamicStorage.contentType.getter // getter 
+	0x59da20  func DynamicStorage.identifier.getter // getter 
+	0x59da70  func DynamicStorage.needsTransitions.getter // getter 
+	0x59dac0  func DynamicStorage.matchesIdentity(of:) // method 
+	0x59db10  func DynamicStorage.makeView<A>(uniqueId:container:inputs:adaptor:) // method 
+	0x59db60  func DynamicStorage.visitContent<A>(_:phase:) // method 
  }
 
  class SwiftUI.IdentifiedItemStorage {
@@ -10798,9 +10945,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : Kw
+	var _info : ’T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿
+	let uniqueId : ?ô
 	var item : AnyDynamicItem
  }
 
@@ -10823,7 +10970,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : œ˘
+	var context : Ÿ”
  }
 
  struct SwiftUI.DefaultNavigationViewStyle { }
@@ -10832,7 +10979,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
  }
 
  struct SwiftUI.GroupBoxStyleConfiguration {
@@ -10864,9 +11011,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : •} // +0x0
+	var context : õZ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
 	let parentSize : ParentSize // +0x8
  }
 
@@ -10874,17 +11021,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : •} // +0x0
+	var context : õZ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x4
+	var _size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x8
+	var _environment : ä // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x10
+	var _position : óƒ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : º // +0x14
+	var _safeAreaInsets : ´• // +0x14
+ }
+
+ struct SwiftUI.EnvironmentFetch {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _environment : ä
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyPath : ˘	
  }
 
  enum SwiftUI.ParentSize {
@@ -10892,16 +11048,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case eager : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case lazy : 7Œ
+	case lazy : gâ
  }
 
  struct SwiftUI.SizeAndSpacingContext {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : •} // +0x0
+	var context : õZ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
  }
 
  class SwiftUI.ChildIndexProjection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10927,7 +11083,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ≠W // +0x0
+	let rawValue : m2 // +0x0
  }
 
  struct SwiftUI.MenuPickerStyle { }
@@ -10936,7 +11092,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : „˜
+	var _base : ◊—
  }
 
  struct SwiftUI.MenuPickerOptionSectionStyle { }
@@ -10949,37 +11105,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct SwiftUI.PopUpButtonPickerStyle { }
 
- struct SwiftUI._PopUpButtonPickerStyle { }
-
  struct SwiftUI.Body {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ≠ˆ
- }
-
- struct SwiftUI.Body {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : …ˆ
+	var _base : √–
  }
 
  struct SwiftUI.Transform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _accessibilityEnabled : 
+	var _accessibilityEnabled : Î˜
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : Ìı
+	var _modifier : {–
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _nodeList : K5
+	var _nodeList : 
 	let combine : Bool
 	let scope : AccessibilityRelationshipScope
 	var lastContentAttachment : AccessibilityAttachment
@@ -11010,13 +11157,65 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var arrowEdge : Edge // +0x8
 	var targetAnchor : Anchor // +0x10
 	var onDismiss : () // +0x18
-	var viewID : ViewIdentity // +0x28
+	var viewID : ID // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var itemID : s // +0x30
+	var itemID : I // +0x30
 	var environment : EnvironmentValues // +0x58
  }
 
+ struct SwiftUI.PopoverPresentationModifier {
+
+	// Properties
+	var _isPresented : Binding
+	var onDismiss : ()?
+	var popoverContent : ()
+	var attachmentAnchor : PopoverAttachmentAnchor
+	var arrowEdge : Edge
+ }
+
+ struct SwiftUI.ItemPopoverPresentationModifier {
+
+	// Properties
+	var _item : Binding
+	var onDismiss : ()?
+	var popoverContent : (_:)
+	var attachmentAnchor : PopoverAttachmentAnchor
+	var arrowEdge : Edge
+ }
+
  struct SwiftUI.Key { }
+
+ struct SwiftUI.PopoverModifier {
+
+	// Properties
+	var _namespace : Namespace
+	var _isPresented : Binding
+	var onDismiss : ()?
+	var popoverContent : ()
+	var attachmentAnchor : PopoverAttachmentAnchor
+	var arrowEdge : Edge
+	var environment : EnvironmentValues
+ }
+
+ struct SwiftUI.PopoverModifier {
+
+	// Properties
+	var _namespace : Namespace // +0x5b0d70
+	var _item : Binding // +0x0
+	var onDismiss : ()? // +0x5ae7b0
+	var popoverContent : (_:) // +0x0
+	var attachmentAnchor : PopoverAttachmentAnchor // +0x5ae810
+	var arrowEdge : Edge // +0x0
+	var environment : EnvironmentValues // +0x5ae900
+ }
+
+ struct SwiftUI.PopoverContent {
+
+	// Properties
+	let minimumPopoverSize : CGSize
+	var content : A
+	var _mode : Binding
+ }
 
  struct SwiftUI.LabelStyleConfiguration { }
 
@@ -11085,9 +11284,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _keys : ã& // +0x0
+	var _keys :  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _values : oÚ // +0x4
+	var _values : Ã // +0x4
  }
 
  struct SwiftUI.CombineValues {
@@ -11101,9 +11300,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _keys : ã& // +0x0
+	var _keys :  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _values : Á∆ // +0x4
+	var _values : ßü // +0x4
 	var children : Child // +0x8
  }
 
@@ -11118,7 +11317,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var attributes : ØÚ
+	var attributes : QÃ
  }
 
  struct SwiftUI.PreferenceCombiner {
@@ -11131,38 +11330,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct SwiftUI.GeometryTransform {
 
 	// Properties
-	let token : AnyAttribute // +0x0
+	let token : AccessibilityAttachmentToken // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _accessibilityEnabled :  // +0x8
+	var _accessibilityEnabled : Î˜ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0xc
+	var _size : gâ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x10
+	var _position : óƒ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x14
+	var _transform : «∑ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _viewResponders : ]5 // +0x18
+	var _viewResponders : Ò // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _nodeList : K5 // +0x1c
+	var _nodeList :  // +0x1c
  }
 
- struct SwiftUI.AccessibilityDisplayList {
+ struct SwiftUI.DisplayListTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : €±
+	var _modifier : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7±
+	var _containerPosition : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : ÒÕ
+	var _content : Å∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _nodeList : K5
+	var _nodeList : 
 	let identity : Identity
  }
 
@@ -11170,26 +11369,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _nodes : K5 // +0x0
+	var _nodes :  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _accessibilityEnabled :  // +0x4
+	var _accessibilityEnabled : Î˜ // +0x4
  }
 
  struct SwiftUI.PropertiesTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : €±
+	var _modifier : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _nodeList : K5
+	var _nodeList : 
+	var isInPlatformItemList : Bool
 	var lastNodes : AccessibilityNode
 	var parentNode : AccessibilityNode
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿
+	var resetSeed : ?ô
  }
 
  struct SwiftUI._IgnoredByLayoutEffect {
@@ -11222,7 +11422,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ¡Ò
+	var _base : cÀ
  }
 
  struct SwiftUI.PageTabView {
@@ -11244,9 +11444,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _callback : 7Ò // +0x0
+	var _callback : Ÿ  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _initialModifier : +Ò // +0x4
+	var _initialModifier : Õ  // +0x4
  }
 
  struct SwiftUI._CodableTransition {
@@ -11354,21 +11554,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ≈Ô // +0x0
+	var _modifier : g… // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _displayList : A∑ // +0x4
+	var _children : )F // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x10
+	var _size : gâ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x14
+	var _containerPosition : óƒ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0x18
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr // +0x1c
+	var _phase : ßJ // +0x18
 	let responder : HoverResponder // +0x20
 	var identityTracker : Tracker // +0x28
  }
@@ -11400,7 +11598,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case subscribed : ˝
+	case subscribed : ü 
 	case unsubscribed  
 	case complete  
  }
@@ -11455,9 +11653,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let path : Path // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let start : Kt // +0x28
+	let start : {L // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let end : Kt // +0x30
+	let end : {L // +0x30
 	var _cachedPath : DestroyableBox // +0x38
  }
 
@@ -11568,9 +11766,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct SwiftUI.ItemNavigationDestination {
 
 	// Properties
-	var _namespace : Namespace // +0x5e3100
+	var _namespace : Namespace // +0x5d6320
 	var _item : Binding // +0x0
-	var navigationContent : (_:) // +0x5e31f0
+	var navigationContent : (_:) // +0x5d6410
  }
 
  struct SwiftUI.NavigationLinkStyle { }
@@ -11614,19 +11812,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let commandResolver : _ResolvedCommands
+	var environment : EnvironmentValues
 	var topLevelItemCoordinators : MainMenuItemCoordinator
 	var keyCommandMap : KeyCommandID
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8765c002301c0 (0x65c002301c0) in binary!
-	0x963b6  @objc UIKitMainMenuController.(null) <stripped>
-WARNING: couldn't find address 0x876440022fc90 (0x6440022fc90) in binary!
-	0x89ab8  @objc UIKitMainMenuController.(null) <stripped>
-WARNING: couldn't find address 0x88e9c0022daf8 (0x69c0022daf8) in binary!
+WARNING: couldn't find address 0x89074002236a0 (0x74002236a0) in binary!
+	0x9807e  @objc UIKitMainMenuController.(null) <stripped>
+WARNING: couldn't find address 0x8905c00223158 (0x5c00223158) in binary!
+	0x8b4d0  @objc UIKitMainMenuController.(null) <stripped>
+WARNING: couldn't find address 0x8a78400220f40 (0x78400220f40) in binary!
 	0x38000000c  @objc UIKitMainMenuController.(null) <stripped>
-WARNING: couldn't find address 0x88ca40022ddd8 (0x4a40022ddd8) in binary!
-	0x89a88  @objc UIKitMainMenuController.(null) <stripped>
-WARNING: couldn't find address 0x88e6c0022dac8 (0x66c0022dac8) in binary!
+WARNING: couldn't find address 0x8a55c00221218 (0x55c00221218) in binary!
+	0x8b4a0  @objc UIKitMainMenuController.(null) <stripped>
+WARNING: couldn't find address 0x8a75400220f10 (0x75400220f10) in binary!
 	0x18000000c  @objc UIKitMainMenuController.(null) <stripped>
 
 	// Swift methods
@@ -11676,7 +11875,7 @@ WARNING: couldn't find address 0x88e6c0022dac8 (0x66c0022dac8) in binary!
 	// Properties
 	var color : Color // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var location : Kt // +0x8
+	var location : {L // +0x8
  }
 
  struct SwiftUI.ResolvedGradient {
@@ -11696,7 +11895,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var color : _Resolved // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var location : Kt // +0x10
+	var location : {L // +0x10
  }
 
  enum SwiftUI.CodingKeys {
@@ -11712,15 +11911,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var base : _GraphInputs // +0x0
 	var preferences : PreferencesInputs // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var transform : ± // +0x3c
+	var transform : «∑ // +0x3c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var position : 7± // +0x40
+	var position : óƒ // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var containerPosition : 7± // +0x44
+	var containerPosition : óƒ // +0x44
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var size : 7Œ // +0x48
+	var size : gâ // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var safeAreaInsets : º // +0x4c
+	var safeAreaInsets : ´• // +0x4c
  }
 
  struct SwiftUI.PreferencesInputs {
@@ -11728,7 +11927,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var keys : PreferenceKeys // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hostKeys : ã& // +0x8
+	var hostKeys :  // +0x8
  }
 
  enum SwiftUI.BlendMode {
@@ -11874,15 +12073,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lineWidth : Kt // +0x0
+	var lineWidth : {L // +0x0
 	var lineCap : CGLineCap // +0x8
 	var lineJoin : CGLineJoin // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var miterLimit : Kt // +0x10
+	var miterLimit : {L // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dash :  empty-list  // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dashPhase : Kt // +0x20
+	var dashPhase : {L // +0x20
  }
 
  struct SwiftUI.CodableStrokeStyle {
@@ -11929,14 +12128,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var attachments :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentOffset : ±5
+	var currentOffset : â
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cache :  empty-list 
 
 	// Swift methods
-	0x5f76b0  func ArchiveWriter.finalize() // method 
-	0x5f77e0  func ArchiveWriter.append(_:) // method 
-	0x5f7820  func ArchiveWriter.append<A>(_:) // method 
+	0x5eb220  func ArchiveWriter.finalize() // method 
+	0x5eb330  func ArchiveWriter.append(_:) // method 
+	0x5eb370  func ArchiveWriter.append<A>(_:) // method 
  }
 
  class SwiftUI.FileArchiveWriter : ArchiveWriter {
@@ -11951,7 +12150,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data : „‰
+	var data : µ0
  }
 
  class SwiftUI.ArchiveReader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12017,7 +12216,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var color : _Resolved // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var radius : Kt // +0x10
+	var radius : {L // +0x10
 	var offset : CGSize // +0x18
  }
 
@@ -12033,7 +12232,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var radius : Kt // +0x0
+	var radius : {L // +0x0
 	var isOpaque : Bool // +0x8
  }
 
@@ -12146,17 +12345,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var selected : Binding
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88ca40022ddd8 (0x4a40022ddd8) in binary!
-	0x89a88  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x88e6c0022dac8 (0x66c0022dac8) in binary!
+WARNING: couldn't find address 0x8a55c00221218 (0x55c00221218) in binary!
+	0x8b4a0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a75400220f10 (0x75400220f10) in binary!
 	0x18000000c  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x882a40022ddb0 (0x2a40022ddb0) in binary!
+WARNING: couldn't find address 0x89cbc002211f0 (0x4bc002211f0) in binary!
 	0x88000000c  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0x6018e0  func Coordinator.selected.getter // getter 
-	0x601930  func Coordinator.selected.setter // setter 
-	0x6019c0  func Coordinator.tabBarController(_:didSelect:) // method 
+	0x5f4a20  func Coordinator.selected.getter // getter 
+	0x5f4a70  func Coordinator.selected.setter // setter 
+	0x5f4b00  func Coordinator.tabBarController(_:didSelect:) // method 
  }
 
  struct SwiftUI.BodyContent {
@@ -12181,50 +12380,51 @@ WARNING: couldn't find address 0x882a40022ddb0 (0x2a40022ddb0) in binary!
  class SwiftUI.UpdateCoalescingTableView : UITableView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var programmaticSelectionDelegate : ProgrammaticSelectionDelegate
-	var visibleCellsUpdate : VisibleCellsUpdate
+	var programmaticSelectionDelegate : ProgrammaticSelectionDelegate // +0x8 (0x10)
+	var visibleCellsUpdate : VisibleCellsUpdate // +0x18 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ignoreGraphUpdates : ©5
-	var pendingGraphUpdate : Bool
+	var ignoreGraphUpdates : y // +0x28 (0x4)
+	var pendingGraphUpdate : Bool // +0x2c (0x1)
+	var pendingScrollTarget : ScrollTarget // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var previousHorizontalMargin : Kt
-	var _lastUpdateSeed : MutableBox
+	var previousHorizontalMargin : {L // +0x0 (0x8)
+	var _lastUpdateSeed : MutableBox // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bridgedState : E1
-	var shouldDetermineInsetStyle : Bool
+	var bridgedState : π // +0x0 (0x8)
+	var shouldDetermineInsetStyle : Bool // +0x0 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x902940022e3e0 (0x2940022e3e0) in binary!
-	0x881c8  @objc UpdateCoalescingTableView.(null) <stripped>
-WARNING: couldn't find address 0x8d13c0022ed58 (0x13c0022ed58) in binary!
-	0x88d50  @objc UpdateCoalescingTableView.(null) <stripped>
-WARNING: couldn't find address 0x88d440022eda8 (0x5440022eda8) in binary!
-	0x8e9ba  @objc UpdateCoalescingTableView.(null) <stripped>
-WARNING: couldn't find address 0x8e9cc0022f0c0 (0x1cc0022f0c0) in binary!
-	0x8cea9  @objc UpdateCoalescingTableView.(null) <stripped>
-WARNING: couldn't find address 0x8e9d40022f188 (0x1d40022f188) in binary!
-	0x88d08  @objc UpdateCoalescingTableView.(null) <stripped>
+WARNING: couldn't find address 0x9067c00222628 (0x67c00222628) in binary!
+	0x8f760  @objc UpdateCoalescingTableView.(null) <stripped>
+WARNING: couldn't find address 0x89bd400221770 (0x3d400221770) in binary!
+	0x8ed38  @objc UpdateCoalescingTableView.(null) <stripped>
+WARNING: couldn't find address 0x8a62c002225f0 (0x62c002225f0) in binary!
+	0x8a620  @objc UpdateCoalescingTableView.(null) <stripped>
+WARNING: couldn't find address 0x90666002221c0 (0x666002221c0) in binary!
+	0x90678  @objc UpdateCoalescingTableView.(null) <stripped>
+WARNING: couldn't find address 0x8ea95002224d0 (0x295002224d0) in binary!
+	0x8a5f0  @objc UpdateCoalescingTableView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x354ffbf7b60  @objc UpdateCoalescingTableView.(null) <stripped>
-	0x4340022f3e8  @objc UpdateCoalescingTableView.X√ <stripped>
-WARNING: couldn't find address 0x22e33cffbf7cb0 (0x33cffbf7cb0) in binary!
-	0x1dc0022e328  @objc UpdateCoalescingTableView.(null) <stripped>
-WARNING: couldn't find address 0xffbf7dd8 (0xffbf7dd8) in binary!
-	0x4040022f3b8  @objc UpdateCoalescingTableView.(null) <stripped>
-WARNING: couldn't find address 0x22e30cffbf7eb0 (0x30cffbf7eb0) in binary!
-	0x1ac0022e2f8  @objc UpdateCoalescingTableView.(null) <stripped>
+	0x744ffbe5768  @objc UpdateCoalescingTableView.(null) <stripped>
+	0x8c00222890  @objc UpdateCoalescingTableView.H!¬HâÿHã}–Hãu»Dâ·Ë™æ <stripped>
+WARNING: couldn't find address 0x22172cffbe58b8 (0x72cffbe58b8) in binary!
+	0x6b400221718  @objc UpdateCoalescingTableView.(null) <stripped>
+WARNING: couldn't find address 0xffbe59e0 (0xffbe59e0) in binary!
+	0x5c00222860  @objc UpdateCoalescingTableView.(null) <stripped>
+WARNING: couldn't find address 0x2216fcffbe5ab8 (0x6fcffbe5ab8) in binary!
+	0x684002216e8  @objc UpdateCoalescingTableView.(null) <stripped>
 
 	// Swift methods
-	0x605900  func UpdateCoalescingTableView.lastUpdateSeed.getter // getter 
-	0x605950  func UpdateCoalescingTableView.lastUpdateSeed.setter // setter 
-	0x6059a0  func UpdateCoalescingTableView.shouldDetermineInsetStyle.setter // setter 
-	0x606150  func UpdateCoalescingTableView.disableGraphUpdates() // method 
-	0x606170  func UpdateCoalescingTableView.reenableGraphUpdates() // method 
-	0x6061b0  func UpdateCoalescingTableView.updateContent() // method 
-	0x606410  func UpdateCoalescingTableView.updateGraphState() // method 
-	0x606580  func UpdateCoalescingTableView.updateVisibleCellsIfNeeded() // method 
-	0x606700  func UpdateCoalescingTableView.updateInsetStyleIfNeeded() // method 
-	0x606ed0  func UpdateCoalescingTableView.scheduleVisibleCellsUpdate() // method 
+	0x5f8ef0  func UpdateCoalescingTableView.lastUpdateSeed.getter // getter 
+	0x5f8f20  func UpdateCoalescingTableView.lastUpdateSeed.setter // setter 
+	0x5f8f60  func UpdateCoalescingTableView.shouldDetermineInsetStyle.setter // setter 
+	0x5f9790  func UpdateCoalescingTableView.disableGraphUpdates() // method 
+	0x5f97b0  func UpdateCoalescingTableView.reenableGraphUpdates() // method 
+	0x5f97f0  func UpdateCoalescingTableView.updateContent() // method 
+	0x5f9c90  func UpdateCoalescingTableView.updateGraphState() // method 
+	0x5f9e70  func UpdateCoalescingTableView.updateVisibleCellsIfNeeded() // method 
+	0x5f9ff0  func UpdateCoalescingTableView.updateInsetStyleIfNeeded() // method 
+	0x5fa7c0  func UpdateCoalescingTableView.scheduleVisibleCellsUpdate() // method 
  }
 
  class SwiftUI.ListCoreCoordinator {
@@ -12237,30 +12437,30 @@ WARNING: couldn't find address 0x22e30cffbf7eb0 (0x30cffbf7eb0) in binary!
 	var outlineRootSeed : VersionSeed
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88e3c0022f150 (0x63c0022f150) in binary!
-	0x8ed30  @objc ListCoreCellHost.(null) <stripped>
-WARNING: couldn't find address 0x884480022f128 (0x4480022f128) in binary!
-	0x95a2c  @objc ListCoreCellHost.(null) <stripped>
-WARNING: couldn't find address 0x8ed310022f130 (0x5310022f130) in binary!
-	0x90320  @objc ListCoreCellHost.(null) <stripped>
-WARNING: couldn't find address 0x903140022f0e0 (0x3140022f0e0) in binary!
-	0x88de8  @objc ListCoreCellHost.(null) <stripped>
+WARNING: couldn't find address 0x8a724002225d0 (0x724002225d0) in binary!
+	0x909d8  @objc ListCoreCellHost.(null) <stripped>
+WARNING: couldn't find address 0x89e60002225a8 (0x660002225a8) in binary!
+	0x976e4  @objc ListCoreCellHost.(null) <stripped>
+WARNING: couldn't find address 0x909d9002225b0 (0x1d9002225b0) in binary!
+	0x8f7f8  @objc ListCoreCellHost.(null) <stripped>
+WARNING: couldn't find address 0x8f7ec00222560 (0x7ec00222560) in binary!
+	0x8a6d0  @objc ListCoreCellHost.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0xd4ffb46a00  @objc ListCoreCellHost.(null) <stripped>
-	0xa4ffb46c08  @objc ListCoreCellHost.ƒd <stripped>
-	0x404ffb470d0  @objc ListCoreCellHost.êHâCLâÚH∏ˇ <stripped>
-	0xffb46f98  @objc ListCoreCellHost.(¡ﬁ£ <stripped>
+	0x554ffb31e28  @objc ListCoreCellHost.(null) <stripped>
+	0x524ffb32030  @objc ListCoreCellHost.Hã}¿HâE¿ËO—£ <stripped>
+	0x7f4ffb324f8  @objc ListCoreCellHost. <stripped>
+	0xffb323c0  @objc ListCoreCellHost.}êHâGÚEÄÚÚEàÚGj^Lçm∏Ëkõ <stripped>
 
 	// Swift methods
-	0x60edb0  func ListCoreCellHost.cellConfiguration.setter // setter 
-	0x60ee50  func ListCoreCellHost.sidebarStatus.setter // setter 
-	0x60eed0  func ListCoreCellHost.sidebarButtonState.setter // setter 
-	0x60ef50  func ListCoreCellHost.host.setter // setter 
-	0x60efb0  func ListCoreCellHost.selectionBehavior.getter // getter 
-	0x60f030  func ListCoreCellHost.selectionBehavior.setter // setter 
-	0x60f720  func ListCoreCellHost.hostingView<A>(_:didChangePreferences:) // method 
-	0x60f820  func ListCoreCellHost.hostingView<A>(_:didChangePlatformItemList:) // method 
-	0x60f880  func ListCoreCellHost.hostingView<A>(_:willUpdate:) // method 
+	0x602d90  func ListCoreCellHost.cellConfiguration.setter // setter 
+	0x602e30  func ListCoreCellHost.sidebarStatus.setter // setter 
+	0x602eb0  func ListCoreCellHost.sidebarButtonState.setter // setter 
+	0x602f30  func ListCoreCellHost.host.setter // setter 
+	0x602f90  func ListCoreCellHost.selectionBehavior.getter // getter 
+	0x603010  func ListCoreCellHost.selectionBehavior.setter // setter 
+	0x603700  func ListCoreCellHost.hostingView<A>(_:didChangePreferences:) // method 
+	0x603800  func ListCoreCellHost.hostingView<A>(_:didChangePlatformItemList:) // method 
+	0x603860  func ListCoreCellHost.hostingView<A>(_:willUpdate:) // method 
  }
 
  class SwiftUI.ListCoreHeaderHost : UITableViewHeaderFooterView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -12271,26 +12471,26 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	var outlineRootSeed : VersionSeed
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88dd40022f0e8 (0x5d40022f0e8) in binary!
-	0x8ecc8  @objc ListCoreHeaderHost.(null) <stripped>
-WARNING: couldn't find address 0x883e00022f0c0 (0x3e00022f0c0) in binary!
-	0x959c4  @objc ListCoreHeaderHost.(null) <stripped>
-WARNING: couldn't find address 0x902c40022f090 (0x2c40022f090) in binary!
-	0x902b8  @objc ListCoreHeaderHost.(null) <stripped>
-WARNING: couldn't find address 0x88d8c0022d9e8 (0x58c0022d9e8) in binary!
+WARNING: couldn't find address 0x8a6bc00222568 (0x6bc00222568) in binary!
+	0x90970  @objc ListCoreHeaderHost.(null) <stripped>
+WARNING: couldn't find address 0x89df800222540 (0x5f800222540) in binary!
+	0x9767c  @objc ListCoreHeaderHost.(null) <stripped>
+WARNING: couldn't find address 0x8f79c00222510 (0x79c00222510) in binary!
+	0x8f790  @objc ListCoreHeaderHost.(null) <stripped>
+WARNING: couldn't find address 0x8a67400220e30 (0x67400220e30) in binary!
 	0xa8000000c  @objc ListCoreHeaderHost.(null) <stripped>
-WARNING: couldn't find address 0x902940022e3e0 (0x2940022e3e0) in binary!
-	0x881c8  @objc ListCoreHeaderHost.(null) <stripped>
-WARNING: couldn't find address 0x8d13c0022ed58 (0x13c0022ed58) in binary!
-	0x88d50  @objc ListCoreHeaderHost.(null) <stripped>
-WARNING: couldn't find address 0x88d440022eda8 (0x5440022eda8) in binary!
-	0x8e9ba  @objc ListCoreHeaderHost.(null) <stripped>
+WARNING: couldn't find address 0x9067c00222628 (0x67c00222628) in binary!
+	0x8f760  @objc ListCoreHeaderHost.(null) <stripped>
+WARNING: couldn't find address 0x89bd400221770 (0x3d400221770) in binary!
+	0x8ed38  @objc ListCoreHeaderHost.(null) <stripped>
+WARNING: couldn't find address 0x8a62c002225f0 (0x62c002225f0) in binary!
+	0x8a620  @objc ListCoreHeaderHost.(null) <stripped>
 
 	// Swift methods
-	0x60fe50  func ListCoreHeaderHost.configuration.setter // setter 
-	0x60ff20  func ListCoreHeaderHost.host.setter // setter 
-	0x610400  func ListCoreHeaderHost.hostingView<A>(_:didChangePreferences:) // method 
-	0x6104c0  func ListCoreHeaderHost.hostingView<A>(_:willUpdate:) // method 
+	0x603e30  func ListCoreHeaderHost.configuration.setter // setter 
+	0x603f00  func ListCoreHeaderHost.host.setter // setter 
+	0x6043e0  func ListCoreHeaderHost.hostingView<A>(_:didChangePreferences:) // method 
+	0x6044a0  func ListCoreHeaderHost.hostingView<A>(_:willUpdate:) // method 
  }
 
  enum SwiftUI.SidebarStatus {
@@ -12336,9 +12536,9 @@ WARNING: couldn't find address 0x88d440022eda8 (0x5440022eda8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _core : 9·
+	var _core : ´∫
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _bridgedState : i1
+	var _updateBridgedState : u
  }
 
  struct SwiftUI.Container {
@@ -12348,16 +12548,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var selection : Binding
 	var configuration : Configuration
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bridgedState : E1
+	var updateBridgedState : á∫
  }
 
  struct SwiftUI.EnvironmentTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _bridgedState : i1
+	var _bridgedState : ›
+ }
+
+ struct SwiftUI.UpdateBridgedState {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _bridgedState : ›
+	var tableView : UpdateCoalescingTableView
  }
 
  struct SwiftUI.Configuration {
@@ -12377,7 +12585,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var selection : Binding
 	var configuration : Configuration
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bridgedState : E1
+	var updateBridgedState : á∫
  }
 
  struct SwiftUI.AutocapitalizationTypeKey { }
@@ -12387,8 +12595,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SwiftUI.ContextMenuResponder : UIViewSnapshotResponder {
 
 	// Properties
-	var items : PlatformItemList // +0x108 (0x8)
-	var id : ViewIdentity // +0x110 (0x4)
+	var cachedItems : PlatformItemList // +0x108 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _itemList : ˇπ // +0x110 (0x4)
+	var id : ViewIdentity // +0x114 (0x4)
+
+	// Swift methods
  }
 
  struct SwiftUI.HasContextMenuKey { }
@@ -12415,24 +12627,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _id : ‡ // +0x0
+	var _id : mπ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _itemList : ‡ // +0x4
+	var _children : )F // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _displayList : A∑ // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x10
+	var _size : gâ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x14
+	var _containerPosition : óƒ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x18
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0x1c
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr // +0x20
-	let responder : ContextMenuResponder // +0x28
+	var _phase : ßJ // +0x18
+	let responder : ContextMenuResponder // +0x20
  }
 
  struct SwiftUI.CollapsibleWheelDatePickerStyle { }
@@ -12461,7 +12669,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x0
+	var _children : )F // +0x0
 	let responder : DefaultLayoutViewResponder // +0x8
  }
 
@@ -12495,7 +12703,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿ // +0x0
+	let rawValue : ?ô // +0x0
  }
 
  struct SwiftUI._MatchedGeometryEffect {
@@ -12522,9 +12730,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _frame : #› // +0x0
+	var _frame : ã∂ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var key : WØ // +0x8
+	var key : 'à // +0x8
 	var views : View // +0x30
 	var logged : Bool // +0x38
  }
@@ -12533,26 +12741,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : k›
+	var _modifier : ”∂
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _args : [›
+	var _args : √∂
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √±
+	var _transaction : ÁY
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √|
+	var _childLayoutComputer : ´Y
 	let scope : MatchedGeometryScope
 	var frameIndex : Int?
 	var selfAttribute : AnyAttribute
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿
+	var resetSeed : ?ô
  }
 
  struct SwiftUI.EmptyKey { }
@@ -12561,13 +12769,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _time : Ér // +0x0
+	var _time : œ; // +0x0
 	let scope : MatchedGeometryScope // +0x8
 	let frameIndex : Int // +0x10
 	var listeners : AnimationListener // +0x18
 	var animatorState : AnimatorState // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿ // +0x28
+	var resetSeed : ?ô // +0x28
 	var lastSourceAttribute : AnyWeakAttribute // +0x2c
  }
 
@@ -12576,17 +12784,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var attribute : AnyAttribute // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _args : [› // +0x4
+	var _args : √∂ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √± // +0x8
+	var _transaction : ÁY // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr // +0xc
+	var _phase : ßJ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x10
+	var _size : gâ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x14
+	var _position : óƒ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x18
+	var _transform : «∑ // +0x18
  }
 
  struct SwiftUI._PreferenceActionModifier {
@@ -12599,25 +12807,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : !‹
+	var _modifier : âµ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _keyValue : ‹
+	var _keyValue : yµ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _updateSeed : ù
+	var _updateSeed : u
 	var lastValue : PreferenceKey
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastSeed : w¿
+	var lastSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ttl : w¿
+	var ttl : ?ô
  }
 
  struct SwiftUI.RadioGroupPickerStyle { }
 
  class SwiftUI.AnyOptionButtonCollection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x628f20  func AnyOptionButtonCollection.startIndex.getter // getter 
-	0x628f70  func AnyOptionButtonCollection.endIndex.getter // getter 
-	0x628fc0  func AnyOptionButtonCollection.subscript.getter // getter 
+	0x61d700  func AnyOptionButtonCollection.startIndex.getter // getter 
+	0x61d750  func AnyOptionButtonCollection.endIndex.getter // getter 
+	0x61d7a0  func AnyOptionButtonCollection.subscript.getter // getter 
  }
 
  class SwiftUI.OptionButtonCollection {
@@ -12631,7 +12839,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : o€
+	var _base : ◊¥
  }
 
  struct SwiftUI.RadioGroupPicker {
@@ -12689,9 +12897,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case absolute : ◊
+	case absolute : w∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case interval : g÷
+	case interval : œØ
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case current :  first-element-marker 
  }
@@ -12792,7 +13000,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : 3◊
+	var _base : õ∞
 	var style : A
  }
 
@@ -12802,9 +13010,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : 3◊
+	var _base : õ∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _style : €±
+	var _style : {ƒ
  }
 
  class SwiftUI.RBGraphicsContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12861,7 +13069,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
  }
 
  struct SwiftUI.StyleFormula: AnyStyleFormula { }
@@ -12879,7 +13087,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : 5l
+	var _view : £I
  }
 
  struct SwiftUI.List {
@@ -12891,19 +13099,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct SwiftUI.Fix_53164375 { }
 
- struct SwiftUI.PopUpButton {
-
-	// Properties
-	var configuration : PickerStyleConfiguration
- }
-
  struct SwiftUI.SizeGestureChild {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : g»
+	var _gesture : %°
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
  }
 
  struct SwiftUI.SizeGesture {
@@ -12969,26 +13171,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : 9«
+	var _transform : ˘ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _keys : ã&
+	var _keys : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childValues : Á∆
+	var _childValues : ßü
 	var keyRequested : Bool
 	var wasEmpty : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delta : w¿
+	var delta : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let nodeId : w¿
+	let nodeId : ?ô
  }
 
  struct SwiftUI.PreferenceTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : 9«
+	var _transform : ˘ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childValue : «
+	var _childValue : —ü
  }
 
  struct SwiftUI._ColorMonochromeEffect {
@@ -13013,7 +13215,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : -∆
+	var _base : …û
  }
 
  struct SwiftUI.SectionPickerRoot {
@@ -13035,9 +13237,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var phase : EventPhase // +0x8
 	var globalLocation : CGPoint // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var initialScale : Kt // +0x20
+	var initialScale : {L // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scaleDelta : Kt // +0x28
+	var scaleDelta : {L // +0x28
 	var initialAngle : Angle // +0x30
 	var angleDelta : Angle // +0x38
  }
@@ -13046,7 +13248,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumScaleDelta : Kt // +0x0
+	var minimumScaleDelta : {L // +0x0
 	var gesture : _MapGesture // +0x8
  }
 
@@ -13054,14 +13256,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumScaleDelta : Kt // +0x0
+	var minimumScaleDelta : {L // +0x0
  }
 
  struct SwiftUI.TransformBasedMagnifyGesture {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumScaleDelta : Kt // +0x0
+	var minimumScaleDelta : {L // +0x0
  }
 
  struct SwiftUI.StateType {
@@ -13075,7 +13277,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var isActive : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var beginValue : Ôb // +0x8
+	var beginValue : YK // +0x8
  }
 
  struct SwiftUI.ProgressView {
@@ -13089,7 +13291,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var base : NSProgress // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var objectWillChange : ∆ // +0x0 (0x0)
+	var objectWillChange : ©û // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -13135,7 +13337,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Å¬ // +0x0
+	var _children : !õ // +0x0
  }
 
  struct SwiftUI._ViewList_View {
@@ -13152,18 +13354,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase1 : gr // +0x0
+	var _phase1 : ßJ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase2 : gr // +0x4
+	var _phase2 : ßJ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetDelta : w¿ // +0x8
+	var resetDelta : ?ô // +0x8
  }
 
  struct SwiftUI.PlaceholderInfo {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _placeholder : ¬ // +0x0
+	var _placeholder : •ö // +0x0
 	let inputs : _ViewInputs // +0x8
 	let outputs : _ViewOutputs // +0x58
 	let parentSubgraph : Subgraph // +0x68
@@ -13173,7 +13375,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lastElements : _ViewList_Elements // +0x98
 	var lastMap : _ViewList_IndirectMap // +0xc0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastPhase : €¡ // +0xc8
+	var lastPhase : kö // +0xc8
  }
 
  struct SwiftUI.Value {
@@ -13181,7 +13383,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var id : _ViewList_ID // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x10
+	var seed : ?ô // +0x10
 	var index : Int // +0x18
  }
 
@@ -13301,17 +13503,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : ˝ø // +0x0
+	var _effect : qò // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x4
+	var _position : óƒ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x8
+	var _size : gâ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ // +0xc
+	var _layoutDirection : π∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0x10
+	var _containerPosition : óƒ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : ÒÕ // +0x14
+	var _content : Å∑ // +0x14
 	let identity : Identity // +0x18
  }
 
@@ -13319,57 +13521,57 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : ˝ø // +0x0
+	var _effect : qò // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0x4
+	var _containerPosition : óƒ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ // +0x8
+	var _layoutDirection : π∑ // +0x8
  }
 
  struct SwiftUI.FlipForRTLFrame {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : ˝ø // +0x0
+	var _effect : qò // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x4
+	var _position : óƒ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x8
+	var _size : gâ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ // +0xc
+	var _layoutDirection : π∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _pixelLength : Œ // +0x10
+	var _pixelLength : •∑ // +0x10
  }
 
  struct SwiftUI.FlipForRTLTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : ˝ø // +0x0
+	var _effect : qò // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x4
+	var _size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutDirection : )Œ // +0x10
+	var _layoutDirection : π∑ // +0x10
  }
 
  struct SwiftUI.FlipForRTLEnvironment {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : ˝ø // +0x0
+	var _effect : qò // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var amount : Kt // +0x0
+	var amount : {L // +0x0
  }
 
  struct SwiftUI._Inset: InsettableShape {
@@ -13377,28 +13579,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var base : RoundedRectangle // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var amount : Kt // +0x18
+	var amount : {L // +0x18
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var amount : Kt // +0x0
+	var amount : {L // +0x0
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var amount : Kt // +0x0
+	var amount : {L // +0x0
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var amount : Kt // +0x0
+	var amount : {L // +0x0
  }
 
  struct SwiftUI.StateContainerGesture {
@@ -13411,21 +13613,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : µΩ
+	var _modifier : )ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childPhase : üΩ
+	var _childPhase : ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	var state : A
 	var reset : GestureReset
  }
 
  class SwiftUI.AnyResolvedPaint : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x684d50  func AnyResolvedPaint.fill(_:style:in:bounds:) // method 
-	0x684d60  func AnyResolvedPaint.isOpaque.getter // getter 
-	0x684d70  func AnyResolvedPaint.visit<A>(_:) // method 
-	0x684d80  func AnyResolvedPaint.encode(to:) // method 
+	0x679840  func AnyResolvedPaint.fill(_:style:in:bounds:) // method 
+	0x679850  func AnyResolvedPaint.isOpaque.getter // getter 
+	0x679860  func AnyResolvedPaint.visit<A>(_:) // method 
+	0x679870  func AnyResolvedPaint.encode(to:) // method 
  }
 
  class SwiftUI._AnyResolvedPaint {
@@ -13478,36 +13680,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var owner : AnyWeakAttribute // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : Ìª // +0x8
+	var _size : aî // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ﬂª // +0x10
+	var _environment : Sî // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : —ª // +0x18
+	var _transform : Eî // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : √ª // +0x20
+	var _position : 7î // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : µª // +0x28
+	var _safeAreaInsets : )î // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _seed : w¿ // +0x30
+	var _seed : ?ô // +0x30
  }
 
  struct SwiftUI.Child {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : ”ª
+	var _view : Gî
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : º
+	var _safeAreaInsets : ´•
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿
+	var seed : ?ô
  }
 
  struct SwiftUI.GeometryReaderLayout { }
@@ -13545,11 +13747,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _root : ª
+	var _root : Åì
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : ◊u
+	var _list : N
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _isFocusedResponder : 
+	var _isFocusedResponder : Î˜
 	let contentSubgraph : Subgraph
  }
 
@@ -13563,7 +13765,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _focusedItem : o=
+	var _focusedItem : ´
 	let responder : ResponderNode
  }
 
@@ -13571,7 +13773,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
  }
 
  struct SwiftUI.InTouchBarKey { }
@@ -13619,7 +13821,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case value : #
+	case value : ?‡
 	case text : Text
  }
 
@@ -13721,29 +13923,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var parent : ViewResponder
 
 	// Swift methods
-	0x6a2600  func ViewResponder.bindEvent(_:) // method 
-	0x6a2610  func ViewResponder.makeGesture(gesture:inputs:) // method 
-	0x6a2670  func ViewResponder.resetGesture() // method 
-	0x6a2680  func ViewResponder.visit(applying:) // method 
-	0x6a26b0  func ViewResponder.opacity.getter // getter 
-	0x6a26c0  func ViewResponder.allowsHitTesting.getter // getter 
-	0x6a26e0  func ViewResponder.isRemoved.getter // getter 
-	0x6a26f0  func ViewResponder.isEmptyResponder.getter // getter 
-	0x6a2dd0  func ViewResponder.containsGlobalPoints(_:cacheKey:) // method 
-	0x6a2700  func ViewResponder.hitTest(globalPoints:weights:mask:cacheKey:) // method 
-	0x6a2de0  func ViewResponder.addContentPath(to:in:observer:) // method 
-	0x6a2720  func ViewResponder.childCount.getter // getter 
-	0x6a2730  func ViewResponder.child(at:) // method 
-	0x6a2740  func ViewResponder.description.getter // getter 
-	0x6a2a90  func ViewResponder.extendPrintTree(string:) // method 
-	0x6a2830  func ViewResponder.printSubtree(depth:) // method 
+	0x698650  func ViewResponder.bindEvent(_:) // method 
+	0x698660  func ViewResponder.makeGesture(gesture:inputs:) // method 
+	0x6986c0  func ViewResponder.resetGesture() // method 
+	0x6986d0  func ViewResponder.visit(applying:) // method 
+	0x698700  func ViewResponder.opacity.getter // getter 
+	0x698710  func ViewResponder.allowsHitTesting.getter // getter 
+	0x698730  func ViewResponder.isRemoved.getter // getter 
+	0x698740  func ViewResponder.isEmptyResponder.getter // getter 
+	0x698e20  func ViewResponder.containsGlobalPoints(_:cacheKey:) // method 
+	0x698750  func ViewResponder.hitTest(globalPoints:weights:mask:cacheKey:) // method 
+	0x698e30  func ViewResponder.addContentPath(to:in:observer:) // method 
+	0x698770  func ViewResponder.childCount.getter // getter 
+	0x698780  func ViewResponder.child(at:) // method 
+	0x698790  func ViewResponder.description.getter // getter 
+	0x698ae0  func ViewResponder.extendPrintTree(string:) // method 
+	0x698880  func ViewResponder.printSubtree(depth:) // method 
  }
 
  struct SwiftUI.ContainsPointsCache {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var key : ˝  // +0x0
+	var key : õ® // +0x0
 	var mask : BitVector64 // +0x8
 	var priority : Double // +0x10
  }
@@ -13764,9 +13966,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var gradient : Gradient // +0x0
 	var center : UnitPoint // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var startRadius : Kt // +0x18
+	var startRadius : {L // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var endRadius : Kt // +0x20
+	var endRadius : {L // +0x20
  }
 
  struct SwiftUI.AngularGradient {
@@ -13793,9 +13995,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var gradient : ResolvedGradient // +0x0
 	var _center : ProxyCodable // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var startRadius : Kt // +0x18
+	var startRadius : {L // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var endRadius : Kt // +0x20
+	var endRadius : {L // +0x20
  }
 
  struct SwiftUI._Paint {
@@ -13840,19 +14042,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class SwiftUI.PlatformViewHost {
+ struct SwiftUI.PlatformViewRepresentableValues {
+
+	// Properties
+	var preferenceBridge : PreferenceBridge // +0x0
+	var transaction : Transaction // +0x8
+	var environment : EnvironmentValues // +0x10
+	var tracker : Tracker // +0x20
+ }
+
+ struct SwiftUI.InvalidatableLeafLayoutComputer {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _view : µâ
+	var rendererHost : ViewRendererHost
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let invalidationSignal : œä
+ }
+
  struct SwiftUI.Factory { }
 
  struct SwiftUI.PlatformArchivedDisplayList {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7±
+	var _containerPosition : óƒ
 	let identity : Identity
  }
 
@@ -13860,13 +14081,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : Md
+	var _view : µâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 	let responder : UIViewResponder
  }
 
@@ -13874,52 +14095,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _leafView : Md
+	var _leafView : µâ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _time : œ;
  }
 
  struct SwiftUI.PlatformRepresentableFocusableViewProvider {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : Md
+	var _view : µâ
  }
 
  struct SwiftUI.PlatformViewChild {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √±
+	var _transaction : ÁY
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _focusedValues : ó±
+	var _focusedValues : ıâ
 	let bridge : PreferenceBridge
 	var links : _DynamicPropertyBuffer
 	var coordinator : PlatformViewRepresentable
 	var platformView : PlatformViewHost
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿
+	var resetSeed : ?ô
+	let tracker : Tracker
  }
 
  struct SwiftUI.ViewLeafView {
 
 	// Properties
 	let content : A
-	let context : PlatformViewRepresentableContext
 	var platformView : PlatformViewHost
  }
 
  struct SwiftUI.PlatformViewRepresentableContext {
 
 	// Properties
+	var values : PlatformViewRepresentableValues
 	let coordinator : PlatformViewRepresentable
-	var preferenceBridge : PreferenceBridge
-	var transaction : Transaction
-	var environment : EnvironmentValues
  }
 
  struct SwiftUI.HiddenLabeledViewStyle { }
@@ -13957,9 +14178,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let viewGraph : ViewGraph
 	let eventBindingManager : EventBindingManager
-	var needsRootViewUpdate : Bool
-	var needsEnvironmentUpdate : Bool
-	var needsFocusedValuesUpdate : Bool
+	var propertiesNeedingUpdate : ViewRendererHostProperties
 	var isRendering : Bool
 	var currentTimestamp : Time
 	var externalUpdateCount : Int
@@ -13981,13 +14200,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : âØ
+	var _modifier : πá
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „«
+	var _events : u±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
  }
 
  struct SwiftUI.LinearProgressViewStyle {
@@ -14051,7 +14270,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var alignment : HorizontalAlignment // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : Ôb // +0x8
+	var spacing : YK // +0x8
  }
 
  struct SwiftUI.LazyVStack {
@@ -14084,11 +14303,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var viewInputs : _ViewInputs // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var events : „« // +0x50
+	var events : u± // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : ù // +0x54
+	var resetSeed : u // +0x54
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var inheritedPhase : ç5 // +0x58
+	var inheritedPhase : ! // +0x58
 	var preconvertedEventLocations : Bool // +0x5c
 	var allowsIncompleteEventSequences : Bool // +0x5d
  }
@@ -14097,7 +14316,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var phase : ãv // +0x0
+	var phase : T // +0x0
  }
 
  struct SwiftUI.InheritedPhase {
@@ -14110,7 +14329,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : €±
+	var _gesture : {ƒ
  }
 
  struct SwiftUI.EllipticalListStyle { }
@@ -14119,27 +14338,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : À¨
+	var _base : ˚Ñ
  }
 
  struct SwiftUI.EllipticaListStyleEnabledKey { }
 
  class SwiftUI._UIGraphicsView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88ae40022e368 (0x2e40022e368) in binary!
-	0x90208  @objc _UIGraphicsView.(null) <stripped>
+WARNING: couldn't find address 0x8a39c00221758 (0x39c00221758) in binary!
+	0x8f6e0  @objc _UIGraphicsView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x33cffbf7cb0  @objc _UIGraphicsView.(null) <stripped>
+	0x72cffbe58b8  @objc _UIGraphicsView.(null) <stripped>
  }
 
  class SwiftUI._UIInheritedView : _UIGraphicsView {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x904340022f3e8 (0x4340022f3e8) in binary!
-	0x88ab8  @objc _UIInheritedView.(null) <stripped>
-WARNING: couldn't find address 0x901dc0022e328 (0x1dc0022e328) in binary!
+WARNING: couldn't find address 0x9208c00222890 (0x8c00222890) in binary!
+	0x8a370  @objc _UIInheritedView.(null) <stripped>
+WARNING: couldn't find address 0x8f6b400221718 (0x6b400221718) in binary!
 	0x48000000c  @objc _UIInheritedView.(null) <stripped>
-WARNING: couldn't find address 0x904040022f3b8 (0x4040022f3b8) in binary!
-	0x88a88  @objc _UIInheritedView.(null) <stripped>
+WARNING: couldn't find address 0x9205c00222860 (0x5c00222860) in binary!
+	0x8a340  @objc _UIInheritedView.(null) <stripped>
  }
 
  class SwiftUI._UIShapeHitTestingView : _UIGraphicsView {
@@ -14148,13 +14367,13 @@ WARNING: couldn't find address 0x904040022f3b8 (0x4040022f3b8) in binary!
 	var path : Path
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x904040022f3b8 (0x4040022f3b8) in binary!
-	0x88a88  @objc _UIShapeHitTestingView.(null) <stripped>
-WARNING: couldn't find address 0x901ac0022e2f8 (0x1ac0022e2f8) in binary!
-	0x88c80  @objc _UIShapeHitTestingView.(null) <stripped>
+WARNING: couldn't find address 0x9205c00222860 (0x5c00222860) in binary!
+	0x8a340  @objc _UIShapeHitTestingView.(null) <stripped>
+WARNING: couldn't find address 0x8f684002216e8 (0x684002216e8) in binary!
+	0x8a568  @objc _UIShapeHitTestingView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0xbcffc0a028  @objc _UIShapeHitTestingView.(null) <stripped>
-	0x26c0022f490  @objc _UIShapeHitTestingView.ˇˇˇˇI!∆jYLãe–LâÁHãu»LâÚËsg <stripped>
+	0x504ffbf6d80  @objc _UIShapeHitTestingView.(null) <stripped>
+	0x32400222940  @objc _UIShapeHitTestingView.êË“Ì <stripped>
  }
 
  struct SwiftUI.EmbeddedDynamicPropertyBox: DynamicPropertyBox { }
@@ -14185,7 +14404,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	// Properties
 	let accessor : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _container : —´
+	var _container : Ñ
  }
 
  struct SwiftUI.DynamicBody {
@@ -14193,12 +14412,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let accessor : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _container : —´
+	var _container : Ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 	var links : _DynamicPropertyBuffer
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿
+	var resetSeed : ?ô
  }
 
  struct SwiftUI.DynamicPropertyCache { }
@@ -14209,7 +14428,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : o´
+	var _gesture : üÉ
  }
 
  struct SwiftUI.Empty { }
@@ -14233,13 +14452,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let id : UniqueID
 
 	// Swift methods
-	0x6c6320  func AnyViewStorageBase.type.getter // getter 
-	0x6c6370  func AnyViewStorageBase.canTransition.getter // getter 
-	0x6c63c0  func AnyViewStorageBase.matches(_:) // method 
-	0x6c6410  func AnyViewStorageBase.makeChild(uniqueId:container:inputs:) // method 
-	0x6c6460  func AnyViewStorageBase.child<A>() // method 
-	0x6c64b0  func AnyViewStorageBase.makeViewList(view:inputs:) // method 
-	0x6c6500  func AnyViewStorageBase.visitContent<A>(_:) // method 
+	0x6bbe10  func AnyViewStorageBase.type.getter // getter 
+	0x6bbe60  func AnyViewStorageBase.canTransition.getter // getter 
+	0x6bbeb0  func AnyViewStorageBase.matches(_:) // method 
+	0x6bbf00  func AnyViewStorageBase.makeChild(uniqueId:container:inputs:) // method 
+	0x6bbf50  func AnyViewStorageBase.child<A>() // method 
+	0x6bbfa0  func AnyViewStorageBase.makeViewList(view:inputs:) // method 
+	0x6bbff0  func AnyViewStorageBase.visitContent<A>(_:) // method 
  }
 
  class SwiftUI.AnyViewStorage {
@@ -14249,7 +14468,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let type : Any.Type // +0x20 (0x8)
 	let owner : AnyAttribute // +0x28 (0x4)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : ◊u // +0x2c (0x4)
+	var _list : N // +0x2c (0x4)
 	let id : UniqueID // +0x30 (0x8)
 	let isUnary : Bool // +0x38 (0x1)
 	let allItems : MutableBox // +0x40 (0x8)
@@ -14261,7 +14480,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : ›™ // +0x0
+	var _view : É // +0x0
 	let inputs : _ViewListInputs // +0x8
 	let parentSubgraph : Subgraph // +0x60
 	let allItems : MutableBox // +0x68
@@ -14272,7 +14491,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : ›™ // +0x0
+	var _view : É // +0x0
 	let inputs : _ViewInputs // +0x8
 	let outputs : _ViewOutputs // +0x58
 	let parentSubgraph : Subgraph // +0x68
@@ -14284,7 +14503,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var item : AnyViewStorageBase // +0x0
 	var subgraph : Subgraph // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uniqueId : w¿ // +0x10
+	var uniqueId : ?ô // +0x10
  }
 
  struct SwiftUI.Visitor {
@@ -14298,16 +14517,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : ü™
+	var _info : œÇ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿
+	let uniqueId : ?ô
  }
 
  struct SwiftUI.AnyViewChildList {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : ›™
+	var _view : É
 	var id : UniqueID
  }
 
@@ -14340,7 +14559,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var timestamp : Time // +0x8
 	var hitTestLocation : CGPoint // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hitTestRadius : Kt // +0x20
+	var hitTestRadius : {L // +0x20
  }
 
  struct SwiftUI.DefaultWindowStyle { }
@@ -14367,11 +14586,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : ]© // +0x0
+	var _configuration : çÅ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _id : O© // +0x4
+	var _id : Å // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentType : C© // +0x8
+	var _contentType : sÅ // +0x8
 	var resolvedID : String? // +0x10
  }
 
@@ -14390,16 +14609,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var changes : CollectionChanges
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8987c0022dd08 (0x7c0022dd08) in binary!
-	0x88c60  @objc UIKitPopUpButtonCoordinator.(null) <stripped>
+WARNING: couldn't find address 0x8b29400221148 (0x29400221148) in binary!
+	0x8a548  @objc UIKitPopUpButtonCoordinator.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x2acffc1d658  @objc UIKitPopUpButtonCoordinator.(null) <stripped>
+	0x69cffc0ac40  @objc UIKitPopUpButtonCoordinator.(null) <stripped>
 
 	// Swift methods
-	0x6d2400  func UIKitPopUpButtonCoordinator.configuration.setter // setter 
-	0x6d2460  func UIKitPopUpButtonCoordinator.currentActions.setter // setter 
-	0x6d2480  func UIKitPopUpButtonCoordinator.selectItem(for:) // method 
-	0x6d2550  func UIKitPopUpButtonCoordinator.update(configuration:control:) // method 
+	0x6c7ce0  func UIKitPopUpButtonCoordinator.configuration.setter // setter 
+	0x6c7d40  func UIKitPopUpButtonCoordinator.currentActions.setter // setter 
+	0x6c7d60  func UIKitPopUpButtonCoordinator.selectItem(for:) // method 
+	0x6c7e30  func UIKitPopUpButtonCoordinator.update(configuration:control:) // method 
  }
 
  struct SwiftUI.UIKitPopUpButton {
@@ -14434,14 +14653,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var bindings : EventBindingManager
 	let parentSubgraph : Subgraph
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var phase : •®
+	var phase : ’Ä
 	var children : Child
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nextUniqueId : w¿
+	var nextUniqueId : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿
+	var seed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿
+	var resetSeed : ?ô
 	var activeEvents : EventID
 
 	// Swift methods
@@ -14452,13 +14671,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let responder : ViewResponder // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿ // +0x8
+	let uniqueId : ?ô // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetDelta : w¿ // +0xc
+	var resetDelta : ?ô // +0xc
 	var events : EventID // +0x10
 	var subgraph : Subgraph // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var phase : •® // +0x20
+	var phase : ’Ä // +0x20
 	var resetEvents : EventID // +0x28
 	var active : Bool // +0x30
  }
@@ -14467,18 +14686,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : _®
+	var _children : èÄ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿
+	let uniqueId : ?ô
  }
 
  struct SwiftUI.LayoutChildEvents {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : _®
+	var _children : èÄ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿
+	let uniqueId : ?ô
  }
 
  struct SwiftUI.Child {
@@ -14492,20 +14711,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : €±
+	var _gesture : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _box : _®
+	var _box : èÄ
  }
 
  struct SwiftUI.LayoutChildren {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : €±
+	var _gesture : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „«
+	var _events : u±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	let box : LayoutGestureBox
  }
 
@@ -14514,7 +14733,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let box : LayoutGestureBox // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let seed : w¿ // +0x8
+	let seed : ?ô // +0x8
  }
 
  struct SwiftUI.DefaultLayoutGesture: LayoutGesture {
@@ -14538,13 +14757,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ©ß
+	var _modifier : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childPhase : ãv
+	var _childPhase : T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _time : Ér
+	var _time : œ;
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	var start : Time
 	var reset : GestureReset
  }
@@ -14553,7 +14772,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumDistance : Kt // +0x0
+	var minimumDistance : {L // +0x0
 	var allowedDirections : _EventDirections // +0x8
  }
 
@@ -14585,7 +14804,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumDistance : Kt // +0x0
+	var minimumDistance : {L // +0x0
 	var allowedDirections : _EventDirections // +0x8
  }
 
@@ -14658,6 +14877,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case minimumLineHeight  
 	case hyphenationFactor  
 	case allowsTightening  
+	case baseWritingDirection  
  }
 
  enum SwiftUI.Error {
@@ -14698,13 +14918,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SwiftUI.Coordinator {
  class SwiftUI.NotificationSendingSplitViewController : UISplitViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88a6c0022f490 (0x26c0022f490) in binary!
-	0x90160  @objc NotificationSendingSplitViewController.(null) <stripped>
-WARNING: couldn't find address 0x91a840022e748 (0x2840022e748) in binary!
-	0x908a6  @objc NotificationSendingSplitViewController.(null) <stripped>
+WARNING: couldn't find address 0x8a32400222940 (0x32400222940) in binary!
+	0x8f638  @objc NotificationSendingSplitViewController.(null) <stripped>
+WARNING: couldn't find address 0x936fc00221b30 (0x6fc00221b30) in binary!
+	0x9250e  @objc NotificationSendingSplitViewController.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x494ffc7d4b0  @objc NotificationSendingSplitViewController.(null) <stripped>
-	0x354ffc7ee78  @objc NotificationSendingSplitViewController.m∏HâﬂËÓ› <stripped>
+	0x144ffc6a518  @objc NotificationSendingSplitViewController.(null) <stripped>
+	0x794ffc6bea0  @objc NotificationSendingSplitViewController.ÚH∏ˇ <stripped>
  }
 
  struct SwiftUI.DoubleColumnNavigationView { }
@@ -14724,7 +14944,7 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
  class SwiftUI.AnyWindowToolbarStyleStorageBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x6e7a70  func AnyWindowToolbarStyleStorageBase.configureWindowToolbar(_:) // method 
+	0x6ddc20  func AnyWindowToolbarStyleStorageBase.configureWindowToolbar(_:) // method 
  }
 
  class SwiftUI.AnyWindowToolbarStyleStorage {
@@ -14780,11 +15000,11 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : Y°
+	var _modifier : ay
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : I°
+	var _phase : Qy
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	var state : GestureCallbacks
 	var cancel : GestureCallbacks
 	var reset : GestureReset
@@ -14800,28 +15020,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minLength : Ôb // +0x0
+	var minLength : YK // +0x0
  }
 
  struct SwiftUI._TextBaselineRelativeSpacer: PrimitiveSpacer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minLength : Ôb // +0x0
+	var minLength : YK // +0x0
  }
 
  struct SwiftUI._HSpacer: PrimitiveSpacer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minWidth : Ôb // +0x0
+	var minWidth : YK // +0x0
  }
 
  struct SwiftUI._VSpacer: PrimitiveSpacer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minHeight : Ôb // +0x0
+	var minHeight : YK // +0x0
  }
 
  struct SwiftUI._LayoutEngine {
@@ -14835,15 +15055,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
  }
 
  struct SwiftUI.SpacerLayoutComputer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _spacer : €±
+	var _spacer : {ƒ
 	var orientation : Axis
+ }
+
+ struct SwiftUI.AccessibilityOpacityAttachment {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _effect : }Ó // +0x0
+ }
+
+ struct SwiftUI.AccessibilityOpacityModifier {
+
+	// Properties
+	let opacity : Double // +0x0
  }
 
  struct SwiftUI.DependentGesture {
@@ -14856,11 +15089,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : '†
+	var _modifier : x
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : ãv
+	var _phase : T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _inheritedPhase : ç5
+	var _inheritedPhase : !
  }
 
  enum SwiftUI.GestureDependency {
@@ -14876,9 +15109,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumDistance : Kt // +0x0
+	var minimumDistance : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maximumDistance : Kt // +0x8
+	var maximumDistance : {L // +0x8
  }
 
  struct SwiftUI.StateType {
@@ -14886,7 +15119,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var start : CGPoint // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxDistance : Kt // +0x18
+	var maxDistance : {L // +0x18
  }
 
  struct SwiftUI.EventFilter {
@@ -14899,18 +15132,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : ãv
+	var _phase : T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _filteredEvents : óü
+	var _filteredEvents : Éw
  }
 
  struct SwiftUI.EventFilterEvents {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ≠ü
+	var _modifier : ôw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _events : „«
+	var _events : u±
  }
 
  struct SwiftUI.FilteredEvents {
@@ -14928,15 +15161,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var trackedEvents : EventID
 
 	// Swift methods
-	0x707a20  func EventBindingBridge.eventSources.getter // getter 
-	0x707720  func EventBindingBridge.resetEvents() // method 
+	0x6fe390  func EventBindingBridge.eventSources.getter // getter 
+	0x6fe0a0  func EventBindingBridge.resetEvents() // method 
  }
 
  struct SwiftUI.TrackedEventState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sourceID : WØ // +0x0
+	var sourceID : 'à // +0x0
 	var reset : Bool // +0x28
  }
 
@@ -14976,8 +15209,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct SwiftUI.KeyboardShortcutBindingBehavior {
 
 	// Properties
-	var label : A
-	var action : ()
+	var action : () // +0x0
  }
 
  struct SwiftUI.ButtonKeyboardShortcutKey { }
@@ -14986,15 +15218,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : üû
+	var _modifier : ãv // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : )5
+	var _list : À // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _shortcut : èû
+	var _shortcut : }v // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _isEnabled : 
+	var _isEnabled : Î˜ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _hostKeys : ã&
+	var _hostKeys :  // +0x10
  }
 
  struct SwiftUI.KeyboardShortcutBindingsKey { }
@@ -15015,11 +15247,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : û
+	var _modifier : v
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : ãv
+	var _phase : T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	var reset : GestureReset
  }
 
@@ -15074,13 +15306,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _body : 5ù
+	var _body : %u
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase1 : ãv
+	var _phase1 : T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase2 : Kb
+	var _phase2 : Ÿ?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	var reset : GestureReset
  }
 
@@ -15095,7 +15327,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : «ú
+	var _modifier : ∑t
 	let node : MultiViewResponder
  }
 
@@ -15103,7 +15335,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh
+	var _children : )F
 	let responder : LayoutGestureResponder
  }
 
@@ -15125,18 +15357,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase1 : uv
+	var _phase1 : ˇS
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase2 : Yv
+	var _phase2 : „S
  }
 
  struct SwiftUI.ExclusiveState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : ç5
+	var _state : !
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : ãv
+	var _phase : T
  }
 
  struct SwiftUI.PlainTextFieldStyle { }
@@ -15154,7 +15386,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyEntry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x714950  func SceneStorageValues.AnyEntry.encode(into:) // method 
+	0x70a850  func SceneStorageValues.AnyEntry.encode(into:) // method 
  }
 
  class SwiftUI.Entry {
@@ -15170,8 +15402,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.SceneStorageTransformBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x717550  func SceneStorageTransformBox.readValue(from:key:read:) // method 
-	0x717590  func SceneStorageTransformBox.writeValue(_:to:key:) // method 
+	0x70d450  func SceneStorageTransformBox.readValue(from:key:read:) // method 
+	0x70d490  func SceneStorageTransformBox.writeValue(_:to:key:) // method 
  }
 
  class SwiftUI.TransformBox {
@@ -15185,14 +15417,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _sceneStorageValues : ìõ
+	var _sceneStorageValues : És
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _domain : O©
+	var _domain : Å
 	var hasDomain : Bool
 	var resolvedDomain : String?
 	var key : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signal : ˚ˆ
+	let signal : œä
 	var location : ObservableLocation
  }
 
@@ -15211,18 +15443,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : 1õ
+	var _modifier : !s
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : ãv
+	var _phase : T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _time : Ér
+	var _time : œ;
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetDelta : ù
+	var _resetDelta : u
 	var deadline : Time
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var index : w¿
+	var index : ?ô
 	var reset : GestureReset
  }
 
@@ -15230,9 +15462,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù // +0x0
+	var _resetSeed : u // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _delta : ù // +0x4
+	var _delta : u // +0x4
  }
 
  class SwiftUI.Storage : LayoutComputer.Delegate { }
@@ -15247,7 +15479,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var layoutPriority : Double // +0x0
 	var majorAxisRangeCache : MajorAxisRangeCache // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let distanceToPrevious : Kt // +0x28
+	let distanceToPrevious : {L // +0x28
 	var fittingOrder : Int // +0x30
 	var offer : _ProposedSize // +0x38
 	var geometry : ViewGeometry // +0x58
@@ -15258,10 +15490,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let minorAxisAlignment : AlignmentKey // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniformSpacing : Ôb // +0x8
+	let uniformSpacing : YK // +0x8
 	let majorAxis : Axis // +0x11
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let internalSpacing : Kt // +0x18
+	let internalSpacing : {L // +0x18
 	var lastProposedSize : _ProposedSize // +0x20
 	var stackSize : CGSize // +0x40
 	var preferredSpacing : Spacing // +0x50
@@ -15283,24 +15515,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var min : Ôb // +0x0
+	var min : YK // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var max : Ôb // +0x10
+	var max : YK // +0x10
  }
 
  struct SwiftUI.PlatformAccessibilityAttachment {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _platformView : ∑ö // +0x0
+	var _platformView : µr // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _externalProperties : £ö // +0x4
+	var _externalProperties : £r // +0x4
  }
 
  struct SwiftUI.AccessibilityPlatformModifier {
 
 	// Properties
-	let platformView : UIView? // +0x0
+	let platformView : UIView // +0x0
  }
 
  class SwiftUI.ViewUpdater : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -15310,7 +15542,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var seed : Seed
 	var nextUpdate : Time
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastContentsScale : Kt
+	var lastContentsScale : {L
 	var isValid : Bool
 	var wasValid : Bool
 
@@ -15354,7 +15586,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ≠W // +0x0
+	let rawValue : m2 // +0x0
  }
 
  struct SwiftUI.ShadowListDataSource {
@@ -15386,27 +15618,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var state : MutableBox // +0x0
 	var size : CGSize // +0x0
-	var transform : ViewTransform // +0x733b30
+	var transform : ViewTransform // +0x7296c0
  }
 
  struct SwiftUI.SplicedDisplayList {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : Îñ // +0x0
+	var _info : În // +0x0
  }
 
  struct SwiftUI.ResponderFilter {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : Îñ // +0x0
+	var _info : În // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x4
+	var _size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x8
+	var _position : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0xc
+	var _transform : «∑ // +0xc
 	let responder : HostedViewResponder // +0x10
  }
 
@@ -15421,36 +15653,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _state : MutableBox // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x8
+	var seed : ?ô // +0x8
  }
 
  struct SwiftUI.HostedViewState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : #ó // +0x0
+	var _info : #o // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : A∑ // +0x4
+	var _list : €† // +0x4
 	let parentSubgraph : Subgraph // +0x8
 	let inputs : _ViewInputs // +0x10
 	var views : Key // +0x60
 	var orderedKeys : Key // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x70
+	var seed : ?ô // +0x70
  }
 
  struct SwiftUI.Child {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : üñ // +0x0
+	var _view : ün // +0x0
  }
 
  struct SwiftUI.FetchView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : Îñ // +0x0
+	var _info : În // +0x0
 	let key : Key // +0x4
  }
 
@@ -15459,7 +15691,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var version : Version // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x8
+	var seed : ?ô // +0x8
 	var factory : _DisplayList_ViewFactory // +0x10
 	var size : CGSize // +0x38
 	var transform : ViewTransform // +0x48
@@ -15521,7 +15753,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case keyPath : ˝‚
+	case keyPath : •ª
 	case value : A?
  }
 
@@ -15535,7 +15767,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case keyPath : ◊‚
+	case keyPath : ª
 	case value : Binding
  }
 
@@ -15560,7 +15792,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyPath : £÷
+	let keyPath : CØ
 	let value : A
 	var _focusedItem : Environment
 	var _focusedValueScopes : Environment
@@ -15572,11 +15804,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _focusedValues : ó±
+	var _focusedValues : ıâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : q‚
+	var keyPath : ª
 	var value : A?
  }
 
@@ -15621,8 +15853,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyFallbackDelegateBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x741540  func AnyFallbackDelegateBox.delegate.getter // getter 
-	0x741550  func AnyFallbackDelegateBox.addDelegate(to:) // method 
+	0x737000  func AnyFallbackDelegateBox.delegate.getter // getter 
+	0x737010  func AnyFallbackDelegateBox.addDelegate(to:) // method 
  }
 
  class SwiftUI.FallbackDelegateBox {
@@ -15648,7 +15880,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : Sí
+	var _base : Sj
  }
 
  struct SwiftUI._EventDebugTriggers {
@@ -15694,9 +15926,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct SwiftUI.TruncationModeKey { }
 
- struct SwiftUI.MinimumScaleFactorKey { }
-
  struct SwiftUI.TextAlignmentKey { }
+
+ struct SwiftUI.MinimumScaleFactorKey { }
 
  struct SwiftUI.TextCaseKey { }
 
@@ -15712,23 +15944,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.InteropResponder : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x873a40022f4a8 (0x3a40022f4a8) in binary!
-	0x87398  @objc InteropResponder.(null) <stripped>
-WARNING: couldn't find address 0x8738c0022f480 (0x38c0022f480) in binary!
-	0x87380  @objc InteropResponder.(null) <stripped>
-WARNING: couldn't find address 0x897f40022dc80 (0x7f40022dc80) in binary!
+WARNING: couldn't find address 0x88dbc00222958 (0x5bc00222958) in binary!
+	0x88db0  @objc InteropResponder.(null) <stripped>
+WARNING: couldn't find address 0x88da400222930 (0x5a400222930) in binary!
+	0x88d98  @objc InteropResponder.(null) <stripped>
+WARNING: couldn't find address 0x8b20c002210c0 (0x20c002210c0) in binary!
 	0x18000000c  @objc InteropResponder.(null) <stripped>
-WARNING: couldn't find address 0x8801c0022db40 (0x1c0022db40) in binary!
+WARNING: couldn't find address 0x89a3400220f80 (0x23400220f80) in binary!
 	0x58000000c  @objc InteropResponder.(null) <stripped>
-WARNING: couldn't find address 0x912200022e1b0 (0x2200022e1b0) in binary!
-	0x900c8  @objc InteropResponder.(null) <stripped>
+WARNING: couldn't find address 0x92eb8002215a0 (0x6b8002215a0) in binary!
+	0x8f5a0  @objc InteropResponder.(null) <stripped>
  }
 
  struct SwiftUI.OnCommandModifier {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var command : °è // +0x0
+	var command : °g // +0x0
 	var action : CommandAction // +0x8
 	var _focusedItem : Environment // +0x30
  }
@@ -15759,14 +15991,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : Ÿè // +0x0
+	var _phase : Ÿg // +0x0
  }
 
  struct SwiftUI.Child {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : Ìè // +0x0
+	var _gesture : Ìg // +0x0
  }
 
  struct SwiftUI.SingleTap {
@@ -15774,7 +16006,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var maximumDuration : Double // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maximumDistance : Kt // +0x8
+	var maximumDistance : {L // +0x8
  }
 
  struct SwiftUI.SidebarDisclosureGroupStyle { }
@@ -15803,19 +16035,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let focusedValues : FocusedValues // +0x20 (0x18)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x912200022e1b0 (0x2200022e1b0) in binary!
-	0x900c8  @objc EnvironmentWrapper.(null) <stripped>
-WARNING: couldn't find address 0x8732c0022db08 (0x32c0022db08) in binary!
-	0x897a0  @objc EnvironmentWrapper.(null) <stripped>
-WARNING: couldn't find address 0x88b840022d7e0 (0x3840022d7e0) in binary!
+WARNING: couldn't find address 0x92eb8002215a0 (0x6b8002215a0) in binary!
+	0x8f5a0  @objc EnvironmentWrapper.(null) <stripped>
+WARNING: couldn't find address 0x88d4400220f48 (0x54400220f48) in binary!
+	0x8b1b8  @objc EnvironmentWrapper.(null) <stripped>
+WARNING: couldn't find address 0x8a46c00220c28 (0x46c00220c28) in binary!
 	0x18000000c  @objc EnvironmentWrapper.(null) <stripped>
-WARNING: couldn't find address 0x9008c0022fae8 (0x8c0022fae8) in binary!
+WARNING: couldn't find address 0x8f56400222fa8 (0x56400222fa8) in binary!
 	0x48000000c  @objc EnvironmentWrapper.(null) <stripped>
-WARNING: couldn't find address 0x913700022f498 (0x3700022f498) in binary!
-	0x90068  @objc EnvironmentWrapper.(null) <stripped>
+WARNING: couldn't find address 0x9300800222948 (0x800222948) in binary!
+	0x8f540  @objc EnvironmentWrapper.(null) <stripped>
 
 	// Swift methods
-	0x74ba60  func EnvironmentWrapper.encode(with:) // method 
+	0x741720  func EnvironmentWrapper.encode(with:) // method 
  }
 
  struct SwiftUI.IndirectScrollGesture { }
@@ -15824,7 +16056,7 @@ WARNING: couldn't find address 0x913700022f498 (0x3700022f498) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minimumDistance : Kt // +0x0
+	var minimumDistance : {L // +0x0
 	var allowedDirections : _EventDirections // +0x8
  }
 
@@ -15857,37 +16089,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ≠W // +0x0
+	let rawValue : m2 // +0x0
  }
 
  class SwiftUI.Coordinator {
  class SwiftUI.NotifyingMulticolumnSplitViewController : UISplitViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8893c0022f360 (0x13c0022f360) in binary!
-	0x90030  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
-WARNING: couldn't find address 0x900240022e170 (0x240022e170) in binary!
-	0x91948  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
-WARNING: couldn't find address 0x9076a0022f328 (0x76a0022f328) in binary!
+WARNING: couldn't find address 0x8a1f400222810 (0x1f400222810) in binary!
+	0x8f508  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
+WARNING: couldn't find address 0x8f4fc00221560 (0x4fc00221560) in binary!
+	0x935c0  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
+WARNING: couldn't find address 0x923d2002227d8 (0x3d2002227d8) in binary!
 	0x48000000c  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
-WARNING: couldn't find address 0x8759a0022fdd8 (0x59a0022fdd8) in binary!
-	0x876a8  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
-WARNING: couldn't find address 0x896cc0022db58 (0x6cc0022db58) in binary!
-	0x88ab0  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
+WARNING: couldn't find address 0x88fb2002232b8 (0x7b2002232b8) in binary!
+	0x890c0  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
+WARNING: couldn't find address 0x8b0e400220f98 (0xe400220f98) in binary!
+	0x8a398  @objc NotifyingMulticolumnSplitViewController.(null) <stripped>
  }
 
  class SwiftUI.SplitViewNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x913700022f498 (0x3700022f498) in binary!
-	0x90068  @objc SplitViewNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x9198c0022e650 (0x18c0022e650) in binary!
-	0x90050  @objc SplitViewNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x9300800222948 (0x800222948) in binary!
+	0x8f540  @objc SplitViewNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x9360400221a38 (0x60400221a38) in binary!
+	0x8f528  @objc SplitViewNavigationController.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x28cffc868f8  @objc SplitViewNavigationController.(null) <stripped>
-	0x60cffc86ae0  @objc SplitViewNavigationController.Hç·]¬ <stripped>
+	0x74cffc73ad0  @objc SplitViewNavigationController.(null) <stripped>
+	0x1f4ffc73cb8  @objc SplitViewNavigationController.â·Ë1w <stripped>
 
 	// Swift methods
-	0x7504f0  func SplitViewNavigationController.applyStyleContextModifier<A>(to:) // method 
-	0x750540  func SplitViewNavigationController.replaceRoot<A>(_:) // method 
+	0x746280  func SplitViewNavigationController.applyStyleContextModifier<A>(to:) // method 
+	0x7462d0  func SplitViewNavigationController.replaceRoot<A>(_:in:) // method 
  }
 
  class SwiftUI.StyleContextSplitViewNavigationController {
@@ -15916,9 +16148,9 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _multicolumnSplitView : ±ç
+	var _multicolumnSplitView : ±e
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _bridgedState : Àç
+	var _bridgedState : Àe
  }
 
  struct SwiftUI.Container {
@@ -15926,16 +16158,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var configuration : Configuration
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bridgedState : Àç
+	var bridgedState : Àe
  }
 
  struct SwiftUI.EnvironmentTransform {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _bridgedState : Àç
+	var _bridgedState : Àe
  }
 
  struct SwiftUI.DisplayMode { }
@@ -15943,11 +16175,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct SwiftUI.MulticolumnSplitViewRepresentable {
 
 	// Properties
-	var primary : A // +0x752cd0
+	var primary : A // +0x748a90
 	var _supplementary : B? // +0x0
-	var secondary : C // +0x753970
+	var secondary : C // +0x749730
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bridgedState : Àç // +0x0
+	var bridgedState : Àe // +0x0
  }
 
  struct SwiftUI.OutlinePrimitive {
@@ -15958,9 +16190,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var leafContent : (_:)
 	var grouping : Binding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : Â⁄
+	var id : ç≥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var children : oí
+	var children : Gn
 	var _expandedElements : Binding
 	var contentID : Int
  }
@@ -15987,30 +16219,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x0
+	var _size : gâ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _layoutComputer : Ω: // +0x4
+	var _layoutComputer : W // +0x4
  }
 
  struct SwiftUI.RendererEffectDisplayList {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _effect : €±
+	var _effect : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7±
+	var _containerPosition : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _safeAreaInsets : º
+	var _safeAreaInsets : ´•
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : ÒÕ
+	var _content : Å∑
 	let identity : Identity
  }
 
@@ -16018,9 +16250,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x0
+	var _position : óƒ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x4
+	var _transform : «∑ // +0x4
  }
 
  struct SwiftUI.FilterVisitor {
@@ -16061,7 +16293,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var combineIdentifier : Iz
+	var combineIdentifier : 3W
 	var parent : SubscriptionLifetime
 	let downstream : A1
 	let subscriptionID : Int
@@ -16087,7 +16319,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿ // +0x0
+	let rawValue : ?ô // +0x0
  }
 
  struct SwiftUI.Data {
@@ -16101,7 +16333,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : w¿ // +0x0
+	let id : ?ô // +0x0
 	let attribute : SerializedAttribute // +0x8
  }
 
@@ -16216,11 +16448,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _gesture : Sá
+	var _gesture : S_
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : uv
+	var _phase : ˇS
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resetSeed : ù
+	var _resetSeed : u
 	var reset : GestureReset
 	var callback : ()?
  }
@@ -16259,7 +16491,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _input : o´
+	var _input : üÉ
  }
 
  struct SwiftUI.AnySource {
@@ -16268,7 +16500,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let formula : AnySourceFormula // +0x0
 	let value : AnyAttribute // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let valueIsNil : «Ö // +0x14
+	let valueIsNil : «] // +0x14
  }
 
  struct SwiftUI.SourceInput { }
@@ -16285,7 +16517,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _sourceIsNil : 
+	var _sourceIsNil : Î˜
  }
 
  struct SwiftUI.StaticSourceBox {
@@ -16296,13 +16528,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.Delegate : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayoutComputerDelegate {
 	// Swift methods
-	0x777650  func LayoutComputer.Delegate.layoutPriority() // method 
-	0x777660  func LayoutComputer.Delegate.ignoresAutomaticPadding() // method 
-	0x778a80  func LayoutComputer.Delegate.spacing() // method 
-	0x777670  func LayoutComputer.Delegate.lengthThatFits(_:in:) // method 
-	0x778ac0  func LayoutComputer.Delegate.sizeThatFits(_:) // method 
-	0x7776c0  func LayoutComputer.Delegate.childGeometries(at:) // method 
-	0x778b00  func LayoutComputer.Delegate.explicitAlignment(_:at:) // method 
+	0x771f10  func LayoutComputer.Delegate.layoutPriority() // method 
+	0x771f20  func LayoutComputer.Delegate.ignoresAutomaticPadding() // method 
+	0x773340  func LayoutComputer.Delegate.spacing() // method 
+	0x771f30  func LayoutComputer.Delegate.lengthThatFits(_:in:) // method 
+	0x773380  func LayoutComputer.Delegate.sizeThatFits(_:) // method 
+	0x771f80  func LayoutComputer.Delegate.childGeometries(at:) // method 
+	0x7733c0  func LayoutComputer.Delegate.explicitAlignment(_:at:) // method 
  }
 
  class SwiftUI.EngineDelegate {
@@ -16319,9 +16551,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : Ö
+	var _modifier : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 	var oldModifier : EnvironmentWritingModifier
  }
 
@@ -16360,7 +16592,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var chunks : G∆ // +0x0
+	var chunks : Òû // +0x0
 	var positionAdjustment : CGSize // +0x8
  }
 
@@ -16378,9 +16610,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case affineTransform : CGAffineTransform
 	case projectionTransform : ProjectionTransform
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case coordinateSpace : ≈
+	case coordinateSpace : ±ù
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case sizedSpace : 	≈
+	case sizedSpace : £ù
 	case scrollLayout : _ScrollLayout
  }
 
@@ -16392,10 +16624,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyTransitionBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x789b20  func AnyTransitionBox.visitBase<A>(applying:) // method 
-	0x789ee0  func AnyTransitionBox.visitType<A>(applying:) // method 
-	0x789b70  func AnyTransitionBox.isIdentity.getter // getter 
-	0x789bc0  func AnyTransitionBox.codableType.getter // getter 
+	0x784050  func AnyTransitionBox.visitBase<A>(applying:) // method 
+	0x784410  func AnyTransitionBox.visitType<A>(applying:) // method 
+	0x7840a0  func AnyTransitionBox.isIdentity.getter // getter 
+	0x7840f0  func AnyTransitionBox.codableType.getter // getter 
  }
 
  class SwiftUI.TransitionBox {
@@ -16407,7 +16639,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var observers : ContentPathObservers
 
 	// Swift methods
-	0x78bb90  func MultiViewResponder.childrenDidChange() // method 
+	0x786100  func MultiViewResponder.childrenDidChange() // method 
  }
 
  struct SwiftUI.SpacingLayout {
@@ -16429,17 +16661,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.TestingAppDelegate : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8759a0022fdd8 (0x59a0022fdd8) in binary!
-	0x876a8  @objc TestingAppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x896cc0022db58 (0x6cc0022db58) in binary!
-	0x88ab0  @objc TestingAppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x88fb2002232b8 (0x7b2002232b8) in binary!
+	0x890c0  @objc TestingAppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8b0e400220f98 (0xe400220f98) in binary!
+	0x8a398  @objc TestingAppDelegate.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x20cffcc62f8  @objc TestingAppDelegate.(null) <stripped>
-	0x314ffcc6490  @objc TestingAppDelegate.Aˆ«tXLâÚH∏ˇ <stripped>
+	0x64cffcb7cc0  @objc TestingAppDelegate.(null) <stripped>
+	0x754ffcb7e58  @objc TestingAppDelegate.}–Hãu»Dâ·Ë* <stripped>
 
 	// Swift methods
-	0x78f9f0  func TestingAppDelegate.application(_:didFinishLaunchingWithOptions:) // method 
-	0x78fa50  func TestingAppDelegate.application(_:configurationForConnecting:options:) // method 
+	0x789f70  func TestingAppDelegate.application(_:didFinishLaunchingWithOptions:) // method 
+	0x789fd0  func TestingAppDelegate.application(_:configurationForConnecting:options:) // method 
  }
 
  class SwiftUI.TestingSceneDelegate : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -16448,21 +16680,21 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var window : UIWindow?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x896ac0022e0f0 (0x6ac0022e0f0) in binary!
-	0x87220  @objc TestingSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x876a40022fd48 (0x6a40022fd48) in binary!
-	0x89688  @objc TestingSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x88a6c0022d6c8 (0x26c0022d6c8) in binary!
+WARNING: couldn't find address 0x8b0c4002214e0 (0xc4002214e0) in binary!
+	0x88c38  @objc TestingSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x890bc00223228 (0xbc00223228) in binary!
+	0x8b0a0  @objc TestingSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8a35400220b10 (0x35400220b10) in binary!
 	0x28000000c  @objc TestingSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x8ff740022e498 (0x7740022e498) in binary!
-	0x88a48  @objc TestingSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8f44c00221880 (0x44c00221880) in binary!
+	0x8a330  @objc TestingSceneDelegate.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x4cffcefaa0  @objc TestingSceneDelegate.(null) <stripped>
+	0x43cffcea8d8  @objc TestingSceneDelegate.(null) <stripped>
 
 	// Swift methods
-	0x78fc50  func TestingSceneDelegate.window.getter // getter 
-	0x78fcc0  func TestingSceneDelegate.window.setter // setter 
-	0x78fce0  func TestingSceneDelegate.scene(_:willConnectTo:options:) // method 
+	0x78a1d0  func TestingSceneDelegate.window.getter // getter 
+	0x78a240  func TestingSceneDelegate.window.setter // setter 
+	0x78a260  func TestingSceneDelegate.scene(_:willConnectTo:options:) // method 
  }
 
  struct SwiftUI.CarouselListStyle { }
@@ -16471,7 +16703,7 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : É
+	var _base : [
  }
 
  struct SwiftUI.CarouselList { }
@@ -16488,7 +16720,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : w¿ // +0x0
+	var value : ?ô // +0x0
  }
 
  struct SwiftUI.LinearUIKitProgressView {
@@ -16535,7 +16767,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var base : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : Ω¡
+	var keyPath : áö
  }
 
  struct SwiftUI.ZipLocation: Location {
@@ -16572,7 +16804,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identifier : WØ // +0x0
+	var identifier : 'à // +0x0
 	var size : CGSize // +0x28
 	var position : CGPoint // +0x38
 	var transform : ViewTransform // +0x48
@@ -16599,13 +16831,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : w}
+	var _modifier : ôU
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
  }
 
  struct SwiftUI._ScrollViewProxy {
@@ -16613,7 +16845,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let node : ScrollViewNode // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let seed : w¿ // +0x8
+	let seed : ?ô // +0x8
  }
 
  struct SwiftUI._ContainedScrollViewKey { }
@@ -16626,15 +16858,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SwiftUI.PlatformDragItem : UIDragItem /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var frame : CGRect
-	var snapshotView : UIView?
-	var contentPath : CGPath
+	var responder : DragViewResponder
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8ff740022e498 (0x7740022e498) in binary!
-	0x88a48  @objc PlatformDragItem.(null) <stripped>
+WARNING: couldn't find address 0x8f44c00221880 (0x44c00221880) in binary!
+	0x8a330  @objc PlatformDragItem.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x4cffcefaa0  @objc PlatformDragItem.(null) <stripped>
+	0x43cffcea8d8  @objc PlatformDragItem.(null) <stripped>
 
 	// Swift methods
  }
@@ -16650,7 +16880,7 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var environment : ◊˜ // +0x0
+	var environment : ä // +0x0
 	var items : Item // +0x8
 	var constants : HashableConstant // +0x10
 	var animatedFrame : AnimatedFrame // +0x18
@@ -16667,23 +16897,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let position : 7± // +0x0
+	let position : óƒ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let size : 7Œ // +0x4
+	let size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pixelLength : Œ // +0x8
+	let pixelLength : •∑ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let time : Ér // +0xc
+	let time : œ; // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let transaction : √± // +0x10
+	let transaction : ÁY // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewPhase : gr // +0x14
+	let viewPhase : ßJ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let animatedFrame : «{ // +0x18
+	let animatedFrame : ÁS // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _animatedPosition : π{ // +0x1c
+	var _animatedPosition : ŸS // +0x1c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _animatedSize : ©{ // +0x24
+	var _animatedSize : …S // +0x24
  }
 
  struct SwiftUI.HashableConstant {
@@ -16696,7 +16926,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var key : ¡Ω // +0x0
+	var key : Åñ // +0x0
 	var value : AnyAttribute // +0x8
  }
 
@@ -16711,7 +16941,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : w{
+	var _view : óS
 	var id : B?
  }
 
@@ -16745,7 +16975,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Kt // +0x0
+	var value : {L // +0x0
  }
 
  enum SwiftUI._StylisticAlternative {
@@ -16800,7 +17030,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var identifier : VariationAxisIdentifier // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Kt // +0x8
+	var value : {L // +0x8
  }
 
  struct SwiftUI.StylisticAlternativeModifier: FontModifier {
@@ -16857,43 +17087,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let viewType : Any.Type
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let state : „
+	let state : 3Á
 	let host : PlatformGroupContainer
 	var responder : UIViewResponder
 	var layoutDirection : LayoutDirection
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ignoreUpdates : ©5
+	var ignoreUpdates : y
 	var pendingUpdate : Bool
 	var animationTarget : CGPoint
 	var animationOffset : CGPoint
+	var isAnimationCompletionCheckPending : Bool
 	var configuration : ScrollViewConfiguration
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8ff540022e0a0 (0x7540022e0a0) in binary!
-	0x87e88  @objc HostingScrollView.(null) <stripped>
-WARNING: couldn't find address 0x8cdfc0022ea18 (0x5fc0022ea18) in binary!
-	0x91f20  @objc HostingScrollView.(null) <stripped>
-WARNING: couldn't find address 0x88a040022f440 (0x2040022f440) in binary!
-	0x87188  @objc HostingScrollView.(null) <stripped>
-WARNING: couldn't find address 0x887dc0022e060 (0x7dc0022e060) in binary!
-	0x889e0  @objc HostingScrollView.(null) <stripped>
+WARNING: couldn't find address 0x8f42c00221490 (0x42c00221490) in binary!
+	0x898a0  @objc HostingScrollView.(null) <stripped>
+WARNING: couldn't find address 0x8ea0400221e38 (0x20400221e38) in binary!
+	0x93b98  @objc HostingScrollView.(null) <stripped>
+WARNING: couldn't find address 0x8a2ec00222900 (0x2ec00222900) in binary!
+	0x88ba0  @objc HostingScrollView.(null) <stripped>
+WARNING: couldn't find address 0x8a09400221450 (0x9400221450) in binary!
+	0x8a2c8  @objc HostingScrollView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x2cffcef718  @objc HostingScrollView.(null) <stripped>
-	0x21c0022d9c0  @objc HostingScrollView.« <stripped>
-WARNING: couldn't find address 0xffcf0a58 (0xffcf0a58) in binary!
-	0x1240022e1d8  @objc HostingScrollView.(null) <stripped>
-WARNING: couldn't find address 0x22da24ffe57c70 (0x224ffe57c70) in binary!
-	0x17c0022d5d8  @objc HostingScrollView.(null) <stripped>
+	0x41cffcea540  @objc HostingScrollView.(null) <stripped>
+	0x61400220e00  @objc HostingScrollView.tG1ˇËÓØ˜ˇHç]êHâCLâÚH∏ˇ <stripped>
+WARNING: couldn't find address 0xffcebde0 (0xffcebde0) in binary!
+	0x33c002215d8  @objc HostingScrollView.(null) <stripped>
+WARNING: couldn't find address 0x220e64ffe4c638 (0x664ffe4c638) in binary!
+	0x26400220a20  @objc HostingScrollView.(null) <stripped>
 
 	// Swift methods
  }
 
  class SwiftUI.PlatformGroupContainer : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x887bc0022e040 (0x7bc0022e040) in binary!
-	0x8fee0  @objc PlatformGroupContainer.(null) <stripped>
+WARNING: couldn't find address 0x8a07400221430 (0x7400221430) in binary!
+	0x8f3b8  @objc PlatformGroupContainer.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffcf0a58  @objc PlatformGroupContainer.(null) <stripped>
+	0xffcebde0  @objc PlatformGroupContainer.(null) <stripped>
  }
 
  class SwiftUI.HostingScrollViewResponder : UIViewResponder { }
@@ -16906,9 +17137,9 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : €±
+	var _view : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _env : ◊˜
+	var _env : ä
 	let tracker : Tracker
  }
 
@@ -16961,7 +17192,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _storedItems : ©u // +0x0
+	var _storedItems : ŸM // +0x0
  }
 
  enum SwiftUI.Role {
@@ -16985,9 +17216,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : øu
+	var _modifier : ÔM
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _viewList : ◊u
+	var _viewList : N
 	var subgraph : Subgraph
  }
 
@@ -17004,9 +17235,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : Èu
+	var _modifier : N
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _viewList : ◊u
+	var _viewList : N
 	var subgraph : Subgraph
  }
 
@@ -17023,7 +17254,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _identifier : O©
+	var _identifier : Å
 	var itemList : _ToolbarItemList
  }
 
@@ -17057,7 +17288,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let renderer : GraphicsRenderer
 	var seed : Seed
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastContentsScale : Kt
+	var lastContentsScale : {L
 
 	// Swift methods
  }
@@ -17074,7 +17305,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : o´
+	var _view : üÉ
 	let ids : UniqueID
  }
 
@@ -17119,11 +17350,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : πs // +0x0
+	var _modifier : €K // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x4
+	var _children : )F // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0x8
+	var _transform : «∑ // +0x8
 	let responder : DropViewResponder // +0x10
  }
 
@@ -17141,15 +17372,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var host : ViewRendererHost // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let attribute : %s // +0x20 (0x8)
+	let attribute : EK // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uniqueId : w¿ // +0x28 (0x4)
+	let uniqueId : ?ô // +0x28 (0x4)
 	var modelOffset : CGPoint // +0x30 (0x10)
 	var presentationOffset : CGPoint // +0x40 (0x10)
 	var behavior : ScrollViewBehavior // +0x50 (0x50)
 	var isInitialized : Bool // +0xa0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿ // +0xa4 (0x4)
+	var resetSeed : ?ô // +0xa4 (0x4)
 	var config : _ScrollViewConfig // +0xa8 (0xa8)
 	var contentSize : CGSize // +0x150 (0x10)
 	var containerSize : CGSize // +0x160 (0x10)
@@ -17157,9 +17388,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var container : ScrollViewNode // +0x180 (0x8)
 	var topScrollIndicatorFollowsContentOffset : Bool // +0x188 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pixelLength : Kt // +0x190 (0x8)
+	var pixelLength : {L // +0x190 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var propertySeed : w¿ // +0x198 (0x4)
+	var propertySeed : ?ô // +0x198 (0x4)
 
 	// Swift methods
  }
@@ -17192,7 +17423,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _proxy : ;r // +0x0
+	var _proxy : {J // +0x0
 	let node : ScrollViewNode // +0x8
  }
 
@@ -17208,7 +17439,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x0
+	var _environment : ä // +0x0
 	let node : ScrollViewNode // +0x8
  }
 
@@ -17216,19 +17447,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _node : ±r
+	var _node : —J
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : £r
+	var _view : √J
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerSize : 7Œ
+	var _containerSize : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _time : Ér
+	var _time : œ;
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √±
+	var _transaction : ÁY
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 	var bindingWarned : Bool
  }
 
@@ -17236,11 +17467,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x0
+	var _size : gâ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentInsets : ”r // +0x4
+	var _contentInsets : ÛJ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childLayoutComputer : √| // +0x8
+	var _childLayoutComputer : ´Y // +0x8
 	let node : ScrollViewNode // +0x10
  }
 
@@ -17250,9 +17481,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x0
+	var _position : óƒ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _proxy : ;r // +0x4
+	var _proxy : {J // +0x4
  }
 
  enum SwiftUI.ScrollViewCommitInfo {
@@ -17327,7 +17558,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case keyPath : Â⁄
+	case keyPath : ç≥
 	case offset  
  }
 
@@ -17335,16 +17566,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : n
+	var _info : EF
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿
+	var seed : ?ô
  }
 
  struct SwiftUI.Init {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : !n
+	var _view : aF
 	let state : ForEachState
  }
 
@@ -17353,7 +17584,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var state : ForEachState
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿
+	var seed : ?ô
  }
 
  struct SwiftUI.ForEachList {
@@ -17361,7 +17592,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var state : ForEachState
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿
+	var seed : ?ô
  }
 
  struct SwiftUI.StaticViewIDCollection {
@@ -17389,13 +17620,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var contentID : Int
 	var bindID : Bool
 	var isUnary : Bool
+	var isConstant : Bool
  }
 
  struct SwiftUI.ForEachChild {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _info : n
+	var _info : EF
 	let id : B
  }
 
@@ -17425,7 +17657,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class SwiftUI.SheetBridge {
- class SwiftUI.SheetHostingController {
  struct SwiftUI.ToolbarButtonStyle { }
 
  struct SwiftUI.Body {
@@ -17449,8 +17680,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var rootWidget : AnyAttribute
 
 	// Swift methods
-	0x89a470  class func WidgetGraph.__allocating_init<A>(rootWidget:) // init 
-	0x89a520  class func WidgetGraph.__allocating_init<A>(rootBundle:) // init 
+	0x89c070  class func WidgetGraph.__allocating_init<A>(rootWidget:) // init 
+	0x89c120  class func WidgetGraph.__allocating_init<A>(rootBundle:) // init 
  }
 
  struct SwiftUI.IDView {
@@ -17465,7 +17696,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : £j
+	var _view : C
 	let inputs : _ViewListInputs
 	let parentSubgraph : Subgraph
 	let allItems : MutableBox
@@ -17476,19 +17707,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _id : €±
+	var _id : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 	var lastID : A?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delta : w¿
+	var delta : ?ô
  }
 
  struct SwiftUI.CachedView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : £j
+	var _view : C
 	let id : B
  }
 
@@ -17518,7 +17749,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var attribute : ‹
+	var attribute : yµ
  }
 
  struct SwiftUI._DelayedPreferenceView {
@@ -17531,16 +17762,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : i
+	var _view : uA
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _source : ‹
+	var _source : yµ
  }
 
  struct SwiftUI.PreferenceValueAttribute {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _source : «
+	var _source : —ü
  }
 
  class SwiftUI.DictionaryEncoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -17555,8 +17786,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var userInfo :  empty-list 
 
 	// Swift methods
-	0x8a4f60  func DictionaryEncoder.options.getter // getter 
-	0x8a5160  func DictionaryEncoder.encode<A>(_:) // method 
+	0x8a6ad0  func DictionaryEncoder.options.getter // getter 
+	0x8a6cd0  func DictionaryEncoder.encode<A>(_:) // method 
  }
 
  class SwiftUI.__DictionaryEncoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -17568,11 +17799,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var codingPath :  empty-list 
 
 	// Swift methods
-	0x8c0420  func __DictionaryEncoder.userInfo.getter // getter 
-	0x8a60b0  func __DictionaryEncoder.canEncodeNewValue.getter // getter 
-	0x8a6140  func __DictionaryEncoder.container<A>(keyedBy:) // method 
-	0x8a6390  func __DictionaryEncoder.unkeyedContainer() // method 
-	0x8a6590  func __DictionaryEncoder.singleValueContainer() // method 
+	0x8c1ed0  func __DictionaryEncoder.userInfo.getter // getter 
+	0x8a7c20  func __DictionaryEncoder.canEncodeNewValue.getter // getter 
+	0x8a7cb0  func __DictionaryEncoder.container<A>(keyedBy:) // method 
+	0x8a7f00  func __DictionaryEncoder.unkeyedContainer() // method 
+	0x8a8100  func __DictionaryEncoder.singleValueContainer() // method 
  }
 
  class SwiftUI.__DictionaryReferencingEncoder : __DictionaryEncoder {
@@ -17595,8 +17826,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var userInfo :  empty-list 
 
 	// Swift methods
-	0x8ad340  func DictionaryDecoder.options.getter // getter 
-	0x8ad500  func DictionaryDecoder.decode<A>(_:from:) // method 
+	0x8aeeb0  func DictionaryDecoder.options.getter // getter 
+	0x8af070  func DictionaryDecoder.decode<A>(_:from:) // method 
  }
 
  class SwiftUI.__DictionaryDecoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -17608,10 +17839,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var codingPath :  empty-list 
 
 	// Swift methods
-	0x8ad9c0  func __DictionaryDecoder.userInfo.getter // getter 
-	0x8adaa0  func __DictionaryDecoder.container<A>(keyedBy:) // method 
-	0x8ae800  func __DictionaryDecoder.unkeyedContainer() // method 
-	0x8aeb20  func __DictionaryDecoder.singleValueContainer() // method 
+	0x8af530  func __DictionaryDecoder.userInfo.getter // getter 
+	0x8af610  func __DictionaryDecoder.container<A>(keyedBy:) // method 
+	0x8b0370  func __DictionaryDecoder.unkeyedContainer() // method 
+	0x8b0690  func __DictionaryDecoder.singleValueContainer() // method 
  }
 
  struct SwiftUI._Options {
@@ -17635,7 +17866,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case custom : /µ
+	case custom : Ké
 	case useDefaultKeys  
 	case convertFromSnakeCase  
  }
@@ -17651,7 +17882,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case custom : •d
+	case custom : =
 	case deferredToData  
 	case base64  
  }
@@ -17661,7 +17892,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case formatted : NSDateFormatter
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case custom : ›d
+	case custom : Q=
 	case deferredToDate  
 	case secondsSince1970  
 	case millisecondsSince1970  
@@ -17696,7 +17927,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case custom : /µ
+	case custom : Ké
 	case useDefaultKeys  
 	case convertToSnakeCase  
  }
@@ -17790,21 +18021,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : õe
+	var _modifier : >
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _updateSeed : ù
+	var _updateSeed : u
 	var oldValue : _ValueActionModifier
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastSeed : w¿
+	var lastSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ttl : w¿
+	var ttl : ?ô
  }
 
  enum SwiftUI._CrownHapticsConfiguration {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case finiteScrolling : ßd
+	case finiteScrolling : =
 	case platters : Notch
 	case none  
 	case infiniteScrolling  
@@ -17814,9 +18045,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let from : Kt // +0x0
+	let from : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let to : Kt // +0x8
+	let to : {L // +0x8
 	let strength : Strength // +0x10
  }
 
@@ -17910,29 +18141,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let truncationMode : TruncationMode // +0x18 (0x1)
 	let lineLimit : Int? // +0x20 (0x9)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minScaleFactor : Kt // +0x30 (0x8)
+	let minScaleFactor : {L // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lineSpacing : Kt // +0x38 (0x8)
+	let lineSpacing : {L // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lineHeightMultiple : Kt // +0x40 (0x8)
+	let lineHeightMultiple : {L // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maximumLineHeight : Kt // +0x48 (0x8)
+	let maximumLineHeight : {L // +0x48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumLineHeight : Kt // +0x50 (0x8)
+	let minimumLineHeight : {L // +0x50 (0x8)
 	let hyphenationFactor : Float // +0x58 (0x4)
+	let alignment : CTTextAlignment // +0x5c (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bodyHeadOutdent : Kt // +0x60 (0x8)
+	let bodyHeadOutdent : {L // +0x60 (0x8)
 	var resolvableConfiguration : ResolvableAttributeConfiguration // +0x68 (0x11)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pixelLength : Kt // +0x80 (0x8)
-	var cache : MetricsCache // +0x88 (0x101)
-	let dynamicRendering : Bool // +0x189 (0x1)
+	let pixelLength : {L // +0x80 (0x8)
+	var cache : MetricsCache // +0x88 (0x119)
+	let dynamicRendering : Bool // +0x1a1 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scaleFactorOverride : Ôb // +0x190 (0x9)
-	var $__lazy_storage_$_pixelMargins : EdgeInsets // +0x1a0 (0x21)
+	var scaleFactorOverride : YK // +0x1a8 (0x9)
+	var $__lazy_storage_$_pixelMargins : EdgeInsets // +0x1b8 (0x21)
 
 	// Swift methods
-	0x912e80  class func ResolvedStyledText.__allocating_init(from:) // init 
+	0x9104e0  class func ResolvedStyledText.__allocating_init(from:) // init 
  }
 
  class SwiftUI.TextStorage : AnyTextStorage {
@@ -17957,12 +18189,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let string : NSAttributedString // +0x8
 	let lineLimit : Int? // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minScaleFactor : Kt // +0x20
+	let minScaleFactor : {L // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bodyHeadOutdent : Kt // +0x28
+	let bodyHeadOutdent : {L // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pixelLength : Kt // +0x30
+	let pixelLength : {L // +0x30
 	let widthIsFlexible : Bool // +0x38
+	let drawWithRequestedWidth : Bool // +0x39
 	var entries : ArrayWith3Inline // +0x40
  }
 
@@ -17970,13 +18203,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _source : ac // +0x0
+	var _source : Î; // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _reference : ac // +0x4
+	var _reference : Î; // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x8
+	var _environment : ä // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _time : Ér // +0xc
+	var _time : œ; // +0xc
 	let tracker : Tracker // +0x10
 	var resolvedSource : ResolvedStyledText // +0x18
 	var resolvedReference : ResolvedStyledText // +0x20
@@ -18003,18 +18236,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _text : -c // +0x0
+	var _text : ß; // +0x0
  }
 
  struct SwiftUI.ResolvedTextFilter {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _text : ac // +0x0
+	var _text : Î; // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x4
+	var _environment : ä // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _time : Ér // +0x8
+	var _time : œ; // +0x8
 	let includeDefaultAttributes : Bool // +0xc
 	let dynamicRendering : Bool // +0xd
 	let tracker : Tracker // +0x10
@@ -18026,21 +18259,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resolvedText : -c // +0x0
- }
-
- struct SwiftUI.StyledTextChildGeometry {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parentSize : 7Œ // +0x0
+	var _resolvedText : ß; // +0x0
  }
 
  struct SwiftUI.StyledTextLayoutComputer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _textView : ·P // +0x0
+	var _textView : °* // +0x0
+ }
+
+ struct SwiftUI.StyledTextChildGeometry {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _parentSize : gâ // +0x0
  }
 
  enum SwiftUI.CodingKeys {
@@ -18058,6 +18291,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bodyHeadOutdent  
 	case pixelLength  
 	case resolvableConfiguration  
+	case alignment  
  }
 
  struct SwiftUI.Metrics {
@@ -18065,13 +18299,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var size : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : Kt // +0x10
+	let scale : {L // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var firstBaseline : Kt // +0x18
+	var firstBaseline : {L // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastBaseline : Kt // +0x20
+	var lastBaseline : {L // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var baselineAdjustment : Kt // +0x28
+	var baselineAdjustment : {L // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var requestedWidth : {L // +0x30
  }
 
  struct SwiftUI.ColorPicker {
@@ -18088,15 +18324,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var parent : BridgedColorPicker
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x871240022e1d8 (0x1240022e1d8) in binary!
-	0x89598  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x8897c0022d5d8 (0x17c0022d5d8) in binary!
+WARNING: couldn't find address 0x88b3c002215d8 (0x33c002215d8) in binary!
+	0x8afb0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a26400220a20 (0x26400220a20) in binary!
 	0x38000000c  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x895740022da00 (0x5740022da00) in binary!
-	0x8fe78  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8af8c00220e40 (0x78c00220e40) in binary!
+	0x8f350  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0x921580  func BridgedColorPicker.Coordinator.colorChanged(_:) // method 
+	0x91eb00  func BridgedColorPicker.Coordinator.colorChanged(_:) // method 
  }
 
  struct SwiftUI.BridgedColorPicker {
@@ -18136,14 +18372,8 @@ WARNING: couldn't find address 0x895740022da00 (0x5740022da00) in binary!
 	// Properties
 	var configuration : DisclosureGroupStyleConfiguration
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var trailingPadding : Kt
+	var trailingPadding : {L
 	var _depth : Environment
- }
-
- struct SwiftUI.HiddenWhileProxiedEffect {
-
-	// Properties
-	var opacity : Float // +0x0
  }
 
  struct SwiftUI._ShadowView {
@@ -18157,9 +18387,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : 9F
+	var _view : c!
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 	let tracker : Tracker
  }
 
@@ -18219,9 +18449,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _expandedElements : StateOrBinding
 	var base : Base
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : Â⁄
+	var id : ç≥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var children : oí
+	var children : Gn
 	var parentContent : (_:)
 	var leafContent : (_:)
 	var grouping : Binding
@@ -18233,7 +18463,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : !D
+	var _base : Q
 	let insetMode : SectionInsetMode
  }
 
@@ -18264,14 +18494,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var defaultFocusNamespace : ID // +0x60 (0x9)
 
 	// Swift methods
-	0x9328e0  func FocusBridge.focusedItem.getter // getter 
-	0x932ac0  func FocusBridge.focusedItem.setter // setter 
-	0x932d10  func FocusBridge.focusedResponder.getter // getter 
-	0x932d90  func FocusBridge.focusDidChange() // method 
-	0x932dd0  func FocusBridge.updateEnvironment(_:) // method 
-	0x932ed0  func FocusBridge.focusItems(in:) // method 
-	0x933090  func FocusBridge.didUpdateFocus(in:with:) // method 
-	0x933220  func FocusBridge.isHostContainedInFocusedItem.getter // getter 
+	0x9302e0  func FocusBridge.focusedItem.getter // getter 
+	0x9304c0  func FocusBridge.focusedItem.setter // setter 
+	0x930710  func FocusBridge.focusedResponder.getter // getter 
+	0x930790  func FocusBridge.focusDidChange() // method 
+	0x9307d0  func FocusBridge.updateEnvironment(_:) // method 
+	0x9308d0  func FocusBridge.focusItems(in:) // method 
+	0x930a90  func FocusBridge.didUpdateFocus(in:with:) // method 
+	0x930c00  func FocusBridge.isHostContainedInFocusedItem.getter // getter 
  }
 
  struct SwiftUI.EmptyCommands: PrimitiveCommands,  Commands { }
@@ -18327,9 +18557,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : €±
+	var _modifier : {ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 	let tracker : Tracker
  }
 
@@ -18346,7 +18576,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var size : Kt // +0x0
+	var size : {L // +0x0
 	var weight : Weight // +0x8
 	var design : Design // +0x10
  }
@@ -18363,7 +18593,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let radius : Kt // +0x0
+	let radius : {L // +0x0
  }
 
  struct SwiftUI.ArchivedViewBodyAccessor { }
@@ -18397,6 +18627,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case hidden  
  }
 
+ struct SwiftUI.TraitsKey { }
+
  struct SwiftUI.AccessibilityProperties {
 
 	// Properties
@@ -18409,6 +18641,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case point : CGPoint
 	case unitPoint : UnitPoint
  }
+
+ struct SwiftUI.LinkDestinationKey { }
 
  struct SwiftUI.AutomationTypeKey { }
 
@@ -18441,15 +18675,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct SwiftUI.OutlineKey { }
 
- struct SwiftUI.TraitsKey { }
-
  struct SwiftUI.ViewTypeDescription { }
+
+ struct SwiftUI.AXViewTypeDescribingBox: AXAnyViewTypeDescribingBox { }
 
  struct SwiftUI.ExternalPlatformProperties {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _properties : ≠@ // +0x0
+	var _properties : ± // +0x0
 	var value : AccessibilityProperties // +0x8
  }
 
@@ -18465,7 +18699,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _values : ≠? // +0x0
+	var _values : ´ // +0x0
  }
 
  struct SwiftUI.ScrollablePreferenceKey { }
@@ -18508,7 +18742,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var name : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var size : Kt // +0x10
+	var size : {L // +0x10
 	var textStyle : TextStyle // +0x18
  }
 
@@ -18524,11 +18758,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : √<
+	var _view : ¡
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _bounds : C
+	var _bounds : ìÁ
 	let tracker : Tracker
  }
 
@@ -18536,9 +18770,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : √<
+	var _view : ¡
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 	let tracker : Tracker
  }
 
@@ -18552,32 +18786,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  struct SwiftUI._ProminentPopUpButtonStyle { }
 
- struct SwiftUI.Body {
-
-	// Properties
-	let configuration : _ResolvedPopUpButton // +0x0
- }
-
  struct SwiftUI._PlainPopUpButtonStyle {
 
 	// Properties
 	var showArrows : Bool // +0x0
  }
 
- struct SwiftUI.Body {
-
-	// Properties
-	let configuration : _ResolvedPopUpButton // +0x0
-	let showArrows : Bool // +0x9
- }
-
  struct SwiftUI._TexturedPopUpButtonStyle { }
-
- struct SwiftUI.Body {
-
-	// Properties
-	let configuration : _ResolvedPopUpButton // +0x0
- }
 
  struct SwiftUI._DefaultPopUpButtonStyle { }
 
@@ -18587,12 +18802,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let configuration : _ResolvedPopUpButton // +0x0
  }
 
- struct SwiftUI.AppKitPopUpButtonRoot {
+ struct SwiftUI.BodyContent {
 
 	// Properties
-	var configuration : _ResolvedPopUpButton // +0x0
-	var style : AppKitPopUpButtonStyle // +0x9
-	var showArrows : Bool // +0xa
+	var configuration : _ResolvedPopUpButton
+	var menu : A
+	var style : AppKitPopUpButtonStyle
+	var showArrows : Bool
+ }
+
+ struct SwiftUI.Child {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _configuration : 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _menu : ˇπ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _style : ı
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _showArrows : Î˜
  }
 
  enum SwiftUI.AppKitPopUpButtonStyle {
@@ -18613,7 +18842,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyStyleBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x9486a0  func AnyStyleBox.body(configuration:) // method 
+	0x947d50  func AnyStyleBox.body(configuration:) // method 
  }
 
  class SwiftUI.StyleBox {
@@ -18626,16 +18855,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SwiftUI.EmptyViewRendererHost : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ViewRendererHost {
 
 	// Properties
-	let viewGraph : ViewGraph
-	let eventBindingManager : EventBindingManager
-	var needsRootViewUpdate : Bool
-	var needsEnvironmentUpdate : Bool
-	var needsFocusedValuesUpdate : Bool
-	var isRendering : Bool
-	var externalUpdateCount : Int
-	var currentTimestamp : Time
+	let viewGraph : ViewGraph // +0x0
+	let eventBindingManager : EventBindingManager // +0x0
+	var propertiesNeedingUpdate : ViewRendererHostProperties // +0xb3dda8
+	var isRendering : Bool // +0x0
+	var externalUpdateCount : Int // +0x4cab20
+	var currentTimestamp : Time // +0x0
 
 	// Swift methods
+ }
+
+ struct SwiftUI.ViewRendererHostProperties {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue :  // +0x0
  }
 
  struct SwiftUI.HostingViewCoordinateSpace { }
@@ -18668,7 +18902,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : ı9
+	var _view : u
  }
 
  struct SwiftUI.RepeatAnimation {
@@ -18706,12 +18940,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.ImageLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x895740022da00 (0x5740022da00) in binary!
-	0x8fe78  @objc ImageLayer.(null) <stripped>
-WARNING: couldn't find address 0x8fe6c0022dfb8 (0x66c0022dfb8) in binary!
+WARNING: couldn't find address 0x8af8c00220e40 (0x78c00220e40) in binary!
+	0x8f350  @objc ImageLayer.(null) <stripped>
+WARNING: couldn't find address 0x8f344002213a8 (0x344002213a8) in binary!
 	0x58000000c  @objc ImageLayer.(null) <stripped>
-WARNING: couldn't find address 0x889340022d8c0 (0x1340022d8c0) in binary!
-	0x89538  @objc ImageLayer.(null) <stripped>
+WARNING: couldn't find address 0x8a21c00220d00 (0x21c00220d00) in binary!
+	0x8af50  @objc ImageLayer.(null) <stripped>
  }
 
  class SwiftUI.GradientLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -18723,15 +18957,15 @@ WARNING: couldn't find address 0x889340022d8c0 (0x1340022d8c0) in binary!
 	var $__lazy_storage_$_gradientLayer : CAGradientLayer?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x889340022d8c0 (0x1340022d8c0) in binary!
-	0x89538  @objc GradientLayer.(null) <stripped>
-WARNING: couldn't find address 0x8fe3c0022e938 (0x63c0022e938) in binary!
-	0x8fe30  @objc GradientLayer.(null) <stripped>
-WARNING: couldn't find address 0x889040022d560 (0x1040022d560) in binary!
+WARNING: couldn't find address 0x8a21c00220d00 (0x21c00220d00) in binary!
+	0x8af50  @objc GradientLayer.(null) <stripped>
+WARNING: couldn't find address 0x8f31400221d58 (0x31400221d58) in binary!
+	0x8f308  @objc GradientLayer.(null) <stripped>
+WARNING: couldn't find address 0x8a1ec002209a8 (0x1ec002209a8) in binary!
 	0x38000000c  @objc GradientLayer.(null) <stripped>
-WARNING: couldn't find address 0x8707c0022e2b8 (0x7c0022e2b8) in binary!
-	0x894f0  @objc GradientLayer.(null) <stripped>
-WARNING: couldn't find address 0x888d40022d530 (0xd40022d530) in binary!
+WARNING: couldn't find address 0x88a94002216a0 (0x294002216a0) in binary!
+	0x8af08  @objc GradientLayer.(null) <stripped>
+WARNING: couldn't find address 0x8a1bc00220978 (0x1bc00220978) in binary!
 	0x38000000c  @objc GradientLayer.(null) <stripped>
  }
 
@@ -18749,15 +18983,15 @@ WARNING: couldn't find address 0x888d40022d530 (0xd40022d530) in binary!
 	var configuration : DatePicker
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8707c0022e2b8 (0x7c0022e2b8) in binary!
-	0x894f0  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x888d40022d530 (0xd40022d530) in binary!
+WARNING: couldn't find address 0x88a94002216a0 (0x294002216a0) in binary!
+	0x8af08  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a1bc00220978 (0x1bc00220978) in binary!
 	0x38000000c  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x8704c0022d850 (0x4c0022d850) in binary!
-	0x894c0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x88a6400220c90 (0x26400220c90) in binary!
+	0x8aed8  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0x9647d0  func UIKitDatePickerRepresentable.Coordinator.dateChanged(_:) // method 
+	0x965e50  func UIKitDatePickerRepresentable.Coordinator.dateChanged(_:) // method 
  }
 
  struct SwiftUI.UIKitDatePicker {
@@ -18775,11 +19009,11 @@ WARNING: couldn't find address 0x8704c0022d850 (0x4c0022d850) in binary!
 	// Properties
 	let configuration : DatePicker
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : °n
+	let locale : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : √n
+	let calendar : #è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timeZone : -o
+	let timeZone : çè
 	let style : UIDatePickerStyle
  }
 
@@ -18790,7 +19024,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var implicitID : Int // +0x30
 	var options : Options // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _traits : ˝ÿ // +0x40
+	var _traits : C¬ // +0x40
 	var traitKeys : ViewTraitKeys // +0x48
  }
 
@@ -18812,7 +19046,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.ListModifier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x96a4f0  func _ViewListOutputs.ListModifier.apply(to:) // method 
+	0x96bc70  func _ViewListOutputs.ListModifier.apply(to:) // method 
  }
 
  class SwiftUI.Views : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -18821,9 +19055,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let isDataDependent : Bool
 
 	// Swift methods
-	0x96c430  func _ViewList_ID.Views.endIndex.getter // getter 
-	0x96c480  func _ViewList_ID.Views.subscript.getter // getter 
-	0x96c4d0  func _ViewList_ID.Views.isEqual(to:) // method 
+	0x96dbb0  func _ViewList_ID.Views.endIndex.getter // getter 
+	0x96dc00  func _ViewList_ID.Views.subscript.getter // getter 
+	0x96dc50  func _ViewList_ID.Views.isEqual(to:) // method 
  }
 
  class SwiftUI._Views {
@@ -18842,10 +19076,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let subgraph : Subgraph
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var refcount : w¿
+	var refcount : ?ô
 
 	// Swift methods
-	0x968560  func _ViewList_Subgraph.invalidate() // method 
+	0x969c20  func _ViewList_Subgraph.invalidate() // method 
  }
 
  class SwiftUI._ViewList_IndirectMap : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -18868,7 +19102,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case staticList : _ViewList_Elements
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case dynamicList : √7
+	case dynamicList : C
  }
 
  enum SwiftUI._ViewList_Edit {
@@ -18888,20 +19122,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _index : ©5 // +0x0
+	var _index : y // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var implicitID : ©5 // +0x4
+	var implicitID : y // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var explicitID : s // +0x8
+	var explicitID : I // +0x8
  }
 
  struct SwiftUI._ViewList_ID {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _index : ©5 // +0x0
+	var _index : y // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var implicitID : ©5 // +0x4
+	var implicitID : y // +0x4
 	var explicitIDs : Explicit // +0x8
  }
 
@@ -18928,7 +19162,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let canTransition : Bool // +0x30
 	let traitKeys : ViewTraitKeys // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _traits : ˝ÿ // +0x44
+	var _traits : C¬ // +0x44
  }
 
  struct SwiftUI._ViewList_Group: ViewList {
@@ -18962,7 +19196,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : w¿ // +0x0
+	var id : ?ô // +0x0
 	var base : _ViewList_Group // +0x8
 	var traits : ViewTraitCollection // +0x10
  }
@@ -19000,7 +19234,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var elements : _ViewList_Elements // +0x20
 	var traits : ViewTraitCollection // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var list : O} // +0x50
+	var list : ?Z // +0x50
 	var fromForEach : Bool // +0x55
  }
 
@@ -19017,7 +19251,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : ◊u // +0x0
+	var _base : N // +0x0
 	let modifier : ListModifier // +0x8
  }
 
@@ -19033,7 +19267,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : WØ // +0x0
+	let id : 'à // +0x0
 	let owner : AnyAttribute // +0x28
 	let isUnary : Bool // +0x2c
  }
@@ -19107,9 +19341,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var removeSections : u¬
+	var removeSections : ¨
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var insertSections : u¬
+	var insertSections : ¨
 	var moveSections : [(Int, Int)]
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var removeRows :  empty-list 
@@ -19118,7 +19352,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var moveRows :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var changedSectionAccessories : u¬
+	var changedSectionAccessories : ¨
 	var base : ListBatchUpdates
  }
 
@@ -19156,18 +19390,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configuration : UIKitTextEditor
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8704c0022d850 (0x4c0022d850) in binary!
-	0x894c0  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x888a40022d500 (0xa40022d500) in binary!
+WARNING: couldn't find address 0x88a6400220c90 (0x26400220c90) in binary!
+	0x8aed8  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a18c00220948 (0x18c00220948) in binary!
 	0xd8000000c  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x8949c0022d928 (0x49c0022d928) in binary!
-	0x8fda0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8aeb400220d68 (0x6b400220d68) in binary!
+	0x8f278  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0x981180  func UIKitTextEditor.Coordinator.configuration.getter // getter 
-	0x9811e0  func UIKitTextEditor.Coordinator.configuration.setter // setter 
-	0x9812a0  func UIKitTextEditor.Coordinator.textViewDidChange(_:) // method 
-	0x981480  func UIKitTextEditor.Coordinator.update(_:configuration:paragraphStyle:font:foregroundColor:) // method 
+	0x984070  func UIKitTextEditor.Coordinator.configuration.getter // getter 
+	0x9840d0  func UIKitTextEditor.Coordinator.configuration.setter // setter 
+	0x984190  func UIKitTextEditor.Coordinator.textViewDidChange(_:) // method 
+	0x984370  func UIKitTextEditor.Coordinator.update(_:configuration:paragraphStyle:font:foregroundColor:) // method 
  }
 
  struct SwiftUI.UIKitTextEditor {
@@ -19187,7 +19421,7 @@ WARNING: couldn't find address 0x8949c0022d928 (0x49c0022d928) in binary!
 	// Properties
 	var alignment : VerticalAlignment // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : Ôb // +0x8
+	var spacing : YK // +0x8
  }
 
  struct SwiftUI.LazyHStack {
@@ -19220,7 +19454,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _source : €±
+	var _source : {ƒ
 	var helper : AnimatableAttributeHelper
  }
 
@@ -19228,27 +19462,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _time : Ér
+	var _time : œ;
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √±
+	var _transaction : ÁY
 	var listeners : AnimationListener
 	var previousModelData : Animatable
 	var animatorState : AnimatorState
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resetSeed : w¿
+	var resetSeed : ?ô
  }
 
  struct SwiftUI.AnimatableFrameAttribute {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x0
+	var _position : óƒ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x4
+	var _size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _pixelLength : Œ // +0x8
+	var _pixelLength : •∑ // +0x8
 	var helper : AnimatableAttributeHelper // +0x10
 	let animationsDisabled : Bool // +0x5c
  }
@@ -19258,7 +19492,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var phase : Phase // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x44
+	var seed : ?ô // +0x44
 	var containers : ContainerInfo // +0x48
  }
 
@@ -19268,7 +19502,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var node : ScrollViewNode // +0x0
 	var offset : CGPoint // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : w¿ // +0x18
+	var seed : ?ô // +0x18
  }
 
  enum SwiftUI.Phase {
@@ -19387,7 +19621,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿ // +0x0
+	let rawValue : ?ô // +0x0
  }
 
  enum SwiftUI.CodingKeys {
@@ -19401,27 +19635,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let interval : g÷
+	let interval : œØ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : √n
+	let calendar : #è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : °n
+	let locale : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timeZone : -o
+	let timeZone : çè
  }
 
  struct SwiftUI.ResolvableAbsoluteDate: ResolvableStringAttribute {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : (
+	let date : À0
 	let style : DateStyle
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : √n
+	let calendar : #è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : °n
+	let locale : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timeZone : -o
+	let timeZone : çè
  }
 
  struct SwiftUI.ResolvableCurrentDate: ResolvableStringAttribute {
@@ -19429,11 +19663,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let dateFormat : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : √n
+	let calendar : #è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : °n
+	let locale : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timeZone : -o
+	let timeZone : çè
  }
 
  enum SwiftUI.ResolvableAttributeUpdateStrategy {
@@ -19508,7 +19742,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identifier : WØ // +0x0
+	var identifier : 'à // +0x0
 	var namespace : ID // +0x28
  }
 
@@ -19525,11 +19759,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var selfAttribute : AnyAttribute
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : Q.
+	var _modifier : ≥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _nodeList : A.
+	var _nodeList : £
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _accessibilityEnabled : 
+	var _accessibilityEnabled : Î˜
 	var scope : AccessibilityRelationshipScope
 	var state : State
  }
@@ -19585,11 +19819,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : €,
+	var _modifier : M
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
  }
 
  struct SwiftUI.BorderedButtonMenuStyle { }
@@ -19637,40 +19871,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var eventBridge : EventBindingBridge
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hoverSeed : w¿
+	var hoverSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var transformSeed : w¿
+	var transformSeed : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var initialScale : Kt
+	var initialScale : {L
 	var initialAngle : Angle
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8949c0022d928 (0x49c0022d928) in binary!
-	0x8fda0  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x888740022d810 (0x740022d810) in binary!
-	0x88688  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x8867c0022d808 (0x67c0022d808) in binary!
-	0x88670  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x886640022d800 (0x6640022d800) in binary!
-	0x88658  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x8864c0022d7f8 (0x64c0022d7f8) in binary!
-	0x88640  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x886340022d7f0 (0x6340022d7f0) in binary!
-	0x93f96  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x887fc0022d458 (0x7fc0022d458) in binary!
+WARNING: couldn't find address 0x8aeb400220d68 (0x6b400220d68) in binary!
+	0x8f278  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x8a15c00220c50 (0x15c00220c50) in binary!
+	0x89f40  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x89f3400220c48 (0x73400220c48) in binary!
+	0x89f28  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x89f1c00220c40 (0x71c00220c40) in binary!
+	0x89f10  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x89f0400220c38 (0x70400220c38) in binary!
+	0x89ef8  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x89eec00220c30 (0x6ec00220c30) in binary!
+	0x95c4e  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x8a0e4002208a0 (0xe4002208a0) in binary!
 	0x58000000c  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x86f740022d800 (0x7740022d800) in binary!
-	0x885f8  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x885ec0022d7f8 (0x5ec0022d7f8) in binary!
-	0x885e0  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x885d40022d7f0 (0x5d40022d7f0) in binary!
+WARNING: couldn't find address 0x8898c00220c40 (0x18c00220c40) in binary!
+	0x89eb0  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x89ea400220c38 (0x6a400220c38) in binary!
+	0x89e98  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x89e8c00220c30 (0x68c00220c30) in binary!
 	0x38000000c  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x86f2c0022e0d8 (0x72c0022e0d8) in binary!
-	0x893a0  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x887840022d3e0 (0x7840022d3e0) in binary!
+WARNING: couldn't find address 0x88944002214b8 (0x144002214b8) in binary!
+	0x8adb8  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x8a06c00220828 (0x6c00220828) in binary!
 	0x58000000c  @objc UIKitGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x8937c0022de80 (0x37c0022de80) in binary!
-	0x86ef0  @objc UIKitGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x8ad9400221280 (0x59400221280) in binary!
+	0x88908  @objc UIKitGestureRecognizer.(null) <stripped>
  }
 
  struct SwiftUI.CodableCGImage {
@@ -19712,12 +19946,12 @@ WARNING: couldn't find address 0x8937c0022de80 (0x37c0022de80) in binary!
 	// Properties
 	var angle : Angle // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var axis : Õ) // +0x8
+	var axis : ? // +0x8
 	var anchor : UnitPoint // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var anchorZ : Kt // +0x30
+	var anchorZ : {L // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var perspective : Kt // +0x38
+	var perspective : {L // +0x38
  }
 
  struct SwiftUI.AllowedBehaviors {
@@ -19790,13 +20024,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var destination : LinkDestination
  }
 
- struct SwiftUI._Link {
-
-	// Properties
-	var label : A
-	var destination : LinkDestination
- }
-
  struct SwiftUI.LinkButtonModifier {
 
 	// Properties
@@ -19815,7 +20042,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var url : £ı
+	var url : c–
 	var isSensitive : Bool
  }
 
@@ -19842,7 +20069,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : Ûq
+	var keyPath : M
 	var transform : (_:)
  }
 
@@ -19850,12 +20077,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : π'
+	var _modifier : 5
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 	var oldValue : A?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var oldKeyPath : Ÿi
+	var oldKeyPath : ıD
  }
 
  struct SwiftUI.TransactionalPreferenceTransformModifier {
@@ -19868,9 +20095,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : S'
+	var _modifier : œ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √±
+	var _transaction : ÁY
  }
 
  struct SwiftUI.FetchedResults {
@@ -19939,7 +20166,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : w¿ // +0x0
+	var value : ?ô // +0x0
  }
 
  struct SwiftUI.Index {
@@ -19947,14 +20174,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var identity : Identity // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var serial : w¿ // +0x4
+	var serial : ?ô // +0x4
  }
 
  struct SwiftUI.Seed {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : 3 // +0x0
+	var value : Oﬂ // +0x0
  }
 
  struct SwiftUI.Version {
@@ -20000,7 +20227,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿ // +0x0
+	let rawValue : ?ô // +0x0
  }
 
  struct SwiftUI.Item {
@@ -20119,7 +20346,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : À5 // +0x0
+	let rawValue :  // +0x0
  }
 
  enum SwiftUI.ViewKind {
@@ -20146,7 +20373,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var image : CGImage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : Kt // +0x8
+	var scale : {L // +0x8
 	var orientation : Orientation // +0x10
 	var label : Text // +0x18
 	var decorative : Bool // +0x38
@@ -20154,7 +20381,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyWindowStyleStorageBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x9d6840  func AnyWindowStyleStorageBase.configureWindow(_:) // method 
+	0x9dae60  func AnyWindowStyleStorageBase.configureWindow(_:) // method 
  }
 
  class SwiftUI.AnyWindowStyleStorage {
@@ -20202,11 +20429,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : /#
+	var _modifier : ´˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
  }
 
  struct SwiftUI._ContentShapeModifier {
@@ -20221,15 +20448,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : —"
+	var _modifier : M˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh
+	var _children : )F
 	let responder : ShapeResponder
  }
 
@@ -20251,15 +20478,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configuration : _IndexViewStyleConfiguration
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x86f2c0022e0d8 (0x72c0022e0d8) in binary!
-	0x893a0  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x887840022d3e0 (0x7840022d3e0) in binary!
+WARNING: couldn't find address 0x88944002214b8 (0x144002214b8) in binary!
+	0x8adb8  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8a06c00220828 (0x6c00220828) in binary!
 	0x58000000c  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x8937c0022de80 (0x37c0022de80) in binary!
-	0x86ef0  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8ad9400221280 (0x59400221280) in binary!
+	0x88908  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0x9db090  func Coordinator.pageDidChange(_:) // method 
+	0x9df4b0  func Coordinator.pageDidChange(_:) // method 
  }
 
  enum SwiftUI.PageViewBackgroundDisplayMode {
@@ -20286,16 +20513,16 @@ WARNING: couldn't find address 0x8937c0022de80 (0x37c0022de80) in binary!
 	var swiftUIAccessibilityLabel : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8937c0022de80 (0x37c0022de80) in binary!
-	0x86ef0  @objc SwiftUITabBarItem.(null) <stripped>
-WARNING: couldn't find address 0x893640022d7f0 (0x3640022d7f0) in binary!
-	0x8fc68  @objc SwiftUITabBarItem.(null) <stripped>
-WARNING: couldn't find address 0x8873c0022d398 (0x73c0022d398) in binary!
+WARNING: couldn't find address 0x8ad9400221280 (0x59400221280) in binary!
+	0x88908  @objc SwiftUITabBarItem.(null) <stripped>
+WARNING: couldn't find address 0x8ad7c00220c30 (0x57c00220c30) in binary!
+	0x8f140  @objc SwiftUITabBarItem.(null) <stripped>
+WARNING: couldn't find address 0x8a024002207e0 (0x24002207e0) in binary!
 	0x48000000c  @objc SwiftUITabBarItem.(null) <stripped>
-WARNING: couldn't find address 0x86eb40022d708 (0x6b40022d708) in binary!
-	0x89328  @objc SwiftUITabBarItem.(null) <stripped>
-WARNING: couldn't find address 0x8931c0022d7a8 (0x31c0022d7a8) in binary!
-	0x88700  @objc SwiftUITabBarItem.(null) <stripped>
+WARNING: couldn't find address 0x888cc00220b48 (0xcc00220b48) in binary!
+	0x8ad40  @objc SwiftUITabBarItem.(null) <stripped>
+WARNING: couldn't find address 0x8ad3400220be8 (0x53400220be8) in binary!
+	0x89fe8  @objc SwiftUITabBarItem.(null) <stripped>
 
 	// Swift methods
  }
@@ -20304,14 +20531,28 @@ WARNING: couldn't find address 0x8931c0022d7a8 (0x31c0022d7a8) in binary!
 
 	// Properties
 	var name : String // +0x0
-	var groups : Result // +0x10
+	var id : Identifier // +0x10
+	var groups : Result // +0x18
  }
 
  struct SwiftUI.Template {
 
 	// Properties
 	let name : String // +0x0
-	let expectedPlacements : CommandGroupPlacement // +0x10
+	let id : Identifier // +0x10
+	let expectedPlacements : CommandGroupPlacement // +0x18
+ }
+
+ enum SwiftUI.Identifier {
+
+	// Properties
+	case app  
+	case file  
+	case edit  
+	case format  
+	case view  
+	case window  
+	case help  
  }
 
  class SwiftUI.CoreCoordinator {
@@ -20383,17 +20624,17 @@ WARNING: couldn't find address 0x8931c0022d7a8 (0x31c0022d7a8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _keyValue : ‹
+	var _keyValue : yµ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _keys : ã&
+	var _keys : 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _childValues : Á∆
+	var _childValues : ßü
 	var keyRequested : Bool
 	var wasEmpty : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delta : w¿
+	var delta : ?ô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let nodeId : w¿
+	let nodeId : ?ô
  }
 
  struct SwiftUI._TransactionModifier {
@@ -20415,9 +20656,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : É // +0x0
+	var _modifier : È˘ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √± // +0x4
+	var _transaction : ÁY // +0x4
  }
 
  struct SwiftUI.SavedTransaction {
@@ -20446,7 +20687,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var colorMode : ColorRenderingMode // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rbColorMode : #X // +0x4
+	var rbColorMode : „2 // +0x4
 	var rendersAsynchronously : Bool // +0x9
 	var isOpaque : Bool // +0xa
 	var drawsPlatformViews : Bool // +0xb
@@ -20461,9 +20702,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var phase : EventPhase // +0x8
 	var globalLocation : CGPoint // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scaleDelta : Kt // +0x20
+	var scaleDelta : {L // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var initialScale : Kt // +0x28
+	var initialScale : {L // +0x28
  }
 
  class SwiftUI.ObjectCache {
@@ -20489,13 +20730,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let activityType : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x86eb40022d708 (0x6b40022d708) in binary!
-	0x89328  @objc UserActivityTrackingInfo.(null) <stripped>
-WARNING: couldn't find address 0x8931c0022d7a8 (0x31c0022d7a8) in binary!
-	0x88700  @objc UserActivityTrackingInfo.(null) <stripped>
+WARNING: couldn't find address 0x888cc00220b48 (0xcc00220b48) in binary!
+	0x8ad40  @objc UserActivityTrackingInfo.(null) <stripped>
+WARNING: couldn't find address 0x8ad3400220be8 (0x53400220be8) in binary!
+	0x89fe8  @objc UserActivityTrackingInfo.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x1f4fff3b438  @objc UserActivityTrackingInfo.(null) <stripped>
-	0x324fff3b5f0  @objc UserActivityTrackingInfo.H∏ˇ <stripped>
+	0x5dcfff38550  @objc UserActivityTrackingInfo.(null) <stripped>
+	0x76cfff38708  @objc UserActivityTrackingInfo.u∏LâÁË¨™£ <stripped>
 
 	// Swift methods
  }
@@ -20545,7 +20786,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var shouldShowScrollIndicator : Bool // +0x1a
 	var isScrollIndicatorStyledForTouchInput : Bool // +0x1b
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var visibleLength : Kt // +0x20
+	var visibleLength : {L // +0x20
 	var requiresFocus : Bool // +0x28
 	var _isContinuous : Bool // +0x29
 	var _crownHapticsConfiguration : _CrownHapticsConfiguration // +0x30
@@ -20561,8 +20802,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawValue : ±5 // +0x0
+	var rawValue : â // +0x0
  }
+
+ struct SwiftUI.ToolbarLabeledViewStyle { }
 
  class SwiftUI.GraphHost : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
@@ -20570,7 +20813,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var data : Data
 	var isInstantiated : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hostPreferenceValues : Á∆
+	var hostPreferenceValues : ßü
 	var lastHostPreferencesSeed : VersionSeed
 	var pendingTransactions : AsyncTransaction
 	var inTransaction : Bool
@@ -20578,11 +20821,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var removedState : RemovedState
 
 	// Swift methods
-	0x9f1a70  func GraphHost.graphDelegate.getter // getter 
-	0x9efad0  func GraphHost.parentHost.getter // getter 
-	0x9f2c90  func GraphHost.instantiateOutputs() // method 
-	0x9f2ca0  func GraphHost.uninstantiateOutputs() // method 
-	0x9efae0  func GraphHost.timeDidChange() // method 
+	0x9f8100  func GraphHost.graphDelegate.getter // getter 
+	0x9f55d0  func GraphHost.parentHost.getter // getter 
+	0x9f8730  func GraphHost.instantiateOutputs() // method 
+	0x9f8740  func GraphHost.uninstantiateOutputs() // method 
+	0x9f55e0  func GraphHost.timeDidChange() // method 
  }
 
  class SwiftUI.AsyncTransaction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -20606,7 +20849,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : À5 // +0x0
+	let rawValue :  // +0x0
  }
 
  struct SwiftUI.Data {
@@ -20617,15 +20860,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var rootSubgraph : Subgraph // +0x10
 	var isRemoved : Bool // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _time : Ér // +0x1c
+	var _time : œ; // +0x1c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x20
+	var _environment : ä // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr // +0x24
+	var _phase : ßJ // +0x24
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _hostPreferenceKeys : ã& // +0x28
+	var _hostPreferenceKeys :  // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transaction : √± // +0x2c
+	var _transaction : ÁY // +0x2c
 	var inputs : _GraphInputs // +0x30
  }
 
@@ -20647,7 +20890,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿ // +0x0
+	let rawValue : ?ô // +0x0
  }
 
  struct SwiftUI._DetachedView {
@@ -20681,7 +20924,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : e
+	var _transform : •Û
 	let placeholder : _DetachedPlaceholder
  }
 
@@ -20689,7 +20932,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : Ò
+	var _view : 1Û
 	let inputs : _ViewInputs
 	let outputs : _ViewOutputs
  }
@@ -20698,13 +20941,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : Kt // +0x0
+	var x : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : Kt // +0x8
+	var y : {L // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Kt // +0x10
+	var width : {L // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Kt // +0x18
+	var height : {L // +0x18
  }
 
  struct SwiftUI._DynamicPropertyBuffer {
@@ -20712,18 +20955,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var buf : UnsafeMutableRawPointer // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var size : ©5 // +0x8
+	var size : y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _count : ©5 // +0xc
+	var _count : y // +0xc
  }
 
  class SwiftUI.BoxVTableBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa03a90  class func static BoxVTableBase.moveInitialize(ptr:from:) // method 
-	0xa03ae0  class func static BoxVTableBase.deinitialize(ptr:) // method 
-	0xa03af0  class func static BoxVTableBase.reset(ptr:) // method 
-	0xa03b00  class func static BoxVTableBase.update(ptr:property:phase:) // method 
-	0xa03b10  class func static BoxVTableBase.getState<A>(ptr:type:) // method 
+	0xa09760  class func static BoxVTableBase.moveInitialize(ptr:from:) // method 
+	0xa097b0  class func static BoxVTableBase.deinitialize(ptr:) // method 
+	0xa097c0  class func static BoxVTableBase.reset(ptr:) // method 
+	0xa097d0  class func static BoxVTableBase.update(ptr:property:phase:) // method 
+	0xa097e0  class func static BoxVTableBase.getState<A>(ptr:type:) // method 
  }
 
  class SwiftUI.BoxVTable {
@@ -20740,9 +20983,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var vtable : BoxVTableBase // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var size : ©5 // +0x8
+	var size : y // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fieldOffset : ©5 // +0xc
+	var fieldOffset : y // +0xc
  }
 
  struct SwiftUI.DefaultTabViewStyle { }
@@ -20751,7 +20994,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _base : U
+	var _base : ïÚ
  }
 
  class SwiftUI.PlatformAlertController : UIAlertController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -20760,30 +21003,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onDismissAction : ()?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x87d100022f160 (0x5100022f160) in binary!
-	0x91530  @objc PlatformAlertController.(null) <stripped>
-WARNING: couldn't find address 0x8fbf40022dd40 (0x3f40022dd40) in binary!
-	0x886c8  @objc PlatformAlertController.(null) <stripped>
+WARNING: couldn't find address 0x8972800221d10 (0x72800221d10) in binary!
+	0x931a8  @objc PlatformAlertController.(null) <stripped>
+	0x89fb0  specialized ViewDebugFilter.value.getter
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x6f4fff647c0  @objc PlatformAlertController.(null) <stripped>
-	0x6ecfff647c8  @objc PlatformAlertController.¿Hç=íàΩ <stripped>
+	0x334fff62d88  @objc PlatformAlertController.(null) <stripped>
+	0x32cfff62d90  @objc PlatformAlertController.m∏Ëãs <stripped>
 
 	// Swift methods
-	0xa05060  func PlatformAlertController.onDismissAction.setter // setter 
+	0xa0ad30  func PlatformAlertController.onDismissAction.setter // setter 
  }
 
  class SwiftUI.AlertBridge {
+ struct SwiftUI.AccessibilityAdjustableNumericValue {
+
+	// Properties
+	var value : Double // +0x0
+	var minValue : Double? // +0x8
+	var maxValue : Double? // +0x18
+	var adjustmentMethod : AccessibilityAdjustmentMethod // +0x21
+ }
+
+ enum SwiftUI.AccessibilityAdjustmentMethod {
+
+	// Properties
+	case slider  
+	case stepper  
+ }
+
  struct SwiftUI._GraphInputs {
 
 	// Properties
 	var customInputs : PropertyList // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var time : Ér // +0x8
+	var time : œ; // +0x8
 	var cachedEnvironment : MutableBox // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var phase : gr // +0x18
+	var phase : ßJ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var transaction : √± // +0x1c
+	var transaction : ÁY // +0x1c
 	var changedDebugProperties : Properties // +0x20
 	var options : Options // +0x24
 	var mergedInputs : AnyAttribute // +0x28
@@ -20793,41 +21051,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : w¿ // +0x0
+	let rawValue : ?ô // +0x0
  }
 
  struct SwiftUI.Phase {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : w¿ // +0x0
+	var value : ?ô // +0x0
  }
 
  struct SwiftUI.MergedEnvironment {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lhs : ﬂª // +0x0
+	var _lhs : Sî // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rhs : ◊˜ // +0x8
+	var _rhs : ä // +0x8
  }
 
  struct SwiftUI.MergedTransaction {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lhs : ô // +0x0
+	var _lhs : ô // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rhs : √± // +0x8
+	var _rhs : ÁY // +0x8
  }
 
  struct SwiftUI.MergedPhase {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lhs : ≠ // +0x0
+	var _lhs : ≠ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _rhs : gr // +0x8
+	var _rhs : ßJ // +0x8
  }
 
  struct SwiftUI.SectionContainer {
@@ -20849,7 +21107,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _view : m // +0x0
+	var _view : m // +0x0
  }
 
  struct SwiftUI.Measurements {
@@ -20881,7 +21139,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x0
+	var _environment : ä // +0x0
 	let cache : TextSizeCache // +0x8
  }
 
@@ -20913,7 +21171,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _traits : ˝ÿ // +0x0
+	var _traits : C¬ // +0x0
  }
 
  struct SwiftUI.MakeSection {
@@ -20922,28 +21180,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lists :  empty-list  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _traits : ˝ÿ // +0x8
+	var _traits : C¬ // +0x8
  }
 
  struct SwiftUI.SectionedTrait {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _traits : ˝ÿ // +0x0
+	var _traits : C¬ // +0x0
  }
 
  struct SwiftUI.DepthTrait {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _traits : ˝ÿ // +0x0
+	var _traits : C¬ // +0x0
  }
 
  struct SwiftUI.SectionFooterTrait {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _traits : ˝ÿ // +0x0
+	var _traits : C¬ // +0x0
  }
 
  struct SwiftUI._TextFieldStyleLabel { }
@@ -20972,13 +21230,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var usedElements : EV
+	var usedElements : Â0
 
 	// Swift methods
-	0xa14d70  func PropertyList.Tracker.reset() // method 
-	0xa14dc0  func PropertyList.Tracker.value<A>(_:for:) // method 
-	0xa14f50  func PropertyList.Tracker.hasDifferentUsedValues(_:) // method 
-	0xa14040  class func PropertyList.Tracker.__allocating_init() // init 
+	0xa1b8d0  func PropertyList.Tracker.reset() // method 
+	0xa1b920  func PropertyList.Tracker.value<A>(_:for:) // method 
+	0xa1bab0  func PropertyList.Tracker.hasDifferentUsedValues(_:) // method 
+	0xa1aad0  class func PropertyList.Tracker.__allocating_init() // init 
  }
 
  class SwiftUI.Element : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -20991,10 +21249,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let keyFilter : BloomFilter
 
 	// Swift methods
-	0xa150e0  func PropertyList.Element.description.getter // getter 
-	0xa15130  func PropertyList.Element.matches(_:) // method 
-	0xa15180  func PropertyList.Element.hasMatchingValue(in:) // method 
-	0xa151d0  func PropertyList.Element.copy(before:after:) // method 
+	0xa1bc40  func PropertyList.Element.description.getter // getter 
+	0xa1bc90  func PropertyList.Element.matches(_:ignoredTypes:) // method 
+	0xa1bce0  func PropertyList.Element.hasMatchingValue(in:) // method 
+	0xa1bd30  func PropertyList.Element.copy(before:after:) // method 
  }
 
  class SwiftUI.TypedElement {
@@ -21027,7 +21285,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var host : GraphHost
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _signal : ˚ˆ
+	var _signal : œä
  }
 
  struct SwiftUI.LockedData {
@@ -21077,15 +21335,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x0
+	var _position : óƒ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x4
+	var _size : gâ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _containerPosition : 7± // +0x8
+	var _containerPosition : óƒ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _contentList : ÒÕ // +0xc
+	var _contentList : Å∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _maskList : ÒÕ // +0x10
+	var _maskList : Å∑ // +0x10
 	let identity : Identity // +0x14
  }
 
@@ -21093,7 +21351,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜ // +0x0
+	var _environment : ä // +0x0
  }
 
  struct SwiftUI.NavigationTitleKey { }
@@ -21133,7 +21391,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case keyPath : ª
+	case keyPath : ˘	
 	case value : A
  }
 
@@ -21141,9 +21399,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : G`
+	var keyPath : Ô:
 	var value : A?
  }
 
@@ -21202,15 +21460,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var sortedArray :  empty-list  // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sortedSeed : w¿ // +0x10
+	var sortedSeed : ?ô // +0x10
  }
 
  class SwiftUI.AnyAccessibilityActionHandlerBoxBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa29230  func AnyAccessibilityActionHandlerBoxBase.perform<A>(action:value:) // method 
-	0xa29270  func AnyAccessibilityActionHandlerBoxBase.matches<A>(action:) // method 
-	0xa292b0  func AnyAccessibilityActionHandlerBoxBase.namedAction() // method 
-	0xa292f0  func AnyAccessibilityActionHandlerBoxBase.handler<A>(for:) // method 
+	0xa2fe00  func AnyAccessibilityActionHandlerBoxBase.perform<A>(action:value:) // method 
+	0xa2fe40  func AnyAccessibilityActionHandlerBoxBase.matches<A>(action:) // method 
+	0xa2fe80  func AnyAccessibilityActionHandlerBoxBase.namedAction() // method 
+	0xa2fec0  func AnyAccessibilityActionHandlerBoxBase.handler<A>(for:) // method 
  }
 
  class SwiftUI.AnyAccessibilityActionHandlerBox {
@@ -21229,7 +21487,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnyStyleBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa2a300  func AnyStyleBox.body(configuration:) // method 
+	0xa30ed0  func AnyStyleBox.body(configuration:) // method 
  }
 
  class SwiftUI.StyleBox {
@@ -21269,7 +21527,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let ids : Views
 	let selection : Binding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rowHeight : Kt
+	let rowHeight : {L
  }
 
  struct SwiftUI.IsSelected {
@@ -21374,15 +21632,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let responder : DefaultFocusViewResponder // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : √ // +0x8
+	var _modifier : √Á // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ± // +0xc
+	var _transform : «∑ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7± // +0x10
+	var _position : óƒ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ // +0x14
+	var _size : gâ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x18
+	var _children : )F // +0x18
  }
 
  struct SwiftUI.FocusNamespaceModifier {
@@ -21395,9 +21653,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : ì // +0x0
+	var _modifier : ìÁ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _children : Àh // +0x4
+	var _children : )F // +0x4
 	let responder : FocusNamespaceViewResponder // +0x8
  }
 
@@ -21414,19 +21672,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : State
 	var host : GraphHost
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signal : ˚ˆ
+	let signal : œä
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x886640022dce8 (0x6640022dce8) in binary!
-	0x959b8  @objc UserDefaultObserver.(null) <stripped>
-WARNING: couldn't find address 0x86ddc0022f788 (0x5dc0022f788) in binary!
-	0x89250  @objc UserDefaultObserver.(null) <stripped>
-WARNING: couldn't find address 0x886340022d290 (0x6340022d290) in binary!
+WARNING: couldn't find address 0x89f4c002210d8 (0x74c002210d8) in binary!
+	0x97680  @objc UserDefaultObserver.(null) <stripped>
+WARNING: couldn't find address 0x887f400222c78 (0x7f400222c78) in binary!
+	0x8ac68  @objc UserDefaultObserver.(null) <stripped>
+WARNING: couldn't find address 0x89f1c002206d8 (0x71c002206d8) in binary!
 	0x48000000c  @objc UserDefaultObserver.(null) <stripped>
-WARNING: couldn't find address 0x8fb3c0022dc88 (0x33c0022dc88) in binary!
-	0x8c9f0  @objc UserDefaultObserver.(null) <stripped>
-WARNING: couldn't find address 0x883f40022dc78 (0x3f40022dc78) in binary!
-	0x885f8  @objc UserDefaultObserver.(null) <stripped>
+WARNING: couldn't find address 0x8f01400221078 (0x1400221078) in binary!
+	0x8e5f8  @objc UserDefaultObserver.(null) <stripped>
+WARNING: couldn't find address 0x89cac00221068 (0x4ac00221068) in binary!
+	0x89ee0  @objc UserDefaultObserver.(null) <stripped>
 
 	// Swift methods
  }
@@ -21450,7 +21708,7 @@ WARNING: couldn't find address 0x883f40022dc78 (0x3f40022dc78) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 	let observer : UserDefaultObserver
 	var seed : Int
  }
@@ -21511,13 +21769,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var options : RasterizationOptions
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8fb3c0022dc88 (0x33c0022dc88) in binary!
-	0x8c9f0  @objc CGDrawingView.(null) <stripped>
-WARNING: couldn't find address 0x883f40022dc78 (0x3f40022dc78) in binary!
-	0x885f8  @objc CGDrawingView.(null) <stripped>
+WARNING: couldn't find address 0x8f01400221078 (0x1400221078) in binary!
+	0x8e5f8  @objc CGDrawingView.(null) <stripped>
+WARNING: couldn't find address 0x89cac00221068 (0x4ac00221068) in binary!
+	0x89ee0  @objc CGDrawingView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x44cfff986d0  @objc CGDrawingView.(null) <stripped>
-	0xfff98878  @objc CGDrawingView.”◊¬ <stripped>
+	0x3cfff97f18  @objc CGDrawingView.(null) <stripped>
+	0xfff980c0  @objc CGDrawingView.Hç=0ﬁæ <stripped>
 
 	// Swift methods
  }
@@ -21530,12 +21788,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var options : RasterizationOptions
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8fb040022dc50 (0x3040022dc50) in binary!
-	0x883c8  @objc RBDrawingView.(null) <stripped>
-WARNING: couldn't find address 0x885cc0022d228 (0x5cc0022d228) in binary!
+WARNING: couldn't find address 0x8efdc00221040 (0x7dc00221040) in binary!
+	0x89c80  @objc RBDrawingView.(null) <stripped>
+WARNING: couldn't find address 0x89eb400220670 (0x6b400220670) in binary!
 	0x68000000c  @objc RBDrawingView.(null) <stripped>
-WARNING: couldn't find address 0x8fad40022dc20 (0x2d40022dc20) in binary!
-	0x891b8  @objc RBDrawingView.(null) <stripped>
+WARNING: couldn't find address 0x8efac00221010 (0x7ac00221010) in binary!
+	0x8abd0  @objc RBDrawingView.(null) <stripped>
 
 	// Swift methods
  }
@@ -21600,20 +21858,20 @@ WARNING: couldn't find address 0x8fad40022dc20 (0x2d40022dc20) in binary!
 	var documentBrowserButton : UIBarButtonItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8fad40022dc20 (0x2d40022dc20) in binary!
-	0x891b8  @objc DocumentNavigationItem.(null) <stripped>
-WARNING: couldn't find address 0x86d2c0022e190 (0x52c0022e190) in binary!
-	0x86d20  @objc DocumentNavigationItem.(null) <stripped>
-WARNING: couldn't find address 0x8faa40022f740 (0x2a40022f740) in binary!
-	0x88578  @objc DocumentNavigationItem.(null) <stripped>
+WARNING: couldn't find address 0x8efac00221010 (0x7ac00221010) in binary!
+	0x8abd0  @objc DocumentNavigationItem.(null) <stripped>
+WARNING: couldn't find address 0x8874400221550 (0x74400221550) in binary!
+	0x88738  @objc DocumentNavigationItem.(null) <stripped>
+WARNING: couldn't find address 0x8ef7c00222c30 (0x77c00222c30) in binary!
+	0x89e60  @objc DocumentNavigationItem.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x754fffa9020  @objc DocumentNavigationItem.(null) <stripped>
-	0x5dcfffa9148  @objc DocumentNavigationItem. <stripped>
-	0xfffa9200  @objc DocumentNavigationItem.∫Ê HâE–rHã=≥Ω <stripped>
+	0x444fffa8508  @objc DocumentNavigationItem.(null) <stripped>
+	0x21cfffa8600  @objc DocumentNavigationItem.Lâs Lâ{(HâÿHÉƒX[A\A]A^A_]√fD <stripped>
+	0xfffa86b8  @objc DocumentNavigationItem.∆jYLãe–LâÁHãu»LâÚËa¡ <stripped>
 
 	// Swift methods
-	0xa68b20  func DocumentNavigationItem.onDismiss.setter // setter 
-	0xa69240  func DocumentNavigationItem.dismiss(_:) // method 
+	0xa70e00  func DocumentNavigationItem.onDismiss.setter // setter 
+	0xa71520  func DocumentNavigationItem.dismiss(_:) // method 
  }
 
  struct SwiftUI.TupleCommandContent {
@@ -21714,7 +21972,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SwiftUI.AllFinishedListener : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AnimationListener {
 
 	// Properties
-	let allFinished : () // +0xffda1748
+	let allFinished : () // +0xffda12a0
 	var count : Int // +0x0
 	var dispatched : Bool // +0x40000001
 
@@ -21748,7 +22006,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var documents : AnyFileDocument
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentType : X
+	var contentType : ∑5
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onCompletion :  empty-list 
  }
@@ -21758,7 +22016,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var document : AnyFileDocument
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentType : X
+	var contentType : ∑5
 	var defaultFilename : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onCompletion :  empty-list 
@@ -21768,7 +22026,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var url : £ı
+	var url : c–
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onCompletion :  empty-list 
  }
@@ -21788,7 +22046,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : £ı
+	case url : c–
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case fileWrapper :  first-element-marker 
  }
@@ -21814,23 +22072,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var configuration : StepperStyleConfiguration
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x86cf40022e338 (0x4f40022e338) in binary!
-	0x86ce8  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x86cdc0022e328 (0x4dc0022e328) in binary!
-	0x89150  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x885340022d190 (0x5340022d190) in binary!
+WARNING: couldn't find address 0x8870c00221728 (0x70c00221728) in binary!
+	0x88700  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x886f400221718 (0x6f400221718) in binary!
+	0x8ab68  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x89e1c002205d8 (0x61c002205d8) in binary!
 	0x48000000c  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x86cac0022ddf0 (0x4ac0022ddf0) in binary!
-	0x86ca0  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x891140022d5a0 (0x1140022d5a0) in binary!
-	0x884f8  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x886c4002211d0 (0x6c4002211d0) in binary!
+	0x886b8  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8ab2c002209e0 (0x32c002209e0) in binary!
+	0x89de0  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0xa72b30  func Coordinator.configuration.getter // getter 
-	0xa72bc0  func Coordinator.configuration.setter // setter 
-	0xa72d80  func Coordinator.valueChanged(_:) // method 
-	0xa72ec0  func Coordinator.editingBegan(_:) // method 
-	0xa72f20  func Coordinator.editingEnded(_:) // method 
+	0xa7ad10  func Coordinator.configuration.setter // setter 
+	0xa7ae50  func Coordinator.valueChanged(_:) // method 
+	0xa7af60  func Coordinator.editingBegan(_:) // method 
+	0xa7afc0  func Coordinator.editingEnded(_:) // method 
  }
 
  struct SwiftUI.UIKitStepper {
@@ -22032,27 +22289,31 @@ WARNING: couldn't find address 0x891140022d5a0 (0x1140022d5a0) in binary!
 	case int : Int
 	case toggleState : ToggleState
 	case percentage : Percentage
+	case adjustableNumeric : AccessibilityAdjustableNumericValue
+	case disclosure : DisclosureState
  }
 
  struct SwiftUI.AccessibilityValue {
 
 	// Properties
 	var value : ValueType // +0x0
-	var description : Text // +0x10
+	var description : Text // +0x28
+ }
+
+ enum SwiftUI.DisclosureState {
+
+	// Properties
+	case undisclosed  
+	case disclosed  
  }
 
  struct SwiftUI.Percentage {
 
 	// Properties
 	var value : Double // +0x0
+	let minValue : Double // +0x8
+	let maxValue : Double // +0x10
  }
-
- struct SwiftUI._EmptyWidget { }
-
- class SwiftUI._WidgetHost {
- struct SwiftUI.TextEditingCommands { }
-
- struct SwiftUI.TextFormattingCommands { }
 
  struct SwiftUI.ToolbarCommands { }
 
@@ -22068,7 +22329,7 @@ WARNING: couldn't find address 0x891140022d5a0 (0x1140022d5a0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : €±
+	var value : {ƒ
  }
 
  struct SwiftUI._ConditionalContent {
@@ -22088,7 +22349,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _content : Å
+	var _content : …⁄
 	let ids : UniqueID
  }
 
@@ -22115,7 +22376,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case named : WØ
+	case named : 'à
 	case global  
 	case local  
  }
@@ -22130,7 +22391,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var radius : Kt // +0x0
+	var radius : {L // +0x0
 	var size : CGSize // +0x8
  }
 
@@ -22142,13 +22403,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SwiftUI.AnimationBoxBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa88880  func AnimationBoxBase.makeAnimator<A>(of:) // method 
-	0xa888d0  func AnimationBoxBase.base.getter // getter 
-	0xa88920  func AnimationBoxBase.isEqual(to:) // method 
-	0xa88970  func AnimationBoxBase.delay(by:) // method 
-	0xa889c0  func AnimationBoxBase.scale(by:) // method 
-	0xa88a10  func AnimationBoxBase.repeat(count:autoreverses:) // method 
-	0xa88a60  func AnimationBoxBase.encode(to:) // method 
+	0xa91930  func AnimationBoxBase.makeAnimator<A>(of:) // method 
+	0xa91980  func AnimationBoxBase.base.getter // getter 
+	0xa919d0  func AnimationBoxBase.isEqual(to:) // method 
+	0xa91a20  func AnimationBoxBase.delay(by:) // method 
+	0xa91a70  func AnimationBoxBase.scale(by:) // method 
+	0xa91ac0  func AnimationBoxBase.repeat(count:autoreverses:) // method 
+	0xa91b10  func AnimationBoxBase.encode(to:) // method 
  }
 
  class SwiftUI.AnimationBox {
@@ -22222,9 +22483,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let selection : Binding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumDate : )¸
+	let minimumDate : w÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maximumDate : )¸
+	let maximumDate : w÷
 	let displayedComponents : DatePickerComponents
 	let label : A
  }
@@ -22247,17 +22508,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var action : ()?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var menuAttribute : ù˝
+	var menuAttribute : Ì◊
 	var cachedMenu : UIMenu?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x86cac0022ddf0 (0x4ac0022ddf0) in binary!
-	0x86ca0  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x891140022d5a0 (0x1140022d5a0) in binary!
-	0x884f8  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x886c4002211d0 (0x6c4002211d0) in binary!
+	0x886b8  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x8ab2c002209e0 (0x32c002209e0) in binary!
+	0x89de0  @objc Coordinator.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x7dcfffd56d0  @objc Coordinator.(null) <stripped>
-	0x374fffd5988  @objc Coordinator.ç]êHâCLâÚH∏ˇ <stripped>
+	0x4bcfffd5358  @objc Coordinator.(null) <stripped>
+	0x764fffd5610  @objc Coordinator. <stripped>
 
 	// Swift methods
  }
@@ -22273,6 +22534,7 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 
 	// Properties
 	var action : ()?
+	var flexibleDimensions : Set
 	var label : A
 	var menuContent : B
  }
@@ -22281,11 +22543,13 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _itemList : …˚
+	var _action : =÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _action : π˚
+	var _flexibleDimensions : /÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _label : €±
+	var _menu : ˇπ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _label : {ƒ
  }
 
  struct SwiftUI.UIKitButton {
@@ -22293,16 +22557,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var configuration : UIKitButtonConfiguration
 	var label : A
- }
-
- struct SwiftUI.LazyMenuContent {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _menu : €±
-	let inputs : _ViewInputs
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _itemList : )5
  }
 
  struct SwiftUI.ViewContent: UIKitButtonAdaptorContent {
@@ -22316,8 +22570,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var action : ()? // +0x0
+	var flexibleDimensions : Set // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var menuAttribute : ù˝ // +0x10
+	var menuAttribute : Ì◊ // +0x14
  }
 
  struct SwiftUI.Label { }
@@ -22334,8 +22589,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var action : ()?
+	var flexibleDimensions : Set
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var menuAttribute : ù˝
+	var menuAttribute : Ì◊
 	var content : A
  }
 
@@ -22355,9 +22611,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _conditions : ©˙ // +0x0
+	var _conditions : k’ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _list : õ˙ // +0x4
+	var _list : ]’ // +0x4
  }
 
  struct SwiftUI.GridItem {
@@ -22365,7 +22621,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var size : Size // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : Ôb // +0x18
+	var spacing : YK // +0x18
 	var alignment : Alignment // +0x28
  }
 
@@ -22373,11 +22629,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case fixed : Kt
+	case fixed : {L
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case flexible : ©˘
+	case flexible : k‘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case adaptive : ©˘
+	case adaptive : k‘
  }
 
  struct SwiftUI.LazyHGrid {
@@ -22396,9 +22652,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var position : Kt // +0x0
+	var position : {L // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var size : Kt // +0x8
+	var size : {L // +0x8
 	var anchor : UnitPoint // +0x10
  }
 
@@ -22408,7 +22664,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var columns : GridItem // +0x0
 	var alignment : HorizontalAlignment // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : Ôb // +0x10
+	var spacing : YK // +0x10
 	var pinnedViews : PinnedScrollableViews // +0x1c
  }
 
@@ -22418,7 +22674,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var rows : GridItem // +0x0
 	var alignment : VerticalAlignment // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var spacing : Ôb // +0x10
+	var spacing : YK // +0x10
 	var pinnedViews : PinnedScrollableViews // +0x1c
  }
 
@@ -22429,22 +22685,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var mainMenuController : UIKitMainMenuController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x890f40022d580 (0xf40022d580) in binary!
-	0x86f9e  @objc AppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x870ac0022f798 (0xac0022f798) in binary!
-	0x87dec  @objc AppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x944540022f840 (0x4540022f840) in binary!
-	0x86c38  @objc AppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x86c2c0022f780 (0x42c0022f780) in binary!
-	0x95986  @objc AppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x86c140022f260 (0x4140022f260) in binary!
-	0x88478  @objc AppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8ab0c002209c0 (0x30c002209c0) in binary!
+	0x889b6  @objc AppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x88ac400222c78 (0x2c400222c78) in binary!
+	0x89804  @objc AppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x9610c00222d20 (0x10c00222d20) in binary!
+	0x88650  @objc AppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8864400222c60 (0x64400222c60) in binary!
+	0x9764e  @objc AppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8862c00222728 (0x62c00222728) in binary!
+	0x89d60  @objc AppDelegate.(null) <stripped>
 WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
-	0x3d4fffd6950  @objc AppDelegate.(null) <stripped>
-	0x6dcfffd7e98  @objc AppDelegate.¿Lãe–Hç5,ë« <stripped>
-	0x6b4fffd8190  @objc AppDelegate.à <stripped>
-	0x684fffd8488  @objc AppDelegate.êHâCLâÚH∏ˇ <stripped>
-	0x654fffd8ce0  @objc AppDelegate.ç}êËXœ <stripped>
+	0x14fffd65f8  @objc AppDelegate.(null) <stripped>
+	0x3bcfffd7b50  @objc AppDelegate. <stripped>
+	0x394fffd7e48  @objc AppDelegate.EHç\√ <stripped>
+	0x364fffd8140  @objc AppDelegate.— <stripped>
+	0x334fffd8998  @objc AppDelegate.ˇˇI!∆jYLãe–LâÁHãu»LâÚË›— <stripped>
  }
 
  class SwiftUI.AppSceneDelegate : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -22459,60 +22715,60 @@ WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
 	var sceneStorageValues : SceneStorageValues
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x890740022dab8 (0x740022dab8) in binary!
-	0x86be8  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x8706c0022f710 (0x6c0022f710) in binary!
-	0x86bd0  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x8f9540022d428 (0x1540022d428) in binary!
-	0x88248  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x86bac0022f698 (0x3ac0022f698) in binary!
-	0x88230  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x86b940022f668 (0x3940022f668) in binary!
-	0x86b88  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x86b7c0022f640 (0x37c0022f640) in binary!
-	0x87d0c  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x943740022f760 (0x3740022f760) in binary!
-	0x88fd8  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x883bc0022d018 (0x3bc0022d018) in binary!
+WARNING: couldn't find address 0x8aa8c00220ea8 (0x28c00220ea8) in binary!
+	0x88600  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x88a8400222bf0 (0x28400222bf0) in binary!
+	0x885e8  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8ee2c00220868 (0x62c00220868) in binary!
+	0x89b00  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x885c400222b78 (0x5c400222b78) in binary!
+	0x89ae8  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x885ac00222b48 (0x5ac00222b48) in binary!
+	0x885a0  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8859400222b20 (0x59400222b20) in binary!
+	0x89724  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x9602c00222c40 (0x2c00222c40) in binary!
+	0x8a9f0  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x89ca400220460 (0x4a400220460) in binary!
 	0x38000000c  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x88fb40022d440 (0x7b40022d440) in binary!
-	0x8f8b8  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x8f8ac0022d9f8 (0xac0022d9f8) in binary!
+WARNING: couldn't find address 0x8a9cc00220880 (0x1cc00220880) in binary!
+	0x8ed90  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8ed8400220de8 (0x58400220de8) in binary!
 	0x58000000c  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x88f840022d410 (0x7840022d410) in binary!
-	0x8f888  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x8f87c0022e378 (0x7c0022e378) in binary!
-	0x8cc70  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x883440022cfa0 (0x3440022cfa0) in binary!
+WARNING: couldn't find address 0x8a99c00220850 (0x19c00220850) in binary!
+	0x8ed60  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8ed5400221798 (0x55400221798) in binary!
+	0x8e888  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x89c2c002203e8 (0x42c002203e8) in binary!
 	0x48000000c  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x88f3c0022d3c8 (0x73c0022d3c8) in binary!
-	0x8f840  @objc AppSceneDelegate.(null) <stripped>
-WARNING: couldn't find address 0x8f8340022e330 (0x340022e330) in binary!
-	0x88308  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8a95400220808 (0x15400220808) in binary!
+	0x8ed18  @objc AppSceneDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8ed0c00221750 (0x50c00221750) in binary!
+	0x89bf0  @objc AppSceneDelegate.(null) <stripped>
 
 	// Swift methods
-	0xaa08e0  func AppSceneDelegate.window.getter // getter 
-	0xaa0950  func AppSceneDelegate.window.setter // setter 
-	0xaa0970  func AppSceneDelegate.sceneItemID.setter // setter 
-	0xaa09a0  func AppSceneDelegate.sceneBridge.setter // setter 
-	0xaa0af0  func AppSceneDelegate.scenePhase.setter // setter 
-	0xaa0b10  func AppSceneDelegate.sceneDelegateBox.setter // setter 
-	0xaa0b30  func AppSceneDelegate.sceneDelegate.getter // getter 
-	0xaa0ba0  func AppSceneDelegate.sceneStorageValues.setter // setter 
-	0xaa0be0  func AppSceneDelegate.rootModifier.getter // getter 
-	0xaa0d00  func AppSceneDelegate.scene(_:willConnectTo:options:) // method 
-	0xaa1e90  func AppSceneDelegate.sceneDidDisconnect(_:) // method 
-	0xaa2040  func AppSceneDelegate.stateRestorationActivity(for:) // method 
-	0xaa2170  func AppSceneDelegate.scene(_:continue:) // method 
-	0xaa2400  func AppSceneDelegate.sceneDidBecomeActive(_:) // method 
-	0xaa2470  func AppSceneDelegate.scene(_:openURLContexts:) // method 
-	0xaa28b0  func AppSceneDelegate.sceneWillResignActive(_:) // method 
-	0xaa2ce0  func AppSceneDelegate.sceneWillEnterForeground(_:) // method 
-	0xaa2d50  func AppSceneDelegate.sceneDidEnterBackground(_:) // method 
-	0xaa2e30  func AppSceneDelegate.sceneItem() // method 
-	0xaa2fc0  func AppSceneDelegate.makeSceneHost(restorationSceneItemID:userActivity:urlContexts:) // method 
-	0xaa38a0  func AppSceneDelegate.scenesDidChange(phaseChanged:) // method 
-	0xaa3b30  func AppSceneDelegate.makeRootView(_:) // method 
+	0xaa9140  func AppSceneDelegate.window.getter // getter 
+	0xaa91b0  func AppSceneDelegate.window.setter // setter 
+	0xaa91d0  func AppSceneDelegate.sceneItemID.setter // setter 
+	0xaa9200  func AppSceneDelegate.sceneBridge.setter // setter 
+	0xaa9350  func AppSceneDelegate.scenePhase.setter // setter 
+	0xaa9370  func AppSceneDelegate.sceneDelegateBox.setter // setter 
+	0xaa9390  func AppSceneDelegate.sceneDelegate.getter // getter 
+	0xaa9400  func AppSceneDelegate.sceneStorageValues.setter // setter 
+	0xaa9440  func AppSceneDelegate.rootModifier.getter // getter 
+	0xaa9560  func AppSceneDelegate.scene(_:willConnectTo:options:) // method 
+	0xaaa700  func AppSceneDelegate.sceneDidDisconnect(_:) // method 
+	0xaaa8b0  func AppSceneDelegate.stateRestorationActivity(for:) // method 
+	0xaaa9e0  func AppSceneDelegate.scene(_:continue:) // method 
+	0xaaac70  func AppSceneDelegate.sceneDidBecomeActive(_:) // method 
+	0xaaace0  func AppSceneDelegate.scene(_:openURLContexts:) // method 
+	0xaab120  func AppSceneDelegate.sceneWillResignActive(_:) // method 
+	0xaab550  func AppSceneDelegate.sceneWillEnterForeground(_:) // method 
+	0xaab5c0  func AppSceneDelegate.sceneDidEnterBackground(_:) // method 
+	0xaab6a0  func AppSceneDelegate.sceneItem() // method 
+	0xaab830  func AppSceneDelegate.makeSceneHost(restorationSceneItemID:userActivity:urlContexts:) // method 
+	0xaac130  func AppSceneDelegate.scenesDidChange(phaseChanged:) // method 
+	0xaac3b0  func AppSceneDelegate.makeRootView(_:) // method 
  }
 
  struct SwiftUI.RootModifier {
@@ -22530,9 +22786,9 @@ WARNING: couldn't find address 0x8f8340022e330 (0x340022e330) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : Â˜ // +0x0
+	var _modifier : •“ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _env : ◊˜ // +0x4
+	var _env : ä // +0x4
 	var oldModifier : RootModifier // +0x8
  }
 
@@ -22562,9 +22818,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _environment : ◊˜
+	var _environment : ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signal : ˚ˆ
+	let signal : œä
 	let subscriber : AttributeInvalidatingSubscriber
 	let lifetime : SubscriptionLifetime
 	var seed : Int
@@ -22613,7 +22869,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onDismiss : ()? // +0xb8
 	let viewID : ViewIdentity // +0xc8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let itemID : s // +0xd0
+	let itemID : I // +0xd0
 	let sourceRect : CGRect // +0xf8
  }
 
@@ -22621,15 +22877,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modifier : =ˆ
+	var _modifier : —
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _phase : gr
+	var _phase : ßJ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _position : 7±
+	var _position : óƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _size : 7Œ
+	var _size : gâ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transform : ±
+	var _transform : «∑
 	var helper : Tracker
  }
 
@@ -22640,17 +22896,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var elements : _ViewList_Elements // +0x10
 	var traits : ViewTraitCollection // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var list : O} // +0x40
+	var list : ?Z // +0x40
  }
 
  class SwiftUI.ColorShapeLayer : CAShapeLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88fb40022d440 (0x7b40022d440) in binary!
-	0x8f8b8  @objc ColorShapeLayer.(null) <stripped>
-WARNING: couldn't find address 0x8f8ac0022d9f8 (0xac0022d9f8) in binary!
+WARNING: couldn't find address 0x8a9cc00220880 (0x1cc00220880) in binary!
+	0x8ed90  @objc ColorShapeLayer.(null) <stripped>
+WARNING: couldn't find address 0x8ed8400220de8 (0x58400220de8) in binary!
 	0x58000000c  @objc ColorShapeLayer.(null) <stripped>
-WARNING: couldn't find address 0x88f840022d410 (0x7840022d410) in binary!
-	0x8f888  @objc ColorShapeLayer.(null) <stripped>
+WARNING: couldn't find address 0x8a99c00220850 (0x19c00220850) in binary!
+	0x8ed60  @objc ColorShapeLayer.(null) <stripped>
  }
 
  class SwiftUI.PaintShapeLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -22663,28 +22919,28 @@ WARNING: couldn't find address 0x88f840022d410 (0x7840022d410) in binary!
 	var fillStyle : FillStyle
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88f840022d410 (0x7840022d410) in binary!
-	0x8f888  @objc PaintShapeLayer.(null) <stripped>
-WARNING: couldn't find address 0x8f87c0022e378 (0x7c0022e378) in binary!
-	0x8cc70  @objc PaintShapeLayer.(null) <stripped>
-WARNING: couldn't find address 0x883440022cfa0 (0x3440022cfa0) in binary!
+WARNING: couldn't find address 0x8a99c00220850 (0x19c00220850) in binary!
+	0x8ed60  @objc PaintShapeLayer.(null) <stripped>
+WARNING: couldn't find address 0x8ed5400221798 (0x55400221798) in binary!
+	0x8e888  @objc PaintShapeLayer.(null) <stripped>
+WARNING: couldn't find address 0x89c2c002203e8 (0x42c002203e8) in binary!
 	0x48000000c  @objc PaintShapeLayer.(null) <stripped>
-WARNING: couldn't find address 0x88f3c0022d3c8 (0x73c0022d3c8) in binary!
-	0x8f840  @objc PaintShapeLayer.(null) <stripped>
-WARNING: couldn't find address 0x8f8340022e330 (0x340022e330) in binary!
-	0x88308  @objc PaintShapeLayer.(null) <stripped>
+WARNING: couldn't find address 0x8a95400220808 (0x15400220808) in binary!
+	0x8ed18  @objc PaintShapeLayer.(null) <stripped>
+WARNING: couldn't find address 0x8ed0c00221750 (0x50c00221750) in binary!
+	0x89bf0  @objc PaintShapeLayer.(null) <stripped>
  }
 
  class SwiftUI.ShadowGradientLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x88f3c0022d3c8 (0x73c0022d3c8) in binary!
-	0x8f840  @objc ShadowGradientLayer.(null) <stripped>
-WARNING: couldn't find address 0x8f8340022e330 (0x340022e330) in binary!
-	0x88308  @objc ShadowGradientLayer.(null) <stripped>
-WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
-	0x2020495574  @objc ShadowGradientLayer.(null) <stripped>
-WARNING: couldn't find address 0x77535f3a5443454a (0x73a5443454a) in binary!
-	0xa312e33  @objc ShadowGradientLayer.(null) <stripped>
+WARNING: couldn't find address 0x8a95400220808 (0x15400220808) in binary!
+	0x8ed18  @objc ShadowGradientLayer.(null) <stripped>
+WARNING: couldn't find address 0x8ed0c00221750 (0x50c00221750) in binary!
+	0x89bf0  @objc ShadowGradientLayer.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x7533a4d4152  @objc ShadowGradientLayer.(null) <stripped>
+WARNING: couldn't find address 0x4f52502020495574 (0x2020495574) in binary!
+	0x54955746669  @objc ShadowGradientLayer.(null) <stripped>
  }
 
  struct SwiftUI.Visitor {
@@ -22706,7 +22962,7 @@ WARNING: couldn't find address 0x77535f3a5443454a (0x73a5443454a) in binary!
 	var paintBounds : CGRect // +0x50
 	var style : FillStyle // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentsScale : Kt // +0x78
+	var contentsScale : {L // +0x78
 	var hasShadow : Bool // +0x80
  }
 
@@ -22716,8 +22972,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var layer : CALayer // +0x0
 	var path : Path // +0x8
 	var offset : CGPoint // +0x30
-	var paint : AnyResolvedPaint // +0x40
-	var shadow : ResolvedShadowStyle // +0x48
+	var shadow : ResolvedShadowStyle // +0x40
+	var updateShape : Bool // +0x68
  }
 
  enum SwiftUI.PaintType {
