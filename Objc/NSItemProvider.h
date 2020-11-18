@@ -23,6 +23,7 @@
     NSMutableDictionary *_preferredRepresentationByType;
     NSUUID *_UUID;
     NSString *_suggestedName;
+    NSString *_sanitizedSuggestedName;
     NSDictionary *_userInfo;
     id<NSItemProviderDataTransferDelegate> _dataTransferDelegate;
 }
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) NSMutableDictionary *_preferredRepresentationByType; // @synthesize _preferredRepresentationByType;
 @property (strong, nonatomic) NSMutableDictionary *_representationByType; // @synthesize _representationByType;
 @property (readonly) NSArray *_representations; // @synthesize _representations;
+@property (readonly, copy) NSString *_sanitizedSuggestedName; // @synthesize _sanitizedSuggestedName;
 @property (strong, nonatomic) NSMutableOrderedSet *_typeOrder; // @synthesize _typeOrder;
 @property (weak) id<NSItemProviderDataTransferDelegate> dataTransferDelegate; // @synthesize dataTransferDelegate=_dataTransferDelegate;
 @property (copy) CDUnknownBlockType previewImageHandler; // @dynamic previewImageHandler;

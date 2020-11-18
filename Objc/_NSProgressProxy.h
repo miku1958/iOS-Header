@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
 - (id)_initWithForwarder:(id)arg1 values:(id)arg2 isOld:(BOOL)arg3;
 - (void)_invokePublishingHandler:(CDUnknownBlockType)arg1;
 - (void)_invokeUnpublishingHandler;
-- (void)_setRemoteValue:(id)arg1 forKey:(id)arg2 inUserInfo:(BOOL)arg3;
+- (void)_setRemoteUserInfoValue:(id)arg1 forKey:(id)arg2;
+- (void)_setRemoteValues:(id)arg1 forKeys:(id)arg2;
 - (void)acknowledgeWithSuccess:(BOOL)arg1;
 - (void)becomeCurrentWithPendingUnitCount:(long long)arg1;
 - (void)cancel;
 - (void)dealloc;
+- (double)fractionCompleted;
 - (BOOL)isOld;
 - (void)pause;
 - (void)prioritize;
