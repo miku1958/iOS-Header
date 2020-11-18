@@ -12,12 +12,13 @@
 #import <Foundation/NSMutableCopying-Protocol.h>
 #import <Foundation/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSAttributedString;
 
 @interface NSString : NSObject <NSItemProviderReading, NSItemProviderWriting, NSCopying, NSMutableCopying, NSSecureCoding>
 {
 }
 
+@property (readonly, nonatomic) NSAttributedString *__baseAttributedString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -62,7 +63,6 @@
 + (id)writableTypeIdentifiersForItemProvider;
 - (const char *)UTF8String;
 - (id)__escapeString5991;
-- (unsigned long long)__graphemeCount;
 - (BOOL)_allowsDirectEncoding;
 - (unsigned long long)_cfTypeID;
 - (id)_copyFormatStringWithConfiguration:(id)arg1;
@@ -116,6 +116,7 @@
 - (id)_web_stringByExpandingTildeInPath;
 - (id)_web_stringByReplacingValidPercentEscapes_nowarn;
 - (id)_web_stringByTrimmingWhitespace;
+- (id)_widthVariants;
 - (BOOL)boolValue;
 - (const char *)cString;
 - (unsigned long long)cStringLength;
@@ -166,12 +167,14 @@
 - (BOOL)hasPrefix:(id)arg1;
 - (BOOL)hasSuffix:(id)arg1;
 - (id)init;
+- (id)initWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)initWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 encoding:(unsigned long long)arg3 freeWhenDone:(BOOL)arg4;
 - (id)initWithCString:(const char *)arg1;
 - (id)initWithCString:(const char *)arg1 encoding:(unsigned long long)arg2;
 - (id)initWithCString:(const char *)arg1 length:(unsigned long long)arg2;
 - (id)initWithCStringNoCopy:(char *)arg1 length:(unsigned long long)arg2 freeWhenDone:(BOOL)arg3;
 - (id)initWithCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2;
+- (id)initWithCharactersNoCopy:(unsigned short *)arg1 length:(unsigned long long)arg2 deallocator:(CDUnknownBlockType)arg3;
 - (id)initWithCharactersNoCopy:(unsigned short *)arg1 length:(unsigned long long)arg2 freeWhenDone:(BOOL)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;

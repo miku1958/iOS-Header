@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSFileCoordinationDebugInfoXPCInteface-Protocol.h>
+#import <Foundation/NSFileCoordinationDebugInfoXPCInterface-Protocol.h>
 
 @class NSSet, NSString, NSURLPromisePair;
 
-@protocol NSFilePresenterXPCInterface <NSFileCoordinationDebugInfoXPCInteface>
+@protocol NSFilePresenterXPCInterface <NSFileCoordinationDebugInfoXPCInterface>
 - (void)accommodateDeletionOfSubitemAtURL:(NSURLPromisePair *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (oneway void)logSuspensionWarning;
 - (oneway void)observeChangeOfUbiquityAttributes:(NSSet *)arg1;

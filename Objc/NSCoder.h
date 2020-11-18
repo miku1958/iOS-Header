@@ -11,11 +11,8 @@
 }
 
 + (BOOL)__categorizeException:(id)arg1 intoError:(id *)arg2;
-- (BOOL)__failWithException:(id)arg1;
 - (BOOL)__failWithExceptionName:(id)arg1 errorCode:(long long)arg2 format:(id)arg3;
-- (void)__failWithExternalError:(id)arg1;
 - (void)__setError:(id)arg1;
-- (id)__tryDecodeObjectForKey:(id)arg1 error:(id *)arg2 decodeBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_allowsValueCoding;
 - (BOOL)_validateAllowedClass:(Class)arg1 forKey:(id)arg2 allowingInvocations:(BOOL)arg3;
 - (BOOL)_validateAllowedClassesContainsClass:(Class)arg1 forKey:(id)arg2;
@@ -23,10 +20,14 @@
 - (BOOL)allowsKeyedCoding;
 - (BOOL)containsValueForKey:(id)arg1;
 - (void)decodeArrayOfObjCType:(const char *)arg1 count:(unsigned long long)arg2 at:(void *)arg3;
+- (id)decodeArrayOfObjectsOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)decodeArrayOfObjectsOfClasses:(id)arg1 forKey:(id)arg2;
 - (BOOL)decodeBoolForKey:(id)arg1;
 - (const char *)decodeBytesForKey:(id)arg1 returnedLength:(unsigned long long *)arg2;
 - (void *)decodeBytesWithReturnedLength:(unsigned long long *)arg1;
 - (id)decodeDataObject;
+- (id)decodeDictionaryWithKeysOfClass:(Class)arg1 objectsOfClass:(Class)arg2 forKey:(id)arg3;
+- (id)decodeDictionaryWithKeysOfClasses:(id)arg1 objectsOfClasses:(id)arg2 forKey:(id)arg3;
 - (double)decodeDoubleForKey:(id)arg1;
 - (float)decodeFloatForKey:(id)arg1;
 - (int)decodeInt32ForKey:(id)arg1;

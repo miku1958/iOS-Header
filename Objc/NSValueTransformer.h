@@ -15,6 +15,8 @@
 + (Class)transformedValueClass;
 + (id)valueTransformerForName:(id)arg1;
 + (id)valueTransformerNames;
+- (id)_initForFoundationOnly;
+- (id)init;
 - (id)reverseTransformedValue:(id)arg1;
 - (id)transformedValue:(id)arg1;
 

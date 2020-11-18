@@ -11,7 +11,7 @@
 @interface NSBundle : NSObject
 {
     unsigned long long _flags;
-    id _cfBundle;
+    _Atomic struct __CFBundle *_cfBundle;
     unsigned long long _reserved2;
     Class _principalClass;
     id _initialPath;
@@ -77,6 +77,8 @@
 - (id)_pathsForResourcesOfType:(id)arg1 inDirectory:(id)arg2 forRegion:(id)arg3;
 - (id)_regionsArray;
 - (BOOL)_searchForLocalizedString:(id)arg1 foundKey:(id *)arg2 foundTable:(id *)arg3;
+- (id)_wrappedBundleURL;
+- (id)_wrapperContainerURL;
 - (id)bundleLanguages;
 - (Class)classNamed:(id)arg1;
 - (void)dealloc;
@@ -87,6 +89,8 @@
 - (void)invalidateResourceCache;
 - (BOOL)load;
 - (BOOL)loadAndReturnError:(id *)arg1;
+- (id)localizedAttributedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
+- (id)localizedAttributedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 locale:(id)arg4;
 - (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 - (id)objectForInfoDictionaryKey:(id)arg1;
 - (id)pathForAuxiliaryExecutable:(id)arg1;

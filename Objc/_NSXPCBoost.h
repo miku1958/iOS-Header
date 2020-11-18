@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *_event;
 }
 
-- (id)_initWithEvent:(id)arg1;
 - (void)dealloc;
 
 @end

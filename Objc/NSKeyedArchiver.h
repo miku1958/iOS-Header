@@ -12,7 +12,7 @@
 @interface NSKeyedArchiver : NSCoder
 {
     void *_stream;
-    unsigned long long _flags;
+    _Atomic unsigned long long _flags;
     id _delegate;
     id _containers;
     id _objects;

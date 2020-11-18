@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 changeKind:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5 indexes:(id)arg6 context:(void *)arg7;
-- (void)_setEmitsChanges:(BOOL)arg1;
 - (void)finishObserving;
 - (id)initWithObservable:(id)arg1 observer:(id)arg2 keyPath:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

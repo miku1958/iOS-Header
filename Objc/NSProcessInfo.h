@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *fullUserName;
 @property (readonly, copy) NSString *globallyUniqueString;
 @property (readonly, copy) NSString *hostName;
+@property (readonly, getter=isiOSAppOnMac) BOOL iOSAppOnMac;
 @property (readonly, getter=isMacCatalystApp) BOOL macCatalystApp;
 @property (readonly) CDStruct_2ec95fd7 operatingSystemVersion;
 @property (readonly, copy) NSString *operatingSystemVersionString;
@@ -54,6 +55,8 @@
 - (BOOL)isLowPowerModeEnabled;
 - (BOOL)isOperatingSystemAtLeastVersion:(CDStruct_2ec95fd7)arg1;
 - (BOOL)isTranslated;
+- (CDStruct_2ec95fd7)macCatalystVersion;
+- (BOOL)macCatalystVersionIsAtLeastVersion:(CDStruct_2ec95fd7)arg1;
 - (unsigned long long)operatingSystem;
 - (id)operatingSystemName;
 - (void)performActivityWithOptions:(unsigned long long)arg1 reason:(id)arg2 block:(CDUnknownBlockType)arg3;

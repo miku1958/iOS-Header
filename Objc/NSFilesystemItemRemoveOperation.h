@@ -6,29 +6,28 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSError, NSString;
+@class NSError, NSFileManager, NSString;
 
 __attribute__((visibility("hidden")))
 @interface NSFilesystemItemRemoveOperation : NSOperation
 {
-    id _delegate;
+    NSFileManager *_fm;
     NSString *_removePath;
     NSError *_error;
     void *_state;
-    BOOL _filterUnderbars;
 }
 
+@property (readonly) NSFileManager *fileManager; // @synthesize fileManager=_fm;
+
 + (id)_errorWithErrno:(int)arg1 atPath:(id)arg2;
-+ (id)filesystemItemRemoveOperationWithPath:(id)arg1;
-- (BOOL)_filtersUnderbars;
++ (id)filesystemItemRemoveOperationWithPath:(id)arg1 fileManager:(id)arg2;
+- (BOOL)_delegateSaysProceedAfterError:(id)arg1 removingItemAtPath:(id)arg2;
+- (BOOL)_delegateSaysShouldRemoveItemAtPath:(id)arg1;
 - (void)_setError:(id)arg1;
-- (void)_setFilterUnderbars:(BOOL)arg1;
 - (void)dealloc;
-- (id)delegate;
 - (id)error;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 fileManager:(id)arg2;
 - (void)main;
-- (void)setDelegate:(id)arg1;
 
 @end
 

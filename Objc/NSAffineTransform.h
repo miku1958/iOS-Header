@@ -18,6 +18,13 @@
 
 + (BOOL)supportsSecureCoding;
 + (id)transform;
++ (id)transformWithFlipUsingHeight:(double)arg1;
++ (id)transformWithRotationInDegrees:(double)arg1;
++ (id)transformWithRotationInRadians:(double)arg1;
++ (id)transformWithScale:(double)arg1;
++ (id)transformWithTransformStruct:(CDStruct_56a8f59f)arg1;
++ (id)transformWithXScale:(double)arg1 yScale:(double)arg2;
++ (id)transformWithXTranslation:(double)arg1 yTranslation:(double)arg2;
 - (void)appendTransform:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;

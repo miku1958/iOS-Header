@@ -15,8 +15,6 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _queueLock;
 }
 
-- (id)initWithQueue:(id)arg1;
-- (void)invalidateQueue;
 - (void)setTotalUnitCount:(long long)arg1;
 
 @end

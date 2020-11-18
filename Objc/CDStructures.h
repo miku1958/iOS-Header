@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDate, NSISEngine, NSIndexSet, NSObject;
+@class NSDate, NSIndexSet, NSObject;
 
 #pragma mark Function Pointers and Blocks
 
@@ -25,8 +25,8 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct InodeDevPair {
@@ -120,6 +120,8 @@ struct _NSSimpleAttributeDictionaryElement {
     id key;
     id value;
 };
+
+struct __CFDictionary;
 
 struct __va_list_tag {
     unsigned int _field1;
@@ -428,29 +430,6 @@ typedef struct {
 } CDStruct_6243051c;
 
 typedef struct {
-    unsigned char _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    unsigned char _field4;
-    unsigned char _field5;
-    unsigned char _field6;
-    unsigned char _field7;
-    unsigned char _field8;
-    unsigned char _field9;
-    unsigned char _field10;
-    unsigned char _field11;
-    unsigned char _field12;
-    unsigned char _field13;
-    unsigned char _field14;
-    unsigned char _field15;
-    unsigned char _field16;
-} CDStruct_bd2f613f;
-
-typedef struct {
-    unsigned int value;
-} CDStruct_fcd6c539;
-
-typedef struct {
     unsigned long long kind;
     NSObject *oldValue;
     NSObject *newValue;
@@ -494,12 +473,6 @@ typedef struct {
 
 typedef struct {
     long long _field1;
-    id _field2;
-    id _field3;
-} CDStruct_1b4a36b4;
-
-typedef struct {
-    long long _field1;
     void *_field2;
     CDUnknownFunctionPointerType _field3;
     CDUnknownFunctionPointerType _field4;
@@ -512,17 +485,42 @@ typedef struct {
 } CDStruct_87dc826d;
 
 typedef struct {
+    long long usage;
+    long long sensitivity;
+    long long partOfSpeech;
+    unsigned long long genders;
+} CDStruct_f8b90487;
+
+typedef struct {
+    long long usage;
+    long long sensitivity;
+    long long person;
+    long long partOfSpeech;
+    unsigned long long genders;
+    long long number;
+    long long mood;
+    long long tense;
+    long long aspect;
+    long long verbForm;
+    long long grammaticalCase;
+    long long deictic;
+    long long affixType;
+    long long determinationType;
+    long long politeness;
+    long long directObjectGender;
+    long long directObjectNumber;
+    long long indirectObjectNumber;
+    long long indirectObjectPerson;
+    BOOL isAbbreviation;
+    BOOL isNotToBeSuggested;
+    BOOL isNoncapitalizable;
+} CDStruct_be0ff5be;
+
+typedef struct {
     long long _field1;
     long long _field2;
     long long _field3;
 } CDStruct_2ec95fd7;
-
-typedef struct CDStruct_183601bc;
-
-typedef struct {
-    NSISEngine *engine;
-    CDStruct_183601bc *storage;
-} CDStruct_a8d20eab;
 
 typedef struct {
     BOOL extensionHidden;
@@ -533,23 +531,6 @@ typedef struct {
         unsigned int reserved:30;
     } validFields;
 } CDStruct_1b190c06;
-
-typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    CDStruct_183601bc *_field6;
-} CDStruct_fee1177a;
-
-typedef struct {
-    CDStruct_183601bc *values;
-    unsigned int key;
-    unsigned int heap_position;
-    unsigned short count;
-    unsigned short capacity;
-} CDStruct_f13cc9bb;
 
 typedef struct {
     id objects;
@@ -564,33 +545,9 @@ typedef struct {
     } list;
 } CDStruct_29daef6c;
 
-typedef struct {
-    CDStruct_183601bc *blocks;
-    unsigned long long blocksCount;
-    unsigned long long blocksCapacity;
-    struct {
-        union {
-            unsigned long long _data;
-            unsigned long long *_buckets;
-        } ;
-        unsigned int _bucketCount;
-    } freeIndexes;
-} CDStruct_52118125;
+#pragma mark Typedef'd Unions
 
-typedef struct {
-    unsigned short inline_capacity;
-    unsigned int var_count;
-    double constant;
-    union {
-        struct {
-            id stored_extern_marker;
-            CDStruct_183601bc *slab;
-            unsigned long long capacity;
-        } extern_data;
-        struct {
-            unsigned long long aligner;
-        } inline_slab;
-        unsigned char padding[48];
-    } data;
-} CDStruct_9ac54d62;
+typedef union {
+    NSObject *xpc;
+} CDUnion_12533362;
 

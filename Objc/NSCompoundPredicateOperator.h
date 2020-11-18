@@ -11,6 +11,7 @@
 }
 
 + (id)andPredicateOperator;
++ (void)initialize;
 + (id)notPredicateOperator;
 + (id)orPredicateOperator;
 - (id)copyWithZone:(struct _NSZone *)arg1;

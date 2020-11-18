@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property (copy) NSPersonNameComponents *phoneticRepresentation; // @synthesize phoneticRepresentation=_phoneticRepresentation;
 
 + (BOOL)supportsSecureCoding;
-- (void)_freeIvars;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

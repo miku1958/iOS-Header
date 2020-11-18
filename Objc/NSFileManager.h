@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSString, NSURL, NSValue;
 @protocol NSFileManagerDelegate, NSObject><NSCopying><NSCoding;
 
 @interface NSFileManager : NSObject
 {
+    id _delegate;
+    NSValue *_weakDelegateValue;
 }
 
 @property (readonly, copy) NSString *currentDirectoryPath;
@@ -29,13 +31,13 @@
 - (id)_attributesOfItemAtPath:(id)arg1 filterResourceFork:(BOOL)arg2 error:(id *)arg3;
 - (id)_attributesOfItemAtURL:(id)arg1 filterResourceFork:(BOOL)arg2 error:(id *)arg3;
 - (id)_displayPathForPath:(id)arg1;
-- (id)_info;
 - (void)_performRemoveFileAtPath:(id)arg1;
 - (void)_postUbiquityAccountChangeNotification:(id)arg1;
 - (BOOL)_processCanAccessUbiquityIdentityToken;
 - (BOOL)_processHasUbiquityContainerEntitlement;
 - (BOOL)_processUsesCloudServices;
 - (void)_registerForUbiquityAccountChangeNotifications;
+- (id)_safeDelegate;
 - (void)_web_backgroundRemoveFileAtPath:(id)arg1;
 - (void)_web_backgroundRemoveLeftoverFiles:(id)arg1;
 - (id)_web_carbonPathForPath_nowarn:(id)arg1;
@@ -95,8 +97,6 @@
 - (BOOL)filesystemItemLinkOperation:(id)arg1 shouldProceedAfterError:(id)arg2 linkingItemAtPath:(id)arg3 toPath:(id)arg4;
 - (BOOL)filesystemItemMoveOperation:(id)arg1 shouldMoveItemAtPath:(id)arg2 toPath:(id)arg3;
 - (BOOL)filesystemItemMoveOperation:(id)arg1 shouldProceedAfterError:(id)arg2 movingItemAtPath:(id)arg3 toPath:(id)arg4;
-- (BOOL)filesystemItemRemoveOperation:(id)arg1 shouldProceedAfterError:(id)arg2 removingItemAtPath:(id)arg3;
-- (BOOL)filesystemItemRemoveOperation:(id)arg1 shouldRemoveItemAtPath:(id)arg2;
 - (void)getFileProviderMessageInterfacesForItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getFileProviderServicesForItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)getFileSystemRepresentation:(char *)arg1 maxLength:(unsigned long long)arg2 withPath:(id)arg3;

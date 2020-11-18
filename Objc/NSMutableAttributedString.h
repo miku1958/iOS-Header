@@ -11,6 +11,7 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (void)_inflectWithReplacements:(id)arg1;
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;
 - (void)addAttributes:(id)arg1 range:(struct _NSRange)arg2;
 - (void)addAttributesWeakly:(id)arg1 range:(struct _NSRange)arg2;

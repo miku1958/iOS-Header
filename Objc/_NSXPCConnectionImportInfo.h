@@ -16,12 +16,8 @@ __attribute__((visibility("hidden")))
     BOOL _secTaskClearedOnce;
 }
 
-- (void)_clearEntitlementCache;
-- (id)_valueForEntitlement:(id)arg1 auditToken:(CDStruct_4c969caf)arg2;
-- (void)addProxy:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (BOOL)removeProxy:(id)arg1;
 
 @end
 

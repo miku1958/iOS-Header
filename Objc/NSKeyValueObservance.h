@@ -15,8 +15,9 @@ __attribute__((visibility("hidden")))
     NSKeyValueProperty *_property;
     void *_context;
     NSObject *_originalObservable;
-    unsigned int _options:7;
+    unsigned int _options:6;
     unsigned int _cachedIsShareable:1;
+    unsigned int _isInternalObservationHelper:1;
 }
 
 - (id)_initWithObserver:(id)arg1 property:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4 originalObservable:(id)arg5;
