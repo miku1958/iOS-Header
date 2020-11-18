@@ -38,6 +38,7 @@
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (long long)compareToProperty:(id)arg1;
+- (id)description;
 - (id)getFromObject:(id)arg1;
 - (id)initWithClass:(Class)arg1 property:(struct objc_property *)arg2;
 - (void)setValue:(id)arg1 onObject:(id)arg2;

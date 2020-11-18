@@ -6,43 +6,54 @@
 
 #import <UIKit/UIView.h>
 
+#import <AVKit/AVCaptureViewConfiguring-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewDelegate-Protocol.h>
 
-@class AVExternalPlaybackIndicatorView, AVPlaybackControlsView, AVStatusBarBackgroundGradientView, NSMutableDictionary, NSString, UIImageView, __AVPlayerLayerView;
+@class AVExternalPlaybackIndicatorView, AVPlaybackControlsView, AVStatusBarBackgroundGradientView, NSMutableDictionary, NSString, UIImageView, _UIVisualEffectBackdropView, __AVPlayerLayerView;
 @protocol AVPlayerViewControllerContentViewDelegate;
 
-@interface AVPlayerViewControllerContentView : UIView <AVPlaybackControlsViewDelegate>
+@interface AVPlayerViewControllerContentView : UIView <AVPlaybackControlsViewDelegate, AVCaptureViewConfiguring>
 {
     BOOL _canAutomaticallyZoomLetterboxVideos;
     BOOL _needsInitialLayout;
-    id<AVPlayerViewControllerContentViewDelegate> _delegate;
-    UIView *_playerLayerAndContentOverlayContainerView;
-    UIView *_contentOverlayView;
-    UIView *_iAdPreRollView;
-    AVStatusBarBackgroundGradientView *_statusBarBackgroundGradientView;
-    AVPlaybackControlsView *_playbackControlsView;
+    NSString *_automaticVideoGravity;
+    _UIVisualEffectBackdropView *_captureView;
     AVExternalPlaybackIndicatorView *_externalPlaybackIndicatorView;
     UIImageView *_unsupportedContentIndicatorView;
     UIImageView *_audioOnlyIndicatorView;
+    UIView *_contentOverlayView;
+    UIView *_playerLayerAndContentOverlayContainerView;
+    UIView *_iAdPreRollView;
+    AVPlaybackControlsView *_playbackControlsView;
+    AVStatusBarBackgroundGradientView *_statusBarBackgroundGradientView;
+    id<AVPlayerViewControllerContentViewDelegate> _delegate;
     __AVPlayerLayerView *_playerLayerView;
     NSMutableDictionary *_targetVideoGravities;
-    NSString *_automaticVideoGravity;
+    NSString *_captureGroupName;
+    NSString *_externalPlaybackIndicatorTitle;
+    NSString *_externalPlaybackIndicatorSubtitle;
 }
 
 @property (readonly, nonatomic) UIImageView *audioOnlyIndicatorView; // @synthesize audioOnlyIndicatorView=_audioOnlyIndicatorView;
+@property (readonly, nonatomic) UIImageView *audioOnlyIndicatorViewIfLoaded;
 @property (copy, nonatomic) NSString *automaticVideoGravity; // @synthesize automaticVideoGravity=_automaticVideoGravity;
 @property (nonatomic) BOOL canAutomaticallyZoomLetterboxVideos; // @synthesize canAutomaticallyZoomLetterboxVideos=_canAutomaticallyZoomLetterboxVideos;
+@property (readonly, nonatomic) NSString *captureGroupName; // @synthesize captureGroupName=_captureGroupName;
+@property (readonly, nonatomic) _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
 @property (readonly, nonatomic) UIView *contentOverlayView; // @synthesize contentOverlayView=_contentOverlayView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AVPlayerViewControllerContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *externalPlaybackIndicatorSubtitle; // @synthesize externalPlaybackIndicatorSubtitle=_externalPlaybackIndicatorSubtitle;
+@property (copy, nonatomic) NSString *externalPlaybackIndicatorTitle; // @synthesize externalPlaybackIndicatorTitle=_externalPlaybackIndicatorTitle;
 @property (readonly, nonatomic) AVExternalPlaybackIndicatorView *externalPlaybackIndicatorView; // @synthesize externalPlaybackIndicatorView=_externalPlaybackIndicatorView;
+@property (readonly, nonatomic) AVExternalPlaybackIndicatorView *externalPlaybackIndicatorViewIfLoaded;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIView *iAdPreRollView; // @synthesize iAdPreRollView=_iAdPreRollView;
 @property (readonly, nonatomic) UIView *interactiveContentOverlayView;
 @property (readonly, nonatomic) BOOL isCoveringWindow;
 @property (readonly, nonatomic) BOOL isDescendantOfNonPagingScrollView;
-@property (readonly, nonatomic) unsigned long long layoutMetrics;
+@property (readonly, nonatomic) unsigned long long layoutClass;
 @property (nonatomic) BOOL needsInitialLayout; // @synthesize needsInitialLayout=_needsInitialLayout;
 @property (readonly, nonatomic) AVPlaybackControlsView *playbackControlsView; // @synthesize playbackControlsView=_playbackControlsView;
 @property (readonly, nonatomic) UIView *playerLayerAndContentOverlayContainerView; // @synthesize playerLayerAndContentOverlayContainerView=_playerLayerAndContentOverlayContainerView;
@@ -51,6 +62,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMutableDictionary *targetVideoGravities; // @synthesize targetVideoGravities=_targetVideoGravities;
 @property (readonly, nonatomic) UIImageView *unsupportedContentIndicatorView; // @synthesize unsupportedContentIndicatorView=_unsupportedContentIndicatorView;
+@property (readonly, nonatomic) UIImageView *unsupportedContentIndicatorViewIfLoaded;
 
 - (void).cxx_destruct;
 - (void)_applyVideoGravityIfNeeded:(long long)arg1;
@@ -58,9 +70,11 @@
 - (void)_updatePlayerLayerAndContentOverlayContainerViewLayoutMarginsForVideoGravity:(long long)arg1;
 - (void)_updateVideoGravityDuringLayoutSubviewsAndAssertThatIfYouBreakThisMethodYouOwnThisMethod;
 - (void)addPlayerLayerAndContentOverlayContainerViewIfNeeded;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)configureBackdropView:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (id)initWithPlayerLayerView:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 playerLayerView:(id)arg2;
 - (BOOL)isViewDescendantOfPlaybackControlsSubview:(id)arg1;
 - (void)layoutSubviews;
 - (void)playbackControlsView:(id)arg1 interactiveContentOverlayViewLayoutMarginsDidChange:(struct UIEdgeInsets)arg2 shouldLayoutIfNeeded:(BOOL)arg3;
@@ -68,7 +82,7 @@
 - (void)setShowsAudioOnlyIndicator:(BOOL)arg1;
 - (void)setShowsExternalPlaybackIndicator:(BOOL)arg1;
 - (void)setShowsUnsupportedContentIndicator:(BOOL)arg1;
-- (void)setTargetVideoGravity:(id)arg1 forLayoutMetrics:(unsigned long long)arg2;
+- (void)setTargetVideoGravity:(id)arg1 forLayoutClass:(unsigned long long)arg2;
 
 @end
 

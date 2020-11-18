@@ -14,6 +14,7 @@
     NSData *_responseBody;
     NSDictionary *_responseHeaders;
     NSError *_error;
+    long long _statusCode;
     NSString *_DSID;
     CDUnknownBlockType _completionHandler;
     NSString *_bagKey;
@@ -24,17 +25,18 @@
 @property (copy, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
 @property (strong, nonatomic) NSString *bagKey; // @synthesize bagKey=_bagKey;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (copy, nonatomic) NSError *error; // @synthesize error=_error;
+@property (copy) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSData *requestBody; // @synthesize requestBody=_requestBody;
 @property (strong, nonatomic) NSMutableDictionary *requestHeaders; // @synthesize requestHeaders=_requestHeaders;
-@property (strong, nonatomic) NSData *responseBody; // @synthesize responseBody=_responseBody;
-@property (strong, nonatomic) NSDictionary *responseHeaders; // @synthesize responseHeaders=_responseHeaders;
+@property (strong) NSData *responseBody; // @synthesize responseBody=_responseBody;
+@property (strong) NSDictionary *responseHeaders; // @synthesize responseHeaders=_responseHeaders;
+@property long long statusCode; // @synthesize statusCode=_statusCode;
 @property (strong, nonatomic) NSNumber *token; // @synthesize token=_token;
 
 + (id)incrementToken;
 - (void).cxx_destruct;
+- (void)handleJingleResponse;
 - (id)init:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)requestCompleted:(id)arg1 responseHeaders:(id)arg2 error:(id)arg3;
 - (void)send;
 - (void)sendJingleRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 

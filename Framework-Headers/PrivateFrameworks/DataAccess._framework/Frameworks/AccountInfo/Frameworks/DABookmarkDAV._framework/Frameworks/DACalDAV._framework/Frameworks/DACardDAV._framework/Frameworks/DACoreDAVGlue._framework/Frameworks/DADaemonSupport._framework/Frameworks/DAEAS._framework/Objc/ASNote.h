@@ -37,6 +37,7 @@
 
 + (BOOL)acceptsTopLevelLeaves;
 + (id)asParseRules;
++ (id)externalRepClasses;
 + (BOOL)frontingBasicTypes;
 + (id)noteWithLocalNoteObject:(id)arg1 serverID:(id)arg2 account:(id)arg3;
 + (BOOL)notifyOfUnknownTokens;

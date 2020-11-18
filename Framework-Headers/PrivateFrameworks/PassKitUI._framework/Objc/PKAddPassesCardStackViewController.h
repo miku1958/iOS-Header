@@ -41,6 +41,7 @@
 - (void)_nextButtonPressedForAutomaticPresentation:(id)arg1;
 - (void)_nextButtonPressedForPersonalization:(id)arg1;
 - (void)dealloc;
+- (void)evaluateBrightness;
 - (id)groupAtIndex:(unsigned long long)arg1;
 - (void)groupStackView:(id)arg1 deleteConfirmedForPass:(id)arg2;
 - (void)groupStackView:(id)arg1 didTransitionToState:(long long)arg2 animated:(BOOL)arg3;
@@ -55,6 +56,7 @@
 - (unsigned long long)numberOfGroups;
 - (void)passPersonalizationViewController:(id)arg1 didFinishPersonalizingPass:(id)arg2;
 - (void)reloadGroupsForGroupStackView:(id)arg1;
+- (void)resetBrightness;
 - (unsigned long long)suppressedContent;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidLoad;

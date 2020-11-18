@@ -76,6 +76,7 @@
 - (void)openAuthenticationURLForAccount:(id)arg1 withDelegateClassName:(id)arg2 fromBundleAtPath:(id)arg3 shouldConfirm:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)parentAccountForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)permissionForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)preloadDataclassOwnersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)provisionedDataclassesForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeAccount:(id)arg1 withDataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

@@ -30,11 +30,11 @@
     NSString *_headerTitle;
     PSPasscodeField *_passcodeField;
     UIColor *_foregroundColor;
+    NSString *_submittedPIN;
     long long _keyboardAppearance;
     unsigned long long _numberOfEntryFields;
     RUIHeaderElement *_header;
     RUIHTMLHeaderElement *_HTMLHeader;
-    NSString *_submittedPIN;
 }
 
 @property (strong, nonatomic) RUIHTMLHeaderElement *HTMLHeader; // @synthesize HTMLHeader=_HTMLHeader;

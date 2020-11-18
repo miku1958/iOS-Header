@@ -9,11 +9,12 @@
 #import <XCTest/XCTTestRunSessionDelegate-Protocol.h>
 #import <XCTest/XCTestDriverInterface-Protocol.h>
 #import <XCTest/XCTestObservation-Protocol.h>
+#import <XCTest/XCUIXcodeApplicationManaging-Protocol.h>
 
 @class DTXConnection, NSString, XCTestRun;
 @protocol OS_dispatch_queue, XCTUIApplicationMonitor, XCTestManager_IDEInterface><NSObject;
 
-@interface XCTRunnerIDESession : NSObject <XCTestObservation, XCTestDriverInterface, XCTTestRunSessionDelegate>
+@interface XCTRunnerIDESession : NSObject <XCTestObservation, XCTestDriverInterface, XCTTestRunSessionDelegate, XCUIXcodeApplicationManaging>
 {
     NSObject<OS_dispatch_queue> *_queue;
     DTXConnection *_IDEConnection;
@@ -41,6 +42,7 @@
 + (id)sharedSession;
 + (id)sharedSessionQueue;
 + (id)transportForLocalPath:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 - (id)_IDE_processWithBundleID:(id)arg1 path:(id)arg2 pid:(id)arg3 crashedUnderSymbol:(id)arg4;
 - (id)_IDE_processWithToken:(id)arg1 exitedWithStatus:(id)arg2;
 - (id)_IDE_startExecutingTestPlanWithProtocolVersion:(id)arg1;
@@ -48,7 +50,6 @@
 - (void)_testCase:(id)arg1 didFinishActivity:(id)arg2;
 - (void)_testCase:(id)arg1 didMeasureValues:(id)arg2 forPerformanceMetricID:(id)arg3 name:(id)arg4 unitsOfMeasurement:(id)arg5 baselineName:(id)arg6 baselineAverage:(id)arg7 maxPercentRegression:(id)arg8 maxPercentRelativeStandardDeviation:(id)arg9 maxRegression:(id)arg10 maxStandardDeviation:(id)arg11 file:(id)arg12 line:(unsigned long long)arg13;
 - (void)_testCase:(id)arg1 willStartActivity:(id)arg2;
-- (void)dealloc;
 - (id)initWithTransport:(id)arg1;
 - (void)launchProcessWithPath:(id)arg1 bundleID:(id)arg2 arguments:(id)arg3 environmentVariables:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)logDebugMessage:(id)arg1;

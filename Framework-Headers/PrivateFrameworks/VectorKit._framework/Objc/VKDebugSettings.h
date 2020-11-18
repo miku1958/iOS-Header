@@ -120,9 +120,14 @@
     float _venueZoomOutFalloff;
     BOOL _enableTrafficCameraLabelDebugging;
     BOOL _enableEtaLabelDebugging;
+    BOOL _enableRouteShareSectionDebugging;
+    BOOL _enableEtaLabelRectDebugging;
+    unsigned long long _etaLabelDebugScore;
+    unsigned int _etaLabelDebugOrientationMask;
     BOOL _etaLabelsAvoidScreenEdges;
     BOOL _enableRouteIntersectionTesting;
     BOOL _forceEtaLabelPlacement;
+    BOOL _traceEtaDebugLog;
     BOOL _trafficCameraLabelSelfCollide;
     BOOL _trafficCameraLabelCollideOutExternal;
     BOOL _trafficCameraLabelCollideWithExternal;
@@ -198,11 +203,15 @@
 @property (nonatomic) BOOL enableARDebugConsole; // @synthesize enableARDebugConsole=_enableARDebugConsole;
 @property (nonatomic) BOOL enableAROmniTileLoader; // @synthesize enableAROmniTileLoader=_enableAROmniTileLoader;
 @property (nonatomic) BOOL enableEtaLabelDebugging; // @synthesize enableEtaLabelDebugging=_enableEtaLabelDebugging;
+@property (nonatomic) BOOL enableEtaLabelRectDebugging; // @synthesize enableEtaLabelRectDebugging=_enableEtaLabelRectDebugging;
 @property (nonatomic) BOOL enableLoggingInLockScreen; // @synthesize enableLoggingInLockScreen=_enableLoggingInLockScreen;
 @property (nonatomic) BOOL enableRouteIntersectionTesting; // @synthesize enableRouteIntersectionTesting=_enableRouteIntersectionTesting;
+@property (nonatomic) BOOL enableRouteShareSectionDebugging; // @synthesize enableRouteShareSectionDebugging=_enableRouteShareSectionDebugging;
 @property (nonatomic) BOOL enableShieldsOnRouteLine; // @synthesize enableShieldsOnRouteLine=_enableShieldsOnRouteLine;
 @property (nonatomic) BOOL enableSignPostEvents; // @synthesize enableSignPostEvents=_enableSignPostEvents;
 @property (nonatomic) BOOL enableTrafficCameraLabelDebugging; // @synthesize enableTrafficCameraLabelDebugging=_enableTrafficCameraLabelDebugging;
+@property (nonatomic) unsigned int etaLabelDebugOrientationMask; // @synthesize etaLabelDebugOrientationMask=_etaLabelDebugOrientationMask;
+@property (nonatomic) unsigned long long etaLabelDebugScore; // @synthesize etaLabelDebugScore=_etaLabelDebugScore;
 @property (nonatomic) BOOL etaLabelsAvoidScreenEdges; // @synthesize etaLabelsAvoidScreenEdges=_etaLabelsAvoidScreenEdges;
 @property (nonatomic) BOOL expandedPerformanceHUD; // @synthesize expandedPerformanceHUD=_expandedPerformanceHUD;
 @property (strong, nonatomic) NSMutableArray *footprintsToSuppress; // @synthesize footprintsToSuppress=_footprintsToSuppress;
@@ -273,6 +282,7 @@
 @property (nonatomic) BOOL showTrafficCasing; // @synthesize showTrafficCasing=_showTrafficCasing;
 @property (nonatomic) BOOL suppressFootprints; // @synthesize suppressFootprints=_suppressFootprints;
 @property (nonatomic) BOOL texturedTrafficCasing; // @synthesize texturedTrafficCasing=_texturedTrafficCasing;
+@property (nonatomic) BOOL traceEtaDebugLog; // @synthesize traceEtaDebugLog=_traceEtaDebugLog;
 @property (nonatomic) BOOL trackingCameraZoomFurther; // @synthesize trackingCameraZoomFurther=_trackingCameraZoomFurther;
 @property (nonatomic) BOOL trafficCameraLabelCollideOutExternal; // @synthesize trafficCameraLabelCollideOutExternal=_trafficCameraLabelCollideOutExternal;
 @property (nonatomic) BOOL trafficCameraLabelCollideWithExternal; // @synthesize trafficCameraLabelCollideWithExternal=_trafficCameraLabelCollideWithExternal;
@@ -290,7 +300,7 @@
 - (void).cxx_destruct;
 - (void)addFootprintToSuppress:(id)arg1;
 - (void)clearFootprintsToSuppress;
-- (const vector_fbcf581f *)customLandmarkObjectGroupsForKey:(const struct _GEOTileKey *)arg1;
+- (const vector_defea32f *)customLandmarkObjectGroupsForKey:(const struct _GEOTileKey *)arg1;
 - (void)dealloc;
 - (void)hidePerformanceGroup:(unsigned int)arg1;
 - (id)init;

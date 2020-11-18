@@ -22,7 +22,7 @@
     AUAudioUnit *_ownerAudioUnit;
     NSArray *_supportedChannelLayoutTags;
     double _contextPresentationLatency;
-    vector_07ddb480 _observers;
+    vector_e102d759 _observers;
 }
 
 @property (readonly, nonatomic) long long busType; // @synthesize busType=_busType;
@@ -31,7 +31,7 @@
 @property (readonly, nonatomic) AVAudioFormat *format;
 @property (readonly, nonatomic) unsigned long long index; // @synthesize index=_index;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) vector_07ddb480 observers; // @synthesize observers=_observers;
+@property (nonatomic) vector_e102d759 observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic) AUAudioUnit *ownerAudioUnit; // @synthesize ownerAudioUnit=_ownerAudioUnit;
 @property (nonatomic) BOOL shouldAllocateBuffer; // @synthesize shouldAllocateBuffer=_shouldAllocateBuffer;
 @property (readonly, copy, nonatomic) NSArray *supportedChannelLayoutTags; // @synthesize supportedChannelLayoutTags=_supportedChannelLayoutTags;

@@ -13,8 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface VKPolygonTile : VKSkewingVectorTile <VKPolygonTile>
 {
-    vector_2e22b445 _polygonGroups;
-    vector_0661f58a _coastlineGroups;
+    vector_5d257bd0 _polygonGroups;
+    vector_018386b3 _coastlineGroups;
     float _alpha;
     float _scale;
     float _minLayeringHeight;
@@ -22,16 +22,16 @@ __attribute__((visibility("hidden")))
     VKAnimation *_animation;
     VKAnimation *_animationForPitch;
     struct unordered_map<unsigned long long, VKPolygonGroup *, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, VKPolygonGroup *>>> _transitPolygonGroupMap;
-    unordered_map_5292d3da _transitNodesRouteAttributesMap;
+    unordered_map_aa0d84a8 _transitNodesRouteAttributesMap;
 }
 
 @property (nonatomic) float alpha; // @synthesize alpha=_alpha;
 @property (strong, nonatomic) VKAnimation *animation; // @synthesize animation=_animation;
 @property (strong, nonatomic) VKAnimation *animationForPitch; // @synthesize animationForPitch=_animationForPitch;
-@property (readonly, nonatomic) vector_0661f58a *coastlineGroups; // @synthesize coastlineGroups=_coastlineGroups;
+@property (readonly, nonatomic) vector_018386b3 *coastlineGroups; // @synthesize coastlineGroups=_coastlineGroups;
 @property (readonly, nonatomic) float maxLayeringHeight; // @synthesize maxLayeringHeight=_maxLayeringHeight;
 @property (readonly, nonatomic) float minLayeringHeight; // @synthesize minLayeringHeight=_minLayeringHeight;
-@property (readonly, nonatomic) const vector_2e22b445 *polygonGroups;
+@property (readonly, nonatomic) const vector_5d257bd0 *polygonGroups;
 @property (nonatomic) float scale; // @synthesize scale=_scale;
 
 - (id).cxx_construct;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)buildMeshesWithDevice:(Device_9226c869 *)arg1 triangulator:(id)arg2 prepareExtrusion:(BOOL)arg3;
 - (void)dealloc;
 - (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_9226c869 *)arg7;
-- (void)setTransitNodesRouteAttributes:(const unordered_map_5292d3da *)arg1;
+- (void)setTransitNodesRouteAttributes:(const unordered_map_aa0d84a8 *)arg1;
 
 @end
 

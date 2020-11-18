@@ -6,9 +6,11 @@
 
 #import <ScreenReaderOutput/SCROBrailleKey.h>
 
+#import <ScreenReaderOutput/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface SCROBrailleKeyboardKey : SCROBrailleKey
+@interface SCROBrailleKeyboardKey : SCROBrailleKey <NSSecureCoding>
 {
     unsigned int _modifiers;
     unsigned int _keyCode;
@@ -21,6 +23,7 @@
 @property (nonatomic) unsigned int modifiers; // @synthesize modifiers=_modifiers;
 @property (nonatomic) unsigned int virtualKeyCode; // @synthesize virtualKeyCode=_virtualKeyCode;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -17,7 +17,7 @@
     BOOL _sourceIsManaged;
     BOOL _keyboardVisible;
     BOOL _hasAnyAccount;
-    BOOL _hasFilteredAccount;
+    BOOL _hasValidAccountForSending;
     NSString *_sourceApplicationBundleID;
     NSString *_subject;
     NSString *_autosaveIdentifier;
@@ -28,7 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAnyAccount; // @synthesize hasAnyAccount=_hasAnyAccount;
-@property (nonatomic) BOOL hasFilteredAccount; // @synthesize hasFilteredAccount=_hasFilteredAccount;
+@property (nonatomic) BOOL hasValidAccountForSending; // @synthesize hasValidAccountForSending=_hasValidAccountForSending;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL keyboardVisible; // @synthesize keyboardVisible=_keyboardVisible;
 @property (strong, nonatomic) MFMailComposeViewController *mailComposeViewController; // @synthesize mailComposeViewController=_mailComposeViewController;

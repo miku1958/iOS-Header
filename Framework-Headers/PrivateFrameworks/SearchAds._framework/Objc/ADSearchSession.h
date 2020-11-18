@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ADCapData, ADTargetingData, NSString;
+@class ADCapData, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ADSearchSession : NSObject
@@ -17,7 +17,6 @@
     NSString *_appID;
     NSString *_appVersion;
     ADCapData *_capData;
-    ADTargetingData *_targetingData;
     NSString *_campaignNamespace;
     NSObject *_notificationObserver;
 }
@@ -29,14 +28,11 @@
 @property (strong, nonatomic) ADCapData *capData; // @synthesize capData=_capData;
 @property (strong, nonatomic) NSObject *notificationObserver; // @synthesize notificationObserver=_notificationObserver;
 @property (nonatomic) BOOL notificationReceivedAndWaiting; // @synthesize notificationReceivedAndWaiting=_notificationReceivedAndWaiting;
-@property (strong, nonatomic) ADTargetingData *targetingData; // @synthesize targetingData=_targetingData;
 
 - (void).cxx_destruct;
-- (void)_setupInternalSettings;
 - (id)adParameters;
 - (id)campaignNamespaceParameter;
 - (void)dealloc;
-- (void)expireTargetingData;
 - (id)initWithAppID:(id)arg1 appVersion:(id)arg2 appsRank:(int)arg3;
 - (id)initWithAppID:(id)arg1 appVersion:(id)arg2 appsRank:(int)arg3 storeFront:(id)arg4;
 - (id)populateStoreFrontLanguageLocale:(id)arg1;
@@ -48,9 +44,11 @@
 - (void)requestUserTargetingIdentifier:(CDUnknownBlockType)arg1;
 - (id)requestedAdDataParameter;
 - (id)requestedTemplateTypeParameter;
+- (id)sponsoredSearchRequestForLanguageLocale:(id)arg1;
 - (BOOL)startUpdatingIDs;
+- (void)updateClickDataWith:(id)arg1;
 - (void)updateSponsoredFrequencyCapData:(id)arg1;
-- (void)updateToroClickData:(id)arg1;
+- (void)updateToroDownloadData:(id)arg1 forType:(long long)arg2;
 - (id)userTargetingProperties;
 
 @end

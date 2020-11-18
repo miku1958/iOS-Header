@@ -14,6 +14,7 @@
 {
     long long _channelContentProviderID;
     NSMutableArray *_articleIAdCategories;
+    NSMutableArray *_articleIAdKeywords;
     NSMutableArray *_articleIAdSectionIDs;
     NSString *_articleID;
     NSString *_articleRating;
@@ -33,6 +34,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *articleIAdCategories; // @synthesize articleIAdCategories=_articleIAdCategories;
+@property (strong, nonatomic) NSMutableArray *articleIAdKeywords; // @synthesize articleIAdKeywords=_articleIAdKeywords;
 @property (strong, nonatomic) NSMutableArray *articleIAdSectionIDs; // @synthesize articleIAdSectionIDs=_articleIAdSectionIDs;
 @property (strong, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
 @property (strong, nonatomic) NSString *articleRating; // @synthesize articleRating=_articleRating;
@@ -54,16 +56,20 @@
 @property (nonatomic) BOOL sponsoredArticle; // @synthesize sponsoredArticle=_sponsoredArticle;
 
 + (Class)articleIAdCategoriesType;
++ (Class)articleIAdKeywordsType;
 + (Class)articleIAdSectionIDsType;
 + (Class)channelIAdCategoriesType;
 + (Class)channelIAdKeywordsType;
 - (void).cxx_destruct;
 - (void)addArticleIAdCategories:(id)arg1;
+- (void)addArticleIAdKeywords:(id)arg1;
 - (void)addArticleIAdSectionIDs:(id)arg1;
 - (void)addChannelIAdCategories:(id)arg1;
 - (void)addChannelIAdKeywords:(id)arg1;
 - (id)articleIAdCategoriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)articleIAdCategoriesCount;
+- (id)articleIAdKeywordsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)articleIAdKeywordsCount;
 - (id)articleIAdSectionIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)articleIAdSectionIDsCount;
 - (id)channelIAdCategoriesAtIndex:(unsigned long long)arg1;
@@ -71,6 +77,7 @@
 - (id)channelIAdKeywordsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)channelIAdKeywordsCount;
 - (void)clearArticleIAdCategories;
+- (void)clearArticleIAdKeywords;
 - (void)clearArticleIAdSectionIDs;
 - (void)clearChannelIAdCategories;
 - (void)clearChannelIAdKeywords;

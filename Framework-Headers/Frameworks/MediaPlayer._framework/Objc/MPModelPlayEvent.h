@@ -10,30 +10,19 @@
 
 @interface MPModelPlayEvent : MPModelObject
 {
-    NSDate *_datePlayed;
-    MPModelAlbum *_album;
-    MPModelArtist *_artist;
-    MPModelPlaylist *_playlist;
-    MPModelRadioStation *_radioStation;
 }
 
-@property (strong, nonatomic) MPModelAlbum *album; // @synthesize album=_album;
-@property (strong, nonatomic) MPModelArtist *artist; // @synthesize artist=_artist;
-@property (copy, nonatomic) NSDate *datePlayed; // @synthesize datePlayed=_datePlayed;
-@property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
-@property (strong, nonatomic) MPModelRadioStation *radioStation; // @synthesize radioStation=_radioStation;
+@property (strong, nonatomic) MPModelAlbum *album; // @dynamic album;
+@property (strong, nonatomic) MPModelArtist *artist; // @dynamic artist;
+@property (copy, nonatomic) NSDate *datePlayed; // @dynamic datePlayed;
+@property (strong, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
+@property (strong, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
 
-+ (id)__MPModelPropertyPlayEventDatePlayed__PROPERTY;
-+ (id)__MPModelRelationshipPlayEventAlbum__PROPERTY;
-+ (id)__MPModelRelationshipPlayEventArtist__PROPERTY;
-+ (id)__MPModelRelationshipPlayEventPlaylist__PROPERTY;
-+ (id)__MPModelRelationshipPlayEventRadioStation__PROPERTY;
-+ (id)__album__KEY;
-+ (id)__artist__KEY;
-+ (id)__datePlayed__KEY;
-+ (id)__playlist__KEY;
-+ (id)__radioStation__KEY;
-- (void).cxx_destruct;
++ (id)__album_KEY;
++ (id)__artist_KEY;
++ (id)__datePlayed_KEY;
++ (id)__playlist_KEY;
++ (id)__radioStation_KEY;
 - (id)contentItemCollectionInfo;
 - (long long)itemType;
 

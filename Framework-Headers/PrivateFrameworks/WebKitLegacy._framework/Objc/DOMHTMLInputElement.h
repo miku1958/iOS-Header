@@ -6,9 +6,11 @@
 
 #import <WebKitLegacy/DOMHTMLElement.h>
 
+#import <WebKitLegacy/UITextInputTraits-Protocol.h>
+
 @class DOMFileList, DOMHTMLFormElement, NSString, NSURL;
 
-@interface DOMHTMLInputElement : DOMHTMLElement
+@interface DOMHTMLInputElement : DOMHTMLElement <UITextInputTraits>
 {
 }
 
@@ -18,28 +20,45 @@
 @property (copy) NSString *align;
 @property (copy) NSString *alt;
 @property (readonly, copy) NSString *altDisplayString;
+@property (nonatomic) long long autocapitalizationType;
+@property (nonatomic) long long autocorrectionType;
 @property BOOL autofocus;
 @property BOOL checked;
+@property (readonly, copy) NSString *debugDescription;
 @property BOOL defaultChecked;
 @property (copy) NSString *defaultValue;
+@property (readonly, copy) NSString *description;
 @property BOOL disabled;
+@property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (strong) DOMFileList *files;
 @property (readonly) DOMHTMLFormElement *form;
+@property (readonly) unsigned long long hash;
 @property BOOL indeterminate;
+@property (nonatomic) long long keyboardAppearance;
+@property (nonatomic) long long keyboardType;
 @property int maxLength;
 @property BOOL multiple;
 @property (copy) NSString *name;
 @property BOOL readOnly;
+@property (nonatomic) long long returnKeyType;
+@property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property int selectionEnd;
 @property int selectionStart;
 @property (copy) NSString *size;
+@property (nonatomic) long long smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType;
+@property (nonatomic) long long spellCheckingType;
 @property (copy) NSString *src;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *textContentType;
 @property (copy) NSString *type;
 @property (copy) NSString *useMap;
 @property (copy) NSString *value;
 @property (readonly) BOOL willValidate;
 
 - (int)_autocapitalizeType;
+- (id)_autofillContext;
 - (BOOL)_isAutofilled;
 - (BOOL)_isEdited;
 - (BOOL)_isTextField;
@@ -57,6 +76,7 @@
 - (id)formTarget;
 - (unsigned int)height;
 - (BOOL)incremental;
+- (void)insertTextSuggestion:(id)arg1;
 - (id)labels;
 - (id)max;
 - (id)min;

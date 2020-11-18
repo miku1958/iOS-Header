@@ -51,11 +51,10 @@
 - (id)initWithSize:(CDStruct_912cb5d2)arg1 renderer:(id)arg2;
 - (void)markAsFinished;
 - (id)nextInputFrame;
-- (id)outputColorSpace;
 - (BOOL)start:(out id *)arg1;
 - (void)waitUntilDone;
 - (id)workingColorSpace;
-- (BOOL)writeLongExposureImage:(id)arg1 UTI:(id)arg2 error:(out id *)arg3;
+- (BOOL)writeLongExposureImage:(id)arg1 UTI:(id)arg2 colorSpace:(id)arg3 error:(out id *)arg4;
 - (BOOL)writeMaskImage:(id)arg1 UTI:(id)arg2 error:(out id *)arg3;
 
 @end

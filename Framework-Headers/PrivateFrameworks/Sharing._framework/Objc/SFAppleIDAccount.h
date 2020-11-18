@@ -8,37 +8,29 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, SFAppleIDContactInfo, SFAppleIDIdentity, SFAppleIDValidationRecord;
+@class NSData, NSDate, NSString, SFAppleIDContactInfo, SFAppleIDIdentity, SFAppleIDValidationRecord;
 
 @interface SFAppleIDAccount : NSObject <NSSecureCoding>
 {
-    BOOL _forceValidation;
     NSString *_altDSID;
     NSString *_appleID;
     NSString *_certificateToken;
+    NSDate *_certificateTokenCreationDate;
     SFAppleIDContactInfo *_contactInfo;
+    NSDate *_creationDate;
     SFAppleIDIdentity *_identity;
-    NSDate *_lastConnectAttemptDate;
-    NSDate *_lastValidationDate;
-    NSDate *_modificationDate;
-    NSDate *_nextCertificateFetchDate;
-    NSDate *_nextConnectionDate;
-    NSDate *_nextValidationDate;
+    NSData *_privateKeyPersistentReference;
     SFAppleIDValidationRecord *_validationRecord;
 }
 
 @property (strong, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (readonly, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (strong, nonatomic) NSString *certificateToken; // @synthesize certificateToken=_certificateToken;
+@property (strong, nonatomic) NSDate *certificateTokenCreationDate; // @synthesize certificateTokenCreationDate=_certificateTokenCreationDate;
 @property (strong, nonatomic) SFAppleIDContactInfo *contactInfo; // @synthesize contactInfo=_contactInfo;
-@property (nonatomic) BOOL forceValidation; // @synthesize forceValidation=_forceValidation;
+@property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic) SFAppleIDIdentity *identity; // @synthesize identity=_identity;
-@property (strong, nonatomic) NSDate *lastConnectAttemptDate; // @synthesize lastConnectAttemptDate=_lastConnectAttemptDate;
-@property (strong, nonatomic) NSDate *lastValidationDate; // @synthesize lastValidationDate=_lastValidationDate;
-@property (strong, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
-@property (strong, nonatomic) NSDate *nextCertificateFetchDate; // @synthesize nextCertificateFetchDate=_nextCertificateFetchDate;
-@property (strong, nonatomic) NSDate *nextConnectionDate; // @synthesize nextConnectionDate=_nextConnectionDate;
-@property (strong, nonatomic) NSDate *nextValidationDate; // @synthesize nextValidationDate=_nextValidationDate;
+@property (strong, nonatomic) NSData *privateKeyPersistentReference; // @synthesize privateKeyPersistentReference=_privateKeyPersistentReference;
 @property (strong, nonatomic) SFAppleIDValidationRecord *validationRecord; // @synthesize validationRecord=_validationRecord;
 
 + (BOOL)supportsSecureCoding;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)isTitleOn;
+- (BOOL)shouldPlaceTitleAtCenter;
 - (unsigned long long)titleParagraphStyleIndex;
 - (id)titleSelectionPath;
 - (id)titleTextForModel:(id)arg1;

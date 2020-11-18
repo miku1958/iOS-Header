@@ -56,6 +56,7 @@
 - (void).cxx_destruct;
 - (void)_probeEntitlementsWithConnection:(id)arg1;
 - (id)initWithConnection:(id)arg1;
+- (BOOL)isEntitledForMerchantSession:(id)arg1;
 - (BOOL)isEntitledForPaymentRequest:(id)arg1;
 - (BOOL)supportsWebPayments;
 

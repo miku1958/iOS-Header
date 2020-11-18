@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)deletingContact:(id)arg1;
 - (void)didFetchContacts:(id)arg1 error:(id)arg2;
 - (void)didFetchEncodedContacts:(id)arg1 error:(id)arg2;
-- (void)errorWhenRetrievingProxyForInterface:(id)arg1;
 - (void)fetchContactsMatchingPredicate:(id)arg1 unifyResults:(BOOL)arg2 keysToFetch:(id)arg3;
 - (void)fetchContactsProgressivelyMatchingPredicate:(id)arg1 unifyResults:(BOOL)arg2 keysToFetch:(id)arg3;
 - (void)fetchEncodedContactsMatchingPredicate:(id)arg1 unifyResults:(BOOL)arg2 keysToFetch:(id)arg3;

@@ -8,10 +8,12 @@
 
 @interface HMHome (Additions)
 + (id)_hf_appDataKeyForColorPaletteOfType:(unsigned long long)arg1;
+- (id)accessoriesSupportingSoftwareUpdate;
+- (id)availableSoftwareUpdates;
 - (id)hf_accessControlDescriptor;
 - (id)hf_accessoriesMatchingCategoryType:(id)arg1;
-- (id)hf_accessoriesSupportingSoftwareUpdate;
 - (id)hf_accessoryForSymptomsHandler:(id)arg1;
+- (id)hf_accessoryWithDeviceIdentifier:(id)arg1;
 - (id)hf_accessoryWithIdentifier:(id)arg1;
 - (id)hf_actionSetWithUUID:(id)arg1;
 - (id)hf_allBridgeAccessories;
@@ -38,7 +40,9 @@
 - (BOOL)hf_isUserAtHome;
 - (id)hf_markTermsAndConditionsAsAcceptedForHomePodWithLicenseAgreementVersion:(id)arg1;
 - (id)hf_mediaAccessories;
+- (id)hf_mediaProfileContainerForSymptomsHandler:(id)arg1;
 - (id)hf_mediaSystemForAccessory:(id)arg1;
+- (id)hf_mediaSystemForSymptomsHandler:(id)arg1;
 - (id)hf_notesApplicationData;
 - (id)hf_personalRequestAccessories;
 - (id)hf_primaryResidentDevice;
@@ -52,6 +56,7 @@
 - (id)hf_serviceWithIdentifier:(id)arg1;
 - (id)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:(BOOL)arg1;
 - (id)hf_setNotesApplicationData:(id)arg1;
+- (void)hf_startReprovisioningAccessory:(id)arg1;
 - (BOOL)hf_supportsPerUserRemoteAccess;
 - (BOOL)hf_supportsRemoteAccessRestrictions;
 - (BOOL)hf_supportsSharedEventAutomation;

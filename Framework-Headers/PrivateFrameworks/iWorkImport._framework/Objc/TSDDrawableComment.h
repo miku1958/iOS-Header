@@ -15,11 +15,12 @@ __attribute__((visibility("hidden")))
 {
     TSDCommentStorage *mStorage;
     TSDDrawableInfo *_parent;
+    NSString *_annotationUUID;
 }
 
 @property (readonly, nonatomic) int annotationDisplayStringType;
 @property (readonly, nonatomic) int annotationType;
-@property (readonly, nonatomic) NSString *annotationUUID;
+@property (strong, nonatomic) NSString *annotationUUID; // @synthesize annotationUUID=_annotationUUID;
 @property (strong, nonatomic) TSKAnnotationAuthor *author;
 @property (readonly, nonatomic) NSDate *date;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithParent:(id)arg1 storage:(id)arg2;
 - (BOOL)isFloatingComment;
 - (BOOL)isInDocument;
+- (void)p_updateAnnotationUUID;
 
 @end
 

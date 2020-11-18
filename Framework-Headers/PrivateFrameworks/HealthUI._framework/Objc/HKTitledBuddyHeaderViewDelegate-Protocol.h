@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HKTitledBuddyHeaderView;
+#import <HealthUI/NSObject-Protocol.h>
 
-@protocol HKTitledBuddyHeaderViewDelegate
+@class HKTitledBuddyHeaderView, NSMutableAttributedString;
+
+@protocol HKTitledBuddyHeaderViewDelegate <NSObject>
 - (void)titledBuddyHeaderViewDidTapLinkButton:(HKTitledBuddyHeaderView *)arg1;
+
+@optional
+- (void)updateBodyTextAttributesWithMutableString:(NSMutableAttributedString *)arg1;
 @end
 

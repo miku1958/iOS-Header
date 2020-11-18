@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 - (struct CGSize)calcMinSize;
 - (BOOL)isTitleOn;
+- (BOOL)shouldPlaceTitleAtCenter;
 - (unsigned long long)titleParagraphStyleIndex;
 - (id)titleSelectionPath;
 - (id)titleTextForModel:(id)arg1;

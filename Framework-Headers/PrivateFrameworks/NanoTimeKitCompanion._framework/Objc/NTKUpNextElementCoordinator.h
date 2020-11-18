@@ -48,6 +48,7 @@
 - (void)moveElement:(id)arg1 fromIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (unsigned long long)numberOfElementsInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfObservers;
+- (void)observerDidUpdateAllowsLocationUse:(id)arg1;
 - (void)observerDidUpdateDisabledDataSources:(id)arg1;
 - (void)observerDidUpdateState:(id)arg1;
 - (void)performBatchUpdateBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;

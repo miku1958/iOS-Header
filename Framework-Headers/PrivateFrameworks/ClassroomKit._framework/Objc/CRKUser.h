@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <ClassroomKit/CRKCloudStoringSubItem-Protocol.h>
 #import <ClassroomKit/NSCopying-Protocol.h>
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSPersonNameComponents, NSString, UIImage;
+@class CRKImage, NSData, NSPersonNameComponents, NSString;
 
-@interface CRKUser : NSObject <NSSecureCoding, NSCopying>
+@interface CRKUser : NSObject <NSSecureCoding, NSCopying, CRKCloudStoringSubItem>
 {
     NSString *_userIdentifier;
     NSString *_displayName;
@@ -22,13 +23,17 @@
     NSString *_imageIdentifier;
     NSString *_imageURL;
     NSString *_userSource;
+    long long _role;
     NSData *_userImageData;
-    UIImage *_userImage;
+    CRKImage *_userImage;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
 @property (copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
 @property (copy, nonatomic) NSString *imageURL; // @synthesize imageURL=_imageURL;
 @property (readonly, nonatomic) BOOL isMeCardUser;
@@ -36,23 +41,31 @@
 @property (readonly, copy, nonatomic) NSPersonNameComponents *nameComponents;
 @property (copy, nonatomic) NSString *phoneticFamilyName; // @synthesize phoneticFamilyName=_phoneticFamilyName;
 @property (copy, nonatomic) NSString *phoneticGivenName; // @synthesize phoneticGivenName=_phoneticGivenName;
+@property (nonatomic) long long role; // @synthesize role=_role;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
-@property (copy, nonatomic) UIImage *userImage; // @synthesize userImage=_userImage;
+@property (copy, nonatomic) CRKImage *userImage; // @synthesize userImage=_userImage;
 @property (copy, nonatomic) NSData *userImageData; // @synthesize userImageData=_userImageData;
 @property (copy, nonatomic) NSString *userSource; // @synthesize userSource=_userSource;
 
++ (id)instanceWithKeyValue:(id)arg1;
++ (id)instanceWithParentObject:(id)arg1 keyValue:(id)arg2;
++ (id)instanceWithRecord:(id)arg1;
 + (id)meCardUser;
++ (id)recordType;
++ (id)skeletonInstance;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)applyFieldsToRecord:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryValue;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isChangedFrom:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToUser:(id)arg1;
+- (id)recordName;
 - (void)updateUserImage;
 
 @end

@@ -13,6 +13,7 @@
 @interface VSInstrumentMetrics : NSObject <NSSecureCoding>
 {
     BOOL _isWarmStart;
+    BOOL _isServerTTS;
     BOOL _isSpeechRequest;
     BOOL _isCacheHitFromDisk;
     BOOL _isCacheHitFromMemory;
@@ -35,6 +36,7 @@
 @property unsigned long long eagerRequestCreatedTimeStampDiffs; // @synthesize eagerRequestCreatedTimeStampDiffs=_eagerRequestCreatedTimeStampDiffs;
 @property BOOL isCacheHitFromDisk; // @synthesize isCacheHitFromDisk=_isCacheHitFromDisk;
 @property BOOL isCacheHitFromMemory; // @synthesize isCacheHitFromMemory=_isCacheHitFromMemory;
+@property BOOL isServerTTS; // @synthesize isServerTTS=_isServerTTS;
 @property BOOL isSpeechRequest; // @synthesize isSpeechRequest=_isSpeechRequest;
 @property BOOL isWarmStart; // @synthesize isWarmStart=_isWarmStart;
 @property unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;

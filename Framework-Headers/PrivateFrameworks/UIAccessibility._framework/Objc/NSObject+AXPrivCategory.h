@@ -151,6 +151,7 @@
 - (void)_accessibilityFindSearchResult:(BOOL)arg1 withString:(id)arg2;
 - (id)_accessibilityFindSubviewDescendant:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFindSubviewDescendantsPassingTest:(CDUnknownBlockType)arg1;
+- (id)_accessibilityFindUnsortedDescendantsPassingTest:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFindUnsortedSubviewDescendantsPassingTest:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFindViewAncestor:(CDUnknownBlockType)arg1 startWithSelf:(BOOL)arg2;
 - (id)_accessibilityFirstElementForFocus;
@@ -339,6 +340,7 @@
 - (void)_accessibilityPostAnnouncement:(id)arg1;
 - (void)_accessibilityPostNotificationHelper:(id)arg1;
 - (void)_accessibilityPostPasteboardTextForOperation:(id)arg1;
+- (id)_accessibilityPostProcessValueForAutomation:(id)arg1;
 - (void)_accessibilityPostValueChangedNotificationWithChangeType:(struct __CFString *)arg1;
 - (void)_accessibilityPostValueChangedNotificationWithChangeType:(struct __CFString *)arg1 insertedText:(id)arg2;
 - (void)_accessibilityPostValueChangedNotificationWithInsertedText:(id)arg1;
@@ -350,6 +352,7 @@
 - (BOOL)_accessibilityPrefersNonAttributedLabel;
 - (BOOL)_accessibilityPrefersNonAttributedValue;
 - (id)_accessibilityPreviousMarker:(id)arg1;
+- (id)_accessibilityProcessedLabelAttribute;
 - (id)_accessibilityPublicCustomRotorIdForSystemType:(id)arg1;
 - (id)_accessibilityPublicCustomRotorName:(id)arg1;
 - (BOOL)_accessibilityPublicCustomRotorVisibleInTouchRotor:(id)arg1;
@@ -455,6 +458,7 @@
 - (void)_accessibilitySetShouldPreventOpaqueScrolling:(BOOL)arg1;
 - (void)_accessibilitySetSortPriority:(long long)arg1;
 - (void)_accessibilitySetSupportsMediaAnalysis:(BOOL)arg1;
+- (void)_accessibilitySetTextViewShouldBreakUpParagraphs:(BOOL)arg1;
 - (void)_accessibilitySetUserDefinedIsGuideElement:(BOOL)arg1;
 - (void)_accessibilitySetUsesScrollParentForOrdering:(BOOL)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
@@ -520,6 +524,7 @@
 - (BOOL)_accessibilityTextOperationAction:(id)arg1;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextRangeFromNSRange:(struct _NSRange)arg1;
+- (BOOL)_accessibilityTextViewShouldBreakUpParagraphs;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (id)_accessibilityTouchContainer;
 - (BOOL)_accessibilityTouchContainerShouldOutputBraille;

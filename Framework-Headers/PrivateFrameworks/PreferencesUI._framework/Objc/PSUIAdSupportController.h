@@ -6,21 +6,20 @@
 
 #import <Preferences/PSListController.h>
 
-#import <PreferencesUI/ADPrivacyViewControllerDelegate-Protocol.h>
+#import <PreferencesUI/UserTransparencyViewControllerDelegate-Protocol.h>
 
-@class ADPrivacyViewController, NSString, UITableViewCell, UIView;
+@class NSString, UITableViewCell, UIView, UserTransparencyViewController;
 
-@interface PSUIAdSupportController : PSListController <ADPrivacyViewControllerDelegate>
+@interface PSUIAdSupportController : PSListController <UserTransparencyViewControllerDelegate>
 {
     id _restrictionsChangedObserver;
     id _effectiveSettingsChangedObserver;
     UITableViewCell *_limitAdTrackingCell;
     UIView *_originalAccessoryView;
     long long _optInStatus;
-    ADPrivacyViewController *_adPrivacyController;
+    UserTransparencyViewController *_userTransparencyController;
 }
 
-@property (strong, nonatomic) ADPrivacyViewController *adPrivacyController; // @synthesize adPrivacyController=_adPrivacyController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id effectiveSettingsChangedObserver; // @synthesize effectiveSettingsChangedObserver=_effectiveSettingsChangedObserver;
@@ -30,11 +29,9 @@
 @property (strong, nonatomic) UIView *originalAccessoryView; // @synthesize originalAccessoryView=_originalAccessoryView;
 @property (strong, nonatomic) id restrictionsChangedObserver; // @synthesize restrictionsChangedObserver=_restrictionsChangedObserver;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UserTransparencyViewController *userTransparencyController; // @synthesize userTransparencyController=_userTransparencyController;
 
 - (void).cxx_destruct;
-- (void)adPrivacyViewController:(id)arg1 didFailWithError:(id)arg2;
-- (void)adPrivacyViewControllerDidDismiss:(id)arg1;
-- (void)adPrivacyViewControllerDidLoad:(id)arg1;
 - (BOOL)canChangeLimitAdTracking;
 - (void)dealloc;
 - (id)limitAdTrackingEnabled:(id)arg1;
@@ -46,6 +43,9 @@
 - (void)userDidTapAdPreferences:(id)arg1;
 - (void)userDidTapDoneButton:(id)arg1;
 - (void)userDidTapLearnMoreLink:(id)arg1;
+- (void)userTransparencyViewController:(id)arg1 didFailWithError:(id)arg2;
+- (void)userTransparencyViewControllerDidDismiss:(id)arg1;
+- (void)userTransparencyViewControllerDidLoad:(id)arg1;
 - (void)viewDidLoad;
 
 @end

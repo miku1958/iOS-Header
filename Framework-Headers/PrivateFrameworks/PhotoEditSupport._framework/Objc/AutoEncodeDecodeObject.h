@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <PhotoEditSupport/NSCopying-Protocol.h>
+#import <PhotoEditSupport/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 
-@interface AutoEncodeDecodeObject : NSObject <NSCopying>
+@interface AutoEncodeDecodeObject : NSObject <NSCopying, NSSecureCoding>
 {
     NSArray *_keysToEncode;
 }
 
 @property (strong, nonatomic) NSArray *keysToEncode; // @synthesize keysToEncode=_keysToEncode;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

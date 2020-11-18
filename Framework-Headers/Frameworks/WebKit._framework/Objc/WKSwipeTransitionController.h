@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isNavigationSwipeGestureRecognizer:(id)arg1;
 - (BOOL)shouldBeginInteractiveTransition:(id)arg1;
 - (void)startInteractiveTransition:(id)arg1;
+- (id)transitionForDirection:(int)arg1;
 
 @end
 

@@ -12,12 +12,14 @@
 
 @interface CRKFileBasedKeyedDataStore : NSObject <CRKKeyedDataStoreProtocol>
 {
-    NSURL *mDirectoryURL;
-    NSFileManager *mFileManager;
+    NSURL *_directoryURL;
+    NSFileManager *_fileManager;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSURL *directoryURL; // @synthesize directoryURL=_directoryURL;
+@property (strong, nonatomic) NSFileManager *fileManager; // @synthesize fileManager=_fileManager;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

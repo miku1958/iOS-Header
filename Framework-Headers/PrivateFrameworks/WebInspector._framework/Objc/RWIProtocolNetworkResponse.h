@@ -18,12 +18,12 @@
 @property (strong, nonatomic) RWIProtocolNetworkHeaders *requestHeaders;
 @property (copy, nonatomic) NSString *requestHeadersText;
 @property (nonatomic) long long source;
-@property (nonatomic) double status;
+@property (nonatomic) int status;
 @property (copy, nonatomic) NSString *statusText;
 @property (strong, nonatomic) RWIProtocolNetworkResourceTiming *timing;
 @property (copy, nonatomic) NSString *url;
 
-- (id)initWithUrl:(id)arg1 status:(double)arg2 statusText:(id)arg3 headers:(id)arg4 mimeType:(id)arg5 source:(long long)arg6;
+- (id)initWithUrl:(id)arg1 status:(int)arg2 statusText:(id)arg3 headers:(id)arg4 mimeType:(id)arg5 source:(long long)arg6;
 
 @end
 

@@ -51,7 +51,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) STTangierRepDirectLayerHostProvider *directLayerHostProvider; // @synthesize directLayerHostProvider=_directLayerHostProvider;
 @property (nonatomic) BOOL disableClippingForTiles; // @synthesize disableClippingForTiles=_disableClippingForTiles;
-@property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
+@property (readonly, strong, nonatomic) TSKDocumentRoot *documentRoot;
 @property (readonly, nonatomic) id<SXTangierDragItemProvider> dragItemProvider; // @synthesize dragItemProvider=_dragItemProvider;
 @property (nonatomic, getter=isEnclosingCanvasScrolling) BOOL enclosingCanvasScrolling; // @synthesize enclosingCanvasScrolling=_enclosingCanvasScrolling;
 @property (readonly) unsigned long long hash;
@@ -90,6 +90,7 @@
 - (void)didTransitionToPresented;
 - (void)endSelection;
 - (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4;
+- (BOOL)interactiveCanvasController:(id)arg1 configureHardPressGesture:(id)arg2;
 - (id)interactiveCanvasController:(id)arg1 delegateConformingToProtocol:(id)arg2 forRep:(id)arg3;
 - (id)interactiveCanvasController:(id)arg1 dragItemForSmartField:(id)arg2 interaction:(id)arg3 session:(id)arg4;
 - (struct CGRect)interactiveCanvasController:(id)arg1 expandVisibleBoundsForClippingReps:(struct CGRect)arg2;

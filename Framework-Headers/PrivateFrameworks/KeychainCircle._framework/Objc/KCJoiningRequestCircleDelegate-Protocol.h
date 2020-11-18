@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <KeychainCircle/NSObject-Protocol.h>
+
 @class NSData;
 
-@protocol KCJoiningRequestCircleDelegate
+@protocol KCJoiningRequestCircleDelegate <NSObject>
 - (struct __OpaqueSOSPeerInfo *)copyPeerInfoError:(id *)arg1;
 - (BOOL)processCircleJoinData:(NSData *)arg1 version:(int)arg2 error:(id *)arg3;
 @end

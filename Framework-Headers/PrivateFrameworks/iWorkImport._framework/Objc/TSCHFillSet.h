@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *plistPath; // @synthesize plistPath=mPListPath;
 
 + (struct CGSize)defaultSwatchSize;
+- (void).cxx_destruct;
 - (BOOL)chartAlreadyMatches:(id)arg1;
 - (id)colorFromProperties:(id)arg1;
 - (id)commandToApplyToChart:(id)arg1 context:(id)arg2;

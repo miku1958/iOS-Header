@@ -6,9 +6,10 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class FLFollowUpItem, NSArray, NSString;
 
 @protocol AKFollowUpItemFactory <NSObject>
+- (BOOL)IsFollowUpItemNotificationForced:(FLFollowUpItem *)arg1;
 - (NSArray *)itemIdentifiersRequiringNotificationClearFromPayload:(NSArray *)arg1;
 - (NSArray *)itemsForAltDSID:(NSString *)arg1 fromIDMSPayload:(NSArray *)arg2;
 @end

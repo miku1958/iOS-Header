@@ -20,6 +20,7 @@
 + (id)copyPaths:(id)arg1 toDestinationDir:(id)arg2 withZipName:(id)arg3;
 + (id)createUserOwnedDirectoryAtUrl:(id)arg1;
 + (id)dirForTarGz:(id)arg1;
++ (id)enumeratorForAllItems:(id)arg1;
 + (void)excludeFromBackup:(id)arg1;
 + (id)findAllItems:(id)arg1 includeDirs:(BOOL)arg2;
 + (id)findAllfiles:(id)arg1;

@@ -18,6 +18,7 @@
     CDUnknownBlockType _feedbackWarmingBlock;
     double _currentDelay;
     NSSet *_usedFeedbacks;
+    BOOL _activated;
     BOOL _hasMutableFeedbackKeyPaths;
     long long _activationCount;
     long long _externalActivationCount;
@@ -83,6 +84,7 @@
 - (void)_stats_playedFeedback;
 - (void)_stats_prepared;
 - (void)_stopAutoDeactivateTimer;
+- (void)_stopFeedback:(id)arg1;
 - (void)_stopFeedbackWarming;
 - (void)_stopPreparationForAllStyles;
 - (void)_stopPreparationForStyle:(long long)arg1;

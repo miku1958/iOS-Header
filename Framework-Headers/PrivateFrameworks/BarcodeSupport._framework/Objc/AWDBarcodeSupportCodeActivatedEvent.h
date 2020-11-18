@@ -12,25 +12,37 @@ __attribute__((visibility("hidden")))
 @interface AWDBarcodeSupportCodeActivatedEvent : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    int _appLinkActivationOpenStrategy;
     int _barcodeDataType;
+    int _barcodeURLType;
     int _clientType;
     struct {
         unsigned int timestamp:1;
+        unsigned int appLinkActivationOpenStrategy:1;
         unsigned int barcodeDataType:1;
+        unsigned int barcodeURLType:1;
         unsigned int clientType:1;
     } _has;
 }
 
+@property (nonatomic) int appLinkActivationOpenStrategy; // @synthesize appLinkActivationOpenStrategy=_appLinkActivationOpenStrategy;
 @property (nonatomic) int barcodeDataType; // @synthesize barcodeDataType=_barcodeDataType;
+@property (nonatomic) int barcodeURLType; // @synthesize barcodeURLType=_barcodeURLType;
 @property (nonatomic) int clientType; // @synthesize clientType=_clientType;
+@property (nonatomic) BOOL hasAppLinkActivationOpenStrategy;
 @property (nonatomic) BOOL hasBarcodeDataType;
+@property (nonatomic) BOOL hasBarcodeURLType;
 @property (nonatomic) BOOL hasClientType;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
+- (int)StringAsAppLinkActivationOpenStrategy:(id)arg1;
 - (int)StringAsBarcodeDataType:(id)arg1;
+- (int)StringAsBarcodeURLType:(id)arg1;
 - (int)StringAsClientType:(id)arg1;
+- (id)appLinkActivationOpenStrategyAsString:(int)arg1;
 - (id)barcodeDataTypeAsString:(int)arg1;
+- (id)barcodeURLTypeAsString:(int)arg1;
 - (id)clientTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

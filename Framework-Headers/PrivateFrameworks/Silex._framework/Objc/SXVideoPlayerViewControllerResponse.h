@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class SXVideoAnalyticsRouter;
+@class SXVideoAnalyticsRouter, SXVideoPlayerVisibilityMonitor;
 
 @interface SXVideoPlayerViewControllerResponse : NSObject
 {
     BOOL _shouldAutoplay;
     BOOL _expectVideoPlayerViewController;
     SXVideoAnalyticsRouter *_analyticsRouter;
+    SXVideoPlayerVisibilityMonitor *_visibilityMonitor;
 }
 
 @property (strong, nonatomic) SXVideoAnalyticsRouter *analyticsRouter; // @synthesize analyticsRouter=_analyticsRouter;
 @property (nonatomic) BOOL expectVideoPlayerViewController; // @synthesize expectVideoPlayerViewController=_expectVideoPlayerViewController;
 @property (nonatomic) BOOL shouldAutoplay; // @synthesize shouldAutoplay=_shouldAutoplay;
+@property (strong, nonatomic) SXVideoPlayerVisibilityMonitor *visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
 
 - (void).cxx_destruct;
 

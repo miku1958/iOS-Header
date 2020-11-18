@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityActivateLink:(id)arg1;
 - (id)_accessibilityAttributedTextRetrieval;
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
@@ -20,7 +21,11 @@
 - (double)_accessibilityFontSize;
 - (id)_accessibilityGetValue;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)_accessibilityLinksForRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
+- (id)_accessibilityParagraphElements;
+- (id)_accessibilityParagraphElementsWithLinks;
+- (id)_accessibilityParagraphLinksCustomRotor;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
@@ -33,6 +38,7 @@
 - (id)accessibilityCustomRotors;
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityDropPointDescriptors;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityPlaceholderValue;
 - (unsigned long long)accessibilityTraits;

@@ -69,9 +69,9 @@
 - (id)_prepareDetailViewController;
 - (id)_presentControlOfType:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)_updateActiveControlViewController;
-- (void)_updateControlReachability;
 - (void)_updateControlStatusText;
 - (void)_updateIconDescriptorAnimated:(BOOL)arg1;
+- (void)_updateReachabilityStateForActiveControl;
 - (void)_updateUserInteractionEnabledForActiveControl;
 - (void)alternateControlButtonPressedInContainerView:(id)arg1;
 - (void)beginReceivingTouchesWithGestureRecognizer:(id)arg1;
@@ -89,8 +89,8 @@
 - (id)presentAlternateActionViewControllerAnimated:(BOOL)arg1;
 - (void)presentControlFromSourceRect:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (id)presentDetailViewControllerAnimated:(BOOL)arg1;
+- (void)quickControlContent:(id)arg1 requestDismissalOfType:(unsigned long long)arg2;
 - (void)quickControlContent:(id)arg1 showAuxiliaryView:(id)arg2;
-- (void)quickControlContentWantsDismissal:(id)arg1;
 - (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;
 - (void)viewDidLoad;
 

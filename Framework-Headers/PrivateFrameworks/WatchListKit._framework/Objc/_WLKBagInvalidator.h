@@ -6,11 +6,17 @@
 
 #import <objc/NSObject.h>
 
+@class NSOperationQueue;
+
 @interface _WLKBagInvalidator : NSObject
 {
+    NSOperationQueue *_opQueue;
 }
 
-- (void)_accountStoreChangedNotification:(id)arg1;
+@property (strong) NSOperationQueue *opQueue; // @synthesize opQueue=_opQueue;
+
+- (void).cxx_destruct;
+- (void)_SSChangedNotification:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

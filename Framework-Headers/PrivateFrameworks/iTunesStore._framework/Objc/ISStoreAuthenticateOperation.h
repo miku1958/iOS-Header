@@ -14,7 +14,7 @@
 {
     SSMutableAuthenticationContext *_authenticationContext;
     SSAuthenticateResponse *_authenticateResponse;
-    id parentViewController;
+    id _parentViewController;
 }
 
 @property (readonly) SSAuthenticateResponse *authenticateResponse;
@@ -22,7 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) id parentViewController; // @synthesize parentViewController;
+@property (strong) id parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (readonly) Class superclass;
 
 + (BOOL)_copyErrorForAuthenticateResponse:(id)arg1 error:(id *)arg2;

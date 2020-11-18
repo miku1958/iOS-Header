@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)cancelFetchForKey:(const struct VKTileKey *)arg1;
 - (void)dealloc;
 - (void)exchangeOverlayAtIndex:(unsigned long long)arg1 withOverlayAtIndex:(unsigned long long)arg2;
-- (void)fetchTileForKey:(const struct VKTileKey *)arg1 sourceKey:(const struct VKTileKey *)arg2;
+- (void)fetchTileForKey:(const struct VKTileKey *)arg1 sourceKey:(const struct VKTileKey *)arg2 isPrefetch:(BOOL)arg3;
 - (id)initWithTaskContext:(shared_ptr_e963992e)arg1;
 - (void)insertOverlay:(id)arg1 aboveOverlay:(id)arg2;
 - (void)insertOverlay:(id)arg1 atIndex:(unsigned long long)arg2;

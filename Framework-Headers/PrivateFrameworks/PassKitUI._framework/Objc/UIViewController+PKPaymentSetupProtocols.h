@@ -7,7 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (PKPaymentSetupProtocols)
-- (void)paymentSetupPreflight:(CDUnknownBlockType)arg1;
-- (void)paymentSetupSetHideSetupLaterButton:(BOOL)arg1;
+- (void)pk_paymentSetupPreflight:(CDUnknownBlockType)arg1;
+- (void)pk_paymentSetupSetHideSetupLaterButton:(BOOL)arg1;
 @end
 

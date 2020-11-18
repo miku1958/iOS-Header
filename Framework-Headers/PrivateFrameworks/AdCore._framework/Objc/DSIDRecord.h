@@ -12,26 +12,31 @@
 
 @interface DSIDRecord : NSObject <NSCopying>
 {
+    BOOL _dirty;
+    int _nextReconcileTimestamp;
     BOOL _accountIsT13;
     BOOL _accountIsU13;
     BOOL _accountIsU18;
     BOOL _isActiveRecord;
+    BOOL _isRestrictedByEU_GDPR;
     BOOL _isPlaceholderAccount;
     BOOL _accountLimitAdTrackingEnabled;
     BOOL _lastSentLimitAdTrackingStatus;
+    BOOL _notificationRequired;
+    int _limitAdTrackingTimestamp;
+    int _segmentDataTimestamp;
+    int _lastSentSegmentDataTimestamp;
+    int _lastSegmentServedTimestamp;
+    int _lastSentLimitAdTrackingTimestamp;
+    int _lastPOSTLimitAdTrackingTimestamp;
     NSString *_DSID;
     NSString *_iCloudDSID;
     NSString *_segmentData;
     NSString *_IDFA;
     NSString *_iAdIDBeforeReset;
-    double _limitAdTrackingTimestamp;
-    double _segmentDataTimestamp;
-    double _lastSentSegmentDataTimestamp;
-    double _lastSegmentServedTimestamp;
     NSMutableDictionary *_ADIDRecords;
     long long _lastJingleLimitAdTrackingResponse;
-    double _lastSentLimitAdTrackingTimestamp;
-    double _lastPOSTLimitAdTrackingTimestamp;
+    long long _lastJingleAccountStatus;
 }
 
 @property (strong) NSMutableDictionary *ADIDRecords; // @synthesize ADIDRecords=_ADIDRecords;
@@ -41,30 +46,38 @@
 @property (nonatomic) BOOL accountIsU13; // @synthesize accountIsU13=_accountIsU13;
 @property (nonatomic) BOOL accountIsU18; // @synthesize accountIsU18=_accountIsU18;
 @property (nonatomic) BOOL accountLimitAdTrackingEnabled; // @synthesize accountLimitAdTrackingEnabled=_accountLimitAdTrackingEnabled;
+@property (nonatomic) BOOL dirty;
 @property (strong, nonatomic) NSString *iAdIDBeforeReset; // @synthesize iAdIDBeforeReset=_iAdIDBeforeReset;
 @property (strong, nonatomic) NSString *iCloudDSID; // @synthesize iCloudDSID=_iCloudDSID;
 @property (readonly, nonatomic) BOOL isActiveRecord; // @synthesize isActiveRecord=_isActiveRecord;
 @property (nonatomic) BOOL isPlaceholderAccount; // @synthesize isPlaceholderAccount=_isPlaceholderAccount;
-@property (readonly, nonatomic) BOOL isRestrictedAccount;
+@property (readonly, nonatomic) BOOL isRestrictedByApple;
+@property (readonly, nonatomic) BOOL isRestrictedByEU_GDPR; // @synthesize isRestrictedByEU_GDPR=_isRestrictedByEU_GDPR;
+@property (nonatomic) long long lastJingleAccountStatus; // @synthesize lastJingleAccountStatus=_lastJingleAccountStatus;
 @property (nonatomic) long long lastJingleLimitAdTrackingResponse; // @synthesize lastJingleLimitAdTrackingResponse=_lastJingleLimitAdTrackingResponse;
-@property (nonatomic) double lastPOSTLimitAdTrackingTimestamp; // @synthesize lastPOSTLimitAdTrackingTimestamp=_lastPOSTLimitAdTrackingTimestamp;
-@property (nonatomic) double lastSegmentServedTimestamp; // @synthesize lastSegmentServedTimestamp=_lastSegmentServedTimestamp;
+@property (nonatomic) int lastPOSTLimitAdTrackingTimestamp; // @synthesize lastPOSTLimitAdTrackingTimestamp=_lastPOSTLimitAdTrackingTimestamp;
+@property (nonatomic) int lastSegmentServedTimestamp; // @synthesize lastSegmentServedTimestamp=_lastSegmentServedTimestamp;
 @property (nonatomic) BOOL lastSentLimitAdTrackingStatus; // @synthesize lastSentLimitAdTrackingStatus=_lastSentLimitAdTrackingStatus;
-@property (nonatomic) double lastSentLimitAdTrackingTimestamp; // @synthesize lastSentLimitAdTrackingTimestamp=_lastSentLimitAdTrackingTimestamp;
-@property (nonatomic) double lastSentSegmentDataTimestamp; // @synthesize lastSentSegmentDataTimestamp=_lastSentSegmentDataTimestamp;
+@property (nonatomic) int lastSentLimitAdTrackingTimestamp; // @synthesize lastSentLimitAdTrackingTimestamp=_lastSentLimitAdTrackingTimestamp;
+@property (nonatomic) int lastSentSegmentDataTimestamp; // @synthesize lastSentSegmentDataTimestamp=_lastSentSegmentDataTimestamp;
 @property (readonly, nonatomic) BOOL limitAdTrackingEnabled;
-@property (nonatomic) double limitAdTrackingTimestamp; // @synthesize limitAdTrackingTimestamp=_limitAdTrackingTimestamp;
+@property (nonatomic) int limitAdTrackingTimestamp; // @synthesize limitAdTrackingTimestamp=_limitAdTrackingTimestamp;
+@property (nonatomic) int nextReconcileTimestamp;
+@property (nonatomic) BOOL notificationRequired; // @synthesize notificationRequired=_notificationRequired;
 @property (strong, nonatomic) NSString *segmentData; // @synthesize segmentData=_segmentData;
-@property (nonatomic) double segmentDataTimestamp; // @synthesize segmentDataTimestamp=_segmentDataTimestamp;
+@property (nonatomic) int segmentDataTimestamp; // @synthesize segmentDataTimestamp=_segmentDataTimestamp;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)encryptedIDForClientType:(long long)arg1;
+- (BOOL)iAdIDRecordsDirty;
 - (id)idForClientType:(long long)arg1;
 - (id)initWithDSID:(id)arg1 serializedRecord:(id)arg2 version:(int)arg3;
 - (void)setID:(id)arg1 forClientType:(long long)arg2;
+- (void)setlimitAdTrackingTimestamp:(int)arg1;
+- (BOOL)shouldSendNotification;
 
 @end
 

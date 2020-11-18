@@ -20,7 +20,8 @@
 @property (readonly, nonatomic) WebBookmarkCollection *collection; // @synthesize collection=_collection;
 
 - (void).cxx_destruct;
-- (id)changeTypeDescription;
+- (id)_changeTypeDescription;
+- (id)_changedAttributeDescription;
 - (id)description;
 - (id)initWithBookmarkCollection:(id)arg1 bookmark:(id)arg2 changeType:(int)arg3;
 

@@ -71,6 +71,7 @@
     BOOL layerDestinationIsTVOut;
     NSArray *displaysUsedForPlayback;
     NSString *ancillaryPerformanceInformationForDisplay;
+    unsigned long long preferredVideoDecoderGPURegistryID;
 }
 
 @end

@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)addPersistentOverlay:(id)arg1;
 - (void)clearLineSelection;
 - (void)dealloc;
+- (float)halfWidthForLine:(id)arg1 styleZ:(float)arg2;
 - (id)initWithGlobeView:(struct GlobeView *)arg1 stylesheet:(shared_ptr_a3c46825)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)overlays;

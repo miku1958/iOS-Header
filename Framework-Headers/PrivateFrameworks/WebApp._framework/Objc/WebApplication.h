@@ -8,11 +8,12 @@
 
 #import <WebApp/UIApplicationDelegate-Protocol.h>
 
-@class NSString, UIWindow, WebAppController;
+@class NSString, UIWindow, WebAppViewController;
 
 @interface WebApplication : UIApplication <UIApplicationDelegate>
 {
-    WebAppController *_webApp;
+    WebAppViewController *_webApp;
+    UIWindow *_window;
 }
 
 @property (readonly, copy) NSString *debugDescription;

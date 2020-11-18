@@ -8,13 +8,23 @@
 
 @interface NSURL (NSSAdditions)
 + (id)nss_NewsURLForArticleID:(id)arg1;
-+ (id)nss_NewsURLForArticleID:(id)arg1 internal:(BOOL)arg2;
++ (id)nss_NewsURLForArticleID:(id)arg1 internal:(BOOL)arg2 targetIsVideo:(BOOL)arg3;
++ (id)nss_NewsURLForArticleID:(id)arg1 targetIsVideo:(BOOL)arg2;
 + (id)nss_NewsURLForArticleID:(id)arg1 title:(id)arg2;
 + (id)nss_NewsURLForForYou;
++ (id)nss_NewsURLForTagID:(id)arg1;
 + (id)nss_NewsURLForWebLinkURL:(id)arg1;
++ (id)nss_NewsURLForWidgetVideoPlaylist;
 + (id)nss_NewsURLWithPathComponents:(id)arg1 internal:(BOOL)arg2;
+- (id)_nss_URLByAppendingQueryItem:(id)arg1;
+- (id)_nss_valueForQueryParameterWithKey:(id)arg1;
 - (id)nss_URLWithCampaignID:(id)arg1;
+- (id)nss_URLWithVideoTarget:(BOOL)arg1;
 - (id)nss_campaignID;
+- (BOOL)nss_isNewsArticleURL;
+- (BOOL)nss_isNewsArticleVideoURL;
+- (BOOL)nss_isNewsTagURL;
 - (BOOL)nss_isNewsURL;
+- (BOOL)nss_isNewsWidgetVideoPlaylist;
 @end
 

@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
+#import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
 @class ICRadioContentReference;
 
-@interface MPCModelRadioContentReference : NSObject <NSCopying>
+@interface MPCModelRadioContentReference : NSObject <NSCopying, NSSecureCoding>
 {
     ICRadioContentReference *_ICRadioContentReference;
 }
@@ -18,8 +19,11 @@
 @property (readonly, nonatomic) ICRadioContentReference *ICRadioContentReference; // @synthesize ICRadioContentReference=_ICRadioContentReference;
 
 + (id)referenceWithMPModelObject:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithICRadioContentReference:(id)arg1;
 
 @end

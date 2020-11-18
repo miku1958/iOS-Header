@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
+#import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
 @class MPAVRoute, NSString;
 
-@interface MPCPlayerPath : NSObject <NSCopying>
+@interface MPCPlayerPath : NSObject <NSCopying, NSSecureCoding>
 {
+    int _pid;
     NSString *_bundleID;
     NSString *_playerID;
     void *_mediaRemotePlayerPath;
@@ -22,18 +24,25 @@
 @property (readonly, nonatomic, getter=isInProcess) BOOL inProcess;
 @property (readonly, nonatomic) void *mediaRemotePlayerPath; // @synthesize mediaRemotePlayerPath=_mediaRemotePlayerPath;
 @property (readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
+@property (readonly, copy, nonatomic) NSString *representedBundleDisplayName;
+@property (readonly, copy, nonatomic) NSString *representedBundleID;
 @property (readonly, nonatomic) MPAVRoute *route; // @synthesize route=_route;
+@property (readonly, nonatomic, getter=isSystemMusicPath) BOOL systemMusicPath;
 
 + (id)deviceActivePlayerPath;
 + (id)pathWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 + (id)pathWithRoute:(id)arg1 mediaRemotePlayerPath:(void *)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)systemMusicPathWithRoute:(id)arg1 playerID:(id)arg2;
 - (void).cxx_destruct;
 - (void *)_createMediaRemotePlayerPathWithOrigin:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRoute:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 - (id)initWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)resolveWithCompletion:(CDUnknownBlockType)arg1;

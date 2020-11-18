@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)initFromMessage:(const struct RegionInfoArchive *)arg1;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 columnUids:(const vector_dadc1b26 *)arg2 rowUids:(const vector_dadc1b26 *)arg3;
+- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 columnUids:(const vector_4dc5f307 *)arg2 rowUids:(const vector_4dc5f307 *)arg3;
 - (void)loadIndexesForTable:(id)arg1;
 - (void)saveToMessage:(struct RegionInfoArchive *)arg1;
 - (struct TSUCellCoord)topLeftCellCoord;

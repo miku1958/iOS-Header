@@ -48,6 +48,7 @@
 - (id)_activitySettingsImage;
 - (BOOL)_activitySupportsPromiseURLs;
 - (id)_activityTypeUsingFallbackActivityTypeIfNecessary;
+- (BOOL)_appIsDocumentTypeOwner;
 - (id)_attachmentNameForActivityItem:(id)arg1;
 - (id)_beforeActivity;
 - (id)_bundleIdentifierForActivityImageCreation;
@@ -64,6 +65,7 @@
 - (BOOL)_presentActivityOnViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setActivityCompletionWithItemsHandler:(CDUnknownBlockType)arg1;
 - (id)_subjectForActivityItem:(id)arg1;
+- (BOOL)_supportsOpenInPlace;
 - (id)_thumbnailImageForActivityItem:(id)arg1;
 - (struct CGSize)_thumbnailSize;
 - (BOOL)_wantsAttachmentURLItemData;

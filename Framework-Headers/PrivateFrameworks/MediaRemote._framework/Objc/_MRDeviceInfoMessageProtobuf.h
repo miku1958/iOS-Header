@@ -16,9 +16,12 @@
     NSString *_applicationBundleIdentifier;
     NSString *_applicationBundleVersion;
     NSData *_bluetoothAddress;
+    int _deviceClass;
+    unsigned int _groupedDeviceCount;
     unsigned int _lastSupportedMessageType;
     NSString *_localReceiverPairingIdentity;
     NSString *_localizedModelName;
+    NSString *_managedConfigDeviceID;
     NSString *_name;
     unsigned int _sharedQueueVersion;
     NSString *_systemBuildVersion;
@@ -26,20 +29,26 @@
     NSString *_uniqueIdentifier;
     BOOL _allowsPairing;
     BOOL _connected;
+    BOOL _isProxyGroupPlayer;
     BOOL _supportsACL;
     BOOL _supportsExtendedMotion;
     BOOL _supportsSharedQueue;
     BOOL _supportsSystemPairing;
+    BOOL _tightlySyncedGroup;
     struct {
         unsigned int protocolVersion:1;
+        unsigned int deviceClass:1;
+        unsigned int groupedDeviceCount:1;
         unsigned int lastSupportedMessageType:1;
         unsigned int sharedQueueVersion:1;
         unsigned int allowsPairing:1;
         unsigned int connected:1;
+        unsigned int isProxyGroupPlayer:1;
         unsigned int supportsACL:1;
         unsigned int supportsExtendedMotion:1;
         unsigned int supportsSharedQueue:1;
         unsigned int supportsSystemPairing:1;
+        unsigned int tightlySyncedGroup:1;
     } _has;
 }
 
@@ -48,14 +57,20 @@
 @property (strong, nonatomic) NSString *applicationBundleVersion; // @synthesize applicationBundleVersion=_applicationBundleVersion;
 @property (strong, nonatomic) NSData *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (nonatomic) BOOL connected; // @synthesize connected=_connected;
+@property (nonatomic) int deviceClass; // @synthesize deviceClass=_deviceClass;
+@property (nonatomic) unsigned int groupedDeviceCount; // @synthesize groupedDeviceCount=_groupedDeviceCount;
 @property (nonatomic) BOOL hasAllowsPairing;
 @property (readonly, nonatomic) BOOL hasApplicationBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasApplicationBundleVersion;
 @property (readonly, nonatomic) BOOL hasBluetoothAddress;
 @property (nonatomic) BOOL hasConnected;
+@property (nonatomic) BOOL hasDeviceClass;
+@property (nonatomic) BOOL hasGroupedDeviceCount;
+@property (nonatomic) BOOL hasIsProxyGroupPlayer;
 @property (nonatomic) BOOL hasLastSupportedMessageType;
 @property (readonly, nonatomic) BOOL hasLocalReceiverPairingIdentity;
 @property (readonly, nonatomic) BOOL hasLocalizedModelName;
+@property (readonly, nonatomic) BOOL hasManagedConfigDeviceID;
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasProtocolVersion;
 @property (nonatomic) BOOL hasSharedQueueVersion;
@@ -65,10 +80,13 @@
 @property (nonatomic) BOOL hasSupportsSystemPairing;
 @property (readonly, nonatomic) BOOL hasSystemBuildVersion;
 @property (readonly, nonatomic) BOOL hasSystemMediaApplication;
+@property (nonatomic) BOOL hasTightlySyncedGroup;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
+@property (nonatomic) BOOL isProxyGroupPlayer; // @synthesize isProxyGroupPlayer=_isProxyGroupPlayer;
 @property (nonatomic) unsigned int lastSupportedMessageType; // @synthesize lastSupportedMessageType=_lastSupportedMessageType;
 @property (strong, nonatomic) NSString *localReceiverPairingIdentity; // @synthesize localReceiverPairingIdentity=_localReceiverPairingIdentity;
 @property (strong, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
+@property (strong, nonatomic) NSString *managedConfigDeviceID; // @synthesize managedConfigDeviceID=_managedConfigDeviceID;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property (nonatomic) unsigned int sharedQueueVersion; // @synthesize sharedQueueVersion=_sharedQueueVersion;
@@ -78,11 +96,12 @@
 @property (nonatomic) BOOL supportsSystemPairing; // @synthesize supportsSystemPairing=_supportsSystemPairing;
 @property (strong, nonatomic) NSString *systemBuildVersion; // @synthesize systemBuildVersion=_systemBuildVersion;
 @property (strong, nonatomic) NSString *systemMediaApplication; // @synthesize systemMediaApplication=_systemMediaApplication;
+@property (nonatomic) BOOL tightlySyncedGroup; // @synthesize tightlySyncedGroup=_tightlySyncedGroup;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

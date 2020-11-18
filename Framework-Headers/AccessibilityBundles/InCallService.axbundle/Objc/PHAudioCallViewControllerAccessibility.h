@@ -13,7 +13,17 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityBottomBarStoppedAnimating:(id)arg1;
+- (BOOL)_accessibilityHasSubscribedForBottomBarNotifications;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (long long)_accessibilityMiddleViewStateDepth;
+- (void)_accessibilitySetHasSubscribedToBottomBarNotifications:(BOOL)arg1;
+- (void)_accessibilitySetMiddleViewStateDepth:(long long)arg1;
+- (void)_accessibilitySetWantsToShowKeypad:(BOOL)arg1;
+- (void)_accessibilitySubscribeForBottomBarNotificationsIfNecessary;
+- (BOOL)_accessibilityWantsToShowKeypad;
 - (void)_axSetPhoneToMiddleState:(unsigned short)arg1 totalTimeTried:(double)arg2;
+- (void)dealloc;
 - (void)setCurrentState:(unsigned short)arg1 animated:(BOOL)arg2;
 - (void)setMiddleViewState:(unsigned short)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidAppear:(BOOL)arg1;

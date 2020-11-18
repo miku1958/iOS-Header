@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)initialize;
++ (BOOL)platformSupportsHEIF;
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)checkCompatibilityUpToLevel:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

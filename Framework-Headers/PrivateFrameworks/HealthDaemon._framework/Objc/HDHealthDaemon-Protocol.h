@@ -6,8 +6,8 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDAchievementDefinitionAlertManager, HDBackgroundTaskScheduler, HDPluginManager, HDPrimaryProfile, HDXPCListener, NSString, _HKBehavior;
-@protocol HDHealthDaemonReadyObserver, HDNanoAlertSuppressionService;
+@class HDAchievementDefinitionAlertManager, HDBackgroundTaskScheduler, HDPluginManager, HDPrimaryProfile, HDXPCListener, NSArray, NSString, Protocol, _HKBehavior;
+@protocol HDHealthDaemonExtension, HDHealthDaemonReadyObserver, HDNanoAlertSuppressionService;
 
 @protocol HDHealthDaemon <NSObject>
 
@@ -19,6 +19,8 @@
 @property (readonly, nonatomic) HDPrimaryProfile *primaryProfile;
 
 - (HDXPCListener *)createXPCListenerWithMachServiceName:(NSString *)arg1;
+- (id<HDHealthDaemonExtension>)daemonExtensionWithIdentifier:(NSString *)arg1;
+- (NSArray *)daemonExtensionsConformingToProtocol:(Protocol *)arg1;
 - (void)registerForDaemonReady:(id<HDHealthDaemonReadyObserver>)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;
 - (void)unregisterForLaunchNotification:(const char *)arg1;

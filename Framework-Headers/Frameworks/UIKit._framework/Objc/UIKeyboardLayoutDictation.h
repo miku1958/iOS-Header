@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (int)_clipCornersOfView:(id)arg1;
 - (void)_moveWithEvent:(id)arg1;
 - (id)currentKeyplane;
-- (void)didEndIndirectSelectionGesture;
 - (struct CGRect)dragGestureRectInView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
@@ -32,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)splitLeftSize;
 - (BOOL)usesAutoShift;
 - (BOOL)visible;
-- (void)willBeginIndirectSelectionGesture;
 
 @end
 

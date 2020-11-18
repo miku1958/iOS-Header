@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUUserItemManager-Protocol.h>
 
-@class HFItem, HFUserItem, HMHome, HMUser, HUPersonalRequestsDevicesItemModule, NSString;
+@class HFItem, HFUserItem, HMHome, HMUser, NSString;
 
 @interface HUEditUserItemManager : HFItemManager <HUUserItemManager>
 {
@@ -18,7 +18,7 @@
     HFItem *_allowEditingItem;
     HFItem *_allowEditingFooterItem;
     HFItem *_pendingAccessoriesItem;
-    HUPersonalRequestsDevicesItemModule *_personalRequestsDevicesModule;
+    HFItem *_personalRequestsItem;
     HMHome *_homeForUser;
     HFItem *_removeItem;
 }
@@ -33,7 +33,7 @@
 @property (strong, nonatomic) HMHome *homeForUser; // @synthesize homeForUser=_homeForUser;
 @property (strong, nonatomic) HFItem *localAccessItem; // @synthesize localAccessItem=_localAccessItem;
 @property (strong, nonatomic) HFItem *pendingAccessoriesItem; // @synthesize pendingAccessoriesItem=_pendingAccessoriesItem;
-@property (readonly, nonatomic) HUPersonalRequestsDevicesItemModule *personalRequestsDevicesModule; // @synthesize personalRequestsDevicesModule=_personalRequestsDevicesModule;
+@property (strong, nonatomic) HFItem *personalRequestsItem; // @synthesize personalRequestsItem=_personalRequestsItem;
 @property (strong, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
 @property (strong, nonatomic) HFUserItem *sourceItem; // @dynamic sourceItem;
 @property (readonly) Class superclass;

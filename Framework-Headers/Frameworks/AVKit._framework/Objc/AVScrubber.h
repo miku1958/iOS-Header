@@ -12,7 +12,6 @@
 @interface AVScrubber : UISlider
 {
     struct CGPoint _previousTouchLocationInView;
-    UISelectionFeedbackGenerator *_feedbackBehavior;
     double _trackingStartTime;
     float _previousValue;
     double _previousValueChangeTime;
@@ -26,13 +25,14 @@
     BOOL _hasFullScreenAppearance;
     float _estimatedFrameRate;
     float _rate;
+    UISelectionFeedbackGenerator *_feedbackGenerator;
+    UIView *_loadedTrackOverlayView;
+    NSMutableArray *_previousScrubberVelocities;
     id<AVScrubberDelegate> _delegate;
     NSArray *_loadedTimeRanges;
     long long _scrubbingSpeed;
     double _resolution;
-    UIView *_loadedTrackOverlayView;
     UIImageView *_currentThumbView;
-    NSMutableArray *_previousScrubberVelocities;
     NSTimer *_updateSlowKnobMovementDetectedTimer;
     double _timestampWhenTrackingEnded;
     struct CGSize _extrinsicContentSize;
@@ -45,6 +45,7 @@
 @property (weak, nonatomic) id<AVScrubberDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) float estimatedFrameRate; // @synthesize estimatedFrameRate=_estimatedFrameRate;
 @property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
+@property (readonly, nonatomic) UISelectionFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
@@ -76,6 +77,7 @@
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (struct CGRect)maximumValueImageRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)minimumValueImageRectForBounds:(struct CGRect)arg1;
@@ -83,6 +85,7 @@
 - (void)setEnabled:(BOOL)arg1;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

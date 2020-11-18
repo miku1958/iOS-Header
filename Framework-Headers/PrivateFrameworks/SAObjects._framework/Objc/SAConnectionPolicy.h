@@ -16,9 +16,13 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSNumber *enableTLS13;
+@property (copy, nonatomic) NSNumber *enableTLS13ZeroRTT;
+@property (copy, nonatomic) NSNumber *enableTcpFastOpen;
 @property (nonatomic) BOOL enabled;
 @property (copy, nonatomic) NSNumber *globalTimeout;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSNumber *mptcpFallbackPort;
 @property (copy, nonatomic) NSString *policyId;
 @property (copy, nonatomic) NSArray *routes;
 @property (readonly) Class superclass;

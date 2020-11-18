@@ -98,7 +98,7 @@
 - (id)_shareCell;
 - (void)_sharePass;
 - (void)_tabBarSegmentChanged:(id)arg1;
-- (BOOL)_updateHeaderHeight;
+- (BOOL)_updateHeaderHeightDeterminingLayout:(BOOL)arg1;
 - (void)_updatePassProperties;
 - (void)_updateTabBar;
 - (void)_updateTabBarWithSegments:(id)arg1;

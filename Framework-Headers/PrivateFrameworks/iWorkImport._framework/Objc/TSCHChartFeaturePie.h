@@ -4,38 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSCHChartFeature.h>
+#import <iWorkImport/TSCHChartFeaturePieFamily.h>
 
 __attribute__((visibility("hidden")))
-@interface TSCHChartFeaturePie : TSCHChartFeature
+@interface TSCHChartFeaturePie : TSCHChartFeaturePieFamily
 {
 }
 
 - (id)defaultDataFileName;
+- (float)defaultLabelExplosionPercentage;
 - (int)deprecated3DBevelEdgesSpecificProperty;
 - (int)deprecated3DShadowSpecificProperty;
 - (id)genericToSpecificPropertyMap;
-- (id)initialSceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_44ada6bf)arg2;
-- (BOOL)isPie;
-- (unsigned long long)maxCellsToCheckForGridValueType;
-- (void)p_initializeAxisIDs;
 - (Class)presetImagerClass;
-- (int)representativeGridValueAxisType;
-- (unsigned long long)styleIndexForAxisID:(id)arg1;
-- (BOOL)supportsBackgroundFill;
-- (BOOL)supportsBorderFrame;
-- (BOOL)supportsCategoryLabelsInChartRangeEditor;
-- (BOOL)supportsElementSeriesNames;
-- (BOOL)supportsErrorBars;
-- (BOOL)supportsGroupedShadows;
-- (BOOL)supportsLabelExplosion;
-- (BOOL)supportsMoreThanOneLiveCategory;
-- (BOOL)supportsPercentNumberFormatting;
-- (BOOL)supportsReferenceLines;
-- (BOOL)supportsTrendLines;
-- (void)updateTitlesForExportingModel:(id)arg1 info:(id)arg2;
+- (BOOL)supportsCalloutLines;
 - (id)userInterfaceName;
-- (Class)valueAxisClassForID:(id)arg1 scale:(int)arg2;
 
 @end
 

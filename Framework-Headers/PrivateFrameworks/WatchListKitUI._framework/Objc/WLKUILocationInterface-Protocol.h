@@ -6,12 +6,11 @@
 
 #import <WatchListKitUI/JSExport-Protocol.h>
 
-@class JSValue, NSDictionary, NSNumber;
+@class NSNumber;
 
 @protocol WLKUILocationInterface <JSExport>
 - (NSNumber *)authorizationStatus;
 - (void)requestAuthorization;
-- (void)requestLastLocation:(JSValue *)arg1;
-- (void)requestLocation:(NSDictionary *)arg1:(JSValue *)arg2;
+- (void)shouldUpdateUserLocation;
 @end
 

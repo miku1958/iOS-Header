@@ -317,7 +317,7 @@ struct TSWPAdornments {
     double _field3;
     struct CGColor *_field4;
     struct __CTFont *_field5;
-    vector_88016b54 _field6;
+    vector_06e666a8 _field6;
     struct vector<unsigned short, std::__1::allocator<unsigned short>> _field7;
     struct vector<CGRect, std::__1::allocator<CGRect>> _field8;
     struct vector<CGPoint, std::__1::allocator<CGPoint>> _field9;
@@ -633,7 +633,7 @@ struct TSWPRangeVector {
     struct _NSRange *__begin_;
     struct _NSRange *__end_;
     struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
-        struct _NSRange *__first_;
+        struct _NSRange *__value_;
     } __end_cap_;
 };
 
@@ -708,7 +708,7 @@ struct __CFString;
 struct __CTFont;
 
 struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUColumnRowRect, void *>>> {
-    struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+    struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::pair<SFUtility::ObjcSharedPtr<TSTTableDataObject>, unsigned int>, void *>*> {
@@ -827,6 +827,10 @@ struct array<unsigned char, 20> {
     unsigned char __elems_[20];
 };
 
+struct atomic<int> {
+    _Atomic int __a_;
+};
+
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
         struct __rep {
@@ -932,12 +936,12 @@ struct deque<EQKitMathMLParserState, std::__1::allocator<EQKitMathMLParserState>
         int **__begin_;
         int **__end_;
         struct __compressed_pair<EQKitMathMLParserState **, std::__1::allocator<EQKitMathMLParserState *>> {
-            int **__first_;
+            int **__value_;
         } __end_cap_;
     } __map_;
     unsigned long long __start_;
     struct __compressed_pair<unsigned long, std::__1::allocator<EQKitMathMLParserState>> {
-        unsigned long long __first_;
+        unsigned long long __value_;
     } __size_;
 };
 
@@ -1005,13 +1009,13 @@ struct hash_map<TSUColumnRowCoordinate, TSUColumnRowCoordinate, TSTCellIDHasher,
     struct __hash_table<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, __gnu_cxx::__hash_map_hasher<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, TSTCellIDHasher, true>, __gnu_cxx::__hash_map_equal<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, std::__1::equal_to<TSUColumnRowCoordinate>, true>, std::__1::allocator<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>>> {
         struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*> __first_;
+            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*> __value_;
         } __p1_;
         struct __compressed_pair<unsigned long, __gnu_cxx::__hash_map_hasher<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, TSTCellIDHasher, true>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __p2_;
         struct __compressed_pair<float, __gnu_cxx::__hash_map_equal<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, std::__1::equal_to<TSUColumnRowCoordinate>, true>> {
-            float __first_;
+            float __value_;
         } __p3_;
     } __table_;
 };
@@ -1020,13 +1024,13 @@ struct hash_map<TSUColumnRowCoordinate, TSUColumnRowSize, TSTCellIDHasher, std::
     struct __hash_table<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, __gnu_cxx::__hash_map_hasher<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, TSTCellIDHasher, true>, __gnu_cxx::__hash_map_equal<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, std::__1::equal_to<TSUColumnRowCoordinate>, true>, std::__1::allocator<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>>> {
         struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*> __first_;
+            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*> __value_;
         } __p1_;
         struct __compressed_pair<unsigned long, __gnu_cxx::__hash_map_hasher<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, TSTCellIDHasher, true>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __p2_;
         struct __compressed_pair<float, __gnu_cxx::__hash_map_equal<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, std::__1::equal_to<TSUColumnRowCoordinate>, true>> {
-            float __first_;
+            float __value_;
         } __p3_;
     } __table_;
 };
@@ -1035,13 +1039,13 @@ struct hash_map<const long long, NSMutableArray *, TSP::IdentifierHash, std::__1
     struct __hash_table<std::__1::pair<const long long, NSMutableArray *>, __gnu_cxx::__hash_map_hasher<std::__1::pair<const long long, NSMutableArray *>, TSP::IdentifierHash, true>, __gnu_cxx::__hash_map_equal<std::__1::pair<const long long, NSMutableArray *>, std::__1::equal_to<const long long>, true>, std::__1::allocator<std::__1::pair<const long long, NSMutableArray *>>> {
         struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*> __first_;
+            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*> __value_;
         } __p1_;
         struct __compressed_pair<unsigned long, __gnu_cxx::__hash_map_hasher<std::__1::pair<const long long, NSMutableArray *>, TSP::IdentifierHash, true>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __p2_;
         struct __compressed_pair<float, __gnu_cxx::__hash_map_equal<std::__1::pair<const long long, NSMutableArray *>, std::__1::equal_to<const long long>, true>> {
-            float __first_;
+            float __value_;
         } __p3_;
     } __table_;
 };
@@ -1050,13 +1054,13 @@ struct hash_map<const long long, TSPData *__weak, TSP::ObjectIdentifierHash, std
     struct __hash_table<std::__1::pair<const long long, TSPData *__weak>, __gnu_cxx::__hash_map_hasher<std::__1::pair<const long long, TSPData *__weak>, TSP::ObjectIdentifierHash, true>, __gnu_cxx::__hash_map_equal<std::__1::pair<const long long, TSPData *__weak>, std::__1::equal_to<const long long>, true>, std::__1::allocator<std::__1::pair<const long long, TSPData *__weak>>> {
         struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*> __first_;
+            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*> __value_;
         } __p1_;
         struct __compressed_pair<unsigned long, __gnu_cxx::__hash_map_hasher<std::__1::pair<const long long, TSPData *__weak>, TSP::ObjectIdentifierHash, true>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __p2_;
         struct __compressed_pair<float, __gnu_cxx::__hash_map_equal<std::__1::pair<const long long, TSPData *__weak>, std::__1::equal_to<const long long>, true>> {
-            float __first_;
+            float __value_;
         } __p3_;
     } __table_;
 };
@@ -1065,13 +1069,13 @@ struct hash_map<const std::__1::array<unsigned char, 20>, TSPData *__weak, TSP::
     struct __hash_table<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, __gnu_cxx::__hash_map_hasher<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, TSP::DataDigestHash, true>, __gnu_cxx::__hash_map_equal<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, TSP::DataDigestEqualTo, true>, std::__1::allocator<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>>> {
         struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>*>>> __bucket_list_;
         struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*> __first_;
+            struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*> __value_;
         } __p1_;
         struct __compressed_pair<unsigned long, __gnu_cxx::__hash_map_hasher<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, TSP::DataDigestHash, true>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __p2_;
         struct __compressed_pair<float, __gnu_cxx::__hash_map_equal<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, TSP::DataDigestEqualTo, true>> {
-            float __first_;
+            float __value_;
         } __p3_;
     } __table_;
 };
@@ -1098,7 +1102,7 @@ struct in_addr {
 struct list<unsigned long, std::__1::allocator<unsigned long>> {
     struct __list_node_base<unsigned long, void *> __end_;
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<unsigned long, void *>>> {
-        unsigned long long __first_;
+        unsigned long long __value_;
     } __size_alloc_;
 };
 
@@ -1106,10 +1110,10 @@ struct map<const TSWPListStyle *, std::__1::vector<TSWPTopicNumberEntry, std::__
     struct __tree<std::__1::__value_type<const TSWPListStyle *, std::__1::vector<TSWPTopicNumberEntry, std::__1::allocator<TSWPTopicNumberEntry>>>, std::__1::__map_value_compare<const TSWPListStyle *, std::__1::__value_type<const TSWPListStyle *, std::__1::vector<TSWPTopicNumberEntry, std::__1::allocator<TSWPTopicNumberEntry>>>, std::__1::less<const TSWPListStyle *>, true>, std::__1::allocator<std::__1::__value_type<const TSWPListStyle *, std::__1::vector<TSWPTopicNumberEntry, std::__1::allocator<TSWPTopicNumberEntry>>>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<const TSWPListStyle *, std::__1::vector<TSWPTopicNumberEntry, std::__1::allocator<TSWPTopicNumberEntry>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<const TSWPListStyle *, std::__1::__value_type<const TSWPListStyle *, std::__1::vector<TSWPTopicNumberEntry, std::__1::allocator<TSWPTopicNumberEntry>>>, std::__1::less<const TSWPListStyle *>, true>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
@@ -1430,10 +1434,10 @@ struct map<unsigned long, TSWPFontHeightCacheEntry, std::__1::less<unsigned long
     struct __tree<std::__1::__value_type<unsigned long, TSWPFontHeightCacheEntry>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, TSWPFontHeightCacheEntry>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, TSWPFontHeightCacheEntry>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, TSWPFontHeightCacheEntry>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, TSWPFontHeightCacheEntry>, std::__1::less<unsigned long>, true>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
@@ -1442,10 +1446,10 @@ struct map<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>, std::__
     struct __tree<std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, std::__1::shared_ptr<TSWPParagraphTypesetter>>, std::__1::less<unsigned long>, true>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
@@ -1513,7 +1517,7 @@ struct set<TSUColumnRowRect, TSTCellRangeColumnMajorLess, std::__1::allocator<TS
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUColumnRowRect, void *>>> __pair1_;
         struct __compressed_pair<unsigned long, TSTCellRangeColumnMajorLess> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
@@ -1523,7 +1527,7 @@ struct set<TSUColumnRowRect, TSTCellRangeRowMajorLess, std::__1::allocator<TSUCo
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUColumnRowRect, void *>>> __pair1_;
         struct __compressed_pair<unsigned long, TSTCellRangeRowMajorLess> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
@@ -1532,10 +1536,10 @@ struct set<id<TSWPStorageObserver>, std::__1::less<id<TSWPStorageObserver>>, std
     struct __tree<id<TSWPStorageObserver>, std::__1::less<id<TSWPStorageObserver>>, std::__1::allocator<id<TSWPStorageObserver>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<id<TSWPStorageObserver>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
         } __pair1_;
         struct __compressed_pair<unsigned long, std::__1::less<id<TSWPStorageObserver>>> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
@@ -1612,56 +1616,56 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pai
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*> **__first_;
+        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*> **__value_;
         struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowCoordinate>, void *>*>*>> {
-                unsigned long long __first_;
+                unsigned long long __value_;
             } __data_;
-        } __second_;
+        } __value_;
     } __ptr_;
 };
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*> **__first_;
+        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*> **__value_;
         struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<TSUColumnRowCoordinate, TSUColumnRowSize>, void *>*>*>> {
-                unsigned long long __first_;
+                unsigned long long __value_;
             } __data_;
-        } __second_;
+        } __value_;
     } __ptr_;
 };
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*> **__first_;
+        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*> **__value_;
         struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *>*>*>> {
-                unsigned long long __first_;
+                unsigned long long __value_;
             } __data_;
-        } __second_;
+        } __value_;
     } __ptr_;
 };
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*> **__first_;
+        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*> **__value_;
         struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, TSPData *__weak>, void *>*>*>> {
-                unsigned long long __first_;
+                unsigned long long __value_;
             } __data_;
-        } __second_;
+        } __value_;
     } __ptr_;
 };
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*> **__first_;
+        struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*> **__value_;
         struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>, void *>*>*>> {
-                unsigned long long __first_;
+                unsigned long long __value_;
             } __data_;
-        } __second_;
+        } __value_;
     } __ptr_;
 };
 
@@ -1704,7 +1708,7 @@ struct vector<EQKitTypes::Crossout::Enum, std::__1::allocator<EQKitTypes::Crosso
     int *__begin_;
     int *__end_;
     struct __compressed_pair<EQKitTypes::Crossout::Enum *, std::__1::allocator<EQKitTypes::Crossout::Enum>> {
-        int *__first_;
+        int *__value_;
     } __end_cap_;
 };
 
@@ -1720,7 +1724,7 @@ struct vector<TSTWidthHeightCache_Private::WHCCol, std::__1::allocator<TSTWidthH
     struct WHCCol *__begin_;
     struct WHCCol *__end_;
     struct __compressed_pair<TSTWidthHeightCache_Private::WHCCol *, std::__1::allocator<TSTWidthHeightCache_Private::WHCCol>> {
-        struct WHCCol *__first_;
+        struct WHCCol *__value_;
     } __end_cap_;
 };
 
@@ -1728,7 +1732,7 @@ struct vector<TSTWidthHeightCache_Private::WHCRow, std::__1::allocator<TSTWidthH
     struct WHCRow *__begin_;
     struct WHCRow *__end_;
     struct __compressed_pair<TSTWidthHeightCache_Private::WHCRow *, std::__1::allocator<TSTWidthHeightCache_Private::WHCRow>> {
-        struct WHCRow *__first_;
+        struct WHCRow *__value_;
     } __end_cap_;
 };
 
@@ -1800,7 +1804,7 @@ struct vector<TSWPRepBoundsAnalyzer::Info, std::__1::allocator<TSWPRepBoundsAnal
     struct Info *__begin_;
     struct Info *__end_;
     struct __compressed_pair<TSWPRepBoundsAnalyzer::Info *, std::__1::allocator<TSWPRepBoundsAnalyzer::Info>> {
-        struct Info *__first_;
+        struct Info *__value_;
     } __end_cap_;
 };
 
@@ -1832,7 +1836,7 @@ struct vector<_TSWPCharIndexAndAffinity, std::__1::allocator<_TSWPCharIndexAndAf
     struct _TSWPCharIndexAndAffinity *__begin_;
     struct _TSWPCharIndexAndAffinity *__end_;
     struct __compressed_pair<_TSWPCharIndexAndAffinity *, std::__1::allocator<_TSWPCharIndexAndAffinity>> {
-        struct _TSWPCharIndexAndAffinity *__first_;
+        struct _TSWPCharIndexAndAffinity *__value_;
     } __end_cap_;
 };
 
@@ -1848,7 +1852,7 @@ struct vector<double, std::__1::allocator<double>> {
     double *__begin_;
     double *__end_;
     struct __compressed_pair<double *, std::__1::allocator<double>> {
-        double *__first_;
+        double *__value_;
     } __end_cap_;
 };
 
@@ -1880,7 +1884,7 @@ struct vector<unsigned long, std::__1::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
     struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
-        unsigned long long *__first_;
+        unsigned long long *__value_;
     } __end_cap_;
 };
 
@@ -2260,20 +2264,20 @@ typedef struct set<TSUColumnRowRect, TSTCellRangeColumnMajorLess, std::__1::allo
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUColumnRowRect, void *>>> __pair1_;
         struct __compressed_pair<unsigned long, TSTCellRangeColumnMajorLess> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __pair3_;
     } __tree_;
-} set_79f671e2;
+} set_3ba0425c;
 
 typedef struct set<TSUColumnRowRect, TSTCellRangeRowMajorLess, std::__1::allocator<TSUColumnRowRect>> {
     struct __tree<TSUColumnRowRect, TSTCellRangeRowMajorLess, std::__1::allocator<TSUColumnRowRect>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUColumnRowRect, void *>>> __pair1_;
         struct __compressed_pair<unsigned long, TSTCellRangeRowMajorLess> {
-            unsigned long long __first_;
+            unsigned long long __value_;
         } __pair3_;
     } __tree_;
-} set_87729393;
+} set_1f50691b;
 
 typedef struct shared_ptr<TSWPLineFragmentArray> {
     struct TSWPLineFragmentArray *__ptr_;
@@ -2289,9 +2293,9 @@ typedef struct vector<EQKitTypes::Crossout::Enum, std::__1::allocator<EQKitTypes
     int *__begin_;
     int *__end_;
     struct __compressed_pair<EQKitTypes::Crossout::Enum *, std::__1::allocator<EQKitTypes::Crossout::Enum>> {
-        int *__first_;
+        int *__value_;
     } __end_cap_;
-} vector_2d5e04fe;
+} vector_e38595b5;
 
 typedef struct vector<TSDBrushVertexData, std::__1::allocator<TSDBrushVertexData>> {
     struct TSDBrushVertexData *_field1;
@@ -2337,9 +2341,9 @@ typedef struct vector<double, std::__1::allocator<double>> {
     double *__begin_;
     double *__end_;
     struct __compressed_pair<double *, std::__1::allocator<double>> {
-        double *__first_;
+        double *__value_;
     } __end_cap_;
-} vector_3f7ffb82;
+} vector_b67dfe3a;
 
 typedef struct vector<std::__1::pair<unsigned long, unsigned short>, std::__1::allocator<std::__1::pair<unsigned long, unsigned short>>> {
     struct pair<unsigned long, unsigned short> *_field1;
@@ -2353,7 +2357,7 @@ typedef struct vector<unsigned long, std::__1::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
     struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
-        unsigned long long *__first_;
+        unsigned long long *__value_;
     } __end_cap_;
-} vector_88016b54;
+} vector_06e666a8;
 

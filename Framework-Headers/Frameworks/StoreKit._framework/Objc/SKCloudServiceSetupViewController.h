@@ -16,6 +16,7 @@
 {
     _UIResilientRemoteViewContainerViewController *_remoteViewContainerViewController;
     BOOL _isRemoteViewControllerReady;
+    BOOL _isUnableToLoadRemoteViewController;
     BOOL _hasInitializedServiceViewController;
     SKCloudServiceSetupReloadContext *_activeCloudServiceSetupReloadContext;
     CDUnknownBlockType _loadCompletionHandler;
@@ -33,7 +34,9 @@
 
 - (void).cxx_destruct;
 - (void)_didReceiveRemoteViewController:(id)arg1;
+- (id)_errorWithCode:(long long)arg1 errorDescriptionLocalizationKey:(id)arg2;
 - (void)_reloadWithActiveCloudServiceSetupReloadContext;
+- (void)_reportErrorForMissingSystemMusicApplication;
 - (void)_requestRemoteViewController;
 - (void)cloudServiceSetupRemoteViewController:(id)arg1 didFinishLoadingWithSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)cloudServiceSetupRemoteViewController:(id)arg1 requestsDismissalWithAnimation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

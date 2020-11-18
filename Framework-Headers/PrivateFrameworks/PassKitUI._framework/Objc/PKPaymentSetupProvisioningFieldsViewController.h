@@ -27,8 +27,10 @@
     NSString *_activatingPaymentPassUniqueID;
     BOOL _hideSetupLaterButton;
     PKPaymentProvisioningController *_paymentProvisioningController;
+    CDUnknownBlockType _continueActionHandler;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType continueActionHandler; // @synthesize continueActionHandler=_continueActionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -85,12 +87,14 @@
 - (void)requestRequirements:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)resetAllFieldsAndProvisioningState;
 - (void)resetProvisioningState;
+- (void)setNotificationTextInFooterView:(id)arg1;
 - (void)setupLater:(id)arg1;
 - (void)showEligibilityIssueWithReason:(long long)arg1 learnMoreURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showPrivacy:(id)arg1;
 - (void)showProvisioningError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)suppressFooterViewManualEntryButton;
 - (void)suppressFooterViewSetupLaterButton;
+- (void)suppressFooterViewSkipCardButton;
 - (void)updateFieldsModelWithPaymentCredential:(id)arg1;
 - (void)updateFieldsModelWithRequirementsResponse:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

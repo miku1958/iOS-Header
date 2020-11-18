@@ -13,6 +13,8 @@
 + (id)sharedLogger;
 - (int)_awdBarcodeClientType;
 - (int)_awdBarcodeDataTypeFromAction:(id)arg1;
+- (int)_awdBarcodePreferredAppLinkOpenStrategyFromURLAction:(id)arg1;
+- (int)_awdBarcodeURLTypeFromURLAction:(id)arg1;
 - (int)_awdInvalidBarcodeDataTypeFromInvalidData:(id)arg1;
 - (id)barcodeDetectedEventForAction:(id)arg1;
 - (void)logBarcodeActivatedEventForAction:(id)arg1;

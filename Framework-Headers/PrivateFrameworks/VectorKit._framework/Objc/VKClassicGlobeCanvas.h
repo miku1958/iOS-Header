@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
     VKARCameraController *_arCameraController;
     BOOL _arRoadDisabledState;
     struct CGSize _lastCanvasSize;
+    struct unique_ptr<md::FlyoverPolylineOverlayCache, std::__1::default_delete<md::FlyoverPolylineOverlayCache>> _overlayCache;
     BOOL _showsBuildings;
     BOOL _showsVenues;
     int _flyoverMode;

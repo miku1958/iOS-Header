@@ -81,6 +81,7 @@
 
 + (Class)contentItemIdentifiersType;
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)addContentItemIdentifiers:(id)arg1;
 - (void)clearContentItemIdentifiers;
 - (id)contentItemIdentifiersAtIndex:(unsigned long long)arg1;
@@ -89,7 +90,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customDescription;
 - (id)customDictionaryRepresentation;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

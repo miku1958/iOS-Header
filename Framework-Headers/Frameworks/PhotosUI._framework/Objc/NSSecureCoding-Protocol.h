@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSCoding-Protocol.h>
+#import <PhotosUICore/NSCoding-Protocol.h>
 
 @protocol NSSecureCoding <NSCoding>
 + (BOOL)supportsSecureCoding;

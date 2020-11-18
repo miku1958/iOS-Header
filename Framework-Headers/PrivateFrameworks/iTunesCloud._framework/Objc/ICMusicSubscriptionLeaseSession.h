@@ -33,6 +33,8 @@
 
 + (id)_sharedOperationQueue;
 - (void).cxx_destruct;
+- (void)_handlePlaybackLeaseDidEndPushNotification;
+- (void)_handleRemoteServerDidBecomeLikelyReachable;
 - (id)_initWithRequestContext:(id)arg1 isDelegatedLeaseSession:(BOOL)arg2 delegate:(id)arg3 leaseStatus:(id)arg4;
 - (id)_newOperationForPlaybackRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onQueue_setLeaseStatus:(id)arg1 updatedLeaseExpirationDate:(id)arg2;

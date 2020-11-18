@@ -9,13 +9,16 @@
 #import <iWorkImport/TSDAnimationSession-Protocol.h>
 
 @class KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNShow, KNSlideNode, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSKAccessController;
-@protocol TSDCanvasDelegate, TSKAccessControllerReadTicket;
+@protocol MTLDevice, TSDCanvasDelegate, TSKAccessControllerReadTicket;
 
 __attribute__((visibility("hidden")))
 @interface KNPlaybackSession : NSObject <TSDAnimationSession>
 {
     KNSlideNode *_currentSlideNode;
     BOOL _hasEndShowHandlerBeenCancelled;
+    id<MTLDevice> _metalDevice;
+    BOOL _isMetalCapable;
+    BOOL _isMetalCapableCheckInitialized;
     BOOL _disableAutoAnimationRemoval;
     BOOL _disableTransitionTextureCaching;
     BOOL _isExitingShow;
@@ -76,8 +79,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *eventDurationArray; // @synthesize eventDurationArray=_eventDurationArray;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isExitingShow; // @synthesize isExitingShow=_isExitingShow;
+@property (readonly, nonatomic) BOOL isMetalCapable;
+@property (readonly, nonatomic) BOOL isOffscreenPlayback;
 @property (readonly, nonatomic) BOOL isPreview;
 @property (nonatomic) BOOL isShowLayerVisible; // @synthesize isShowLayerVisible=_isShowLayerVisible;
+@property (readonly, nonatomic) BOOL isWideGamut;
+@property (readonly, nonatomic) id<MTLDevice> metalDevice;
 @property (nonatomic) long long playMode; // @synthesize playMode=_playMode;
 @property (strong, nonatomic) TSDGLLayer *sharedGLLayer; // @synthesize sharedGLLayer=_sharedGLLayer;
 @property (nonatomic) BOOL shouldAlwaysSetCurrentGLContextWhenDrawing; // @synthesize shouldAlwaysSetCurrentGLContextWhenDrawing=_shouldAlwaysSetCurrentGLContextWhenDrawing;
@@ -97,6 +104,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldUseContentlessLayers; // @synthesize shouldUseContentlessLayers=_shouldUseContentlessLayers;
 @property (nonatomic) BOOL shouldUseSourceImage; // @synthesize shouldUseSourceImage=_shouldUseSourceImage;
 @property (readonly, nonatomic) KNShow *show; // @synthesize show=_show;
+@property (readonly, nonatomic) double showScale;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) KNAnimatedTextureManager *textureManager; // @synthesize textureManager=_textureManager;
 @property (strong, nonatomic) NSMutableArray *workDurationArray; // @synthesize workDurationArray=_workDurationArray;
@@ -118,8 +126,6 @@ __attribute__((visibility("hidden")))
 - (void)gotoSlideNode:(id)arg1;
 - (id)init;
 - (id)initWithShow:(id)arg1 viewScale:(double)arg2 showLayer:(id)arg3 canvasDelegate:(id)arg4 endShowHandler:(CDUnknownBlockType)arg5;
-- (BOOL)isOffscreenPlayback;
-- (BOOL)isPreCachingOperationActive;
 - (id)lastSlideNode;
 - (id)nextSlideAfterCurrent;
 - (id)nextSlideNodeAfterCurrent;
@@ -127,9 +133,9 @@ __attribute__((visibility("hidden")))
 - (void)p_executeEndShowHandler;
 - (void)p_setCurrentSlideNode:(id)arg1;
 - (id)previousSlideNodeBeforeCurrent;
+- (id)previousSlideNodeBeforeSlideNode:(id)arg1;
 - (id)repForInfo:(id)arg1 onCanvas:(id)arg2;
 - (void)setSharedGLContextAsCurrentContextShouldCreate:(BOOL)arg1;
-- (double)showScale;
 - (unsigned long long)slideNumberForSlideNode:(id)arg1;
 - (void)tearDown;
 - (void)tearDownSharedGLLayer;

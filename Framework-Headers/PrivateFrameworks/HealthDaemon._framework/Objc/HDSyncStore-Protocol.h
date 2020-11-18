@@ -11,8 +11,10 @@
 @protocol HDSyncStore <NSObject>
 
 @property (readonly) int protocolVersion;
+@property (readonly) long long syncStoreType;
 
 - (BOOL)canRecieveSyncObjectsForEntityClass:(Class)arg1;
+- (NSUUID *)databaseIdentifier;
 - (BOOL)enforceSyncEntityOrdering;
 - (long long)expectedSequenceNumberForSyncEntityClass:(Class)arg1;
 - (NSArray *)orderedSyncEntities;
@@ -26,6 +28,5 @@
 - (long long)syncProvenance;
 - (NSString *)syncStoreDefaultSourceBundleIdentifier;
 - (NSUUID *)syncStoreIdentifier;
-- (NSString *)syncStoreTypeIdentifier;
 @end
 

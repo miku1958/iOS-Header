@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_decodeMetadataFromData:(id)arg1;
 + (id)columnsDefinition;
 + (id)databaseTable;
 + (id)deleteStatementForWorkoutEventsWithDatabase:(id)arg1;

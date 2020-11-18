@@ -34,9 +34,11 @@
 @property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property (nonatomic) struct CGSize unscaledSize; // @synthesize unscaledSize=_unscaledSize;
 
++ (void)asynchronouslyPrepareMicaPackageWithName:(id)arg1 layoutDirection:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)classSubstitions;
 - (void).cxx_destruct;
 - (Class)CAMLParser:(id)arg1 didFailToFindClassWithName:(id)arg2;
+- (void)_loadRootLayerIfNeeded;
 - (id)_recursivelyFindSublayerWithName:(id)arg1 rootLayer:(id)arg2;
 - (void)_recursivelySetFillColor:(struct CGColor *)arg1 rootLayer:(id)arg2;
 - (void)_setState:(id)arg1;

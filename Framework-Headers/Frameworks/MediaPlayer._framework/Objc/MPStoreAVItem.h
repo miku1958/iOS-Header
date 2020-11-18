@@ -19,6 +19,7 @@
     NSObject<OS_dispatch_queue> *_persistenceQueue;
     unsigned long long _assetQuality;
     BOOL _didDeferLeaseStart;
+    BOOL _externalDisplay;
     BOOL _hasEverPrioritizedPlayerItem;
     BOOL _hasPrioritizedPlayWhileDownloadSession;
     BOOL _hasPrioritizedStreamingDownloadSession;
@@ -35,6 +36,8 @@
     double _playbackStartTime;
     AVAssetResourceLoadingRequest *_loadingRequest;
     NSData *_serverPlaybackContextDataForStoppingLease;
+    AVAssetResourceLoadingRequest *_externalLoadingRequest;
+    NSData *_externalServerPlaybackContextDataForStoppingLease;
     BOOL _rentalCheckoutRequired;
     BOOL _ignoreHLSOfflinePlaybackKeys;
     unsigned long long _options;
@@ -51,6 +54,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long equivalencySourceAdamID; // @synthesize equivalencySourceAdamID=_equivalencySourceAdamID;
+@property (strong, nonatomic) NSData *externalServerPlaybackContextDataForStoppingLease; // @synthesize externalServerPlaybackContextDataForStoppingLease=_externalServerPlaybackContextDataForStoppingLease;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isiTunesStoreStream) BOOL iTunesStoreStream;
 @property (nonatomic, getter=isIgnoringHLSOfflinePlaybackKeys) BOOL ignoreHLSOfflinePlaybackKeys; // @synthesize ignoreHLSOfflinePlaybackKeys=_ignoreHLSOfflinePlaybackKeys;
@@ -80,6 +84,7 @@
 - (void)_applyLoudnessInfo;
 - (id)_bookmarkTime;
 - (id)_chapterTitleForTime:(double)arg1;
+- (void)_checkInExternalPlaybackLease;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
 - (BOOL)_getAssetURL:(id *)arg1 playWhileDownloadSession:(id *)arg2 assetQuality:(unsigned long long *)arg3 error:(id *)arg4 usingStoreDownload:(id)arg5 assetOptions:(id)arg6 shouldStartDownload:(BOOL)arg7;
 - (void)_handlePlaybackFinishedTime:(double)arg1 finishedByHittingEnd:(BOOL)arg2;
@@ -96,6 +101,7 @@
 - (long long)_persistedLikedState;
 - (void)_prioritizeDownloadSessionsIfNeeded;
 - (BOOL)_shouldRememberBookmarkTime;
+- (void)_stopLease:(id)arg1 withContextData:(id)arg2;
 - (id)_storeUbiquitousIdentifier;
 - (void)_updateBookmarkTimeIfNecessary:(double)arg1 isCheckpoint:(BOOL)arg2;
 - (void)_willBecomeActivePlayerItem;
@@ -164,6 +170,7 @@
 - (void)secureKeyDeliveryRequestOperationDidChangeServerPlaybackContextData:(id)arg1;
 - (void)setAlternateAudioTrackID:(int)arg1;
 - (void)setAlternateAudioTrackLocale:(id)arg1;
+- (void)setExternalDisplay:(BOOL)arg1;
 - (void)setLoudnessInfoVolumeNormalization:(float)arg1;
 - (void)setPlaybackCheckpointCurrentTime:(double)arg1;
 - (void)setPlaybackFinishedTime:(double)arg1;

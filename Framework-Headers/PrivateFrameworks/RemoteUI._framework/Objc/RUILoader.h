@@ -6,21 +6,28 @@
 
 #import <RemoteUI/RUIHTTPRequest.h>
 
-@class NSURL, RUIParser, RUIStyle;
+#import <RemoteUI/NSURLSessionTaskDelegate-Protocol.h>
+
+@class NSString, NSURL, RUIParser, RUIStyle, _RUILoaderSessionDelegateAdapter;
 @protocol RUIParserDelegate;
 
-@interface RUILoader : RUIHTTPRequest
+@interface RUILoader : RUIHTTPRequest <NSURLSessionTaskDelegate>
 {
     RUIParser *_parser;
     NSURL *_url;
+    _RUILoaderSessionDelegateAdapter *_sessionDelegateAdapter;
     BOOL _allowNonSecureHTTP;
     id<RUIParserDelegate> _parserDelegate;
     RUIStyle *_style;
 }
 
 @property (nonatomic) BOOL allowNonSecureHTTP; // @synthesize allowNonSecureHTTP=_allowNonSecureHTTP;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<RUIParserDelegate> parserDelegate; // @synthesize parserDelegate=_parserDelegate;
 @property (strong, nonatomic) RUIStyle *style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)URL;
@@ -41,6 +48,7 @@
 - (void)parseData:(id)arg1;
 - (BOOL)receivedValidResponse:(id)arg1;
 - (id)sessionConfiguration;
+- (id)urlSessionDelegate;
 - (void)webViewFinishedLoading;
 
 @end

@@ -10,36 +10,22 @@
 
 @interface MPModelFileAsset : MPModelObject
 {
-    BOOL _nonPurgeable;
-    NSString *_filePath;
-    unsigned long long _fileSize;
-    long long _protectionType;
-    long long _qualityType;
-    NSString *_purchaseBundleFilePath;
 }
 
-@property (copy, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
-@property (nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
-@property (nonatomic, getter=isNonPurgeable) BOOL nonPurgeable; // @synthesize nonPurgeable=_nonPurgeable;
-@property (nonatomic) long long protectionType; // @synthesize protectionType=_protectionType;
-@property (copy, nonatomic) NSString *purchaseBundleFilePath; // @synthesize purchaseBundleFilePath=_purchaseBundleFilePath;
-@property (nonatomic) long long qualityType; // @synthesize qualityType=_qualityType;
+@property (copy, nonatomic) NSString *filePath; // @dynamic filePath;
+@property (nonatomic) unsigned long long fileSize; // @dynamic fileSize;
+@property (nonatomic, getter=isNonPurgeable) BOOL nonPurgeable; // @dynamic nonPurgeable;
+@property (nonatomic) long long protectionType; // @dynamic protectionType;
+@property (copy, nonatomic) NSString *purchaseBundleFilePath; // @dynamic purchaseBundleFilePath;
+@property (nonatomic) long long qualityType; // @dynamic qualityType;
 
-+ (id)__MPModelPropertyFileAssetFilePath__PROPERTY;
-+ (id)__MPModelPropertyFileAssetFileSize__PROPERTY;
-+ (id)__MPModelPropertyFileAssetNonPurgeable__PROPERTY;
-+ (id)__MPModelPropertyFileAssetProtectionType__PROPERTY;
-+ (id)__MPModelPropertyFileAssetPurchaseBundleFilePath__PROPERTY;
-+ (id)__MPModelPropertyFileAssetQualityType__PROPERTY;
-+ (id)__filePath__KEY;
-+ (id)__fileSize__KEY;
-+ (id)__nonPurgeable__KEY;
-+ (id)__protectionType__KEY;
-+ (id)__purchaseBundleFilePath__KEY;
-+ (id)__qualityType__KEY;
++ (id)__filePath_KEY;
++ (id)__fileSize_KEY;
++ (id)__nonPurgeable_KEY;
++ (id)__protectionType_KEY;
++ (id)__purchaseBundleFilePath_KEY;
++ (id)__qualityType_KEY;
 + (id)allSupportedProperties;
-- (void).cxx_destruct;
-- (id)descriptionWithType:(long long)arg1;
 
 @end
 

@@ -7,12 +7,13 @@
 #import <HomeKitDaemon/HMDAccessory.h>
 
 #import <HomeKitDaemon/HAPRelayAccessoryDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDAccessoryIdentify-Protocol.h>
 #import <HomeKitDaemon/HMDTimeInformationMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HAPPairingIdentity, HMDCharacteristic, HMFTimer, NSArray, NSData, NSDate, NSMapTable, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString;
 
-@interface HMDHAPAccessory : HMDAccessory <HAPRelayAccessoryDelegate, HMDTimeInformationMonitorDelegate, HMFTimerDelegate>
+@interface HMDHAPAccessory : HMDAccessory <HAPRelayAccessoryDelegate, HMDTimeInformationMonitorDelegate, HMFTimerDelegate, HMDAccessoryIdentify>
 {
     NSMutableArray *_transportInformationInstances;
     BOOL _relayEnabled;
@@ -83,6 +84,7 @@
 @property (readonly, copy, nonatomic) NSArray *services;
 @property (copy, nonatomic) NSData *setupHash; // @synthesize setupHash=_setupHash;
 @property (readonly) Class superclass;
+@property (readonly) BOOL supportsIdentify;
 @property (nonatomic) BOOL supportsRelay; // @synthesize supportsRelay=_supportsRelay;
 @property (strong, nonatomic) HMFTimer *systemTimeInformationTimer; // @synthesize systemTimeInformationTimer=_systemTimeInformationTimer;
 @property (nonatomic) BOOL systemTimeNeedsUpdate; // @synthesize systemTimeNeedsUpdate=_systemTimeNeedsUpdate;
@@ -92,6 +94,7 @@
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (unsigned long long)getAWDTransportTypeWithLinkType:(long long)arg1;
++ (BOOL)hasMessageReceiverChildren;
 + (BOOL)supportsSecureCoding;
 + (Class)transactionClass;
 - (void).cxx_destruct;
@@ -113,7 +116,6 @@
 - (void)_handleCharacteristicWrite:(id)arg1;
 - (void)_handleCharacteristicsChangedNotification:(id)arg1;
 - (void)_handleDiscoveryBackoffTimerFired;
-- (void)_handleIdentify:(id)arg1;
 - (void)_handleKeyRefreshTimerFired;
 - (void)_handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleRenameService:(id)arg1;
@@ -135,7 +137,6 @@
 - (void)_reenableNotificationsOnWatch;
 - (void)_registerForMessages;
 - (void)_registerForTimeMonitor;
-- (void)_relayIdentifyAccessorytoResidentForMessage:(id)arg1;
 - (void)_relayReadFromCharacteristic:(id)arg1 toResidentForMessage:(id)arg2 viaDevice:(id)arg3;
 - (void)_relayWriteToCharacteristic:(id)arg1 toResidentForMessage:(id)arg2 viaDevice:(id)arg3;
 - (void)_removeBackedoffAccessoryForStateNumber:(id)arg1;
@@ -179,6 +180,7 @@
 - (void)addRelayUser:(id)arg1 accessToken:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addTransportInformationInstance:(id)arg1;
 - (void)addTransportInformationInstances:(id)arg1;
+- (void)autoUpdateCachedCountDownCharacteristics:(id)arg1;
 - (void)backOffAccessoryForStateNumber:(id)arg1;
 - (id)backingStoreObjects:(long long)arg1;
 - (id)characteristicsPassingTest:(CDUnknownBlockType)arg1;
@@ -211,6 +213,7 @@
 - (BOOL)hasIPLink;
 - (id)hmdCharacteristicForInstanceId:(id)arg1;
 - (id)hmdCharacteristicFromHapCharacteristic:(id)arg1;
+- (void)identifyAccessory:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
@@ -234,6 +237,7 @@
 - (id)matchingTransportInformationWithServerIdentifier:(id)arg1;
 - (id)matchingTransportInformationWithServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (void)mergeTransportInformationInstances:(id)arg1;
+- (id)messageReceiverChildren;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)namesOfServicesShowingTilesInHomeApp;
 - (void)notifyValue:(id)arg1 previousValue:(id)arg2 error:(id)arg3 forCharacteristic:(id)arg4 requestMessage:(id)arg5;

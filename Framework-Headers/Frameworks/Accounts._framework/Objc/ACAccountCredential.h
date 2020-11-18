@@ -35,6 +35,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *hsaToken;
 @property (copy, nonatomic) NSString *mapsToken;
+@property (copy, nonatomic) NSString *mdmServerToken;
 @property (copy, nonatomic) NSString *oauthRefreshToken;
 @property (copy, nonatomic) NSString *oauthToken;
 @property (copy, nonatomic) NSString *oauthTokenNoSync;

@@ -10,7 +10,7 @@
 #import <PassKitUI/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 #import <PassKitUI/PKPerformActionViewDelegate-Protocol.h>
 
-@class NSString, PKPaymentPass, PKPaymentPassAction, PKPaymentWebService, PKPerformActionLoadingView, PKPerformActionPassView, PKServiceProviderPurchase, UIView;
+@class NSString, PKPaymentPass, PKPaymentPassAction, PKPaymentWebService, PKPerformActionLoadingView, PKPerformActionPassView, PKServiceProviderPurchase, UIBarButtonItem, UIView;
 @protocol PKPaymentDataProvider, PKPerformActionView, PKPerformActionViewControllerDelegate;
 
 @interface PKPerformActionViewController : UIViewController <PKPerformActionViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate>
@@ -19,7 +19,10 @@
     PKPerformActionLoadingView *_loadingView;
     id<PKPaymentDataProvider> _paymentDataProvider;
     BOOL _remoteContentFetched;
+    BOOL _fieldsVerified;
     PKServiceProviderPurchase *_completedPurchase;
+    UIBarButtonItem *_button;
+    UIBarButtonItem *_spinner;
     PKPaymentPass *_pass;
     PKPaymentPassAction *_action;
     UIView<PKPerformActionView> *_actionView;
@@ -37,17 +40,20 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 
-+ (id)alertControllerForUnableReason:(unsigned long long)arg1 displayableError:(id)arg2 addCardActionHandler:(CDUnknownBlockType)arg3;
++ (id)alertControllerForUnableReason:(unsigned long long)arg1 action:(id)arg2 displayableError:(id)arg3 addCardActionHandler:(CDUnknownBlockType)arg4;
 + (id)navigationBarBackgroundColor;
 - (void).cxx_destruct;
 - (id)_actionViewForPass:(id)arg1 action:(id)arg2;
 - (void)_canPerformPaymentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_cancelButtonPressed:(id)arg1;
 - (void)_fetchRemoteContentIfNeeded;
+- (void)_presentPaymentSetupControllerWithAllowedPaymentNetworks:(id)arg1;
 - (void)_reloadActionView;
 - (void)_rightBarButtonPressed:(id)arg1;
+- (BOOL)_shouldPresentPaymentRequest:(long long)arg1;
 - (void)_showGenericErrorAlert:(CDUnknownBlockType)arg1;
 - (void)_showLoadingView:(BOOL)arg1;
+- (void)_showSpinner:(BOOL)arg1;
 - (id)init;
 - (id)initWithPass:(id)arg1 action:(id)arg2;
 - (id)initWithPass:(id)arg1 action:(id)arg2 paymentDataProvider:(id)arg3;

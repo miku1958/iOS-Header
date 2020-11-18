@@ -6,11 +6,11 @@
 
 #import <DAEAS/ASItem.h>
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ASLocation : ASItem <NSCoding>
+@interface ASLocation : ASItem <NSSecureCoding>
 {
     NSString *_displayName;
     NSString *_annotation;
@@ -40,6 +40,7 @@
 @property (strong, nonatomic) NSString *street; // @synthesize street=_street;
 
 + (id)locationWithCalLocation:(void *)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithApplicationData:(id)arg1;

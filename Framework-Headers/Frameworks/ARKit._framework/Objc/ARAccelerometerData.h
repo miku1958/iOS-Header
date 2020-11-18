@@ -14,6 +14,7 @@
 @interface ARAccelerometerData : NSObject <ARMutableSensorData, NSSecureCoding>
 {
     double _timestamp;
+    double _temperature;
     CDStruct_31142d93 _acceleration;
 }
 
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) double temperature; // @synthesize temperature=_temperature;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 + (BOOL)supportsSecureCoding;

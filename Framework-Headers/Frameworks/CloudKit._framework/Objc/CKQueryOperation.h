@@ -12,16 +12,16 @@
 {
     BOOL _shouldFetchAssetContent;
     BOOL _fetchAllResults;
+    CDUnknownBlockType _recordFetchedBlock;
+    CDUnknownBlockType _queryCompletionBlock;
+    CDUnknownBlockType _queryCursorFetchedBlock;
     CKQuery *_query;
     CKQueryCursor *_cursor;
     CKRecordZoneID *_zoneID;
     unsigned long long _resultsLimit;
     NSArray *_desiredKeys;
-    CDUnknownBlockType _recordFetchedBlock;
-    CDUnknownBlockType _queryCompletionBlock;
     CKQueryCursor *_resultsCursor;
     NSDictionary *_assetTransferOptionsByKey;
-    CDUnknownBlockType _queryCursorFetchedBlock;
 }
 
 @property (strong, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;

@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (id)retrySynchronousIPC:(CDUnknownBlockType)arg1;
 + (id)sharedConnection;
 - (void).cxx_destruct;
 - (oneway void)_client_coordinatorDidCompleteSuccessfullyWithUUID:(id)arg1;

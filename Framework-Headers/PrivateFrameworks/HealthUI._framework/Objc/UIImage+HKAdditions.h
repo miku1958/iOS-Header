@@ -7,8 +7,11 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (HKAdditions)
++ (id)hk_disclosureChevronImage;
++ (id)hk_transparentInterfaceImageWithSize:(struct CGSize)arg1;
 - (id)hk_croppedImageWithRect:(struct CGRect)arg1;
 - (id)hk_resizedImageWithSize:(struct CGSize)arg1;
+- (id)hk_resizedInterfaceImageWithSize:(struct CGSize)arg1;
 - (double)hk_scaledImageViewHeightWithScaledWidth:(double)arg1;
 - (id)hk_watchIconImage;
 @end

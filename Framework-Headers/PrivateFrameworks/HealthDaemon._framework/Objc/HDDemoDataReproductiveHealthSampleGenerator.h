@@ -21,6 +21,7 @@
 @property (nonatomic) double nextOvulationTestSampleTime; // @synthesize nextOvulationTestSampleTime=_nextOvulationTestSampleTime;
 @property (nonatomic) double nextSexualActivitySampleTime; // @synthesize nextSexualActivitySampleTime=_nextSexualActivitySampleTime;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_basalBodyTempMultiplier;
 - (long long)_computeNextLuteinizingHormoneSurgeForDemoPerson:(id)arg1 atTime:(double)arg2;

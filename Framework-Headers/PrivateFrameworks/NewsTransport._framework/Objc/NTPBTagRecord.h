@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBRecordBase;
+@class NSData, NSMutableArray, NSString, NTPBDate, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBRecordBase;
 
 @interface NTPBTagRecord : PBCodable <NSCopying>
 {
@@ -19,6 +19,7 @@
     double _nameImageScaleFactor;
     long long _score;
     NSMutableArray *_allowedStorefrontIDs;
+    NSData *_articleRecirculationConfiguration;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
     NSString *_channelDefaultSectionID;
@@ -49,12 +50,15 @@
     NSMutableArray *_publisherPaidFeldsparablePurchaseIDs;
     NSString *_publisherPaidVerificationURL;
     NSString *_publisherPaidWebaccessURL;
+    NSMutableArray *_publisherSpecifiedArticleIds;
+    NTPBDate *_publisherSpecifiedArticleIdsModifiedDate;
     NSMutableArray *_purchaseOfferableConfigurations;
     NSMutableArray *_relatedChannelIDs;
     NSMutableArray *_relatedChannelIDsForOnboardings;
     NSMutableArray *_relatedTopicIDs;
     NSMutableArray *_relatedTopicIDsForOnboardings;
     NSString *_replacementID;
+    NSString *_subtitle;
     NSString *_templateJson;
     int _type;
     BOOL _hideAccessoryText;
@@ -86,6 +90,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *allowedStorefrontIDs; // @synthesize allowedStorefrontIDs=_allowedStorefrontIDs;
+@property (strong, nonatomic) NSData *articleRecirculationConfiguration; // @synthesize articleRecirculationConfiguration=_articleRecirculationConfiguration;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
 @property (strong, nonatomic) NSMutableArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
@@ -97,6 +102,7 @@
 @property (strong, nonatomic) NSString *coverImageURL; // @synthesize coverImageURL=_coverImageURL;
 @property (strong, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
 @property (nonatomic) int groupingAvailability; // @synthesize groupingAvailability=_groupingAvailability;
+@property (readonly, nonatomic) BOOL hasArticleRecirculationConfiguration;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (nonatomic) BOOL hasBehaviorFlags;
 @property (readonly, nonatomic) BOOL hasChannelDefaultSectionID;
@@ -133,8 +139,10 @@
 @property (readonly, nonatomic) BOOL hasPublisherPaidVerificationURL;
 @property (nonatomic) BOOL hasPublisherPaidWebOptIn;
 @property (readonly, nonatomic) BOOL hasPublisherPaidWebaccessURL;
+@property (readonly, nonatomic) BOOL hasPublisherSpecifiedArticleIdsModifiedDate;
 @property (readonly, nonatomic) BOOL hasReplacementID;
 @property (nonatomic) BOOL hasScore;
+@property (readonly, nonatomic) BOOL hasSubtitle;
 @property (readonly, nonatomic) BOOL hasTemplateJson;
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) BOOL hideAccessoryText; // @synthesize hideAccessoryText=_hideAccessoryText;
@@ -169,6 +177,8 @@
 @property (strong, nonatomic) NSString *publisherPaidVerificationURL; // @synthesize publisherPaidVerificationURL=_publisherPaidVerificationURL;
 @property (nonatomic) BOOL publisherPaidWebOptIn; // @synthesize publisherPaidWebOptIn=_publisherPaidWebOptIn;
 @property (strong, nonatomic) NSString *publisherPaidWebaccessURL; // @synthesize publisherPaidWebaccessURL=_publisherPaidWebaccessURL;
+@property (strong, nonatomic) NSMutableArray *publisherSpecifiedArticleIds; // @synthesize publisherSpecifiedArticleIds=_publisherSpecifiedArticleIds;
+@property (strong, nonatomic) NTPBDate *publisherSpecifiedArticleIdsModifiedDate; // @synthesize publisherSpecifiedArticleIdsModifiedDate=_publisherSpecifiedArticleIdsModifiedDate;
 @property (strong, nonatomic) NSMutableArray *purchaseOfferableConfigurations; // @synthesize purchaseOfferableConfigurations=_purchaseOfferableConfigurations;
 @property (strong, nonatomic) NSMutableArray *relatedChannelIDs; // @synthesize relatedChannelIDs=_relatedChannelIDs;
 @property (strong, nonatomic) NSMutableArray *relatedChannelIDsForOnboardings; // @synthesize relatedChannelIDsForOnboardings=_relatedChannelIDsForOnboardings;
@@ -176,6 +186,7 @@
 @property (strong, nonatomic) NSMutableArray *relatedTopicIDsForOnboardings; // @synthesize relatedTopicIDsForOnboardings=_relatedTopicIDsForOnboardings;
 @property (strong, nonatomic) NSString *replacementID; // @synthesize replacementID=_replacementID;
 @property (nonatomic) long long score; // @synthesize score=_score;
+@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSString *templateJson; // @synthesize templateJson=_templateJson;
 @property (nonatomic) int type; // @synthesize type=_type;
 
@@ -187,6 +198,7 @@
 + (Class)iAdKeywordsType;
 + (Class)pinnedArticleIDsType;
 + (Class)publisherPaidFeldsparablePurchaseIDsType;
++ (Class)publisherSpecifiedArticleIdsType;
 + (Class)purchaseOfferableConfigurationType;
 + (Class)relatedChannelIDsForOnboardingType;
 + (Class)relatedChannelIDsType;
@@ -200,6 +212,7 @@
 - (void)addIAdKeywords:(id)arg1;
 - (void)addPinnedArticleIDs:(id)arg1;
 - (void)addPublisherPaidFeldsparablePurchaseIDs:(id)arg1;
+- (void)addPublisherSpecifiedArticleIds:(id)arg1;
 - (void)addPurchaseOfferableConfiguration:(id)arg1;
 - (void)addRelatedChannelIDs:(id)arg1;
 - (void)addRelatedChannelIDsForOnboarding:(id)arg1;
@@ -221,6 +234,7 @@
 - (void)clearIAdKeywords;
 - (void)clearPinnedArticleIDs;
 - (void)clearPublisherPaidFeldsparablePurchaseIDs;
+- (void)clearPublisherSpecifiedArticleIds;
 - (void)clearPurchaseOfferableConfigurations;
 - (void)clearRelatedChannelIDs;
 - (void)clearRelatedChannelIDsForOnboardings;
@@ -241,6 +255,8 @@
 - (unsigned long long)pinnedArticleIDsCount;
 - (id)publisherPaidFeldsparablePurchaseIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)publisherPaidFeldsparablePurchaseIDsCount;
+- (id)publisherSpecifiedArticleIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)publisherSpecifiedArticleIdsCount;
 - (id)purchaseOfferableConfigurationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)purchaseOfferableConfigurationsCount;
 - (BOOL)readFrom:(id)arg1;

@@ -23,12 +23,12 @@
     NSArray *_itemSortDescriptors;
 }
 
-@property (nonatomic) Class itemClass;
+@property (strong, nonatomic) Class itemClass;
 @property (strong, nonatomic) MPModelKind *itemKind; // @synthesize itemKind=_itemKind;
 @property (copy, nonatomic) MPPropertySet *itemProperties; // @synthesize itemProperties=_itemProperties;
 @property (copy, nonatomic) NSArray *itemSortDescriptors; // @synthesize itemSortDescriptors=_itemSortDescriptors;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
-@property (nonatomic) Class sectionClass;
+@property (strong, nonatomic) Class sectionClass;
 @property (strong, nonatomic) MPModelKind *sectionKind; // @synthesize sectionKind=_sectionKind;
 @property (copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;
 @property (copy, nonatomic) NSArray *sectionSortDescriptors; // @synthesize sectionSortDescriptors=_sectionSortDescriptors;

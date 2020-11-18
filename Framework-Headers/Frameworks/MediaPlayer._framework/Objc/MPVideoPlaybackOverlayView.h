@@ -6,16 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
+#import <MediaPlayer/MPAVLightweightRoutingControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPDetailSliderDelegate-Protocol.h>
 #import <MediaPlayer/MPVideoOverlay-Protocol.h>
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 #import <MediaPlayer/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class MPAVController, MPAVItem, MPAVRoutingController, MPAudioAndSubtitlesController, MPDetailSlider, MPKnockoutButton, MPVideoView, MPVolumeController, MPVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UINavigationBar, UIStatusBar, UIViewController, _UIBackdropView;
+@class MPAVController, MPAVItem, MPAVLightweightRoutingController, MPAudioAndSubtitlesController, MPDetailSlider, MPKnockoutButton, MPVideoView, MPVolumeController, MPVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UINavigationBar, UIStatusBar, UIViewController, _UIBackdropView;
 @protocol MPVideoControllerProtocol, MPVideoOverlayDelegate;
 
-@interface MPVideoPlaybackOverlayView : UIView <UIPopoverPresentationControllerDelegate, MPAVRoutingControllerDelegate, MPVolumeControllerDelegate, MPVideoOverlay, MPDetailSliderDelegate>
+@interface MPVideoPlaybackOverlayView : UIView <UIPopoverPresentationControllerDelegate, MPAVLightweightRoutingControllerDelegate, MPVolumeControllerDelegate, MPVideoOverlay, MPDetailSliderDelegate>
 {
     MPDetailSlider *_scrubber;
     MPKnockoutButton *_playPauseButton;
@@ -33,7 +33,7 @@
     MPKnockoutButton *_leftButton;
     MPKnockoutButton *_rightButton;
     UIButton *_audioAndSubtitlesButton;
-    MPAVRoutingController *_airplayController;
+    MPAVLightweightRoutingController *_lightweightRoutingController;
     MPVolumeController *_volumeController;
     UIView *_topBarLayoutGuide;
     UIView *_topBarItemsGuide;
@@ -179,12 +179,13 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 - (void)layoutSubviews;
+- (void)lightweightRoutingController:(id)arg1 didChangeDevicePresenceDetected:(BOOL)arg2;
+- (void)lightweightRoutingController:(id)arg1 didChangePickedRoutes:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
 - (void)removeFromSuperview;
-- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setDesiredParts:(unsigned long long)arg1 animate:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
@@ -199,6 +200,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (BOOL)updateTimeBasedValues;
+- (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(BOOL)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 
 @end

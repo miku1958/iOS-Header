@@ -16,6 +16,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (int)defaultFamiliarity;
 - (BOOL)isFriend;

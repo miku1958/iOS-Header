@@ -6,9 +6,11 @@
 
 #import <MediaRemote/MRApplicationActivity.h>
 
+#import <MediaRemote/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface MRMutableApplicationActivity : MRApplicationActivity
+@interface MRMutableApplicationActivity : MRApplicationActivity <NSSecureCoding>
 {
 }
 
@@ -17,6 +19,7 @@
 @property (nonatomic) BOOL shouldPrepareAppPlaybackQueue; // @dynamic shouldPrepareAppPlaybackQueue;
 @property (nonatomic) int status; // @dynamic status;
 
++ (BOOL)supportsSecureCoding;
 
 @end
 

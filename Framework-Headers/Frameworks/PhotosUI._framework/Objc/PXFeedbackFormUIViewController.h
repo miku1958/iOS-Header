@@ -17,6 +17,7 @@
 {
     BOOL _userLikedIt;
     BOOL _wantsCustomFeedbackSection;
+    BOOL _wantsPositiveFeedbackSection;
     NSArray *_positiveFeedbackKeys;
     NSMutableDictionary *_positiveFeedbackValues;
     NSArray *_negativeFeedbackKeys;
@@ -34,11 +35,13 @@
 @property (strong, nonatomic) UITableViewController *tableViewController; // @synthesize tableViewController=_tableViewController;
 
 - (void).cxx_destruct;
+- (long long)_feedbackFormSectionForSectionIndex:(long long)arg1;
 - (id)_feedbackKeyForIndexPath:(id)arg1;
 - (void)_handleDoneButtonWasPressedOnCustomFeedbackView;
 - (BOOL)_isSelectedRow:(id)arg1 inSection:(long long)arg2;
 - (void)_markCell:(id)arg1 asSelected:(BOOL)arg2;
 - (void)_setSelectionStateForKey:(id)arg1 inSection:(long long)arg2 to:(BOOL)arg3;
+- (void)cancelFeedback:(id)arg1;
 - (id)initWithDelegate:(id)arg1 positiveKeys:(id)arg2 negativeKeys:(id)arg3 wantsCustomFeedbackSection:(BOOL)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)sendFeedback:(id)arg1;

@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 
 + (Class)queueFeederClass;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)descriptionComponents;
 - (id)initWithArrayQueueItems:(id)arg1;

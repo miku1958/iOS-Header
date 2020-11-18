@@ -11,14 +11,14 @@
 @protocol BRCUserNotifier <NSObject>
 - (void)close;
 - (void)moveToFront;
-- (void)showErrorDeviceOfflineForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
+- (void)showErrorDeviceOfflineForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(void))arg2;
 - (void)showErrorDocumentsAppNotVisibleForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
 - (void)showErrorInstallNativeAppForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL, BOOL, NSError *))arg2;
-- (void)showErrorItemUnavailableOrAccessRestrictedForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
+- (void)showErrorItemUnavailableOrAccessRestrictedForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(void))arg2;
 - (void)showErrorNativeAppDisabledByProfileForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
-- (void)showErrorParticipantLimitReachedForShareURL:(NSURL *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)showErrorReasonUnknownForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
-- (void)showErrorServerNotReachableForShareURL:(NSURL *)arg1 reply:(void (^)(void))arg2;
+- (void)showErrorParticipantLimitReachedForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL))arg2;
+- (void)showErrorReasonUnknownForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(void))arg2;
+- (void)showErrorServerNotReachableForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(void))arg2;
 - (void)showErrorSignInToiCloudForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL, BOOL, NSError *))arg2;
 - (void)showErrorTurnOniCloudDriveForShareMetadata:(CKShareMetadata *)arg1 reply:(void (^)(BOOL, BOOL, NSError *))arg2;
 - (void)showJoinDialogForShareMetadata:(CKShareMetadata *)arg1 session:(BRCAccountSession *)arg2 reply:(void (^)(BOOL, NSError *))arg3;

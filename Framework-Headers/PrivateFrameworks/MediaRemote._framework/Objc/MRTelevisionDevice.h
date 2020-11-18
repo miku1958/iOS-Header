@@ -40,9 +40,10 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType textInputCallback; // @synthesize textInputCallback=_textInputCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *textInputCallbackQueue; // @synthesize textInputCallbackQueue=_textInputCallbackQueue;
 
+- (void).cxx_destruct;
 - (void)_callCientHiliteModeCallback;
 - (void)_callClientGameControllerInputModeCallback;
-- (void)_callClientGameControllerPropertiesCallback:(void *)arg1 controller:(unsigned long long)arg2;
+- (void)_callClientGameControllerPropertiesCallback:(id)arg1 controller:(unsigned long long)arg2;
 - (void)_callClientRecordingStateCallback;
 - (void)_callClientTextInputCallback:(id)arg1 type:(unsigned int)arg2;
 - (void)_handleHiliteModeMessage:(id)arg1;
@@ -51,18 +52,17 @@ __attribute__((visibility("hidden")))
 - (void)clearActiveTextEditingSessionData;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
 - (id)currentClientUpdatesConfigMessage;
-- (void)dealloc;
 - (void)deleteBackwardInActiveTextEditingSession;
 - (void)exitHiliteMode;
 - (void)getTextEditingSessionWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithTransport:(id)arg1;
 - (void)insertTextIntoActiveTextEditingSessionWithText:(id)arg1;
 - (void)processVoiceInputAudioDataForDeviceID:(unsigned int)arg1 withBuffer:(id)arg2 time:(CDStruct_ace97b7a)arg3 gain:(float)arg4;
-- (void)registerGameControllerWithProperties:(void *)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)registerGameControllerWithProperties:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerTouchDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerVoiceInputDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendButtonEvent:(struct _MRHIDButtonEvent)arg1;
-- (void)sendGameControllerEvent:(void *)arg1 controllerID:(unsigned long long)arg2;
+- (void)sendGameControllerEvent:(id)arg1 controllerID:(unsigned long long)arg2;
 - (void)sendHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)sendTouchEvent:(struct _MRHIDTouchEvent)arg1 toVirtualDeviceWithID:(unsigned long long)arg2;
 - (void)setGameControllerInputModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;

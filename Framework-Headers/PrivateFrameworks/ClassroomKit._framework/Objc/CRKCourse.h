@@ -8,26 +8,42 @@
 
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class CRKUser, DMFControlGroupIdentifier, NSDictionary, NSString;
+@class CRKUser, DMFControlGroupIdentifier, NSDate, NSDictionary, NSSet, NSString;
 
 @interface CRKCourse : NSObject <NSSecureCoding>
 {
-    BOOL _managed;
+    BOOL _requestingUnenroll;
+    BOOL _studentCredentialsAreValid;
+    BOOL _mustRequestUnenroll;
+    BOOL _expired;
     DMFControlGroupIdentifier *_courseIdentifier;
     NSString *_courseName;
     NSString *_courseDescription;
     CRKUser *_courseUser;
     NSDictionary *_instructorsByIdentifier;
+    unsigned long long _type;
+    NSDate *_automaticRemovalDate;
+    NSSet *_trustedCertificatePersistentIds;
+    NSSet *_validTrustedCertificatePersistentIds;
 }
 
+@property (strong, nonatomic) NSDate *automaticRemovalDate; // @synthesize automaticRemovalDate=_automaticRemovalDate;
 @property (copy, nonatomic) NSString *courseDescription; // @synthesize courseDescription=_courseDescription;
 @property (strong, nonatomic) DMFControlGroupIdentifier *courseIdentifier; // @synthesize courseIdentifier=_courseIdentifier;
 @property (copy, nonatomic) NSString *courseName; // @synthesize courseName=_courseName;
 @property (strong, nonatomic) CRKUser *courseUser; // @synthesize courseUser=_courseUser;
+@property (nonatomic, getter=isExpired) BOOL expired; // @synthesize expired=_expired;
 @property (copy, nonatomic) NSDictionary *instructorsByIdentifier; // @synthesize instructorsByIdentifier=_instructorsByIdentifier;
-@property (nonatomic, getter=isManaged) BOOL managed; // @synthesize managed=_managed;
+@property (readonly, nonatomic, getter=isManaged) BOOL managed;
+@property (nonatomic) BOOL mustRequestUnenroll; // @synthesize mustRequestUnenroll=_mustRequestUnenroll;
+@property (nonatomic, getter=isRequestingUnenroll) BOOL requestingUnenroll; // @synthesize requestingUnenroll=_requestingUnenroll;
+@property (nonatomic) BOOL studentCredentialsAreValid; // @synthesize studentCredentialsAreValid=_studentCredentialsAreValid;
+@property (strong, nonatomic) NSSet *trustedCertificatePersistentIds; // @synthesize trustedCertificatePersistentIds=_trustedCertificatePersistentIds;
+@property (nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (strong, nonatomic) NSSet *validTrustedCertificatePersistentIds; // @synthesize validTrustedCertificatePersistentIds=_validTrustedCertificatePersistentIds;
 
 + (id)new;
++ (id)stringForType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
@@ -36,8 +52,11 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 managed:(BOOL)arg2;
+- (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
+- (BOOL)isDeeplyEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCourse:(id)arg1;
+- (void)setManaged:(BOOL)arg1;
 
 @end
 

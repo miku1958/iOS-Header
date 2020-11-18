@@ -9,10 +9,6 @@
 @class _SFBrowserToolbar;
 
 @protocol _SFBrowserToolbarDataSource <NSObject>
-- (BOOL)browserToolbarCanGoBack:(_SFBrowserToolbar *)arg1;
-- (BOOL)browserToolbarCanGoForward:(_SFBrowserToolbar *)arg1;
-- (BOOL)browserToolbarCanOpenPageInSafari:(_SFBrowserToolbar *)arg1;
-- (BOOL)browserToolbarCanShowAction:(_SFBrowserToolbar *)arg1;
 - (double)browserToolbarDismissButtonPadding:(_SFBrowserToolbar *)arg1;
 - (struct CGSize)browserToolbarDismissButtonSize:(_SFBrowserToolbar *)arg1;
 - (BOOL)browserToolbarShouldShowOpenInSafariBarButtonItem:(_SFBrowserToolbar *)arg1;

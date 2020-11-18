@@ -17,7 +17,7 @@
 
 + (void)configureSecuritydXPCProtocol:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithEndpoint:(id)arg1;
+- (id)init;
 
 @end
 

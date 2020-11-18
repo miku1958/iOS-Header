@@ -35,10 +35,11 @@
 @property (readonly) Class superclass;
 @property (readonly) HMDAccessorySymptomHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 
++ (BOOL)hasMessageReceiverChildren;
++ (BOOL)shouldAcceptMessage:(id)arg1 home:(id)arg2 privilege:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__updateDeviceWithDeviceIdentifier:(id)arg1;
-- (id)_decodeHashedRouteUID:(id)arg1;
 - (void)_fetchAvailableUpdate:(id)arg1;
 - (void)_registerForMessages;
 - (void)_relayRequestMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
@@ -68,6 +69,7 @@
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
 - (BOOL)isCurrentAccessory;
 - (BOOL)isRemotelyReachable;
+- (id)messageReceiverChildren;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)notifyClientsOfUpdatedRootSettings:(id)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;

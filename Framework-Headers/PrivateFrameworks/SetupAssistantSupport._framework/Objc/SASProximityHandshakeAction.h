@@ -20,7 +20,7 @@
 - (BOOL)hasResponse;
 - (id)init;
 - (id)responsePayload;
-- (void)setResponseFromDictionary:(id)arg1;
+- (void)setResponseFromData:(id)arg1;
 
 @end
 

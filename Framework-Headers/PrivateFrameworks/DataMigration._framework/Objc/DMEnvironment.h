@@ -8,7 +8,10 @@
 
 @interface DMEnvironment : NSObject
 {
+    BOOL _testMigrationInfrastructureOnly;
 }
+
+@property (nonatomic) BOOL testMigrationInfrastructureOnly; // @synthesize testMigrationInfrastructureOnly=_testMigrationInfrastructureOnly;
 
 + (BOOL)isBuildVersion:(id)arg1 equalToBuildVersion:(id)arg2;
 + (id)sharedInstance;

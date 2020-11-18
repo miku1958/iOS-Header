@@ -5,8 +5,12 @@
 //
 
 #import <TelephonyUtilities/TUCallCapabilitiesXPCServerActions-Protocol.h>
-#import <TelephonyUtilities/TUCallCapabilitiesXPCServerState-Protocol.h>
 
-@protocol TUCallCapabilitiesXPCServer <TUCallCapabilitiesXPCServerState, TUCallCapabilitiesXPCServerActions>
+@protocol TUCallCapabilitiesXPCClient;
+
+@protocol TUCallCapabilitiesXPCServer <TUCallCapabilitiesXPCServerActions>
+- (oneway void)callCapabilitiesState:(void (^)(TUCallCapabilitiesState *))arg1;
+- (void)registerClient:(id<TUCallCapabilitiesXPCClient>)arg1;
+- (void)unregisterClient:(id<TUCallCapabilitiesXPCClient>)arg1;
 @end
 

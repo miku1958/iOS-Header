@@ -16,12 +16,14 @@
     id<MPSImageAllocator> _imageAllocator;
     BOOL _exportFromGraph;
     unsigned long long _format;
+    BOOL _synchronize;
 }
 
 @property (nonatomic) BOOL exportFromGraph; // @synthesize exportFromGraph=_exportFromGraph;
 @property (nonatomic) unsigned long long format; // @synthesize format=_format;
 @property (strong, nonatomic) id<MPSHandle> handle; // @synthesize handle=_handle;
 @property (strong, nonatomic) id<MPSImageAllocator> imageAllocator; // @synthesize imageAllocator=_imageAllocator;
+@property (nonatomic) BOOL synchronizeResource; // @synthesize synchronizeResource=_synchronize;
 
 + (id)exportedNodeWithHandle:(id)arg1;
 + (id)nodeWithHandle:(id)arg1;

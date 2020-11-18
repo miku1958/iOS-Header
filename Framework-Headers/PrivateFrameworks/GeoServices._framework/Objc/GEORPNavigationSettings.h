@@ -15,6 +15,7 @@
     unsigned long long _distanceUnits;
     unsigned long long _maxAlternateRouteCount;
     unsigned long long _voiceVolume;
+    int _userPreferredTransportType;
     NSString *_voiceLanguage;
     BOOL _beepBeforeInstruction;
     BOOL _muteSpeechOverride;
@@ -25,6 +26,7 @@
         unsigned int distanceUnits:1;
         unsigned int maxAlternateRouteCount:1;
         unsigned int voiceVolume:1;
+        unsigned int userPreferredTransportType:1;
         unsigned int beepBeforeInstruction:1;
         unsigned int muteSpeechOverride:1;
         unsigned int pauseSpokenAudio:1;
@@ -42,6 +44,7 @@
 @property (nonatomic) BOOL hasPauseSpokenAudio;
 @property (nonatomic) BOOL hasShouldUseGuidanceEventManager;
 @property (nonatomic) BOOL hasSpeechEnabled;
+@property (nonatomic) BOOL hasUserPreferredTransportType;
 @property (readonly, nonatomic) BOOL hasVoiceLanguage;
 @property (nonatomic) BOOL hasVoiceVolume;
 @property (nonatomic) unsigned long long maxAlternateRouteCount; // @synthesize maxAlternateRouteCount=_maxAlternateRouteCount;
@@ -49,10 +52,12 @@
 @property (nonatomic) BOOL pauseSpokenAudio; // @synthesize pauseSpokenAudio=_pauseSpokenAudio;
 @property (nonatomic) BOOL shouldUseGuidanceEventManager; // @synthesize shouldUseGuidanceEventManager=_shouldUseGuidanceEventManager;
 @property (nonatomic) BOOL speechEnabled; // @synthesize speechEnabled=_speechEnabled;
+@property (nonatomic) int userPreferredTransportType; // @synthesize userPreferredTransportType=_userPreferredTransportType;
 @property (strong, nonatomic) NSString *voiceLanguage; // @synthesize voiceLanguage=_voiceLanguage;
 @property (nonatomic) unsigned long long voiceVolume; // @synthesize voiceVolume=_voiceVolume;
 
 - (void).cxx_destruct;
+- (int)StringAsUserPreferredTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -61,6 +66,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)userPreferredTransportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

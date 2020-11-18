@@ -47,7 +47,7 @@
     BOOL _simulateAssetContentDownload;
     BOOL _simulateAssetContentDownloadFailure;
     long long _suggestionsStyle;
-    long long _suggestionMinimumAssetAgeInDays;
+    long long _suggestionMaximumAssetAgeInDays;
     long long _simulatedAssetVariationSuggestion;
     double _initialDetailsIndicatorDelay;
     double _initialDetailsIndicatorDuration;
@@ -171,7 +171,7 @@
 @property (nonatomic) BOOL simulateAssetContentDownloadFailure; // @synthesize simulateAssetContentDownloadFailure=_simulateAssetContentDownloadFailure;
 @property (nonatomic) BOOL simulateWorstCaseFigPhotoBackgroundSize; // @synthesize simulateWorstCaseFigPhotoBackgroundSize=_simulateWorstCaseFigPhotoBackgroundSize;
 @property (nonatomic) long long simulatedAssetVariationSuggestion; // @synthesize simulatedAssetVariationSuggestion=_simulatedAssetVariationSuggestion;
-@property (nonatomic) long long suggestionMinimumAssetAgeInDays; // @synthesize suggestionMinimumAssetAgeInDays=_suggestionMinimumAssetAgeInDays;
+@property (nonatomic) long long suggestionMaximumAssetAgeInDays; // @synthesize suggestionMaximumAssetAgeInDays=_suggestionMaximumAssetAgeInDays;
 @property (nonatomic) long long suggestionsStyle; // @synthesize suggestionsStyle=_suggestionsStyle;
 @property (nonatomic) long long titleTapAction; // @synthesize titleTapAction=_titleTapAction;
 @property (nonatomic) BOOL useDebuggingColors; // @synthesize useDebuggingColors=_useDebuggingColors;

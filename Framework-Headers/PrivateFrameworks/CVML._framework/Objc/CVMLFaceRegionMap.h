@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-#import <CVML/NSCoding-Protocol.h>
+#import <CVML/NSSecureCoding-Protocol.h>
 
 @class NSDictionary;
 
-@interface CVMLFaceRegionMap : NSObject <NSCoding>
+@interface CVMLFaceRegionMap : NSObject <NSSecureCoding>
 {
     struct vImage_Buffer mRegionMap;
     struct CGRect mUserBBox;
@@ -19,6 +19,7 @@
     NSDictionary *mPixelValueToRegionLabelMap;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

@@ -22,6 +22,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutWithElement:(id)arg1;
 - (void)prepareForReuse;
+- (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

@@ -33,6 +33,7 @@
     NSMutableArray *_fractionalCohortMemberships;
     NSString *_groupFeedId;
     int _groupType;
+    NSData *_groupViewExposureId;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
@@ -122,6 +123,7 @@
 @property (strong, nonatomic) NSMutableArray *fractionalCohortMemberships; // @synthesize fractionalCohortMemberships=_fractionalCohortMemberships;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (nonatomic) BOOL hasAdSupportedChannel;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
@@ -135,6 +137,7 @@
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (readonly, nonatomic) BOOL hasIadNativeAd;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaign;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;

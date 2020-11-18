@@ -11,6 +11,7 @@
 + (id)safari_arrayWithPropertyListData:(id)arg1 options:(unsigned long long)arg2;
 - (id)_safari_computeLengthsOfLongestSubsequencesCommonWithArray:(id)arg1;
 - (id)_safari_generateDiffWithLongestCommonSubsequenceLengths:(id)arg1 array:(id)arg2 indexIntoSelf:(unsigned long long)arg3 indexIntoArray:(unsigned long long)arg4;
+- (id)safari_URLAtIndex:(unsigned long long)arg1;
 - (id)safari_arrayAtIndex:(unsigned long long)arg1;
 - (BOOL)safari_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)safari_dictionaryAtIndex:(unsigned long long)arg1;

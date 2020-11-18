@@ -23,6 +23,7 @@
     unsigned int stats_reported:1;
     unsigned int should_report_generic_stats:1;
     unsigned int generic_stats_reported:1;
+    unsigned int hit_max_timestamps:1;
     unsigned int better_path_available:1;
     unsigned int cancelled:1;
     struct os_unfair_lock_s lock;

@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebResourcePrivate : NSObject
 {
-    struct RefPtr<WebCore::ArchiveResource> coreResource;
+    struct RefPtr<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::ArchiveResource>> coreResource;
 }
 
 + (void)initialize;
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
-- (id)initWithCoreResource:(Ref_e6cb3a5e *)arg1;
+- (id)initWithCoreResource:(Ref_23906fc6 *)arg1;
 
 @end
 

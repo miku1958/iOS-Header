@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDHome, HMDNotificationRegistration, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@class HMDHome, HMDNotificationRegistration, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomePresenceBase : HMFObject <HMFLogging, HMFMessageReceiver>
+@interface HMDHomePresenceBase : HMFObject <HMFLogging, HMDHomeMessageReceiver>
 {
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -28,6 +28,7 @@
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSString *logString; // @synthesize logString=_logString;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_initialize:(id)arg1;

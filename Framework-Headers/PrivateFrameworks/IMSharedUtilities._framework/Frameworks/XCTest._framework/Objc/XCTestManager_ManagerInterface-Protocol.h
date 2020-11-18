@@ -9,8 +9,11 @@
 @protocol XCTestManager_ManagerInterface
 - (void)_XCT_enableFauxCollectionViewCells:(void (^)(BOOL, NSError *))arg1;
 - (void)_XCT_exchangeProtocolVersion:(unsigned long long)arg1 reply:(void (^)(unsigned long long))arg2;
+- (void)_XCT_fetchAttributes:(NSArray *)arg1 forElement:(XCAccessibilityElement *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)_XCT_fetchAttributesForElement:(XCAccessibilityElement *)arg1 attributes:(NSArray *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)_XCT_fetchParameterizedAttribute:(NSString *)arg1 forElement:(XCAccessibilityElement *)arg2 parameter:(id)arg3 reply:(void (^)(id, NSError *))arg4;
 - (void)_XCT_fetchParameterizedAttributeForElement:(XCAccessibilityElement *)arg1 attributes:(NSNumber *)arg2 parameter:(id)arg3 reply:(void (^)(id, NSError *))arg4;
+- (void)_XCT_getDeviceOrientationWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)_XCT_injectAssistantRecognitionStrings:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)_XCT_injectVoiceRecognitionAudioInputPaths:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)_XCT_launchApplicationWithBundleID:(NSString *)arg1 arguments:(NSArray *)arg2 environment:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
@@ -27,11 +30,13 @@
 - (void)_XCT_requestScreenshotOfScreenWithID:(unsigned int)arg1 withRect:(struct CGRect)arg2 withReply:(void (^)(NSData *, NSError *))arg3;
 - (void)_XCT_requestScreenshotWithReply:(void (^)(NSData *, NSError *))arg1;
 - (void)_XCT_requestSerializedTransportWrapperForIDESessionWithIdentifier:(NSUUID *)arg1 reply:(void (^)(XCTSerializedTransportWrapper *))arg2;
+- (void)_XCT_requestSiriEnabledStatus:(void (^)(BOOL, NSError *))arg1;
 - (void)_XCT_requestSnapshotForElement:(XCAccessibilityElement *)arg1 attributes:(NSArray *)arg2 parameters:(NSDictionary *)arg3 reply:(void (^)(XCElementSnapshot *, NSError *))arg4;
 - (void)_XCT_requestSocketForSessionIdentifier:(NSUUID *)arg1 reply:(void (^)(NSFileHandle *))arg2;
 - (void)_XCT_sendString:(NSString *)arg1 maximumFrequency:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_XCT_setAXTimeout:(double)arg1 reply:(void (^)(int))arg2;
 - (void)_XCT_setAttribute:(NSNumber *)arg1 value:(id)arg2 element:(XCAccessibilityElement *)arg3 reply:(void (^)(BOOL, NSError *))arg4;
+- (void)_XCT_setLocalizableStringsDataGatheringEnabled:(BOOL)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)_XCT_snapshotForElement:(XCAccessibilityElement *)arg1 attributes:(NSArray *)arg2 parameters:(NSDictionary *)arg3 reply:(void (^)(XCElementSnapshot *, NSError *))arg4;
 - (void)_XCT_startMonitoringApplicationWithBundleID:(NSString *)arg1;
 - (void)_XCT_startSiriUIRequestWithAudioFileURL:(NSURL *)arg1 completion:(void (^)(BOOL, NSError *))arg2;

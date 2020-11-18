@@ -18,6 +18,7 @@
     QLCacheVersionedFileIdentifier *_fileIdentifier;
     double _scale;
     double _minimumSize;
+    long long _sequenceNumber;
     struct CGSize _size;
 }
 
@@ -27,6 +28,7 @@
 @property (readonly) float maximumPixelSize;
 @property (readonly) double minimumSize; // @synthesize minimumSize=_minimumSize;
 @property (readonly) double scale; // @synthesize scale=_scale;
+@property long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property struct CGSize size; // @synthesize size=_size;
 
 + (BOOL)supportsSecureCoding;

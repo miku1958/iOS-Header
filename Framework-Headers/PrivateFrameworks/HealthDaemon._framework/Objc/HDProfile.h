@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDAWDSubmissionManager, HDAppSubscriptionManager, HDAuthorizationManager, HDCloudSyncManager, HDCurrentActivitySummaryHelper, HDDaemon, HDDaemonSyncEngine, HDDataCollectionManager, HDDataManager, HDDataProvenanceManager, HDDatabase, HDDatabasePruningManager, HDDeviceManager, HDFitnessMachineManager, HDHealthServiceManager, HDMedicalIDDataManager, HDMetadataManager, HDMigrationManager, HDNanoSyncManager, HDNotificationManager, HDServiceConnectionManager, HDSessionAssertionManager, HDSourceManager, HDSourceOrderManager, HDUnitPreferencesManager, HDUserCharacteristicsManager, HDWorkoutManager, NSString, NSURL;
-@protocol HDHealthDaemon, HDHealthDatabase, HDSyncEngine;
+#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@interface HDProfile : NSObject
+@class HDAWDSubmissionManager, HDAppSubscriptionManager, HDAuthorizationManager, HDCloudSyncManager, HDCurrentActivitySummaryHelper, HDDaemon, HDDaemonSyncEngine, HDDataCollectionManager, HDDataManager, HDDataProvenanceManager, HDDatabase, HDDatabasePruningManager, HDDeviceManager, HDFitnessMachineManager, HDHealthServiceManager, HDMedicalIDDataManager, HDMetadataManager, HDMigrationManager, HDNanoSyncManager, HDNotificationManager, HDServiceConnectionManager, HDSessionAssertionManager, HDSourceManager, HDSourceOrderManager, HDUnitPreferencesManager, HDUserCharacteristicsManager, HDWorkoutManager, NSDictionary, NSString, NSURL;
+@protocol HDHealthDaemon, HDHealthDatabase, HDSyncEngine, OS_dispatch_queue;
+
+@interface HDProfile : NSObject <HDHealthDaemonReadyObserver>
 {
     HDDatabase *_database;
     HDSourceManager *_sourceManager;
@@ -17,9 +19,12 @@
     HDAuthorizationManager *_authorizationManager;
     NSString *_directoryPath;
     HDDaemonSyncEngine *_syncEngine;
+    NSDictionary *_profileExtensionsByIdentifier;
+    NSObject<OS_dispatch_queue> *_queue;
     HDDaemon *_daemon;
     HDDataManager *_dataManager;
     HDDataProvenanceManager *_dataProvenanceManager;
+    HDMetadataManager *_metadataManager;
     HDSessionAssertionManager *_sessionAssertionManager;
     HDSourceOrderManager *_sourceOrderManager;
     HDUserCharacteristicsManager *_userCharacteristicsManager;
@@ -28,7 +33,6 @@
     HDAWDSubmissionManager *_awdSubmissionManager;
     HDDatabasePruningManager *_databasePruningManager;
     HDMedicalIDDataManager *_medicalIDDataManager;
-    HDMetadataManager *_metadataManager;
     HDMigrationManager *_migrationManager;
     HDUnitPreferencesManager *_unitPreferencesManager;
 }
@@ -44,10 +48,13 @@
 @property (readonly, nonatomic) HDDataProvenanceManager *dataProvenanceManager; // @synthesize dataProvenanceManager=_dataProvenanceManager;
 @property (readonly, nonatomic) HDDatabase *database;
 @property (readonly, nonatomic) HDDatabasePruningManager *databasePruningManager; // @synthesize databasePruningManager=_databasePruningManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HDDeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
 @property (readonly, copy, nonatomic) NSString *directoryPath;
 @property (readonly, copy, nonatomic) NSURL *directoryURL;
 @property (readonly, nonatomic) HDFitnessMachineManager *fitnessMachineManager;
+@property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) id<HDHealthDaemon> healthDaemon;
 @property (readonly, nonatomic) id<HDHealthDatabase> healthDatabase;
 @property (readonly, nonatomic) HDMedicalIDDataManager *medicalIDDataManager; // @synthesize medicalIDDataManager=_medicalIDDataManager;
@@ -62,6 +69,7 @@
 @property (readonly, nonatomic) HDSessionAssertionManager *sessionAssertionManager; // @synthesize sessionAssertionManager=_sessionAssertionManager;
 @property (readonly, nonatomic) HDSourceManager *sourceManager; // @synthesize sourceManager=_sourceManager;
 @property (readonly, nonatomic) HDSourceOrderManager *sourceOrderManager; // @synthesize sourceOrderManager=_sourceOrderManager;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HDSyncEngine> syncEngine;
 @property (readonly, nonatomic) HDUnitPreferencesManager *unitPreferencesManager; // @synthesize unitPreferencesManager=_unitPreferencesManager;
 @property (readonly, nonatomic) HDUserCharacteristicsManager *userCharacteristicsManager; // @synthesize userCharacteristicsManager=_userCharacteristicsManager;
@@ -70,7 +78,8 @@
 - (void).cxx_destruct;
 - (id)_newAWDSubmissionManager;
 - (id)_newUserCharacteristicsManager;
-- (id)description;
+- (void)_queue_createExtensionsIfNeeded;
+- (void)daemonReady:(id)arg1;
 - (id)displayNameWithError:(id *)arg1;
 - (id)healthDeviceManager;
 - (id)healthSourceManager;
@@ -78,6 +87,8 @@
 - (void)invalidateAndWait;
 - (void)obliterateAndTerminateWithOptions:(unsigned long long)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)obliterateWithOptions:(unsigned long long)arg1 reason:(id)arg2;
+- (id)profileExtensionWithIdentifier:(id)arg1;
+- (id)profileExtensionsConformingToProtocol:(id)arg1;
 - (BOOL)setDisplayName:(id)arg1 error:(id *)arg2;
 - (void)terminationCleanup;
 

@@ -9,14 +9,12 @@
 #import <iWorkImport/TSWPTextualEquivalentProvider-Protocol.h>
 
 @class NSArray, NSSet, NSString, TSWPTOCPartitioner, TSWPTOCSettings;
-@protocol TSWPTOCController;
 
 __attribute__((visibility("hidden")))
 @interface TSWPTOCInfo : TSWPShapeInfo <TSWPTextualEquivalentProvider>
 {
     TSWPTOCPartitioner *_partitioner;
     NSArray *_tocEntries;
-    id<TSWPTOCController> _tocController;
     TSWPTOCSettings *_tocSettings;
     NSArray *_pageNumberRanges;
 }
@@ -27,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *pageNumberRanges; // @synthesize pageNumberRanges=_pageNumberRanges;
 @property (readonly, nonatomic) NSSet *paragraphStylesShownInTOC;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) id<TSWPTOCController> tocController; // @synthesize tocController=_tocController;
 @property (strong, nonatomic, setter=setTOCEntries:) NSArray *tocEntries; // @synthesize tocEntries=_tocEntries;
 @property (strong, nonatomic, setter=setTOCSettings:) TSWPTOCSettings *tocSettings; // @synthesize tocSettings=_tocSettings;
 @property (readonly, nonatomic) NSArray *visibleTOCEntries;

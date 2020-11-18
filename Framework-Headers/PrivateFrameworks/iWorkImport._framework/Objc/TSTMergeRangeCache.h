@@ -35,9 +35,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasRangeSpanningRowsForCellRange:(struct TSUCellRect)arg1;
 - (id)initWithMergeOwner:(id)arg1;
 - (struct TSUCellRect)mergeRangeAtIndex:(unsigned long long)arg1;
-- (vector_db509b29)mergeRanges;
-- (vector_db509b29)mergeRangesIntersectingCellRegion:(id)arg1;
-- (vector_db509b29)mergeRangesIntersectingRange:(struct TSUCellRect)arg1;
+- (vector_e87daf7b)mergeRanges;
+- (vector_e87daf7b)mergeRangesIntersectingCellRegion:(id)arg1;
+- (vector_e87daf7b)mergeRangesIntersectingRange:(struct TSUCellRect)arg1;
 - (id)mergedGridIndicesForDimension:(long long)arg1;
 - (struct TSUCellRect)mergedRangeForCellID:(struct TSUCellCoord)arg1;
 - (void)openRewritingTransaction;

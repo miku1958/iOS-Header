@@ -14,5 +14,6 @@
 + (id)alertControllerForAddingServiceGroupWithProceed:(CDUnknownBlockType)arg1;
 + (id)alertControllerForAddingZoneWithProceed:(CDUnknownBlockType)arg1;
 + (id)hu_alertControllerForUnimplementedFeature:(id)arg1;
++ (id)hu_alertControllerWithActivityIndicatorAndTitle:(id)arg1;
 @end
 

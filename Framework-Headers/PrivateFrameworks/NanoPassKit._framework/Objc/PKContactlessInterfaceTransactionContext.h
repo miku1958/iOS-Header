@@ -6,26 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, PKFelicaAppletHistory, PKPaymentApplication, PKPaymentPass, PKPaymentTransaction;
+@class NSArray, NSDate, PKExpressTransactionState, PKFelicaAppletHistory, PKPaymentApplication, PKPaymentPass, PKPaymentTransaction, PKTransitAppletHistory;
 
 @interface PKContactlessInterfaceTransactionContext : NSObject
 {
     BOOL _success;
+    BOOL _incompatible;
     NSDate *_date;
     PKPaymentPass *_paymentPass;
     PKPaymentApplication *_paymentApplication;
     PKPaymentTransaction *_transaction;
     NSArray *_valueAddedServicePasses;
     NSArray *_valueAddedServiceTransactions;
+    PKTransitAppletHistory *_transitHistory;
     PKFelicaAppletHistory *_felicaHistory;
+    PKExpressTransactionState *_expressState;
 }
 
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (strong, nonatomic) PKFelicaAppletHistory *felicaHistory; // @synthesize felicaHistory=_felicaHistory;
+@property (strong, nonatomic) PKExpressTransactionState *expressState; // @synthesize expressState=_expressState;
+@property (readonly, nonatomic) PKFelicaAppletHistory *felicaHistory; // @synthesize felicaHistory=_felicaHistory;
+@property (nonatomic, getter=isIncompatible) BOOL incompatible; // @synthesize incompatible=_incompatible;
 @property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property (strong, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 @property (strong, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+@property (strong, nonatomic) PKTransitAppletHistory *transitHistory; // @synthesize transitHistory=_transitHistory;
 @property (strong, nonatomic) NSArray *valueAddedServicePasses; // @synthesize valueAddedServicePasses=_valueAddedServicePasses;
 @property (strong, nonatomic) NSArray *valueAddedServiceTransactions; // @synthesize valueAddedServiceTransactions=_valueAddedServiceTransactions;
 

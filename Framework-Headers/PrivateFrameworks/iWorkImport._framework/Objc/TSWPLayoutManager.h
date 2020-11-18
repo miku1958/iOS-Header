@@ -6,19 +6,21 @@
 
 #import <Foundation/NSObject.h>
 
+#import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
 #import <iWorkImport/TSWPStorageObserver-Protocol.h>
 
-@class NSString, TSWPCTTypesetterCache, TSWPMutableTopicNumberHints, TSWPStorage;
+@class NSString, TSWPCTTypesetterCache, TSWPDirtyRangeArray, TSWPMutableDirtyRangeArray, TSWPMutableTopicNumberHints, TSWPStorage;
 @protocol TSWPLayoutOwner, TSWPTopicNumberHints;
 
 __attribute__((visibility("hidden")))
-@interface TSWPLayoutManager : NSObject <TSWPStorageObserver>
+@interface TSWPLayoutManager : NSObject <TSWPStorageObserver, TSKChangeSourceObserver>
 {
     TSWPStorage *_storage;
     BOOL _isObservingStorage;
     BOOL _useLigatures;
     BOOL _layoutFinished;
-    struct TSWPDirtyRangeVector _dirtyRanges;
+    BOOL _shouldClearTypesetterCache;
+    TSWPMutableDirtyRangeArray *_dirtyRanges;
     TSWPCTTypesetterCache *_typesetterCache;
     TSWPMutableTopicNumberHints *_initialTopicNumbers;
     id<TSWPLayoutOwner> _owner;
@@ -26,17 +28,16 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) const struct TSWPDirtyRangeVector *dirtyRanges; // @synthesize dirtyRanges=_dirtyRanges;
+@property (readonly, nonatomic) TSWPDirtyRangeArray *dirtyRanges; // @synthesize dirtyRanges=_dirtyRanges;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSObject<TSWPTopicNumberHints> *initialTopicNumberHints; // @synthesize initialTopicNumberHints=_initialTopicNumbers;
 @property (readonly, nonatomic) BOOL layoutFinished; // @synthesize layoutFinished=_layoutFinished;
-@property (readonly, nonatomic) id<TSWPLayoutOwner> owner; // @synthesize owner=_owner;
-@property (readonly, strong, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
+@property (readonly, weak, nonatomic) id<TSWPLayoutOwner> owner; // @synthesize owner=_owner;
+@property (readonly, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) TSWPCTTypesetterCache *typesetterCache;
+@property (readonly, nonatomic) TSWPCTTypesetterCache *typesetterCache;
 
 + (void)fixColumnBoundsForTarget:(id)arg1 storage:(id)arg2 charIndex:(unsigned long long)arg3 firstColumnIndex:(unsigned long long)arg4 precedingHeight:(double)arg5 height:(double)arg6 alreadyHasMargins:(BOOL)arg7 styleProvider:(id)arg8 vertical:(BOOL)arg9;
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)clearOwner;
 - (void)clearTypesetterCache;

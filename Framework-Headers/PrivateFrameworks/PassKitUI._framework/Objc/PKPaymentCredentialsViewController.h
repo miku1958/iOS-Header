@@ -17,6 +17,7 @@
     PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     NSMutableArray *_credentialCaches;
+    NSMutableArray *_refundedCredentialCaches;
     PKTableHeaderView *_tableHeader;
     PKPaymentSetupFooterView *_tableFooter;
     BOOL _allowsManualEntry;
@@ -42,6 +43,8 @@
 - (void)_presentViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setPassSnapshotOnCell:(id)arg1 cell:(id)arg2;
 - (void)_setUserInteractionEnabled:(BOOL)arg1;
+- (void)_showRefund:(id)arg1;
+- (void)_startProvisioningForCredentials:(id)arg1;
 - (void)_startProvisioningForSelectedCards;
 - (void)_terminateSetupFlow;
 - (void)_updateForSelectionCount;
@@ -57,6 +60,7 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

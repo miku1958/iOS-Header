@@ -24,8 +24,10 @@
 
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (struct CGSize)intrinsicContentSize;
 - (void)prepareForReuse;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

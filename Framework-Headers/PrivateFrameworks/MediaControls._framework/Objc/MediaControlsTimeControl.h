@@ -74,7 +74,6 @@
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)createDisplayLinkIfNeeded;
-- (void)didMoveToWindow;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

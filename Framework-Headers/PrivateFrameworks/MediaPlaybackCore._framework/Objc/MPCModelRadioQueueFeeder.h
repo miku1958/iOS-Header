@@ -8,7 +8,7 @@
 
 #import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
 
-@class ICStoreRequestContext, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSOperationQueue, NSString, SSVPlayActivityController;
+@class ICStoreRequestContext, ICUserIdentity, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSOperationQueue, NSString, SSVPlayActivityController;
 @protocol MPAVItemQueueIdentifier;
 
 @interface MPCModelRadioQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining>
@@ -27,6 +27,7 @@
     SSVPlayActivityController *_playActivityController;
     MPCModelRadioPlaybackQueue *_playbackQueue;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
+    ICUserIdentity *_proactiveCacheIdentity;
     long long _queueGeneration;
     NSString *_siriAssetInfo;
     ICStoreRequestContext *_storeRequestContext;
@@ -61,6 +62,7 @@
 - (void)_responseDidInvalidateNotification:(id)arg1;
 - (void)_savePlaybackHistoryWithCurrentIndex:(long long)arg1;
 - (id)_startPlaybackRequestWithPlaybackContext:(id)arg1;
+- (void)_updateProactiveCaching;
 - (BOOL)allowsQueueResetWhenReachingEnd;
 - (BOOL)allowsUserVisibleUpcomingItems;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;

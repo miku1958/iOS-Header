@@ -51,9 +51,9 @@ __attribute__((visibility("hidden")))
 - (id)copyWithNewType:(int)arg1;
 - (id)copyWithNewType:(int)arg1 range:(struct _NSRange)arg2;
 - (id)copyWithNewType:(int)arg1 smartFieldRange:(struct _NSRange)arg2;
-- (id)copyWithNewVisualRanges:(const struct TSWPRangeVector *)arg1;
+- (id)copyWithNewVisualRanges:(id)arg1;
 - (id)copyWithNewVisualTypeRange:(struct _NSRange)arg1 head:(unsigned long long)arg2 tail:(unsigned long long)arg3;
-- (id)copyWithVisualRanges:(const struct TSWPRangeVector *)arg1 headChar:(unsigned long long)arg2 tailChar:(unsigned long long)arg3 rightToLeft:(BOOL)arg4 sameLine:(BOOL)arg5;
+- (id)copyWithVisualRanges:(id)arg1 headChar:(unsigned long long)arg2 tailChar:(unsigned long long)arg3 rightToLeft:(BOOL)arg4 sameLine:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)infosOfClass:(Class)arg1;
 - (id)initWithArchive:(const struct CanvasSelectionArchive *)arg1 unarchiver:(id)arg2;

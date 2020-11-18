@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet, TSDTilingLayer, TSTSelectionDragController, TSTTableReferences;
+@class NSMutableDictionary, NSSet, TSDTilingLayer, TSTSelectionDragController, TSTTableReferences;
 
 @protocol TSTTableRepInternal
 
 @property (readonly, nonatomic) BOOL aspectOperationIsInProgress;
 @property (weak, nonatomic) TSTSelectionDragController *cellDragController;
+@property (readonly, nonatomic) NSMutableDictionary *childTextReps;
+@property (readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderColumns;
+@property (readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderCorner;
 @property (readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderRows;
 @property (nonatomic) struct TSUCellCoord ratingsDragCellID;
 @property (readonly, nonatomic) TSTTableReferences *references;

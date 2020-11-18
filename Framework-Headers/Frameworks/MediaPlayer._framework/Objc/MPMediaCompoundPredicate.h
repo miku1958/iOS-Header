@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 + (id)predicateMatchingPredicates:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)ML3PredicateForContainer;
 - (id)ML3PredicateForTrack;

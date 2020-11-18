@@ -129,7 +129,6 @@
 - (void)clearRecordCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2;
 - (void)currentDeviceIDWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)currentUserBoundaryKeyWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)currentUserIDWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)darkWakeEnabledEntitlement;
 - (void)dataclassEnabled:(id)arg1 withSetupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
@@ -162,6 +161,7 @@
 - (BOOL)hasProtectionDataEntitlement;
 - (BOOL)hasTCCAuthorization;
 - (BOOL)hasZoneProtectionDataEntitlement;
+- (void)importantUserIDsWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithConnection:(id)arg1;
 - (BOOL)isLongLived;
 - (id)openFileWithOpenInfo:(id)arg1 error:(id *)arg2;

@@ -17,7 +17,8 @@
 + (id)_syncDictionaryForAppSettings:(id)arg1;
 + (id)_syncDictionaryForLocalStore;
 + (BOOL)cloudSyncEnabled;
-+ (void)issueDeleteAllRequestWithCompletion:(CDUnknownBlockType)arg1;
++ (void)deleteAllHistoryWithCompletion:(CDUnknownBlockType)arg1;
++ (void)forceUpdateWithCompletion:(CDUnknownBlockType)arg1;
 + (void)resetAccountWithCompletion:(CDUnknownBlockType)arg1;
 + (BOOL)synchronizeSettingsFromCloudIfNeeded;
 + (void)updateCloudStoreAccountLevelSetting:(id)arg1 value:(id)arg2 completion:(CDUnknownBlockType)arg3;

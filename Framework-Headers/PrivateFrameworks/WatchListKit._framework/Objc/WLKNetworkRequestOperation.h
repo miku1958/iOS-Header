@@ -7,7 +7,6 @@
 #import <Foundation/NSOperation.h>
 
 @class NSDictionary, NSError, NSString, NSURL, NSXPCConnection, SSURLConnectionResponse;
-@protocol WLKNetworkRequestOperationDelegate;
 
 @interface WLKNetworkRequestOperation : NSOperation
 {
@@ -19,7 +18,6 @@
     BOOL _requiresMescal;
     BOOL _encodeQueryParams;
     BOOL _runsInDaemon;
-    id<WLKNetworkRequestOperationDelegate> _delegate;
     NSDictionary *_additionalHeaderFields;
     NSString *_serverRouteKey;
     NSDictionary *_serverRouteReplacements;
@@ -39,7 +37,6 @@
 @property (copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (strong, nonatomic) NSString *callerOverride; // @synthesize callerOverride=_callerOverride;
 @property (readonly, copy, nonatomic) NSURL *defaultBaseURL;
-@property (weak, nonatomic) id<WLKNetworkRequestOperationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL encodeQueryParams; // @synthesize encodeQueryParams=_encodeQueryParams;
 @property (readonly, copy, nonatomic) NSString *endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
@@ -63,8 +60,6 @@
 - (id)_connection;
 - (void)_didFailWithError:(id)arg1;
 - (void)_didFinishWithResponse:(id)arg1;
-- (void)_failWithError:(id)arg1;
-- (void)_finishWithResponse:(id)arg1;
 - (id)_requestPropertiesWithAPIEndpoint:(id)arg1 baseURL:(id)arg2 queryParameters:(id)arg3 httpMethod:(id)arg4 additionalHeaderFields:(id)arg5;
 - (id)_requestPropertiesWithServerRouteKey:(id)arg1 queryParameters:(id)arg2 additionalHeaderFields:(id)arg3;
 - (id)_runNetworkOperationAndReturnError:(id *)arg1;

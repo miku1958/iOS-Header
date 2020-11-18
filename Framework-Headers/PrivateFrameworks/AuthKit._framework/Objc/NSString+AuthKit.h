@@ -9,5 +9,6 @@
 @interface NSString (AuthKit)
 - (id)ak_SHA256;
 - (id)ak_SHA256String;
+- (id)ak_urlEncoded;
 @end
 

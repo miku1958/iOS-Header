@@ -93,6 +93,7 @@
 - (void)sendInvitationWithData:(id)arg1 declineOnError:(BOOL)arg2;
 - (void)sendInvitationWithOptions:(id)arg1;
 - (void)sendSessionMessage:(id)arg1;
+- (void)sendSessionMessage:(id)arg1 toDestinations:(id)arg2;
 - (void)session:(id)arg1 audioEnabled:(BOOL)arg2;
 - (void)session:(id)arg1 invitationSentToTokens:(id)arg2 shouldBreakBeforeMake:(BOOL)arg3;
 - (void)session:(id)arg1 muted:(BOOL)arg2;

@@ -39,12 +39,12 @@ __attribute__((visibility("hidden")))
 - (float)bevelHeight;
 - (void)dealloc;
 - (void)generateArrays;
-- (void)generateRoundedTop:(vector_ec52ae8c *)arg1 radiusArray:(vector_ec52ae8c *)arg2;
+- (void)generateRoundedTop:(vector_7584168e *)arg1 radiusArray:(vector_7584168e *)arg2;
 - (int)geometryCount;
 - (id)init;
 - (BOOL)isFullCircle;
-- (void)p_generateAngles:(vector_ec52ae8c *)arg1;
-- (void)p_generateBevelCoordinates:(vector_45b393db *)arg1 andAngles:(vector_ec52ae8c *)arg2 radiusArray:(const vector_ec52ae8c *)arg3 topArray:(const vector_ec52ae8c *)arg4;
+- (void)p_generateAngles:(vector_7584168e *)arg1;
+- (void)p_generateBevelCoordinates:(vector_7200ab52 *)arg1 andAngles:(vector_7584168e *)arg2 radiusArray:(const vector_7584168e *)arg3 topArray:(const vector_7584168e *)arg4;
 - (id)selectionKnobPositions;
 
 @end

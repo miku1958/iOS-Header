@@ -24,8 +24,7 @@
 - (void)executeCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithClientLiteWithConnectionName:(id)arg1;
 - (id)initWithServiceHelper:(id)arg1 withConnectionName:(id)arg2;
-- (void)warmUp;
-- (void)warmUpWithScriptHint:(id)arg1;
+- (void)warmUpWithSignal:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

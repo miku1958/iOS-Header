@@ -6,11 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
+#import <iWorkImport/TSDShapeSearchResultProviding-Protocol.h>
+
 @class NSCache, NSDictionary, NSString, NSUserDefaults, TSDShapeSearchIndex;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface TSDUserDefinedShapeLibrary : NSObject
+@interface TSDUserDefinedShapeLibrary : NSObject <TSDShapeSearchResultProviding>
 {
     NSObject<OS_dispatch_queue> *_searchIndexQueue;
     BOOL _isWritingDefaultsDatabase;
@@ -53,9 +55,9 @@ __attribute__((visibility("hidden")))
 - (void)p_upgradeDefaultsIfNeeded;
 - (BOOL)removeUserDefinedShapeAtIndex:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)resultsForSearchTerm:(id)arg1;
+- (id)shapeFromSearchResult:(id)arg1;
 - (BOOL)updateShapeAtIndex:(unsigned long long)arg1 withName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)userDefinedShapeAtIndex:(unsigned long long)arg1;
-- (id)userDefinedShapeForSearchResult:(id)arg1;
 
 @end
 

@@ -43,7 +43,6 @@
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
 - (void)reloadData;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

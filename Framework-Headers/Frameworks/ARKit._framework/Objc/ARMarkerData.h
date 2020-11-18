@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/ARResultData-Protocol.h>
+#import <ARKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ARMarkerData : NSObject <ARResultData>
+@interface ARMarkerData : NSObject <ARResultData, NSSecureCoding>
 {
     BOOL _isTracked;
     unsigned long long _uid;
@@ -25,7 +26,10 @@
 @property (nonatomic) CDStruct_14d5dc5e transform; // @synthesize transform=_transform;
 @property (nonatomic) unsigned long long uid; // @synthesize uid=_uid;
 
++ (BOOL)supportsSecureCoding;
 - (id)anchorsForCameraWithTransform:(CDStruct_14d5dc5e)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 existingAnchors:(id)arg3 anchorsToRemove:(id)arg4;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

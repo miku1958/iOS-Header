@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariShared/WBSParsecSearchResult.h>
+#import <SafariShared/WBSParsecLegacySearchResult.h>
+
+#import <SafariShared/WBSParsecSearchGenericResult-Protocol.h>
 
 @class NSArray, NSNumber, NSString, WBSParsecActionButton, WBSParsecAuxiliaryInfo, WBSParsecImageRepresentation;
 
-@interface WBSParsecSearchGenericResult : WBSParsecSearchResult
+@interface WBSParsecSearchGenericResult : WBSParsecLegacySearchResult <WBSParsecSearchGenericResult>
 {
     WBSParsecActionButton *_actionButton;
     NSNumber *_titleMaximumLines;
@@ -17,14 +19,12 @@
     NSString *_secondaryTitle;
     WBSParsecImageRepresentation *_secondaryTitleGlyph;
     WBSParsecAuxiliaryInfo *_auxiliaryInfo;
-    NSArray *_rowSections;
     WBSParsecImageRepresentation *_thumbnail;
 }
 
 @property (readonly, nonatomic) WBSParsecAuxiliaryInfo *auxiliaryInfo; // @synthesize auxiliaryInfo=_auxiliaryInfo;
 @property (readonly, copy, nonatomic) NSArray *descriptionRichTexts; // @synthesize descriptionRichTexts=_descriptionRichTexts;
 @property (readonly, copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
-@property (readonly, nonatomic) NSArray *rowSections; // @synthesize rowSections=_rowSections;
 @property (readonly, copy, nonatomic) NSString *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
 @property (readonly, nonatomic) WBSParsecImageRepresentation *secondaryTitleGlyph; // @synthesize secondaryTitleGlyph=_secondaryTitleGlyph;
 @property (readonly, nonatomic) WBSParsecImageRepresentation *thumbnail; // @synthesize thumbnail=_thumbnail;

@@ -6,11 +6,12 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HFDiscoveredAccessory, HFSetupAccessoryResult, HMHome, HMSetupAccessoryDescription, NAFuture, NSSet, NSString;
+@class HFDiscoveredAccessory, HFSetupAccessoryResult, HMAccessorySetupCompletedInfo, HMHome, HMSetupAccessoryDescription, NAFuture, NSSet, NSString;
 @protocol HFSetupPairingObserver;
 
 @protocol HFSetupPairingController <NSObject>
 
+@property (readonly, nonatomic) HMAccessorySetupCompletedInfo *completedInfo;
 @property (readonly, nonatomic) HFDiscoveredAccessory *discoveredAccessoryToPair;
 @property (readonly, nonatomic) HMHome *home;
 @property (readonly, nonatomic) unsigned long long phase;

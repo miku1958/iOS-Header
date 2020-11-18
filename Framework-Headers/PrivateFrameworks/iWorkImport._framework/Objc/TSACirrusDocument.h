@@ -44,10 +44,11 @@ __attribute__((visibility("hidden")))
 - (void)documentDidLoad;
 - (id)documentPasswordHintForWrite;
 - (id)initWithURL:(id)arg1 registry:(id)arg2 error:(id *)arg3 passphrase:(id)arg4;
+- (id)logContext;
 - (id)name;
 - (void)presentPersistenceError:(id)arg1;
 - (id)supportDirectoryURL;
-- (id)tskCachedDocumentInfo;
+- (id)tskDocumentInfo;
 
 @end
 

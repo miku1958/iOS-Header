@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultSeriesType:(unsigned long long)arg1;
 - (id)init;
 - (id)userInterfaceName;
+- (long long)userInterfaceTag;
 
 @end
 

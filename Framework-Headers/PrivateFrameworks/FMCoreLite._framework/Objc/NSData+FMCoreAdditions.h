@@ -6,12 +6,8 @@
 
 #import <Foundation/NSData.h>
 
-@class NSString;
-
 @interface NSData (FMCoreAdditions)
-
-@property (readonly, copy, nonatomic) NSString *fm_hexString;
-@property (readonly, copy, nonatomic) NSString *hexString;
-
+- (id)fm_hexString;
+- (id)hexString;
 @end
 

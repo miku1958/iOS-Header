@@ -37,7 +37,7 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) _CPError *underlyingError; // @synthesize underlyingError=_underlyingError;
 
 - (void).cxx_destruct;

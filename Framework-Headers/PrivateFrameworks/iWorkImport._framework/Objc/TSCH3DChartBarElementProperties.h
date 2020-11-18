@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface TSCH3DChartBarElementProperties : TSCH3DChartBasicElementProperties
 {
-    vector_ec52ae8c mMaxValues;
+    vector_7584168e mMaxValues;
     struct vector<TSCH3D::BarElementInfo, std::__1::allocator<TSCH3D::BarElementInfo>> mElementInfos;
     BOOL mStacked;
     BOOL mBevelEdges;

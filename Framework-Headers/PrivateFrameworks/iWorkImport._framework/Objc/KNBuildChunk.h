@@ -61,14 +61,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long referent;
 @property (readonly, nonatomic) KNSlide *slide;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsWithStart;
 @property (readonly, nonatomic) NSString *title;
 
 + (void)i_repairChunkToBuildReferencesFromUUIDsForChunks:(id)arg1 builds:(id)arg2 context:(id)arg3;
 + (void)i_validateBuildReferencesForChunks:(id)arg1;
 + (BOOL)needsObjectUUID;
 - (void).cxx_destruct;
-- (BOOL)canBuildWithChunk:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)didInitFromSOS;
 - (void)i_clearChunkIdentifier;
@@ -84,10 +82,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isComplementOfBuildChunk:(id)arg1;
 - (void)loadFromArchive:(const struct BuildChunkArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (BOOL)p_canBuildWithChunk:(id)arg1 checkOtherChunksBuildingWithThisChunk:(BOOL)arg2;
-- (id)p_chunksBuildingWithThisChunk;
-- (BOOL)p_chunksBuildingWithThisChunkCanBuildWithChunk:(id)arg1;
-- (id)p_previousActiveChunkOnSlide;
 - (void)p_setDelayFromBuildAttributes:(id)arg1 withReferent:(unsigned long long)arg2 automatic:(BOOL)arg3;
 - (void)p_setDurationFromBuildAttributes:(id)arg1;
 - (id)p_stringForReferent:(unsigned long long)arg1;

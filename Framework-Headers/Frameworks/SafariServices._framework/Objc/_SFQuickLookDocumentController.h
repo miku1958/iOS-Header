@@ -33,7 +33,6 @@
 - (id)itemProviderForQuickLookDocumentView:(id)arg1;
 - (void)presentDocumentInteractionControllerFromRect:(struct CGRect)arg1 inView:(id)arg2;
 - (void)quickLookDocumentView:(id)arg1 didSelectActionAtIndex:(long long)arg2;
-- (void)updateTopContentInset:(double)arg1;
 - (void)updateWithQuickLookDocument:(id)arg1;
 
 @end

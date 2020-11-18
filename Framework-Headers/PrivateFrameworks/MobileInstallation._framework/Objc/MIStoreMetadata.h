@@ -20,6 +20,7 @@
     BOOL _gameCenterEverEnabled;
     BOOL _isAutoDownload;
     BOOL _sideLoadedDeviceBasedVPP;
+    BOOL _deviceBasedVPP;
     NSString *_iAdAttribution;
     NSString *_iAdConversionDate;
     NSString *_iAdImpressionDate;
@@ -62,6 +63,7 @@
 @property (strong, nonatomic) NSNumber *betaExternalVersionIdentifier; // @synthesize betaExternalVersionIdentifier=_betaExternalVersionIdentifier;
 @property (copy, nonatomic) NSString *bundleShortVersionString; // @synthesize bundleShortVersionString=_bundleShortVersionString;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (nonatomic) BOOL deviceBasedVPP; // @synthesize deviceBasedVPP=_deviceBasedVPP;
 @property (strong, nonatomic) NSNumber *downloaderID; // @synthesize downloaderID=_downloaderID;
 @property (strong, nonatomic) NSNumber *familyID; // @synthesize familyID=_familyID;
 @property (nonatomic, getter=isGameCenterEnabled) BOOL gameCenterEnabled; // @synthesize gameCenterEnabled=_gameCenterEnabled;

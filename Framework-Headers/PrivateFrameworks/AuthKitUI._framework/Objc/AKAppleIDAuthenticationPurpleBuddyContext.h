@@ -24,7 +24,7 @@
 - (id)init;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)presentServerProvidedUIWithURLRequest:(id)arg1 delegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentServerProvidedUIWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;

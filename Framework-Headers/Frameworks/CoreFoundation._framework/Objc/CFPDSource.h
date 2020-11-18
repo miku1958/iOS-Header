@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)cacheActualAndTemporaryPathsWithEUID:(unsigned int)arg1 egid:(unsigned int)arg2;
 - (void)cacheActualPath;
 - (void)cacheActualPathCreatingIfNecessary:(BOOL)arg1 euid:(unsigned int)arg2 egid:(unsigned int)arg3;
+- (void)cleanUpAfterAcceptingMessage:(id)arg1;
 - (void)clearCache;
 - (struct __CFString *)cloudConfigurationPath;
 - (struct __CFString *)container;

@@ -82,6 +82,7 @@
 - (id)dumpState;
 - (id)initWithHomeManager:(id)arg1 residentEnabled:(BOOL)arg2;
 - (id)logIdentifier;
+- (id)messageDestination;
 - (void)timerDidFire:(id)arg1;
 
 @end

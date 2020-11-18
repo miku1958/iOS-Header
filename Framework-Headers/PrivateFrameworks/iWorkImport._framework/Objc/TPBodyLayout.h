@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *anchoredDrawablesForRelayout; // @synthesize anchoredDrawablesForRelayout=_anchoredDrawablesForRelayout;
 @property (readonly, nonatomic) unsigned int autosizeFlags;
 @property (readonly, nonatomic) TSDCanvas *canvas;
-@property (readonly, strong, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
+@property (readonly, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
 @property (readonly, nonatomic) struct CGSize currentSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isInstructional;
 @property (readonly, nonatomic) BOOL isLinked;
 @property (readonly, nonatomic) BOOL layoutIsValid;
+@property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, nonatomic) struct CGRect maskRect;
 @property (readonly, nonatomic) double maxAnchorY;
 @property (readonly, nonatomic) struct CGSize maxSize;
@@ -43,13 +44,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int naturalAlignment;
 @property (readonly, nonatomic) int naturalDirection;
 @property (readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
-@property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
+@property (readonly, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
 @property (readonly, nonatomic) unsigned long long pageCount;
 @property (readonly, nonatomic) unsigned long long pageNumber;
 @property (readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property (readonly, nonatomic) struct CGPoint position;
-@property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
+@property (readonly, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
 @property (readonly, nonatomic) BOOL repShouldPreventCaret;
 @property (readonly, nonatomic) BOOL shouldHyphenate;
@@ -89,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)processWidowAndInflation;
 - (struct CGRect)rectForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect)rectForSelection:(id)arg1;
+- (struct CGRect)rectInRootForAnchoringPencilAnnotationsForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootOfAutoZoomContextOfSelectionPath:(id)arg1;
@@ -98,9 +100,8 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsDisplayInTargetRect:(struct CGRect)arg1;
 - (void)setNeedsInflation;
 - (BOOL)shouldProvideSizingGuides;
-- (BOOL)siblingTargetIsManipulatingDrawable:(id)arg1;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
-- (void)updateStartCharIndexWithDirtyRanges:(const struct TSWPDirtyRangeVector *)arg1;
+- (void)updateStartCharIndexWithDirtyRanges:(id)arg1;
 - (void)validate;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
 - (id)validatedLayoutForInlineDrawable:(id)arg1;

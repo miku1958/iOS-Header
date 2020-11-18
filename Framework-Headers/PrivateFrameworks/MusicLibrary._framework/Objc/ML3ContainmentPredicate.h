@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSSet *values; // @synthesize values=_values;
 
 + (id)predicateWithProperty:(id)arg1 values:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_orderedValues;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;

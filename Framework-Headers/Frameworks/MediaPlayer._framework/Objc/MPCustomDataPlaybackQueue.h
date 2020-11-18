@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) NSData *data;
 @property (readonly, nonatomic) NSString *identifier;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
 - (id)initWithIdentifier:(id)arg1 data:(id)arg2;
 

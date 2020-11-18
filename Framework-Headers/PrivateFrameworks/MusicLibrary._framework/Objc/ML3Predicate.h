@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/NSCoding-Protocol.h>
 #import <MusicLibrary/NSCopying-Protocol.h>
+#import <MusicLibrary/NSSecureCoding-Protocol.h>
 
-@interface ML3Predicate : NSObject <NSCoding, NSCopying>
+@interface ML3Predicate : NSObject <NSSecureCoding, NSCopying>
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)SQLForEntityClass:(Class)arg1;
 - (id)SQLJoinClausesForClass:(Class)arg1;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;

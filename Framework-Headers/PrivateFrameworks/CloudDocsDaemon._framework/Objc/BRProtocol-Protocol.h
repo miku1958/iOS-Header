@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/CKXPCShareDaemon-Protocol.h>
 
-@class BRFileObjectID, CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSFileHandle, NSObject, NSSet, NSString, NSURL;
+@class BRFileObjectID, CKRecordID, CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSFileHandle, NSObject, NSSet, NSString, NSURL;
 @protocol BRItemNotificationReceiving, BRNonLocalVersionReceiving, BROperationClient;
 
 @protocol BRProtocol <CKXPCShareDaemon>
@@ -127,6 +127,7 @@
 - (void)startDownloadItemsAtURLs:(NSArray *)arg1 options:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCleanShareSubitemsAtURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyAvailableQuotaWithReply:(void (^)(NSNumber *, NSError *))arg2;
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyDocumentURLForRecordID:(CKRecordID *)arg2 syncIfNeeded:(BOOL)arg3 reply:(void (^)(FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyEtagAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyParticipantTokenAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyShareInfoAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSString *, NSError *))arg3;

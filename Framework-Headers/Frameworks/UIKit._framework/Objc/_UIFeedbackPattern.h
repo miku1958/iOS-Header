@@ -33,6 +33,7 @@
 
 + (Class)_parametersClass;
 + (id)feedbackPattern;
++ (BOOL)supportsSecureCoding;
 + (id)type;
 - (void).cxx_destruct;
 - (id)_allEventTypes;

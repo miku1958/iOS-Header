@@ -6,11 +6,26 @@
 
 #import <Catalyst/CATTaskRequest.h>
 
+@class NSArray;
+
 @interface DMFFetchSecurityInformationRequest : CATTaskRequest
 {
+    NSArray *_infoKeys;
 }
 
+@property (copy, nonatomic) NSArray *infoKeys; // @synthesize infoKeys=_infoKeys;
+
++ (id)allPlatformSecurityInfoKeys;
++ (id)currentPlatformSecurityInfoKeys;
++ (id)iOSSecurityInfoKeys;
++ (id)macOSSecurityInfoKeys;
++ (BOOL)supportsSecureCoding;
++ (id)tvOSSecurityInfoKeys;
++ (id)watchOSSecurityInfoKeys;
 + (Class)whitelistedClassForResultObject;
+- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

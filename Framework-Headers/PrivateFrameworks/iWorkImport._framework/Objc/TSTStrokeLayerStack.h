@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)strokeLayerStackWithStackKind:(long long)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)count;
+- (BOOL)hasSpillStrokeInRange:(struct TSTSimpleRange)arg1;
 - (id)initWithStackKind:(long long)arg1;
 - (void)insertClearedStrokeAtRange:(struct TSTSimpleRange)arg1;
 - (void)insertDynamicStroke:(id)arg1 strokeOrder:(int)arg2 atRange:(struct TSTSimpleRange)arg3;

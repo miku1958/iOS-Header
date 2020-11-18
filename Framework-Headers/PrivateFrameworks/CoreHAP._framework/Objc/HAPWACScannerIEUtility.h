@@ -16,23 +16,27 @@
     const char *_end;
     const char *_ptr;
     unsigned long long _len;
-    BOOL _supportsLegacyHomeKit;
     BOOL _supportsHomeKit;
-    BOOL _supportsMFi;
+    BOOL _supportsPairSetupWAC;
+    BOOL _supportsMFiAuthICV2;
     BOOL _supportsSTAOnly;
     BOOL _supportsAudioOnly;
     BOOL _supports2pt4GHzNetworks;
     BOOL _supports5GHzNetworks;
+    BOOL _supportsTokenAuth;
+    BOOL _pairedWithHomeKit;
 }
 
+@property (readonly, nonatomic) BOOL pairedWithHomeKit; // @synthesize pairedWithHomeKit=_pairedWithHomeKit;
 @property (readonly, copy) NSDictionary *setupDictionary;
 @property (readonly, nonatomic) BOOL supports2pt4GHzNetworks; // @synthesize supports2pt4GHzNetworks=_supports2pt4GHzNetworks;
 @property (readonly, nonatomic) BOOL supports5GHzNetworks; // @synthesize supports5GHzNetworks=_supports5GHzNetworks;
 @property (readonly, nonatomic) BOOL supportsAudioOnly; // @synthesize supportsAudioOnly=_supportsAudioOnly;
 @property (readonly, nonatomic) BOOL supportsHomeKit; // @synthesize supportsHomeKit=_supportsHomeKit;
-@property (readonly, nonatomic) BOOL supportsLegacyHomeKit; // @synthesize supportsLegacyHomeKit=_supportsLegacyHomeKit;
-@property (readonly, nonatomic) BOOL supportsMFi; // @synthesize supportsMFi=_supportsMFi;
+@property (readonly, nonatomic) BOOL supportsMFiAuthICV2; // @synthesize supportsMFiAuthICV2=_supportsMFiAuthICV2;
+@property (readonly, nonatomic) BOOL supportsPairSetupWAC; // @synthesize supportsPairSetupWAC=_supportsPairSetupWAC;
 @property (readonly, nonatomic) BOOL supportsSTAOnly; // @synthesize supportsSTAOnly=_supportsSTAOnly;
+@property (readonly, nonatomic) BOOL supportsTokenAuth; // @synthesize supportsTokenAuth=_supportsTokenAuth;
 
 - (void).cxx_destruct;
 - (void)dealloc;

@@ -31,12 +31,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL supportsSeparateLabelsRenderPass;
 @property (readonly, nonatomic) double viewScale;
 
-- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2;
+- (void).cxx_destruct;
+- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2 useWrapWidth:(BOOL)arg3;
 - (BOOL)canEditTextForSelectionPath:(id)arg1;
 - (BOOL)canRenderSelectionPath:(id)arg1;
 - (struct CGRect)chartLayoutSpaceRenderingRect;
 - (int)chunkPlane;
-- (void)dealloc;
 - (void)drawErrorBarsInContext:(struct CGContext *)arg1 chartVertical:(BOOL)arg2 elementRenderClass:(Class)arg3;
 - (void)drawTrendLinesInContext:(struct CGContext *)arg1 chartVertical:(BOOL)arg2 elementRenderClass:(Class)arg3;
 - (struct CGRect)frameForEditingTextForSelectionPath:(id)arg1;

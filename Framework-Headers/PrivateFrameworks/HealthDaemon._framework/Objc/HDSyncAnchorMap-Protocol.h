@@ -6,10 +6,13 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
+@class HDSyncEntityIdentifier;
+
 @protocol HDSyncAnchorMap <NSObject>
 - (unsigned long long)anchorCount;
 - (long long)anchorForSyncEntityClass:(Class)arg1;
-- (void)enumerateAnchorsAndSyncEntitiesWithBlock:(void (^)(Class, long long, BOOL *))arg1;
+- (long long)anchorForSyncEntityIdentifier:(HDSyncEntityIdentifier *)arg1;
+- (void)enumerateAnchorsAndEntityIdentifiersWithBlock:(void (^)(HDSyncEntityIdentifier *, long long, BOOL *))arg1;
 - (void)setAnchor:(long long)arg1 forSyncEntity:(Class)arg2;
 @end
 

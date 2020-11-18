@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <CellularPlanManager/CTCellularPlanClientDelegate-Protocol.h>
 
@@ -61,6 +61,7 @@
 - (void)getESimServerURL:(CDUnknownBlockType)arg1;
 - (void)getIMEIPrefix:(CDUnknownBlockType)arg1;
 - (void)getRemoteInfo:(CDUnknownBlockType)arg1;
+- (void)getRoamingSignupOverrideWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSelectedEnv:(CDUnknownBlockType)arg1;
 - (void)getSelectedProxy:(CDUnknownBlockType)arg1;
 - (id)init;
@@ -76,6 +77,7 @@
 - (void)manageAccountForRemotePlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mccMncOverride:(CDUnknownBlockType)arg1;
 - (void)openInternalUrlId:(long long)arg1;
+- (void)pendingReleaseRemotePlan;
 - (void)ping;
 - (void)planInfoDidUpdate;
 - (void)planItemsWithCompletion:(CDUnknownBlockType)arg1;
@@ -100,6 +102,7 @@
 - (void)setIMEIPrefix:(id)arg1;
 - (void)setLatitude:(id)arg1 andLongitude:(id)arg2;
 - (void)setMcc:(long long)arg1 andMnc:(long long)arg2;
+- (void)setRoamingSignupOverride:(BOOL)arg1;
 - (void)setSelectedEnv:(long long)arg1;
 - (void)setSelectedProxy:(long long)arg1;
 - (void)setUserInPurchaseFlow:(BOOL)arg1;

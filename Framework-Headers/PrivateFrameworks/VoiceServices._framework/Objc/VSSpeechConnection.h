@@ -32,14 +32,17 @@
 - (id)_remoteObjectWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
 - (id)availableVoicesForLanguageCode:(id)arg1;
+- (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
 - (oneway void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
 - (id)concurrentSynthesisRequests;
 - (void)continueCurrentSpeechRequest;
 - (void)dealloc;
+- (void)endAudioPowerUpdate;
 - (void)getAutoDownloadedVoiceAssets:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;
 - (void)getLogToFile:(CDUnknownBlockType)arg1;
+- (void)getTTSServerVoicesWithFilter:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getVoiceInfoForLanguageCode:(id)arg1 footprint:(long long)arg2 gender:(long long)arg3 type:(long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)getVoiceResourceForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;

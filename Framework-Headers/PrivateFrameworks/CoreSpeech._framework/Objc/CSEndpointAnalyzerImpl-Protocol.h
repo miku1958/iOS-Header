@@ -14,6 +14,7 @@
 @property (nonatomic) unsigned long long activeChannel;
 @property (readonly, nonatomic) BOOL canProcessCurrentRequest;
 @property (weak, nonatomic) id<CSEndpointAnalyzerDelegate> delegate;
+@property (readonly, nonatomic) double elapsedTimeWithNoSpeech;
 @property (readonly, nonatomic) NSString *endpointerModelVersion;
 
 - (void)processAudioSamplesAsynchronously:(CSAudioChunk *)arg1;

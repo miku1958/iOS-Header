@@ -11,6 +11,7 @@
 
 @protocol DOCThumbnail <NSObject>
 
+@property (readonly) BOOL hasFinishedTryingToFetchCorrectThumbnail;
 @property (readonly, nonatomic) BOOL isRepresentativeIcon;
 @property (readonly, nonatomic, getter=isLoading) BOOL loading;
 @property (readonly, nonatomic) NSOperation *operation;
@@ -18,5 +19,6 @@
 
 - (void)addListener:(id<DOCThumbnailListener>)arg1;
 - (void)removeListener:(id<DOCThumbnailListener>)arg1;
+- (void)scheduleUpdateIfNeeded;
 @end
 

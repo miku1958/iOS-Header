@@ -59,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (void)_isFolderSharingSupported;
 - (BOOL)_isOwner;
 - (BOOL)_isOwnerOrShareAlreadyAccepted;
-- (void)_isURLWellFormed;
 - (void)_isUserSignedInToiCloudDrive;
 - (BOOL)_isiWorkShare;
 - (void)_jumpToSelector:(SEL)arg1;

@@ -45,7 +45,6 @@
 - (id)_addCommentURLWithBaseURL:(id)arg1;
 - (id)_albumStateURL;
 - (id)_albumSummaryURLWithBaseURL:(id)arg1;
-- (id)_appleIDSession;
 - (id)_couldNotReauthorizeError;
 - (id)_createAlbumURL;
 - (id)_deleteAssetsURLWithBaseURL:(id)arg1;

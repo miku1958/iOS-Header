@@ -33,6 +33,7 @@
 - (void).cxx_destruct;
 - (id)_classificationForFieldWithFingerprint:(id)arg1 onDomain:(id)arg2;
 - (void)_closeDatabases;
+- (void)_configureDatabase:(id)arg1 currentSchemaVersion:(int)arg2;
 - (int)_createFreshLocalDatabaseSchema;
 - (int)_createFreshParsecDatabaseSchema;
 - (BOOL)_isDatabaseOpen:(id)arg1;
@@ -41,7 +42,6 @@
 - (int)_migrateToSchemaVersion_2;
 - (int)_migrateToSchemaVersion_3;
 - (id)_normalizeDomain:(id)arg1;
-- (void)_openDatabaseAtURL:(id)arg1;
 - (void)_openDatabasesIfNeeded;
 - (void)_openLocalDatabase;
 - (void)_openParsecDatabase;

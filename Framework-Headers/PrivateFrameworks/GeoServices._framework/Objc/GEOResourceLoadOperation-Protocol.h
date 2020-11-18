@@ -5,11 +5,12 @@
 //
 
 #import <GeoServices/NSObject-Protocol.h>
+#import <GeoServices/NSProgressReporting-Protocol.h>
 
 @class GEOApplicationAuditToken, GEOResourceInfo, NSData, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@protocol GEOResourceLoadOperation <NSObject>
+@protocol GEOResourceLoadOperation <NSObject, NSProgressReporting>
 
 @property (readonly, nonatomic) NSData *data;
 @property (nonatomic) BOOL requiresWiFi;

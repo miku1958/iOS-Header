@@ -18,6 +18,7 @@
     BOOL _hasTelephonyCapability;
     BOOL _isRunningStoreDemoMode;
     BOOL _runningInStoreDemoModeF201;
+    BOOL _deviceSupportsHeartRateMotionContexts;
     BOOL _supportsActivitySharing;
     BOOL _supportsAppSubscriptions;
     BOOL _supportsAWDMetricSubmission;
@@ -44,8 +45,10 @@
 @property (readonly, nonatomic) NSDictionary *currentDiskUsage;
 @property (readonly, copy, nonatomic) NSString *currentInternalDeviceModel;
 @property (readonly, copy, nonatomic) NSString *currentOSBuild;
+@property (readonly, copy, nonatomic) NSString *currentOSName;
 @property (readonly, copy, nonatomic) NSString *currentOSVersion;
 @property (readonly, nonatomic) CDStruct_f6aba300 currentOSVersionStruct;
+@property (nonatomic) BOOL deviceSupportsHeartRateMotionContexts; // @synthesize deviceSupportsHeartRateMotionContexts=_deviceSupportsHeartRateMotionContexts;
 @property (nonatomic) BOOL futureMigrationsEnabled; // @synthesize futureMigrationsEnabled=_futureMigrationsEnabled;
 @property (nonatomic) BOOL hasTelephonyCapability; // @synthesize hasTelephonyCapability=_hasTelephonyCapability;
 @property (copy, nonatomic) NSString *hostReadAuthorizationUsageDescription; // @synthesize hostReadAuthorizationUsageDescription=_hostReadAuthorizationUsageDescription;
@@ -71,6 +74,7 @@
 @property (nonatomic) BOOL supportsSwimmingWorkoutSessions;
 @property (readonly, nonatomic) unsigned long long totalDiskCapacity;
 
++ (BOOL)_deviceSupportsHeartRateMotionContexts;
 + (BOOL)_futureMigrationsEnabled;
 + (BOOL)_hasCompletedBuddy;
 + (BOOL)_hasTelephonyCapability;
@@ -84,6 +88,7 @@
 + (id)_simulatorDefaultName;
 + (id)_simulatorSettings;
 + (BOOL)activePairedWatchHasSmartFitnessCoaching;
++ (BOOL)activePairedWatchSupportsHeartRateMotionContexts;
 + (id)activePairedWatchWithoutSOSMedicalIDContactsSupport;
 + (BOOL)allPairedWatchesMeetMinimumVersion:(int)arg1;
 + (BOOL)anyPairedWatchHasFlightsClimbedCapability;
@@ -111,6 +116,7 @@
 + (void)setSharedBehavior:(id)arg1;
 + (id)sharedBehavior;
 + (BOOL)shouldShowBuddy;
++ (BOOL)showSensitiveLogItems;
 + (int)syncProtocolVersionForNRDevice:(id)arg1;
 + (int)syncProtocolVersionForSystemBuildVersion:(id)arg1;
 - (void).cxx_destruct;

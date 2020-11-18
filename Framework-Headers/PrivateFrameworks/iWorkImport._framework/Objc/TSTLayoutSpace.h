@@ -80,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (int)validate:(id)arg1;
 - (void)validateCachedFrames;
 - (int)validateCoordinateCache:(id)arg1;
+- (void)validateCoordinateDirection;
 - (int)validateTableOffset:(id)arg1;
 
 @end

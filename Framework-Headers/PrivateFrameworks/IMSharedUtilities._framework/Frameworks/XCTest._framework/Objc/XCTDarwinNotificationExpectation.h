@@ -17,6 +17,7 @@
 @property (strong) _XCTDarwinNotificationExpectationImplementation *internal; // @synthesize internal=_internal;
 @property (readonly, copy) NSString *notificationName;
 
+- (void).cxx_destruct;
 - (void)cleanup;
 - (void)dealloc;
 - (id)initWithNotificationName:(id)arg1;

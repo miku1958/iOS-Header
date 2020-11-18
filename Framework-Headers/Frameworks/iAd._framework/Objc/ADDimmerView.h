@@ -22,6 +22,7 @@
 @property (strong, nonatomic) ADTapGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 
 - (void)_tapRecognized:(id)arg1;
+- (void)addADTapGestureRecognizer;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)removeADTapGestureRecognizer;

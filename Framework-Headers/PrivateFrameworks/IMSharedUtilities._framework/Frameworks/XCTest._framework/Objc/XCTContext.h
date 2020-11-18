@@ -27,10 +27,10 @@
 + (void)runActivityNamed:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)runInContextForTestCase:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (BOOL)shouldReportActivityWithType:(id)arg1 inTestMode:(long long)arg2;
+- (void).cxx_destruct;
 - (void)_runActivityNamed:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_runActivityNamed:(id)arg1 type:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (long long)activityRecordStackDepth;
-- (void)dealloc;
 - (void)didFinishActivity:(id)arg1;
 - (id)initInternally;
 - (id)topActivity;

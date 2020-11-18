@@ -14,6 +14,7 @@
 @property (nonatomic) unsigned long long kernelSizeInFeatureChannels; // @synthesize kernelSizeInFeatureChannels=_kernelSizeInFeatureChannels;
 
 + (id)nodeWithSource:(id)arg1 kernelSize:(unsigned long long)arg2;
+- (Class)gradientClass;
 - (id)initWithSource:(id)arg1;
 - (id)initWithSource:(id)arg1 kernelSize:(unsigned long long)arg2;
 - (struct FilterGraphNode *)newFilterNode;

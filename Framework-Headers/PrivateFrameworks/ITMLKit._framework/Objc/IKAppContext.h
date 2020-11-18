@@ -20,6 +20,12 @@
     struct __CFRunLoopSource *_jsThreadRunLoopSource;
     NSObject<OS_dispatch_source> *_lowMemoryWarningSource;
     BOOL _respondsToTraitCollection;
+    struct {
+        BOOL respondsToHighlightViewForOneElement;
+        BOOL respondsToHighlightViewsForManyElements;
+        BOOL respondsToCancelHighlightForAppContext;
+        BOOL respondsToDidInspectElementModeChanged;
+    } _delegateFlags;
     BOOL _isValid;
     BOOL _remoteInspectionEnabled;
     BOOL _mescalPrimeEnabledForXHRRequests;
@@ -119,16 +125,21 @@
 - (BOOL)highlightViewsForElementsWithIDs:(id)arg1 contentColor:(id)arg2 paddingColor:(id)arg3 borderColor:(id)arg4 marginColor:(id)arg5;
 - (id)initWithApplication:(id)arg1 mode:(unsigned long long)arg2 cache:(BOOL)arg3 delegate:(id)arg4;
 - (id)initWithApplication:(id)arg1 mode:(unsigned long long)arg2 delegate:(id)arg3;
+- (void)inspectElement:(id)arg1;
+- (void)inspectElementModeChanged:(BOOL)arg1;
+- (BOOL)isInspectElementModeEnabled;
 - (void)launchAppWithOptions:(id)arg1;
 - (void)openURLWithOptions:(id)arg1;
 - (void)operation:(id)arg1 failedWithError:(id)arg2;
 - (void)operation:(id)arg1 finishedWithOutput:(id)arg2;
+- (id)registerLoaderWithIdentifier:(id)arg1;
 - (void)reload;
 - (void)resumeWithOptions:(id)arg1;
 - (void)setException:(id)arg1 withErrorMessage:(id)arg2;
 - (void)start;
 - (void)stop;
 - (void)suspendWithOptions:(id)arg1;
+- (void)unregisterLoaderWithIdentifier:(id)arg1;
 - (BOOL)validateDOMDocument:(id)arg1 error:(id *)arg2;
 
 @end

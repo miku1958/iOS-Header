@@ -11,6 +11,7 @@
 @interface HMDCloudTransaction : HMFObject
 {
     BOOL _needConflictResolution;
+    BOOL _iCloudSwitchStateEnabled;
     BOOL _temporaryCache;
     BOOL _createZone;
     BOOL _zoneWasCreated;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) HMDCloudChange *homeDataChange; // @synthesize homeDataChange=_homeDataChange;
 @property (readonly, nonatomic, getter=isHomeManagerTransaction) BOOL homeManagerTransaction;
 @property (readonly, nonatomic, getter=isHomeTransaction) BOOL homeTransaction;
+@property (nonatomic) BOOL iCloudSwitchStateEnabled; // @synthesize iCloudSwitchStateEnabled=_iCloudSwitchStateEnabled;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic, getter=isLegacyTransaction) BOOL legacyTransaction;
 @property (readonly, nonatomic, getter=isMetadataTransaction) BOOL metadataTransaction;

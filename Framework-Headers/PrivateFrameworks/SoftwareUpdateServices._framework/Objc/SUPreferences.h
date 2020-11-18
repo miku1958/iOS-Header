@@ -6,10 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSNumber;
+@class NSNumber, NSString;
 
 @interface SUPreferences : NSObject
 {
+    BOOL _disableManagedRequest;
     BOOL _disableUserWiFiOnlyPeriod;
     BOOL _disableBuildNumberComparison;
     BOOL _allowSameBuildUpdates;
@@ -22,7 +23,10 @@
     BOOL _disableFullReplacementFallback;
     NSNumber *_updateDelayInterval;
     BOOL _shouldDelayUpdates;
+    BOOL _shouldDelayInMinutes;
     NSNumber *_unmetConstraints;
+    NSNumber *_mandatorySUFlags;
+    NSString *_requestedPMV;
 }
 
 @property (readonly, nonatomic) BOOL allowSameBuildUpdates; // @synthesize allowSameBuildUpdates=_allowSameBuildUpdates;
@@ -31,9 +35,13 @@
 @property (readonly, nonatomic) BOOL disableAvailabilityAlerts; // @synthesize disableAvailabilityAlerts=_disableAvailabilityAlerts;
 @property (readonly, nonatomic) BOOL disableBuildNumberComparison; // @synthesize disableBuildNumberComparison=_disableBuildNumberComparison;
 @property (readonly, nonatomic) BOOL disableFullReplacementFallback; // @synthesize disableFullReplacementFallback=_disableFullReplacementFallback;
+@property (readonly, nonatomic) BOOL disableManagedRequest; // @synthesize disableManagedRequest=_disableManagedRequest;
 @property (readonly, nonatomic) BOOL disableUserWiFiOnlyPeriod; // @synthesize disableUserWiFiOnlyPeriod=_disableUserWiFiOnlyPeriod;
 @property (readonly, nonatomic) BOOL forceFullReplacement; // @synthesize forceFullReplacement=_forceFullReplacement;
+@property (readonly, nonatomic) NSNumber *mandatorySUFlags; // @synthesize mandatorySUFlags=_mandatorySUFlags;
+@property (readonly, nonatomic) NSString *requestedPMV; // @synthesize requestedPMV=_requestedPMV;
 @property (readonly, nonatomic) BOOL scanWeeklyInternally; // @synthesize scanWeeklyInternally=_scanWeeklyInternally;
+@property (readonly, nonatomic) BOOL shouldDelayInMinutes; // @synthesize shouldDelayInMinutes=_shouldDelayInMinutes;
 @property (readonly, nonatomic) BOOL shouldDelayUpdates; // @synthesize shouldDelayUpdates=_shouldDelayUpdates;
 @property (readonly, nonatomic) BOOL simulateAutoDownload; // @synthesize simulateAutoDownload=_simulateAutoDownload;
 @property (readonly, nonatomic) NSNumber *unmetConstraints; // @synthesize unmetConstraints=_unmetConstraints;
@@ -42,8 +50,10 @@
 + (id)sharedInstance;
 - (id)_copyNumberPreferenceForKey:(id)arg1;
 - (void *)_copyPreferenceForKey:(struct __CFString *)arg1 ofType:(unsigned long long)arg2;
+- (id)_copyStringPreferenceForKey:(id)arg1;
 - (BOOL)_getBooleanPreferenceForKey:(id)arg1 withDefaultValue:(BOOL)arg2;
 - (void)_loadPreferences;
+- (id)_mandatorySUFlagsForPreferences;
 - (void)dealloc;
 - (id)init;
 - (void)reload;

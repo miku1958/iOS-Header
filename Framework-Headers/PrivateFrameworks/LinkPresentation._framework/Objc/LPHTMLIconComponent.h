@@ -11,8 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)additionalRulesForStyle:(id)arg1;
-+ (id)baseRules;
 + (id)ruleDictionaryForStyle:(id)arg1;
 + (id)styleSet;
 - (id)initProgressSpinnerIconWithStyle:(id)arg1 themePath:(id)arg2 generator:(id)arg3;

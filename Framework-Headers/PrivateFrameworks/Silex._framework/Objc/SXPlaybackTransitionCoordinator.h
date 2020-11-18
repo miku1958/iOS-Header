@@ -6,24 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class SXPlaybackTransitionContext;
-@protocol SXPlaybackTransitionCoordinatorDelegate;
+#import <Silex/SXInteractivePlaybackTransitioning-Protocol.h>
+#import <Silex/SXPlaybackTransitionCoordinator-Protocol.h>
 
-@interface SXPlaybackTransitionCoordinator : NSObject
+@class NSMutableArray, NSString;
+@protocol SXPlaybackTransitionContext;
+
+@interface SXPlaybackTransitionCoordinator : NSObject <SXInteractivePlaybackTransitioning, SXPlaybackTransitionCoordinator>
 {
-    SXPlaybackTransitionContext *_context;
-    id<SXPlaybackTransitionCoordinatorDelegate> _delegate;
+    NSMutableArray *_transitionAlongsideBlocks;
+    NSMutableArray *_completionBlocks;
+    id<SXPlaybackTransitionContext> _context;
 }
 
-@property (readonly, nonatomic) SXPlaybackTransitionContext *context; // @synthesize context=_context;
-@property (weak, nonatomic) id<SXPlaybackTransitionCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) NSMutableArray *completionBlocks; // @synthesize completionBlocks=_completionBlocks;
+@property (strong, nonatomic) id<SXPlaybackTransitionContext> context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSMutableArray *transitionAlongsideBlocks; // @synthesize transitionAlongsideBlocks=_transitionAlongsideBlocks;
 
 - (void).cxx_destruct;
-- (void)addObserversToCoordinator:(id)arg1;
-- (id)initWithTransitionContext:(id)arg1;
-- (void)removeObserversFromCoordinator:(id)arg1;
-- (void)transitionAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (double)translationForTransitionDirection:(unsigned long long)arg1;
+- (void)cancelInteractiveTransition;
+- (void)finishInteractiveTransition;
+- (id)init;
+- (void)startInteractiveTransitionWithContext:(id)arg1;
+- (void)transitionAlongside:(CDUnknownBlockType)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)updateInteractiveTransition:(double)arg1;
 
 @end
 

@@ -71,6 +71,7 @@
     NSString *_guid;
     MKMapItem *_mapItem;
     NSData *_mapItemImageData;
+    NSData *_mapItemBannerImageData;
     NSString *_suggestedName;
 }
 
@@ -122,6 +123,7 @@
 @property (readonly, nonatomic) BOOL isVisiblyBlocked;
 @property (readonly, strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+@property (strong, nonatomic) NSData *mapItemBannerImageData; // @synthesize mapItemBannerImageData=_mapItemBannerImageData;
 @property (strong, nonatomic) NSData *mapItemImageData; // @synthesize mapItemImageData=_mapItemImageData;
 @property (readonly, strong, nonatomic) NSString *mobileDeviceName;
 @property (readonly, strong, nonatomic) NSString *name;
@@ -178,6 +180,8 @@
 - (void)_clearStatusMessageURLCache;
 - (void)_createPhoneNumberRefIfNeeded;
 - (void)_fetchBusinessInfo;
+- (void)_fetchMapItemBannerImageDataForMapItem:(id)arg1;
+- (void)_fetchMapItemImageDataForMapItem:(id)arg1;
 - (void)_filterStatusMessage;
 - (id)_formattedPhoneNumber;
 - (id)_handleInfo;
@@ -186,6 +190,9 @@
 - (void)_imPersonPictureChanged:(id)arg1;
 - (BOOL)_isChatSiblingOf:(id)arg1;
 - (BOOL)_isMyIDInList:(id)arg1;
+- (void)_mapItemBannerImageDataFetchedWithResponse:(id)arg1 statusCode:(long long)arg2 resultData:(id)arg3 remoteURLConnectionError:(id)arg4;
+- (void)_mapItemFetchedWithMapItems:(id)arg1 error:(id)arg2;
+- (void)_mapItemImageDataFetchedWithResponse:(id)arg1 statusCode:(long long)arg2 resultData:(id)arg3 remoteURLConnectionError:(id)arg4;
 - (id)_nameForComparisonPreferFirst:(BOOL)arg1;
 - (void)_postNotification:(id)arg1;
 - (void)_postNotificationName:(id)arg1 userInfo:(id)arg2;

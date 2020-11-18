@@ -7,6 +7,7 @@
 #import <UIKit/UINavigationController.h>
 
 @interface UINavigationController (MFMailComposeRemoteService)
+- (id)mf_classesForUICustomization;
 - (id)mf_keyPathsMapForUICustomization;
 @end
 

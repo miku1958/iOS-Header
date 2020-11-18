@@ -27,6 +27,7 @@
     float _maximumRating;
     float _minimumRating;
     int _numAvailableSkips;
+    float _preferredPlaybackRate;
     int _presentationStyle;
     int _repeatMode;
     int _shuffleMode;
@@ -43,6 +44,7 @@
         unsigned int maximumRating:1;
         unsigned int minimumRating:1;
         unsigned int numAvailableSkips:1;
+        unsigned int preferredPlaybackRate:1;
         unsigned int presentationStyle:1;
         unsigned int repeatMode:1;
         unsigned int shuffleMode:1;
@@ -68,6 +70,7 @@
 @property (nonatomic) BOOL hasMaximumRating;
 @property (nonatomic) BOOL hasMinimumRating;
 @property (nonatomic) BOOL hasNumAvailableSkips;
+@property (nonatomic) BOOL hasPreferredPlaybackRate;
 @property (nonatomic) BOOL hasPresentationStyle;
 @property (nonatomic) BOOL hasRepeatMode;
 @property (nonatomic) BOOL hasShuffleMode;
@@ -82,6 +85,7 @@
 @property (nonatomic) int numAvailableSkips; // @synthesize numAvailableSkips=_numAvailableSkips;
 @property (readonly, nonatomic) double *preferredIntervals;
 @property (readonly, nonatomic) unsigned long long preferredIntervalsCount;
+@property (nonatomic) float preferredPlaybackRate; // @synthesize preferredPlaybackRate=_preferredPlaybackRate;
 @property (nonatomic) int presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property (nonatomic) int repeatMode; // @synthesize repeatMode=_repeatMode;
 @property (nonatomic) int shuffleMode; // @synthesize shuffleMode=_shuffleMode;
@@ -98,6 +102,7 @@
 @property (nonatomic) int upNextItemCount; // @synthesize upNextItemCount=_upNextItemCount;
 
 + (Class)supportedCustomQueueIdentifierType;
+- (void).cxx_destruct;
 - (int)StringAsCommand:(id)arg1;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;

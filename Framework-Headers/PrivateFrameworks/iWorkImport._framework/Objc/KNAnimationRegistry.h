@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface KNAnimationRegistry : NSObject
 {
-    NSDictionary *mClassesForTypeAndName;
-    NSDictionary *mClassesForTypeAndCategory;
-    NSDictionary *mClassesForTypeAndFilter;
-    NSDictionary *mClassesForTypeAndObsoleteName;
-    NSDictionary *mAlternateEffectIdentifiersForEffectIdentifierAndFilter;
-    NSArray *mAnimationInfos;
+    NSDictionary *_classesForTypeAndName;
+    NSDictionary *_classesForTypeAndCategory;
+    NSDictionary *_classesForTypeAndFilter;
+    NSDictionary *_classesForTypeAndObsoleteName;
+    NSDictionary *_alternateEffectIdentifiersForEffectIdentifierAndFilter;
+    NSArray *_animationInfos;
 }
 
 + (id)animationsInBundle;
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)instance;
 + (id)localizedCategoryNameForCategory:(long long)arg1;
 + (id)localizedNameForUnsupportedAnimation:(id)arg1;
+- (void).cxx_destruct;
 - (id)allAnimationInfos;
 - (id)animationInfoForEffectIdentifier:(id)arg1 animationType:(long long)arg2;
 - (id)animationInfoForEffectIdentifier:(id)arg1 animationType:(long long)arg2 includeObsoleteNames:(BOOL)arg3;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)animationInfosForAnimationType:(long long)arg1 category:(id)arg2;
 - (id)animationInfosForAnimationType:(long long)arg1 filter:(id)arg2;
 - (BOOL)canMapEffectIdentifier:(id)arg1 animationType:(long long)arg2 toEffectIdentifier:(id)arg3 includeObsoleteNames:(BOOL)arg4 forDrawable:(id)arg5;
-- (void)dealloc;
 - (id)distinctCategoriesForType:(long long)arg1;
 - (id)init;
 - (id)p_buildAlternateFilterMap;

@@ -44,6 +44,7 @@
 @property (nonatomic) BOOL wantsDetailedKeepLocalRequestableResponse; // @synthesize wantsDetailedKeepLocalRequestableResponse=_wantsDetailedKeepLocalRequestableResponse;
 
 + (void)MPC_consumeSiriAssetInfo:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

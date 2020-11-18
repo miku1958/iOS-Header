@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_noteOperationEnding;
 - (void)_noteOperationFinishedBlockEnd;
 - (id)_optionsForZonesWithPendingChangesAfterRequest:(id)arg1;
-- (id)_possiblyWrapError:(id)arg1 withCode:(long long)arg2 format:(id)arg3;
+- (id)_possiblyWrapError:(id)arg1 forRecordWithID:(id)arg2 withCode:(long long)arg3 format:(id)arg4;
 - (void)_sendFetchChangesRequestForZoneIDs:(id)arg1 withOptions:(id)arg2 previousRequestSchedulerInfo:(id)arg3;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

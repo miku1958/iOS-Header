@@ -9,7 +9,7 @@
 #import <NeutrinoKit/NUAVPlayerControllerDelegate-Protocol.h>
 #import <NeutrinoKit/NUAVPlayerViewDelegate-Protocol.h>
 
-@class NSArray, NSString, NUAVPlayerController, NUAVPlayerView, NUCoalescer, NUComposition, NUMediaViewRenderer, NURenderView, NUScrollView;
+@class NSArray, NSString, NUAVPlayerController, NUAVPlayerView, NUComposition, NUMediaViewRenderer, NURenderView, NUScrollView;
 @protocol NUMediaViewDelegate;
 
 @interface NUMediaView : UIView <NUAVPlayerControllerDelegate, NUAVPlayerViewDelegate>
@@ -34,7 +34,6 @@
     } _delegateFlags;
     BOOL _loopsVideo;
     BOOL _inTransition;
-    NUCoalescer *_renderCoalescer;
     BOOL _centerContent;
     BOOL _muted;
     BOOL _videoPlayerVisible;
@@ -88,7 +87,6 @@
 - (void)_transitionToInsets:(struct UIEdgeInsets)arg1;
 - (void)_updateContentInsets;
 - (void)_updateRenderContent;
-- (void)_updateRenderContentCoalesced:(BOOL)arg1;
 - (void)_updateVideoPlayerAlpha;
 - (id)_videoPlayerView;
 - (id)_videoPlayerViewWithoutControls;

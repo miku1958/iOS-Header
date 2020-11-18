@@ -21,6 +21,11 @@
     struct sqlite3_stmt *_updateMirrorKey;
     struct sqlite3_stmt *_markMirrorKey;
     struct sqlite3_stmt *_resetCurrentMirrorKey;
+    struct sqlite3_stmt *_insertEscrowKey;
+    struct sqlite3_stmt *_updateEscrowKey;
+    struct sqlite3_stmt *_deleteEscrowKey;
+    struct sqlite3_stmt *_queryEscrowKey;
+    struct sqlite3_stmt *_queryEscrowKeysAll;
     struct sqlite3_stmt *_insertWatchKey;
     struct sqlite3_stmt *_queryMissingKeys;
     struct sqlite3_stmt *_queryWatches;
@@ -28,25 +33,31 @@
     NSString *_dsid;
 }
 
+@property struct sqlite3_stmt *deleteEscrowKey; // @synthesize deleteEscrowKey=_deleteEscrowKey;
 @property struct sqlite3_stmt *deleteStatment; // @synthesize deleteStatment=_deleteStatment;
 @property (strong) NSString *dsid; // @synthesize dsid=_dsid;
+@property struct sqlite3_stmt *insertEscrowKey; // @synthesize insertEscrowKey=_insertEscrowKey;
 @property struct sqlite3_stmt *insertMirrorKey; // @synthesize insertMirrorKey=_insertMirrorKey;
 @property struct sqlite3_stmt *insertWatch; // @synthesize insertWatch=_insertWatch;
 @property struct sqlite3_stmt *insertWatchKey; // @synthesize insertWatchKey=_insertWatchKey;
 @property struct sqlite3_stmt *markMirrorKey; // @synthesize markMirrorKey=_markMirrorKey;
 @property (strong) NSObject<OS_os_log> *oslog; // @synthesize oslog=_oslog;
+@property struct sqlite3_stmt *queryEscrowKey; // @synthesize queryEscrowKey=_queryEscrowKey;
+@property struct sqlite3_stmt *queryEscrowKeysAll; // @synthesize queryEscrowKeysAll=_queryEscrowKeysAll;
 @property struct sqlite3_stmt *queryMissingKeys; // @synthesize queryMissingKeys=_queryMissingKeys;
 @property struct sqlite3_stmt *queryWatches; // @synthesize queryWatches=_queryWatches;
 @property struct sqlite3_stmt *recordIDStatment; // @synthesize recordIDStatment=_recordIDStatment;
 @property struct sqlite3_stmt *replaceStatment; // @synthesize replaceStatment=_replaceStatment;
 @property struct sqlite3_stmt *resetCurrentMirrorKey; // @synthesize resetCurrentMirrorKey=_resetCurrentMirrorKey;
 @property struct sqlite3 *sqliteHandle; // @synthesize sqliteHandle=_sqliteHandle;
+@property struct sqlite3_stmt *updateEscrowKey; // @synthesize updateEscrowKey=_updateEscrowKey;
 @property struct sqlite3_stmt *updateMirrorKey; // @synthesize updateMirrorKey=_updateMirrorKey;
 @property struct sqlite3_stmt *updateWatch; // @synthesize updateWatch=_updateWatch;
 
 - (void).cxx_destruct;
 - (BOOL)beginExclusiveTransaction;
 - (void)dealloc;
+- (BOOL)deleteEscrowKey:(id)arg1;
 - (BOOL)deleteRecordAll;
 - (BOOL)deleteRecordID:(id)arg1;
 - (BOOL)endTransaction:(BOOL)arg1;
@@ -57,14 +68,18 @@
 - (BOOL)markMirrorKey:(int)arg1 type:(int)arg2;
 - (id)missingKeysFromDevice:(id)arg1 type:(int)arg2;
 - (BOOL)prepare:(const char *)arg1 statement:(struct sqlite3_stmt **)arg2;
+- (id)queryEscrowKey:(id)arg1;
+- (id)queryEscrowKeys;
 - (BOOL)replaceConfigRecord:(id)arg1 data:(id)arg2;
 - (BOOL)replaceRecord:(id)arg1 type:(int)arg2 data:(id)arg3 publicKey:(id)arg4;
 - (BOOL)replaceRecordID:(id)arg1 data:(id)arg2 publicKey:(id)arg3;
+- (BOOL)setEscrowKey:(id)arg1 escrowBlob:(id)arg2;
 - (BOOL)setMirrorKey:(id)arg1 service:(int)arg2 type:(int)arg3 publicIdentity:(id)arg4;
 - (BOOL)setUserVersion:(int)arg1;
 - (BOOL)setupDatabase;
 - (id)syncDevices;
 - (BOOL)syncedKeyToDevice:(id)arg1 type:(int)arg2 device:(id)arg3;
+- (BOOL)updateEscrowKey:(id)arg1 escrowBlob:(id)arg2;
 - (BOOL)updateMirrorKey:(id)arg1 service:(int)arg2 type:(int)arg3 newType:(int)arg4 current:(BOOL)arg5;
 - (BOOL)updateSyncDevice:(id)arg1 seen:(id)arg2 version:(id)arg3;
 - (int)userVersion;

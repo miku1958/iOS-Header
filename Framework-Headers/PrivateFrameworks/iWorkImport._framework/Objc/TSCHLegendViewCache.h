@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long numberOfColumns; // @synthesize numberOfColumns=mNumberOfColumns;
 @property (readonly) unsigned long long numberOfRows; // @synthesize numberOfRows=mNumberOfRows;
 
+- (void).cxx_destruct;
 - (void)clearParent;
 - (void)dealloc;
 - (id)initWithLegendModelCache:(id)arg1 legendWidth:(double)arg2;

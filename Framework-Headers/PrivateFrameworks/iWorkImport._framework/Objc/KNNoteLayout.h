@@ -59,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (double)maxAutoGrowHeightForTextLayout:(id)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (id)p_adjustedPaddingForBodyWidth:(double)arg1;
-- (double)p_enclosingScrollViewScrollerWidthForLayoutController:(id)arg1;
 - (BOOL)p_isForPrint;
 - (id)paragraphStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;

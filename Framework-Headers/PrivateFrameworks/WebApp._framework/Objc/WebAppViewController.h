@@ -6,15 +6,43 @@
 
 #import <UIKit/UIViewController.h>
 
-@interface WebAppViewController : UIViewController
+#import <WebApp/_SFWebAppViewControllerDelegate-Protocol.h>
+
+@class LoadingViewController, NSString, NSTimer, UIWebClip, UIWindow, _SFWebAppViewController, _UIAsyncInvocation;
+
+@interface WebAppViewController : UIViewController <_SFWebAppViewControllerDelegate>
 {
-    BOOL _setupRootViewColor;
-    unsigned long long _statusBarStyle;
+    _SFWebAppViewController *_contentViewController;
+    _UIAsyncInvocation *_cancelViewServiceRequest;
+    BOOL _hasShownLoadingViewController;
+    LoadingViewController *_loadingViewController;
+    long long _orientation;
+    UIWindow *_window;
+    NSTimer *_hideSnapshotTimer;
+    UIWebClip *_webClip;
 }
 
-@property (nonatomic) unsigned long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
 
-- (long long)preferredStatusBarStyle;
+- (void).cxx_destruct;
+- (void)_cancelHideSnapshotTimer;
+- (void)_setUpContentViewController:(id)arg1;
+- (id)childViewControllerForHomeIndicatorAutoHidden;
+- (id)childViewControllerForScreenEdgesDeferringSystemGestures;
+- (id)childViewControllerForStatusBarHidden;
+- (id)childViewControllerForStatusBarStyle;
+- (id)childViewControllerForWhitePointAdaptivityStyle;
+- (void)dealloc;
+- (void)hideLoadingView;
+- (id)initWithWebClip:(id)arg1;
+- (void)timeLimitForLoadCompletionExpired;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)webAppViewController:(id)arg1 didChangeLoadingState:(BOOL)arg2;
+- (void)webAppViewControllerDidFinishInitialLoad:(id)arg1;
 
 @end
 

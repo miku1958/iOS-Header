@@ -8,12 +8,15 @@
 
 #import <ITMLKit/RWIProtocolDOMDomainHandler-Protocol.h>
 
-@class IKJSInspectorController, NSMutableDictionary, NSString, RWIProtocolDOMNode;
+@class IKJSInspectorController, NSMapTable, NSMutableDictionary, NSString, RWIProtocolDOMNode;
 
 @interface IKJSInspectorDOMAgent : NSObject <RWIProtocolDOMDomainHandler>
 {
     NSMutableDictionary *_searches;
     RWIProtocolDOMNode *_rootNode;
+    NSMapTable *_eventListenersMap;
+    int _eventListenerIdSequence;
+    BOOL _inspectElementModeEnabled;
     IKJSInspectorController *_controller;
 }
 
@@ -21,17 +24,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isInspectElementModeEnabled) BOOL inspectElementModeEnabled; // @synthesize inspectElementModeEnabled=_inspectElementModeEnabled;
 @property (readonly) Class superclass;
 
-+ (void)_buildNodePath:(id)arg1 rootProtocolNode:(id)arg2 rootDOMNode:(id)arg3 withDispatcher:(id)arg4;
-+ (id)_buildNodeTreeForNode:(id)arg1 depth:(int)arg2;
-+ (id)_findNodeWithNodeId:(int)arg1 node:(id)arg2;
 + (id)_nodeIDsFromNodePaths:(id)arg1;
 + (id)_parseAttributeString:(id)arg1;
-+ (id)_procotolNodeForDOMNode:(id)arg1;
-+ (id)_searchNode:(id)arg1 query:(id)arg2 currentPath:(id)arg3;
-+ (void)_updateProtocolNode:(id)arg1 withDOMNode:(id)arg2 dispatcher:(id)arg3;
 - (void).cxx_destruct;
+- (int)_eventListenerIDForListener:(id)arg1;
+- (void)_fullfillNodePath:(id)arg1;
+- (void)didAddEventListenerForNodeID:(int)arg1;
 - (void)discardSearchResultsWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 searchId:(id)arg3;
 - (void)documentDidChange;
 - (void)documentDidUpdate;
@@ -51,6 +52,8 @@
 - (void)highlightRectWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 x:(int)arg3 y:(int)arg4 width:(int)arg5 height:(int)arg6 color:(id *)arg7 outlineColor:(id *)arg8 usePageCoordinates:(BOOL *)arg9;
 - (void)highlightSelectorWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 highlightConfig:(id)arg3 selectorString:(id)arg4 frameId:(id *)arg5;
 - (id)initWithInspectorController:(id)arg1;
+- (void)insertAdjacentHTMLWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 position:(id)arg4 html:(id)arg5;
+- (void)inspectNodeWithID:(long long)arg1;
 - (void)markUndoableStateWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)moveToWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 targetNodeId:(int)arg4 insertBeforeNodeId:(int *)arg5;
 - (void)performSearchWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 query:(id)arg3 nodeIds:(id *)arg4;
@@ -67,11 +70,14 @@
 - (void)resolveNodeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 objectGroup:(id *)arg4;
 - (void)setAttributeValueWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 name:(id)arg4 value:(id)arg5;
 - (void)setAttributesAsTextWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 text:(id)arg4 name:(id *)arg5;
+- (void)setEventListenerDisabledWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 eventListenerId:(int)arg3 disabled:(BOOL)arg4;
 - (void)setInspectModeEnabledWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 enabled:(BOOL)arg3 highlightConfig:(id *)arg4;
+- (void)setInspectedNodeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3;
 - (void)setNodeNameWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 name:(id)arg4;
 - (void)setNodeValueWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 value:(id)arg4;
 - (void)setOuterHTMLWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 outerHTML:(id)arg4;
 - (void)undoWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
+- (void)willRemoveEventListenerForNodeID:(int)arg1;
 
 @end
 

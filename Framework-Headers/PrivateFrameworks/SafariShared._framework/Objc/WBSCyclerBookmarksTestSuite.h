@@ -39,7 +39,7 @@
 - (BOOL)canHandleRequest:(id)arg1;
 - (void)handleRequest:(id)arg1 withTarget:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
-- (void)runWithTarget:(id)arg1 deviceCoordinator:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)runWithTarget:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setUp;
 - (void)tearDown;
 

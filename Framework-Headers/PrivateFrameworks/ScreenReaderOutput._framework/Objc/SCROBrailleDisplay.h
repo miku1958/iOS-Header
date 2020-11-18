@@ -75,6 +75,7 @@
 - (void)_bulkStatusAttributesHandler:(id)arg1;
 - (void)_configurationChangeHandler;
 - (void)_configurationChangeNotification:(id)arg1;
+- (BOOL)_currentChordShouldExecuteEvenDuringTyping;
 - (void)_delayedConfigurationChangeNotification;
 - (void)_delayedDisplayLoad;
 - (void)_delayedSleepNotification:(id)arg1;
@@ -111,6 +112,7 @@
 - (void)_unloadHandler;
 - (void)_unloadNotification:(id)arg1;
 - (void)_unpauseInput;
+- (void)_unpauseInputAndProcessKeyEvents;
 - (void)_updateDisplay;
 - (id)aggregatedStatus;
 - (void)beginUpdates;
@@ -158,6 +160,7 @@
 - (long long)statusSize;
 - (int)token;
 - (long long)tokenForRouterIndex:(long long)arg1 location:(long long *)arg2 appToken:(id *)arg3;
+- (void)unpauseInputOnBrailleFormatterChange;
 - (void)unsleep;
 - (id)virtualStatus;
 - (int)virtualStatusAlignment;

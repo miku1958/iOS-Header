@@ -8,6 +8,8 @@
 
 #import <iWorkImport/TSDMagicMoveMatching-Protocol.h>
 
+@class TSDShapeInfo, TSDShapeLayout;
+
 __attribute__((visibility("hidden")))
 @interface TSDShapeRep : TSDStyledRep <TSDMagicMoveMatching>
 {
@@ -16,38 +18,36 @@ __attribute__((visibility("hidden")))
     BOOL mDirectlyManagesLayerContent;
     struct CGRect mOriginalAliasedAlignmentFrameInLayerFrame;
     BOOL mShadowOnChildrenDisabled;
+    struct CGContext *mCommittedPathContext;
+    struct CGImage *mCommittedPathImage;
+    struct _NSRange mCommittedPointRange;
+    struct _NSRange mAvailableToCommitPointRange;
+    struct CGRect mLastDynamicInvalidRect;
+    BOOL mFillChanged;
 }
 
+@property (readonly, nonatomic) TSDShapeInfo *shapeInfo;
+@property (readonly, nonatomic) TSDShapeLayout *shapeLayout;
+
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
-- (void)beginEditing;
-- (void)beginEditingWithString:(id)arg1;
-- (BOOL)canBeUsedForImageMask;
-- (BOOL)canBeginEditing;
 - (BOOL)canDrawShadowInOneStepWithChildren:(BOOL)arg1;
 - (struct CGRect)clipRect;
 - (id)colorBehindLayer:(id)arg1;
-- (BOOL)containsPoint:(struct CGPoint)arg1;
+- (void)dealloc;
 - (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
 - (void)drawInLayerContext:(struct CGContext *)arg1;
 - (struct CGRect)frameInUnscaledCanvas;
 - (id)imageOfStroke:(struct CGRect *)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
-- (BOOL)intersectsUnscaledRect:(struct CGRect)arg1;
-- (BOOL)isEditingChildRep;
+- (BOOL)isInvisible;
 - (BOOL)p_beginApplyOpacity:(struct CGContext *)arg1 forDrawingInOneStep:(BOOL)arg2;
 - (void)p_drawChildrenWithoutOpacityInContext:(struct CGContext *)arg1;
 - (void)p_drawInContext:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4;
 - (void)p_drawLineEndForHead:(BOOL)arg1 withDelta:(struct CGPoint)arg2 andStroke:(id)arg3 inContext:(struct CGContext *)arg4 useFastDrawing:(BOOL)arg5;
 - (BOOL)p_drawsSelfInOneStep;
 - (void)p_endApplyOpacity:(struct CGContext *)arg1 apply:(BOOL)arg2;
-- (id)pathSourceForSelectionHighlightBehavior;
 - (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1;
 - (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect)arg2;
-- (id)shapeInfo;
-- (id)shapeLayout;
-- (double)shortestDistanceToPoint:(struct CGPoint)arg1 countAsHit:(BOOL *)arg2;
-- (BOOL)shouldExpandHitRegionWhenSmall;
-- (BOOL)shouldHitTestWithFill;
 - (struct CGRect)strokeBoundsWithOptions:(unsigned long long)arg1 fallbackBounds:(struct CGRect)arg2;
 
 @end

@@ -14,7 +14,9 @@
 __attribute__((visibility("hidden")))
 @interface TPPageHint : NSObject <TSWPOffscreenColumn>
 {
-    int _pageKind;
+    long long _pageKind;
+    unsigned long long _pageRow;
+    unsigned long long _pageColumn;
     NSArray *_hints;
     TSUNoCopyDictionary *_flowHints;
     struct _NSRange _footnoteAutoNumberRange;
@@ -36,9 +38,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct _NSRange footnoteLayoutRange; // @synthesize footnoteLayoutRange=_footnoteLayoutRange;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<TSDHint> lastChildHint;
+@property (readonly, nonatomic) BOOL lastLineIsEmptyAndHasListLabel;
 @property (readonly, nonatomic) unsigned long long lineCount;
 @property (readonly, nonatomic) unsigned long long nextWidowPullsDownFromCharIndex;
-@property (nonatomic) int pageKind; // @synthesize pageKind=_pageKind;
+@property (nonatomic) unsigned long long pageColumn; // @synthesize pageColumn=_pageColumn;
+@property (nonatomic) long long pageKind; // @synthesize pageKind=_pageKind;
+@property (nonatomic) unsigned long long pageRow; // @synthesize pageRow=_pageRow;
 @property (readonly, nonatomic) struct _NSRange range;
 @property (strong, nonatomic) NSSet *startingPartitionedAttachments; // @synthesize startingPartitionedAttachments=_startingPartitionedAttachments;
 @property (readonly) Class superclass;

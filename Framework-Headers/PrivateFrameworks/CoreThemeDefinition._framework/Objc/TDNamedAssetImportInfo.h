@@ -51,6 +51,7 @@
     NSArray *_colorComponents;
     NSValue *_iconSize;
     struct CGSize _resizableSliceSize;
+    struct CGSize _physicalSizeInMeters;
     struct CGSize _canvasSize;
     CDStruct_3c058996 _sliceInsets;
     struct CGRect _alignmentRect;
@@ -81,6 +82,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long nameIdentifier; // @synthesize nameIdentifier=_nameIdentifier;
 @property (nonatomic) BOOL optOutOfThinning; // @synthesize optOutOfThinning=_optOutOfThinning;
+@property (nonatomic) struct CGSize physicalSizeInMeters; // @synthesize physicalSizeInMeters=_physicalSizeInMeters;
 @property (nonatomic) BOOL preservesVectorRepresentation; // @synthesize preservesVectorRepresentation=_preservesVectorRepresentation;
 @property (nonatomic) long long renditionType; // @synthesize renditionType=_renditionType;
 @property (nonatomic) struct CGSize resizableSliceSize; // @synthesize resizableSliceSize=_resizableSliceSize;

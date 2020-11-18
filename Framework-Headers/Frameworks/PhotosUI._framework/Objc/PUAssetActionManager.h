@@ -16,6 +16,7 @@
 @property (weak, nonatomic) id<PUAssetActionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (CDUnknownBlockType)_unlockDeviceHandler;
++ (id)actionManagerLog;
 + (void)setUnlockDeviceHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)actionPerformerForDuplicatingAssetsByAssetCollection:(id)arg1 withNewStillImageTime:(CDStruct_1b6d18a9)arg2;

@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSArray *kinds; // @synthesize kinds=_kinds;
 
 + (id)kindWithKinds:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

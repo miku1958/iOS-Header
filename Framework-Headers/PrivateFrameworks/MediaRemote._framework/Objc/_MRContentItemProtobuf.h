@@ -62,6 +62,7 @@
 + (Class)currentLanguageOptionsType;
 + (void)initialize;
 + (Class)sectionsType;
+- (void).cxx_destruct;
 - (id)_init;
 - (id)_initWithData:(id)arg1;
 - (void)addAvailableLanguageOptions:(id)arg1;
@@ -76,7 +77,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)currentLanguageOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)currentLanguageOptionsCount;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

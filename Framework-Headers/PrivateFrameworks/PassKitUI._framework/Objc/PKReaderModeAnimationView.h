@@ -6,10 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, CAStateController;
+@class CALayer, CAPackage, CAStateController;
 
 @interface PKReaderModeAnimationView : UIView
 {
+    CAPackage *_package;
     CALayer *_phoneLayer;
     CAStateController *_stateController;
 }
@@ -22,6 +23,9 @@
 - (id)initWithAssetName:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 assetName:(id)arg2;
 - (void)setAnimationState:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)setDigitalCardImage:(id)arg1;
+- (void)setImageForCard:(id)arg1 image:(id)arg2;
+- (void)setPlasticCardImage:(id)arg1;
 - (void)setState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

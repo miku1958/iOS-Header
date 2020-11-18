@@ -6,19 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
-
 @interface FMDFMIPManager : NSObject
 {
-    NSURL *_managedLostModeFileURL;
-    NSURL *_needsLocateAckLostModeFileURL;
 }
 
-@property (strong, nonatomic) NSURL *managedLostModeFileURL; // @synthesize managedLostModeFileURL=_managedLostModeFileURL;
-@property (strong, nonatomic) NSURL *needsLocateAckLostModeFileURL; // @synthesize needsLocateAckLostModeFileURL=_needsLocateAckLostModeFileURL;
-
 + (id)sharedInstance;
-- (void).cxx_destruct;
 - (void)_disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_forceFMWUpgradeAlertWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_initiateLostModeExitAuthForIDSDeviceID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -36,12 +28,12 @@
 - (void)deviceActivationDidSucceed;
 - (void)didChangeFMIPAccountInfo:(id)arg1;
 - (void)didReceiveLostModeExitAuthToken:(id)arg1;
+- (void)disableBiometricIDForLostModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)disableFMIPUsingToken:(id)arg1 forPairedDeviceWithUDID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2;
 - (void)disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)disableLostMode;
 - (void)disableManagedLostModeWithLocatedMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)disableTouchIDForLostModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enableActivationLockWithCompletion:(CDUnknownBlockType)arg1;
 - (id)enableFMIPInContext:(unsigned long long)arg1;
 - (id)enableLostModeWithInfo:(id)arg1;

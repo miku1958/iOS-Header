@@ -28,6 +28,7 @@
 + (void)setTrackUsage:(BOOL)arg1;
 + (id)sharedLoader;
 + (id)singletonConfiguration;
++ (id)tileLoaderWithConfiguration:(id)arg1 serverProxy:(id)arg2;
 + (void)useLocalLoader;
 + (void)useRemoteLoader;
 - (void)_loadTiles:(id)arg1 options:(unsigned long long)arg2 progress:(CDUnknownBlockType)arg3 finished:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
@@ -49,7 +50,9 @@
 - (id)internalDelegate;
 - (id)internalDelegateQ;
 - (void)loadKey:(const struct _GEOTileKey *)arg1 additionalInfo:(const CDStruct_58878026 *)arg2 priority:(unsigned int)arg3 forClient:(id)arg4 options:(unsigned long long)arg5 callbackQ:(id)arg6 beginNetwork:(CDUnknownBlockType)arg7 callback:(CDUnknownBlockType)arg8;
+- (void)loadKey:(const struct _GEOTileKey *)arg1 additionalInfo:(const CDStruct_58878026 *)arg2 priority:(unsigned int)arg3 forClient:(id)arg4 options:(unsigned long long)arg5 qos:(unsigned int)arg6 callbackQ:(id)arg7 beginNetwork:(CDUnknownBlockType)arg8 callback:(CDUnknownBlockType)arg9;
 - (void)loadKey:(const struct _GEOTileKey *)arg1 priority:(unsigned int)arg2 forClient:(id)arg3 options:(unsigned long long)arg4 callbackQ:(id)arg5 beginNetwork:(CDUnknownBlockType)arg6 callback:(CDUnknownBlockType)arg7;
+- (void)loadKey:(const struct _GEOTileKey *)arg1 priority:(unsigned int)arg2 forClient:(id)arg3 options:(unsigned long long)arg4 qos:(unsigned int)arg5 callbackQ:(id)arg6 beginNetwork:(CDUnknownBlockType)arg7 callback:(CDUnknownBlockType)arg8;
 - (void)loadTiles:(id)arg1 progress:(CDUnknownBlockType)arg2 finished:(CDUnknownBlockType)arg3 error:(CDUnknownBlockType)arg4;
 - (void)loadTilesFromCache:(id)arg1 progress:(CDUnknownBlockType)arg2 finished:(CDUnknownBlockType)arg3 error:(CDUnknownBlockType)arg4;
 - (void)loadTilesFromCacheAndNetwork:(id)arg1 progress:(CDUnknownBlockType)arg2 finished:(CDUnknownBlockType)arg3 error:(CDUnknownBlockType)arg4;

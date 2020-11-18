@@ -19,6 +19,8 @@
 
 + (id)UDPHardwareMask;
 + (id)UDPSoftwareMask;
++ (id)gPTP1Hop;
++ (id)gPTP7Hop;
 + (id)gPTPMask1;
 + (id)gPTPMask2;
 + (id)gPTPMask3;

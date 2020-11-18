@@ -14,9 +14,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_updateButtonImage:(id)arg1 button:(id)arg2;
 - (id)accessibilityElements;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setResponse:(id)arg1;
+- (void)setStyle:(long long)arg1;
 
 @end
 

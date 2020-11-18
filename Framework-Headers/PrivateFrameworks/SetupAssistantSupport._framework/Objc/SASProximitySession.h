@@ -6,29 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <SetupAssistantSupport/SASProximitySessionProtocol-Protocol.h>
-
-@class CUMessageSession, NSString;
+@class CUMessageSession, SASProximitySessionTransport;
 @protocol OS_dispatch_queue, SASProximitySessionDelegate;
 
-@interface SASProximitySession : NSObject <SASProximitySessionProtocol>
+@interface SASProximitySession : NSObject
 {
-    BOOL connected;
-    id<SASProximitySessionDelegate> delegate;
-    CUMessageSession *sharingMessageSession;
+    BOOL _connected;
+    id<SASProximitySessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_actionQueue;
-    CUMessageSession *_messageSession;
+    SASProximitySessionTransport *_transport;
 }
 
 @property (strong) NSObject<OS_dispatch_queue> *actionQueue; // @synthesize actionQueue=_actionQueue;
-@property (getter=isConnected) BOOL connected; // @synthesize connected;
-@property (readonly, copy) NSString *debugDescription;
-@property id<SASProximitySessionDelegate> delegate; // @synthesize delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong) CUMessageSession *messageSession; // @synthesize messageSession=_messageSession;
-@property (strong) CUMessageSession *sharingMessageSession; // @synthesize sharingMessageSession;
-@property (readonly) Class superclass;
+@property (getter=isConnected) BOOL connected; // @synthesize connected=_connected;
+@property id<SASProximitySessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong) CUMessageSession *sharingMessageSession;
+@property (strong) SASProximitySessionTransport *transport; // @synthesize transport=_transport;
 
 - (void).cxx_destruct;
 - (id)actionFromData:(id)arg1;

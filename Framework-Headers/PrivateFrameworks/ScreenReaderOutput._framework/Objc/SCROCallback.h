@@ -6,15 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-#import <ScreenReaderOutput/NSCoding-Protocol.h>
+#import <ScreenReaderOutput/NSSecureCoding-Protocol.h>
 
-@interface SCROCallback : NSObject <NSCoding>
+@protocol NSSecureCoding;
+
+@interface SCROCallback : NSObject <NSSecureCoding>
 {
     int _key;
-    id _object;
+    id<NSSecureCoding> _object;
     BOOL _isAtomic;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -11,7 +11,8 @@
 #import <Silex/SXAdDocumentStateObserver-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class ADBannerView, NSError, NSString, SXAdController, SXHost, SXIAdDebugView;
+@class ADBannerView, NSError, NSString, SXAdController, SXIAdDebugView;
+@protocol SXHost;
 
 @interface SXIAdComponentView : SXComponentView <ADBannerViewDelegate, SXAdDisplayInstructions, SXViewportChangeListener, SXAdDocumentStateObserver>
 {
@@ -21,7 +22,7 @@
     BOOL _didUnloadBannerView;
     int _opportunityError;
     SXAdController *_adController;
-    SXHost *_host;
+    id<SXHost> _host;
     ADBannerView *_bannerView;
     CDUnknownBlockType _cancelHandler;
     SXIAdDebugView *_debugView;
@@ -41,7 +42,7 @@
 @property (strong, nonatomic) NSString *generatedOpportunityIdentifier; // @synthesize generatedOpportunityIdentifier=_generatedOpportunityIdentifier;
 @property (nonatomic) BOOL hasInvalidatedLayout; // @synthesize hasInvalidatedLayout=_hasInvalidatedLayout;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) SXHost *host; // @synthesize host=_host;
+@property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (nonatomic) BOOL isDisplayingBannerView; // @synthesize isDisplayingBannerView=_isDisplayingBannerView;
 @property (nonatomic) BOOL isReceivingViewportChanges; // @synthesize isReceivingViewportChanges=_isReceivingViewportChanges;
 @property (nonatomic) int opportunityError; // @synthesize opportunityError=_opportunityError;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSString *extractedTerm;
+@property (readonly, nonatomic) BOOL hasResultIndex;
 @property (readonly, nonatomic) int itemType;
 @property (readonly, nonatomic) unsigned long long resultIndex;
 

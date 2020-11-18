@@ -6,7 +6,8 @@
 
 #import <MPSNeuralNetwork/NSObject-Protocol.h>
 
-@class MISSING_TYPE, MPSCNNConvolutionDescriptor, NSString;
+@class MISSING_TYPE, MPSCNNConvolutionDescriptor, MPSCNNConvolutionGradientState, MPSCNNConvolutionWeightsAndBiasesState, NSString;
+@protocol MTLCommandBuffer;
 
 @protocol MPSCNNConvolutionDataSource <NSObject>
 - (float *)biasTerms;
@@ -20,5 +21,7 @@
 @optional
 - (float *)lookupTableForUInt8Kernel;
 - (MISSING_TYPE **)rangesForUInt8Kernel;
+- (MPSCNNConvolutionWeightsAndBiasesState *)updateWithCommandBuffer:(id<MTLCommandBuffer>)arg1 gradientState:(MPSCNNConvolutionGradientState *)arg2 sourceState:(MPSCNNConvolutionWeightsAndBiasesState *)arg3;
+- (BOOL)updateWithGradientState:(MPSCNNConvolutionGradientState *)arg1 sourceState:(MPSCNNConvolutionWeightsAndBiasesState *)arg2;
 @end
 

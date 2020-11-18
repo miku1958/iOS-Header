@@ -18,6 +18,7 @@
     NSArray *_affectedContainers;
 }
 
+@property (readonly, getter=_isError) BOOL _error;
 @property (readonly, nonatomic) NSArray *affectedContainers; // @synthesize affectedContainers=_affectedContainers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -26,6 +27,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (id)_actionForError:(id)arg1;
 + (id)actionWithType:(long long)arg1;
 + (id)destructiveActionWithType:(long long)arg1;
 + (id)destructiveActionWithType:(long long)arg1 affectedContainers:(id)arg2;

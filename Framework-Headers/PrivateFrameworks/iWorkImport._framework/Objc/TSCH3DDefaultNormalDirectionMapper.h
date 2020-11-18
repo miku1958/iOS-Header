@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (id)mapperWithNormalBias:(const tvec3_17f03ce0 *)arg1;
 - (id).cxx_construct;
 - (id)initWithNormalBias:(const tvec3_17f03ce0 *)arg1;
-- (void)mapFromVertexArray:(const tvec3_17f03ce0 *)arg1 normalArray:(const tvec3_17f03ce0 *)arg2 normalMatrix:(const tmat3x3_b39cd897 *)arg3 numVertices:(long long)arg4 destination:(vector_a3426c4e *)arg5;
+- (void)mapFromVertexArray:(const tvec3_17f03ce0 *)arg1 normalArray:(const tvec3_17f03ce0 *)arg2 normalMatrix:(const tmat3x3_b39cd897 *)arg3 numVertices:(long long)arg4 destination:(vector_aab22ae2 *)arg5;
 
 @end
 

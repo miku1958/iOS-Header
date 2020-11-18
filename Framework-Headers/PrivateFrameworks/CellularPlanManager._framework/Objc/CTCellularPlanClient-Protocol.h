@@ -32,6 +32,7 @@
 - (void)getESimServerURL:(void (^)(NSString *))arg1;
 - (void)getIMEIPrefix:(void (^)(NSString *))arg1;
 - (void)getRemoteInfo:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)getRoamingSignupOverrideWithCompletion:(void (^)(BOOL))arg1;
 - (void)getSelectedEnv:(void (^)(long long))arg1;
 - (void)getSelectedProxy:(void (^)(long long))arg1;
 - (void)isAddButtonEnabled:(void (^)(BOOL))arg1;
@@ -46,6 +47,7 @@
 - (void)manageAccountForRemotePlan:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)mccMncOverride:(void (^)(long long, long long))arg1;
 - (void)openInternalUrlId:(long long)arg1;
+- (void)pendingReleaseRemotePlan;
 - (void)ping;
 - (void)planItemsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)registerHasNewProfileCompletion:(void (^)(BOOL, BOOL))arg1;
@@ -61,6 +63,7 @@
 - (void)setIMEIPrefix:(NSString *)arg1;
 - (void)setLatitude:(NSNumber *)arg1 andLongitude:(NSNumber *)arg2;
 - (void)setMcc:(long long)arg1 andMnc:(long long)arg2;
+- (void)setRoamingSignupOverride:(BOOL)arg1;
 - (void)setSelectedEnv:(long long)arg1;
 - (void)setSelectedProxy:(long long)arg1;
 - (void)setUserInPurchaseFlow:(BOOL)arg1;

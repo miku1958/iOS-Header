@@ -18,6 +18,7 @@
 @property (readonly, copy, nonatomic) ML3Predicate *thenPredicate; // @synthesize thenPredicate=_thenPredicate;
 
 + (id)predicateWithConditionPredicate:(id)arg1 thenPredicate:(id)arg2 elsePredicate:(id)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)SQLJoinClausesForClass:(Class)arg1;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;

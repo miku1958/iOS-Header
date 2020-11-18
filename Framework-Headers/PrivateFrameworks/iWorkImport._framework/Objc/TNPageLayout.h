@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) struct CGRect pageBounds;
 @property TNPageController *pageController; // @synthesize pageController=mPageController;
 @property struct TSUCellCoord pageCoordinate; // @synthesize pageCoordinate=mPageCoordinate;
+@property (readonly) BOOL pageLayoutDirectionIsRTL;
 @property (getter=isPlaceholder) BOOL placeholder; // @synthesize placeholder=mIsPlaceholder;
 @property (strong) TNSheet *sheet; // @synthesize sheet=mSheet;
 @property (readonly, nonatomic) BOOL shrinkTextToFit;

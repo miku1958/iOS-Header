@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSDictionary, NSString, NSURL, NSUUID, NSXPCListenerEndpoint, SFBLEDevice, SFCoordinatedAlertRequest, SFDevice, SFDeviceDiscovery, SFEventMessage, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession, SFUserNotification;
+@class NSData, NSDictionary, NSString, NSURL, NSUUID, NSXPCListenerEndpoint, SFBLEDevice, SFCoordinatedAlertRequest, SFDevice, SFDeviceDiscovery, SFEventMessage, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession, SFUserAlert;
 
 @protocol SDXPCInterface
 - (void)accountForAppleID:(NSString *)arg1 withCompletion:(void (^)(SFAppleIDAccount *, NSError *))arg2;
@@ -70,7 +70,7 @@
 - (void)showDevicePickerWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)statusInfoWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)triggerHomeKitDeviceDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)userNotificationPresent:(SFUserNotification *)arg1;
+- (void)userNotificationPresent:(SFUserAlert *)arg1;
 - (void)wifiPasswordSharingAvailabilityWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 @end
 

@@ -8,7 +8,7 @@
 
 #import <SafariServices/_SFSafeBrowsingWebProcessController-Protocol.h>
 
-@class NSDictionary, NSString, _SFSecurityInfo, _SFWebProcessPlugInPageController, _WKRemoteObjectInterface;
+@class NSDictionary, NSMutableSet, NSString, _SFSecurityInfo, _SFWebProcessPlugInPageController, _WKRemoteObjectInterface;
 @protocol _SFSafeBrowsingWarningResponseObserver;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionHandler;
     id<_SFSafeBrowsingWarningResponseObserver> _responseObserver;
     NSDictionary *_localizedStrings;
+    NSMutableSet *_safeURLCache;
+    NSMutableSet *_provisionalURLsNeedingSafeBrowsingCheck;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_clearSafeBrowsingControllerInterface;
 - (id)_responseObserverProxy;
 - (void)_setUpSafeBrowsingControllerInterface;
+- (void)cleanUpForNewPageLoad;
 - (void)dealloc;
 - (void)didRespondToSecurityWarning:(long long)arg1;
 - (id)initWithPageController:(id)arg1;
@@ -40,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedStringForString:(id)arg1;
 - (void)performSafeBrowsingCheckForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)safeBrowsingCheckFinishedWithSecurityInfo:(id)arg1 canGoBack:(BOOL)arg2 localizedStrings:(id)arg3;
+- (void)safeBrowsingDatabaseDidUpdate;
 - (void)securityWarningPageLoaded;
 - (void)urlPassedSafeBrowsingCheck:(id)arg1 canCache:(BOOL)arg2;
 - (BOOL)urlPassesFastSafeBrowsingCheck:(id)arg1;

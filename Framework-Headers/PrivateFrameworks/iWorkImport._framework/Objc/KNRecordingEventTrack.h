@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface KNRecordingEventTrack : TSPObject
 {
-    NSString *mType;
-    NSArray *mEvents;
+    NSString *_type;
+    NSArray *_events;
 }
 
-@property (readonly, nonatomic) NSArray *events; // @synthesize events=mEvents;
-@property (readonly, nonatomic) NSString *type; // @synthesize type=mType;
+@property (readonly, nonatomic) NSArray *events; // @synthesize events=_events;
+@property (readonly, nonatomic) NSString *type; // @synthesize type=_type;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)eventTrackByReplacingSegmentAfterTime:(double)arg1 withEventTrack:(id)arg2;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 type:(id)arg2 events:(id)arg3;

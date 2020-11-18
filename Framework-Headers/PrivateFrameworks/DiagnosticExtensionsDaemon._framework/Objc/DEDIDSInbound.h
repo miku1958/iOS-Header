@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/IDSServiceDelegate-Protocol.h>
 
 @class DEDController, DEDIDSConnection, NSString;
 @protocol OS_os_log;
 
-@interface DEDIDSInbound : NSObject <IDSServiceDelegate>
+@interface DEDIDSInbound : NSObject <IDSServiceDelegate, DEDSecureArchiving>
 {
     DEDIDSConnection *_connection;
     DEDController *_delegate;
@@ -26,6 +27,7 @@
 @property (strong) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (readonly) Class superclass;
 
++ (id)archivedClasses;
 - (void).cxx_destruct;
 - (void)adopt_files:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)cancel_session:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;

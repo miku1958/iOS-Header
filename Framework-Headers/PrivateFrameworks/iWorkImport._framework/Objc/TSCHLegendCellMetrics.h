@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) float symbolGap; // @synthesize symbolGap=mLegendSymbolGap;
 @property (readonly, nonatomic) float titleHeight; // @synthesize titleHeight=mTrueTitleHeight;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithParagraphStyle:(id)arg1;
 

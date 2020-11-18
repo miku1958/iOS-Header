@@ -11,23 +11,17 @@
 @interface WBSParsecRichText : WBSParsecModel
 {
     WBSParsecImageRepresentation *_contentAdvisoryImage;
-    BOOL _hasStarRating;
     NSString *_text;
     NSNumber *_maximumLines;
-    double _starRating;
     NSArray *_formattedTextList;
-    NSString *_formattedTextDelimiter;
     NSArray *_moreGlyphRepresentations;
     NSString *_contentAdvisoryString;
 }
 
 @property (readonly, nonatomic) NSString *contentAdvisoryString; // @synthesize contentAdvisoryString=_contentAdvisoryString;
-@property (readonly, nonatomic) NSString *formattedTextDelimiter; // @synthesize formattedTextDelimiter=_formattedTextDelimiter;
 @property (readonly, nonatomic) NSArray *formattedTextList; // @synthesize formattedTextList=_formattedTextList;
-@property (readonly, nonatomic) BOOL hasStarRating; // @synthesize hasStarRating=_hasStarRating;
 @property (readonly, nonatomic) NSNumber *maximumLines; // @synthesize maximumLines=_maximumLines;
 @property (readonly, nonatomic) NSArray *moreGlyphRepresentations; // @synthesize moreGlyphRepresentations=_moreGlyphRepresentations;
-@property (readonly, nonatomic) double starRating; // @synthesize starRating=_starRating;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (id)schema;

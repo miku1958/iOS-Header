@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1;
 - (void)loadFromArchive:(const struct TOCSettingsArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)p_upgradeStyle:(id)arg1 withStylesheet:(id)arg2;
 - (id)referencedStyles;
 - (void)removeIndexedStyle:(id)arg1;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;

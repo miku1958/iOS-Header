@@ -6,7 +6,7 @@
 
 #import <MPSNeuralNetwork/MPSNNFilterNode.h>
 
-@class MPSCNNConvolutionStateNode;
+@class MPSCNNConvolutionGradientStateNode, MPSCNNConvolutionStateNode;
 @protocol MPSCNNConvolutionDataSource;
 
 @interface MPSCNNConvolutionNode : MPSNNFilterNode
@@ -14,10 +14,12 @@
     id<MPSCNNConvolutionDataSource> _weights;
 }
 
+@property (readonly, nonatomic) MPSCNNConvolutionGradientStateNode *convolutionGradientState;
 @property (readonly, nonatomic) MPSCNNConvolutionStateNode *convolutionState;
 
 + (id)nodeWithSource:(id)arg1 weights:(id)arg2;
 - (void)dealloc;
+- (Class)gradientClass;
 - (id)initWithSource:(id)arg1 weights:(id)arg2;
 - (id)initWithSource:(id)arg1 weights:(id)arg2 state:(id)arg3;
 - (struct FilterGraphNode *)newFilterNode;

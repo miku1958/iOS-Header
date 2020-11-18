@@ -8,7 +8,7 @@
 
 #import <iWorkImport/CAAnimationDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSArray, NSString, NSTimer, TSDLayout, TSWPSearchReference, TSWPSelection, TSWPStorage, TSWPTextEditor;
+@class CALayer, CAShapeLayer, NSArray, NSString, NSTimer, TSDLayout, TSWPSearchReference, TSWPSelection, TSWPStorage;
 @protocol TSWPLayoutTarget;
 
 __attribute__((visibility("hidden")))
@@ -35,11 +35,6 @@ __attribute__((visibility("hidden")))
     BOOL _markChanged;
     unsigned long long _newSelectionFlags;
     BOOL _repFieldsAreActive;
-    BOOL _indentAnimationRunning;
-    CALayer *_indentAnimationLayer;
-    long long _indentDelta;
-    SEL _indentSelector;
-    id _indentTarget;
     BOOL _hudStateDirty;
     BOOL _invalidateHUDState;
     BOOL _useKeyboardWhenEditing;
@@ -51,7 +46,6 @@ __attribute__((visibility("hidden")))
     BOOL _caretCancelled;
     BOOL _findIsShowing;
     TSWPSearchReference *_activeSearchReference;
-    TSWPTextEditor *_textEditor;
     NSArray *_searchReferences;
     CALayer *_floatingCaretLayer;
     struct CGAffineTransform _transformToConvertNaturalToScaledRoot;
@@ -67,26 +61,30 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isBeingEdited;
 @property (copy, nonatomic) TSWPSelection *lastSelection; // @synthesize lastSelection=_lastSelection;
-@property (readonly, nonatomic) TSDLayout<TSWPLayoutTarget> *layout;
+@property (readonly, weak, nonatomic) TSDLayout<TSWPLayoutTarget> *layout;
 @property (strong, nonatomic) NSArray *searchReferences; // @synthesize searchReferences=_searchReferences;
 @property (readonly, nonatomic) TSWPSelection *selection;
 @property (readonly, nonatomic) TSWPStorage *storage;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSelectionHighlightSuppressed) BOOL suppressSelectionHighlight; // @synthesize suppressSelectionHighlight=_suppressSelectionHighlight;
-@property (readonly, nonatomic) TSWPTextEditor *textEditor; // @synthesize textEditor=_textEditor;
 @property (readonly, nonatomic) BOOL textIsVertical;
 @property (readonly, nonatomic) struct CGAffineTransform transformToConvertNaturalToScaledRoot; // @synthesize transformToConvertNaturalToScaledRoot=_transformToConvertNaturalToScaledRoot;
 @property (nonatomic) BOOL useKeyboardWhenEditing; // @synthesize useKeyboardWhenEditing=_useKeyboardWhenEditing;
 
+- (void).cxx_destruct;
 - (struct CGRect)caretRect;
 - (struct CGRect)caretRectForCharIndex:(unsigned long long)arg1 caretAffinity:(int)arg2;
 - (struct CGRect)caretRectForCharIndex:(unsigned long long)arg1 leadingEdge:(BOOL)arg2 caretAffinity:(int)arg3;
 - (struct CGRect)caretRectForSelection:(id)arg1;
 - (unsigned long long)charCountOfGlyphStartingAtCharIndex:(unsigned long long)arg1;
 - (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1;
+- (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 constrainToAscentAndDescent:(BOOL)arg2;
 - (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 isTail:(BOOL)arg2 selectionType:(int)arg3;
+- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 constrainToAscentAndDescent:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6;
 - (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 isAtEndOfLine:(BOOL *)arg4 leadingEdge:(BOOL *)arg5;
+- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 pastCenterGoesToNextChar:(BOOL)arg4 constrainToAscentAndDescent:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7;
 - (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 pastCenterGoesToNextChar:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6;
+- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 constrainToAscentAndDescent:(BOOL)arg3 isAtEndOfLine:(BOOL *)arg4;
 - (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 isAtEndOfLine:(BOOL *)arg3;
 - (id)closestColumnForPoint:(struct CGPoint)arg1;
 - (id)columnForCharIndex:(unsigned long long)arg1;
@@ -100,19 +98,19 @@ __attribute__((visibility("hidden")))
 - (unsigned int)fontTraitsForRange:(struct _NSRange)arg1 includingLabel:(BOOL)arg2;
 - (id)footnoteMarkAttachmentAtPoint:(struct CGPoint)arg1;
 - (id)footnoteReferenceAttachmentAtPoint:(struct CGPoint)arg1;
+- (void)gesturesDidEnd;
 - (unsigned long long)glyphCountForRubyFieldAtCharIndex:(unsigned long long)arg1;
 - (struct CGRect)glyphRectForRange:(struct _NSRange)arg1 includingLabel:(BOOL)arg2;
 - (struct CGRect)glyphRectForRubyFieldAtCharIndex:(unsigned long long)arg1 glyphRange:(struct _NSRange)arg2;
-- (id)hyperlinkContainerRep;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isOverflowing;
 - (BOOL)isPointInSelectedArea:(struct CGPoint)arg1;
 - (struct CGRect)labelRectForCharIndex:(unsigned long long)arg1;
 - (Class)layerClass;
-- (CDStruct_b7a3d57d)lineMetricsAtCharIndex:(unsigned long long)arg1;
-- (CDStruct_b7a3d57d)lineMetricsAtPoint:(struct CGPoint)arg1;
+- (CDStruct_d12891c8)lineMetricsAtCharIndex:(unsigned long long)arg1;
+- (CDStruct_d12891c8)lineMetricsAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)naturalBoundsRectForHyperlinkField:(id)arg1;
-- (struct CGPath *)newPathForSelection:(id)arg1;
+- (const struct CGPath *)newPathForSelection:(id)arg1;
 - (BOOL)p_allowCaretForSelection:(id)arg1;
 - (struct CGRect)p_caretRectForSelection:(id)arg1;
 - (struct CGRect)p_closestCaretRectForPoint:(struct CGPoint)arg1 inSelection:(BOOL)arg2 allowPastBreak:(BOOL)arg3;
@@ -134,13 +132,12 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)range;
 - (struct CGRect)rectForSelection:(id)arg1 includeRuby:(BOOL)arg2 includePaginatedAttachments:(BOOL)arg3;
 - (id)repForCharIndex:(unsigned long long)arg1 isStart:(BOOL)arg2;
-- (id)repForDragging;
 - (id)rubyFieldAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)selectionRect;
-- (id)siblings;
 - (id)smartFieldAtPoint:(struct CGPoint)arg1;
 - (id)textBackgroundLayer;
 - (id)textLayer;
+- (void)viewDidAppear;
 - (void)willBeRemoved;
 - (CDStruct_7e4c5a1e)wordMetricsAtCharIndex:(unsigned long long)arg1;
 

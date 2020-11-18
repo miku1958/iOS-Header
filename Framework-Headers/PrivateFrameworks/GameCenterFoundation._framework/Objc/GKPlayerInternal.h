@@ -14,6 +14,7 @@
     NSString *_alias;
     NSDictionary *_photos;
     NSString *_messagesID;
+    NSString *_friendLevel;
     unsigned short _numberOfFriends;
     unsigned short _numberOfGames;
     unsigned short _numberOfFriendsInCommon;
@@ -41,6 +42,7 @@
 @property (nonatomic, getter=isFindable) BOOL findable; // @dynamic findable;
 @property (strong, nonatomic) NSString *firstName; // @dynamic firstName;
 @property (nonatomic) unsigned int flags; // @dynamic flags;
+@property (strong, nonatomic) NSString *friendLevel; // @synthesize friendLevel=_friendLevel;
 @property (strong, nonatomic) NSArray *friends; // @dynamic friends;
 @property (strong, nonatomic) NSString *guestIdentifier; // @dynamic guestIdentifier;
 @property (strong, nonatomic) NSNumber *iCloudUserID; // @dynamic iCloudUserID;
@@ -75,6 +77,8 @@
 + (id)compositeNameForFirstName:(id)arg1 lastName:(id)arg2;
 + (id)displayNameWithOptions:(unsigned char)arg1 alias:(id)arg2 composite:(id)arg3;
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
+- (BOOL)_gkIsSameAsPlayer:(id)arg1;
 - (BOOL)allowNearbyMultiplayer;
 - (id)cacheKey;
 - (id)conciseDescription;

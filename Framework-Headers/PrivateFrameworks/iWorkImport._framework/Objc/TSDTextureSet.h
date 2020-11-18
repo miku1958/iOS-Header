@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _isBackground;
     BOOL _isBaked;
     BOOL _isFlippedHorizontally;
+    BOOL _containsContentBuildTextures;
     BOOL _isMagicMove;
     BOOL _shouldTransformUsingTextureCenter;
     BOOL _shouldIncludeFinalTexturesInVisibleSet;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSMapTable *boundingRectForStageMap; // @synthesize boundingRectForStageMap=_boundingRectForStageMap;
 @property (nonatomic) struct CGPoint center; // @synthesize center=_center;
 @property (nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+@property (nonatomic) BOOL containsContentBuildTextures; // @synthesize containsContentBuildTextures=_containsContentBuildTextures;
 @property (readonly, nonatomic) BOOL containsFinalTextures;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (nonatomic) BOOL isBackground; // @synthesize isBackground=_isBackground;
@@ -78,9 +80,9 @@ __attribute__((visibility("hidden")))
 - (void)addRenderable:(id)arg1;
 - (void)addRenderable:(id)arg1 forStage:(long long)arg2;
 - (void)addRenderable:(id)arg1 shouldAdjustBounds:(BOOL)arg2;
-- (void)adjustAnchorPointRelativeToCenterOfRotation;
+- (void)adjustAnchorPointRelativeToCenterOfRotationAtEventIndex:(unsigned long long)arg1;
 - (void)applyActionEffect:(id)arg1 viewScale:(double)arg2 isMagicMove:(BOOL)arg3 shouldBake:(BOOL)arg4 applyScaleOnly:(BOOL)arg5 ignoreScale:(BOOL)arg6 shouldCheckActionKeys:(BOOL)arg7 eventIndex:(unsigned long long)arg8;
-- (struct CGRect)boundingRectForStage:(long long)arg1 isBuildIn:(BOOL)arg2;
+- (struct CGRect)boundingRectForStage:(long long)arg1 isBuildIn:(BOOL)arg2 isContentBuild:(BOOL)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -103,9 +105,9 @@ __attribute__((visibility("hidden")))
 - (void)removeRenderable:(id)arg1;
 - (void)renderIntoContext:(struct CGContext *)arg1 eventIndex:(unsigned long long)arg2 requiresTransparentBackground:(BOOL)arg3;
 - (void)renderLayerContentsIfNeeded;
-- (void)resetAnchorPoint;
+- (void)resetAnchorPointAtEventIndex:(unsigned long long)arg1;
 - (void)resetLayers;
-- (void)resetToOriginalSource;
+- (void)resetToOriginalSourceAtEventIndex:(unsigned long long)arg1;
 - (void)setBoundingRect:(struct CGRect)arg1;
 - (void)setBoundingRect:(struct CGRect)arg1 forStage:(long long)arg2;
 - (void)setLayerGeometry;
@@ -113,7 +115,7 @@ __attribute__((visibility("hidden")))
 - (long long)stageIndexForTexture:(id)arg1;
 - (void)teardown;
 - (id)viewLayerAtEventIndex:(unsigned long long)arg1;
-- (id)visibleTexturesForStage:(long long)arg1 isBuildIn:(BOOL)arg2 shouldFlatten:(BOOL)arg3 flattenKey:(id)arg4;
+- (id)visibleTexturesForStage:(long long)arg1 isBuildIn:(BOOL)arg2 isContentBuild:(BOOL)arg3 shouldFlatten:(BOOL)arg4 flattenKey:(id)arg5;
 - (id)visibleTexturesWithTextureType:(long long)arg1;
 
 @end

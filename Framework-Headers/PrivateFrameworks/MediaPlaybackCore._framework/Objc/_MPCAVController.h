@@ -26,6 +26,7 @@
 - (void)_configureAudioSession;
 - (void)_connectAVPlayer;
 - (void)_contentsChanged;
+- (void)_delegateAuthorizationForItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_expectedAssetTypesForPlaybackMode:(long long)arg1;
 - (void)_itemDidChange:(id)arg1;
 - (void)_itemWillChange:(id)arg1;
@@ -35,7 +36,6 @@
 - (void)_setState:(long long)arg1;
 - (void)addPlaybackContext:(id)arg1 toQueueWithInsertionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithPlaybackEngine:(id)arg1;
-- (void)playWithOptions:(unsigned long long)arg1;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setRepeatType:(long long)arg1;
 - (void)setShuffleType:(long long)arg1;

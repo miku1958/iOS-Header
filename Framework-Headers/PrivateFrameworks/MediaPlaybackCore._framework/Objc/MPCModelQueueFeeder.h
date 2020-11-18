@@ -10,7 +10,7 @@
 #import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
 #import <MediaPlaybackCore/MPShuffleControllerDataSource-Protocol.h>
 
-@class MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelRequest, MPModelResponse, MPPlaceholderAVItem, MPPlaybackPlaceholderMediaItem, MPShuffleController, NSDictionary, NSHashTable, NSObject, NSOperationQueue, NSString;
+@class ICUserIdentity, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelRequest, MPModelResponse, MPPlaceholderAVItem, MPPlaybackPlaceholderMediaItem, MPShuffleController, NSDictionary, NSHashTable, NSObject, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPCModelQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPShuffleControllerDataSource, MPCQueueBehaviorManaging>
@@ -39,6 +39,7 @@
     BOOL _isSiriInitiated;
     MPIdentifierSet *_startItemIdentifiers;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
+    ICUserIdentity *_proactiveCacheIdentity;
     struct map<unsigned long, MPIdentifierSet *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, MPIdentifierSet *>>> _retrievedIndexToIdentifiers;
     NSDictionary *_startTimeModifications;
 }
@@ -56,6 +57,7 @@
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
 + (id)requiredPropertiesForStaticMediaClips;
++ (BOOL)supportsSecureCoding;
 + (BOOL)supportsStateRestoration;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -82,6 +84,7 @@
 - (BOOL)_shouldRecordReturnedItemIDs;
 - (unsigned long long)_songShuffledIndexForIndex:(unsigned long long)arg1;
 - (void)_unregisterNotificationsForResponse:(id)arg1;
+- (void)_updateProactiveCaching;
 - (void)applyVolumeNormalizationForItem:(id)arg1;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
 - (id)copyRawItemAtIndex:(unsigned long long)arg1;

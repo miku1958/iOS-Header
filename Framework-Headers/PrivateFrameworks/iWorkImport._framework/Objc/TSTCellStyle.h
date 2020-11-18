@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 + (id)regionStringForTableArea:(unsigned long long)arg1;
 + (id)styleIDForPreset:(unsigned long long)arg1 andTableArea:(unsigned long long)arg2;
 + (id)textStyleIDForPreset:(unsigned long long)arg1 andTableArea:(unsigned long long)arg2;
-- (void)dealloc;
 - (void)loadCellStyleFromArchive:(const struct CellStyleArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadCellStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct CellStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
 - (void)loadFromUnarchiver:(id)arg1;

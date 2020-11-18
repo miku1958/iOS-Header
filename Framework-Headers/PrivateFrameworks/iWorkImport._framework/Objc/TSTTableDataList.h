@@ -6,7 +6,8 @@
 
 #import <iWorkImport/TSPObject.h>
 
-@class NSString, TSTIntegerKeyDict, TSTTableDataObjectKeyDict;
+@class NSObject, NSString, TSTIntegerKeyDict, TSTTableDataObjectKeyDict;
+@protocol TSDContainerInfo><TSWPStorageParent;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableDataList : TSPObject
@@ -15,6 +16,7 @@ __attribute__((visibility("hidden")))
     TSTIntegerKeyDict *mData;
     TSTTableDataObjectKeyDict *mDataToKeyDict;
     unsigned int mNextID;
+    NSObject<TSDContainerInfo><TSWPStorageParent> *_richTextParentInfo;
 }
 
 @property (readonly, nonatomic) long long count;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int listType; // @synthesize listType=mListType;
 @property (readonly, strong, nonatomic) NSString *listTypeString;
 @property (nonatomic) unsigned int nextID; // @synthesize nextID=mNextID;
+@property (nonatomic) NSObject<TSDContainerInfo><TSWPStorageParent> *richTextParentInfo; // @synthesize richTextParentInfo=_richTextParentInfo;
 
 + (Class)classForUnarchiver:(id)arg1;
 - (unsigned int)addCellFormat:(id)arg1 atSuggestedKey:(unsigned int)arg2;
@@ -36,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)addString:(id)arg1 atSuggestedKey:(unsigned int)arg2;
 - (unsigned int)addStyle:(id)arg1 atSuggestedKey:(unsigned int)arg2;
 - (id)allRichTextPayloadStorages;
+- (BOOL)auditMultipleChoiceListRefCountsAgainstExpected:(id)arg1 result:(id *)arg2;
 - (id)cellFormatForKey:(unsigned int)arg1;
 - (id)commentStorageForKey:(unsigned int)arg1;
 - (id)conditionalStyleSetForKey:(unsigned int)arg1;
@@ -50,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)importWarningSetForKey:(unsigned int)arg1;
 - (id)initWithType:(int)arg1 context:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)multipleChoiceListExpectedRefCountsFromFormatList;
 - (id)multipleChoiceListFormatForKey:(unsigned int)arg1;
 - (id)objectForKey:(unsigned int)arg1;
 - (void)p_addReferencesForKey:(unsigned int)arg1 fromObject:(id)arg2;

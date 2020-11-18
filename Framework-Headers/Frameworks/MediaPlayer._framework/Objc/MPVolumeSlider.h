@@ -39,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property (readonly, nonatomic, getter=isOnScreen) BOOL onScreen;
+@property (readonly, nonatomic, getter=isOnScreenForVolumeDisplay) BOOL onScreenForVolumeDisplay;
 @property (strong, nonatomic) MPAVController *player;
 @property (strong, nonatomic) MPAVRoute *route;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;

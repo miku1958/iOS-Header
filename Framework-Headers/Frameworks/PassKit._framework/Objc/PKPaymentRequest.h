@@ -37,20 +37,25 @@
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_CTDataConnectionServiceType;
+    unsigned long long _APIType;
     unsigned long long _requestType;
     unsigned long long _requestor;
     NSArray *_paymentContentItems;
+    NSString *_localizedSummaryItemsTitle;
     NSData *_externalizedContext;
     struct __SecAccessControl *_accesssControlRef;
     AKAppleIDAuthenticationContext *_appleIDAuthenticationContext;
     NSString *_localizedNavigationTitle;
     unsigned long long _confirmationStyle;
     NSString *_localizedConfirmationTitle;
+    NSString *_localizedBiometricConfirmationTitle;
+    NSString *_localizedPasswordButtonTitle;
     NSString *_shippingEditableMessage;
     PKPaymentMerchantSession *_merchantSession;
     double _clientCallbackTimeout;
 }
 
+@property (nonatomic) unsigned long long APIType; // @synthesize APIType=_APIType;
 @property (strong, nonatomic) NSString *CTDataConnectionServiceType; // @synthesize CTDataConnectionServiceType=_CTDataConnectionServiceType;
 @property (nonatomic) struct __SecAccessControl *accesssControlRef; // @synthesize accesssControlRef=_accesssControlRef;
 @property (strong, nonatomic) AKAppleIDAuthenticationContext *appleIDAuthenticationContext; // @synthesize appleIDAuthenticationContext=_appleIDAuthenticationContext;
@@ -63,8 +68,11 @@
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property (nonatomic) BOOL expectsMerchantSession; // @synthesize expectsMerchantSession=_expectsMerchantSession;
 @property (copy, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
+@property (copy, nonatomic) NSString *localizedBiometricConfirmationTitle; // @synthesize localizedBiometricConfirmationTitle=_localizedBiometricConfirmationTitle;
 @property (copy, nonatomic) NSString *localizedConfirmationTitle; // @synthesize localizedConfirmationTitle=_localizedConfirmationTitle;
 @property (copy, nonatomic) NSString *localizedNavigationTitle; // @synthesize localizedNavigationTitle=_localizedNavigationTitle;
+@property (copy, nonatomic) NSString *localizedPasswordButtonTitle; // @synthesize localizedPasswordButtonTitle=_localizedPasswordButtonTitle;
+@property (copy, nonatomic) NSString *localizedSummaryItemsTitle; // @synthesize localizedSummaryItemsTitle=_localizedSummaryItemsTitle;
 @property (nonatomic) unsigned long long merchantCapabilities; // @synthesize merchantCapabilities=_merchantCapabilities;
 @property (copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property (strong, nonatomic) PKPaymentMerchantSession *merchantSession; // @synthesize merchantSession=_merchantSession;

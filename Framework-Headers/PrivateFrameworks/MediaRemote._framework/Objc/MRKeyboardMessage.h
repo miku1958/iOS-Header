@@ -18,7 +18,7 @@
 @property (readonly, nonatomic) unsigned long long state;
 
 + (id)encryptedMessageWithState:(unsigned long long)arg1 text:(id)arg2 attributes:(id)arg3 usingCryptoSession:(id)arg4;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)decryptedTextUsingCryptoSession:(id)arg1;
 - (id)initWithState:(unsigned long long)arg1 encryptedTextCyphertext:(id)arg2 attributes:(id)arg3;
 - (unsigned long long)type;

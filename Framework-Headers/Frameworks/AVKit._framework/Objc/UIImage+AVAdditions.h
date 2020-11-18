@@ -7,8 +7,6 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (AVAdditions)
-- (id)imageWithEdgeInsets:(struct UIEdgeInsets)arg1;
-- (id)imageWithEtchedBorderOfColor:(id)arg1 radius:(double)arg2;
-- (id)imageWithShadow:(id)arg1;
++ (id)avkit_flatWhiteResizableTemplateImage;
 @end
 

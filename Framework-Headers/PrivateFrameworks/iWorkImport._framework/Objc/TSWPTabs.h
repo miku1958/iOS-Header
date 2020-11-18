@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
 
 + (id)instanceWithArchive:(const struct Message *)arg1 unarchiver:(id)arg2;
 + (id)tabs;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (unsigned long long)indexForTabWithPosition:(double)arg1 alignment:(int)arg2 leader:(id)arg3;

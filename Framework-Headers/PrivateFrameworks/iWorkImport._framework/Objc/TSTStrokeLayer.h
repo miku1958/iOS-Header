@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface TSTStrokeLayer : TSPObject <NSCopying, NSMutableCopying>
 {
-    vector_62d75e4b mStrokeRuns;
+    vector_613d3e5a mStrokeRuns;
     unsigned short _columnOrRowIndex;
 }
 
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)p_mergeStrokeRunsAtPosition:(unsigned long long)arg1;
 - (void)p_removeRange:(struct TSTSimpleRange)arg1;
 - (void)p_setStroke:(id)arg1 inRange:(struct TSTSimpleRange)arg2 order:(int)arg3;
-- (void)p_setStrokeRuns:(vector_62d75e4b)arg1;
+- (void)p_setStrokeRuns:(vector_613d3e5a)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (long long)startingIndex;
 - (id)strokeLayerModifiedByInsertingSpaceAt:(struct TSTSimpleRange)arg1;

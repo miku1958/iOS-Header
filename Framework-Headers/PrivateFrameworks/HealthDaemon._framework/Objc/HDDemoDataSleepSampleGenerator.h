@@ -13,6 +13,7 @@
 
 @property (nonatomic) double nextSleepDurationSampleTime; // @synthesize nextSleepDurationSampleTime=_nextSleepDurationSampleTime;
 
++ (BOOL)supportsSecureCoding;
 - (double)_computeAwakeTimeForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (double)_computeSleepTimeFromCurrentTime:(double)arg1 mean:(double)arg2 stdDev:(double)arg3;
 - (BOOL)_isDemoPersonAwake:(id)arg1 atTime:(double)arg2;

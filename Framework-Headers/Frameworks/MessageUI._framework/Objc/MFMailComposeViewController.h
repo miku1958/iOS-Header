@@ -24,6 +24,7 @@
 + (BOOL)isMailDropConfigured;
 + (unsigned long long)maximumAttachmentSize;
 + (void)removeAutosavedMessageWithIdentifier:(id)arg1;
+- (id)UTITypes;
 - (void)__viewControllerWillBePresented:(BOOL)arg1;
 - (id)_addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)_addAttachmentWithFileURL:(id)arg1 mimeType:(id)arg2;
@@ -52,6 +53,7 @@
 - (void)setSourceAccountManagement:(int)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setToRecipients:(id)arg1;
+- (void)setUTITypes:(id)arg1;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

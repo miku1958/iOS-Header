@@ -14,6 +14,7 @@
 
 @property (readonly, nonatomic) NSURL *seedTrack;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
 
 @end

@@ -16,7 +16,7 @@
 
 @property (readonly) NSDictionary *aggregationRecords; // @synthesize aggregationRecords=_aggregationRecords;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (long long)depth;
 - (void)didFinishActivity:(id)arg1 testCase:(id)arg2 observationCenter:(id)arg3;
 - (id)init;

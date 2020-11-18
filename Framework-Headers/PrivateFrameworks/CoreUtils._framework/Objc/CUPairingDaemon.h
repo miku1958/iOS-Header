@@ -46,7 +46,6 @@
 - (int)_removePairedPeer:(id)arg1 options:(unsigned long long)arg2 removeAdminAllowed:(BOOL)arg3;
 - (int)_saveIdentity:(id)arg1 options:(unsigned long long)arg2;
 - (int)_savePairedPeer:(id)arg1 options:(unsigned long long)arg2 removeAdminAllowed:(BOOL)arg3;
-- (struct os_state_data_s *)_stateDump;
 - (void)activate;
 - (id)copyIdentityWithOptions:(unsigned long long)arg1 error:(int *)arg2;
 - (id)copyPairedPeersWithOptions:(unsigned long long)arg1 error:(int *)arg2;

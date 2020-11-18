@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)initWithContext:(id)arg1 author:(id)arg2;
 - (id)initWithContext:(id)arg1 text:(id)arg2 creationDate:(id)arg3 author:(id)arg4 replies:(id)arg5;
+- (BOOL)isEqualToCommentStorage:(id)arg1;
 - (BOOL)isOwner;
 - (BOOL)isShared;
 - (void)loadFromArchive:(const struct CommentStorageArchive *)arg1 unarchiver:(id)arg2;

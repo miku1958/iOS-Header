@@ -8,7 +8,7 @@
 
 #import <ProactiveSupport/_PASAssetProtocol-Protocol.h>
 
-@class ASAsset, NSDictionary, NSMutableDictionary, NSString, _PASNotificationTracker;
+@class NSDictionary, NSString, _PASLock, _PASNotificationTracker;
 @protocol OS_dispatch_queue;
 
 @interface _PASAsset : NSObject <_PASAssetProtocol>
@@ -19,13 +19,7 @@
     int _installNotificationToken;
     int _metadataNotificationToken;
     _PASNotificationTracker *_updateNotificationTracker;
-    struct _opaque_pthread_mutex_t _lock;
-    NSString *_defaultBundlePath;
-    unsigned long long _defaultBundleVersion;
-    unsigned long long _bestAvailableVersion;
-    unsigned long long _bestAssetVersionObserved;
-    ASAsset *_bestAvailableAsset;
-    NSMutableDictionary *_overrides;
+    _PASLock *_lock;
     unsigned long long _compatibilityVersion;
 }
 
@@ -42,7 +36,7 @@
 - (id)_assetDescription;
 - (id)_initWithBundleIdentifier:(id)arg1 defaultBundlePath:(id)arg2 compatibilityVersion:(unsigned long long)arg3 matchingKeysAndValues:(id)arg4 notificationQueue:(id)arg5 enableAssetUpdates:(BOOL)arg6;
 - (void)_issueUpdateNotificationsWithCallback:(CDUnknownBlockType)arg1;
-- (void)_loadDefaultBundleVersion;
+- (void)_loadDefaultBundleVersionWithGuardedData:(id)arg1;
 - (void)_updateAssetMetadata;
 - (void)addOverridePath:(id)arg1 forResource:(id)arg2 ofType:(id)arg3;
 - (id)bundlePath;

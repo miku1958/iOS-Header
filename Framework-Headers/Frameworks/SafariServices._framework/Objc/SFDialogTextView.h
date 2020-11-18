@@ -21,7 +21,10 @@ __attribute__((visibility("hidden")))
     double _preferredMaxLayoutWidth;
     CAGradientLayer *_topGradient;
     CAGradientLayer *_bottomGradient;
+    struct UIEdgeInsets _contentInsets;
 }
+
+@property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 
 - (void).cxx_destruct;
 - (void)_updateFontStyling;
@@ -30,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)setMessage:(id)arg1;
 - (void)setPreferredMaxLayoutWidth:(double)arg1;

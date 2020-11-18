@@ -24,12 +24,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _MRAudioDataBlockProtobuf *protobuf;
 @property (readonly, nonatomic) CDStruct_ace97b7a time; // @synthesize time=_time;
 
+- (void).cxx_destruct;
 - (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (void)_parseBuffer:(id)arg1;
 - (void)_parseGain:(id)arg1;
 - (void)_parseTimestamp:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

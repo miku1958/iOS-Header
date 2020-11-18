@@ -11,6 +11,7 @@
 }
 
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
+- (void)pauseScans;
 - (void)probeReachabilityForTrackedAccessories;
 - (void)resetLastSeenForTrackedAccessories:(id)arg1;
 - (void)retrieveStateForTrackedAccessoryWithIdentifier:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

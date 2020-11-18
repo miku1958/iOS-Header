@@ -10,7 +10,7 @@
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 #import <CloudKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDOperationMetrics : NSObject <MMCSOperationMetric, NSCopying, NSSecureCoding>
@@ -30,9 +30,10 @@ __attribute__((visibility("hidden")))
     unsigned long long _assetsUploadedFileSize;
     unsigned long long _assetsDownloaded;
     unsigned long long _assetsDownloadedFileSize;
+    unsigned long long _requestCount;
     unsigned long long _retries;
     NSMutableSet *_requestUUIDs;
-    NSMutableDictionary *_requestOperationCountsByOperationTypeByRequestUUID;
+    NSMutableDictionary *_requestOperationCountsByType;
     NSMutableArray *_ranges;
 }
 
@@ -55,9 +56,9 @@ __attribute__((visibility("hidden")))
 @property unsigned long long recordsDeleted; // @synthesize recordsDeleted=_recordsDeleted;
 @property unsigned long long recordsDownloaded; // @synthesize recordsDownloaded=_recordsDownloaded;
 @property unsigned long long recordsUploaded; // @synthesize recordsUploaded=_recordsUploaded;
-@property (strong, nonatomic) NSMutableDictionary *requestOperationCountsByOperationTypeByRequestUUID; // @synthesize requestOperationCountsByOperationTypeByRequestUUID=_requestOperationCountsByOperationTypeByRequestUUID;
-@property (readonly, nonatomic) NSDictionary *requestOperationCountsByType;
-@property (strong, nonatomic) NSMutableSet *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
+@property unsigned long long requestCount; // @synthesize requestCount=_requestCount;
+@property (strong, nonatomic) NSMutableDictionary *requestOperationCountsByType; // @synthesize requestOperationCountsByType=_requestOperationCountsByType;
+@property (readonly) NSMutableSet *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property unsigned long long retries; // @synthesize retries=_retries;
 @property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
@@ -68,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithStartDate:(id)arg1;
 - (void)addCKSpecificMetricsFromMetrics:(id)arg1;
 - (void)addRange:(id)arg1;
+- (void)addRequestOperationCountsByOperationType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

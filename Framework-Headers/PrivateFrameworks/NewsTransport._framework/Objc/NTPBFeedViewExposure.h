@@ -25,6 +25,7 @@
     int _feedType;
     NSData *_feedViewExposureId;
     int _groupType;
+    NSData *_groupViewExposureId;
     int _presentationReason;
     NSString *_presentationReasonSearchString;
     NSString *_previousArticleId;
@@ -73,6 +74,7 @@
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (nonatomic) BOOL hasAdSupportedChannel;
 @property (nonatomic) BOOL hasAreaPresentationReason;
 @property (nonatomic) BOOL hasCameFromGroup;
@@ -87,6 +89,7 @@
 @property (nonatomic) BOOL hasFeedType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (nonatomic) BOOL hasGroupType;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (nonatomic) BOOL hasIsNewUserToFeed;
 @property (nonatomic) BOOL hasIsPaidSubscriberToFeed;
 @property (nonatomic) BOOL hasIsSubscribedToGroupFeed;

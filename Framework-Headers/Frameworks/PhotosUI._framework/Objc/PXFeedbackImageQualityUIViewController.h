@@ -12,9 +12,7 @@
 
 @interface PXFeedbackImageQualityUIViewController : UIViewController <PXFeedbackFormDelegate>
 {
-    BOOL _userLikedIt;
     NSArray *_assets;
-    NSDictionary *_positiveFeedback;
     NSDictionary *_negativeFeedback;
     UINavigationController *_navigationController;
     PXFeedbackLikeItOrNotComboUIViewController *_feedbackController;
@@ -29,15 +27,17 @@
 @property (strong, nonatomic) NSArray *imageQualityDiagnosticFileURLs; // @synthesize imageQualityDiagnosticFileURLs=_imageQualityDiagnosticFileURLs;
 @property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (strong, nonatomic) NSDictionary *negativeFeedback; // @synthesize negativeFeedback=_negativeFeedback;
-@property (strong, nonatomic) NSDictionary *positiveFeedback; // @synthesize positiveFeedback=_positiveFeedback;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL userLikedIt; // @synthesize userLikedIt=_userLikedIt;
 
 - (void).cxx_destruct;
+- (id)_componentIDForComponent:(long long)arg1;
+- (id)_componentNameForComponent:(long long)arg1;
 - (void)_fileRadarWithAssets:(id)arg1 positiveFeedback:(id)arg2 negativeFeedback:(id)arg3 customFeedback:(id)arg4;
 - (void)_generateResourceFilesForAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_generateTitleForFeedback:(id)arg1;
 - (id)_generateURLForAssetDBGFiles:(id)arg1;
 - (id)_generateURLsForAssetsDBGFiles:(id)arg1;
+- (long long)_radarComponentForFeedback:(id)arg1;
 - (id)initWithAssets:(id)arg1;
 - (id)longTitleText;
 - (id)negativeFeedbackKeys;
@@ -50,6 +50,7 @@
 - (void)viewDidLoad;
 - (id)viewTitleForRadar;
 - (BOOL)wantsCustomFeedbackSection;
+- (BOOL)wantsPositiveFeedbackSection;
 
 @end
 

@@ -55,6 +55,8 @@
 + (id)predicateForActivitySummariesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForActivitySummaryWithDateComponents:(id)arg1;
 + (id)predicateForCategorySamplesWithOperatorType:(unsigned long long)arg1 value:(long long)arg2;
++ (id)predicateForCreationDateWithTodayViewRange:(id)arg1;
++ (id)predicateForDiagnosticTestResultCategory:(id)arg1;
 + (id)predicateForObjectWithUUID:(id)arg1;
 + (id)predicateForObjectsFromDevices:(id)arg1;
 + (id)predicateForObjectsFromSource:(id)arg1;
@@ -68,6 +70,8 @@
 + (id)predicateForObjectsWithNoCorrelation;
 + (id)predicateForObjectsWithUUIDs:(id)arg1;
 + (id)predicateForQuantitySamplesWithOperatorType:(unsigned long long)arg1 quantity:(id)arg2;
++ (id)predicateForRecordsFromClinicalAccountIdentifier:(id)arg1;
++ (id)predicateForRecordsWithSortDateFromStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForSamplesAssociatedWithSample:(id)arg1;
 + (id)predicateForSamplesForDayFromDate:(id)arg1 calendar:(id)arg2 options:(unsigned long long)arg3;
 + (id)predicateForSamplesWithStartDate:(id)arg1 endDate:(id)arg2 inclusiveEndDates:(BOOL)arg3 options:(unsigned long long)arg4;

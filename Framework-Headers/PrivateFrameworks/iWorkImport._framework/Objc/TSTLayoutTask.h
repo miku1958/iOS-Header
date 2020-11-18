@@ -13,16 +13,18 @@
 __attribute__((visibility("hidden")))
 @interface TSTLayoutTask : NSObject <NSCopying>
 {
-    TSTMasterLayout *mMasterLayout;
-    NSMutableArray *mCellStatesToLayout;
+    TSTMasterLayout *_masterLayout;
+    NSMutableArray *_cellStatesToLayout;
 }
 
+@property (readonly, nonatomic) NSMutableArray *cellStatesToLayout; // @synthesize cellStatesToLayout=_cellStatesToLayout;
+@property (readonly, weak, nonatomic) TSTMasterLayout *masterLayout; // @synthesize masterLayout=_masterLayout;
 @property (readonly, nonatomic) unsigned long long numberOfCellStates;
 
+- (void).cxx_destruct;
 - (void)addCellState:(id)arg1;
 - (void)clear;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)enumerateCellStatesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithLayoutTask:(id)arg1;
 - (id)initWithMasterLayout:(id)arg1;

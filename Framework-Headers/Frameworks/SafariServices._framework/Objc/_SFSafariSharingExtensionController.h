@@ -19,7 +19,7 @@
 - (id)_extensionControllerProxy;
 - (void)finalizeJavaScriptForSharingExtension:(id)arg1 arguments:(id)arg2;
 - (id)initWithWebView:(id)arg1;
-- (void)runJavaScriptForSharingExtension:(id)arg1 javaScript:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)runJavaScriptForSharingExtension:(id)arg1 javaScript:(id)arg2 extraArguments:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

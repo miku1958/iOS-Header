@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double viewScale; // @synthesize viewScale=_viewScale;
 
 + (id)badgeWithType:(int)arg1 color:(id)arg2 viewScale:(double)arg3 frame:(struct CGRect)arg4;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)drawInContext:(struct CGContext *)arg1;
 
 @end

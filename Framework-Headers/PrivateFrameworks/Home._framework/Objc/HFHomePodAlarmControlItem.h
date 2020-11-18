@@ -7,19 +7,21 @@
 #import <Home/HFControlItem.h>
 
 @class HFMediaProfileContainerSettingsValueManager;
+@protocol HFMediaProfileContainer;
 
 @interface HFHomePodAlarmControlItem : HFControlItem
 {
-    HFMediaProfileContainerSettingsValueManager *_valueManager;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
 }
 
-@property (strong, nonatomic) HFMediaProfileContainerSettingsValueManager *valueManager; // @synthesize valueManager=_valueManager;
+@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
+@property (readonly, nonatomic) HFMediaProfileContainerSettingsValueManager *valueManager;
 
 + (Class)valueClass;
 - (void).cxx_destruct;
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
-- (id)initWithValueManager:(id)arg1 displayResults:(id)arg2;
+- (id)initWithMediaProfileContainer:(id)arg1 displayResults:(id)arg2;
 - (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)normalizedValueForValue:(id)arg1;
 - (id)readValueAndPopulateStandardResults;

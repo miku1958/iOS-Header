@@ -14,6 +14,7 @@
 - (NSURL *)formAutoFillControllerURLForFormAutoFill:(_SFFormAutoFillController *)arg1;
 
 @optional
+- (void)formAutoFillControllerDidFocusSensitiveFormField:(_SFFormAutoFillController *)arg1;
 - (void)formAutoFillControllerGetAuthenticationForAutoFill:(_SFFormAutoFillController *)arg1 onPageLoad:(BOOL)arg2 completion:(void (^)(BOOL))arg3;
 - (void)formAutoFillControllerGetAuthenticationForAutoFillOnPageLoad:(_SFFormAutoFillController *)arg1 completion:(void (^)(BOOL))arg2;
 @end

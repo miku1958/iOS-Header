@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DOMDocument, DOMDocumentFragment, DOMElement, LPCSSResolver, LPCaptionBarPresentationProperties, LPHTMLComponent, LPHTMLVideoComponent, LPImage, LPLinkMetadata, LPMetadataProvider, LPTheme, LPVideo, NSString, NSURL, UIColor;
+@class DOMDocument, DOMDocumentFragment, DOMElement, LPCSSResolver, LPCaptionBarPresentationProperties, LPHTMLComponent, LPHTMLVideoComponent, LPImage, LPLinkMetadata, LPMetadataProvider, LPPointUnit, LPTheme, LPVideo, NSString, NSURL, UIColor;
 @protocol LPLinkHTMLGeneratorDelegate;
 
 @interface LPLinkHTMLGenerator : NSObject
@@ -21,6 +21,7 @@
     LPImage *_image;
     LPVideo *_video;
     UIColor *_backgroundColor;
+    LPPointUnit *_minimumRootHeight;
     DOMElement *_rootElement;
     LPHTMLComponent *_linkComponent;
     LPHTMLVideoComponent *_videoComponent;
@@ -57,7 +58,9 @@
 @property (readonly, nonatomic) BOOL hasTallMedia;
 @property (readonly, nonatomic) BOOL isPreliminary; // @synthesize isPreliminary=_isPreliminary;
 @property (copy, nonatomic) LPLinkMetadata *metadata; // @synthesize metadata=_metadata;
+@property (readonly, nonatomic) LPPointUnit *minimumRootHeight;
 @property (readonly, nonatomic) DOMDocument *parentDocument; // @synthesize parentDocument=_parentDocument;
+@property (readonly, nonatomic) LPPointUnit *rootWidth;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (readonly, nonatomic) LPTheme *theme; // @synthesize theme=_theme;
 @property (readonly, nonatomic) BOOL useFlexibleWidth;

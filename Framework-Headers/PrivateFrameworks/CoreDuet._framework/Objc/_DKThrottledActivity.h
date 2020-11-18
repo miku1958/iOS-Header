@@ -20,6 +20,9 @@
 
 + (id)standardInstance;
 - (void).cxx_destruct;
+- (void)_minimumIntervalScheduledActionsAddActionName:(id)arg1;
+- (BOOL)_minimumIntervalScheduledActionsContainsActionName:(id)arg1;
+- (void)_minimumIntervalScheduledActionsRemoveActionName:(id)arg1;
 - (void)_performNoMoreOftenInSecondsThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3 throttleBlock:(CDUnknownBlockType)arg4;
 - (void)_performOrScheduleWithTimeInterval:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4 callDepth:(unsigned long long)arg5;
 - (void)_performWithDelayInSecondsOf:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4;

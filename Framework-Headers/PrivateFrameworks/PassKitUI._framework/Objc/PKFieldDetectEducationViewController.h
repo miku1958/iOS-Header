@@ -20,8 +20,8 @@
     AVPlayerLayer *_video;
     AVPlayer *_player;
     AVPlayerItem *_playerItem;
-    BOOL _playerWasRemoved;
     BOOL _playerStarted;
+    BOOL _invalidated;
     CDUnknownBlockType _continueHandler;
 }
 
@@ -38,6 +38,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPaymentPass:(id)arg1;
+- (void)invalidate;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performContinue;

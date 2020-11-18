@@ -32,6 +32,7 @@
     NSUUID *_userUUID;
     id<NEConfigurationManagerDelegate> _delegate;
     long long _configurationChangeSource;
+    CDUnknownBlockType _getIndexDelegateCallback;
 }
 
 @property (strong) NSData *SCPreferencesSignature; // @synthesize SCPreferencesSignature=_SCPreferencesSignature;
@@ -43,6 +44,7 @@
 @property (strong) NSKeyedUnarchiver *decoder; // @synthesize decoder=_decoder;
 @property (strong) id<NEConfigurationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property long long generation; // @synthesize generation=_generation;
+@property (copy) CDUnknownBlockType getIndexDelegateCallback; // @synthesize getIndexDelegateCallback=_getIndexDelegateCallback;
 @property BOOL hasReadPermission; // @synthesize hasReadPermission=_hasReadPermission;
 @property BOOL hasVPNAPIEntitlement; // @synthesize hasVPNAPIEntitlement=_hasVPNAPIEntitlement;
 @property (readonly) NEHelper *helper;
@@ -69,6 +71,7 @@
 - (void)copyIdentities:(id)arg1 fromDomain:(long long)arg2 withCompletionQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)decodeConfigurationWithIdentifier:(id)arg1;
+- (void)deregisterForChangeNotifications;
 - (id)description;
 - (void)didLoadConfiguration:(id)arg1;
 - (void)didLoadConfiguration:(id)arg1 withSignature:(id)arg2;

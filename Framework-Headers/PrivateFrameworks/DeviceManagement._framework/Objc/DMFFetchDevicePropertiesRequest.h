@@ -15,7 +15,14 @@
 
 @property (copy, nonatomic) NSArray *propertyKeys; // @synthesize propertyKeys=_propertyKeys;
 
++ (id)allPlatformDevicePropertyKeys;
++ (id)currentPlatformDevicePropertyKeys;
++ (id)iOSDevicePropertyKeys;
++ (id)iOSPlatformDevicePropertyKeys;
++ (id)macOSDevicePropertyKeys;
 + (BOOL)supportsSecureCoding;
++ (id)tvOSDevicePropertyKeys;
++ (id)watchOSDevicePropertyKeys;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     NSString *_scientificString;
     NSString *_decimalString;
     NSString *_decimalSeparator;
+    NSString *_plusSign;
+    NSString *_minusSign;
     NSString *_currencyDecimalSeparator;
     NSString *_groupingSeparator;
     NSString *_currencyGroupingSeparator;
@@ -37,6 +39,9 @@ __attribute__((visibility("hidden")))
     NSString *_additionalCurrencyCode;
     NSDictionary *_additionalCurrencyCodeFormatters;
 }
+
+@property (readonly, nonatomic) NSString *minusSign;
+@property (readonly, nonatomic) NSString *plusSign;
 
 + (id)availableCurrencyCodes;
 + (struct __CFNumberFormatter *)createHarmonizedCFNumberFormatterWithLocale:(id)arg1 style:(long long)arg2;

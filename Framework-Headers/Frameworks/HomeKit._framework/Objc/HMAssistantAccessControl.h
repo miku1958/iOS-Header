@@ -23,7 +23,6 @@
 @property (readonly, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long options; // @synthesize options=_options;
 
-+ (id)accessoriesClasses;
 + (BOOL)isAccessorySupported:(id)arg1;
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;

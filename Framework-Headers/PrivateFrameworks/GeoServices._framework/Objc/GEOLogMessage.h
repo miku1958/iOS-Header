@@ -29,6 +29,7 @@
 
 + (id)acceptedLogMsgEvents;
 + (id)acceptedLogMsgEventsForLogMessageType:(int)arg1;
++ (BOOL)allowApplicationStatesForLogMsgEvent:(id)arg1;
 + (id)allowedSessionTypes;
 + (BOOL)disallowedStateWithStateType:(int)arg1 logMsgEvent:(id)arg2 logMessage:(id)arg3;
 + (id)disallowedStatesForLogMsgEvent:(id)arg1 logMessage:(id)arg2;
@@ -62,6 +63,7 @@
 - (unsigned long long)logMsgEventsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)removeUnsupportedStatesFromEvent;
 - (void)writeTo:(id)arg1;
 
 @end

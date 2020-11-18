@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 
 + (id)pairWithSemanticTag:(id)arg1 property:(int)arg2;
 + (id)semanticTagToSemanticUsagesMapForSemanticUsages:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithSemanticTag:(id)arg1 property:(int)arg2;

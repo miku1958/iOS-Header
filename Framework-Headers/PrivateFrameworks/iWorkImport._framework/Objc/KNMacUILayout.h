@@ -12,25 +12,25 @@
 __attribute__((visibility("hidden")))
 @interface KNMacUILayout : NSObject <NSCopying, NSMutableCopying>
 {
-    BOOL mShowingInspectorPane;
-    BOOL mInspectorPaneAutoHidden;
-    BOOL mShowingSidebar;
-    BOOL mShowingNavigatorViewInSidebar;
-    BOOL mShowingPresenterNotes;
-    BOOL mShowingLightTable;
-    BOOL mShowingMasterSlides;
-    BOOL mShowingElementList;
-    long long mInspectorPaneViewMode;
+    BOOL _showingInspectorPane;
+    BOOL _inspectorPaneAutoHidden;
+    BOOL _showingSidebar;
+    BOOL _showingNavigatorViewInSidebar;
+    BOOL _showingPresenterNotes;
+    BOOL _showingLightTable;
+    BOOL _showingMasterSlides;
+    BOOL _showingElementList;
+    long long _inspectorPaneViewMode;
 }
 
 @property (readonly, nonatomic) long long inspectorPaneHiddenState;
-@property (readonly, nonatomic) long long inspectorPaneViewMode; // @synthesize inspectorPaneViewMode=mInspectorPaneViewMode;
+@property (readonly, nonatomic) long long inspectorPaneViewMode; // @synthesize inspectorPaneViewMode=_inspectorPaneViewMode;
 @property (readonly, nonatomic, getter=p_isShowingNavigatorViewInSidebar) BOOL p_showingNavigatorViewInSidebar;
-@property (readonly, nonatomic, getter=isShowingElementList) BOOL showingElementList; // @synthesize showingElementList=mShowingElementList;
-@property (readonly, nonatomic, getter=isShowingLightTable) BOOL showingLightTable; // @synthesize showingLightTable=mShowingLightTable;
-@property (readonly, nonatomic, getter=isShowingMasterSlides) BOOL showingMasterSlides; // @synthesize showingMasterSlides=mShowingMasterSlides;
-@property (readonly, nonatomic, getter=isShowingPresenterNotes) BOOL showingPresenterNotes; // @synthesize showingPresenterNotes=mShowingPresenterNotes;
-@property (readonly, nonatomic, getter=isShowingSidebar) BOOL showingSidebar; // @synthesize showingSidebar=mShowingSidebar;
+@property (readonly, nonatomic, getter=isShowingElementList) BOOL showingElementList; // @synthesize showingElementList=_showingElementList;
+@property (readonly, nonatomic, getter=isShowingLightTable) BOOL showingLightTable; // @synthesize showingLightTable=_showingLightTable;
+@property (readonly, nonatomic, getter=isShowingMasterSlides) BOOL showingMasterSlides; // @synthesize showingMasterSlides=_showingMasterSlides;
+@property (readonly, nonatomic, getter=isShowingPresenterNotes) BOOL showingPresenterNotes; // @synthesize showingPresenterNotes=_showingPresenterNotes;
+@property (readonly, nonatomic, getter=isShowingSidebar) BOOL showingSidebar; // @synthesize showingSidebar=_showingSidebar;
 @property (readonly, nonatomic) long long sidebarViewMode;
 
 + (id)uiLayoutFromArchive:(const struct DesktopUILayoutArchive *)arg1 unarchiver:(id)arg2 context:(id)arg3;

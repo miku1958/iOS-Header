@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/NSCoding-Protocol.h>
 #import <MusicLibrary/NSCopying-Protocol.h>
+#import <MusicLibrary/NSSecureCoding-Protocol.h>
 
 @class ML3AggregateQuery, ML3MusicLibrary, ML3Predicate, NSArray, NSString;
 
-@interface ML3Query : NSObject <NSCoding, NSCopying>
+@interface ML3Query : NSObject <NSSecureCoding, NSCopying>
 {
     ML3MusicLibrary *_library;
     Class _entityClass;
@@ -46,6 +46,7 @@
 @property (readonly, nonatomic) NSString *selectPersistentIDsSQL;
 @property (readonly, nonatomic) BOOL usingSections; // @synthesize usingSections=_usingSections;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countOfDistinctRowsForColumn:(id)arg1;

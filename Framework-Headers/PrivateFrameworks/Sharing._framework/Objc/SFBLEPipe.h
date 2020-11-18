@@ -9,7 +9,7 @@
 #import <Sharing/CBCentralManagerDelegate-Protocol.h>
 #import <Sharing/CBScalablePipeManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CBScalablePipe, CBScalablePipeManager, NSData, NSMutableData, NSString, SFBLEData;
+@class CBCentralManager, CBScalablePipe, CBScalablePipeManager, NSData, NSDate, NSMutableData, NSString, SFBLEData;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFBLEPipe : NSObject <CBCentralManagerDelegate, CBScalablePipeManagerDelegate>
@@ -41,6 +41,7 @@
     CBScalablePipeManager *_btPipeManager;
     struct NSMutableDictionary *_frameHandlers;
     BOOL _invalidateCalled;
+    NSDate *_lastDisconnectDate;
     struct LogCategory *_ucat;
     BOOL _manualConnect;
     CDUnknownBlockType _bluetoothStateChangedHandler;
@@ -84,6 +85,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (void)postedConnectionStateChanged;
 - (void)removeFrameHandlerForType:(unsigned char)arg1;
 - (void)scalablePipeManager:(id)arg1 didRegisterEndpoint:(id)arg2 error:(id)arg3;
 - (void)scalablePipeManager:(id)arg1 didUnregisterEndpoint:(id)arg2;

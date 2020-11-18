@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/NSCoding-Protocol.h>
 #import <MusicLibrary/NSCopying-Protocol.h>
+#import <MusicLibrary/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ML3OrderingTerm : NSObject <NSCopying, NSCoding>
+@interface ML3OrderingTerm : NSObject <NSCopying, NSSecureCoding>
 {
     int _direction;
     NSString *_property;
@@ -25,6 +25,7 @@
 + (id)orderingTermWithProperty:(id)arg1;
 + (id)orderingTermWithProperty:(id)arg1 direction:(int)arg2;
 + (id)reversedTerms:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

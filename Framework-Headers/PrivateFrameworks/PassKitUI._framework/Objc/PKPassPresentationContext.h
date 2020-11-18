@@ -12,6 +12,7 @@
 @interface PKPassPresentationContext : NSObject
 {
     BOOL _animated;
+    BOOL _fieldDetect;
     BOOL _postPayment;
     BOOL _persistentCardEmulation;
     BOOL _wasAutomaticallySelected;
@@ -21,6 +22,7 @@
 
 @property (copy, nonatomic) NSArray *additionalPassUniqueIdentifiers; // @synthesize additionalPassUniqueIdentifiers=_additionalPassUniqueIdentifiers;
 @property (nonatomic) BOOL animated; // @synthesize animated=_animated;
+@property (nonatomic, getter=isFieldDetect) BOOL fieldDetect; // @synthesize fieldDetect=_fieldDetect;
 @property (nonatomic, getter=wantsPersistentCardEmulation) BOOL persistentCardEmulation; // @synthesize persistentCardEmulation=_persistentCardEmulation;
 @property (nonatomic, getter=isPostPayment) BOOL postPayment; // @synthesize postPayment=_postPayment;
 @property (copy, nonatomic) id<NSCopying> userInfo; // @synthesize userInfo=_userInfo;

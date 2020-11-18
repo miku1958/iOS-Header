@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/CLKUIQuadViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/CLKUIResourceProviderDelegate-Protocol.h>
 
-@class CLKUIQuadView, NSString, NTKFaceLayoutContentProvider, NTKKaleidoscopePathfinder, UIColor;
+@class CLKUIQuadView, CLKUIResourceProviderKey, NSString, NTKFaceLayoutContentProvider, NTKKaleidoscopePathfinder, UIColor;
 
 @interface NTKKaleidoscopeFaceView : NTKAnalogFaceView <CLKUIQuadViewDelegate, CLKUIResourceProviderDelegate>
 {
@@ -23,6 +23,7 @@
     UIColor *_complicationPlatterColor;
     double _lastComplicationUpdateTime;
     struct CGColorSpace *_extendedSRGBcolorSpace;
+    CLKUIResourceProviderKey *_resourceProviderKey;
     float _crownTurnsPerRotation;
     double _dayDuration;
     unsigned long long _currentAsset;
@@ -55,7 +56,6 @@
 - (float)_crownTurnsForStyle:(unsigned long long)arg1;
 - (void)_disableCrown;
 - (double)_handAlphaForEditMode:(long long)arg1;
-- (double)_idealizedOffsetPercentageForAsset:(unsigned long long)arg1;
 - (id)_imageForAsset:(unsigned long long)arg1;
 - (double)_kaleidoscopeTimeForAsset:(unsigned long long)arg1;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -86,11 +86,11 @@
 - (void)_updateUserContent;
 - (void)_updateWithAsset:(unsigned long long)arg1;
 - (double)_verticalPaddingForStatusBar;
-- (void)addResourceUuidsToKeep:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)provideTextureBacking:(id)arg1;
+- (id)provideAtlasBacking:(id)arg1;
 - (void)quadViewWillDisplay:(id)arg1 forTime:(double)arg2;
+- (id)resourceProviderKey;
 
 @end
 

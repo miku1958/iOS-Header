@@ -10,7 +10,6 @@
 @protocol UIViewControllerTransitioningDelegate;
 
 @protocol AVFullScreenViewControllerDelegate <NSObject>
-- (void)fullScreenViewControllerDidEndFullScreenPresentation:(AVFullScreenViewController *)arg1 wasInteractive:(BOOL)arg2;
 - (void)fullScreenViewControllerNeedsAppBasedStatusBarAppearanceUpdate:(AVFullScreenViewController *)arg1;
 - (void)fullScreenViewControllerWillBeginFullScreenPresentation:(AVFullScreenViewController *)arg1;
 - (UIResponder *)keyCommandResponderForFullScreenViewController:(AVFullScreenViewController *)arg1;

@@ -10,8 +10,9 @@
 {
 }
 
-+ (BOOL)_networkConnectivityAvailable;
-+ (void)presentApplePayLocallyStoredValueOfflineWarningIfNeededInController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (void)_attemptToMarkAllAppletsForDeletionWithCompletion:(CDUnknownBlockType)arg1;
++ (void)_presentApplePayLocallyStoredValueWarningInController:(id)arg1 unableToConnect:(BOOL)arg2 legacyDevice:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
++ (void)presentApplePayLocallyStoredValueOfflineWarningIfNeededInController:(id)arg1 forPairedDevice:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 + (id)remoteLocallyStoredValuePassNames;
 
 @end

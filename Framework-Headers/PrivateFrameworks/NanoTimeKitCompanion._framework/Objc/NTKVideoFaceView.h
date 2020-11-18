@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)_applyComplicationContentSpecificAttributesWithColor:(id)arg1 animated:(BOOL)arg2;
+- (void)_applyComplicationContentSpecificAttributesWithColor:(id)arg1 animated:(BOOL)arg2 useComplicationFlickerWorkaround:(BOOL)arg3;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterEditing;
 - (id)_complicationDisplayWrapperForTouch:(id)arg1;

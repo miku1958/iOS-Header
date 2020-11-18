@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSMutableSet;
 @protocol AssetCacheServicesReporterDelegate, OS_dispatch_queue, OS_os_log;
 
 @interface AssetCacheServicesReporter : NSObject
@@ -15,8 +15,10 @@
     NSObject<OS_dispatch_queue> *_weakDelegateQueue;
     NSObject<OS_os_log> *_logHandle;
     NSMutableDictionary *_results;
+    NSMutableSet *_allServerHostPorts;
 }
 
+@property (strong) NSMutableSet *allServerHostPorts; // @synthesize allServerHostPorts=_allServerHostPorts;
 @property (strong) NSObject<OS_os_log> *logHandle; // @synthesize logHandle=_logHandle;
 @property (strong) NSMutableDictionary *results; // @synthesize results=_results;
 @property (weak) id<AssetCacheServicesReporterDelegate> weakDelegate; // @synthesize weakDelegate=_weakDelegate;
@@ -35,7 +37,11 @@
 - (void)reportMightHaveWithKeyPath:(id)arg1;
 - (void)reportPublicIPAddress;
 - (void)reportPublicIPAddressRangesWithKeyPath:(id)arg1;
+- (void)reportReachability;
 - (void)reportServersWithKeyPath:(id)arg1 generateOptions:(CDUnknownBlockType)arg2;
+- (id)serverSortInfoForHostPort:(id)arg1 rank:(id)arg2;
+- (id)sortedHostPorts:(id)arg1;
+- (id)sortedHostPorts:(id)arg1 usingSortInfo:(id)arg2;
 - (void)start;
 - (void)willStartGatheringResultsForKeyPath:(id)arg1;
 

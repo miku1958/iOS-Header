@@ -31,12 +31,17 @@
 - (id)init;
 - (id)initWithTechniques:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)predictedResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (id)processData:(id)arg1;
 - (id)processResultData:(id)arg1 timestamp:(double)arg2 context:(id)arg3;
+- (void)reconfigureFrom:(id)arg1;
+- (void)replaceTechniques:(id)arg1;
 - (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (unsigned long long)requiredSensorDataTypes;
+- (id)resultDataClasses;
 - (void)technique:(id)arg1 didFailWithError:(id)arg2;
 - (void)technique:(id)arg1 didOutputResultData:(id)arg2 timestamp:(double)arg3 context:(id)arg4;
+- (id)techniqueOfClass:(Class)arg1;
 
 @end
 

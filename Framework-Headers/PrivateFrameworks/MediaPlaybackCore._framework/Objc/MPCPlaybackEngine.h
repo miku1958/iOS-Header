@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlaybackIntent, MPProtocolProxy, NSString, UIView, _MPCAVController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCReportingController;
+@class MPCPlaybackIntent, MPCPlayerPath, MPProtocolProxy, NSString, UIView, _MPCAVController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCReportingController;
 @protocol MPCPlaybackEngineDelegate, MPCPlaybackEngineEventObserving;
 
 @interface MPCPlaybackEngine : NSObject
 {
-    BOOL _isPreparingForImminentPlaybackIntent;
     BOOL _pictureInPictureSupported;
     BOOL _videoSupported;
     BOOL _stateRestorationSupported;
@@ -35,6 +34,7 @@
 @property (readonly, nonatomic) _MPCMediaRemotePublisher *mediaRemotePublisher; // @synthesize mediaRemotePublisher=_mediaRemotePublisher;
 @property (nonatomic, getter=isPictureInPictureSupported) BOOL pictureInPictureSupported; // @synthesize pictureInPictureSupported=_pictureInPictureSupported;
 @property (readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
+@property (readonly, nonatomic) MPCPlayerPath *playerPath;
 @property (readonly, nonatomic) _MPCReportingController *reportingController; // @synthesize reportingController=_reportingController;
 @property (nonatomic, getter=hasScheduledPlaybackStatePreservation) BOOL scheduledPlaybackStatePreservation; // @synthesize scheduledPlaybackStatePreservation=_scheduledPlaybackStatePreservation;
 @property (nonatomic, getter=isStateRestorationSupported) BOOL stateRestorationSupported; // @synthesize stateRestorationSupported=_stateRestorationSupported;
@@ -44,14 +44,13 @@
 
 + (void)preheatPlayback;
 - (void).cxx_destruct;
-- (id)_playerForMusicPlayerServer;
+- (void)_initializePlaybackStack;
 - (void)_preservePlaybackStateImmediately;
 - (void)_restorePlaybackStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addEngineObserver:(id)arg1;
 - (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
 - (void)becomeActive;
 - (id)initWithPlayerID:(id)arg1;
-- (void)prepareForImminentPlaybackIntent;
 - (void)removeEngineObserver:(id)arg1;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
 - (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;

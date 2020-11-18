@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
     id<TSPObjectDelegate> _objectDelegate;
     id<TSPLazyReferenceDelegate> _lazyReferenceDelegate;
     id<TSPUnarchiverDelegate> _delegate;
-    vector_029d225a _references;
-    vector_8ef431c5 _repeatedReferences;
-    vector_667badbd _finalizeHandlers;
+    vector_adb99b2c _references;
+    vector_cc556b2d _repeatedReferences;
+    vector_3c415888 _finalizeHandlers;
     struct FieldPath *_currentFieldPath;
 }
 
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)addFinalizeHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (set_713dd2e1 *)filterIdentifiers:(const set_713dd2e1 *)arg1;
-- (vector_667badbd *)finalizeHandlers;
+- (vector_3c415888 *)finalizeHandlers;
 - (id)initWithMessageType:(unsigned int)arg1 message:(auto_ptr_4370f086)arg2 identifier:(long long)arg3 strongReferences:(auto_ptr_945ad503)arg4 messageVersion:(unsigned long long)arg5 unknownContent:(id)arg6 objectDelegate:(id)arg7 lazyReferenceDelegate:(id)arg8 delegate:(id)arg9;
 - (const struct Message *)message;
 - (void)pushScopeForField:(int)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -87,9 +87,9 @@ __attribute__((visibility("hidden")))
 - (void)readWeakReferenceMessage:(const struct Reference *)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)readWeakReferenceMessage:(const struct Reference *)arg1 repeatedMessage:(const RepeatedPtrField_a0d2dbe7 *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)readWeakReferenceToObjectUUID:(id)arg1 delegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (vector_029d225a *)references;
-- (vector_8ef431c5 *)repeatedReferences;
-- (unordered_map_502345cb *)strongReferences;
+- (vector_adb99b2c *)references;
+- (vector_cc556b2d *)repeatedReferences;
+- (unordered_map_38045d47 *)strongReferences;
 - (void)validateReferenceToObjectIdentifier:(long long)arg1 isWeak:(BOOL *)arg2 validateStrongReferences:(BOOL)arg3 selector:(SEL)arg4 weakSelector:(SEL)arg5;
 
 @end

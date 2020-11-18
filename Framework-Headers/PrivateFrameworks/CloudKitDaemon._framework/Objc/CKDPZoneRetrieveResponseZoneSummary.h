@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPDate, CKDPZone, CKDPZoneCapabilities, NSData;
+@class CKDPDate, CKDPZone, CKDPZoneCapabilities, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveResponseZoneSummary : PBCodable <NSCopying>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSData *_currentServerContinuationToken;
     int _deviceCount;
     CKDPZone *_targetZone;
+    NSString *_zonePcsModificationDevice;
     CKDPDate *_zonePcsModificationTime;
     BOOL _zoneKeyRollAllowed;
     BOOL _zoneishPcsNeedsRolled;
@@ -45,11 +46,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasMetadataQuotaUsage;
 @property (readonly, nonatomic) BOOL hasTargetZone;
 @property (nonatomic) BOOL hasZoneKeyRollAllowed;
+@property (readonly, nonatomic) BOOL hasZonePcsModificationDevice;
 @property (readonly, nonatomic) BOOL hasZonePcsModificationTime;
 @property (nonatomic) BOOL hasZoneishPcsNeedsRolled;
 @property (nonatomic) long long metadataQuotaUsage; // @synthesize metadataQuotaUsage=_metadataQuotaUsage;
 @property (strong, nonatomic) CKDPZone *targetZone; // @synthesize targetZone=_targetZone;
 @property (nonatomic) BOOL zoneKeyRollAllowed; // @synthesize zoneKeyRollAllowed=_zoneKeyRollAllowed;
+@property (strong, nonatomic) NSString *zonePcsModificationDevice; // @synthesize zonePcsModificationDevice=_zonePcsModificationDevice;
 @property (strong, nonatomic) CKDPDate *zonePcsModificationTime; // @synthesize zonePcsModificationTime=_zonePcsModificationTime;
 @property (nonatomic) BOOL zoneishPcsNeedsRolled; // @synthesize zoneishPcsNeedsRolled=_zoneishPcsNeedsRolled;
 

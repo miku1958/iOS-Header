@@ -19,6 +19,7 @@
 + (id)currentSession;
 - (void).cxx_destruct;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithSessionStartDate:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

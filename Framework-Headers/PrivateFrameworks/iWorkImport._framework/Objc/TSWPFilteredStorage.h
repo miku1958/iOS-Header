@@ -24,10 +24,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)filteredStorageRemovingDeletionsFromStorage:(id)arg1 subRange:(struct _NSRange)arg2;
+- (void).cxx_destruct;
 - (BOOL)adjustRangesByDelta:(long long)arg1 startingAt:(unsigned long long)arg2;
 - (id)attachmentAtCharIndex:(unsigned long long)arg1;
 - (id)attachmentOrFootnoteAtCharIndex:(unsigned long long)arg1;
-- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [20])arg2 attributesTable:(id [20])arg3 effectiveRange:(struct _NSRange *)arg4;
+- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [21])arg2 attributesTable:(id [21])arg3 effectiveRange:(struct _NSRange *)arg4;
 - (unsigned long long)changeCount;
 - (unsigned long long)charIndexMappedFromStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexMappedToStorage:(unsigned long long)arg1;
@@ -37,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)charRangeRemappedFromStorage:(struct _NSRange)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (id)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
-- (void)dealloc;
 - (void)enumerateSmartFieldsWithAttributeKind:(int)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateWithAttributeKind:(int)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)footnoteReferenceAtCharIndex:(unsigned long long)arg1;
@@ -45,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasColumnBreakAtCharIndex:(unsigned long long)arg1;
 - (BOOL)hasColumnStyleForParagraphBreakAtCharIndex:(unsigned long long)arg1;
 - (BOOL)hasSmartFieldsInRange:(struct _NSRange)arg1;
-- (long long)hyphenationLocationBeforeIndex:(long long)arg1 inRange:(struct _NSRange)arg2 locale:(struct __CFLocale *)arg3 hyphenChar:(unsigned int *)arg4;
+- (long long)hyphenationLocationBeforeIndex:(long long)arg1 inRange:(struct _NSRange)arg2 locale:(id)arg3 hyphenChar:(unsigned int *)arg4;
 - (id)initWithStorage:(id)arg1 subRange:(struct _NSRange)arg2;
 - (id)initWithStorage:(id)arg1 subRange:(struct _NSRange)arg2 removeRanges:(id)arg3;
 - (BOOL)isWritingDirectionRightToLeftForParagraphAtCharIndex:(unsigned long long)arg1;

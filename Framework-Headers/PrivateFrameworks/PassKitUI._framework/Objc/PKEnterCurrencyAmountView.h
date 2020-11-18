@@ -8,7 +8,7 @@
 
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSNumber, NSNumberFormatter, NSString, PKNumberPadInputView, UIColor, UIFont, UILabel, UITextField;
+@class NSDecimalNumber, NSDecimalNumberHandler, NSNumber, NSNumberFormatter, NSString, PKNumberPadInputView, UIColor, UIFont, UILabel, UITextField;
 @protocol PKEnterCurrencyAmountViewDelegate;
 
 @interface PKEnterCurrencyAmountView : UIView <UITextFieldDelegate>
@@ -21,23 +21,23 @@
     UIColor *_textColor;
     UIFont *_amountFont;
     NSNumber *_kerning;
-    UIFont *_currencySymbolFont;
     id<PKEnterCurrencyAmountViewDelegate> _delegate;
-    UILabel *_currencySymbolLabel;
     UILabel *_amountLabel;
     PKNumberPadInputView *_numberPad;
-    NSNumberFormatter *_currentAmountFormatter;
-    NSString *_localizedAmountString;
+    NSNumberFormatter *_amountFormatter;
+    NSDecimalNumberHandler *_roundingBehavior;
+    NSNumberFormatter *_currencySymbolAmountFormatter;
+    NSString *_amountString;
 }
 
 @property (copy, nonatomic) UIFont *amountFont; // @synthesize amountFont=_amountFont;
+@property (strong, nonatomic) NSNumberFormatter *amountFormatter; // @synthesize amountFormatter=_amountFormatter;
 @property (strong, nonatomic) UILabel *amountLabel; // @synthesize amountLabel=_amountLabel;
+@property (strong, nonatomic) NSString *amountString; // @synthesize amountString=_amountString;
 @property (readonly, nonatomic) UITextField *amountTextField; // @synthesize amountTextField=_amountTextField;
 @property (strong, nonatomic) NSString *currency; // @synthesize currency=_currency;
-@property (copy, nonatomic) UIFont *currencySymbolFont; // @synthesize currencySymbolFont=_currencySymbolFont;
-@property (strong, nonatomic) UILabel *currencySymbolLabel; // @synthesize currencySymbolLabel=_currencySymbolLabel;
+@property (strong, nonatomic) NSNumberFormatter *currencySymbolAmountFormatter; // @synthesize currencySymbolAmountFormatter=_currencySymbolAmountFormatter;
 @property (strong, nonatomic) NSDecimalNumber *currentAmount;
-@property (strong, nonatomic) NSNumberFormatter *currentAmountFormatter; // @synthesize currentAmountFormatter=_currentAmountFormatter;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKEnterCurrencyAmountViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -45,8 +45,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *inputAccessoryView;
 @property (copy, nonatomic) NSNumber *kerning; // @synthesize kerning=_kerning;
-@property (strong, nonatomic) NSString *localizedAmountString; // @synthesize localizedAmountString=_localizedAmountString;
 @property (strong, nonatomic) PKNumberPadInputView *numberPad; // @synthesize numberPad=_numberPad;
+@property (strong, nonatomic) NSDecimalNumberHandler *roundingBehavior; // @synthesize roundingBehavior=_roundingBehavior;
 @property (nonatomic) BOOL showsDecimalPointButton; // @synthesize showsDecimalPointButton=_showsDecimalPointButton;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
@@ -54,16 +54,20 @@
 - (void).cxx_destruct;
 - (void)_createAmountFormatter;
 - (void)_createSubviews;
-- (id)_formatAmount:(id)arg1 alwaysShowDecimalSeparator:(BOOL)arg2 minimumFractionDigits:(unsigned long long)arg3 useGroupingSeparator:(BOOL)arg4;
+- (id)_decimalNumberFromString:(id)arg1;
+- (id)_formatAmountForDisplay:(id)arg1 alwaysShowDecimalSeparator:(BOOL)arg2 minimumFractionDigits:(unsigned long long)arg3 useGroupingSeparator:(BOOL)arg4;
 - (unsigned long long)_numberOfDecimalPlacesInString:(id)arg1 decimalSeperator:(id)arg2;
-- (double)_topPaddingForCurrencySymbol;
 - (void)_updateContent;
 - (void)dismissKeyboard;
 - (id)initWithCurrency:(id)arg1 amount:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
 - (void)showKeyboard;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKWebServiceContext.h>
 
-@class NSString, NSURL;
+@class NSData, NSString, NSURL;
 
 @interface PKPeerPaymentWebServiceContext : PKWebServiceContext
 {
@@ -16,21 +16,23 @@
     NSString *_pushTopic;
     NSString *_pushToken;
     NSString *_companionSerialNumber;
+    NSData *_signedEnrollmentDataSignature;
 }
 
-@property (copy, nonatomic) NSString *companionSerialNumber; // @synthesize companionSerialNumber=_companionSerialNumber;
+@property (readonly, copy, nonatomic) NSString *companionSerialNumber; // @synthesize companionSerialNumber=_companionSerialNumber;
 @property (nonatomic) BOOL devSigned; // @synthesize devSigned=_devSigned;
 @property (readonly, copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (copy, nonatomic) NSString *pushToken; // @synthesize pushToken=_pushToken;
 @property (readonly, copy, nonatomic) NSString *pushTopic; // @synthesize pushTopic=_pushTopic;
 @property (readonly, copy, nonatomic) NSURL *serviceURL; // @synthesize serviceURL=_serviceURL;
+@property (readonly, copy, nonatomic) NSData *signedEnrollmentDataSignature; // @synthesize signedEnrollmentDataSignature=_signedEnrollmentDataSignature;
 
 + (id)contextWithArchive:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)updateContextWithRegistrationResponse:(id)arg1;
+- (void)updateContextWithDeviceRegistrationData:(id)arg1 registrationResponse:(id)arg2;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, PKPaymentSetupDockView, PKPaymentSetupPrivacyFooterView, UIActivityIndicatorView, UIFont, UIImage, UIImageView, UILabel, UIScrollView, _UIBackdropView;
+@class NSString, OBPrivacyLinkController, PKPaymentSetupDockView, UIActivityIndicatorView, UIFont, UIImage, UIImageView, UILabel, UIScrollView, _UIBackdropView;
 @protocol PKExplanationViewDelegate;
 
 @interface PKExplanationView : UIView <UIScrollViewDelegate>
@@ -17,7 +17,6 @@
     BOOL _privacyFooterShouldPin;
     UIScrollView *_scrollView;
     UIImageView *_imageView;
-    PKPaymentSetupPrivacyFooterView *_privacyFooter;
     PKPaymentSetupDockView *_dockView;
     NSString *_titleText;
     UILabel *_titleLabel;
@@ -38,6 +37,7 @@
     UIView *_heroView;
     UIFont *_titleFont;
     NSString *_bodyText;
+    OBPrivacyLinkController *_privacyLink;
     UIImageView *_logoImageView;
 }
 
@@ -56,7 +56,7 @@
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
-@property (readonly, nonatomic) PKPaymentSetupPrivacyFooterView *privacyView;
+@property (strong, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
 @property (nonatomic) BOOL showPrivacyView; // @synthesize showPrivacyView=_showPrivacyView;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;

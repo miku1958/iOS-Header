@@ -13,6 +13,7 @@
 
 @interface HFAccessorySettingManagedConfigurationAdapter : HFAccessorySettingAdapter <MCProfileConnectionObserver, HFAccessorySettingAdapterDisplayArbitrating>
 {
+    BOOL _isSettingUp;
     MCProfileConnection *_profileConnectionForSynchronization;
     NSHashTable *_profileObservers;
 }
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isSettingUp; // @synthesize isSettingUp=_isSettingUp;
 @property (readonly, nonatomic) unsigned long long numberOfProfiles;
 @property (readonly, nonatomic) MCProfileConnection *profileConnectionForSynchronization; // @synthesize profileConnectionForSynchronization=_profileConnectionForSynchronization;
 @property (strong, nonatomic) NSHashTable *profileObservers; // @synthesize profileObservers=_profileObservers;

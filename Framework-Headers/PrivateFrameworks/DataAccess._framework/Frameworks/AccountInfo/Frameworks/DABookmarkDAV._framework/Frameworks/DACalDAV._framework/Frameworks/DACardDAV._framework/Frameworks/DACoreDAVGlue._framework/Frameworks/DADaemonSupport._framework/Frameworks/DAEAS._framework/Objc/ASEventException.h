@@ -7,11 +7,11 @@
 #import <DAEAS/ASEvent.h>
 
 #import <DAEAS/ASParsingAcceptingTopLevelLeaves-Protocol.h>
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSMutableDictionary, NSNumber;
 
-@interface ASEventException : ASEvent <ASParsingAcceptingTopLevelLeaves, NSCoding>
+@interface ASEventException : ASEvent <ASParsingAcceptingTopLevelLeaves, NSSecureCoding>
 {
     ASEvent *_originalEvent;
     NSNumber *_isDeleted;
@@ -31,6 +31,7 @@
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_loadAttributesFromCalEvent:(void *)arg1 withKnownExceptionDate:(id)arg2 forAccount:(id)arg3;
 - (id)_transformedExceptionStartDateForActiveSync:(id)arg1 isFloating:(BOOL)arg2;

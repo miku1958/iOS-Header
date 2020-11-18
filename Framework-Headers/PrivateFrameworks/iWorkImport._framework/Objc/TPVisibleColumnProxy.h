@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL lastLineIsEmptyAndHasListLabel;
 @property (readonly, nonatomic) unsigned long long nextWidowPullsDownFromCharIndex;
 @property (readonly, nonatomic) struct _NSRange range;
 @property (readonly) Class superclass;

@@ -47,6 +47,7 @@
     UIView *_templateLayoutView;
     float _charge;
     long long _tag;
+    unsigned int _pseudo_id;
     UIViewController *_viewDelegate;
     NSString *_backgroundColorSystemColorName;
     unsigned long long _countOfMotionEffectsInSubtree;
@@ -1291,6 +1292,7 @@
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (double)alpha;
 - (id)animationEntryForKey:(id)arg1;
+- (id)animationInfoCreateIfNecessary:(BOOL)arg1;
 - (id)autorelease;
 - (BOOL)autoresizesSubviews;
 - (unsigned long long)autoresizingMask;

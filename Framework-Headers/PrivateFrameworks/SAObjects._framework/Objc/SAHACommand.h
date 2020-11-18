@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAConditionallyMutatingClientBoundCommand-Protocol.h>
 
-@class NSArray, NSString, SAHAFilter;
+@class NSArray, NSNumber, NSString, SAHAFilter;
 
 @interface SAHACommand : SADomainCommand <SAConditionallyMutatingClientBoundCommand>
 {
@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSArray *actions;
 @property (copy, nonatomic) NSString *appId; // @dynamic appId;
 @property (copy, nonatomic) NSArray *callbacks; // @dynamic callbacks;
+@property (copy, nonatomic) NSNumber *commandTimeout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SAHAFilter *filter;

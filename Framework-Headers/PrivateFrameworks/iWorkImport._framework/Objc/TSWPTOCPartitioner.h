@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)layoutForHint:(id)arg1 parentLayout:(id)arg2;
 - (id)nextHintForSize:(struct CGSize)arg1 parentLayout:(id)arg2 previousHint:(id)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
 - (id)nextLayoutForSize:(struct CGSize)arg1 parentLayout:(id)arg2 previousHint:(id)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
+- (void)setLayoutPartititionsRightToLeft:(BOOL)arg1 contentPartitionsRightToLeft:(BOOL)arg2;
 
 @end
 

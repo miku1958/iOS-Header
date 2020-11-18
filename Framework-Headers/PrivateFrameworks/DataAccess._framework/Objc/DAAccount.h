@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class ACAccount, DAStatusReport, DATaskManager, DATrustHandler, NSArray, NSData, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSURL;
+@class ACAccount, DAStatusReport, DATaskManager, DATrustHandler, NSArray, NSData, NSDate, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface DAAccount : NSObject
@@ -31,7 +31,7 @@
     NSMutableDictionary *_dataclassPropertyURLsByDataclass;
     NSMutableArray *_pendingQueries;
     NSObject<OS_dispatch_queue> *_pendingQueryQueue;
-    unsigned long long _lastQueryStartedTime;
+    NSDate *_lastQueryStartedTime;
 }
 
 @property (copy, nonatomic) NSString *accountDescription;
@@ -51,7 +51,7 @@
 @property (readonly, nonatomic) BOOL isChildAccount;
 @property (nonatomic) BOOL isValidating; // @synthesize isValidating=_isValidating;
 @property (readonly, nonatomic) int keychainAccessibilityType;
-@property (nonatomic) unsigned long long lastQueryStartedTime; // @synthesize lastQueryStartedTime=_lastQueryStartedTime;
+@property (strong, nonatomic) NSDate *lastQueryStartedTime; // @synthesize lastQueryStartedTime=_lastQueryStartedTime;
 @property (copy, nonatomic) NSString *password;
 @property (strong, nonatomic) NSMutableArray *pendingQueries; // @synthesize pendingQueries=_pendingQueries;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pendingQueryQueue; // @synthesize pendingQueryQueue=_pendingQueryQueue;

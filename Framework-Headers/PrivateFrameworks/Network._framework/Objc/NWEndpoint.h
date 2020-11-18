@@ -18,6 +18,7 @@
     NSObject<OS_nw_endpoint> *_internalEndpoint;
 }
 
+@property (nonatomic) unsigned short alternatePort;
 @property (strong, nonatomic) NWInterface *interface;
 @property (strong, nonatomic) NSObject<OS_nw_endpoint> *internalEndpoint; // @synthesize internalEndpoint=_internalEndpoint;
 @property (strong, nonatomic) NSString *parentEndpointDomain;

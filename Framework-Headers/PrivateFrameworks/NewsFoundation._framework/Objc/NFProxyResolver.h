@@ -9,7 +9,7 @@
 #import <NewsFoundation/NFResolver-Protocol.h>
 #import <NewsFoundation/NFValidationResolver-Protocol.h>
 
-@class NFContainerPool, NSString;
+@class NFCallbackStore, NFContainerPool, NFContext, NSString;
 @protocol NFDefinitionContainer;
 
 @interface NFProxyResolver : NSObject <NFResolver, NFValidationResolver>
@@ -17,8 +17,12 @@
     id<NFDefinitionContainer> _publicContainer;
     id<NFDefinitionContainer> _privateContainer;
     NFContainerPool *_pool;
+    NFCallbackStore *_callbackStore;
+    NFContext *_context;
 }
 
+@property (readonly, nonatomic) NFCallbackStore *callbackStore; // @synthesize callbackStore=_callbackStore;
+@property (strong, nonatomic) NFContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,21 +32,27 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)createProxyResolverForDefinition:(id)arg1;
+- (id)contextWithContextBlock:(CDUnknownBlockType)arg1;
+- (id)createProxyResolverForPrivateContainer:(id)arg1;
 - (id)currentObjectGraphResolver:(unsigned long long)arg1;
 - (void)ensure:(id)arg1 name:(id)arg2;
 - (void)ensureClass:(Class)arg1;
 - (void)ensureClass:(Class)arg1 name:(id)arg2;
 - (void)ensureProtocol:(id)arg1;
 - (void)ensureProtocol:(id)arg1 name:(id)arg2;
-- (id)initWithPublicContainer:(id)arg1 privateContainer:(id)arg2 inPool:(id)arg3;
+- (id)initWithPublicContainer:(id)arg1 privateContainer:(id)arg2 inPool:(id)arg3 callbackStore:(id)arg4;
 - (void)linkResolverWithLinkBlock:(CDUnknownBlockType)arg1;
-- (id)resolve:(id)arg1 name:(id)arg2 validateBlock:(CDUnknownBlockType)arg3;
+- (id)resolve:(id)arg1 name:(id)arg2 context:(id)arg3 validateBlock:(CDUnknownBlockType)arg4;
 - (id)resolveClass:(Class)arg1;
+- (id)resolveClass:(Class)arg1 contextBlock:(CDUnknownBlockType)arg2;
 - (id)resolveClass:(Class)arg1 name:(id)arg2;
+- (id)resolveClass:(Class)arg1 name:(id)arg2 contextBlock:(CDUnknownBlockType)arg3;
 - (id)resolveProtocol:(id)arg1;
+- (id)resolveProtocol:(id)arg1 contextBlock:(CDUnknownBlockType)arg2;
 - (id)resolveProtocol:(id)arg1 name:(id)arg2;
+- (id)resolveProtocol:(id)arg1 name:(id)arg2 contextBlock:(CDUnknownBlockType)arg3;
 - (id)unsafeResolveForKey:(id)arg1 name:(id)arg2;
+- (id)unsafeResolveForKey:(id)arg1 name:(id)arg2 context:(id)arg3;
 
 @end
 

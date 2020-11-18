@@ -6,8 +6,7 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class CALayer;
-@protocol TSKMediaPlayerControllerDelegate;
+@protocol NSObject, TSKMediaPlayerControllerDelegate;
 
 @protocol TSKMediaPlayerController <NSObject>
 
@@ -30,11 +29,12 @@
 @property (nonatomic) double startTime;
 @property (nonatomic) float volume;
 
+- (void)addObservationToken:(id<NSObject>)arg1;
 - (id)addPeriodicTimeObserverForInterval:(double)arg1 block:(void (^)(void))arg2;
 - (void)beginScrubbing;
 - (void)cancelPendingSeeks;
 - (void)endScrubbing;
-- (CALayer *)newLayer;
+- (void)removeObservationToken:(id<NSObject>)arg1;
 - (void)removePeriodicTimeObserver:(id)arg1;
 - (void)scrubToTime:(double)arg1 withTolerance:(double)arg2;
 - (void)scrubToTime:(double)arg1 withTolerance:(double)arg2 completionHandler:(void (^)(BOOL))arg3;

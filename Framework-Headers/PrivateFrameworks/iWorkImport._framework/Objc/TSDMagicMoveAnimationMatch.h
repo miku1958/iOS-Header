@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _isMorphMatch;
     BOOL _isTextStyleIdenticalExceptSize;
     BOOL _shouldDisableTextMorphing;
+    BOOL _shouldTearDownTextures;
     TSDTextureSet *_outgoingTexture;
     TSDTextureSet *_incomingTexture;
     long long _matchType;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSDTextureSet *outgoingTexture; // @synthesize outgoingTexture=_outgoingTexture;
 @property (strong, nonatomic) NSDictionary *outgoingTextureActionBuildFinalAttributes; // @synthesize outgoingTextureActionBuildFinalAttributes=_outgoingTextureActionBuildFinalAttributes;
 @property (nonatomic) BOOL shouldDisableTextMorphing; // @synthesize shouldDisableTextMorphing=_shouldDisableTextMorphing;
+@property (nonatomic) BOOL shouldTearDownTextures; // @synthesize shouldTearDownTextures=_shouldTearDownTextures;
 
 + (unsigned long long)magicMoveMorphTexturesPerSecond;
 - (void)addMorphTexture:(id)arg1;

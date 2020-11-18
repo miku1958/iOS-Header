@@ -44,6 +44,7 @@
 - (void)addToPersistentUserInfo:(id)arg1;
 - (unsigned long long)anchorCount;
 - (long long)anchorForSyncEntityClass:(Class)arg1;
+- (long long)anchorForSyncEntityIdentifier:(id)arg1;
 - (id)anchorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)anchorsCount;
 - (void)clearAnchors;
@@ -51,7 +52,7 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
-- (void)enumerateAnchorsAndSyncEntitiesWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateAnchorsAndEntityIdentifiersWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)nanoSyncDescription;

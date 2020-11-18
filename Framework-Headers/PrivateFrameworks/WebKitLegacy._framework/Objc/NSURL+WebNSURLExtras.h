@@ -15,7 +15,6 @@
 + (id)_web_URLWithUserTypedString:(id)arg1 relativeToURL:(id)arg2;
 + (id)_webkit_URLWithUserTypedString:(id)arg1;
 + (id)_webkit_URLWithUserTypedString:(id)arg1 relativeToURL:(id)arg2;
-+ (id)uniqueURLWithRelativePart:(id)arg1;
 - (id)_web_URLByRemovingUserInfo;
 - (const char *)_web_URLCString;
 - (id)_web_dataForURLComponentType:(long long)arg1;

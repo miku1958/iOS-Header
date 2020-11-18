@@ -9,12 +9,13 @@
 #import <DeviceManagement/CATTaskClientDelegate-Protocol.h>
 #import <DeviceManagement/DMFTransportProvider-Protocol.h>
 
-@class CATOperationQueue, CATTaskClient, NSString;
+@class CATOperationQueue, CATTaskClient, NSSet, NSString;
 @protocol DMFTransportProvider;
 
 @interface DMFConnection : NSObject <CATTaskClientDelegate, DMFTransportProvider>
 {
     BOOL _isConnected;
+    BOOL _isDeviceConnection;
     id<DMFTransportProvider> _transportProvider;
     CATTaskClient *_taskClient;
     CATOperationQueue *_operationQueue;
@@ -24,15 +25,24 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isConnected; // @synthesize isConnected=_isConnected;
-@property (strong, nonatomic) CATOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (nonatomic) BOOL isDeviceConnection; // @synthesize isDeviceConnection=_isDeviceConnection;
+@property (readonly, nonatomic) CATOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (readonly, copy, nonatomic) NSSet *requestClasses;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) CATTaskClient *taskClient; // @synthesize taskClient=_taskClient;
-@property (weak, nonatomic) id<DMFTransportProvider> transportProvider; // @synthesize transportProvider=_transportProvider;
+@property (readonly, nonatomic) CATTaskClient *taskClient; // @synthesize taskClient=_taskClient;
+@property (readonly, weak, nonatomic) id<DMFTransportProvider> transportProvider; // @synthesize transportProvider=_transportProvider;
 
++ (id)_deviceOrUserRequestClasses;
++ (id)_deviceRequestClasses;
++ (id)_userRequestClasses;
++ (id)connectionForAppleID:(id)arg1;
++ (id)connectionForUID:(unsigned int)arg1;
 + (id)currentPlatformRequestClasses;
++ (id)currentUserConnection;
 + (id)iOSRequestClasses;
 + (id)macOSRequestClasses;
 + (id)sharedConnection;
++ (id)systemConnection;
 + (id)tvOSRequestClasses;
 + (id)watchOSRequestClasses;
 - (void).cxx_destruct;
@@ -42,8 +52,8 @@
 - (void)clientDidDisconnect:(id)arg1;
 - (void)clientDidInvalidate:(id)arg1;
 - (void)dealloc;
-- (id)init;
-- (id)initWithTransportProvider:(id)arg1;
+- (id)initWithTransportProvider:(id)arg1 userInfo:(id)arg2;
+- (id)initWithUserInfo:(id)arg1;
 - (void)invalidate;
 - (id)makeNewTransport;
 - (void)performRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

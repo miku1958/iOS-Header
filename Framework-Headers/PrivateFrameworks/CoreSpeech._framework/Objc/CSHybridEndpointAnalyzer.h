@@ -23,6 +23,7 @@
     BOOL _didCommunicateEndpoint;
     BOOL _didTimestampFirstAudioPacket;
     BOOL _recordingDidStop;
+    BOOL _didDetectSpeech;
     id<CSEndpointAnalyzerDelegate> _delegate;
     unsigned long long _activeChannel;
     long long _endpointStyle;
@@ -56,6 +57,7 @@
     double _hepAudioOriginInMs;
     NSDate *_firstAudioPacketTimestamp;
     NSObject<OS_dispatch_queue> *_silencePosteriorGeneratorQueue;
+    double _elapsedTimeWithNoSpeech;
 }
 
 @property (nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
@@ -75,8 +77,10 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didAddAudio; // @synthesize didAddAudio=_didAddAudio;
 @property (nonatomic) BOOL didCommunicateEndpoint; // @synthesize didCommunicateEndpoint=_didCommunicateEndpoint;
+@property (nonatomic) BOOL didDetectSpeech; // @synthesize didDetectSpeech=_didDetectSpeech;
 @property (nonatomic) BOOL didReceiveServerFeatures; // @synthesize didReceiveServerFeatures=_didReceiveServerFeatures;
 @property (nonatomic) BOOL didTimestampFirstAudioPacket; // @synthesize didTimestampFirstAudioPacket=_didTimestampFirstAudioPacket;
+@property (nonatomic) double elapsedTimeWithNoSpeech; // @synthesize elapsedTimeWithNoSpeech=_elapsedTimeWithNoSpeech;
 @property (nonatomic) double endWaitTime; // @synthesize endWaitTime=_endWaitTime;
 @property (nonatomic) long long endpointMode; // @synthesize endpointMode=_endpointMode;
 @property (nonatomic) long long endpointStyle; // @synthesize endpointStyle=_endpointStyle;

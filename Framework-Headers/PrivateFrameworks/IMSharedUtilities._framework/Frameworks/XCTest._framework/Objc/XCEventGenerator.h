@@ -6,24 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, XCUIAccessibilityInterface;
 
 @interface XCEventGenerator : NSObject
 {
+    id<XCUIAccessibilityInterface> _accessibilityInterface;
     unsigned long long _generation;
-    NSObject<OS_dispatch_queue> *_eventQueue;
     struct __CFRunLoopObserver *_generationObserver;
+    double _implicitConfirmationDelay;
+    NSObject<OS_dispatch_queue> *_eventQueue;
 }
 
+@property (readonly) id<XCUIAccessibilityInterface> accessibilityInterface; // @synthesize accessibilityInterface=_accessibilityInterface;
 @property (readonly) NSObject<OS_dispatch_queue> *eventQueue; // @synthesize eventQueue=_eventQueue;
 @property unsigned long long generation; // @synthesize generation=_generation;
 @property (readonly) struct __CFRunLoopObserver *generationObserver; // @synthesize generationObserver=_generationObserver;
+@property double implicitConfirmationDelay; // @synthesize implicitConfirmationDelay=_implicitConfirmationDelay;
 
 + (id)sharedGenerator;
+- (void).cxx_destruct;
 - (void)_scheduleCallback:(CDUnknownBlockType)arg1 afterInterval:(double)arg2;
 - (void)_startEventSequenceWithSteppingCallback:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (double)forcePressAtPoint:(struct CGPoint)arg1 orientation:(long long)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)init;
+- (id)initWithAccessibilityInterface:(id)arg1;
 - (double)pinchInRect:(struct CGRect)arg1 withScale:(double)arg2 velocity:(double)arg3 orientation:(long long)arg4 handler:(CDUnknownBlockType)arg5;
 - (double)pressAtPoint:(struct CGPoint)arg1 forDuration:(double)arg2 liftAtPoint:(struct CGPoint)arg3 velocity:(double)arg4 orientation:(long long)arg5 name:(id)arg6 handler:(CDUnknownBlockType)arg7;
 - (double)pressAtPoint:(struct CGPoint)arg1 forDuration:(double)arg2 orientation:(long long)arg3 handler:(CDUnknownBlockType)arg4;

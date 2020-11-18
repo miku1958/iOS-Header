@@ -42,10 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)clearIWorkAuthorName;
 - (void)clearIWorkAuthorPrivateID;
 - (unsigned long long)collaboratorColorIndexForKvsDocumentKey:(id)arg1;
-- (id)collaboratorNameForCachedDocumentInfo:(id)arg1 firstName:(id *)arg2 lastName:(id *)arg3;
+- (id)collaboratorNameForDocumentInfo:(id)arg1 firstName:(id *)arg2 lastName:(id *)arg3;
 - (void)dealloc;
 - (id)documentPreferenceKeyPrefix;
 - (Class)documentRootClass;
+- (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 - (id)existingNestedDocumentPathForPath:(id)arg1;
 - (BOOL)hasIWorkAuthorName;
 - (id)iCloudDocumentPreferenceKeyForKvsDocumentKey:(id)arg1 isMatchingKey:(BOOL *)arg2;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)iWorkAuthorColorIndex;
 - (id)iWorkAuthorName;
 - (id)iWorkAuthorPrivateID;
+- (id)iWorkTextDefaultsPassphraseVerifier;
 - (id)init;
 - (id)invalidURLSchemes;
 - (BOOL)isICloudDocumentPreference:(id)arg1 validForKey:(id)arg2;
@@ -66,7 +68,8 @@ __attribute__((visibility("hidden")))
 - (void)persistenceError:(id)arg1;
 - (void)registerDefaults;
 - (void)registerICloudPreferences;
-- (void)setAppTextDefaults:(id)arg1;
+- (void)registerSOSClassTypeMappings;
+- (void)setAppTextDefaults:(id)arg1 passphraseVerifier:(id)arg2;
 - (void)setICloudPreferences:(id)arg1 forKvsDocumentKey:(id)arg2;
 - (void)setIWorkAuthorColorIndex:(unsigned long long)arg1;
 - (void)setIWorkAuthorName:(id)arg1;

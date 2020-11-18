@@ -66,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)findExistingDataForReadChannel:(id)arg1 dataURL:(id)arg2 dataURLType:(long long)arg3 temporaryDataStorageURL:(id)arg4 keepTemporaryFileOnSuccess:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)init;
 - (id)initWithContext:(id)arg1;
-- (BOOL)linkTemporaryURL:(id)arg1 fromURL:(id)arg2;
+- (BOOL)linkOrCloneTemporaryURL:(id)arg1 fromURL:(id)arg2 canLink:(BOOL)arg3;
 - (void)loadFromPackage:(id)arg1 packageURL:(id)arg2 packageMetadata:(id)arg3 areExternalReferencesAllowed:(BOOL)arg4;
 - (BOOL)migrateDataToTemporaryStorageFromPackage:(id)arg1;
 - (int)openTemporaryURL:(id)arg1;

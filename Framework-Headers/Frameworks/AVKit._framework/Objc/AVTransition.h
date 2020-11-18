@@ -14,10 +14,12 @@
     BOOL _wasInitiallyInteractive;
     id<UIViewControllerContextTransitioning> _transitionContext;
     AVPlayerViewController *_playerViewController;
+    UIView *_backgroundView;
     UIViewPropertyAnimator *_currentAnimator;
     double _interactiveTransitionPercentComplete;
 }
 
+@property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) UIView *containerView;
 @property (weak, nonatomic) UIViewPropertyAnimator *currentAnimator; // @synthesize currentAnimator=_currentAnimator;
 @property (readonly, nonatomic) double duration;

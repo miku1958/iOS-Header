@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)backupMetadata;
 - (id)init;
 - (void)observeFinishSetupTriggers;
+- (void)performSilentICDPUpgrade;
 - (BOOL)setupAssistantNeedsToRun;
 
 @end

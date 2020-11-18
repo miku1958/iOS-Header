@@ -12,10 +12,14 @@
     int _notifyToken;
 }
 
+@property (readonly, nonatomic) int state;
+
 + (id)sharedObject;
+- (BOOL)addDataDidBecomeAvailableObserver:(id)arg1 ifTypeIsNotCurrentlyAccessible:(unsigned long long)arg2;
+- (BOOL)canAccessFilesWithProtection:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)init;
-- (int)state;
+- (void)removeObserver:(id)arg1;
 - (void)updateState;
 
 @end

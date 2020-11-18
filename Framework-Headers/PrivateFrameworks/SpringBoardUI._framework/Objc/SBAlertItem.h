@@ -24,10 +24,12 @@
     BOOL _allowInCar;
     BOOL _allowMessageInCar;
     BOOL _presented;
+    BOOL _ignoresQuietMode;
     NSString *_iconImagePath;
     NSString *_attachmentImagePath;
 }
 
+@property (nonatomic, setter=_setIgnoresQuietMode:) BOOL _ignoresQuietMode; // @synthesize _ignoresQuietMode;
 @property (nonatomic) BOOL allowInCar; // @synthesize allowInCar=_allowInCar;
 @property (nonatomic) BOOL allowInSetup; // @synthesize allowInSetup=_allowInSetup;
 @property (nonatomic) BOOL allowMessageInCar; // @synthesize allowMessageInCar=_allowMessageInCar;

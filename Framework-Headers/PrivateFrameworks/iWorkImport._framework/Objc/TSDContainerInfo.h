@@ -6,14 +6,15 @@
 
 #import <iWorkImport/TSPObject.h>
 
+#import <iWorkImport/TSDModelContainer-Protocol.h>
 #import <iWorkImport/TSDMutableContainerInfo-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString, TSDInfoGeometry;
+@class NSArray, NSMutableArray, NSObject, NSString, TSDInfoGeometry;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSDContainerInfo : TSPObject <TSDMutableContainerInfo, TSKDocumentObject>
+@interface TSDContainerInfo : TSPObject <TSDMutableContainerInfo, TSKDocumentObject, TSDModelContainer>
 {
     TSDInfoGeometry *mGeometry;
     NSObject<TSDContainerInfo> *mParentInfo;
@@ -22,6 +23,8 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, nonatomic) NSArray *containedModels;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText;
@@ -35,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)addChildInfo:(id)arg1;
-- (id)childInfos;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)insertChildInfo:(id)arg1 above:(id)arg2;
 - (void)insertChildInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertChildInfo:(id)arg1 below:(id)arg2;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)isSelectable;
 - (BOOL)isThemeContent;
 - (Class)layoutClass;
@@ -52,7 +55,9 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (void)moveChildren:(id)arg1 toIndexes:(id)arg2;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)removeChildInfo:(id)arg1;
+- (void)removeContainedModel:(id)arg1;
 - (Class)repClass;
 - (void)replaceChildInfo:(id)arg1 with:(id)arg2;
 - (void)saveToArchive:(struct ContainerArchive *)arg1 archiver:(id)arg2;

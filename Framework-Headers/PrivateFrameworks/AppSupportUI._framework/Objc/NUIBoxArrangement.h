@@ -16,7 +16,11 @@
     struct _NUIBoxArrangement _arrangement;
     id<NUIArrangementContainer> _container;
     id<NUIBoxArrangementDataSource> _dataSource;
+    struct {
+        unsigned int containerDirection:1;
+    } _flags;
     double _scale;
+    struct CGRect _bounds;
 }
 
 @property (nonatomic, getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement;
@@ -35,7 +39,7 @@
 - (id)initWithContainer:(id)arg1 dataSource:(id)arg2;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (struct CGSize)layoutSizeFittingSize:(struct CGSize)arg1;
-- (void)populateBoxArrangementCells:(vector_0b89710d *)arg1;
+- (void)populateBoxArrangementCells:(vector_eb457d57 *)arg1;
 - (void)positionItemsInBounds:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
 - (void)reloadData;
 - (BOOL)supportsAsynchronousMeasurement;

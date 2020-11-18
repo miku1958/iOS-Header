@@ -7,6 +7,7 @@
 #import <Foundation/NSException.h>
 
 @interface NSException (TSUAdditions)
++ (BOOL)tsu_catchExceptionsInBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 + (void)tsu_raiseWithError:(id)arg1;
 - (id)tsu_error;
 @end

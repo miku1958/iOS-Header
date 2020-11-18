@@ -14,16 +14,16 @@
 @interface SearchUIFirstTimeExperienceViewController : UIViewController <UITextViewDelegate>
 {
     id<SearchUIFirstTimeExperienceDelegate> _delegate;
-    NSString *_privacyDetailsTitle;
-    NSString *_privacyDetailsText;
     unsigned long long _style;
     unsigned long long _supportedDomains;
     NSString *_explanationText;
     NSString *_learnMoreText;
     NSString *_continueButtonTitle;
+    NSString *_bundleIdentifier;
     long long _horizontalSizeClass;
 }
 
+@property (strong) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong) NSString *continueButtonTitle; // @synthesize continueButtonTitle=_continueButtonTitle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SearchUIFirstTimeExperienceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -32,14 +32,13 @@
 @property (readonly) unsigned long long hash;
 @property long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
 @property (strong) NSString *learnMoreText; // @synthesize learnMoreText=_learnMoreText;
-@property (strong) NSString *privacyDetailsText; // @synthesize privacyDetailsText=_privacyDetailsText;
-@property (strong) NSString *privacyDetailsTitle; // @synthesize privacyDetailsTitle=_privacyDetailsTitle;
 @property unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property unsigned long long supportedDomains; // @synthesize supportedDomains=_supportedDomains;
 
 - (void).cxx_destruct;
 - (void)continueButtonPressed;
+- (id)initWithStyle:(unsigned long long)arg1 supportedDomains:(unsigned long long)arg2 explanationText:(id)arg3 learnMoreText:(id)arg4 continueButtonTitle:(id)arg5;
 - (id)initWithStyle:(unsigned long long)arg1 supportedDomains:(unsigned long long)arg2 explanationText:(id)arg3 learnMoreText:(id)arg4 continueButtonTitle:(id)arg5 privacyDetailsTitle:(id)arg6 privacyDetailsText:(id)arg7;
 - (BOOL)isPad;
 - (void)makeViews;

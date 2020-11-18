@@ -139,6 +139,7 @@
 - (void)addTrafficCamera:(id)arg1;
 - (void)clearIncidentsOffRoutes;
 - (void)clearIncidentsOnRoutes;
+- (void)clearLocations;
 - (void)clearPlaceSearchResponses;
 - (void)clearProblemDetails;
 - (void)clearRoutes;

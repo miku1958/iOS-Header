@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRStandardCallback, NSArray;
+@class MSVCallback, NSArray, NSString;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -16,17 +16,20 @@ __attribute__((visibility("hidden")))
     BOOL _valid;
     unsigned long long _modificationType;
     NSArray *_outputDevices;
-    MRStandardCallback *_callback;
+    MSVCallback *_callback;
+    NSString *_password;
 }
 
-@property (readonly, nonatomic) MRStandardCallback *callback; // @synthesize callback=_callback;
+@property (readonly, nonatomic) MSVCallback *callback; // @synthesize callback=_callback;
 @property (readonly, nonatomic) unsigned long long modificationType; // @synthesize modificationType=_modificationType;
 @property (readonly, nonatomic) NSArray *outputDevices; // @synthesize outputDevices=_outputDevices;
+@property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, nonatomic) BOOL valid; // @synthesize valid=_valid;
 
 + (id)addModificationWithDevices:(id)arg1 callback:(id)arg2;
 + (id)removeModificationWithDevices:(id)arg1 callback:(id)arg2;
 + (id)replaceModificationWithDevices:(id)arg1 callback:(id)arg2;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithType:(unsigned long long)arg1 devices:(id)arg2 callback:(id)arg3;
 - (void)invalidate;

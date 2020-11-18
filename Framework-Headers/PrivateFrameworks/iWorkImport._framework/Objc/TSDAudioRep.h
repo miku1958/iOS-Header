@@ -6,42 +6,20 @@
 
 #import <iWorkImport/TSDMediaRep.h>
 
-#import <iWorkImport/TSDPlayableMediaRep-Protocol.h>
-
-@class AVAsset, CALayer, NSString, TSDMovieInfo, TSKAVPlayerController;
-@protocol TSDAudioHUDController;
+@class TSDMovieInfo;
 
 __attribute__((visibility("hidden")))
-@interface TSDAudioRep : TSDMediaRep <TSDPlayableMediaRep>
+@interface TSDAudioRep : TSDMediaRep
 {
-    TSKAVPlayerController *mPlayerController;
-    BOOL mDidCheckPlayability;
-    BOOL mIsPlayable;
-    AVAsset *mAssetForPlayabilityCheck;
-    CALayer *mSpinnerLayer;
-    float mDynamicVolume;
-    BOOL mIsChangingDynamicVolume;
-    id<TSDAudioHUDController> mAudioHUDController;
-    CALayer *mAudioImageLayer;
 }
 
-@property (readonly, nonatomic) CALayer *audioImageLayer; // @synthesize audioImageLayer=mAudioImageLayer;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) TSDMovieInfo *movieInfo;
-@property (readonly, nonatomic, getter=isPlayable) BOOL playable; // @synthesize playable=mIsPlayable;
-@property (readonly) Class superclass;
 
-- (void)dealloc;
-- (BOOL)directlyManagesLayerContent;
+- (struct CGRect)clipRect;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
-- (Class)layerClass;
-- (BOOL)shouldAllowReplacementFromDrop;
-- (BOOL)shouldAllowReplacementFromPaste;
-- (BOOL)shouldShowMediaReplaceUI;
+- (void)willBeRemoved;
 
 @end
 

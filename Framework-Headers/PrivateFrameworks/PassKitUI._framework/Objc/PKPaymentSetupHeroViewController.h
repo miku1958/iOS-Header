@@ -49,7 +49,6 @@
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)loadView;
-- (void)privacyFooterLinkTapped:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

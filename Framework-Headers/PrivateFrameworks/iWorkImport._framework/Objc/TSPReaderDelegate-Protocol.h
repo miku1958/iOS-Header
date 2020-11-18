@@ -6,7 +6,7 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSArray, NSUUID, TSPData, TSPLazyReference, TSPObject, TSPObjectContext, TSPReader;
+@class NSArray, NSUUID, TSPCancellationState, TSPData, TSPLazyReference, TSPObject, TSPObjectContext, TSPReader;
 @protocol TSPLazyReferenceDelegate, TSPObjectDelegate;
 
 @protocol TSPReaderDelegate <NSObject>
@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) unsigned char packageIdentifier;
 @property (readonly, nonatomic) long long sourceType;
 
+- (TSPCancellationState *)cancellationStateForReader:(TSPReader *)arg1;
 - (TSPObjectContext *)contextForReader:(TSPReader *)arg1;
 - (id<TSPLazyReferenceDelegate>)lazyReferenceDelegateForReader:(TSPReader *)arg1;
 - (id<TSPObjectDelegate>)objectDelegateForReader:(TSPReader *)arg1;

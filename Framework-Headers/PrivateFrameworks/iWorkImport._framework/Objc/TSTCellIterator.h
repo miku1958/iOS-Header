@@ -8,8 +8,8 @@
 
 #import <iWorkImport/TSTCellIterating-Protocol.h>
 
-@class NSMutableIndexSet, NSString, TSTCell, TSTCellRegion, TSTInfo, TSTMutableCellIteratorData;
-@protocol TSTCellRegionIterating, TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating, TSTDataStoreIterating><TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating, TSTInfoDelegating;
+@class NSMutableIndexSet, NSString, TSTCell, TSTCellRegion, TSTInfo, TSTMutableCellIteratorData, TSTTableModel;
+@protocol TSTCellRegionIterating, TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating, TSTDataStoreIterating><TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating;
 
 __attribute__((visibility("hidden")))
 @interface TSTCellIterator : NSObject <TSTCellIterating>
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _returnOneEmptyCell;
     BOOL _terminateRegionIterator;
     unsigned short _rowForColumnIndiciesWithMerges;
-    id<TSTInfoDelegating> _infoDelegating;
+    TSTTableModel *_tableModel;
     TSTInfo *_tableInfo;
     TSTCellRegion *_region;
     TSTCell *_cell;
@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<TSTInfoDelegating> infoDelegating; // @synthesize infoDelegating=_infoDelegating;
 @property (readonly, nonatomic) TSTCellRegion *region; // @synthesize region=_region;
 @property (strong, nonatomic) id<TSTCellRegionIterating> regionIterator; // @synthesize regionIterator=_regionIterator;
 @property (nonatomic) BOOL returnEmptyCells; // @synthesize returnEmptyCells=_returnEmptyCells;
@@ -48,15 +47,16 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> strokeIterator; // @synthesize strokeIterator=_strokeIterator;
 @property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (strong, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property (nonatomic) BOOL terminateRegionIterator; // @synthesize terminateRegionIterator=_terminateRegionIterator;
 
 - (void).cxx_destruct;
 - (BOOL)getNextCellData:(id *)arg1;
 - (id)initWithTableInfo:(id)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3;
-- (id)initWithTableInfo:(id)arg1 infoDelegating:(id)arg2 region:(id)arg3 flags:(unsigned long long)arg4 searchFlags:(unsigned long long)arg5 clampingRange:(struct TSUCellRect)arg6;
 - (id)initWithTableInfo:(id)arg1 range:(struct TSUCellRect)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
 - (id)initWithTableInfo:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
 - (id)initWithTableInfo:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4 clampingRange:(struct TSUCellRect)arg5;
+- (id)initWithTableInfo:(id)arg1 tableModel:(id)arg2 region:(id)arg3 flags:(unsigned long long)arg4 searchFlags:(unsigned long long)arg5 clampingRange:(struct TSUCellRect)arg6;
 - (void)iterateCellsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)nextCellData;
 - (struct TSUCellCoord)p_getNextCellID;

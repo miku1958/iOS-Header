@@ -17,6 +17,7 @@
 - (id)initWithFakeProxy:(id)arg1;
 - (id)remoteObjectProxy;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end
 

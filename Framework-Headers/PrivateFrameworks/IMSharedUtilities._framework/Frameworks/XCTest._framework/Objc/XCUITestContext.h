@@ -19,8 +19,8 @@
 @property (readonly, copy) NSArray *handlers;
 
 + (CDUnknownBlockType)defaultAsynchronousUIElementHandler;
+- (void).cxx_destruct;
 - (id)addUIInterruptionMonitorWithDescription:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (BOOL)handleAsynchronousUIElement:(id)arg1;
 - (id)init;
 - (void)performInScope:(CDUnknownBlockType)arg1;

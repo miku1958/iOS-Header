@@ -22,8 +22,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long max; // @synthesize max=_max;
 @property (nonatomic) unsigned long long min; // @synthesize min=_min;
 @property (nonatomic) unsigned long long total; // @synthesize total=_total;
-@property (nonatomic) NSMutableArray *values; // @synthesize values=_values;
+@property (strong, nonatomic) NSMutableArray *values; // @synthesize values=_values;
 
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (void)updateWithValue:(unsigned long long)arg1;

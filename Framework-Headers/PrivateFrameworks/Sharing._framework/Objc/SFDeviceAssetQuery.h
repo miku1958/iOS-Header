@@ -12,6 +12,7 @@
 {
     BOOL _forEngagement;
     BOOL _legacyFormats;
+    struct LogCategory *_ucat;
     NSString *_productType;
     NSString *_mappedProductType;
     NSString *_marketingProductNumber;
@@ -31,6 +32,8 @@
 @property (strong, nonatomic) NSString *mappedProductType; // @synthesize mappedProductType=_mappedProductType;
 @property (readonly, nonatomic) NSString *marketingProductNumber; // @synthesize marketingProductNumber=_marketingProductNumber;
 @property (readonly, nonatomic) NSString *productType; // @synthesize productType=_productType;
+@property (readonly, nonatomic) NSString *stringIdentifier;
+@property (readonly, nonatomic) struct LogCategory *ucat; // @synthesize ucat=_ucat;
 @property (readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 
 + (BOOL)deviceWantsLegacyFormats;

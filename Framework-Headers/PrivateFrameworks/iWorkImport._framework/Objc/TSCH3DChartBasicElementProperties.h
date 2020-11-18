@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (struct GeometryResource)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
 - (id)normalsForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
-- (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_44ada6bf)arg2;
+- (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 - (id)texcoordsForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
 
 @end

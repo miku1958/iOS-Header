@@ -9,12 +9,12 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDHomeManager, NSObject, NSString, NSUUID;
+@class HMDHomeManager, HMFMessageDestination, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDKeyTransferAgent : HMFObject <HMFLogging, HMFMessageReceiver>
 {
-    BOOL _inProgress;
+    NSString *_progressState;
     unsigned long long _residentProvisioningStatus;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHomeManager *_homeManager;
@@ -25,9 +25,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (nonatomic, getter=isInProgress) BOOL inProgress; // @synthesize inProgress=_inProgress;
+@property (readonly, copy) HMFMessageDestination *messageDestination;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (strong, nonatomic) NSString *progressState; // @synthesize progressState=_progressState;
 @property (readonly) unsigned long long residentProvisioningStatus; // @synthesize residentProvisioningStatus=_residentProvisioningStatus;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;

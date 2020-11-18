@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/APSConnectionDelegate-Protocol.h>
 
-@class APSConnection, CKContainer, CKDatabase, HMDCloudCache, HMDCloudDataSyncStateFilter, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDHomeManager, HMFMessageDispatcher, NSData, NSMutableArray, NSObject, NSString, NSUUID;
+@class APSConnection, CKContainer, CKDatabase, CKServerChangeToken, HMDCloudCache, HMDCloudDataSyncStateFilter, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDHomeManager, HMFMessageDispatcher, NSData, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMDCloudManager : HMFObject <APSConnectionDelegate>
@@ -17,6 +17,7 @@
     BOOL _cloudHomeDataRecordExists;
     BOOL _keychainSyncEnabled;
     BOOL _firstV3Fetch;
+    int _proxSetupNotificationToken;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CKContainer *_container;
     CKDatabase *_database;
@@ -28,6 +29,8 @@
     NSObject<OS_dispatch_source> *_retryTimer;
     NSObject<OS_dispatch_source> *_pollTimer;
     NSObject<OS_dispatch_source> *_controllerKeyPollTimer;
+    NSObject<OS_dispatch_source> *_watchdogControllerKeyPollTimer;
+    CKServerChangeToken *_databaseServerChangeToken;
     APSConnection *_pushConnection;
     CDUnknownBlockType _cloudDataDeletedNotificationHandler;
     CDUnknownBlockType _cloudMetadataDeletedNotificationHandler;
@@ -57,6 +60,7 @@
 @property (strong, nonatomic) NSMutableArray *currentBackoffTimerValuesInMinutes; // @synthesize currentBackoffTimerValuesInMinutes=_currentBackoffTimerValuesInMinutes;
 @property (copy, nonatomic) CDUnknownBlockType dataDecryptionFailedHandler; // @synthesize dataDecryptionFailedHandler=_dataDecryptionFailedHandler;
 @property (strong, nonatomic) CKDatabase *database; // @synthesize database=_database;
+@property (strong, nonatomic) CKServerChangeToken *databaseServerChangeToken; // @synthesize databaseServerChangeToken=_databaseServerChangeToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) BOOL decryptionFailed;
 @property (readonly, copy) NSString *description;
@@ -70,30 +74,36 @@
 @property (readonly, nonatomic) HMDCloudMetadataZone *metadataZone;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *pollTimer; // @synthesize pollTimer=_pollTimer;
+@property (nonatomic) int proxSetupNotificationToken; // @synthesize proxSetupNotificationToken=_proxSetupNotificationToken;
 @property (strong, nonatomic) APSConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *retryTimer; // @synthesize retryTimer=_retryTimer;
 @property (readonly, nonatomic) NSData *serverTokenData;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *watchdogControllerKeyPollTimer; // @synthesize watchdogControllerKeyPollTimer=_watchdogControllerKeyPollTimer;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (BOOL)isControllerKeyAvailable;
 - (void).cxx_destruct;
 - (void)_accountIsActive;
 - (void)_addHomeZoneName:(id)arg1 owner:(id)arg2;
+- (void)_auditProxSetupNotification;
 - (id)_changeTokenFromData:(id)arg1;
 - (void)_checkZoneAndUploadTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_createZoneAndFetchChanges:(CDUnknownBlockType)arg1;
 - (void)_createZoneAndUploadTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchAndVerifyZoneRootRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_fetchDatabaseZoneChanges;
 - (void)_fetchLegacyTransaction:(id)arg1 forceFetch:(BOOL)arg2 accountCompletionHandler:(CDUnknownBlockType)arg3 dataCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)_fetchTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_forceCleanCloud:(BOOL)arg1 fetchTransaction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleAccountStatus:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2 error:(id)arg3;
 - (void)_handleControllerKeyAvailable;
 - (void)_handleKeychainSyncStateChanged:(BOOL)arg1;
+- (BOOL)_isProxSetupRunning;
 - (void)_processFetchCompletedWithError:(id)arg1 serverToken:(id)arg2 fetchTransaction:(id)arg3 migrationOptions:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5 moreRecordsComing:(BOOL)arg6 emptyRecord:(BOOL)arg7;
 - (BOOL)_processFetchedTransaction:(id)arg1;
+- (void)_registerForProxSetupNotifications;
 - (void)_registerForPushNotifications;
 - (void)_removeAllHomeZonesCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_removeHomeZoneName:(id)arg1;
@@ -104,6 +114,7 @@
 - (void)_resetCloudServerTokenData;
 - (void)_resetCloudZonesIgnoreHomeManager:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_resetHomeDataRecordState;
+- (void)_scheduleZoneFetch:(id)arg1;
 - (id)_serverTokenData;
 - (void)_setupSubscriptionForZone:(id)arg1;
 - (void)_startControllerKeyPollTimer;
@@ -111,9 +122,11 @@
 - (void)_startControllerKeyPollTimerWithValue:(long long)arg1;
 - (void)_startFetchPollTimer;
 - (void)_startFetchRetryTimer;
+- (void)_startWatchdogControllerKeyPollTimer;
 - (void)_stopControllerKeyPollTimer;
 - (void)_stopFetchPollTimer;
 - (void)_stopFetchRetryTimer;
+- (void)_stopWatchdogControllerKeyPollTimer;
 - (void)_updateServerTokenStatusOnCloudFilter;
 - (void)_uploadLegacyTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_uploadTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -126,6 +139,7 @@
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (void)dealloc;
 - (void)fetchCurrentAccountStateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchDatabaseZoneChanges;
 - (void)fetchLegacyTransaction:(id)arg1 forceFetch:(BOOL)arg2 accountCompletionHandler:(CDUnknownBlockType)arg3 dataCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)fetchTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleKeychainStateChangedNotification:(id)arg1;

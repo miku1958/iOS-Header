@@ -94,7 +94,7 @@
 - (void)_remote_fetchRegisteredDataPromiseInfoForCreator:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)_remote_fetchSeedsForCoordinatorsWithIntent:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)_remote_killDaemonForTestingWithCompletion:(void (^)(NSError *))arg1;
-- (void)_remote_pingDaemonWithCompletion:(void (^)(NSError *))arg1;
+- (void)_remote_pingDaemonWithCompletion:(void (^)(int, NSError *))arg1;
 - (void)_remote_prioritizeCoordinatorForAppWithBundleID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_purgeRegisteredCoordinatorsAndPromisesForCreator:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_registerObserverMachServiceName:(NSString *)arg1 forClientIdentifiers:(NSSet *)arg2 respondingToSelectors:(unsigned long long)arg3;
@@ -104,7 +104,7 @@
 - (void)_remote_removeObserverForDataPromiseWithUUID:(NSUUID *)arg1;
 - (void)_remote_setIsPaused:(BOOL)arg1 forCoordinatorForAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_remote_setRemovability:(unsigned long long)arg1 forAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)_remote_setTestModeForBundleWithPrefix:(NSString *)arg1 testMode:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)_remote_setTestModeForIdentifierPrefix:(NSString *)arg1 testMode:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_remote_setTestingEnabled:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_uninstallAppWithBundleID:(NSString *)arg1 requestUserConfirmation:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 @end

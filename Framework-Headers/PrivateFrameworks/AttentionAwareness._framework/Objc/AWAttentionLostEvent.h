@@ -22,7 +22,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTimestamp:(double)arg1 archivedTag:(id)arg2 attentionLostTimeout:(double)arg3;
+- (id)initWithTimestamp:(double)arg1 tagIndex:(unsigned long long)arg2 attentionLostTimeout:(double)arg3;
 - (void)updateWithConfig:(id)arg1;
 - (void)validateMask;
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     TSCHChartFeature *mFeature;
 }
 
+@property (readonly, nonatomic) TSCHChartFeature *feature; // @synthesize feature=mFeature;
 @property (readonly, nonatomic) BOOL is3D;
 
 + (id)allChartTypes;
@@ -24,10 +25,13 @@ __attribute__((visibility("hidden")))
 + (id)barChart;
 + (id)barChart3D;
 + (id)bubbleChart;
++ (id)chartTypeForUserInterfaceTag:(long long)arg1;
 + (id)chartTypePlaceholderForDefault3DScaleProperty;
 + (id)columnChart;
 + (id)columnChart3D;
 + (id)constantDepthInfoChartScaleForInfoChartScale:(id)arg1 chartType:(id)arg2 barShape:(int)arg3;
++ (id)donutChart;
++ (id)donutChart3D;
 + (struct CGSize)fallbackMinimumChartBodySize;
 + (id)lineChart;
 + (id)lineChart3D;
@@ -47,7 +51,9 @@ __attribute__((visibility("hidden")))
 + (id)stackedColumnChart;
 + (id)stackedColumnChart3D;
 + (id)twoYAxisChart;
+- (void).cxx_destruct;
 - (id)allCDESectionLabels;
+- (id)alternateArchiveChartTypeAndReturnWriterVersion:(unsigned long long *)arg1 readerVersion:(unsigned long long *)arg2 featureID:(id *)arg3;
 - (id)animationDeliveryStylesForFilter:(id)arg1;
 - (id)animationFiltersWithDefaultFilters:(id)arg1;
 - (BOOL)approximatesTitleAccommodationUsingLegendSize;
@@ -59,16 +65,20 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)defaultDataFileName;
+- (float)defaultLabelExplosionPercentage;
+- (double)defaultLabelExplosionValue;
 - (id)defaultSeriesType:(unsigned long long)arg1;
 - (int)deprecated3DBevelEdgesSpecificProperty;
 - (int)deprecated3DShadowSpecificProperty;
 - (BOOL)drawValueLabelsForZero;
+- (BOOL)editableFormatForValueStrings;
 - (BOOL)explosionAffectsChartBodyBounds;
 - (id)filteredStyleOwnersFromStyleOwners:(id)arg1;
 - (id)g_genericToSpecificPropertyMapArea;
 - (id)g_genericToSpecificPropertyMapBar;
 - (id)g_genericToSpecificPropertyMapBubble;
 - (id)g_genericToSpecificPropertyMapColumn;
+- (id)g_genericToSpecificPropertyMapDonut;
 - (id)g_genericToSpecificPropertyMapLine;
 - (id)g_genericToSpecificPropertyMapMixed;
 - (id)g_genericToSpecificPropertyMapPie;
@@ -79,15 +89,23 @@ __attribute__((visibility("hidden")))
 - (id)g_genericToSpecificPropertyMapTwoAxis;
 - (id)genericToSpecificPropertyMap;
 - (unsigned long long)gridOffsetToSeriesForScatterFormat:(int)arg1;
+- (BOOL)hasExplodableSeriesElements;
+- (BOOL)hasFixedFrameRatio;
 - (id)imageWithPreset:(id)arg1 target:(int)arg2 imageSize:(struct CGSize)arg3 imageScale:(double)arg4 swatchFrame:(struct CGRect)arg5 documentRoot:(id)arg6 shouldCache:(BOOL *)arg7;
+- (BOOL)includeValueLabelPositionOff;
 - (id)init;
 - (id)initWithFeatureClass:(Class)arg1;
 - (BOOL)isHorizontal;
 - (BOOL)isMultiData;
-- (BOOL)isPie;
 - (Class)layoutClass;
 - (BOOL)layoutFrameShouldEncloseInfoGeometry;
+- (id)localizedActionStringForWedgeExplosion;
+- (id)localizedDeliveryTypeForWedge;
+- (id)localizedTitleForDeliveryTypeWedge;
+- (id)localizedWedgeDragLabelWithPercent:(unsigned long long)arg1;
 - (unsigned long long)maxCellsToCheckForGridValueType;
+- (double)maxInnerRadiusPercentage;
+- (double)minInnerRadiusPercentage;
 - (struct CGSize)minimumChartBodySize;
 - (struct CGSize)minimumChartBodySizeForTransformingGeometry;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
@@ -97,6 +115,8 @@ __attribute__((visibility("hidden")))
 - (id)p_debugDescription;
 - (unsigned long long)presentationDimension;
 - (Class)presetImagerClass;
+- (BOOL)rendersBackgroundAxis;
+- (BOOL)rendersUsingRadialGeometry;
 - (Class)repClass;
 - (int)representativeGridValueAxisType;
 - (BOOL)requiresSeparateLabelsRenderPass;
@@ -109,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (float)rotation3DMinX;
 - (float)rotation3DMinY;
 - (Class)sageGeometeryHelperClass;
+- (BOOL)shouldChangeExplosionWithPreviousChartType:(id)arg1 seriesList:(id)arg2;
 - (int)stackingSignRule;
 - (unsigned long long)styleIndexForAxisID:(id)arg1;
 - (BOOL)suppliesFinalTextures;
@@ -119,6 +140,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsBackgroundFill;
 - (BOOL)supportsBorderFrame;
 - (BOOL)supportsBubbleOptions;
+- (BOOL)supportsCalloutLines;
 - (BOOL)supportsCategoryAxisLabels;
 - (BOOL)supportsCategoryAxisMinorTickmarks;
 - (BOOL)supportsCategoryAxisPlotToEdgesOption;
@@ -134,12 +156,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsGroupedShadows;
 - (BOOL)supportsIncrementalResize;
 - (BOOL)supportsIndividualShadowRendering;
+- (BOOL)supportsInnerRadius;
 - (BOOL)supportsLabelExplosion;
 - (BOOL)supportsMinorGridlines;
-- (BOOL)supportsMoreThanOneLiveCategory;
 - (BOOL)supportsMultipleSeriesTypes;
 - (BOOL)supportsMultipleValueScales;
+- (BOOL)supportsMultipleValuesPerSeries;
 - (BOOL)supportsPercentNumberFormatting;
+- (BOOL)supportsPlaceTitleAtCenter;
 - (BOOL)supportsReferenceLines;
 - (BOOL)supportsSeriesFill;
 - (BOOL)supportsSeriesLabels;
@@ -148,6 +172,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsShadowOffset;
 - (BOOL)supportsSharedAndSeparateX;
 - (BOOL)supportsShowLabelsInFrontOption;
+- (BOOL)supportsStartAngleRotation;
 - (BOOL)supportsSymbolOverhang;
 - (BOOL)supportsTickmarks;
 - (BOOL)supportsTrendLines;
@@ -155,8 +180,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsValueLabels;
 - (struct UIEdgeInsets)swatchImageEdgeInsetsForSize:(struct CGSize)arg1;
 - (id)titlePositionerWithInfo:(id)arg1 scene:(id)arg2;
+- (id)unlocalizedDeliveryTypeForWedge;
 - (void)updateTitlesForExportingModel:(id)arg1 info:(id)arg2;
 - (id)userInterfaceName;
+- (id)userInterfaceNameForPlaceTitleAtCenter:(BOOL)arg1;
+- (long long)userInterfaceTag;
 - (Class)valueAxisClassForID:(id)arg1 scale:(int)arg2;
 - (id)valueAxisIDs;
 - (double)valueAxisTitleRotation;

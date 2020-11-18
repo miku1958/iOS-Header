@@ -38,12 +38,12 @@
     unsigned long long _lastCharacterStrokeCount;
     NSMutableIndexSet *_lastCharacterStrokeIndexes;
     struct CGSize _minimumDrawingSize;
-    map_4a1e39a4 _cachedResults;
+    map_cde2a89c _cachedResults;
 }
 
 @property (strong, nonatomic) NSCharacterSet *activeCharacterSet; // @synthesize activeCharacterSet=_activeCharacterSet;
 @property (copy, nonatomic) CHDrawing *cachedDrawing; // @synthesize cachedDrawing=_cachedDrawing;
-@property (nonatomic) map_4a1e39a4 cachedResults; // @synthesize cachedResults=_cachedResults;
+@property (nonatomic) map_cde2a89c cachedResults; // @synthesize cachedResults=_cachedResults;
 @property (nonatomic) void *characterLanguageModel; // @synthesize characterLanguageModel=_characterLanguageModel;
 @property (nonatomic) struct _LXLexicon *customLexicon; // @synthesize customLexicon=_customLexicon;
 @property (nonatomic) void *dynamicLexicon; // @synthesize dynamicLexicon=_dynamicLexicon;
@@ -104,7 +104,7 @@
 - (BOOL)_updateResults:(id)arg1 string:(id)arg2 score:(double)arg3 lexicalEntry:(BOOL)arg4 patternEntry:(BOOL)arg5;
 - (id)_wordLMLexiconCorrectionForString:(id)arg1 withLexicon:(void *)arg2 consumableStrokesSet:(id)arg3 resultWordID:(unsigned int *)arg4;
 - (id)_wordLXLexiconCorrectionForString:(id)arg1 withLexicon:(struct _LXLexicon *)arg2 consumableStrokesSet:(id)arg3 resultWordID:(unsigned int *)arg4;
-- (id)bestNetworkPaths:(struct Network *)arg1 from:(unsigned long long)arg2 to:(unsigned long long)arg3 count:(unsigned long long)arg4 staticLexiconCursor:(void *)arg5 customLexiconCursor:(struct _LXCursor *)arg6 patternCursor:(struct PatternGraph *)arg7 history:(id)arg8 activeHistoryRange:(struct _NSRange)arg9 mecabraIDs:(vector_e0f2bd7e *)arg10 numExpectedDelayedStrokes:(unsigned long long)arg11;
+- (id)bestNetworkPaths:(struct Network *)arg1 from:(unsigned long long)arg2 to:(unsigned long long)arg3 count:(unsigned long long)arg4 staticLexiconCursor:(void *)arg5 customLexiconCursor:(struct _LXCursor *)arg6 patternCursor:(struct PatternGraph *)arg7 history:(id)arg8 activeHistoryRange:(struct _NSRange)arg9 mecabraIDs:(vector_12bd641b *)arg10 numExpectedDelayedStrokes:(unsigned long long)arg11;
 - (void)candidateAccepted:(void *)arg1;
 - (void)candidatesCleared;
 - (id)characterSetForStrings:(id)arg1;

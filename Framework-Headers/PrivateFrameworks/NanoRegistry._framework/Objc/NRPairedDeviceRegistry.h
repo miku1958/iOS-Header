@@ -170,6 +170,7 @@
 - (id)initWithBoost:(BOOL)arg1;
 - (void)initializeWithShouldMakeEmptyDeviceCollection:(BOOL)arg1;
 - (BOOL)isDaemonIdle;
+- (BOOL)isKeychainEnabled;
 - (BOOL)isPaired;
 - (BOOL)isWatchSetupPushActive;
 - (void)keepPhoneUnlockedInternalTestSPI:(CDUnknownBlockType)arg1;

@@ -9,7 +9,7 @@
 #import <MPSNeuralNetwork/NSCopying-Protocol.h>
 #import <MPSNeuralNetwork/NSSecureCoding-Protocol.h>
 
-@class MPSCNNNeuron, NSData;
+@class MPSCNNNeuron, MPSNNNeuronDescriptor, NSData;
 
 @interface MPSCNNConvolutionDescriptor : NSObject <NSSecureCoding, NSCopying>
 {
@@ -26,18 +26,15 @@
     unsigned long long _subPixelScaleFactor;
     unsigned long long _dilationRateX;
     unsigned long long _dilationRateY;
-    int _neuronType;
-    float _neuronA;
-    float _neuronB;
-    float _neuronC;
     BOOL _depthWiseConvolution;
-    NSData *_perChannelNeuronA;
+    MPSNNNeuronDescriptor *_fusedNeuronDescriptor;
     MPSCNNNeuron *_neuron_deprecated;
 }
 
 @property (nonatomic) unsigned long long dilationRateX; // @synthesize dilationRateX=_dilationRateX;
 @property (nonatomic) unsigned long long dilationRateY; // @synthesize dilationRateY=_dilationRateY;
 @property (nonatomic) unsigned long long featureChannelsLayout; // @synthesize featureChannelsLayout=_featureChannelsLayout;
+@property (strong, nonatomic) MPSNNNeuronDescriptor *fusedNeuronDescriptor; // @synthesize fusedNeuronDescriptor=_fusedNeuronDescriptor;
 @property (nonatomic) unsigned long long groups; // @synthesize groups=_groups;
 @property (nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
 @property (nonatomic) unsigned long long kernelHeight; // @synthesize kernelHeight=_kernelHeight;

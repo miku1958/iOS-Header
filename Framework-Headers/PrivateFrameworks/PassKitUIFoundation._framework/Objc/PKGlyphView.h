@@ -8,7 +8,7 @@
 
 #import <PassKitUIFoundation/PKFingerprintGlyphViewDelegate-Protocol.h>
 
-@class CALayer, NSMutableArray, NSString, PKCheckGlyphLayer, PKFingerprintGlyphView, PKPhoneGlyphLayer, UIColor;
+@class CALayer, NSMutableArray, NSString, PKCheckGlyphLayer, PKFingerprintGlyphView, PKMicaLayer, PKPhoneGlyphLayer, UIColor;
 @protocol PKGlyphViewDelegate;
 
 @interface PKGlyphView : UIView <PKFingerprintGlyphViewDelegate>
@@ -24,10 +24,14 @@
     struct {
         unsigned int showingPhone:1;
         unsigned int phoneRotated:1;
+        unsigned int showingUserIntentPhone:1;
+        unsigned int showingUserIntentArrow:1;
     } _layoutFlags;
     PKFingerprintGlyphView *_fingerprintView;
     PKPhoneGlyphLayer *_phoneLayer;
     PKCheckGlyphLayer *_checkLayer;
+    PKMicaLayer *_userIntentArrowLayer;
+    PKMicaLayer *_userIntentPhoneLayer;
     double _phoneAspectRatio;
     CALayer *_customImageLayer;
     struct UIColor *_secondaryColor;
@@ -75,6 +79,7 @@
 - (void)_updateLastAnimationTimeWithAnimationOfDuration:(double)arg1;
 - (void)_updatePhoneLayoutWithTransitionIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)_updatePhoneWiggleIfNecessary;
+- (void)_updateUserIntentLayoutAnimated:(BOOL)arg1;
 - (id)createCustomImageLayer;
 - (void)dealloc;
 - (void)fingerprintGlyphView:(id)arg1 didLayoutContentLayer:(id)arg2;

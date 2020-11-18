@@ -9,17 +9,19 @@
 #import <HealthUI/HKGraphViewDelegate-Protocol.h>
 
 @class HKGraphView, NSString;
-@protocol HKGraphViewDelegate;
+@protocol HKGraphViewControllerDelegate, HKGraphViewDelegate;
 
 @interface HKGraphViewController : HKViewController <HKGraphViewDelegate>
 {
     HKGraphView *_graphView;
     id<HKGraphViewDelegate> _graphViewDelegateProxy;
+    id<HKGraphViewControllerDelegate> _delegate;
     long long _dateZoom;
 }
 
 @property (readonly, nonatomic) long long dateZoom; // @synthesize dateZoom=_dateZoom;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HKGraphViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HKGraphView *graphView; // @synthesize graphView=_graphView;
 @property (weak, nonatomic) id<HKGraphViewDelegate> graphViewDelegateProxy; // @synthesize graphViewDelegateProxy=_graphViewDelegateProxy;

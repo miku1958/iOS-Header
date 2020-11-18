@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)invalidCellRef;
 - (id).cxx_construct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCellCoord:(struct TSUCellCoord)arg1 tableID:(id)arg2;

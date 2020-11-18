@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class SXPlaybackCoordinator, SXVideoView, UIView;
+#import <Silex/SXPlaybackTransitionContext-Protocol.h>
 
-@interface SXPlaybackTransitionContext : NSObject
+@class NSString;
+@protocol SXVideo;
+
+@interface SXPlaybackTransitionContext : NSObject <SXPlaybackTransitionContext>
 {
-    UIView *_containerView;
-    SXVideoView *_fromVideoView;
-    SXVideoView *_toVideoView;
-    SXPlaybackCoordinator *_fromPlaybackCoordinator;
-    SXPlaybackCoordinator *_toPlaybackCoordinator;
-    unsigned long long _direction;
+    id<SXVideo> _fromVideo;
+    id<SXVideo> _toVideo;
+    CDUnknownBlockType _completionBlock;
 }
 
-@property (readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
-@property (readonly, nonatomic) unsigned long long direction; // @synthesize direction=_direction;
-@property (readonly, nonatomic) SXPlaybackCoordinator *fromPlaybackCoordinator; // @synthesize fromPlaybackCoordinator=_fromPlaybackCoordinator;
-@property (readonly, nonatomic) SXVideoView *fromVideoView; // @synthesize fromVideoView=_fromVideoView;
-@property (readonly, nonatomic) SXPlaybackCoordinator *toPlaybackCoordinator; // @synthesize toPlaybackCoordinator=_toPlaybackCoordinator;
-@property (readonly, nonatomic) SXVideoView *toVideoView; // @synthesize toVideoView=_toVideoView;
+@property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<SXVideo> fromVideo; // @synthesize fromVideo=_fromVideo;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) id<SXVideo> toVideo; // @synthesize toVideo=_toVideo;
 
 - (void).cxx_destruct;
-- (id)initWithContainerView:(id)arg1 fromVideoView:(id)arg2 toVideoView:(id)arg3 fromPlaybackCoordinator:(id)arg4 toPlaybackCoordinator:(id)arg5 direction:(unsigned long long)arg6;
+- (void)completeTransition:(BOOL)arg1;
+- (id)initWithFromVideo:(id)arg1 toVideo:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end
 

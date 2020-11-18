@@ -7,6 +7,7 @@
 #import <HomeUI/HUItemTableViewController.h>
 
 #import <HomeUI/HFAccessoryObserver-Protocol.h>
+#import <HomeUI/HFAccessorySettingMobileTimerAdapterObserver-Protocol.h>
 #import <HomeUI/HFMediaObjectObserver-Protocol.h>
 #import <HomeUI/HUAlarmEditViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUHomePodAlarmItemModuleControllerDelegate-Protocol.h>
@@ -15,9 +16,10 @@
 @class HUHomePodAlarmItemModuleController, MTAlarm, NSString, UIBarButtonItem, _UIContentUnavailableView;
 @protocol HFMediaProfileContainer, HUPresentationDelegate;
 
-@interface HUAlarmTableViewController : HUItemTableViewController <HUAlarmEditViewControllerDelegate, HUHomePodAlarmItemModuleControllerDelegate, HFAccessoryObserver, HFMediaObjectObserver, HUPresentationDelegateHost>
+@interface HUAlarmTableViewController : HUItemTableViewController <HUAlarmEditViewControllerDelegate, HUHomePodAlarmItemModuleControllerDelegate, HFAccessoryObserver, HFMediaObjectObserver, HFAccessorySettingMobileTimerAdapterObserver, HUPresentationDelegateHost>
 {
     BOOL _isAccessoryControllable;
+    BOOL _isAlarmsSettingReady;
     id<HUPresentationDelegate> _presentationDelegate;
     UIBarButtonItem *_doneButtonItem;
     HUHomePodAlarmItemModuleController *_alarmModuleController;
@@ -36,7 +38,8 @@
 @property (strong, nonatomic) UIBarButtonItem *doneButtonItem; // @synthesize doneButtonItem=_doneButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *editDoneButtonItem; // @synthesize editDoneButtonItem=_editDoneButtonItem;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isAccessoryControllable; // @synthesize isAccessoryControllable=_isAccessoryControllable;
+@property (readonly, nonatomic) BOOL isAccessoryControllable; // @synthesize isAccessoryControllable=_isAccessoryControllable;
+@property (readonly, nonatomic) BOOL isAlarmsSettingReady; // @synthesize isAlarmsSettingReady=_isAlarmsSettingReady;
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (strong, nonatomic) _UIContentUnavailableView *noItemsView; // @synthesize noItemsView=_noItemsView;
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
@@ -50,6 +53,7 @@
 - (void)_numberOfItemsDidChangeAnimated:(BOOL)arg1;
 - (void)_showAddView:(id)arg1;
 - (id)_tableView:(id)arg1 templateLayoutCellForCellsWithReuseIdentifier:(id)arg2;
+- (void)_updateAccessoryControllable:(BOOL)arg1 alarmsSettingReady:(BOOL)arg2;
 - (void)_updateNavigationItems:(BOOL)arg1;
 - (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
@@ -65,6 +69,7 @@
 - (id)initWithMediaProfileContainer:(id)arg1;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)itemModuleControllers;
+- (void)mobileTimerAdapterDidUpdateReadiness:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;

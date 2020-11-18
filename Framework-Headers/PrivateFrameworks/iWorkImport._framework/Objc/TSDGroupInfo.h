@@ -6,35 +6,46 @@
 
 #import <iWorkImport/TSDDrawableInfo.h>
 
+#import <iWorkImport/TSDAttachmentAwareContainerInfo-Protocol.h>
 #import <iWorkImport/TSDMixing-Protocol.h>
+#import <iWorkImport/TSDModelContainer-Protocol.h>
 #import <iWorkImport/TSDMutableContainerInfo-Protocol.h>
 #import <iWorkImport/TSDSelectionStatisticsContributor-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString, TSDInfoGeometry, TSPObject;
+@class NSArray, NSMutableArray, NSObject, NSSet, NSString, TSDInfoGeometry, TSPObject;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSDGroupInfo : TSDDrawableInfo <TSDMutableContainerInfo, TSDMixing, TSKDocumentObject, TSDSelectionStatisticsContributor>
+@interface TSDGroupInfo : TSDDrawableInfo <TSDMutableContainerInfo, TSDMixing, TSKDocumentObject, TSDSelectionStatisticsContributor, TSDModelContainer, TSDAttachmentAwareContainerInfo>
 {
     NSMutableArray *mChildInfos;
     BOOL mIsInDocument;
 }
 
+@property (readonly, nonatomic) NSArray *allNestedChildrenInfos;
+@property (readonly, nonatomic) NSArray *allNestedChildrenInfosForWrap;
+@property (readonly, nonatomic) NSArray *allNestedChildrenInfosIncludingGroups;
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText; // @dynamic anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (readonly, nonatomic) BOOL canAspectRatioLockBeChangedByUser;
+@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, nonatomic) NSArray *containedModels;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText; // @dynamic floatingAboveText;
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *infosToObserveForAttachedInfo;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
+@property (readonly, nonatomic) BOOL isFreehandDrawing;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @dynamic owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @dynamic parentInfo;
 @property (readonly) Class superclass;
 
++ (Class)classForUnarchiver:(id)arg1;
 + (id)drawablesToInsertForGroup:(id)arg1 filteredWithBlock:(CDUnknownBlockType)arg2;
 + (id)groupGeometryFromChildrenInfos:(id)arg1;
 + (id)p_drawablesToInsertForGroup:(id)arg1 outDidUngroup:(BOOL *)arg2 filteredWithBlock:(CDUnknownBlockType)arg3;
@@ -42,13 +53,9 @@ __attribute__((visibility("hidden")))
 - (void)acceptVisitor:(id)arg1;
 - (void)addChildInfo:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
-- (id)allNestedChildrenInfos;
-- (id)allNestedChildrenInfosIncludingGroups;
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
 - (BOOL)canAnchor;
-- (BOOL)canAspectRatioLockBeChangedByUser;
 - (id)childEnumerator;
-- (id)childInfos;
 - (BOOL)containsDisallowedElementKind:(unsigned int)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
@@ -60,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)insertChildInfo:(id)arg1 above:(id)arg2;
 - (void)insertChildInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertChildInfo:(id)arg1 below:(id)arg2;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct GroupArchive *)arg1 unarchiver:(id)arg2 upgradeDOLC:(BOOL)arg3;
@@ -68,10 +76,12 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (void)moveChildren:(id)arg1 toIndexes:(id)arg2;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
 - (BOOL)needsDownload;
 - (void)processSelectedStoragesWithStatisticsController:(id)arg1;
 - (void)removeAllChildrenInDocument:(BOOL)arg1;
 - (void)removeChildInfo:(id)arg1;
+- (void)removeContainedModel:(id)arg1;
 - (Class)repClass;
 - (void)replaceChildInfo:(id)arg1 with:(id)arg2;
 - (void)saveToArchive:(struct GroupArchive *)arg1 archiver:(id)arg2;

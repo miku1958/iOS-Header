@@ -19,16 +19,20 @@
     double _scale;
     UIImage *_image;
     struct CGImage *_imageRef;
-    void *_surfaceRef;
+    void *_nonProtectedSurfaceRef;
+    void *_protectedSurfaceRef;
+    BOOL _allowsProtectedContent;
 }
 
 @property (readonly, nonatomic) struct CGImage *CGImage;
 @property (readonly, nonatomic) void *IOSurface;
 @property (readonly, nonatomic) UIImage *UIImage;
+@property (nonatomic) BOOL allowsProtectedContent; // @synthesize allowsProtectedContent=_allowsProtectedContent;
 @property (readonly, nonatomic, getter=isDataLoaded) BOOL dataLoaded;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;
+@property (readonly, nonatomic) void *fallbackIOSurface;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSOrderedSet *layers; // @synthesize layers=_layers;
 @property (nonatomic, getter=isOpaque) BOOL opaque; // @synthesize opaque=_opaque;

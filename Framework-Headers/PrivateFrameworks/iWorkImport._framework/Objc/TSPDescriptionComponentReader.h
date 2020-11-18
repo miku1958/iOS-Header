@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)init;
 - (id)initWithComponent:(id)arg1 delegate:(id)arg2 readChannel:(id)arg3 descriptionGenerator:(id)arg4;
 - (id)newUnarchiverWithObjectIdentifier:(long long)arg1 messageInfo:(const struct MessageInfo *)arg2 message:(auto_ptr_4370f086 *)arg3 messageVersion:(unsigned long long)arg4 strongReferences:(auto_ptr_945ad503)arg5 unknownContent:(id)arg6;
 - (void)read;

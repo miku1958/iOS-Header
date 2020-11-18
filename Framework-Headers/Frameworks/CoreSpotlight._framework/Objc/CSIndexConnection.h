@@ -10,10 +10,12 @@
 
 @interface CSIndexConnection : CSXPCConnection
 {
+    BOOL _previouslyInitialized;
     NSMutableDictionary *_indexMap;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *indexMap; // @synthesize indexMap=_indexMap;
+@property (readonly, nonatomic) BOOL previouslyInitialized; // @synthesize previouslyInitialized=_previouslyInitialized;
 
 + (id)sharedConnection;
 - (void).cxx_destruct;
@@ -22,6 +24,7 @@
 - (void)handleError:(id)arg1;
 - (void)handleReply:(id)arg1;
 - (id)indexForID:(unsigned int)arg1;
+- (void)sendMessageAsync:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

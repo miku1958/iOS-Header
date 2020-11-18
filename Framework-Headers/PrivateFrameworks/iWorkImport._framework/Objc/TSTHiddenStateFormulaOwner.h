@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
     TSCECalculationEngine *_calculationEngine;
     struct vector<std::__1::pair<unsigned short, bool>, std::__1::allocator<std::__1::pair<unsigned short, bool>>> _pendingComputedShowRowResults;
     NSObject<OS_dispatch_queue> *_pendingComputedShowRowResultsQueue;
-    vector_db509b29 _cellRangesToInvalidate;
-    vector_eef16772 _hiddenRowIndices;
+    vector_e87daf7b _cellRangesToInvalidate;
+    vector_8d85e9cb _hiddenRowIndices;
     TSTTableFilterSet *_rewrittenFilterSet;
     NSMutableArray *_thresholdCellValues;
     BOOL _needsToUpdateFilterSetForImport;

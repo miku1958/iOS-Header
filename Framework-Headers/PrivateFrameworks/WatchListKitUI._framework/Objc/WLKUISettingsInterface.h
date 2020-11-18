@@ -16,7 +16,9 @@
 - (id)consentedBrands;
 - (void)dealloc;
 - (id)deniedBrands;
+- (void)forceUpdate;
 - (id)initWithAppContext:(id)arg1;
+- (unsigned long long)privacyFlowContentVersion;
 - (BOOL)privateModeEnabled;
 - (id)settings;
 - (BOOL)sportsScoreSpoilersAllowed;

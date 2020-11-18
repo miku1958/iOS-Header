@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (struct TSCH3DChartRotationLimit)rotation3DLimit;
 - (id)userInterfaceName;
+- (long long)userInterfaceTag;
 
 @end
 

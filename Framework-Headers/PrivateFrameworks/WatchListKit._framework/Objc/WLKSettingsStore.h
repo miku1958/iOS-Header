@@ -66,6 +66,7 @@
 - (id)deniedBrands;
 - (id)description;
 - (void)endIgnoringChanges;
+- (void)forceUpdate;
 - (id)init;
 - (void)refresh;
 - (void)setLastSyncDate:(id)arg1;

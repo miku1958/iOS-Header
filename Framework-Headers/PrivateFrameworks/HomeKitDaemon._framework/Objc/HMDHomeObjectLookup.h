@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)_scanAccessoriesAndServices;
 - (void)_scanActionSets;
+- (void)_scanMediaSystems;
 - (void)_scanResidentDevices;
 - (void)_scanRooms;
 - (void)_scanServiceGroups;

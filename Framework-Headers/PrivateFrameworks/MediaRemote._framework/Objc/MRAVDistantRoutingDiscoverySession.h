@@ -18,6 +18,7 @@
     unsigned int _discoveryMode;
     NSArray *_distantEndpoints;
     NSArray *_distantOutputDevices;
+    NSString *_routingContextUID;
     int _serviceResetNotifyToken;
     BOOL _hostedRoutingConnectionDidInitialize;
     NSXPCConnection *_hostedRoutingSessionConnection;
@@ -33,6 +34,7 @@
 
 + (id)clientInterface;
 + (id)serviceInterface;
+- (void).cxx_destruct;
 - (id)_hostedRoutingConnection;
 - (void)_initializeHostedRoutingConnection;
 - (void)_reloadAvailableDistantEndpoints;
@@ -49,7 +51,9 @@
 - (unsigned int)endpointFeatures;
 - (BOOL)hasAvailableEndpoints;
 - (id)initWithEndpointFeatures:(unsigned int)arg1;
+- (id)routingContextUID;
 - (void)setDiscoveryMode:(unsigned int)arg1;
+- (void)setRoutingContextUID:(id)arg1;
 
 @end
 

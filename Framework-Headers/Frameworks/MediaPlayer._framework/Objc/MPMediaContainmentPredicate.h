@@ -18,6 +18,7 @@
 @property (readonly, copy, nonatomic) NSSet *values; // @synthesize values=_values;
 
 + (id)predicateWithProperty:(id)arg1 values:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)ML3PredicateForContainer;
 - (id)ML3PredicateForTrack;

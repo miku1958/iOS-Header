@@ -35,18 +35,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isInResize;
 @property (nonatomic) struct CGPoint layoutOffset; // @synthesize layoutOffset=mOffset;
 @property (nonatomic) struct CGRect layoutRect;
-@property (nonatomic) CDStruct_44ada6bf layoutSettings;
+@property (nonatomic) CDStruct_b1c75024 layoutSettings;
 @property (nonatomic) struct CGSize layoutSize;
 @property (readonly) struct CGSize minSize;
 @property (readonly, nonatomic) TSCHChartModel *model;
 @property (readonly, nonatomic) struct CGRect overhangRect;
-@property (readonly, nonatomic) TSCHChartLayoutItem *parent; // @synthesize parent=mParent;
+@property (readonly, weak, nonatomic) TSCHChartLayoutItem *parent; // @synthesize parent=mParent;
 @property (readonly, nonatomic) TSCHChartRootLayoutItem *root;
 @property (readonly, nonatomic) struct CGRect rootedDrawingRect;
 @property (readonly, nonatomic) struct CGRect rootedLayoutRect;
 @property (readonly, nonatomic) struct CGSize startingSize;
 
 + (id)chartLayoutWithChartInfo:(id)arg1;
+- (void).cxx_destruct;
 - (void)buildSubTree;
 - (struct CGRect)calcDrawingRect;
 - (struct CGSize)calcMinSize;

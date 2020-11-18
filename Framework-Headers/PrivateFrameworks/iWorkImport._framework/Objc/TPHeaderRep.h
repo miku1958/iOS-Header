@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)p_isMiddleHeaderRep;
 - (BOOL)p_shouldCreateArrowKnobs;
 - (id)pageLayout;
-- (BOOL)shouldIgnoreSingleTapAtPoint:(struct CGPoint)arg1 withRecognizer:(id)arg2;
-- (BOOL)shouldShowHyperlinkUI;
 
 @end
 

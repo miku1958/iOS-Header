@@ -40,6 +40,7 @@
 - (unsigned int)count;
 - (void)countFunctionOccurrencesInTree:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)filterOutSymbols:(id)arg1;
 - (id)filterOutSymbols:(id)arg1 required:(id)arg2;
 - (id)findOrAddChildWithName:(id)arg1 address:(unsigned long long)arg2;
@@ -66,6 +67,7 @@
 - (id)pseudoName;
 - (id)pseudoNodeTopOfStackChild;
 - (void)setChildren:(id)arg1;
+- (id)sortedChildren;
 - (id)sortedChildrenWithPseudoNode;
 - (id)sortedChildrenWithPseudoNode:(id)arg1 withCompare:(SEL)arg2;
 - (id)stringFromCallTreeIndentIfNoBranches:(BOOL)arg1;

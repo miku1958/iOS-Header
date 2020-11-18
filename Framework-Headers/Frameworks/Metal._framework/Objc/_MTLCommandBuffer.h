@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSDictionary, NSError, NSMutableDictionary, NSString, _MTLCommandQueue;
 @protocol MTLCommandEncoder, MTLCommandQueue;
@@ -49,6 +49,7 @@
     unsigned long long _numEncoders;
     unsigned long long _numThisCommandBuffer;
     unsigned long long _listIndex;
+    BOOL _ownedByParallelEncoder;
     unsigned long long _globalTraceObjectID;
     unsigned long long _labelTraceID;
     BOOL _StatEnabled;
@@ -68,6 +69,7 @@
 @property (nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
 @property (nonatomic) unsigned long long numEncoders; // @synthesize numEncoders=_numEncoders;
 @property (nonatomic) unsigned long long numThisCommandBuffer; // @synthesize numThisCommandBuffer=_numThisCommandBuffer;
+@property (nonatomic) BOOL ownedByParallelEncoder; // @synthesize ownedByParallelEncoder=_ownedByParallelEncoder;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled;
 @property (readonly) NSDictionary *profilingResults;
 @property (readonly) BOOL retainedReferences; // @synthesize retainedReferences=_retainedReferences;

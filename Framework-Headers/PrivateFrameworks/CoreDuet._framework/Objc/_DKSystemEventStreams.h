@@ -25,6 +25,7 @@
 + (id)contextStorePersistentRuleStream;
 + (id)dayOfWeekEventStream;
 + (id)detectedSleepEventStream;
++ (id)deviceActivityLevelStream;
 + (id)deviceBatteryPercentageStream;
 + (id)deviceBatterySaverStream;
 + (id)deviceInUseProxyStream;

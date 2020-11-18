@@ -6,11 +6,11 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HAPPairingIdentity, HMDUser;
+@class HMDUser, HMFPairingIdentity;
 
 @protocol HMDAccessoryUserManagement <NSObject>
 
-@property (readonly, copy) HAPPairingIdentity *pairingIdentity;
+@property (readonly, copy) HMFPairingIdentity *pairingIdentity;
 @property (readonly) BOOL supportsUserManagement;
 
 - (void)addUser:(HMDUser *)arg1 completionHandler:(void (^)(NSError *))arg2;

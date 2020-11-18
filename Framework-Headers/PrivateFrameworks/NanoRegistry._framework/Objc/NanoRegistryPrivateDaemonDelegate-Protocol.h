@@ -10,7 +10,6 @@
 - (void)xpcApplyDiff:(NRDeviceCollectionDiff *)arg1 block:(void (^)(void))arg2;
 - (void)xpcBeginMigrationWithDeviceID:(NSUUID *)arg1 passcode:(NSString *)arg2 withBlock:(void (^)(void))arg3;
 - (void)xpcGetLastMigrationRequestPhoneNameWithCompletion:(void (^)(NSString *))arg1;
-- (void)xpcIsKeychainEnabledWithBlock:(void (^)(BOOL))arg1;
 - (void)xpcIsWatchSetupPushActiveWithBlock:(void (^)(BOOL))arg1;
 - (void)xpcKeepPhoneUnlockedInternalTestSPI:(void (^)(void))arg1;
 - (void)xpcPingActiveGizmoWithPriority:(long long)arg1 withMessageSize:(unsigned long long)arg2 withBlock:(void (^)(BOOL, double, double))arg3;

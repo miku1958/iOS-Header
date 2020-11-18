@@ -13,15 +13,15 @@
 __attribute__((visibility("hidden")))
 @interface VKVenueTile : VKSkewingVectorTile <VKPolygonTile>
 {
-    vector_afc99996 _venueGroups;
-    vector_63e63e89 _venueFloorGroups;
+    vector_d75ebb28 _venueGroups;
+    vector_f7e56920 _venueFloorGroups;
     struct _retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_vptr$_retain_ptr;
         VKAnimation *_obj;
         struct _retain_objc _retain;
         struct _release_objc _release;
     } _animationForPitch;
-    vector_4460e468 _venues;
+    vector_746328be _venues;
     float _alpha;
     float _scale;
     float _minLayeringHeight;
@@ -32,11 +32,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VKAnimation *animationForPitch;
 @property (readonly, nonatomic) float maxLayeringHeight; // @synthesize maxLayeringHeight=_maxLayeringHeight;
 @property (readonly, nonatomic) float minLayeringHeight; // @synthesize minLayeringHeight=_minLayeringHeight;
-@property (readonly, nonatomic) const vector_2e22b445 *polygonGroups;
+@property (readonly, nonatomic) const vector_5d257bd0 *polygonGroups;
 @property (nonatomic) float scale; // @synthesize scale=_scale;
-@property (readonly, nonatomic) vector_63e63e89 *venueFloorGroups; // @synthesize venueFloorGroups=_venueFloorGroups;
-@property (readonly, nonatomic) const vector_afc99996 *venueGroups;
-@property (readonly, nonatomic) const vector_4460e468 *venues;
+@property (readonly, nonatomic) vector_f7e56920 *venueFloorGroups; // @synthesize venueFloorGroups=_venueFloorGroups;
+@property (readonly, nonatomic) const vector_d75ebb28 *venueGroups;
+@property (readonly, nonatomic) const vector_746328be *venues;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

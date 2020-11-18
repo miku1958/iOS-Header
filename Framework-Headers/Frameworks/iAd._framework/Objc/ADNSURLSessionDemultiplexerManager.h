@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSMutableDictionary, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
@@ -13,20 +13,27 @@
 {
     NSArray *_protocolClasses;
     NSMutableDictionary *_sessionDemultiplexerForIdentifier;
-    NSURLSessionConfiguration *_sessionConfiguration;
     NSObject<OS_dispatch_queue> *_demuxManagerQueue;
+    NSURLSessionConfiguration *_proxySessionConfigurationLegacy;
+    NSURLSessionConfiguration *_proxySessionConfigurationConnect;
 }
 
 @property (nonatomic) NSObject<OS_dispatch_queue> *demuxManagerQueue; // @synthesize demuxManagerQueue=_demuxManagerQueue;
 @property (copy) NSArray *protocolClasses; // @synthesize protocolClasses=_protocolClasses;
-@property (strong, nonatomic) NSURLSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
+@property (strong, nonatomic) NSURLSessionConfiguration *proxySessionConfigurationConnect; // @synthesize proxySessionConfigurationConnect=_proxySessionConfigurationConnect;
+@property (strong, nonatomic) NSURLSessionConfiguration *proxySessionConfigurationLegacy; // @synthesize proxySessionConfigurationLegacy=_proxySessionConfigurationLegacy;
 @property (strong) NSMutableDictionary *sessionDemultiplexerForIdentifier; // @synthesize sessionDemultiplexerForIdentifier=_sessionDemultiplexerForIdentifier;
 
 + (id)sharedManager;
+- (void)configVersionDidChange;
+- (void)contentProxyURLConnectDidChange;
+- (void)contentProxyURLDidChange;
 - (void)dealloc;
 - (id)init;
 - (long long)pretapRequestCountForIdentifier:(id)arg1;
-- (id)sessionDemultiplexerForAdByIdentifier:(id)arg1 maximumRequestCount:(long long)arg2;
+- (void)proxyTypeDidChange;
+- (id)sessionConfigurationForProxyType:(long long)arg1;
+- (id)sessionDemultiplexerForAdByIdentifier:(id)arg1 maximumRequestCount:(long long)arg2 proxyType:(long long)arg3;
 - (void)unregisterSessionDemultiplexerWithIdentifier:(id)arg1;
 
 @end

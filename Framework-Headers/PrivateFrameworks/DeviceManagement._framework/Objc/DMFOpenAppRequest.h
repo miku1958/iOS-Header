@@ -10,6 +10,7 @@
 
 @interface DMFOpenAppRequest : CATTaskRequest
 {
+    BOOL _lockInApp;
     NSString *_bundleIdentifier;
     NSString *_activityType;
     NSData *_activityData;
@@ -18,6 +19,7 @@
 @property (copy, nonatomic) NSData *activityData; // @synthesize activityData=_activityData;
 @property (copy, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (nonatomic) BOOL lockInApp; // @synthesize lockInApp=_lockInApp;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

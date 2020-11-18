@@ -31,6 +31,7 @@
 + (id)sharedAudioPresentationContext;
 + (id)sharedSystemAudioContext;
 + (id)sharedSystemScreenContext;
+- (void).cxx_destruct;
 - (void)_clearAnyCompletedModifications;
 - (void)_commitModification:(id)arg1;
 - (BOOL)_contextSupportsMultipleDevices;
@@ -46,9 +47,11 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithAVOutputContext:(id)arg1 type:(unsigned int)arg2;
+- (id)localDevice;
 - (void)removeAllOutputDevicesWithCallbackQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)removeOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)setOutputDevices:(id)arg1 withPassword:(id)arg2 callbackQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
 
 @end
 

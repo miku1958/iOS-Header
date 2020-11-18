@@ -22,6 +22,7 @@
 
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
+- (void)commonInit;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugHierarchyPropertyDescriptions;
 - (void)encodeWithCoder:(id)arg1;

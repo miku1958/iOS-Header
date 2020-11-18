@@ -8,10 +8,11 @@
 
 #import <PassKit/PKExtensionVendorContextProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PKEntitlementWhitelist;
 
 @interface PKExtensionVendorContext : PKExtensionBaseContext <PKExtensionVendorContextProtocol>
 {
+    PKEntitlementWhitelist *_whitelist;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
@@ -30,6 +32,7 @@
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(id)arg2;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(id)arg1;
+- (id)entitlementWhitelist;
 - (void)handleDismissWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleHostApplicationDidBecomeActive;
 - (void)handleHostApplicationDidCancel;

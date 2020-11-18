@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2;
+- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2 useWrapWidth:(BOOL)arg3;
 - (BOOL)canEditTextForSelectionPath:(id)arg1;
 - (BOOL)canRenderSelectionPath:(id)arg1;
 - (id)categoryAxisLayoutItem;

@@ -234,6 +234,7 @@
 - (id)_fileURLForMetadataWithExtension:(id)arg1;
 - (id)_imageRequestOptionsForBaseVersion:(long long)arg1 options:(id)arg2 progressEstimateForImageProgress:(CDUnknownBlockType)arg3;
 - (void)_renderTemporaryVideoForObjectBuilder:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (void)_reportUsage;
 - (void)_requestRenderedVideoForVideoURL:(id)arg1 adjustmentData:(id)arg2 canHandleAdjustmentData:(BOOL)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (id)_unfetchedPropertySetsFromPropertySets:(id)arg1;
 - (id)_videoRequestOptionsForBaseVersion:(long long)arg1 options:(id)arg2 progressEstimateForVideoProgress:(CDUnknownBlockType)arg3;

@@ -47,6 +47,7 @@
 - (void)_pickedRouteVolumeControlAvailabilityChanged:(id)arg1;
 - (void)_routeConnectionVolumeDidChangeNotification:(id)arg1;
 - (void)_setPendingVolumeIfNeeded;
+- (void)adjustVolumeValue:(float)arg1;
 - (void)dealloc;
 - (id)initWithGroupRoute:(id)arg1 outputDeviceRoute:(id)arg2;
 - (void)reload;

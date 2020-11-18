@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDAccessory, HMDNotificationRegistration, HMDService, HMFMessageDispatcher, NSArray, NSDictionary, NSObject, NSString, NSUUID;
+@class HMDAccessory, HMDNotificationRegistration, HMDService, HMFMessageDispatcher, NSArray, NSDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDCameraSettingsControlManagerDelegate, OS_dispatch_queue;
 
-@interface HMDCameraSettingsControlManager : HMFObject <HMFMessageReceiver, HMFLogging>
+@interface HMDCameraSettingsControlManager : HMFObject <HMDHomeMessageReceiver, HMFLogging>
 {
     NSDictionary *_characteristicsValues;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -38,6 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
@@ -47,6 +48,7 @@
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_callDelegate;

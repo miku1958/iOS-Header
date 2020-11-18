@@ -7,6 +7,7 @@
 #import <HomeKit/HMAccessoryProfile.h>
 
 @interface HMAccessoryProfile (HFRoomContextProviding)
+- (BOOL)hf_isValidObject;
 - (id)hf_parentRoom;
 @end
 

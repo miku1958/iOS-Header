@@ -8,5 +8,6 @@
 
 @interface NSMutableArray (SafariCoreExtras)
 - (void)safari_addObjectUnlessNil:(id)arg1;
+- (void)safari_setObject:(id)arg1 atIndex:(unsigned long long)arg2 withPaddingObject:(id)arg3;
 @end
 

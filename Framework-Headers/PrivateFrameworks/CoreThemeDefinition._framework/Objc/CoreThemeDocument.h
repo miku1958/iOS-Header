@@ -106,6 +106,7 @@
 - (id)_themeBitSource:(id *)arg1;
 - (id)_themeBitSourceForReferencedFilesAtURLs:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (void)_tidyUpLayerStacks;
+- (void)_tidyUpRecognitionImages;
 - (void)_updateKeyFormat;
 - (BOOL)_updateRenditionPackings:(id)arg1 error:(id *)arg2;
 - (id)addAssetsAtFileURLs:(id)arg1;
@@ -147,6 +148,7 @@
 - (id)createNamedColorProductionsForImportInfos:(id)arg1 error:(id *)arg2;
 - (id)createNamedEffectProductionWithName:(id)arg1 isText:(BOOL)arg2;
 - (void)createNamedModelsForCustomInfos:(id)arg1 referenceFiles:(BOOL)arg2 bitSource:(id)arg3 error:(id *)arg4;
+- (void)createNamedRenditionGroupProductionsForImportInfos:(id)arg1 error:(id *)arg2;
 - (void)createNamedTexturesForCustomInfos:(id)arg1 referenceFiles:(BOOL)arg2 bitSource:(id)arg3 error:(id *)arg4;
 - (BOOL)createPSDReferenceArtworkForRenditionGroup:(id)arg1 atDestination:(id)arg2 error:(id *)arg3;
 - (id)createProductionWithRenditionGroup:(id)arg1 forPartDefinition:(id)arg2 artworkFormat:(id)arg3 nameElement:(id)arg4 shouldReplaceExisting:(BOOL)arg5 error:(id *)arg6;

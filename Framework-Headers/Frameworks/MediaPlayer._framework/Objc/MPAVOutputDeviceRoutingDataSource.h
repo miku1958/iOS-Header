@@ -18,6 +18,7 @@
     void *_discoverySession;
     void *_callbackToken;
     BOOL _supportsMultipleSelection;
+    BOOL _devicePresenceDetected;
     NSArray *_outputDeviceRoutes;
     MPAVEndpointRoute *_endpointRoute;
 }
@@ -31,7 +32,6 @@
 - (void *)_createDefaultApplicationOutputContext:(id *)arg1 outAudioSessionID:(unsigned int *)arg2;
 - (void)_endpointsDidChangeNotification:(id)arg1;
 - (id)_outputDeviceRouteWithUID:(id)arg1;
-- (void)_outputDeviceVolumeDidChangeNotification:(id)arg1;
 - (void)_outputDevicesDidChange:(id)arg1;
 - (void)_outputDevicesDidChangeNotification:(id)arg1;
 - (void)_registerNotifications;

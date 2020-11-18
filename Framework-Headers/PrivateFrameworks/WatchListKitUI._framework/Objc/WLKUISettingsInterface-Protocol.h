@@ -11,6 +11,8 @@
 @protocol WLKUISettingsInterface <JSExport>
 - (NSArray *)consentedBrands;
 - (NSArray *)deniedBrands;
+- (void)forceUpdate;
+- (unsigned long long)privacyFlowContentVersion;
 - (BOOL)privateModeEnabled;
 - (NSDictionary *)settings;
 - (BOOL)sportsScoreSpoilersAllowed;

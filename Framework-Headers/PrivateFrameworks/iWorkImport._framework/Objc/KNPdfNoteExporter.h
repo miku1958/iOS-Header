@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface KNPdfNoteExporter : KNPdfExporter
 {
-    BOOL mIsPrintingNote;
+    BOOL _isPrintingNote;
 }
 
 - (id)currentInfos;

@@ -16,6 +16,7 @@
     double _prerollLoadingTimeout;
     NSData *_externalAnalyticsConfigurationsData;
     unsigned int _minimumNumberOfTimesPreseenToBeSeen;
+    NSData *_videoGroupsConfigData;
     struct {
         unsigned int minimumArticleExposureDurationToBePreseen:1;
         unsigned int prerollLoadingTimeout:1;
@@ -28,9 +29,11 @@
 @property (nonatomic) BOOL hasMinimumArticleExposureDurationToBePreseen;
 @property (nonatomic) BOOL hasMinimumNumberOfTimesPreseenToBeSeen;
 @property (nonatomic) BOOL hasPrerollLoadingTimeout;
+@property (readonly, nonatomic) BOOL hasVideoGroupsConfigData;
 @property (nonatomic) long long minimumArticleExposureDurationToBePreseen; // @synthesize minimumArticleExposureDurationToBePreseen=_minimumArticleExposureDurationToBePreseen;
 @property (nonatomic) unsigned int minimumNumberOfTimesPreseenToBeSeen; // @synthesize minimumNumberOfTimesPreseenToBeSeen=_minimumNumberOfTimesPreseenToBeSeen;
 @property (nonatomic) double prerollLoadingTimeout; // @synthesize prerollLoadingTimeout=_prerollLoadingTimeout;
+@property (strong, nonatomic) NSData *videoGroupsConfigData; // @synthesize videoGroupsConfigData=_videoGroupsConfigData;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

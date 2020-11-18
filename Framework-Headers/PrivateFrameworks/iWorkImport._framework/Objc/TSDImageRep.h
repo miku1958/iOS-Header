@@ -7,48 +7,21 @@
 #import <iWorkImport/TSDMediaRep.h>
 
 #import <iWorkImport/CALayerDelegate-Protocol.h>
+#import <iWorkImport/TSDImageDrawingDataSource-Protocol.h>
 #import <iWorkImport/TSDMagicMoveMatching-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSCache, NSMutableArray, NSMutableSet, NSObject, NSRecursiveLock, NSString, TSDImageRepSizingState, TSDInstantAlphaTracker, TSDLayoutGeometry, TSPData;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class NSMutableArray, NSObject, NSString, TSDImageDrawingHelper, TSDImageInfo, TSDImageLayout, TSDLayoutGeometry, TSDMaskInfo, TSDMaskLayout, TSPData;
+@protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface TSDImageRep : TSDMediaRep <CALayerDelegate, TSDMagicMoveMatching>
+@interface TSDImageRep : TSDMediaRep <CALayerDelegate, TSDImageDrawingDataSource, TSDMagicMoveMatching>
 {
     TSDLayoutGeometry *mLastImageGeometryInRoot;
     TSDLayoutGeometry *mLastMaskGeometryInRoot;
     struct CGAffineTransform mLastLayoutToImageTransform;
     struct CGRect mFrameInUnscaledCanvasRelativeToSuper;
     BOOL mFrameInUnscaledCanvasIsValid;
-    CALayer *mContentsLayer;
-    CAShapeLayer *mMaskPathLayer;
-    CAShapeLayer *mIAMaskLayer;
-    CAShapeLayer *mMaskSublayer;
-    struct CGAffineTransform mLastPictureFrameLayerTransform;
-    CAShapeLayer *mStrokeLayer;
-    CALayer *mFrameMaskLayer;
-    struct CGRect mLastPictureFrameLayerRect;
-    BOOL mDirectlyManagesLayerContent;
-    BOOL mShowImageHighlight;
-    BOOL mIsEquation;
-    BOOL mCachedIsEquation;
-    BOOL mInInstantAlphaMode;
-    TSDInstantAlphaTracker *mInstantAlphaTracker;
-    struct CGImage *mInstantAlphaImage;
-    struct CGAffineTransform mBaseMaskLayoutTransform;
-    NSRecursiveLock *mLayerUpdateAndSizingStateLock;
-    TSDImageRepSizingState *mSizingState;
-    BOOL mSizingStateReady;
-    NSObject<OS_dispatch_queue> *mSizedImageAccessQueue;
-    struct CGImage *mSizedImage;
-    struct CGSize mSizedImageSize;
-    BOOL mSizedImageIsWide;
-    long long mSizedImageOrientation;
-    BOOL mSizedImageHasMaskBakedIn;
-    BOOL mSizedImageHasAdjustmentsBakedIn;
-    struct CGPath *mSizedImageMaskPath;
-    NSCache *mHitTestCache;
-    NSMutableSet *mDisabledCanvasViewGRs;
+    TSDImageDrawingHelper *mDrawingHelper;
     NSMutableArray *mUpdateFromLayoutBlocks;
     NSObject<OS_dispatch_semaphore> *mUpdateFromLayoutBlocksLock;
 }
@@ -57,10 +30,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) TSPData *imageDataForRendering;
+@property (readonly, nonatomic) TSDImageInfo *imageInfo;
+@property (readonly, nonatomic) TSDImageLayout *imageLayout;
+@property (readonly, nonatomic) TSDMaskInfo *maskInfo;
+@property (readonly, nonatomic) TSDMaskLayout *maskLayout;
 @property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
-+ (struct CGPath *)p_newPathToBakeIntoSizedImageForSize:(struct CGSize)arg1 withImageLayout:(id)arg2 orientation:(long long)arg3;
 - (void).cxx_destruct;
 - (BOOL)canDrawInParallel;
 - (BOOL)canDrawShadowInOneStepWithChildren:(BOOL)arg1;
@@ -69,21 +45,21 @@ __attribute__((visibility("hidden")))
 - (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
 - (void)drawInLayerContext:(struct CGContext *)arg1;
 - (struct CGRect)frameInUnscaledCanvas;
-- (id)imageInfo;
-- (id)imageLayout;
+- (id)imageDrawingHelperAdjustedImageData:(id)arg1;
+- (id)imageDrawingHelperImageData:(id)arg1;
+- (BOOL)imageDrawingHelperImageHasAlpha:(id)arg1;
+- (struct CGRect)imageDrawingHelperImageRect:(id)arg1;
+- (struct CGAffineTransform)imageDrawingHelperImageTransformInRootForAntialiasingDefeat:(id)arg1;
+- (id)imageDrawingHelperThumbnailAdjustedImageData:(id)arg1;
+- (id)imageDrawingHelperThumbnailImageData:(id)arg1;
 - (id)imageOfStroke:(struct CGRect *)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isDataCurrentlyDownloading;
-- (id)maskInfo;
-- (id)maskLayout;
 - (void)p_drawInContext:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(double)arg4 withMask:(BOOL)arg5 withIAMask:(BOOL)arg6 forLayer:(BOOL)arg7 forShadow:(BOOL)arg8 forHitTest:(BOOL)arg9;
 - (BOOL)p_drawsInOneStep;
-- (id)p_imageData;
-- (id)p_imageProvider;
 - (BOOL)p_shouldUseSourceImageForDescription:(id)arg1 clipBounds:(struct CGRect)arg2 transform:(struct CGAffineTransform)arg3 image:(struct CGImage *)arg4;
 - (id)p_validatedBitmapImageProvider;
 - (id)p_validatedImageProvider;
-- (id)p_validatedThumbnailImageProvider;
 - (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect)arg2;
 - (BOOL)shouldShowCheckerboard;
 - (id)textureForDescription:(id)arg1;

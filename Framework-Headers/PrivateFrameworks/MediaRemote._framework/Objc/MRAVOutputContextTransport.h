@@ -6,7 +6,7 @@
 
 #import <MediaRemote/MRExternalDeviceTransport.h>
 
-@class AVOutputContext, MRAVInputStream, MRAVOutputStream, NSArray, NSError, NSObject;
+@class AVOutputContext, MRAVInputStream, MRAVOutputStream, NSArray, NSError, NSObject, _MRDeviceInfoMessageProtobuf;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _state;
     NSObject<OS_dispatch_queue> *_serialQueue;
     AVOutputContext *_outputContext;
-    void *_deviceInfo;
+    _MRDeviceInfoMessageProtobuf *_deviceInfo;
     NSError *_error;
     MRAVInputStream *_inputStream;
     MRAVOutputStream *_outputStream;
@@ -25,7 +25,8 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 
-- (void)_destroyRemoteControlContext:(id *)arg1;
+- (void).cxx_destruct;
+- (void)_destroyRemoteControlContext;
 - (id)_onQueue_createRemoteControlContextWithID:(id)arg1;
 - (void)_onQueue_initializeOutputContext;
 - (void)_onQueue_resetStreams;
@@ -34,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_unregisterNotificationsForOutputContext:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (void *)deviceInfo;
+- (id)deviceInfo;
 - (id)error;
 - (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2;
 - (id)hostname;

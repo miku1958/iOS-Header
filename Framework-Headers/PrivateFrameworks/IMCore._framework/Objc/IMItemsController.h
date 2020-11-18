@@ -35,8 +35,10 @@
 - (void)_removeItem:(id)arg1;
 - (void)_replaceItems:(id)arg1;
 - (void)_replaceStaleTypingMessage;
+- (void)_setSortID:(id)arg1;
 - (BOOL)_trimIfNeeded;
 - (id)_typingMessage;
+- (void)assignSortIDsToItems:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

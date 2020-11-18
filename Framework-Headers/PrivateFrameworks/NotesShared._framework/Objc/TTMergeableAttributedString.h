@@ -32,7 +32,7 @@
 - (BOOL)attributesEqual:(id)arg1 toRange:(struct _NSRange)arg2 modelEqual:(BOOL *)arg3;
 - (void)encodeWithCRCoder:(id)arg1;
 - (void)encodeWithCRCoder:(id)arg1 string:(struct String *)arg2;
-- (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2 withOrderedSubstrings:(vector_6c07be0f *)arg3 timestamp:(id)arg4;
+- (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2 withOrderedSubstrings:(vector_c5c053b6 *)arg3 timestamp:(id)arg4;
 - (id)initWithCRCoder:(id)arg1;
 - (id)initWithCRCoder:(id)arg1 string:(const struct String *)arg2;
 - (void)insertString:(id)arg1 atIndex:(unsigned long long)arg2;

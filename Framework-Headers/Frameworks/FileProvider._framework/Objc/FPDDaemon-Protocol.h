@@ -18,6 +18,7 @@
 - (void)extendBookmarkForItemID:(FPItemID *)arg1 consumerID:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
 - (void)extendSandboxForFileURL:(NSURL *)arg1 fromProviderID:(NSString *)arg2 toConsumerID:(NSString *)arg3 completionHandler:(void (^)(FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)fetchAlternateContentsURLForDocumentURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
+- (void)fetchIndexPropertiesForItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(FPItem *, NSString *, NSString *, NSError *))arg2;
 - (void)fetchRemoteFileProviderWithIdentifier:(NSString *)arg1 handler:(void (^)(id<FPDRemoteFileProvider>, NSString *, NSError *))arg2;
 - (void)fetchRemoteServiceEndpointCreatingProviderWithIdentifier:(NSString *)arg1 itemURL:(NSURL *)arg2 handler:(void (^)(id<FPDRemoteServiceEndpointCreatingProvider>, NSError *))arg3;
 - (void)fetchSupportedServicesForDocumentAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;

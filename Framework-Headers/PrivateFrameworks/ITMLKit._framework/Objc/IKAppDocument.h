@@ -10,7 +10,7 @@
 #import <ITMLKit/IKStyleMediaQueryEvaluator-Protocol.h>
 
 @class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSError, NSMapTable, NSMutableDictionary, NSString;
-@protocol IKAppDocumentDelegate;
+@protocol IKAppDocumentDelegate, IKNetworkRequestLoader;
 
 @interface IKAppDocument : NSObject <IKJSDOMDocumentAppBridgeInternal, IKStyleMediaQueryEvaluator>
 {
@@ -49,6 +49,7 @@
 @property (strong) IKViewElement *navigationBarElement; // @synthesize navigationBarElement=_navigationBarElement;
 @property (readonly, weak, nonatomic) IKJSNavigationDocument *navigationDocument;
 @property (readonly, weak, nonatomic) IKJSObject *owner; // @synthesize owner=_owner;
+@property (readonly, nonatomic) id<IKNetworkRequestLoader> requestLoader;
 @property (strong, nonatomic) IKViewElementStyleFactory *styleFactory; // @synthesize styleFactory=_styleFactory;
 @property (getter=isSubtreeUpdated) BOOL subtreeUpdated; // @synthesize subtreeUpdated=_subtreeUpdated;
 @property (readonly) Class superclass;

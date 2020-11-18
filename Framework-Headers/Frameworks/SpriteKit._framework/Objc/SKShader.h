@@ -27,11 +27,11 @@
     BOOL _usesSpriteSizeUniform;
     shared_ptr_394c00aa _backingProgram;
     shared_ptr_394c00aa _backingProgramWithTransform;
-    map_7c6d24d7 _attributeBuffers;
+    map_48758480 _attributeBuffers;
     BOOL _performFullCapture;
 }
 
-@property (readonly) map_7c6d24d7 *_attributeBuffers;
+@property (readonly) map_48758480 *_attributeBuffers;
 @property (readonly) shared_ptr_394c00aa _backingProgram;
 @property (readonly) shared_ptr_394c00aa _backingProgramWithTransform;
 @property (readonly) shared_ptr_d7c0f433 _commands;

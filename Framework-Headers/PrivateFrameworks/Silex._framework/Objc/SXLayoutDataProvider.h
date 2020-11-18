@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
 
 - (void).cxx_destruct;
+- (id)allComponents;
 - (id)componentAtIndex:(unsigned long long)arg1;
 - (id)componentForIdentifier:(id)arg1;
 - (id)componentLayoutForIdentifier:(id)arg1;

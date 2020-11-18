@@ -8,34 +8,18 @@
 
 #import <iWorkImport/CALayerDelegate-Protocol.h>
 
-@class NSString, NSTimer;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface TSWPPageRep : TSDContainerRep <CALayerDelegate>
 {
-    NSTimer *editingDidBeginTimer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSTimer *editingDidBeginTimer; // @synthesize editingDidBeginTimer;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)p_overflowKnobImage;
-- (void).cxx_destruct;
-- (void)addAdditionalChildLayersToArray:(id)arg1;
-- (void)cleanUpTimer;
-- (void)dealloc;
-- (void)p_createHeaderFooterBorderLayerIfNecessaryForType:(int)arg1;
-- (void)p_createHeaderFooterOverflowIndicatorLayerIfNecessaryForType:(int)arg1 fragment:(int)arg2;
-- (BOOL)p_hasValidHeaderFooterForType:(int)arg1;
-- (BOOL)p_headerFooterBorderVisibleForType:(int)arg1;
-- (BOOL)p_headerFooterIsVisibleAndInteractive:(int)arg1;
-- (int)p_hitHeaderFooterFragment:(int)arg1 atPoint:(struct CGPoint)arg2;
-- (id)p_hitRep:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
-- (void)p_updateBorderLayers;
-- (void)p_updateLayoutBordersVisibility;
 - (void)updateFromLayout;
 
 @end

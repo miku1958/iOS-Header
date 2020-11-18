@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSDictionary *startTimeModifications; // @synthesize startTimeModifications=_startTimeModifications;
 
 + (Class)queueFeederClass;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;

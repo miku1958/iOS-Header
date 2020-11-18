@@ -22,12 +22,11 @@
     NSString *_beginButtonTitle;
     NSString *_skipButtonTitle;
     NSString *_appsButtonTitle;
-    NSString *_aboutButtonTitle;
+    UIView *_privacyButtonContainer;
     NSString *_footer;
     VSFontCenter *_fontCenter;
 }
 
-@property (copy, nonatomic) NSString *aboutButtonTitle; // @synthesize aboutButtonTitle=_aboutButtonTitle;
 @property (copy, nonatomic) NSString *appsButtonTitle; // @synthesize appsButtonTitle=_appsButtonTitle;
 @property (copy, nonatomic) NSString *beginButtonTitle; // @synthesize beginButtonTitle=_beginButtonTitle;
 @property (strong, nonatomic) NSString *caption; // @synthesize caption=_caption;
@@ -37,13 +36,13 @@
 @property (strong, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
+@property (readonly, nonatomic) UIView *privacyButtonContainer; // @synthesize privacyButtonContainer=_privacyButtonContainer;
 @property (nonatomic) BOOL shouldShowAboutButton; // @synthesize shouldShowAboutButton=_shouldShowAboutButton;
 @property (nonatomic) BOOL shouldShowAppsButton; // @synthesize shouldShowAppsButton=_shouldShowAppsButton;
 @property (copy, nonatomic) NSString *skipButtonTitle; // @synthesize skipButtonTitle=_skipButtonTitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (void)_aboutButtonPressed:(id)arg1;
 - (void)_appsButtonPressed:(id)arg1;
 - (void)_beginButtonPressed:(id)arg1;
 - (void)_skipButtonPressed:(id)arg1;

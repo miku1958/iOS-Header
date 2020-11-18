@@ -23,10 +23,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (CDStruct_a6fa95e6)fontHeightInfoForFont:(struct __CTFont *)arg1;
+- (CDStruct_5b0a1db3)fontHeightInfoForFont:(struct __CTFont *)arg1;
 - (id)init;
-- (void)p_addEntryForFont:(struct __CTFont *)arg1 heightInfo:(const CDStruct_a6fa95e6 *)arg2;
-- (BOOL)p_findEntryForFont:(struct __CTFont *)arg1 outHeightInfo:(CDStruct_a6fa95e6 *)arg2 collision:(BOOL *)arg3;
+- (void)p_addEntryForFont:(struct __CTFont *)arg1 heightInfo:(const CDStruct_5b0a1db3 *)arg2;
+- (BOOL)p_findEntryForFont:(struct __CTFont *)arg1 outHeightInfo:(CDStruct_5b0a1db3 *)arg2 collision:(BOOL *)arg3;
 
 @end
 

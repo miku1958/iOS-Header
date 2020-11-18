@@ -10,9 +10,9 @@
 
 @interface CKAcceptSharesOperation : CKOperation
 {
-    NSArray *_shareMetadatas;
     CDUnknownBlockType _perShareCompletionBlock;
     CDUnknownBlockType _acceptSharesCompletionBlock;
+    NSArray *_shareMetadatas;
     NSMutableDictionary *_errorsByShareURL;
     NSMutableDictionary *_shareMetadatasByShareURL;
 }

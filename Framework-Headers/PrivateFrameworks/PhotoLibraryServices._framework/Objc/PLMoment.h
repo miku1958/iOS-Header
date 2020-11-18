@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSData *approximateLocationData; // @dynamic approximateLocationData;
 @property (strong, nonatomic) NSOrderedSet *assets; // @dynamic assets;
 @property (readonly, nonatomic) unsigned long long assetsCount;
+@property (readonly, strong, nonatomic) NSArray *batchedAssets;
 @property (nonatomic) int cachedCount; // @dynamic cachedCount;
 @property (nonatomic) int cachedPhotosCount; // @dynamic cachedPhotosCount;
 @property (nonatomic) int cachedVideosCount; // @dynamic cachedVideosCount;

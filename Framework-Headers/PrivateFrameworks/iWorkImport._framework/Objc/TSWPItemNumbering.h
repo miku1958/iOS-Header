@@ -20,6 +20,10 @@ __attribute__((visibility("hidden")))
 + (id)defaultPageNumberFormatForLocale:(id)arg1;
 + (id)displayNameForPageNumberFormat:(id)arg1;
 + (id)instance;
++ (id)localizedStringForPageNumberFormatNWithLocale:(id)arg1;
++ (id)localizedStringForPageNumberFormatNofNWithLocale:(id)arg1;
++ (id)localizedStringForPageNumberFormatPageNWithLocale:(id)arg1;
++ (id)localizedStringForPageNumberFormatPageNofNWithLocale:(id)arg1;
 + (id)pageNumberFormatNameForType:(int)arg1;
 + (int)pageNumberFormatTypeForName:(id)arg1;
 + (id)pageNumberFormatsForDocLocale:(id)arg1;

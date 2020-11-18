@@ -6,14 +6,14 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDDevice, HMDEventTrigger, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@class HMDDevice, HMDEventTrigger, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDEventTriggerSession : HMFObject <HMFDumpState, HMFLogging, HMFMessageReceiver>
+@interface HMDEventTriggerSession : HMFObject <HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
     NSUUID *_sessionID;
     NSString *_logString;
@@ -32,12 +32,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logString; // @synthesize logString=_logString;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_registerForMessages;

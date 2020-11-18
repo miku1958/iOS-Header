@@ -32,9 +32,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_loadCatalogMetadata;
 - (BOOL)_loadHeaderMetadata:(id)arg1;
+- (id)copyMappedChunkStore:(id *)arg1;
 - (id)initWithChunkStore:(id)arg1 error:(id *)arg2;
 - (id)initWithTraceFile:(id)arg1 error:(id *)arg2;
-- (id)map:(id *)arg1;
 
 @end
 

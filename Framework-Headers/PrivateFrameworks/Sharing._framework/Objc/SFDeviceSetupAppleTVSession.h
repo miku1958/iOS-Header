@@ -14,6 +14,7 @@
     BOOL _activateCalled;
     int _finishState;
     BOOL _invalidateCalled;
+    int _proxSetupActiveToken;
     BOOL _useSFSession;
     int _preflightWiFiState;
     int _preflightiTunesState;

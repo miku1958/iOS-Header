@@ -99,6 +99,7 @@ struct necp_stat_counts {
     unsigned int _field10;
     unsigned int _field11;
     unsigned int _field12;
+    unsigned int _field13;
 };
 
 struct necp_stats_hdr {
@@ -149,6 +150,24 @@ struct nw_path_necp_result {
     struct necp_client_result_netagent *netagents;
     unsigned int num_netagents;
     unsigned char __pad[4];
+};
+
+struct nw_protocol {
+    unsigned char _field1[16];
+    struct nw_protocol_identifier *_field2;
+    struct nw_protocol_callbacks *_field3;
+    struct nw_protocol *_field4;
+    void *_field5;
+    struct nw_protocol *_field6;
+    void *_field7;
+};
+
+struct nw_protocol_callbacks;
+
+struct nw_protocol_identifier {
+    char name[32];
+    int level;
+    int mapping;
 };
 
 struct os_unfair_lock_s {

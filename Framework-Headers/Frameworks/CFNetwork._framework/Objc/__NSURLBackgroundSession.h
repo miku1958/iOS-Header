@@ -9,7 +9,7 @@
 #import <CFNetwork/NDBackgroundSessionClient-Protocol.h>
 #import <CFNetwork/NSURLSessionSubclass-Protocol.h>
 
-@class NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSURL, NSXPCConnection;
+@class NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSURL, NSXPCConnection;
 @protocol NDBackgroundSessionProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,8 +20,10 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_xpcConn;
     NSMutableDictionary *_tasks;
     NSMutableArray *_taskIDsToFailOnReconnection;
+    NSMutableSet *_taskIDsGettingAuthHeaders;
     NSObject<OS_dispatch_queue> *_invalidateQueue;
     CDUnknownBlockType _invalidateCallback;
+    SmartBlockWithArgs_7064a8fd _backgroundSessionDidFinishAppWakeBlock;
     NSString *_appWakeUUID;
     NSURL *_downloadDirectory;
     NSURL *_assetDownloadDirectory;
@@ -42,6 +44,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)AVAggregateAssetDownloadTaskForURLAsset:(id)arg1 mediaSelections:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;

@@ -16,19 +16,24 @@
     NSString *_accessoryName;
     HMAccessory *_accessory;
     SFDevice *_sharingDevice;
+    NSString *_manufacturerName;
     NSDate *_discoveryDate;
     unsigned long long _status;
     NSError *_error;
+    unsigned long long _certificationStatus;
 }
 
 @property (strong, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
-@property (strong, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
+@property (copy, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 @property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
+@property (nonatomic) unsigned long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *discoveryDate; // @synthesize discoveryDate=_discoveryDate;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
+@property (readonly, nonatomic) BOOL requiresSetupCode;
 @property (readonly, nonatomic) SFDevice *sharingDevice; // @synthesize sharingDevice=_sharingDevice;
 @property (readonly, nonatomic) unsigned long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;

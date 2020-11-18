@@ -25,6 +25,7 @@
 + (id)keyboardLayoutWithIdentifier:(id)arg1;
 + (id)keyboardLayoutWithInputSource:(struct __GSKeyboard *)arg1;
 + (id)unicodeHexKeyboardLayout;
+- (void).cxx_destruct;
 - (id)_setActiveLayoutState:(id)arg1 error:(id *)arg2;
 - (id)activateWithError:(id *)arg1;
 - (BOOL)deactivate:(id)arg1 error:(id *)arg2;

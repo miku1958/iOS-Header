@@ -62,14 +62,14 @@
 + (id)serviceQueue;
 - (void).cxx_destruct;
 - (id)_artworkCatalogForContentItem:(id)arg1;
+- (void)_audioSessionRoutingContextDidChangeNotification:(id)arg1;
 - (void)_becomeActiveWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_childContentItemForContentItem:(id)arg1 indexPath:(id)arg2;
+- (id)_childContentItemForContentItem:(id)arg1 index:(long long)arg2;
 - (void)_contentItemChangedNotification:(id)arg1;
 - (id)_contentItemForIdentifier:(id)arg1;
 - (id)_contentItemForIdentifier:(id)arg1 alreadyOnDataSourceQueue:(BOOL)arg2;
 - (id)_contentItemIDsInRange:(CDStruct_912cb5d2)arg1 itemsRange:(CDStruct_912cb5d2 *)arg2;
 - (void *)_createPlaybackQueueForRequest:(void *)arg1;
-- (void)_getInfoForRequest:(void *)arg1 item:(id)arg2 returnItem:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_getMetadataForContentItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_initializeNowPlayingInfo;
 - (void)_invalidatePlaybackQueueImmediately;
@@ -80,6 +80,7 @@
 - (void)_onQueue_pushNowPlayingInfoAndRetry:(BOOL)arg1;
 - (void)_onQueue_registerLyricsDelegateCallbacks:(id)arg1;
 - (void)_onQueue_registerPlaybackQueueDataSourceCallbacks:(id)arg1;
+- (void)_updatePlayerAudioSessionProperties;
 - (void)becomeActive;
 - (void)dealloc;
 - (id)init;

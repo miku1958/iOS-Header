@@ -17,10 +17,12 @@
     NSLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _paused;
+    BOOL _allowsLocationUse;
     NSObject<OS_dispatch_queue> *_coordinatorQueue;
     id<NTKUpNextDataSourceManagerDelegate> _delegate;
 }
 
+@property (nonatomic) BOOL allowsLocationUse; // @synthesize allowsLocationUse=_allowsLocationUse;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *coordinatorQueue; // @synthesize coordinatorQueue=_coordinatorQueue;
 @property (readonly, nonatomic) NSSet *currentDataSourceIdentifiers;
 @property (nonatomic) unsigned long long dataSourceState;

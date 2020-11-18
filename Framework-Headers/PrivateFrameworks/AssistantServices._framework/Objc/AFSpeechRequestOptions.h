@@ -8,7 +8,7 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
+@class AFSpeechSynthesisRecord, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
 
 @interface AFSpeechRequestOptions : NSObject <NSSecureCoding>
 {
@@ -21,7 +21,7 @@
     BOOL _usePrelisteningMode;
     BOOL _pendCallbacksUntilAfterContinuation;
     BOOL _useBorealisBuffer;
-    BOOL _updateSiriOutputVolume;
+    BOOL _fetchSmartSiriVolume;
     BOOL _suppressStopAlert;
     long long _activationEvent;
     NSString *_activationDeviceIdentifier;
@@ -40,6 +40,9 @@
     NSNumber *_notifyState;
     NSURL *_audioFileURL;
     unsigned long long _bargeInOptions;
+    AFSpeechSynthesisRecord *_speechSynthesisRecord;
+    NSDictionary *_startContext;
+    NSDictionary *_stopContext;
 }
 
 @property (nonatomic) BOOL acousticIdEnabled; // @synthesize acousticIdEnabled=_acousticIdEnabled;
@@ -53,6 +56,7 @@
 @property (nonatomic) unsigned long long bargeInOptions; // @synthesize bargeInOptions=_bargeInOptions;
 @property (copy, nonatomic) NSString *btDeviceAddress;
 @property (nonatomic) double expectedActivationEventTime; // @synthesize expectedActivationEventTime=_expectedActivationEventTime;
+@property (nonatomic) BOOL fetchSmartSiriVolume; // @synthesize fetchSmartSiriVolume=_fetchSmartSiriVolume;
 @property (nonatomic) unsigned long long homeButtonDownEventMachAbsoluteTime; // @synthesize homeButtonDownEventMachAbsoluteTime=_homeButtonDownEventMachAbsoluteTime;
 @property (nonatomic) double homeButtonDownEventTime; // @synthesize homeButtonDownEventTime=_homeButtonDownEventTime;
 @property (copy, nonatomic) NSNumber *homeButtonUpFromBeep; // @synthesize homeButtonUpFromBeep=_homeButtonUpFromBeep;
@@ -64,8 +68,10 @@
 @property (nonatomic) BOOL releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property (copy, nonatomic) NSString *serverCommandId; // @synthesize serverCommandId=_serverCommandId;
 @property (strong, nonatomic) NSXPCListenerEndpoint *speechRecordingEventListeningEndpoint; // @synthesize speechRecordingEventListeningEndpoint=_speechRecordingEventListeningEndpoint;
+@property (copy, nonatomic) AFSpeechSynthesisRecord *speechSynthesisRecord; // @synthesize speechSynthesisRecord=_speechSynthesisRecord;
+@property (copy, nonatomic) NSDictionary *startContext; // @synthesize startContext=_startContext;
+@property (copy, nonatomic) NSDictionary *stopContext; // @synthesize stopContext=_stopContext;
 @property (nonatomic) BOOL suppressStopAlert; // @synthesize suppressStopAlert=_suppressStopAlert;
-@property (nonatomic) BOOL updateSiriOutputVolume; // @synthesize updateSiriOutputVolume=_updateSiriOutputVolume;
 @property (nonatomic) BOOL useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
 @property (nonatomic) BOOL useBorealisBuffer; // @synthesize useBorealisBuffer=_useBorealisBuffer;
 @property (nonatomic) BOOL usePrelisteningMode; // @synthesize usePrelisteningMode=_usePrelisteningMode;

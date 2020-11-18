@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/ICUserIdentityStoreBackend-Protocol.h>
 
-@class ICUserIdentityProperties, ICUserVerificationContext, NSMutableDictionary, NSNumber, NSString;
+@class NSMutableDictionary, NSNumber, NSString;
 @protocol ICUserIdentityStoreBackendDelegate;
 
 @interface ICUserIdentityStoreTestingBackend : NSObject <ICUserIdentityStoreBackend>
@@ -19,33 +19,33 @@
     id<ICUserIdentityStoreBackendDelegate> _delegate;
 }
 
-@property (readonly, nonatomic) NSNumber *activeAccountDSID; // @synthesize activeAccountDSID=_activeAccountDSID;
-@property (readonly, nonatomic) NSNumber *activeLockerAccountDSID; // @synthesize activeLockerAccountDSID=_activeLockerAccountDSID;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICUserIdentityStoreBackendDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) ICUserIdentityProperties *primaryICloudAccountIdentityProperties;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) ICUserVerificationContext *verificationContextToEstablishAccount;
 
 + (void)setDefaultActiveAccountDSID:(id)arg1;
 + (void)setDefaultActiveLockerAccountDSID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_propertiesToSaveForProperties:(id)arg1;
+- (void)activeAccountDSIDWithCompletion:(CDUnknownBlockType)arg1;
+- (void)activeLockerAccountDSIDWithCompletion:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)identityPropertiesForDSID:(id)arg1;
+- (void)identityPropertiesForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)identityPropertiesForPrimaryICloudAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)removeIdentityForDSID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)removeIdentityForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)synchronize;
 - (void)updateActiveAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateActiveLockerAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)verificationContextForDSID:(id)arg1;
+- (void)verificationContextForAccountEstablishmentWithCompletion:(CDUnknownBlockType)arg1;
+- (void)verificationContextForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

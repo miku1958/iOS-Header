@@ -6,12 +6,14 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class MPCModelStorePlaybackItemsRequest, NSOperationQueue, NSProgress;
+@class MPCModelStorePlaybackItemsRequest, NSObject, NSOperationQueue, NSProgress;
+@protocol OS_dispatch_queue;
 
 @interface MPCModelStorePlaybackItemsRequestOperation : MPAsyncOperation
 {
     NSProgress *_activeProgress;
     NSOperationQueue *_operationQueue;
+    NSObject<OS_dispatch_queue> *_activeProgressQueue;
     MPCModelStorePlaybackItemsRequest *_request;
     CDUnknownBlockType _responseHandler;
 }

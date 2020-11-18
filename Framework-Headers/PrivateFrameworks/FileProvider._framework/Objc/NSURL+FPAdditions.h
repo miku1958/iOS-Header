@@ -12,8 +12,9 @@
 + (id)fp_localStoragePrefixURL;
 + (id)fp_supportDirectory;
 - (id)fp_addDocumentTrackingWithError:(id *)arg1;
-- (void)fp_associateThumbnailFromDocumentAtURL:(id)arg1 error:(id *)arg2;
+- (BOOL)fp_associateThumbnailFromDocumentAtURL:(id)arg1 error:(id *)arg2;
 - (id)fp_copyToTempFolderWithFilename:(id)arg1 error:(id *)arg2;
+- (id)fp_directorySizeWithError:(id *)arg1;
 - (unsigned long long)fp_fileSize;
 - (void)fp_hideExtension:(BOOL)arg1;
 - (BOOL)fp_isFolder;

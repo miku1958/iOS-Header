@@ -8,14 +8,11 @@
 
 @interface MPModelTVShowCreator : MPModelPerson
 {
-    CDUnknownBlockType _artworkCatalogBlock;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @synthesize artworkCatalogBlock=_artworkCatalogBlock;
+@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @dynamic artworkCatalogBlock;
 
-+ (id)__MPModelPropertyTVShowCreatorArtwork__PROPERTY;
-+ (id)__artworkCatalogBlock__KEY;
-- (void).cxx_destruct;
++ (id)__artworkCatalogBlock_KEY;
 - (id)artworkCatalog;
 
 @end

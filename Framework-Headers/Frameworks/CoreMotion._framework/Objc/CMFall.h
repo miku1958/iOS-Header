@@ -11,11 +11,12 @@
 }
 
 + (BOOL)areStatsAvailable;
+- (id)fallConfig;
 - (id)sendStatsDataToUrl:(id)arg1;
 - (void)sendStatsDataToUrl:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
+- (unsigned long long)setDataCollectionConfiguration:(unsigned long long)arg1;
 - (BOOL)setStatsEnabled:(BOOL)arg1;
-- (void)setStatsEnabled:(BOOL)arg1 onCompletion:(CDUnknownBlockType)arg2;
-- (void)simulateFallEvent;
+- (void)simulateEvent:(unsigned long long)arg1;
 
 @end
 

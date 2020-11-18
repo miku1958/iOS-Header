@@ -76,6 +76,7 @@
 - (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
 - (void)setVolume:(float)arg1;
+- (BOOL)supportsMultipleOutputDevices;
 - (float)volume;
 
 @end

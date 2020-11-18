@@ -17,8 +17,9 @@
 @property (readonly, copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property (readonly, copy, nonatomic) NSString *mimeType; // @synthesize mimeType=_mimeType;
 
+- (void).cxx_destruct;
 - (id)copyImageData;
-- (void)dealloc;
+- (id)description;
 - (BOOL)hasArtworkData;
 - (id)initWithImageData:(id)arg1 mimeType:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

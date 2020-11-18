@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_entries;
 }
 
+- (void).cxx_destruct;
 - (void)addMessage:(id)arg1 data:(id)arg2;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;

@@ -109,6 +109,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)interactionModeForPreparing;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToConfiguration:(id)arg1;
 
 @end
 

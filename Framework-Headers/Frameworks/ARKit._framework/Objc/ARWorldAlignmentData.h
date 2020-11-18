@@ -7,21 +7,31 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/ARResultData-Protocol.h>
+#import <ARKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ARWorldAlignmentData : NSObject <ARResultData>
+@interface ARWorldAlignmentData : NSObject <ARResultData, NSSecureCoding>
 {
-    CDStruct_14d5dc5e _worldOriginTransform;
+    unsigned long long _modifiers;
+    CDStruct_14d5dc5e _worldAlignmentTransform;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL referenceOriginChanged;
+@property (nonatomic) BOOL sessionShouldResumeCameraPosition;
+@property (nonatomic) BOOL sessionShouldResumeCameraPositionAndHeading;
 @property (readonly) Class superclass;
-@property (nonatomic) CDStruct_14d5dc5e worldOriginTransform; // @synthesize worldOriginTransform=_worldOriginTransform;
+@property (readonly, nonatomic) unsigned long long worldAlignmentModifiers;
+@property (nonatomic) BOOL worldAlignmentReset;
+@property (nonatomic) CDStruct_14d5dc5e worldAlignmentTransform; // @synthesize worldAlignmentTransform=_worldAlignmentTransform;
 
++ (BOOL)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

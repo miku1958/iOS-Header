@@ -6,7 +6,8 @@
 
 #import <iWorkImport/TSPContainedObject.h>
 
-@class NSMutableDictionary, TSKCustomFormatList, TSPLazyReference, TSTMergeRegionMap, TSTTableDataList, TSTTableHeaderStorage, TSTTileIDKeyDict;
+@class NSMutableDictionary, NSObject, TSKCustomFormatList, TSPLazyReference, TSTMergeRegionMap, TSTTableDataList, TSTTableHeaderStorage, TSTTileIDKeyDict;
+@protocol TSDContainerInfo><TSWPStorageParent;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableDataStore : TSPContainedObject
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
     TSTTableDataList *_multipleChoiceListFormatTableList;
     TSPLazyReference *_commentStorageTableReference;
     TSPLazyReference *_importWarningSetTableReference;
+    NSObject<TSDContainerInfo><TSWPStorageParent> *_richTextParentInfo;
     TSKCustomFormatList *_pasteboardCustomFormatList;
     NSMutableDictionary *_pasteboardCustomFormatMap;
     unsigned short _nextRowStripID;
@@ -51,13 +53,19 @@ __attribute__((visibility("hidden")))
 @property BOOL upgrading; // @synthesize upgrading=_upgrading;
 
 - (void).cxx_destruct;
+- (multimap_fcb6b22c)_makeCellMapFromTiles;
 - (id)addPasteboardCustomFormat:(id)arg1 toDocument:(id)arg2 updatingPasteboardFormat:(BOOL)arg3;
+- (BOOL)auditDatalistDuplicationReturningResult:(id *)arg1;
+- (BOOL)auditRowInfoCellCountsReturningResult:(id *)arg1;
+- (BOOL)auditTilesForRowOverlapAndExtensionPastTableBounds:(struct TSUCellCoord)arg1 result:(id *)arg2;
 - (struct TSUCellCoord)cellIDForCellWithRichTextStorage:(id)arg1 inRange:(struct TSUCellRect)arg2;
 - (void)clearPasteboardCustomFormatMap;
+- (BOOL)confirmRefCountsReturningResult:(id *)arg1;
 - (void)copyPasteboardCustomFormatsFromDataStore:(id)arg1;
 - (void)dealloc;
 - (void)debugDump;
 - (void)enumerateCellStoragesInRange:(struct TSUCellRect)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateCellStoragesRowByRowToMaxID:(struct TSUCellCoord)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateColumnHeaderInfosWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRowHeaderInfosWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateTilesAtNode:(struct TSTTableRBTreeNode_s *)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -77,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)reorganizeValueForStorage:(struct TSTCellStorage *)arg1 outValue:(struct TSTCellReorganizeValue *)arg2;
 - (void)replaceConditionalStyleSetsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceFormulasUsingBlock:(CDUnknownBlockType)arg1;
-- (void)resetDataLists;
+- (void)resetAlmostEverything;
 - (void)saveToArchive:(struct DataStore *)arg1 archiver:(id)arg2 isInTheDocument:(BOOL)arg3;
 - (void)setColumnHeaderStorage:(id)arg1;
 - (void)setRowHeaderStorage:(id)arg1;
@@ -85,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (id)setupEmptyPasteboardCustomFormatList;
 - (void)upgradeDataStoreCellStorage;
 - (void)validate;
+- (BOOL)verboseAuditTilesForRowOverlapAndExtensionPastTableBounds:(struct TSUCellCoord)arg1;
 
 @end
 

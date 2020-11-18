@@ -9,6 +9,7 @@
 #import <Silex/NSCopying-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSOrderedSet, SXComponentDependencyResolver, SXLayoutAttributes;
+@protocol SXComponentBlueprintFactory;
 
 @interface SXLayoutBlueprint : NSObject <NSCopying>
 {
@@ -17,6 +18,7 @@
     BOOL _didPlaceDynamicAds;
     SXLayoutBlueprint *_parentLayoutBlueprint;
     SXLayoutAttributes *_layoutAttributes;
+    id<SXComponentBlueprintFactory> _componentBlueprintFactory;
     NSMutableDictionary *_blueprint;
     NSMutableDictionary *_flattenedBlueprint;
     NSMutableArray *_orderedComponentIdentifiers;
@@ -32,6 +34,7 @@
 @property (strong, nonatomic) NSMutableDictionary *blueprint; // @synthesize blueprint=_blueprint;
 @property (nonatomic) struct CGSize blueprintSize; // @synthesize blueprintSize=_blueprintSize;
 @property (nonatomic) struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
+@property (readonly, nonatomic) id<SXComponentBlueprintFactory> componentBlueprintFactory; // @synthesize componentBlueprintFactory=_componentBlueprintFactory;
 @property (strong, nonatomic) SXComponentDependencyResolver *dependencySolver; // @synthesize dependencySolver=_dependencySolver;
 @property (nonatomic) BOOL didPlaceDynamicAds; // @synthesize didPlaceDynamicAds=_didPlaceDynamicAds;
 @property (strong, nonatomic) NSMutableDictionary *flattenedBlueprint; // @synthesize flattenedBlueprint=_flattenedBlueprint;
@@ -54,7 +57,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)endUpdates;
-- (id)init;
+- (id)initWithComponentBlueprintFactory:(id)arg1;
 - (void)invalidateBlueprint;
 - (void)invalidateBlueprintPosition;
 - (void)invalidateDependentsOfComponentNode:(id)arg1 forDependencyResolver:(id)arg2;

@@ -29,6 +29,8 @@
 - (void)_applyRemoteViewController:(id)arg1;
 - (void)_ingestionDidFinishWithResult:(unsigned long long)arg1;
 - (void)_requestRemoteViewController;
+- (void)applicationDidBecomeActive:(id)arg1;
+- (void)applicationWillResignActive:(id)arg1;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;

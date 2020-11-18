@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithNewImageData:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)drawFillInContext:(struct CGContext *)arg1 rect:(struct CGRect)arg2 clippingToPath:(struct CGPath *)arg3;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (BOOL)drawsInOneStep;
 - (int)fillType;
@@ -72,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)p_drawPDFWithProvider:(id)arg1 inContext:(struct CGContext *)arg2 bounds:(struct CGRect)arg3;
 - (struct CGRect)p_drawnRectForImageSize:(struct CGSize)arg1 destRect:(struct CGRect)arg2 inContext:(struct CGContext *)arg3;
 - (id)p_halfSizeCachedImage;
-- (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 rectForFill:(struct CGRect)arg3;
 - (id)p_quarterSizeCachedImage;
 - (void)p_setFillSizeForApplicationData;
 - (BOOL)p_shouldApplyTintedImage;

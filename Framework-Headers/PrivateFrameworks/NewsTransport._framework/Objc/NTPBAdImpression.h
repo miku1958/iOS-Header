@@ -23,6 +23,8 @@
     NSString *_feedId;
     int _feedType;
     NSData *_feedViewExposureId;
+    int _groupType;
+    NSData *_groupViewExposureId;
     NSString *_iadAd;
     NSString *_iadCampaign;
     NSString *_iadLine;
@@ -37,6 +39,7 @@
         unsigned int adLocation:1;
         unsigned int adType:1;
         unsigned int feedType:1;
+        unsigned int groupType:1;
         unsigned int newsProductType:1;
         unsigned int videoAdPlacementPosition:1;
         unsigned int videoAdType:1;
@@ -53,6 +56,8 @@
 @property (strong, nonatomic) NSString *feedId; // @synthesize feedId=_feedId;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
+@property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (nonatomic) BOOL hasAdCreativeType;
 @property (readonly, nonatomic) BOOL hasAdImpressionId;
 @property (nonatomic) BOOL hasAdImpressionTimeThreshold;
@@ -63,6 +68,8 @@
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (nonatomic) BOOL hasFeedType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
+@property (nonatomic) BOOL hasGroupType;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (readonly, nonatomic) BOOL hasIadAd;
 @property (readonly, nonatomic) BOOL hasIadCampaign;
 @property (readonly, nonatomic) BOOL hasIadLine;
@@ -85,6 +92,7 @@
 - (int)StringAsAdLocation:(id)arg1;
 - (int)StringAsAdType:(id)arg1;
 - (int)StringAsFeedType:(id)arg1;
+- (int)StringAsGroupType:(id)arg1;
 - (int)StringAsNewsProductType:(id)arg1;
 - (int)StringAsVideoAdType:(id)arg1;
 - (id)adCreativeTypeAsString:(int)arg1;
@@ -94,6 +102,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)feedTypeAsString:(int)arg1;
+- (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

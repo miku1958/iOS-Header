@@ -19,7 +19,7 @@
 
 + (id)descriptionForTimingMessages:(id)arg1;
 + (id)messageWithString:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

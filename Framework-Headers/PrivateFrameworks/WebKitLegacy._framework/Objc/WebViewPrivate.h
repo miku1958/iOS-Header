@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface WebViewPrivate : NSObject
 {
     struct Page *page;
-    struct RefPtr<WebViewGroup> group;
+    struct RefPtr<WebViewGroup, WTF::DumbPtrTraits<WebViewGroup>> group;
     id UIDelegate;
     id UIDelegateForwarder;
     id resourceProgressDelegate;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
     id formDelegateForwarder;
     WebInspector *inspector;
     WebNodeHighlight *currentNodeHighlight;
-    struct RefPtr<WebCore::ValidationBubble> formValidationBubble;
+    struct RefPtr<WebCore::ValidationBubble, WTF::DumbPtrTraits<WebCore::ValidationBubble>> formValidationBubble;
     BOOL shouldMaintainInactiveSelection;
     BOOL allowsUndo;
     float zoomMultiplier;
@@ -76,7 +76,7 @@ __attribute__((visibility("hidden")))
     struct CGRect pendingFixedPositionLayoutRect;
     struct RetainPtr<WebUITextIndicatorData> textIndicatorData;
     struct RetainPtr<WebUITextIndicatorData> dataOperationTextIndicator;
-    struct CGRect draggedElementBounds;
+    struct CGRect dragPreviewFrameInRootViewCoordinates;
     unsigned long long dragSourceAction;
     struct RetainPtr<NSURL> draggedLinkURL;
     struct RetainPtr<NSString> draggedLinkTitle;
@@ -86,7 +86,7 @@ __attribute__((visibility("hidden")))
     BOOL shouldUpdateWhileOffscreen;
     BOOL needsOneShotDrawingSynchronization;
     BOOL postsAcceleratedCompositingNotifications;
-    struct RefPtr<LayerFlushController> layerFlushController;
+    struct RefPtr<LayerFlushController, WTF::DumbPtrTraits<LayerFlushController>> layerFlushController;
     struct CGSize lastLayoutSize;
     WebVideoFullscreenController *fullscreenController;
     WebIndicateLayer *indicateLayer;
@@ -94,7 +94,7 @@ __attribute__((visibility("hidden")))
     id<WebDeviceOrientationProvider> m_deviceOrientationProvider;
     id<WebNotificationProvider> _notificationProvider;
     id<WebUserMediaClient> m_userMediaClient;
-    struct RefPtr<WebCore::HistoryItem> _globalHistoryItem;
+    struct RefPtr<WebCore::HistoryItem, WTF::DumbPtrTraits<WebCore::HistoryItem>> _globalHistoryItem;
     BOOL interactiveFormValidationEnabled;
     int validationMessageTimerMagnification;
     float customDeviceScaleFactor;

@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct BarExtrusionSetting mExtrusionSetting;
     TSCH3DNormalDirectionMapper *mNormalDirectionMapper;
-    vector_45b393db mNormalizedSpine;
+    vector_7200ab52 mNormalizedSpine;
     float mScaleMappingStartingHeight;
     float mBottomCapScale;
 }
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (int)geometryCount;
 - (unsigned int)geometryOffset;
 - (id)init;
-- (void)p_insertCrossPointsIntoVector:(vector_35283da1 *)arg1;
+- (void)p_insertCrossPointsIntoVector:(vector_d73af98f *)arg1;
 - (void)p_updateNormalizedSpineScaleMappingsUsingTransform:(const tmat4x4_3074befe *)arg1 forSpineGenerator:(id)arg2;
 - (id)selectionKnobPositions;
 

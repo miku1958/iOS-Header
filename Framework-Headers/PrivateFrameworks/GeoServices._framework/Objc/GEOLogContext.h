@@ -48,6 +48,7 @@
 - (void)registerUserSessionStateOfType:(unsigned long long)arg1 isNavSessionAllowed:(BOOL)arg2 userSessionSnapshot:(id)arg3;
 - (void)unregisterLogMsgStateOfType:(int)arg1;
 - (void)unregisterLogMsgStateOfType:(int)arg1 stateOrigin:(id)arg2;
+- (void)updateDeviceConnectionState;
 
 @end
 

@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
 - (void)didLoadTile:(id)arg1 forKey:(const struct VKTileKey *)arg2;
 - (struct _GEOTileKey)downloadKeyAtX:(unsigned int)arg1 y:(unsigned int)arg2 z:(unsigned int)arg3;
 - (void)expireTiles;
-- (void)fetchTileForKey:(const struct VKTileKey *)arg1;
+- (void)fetchTileForKey:(const struct VKTileKey *)arg1 isPrefetch:(BOOL)arg2;
+- (void)forceExpireTile:(const struct VKTileKey *)arg1;
 - (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 taskContext:(shared_ptr_e963992e)arg5;
 - (unsigned char)mapLayerForZoomLevelRange;
 - (BOOL)maximumZoomLevelBoundsCamera;

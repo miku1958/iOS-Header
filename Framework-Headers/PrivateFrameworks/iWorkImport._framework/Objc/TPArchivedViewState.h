@@ -6,7 +6,7 @@
 
 #import <iWorkImport/TSPObject.h>
 
-@class NSMutableDictionary, NSString, TSKAnnotationAuthor, TSKSelectionPath, TSWPSelection;
+@class NSMutableDictionary, NSString, TSDFreehandDrawingToolkitUIState, TSKAnnotationAuthor, TSKSelectionPath, TSWPSelection;
 
 __attribute__((visibility("hidden")))
 @interface TPArchivedViewState : TSPObject
@@ -27,11 +27,13 @@ __attribute__((visibility("hidden")))
     BOOL _hasShowsCTDeletions;
     BOOL _changeTrackingPaused;
     BOOL _showsPageNavigator;
+    BOOL _pencilAnnotationsHidden;
     BOOL _showsActivitySidebar;
-    int _viewScaleMode;
+    long long _viewScaleMode;
+    long long _pageViewState;
     double _viewScale;
     struct CGRect _windowFrame;
-    int _viewScaleModeiOS;
+    long long _viewScaleModeiOS;
     NSString *_selectedInspectorSwitchSegmentIdentifier;
     BOOL _inspectorHidden;
     int _wordCountHUDType;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
     BOOL _showUserDefinedGuides;
     NSString *_authorFilterName;
     TSKAnnotationAuthor *_authorFilter;
+    TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
 }
 
 @property (strong, nonatomic) TSKSelectionPath *compatibilitySelectionPath; // @synthesize compatibilitySelectionPath=_compatibilitySelectionPath;

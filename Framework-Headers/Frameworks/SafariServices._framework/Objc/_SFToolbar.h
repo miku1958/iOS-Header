@@ -19,7 +19,6 @@
 }
 
 @property (readonly, nonatomic) double URLFieldHorizontalMargin;
-@property (nonatomic) BOOL backdropComputesColorSettings;
 @property (copy, nonatomic) NSString *backdropGroupName;
 @property (readonly, nonatomic) long long placement; // @synthesize placement=_placement;
 @property (nonatomic) unsigned long long tintStyle; // @synthesize tintStyle=_tintStyle;

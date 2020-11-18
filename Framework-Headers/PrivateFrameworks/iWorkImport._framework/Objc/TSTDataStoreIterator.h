@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (struct TSUCellCoord)getNext;
 - (BOOL)getNextCellData:(id *)arg1;
-- (id)initWithInfoDelegating:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchMask:(unsigned long long)arg4;
+- (id)initWithTableModel:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchMask:(unsigned long long)arg4;
 - (void)iterateCellsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)nextCellData;
 - (void)p_setupTileAndRowAtCellID:(struct TSUCellCoord)arg1;

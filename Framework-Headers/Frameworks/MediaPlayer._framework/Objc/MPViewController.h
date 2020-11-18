@@ -54,7 +54,6 @@
 - (long long)displayableInterfaceOrientationForInterfaceOrientation:(long long)arg1;
 - (void)endIgnoringChangeTypes:(unsigned long long)arg1;
 - (void)endTransitionOverlayHidingWithTransferedOverlayView:(id)arg1;
-- (void)incrementAggregateStatisticsDisplayCount;
 - (id)init;
 - (BOOL)isAppearing;
 - (void)lockPlayer;

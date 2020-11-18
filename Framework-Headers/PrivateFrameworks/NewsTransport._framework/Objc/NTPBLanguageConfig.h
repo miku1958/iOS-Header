@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, NTPBCategory, NTPBCoverArticlesConfig, NTPBTopStoriesConfig;
+@class NSMutableArray, NSString, NTPBCategory, NTPBCoverArticlesConfig, NTPBTopStoriesConfig, NTPBVideoPlayerConfig;
 
 @interface NTPBLanguageConfig : PBCodable <NSCopying>
 {
@@ -23,13 +23,17 @@
     NSString *_hiddenFeedId;
     NSString *_languageTag;
     NSMutableArray *_mediaSharingBlacklistedChannelIds;
+    NSString *_moreVideosChannelId;
     NSMutableArray *_onboardingTagIds;
     NSMutableArray *_preSubscribedFeedIds;
     NSMutableArray *_preSubscribedNotificationsChannelIds;
     NSMutableArray *_recommendedNotificationChannels;
     NTPBCategory *_rootCategory;
     NSString *_savedStoriesTagId;
+    NTPBVideoPlayerConfig *_shareVideoPlayerConfig;
+    NSString *_specialEventsChannelId;
     NTPBTopStoriesConfig *_topStoriesConfig;
+    NSString *_topVideosChannelId;
     NSString *_trendingTagId;
     NSString *_widgetSectionConfigId;
 }
@@ -52,21 +56,29 @@
 @property (readonly, nonatomic) BOOL hasForYouConfigId;
 @property (readonly, nonatomic) BOOL hasHiddenFeedId;
 @property (readonly, nonatomic) BOOL hasLanguageTag;
+@property (readonly, nonatomic) BOOL hasMoreVideosChannelId;
 @property (readonly, nonatomic) BOOL hasRootCategory;
 @property (readonly, nonatomic) BOOL hasSavedStoriesTagId;
+@property (readonly, nonatomic) BOOL hasShareVideoPlayerConfig;
+@property (readonly, nonatomic) BOOL hasSpecialEventsChannelId;
 @property (readonly, nonatomic) BOOL hasTopStoriesConfig;
+@property (readonly, nonatomic) BOOL hasTopVideosChannelId;
 @property (readonly, nonatomic) BOOL hasTrendingTagId;
 @property (readonly, nonatomic) BOOL hasWidgetSectionConfigId;
 @property (strong, nonatomic) NSString *hiddenFeedId; // @synthesize hiddenFeedId=_hiddenFeedId;
 @property (strong, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
 @property (strong, nonatomic) NSMutableArray *mediaSharingBlacklistedChannelIds; // @synthesize mediaSharingBlacklistedChannelIds=_mediaSharingBlacklistedChannelIds;
+@property (strong, nonatomic) NSString *moreVideosChannelId; // @synthesize moreVideosChannelId=_moreVideosChannelId;
 @property (strong, nonatomic) NSMutableArray *onboardingTagIds; // @synthesize onboardingTagIds=_onboardingTagIds;
 @property (strong, nonatomic) NSMutableArray *preSubscribedFeedIds; // @synthesize preSubscribedFeedIds=_preSubscribedFeedIds;
 @property (strong, nonatomic) NSMutableArray *preSubscribedNotificationsChannelIds; // @synthesize preSubscribedNotificationsChannelIds=_preSubscribedNotificationsChannelIds;
 @property (strong, nonatomic) NSMutableArray *recommendedNotificationChannels; // @synthesize recommendedNotificationChannels=_recommendedNotificationChannels;
 @property (strong, nonatomic) NTPBCategory *rootCategory; // @synthesize rootCategory=_rootCategory;
 @property (strong, nonatomic) NSString *savedStoriesTagId; // @synthesize savedStoriesTagId=_savedStoriesTagId;
+@property (strong, nonatomic) NTPBVideoPlayerConfig *shareVideoPlayerConfig; // @synthesize shareVideoPlayerConfig=_shareVideoPlayerConfig;
+@property (strong, nonatomic) NSString *specialEventsChannelId; // @synthesize specialEventsChannelId=_specialEventsChannelId;
 @property (strong, nonatomic) NTPBTopStoriesConfig *topStoriesConfig; // @synthesize topStoriesConfig=_topStoriesConfig;
+@property (strong, nonatomic) NSString *topVideosChannelId; // @synthesize topVideosChannelId=_topVideosChannelId;
 @property (strong, nonatomic) NSString *trendingTagId; // @synthesize trendingTagId=_trendingTagId;
 @property (strong, nonatomic) NSString *widgetSectionConfigId; // @synthesize widgetSectionConfigId=_widgetSectionConfigId;
 

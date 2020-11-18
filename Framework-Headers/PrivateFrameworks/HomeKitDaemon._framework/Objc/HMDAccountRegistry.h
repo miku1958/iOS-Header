@@ -50,7 +50,7 @@
 + (id)sharedRegistry;
 + (id)shortDescription;
 - (void).cxx_destruct;
-- (void)_cleanupDevices;
+- (void)_cleanupDevices:(id)arg1;
 - (void)_updateLocalAccount;
 - (void)_updateLocalDevices;
 - (id)accountForDestination:(id)arg1 shouldCreate:(BOOL)arg2;

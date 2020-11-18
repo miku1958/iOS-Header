@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSArray *scopes; // @synthesize scopes=_scopes;
 @property (copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

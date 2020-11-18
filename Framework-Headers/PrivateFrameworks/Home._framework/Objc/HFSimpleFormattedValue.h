@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFDynamicFormattingValue-Protocol.h>
-#import <Home/NAIdentifiable-Protocol.h>
 
 @class NSString;
 @protocol HFStringGenerator;
 
-@interface HFSimpleFormattedValue : NSObject <HFDynamicFormattingValue, NAIdentifiable>
+@interface HFSimpleFormattedValue : NSObject <HFDynamicFormattingValue>
 {
     id<HFStringGenerator> _currentFormattedValue;
 }
@@ -24,10 +23,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id value;
 
-+ (id)na_identity;
 - (void).cxx_destruct;
 - (id)initWithFormattedValue:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (id)observeFormattedValueChangesWithBlock:(CDUnknownBlockType)arg1;
 
 @end

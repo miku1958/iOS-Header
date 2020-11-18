@@ -37,6 +37,7 @@
 - (BOOL)_isRecoverableError:(id)arg1;
 - (void)_unsafe_completeTask:(id)arg1 withError:(id)arg2;
 - (BOOL)_unsafe_retryTaskIfPossible:(id)arg1;
+- (id)beginAuthenticationDataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)beginDataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelDataTask:(id)arg1;
 - (id)init;

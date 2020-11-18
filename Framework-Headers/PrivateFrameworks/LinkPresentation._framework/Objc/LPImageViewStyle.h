@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     LPPadding *_margin;
     LPPadding *_padding;
     long long _filter;
+    long long _verticalAlignment;
     UIColor *_backgroundColor;
     LPPointUnit *_backgroundInset;
     double _foregroundOpacity;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIColor *maskColor; // @synthesize maskColor=_maskColor;
 @property (readonly, strong, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
 @property (strong, nonatomic) LPSize *size; // @synthesize size=_size;
+@property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

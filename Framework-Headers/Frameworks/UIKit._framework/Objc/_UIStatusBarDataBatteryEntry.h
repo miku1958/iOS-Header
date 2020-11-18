@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL saverModeActive; // @synthesize saverModeActive=_saverModeActive;
 @property (nonatomic) long long state; // @synthesize state=_state;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_ui_descriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;

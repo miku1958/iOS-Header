@@ -7,15 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDEventTrigger, HMDHome, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@class HMDEventTrigger, HMDHome, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDEventDelegate, OS_dispatch_queue;
 
-@interface HMDEvent : HMFObject <NSSecureCoding, HMFDumpState, HMFMessageReceiver, HMFLogging, HMDBackingStoreObjectProtocol>
+@interface HMDEvent : HMFObject <NSSecureCoding, HMFDumpState, HMDHomeMessageReceiver, HMFLogging, HMDBackingStoreObjectProtocol>
 {
     BOOL _endEvent;
     HMDEventTrigger *_eventTrigger;
@@ -40,6 +40,7 @@
 @property (readonly, weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSString *logString; // @synthesize logString=_logString;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) Class superclass;
@@ -47,6 +48,7 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

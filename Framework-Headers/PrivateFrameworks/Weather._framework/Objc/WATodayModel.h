@@ -12,6 +12,7 @@
 {
     NSHashTable *_observers;
     NSOperationQueue *_modelOperationQueue;
+    BOOL _hasPendingUpdates;
     WAForecastModel *_forecastModel;
     NSDate *_lastUpdateDate;
     WFServiceConnection *_connection;
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) WFServiceConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) WAForecastModel *forecastModel; // @synthesize forecastModel=_forecastModel;
 @property (nonatomic) struct ct_green_tea_logger_s *greenTeaLogger; // @synthesize greenTeaLogger=_greenTeaLogger;
+@property (nonatomic) BOOL hasPendingUpdates; // @synthesize hasPendingUpdates=_hasPendingUpdates;
 @property (strong, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
 
 + (id)autoupdatingLocationModelWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;
@@ -35,11 +37,15 @@
 - (void)_persistStateWithModel:(id)arg1;
 - (void)_willDeliverForecastModel:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)checkIfNeedsToUpdate;
+- (void)clearLocationUpdateState;
 - (void)dealloc;
 - (BOOL)executeModelUpdateWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)hasCrossedHourlyBoundary;
 - (id)init;
 - (id)initWithLocation:(id)arg1;
 - (id)location;
+- (void)performDelayedUpdatesForObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;
 
 @end

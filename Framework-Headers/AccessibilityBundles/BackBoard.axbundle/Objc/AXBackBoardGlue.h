@@ -20,7 +20,7 @@
 @property (readonly) Class superclass;
 
 + (void)_repeatAggregateStatistics;
-+ (int)accessibilityUIPid;
++ (int)accessibilityUIServerPid;
 + (int)assistiveTouchPid;
 + (struct CGPoint)displayConvertFromCAScreen:(struct CGPoint)arg1 withDisplayIntegerId:(unsigned int)arg2;
 + (struct CGPoint)displayConvertToCAScreen:(struct CGPoint)arg1 withDisplayIntegerId:(unsigned int)arg2;
@@ -32,7 +32,8 @@
 + (void)sendUserEventOccurred;
 + (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 + (int)siriViewServicePid;
-- (int)accessibilityUIPid;
+- (int)accessibilityAssistiveTouchPid;
+- (int)accessibilityUIServerPid;
 - (unsigned int)contextIdForDisplayPoint:(struct CGPoint)arg1;
 - (unsigned int)contextIdHosterForContextId:(unsigned int)arg1;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
@@ -40,7 +41,7 @@
 - (void)enableEventTap:(BOOL)arg1 forApplication:(int)arg2;
 - (void)postEvent:(id)arg1 systemEvent:(BOOL)arg2 afterNamedTap:(id)arg3 namedTaps:(id)arg4;
 - (void)registerEventListener:(BOOL)arg1;
-- (void)setAccessibilityUIPid:(int)arg1;
+- (void)setAccessibilityUIServerPid:(int)arg1;
 - (void)setAssistiveTouchPid:(int)arg1;
 - (void)setCapsLockLightOn:(BOOL)arg1;
 - (void)setDisableSystemGestureRecognitionInEvents:(BOOL)arg1;

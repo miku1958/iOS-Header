@@ -12,11 +12,11 @@
 __attribute__((visibility("hidden")))
 @interface _RWITCPServer : NSObject
 {
-    id<_RWITCPServerDelegate> _delegate;
     int _listenSocket;
     NSObject<OS_dispatch_queue> *_serverQueue;
     NSObject<OS_dispatch_source> *_serverSource;
     NSMutableArray *_connections;
+    id<_RWITCPServerDelegate> _delegate;
 }
 
 @property (readonly, weak, nonatomic) id<_RWITCPServerDelegate> delegate; // @synthesize delegate=_delegate;

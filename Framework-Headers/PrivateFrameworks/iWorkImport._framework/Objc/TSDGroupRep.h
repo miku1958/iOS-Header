@@ -8,24 +8,22 @@
 
 #import <iWorkImport/TSDMagicMoveMatching-Protocol.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface TSDGroupRep : TSDContainerRep <TSDMagicMoveMatching>
 {
     struct CGRect mLastBoundsForStandardKnobs;
 }
 
-- (id)allRepsContainedInGroup;
+@property (readonly, nonatomic) NSArray *allRepsContainedInGroup;
+
 - (struct CGRect)clipRect;
-- (BOOL)containsPoint:(struct CGPoint)arg1;
-- (BOOL)containsPoint:(struct CGPoint)arg1 withSlop:(struct CGSize)arg2;
-- (struct CGPoint)convertNaturalPointFromUnscaledCanvas:(struct CGPoint)arg1;
-- (BOOL)directlyManagesLayerContent;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (struct CGRect)frameInUnscaledCanvas;
-- (BOOL)intersectsUnscaledRect:(struct CGRect)arg1;
-- (Class)layerClass;
+- (id)p_groupInfo;
 - (void)recursivelyDrawInContext:(struct CGContext *)arg1;
-- (void)setNeedsDisplay;
+- (void)updateFromLayout;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @class AVOutputContext, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MRAVInputStream : MRAVBufferedInputStream <AVOutputContextCommunicationChannelDelegate>
 {
     AVOutputContext *_outputContext;
@@ -22,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) AVOutputContext *outputContext; // @synthesize outputContext=_outputContext;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)initWithOutputContext:(id)arg1;

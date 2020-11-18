@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) HUQuickControlViewController *activeController;
 @property (nonatomic) unsigned long long activeControllerType; // @synthesize activeControllerType=_activeControllerType;
 @property (readonly, nonatomic) NSArray *allControllers;
+@property (readonly, nonatomic) HUQuickControlViewController *alternateController;
 @property (readonly, nonatomic) HUQuickControlViewController *alternateViewController; // @synthesize alternateViewController=_alternateViewController;
 @property (readonly, nonatomic) HUQuickControlContentCharacteristicWritingUpdateAdapter *characteristicWritingAdapter; // @synthesize characteristicWritingAdapter=_characteristicWritingAdapter;
 @property (weak, nonatomic) id<HUQuickControlContentHosting> controlHost; // @synthesize controlHost=_controlHost;

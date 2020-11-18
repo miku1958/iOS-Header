@@ -46,7 +46,9 @@
 - (void)accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)accountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)accountsWithAccountTypeIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)accountsWithAccountTypeIdentifiers:(id)arg1 error:(id *)arg2;
 - (void)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 error:(id *)arg3;
 - (BOOL)addClientToken:(id)arg1 forAccount:(id)arg2;
 - (id)allAccountTypes;
 - (id)allCredentialItems;
@@ -99,6 +101,7 @@
 - (id)parentAccountForAccount:(id)arg1;
 - (id)parentAccountForAccount:(id)arg1 error:(id *)arg2;
 - (BOOL)permissionForAccountType:(id)arg1;
+- (void)preloadDataclassOwnersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)provisionedDataclassesForAccount:(id)arg1;
 - (void)removeAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAccount:(id)arg1 withDataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;

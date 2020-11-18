@@ -12,11 +12,11 @@
 
 @interface WBSSetInt64 : NSObject <NSCoding, NSSecureCoding, NSCopying>
 {
-    unordered_set_9227d2bb _set;
+    unordered_set_da619913 _set;
 }
 
 @property (readonly, nonatomic) unsigned long long count;
-@property (readonly, nonatomic) const unordered_set_9227d2bb *set;
+@property (readonly, nonatomic) const unordered_set_da619913 *set;
 
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
@@ -30,8 +30,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInt64:(long long)arg1;
-- (id)initWithMovableSet:(unordered_set_9227d2bb *)arg1;
-- (id)initWithSet:(const unordered_set_9227d2bb *)arg1;
+- (id)initWithMovableSet:(unordered_set_da619913 *)arg1;
+- (id)initWithSet:(const unordered_set_da619913 *)arg1;
 
 @end
 

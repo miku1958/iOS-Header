@@ -17,8 +17,7 @@
 @property (readonly, nonatomic) double airPlayOutputContextInitTimeoutDuration;
 @property (readonly, nonatomic) double bluetoothDeviceResumeDuration;
 @property (readonly, nonatomic) double broadcastCommandWaitDuration;
-@property (nonatomic) NSArray *connectedClientPIDs;
-@property (readonly, nonatomic) BOOL deviceSupportsExternalRemoteControl;
+@property (strong, nonatomic) NSArray *connectedClientPIDs;
 @property (readonly, nonatomic) double externalDeviceDisconnectSleepDuration;
 @property (readonly, nonatomic) double externalDeviceDisconnectWaitDuration;
 @property (readonly, nonatomic) double externalDeviceNowPlayingInfoArtworkCoalesceDuration;
@@ -29,9 +28,9 @@
 @property (readonly, nonatomic) double externalDeviceTimeoutDuration;
 @property (readonly, nonatomic) BOOL hasExternalDeviceSocketQOSLevelSet;
 @property (readonly, nonatomic) long long maxTransactionMemorySize;
-@property (readonly, nonatomic) BOOL remoteControllableOutputDevicesEnabled;
 @property (readonly, nonatomic) BOOL shouldInitializeGenericBonjourService;
 @property (readonly, nonatomic) BOOL shouldInitializeTelevisionBonjourService;
+@property (readonly, nonatomic) BOOL shouldLogArtwork;
 @property (readonly, nonatomic) BOOL shouldLogPairingSetupCode;
 @property (readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
 @property (readonly, nonatomic) double transactionWaitDurationOnOutOfMemory;
@@ -44,11 +43,11 @@
 @property (readonly, nonatomic) BOOL useSystemAudioContextForAirPlayTransport;
 
 + (id)currentSettings;
+- (void).cxx_destruct;
 - (BOOL)_boolValueForKey:(id)arg1 usingDefaultValue:(BOOL)arg2;
 - (double)_doubleValueForKey:(id)arg1 usingDefaultValue:(double)arg2;
 - (long long)_integerValueForKey:(id)arg1 usingDefaultValue:(long long)arg2;
 - (void)_removeValueForKey:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

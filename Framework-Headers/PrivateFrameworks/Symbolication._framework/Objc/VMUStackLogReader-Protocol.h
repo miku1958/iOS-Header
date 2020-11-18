@@ -6,23 +6,32 @@
 
 #import <Symbolication/NSObject-Protocol.h>
 
-@class NSString, VMUVMRegion, VMUVMRegionTracker;
+@class NSSet, NSString, VMUVMRegion, VMUVMRegionTracker;
 
 @protocol VMUStackLogReader <NSObject>
 
+@property (strong, nonatomic) NSSet *excludedFrames;
 @property (readonly) BOOL inspectingLiveProcess;
+@property (readonly) BOOL is64bit;
 @property (readonly) VMUVMRegionTracker *regionTracker;
+@property (readonly) unsigned int task;
 @property (readonly) BOOL usesLiteMode;
 
+- (NSString *)binaryImagePathForPCaddress:(unsigned long long)arg1;
+- (struct _VMURange)binaryImageRangeForPCaddress:(unsigned long long)arg1;
 - (int)enumerateRecords:(void (^)(unsigned int, unsigned long long, unsigned long long, unsigned long long))arg1;
 - (NSString *)functionNameForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange)functionRangeContainingPCaddress:(unsigned long long)arg1;
 - (long long)getFramesForAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 inLiteZone:(BOOL)arg3 stackFramesBuffer:(unsigned long long *)arg4;
 - (long long)getFramesForNode:(unsigned int)arg1 inLiteZone:(BOOL)arg2 stackFramesBuffer:(unsigned long long *)arg3;
 - (long long)getFramesForStackID:(unsigned long long)arg1 stackFramesBuffer:(unsigned long long *)arg2;
+- (NSString *)sourceFileNameAndLineNumberForPCaddress:(unsigned long long)arg1 fullPath:(BOOL)arg2;
 - (NSString *)sourceFileNameForPCaddress:(unsigned long long)arg1;
 - (unsigned int)sourceLineNumberForPCaddress:(unsigned long long)arg1;
 - (NSString *)sourcePathForPCaddress:(unsigned long long)arg1;
+- (NSString *)symbolicatedBacktraceForFrames:(unsigned long long *)arg1 frameCount:(long long)arg2 options:(unsigned long long)arg3;
+- (NSString *)symbolicatedBacktraceForNode:(unsigned int)arg1 nodeDetails:(CDStruct_599faf0f)arg2 isLiteZone:(BOOL)arg3 options:(unsigned long long)arg4;
+- (NSString *)symbolicatedBacktraceForStackID:(unsigned long long)arg1 isLiteZone:(BOOL)arg2 options:(unsigned long long)arg3;
 - (VMUVMRegion *)vmuVMRegionForAddress:(unsigned long long)arg1;
 
 @optional

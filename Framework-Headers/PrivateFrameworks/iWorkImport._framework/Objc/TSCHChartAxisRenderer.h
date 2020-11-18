@@ -24,12 +24,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2;
+- (void).cxx_destruct;
+- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2 useWrapWidth:(BOOL)arg3;
 - (id)axisLayoutItem;
 - (id)axisTitleSelectionPath;
 - (BOOL)canEditTextForSelectionPath:(id)arg1;
 - (BOOL)canRenderSelectionPath:(id)arg1;
-- (void)dealloc;
 - (void)drawIntoLayer:(int)arg1 inContext:(struct CGContext *)arg2 visible:(struct CGRect)arg3;
 - (struct CGRect)frameForEditingTextForSelectionPath:(id)arg1;
 - (BOOL)isCompositeRenderer;

@@ -17,6 +17,7 @@
     NSMutableSet *_usedWebViews;
     NSMutableSet *_reusableWebViews;
     NSMutableArray *_siteMetadataProviders;
+    NSObject<OS_dispatch_queue> *_siteMetadataProvidersAccessQueue;
     NSOperationQueue *_operationQueue;
     NSCountedSet *_activeOperations;
     NSObject<OS_dispatch_queue> *_internalQueue;
@@ -55,7 +56,6 @@
 - (id)init;
 - (id)initWithInjectedBundleURL:(id)arg1;
 - (void)preloadRequest:(id)arg1 withPriority:(long long)arg2;
-- (void)purgeUnneededProviderCacheEntries;
 - (id)registerOneTimeRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (id)registerRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)registerSiteMetadataProvider:(id)arg1;

@@ -14,7 +14,6 @@
     struct __CFString *_tetheringLink;
 }
 
-+ (void)releaseSharedInstance;
 + (id)sharedInstance;
 + (BOOL)wifiEnabled;
 - (id)_wifiNameWithState:(id)arg1;

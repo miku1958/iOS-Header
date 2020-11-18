@@ -5,12 +5,11 @@
 //
 
 #import <AuthKit/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
+#import <AuthKit/AKAppleIDServerAuthenticationUIProvider-Protocol.h>
 
-@class AKAppleIDServerResourceLoadDelegate, NSString, NSURLRequest;
+@class NSString;
 
-@protocol AKAppleIDAuthenticationUIProvider <AKAppleIDAuthenticationLimitedUIProvider>
-- (void)dismissServerProvidedUIWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)presentServerProvidedUIWithURLRequest:(NSURLRequest *)arg1 delegate:(AKAppleIDServerResourceLoadDelegate *)arg2 completion:(void (^)(NSHTTPURLResponse *, NSDictionary *, NSError *))arg3;
+@protocol AKAppleIDAuthenticationUIProvider <AKAppleIDAuthenticationLimitedUIProvider, AKAppleIDServerAuthenticationUIProvider>
 
 @optional
 - (void)dismissKeepUsingUIWithCompletion:(void (^)(BOOL, NSError *))arg1;

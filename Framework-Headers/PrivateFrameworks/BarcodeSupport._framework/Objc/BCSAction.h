@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, copy, nonatomic) NSArray *actionPickerItems;
+@property (readonly, nonatomic) BOOL canSkipUnlock;
 @property (readonly, nonatomic) id<BCSParsedDataPrivate> data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSDictionary *debugDescriptionDictionary;
@@ -32,11 +33,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *localizedActionDescription;
 @property (readonly, copy, nonatomic) NSString *localizedDefaultActionDescription;
+@property (readonly, copy, nonatomic) NSString *localizedDefaultActionTitle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (readonly, nonatomic) NSURL *urlThatCanBeOpened; // @synthesize urlThatCanBeOpened;
 
-+ (void)getActionWithData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)getActionWithData:(id)arg1 codePayload:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)debugDescriptionExtraInfoDictionary;
 - (void)determineActionabilityWithCompletionHandler:(CDUnknownBlockType)arg1;

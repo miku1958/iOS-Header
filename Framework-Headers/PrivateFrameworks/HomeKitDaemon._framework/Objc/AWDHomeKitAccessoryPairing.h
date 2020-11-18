@@ -13,6 +13,7 @@
 @interface AWDHomeKitAccessoryPairing : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    int _authMethod;
     int _certified;
     unsigned int _duration;
     int _errorCode;
@@ -20,37 +21,46 @@
     AWDHomeKitVendorInformation *_vendorDetails;
     BOOL _isAdd;
     BOOL _isAddedViaWAC;
+    BOOL _isSecureWAC;
     struct {
         unsigned int timestamp:1;
+        unsigned int authMethod:1;
         unsigned int certified:1;
         unsigned int duration:1;
         unsigned int errorCode:1;
         unsigned int transportType:1;
         unsigned int isAdd:1;
         unsigned int isAddedViaWAC:1;
+        unsigned int isSecureWAC:1;
     } _has;
 }
 
+@property (nonatomic) int authMethod; // @synthesize authMethod=_authMethod;
 @property (nonatomic) int certified; // @synthesize certified=_certified;
 @property (nonatomic) unsigned int duration; // @synthesize duration=_duration;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
+@property (nonatomic) BOOL hasAuthMethod;
 @property (nonatomic) BOOL hasCertified;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasErrorCode;
 @property (nonatomic) BOOL hasIsAdd;
 @property (nonatomic) BOOL hasIsAddedViaWAC;
+@property (nonatomic) BOOL hasIsSecureWAC;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTransportType;
 @property (readonly, nonatomic) BOOL hasVendorDetails;
 @property (nonatomic) BOOL isAdd; // @synthesize isAdd=_isAdd;
 @property (nonatomic) BOOL isAddedViaWAC; // @synthesize isAddedViaWAC=_isAddedViaWAC;
+@property (nonatomic) BOOL isSecureWAC; // @synthesize isSecureWAC=_isSecureWAC;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorDetails; // @synthesize vendorDetails=_vendorDetails;
 
 - (void).cxx_destruct;
+- (int)StringAsAuthMethod:(id)arg1;
 - (int)StringAsCertified:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
+- (id)authMethodAsString:(int)arg1;
 - (id)certifiedAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

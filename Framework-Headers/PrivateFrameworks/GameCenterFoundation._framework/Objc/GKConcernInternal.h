@@ -20,6 +20,7 @@
 @property (strong, nonatomic) GKPlayerInternal *player; // @synthesize player=_player;
 
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

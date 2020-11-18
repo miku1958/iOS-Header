@@ -10,6 +10,7 @@
 
 @protocol AXBackBoardServerInstance <NSObject>
 + (id<AXBackBoardServerInstance>)backBoardServerInstanceIfExists;
+- (BOOL)_inCheckerBoardMode;
 - (BOOL)_inPreBoardMode;
 - (BOOL)_sessionIsLoginSession;
 - (BOOL)adaptationEnabled;

@@ -22,12 +22,14 @@ __attribute__((visibility("hidden")))
     TSUPointerKeyDictionary *mMainRepsByCanvas;
     TSUPointerKeyDictionary *mCachedImagesByCanvas;
     TSUPointerKeyDictionary *mPartialRepsByCanvas;
+    BOOL mPaginateRightToLeft;
 }
 
 @property (readonly, nonatomic) id<TSDCanvasProxyDelegate> canvasProxyDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL paginateRightToLeft; // @synthesize paginateRightToLeft=mPaginateRightToLeft;
 @property (readonly) Class superclass;
 
 - (void)dealloc;
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)preprocessChanges:(id)arg1 forChangeSource:(id)arg2;
 - (void)processChanges:(id)arg1 forChangeSource:(id)arg2;
 - (void)reset;
+- (void)setLayoutPartititionsRightToLeft:(BOOL)arg1 contentPartitionsRightToLeft:(BOOL)arg2;
 
 @end
 

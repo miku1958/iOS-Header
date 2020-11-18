@@ -24,6 +24,7 @@
     id<_NSExtensionContextVending> __extensionVendorProxy;
     NSXPCConnection *__auxiliaryConnection;
     NSXPCListener *__auxiliaryListener;
+    id __processAssertion;
     id __principalObject;
     NSObject<OS_os_transaction> *__transaction;
 }
@@ -35,6 +36,7 @@
 @property (strong, setter=_setExtensionHostProxy:) id<_NSExtensionContextHosting> _extensionHostProxy; // @synthesize _extensionHostProxy=__extensionHostProxy;
 @property (strong, nonatomic, setter=_setExtensionVendorProxy:) id<_NSExtensionContextVending> _extensionVendorProxy; // @synthesize _extensionVendorProxy=__extensionVendorProxy;
 @property (nonatomic, setter=_setPrincipalObject:) id _principalObject; // @synthesize _principalObject=__principalObject;
+@property (strong, setter=_setProcessAssertion:) id _processAssertion; // @synthesize _processAssertion=__processAssertion;
 @property (copy, nonatomic, setter=_setRequestCleanUpBlock:) CDUnknownBlockType _requestCleanUpBlock; // @synthesize _requestCleanUpBlock=__requestCleanUpBlock;
 @property (strong, getter=_transaction, setter=_setTransaction:) NSObject<OS_os_transaction> *_transaction; // @synthesize _transaction=__transaction;
 @property (readonly, copy) NSString *debugDescription;

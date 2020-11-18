@@ -30,9 +30,11 @@
 @property (copy, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL needsFeedItemHeadlinesFetch;
+@property (readonly, nonatomic) unsigned long long preferredDynamicSlotAllocation;
 @property (readonly, copy, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long todayItemType;
+@property (readonly, nonatomic) BOOL usesDynamicSlotAllocation;
 
 - (void).cxx_destruct;
 - (id)copyWithCacheExpirationDate:(id)arg1 searchResult:(id)arg2;

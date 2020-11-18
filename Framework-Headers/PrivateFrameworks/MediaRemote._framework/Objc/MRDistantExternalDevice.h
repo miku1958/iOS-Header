@@ -8,7 +8,7 @@
 
 #import <MediaRemote/MRAVDistantExternalDeviceClientProtocol-Protocol.h>
 
-@class MRAVDistantExternalDeviceMetadata, NSObject, NSString, NSXPCConnection;
+@class MRAVDistantExternalDeviceMetadata, NSObject, NSString, NSXPCConnection, _MROriginProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRDistantExternalDevice : MRExternalDevice <MRAVDistantExternalDeviceClientProtocol>
@@ -19,7 +19,7 @@
     unsigned long long _callbacks;
     unsigned long long _deviceNotifications;
     unsigned int _connectionState;
-    void *_customOrigin;
+    _MROriginProtobuf *_customOrigin;
     CDUnknownBlockType _connectionStateCallback;
     NSObject<OS_dispatch_queue> *_connectionStateCallbackQueue;
     CDUnknownBlockType _nameCallback;
@@ -28,6 +28,8 @@
     NSObject<OS_dispatch_queue> *_customDataCallbackQueue;
     CDUnknownBlockType _volumeCallback;
     NSObject<OS_dispatch_queue> *_volumeCallbackQueue;
+    CDUnknownBlockType _outputContextCallback;
+    NSObject<OS_dispatch_queue> *_outputContextCallbackQueue;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType connectionStateCallback; // @synthesize connectionStateCallback=_connectionStateCallback;
@@ -39,12 +41,17 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType nameCallback; // @synthesize nameCallback=_nameCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *nameCallbackQueue; // @synthesize nameCallbackQueue=_nameCallbackQueue;
+@property (copy, nonatomic) CDUnknownBlockType outputContextCallback; // @synthesize outputContextCallback=_outputContextCallback;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *outputContextCallbackQueue; // @synthesize outputContextCallbackQueue=_outputContextCallbackQueue;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType volumeCallback; // @synthesize volumeCallback=_volumeCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *volumeCallbackQueue; // @synthesize volumeCallbackQueue=_volumeCallbackQueue;
 
++ (id)_notificationSerialQueue;
 + (id)clientInterface;
 + (id)serviceInterface;
+- (void).cxx_destruct;
+- (void)_handleDeviceInfoDidChange:(id)arg1;
 - (id)_hostedExternalDeviceConnection;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_synchronousLoadExternalDeviceMetadataIfNecessary;
@@ -52,18 +59,20 @@
 - (void)_updateHostedDeviceDesiredNotifications;
 - (void)connectWithOptions:(unsigned int)arg1;
 - (unsigned int)connectionState;
-- (void *)customOrigin;
+- (id)customOrigin;
 - (void)dealloc;
-- (void *)deviceInfo;
+- (id)deviceInfo;
 - (void)disconnect:(id)arg1;
 - (id)hostName;
 - (void)hostedExternalDeviceConnectionStateDidChange:(unsigned int)arg1 withError:(id)arg2;
 - (void)hostedExternalDeviceDidReceiveCustomData:(id)arg1 withName:(id)arg2;
 - (void)hostedExternalDeviceNameDidChange:(id)arg1;
+- (void)hostedExternalDeviceOutputContextDidChangeWithInfo:(CDStruct_64424771)arg1;
 - (void)hostedExternalDeviceVolumeDidChange:(float)arg1 forEndpointWithIdentifier:(id)arg2 forOutputDeviceWithIdentifier:(id)arg3;
 - (id)initWithExternalDeviceListenerEndpoint:(id)arg1;
 - (BOOL)isPaired;
 - (BOOL)isUsingSystemPairing;
+- (BOOL)isValid;
 - (void)modifyOutputContextOfType:(unsigned int)arg1 addingDeviceUIDs:(id)arg2 removingDeviceUIDs:(id)arg3 settingDeviceUIDs:(id)arg4 withReplyQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)name;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -73,6 +82,7 @@
 - (void)setConnectionStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setCustomDataCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setNameCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setOutputContextCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setPairingAllowedCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setPairingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
@@ -83,6 +93,7 @@
 - (void)setWantsNowPlayingNotifications:(BOOL)arg1;
 - (void)setWantsVolumeNotifications:(BOOL)arg1;
 - (id)supportedMessages;
+- (CDStruct_64424771)systemMusicContextInfo;
 - (void)unpair;
 - (void)volumeWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)wantsNowPlayingNotifications;

@@ -20,6 +20,7 @@
 @property (readonly) NSArray *outputDevices;
 @property (weak) AVOutputContext *parentOutputContext;
 @property (readonly) BOOL providesControlForAllVolumeFeatures;
+@property (readonly) BOOL supportsMultipleOutputDevices;
 @property (readonly) float volume;
 
 + (id)auxiliaryOutputContext;

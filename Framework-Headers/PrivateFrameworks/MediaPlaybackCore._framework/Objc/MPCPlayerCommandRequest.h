@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithMediaRemoteCommand:(unsigned int)arg1 options:(id)arg2 response:(id)arg3;
+- (void)setCommandOptionValue:(id)arg1 forKey:(id)arg2;
 
 @end
 

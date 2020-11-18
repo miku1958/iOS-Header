@@ -8,18 +8,25 @@
 
 #import <MobileAsset/NSSecureCoding-Protocol.h>
 
+@class NSMutableDictionary;
+
 @interface MADownloadOptions : NSObject <NSSecureCoding>
 {
     BOOL _allowsCellularAccess;
     BOOL _canUseLocalCacheServer;
+    BOOL _discretionary;
     long long _timeoutIntervalForResource;
+    NSMutableDictionary *_additionalServerParams;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *additionalServerParams; // @synthesize additionalServerParams=_additionalServerParams;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property (nonatomic) BOOL canUseLocalCacheServer; // @synthesize canUseLocalCacheServer=_canUseLocalCacheServer;
+@property (nonatomic) BOOL discretionary; // @synthesize discretionary=_discretionary;
 @property (nonatomic) long long timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 
 + (BOOL)supportsSecureCoding;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

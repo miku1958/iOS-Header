@@ -19,8 +19,10 @@
 - (id)safari_dictionaryForKey:(id)arg1;
 - (id)safari_diffWithDictionary:(id)arg1;
 - (id)safari_mapAndFilterKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)safari_mapTableForKey:(id)arg1;
 - (id)safari_numberForKey:(id)arg1;
 - (id)safari_setForKey:(id)arg1;
 - (id)safari_stringForKey:(id)arg1;
+- (id)safari_stringForKey:(id)arg1 returningNilIfEmpty:(BOOL)arg2;
 @end
 

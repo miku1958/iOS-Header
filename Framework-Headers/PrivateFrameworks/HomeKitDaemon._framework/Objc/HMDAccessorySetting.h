@@ -6,84 +6,105 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDAccessorySettingProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDAccessorySettingUpdateDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDAccessorySettingUpdateProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDAccessorySettingGroup, HMDAccessorySettingModel, HMFMessageDispatcher, NSArray, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMDAccessorySettingContainer, HMDAccessorySettingGroup, HMDAccessorySettingModel, HMDAccessorySettingUpdateBase, HMFMessageDestination, HMFMessageDispatcher, NSArray, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAccessorySetting : HMFObject <HMFLogging, HMDBackingStoreObjectProtocol, HMFMessageReceiver, NSSecureCoding>
+@interface HMDAccessorySetting : HMFObject <HMDBackingStoreObjectProtocol, HMDAccessorySettingUpdateDelegate, HMFLogging, HMDAccessorySettingUpdateProtocol, HMDAccessorySettingProtocol, HMDHomeMessageReceiver, NSSecureCoding>
 {
+    id _value;
+    NSString *_name;
     long long _type;
     NSMutableArray *_constraints;
-    id _value;
     unsigned long long _configurationVersion;
+    HMDAccessorySetting *_mediaSystemSetting;
     NSUUID *_identifier;
     HMDAccessorySettingGroup *_group;
     unsigned long long _properties;
-    NSString *_name;
+    HMDAccessorySettingUpdateBase *_updateSetting;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDAccessory *_accessory;
     HMFMessageDispatcher *_messageDispatcher;
+    HMDAccessorySettingContainer *_container;
+    HMFMessageDestination *_messageDestination;
 }
 
-@property (weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic) unsigned long long configurationVersion; // @synthesize configurationVersion=_configurationVersion;
 @property (readonly, copy) NSArray *constraints;
+@property (strong, nonatomic) HMDAccessorySettingContainer *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak) HMDAccessorySettingGroup *group; // @synthesize group=_group;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly) NSString *keyPath;
+@property (weak) HMDAccessorySetting *mediaSystemSetting; // @synthesize mediaSystemSetting=_mediaSystemSetting;
+@property (strong, nonatomic) HMFMessageDestination *messageDestination; // @synthesize messageDestination=_messageDestination;
 @property (strong, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly) HMDAccessorySettingModel *model;
 @property (readonly, copy) NSArray *models;
-@property (readonly, copy) NSString *name; // @synthesize name=_name;
+@property (readonly, copy) NSString *name;
 @property (readonly) unsigned long long properties; // @synthesize properties=_properties;
 @property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly) long long type;
-@property (copy) id value; // @synthesize value=_value;
+@property (strong, nonatomic) HMDAccessorySettingUpdateBase *updateSetting; // @synthesize updateSetting=_updateSetting;
+@property (readonly, copy) id value;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)supportedConstraintClasses;
 + (id)supportedValueClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)__init;
+- (void)_fixupAccessorySetting;
 - (void)_handleAddConstraint:(id)arg1;
 - (void)_handleRemoveConstraint:(id)arg1;
 - (void)_handleReplaceConstraints:(id)arg1;
 - (void)_handleUpdateValue:(id)arg1;
 - (void)_handleUpdatedConstraints:(id)arg1;
-- (void)_relayRequestMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_relayUpdateValue:(id)arg1 message:(id)arg2;
-- (BOOL)_shouldAcceptMessage:(id)arg1;
+- (void)_relayRequestMessage:(id)arg1 targetAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addConstraint:(id)arg1;
-- (void)configureWithAccessory:(id)arg1 messageDispatcher:(id)arg2;
+- (BOOL)compareConstraints:(id)arg1;
+- (void)configureWithContainer:(id)arg1 messageDispatcher:(id)arg2;
 - (id)constraintWithIdentifier:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)description:(id)arg1 indent:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fixupAccessorySetting;
+- (void)handleAddConstraint:(id)arg1;
+- (void)handleRemoveConstraint:(id)arg1;
+- (void)handleUpdateValue:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 - (id)logIdentifier;
-- (id)messageDestination;
+- (id)modelsForConstraintsUpdate:(id)arg1;
 - (void)registerForMessages;
-- (id)remoteMessageDestination;
+- (id)remoteMessageDestination:(id)arg1;
 - (void)removeConstraint:(id)arg1;
+- (void)sendReflectedNotification:(BOOL)arg1;
 - (void)setConstraints:(id)arg1;
+- (void)setValue:(id)arg1;
+- (void)settingUpdate:(id)arg1 didCompleteWithError:(id)arg2;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
+- (void)updateMediaSystemSettings:(id)arg1;
 - (id)valueUpdateNotificationWithMessage:(id)arg1;
 
 @end

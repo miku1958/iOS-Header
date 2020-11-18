@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     float mDetail;
     float mTension;
     float mAdaptiveThreshold;
-    vector_35283da1 mControlPts;
-    vector_b5bccc4d mSplineExclude;
+    vector_d73af98f mControlPts;
+    vector_afed86a5 mSplineExclude;
 }
 
 @property (nonatomic) float adaptiveThreshold; // @synthesize adaptiveThreshold=mAdaptiveThreshold;
@@ -24,11 +24,11 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)calcControlMatrix:(tmat4x4_3074befe *)arg1 pointNum:(long long)arg2;
-- (vector_35283da1 *)controlPts;
-- (void)generatePoints:(vector_35283da1 *)arg1;
+- (vector_d73af98f *)controlPts;
+- (void)generatePoints:(vector_d73af98f *)arg1;
 - (id)init;
 - (BOOL)isClosed;
-- (vector_b5bccc4d *)splineExclude;
+- (vector_afed86a5 *)splineExclude;
 
 @end
 

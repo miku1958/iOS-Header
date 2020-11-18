@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleSubscriptionListResponse:(id)arg1;
+- (id)_iconURLStringForService:(id)arg1;
 - (void)_loadSubscriptionServices;
 - (void)_serviceSpecifierWasTapped:(id)arg1;
 - (id)_sharedSubscriptionGroupSpecifier;

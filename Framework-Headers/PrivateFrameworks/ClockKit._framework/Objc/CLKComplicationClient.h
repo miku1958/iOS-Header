@@ -9,13 +9,14 @@
 #import <ClockKit/CLKComplicationDataSource-Protocol.h>
 #import <ClockKit/CLKComplicationServer-Protocol.h>
 
-@class NSHashTable, NSNumber, NSSet, NSString, NSXPCConnection;
+@class NSHashTable, NSLock, NSNumber, NSSet, NSString, NSXPCConnection;
 @protocol CLKComplicationClientDelegate;
 
 @interface CLKComplicationClient : NSObject <CLKComplicationServer, CLKComplicationDataSource>
 {
     NSXPCConnection *_connection;
     NSHashTable *_invalidationObservers;
+    NSLock *_invalidationObserversLock;
     BOOL _invalidated;
     NSString *_clientIdentifier;
     NSString *_clientBundlePath;

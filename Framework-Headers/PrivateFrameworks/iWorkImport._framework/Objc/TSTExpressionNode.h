@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateExpressionNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)exportString;
 - (unsigned long long)firstIndexOfSubtree;
+- (void)fixStorageLanguage:(id)arg1;
 - (BOOL)forceReferenceInterpretationOfChildren;
 - (id)formulaPlainText;
 - (BOOL)hasMenu;

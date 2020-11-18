@@ -25,7 +25,7 @@
 - (void)handleMessageWithPayload:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)resetConnection;
 - (void)sendMessageWithPayload:(id)arg1 andIdentifier:(unsigned long long)arg2;
-- (void)setupServerIfNecessary;
+- (id)setupServerIfNecessary;
 - (void)startServerWithDelegate:(id)arg1;
 - (void)terminateConnection;
 

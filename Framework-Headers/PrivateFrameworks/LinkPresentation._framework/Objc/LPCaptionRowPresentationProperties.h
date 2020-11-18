@@ -14,6 +14,7 @@
     LPCaptionPresentationProperties *_trailing;
 }
 
+@property (readonly, nonatomic) BOOL hasAnyContent;
 @property (readonly, strong, nonatomic) LPCaptionPresentationProperties *leading; // @synthesize leading=_leading;
 @property (readonly, strong, nonatomic) LPCaptionPresentationProperties *trailing; // @synthesize trailing=_trailing;
 

@@ -13,19 +13,18 @@
 @interface WebItemProviderPasteboard : NSObject <AbstractPasteboard>
 {
     struct RetainPtr<NSArray> _itemProviders;
-    struct RetainPtr<NSArray> _cachedTypeIdentifiers;
-    struct RetainPtr<NSArray> _typeToFileURLMaps;
     struct RetainPtr<NSArray> _supportedTypeIdentifiers;
-    struct RetainPtr<NSArray> _registrationInfoLists;
+    struct RetainPtr<WebItemProviderRegistrationInfoList> _stagedRegistrationInfoList;
+    struct Vector<WTF::RetainPtr<WebItemProviderLoadResult>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _loadResults;
     long long _numberOfItems;
     long long _changeCount;
     long long _pendingOperationCount;
 }
 
+@property (readonly, nonatomic) NSArray *allDroppedFileURLs;
 @property (nonatomic) long long changeCount; // @synthesize changeCount=_changeCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSArray *fileURLsForDataInteraction;
 @property (readonly, nonatomic) BOOL hasPendingOperation;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *itemProviders;
@@ -38,6 +37,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_preLoadedDataConformingToType:(id)arg1 forItemProviderAtIndex:(unsigned long long)arg2;
+- (id)dataForPasteboardType:(id)arg1;
 - (id)dataForPasteboardType:(id)arg1 inItemSet:(id)arg2;
 - (void)decrementPendingOperationCount;
 - (void)doAfterLoadingProvidedContentIntoFileURLs:(CDUnknownBlockType)arg1;
@@ -48,9 +48,10 @@
 - (id)itemProviderAtIndex:(unsigned long long)arg1;
 - (id)pasteboardTypes;
 - (id)pasteboardTypesByFidelityForItemAtIndex:(unsigned long long)arg1;
-- (id)registrationInfoAtIndex:(unsigned long long)arg1;
-- (void)setItemsUsingRegistrationInfoLists:(id)arg1;
-- (id)typeIdentifierToLoadForRegisteredTypeIdentfiers:(id)arg1;
+- (id)preferredFileUploadURLAtIndex:(unsigned long long)arg1 fileType:(id *)arg2;
+- (void)stageRegistrationList:(id)arg1;
+- (id)takeRegistrationList;
+- (id)typeIdentifiersToLoadForRegisteredTypeIdentfiers:(id)arg1;
 - (void)updateSupportedTypeIdentifiers:(id)arg1;
 - (id)valuesForPasteboardType:(id)arg1 inItemSet:(id)arg2;
 

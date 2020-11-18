@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
 
-@class NSString, TPBodyInfo, TPDocumentRoot, TSDInfoGeometry, TSPObject;
+@class NSArray, NSString, TPBodyInfo, TPDocumentRoot, TSDInfoGeometry, TSPObject;
 @protocol TPPageLayoutInfoProvider, TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) TPBodyInfo *bodyInfo; // @synthesize bodyInfo=_bodyInfo;
+@property (readonly, nonatomic) NSArray *childInfos;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) TPDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
@@ -38,8 +39,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
 @property (readonly) Class superclass;
 
++ (BOOL)hasBodyInfo;
++ (BOOL)isDocSetupPageIndex:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)childInfos;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;

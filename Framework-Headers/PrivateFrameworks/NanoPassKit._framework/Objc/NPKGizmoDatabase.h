@@ -34,8 +34,8 @@
     struct sqlite3_stmt *_selectPassUniqueIDAsssociateToTransactionWithServiceIdentifierStatement;
     struct sqlite3_stmt *_deleteTransactionsForPassStatement;
     struct sqlite3_stmt *_trimTransactionsForPassStatement;
-    struct sqlite3_stmt *_selectFelicaTransitAppletStateForPassStatement;
-    struct sqlite3_stmt *_updateFelicaTransitAppletStateForPassStatement;
+    struct sqlite3_stmt *_selectTransitAppletStateForPassStatement;
+    struct sqlite3_stmt *_updateTransitAppletStateForPassStatement;
     struct sqlite3_stmt *_insertEphemeralTransactionStatement;
     struct sqlite3_stmt *_deleteEphemeralTransactionByPassUniqueIDStatement;
     struct sqlite3_stmt *_currentEphemeralTransactionIdentifierStatement;
@@ -69,7 +69,6 @@
 @property (nonatomic) BOOL passDBIsAvailable; // @synthesize passDBIsAvailable=_passDBIsAvailable;
 @property (readonly) NSArray *passDescriptions;
 @property (readonly) struct sqlite3_stmt *selectCloudKitArchivedTransactionsStatement;
-@property (readonly) struct sqlite3_stmt *selectFelicaTransitAppletStateForPassStatement;
 @property (readonly) struct sqlite3_stmt *selectLastAddValueAmountForPassStatement;
 @property (readonly) struct sqlite3_stmt *selectPassAndImageSetsDataStatement; // @dynamic selectPassAndImageSetsDataStatement;
 @property (readonly) struct sqlite3_stmt *selectPassDataStatement; // @dynamic selectPassDataStatement;
@@ -78,12 +77,13 @@
 @property (readonly) struct sqlite3_stmt *selectPreferredAIDStatement;
 @property (readonly) struct sqlite3_stmt *selectTransactionWithIdentifierStatement;
 @property (readonly) struct sqlite3_stmt *selectTransactionWithServiceIdentifierStatement;
+@property (readonly) struct sqlite3_stmt *selectTransitAppletStateForPassStatement;
 @property (readonly) struct sqlite3_stmt *trimTransactionsForPassStatement;
 @property (readonly) struct sqlite3_stmt *updateDeletePendingStatement;
-@property (readonly) struct sqlite3_stmt *updateFelicaTransitAppletStateForPassStatement;
 @property (readonly) struct sqlite3_stmt *updateLastAddValueAmountForPassStatement;
 @property (readonly) struct sqlite3_stmt *updatePendingAddValueDateForPassStatement;
 @property (readonly) struct sqlite3_stmt *updatePreferredAIDStatement;
+@property (readonly) struct sqlite3_stmt *updateTransitAppletStateForPassStatement;
 
 + (id)_migrationDataSource;
 + (id)_migrationDelegateQueue;
@@ -101,7 +101,6 @@
 - (void)_enumerateAllPassesForMigration:(CDUnknownBlockType)arg1;
 - (BOOL)_executeSQL:(id)arg1;
 - (void)_executeSQLQuery:(id)arg1 processResultsBlock:(CDUnknownBlockType)arg2;
-- (id)_felicaTransitAppletStateForPassWithUniqueIDLocked:(id)arg1;
 - (BOOL)_getDeletePendingForUniqueID:(id)arg1;
 - (id)_getPreferredPaymentApplicationForPaymentPass:(id)arg1 aid:(id *)arg2;
 - (void)_handleDatabaseChangedExternally;
@@ -134,14 +133,15 @@
 - (void)_saveTransaction:(id)arg1 forPassWithUniqueID:(id)arg2 withPaymentCredentialType:(long long)arg3 shouldTrim:(BOOL)arg4;
 - (void)_saveTransactionLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_setCurrentEphemeralTransactionIdentifier:(id)arg1 forPassWithUniqueID:(id)arg2;
-- (void)_setFelicaTransitAppletStateLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_setLastAddValueAmountLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_setPendingAddValueDateLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
+- (void)_setTransitAppletStateLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (BOOL)_table:(id)arg1 containsColumn:(id)arg2;
 - (id)_transactionWithIdentifierLocked:(id)arg1;
 - (id)_transactionWithServiceIdentifierLocked:(id)arg1;
 - (id)_transactionsForUniqueIDLocked:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(unsigned long long)arg4;
 - (id)_transactionsWithCloudKitArchivedState:(BOOL)arg1;
+- (id)_transitAppletStateForPassWithUniqueIDLocked:(id)arg1;
 - (void)_trimTransactionsForPassWithUniqueIDLocked:(id)arg1 withPaymentCredentialType:(long long)arg2;
 - (BOOL)_updateAvailableActionsDuringMigration:(id)arg1;
 - (BOOL)_updateCompleteLocalHashesDuringMigration:(id)arg1;
@@ -169,7 +169,6 @@
 - (id)diffForUniqueID:(id)arg1;
 - (void)enumerateAllPassesAndDescriptionsWithBlock:(CDUnknownBlockType)arg1 includeImageSets:(BOOL)arg2;
 - (void)enumerateAllPassesWithBlock:(CDUnknownBlockType)arg1 includeImageSets:(BOOL)arg2;
-- (id)felicaTransitAppletStateForPassWithUniqueID:(id)arg1;
 - (id)filteredPassesUsingPassDescriptionPredicate:(id)arg1 includeImageSets:(BOOL)arg2;
 - (BOOL)hasPassesMatchingPassDescriptionPredicate:(id)arg1;
 - (id)init;
@@ -199,14 +198,15 @@
 - (struct sqlite3_stmt *)selectTransactionsStatementWithTransactionSource:(unsigned long long)arg1;
 - (void)setCurrentEphemeralTransactionIdentifier:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)setDeletePending:(BOOL)arg1 forUniqueID:(id)arg2;
-- (void)setFelicaTransitAppletState:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)setLastAddValueAmount:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)setPendingAddValueDate:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)setPreferredPaymentApplication:(id)arg1 forPaymentPass:(id)arg2;
+- (void)setTransitAppletState:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (id)transactionWithIdentifier:(id)arg1;
 - (id)transactionWithServiceIdentifier:(id)arg1;
 - (id)transactionsForPassWithUniqueID:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(unsigned long long)arg4;
 - (id)transactionsWithCloudKitArchivedState:(BOOL)arg1;
+- (id)transitAppletStateForPassWithUniqueID:(id)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID, SFBLEDevice, SFProximityEstimator;
+@class NSArray, NSString, NSUUID, SFBLEDevice;
 
 @interface SFDevice : NSObject <NSSecureCoding>
 {
@@ -18,12 +18,15 @@
     unsigned char _deviceClassCode;
     unsigned char _deviceModelCode;
     BOOL _hasProblem;
+    BOOL _needsAWDL;
     BOOL _needsKeyboard;
+    BOOL _needsNAN;
     BOOL _needsSetup;
     BOOL _wakeDevice;
     BOOL _watchLocked;
     unsigned char _osVersion;
     BOOL _paired;
+    unsigned int _deviceFlags;
     unsigned int _systemPairState;
     NSArray *_batteryInfo;
     SFBLEDevice *_bleDevice;
@@ -36,7 +39,6 @@
     NSString *_name;
     unsigned long long _problemFlags;
     NSString *_requestSSID;
-    SFProximityEstimator *_setupProximityEstimator;
 }
 
 @property (nonatomic) BOOL autoUnlockEnabled; // @synthesize autoUnlockEnabled=_autoUnlockEnabled;
@@ -46,6 +48,7 @@
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (readonly, nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;
 @property (nonatomic) unsigned char deviceClassCode; // @synthesize deviceClassCode=_deviceClassCode;
+@property (nonatomic) unsigned int deviceFlags; // @synthesize deviceFlags=_deviceFlags;
 @property (readonly, nonatomic) unsigned char deviceModelCode; // @synthesize deviceModelCode=_deviceModelCode;
 @property (readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property (nonatomic) long long distance; // @synthesize distance=_distance;
@@ -54,13 +57,14 @@
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) BOOL needsAWDL; // @synthesize needsAWDL=_needsAWDL;
 @property (readonly, nonatomic) BOOL needsKeyboard; // @synthesize needsKeyboard=_needsKeyboard;
+@property (readonly, nonatomic) BOOL needsNAN; // @synthesize needsNAN=_needsNAN;
 @property (nonatomic) BOOL needsSetup; // @synthesize needsSetup=_needsSetup;
 @property (nonatomic) unsigned char osVersion; // @synthesize osVersion=_osVersion;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
 @property (readonly, nonatomic) unsigned long long problemFlags; // @synthesize problemFlags=_problemFlags;
 @property (copy, nonatomic) NSString *requestSSID; // @synthesize requestSSID=_requestSSID;
-@property (strong, nonatomic) SFProximityEstimator *setupProximityEstimator; // @synthesize setupProximityEstimator=_setupProximityEstimator;
 @property (nonatomic) unsigned int systemPairState; // @synthesize systemPairState=_systemPairState;
 @property (nonatomic) BOOL wakeDevice; // @synthesize wakeDevice=_wakeDevice;
 @property (nonatomic) BOOL watchLocked; // @synthesize watchLocked=_watchLocked;

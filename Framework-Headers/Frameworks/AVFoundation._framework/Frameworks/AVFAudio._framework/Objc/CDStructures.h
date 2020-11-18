@@ -237,8 +237,9 @@ struct AVAudioSessionImpl {
     unsigned int _field17;
     unsigned int _field18;
     unsigned int _field19;
-    int _field20;
-    unsigned long long _field21;
+    BOOL _field20;
+    struct SessionConnector _field21;
+    unsigned long long _field22;
 };
 
 struct AVAudioUnitComponentManagerImpl {
@@ -396,6 +397,11 @@ struct ChannelDescriptionImpl {
     id _field2;
     unsigned int _field3;
     unsigned int _field4;
+};
+
+struct ConnectionResult {
+    int _field1;
+    unsigned int _field2;
 };
 
 struct ControllerImpl {
@@ -673,6 +679,10 @@ struct SMPTETime {
     short mFrames;
 };
 
+struct SessionConnector {
+    struct shared_ptr<std::__1::function<void (avfaudio::SessionConnector::ConnectionResult)>> _field1;
+};
+
 struct TEMP_AudioQueueChannelAssignment;
 
 struct ZeroRunLog {
@@ -755,6 +765,8 @@ struct basic_ostream<char, std::__1::char_traits<char>>;
 
 struct codecvt<char, char, __mbstate_t>;
 
+struct function<void (avfaudio::SessionConnector::ConnectionResult)>;
+
 struct locale {
     struct __imp *_field1;
 };
@@ -796,6 +808,11 @@ struct map<AVVoiceAlertType, NSURL *, std::__1::less<AVVoiceAlertType>, std::__1
 };
 
 struct map<std::__1::pair<AVAudioNode *, unsigned int>, AVAudioMixingDestination *, std::__1::less<std::__1::pair<AVAudioNode *, unsigned int>>, std::__1::allocator<std::__1::pair<const std::__1::pair<AVAudioNode *, unsigned int>, AVAudioMixingDestination *>>>;
+
+struct shared_ptr<std::__1::function<void (avfaudio::SessionConnector::ConnectionResult)>> {
+    struct function<void (avfaudio::SessionConnector::ConnectionResult)> *_field1;
+    struct __shared_weak_count *_field2;
+};
 
 struct unique_ptr<AUInterfaceBaseV3, std::__1::default_delete<AUInterfaceBaseV3>> {
     struct __compressed_pair<AUInterfaceBaseV3 *, std::__1::default_delete<AUInterfaceBaseV3>> {

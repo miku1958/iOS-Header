@@ -86,6 +86,7 @@
 - (void)_beginSwiping;
 - (id)_checkmarkImage:(BOOL)arg1;
 - (void)_didRemoveSubview:(id)arg1;
+- (BOOL)_hasTrailingSwipeActions;
 - (id)_privateAccessibilityCustomActions;
 - (void)_setAccessibilityMockParent:(id)arg1;
 - (void)_setShowingDeleteConfirmation:(BOOL)arg1;

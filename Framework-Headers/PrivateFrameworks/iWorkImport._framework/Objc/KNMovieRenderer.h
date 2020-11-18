@@ -6,46 +6,46 @@
 
 #import <iWorkImport/KNBuildRenderer.h>
 
+#import <iWorkImport/KNAmbientBuildRenderer-Protocol.h>
 #import <iWorkImport/TSKMediaPlayerControllerDelegate-Protocol.h>
 
-@class CALayer, NSObject, NSString;
-@protocol NSCopying, TSDMovieHUDViewController, TSKMediaPlayerController;
+@class CALayer, NSObject, NSString, TSUWeakReference;
+@protocol NSCopying, TSKLayerMediaPlayerController, TSKMediaPlayerController;
 
 __attribute__((visibility("hidden")))
-@interface KNMovieRenderer : KNBuildRenderer <TSKMediaPlayerControllerDelegate>
+@interface KNMovieRenderer : KNBuildRenderer <TSKMediaPlayerControllerDelegate, KNAmbientBuildRenderer>
 {
-    NSObject<TSKMediaPlayerController> *mPlayerController;
-    CALayer *mVideoLayer;
-    double mStartTime;
-    double mPlaybackAtStartTimePauseTime;
-    double mPlaybackAtStartTimePauseOffset;
-    KNBuildRenderer *mBuildInRenderer;
-    struct CGRect mFrameInContainerView;
-    id mMovieStartCallbackTarget;
-    SEL mMovieStartCallbackSelector;
-    unsigned int mHasMoviePlaybackStarted:1;
-    unsigned int mNeedsToSendMovieStartCallback:1;
-    unsigned int mNeedsToSendBuildEndCallback:1;
-    unsigned int mIsObservingVideoLayerReadyForDisplay:1;
-    unsigned int mNeedsPlaybackAtStartTime:1;
-    unsigned int mHasPendingTogglePlayingControl:1;
-    unsigned int mPendingTogglePlayingControlStartsPlaying:1;
-    unsigned int mShouldMoviePlaybackEndOnCompletion:1;
-    unsigned int mWasMoviePlayingBeforeAnimationPause:1;
-    unsigned int mIsTeardownCompletionBlockPending:1;
-    id<TSDMovieHUDViewController> _viewController;
+    NSObject<TSKLayerMediaPlayerController> *_playerController;
+    CALayer *_videoLayer;
+    double _startTime;
+    double _playbackAtStartTimePauseTime;
+    double _playbackAtStartTimePauseOffset;
+    TSUWeakReference *_buildInRendererReference;
+    struct CGRect _frameInContainerView;
+    id _movieStartCallbackTarget;
+    SEL _movieStartCallbackSelector;
+    unsigned int _hasMoviePlaybackStarted:1;
+    unsigned int _needsToSendMovieStartCallback:1;
+    unsigned int _needsToSendBuildEndCallback:1;
+    unsigned int _isObservingVideoLayerReadyForDisplay:1;
+    unsigned int _needsPlaybackAtStartTime:1;
+    unsigned int _hasPendingTogglePlayingControl:1;
+    unsigned int _pendingTogglePlayingControlStartsPlaying:1;
+    unsigned int _shouldMoviePlaybackEndOnCompletion:1;
+    unsigned int _wasMoviePlayingBeforeAnimationPause:1;
+    unsigned int _isTeardownCompletionBlockPending:1;
 }
 
-@property (nonatomic) KNBuildRenderer *buildInRenderer; // @synthesize buildInRenderer=mBuildInRenderer;
+@property (weak, nonatomic) KNBuildRenderer *buildInRenderer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasMoviePlaybackStarted;
+@property (readonly, nonatomic) BOOL hasAmbientBuildStarted;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<NSCopying> *movieTimelineMovieIdentifier;
 @property (readonly, nonatomic) CALayer *offscreenVideoLayer;
-@property (readonly, nonatomic) NSObject<TSKMediaPlayerController> *playerController; // @synthesize playerController=mPlayerController;
+@property (readonly, nonatomic) NSObject<TSKMediaPlayerController> *playerController; // @synthesize playerController=_playerController;
+@property (readonly, nonatomic) BOOL shouldActionBuildsStopAnimations;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) id<TSDMovieHUDViewController> viewController; // @synthesize viewController=_viewController;
 
 + (id)movieInfoForMovieTimelineMovieIdentifier:(id)arg1;
 + (id)movieTimelineMovieIdentifierForMovieInfo:(id)arg1;
@@ -77,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)pauseAnimationsAtTime:(double)arg1;
 - (void)playbackDidStopForPlayerController:(id)arg1;
 - (void)playerController:(id)arg1 playbackDidFailWithError:(id)arg2;
-- (void)registerForMovieStartCallback:(SEL)arg1 target:(id)arg2;
+- (void)registerForAmbientBuildStartCallback:(SEL)arg1 target:(id)arg2;
 - (void)removeAnimationsAndFinish:(BOOL)arg1;
 - (void)resumeAnimationsIfPaused;
 - (void)resumeAnimationsIfPausedAtTime:(double)arg1;

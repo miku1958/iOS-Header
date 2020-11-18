@@ -32,14 +32,14 @@
 - (BOOL)addLinkLayerPortOnInterfaceNamed:(id)arg1 error:(id *)arg2;
 - (BOOL)addUDPv4EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)addUDPv4PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
-- (BOOL)addUDPv6EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
-- (BOOL)addUDPv6PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
-- (BOOL)addUnicastLinkLayerEtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
-- (BOOL)addUnicastLinkLayerPtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)addUDPv6EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
+- (BOOL)addUDPv6PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
+- (BOOL)addUnicastLinkLayerEtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
+- (BOOL)addUnicastLinkLayerPtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
 - (BOOL)addUnicastUDPv4EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)addUnicastUDPv4PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
-- (BOOL)addUnicastUDPv6EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
-- (BOOL)addUnicastUDPv6PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)addUnicastUDPv6EtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
+- (BOOL)addUnicastUDPv6PtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
 - (id)clockName;
 - (unsigned long long)convertFrom128BitgPTPTimeToMachAbsoluteTime:(CDStruct_4bcfbbae)arg1 grandmasterUsed:(unsigned long long *)arg2;
 - (BOOL)convertFrom32BitASTime:(unsigned int *)arg1 toMachAbsoluteTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
@@ -56,14 +56,14 @@
 - (BOOL)removeLinkLayerPortFromInterfaceNamed:(id)arg1 error:(id *)arg2;
 - (BOOL)removeUDPv4EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)removeUDPv4PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
-- (BOOL)removeUDPv6EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
-- (BOOL)removeUDPv6PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
-- (BOOL)removeUnicastLinkLayerEtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
-- (BOOL)removeUnicastLinkLayerPtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)removeUDPv6EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
+- (BOOL)removeUDPv6PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastLinkLayerEtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastLinkLayerPtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
 - (BOOL)removeUnicastUDPv4EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)removeUnicastUDPv4PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;
-- (BOOL)removeUnicastUDPv6EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
-- (BOOL)removeUnicastUDPv6PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(char *)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastUDPv6EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
+- (BOOL)removeUnicastUDPv6PtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
 
 @end
 

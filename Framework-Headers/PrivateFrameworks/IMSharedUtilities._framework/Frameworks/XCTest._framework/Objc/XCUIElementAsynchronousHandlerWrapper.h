@@ -19,7 +19,7 @@
 @property (copy) NSString *handlerDescription; // @synthesize handlerDescription=_handlerDescription;
 @property (copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

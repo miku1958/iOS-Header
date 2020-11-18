@@ -9,6 +9,8 @@
 @interface NSError (HFAdditions)
 
 @property (readonly, nonatomic) BOOL hf_isHomeKitNamingError;
+@property (readonly, nonatomic) BOOL hf_isHomeKitUnreachableError;
 
++ (id)hf_synthesizedUnreachableHomeKitAccessoryErrorWithUserInfo:(id)arg1;
 @end
 

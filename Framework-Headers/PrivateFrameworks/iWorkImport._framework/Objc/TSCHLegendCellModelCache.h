@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) TSDStroke *symbolStroke; // @synthesize symbolStroke=mSymbolStroke;
 @property (readonly) int symbolType; // @synthesize symbolType=mSymbolType;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithChartModel:(id)arg1 cellType:(int)arg2 seriesIndex:(unsigned long long)arg3 withMetrics:(id)arg4 overrideLabel:(id)arg5;
 

@@ -161,6 +161,7 @@
 - (void)requestGraphReadyNotificationWithCoalescingIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestGraphRebuildProgressWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestGraphRebuildWithProgress:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestHighlightEstimatesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestPermissionToDownloadFaceResourcesOfCount:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestTotalProgressCountsForWorkerType:(short)arg1 states:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestTotalProgressCountsWithCompletion:(CDUnknownBlockType)arg1;

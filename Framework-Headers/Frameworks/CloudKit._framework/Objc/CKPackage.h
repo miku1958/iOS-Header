@@ -78,7 +78,7 @@
 + (id)packageWithPackage:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)CKPropertiesDescription;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)_initWithBasePath:(id)arg1 UUID:(id)arg2;
 - (id)_itemOrNilAtIndex:(unsigned long long)arg1;
 - (id)_itemWithColumnsByName:(id)arg1;

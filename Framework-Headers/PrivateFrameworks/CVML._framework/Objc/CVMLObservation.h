@@ -6,15 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-#import <CVML/NSCoding-Protocol.h>
+#import <CVML/NSSecureCoding-Protocol.h>
 
-@interface CVMLObservation : NSObject <NSCoding>
+@interface CVMLObservation : NSObject <NSSecureCoding>
 {
     float _confidence;
 }
 
 @property float confidence; // @synthesize confidence=_confidence;
 
++ (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

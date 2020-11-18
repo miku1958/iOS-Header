@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     BOOL _deserializeAsPasteboard;
     BOOL _resetObjectUUIDs;
     BOOL _shouldDecodeMissingDataAsRemote;
+    BOOL _isCrossDocumentPaste;
+    BOOL _isCrossAppPaste;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,8 +31,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long fileFormatVersion;
 @property (readonly, nonatomic) BOOL hasDocumentVersionUUID;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isCrossAppPaste;
-@property (readonly, nonatomic) BOOL isCrossDocumentPaste;
+@property (nonatomic) BOOL isCrossAppPaste; // @synthesize isCrossAppPaste=_isCrossAppPaste;
+@property (nonatomic) BOOL isCrossDocumentPaste; // @synthesize isCrossDocumentPaste=_isCrossDocumentPaste;
 @property (readonly, nonatomic) long long sourceType;
 @property (readonly) Class superclass;
 

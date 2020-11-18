@@ -6,17 +6,17 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PKFelicaTransitAppletState, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext;
+@class NSArray, NSDictionary, NSString, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitAppletState;
 
 @protocol NPKPaymentWebServiceCompanionTargetDeviceDelegate <NSObject>
 - (void)archiveWebServiceBackgroundContext:(PKPaymentWebServiceBackgroundContext *)arg1;
 - (void)archiveWebServiceContext:(PKPaymentWebServiceContext *)arg1;
 - (void)checkCompanionPeerPaymentRegistrationState;
-- (void)handleAppletState:(PKFelicaTransitAppletState *)arg1 forUniqueID:(NSString *)arg2;
+- (void)handleAppletState:(PKTransitAppletState *)arg1 forUniqueID:(NSString *)arg2;
 - (void)handleDownloadAllPaymentPasses;
 - (void)handlePaymentTransactions:(NSArray *)arg1 appletStates:(NSDictionary *)arg2 forUniqueIDs:(NSArray *)arg3;
 - (void)handlePaymentWebServiceContextFromWatch:(PKPaymentWebServiceContext *)arg1;
-- (void)handlePreconditionNotMetWithUniqueIDs:(NSArray *)arg1 shouldUnregister:(BOOL)arg2;
+- (void)handlePreconditionNotMetWithUniqueIDs:(NSArray *)arg1 preconditionDescription:(NSString *)arg2 shouldUnregister:(BOOL)arg3;
 - (void)handlePreferredAID:(NSString *)arg1 forPassWithUniqueID:(NSString *)arg2;
 - (void)handlePushToken:(NSString *)arg1;
 - (void)handleRemoveTransactionsWithIdentifiers:(NSArray *)arg1;

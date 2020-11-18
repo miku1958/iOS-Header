@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSDictionary *rawPlist; // @dynamic rawPlist;
 @property (strong, nonatomic) NSNumber *schemaVersion; // @dynamic schemaVersion;
 
++ (id)allowedTypes;
 + (id)metadataModelObjectUUID;
 + (id)modelWithDictionary:(id)arg1;
 + (id)properties;

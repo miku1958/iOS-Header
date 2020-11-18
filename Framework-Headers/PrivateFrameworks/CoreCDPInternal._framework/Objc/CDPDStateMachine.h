@@ -46,6 +46,7 @@
 - (void)_handleiCDPStatusCheckError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performInteractivelyAuthenticatedRepair:(CDUnknownBlockType)arg1;
 - (id)_predicateForRecordUpgradeCheck;
+- (id)_predicateForRecordUpgradeCheckIgnoringBottled;
 - (void)_preflightAccountStateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithHasPeersForRemoteApproval:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

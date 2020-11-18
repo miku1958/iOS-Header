@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) int leadingCellPromotionPolicy;
 @property (readonly, nonatomic) unsigned long long maximumStoriesAllocation;
 @property (readonly, nonatomic) unsigned long long minimumStoriesAllocation;
+@property (readonly, nonatomic) BOOL openVideoPlaylistInApp;
 @property (readonly, copy, nonatomic) NSString *personalizationFeatureID;
 @property (readonly, nonatomic) int readArticlesFilterMethod;
 @property (readonly, copy, nonatomic) NSString *referralBarName;

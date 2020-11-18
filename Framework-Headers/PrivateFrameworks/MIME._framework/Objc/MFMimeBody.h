@@ -23,6 +23,7 @@
 @property (readonly, copy, nonatomic) NSString *mimeSubtype;
 @property (readonly, copy, nonatomic) NSString *mimeType;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) MFMimePart *topLevelPart;
 @property (readonly, nonatomic) unsigned long long totalTextSize;
 
 + (id)copyNewMimeBoundary;
@@ -41,9 +42,7 @@
 - (long long)preferredAlternative;
 - (id)preferredBodyPart;
 - (void)setPreferredAlternative:(long long)arg1;
-- (void)setTopLevelPart:(id)arg1;
 - (id)textHtmlPart;
-- (id)topLevelPart;
 
 @end
 

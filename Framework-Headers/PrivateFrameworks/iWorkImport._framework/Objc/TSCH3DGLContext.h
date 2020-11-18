@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (struct GLSingleState *)bufferArraysStates;
 - (struct BufferStates *)bufferStates;
 - (id)capabilitiesForExtensions:(id)arg1;
+- (BOOL)clearIfBoundAsCurrentContext;
 - (void)clearParent;
 - (void)dealloc;
 - (id)description;

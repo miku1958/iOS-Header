@@ -10,7 +10,7 @@
 #import <HealthDaemon/HDHealthDaemon-Protocol.h>
 #import <HealthDaemon/HDXPCListenerDelegate-Protocol.h>
 
-@class HDAchievementAssetManager, HDAchievementDefinitionAlertManager, HDAchievementDoctorManager, HDAppLauncher, HDBackgroundTaskScheduler, HDCloudSyncCoordinator, HDCoachingDiagnosticManager, HDCompanionAchievementManager, HDCompanionWorkoutCreditManager, HDContentProtectionManager, HDDemoDataGenerator, HDDynamicAchievementDefinitionDataStore, HDFitnessAppBadgeManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfileManager, HDQueryManager, HDXPCListener, NSMutableArray, NSMutableSet, NSString, NSURL, _HKBehavior;
+@class HDAchievementAssetManager, HDAchievementDefinitionAlertManager, HDAnalyticsSubmissionCoordinator, HDAppLauncher, HDBackgroundTaskScheduler, HDCloudSyncCoordinator, HDCoachingDiagnosticManager, HDCompanionAchievementManager, HDCompanionWorkoutCreditManager, HDContentProtectionManager, HDDemoDataGenerator, HDDynamicAchievementDefinitionDataStore, HDFitnessAppBadgeManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfileManager, HDQueryManager, HDXPCListener, NSDictionary, NSMutableArray, NSMutableSet, NSString, NSURL, _HKBehavior;
 @protocol HDAchievementDefinitionAlertNotifier, HDAchievementDefinitionAlertSuppressor, HDAchievementEvaluationDelegate, HDDaemonTester, HDNanoAlertSuppressionService, OS_dispatch_queue;
 
 @interface HDDaemon : NSObject <HDDiagnosticObject, HDXPCListenerDelegate, HDHealthDaemon>
@@ -36,8 +36,9 @@
     NSMutableArray *_daemonLaunchObservers;
     BOOL _daemonReady;
     int _didStart;
+    NSDictionary *_daemonExtensionsByIdentifier;
     NSString *_medicalIDDirectoryPath;
-    HDAchievementDoctorManager *_achievementDoctorManager;
+    HDAnalyticsSubmissionCoordinator *_analyticsSubmissionCoordinator;
     HDAchievementAssetManager *_achievementAssetManager;
     HDCompanionAchievementManager *_companionAchievementManager;
     id<HDNanoAlertSuppressionService> _alertSuppressionService;
@@ -54,9 +55,9 @@
 
 @property (strong, nonatomic) HDAchievementAssetManager *achievementAssetManager; // @synthesize achievementAssetManager=_achievementAssetManager;
 @property (strong, nonatomic) HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager; // @synthesize achievementDefinitionAlertManager=_achievementDefinitionAlertManager;
-@property (strong, nonatomic) HDAchievementDoctorManager *achievementDoctorManager; // @synthesize achievementDoctorManager=_achievementDoctorManager;
 @property (weak, nonatomic) id<HDAchievementEvaluationDelegate> achievementEvaluationDelegate; // @synthesize achievementEvaluationDelegate=_achievementEvaluationDelegate;
 @property (strong, nonatomic) id<HDNanoAlertSuppressionService> alertSuppressionService; // @synthesize alertSuppressionService=_alertSuppressionService;
+@property (strong, nonatomic) HDAnalyticsSubmissionCoordinator *analyticsSubmissionCoordinator; // @synthesize analyticsSubmissionCoordinator=_analyticsSubmissionCoordinator;
 @property (readonly, nonatomic) HDAppLauncher *appLauncher; // @synthesize appLauncher=_appLauncher;
 @property (readonly) HDBackgroundTaskScheduler *backgroundTaskScheduler;
 @property (readonly) _HKBehavior *behavior;
@@ -88,6 +89,7 @@
 - (void)_handleSigterm;
 - (void)_localeOrLanguageChanged:(id)arg1;
 - (BOOL)_motionTrackingAvailable;
+- (id)_newAnalyticsSubmissionCoordinator;
 - (id)_newBackgroundTaskScheduler;
 - (id)_newBehavior;
 - (id)_newCloudSyncCoordinator;
@@ -115,6 +117,8 @@
 - (void)_unregisterLaunchEventDynamicallyForNotification:(const char *)arg1;
 - (void)_updateCurrentDeviceName;
 - (id)createXPCListenerWithMachServiceName:(id)arg1;
+- (id)daemonExtensionWithIdentifier:(id)arg1;
+- (id)daemonExtensionsConformingToProtocol:(id)arg1;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (void)exitClean:(BOOL)arg1 reason:(id)arg2;

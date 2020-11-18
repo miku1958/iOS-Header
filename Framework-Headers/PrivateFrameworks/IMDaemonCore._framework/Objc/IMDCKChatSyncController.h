@@ -11,6 +11,7 @@
 
 @interface IMDCKChatSyncController : IMDCKAbstractSyncController
 {
+    BOOL _fetchedChatsDuringLastSync;
     CKServerChangeToken *_latestSyncToken;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDChatRegistry *_chatRegistry;
@@ -18,21 +19,28 @@
     id<IMDCKSyncTokenStore> _syncTokenStore;
     IMDCKChatSyncCKOperationFactory *_CKOperationFactory;
     CKRecord *_lockRecord;
+    CKRecord *_manateeLockRecord;
+    CKRecord *_stingRayLockRecord;
 }
 
 @property (strong, nonatomic) IMDCKChatSyncCKOperationFactory *CKOperationFactory; // @synthesize CKOperationFactory=_CKOperationFactory;
 @property (strong, nonatomic) IMDChatRegistry *chatRegistry; // @synthesize chatRegistry=_chatRegistry;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
+@property (nonatomic) BOOL fetchedChatsDuringLastSync; // @synthesize fetchedChatsDuringLastSync=_fetchedChatsDuringLastSync;
 @property (strong, nonatomic) CKServerChangeToken *latestSyncToken; // @synthesize latestSyncToken=_latestSyncToken;
 @property (strong, nonatomic) CKRecord *lockRecord; // @synthesize lockRecord=_lockRecord;
+@property (strong, nonatomic) CKRecord *manateeLockRecord; // @synthesize manateeLockRecord=_manateeLockRecord;
 @property (strong, nonatomic) IMDRecordZoneManager *recordZoneManager; // @synthesize recordZoneManager=_recordZoneManager;
+@property (strong, nonatomic) CKRecord *stingRayLockRecord; // @synthesize stingRayLockRecord=_stingRayLockRecord;
 @property (strong, nonatomic) id<IMDCKSyncTokenStore> syncTokenStore; // @synthesize syncTokenStore=_syncTokenStore;
 
 + (id)sharedInstance;
-- (id)_CKUtilitiesSharedInstance;
 - (void)__syncChatsWithCloudKit:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_anyChatExistsOnServerWithResultsLimit:(int)arg1 changeToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_changeTokenKey;
 - (BOOL)_chatZoneCreated;
 - (id)_chatZoneID;
+- (void)_clearStingRaySyncToken;
 - (id)_copyChatsToUploadWithLimit:(unsigned long long)arg1;
 - (id)_copyRecordIDsToDelete;
 - (BOOL)_eligibleForTruthZone;
@@ -44,11 +52,12 @@
 - (void)_markChatAsDefferedForSyncingUsingRecord:(id)arg1;
 - (void)_migrateServerChangeToken;
 - (id)_newckRecordsFromChats:(id)arg1;
+- (unsigned long long)_numberOfChatsToFetch;
 - (unsigned long long)_numberOfChatsToWrite;
-- (void)_processFetchRecordChangesCompleted:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_processModifyPerRecordCallBack:(id)arg1 error:(id)arg2;
+- (void)_processFetchRecordChangesCompleted:(id)arg1 completion:(CDUnknownBlockType)arg2 isUsingStingRay:(BOOL)arg3;
+- (void)_processModifyPerRecordCallBack:(id)arg1 error:(id)arg2 isUsingStingRay:(BOOL)arg3;
 - (void)_processModifyRecordCompletion:(id)arg1 deletedRecordIDs:(id)arg2 error:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)_processRecordChanged:(id)arg1;
+- (void)_processRecordChanged:(id)arg1 isUsingStingRay:(BOOL)arg2;
 - (void)_processRecordDeletion:(id)arg1;
 - (void)_processRecordZoneChangeTokenUpdated:(id)arg1 zoneID:(id)arg2 clienChangeToken:(id)arg3;
 - (void)_processRecordZoneFetchCompletion:(id)arg1 zoneID:(id)arg2 clientChangeTokenData:(id)arg3 moreComing:(BOOL)arg4 error:(id)arg5;
@@ -62,8 +71,8 @@
 - (void)_syncChatsWithCloudKitWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateAllChatsAsNotNeedingReUpload;
 - (void)_updateChatUsingCKRecord:(id)arg1;
-- (void)_writeCKRecordsToChatZone:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_writeDirtyChatsToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_writeCKRecordsToChatZone:(id)arg1 isUsingStingRay:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_writeDirtyChatsToCloudKitWithCompletion:(CDUnknownBlockType)arg1 isUsingStingRay:(BOOL)arg2;
 - (void)anyChatExistsOnServerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearLocalSyncState;
 - (void)dealloc;
@@ -71,8 +80,11 @@
 - (void)deleteChatZone;
 - (id)init;
 - (id)initWithSyncTokenStore:(id)arg1;
+- (id)lockRecordForStingRay:(BOOL)arg1;
+- (void)setLockRecord:(id)arg1 isUsingStingRay:(BOOL)arg2;
 - (void)syncChatsWithCloudKit:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)syncChatsWithCloudKitWithCompletion:(CDUnknownBlockType)arg1;
+- (long long)syncControllerRecordType;
 - (void)syncPendingDeletionWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

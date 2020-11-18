@@ -32,6 +32,7 @@
 + (id)sharedInstance;
 - (double)IOBufferDuration;
 - (unsigned long long)IOBufferFrameSize;
+- (id)activeSessionDisplayIDs;
 - (BOOL)allowAllBuiltInDataSources;
 - (id)audioClockDevice;
 - (long long)audioFormat;
@@ -95,8 +96,8 @@
 - (void)privateHandlePickableRoutesChange;
 - (void)privateHandleRoutingContextChange;
 - (void)privateHandleSecondaryAudioHintChange:(id)arg1;
+- (void)privateHandleServerConnectionCompletion:(struct ConnectionResult)arg1;
 - (void)privateHandleServerDied;
-- (void)privateHandleServerReturned;
 - (void)privateInputIsAvailableChanged:(id)arg1;
 - (void)privateInterruptionWithInfo:(id)arg1;
 - (void)privateMarkKVOPropertiesDirty:(unsigned long long)arg1;

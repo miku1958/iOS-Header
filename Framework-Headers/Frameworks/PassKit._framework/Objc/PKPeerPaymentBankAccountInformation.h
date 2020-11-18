@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (id)_bankAccountInformationInKeychain;
 - (void)_deleteBankAccountKeychainData;
+- (id)_wrapperWithType:(unsigned long long)arg1;
 - (void)_writeBankAccountInformationToKeychain;
 - (void)deleteAllBankInformation;
 - (id)description;

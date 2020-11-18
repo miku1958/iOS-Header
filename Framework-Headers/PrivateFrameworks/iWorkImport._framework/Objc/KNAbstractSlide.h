@@ -22,12 +22,10 @@
 __attribute__((visibility("hidden")))
 @interface KNAbstractSlide : TSPObject <TSSPropertySource, TSKDocumentObject, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSKTransformableObject, TSSStyleClient, TSDReplaceableMediaContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer>
 {
-    KNSlideNode *_slideNode;
     KNSlideStyle *_style;
     KNSlideBackgroundInfo *_background;
     NSOrderedSet *_childInfos;
     BOOL _inDocument;
-    NSDictionary *_placeholdersForTags;
     NSSet *_builds;
     NSArray *_buildChunks;
     BOOL _needsSlideNodeEventCountUpdate;
@@ -39,6 +37,8 @@ __attribute__((visibility("hidden")))
     KNBodyPlaceholderInfo *_bodyPlaceholder;
     KNObjectPlaceholderInfo *_objectPlaceholder;
     KNSlideNumberPlaceholderInfo *_slideNumberPlaceholder;
+    KNSlideNode *_slideNode;
+    struct NSDictionary *_placeholdersForTags;
 }
 
 @property (readonly, nonatomic) NSArray *activeBuildChunks;
@@ -53,6 +53,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long buildCount;
 @property (copy, nonatomic) NSSet *builds;
 @property (readonly, nonatomic) NSArray *buildsGroupedByDeliveryGroup;
+@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, nonatomic) NSArray *containedModels;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned long long deliveryGroupCount;
 @property (readonly, copy) NSString *description;
@@ -74,7 +76,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
 @property (copy, nonatomic) NSDictionary *placeholdersForTags; // @synthesize placeholdersForTags=_placeholdersForTags;
-@property (readonly, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
+@property (readonly, weak, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
 @property (strong, nonatomic) KNSlideNumberPlaceholderInfo *slideNumberPlaceholder; // @synthesize slideNumberPlaceholder=_slideNumberPlaceholder;
 @property (readonly, nonatomic, getter=isSlideNumberVisible) BOOL slideNumberVisible;
 @property (strong, nonatomic) KNSlideStyle *style; // @synthesize style=_style;
@@ -100,7 +102,9 @@ __attribute__((visibility("hidden")))
 - (void)addDrawable:(id)arg1 dolcContext:(id)arg2;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)areBuildChunksInValidOrderIgnoringInactiveChunks:(id)arg1;
+- (id)availableEventTriggersForBuildChunks:(id)arg1;
 - (id)boxedObjectForProperty:(int)arg1;
+- (id)buildChunksForActiveBuildChunkIndexes:(id)arg1;
 - (id)buildChunksInDeliveryGroupAtIndex:(unsigned long long)arg1;
 - (id)buildsForDrawable:(id)arg1;
 - (id)buildsForDrawable:(id)arg1 type:(long long)arg2;
@@ -108,11 +112,12 @@ __attribute__((visibility("hidden")))
 - (long long)canMoveBuildChunk:(id)arg1 toIndex:(unsigned long long)arg2;
 - (BOOL)canMoveDeliveryGroupFromIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (BOOL)canMoveDrawables:(id)arg1 toIndexes:(id)arg2;
+- (BOOL)canSetChunksToAutomaticWith:(id)arg1;
 - (id)childEnumerator;
-- (id)childInfos;
 - (id)chunksForDrawable:(id)arg1 animationType:(long long)arg2;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (BOOL)containsProperty:(int)arg1;
+- (id)contentBuildForDrawable:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (id)defaultBodyPlaceholder;
 - (id)defaultBodyPlaceholderWithContext:(id)arg1;
@@ -145,6 +150,7 @@ __attribute__((visibility("hidden")))
 - (void)insertChildInfo:(id)arg1 above:(id)arg2;
 - (void)insertChildInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertChildInfo:(id)arg1 below:(id)arg2;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertDrawable:(id)arg1 atIndex:(unsigned long long)arg2 dolcContext:(id)arg3;
 - (void)insertDrawables:(id)arg1 atIndex:(unsigned long long)arg2 dolcContext:(id)arg3;
 - (int)intValueForProperty:(int)arg1;
@@ -153,6 +159,7 @@ __attribute__((visibility("hidden")))
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct SlideArchive *)arg1 unarchiver:(id)arg2;
 - (void)moveChildren:(id)arg1 toIndexes:(id)arg2;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
 - (id)objectForProperty:(int)arg1;
 - (id)objectUUIDPath;
 - (id)outBuildForDrawable:(id)arg1;
@@ -166,6 +173,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)p_canMoveDeliveryGroupBuildChunks:(id)arg1 toIndex:(unsigned long long)arg2;
 - (BOOL)p_canMoveDeliveryGroupBuildChunksFromIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)p_checkChildInfosForDuplicates:(id)arg1;
+- (id)p_chunksWhichWillPlayWithChunksToSetToWith:(id)arg1;
 - (id)p_complementForBuild:(id)arg1;
 - (id)p_firstActiveChunkInChunksForBuild:(id)arg1;
 - (void)p_insertChildInfos:(id)arg1 atIndex:(unsigned long long)arg2 dolcContext:(id)arg3;
@@ -176,13 +184,14 @@ __attribute__((visibility("hidden")))
 - (void)p_invalidateSlideNodeBuildEventCountCaches;
 - (BOOL)p_isChildPlaceholderInfo:(id)arg1;
 - (BOOL)p_isValidToMoveChunk:(id)arg1 toIndex:(unsigned long long)arg2;
+- (unsigned long long)p_keynoteVersionFromUnarchiver:(id)arg1;
 - (id)p_lastActiveChunkInChunksForBuild:(id)arg1;
 - (void)p_setChildInfosAsOrderedSet:(id)arg1 usingDOLC:(BOOL)arg2 dolcContext:(id)arg3;
+- (void)p_updateBuildEffects:(BOOL)arg1 version:(unsigned long long)arg2;
 - (void)p_updateBuildsReplacingPlaceholder:(id)arg1 withPlaceholder:(id)arg2;
 - (void)p_updateChartBuildChunksImmediatelyWithoutUndoHistory;
 - (void)p_updateChunkCount;
 - (void)p_updateOverlappingBuildEventTriggers;
-- (void)p_updatePreUFFBuildEffects;
 - (void)p_updateStartAndEndOffsetsIfNecessaryForFileVersion:(unsigned long long)arg1;
 - (id)pdfDataUsingDocumentRoot:(id)arg1;
 - (void)performBlockOnInfos:(CDUnknownBlockType)arg1;
@@ -195,6 +204,7 @@ __attribute__((visibility("hidden")))
 - (void)removeBuild:(id)arg1;
 - (void)removeBuildChunk:(id)arg1 rollbackGeneratedIdentifier:(BOOL)arg2;
 - (void)removeChildInfo:(id)arg1;
+- (void)removeContainedModel:(id)arg1;
 - (void)removeDrawable:(id)arg1;
 - (void)removeInvalidBuildsOnDrawable:(id)arg1 usingParentCommand:(id)arg2;
 - (void)removeTagForDrawable:(id)arg1;

@@ -9,7 +9,7 @@
 #import <iWorkImport/TSPLazyReferenceDelegate-Protocol.h>
 #import <iWorkImport/TSPReaderDelegate-Protocol.h>
 
-@class NSError, NSHashTable, NSMutableArray, NSString, NSUUID;
+@class NSError, NSHashTable, NSMutableArray, NSString, NSUUID, TSPCancellationState;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -25,10 +25,12 @@ __attribute__((visibility("hidden")))
     struct unordered_map<long long, TSP::ExternalReferenceInfo, TSP::ObjectIdentifierHash, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ExternalReferenceInfo>>> _externalReferences;
     struct vector<TSP::RepeatedExternalReferenceCompletionInfo, std::__1::allocator<TSP::RepeatedExternalReferenceCompletionInfo>> _repeatedExternalReferences;
     BOOL _success;
+    TSPCancellationState *_cancellationState;
 }
 
 @property (readonly, nonatomic) NSUUID *baseObjectUUID;
 @property (readonly, nonatomic) BOOL canRetainObjectReferencedByWeakLazyReference;
+@property (strong, nonatomic) TSPCancellationState *cancellationState; // @synthesize cancellationState=_cancellationState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) NSError *error;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addLoadObserver:(id)arg1 action:(SEL)arg2 forLazyReference:(id)arg3;
+- (id)cancellationStateForReader:(id)arg1;
 - (id)context;
 - (id)contextForReader:(id)arg1;
 - (void)didReferenceExternalObject:(id)arg1 withIdentifier:(long long)arg2;

@@ -15,31 +15,39 @@
 @interface MPSNNGraph : MPSKernel <NSCopying, NSSecureCoding>
 {
     struct Graph _graph;
-    BOOL _outputStateIsTemporary;
     id<MPSImageAllocator> _destinationImageAllocator;
+    unsigned long long _format;
+    BOOL _resultIsNeeded;
+    BOOL _outputStateIsTemporary;
 }
 
 @property (strong, nonatomic) id<MPSImageAllocator> destinationImageAllocator; // @synthesize destinationImageAllocator=_destinationImageAllocator;
+@property (nonatomic) unsigned long long format; // @synthesize format=_format;
 @property (readonly, copy, nonatomic) NSArray *intermediateImageHandles;
 @property (nonatomic) BOOL outputStateIsTemporary; // @synthesize outputStateIsTemporary=_outputStateIsTemporary;
 @property (readonly, nonatomic) id<MPSHandle> resultHandle;
+@property (readonly, nonatomic) BOOL resultImageIsNeeded;
 @property (readonly, copy, nonatomic) NSArray *resultStateHandles;
 @property (readonly, copy, nonatomic) NSArray *sourceImageHandles;
 @property (readonly, copy, nonatomic) NSArray *sourceStateHandles;
 
 + (id)graphWithDevice:(id)arg1 resultImage:(id)arg2;
++ (id)graphWithDevice:(id)arg1 resultImage:(id)arg2 resultImageIsNeeded:(BOOL)arg3;
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;
+- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(id)arg3;
+- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(id)arg3 intermediateImages:(id)arg4 destinationStates:(id)arg5;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImages:(id)arg2;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(id)arg3 intermediateImages:(id)arg4 destinationStates:(id)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (id)executeAsyncWithSourceImages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 resultImage:(id)arg2;
+- (id)initWithDevice:(id)arg1 resultImage:(id)arg2 resultImageIsNeeded:(BOOL)arg3;
 - (void)setOptions:(unsigned long long)arg1;
 
 @end

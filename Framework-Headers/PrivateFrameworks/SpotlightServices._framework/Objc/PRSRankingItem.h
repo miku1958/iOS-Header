@@ -92,6 +92,7 @@
 - (id)initWithAttributes:(id)arg1;
 - (id)interestingDate;
 - (id)likelyDisplayTitle;
+- (id)moreRecentDateFromDate1:(id)arg1 date2:(id)arg2;
 - (long long)passesRecencyTest;
 - (void)populateBundleSpecificFeatures;
 - (void)populateContactFeatures;

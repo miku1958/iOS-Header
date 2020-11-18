@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) TSKAnnotationAuthorStorage *annotationAuthorStorage; // @synthesize annotationAuthorStorage=_annotationAuthorStorage;
 @property (readonly, nonatomic) unsigned long long applicationType;
 @property (strong, nonatomic) TSKAnnotationAuthor *authorForFiltering; // @synthesize authorForFiltering=_authorForFiltering;
+@property (readonly, nonatomic) BOOL canUseHEVC;
 @property (readonly, nonatomic) TSKChangeNotifier *changeNotifier; // @synthesize changeNotifier=_changeNotifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TSKDocumentRootDelegate> delegate;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSKDocumentSupport *documentSupport; // @synthesize documentSupport=_documentSupport;
 @property (readonly, nonatomic) TSKDocumentSupport *documentSupportIfAvailable; // @synthesize documentSupportIfAvailable=_documentSupportIfAvailable;
 @property (nonatomic, getter=isFindActive) BOOL findActive; // @synthesize findActive=_isFindActive;
+@property (readonly, nonatomic) BOOL freehandDrawingsRequireSpacerShape;
 @property (readonly, nonatomic) BOOL hasFloatingLocale;
 @property (readonly, nonatomic) BOOL hasICloudConflict;
 @property (readonly) unsigned long long hash;
@@ -72,10 +74,13 @@ __attribute__((visibility("hidden")))
 - (long long)addObserverForICloudTeardownWithBlock:(CDUnknownBlockType)arg1;
 - (id)calculationEngine;
 - (id)commandForRemovingCommentsFromDrawables:(id)arg1 context:(id)arg2;
+- (id)commandForUpdatingAfterInsertingDrawables:(id)arg1 context:(id)arg2;
 - (id)customFormatList;
 - (id)dataFromDocumentCachePath:(id)arg1;
 - (void)dealloc;
 - (void)didAcquireReadLock;
+- (void)didConnectToServerWithCollaborationContext:(id)arg1;
+- (void)didDisconnectFromServerWithCollaborationContext:(id)arg1;
 - (void)didSaveWithEncryptionChange;
 - (void)documentDidLoad;
 - (BOOL)documentDisallowsHighlightsOnStorage:(id)arg1;
@@ -113,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)pauseRecalculationSometimeSoon;
 - (void)removeCommentsFromDrawables:(id)arg1;
 - (void)removeICloudTeardownObserver:(long long)arg1;
+- (void)removePencilAnnotationsFromDrawables:(id)arg1;
 - (void)resumeRecalculation;
 - (void)saveToArchive:(struct DocumentArchive *)arg1 archiver:(id)arg2;
 - (void)setStylesheet:(id)arg1 andThemeForImport:(id)arg2;

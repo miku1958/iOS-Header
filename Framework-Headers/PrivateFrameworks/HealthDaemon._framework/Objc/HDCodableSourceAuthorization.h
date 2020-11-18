@@ -13,10 +13,13 @@
 @interface HDCodableSourceAuthorization : PBCodable <NSCopying>
 {
     NSMutableArray *_authorizations;
+    NSData *_backupUUID;
     NSData *_sourceUUID;
 }
 
 @property (strong, nonatomic) NSMutableArray *authorizations; // @synthesize authorizations=_authorizations;
+@property (strong, nonatomic) NSData *backupUUID; // @synthesize backupUUID=_backupUUID;
+@property (readonly, nonatomic) BOOL hasBackupUUID;
 @property (readonly, nonatomic) BOOL hasSourceUUID;
 @property (strong, nonatomic) NSData *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
 
@@ -28,6 +31,7 @@
 - (void)clearAuthorizations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)decodedBackupUUID;
 - (id)decodedSourceUUID;
 - (id)description;
 - (id)dictionaryRepresentation;

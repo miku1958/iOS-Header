@@ -8,10 +8,11 @@
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSMutableCopying-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 
-@interface MPSectionedCollection : NSObject <NSCopying, NSMutableCopying>
+@interface MPSectionedCollection : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSArray *_sectionedItems;
     NSArray *_sections;
@@ -23,12 +24,14 @@
 @property (readonly, nonatomic) id lastSection;
 @property (readonly, nonatomic) long long totalItemCount;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_initializeAsEmptySectionedCollection;
 - (id)changeDetailsToSectionedCollection:(id)arg1 isEqualBlock:(CDUnknownBlockType)arg2 isUpdatedBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (void)enumerateItemIdentifiersInSectionAtIndex:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateItemIdentifiersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateItemsInSectionAtIndex:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -42,6 +45,7 @@
 - (id)indexPathForGlobalIndex:(long long)arg1;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)itemAtIndexPath:(id)arg1;
 - (id)itemsInSectionAtIndex:(long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

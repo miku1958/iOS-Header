@@ -28,9 +28,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)adapter:(id)arg1 didUpdateAlarms:(id)arg2;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 mediaProfileContainer:(id)arg2;
+- (void)mobileTimerAdapter:(id)arg1 didUpdateAlarms:(id)arg2;
 - (void)registerForExternalUpdates;
 - (void)unregisterForExternalUpdates;
 

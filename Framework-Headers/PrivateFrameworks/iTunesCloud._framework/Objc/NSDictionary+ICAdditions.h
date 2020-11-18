@@ -14,5 +14,6 @@
 - (int)ic_intValueForKey:(id)arg1;
 - (id)ic_numberValueForKey:(id)arg1;
 - (id)ic_stringValueForKey:(id)arg1;
+- (unsigned int)ic_uintValueForKey:(id)arg1;
 @end
 

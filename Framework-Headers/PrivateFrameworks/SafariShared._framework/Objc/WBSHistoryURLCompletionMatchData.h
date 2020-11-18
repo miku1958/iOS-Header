@@ -12,7 +12,7 @@
 
 @interface WBSHistoryURLCompletionMatchData : NSObject <WBSURLCompletionMatchData>
 {
-    RefPtr_84e65dc2 _item;
+    RefPtr_ed2a6bdb _item;
 }
 
 @property (readonly, nonatomic) BOOL containsBookmark;

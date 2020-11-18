@@ -87,6 +87,7 @@
 + (id)keyPathsForValuesAffectingVideosCount;
 + (id)pathToAssetAlbumOrderStructure;
 + (id)searchIndexAllowedPredicate;
++ (id)validKindsForPersistence;
 - (unsigned long long)_albumStandInCount;
 - (id)_assetOrderByAssetUUID;
 - (id)_expectedKeyAssets:(id)arg1;

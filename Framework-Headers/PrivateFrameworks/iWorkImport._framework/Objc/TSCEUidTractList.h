@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned char stickyBits; // @synthesize stickyBits=_stickyBits;
 
 - (id)activeUidTract;
-- (void)addToExcludedUidsTractColumnUids:(const vector_dadc1b26 *)arg1;
-- (void)addToExcludedUidsTractRowUids:(const vector_dadc1b26 *)arg1;
+- (void)addToExcludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1;
+- (void)addToExcludedUidsTractRowUids:(const vector_4dc5f307 *)arg1;
 - (void)addToIncludedUidsTractColumnUid:(const UUIDData_5fbc143e *)arg1 rowUid:(const UUIDData_5fbc143e *)arg2;
-- (void)addToIncludedUidsTractColumnUids:(const vector_dadc1b26 *)arg1 rowUids:(const vector_dadc1b26 *)arg2;
-- (void)addToIncludedUidsTractColumnUids:(const vector_dadc1b26 *)arg1 rowUids:(const vector_dadc1b26 *)arg2 isRangeRef:(BOOL)arg3;
+- (void)addToIncludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1 rowUids:(const vector_4dc5f307 *)arg2;
+- (void)addToIncludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1 rowUids:(const vector_4dc5f307 *)arg2 isRangeRef:(BOOL)arg3;
 - (void)addTractAtFront:(id)arg1;
 - (void)appendUidTract:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -40,12 +40,12 @@ __attribute__((visibility("hidden")))
 - (id)preMergeUidTract;
 - (id)preMoveRegionUidTract;
 - (void)pruneMergeUidTractsAtAndAboveIndex:(unsigned char)arg1;
-- (BOOL)remapUsingColumnUidMap:(const UUIDMap_727ee07e *)arg1 rowUidMap:(const UUIDMap_727ee07e *)arg2 clearIfMissing:(BOOL)arg3;
-- (BOOL)remapUsingUidMap:(const UUIDMap_727ee07e *)arg1;
-- (void)removeFromExcludedUidsTractColumnUids:(const vector_dadc1b26 *)arg1;
-- (void)removeFromExcludedUidsTractColumnUidsSet:(const unordered_set_3f00ed57 *)arg1;
-- (void)removeFromExcludedUidsTractRowUids:(const vector_dadc1b26 *)arg1;
-- (void)removeFromExcludedUidsTractRowUidsSet:(const unordered_set_3f00ed57 *)arg1;
+- (BOOL)remapUsingColumnUidMap:(const UUIDMap_b66c2694 *)arg1 rowUidMap:(const UUIDMap_b66c2694 *)arg2 clearIfMissing:(BOOL)arg3;
+- (BOOL)remapUsingUidMap:(const UUIDMap_b66c2694 *)arg1;
+- (void)removeFromExcludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1;
+- (void)removeFromExcludedUidsTractColumnUidsSet:(const unordered_set_c6a929bd *)arg1;
+- (void)removeFromExcludedUidsTractRowUids:(const vector_4dc5f307 *)arg1;
+- (void)removeFromExcludedUidsTractRowUidsSet:(const unordered_set_c6a929bd *)arg1;
 - (void)saveToArchive:(struct ASTNodeArrayArchive_ASTUidTractList *)arg1;
 - (unsigned char)tractCount;
 - (id)uidTractAtIndex:(unsigned char)arg1;

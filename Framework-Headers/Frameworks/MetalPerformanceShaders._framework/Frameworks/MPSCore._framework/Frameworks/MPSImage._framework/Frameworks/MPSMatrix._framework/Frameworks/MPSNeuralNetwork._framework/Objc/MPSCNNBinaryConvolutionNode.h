@@ -6,20 +6,26 @@
 
 #import <MPSNeuralNetwork/MPSCNNConvolutionNode.h>
 
-@class MPSCNNConvolutionStateNode;
-@protocol MPSCNNConvolutionDataSource;
+@class MPSCNNConvolutionGradientStateNode;
 
 @interface MPSCNNBinaryConvolutionNode : MPSCNNConvolutionNode
 {
-    id<MPSCNNConvolutionDataSource> _weights;
     float _scaleValue;
     unsigned long long _type;
     unsigned long long _flags;
+    float *_outputBiasTerms;
+    float *_outputScaleTerms;
+    float *_inputBiasTerms;
+    float *_inputScaleTerms;
 }
 
-@property (readonly, nonatomic) MPSCNNConvolutionStateNode *convolutionState;
+@property (readonly, nonatomic) MPSCNNConvolutionGradientStateNode *convolutionGradientState;
 
++ (id)nodeWithSource:(id)arg1 weights:(id)arg2 outputBiasTerms:(const float *)arg3 outputScaleTerms:(const float *)arg4 inputBiasTerms:(const float *)arg5 inputScaleTerms:(const float *)arg6 type:(unsigned long long)arg7 flags:(unsigned long long)arg8;
 + (id)nodeWithSource:(id)arg1 weights:(id)arg2 scaleValue:(float)arg3 type:(unsigned long long)arg4 flags:(unsigned long long)arg5;
+- (id)convolutionState;
+- (void)dealloc;
+- (id)initWithSource:(id)arg1 weights:(id)arg2 outputBiasTerms:(const float *)arg3 outputScaleTerms:(const float *)arg4 inputBiasTerms:(const float *)arg5 inputScaleTerms:(const float *)arg6 type:(unsigned long long)arg7 flags:(unsigned long long)arg8;
 - (id)initWithSource:(id)arg1 weights:(id)arg2 scaleValue:(float)arg3 type:(unsigned long long)arg4 flags:(unsigned long long)arg5;
 - (struct FilterGraphNode *)newFilterNode;
 

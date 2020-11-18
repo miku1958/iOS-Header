@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsUidReferences;
 - (id)copyByClearingUids:(id)arg1 containingTableUID:(const UUIDData_5fbc143e *)arg2;
 - (id)copyByOffsettingRelativeReferencesWithColumnOffset:(short)arg1 rowOffset:(int)arg2;
-- (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const UUIDMap_727ee07e *)arg1 calcEngine:(id)arg2 ownerUID:(const UUIDData_5fbc143e *)arg3 error:(BOOL *)arg4;
-- (id)copyByRemappingOwnerUIDsWithMap:(const UUIDMap_727ee07e *)arg1 calcEngine:(id)arg2 error:(BOOL *)arg3;
+- (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2 ownerUID:(const UUIDData_5fbc143e *)arg3 error:(BOOL *)arg4;
+- (id)copyByRemappingOwnerUIDsWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2 error:(BOOL *)arg3;
 - (id)copyByRepairingBadReferences:(id)arg1;
 - (id)copyByRewritingWithSpec:(id)arg1 inOwner:(id)arg2 inCellCoordinate:(struct TSUCellCoord)arg3;
 - (id)copyByUpdatingHostCellRef:(const struct TSCECellRef *)arg1;

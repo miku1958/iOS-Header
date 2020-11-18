@@ -27,12 +27,12 @@
 - (void)_cloudSyncContainersForProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_containerIdentifiersForCurrentAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_containerWithIdentifier:(id)arg1 error:(id *)arg2;
-- (id)_getPrimaryLastPushForwardProgressDate;
 - (id)disableAndDeleteAllSyncDataWithTaskTree:(id)arg1;
 - (void)disableSyncLocallyWithTaskTree:(id)arg1;
 - (id)fetchDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)fetchSyncStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithProfile:(id)arg1;
+- (id)lastPushForwardProgressDate;
 - (void)queue_cloudSyncContainersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestImmediateResync;
 - (id)resetWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3;

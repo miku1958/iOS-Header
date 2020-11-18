@@ -6,24 +6,27 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRSupportedProtocolMessages, NSString;
+@class MRSupportedProtocolMessages, NSString, _MRDeviceInfoMessageProtobuf, _MROriginProtobuf;
 
 __attribute__((visibility("hidden")))
 @interface MRExternalDevice : NSObject
 {
+    BOOL _valid;
     unsigned int _connectionState;
-    void *_deviceInfo;
+    CDStruct_64424771 _systemMusicContextInfo;
 }
 
 @property (readonly, nonatomic) unsigned int connectionState; // @synthesize connectionState=_connectionState;
-@property (readonly, nonatomic) void *customOrigin;
-@property (readonly, nonatomic) void *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
+@property (readonly, nonatomic) _MROriginProtobuf *customOrigin;
+@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property (readonly, nonatomic) NSString *hostName;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (readonly, nonatomic) long long port;
-@property (strong, nonatomic) MRSupportedProtocolMessages *supportedMessages;
+@property (readonly, nonatomic) MRSupportedProtocolMessages *supportedMessages;
+@property (readonly, nonatomic) CDStruct_64424771 systemMusicContextInfo; // @synthesize systemMusicContextInfo=_systemMusicContextInfo;
 @property (nonatomic, getter=isUsingSystemPairing) BOOL usingSystemPairing;
+@property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 @property (nonatomic) BOOL wantsNowPlayingArtworkNotifications;
 @property (nonatomic) BOOL wantsNowPlayingNotifications;
 @property (nonatomic) BOOL wantsVolumeNotifications;
@@ -41,9 +44,11 @@ __attribute__((visibility("hidden")))
 - (void)setConnectionStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setCustomDataCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setNameCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setOutputContextCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setPairingAllowedCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setPairingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setSupportedMessages:(id)arg1;
 - (void)setVolume:(float)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setVolumeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)unpair;

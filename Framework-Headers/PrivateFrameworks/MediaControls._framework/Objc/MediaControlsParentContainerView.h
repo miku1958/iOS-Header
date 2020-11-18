@@ -29,6 +29,8 @@
 - (void)_setInitialFrameForRoutingView:(id)arg1;
 - (void)_toggleRoutingPickerAnimated:(BOOL)arg1;
 - (void)_updateRoutingPickerVisibility;
+- (void)_updateTimeControlVisibility;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setSelectedMode:(long long)arg1 animated:(BOOL)arg2;

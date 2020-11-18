@@ -13,7 +13,6 @@
 {
     BOOL _deliversUpdates;
     BOOL _initialResultsSent;
-    BOOL _suspended;
     BOOL _objectsDeleted;
     BOOL _includeDeletedObjects;
     HKQueryAnchor *_startAnchor;
@@ -31,6 +30,8 @@
 
 - (void).cxx_destruct;
 - (id)_maxRowIDInDatabaseWithError:(id *)arg1;
+- (void)_queue_deliverSamples:(id)arg1 deletedObjects:(id)arg2 anchor:(id)arg3 clearPendingSamples:(BOOL)arg4 deliverResults:(BOOL)arg5 description:(id)arg6;
+- (void)_queue_handleBatchedQueryResult:(long long)arg1 error:(id)arg2;
 - (void)_queue_samplesWereRemovedWithAnchor:(id)arg1;
 - (BOOL)_queue_shouldAcceptUpdates;
 - (BOOL)_queue_shouldAccumulateUpdates;

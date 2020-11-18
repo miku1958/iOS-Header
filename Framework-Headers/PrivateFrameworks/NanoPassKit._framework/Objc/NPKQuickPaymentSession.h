@@ -62,7 +62,7 @@
 - (void)_checkContactlessValidity:(unsigned long long)arg1 authorizationValidity:(unsigned long long)arg2 performWork:(CDUnknownBlockType)arg3;
 - (void)_checkContactlessValidity:(unsigned long long)arg1 performWork:(CDUnknownBlockType)arg2;
 - (void)_handleConventionalTransactionWithContext:(id)arg1;
-- (void)_handleFelicaTransitTransactionWithContext:(id)arg1;
+- (void)_handleTransitTransactionWithContext:(id)arg1;
 - (void)_internalQueue_deactivateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_internalQueue_getContactlessAndAuthorizationValidityAndPerformWork:(CDUnknownBlockType)arg1;
 - (void)_internalQueue_invokeDeactivationCompletionBlocks;

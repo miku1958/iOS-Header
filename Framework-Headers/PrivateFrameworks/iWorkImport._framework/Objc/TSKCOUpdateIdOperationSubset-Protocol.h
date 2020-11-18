@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSKCOAbstractOperation, TSKCOUpdateIdOperation;
+@class TSKCOUpdateIdOperation;
 
 @protocol TSKCOUpdateIdOperationSubset
-- (TSKCOAbstractOperation *)fromUpdateIdOperation:(TSKCOUpdateIdOperation *)arg1;
 - (TSKCOUpdateIdOperation *)toUpdateIdOperation;
 @end
 

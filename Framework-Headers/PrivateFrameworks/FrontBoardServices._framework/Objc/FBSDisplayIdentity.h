@@ -37,6 +37,7 @@
 @property (readonly, copy, nonatomic) FBSDisplayIdentity *rootIdentity;
 @property (readonly, nonatomic, getter=isSecure) BOOL secure; // @synthesize secure=_secure;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isTatlDisplay) BOOL tatlDisplay;
 
 + (BOOL)supportsSecureCoding;
 - (id)_initWithType:(long long)arg1 displayID:(unsigned int)arg2 connectionSeed:(unsigned int)arg3 pid:(int)arg4 external:(BOOL)arg5 uniqueIdentifier:(id)arg6 secure:(BOOL)arg7 root:(id)arg8;

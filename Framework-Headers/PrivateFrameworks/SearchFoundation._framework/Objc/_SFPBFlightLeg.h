@@ -31,11 +31,13 @@
     _SFPBDate *_departureGateClosedTime;
     _SFPBDate *_departureRunwayTime;
     _SFPBDate *_arrivalRunwayTime;
+    _SFPBDate *_arrivalGateTime;
 }
 
 @property (strong, nonatomic) _SFPBDate *arrivalActualTime; // @synthesize arrivalActualTime=_arrivalActualTime;
 @property (strong, nonatomic) _SFPBAirport *arrivalAirport; // @synthesize arrivalAirport=_arrivalAirport;
 @property (copy, nonatomic) NSString *arrivalGate; // @synthesize arrivalGate=_arrivalGate;
+@property (strong, nonatomic) _SFPBDate *arrivalGateTime; // @synthesize arrivalGateTime=_arrivalGateTime;
 @property (strong, nonatomic) _SFPBDate *arrivalPublishedTime; // @synthesize arrivalPublishedTime=_arrivalPublishedTime;
 @property (strong, nonatomic) _SFPBDate *arrivalRunwayTime; // @synthesize arrivalRunwayTime=_arrivalRunwayTime;
 @property (copy, nonatomic) NSString *arrivalTerminal; // @synthesize arrivalTerminal=_arrivalTerminal;
@@ -53,6 +55,7 @@
 @property (readonly, nonatomic) BOOL hasArrivalActualTime;
 @property (readonly, nonatomic) BOOL hasArrivalAirport;
 @property (readonly, nonatomic) BOOL hasArrivalGate;
+@property (readonly, nonatomic) BOOL hasArrivalGateTime;
 @property (readonly, nonatomic) BOOL hasArrivalPublishedTime;
 @property (readonly, nonatomic) BOOL hasArrivalRunwayTime;
 @property (readonly, nonatomic) BOOL hasArrivalTerminal;

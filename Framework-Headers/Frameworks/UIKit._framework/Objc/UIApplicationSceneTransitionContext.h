@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSDictionary *payload;
 @property (nonatomic) BOOL safeMode;
 @property (nonatomic) BOOL shouldTakeKeyboardFocus;
+@property (nonatomic) unsigned long long signpostID;
 @property (nonatomic) double userLaunchEventTime;
 @property (nonatomic) BOOL waitForBackgroundTaskCompletion;
 

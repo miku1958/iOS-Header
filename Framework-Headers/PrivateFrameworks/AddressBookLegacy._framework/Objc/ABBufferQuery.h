@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSIndexSet;
+@class CNManagedConfiguration, NSIndexSet;
 
 @interface ABBufferQuery : NSObject
 {
@@ -22,7 +22,9 @@
     BOOL _requestedHasImageData;
     unsigned int _sortOrder;
     void *_addressBook;
+    CNManagedConfiguration *_managedConfiguration;
     struct CPSqliteStatement *_statement;
+    NSIndexSet *_scopedStoreIdentifiers;
     NSIndexSet *_requestedPropertyIdentifiers;
     NSIndexSet *_requestedMultivalueIdentifiers;
     struct __CFDictionary *_propertyIndices;
@@ -30,6 +32,7 @@
 
 @property (nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
 @property (readonly, nonatomic) BOOL fetchLinkedContacts; // @synthesize fetchLinkedContacts=_fetchLinkedContacts;
+@property (readonly, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property (readonly, nonatomic) BOOL needsMultivalueEntryTable; // @synthesize needsMultivalueEntryTable=_needsMultivalueEntryTable;
 @property (readonly, nonatomic) BOOL needsMultivalueTable; // @synthesize needsMultivalueTable=_needsMultivalueTable;
 @property (readonly, nonatomic) BOOL needsPersonLinkTable; // @synthesize needsPersonLinkTable=_needsPersonLinkTable;
@@ -42,6 +45,7 @@
 @property (readonly, nonatomic) BOOL requestedImageThumbnail; // @synthesize requestedImageThumbnail=_requestedImageThumbnail;
 @property (readonly, nonatomic) NSIndexSet *requestedMultivalueIdentifiers; // @synthesize requestedMultivalueIdentifiers=_requestedMultivalueIdentifiers;
 @property (readonly, nonatomic) NSIndexSet *requestedPropertyIdentifiers; // @synthesize requestedPropertyIdentifiers=_requestedPropertyIdentifiers;
+@property (readonly, nonatomic) NSIndexSet *scopedStoreIdentifiers; // @synthesize scopedStoreIdentifiers=_scopedStoreIdentifiers;
 @property (readonly, nonatomic) unsigned int sortOrder; // @synthesize sortOrder=_sortOrder;
 @property (nonatomic) struct CPSqliteStatement *statement; // @synthesize statement=_statement;
 
@@ -50,9 +54,13 @@
 - (void)appendCustomPropertySelectsToQueryString:(id)arg1;
 - (void)appendFromClauseToQueryString:(id)arg1;
 - (void)appendOrderByClauseToQueryString:(id)arg1;
+- (void)appendWhereClauseToQueryString:(id)arg1;
+- (void)bindWhereClause:(id)arg1;
+- (void)bindWithClause:(id)arg1;
 - (void)dealloc;
-- (id)initWithAddressBook:(void *)arg1 whereClause:(id)arg2 whereClauseBindBlock:(CDUnknownBlockType)arg3 requestedProperties:(struct __CFSet *)arg4 includeLinkedContacts:(BOOL)arg5 sortOrder:(unsigned int)arg6;
+- (id)initWithAddressBook:(void *)arg1 whereClause:(id)arg2 whereClauseBindBlock:(CDUnknownBlockType)arg3 requestedProperties:(struct __CFSet *)arg4 includeLinkedContacts:(BOOL)arg5 sortOrder:(unsigned int)arg6 managedConfiguration:(id)arg7;
 - (void)prependWithClauseToQueryString:(id)arg1 whereClause:(id)arg2;
+- (id)scopedStoresForManagedConfiguration:(id)arg1;
 
 @end
 

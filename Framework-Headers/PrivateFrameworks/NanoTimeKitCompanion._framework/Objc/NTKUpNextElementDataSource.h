@@ -12,12 +12,14 @@
 @interface NTKUpNextElementDataSource : NSObject
 {
     BOOL _running;
+    BOOL _allowsLocationUse;
     BOOL _unlockedSinceBoot;
     id<NTKUpNextElementDataSourceDelegate> _delegate;
     unsigned long long _state;
     NSString *_logHeader;
 }
 
+@property (nonatomic) BOOL allowsLocationUse; // @synthesize allowsLocationUse=_allowsLocationUse;
 @property (weak, nonatomic) id<NTKUpNextElementDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSString *logHeader; // @synthesize logHeader=_logHeader;
 @property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;

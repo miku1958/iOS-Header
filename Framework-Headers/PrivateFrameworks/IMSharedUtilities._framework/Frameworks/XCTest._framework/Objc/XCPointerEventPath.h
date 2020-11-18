@@ -24,8 +24,8 @@
 @property (readonly) NSArray *pointerEvents;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_addPointerEvent:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)firstEventAfterOffset:(double)arg1;

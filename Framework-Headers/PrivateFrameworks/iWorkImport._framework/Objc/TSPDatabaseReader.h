@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSPDatabaseUnarchiverDelegate-Protocol.h>
 
-@class NSHashTable, NSObject, NSString, TSPDatabase;
+@class NSHashTable, NSObject, NSString, TSPComponent, TSPDatabase;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,11 +17,12 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_databaseQueue;
     TSPDatabase *_database;
     unsigned long long _databaseVersion;
-    unordered_map_502345cb _readIdentifiers;
+    unordered_map_38045d47 _readIdentifiers;
     NSHashTable *_datas;
 }
 
 @property (readonly, nonatomic) BOOL canRetainObjectReferencedByWeakLazyReference;
+@property (readonly, nonatomic) TSPComponent *component;
 @property (readonly, nonatomic) long long componentIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

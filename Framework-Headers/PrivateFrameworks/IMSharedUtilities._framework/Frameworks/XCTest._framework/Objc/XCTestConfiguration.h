@@ -18,6 +18,7 @@
     BOOL _reportActivities;
     BOOL _testsMustRunOnMainThread;
     BOOL _initializeForUITesting;
+    BOOL _gatherLocalizableStringsData;
     BOOL _emitOSLogs;
     NSString *_absolutePath;
     NSString *_testBundleRelativePath;
@@ -48,6 +49,7 @@
 @property (copy, nonatomic) NSURL *baselineFileURL; // @synthesize baselineFileURL=_baselineFileURL;
 @property BOOL disablePerformanceMetrics; // @synthesize disablePerformanceMetrics=_disablePerformanceMetrics;
 @property BOOL emitOSLogs; // @synthesize emitOSLogs=_emitOSLogs;
+@property BOOL gatherLocalizableStringsData; // @synthesize gatherLocalizableStringsData=_gatherLocalizableStringsData;
 @property BOOL initializeForUITesting; // @synthesize initializeForUITesting=_initializeForUITesting;
 @property (copy) NSString *pathToXcodeReportingSocket; // @synthesize pathToXcodeReportingSocket=_pathToXcodeReportingSocket;
 @property (copy) NSString *productModuleName; // @synthesize productModuleName=_productModuleName;
@@ -74,7 +76,7 @@
 + (id)configurationWithContentsOfFile:(id)arg1;
 + (void)setActiveTestConfiguration:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

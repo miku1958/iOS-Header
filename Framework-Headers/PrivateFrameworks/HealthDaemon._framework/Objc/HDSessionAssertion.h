@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)description;
 - (id)initWithAssertionIdentifier:(id)arg1 ownerIdentifier:(id)arg2 client:(id)arg3 manager:(id)arg4;
 - (void)invalidate;
 

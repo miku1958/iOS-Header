@@ -16,11 +16,11 @@
 
 - (void).cxx_destruct;
 - (void)_hideSnapshotWindow;
-- (id)_mainQueue_takeSnapshotOfFace:(id)arg1 snapshotUIOnly:(BOOL)arg2 unadornedContent:(BOOL)arg3 forceLockedUI:(BOOL)arg4 hasBlankComplication:(BOOL *)arg5;
+- (id)_mainQueue_takeSnapshotOfFace:(id)arg1 options:(id)arg2 hasBlankComplication:(BOOL *)arg3;
 - (void)_showSnapshotWindow;
-- (id)createFace:(id)arg1 snapshotUIOnly:(BOOL)arg2 unadornedContent:(BOOL)arg3 forceLockedUI:(BOOL)arg4;
+- (id)createFace:(id)arg1 options:(id)arg2;
 - (void)provideSnapshotOfFace:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)takeSnapshotOfFace:(id)arg1 snapshotUIOnly:(BOOL)arg2 unadornedContent:(BOOL)arg3 forceLockedUI:(BOOL)arg4 hasBlankComplication:(BOOL *)arg5;
+- (id)takeSnapshotOfFace:(id)arg1 options:(id)arg2 hasBlankComplication:(BOOL *)arg3;
 
 @end
 

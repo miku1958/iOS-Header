@@ -13,19 +13,27 @@
 @interface GEOPDIcon : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    int _iconType;
     GEOPDPhoto *_image;
+    struct {
+        unsigned int iconType:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasIconType;
 @property (readonly, nonatomic) BOOL hasImage;
+@property (nonatomic) int iconType; // @synthesize iconType=_iconType;
 @property (strong, nonatomic) GEOPDPhoto *image; // @synthesize image=_image;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
+- (int)StringAsIconType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)iconTypeAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

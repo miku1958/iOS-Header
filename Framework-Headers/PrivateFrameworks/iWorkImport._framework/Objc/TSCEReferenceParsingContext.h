@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _filterColons;
     BOOL _referenceIsComplete;
+    BOOL _trimNames;
     BOOL _namesUsed;
     unsigned char _stickyBits;
     id<TSCEReferenceResolving> _contextResolver;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned char stickyBits; // @synthesize stickyBits=_stickyBits;
 @property (strong, nonatomic) NSString *tableName; // @synthesize tableName=_tableName;
 @property (strong, nonatomic) NSString *tableNameUnquoted; // @synthesize tableNameUnquoted=_tableNameUnquoted;
+@property (nonatomic) BOOL trimNames; // @synthesize trimNames=_trimNames;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <KeyboardServices/NSSecureCoding-Protocol.h>
+
 @class NSData, NSMutableArray, NSMutableDictionary, NSString;
 
-@interface _KSFileEntry : NSObject
+@interface _KSFileEntry : NSObject <NSSecureCoding>
 {
     NSString *_name;
     NSMutableDictionary *_extendedAttributes;
@@ -21,6 +23,7 @@
 @property (readonly, strong, nonatomic) NSString *name; // @synthesize name=_name;
 
 + (id)entryWithSerialisedDataAtURL:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned long long)addBlobToFile:(id)arg1;
 - (void)consistencyCheck;

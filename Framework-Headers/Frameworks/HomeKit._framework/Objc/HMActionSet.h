@@ -33,7 +33,7 @@
 
 @property (readonly, copy, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
 @property (readonly, copy, nonatomic) NSSet *actions;
-@property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
+@property (readonly, nonatomic) HMApplicationData *applicationData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentActions; // @synthesize currentActions=_currentActions;
 @property (readonly, copy) NSString *debugDescription;

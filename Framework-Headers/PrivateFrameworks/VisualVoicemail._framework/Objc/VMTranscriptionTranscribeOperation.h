@@ -6,12 +6,12 @@
 
 #import <VisualVoicemail/VMSpeechURLRecognitionRequestOperation.h>
 
-#import <VisualVoicemail/_SFSpeechRecognitionTaskDelegatePrivate-Protocol.h>
+#import <VisualVoicemail/_VMSpeechRecognitionTaskDelegatePrivate-Protocol.h>
 
 @class NSObject, NSString, VMVoicemailTranscript;
 @protocol OS_dispatch_semaphore;
 
-@interface VMTranscriptionTranscribeOperation : VMSpeechURLRecognitionRequestOperation <_SFSpeechRecognitionTaskDelegatePrivate>
+@interface VMTranscriptionTranscribeOperation : VMSpeechURLRecognitionRequestOperation <_VMSpeechRecognitionTaskDelegatePrivate>
 {
     double _duration;
     double _timeout;

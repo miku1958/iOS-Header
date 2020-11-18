@@ -10,6 +10,7 @@
 - (id)_accessibilityAbsoluteValue;
 - (id)_accessibilityAncestry;
 - (BOOL)_accessibilityFauxCollectionViewCellsDisabled;
+- (BOOL)_accessibilityFauxTableViewCellsDisabled;
 - (id)_accessibilityKeyboardKeyEnteredString;
 - (void)_accessibilitySetUserTestingIsCancelButton:(BOOL)arg1;
 - (void)_accessibilitySetUserTestingIsDefaultButton:(BOOL)arg1;
@@ -36,5 +37,6 @@
 - (id)_accessibilityUserTestingSnapshotWithOptions:(id)arg1;
 - (id)_accessibilityUserTestingSupplementaryViews:(BOOL)arg1;
 - (void)_setAccessibilityFauxCollectionViewCellsDisabled:(BOOL)arg1;
+- (void)_setAccessibilityFauxTableViewCellsDisabled:(BOOL)arg1;
 @end
 

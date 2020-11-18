@@ -12,14 +12,17 @@
 __attribute__((visibility("hidden")))
 @interface TSURemotePropertyList : NSObject
 {
-    NSURL *_remoteURL;
-    NSURL *_localURL;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSDictionary *_propertyList;
     NSObject<OS_dispatch_queue> *_checkQueue;
     NSObject<OS_dispatch_source> *_updateTimer;
     BOOL _didUpdateAtLeastOnce;
+    NSURL *_remoteURL;
+    NSURL *_localURL;
 }
+
+@property (readonly, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
+@property (readonly, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
 
 - (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;

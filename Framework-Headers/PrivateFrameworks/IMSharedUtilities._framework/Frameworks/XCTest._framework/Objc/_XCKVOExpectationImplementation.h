@@ -27,6 +27,7 @@
 @property (readonly) id observedObject; // @synthesize observedObject=_observedObject;
 @property (readonly) unsigned long long options; // @synthesize options=_options;
 
+- (void).cxx_destruct;
 - (void)cleanup;
 - (void)dealloc;
 - (id)initWithKeyPath:(id)arg1 object:(id)arg2 expectedValue:(id)arg3 expectation:(id)arg4 options:(unsigned long long)arg5;

@@ -32,13 +32,21 @@
 @property (strong, nonatomic) UIColor *keyColor; // @synthesize keyColor=_keyColor;
 
 + (id)activityColors;
++ (id)allergiesClinicalColors;
 + (id)bodyMeasurementColors;
++ (id)conditionsClinicalColors;
 + (id)defaultContextViewColors;
++ (id)immunizationsClinicalColors;
++ (id)labResultsClinicalColors;
++ (id)medicationsClinicalColors;
 + (id)metricColorsForHeartRateContext:(long long)arg1;
 + (id)mindfulnessColors;
++ (id)proceduresClinicalColors;
 + (id)reproductiveHealthColors;
 + (id)resultsColors;
 + (id)sleepColors;
++ (id)unknownCategoryClinicalColors;
++ (id)vitalsClinicalColors;
 + (id)vitalsColors;
 + (id)workoutContextViewColors;
 - (void).cxx_destruct;

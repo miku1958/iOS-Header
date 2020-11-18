@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, NTPBBinningConfig, NTPBIAdConfig, NTPBPaidSubscriptionConfig, NTPBPersonalizationConfig, NTPBPersonalizationTreatment, NTPBPrefetchConfig, NTPBWidgetConfig;
+@class NSMutableArray, NSString, NTPBBinningConfig, NTPBIAdConfig, NTPBPaidSubscriptionConfig, NTPBPersonalizationConfig, NTPBPersonalizationTreatment, NTPBPrefetchConfig, NTPBVideoGroupsConfig, NTPBWidgetConfig;
 
 @interface NTPBConfig : PBCodable <NSCopying>
 {
@@ -25,6 +25,7 @@
     long long _corryBarMaxArticleCountForSingleArticle;
     long long _endOfArticleMaxInaccessiblePaidArticles;
     double _endOfArticleMinPaidHeadlineRatio;
+    long long _expirePinnedArticlesAfter;
     long long _expiredPaidSubscriptionGroupCutoffTime;
     long long _initialArticlesFromNewFavorite;
     double _interstitialAdLoadDelay;
@@ -47,6 +48,7 @@
     long long _notificationArticleWithRapidUpdatesCacheTimeout;
     long long _notificationEnabledChannelsRefreshFrequency;
     long long _numberOfScreenfulsScrolledToBypassWidgetTimeLimit;
+    long long _optionalTopStoriesRefreshRate;
     double _prerollLoadingTimeout;
     double _publisherDiversitySlope;
     double _publisherDiversityYIntercept;
@@ -66,8 +68,11 @@
     long long _timeBetweenWidgetInsertions;
     long long _treatmentId;
     long long _trendingTopicsRefreshRate;
+    long long _userSegmentationApiModMax;
+    long long _userSegmentationApiModThreshold;
     NTPBWidgetConfig *_alternativeButlerWidgetConfig;
     NSString *_anfEmbedConfigurationAsset;
+    NSString *_articleRecirculationConfig;
     NTPBBinningConfig *_binningConfig;
     NTPBWidgetConfig *_butlerWidgetConfig;
     unsigned int _enabledPrivateDataEncryptionLevel;
@@ -76,6 +81,7 @@
     NSMutableArray *_externalAnalyticsConfigs;
     NSString *_fallbackLanguageTag;
     NSString *_forYouNonPersonalizedGroupsOrder;
+    NTPBVideoGroupsConfig *_forYouVideoGroupsConfig;
     NTPBIAdConfig *_iadConfig;
     NSMutableArray *_languageConfigs;
     unsigned int _orderFeedEnabledLevel;
@@ -90,6 +96,7 @@
     NSString *_personalizationWhitelistResourceId;
     NSString *_personalizationWidgetSectionMappingResourceId;
     NTPBPrefetchConfig *_prefetchConfig;
+    int _privateDataMigrationCleanupLevel;
     int _trendingStyle;
     NTPBWidgetConfig *_widgetConfig;
     NTPBWidgetConfig *_widgetConfig2;
@@ -116,6 +123,7 @@
         unsigned int corryBarMaxArticleCountForSingleArticle:1;
         unsigned int endOfArticleMaxInaccessiblePaidArticles:1;
         unsigned int endOfArticleMinPaidHeadlineRatio:1;
+        unsigned int expirePinnedArticlesAfter:1;
         unsigned int expiredPaidSubscriptionGroupCutoffTime:1;
         unsigned int initialArticlesFromNewFavorite:1;
         unsigned int interstitialAdLoadDelay:1;
@@ -138,6 +146,7 @@
         unsigned int notificationArticleWithRapidUpdatesCacheTimeout:1;
         unsigned int notificationEnabledChannelsRefreshFrequency:1;
         unsigned int numberOfScreenfulsScrolledToBypassWidgetTimeLimit:1;
+        unsigned int optionalTopStoriesRefreshRate:1;
         unsigned int prerollLoadingTimeout:1;
         unsigned int publisherDiversitySlope:1;
         unsigned int publisherDiversityYIntercept:1;
@@ -157,9 +166,12 @@
         unsigned int timeBetweenWidgetInsertions:1;
         unsigned int treatmentId:1;
         unsigned int trendingTopicsRefreshRate:1;
+        unsigned int userSegmentationApiModMax:1;
+        unsigned int userSegmentationApiModThreshold:1;
         unsigned int enabledPrivateDataEncryptionLevel:1;
         unsigned int orderFeedEnabledLevel:1;
         unsigned int orderFeedEnabledLevelDeprecated:1;
+        unsigned int privateDataMigrationCleanupLevel:1;
         unsigned int trendingStyle:1;
         unsigned int alternativeButlerWidgetConfigEnabled:1;
         unsigned int articleSearchEnabled:1;
@@ -182,6 +194,7 @@
 @property (nonatomic) double articleDiversitySimilarityExpectationEnd; // @synthesize articleDiversitySimilarityExpectationEnd=_articleDiversitySimilarityExpectationEnd;
 @property (nonatomic) double articleDiversitySimilarityExpectationStart; // @synthesize articleDiversitySimilarityExpectationStart=_articleDiversitySimilarityExpectationStart;
 @property (nonatomic) long long articleRapidUpdatesTimeout; // @synthesize articleRapidUpdatesTimeout=_articleRapidUpdatesTimeout;
+@property (strong, nonatomic) NSString *articleRecirculationConfig; // @synthesize articleRecirculationConfig=_articleRecirculationConfig;
 @property (nonatomic) BOOL articleSearchEnabled; // @synthesize articleSearchEnabled=_articleSearchEnabled;
 @property (nonatomic) long long autoRefreshMinimumInterval; // @synthesize autoRefreshMinimumInterval=_autoRefreshMinimumInterval;
 @property (nonatomic) long long autoScrollToTopFeedTimeout; // @synthesize autoScrollToTopFeedTimeout=_autoScrollToTopFeedTimeout;
@@ -197,10 +210,12 @@
 @property (nonatomic) double endOfArticleMinPaidHeadlineRatio; // @synthesize endOfArticleMinPaidHeadlineRatio=_endOfArticleMinPaidHeadlineRatio;
 @property (strong, nonatomic) NSMutableArray *endpointConfigs; // @synthesize endpointConfigs=_endpointConfigs;
 @property (strong, nonatomic) NSString *experimentalizableFieldPostfix; // @synthesize experimentalizableFieldPostfix=_experimentalizableFieldPostfix;
+@property (nonatomic) long long expirePinnedArticlesAfter; // @synthesize expirePinnedArticlesAfter=_expirePinnedArticlesAfter;
 @property (nonatomic) long long expiredPaidSubscriptionGroupCutoffTime; // @synthesize expiredPaidSubscriptionGroupCutoffTime=_expiredPaidSubscriptionGroupCutoffTime;
 @property (strong, nonatomic) NSMutableArray *externalAnalyticsConfigs; // @synthesize externalAnalyticsConfigs=_externalAnalyticsConfigs;
 @property (strong, nonatomic) NSString *fallbackLanguageTag; // @synthesize fallbackLanguageTag=_fallbackLanguageTag;
 @property (strong, nonatomic) NSString *forYouNonPersonalizedGroupsOrder; // @synthesize forYouNonPersonalizedGroupsOrder=_forYouNonPersonalizedGroupsOrder;
+@property (strong, nonatomic) NTPBVideoGroupsConfig *forYouVideoGroupsConfig; // @synthesize forYouVideoGroupsConfig=_forYouVideoGroupsConfig;
 @property (readonly, nonatomic) BOOL hasAlternativeButlerWidgetConfig;
 @property (nonatomic) BOOL hasAlternativeButlerWidgetConfigEnabled;
 @property (nonatomic) BOOL hasAnalyticsEndpointMaxPayloadSize;
@@ -209,6 +224,7 @@
 @property (nonatomic) BOOL hasArticleDiversitySimilarityExpectationEnd;
 @property (nonatomic) BOOL hasArticleDiversitySimilarityExpectationStart;
 @property (nonatomic) BOOL hasArticleRapidUpdatesTimeout;
+@property (readonly, nonatomic) BOOL hasArticleRecirculationConfig;
 @property (nonatomic) BOOL hasArticleSearchEnabled;
 @property (nonatomic) BOOL hasAutoRefreshMinimumInterval;
 @property (nonatomic) BOOL hasAutoScrollToTopFeedTimeout;
@@ -223,9 +239,11 @@
 @property (nonatomic) BOOL hasEndOfArticleMaxInaccessiblePaidArticles;
 @property (nonatomic) BOOL hasEndOfArticleMinPaidHeadlineRatio;
 @property (readonly, nonatomic) BOOL hasExperimentalizableFieldPostfix;
+@property (nonatomic) BOOL hasExpirePinnedArticlesAfter;
 @property (nonatomic) BOOL hasExpiredPaidSubscriptionGroupCutoffTime;
 @property (readonly, nonatomic) BOOL hasFallbackLanguageTag;
 @property (readonly, nonatomic) BOOL hasForYouNonPersonalizedGroupsOrder;
+@property (readonly, nonatomic) BOOL hasForYouVideoGroupsConfig;
 @property (readonly, nonatomic) BOOL hasIadConfig;
 @property (nonatomic) BOOL hasInitialArticlesFromNewFavorite;
 @property (nonatomic) BOOL hasInterstitialAdLoadDelay;
@@ -249,6 +267,7 @@
 @property (nonatomic) BOOL hasNotificationArticleWithRapidUpdatesCacheTimeout;
 @property (nonatomic) BOOL hasNotificationEnabledChannelsRefreshFrequency;
 @property (nonatomic) BOOL hasNumberOfScreenfulsScrolledToBypassWidgetTimeLimit;
+@property (nonatomic) BOOL hasOptionalTopStoriesRefreshRate;
 @property (nonatomic) BOOL hasOrderFeedEnabledLevel;
 @property (nonatomic) BOOL hasOrderFeedEnabledLevelDeprecated;
 @property (nonatomic) BOOL hasOrderFeedEndpointEnabled;
@@ -263,6 +282,7 @@
 @property (readonly, nonatomic) BOOL hasPersonalizationWidgetSectionMappingResourceId;
 @property (readonly, nonatomic) BOOL hasPrefetchConfig;
 @property (nonatomic) BOOL hasPrerollLoadingTimeout;
+@property (nonatomic) BOOL hasPrivateDataMigrationCleanupLevel;
 @property (nonatomic) BOOL hasPublisherDiversitySlope;
 @property (nonatomic) BOOL hasPublisherDiversityYIntercept;
 @property (nonatomic) BOOL hasSavedArticlesCutoffTime;
@@ -286,6 +306,8 @@
 @property (nonatomic) BOOL hasUniversalLinksEnabled;
 @property (nonatomic) BOOL hasUsUkUseAuWhatsNewFeatures;
 @property (nonatomic) BOOL hasUseSecureConnectionForAssets;
+@property (nonatomic) BOOL hasUserSegmentationApiModMax;
+@property (nonatomic) BOOL hasUserSegmentationApiModThreshold;
 @property (readonly, nonatomic) BOOL hasWidgetConfig;
 @property (readonly, nonatomic) BOOL hasWidgetConfig2;
 @property (strong, nonatomic) NTPBIAdConfig *iadConfig; // @synthesize iadConfig=_iadConfig;
@@ -312,6 +334,7 @@
 @property (nonatomic) long long notificationArticleWithRapidUpdatesCacheTimeout; // @synthesize notificationArticleWithRapidUpdatesCacheTimeout=_notificationArticleWithRapidUpdatesCacheTimeout;
 @property (nonatomic) long long notificationEnabledChannelsRefreshFrequency; // @synthesize notificationEnabledChannelsRefreshFrequency=_notificationEnabledChannelsRefreshFrequency;
 @property (nonatomic) long long numberOfScreenfulsScrolledToBypassWidgetTimeLimit; // @synthesize numberOfScreenfulsScrolledToBypassWidgetTimeLimit=_numberOfScreenfulsScrolledToBypassWidgetTimeLimit;
+@property (nonatomic) long long optionalTopStoriesRefreshRate; // @synthesize optionalTopStoriesRefreshRate=_optionalTopStoriesRefreshRate;
 @property (nonatomic) unsigned int orderFeedEnabledLevel; // @synthesize orderFeedEnabledLevel=_orderFeedEnabledLevel;
 @property (nonatomic) int orderFeedEnabledLevelDeprecated; // @synthesize orderFeedEnabledLevelDeprecated=_orderFeedEnabledLevelDeprecated;
 @property (nonatomic) BOOL orderFeedEndpointEnabled; // @synthesize orderFeedEndpointEnabled=_orderFeedEndpointEnabled;
@@ -326,6 +349,7 @@
 @property (strong, nonatomic) NSString *personalizationWidgetSectionMappingResourceId; // @synthesize personalizationWidgetSectionMappingResourceId=_personalizationWidgetSectionMappingResourceId;
 @property (strong, nonatomic) NTPBPrefetchConfig *prefetchConfig; // @synthesize prefetchConfig=_prefetchConfig;
 @property (nonatomic) double prerollLoadingTimeout; // @synthesize prerollLoadingTimeout=_prerollLoadingTimeout;
+@property (nonatomic) int privateDataMigrationCleanupLevel; // @synthesize privateDataMigrationCleanupLevel=_privateDataMigrationCleanupLevel;
 @property (nonatomic) double publisherDiversitySlope; // @synthesize publisherDiversitySlope=_publisherDiversitySlope;
 @property (nonatomic) double publisherDiversityYIntercept; // @synthesize publisherDiversityYIntercept=_publisherDiversityYIntercept;
 @property (nonatomic) long long savedArticlesCutoffTime; // @synthesize savedArticlesCutoffTime=_savedArticlesCutoffTime;
@@ -351,6 +375,8 @@
 @property (nonatomic) BOOL universalLinksEnabled; // @synthesize universalLinksEnabled=_universalLinksEnabled;
 @property (nonatomic) BOOL usUkUseAuWhatsNewFeatures; // @synthesize usUkUseAuWhatsNewFeatures=_usUkUseAuWhatsNewFeatures;
 @property (nonatomic) BOOL useSecureConnectionForAssets; // @synthesize useSecureConnectionForAssets=_useSecureConnectionForAssets;
+@property (nonatomic) long long userSegmentationApiModMax; // @synthesize userSegmentationApiModMax=_userSegmentationApiModMax;
+@property (nonatomic) long long userSegmentationApiModThreshold; // @synthesize userSegmentationApiModThreshold=_userSegmentationApiModThreshold;
 @property (strong, nonatomic) NTPBWidgetConfig *widgetConfig; // @synthesize widgetConfig=_widgetConfig;
 @property (strong, nonatomic) NTPBWidgetConfig *widgetConfig2; // @synthesize widgetConfig2=_widgetConfig2;
 

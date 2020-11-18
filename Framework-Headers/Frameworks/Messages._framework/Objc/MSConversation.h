@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MSMessage, NSArray, NSData, NSString, NSUUID;
+@class MSMessage, NSArray, NSData, NSString, NSUUID, _MSMessageAppContext;
 @protocol MSConversationDelegate;
 
 @interface MSConversation : NSObject
@@ -17,11 +17,13 @@
     MSMessage *_selectedMessage;
     NSUUID *_localParticipantIdentifier;
     NSArray *_remoteParticipantIdentifiers;
+    _MSMessageAppContext *_context;
     NSString *_senderAddress;
     NSArray *_recipientAddresses;
     id<MSConversationDelegate> _delegate;
 }
 
+@property (strong, nonatomic) _MSMessageAppContext *context; // @synthesize context=_context;
 @property (readonly, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property (weak, nonatomic) id<MSConversationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSData *engramID; // @synthesize engramID=_engramID;
@@ -34,7 +36,7 @@
 
 + (id)activeConversation;
 - (void).cxx_destruct;
-- (id)_initWithState:(id)arg1;
+- (id)_initWithState:(id)arg1 context:(id)arg2;
 - (void)_insertAttachment:(id)arg1 adamID:(id)arg2 appName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_insertAttachment:(id)arg1 withAlternateFilename:(id)arg2 skipShelf:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_insertMessage:(id)arg1 localizedChangeDescription:(id)arg2 skipShelf:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -43,7 +45,6 @@
 - (void)_insertSticker:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_insertText:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateWithState:(id)arg1;
-- (id)context;
 - (id)inputMessagePayload;
 - (void)insertAttachment:(id)arg1 withAlternateFilename:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)insertImage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

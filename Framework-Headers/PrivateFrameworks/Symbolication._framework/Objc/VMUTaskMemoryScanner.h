@@ -42,9 +42,14 @@
     unsigned long long _maxInteriorOffset;
     unsigned int _scanningMask;
     VMUDebugTimer *_debugTimer;
+    BOOL _showRawClassNames;
+    BOOL _javaScriptCoreUsingPoisoning;
     NSString *_processName;
     NSString *_processDescriptionString;
     NSString *_binaryImagesDescription;
+    unsigned long long _physicalFootprint;
+    unsigned long long _physicalFootprintPeak;
+    unsigned long long _regionDescriptionOptions;
     CDUnknownBlockType _referenceLogger;
     CDUnknownBlockType _nodeLogger;
     BOOL _abandonedMarkingEnabled;
@@ -66,6 +71,8 @@
 @property (readonly, nonatomic) unsigned int nodeCount; // @synthesize nodeCount=_blocksCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
 @property (readonly, nonatomic) VMUObjectIdentifier *objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
+@property (readonly, nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
+@property (readonly, nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
 @property (readonly, nonatomic) NSString *processDescriptionString; // @synthesize processDescriptionString=_processDescriptionString;
 @property (readonly, nonatomic) NSString *processName; // @synthesize processName=_processName;
@@ -73,6 +80,7 @@
 @property (readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionsCount;
 @property (nonatomic) BOOL saveNodeLabelsInGraph; // @synthesize saveNodeLabelsInGraph=_saveNodeLabelsInGraph;
 @property (nonatomic) unsigned int scanningMask; // @synthesize scanningMask=_scanningMask;
+@property (nonatomic) BOOL showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int task; // @synthesize task=_task;
 @property (readonly, nonatomic) unsigned int vmPageSize;

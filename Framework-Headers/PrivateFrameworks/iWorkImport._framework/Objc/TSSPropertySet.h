@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (void)dealloc;
+- (id)description;
 - (void)enumeratePropertiesUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
 - (id)init;

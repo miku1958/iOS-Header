@@ -38,6 +38,7 @@
 @property (strong, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property (copy, nonatomic) NSString *uti; // @synthesize uti=_uti;
 
++ (BOOL)_hasSuitableApplicationForOpeningDocument:(id)arg1;
 - (void).cxx_destruct;
 - (void)_deleteSavedPathIfNecessary;
 - (void)_deleteSavedPathWithProperExtensionIfNecessary;

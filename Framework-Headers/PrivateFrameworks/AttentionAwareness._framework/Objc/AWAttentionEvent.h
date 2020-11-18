@@ -8,11 +8,9 @@
 
 #import <AttentionAwareness/NSSecureCoding-Protocol.h>
 
-@class NSData;
-
 @interface AWAttentionEvent : NSObject <NSSecureCoding>
 {
-    NSData *_archivedTag;
+    unsigned long long _tagIndex;
     unsigned long long _eventMask;
     double _timestamp;
     id _tag;
@@ -24,11 +22,11 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)archivedTag;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTimestamp:(double)arg1 archivedTag:(id)arg2 eventMask:(unsigned long long)arg3;
+- (id)initWithTimestamp:(double)arg1 tagIndex:(unsigned long long)arg2 eventMask:(unsigned long long)arg3;
+- (unsigned long long)tagIndex;
 - (void)updateWithConfig:(id)arg1;
 - (void)validateMask;
 

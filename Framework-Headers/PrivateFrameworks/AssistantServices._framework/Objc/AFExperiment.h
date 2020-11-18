@@ -39,10 +39,10 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
++ (id)newWithBuilder:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
-- (id)builder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -50,6 +50,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)logExperimentExposureForSiriVOXSounds;
 - (void)logExperimentExposureForTapToSiriBehavior;
+- (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 
 @end
 

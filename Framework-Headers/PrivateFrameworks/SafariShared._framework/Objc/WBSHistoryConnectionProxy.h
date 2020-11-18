@@ -36,6 +36,8 @@
 - (id)init;
 - (void)killService;
 - (void)processRemoteHistoryNotification:(id)arg1;
+- (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
+- (id)queryMemoryFootprintWithError:(id *)arg1;
 - (void)registerForHistoryNotifications;
 - (void)unregisterForHistoryNotifications;
 

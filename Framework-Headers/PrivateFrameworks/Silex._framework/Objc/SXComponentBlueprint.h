@@ -9,14 +9,15 @@
 #import <Silex/NSCoding-Protocol.h>
 #import <Silex/NSCopying-Protocol.h>
 
-@class NSDictionary, SXComponent, SXComponentLayout, SXComponentSizer, SXLayoutBlueprint;
+@class NSDictionary, SXComponentSizer, SXLayoutBlueprint;
+@protocol SXComponent, SXComponentLayout;
 
 @interface SXComponentBlueprint : NSObject <NSCoding, NSCopying>
 {
     BOOL _hasValidSize;
     BOOL _hasValidPosition;
-    SXComponent *_component;
-    SXComponentLayout *_componentLayout;
+    id<SXComponent> _component;
+    id<SXComponentLayout> _componentLayout;
     SXLayoutBlueprint *_parentLayoutBlueprint;
     SXComponentSizer *_componentSizer;
     NSDictionary *_infoFromLayouting;
@@ -30,8 +31,8 @@
 
 @property (nonatomic) struct CGRect absoluteFrame; // @synthesize absoluteFrame=_absoluteFrame;
 @property (nonatomic) struct _NSRange columnRange; // @synthesize columnRange=_columnRange;
-@property (readonly, nonatomic) SXComponent *component; // @synthesize component=_component;
-@property (readonly, nonatomic) SXComponentLayout *componentLayout; // @synthesize componentLayout=_componentLayout;
+@property (readonly, nonatomic) id<SXComponent> component; // @synthesize component=_component;
+@property (readonly, nonatomic) id<SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
 @property (strong, nonatomic) SXComponentSizer *componentSizer; // @synthesize componentSizer=_componentSizer;
 @property (nonatomic) struct CGRect contentFrame; // @synthesize contentFrame=_contentFrame;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;

@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariShared/WBSHistorySessions-Protocol.h>
+
 @class NSArray, NSMutableDictionary, WBSHistorySessionIntervalCache;
 @protocol OS_dispatch_queue;
 
-@interface WBSHistorySessionController : NSObject
+@interface WBSHistorySessionController : NSObject <WBSHistorySessions>
 {
     NSObject<OS_dispatch_queue> *_sessionCacheAccessQueue;
     NSMutableDictionary *_itemsBySession;
@@ -17,15 +19,18 @@
     WBSHistorySessionIntervalCache *_intervalCache;
 }
 
+@property (readonly, nonatomic) unsigned long long numberOfSessions;
+@property (readonly, copy, nonatomic) NSArray *orderedSessions;
+
 + (id)sharedSessionController;
 - (void).cxx_destruct;
-- (void)_addItemToSessionCache:(id)arg1;
+- (void)_addItemsToSessionCache:(id)arg1 shouldPostChangeNotification:(BOOL)arg2;
 - (void)_clearSessionCache;
 - (void)_dispatchHistorySessionsDidChangeNotification;
 - (BOOL)_getKey:(id *)arg1 forDate:(double)arg2;
 - (void)_historyItemsWereAdded:(id)arg1;
 - (void)_historyItemsWereRemoved:(id)arg1;
-- (void)_insertItem:(id)arg1 withSessionKey:(id)arg2;
+- (unsigned long long)_insertItem:(id)arg1 withSessionKey:(id)arg2;
 - (void)_loadSessionCache;
 - (id)_orderedSessionKeys;
 - (void)_removeItemsFromSessionCache:(id)arg1;
@@ -37,8 +42,6 @@
 - (id)itemLastVisitedInSession:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)itemsLastVisitedInSession:(id)arg1;
 - (unsigned long long)numberOfItemsVisitedInSession:(id)arg1;
-- (unsigned long long)numberOfSessions;
-- (id)orderedSessions;
 - (id)sessionForItem:(id)arg1;
 
 @end

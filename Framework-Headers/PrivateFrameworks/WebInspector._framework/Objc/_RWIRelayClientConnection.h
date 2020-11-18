@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _RWIRelayClientConnection : NSObject <_RWIRelayToClientMessageProxy>
 {
-    BOOL _didReportClose;
+    BOOL _closed;
     BOOL _sleeping;
     id<_RWIRelayClientConnectionDelegate> _delegate;
     NSString *_tag;
@@ -24,9 +24,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL sleeping; // @synthesize sleeping=_sleeping;
 @property (copy, nonatomic) NSString *tag; // @synthesize tag=_tag;
 
-- (void)_dispatchMessage:(id)arg1;
-- (void)_reportClose;
+- (void)_closeAndNotifyDelegate:(BOOL)arg1;
+- (void)close;
+- (void)closeFromConnection;
+- (void)closeInternal;
 - (void)dealloc;
+- (void)dispatchRelayMessage:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;

@@ -35,12 +35,13 @@
 
 - (void).cxx_destruct;
 - (void)_configureAndAddRemoteViewController;
-- (void)_finishSetupWithError:(id)arg1;
+- (void)_finishSetupWithInfo:(id)arg1 error:(id)arg2;
 - (void)_presentAsTopmostViewController;
 - (void)_requestRemoteViewController;
 - (void)accessorySetupDidBeginPairing;
 - (void)accessorySetupDidFinishPairing;
 - (void)accessorySetupDidFinishWithError:(id)arg1;
+- (void)accessorySetupDidFinishWithInfo:(id)arg1 error:(id)arg2;
 - (void)accessorySetupDidLoad;
 - (id)init;
 - (id)initWithHome:(id)arg1 accessoryDescription:(id)arg2 loadHandler:(CDUnknownBlockType)arg3;

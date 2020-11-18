@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *previewImageURL;
 @property (readonly, copy, nonatomic) NSSet *tags;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)initWithDisplayName:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

@@ -37,6 +37,7 @@
     NSMutableSet *_stringUniquingSet;
     NSHashTable *_objcRuntimeMallocBlocksHash;
     VMUNonOverlappingRangeArray *_targetProcessVMranges;
+    BOOL _targetProcessContainsMallocStackLoggingLiteZone;
     unsigned long long _cfBooleanTrueAddress;
     unsigned long long _cfBooleanFalseAddress;
 }
@@ -51,10 +52,12 @@
 - (unsigned long long)ObjCclassCount;
 - (unsigned long long)SwiftClassCount;
 - (id)_classInfoWithNonobjectType:(id)arg1 binaryPath:(id)arg2;
+- (id)_classInfoWithPthreadType:(id)arg1;
 - (void *)_dlopenLibSwiftRemoteMirrorFromDir:(id)arg1;
 - (void *)_dlopenLibSwiftRemoteMirrorNearLibSwiftCoreWithSymbolicator:(struct _CSTypeRef)arg1 avoidSystem:(BOOL)arg2;
 - (void *)_dlopenLibSwiftRemoteMirrorWithSymbolicator:(struct _CSTypeRef)arg1;
 - (void)_faultClass:(unsigned long long)arg1 ofType:(int)arg2;
+- (BOOL)_isValidInstanceLength:(unsigned long long)arg1 expectedLength:(unsigned long long)arg2;
 - (void)_populateSwiftDebugVariables:(struct libSwiftRemoteMirrorWrapper *)arg1;
 - (int)_populateSwiftReflectionInfo:(struct libSwiftRemoteMirrorWrapper *)arg1;
 - (id)_returnFaultedClass:(unsigned long long)arg1 ofType:(int)arg2;
@@ -75,13 +78,16 @@
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2 scanner:(id)arg3;
+- (id)labelForCFBundle:(void *)arg1;
 - (id)labelForItemCount:(long long)arg1;
 - (id)labelForMallocBlock:(struct _VMURange)arg1;
 - (id)labelForMallocBlock:(struct _VMURange)arg1 usingHandlerBlock:(CDUnknownBlockType)arg2;
 - (id)labelForMemory:(void *)arg1 length:(unsigned long long)arg2;
 - (id)labelForMemory:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
+- (id)labelForMemory:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3 expectedClassName:(id)arg4;
 - (id)labelForMemory:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3 usingHandlerBlock:(CDUnknownBlockType)arg4;
 - (id)labelForNSArray:(void *)arg1;
+- (id)labelForNSBundle:(void *)arg1;
 - (id)labelForNSCFDictionary:(void *)arg1;
 - (id)labelForNSCFSet:(void *)arg1;
 - (id)labelForNSCFStringAtRemoteAddress:(unsigned long long)arg1 printDetail:(BOOL)arg2;
@@ -105,6 +111,7 @@
 - (id)labelForOSDispatchQueue:(void *)arg1;
 - (id)labelForOSTransaction:(void *)arg1;
 - (id)labelForOSXPCConnection:(void *)arg1;
+- (id)labelForObjectOfClass:(id)arg1 atOffset:(unsigned int)arg2 ofObject:(void *)arg3;
 - (id)labelForProtocol:(void *)arg1;
 - (id)labelForTaggedPointer:(void *)arg1;
 - (id)labelFor__NSMallocBlock__:(void *)arg1;

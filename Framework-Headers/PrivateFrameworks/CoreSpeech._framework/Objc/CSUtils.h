@@ -10,9 +10,13 @@
 {
 }
 
++ (void)_URLsInDirectory:(id)arg1 matchingPattern:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (id)_contentsOfDirectoryAtURL:(id)arg1 matchingPattern:(id)arg2 includingPropertiesForKeys:(id)arg3 error:(id *)arg4;
++ (void)_sortedURLsInDirectory:(id)arg1 matchingPattern:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (struct AudioStreamBasicDescription)aiffFileASBD;
 + (id)alertMuteSettings;
 + (id)assetHashInResourcePath:(id)arg1;
++ (void)clearLogFilesInDirectory:(id)arg1 matchingPattern:(id)arg2 exceedNumber:(unsigned long long)arg3;
 + (id)convertToFloatLPCMBufFromShortLPCMBuf:(id)arg1;
 + (id)convertToShortLPCMBufFromFloatLPCMBuf:(id)arg1;
 + (id)deviceProductType;
@@ -25,6 +29,7 @@
 + (unsigned long long)hostTimeFromSampleCount:(unsigned long long)arg1 anchorHostTime:(unsigned long long)arg2 anchorSampleCount:(unsigned long long)arg3;
 + (float)hostTimeToSeconds:(unsigned long long)arg1;
 + (double)hostTimeToTimeInterval:(unsigned long long)arg1;
++ (BOOL)isRecordContextAutoPrompt:(id)arg1;
 + (BOOL)isRecordContextVoiceTrigger:(id)arg1;
 + (void)iterateBitset:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 + (struct AudioStreamBasicDescription)lpcmASBD;
@@ -38,6 +43,7 @@
 + (struct AudioStreamBasicDescription)opusNarrowBandASBD;
 + (id)opusRecordSettings;
 + (BOOL)readAudioChunksFrom:(id)arg1 block:(CDUnknownBlockType)arg2;
++ (void)removeLogFilesInDirectory:(id)arg1 matchingPattern:(id)arg2 beforeDays:(float)arg3;
 + (id)rootQueueWithFixedPriority:(int)arg1;
 + (unsigned long long)sampleCountFromHostTime:(unsigned long long)arg1 anchorHostTime:(unsigned long long)arg2 anchorSampleCount:(unsigned long long)arg3;
 + (unsigned long long)secondsToHostTime:(float)arg1;
@@ -50,11 +56,10 @@
 + (BOOL)supportOpportunisticZLL;
 + (BOOL)supportPremiumAssets;
 + (BOOL)supportSelfTriggerSuppression;
++ (BOOL)supportSmartVolume;
++ (double)systemUpTime;
 + (struct AudioStreamBasicDescription)utteranceFileASBD;
 + (id)voiceTriggerRecordContext;
-- (void)_URLsInDirectory:(id)arg1 matchingPattern:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_contentsOfDirectoryAtURL:(id)arg1 matchingPattern:(id)arg2 includingPropertiesForKeys:(id)arg3 error:(id *)arg4;
-- (void)removeLogFilesInDirectory:(id)arg1 matchingPattern:(id)arg2 beforeDays:(float)arg3;
 
 @end
 

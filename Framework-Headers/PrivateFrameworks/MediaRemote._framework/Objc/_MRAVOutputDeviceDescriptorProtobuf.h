@@ -16,6 +16,7 @@
     int _deviceSubType;
     int _deviceType;
     NSString *_groupID;
+    NSString *_logicalDeviceID;
     NSData *_macAddress;
     NSString *_modelID;
     NSData *_modelSpecificInfoData;
@@ -23,6 +24,8 @@
     _MRAVOutputDeviceSourceInfoProtobuf *_sourceInfo;
     NSString *_uniqueIdentifier;
     BOOL _canAccessRemoteAssets;
+    BOOL _canRelayCommunicationChannel;
+    BOOL _isDeviceGroupable;
     BOOL _isGroupLeader;
     BOOL _isGroupable;
     BOOL _isLocalDevice;
@@ -35,6 +38,8 @@
         unsigned int deviceSubType:1;
         unsigned int deviceType:1;
         unsigned int canAccessRemoteAssets:1;
+        unsigned int canRelayCommunicationChannel:1;
+        unsigned int isDeviceGroupable:1;
         unsigned int isGroupLeader:1;
         unsigned int isGroupable:1;
         unsigned int isLocalDevice:1;
@@ -47,18 +52,22 @@
 
 @property (nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
+@property (nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (nonatomic) int deviceSubType; // @synthesize deviceSubType=_deviceSubType;
 @property (nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
 @property (strong, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (nonatomic) BOOL hasBatteryLevel;
 @property (nonatomic) BOOL hasCanAccessRemoteAssets;
+@property (nonatomic) BOOL hasCanRelayCommunicationChannel;
 @property (nonatomic) BOOL hasDeviceSubType;
 @property (nonatomic) BOOL hasDeviceType;
 @property (readonly, nonatomic) BOOL hasGroupID;
+@property (nonatomic) BOOL hasIsDeviceGroupable;
 @property (nonatomic) BOOL hasIsGroupLeader;
 @property (nonatomic) BOOL hasIsGroupable;
 @property (nonatomic) BOOL hasIsLocalDevice;
 @property (nonatomic) BOOL hasIsRemoteControllable;
+@property (readonly, nonatomic) BOOL hasLogicalDeviceID;
 @property (readonly, nonatomic) BOOL hasMacAddress;
 @property (readonly, nonatomic) BOOL hasModelID;
 @property (readonly, nonatomic) BOOL hasModelSpecificInfoData;
@@ -68,10 +77,12 @@
 @property (readonly, nonatomic) BOOL hasSourceInfo;
 @property (nonatomic) BOOL hasSupportsExternalScreen;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
+@property (nonatomic) BOOL isDeviceGroupable; // @synthesize isDeviceGroupable=_isDeviceGroupable;
 @property (nonatomic) BOOL isGroupLeader; // @synthesize isGroupLeader=_isGroupLeader;
 @property (nonatomic) BOOL isGroupable; // @synthesize isGroupable=_isGroupable;
 @property (nonatomic) BOOL isLocalDevice; // @synthesize isLocalDevice=_isLocalDevice;
 @property (nonatomic) BOOL isRemoteControllable; // @synthesize isRemoteControllable=_isRemoteControllable;
+@property (strong, nonatomic) NSString *logicalDeviceID; // @synthesize logicalDeviceID=_logicalDeviceID;
 @property (strong, nonatomic) NSData *macAddress; // @synthesize macAddress=_macAddress;
 @property (strong, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
 @property (strong, nonatomic) NSData *modelSpecificInfoData; // @synthesize modelSpecificInfoData=_modelSpecificInfoData;
@@ -82,9 +93,9 @@
 @property (nonatomic) BOOL supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL showTrendLineLegendText;
 @property (readonly, nonatomic) NSString *trendLineLegendText;
 
+- (void).cxx_destruct;
 - (void)clearParent;
 - (void)dealloc;
 - (id)initWithSeries:(id)arg1;

@@ -6,8 +6,7 @@
 
 #import <WebUI/WBUFormAutoCompleteState.h>
 
-@class NSDictionary, NSString, SFFormAutoFillFrameHandle, UIView, WBSFormAutoFillMetadataCorrector, WBSFormMetadata, _SFFormAutoFillController;
-@protocol _WKFormInputSession;
+@class NSDictionary, NSString, SFFormAutoFillFrameHandle, UIView, WBSFormAutoFillMetadataCorrector, WBSFormMetadata, _SFFormAutoFillController, _SFFormAutoFillInputSession;
 
 __attribute__((visibility("hidden")))
 @interface SFFormAutocompleteState : WBUFormAutoCompleteState
@@ -17,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_textFieldMetadata;
     NSString *_textFieldValue;
     _SFFormAutoFillController *_autoFillController;
-    id<_WKFormInputSession> _inputSession;
+    _SFFormAutoFillInputSession *_inputSession;
     UIView *_emptyInputView;
     WBSFormAutoFillMetadataCorrector *_metadataCorrector;
     NSString *_prefixForSuggestions;
@@ -36,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)autoFillValuesAfterAuthenticationIfNeeded:(id)arg1;
 - (void)dealloc;
 - (void)fetchFormMetadataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fillCredentialAfterAuthenticationIfNeeded:(id)arg1;
+- (void)fillCredentialAfterAuthenticationIfNeeded:(id)arg1 setAsDefaultCredential:(BOOL)arg2;
 - (void)fillGeneratedPassword:(id)arg1 inField:(id)arg2;
 - (id)frame;
 - (void)getTextFieldMetadata:(id *)arg1 formMetadata:(id *)arg2;

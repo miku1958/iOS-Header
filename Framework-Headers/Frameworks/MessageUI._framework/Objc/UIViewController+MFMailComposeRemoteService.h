@@ -7,6 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (MFMailComposeRemoteService)
+- (id)mf_classesForUICustomization;
 - (id)mf_dataForUICustomization;
 - (id)mf_keyPathsMapForUICustomization;
 - (void)mf_setDataForUICustomization:(id)arg1;

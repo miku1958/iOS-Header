@@ -54,6 +54,7 @@
 + (id)stringRepresentationsOfNodesAsSeparateLines:(id)arg1 language:(unsigned long long)arg2 error:(id *)arg3;
 + (BOOL)supportsSecureCoding;
 + (id)treeForStringRepresentation:(id)arg1 range:(struct _NSRange)arg2 error:(id *)arg3;
+- (void).cxx_destruct;
 - (void)_absorbOnlyChildrenIntoParents;
 - (BOOL)_canHaveSiblingNode:(id)arg1;
 - (BOOL)_canPushPutSolitaryRootNodes;
@@ -73,7 +74,6 @@
 - (id)_treeAsJSONWithError:(id *)arg1;
 - (id)_treeByPushingOutPrefix:(id *)arg1 error:(id *)arg2;
 - (id)copy;
-- (void)dealloc;
 - (id)description;
 - (id)descriptionWithDepth:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;

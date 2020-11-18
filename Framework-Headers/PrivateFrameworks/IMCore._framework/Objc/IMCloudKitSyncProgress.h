@@ -10,9 +10,10 @@
 
 @interface IMCloudKitSyncProgress : NSObject
 {
-    BOOL _hidden;
     BOOL _shouldShowProgressBar;
-    BOOL _finishing;
+    BOOL _shouldShowIndeterminateProgress;
+    BOOL _shouldShowUserActionLabel;
+    BOOL _shouldShowUserMessageLabel;
     NSString *_progressLabel;
     double _progressBarValue;
     double _progressBarMax;
@@ -26,26 +27,26 @@
 @property (strong, nonatomic) NSString *actionLabel; // @synthesize actionLabel=_actionLabel;
 @property (nonatomic) long long actionType; // @synthesize actionType=_actionType;
 @property (readonly, nonatomic) NSArray *errors; // @dynamic errors;
-@property (readonly, nonatomic, getter=isFinishing) BOOL finishing; // @synthesize finishing=_finishing;
-@property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
+@property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @dynamic hidden;
 @property (readonly, nonatomic) double percentComplete; // @dynamic percentComplete;
 @property (readonly, nonatomic) NSString *percentCompleteString; // @dynamic percentCompleteString;
 @property (nonatomic) double progressBarMax; // @synthesize progressBarMax=_progressBarMax;
 @property (nonatomic) double progressBarValue; // @synthesize progressBarValue=_progressBarValue;
 @property (strong, nonatomic) NSString *progressLabel; // @synthesize progressLabel=_progressLabel;
 @property (readonly, nonatomic) double remainingItems; // @dynamic remainingItems;
+@property (nonatomic) BOOL shouldShowIndeterminateProgress; // @synthesize shouldShowIndeterminateProgress=_shouldShowIndeterminateProgress;
 @property (nonatomic) BOOL shouldShowProgressBar; // @synthesize shouldShowProgressBar=_shouldShowProgressBar;
-@property (readonly, nonatomic) BOOL shouldShowUserActionLabel; // @dynamic shouldShowUserActionLabel;
-@property (readonly, nonatomic) BOOL shouldShowUserMessageLabel; // @dynamic shouldShowUserMessageLabel;
+@property (nonatomic) BOOL shouldShowUserActionLabel; // @synthesize shouldShowUserActionLabel=_shouldShowUserActionLabel;
+@property (nonatomic) BOOL shouldShowUserMessageLabel; // @synthesize shouldShowUserMessageLabel=_shouldShowUserMessageLabel;
 @property (readonly, nonatomic) IMCloudKitSyncState *syncState; // @synthesize syncState=_syncState;
 @property (readonly, nonatomic) IMCloudKitSyncStatistics *syncStatistics; // @synthesize syncStatistics=_syncStatistics;
 @property (strong, nonatomic) NSString *userMessageLabel; // @synthesize userMessageLabel=_userMessageLabel;
 
-+ (id)createSyncProgressWithSyncState:(id)arg1 syncStatistics:(id)arg2 finishing:(BOOL)arg3 hidden:(BOOL)arg4;
 - (void).cxx_destruct;
+- (void)configureSelf;
 - (id)description;
-- (id)initWithSyncState:(id)arg1 syncStatistics:(id)arg2 finishing:(BOOL)arg3 hidden:(BOOL)arg4;
-- (void)updateState;
+- (id)init;
+- (id)initWithSyncState:(id)arg1 syncStatistics:(id)arg2;
 
 @end
 

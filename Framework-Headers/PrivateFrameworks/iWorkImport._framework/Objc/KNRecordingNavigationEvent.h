@@ -6,24 +6,24 @@
 
 #import <iWorkImport/KNRecordingEvent.h>
 
-@class KNSlideNode, NSUUID, TSUWeakReference;
+@class KNSlideNode, NSUUID, TSPObjectContext;
 
 __attribute__((visibility("hidden")))
 @interface KNRecordingNavigationEvent : KNRecordingEvent
 {
-    TSUWeakReference *mTargetSlideNodeContextReference;
-    NSUUID *mTargetSlideNodeUUID;
-    unsigned long long mTargetEventIndex;
-    long long mAnimationPhase;
+    TSPObjectContext *_targetSlideNodeContextReference;
+    NSUUID *_targetSlideNodeUUID;
+    unsigned long long _targetEventIndex;
+    long long _animationPhase;
 }
 
-@property (readonly, nonatomic) long long animationPhase; // @synthesize animationPhase=mAnimationPhase;
-@property (readonly, nonatomic) unsigned long long targetEventIndex; // @synthesize targetEventIndex=mTargetEventIndex;
+@property (readonly, nonatomic) long long animationPhase; // @synthesize animationPhase=_animationPhase;
+@property (readonly, nonatomic) unsigned long long targetEventIndex; // @synthesize targetEventIndex=_targetEventIndex;
 @property (readonly, nonatomic) KNSlideNode *targetSlideNode;
 
+- (void).cxx_destruct;
 - (BOOL)canPrecedeDiscontinuity;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithParentEventTrack:(id)arg1 archive:(const struct RecordingEventArchive *)arg2 unarchiver:(id)arg3;

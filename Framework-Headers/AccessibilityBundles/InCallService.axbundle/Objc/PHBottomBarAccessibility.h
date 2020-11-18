@@ -18,6 +18,7 @@
 - (void)buttonPressed:(id)arg1;
 - (void)layoutSubviews;
 - (void)refreshCustomizedActionTypeTitles;
+- (void)setAnimating:(BOOL)arg1;
 - (void)setCurrentState:(long long)arg1 animated:(BOOL)arg2 animationCompletionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)shouldGroupAccessibilityChildren;
 

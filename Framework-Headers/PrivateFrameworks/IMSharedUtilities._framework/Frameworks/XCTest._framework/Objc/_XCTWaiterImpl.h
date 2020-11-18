@@ -38,6 +38,7 @@
 @property (copy) NSArray *waitCallStackReturnAddresses; // @synthesize waitCallStackReturnAddresses=_waitCallStackReturnAddresses;
 @property struct __CFRunLoop *waitingRunLoop; // @synthesize waitingRunLoop=_waitingRunLoop;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 

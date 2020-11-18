@@ -6,11 +6,12 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSMutableArray, PKBarcode, UIImageView, UILabel, UIView;
+@class NSMutableArray, PKBarcode, UIImage, UIImageView, UILabel, UIView;
 
 @interface PKBarcodeStickerView : UIButton
 {
     PKBarcode *_barcode;
+    UIImage *_barcodeImage;
     UIImageView *_matteView;
     UIImageView *_barcodeView;
     NSMutableArray *_stickerConstraints;
@@ -29,8 +30,10 @@
 - (void).cxx_destruct;
 - (void)_generateMatteRect:(struct CGRect *)arg1 barcodeRect:(struct CGRect *)arg2 altTextRect:(struct CGRect *)arg3 boundingSize:(struct CGSize)arg4;
 - (id)_resizedBarcode:(id)arg1 desiredSize:(struct CGSize)arg2;
+- (void)_updateDrawBarcode;
 - (void)_updateValidity;
 - (struct CGSize)_varianceForBarcode:(id)arg1;
+- (id)barcodeImage;
 - (id)initWithBarcode:(id)arg1 validityState:(long long)arg2 layoutMode:(long long)arg3;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

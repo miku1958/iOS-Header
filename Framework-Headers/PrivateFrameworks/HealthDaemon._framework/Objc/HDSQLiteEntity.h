@@ -30,6 +30,7 @@
 + (id)aggregateValuesForProperty:(id)arg1 functions:(id)arg2 queryDescriptor:(id)arg3 database:(id)arg4 error:(id *)arg5;
 + (id)allDatabaseColumnNames;
 + (id)anyInDatabase:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
++ (id)checkConstraints;
 + (id)columnsDefinition;
 + (id)countDistinctForProperty:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id *)arg4;
 + (id)countValueForProperty:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id *)arg4;

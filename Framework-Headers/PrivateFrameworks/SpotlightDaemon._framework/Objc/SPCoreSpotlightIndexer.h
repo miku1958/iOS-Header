@@ -30,6 +30,7 @@
     NSObject<OS_dispatch_source> *_reindexAllItemsSource;
     NSObject<OS_dispatch_source> *_reindexAllItemsWithIdentifiersSource;
     SPCoreSpotlightTask *_reindexAllItemsTask;
+    NSDictionary *_fileProviderAppToExtensionBundleMap;
     NSObject<OS_dispatch_source> *_idleTimer;
     NSObject<OS_dispatch_queue> *_indexQueue;
     NSObject<OS_dispatch_queue> *_firstUnlockQueue;
@@ -47,6 +48,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long dirty_time; // @synthesize dirty_time=_dirty_time;
 @property (weak) id<CSIndexExtensionDelegate> extensionDelegate; // @synthesize extensionDelegate;
+@property (strong) NSDictionary *fileProviderAppToExtensionBundleMap; // @synthesize fileProviderAppToExtensionBundleMap=_fileProviderAppToExtensionBundleMap;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *firstUnlockQueue; // @synthesize firstUnlockQueue=_firstUnlockQueue;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *idleTimer; // @synthesize idleTimer=_idleTimer;
@@ -70,11 +72,14 @@
 + (void)initialize;
 + (void)preheat;
 + (void)setIndexerDelegate:(id)arg1;
++ (void)setMemoryPressureStatus:(unsigned long long)arg1;
++ (void)setPrivate:(BOOL)arg1;
 + (id)sharedInstance;
 + (id)sharedInstanceWithDelegate:(id)arg1;
 + (void)shrink:(unsigned long long)arg1;
 + (void)shutdown;
 + (void)sync;
++ (void)unlock;
 + (void)writeDiagnostic:(id)arg1 bundleID:(id)arg2 identifier:(id)arg3;
 - (void).cxx_destruct;
 - (void)_closeIndexWithIndexers:(id)arg1;
@@ -109,6 +114,7 @@
 - (void)deleteSearchableItemsSinceDate:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)dirty;
+- (void)extensionsChanged:(id)arg1;
 - (void)extensionsLoaded;
 - (void)fetchAttributesForProtectionClass:(id)arg1 attributes:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)fetchLastClientStateWithProtectionClass:(id)arg1 forBundleID:(id)arg2 clientStateName:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -150,7 +156,7 @@
 - (id)startQueryWithQueryString:(id)arg1 queryContext:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)taskForQueryWithQueryString:(id)arg1 queryContext:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)taskForTopHitQueryWithQueryString:(id)arg1 queryContext:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)unlockFirstUnlockInSB:(BOOL)arg1;
+- (void)unlock;
 - (void)userPerformedAction:(id)arg1 withItem:(id)arg2 protectionClass:(id)arg3 forBundleID:(id)arg4;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 

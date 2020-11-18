@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedDelegate;
 - (BOOL)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2;
 - (id)appChartPropertyOverrides;
+- (id)applicationDisplayName;
 - (id)applicationName;
 - (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
 - (unsigned long long)applicationType;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)documentTypeDisplayName;
 - (id)documentTypeDisplayNameForSharingInvitation;
 - (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
+- (BOOL)imageGalleryCaptionsUsePlaceholderText;
 - (id)importableDocumentTypes;
 - (id)init;
 - (id)nativeDocumentType;
@@ -43,12 +45,11 @@ __attribute__((visibility("hidden")))
 - (void)p_localeChanged:(id)arg1;
 - (id)previewImageNameForEncryptedNativeDocument;
 - (id)previewImageNameForNativeDocument;
+- (void)registerSOSClassTypeMappings;
 - (id)sharedAlertMessageWithUserName:(id)arg1;
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
 - (id)stringForApplicationUpdateError;
-- (id)stringForBoxCollaborationOptInLearnMoreURL;
 - (id)stringForBoxCollaborationOptInMessage;
-- (id)stringForBoxCollaborationOptInTermsOfServiceURL;
 - (id)stringForCloseDocument;
 - (id)stringForCloseDocumentConfirmationAlertMessage;
 - (id)stringForCloseDocumentConfirmationWillContinueToUpdateInformativeText;
@@ -66,6 +67,9 @@ __attribute__((visibility("hidden")))
 - (id)stringForDocumentUpdatedByOwnerDetails;
 - (id)stringForDocumentUpdatedByOwnerWithKeepDetails;
 - (id)stringForDocumentUpdatedTitle;
+- (id)stringForDocumentViewOnly;
+- (id)stringForDocumentViewOnlyMessage;
+- (id)stringForDocumentViewOnlyTitle;
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
@@ -80,9 +84,11 @@ __attribute__((visibility("hidden")))
 - (id)stringForRemoveSelfAlertConfirmationTitle;
 - (id)stringForStopSharingAlertConfirmationMessage;
 - (id)stringForStopSharingAlertConfirmationTitle;
-- (id)stringForUpdatingDocument;
+- (id)stringForUpdatingDocumentWithoutServiceType;
 - (BOOL)supportsAutosizingTextboxes;
-- (BOOL)supportsNativeEquations;
+- (BOOL)supportsCanvasNativeEquationObjects;
+- (BOOL)supportsInlineNativeEquationObjects;
+- (BOOL)supportsLinkedTextBoxes;
 - (BOOL)supportsRTL;
 - (BOOL)tableHeaderInspectorShowsRepeatHeaderRowsSwitch;
 - (id)tangierEditingFormatDocumentType;

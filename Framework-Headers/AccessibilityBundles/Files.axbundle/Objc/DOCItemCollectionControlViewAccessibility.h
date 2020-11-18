@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)accessibilityIdentifier;
 - (BOOL)accessibilityScrollToVisible;
 - (void)layoutSubviews;
 

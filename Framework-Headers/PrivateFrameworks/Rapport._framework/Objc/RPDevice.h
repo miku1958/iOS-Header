@@ -6,24 +6,29 @@
 
 #import <Foundation/NSObject.h>
 
+#import <Rapport/NSSecureCoding-Protocol.h>
+
 @class CUMobileDevice, CUPairedPeer, NSData, NSDictionary, NSString, NSUUID;
 
-@interface RPDevice : NSObject
+@interface RPDevice : NSObject <NSSecureCoding>
 {
     unsigned char _deviceActionType;
     BOOL _needsSetup;
-    unsigned int _blePaired;
-    unsigned int _deviceType;
+    unsigned int _flags;
+    int _proximity;
+    unsigned int _blePairState;
     int _rawRSSI;
     int _smoothedRSSI;
     unsigned int _systemPairState;
     unsigned int _wifiDeviceIEFlags;
+    NSString *_identifier;
+    NSString *_name;
+    CUMobileDevice *_mobileDevice;
     NSData *_authTag;
     NSData *_bleAdvertisementData;
     NSData *_bleDeviceAddress;
-    NSUUID *_identifier;
+    NSUUID *_identifierUUID;
     NSString *_model;
-    NSString *_name;
     CUPairedPeer *_pairedPeer;
     NSUUID *_pairingIdentifier;
     NSData *_txtData;
@@ -36,22 +41,23 @@
     NSData *_wifiIEData;
     id _wifiPlatformObject;
     NSString *_wifiSSID;
-    CUMobileDevice *_mobileDevice;
 }
 
 @property (readonly, copy, nonatomic) NSData *authTag; // @synthesize authTag=_authTag;
 @property (readonly, copy, nonatomic) NSData *bleAdvertisementData; // @synthesize bleAdvertisementData=_bleAdvertisementData;
 @property (readonly, copy, nonatomic) NSData *bleDeviceAddress; // @synthesize bleDeviceAddress=_bleDeviceAddress;
-@property (readonly, nonatomic) unsigned int blePaired; // @synthesize blePaired=_blePaired;
+@property (readonly, nonatomic) unsigned int blePairState; // @synthesize blePairState=_blePairState;
 @property (readonly, nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;
-@property (readonly, nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
-@property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) unsigned int flags; // @synthesize flags=_flags;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSUUID *identifierUUID; // @synthesize identifierUUID=_identifierUUID;
 @property (strong, nonatomic) CUMobileDevice *mobileDevice; // @synthesize mobileDevice=_mobileDevice;
-@property (copy, nonatomic) NSString *model; // @synthesize model=_model;
+@property (readonly, copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL needsSetup; // @synthesize needsSetup=_needsSetup;
 @property (strong, nonatomic) CUPairedPeer *pairedPeer; // @synthesize pairedPeer=_pairedPeer;
 @property (copy, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
+@property (readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
 @property (readonly, nonatomic) int rawRSSI; // @synthesize rawRSSI=_rawRSSI;
 @property (readonly, nonatomic) int smoothedRSSI; // @synthesize smoothedRSSI=_smoothedRSSI;
 @property (nonatomic) unsigned int systemPairState; // @synthesize systemPairState=_systemPairState;
@@ -67,13 +73,16 @@
 @property (strong, nonatomic) id wifiPlatformObject; // @synthesize wifiPlatformObject=_wifiPlatformObject;
 @property (copy, nonatomic) NSString *wifiSSID; // @synthesize wifiSSID=_wifiSSID;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_updateTXTDictionary:(id)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (unsigned int)updateWithBonjourDevice:(id)arg1;
 - (unsigned int)updateWithMobileDevice:(id)arg1;
-- (void)updateWithSFDevice:(id)arg1 changes:(unsigned int)arg2;
+- (unsigned int)updateWithSFDevice:(id)arg1 changes:(unsigned int)arg2;
 - (void)updateWithSystemInfo:(id)arg1;
 - (void)updateWithWiFiDevice:(id)arg1 changes:(unsigned int)arg2;
 

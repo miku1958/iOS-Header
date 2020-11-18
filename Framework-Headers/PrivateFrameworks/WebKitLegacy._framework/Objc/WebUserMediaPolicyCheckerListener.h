@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WebUserMediaPolicyCheckerListener : NSObject <WebAllowDenyPolicyListener>
 {
-    struct RefPtr<WebCore::MediaDevicesEnumerationRequest> _request;
+    struct RefPtr<WebCore::MediaDevicesEnumerationRequest, WTF::DumbPtrTraits<WebCore::MediaDevicesEnumerationRequest>> _request;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelMediaDevicesEnumerationRequest;
 - (void)deny;
 - (void)denyOnlyThisRequest;
-- (id)initWithMediaDevicesEnumerationRequest:(Ref_74df6cd4 *)arg1;
+- (id)initWithMediaDevicesEnumerationRequest:(Ref_174c16ef *)arg1;
 - (BOOL)shouldClearCache;
 
 @end

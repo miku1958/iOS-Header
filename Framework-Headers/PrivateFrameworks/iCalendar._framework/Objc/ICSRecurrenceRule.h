@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <iCalendar/ICSWriting-Protocol.h>
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
 @class ICSDateValue, NSArray, NSMutableDictionary, NSNumber;
 
-@interface ICSRecurrenceRule : NSObject <NSCoding, ICSWriting>
+@interface ICSRecurrenceRule : NSObject <NSSecureCoding, ICSWriting>
 {
     int _freq;
     NSMutableDictionary *_parameters;
@@ -34,6 +34,7 @@
 
 + (id)recurrenceRuleFromICSCString:(const char *)arg1 withTokenizer:(id)arg2;
 + (id)recurrenceRuleFromICSString:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)ICSStringWithOptions:(unsigned long long)arg1;
 - (void)ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;

@@ -10,9 +10,9 @@
 
 @interface CKModifySubscriptionsOperation : CKDatabaseOperation
 {
+    CDUnknownBlockType _modifySubscriptionsCompletionBlock;
     NSArray *_subscriptionsToSave;
     NSArray *_subscriptionIDsToDelete;
-    CDUnknownBlockType _modifySubscriptionsCompletionBlock;
     NSMutableArray *_savedSubscriptions;
     NSMutableArray *_deletedSubscriptionIDs;
     NSMutableDictionary *_subscriptionsBySubscriptionIDs;

@@ -15,6 +15,7 @@
     struct WebPreferencesPrivate *_private;
 }
 
+@property (nonatomic) BOOL accessibilityObjectModelEnabled;
 @property (nonatomic) BOOL allowMediaContentTypesRequiringHardwareSupportAsFallback;
 @property (nonatomic) BOOL allowsAirPlayForMediaPlayback;
 @property (nonatomic) BOOL allowsAnimatedImageLooping;
@@ -25,15 +26,16 @@
 @property (nonatomic) BOOL autosaves;
 @property (nonatomic) unsigned long long cacheModel;
 @property (nonatomic) BOOL constantPropertiesEnabled;
-@property (nonatomic) BOOL credentialManagementEnabled;
 @property (copy, nonatomic) NSString *cursiveFontFamily;
 @property (nonatomic) int defaultFixedFontSize;
 @property (nonatomic) int defaultFontSize;
 @property (copy, nonatomic) NSString *defaultTextEncodingName;
 @property (nonatomic) BOOL displayContentsEnabled;
+@property (nonatomic) BOOL encryptedMediaAPIEnabled;
 @property (copy, nonatomic) NSString *fantasyFontFamily;
 @property (copy, nonatomic) NSString *fixedFontFamily;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (nonatomic) BOOL inspectorAdditionsEnabled;
 @property (nonatomic) BOOL intersectionObserverEnabled;
 @property (nonatomic) BOOL isSecureContextAttributeEnabled;
 @property (nonatomic, getter=isJavaEnabled) BOOL javaEnabled;
@@ -44,9 +46,11 @@
 @property (nonatomic) BOOL legacyEncryptedMediaAPIEnabled;
 @property (nonatomic) BOOL linkPreloadEnabled;
 @property (nonatomic) BOOL loadsImagesAutomatically;
+@property (nonatomic) BOOL mediaCapabilitiesEnabled;
 @property (nonatomic) NSString *mediaContentTypesRequiringHardwareSupport;
 @property (nonatomic) BOOL mediaDataLoadsAutomatically;
 @property (nonatomic) BOOL mediaUserGestureInheritsFromDocument;
+@property (nonatomic) BOOL menuItemElementEnabled;
 @property (nonatomic) int minimumFontSize;
 @property (nonatomic) int minimumLogicalFontSize;
 @property (nonatomic, getter=arePlugInsEnabled) BOOL plugInsEnabled;
@@ -62,7 +66,9 @@
 @property (nonatomic) BOOL userTimingEnabled;
 @property (nonatomic) BOOL usesPageCache;
 @property (nonatomic) BOOL viewportFitEnabled;
+@property (nonatomic) BOOL visualViewportAPIEnabled;
 @property (nonatomic) BOOL visualViewportEnabled;
+@property (nonatomic) BOOL webAuthenticationEnabled;
 
 + (id)_IBCreatorID;
 + (void)_checkLastReferenceForIdentifier:(id)arg1;
@@ -150,13 +156,17 @@
 - (BOOL)automaticallyDetectsCacheModel;
 - (BOOL)avKitEnabled;
 - (BOOL)backspaceKeyNavigationEnabled;
+- (BOOL)cacheAPIEnabled;
 - (BOOL)canvasUsesAcceleratedDrawing;
 - (BOOL)customElementsEnabled;
+- (BOOL)customPasteboardDataEnabled;
+- (BOOL)dataTransferItemsEnabled;
 - (BOOL)databasesEnabled;
 - (void)dealloc;
 - (BOOL)developerExtrasEnabled;
 - (BOOL)diagnosticLoggingEnabled;
 - (void)didRemoveFromWebView;
+- (BOOL)directoryUploadEnabled;
 - (BOOL)displayListDrawingEnabled;
 - (BOOL)domTimersThrottlingEnabled;
 - (BOOL)downloadAttributeEnabled;
@@ -165,6 +175,7 @@
 - (BOOL)enumeratingAllNetworkInterfacesEnabled;
 - (BOOL)experimentalNotificationsEnabled;
 - (BOOL)fetchAPIEnabled;
+- (BOOL)fetchAPIKeepAliveEnabled;
 - (BOOL)forceLowPowerGPUForWebGL;
 - (BOOL)forceSoftwareWebGLRendering;
 - (int)frameFlattening;
@@ -253,14 +264,18 @@
 - (void)setAutomaticallyDetectsCacheModel:(BOOL)arg1;
 - (void)setBackspaceKeyNavigationEnabled:(BOOL)arg1;
 - (void)setCSSGridLayoutEnabled:(BOOL)arg1;
+- (void)setCacheAPIEnabled:(BOOL)arg1;
 - (void)setCanvasUsesAcceleratedDrawing:(BOOL)arg1;
 - (void)setCustomElementsEnabled:(BOOL)arg1;
+- (void)setCustomPasteboardDataEnabled:(BOOL)arg1;
 - (void)setDNSPrefetchingEnabled:(BOOL)arg1;
 - (void)setDOMPasteAllowed:(BOOL)arg1;
 - (void)setDOMTimersThrottlingEnabled:(BOOL)arg1;
+- (void)setDataTransferItemsEnabled:(BOOL)arg1;
 - (void)setDatabasesEnabled:(BOOL)arg1;
 - (void)setDeveloperExtrasEnabled:(BOOL)arg1;
 - (void)setDiagnosticLoggingEnabled:(BOOL)arg1;
+- (void)setDirectoryUploadEnabled:(BOOL)arg1;
 - (void)setDiskImageCacheEnabled:(BOOL)arg1;
 - (void)setDisplayListDrawingEnabled:(BOOL)arg1;
 - (void)setDownloadAttributeEnabled:(BOOL)arg1;
@@ -269,6 +284,7 @@
 - (void)setEnumeratingAllNetworkInterfacesEnabled:(BOOL)arg1;
 - (void)setExperimentalNotificationsEnabled:(BOOL)arg1;
 - (void)setFetchAPIEnabled:(BOOL)arg1;
+- (void)setFetchAPIKeepAliveEnabled:(BOOL)arg1;
 - (void)setForceSoftwareWebGLRendering:(BOOL)arg1;
 - (void)setForceWebGLUsesLowPower:(BOOL)arg1;
 - (void)setFrameFlattening:(int)arg1;

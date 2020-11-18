@@ -14,8 +14,10 @@
     NSArray *_savedPasswords;
     WBSKeychainCredentialNotificationMonitor *_keychainMonitor;
     id _keychainNotificationRegistrationToken;
+    BOOL _hasPasswordsEligibleForAutoFill;
 }
 
+@property (readonly, nonatomic) BOOL hasPasswordsEligibleForAutoFill; // @synthesize hasPasswordsEligibleForAutoFill=_hasPasswordsEligibleForAutoFill;
 @property (readonly, nonatomic) NSArray *savedPasswords;
 
 + (void)removePassword:(id)arg1;

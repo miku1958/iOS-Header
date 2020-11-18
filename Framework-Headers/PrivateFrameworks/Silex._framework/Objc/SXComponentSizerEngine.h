@@ -22,7 +22,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithFactories:(id)arg1;
+- (void)addFactory:(id)arg1;
+- (id)init;
+- (void)removeFactory:(id)arg1;
 - (id)sizerForComponent:(id)arg1 componentLayout:(id)arg2 layoutAttributes:(id)arg3;
 
 @end

@@ -25,7 +25,7 @@
 @property (copy) NSString *name; // @synthesize name=_name;
 @property (copy) NSString *units; // @synthesize units=_units;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

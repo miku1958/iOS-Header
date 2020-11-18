@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, NSMutableArray, NSMutableSet, NSString;
+@class NSDictionary, NSLock, NSMutableArray, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface GEODBWriter : NSObject
 {
     NSString *_path;
+    NSDictionary *_pragmaOverrides;
     struct sqlite3 *_db;
     struct sqlite3_stmt *_versionQuery;
     struct sqlite3_stmt *_versionInsert;
@@ -93,6 +94,7 @@
 - (void)evaluateDevicePostureAgainstCurrentManifest;
 - (void)flushPendingWrites;
 - (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 pragmaOverrides:(id)arg2;
 - (id)pendingWriteForKey:(struct _GEOTileKey *)arg1;
 - (void)pendingWritesForKeys:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)prepareSingleStatement:(struct sqlite3_stmt **)arg1 forSql:(id)arg2;

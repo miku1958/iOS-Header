@@ -17,6 +17,7 @@
 @property (nonatomic) long long displayValue; // @synthesize displayValue=_displayValue;
 @property (nonatomic) long long rawValue; // @synthesize rawValue=_rawValue;
 
++ (BOOL)supportsSecureCoding;
 - (id)_ui_descriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

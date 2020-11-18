@@ -14,7 +14,6 @@
 @interface HMDConnectionProxy : HMFObject <HMDaemonConnection>
 {
     BOOL _entitledForAPIAccess;
-    BOOL _entitledForSPIAccess;
     BOOL _entitledForBackgroundMode;
     BOOL _activated;
     NSXPCConnection *_xpcConnection;
@@ -43,7 +42,7 @@
 @property (readonly, nonatomic) NSString *effectiveLocationBundleIdentifier;
 @property (readonly, nonatomic, getter=isEntitledForAPIAccess) BOOL entitledForAPIAccess; // @synthesize entitledForAPIAccess=_entitledForAPIAccess;
 @property (readonly, nonatomic, getter=isEntitledForBackgroundMode) BOOL entitledForBackgroundMode; // @synthesize entitledForBackgroundMode=_entitledForBackgroundMode;
-@property (readonly, nonatomic, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess; // @synthesize entitledForSPIAccess=_entitledForSPIAccess;
+@property (readonly, getter=isEntitledForSPIAccess) BOOL entitledForSPIAccess;
 @property (readonly) unsigned long long entitlements; // @synthesize entitlements=_entitlements;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *name;

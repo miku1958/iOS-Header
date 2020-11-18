@@ -30,6 +30,10 @@
     NSMutableArray *_fractionalCohortMemberships;
     NSString *_galleryId;
     int _galleryType;
+    NSString *_iadNativeAd;
+    NSString *_iadNativeCampaign;
+    NSString *_iadNativeCampaignAd;
+    NSString *_iadNativeLine;
     NSString *_mediaId;
     int _mediaLocation;
     int _mediaType;
@@ -106,6 +110,10 @@
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (readonly, nonatomic) BOOL hasGalleryId;
 @property (nonatomic) BOOL hasGalleryType;
+@property (readonly, nonatomic) BOOL hasIadNativeAd;
+@property (readonly, nonatomic) BOOL hasIadNativeCampaign;
+@property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;
+@property (readonly, nonatomic) BOOL hasIadNativeLine;
 @property (nonatomic) BOOL hasIsDigitalReplicaAd;
 @property (nonatomic) BOOL hasIsNativeAd;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
@@ -128,6 +136,10 @@
 @property (readonly, nonatomic) BOOL hasSurfacedByTopicId;
 @property (nonatomic) BOOL hasVideoType;
 @property (readonly, nonatomic) BOOL hasWidgetEngagement;
+@property (strong, nonatomic) NSString *iadNativeAd; // @synthesize iadNativeAd=_iadNativeAd;
+@property (strong, nonatomic) NSString *iadNativeCampaign; // @synthesize iadNativeCampaign=_iadNativeCampaign;
+@property (strong, nonatomic) NSString *iadNativeCampaignAd; // @synthesize iadNativeCampaignAd=_iadNativeCampaignAd;
+@property (strong, nonatomic) NSString *iadNativeLine; // @synthesize iadNativeLine=_iadNativeLine;
 @property (nonatomic) BOOL isDigitalReplicaAd; // @synthesize isDigitalReplicaAd=_isDigitalReplicaAd;
 @property (nonatomic) BOOL isNativeAd; // @synthesize isNativeAd=_isNativeAd;
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;

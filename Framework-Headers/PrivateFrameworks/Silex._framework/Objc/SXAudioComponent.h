@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSString *stillImageIdentifier; // @dynamic stillImageIdentifier;
 
 + (id)typeString;
+- (unsigned long long)traits;
 
 @end
 

@@ -12,7 +12,7 @@
 #import <PassKitUI/PKPassGroupViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, NSTimer, PKBacklightController, PKGroup, PKPGSVSectionHeaderContext, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassthroughView, PKPaymentService, PKReusablePassViewQueue, PKSecureElement, UIColor, UIImageView, UIView;
+@class NSMutableArray, NSMutableDictionary, NSString, NSTimer, PKGroup, PKPGSVSectionHeaderContext, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassthroughView, PKPaymentService, PKReusablePassViewQueue, PKSecureElement, UIColor, UIImageView, UIView;
 @protocol PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate><UIScrollViewDelegate;
 
 @interface PKPassGroupStackView : UIScrollView <PKPassGroupViewDelegate, PKPassDeleteAnimationControllerDelegate, PKPaymentServiceDelegate, PKPassFooterViewDelegate, PKPassDeleteHandler>
@@ -94,7 +94,7 @@
     PKSecureElement *_secureElement;
     BOOL _delegateWantsTopContentSeparation;
     BOOL _delegateWantsBottomContentSeparation;
-    PKBacklightController *_backlightController;
+    BOOL _wantsBacklightRamping;
     BOOL _footerSuppressed;
     BOOL _staggerPileAnimations;
     id<PKPassGroupStackViewDatasource> _datasource;
@@ -194,12 +194,12 @@
 - (void)_presentModalGroupViewPostAnimationActions;
 - (void)_presentOffscreenAnimated:(BOOL)arg1 split:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_presentPassIngestionWithAnimation:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_rampBacklightIfNecessary:(BOOL)arg1;
 - (struct _NSRange)_rangeOfEagerLoadedIndexes;
 - (struct _NSRange)_rangeOfVisibleIndexes;
 - (struct _NSRange)_rangeOfVisibleIndexesIgnoringBottomInset:(BOOL)arg1;
 - (BOOL)_recomputeLayoutState;
 - (void)_refreshBacklightForFrontmostPassGroup;
-- (void)_refreshBrightness;
 - (void)_removeGroupViewAsSubviewWithGroupID:(id)arg1;
 - (void)_reorderPositionChangedForReorderedGroupViewWithVelocity:(struct CGPoint)arg1;
 - (void)_resetBrightness;
@@ -259,7 +259,6 @@
 - (double)_yForModallyPresentedGroupIgnoringCompactState:(BOOL)arg1;
 - (double)_yForSingleGroupView:(id)arg1;
 - (double)_yPositionForGroupAtIndex:(unsigned long long)arg1 forState:(long long)arg2;
-- (id)backlightController;
 - (void)beginScrollCardListTest;
 - (void)beginSelectCardTest;
 - (void)dealloc;
@@ -267,6 +266,7 @@
 - (void)deleteAnimationControllerWillBeginDeleteAnimation:(id)arg1;
 - (void)deleteGroup:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
+- (void)evaluateBrightness;
 - (void)gotoBaseTestState;
 - (BOOL)groupView:(id)arg1 deleteButtonEnabledForPass:(id)arg2;
 - (void)groupView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
@@ -305,6 +305,7 @@
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentPassWithUniqueID:(id)arg1;
 - (void)reloadData;
+- (void)resetBrightness;
 - (void)safeAreaInsetsDidChange;
 - (void)scrollDownTest;
 - (void)scrollNext;

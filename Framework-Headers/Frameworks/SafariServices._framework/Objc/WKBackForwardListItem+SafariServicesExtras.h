@@ -6,10 +6,11 @@
 
 #import <WebKit/WKBackForwardListItem.h>
 
-@class _SFSecurityInfo;
+@class _SFQuickLookDocument, _SFSecurityInfo;
 
 @interface WKBackForwardListItem (SafariServicesExtras)
 
+@property (strong, nonatomic, setter=_sf_setQuickLookDocument:) _SFQuickLookDocument *_sf_quickLookDocument;
 @property (strong, nonatomic, setter=_sf_setSecurityInfo:) _SFSecurityInfo *_sf_securityInfo;
 
 @end

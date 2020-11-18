@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSDictionary *appMetrics;
-@property (copy, nonatomic) NSArray *artworkURLTemplates;
+@property (copy, nonatomic) NSArray *artworkURLTemplates; // @synthesize artworkURLTemplates=_artworkURLTemplates;
 @property (copy, nonatomic) NSURL *assetURL;
 @property (copy, nonatomic) NSDictionary *collectionInfo;
 @property (copy, nonatomic) NSDate *currentPlaybackDate;
@@ -33,9 +33,9 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSDictionary *userInfo;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customDictionaryRepresentation;
-- (void)dealloc;
 - (id)init;
 - (id)initWithData:(id)arg1;
 - (void)mergeFrom:(id)arg1;

@@ -19,13 +19,16 @@
 @property (readonly, nonatomic) BOOL isBuild;
 @property (readonly, nonatomic) BOOL isFrameRenderer;
 @property (readonly, nonatomic) BOOL isMagicMove;
+@property (readonly, nonatomic) BOOL isMetalRenderer;
 @property (readonly, nonatomic) BOOL isMotionBlurred;
+@property (readonly, nonatomic) BOOL isOpenGLRenderer;
 @property (readonly, nonatomic) BOOL isPreview;
 @property (readonly, nonatomic) BOOL isTransition;
 @property (readonly, nonatomic) BOOL isWarmingUp;
 @property (readonly, nonatomic) NSArray *magicMoveMatches;
 @property (readonly, nonatomic) double percent;
 @property (readonly, nonatomic) KNAnimationRandomGenerator *randomGenerator;
+@property (readonly, nonatomic) NSDictionary *scaledTextures;
 @property (readonly, nonatomic) NSArray *tags;
 @property (readonly, nonatomic) NSArray *textures;
 @property (readonly, nonatomic) NSDictionary *transitionAttributes;

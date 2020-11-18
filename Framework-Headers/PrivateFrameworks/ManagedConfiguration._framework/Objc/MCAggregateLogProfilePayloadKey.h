@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ManagedConfiguration/MCAggregateLogProfileKey.h>
+#import <ManagedConfiguration/MCAggregateLogKey.h>
 
 @class NSString;
 
-@interface MCAggregateLogProfilePayloadKey : MCAggregateLogProfileKey
+@interface MCAggregateLogProfilePayloadKey : MCAggregateLogKey
 {
     Class _payloadClass;
     NSString *_nameSuffix;

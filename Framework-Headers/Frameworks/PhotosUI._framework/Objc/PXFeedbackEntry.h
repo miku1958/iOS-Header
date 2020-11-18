@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUICore/NSCoding-Protocol.h>
+#import <PhotosUICore/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDictionary, NSMutableDictionary, NSString;
 
-@interface PXFeedbackEntry : NSObject <NSCoding>
+@interface PXFeedbackEntry : NSObject <NSSecureCoding>
 {
     NSDictionary *_feedbackItemDetails;
     BOOL _alreadyCollected;
@@ -38,6 +38,7 @@
 + (id)positiveFeedbackForImageQualityKeys;
 + (id)positiveFeedbackForMemoriesKeys;
 + (id)positiveFeedbackForMemoryDetailsKeys;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)asTextForItemKey:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

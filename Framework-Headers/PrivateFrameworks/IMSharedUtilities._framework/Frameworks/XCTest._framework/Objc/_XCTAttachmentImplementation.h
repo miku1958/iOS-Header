@@ -31,7 +31,7 @@
 @property (copy) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property (copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

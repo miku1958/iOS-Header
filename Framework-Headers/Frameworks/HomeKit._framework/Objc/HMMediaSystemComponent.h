@@ -6,27 +6,54 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
+#import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSMutableCopying-Protocol.h>
+#import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMMediaProfile, HMMediaSystemRole, NSUUID;
+@class HMAccessory, HMMediaProfile, HMMediaSystemRole, NSString, NSUUID;
+@protocol OS_dispatch_queue;
 
-@interface HMMediaSystemComponent : NSObject <NSCopying, NSMutableCopying>
+@interface HMMediaSystemComponent : NSObject <HMFLogging, NSSecureCoding, HMObjectMerge, NSCopying, NSMutableCopying>
 {
-    HMMediaSystemRole *_role;
     HMMediaProfile *_mediaProfile;
+    HMMediaSystemRole *_role;
     NSUUID *_uniqueIdentifier;
+    HMAccessory *_accessory;
+    NSUUID *_uuid;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
+@property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) HMMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) HMMediaSystemRole *role; // @synthesize role=_role;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)logCategory;
++ (id)mediaSystemComponentWithDictionary:(id)arg1 home:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_invalidate;
+- (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)_updateAccessoryReference:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMediaProfile:(id)arg1 role:(id)arg2;
+- (id)initWithUUID:(id)arg1 mediaProfile:(id)arg2 role:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)serialize;
 - (void)setRole:(id)arg1;
 
 @end

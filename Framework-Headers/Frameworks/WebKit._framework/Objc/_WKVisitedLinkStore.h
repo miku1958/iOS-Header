@@ -21,10 +21,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)addVisitedLinkWithString:(id)arg1;
 - (void)addVisitedLinkWithURL:(id)arg1;
+- (BOOL)containsVisitedLinkWithURL:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)removeAll;
+- (void)removeVisitedLinkWithURL:(id)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString, PKFelicaAppletHistory, PKFelicaTransitAppletState, PKPaymentApplication;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString, PKPaymentApplication, PKTransitAppletHistory, PKTransitAppletState;
 
 @protocol NPKGizmoServerProtocol <NSObject>
 - (void)addPassData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
@@ -25,8 +25,8 @@
 - (void)handleValueAddedServiceTransactions:(NSArray *)arg1 forPassUniqueIDs:(NSArray *)arg2 completion:(void (^)(void))arg3;
 - (void)markAsHavingReceivedLocation;
 - (void)noteWebServiceUpdateNeededWithCompletion:(void (^)(void))arg1;
-- (void)processFelicaTransitAppletState:(PKFelicaTransitAppletState *)arg1 forPassUniqueID:(NSString *)arg2;
-- (void)processFelicaTransitHistory:(PKFelicaAppletHistory *)arg1 forPaymentApplication:(PKPaymentApplication *)arg2 withPassUniqueIdentifier:(NSString *)arg3 transactionDate:(NSDate *)arg4;
+- (void)processTransitAppletState:(PKTransitAppletState *)arg1 forPassUniqueID:(NSString *)arg2;
+- (void)processTransitHistory:(PKTransitAppletHistory *)arg1 forPaymentApplication:(PKPaymentApplication *)arg2 withPassUniqueIdentifier:(NSString *)arg3 transactionDate:(NSDate *)arg4;
 - (void)requestPeerAccountTermsAndConditionsAcceptance;
 - (void)setExpressTransitUniqueID:(NSString *)arg1 applicationIdentifier:(NSString *)arg2 completion:(void (^)(unsigned long long, NSString *))arg3;
 - (void)setNeedsRelevancyInformation:(BOOL)arg1;

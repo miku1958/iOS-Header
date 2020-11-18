@@ -9,17 +9,20 @@
 #import <Silex/SXWebContentScriptsManager-Protocol.h>
 
 @class NSMutableArray, NSString, WKWebView;
+@protocol SXWebContentLogger;
 
 @interface SXWebContentScriptsManager : NSObject <SXWebContentScriptsManager>
 {
     BOOL _readyToExecuteScripts;
     WKWebView *_webView;
+    id<SXWebContentLogger> _logger;
     NSMutableArray *_queuedExecutableScripts;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SXWebContentLogger> logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) NSMutableArray *queuedExecutableScripts; // @synthesize queuedExecutableScripts=_queuedExecutableScripts;
 @property (nonatomic) BOOL readyToExecuteScripts; // @synthesize readyToExecuteScripts=_readyToExecuteScripts;
 @property (readonly) Class superclass;
@@ -29,7 +32,7 @@
 - (void)addScript:(id)arg1;
 - (void)executeQueuedScripts;
 - (void)executeScript:(id)arg1;
-- (id)initWithWebView:(id)arg1 documentStateProvider:(id)arg2;
+- (id)initWithWebView:(id)arg1 documentStateProvider:(id)arg2 logger:(id)arg3;
 - (void)queueExecutableScript:(id)arg1;
 - (void)removeAllScripts;
 - (void)removeScript:(id)arg1;

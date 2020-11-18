@@ -6,50 +6,52 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/BBRemoteDataProvider-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class BBDataProviderConnection, BBDataProviderProxy, HDProfile, NSDate, NSHashTable, NSString, UNUserNotificationCenter;
+@class HDProfile, NSDate, NSHashTable, NSString, UNUserNotificationCenter;
 @protocol OS_dispatch_queue;
 
-@interface HDNotificationManager : NSObject <BBRemoteDataProvider, HDDiagnosticObject>
+@interface HDNotificationManager : NSObject <HDDiagnosticObject>
 {
     HDProfile *_profile;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_observerQueue;
     NSObject<OS_dispatch_queue> *_resourceQueue;
-    BBDataProviderConnection *_dataProviderConnection;
-    UNUserNotificationCenter *_userNotificationCenter;
     NSDate *_lastNotificationDate;
-    BBDataProviderProxy *_providerProxy;
+    UNUserNotificationCenter *_userNotificationCenter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) BBDataProviderProxy *providerProxy; // @synthesize providerProxy=_providerProxy;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
 
 - (void).cxx_destruct;
-- (long long)_badgeCountForDomain:(long long)arg1;
-- (CDUnknownBlockType)_completionOnClientQueue:(CDUnknownBlockType)arg1;
-- (long long)_queue_coaleseDomainBadgeCounts;
-- (void)_queue_notifyObserversWithBadgeCount:(long long)arg1 domain:(long long)arg2;
-- (void)_queue_notifyObserversWithNotification:(id)arg1;
-- (long long)_totalBadgeCount;
+- (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
+- (id)_aggregateBadge;
+- (id)_badgeForDomain:(long long)arg1 error:(out id *)arg2;
+- (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
+- (void)_postBadgesDidUpdateNotification;
+- (id)_resourceQueue_badgeForDomain:(long long)arg1;
+- (id)_resourceQueue_badgeForDomain:(long long)arg1 error:(out id *)arg2;
+- (id)_resourceQueue_coaleseDomainBadges;
+- (void)_resourceQueue_notifyObserversWithBadge:(id)arg1 domain:(long long)arg2;
+- (void)_resourceQueue_notifyObserversWithNotification:(id)arg1;
+- (BOOL)_resourceQueue_setBadge:(id)arg1 domain:(long long)arg2 error:(out id *)arg3;
+- (void)_resourceQueue_updateApplicationBadge;
 - (void)addNotificationObserver:(id)arg1;
+- (void)badgeForDomain:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (id)defaultSectionInfo;
 - (id)diagnosticDescription;
+- (BOOL)incrementBadgeForDomain:(long long)arg1 count:(long long)arg2 error:(out id *)arg3;
 - (id)initWithProfile:(id)arg1;
 - (void)postNotificationWithIdentifier:(id)arg1 content:(id)arg2 trigger:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)registerWithUserNotificationCenter;
 - (void)removeNotificationObserver:(id)arg1;
-- (id)sectionIdentifier;
-- (void)setBadgeCount:(long long)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setupBulletinBoardSettings;
-- (id)sortDescriptors;
+- (void)setBadge:(id)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

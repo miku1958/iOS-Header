@@ -6,55 +6,41 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <Silex/SXVideoControlItem-Protocol.h>
+#import <Silex/SXVideoAccessoryItem-Protocol.h>
+#import <Silex/SXVideoTransitionObserver-Protocol.h>
 
-@class NSString, SXSkipButton, SXTimeline, SXUpNextButton, SXUpNextItem, SXUpNextView, SXVideoButton, UIActivityIndicatorView;
-@protocol SXUpNextViewControllerDelegate;
+@class NSString, SXNowPlayingButton, SXSkipViewController, UIView;
+@protocol SXNowPlayingVideoTitleProviding, SXVideoQueueProviding;
 
-@interface SXUpNextViewController : UIViewController <SXVideoControlItem>
+@interface SXUpNextViewController : UIViewController <SXVideoTransitionObserver, SXVideoAccessoryItem>
 {
-    id<SXUpNextViewControllerDelegate> _delegate;
-    double _duration;
-    double _time;
-    SXTimeline *_timeline;
-    SXUpNextItem *_item;
-    SXVideoButton *_advanceButton;
-    SXVideoButton *_replayButton;
-    SXSkipButton *_skipButton;
-    UIActivityIndicatorView *_activityIndicator;
-    SXUpNextButton *_upNextButton;
+    unsigned long long _displayMode;
+    SXNowPlayingButton *_upNextButton;
+    SXSkipViewController *_skipViewController;
+    id<SXNowPlayingVideoTitleProviding> _titleProvider;
+    id<SXVideoQueueProviding> _queueProvider;
 }
 
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
-@property (strong, nonatomic) SXVideoButton *advanceButton; // @synthesize advanceButton=_advanceButton;
-@property (readonly, nonatomic) double autoAppearanceTimeInterval;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<SXUpNextViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL hideable;
-@property (strong, nonatomic) SXUpNextItem *item; // @synthesize item=_item;
-@property (strong, nonatomic) SXVideoButton *replayButton; // @synthesize replayButton=_replayButton;
-@property (strong, nonatomic) SXSkipButton *skipButton; // @synthesize skipButton=_skipButton;
+@property (readonly, nonatomic) id<SXVideoQueueProviding> queueProvider; // @synthesize queueProvider=_queueProvider;
+@property (readonly, nonatomic) SXSkipViewController *skipViewController; // @synthesize skipViewController=_skipViewController;
 @property (readonly) Class superclass;
-@property (nonatomic) double time; // @synthesize time=_time;
-@property (strong, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
-@property (strong, nonatomic) SXUpNextButton *upNextButton; // @synthesize upNextButton=_upNextButton;
-@property (strong) SXUpNextView *view; // @dynamic view;
+@property (readonly, nonatomic) id<SXNowPlayingVideoTitleProviding> titleProvider; // @synthesize titleProvider=_titleProvider;
+@property (readonly, nonatomic) SXNowPlayingButton *upNextButton; // @synthesize upNextButton=_upNextButton;
+@property (readonly, nonatomic) UIView *view;
+@property (readonly, nonatomic) UIViewController *viewController;
 
 - (void).cxx_destruct;
-- (id)accessoryViewsConfiguredForItem:(id)arg1;
-- (void)hide:(BOOL)arg1 withAnimationCoordinator:(id)arg2;
-- (id)init;
-- (BOOL)isVisible;
-- (void)loadView;
-- (void)populateWithItem:(id)arg1;
-- (void)replay;
-- (void)scheduleAutoAppearanceOfReplayButton;
-- (void)scheduleSkipDurationUpdateWithSeconds:(long long)arg1;
-- (void)skip;
+- (void)_layoutSkipViewController;
+- (void)_layoutUpNextButton;
+- (id)initWithUpNextButton:(id)arg1 skipViewController:(id)arg2 titleProvider:(id)arg3 queueProvider:(id)arg4;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)willTransitionToDisplayMode:(unsigned long long)arg1 withTransitionCoordinator:(id)arg2;
+- (void)willTransitionToVideo:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

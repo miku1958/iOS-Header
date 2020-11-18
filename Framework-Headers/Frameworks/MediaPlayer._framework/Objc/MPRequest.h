@@ -9,7 +9,8 @@
 #import <MediaPlayer/MPRequestCancellationToken-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 
-@class NSArray, NSBlockOperation, NSError, NSOperationQueue, NSString;
+@class NSArray, NSError, NSOperationQueue, NSString;
+@protocol OS_dispatch_queue;
 
 @interface MPRequest : NSObject <MPRequestCancellationToken, NSCopying>
 {
@@ -17,15 +18,15 @@
     long long _qualityOfService;
     double _timeoutInterval;
     NSOperationQueue *_calloutQueue;
-    NSBlockOperation *_completionOperation;
     NSError *_cancelationError;
+    NSObject<OS_dispatch_queue> *_cleanupQueue;
     NSOperationQueue *_queue;
     NSArray *_middlewareClasses;
 }
 
 @property (readonly, nonatomic) NSOperationQueue *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property (readonly, nonatomic) NSError *cancelationError; // @synthesize cancelationError=_cancelationError;
-@property (readonly, nonatomic) NSBlockOperation *completionOperation; // @synthesize completionOperation=_completionOperation;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *cleanupQueue; // @synthesize cleanupQueue=_cleanupQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

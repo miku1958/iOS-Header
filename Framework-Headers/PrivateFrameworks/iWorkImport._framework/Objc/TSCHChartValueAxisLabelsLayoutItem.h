@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (struct CGPoint)axisAnchorForPosition:(int)arg1 degrees:(float)arg2 area:(struct CGRect)arg3 unrotatedSize:(struct CGSize)arg4 unitSpaceValue:(double)arg5;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1;
 - (struct CGPoint)labelAnchorForPosition:(int)arg1 degrees:(float)arg2;
 - (id)labelStringForAxis:(id)arg1 index:(unsigned long long)arg2;

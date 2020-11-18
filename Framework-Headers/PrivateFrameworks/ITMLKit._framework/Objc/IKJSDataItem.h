@@ -55,7 +55,7 @@
 - (void)touchPropertyPath:(id)arg1;
 - (id)unbox;
 - (id)valueForPropertyPath:(id)arg1;
-- (id)valuesForPropertyPath:(id)arg1 subscriptRange:(struct _NSRange)arg2;
+- (id)valuesForSubscripts:(struct _NSRange)arg1 ofPropertyPath:(id)arg2;
 
 @end
 

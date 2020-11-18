@@ -8,61 +8,59 @@
 
 #import <iTunesCloud/ICUserIdentityStoreBackend-Protocol.h>
 
-@class ACAccountStore, ACAccountType, ICUserIdentityProperties, ICUserVerificationContext, NSArray, NSMapTable, NSMutableDictionary, NSNumber, NSString;
+@class ACAccountStore, ACAccountType, NSArray, NSMapTable, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol ICUserIdentityStoreBackendDelegate, OS_dispatch_queue;
 
 @interface ICUserIdentityStoreACAccountBackend : NSObject <ICUserIdentityStoreBackend>
 {
-    NSObject<OS_dispatch_queue> *_accessSerialQueue;
     id _activeAccountDSIDValue;
     id _activeLockerAccountDSIDValue;
     ACAccountStore *_accountStore;
     NSMapTable *_accountToIdentityProperties;
     NSArray *_allStoreAccounts;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
     NSMutableDictionary *_dsidToAccount;
     id _primaryICloudAccountIdentityPropertiesValue;
     ACAccountType *_storeAccountType;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
+    NSOperationQueue *_operationQueue;
     id<ICUserIdentityStoreBackendDelegate> _delegate;
 }
 
-@property (readonly, nonatomic) NSNumber *activeAccountDSID;
-@property (readonly, nonatomic) NSNumber *activeLockerAccountDSID;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICUserIdentityStoreBackendDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) ICUserIdentityProperties *primaryICloudAccountIdentityProperties;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) ICUserVerificationContext *verificationContextToEstablishAccount;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChangeNotification:(id)arg1;
-- (id)_activeAccountDSID;
-- (id)_activeLockerAccountDSID;
-- (id)_allStoreAccounts;
+- (void)_allStoreAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_applyIdentityProperties:(id)arg1 toAccount:(id)arg2;
 - (void)_handleITunesStoreAccountsChanged;
 - (id)_newUserIdentityPropertiesForAccount:(id)arg1;
 - (id)_primaryICloudAccountIdentityProperties;
-- (id)_storeAccountForDSID:(id)arg1;
-- (id)_storeAccountType;
+- (void)_storeAccountForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_storeAccountTypeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_synchronize;
+- (void)activeAccountDSIDWithCompletion:(CDUnknownBlockType)arg1;
+- (void)activeLockerAccountDSIDWithCompletion:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (id)identityPropertiesForDSID:(id)arg1;
+- (void)identityPropertiesForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)identityPropertiesForPrimaryICloudAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithACAccountStore:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)removeIdentityForDSID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)removeIdentityForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)synchronize;
 - (void)updateActiveAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateActiveLockerAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)verificationContextForDSID:(id)arg1;
+- (void)verificationContextForAccountEstablishmentWithCompletion:(CDUnknownBlockType)arg1;
+- (void)verificationContextForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

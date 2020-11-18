@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) MRProtocolMessage *message;
 @property (nonatomic) long long readPosition; // @synthesize readPosition=_readPosition;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMessage:(id)arg1 createDataBlock:(CDUnknownBlockType)arg2;
 
 @end

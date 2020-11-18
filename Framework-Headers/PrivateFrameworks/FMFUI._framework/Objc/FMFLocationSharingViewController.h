@@ -69,8 +69,9 @@
 - (void)didStopSharingMyLocationWithHandle:(id)arg1;
 - (void)didUpdateActiveDeviceList:(id)arg1;
 - (void)didUpdateHidingStatus:(BOOL)arg1;
-- (void)displayGenericErrorAlert;
+- (void)displayAlertController:(id)arg1;
 - (id)formatStringForHours:(long long)arg1 minutes:(long long)arg2;
+- (id)genericAlertController;
 - (id)monogramForHandle:(id)arg1;
 - (void)networkReachabilityUpdated:(BOOL)arg1;
 - (BOOL)noMeDeviceSelected:(id)arg1;
@@ -85,6 +86,7 @@
 - (id)specifiers;
 - (id)stringByKeepingCharacterSet:(id)arg1 inString:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

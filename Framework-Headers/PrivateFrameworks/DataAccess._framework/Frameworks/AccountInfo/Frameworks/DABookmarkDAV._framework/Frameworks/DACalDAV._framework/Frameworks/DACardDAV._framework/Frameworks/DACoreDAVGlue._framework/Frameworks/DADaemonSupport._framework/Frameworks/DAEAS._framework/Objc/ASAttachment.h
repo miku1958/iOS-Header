@@ -7,11 +7,11 @@
 #import <DAEAS/ASItem.h>
 
 #import <DAEAS/DAMailMessageAttachment-Protocol.h>
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface ASAttachment : ASItem <DAMailMessageAttachment, NSCoding>
+@interface ASAttachment : ASItem <DAMailMessageAttachment, NSSecureCoding>
 {
     NSString *_name;
     NSNumber *_size;
@@ -40,6 +40,7 @@
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

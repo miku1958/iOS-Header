@@ -22,6 +22,7 @@
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)performDeviceRegistrationForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performDeviceRegistrationWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

@@ -17,6 +17,7 @@
 - (void)_axUpdateIrisValue;
 - (void)_handleLivePhotoButton:(id)arg1;
 - (void)_reloadToolbarButtonsIfNeeded;
+- (void)_updateMainActionButtonAnimated:(BOOL)arg1;
 - (void)_updateToolbarsAnimated:(BOOL)arg1;
 - (void)viewDidLoad;
 

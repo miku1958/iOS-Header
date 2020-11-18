@@ -13,9 +13,14 @@
 {
     id<MPSHandle> _handle;
     MPSNNFilterNode *_parent;
+    unsigned long long _clientCount;
+    BOOL _synchronize;
+    BOOL _exportFromGraph;
 }
 
+@property (nonatomic) BOOL exportFromGraph; // @synthesize exportFromGraph=_exportFromGraph;
 @property (strong, nonatomic) id<MPSHandle> handle; // @synthesize handle=_handle;
+@property (nonatomic) BOOL synchronizeResource; // @synthesize synchronizeResource=_synchronize;
 
 - (void)dealloc;
 - (id)debugDescription;

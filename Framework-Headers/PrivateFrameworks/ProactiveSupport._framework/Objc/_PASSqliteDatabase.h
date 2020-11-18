@@ -45,6 +45,7 @@
 + (id)protectedDatabaseWithFilename:(id)arg1 error:(id *)arg2 errorHandler:(id)arg3;
 + (id)randomlyNamedInMemoryPathWithBaseName:(id)arg1;
 + (id)recreateCorruptDatabase:(id)arg1 withContentProtection:(long long)arg2;
++ (void)runDebugCommand:(const char *)arg1 onDbWithHandle:(id)arg2;
 + (BOOL)shouldCacheSql:(const char *)arg1;
 + (id)sqliteDatabaseInMemoryWithError:(id *)arg1;
 + (id)sqliteDatabaseInMemoryWithError:(id *)arg1 errorHandler:(id)arg2;

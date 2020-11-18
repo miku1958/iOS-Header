@@ -12,7 +12,7 @@
 #import <Sharing/SFWirelessSettingsControllerDelegate-Protocol.h>
 #import <Sharing/UICollectionViewDataSource-Protocol.h>
 
-@class NSArray, NSCache, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSOperationQueue, NSString, SFAirDropActiveIconView, SFAirDropBrowser, SFAirDropIconView, SFCollectionViewLayout, SFPersonCollectionViewCell, SFWirelessSettingsController, UIButton, UICollectionView, UIFocusContainerGuide, UILabel, UITextView, UIVisualEffectView;
+@class NSArray, NSCache, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSOperationQueue, NSString, SFAirDropActiveIconView, SFAirDropBrowser, SFAirDropIconView, SFCollectionViewLayout, SFPersonCollectionViewCell, SFWirelessSettingsController, UIButton, UICollectionView, UIFocusContainerGuide, UILabel, UITextView, UIVisualEffectView;
 @protocol SFAirDropActivityViewControllerDelegate;
 
 @interface SFAirDropActivityViewController : UIViewController <UICollectionViewDataSource, SFCollectionViewDelegateLayout, SFAirDropBrowserDelegate, SFPersonCollectionViewCellDelegate, SFWirelessSettingsControllerDelegate>
@@ -43,9 +43,11 @@
     NSArray *_airdropViewYConstraints;
     NSArray *_largeTextAirdropViewYConstraints;
     UICollectionView *_collectionView;
+    UICollectionView *_detailCollectionView;
     UIButton *_showMoreButton;
     BOOL _shouldExpandTextIfNeeded;
     SFCollectionViewLayout *_collectionViewLayout;
+    SFCollectionViewLayout *_detailCollectionViewLayout;
     SFPersonCollectionViewCell *_prototypeActivityCell;
     NSCache *_cachedPreferredItemSizesByString;
     struct CGSize _cachedPreferredItemSize;
@@ -69,6 +71,8 @@
     UIFocusContainerGuide *_fcg;
     struct __SFOperation *_logger;
     struct CGSize _minimumPreferredContentSize;
+    NSMapTable *_realNameToFirstSeenTimestamp;
+    unsigned long long _peopleStartTimestamp;
     BOOL _sharedItemsAvailable;
     BOOL _otherActivityViewPresented;
     BOOL _darkStyleOnLegacyApp;
@@ -100,9 +104,13 @@
 - (void).cxx_destruct;
 - (struct CGSize)_cachedPreferredItemSize;
 - (struct CGSize)_cachedPreferredItemSizeForString:(id)arg1;
+- (void)_collectTelemetryForPeople:(id)arg1;
 - (void)_createiOSLayoutConstraints;
 - (void)_createtvOSLayoutConstraints;
+- (void)_emitTelemetryForPerson:(id)arg1;
 - (id)_fontWithStyle:(id)arg1 maxSizeCategory:(id)arg2 traits:(unsigned int)arg3;
+- (void)_startTelemetry;
+- (void)_stopTelemetry;
 - (void)_updateExclusionPathsForTextViews;
 - (void)_updateFontSizes;
 - (BOOL)addAttributedString:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;

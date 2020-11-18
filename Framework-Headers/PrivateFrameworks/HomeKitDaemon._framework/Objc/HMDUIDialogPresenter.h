@@ -46,6 +46,8 @@
 - (void)_requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_requestUserPermissionForLegacyWACAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_requestUserPermissionForUnauthenticatedAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_requestUserPermissionWithAccessoryPPIDInfo:(id)arg1 name:(id)arg2 category:(id)arg3 withContext:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_showUserDialogForIncompatibleAccessory:(id)arg1 name:(id)arg2 category:(id)arg3 withContext:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)confirmAddUser:(id)arg1 toHome:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)confirmRemoveUser:(id)arg1 fromHome:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)confirmReportAccessory:(id)arg1 context:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -60,6 +62,8 @@
 - (void)requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)requestUserPermissionForLegacyWACAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestUserPermissionForUnauthenticatedAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)requestUserPermissionWithAccessoryPPIDInfo:(id)arg1 name:(id)arg2 category:(id)arg3 withContext:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)showUserDialogForIncompatibleAccessory:(id)arg1 name:(id)arg2 category:(id)arg3 withContext:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventCacheHit, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
+@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventCacheHit, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
 
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
@@ -43,6 +43,7 @@
     GEOLogMsgEventTimeToLeaveInitialTravelTime *_timeToLeaveInitialTravelTimeEvent;
     GEOLogMsgEventTransitAppLaunch *_transitAppLaunchEvent;
     GEOLogMsgEventUserAction *_userActionEvent;
+    GEOLogMsgEventWifiConnectionQualityProbe *_wifiConnectionQualityProbeEvent;
     struct {
         unsigned int usageEventTime:1;
         unsigned int eventType:1;
@@ -87,6 +88,7 @@
 @property (readonly, nonatomic) BOOL hasTransitAppLaunchEvent;
 @property (nonatomic) BOOL hasUsageEventTime;
 @property (readonly, nonatomic) BOOL hasUserActionEvent;
+@property (readonly, nonatomic) BOOL hasWifiConnectionQualityProbeEvent;
 @property (strong, nonatomic) GEOLogMsgEventListInteractionSession *listInteractionSession; // @synthesize listInteractionSession=_listInteractionSession;
 @property (strong, nonatomic) GEOLogMsgEventLogFramework *logFrameworkEvent; // @synthesize logFrameworkEvent=_logFrameworkEvent;
 @property (strong, nonatomic) NSMutableArray *logMsgStates; // @synthesize logMsgStates=_logMsgStates;
@@ -110,6 +112,7 @@
 @property (strong, nonatomic) GEOLogMsgEventTransitAppLaunch *transitAppLaunchEvent; // @synthesize transitAppLaunchEvent=_transitAppLaunchEvent;
 @property (nonatomic) double usageEventTime;
 @property (strong, nonatomic) GEOLogMsgEventUserAction *userActionEvent; // @synthesize userActionEvent=_userActionEvent;
+@property (strong, nonatomic) GEOLogMsgEventWifiConnectionQualityProbe *wifiConnectionQualityProbeEvent; // @synthesize wifiConnectionQualityProbeEvent=_wifiConnectionQualityProbeEvent;
 
 + (void)_initializeAcceptedLogMsgStateTypes;
 + (id)acceptedLogMsgStates;

@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)dispatchAfter:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (void)finishTest;
+- (void)finishTestAfterInterval:(double)arg1;
 - (void)runTest:(CDUnknownBlockType)arg1;
 - (void)setUp;
 - (void)startTest;

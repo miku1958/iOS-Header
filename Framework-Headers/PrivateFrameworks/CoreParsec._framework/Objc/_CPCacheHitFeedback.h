@@ -40,16 +40,15 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property (readonly, copy, nonatomic) NSString *uuid;
-@property (copy, nonatomic) NSString *uuid;
+@property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
-- (id)initWithTriggerEvent:(int)arg1 input:(id)arg2 uuid:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

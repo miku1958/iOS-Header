@@ -34,7 +34,7 @@
 
 + (unsigned long long)currentProtocolVersion;
 + (id)protocolMessageWithProtobufData:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithUnderlyingCodableMessage:(id)arg1 identifier:(id)arg2 error:(id)arg3;
 

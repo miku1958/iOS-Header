@@ -8,7 +8,7 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableDictionary, TSKSelectionPath;
+@class NSArray, NSMutableDictionary, TSDFreehandDrawingToolkitUIState, TSKSelectionPath;
 @protocol TNUIStateDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     id<TNUIStateDelegate> _delegate;
     long long _documentMode;
     NSArray *_selectedQuickCalcFunctions;
+    TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
     NSMutableDictionary *_chartUIState;
     NSMutableDictionary *_sheetUIStates;
     NSMutableDictionary *_editModeSheetUIStates;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect desktopWindowFrame; // @synthesize desktopWindowFrame=_desktopWindowFrame;
 @property (nonatomic) long long documentMode; // @synthesize documentMode=_documentMode;
 @property (readonly, nonatomic) NSMutableDictionary *editModeSheetUIStates; // @synthesize editModeSheetUIStates=_editModeSheetUIStates;
+@property (strong, nonatomic) TSDFreehandDrawingToolkitUIState *freehandDrawingToolkitUIState; // @synthesize freehandDrawingToolkitUIState=_freehandDrawingToolkitUIState;
 @property (readonly, nonatomic) BOOL hasPreviousVisibleRect;
 @property (readonly, nonatomic) BOOL hasVisibleRect;
 @property (nonatomic) long long inspectorPaneHiddenState;

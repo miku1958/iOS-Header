@@ -25,10 +25,10 @@
 @property (readonly) XCUIElement *referencedElement;
 @property (readonly) struct CGPoint screenPoint;
 
+- (void).cxx_destruct;
 - (struct CGPoint)_untransformedScreenPoint;
 - (id)coordinateWithOffset:(struct CGVector)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)doubleTap;
 - (id)init;

@@ -27,6 +27,7 @@
 - (void)dealloc;
 - (void)deleteDeDupeRecordZone;
 - (void)fetchLatestRecordKeyFromCKAndCreateIfKeyDoesNotExistWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchLatestRecordKeyFromCKAndCreateIfKeyDoesNotExistWithCompletion:(CDUnknownBlockType)arg1 forceFetch:(BOOL)arg2;
 - (id)init;
 
 @end

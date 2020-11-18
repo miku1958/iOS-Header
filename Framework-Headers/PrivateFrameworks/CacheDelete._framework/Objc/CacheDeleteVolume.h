@@ -11,10 +11,12 @@
 @interface CacheDeleteVolume : NSObject
 {
     BOOL _isRoot;
+    NSString *_fsType;
     NSString *_mountPoint;
     unsigned long long _initialFreespace;
 }
 
+@property (readonly, nonatomic) NSString *fsType; // @synthesize fsType=_fsType;
 @property (readonly) unsigned long long initialFreespace; // @synthesize initialFreespace=_initialFreespace;
 @property (readonly) BOOL isRoot; // @synthesize isRoot=_isRoot;
 @property (readonly, nonatomic) NSString *mountPoint; // @synthesize mountPoint=_mountPoint;

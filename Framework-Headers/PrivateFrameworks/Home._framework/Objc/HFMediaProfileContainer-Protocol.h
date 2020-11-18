@@ -11,33 +11,39 @@
 #import <Home/HFPrettyDescription-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFRoomContextProviding-Protocol.h>
+#import <Home/HFSymptomsHandlerVendor-Protocol.h>
+#import <Home/HFSymptomsVendor-Protocol.h>
 #import <Home/HMMediaObject-Protocol.h>
 
-@class ACAccount, HFAccessorySettingAdapterManager, HFMediaProfileContainerSettingsValueManager, HFServiceNameComponents, HMAccessory, HMHome, HMMediaSession, HMRemoteLoginHandler, NAFuture, NSDictionary, NSSet, NSString;
+@class ACAccount, HFAccessorySettingAdapterManager, HFMediaProfileContainerSettingsValueManager, HFServiceNameComponents, HMAccessory, HMHome, HMMediaSession, NAFuture, NSSet, NSString;
 @protocol HFMediaValueSource;
 
-@protocol HFMediaProfileContainer <HMMediaObject, HFAccessoryVendor, HFHomeKitObject, HFPrettyDescription, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFGroupableItemProtocol>
+@protocol HFMediaProfileContainer <HMMediaObject, HFAccessoryVendor, HFHomeKitObject, HFPrettyDescription, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFGroupableItemProtocol, HFSymptomsVendor, HFSymptomsHandlerVendor>
 
 @property (readonly, nonatomic) HMAccessory *hf_backingAccessory;
+@property (readonly, nonatomic) NSString *hf_defaultName;
 @property (readonly, nonatomic) NSSet *hf_dependentHomeKitObjects;
+@property (readonly, nonatomic) NSString *hf_editingName;
+@property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
 @property (readonly, nonatomic) HMHome *hf_home;
+@property (readonly, nonatomic) BOOL hf_isAccessorySettingsReachable;
+@property (readonly, nonatomic) BOOL hf_isAppleMusicReachable;
 @property (readonly, nonatomic) BOOL hf_isCurrentAccessory;
 @property (readonly, nonatomic) BOOL hf_isReachable;
 @property (readonly, nonatomic) id<HFMediaValueSource> hf_mediaValueSource;
 @property (readonly, nonatomic) NSString *hf_prettyDescription;
-@property (readonly, nonatomic) HMRemoteLoginHandler *hf_remoteLoginHandler;
 @property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
 @property (readonly, nonatomic) HFAccessorySettingAdapterManager *hf_settingsAdapterManager;
 @property (readonly, nonatomic) HFMediaProfileContainerSettingsValueManager *hf_settingsValueManager;
+@property (readonly, nonatomic) BOOL hf_showsAudioSettings;
+@property (readonly, nonatomic) BOOL hf_supportsMediaSystem;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
 @property (readonly, copy, nonatomic) HMMediaSession *mediaSession;
 
-- (NAFuture *)hf_appleMusicCompleteLoginWithAuthenticationResults:(NSDictionary *)arg1;
 - (ACAccount *)hf_appleMusicCurrentLoggedInAccount;
 - (NSString *)hf_appleMusicCurrentLoggedInAccountDSID;
-- (NAFuture *)hf_appleMusicLoginWithAccount:(ACAccount *)arg1;
-- (NAFuture *)hf_appleMusicLogout;
 - (NAFuture *)hf_fetchLog:(NSString *)arg1 timeout:(double)arg2;
 - (NAFuture *)hf_fetchLogListWithTimeout:(double)arg1;
+- (NSString *)hf_idsDeviceIdentifierWithError:(id *)arg1;
 @end
 

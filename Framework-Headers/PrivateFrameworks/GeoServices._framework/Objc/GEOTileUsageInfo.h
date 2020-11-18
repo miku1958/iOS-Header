@@ -38,6 +38,7 @@
 - (id)initWithTileKey:(const struct _GEOTileKey *)arg1 withTileUsageData:(id)arg2 andMetrics:(id)arg3;
 - (int)protocolType;
 - (int)resourceFetchType;
+- (id)transactionMetrics;
 
 @end
 

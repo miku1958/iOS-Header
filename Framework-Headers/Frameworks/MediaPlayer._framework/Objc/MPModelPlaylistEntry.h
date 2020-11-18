@@ -10,33 +10,21 @@
 
 @interface MPModelPlaylistEntry : MPModelObject
 {
-    long long _position;
-    MPModelPlaylist *_playlist;
-    MPModelSong *_song;
-    MPModelTVEpisode *_tvEpisode;
-    MPModelMovie *_movie;
-    MPArtworkCatalog *__artworkCatalog;
 }
 
-@property (strong, nonatomic) MPArtworkCatalog *_artworkCatalog; // @synthesize _artworkCatalog=__artworkCatalog;
-@property (strong, nonatomic) MPModelMovie *movie; // @synthesize movie=_movie;
-@property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
-@property (nonatomic) long long position; // @synthesize position=_position;
-@property (strong, nonatomic) MPModelSong *song; // @synthesize song=_song;
-@property (strong, nonatomic) MPModelTVEpisode *tvEpisode; // @synthesize tvEpisode=_tvEpisode;
+@property (strong, nonatomic) MPArtworkCatalog *_artworkCatalog; // @dynamic _artworkCatalog;
+@property (strong, nonatomic) MPModelMovie *movie; // @dynamic movie;
+@property (strong, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
+@property (nonatomic) long long position; // @dynamic position;
+@property (strong, nonatomic) MPModelSong *song; // @dynamic song;
+@property (strong, nonatomic) MPModelTVEpisode *tvEpisode; // @dynamic tvEpisode;
 
-+ (id)__MPModelPropertyPlaylistEntryPosition__PROPERTY;
-+ (id)__MPModelRelationshipPlaylistEntryMovie__PROPERTY;
-+ (id)__MPModelRelationshipPlaylistEntryPlaylist__PROPERTY;
-+ (id)__MPModelRelationshipPlaylistEntrySong__PROPERTY;
-+ (id)__MPModelRelationshipPlaylistEntryTVEpisode__PROPERTY;
-+ (id)___MPModelPropertyPlaylistEntryArtwork__PROPERTY;
-+ (id)___artworkCatalog__KEY;
-+ (id)__movie__KEY;
-+ (id)__playlist__KEY;
-+ (id)__position__KEY;
-+ (id)__song__KEY;
-+ (id)__tvEpisode__KEY;
++ (id)___artworkCatalog_KEY;
++ (id)__movie_KEY;
++ (id)__playlist_KEY;
++ (id)__position_KEY;
++ (id)__song_KEY;
++ (id)__tvEpisode_KEY;
 + (id)kindWithKinds:(id)arg1;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
@@ -45,7 +33,6 @@
 + (BOOL)supportsKeepLocalStatusObservation;
 + (BOOL)supportsLibraryAddStatusObservation;
 + (BOOL)supportsLibraryRemoval;
-- (void).cxx_destruct;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;
 - (id)mediaItemPropertyValues;

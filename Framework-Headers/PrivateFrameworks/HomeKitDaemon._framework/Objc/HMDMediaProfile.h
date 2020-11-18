@@ -6,18 +6,24 @@
 
 #import <HomeKitDaemon/HMDAccessoryProfile.h>
 
-@class HMDMediaSession, NSObject;
+@class HMDAccessorySettingContainer, HMDAppleMediaAccessory, HMDMediaSession, HMDMediaSystem, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface HMDMediaProfile : HMDAccessoryProfile
 {
     HMDMediaSession *_mediaSession;
+    HMDMediaSystem *_mediaSystem;
+    HMDAccessorySettingContainer *_container;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
+@property (strong, nonatomic) HMDAccessorySettingContainer *container; // @synthesize container=_container;
+@property (readonly, weak) HMDAppleMediaAccessory *mediaAccessory;
 @property (strong) HMDMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
+@property (weak, nonatomic) HMDMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
 @property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)namespace;
 + (id)sessionNamespace;
@@ -33,6 +39,7 @@
 - (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
 - (id)initWithAccessory:(id)arg1;
 - (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3;
+- (id)messageReceiverChildren;
 - (void)registerForMessages;
 - (void)sessionAudioControlUpdated:(id)arg1;
 - (void)updateWithResponses:(id)arg1 message:(id)arg2;

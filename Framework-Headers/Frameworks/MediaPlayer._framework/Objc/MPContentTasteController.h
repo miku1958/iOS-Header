@@ -20,12 +20,16 @@
 + (id)sharedController;
 - (void).cxx_destruct;
 - (id)_ML3QueryWithEntityClass:(Class)arg1 predicate:(id)arg2 options:(long long)arg3;
+- (id)_addPendingUpdateRecord:(id)arg1 withKey:(id)arg2 inDictionary:(id)arg3;
 - (id)_addPendingUpdateRecordForPlaylistGlobalID:(id)arg1 contentTasteType:(long long)arg2;
 - (id)_addPendingUpdateRecordForStoreAdamID:(long long)arg1 contentTasteType:(long long)arg2;
 - (void)_deviceMediaLibraryDidChangeNotification:(id)arg1;
 - (id)_libraryEntityForModel:(id)arg1;
 - (id)_libraryEntityWithStoreID:(long long)arg1 contentType:(long long)arg2;
 - (id)_libraryPlaylistWithGlobalID:(id)arg1;
+- (id)_pendingUpdateRecordForKey:(id)arg1 inDictionary:(id)arg2;
+- (id)_pendingUpdateRecordForPlaylistGlobalID:(id)arg1;
+- (id)_pendingUpdateRecordForStoreAdamID:(long long)arg1;
 - (void)_removePendingUpdateRecordForPlaylistGlobalID:(id)arg1 token:(id)arg2;
 - (void)_removePendingUpdateRecordForStoreAdamID:(long long)arg1 token:(id)arg2;
 - (void)dealloc;

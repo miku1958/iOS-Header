@@ -16,17 +16,21 @@ __attribute__((visibility("hidden")))
     BOOL _useZoneWidePCS;
     BOOL _useMMCSEncryptionV2;
     BOOL _bypassPCSEncryption;
+    BOOL _forceEnableReadOnlyManatee;
     BOOL _wantsSiloedContext;
     NSString *_applicationBundleID;
     NSString *_sourceApplicationBundleID;
     CKContainerID *_containerID;
     NSString *_applicationContainerPath;
+    NSString *_containerEncryptionServiceName;
 }
 
 @property (strong, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
 @property (strong, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
 @property (nonatomic) BOOL bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
+@property (strong, nonatomic) NSString *containerEncryptionServiceName; // @synthesize containerEncryptionServiceName=_containerEncryptionServiceName;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
+@property (nonatomic) BOOL forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property (strong, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property (nonatomic) BOOL useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
 @property (nonatomic) BOOL useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSThread.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, _UIStatusBarTimeStringServerCache;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarServerThread : NSThread
@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *_glowAnimationStates;
     NSMutableDictionary *_glowAnimationEndTimes;
     BOOL _composedStatusBarDataValid;
+    _UIStatusBarTimeStringServerCache *_ioSurfaceCache;
 }
+
+@property (readonly, nonatomic) _UIStatusBarTimeStringServerCache *ioSurfaceCache; // @synthesize ioSurfaceCache=_ioSurfaceCache;
 
 - (void).cxx_destruct;
 - (void)_addClient:(unsigned int)arg1;

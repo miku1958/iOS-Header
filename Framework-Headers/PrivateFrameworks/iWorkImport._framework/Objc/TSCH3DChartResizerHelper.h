@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     tvec2_3b141483 mContainingViewport;
     tvec2_3b141483 mOriginalContainingViewport;
     TSCH3DChartBoundsLayout *mBoundsLayout;
-    CDStruct_44ada6bf mLayoutSettings;
+    CDStruct_b1c75024 mLayoutSettings;
 }
 
 @property (readonly, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
 @property (nonatomic) tvec2_3b141483 containingViewport; // @synthesize containingViewport=mContainingViewport;
 @property (readonly, nonatomic) TSCH3DVector *containingViewportVector;
-@property (nonatomic) CDStruct_44ada6bf layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
+@property (nonatomic) CDStruct_b1c75024 layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
 @property (readonly, nonatomic) tvec2_3b141483 originalContainingViewport; // @synthesize originalContainingViewport=mOriginalContainingViewport;
 
 + (tvec2_3b141483)containingViewportForVector:(id)arg1;

@@ -15,7 +15,7 @@
 
 @property (readonly, copy, nonatomic) MRVirtualTouchDeviceDescriptor *deviceDescriptor;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithDeviceDescriptor:(id)arg1;
 - (unsigned long long)type;
 

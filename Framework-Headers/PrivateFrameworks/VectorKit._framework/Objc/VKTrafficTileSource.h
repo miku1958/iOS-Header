@@ -44,9 +44,10 @@ __attribute__((visibility("hidden")))
 - (void)dirtyTilesFromTileSource:(id)arg1;
 - (void)expireTilesForTileSource:(id)arg1;
 - (void)failedToDecodeSourceKey:(const struct VKTileKey *)arg1;
-- (void)fetchTileForKey:(const struct VKTileKey *)arg1;
-- (void)fetchTileForKey:(const struct VKTileKey *)arg1 sourceKey:(const struct VKTileKey *)arg2;
-- (id)initWithSkeletonTileSet:(id)arg1 dynamicTileSet:(id)arg2 resourceManifestConfiguration:(id)arg3 locale:(id)arg4 sharedResources:(id)arg5 taskContext:(shared_ptr_e963992e)arg6;
+- (void)fetchTileForKey:(const struct VKTileKey *)arg1 isPrefetch:(BOOL)arg2;
+- (void)fetchTileForKey:(const struct VKTileKey *)arg1 sourceKey:(const struct VKTileKey *)arg2 isPrefetch:(BOOL)arg3;
+- (void)forceExpireTile:(const struct VKTileKey *)arg1;
+- (id)initWithSkeletonTileSet:(id)arg1 dynamicTileSet:(id)arg2 resourceManifestConfiguration:(id)arg3 locale:(id)arg4 sharedResources:(id)arg5 taskContext:(shared_ptr_e963992e)arg6 origin:(unsigned char)arg7;
 - (void)invalidateTilesFromTileSource:(id)arg1;
 - (long long)maximumZoomLevel;
 - (long long)maximumZoomLevelWithoutOverride;

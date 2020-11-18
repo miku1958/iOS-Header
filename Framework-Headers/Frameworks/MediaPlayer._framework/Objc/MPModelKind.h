@@ -7,8 +7,9 @@
 #import <Foundation/NSObject.h>
 
 #import <MediaPlayer/NSCoding-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@interface MPModelKind : NSObject <NSCoding>
+@interface MPModelKind : NSObject <NSCoding, NSSecureCoding>
 {
     Class _modelClass;
 }
@@ -16,6 +17,7 @@
 @property (readonly, nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
 
 + (id)kindWithModelClass:(Class)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;

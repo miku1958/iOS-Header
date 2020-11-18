@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)disableLegacyStoreLookups;
 + (void)initialize;
 + (BOOL)showDebugIndicators;
++ (BOOL)subsampleImagesToScreenSize;
 
 @end
 

@@ -9,10 +9,12 @@
 @interface GKPlayer (UIPrivate)
 + (void)preloadImagesForPlayers:(id)arg1 size:(long long)arg2;
 + (long long)sizeForPhotoSize:(long long)arg1;
+- (id)cacheKeyForType:(unsigned char)arg1;
 - (id)imageSourceForPlaceholders;
 - (id)imageURLForPhotoSizeList;
 - (id)photoURLForSize:(long long)arg1;
 - (id)placeholderImage;
 - (id)placeholderImageForType:(unsigned char)arg1;
+- (id)placeholderImageSelected;
 @end
 

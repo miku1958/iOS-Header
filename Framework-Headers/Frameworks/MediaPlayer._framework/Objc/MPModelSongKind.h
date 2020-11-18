@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) unsigned long long variants; // @synthesize variants=_variants;
 
 + (id)kindWithVariants:(unsigned long long)arg1 options:(unsigned long long)arg2;
++ (BOOL)supportsSecureCoding;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

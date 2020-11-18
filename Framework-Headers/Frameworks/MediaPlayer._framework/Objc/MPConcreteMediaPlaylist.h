@@ -20,6 +20,7 @@
     void *_clusterPlaylist;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_allowsEditing;
 - (void)_enumerateItemPersistentIDsUsingBlock:(CDUnknownBlockType)arg1;

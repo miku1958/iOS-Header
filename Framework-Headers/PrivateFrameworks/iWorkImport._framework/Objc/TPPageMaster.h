@@ -12,7 +12,7 @@
 #import <iWorkImport/TSPCopying-Protocol.h>
 #import <iWorkImport/TSWPHeaderFooterProvider-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TPDocumentRoot, TPSection, TSWPStorage;
+@class NSArray, NSEnumerator, NSMutableArray, NSString, TPDocumentRoot, TPSection, TSKDocumentRoot, TSUUUIDPath, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TPPageMaster : TSPObject <TSWPHeaderFooterProvider, TPMasterDrawableProvider, TSKDocumentObject, TSKModel, TSPCopying>
@@ -21,50 +21,57 @@ __attribute__((visibility("hidden")))
     TPSection *_section;
     TSWPStorage *_headerFooters[2][3];
     NSMutableArray *_masterDrawables;
+    TSUUUIDPath *_pageTemplateUUIDPath;
 }
 
+@property (readonly, nonatomic) double bodyWidth;
+@property (readonly, nonatomic) unsigned long long countOfMasterDrawables;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSEnumerator *headerFooterFragmentEnumerator;
 @property (readonly, nonatomic) NSArray *masterDrawables;
+@property (readonly, nonatomic) TSUUUIDPath *pageTemplateUUIDPath; // @synthesize pageTemplateUUIDPath=_pageTemplateUUIDPath;
 @property (weak, nonatomic) TPSection *section; // @synthesize section=_section;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL usesSingleHeaderFooter;
 
++ (BOOL)needsObjectUUID;
++ (id)pageMasterForPageTemplate:(id)arg1 withSection:(id)arg2;
 - (void).cxx_destruct;
 - (void)addMasterDrawable:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(BOOL)arg4;
 - (void)addMasterDrawables:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(BOOL)arg4;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
-- (double)bodyWidth;
 - (id)childEnumerator;
 - (BOOL)containsModelObject:(id)arg1;
 - (id)copyWithContext:(id)arg1;
-- (unsigned long long)countOfMasterDrawables;
 - (void)dealloc;
-- (id)documentRoot;
 - (double)footerHeight;
-- (id)headerFooter:(int)arg1 fragmentAtIndex:(int)arg2;
-- (id)headerFooterFragmentEnumerator;
-- (int)headerFooterTypeForModel:(id)arg1;
-- (int)headerFragmentIndexForModel:(id)arg1;
+- (id)headerFooter:(long long)arg1 fragmentAtIndex:(long long)arg2;
+- (long long)headerFooterTypeForModel:(id)arg1;
+- (long long)headerFragmentIndexForModel:(id)arg1;
 - (double)headerHeight;
 - (void)i_addMasterDrawable:(id)arg1;
 - (void)i_copyHeadersAndFootersFrom:(id)arg1 dolcContext:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)i_createHeadersFooters:(int)arg1 stylesheet:(id)arg2 paragraphStyle:(id)arg3 context:(id)arg4 mayAlreadyExist:(BOOL)arg5;
+- (void)i_createHeadersFooters:(long long)arg1 stylesheet:(id)arg2 paragraphStyle:(id)arg3 context:(id)arg4 mayAlreadyExist:(BOOL)arg5;
 - (void)i_ensureHeaderFooterStoragesExistWithStylesheet:(id)arg1 paragraphStyle:(id)arg2 context:(id)arg3;
-- (void)i_importHeaderFooter:(id)arg1 headerType:(int)arg2 dolcContext:(id)arg3 splitHeaders:(BOOL)arg4;
+- (void)i_importHeaderFooter:(id)arg1 headerType:(long long)arg2 dolcContext:(id)arg3 splitHeaders:(BOOL)arg4;
+- (id)i_pageTemplate;
 - (void)i_setDocumentRoot:(id)arg1;
-- (void)i_setHeaderFooter:(int)arg1 storage:(id)arg2 fragmentIndex:(int)arg3;
+- (void)i_setHeaderFooter:(long long)arg1 storage:(id)arg2 fragmentIndex:(long long)arg3;
+- (void)i_setPageTemplateUUIDPath:(id)arg1;
 - (void)i_splitHeaderFooter:(id)arg1 storages:(id *)arg2 dolcContext:(id)arg3 bodyWidth:(double)arg4;
 - (unsigned long long)indexOfMasterDrawable:(id)arg1;
 - (id)initWithSection:(id)arg1;
-- (BOOL)isHeaderFooterEmpty:(int)arg1;
-- (BOOL)isHeaderFooterEmpty:(int)arg1 fragmentAtIndex:(int)arg2;
+- (BOOL)isHeaderFooterEmpty:(long long)arg1;
+- (BOOL)isHeaderFooterEmpty:(long long)arg1 fragmentAtIndex:(long long)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)masterDrawablesSortedByZOrder:(id)arg1;
-- (double)pHeightOfHeaderFooter:(int)arg1;
+- (double)pHeightOfHeaderFooter:(long long)arg1;
 - (void)p_filterParagraphStylesOnHeaderFooterStorage:(id)arg1 stylesheet:(id)arg2;
 - (id)p_headerAndFooterStorages;
-- (int)p_headerFragmentIndexForTabIndex:(unsigned int)arg1 paragraphStyle:(id)arg2 bodyWidth:(double)arg3;
+- (long long)p_headerFragmentIndexForTabIndex:(unsigned int)arg1 paragraphStyle:(id)arg2 bodyWidth:(double)arg3;
 - (BOOL)p_isInDocument;
 - (void)p_makeHeadersFootersPerformSelector:(SEL)arg1 documentRoot:(id)arg2;
 - (void)p_makeHeadersFootersPerformSelector:(SEL)arg1 documentRoot:(id)arg2 context:(id)arg3;
@@ -77,7 +84,6 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (void)setParentStorage:(id)arg1;
 - (id)topLevelParentInfoForInfo:(id)arg1;
-- (BOOL)usesSingleHeaderFooter;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

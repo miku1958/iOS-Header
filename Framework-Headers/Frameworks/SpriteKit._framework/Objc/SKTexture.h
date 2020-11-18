@@ -120,6 +120,7 @@
 - (BOOL)loadImageDataFromPVRData:(id)arg1;
 - (BOOL)loadImageDataFromPVRGZData:(id)arg1;
 - (void)preloadWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setIsData:(BOOL)arg1;
 - (void)setTextureDimension:(const struct CGSize *)arg1 withPixelSize:(const struct CGSize *)arg2;
 - (struct CGSize)size;
 - (id)textureByApplyingCIFilter:(id)arg1;

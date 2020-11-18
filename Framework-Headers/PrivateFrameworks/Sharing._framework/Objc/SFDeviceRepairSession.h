@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, TROperationQueue, TRSession, UIViewController;
+@class NSMutableArray, NSString, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceRepairSession : NSObject
@@ -35,6 +35,7 @@
     double _trAuthenticationSecs;
     int _finishState;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSString *_idsIdentifier;
     SFDevice *_peerDevice;
     UIViewController *_presentingViewController;
     CDUnknownBlockType _progressHandler;
@@ -42,6 +43,7 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (readonly, copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (strong, nonatomic) SFDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;

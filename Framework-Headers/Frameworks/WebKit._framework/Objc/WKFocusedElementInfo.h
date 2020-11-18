@@ -9,6 +9,7 @@
 #import <WebKit/_WKFocusedElementInfo-Protocol.h>
 
 @class NSString;
+@protocol NSSecureCoding;
 
 __attribute__((visibility("hidden")))
 @interface WKFocusedElementInfo : NSObject <_WKFocusedElementInfo>
@@ -16,6 +17,7 @@ __attribute__((visibility("hidden")))
     long long _type;
     struct RetainPtr<NSString> _value;
     BOOL _isUserInitiated;
+    struct RetainPtr<NSObject<NSSecureCoding>> _userObject;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,11 +26,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
 @property (readonly, nonatomic, getter=isUserInitiated) BOOL userInitiated;
+@property (readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
 @property (readonly, copy, nonatomic) NSString *value;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithAssistedNodeInformation:(const struct AssistedNodeInformation *)arg1 isUserInitiated:(BOOL)arg2;
+- (id)initWithAssistedNodeInformation:(const struct AssistedNodeInformation *)arg1 isUserInitiated:(BOOL)arg2 userObject:(id)arg3;
 
 @end
 

@@ -6,17 +6,9 @@
 
 #import <MediaPlayer/MPRemotePlaybackQueue.h>
 
-#import <MediaPlaybackCore/MPCPlaybackContextCreating-Protocol.h>
-
-@class NSString;
-
-@interface MPRemotePlaybackQueue (MPCAdditions) <MPCPlaybackContextCreating>
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
+@interface MPRemotePlaybackQueue (MPCAdditions)
+- (void)createPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getRemoteRepresentationForPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 

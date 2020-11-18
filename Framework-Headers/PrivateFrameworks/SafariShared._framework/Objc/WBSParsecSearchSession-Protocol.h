@@ -6,7 +6,7 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class WBSCompletionQuery, WBSParsecSearchResult;
+@class WBSCompletionQuery;
 @protocol WBSParsecFeedbackDispatcher, WBSParsecSearchSessionDelegate;
 
 @protocol WBSParsecSearchSession <NSObject>
@@ -17,6 +17,5 @@
 @property (nonatomic, setter=setUIScale:) double uiScale;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
-- (void)fetchCardDetailsForResult:(WBSParsecSearchResult *)arg1 completionBlock:(void (^)(WBSParsecSearchResult *, NSError *))arg2;
 @end
 

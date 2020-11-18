@@ -16,6 +16,7 @@
 + (void)prefetchStorageWithCommandBuffer:(id)arg1 descriptorList:(id)arg2;
 + (id)temporaryVectorWithCommandBuffer:(id)arg1 descriptor:(id)arg2;
 - (id)initWithCommandBuffer:(id)arg1 descriptor:(id)arg2;
+- (void)synchronizeOnCommandBuffer:(id)arg1;
 
 @end
 

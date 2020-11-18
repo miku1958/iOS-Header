@@ -83,6 +83,7 @@
 @property (readonly, nonatomic) unsigned long long maxFolderEnumerationCount;
 @property (readonly, nonatomic) unsigned long long maxFolderEnumerationDepth;
 @property (readonly, nonatomic) unsigned long long maxNumberOfFilesInAFolder;
+@property (readonly, nonatomic) unsigned long long maxPreservedXattrBlobSize;
 @property (readonly, nonatomic) unsigned int maxRecordCountInClientZoneModifyRecordsOperation;
 @property (readonly, nonatomic) unsigned int maxRecordCountInFetchRecordsOperation;
 @property (readonly, nonatomic) unsigned int maxRecordCountInModifyRecordsOperation;

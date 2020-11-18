@@ -51,7 +51,7 @@
 - (BOOL)iCloudAccountSubscribed;
 - (id)init;
 - (BOOL)isLoggedIntoiTunes;
-- (BOOL)isRestrictedAccount;
+- (BOOL)isRestrictedByApple;
 - (BOOL)limitAdTrackingEnabled;
 - (id)operationQueueLog;
 - (void)reconcileDPID:(CDUnknownBlockType)arg1;

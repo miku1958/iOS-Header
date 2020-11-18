@@ -38,7 +38,8 @@
 - (id)initWithBiometricResource:(id)arg1 overrideMatchingAssertionFactory:(id)arg2;
 - (void)refreshMatchMode;
 - (void)removeObserver:(id)arg1;
-- (void)restartMatchingIfNeededForAssertion:(id)arg1;
+- (void)resumeMatchingAdvisory:(BOOL)arg1;
+- (void)resumeMatchingForAssertion:(id)arg1 advisory:(BOOL)arg2;
 
 @end
 

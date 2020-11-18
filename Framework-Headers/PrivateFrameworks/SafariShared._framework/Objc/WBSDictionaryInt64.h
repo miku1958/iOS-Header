@@ -12,10 +12,10 @@
 
 @interface WBSDictionaryInt64 : NSObject <NSCoding, NSSecureCoding, NSCopying>
 {
-    unordered_map_7f7b3f19 _map;
+    unordered_map_fcbaed0a _map;
 }
 
-@property (readonly, nonatomic) const unordered_map_7f7b3f19 *map;
+@property (readonly, nonatomic) const unordered_map_fcbaed0a *map;
 
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
@@ -25,8 +25,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMap:(const unordered_map_7f7b3f19 *)arg1;
-- (id)initWithMovableMap:(unordered_map_7f7b3f19 *)arg1;
+- (id)initWithMap:(const unordered_map_fcbaed0a *)arg1;
+- (id)initWithMovableMap:(unordered_map_fcbaed0a *)arg1;
 
 @end
 

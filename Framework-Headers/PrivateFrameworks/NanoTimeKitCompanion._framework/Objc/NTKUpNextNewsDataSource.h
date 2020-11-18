@@ -22,6 +22,7 @@
 - (id)init;
 - (void)pause;
 - (void)resume;
+- (void)setAllowsLocationUse:(BOOL)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setRunning:(BOOL)arg1;
 - (void)setState:(unsigned long long)arg1;

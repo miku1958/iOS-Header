@@ -37,6 +37,8 @@
 @property (readonly, nonatomic) NSArray *screenIDs;
 @property (readonly, nonatomic) NSDictionary *screenInputCapabilities;
 @property (readonly, nonatomic) NSDictionary *screenPrimaryInputDevices;
+@property (readonly, nonatomic) NSDictionary *screenSafeAreas;
+@property (readonly, nonatomic) NSDictionary *screenViewAreas;
 @property (readonly, nonatomic) NSArray *supportedFeatures;
 @property (readonly, nonatomic) long long transportType;
 
@@ -58,6 +60,7 @@
 - (void)requestCarUIForURL:(id)arg1;
 - (void)requestCarUIForURL:(id)arg1 withUUID:(id)arg2;
 - (id)requestTurnByTurnNavigationOwnership;
+- (void)requestViewArea:(long long)arg1 forScreenID:(id)arg2;
 - (void)sendCommand:(id)arg1 withParameters:(id)arg2;
 - (void)takeScreenForClient:(id)arg1 reason:(id)arg2;
 - (void)takeScreenForConnection;

@@ -24,12 +24,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)exportedInterface;
++ (id)passwordServiceViewControllerName;
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
-+ (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willDismissServiceViewController;
-- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     CDStruct_3b01f0aa *_junctionA;
     CDStruct_3b01f0aa *_junctionB;
     VKLabelNavJunction *_navJunctionA;
-    vector_e20517dc _simplifiedPoints;
+    vector_554e3200 _simplifiedPoints;
     Matrix_8746f91e _direction;
     BOOL _isRoadLabelUnique;
     BOOL _isOnRoute;
@@ -81,8 +81,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateWithNavContext:(struct NavContext *)arg1;
 - (void)_updateWithNavContext:(struct NavContext *)arg1 threshold:(double)arg2;
 - (BOOL)_worldPointForRoadOffset:(float)arg1 worldPoint:(Mercator3_40a88dec *)arg2;
-- (void)_worldRoadPoints:(vector_e20517dc *)arg1;
-- (void)appendSimplifiedWorldRoadPoints:(vector_e20517dc *)arg1;
+- (void)_worldRoadPoints:(vector_554e3200 *)arg1;
+- (void)appendSimplifiedWorldRoadPoints:(vector_554e3200 *)arg1;
 - (void)clearRoadSign;
 - (void)createLabelWithNavContext:(struct NavContext *)arg1 isShieldLabel:(BOOL)arg2 desiredOffsetDistance:(float)arg3 maxOffsetDistance:(float)arg4 minJunctionDistance:(float)arg5 minRouteDistance:(float)arg6 roadGraph:(id)arg7 artworkCache:(struct VKLabelNavArtworkCache *)arg8;
 - (void)dealloc;

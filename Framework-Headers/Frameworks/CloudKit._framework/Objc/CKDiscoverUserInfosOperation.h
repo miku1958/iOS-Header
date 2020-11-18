@@ -10,9 +10,9 @@
 
 @interface CKDiscoverUserInfosOperation : CKOperation
 {
+    CDUnknownBlockType _discoverUserInfosCompletionBlock;
     NSArray *_emailAddresses;
     NSArray *_userRecordIDs;
-    CDUnknownBlockType _discoverUserInfosCompletionBlock;
     NSMutableDictionary *_emailsToUserInfos;
     NSMutableDictionary *_userRecordIDsToUserInfos;
 }

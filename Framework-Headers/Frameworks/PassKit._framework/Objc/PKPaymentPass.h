@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSSet, NSString, NSURL, PKCurrencyAmount, PKFelicaPassProperties, PKPaymentApplication;
+@class NSArray, NSSet, NSString, NSURL, PKCurrencyAmount, PKPaymentApplication, PKTransitPassProperties;
 
 @interface PKPaymentPass : PKPass <NSCopying, NSSecureCoding>
 {
@@ -58,7 +58,6 @@
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryContactlessPaymentApplication; // @synthesize devicePrimaryContactlessPaymentApplication=_devicePrimaryContactlessPaymentApplication;
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryInAppPaymentApplication; // @synthesize devicePrimaryInAppPaymentApplication=_devicePrimaryInAppPaymentApplication;
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryPaymentApplication; // @synthesize devicePrimaryPaymentApplication=_devicePrimaryPaymentApplication;
-@property (readonly, copy, nonatomic) PKFelicaPassProperties *felicaProperties;
 @property (nonatomic) BOOL hasAssociatedPeerPaymentAccount; // @synthesize hasAssociatedPeerPaymentAccount=_hasAssociatedPeerPaymentAccount;
 @property (copy, nonatomic) NSString *issuerCountryCode; // @synthesize issuerCountryCode=_issuerCountryCode;
 @property (copy, nonatomic) NSString *localizedSuspendedReason; // @synthesize localizedSuspendedReason=_localizedSuspendedReason;
@@ -75,13 +74,17 @@
 @property (nonatomic) BOOL supportsDPANNotifications; // @synthesize supportsDPANNotifications=_supportsDPANNotifications;
 @property (nonatomic) BOOL supportsDefaultCardSelection; // @synthesize supportsDefaultCardSelection=_supportsDefaultCardSelection;
 @property (nonatomic) BOOL supportsFPANNotifications; // @synthesize supportsFPANNotifications=_supportsFPANNotifications;
+@property (readonly, nonatomic) BOOL supportsOnlyTransit;
 @property (nonatomic) BOOL supportsPeerPayment; // @synthesize supportsPeerPayment=_supportsPeerPayment;
 @property (nonatomic) BOOL supportsSerialNumberBasedProvisioning; // @synthesize supportsSerialNumberBasedProvisioning=_supportsSerialNumberBasedProvisioning;
 @property (copy, nonatomic) NSString *transactionPushTopic; // @synthesize transactionPushTopic=_transactionPushTopic;
 @property (copy, nonatomic) NSURL *transactionServiceURL; // @synthesize transactionServiceURL=_transactionServiceURL;
+@property (readonly, copy, nonatomic) PKTransitPassProperties *transitProperties;
 
 + (unsigned long long)defaultSettings;
 + (id)displayableErrorForAction:(id)arg1 andReason:(unsigned long long)arg2;
++ (id)displayableErrorForTransitAction:(id)arg1 andReason:(unsigned long long)arg2;
++ (id)displayableNoPaymentNetworkErrorMessageForAction:(id)arg1 isTransit:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned long long)_activationStateForApplicationState:(long long)arg1;
@@ -95,11 +98,14 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)effectiveContactlessPaymentApplicationState;
 - (void)encodeWithCoder:(id)arg1;
+- (id)felicaProperties;
 - (BOOL)hasContactlessDevicePaymentApplicationsAvailable;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
 - (BOOL)isAccessPass;
 - (BOOL)isDevicePrimaryPaymentApplicationPersonalized;
+- (BOOL)isSuicaPass;
+- (BOOL)isTransitPass;
 - (id)notificationCenterTitle;
 - (id)paymentApplicationForAID:(id)arg1;
 - (id)paymentApplicationsForSecureElementIdentifiers:(id)arg1;

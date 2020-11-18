@@ -7,38 +7,38 @@
 #import <Foundation/NSObject.h>
 
 @class NSPointerArray;
-@protocol TSTTableInternalGeometryProviding, TSTTableStrokeProviding;
+@protocol TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding, TSTTableStrokeProviding;
 
 __attribute__((visibility("hidden")))
 @interface TSTStrokeDefaultVendor : NSObject
 {
     BOOL _isValid;
-    unsigned int _headerSideBorderColumn;
-    unsigned int _headerColumnSeparatorColumn;
-    unsigned int _bodySideBorderColumn;
-    unsigned int _topBorderRow;
-    unsigned int _headerRowSeparatorRow;
-    unsigned int _footerRowSeparatorRow;
-    unsigned int _bottomBorderRow;
     id<TSTTableStrokeProviding> _strokeProvider;
-    id<TSTTableInternalGeometryProviding> _internalGeometryProvider;
+    id<TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding> _tableProvider;
     NSPointerArray *_strokeTypeToLayerMap;
+    struct _NSRange _headerSideBorderColumnRange;
+    struct _NSRange _headerColumnSeparatorColumnRange;
+    struct _NSRange _bodySideBorderColumnRange;
+    struct _NSRange _topBorderRowRange;
+    struct _NSRange _headerRowSeparatorRowRange;
+    struct _NSRange _footerRowSeparatorRowRange;
+    struct _NSRange _bottomBorderRowRange;
 }
 
-@property (nonatomic) unsigned int bodySideBorderColumn; // @synthesize bodySideBorderColumn=_bodySideBorderColumn;
-@property (nonatomic) unsigned int bottomBorderRow; // @synthesize bottomBorderRow=_bottomBorderRow;
-@property (nonatomic) unsigned int footerRowSeparatorRow; // @synthesize footerRowSeparatorRow=_footerRowSeparatorRow;
-@property (nonatomic) unsigned int headerColumnSeparatorColumn; // @synthesize headerColumnSeparatorColumn=_headerColumnSeparatorColumn;
-@property (nonatomic) unsigned int headerRowSeparatorRow; // @synthesize headerRowSeparatorRow=_headerRowSeparatorRow;
-@property (nonatomic) unsigned int headerSideBorderColumn; // @synthesize headerSideBorderColumn=_headerSideBorderColumn;
-@property (nonatomic) id<TSTTableInternalGeometryProviding> internalGeometryProvider; // @synthesize internalGeometryProvider=_internalGeometryProvider;
+@property (nonatomic) struct _NSRange bodySideBorderColumnRange; // @synthesize bodySideBorderColumnRange=_bodySideBorderColumnRange;
+@property (nonatomic) struct _NSRange bottomBorderRowRange; // @synthesize bottomBorderRowRange=_bottomBorderRowRange;
+@property (nonatomic) struct _NSRange footerRowSeparatorRowRange; // @synthesize footerRowSeparatorRowRange=_footerRowSeparatorRowRange;
+@property (nonatomic) struct _NSRange headerColumnSeparatorColumnRange; // @synthesize headerColumnSeparatorColumnRange=_headerColumnSeparatorColumnRange;
+@property (nonatomic) struct _NSRange headerRowSeparatorRowRange; // @synthesize headerRowSeparatorRowRange=_headerRowSeparatorRowRange;
+@property (nonatomic) struct _NSRange headerSideBorderColumnRange; // @synthesize headerSideBorderColumnRange=_headerSideBorderColumnRange;
 @property (nonatomic) BOOL isValid; // @synthesize isValid=_isValid;
-@property (nonatomic) id<TSTTableStrokeProviding> strokeProvider; // @synthesize strokeProvider=_strokeProvider;
+@property (weak, nonatomic) id<TSTTableStrokeProviding> strokeProvider; // @synthesize strokeProvider=_strokeProvider;
 @property (strong, nonatomic) NSPointerArray *strokeTypeToLayerMap; // @synthesize strokeTypeToLayerMap=_strokeTypeToLayerMap;
-@property (nonatomic) unsigned int topBorderRow; // @synthesize topBorderRow=_topBorderRow;
+@property (weak, nonatomic) id<TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding> tableProvider; // @synthesize tableProvider=_tableProvider;
+@property (nonatomic) struct _NSRange topBorderRowRange; // @synthesize topBorderRowRange=_topBorderRowRange;
 
-- (void)dealloc;
-- (id)initWithStrokeProvider:(id)arg1 internalGeometryProvider:(id)arg2;
+- (void).cxx_destruct;
+- (id)initWithStrokeProvider:(id)arg1 tableProvider:(id)arg2;
 - (void)invalidate;
 - (int)p_strokeTypeForColumn:(unsigned int)arg1;
 - (int)p_strokeTypeForRow:(unsigned int)arg1;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)strokeLayerForColumn:(unsigned int)arg1;
 - (id)strokeLayerForRow:(unsigned int)arg1;
 - (id)strokeLayerForStrokeType:(int)arg1;
-- (BOOL)validate;
+- (int)validateChangeDescriptors:(id)arg1;
 - (BOOL)validateGeometry;
 
 @end

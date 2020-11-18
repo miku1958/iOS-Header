@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct TileRowInfo *)arg1 archiver:(id)arg2;
 - (BOOL)searchCellStorageRefAtColumnIndex:(unsigned char)arg1 searchMask:(unsigned long long)arg2;
 - (void)validate;
+- (BOOL)validateWithResult:(id *)arg1;
 
 @end
 

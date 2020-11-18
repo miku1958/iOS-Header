@@ -114,7 +114,6 @@
 - (id)specifiers;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

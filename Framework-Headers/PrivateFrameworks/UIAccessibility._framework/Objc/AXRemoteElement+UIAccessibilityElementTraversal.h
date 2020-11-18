@@ -7,6 +7,6 @@
 #import <AXRuntime/AXRemoteElement.h>
 
 @interface AXRemoteElement (UIAccessibilityElementTraversal)
-- (void)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 @end
 

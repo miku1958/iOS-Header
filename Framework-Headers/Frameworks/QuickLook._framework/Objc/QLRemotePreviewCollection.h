@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)setLoadingString:(id)arg1;
 - (void)setSourceIsManaged:(BOOL)arg1;
-- (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(BOOL)arg3 useInteractiveTransition:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)tearDownTransition:(BOOL)arg1;
 - (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonsForTraitCollection:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

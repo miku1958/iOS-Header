@@ -16,8 +16,10 @@
     BOOL _shouldDismissOnCompletion;
     BOOL _forUserNamesOnly;
     NSArray *_hintStrings;
+    NSString *_bundleIdentifier;
 }
 
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) BOOL forUserNamesOnly; // @synthesize forUserNamesOnly=_forUserNamesOnly;
 @property (readonly, copy, nonatomic) NSArray *hintStrings; // @synthesize hintStrings=_hintStrings;
 @property (readonly, nonatomic) long long minimumNumberOfCredentialsToShowLikelyMatchesSection; // @synthesize minimumNumberOfCredentialsToShowLikelyMatchesSection=_minimumNumberOfCredentialsToShowLikelyMatchesSection;
@@ -29,6 +31,7 @@
 - (void)_appDidEnterBackground:(id)arg1;
 - (void)_cancel;
 - (void)_pickSavedPassword:(id)arg1;
+- (BOOL)_viewControllerUnderlapsStatusBar;
 - (void)dealloc;
 - (id)initWithPrompt:(id)arg1 forUserNamesOnly:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithPrompt:(id)arg1 forUserNamesOnly:(BOOL)arg2 hintStrings:(id)arg3 minimumNumberOfCredentialsToShowLikelyMatchesSection:(long long)arg4 shouldDismissOnCompletion:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;

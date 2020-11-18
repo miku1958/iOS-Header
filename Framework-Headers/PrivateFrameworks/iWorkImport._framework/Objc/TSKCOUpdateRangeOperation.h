@@ -15,16 +15,15 @@
 __attribute__((visibility("hidden")))
 @interface TSKCOUpdateRangeOperation : TSKCOUpdateOperation <TSKCORangeOperation, TSKCOUpdateRangeOperationSubset, TSKCOTransforming>
 {
-    TSKCORangeAddress *mAddress;
-    int mTransformBehavior;
+    int _transformBehavior;
+    TSKCORangeAddress *_address;
 }
 
-@property (readonly, nonatomic) TSKCORangeAddress *address; // @synthesize address=mAddress;
-@property (readonly, nonatomic) int transformBehavior; // @synthesize transformBehavior=mTransformBehavior;
+@property (readonly, nonatomic) TSKCORangeAddress *address; // @synthesize address=_address;
+@property (readonly, nonatomic) int transformBehavior; // @synthesize transformBehavior=_transformBehavior;
 
-- (void)dealloc;
-- (id)description;
-- (id)fromUpdateRangeOperation:(id)arg1;
++ (id)stringForTransformBehavior:(int)arg1;
+- (void).cxx_destruct;
 - (id)initWithRangeAddress:(id)arg1 propertyName:(id)arg2;
 - (id)initWithRangeAddress:(id)arg1 propertyName:(id)arg2 noop:(BOOL)arg3;
 - (id)initWithRangeAddress:(id)arg1 selectionPropertyName:(id)arg2;
@@ -33,13 +32,14 @@ __attribute__((visibility("hidden")))
 - (id)operationWithNewNoop:(BOOL)arg1;
 - (id)p_initWithRangeAddress:(id)arg1 propertyName:(id)arg2 transformBehavior:(int)arg3 noop:(BOOL)arg4;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
+- (id)toString;
 - (id)toUpdateRangeOperation;
-- (id)transformDynamicByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2;
-- (id)transformIdPlacementBaseOperation:(id)arg1 isHigherPriority:(BOOL)arg2;
-- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2;
-- (id)transformStaticByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2;
-- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(BOOL)arg2;
-- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2;
+- (id)transformDynamicByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformIdPlacementBaseOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformStaticByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
 - (id)ut_transformByTransformer:(id)arg1;
 
 @end

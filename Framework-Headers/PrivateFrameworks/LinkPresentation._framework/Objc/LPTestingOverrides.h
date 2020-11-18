@@ -13,10 +13,12 @@
 + (id)customLoader;
 + (unsigned long long)forceImageLoadingScaleFactor;
 + (BOOL)forceRTL;
++ (id)forceSubsampleImagesToScreenSize;
 + (void)reset;
 + (void)setCustomLoader:(id)arg1;
 + (void)setForceImageLoadingScaleFactor:(unsigned long long)arg1;
 + (void)setForceRTL:(BOOL)arg1;
++ (void)setForceSubsampleImagesToScreenSize:(id)arg1;
 
 @end
 

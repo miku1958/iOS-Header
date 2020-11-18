@@ -13,15 +13,14 @@
 @interface SXMediaSelectionButton : SXMaterialButton <SXVideoControlItem>
 {
     BOOL hideable;
-    double autoAppearanceTimeInterval;
 }
 
-@property (readonly, nonatomic) double autoAppearanceTimeInterval; // @synthesize autoAppearanceTimeInterval;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideable; // @synthesize hideable;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsAutoAppearance;
 
 - (id)accessibilityLabel;
 - (void)hide:(BOOL)arg1 withAnimationCoordinator:(id)arg2;
@@ -29,6 +28,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isAccessibilityElement;
 - (BOOL)isVisible;
+- (void)layoutSubviews;
 
 @end
 

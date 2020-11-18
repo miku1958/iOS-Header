@@ -86,7 +86,7 @@
 - (double)_selectedItemHeightInSize:(struct CGSize)arg1 shouldIgnoreInsets:(BOOL)arg2;
 - (void)_setFrame:(struct CGRect)arg1 forVisibleViewAtIndex:(long long)arg2;
 - (void)_setHighlighted:(BOOL)arg1 forViewControllerAtIndex:(long long)arg2;
-- (void)_setSelectedItemIndex:(long long)arg1 animated:(BOOL)arg2 shouldScroll:(BOOL)arg3 shouldNotifyDelegate:(BOOL)arg4;
+- (void)_setSelectedItemIndex:(long long)arg1 animated:(BOOL)arg2 shouldScroll:(BOOL)arg3 shouldNotifyDelegate:(BOOL)arg4 withReason:(long long)arg5;
 - (void)_tileViews;
 - (double)_totalHeight;
 - (void)_transitionToDisplayMode:(long long)arg1 usingTransitionCoordinator:(id)arg2 assumingSize:(struct CGSize)arg3;

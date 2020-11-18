@@ -6,7 +6,7 @@
 
 #import <AXHearingSupport/AXHearingAidDevice.h>
 
-@class NSArray, NSDate, NSMutableArray, NSString;
+@class CBPeripheral, NSArray, NSDate, NSMutableArray, NSString;
 
 @interface AXFakeHearingAidDevice : AXHearingAidDevice
 {
@@ -31,6 +31,8 @@
     NSString *_rightHardwareVersion;
     NSDate *_leftBatteryLowDate;
     NSDate *_rightBatteryLowDate;
+    CBPeripheral *leftPeripheral;
+    CBPeripheral *rightPeripheral;
     unsigned long long _excludedProperties;
 }
 
@@ -42,6 +44,7 @@
 @property (strong, nonatomic) NSString *leftFirmwareVersion; // @synthesize leftFirmwareVersion=_leftFirmwareVersion;
 @property (strong, nonatomic) NSString *leftHardwareVersion; // @synthesize leftHardwareVersion=_leftHardwareVersion;
 @property (nonatomic) short leftMicrophoneVolumeSteps; // @synthesize leftMicrophoneVolumeSteps=_leftMicrophoneVolumeSteps;
+@property (strong, nonatomic) CBPeripheral *leftPeripheral; // @synthesize leftPeripheral;
 @property (strong, nonatomic) NSString *leftUUID; // @synthesize leftUUID=_leftUUID;
 @property (strong, nonatomic) NSArray *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (strong, nonatomic) NSArray *model; // @synthesize model=_model;
@@ -51,6 +54,7 @@
 @property (strong, nonatomic) NSString *rightFirmwareVersion; // @synthesize rightFirmwareVersion=_rightFirmwareVersion;
 @property (strong, nonatomic) NSString *rightHardwareVersion; // @synthesize rightHardwareVersion=_rightHardwareVersion;
 @property (nonatomic) short rightMicrophoneVolumeSteps; // @synthesize rightMicrophoneVolumeSteps=_rightMicrophoneVolumeSteps;
+@property (strong, nonatomic) CBPeripheral *rightPeripheral; // @synthesize rightPeripheral;
 @property (strong, nonatomic) NSString *rightUUID; // @synthesize rightUUID=_rightUUID;
 @property (nonatomic) int type; // @synthesize type=_type;
 

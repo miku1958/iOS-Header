@@ -16,13 +16,14 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _hasStarted;
-    NSURL *_URLIfAvailable;
     NSData *_bookmarkDataIfAvailable;
     NSError *_latestError;
     id<TSUURLTrackerDelegate> _delegate;
     NSOperationQueue *_presentedItemOperationQueue;
+    NSURL *_URLIfAvailable;
 }
 
+@property (copy) NSURL *URLIfAvailable; // @synthesize URLIfAvailable=_URLIfAvailable;
 @property (readonly) NSData *bookmarkData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

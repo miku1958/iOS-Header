@@ -22,7 +22,7 @@
     id<WBSHistoryStore> _historyStore;
 }
 
-@property (readonly, nonatomic) NSArray *allItems;
+@property (readonly) NSArray *allItems;
 @property (nonatomic) unsigned long long cachedNumberOfDevicesInSyncCircle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -68,6 +68,7 @@
 - (void)_sendNotification:(id)arg1 withItems:(id)arg2;
 - (void)_setAttributes:(unsigned long long)arg1 forVisit:(id)arg2;
 - (void)_startLoading;
+- (void)_unload;
 - (void)_waitUntilHistoryHasLoadedMainThread;
 - (void)addAttributes:(unsigned long long)arg1 toVisit:(id)arg2;
 - (void)addAutocompleteTrigger:(id)arg1 forURLString:(id)arg2;
@@ -77,6 +78,7 @@
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)close;
+- (void)closeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enumerateItemsAsynchronouslyUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)getAllTombstonesWithCompletion:(CDUnknownBlockType)arg1;

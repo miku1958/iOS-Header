@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSLock, NSString, NSXPCConnection, NSXPCInterface, PKXPCForwarder;
-@protocol NSObject, PKXPCServiceDelegate;
+#import <PassKitCore/PKForegroundActiveArbiterObserver-Protocol.h>
 
-@interface PKXPCService : NSObject
+@class NSLock, NSString, NSXPCConnection, NSXPCInterface, PKXPCForwarder;
+@protocol NSObject, PKForegroundActiveArbiter, PKXPCServiceDelegate;
+
+@interface PKXPCService : NSObject <PKForegroundActiveArbiterObserver>
 {
     NSXPCInterface *_remoteObjectInterface;
     NSXPCInterface *_exportedObjectInterface;
@@ -20,6 +22,8 @@
     NSXPCConnection *_connection;
     PKXPCForwarder *_exportedProxy;
     BOOL _suspendCallbacks;
+    BOOL _forceConnectionOnResume;
+    id<PKForegroundActiveArbiter> _foregroundActiveArbiter;
     id<NSObject> _foregroundListener;
     id<NSObject> _backgroundListener;
     int _serviceResumedToken;
@@ -28,12 +32,16 @@
 }
 
 @property (readonly, nonatomic) BOOL connectionEstablished;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKXPCServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL forceConnectionOnResume;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 
-+ (BOOL)areCallbacksSuspended;
-+ (void)setCallbacksSuspendedEvaluator:(CDUnknownBlockType)arg1;
++ (void)setForegroundActiveArbiter:(id)arg1;
 - (void).cxx_destruct;
 - (id)_connection;
 - (void)_createConnectionIfPossible:(BOOL)arg1;
@@ -51,6 +59,7 @@
 - (id)existingRemoteObjectProxy;
 - (id)existingRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)existingSynchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_3d581f42)arg2;
 - (id)init;
 - (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4;
 - (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4 serviceResumedNotificationName:(id)arg5;

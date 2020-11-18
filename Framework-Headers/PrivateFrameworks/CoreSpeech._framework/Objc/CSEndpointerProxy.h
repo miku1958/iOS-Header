@@ -48,6 +48,7 @@
 - (void).cxx_destruct;
 - (BOOL)_shouldEnterTwoShotAtEndPointTime:(double)arg1;
 - (BOOL)_shouldUseVAD2ForTwoShot;
+- (double)elapsedTimeWithNoSpeech;
 - (void)endpointer:(id)arg1 didDetectHardEndpointAtTime:(double)arg2 withMetrics:(id)arg3;
 - (void)endpointer:(id)arg1 didDetectStartpointAtTime:(double)arg2;
 - (id)endpointerModelVersion;

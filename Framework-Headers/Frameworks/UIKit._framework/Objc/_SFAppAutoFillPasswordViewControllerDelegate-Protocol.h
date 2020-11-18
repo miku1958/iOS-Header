@@ -4,13 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKit/_SFPasswordViewControllerDelegate-Protocol.h>
 
-@class _SFAppAutoFillPasswordViewController;
-
-@protocol _SFAppAutoFillPasswordViewControllerDelegate <NSObject>
-
-@optional
-- (void)passwordViewControllerDidFinish:(_SFAppAutoFillPasswordViewController *)arg1;
+@protocol _SFAppAutoFillPasswordViewControllerDelegate <_SFPasswordViewControllerDelegate>
 @end
 

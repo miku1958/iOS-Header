@@ -50,6 +50,9 @@
     NSURL *_URLOverride;
     unsigned long long _sentByteCount;
     unsigned long long _receivedByteCount;
+    NSDate *_requestStart;
+    NSDate *_requestEnd;
+    NSDate *_responseReceived;
 }
 
 @property (readonly, copy, nonatomic) NSData *IDCertificate;
@@ -98,9 +101,12 @@
 @property (nonatomic) struct __SecKey *pushPublicKey;
 @property (copy, nonatomic) NSData *pushToken;
 @property (nonatomic) unsigned long long receivedByteCount; // @synthesize receivedByteCount=_receivedByteCount;
+@property (strong, nonatomic) NSDate *requestEnd; // @synthesize requestEnd=_requestEnd;
+@property (strong, nonatomic) NSDate *requestStart; // @synthesize requestStart=_requestStart;
 @property (readonly) NSArray *requiredKeys;
 @property (copy) NSDictionary *responseAlertInfo; // @synthesize responseAlertInfo=_responseAlert;
 @property (readonly) long long responseCommand;
+@property (strong, nonatomic) NSDate *responseReceived; // @synthesize responseReceived=_responseReceived;
 @property (copy, nonatomic) NSNumber *retryCount; // @synthesize retryCount=_retryCount;
 @property (readonly) NSString *retryCountKey;
 @property (nonatomic) unsigned long long sentByteCount; // @synthesize sentByteCount=_sentByteCount;
@@ -154,7 +160,6 @@
 - (BOOL)isIDSMessage;
 - (void)logFailureInfo;
 - (id)messageBodyDataOverride;
-- (BOOL)shouldForceDevicesToCarry;
 
 @end
 

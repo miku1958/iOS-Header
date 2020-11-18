@@ -24,6 +24,7 @@
 - (id)initRandomKeyWithSpecifier:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithData:(id)arg1 specifier:(id)arg2 error:(id *)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

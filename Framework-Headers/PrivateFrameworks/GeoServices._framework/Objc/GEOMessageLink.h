@@ -15,8 +15,11 @@ __attribute__((visibility("hidden")))
     NSTimeZone *_timeZone;
 }
 
+@property (readonly, nonatomic) BOOL isVerified;
 @property (readonly, nonatomic) NSString *messageID;
 @property (readonly, nonatomic) NSString *messageURLString;
+@property (readonly, nonatomic) NSString *navBackgroundColorString;
+@property (readonly, nonatomic) NSString *navTintColorString;
 @property (readonly, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
 - (void).cxx_destruct;

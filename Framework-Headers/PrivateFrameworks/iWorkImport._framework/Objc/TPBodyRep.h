@@ -18,9 +18,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TPBodyLayout *bodyLayout; // @synthesize bodyLayout=_bodyLayout;
 
 - (void).cxx_destruct;
-- (id)hitRep:(struct CGPoint)arg1;
-- (id)hitRepChrome:(struct CGPoint)arg1;
-- (id)hitReps:(struct CGPoint)arg1 withSlop:(struct CGSize)arg2;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)p_doesRep:(id)arg1 containCharIndex:(unsigned long long)arg2 isStart:(BOOL)arg3;
 - (id)storage;

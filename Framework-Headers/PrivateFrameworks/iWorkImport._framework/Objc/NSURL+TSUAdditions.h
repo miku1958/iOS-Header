@@ -7,6 +7,9 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (TSUAdditions)
+
+@property (readonly, getter=tsu_isInTrash) BOOL tsu_inTrash;
+
 + (id)tsu_fileURLWithPath:(id)arg1;
 - (BOOL)_isShareRole:(out BOOL *)arg1 role:(id)arg2 error:(id *)arg3;
 - (id)tsu_displayName;
@@ -32,8 +35,7 @@
 - (void)tsu_performSecurityScopedResourceAccessAsynchronouslyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)tsu_performSecurityScopedResourceAccessUsingBlock:(CDUnknownBlockType)arg1;
 - (id)tsu_reachableFileURLByDeletingUnreachablePathComponents;
+- (void)tsu_removeCachedResourceValueForKeys:(id)arg1;
 - (BOOL)tsu_setNeedsDocumentIdentifierAndReturnError:(out id *)arg1;
-- (id)tsu_shareOwnerName;
-- (BOOL)tsu_shareOwnerName:(out id *)arg1 error:(id *)arg2;
 @end
 

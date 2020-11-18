@@ -6,14 +6,14 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMDLocationDelegate-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CLLocation, CLRegion, HMDHome, HMDHomeLocationData, HMFMessageDispatcher, NSDate, NSObject, NSString, NSTimeZone, NSUUID;
+@class CLLocation, CLRegion, HMDHome, HMDHomeLocationData, HMFMessageDispatcher, NSDate, NSObject, NSSet, NSString, NSTimeZone, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomeLocationHandler : HMFObject <HMDLocationDelegate, HMFMessageReceiver, NSSecureCoding>
+@interface HMDHomeLocationHandler : HMFObject <HMDLocationDelegate, HMDHomeMessageReceiver, NSSecureCoding>
 {
     BOOL _isExtractingCurrentLocation;
     int _locationAuthorization;
@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) HMDHomeLocationData *locationData;
 @property (strong, nonatomic) NSDate *locationUpdateTimestamp; // @synthesize locationUpdateTimestamp=_locationUpdateTimestamp;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) CLRegion *region; // @synthesize region=_region;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (BOOL)mergeLocationDataForLocalHome:(id)arg1 withCloudHome:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

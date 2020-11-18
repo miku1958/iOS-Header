@@ -6,11 +6,12 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSUUID, TSPData, TSPLazyReference, TSPUnarchiver;
+@class NSUUID, TSPComponent, TSPData, TSPLazyReference, TSPUnarchiver;
 
 @protocol TSPUnarchiverDelegate <NSObject>
 
 @property (readonly, nonatomic) BOOL canRetainObjectReferencedByWeakLazyReference;
+@property (readonly, nonatomic) TSPComponent *component;
 @property (readonly, nonatomic) long long componentIdentifier;
 @property (readonly, nonatomic) BOOL didFinishResolvingReferences;
 @property (readonly, nonatomic) unsigned long long fileFormatVersion;

@@ -49,6 +49,7 @@
 @property (strong, nonatomic) HDDataOriginProvenance *provenance; // @synthesize provenance=_provenance;
 @property (strong, nonatomic) _HDDemoDataActivityWorkoutState *workoutState; // @synthesize workoutState=_workoutState;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_computeCyclingDistanceWithStepCount:(id)arg1 demoPerson:(id)arg2;
 - (double)_computeExerciseCaloriesForDemoPerson:(id)arg1 duration:(double)arg2 activity:(long long)arg3 weight:(double)arg4;

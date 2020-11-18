@@ -5,24 +5,9 @@
 //
 
 #import <Silex/NSObject-Protocol.h>
+#import <Silex/SXVideoEventTracker-Protocol.h>
+#import <Silex/SXVideoURLProviding-Protocol.h>
 
-@class NSError;
-
-@protocol SXVideoProviding <NSObject>
-- (void (^)(void))loadWithCompletionBlock:(id<SXVideoMetadataProviding> (^)(NSURL *))arg1;
-
-@optional
-- (void)didAppear;
-- (void)didDisappear;
-- (void)muteStateChanged:(BOOL)arg1;
-- (void)playbackFailedWithError:(NSError *)arg1;
-- (void)playbackFinished;
-- (void)playbackInitiated;
-- (void)playbackPaused;
-- (void)playbackResumed;
-- (void)playbackStarted;
-- (void)timeElapsed:(double)arg1 duration:(double)arg2;
-- (void)willAppear;
-- (void)willDisappear;
+@protocol SXVideoProviding <NSObject, SXVideoEventTracker, SXVideoURLProviding>
 @end
 

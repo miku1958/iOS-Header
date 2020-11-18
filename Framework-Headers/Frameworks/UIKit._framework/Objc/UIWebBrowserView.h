@@ -10,7 +10,7 @@
 #import <UIKit/UIWebTouchEventsGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/_UIWebRotationDelegate-Protocol.h>
 
-@class DOMNode, NSHashTable, NSLock, NSMutableArray, NSMutableSet, NSObject, NSString, UIResponder, UIWebFormAccessory, UIWebFormDelegate, UIWebTouchEventsGestureRecognizer;
+@class DOMNode, NSHashTable, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, UIResponder, UIWebFormAccessory, UIWebFormDelegate, UIWebTouchEventsGestureRecognizer;
 @protocol UIFormPeripheral, UIWebAutoFillDelegate;
 
 @interface UIWebBrowserView : UIWebDocumentView <UIWebTouchEventsGestureRecognizerDelegate, UIWebFormAccessoryDelegate, _UIWebRotationDelegate>
@@ -44,6 +44,7 @@
     NSLock *_pendingOverflowDataLock;
     NSMutableArray *_pendingOverflowScrolls;
     BOOL _pendingGeometryChangeAfterOverflowScroll;
+    NSMutableDictionary *_focusPreservingTokens;
     struct {
         NSMutableArray *all;
         NSMutableArray *html;
@@ -93,6 +94,7 @@
 - (void)_clearAllConsoleMessages;
 - (void)_clearFormAutoFillStateForFrame:(id)arg1;
 - (void)_clearSelectionAndUI;
+- (void)_clearToken:(id)arg1;
 - (id)_collectAdditionalSubviews;
 - (struct CGPoint)_convertWindowPointToViewport:(struct CGPoint)arg1;
 - (struct CGSize)_defaultScrollViewContentSize;
@@ -121,6 +123,7 @@
 - (void)_overflowScrollView:(id)arg1 didEndScrollingForNode:(id)arg2;
 - (void)_overflowScrollView:(id)arg1 scrollOffsetChangedForNode:(id)arg2 whileScrolling:(BOOL)arg3;
 - (void)_overflowScrollView:(id)arg1 willStartScrollingForNode:(id)arg2;
+- (void)_preserveFocusWithToken:(id)arg1 destructively:(BOOL)arg2;
 - (void)_prevAccessoryTab:(id)arg1;
 - (void)_promptForReplace:(id)arg1;
 - (void)_reloadInputViewsAfterPotentialFocusRedirect;
@@ -129,6 +132,7 @@
 - (BOOL)_requiresKeyboardResetOnReload;
 - (BOOL)_requiresKeyboardWhenFirstResponder;
 - (void)_resetFormDataForFrame:(id)arg1;
+- (BOOL)_restoreFocusWithToken:(id)arg1;
 - (void)_scrollCaretToVisible:(id)arg1;
 - (void)_setInputViewBoundsForAutomaticKeyboardInfo:(id)arg1 adjustScrollView:(BOOL)arg2;
 - (void)_setSelectedDOMRangeAndUpdateUI:(id)arg1;

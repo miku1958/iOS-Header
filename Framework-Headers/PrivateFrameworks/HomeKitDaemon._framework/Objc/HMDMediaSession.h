@@ -6,16 +6,16 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDMediaEndpoint, HMDMediaSessionState, HMFMessageDispatcher, HMFTimer, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDMediaSession : HMFObject <HMFTimerDelegate, HMFMessageReceiver, HMFDumpState, HMFLogging, NSSecureCoding>
+@interface HMDMediaSession : HMFObject <HMFTimerDelegate, HMDHomeMessageReceiver, HMFDumpState, HMFLogging, NSSecureCoding>
 {
     HMFMessageDispatcher *_msgDispatcher;
     NSMutableSet *_mediaProfiles;
@@ -41,6 +41,7 @@
 @property (strong, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (readonly, nonatomic) NSSet *mediaProfiles;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSMutableArray *pendingBlocks; // @synthesize pendingBlocks=_pendingBlocks;
@@ -52,6 +53,7 @@
 @property (readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)sessionForCurrentAccessory:(id)arg1;
 + (BOOL)supportsSecureCoding;

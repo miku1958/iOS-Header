@@ -11,21 +11,25 @@
 
 @interface CUBonjourBrowser : NSObject
 {
+    BOOL _activateCalled;
+    BOOL _activated;
     struct BonjourBrowser *_bonjourBrowser;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     struct NSMutableDictionary *_devices;
     struct LogCategory *_ucat;
+    BOOL _browseFlagsChanged;
     unsigned int _changeFlags;
     unsigned long long _browseFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSString *_domain;
     NSString *_label;
     NSString *_serviceType;
-    CDUnknownBlockType _interruptionHandler;
-    CDUnknownBlockType _invalidationHandler;
     CDUnknownBlockType _deviceFoundHandler;
     CDUnknownBlockType _deviceLostHandler;
     CDUnknownBlockType _deviceChangedHandler;
+    CDUnknownBlockType _interruptionHandler;
+    CDUnknownBlockType _invalidationHandler;
 }
 
 @property (nonatomic) unsigned long long browseFlags; // @synthesize browseFlags=_browseFlags;
@@ -34,12 +38,14 @@
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 
 - (void).cxx_destruct;
+- (void)_activateSafeInvokeBlock:(CDUnknownBlockType)arg1;
 - (void)_bonjourHandleAddOrUpdateDevice:(id)arg1;
 - (void)_bonjourHandleEventType:(unsigned int)arg1 info:(id)arg2;
 - (void)_bonjourHandleRemoveDevice:(id)arg1;
@@ -47,12 +53,15 @@
 - (void)_interrupted;
 - (void)_invalidated;
 - (void)_lostAllDevices;
+- (void)_update;
+- (void)_updateLocked;
 - (void)activate;
 - (void)dealloc;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;
 - (id)init;
 - (void)invalidate;
+- (void)update;
 
 @end
 

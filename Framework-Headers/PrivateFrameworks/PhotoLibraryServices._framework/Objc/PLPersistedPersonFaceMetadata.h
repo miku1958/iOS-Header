@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <PhotoLibraryServices/NSCoding-Protocol.h>
+#import <PhotoLibraryServices/NSSecureCoding-Protocol.h>
 #import <PhotoLibraryServices/PLFaceRebuildDescription-Protocol.h>
 
 @class NSString;
 
-@interface PLPersistedPersonFaceMetadata : NSObject <NSCoding, PLFaceRebuildDescription>
+@interface PLPersistedPersonFaceMetadata : NSObject <NSSecureCoding, PLFaceRebuildDescription>
 {
     BOOL _isHidden;
     BOOL _manual;
@@ -50,6 +50,7 @@
 + (id)_persistedFaceMetadataWithDetectedFace:(id)arg1 isKeyFace:(BOOL)arg2 isClusterRejected:(BOOL)arg3;
 + (id)_persistedFacesWithUnarchiver:(id)arg1 key:(id)arg2;
 + (void)enumerateMatchedAssetsWithMetadata:(id)arg1 inContext:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_identifier;
 - (id)_insertDeferredRebuildFaceFromDataInManagedObjectContext:(id)arg1 personUUID:(id)arg2 isRejected:(BOOL)arg3;

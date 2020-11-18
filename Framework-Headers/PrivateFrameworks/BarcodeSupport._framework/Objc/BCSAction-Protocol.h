@@ -12,10 +12,12 @@
 @protocol BCSAction <NSObject>
 
 @property (readonly, copy, nonatomic) NSArray *actionPickerItems;
+@property (readonly, nonatomic) BOOL canSkipUnlock;
 @property (readonly, copy, nonatomic) NSString *defaultActionTargetApplicationBundleIdentifier;
 @property (weak, nonatomic) id<BCSActionDelegate> delegate;
 @property (readonly, copy, nonatomic) NSString *localizedActionDescription;
 @property (readonly, copy, nonatomic) NSString *localizedDefaultActionDescription;
+@property (readonly, copy, nonatomic) NSString *localizedDefaultActionTitle;
 @property (readonly, nonatomic) NSURL *urlThatCanBeOpened;
 
 - (void)performAction;

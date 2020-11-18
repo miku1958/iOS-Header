@@ -11,15 +11,14 @@
 #import <iWorkImport/TSDMutableContainerInfo-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 #import <iWorkImport/TSKModel-Protocol.h>
-#import <iWorkImport/TSKSearchTarget-Protocol.h>
 #import <iWorkImport/TSWPHeaderFooterProvider-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSObject, NSString, TNDocumentRoot, TSDInfoGeometry, TSWPStorage;
+@class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSString, TNDocumentRoot, TSDInfoGeometry, TSWPStorage;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TNSheet : TSPObject <TSKDocumentObject, TSKSearchTarget, TSKModel, TSCEResolverContainer, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSWPHeaderFooterProvider, TSWPStorageParent>
+@interface TNSheet : TSPObject <TSKDocumentObject, TSKModel, TSCEResolverContainer, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSWPHeaderFooterProvider, TSWPStorageParent>
 {
     NSString *mName;
     NSMutableArray *mChildInfos;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
     BOOL mIsAutofitOn;
     BOOL _usingStartPageNumber;
     BOOL mUsesSingleHeaderFooter;
+    int _layoutDirection;
     int mPageOrder;
     double mContentScale;
     long long _startPageNumber;
@@ -42,6 +42,11 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (readonly, nonatomic) BOOL autoListRecognition;
+@property (readonly, nonatomic) BOOL autoListTermination;
+@property (readonly, nonatomic) double bodyWidth;
+@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, nonatomic) NSArray *containedModels;
 @property (nonatomic) double contentScale; // @synthesize contentScale=mContentScale;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,10 +56,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *footerStorages;
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSEnumerator *headerFooterFragmentEnumerator;
 @property (readonly, nonatomic) NSArray *headerStorages;
 @property (nonatomic) BOOL inPortraitPageOrientation; // @synthesize inPortraitPageOrientation=mInPortraitPageOrientation;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
 @property (nonatomic) BOOL isAutofitOn; // @synthesize isAutofitOn=mIsAutofitOn;
+@property (nonatomic) int layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (strong, nonatomic) NSString *name;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
@@ -63,10 +70,14 @@ __attribute__((visibility("hidden")))
 @property double pageHeaderInset; // @synthesize pageHeaderInset=_pageHeaderInset;
 @property int pageOrder; // @synthesize pageOrder=mPageOrder;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (readonly, nonatomic) BOOL preventsComments;
 @property (nonatomic) struct UIEdgeInsets printMargins; // @synthesize printMargins=_printMargins;
 @property (nonatomic) BOOL showPageNumbers; // @synthesize showPageNumbers=mShowPageNumbers;
 @property long long startPageNumber; // @synthesize startPageNumber=_startPageNumber;
+@property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL textIsLinked;
+@property (readonly, nonatomic) BOOL textIsVertical;
 @property (nonatomic) BOOL usesSingleHeaderFooter; // @synthesize usesSingleHeaderFooter=mUsesSingleHeaderFooter;
 @property (getter=isUsingStartPageNumber) BOOL usingStartPageNumber; // @synthesize usingStartPageNumber=_usingStartPageNumber;
 
@@ -74,15 +85,10 @@ __attribute__((visibility("hidden")))
 + (id)sheetForSelectionModel:(id)arg1 outIsPaginated:(BOOL *)arg2;
 - (void)addChildInfo:(id)arg1;
 - (void)addRemappedTableName:(id)arg1;
-- (BOOL)autoListRecognition;
-- (BOOL)autoListTermination;
-- (double)bodyWidth;
 - (BOOL)canMoveDrawables:(id)arg1 toIndexes:(id)arg2;
 - (id)chartAndTableInfos;
 - (id)chartInfos;
 - (id)childEnumerator;
-- (id)childInfos;
-- (id)childSearchTargets;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (void)clearRemappedTableNames;
 - (id)copyWithContext:(id)arg1;
@@ -90,12 +96,11 @@ __attribute__((visibility("hidden")))
 - (void)enumerateHeaderFooterStoragesWithBlock:(CDUnknownBlockType)arg1;
 - (struct CGRect)frame;
 - (BOOL)hasReferenceToTables:(id)arg1;
-- (id)headerFooter:(int)arg1 fragmentAtIndex:(int)arg2;
-- (id)headerFooterFragmentEnumerator;
-- (int)headerFooterTypeForModel:(id)arg1;
-- (int)headerFragmentIndexForModel:(id)arg1;
+- (id)headerFooter:(long long)arg1 fragmentAtIndex:(long long)arg2;
+- (long long)headerFooterTypeForModel:(id)arg1;
+- (long long)headerFragmentIndexForModel:(id)arg1;
 - (double)highestScaleFactorForRenderingDrawableInfo:(id)arg1;
-- (void)i_importHeadersFooters:(id)arg1 headerType:(int)arg2 useSingleHeaderFooter:(BOOL)arg3;
+- (void)i_importHeadersFooters:(id)arg1 headerType:(long long)arg2 useSingleHeaderFooter:(BOOL)arg3;
 - (id)i_newHeaderFooterStorage;
 - (id)infoForSelectionPath:(id)arg1;
 - (id)initWithContext:(id)arg1;
@@ -103,28 +108,33 @@ __attribute__((visibility("hidden")))
 - (void)insertChildInfo:(id)arg1 above:(id)arg2;
 - (void)insertChildInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertChildInfo:(id)arg1 below:(id)arg2;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertDrawableInfo:(id)arg1 atIndex:(unsigned long long)arg2 context:(id)arg3;
 - (void)insertDrawableInfo:(id)arg1 context:(id)arg2;
 - (void)insertDrawableInfos:(id)arg1 atIndex:(unsigned long long)arg2 context:(id)arg3;
 - (void)insertDrawableInfos:(id)arg1 context:(id)arg2;
 - (BOOL)isForm;
-- (BOOL)isHeaderFooterEmpty:(int)arg1;
-- (BOOL)isHeaderFooterEmpty:(int)arg1 fragmentAtIndex:(int)arg2;
+- (BOOL)isHeaderFooterEmpty:(long long)arg1;
+- (BOOL)isHeaderFooterEmpty:(long long)arg1 fragmentAtIndex:(long long)arg2;
 - (BOOL)isSelectable;
 - (BOOL)isThemeContent;
 - (Class)layoutClass;
+- (BOOL)layoutIsLeftToRight;
+- (BOOL)layoutIsRightToLeft;
 - (void)loadFromArchive:(const struct SheetArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)moveChildren:(id)arg1 toIndexes:(id)arg2;
 - (void)moveDrawables:(id)arg1 toIndexes:(id)arg2;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
 - (unsigned int)nextUntitledResolverIndex;
-- (void)p_createHeadersFooters:(int)arg1 stylesheet:(id)arg2 mayAlreadyExist:(BOOL)arg3;
+- (void)p_createHeadersFooters:(long long)arg1 stylesheet:(id)arg2 mayAlreadyExist:(BOOL)arg3;
 - (void)p_dolcDispatch:(id)arg1 skippingTextBoxes:(BOOL)arg2;
 - (id)p_newHeaderFooterStorageWithStylesheet:(id)arg1;
 - (void)p_setupHeadersFooters;
-- (id)p_storagesForHeaderType:(int)arg1;
+- (id)p_storagesForHeaderType:(long long)arg1;
 - (id)remappedTableNames;
 - (void)removeChildInfo:(id)arg1;
+- (void)removeContainedModel:(id)arg1;
 - (void)removeDrawableInfo:(id)arg1;
 - (void)removeDrawableInfos:(id)arg1;
 - (Class)repClass;
@@ -141,8 +151,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldBeDisplayed;
 - (id)tableInfoForName:(id)arg1 caseSensitive:(BOOL)arg2;
 - (id)tableInfos;
-- (BOOL)textIsLinked;
-- (BOOL)textIsVertical;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

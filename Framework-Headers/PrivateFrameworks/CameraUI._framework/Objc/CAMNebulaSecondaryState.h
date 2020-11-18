@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CameraUI/NSCoding-Protocol.h>
+#import <CameraUI/NSSecureCoding-Protocol.h>
 
 @class NSDate;
 
-@interface CAMNebulaSecondaryState : NSObject <NSCoding>
+@interface CAMNebulaSecondaryState : NSObject <NSSecureCoding>
 {
     NSDate *_stopTime;
     long long _stopReasons;
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSDate *stopTime; // @synthesize stopTime=_stopTime;
 
 + (id)secondaryStateWithContentsOfFile:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)addStopReasons:(long long)arg1 stopTime:(id)arg2;
 - (id)description;

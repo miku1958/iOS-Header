@@ -7,22 +7,23 @@
 #import <iWorkImport/TSKAccessControllerDelegate-Protocol.h>
 
 @class NSObject, NSString, NSURL, SFUCryptoKey, TSKDocumentRoot, TSKSharingState, TSPDocumentRevision, TSPObjectContext;
-@protocol NSFilePresenter, OS_dispatch_queue, TSKCachedDocumentInfo;
+@protocol NSFilePresenter, OS_dispatch_queue, TSKDocumentInfo, TSULogContext, TSUTraceableResourceToken;
 
 @protocol TSKDocumentRootDelegate <TSKAccessControllerDelegate>
 
 @property (readonly, nonatomic) id<NSFilePresenter> cloudFilePresenter;
 @property (readonly, strong, nonatomic) SFUCryptoKey *encryptionKey;
 @property (readonly, nonatomic) NSURL *fileURL;
-@property (readonly, nonatomic) id<TSKCachedDocumentInfo> tskCachedDocumentInfo;
+@property (readonly, nonatomic) id<TSULogContext> logContext;
+@property (readonly, nonatomic) id<TSKDocumentInfo> tskDocumentInfo;
 
 
 @optional
 - (void)documentRoot:(TSKDocumentRoot *)arg1 didUpdateDocumentRevision:(TSPDocumentRevision *)arg2;
 - (void)documentRootDidRollbackOfflineCommands:(TSKDocumentRoot *)arg1;
-- (void)refreshSharingStateWithReason:(NSString *)arg1 isUserInitiated:(BOOL)arg2 refreshPrivacy:(BOOL)arg3 migrateIfNecessary:(BOOL)arg4 queue:(NSObject<OS_dispatch_queue> *)arg5 completionBlock:(void (^)(TSKSharingState *, NSError *))arg6;
+- (void)refreshSharingStateWithReason:(NSString *)arg1 isUserInitiated:(BOOL)arg2 refreshShare:(BOOL)arg3 refreshPrivacy:(BOOL)arg4 migrateIfNecessary:(BOOL)arg5 queue:(NSObject<OS_dispatch_queue> *)arg6 completionBlock:(void (^)(TSKSharingState *, NSError *))arg7;
 - (void)refreshSharingStateWithReason:(NSString *)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2 completionBlock:(void (^)(TSKSharingState *, NSError *))arg3;
 - (TSKSharingState *)sharingStateForContext:(TSPObjectContext *)arg1;
-- (void)sharingStateRefreshed:(TSKSharingState *)arg1 isUserInitiated:(BOOL)arg2 isContinuingActivity:(BOOL)arg3 completionBlock:(void (^)(void))arg4;
+- (void)sharingStateRefreshed:(TSKSharingState *)arg1 isUserInitiated:(BOOL)arg2 isContinuingActivity:(BOOL)arg3 serializationToken:(id<TSUTraceableResourceToken>)arg4 completionBlock:(void (^)(void))arg5;
 @end
 

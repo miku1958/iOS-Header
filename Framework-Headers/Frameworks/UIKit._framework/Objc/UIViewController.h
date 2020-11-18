@@ -117,6 +117,9 @@
         unsigned int freezeLayoutForOrientationChangeOnDismissal:1;
         unsigned int viewRespectsSystemMinimumLayoutMargins:1;
         unsigned int ignoresWrapperViewForContentOverlayInsets:1;
+        unsigned int overridesContentScrollView:1;
+        unsigned int didCheckContentScrollViewReturnValue:1;
+        unsigned int usingContentScrollViewForUnknownPurpose:1;
     } _viewControllerFlags;
     long long _retainCount;
     BOOL _ignoreAppSupportedOrientations;
@@ -445,6 +448,7 @@
 - (BOOL)_containsFirstResponder;
 - (struct UIEdgeInsets)_contentInsetsInWindow;
 - (double)_contentMarginForChildViewController:(id)arg1;
+- (id)_contentScrollView;
 - (struct UIEdgeInsets)_cumulativeOverlayInsetsForViewControllerHierarchy;
 - (id)_customAnimatorForDismissedController:(id)arg1;
 - (id)_customAnimatorForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
@@ -531,6 +535,7 @@
 - (BOOL)_ignoreAppSupportedOrientations;
 - (BOOL)_ignoresWrapperViewForContentOverlayInsets;
 - (long long)_imagePickerStatusBarStyle;
+- (id)_independentContainedScrollViewIntermediateToDescendantViewController:(id)arg1;
 - (void)_inferLayoutGuidesFromSubviews;
 - (void)_initializeNavigationContentInsetAdjustmentForContentScrollViewIfNecessary;
 - (void)_installLayoutGuidesAndConstraintsIfNecessary;

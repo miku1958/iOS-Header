@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VKTile : NSObject
 {
     struct VKTileKey _key;
+    unsigned char _origin;
     Matrix_08d701e4 _matrix;
     Matrix_08d701e4 _inverseMatrix;
     VKTilePool *_pool;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) const Matrix_08d701e4 *inverseMatrix;
 @property (readonly, nonatomic) struct VKTileKey key; // @synthesize key=_key;
 @property (readonly, nonatomic) const Matrix_08d701e4 *matrix;
+@property (readonly, nonatomic) unsigned char origin; // @synthesize origin=_origin;
 @property (readonly, nonatomic) const Matrix_99e705ad *shaderMatrix;
 @property (readonly, nonatomic) double tileWidth;
 @property (readonly, nonatomic) const shared_ptr_696716c4 *viewConstantData;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithKey:(const struct VKTileKey *)arg1;
 - (const struct VKTileKey *)keyPointer;
 - (void)setKey:(const struct VKTileKey *)arg1;
+- (void)setOrigin:(unsigned char)arg1;
 - (void)setPool:(id)arg1;
 - (void)updateViewDependentStateIfNecessaryWithContext:(struct LayoutContext *)arg1;
 - (void)updateViewDependentStateWithContext:(struct LayoutContext *)arg1;

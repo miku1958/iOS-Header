@@ -50,8 +50,11 @@ __attribute__((visibility("hidden")))
     NSCache *_cachedLocalizedStrings;
     NSString *_trueString;
     NSString *_falseString;
+    NSString *_amString;
+    NSString *_pmString;
 }
 
+@property (readonly) NSString *amString; // @synthesize amString=_amString;
 @property (readonly) NSString *arrayRowSeparator;
 @property (readonly) struct __CFLocale *cfGregorianCalendarLocale;
 @property (readonly) struct __CFLocale *cfLocale;
@@ -73,6 +76,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
 @property (readonly) NSArray *monthSymbols; // @synthesize monthSymbols=_monthSymbols;
 @property (readonly) NSString *percentSymbol; // @synthesize percentSymbol=_percentSymbol;
+@property (readonly) NSString *pmString; // @synthesize pmString=_pmString;
 @property (readonly) NSArray *shortMonthSymbols; // @synthesize shortMonthSymbols=_shortMonthSymbols;
 @property (readonly) NSArray *shortStandaloneMonthSymbols; // @synthesize shortStandaloneMonthSymbols=_shortStandaloneMonthSymbols;
 @property (readonly) NSArray *shortStandaloneWeekdaySymbols; // @synthesize shortStandaloneWeekdaySymbols=_shortStandaloneWeekdaySymbols;
@@ -103,6 +107,7 @@ __attribute__((visibility("hidden")))
 + (id)localeIDWithoutDefaultRegionCode:(id)arg1 avoidAmbiguousCases:(BOOL)arg2;
 + (BOOL)localeIsAutoUpdating:(id)arg1;
 + (id)preferredLanguages;
++ (id)preferredLocale;
 + (void)saveLocaleForReuse:(id)arg1;
 + (void)setLocalizedStringBundle:(struct __CFBundle *)arg1;
 + (id)simplifiedDisplayNameForLocaleID:(id)arg1 displayStandalone:(BOOL)arg2;

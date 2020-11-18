@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)lineIntersectsWedgeWithLineStartPoint:(struct CGPoint)arg1 lineEndPoint:(struct CGPoint)arg2;
 - (struct CGPoint)midpointOnClosestEdgeToWedgeTip:(struct CGRect)arg1;
 - (struct CGPoint)normalizedWedgeBisectionVector;
+- (double)p_xShiftAmountWithEndpoint:(struct CGPoint)arg1;
 - (struct CGPoint)pointAlongWedgeBisectionInChartCoordinateSpaceWithFloatDistanceFromWedgeTip:(double)arg1;
 - (struct CGPoint)pointAlongWedgeBisectionInChartCoordinateSpaceWithPercentDistanceFromWedgeTip:(double)arg1;
 - (struct CGPoint)pointAtWedgeCircumferenceMiddleInChartCoordinateSpace;

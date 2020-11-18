@@ -31,9 +31,9 @@
 @property (nonatomic) BOOL wantsUAs; // @synthesize wantsUAs=_wantsUAs;
 
 - (void).cxx_destruct;
+- (BOOL)addClientConnectionIfAllowedForConnection:(id)arg1;
 - (int)addInteraction:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (int)addUserActions:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
-- (BOOL)allowClientConnection:(id)arg1;
 - (int)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2;
 - (int)deleteFromBundle:(id)arg1 sinceDate:(id)arg2 domains:(id)arg3 deletes:(id)arg4;
 - (int)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;

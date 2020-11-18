@@ -11,7 +11,7 @@
 #import <HomeUI/HUQuickControlInteractiveContentContaining-Protocol.h>
 #import <HomeUI/HUQuickControlItemHosting-Protocol.h>
 
-@class HMHome, NSSet, NSString;
+@class HMHome, HUQuickControlSimpleItemUpdater, NSSet, NSString;
 @protocol HULayoutAnchorProviding, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting, HUQuickControlItemUpdating, HUQuickControlViewControllerDelegate;
 
 @interface HUQuickControlViewController : UIViewController <HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlItemHosting, HUPreloadableViewController>
@@ -25,6 +25,7 @@
     id<HUQuickControlItemUpdating> _itemUpdater;
     id<HUQuickControlViewControllerDelegate> _delegate;
     unsigned long long _controlSize;
+    HUQuickControlSimpleItemUpdater *_internalItemUpdater;
 }
 
 @property (readonly, copy, nonatomic) NSSet *affectedCharacteristics;
@@ -37,11 +38,14 @@
 @property (readonly, nonatomic) BOOL hasSingleControlView;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
-@property (readonly, nonatomic) id<HUQuickControlItemUpdating> itemUpdater; // @synthesize itemUpdater=_itemUpdater;
+@property (readonly, nonatomic) HUQuickControlSimpleItemUpdater *internalItemUpdater; // @synthesize internalItemUpdater=_internalItemUpdater;
+@property (readonly, weak, nonatomic) id<HUQuickControlItemUpdating> itemUpdater; // @synthesize itemUpdater=_itemUpdater;
 @property (readonly, copy, nonatomic) NSString *overrideSecondaryStatusText;
 @property (readonly, copy, nonatomic) NSString *overrideStatusText;
 @property (strong, nonatomic) id<HULayoutAnchorProviding> preferredFrameLayoutGuide; // @synthesize preferredFrameLayoutGuide=_preferredFrameLayoutGuide;
+@property (readonly, nonatomic) unsigned long long preferredPresentationStyle;
 @property (weak, nonatomic) id<HUQuickControlContentHosting> quickControlHost; // @synthesize quickControlHost=_quickControlHost;
+@property (readonly, nonatomic) BOOL shouldShowControlWhenUnreachable;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 

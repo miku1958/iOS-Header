@@ -8,16 +8,17 @@
 
 #import <ARKit/ARResultData-Protocol.h>
 #import <ARKit/NSCopying-Protocol.h>
+#import <ARKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE, NSDictionary, NSString;
 @protocol OS_dispatch_semaphore;
 
-@interface ARFaceTrackingData : NSObject <ARResultData, NSCopying>
+@interface ARFaceTrackingData : NSObject <ARResultData, NSSecureCoding, NSCopying>
 {
-    vector_fff08e2a _meshVertices;
-    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _verticesImageSpace;
-    vector_fff08e2a _normals;
-    struct vector<float, std::__1::allocator<float>> _blendShapeCoefficients;
+    vector_1cb3ea33 _meshVertices;
+    vector_e654105b _verticesImageSpace;
+    vector_1cb3ea33 _normals;
+    vector_7584168e _blendShapeCoefficients;
     CDStruct_14d5dc5e _transform;
     NSObject<OS_dispatch_semaphore> *_normalsSemaphore;
     NSObject<OS_dispatch_semaphore> *_imageVerticesSemaphore;
@@ -46,12 +47,17 @@
 @property (readonly, nonatomic) const MISSING_TYPE **vertices;
 
 + (id)sharedNeutralGeometry;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_extractMetaData;
 - (id)anchorsForCameraWithTransform:(CDStruct_14d5dc5e)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 existingAnchors:(id)arg3 anchorsToRemove:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initPrivate;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTrackingData:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

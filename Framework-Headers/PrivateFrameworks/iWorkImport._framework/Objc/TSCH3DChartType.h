@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (Class)repClass;
 - (Class)sageGeometeryHelperClass;
 - (double)sageMaxDepthRatio;
-- (id)sceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_44ada6bf)arg2;
+- (id)sceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 - (double)spiceMaxDepthRatio;
 - (Class)stageClass;
 - (BOOL)supportsAxisLabelsOrientation;
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsBevels;
 - (BOOL)supportsBorderFrame;
 - (BOOL)supportsBubbleOptions;
+- (BOOL)supportsCalloutLines;
 - (BOOL)supportsCategoryAxisMinorTickmarks;
 - (BOOL)supportsColumnShape;
 - (BOOL)supportsConnectingLines;

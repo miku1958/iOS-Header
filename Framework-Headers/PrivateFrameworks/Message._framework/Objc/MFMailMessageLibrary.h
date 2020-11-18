@@ -105,8 +105,8 @@
 - (struct sqlite3_stmt *)_prepareBatchStatement:(struct sqlite3 *)arg1 pattern:(id)arg2 objects:(id *)arg3 count:(unsigned long long)arg4;
 - (void)_purgeSpotlightTombstonesBeforeTransaction:(long long)arg1 database:(struct sqlite3 *)arg2;
 - (id)_queryForMailboxesIDsFromMailboxes:(id)arg1;
-- (void)_reconcileAfterKeybagUnlock;
 - (long long)_reconcileJournal;
+- (void)_reconcileJournalIsLaunch:(BOOL)arg1;
 - (void)_resetTransactionIndexForAccount:(id)arg1 mailboxID:(unsigned int)arg2;
 - (void)_schedulePeriodicStatisticsLogging;
 - (id)_searchableItemIndexesForDb:(struct sqlite3 *)arg1 indexingType:(long long)arg2 nonLocalAccountsClause:(id)arg3 protectedDataAvailable:(BOOL)arg4 whereClause:(id)arg5 limit:(unsigned long long)arg6;
@@ -241,8 +241,7 @@
 - (id)messagesWithSummariesForMailbox:(id)arg1 range:(struct _NSRange)arg2;
 - (id)messagesWithoutSummariesForMailbox:(id)arg1;
 - (id)messagesWithoutSummariesForMailbox:(id)arg1 fromRowID:(unsigned int)arg2 limit:(unsigned int)arg3;
-- (id)metadataForMessage:(id)arg1;
-- (id)metadataForMessage:(id)arg1 key:(id)arg2;
+- (id)metadataForMessage:(id)arg1 ofClass:(Class)arg2 key:(id)arg3;
 - (BOOL)migrate;
 - (unsigned int)minimumRemoteIDForMailbox:(id)arg1;
 - (id)missingReferencesForConversationContainingMessage:(id)arg1;

@@ -14,13 +14,16 @@
 {
     BOOL _addOperation;
     BOOL _addViaWAC;
+    BOOL _wacLegacy;
     AWDHomeKitVendorInformation *_vendorInfo;
     long long _linkType;
     long long _certificationStatus;
+    unsigned long long _authMethod;
 }
 
 @property (readonly, nonatomic, getter=isAddOperation) BOOL addOperation; // @synthesize addOperation=_addOperation;
 @property (nonatomic, getter=isAddViaWAC) BOOL addViaWAC; // @synthesize addViaWAC=_addViaWAC;
+@property (nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
 @property (nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -28,6 +31,7 @@
 @property (nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorInfo; // @synthesize vendorInfo=_vendorInfo;
+@property (nonatomic, getter=isWacLegacy) BOOL wacLegacy; // @synthesize wacLegacy=_wacLegacy;
 
 + (void)initialize;
 + (id)pairingAccessory:(id)arg1;
@@ -42,6 +46,7 @@
 - (void)pairedAccessory:(id)arg1;
 - (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2;
 - (void)setAddedViaWAC:(BOOL)arg1;
+- (void)setAuthenticationMethod:(unsigned long long)arg1;
 - (void)setcertificationStatus:(long long)arg1;
 
 @end

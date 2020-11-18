@@ -70,6 +70,7 @@
 - (id)removeVoicemailsFromTrash:(id)arg1;
 - (void)reportTranscriptionProblemForVoicemail:(id)arg1;
 - (void)reportTranscriptionRatedAccurate:(BOOL)arg1 forVoicemail:(id)arg2;
+- (void)requestInitialStateIfNecessaryAndSendNotifications:(BOOL)arg1;
 - (void)retrieveDataForVoicemail:(id)arg1;
 - (void)retrieveGreetingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)saveGreeting:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

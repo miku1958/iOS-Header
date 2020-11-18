@@ -22,9 +22,12 @@
     _Atomic unsigned long long _count;
     _Atomic unsigned long long _countHighPriority;
     _Atomic unsigned long long _maxQueueItems;
+    _Atomic unsigned long long _pendingWrites;
+    _Atomic unsigned long long _maxPendingWrites;
     id _lockStateChangeToken;
 }
 
+@property (nonatomic) unsigned long long maxPendingWrites;
 @property (nonatomic) unsigned long long maxQueueItems;
 
 - (void).cxx_destruct;

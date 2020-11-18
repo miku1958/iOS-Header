@@ -47,8 +47,10 @@ __attribute__((visibility("hidden")))
 + (id)p_getDefaultTrendLineShadowColor:(id)arg1;
 + (id)p_getDefaultTrendLineStrokeColor:(id)arg1;
 + (void)p_replaceProperty:(int)arg1 inStyle:(id)arg2 withObject:(id)arg3;
++ (void)p_useProperty:(int)arg1 asProperty:(int)arg2 inStyle:(id)arg3;
 + (id)presetWithContext:(id)arg1 fromStyleState:(id)arg2 uuid:(id)arg3;
 + (void)upgradeCalloutLineStylesForSeriesPresets:(id)arg1 valueAxisPresets:(id)arg2 paragraphPresets:(id)arg3;
++ (void)upgradeDonutStylesForSeriesPresets:(id)arg1;
 + (void)upgradeFor3DShadowPropertyMigrationFromChartStyle:(id)arg1 seriesStyles:(id)arg2;
 + (void)upgradeForTrendLineEquationAndR2LabelsPropertyMigrationFromChartStyle:(id)arg1 seriesStyles:(id)arg2;
 + (void)upgradeShadowPropertyForParagraphStyles:(id)arg1;

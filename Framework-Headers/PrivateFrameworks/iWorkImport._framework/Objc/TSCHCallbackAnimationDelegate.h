@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id target; // @synthesize target;
 
+- (void).cxx_destruct;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (void)dealloc;
 
 @end
 

@@ -6,12 +6,12 @@
 
 #import <iWorkImport/TSPObject.h>
 
-#import <iWorkImport/NSFastEnumeration-Protocol.h>
+#import <iWorkImport/TSTStyleProviding-Protocol.h>
 
 @class TSTCellStyle, TSTTableStyle, TSWPParagraphStyle, TSWPShapeStyle;
 
 __attribute__((visibility("hidden")))
-@interface TSTTableStyleNetwork : TSPObject <NSFastEnumeration>
+@interface TSTTableStyleNetwork : TSPObject <TSTStyleProviding>
 {
     int _presetIndex;
     TSTTableStyle *_tableStyle;
@@ -27,14 +27,14 @@ __attribute__((visibility("hidden")))
     TSWPShapeStyle *_tableNameShapeStyle;
 }
 
-@property (readonly, nonatomic) TSTCellStyle *bodyCellStyle;
-@property (readonly, nonatomic) TSWPParagraphStyle *bodyTextStyle;
-@property (readonly, nonatomic) TSTCellStyle *footerRowCellStyle;
-@property (readonly, nonatomic) TSWPParagraphStyle *footerRowTextStyle;
-@property (readonly, nonatomic) TSTCellStyle *headerColumnCellStyle;
-@property (readonly, nonatomic) TSWPParagraphStyle *headerColumnTextStyle;
-@property (readonly, nonatomic) TSTCellStyle *headerRowCellStyle;
-@property (readonly, nonatomic) TSWPParagraphStyle *headerRowTextStyle;
+@property (strong, nonatomic) TSTCellStyle *bodyCellStyle;
+@property (strong, nonatomic) TSWPParagraphStyle *bodyTextStyle;
+@property (strong, nonatomic) TSTCellStyle *footerRowCellStyle;
+@property (strong, nonatomic) TSWPParagraphStyle *footerRowTextStyle;
+@property (strong, nonatomic) TSTCellStyle *headerColumnCellStyle;
+@property (strong, nonatomic) TSWPParagraphStyle *headerColumnTextStyle;
+@property (strong, nonatomic) TSTCellStyle *headerRowCellStyle;
+@property (strong, nonatomic) TSWPParagraphStyle *headerRowTextStyle;
 @property (nonatomic) unsigned long long presetID;
 @property (strong, nonatomic) TSWPShapeStyle *tableNameShapeStyle;
 @property (strong, nonatomic) TSWPParagraphStyle *tableNameStyle;
@@ -45,11 +45,12 @@ __attribute__((visibility("hidden")))
 + (id)curatedTextStylePropertySetForCrossDocumentPasteMasterComparison;
 + (id)defaultTableNameShapeStyleWithContext:(id)arg1;
 + (id)identifiersForPresetID:(unsigned long long)arg1;
++ (id)networkFromStyleProvider:(id)arg1;
 + (id)networkFromStylesheet:(id)arg1 presetID:(unsigned long long)arg2;
-+ (id)networkFromTableModel:(id)arg1;
 + (id)networkFromTheme:(id)arg1 presetID:(unsigned long long)arg2;
 + (id)networkFromTheme:(id)arg1 presetIndex:(unsigned long long)arg2;
 + (id)networkWithContext:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(int)arg4;
++ (id)networkWithContext:(id)arg1 presetID:(unsigned long long)arg2 styleProvider:(id)arg3 styleMorphingBlock:(CDUnknownBlockType)arg4;
 + (id)tableNameShapeStyleIDForPreset:(unsigned long long)arg1;
 + (id)tableNameStyleIDForPreset:(unsigned long long)arg1;
 - (void).cxx_destruct;
@@ -58,30 +59,22 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 context:(id)arg2;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)dictionaryWithPreset:(unsigned long long)arg1;
+- (void)enumerateAllStylesWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
 - (id)initWithContext:(id)arg1;
-- (id)initWithContext:(id)arg1 fromArray:(id)arg2 presetID:(unsigned long long)arg3;
 - (id)initWithContext:(id)arg1 fromDictionary:(id)arg2 withPreset:(unsigned long long)arg3;
-- (id)initWithContext:(id)arg1 fromTableModel:(id)arg2;
+- (id)initWithContext:(id)arg1 styleProvider:(id)arg2;
+- (id)initWithContext:(id)arg1 styleProvider:(id)arg2 presetID:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1 styleComparisonBlock:(CDUnknownBlockType)arg2;
 - (void)loadFromArchive:(const struct TableStyleNetworkArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchive:(struct TableStyleNetworkArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)setBodyCellStyle:(id)arg1;
-- (void)setBodyTextStyle:(id)arg1;
 - (void)setCellStyle:(id)arg1 forTableArea:(unsigned long long)arg2;
-- (void)setFooterRowCellStyle:(id)arg1;
-- (void)setFooterRowTextStyle:(id)arg1;
-- (void)setHeaderColumnCellStyle:(id)arg1;
-- (void)setHeaderColumnTextStyle:(id)arg1;
-- (void)setHeaderRowCellStyle:(id)arg1;
-- (void)setHeaderRowTextStyle:(id)arg1;
 - (void)setTextStyle:(id)arg1 forTableArea:(unsigned long long)arg2;
-- (id)styleArray;
+- (id)styleForStyleNetworkIndex:(unsigned long long)arg1;
 - (BOOL)stylesInStylesheet:(id)arg1;
 - (id)textStyleForTableArea:(unsigned long long)arg1;
 - (void)upgradeIfNecessary;

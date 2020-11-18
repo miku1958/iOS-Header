@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
     struct {
         BOOL hasDidLoadBinding;
         BOOL hasShouldResolveData;
-        BOOL hasDoKeysAffectingChildren;
-        BOOL hasDoKeysAffectingSubtree;
+        BOOL hasDoKeysAffectChildren;
+        BOOL hasDoKeysAffectSubtree;
         BOOL hasAdditionalKeysToResolve;
         BOOL hasApplyValueForKey;
         BOOL hasDidResolveKeys;

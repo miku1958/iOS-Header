@@ -32,12 +32,14 @@
     BOOL _performingBatch;
     BOOL _postedScrollEvent;
     BOOL _isDeviceLocked;
+    BOOL _allowsLocationUse;
     BOOL _showsIdealizedContent;
     BOOL _showsCanonicalContent;
     id<NTKUpNextFaceElementControllerDelegate> _delegate;
     unsigned long long _state;
 }
 
+@property (nonatomic) BOOL allowsLocationUse; // @synthesize allowsLocationUse=_allowsLocationUse;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NTKUpNextFaceElementControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -67,6 +69,7 @@
 - (void)_performOrEnqueueOperation:(id)arg1;
 - (void)_setDataSource:(id)arg1 enabled:(BOOL)arg2;
 - (void)_setElement:(id)arg1 atIndexPath:(id)arg2 hidden:(BOOL)arg3;
+- (void)_updateMetrics;
 - (void)_updateMonitoringVisibilityForAllElement;
 - (void)_updateNoContentState;
 - (id)complicationDescriptors;

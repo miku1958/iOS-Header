@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
 - (BOOL)_clientIsWebApp;
+- (void)_hostApplicationDidEnterBackground;
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
 - (BOOL)_isURLOutOfScope:(id)arg1;
 - (void)_loadNextFallbackURL;
@@ -36,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_persona;
 - (BOOL)_privateBrowsingInitiallyEnabled;
 - (BOOL)_usesScrollToTopView;
-- (BOOL)canInstallProfiles;
 - (BOOL)canPrint;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (long long)preferredStatusBarStyle;

@@ -11,10 +11,12 @@
 @interface MSPMapsPaths : NSObject
 {
     NSURL *_libraryURL;
+    NSURL *_groupLibraryURL;
     CDUnknownBlockType _invalidationHandler;
     NSString *_fuzzyLocationStoragePath;
     NSString *_mapsDirectory;
     NSString *_cacheDirectory;
+    NSString *_groupDirectory;
     NSString *_nanoDirectory;
     NSString *_bookmarksSettingsPath;
     NSString *_geoBookmarksSettingsPath;
@@ -48,6 +50,7 @@
 @property (readonly, nonatomic) NSString *fuzzyLocationStoragePath;
 @property (readonly, nonatomic) NSString *geoBookmarksSettingsPath; // @synthesize geoBookmarksSettingsPath=_geoBookmarksSettingsPath;
 @property (readonly, nonatomic) NSString *geoHistorySettingsPath; // @synthesize geoHistorySettingsPath=_geoHistorySettingsPath;
+@property (readonly, nonatomic) NSString *groupDirectory; // @synthesize groupDirectory=_groupDirectory;
 @property (readonly, nonatomic) NSString *historySettingsPath; // @synthesize historySettingsPath=_historySettingsPath;
 @property (readonly, nonatomic) NSString *historySyncedMarkerFile; // @synthesize historySyncedMarkerFile=_historySyncedMarkerFile;
 @property (readonly, nonatomic) NSString *homeDirectory;
@@ -63,6 +66,7 @@
 + (id)bookmarksSettingsPath;
 + (id)cacheDirectory;
 + (id)currentMapsApplicationContainerURL;
++ (id)currentMapsGroupContainerURL;
 + (id)directionsCachePath;
 + (id)directionsSettingsPath;
 + (id)failedDirectionsSettingsPath;
@@ -72,6 +76,7 @@
 + (id)favoritesSyncedMarkerFile;
 + (id)geoBookmarksSettingsPath;
 + (id)geoHistorySettingsPath;
++ (id)groupDirectory;
 + (id)historySettingsPath;
 + (id)historySyncedMarkerFile;
 + (id)mapsApplicationContainerPaths;
@@ -91,7 +96,7 @@
 - (BOOL)_shouldSyncMergeAfterCheckingOrCreatingMarkerFileAtPath:(id)arg1;
 - (BOOL)deleteFavoritesSyncedMarkerFile;
 - (BOOL)deleteHistorySyncedMarkerFile;
-- (id)initWithLibraryDirectoryURL:(id)arg1 invalidationHandler:(CDUnknownBlockType)arg2;
+- (id)initWithLibraryDirectoryURL:(id)arg1 groupLibraryURL:(id)arg2 invalidationHandler:(CDUnknownBlockType)arg3;
 - (BOOL)shouldSyncMergeFavoritesAfterCheckingOrCreatingMarkerFile;
 - (BOOL)shouldSyncMergeHistoryAfterCheckingOrCreatingMarkerFile;
 

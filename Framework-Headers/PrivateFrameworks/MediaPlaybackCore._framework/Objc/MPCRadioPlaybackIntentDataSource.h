@@ -20,7 +20,6 @@
 @property (readonly) Class superclass;
 
 - (void)getPlaybackContextForIntent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)getRemotePlaybackQueueForIntent:(id)arg1 playerPath:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 
 @end
 

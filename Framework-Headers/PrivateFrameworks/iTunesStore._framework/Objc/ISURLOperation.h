@@ -31,11 +31,13 @@
     BOOL _loadsHTTPFailures;
     BOOL _uploadProgressRequested;
     NSArray *_passThroughErrors;
+    NSNumber *__accountDSIDOverride;
 }
 
 @property (readonly) SSHTTPArchive *HTTPArchive;
 @property (readonly, nonatomic) NSURLCache *URLCache;
 @property (readonly, nonatomic) NSString *URLCacheID;
+@property (strong, nonatomic, setter=_setAccountDSIDOverride:) NSNumber *_accountDSIDOverride; // @synthesize _accountDSIDOverride=__accountDSIDOverride;
 @property (getter=_loadsHTTPFailures, setter=_setLoadsHTTPFailures:) BOOL _loadsHTTPFailures; // @synthesize _loadsHTTPFailures;
 @property (getter=_shouldSetCookies, setter=_setShouldSetCookies:) BOOL _shouldSetCookies; // @synthesize _shouldSetCookies;
 @property (getter=_usesPrivateCookieStore, setter=_setUsesPrivateCookieStore:) BOOL _usesPrivateCookieStore; // @synthesize _usesPrivateCookieStore;

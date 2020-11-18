@@ -37,6 +37,7 @@
 + (void)__daemon__setUserActivityUserInfo:(id)arg1;
 + (void)__daemon__startBonjourService;
 + (void)__openXPC__;
++ (void)__openXPC_and_CBApplicationDidBecomeActive__;
 + (void)__open__;
 + (void)__setLogger__:(CDUnknownBlockType)arg1;
 + (void)_startWirelessControllerDiscoveryWithCompanions:(BOOL)arg1 btClassic:(BOOL)arg2 btle:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;

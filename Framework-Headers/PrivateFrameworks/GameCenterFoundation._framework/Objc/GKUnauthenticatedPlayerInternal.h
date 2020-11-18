@@ -11,6 +11,7 @@
     int _encodingCount;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)alias;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

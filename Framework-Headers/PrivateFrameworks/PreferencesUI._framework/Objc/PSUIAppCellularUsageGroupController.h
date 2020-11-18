@@ -9,7 +9,7 @@
 #import <PreferencesUI/PSSpecifierGroupController-Protocol.h>
 #import <PreferencesUI/PSUIWirelessDataOptionsDelegate-Protocol.h>
 
-@class ACAccountStore, AppWirelessDataUsageManager, NSArray, NSMutableArray, NSNumber, NSString, PSExpandableAppListGroupController, WirelessDataUsageWorkspace;
+@class ACAccountStore, AppWirelessDataUsageManager, NSArray, NSCache, NSMutableArray, NSNumber, NSString, PSExpandableAppListGroupController, WirelessDataUsageWorkspace;
 
 @interface PSUIAppCellularUsageGroupController : NSObject <PSSpecifierGroupController, PSUIWirelessDataOptionsDelegate>
 {
@@ -31,6 +31,8 @@
     NSArray *_managedBundleIDs;
     AppWirelessDataUsageManager *_wirelessManager;
     ACAccountStore *_accountStore;
+    NSCache *_perAppSwitchStateCache;
+    NSCache *_perAppCellStateCache;
 }
 
 @property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
@@ -45,6 +47,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *headerSpecifiers; // @synthesize headerSpecifiers=_headerSpecifiers;
 @property (strong, nonatomic) NSArray *managedBundleIDs; // @synthesize managedBundleIDs=_managedBundleIDs;
+@property (strong, nonatomic) NSCache *perAppCellStateCache; // @synthesize perAppCellStateCache=_perAppCellStateCache;
+@property (strong, nonatomic) NSCache *perAppSwitchStateCache; // @synthesize perAppSwitchStateCache=_perAppSwitchStateCache;
 @property (strong, nonatomic) NSNumber *roamingUsedLastCycle; // @synthesize roamingUsedLastCycle=_roamingUsedLastCycle;
 @property (strong, nonatomic) NSNumber *roamingUsedThisCycle; // @synthesize roamingUsedThisCycle=_roamingUsedThisCycle;
 @property (nonatomic) int selectedBillingCycle; // @synthesize selectedBillingCycle=_selectedBillingCycle;
@@ -72,6 +76,7 @@
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
 - (id)isReliableNetworkFallbackEnabled:(id)arg1;
 - (id)managedCellularDataBundleIdentifiers;
+- (void)prefetchResourcesFor:(id)arg1;
 - (void)setAppCellularDataEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setBillingCycle:(id)arg1 specifier:(id)arg2;
 - (void)setReliableNetworkFallbackIsEnabled:(id)arg1 specifier:(id)arg2;

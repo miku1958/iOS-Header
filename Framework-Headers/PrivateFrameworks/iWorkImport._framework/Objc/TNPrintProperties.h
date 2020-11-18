@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)pageHeaderFooterRectForContentScale:(double)arg1 portraitOrientation:(BOOL)arg2 footer:(BOOL)arg3 textHeight:(double)arg4;
 - (struct CGSize)pageSizeForContentScale:(double)arg1 portraitOrientation:(BOOL)arg2;
 - (struct CGSize)pageSizeWithGutterForContentScale:(double)arg1 userViewScale:(double)arg2 portraitOrientation:(BOOL)arg3;
-- (struct CGRect)unscaledPageRectForDisplayForPortraitOrientation:(BOOL)arg1 userViewScale:(double)arg2 atPageCoordinate:(struct TSUCellCoord)arg3;
+- (struct CGRect)unscaledPageRectForDisplayForPortraitOrientation:(BOOL)arg1 userViewScale:(double)arg2 atPageCoordinate:(struct TSUCellCoord)arg3 layoutLeftToRight:(BOOL)arg4;
 
 @end
 

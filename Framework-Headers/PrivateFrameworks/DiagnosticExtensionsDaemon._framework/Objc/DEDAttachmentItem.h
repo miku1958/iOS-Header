@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
+
 @class NSDate, NSNumber, NSString, NSURL;
 
-@interface DEDAttachmentItem : NSObject
+@interface DEDAttachmentItem : NSObject <DEDSecureArchiving>
 {
     NSString *_deviceID;
     NSString *_displayName;
@@ -18,16 +20,20 @@
 }
 
 @property (strong) NSURL *attachedPath; // @synthesize attachedPath=_attachedPath;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong) NSNumber *fileSize; // @synthesize fileSize=_fileSize;
+@property (readonly) unsigned long long hash;
 @property (strong) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (readonly) Class superclass;
 
++ (id)archivedClasses;
 + (id)itemWithDEItem:(id)arg1;
 + (id)itemWithDictionary:(id)arg1;
 + (id)itemWithURL:(id)arg1;
 - (void).cxx_destruct;
-- (id)description;
 - (BOOL)isLocal;
 - (id)serialize;
 

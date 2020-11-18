@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 + (id)TOCReferenceNameWithParagraphIndex:(unsigned long long)arg1;
 - (BOOL)canMakePathEditable;
 - (unsigned long long)charIndexAtPoint:(struct CGPoint)arg1;
-- (id)hitRep:(struct CGPoint)arg1;
 - (id)hyperlinkRegions;
 - (unsigned long long)i_indexOfHitTOCEntryAtPoint:(struct CGPoint)arg1;
 - (id)i_paragraphStyleAtPoint:(struct CGPoint)arg1;

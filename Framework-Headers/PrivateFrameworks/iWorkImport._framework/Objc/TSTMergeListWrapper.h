@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface TSTMergeListWrapper : NSObject
 {
-    vector_db509b29 _mergeList;
+    vector_e87daf7b _mergeList;
 }
 
 @property (readonly) unsigned long long count;
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addRange:(struct TSUCellRect)arg1;
 - (void)enumerateRangesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)initWithMergeList:(const vector_db509b29 *)arg1;
+- (id)initWithMergeList:(const vector_e87daf7b *)arg1;
 - (id)regionForList;
 
 @end

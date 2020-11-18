@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 
 @class DEDBugSessionConfiguration, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
-@protocol DEDClientProtocol, DEDFinisher, DEDUploadStatusDelegate, DEDWorkerProtocol, OS_os_log;
+@protocol DEDClientProtocol, DEDFinisher><DEDSecureArchiving, DEDSecureArchiving, DEDUploadStatusDelegate, DEDWorkerProtocol, OS_os_log;
 
-@interface DEDBugSession : NSObject <NSSecureCoding>
+@interface DEDBugSession : NSObject <NSSecureCoding, DEDSecureArchiving>
 {
     NSString *_identifier;
     NSString *_deviceIdentifier;
@@ -23,24 +24,27 @@
     NSMutableArray *_deListCompletions;
     NSMutableDictionary *_deCompletions;
     NSMutableArray *_adoptFilesCompletions;
-    DEDBugSessionConfiguration *_config;
+    DEDBugSessionConfiguration<DEDSecureArchiving> *_config;
     NSMutableDictionary *_ongoingCompletionHandlers;
     NSMutableDictionary *_pendingOperations;
     CDUnknownBlockType _statusCompletionBlock;
     NSDictionary *_cachedExtensions;
     id<DEDClientProtocol> _client;
     id<DEDWorkerProtocol> _worker;
-    id<DEDFinisher> __finisher;
+    id<DEDFinisher><DEDSecureArchiving> __finisher;
 }
 
-@property (strong) id<DEDFinisher> _finisher; // @synthesize _finisher=__finisher;
+@property (strong) id<DEDFinisher><DEDSecureArchiving> _finisher; // @synthesize _finisher=__finisher;
 @property (strong) NSMutableArray *adoptFilesCompletions; // @synthesize adoptFilesCompletions=_adoptFilesCompletions;
 @property (strong) NSDictionary *cachedExtensions; // @synthesize cachedExtensions=_cachedExtensions;
 @property (strong) id<DEDClientProtocol> client; // @synthesize client=_client;
-@property (strong) DEDBugSessionConfiguration *config; // @synthesize config=_config;
+@property (strong) DEDBugSessionConfiguration<DEDSecureArchiving> *config; // @synthesize config=_config;
 @property (strong) NSMutableDictionary *deCompletions; // @synthesize deCompletions=_deCompletions;
 @property (strong) NSMutableArray *deListCompletions; // @synthesize deListCompletions=_deListCompletions;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (readonly) unsigned long long hash;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (strong) NSMutableDictionary *ongoingCompletionHandlers; // @synthesize ongoingCompletionHandlers=_ongoingCompletionHandlers;
@@ -49,9 +53,11 @@
 @property long long priorClientTransportType; // @synthesize priorClientTransportType=_priorClientTransportType;
 @property long long priorWorkerTransportType; // @synthesize priorWorkerTransportType=_priorWorkerTransportType;
 @property (copy) CDUnknownBlockType statusCompletionBlock; // @synthesize statusCompletionBlock=_statusCompletionBlock;
+@property (readonly) Class superclass;
 @property (strong) id<DEDUploadStatusDelegate> uploadDelegate; // @synthesize uploadDelegate=_uploadDelegate;
 @property (strong) id<DEDWorkerProtocol> worker; // @synthesize worker=_worker;
 
++ (id)archivedClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_cancel;
@@ -69,7 +75,6 @@
 - (void)cleanup;
 - (void)commit;
 - (id)configuration;
-- (id)description;
 - (void)didAdoptFilesWithError:(id)arg1;
 - (void)didAdoptGroup:(id)arg1;
 - (void)didCancel;

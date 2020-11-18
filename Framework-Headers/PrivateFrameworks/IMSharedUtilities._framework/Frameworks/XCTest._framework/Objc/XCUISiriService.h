@@ -18,9 +18,10 @@
 @property (strong) XCUIApplication *siriApplication; // @synthesize siriApplication=_siriApplication;
 
 + (id)siriService;
+- (void).cxx_destruct;
 - (void)_assertSiriEnabled;
+- (void)_waitForActivation;
 - (void)activateWithVoiceRecognitionText:(id)arg1;
-- (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)init;
 - (void)injectAssistantRecognitionStrings:(id)arg1;

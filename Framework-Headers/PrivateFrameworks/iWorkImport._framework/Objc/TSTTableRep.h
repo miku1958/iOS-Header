@@ -10,7 +10,7 @@
 #import <iWorkImport/TSTTableRepInternal-Protocol.h>
 #import <iWorkImport/UITextFieldDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSKHighlightArrayController, TSTAnimation, TSTCellSelection, TSTInfo, TSTLayout, TSTMasterLayout, TSTSearchReference, TSTSelectionDragController, TSTTableModel, TSTTableReferences;
+@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTInfo, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableModel, TSTTableReferences;
 @protocol TSTCanvasReferenceController, TSTTableAnimationController, TSTTableChromeProvider, TSTTableRepDelegate;
 
 __attribute__((visibility("hidden")))
@@ -49,25 +49,14 @@ __attribute__((visibility("hidden")))
     struct TSUCellRect _dirtyCellRange;
     NSMutableArray *_animationStack;
     struct TSUCellRect _zoomToEditVisibleCellRange;
-    CAShapeLayer *_findSelectionHighlightLayer;
     CAShapeLayer *_cellEditingMaskLayer;
-    TSKHighlightArrayController *_bodyHighlightArrayController;
-    TSKHighlightArrayController *_frozenCornerHighlightArrayController;
-    TSKHighlightArrayController *_frozenColumnsHighlightArrayController;
-    TSKHighlightArrayController *_frozenRowsHighlightArrayController;
-    TSKHighlightArrayController *_bodyPulseArrayController;
-    TSKHighlightArrayController *_frozenCornerPulseArrayController;
-    TSKHighlightArrayController *_frozenColumnsPulseArrayController;
-    TSKHighlightArrayController *_frozenRowsPulseArrayController;
-    TSTSearchReference *_previousSearchReference;
+    CAShapeLayer *_findSelectionHighlightLayer;
     struct CGRect _searchSelectionBounds;
 }
 
 @property (weak, nonatomic) id<TSTTableAnimationController> animationController; // @synthesize animationController=_animationController;
 @property (readonly, nonatomic) NSMutableArray *animationStack; // @synthesize animationStack=_animationStack;
 @property (nonatomic) BOOL aspectOperationIsInProgress; // @synthesize aspectOperationIsInProgress=_aspectOperationIsInProgress;
-@property (strong, nonatomic) TSKHighlightArrayController *bodyHighlightArrayController; // @synthesize bodyHighlightArrayController=_bodyHighlightArrayController;
-@property (strong, nonatomic) TSKHighlightArrayController *bodyPulseArrayController; // @synthesize bodyPulseArrayController=_bodyPulseArrayController;
 @property (readonly, weak, nonatomic) id<TSTCanvasReferenceController> canvasReferenceController; // @synthesize canvasReferenceController=_canvasReferenceController;
 @property (readonly, nonatomic) struct CGRect canvasVisibleRect;
 @property (weak, nonatomic) TSTSelectionDragController *cellDragController; // @synthesize cellDragController=_cellDragController;
@@ -81,14 +70,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct TSUCellRect dirtyCellRange; // @synthesize dirtyCellRange=_dirtyCellRange;
 @property (readonly, nonatomic) BOOL dragByHandleOnly; // @synthesize dragByHandleOnly=_dragByHandleOnly;
 @property (strong, nonatomic) CAShapeLayer *findSelectionHighlightLayer; // @synthesize findSelectionHighlightLayer=_findSelectionHighlightLayer;
-@property (strong, nonatomic) TSKHighlightArrayController *frozenColumnsHighlightArrayController; // @synthesize frozenColumnsHighlightArrayController=_frozenColumnsHighlightArrayController;
-@property (strong, nonatomic) TSKHighlightArrayController *frozenColumnsPulseArrayController; // @synthesize frozenColumnsPulseArrayController=_frozenColumnsPulseArrayController;
-@property (strong, nonatomic) TSKHighlightArrayController *frozenCornerHighlightArrayController; // @synthesize frozenCornerHighlightArrayController=_frozenCornerHighlightArrayController;
-@property (strong, nonatomic) TSKHighlightArrayController *frozenCornerPulseArrayController; // @synthesize frozenCornerPulseArrayController=_frozenCornerPulseArrayController;
-@property (strong, nonatomic) TSKHighlightArrayController *frozenRowsHighlightArrayController; // @synthesize frozenRowsHighlightArrayController=_frozenRowsHighlightArrayController;
-@property (strong, nonatomic) TSKHighlightArrayController *frozenRowsPulseArrayController; // @synthesize frozenRowsPulseArrayController=_frozenRowsPulseArrayController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isZoomToEditOperationInProgress; // @synthesize isZoomToEditOperationInProgress=_isZoomToEditOperationInProgress;
+@property (readonly, nonatomic) BOOL layoutDirectionIsLeftToRight;
 @property (readonly, nonatomic) TSTMasterLayout *masterLayout;
 @property (strong, nonatomic) TSDTilingLayer *overlayFrozenHeaderColumns; // @synthesize overlayFrozenHeaderColumns=_overlayFrozenHeaderColumns;
 @property (strong, nonatomic) CALayer *overlayFrozenHeaderColumnsMask; // @synthesize overlayFrozenHeaderColumnsMask=_overlayFrozenHeaderColumnsMask;
@@ -98,7 +82,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CALayer *overlayFrozenHeaderTableBodyMask; // @synthesize overlayFrozenHeaderTableBodyMask=_overlayFrozenHeaderTableBodyMask;
 @property (strong, nonatomic) CALayer *overlayFrozenHeaderTableNameMask; // @synthesize overlayFrozenHeaderTableNameMask=_overlayFrozenHeaderTableNameMask;
 @property (strong, nonatomic) TSDTilingLayer *overlayTableName; // @synthesize overlayTableName=_overlayTableName;
-@property (strong, nonatomic) TSTSearchReference *previousSearchReference; // @synthesize previousSearchReference=_previousSearchReference;
 @property (nonatomic) struct TSUCellCoord ratingsDragCellID; // @synthesize ratingsDragCellID=_ratingsDragCellID;
 @property (nonatomic, getter=isRecursivelyDrawingInContext) BOOL recursivelyDrawingInContext; // @synthesize recursivelyDrawingInContext=_recursivelyDrawingInContext;
 @property (readonly, nonatomic) TSTTableReferences *references; // @synthesize references=_references;
@@ -128,7 +111,6 @@ __attribute__((visibility("hidden")))
 + (Class)tableRepDelegateClass;
 - (void).cxx_destruct;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
-- (void)addAdditionalChildLayersToArray:(id)arg1;
 - (id)additionalLayersUnderLayer;
 - (void)asyncPostTextChangedInRange:(struct TSUCellRect)arg1;
 - (struct CGRect)boundsForCellSelection:(struct TSUCellCoord)arg1;
@@ -154,7 +136,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDraggable;
 - (BOOL)isFullyVisibleWithBorder:(int)arg1;
 - (struct CGRect)layerFrameInScaledCanvas;
-- (void)layoutInRootChangedFrom:(id)arg1 to:(id)arg2 translatedOnly:(BOOL)arg3;
 - (struct TSUCellCoord)logicalCellIDForUnscaledCanvasPoint:(struct CGPoint)arg1;
 - (BOOL)mustDrawOnMainThreadForInteractiveCanvas;
 - (struct CGRect)naturalBoundsRectForHyperlinkField:(id)arg1;
@@ -167,7 +148,6 @@ __attribute__((visibility("hidden")))
 - (void)p_removeObservers;
 - (void)p_resetDynamicModePropertiesForContainedTextEditing;
 - (BOOL)p_shouldPerformOnChildTextReps:(SEL)arg1;
-- (id)p_textImageForPath:(struct CGPath *)arg1 shouldPulsate:(BOOL)arg2 cellID:(struct TSUCellCoord)arg3;
 - (void)p_updateDynamicModePropertiesForContainedTextEditing;
 - (void)p_updateDynamicModePropertiesForContainedTextEditingWithSpillingTextRange:(struct TSUCellRect)arg1;
 - (void)popAnimation;
@@ -177,10 +157,7 @@ __attribute__((visibility("hidden")))
 - (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
-- (id)repForDragging;
-- (void)screenScaleDidChange;
 - (void)setTableChrome:(id)arg1;
-- (BOOL)shouldHighlightGray:(struct TSUCellCoord)arg1;
 - (id)textureForDescription:(id)arg1;
 - (void)updateChildrenFromLayout;
 - (void)updateFromLayout;

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)adjustedResultWithValue:(id)arg1;
 - (id)initWithAnimation:(id)arg1;
 - (id)interpolatedValueFrom:(id)arg1 to:(id)arg2 percent:(double)arg3;
+- (id)valueForKeyPath:(id)arg1 atTime:(double)arg2 animationCache:(id)arg3;
 
 @end
 

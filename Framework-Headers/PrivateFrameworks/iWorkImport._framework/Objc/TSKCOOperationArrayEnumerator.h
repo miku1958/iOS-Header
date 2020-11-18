@@ -13,15 +13,15 @@
 __attribute__((visibility("hidden")))
 @interface TSKCOOperationArrayEnumerator : NSObject <TSKCOIntermediateOperationEnumerator>
 {
-    NSMutableArray *mOperationArray;
-    unsigned long long mNextIndex;
+    NSMutableArray *_operationArray;
+    unsigned long long _nextIndex;
 }
 
 @property (readonly, nonatomic) BOOL hasOperations;
 
+- (void).cxx_destruct;
 - (void)appendOperation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithOperationEnumerator:(id)arg1;
 - (id)nextOperation;

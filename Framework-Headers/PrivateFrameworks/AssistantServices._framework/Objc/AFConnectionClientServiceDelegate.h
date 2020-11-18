@@ -31,9 +31,11 @@
 - (oneway void)audioPlaybackRequestDidStart:(id)arg1;
 - (oneway void)audioPlaybackRequestDidStop:(id)arg1 error:(id)arg2;
 - (oneway void)audioPlaybackRequestWillStart:(id)arg1;
+- (oneway void)audioSessionDidBecomeActive:(BOOL)arg1;
 - (oneway void)audioSessionDidBeginInterruption;
 - (oneway void)audioSessionDidEndInterruption:(BOOL)arg1;
 - (oneway void)audioSessionIDChanged:(unsigned int)arg1;
+- (oneway void)audioSessionWillBecomeActive:(BOOL)arg1;
 - (oneway void)cacheImage:(id)arg1;
 - (oneway void)extensionRequestFinishedForApplication:(id)arg1 error:(id)arg2;
 - (oneway void)extensionRequestWillStartForApplication:(id)arg1;

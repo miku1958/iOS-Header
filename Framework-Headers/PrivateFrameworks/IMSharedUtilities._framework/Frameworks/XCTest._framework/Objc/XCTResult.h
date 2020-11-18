@@ -19,11 +19,12 @@
 @property (readonly) BOOL hasValue;
 @property (strong) id value; // @synthesize value=_value;
 
++ (id)futureResultWithTimeout:(double)arg1 description:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (id)result;
 + (id)resultWithError:(id)arg1;
 + (id)resultWithValue:(id)arg1;
 + (id)resultWithValue:(id)arg1 error:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithValue:(id)arg1 error:(id)arg2;
 
 @end

@@ -7,11 +7,10 @@
 #import <Foundation/NSObject.h>
 
 @class NSMutableSet;
-@protocol ADAdSheetProxyDelegate, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface ADAdSheetProxy : NSObject
 {
-    id<ADAdSheetProxyDelegate> _delegate;
     BOOL _serviceLaunchThrottled;
     BOOL _waitingForAdSheet;
     BOOL _openApplicationInProgress;
@@ -23,7 +22,6 @@
     NSObject<OS_dispatch_queue> *_proxyQueue;
 }
 
-@property (weak, nonatomic) id<ADAdSheetProxyDelegate> delegate;
 @property (nonatomic) long long interruptionCount; // @synthesize interruptionCount=_interruptionCount;
 @property (nonatomic) double lastLaunchTimestamp; // @synthesize lastLaunchTimestamp=_lastLaunchTimestamp;
 @property (strong, nonatomic) NSMutableSet *launchAssertions; // @synthesize launchAssertions=_launchAssertions;

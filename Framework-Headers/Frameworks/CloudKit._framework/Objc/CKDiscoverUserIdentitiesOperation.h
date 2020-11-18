@@ -10,9 +10,9 @@
 
 @interface CKDiscoverUserIdentitiesOperation : CKOperation
 {
-    NSArray *_userIdentityLookupInfos;
     CDUnknownBlockType _userIdentityDiscoveredBlock;
     CDUnknownBlockType _discoverUserIdentitiesCompletionBlock;
+    NSArray *_userIdentityLookupInfos;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType discoverUserIdentitiesCompletionBlock; // @synthesize discoverUserIdentitiesCompletionBlock=_discoverUserIdentitiesCompletionBlock;

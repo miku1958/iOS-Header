@@ -24,6 +24,8 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_proactiveFetchQueue;
     NSSet *_pushTopics;
+    BOOL _isProcessingCloudStorePushNotification;
+    BOOL _shouldProcessCloudStoreNotification;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -38,6 +40,7 @@
 - (void)_cloudStoreInitializationWithCompletion:(CDUnknownBlockType)arg1;
 - (double)_nextTimeIntervalForBackgroundInterval:(unsigned long long)arg1;
 - (void)_performCloudStoreContainerInitalizationBackgroundActivityWithCurrentInterval:(unsigned long long)arg1 nextBackgroundInterval:(unsigned long long)arg2;
+- (void)_processCloudStorePushNotification;
 - (void)_recordAggdCloudStoreBackgroundContainerSetupResult:(BOOL)arg1 forCurrentBackgroundInterval:(unsigned long long)arg2;
 - (void)_registerForPushNotifications;
 - (void)_scheduleCloudStoreContainerSetupBackgroundActivityWithNextInterval:(unsigned long long)arg1;
@@ -64,7 +67,7 @@
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
 - (void)invalidateCloudStore;
-- (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2 activityContext:(id)arg3;
+- (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2;
 - (id)pushNotificationTopics;
 - (void)registerObserver:(id)arg1;
 - (void)removeItemsWithRecordNames:(id)arg1 itemClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;

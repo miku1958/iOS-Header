@@ -13,6 +13,7 @@
     BOOL _registeredForInternalPrefs;
     BOOL _registeredForLanguageCode;
     BOOL _registeredForOutputVoice;
+    BOOL _registeredForSupportedLanguages;
     NSObject<OS_dispatch_queue> *_navTokenQueue;
     BOOL _navTokenIsValid;
     int _navToken;
@@ -32,10 +33,15 @@
 - (void)_registerForLanguageCodeChangeNotifications;
 - (void)_registerForNavStatusIfNeeded;
 - (void)_registerForOutputVoice;
+- (void)_registerForSupportedLanguageChangeNotifications;
 - (void)_setAssistantIsEnabledLocal:(BOOL)arg1;
 - (void)_setDictationIsEnabledLocal:(BOOL)arg1;
 - (void)_setLoggingDefaultValue:(id)arg1 forKey:(id)arg2;
+- (void)_setSupplementalLanguageDictionary:(id)arg1 forProduct:(id)arg2;
+- (void)_setSupplementalLanguages:(id)arg1 forProduct:(id)arg2 forBuildVersion:(id)arg3;
 - (void)_setSuppressDictationOptInLocal:(BOOL)arg1;
+- (id)_supplementalLanguagesDictionary;
+- (void)_supportedLanguagesDidChangeExternally;
 - (id)activitySummaryReportDate;
 - (id)allSiriLanguageCodesForSystemLanguageCode:(id)arg1 isGoodFit:(BOOL *)arg2;
 - (BOOL)applySASToFirstPartyDomains;
@@ -53,7 +59,9 @@
 - (BOOL)fileLoggingIsEnabled;
 - (void)getOfflineDictationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)handsFreeMode;
+- (id)horsemanSupplementalLanguageDictionary;
 - (BOOL)ignoreServerManualEndpointingThreshold;
+- (id)inProgressOutputVoice;
 - (id)init;
 - (BOOL)isCurrentLocaleNativelySupported;
 - (BOOL)isLocaleIdentifierNativelySupported:(id)arg1;
@@ -82,6 +90,7 @@
 - (void)setFileLoggingIsEnabled:(BOOL)arg1;
 - (void)setHandsFreeMode:(long long)arg1;
 - (void)setIgnoreServerManualEndpointingThreshold:(BOOL)arg1;
+- (void)setInProgressOutputVoice:(id)arg1;
 - (void)setLanguageCode:(id)arg1;
 - (void)setLimitedAudioLoggingEnabled:(BOOL)arg1;
 - (void)setManualEndpointingThreshold:(id)arg1;
@@ -112,6 +121,10 @@
 - (BOOL)siriKitEnabledForNativeMessages;
 - (BOOL)siriKitEnabledForNativeNotes;
 - (BOOL)streamingDictationEnabled;
+- (id)supplementalLanguageDictionaryForProduct:(id)arg1;
+- (id)supplementalLanguages;
+- (id)supplementalLanguagesForProduct:(id)arg1 forBuildVersion:(id)arg2;
+- (id)supplementalLanguagesModificationDate;
 - (BOOL)suppressAssistantOptIn;
 - (BOOL)suppressDictationOptIn;
 - (void)synchronize;

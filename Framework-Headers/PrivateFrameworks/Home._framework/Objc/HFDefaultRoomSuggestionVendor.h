@@ -23,9 +23,12 @@
 @property (readonly, nonatomic) NSURL *roomSuggestionsPlistURL; // @synthesize roomSuggestionsPlistURL=_roomSuggestionsPlistURL;
 @property (readonly) Class superclass;
 
++ (id)TVAccessorySuggestionVendor;
++ (id)homeAppSuggestionVendor;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithRoomSuggestionsPlistURL:(id)arg1;
+- (id)prioritizedRoomSuggestions;
 
 @end
 

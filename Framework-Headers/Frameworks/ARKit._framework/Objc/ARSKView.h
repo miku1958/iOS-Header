@@ -45,6 +45,7 @@
 - (void)session:(id)arg1 didOutputAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 - (void)session:(id)arg1 didUpdateFrame:(id)arg2;
 - (void)sessionInterruptionEnded:(id)arg1;
+- (void)sessionShouldAttemptRelocalization:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sessionWasInterrupted:(id)arg1;
 
 @end

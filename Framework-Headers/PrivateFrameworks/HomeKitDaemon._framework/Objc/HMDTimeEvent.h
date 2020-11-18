@@ -6,15 +6,15 @@
 
 #import <HomeKitDaemon/HMDEvent.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDBackgroundTaskAgentTimer, NSObject, NSString, NSUUID;
+@class HMDBackgroundTaskAgentTimer, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDTimeEvent : HMDEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMFMessageReceiver>
+@interface HMDTimeEvent : HMDEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
     BOOL _repetitive;
     HMDBackgroundTaskAgentTimer *_btaTimer;
@@ -25,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, nonatomic) BOOL repetitive; // @synthesize repetitive=_repetitive;
 @property (readonly) Class superclass;

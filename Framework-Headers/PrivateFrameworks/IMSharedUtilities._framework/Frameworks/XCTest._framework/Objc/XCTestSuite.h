@@ -29,6 +29,7 @@
 + (id)testSuiteForTestCaseWithName:(id)arg1;
 + (id)testSuiteForTestConfiguration:(id)arg1;
 + (id)testSuiteWithName:(id)arg1;
+- (void).cxx_destruct;
 - (id)_initWithTestConfiguration:(id)arg1;
 - (void)_mergeActivityStatistics:(id)arg1;
 - (void)_performProtectedSectionForTest:(id)arg1 testSection:(CDUnknownBlockType)arg2;
@@ -37,7 +38,6 @@
 - (void)_sortTestsUsingComparator:(CDUnknownBlockType)arg1;
 - (id)_testSuiteWithIdentifier:(id)arg1;
 - (void)addTest:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithName:(id)arg1;

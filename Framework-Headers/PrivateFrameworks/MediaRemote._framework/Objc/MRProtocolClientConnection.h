@@ -11,7 +11,7 @@
 #import <MediaRemote/MSVMessageParserDelegate-Protocol.h>
 #import <MediaRemote/NSStreamDelegate-Protocol.h>
 
-@class MRProtocolMessageQueue, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString;
+@class MRProtocolMessageQueue, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString, _MRDeviceInfoMessageProtobuf;
 @protocol MRProtocolClientConnectionDelegate;
 
 @interface MRProtocolClientConnection : NSObject <NSStreamDelegate, MSVMessageParserDelegate, MRProtocolMessageQueueDelegate, MRProtocolMessageQueueDataSource>
@@ -24,18 +24,21 @@
     unsigned long long _firstDeviceTicks;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
+    _MRDeviceInfoMessageProtobuf *_deviceInfo;
     id<MRProtocolClientConnectionDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<MRProtocolClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MRProtocolClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSInputStream *inputStream; // @synthesize inputStream=_inputStream;
 @property (readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
 @property (readonly, nonatomic) BOOL streamsAreValid;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_adjustTimestamp:(id)arg1;
 - (void)_closeStream:(id)arg1;
 - (void)_disconnectClient;
@@ -58,6 +61,7 @@
 - (void)parser:(id)arg1 didParseMessage:(id)arg2;
 - (void)sendMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)sendMessage:(id)arg1 timeout:(double)arg2 queue:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 
 @end

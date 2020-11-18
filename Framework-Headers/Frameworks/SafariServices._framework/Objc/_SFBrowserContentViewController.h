@@ -9,14 +9,14 @@
 #import <SafariServices/SFReaderAppearanceViewControllerDelegate-Protocol.h>
 #import <SafariServices/SFReaderEnabledWebViewControllerDelegate-Protocol.h>
 #import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
-#import <SafariServices/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <SafariServices/UIScrollViewDelegate-Protocol.h>
 #import <SafariServices/WBSFluidProgressControllerWindowDelegate-Protocol.h>
 #import <SafariServices/WBSFluidProgressStateSource-Protocol.h>
 #import <SafariServices/_SFActivityViewControllerDelegate-Protocol.h>
+#import <SafariServices/_SFAppleConnectExtensionUIDelegate-Protocol.h>
+#import <SafariServices/_SFBarManagerDelegate-Protocol.h>
 #import <SafariServices/_SFBrowserKeyCommandMethods-Protocol.h>
 #import <SafariServices/_SFBrowserToolbarDataSource-Protocol.h>
-#import <SafariServices/_SFBrowserToolbarDelegate-Protocol.h>
 #import <SafariServices/_SFDownloadControllerDelegate-Protocol.h>
 #import <SafariServices/_SFDynamicBarAnimatorDelegate-Protocol.h>
 #import <SafariServices/_SFFindOnPageViewDelegate-Protocol.h>
@@ -27,9 +27,9 @@
 #import <SafariServices/_SFSafeBrowsingControllerDelegate-Protocol.h>
 #import <SafariServices/_SFSingleBookmarkNavigationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, SFBrowserPersonaAnalyticsHelper, SFReaderEnabledWebViewController, SFReaderViewController, SFSafariViewControllerConfiguration, UIColor, UITapGestureRecognizer, WBSAutomaticReaderActivationManager, WBSFluidProgressController, WBSFluidProgressState, WKBackForwardListItem, WKPreferences, _SFBrowserToolbar, _SFBrowserView, _SFCalendarEventDetector, _SFDownloadController, _SFDynamicBarAnimator, _SFFindOnPageView, _SFFluidProgressView, _SFMailContentProvider, _SFNavigationBar, _SFNavigationBarItem, _SFPageLoadErrorController, _SFPrintController, _SFReloadOptionsController, _SFSafariSharingExtensionController, _SFSafeBrowsingController, _SFSecIdentityPreferencesController, _SFTelephonyNavigationMitigationPolicy, _SFURLSpoofingMitigator, _WKActivatedElementInfo, _WKUserInitiatedAction;
+@class NSArray, NSString, SFBrowserPersonaAnalyticsHelper, SFReaderEnabledWebViewController, SFReaderViewController, SFSafariViewControllerConfiguration, UIColor, UITapGestureRecognizer, WBSAutomaticReaderActivationManager, WBSFluidProgressController, WBSFluidProgressState, WKBackForwardListItem, WKPreferences, _SFAppleConnectExtensionPageController, _SFBarManager, _SFBrowserToolbar, _SFBrowserView, _SFCalendarEventDetector, _SFDownloadController, _SFDynamicBarAnimator, _SFFindOnPageView, _SFFluidProgressView, _SFMailContentProvider, _SFNavigationBar, _SFNavigationBarItem, _SFPageLoadErrorController, _SFPrintController, _SFReloadOptionsController, _SFSafariSharingExtensionController, _SFSafeBrowsingController, _SFSecIdentityPreferencesController, _SFTelephonyNavigationMitigationPolicy, _SFURLSpoofingMitigator, _WKActivatedElementInfo, _WKUserInitiatedAction;
 
-@interface _SFBrowserContentViewController : UIViewController <SFReaderAppearanceViewControllerDelegate, SFReaderEnabledWebViewControllerDelegate, _SFActivityViewControllerDelegate, _SFBrowserKeyCommandMethods, _SFDownloadControllerDelegate, _SFDynamicBarAnimatorDelegate, _SFFindOnPageViewDelegate, _SFBrowserToolbarDataSource, _SFBrowserToolbarDelegate, _SFMailContentProviderDataSource, _SFNavigationBarDelegate, _SFPageLoadErrorControllerDelegate, _SFPrintControllerDelegate, _SFSafeBrowsingControllerDelegate, _SFSingleBookmarkNavigationControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UIScrollViewDelegate, WBSFluidProgressControllerWindowDelegate, WBSFluidProgressStateSource>
+@interface _SFBrowserContentViewController : UIViewController <SFReaderAppearanceViewControllerDelegate, SFReaderEnabledWebViewControllerDelegate, _SFActivityViewControllerDelegate, _SFBarManagerDelegate, _SFBrowserKeyCommandMethods, _SFDownloadControllerDelegate, _SFDynamicBarAnimatorDelegate, _SFFindOnPageViewDelegate, _SFBrowserToolbarDataSource, _SFMailContentProviderDataSource, _SFNavigationBarDelegate, _SFPageLoadErrorControllerDelegate, _SFPrintControllerDelegate, _SFSafeBrowsingControllerDelegate, _SFSingleBookmarkNavigationControllerDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, WBSFluidProgressControllerWindowDelegate, WBSFluidProgressStateSource, _SFAppleConnectExtensionUIDelegate>
 {
     _SFBrowserView *_browserView;
     SFReaderViewController *_readerViewController;
@@ -41,6 +41,8 @@
     _SFMailContentProvider *_cachedMailContentProvider;
     _WKUserInitiatedAction *_lastUserInitiatedAction;
     BOOL _canOpenDownloadForInitialLoad;
+    unsigned long long _externalAppRedirectState;
+    _SFBarManager *_barManager;
     _SFDynamicBarAnimator *_dynamicBarAnimator;
     BOOL _scrollViewIsDragging;
     _SFNavigationBarItem *_navigationBarItem;
@@ -79,6 +81,10 @@
     SFReaderEnabledWebViewController *_ownerWebViewController;
     struct UIEdgeInsets _verticalScrollIndicatorBaseInsets;
     struct UIEdgeInsets _horizontalScrollIndicatorBaseInsets;
+    _SFAppleConnectExtensionPageController *_appleConnectPageController;
+    BOOL _autoHidingHomeIndicatorPermitted;
+    BOOL _prefersHomeIndicatorAutoHidden;
+    BOOL _shouldAutoHideHomeIndicator;
     BOOL _remoteSwipeGestureEnabled;
     BOOL __privateBrowsingInitiallyEnabled;
     BOOL _webViewLayoutUnderlapsStatusBar;
@@ -92,6 +98,7 @@
     UIColor *_preferredControlTintColor;
     long long _dismissButtonStyle;
     SFSafariViewControllerConfiguration *_configuration;
+    NSString *_bundleIdentifierForProfileInstallation;
     unsigned long long __persona;
     SFBrowserPersonaAnalyticsHelper *__analyticsHelper;
     long long _safariDataSharingMode;
@@ -103,7 +110,7 @@
 @property (readonly, nonatomic) BOOL _privateBrowsingInitiallyEnabled; // @synthesize _privateBrowsingInitiallyEnabled=__privateBrowsingInitiallyEnabled;
 @property (readonly, nonatomic) BOOL _usesScrollToTopView;
 @property (strong, nonatomic) _WKActivatedElementInfo *activatedElementInfo; // @synthesize activatedElementInfo=_activatedElementInfo;
-@property (readonly, nonatomic) BOOL canInstallProfiles;
+@property (readonly, nonatomic) NSString *bundleIdentifierForProfileInstallation; // @synthesize bundleIdentifierForProfileInstallation=_bundleIdentifierForProfileInstallation;
 @property (readonly, nonatomic) BOOL canPrint;
 @property (copy, nonatomic) SFSafariViewControllerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
@@ -130,6 +137,7 @@
 - (BOOL)_canShowDownloadWithoutPrompting:(id)arg1;
 - (void)_commitPreviewViewController:(id)arg1;
 - (id)_committedDomainForAutomaticReader;
+- (void)_completeRedirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 userCancelled:(BOOL)arg3;
 - (double)_crashBannerDraggingOffsetForContentOffset:(struct CGPoint)arg1;
 - (id)_currentWebView;
 - (void)_didLoadWebView;
@@ -138,7 +146,7 @@
 - (struct UIEdgeInsets)_effectiveWebViewSafeAreaInsets;
 - (void)_fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchSharingURLWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_getSafariDataSharingModeWithPrivacyPrompt:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getSafariDataSharingModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_goBack;
 - (void)_goForward;
 - (void)_hideCrashBanner;
@@ -155,20 +163,25 @@
 - (void)_openCurrentURLInSafari;
 - (id)_openNewWebViewIfNeededWithConfiguration:(id)arg1 forNavigationAction:(id)arg2;
 - (void)_perSiteAutomaticReaderActivationPreferenceDidChange:(id)arg1;
-- (void)_performSafeBrowsingCheckForURL:(id)arg1;
+- (void)_performSafeBrowsingCheckForURL:(id)arg1 isMainFrame:(BOOL)arg2;
+- (void)_performSafeBrowsingCheckForURLIfNecessary:(id)arg1 isMainFrame:(BOOL)arg2;
+- (void)_presentActivityViewController;
 - (id)_previewViewControllerForURL:(id)arg1 defaultActions:(id)arg2 elementInfo:(id)arg3;
+- (void)_queueAlertForRedirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 isMainFrame:(BOOL)arg3 promptPolicy:(long long)arg4 userAction:(id)arg5;
+- (BOOL)_readerViewControllerNeedsSetUp;
 - (void)_recordHostAppIdAndURLForTapToRadar:(id)arg1;
-- (void)_redirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 isMainFrame:(BOOL)arg3 userAction:(id)arg4;
+- (void)_redirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 promptPolicy:(long long)arg3 isMainFrame:(BOOL)arg4 userAction:(id)arg5;
 - (BOOL)_redirectToHostAppWithExpectedCallbackSchemeIfPossible:(id)arg1;
 - (BOOL)_redirectToHostAppWithNavigationResult:(id)arg1 options:(id)arg2;
-- (void)_reload;
 - (BOOL)_safeAreaShouldAffectWebViewObscuredInsets;
 - (void)_scrollToTopFromScrollToTopView;
 - (void)_setShowingCrashBanner:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setShowingReader:(BOOL)arg1 deactivationMode:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)_setSuppressingPreviewProgressAnimation:(BOOL)arg1;
+- (void)_setUpAppleConnectPageControllerIfNeeded;
 - (void)_setUpCalendarEventDetectorIfNeeded;
 - (void)_setUpFindOnPageViewIfNeeded;
+- (void)_setUpReaderViewController;
 - (void)_setUpReloadOptionsControllerIfNeeded;
 - (void)_setUpSafeBrowsingController;
 - (void)_setUpToolbar;
@@ -183,12 +196,13 @@
 - (BOOL)_showICSControllerForPath:(id)arg1 sourceURL:(id)arg2;
 - (void)_showPassBookControllerForPass:(id)arg1;
 - (void)_showReaderAnimated:(BOOL)arg1;
-- (BOOL)_supportsTrackerProtection;
 - (void)_toggleReaderFromExplicitUserAction;
+- (void)_updateBarItems;
 - (void)_updateCrashBannerOffset;
 - (void)_updateCurrentScrollViewInsets;
 - (void)_updateDoNotTrackPreference;
 - (void)_updateDynamicBarGeometry;
+- (void)_updateHomeIndicatorAutoHideState;
 - (void)_updateInterfaceFillsScreen;
 - (void)_updateNavigationBar;
 - (void)_updatePreferredBarTintColor;
@@ -206,29 +220,24 @@
 - (void)_viewDidTransitionToSize:(struct CGSize)arg1;
 - (void)_viewWillTransitionToSize:(struct CGSize)arg1;
 - (void)activityViewController:(id)arg1 prepareActivity:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addBookmarkNavController:(id)arg1 didFinishWithResult:(BOOL)arg2;
 - (BOOL)addBookmarkNavControllerCanSaveBookmarkChanges:(id)arg1;
+- (void)appleConnectExtensionPageController:(id)arg1 dismissViewController:(id)arg2;
+- (void)appleConnectExtensionPageController:(id)arg1 presentViewController:(id)arg2;
 - (unsigned long long)availableContentTypeForMailContentProvider:(id)arg1;
+- (void)barManager:(id)arg1 didRecieveTapForBarItem:(long long)arg2;
 - (BOOL)becomeFirstResponder;
 - (unsigned long long)browserPersonaForWebViewController:(id)arg1;
-- (BOOL)browserToolbarCanGoBack:(id)arg1;
-- (BOOL)browserToolbarCanGoForward:(id)arg1;
-- (BOOL)browserToolbarCanOpenPageInSafari:(id)arg1;
-- (BOOL)browserToolbarCanShowAction:(id)arg1;
 - (double)browserToolbarDismissButtonPadding:(id)arg1;
 - (struct CGSize)browserToolbarDismissButtonSize:(id)arg1;
-- (void)browserToolbarGoBack:(id)arg1;
-- (void)browserToolbarGoForward:(id)arg1;
-- (void)browserToolbarOpenInSafari:(id)arg1;
 - (BOOL)browserToolbarShouldShowOpenInSafariBarButtonItem:(id)arg1;
-- (void)browserToolbarShowActionSheet:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancelKeyPressed;
 - (void)clearFluidProgressState;
 - (void)compressedNavigationBarWasTapped:(id)arg1;
 - (BOOL)createFluidProgressState;
+- (void)createReaderWebViewForWebViewController:(id)arg1;
 - (id)currentFluidProgressStateSource;
 - (BOOL)currentLoadIsEligibleForAutoFillAuthenticationForWebViewController:(id)arg1;
 - (void)dealloc;
@@ -249,6 +258,7 @@
 - (BOOL)hasFailedURL;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)isSafariRestricted;
+- (BOOL)isShowingErrorPage;
 - (id)keyCommands;
 - (void)loadRequest:(id)arg1;
 - (void)loadView;
@@ -258,7 +268,6 @@
 - (void)navigateBackKeyPressed;
 - (void)navigateForwardKeyPressed;
 - (void)navigationBar:(id)arg1 backDropWillApplySettings:(id)arg2;
-- (BOOL)navigationBar:(id)arg1 shouldPermitShareOperation:(long long)arg2;
 - (void)navigationBarBackdropDidApplySettings:(id)arg1;
 - (void)navigationBarCancelButtonWasTapped:(id)arg1;
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
@@ -281,8 +290,8 @@
 - (id)pageLoadErrorControllerGetSecIdentityPreferencesController:(id)arg1;
 - (BOOL)pageLoadErrorControllerShouldHandleCertificateError:(id)arg1;
 - (BOOL)pageLoadErrorControllerShouldPermanentlyAcceptCertificate:(id)arg1;
-- (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
 - (long long)preferredStatusBarStyle;
+- (BOOL)prefersHomeIndicatorAutoHidden;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)presentingViewControllerForWebViewController:(id)arg1;
 - (id)previewActionItems;
@@ -297,11 +306,12 @@
 - (void)readerAppearanceViewControllerDidChangeTheme:(id)arg1;
 - (void)readerAppearanceViewControllerDidDecreaseTextSize:(id)arg1;
 - (void)readerAppearanceViewControllerDidIncreaseTextSize:(id)arg1;
+- (void)reloadAllowingContentBlockers:(BOOL)arg1;
 - (void)reloadKeyPressed;
-- (void)reloadWithoutContentBlockers;
 - (void)safeBrowsingController:(id)arg1 didIgnoreWarningWithURL:(id)arg2;
 - (void)safeBrowsingControllerClosePage:(id)arg1;
 - (void)safeBrowsingControllerDidShowSecurityWarningPage:(id)arg1;
+- (id)safeBrowsingControllerExpectedOrCurrentURL:(id)arg1;
 - (void)safeBrowsingControllerGoBack:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;

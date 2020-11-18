@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)alias;
 - (id)compositeName;
 - (BOOL)isLoaded;

@@ -6,9 +6,12 @@
 
 #import <Silex/SXJSONObject.h>
 
-@class NSString, SXComponentAnchor, SXComponentAnimation, SXComponentClassification, SXComponentConditions, SXJSONArray, SXJSONDictionary;
+#import <Silex/SXComponent-Protocol.h>
 
-@interface SXComponent : SXJSONObject
+@class NSString, SXComponentAnimation, SXComponentClassification, SXComponentConditions, SXJSONArray, SXJSONDictionary;
+@protocol SXComponentAnchor;
+
+@interface SXComponent : SXJSONObject <SXComponent>
 {
     SXComponentAnimation *backingAnimation;
     SXComponentClassification *_classification;
@@ -16,25 +19,30 @@
 
 @property (readonly, nonatomic) SXJSONArray *additions; // @dynamic additions;
 @property (readonly, nonatomic) SXJSONDictionary *analytics; // @dynamic analytics;
-@property (readonly, nonatomic) SXComponentAnchor *anchor; // @dynamic anchor;
+@property (readonly, nonatomic) id<SXComponentAnchor> anchor; // @dynamic anchor;
 @property (readonly, nonatomic) SXComponentAnimation *animation; // @dynamic animation;
 @property (strong, nonatomic) SXComponentAnimation *backingAnimation; // @synthesize backingAnimation;
 @property (readonly, nonatomic) SXJSONArray *behaviors; // @dynamic behaviors;
 @property (readonly, nonatomic) SXComponentClassification *classification; // @synthesize classification=_classification;
 @property (readonly, nonatomic) SXComponentConditions *conditions; // @dynamic conditions;
 @property (readonly, nonatomic) unsigned long long contentRelevance; // @dynamic contentRelevance;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (readonly, nonatomic) NSString *layout; // @dynamic layout;
 @property (readonly, nonatomic) int role;
 @property (readonly, nonatomic) NSString *style; // @dynamic style;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long traits;
 @property (readonly, nonatomic) NSString *type; // @dynamic type;
 
++ (Class)classForProtocolProperty:(id)arg1 withValue:(id)arg2;
 + (CDUnknownBlockType)purgeClassBlockForPropertyWithName:(id)arg1;
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
 - (void).cxx_destruct;
 - (id)animationWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)contentRelevanceWithValue:(id)arg1 withType:(int)arg2;
-- (id)description;
 
 @end
 

@@ -6,20 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, UITableView;
+@class NSArray;
 
 @interface MPAVRoutingViewControllerUpdateDisplayedRoutesState : NSObject
 {
     NSArray *_pickedRoutes;
     NSArray *_pendingPickedRoutes;
-    NSArray *_visibleIndexPaths;
     NSArray *_displayableAvailableRoutes;
     NSArray *_displayAsPickedRoutes;
     NSArray *_cachedRoutes;
     NSArray *_cachedPickedRoutes;
     NSArray *_cachedPendingPickedRoutes;
     NSArray *_cachedDisplayAsPickedRoutes;
-    UITableView *_tableView;
 }
 
 @property (copy, nonatomic) NSArray *cachedDisplayAsPickedRoutes; // @synthesize cachedDisplayAsPickedRoutes=_cachedDisplayAsPickedRoutes;
@@ -30,8 +28,6 @@
 @property (copy, nonatomic) NSArray *displayableAvailableRoutes; // @synthesize displayableAvailableRoutes=_displayableAvailableRoutes;
 @property (copy, nonatomic) NSArray *pendingPickedRoutes; // @synthesize pendingPickedRoutes=_pendingPickedRoutes;
 @property (copy, nonatomic) NSArray *pickedRoutes; // @synthesize pickedRoutes=_pickedRoutes;
-@property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-@property (copy, nonatomic) NSArray *visibleIndexPaths; // @synthesize visibleIndexPaths=_visibleIndexPaths;
 
 - (void).cxx_destruct;
 

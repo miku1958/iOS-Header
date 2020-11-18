@@ -17,9 +17,11 @@
 - (oneway void)audioPlaybackRequestDidStart:(AFAudioPlaybackRequest *)arg1;
 - (oneway void)audioPlaybackRequestDidStop:(AFAudioPlaybackRequest *)arg1 error:(NSError *)arg2;
 - (oneway void)audioPlaybackRequestWillStart:(AFAudioPlaybackRequest *)arg1;
+- (oneway void)audioSessionDidBecomeActive:(BOOL)arg1;
 - (oneway void)audioSessionDidBeginInterruption;
 - (oneway void)audioSessionDidEndInterruption:(BOOL)arg1;
 - (oneway void)audioSessionIDChanged:(unsigned int)arg1;
+- (oneway void)audioSessionWillBecomeActive:(BOOL)arg1;
 - (oneway void)cacheImage:(INImage *)arg1;
 - (oneway void)extensionRequestFinishedForApplication:(NSString *)arg1 error:(NSError *)arg2;
 - (oneway void)extensionRequestWillStartForApplication:(NSString *)arg1;

@@ -30,6 +30,7 @@
     unsigned int _travelTimeBestEstimate;
     unsigned int _travelTimeConservativeEstimate;
     NSData *_zilchPoints;
+    BOOL _isOfflineResponse;
     BOOL _routeNoLongerValid;
     struct {
         unsigned int historicTravelTime:1;
@@ -37,6 +38,7 @@
         unsigned int travelTimeAggressiveEstimate:1;
         unsigned int travelTimeBestEstimate:1;
         unsigned int travelTimeConservativeEstimate:1;
+        unsigned int isOfflineResponse:1;
         unsigned int routeNoLongerValid:1;
     } _has;
 }
@@ -44,6 +46,7 @@
 @property (strong, nonatomic) NSMutableArray *enrouteNotices; // @synthesize enrouteNotices=_enrouteNotices;
 @property (readonly, nonatomic) double expectedTime;
 @property (nonatomic) BOOL hasHistoricTravelTime;
+@property (nonatomic) BOOL hasIsOfflineResponse;
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (nonatomic) BOOL hasRouteNoLongerValid;
 @property (nonatomic) BOOL hasStaticTravelTime;
@@ -59,6 +62,7 @@
 @property (strong, nonatomic) NSMutableArray *incidentsOnETARoutes; // @synthesize incidentsOnETARoutes=_incidentsOnETARoutes;
 @property (strong, nonatomic) NSMutableArray *incidentsOnReRoutes; // @synthesize incidentsOnReRoutes=_incidentsOnReRoutes;
 @property (strong, nonatomic) NSMutableArray *invalidSectionZilchPoints; // @synthesize invalidSectionZilchPoints=_invalidSectionZilchPoints;
+@property (nonatomic) BOOL isOfflineResponse;
 @property (strong, nonatomic) NSMutableArray *reroutedRoutes; // @synthesize reroutedRoutes=_reroutedRoutes;
 @property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) BOOL routeNoLongerValid; // @synthesize routeNoLongerValid=_routeNoLongerValid;

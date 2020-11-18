@@ -23,7 +23,6 @@
 + (id)conversationWithID:(id)arg1 andUtterances:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_processBackspace;
 - (void)addUtterance:(id)arg1;
 - (id)appendCharacter:(unsigned short)arg1;
 - (void)cleanup;
@@ -34,8 +33,10 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToConversation:(id)arg1;
+- (id)lastUtteranceForMe:(BOOL)arg1;
 - (id)mergeUtterancesIfPossible;
 - (id)otherContactPath;
+- (id)processBackspaceForMe:(BOOL)arg1;
 - (id)transcriptString;
 - (unsigned long long)utteranceCountForMe:(BOOL)arg1;
 

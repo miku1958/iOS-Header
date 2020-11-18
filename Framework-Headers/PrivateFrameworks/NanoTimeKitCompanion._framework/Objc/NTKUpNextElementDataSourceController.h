@@ -27,6 +27,7 @@
     BOOL _isPerformingReload;
     NSMutableArray *_enqueuedBlocks;
     BOOL _willUnload;
+    BOOL _allowsLocationUse;
     Class _dataSourceClass;
     NTKUpNextElementDataSource *_dataSource;
     unsigned long long _state;
@@ -44,6 +45,7 @@
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (id)_sharedDataSourceQueue;
 - (void).cxx_destruct;
 - (id)_elementsForIds:(id)arg1;
 - (id)_groupElements:(id)arg1 bySections:(id)arg2;
@@ -55,6 +57,7 @@
 - (void)_queue_processUpdates:(id)arg1 forSection:(unsigned long long)arg2;
 - (void)_queue_reload;
 - (void)_queue_scheduleUpdate:(id)arg1;
+- (void)_queue_updateDataSourceLocationUse;
 - (void)addElements:(id)arg1 toSection:(unsigned long long)arg2;
 - (void)dealloc;
 - (void)elementDidBecomeHidden:(id)arg1;
@@ -76,6 +79,7 @@
 - (void)removeElements:(id)arg1 fromSection:(unsigned long long)arg2;
 - (void)removeElementsWithIds:(id)arg1;
 - (void)resume;
+- (void)setAllowsLocationUse:(BOOL)arg1;
 
 @end
 

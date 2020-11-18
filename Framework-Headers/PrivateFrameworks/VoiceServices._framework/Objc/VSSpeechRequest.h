@@ -14,6 +14,7 @@
 {
     BOOL _shouldCache;
     BOOL _disableCompactVoiceFallback;
+    BOOL _forceServerTTS;
     BOOL _useCustomVoice;
     BOOL _audioSessionIDIsValid;
     BOOL _maintainsInput;
@@ -48,6 +49,7 @@
 @property (copy, nonatomic) NSDictionary *contextInfo; // @synthesize contextInfo=_contextInfo;
 @property (nonatomic) BOOL disableCompactVoiceFallback; // @synthesize disableCompactVoiceFallback=_disableCompactVoiceFallback;
 @property (nonatomic) long long footprint; // @synthesize footprint=_footprint;
+@property (nonatomic) BOOL forceServerTTS; // @synthesize forceServerTTS=_forceServerTTS;
 @property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (nonatomic) BOOL maintainsInput; // @synthesize maintainsInput=_maintainsInput;

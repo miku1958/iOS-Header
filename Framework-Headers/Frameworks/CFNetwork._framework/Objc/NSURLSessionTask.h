@@ -21,6 +21,7 @@
     double __timeoutIntervalForResource;
 }
 
+@property (copy, nonatomic) NSString *_APSRelayTopic; // @dynamic _APSRelayTopic;
 @property (copy) NSDictionary *_DuetActivityProperties; // @dynamic _DuetActivityProperties;
 @property (copy) NSData *_TCPConnectionMetadata; // @dynamic _TCPConnectionMetadata;
 @property (readonly) unsigned short _TLSNegotiatedCipherSuite; // @dynamic _TLSNegotiatedCipherSuite;

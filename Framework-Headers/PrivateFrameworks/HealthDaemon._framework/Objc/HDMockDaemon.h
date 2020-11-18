@@ -35,6 +35,8 @@
 
 - (void).cxx_destruct;
 - (id)createXPCListenerWithMachServiceName:(id)arg1;
+- (id)daemonExtensionWithIdentifier:(id)arg1;
+- (id)daemonExtensionsConformingToProtocol:(id)arg1;
 - (id)init;
 - (void)registerForDaemonReady:(id)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;

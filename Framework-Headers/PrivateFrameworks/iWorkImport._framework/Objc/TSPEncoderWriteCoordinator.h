@@ -11,12 +11,13 @@
 #import <iWorkImport/TSPDataArchiver-Protocol.h>
 #import <iWorkImport/TSPObjectModifyDelegate-Protocol.h>
 #import <iWorkImport/TSPProxyObjectMapping-Protocol.h>
+#import <iWorkImport/TSPProxyObjectWriting-Protocol.h>
 
 @class NSHashTable, NSMutableArray, NSString, NSURL, TSPArchiverManager, TSPObjectContext, TSURetainedPointerKeyDictionary;
 @protocol OS_dispatch_queue, TSPEncoder, TSPEncoderWriteCoordinatorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSPEncoderWriteCoordinator : NSObject <TSPArchiverManagerDelegate, TSPComponentWriterDelegate, TSPDataArchiver, TSPObjectModifyDelegate, TSPProxyObjectMapping>
+@interface TSPEncoderWriteCoordinator : NSObject <TSPArchiverManagerDelegate, TSPComponentWriterDelegate, TSPDataArchiver, TSPObjectModifyDelegate, TSPProxyObjectWriting, TSPProxyObjectMapping>
 {
     id<TSPEncoder> _encoder;
     TSPArchiverManager *_archiverManager;

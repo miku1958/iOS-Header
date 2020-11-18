@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)inspectorLocalizedValueLabelsTabName;
 - (id)legalChartLabelPositions;
 - (int)legendBadgeType;
+- (id)seriesFillLabelUIString;
 - (id)supportedValueLabelsAxisCombinations;
 - (BOOL)supportsCalloutLines;
 - (BOOL)supportsValueLabelsSeriesName;

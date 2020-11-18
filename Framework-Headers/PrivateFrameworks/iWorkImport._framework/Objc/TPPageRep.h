@@ -8,24 +8,24 @@
 
 #import <iWorkImport/TSDMasterDrawableDelegate-Protocol.h>
 
-@class CALayer, NSString, TPMarginAdjustRep;
+@class CALayer, NSString, TPiOSMarginAdjustRep;
 
 __attribute__((visibility("hidden")))
 @interface TPPageRep : TSWPPageRep <TSDMasterDrawableDelegate>
 {
-    CALayer *_separatorLayer;
-    TPMarginAdjustRep *_marginAdjustRep;
+    CALayer *_horizontalSeparatorLayer;
+    CALayer *_verticalSeparatorLayer;
+    TPiOSMarginAdjustRep *_marginAdjustRep;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) TPMarginAdjustRep *marginAdjustRep; // @synthesize marginAdjustRep=_marginAdjustRep;
+@property (readonly, nonatomic) TPiOSMarginAdjustRep *marginAdjustRep; // @synthesize marginAdjustRep=_marginAdjustRep;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)bodyReps;
-- (BOOL)canSelectChildRep:(id)arg1;
 - (BOOL)childRepIsMasterDrawable:(id)arg1;
 - (BOOL)childRepIsOnDocSetupCanvas:(id)arg1;
 - (id)colorBehindBodyTextLayer:(id)arg1;
@@ -33,21 +33,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)directlyManagesLayerContent;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)drawInLayerContext:(struct CGContext *)arg1;
-- (id)hitMasterRep:(struct CGPoint)arg1;
-- (id)hitRep:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)layerClass;
 - (BOOL)masksToBounds;
-- (id)p_bodyRepThatCanSelectChildRep:(id)arg1;
-- (BOOL)p_headerFooterIsVisibleAndInteractive:(int)arg1;
-- (int)p_hitHeaderFooterFragment:(int)arg1 atPoint:(struct CGPoint)arg2;
-- (id)p_hitRep:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
-- (BOOL)p_pageRequiresSeparator;
-- (void)p_updateBorderLayers;
-- (void)p_updateLayoutBordersVisibility;
-- (void)selectChildRep:(id)arg1 extendingSelection:(BOOL)arg2;
+- (BOOL)p_pageRequiresHorizontalSeparator;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
-- (void)showHUDForWPRep:(id)arg1 withFlags:(unsigned long long)arg2;
 - (void)willBeRemoved;
 
 @end

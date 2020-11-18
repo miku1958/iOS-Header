@@ -23,7 +23,10 @@
 @property (readonly, nonatomic) unsigned long long markerID; // @synthesize markerID=_markerID;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMarkerID:(unsigned long long)arg1 transform:(CDStruct_14d5dc5e)arg2 isTracked:(BOOL)arg3;
 
 @end

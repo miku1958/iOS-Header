@@ -10,13 +10,13 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 #import <iWorkImport/TSWPSection-Protocol.h>
 
-@class NSString, TPPageMaster, TSWPStorage;
+@class NSArray, NSString, TPPageMaster, TPPageTemplate, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TPSection : TSPObject <TSKDocumentObject, TSKModel, TSWPSection>
 {
-    TSWPStorage *_parentStorage;
     TPPageMaster *_pageMasters[3];
+    TSWPStorage *_parentStorage;
     NSString *_name;
     BOOL _inheritPreviousHeaderFooter;
     BOOL _pageMasterFirstPageDifferent;
@@ -32,9 +32,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inheritPreviousHeaderFooter;
 @property (copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSArray *pageInfosForPropagation;
 @property (nonatomic) BOOL pageMasterEvenOddPagesDifferent;
 @property (nonatomic) BOOL pageMasterFirstPageDifferent;
 @property (nonatomic) BOOL pageMasterFirstPageHidesHeaderFooter;
+@property (readonly, nonatomic) NSArray *pageMasters;
+@property (readonly, nonatomic) TPPageTemplate *pageTemplate;
 @property (weak, nonatomic) TSWPStorage *parentStorage;
 @property (nonatomic) unsigned int sectionPageNumberKind;
 @property (nonatomic) unsigned int sectionPageNumberStart;
@@ -43,7 +46,9 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)needsObjectUUID;
 - (void).cxx_destruct;
+- (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
+- (id)allDrawables;
 - (id)childEnumerator;
 - (id)copyWithContext:(id)arg1;
 - (void)i_clearPropertiesToDefaults;
@@ -51,17 +56,18 @@ __attribute__((visibility("hidden")))
 - (void)i_ensureHeaderFooterStoragesExistWithStylesheet:(id)arg1;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 section:(id)arg2;
-- (BOOL)isHeaderFooterEmpty:(int)arg1;
-- (BOOL)isHeaderFooterVisible:(int)arg1;
+- (BOOL)isHeaderFooterEmpty:(long long)arg1;
+- (BOOL)isHeaderFooterVisible:(long long)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)objectUUIDPath;
+- (void)p_addAllDrawablesFromInfo:(id)arg1 toMutableArray:(id)arg2;
 - (void)p_makeUserGuideStorage;
 - (void)p_unarchiveAndUpgrade:(id)arg1 archive:(const struct SectionArchive *)arg2;
 - (void)p_upgradePageSizeAndMarginsFromParsedArchive:(const struct SectionArchive *)arg1;
-- (id)pageMasterForType:(int)arg1;
+- (id)pageMasterForType:(long long)arg1;
 - (id)pageMasterOwningModel:(id)arg1;
-- (id)pageMasters;
 - (void)saveToArchiver:(id)arg1;
+- (void)setPageMasterForFirstPage:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

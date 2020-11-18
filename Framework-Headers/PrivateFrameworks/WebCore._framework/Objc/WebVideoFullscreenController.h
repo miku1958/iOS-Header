@@ -8,13 +8,13 @@
 
 @interface WebVideoFullscreenController : NSObject
 {
-    struct RefPtr<WebVideoFullscreenControllerContext> _context;
-    struct RefPtr<WebCore::HTMLVideoElement> _videoElement;
+    struct RefPtr<VideoFullscreenControllerContext, WTF::DumbPtrTraits<VideoFullscreenControllerContext>> _context;
+    struct RefPtr<WebCore::HTMLVideoElement, WTF::DumbPtrTraits<WebCore::HTMLVideoElement>> _videoElement;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)didFinishFullscreen:(struct WebVideoFullscreenControllerContext *)arg1;
+- (void)didFinishFullscreen:(struct VideoFullscreenControllerContext *)arg1;
 - (void)enterFullscreen:(id)arg1 mode:(unsigned int)arg2;
 - (void)exitFullscreen;
 - (id)init;

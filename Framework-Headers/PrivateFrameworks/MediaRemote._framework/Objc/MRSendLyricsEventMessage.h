@@ -6,13 +6,15 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
+@class _MRLyricsEventProtobuf;
+
 @interface MRSendLyricsEventMessage : MRProtocolMessage
 {
 }
 
-@property (readonly, nonatomic) void *event;
+@property (readonly, nonatomic) _MRLyricsEventProtobuf *event;
 
-- (id)initWithEvent:(void *)arg1;
+- (id)initWithEvent:(id)arg1;
 - (unsigned long long)type;
 
 @end

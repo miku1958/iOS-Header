@@ -11,9 +11,9 @@
 @interface CKModifyRecordZonesOperation : CKDatabaseOperation
 {
     BOOL _markZonesAsUserPurged;
+    CDUnknownBlockType _modifyRecordZonesCompletionBlock;
     NSArray *_recordZonesToSave;
     NSArray *_recordZoneIDsToDelete;
-    CDUnknownBlockType _modifyRecordZonesCompletionBlock;
     NSMutableArray *_savedRecordZones;
     NSMutableArray *_deletedRecordZoneIDs;
     NSMutableDictionary *_recordZonesByZoneIDs;

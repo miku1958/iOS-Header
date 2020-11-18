@@ -20,9 +20,13 @@
 @property (readonly, nonatomic) id<FCFeedTransformationItem> feedTransformationItem;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL needsFeedItemHeadlinesFetch;
+@property (readonly, nonatomic) unsigned long long preferredDynamicSlotAllocation;
 @property (readonly, copy, nonatomic) SFSearchResult *searchResult;
 @property (readonly, nonatomic) unsigned long long todayItemType;
+@property (readonly, nonatomic) BOOL usesDynamicSlotAllocation;
 
 - (id<NTTodayProtoitem>)protoitemWithFetchedFeedItemHeadline:(id<FCHeadlineProviding>)arg1;
+
+@optional
 @end
 

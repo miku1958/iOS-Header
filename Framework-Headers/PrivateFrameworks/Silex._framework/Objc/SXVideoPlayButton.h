@@ -6,33 +6,19 @@
 
 #import <Silex/SXButton.h>
 
-#import <Silex/SXVideoControlItem-Protocol.h>
-
-@class NSString;
-
-@interface SXVideoPlayButton : SXButton <SXVideoControlItem>
+@interface SXVideoPlayButton : SXButton
 {
-    BOOL hideable;
     BOOL _paused;
-    double autoAppearanceTimeInterval;
 }
 
-@property (readonly, nonatomic) double autoAppearanceTimeInterval; // @synthesize autoAppearanceTimeInterval;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL hideable; // @synthesize hideable;
 @property (nonatomic) BOOL paused; // @synthesize paused=_paused;
-@property (readonly) Class superclass;
 
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (void)displayAsPaused;
 - (void)displayAsPlaying;
-- (void)hide:(BOOL)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
-- (BOOL)isVisible;
 - (void)layoutSubviews;
 - (void)updateBackgroundColor;
 

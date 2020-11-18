@@ -6,23 +6,23 @@
 
 #import <PassKitUI/PKViewController.h>
 
-#import <PassKitUI/PKPaymentSetupPrivacyFooterViewDelegate-Protocol.h>
-
-@class PKExplanationView;
+@class OBPrivacyLinkController, PKExplanationView;
 @protocol PKExplanationViewControllerDelegate;
 
-@interface PKExplanationViewController : PKViewController <PKPaymentSetupPrivacyFooterViewDelegate>
+@interface PKExplanationViewController : PKViewController
 {
     BOOL _showCancelButton;
     BOOL _showDoneButton;
     id<PKExplanationViewControllerDelegate> _explanationViewControllerDelegate;
     long long _context;
     PKExplanationView *_explanationView;
+    OBPrivacyLinkController *_privacyLinkController;
 }
 
 @property (readonly, nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, nonatomic) PKExplanationView *explanationView; // @synthesize explanationView=_explanationView;
 @property (weak, nonatomic) id<PKExplanationViewControllerDelegate> explanationViewControllerDelegate; // @synthesize explanationViewControllerDelegate=_explanationViewControllerDelegate;
+@property (strong, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 @property (nonatomic) BOOL showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property (nonatomic) BOOL showDoneButton; // @synthesize showDoneButton=_showDoneButton;
 
@@ -35,7 +35,6 @@
 - (void)loadView;
 - (id)pkui_navigationBarTintColor;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
-- (void)privacyFooterLinkTapped:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _maxLowPriorityMessagesAllowed;
 }
 
+- (void).cxx_destruct;
 - (void)_purge;
 - (void)dealloc;
 - (id)initWithMaxLowPriorityMessagesAllowed:(unsigned long long)arg1;

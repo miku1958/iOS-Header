@@ -46,6 +46,7 @@
 @property (copy, nonatomic) NSURL *localVideoDestinationURL; // @dynamic localVideoDestinationURL;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) double loggingVideoZoomFactor; // @dynamic loggingVideoZoomFactor;
+@property (nonatomic) long long loggingZoomInteractionType; // @dynamic loggingZoomInteractionType;
 @property (nonatomic) unsigned long long maximumBurstLength; // @dynamic maximumBurstLength;
 @property (nonatomic) long long origin;
 @property (strong, nonatomic) NSArray *originalFilters; // @dynamic originalFilters;

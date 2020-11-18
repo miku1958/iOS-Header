@@ -23,6 +23,7 @@
 @property unsigned long long loginStatus; // @synthesize loginStatus=_loginStatus;
 
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
 - (id)accountName;
 - (void)dealloc;
 - (int)defaultFamiliarity;

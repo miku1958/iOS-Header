@@ -10,6 +10,7 @@
 {
 }
 
++ (double)decayedDiversificationPenaltyWithInitialValue:(double)arg1 finalValue:(double)arg2 halfLife:(double)arg3 baselineAggregate:(id)arg4;
 + (id)diversifyArticles:(id)arg1 withLimit:(unsigned long long)arg2 similarityStartExpectation:(double)arg3 similarityEndExpectation:(double)arg4 publisherDiversificationSlope:(double)arg5 publisherDiversificationYIntercept:(double)arg6;
 + (id)diversifyArticles:(id)arg1 withPreselectedArticles:(id)arg2 limit:(unsigned long long)arg3 similarityStartExpectation:(double)arg4 similarityEndExpectation:(double)arg5 publisherDiversificationSlope:(double)arg6 publisherDiversificationYIntercept:(double)arg7;
 + (id)limitArticles:(id)arg1 byHourlyFlowRate:(double)arg2 articleFilterPerPublisher:(double)arg3 timeInterval:(double)arg4;

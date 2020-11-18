@@ -59,7 +59,6 @@ __attribute__((visibility("hidden")))
 - (void)pSetArrayOfBools:(BOOL [9])arg1 forProperty:(int)arg2;
 - (void)pSetArrayOfFloats:(float [9])arg1 forProperty:(int)arg2;
 - (void)pSetArrayOfInts:(int [9])arg1 forProperty:(int)arg2;
-- (void)pSetArrayOfObjects:(id [9])arg1 forProperty:(int)arg2;
 - (void)pSetRepeatedArrayOfBools:(const RepeatedField_12b14242 *)arg1 forProperty:(int)arg2 defaultValues:(BOOL [9])arg3 validator:(id)arg4;
 - (void)pSetRepeatedArrayOfFloats:(const RepeatedField_324622b8 *)arg1 forProperty:(int)arg2 defaultValues:(float [9])arg3 validator:(id)arg4;
 - (void)pSetRepeatedArrayOfInts:(const RepeatedField_c2891982 *)arg1 forProperty:(int)arg2 defaultValues:(int [9])arg3 min:(int)arg4 max:(int)arg5 validator:(id)arg6;
@@ -75,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)removeValuesFromPropertyMap:(id)arg1;
 - (void)setBoolValue:(BOOL)arg1 forProperty:(int)arg2;
 - (void)setBoxedObject:(id)arg1 forProperty:(int)arg2;
-- (void)setBoxedObjects:(id *)arg1 forProperties:(int *)arg2 withCount:(unsigned long long)arg3;
+- (void)setBoxedObjects:(id)arg1 forProperties:(int *)arg2;
 - (void)setCGFloatValue:(double)arg1 forProperty:(int)arg2;
 - (void)setDoubleValue:(double)arg1 forProperty:(int)arg2;
 - (void)setFloatValue:(float)arg1 forProperty:(int)arg2;

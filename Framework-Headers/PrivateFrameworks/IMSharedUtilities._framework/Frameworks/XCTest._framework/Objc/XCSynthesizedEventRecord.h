@@ -23,8 +23,8 @@
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)addPointerEventPath:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

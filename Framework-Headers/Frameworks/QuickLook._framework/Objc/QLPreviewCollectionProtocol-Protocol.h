@@ -21,7 +21,7 @@
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)setLoadingString:(NSString *)arg1;
 - (void)setSourceIsManaged:(BOOL)arg1;
-- (void)startTransitionWithSourceViewProvider:(QLTransitionContext *)arg1 transitionController:(id<QLTransitionControllerProtocol>)arg2 presenting:(BOOL)arg3 completionHandler:(void (^)(void))arg4;
+- (void)startTransitionWithSourceViewProvider:(QLTransitionContext *)arg1 transitionController:(id<QLTransitionControllerProtocol>)arg2 presenting:(BOOL)arg3 useInteractiveTransition:(BOOL)arg4 completionHandler:(void (^)(void))arg5;
 - (void)tearDownTransition:(BOOL)arg1;
 - (void)toolbarButtonPressedWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)toolbarButtonsForTraitCollection:(UITraitCollection *)arg1 withCompletionHandler:(void (^)(NSArray *, NSArray *))arg2;

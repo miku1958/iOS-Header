@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _hideStepperHUD;
     BOOL _expandDirtyRegionForReferences;
     BOOL _repositionStockPopover;
+    BOOL _notifyTextImportUI;
     struct TSUCellRect _dirtyCellRange;
     struct TSUCellRect _dirtyStrokeRange;
 }
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL invalidateRowChrome; // @synthesize invalidateRowChrome=_invalidateRowChrome;
 @property (nonatomic) BOOL invalidateSelection; // @synthesize invalidateSelection=_invalidateSelection;
 @property (nonatomic) BOOL invalidateTableName; // @synthesize invalidateTableName=_invalidateTableName;
+@property (nonatomic) BOOL notifyTextImportUI; // @synthesize notifyTextImportUI=_notifyTextImportUI;
 @property (nonatomic) BOOL repositionStockPopover; // @synthesize repositionStockPopover=_repositionStockPopover;
 @property (nonatomic) BOOL setNeedsDisplay; // @synthesize setNeedsDisplay=_setNeedsDisplay;
 @property (nonatomic) BOOL syncReferenceHighlightState; // @synthesize syncReferenceHighlightState=_syncReferenceHighlightState;

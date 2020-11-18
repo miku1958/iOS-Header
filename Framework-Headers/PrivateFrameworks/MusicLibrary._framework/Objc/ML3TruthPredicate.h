@@ -12,6 +12,7 @@
 }
 
 + (id)falsePredicate;
++ (BOOL)supportsSecureCoding;
 + (id)truePredicate;
 - (id)_predicateString;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;

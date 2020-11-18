@@ -13,12 +13,14 @@
 {
     id<BFFPasscodeInputViewDelegate> _delegate;
     UILabel *_instructions;
+    UIView *_footerView;
     UIButton *_footerButton;
     UIButton *_instructionsLinkButton;
 }
 
 @property (weak, nonatomic) id<BFFPasscodeInputViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIButton *footerButton; // @synthesize footerButton=_footerButton;
+@property (strong, nonatomic) UIView *footerView; // @synthesize footerView=_footerView;
 @property (strong, nonatomic) UILabel *instructions; // @synthesize instructions=_instructions;
 @property (strong, nonatomic) UIButton *instructionsLinkButton; // @synthesize instructionsLinkButton=_instructionsLinkButton;
 

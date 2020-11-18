@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL mNeedsLayout;
     TSCHChartInfo *mChartInfo;
-    CDStruct_44ada6bf mLayoutSettings;
+    CDStruct_b1c75024 mLayoutSettings;
     struct CGRect _legendModelGeometryFrame;
 }
 
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) struct CGRect chartBodyFrame;
 @property (readonly) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
 @property unsigned long long dataSetIndex;
-@property CDStruct_44ada6bf layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
+@property CDStruct_b1c75024 layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
 @property (readonly) struct CGRect legendDrawingFrame;
 @property (readonly) struct CGRect legendFrame;
 @property struct CGRect legendGeometryFrame;
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)chartLayoutWithChartInfo:(id)arg1;
 + (struct CGSize)legendSizeForChartInfo:(id)arg1 initialWidth:(double)arg2;
 + (id)propertiesThatInvalidateLayout;
+- (void).cxx_destruct;
 - (void)beginDynamicOperation;
 - (void)beginResize;
 - (struct CGRect)boundsForResize;
@@ -41,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)convertChartLayoutSpaceToNaturalSpace:(struct CGPoint)arg1;
 - (struct CGRect)convertNaturalSpaceRectToChartLayoutSpaceRect:(struct CGRect)arg1;
 - (struct CGPoint)convertNaturalSpaceToChartLayoutSpace:(struct CGPoint)arg1;
-- (void)dealloc;
 - (void)endDynamicOperation;
 - (void)endResize;
 - (id)hitChartElements:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)renderersWithRep:(id)arg1;
 - (void)setForceOmitLabelPlacement:(BOOL)arg1;
 - (void)setForceOmitLegend:(BOOL)arg1;
+- (void)setForceTitleAtTop:(BOOL)arg1;
 - (void)setLegendSize:(struct CGSize)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;

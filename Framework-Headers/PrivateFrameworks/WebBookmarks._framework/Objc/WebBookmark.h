@@ -110,6 +110,7 @@
 - (BOOL)fullArchiveAvailable;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initBuiltinBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initBuiltinDeviceBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initCarrierBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initFolderWithParentID:(int)arg1;

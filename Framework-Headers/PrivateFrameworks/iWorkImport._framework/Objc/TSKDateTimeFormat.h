@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
+@property (readonly, nonatomic) BOOL formatStringContainsAMPMSpecifier;
 @property (readonly, nonatomic) BOOL formatStringContainsOnlyDate;
 
 + (id)nowFormatForLocale:(id)arg1;

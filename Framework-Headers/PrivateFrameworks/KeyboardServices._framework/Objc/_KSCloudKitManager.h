@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, CKDatabase, CKRecordZone, NSString;
+@class CKContainer, CKDatabase, CKRecordZone, NSString, _KSRequestThrottle;
 @protocol OS_dispatch_queue, _KSCloudKitManagerDelegate;
 
 @interface _KSCloudKitManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_ckWorkQueue;
     NSObject<OS_dispatch_queue> *_dataQueue;
+    _KSRequestThrottle *_accountChangeThrottle;
+    _KSRequestThrottle *_fetchZoneThrottle;
     BOOL _recordZoneOperationInProgress;
     BOOL _subscriptionOperationInProgress;
     CKDatabase *_cloudKitDatabase;
@@ -36,6 +38,7 @@
 @property (readonly, nonatomic) NSString *subscriptionKey; // @synthesize subscriptionKey=_subscriptionKey;
 @property (nonatomic) BOOL subscriptionOperationInProgress; // @synthesize subscriptionOperationInProgress=_subscriptionOperationInProgress;
 
++ (id)prepareContainerForID:(id)arg1;
 - (void).cxx_destruct;
 - (void)_checkAccountStatusWithCompletionHandler:(CDUnknownBlockType)arg1 withRetryCount:(unsigned long long)arg2;
 - (void)_ckDeleteRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

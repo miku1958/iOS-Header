@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) struct CGPath *unitSymbolPath; // @synthesize unitSymbolPath=mUnitSymbolPath;
 @property (readonly) TSCHChartValueAxis *valueAxis; // @synthesize valueAxis=mValueAxis;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithChartModel:(id)arg1 forSeries:(unsigned long long)arg2;
 

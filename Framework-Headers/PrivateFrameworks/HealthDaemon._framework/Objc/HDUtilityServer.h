@@ -23,6 +23,7 @@
 - (void)remote_dropEntitlement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchAllDevicesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_fetchDiagnosticsWithKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_fetchURLForAnalyticsFileWithName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_generateFakeDataForActivityType:(long long)arg1 minutes:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_observeDataCollectionForType:(id)arg1 interval:(double)arg2 inBackground:(BOOL)arg3 hasRunningWorkout:(BOOL)arg4;
 - (void)remote_resetAWDTask:(id)arg1 completion:(CDUnknownBlockType)arg2;

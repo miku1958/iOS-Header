@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)mappedStylesWithMapper:(id)arg1 forStyles:(id)arg2 bakeComputable:(BOOL)arg3;
 + (id)mapperWithMapper:(id)arg1;
 + (void)replaceReferencedStylesInMap:(id)arg1 withMapper:(id)arg2;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (id)initWithMapper:(id)arg1;

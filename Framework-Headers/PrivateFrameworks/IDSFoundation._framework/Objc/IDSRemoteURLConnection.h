@@ -26,6 +26,7 @@
     BOOL _disableKeepAlive;
     int _keepAliveWifi;
     int _keepAliveCell;
+    BOOL _shouldReturnTimingData;
 }
 
 @property BOOL alwaysForceCellular; // @synthesize alwaysForceCellular=_alwaysForceCellular;
@@ -38,6 +39,7 @@
 @property int keepAliveWifi; // @synthesize keepAliveWifi=_keepAliveWifi;
 @property (strong) NSURLRequest *request; // @synthesize request=_request;
 @property BOOL requireIDSHost; // @synthesize requireIDSHost=_requireIDSHost;
+@property BOOL shouldReturnTimingData; // @synthesize shouldReturnTimingData=_shouldReturnTimingData;
 @property BOOL shouldUsePipelining; // @synthesize shouldUsePipelining=_shouldUsePipelining;
 
 - (void).cxx_destruct;
@@ -47,6 +49,7 @@
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithURLRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)initWithURLRequest:(id)arg1 completionBlockWithTimingData:(CDUnknownBlockType)arg2;
 - (void)load;
 
 @end

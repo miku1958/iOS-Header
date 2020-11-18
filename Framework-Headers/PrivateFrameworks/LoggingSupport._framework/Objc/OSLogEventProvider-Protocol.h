@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDate, NSString, NSTimeZone, NSUUID;
+@class NSDate, NSString, NSTimeZone, NSUUID, OSLogEventDecomposedMessage;
 
 @protocol OSLogEventProvider
 
@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) unsigned long long creatorActivityIdentifier;
 @property (readonly, nonatomic) unsigned long long creatorProcessUniqueIdentifier;
 @property (readonly, nonatomic) NSDate *date;
+@property (readonly, nonatomic) OSLogEventDecomposedMessage *decomposedMessage;
 @property (readonly, nonatomic) NSString *formatString;
 @property (readonly, nonatomic) unsigned long long logType;
 @property (readonly, nonatomic) unsigned long long machContinuousTimestamp;

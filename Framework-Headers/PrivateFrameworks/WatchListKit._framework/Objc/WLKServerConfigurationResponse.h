@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <WatchListKit/NSCopying-Protocol.h>
 #import <WatchListKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary;
+@class NSArray, NSDate, NSDictionary, NSString;
 
-@interface WLKServerConfigurationResponse : NSObject <NSSecureCoding>
+@interface WLKServerConfigurationResponse : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_responseDictionary;
     NSDate *_expirationDate;
@@ -24,15 +25,19 @@
 @property (readonly, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary;
 @property (readonly, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property (readonly, nonatomic) NSDictionary *serverRoutesDictionary;
+@property (readonly, nonatomic) NSString *vppaStatus;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithServerResponseDictionary:(id)arg1 expirationDate:(id)arg2 environmentHash:(unsigned long long)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
 
 @end

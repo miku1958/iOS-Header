@@ -8,7 +8,8 @@
 
 #import <VisualVoicemail/VMTranscriptionService-Protocol.h>
 
-@class NSArray, NSError, NSRecursiveLock, NSString, VMVoicemailTranscriptionController, VMVoicemailTranscriptionTask;
+@class NSArray, NSError, NSMutableDictionary, NSRecursiveLock, NSString, VMStateRequestController, VMVoicemailTranscriptionController, VMVoicemailTranscriptionTask;
+@protocol OS_dispatch_queue;
 
 @interface VVService : NSObject <VMTranscriptionService>
 {
@@ -36,11 +37,14 @@
         unsigned int notificationFallbackEnabled:1;
         unsigned int capabilitiesLoaded:1;
     } _serviceFlags;
+    NSMutableDictionary *_stateRequestAttemptCount;
     NSString *_serviceIdentifier;
     VMVoicemailTranscriptionController *_transcriptionController;
     VMVoicemailTranscriptionTask *_transcriptionTask;
     unsigned long long _numFailedAttemptsToSyncOverWifi;
     struct __CFString *_lastConnectionTypeUsed;
+    NSObject<OS_dispatch_queue> *_serialDispatchQueue;
+    VMStateRequestController *_stateRequestController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,7 +52,10 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct __CFString *lastConnectionTypeUsed; // @synthesize lastConnectionTypeUsed=_lastConnectionTypeUsed;
 @property (nonatomic) unsigned long long numFailedAttemptsToSyncOverWifi; // @synthesize numFailedAttemptsToSyncOverWifi=_numFailedAttemptsToSyncOverWifi;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 @property (strong, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (readonly, nonatomic) NSMutableDictionary *stateRequestAttemptCount; // @synthesize stateRequestAttemptCount=_stateRequestAttemptCount;
+@property (readonly, nonatomic) VMStateRequestController *stateRequestController; // @synthesize stateRequestController=_stateRequestController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTranscriptionAvailable) BOOL transcriptionAvailable;
 @property (strong, nonatomic) VMVoicemailTranscriptionController *transcriptionController; // @dynamic transcriptionController;
@@ -78,7 +85,6 @@
 - (void)_cancelAutomatedTrashCompaction;
 - (void)_cancelIndicatorAction;
 - (void)_carrierBundleChanged;
-- (void)_contextActivationSucceeded:(id)arg1;
 - (void)_dataAvailabilityChanged;
 - (void)_dataRoamingStatusChanged;
 - (void)_deliverFallbackNotification;
@@ -95,6 +101,7 @@
 - (void)_setOnline:(BOOL)arg1 fallbackMode:(BOOL)arg2;
 - (void)_updateOnlineStatus;
 - (id)activationError;
+- (long long)attemptCountForStateRequest:(id)arg1;
 - (void)cancelAutomatedTrashCompaction;
 - (void)cancelDelayedSynchronize;
 - (void)cancelNotificationFallback;
@@ -119,6 +126,7 @@
 - (void)handlePasswordRequestCancellation;
 - (void)handleVVServiceDataAvailableNotification:(id)arg1;
 - (BOOL)headerChangesPending;
+- (void)incrementAttemptCountForStateRequest:(id)arg1;
 - (id)init;
 - (BOOL)isInSync;
 - (BOOL)isMessageWaiting;
@@ -146,11 +154,13 @@
 - (id)password;
 - (BOOL)passwordChangeRequiresEnteringOldPassword;
 - (id)passwordIgnoringSubscription:(BOOL)arg1;
+- (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
 - (void)processTranscriptForRecord:(const void *)arg1 priority:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)progressiveDataLengthsForRecord:(void *)arg1 expected:(unsigned int *)arg2 current:(unsigned int *)arg3;
 - (id)provisionalPassword;
 - (void)removeAllNonDetachedRecords;
 - (void)removeAllRecords;
+- (void)removeAttemptCountForStateRequest:(id)arg1;
 - (void)reportError:(id)arg1;
 - (void)reportFailedToSyncOverWifi;
 - (void)reportSucessfulSync;

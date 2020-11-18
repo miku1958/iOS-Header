@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebAVPlayerLayer : CALayer
 {
-    struct RefPtr<WebCore::WebVideoFullscreenInterfaceAVKit> _fullscreenInterface;
+    struct RefPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::DumbPtrTraits<WebCore::VideoFullscreenInterfaceAVKit>> _fullscreenInterface;
     struct RetainPtr<WebAVPlayerController> _avPlayerController;
     struct RetainPtr<CALayer> _videoSublayer;
     struct RetainPtr<NSString> _videoGravity;
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _modelVideoLayerFrame;
 }
 
-@property (nonatomic) struct WebVideoFullscreenInterfaceAVKit *fullscreenInterface;
+@property (nonatomic) struct VideoFullscreenInterfaceAVKit *fullscreenInterface;
 @property struct CGRect modelVideoLayerFrame; // @synthesize modelVideoLayerFrame=_modelVideoLayerFrame;
 @property (copy, nonatomic) NSDictionary *pixelBufferAttributes; // @synthesize pixelBufferAttributes=_pixelBufferAttributes;
 @property (strong, nonatomic) AVPlayerController *playerController;

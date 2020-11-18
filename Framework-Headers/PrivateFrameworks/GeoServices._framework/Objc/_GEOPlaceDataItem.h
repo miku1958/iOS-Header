@@ -11,7 +11,6 @@
 @class GEOAddress, GEOAddressObject, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapRegion, GEOMessageLink, GEOPDBusinessClaim, GEOPDFlyover, GEOPDMultiLocalizedString, GEOPDPlace, GEOPlace, GEOPriceDescription, GEORestaurantFeaturesLink, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSString, NSTimeZone, NSURL, _GEOEncyclopedicInfo;
 @protocol GEOEncyclopedicInfo, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution;
 
-__attribute__((visibility("hidden")))
 @interface _GEOPlaceDataItem : NSObject <GEOMapItem>
 {
     GEOMapItemIdentifier *_identifier;
@@ -25,7 +24,8 @@ __attribute__((visibility("hidden")))
     GEOAddressObject *_addressObject;
     NSString *_name;
     NSData *_externalTransitStationCode;
-    NSArray *_currentOperatingHours;
+    NSArray *_completeOperatingHoursCache;
+    double _cacheLastChecked;
     BOOL _isTransitDisplayFeature;
 }
 
@@ -84,6 +84,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasExpiredComponents;
 @property (readonly, nonatomic, getter=_hasFeatureLink) BOOL hasFeatureLink;
 @property (readonly, nonatomic, getter=_hasFlyover) BOOL hasFlyover;
+@property (readonly, nonatomic, getter=_hasGenderNeutralRestroom) BOOL hasGenderNeutralRestroom;
+@property (readonly, nonatomic, getter=_hasGenderNeutralRestroomAmenity) BOOL hasGenderNeutralRestroomAmenity;
 @property (readonly, nonatomic, getter=_hasGoodForKidsAmenity) BOOL hasGoodForKidsAmenity;
 @property (readonly, nonatomic, getter=_hasMUID) BOOL hasMUID;
 @property (readonly, nonatomic, getter=_hasOperatingHours) BOOL hasOperatingHours;
@@ -158,7 +160,9 @@ __attribute__((visibility("hidden")))
 - (id)_arrivalMapRegionForTransportType:(int)arg1;
 - (id)_asPlaceInfo;
 - (id)_attributionInfoForAttribution:(id)arg1 requirement:(int)arg2;
-- (id)_bestBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)_bestAvatarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)_bestNavbarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (BOOL)_completeOperatingHoursCacheIsStale;
 - (id)_displayNameForAttribution:(id)arg1 requirement:(int)arg2;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (BOOL)_hasMoreForAttribution:(id)arg1 requirement:(int)arg2;

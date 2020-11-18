@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (id)_axLabelFromInfoObject:(id)arg1;
 - (id)accessibilityHint;

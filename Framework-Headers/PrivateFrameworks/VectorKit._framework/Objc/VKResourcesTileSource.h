@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)maximumZoomLevelBoundsCamera;
 - (unsigned int)minimumDownloadZoomLevel;
 - (BOOL)minimumZoomLevelBoundsCamera;
-- (void)performDownload:(const struct _GEOTileKey *)arg1;
+- (void)performDownload:(const struct _GEOTileKey *)arg1 isPrefetch:(BOOL)arg2;
 - (void)setTargetDisplay:(unsigned char)arg1;
 - (struct VKTileKey)sourceKeyForRenderKey:(const struct VKTileKey *)arg1;
 - (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;

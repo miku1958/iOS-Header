@@ -10,11 +10,13 @@
 
 @interface PKPaymentTransactionProcessorItem : NSObject
 {
+    BOOL _foundOptimalLocation;
     PKPaymentTransaction *_paymentTransaction;
     PKPaymentApplication *_paymentApplication;
     NSString *_passUniqueIdentifier;
 }
 
+@property (nonatomic) BOOL foundOptimalLocation; // @synthesize foundOptimalLocation=_foundOptimalLocation;
 @property (strong, nonatomic) NSString *passUniqueIdentifier; // @synthesize passUniqueIdentifier=_passUniqueIdentifier;
 @property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property (strong, nonatomic) PKPaymentTransaction *paymentTransaction; // @synthesize paymentTransaction=_paymentTransaction;

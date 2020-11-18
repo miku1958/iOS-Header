@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache;
+@class ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache;
 @protocol MPMediaLibraryDataProviderPrivate, OS_dispatch_queue;
 
 @interface MPMediaLibrary : NSObject <NSSecureCoding>
@@ -86,6 +86,7 @@
 @property (readonly, nonatomic) shared_ptr_0f3dbfb3 _MediaLibrary_coreLibrary;
 @property (readonly, nonatomic) NSString *_syncValidity;
 @property (readonly, nonatomic) NSDate *lastModifiedDate;
+@property (readonly, nonatomic) ML3MusicLibrary *ml3Library;
 @property (readonly, nonatomic) NSURL *protectedContentSupportStorageURL;
 @property (nonatomic) long long removalReason;
 

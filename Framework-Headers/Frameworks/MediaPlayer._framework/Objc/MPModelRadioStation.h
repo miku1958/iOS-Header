@@ -10,46 +10,28 @@
 
 @interface MPModelRadioStation : MPModelObject
 {
-    BOOL _beats1;
-    BOOL _hasExplicitContent;
-    BOOL _allowsItemLiking;
-    NSString *_name;
-    NSString *_editorNotes;
-    NSString *_shortEditorNotes;
-    long long _type;
-    CDUnknownBlockType _artworkCatalogBlock;
 }
 
-@property (nonatomic) BOOL allowsItemLiking; // @synthesize allowsItemLiking=_allowsItemLiking;
-@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @synthesize artworkCatalogBlock=_artworkCatalogBlock;
-@property (nonatomic, getter=isBeats1) BOOL beats1; // @synthesize beats1=_beats1;
-@property (copy, nonatomic) NSString *editorNotes; // @synthesize editorNotes=_editorNotes;
-@property (nonatomic) BOOL hasExplicitContent; // @synthesize hasExplicitContent=_hasExplicitContent;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (copy, nonatomic) NSString *shortEditorNotes; // @synthesize shortEditorNotes=_shortEditorNotes;
-@property (nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic) BOOL allowsItemLiking; // @dynamic allowsItemLiking;
+@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @dynamic artworkCatalogBlock;
+@property (nonatomic, getter=isBeats1) BOOL beats1; // @dynamic beats1;
+@property (copy, nonatomic) NSString *editorNotes; // @dynamic editorNotes;
+@property (nonatomic) BOOL hasExplicitContent; // @dynamic hasExplicitContent;
+@property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (copy, nonatomic) NSString *shortEditorNotes; // @dynamic shortEditorNotes;
+@property (nonatomic) long long type; // @dynamic type;
 
-+ (id)__MPModelPropertyRadioStationAllowsItemLiking__PROPERTY;
-+ (id)__MPModelPropertyRadioStationArtwork__PROPERTY;
-+ (id)__MPModelPropertyRadioStationBeats1__PROPERTY;
-+ (id)__MPModelPropertyRadioStationEditorNotes__PROPERTY;
-+ (id)__MPModelPropertyRadioStationHasExplicitContent__PROPERTY;
-+ (id)__MPModelPropertyRadioStationName__PROPERTY;
-+ (id)__MPModelPropertyRadioStationShortEditorNotes__PROPERTY;
-+ (id)__MPModelPropertyRadioStationType__PROPERTY;
-+ (id)__allowsItemLiking__KEY;
-+ (id)__artworkCatalogBlock__KEY;
-+ (id)__beats1__KEY;
-+ (id)__editorNotes__KEY;
-+ (id)__hasExplicitContent__KEY;
-+ (id)__name__KEY;
-+ (id)__shortEditorNotes__KEY;
-+ (id)__type__KEY;
++ (id)__allowsItemLiking_KEY;
++ (id)__artworkCatalogBlock_KEY;
++ (id)__beats1_KEY;
++ (id)__editorNotes_KEY;
++ (id)__hasExplicitContent_KEY;
++ (id)__name_KEY;
++ (id)__shortEditorNotes_KEY;
++ (id)__type_KEY;
 + (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
-- (void).cxx_destruct;
 - (id)artworkCatalog;
 - (id)contentItemCollectionInfo;
-- (id)descriptionWithType:(long long)arg1;
 
 @end
 

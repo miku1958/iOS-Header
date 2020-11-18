@@ -54,6 +54,7 @@
 - (void)openAuthenticationURLForAccount:(ACAccount *)arg1 withDelegateClassName:(NSString *)arg2 fromBundleAtPath:(NSString *)arg3 shouldConfirm:(BOOL)arg4 completion:(void (^)(BOOL, NSDictionary *, NSError *))arg5;
 - (void)parentAccountForAccountWithIdentifier:(NSString *)arg1 handler:(void (^)(ACAccount *, NSError *))arg2;
 - (void)permissionForAccountType:(ACAccountType *)arg1 withHandler:(void (^)(NSNumber *, NSError *))arg2;
+- (void)preloadDataclassOwnersWithCompletion:(void (^)(NSError *))arg1;
 - (void)provisionedDataclassesForAccountWithIdentifier:(NSString *)arg1 handler:(void (^)(NSSet *, NSError *))arg2;
 - (void)removeAccount:(ACAccount *)arg1 withDataclassActions:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)removeAccountType:(ACAccountType *)arg1 withHandler:(void (^)(NSNumber *, NSError *))arg2;

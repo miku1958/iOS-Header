@@ -29,11 +29,12 @@
     BOOL _backlightActive;
     BOOL _deviceUILocked;
     BOOL _processHomeButtonEvents;
+    BOOL _brightnessRampingAllowed;
     PKFieldDetectEducationViewController *_educationVC;
     BOOL _appearedOnce;
     BOOL _insertedGroupsVC;
     BOOL _shouldInsertGroupsVC;
-    BOOL _invalidated;
+    long long _invalidationStatus;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -52,6 +53,7 @@
 - (void)_dismissIfRestricted;
 - (void)_insertGroupController;
 - (void)_invalidate;
+- (void)_invalidateForType:(long long)arg1;
 - (BOOL)_notificationIsFromChildViewController:(id)arg1;
 - (void)_paymentDidReceiveSuccessfulTransactionNotification:(id)arg1;
 - (void)_presentHomeButtonDoubleTapAlertIfNecessary;

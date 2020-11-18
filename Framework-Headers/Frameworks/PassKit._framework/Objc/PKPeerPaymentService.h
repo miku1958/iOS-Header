@@ -52,6 +52,7 @@
 - (void)unregisterDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateMemo:(id)arg1 forTransactionWithIdentifier:(id)arg2;
+- (void)updateMessageReceivedDate:(id)arg1 forTransactionWithIdentifier:(id)arg2;
 - (void)updateMockAccountBalanceByAddingAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

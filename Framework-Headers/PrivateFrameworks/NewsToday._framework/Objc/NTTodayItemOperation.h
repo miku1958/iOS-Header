@@ -7,14 +7,15 @@
 #import <NewsCore/FCOperation.h>
 
 @class NSArray, NSDictionary, NSSet, NTCatchUpOperationForYouFetchInfo;
-@protocol FCAppConfiguration, FCContentContext, FCFeedPersonalizing, NTTodayResultOperationInfoProviding;
+@protocol FCContentContext, FCFeedPersonalizing, FCNewsAppConfiguration, NTTodayResultOperationInfoProviding;
 
 @interface NTTodayItemOperation : FCOperation
 {
     NSDictionary *_catchUpOperationResultsBySectionDescriptor;
-    id<FCAppConfiguration> _appConfiguration;
+    id<FCNewsAppConfiguration> _appConfiguration;
     id<FCContentContext> _contentContext;
     NSSet *_itemIDsOfLeadingCells;
+    NSDictionary *_slotAllocationByDynamicSlotItemID;
     id<FCFeedPersonalizing> _feedPersonalizer;
     id<NTTodayResultOperationInfoProviding> _operationInfo;
     NTCatchUpOperationForYouFetchInfo *_forYouFetchInfo;
@@ -24,7 +25,7 @@
     NSDictionary *_resultAssetFileURLsByRemoteURL;
 }
 
-@property (copy, nonatomic) id<FCAppConfiguration> appConfiguration; // @synthesize appConfiguration=_appConfiguration;
+@property (copy, nonatomic) id<FCNewsAppConfiguration> appConfiguration; // @synthesize appConfiguration=_appConfiguration;
 @property (copy, nonatomic) NSDictionary *catchUpOperationResultsBySectionDescriptor; // @synthesize catchUpOperationResultsBySectionDescriptor=_catchUpOperationResultsBySectionDescriptor;
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property (copy, nonatomic) NSArray *feedItems; // @synthesize feedItems=_feedItems;
@@ -34,6 +35,7 @@
 @property (copy, nonatomic) id<NTTodayResultOperationInfoProviding> operationInfo; // @synthesize operationInfo=_operationInfo;
 @property (strong, nonatomic) NSDictionary *resultAssetFileURLsByRemoteURL; // @synthesize resultAssetFileURLsByRemoteURL=_resultAssetFileURLsByRemoteURL;
 @property (strong, nonatomic) NSDictionary *resultTodayItemsBySectionDescriptor; // @synthesize resultTodayItemsBySectionDescriptor=_resultTodayItemsBySectionDescriptor;
+@property (copy, nonatomic) NSDictionary *slotAllocationByDynamicSlotItemID; // @synthesize slotAllocationByDynamicSlotItemID=_slotAllocationByDynamicSlotItemID;
 @property (copy, nonatomic) CDUnknownBlockType todayItemCompletion; // @synthesize todayItemCompletion=_todayItemCompletion;
 
 - (void).cxx_destruct;

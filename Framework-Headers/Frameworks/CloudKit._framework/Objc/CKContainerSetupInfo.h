@@ -19,20 +19,24 @@
     BOOL _returnPCSMetadata;
     BOOL _useMMCSEncryptionV2;
     BOOL _bypassPCSEncryption;
+    BOOL _forceEnableReadOnlyManatee;
     BOOL _masqueradeAsThirdPartyApp;
     unsigned int _clientSDKVersion;
     CKContainerID *_containerID;
     NSString *_sourceApplicationBundleIdentifier;
     CKAccountOverrideInfo *_accountInfoOverride;
     NSDictionary *_fakeEntitlements;
+    NSString *_containerEncryptionServiceName;
 }
 
 @property (strong, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
 @property (nonatomic) BOOL bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
 @property (nonatomic) BOOL captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
 @property (nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
+@property (strong, nonatomic) NSString *containerEncryptionServiceName; // @synthesize containerEncryptionServiceName=_containerEncryptionServiceName;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (strong, nonatomic) NSDictionary *fakeEntitlements; // @synthesize fakeEntitlements=_fakeEntitlements;
+@property (nonatomic) BOOL forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property (nonatomic) BOOL holdAllOperations; // @synthesize holdAllOperations=_holdAllOperations;
 @property (nonatomic) BOOL masqueradeAsThirdPartyApp; // @synthesize masqueradeAsThirdPartyApp=_masqueradeAsThirdPartyApp;
 @property (nonatomic) BOOL returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;

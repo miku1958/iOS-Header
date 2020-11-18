@@ -24,6 +24,7 @@
 - (void)accessorySetupDidBeginPairing;
 - (void)accessorySetupDidFinishPairing;
 - (void)accessorySetupDidFinishWithError:(id)arg1;
+- (void)accessorySetupDidFinishWithInfo:(id)arg1 error:(id)arg2;
 - (void)accessorySetupDidLoad;
 - (void)viewDidLoad;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

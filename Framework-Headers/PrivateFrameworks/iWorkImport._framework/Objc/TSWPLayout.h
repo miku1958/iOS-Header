@@ -23,13 +23,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _lastLayoutMgrChangeCount;
     TSDLayout<TSWPLayoutParent> *_wpLayoutParent;
     BOOL _optimizeSegmentationOfEmptyLines;
+    BOOL _useBlackTextColor;
 }
 
 @property (readonly, nonatomic) struct CGPoint anchorPoint;
 @property (strong, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
 @property (readonly, nonatomic) unsigned int autosizeFlags;
 @property (readonly, nonatomic) TSDCanvas *canvas;
-@property (readonly, strong, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
+@property (readonly, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
 @property (readonly, nonatomic) struct _NSRange containedTextRange;
 @property (readonly, nonatomic) struct CGSize currentSize;
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isOverflowing;
 @property (readonly, nonatomic) BOOL layoutIsValid;
 @property (readonly, nonatomic) TSWPLayoutManager *layoutManager;
+@property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, nonatomic) struct CGRect maskRect;
 @property (readonly, nonatomic) double maxAnchorY;
 @property (readonly, nonatomic) struct CGSize maxSize;
@@ -51,14 +53,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int naturalAlignment;
 @property (readonly, nonatomic) int naturalDirection;
 @property (readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
-@property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
+@property (readonly, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
 @property (nonatomic) BOOL optimizeSegmentationOfEmptyLines; // @synthesize optimizeSegmentationOfEmptyLines=_optimizeSegmentationOfEmptyLines;
 @property (readonly, nonatomic) unsigned long long pageCount;
 @property (readonly, nonatomic) unsigned long long pageNumber;
 @property (readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property (readonly, nonatomic) struct CGPoint position;
-@property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
+@property (readonly, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
 @property (readonly, nonatomic) BOOL repShouldPreventCaret;
 @property (readonly, nonatomic) BOOL shouldHyphenate;
@@ -67,9 +69,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL textIsVertical;
 @property (readonly, nonatomic) BOOL textLayoutValid;
+@property (nonatomic) BOOL useBlackTextColor; // @synthesize useBlackTextColor=_useBlackTextColor;
 @property (readonly, nonatomic) int verticalAlignment;
 @property (readonly, nonatomic) BOOL wantsLineFragments;
 
+- (void).cxx_destruct;
 - (void)addAttachmentLayout:(id)arg1;
 - (id)additionalReliedOnLayoutsForTextWrap;
 - (void)beginResizeWrapInvalidationCluster;
@@ -79,7 +83,6 @@ __attribute__((visibility("hidden")))
 - (id)computeLayoutGeometry;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
-- (void)dealloc;
 - (id)dependentLayouts;
 - (void)didLayoutChangingDirtyRanges;
 - (void)didLayoutWithLayoutManager:(id)arg1;
@@ -90,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithInfo:(id)arg1 frame:(struct CGRect)arg2;
 - (id)initWithInfo:(id)arg1 storage:(id)arg2 frame:(struct CGRect)arg3;
 - (void *)initialLayoutState;
+- (id)interiorWrapSegments;
 - (void)invalidateForFootnoteNumberingChange;
 - (BOOL)invalidateForPageCountChange;
 - (void)invalidateForcingFullReLayOut;
@@ -115,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (id)p_wpLayoutParent;
 - (void)parentDidChange;
 - (void)parentWillChangeTo:(id)arg1;
+- (struct CGRect)rectInRootForAnchoringPencilAnnotationsForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForZoomingToSelectionPath:(id)arg1;

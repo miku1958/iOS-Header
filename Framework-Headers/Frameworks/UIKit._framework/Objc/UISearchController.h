@@ -82,6 +82,7 @@
 - (BOOL)_disableAutomaticKeyboardUI;
 - (void)_dismissFromBackButton:(id)arg1;
 - (void)_dismissPresentation:(BOOL)arg1;
+- (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (void)_endWatchingPresentingController;
 - (void)_installBackGestureRecognizer;
 - (void)_installDoneGestureRecognizer;

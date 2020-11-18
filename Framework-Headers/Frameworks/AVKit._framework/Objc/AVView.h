@@ -9,16 +9,11 @@
 @interface AVView : UIView
 {
     BOOL _ignoresTouches;
-    struct NSDirectionalEdgeInsets _hitRectInsets;
 }
 
-@property (nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property (nonatomic) BOOL ignoresTouches; // @synthesize ignoresTouches=_ignoresTouches;
 
-- (struct CGRect)hitRect;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

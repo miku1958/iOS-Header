@@ -68,9 +68,9 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBleedColor;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

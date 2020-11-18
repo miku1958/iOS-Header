@@ -20,14 +20,14 @@ __attribute__((visibility("hidden")))
     box_80622335 mBodyLayoutInPage;
     tvec2_3b141483 mOriginalContainingViewport;
     int mMode;
-    CDStruct_44ada6bf mLayoutSettings;
+    CDStruct_b1c75024 mLayoutSettings;
 }
 
 @property (nonatomic) box_80622335 bodyLayoutInPage; // @synthesize bodyLayoutInPage=mBodyLayoutInPage;
 @property (nonatomic) tvec2_3b141483 containingViewport;
 @property (strong, nonatomic) Class getBoundsClass; // @synthesize getBoundsClass=mGetBoundsClass;
 @property (nonatomic) box_80622335 layoutInPage; // @synthesize layoutInPage=mLayoutInPage;
-@property (readonly, nonatomic) CDStruct_44ada6bf layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
+@property (readonly, nonatomic) CDStruct_b1c75024 layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
 @property (nonatomic) int mode; // @synthesize mode=mMode;
 @property (nonatomic) tvec2_3b141483 originalContainingViewport; // @synthesize originalContainingViewport=mOriginalContainingViewport;
 @property (readonly, nonatomic) TSCH3DScene *scene; // @synthesize scene=mScene;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)debugBounds;
 - (id)init;
-- (id)initWithScene:(id)arg1 containingViewport:(const tvec2_3b141483 *)arg2 originalContainingViewport:(const tvec2_3b141483 *)arg3 layoutSettings:(const CDStruct_44ada6bf *)arg4;
+- (id)initWithScene:(id)arg1 containingViewport:(const tvec2_3b141483 *)arg2 originalContainingViewport:(const tvec2_3b141483 *)arg3 layoutSettings:(const CDStruct_b1c75024 *)arg4;
 - (void)invalidateBounds;
 - (void)invalidateLabelsBoundsForSceneObjectClass:(Class)arg1 boundsIndex:(long long)arg2;
 - (BOOL)isInward;

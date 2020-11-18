@@ -17,7 +17,6 @@
 
 - (void).cxx_destruct;
 - (id)initWithClient:(id)arg1 daemon:(id)arg2 error:(id)arg3;
-- (void)remote_fetchPluginServiceEndpointWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_serverForConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

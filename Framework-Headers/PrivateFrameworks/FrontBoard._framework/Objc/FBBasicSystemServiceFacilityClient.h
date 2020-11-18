@@ -20,9 +20,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<FBSystemServiceClient> systemServiceClient; // @synthesize systemServiceClient=_systemServiceClient;
+@property (readonly, weak, nonatomic) id<FBSystemServiceClient> systemServiceClient; // @synthesize systemServiceClient=_systemServiceClient;
 
 + (id)facilityClientWithSystemServiceClient:(id)arg1;
+- (void).cxx_destruct;
 - (id)initWithSystemServiceClient:(id)arg1;
 
 @end

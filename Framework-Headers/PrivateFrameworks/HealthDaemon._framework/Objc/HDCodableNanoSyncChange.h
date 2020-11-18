@@ -10,13 +10,14 @@
 #import <HealthDaemon/HDSyncChange-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSNumber, NSString;
+@class HDCodableEntityIdentifier, NSMutableArray, NSNumber, NSString;
 
 @interface HDCodableNanoSyncChange : PBCodable <HDSyncChange, HDNanoSyncDescription, NSCopying>
 {
     long long _endAnchor;
     long long _sequence;
     long long _startAnchor;
+    HDCodableEntityIdentifier *_entityIdentifier;
     NSMutableArray *_objectDatas;
     int _objectType;
     NSMutableArray *_requiredAnchors;
@@ -37,8 +38,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL done;
 @property (nonatomic) long long endAnchor; // @synthesize endAnchor=_endAnchor;
+@property (strong, nonatomic) HDCodableEntityIdentifier *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
 @property (nonatomic) BOOL hasComplete;
 @property (nonatomic) BOOL hasEndAnchor;
+@property (readonly, nonatomic) BOOL hasEntityIdentifier;
 @property (nonatomic) BOOL hasObjectType;
 @property (nonatomic) BOOL hasSequence;
 @property (nonatomic) BOOL hasSpeculative;
@@ -60,30 +63,29 @@
 + (Class)requiredAnchorsType;
 - (void).cxx_destruct;
 - (int)StringAsObjectType:(id)arg1;
-- (Class)_syncEntityClass;
 - (void)addObjectData:(id)arg1;
 - (void)addRequiredAnchors:(id)arg1;
 - (void)clearObjectDatas;
 - (void)clearRequiredAnchors;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)decodedObjects;
+- (id)decodedObjectsForProfile:(id)arg1 error:(id *)arg2;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)nanoSyncDescription;
-- (Class)nanoSyncEntityClass;
 - (id)objectDataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)objectDatasCount;
 - (id)objectTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)requiredAnchorMapWithError:(id *)arg1;
+- (id)requiredAnchorMapWithProfile:(id)arg1 error:(id *)arg2;
 - (id)requiredAnchorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)requiredAnchorsCount;
 - (void)setObjects:(id)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 requiredAnchorMap:(id)arg3;
 - (void)setSequenceNumber:(long long)arg1 done:(BOOL)arg2;
 - (id)speculativeCopy;
-- (Class)syncEntityClass;
+- (Class)syncEntityClassForProfile:(id)arg1;
+- (id)syncEntityIdentifier;
 - (void)writeTo:(id)arg1;
 
 @end

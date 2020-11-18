@@ -37,6 +37,7 @@
 @property (strong, nonatomic) UIAccessibilityHUDGestureManager *accessibilityHUDGestureManager; // @synthesize accessibilityHUDGestureManager=_accessibilityHUDGestureManager;
 @property (strong, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
 @property (readonly, nonatomic) UIGestureRecognizer *actionGestureRecognizer; // @synthesize actionGestureRecognizer=_actionGestureRecognizer;
+@property (readonly, nonatomic) unsigned int animationContextId;
 @property (readonly, nonatomic, getter=areAnimationsEnabled) BOOL animationsEnabled;
 @property (readonly, nonatomic) UIView *containerView;
 @property (readonly, nonatomic) _UIStatusBarData *currentAggregatedData; // @synthesize currentAggregatedData=_currentAggregatedData;
@@ -73,6 +74,7 @@
 - (void)_delayUpdatesWithKeys:(id)arg1 fromAnimation:(id)arg2;
 - (void)_dismissAccessibilityHUDForGestureManager:(id)arg1;
 - (id)_displayItemsForPartWithIdentifier:(id)arg1;
+- (void)_fixupDisplayItemAttributes;
 - (BOOL)_forceLayoutEngineSolutionInRationalEdges;
 - (BOOL)_gestureRecognizer:(id)arg1 isInsideRegion:(id)arg2;
 - (void)_performAnimations:(id)arg1;

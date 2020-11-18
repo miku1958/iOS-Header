@@ -49,8 +49,11 @@
 - (NSArray *)paymentWebService:(PKPaymentWebService *)arg1 passesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(PKPaymentWebService *)arg1 removePass:(PKPass *)arg2 withCompletionHandler:(void (^)(BOOL, NSError *))arg3;
 - (BOOL)paymentWebServiceSupportsPeerPaymentRegistration:(PKPaymentWebService *)arg1;
+- (BOOL)secureElementIsAvailable;
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;
+- (BOOL)supportsCredentialType:(long long)arg1;
+- (BOOL)supportsExpressMode:(NSString *)arg1;
 - (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
 - (PKTrustedDeviceEnrollmentInfo *)trustedDeviceEnrollmentInfoForWebService:(PKPaymentWebService *)arg1;
 @end

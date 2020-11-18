@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, SFDialogContentView, UISwipeGestureRecognizer, UITapGestureRecognizer;
+@class NSLayoutConstraint, SFDialogContentView, UISwipeGestureRecognizer, UITapGestureRecognizer, _SFKeyboardLayoutAlignmentView;
 @protocol _SFDialogViewDelegate;
 
 @interface _SFDialogView : UIView
 {
     SFDialogContentView *_contentView;
     SFDialogContentView *_contentViewConfiguredForMinimumHeight;
+    _SFKeyboardLayoutAlignmentView *_keyboardAlignmentView;
     UISwipeGestureRecognizer *_keyboardDismissSwipeGesture;
     UITapGestureRecognizer *_keyboardDismissTapGesture;
     NSLayoutConstraint *_obscuredInsetTopConstraint;
@@ -37,6 +38,7 @@
 - (void)setPasswordText:(id)arg1 placeholder:(id)arg2;
 - (void)setTitleText:(id)arg1;
 - (void)setUsesOpaqueAppearance:(BOOL)arg1;
+- (void)willDisappear;
 
 @end
 

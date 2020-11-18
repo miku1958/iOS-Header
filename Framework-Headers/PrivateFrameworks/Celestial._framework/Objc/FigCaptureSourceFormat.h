@@ -7,10 +7,11 @@
 #import <Foundation/NSObject.h>
 
 #import <Celestial/FigXPCCoding-Protocol.h>
+#import <Celestial/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface FigCaptureSourceFormat : NSObject <FigXPCCoding>
+@interface FigCaptureSourceFormat : NSObject <FigXPCCoding, NSSecureCoding>
 {
     NSDictionary *_formatDictionary;
     struct opaqueCMFormatDescription *_formatDescription;
@@ -26,8 +27,11 @@
 @property (readonly) unsigned int mediaType;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyXPCEncoding;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFigCaptureStreamFormatDictionary:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)p_loadTOCEntryParagraphStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct TOCEntryStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
 - (void)p_saveTOCEntryStylePropertiesToArchive:(struct TOCEntryStylePropertiesArchive *)arg1 archiver:(id)arg2;
+- (id)parentStyleForFixingOrphanVariation;
 - (id)presetKind;
 - (void)saveToArchive:(struct TOCEntryStyleArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;

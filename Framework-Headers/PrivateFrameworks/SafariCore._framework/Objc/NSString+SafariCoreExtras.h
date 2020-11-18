@@ -9,9 +9,12 @@
 @interface NSString (SafariCoreExtras)
 
 @property (readonly, copy, nonatomic) NSString *safari_stringByNormalizingVersionString;
+@property (readonly, copy, nonatomic) NSString *safari_stringByReplacingHomoglyphForSpaceWithSpace;
 @property (readonly, copy, nonatomic) NSString *safari_userVisibleSafariBundleVersionFromFullVersion;
 
 + (void)safari_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)safari_anyComponentSeparatedByString:(id)arg1 hasLocalizedCaseInsensitivePrefix:(id)arg2;
+- (id)safari_base64DecodedData;
 - (BOOL)safari_containsInteriorWhitespace;
 - (BOOL)safari_containsPeriodOrHomoglyphForPeriod;
 - (BOOL)safari_hasCaseInsensitivePrefix:(id)arg1;
@@ -23,6 +26,7 @@
 - (BOOL)safari_isCaseInsensitiveEqualToString:(id)arg1;
 - (id)safari_simplifiedUserVisibleURLString;
 - (id)safari_simplifiedUserVisibleURLStringWithSimplifications:(unsigned long long)arg1 forDisplayOnly:(BOOL)arg2 simplifiedStringOffset:(unsigned long long *)arg3;
+- (id)safari_stringByRedactingBookmarkDAVServerID;
 - (id)safari_stringByTrimmingWhitespace;
 - (id)safari_topLevelDomainUsingCFFromComponents:(id)arg1;
 @end

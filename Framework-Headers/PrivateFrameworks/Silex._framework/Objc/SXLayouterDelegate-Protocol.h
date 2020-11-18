@@ -6,10 +6,10 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXComponent, SXLayoutBlueprint;
-@protocol SXLayouter;
+@class SXLayoutBlueprint;
+@protocol SXComponent, SXLayouter;
 
 @protocol SXLayouterDelegate <NSObject>
-- (void)layouter:(id<SXLayouter>)arg1 didFinishLayoutForComponent:(SXComponent *)arg2 layoutBlueprint:(SXLayoutBlueprint *)arg3 shouldContinueLayout:(BOOL *)arg4;
+- (void)layouter:(id<SXLayouter>)arg1 didFinishLayoutForComponent:(id<SXComponent>)arg2 layoutBlueprint:(SXLayoutBlueprint *)arg3 shouldContinueLayout:(BOOL *)arg4;
 @end
 

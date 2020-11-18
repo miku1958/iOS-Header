@@ -51,6 +51,7 @@
 - (void)beaconBrowser:(id)arg1 didFindBeaconForInvitationSessionWithIPAddress:(id)arg2;
 - (id)browserStateDictionary;
 - (void)classSessionInvalidated:(id)arg1;
+- (void)classSessionRejected:(id)arg1;
 - (id)clientIdentityForSession:(id)arg1;
 - (void)connectToClassSessionWithIdentifier:(id)arg1;
 - (void)dealloc;
@@ -67,6 +68,7 @@
 - (id)delegateNeedsClientIdentityForGroup:(id)arg1;
 - (id)delegateNeedsClientIdentityInvitationSession;
 - (id)delegateNeedsTrustedAnchorCertificatesForGroup:(id)arg1;
+- (BOOL)hasConnectionToClassWithIdentifier:(id)arg1;
 - (id)init;
 - (void)invitationSessionWithIPAddressInvalidated:(id)arg1;
 - (void)lostConnectionToClassSession:(id)arg1;

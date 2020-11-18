@@ -11,6 +11,7 @@
 @protocol TSWPOffscreenColumn <NSObject>
 
 @property (readonly, nonatomic) struct _NSRange anchoredRange;
+@property (readonly, nonatomic) BOOL lastLineIsEmptyAndHasListLabel;
 @property (readonly, nonatomic) unsigned long long nextWidowPullsDownFromCharIndex;
 @property (readonly, nonatomic) struct _NSRange range;
 

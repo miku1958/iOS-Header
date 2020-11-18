@@ -13,6 +13,7 @@
     ASEmailItem *_ASEmailItem;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)attachments;
 - (id)bcc;

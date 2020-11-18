@@ -10,9 +10,9 @@
 {
 }
 
-@property (readonly, nonatomic) int capabilities;
+@property (readonly, nonatomic) unsigned int capabilities;
 
-- (id)initWithCapabilities:(int)arg1;
+- (id)initWithCapabilities:(unsigned int)arg1;
 - (unsigned long long)type;
 
 @end

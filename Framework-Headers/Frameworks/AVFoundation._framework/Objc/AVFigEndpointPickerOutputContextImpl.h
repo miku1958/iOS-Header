@@ -35,6 +35,7 @@
 @property (weak) AVOutputContext *parentOutputContext; // @synthesize parentOutputContext=_parentContext;
 @property (readonly) BOOL providesControlForAllVolumeFeatures;
 @property (readonly) Class superclass;
+@property (readonly) BOOL supportsMultipleOutputDevices;
 @property (readonly) float volume;
 
 + (id)auxiliaryOutputContext;

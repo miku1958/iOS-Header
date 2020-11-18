@@ -6,15 +6,16 @@
 
 #import <HomeKit/HMRoom.h>
 
-@class HMHome, NSSet;
+@class HMHome, NSArray, NSSet;
 
 @interface HMRoom (HFAdditions)
 
+@property (readonly, nonatomic) NSArray *hf_allCameraProfiles;
+@property (readonly, nonatomic) NSArray *hf_allServices;
 @property (readonly, nonatomic) NSSet *hf_allVisibleServices;
+@property (readonly, nonatomic) NSArray *hf_allZones;
+@property (readonly, nonatomic) NSArray *hf_unpairedHomePods;
 @property (readonly, weak, nonatomic) HMHome *home; // @dynamic home;
 
-- (id)hf_allCameraProfiles;
-- (id)hf_allServices;
-- (id)hf_allZones;
 @end
 

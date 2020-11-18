@@ -8,15 +8,17 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, PKServiceProviderPurchaseData;
+@class NSArray, NSDate, NSString, PKServiceProviderPurchaseData;
 
 @interface PKServiceProviderPurchase : NSObject <NSSecureCoding>
 {
     NSString *_identifier;
+    NSString *_visibleTransactionIdentifier;
     unsigned long long _state;
     NSString *_deviceIdentifier;
     NSString *_serviceProviderIdentifier;
     PKServiceProviderPurchaseData *_serviceProviderData;
+    NSDate *_purchaseDate;
     NSString *_signature;
     NSArray *_actions;
 }
@@ -24,10 +26,12 @@
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSDate *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
 @property (copy, nonatomic) PKServiceProviderPurchaseData *serviceProviderData; // @synthesize serviceProviderData=_serviceProviderData;
 @property (copy, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;
 @property (copy, nonatomic) NSString *signature; // @synthesize signature=_signature;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
+@property (copy, nonatomic) NSString *visibleTransactionIdentifier; // @synthesize visibleTransactionIdentifier=_visibleTransactionIdentifier;
 
 + (id)purchaseWithDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;

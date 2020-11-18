@@ -25,7 +25,10 @@ __attribute__((visibility("hidden")))
 + (BOOL)isFPSGraphEnabled;
 + (BOOL)isFPSLoggingEnabled;
 + (BOOL)isFPSLoggingTimerDisabled;
++ (BOOL)isGLEverywhereEnabled;
 + (BOOL)isGLStateValidationEnabled;
++ (BOOL)isMaxConcurrentTexturePrecachingEnabled;
++ (BOOL)isMetalDisabled;
 + (BOOL)isMotionBlurBlacklistedWithCapabilities:(id)arg1;
 + (BOOL)isMotionBlurCapableWithAnimationContext:(id)arg1;
 + (BOOL)isRandomNumberSeedInspectionEnabled;

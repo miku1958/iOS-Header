@@ -40,9 +40,9 @@
 - (void)decryptData:(id)arg1 usingKey:(id)arg2 algorithm:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)deleteObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)endRequest;
-- (void)evaluateAuthOperation:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)evaluateAuthOperation:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)evaluateAuthOperation:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)finalizeAuthOperation:(id)arg1 evaluatedAuthOperation:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)finalizeAuthOperation:(id)arg1 evaluatedAuthOperation:(id)arg2 auditToken:(CDStruct_6ad76789)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)getAccessControlOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getDataOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getPublicKeyDataOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -51,10 +51,10 @@
 - (BOOL)handleCopyItemsEvent:(id)arg1 reply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)handleCreateObjectEvent:(id)arg1 reply:(id)arg2 attributes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)handleDeleteObjectEvent:(id)arg1 reply:(id)arg2 objectID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (BOOL)handleEvaluateAccessControlEvent:(id)arg1 reply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)handleEvaluateAccessControlEvent:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 reply:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)handleGetObjectAccessControlEvent:(id)arg1 reply:(id)arg2 objectID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)handleGetPublicKeyEvent:(id)arg1 reply:(id)arg2 objectID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (BOOL)handleOperation:(long long)arg1 event:(id)arg2 reply:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)handleOperation:(long long)arg1 auditToken:(CDStruct_6ad76789)arg2 event:(id)arg3 reply:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)handlePerformOperationEvent:(id)arg1 reply:(id)arg2 objectID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)handleReadDataEvent:(id)arg1 reply:(id)arg2 objectID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)handleUpdateObjectEvent:(id)arg1 reply:(id)arg2 objectID:(id)arg3 attributes:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

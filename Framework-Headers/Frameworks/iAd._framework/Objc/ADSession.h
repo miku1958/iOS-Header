@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/ADAdSheetConnectionDelegate-Protocol.h>
-#import <iAd/ADAdSheetProxyDelegate-Protocol.h>
 #import <iAd/ADSession_RPC-Protocol.h>
 
 @class ADAdSheetConnection, NSMutableArray, NSString;
 @protocol ADSSession_RPC, OS_dispatch_queue;
 
-@interface ADSession : NSObject <ADSession_RPC, ADAdSheetProxyDelegate, ADAdSheetConnectionDelegate>
+@interface ADSession : NSObject <ADSession_RPC, ADAdSheetConnectionDelegate>
 {
     BOOL _applicationCanReceiveBackgroundAds;
     BOOL _appExtensionCanReceiveAds;
@@ -50,16 +49,20 @@
 - (void)_remote_adImpressionDidLoadWithPublicAttributes:(id)arg1 identifier:(id)arg2;
 - (void)_remote_adImpressionReportedWithIdentifier:(id)arg1;
 - (void)_remote_closeClientAdSpaceWithIdentifier:(id)arg1;
+- (void)_remote_configVersionDidChange:(id)arg1;
+- (void)_remote_contentProxyURLConnectDidChange:(id)arg1;
 - (void)_remote_contentProxyURLDidChange:(id)arg1;
 - (void)_remote_creativeWithAdSpaceIdentifier:(id)arg1 didFailWithError:(id)arg2;
 - (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(id)arg1;
 - (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_remote_openURL:(id)arg1 forAdSpaceWithIdentifier:(id)arg2;
 - (void)_remote_policyEngineDidIdleDisable;
+- (void)_remote_proxyTypeDidChange:(long long)arg1;
 - (void)_remote_requestViewControllerWithClassName:(id)arg1 forAdSpaceControllerWithIdentifier:(id)arg2 forAdSpaceWithIdentifier:(id)arg3;
 - (void)_remote_setRequiresFastVisibilityTestOnly:(BOOL)arg1 withIdentifier:(id)arg2;
 - (void)_remote_updateActionViewControllerOrientation:(unsigned long long)arg1 forAdSpaceWithIdentifier:(id)arg2;
 - (void)_reportAdSubscriptionEvent:(id)arg1;
+- (void)adAnalyticsEventReceived:(id)arg1;
 - (void)adSheetConnectionEstablished;
 - (void)adSheetConnectionLost;
 - (id)adSheetMachServiceName;
@@ -68,18 +71,14 @@
 - (id)additionalAdSheetLaunchOptions;
 - (void)configureConnection:(id)arg1;
 - (void)dealloc;
-- (void)determineAppInstallAttributionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)lookupAdConversionDetails:(CDUnknownBlockType)arg1;
 - (void)performWhenConnected:(CDUnknownBlockType)arg1;
 - (void)prepareForAdRequests;
 - (void)registerAdSpace:(id)arg1;
 - (void)reportPrerollRequest;
-- (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;
 - (id)rpcProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)segmentDataForSignedInUserWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)shouldConnectToAdSheet;
-- (BOOL)shouldLaunchAdSheet;
 - (void)unregisterAdSpace:(id)arg1;
 
 @end

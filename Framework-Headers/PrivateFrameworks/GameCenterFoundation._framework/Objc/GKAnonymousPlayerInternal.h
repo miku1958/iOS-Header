@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)alias;
 - (BOOL)isAnonymousPlayer;
 - (BOOL)isEqual:(id)arg1;

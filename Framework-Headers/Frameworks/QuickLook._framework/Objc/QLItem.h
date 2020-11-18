@@ -140,6 +140,7 @@
 - (Class)previewItemViewControllerClass;
 - (struct CGSize)previewSizeForItemViewControllerSize:(struct CGSize)arg1;
 - (void)setEditedFileURL:(id)arg1 withSandboxExtension:(id)arg2;
+- (id)shareableURL;
 - (BOOL)useExtensionPreview;
 - (BOOL)useExtensionThumbnail;
 

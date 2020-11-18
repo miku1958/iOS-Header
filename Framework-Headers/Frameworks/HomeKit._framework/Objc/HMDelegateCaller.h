@@ -19,10 +19,12 @@
 - (id)_localizedError:(id)arg1;
 - (void)callCompletion:(CDUnknownBlockType)arg1 actionSet:(id)arg2 error:(id)arg3;
 - (void)callCompletion:(CDUnknownBlockType)arg1 array:(id)arg2;
+- (void)callCompletion:(CDUnknownBlockType)arg1 array:(id)arg2 additionalAccessoryInfo:(id)arg3 error:(id)arg4;
 - (void)callCompletion:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (void)callCompletion:(CDUnknownBlockType)arg1 error:(id)arg2 array:(id)arg3;
 - (void)callCompletion:(CDUnknownBlockType)arg1 error:(id)arg2 boolValue:(BOOL)arg3 array:(id)arg4;
 - (void)callCompletion:(CDUnknownBlockType)arg1 error:(id)arg2 dictionary:(id)arg3;
+- (void)callCompletion:(CDUnknownBlockType)arg1 error:(id)arg2 mediaSystem:(id)arg3;
 - (void)callCompletion:(CDUnknownBlockType)arg1 error:(id)arg2 obj:(id)arg3;
 - (void)callCompletion:(CDUnknownBlockType)arg1 error:(id)arg2 proxiedDevice:(id)arg3;
 - (void)callCompletion:(CDUnknownBlockType)arg1 error:(id)arg2 snapshot:(id)arg3;

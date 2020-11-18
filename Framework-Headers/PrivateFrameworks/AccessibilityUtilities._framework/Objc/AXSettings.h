@@ -91,6 +91,7 @@
 @property double audioLeftRightBalance;
 @property BOOL automationEnabled;
 @property BOOL automationFauxCollectionViewCellsEnabled;
+@property BOOL automationFauxTableViewCellsEnabled;
 @property BOOL automationHitpointWarpingEnabled;
 @property BOOL automationLocalizedStringLookupInfoEnabled;
 @property (readonly) NSString *automationPreferredLocalization;
@@ -117,7 +118,7 @@
 @property (readonly, nonatomic) BOOL extantVoicesExist;
 @property (copy, nonatomic) NSString *gaxInternalSettingsActiveAppID;
 @property (copy, nonatomic) NSNumber *gaxInternalSettingsActiveAppOrientation;
-@property (copy, nonatomic) NSString *gaxInternalSettingsDeviceID;
+@property (copy, nonatomic) NSNumber *gaxInternalSettingsECID;
 @property (nonatomic) BOOL gaxInternalSettingsIsActiveAppSelfLocked;
 @property (strong, nonatomic) NSDate *gaxInternalSettingsLastActivationDate;
 @property (strong, nonatomic) NSDate *gaxInternalSettingsLastPasscodeSetDate;
@@ -230,6 +231,7 @@
 @property (strong, nonatomic) NSArray *switchControlSettingsMenuItems;
 @property (strong, nonatomic) NSArray *switchControlSettingsTopLevelMenuItems;
 @property (nonatomic) BOOL switchControlShouldAlwaysActivateKeyboardKeys;
+@property (nonatomic) BOOL switchControlShouldDisallowUSBRestrictedMode;
 @property (nonatomic) BOOL switchControlShouldUseExtendedKeyboardPredictions;
 @property (nonatomic) BOOL switchControlShouldUseShortFirstPage;
 @property (nonatomic) long long switchControlTapBehavior;
@@ -294,6 +296,7 @@
 @property (nonatomic) long long voiceOverPunctuationLevel;
 @property (copy, nonatomic) NSArray *voiceOverRotorItems;
 @property BOOL voiceOverScreenCurtainEnabled;
+@property (nonatomic) BOOL voiceOverShouldDisallowUSBRestrictedMode;
 @property (nonatomic) BOOL voiceOverShouldOutputToHearingAid;
 @property (nonatomic) BOOL voiceOverShouldSpeakDiscoveredText;
 @property (nonatomic) BOOL voiceOverShowSoftwareKeyboardWithBraille;

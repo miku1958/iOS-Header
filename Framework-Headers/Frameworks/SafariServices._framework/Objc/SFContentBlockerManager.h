@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableSet, WKUserContentController;
+@class NSMutableDictionary, NSMutableSet, NSSet, WKUserContentController;
+@protocol OS_dispatch_queue;
 
 @interface SFContentBlockerManager : NSObject
 {
     id _extensionMatchingContext;
     WKUserContentController *_userContentController;
-    NSArray *_extensions;
+    NSSet *_extensions;
     NSMutableSet *_observers;
     BOOL _lastExtensionDiscoveryHadError;
+    NSMutableDictionary *_extensionsRecompiledAfterBackup;
+    NSObject<OS_dispatch_queue> *_recompilationInformationAccessQueue;
 }
 
-@property (readonly, nonatomic) NSArray *extensions;
+@property (readonly, nonatomic) NSSet *extensions;
 @property (readonly, nonatomic) WKUserContentController *userContentController;
 
 + (id)_contentBlockerLoaderConnection;
@@ -28,11 +31,17 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_beginContentBlockerDiscovery;
+- (id)_findNewExtensionsAdded:(id)arg1 toExistingExtensions:(id)arg2;
+- (BOOL)_hasRecompilationBeenAttemptedForExtension:(id)arg1;
+- (void)_loadContentBlockerRecompilationInformationIfNeeded;
 - (void)_loadContentBlockerWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_noteRecompilationWasAttemptedForExtension:(id)arg1;
+- (void)_recompileEnabledContentBlockersIfNeeded:(id)arg1;
+- (void)_saveContentBlockerRecompilationInformation;
 - (void)addObserver:(id)arg1;
-- (void)compileContentBlockersAfterDeviceRestore;
 - (id)displayNameForExtension:(id)arg1;
 - (BOOL)extensionIsEnabled:(id)arg1;
+- (id)init;
 - (void)reloadUserContentController;
 - (void)removeObserver:(id)arg1;
 - (void)setExtension:(id)arg1 isEnabled:(BOOL)arg2;

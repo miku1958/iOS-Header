@@ -52,6 +52,7 @@
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (void)beganPlaying;
 - (void)beganRecording;
+- (void)beginAudioSessionActivate:(BOOL)arg1;
 - (void)beginPlaybackInterruption;
 - (void)beginRecordInterruption;
 - (void)beginRecordInterruptionWithContext:(id)arg1;
@@ -60,6 +61,7 @@
 - (int)doStartRecordingAtTime:(unsigned long long)arg1 behavior:(id)arg2;
 - (void)enableVoiceTriggerListening:(BOOL)arg1;
 - (void)encodeError;
+- (void)endAudioSessionActivate:(BOOL)arg1;
 - (void)endPlaybackInterruption;
 - (void)endRecordInterruption;
 - (void)endpointDetected;

@@ -9,11 +9,12 @@
 #import <Symbolication/NSSecureCoding-Protocol.h>
 
 @class NSMutableArray;
+@protocol VMUStackLogReader;
 
 @interface VMUVMRegionTracker : NSObject <NSSecureCoding>
 {
     unsigned int _task;
-    struct _CSTypeRef _symbolicator;
+    id<VMUStackLogReader> _stackLogReader;
     NSMutableArray *_regionInfoArray;
 }
 
@@ -25,7 +26,6 @@
 - (void).cxx_destruct;
 - (unsigned long long)_regionIndexForAddress:(unsigned long long)arg1;
 - (void)convertStackIDs:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)handleStackLogType:(unsigned int)arg1 address:(unsigned long long)arg2 size:(unsigned long long)arg3 stackID:(unsigned long long)arg4;
 - (id)initWithCoder:(id)arg1;

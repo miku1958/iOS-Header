@@ -8,12 +8,12 @@
 
 #import <Silex/SXActionActivityProvider-Protocol.h>
 
-@class NSString, SXHost;
-@protocol SXContactsPresenter, SXDeviceCapabilities, SXMessagePresenter;
+@class NSString;
+@protocol SXContactsPresenter, SXDeviceCapabilities, SXHost, SXMessagePresenter;
 
 @interface SXPhoneNumberActionActivityProvider : NSObject <SXActionActivityProvider>
 {
-    SXHost *_host;
+    id<SXHost> _host;
     id<SXContactsPresenter> _contactsPresenter;
     id<SXMessagePresenter> _messagePresenter;
     id<SXDeviceCapabilities> _deviceCapabilities;
@@ -24,7 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<SXDeviceCapabilities> deviceCapabilities; // @synthesize deviceCapabilities=_deviceCapabilities;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) SXHost *host; // @synthesize host=_host;
+@property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (readonly, nonatomic) id<SXMessagePresenter> messagePresenter; // @synthesize messagePresenter=_messagePresenter;
 @property (readonly) Class superclass;
 

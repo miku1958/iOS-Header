@@ -6,17 +6,20 @@
 
 #import <HomeKitDaemon/HMDAccessoryAdvertisement.h>
 
-@class HMDMediaOutputDevice, NSString;
+@class HMDMediaOutputDevice, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HMDMediaAccessoryAdvertisement : HMDAccessoryAdvertisement
 {
     BOOL _associated;
     HMDMediaOutputDevice *_outputDevice;
     NSString *_sessionIdentifier;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property (nonatomic) BOOL associated; // @synthesize associated=_associated;
-@property (strong, nonatomic) HMDMediaOutputDevice *outputDevice; // @synthesize outputDevice=_outputDevice;
+@property (getter=isAssociated) BOOL associated; // @synthesize associated=_associated;
+@property (strong) HMDMediaOutputDevice *outputDevice; // @synthesize outputDevice=_outputDevice;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 
 - (void).cxx_destruct;

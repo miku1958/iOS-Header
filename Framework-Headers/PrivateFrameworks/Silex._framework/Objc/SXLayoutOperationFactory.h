@@ -8,24 +8,24 @@
 
 #import <Silex/SXLayoutOperationFactory-Protocol.h>
 
-@class NSString, SXDynamicAdController;
-@protocol SXComponentSizerEngine;
+@class NSString;
+@protocol SXComponentSizerEngine, SXLayoutBlueprintFactory;
 
 @interface SXLayoutOperationFactory : NSObject <SXLayoutOperationFactory>
 {
     id<SXComponentSizerEngine> _componentSizerEngine;
-    SXDynamicAdController *_dynamicAdController;
+    id<SXLayoutBlueprintFactory> _layoutBlueprintFactory;
 }
 
 @property (readonly, nonatomic) id<SXComponentSizerEngine> componentSizerEngine; // @synthesize componentSizerEngine=_componentSizerEngine;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) SXDynamicAdController *dynamicAdController; // @synthesize dynamicAdController=_dynamicAdController;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SXLayoutBlueprintFactory> layoutBlueprintFactory; // @synthesize layoutBlueprintFactory=_layoutBlueprintFactory;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithComponentSizerEngine:(id)arg1 dynamicAdController:(id)arg2;
+- (id)initWithComponentSizerEngine:(id)arg1 layoutBlueprintFactory:(id)arg2;
 - (id)layoutOperationWithViewportSize:(struct CGSize)arg1 constrainedToWidth:(double)arg2 layoutDataProvider:(id)arg3;
 
 @end

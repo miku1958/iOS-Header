@@ -6,22 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSData, NSString, UIItemProvider;
 
 @interface WebItemProviderRegistrationInfoList : NSObject
 {
-    struct RetainPtr<NSMutableArray> _items;
+    struct RetainPtr<NSMutableArray> _representations;
     NSString *_suggestedName;
-    struct CGSize _estimatedDisplayedSize;
+    long long _preferredPresentationStyle;
+    NSData *_teamData;
+    struct CGSize _preferredPresentationSize;
 }
 
-@property (nonatomic) struct CGSize estimatedDisplayedSize; // @synthesize estimatedDisplayedSize=_estimatedDisplayedSize;
-@property (strong, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;
+@property (readonly, nonatomic) UIItemProvider *itemProvider;
+@property (nonatomic) struct CGSize preferredPresentationSize; // @synthesize preferredPresentationSize=_preferredPresentationSize;
+@property (nonatomic) long long preferredPresentationStyle; // @synthesize preferredPresentationStyle=_preferredPresentationStyle;
+@property (copy, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;
+@property (copy, nonatomic) NSData *teamData; // @synthesize teamData=_teamData;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addData:(id)arg1 forType:(id)arg2;
 - (void)addRepresentingObject:(id)arg1;
+- (void)dealloc;
+- (id)description;
 - (void)enumerateItems:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)itemAtIndex:(unsigned long long)arg1;

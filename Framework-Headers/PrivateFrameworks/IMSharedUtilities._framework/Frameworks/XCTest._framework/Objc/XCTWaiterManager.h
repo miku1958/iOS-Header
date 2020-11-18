@@ -21,6 +21,7 @@
 @property (strong) NSMutableArray *waiterStack; // @synthesize waiterStack=_waiterStack;
 
 + (id)threadLocalManager;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)waiterDidFinishWaiting:(id)arg1;

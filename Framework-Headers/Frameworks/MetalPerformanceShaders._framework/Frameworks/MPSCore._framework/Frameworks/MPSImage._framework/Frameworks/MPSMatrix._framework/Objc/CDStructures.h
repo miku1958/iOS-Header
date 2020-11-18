@@ -17,6 +17,7 @@ struct MPSAutoBuffer {
     unsigned long long _requestedSize;
     id _device;
     MPSCommandBufferImageCache *_cache;
+    unsigned long long _resourceSize;
 };
 
 struct MPSDevice {
@@ -32,7 +33,7 @@ struct MPSDevice {
     unsigned int _field10;
     int _field11;
     struct MPSGPUInfo _field12;
-    struct atomic<MPSLibrary *> _field13[48];
+    struct atomic<MPSLibrary *> _field13[69];
 };
 
 struct MPSDeviceFreeList;
@@ -74,6 +75,11 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field13;
     struct MPSDeviceSpecificInfo _field14;
     struct MPSDeviceSpecificInfo _field15;
+    struct MPSDeviceSpecificInfo _field16;
+    struct MPSDeviceSpecificInfo _field17;
+    struct MPSDeviceSpecificInfo _field18;
+    struct MPSDeviceSpecificInfo _field19;
+    struct MPSDeviceSpecificInfo _field20;
 };
 
 struct MPSPixelCapabilities {

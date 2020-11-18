@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString, PETDistributionEventTracker, PETGoalConversionEventTracker, PETScalarEventTracker;
+@protocol OS_dispatch_queue;
 
 @interface _PWTWidgetEventTracker : NSObject
 {
@@ -24,6 +25,7 @@
     BOOL _widgetWasEverForeground;
     long long _activeDisplayMode;
     double _lastAppearTime;
+    NSObject<OS_dispatch_queue> *_loggingQueue;
 }
 
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

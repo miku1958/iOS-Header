@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     unsigned int mAttributes;
     unsigned int mVbo;
     struct _NSRange mVertexRange;
-    vector_8a3ef5f6 mContiguousVertexStorage;
+    vector_b8c3c0c5 mContiguousVertexStorage;
     struct vector<VertexGroup, std::__1::allocator<VertexGroup>> mVertexHistory;
     struct vector<std::__1::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>, std::__1::allocator<std::__1::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>>> mNonCollisionSegments;
     MISSING_TYPE *U_COLOR;
@@ -96,7 +96,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithBounds:(struct CGRect)arg1 scale:(double)arg2 bufferSize:(int)arg3;
 - (void)initializeFrameBuffers;
 - (void)redrawEntireDrawingImmediatelyWithLayeredBlending:(BOOL)arg1;
-- (struct CGRect)regionWithVertices:(vector_8a3ef5f6)arg1 withInflationAmount:(float)arg2;
+- (struct CGRect)regionWithVertices:(vector_b8c3c0c5)arg1 withInflationAmount:(float)arg2;
 - (void)removeVertexHistoryElement;
 - (void)renderToComposite:(BOOL)arg1;
 - (void)renderToDryPaintBuffer;
@@ -108,7 +108,7 @@ __attribute__((visibility("hidden")))
 - (void)update;
 - (void)updateDryCycleIncludingComposite:(BOOL)arg1;
 - (void)updateDryForcefully;
-- (void)updateVertexControllerWithData:(vector_8a3ef5f6)arg1 range:(struct _NSRange)arg2 allowWet:(BOOL)arg3;
+- (void)updateVertexControllerWithData:(vector_b8c3c0c5)arg1 range:(struct _NSRange)arg2 allowWet:(BOOL)arg3;
 - (void)updateVertexControllerWithDataRange:(struct _NSRange)arg1 allowWet:(BOOL)arg2;
 - (void)updateWet;
 

@@ -8,5 +8,7 @@
 
 @interface NSUserDefaults (SafariCoreExtras)
 + (id)safari_cloudBookmarksDefaults;
+- (id)safari_dateForKey:(id)arg1;
+- (void)safari_setDate:(id)arg1 forKey:(id)arg2;
 @end
 

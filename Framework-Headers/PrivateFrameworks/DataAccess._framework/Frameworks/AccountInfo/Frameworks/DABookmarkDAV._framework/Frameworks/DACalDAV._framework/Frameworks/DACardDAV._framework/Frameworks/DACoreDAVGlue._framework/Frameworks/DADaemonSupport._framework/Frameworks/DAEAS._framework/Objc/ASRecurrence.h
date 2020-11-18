@@ -6,11 +6,11 @@
 
 #import <DAEAS/ASItem.h>
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class ASEvent, NSDate, NSNumber;
 
-@interface ASRecurrence : ASItem <NSCoding>
+@interface ASRecurrence : ASItem <NSSecureCoding>
 {
     NSNumber *_type;
     NSNumber *_interval;
@@ -43,6 +43,7 @@
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_loadAttributesFromCalRecurrence:(void *)arg1 parentStartDate:(id)arg2 parentItem:(id)arg3 useFloatingTimeForAllDayEvents:(BOOL)arg4;
 - (void *)_newRecurrenceWithParentStartDate:(id)arg1 useFloatingTimeForAllDayEvents:(BOOL)arg2;

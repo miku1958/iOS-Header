@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityAnnouncementTimer;
 - (void)_accessibilitySetAnnouncementTimer:(id)arg1;
+- (id)_accessibilityUserTestingChildren;
 - (long long)_axCurrentPageNumber;
 - (void)_axMoveOnePage:(BOOL)arg1;
 - (id)_axPageDescriptionForPage:(id)arg1;

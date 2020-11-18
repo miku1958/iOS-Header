@@ -18,9 +18,11 @@
     double _timestamp;
     double _duration;
     NSArray *_alternativeSubstrings;
+    NSArray *_alternativeConfidences;
     struct _NSRange _substringRange;
 }
 
+@property (readonly, nonatomic) NSArray *alternativeConfidences; // @synthesize alternativeConfidences=_alternativeConfidences;
 @property (readonly, nonatomic) NSArray *alternativeSubstrings; // @synthesize alternativeSubstrings=_alternativeSubstrings;
 @property (readonly, nonatomic) float confidence; // @synthesize confidence=_confidence;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
@@ -30,7 +32,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithSubstring:(id)arg1 range:(struct _NSRange)arg2 timestamp:(double)arg3 duration:(double)arg4 confidence:(float)arg5 alternativeSubstrings:(id)arg6;
+- (id)_initWithSubstring:(id)arg1 range:(struct _NSRange)arg2 timestamp:(double)arg3 duration:(double)arg4 confidence:(float)arg5 alternativeSubstrings:(id)arg6 alternativeConfidences:(id)arg7;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

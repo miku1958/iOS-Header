@@ -25,6 +25,7 @@
     SUSearchDisplayController *_searchController;
     long long _searchFieldStyle;
     SUScriptTextFieldDelegate *_textFieldDelegate;
+    BOOL _hasLoadedSearchResultsTableView;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
@@ -80,7 +81,9 @@
 - (BOOL)searchBarShouldEndEditing:(id)arg1;
 - (void)searchBarTextDidEndEditing:(id)arg1;
 - (void)searchBarWillRemoveFromSuperview:(id)arg1;
+- (void)searchDisplayController:(id)arg1 didLoadSearchResultsTableView:(id)arg2;
 - (BOOL)searchDisplayController:(id)arg1 shouldReloadTableForSearchString:(id)arg2;
+- (void)searchDisplayController:(id)arg1 willUnloadSearchResultsTableView:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

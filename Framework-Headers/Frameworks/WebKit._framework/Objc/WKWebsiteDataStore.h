@@ -6,18 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSCoding-Protocol.h>
+#import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSString, WKHTTPCookieStore;
 
-@interface WKWebsiteDataStore : NSObject <WKObject, NSCoding>
+@interface WKWebsiteDataStore : NSObject <WKObject, NSSecureCoding>
 {
     struct ObjectStorage<API::WebsiteDataStore> _websiteDataStore;
 }
 
+@property (nonatomic, setter=_setAllowsCellularAccess:) BOOL _allowsCellularAccess;
 @property (readonly) struct Object *_apiObject;
+@property (nonatomic, setter=_setBoundInterfaceIdentifier:) NSString *_boundInterfaceIdentifier;
+@property (nonatomic, setter=_setCacheStorageDirectory:) NSString *_cacheStorageDirectory;
+@property (nonatomic, setter=_setCacheStoragePerOriginQuota:) unsigned long long _cacheStoragePerOriginQuota;
 @property (nonatomic, setter=_setResourceLoadStatisticsEnabled:) BOOL _resourceLoadStatisticsEnabled;
+@property (nonatomic, setter=_setServiceWorkerRegistrationDirectory:) NSString *_serviceWorkerRegistrationDirectory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,9 +31,12 @@
 @property (readonly) Class superclass;
 
 + (id)_allWebsiteDataTypesIncludingPrivate;
++ (void)_allowWebsiteDataRecordsForAllOrigins;
++ (BOOL)_defaultDataStoreExists;
 + (id)allWebsiteDataTypes;
 + (id)defaultDataStore;
 + (id)nonPersistentDataStore;
++ (BOOL)supportsSecureCoding;
 - (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_initWithConfiguration:(id)arg1;
 - (void)_resourceLoadStatisticsClearInMemoryAndPersistentStore;
@@ -42,6 +50,7 @@
 - (void)_resourceLoadStatisticsResetToConsistentState;
 - (void)_resourceLoadStatisticsSetGrandfatheringTime:(double)arg1;
 - (void)_resourceLoadStatisticsSetHadUserInteraction:(BOOL)arg1 forHost:(id)arg2;
+- (void)_resourceLoadStatisticsSetHasHadNonRecentUserInteractionForHost:(id)arg1;
 - (void)_resourceLoadStatisticsSetIsGrandfathered:(BOOL)arg1 forHost:(id)arg2;
 - (void)_resourceLoadStatisticsSetIsPrevalentResource:(BOOL)arg1 forHost:(id)arg2;
 - (void)_resourceLoadStatisticsSetLastSeen:(double)arg1 forHost:(id)arg2;

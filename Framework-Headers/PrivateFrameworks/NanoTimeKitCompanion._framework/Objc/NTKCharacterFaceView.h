@@ -41,8 +41,8 @@
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyShowsCanonicalContent;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
+- (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
-- (void)_configureComplicationFactory;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -59,6 +59,7 @@
 - (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_performWristRaiseAnimation;
+- (void)_prepareForEditing;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_prepareWristRaiseAnimation;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
@@ -69,6 +70,7 @@
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (struct CGRect)_tapToSpeakRect;
 - (void)_unloadSnapshotContentViews;
+- (void)_updateComplicationViewsAlphasWithAnimation:(BOOL)arg1;
 - (BOOL)_usesCustomZoom;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (double)_verticalPaddingForStatusBar;

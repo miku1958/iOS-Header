@@ -46,6 +46,7 @@
 - (id)initWithBaseURL:(id)arg1 records:(id)arg2 recordType:(id)arg3 localeIdentifier:(id)arg4 evaluator:(id)arg5 dataFetchBlock:(CDUnknownBlockType)arg6;
 - (id)initWithBaseURL:(id)arg1 records:(id)arg2 recordType:(id)arg3 localeIdentifier:(id)arg4 evaluator:(id)arg5 protocolClass:(Class)arg6 dataFetchBlock:(CDUnknownBlockType)arg7;
 - (void)invalidate;
+- (void)postRecipeResponseJSONObject:(id)arg1 recipeId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

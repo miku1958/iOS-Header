@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class ABBufferQuery, NSMutableData;
+@class ABBufferQuery, CNManagedConfiguration, NSMutableData;
 
 @interface ABBufferQueryCursor : NSObject
 {
@@ -34,6 +34,7 @@
     unsigned long long _maxContactsPerBatch;
     unsigned long long _countOfContactsInBuffer;
     ABBufferQuery *_query;
+    CNManagedConfiguration *_managedConfiguration;
 }
 
 @property (nonatomic) unsigned long long blobBytesWritten; // @synthesize blobBytesWritten=_blobBytesWritten;
@@ -47,6 +48,7 @@
 @property (nonatomic) int currentRecordID; // @synthesize currentRecordID=_currentRecordID;
 @property (nonatomic) BOOL hasFoundAnyImageDataForCurrentContact; // @synthesize hasFoundAnyImageDataForCurrentContact=_hasFoundAnyImageDataForCurrentContact;
 @property (nonatomic) struct sqlite3_blob *incompleteBlob; // @synthesize incompleteBlob=_incompleteBlob;
+@property (strong, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property (nonatomic) unsigned long long maxBufferSize; // @synthesize maxBufferSize=_maxBufferSize;
 @property (nonatomic) unsigned long long maxContactsPerBatch; // @synthesize maxContactsPerBatch=_maxContactsPerBatch;
 @property (nonatomic) int multivalueEntryKeyColumn; // @synthesize multivalueEntryKeyColumn=_multivalueEntryKeyColumn;
@@ -63,9 +65,9 @@
 
 - (void)dealloc;
 - (void)fetchNextBatchWithReply:(CDUnknownBlockType)arg1;
-- (id)initWithAddressBook:(void *)arg1 predicate:(id)arg2 propertyIdentifierSet:(struct __CFSet *)arg3 includeLinkedContacts:(BOOL)arg4 sortOrder:(unsigned int)arg5 suggestedContactsPerBatch:(unsigned long long)arg6;
-- (id)initWithAddressBook:(void *)arg1 query:(id)arg2 queryBinder:(CDUnknownBlockType)arg3 propertyIdentifierSet:(struct __CFSet *)arg4 includeLinkedContacts:(BOOL)arg5 sortOrder:(unsigned int)arg6 suggestedContactsPerBatch:(unsigned long long)arg7;
-- (id)initWithQuery:(id)arg1 batchSize:(unsigned long long)arg2;
+- (id)initWithAddressBook:(void *)arg1 predicate:(id)arg2 propertyIdentifierSet:(struct __CFSet *)arg3 includeLinkedContacts:(BOOL)arg4 sortOrder:(unsigned int)arg5 suggestedContactsPerBatch:(unsigned long long)arg6 managedConfiguration:(id)arg7;
+- (id)initWithAddressBook:(void *)arg1 query:(id)arg2 queryBinder:(CDUnknownBlockType)arg3 propertyIdentifierSet:(struct __CFSet *)arg4 includeLinkedContacts:(BOOL)arg5 sortOrder:(unsigned int)arg6 suggestedContactsPerBatch:(unsigned long long)arg7 managedConfiguration:(id)arg8;
+- (id)initWithQuery:(id)arg1 batchSize:(unsigned long long)arg2 managedConfiguration:(id)arg3;
 
 @end
 

@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
+
 @class DEDBugSession, NSArray, NSString, NSURL;
 
-@interface DEDAttachmentGroup : NSObject
+@interface DEDAttachmentGroup : NSObject <DEDSecureArchiving>
 {
     DEDBugSession *_fromBugSession;
     NSString *_deviceID;
@@ -19,17 +21,21 @@
 }
 
 @property (strong) NSArray *attachmentItems; // @synthesize attachmentItems=_attachmentItems;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong) NSString *extensionID; // @synthesize extensionID=_extensionID;
 @property (strong) DEDBugSession *fromBugSession; // @synthesize fromBugSession=_fromBugSession;
+@property (readonly) unsigned long long hash;
 @property (strong) NSURL *rootURL; // @synthesize rootURL=_rootURL;
+@property (readonly) Class superclass;
 
++ (id)archivedClasses;
 + (id)groupWithDEGroup:(id)arg1 identifier:(id)arg2;
 + (id)groupWithDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (id)archiveName;
-- (id)description;
 - (BOOL)isLocal;
 - (id)serialize;
 - (id)totalFilesize;

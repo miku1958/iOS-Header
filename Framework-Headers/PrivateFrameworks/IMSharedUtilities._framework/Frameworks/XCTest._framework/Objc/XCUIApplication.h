@@ -16,6 +16,7 @@
     BOOL _doesNotHandleUIInterruptions;
     BOOL _allowBackgroundInteraction;
     BOOL _idleAnimationWaitEnabled;
+    unsigned int _currentInteractionOptions;
     XCUIApplicationOpenRequest *_lastLaunchRequest;
     XCUIElement *_keyboard;
     NSArray *_launchArguments;
@@ -32,7 +33,9 @@
 @property (strong) XCApplicationQuery *applicationQuery; // @synthesize applicationQuery=_applicationQuery;
 @property (readonly) id<XCTRunnerAutomationSession> automationSession;
 @property (readonly) BOOL background;
+@property (readonly) BOOL backgroundInteractionAllowed;
 @property (readonly) NSString *bundleID;
+@property unsigned int currentInteractionOptions; // @synthesize currentInteractionOptions=_currentInteractionOptions;
 @property (nonatomic) BOOL doesNotHandleUIInterruptions; // @synthesize doesNotHandleUIInterruptions=_doesNotHandleUIInterruptions;
 @property (readonly) BOOL fauxCollectionViewCellsEnabled;
 @property (readonly) BOOL foreground;
@@ -47,6 +50,8 @@
 @property BOOL prefersPlatformLauncher; // @synthesize prefersPlatformLauncher=_prefersPlatformLauncher;
 @property (nonatomic) int processID;
 @property (readonly) BOOL running;
+@property (readonly) BOOL shouldSkipPostEventQuiescence;
+@property (readonly) BOOL shouldSkipPreEventQuiescence;
 @property (nonatomic) unsigned long long state;
 @property (readonly) BOOL suspended;
 
@@ -57,16 +62,17 @@
 + (id)keyPathsForValuesAffectingState;
 + (id)keyPathsForValuesAffectingSuspended;
 + (id)new;
+- (void).cxx_destruct;
 - (id)_combinedLaunchArguments;
 - (id)_combinedLaunchEnvironment;
 - (void)_launchUsingXcode:(BOOL)arg1;
+- (void)_performWithInteractionOptions:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_waitForQuiescence;
 - (void)_waitForViewControllerViewDidDisappearWithTimeout:(double)arg1;
 - (void)activate;
 - (id)application;
 - (void)clearQuery;
 - (void)commonInitWithApplicationImpl:(id)arg1 isTestDependency:(BOOL)arg2;
-- (void)dealloc;
 - (id)description;
 - (void)dismissKeyboard;
 - (unsigned long long)elementType;

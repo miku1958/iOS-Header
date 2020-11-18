@@ -20,7 +20,7 @@
 + (id)world;
 - (void)dealloc;
 - (id)init;
-- (id)initWithWorld:(Ref_f71b44f7 *)arg1;
+- (id)initWithWorld:(Ref_526bc8c1 *)arg1;
 - (void)unregisterWorld;
 
 @end

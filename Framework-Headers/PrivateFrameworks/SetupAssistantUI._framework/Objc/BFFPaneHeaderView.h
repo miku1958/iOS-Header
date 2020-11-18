@@ -6,16 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UIColor, UIImage, UIImageView, UILabel;
+@class NSString, UIButton, UIColor, UIImage, UIImageView, UILabel;
 
 @interface BFFPaneHeaderView : UIView
 {
-    UIImageView *_iconView;
+    struct CGSize _iconSize;
     UIButton *_linkButton;
     CDUnknownBlockType _linkHandler;
     UIView *_bottomLine;
+    BOOL _iconInheritsTint;
     BOOL _useMinimumTopPadding;
     BOOL _textLabelAlignedByLastBaseline;
+    UIImageView *_iconView;
     UIImage *_icon;
     UILabel *_textLabel;
     UILabel *_detailTextLabel;
@@ -29,6 +31,10 @@
 @property (readonly, nonatomic) UILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
 @property (nonatomic) double flexibleHeight; // @synthesize flexibleHeight=_flexibleHeight;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property (strong, nonatomic) NSString *iconAccessibilityLabel;
+@property (nonatomic) BOOL iconInheritsTint; // @synthesize iconInheritsTint=_iconInheritsTint;
+@property (nonatomic) struct CGSize iconSize;
+@property (strong, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property (readonly, nonatomic) UILabel *subLabel; // @synthesize subLabel=_subLabel;
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (nonatomic, getter=isTextLabelAlignedByLastBaseline) BOOL textLabelAlignedByLastBaseline; // @synthesize textLabelAlignedByLastBaseline=_textLabelAlignedByLastBaseline;
@@ -43,6 +49,7 @@
 - (void)setLinkText:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)setTitleText:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)tintColorDidChange;
 
 @end
 

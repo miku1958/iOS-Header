@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface SAUpdateReadingState : SABaseCommand <SAServerBoundCommand>
 {
@@ -18,6 +18,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *items;
 @property (copy, nonatomic) NSString *readingStateId;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;

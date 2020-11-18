@@ -45,6 +45,7 @@
     NSString *_EV0VideoPersistenceUUID;
     unsigned long long _userInitiationTime;
     double _loggingVideoZoomFactor;
+    long long _loggingZoomInteractionType;
     id<CAMStillImageCaptureRequestDelegate> _delegate;
 }
 
@@ -67,6 +68,7 @@
 @property (readonly, nonatomic) long long lightingEffectType; // @synthesize lightingEffectType=_lightingEffectType;
 @property (readonly, copy, nonatomic) NSURL *localVideoDestinationURL; // @synthesize localVideoDestinationURL=_localVideoDestinationURL;
 @property (readonly, nonatomic) double loggingVideoZoomFactor; // @synthesize loggingVideoZoomFactor=_loggingVideoZoomFactor;
+@property (readonly, nonatomic) long long loggingZoomInteractionType; // @synthesize loggingZoomInteractionType=_loggingZoomInteractionType;
 @property (readonly, nonatomic) unsigned long long maximumBurstLength; // @synthesize maximumBurstLength=_maximumBurstLength;
 @property (readonly, nonatomic) NSArray *originalFilters; // @synthesize originalFilters=_originalFilters;
 @property (readonly) Class superclass;

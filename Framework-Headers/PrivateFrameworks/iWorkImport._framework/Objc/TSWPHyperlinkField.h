@@ -31,10 +31,10 @@ __attribute__((visibility("hidden")))
 + (BOOL)schemeIsValidForURL:(id)arg1;
 + (BOOL)schemeIsValidForURLReference:(id)arg1;
 + (id)urlReferenceFromURL:(id)arg1;
+- (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)allowsEditing;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (id)filePath;
 - (id)fullPath;
 - (BOOL)hasDisplayText;

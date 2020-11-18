@@ -12,6 +12,7 @@
 
 + (id)fallbackLocation;
 + (id)sharedLocationManager;
+- (id)_clLocationManagerLocation;
 - (id)anyLocation;
 - (id)currentLocation;
 - (id)previousLocation;

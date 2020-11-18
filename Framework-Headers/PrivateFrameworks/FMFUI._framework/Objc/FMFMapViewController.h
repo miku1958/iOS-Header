@@ -12,7 +12,7 @@
 #import <FMFUI/FMFSessionDelegateInternal-Protocol.h>
 #import <FMFUI/MKUserTrackingView-Protocol.h>
 
-@class FMFMapOptionsViewController, FMFMapViewDelegateInternal, FMFNoLocationView, FMFRefreshBarButtonItem, FMFSession, FMFTitleView, MKMapView, NSSet, NSString, UIBarButtonItem, UIColor, UIImageView, UIToolbar, UIView, _MKUserTrackingButton;
+@class FMFMapOptionsViewController, FMFMapViewDelegateInternal, FMFNoLocationView, FMFRefreshBarButtonItem, FMFSession, FMFTitleView, MKMapView, NSSet, NSString, UIBarButtonItem, UIColor, UIImageView, _MKUserTrackingButton;
 @protocol FMFMapViewControllerDelegate;
 
 @interface FMFMapViewController : UIViewController <FMFSessionDelegateInternal, FMFMapViewDelegateInternalDelegate, MKUserTrackingView, FMFNoLocationViewDelegate, FMFMapOptionsViewControllerDelegate>
@@ -22,7 +22,6 @@
     BOOL _showFloatingMapLocationButton;
     BOOL _isMapCenteringDisabled;
     BOOL _isSimpleMap;
-    BOOL _canShowNoLocation;
     BOOL __refreshingIsPaused;
     BOOL __blockDidReceiveAnimation;
     BOOL __isRenderingInitialMap;
@@ -41,12 +40,9 @@
     FMFMapOptionsViewController *_mapOptionsVC;
     FMFTitleView *_titleView;
     void *_addressBook;
-    UIToolbar *_toolbar;
     UIBarButtonItem *_userTrackingButtonItem;
     UIBarButtonItem *_directionsBarButtonItem;
     UIBarButtonItem *_infoBarButtonItem;
-    UIToolbar *_floatingLocationToolbar;
-    UIView *_floatingToolbarView;
     FMFRefreshBarButtonItem *_refreshButton;
     UIImageView *_cachedMapView;
     unsigned long long _defaultMapType;
@@ -64,7 +60,6 @@
 @property (nonatomic) BOOL alwaysShowAccuracy; // @synthesize alwaysShowAccuracy=_alwaysShowAccuracy;
 @property (copy, nonatomic) UIColor *annotationTintColor; // @synthesize annotationTintColor=_annotationTintColor;
 @property (strong, nonatomic) UIImageView *cachedMapView; // @synthesize cachedMapView=_cachedMapView;
-@property (nonatomic) BOOL canShowNoLocation; // @synthesize canShowNoLocation=_canShowNoLocation;
 @property (nonatomic) long long currentTrackingMode; // @synthesize currentTrackingMode=_currentTrackingMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long defaultMapType; // @synthesize defaultMapType=_defaultMapType;
@@ -72,8 +67,6 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIBarButtonItem *directionsBarButtonItem; // @synthesize directionsBarButtonItem=_directionsBarButtonItem;
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
-@property (strong, nonatomic) UIToolbar *floatingLocationToolbar; // @synthesize floatingLocationToolbar=_floatingLocationToolbar;
-@property (strong, nonatomic) UIView *floatingToolbarView; // @synthesize floatingToolbarView=_floatingToolbarView;
 @property (strong, nonatomic) FMFSession *fmfSession; // @synthesize fmfSession=_fmfSession;
 @property (copy, nonatomic) NSSet *handlesShowingLocations;
 @property (readonly) unsigned long long hash;
@@ -91,7 +84,6 @@
 @property (nonatomic) BOOL showFloatingMapLocationButton; // @synthesize showFloatingMapLocationButton=_showFloatingMapLocationButton;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FMFTitleView *titleView; // @synthesize titleView=_titleView;
-@property (strong, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (strong, nonatomic) _MKUserTrackingButton *userTrackingButton; // @synthesize userTrackingButton=_userTrackingButton;
 @property (strong, nonatomic) UIBarButtonItem *userTrackingButtonItem; // @synthesize userTrackingButtonItem=_userTrackingButtonItem;
 @property (nonatomic) BOOL viewWillAppearCalled; // @synthesize viewWillAppearCalled=_viewWillAppearCalled;
@@ -108,13 +100,13 @@
 - (void)_updateDirectionsButtonEnabled;
 - (void)_updateLocationButtonEnabled;
 - (void)_updateTitleViewLocation:(id)arg1;
-- (void)addFloatingToolbar;
 - (void)addHandlesToSession;
 - (id)annotationImageForAnnotation:(id)arg1 andHandle:(id)arg2;
 - (id)annotationImageForHandle:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (BOOL)canRotateForHeading;
 - (BOOL)canSelectAnnotation:(id)arg1;
+- (BOOL)canShowNoLocation;
 - (void)dealloc;
 - (void)deselectAllAnnotations;
 - (void)destroySession;

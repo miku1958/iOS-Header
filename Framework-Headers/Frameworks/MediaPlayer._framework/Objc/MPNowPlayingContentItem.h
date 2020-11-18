@@ -9,13 +9,11 @@
 #import <MediaPlayer/NSCopying-Protocol.h>
 
 @class MPMediaItemArtwork, MPNowPlayingInfoLyricsItem, NSArray, NSDate, NSDictionary, NSString;
-@protocol MPNowPlayingContentItemArtworkDataSource, MPNowPlayingContentItemDescriptionDataSource, MPNowPlayingContentItemLyricsDataSource;
+@protocol MPNowPlayingContentItemArtworkDataSource;
 
 @interface MPNowPlayingContentItem : MPContentItem <NSCopying>
 {
     NSDictionary *_nowPlayingInfo;
-    id<MPNowPlayingContentItemLyricsDataSource> _lyricsDataSource;
-    id<MPNowPlayingContentItemDescriptionDataSource> _descriptionDataSource;
     id<MPNowPlayingContentItemArtworkDataSource> _artworkDataSource;
 }
 
@@ -34,7 +32,6 @@
 @property (copy, nonatomic) NSString *composerName;
 @property (copy, nonatomic) NSArray *currentLanguageOptions;
 @property (nonatomic) float defaultPlaybackRate;
-@property (weak, nonatomic) id<MPNowPlayingContentItemDescriptionDataSource> descriptionDataSource; // @synthesize descriptionDataSource=_descriptionDataSource;
 @property (copy, nonatomic) NSDictionary *deviceSpecificUserInfo;
 @property (copy, nonatomic) NSString *directorName;
 @property (nonatomic) long long discNumber;
@@ -54,7 +51,6 @@
 @property (nonatomic) long long legacyUniqueID;
 @property (copy, nonatomic) NSString *localizedContentRating;
 @property (copy, nonatomic) MPNowPlayingInfoLyricsItem *lyrics;
-@property (weak, nonatomic) id<MPNowPlayingContentItemLyricsDataSource> lyricsDataSource; // @synthesize lyricsDataSource=_lyricsDataSource;
 @property (nonatomic) unsigned long long mediaType;
 @property (copy, nonatomic) NSDictionary *nowPlayingInfo;
 @property (nonatomic) long long numberOfChildren;

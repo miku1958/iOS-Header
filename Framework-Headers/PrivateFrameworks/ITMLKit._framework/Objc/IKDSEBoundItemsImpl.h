@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     NSArray *_prototypes;
     IKElementChangeSet *_itemsChangeset;
     IKAppDataSet *_dataSet;
-    NSDictionary *_usedPrototypesByType;
+    NSDictionary *_usedPrototypeMappingsByType;
     NSDictionary *_childrenByItemID;
     NSMutableIndexSet *_visibleIndexSet;
     NSMutableDictionary *_proxyChildrenByItemID;
@@ -39,10 +39,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *prototypes; // @synthesize prototypes=_prototypes;
 @property (strong, nonatomic) NSMutableDictionary *proxyChildrenByItemID; // @synthesize proxyChildrenByItemID=_proxyChildrenByItemID;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSDictionary *usedPrototypesByType; // @synthesize usedPrototypesByType=_usedPrototypesByType;
+@property (copy, nonatomic) NSDictionary *usedPrototypeMappingsByType; // @synthesize usedPrototypeMappingsByType=_usedPrototypeMappingsByType;
 @property (strong, nonatomic) NSMutableIndexSet *visibleIndexSet; // @synthesize visibleIndexSet=_visibleIndexSet;
 
-+ (BOOL)_isPrototypeDOMElement:(id)arg1 validForReuseWithID:(id)arg2;
++ (id)_prototypeMappingForDataItem:(id)arg1 inDictionary:(id)arg2;
++ (void)_traversePrototypeMappings:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (BOOL)areItemsBoundForBinding:(id)arg1;
 - (void).cxx_destruct;
 - (id)_appDataItemFromJSDataItem:(id)arg1 prototype:(id)arg2;
@@ -55,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (void)_applyVisibleIndexRangeValueWithRange:(struct _NSRange)arg1 domBindingController:(id)arg2;
 - (id)_instantiateItemAtIndex:(long long)arg1 domBindingController:(id)arg2;
 - (id)_itemsPropertyPath;
-- (id)_prototypeForType:(id)arg1;
 - (id)actualElementForProxyElement:(id)arg1;
 - (id)additionalKeysToResolveForDOMBindingController:(id)arg1;
 - (void)applyUpdatesWithImplementation:(id)arg1 usingUpdater:(CDUnknownBlockType)arg2;

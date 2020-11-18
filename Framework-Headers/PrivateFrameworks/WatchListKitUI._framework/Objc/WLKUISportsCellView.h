@@ -38,6 +38,7 @@
 - (void)layoutSubviews;
 - (void)layoutWithElement:(id)arg1;
 - (void)prepareForCellReuse;
+- (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

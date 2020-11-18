@@ -25,13 +25,13 @@
 
 + (id)applicationNodeForLanguage:(unsigned long long)arg1;
 + (unsigned long long)currentPlatform;
+- (void).cxx_destruct;
 - (id)_snapshotInTreeStartingWithSnapshot:(id)arg1 passingPredicateBlock:(CDUnknownBlockType)arg2;
 - (id)_stringConstantForString:(id)arg1;
 - (id)applicationNode;
 - (id)assertHasFocusNode;
 - (void)clearPreviousTyping;
 - (id)commentNodeWithString:(id)arg1;
-- (void)dealloc;
 - (id)focusedAccessibilityElementForApplicationSnapshot:(id)arg1;
 - (id)gestureNodesForKeyDownEventWithCharacters:(id)arg1 charactersIgnoringModifiers:(id)arg2 modifierFlags:(unsigned long long)arg3 focusedAccessibilityElement:(id)arg4 didAppendToPreviousString:(BOOL *)arg5;
 - (id)nodeForOrientationChangeWithSymbolName:(id)arg1;

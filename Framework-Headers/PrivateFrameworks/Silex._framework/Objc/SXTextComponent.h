@@ -18,6 +18,7 @@
 
 + (id)typeString;
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
+- (unsigned long long)traits;
 
 @end
 

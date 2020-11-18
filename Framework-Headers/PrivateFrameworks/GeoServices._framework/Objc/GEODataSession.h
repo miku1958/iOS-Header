@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEODataSession-Protocol.h>
+#import <GeoServices/GEODataSessionRulesProvider-Protocol.h>
 
 @class GEODataURLSession, GEODataXPCSession, NSString;
 @protocol GEODataSession, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface GEODataSession : NSObject <GEODataSession>
+@interface GEODataSession : NSObject <GEODataSessionRulesProvider, GEODataSession>
 {
     NSObject<OS_dispatch_queue> *_sessionIsolation;
     id<GEODataSession> _urlSession;
@@ -20,9 +21,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionIsolation; // @synthesize sessionIsolation=_sessionIsolation;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEODataURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property (readonly, nonatomic) GEODataXPCSession *xpcSession; // @synthesize xpcSession=_xpcSession;

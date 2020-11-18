@@ -10,6 +10,7 @@
 {
 }
 
+- (void)_computeCleanAperture:(CDUnknownBlockType)arg1;
 - (void)calculate:(CDUnknownBlockType)arg1;
 
 @end

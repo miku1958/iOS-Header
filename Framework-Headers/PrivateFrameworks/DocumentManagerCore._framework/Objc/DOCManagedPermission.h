@@ -16,14 +16,18 @@
 }
 
 @property (strong, nonatomic) NSCache *cache; // @synthesize cache=_cache;
-@property (readonly, nonatomic) BOOL hasRestrictions;
+@property (readonly, nonatomic) BOOL hasAnyEffectiveRestrictions;
+@property (readonly, nonatomic) BOOL hasOpenInRestrictions;
 @property (strong, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
+@property (readonly, nonatomic) BOOL isHostAccountOrAppManaged;
 @property (nonatomic) BOOL isHostManaged; // @synthesize isHostManaged=_isHostManaged;
+@property (readonly, nonatomic) BOOL isInEducationMode;
 
 + (id)defaultPermission;
 - (void).cxx_destruct;
 - (BOOL)canCopyItems:(id)arg1;
 - (BOOL)canCopySourceIsManaged:(BOOL)arg1;
+- (BOOL)canCopyfromContainingBundleIdentifer:(id)arg1;
 - (BOOL)canHostAppPerformAction:(unsigned long long)arg1 targetBundleIdentifier:(id)arg2;
 - (BOOL)canHostAppPerformAction:(unsigned long long)arg1 targetItem:(id)arg2;
 - (BOOL)canHostAppPerformAction:(unsigned long long)arg1 targetSearchableItem:(id)arg2;

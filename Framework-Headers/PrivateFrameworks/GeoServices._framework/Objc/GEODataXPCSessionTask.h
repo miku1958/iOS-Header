@@ -7,14 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEODataSessionTask-Protocol.h>
+#import <GeoServices/GEODataSessionUpdatableTask-Protocol.h>
 #import <GeoServices/GEODataXPCSessionTaskQueueTask-Protocol.h>
 #import <GeoServices/GEOStateCapturing-Protocol.h>
 
 @class GEOClientMetrics, GEODataRequest, GEODataXPCSession, NSData, NSError, NSString;
-@protocol GEODataSessionTaskDelegate, OS_dispatch_queue, OS_os_activity, OS_xpc_object;
+@protocol GEODataSessionTaskDelegate, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity, OS_voucher, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
-@interface GEODataXPCSessionTask : NSObject <GEODataXPCSessionTaskQueueTask, GEOStateCapturing, GEODataSessionTask>
+@interface GEODataXPCSessionTask : NSObject <GEODataXPCSessionTaskQueueTask, GEOStateCapturing, GEODataSessionTask, GEODataSessionUpdatableTask>
 {
     GEODataXPCSession *_session;
     id<GEODataSessionTaskDelegate> _delegate;
@@ -28,9 +29,11 @@ __attribute__((visibility("hidden")))
     double _endTime;
     unsigned int _taskIdentifier;
     NSObject<OS_os_activity> *_activity;
+    NSObject<OS_voucher> *_voucher;
     float _priority;
     BOOL _canceled;
     BOOL _didNotifyDelegate;
+    id<NSObject> _parsedResponse;
 }
 
 @property (readonly, nonatomic) NSObject<OS_os_activity> *activity;
@@ -44,18 +47,20 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didNotifyDelegate; // @synthesize didNotifyDelegate=_didNotifyDelegate;
 @property (readonly) double elapsedTime;
-@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property (strong, nonatomic) NSError *error;
 @property (readonly, nonatomic) BOOL failedDueToCancel;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long incomingPayloadSize;
 @property (readonly, nonatomic) BOOL isCancelled;
 @property (readonly, nonatomic) unsigned long long outgoingPayloadSize;
+@property (readonly, nonatomic) id<NSObject> parsedResponse;
 @property float priority;
 @property (readonly, nonatomic) BOOL protocolBufferHasPreamble;
 @property (readonly, nonatomic) NSData *receivedData; // @synthesize receivedData=_receivedData;
 @property (readonly, nonatomic) NSString *remoteAddressAndPort;
 @property (readonly, nonatomic) GEODataRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) id<GEORequestCounterTicket> requestCounterTicket;
 @property (readonly, weak, nonatomic) GEODataXPCSession *session; // @synthesize session=_session;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionIsolation;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionIsolation; // @synthesize sessionIsolation=_sessionIsolation;
@@ -64,11 +69,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property (readonly, nonatomic) unsigned int taskQueue;
 @property (readonly, nonatomic) float taskQueuePriority;
+@property (readonly, nonatomic) double timeoutInterval;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcRequest;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcRequest;
 @property (readonly, nonatomic) unsigned long long xpcRequestIdentifier;
 
 - (void).cxx_destruct;
+- (void)_finishAndNotifyDelegate;
 - (void)cancel;
 - (id)captureStateWithHints:(struct os_state_hints_s *)arg1;
 - (void)dealloc;
@@ -77,11 +84,14 @@ __attribute__((visibility("hidden")))
 - (void)notifyDelegate;
 - (BOOL)processFailedReplyXPCDictionary:(id)arg1;
 - (BOOL)processReplyXPCDictionary:(id)arg1;
-- (void)processResult:(int)arg1 xpcReply:(id)arg2;
+- (void)processResult:(int)arg1 xpcReply:(id)arg2 error:(id)arg3;
 - (void)processTaskCancelled;
-- (void)processXPCReply:(id)arg1;
+- (void)processTaskTimeout;
+- (void)processXPCReply:(id)arg1 error:(id)arg2;
+- (void)setParsedResponse:(id)arg1;
 - (void)start;
 - (unsigned long long)updateXPCRequestIdentifier;
+- (void)willSendTask:(CDUnknownBlockType)arg1;
 
 @end
 

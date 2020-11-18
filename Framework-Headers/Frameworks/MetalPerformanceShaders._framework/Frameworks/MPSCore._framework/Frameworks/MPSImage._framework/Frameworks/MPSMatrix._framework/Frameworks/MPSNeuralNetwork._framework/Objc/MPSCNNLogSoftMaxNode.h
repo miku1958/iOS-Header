@@ -11,6 +11,7 @@
 }
 
 + (id)nodeWithSource:(id)arg1;
+- (Class)gradientClass;
 - (id)initWithSource:(id)arg1;
 - (struct FilterGraphNode *)newFilterNode;
 

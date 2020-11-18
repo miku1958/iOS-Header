@@ -10,21 +10,24 @@
 #import <Silex/WKScriptMessageHandler-Protocol.h>
 
 @class NSMutableDictionary, NSString;
+@protocol SXWebContentLogger;
 
 @interface SXWebContentMessageHandlerManager : NSObject <WKScriptMessageHandler, SXWebContentMessageHandlerManager>
 {
+    id<SXWebContentLogger> _logger;
     NSMutableDictionary *_messageHandlers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SXWebContentLogger> logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) NSMutableDictionary *messageHandlers; // @synthesize messageHandlers=_messageHandlers;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addMessageHandler:(id)arg1 name:(id)arg2;
-- (id)initWithUserContentController:(id)arg1;
+- (id)initWithUserContentController:(id)arg1 logger:(id)arg2;
 - (void)userContentController:(id)arg1 didReceiveScriptMessage:(id)arg2;
 
 @end

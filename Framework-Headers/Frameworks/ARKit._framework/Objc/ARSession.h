@@ -10,21 +10,21 @@
 #import <ARKit/ARTechniqueDelegate-Protocol.h>
 #import <ARKit/AVCaptureAudioDataOutputSampleBufferDelegate-Protocol.h>
 
-@class ARConfiguration, ARFrame, ARSessionMetrics, ARTechnique, ARWorldTrackingTechnique, CMMotionManager, NSArray, NSHashTable, NSMutableSet, NSString;
+@class ARConfiguration, ARFrame, ARFrameContext, ARQATracer, ARSessionMetrics, ARTechnique, ARWorldTrackingTechnique, CMMotionManager, NSArray, NSDate, NSHashTable, NSString;
 @protocol ARSessionDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ARSession : NSObject <ARSensorDelegate, ARTechniqueDelegate, AVCaptureAudioDataOutputSampleBufferDelegate>
 {
     ARTechnique *_technique;
+    ARTechnique *_renderingTechnique;
     ARWorldTrackingTechnique *_worldTrackingTechnique;
+    BOOL _configuredForWorldTracking;
     ARFrame *_lastProcessedFrame;
     NSObject<OS_dispatch_semaphore> *_lastProcessedFrameSemaphore;
+    ARFrameContext *_nextFrameContext;
+    NSObject<OS_dispatch_semaphore> *_nextFrameContextSemaphore;
+    CDStruct_14d5dc5e _rearCameraToDisplayTransform;
     NSObject<OS_dispatch_queue> *_stateQueue;
-    NSMutableSet *_anchorsToAdd;
-    NSMutableSet *_anchorsToRemove;
-    BOOL _sessionOriginUpdated;
-    BOOL _worldOriginInitialized;
-    BOOL _worldOriginReset;
     NSHashTable *_observers;
     NSObject<OS_dispatch_semaphore> *_observersSemaphore;
     id _thermalStateObserver;
@@ -32,7 +32,12 @@
     CMMotionManager *_motionManger;
     ARSessionMetrics *_metrics;
     NSObject<OS_dispatch_queue> *_audioOutputQueue;
-    BOOL _trackingWasReset;
+    double _defaultRelocalizationDuration;
+    NSDate *_relocalizationTimeoutDate;
+    BOOL _relocalizationRequested;
+    double _currentTrackingStartingTimestamp;
+    long long _featurePointAccumulationCount;
+    BOOL _relocalizing;
     id<ARSessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     unsigned long long _state;
@@ -41,7 +46,7 @@
     unsigned long long _runningSensors;
     unsigned long long _pausedSensors;
     unsigned long long _powerUsage;
-    CDStruct_14d5dc5e _sessionOriginTransform;
+    ARQATracer *_tracer;
 }
 
 @property (strong, nonatomic) NSArray *availableSensors; // @synthesize availableSensors=_availableSensors;
@@ -54,14 +59,18 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long pausedSensors; // @synthesize pausedSensors=_pausedSensors;
 @property (nonatomic) unsigned long long powerUsage; // @synthesize powerUsage=_powerUsage;
+@property BOOL relocalizing; // @synthesize relocalizing=_relocalizing;
 @property (nonatomic) unsigned long long runningSensors; // @synthesize runningSensors=_runningSensors;
-@property (nonatomic) CDStruct_14d5dc5e sessionOriginTransform; // @synthesize sessionOriginTransform=_sessionOriginTransform;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) ARQATracer *tracer; // @synthesize tracer=_tracer;
 
++ (void)_applySessionOverrides:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_addObserver:(id)arg1;
+- (CDStruct_14d5dc5e)_cameraTransformForResultData:(id)arg1 previousFrame:(id)arg2;
+- (id)_currentFrameContext;
 - (void)_endInterruption;
 - (id)_getObservers;
 - (id)_imageSensorForConfiguration:(id)arg1 existingSensor:(id)arg2;
@@ -74,12 +83,15 @@
 - (void)_sessionDidRemoveAnchors:(id)arg1;
 - (void)_sessionDidUpdateAnchors:(id)arg1;
 - (void)_sessionDidUpdateFrame:(id)arg1;
+- (void)_sessionShouldAttemptRelocalization;
 - (void)_setTechnique:(id)arg1;
 - (void)_startSensorsWithDataTypes:(unsigned long long)arg1;
 - (id)_stateQueue;
 - (void)_stopAllSensors;
 - (void)_stopSensorsWithDataTypes:(unsigned long long)arg1 keepingDataTypes:(unsigned long long)arg2;
-- (void)_updateAnchorsForFrame:(id)arg1 resultDatas:(id)arg2 addedAnchors:(id)arg3 updatedAnchors:(id)arg4 removedAnchors:(id)arg5 worldOriginUpdated:(BOOL)arg6 reinitializeExistingAnchors:(BOOL)arg7;
+- (void)_updateAnchorsForFrame:(id)arg1 resultDatas:(id)arg2 context:(id)arg3 addedAnchors:(id)arg4 updatedAnchors:(id)arg5 removedAnchors:(id)arg6;
+- (void)_updateFeaturePointsForFrame:(id)arg1 previousFrame:(id)arg2 context:(id)arg3;
+- (void)_updateOriginTransformForFrame:(id)arg1 previousFrame:(id)arg2 modifiers:(unsigned long long)arg3 context:(id)arg4;
 - (void)_updatePowerUsage;
 - (void)_updateSensorsWithConfiguration:(id)arg1;
 - (void)_updateSessionStateWithConfiguration:(id)arg1 options:(unsigned long long)arg2;
@@ -90,7 +102,9 @@
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)dealloc;
 - (id)init;
+- (CDStruct_14d5dc5e)originTransform;
 - (void)pause;
+- (CDStruct_14d5dc5e)predictedDeviceTransformAtTimestamp:(double)arg1;
 - (void)removeAnchor:(id)arg1;
 - (void)runWithConfiguration:(id)arg1;
 - (void)runWithConfiguration:(id)arg1 options:(unsigned long long)arg2;
@@ -98,6 +112,8 @@
 - (void)sensor:(id)arg1 didOutputSensorData:(id)arg2;
 - (void)sensorDidPause:(id)arg1;
 - (void)sensorDidRestart:(id)arg1;
+- (void)setOriginTransform:(CDStruct_14d5dc5e)arg1;
+- (void)setWorldOrigin:(CDStruct_14d5dc5e)arg1;
 - (id)technique;
 - (void)technique:(id)arg1 didFailWithError:(id)arg2;
 - (void)technique:(id)arg1 didOutputResultData:(id)arg2 timestamp:(double)arg3 context:(id)arg4;

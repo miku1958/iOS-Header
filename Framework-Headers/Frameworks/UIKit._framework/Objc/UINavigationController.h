@@ -243,6 +243,7 @@
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_doesTopViewControllerSupportInterfaceOrientation:(long long)arg1;
 - (void)_eagerlyUpdateSafeAreaInsets;
+- (struct UIEdgeInsets)_edgeInsetsDeferringToCommandeeringTableHeaderViewStyleSearchControllerWithPresentingViewController:(id)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (void)_executeNavigationHandler:(CDUnknownBlockType)arg1 deferred:(BOOL)arg2;
 - (id)_existingNavigationBar;
@@ -276,6 +277,7 @@
 - (void)_hideShowNavigationBarDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_hideShowToolbarDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (struct CGRect)_incomingNavigationBarFrame;
+- (id)_independentContainedScrollViewIntermediateToDescendantViewController:(id)arg1;
 - (void)_initializeHeightOfTopPalette:(id)arg1;
 - (void)_initializeNavigationDeferredTransitionContextIfNecessary;
 - (void)_installPaletteIntoViewHierarchy:(id)arg1;

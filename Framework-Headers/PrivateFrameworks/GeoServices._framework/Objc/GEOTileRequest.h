@@ -22,9 +22,11 @@ __attribute__((visibility("hidden")))
     NSString *_bundleVersion;
     GEOApplicationAuditToken *_auditToken;
     BOOL _requireWiFi;
+    BOOL _allowNetwork;
 }
 
 @property (readonly, nonatomic) GEOTileKeyMap *additionalInfos; // @synthesize additionalInfos=_additionalInfos;
+@property (readonly, nonatomic) BOOL allowNetwork; // @synthesize allowNetwork=_allowNetwork;
 @property (readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
@@ -40,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)init;
 - (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3;
-- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 cachedEtags:(id)arg4 cachedData:(id)arg5 priorities:(id)arg6 additionalInfos:(id)arg7 bundleIdentifier:(id)arg8 bundleVersion:(id)arg9 auditToken:(id)arg10 requireWiFi:(BOOL)arg11;
+- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 cachedEtags:(id)arg4 cachedData:(id)arg5 priorities:(id)arg6 additionalInfos:(id)arg7 bundleIdentifier:(id)arg8 bundleVersion:(id)arg9 auditToken:(id)arg10 requireWiFi:(BOOL)arg11 allowNetwork:(BOOL)arg12;
 
 @end
 

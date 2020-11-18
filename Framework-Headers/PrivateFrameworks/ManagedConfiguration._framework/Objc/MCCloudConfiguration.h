@@ -30,8 +30,11 @@
 - (BOOL)isProvisionallyEnrolled;
 - (BOOL)isSupervised;
 - (BOOL)isTeslaEnrolled;
+- (id)language;
+- (id)languageScript;
 - (id)provisionalEnrollmentExpirationDate;
 - (void)refreshDetailsFromDisk;
+- (id)region;
 - (int)userMode;
 
 @end

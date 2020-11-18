@@ -9,7 +9,7 @@
 #import <IMCore/IMSendProgressDelegate-Protocol.h>
 #import <IMCore/INSpeakable-Protocol.h>
 
-@class IMAccount, IMChatRegistry, IMHandle, IMMessage, IMScheduledUpdater, IMSendProgress, IMTimingCollection, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
+@class IMAccount, IMChatRegistry, IMHandle, IMMessage, IMScheduledUpdater, IMSendProgress, IMTimingCollection, MKMapItem, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
 @protocol IMChatItemRules;
 
 @interface IMChat : IMItemsController <INSpeakable, IMSendProgressDelegate>
@@ -110,7 +110,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
 @property (strong, nonatomic) IMMessage *invitationForPendingParticipants; // @synthesize invitationForPendingParticipants=_invitationForPendingParticipants;
+@property (readonly, nonatomic) BOOL isAppleChat;
+@property (readonly, nonatomic) BOOL isBusinessChat;
 @property (nonatomic) BOOL isFiltered; // @dynamic isFiltered;
+@property (readonly, nonatomic) BOOL isMakoChat;
+@property (readonly, nonatomic) BOOL isReplyEnabled;
 @property (readonly, nonatomic) long long joinState; // @synthesize joinState=_joinState;
 @property (readonly, nonatomic) NSString *lastAddressedHandleID; // @synthesize lastAddressedHandleID=_lastAddressedHandleID;
 @property (readonly, nonatomic) IMMessage *lastFinishedMessage;
@@ -127,6 +131,7 @@
 @property (strong, nonatomic) NSString *localUserIsComposing;
 @property (nonatomic) BOOL localUserIsRecording;
 @property (nonatomic) BOOL localUserIsTyping;
+@property (readonly, nonatomic) MKMapItem *mapItem;
 @property (readonly, nonatomic) unsigned long long messageCount;
 @property (readonly, nonatomic) unsigned long long messageFailureCount;
 @property (nonatomic) unsigned long long numberOfMessagesToKeepLoaded;
@@ -178,7 +183,7 @@
 - (void)_endTiming;
 - (void)_engroupParticipantsUpdated;
 - (void)_fixItemForSendingMessageTime:(id)arg1;
-- (void)_fixSendingItemDate:(id)arg1;
+- (void)_fixSendingItemDateAndSortID:(id)arg1;
 - (id)_getDeleteChatItemMap:(id)arg1;
 - (id)_getMessageChatItemMap:(id)arg1 withDeleteMap:(id)arg2 andAllChatItems:(id)arg3;
 - (void)_handleAddressBookChange:(id)arg1;
@@ -291,12 +296,8 @@
 - (id)init;
 - (void)inviteParticipants:(id)arg1 reason:(id)arg2;
 - (void)inviteParticipantsToiMessageChat:(id)arg1 reason:(id)arg2;
-- (BOOL)isAppleChat;
-- (BOOL)isBusinessChat;
 - (BOOL)isDowngraded;
 - (BOOL)isHoldingUpdatesForKey:(id)arg1;
-- (BOOL)isMakoChat;
-- (BOOL)isReplyEnabled;
 - (void)join;
 - (id)lastRelatedIncomingFinishedMessageTextContentWithLimit:(long long)arg1;
 - (void)leave;

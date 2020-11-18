@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Security/NSObject-Protocol.h>
+
 @class NSArray, NSData, NSDictionary;
 
-@protocol SOSControlProtocol
+@protocol SOSControlProtocol <NSObject>
 - (void)assertStashedAccountCredential:(void (^)(BOOL, NSError *))arg1;
 - (void)circleJoiningBlob:(NSData *)arg1 complete:(void (^)(NSData *, NSError *))arg2;
 - (void)getWatchdogParameters:(void (^)(NSDictionary *, NSError *))arg1;

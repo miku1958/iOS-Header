@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)sourceFetcherDidGoOnline:(id)arg1 forKeys:(id)arg2;
 - (void)sourceFetcherDidUpdate:(id)arg1 withValues:(id)arg2 quotes:(struct NSDictionary *)arg3;
 - (void)unregisterStore:(id)arg1;
+- (void)updateKnownCachedStocksInStore:(id)arg1;
 - (id)valueForSingleKey:(id)arg1;
 
 @end

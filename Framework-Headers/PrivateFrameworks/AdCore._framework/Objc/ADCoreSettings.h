@@ -26,6 +26,7 @@
     NSString *_osVersionAndBuild;
     NSString *_deviceModel;
     NSString *_bundleIdentifier;
+    NSString *_storefrontLocalizationLanguage;
     NSString *_homeCarrierMCC;
     NSString *_homeCarrierMNC;
     NSString *_currentCarrierMCC;
@@ -58,13 +59,15 @@
 @property (strong, nonatomic) NSString *iTunesStorefront; // @synthesize iTunesStorefront=_iTunesStorefront;
 @property (nonatomic) BOOL internationalRoaming; // @synthesize internationalRoaming=_internationalRoaming;
 @property (readonly, nonatomic) BOOL isManagedAppleID;
+@property (readonly, nonatomic) BOOL isManagediCloudAccount;
 @property (nonatomic) double jingleTimeoutInterval; // @synthesize jingleTimeoutInterval=_jingleTimeoutInterval;
 @property (readonly, nonatomic) BOOL limitAdTrackingRestrictionEnabledBySpringboard;
 @property (readonly, nonatomic) NSString *localeIdentifier;
-@property (nonatomic) double maxSegmentSendInterval;
+@property (nonatomic) int maxSegmentSendInterval;
 @property (strong, nonatomic) NSString *osVersionAndBuild; // @synthesize osVersionAndBuild=_osVersionAndBuild;
 @property (nonatomic) int runState; // @synthesize runState=_runState;
-@property (nonatomic) double segmentRetrievalInterval;
+@property (nonatomic) int segmentRetrievalInterval;
+@property (strong, nonatomic) NSString *storefrontLocalizationLanguage; // @synthesize storefrontLocalizationLanguage=_storefrontLocalizationLanguage;
 @property (nonatomic) float timezone; // @synthesize timezone=_timezone;
 
 + (BOOL)educationModeEnabled;

@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)collectDocumentOpenAnalyticsWithLogger:(id)arg1;
 - (BOOL)containsForms;
 - (void)documentDidLoad;
+- (id)freehandDrawingToolkitUIState;
 - (id)initWithContext:(id)arg1;
 - (void)initializeForImport;
 - (void)initializeHardCodedBlankDocument;

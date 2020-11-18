@@ -21,11 +21,11 @@
 @property (strong, nonatomic) NSMutableArray *supportedFormats; // @synthesize supportedFormats=_supportedFormats;
 
 + (Class)supportedFormatsType;
+- (void).cxx_destruct;
 - (void)addSupportedFormats:(id)arg1;
 - (void)clearSupportedFormats;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

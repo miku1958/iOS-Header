@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 {
     NSString *_formatNameStem;
     NSString *_formatNameTag;
+    NSString *_currencyCode;
+    BOOL _currencyCodeComputed;
     int _formatType;
     TSUCustomFormatData *_defaultFormatData;
     NSString *_formatName;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) unsigned long long conditionCount;
 @property (readonly, nonatomic) NSMutableArray *conditionList; // @synthesize conditionList=_conditionList;
+@property (readonly, nonatomic) NSString *currencyCode;
 @property (readonly, nonatomic) TSUCustomFormatData *defaultFormatData; // @synthesize defaultFormatData=_defaultFormatData;
 @property (readonly, nonatomic) NSString *formatName; // @synthesize formatName=_formatName;
 @property (readonly, nonatomic) NSString *formatNameStem;

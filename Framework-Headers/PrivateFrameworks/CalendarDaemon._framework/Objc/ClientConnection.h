@@ -50,6 +50,7 @@
 - (void)addOperation:(id)arg1;
 - (void)clearCachedAuthorizationStatus;
 - (void)clearInsertedObjects;
+- (void)closeDatabase;
 - (void)dealloc;
 - (void)dumpState;
 - (BOOL)eventAccessGranted;

@@ -106,6 +106,7 @@
 - (BOOL)_delegatePerformAction:(SEL)arg1;
 - (void)_dismissEverythingWithExtremePrejudiceAnimated:(BOOL)arg1;
 - (BOOL)_documentNeedsHelpDecompressingArchiveForPreview;
+- (id)_documentProxy;
 - (id)_documentProxySourceIsManaged:(BOOL)arg1;
 - (void)_fixupFileExtensionIfNeeded;
 - (void)_invalidate;

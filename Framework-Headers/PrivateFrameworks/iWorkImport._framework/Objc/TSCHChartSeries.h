@@ -11,7 +11,7 @@
 #import <iWorkImport/TSCHStyleOwning-Protocol.h>
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
-@class NSString, TSCHChartGridAdapter, TSCHChartModel, TSCHChartSeriesType, TSCHErrorBarData, TSCHTrendLineData, TSUPointerKeyDictionary;
+@class NSString, TSCHChartGridAdapter, TSCHChartModel, TSCHChartSeriesType, TSCHErrorBarData, TSCHTrendLineData, TSUIntegerKeyDictionary;
 @protocol TSCHStyleActAlike, TSCHUnretainedParent;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     TSCHChartModel *mChartModel;
     unsigned long long mSeriesIndex;
     TSCHChartSeriesType *mSeriesType;
-    TSUPointerKeyDictionary *mAxisTable;
+    TSUIntegerKeyDictionary *mAxisTable;
     TSCHChartGridAdapter *mNameAdapter;
     unsigned long long mBarGapIndex;
     id<TSCHStyleActAlike> mStyle;
@@ -41,11 +41,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isFakeSeriesForHiddenDataExport; // @synthesize isFakeSeriesForHiddenDataExport=mIsFakeSeriesForHiddenDataExport;
-@property (readonly, nonatomic) TSCHChartModel *model; // @synthesize model=mChartModel;
+@property (readonly, weak, nonatomic) TSCHChartModel *model; // @synthesize model=mChartModel;
 @property (strong, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=mSeriesIndex;
 @property (readonly, nonatomic) NSObject<TSCHUnretainedParent> *seriesStorage; // @synthesize seriesStorage=mSeriesStorage;
-@property (nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=mSeriesType;
+@property (weak, nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=mSeriesType;
 @property (readonly, nonatomic) BOOL showTrendLineLegendText;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultNumberFormat;
 + (id)stackedPercentageNumberFormat;
 + (unsigned char)styleOwnerPathType;
+- (void).cxx_destruct;
 - (int)adjustedNumberFormatType;
 - (id)axisForAxisType:(int)arg1;
 - (id)axisIDForAxisType:(int)arg1;

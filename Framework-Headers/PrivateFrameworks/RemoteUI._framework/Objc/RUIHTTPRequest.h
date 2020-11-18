@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <RemoteUI/NSURLSessionTaskDelegate-Protocol.h>
+@class NSURLRequest, NSURLSession, NSURLSessionDataTask;
 
-@class NSString, NSURLRequest, NSURLSession, NSURLSessionDataTask;
-
-@interface RUIHTTPRequest : NSObject <NSURLSessionTaskDelegate>
+@interface RUIHTTPRequest : NSObject
 {
     NSURLRequest *_request;
     NSURLSessionDataTask *_dataTask;
@@ -18,11 +16,7 @@
     id _delegate;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (BOOL)anyRequestLoading;
 + (id)errorWithCode:(unsigned long long)arg1;
@@ -48,6 +42,7 @@
 - (BOOL)receivedValidResponse:(id)arg1;
 - (id)request;
 - (id)sessionConfiguration;
+- (id)urlSessionDelegate;
 - (void)willParseData;
 
 @end

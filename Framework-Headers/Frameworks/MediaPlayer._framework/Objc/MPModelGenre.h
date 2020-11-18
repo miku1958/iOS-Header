@@ -10,25 +10,17 @@
 
 @interface MPModelGenre : MPModelObject
 {
-    NSString *_name;
-    NSDate *_libraryAddedDate;
-    CDUnknownBlockType _artworkCatalogBlock;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @synthesize artworkCatalogBlock=_artworkCatalogBlock;
-@property (copy, nonatomic) NSDate *libraryAddedDate; // @synthesize libraryAddedDate=_libraryAddedDate;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @dynamic artworkCatalogBlock;
+@property (copy, nonatomic) NSDate *libraryAddedDate; // @dynamic libraryAddedDate;
+@property (copy, nonatomic) NSString *name; // @dynamic name;
 
-+ (id)__MPModelPropertyGenreArtwork__PROPERTY;
-+ (id)__MPModelPropertyGenreLibraryAddedDate__PROPERTY;
-+ (id)__MPModelPropertyGenreName__PROPERTY;
-+ (id)__artworkCatalogBlock__KEY;
-+ (id)__libraryAddedDate__KEY;
-+ (id)__name__KEY;
++ (id)__artworkCatalogBlock_KEY;
++ (id)__libraryAddedDate_KEY;
++ (id)__name_KEY;
 + (id)kindWithAlbumKind:(id)arg1;
-- (void).cxx_destruct;
 - (id)artworkCatalog;
-- (id)descriptionWithType:(long long)arg1;
 
 @end
 

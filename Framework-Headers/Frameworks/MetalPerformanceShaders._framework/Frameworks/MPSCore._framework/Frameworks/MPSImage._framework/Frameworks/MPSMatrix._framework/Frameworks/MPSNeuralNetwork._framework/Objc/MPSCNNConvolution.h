@@ -7,7 +7,7 @@
 #import <MPSNeuralNetwork/MPSCNNKernel.h>
 
 @class MISSING_TYPE, MPSCNNNeuron, NSData;
-@protocol MTLBuffer;
+@protocol MPSCNNConvolutionDataSource, MTLBuffer;
 
 @interface MPSCNNConvolution : MPSCNNKernel
 {
@@ -28,12 +28,15 @@
     unsigned int _weightsDataType;
     NSData *_biasOriginal;
     id<MTLBuffer> _neuronABuffer;
+    unsigned long long _accumulatorPrecisionOption;
+    id<MPSCNNConvolutionDataSource> _dataSource;
+    NSData *_batchNormalizationData;
     unsigned long long _featureChannelsLayout;
 }
 
+@property (nonatomic) unsigned long long accumulatorPrecisionOption; // @synthesize accumulatorPrecisionOption=_accumulatorPrecisionOption;
 @property (readonly, nonatomic) unsigned long long channelMultiplier; // @synthesize channelMultiplier=_channelMultiplier;
-@property (readonly, nonatomic) unsigned long long dilationRateX;
-@property (readonly, nonatomic) unsigned long long dilationRateY;
+@property (readonly, strong, nonatomic) id<MPSCNNConvolutionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) unsigned long long featureChannelsLayout; // @synthesize featureChannelsLayout=_featureChannelsLayout;
 @property (readonly, nonatomic) unsigned long long groups; // @synthesize groups=_groups;
 @property (readonly, nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
@@ -46,12 +49,16 @@
 @property (readonly, nonatomic) unsigned long long subPixelScaleFactor; // @synthesize subPixelScaleFactor=_scaleFactor;
 
 + (const struct MPSLibraryInfo *)libraryInfo;
+- (BOOL)appendBatchBarrier;
+- (id)biases;
+- (void)copyToGradientState:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 sourceOffset:(CDStruct_d6af7fc0 *)arg4;
 - (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 destinationImage:(id)arg3 state:(id *)arg4;
 - (void)encodeWithCoder:(id)arg1;
+- (id)exportWeightsAndBiasesWithCommandBuffer:(id)arg1 resultStateCanBeTemporary:(BOOL)arg2;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 convolutionDescriptor:(id)arg2 kernelWeights:(const float *)arg3 biasTerms:(const float *)arg4 flags:(unsigned long long)arg5;
@@ -60,6 +67,14 @@
 - (id)initWithDevice:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3;
 - (BOOL)initialize:(id)arg1 convolutionDescriptor:(id)arg2 kernelWeights:(const void *)arg3 dataType:(unsigned int)arg4 range:(const MISSING_TYPE **)arg5 lookUpTable:(const float *)arg6 qType:(int)arg7 biasTerms:(const float *)arg8 flags:(unsigned long long)arg9 fullyConnected:(BOOL)arg10;
 - (id)initializeWithDevice:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3;
+- (BOOL)isResultStateReusedAcrossBatch;
+- (void)reloadWeightsAndBiasesWithCommandBuffer:(id)arg1 state:(id)arg2;
+- (void)reloadWeightsAndBiasesWithDataSource:(id)arg1;
+- (struct NSArray *)resultStateBatchForSourceImage:(struct NSArray *)arg1 sourceStates:(id)arg2 destinationImage:(struct NSArray *)arg3;
+- (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
+- (struct NSArray *)temporaryResultStateBatchForCommandBuffer:(id)arg1 sourceImage:(struct NSArray *)arg2 sourceStates:(id)arg3 destinationImage:(struct NSArray *)arg4;
+- (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
+- (id)weights;
 
 @end
 

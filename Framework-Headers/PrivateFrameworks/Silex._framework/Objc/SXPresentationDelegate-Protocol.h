@@ -7,7 +7,7 @@
 #import <Silex/NSObject-Protocol.h>
 
 @class SXComponentAnimationController, SXComponentBehaviorController, SXComponentController, SXComponentView, SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXTangierController, SXViewport, UIView, UIViewController;
-@protocol SXAdDocumentStateManager, SXTextSelectionManager, SXVideoPlayerViewControllerProvider;
+@protocol SXAdDocumentStateManager, SXTextSelectionManager;
 
 @protocol SXPresentationDelegate <NSObject>
 
@@ -20,7 +20,6 @@
 @property (readonly, nonatomic) SXPresentationAttributes *presentationAttributes;
 @property (readonly, nonatomic) SXTangierController *tangierController;
 @property (readonly, nonatomic) id<SXTextSelectionManager> textSelectionManager;
-@property (readonly, nonatomic) id<SXVideoPlayerViewControllerProvider> videoPlayerViewControllerProvider;
 @property (readonly, nonatomic) SXViewport *viewport;
 
 - (BOOL)addInteractivityFocusForComponent:(SXComponentView *)arg1;

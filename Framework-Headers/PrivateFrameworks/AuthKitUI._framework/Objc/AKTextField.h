@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UIImageView, UILabel, UITextField, UIVisualEffectView;
+@class NSMutableArray, UIColor, UIImageView, UILabel, UITextField, UIVisualEffectView;
 
 @interface AKTextField : UIView
 {
@@ -16,6 +16,7 @@
     long long _textFieldStyle;
     long long _rowIdentifier;
     long long _blurEffectStyle;
+    UIColor *_fieldBackgroundColor;
     UIVisualEffectView *_visualEffectView;
     UIImageView *_backgroundImageView;
     NSMutableArray *_constraints;
@@ -27,18 +28,21 @@
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic) UILabel *entryDescription; // @synthesize entryDescription=_entryDescription;
 @property (readonly, nonatomic) UITextField *entryField; // @synthesize entryField=_entryField;
+@property (strong, nonatomic) UIColor *fieldBackgroundColor; // @synthesize fieldBackgroundColor=_fieldBackgroundColor;
 @property (nonatomic) long long rowIdentifier; // @synthesize rowIdentifier=_rowIdentifier;
 @property (nonatomic) long long textFieldStyle; // @synthesize textFieldStyle=_textFieldStyle;
 @property (nonatomic) BOOL usesVibrancy; // @synthesize usesVibrancy=_usesVibrancy;
 @property (strong, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 
-+ (id)_backgroundImageForRowIdentifier:(long long)arg1 blurEffectStyle:(long long)arg2;
-+ (id)_cachedImageForRowIdentifier:(long long)arg1 blurEffectStyle:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (id)_backgroundImageForRowIdentifier:(long long)arg1 blurEffectStyle:(long long)arg2 backgroundColor:(id)arg3;
++ (id)_cachedImageForRowIdentifier:(long long)arg1 blurEffectStyle:(long long)arg2 backgroundColor:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
++ (void)drawFillForStyle:(long long)arg1 pathRect:(struct CGRect)arg2 roundedCorners:(int)arg3 cornerRadius:(double)arg4 backgroundColor:(id)arg5;
++ (void)drawStrokeForStyle:(long long)arg1 pathRect:(struct CGRect)arg2 roundedCorners:(int)arg3 cornerRadius:(double)arg4 pathSegments:(int)arg5;
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (id)_fieldTextColor;
 - (void)_setupAlertStyleViews;
-- (void)_setupBackgroundView;
+- (id)_setupBackgroundViewConstriants;
 - (void)_setupInlineEntryStyleViews;
 - (void)_setupLabelAndFieldStyles;
 - (void)_updateFonts:(id)arg1;

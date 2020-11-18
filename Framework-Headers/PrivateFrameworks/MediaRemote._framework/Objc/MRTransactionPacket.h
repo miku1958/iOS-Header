@@ -22,9 +22,9 @@
 }
 
 @property (readonly, nonatomic) unsigned long long actualLength;
-@property (readonly, strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, strong, nonatomic) _MRTransactionKeyProtobuf *key; // @synthesize key=_key;
+@property (readonly, nonatomic) _MRTransactionKeyProtobuf *key; // @synthesize key=_key;
 @property (readonly, nonatomic) _MRTransactionPacketProtobuf *protobuf;
 @property (readonly, nonatomic, getter=isReadComplete) BOOL readComplete;
 @property (readonly, nonatomic) unsigned long long totalLength; // @synthesize totalLength=_totalLength;
@@ -33,8 +33,8 @@
 @property (nonatomic) unsigned long long writeLength; // @synthesize writeLength=_writeLength;
 @property (readonly, nonatomic) unsigned long long writePosition; // @synthesize writePosition=_writePosition;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithData:(id)arg1 forKey:(struct _MRTransactionKeyProtobuf *)arg2;
 - (id)initWithPackets:(id)arg1;

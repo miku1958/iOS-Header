@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *xpcMessage; // @synthesize xpcMessage=_xpcMessage;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithNotification:(id)arg1 userInfo:(id)arg2 queue:(id)arg3;
 
 @end

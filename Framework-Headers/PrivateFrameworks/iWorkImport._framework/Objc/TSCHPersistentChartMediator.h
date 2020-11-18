@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) TSCHChartMediator *mediator; // @synthesize mediator=mMediator;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 andMediator:(id)arg2;
 - (void)loadFromArchive:(const struct ChartMediatorArchive *)arg1;

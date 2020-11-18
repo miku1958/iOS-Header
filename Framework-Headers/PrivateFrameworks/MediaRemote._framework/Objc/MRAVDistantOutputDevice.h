@@ -18,10 +18,11 @@
 }
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)MACAddress;
 - (float)batteryLevel;
 - (BOOL)canAccessRemoteAssets;
-- (void)dealloc;
+- (BOOL)canRelayCommunicationChannel;
 - (id)descriptor;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
@@ -30,10 +31,12 @@
 - (BOOL)hasBatteryLevel;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDescriptor:(id)arg1;
+- (BOOL)isDeviceGroupable;
 - (BOOL)isGroupLeader;
 - (BOOL)isGroupable;
 - (BOOL)isLocalDevice;
 - (BOOL)isRemoteControllable;
+- (id)logicalDeviceID;
 - (id)modelID;
 - (id)modelSpecificInfo;
 - (id)name;

@@ -6,11 +6,11 @@
 
 #import <CVML/CVMLDetectedObject.h>
 
-#import <CVML/NSCoding-Protocol.h>
+#import <CVML/NSSecureCoding-Protocol.h>
 
 @class CVMLFaceLandmarks, CVMLFaceRegionMap, CVMLFaceprint, NSData, NSDictionary;
 
-@interface CVMLFaceObservation : CVMLDetectedObject <NSCoding>
+@interface CVMLFaceObservation : CVMLDetectedObject <NSSecureCoding>
 {
     float _landmarkScore;
     BOOL _isBlinking;
@@ -50,6 +50,7 @@
 + (BOOL)computeYawPitchRollFromPoseMatrix:(CDStruct_f1db2b5e)arg1 outputYaw:(float *)arg2 outputPitch:(float *)arg3 outputRoll:(float *)arg4;
 + (id)observationWithBoundingBox:(struct CGRect)arg1;
 + (id)observationWithBoundingBox:(struct CGRect)arg1 andAlignedBoundingBox:(struct CGRect)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct CGRect)alignedBoundingBoxAsCGRect;
 - (id)description;

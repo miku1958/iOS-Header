@@ -22,12 +22,15 @@
     UIClickInteraction *_clickInteraction;
     BOOL _interactive;
     double _interactiveHighlightMagnitude;
+    BOOL _didActivateDuringInteraction;
+    double _maxForceDuringInteraction;
     BOOL _pronounced;
     BOOL _prefersDarkUserInterfaceStyle;
     UIImage *_image;
     UIImage *_selectedImage;
     UIColor *_selectedTintColor;
     NSString *_localizedAccessoryTitle;
+    NSString *_statisticsIdentifier;
     struct UIEdgeInsets _edgeInsets;
 }
 
@@ -42,11 +45,17 @@
 @property (nonatomic, getter=isPronounced) BOOL pronounced; // @synthesize pronounced=_pronounced;
 @property (strong, nonatomic) UIImage *selectedImage; // @synthesize selectedImage=_selectedImage;
 @property (strong, nonatomic) UIColor *selectedTintColor; // @synthesize selectedTintColor=_selectedTintColor;
+@property (copy, nonatomic) NSString *statisticsIdentifier; // @synthesize statisticsIdentifier=_statisticsIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_backgroundEffectsWithBrightness:(double)arg1;
+- (id)_firstActivationDurationStat;
 - (void)_highlightForInteraction:(id)arg1 fractionComplete:(double)arg2 ended:(BOOL)arg3;
+- (id)_interactionCountStatWithActivation:(BOOL)arg1;
+- (id)_interactionDurationStat;
+- (id)_maxForceStatWithActivation:(BOOL)arg1;
+- (void)clickInteraction:(id)arg1 didObserveForce:(double)arg2;
 - (void)clickInteractionDidBegin:(id)arg1;
 - (void)clickInteractionDidEnd:(id)arg1;
 - (BOOL)clickInteractionShouldInvokeAction:(id)arg1;

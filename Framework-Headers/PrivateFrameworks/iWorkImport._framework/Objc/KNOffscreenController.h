@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface KNOffscreenController : NSObject
 {
-    BOOL _isImageGenerationCancelled;
     KNAnimatedSlideView *_animatedSlideView;
     KNPlaybackSession *_session;
     struct CGSize _outputSize;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) KNPlaybackSession *session; // @synthesize session=_session;
 
 - (void).cxx_destruct;
-- (void)cancelImageGeneration;
 - (struct CGImage *)copyImageOfCurrentEventIgnoringBuildVisilibity:(BOOL)arg1;
 - (void)dealloc;
 - (void)drawCurrentEventIntoContext:(struct CGContext *)arg1 intoRect:(struct CGRect)arg2 ignoreBuildVisibility:(BOOL)arg3;

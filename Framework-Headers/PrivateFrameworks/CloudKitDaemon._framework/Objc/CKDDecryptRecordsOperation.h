@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleProtectionDataForRecordInfo:(id)arg1;
 - (void)_handleShareProtectionDataForRecordInfo:(id)arg1;
 - (void)_handleZoneProtectionDataForRecordInfo:(id)arg1;
-- (id)_possiblyWrapError:(id)arg1 withCode:(long long)arg2 format:(id)arg3;
+- (id)_possiblyWrapError:(id)arg1 forRecordWithID:(id)arg2 withCode:(long long)arg3 format:(id)arg4;
 - (void)_recordInfoWasDecrypted:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_unwrapAssetKeyForAsset:(id)arg1 inRecordWithID:(id)arg2 forField:(id)arg3 withPCS:(struct _OpaquePCSShareProtection *)arg4;
 - (id)_unwrapEncryptedPropertiesForRecordValueStore:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;

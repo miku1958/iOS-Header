@@ -6,22 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class PKContinuousButton, PKPaymentSetupFooterView, PKPaymentSetupPrivacyFooterView;
+@class OBPrivacyLinkController, PKContinuousButton, PKPaymentSetupFooterView;
 
 @interface PKPaymentSetupDockView : UIView
 {
-    PKPaymentSetupPrivacyFooterView *_privacyView;
     PKContinuousButton *_continousButton;
     PKPaymentSetupFooterView *_footerView;
     BOOL _isBuddyiPad;
     BOOL _requiresAdditionalContinousButtonPadding;
     long long _context;
+    OBPrivacyLinkController *_privacyLink;
 }
 
 @property (readonly, nonatomic) long long context; // @synthesize context=_context;
 @property (strong, nonatomic) PKContinuousButton *continousButton;
 @property (strong, nonatomic) PKPaymentSetupFooterView *footerView;
-@property (strong, nonatomic) PKPaymentSetupPrivacyFooterView *privacyView;
+@property (strong, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
 @property (nonatomic) BOOL requiresAdditionalContinousButtonPadding; // @synthesize requiresAdditionalContinousButtonPadding=_requiresAdditionalContinousButtonPadding;
 
 - (void).cxx_destruct;

@@ -10,7 +10,7 @@
 
 @interface CLKUIGLQuad : CLKUIQuad
 {
-    unsigned int _isInitialized:1;
+    unsigned int _isPrepared:1;
     unsigned int _vertexArray;
     unsigned int _vertexBuffer;
     unsigned int _primaryTexture;
@@ -19,8 +19,10 @@
 }
 
 - (void).cxx_destruct;
-- (void)_initialize;
-- (void)createVertexArray;
+- (void)_createVertexArray;
+- (void)_deleteVertexArray;
+- (void)_prepare;
+- (void)_purge;
 - (void)encode;
 
 @end

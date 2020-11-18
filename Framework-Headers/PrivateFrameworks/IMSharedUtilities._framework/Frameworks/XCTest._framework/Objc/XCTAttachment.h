@@ -49,8 +49,8 @@
 + (BOOL)supportsSecureCoding;
 + (long long)systemAttachmentLifetime;
 + (long long)userAttachmentLifetime;
+- (void).cxx_destruct;
 - (void)_writeToUserInfoWithBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)debugQuickLookObject;
 - (void)encodeWithCoder:(id)arg1;

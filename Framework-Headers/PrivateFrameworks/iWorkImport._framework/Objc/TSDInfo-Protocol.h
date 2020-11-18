@@ -32,7 +32,6 @@
 
 @optional
 - (TSKCollaboratorCursor *)collaboratorCursorForSelectionPath:(TSKSelectionPath *)arg1;
-- (BOOL)needsDownload;
 - (id<TSDInfoUUIDPathPrefixComponentsProvider>)uuidPathPrefixComponentsProvider;
 @end
 

@@ -7,12 +7,12 @@
 #import <Foundation/NSObject.h>
 
 #import <MediaPlayer/MPQueueBehaviorManaging-Protocol.h>
-#import <MediaPlayer/NSCoding-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class MPModelPlayEvent, MPMutableBidirectionalDictionary, NSData, NSMutableDictionary, NSString;
 @protocol MPQueueFeederDelegate;
 
-@interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSCoding>
+@interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSSecureCoding>
 {
     long long _repeatType;
     long long _shuffleType;
@@ -61,6 +61,7 @@
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
++ (BOOL)supportsSecureCoding;
 + (BOOL)supportsStateRestoration;
 - (void).cxx_destruct;
 - (BOOL)_canPurgeNextStartTimes;

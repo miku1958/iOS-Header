@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     TSDWrapSegments *mCachedWrapSegments;
     TSUBezierPath *mCachedWrapPath;
-    TSUBezierPath *mCachedExternalWrapPath;
+    TSUBezierPath *mCachedPathForClippingConnectionLines;
     TSUBezierPath *mCachedExteriorWrapPath;
 }
 
@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)dragBy:(struct CGPoint)arg1;
 - (id)i_computeWrapPath;
 - (id)i_computeWrapPathClosed:(BOOL)arg1;
-- (id)i_externalWrapPath;
 - (void)i_invalidateWrap;
 - (id)i_wrapPath;
 - (void)invalidate;
@@ -45,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)pageNumber;
 - (unsigned long long)pageNumberForAttachment:(id)arg1;
 - (void)parentDidChange;
+- (id)pathForClippingConnectionLines;
 - (void)processChangedProperty:(int)arg1;
 - (BOOL)supportsInspectorPositioning;
 - (int)wrapDirection;

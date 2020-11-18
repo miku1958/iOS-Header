@@ -13,12 +13,14 @@
 @interface _SBUIBiometricMatchingAssertion : _SBUIBiometricOperationAssertion <BSDescriptionProviding>
 {
     unsigned long long _matchMode;
+    long long _restartCount;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long matchMode; // @synthesize matchMode=_matchMode;
+@property (nonatomic) long long restartCount; // @synthesize restartCount=_restartCount;
 @property (readonly) Class superclass;
 
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

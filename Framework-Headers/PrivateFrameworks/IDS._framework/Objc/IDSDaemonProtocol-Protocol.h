@@ -30,6 +30,7 @@
 - (void)appleCareSignOutUserWithRequestID:(NSString *)arg1;
 - (void)authTokenChanged:(NSString *)arg1 forAccount:(NSString *)arg2;
 - (void)authenticateAccount:(NSString *)arg1;
+- (void)authenticatePhoneWithRequestUUID:(NSString *)arg1;
 - (void)authenticationChangedForAccount:(NSString *)arg1;
 - (void)cancelInvitation:(NSString *)arg1;
 - (void)cancelInvitation:(NSString *)arg1 withData:(NSData *)arg2;
@@ -66,6 +67,7 @@
 - (void)endSession:(NSString *)arg1 withData:(NSData *)arg2;
 - (void)failedDecryptingMessage:(NSDictionary *)arg1 reason:(long long)arg2 forGroupID:(ENGroupID *)arg3 onService:(NSString *)arg4;
 - (void)forgetDeviceWithID:(NSString *)arg1 requestID:(NSString *)arg2;
+- (void)generatePhoneAuthenticationSignatureOverData:(NSData *)arg1 withRequestUUID:(NSString *)arg2;
 - (void)getDeliveryStats;
 - (void)getLocalDeviceInfo;
 - (void)getPairedDeviceInfo;
@@ -120,7 +122,7 @@
 - (void)sendMessageWithSendParameters:(NSDictionary *)arg1;
 - (void)sendPersistedFile:(NSURL *)arg1 userInfo:(NSDictionary *)arg2 toDestinations:(NSArray *)arg3 usingAccountWithUniqueID:(NSString *)arg4 identifier:(NSString *)arg5;
 - (void)sendServerMessage:(NSDictionary *)arg1 command:(NSNumber *)arg2 usingAccountWithUniqueID:(NSString *)arg3;
-- (void)sendSessionMessage:(NSData *)arg1 toSession:(NSString *)arg2;
+- (void)sendSessionMessage:(NSData *)arg1 toDestinations:(NSSet *)arg2 forSessionWithUniqueID:(NSString *)arg3;
 - (void)setAllowedTrafficClasses:(NSSet *)arg1;
 - (void)setAllowedTrafficClassifiersForDevice:(NSString *)arg1 classifiers:(NSArray *)arg2 requestID:(NSString *)arg3;
 - (void)setAudioEnabled:(BOOL)arg1 forSessionWithUniqueID:(NSString *)arg2;

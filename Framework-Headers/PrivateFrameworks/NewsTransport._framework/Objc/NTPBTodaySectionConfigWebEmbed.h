@@ -12,12 +12,18 @@
 
 @interface NTPBTodaySectionConfigWebEmbed : PBCodable <NSCopying>
 {
+    unsigned long long _preferredSlotAllocation;
     NSMutableArray *_embedFonts;
     NSString *_urlString;
+    struct {
+        unsigned int preferredSlotAllocation:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *embedFonts; // @synthesize embedFonts=_embedFonts;
+@property (nonatomic) BOOL hasPreferredSlotAllocation;
 @property (readonly, nonatomic) BOOL hasUrlString;
+@property (nonatomic) unsigned long long preferredSlotAllocation; // @synthesize preferredSlotAllocation=_preferredSlotAllocation;
 @property (strong, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 
 + (Class)embedFontsType;

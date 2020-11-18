@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)isHorizontalChart;
-+ (struct TSCH3DScenePart)partWithEnumerator:(id)arg1 layoutSettings:(CDStruct_44ada6bf)arg2;
++ (struct TSCH3DScenePart)partWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 + (id)resetSeriesStorage:(id)arg1 forSeries:(id)arg2;
 + (id)scenePropertiesKey;
 + (void)setLowDetailedGeometriesForScene:(id)arg1;

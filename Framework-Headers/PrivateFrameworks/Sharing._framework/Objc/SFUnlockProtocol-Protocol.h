@@ -21,7 +21,6 @@
 - (void)disableUnlockWithDevice:(NSString *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)eligibleAutoUnlockDevicesWithCompletionHandler:(void (^)(NSSet *, NSError *))arg1;
 - (void)enableAutoUnlockWithDevice:(SFAutoUnlockDevice *)arg1 passcode:(NSString *)arg2 clientProxy:(id<SFUnlockClientProtocol>)arg3;
-- (void)enableAutoUnlockWithDevice:(SFAutoUnlockDevice *)arg1 passcode:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)enableUnlockWithDevice:(NSString *)arg1 fromKey:(BOOL)arg2 withPasscode:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)establishStashBagWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)repairCloudPairing;

@@ -6,14 +6,14 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAppleMediaAccessory, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAccessorySymptomHandler : HMFObject <NSSecureCoding, HMFLogging, HMFMessageReceiver>
+@interface HMDAccessorySymptomHandler : HMFObject <NSSecureCoding, HMFLogging, HMDHomeMessageReceiver>
 {
     BOOL _canInitiateFix;
     int _deviceProblemNotificationToken;
@@ -34,12 +34,14 @@
 @property (nonatomic) long long fixState; // @synthesize fixState=_fixState;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

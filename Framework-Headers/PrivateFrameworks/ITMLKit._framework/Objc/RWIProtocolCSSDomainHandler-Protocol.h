@@ -18,7 +18,6 @@
 - (void)getComputedStyleForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)getInlineStylesForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(id *, id *))arg2 nodeId:(int)arg3;
 - (void)getMatchedStylesForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(id *, id *, id *))arg2 nodeId:(int)arg3 includePseudo:(BOOL *)arg4 includeInherited:(BOOL *)arg5;
-- (void)getNamedFlowCollectionWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 documentNodeId:(int)arg3;
 - (void)getStyleSheetTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 styleSheetId:(NSString *)arg3;
 - (void)getStyleSheetWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolCSSStyleSheetBody *))arg2 styleSheetId:(NSString *)arg3;
 - (void)getSupportedCSSPropertiesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;

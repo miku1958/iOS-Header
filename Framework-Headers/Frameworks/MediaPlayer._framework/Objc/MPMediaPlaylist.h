@@ -24,6 +24,7 @@
 + (void)_createFilterableDictionary;
 + (BOOL)_isValidPlaylistProperty:(id)arg1;
 + (BOOL)canFilterByProperty:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addItemWithProductID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addMediaItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

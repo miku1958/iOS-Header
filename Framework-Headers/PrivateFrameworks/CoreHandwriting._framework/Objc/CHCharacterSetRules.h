@@ -31,8 +31,8 @@
     NSCharacterSet *_emoticonMiddleCharSet;
     NSCharacterSet *_emoticonBottomCharSet;
     NSObject<OS_dispatch_queue> *__charSetRulesQueue;
-    map_2d68ca7b _strokeMaxPenalties;
-    map_07959174 _signatureUniChar;
+    map_0512c6b1 _strokeMaxPenalties;
+    map_fc1db4e5 _signatureUniChar;
 }
 
 @property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *_charSetRulesQueue; // @synthesize _charSetRulesQueue=__charSetRulesQueue;
@@ -53,9 +53,9 @@
 @property (strong, nonatomic) NSCharacterSet *numeralEndLetterCharSet; // @synthesize numeralEndLetterCharSet=_numeralEndLetterCharSet;
 @property (strong, nonatomic) NSCharacterSet *prefixCapitalizationExceptionCharSet; // @synthesize prefixCapitalizationExceptionCharSet=_prefixCapitalizationExceptionCharSet;
 @property (strong, nonatomic) NSCharacterSet *selfLoopPunctuationCharSet; // @synthesize selfLoopPunctuationCharSet=_selfLoopPunctuationCharSet;
-@property (nonatomic) map_07959174 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
+@property (nonatomic) map_fc1db4e5 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
 @property (strong, nonatomic) NSCharacterSet *startPunctuationCharSet; // @synthesize startPunctuationCharSet=_startPunctuationCharSet;
-@property (nonatomic) map_2d68ca7b strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
+@property (nonatomic) map_0512c6b1 strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
 @property (strong, nonatomic) NSCharacterSet *uppercaseCharSet; // @synthesize uppercaseCharSet=_uppercaseCharSet;
 
 + (unsigned long long)characterType:(unsigned int)arg1;

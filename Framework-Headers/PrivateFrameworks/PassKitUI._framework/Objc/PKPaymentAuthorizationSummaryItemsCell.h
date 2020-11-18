@@ -17,10 +17,11 @@
 @property (readonly, nonatomic) PKPaymentAuthorizationSummaryItemsView *summaryItemsView; // @synthesize summaryItemsView=_summaryItemsView;
 
 - (void).cxx_destruct;
-- (void)_prepareConstraints;
 - (void)dealloc;
 - (id)initWithLayout:(id)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

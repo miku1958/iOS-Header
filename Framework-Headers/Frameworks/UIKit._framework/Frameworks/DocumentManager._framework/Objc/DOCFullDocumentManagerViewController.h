@@ -116,7 +116,6 @@
 - (void)browserWantsToCreateNewFolder:(id)arg1 maxThumbnailSize:(struct CGSize)arg2;
 - (BOOL)canPerformAction:(id)arg1;
 - (void)changeToLocation:(id)arg1;
-- (void)clearCurrentInteraction;
 - (void)clearCurrentOpenInteraction;
 - (void)createNewFolderWithMaxThumbnailSize:(struct CGSize)arg1;
 - (id)createSearchBar;
@@ -140,6 +139,7 @@
 - (void)popToRootViewController;
 - (void)prepareParentHierarchyIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)revealDocumentAtURL:(id)arg1 importIfNeeded:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)safeSetViewControllersHierarchy:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
@@ -157,6 +157,7 @@
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)shareAction;
 - (void)showDimmingViewIfNeeded;
+- (void)showLocation:(id)arg1 animated:(BOOL)arg2 retryingIfNeeded:(BOOL)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
 - (void)showLocation:(id)arg1 animated:(BOOL)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)showLocationOnTopOfCurrentBrowser:(id)arg1 animated:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)showSearchViewControllerIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;

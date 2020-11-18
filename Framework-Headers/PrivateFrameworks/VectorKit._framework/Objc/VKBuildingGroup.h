@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
     struct optional<md::MeshSet<ggl::BuildingFlatStroke::BuildingFlatStrokeMesh, ggl::BuildingFlatStroke::DefaultVbo>> _strokeMeshInfo;
     struct optional<md::MeshSet<ggl::PolygonBase::CompressedMeshMesh, ggl::PolygonBase::CompressedVbo>> _fillMeshInfoForPointyRoofs;
-    vector_4558960f _strokeMeshes;
-    vector_ab9b77fc _fillMeshesForPointyRoofs;
+    vector_4080291d _strokeMeshes;
+    vector_74364602 _fillMeshesForPointyRoofs;
     struct unique_ptr<ggl::MeshVendor<ggl::BuildingFacade::BuildingMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::BuildingFacade::BuildingMesh>>> _extrusionFillMeshVendor;
     struct unique_ptr<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>>> _extrusionStrokeMeshVendor;
     struct unique_ptr<ggl::MeshVendor<ggl::BuildingPointyRoof::BuildingMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::BuildingPointyRoof::BuildingMesh>>> _pointyRoofFillMeshVendor;
@@ -22,10 +22,10 @@ __attribute__((visibility("hidden")))
     struct vector<std::__1::vector<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>, std::__1::allocator<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>>>, std::__1::allocator<std::__1::vector<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>, std::__1::allocator<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>>>>> _fillCullingGroupsForPointyRoofs;
     struct vector<std::__1::vector<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>, std::__1::allocator<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>>>, std::__1::allocator<std::__1::vector<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>, std::__1::allocator<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>>>>> _pointyRoofFillCullingGroups;
     struct vector<std::__1::vector<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>, std::__1::allocator<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>>>, std::__1::allocator<std::__1::vector<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>, std::__1::allocator<std::__1::vector<FeatureRange, std::__1::allocator<FeatureRange>>>>>> _pointyRoofStrokeCullingGroups;
-    vector_2cb66512 _styleQueries;
-    vector_2cb66512 _flatRoofStyleQueries;
-    vector_2cb66512 _selectedStyleQueries;
-    vector_2cb66512 _selectedFlatRoofStyleQueries;
+    vector_b346fa92 _styleQueries;
+    vector_b346fa92 _flatRoofStyleQueries;
+    vector_b346fa92 _selectedStyleQueries;
+    vector_b346fa92 _selectedFlatRoofStyleQueries;
 }
 
 - (id).cxx_construct;
@@ -42,14 +42,14 @@ __attribute__((visibility("hidden")))
 - (void)didFinishAddingData;
 - (const MeshVendor_396e6e4f *)extrusionFillMeshVendor;
 - (const MeshVendor_8027e961 *)extrusionStrokeMeshVendor;
-- (vector_ab9b77fc *)fillMeshesForPointyRoofs;
+- (vector_74364602 *)fillMeshesForPointyRoofs;
 - (id)initWithStyleQuery:(shared_ptr_c5d816ee *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const Matrix_8746f91e *)arg3 contentScale:(float)arg4;
 - (unsigned char)maxAttributeSetsPerGroup;
 - (const MeshVendor_c6d8e5cd *)pointyRoofFillMeshVendor;
 - (const MeshVendor_8027e961 *)pointyRoofStrokeMeshVendor;
 - (void)prepareForBuilding:(CDStruct_bc04cdca *)arg1 forRoofStyle:(unsigned char)arg2 scaleThreshold:(float)arg3;
-- (vector_4558960f *)strokeMeshes;
-- (vector_2cb66512 *)styleQueriesForPointyRoofs:(BOOL)arg1 selected:(BOOL)arg2;
+- (vector_4080291d *)strokeMeshes;
+- (vector_b346fa92 *)styleQueriesForPointyRoofs:(BOOL)arg1 selected:(BOOL)arg2;
 - (void)updateWithStyleManager:(const shared_ptr_a3c46825 *)arg1;
 - (void)willAddDataWithAccessor:(struct ResourceAccessor *)arg1;
 

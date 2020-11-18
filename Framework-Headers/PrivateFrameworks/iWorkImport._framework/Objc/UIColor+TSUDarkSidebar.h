@@ -17,6 +17,10 @@
 + (id)tsu_keynoteNavigatorBackgroundColor;
 + (id)tsu_keynoteNavigatorDividerColor;
 + (id)tsu_lightToolbarBackgroundColor;
++ (id)tsu_mediaBrowserChickletDarkColor;
++ (id)tsu_mediaBrowserChickletLightColor;
++ (id)tsu_mediaBrowserChickletTitleDarkColor;
++ (id)tsu_mediaBrowserChickletTitleLightColor;
 + (id)tsu_mediaBrowserNavigationBarTintColor;
 + (id)tsu_mediaBrowserNavigationBarTitleColor;
 + (id)tsu_mediaBrowserPrimaryContentColor;

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) tvec2_84d5962d xlimits; // @synthesize xlimits=mXlimits;
 @property (nonatomic) tvec2_84d5962d ylimits; // @synthesize ylimits=mYlimits;
 
-+ (id)lineFromValues:(const vector_ec52ae8c *)arg1 yLimits:(tvec2_84d5962d)arg2;
++ (id)lineFromValues:(const vector_7584168e *)arg1 yLimits:(tvec2_84d5962d)arg2;
 - (id).cxx_construct;
 - (id)elementsBoundsPositions;
 - (void)generateArrays;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (tmat4x4_3074befe)matrixAtXPosition:(float)arg1 returningXRangeInfo:(struct LineExtrusionGeometryXRangeInfo *)arg2;
 - (tmat3x3_b39cd897)p_rotationMatrixForCrossSectionIndex:(unsigned long long)arg1;
 - (id)selectionKnobPositions;
-- (void)setSpine:(const vector_45b393db *)arg1;
+- (void)setSpine:(const vector_7200ab52 *)arg1;
 
 @end
 

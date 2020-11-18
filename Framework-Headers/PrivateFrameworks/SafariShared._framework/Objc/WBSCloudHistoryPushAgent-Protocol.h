@@ -10,5 +10,6 @@
 - (void)acknowledgePendingPushNotifications;
 - (void)clearAcknowledgedPushNotifications;
 - (void)getPushNotifications:(void (^)(BOOL, BOOL))arg1;
+- (void)queryMemoryFootprint:(void (^)(WBSMemoryFootprint *, NSError *))arg1;
 @end
 

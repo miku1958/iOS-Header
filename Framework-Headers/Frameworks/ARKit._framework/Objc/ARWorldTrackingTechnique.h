@@ -6,7 +6,7 @@
 
 #import <ARKit/ARTechnique.h>
 
-@class ARPointCloud, ARTrackingErrorData, ARWorldTrackingData, NSMutableArray, NSObject, NSString;
+@class ARWorldTrackingErrorData, ARWorldTrackingPoseData, ARWorldTrackingReferenceAnchorData, MISSING_TYPE, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_semaphore;
 
 @interface ARWorldTrackingTechnique : ARTechnique
@@ -15,27 +15,43 @@
     unsigned long long _vioState;
     NSObject<OS_dispatch_semaphore> *_vioStateSemaphore;
     NSMutableArray *_latestVisionFeaturePointDatas;
-    ARPointCloud *_cachedFeaturePointCloud;
-    ARTrackingErrorData *_errorData;
-    ARWorldTrackingData *_cachedTrackingData;
-    ARWorldTrackingData *_lastPointCloudTrackingData;
+    ARWorldTrackingReferenceAnchorData *_anchorData;
+    ARWorldTrackingErrorData *_errorData;
+    ARWorldTrackingPoseData *_cachedTrackingData;
+    long long _reinitializationAttempts;
+    long long _reinitializationAttemptsAtInitialization;
+    double _lastRelocalizationTimestamp;
+    BOOL _relocalizingAfterSensorDataDrop;
+    BOOL _didRelocalize;
+    BOOL _didClearMap;
     NSObject<OS_dispatch_semaphore> *_resultSemaphore;
-    double _lastErrorLogTimestamp;
+    double _minVergenceAngleCosine;
+    BOOL _allowPoseGraphUpdates;
+    unsigned long long _customLensType;
+    CDStruct_8e0628e6 _customIntrinsics;
+    MISSING_TYPE *_radialDistortion;
+    MISSING_TYPE *_tangentialDistortion;
     BOOL _relocalizationEnabled;
     NSString *_deviceModel;
     long long _latencyFrameCount;
+    struct CGSize _imageResolution;
 }
 
 @property (readonly, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
+@property (nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
 @property (readonly, nonatomic) long long latencyFrameCount; // @synthesize latencyFrameCount=_latencyFrameCount;
 @property (nonatomic) BOOL relocalizationEnabled; // @synthesize relocalizationEnabled=_relocalizationEnabled;
 
 + (BOOL)isSupported;
++ (BOOL)supports1080p;
 - (void).cxx_destruct;
+- (void)addReferenceAnchors:(id)arg1;
 - (CDStruct_14d5dc5e)cameraTransformAtTimestamp:(double)arg1;
+- (void)clearMap;
 - (id)init;
 - (id)initWithDeviceModel:(id)arg1 latencyFrameCount:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (void)removeReferenceAnchors:(id)arg1;
 
 @end
 

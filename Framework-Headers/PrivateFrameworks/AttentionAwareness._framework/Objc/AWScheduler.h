@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)removeInvalidClients;
 - (void)removeInvalidClientsWithConnection:(id)arg1;
 - (void)setDebugPreference:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)setSmartCoverClosed:(BOOL)arg1;
 
 @end
 

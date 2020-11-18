@@ -11,47 +11,47 @@
 __attribute__((visibility("hidden")))
 @interface TSTCellStateForLayout : NSObject
 {
-    BOOL mCellPropsRowHeight;
-    BOOL mCellWraps;
-    BOOL mForDrawing;
-    BOOL mInDynamicLayout;
-    struct TSUCellCoord mModelCellID;
-    int mVerticalAlignment;
-    int mLayoutCacheFlags;
-    TSTCell *mCell;
-    struct TSUCellRect mLayoutMergeRange;
-    TSWPColumn *mWPColumn;
-    double mMaxWidthForChildren;
-    id mCellContents;
-    TSTLayoutContentCachedKey *mKeyVal;
-    unsigned long long mPageNumber;
-    unsigned long long mPageCount;
-    struct CGSize mMinSize;
-    struct CGSize mMaxSize;
-    struct UIEdgeInsets mPaddingInsets;
+    BOOL _cellPropsRowHeight;
+    BOOL _cellWraps;
+    BOOL _forDrawing;
+    BOOL _inDynamicLayout;
+    struct TSUCellCoord _modelCellID;
+    int _verticalAlignment;
+    int _layoutCacheFlags;
+    TSTCell *_cell;
+    struct TSUCellRect _layoutMergeRange;
+    id _cellContents;
+    double _maxWidthForChildren;
+    TSTLayoutContentCachedKey *_keyVal;
+    TSWPColumn *_wpColumn;
+    unsigned long long _pageNumber;
+    unsigned long long _pageCount;
+    struct CGSize _minSize;
+    struct CGSize _maxSize;
+    struct UIEdgeInsets _paddingInsets;
 }
 
-@property (copy, nonatomic) TSTCell *cell; // @synthesize cell=mCell;
-@property (strong, nonatomic) id cellContents; // @synthesize cellContents=mCellContents;
-@property (nonatomic) BOOL cellPropsRowHeight; // @synthesize cellPropsRowHeight=mCellPropsRowHeight;
-@property (nonatomic) BOOL cellWraps; // @synthesize cellWraps=mCellWraps;
-@property (nonatomic) BOOL forDrawing; // @synthesize forDrawing=mForDrawing;
+@property (copy, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
+@property (strong, nonatomic) id cellContents; // @synthesize cellContents=_cellContents;
+@property (nonatomic) BOOL cellPropsRowHeight; // @synthesize cellPropsRowHeight=_cellPropsRowHeight;
+@property (nonatomic) BOOL cellWraps; // @synthesize cellWraps=_cellWraps;
+@property (nonatomic) BOOL forDrawing; // @synthesize forDrawing=_forDrawing;
 @property (readonly, nonatomic) BOOL hasContent;
-@property (nonatomic) BOOL inDynamicLayout; // @synthesize inDynamicLayout=mInDynamicLayout;
-@property (strong, nonatomic) TSTLayoutContentCachedKey *keyVal; // @synthesize keyVal=mKeyVal;
-@property (nonatomic) int layoutCacheFlags; // @synthesize layoutCacheFlags=mLayoutCacheFlags;
-@property (nonatomic) struct TSUCellRect layoutMergeRange; // @synthesize layoutMergeRange=mLayoutMergeRange;
-@property (nonatomic) struct CGSize maxSize; // @synthesize maxSize=mMaxSize;
-@property (nonatomic) double maxWidthForChildren; // @synthesize maxWidthForChildren=mMaxWidthForChildren;
-@property (nonatomic) struct CGSize minSize; // @synthesize minSize=mMinSize;
-@property (nonatomic) struct TSUCellCoord modelCellID; // @synthesize modelCellID=mModelCellID;
-@property (nonatomic) struct UIEdgeInsets paddingInsets; // @synthesize paddingInsets=mPaddingInsets;
-@property (nonatomic) unsigned long long pageCount; // @synthesize pageCount=mPageCount;
-@property (nonatomic) unsigned long long pageNumber; // @synthesize pageNumber=mPageNumber;
-@property (nonatomic) int verticalAlignment; // @synthesize verticalAlignment=mVerticalAlignment;
-@property (strong, nonatomic) TSWPColumn *wpColumn; // @synthesize wpColumn=mWPColumn;
+@property (nonatomic) BOOL inDynamicLayout; // @synthesize inDynamicLayout=_inDynamicLayout;
+@property (strong, nonatomic) TSTLayoutContentCachedKey *keyVal; // @synthesize keyVal=_keyVal;
+@property (nonatomic) int layoutCacheFlags; // @synthesize layoutCacheFlags=_layoutCacheFlags;
+@property (nonatomic) struct TSUCellRect layoutMergeRange; // @synthesize layoutMergeRange=_layoutMergeRange;
+@property (nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
+@property (nonatomic) double maxWidthForChildren; // @synthesize maxWidthForChildren=_maxWidthForChildren;
+@property (nonatomic) struct CGSize minSize; // @synthesize minSize=_minSize;
+@property (nonatomic) struct TSUCellCoord modelCellID; // @synthesize modelCellID=_modelCellID;
+@property (nonatomic) struct UIEdgeInsets paddingInsets; // @synthesize paddingInsets=_paddingInsets;
+@property (nonatomic) unsigned long long pageCount; // @synthesize pageCount=_pageCount;
+@property (nonatomic) unsigned long long pageNumber; // @synthesize pageNumber=_pageNumber;
+@property (nonatomic) int verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
+@property (strong, nonatomic) TSWPColumn *wpColumn; // @synthesize wpColumn=_wpColumn;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

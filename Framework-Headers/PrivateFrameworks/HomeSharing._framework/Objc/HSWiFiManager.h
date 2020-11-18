@@ -10,11 +10,14 @@
 {
     struct __SCPreferences *_wifiPreferences;
     BOOL _wiFiEnabled;
+    BOOL _wiFiAssociated;
 }
 
+@property (nonatomic, getter=isWiFiAssociated) BOOL wiFiAssociated; // @synthesize wiFiAssociated=_wiFiAssociated;
 @property (nonatomic, getter=isWiFiEnabled) BOOL wiFiEnabled; // @synthesize wiFiEnabled=_wiFiEnabled;
 
 + (id)sharedWiFiManager;
+- (BOOL)_getWiFiAssociated;
 - (BOOL)_getWiFiEnabledFromPrefs;
 - (id)_processIdentifier;
 - (void)_wifiCallBack:(unsigned int)arg1;

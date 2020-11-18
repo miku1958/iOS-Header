@@ -20,6 +20,7 @@
 @property (readonly, strong, nonatomic) UIImage *UIImage;
 @property (readonly, strong, nonatomic) FBSceneSnapshotContext *context; // @synthesize context=_context;
 @property (readonly, nonatomic, getter=isDataLoaded) BOOL dataLoaded;
+@property (readonly, nonatomic) void *fallbackIOSurface;
 
 - (struct CGAffineTransform)_baseTransformForSnapshotContext:(id)arg1 rootContext:(id)arg2;
 - (id)_collectLayersToSnapshotFromScene:(id)arg1 withSnapshotContext:(id)arg2 rootContext:(id)arg3;

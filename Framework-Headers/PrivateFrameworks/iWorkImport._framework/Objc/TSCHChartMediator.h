@@ -21,12 +21,13 @@ __attribute__((visibility("hidden")))
     TSUIntToIntDictionary *mGridSeriesIndexForRemoteSeriesIndex;
 }
 
-@property (nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+@property (weak, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
 @property (readonly, nonatomic) int direction;
 @property (readonly, nonatomic) BOOL isPhantom;
-@property (nonatomic) id<TSCHNotifyOnModify> objectToNotify; // @synthesize objectToNotify=mObjectToNotify;
+@property (weak, nonatomic) id<TSCHNotifyOnModify> objectToNotify; // @synthesize objectToNotify=mObjectToNotify;
 
 + (id)propertiesThatInvalidateMediator;
+- (void).cxx_destruct;
 - (id)categoryLabelFormulas;
 - (void)clearParent;
 - (id)commandSetCategoryName:(id)arg1 forCategoryIndex:(unsigned long long)arg2;

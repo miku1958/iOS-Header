@@ -17,12 +17,14 @@
     NSMutableArray *_stagedOperations;
     NSMutableArray *_waitingOperations;
     double _initialDelay;
+    double _initialBackoff;
 }
 
 @property (strong, nonatomic) HMFExponentialBackoffTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
 @property (readonly, nonatomic) long long count;
 @property (readonly, nonatomic) long long countTotal;
 @property (nonatomic) BOOL hasExponentialBackoff; // @synthesize hasExponentialBackoff=_hasExponentialBackoff;
+@property (nonatomic) double initialBackoff; // @synthesize initialBackoff=_initialBackoff;
 @property (nonatomic) double initialDelay; // @synthesize initialDelay=_initialDelay;
 @property (weak, nonatomic) HMDSyncOperationManager *manager; // @synthesize manager=_manager;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
@@ -37,7 +39,7 @@
 - (id)description;
 - (void)dropAllOperations;
 - (void)dropOperation:(id)arg1;
-- (id)initName:(id)arg1 syncManager:(id)arg2 initialDelay:(double)arg3 hasBackoff:(BOOL)arg4;
+- (id)initName:(id)arg1 syncManager:(id)arg2 initialDelay:(double)arg3 initialBackoff:(double)arg4 hasBackoff:(BOOL)arg5;
 - (BOOL)isInMaximumTimeInterval;
 - (id)nextOperation;
 - (id)operationsToCancel;

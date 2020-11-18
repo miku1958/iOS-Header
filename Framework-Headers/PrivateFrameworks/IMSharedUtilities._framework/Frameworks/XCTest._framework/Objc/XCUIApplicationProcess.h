@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class XCAXClient_iOS, XCAccessibilityElement, XCElementSnapshot, XCUIApplicationImpl, XCUIApplicationMonitor;
-@protocol OS_dispatch_queue, XCTRunnerAutomationSession;
+@class XCAccessibilityElement, XCElementSnapshot, XCUIApplicationImpl, XCUIApplicationMonitor;
+@protocol OS_dispatch_queue, XCTRunnerAutomationSession, XCUIAccessibilityInterface;
 
 @interface XCUIApplicationProcess : NSObject
 {
@@ -27,17 +27,17 @@
     id<XCTRunnerAutomationSession> _automationSession;
     XCElementSnapshot *_lastSnapshot;
     XCUIApplicationMonitor *_applicationMonitor;
-    XCAXClient_iOS *_AXClient_iOS;
+    id<XCUIAccessibilityInterface> _axInterface;
 }
 
-@property XCAXClient_iOS *AXClient_iOS; // @synthesize AXClient_iOS=_AXClient_iOS;
 @property (nonatomic) BOOL accessibilityActive;
 @property (readonly, copy) XCAccessibilityElement *accessibilityElement;
 @property BOOL animationsHaveFinished;
 @property XCUIApplicationImpl *applicationImplementation; // @synthesize applicationImplementation=_applicationImplementation;
-@property XCUIApplicationMonitor *applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
+@property (strong) XCUIApplicationMonitor *applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
 @property (nonatomic) unsigned long long applicationState;
 @property (strong) id<XCTRunnerAutomationSession> automationSession; // @synthesize automationSession=_automationSession;
+@property (strong) id<XCUIAccessibilityInterface> axInterface; // @synthesize axInterface=_axInterface;
 @property (readonly) BOOL background;
 @property BOOL eventLoopHasIdled;
 @property int exitCode;
@@ -57,12 +57,13 @@
 + (id)keyPathsForValuesAffectingForeground;
 + (id)keyPathsForValuesAffectingRunning;
 + (id)keyPathsForValuesAffectingSuspended;
+- (void).cxx_destruct;
 - (void)_awaitKnownApplicationState;
 - (id)_queue_description;
-- (void)dealloc;
+- (void)acquireBackgroundAssertion;
 - (id)description;
 - (id)init;
-- (id)initWithApplicationMonitor:(id)arg1 AXInterface:(id)arg2;
+- (id)initWithApplicationMonitor:(id)arg1 axInterface:(id)arg2;
 - (id)shortDescription;
 - (void)terminate;
 - (void)waitForAutomationSession;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString, TSDGLDataArrayBuffer, TSDGLDataBuffer;
+@class NSString, TSDGLDataArrayBuffer, TSDGPUDataBuffer;
 
 __attribute__((visibility("hidden")))
 @interface TSDGLDataBufferAttribute : NSObject
@@ -19,14 +19,14 @@ __attribute__((visibility("hidden")))
     long long _dataType;
     unsigned long long _bufferOffset;
     TSDGLDataArrayBuffer *_dataArrayBuffer;
-    TSDGLDataBuffer *_dataBuffer;
+    TSDGPUDataBuffer *_dataBuffer;
 }
 
 @property (nonatomic) unsigned long long bufferOffset; // @synthesize bufferOffset=_bufferOffset;
 @property (readonly, nonatomic) unsigned int bufferUsage; // @synthesize bufferUsage=_bufferUsage;
 @property (readonly, nonatomic) int componentCount; // @synthesize componentCount=_componentCount;
 @property (nonatomic) TSDGLDataArrayBuffer *dataArrayBuffer; // @synthesize dataArrayBuffer=_dataArrayBuffer;
-@property (nonatomic) TSDGLDataBuffer *dataBuffer; // @synthesize dataBuffer=_dataBuffer;
+@property (nonatomic) TSDGPUDataBuffer *dataBuffer; // @synthesize dataBuffer=_dataBuffer;
 @property (readonly, nonatomic) long long dataType; // @synthesize dataType=_dataType;
 @property (readonly, nonatomic) BOOL isNormalized; // @synthesize isNormalized=_isNormalized;
 @property (nonatomic) int locationInShader; // @synthesize locationInShader=_locationInShader;

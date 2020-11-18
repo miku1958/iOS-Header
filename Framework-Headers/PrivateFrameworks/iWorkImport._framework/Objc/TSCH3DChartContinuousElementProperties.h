@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (float)p_depthLimitedChartInitialDepthOffset;
 - (float)p_interSetDepthGapProperty;
 - (void)reset;
-- (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_44ada6bf)arg2;
+- (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 - (tvec2_3b141483)seriesSize;
 - (void)updateLabels;
 

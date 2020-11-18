@@ -231,6 +231,7 @@
 - (void)didSendBalloonPayload:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 messageGUID:(id)arg4 account:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)didSendMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3;
 - (void)didSendMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4 forceDate:(id)arg5;
+- (void)didSendMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4 forceDate:(id)arg5 itemIsComingFromStorage:(BOOL)arg6;
 - (void)didSendMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 forceDate:(id)arg4;
 - (void)didSendMessagePlayedReceiptForMessageID:(id)arg1;
 - (void)didSendMessagePlayedReceiptForMessageID:(id)arg1 account:(id)arg2;

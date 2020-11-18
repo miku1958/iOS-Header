@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)defaultDataFileName;
 - (BOOL)drawValueLabelsForZero;
+- (BOOL)editableFormatForValueStrings;
 - (id)genericToSpecificPropertyMap;
 - (double)maxDepthRatio;
 - (Class)presetImagerClass;

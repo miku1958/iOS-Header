@@ -24,10 +24,10 @@
 - (void)cloudConfigurationStoreDetails:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)createActivationLockBypassCodeWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)defaultAppBundleIDForCommunicationServiceType:(NSString *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
-- (void)filteredMailAccountsWithSourceAccountManagement:(int)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)installProfileData:(NSData *)arg1 interactive:(BOOL)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (void)installProvisioningProfileData:(NSData *)arg1 managingProfileIdentifer:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)isProfileInstalledWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *, BOOL))arg2;
+- (void)loadMailAccountsWithFilteringEnabled:(BOOL)arg1 sourceAccountManagement:(int)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)managedAppIDsWithFlags:(int)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)managedSystemConfigurationServiceIDsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)managedWiFiNetworkNamesWithCompletion:(void (^)(NSArray *, NSError *))arg1;

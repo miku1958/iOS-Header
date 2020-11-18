@@ -27,6 +27,7 @@
     NSData *_zoneishProtectionData;
     NSDate *_zonePCSModificationDate;
     CKEncryptedDate *_encryptedLastZoneishPCSRollDate;
+    NSString *_zonePCSLastModifierDevice;
     NSData *_pcsKeyID;
     NSData *_zoneishKeyID;
     NSString *_previousProtectionEtag;
@@ -51,6 +52,7 @@
 @property (nonatomic) BOOL serializeProtectionData; // @synthesize serializeProtectionData=_serializeProtectionData;
 @property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 @property (nonatomic) BOOL zoneKeyRollAllowed; // @synthesize zoneKeyRollAllowed=_zoneKeyRollAllowed;
+@property (strong, nonatomic) NSString *zonePCSLastModifierDevice; // @synthesize zonePCSLastModifierDevice=_zonePCSLastModifierDevice;
 @property (strong, nonatomic) NSDate *zonePCSModificationDate; // @synthesize zonePCSModificationDate=_zonePCSModificationDate;
 @property (strong, nonatomic) NSData *zoneishKeyID; // @synthesize zoneishKeyID=_zoneishKeyID;
 @property (strong, nonatomic) NSData *zoneishProtectionData; // @synthesize zoneishProtectionData=_zoneishProtectionData;

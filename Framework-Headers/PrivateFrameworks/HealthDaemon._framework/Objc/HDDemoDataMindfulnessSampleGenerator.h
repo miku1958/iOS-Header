@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL didGenerateMindfulnessMinute; // @synthesize didGenerateMindfulnessMinute=_didGenerateMindfulnessMinute;
 @property (nonatomic) double nextMindfulSessionSampleTime; // @synthesize nextMindfulSessionSampleTime=_nextMindfulSessionSampleTime;
 
++ (BOOL)supportsSecureCoding;
 - (id)_heartRatesFromMindfulSessionSample:(id)arg1 demoPerson:(id)arg2 atTime:(double)arg3;
 - (id)_mindfulSessionSampleForDemoPerson:(id)arg1 atTime:(double)arg2 startDate:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;

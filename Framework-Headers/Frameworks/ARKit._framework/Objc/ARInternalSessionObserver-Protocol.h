@@ -12,5 +12,6 @@
 
 @optional
 - (void)session:(ARSession *)arg1 didChangeState:(unsigned long long)arg2;
+- (void)sessionShouldAttemptRelocalization:(ARSession *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

@@ -4,32 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFItemModule.h>
+#import <HomeUI/HUChildServiceEditorItemModule.h>
 
-@class HFItem, HFServiceItemProvider, HMHome, NSSet;
-@protocol HFServiceLikeItem;
-
-@interface HUValveItemModule : HFItemModule
+@interface HUValveItemModule : HUChildServiceEditorItemModule
 {
-    NSSet *_itemProviders;
-    unsigned long long _editingMode;
-    HMHome *_home;
-    HFItem<HFServiceLikeItem> *_sourceItem;
-    HFServiceItemProvider *_valveServiceItemProvider;
 }
 
-@property (readonly, nonatomic) unsigned long long editingMode; // @synthesize editingMode=_editingMode;
-@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
-@property (strong, nonatomic) HFItem<HFServiceLikeItem> *sourceItem; // @synthesize sourceItem=_sourceItem;
-@property (strong, nonatomic) HFServiceItemProvider *valveServiceItemProvider; // @synthesize valveServiceItemProvider=_valveServiceItemProvider;
-
-+ (CDUnknownBlockType)valveItemComparator;
-- (void).cxx_destruct;
-- (id)_createItemProviders;
++ (id)supportedServiceTypes;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
-- (id)initWithItemUpdater:(id)arg1 home:(id)arg2 sourceItem:(id)arg3 mode:(unsigned long long)arg4;
-- (id)itemProviders;
-- (id)toggleConfigurationStateForItem:(id)arg1;
 
 @end
 

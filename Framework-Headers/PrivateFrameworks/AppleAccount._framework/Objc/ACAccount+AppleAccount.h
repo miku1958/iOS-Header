@@ -6,7 +6,7 @@
 
 #import <Accounts/ACAccount.h>
 
-@class NSArray, NSDictionary, NSString;
+@class AARegionInfo, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface ACAccount (AppleAccount)
 
@@ -38,8 +38,10 @@
 @property (nonatomic, setter=aa_setUndergoingRepair:) BOOL aa_isUndergoingRepair;
 @property (nonatomic, setter=aa_setUsesCloudDocs:) BOOL aa_isUsingCloudDocs;
 @property (readonly, nonatomic) BOOL aa_isUsingiCloud;
+@property (copy, nonatomic, setter=aa_setLastKnownQuota:) NSNumber *aa_lastKnownQuota;
 @property (copy, nonatomic, setter=aa_setLastName:) NSString *aa_lastName;
 @property (readonly, nonatomic) NSString *aa_mapsToken;
+@property (readonly, nonatomic) NSString *aa_mdmServerToken;
 @property (copy, nonatomic, setter=aa_setMiddleName:) NSString *aa_middleName;
 @property (readonly, nonatomic) BOOL aa_needsEmailConfiguration;
 @property (readonly, nonatomic) BOOL aa_needsRegistration;
@@ -48,6 +50,7 @@
 @property (readonly, nonatomic) NSString *aa_personID;
 @property (readonly, nonatomic) NSString *aa_primaryEmail;
 @property (readonly, nonatomic) NSString *aa_protocolVersion;
+@property (readonly, copy, nonatomic) AARegionInfo *aa_regionInfo;
 @property (readonly, nonatomic) int aa_repairerPID;
 @property (readonly, nonatomic) BOOL aa_serviceUnavailable;
 @property (readonly, nonatomic) NSDictionary *aa_serviceUnavailableInfo;
@@ -58,6 +61,7 @@
 - (id)aa_authTokenWithError:(id *)arg1;
 - (id)aa_hsaTokenWithError:(id *)arg1;
 - (void)aa_setHSAToken:(id)arg1;
+- (void)aa_setMDMServerToken:(id)arg1;
 - (void)aa_setMapsToken:(id)arg1;
 - (void)aa_setUseCellular:(BOOL)arg1 forDataclass:(id)arg2;
 - (void)aa_updateWithProvisioningResponse:(id)arg1;

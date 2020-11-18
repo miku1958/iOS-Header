@@ -7,15 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMFMessageDispatcher, NSArray, NSObject, NSString, NSUUID;
+@class HMDAccessory, HMFMessageDispatcher, NSArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAccessoryProfile : HMFObject <HMDBulletinIdentifiers, HMFMessageReceiver, HMFDumpState, HMFLogging, NSSecureCoding>
+@interface HMDAccessoryProfile : HMFObject <HMDBulletinIdentifiers, HMDHomeMessageReceiver, HMFDumpState, HMFLogging, NSSecureCoding>
 {
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -33,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) NSArray *services; // @synthesize services=_services;
@@ -40,6 +41,7 @@
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

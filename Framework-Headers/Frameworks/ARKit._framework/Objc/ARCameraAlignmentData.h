@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/ARResultData-Protocol.h>
+#import <ARKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ARCameraAlignmentData : NSObject <ARResultData>
+@interface ARCameraAlignmentData : NSObject <ARResultData, NSSecureCoding>
 {
+    double _timestamp;
     CDStruct_14d5dc5e _cameraTransform;
 }
 
@@ -20,8 +22,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
++ (BOOL)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

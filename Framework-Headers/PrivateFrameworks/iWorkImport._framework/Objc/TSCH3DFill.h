@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)p_imageFillForSize:(struct CGSize)arg1 context:(id)arg2;
 - (id)p_lazyLightingModel;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 offset:(struct CGPoint)arg3;
 - (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(BOOL)arg4;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (id)referenceColor;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVContentKeySession, NSData, NSError;
+@class AVContentKeySession, NSData, NSDictionary, NSError, NSNumber, NSString;
 
 @interface AVContentKeyRequestInternal : NSObject
 {
@@ -17,12 +17,14 @@
     id customURLProviderContext;
     int responseInfoSent;
     BOOL providesPersistableKey;
+    NSDictionary *preloadingRequestOptions;
     struct OpaqueFigCPECryptor *figCryptor;
     NSError *error;
     struct __CFDictionary *requestInfo;
-    unsigned long long requestID;
+    unsigned long long customURLRequestID;
     struct OpaqueFigCustomURLHandler *customURLHandler;
-    int cryptorListenerAdded;
+    NSString *cryptorUUID;
+    NSNumber *cryptorRequestID;
 }
 
 @end

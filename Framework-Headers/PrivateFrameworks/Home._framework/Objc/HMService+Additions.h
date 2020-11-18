@@ -7,6 +7,7 @@
 #import <HomeKit/HMService.h>
 
 @interface HMService (Additions)
++ (id)_hf_allowedChildServicesTypeMap;
 + (id)hf_defaultServiceSubtypeForServiceType:(id)arg1;
 + (id)hf_roomsForServices:(id)arg1;
 + (id)hf_standardServices;

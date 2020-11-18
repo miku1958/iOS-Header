@@ -44,6 +44,7 @@
 
 + (id)_favoritesGlyph;
 + (id)_generateDefaultFavoritesIconWithGlyphColor:(id)arg1;
++ (id)_generateFavoritesIconForRequest:(id)arg1 withBackgroundColor:(id)arg2;
 + (id)_monogramConfiguration;
 + (id)defaultBackgroundColor;
 + (id)defaultFavoritesIcon;

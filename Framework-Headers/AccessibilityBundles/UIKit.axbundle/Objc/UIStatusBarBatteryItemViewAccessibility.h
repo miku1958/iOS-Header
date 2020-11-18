@@ -14,7 +14,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityIsBatteryPercentVisible;
+- (long long)_accessibilityNonQuantizedBatteryLevel;
+- (void)_accessibilitySetNonQuantizedBatteryLevel:(long long)arg1;
+- (id)_axCachedAXLabel;
 - (BOOL)_axIsCapacityDirty;
+- (void)_axSetCachedAXLabel:(id)arg1;
 - (void)_axSetCapacityDirty:(BOOL)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (struct CGRect)accessibilityFrame;

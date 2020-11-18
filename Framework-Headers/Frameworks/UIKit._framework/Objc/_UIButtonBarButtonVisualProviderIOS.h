@@ -7,7 +7,7 @@
 #import <UIKit/_UIButtonBarButtonVisualProvider.h>
 
 @class NSArray, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, UIButton, UIImageView, _UIBackButtonContainerView, _UIModernBarButton;
-@protocol _UIButtonBarAppearanceDelegate;
+@protocol _UIButtonBarAppearanceDelegate><NSObject;
 
 __attribute__((visibility("hidden")))
 @interface _UIButtonBarButtonVisualProviderIOS : _UIButtonBarButtonVisualProvider
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_constraints;
     NSLayoutConstraint *_backButtonContentLeadingConstraint;
     NSLayoutConstraint *_backButtonContentTrailingContraint;
-    id<_UIButtonBarAppearanceDelegate> _appearanceDelegate;
+    id<_UIButtonBarAppearanceDelegate><NSObject> _appearanceDelegate;
     NSArray *_titleAttributes;
     NSMutableDictionary *_backgroundImages;
     BOOL _skipAttributedTitle;

@@ -52,11 +52,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long randomNumberSeed;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsBounce;
+@property (readonly, nonatomic) BOOL supportsColor;
 @property (readonly, nonatomic) BOOL supportsCustomEffectTimingCurve1;
 @property (readonly, nonatomic) BOOL supportsCustomEffectTimingCurve2;
 @property (readonly, nonatomic) BOOL supportsCustomEffectTimingCurve3;
 @property (readonly, nonatomic) BOOL supportsDirection;
 @property (readonly, nonatomic) BOOL supportsDuration;
+@property (readonly, nonatomic) BOOL supportsTwist;
 
 + (id)attributeKeyForBindingKeyPath:(id)arg1;
 + (id)bindingKeyPathForAttributeKey:(id)arg1;

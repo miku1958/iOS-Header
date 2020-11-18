@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-#import <MediaPlaybackCore/MPNowPlayingInfoLyricsDelegate-Protocol.h>
 #import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSourcePrivate-Protocol.h>
 
-@class MPCPlaybackEngine, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSString;
+@class MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSString;
 
-@interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSourcePrivate, MPNowPlayingInfoLyricsDelegate, MPCPlaybackEngineEventObserving>
+@interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSourcePrivate, MPCPlaybackEngineEventObserving>
 {
     MPLibraryAddStatusObserver *_libraryAddStatusObserver;
     NSString *_lastContextID;
@@ -34,12 +33,14 @@
 @property (readonly, nonatomic) MPNowPlayingInfoCenter *infoCenter; // @synthesize infoCenter=_infoCenter;
 @property (nonatomic, getter=hasInitializedSupportedCommands) BOOL initializedSupportedCommands; // @synthesize initializedSupportedCommands=_initializedSupportedCommands;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+@property (readonly, nonatomic) MPCPlayerPath *playerPath;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_disableQueueModificationsChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
+- (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateSupportedCommands;
@@ -61,6 +62,7 @@
 - (void)nowPlayingInfoCenter:(id)arg1 didBeginLyricsEvent:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 didEndLyricsEvent:(id)arg2;
 - (id)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)playbackQueueIdentifierForNowPlayingInfoCenter:(id)arg1;
 - (void)publishIfNeeded;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
 

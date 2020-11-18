@@ -8,7 +8,7 @@
 
 #import <AttentionAwareness/AWRemoteClient-Protocol.h>
 
-@class AWAttentionEvent, AWScheduler, NSArray, NSData, NSString, NSXPCConnection;
+@class AWAttentionEvent, AWScheduler, NSArray, NSString, NSXPCConnection;
 @protocol AWFrameworkClient, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,11 +20,12 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_connection;
     unsigned long long _lastPositiveEventTime;
     unsigned long long _lastPositiveNonSampledEventTime;
+    unsigned long long _pollingStartTime;
     unsigned long long _pollingDeadline;
     BOOL _sentPollInitialized;
     BOOL _lastAttentionState;
     AWAttentionEvent *_lastEvent;
-    NSData *_archivedTag;
+    unsigned long long _tagIndex;
     unsigned long long _eventMask;
     BOOL _samplingClient;
     double _lastNegativeEventTimeoutValueSec;

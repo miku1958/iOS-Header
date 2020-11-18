@@ -14,14 +14,15 @@
     id<SXMediaSelectionViewControllerDelegate> _delegate;
 }
 
-@property (weak, nonatomic) id<SXMediaSelectionViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property (weak, nonatomic) id<SXMediaSelectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) id<SXMediaSelectionViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, nonatomic) id<SXMediaSelectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (id)displayNameForGroup:(unsigned long long)arg1;
 - (id)displayNameForOptionAtIndexPath:(id)arg1;
 - (void)done:(id)arg1;
 - (unsigned long long)indexOfSelectionOptionInGroup:(unsigned long long)arg1;
+- (id)initWithDelegate:(id)arg1 dataSource:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)selectedOptionAtIndexPath:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

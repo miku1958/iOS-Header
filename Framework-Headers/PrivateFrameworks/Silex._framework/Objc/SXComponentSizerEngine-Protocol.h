@@ -6,9 +6,12 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXComponent, SXComponentLayout, SXComponentSizer, SXLayoutAttributes;
+@class SXComponentSizer, SXLayoutAttributes;
+@protocol SXComponent, SXComponentLayout, SXComponentSizerFactory;
 
 @protocol SXComponentSizerEngine <NSObject>
-- (SXComponentSizer *)sizerForComponent:(SXComponent *)arg1 componentLayout:(SXComponentLayout *)arg2 layoutAttributes:(SXLayoutAttributes *)arg3;
+- (void)addFactory:(id<SXComponentSizerFactory>)arg1;
+- (void)removeFactory:(id<SXComponentSizerFactory>)arg1;
+- (SXComponentSizer *)sizerForComponent:(id<SXComponent>)arg1 componentLayout:(id<SXComponentLayout>)arg2 layoutAttributes:(SXLayoutAttributes *)arg3;
 @end
 

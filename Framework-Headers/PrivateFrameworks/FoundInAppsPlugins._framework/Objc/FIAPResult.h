@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <FoundInAppsPlugins/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSError;
 
-@interface FIAPResult : NSObject
+@interface FIAPResult : NSObject <NSSecureCoding>
 {
     NSArray *_historicalDataRequests;
     NSArray *_entities;

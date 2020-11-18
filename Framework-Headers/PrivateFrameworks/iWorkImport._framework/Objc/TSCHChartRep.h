@@ -10,7 +10,7 @@
 #import <iWorkImport/TSCHChartRepPlatformProtocols-Protocol.h>
 #import <iWorkImport/TSCHSupportsRendering-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSArray, NSMutableArray, NSString, TSCHChartDrawableInfo, TSCHChartLayout, TSCHLegendMoveKnob, TSCHRendererLayer, TSCHSearchSelection, TSCHSelectionPath;
+@class CALayer, CAShapeLayer, NSArray, NSMutableArray, NSString, TSCHChartDrawableInfo, TSCHChartLayout, TSCHLegendMoveKnob, TSCHSearchSelection, TSCHSelectionPath;
 
 __attribute__((visibility("hidden")))
 @interface TSCHChartRep : TSWPTextHostRep <TSCHChartRepPlatformProtocols, TSCHSupportsRendering, CALayerDelegate>
@@ -29,23 +29,19 @@ __attribute__((visibility("hidden")))
     unsigned long long mTextureDeliveryStyle;
     int mTextureByGlyphStyle;
     TSCHSelectionPath *mActiveTextEditingPath;
-    TSCHRendererLayer *mLegendLayer;
     BOOL mForceSeparateLegendLayer;
     BOOL mIsLayerBasedRep;
     BOOL mInvalidateLegendLayerForLayerBasedRep;
     TSCHChartLayout *mChartLayout;
     BOOL mWantsPreviewLayout;
     BOOL mEditorIsEditingInfo;
-    BOOL mMediatorEditingHaloLayerPathValid;
     CAShapeLayer *mMediatorEditingHaloLayer;
-    BOOL mLegendBorderHaloLayerPathValid;
     CAShapeLayer *mLegendBorderHaloLayer;
     BOOL mChartRepGoingAway;
     BOOL mCDEIsEditingInfo;
     BOOL mCDECausedSetNeedsDisplay;
     BOOL mDrawingSearchReference;
     CALayer *mSubselectionKnobLayer;
-    BOOL mFinishedBecomingSelected;
     TSCHLegendMoveKnob *mDynamicLegendKnob;
     BOOL mIs2DRepFor3DChartRep;
     int mRenderPassChunkPhase;
@@ -80,6 +76,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double viewScale;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
+- (void).cxx_destruct;
 - (BOOL)buildShouldUseRenderer:(id)arg1;
 - (BOOL)canDrawInParallel;
 - (void)clearRenderers;

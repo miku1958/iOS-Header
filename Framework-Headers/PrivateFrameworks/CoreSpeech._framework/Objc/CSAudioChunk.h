@@ -26,7 +26,6 @@
 @property (readonly, nonatomic) unsigned long long startSampleCount; // @synthesize startSampleCount=_startSampleCount;
 
 - (void).cxx_destruct;
-- (id)_fidesRecordInfo;
 - (id)dataForChannel:(unsigned long long)arg1;
 - (id)initWithData:(id)arg1 numChannels:(unsigned long long)arg2 numSamples:(unsigned long long)arg3 sampleByteDepth:(unsigned long long)arg4 startSampleCount:(unsigned long long)arg5 hostTime:(unsigned long long)arg6;
 - (id)subChunkFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2;

@@ -53,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (void)_cancel:(__list_iterator_aef25af4 *)arg1 err:(id)arg2;
 - (BOOL)_cancelIfNeeded:(__list_iterator_aef25af4 *)arg1;
 - (id)_findInCache:(const struct _GEOTileKey *)arg1;
-- (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 fromOfflinePack:(id)arg3;
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 info:(id)arg3;
 - (void)_loadedTileForLocalKey:(struct _GEOTileKey)arg1 preliminary:(BOOL)arg2 quickly:(BOOL)arg3 tileDecoder:(id)arg4 data:(id)arg5 disburseTile:(CDUnknownBlockType)arg6;
 - (void)_localeChanged:(id)arg1;
@@ -63,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (id)_tileDecoderForTileKey:(const struct _GEOTileKey *)arg1 quickly:(BOOL *)arg2;
 - (void)_tileEditionChanged:(id)arg1;
 - (void)_timerFired;
-- (void)_updateNetworkActive;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1 forClient:(id)arg2 exclusive:(BOOL)arg3;
 - (id)cachedTileForKey:(const struct _GEOTileKey *)arg1;
 - (void)calculateFreeableSizeWithCallbackQ:(id)arg1 finished:(CDUnknownBlockType)arg2;
@@ -79,11 +77,14 @@ __attribute__((visibility("hidden")))
 - (void)expireTilesWithPredicate:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 serverProxy:(id)arg2;
 - (id)internalDelegate;
 - (id)internalDelegateQ;
 - (void)loadKey:(const struct _GEOTileKey *)arg1 additionalInfo:(const CDStruct_58878026 *)arg2 priority:(unsigned int)arg3 forClient:(id)arg4 options:(unsigned long long)arg5 callbackQ:(id)arg6 beginNetwork:(CDUnknownBlockType)arg7 callback:(CDUnknownBlockType)arg8;
-- (void)loadKey:(const struct _GEOTileKey *)arg1 additionalInfo:(const CDStruct_58878026 *)arg2 priority:(unsigned int)arg3 forClient:(id)arg4 proxyClient:(id)arg5 options:(unsigned long long)arg6 callbackQ:(id)arg7 beginNetwork:(CDUnknownBlockType)arg8 callback:(CDUnknownBlockType)arg9;
+- (void)loadKey:(const struct _GEOTileKey *)arg1 additionalInfo:(const CDStruct_58878026 *)arg2 priority:(unsigned int)arg3 forClient:(id)arg4 options:(unsigned long long)arg5 qos:(unsigned int)arg6 callbackQ:(id)arg7 beginNetwork:(CDUnknownBlockType)arg8 callback:(CDUnknownBlockType)arg9;
+- (void)loadKey:(const struct _GEOTileKey *)arg1 additionalInfo:(const CDStruct_58878026 *)arg2 priority:(unsigned int)arg3 forClient:(id)arg4 proxyClient:(id)arg5 options:(unsigned long long)arg6 qos:(unsigned int)arg7 callbackQ:(id)arg8 beginNetwork:(CDUnknownBlockType)arg9 callback:(CDUnknownBlockType)arg10;
 - (void)loadKey:(const struct _GEOTileKey *)arg1 priority:(unsigned int)arg2 forClient:(id)arg3 options:(unsigned long long)arg4 callbackQ:(id)arg5 beginNetwork:(CDUnknownBlockType)arg6 callback:(CDUnknownBlockType)arg7;
+- (void)loadKey:(const struct _GEOTileKey *)arg1 priority:(unsigned int)arg2 forClient:(id)arg3 options:(unsigned long long)arg4 qos:(unsigned int)arg5 callbackQ:(id)arg6 beginNetwork:(CDUnknownBlockType)arg7 callback:(CDUnknownBlockType)arg8;
 - (int)memoryHits;
 - (int)networkHits;
 - (void)openForClient:(id)arg1;

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceMemos/NSCoding-Protocol.h>
 #import <VoiceMemos/NSCopying-Protocol.h>
 #import <VoiceMemos/NSMutableCopying-Protocol.h>
+#import <VoiceMemos/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray;
 
-@interface RCWaveform : NSObject <NSMutableCopying, NSCopying, NSCoding>
+@interface RCWaveform : NSObject <NSMutableCopying, NSCopying, NSSecureCoding>
 {
     NSMutableArray *_segments;
     unsigned long long _decodedVersion;
@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSArray *segments; // @synthesize segments=_segments;
 
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 + (id)waveformURLForAVURL:(id)arg1;
 + (id)waveformWithContentsOfURL:(id)arg1 minimumRequiredVersion:(unsigned long long)arg2;
 - (void).cxx_destruct;

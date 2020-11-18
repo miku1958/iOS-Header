@@ -46,6 +46,7 @@
 - (id)init;
 - (BOOL)isFrameAnnotated:(id)arg1;
 - (BOOL)isFrameOrChildAnnotated:(id)arg1;
+- (id)metadataForActiveFormInPageWithMainFrame:(id)arg1;
 - (id)metadataForForm:(id)arg1 inFrame:(id)arg2 requestType:(unsigned long long)arg3;
 - (struct FrameMetadata *)metadataForFrame:(id)arg1 requestType:(unsigned long long)arg2;
 - (BOOL)pageWithMainFrameMeetsEditedFormTextWarningCriteria:(id)arg1;
@@ -66,7 +67,7 @@
 - (id)uniqueIDForTextField:(id)arg1 inFrame:(id)arg2;
 - (unsigned long long)userEditedTextControlCountInArray:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2 expectTextFieldsRatherThanTextAreas:(BOOL)arg3;
 - (void)usernameFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;
-- (void)usernameFieldFocused:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3;
+- (void)usernameFieldFocused:(id)arg1 fieldMetadata:(id)arg2 inForm:(id)arg3 inFrame:(id)arg4;
 - (id)visibleNonEmptyTextFieldsInForm:(id)arg1 inFrame:(id)arg2;
 - (void)willSendSubmitEventForForm:(id)arg1 inFrame:(id)arg2;
 - (void)willSubmitForm:(id)arg1 inFrame:(id)arg2;

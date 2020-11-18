@@ -49,6 +49,7 @@
 - (long long)playerState:(long long)arg1 chain:(id)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(id)arg2;
 - (id)playerVideoView:(id)arg1 chain:(id)arg2;
+- (id)tracklistUniqueIdentifier:(id)arg1 chain:(id)arg2;
 
 @end
 

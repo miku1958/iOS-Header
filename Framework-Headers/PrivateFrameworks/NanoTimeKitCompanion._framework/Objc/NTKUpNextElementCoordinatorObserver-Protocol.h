@@ -10,6 +10,7 @@
 
 @protocol NTKUpNextElementCoordinatorObserver <NSObject>
 
+@property (readonly, nonatomic) BOOL allowsLocationUse;
 @property (readonly, nonatomic) NSSet *disabledDataSources;
 @property (readonly, nonatomic) unsigned long long state;
 

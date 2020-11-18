@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_performBlock:(CDUnknownBlockType)arg1 andWait:(BOOL)arg2;
+- (void)_removePersistentStore;
 - (BOOL)_setupPersistenceIfNeeded:(id *)arg1;
 - (id)init;
 - (void)performBlock:(CDUnknownBlockType)arg1;

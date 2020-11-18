@@ -6,19 +6,20 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MediaPlayer/NSCoding-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSMutableCopying-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary;
 
-@interface MPBidirectionalDictionary : NSObject <NSCopying, NSMutableCopying, NSCoding>
+@interface MPBidirectionalDictionary : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSMutableDictionary *_keyToObjectDictionary;
     NSMutableDictionary *_objectToKeyDictionary;
 }
 
 + (id)bidirectionalDictionary;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)allKeys;
 - (id)copyWithZone:(struct _NSZone *)arg1;

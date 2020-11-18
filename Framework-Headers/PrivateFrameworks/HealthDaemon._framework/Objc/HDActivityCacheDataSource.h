@@ -14,7 +14,7 @@
 
 @interface HDActivityCacheDataSource : NSObject <HDActivityCacheStatisticsBuilderSourceOrderDelegate, HDDataObserver>
 {
-    vector_e4bf223f _previousWatchActivationLogEntryVector;
+    vector_7eaa0458 _previousWatchActivationLogEntryVector;
     BOOL _previousWatchActivationLogEntryIsSet;
     long long _quantitySampleAnchor;
     long long _nonQuantitySampleAnchor;

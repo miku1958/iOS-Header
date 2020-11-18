@@ -73,6 +73,7 @@
 - (id)init;
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2 managedConfiguration:(id)arg3;
 - (id)labeledValueFromMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (id)labeledValueFromPublicMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (id)mainContactStore;

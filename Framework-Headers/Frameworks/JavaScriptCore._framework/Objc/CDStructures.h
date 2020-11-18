@@ -46,9 +46,9 @@ struct CallbackData {
     id _field8;
 };
 
-struct HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>;
+struct HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>;
 
-struct HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>;
+struct HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>;
 
 struct JSCell;
 
@@ -61,6 +61,7 @@ struct JSObject {
     unsigned char _field4;
     unsigned char _field5;
     struct AuxiliaryBarrier<JSC::Butterfly *> _field6;
+    unsigned int _field7;
 };
 
 struct JSValue {
@@ -87,22 +88,22 @@ struct OpaqueJSClass {
     CDUnknownFunctionPointerType _field13;
     CDUnknownFunctionPointerType _field14;
     struct String _field15;
-    struct unique_ptr<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>>> _field16;
-    struct unique_ptr<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>>> _field17;
+    struct unique_ptr<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>>> _field16;
+    struct unique_ptr<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>>> _field17;
 };
 
 struct OpaqueJSValue;
 
-struct RefPtr<JSC::JSLock> {
+struct RefPtr<JSC::JSLock, WTF::DumbPtrTraits<JSC::JSLock>> {
     struct JSLock *m_ptr;
 };
 
-struct RefPtr<WTF::StringImpl> {
+struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>> {
     struct StringImpl *_field1;
 };
 
 struct String {
-    struct RefPtr<WTF::StringImpl> _field1;
+    struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>> _field1;
 };
 
 struct StringImpl;
@@ -152,19 +153,19 @@ struct pair<JSC::JSObject *, JSC::JSObject *> {
 
 struct unique_ptr<JSC::WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>>, std::__1::default_delete<JSC::WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>>>> {
     struct __compressed_pair<JSC::WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>>*, std::__1::default_delete<JSC::WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>>>> {
-        struct WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>> *__first_;
+        struct WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>> *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>>> {
-    struct __compressed_pair<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>*, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>>> {
-        struct HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>> *_field1;
+struct unique_ptr<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>>> {
+    struct __compressed_pair<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>*, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>>> {
+        struct HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>> *_field1;
     } _field1;
 };
 
-struct unique_ptr<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>>> {
-    struct __compressed_pair<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>*, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>>> {
-        struct HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>> *_field1;
+struct unique_ptr<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>>> {
+    struct __compressed_pair<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>*, std::__1::default_delete<WTF::HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>>> {
+        struct HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>> *_field1;
     } _field1;
 };
 

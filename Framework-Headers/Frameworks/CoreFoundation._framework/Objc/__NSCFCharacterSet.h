@@ -6,12 +6,15 @@
 
 #import <CoreFoundation/__NSCFType.h>
 
+#import <CoreFoundation/NSSecureCoding-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface __NSCFCharacterSet : __NSCFType
+@interface __NSCFCharacterSet : __NSCFType <NSSecureCoding>
 {
 }
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (BOOL)_isDeallocating;
 - (BOOL)_tryRetain;
 - (void)addCharactersInRange:(struct _NSRange)arg1;
@@ -25,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)formUnionWithCharacterSet:(id)arg1;
 - (BOOL)hasMemberInPlane:(unsigned char)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (void)invert;
 - (id)invertedSet;
 - (BOOL)isEqual:(id)arg1;

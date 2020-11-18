@@ -24,6 +24,7 @@
 - (void)highlightQuadWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 quad:(NSArray *)arg3 color:(id *)arg4 outlineColor:(id *)arg5 usePageCoordinates:(BOOL *)arg6;
 - (void)highlightRectWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 x:(int)arg3 y:(int)arg4 width:(int)arg5 height:(int)arg6 color:(id *)arg7 outlineColor:(id *)arg8 usePageCoordinates:(BOOL *)arg9;
 - (void)highlightSelectorWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 highlightConfig:(RWIProtocolDOMHighlightConfig *)arg3 selectorString:(NSString *)arg4 frameId:(id *)arg5;
+- (void)insertAdjacentHTMLWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 position:(NSString *)arg4 html:(NSString *)arg5;
 - (void)markUndoableStateWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;
 - (void)moveToWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 nodeId:(int)arg3 targetNodeId:(int)arg4 insertBeforeNodeId:(int *)arg5;
 - (void)performSearchWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *, int))arg2 query:(NSString *)arg3 nodeIds:(id *)arg4;
@@ -40,7 +41,9 @@
 - (void)resolveNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolRuntimeRemoteObject *))arg2 nodeId:(int)arg3 objectGroup:(id *)arg4;
 - (void)setAttributeValueWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 name:(NSString *)arg4 value:(NSString *)arg5;
 - (void)setAttributesAsTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 text:(NSString *)arg4 name:(id *)arg5;
+- (void)setEventListenerDisabledWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3 disabled:(BOOL)arg4;
 - (void)setInspectModeEnabledWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 enabled:(BOOL)arg3 highlightConfig:(id *)arg4;
+- (void)setInspectedNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3;
 - (void)setNodeNameWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 nodeId:(int)arg3 name:(NSString *)arg4;
 - (void)setNodeValueWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 value:(NSString *)arg4;
 - (void)setOuterHTMLWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 outerHTML:(NSString *)arg4;

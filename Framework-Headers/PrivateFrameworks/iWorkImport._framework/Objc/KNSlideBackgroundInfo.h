@@ -10,17 +10,16 @@
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 #import <iWorkImport/TSKTransformableObject-Protocol.h>
 
-@class KNAbstractSlide, NSString, TSDFill, TSDInfoGeometry, TSPObject, TSSPropertySetChangeDetails, TSSStylesheet;
+@class KNAbstractSlide, NSString, TSDFill, TSDInfoGeometry, TSPObject, TSSPropertySetChangeDetails;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
 @interface KNSlideBackgroundInfo : NSObject <TSDChangeableInfo, TSKDocumentObject, TSKTransformableObject>
 {
-    NSObject<TSDContainerInfo> *mParentInfo;
-    TSDInfoGeometry *mGeometry;
-    TSSPropertySetChangeDetails *mChanges;
-    TSSStylesheet *mStylesheet;
-    KNAbstractSlide *mSlide;
+    NSObject<TSDContainerInfo> *_parentInfo;
+    TSSPropertySetChangeDetails *_changes;
+    TSDInfoGeometry *_geometry;
+    KNAbstractSlide *_slide;
 }
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
@@ -29,23 +28,23 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) TSDFill *fill;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText;
-@property (copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=mGeometry;
+@property (copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=_geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
 @property (readonly, nonatomic) BOOL isUserModifiable;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=mParentInfo;
-@property (readonly, nonatomic) KNAbstractSlide *slide; // @synthesize slide=mSlide;
+@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
+@property (readonly, weak, nonatomic) KNAbstractSlide *slide; // @synthesize slide=_slide;
 @property (readonly) Class superclass;
 
 + (id)backgroundWithSlide:(id)arg1 andGeometry:(id)arg2;
+- (void).cxx_destruct;
 - (void)beginCollectingChanges;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (id)commandForTransformingByTransform:(struct CGAffineTransform)arg1 context:(id)arg2 transformedObjects:(id)arg3 inBounds:(struct CGRect)arg4;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (id)endCollectingChanges;
 - (id)initWithSlide:(id)arg1 andGeometry:(id)arg2;
 - (BOOL)isSelectable;

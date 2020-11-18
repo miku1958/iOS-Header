@@ -11,6 +11,7 @@
 @property (readonly, nonatomic) BOOL tsp_isCorruptZipOfPackageError;
 @property (readonly, nonatomic) BOOL tsp_isCorruptedError;
 @property (readonly, nonatomic) BOOL tsp_isDocumentTooNewError;
+@property (readonly, nonatomic) BOOL tsp_isPasswordInputError;
 @property (readonly, nonatomic) BOOL tsp_isReadError;
 @property (readonly, nonatomic) BOOL tsp_isRecoverable;
 @property (readonly, nonatomic) BOOL tsp_isTSPError;

@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)loadPublicContainer:(id)arg1 privateContainer:(id)arg2;
+- (void)loadInRegistry:(id)arg1;
 
 @end
 

@@ -26,6 +26,7 @@
 @property (readonly, copy, nonatomic) MPMediaPredicate *thenPredicate; // @synthesize thenPredicate=_thenPredicate;
 
 + (id)predicateWithConditionPredicate:(id)arg1 thenPredicate:(id)arg2 elsePredicate:(id)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)ML3PredicateForContainer;
 - (id)ML3PredicateForTrack;

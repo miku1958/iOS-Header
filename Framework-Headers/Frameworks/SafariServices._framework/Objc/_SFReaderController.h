@@ -11,7 +11,7 @@
 #import <SafariServices/WKNavigationDelegate-Protocol.h>
 #import <SafariServices/WKUIDelegatePrivate-Protocol.h>
 
-@class NSMutableDictionary, NSString, WBSReaderFontManager, WKWebView, _WKRemoteObjectInterface;
+@class NSMutableDictionary, NSString, NSTimer, WBSReaderFontManager, WKWebView, _WKRemoteObjectInterface;
 @protocol SFReaderWebProcessControllerProtocol, WKUIDelegatePrivate, _SFReaderControllerDelegate;
 
 @interface _SFReaderController : NSObject <SFReaderEventsListener, SFReaderContext, WKNavigationDelegate, WKUIDelegatePrivate>
@@ -22,6 +22,9 @@
     CDUnknownBlockType _readerMailContentCompletionHandler;
     CDUnknownBlockType _readerPrintContentCompletionHandler;
     NSMutableDictionary *_bookmarkIdentifierToReadingListItemInfoCompletionMap;
+    BOOL _readerWebViewContentDidBecomeReady;
+    CDUnknownBlockType _actionsDelayedUntilReaderWebViewIsReady;
+    NSTimer *_actionsDelayedUntilReaderWebViewIsReadyTimer;
     BOOL _readerAvailable;
     WKWebView *_webView;
     WKWebView *_readerWebView;
@@ -41,9 +44,13 @@
 @property (readonly, weak) WKWebView *webView; // @synthesize webView=_webView;
 @property (weak, nonatomic) id<WKUIDelegatePrivate> webViewUIDelegate; // @synthesize webViewUIDelegate=_webViewUIDelegate;
 
-+ (id)_defaultInitialConfiguration;
 - (void).cxx_destruct;
+- (void)_collectReaderContentForMailWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performActionsDelayedUntilReaderWebViewIsReady;
+- (void)_performActionsDelayedUntilReaderWebViewIsReadyDidTimeout:(id)arg1;
+- (BOOL)_readerWebViewIsReady;
 - (void)_setUpReaderActivityListener;
+- (void)_setUpReaderWebViewIfNeededAndPerformBlock:(CDUnknownBlockType)arg1;
 - (id)_webView:(id)arg1 actionsForElement:(id)arg2 defaultActions:(id)arg3;
 - (void)_webView:(id)arg1 commitPreviewedViewController:(id)arg2;
 - (void)_webView:(id)arg1 dataInteraction:(id)arg2 session:(id)arg3 didEndWithOperation:(unsigned long long)arg4;
@@ -60,6 +67,7 @@
 - (void)collectReaderContentForMailWithCompletion:(CDUnknownBlockType)arg1;
 - (void)collectReadingListInfoWithBookmarkID:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)configuration;
+- (void)contentDidBecomeReadyWithDetectedLanguage:(id)arg1;
 - (void)createArticleFinder;
 - (void)deactivateReaderNow:(unsigned long long)arg1;
 - (void)dealloc;
@@ -68,7 +76,6 @@
 - (void)didCollectReadingListItemInfo:(id)arg1 bookmarkID:(id)arg2;
 - (void)didCreateReaderWebView:(id)arg1;
 - (void)didDetermineReaderAvailability:(BOOL)arg1 dueToSameDocumentNavigation:(BOOL)arg2;
-- (void)didPrepareReaderContentForDisplay:(id)arg1;
 - (void)didPrepareReaderContentForPrinting:(id)arg1;
 - (void)didSetReaderConfiguration:(id)arg1;
 - (id)fontManager;

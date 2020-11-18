@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)applyConditionalValue:(double)arg1;
 - (id)asCustomFormatWrapper;
+- (id)currencyCodeForValue:(double)arg1;
 - (unsigned long long)hash;
 - (id)initWithFormatType:(int)arg1 customFormatKey:(id)arg2 customFormat:(id)arg3 appliedConditionKey:(unsigned char)arg4;
 - (BOOL)isEqual:(id)arg1;

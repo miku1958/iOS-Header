@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)compoundOperatorJoiner;
 
 @end

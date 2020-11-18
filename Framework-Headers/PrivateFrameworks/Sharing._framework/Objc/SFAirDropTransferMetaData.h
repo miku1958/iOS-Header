@@ -26,9 +26,9 @@
     NSString *_senderFirstName;
     NSString *_senderLastName;
     NSString *_senderID;
-    struct CGImage *_senderIcon;
-    struct CGImage *_smallPreviewImage;
-    struct CGImage *_previewImage;
+    id _senderIcon;
+    id _smallPreviewImage;
+    id _previewImage;
     NSString *_itemsDescription;
     NSDictionary *_itemsDescriptionAdvanced;
     NSSet *_items;
@@ -41,7 +41,7 @@
 @property (copy, nonatomic) NSSet *items; // @synthesize items=_items;
 @property (readonly, copy, nonatomic) NSString *itemsDescription; // @synthesize itemsDescription=_itemsDescription;
 @property (readonly, copy, nonatomic) NSDictionary *itemsDescriptionAdvanced; // @synthesize itemsDescriptionAdvanced=_itemsDescriptionAdvanced;
-@property (readonly, nonatomic) struct CGImage *previewImage; // @synthesize previewImage=_previewImage;
+@property (readonly, nonatomic) id previewImage; // @synthesize previewImage=_previewImage;
 @property (readonly, copy, nonatomic) NSArray *rawFiles; // @synthesize rawFiles=_rawFiles;
 @property (readonly, copy, nonatomic) NSString *senderBundleID; // @synthesize senderBundleID=_senderBundleID;
 @property (readonly, copy, nonatomic) NSString *senderCompositeName; // @synthesize senderCompositeName=_senderCompositeName;
@@ -50,10 +50,10 @@
 @property (readonly, copy, nonatomic) NSString *senderEmailHash; // @synthesize senderEmailHash=_senderEmailHash;
 @property (readonly, copy, nonatomic) NSString *senderFirstName; // @synthesize senderFirstName=_senderFirstName;
 @property (readonly, copy, nonatomic) NSString *senderID; // @synthesize senderID=_senderID;
-@property (readonly, nonatomic) struct CGImage *senderIcon; // @synthesize senderIcon=_senderIcon;
+@property (readonly, nonatomic) id senderIcon; // @synthesize senderIcon=_senderIcon;
 @property (readonly, nonatomic) BOOL senderIsMe; // @synthesize senderIsMe=_senderIsMe;
 @property (readonly, copy, nonatomic) NSString *senderLastName; // @synthesize senderLastName=_senderLastName;
-@property (readonly, nonatomic) struct CGImage *smallPreviewImage; // @synthesize smallPreviewImage=_smallPreviewImage;
+@property (readonly, nonatomic) id smallPreviewImage; // @synthesize smallPreviewImage=_smallPreviewImage;
 @property (nonatomic) long long transferTypes; // @synthesize transferTypes=_transferTypes;
 @property (readonly, nonatomic, getter=isVerifiableIdentity) BOOL verifiableIdentity; // @synthesize verifiableIdentity=_verifiableIdentity;
 

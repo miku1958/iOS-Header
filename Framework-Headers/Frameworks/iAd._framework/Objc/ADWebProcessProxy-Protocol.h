@@ -12,6 +12,7 @@
 - (void)actionDidFailWithErrorDescription:(NSString *)arg1;
 - (void)creativeStateDidChange:(long long)arg1;
 - (void)creativeVisibilityDidChange:(BOOL)arg1;
+- (void)resetVideoTagPlaytime;
 - (void)setExpandedSize:(NSValue *)arg1;
 @end
 

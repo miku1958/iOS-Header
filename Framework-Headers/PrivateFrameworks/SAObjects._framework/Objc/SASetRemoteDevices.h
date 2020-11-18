@@ -20,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (nonatomic) BOOL remoteDeviceHasNoAssistantId;
+@property (nonatomic) BOOL remoteDeviceNotSetup;
 @property (nonatomic) BOOL remoteDeviceUnreachable;
 @property (copy, nonatomic) NSArray *remoteDevices;
 @property (readonly) Class superclass;

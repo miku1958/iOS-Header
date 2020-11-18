@@ -6,11 +6,9 @@
 
 #import <MediaMiningKit/CLSClue.h>
 
-#import <MediaMiningKit/NSCoding-Protocol.h>
-
 @class CLSEvent, CLSPerson, CLSPlace, NSMutableArray;
 
-@interface CLSOutputClue : CLSClue <NSCoding>
+@interface CLSOutputClue : CLSClue
 {
     NSMutableArray *_relatedInputTimeClues;
     NSMutableArray *_relatedInputLocationClues;
@@ -29,9 +27,7 @@
 - (void).cxx_destruct;
 - (void)addRelatedInputClues:(id)arg1;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqualToClue:(id)arg1;
 - (id)relatedInputClues;
 - (id)relatedInputLocationClues;

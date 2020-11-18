@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSLock, NSMutableDictionary, NSString, NSUUID, PDFAKAnnotationAdaptor, PDFAccessibilityNode, PDFAnnotation, PDFPage, UIColor;
+@class NSArray, NSDictionary, NSLock, NSMutableDictionary, NSString, NSUUID, PDFAKAnnotationAdaptor, PDFAccessibilityNode, PDFAnnotation, PDFPage, UIColor;
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
@@ -42,6 +42,11 @@ __attribute__((visibility("hidden")))
     NSString *widgetOnStateString;
     id control;
     UIColor *mouseHoverBackgroundColor;
+    BOOL restoreLinePoints;
+    BOOL restoreQuadPoints;
+    struct CGPoint startPoint;
+    struct CGPoint endPoint;
+    NSArray *quadPoints;
     PDFAccessibilityNode *accessibilityNode;
     double scaleFactor;
     BOOL isFullyConstructed;

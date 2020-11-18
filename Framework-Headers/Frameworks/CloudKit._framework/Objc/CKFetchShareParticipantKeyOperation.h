@@ -10,10 +10,10 @@
 
 @interface CKFetchShareParticipantKeyOperation : CKDatabaseOperation
 {
-    NSDictionary *_baseTokensByShareID;
-    NSDictionary *_childRecordIDsByShareID;
     CDUnknownBlockType _shareParticipantKeyFetchedBlock;
     CDUnknownBlockType _shareParticipantKeyCompletionBlock;
+    NSDictionary *_baseTokensByShareID;
+    NSDictionary *_childRecordIDsByShareID;
     NSArray *_shareIDs;
     NSMutableDictionary *_errorsByShareID;
 }

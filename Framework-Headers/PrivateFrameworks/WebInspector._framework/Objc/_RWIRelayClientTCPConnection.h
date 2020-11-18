@@ -24,8 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (id)connectionFromTCPConnection:(id)arg1 delegate:(id)arg2;
 - (void).cxx_destruct;
-- (void)close;
-- (void)dealloc;
+- (void)closeInternal;
 - (id)initWithTCPConnection:(id)arg1 delegate:(id)arg2;
 - (void)sendMessage:(id)arg1;
 - (void)tcpConnection:(id)arg1 didReceiveMessage:(id)arg2;

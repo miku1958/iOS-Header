@@ -10,7 +10,7 @@
 #import <Silex/WKUIDelegate-Protocol.h>
 
 @class NSString, WKWebView;
-@protocol SXReachabilityProvider, SXWebContentDocumentStateReporting, SXWebContentErrorReporting, SXWebContentMessageHandlerManager, SXWebContentNavigationManager, SXWebContentProcessTerminationManager, SXWebContentScriptsManager, SXWebContentTimeoutManager;
+@protocol SXReachabilityProvider, SXWebContentDocumentStateReporting, SXWebContentErrorReporting, SXWebContentLogger, SXWebContentMessageHandlerManager, SXWebContentNavigationManager, SXWebContentProcessTerminationManager, SXWebContentScriptsManager, SXWebContentTimeoutManager;
 
 @interface SXWebContentViewController : UIViewController <WKNavigationDelegate, WKUIDelegate>
 {
@@ -23,6 +23,7 @@
     id<SXWebContentTimeoutManager> _timeoutManager;
     id<SXWebContentProcessTerminationManager> _terminationManager;
     id<SXReachabilityProvider> _reachabilityProvider;
+    id<SXWebContentLogger> _logger;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) id<SXWebContentDocumentStateReporting> documentStateReporter; // @synthesize documentStateReporter=_documentStateReporter;
 @property (readonly, nonatomic) id<SXWebContentErrorReporting> errorReporter; // @synthesize errorReporter=_errorReporter;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SXWebContentLogger> logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) id<SXWebContentMessageHandlerManager> messageHandlerManager; // @synthesize messageHandlerManager=_messageHandlerManager;
 @property (readonly, nonatomic) id<SXWebContentNavigationManager> navigationManager; // @synthesize navigationManager=_navigationManager;
 @property (readonly, nonatomic) id<SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
@@ -40,7 +42,7 @@
 @property (readonly, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
-- (id)initWithWebView:(id)arg1 scriptsManager:(id)arg2 messageHandlerManager:(id)arg3 navigationManager:(id)arg4 errorReporter:(id)arg5 documentStateReporter:(id)arg6 timeoutManager:(id)arg7 terminationManager:(id)arg8 reachabilityProvider:(id)arg9;
+- (id)initWithWebView:(id)arg1 scriptsManager:(id)arg2 messageHandlerManager:(id)arg3 navigationManager:(id)arg4 errorReporter:(id)arg5 documentStateReporter:(id)arg6 timeoutManager:(id)arg7 terminationManager:(id)arg8 reachabilityProvider:(id)arg9 logger:(id)arg10;
 - (void)loadURL:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

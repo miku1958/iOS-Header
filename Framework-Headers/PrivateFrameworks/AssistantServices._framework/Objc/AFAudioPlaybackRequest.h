@@ -30,10 +30,10 @@
 @property (readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (readonly, nonatomic) float volume; // @synthesize volume=_volume;
 
++ (id)newWithBuilder:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
-- (id)builder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -41,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItemURL:(id)arg1 itemData:(id)arg2 numberOfLoops:(long long)arg3 volume:(float)arg4 fadeInDuration:(double)arg5 fadeOutDuration:(double)arg6 userInfo:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
+- (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -64,6 +64,7 @@
     BOOL _hasFinishedDownloading;
     BOOL _hasPerformedErrorResolution;
     BOOL _activeItem;
+    BOOL _externalDisplay;
     float _currentPlaybackRate;
     float _loudnessInfoVolumeNormalization;
     NSError *_itemError;
@@ -81,6 +82,7 @@
     MPModelGenericObject *_modelGenericObject;
     NSString *_aggregateDictionaryItemIdentifier;
     NSString *_playerIdentifier;
+    NSString *_storeFrontIdentifier;
     NSString *_contentItemID;
 }
 
@@ -139,6 +141,7 @@
 @property (readonly, nonatomic) BOOL durationIsValid;
 @property (readonly, nonatomic, getter=isExplicitTrack) BOOL explicitTrack;
 @property (readonly, copy, nonatomic) NSString *externalContentIdentifier; // @synthesize externalContentIdentifier=_externalContentIdentifier;
+@property (nonatomic, getter=hasExternalDisplay) BOOL externalDisplay; // @synthesize externalDisplay=_externalDisplay;
 @property (copy, nonatomic) NSString *feedUniqueIdentifier; // @synthesize feedUniqueIdentifier=_feedUniqueIdentifier;
 @property (weak, nonatomic) MPQueueFeeder *feeder; // @synthesize feeder=_feeder;
 @property (nonatomic) CDStruct_1b6d18a9 forwardPlaybackEndTime;
@@ -198,6 +201,7 @@
 @property (readonly, copy, nonatomic) NSString *stationStringID;
 @property (readonly, nonatomic) long long status;
 @property (readonly, nonatomic) MPStoreDownload *storeDownload;
+@property (readonly, copy, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;
 @property (readonly, nonatomic) NSString *storeItemID;
 @property (readonly, nonatomic) long long storeItemInt64ID; // @synthesize storeItemInt64ID=_storeItemInt64ID;
 @property (readonly, nonatomic) long long storePlaybackEndpointType;

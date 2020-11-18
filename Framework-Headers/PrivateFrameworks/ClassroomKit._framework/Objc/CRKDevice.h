@@ -9,7 +9,7 @@
 #import <ClassroomKit/NSCopying-Protocol.h>
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDate, NSDictionary, NSString;
 
 @interface CRKDevice : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     BOOL _orientationLocked;
     BOOL _appLocked;
     BOOL _passcodeEnabled;
+    BOOL _requestingUnenroll;
     float _batteryLevel;
     float _volume;
     NSString *_identifier;
@@ -34,6 +35,8 @@
     unsigned long long _availableBytes;
     unsigned long long _deviceOrientation;
     unsigned long long _interfaceOrientation;
+    NSDate *_internetDateAndTime;
+    double _uptimeAtInternetDateAndTimeFetch;
     NSString *_primaryOpenApplication;
     NSString *_secondaryOpenApplication;
     NSString *_pipOpenApplication;
@@ -70,6 +73,7 @@
 @property (copy, nonatomic) NSArray *installedApplications; // @synthesize installedApplications=_installedApplications;
 @property (copy, nonatomic) NSString *instructorImageIdentifier; // @synthesize instructorImageIdentifier=_instructorImageIdentifier;
 @property (nonatomic) unsigned long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property (strong, nonatomic) NSDate *internetDateAndTime; // @synthesize internetDateAndTime=_internetDateAndTime;
 @property (nonatomic) unsigned long long lockState; // @synthesize lockState=_lockState;
 @property (nonatomic) unsigned long long loginState; // @synthesize loginState=_loginState;
 @property (copy, nonatomic) NSString *managementLockPasscode; // @synthesize managementLockPasscode=_managementLockPasscode;
@@ -80,6 +84,7 @@
 @property (copy, nonatomic) NSString *pipOpenApplication; // @synthesize pipOpenApplication=_pipOpenApplication;
 @property (nonatomic) unsigned long long platform; // @synthesize platform=_platform;
 @property (copy, nonatomic) NSString *primaryOpenApplication; // @synthesize primaryOpenApplication=_primaryOpenApplication;
+@property (nonatomic, getter=isRequestingUnenroll) BOOL requestingUnenroll; // @synthesize requestingUnenroll=_requestingUnenroll;
 @property (nonatomic) unsigned long long screenState; // @synthesize screenState=_screenState;
 @property (copy, nonatomic) NSString *secondaryOpenApplication; // @synthesize secondaryOpenApplication=_secondaryOpenApplication;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
@@ -89,6 +94,7 @@
 @property (copy, nonatomic) NSString *systemName; // @synthesize systemName=_systemName;
 @property (copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property (copy, nonatomic) NSArray *trustedAnchorCertificateFingerprints; // @synthesize trustedAnchorCertificateFingerprints=_trustedAnchorCertificateFingerprints;
+@property (nonatomic) double uptimeAtInternetDateAndTimeFetch; // @synthesize uptimeAtInternetDateAndTimeFetch=_uptimeAtInternetDateAndTimeFetch;
 @property (copy, nonatomic) NSString *userDisplayName; // @synthesize userDisplayName=_userDisplayName;
 @property (copy, nonatomic) NSString *userFamilyName; // @synthesize userFamilyName=_userFamilyName;
 @property (copy, nonatomic) NSString *userGivenName; // @synthesize userGivenName=_userGivenName;
@@ -100,6 +106,7 @@
 
 + (id)CRKKeyForDMFKey:(id)arg1;
 + (id)allPropertyKeys;
++ (id)bootDate;
 + (id)keyTranslations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -109,6 +116,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (BOOL)isApplicationInstalled:(id)arg1;
 - (BOOL)isApplicationOpen:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDevice:(id)arg1;

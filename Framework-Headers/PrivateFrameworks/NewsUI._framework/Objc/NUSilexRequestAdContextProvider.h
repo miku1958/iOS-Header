@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)adContextValueForKeyPath:(id)arg1;
+- (id)contextProvidersForKeyPath:(id)arg1;
 - (id)creativeTypeFromBannerType:(unsigned long long)arg1;
 - (id)initWithAdRequest:(id)arg1;
 

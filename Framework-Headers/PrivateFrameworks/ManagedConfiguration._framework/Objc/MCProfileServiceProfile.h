@@ -12,9 +12,11 @@
 {
     NSString *_URLString;
     NSArray *_deviceAttributes;
+    NSArray *_supportedDeviceIdentities;
     id _challenge;
     NSData *_enrollmentIdentityPersistentID;
     BOOL _confirmInstallation;
+    BOOL _supportedServerVersion;
     NSArray *_bogusPayloads;
 }
 
@@ -23,6 +25,8 @@
 @property (readonly, nonatomic) BOOL confirmInstallation; // @synthesize confirmInstallation=_confirmInstallation;
 @property (readonly, strong, nonatomic) NSArray *deviceAttributes; // @synthesize deviceAttributes=_deviceAttributes;
 @property (strong, nonatomic) NSData *enrollmentIdentityPersistentID; // @synthesize enrollmentIdentityPersistentID=_enrollmentIdentityPersistentID;
+@property (readonly, strong, nonatomic) NSArray *supportedDeviceIdentities; // @synthesize supportedDeviceIdentities=_supportedDeviceIdentities;
+@property (readonly, nonatomic) BOOL supportedServerVersion; // @synthesize supportedServerVersion=_supportedServerVersion;
 
 - (void).cxx_destruct;
 - (id)_badDataTypeErrorWithFieldName:(id)arg1;

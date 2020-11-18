@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
     TSUColor *_numbersKeyColor;
 }
 
-@property (readonly, nonatomic) NSArray *excelDocumentTypes;
-@property (readonly, nonatomic) TSUColor *numbersKeyColor; // @synthesize numbersKeyColor=_numbersKeyColor;
+@property (readonly, copy, nonatomic) NSArray *excelDocumentTypes;
+@property (readonly, copy, nonatomic) TSUColor *numbersKeyColor; // @synthesize numbersKeyColor=_numbersKeyColor;
 
+- (void).cxx_destruct;
 - (id)appChartPropertyOverrides;
 - (void)applicationDidFinishLaunching:(id)arg1;
+- (id)applicationDisplayName;
 - (id)applicationName;
 - (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
 - (unsigned long long)applicationType;
@@ -26,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)cloudKitContainerIdentifier;
 - (void)configureSharedCode;
 - (id)createCompatibilityDelegate;
-- (id)defaultAppStoreURLString;
 - (Class)documentRootClass;
 - (id)documentTypeDisplayName;
 - (id)documentTypeDisplayNameForSharingInvitation;
@@ -39,12 +40,11 @@ __attribute__((visibility("hidden")))
 - (id)previewImageNameForEncryptedNativeDocument;
 - (id)previewImageNameForNativeDocument;
 - (void)registerClassTypeMappings;
+- (void)registerSOSClassTypeMappings;
 - (id)sharedAlertMessageWithUserName:(id)arg1;
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
 - (id)stringForApplicationUpdateError;
-- (id)stringForBoxCollaborationOptInLearnMoreURL;
 - (id)stringForBoxCollaborationOptInMessage;
-- (id)stringForBoxCollaborationOptInTermsOfServiceURL;
 - (id)stringForCloseDocument;
 - (id)stringForCloseDocumentConfirmationAlertMessage;
 - (id)stringForCloseDocumentConfirmationWillContinueToUpdateInformativeText;
@@ -62,6 +62,9 @@ __attribute__((visibility("hidden")))
 - (id)stringForDocumentUpdatedByOwnerDetails;
 - (id)stringForDocumentUpdatedByOwnerWithKeepDetails;
 - (id)stringForDocumentUpdatedTitle;
+- (id)stringForDocumentViewOnly;
+- (id)stringForDocumentViewOnlyMessage;
+- (id)stringForDocumentViewOnlyTitle;
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
@@ -76,7 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)stringForRemoveSelfAlertConfirmationTitle;
 - (id)stringForStopSharingAlertConfirmationMessage;
 - (id)stringForStopSharingAlertConfirmationTitle;
-- (id)stringForUpdatingDocument;
+- (id)stringForUpdatingDocumentWithoutServiceType;
 - (BOOL)supportsRTL;
 - (id)tangierEditingFormatDocumentType;
 - (id)templateDocumentType;

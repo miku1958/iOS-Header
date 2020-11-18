@@ -6,13 +6,13 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSArray, NSString, TSWPAttachment, TSWPCharacterStyle, TSWPFootnoteReferenceAttachment, TSWPParagraphStyle, TSWPSmartField;
+@class NSArray, NSLocale, NSString, TSWPAttachment, TSWPCharacterStyle, TSWPFootnoteReferenceAttachment, TSWPParagraphStyle, TSWPSmartField;
 
 @protocol TSWPTextSource <NSObject>
 - (BOOL)adjustRangesByDelta:(long long)arg1 startingAt:(unsigned long long)arg2;
 - (TSWPAttachment *)attachmentAtCharIndex:(unsigned long long)arg1;
 - (TSWPAttachment *)attachmentOrFootnoteAtCharIndex:(unsigned long long)arg1;
-- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [20])arg2 attributesTable:(id [20])arg3 effectiveRange:(struct _NSRange *)arg4;
+- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [21])arg2 attributesTable:(id [21])arg3 effectiveRange:(struct _NSRange *)arg4;
 - (unsigned long long)changeCount;
 - (unsigned long long)charIndexMappedFromStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexMappedToStorage:(unsigned long long)arg1;
@@ -26,7 +26,7 @@
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (BOOL)hasColumnBreakAtCharIndex:(unsigned long long)arg1;
 - (BOOL)hasColumnStyleForParagraphBreakAtCharIndex:(unsigned long long)arg1;
-- (long long)hyphenationLocationBeforeIndex:(long long)arg1 inRange:(struct _NSRange)arg2 locale:(struct __CFLocale *)arg3 hyphenChar:(unsigned int *)arg4;
+- (long long)hyphenationLocationBeforeIndex:(long long)arg1 inRange:(struct _NSRange)arg2 locale:(NSLocale *)arg3 hyphenChar:(unsigned int *)arg4;
 - (BOOL)isWritingDirectionRightToLeftForParagraphAtCharIndex:(unsigned long long)arg1;
 - (unsigned long long)length;
 - (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;

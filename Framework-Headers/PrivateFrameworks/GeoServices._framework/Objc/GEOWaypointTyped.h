@@ -42,6 +42,7 @@
 
 - (void).cxx_destruct;
 - (int)StringAsWaypointType:(id)arg1;
+- (void)clearLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -28,6 +28,7 @@
     id _context;
     long long _type;
     NSString *_balloonBundleID;
+    unsigned long long _sortID;
     NSString *_destinationCallerID;
     NSDate *_clientSendTime;
     long long _cloudKitSyncState;
@@ -35,6 +36,9 @@
     NSData *_cloudKitServerChangeTokenBlob;
     NSString *_cloudKitRecordChangeTag;
     NSString *_parentChatID;
+    long long _srCloudKitSyncState;
+    NSString *_srCloudKitRecordID;
+    NSString *_srCloudKitRecordChangeTag;
 }
 
 @property (strong, nonatomic) NSString *account; // @synthesize account=_account;
@@ -59,6 +63,10 @@
 @property (strong, nonatomic) NSString *sender;
 @property (strong, nonatomic) NSDictionary *senderInfo; // @synthesize senderInfo=_senderInfo;
 @property (strong, nonatomic) NSString *service; // @synthesize service=_service;
+@property (nonatomic) unsigned long long sortID; // @synthesize sortID=_sortID;
+@property (copy, nonatomic) NSString *srCloudKitRecordChangeTag; // @synthesize srCloudKitRecordChangeTag=_srCloudKitRecordChangeTag;
+@property (copy, nonatomic) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
+@property (nonatomic) long long srCloudKitSyncState; // @synthesize srCloudKitSyncState=_srCloudKitSyncState;
 @property (strong, nonatomic) NSDate *time; // @synthesize time=_time;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (strong, nonatomic) NSString *unformattedID; // @synthesize unformattedID=_unformattedID;

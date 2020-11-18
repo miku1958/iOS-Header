@@ -20,6 +20,7 @@
     NSDictionary *_responseHeaders;
     NSData *_responseBody;
     NSNumber *_responseStatusCode;
+    NSDictionary *_timingData;
 }
 
 @property (copy, nonatomic) NSData *requestBody; // @synthesize requestBody=_requestBody;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) NSData *responseBody; // @synthesize responseBody=_responseBody;
 @property (copy, nonatomic) NSDictionary *responseHeaders; // @synthesize responseHeaders=_responseHeaders;
 @property (copy, nonatomic) NSNumber *responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
+@property (copy, nonatomic) NSDictionary *timingData; // @synthesize timingData=_timingData;
 
 - (void).cxx_destruct;
 - (id)additionalMessageHeaders;

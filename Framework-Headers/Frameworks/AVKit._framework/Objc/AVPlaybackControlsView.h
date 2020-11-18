@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AVKit/AVButtonOverlappingHitRectResolverView.h>
+#import <UIKit/UIView.h>
 
 #import <AVKit/AVPlaybackControlsViewItemAvailabilityObserver-Protocol.h>
 
-@class AVBackdropView, AVButton, AVPlaybackControlsRoutePickerView, AVScrubber, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIView;
+@class AVBackdropView, AVButton, AVPlaybackControlsRoutePickerView, AVScrubber, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIViewPropertyAnimator;
 @protocol AVPlaybackControlsViewDelegate;
 
-@interface AVPlaybackControlsView : AVButtonOverlappingHitRectResolverView <AVPlaybackControlsViewItemAvailabilityObserver>
+@interface AVPlaybackControlsView : UIView <AVPlaybackControlsViewItemAvailabilityObserver>
 {
     BOOL _fullScreen;
     BOOL _canHideInteractiveContentOverlayView;
+    BOOL _showsProminentPlayButton;
     BOOL _doubleRowLayoutEnabled;
     BOOL _needsIntialLayout;
     long long _preferredUnobscuredArea;
+    UIView *_volumeControlsContainer;
+    UIView *_playbackControlsContainer;
     AVBackdropView *_screenModeControls;
     AVBackdropView *_volumeControls;
     AVBackdropView *_prominentPlayButtonBackdropView;
@@ -40,12 +43,13 @@
     AVButton *_mediaSelectionButton;
     UIView *_interactiveContentOverlayView;
     id<AVPlaybackControlsViewDelegate> _delegate;
-    NSString *_playbackControlsViewGroupName;
     NSArray *_playbackControlsViewItems;
-    NSLayoutConstraint *_volumeBottomToTransportControlsTopConstraint;
+    NSLayoutConstraint *_volumeButtonBottomToLayoutMarginsGuideBottomConstraint;
     NSLayoutConstraint *_volumeTopToLayoutGuideTopConstraint;
     NSLayoutConstraint *_volumeTopToViewTopConstraint;
     NSLayoutConstraint *_screenModeControlsToVolumeControlsSpacingConstraint;
+    UIViewPropertyAnimator *_showsProminentPlayButtonVisibilityAnimator;
+    struct UIEdgeInsets _interactiveContentOverlayViewLayoutMargins;
 }
 
 @property (nonatomic) BOOL canHideInteractiveContentOverlayView; // @synthesize canHideInteractiveContentOverlayView=_canHideInteractiveContentOverlayView;
@@ -58,12 +62,13 @@
 @property (readonly, nonatomic) AVButton *fullScreenButton; // @synthesize fullScreenButton=_fullScreenButton;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIView *interactiveContentOverlayView; // @synthesize interactiveContentOverlayView=_interactiveContentOverlayView;
+@property (nonatomic) struct UIEdgeInsets interactiveContentOverlayViewLayoutMargins; // @synthesize interactiveContentOverlayViewLayoutMargins=_interactiveContentOverlayViewLayoutMargins;
 @property (readonly, nonatomic) AVButton *mediaSelectionButton; // @synthesize mediaSelectionButton=_mediaSelectionButton;
 @property (readonly, nonatomic) AVButton *miniPlayPauseButton; // @synthesize miniPlayPauseButton=_miniPlayPauseButton;
 @property (readonly, nonatomic) AVBackdropView *miniPlayPauseButtonBackdropView; // @synthesize miniPlayPauseButtonBackdropView=_miniPlayPauseButtonBackdropView;
 @property (nonatomic) BOOL needsIntialLayout; // @synthesize needsIntialLayout=_needsIntialLayout;
 @property (readonly, nonatomic) AVButton *pictureInPictureButton; // @synthesize pictureInPictureButton=_pictureInPictureButton;
-@property (readonly, nonatomic) NSString *playbackControlsViewGroupName; // @synthesize playbackControlsViewGroupName=_playbackControlsViewGroupName;
+@property (readonly, nonatomic) UIView *playbackControlsContainer; // @synthesize playbackControlsContainer=_playbackControlsContainer;
 @property (readonly, nonatomic) NSArray *playbackControlsViewItems; // @synthesize playbackControlsViewItems=_playbackControlsViewItems;
 @property (nonatomic) long long preferredUnobscuredArea; // @synthesize preferredUnobscuredArea=_preferredUnobscuredArea;
 @property (readonly, nonatomic) AVButton *prominentPlayButton; // @synthesize prominentPlayButton=_prominentPlayButton;
@@ -72,6 +77,8 @@
 @property (readonly, nonatomic) AVBackdropView *screenModeControls; // @synthesize screenModeControls=_screenModeControls;
 @property (readonly, nonatomic) NSLayoutConstraint *screenModeControlsToVolumeControlsSpacingConstraint; // @synthesize screenModeControlsToVolumeControlsSpacingConstraint=_screenModeControlsToVolumeControlsSpacingConstraint;
 @property (readonly, nonatomic) AVScrubber *scrubber; // @synthesize scrubber=_scrubber;
+@property (nonatomic) BOOL showsProminentPlayButton; // @synthesize showsProminentPlayButton=_showsProminentPlayButton;
+@property (strong, nonatomic) UIViewPropertyAnimator *showsProminentPlayButtonVisibilityAnimator; // @synthesize showsProminentPlayButtonVisibilityAnimator=_showsProminentPlayButtonVisibilityAnimator;
 @property (readonly, nonatomic) AVButton *skipBackButton; // @synthesize skipBackButton=_skipBackButton;
 @property (readonly, nonatomic) AVButton *skipForwardButton; // @synthesize skipForwardButton=_skipForwardButton;
 @property (readonly, nonatomic) AVButton *standardPlayPauseButton; // @synthesize standardPlayPauseButton=_standardPlayPauseButton;
@@ -79,9 +86,10 @@
 @property (readonly, nonatomic) AVView *transportControlsContainerView; // @synthesize transportControlsContainerView=_transportControlsContainerView;
 @property (readonly, nonatomic) AVTransportControlsView *transportControlsView; // @synthesize transportControlsView=_transportControlsView;
 @property (readonly, nonatomic) AVButton *videoGravityButton; // @synthesize videoGravityButton=_videoGravityButton;
-@property (readonly, nonatomic) NSLayoutConstraint *volumeBottomToTransportControlsTopConstraint; // @synthesize volumeBottomToTransportControlsTopConstraint=_volumeBottomToTransportControlsTopConstraint;
 @property (readonly, nonatomic) AVVolumeButtonControl *volumeButton; // @synthesize volumeButton=_volumeButton;
+@property (readonly, nonatomic) NSLayoutConstraint *volumeButtonBottomToLayoutMarginsGuideBottomConstraint; // @synthesize volumeButtonBottomToLayoutMarginsGuideBottomConstraint=_volumeButtonBottomToLayoutMarginsGuideBottomConstraint;
 @property (readonly, nonatomic) AVBackdropView *volumeControls; // @synthesize volumeControls=_volumeControls;
+@property (readonly, nonatomic) UIView *volumeControlsContainer; // @synthesize volumeControlsContainer=_volumeControlsContainer;
 @property (readonly, nonatomic) AVVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
 @property (readonly, nonatomic) NSLayoutConstraint *volumeTopToLayoutGuideTopConstraint; // @synthesize volumeTopToLayoutGuideTopConstraint=_volumeTopToLayoutGuideTopConstraint;
 @property (readonly, nonatomic) NSLayoutConstraint *volumeTopToViewTopConstraint; // @synthesize volumeTopToViewTopConstraint=_volumeTopToViewTopConstraint;
@@ -97,14 +105,15 @@
 - (void)_updateDoubleRowTransportControlsEnabled;
 - (void)_updateLayoutMargins;
 - (void)_updateLayoutMargins:(struct CGRect)arg1;
-- (double)_volumeButtonToTransportControlsTopConstraintConstant;
 - (void)animateAlongsideVisibilityChangeIfNeeded;
 - (void)dealloc;
-- (id)init;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)playbackControlsViewItemChangedAvailability:(id)arg1;
 - (void)safeAreaInsetsDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateInteractiveContentOverlayViewLayoutMargins;
 
 @end
 

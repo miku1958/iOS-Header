@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/NSCoding-Protocol.h>
 #import <IDSFoundation/NSCopying-Protocol.h>
+#import <IDSFoundation/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 
-@interface IDSAccountKeyHistory : NSObject <NSCopying, NSCoding>
+@interface IDSAccountKeyHistory : NSObject <NSCopying, NSSecureCoding>
 {
     NSArray *_entries;
 }

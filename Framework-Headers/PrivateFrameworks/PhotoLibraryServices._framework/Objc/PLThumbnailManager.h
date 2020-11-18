@@ -35,7 +35,9 @@
 + (id)_fastThumbPersistenceManagers;
 + (id)_fetchCameraPreviewWellMetadata;
 + (id)_imageTableSpecifications;
++ (id)_missingThumbnailPredicate;
 + (id)_preheatItemSourcesByFormatID;
++ (id)_rebuildThumbnailsQueue;
 + (void)_recordRebuildThumbnailsAttempt;
 + (void)_refetchAndSaveCameraPreviewWellImage;
 + (void)_saveCameraPreviewWellImage:(struct CGImage *)arg1 assetUUID:(id)arg2;
@@ -56,6 +58,7 @@
 + (void)handleRebuildThumbnailRequestPersistentFailure;
 + (BOOL)hasDeprecationsOnly;
 + (BOOL)hasExceededRebuildThumbnailRequestLimit;
++ (BOOL)hasMissingThumbnailsInLibrary:(id)arg1;
 + (BOOL)hasRebuildThumbnailsRequest;
 + (BOOL)hasThumbnailVersionMismatch;
 + (BOOL)isMissingThumbnailTables;

@@ -6,13 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-#import <iWorkImport/TSKMediaPlayerController-Protocol.h>
+#import <iWorkImport/TSKLayerMediaPlayerController-Protocol.h>
 
 @class CADisplayLink, NSArray, NSMutableSet, NSString;
 @protocol TSKMediaPlayerControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSKAnimatedGIFController : NSObject <TSKMediaPlayerController>
+@interface TSKAnimatedGIFController : NSObject <TSKLayerMediaPlayerController>
 {
     id<TSKMediaPlayerControllerDelegate> mDelegate;
     struct CGImageSource *mSource;
@@ -29,46 +29,43 @@ __attribute__((visibility("hidden")))
     double mEndTime;
     float mVolume;
     long long mRepeatMode;
+    NSMutableSet *mObservationTokens;
     CADisplayLink *mDisplayLink;
     BOOL fastReversing;
     BOOL fastForwarding;
 }
 
-@property (readonly, nonatomic) double absoluteCurrentTime;
-@property (readonly, nonatomic) double absoluteDuration;
-@property (readonly, nonatomic) BOOL canFastForward;
-@property (readonly, nonatomic) BOOL canFastReverse;
-@property (readonly, nonatomic) BOOL canPlay;
-@property (readonly, nonatomic) double currentTime;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<TSKMediaPlayerControllerDelegate> delegate; // @synthesize delegate=mDelegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) double duration;
-@property (nonatomic) double endTime; // @synthesize endTime=mEndTime;
-@property (nonatomic, getter=isFastForwarding) BOOL fastForwarding; // @synthesize fastForwarding;
-@property (nonatomic, getter=isFastReversing) BOOL fastReversing; // @synthesize fastReversing;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGImage *imageForCurrentTime;
 @property (nonatomic) double lastDisplayUpdateTime; // @synthesize lastDisplayUpdateTime=mLastDisplayUpdateTime;
-@property (nonatomic, getter=isPlaying) BOOL playing;
-@property (nonatomic) float rate; // @synthesize rate=mRate;
-@property (readonly, nonatomic) double remainingTime;
-@property (nonatomic) long long repeatMode; // @synthesize repeatMode=mRepeatMode;
-@property (readonly, nonatomic, getter=isScrubbing) BOOL scrubbing;
-@property (nonatomic) double startTime; // @synthesize startTime=mStartTime;
 @property (readonly) Class superclass;
-@property (nonatomic) float volume; // @synthesize volume=mVolume;
 
+- (double)absoluteCurrentTime;
+- (double)absoluteDuration;
 - (void)addLayer:(id)arg1;
+- (void)addObservationToken:(id)arg1;
 - (id)addPeriodicTimeObserverForInterval:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (void)beginScrubbing;
+- (BOOL)canFastForward;
+- (BOOL)canFastReverse;
+- (BOOL)canPlay;
 - (void)cancelPendingSeeks;
+- (double)currentTime;
 - (void)dealloc;
+- (id)delegate;
+- (double)duration;
 - (void)endScrubbing;
+- (double)endTime;
 - (struct CGImage *)imageForTime:(double)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1 delegate:(id)arg2;
 - (id)initWithImageSource:(struct CGImageSource *)arg1 delegate:(id)arg2;
+- (BOOL)isFastForwarding;
+- (BOOL)isFastReversing;
+- (BOOL)isPlaying;
+- (BOOL)isScrubbing;
 - (id)newLayer;
 - (void)p_disableDisplayLink;
 - (void)p_displayLinkDidTrigger:(id)arg1;
@@ -78,16 +75,30 @@ __attribute__((visibility("hidden")))
 - (void)p_setAbsoluteCurrentTime:(double)arg1;
 - (void)p_updateDisplayLink;
 - (void)p_updateLayers;
+- (float)rate;
+- (double)remainingTime;
 - (void)removeLayer:(id)arg1;
+- (void)removeObservationToken:(id)arg1;
 - (void)removePeriodicTimeObserver:(id)arg1;
+- (long long)repeatMode;
 - (void)scrubToTime:(double)arg1 withTolerance:(double)arg2;
 - (void)scrubToTime:(double)arg1 withTolerance:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)seekBackwardByOneFrame;
 - (void)seekForwardByOneFrame;
 - (void)seekToBeginning;
 - (void)seekToEnd;
+- (void)setEndTime:(double)arg1;
+- (void)setFastForwarding:(BOOL)arg1;
+- (void)setFastReversing:(BOOL)arg1;
+- (void)setPlaying:(BOOL)arg1;
+- (void)setRate:(float)arg1;
+- (void)setRepeatMode:(long long)arg1;
+- (void)setStartTime:(double)arg1;
+- (void)setVolume:(float)arg1;
+- (double)startTime;
 - (void)stopSynchronously;
 - (void)teardown;
+- (float)volume;
 
 @end
 

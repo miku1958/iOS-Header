@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 + (double)p_sideIntersectionLengthForChartAreaFrame:(struct CGRect)arg1;
 + (double)p_sideIntersectionLengthForChartAreaRange:(struct TSCHLegendAnchorRange)arg1;
 + (struct CGRect)snappedLegendFrame:(struct CGRect)arg1 forChartAreaFrame:(struct CGRect)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithInitialFrames:(struct TSCHChartDrawableLayoutLegendResizerFrames)arg1;
 - (int)p_anchoringStateForLegendFrame:(struct CGRect)arg1 chartAreaFrame:(struct CGRect)arg2 dimension:(long long)arg3 returningAnchoringPosition:(double *)arg4;
 - (BOOL)p_hasConfinedLocationWithinConfinementBoundsForLocation:(double)arg1 dimension:(long long)arg2 returningConfinedLocation:(double *)arg3;

@@ -6,21 +6,22 @@
 
 #import <MediaPlayer/MPMusicPlayerQueueDescriptor.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class NSArray, NSDictionary, NSMutableDictionary, NSString;
 
 @interface MPMusicPlayerStoreQueueDescriptor : MPMusicPlayerQueueDescriptor
 {
     NSArray *_storeIDs;
     NSMutableDictionary *_storeFronts;
     NSString *_startItemID;
+    NSDictionary *_assetStoreFronts;
 }
 
+@property (copy, nonatomic) NSDictionary *assetStoreFronts; // @synthesize assetStoreFronts=_assetStoreFronts;
 @property (copy, nonatomic) NSString *startItemID; // @synthesize startItemID=_startItemID;
 @property (copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)assetStoreFronts;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

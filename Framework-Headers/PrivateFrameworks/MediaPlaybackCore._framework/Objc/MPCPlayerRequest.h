@@ -10,6 +10,7 @@
 
 @interface MPCPlayerRequest : MPRequest
 {
+    BOOL _disablePlaybackStateValidation;
     MPCPlayerPath *_playerPath;
     MPPropertySet *_playingItemProperties;
     MPPropertySet *_queueSectionProperties;
@@ -17,6 +18,7 @@
     CDStruct_339ad95e _tracklistRange;
 }
 
+@property (nonatomic) BOOL disablePlaybackStateValidation; // @synthesize disablePlaybackStateValidation=_disablePlaybackStateValidation;
 @property (strong, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (copy, nonatomic) MPPropertySet *playingItemProperties; // @synthesize playingItemProperties=_playingItemProperties;
 @property (copy, nonatomic) MPPropertySet *queueItemProperties; // @synthesize queueItemProperties=_queueItemProperties;

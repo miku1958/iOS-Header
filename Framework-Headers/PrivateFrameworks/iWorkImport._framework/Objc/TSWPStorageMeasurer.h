@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int autosizeFlags;
 @property (readonly, nonatomic) TSDCanvas *canvas;
 @property (readonly, nonatomic) unsigned long long columnCount;
-@property (readonly, strong, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
+@property (readonly, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
 @property (readonly, nonatomic) BOOL columnsAreLeftToRight;
 @property (readonly, nonatomic) struct CGSize currentSize;
 @property (readonly, copy) NSString *debugDescription;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isLinked;
 @property (readonly, nonatomic) BOOL layoutIsValid;
 @property (readonly, nonatomic) TSWPPadding *layoutMargins;
+@property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, nonatomic) struct CGRect maskRect;
 @property (readonly, nonatomic) double maxAnchorY;
 @property (readonly, nonatomic) struct CGSize maxSize;
@@ -50,13 +51,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int naturalAlignment;
 @property (readonly, nonatomic) int naturalDirection;
 @property (readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
-@property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
+@property (readonly, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
 @property (readonly, nonatomic) unsigned long long pageCount;
 @property (readonly, nonatomic) unsigned long long pageNumber;
 @property (readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property (readonly, nonatomic) struct CGPoint position;
-@property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
+@property (readonly, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
 @property (readonly, nonatomic) BOOL repShouldPreventCaret;
 @property (readonly, nonatomic) BOOL shouldHyphenate;
@@ -69,13 +70,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int verticalAlignment;
 @property (readonly, nonatomic) BOOL wantsLineFragments;
 
+- (void).cxx_destruct;
 - (void)addAttachmentLayout:(id)arg1;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
 - (BOOL)caresAboutStorageChanges;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
-- (void)dealloc;
 - (void)didLayoutChangingDirtyRanges;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (id)initWithStorage:(id)arg1;

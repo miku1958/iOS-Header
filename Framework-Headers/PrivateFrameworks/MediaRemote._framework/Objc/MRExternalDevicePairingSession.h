@@ -20,16 +20,16 @@
 @property (readonly, nonatomic) unsigned long long state;
 @property (readonly, nonatomic, getter=isUsingSystemPairing) BOOL usingSystemPairing;
 
+- (void).cxx_destruct;
 - (void)_openSecuritySessionInState:(unsigned long long)arg1 useSystemPairing:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_useSystemPairing;
 - (void)close;
-- (void)dealloc;
 - (id)decryptData:(id)arg1 withError:(id *)arg2;
 - (BOOL)deleteIdentityWithError:(id *)arg1;
 - (id)encryptData:(id)arg1 withError:(id *)arg2;
 - (void)handlePairingExchangeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handlePairingFailureWithStatus:(int)arg1;
-- (id)initWithDevice:(void *)arg1;
+- (id)initWithDevice:(id)arg1;
 - (BOOL)isPaired;
 - (BOOL)isValid;
 - (void)open;

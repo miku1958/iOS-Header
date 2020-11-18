@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)repeatingUpdateAnimatedSliderForCountdownNumber:(unsigned long long)arg1 forModel:(id)arg2;
 - (void)showSlidingViewModel:(id)arg1 animatedSliderCompletion:(CDUnknownBlockType)arg2 medicalIDSliderCompletion:(CDUnknownBlockType)arg3;
 
 @end

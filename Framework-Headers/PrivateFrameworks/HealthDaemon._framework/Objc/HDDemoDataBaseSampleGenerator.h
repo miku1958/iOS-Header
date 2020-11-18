@@ -16,11 +16,12 @@
     HDDemoDataGenerator *_demoDataGenerator;
 }
 
+@property (nonatomic) BOOL createdFromNSKeyedUnarchiver; // @synthesize createdFromNSKeyedUnarchiver=_createdFromNSKeyedUnarchiver;
 @property (weak, nonatomic) HDDemoDataGenerator *demoDataGenerator; // @synthesize demoDataGenerator=_demoDataGenerator;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)createdFromNSKeyedUnarchiver;
+- (BOOL)_createdFromNSKeyedUnarchiver;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateFirstRunSampleForDemoPerson:(id)arg1 firstDate:(id)arg2 objectCollection:(id)arg3;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;

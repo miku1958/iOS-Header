@@ -6,11 +6,11 @@
 
 #import <DAEAS/ASItem.h>
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ASFolder : ASItem <NSCoding>
+@interface ASFolder : ASItem <NSSecureCoding>
 {
     BOOL _renameOnCollision;
     int _folderType;
@@ -37,6 +37,7 @@
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_folderTypeString;
 - (id)description;

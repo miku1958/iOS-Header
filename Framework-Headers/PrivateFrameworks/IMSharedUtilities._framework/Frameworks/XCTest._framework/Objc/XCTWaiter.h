@@ -17,6 +17,7 @@
     _XCTWaiterImpl *_internalImplementation;
 }
 
+@property (readonly) BOOL currentContextIsNested;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<XCTWaiterDelegate> delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue;
@@ -36,10 +37,10 @@
 + (void)setStallHandler:(CDUnknownBlockType)arg1;
 + (void)setWatchdogTimeoutSlop:(double)arg1;
 + (void)wait:(double)arg1;
-+ (id)waitForActivity:(id)arg1 timeout:(double)arg2 block:(CDUnknownBlockType)arg3;
 + (long long)waitForExpectations:(id)arg1 timeout:(double)arg2;
 + (long long)waitForExpectations:(id)arg1 timeout:(double)arg2 enforceOrder:(BOOL)arg3;
 + (double)watchdogTimeoutSlop;
+- (void).cxx_destruct;
 - (void)_queue_computeInitiallyFulfilledExpectations;
 - (BOOL)_queue_enforceOrderingWithFulfilledExpectations:(id)arg1;
 - (void)_queue_setExpectations:(id)arg1;
@@ -47,7 +48,6 @@
 - (void)_validateExpectationFulfillmentWithTimeoutState:(BOOL)arg1;
 - (void)cancelPrimitiveWait;
 - (void)cancelWaiting;
-- (void)dealloc;
 - (void)didFulfillExpectation:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;

@@ -92,6 +92,7 @@
 - (void)presentPasscodeViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)presentPassphraseViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setProgressState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3;
+- (void)setProgressState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)updatePaymentWithClientUpdate:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

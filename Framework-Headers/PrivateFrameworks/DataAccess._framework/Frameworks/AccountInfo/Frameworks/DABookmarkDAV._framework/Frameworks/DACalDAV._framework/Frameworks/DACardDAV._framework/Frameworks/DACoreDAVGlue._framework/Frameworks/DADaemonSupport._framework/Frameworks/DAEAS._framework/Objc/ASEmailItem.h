@@ -87,6 +87,7 @@
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_isSearchResult;
 - (void)_processApplicationData:(BOOL)arg1;

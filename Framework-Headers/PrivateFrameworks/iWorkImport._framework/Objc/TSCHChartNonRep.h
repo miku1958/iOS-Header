@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)clearRenderers;
 - (id)commandController;
 - (struct CGRect)convertNaturalRectToLayerRelative:(struct CGRect)arg1;

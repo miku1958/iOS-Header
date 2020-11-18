@@ -6,9 +6,11 @@
 
 #import <PhotoEditSupport/AutoEncodeDecodeObject.h>
 
+#import <PhotoEditSupport/NSSecureCoding-Protocol.h>
+
 @class NSMutableData;
 
-@interface BLBrushStroke : AutoEncodeDecodeObject
+@interface BLBrushStroke : AutoEncodeDecodeObject <NSSecureCoding>
 {
     BOOL _erase;
     BOOL _magicEdges;
@@ -39,6 +41,7 @@
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addPoint:(struct CGPoint)arg1;
 - (id)init;

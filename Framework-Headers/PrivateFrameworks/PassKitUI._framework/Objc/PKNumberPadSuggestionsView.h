@@ -20,6 +20,7 @@
 @property (weak, nonatomic) id<PKNumberPadSuggestionsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 
++ (struct CGSize)defaultSize;
 - (void).cxx_destruct;
 - (void)_selectedSuggestion:(id)arg1;
 - (id)initWithDefaultFrame;

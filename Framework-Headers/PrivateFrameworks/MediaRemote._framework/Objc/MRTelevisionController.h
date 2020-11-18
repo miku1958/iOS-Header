@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (Class)externalDeviceClass;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)externalDeviceController:(id)arg1 didDiscoverDevice:(id)arg2;
 - (void)externalDeviceController:(id)arg1 didRemoveDevice:(id)arg2;
 - (id)init;

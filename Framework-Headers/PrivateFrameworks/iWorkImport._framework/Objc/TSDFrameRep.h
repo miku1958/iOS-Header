@@ -11,20 +11,23 @@
 __attribute__((visibility("hidden")))
 @interface TSDFrameRep : NSObject
 {
-    TSDFrame *mFrame;
-    NSArray *mImages;
-    NSArray *mMasks;
-    TSDBitmapImageProvider *mAdornment;
-    CALayer *mMaskLayer;
-    BOOL mShouldEnableBlendMode;
+    TSDFrame *_frame;
+    NSArray *_images;
+    NSArray *_masks;
+    TSDBitmapImageProvider *_adornment;
+    CALayer *_maskLayer;
+    BOOL _shouldEnableBlendMode;
 }
 
+@property (readonly, nonatomic) TSDFrame *frame; // @synthesize frame=_frame;
+
+- (void).cxx_destruct;
 - (void)applyMaskForRectWithCoverage:(struct CGRect)arg1 toContext:(struct CGContext *)arg2;
 - (id)applyToCALayer:(id)arg1 withRepLayer:(id)arg2 maskLayer:(id)arg3 viewScale:(double)arg4;
 - (void)blendMaskBeforeRenderingImageInContext:(struct CGContext *)arg1;
 - (void)dealloc;
-- (id)frame;
 - (void)frameRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withTotalScale:(double)arg3;
+- (id)init;
 - (id)initWithTSDFrame:(id)arg1;
 - (struct CGImage *)newFrameForMask:(BOOL)arg1 size:(struct CGSize)arg2 forCALayer:(BOOL)arg3 viewScale:(double)arg4;
 - (void)p_addEdgeLayerForIndex:(unsigned int)arg1 toLayer:(id)arg2 maskLayer:(id)arg3;

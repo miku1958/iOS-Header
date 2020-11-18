@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlayerResponse, MPSectionedCollection, NSIndexPath;
+@class MPCPlayerResponse, MPCPlayerResponseItem, MPSectionedCollection, NSIndexPath, NSString;
 
 @interface MPCPlayerResponseTracklist : NSObject
 {
+    NSString *_uniqueIdentifier;
     long long _lastChangeDirection;
     long long _upNextItemCount;
     long long _repeatType;
@@ -24,15 +25,18 @@
 @property (readonly, nonatomic) long long globalItemCount; // @synthesize globalItemCount=_globalItemCount;
 @property (readonly, copy, nonatomic) MPSectionedCollection *items; // @synthesize items=_items;
 @property (readonly, nonatomic) long long lastChangeDirection; // @synthesize lastChangeDirection=_lastChangeDirection;
+@property (readonly, nonatomic) MPCPlayerResponseItem *playingItem;
 @property (readonly, nonatomic) long long playingItemGlobalIndex; // @synthesize playingItemGlobalIndex=_playingItemGlobalIndex;
 @property (readonly, copy, nonatomic) NSIndexPath *playingItemIndexPath; // @synthesize playingItemIndexPath=_playingItemIndexPath;
 @property (readonly, nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (readonly, weak, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
+@property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) long long upNextItemCount; // @synthesize upNextItemCount=_upNextItemCount;
 
 - (void).cxx_destruct;
 - (id)changeItemCommand;
+- (id)disableModificationsCommand;
 - (id)initWithResponse:(id)arg1;
 - (id)insertCommand;
 - (id)reorderCommand;

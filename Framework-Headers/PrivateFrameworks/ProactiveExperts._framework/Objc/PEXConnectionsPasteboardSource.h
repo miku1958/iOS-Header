@@ -8,15 +8,13 @@
 
 #import <ProactiveExperts/PEXConnectionsLocationSource-Protocol.h>
 
-@class NSCache, NSLocale, NSObject, NSOperationQueue, NSString;
-@protocol OS_dispatch_semaphore;
+@class NSCache, NSLocale, NSOperationQueue, NSString;
 
 @interface PEXConnectionsPasteboardSource : PEXConnectionsSource <PEXConnectionsLocationSource>
 {
     unsigned long long _pasteboardNotificationState;
     NSCache *_cache;
     id _pasteboardObserver;
-    NSObject<OS_dispatch_semaphore> *_init_sem;
     NSOperationQueue *_pbQueue;
     NSLocale *_testLocale;
 }

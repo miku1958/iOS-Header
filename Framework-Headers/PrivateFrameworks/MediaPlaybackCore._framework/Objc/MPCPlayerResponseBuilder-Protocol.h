@@ -28,5 +28,6 @@
 - (long long)playerState:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (UIView<MPCVideoView> *)playerVideoView:(UIView<MPCVideoView> *)arg1 chain:(MPMiddlewareChain *)arg2;
+- (NSString *)tracklistUniqueIdentifier:(NSString *)arg1 chain:(MPMiddlewareChain *)arg2;
 @end
 

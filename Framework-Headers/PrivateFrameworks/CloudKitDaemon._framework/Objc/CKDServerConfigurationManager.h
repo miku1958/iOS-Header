@@ -46,19 +46,17 @@ __attribute__((visibility("hidden")))
 - (id)CKStatusReportArray;
 - (void)_behaviorOptionsChanged:(id)arg1;
 - (void)_dropAllConfigurations;
-- (void)_fetchContainerSpecificInfoForOperation:(id)arg1 needUserID:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchContainerSpecificInfoForOperation:(id)arg1 requireUserIDs:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchGlobalConfigForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_reallyDropAllConfigurations;
 - (id)_uniqueStringForContainerAndAccount:(id)arg1;
 - (void)_watchForSwitchPrefFileChanges;
 - (void)configurationForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)containerScopedUserIDForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)containerInfoForOperation:(id)arg1 requireUserIDs:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)expireConfigurationForContext:(id)arg1;
 - (void)expireGlobalConfiguration;
 - (id)init;
-- (void)publicURLForServerType:(long long)arg1 operation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)serverEnvironmentForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)systemAvailabilityChanged:(unsigned long long)arg1;
 
 @end

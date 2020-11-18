@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <ITMLKit/NSObject-Protocol.h>
+
 @class IKViewElementStyleComposer, NSString;
 @protocol IKStyleableElement, NSCopying;
 
-@protocol IKStyleableElement
+@protocol IKStyleableElement <NSObject>
 
 @property (readonly, copy, nonatomic) NSString *elementName;
 @property (readonly, weak, nonatomic) id<IKStyleableElement> parentStyleableElement;

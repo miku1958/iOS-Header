@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) CLLocation *approximateLocation;
 @property (strong, nonatomic) NSOrderedSet *assets;
+@property (readonly, strong, nonatomic) NSArray *batchedAssets;
 @property (nonatomic) int cachedCount;
 @property (strong, nonatomic) NSDate *endDate;
 @property (nonatomic) short generationType;

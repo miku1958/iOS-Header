@@ -6,22 +6,20 @@
 
 #import <iWorkImport/TSADocumentRoot.h>
 
+#import <iWorkImport/TPPageControllerDelegate-Protocol.h>
 #import <iWorkImport/TSCEResolverContainer-Protocol.h>
 #import <iWorkImport/TSDInfoUUIDPathPrefixComponentsProvider-Protocol.h>
-#import <iWorkImport/TSDThumbnailProducer-Protocol.h>
 #import <iWorkImport/TSTResolverContainerNameProvider-Protocol.h>
 #import <iWorkImport/TSWPChangeSessionManager-Protocol.h>
 #import <iWorkImport/TSWPChangeVisibility-Protocol.h>
 #import <iWorkImport/TSWPDrawableOLC-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
 
-@class EQKitEnvironment, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TPBackgroundLayoutController, TPBookmarkController, TPDocumentSettings, TPDocumentViewController, TPDrawablesZOrder, TPFloatingDrawables, TPInteractiveCanvasController, TPPageLayoutNotifier, TPPaginatedPageController, TPSection, TPTheme, TSDThumbnailController, TSPData, TSSStylesheet, TSWPChangeSession, TSWPFlowInfoContainer, TSWPStorage;
+@class EQKitEnvironment, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TPBackgroundLayoutController, TPBookmarkController, TPDocumentSettings, TPDocumentViewController, TPDrawablesZOrder, TPFloatingDrawables, TPInteractiveCanvasController, TPPageController, TPPageLayoutNotifier, TPSection, TPTheme, TSDFreehandDrawingToolkitUIState, TSDThumbnailController, TSPData, TSSStylesheet, TSWPChangeSession, TSWPFlowInfoContainer, TSWPStorage;
 
 __attribute__((visibility("hidden")))
-@interface TPDocumentRoot : TSADocumentRoot <TSDThumbnailProducer, TSDInfoUUIDPathPrefixComponentsProvider, TSWPDrawableOLC, TSWPStorageParent, TSWPChangeSessionManager, TSWPChangeVisibility, TSTResolverContainerNameProvider, TSCEResolverContainer>
+@interface TPDocumentRoot : TSADocumentRoot <TPPageControllerDelegate, TSDInfoUUIDPathPrefixComponentsProvider, TSWPDrawableOLC, TSWPStorageParent, TSWPChangeSessionManager, TSWPChangeVisibility, TSTResolverContainerNameProvider, TSCEResolverContainer>
 {
-    TSPData *_equationEnvironmentData;
-    EQKitEnvironment *_equationEnvironment;
     NSArray *_citationRecords;
     BOOL _shouldUniquifyTableNames;
     NSArray *_obsoleteTOCStyles;
@@ -37,7 +35,7 @@ __attribute__((visibility("hidden")))
     double _pageScale;
     NSString *_printerID;
     NSString *_paperID;
-    unsigned long long _orientation;
+    long long _orientation;
     double _leftMargin;
     double _rightMargin;
     double _topMargin;
@@ -50,19 +48,22 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_changeSessionHistory;
     TSWPChangeSession *_mostRecentChangeSession;
     TSWPChangeSession *_activeChangeSession;
-    TPPaginatedPageController *_paginatedPageController;
+    TPPageController *_paginatedPageController;
     TPPageLayoutNotifier *_pageLayoutNotifier;
     BOOL _newDocument;
-    double _currentThumbnailContainerWidth;
     TPDocumentViewController *_viewController;
     unsigned int _tableNameCounter;
     NSMutableDictionary *_chartsUIState;
     NSMutableDictionary *_tableInfosWithUniqueNames;
     NSMutableSet *_remappedTableNames;
+    TSPData *_equationEnvironmentData;
+    EQKitEnvironment *_equationEnvironment;
+    NSMutableArray *_pageTemplates;
     BOOL _wasCreatedFromTemplate;
     BOOL initiallyShowRuler;
-    BOOL _changeTrackingPaused;
+    BOOL initiallyShowTwoUp;
     BOOL _needsAdditionalViewStateValidation;
+    TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
     TPInteractiveCanvasController *_interactiveCanvasController;
     TSDThumbnailController *_thumbnailController;
     TPBookmarkController *_bookmarkController;
@@ -71,26 +72,31 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) TSWPChangeSession *activeChangeSession; // @synthesize activeChangeSession=_activeChangeSession;
+@property (readonly, nonatomic) BOOL autoListRecognition;
+@property (readonly, nonatomic) BOOL autoListTermination;
 @property (readonly, nonatomic) TPBackgroundLayoutController *backgroundLayoutController; // @synthesize backgroundLayoutController=_backgroundLayoutController;
 @property (readonly, nonatomic) TSWPStorage *bodyStorage; // @synthesize bodyStorage=_bodyStorage;
 @property (readonly, nonatomic) TPBookmarkController *bookmarkController; // @synthesize bookmarkController=_bookmarkController;
 @property (nonatomic) double bottomMargin;
+@property (readonly, nonatomic) BOOL canTrackChanges;
 @property (strong, nonatomic) NSMutableArray *changeSessionHistory; // @synthesize changeSessionHistory=_changeSessionHistory;
 @property (nonatomic, getter=isChangeTrackingEnabled) BOOL changeTrackingEnabled;
-@property (nonatomic, getter=isChangeTrackingPaused) BOOL changeTrackingPaused; // @synthesize changeTrackingPaused=_changeTrackingPaused;
 @property (strong, nonatomic) NSMutableDictionary *chartsUIState; // @synthesize chartsUIState=_chartsUIState;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, weak, nonatomic) TPDocumentRoot *documentRoot;
 @property (strong, nonatomic) TPDrawablesZOrder *drawablesZOrder; // @synthesize drawablesZOrder=_drawablesZOrder;
 @property (readonly, nonatomic) TPSection *firstSection;
 @property (strong, nonatomic) TPFloatingDrawables *floatingDrawables; // @synthesize floatingDrawables=_floatingDrawables;
 @property (strong, nonatomic) TSWPFlowInfoContainer *flowInfoContainer; // @synthesize flowInfoContainer=_flowInfoContainer;
 @property (nonatomic) double footerMargin;
+@property (strong, nonatomic) TSDFreehandDrawingToolkitUIState *freehandDrawingToolkitUIState; // @synthesize freehandDrawingToolkitUIState=_freehandDrawingToolkitUIState;
 @property (readonly, nonatomic) BOOL hasTrackedChanges;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double headerMargin;
 @property (nonatomic) BOOL initiallyShowRuler; // @synthesize initiallyShowRuler;
+@property (nonatomic) BOOL initiallyShowTwoUp; // @synthesize initiallyShowTwoUp;
 @property (weak, nonatomic) TPInteractiveCanvasController *interactiveCanvasController; // @synthesize interactiveCanvasController=_interactiveCanvasController;
 @property (readonly, nonatomic) BOOL isNewDocument; // @synthesize isNewDocument=_newDocument;
 @property (readonly, nonatomic) BOOL isTrackingChanges;
@@ -99,18 +105,24 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSWPChangeSession *mostRecentChangeSession; // @synthesize mostRecentChangeSession=_mostRecentChangeSession;
 @property (nonatomic) BOOL needsAdditionalViewStateValidation; // @synthesize needsAdditionalViewStateValidation=_needsAdditionalViewStateValidation;
 @property (readonly, nonatomic) NSArray *nonHiddenSections;
-@property (nonatomic) unsigned long long orientation; // @synthesize orientation=_orientation;
+@property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
+@property (readonly, nonatomic) TPPageController *pageController; // @synthesize pageController=_paginatedPageController;
 @property (nonatomic) double pageScale;
 @property (nonatomic) struct CGSize pageSize;
-@property (readonly, nonatomic) TPPaginatedPageController *paginatedPageController; // @synthesize paginatedPageController=_paginatedPageController;
+@property (readonly, nonatomic) NSArray *pageTemplates;
+@property (readonly, nonatomic) long long pageViewState;
 @property (copy, nonatomic) NSString *paperID; // @synthesize paperID=_paperID;
 @property (readonly, nonatomic) struct CGSize paperSize;
+@property (readonly, nonatomic) BOOL preventsComments;
 @property (copy, nonatomic) NSString *printerID; // @synthesize printerID=_printerID;
 @property (nonatomic) double rightMargin;
 @property (readonly, nonatomic) NSArray *sections;
 @property (readonly, nonatomic) TPDocumentSettings *settings;
+@property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (strong, nonatomic) TSSStylesheet *stylesheet; // @synthesize stylesheet=_stylesheet;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL textIsLinked;
+@property (readonly, nonatomic) BOOL textIsVertical;
 @property (strong, nonatomic) TPTheme *theme;
 @property (readonly, nonatomic) TSDThumbnailController *thumbnailController; // @synthesize thumbnailController=_thumbnailController;
 @property (nonatomic) double topMargin;
@@ -119,14 +131,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL wasCreatedFromTemplate; // @synthesize wasCreatedFromTemplate=_wasCreatedFromTemplate;
 
 + (void)localizeTextStorage:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
-+ (struct CGSize)pageSizeFromPaperSize:(struct CGSize)arg1 pageScale:(double)arg2 orientation:(unsigned long long)arg3;
++ (struct CGSize)pageSizeFromPaperSize:(struct CGSize)arg1 pageScale:(double)arg2 orientation:(long long)arg3;
 + (struct CGSize)previewImageSizeForType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)UIStateForChart:(id)arg1;
 - (void)addRemappedTableName:(id)arg1;
 - (unsigned long long)applicationType;
-- (BOOL)autoListRecognition;
-- (BOOL)autoListTermination;
 - (double)bodyWidth;
 - (BOOL)cellCommentsAllowedOnInfo:(id)arg1;
 - (id)changeSessionManagerForModel:(id)arg1;
@@ -142,9 +152,11 @@ __attribute__((visibility("hidden")))
 - (id)equationEnvironment;
 - (BOOL)exportToPath:(id)arg1 exporter:(id)arg2 error:(id *)arg3;
 - (double)footnoteGap;
-- (int)footnoteKind;
+- (long long)footnoteKind;
 - (BOOL)footnotesShouldAffectBodyLayout;
-- (struct __CFLocale *)hyphenationLocale;
+- (BOOL)freehandDrawingsRequireSpacerShape;
+- (BOOL)hasViewState;
+- (const struct __CFLocale *)hyphenationLocale;
 - (int)indexForObject:(id)arg1;
 - (id)initForThemeImportWithContext:(id)arg1;
 - (id)initUsingDefaultThemeWithContext:(id)arg1;
@@ -172,11 +184,12 @@ __attribute__((visibility("hidden")))
 - (void)pCreateFlowInfoContainer;
 - (void)pFinishInitialization;
 - (void)pUpgradeSection:(id)arg1 documentVersion:(unsigned long long)arg2;
-- (unsigned long long)p_autoNumberForStorage:(id)arg1 ignoreDeletedFootnotes:(BOOL)arg2 footnoteKind:(int)arg3;
+- (unsigned long long)p_autoNumberForStorage:(id)arg1 ignoreDeletedFootnotes:(BOOL)arg2 footnoteKind:(long long)arg3;
 - (void)p_initializeShowInBookmarksListParagraphStylesProperty;
 - (id)p_previewImageWithImageSize:(struct CGSize)arg1;
 - (id)p_realTOCEntryStyleFromFakeTOCEntryStyle:(id)arg1 context:(id)arg2;
 - (void)p_uniquifyTableNames;
+- (void)p_upgradeAllNonTemplatedSectionsToUseBlankPageTemplate;
 - (void)p_upgradeBodyTOC;
 - (void)p_upgradeTOCModelForUnity20;
 - (void)p_upgradeTOCStyles;
@@ -185,6 +198,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)pageIndexForThumbnailIdentifier:(id)arg1;
 - (id)pageMasterOwningModel:(id)arg1;
 - (BOOL)pageMastersAllowDrawable:(id)arg1;
+- (id)pageTemplateWithName:(id)arg1;
 - (void)prepareNewDocumentWithTemplateBundle:(id)arg1 documentLocale:(id)arg2;
 - (id)previewImageForSize:(struct CGSize)arg1;
 - (void)readCanvasState;
@@ -199,10 +213,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)resolverNameIsUsed:(id)arg1;
 - (id)resolversMatchingPrefix:(id)arg1;
 - (void)resumeBackgroundActivities;
-- (BOOL)reuseThumbnailerUntilIdleForIdentifier:(id)arg1;
 - (void)rollbackNextUntitledResolverIndex:(unsigned int)arg1;
 - (unsigned long long)rootIndexForObject:(id)arg1;
-- (id)rootInfosForIdentifier:(id)arg1;
 - (unsigned int)saveNextUntitledResolverIndex;
 - (void)saveToArchiver:(id)arg1;
 - (void)setBodyStorage:(id)arg1 dolcContext:(id)arg2;
@@ -211,7 +223,7 @@ __attribute__((visibility("hidden")))
 - (void)setStylesheetForUpgradeToSingleStylesheet:(id)arg1;
 - (void)setThemeForTemplateImport:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
-- (void)setValue:(double)arg1 forMargin:(int)arg2;
+- (void)setValue:(double)arg1 forMargin:(long long)arg2;
 - (BOOL)shouldAllowDrawableInGroups:(id)arg1 forImport:(BOOL)arg2;
 - (BOOL)shouldHyphenate;
 - (BOOL)shouldShowChangeKind:(int)arg1 date:(id)arg2;
@@ -219,18 +231,13 @@ __attribute__((visibility("hidden")))
 - (id)storagesWithChanges;
 - (BOOL)supportHeaderFooterParagraphAlignmentInInspectors;
 - (void)suspendBackgroundActivities;
-- (BOOL)textIsLinked;
-- (BOOL)textIsVertical;
-- (void)thumbnailContainerDidChange:(id)arg1;
 - (id)thumbnailIdentifierForPageIndex:(unsigned long long)arg1;
 - (Class)thumbnailImagerClass;
-- (struct CGSize)thumbnailSizeForIdentifier:(id)arg1;
-- (struct CGRect)unscaledClipRectForIdentifier:(id)arg1;
 - (void)updateWritingDirection:(unsigned long long)arg1;
 - (void)upgradeFromOldSectionWithPageSize:(struct CGSize)arg1 leftMargin:(double)arg2 rightMargin:(double)arg3 topMargin:(double)arg4 bottomMargin:(double)arg5 headerMargin:(double)arg6 footerMargin:(double)arg7;
 - (BOOL)useLigatures;
 - (id)uuidPathPrefixComponentsForInfo:(id)arg1;
-- (double)valueForMargin:(int)arg1;
+- (double)valueForMargin:(long long)arg1;
 - (int)verticalAlignmentForTextStorage:(id)arg1;
 - (void)viewDidAppear;
 - (void)viewWillAppear;

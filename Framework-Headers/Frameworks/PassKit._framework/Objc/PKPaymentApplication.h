@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDecimalNumber, NSString, PKFelicaPassProperties;
+@class NSArray, NSDecimalNumber, NSString, PKFelicaPassProperties, PKTransitPassProperties;
 
 @interface PKPaymentApplication : NSObject <NSSecureCoding, NSCopying>
 {
@@ -35,7 +35,7 @@
     unsigned long long _paymentType;
     NSString *_displayName;
     NSString *_appletDataFormat;
-    PKFelicaPassProperties *_felicaProperties;
+    PKTransitPassProperties *_transitProperties;
 }
 
 @property (copy, nonatomic) NSString *appletCurrencyCode; // @synthesize appletCurrencyCode=_appletCurrencyCode;
@@ -45,10 +45,11 @@
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic, setter=setDPANIdentifier:) NSString *dpanIdentifier; // @synthesize dpanIdentifier=_dpanIdentifier;
 @property (copy, nonatomic, setter=setDPANSuffix:) NSString *dpanSuffix; // @synthesize dpanSuffix=_dpanSuffix;
-@property (copy, nonatomic) PKFelicaPassProperties *felicaProperties; // @synthesize felicaProperties=_felicaProperties;
+@property (copy, nonatomic) PKFelicaPassProperties *felicaProperties;
 @property (nonatomic) BOOL inAppPINRequired; // @synthesize inAppPINRequired=_inAppPINRequired;
 @property (copy, nonatomic) NSDecimalNumber *inAppPINRequiredAmount; // @synthesize inAppPINRequiredAmount=_inAppPINRequiredAmount;
 @property (copy, nonatomic) NSString *inAppPINRequiredCurrency; // @synthesize inAppPINRequiredCurrency=_inAppPINRequiredCurrency;
+@property (readonly, nonatomic, getter=isParsedTransitApplication) BOOL parsedTransitApplication;
 @property (nonatomic) long long paymentNetworkIdentifier; // @synthesize paymentNetworkIdentifier=_paymentNetworkIdentifier;
 @property (nonatomic) unsigned long long paymentType; // @synthesize paymentType=_paymentType;
 @property (nonatomic) BOOL requiresDeferredAuthorization; // @synthesize requiresDeferredAuthorization=_requiresDeferredAuthorization;
@@ -56,17 +57,23 @@
 @property (copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSString *stateAsString;
+@property (readonly, nonatomic) NSString *stationCodeProvider;
 @property (copy, nonatomic) NSArray *supportedExpressModes; // @synthesize supportedExpressModes=_supportedExpressModes;
 @property (nonatomic) BOOL supportsContactlessPayment; // @synthesize supportsContactlessPayment=_supportsContactlessPayment;
 @property (copy, nonatomic) NSArray *supportsExpressModes; // @synthesize supportsExpressModes=_supportsExpressModes;
 @property (readonly, nonatomic) BOOL supportsExpressSuica;
+@property (readonly, nonatomic) BOOL supportsExpressTransit;
 @property (nonatomic) BOOL supportsInAppPayment; // @synthesize supportsInAppPayment=_supportsInAppPayment;
 @property (nonatomic) BOOL supportsOptionalAuthentication; // @synthesize supportsOptionalAuthentication=_supportsOptionalAuthentication;
+@property (readonly, nonatomic) BOOL supportsSuica;
+@property (readonly, nonatomic) BOOL supportsTransit;
 @property (copy, nonatomic) NSString *suspendedReason; // @synthesize suspendedReason=_suspendedReason;
+@property (copy, nonatomic) PKTransitPassProperties *transitProperties; // @synthesize transitProperties=_transitProperties;
 
 + (id)applicationWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_expressModesIncludeTransit:(id)arg1;
 - (BOOL)acceptedForNonWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3;
 - (BOOL)acceptedForNonWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 paymentApplicationStates:(id)arg4;
 - (BOOL)acceptedForWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 webService:(id)arg4;

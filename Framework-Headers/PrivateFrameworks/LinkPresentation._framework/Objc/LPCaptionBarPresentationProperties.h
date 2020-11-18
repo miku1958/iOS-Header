@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionRowPresentationProperties, LPImage, UIColor;
+@class LPCaptionRowPresentationProperties, LPImage, NSNumber, UIColor;
 
 @interface LPCaptionBarPresentationProperties : NSObject
 {
@@ -22,6 +22,7 @@
     LPCaptionRowPresentationProperties *_top;
     LPCaptionRowPresentationProperties *_bottom;
     LPCaptionRowPresentationProperties *_belowBottom;
+    NSNumber *_minimumHeight;
 }
 
 @property (readonly, strong, nonatomic) LPCaptionRowPresentationProperties *aboveTop; // @synthesize aboveTop=_aboveTop;
@@ -29,9 +30,11 @@
 @property (strong, nonatomic) LPImage *belowLeadingIcon; // @synthesize belowLeadingIcon=_belowLeadingIcon;
 @property (strong, nonatomic) UIColor *belowLeadingIconMaskColor; // @synthesize belowLeadingIconMaskColor=_belowLeadingIconMaskColor;
 @property (readonly, strong, nonatomic) LPCaptionRowPresentationProperties *bottom; // @synthesize bottom=_bottom;
+@property (readonly, nonatomic) BOOL hasAnyContent;
 @property (nonatomic) long long leadingAccessoryType; // @synthesize leadingAccessoryType=_leadingAccessoryType;
 @property (strong, nonatomic) LPImage *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
 @property (strong, nonatomic) UIColor *leadingIconMaskColor; // @synthesize leadingIconMaskColor=_leadingIconMaskColor;
+@property (strong, nonatomic) NSNumber *minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property (readonly, strong, nonatomic) LPCaptionRowPresentationProperties *top; // @synthesize top=_top;
 @property (nonatomic) long long trailingAccessoryType; // @synthesize trailingAccessoryType=_trailingAccessoryType;
 @property (strong, nonatomic) LPImage *trailingIcon; // @synthesize trailingIcon=_trailingIcon;
@@ -42,7 +45,6 @@
 - (id)belowLeftIconMaskColor;
 - (id)belowRightIcon;
 - (id)belowRightIconMaskColor;
-- (BOOL)hasAnyContent;
 - (id)init;
 - (long long)leftAccessoryType;
 - (id)leftIcon;

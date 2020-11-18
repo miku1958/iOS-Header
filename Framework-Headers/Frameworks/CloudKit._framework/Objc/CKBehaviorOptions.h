@@ -111,7 +111,6 @@
 - (BOOL)sandboxCloudD;
 - (unsigned long long)savedErrorCount;
 - (BOOL)sendDebugHeader;
-- (BOOL)sendKeyIDsOnAllRequests;
 - (void)setBuildVersion:(id)arg1;
 - (void)setCFNetworkLogging:(BOOL)arg1;
 - (void)setCKCtlPrompt:(char *)arg1;

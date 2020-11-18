@@ -61,6 +61,7 @@
 - (id)isMobileDataEnabled:(id)arg1;
 - (id)lifetimeCallTime:(id)arg1;
 - (void)newCarrierNotification;
+- (void)prefetchResourcesFor:(id)arg1;
 - (void)setMobileDataIsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setupCellularFaceTime:(id)arg1;
 - (BOOL)shouldShowFaceTimeSetup;

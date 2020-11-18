@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSString *assetInfo;
 @property (copy, nonatomic) NSString *hashedRouteUID;
 @property (strong, nonatomic) SAMPPodcastCollection *podcastCollection;
 

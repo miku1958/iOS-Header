@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
+
 @class NSDictionary, NSString;
 
-@interface MPRemotePlaybackQueue : NSObject
+@interface MPRemotePlaybackQueue : NSObject <NSSecureCoding>
 {
     struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
 }
@@ -22,9 +24,12 @@
 
 + (id)queueWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;
 + (void)registerRemotePlaybackQueueClass:(Class)arg1 forPlaybackQueueType:(int)arg2;
++ (BOOL)supportsSecureCoding;
 - (struct _MRSystemAppPlaybackQueue *)_mediaRemotePlaybackQueue;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;
 - (BOOL)verifyWithError:(id *)arg1;
 

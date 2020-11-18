@@ -61,6 +61,7 @@
 @property (readonly) BOOL canEmitSequenceIDAndKeyState; // @synthesize canEmitSequenceIDAndKeyState=_canEmitSequenceIDAndKeyState;
 @property (readonly, getter=isPrimary) BOOL primary;
 
+- (void).cxx_destruct;
 - (void)_initInexactSequences;
 - (void)_initIntendedStrings;
 - (void)_initKeyOutputs;

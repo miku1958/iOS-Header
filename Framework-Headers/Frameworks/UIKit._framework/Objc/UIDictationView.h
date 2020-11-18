@@ -21,6 +21,7 @@
     BOOL _automaticAppearanceWasEnabled;
     SUICFlamesView *_flamesView;
     BOOL _showLanguageLabel;
+    BOOL _switchingLanguage;
     id<UIDictationViewDisplayDelegate> _displayDelegate;
 }
 
@@ -30,6 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL showLanguageLabel; // @synthesize showLanguageLabel=_showLanguageLabel;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL switchingLanguage; // @synthesize switchingLanguage=_switchingLanguage;
 
 + (id)activeInstance;
 + (Class)dictationViewClass;
@@ -43,7 +45,6 @@
 - (struct CGPoint)contentOffset;
 - (struct CGSize)currentScreenSize;
 - (void)dealloc;
-- (void)didEndIndirectSelectionGesture;
 - (BOOL)drawsOwnBackground;
 - (id)endpointButton;
 - (void)endpointButtonPressed;
@@ -59,7 +60,6 @@
 - (void)setState:(int)arg1;
 - (void)show;
 - (BOOL)visible;
-- (void)willBeginIndirectSelectionGesture;
 
 @end
 

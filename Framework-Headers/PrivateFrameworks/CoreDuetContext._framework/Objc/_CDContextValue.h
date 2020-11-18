@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableDictionary *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) NSObject<NSCopying><NSSecureCoding> *value;
 
++ (id)supportedContextValueClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

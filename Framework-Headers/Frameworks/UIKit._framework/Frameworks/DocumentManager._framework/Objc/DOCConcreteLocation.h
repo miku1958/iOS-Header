@@ -33,8 +33,10 @@
 + (id)defaultLocation;
 + (id)defaultSaveLocation;
 + (id)emptyLocation;
++ (id)recentDocumentsLocation;
 + (id)recentsLocation;
 + (id)searchLocation;
++ (id)sharedItemsLocation;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

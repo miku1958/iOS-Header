@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSString, NWPathEvaluator;
+@class NSMapTable, NSString, NWPathEvaluator;
 @protocol OS_dispatch_queue;
 
 @interface ICEnvironmentMonitor : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
-    NSHashTable *_observers;
+    NSMapTable *_observers;
     struct __CTServerConnection *_telephonyServerConnectionRef;
     NWPathEvaluator *_networkPathEvaluator;
     BOOL _isCharging;
@@ -43,8 +43,8 @@
 - (void)_handleApplicationDidEnterForegroundNotification:(id)arg1;
 - (void)_handleCTServerConnectionNotification:(id)arg1 userInfo:(id)arg2;
 - (long long)_networkTypeFromTelephonyStatusIndicator:(id)arg1;
-- (void)_updateNetworkReachabilityAndNotifyObservers:(BOOL)arg1;
-- (void)_updateTelephonyStateAndNotifyObservers:(BOOL)arg1;
+- (void)_onQueue_updateNetworkReachabilityAndNotifyObservers:(BOOL)arg1;
+- (void)_onQueue_updateTelephonyStateAndNotifyObservers:(BOOL)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;

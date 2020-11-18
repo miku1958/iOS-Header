@@ -10,11 +10,13 @@
 
 @interface ADIDRecord : NSObject
 {
+    BOOL _dirty;
     NSString *_ID;
     NSData *_encryptedID;
 }
 
 @property (strong, nonatomic) NSString *ID; // @synthesize ID=_ID;
+@property (nonatomic) BOOL dirty; // @synthesize dirty=_dirty;
 @property (strong, nonatomic) NSData *encryptedID; // @synthesize encryptedID=_encryptedID;
 
 - (void).cxx_destruct;

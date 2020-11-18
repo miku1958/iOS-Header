@@ -131,12 +131,12 @@
 @property (strong, nonatomic) NSData *systemAppPlaybackQueueData; // @synthesize systemAppPlaybackQueueData=_systemAppPlaybackQueueData;
 @property (nonatomic) unsigned long long trackID; // @synthesize trackID=_trackID;
 
+- (void).cxx_destruct;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsReplaceIntent:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

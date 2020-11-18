@@ -40,7 +40,6 @@
 - (void)disableAutoUnlockForDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)eligibleAutoUnlockDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enableAutoUnlockWithDevice:(id)arg1 passcode:(id)arg2;
-- (void)enableAutoUnlockWithDevice:(id)arg1 passcode:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)enabledDevice:(id)arg1;
 - (void)failedToEnableDevice:(id)arg1 error:(id)arg2;
 - (void)failedUnlockWithError:(id)arg1;

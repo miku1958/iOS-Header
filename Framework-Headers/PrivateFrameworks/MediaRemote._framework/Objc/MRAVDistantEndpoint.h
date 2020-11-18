@@ -19,6 +19,7 @@
     NSString *_uniqueIdentifier;
     NSString *_instanceIdentifier;
     BOOL _isLocalEndpoint;
+    BOOL _proxyGroupPlayer;
     NSXPCListenerEndpoint *_externalDeviceListenerEndpoint;
     NSArray *_distantOutputDevices;
     MRAVDistantOutputDevice *_distantGroupLeader;
@@ -28,15 +29,18 @@
 @property (copy, nonatomic) NSArray *distantOutputDevices; // @synthesize distantOutputDevices=_distantOutputDevices;
 @property (strong, nonatomic) NSXPCListenerEndpoint *externalDeviceListenerEndpoint; // @synthesize externalDeviceListenerEndpoint=_externalDeviceListenerEndpoint;
 @property (copy, nonatomic) NSString *localizedName;
+@property (nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)designatedGroupLeader;
 - (void)encodeWithCoder:(id)arg1;
 - (id)externalDevice;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDescriptor:(id)arg1;
 - (id)instanceIdentifier;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isLocalEndpoint;
 - (id)outputDevices;
 - (id)uniqueIdentifier;

@@ -17,6 +17,7 @@
 - (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3;
 - (id)initWithError:(id)arg1;
 - (BOOL)isChangeTokenExpired;
+- (BOOL)isInitializationTimeOutError;
 - (BOOL)isKeychainSyncingInProgress;
 - (BOOL)isManateeNotAvailableError;
 - (BOOL)isNetworkUnavailable;

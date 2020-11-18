@@ -41,7 +41,7 @@
 - (void).cxx_destruct;
 - (void)_beginDownloadBackgroundTask:(id)arg1;
 - (void)_clearFileDownloadState;
-- (id)_download:(id)arg1 decideDestinationWithSuggestedFilename:(id)arg2 allowOverwrite:(BOOL *)arg3;
+- (void)_download:(id)arg1 decideDestinationWithSuggestedFilename:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_download:(id)arg1 didFailWithError:(id)arg2;
 - (void)_download:(id)arg1 didReceiveData:(unsigned long long)arg2;
 - (void)_download:(id)arg1 didReceiveResponse:(id)arg2;

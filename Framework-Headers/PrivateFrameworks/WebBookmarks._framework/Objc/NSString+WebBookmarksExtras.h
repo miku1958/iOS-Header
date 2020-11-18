@@ -10,5 +10,6 @@
 - (id)_wb_stringByDeletingTrailingSlash;
 - (id)_wb_stringByStandardizingDAVServerID;
 - (BOOL)_webBookmarks_hasCaseInsensitivePrefix:(id)arg1;
+- (id)wb_stringByRedactingBookmarkDAVServerID;
 @end
 

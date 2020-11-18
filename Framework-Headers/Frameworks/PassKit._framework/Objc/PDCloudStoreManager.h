@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <PassKitCore/PDScheduledActivityClient-Protocol.h>
+
 @class CKContainer, NSError, NSMutableDictionary, NSMutableSet, NSString, PKPaymentTransactionProcessor, PKPeerPaymentAccount;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, PDCloudStoreDataSource, PDCloudStoreManagerDelegate;
 
-@interface PDCloudStoreManager : NSObject
+@interface PDCloudStoreManager : NSObject <PDScheduledActivityClient>
 {
     CKContainer *_container;
     PKPeerPaymentAccount *_peerPaymentAccount;
@@ -18,7 +20,7 @@
     NSMutableDictionary *_changeTokensByZoneID;
     NSMutableDictionary *_completedFetchTimestampByZoneID;
     PKPaymentTransactionProcessor *_transactionProcessor;
-    NSMutableSet *_initalizationCompletionHandlers;
+    NSMutableSet *_initializationCompletionHandlers;
     NSError *_operationError;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_source> *_retryTimer;
@@ -29,6 +31,7 @@
     BOOL _resettingCloudStore;
     BOOL _accountChangedNotificationReceived;
     BOOL _shouldInvalidateCloudStore;
+    BOOL _shouldCancelAllTasks;
     id<PDCloudStoreDataSource> _dataSource;
     NSString *_archivePath;
     id<PDCloudStoreManagerDelegate> _delegate;
@@ -36,16 +39,22 @@
 
 @property (readonly, copy, nonatomic) NSString *archivePath; // @synthesize archivePath=_archivePath;
 @property (readonly, nonatomic) id<PDCloudStoreDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PDCloudStoreManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addOperation:(id)arg1;
 - (void)_attachToContainer;
 - (id)_cachedFetchTimestamps;
 - (id)_cachedServerChangeTokens;
-- (void)_callInitalizationCompletionHandlersWithSuccess:(BOOL)arg1 error:(id)arg2;
+- (void)_callInitializationCompletionHandlersWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (BOOL)_canFormTransactionFromCloudStoreRecord:(id)arg1;
 - (BOOL)_canSyncTransactionToCloudKit:(id)arg1;
+- (void)_cancelAllOperations;
+- (void)_cancelCloudStoreInitializationTimer;
 - (id)_cannotPerformActionErrorWithFailureReason:(id)arg1;
 - (void)_cloudStoreAccountChanged:(id)arg1;
 - (void)_cloudStoreAccountInformationWithCompletion:(CDUnknownBlockType)arg1;
@@ -85,6 +94,7 @@
 - (void)_setContainerState:(unsigned long long)arg1;
 - (void)_setContainerState:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setContainerState:(unsigned long long)arg1 retryCount:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_startCloudStoreInitializationTimer;
 - (void)_startFetchRetryTimerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_stopFetchRetryTimer;
 - (id)_strippedRecordName:(id)arg1;
@@ -106,6 +116,7 @@
 - (id)insertOrUpdatePaymentTransaction:(id)arg1 withOriginDeviceID:(id)arg2 forPassUniqueIdentifier:(id)arg3 paymentApplication:(id)arg4 withInsertionMode:(unsigned long long)arg5 performTruncation:(BOOL)arg6;
 - (void)invalidateCloudStore;
 - (id)lastFetchDateForZoneWithName:(id)arg1;
+- (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2;
 - (void)removeItemsWithRecordNames:(id)arg1 itemClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithCompletion:(CDUnknownBlockType)arg1;

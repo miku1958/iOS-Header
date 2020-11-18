@@ -23,6 +23,7 @@
 - (void)getElementsDuringDateInterval:(id)arg1 inSection:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)pause;
 - (void)resume;
+- (void)setAllowsLocationUse:(BOOL)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setRunning:(BOOL)arg1;
 - (void)setState:(unsigned long long)arg1;

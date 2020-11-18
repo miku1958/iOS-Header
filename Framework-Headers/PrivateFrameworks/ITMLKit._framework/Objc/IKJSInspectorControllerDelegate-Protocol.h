@@ -14,5 +14,6 @@
 - (BOOL)cancelHighlightView;
 - (BOOL)highlightViewForElementWithID:(long long)arg1 contentColor:(UIColor *)arg2 paddingColor:(UIColor *)arg3 borderColor:(UIColor *)arg4 marginColor:(UIColor *)arg5;
 - (BOOL)highlightViewsForElementsWithIDs:(NSArray *)arg1 contentColor:(UIColor *)arg2 paddingColor:(UIColor *)arg3 borderColor:(UIColor *)arg4 marginColor:(UIColor *)arg5;
+- (void)inspectElementModeChanged:(BOOL)arg1;
 @end
 

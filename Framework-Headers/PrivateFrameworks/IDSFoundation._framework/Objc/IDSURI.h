@@ -29,6 +29,7 @@
 - (id)initWithPrefixedURI:(id)arg1;
 - (id)initWithUnprefixedURI:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToURI:(id)arg1;
 
 @end
 

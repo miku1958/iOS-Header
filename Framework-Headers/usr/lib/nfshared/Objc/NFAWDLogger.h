@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSData;
 @protocol NFAWDLoggerDelegate;
@@ -32,12 +32,18 @@
 - (void)postAWDCRSAuthWithStatus:(unsigned int)arg1 withMethod:(unsigned int)arg2;
 - (void)postAWDCRSDeAuthWithStatus:(unsigned int)arg1;
 - (void)postAWDCardIngestionReaderStateChangeWithType:(unsigned int)arg1 errorCode:(unsigned int)arg2;
-- (void)postAWDCardIngestionSessionStateChangeTo:(unsigned int)arg1;
+- (void)postAWDCardIngestionSessionStateChange:(id)arg1;
 - (void)postAWDExpressTransactionEventFor:(unsigned int)arg1 started:(BOOL)arg2;
 - (void)postAWDFieldEventWithFieldOn:(BOOL)arg1 withTechnology:(unsigned int)arg2;
+- (void)postAWDHCEEndEvent;
+- (void)postAWDHCEStartEvent:(id)arg1;
+- (void)postAWDHCEStateChangeEvent:(unsigned int)arg1;
+- (void)postAWDHCIActivityTimeout:(id)arg1;
 - (void)postAWDHCIEndOfTransactionEventWithParameters:(id)arg1;
+- (void)postAWDHCIEndOfTransactionV2EventWithParameters:(id)arg1;
 - (void)postAWDHCIStartOfTransactionEventWithVersion:(unsigned int)arg1 withStatus:(unsigned int)arg2;
-- (void)postAWDMiddlewareException:(unsigned int)arg1 mwVersion:(unsigned int)arg2 errorType:(unsigned int)arg3 errorCode:(unsigned int)arg4 checkMaxExceptionCounter:(BOOL)arg5;
+- (void)postAWDHCIStartOfTransactionV2EventWithParameters:(id)arg1;
+- (void)postAWDMiddlewareException:(unsigned int)arg1 mwVersion:(unsigned int)arg2 errorType:(unsigned int)arg3 errorCode:(unsigned int)arg4 breadcrumb:(unsigned long long)arg5 checkMaxExceptionCounter:(BOOL)arg6;
 - (void)postAWDPLLUnlockEvent;
 - (void)postAWDPeerPaymentEnrollmentWithParameters:(id)arg1;
 - (void)postAWDPeerPaymentRequestWithParameters:(id)arg1;

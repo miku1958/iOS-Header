@@ -7,14 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/NSCopying-Protocol.h>
+#import <ARKit/NSSecureCoding-Protocol.h>
 
 @class ARFaceTrackingData, MISSING_TYPE;
 @protocol OS_dispatch_semaphore;
 
-@interface ARFaceGeometry : NSObject <NSCopying>
+@interface ARFaceGeometry : NSObject <NSSecureCoding, NSCopying>
 {
-    vector_fff08e2a _customVertices;
-    vector_fff08e2a _normals;
+    vector_1cb3ea33 _customVertices;
+    vector_1cb3ea33 _normals;
     ARFaceTrackingData *_trackingData;
     NSObject<OS_dispatch_semaphore> *_normalsSemaphore;
 }
@@ -26,13 +27,17 @@
 @property (readonly, nonatomic) unsigned long long vertexCount;
 @property (readonly, nonatomic) const MISSING_TYPE **vertices;
 
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initPrivate;
 - (id)initWithBlendShapes:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithCustomVertices:(const MISSING_TYPE **)arg1 verticesCount:(unsigned long long)arg2;
 - (id)initWithFaceTrackingData:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (unsigned long long)normalCount;
 - (const MISSING_TYPE **)normals;
 

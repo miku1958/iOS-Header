@@ -6,9 +6,10 @@
 
 #import <Silex/SXComponentTypeDescribing-Protocol.h>
 
-@class SXComponent, SXComponentView;
+@class SXComponentView;
+@protocol SXComponent;
 
 @protocol SXComponentViewFactory <SXComponentTypeDescribing>
-- (SXComponentView *)componentViewForComponent:(SXComponent *)arg1;
+- (SXComponentView *)componentViewForComponent:(id<SXComponent>)arg1;
 @end
 

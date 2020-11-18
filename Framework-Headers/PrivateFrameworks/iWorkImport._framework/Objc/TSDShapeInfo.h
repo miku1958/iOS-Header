@@ -44,14 +44,15 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDLineEnd *tailLineEnd;
 
 - (void).cxx_destruct;
+- (void)acceptVisitor:(id)arg1;
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
 - (id)animationFilters;
 - (id)copyWithContext:(id)arg1;
-- (id)datasForReplacingMediaContentsWithAssociatedHints;
 - (int)elementKind;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 pathSource:(id)arg4;
+- (BOOL)isAllowedInFreehandDrawings;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (BOOL)isLine;
 - (BOOL)isOpenPath;
@@ -63,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (long long)mediaCompatibilityTypeForData:(id)arg1 associatedHint:(id)arg2;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+- (BOOL)needsDownload;
 - (id)objectForProperty:(int)arg1;
 - (void)p_correctLineSegmentGeometry;
 - (void)p_correctNearZeroWidthLines;

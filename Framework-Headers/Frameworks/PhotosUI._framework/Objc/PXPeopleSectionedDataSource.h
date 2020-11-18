@@ -58,6 +58,8 @@
 - (void)moveMemberAtIndexPath:(id)arg1 toIndexPath:(id)arg2 shouldUpdateImmediately:(BOOL)arg3;
 - (unsigned long long)numberOfDisclosedSections;
 - (unsigned long long)numberOfMembersInSection:(long long)arg1;
+- (unsigned long long)numberOfMembersWithContactName;
+- (unsigned long long)numberOfMembersWithStringName;
 - (unsigned long long)numberOfSections;
 - (void)pauseListeningForChangesWithTimeout:(double)arg1;
 - (id)peopleAtIndexPaths:(id)arg1;

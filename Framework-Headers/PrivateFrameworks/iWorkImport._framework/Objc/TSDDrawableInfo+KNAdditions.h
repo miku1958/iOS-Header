@@ -18,9 +18,11 @@
 @property (readonly, nonatomic) KNBuild *buildIn;
 @property (readonly, nonatomic) KNBuild *buildOut;
 @property (readonly, nonatomic) NSSet *builds;
+@property (readonly, nonatomic) NSSet *contentBuilds;
 @property (readonly, nonatomic) NSArray *ghostInfos;
 @property (readonly, nonatomic) BOOL hasActionBuilds;
 @property (readonly, nonatomic) BOOL hasBuilds;
+@property (readonly, nonatomic) BOOL hasContentBuilds;
 @property (readonly, nonatomic) BOOL isRightToLeft;
 @property (readonly, nonatomic) BOOL mayHaveImplicitBuildEvents;
 @property (readonly, nonatomic) KNSlide *slide;

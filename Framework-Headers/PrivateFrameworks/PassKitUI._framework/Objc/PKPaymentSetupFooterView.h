@@ -6,12 +6,13 @@
 
 #import <PassKitUI/PKTableFooterView.h>
 
-@class UIButton;
+@class UIButton, UILabel;
 
 @interface PKPaymentSetupFooterView : PKTableFooterView
 {
     UIButton *_continueButton;
     UIButton *_skipCardButton;
+    UILabel *_notificationText;
     BOOL _isBuddyiPad;
     BOOL _forceShowSetupLaterButton;
     long long _context;
@@ -22,12 +23,14 @@
 @property (nonatomic) long long context; // @synthesize context=_context;
 @property (nonatomic) BOOL forceShowSetupLaterButton; // @synthesize forceShowSetupLaterButton=_forceShowSetupLaterButton;
 @property (strong, nonatomic) UIButton *manualEntryButton; // @synthesize manualEntryButton=_manualEntryButton;
+@property (strong, nonatomic) UILabel *notificationText;
 @property (strong, nonatomic) UIButton *setupLaterButton; // @synthesize setupLaterButton=_setupLaterButton;
 @property (strong, nonatomic) UIButton *skipCardButton;
 
 - (void).cxx_destruct;
 - (void)_createSetupLaterButton;
 - (struct CGSize)_sizeForButton:(id)arg1 constrainedToSize:(struct CGSize)arg2;
+- (struct CGSize)_sizeForLabel:(id)arg1 maxText:(id)arg2 constrainedToSize:(struct CGSize)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
 - (void)layoutSubviews;
 - (void)setButtonsEnabled:(BOOL)arg1;

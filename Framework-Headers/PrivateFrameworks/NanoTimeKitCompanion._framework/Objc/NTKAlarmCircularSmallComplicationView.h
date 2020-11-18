@@ -34,6 +34,7 @@
 
 - (void).cxx_destruct;
 - (void)_setShowAlternativeLabel:(BOOL)arg1;
+- (void)_setStateAlarmsUnknown;
 - (void)_updateImage;
 - (void)_updateLabelsForFontChange;
 - (void)_updateTime;

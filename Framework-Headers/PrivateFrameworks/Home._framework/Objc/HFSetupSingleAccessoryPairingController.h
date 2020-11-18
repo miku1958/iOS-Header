@@ -9,12 +9,14 @@
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFSetupPairingController-Protocol.h>
 
-@class HFDiscoveredAccessory, HFSetupAccessoryResult, HMHome, HMSetupAccessoryDescription, NAFuture, NSDate, NSHashTable, NSSet, NSString;
+@class HFDiscoveredAccessory, HFSetupAccessoryResult, HMAccessorySetupCompletedInfo, HMHome, HMSetupAccessoryDescription, NAFuture, NSDate, NSHashTable, NSSet, NSString;
 @protocol HMSetupRemoteService;
 
 @interface HFSetupSingleAccessoryPairingController : NSObject <HFHomeObserver, HFSetupPairingController>
 {
+    BOOL _accessoryRequiresCode;
     HFSetupAccessoryResult *_setupResult;
+    HMAccessorySetupCompletedInfo *_completedInfo;
     HFDiscoveredAccessory *_discoveredAccessoryToPair;
     id<HMSetupRemoteService> _setupRemoteService;
     HMSetupAccessoryDescription *_setupAccessoryDescription;
@@ -28,6 +30,8 @@
     NSDate *_phaseStartDate;
 }
 
+@property (nonatomic) BOOL accessoryRequiresCode; // @synthesize accessoryRequiresCode=_accessoryRequiresCode;
+@property (readonly, nonatomic) HMAccessorySetupCompletedInfo *completedInfo; // @synthesize completedInfo=_completedInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HFDiscoveredAccessory *discoveredAccessoryToPair; // @synthesize discoveredAccessoryToPair=_discoveredAccessoryToPair;

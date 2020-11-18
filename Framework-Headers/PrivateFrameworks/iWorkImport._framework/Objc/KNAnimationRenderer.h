@@ -12,20 +12,20 @@
 __attribute__((visibility("hidden")))
 @interface KNAnimationRenderer : NSObject
 {
-    KNPlaybackSession *mSession;
-    KNAnimatedSlideView *mASV;
-    BOOL mAreAnimationsPaused;
-    id mPlugin;
-    Class mPluginClass;
-    unsigned long long mDirection;
-    double mDuration;
+    KNPlaybackSession *_session;
+    KNAnimatedSlideView *_ASV;
+    BOOL _areAnimationsPaused;
+    id _plugin;
+    Class _pluginClass;
+    unsigned long long _direction;
+    double _duration;
     id<KNAnimationPluginContext> _pluginContext;
 }
 
-@property (nonatomic) unsigned long long direction; // @synthesize direction=mDirection;
-@property (nonatomic) double duration; // @synthesize duration=mDuration;
-@property (readonly, nonatomic) id plugin; // @synthesize plugin=mPlugin;
-@property (readonly, nonatomic) Class pluginClass; // @synthesize pluginClass=mPluginClass;
+@property (nonatomic) unsigned long long direction; // @synthesize direction=_direction;
+@property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic) id plugin; // @synthesize plugin=_plugin;
+@property (readonly, nonatomic) Class pluginClass; // @synthesize pluginClass=_pluginClass;
 @property (readonly, nonatomic) id<KNAnimationPluginContext> pluginContext; // @synthesize pluginContext=_pluginContext;
 
 - (void)dealloc;

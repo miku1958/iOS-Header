@@ -6,78 +6,38 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <Silex/SXUpNextViewControllerDelegate-Protocol.h>
-#import <Silex/SXVideoControlManagerDelegate-Protocol.h>
-#import <Silex/UIGestureRecognizerDelegate-Protocol.h>
+@class NSLayoutConstraint, SXPlayButtonViewController, SXTopVideoControlsViewController, SXVideoAccessoryBarViewController, SXVideoPlaybackControlsManager, UIButton;
+@protocol SXVideoAccessoryBarSizing;
 
-@class NSString, SXAdPrivacyButton, SXLearnMoreButton, SXMaterialVideoPlayButton, SXMediaSelectionButton, SXTopVideoControlsView, SXUpNextViewController, SXVideoCloseButton, SXVideoControlManager, SXVideoControlsLayout, SXVideoProgressView, SXVolumeButton, UIButton;
-@protocol SXVideoControlsViewControllerDelegate;
-
-@interface SXVideoControlsViewController : UIViewController <UIGestureRecognizerDelegate, SXUpNextViewControllerDelegate, SXVideoControlManagerDelegate>
+@interface SXVideoControlsViewController : UIViewController
 {
-    id<SXVideoControlsViewControllerDelegate> _delegate;
-    SXVideoControlsLayout *_layout;
-    double _duration;
-    double _time;
-    double _loadingProgress;
-    SXTopVideoControlsView *_topControls;
-    SXVideoProgressView *_progressView;
-    SXVideoCloseButton *_closeButton;
-    SXMediaSelectionButton *_captionsButton;
-    SXLearnMoreButton *_adLearnMoreButton;
-    SXAdPrivacyButton *_adMarker;
-    SXMaterialVideoPlayButton *_playButton;
+    SXTopVideoControlsViewController *_topControlsViewController;
+    SXPlayButtonViewController *_playButtonViewController;
+    SXVideoPlaybackControlsManager *_playbackControlsManager;
+    SXVideoAccessoryBarViewController *_accessoryBarViewController;
+    id<SXVideoAccessoryBarSizing> _videoAccessoryBarSizer;
     UIButton *_skipToPreviousButton;
     UIButton *_skipToNextButton;
-    SXUpNextViewController *_upNextViewController;
-    SXVideoControlManager *_videoControlManager;
-    SXVolumeButton *_volumeButton;
+    NSLayoutConstraint *_accessoryBarHeightConstraint;
+    NSLayoutConstraint *_accessoryBarMaxWidthConstraint;
 }
 
-@property (strong, nonatomic) SXLearnMoreButton *adLearnMoreButton; // @synthesize adLearnMoreButton=_adLearnMoreButton;
-@property (strong, nonatomic) SXAdPrivacyButton *adMarker; // @synthesize adMarker=_adMarker;
-@property (strong, nonatomic) SXMediaSelectionButton *captionsButton; // @synthesize captionsButton=_captionsButton;
-@property (strong, nonatomic) SXVideoCloseButton *closeButton; // @synthesize closeButton=_closeButton;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<SXVideoControlsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (nonatomic) double duration; // @synthesize duration=_duration;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SXVideoControlsLayout *layout; // @synthesize layout=_layout;
-@property (nonatomic) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
-@property (strong, nonatomic) SXMaterialVideoPlayButton *playButton; // @synthesize playButton=_playButton;
-@property (strong, nonatomic) SXVideoProgressView *progressView; // @synthesize progressView=_progressView;
-@property (strong, nonatomic) UIButton *skipToNextButton; // @synthesize skipToNextButton=_skipToNextButton;
-@property (strong, nonatomic) UIButton *skipToPreviousButton; // @synthesize skipToPreviousButton=_skipToPreviousButton;
-@property (readonly) Class superclass;
-@property (nonatomic) double time; // @synthesize time=_time;
-@property (strong, nonatomic) SXTopVideoControlsView *topControls; // @synthesize topControls=_topControls;
-@property (strong, nonatomic) SXUpNextViewController *upNextViewController; // @synthesize upNextViewController=_upNextViewController;
-@property (strong, nonatomic) SXVideoControlManager *videoControlManager; // @synthesize videoControlManager=_videoControlManager;
-@property (strong, nonatomic) SXVolumeButton *volumeButton; // @synthesize volumeButton=_volumeButton;
+@property (strong, nonatomic) NSLayoutConstraint *accessoryBarHeightConstraint; // @synthesize accessoryBarHeightConstraint=_accessoryBarHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *accessoryBarMaxWidthConstraint; // @synthesize accessoryBarMaxWidthConstraint=_accessoryBarMaxWidthConstraint;
+@property (readonly, nonatomic) SXVideoAccessoryBarViewController *accessoryBarViewController; // @synthesize accessoryBarViewController=_accessoryBarViewController;
+@property (readonly, nonatomic) SXPlayButtonViewController *playButtonViewController; // @synthesize playButtonViewController=_playButtonViewController;
+@property (readonly, nonatomic) SXVideoPlaybackControlsManager *playbackControlsManager; // @synthesize playbackControlsManager=_playbackControlsManager;
+@property (readonly, nonatomic) UIButton *skipToNextButton; // @synthesize skipToNextButton=_skipToNextButton;
+@property (readonly, nonatomic) UIButton *skipToPreviousButton; // @synthesize skipToPreviousButton=_skipToPreviousButton;
+@property (readonly, nonatomic) SXTopVideoControlsViewController *topControlsViewController; // @synthesize topControlsViewController=_topControlsViewController;
+@property (readonly, nonatomic) id<SXVideoAccessoryBarSizing> videoAccessoryBarSizer; // @synthesize videoAccessoryBarSizer=_videoAccessoryBarSizer;
 
 - (void).cxx_destruct;
-- (void)accessibilityDidActivateVideoView:(id)arg1;
-- (void)adLearnMoreButtonTapped:(id)arg1;
-- (void)adMarkerTapped:(id)arg1;
-- (void)captionsButtonTapped:(id)arg1;
-- (void)closeButtonTapped:(id)arg1;
-- (void)configureControlsWithLayout:(id)arg1;
-- (void)configurePlayButtonWithLayout:(id)arg1;
-- (void)configureUpNextViewControllerWithLayout:(id)arg1;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (id)init;
-- (void)playButtonTapped:(id)arg1;
-- (void)setLayout:(id)arg1 animated:(BOOL)arg2;
-- (void)skipToNextVideoTapped:(id)arg1;
-- (void)skipToPreviousVideoTapped:(id)arg1;
-- (void)tap;
-- (void)upNextViewControllerWantsToReplay:(id)arg1;
-- (void)upNextViewControllerWantsToSkip:(id)arg1;
+- (id)initWithPlaybackControlsManager:(id)arg1 topVideoControlsViewController:(id)arg2 playButtonViewController:(id)arg3 videoAccessoryBar:(id)arg4 videoAccessoryBarSizer:(id)arg5 skipToPreviousButton:(id)arg6 skipToNextButton:(id)arg7;
+- (void)preferredContentSizeCategoryDidChange:(id)arg1;
 - (void)updateViewConstraints;
-- (void)videoControlManager:(id)arg1 didToggleControlVisibility:(BOOL)arg2;
 - (void)viewDidLoad;
-- (void)volumeButtonTapped:(id)arg1;
+- (void)viewSafeAreaInsetsDidChange;
 
 @end
 

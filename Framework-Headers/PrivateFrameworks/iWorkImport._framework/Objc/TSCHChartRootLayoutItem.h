@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     TSCHChartInfo *mChartInfo;
     TSCHChartAbstractAreaLayoutItem *mChartArea;
     TSCHLegendAreaLayoutItem *mLegend;
-    CDStruct_44ada6bf mLayoutSettings;
+    CDStruct_b1c75024 mLayoutSettings;
     struct CGRect mLegendInnerFrame;
     struct CGRect mChartInnerFrame;
     BOOL mInResize;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSDictionary *seriesIndexedPieNormalizedLabelDistancesFromWedgeTips;
 @property (copy, nonatomic) NSDictionary *seriesIndexedPieWedgeExplosions; // @synthesize seriesIndexedPieWedgeExplosions=mSeriesIndexedPieWedgeExplosions;
 
+- (void).cxx_destruct;
 - (void)beginResizeWithStartingSize:(struct CGSize)arg1;
 - (void)buildSubTree;
 - (struct CGRect)calcDrawingRect;
@@ -45,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateSeriesIndexedPieWedgeExplosions;
 - (void)invalidateTransientModel;
 - (BOOL)isInResize;
-- (CDStruct_44ada6bf)layoutSettings;
+- (CDStruct_b1c75024)layoutSettings;
 - (id)model;
 - (void)p_layoutInward;
 - (void)p_layoutOutward;
@@ -54,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)root;
 - (void)setChartBodySize:(struct CGSize)arg1;
 - (void)setChartInnerFrame:(struct CGRect)arg1 legendInnerFrame:(struct CGRect)arg2;
-- (void)setLayoutSettings:(CDStruct_44ada6bf)arg1;
+- (void)setLayoutSettings:(CDStruct_b1c75024)arg1;
 - (void)setLegendSize:(struct CGSize)arg1;
 - (struct CGSize)startingSize;
 - (void)updateLayoutOffset;

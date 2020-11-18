@@ -26,6 +26,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_initWithServiceLookUpResults:(id)arg1;
 - (id)_initWithServiceLookUpResults:(id)arg1 URLContainsUserInfo:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

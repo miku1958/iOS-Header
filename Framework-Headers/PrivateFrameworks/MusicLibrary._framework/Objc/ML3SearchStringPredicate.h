@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 
 + (id)predicateWithConcatenatedProperties:(id)arg1 searchString:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)SQLJoinClausesForClass:(Class)arg1;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;

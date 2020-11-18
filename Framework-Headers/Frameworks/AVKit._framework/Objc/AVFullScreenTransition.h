@@ -10,19 +10,25 @@
 
 @interface AVFullScreenTransition : AVTransition
 {
-    BOOL _prefersBlackBarsDuringTransition;
     AVFullScreenViewController *_fullScreenViewController;
 }
 
 @property (readonly, nonatomic) struct CGRect frameOfPlayerViewControllerWithinContainerView;
 @property (readonly, nonatomic) AVFullScreenViewController *fullScreenViewController; // @synthesize fullScreenViewController=_fullScreenViewController;
-@property (nonatomic) BOOL prefersBlackBarsDuringTransition; // @synthesize prefersBlackBarsDuringTransition=_prefersBlackBarsDuringTransition;
+@property (readonly, nonatomic) struct CGAffineTransform rotationTransformFromPresentedViewToSourceView;
+@property (readonly, nonatomic) BOOL shouldRemovePresentingView;
+@property (readonly, nonatomic) struct CGRect sourceViewFrameInContainerView;
+@property (readonly, nonatomic) struct CGAffineTransform transformForDismissalAnimation;
 
 - (void).cxx_destruct;
 - (id)backgroundView;
 - (void)completeTransition:(BOOL)arg1;
-- (BOOL)shouldRemovePresentingView;
+- (id)destinationView;
+- (struct CGAffineTransform)rotationTransform:(double)arg1;
+- (id)sourceView;
+- (id)sourceWindow;
 - (void)transitionWillBegin;
+- (void)updateCornerAppearanceAttributesOfView:(id)arg1 similarityToSourceView:(double)arg2;
 
 @end
 

@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) double opacity; // @dynamic opacity;
 @property (readonly, nonatomic) SXShadow *shadow; // @dynamic shadow;
 @property (readonly, nonatomic) SXDataTableStyle *tableStyle; // @dynamic tableStyle;
+@property (readonly, nonatomic) unsigned long long traits;
 
 - (id)fillWithValue:(id)arg1 withType:(int)arg2;
 

@@ -27,6 +27,7 @@
 - (BOOL)hk_isServiceDeviceNotFoundError;
 - (BOOL)hk_isStreamFailureError;
 - (BOOL)hk_isTimeoutError;
+- (BOOL)hk_isUserCanceledError;
 - (id)hk_sanitizedError;
 - (id)hk_underlyingErrorWithDomain:(id)arg1;
 @end

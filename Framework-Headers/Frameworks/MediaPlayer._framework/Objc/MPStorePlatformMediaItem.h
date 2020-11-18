@@ -16,6 +16,7 @@
 @property (strong, nonatomic) MPStoreItemMetadata *storeItemMetadata; // @synthesize storeItemMetadata=_storeItemMetadata;
 
 + (id)defaultPropertyValues;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_valueFromMetadataForProperty:(id)arg1;
 - (id)artworkCatalog;

@@ -11,12 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface VKBuildingTile : VKSkewingVectorTile
 {
-    vector_dc840c5c _facadeTextures;
+    vector_73877b71 _facadeTextures;
     NSMutableArray *_polygonGroups[3];
     VK3DObjectSubTile *_objectSubTile;
     struct unique_ptr<ggl::Texture2D, std::__1::default_delete<ggl::Texture2D>> _shadowTexture;
     Matrix_08d701e4 _shadowModelMatrix;
     shared_ptr_696716c4 _shadowViewConstantData;
+    float _fadeProgress;
     float _alpha;
     float _scale;
     float _minLayeringHeight;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VKAnimation *animation; // @synthesize animation=_animation;
 @property (strong, nonatomic) VKAnimation *animationForPitch; // @synthesize animationForPitch=_animationForPitch;
 @property (readonly, nonatomic) struct CullingGridWithHeight cullingGrid; // @synthesize cullingGrid=_cullingGrid;
+@property (nonatomic) float fadeProgress; // @synthesize fadeProgress=_fadeProgress;
 @property (readonly, nonatomic) struct FogInfo *fogInfo;
 @property (readonly, nonatomic) double maxHeight; // @synthesize maxHeight=_maxHeight;
 @property (readonly, nonatomic) float maxLayeringHeight; // @synthesize maxLayeringHeight=_maxLayeringHeight;
@@ -50,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)buildMeshesWithTriangulator:(id)arg1 device:(Device_9226c869 *)arg2 prepareExtrusion:(BOOL)arg3;
 - (void)confirmBuildingSuppression:(CDStruct_bc04cdca *)arg1;
 - (void)dealloc;
-- (const vector_dc840c5c *)facadeTextures;
+- (const vector_73877b71 *)facadeTextures;
 - (BOOL)heightAtPoint:(const Matrix_8746f91e *)arg1 outZ:(float *)arg2 outBuildingId:(unsigned long long *)arg3;
 - (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_9226c869 *)arg7;
 - (unsigned long long)numberOfFacadeTextures;

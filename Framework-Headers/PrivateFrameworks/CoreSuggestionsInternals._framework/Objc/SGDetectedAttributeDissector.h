@@ -6,14 +6,11 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class PMLAWDSessionTracker;
-@protocol PMLTrainingProtocol;
+@class SGDetectedAttributeML;
 
 @interface SGDetectedAttributeDissector : SGPipelineDissector
 {
-    id<PMLTrainingProtocol> _localTraining;
-    PMLAWDSessionTracker *_foundInMailSessionTracker;
-    PMLAWDSessionTracker *_selfIdSessionTracker;
+    SGDetectedAttributeML *_ml;
     unsigned long long _selfIdentificationMessageCount;
 }
 
@@ -26,15 +23,14 @@
 + (BOOL)isMaybeNameContext:(id)arg1;
 + (BOOL)isNameRequest:(id)arg1;
 + (BOOL)isPhoneContext:(id)arg1;
-+ (unsigned long long)supervisionTypeIfFoundByPrevModel:(BOOL)arg1 isKnownContact:(BOOL)arg2 isKnownInternal:(BOOL)arg3;
++ (id)patterns;
 - (void).cxx_destruct;
-- (id)MLSelfIdWithEntity:(id)arg1 conversation:(id)arg2 label:(id)arg3 detectedRange:(struct _NSRange)arg4;
 - (id)_extractEmailishTokenFromMailHeader:(id)arg1;
 - (id)_makeAlnum:(id)arg1;
 - (id)_makeSimplifiedListIdEmail:(id)arg1;
 - (id)detailTypeFromPrefix:(id)arg1;
 - (id)detailTypeFromPrefix:(id)arg1 detectedLabelPointer:(struct _NSRange *)arg2;
-- (id)detectionFromBodyDDMatch:(id)arg1 onEntity:(id)arg2;
+- (id)detectionFromBodyDDMatch:(id)arg1 onEntity:(id)arg2 withSupervisionToFill:(id)arg3;
 - (id)detectionFromSignatureDDMatch:(id)arg1 onEntity:(id)arg2 detectedLabelRange:(struct _NSRange *)arg3 lastClaimedLabelRange:(struct _NSRange)arg4;
 - (void)dissectInternal:(id)arg1 inContext:(id)arg2;
 - (id)filterDangerousSigAddressDetections:(id)arg1 onEntity:(id)arg2;
@@ -44,9 +40,8 @@
 - (id)getLineContaining:(struct _NSRange)arg1 inText:(id)arg2;
 - (void)handleTextMessageSelfIdentification:(id)arg1;
 - (id)init;
-- (id)initWithTraining:(id)arg1 foundInMailSessionTracker:(id)arg2 selfIdSessionTracker:(id)arg3;
+- (id)initWithML:(id)arg1;
 - (id)processTextMessageConversation:(id)arg1 messageIndex:(unsigned long long)arg2;
-- (id)spotlightReferenceFromMessage:(id)arg1;
 
 @end
 

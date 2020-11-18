@@ -6,14 +6,14 @@
 
 #import <iWorkImport/TSKDocumentRootDelegate-Protocol.h>
 
-@class NSString, TSACachedDocumentInfo, TSACollaborationErrorAction, TSADocumentRoot, TSKMailboxDocStatusMessage;
+@class NSString, TSACollaborationErrorAction, TSADocumentInfo, TSADocumentRoot, TSKMailboxDocStatusMessage;
 
 @protocol TSADocumentRootDelegate <TSKDocumentRootDelegate>
 
-@property (readonly, nonatomic) TSACachedDocumentInfo *cachedDocumentInfo;
 @property (readonly) TSACollaborationErrorAction *collaborationDisallowedErrorAction;
 @property (readonly, nonatomic) NSString *defaultDraftName;
 @property (readonly, nonatomic) NSString *documentCachePath;
+@property (readonly, nonatomic) TSADocumentInfo *documentInfo;
 @property (readonly, nonatomic) NSString *name;
 
 

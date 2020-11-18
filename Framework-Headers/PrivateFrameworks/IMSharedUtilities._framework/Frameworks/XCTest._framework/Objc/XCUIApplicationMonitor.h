@@ -7,21 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <XCTest/XCTUIApplicationMonitor-Protocol.h>
+#import <XCTest/XCUIApplicationProcessTracker-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, XCUIApplicationRegistry;
+@class NSMutableDictionary, NSMutableSet, NSString, XCUIApplicationImplDepot, XCUIApplicationRegistry;
 @protocol OS_dispatch_queue;
 
-@interface XCUIApplicationMonitor : NSObject <XCTUIApplicationMonitor>
+@interface XCUIApplicationMonitor : NSObject <XCTUIApplicationMonitor, XCUIApplicationProcessTracker>
 {
     XCUIApplicationRegistry *_applicationRegistry;
     NSObject<OS_dispatch_queue> *_queue;
-    NSMutableDictionary *_applicationImplementations;
+    XCUIApplicationImplDepot *_applicationImplDepot;
+    NSMutableSet *_trackedBundleIDs;
     NSMutableDictionary *_applicationProcessesForPID;
     NSMutableDictionary *_applicationProcessesForToken;
     NSMutableSet *_launchedApplications;
 }
 
-@property (readonly, copy) NSMutableDictionary *applicationImplementations; // @synthesize applicationImplementations=_applicationImplementations;
+@property (readonly, copy) XCUIApplicationImplDepot *applicationImplDepot; // @synthesize applicationImplDepot=_applicationImplDepot;
 @property (readonly, copy) NSMutableDictionary *applicationProcessesForPID; // @synthesize applicationProcessesForPID=_applicationProcessesForPID;
 @property (readonly, copy) NSMutableDictionary *applicationProcessesForToken; // @synthesize applicationProcessesForToken=_applicationProcessesForToken;
 @property (readonly) XCUIApplicationRegistry *applicationRegistry; // @synthesize applicationRegistry=_applicationRegistry;
@@ -29,21 +31,24 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSMutableSet *launchedApplications; // @synthesize launchedApplications=_launchedApplications;
-@property NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
+@property (readonly, copy) NSMutableSet *trackedBundleIDs; // @synthesize trackedBundleIDs=_trackedBundleIDs;
 
 + (id)sharedMonitor;
+- (void).cxx_destruct;
 - (id)_appFromSet:(id)arg1 thatTransitionedToNotRunningDuringTimeInterval:(double)arg2;
 - (void)_beginMonitoringApplication:(id)arg1;
-- (id)_lookupApplicationImplementationForApplicationAtPath:(id)arg1 bundleID:(id)arg2;
+- (BOOL)_isTrackingBundleID:(id)arg1;
+- (void)_setIsTrackingForBundleID:(id)arg1;
 - (void)_terminateApplicationProcess:(id)arg1;
 - (void)_waitForCrashReportOrCleanExitStatusOfApp:(id)arg1;
+- (void)acquireBackgroundAssertionForPID:(int)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)applicationImplementationForApplicationAtPath:(id)arg1 bundleID:(id)arg2;
 - (id)applicationProcessWithPID:(int)arg1;
 - (id)applicationProcessWithToken:(id)arg1;
 - (void)applicationWithBundleID:(id)arg1 didUpdatePID:(int)arg2 state:(unsigned long long)arg3;
 - (void)crashInProcessWithBundleID:(id)arg1 path:(id)arg2 pid:(int)arg3 symbol:(id)arg4;
-- (void)dealloc;
 - (id)init;
 - (void)launchRequestedForApplicationProcess:(id)arg1;
 - (id)monitoredApplicationWithProcessIdentifier:(int)arg1;

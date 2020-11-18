@@ -20,6 +20,7 @@
 + (void)_switchForEdit:(id)arg1 caseIsInsertRecord:(CDUnknownBlockType)arg2 caseIsEditContents:(CDUnknownBlockType)arg3;
 + (id)allowedEditClasses;
 - (void).cxx_destruct;
+- (id)_additionalEditsToUpdateContentsOfRecord:(id)arg1 identifier:(id)arg2;
 - (BOOL)_containerSerializationRequiresTrackingPositionEdits;
 - (void)_mergeSelfRecord:(id)arg1 withRecordFromOtherReplica:(id)arg2 identifier:(id)arg3 options:(id)arg4 edits:(id)arg5;
 - (id)_replicaByApplyingContainerEdits:(id)arg1 toOldContents:(id)arg2 forNewContents:(id)arg3 recordCreationHandler:(CDUnknownBlockType)arg4 replicaEditApplier:(CDUnknownBlockType)arg5 error:(out id *)arg6;

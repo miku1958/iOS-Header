@@ -60,6 +60,7 @@
 - (void).cxx_destruct;
 - (void)_addNetworkObserver;
 - (void)_beginSendingLogMessageChunks;
+- (void)_captureTrafficProbesAndTelemetricEventsFor:(id)arg1 result:(unsigned char)arg2;
 - (void)_cleanupLogMessageCollectionRequester;
 - (void)_continueToSendNextBatch:(BOOL)arg1;
 - (void)_deviceLocking;

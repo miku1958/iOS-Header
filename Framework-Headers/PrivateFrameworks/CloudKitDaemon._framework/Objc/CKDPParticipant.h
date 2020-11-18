@@ -28,6 +28,7 @@
     BOOL _acceptedInProcess;
     BOOL _createdInProcess;
     BOOL _isInNetwork;
+    BOOL _isOrgUser;
     struct {
         unsigned int acceptTimestamp:1;
         unsigned int outOfNetworkKeyType:1;
@@ -38,6 +39,7 @@
         unsigned int acceptedInProcess:1;
         unsigned int createdInProcess:1;
         unsigned int isInNetwork:1;
+        unsigned int isOrgUser:1;
     } _has;
 }
 
@@ -51,6 +53,7 @@
 @property (nonatomic) BOOL hasCreatedInProcess;
 @property (readonly, nonatomic) BOOL hasInviterId;
 @property (nonatomic) BOOL hasIsInNetwork;
+@property (nonatomic) BOOL hasIsOrgUser;
 @property (nonatomic) BOOL hasOutOfNetworkKeyType;
 @property (readonly, nonatomic) BOOL hasOutOfNetworkPrivateKey;
 @property (readonly, nonatomic) BOOL hasParticipantId;
@@ -63,6 +66,7 @@
 @property (readonly, nonatomic) BOOL hasUserId;
 @property (strong, nonatomic) CKDPIdentifier *inviterId; // @synthesize inviterId=_inviterId;
 @property (nonatomic) BOOL isInNetwork; // @synthesize isInNetwork=_isInNetwork;
+@property (nonatomic) BOOL isOrgUser; // @synthesize isOrgUser=_isOrgUser;
 @property (nonatomic) int outOfNetworkKeyType; // @synthesize outOfNetworkKeyType=_outOfNetworkKeyType;
 @property (strong, nonatomic) NSData *outOfNetworkPrivateKey; // @synthesize outOfNetworkPrivateKey=_outOfNetworkPrivateKey;
 @property (strong, nonatomic) CKDPIdentifier *participantId; // @synthesize participantId=_participantId;

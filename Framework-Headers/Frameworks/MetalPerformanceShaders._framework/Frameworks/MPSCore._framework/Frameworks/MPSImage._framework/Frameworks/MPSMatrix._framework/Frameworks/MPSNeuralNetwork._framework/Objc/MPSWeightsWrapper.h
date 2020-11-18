@@ -9,10 +9,11 @@
 #import <MPSNeuralNetwork/MPSCNNConvolutionDataSource-Protocol.h>
 
 @class MISSING_TYPE, MPSCNNConvolutionDescriptor, NSString;
-@protocol MPSCNNConvolutionDataSource;
+@protocol MPSCNNBatchNormalizationDataSource, MPSCNNConvolutionDataSource;
 
 @interface MPSWeightsWrapper : NSObject <MPSCNNConvolutionDataSource>
 {
+    id<MPSCNNBatchNormalizationDataSource> _dataSource;
     id<MPSCNNConvolutionDataSource> _source;
     struct NeuronInfo _info;
     MPSCNNConvolutionDescriptor *_descriptor;
@@ -27,7 +28,7 @@
 - (unsigned int)dataType;
 - (void)dealloc;
 - (id)descriptor;
-- (id)initWithSource:(id)arg1 neuronInfo:(struct NeuronInfo)arg2;
+- (id)initWithSource:(id)arg1 neuronInfo:(struct NeuronInfo)arg2 batchNorm:(id)arg3;
 - (id)label;
 - (BOOL)load;
 - (float *)lookupTableForUInt8Kernel;

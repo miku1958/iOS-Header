@@ -19,7 +19,7 @@
     struct b2Body *_body;
     struct PKCField *_field;
     int _dynamicType;
-    vector_4360c5cc _shapes;
+    vector_8416aa54 _shapes;
     PKPhysicsWorld *_world;
     NSMutableArray *_joints;
     BOOL _inUse;
@@ -40,7 +40,7 @@
 
 @property (nonatomic) struct b2Body *_body;
 @property (nonatomic) struct b2BodyDef _bodyDef;
-@property (readonly, nonatomic) vector_4360c5cc *_shapes;
+@property (readonly, nonatomic) vector_8416aa54 *_shapes;
 @property (nonatomic) BOOL affectedByGravity;
 @property (nonatomic) BOOL allowsRotation;
 @property (nonatomic) double angularDamping;

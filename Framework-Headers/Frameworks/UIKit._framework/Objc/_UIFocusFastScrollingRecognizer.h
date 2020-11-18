@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSTimer *_swipeIntervalTimer;
     UIScrollView *_previewingScrollView;
     NSTimer *_previewingTouchTimer;
+    unsigned long long _spatialFocusUpdateCount;
     BOOL _enabled;
     id<_UIFocusFastScrollingRecognizerDelegate> _delegate;
 }

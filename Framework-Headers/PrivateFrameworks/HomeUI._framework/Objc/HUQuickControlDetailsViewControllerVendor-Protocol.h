@@ -6,10 +6,11 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class UIViewController;
+@class NSString, UIViewController;
 @protocol HUPresentationDelegateHost><HUPreloadableViewController;
 
 @protocol HUQuickControlDetailsViewControllerVendor <NSObject>
 - (UIViewController<HUPresentationDelegateHost><HUPreloadableViewController> *)createDetailsViewController;
+- (NSString *)secondaryQuickControlPresentationStyle;
 @end
 

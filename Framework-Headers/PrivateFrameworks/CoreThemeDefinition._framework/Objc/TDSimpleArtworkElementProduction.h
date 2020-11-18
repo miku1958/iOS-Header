@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL isFlippable; // @dynamic isFlippable;
 @property (nonatomic) BOOL optOutOfThinning; // @dynamic optOutOfThinning;
 @property (nonatomic) BOOL preservesVectorRepresentation; // @dynamic preservesVectorRepresentation;
+@property (nonatomic) BOOL recognitionImage; // @dynamic recognitionImage;
 @property (strong, nonatomic) TDTemplateRenderingMode *templateRenderingMode; // @dynamic templateRenderingMode;
 
 - (id)associatedFileModificationDateWithDocument:(id)arg1;

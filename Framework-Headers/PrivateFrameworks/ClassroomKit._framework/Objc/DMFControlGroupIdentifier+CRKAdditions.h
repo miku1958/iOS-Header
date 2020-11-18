@@ -8,6 +8,7 @@
 
 @interface DMFControlGroupIdentifier (CRKAdditions)
 + (id)crk_adHocXPCGroupIdentifier;
++ (id)crk_asmXPCGroupIdentifier;
 + (id)crk_managedXPCGroupIdentifier;
 @end
 

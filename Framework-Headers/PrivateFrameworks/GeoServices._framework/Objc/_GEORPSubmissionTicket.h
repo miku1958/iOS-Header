@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceProblemReportTicket-Protocol.h>
 
-@class GEOMapServiceTraits, GEORPProblem, GEORPProblemRequest, NSData, NSString;
+@class GEOMapServiceTraits, GEORPProblem, GEORPProblemRequest, GEORPUserCredentials, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     GEORPProblem *_problem;
     id<GEOMapItem> _place;
     GEORPProblemRequest *_problemRequest;
+    GEORPUserCredentials *_userCredentials;
     NSData *_pushToken;
     NSString *_emailAddress;
     BOOL _started;
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (id)initWithProblem:(id)arg1 placeForProblemContext:(id)arg2 pushToken:(id)arg3 allowContactBackAtEmailAddress:(id)arg4 traits:(id)arg5;
+- (id)initWithProblem:(id)arg1 placeForProblemContext:(id)arg2 userCredentials:(id)arg3 pushToken:(id)arg4 allowContactBackAtEmailAddress:(id)arg5 traits:(id)arg6;
 - (id)initWithResubmissionData:(id)arg1 traits:(id)arg2;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 

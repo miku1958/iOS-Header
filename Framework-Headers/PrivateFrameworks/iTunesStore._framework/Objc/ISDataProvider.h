@@ -8,7 +8,7 @@
 
 #import <iTunesStore/NSCopying-Protocol.h>
 
-@class ISOperation, NSNumber, NSString, NSURL, SSAuthenticationContext, SSBiometricAuthenticationContext, SSURLBagContext;
+@class ISOperation, NSNumber, NSString, NSURL, NSURLResponse, SSAuthenticationContext, SSBiometricAuthenticationContext, SSURLBagContext;
 @protocol ISBiometricSessionDelegate;
 
 @interface ISDataProvider : NSObject <NSCopying>
@@ -23,9 +23,12 @@
     NSURL *_redirectURL;
     SSBiometricAuthenticationContext *_biometricAuthenticationContext;
     long long _errorHandlerResponseType;
+    unsigned long long _authenticatedAccountCredentialSource;
+    NSURLResponse *_response;
     id<ISBiometricSessionDelegate> _biometricSessionDelegate;
 }
 
+@property unsigned long long authenticatedAccountCredentialSource; // @synthesize authenticatedAccountCredentialSource=_authenticatedAccountCredentialSource;
 @property (strong) NSNumber *authenticatedAccountDSID; // @synthesize authenticatedAccountDSID=_authenticatedAccountDSID;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (strong) SSURLBagContext *bagContext; // @synthesize bagContext=_bagContext;
@@ -37,6 +40,7 @@
 @property (strong) id output; // @synthesize output=_output;
 @property (weak) ISOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
 @property (strong) NSURL *redirectURL; // @synthesize redirectURL=_redirectURL;
+@property (strong) NSURLResponse *response; // @synthesize response=_response;
 
 + (id)provider;
 - (void).cxx_destruct;

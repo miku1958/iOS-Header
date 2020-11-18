@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
 @property (readonly) Class superclass;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -49,6 +50,7 @@
 - (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
+- (id)messageReceiverChildren;
 - (void)monitorForEventsForServices:(id)arg1;
 - (void)registerForMessages;
 

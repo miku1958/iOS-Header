@@ -42,7 +42,7 @@
 - (id)rawValueOrDataForKey:(id)arg1;
 - (id)rawValuesForKey:(id)arg1;
 - (id)regex2ForKey:(id)arg1;
-- (void)reset;
+- (void)resetIfNeeded;
 - (id)stringSetMatcherForKey:(id)arg1;
 
 @end

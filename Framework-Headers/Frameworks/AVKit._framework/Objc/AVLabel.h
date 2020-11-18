@@ -6,40 +6,47 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIActivityIndicatorView, UIFont, UILabel;
+@class NSLayoutConstraint, NSString, UIActivityIndicatorView, UIFont, UILabel;
 
 @interface AVLabel : UIView
 {
     BOOL _showsLoadingIndicator;
-    BOOL _hidesLabelTextWhenLoadingIndicatorVisible;
     BOOL _collapsed;
     BOOL _included;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
-    long long _loadingIndicatorAlignment;
     UILabel *_label;
+    long long _loadingIndicatorAlignment;
+    NSString *_text;
+    UIFont *_font;
     UIActivityIndicatorView *_loadingIndicator;
+    NSLayoutConstraint *_loadingIndicatorLeftAlignmentConstraint;
+    NSLayoutConstraint *_loadingIndicatorRightAlignmentConstraint;
     struct CGSize _extrinsicContentSize;
 }
 
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
 @property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
-@property (strong, nonatomic) UIFont *font;
+@property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
-@property (nonatomic) BOOL hidesLabelTextWhenLoadingIndicatorVisible; // @synthesize hidesLabelTextWhenLoadingIndicatorVisible=_hidesLabelTextWhenLoadingIndicatorVisible;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
 @property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (readonly, nonatomic) UILabel *labelIfLoaded;
 @property (readonly, nonatomic) UIActivityIndicatorView *loadingIndicator; // @synthesize loadingIndicator=_loadingIndicator;
 @property (nonatomic) long long loadingIndicatorAlignment; // @synthesize loadingIndicatorAlignment=_loadingIndicatorAlignment;
+@property (strong, nonatomic) NSLayoutConstraint *loadingIndicatorLeftAlignmentConstraint; // @synthesize loadingIndicatorLeftAlignmentConstraint=_loadingIndicatorLeftAlignmentConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *loadingIndicatorRightAlignmentConstraint; // @synthesize loadingIndicatorRightAlignmentConstraint=_loadingIndicatorRightAlignmentConstraint;
 @property (nonatomic) BOOL showsLoadingIndicator; // @synthesize showsLoadingIndicator=_showsLoadingIndicator;
-@property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
+- (void)didMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
+- (void)tintColorDidChange;
+- (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

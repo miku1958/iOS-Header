@@ -82,6 +82,8 @@ __attribute__((visibility("hidden")))
     unsigned int _maxNumberOfRows;
     unsigned int _maxNumberOfColumns;
     unsigned int _maxNumberOfPopulatedCells;
+    double _structuredTextImportConfidenceThreshold;
+    double _structuredTextImportConfidenceThresholdForCanvas;
 }
 
 @property (nonatomic) BOOL allowFreeformFormulaText; // @synthesize allowFreeformFormulaText=_allowFreeformFormulaText;
@@ -123,6 +125,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsChromeWhileEditingCell; // @synthesize showsChromeWhileEditingCell=_showsChromeWhileEditingCell;
 @property (nonatomic) BOOL showsHideUnhideUI; // @synthesize showsHideUnhideUI=_showsHideUnhideUI;
 @property (nonatomic) BOOL showsSelectionKnobsWhileEditingCell; // @synthesize showsSelectionKnobsWhileEditingCell=_showsSelectionKnobsWhileEditingCell;
+@property (nonatomic) double structuredTextImportConfidenceThreshold; // @synthesize structuredTextImportConfidenceThreshold=_structuredTextImportConfidenceThreshold;
+@property (nonatomic) double structuredTextImportConfidenceThresholdForCanvas; // @synthesize structuredTextImportConfidenceThresholdForCanvas=_structuredTextImportConfidenceThresholdForCanvas;
 @property (nonatomic) BOOL supportsActionMenu; // @synthesize supportsActionMenu=_supportsActionMenu;
 @property (nonatomic) BOOL supportsAutoResizedTables; // @synthesize supportsAutoResizedTables=_supportsAutoResizedTables;
 @property (nonatomic) BOOL supportsAutofill; // @synthesize supportsAutofill=_supportsAutofill;

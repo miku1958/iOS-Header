@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-#import <MailServices/NSCoding-Protocol.h>
+#import <MailServices/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString, NSURL;
 
-@interface MSEmailModel : NSObject <NSCoding>
+@interface MSEmailModel : NSObject <NSSecureCoding>
 {
     NSString *_subject;
     NSString *_body;
@@ -29,6 +29,7 @@
 @property (copy, nonatomic) NSArray *to; // @synthesize to=_to;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

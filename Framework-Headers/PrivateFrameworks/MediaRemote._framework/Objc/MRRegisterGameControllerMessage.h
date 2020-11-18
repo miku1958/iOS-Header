@@ -6,13 +6,15 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
+@class _MRGameControllerPropertiesProtobuf;
+
 @interface MRRegisterGameControllerMessage : MRProtocolMessage
 {
 }
 
-@property (readonly, nonatomic) void *properties;
+@property (readonly, nonatomic) _MRGameControllerPropertiesProtobuf *properties;
 
-- (id)initWithProperties:(void *)arg1;
+- (id)initWithProperties:(id)arg1;
 - (unsigned long long)type;
 
 @end

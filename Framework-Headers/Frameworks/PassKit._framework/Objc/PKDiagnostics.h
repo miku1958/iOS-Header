@@ -16,6 +16,7 @@
 + (void)generateDiagnosticsPackageWithPassLibrary:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)generateUbiquityDiagnosticsFile:(BOOL)arg1;
 + (void)generateZippedDiagnosticsPackageWithPassLibrary:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)saveTransitState:(id)arg1 forPaymentAppliction:(id)arg2;
 
 @end
 

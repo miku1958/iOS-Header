@@ -6,7 +6,10 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
+@class HKBadge;
+
 @protocol HDNotificationServerInterface <NSObject>
-- (void)remote_setBadgeCount:(long long)arg1 forDomain:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)remote_badgeForDomain:(long long)arg1 completion:(void (^)(HKBadge *, NSError *))arg2;
+- (void)remote_setBadge:(HKBadge *)arg1 forDomain:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

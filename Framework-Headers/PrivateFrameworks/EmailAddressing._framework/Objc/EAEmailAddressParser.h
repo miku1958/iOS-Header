@@ -10,7 +10,7 @@
 {
 }
 
-+ (void)_componentsForFullAddress:(id)arg1 rawAddressRange:(struct _NSRange *)arg2 localPartRange:(struct _NSRange *)arg3 domainRange:(struct _NSRange *)arg4;
++ (void)_componentsForFullAddress:(id)arg1 rawAddressIndexes:(id *)arg2 localPartIndexes:(id *)arg3 domainIndexes:(id *)arg4;
 + (id)addressDomainFromAddress:(id)arg1;
 + (BOOL)addressIsEmptyGroup:(id)arg1;
 + (id)displayNameFromAddress:(id)arg1;

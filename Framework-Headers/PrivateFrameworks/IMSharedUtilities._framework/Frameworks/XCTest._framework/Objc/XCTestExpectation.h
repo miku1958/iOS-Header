@@ -32,9 +32,9 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 
 + (id)expectationWithDescription:(id)arg1;
+- (void).cxx_destruct;
 - (void)_queue_fulfillWithCallStackReturnAddresses:(id)arg1;
 - (void)cleanup;
-- (void)dealloc;
 - (id)description;
 - (void)fulfill;
 - (id)init;

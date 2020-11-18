@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (id)exportableTypeWithType:(id)arg1 localizedName:(id)arg2 exportFormatChooserItemTextColor:(id)arg3;
 + (id)exportableTypeWithType:(id)arg1 localizedName:(id)arg2 exportFormatChooserItemTextColor:(id)arg3 exportProgressMessage:(id)arg4;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithType:(id)arg1 localizedName:(id)arg2 exportFormatChooserItemTextColor:(id)arg3 exportProgressMessage:(id)arg4;
 

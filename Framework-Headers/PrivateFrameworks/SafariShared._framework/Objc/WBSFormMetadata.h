@@ -8,10 +8,11 @@
 
 #import <SafariShared/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL;
+@class NSArray, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface WBSFormMetadata : NSObject <NSSecureCoding>
 {
+    NSNumber *_containsAtLeastOneSecureTextField;
     BOOL _allowsAutocomplete;
     BOOL _containsActiveElement;
     BOOL _bestForCredentialPreFill;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic, getter=isBestForPageLevelAutoFill) BOOL bestForPageLevelAutoFill; // @synthesize bestForPageLevelAutoFill=_bestForPageLevelAutoFill;
 @property (readonly, copy, nonatomic) NSString *confirmPasswordElementUniqueID; // @synthesize confirmPasswordElementUniqueID=_confirmPasswordElementUniqueID;
 @property (readonly, nonatomic) BOOL containsActiveElement; // @synthesize containsActiveElement=_containsActiveElement;
+@property (readonly, nonatomic) BOOL containsAtLeastOneSecureTextField;
 @property (readonly, copy, nonatomic) NSArray *controls; // @synthesize controls=_controls;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, copy, nonatomic) NSString *firstCreditCardCardholderFieldOrCreditCardNumberFieldUniqueID; // @synthesize firstCreditCardCardholderFieldOrCreditCardNumberFieldUniqueID=_firstCreditCardCardholderFieldOrCreditCardNumberFieldUniqueID;

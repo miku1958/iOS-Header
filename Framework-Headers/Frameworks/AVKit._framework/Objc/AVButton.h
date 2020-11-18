@@ -70,17 +70,21 @@
 - (void).cxx_destruct;
 - (void)_handleUserInteractionGestureRecognizer:(id)arg1;
 - (id)_preferredImageName;
+- (struct CGSize)_preferredLayoutSize;
 - (void)_resetTrackedState;
+- (void)_updateImageIfNeeded;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setBounds:(struct CGRect)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

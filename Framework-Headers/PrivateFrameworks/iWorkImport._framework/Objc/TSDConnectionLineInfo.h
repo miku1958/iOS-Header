@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
         unsigned int connectedFrom:1;
         unsigned int connectedTo:1;
     } mInvalidFlags;
+    BOOL mWriteConnectedReferencesForCopies;
 }
 
 @property (strong, nonatomic) TSDDrawableInfo *connectedFrom;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (void)didCopy;
 - (int)elementKind;
+- (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
 - (BOOL)isLine;
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct ConnectionLineArchive *)arg1 unarchiver:(id)arg2;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)saveGeometryToArchive:(struct GeometryArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchive:(struct ConnectionLineArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (BOOL)shouldPreventCopyOperationWithOtherInfos:(id)arg1;
 - (void)willCopyWithOtherDrawables:(id)arg1;
 
 @end

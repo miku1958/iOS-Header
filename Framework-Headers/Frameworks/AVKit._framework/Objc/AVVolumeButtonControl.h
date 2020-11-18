@@ -19,9 +19,10 @@
     BOOL _hasFullScreenAppearance;
     BOOL _longPressEnabled;
     BOOL _showsHighlightedAppearance;
-    AVMicaPackage *_micaPackage;
-    UIViewPropertyAnimator *_highlightAnimator;
     UISelectionFeedbackGenerator *_feedbackGenerator;
+    NSString *_micaPackageStateName;
+    UIViewPropertyAnimator *_highlightAnimator;
+    AVMicaPackage *_micaPackage;
     NSTimer *_longPressTimer;
     struct CGSize _extrinsicContentSize;
     struct CGPoint _translationOfPanFromPreviousTouch;
@@ -49,12 +50,14 @@
 @property (nonatomic, getter=isLongPressEnabled) BOOL longPressEnabled; // @synthesize longPressEnabled=_longPressEnabled;
 @property (weak, nonatomic) NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
 @property (strong, nonatomic) AVMicaPackage *micaPackage; // @synthesize micaPackage=_micaPackage;
+@property (strong, nonatomic) NSString *micaPackageStateName; // @synthesize micaPackageStateName=_micaPackageStateName;
 @property (nonatomic) BOOL showsHighlightedAppearance; // @synthesize showsHighlightedAppearance=_showsHighlightedAppearance;
 @property (readonly) Class superclass;
 @property (nonatomic) long long trackingState; // @synthesize trackingState=_trackingState;
 @property (nonatomic) struct CGPoint translationOfPanFromPreviousTouch; // @synthesize translationOfPanFromPreviousTouch=_translationOfPanFromPreviousTouch;
 
 - (void).cxx_destruct;
+- (void)_updateMicaPackage:(id)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
@@ -63,9 +66,10 @@
 - (struct CGRect)hitRect;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setBounds:(struct CGRect)arg1;
 - (void)triggerSelectionChangedFeedback;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

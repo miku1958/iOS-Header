@@ -57,10 +57,14 @@
 - (void)loadBooksForStoreIDs:(NSArray *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)loadGeniusItemsForSagaID:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)loadIsJaliscoGeniusSupportedWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)loadIsJaliscoUpdateInProgressWithCompletion:(void (^)(BOOL, BOOL))arg1;
+- (void)loadIsSagaUpdateInProgressWithCompletion:(void (^)(BOOL, BOOL))arg1;
 - (void)loadIsUpdateInProgressWithCompletion:(void (^)(BOOL, BOOL))arg1;
 - (void)loadJaliscoGeniusCUIDWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)loadJaliscoGeniusLearnMoreURLWithCompletion:(void (^)(NSURL *, NSError *))arg1;
 - (void)loadJaliscoGeniusOperationStatusWithCompletion:(void (^)(long long, NSError *))arg1;
+- (void)loadJaliscoUpdateProgressWithCompletion:(void (^)(NSError *, float))arg1;
+- (void)loadSagaUpdateProgressWithCompletion:(void (^)(NSError *, float))arg1;
 - (void)loadScreenshotInfoForPurchaseHistoryIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
 - (void)loadScreenshotInfoForSagaIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
 - (void)loadScreenshotInfoForSubscriptionPersistentIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;

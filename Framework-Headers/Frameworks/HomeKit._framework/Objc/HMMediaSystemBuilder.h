@@ -6,22 +6,53 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+#import <HomeKit/HMFLogging-Protocol.h>
 
-@interface HMMediaSystemBuilder : NSObject
+@class HMHome, HMMediaSystem, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID, _HMContext;
+@protocol OS_dispatch_queue;
+
+@interface HMMediaSystemBuilder : NSObject <HMFLogging>
 {
-    NSString *_name;
     NSArray *_components;
+    NSString *_name;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
+    _HMContext *_context;
+    NSUUID *_uuid;
+    NSUUID *_mediaSystemUUID;
+    NSString *_builderSessionID;
+    HMHome *_home;
+    HMMediaSystem *_mediaSystem;
+    HMThreadSafeMutableArrayCollection *_componentsArray;
 }
 
+@property (strong, nonatomic) NSString *builderSessionID; // @synthesize builderSessionID=_builderSessionID;
 @property (strong, nonatomic) NSArray *components; // @synthesize components=_components;
+@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *componentsArray; // @synthesize componentsArray=_componentsArray;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, weak, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) HMMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
+@property (readonly, nonatomic) NSUUID *mediaSystemUUID; // @synthesize mediaSystemUUID=_mediaSystemUUID;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (BOOL)canSupportMediaSystem:(id)arg1;
++ (id)logCategory;
++ (BOOL)supportsMediaSystem:(id)arg1;
 - (void).cxx_destruct;
+- (void)_callCompletion:(CDUnknownBlockType)arg1 builderSessionID:(id)arg2 error:(id)arg3 response:(id)arg4;
+- (void)_commitWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_initializeContext;
 - (void)commitWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)initWithHome:(id)arg1;
 - (id)initWithMediaSystem:(id)arg1;
+- (id)logIdentifier;
 
 @end
 

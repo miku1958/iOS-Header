@@ -6,8 +6,12 @@
 
 #import <MIME/MFMimePart.h>
 
+@class MFError;
+
 @interface MFMimePart (SMIMESupport)
-- (id)SMIMEError;
+
+@property (readonly, nonatomic) MFError *SMIMEError;
+
 - (id)copySigners;
 @end
 

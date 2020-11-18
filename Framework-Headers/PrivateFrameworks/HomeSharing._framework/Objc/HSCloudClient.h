@@ -18,6 +18,8 @@
     unsigned long long _daemonConfiguration;
     long long _preferredVideoQuality;
     CDUnknownBlockType _updateInProgressChangedHandler;
+    CDUnknownBlockType _updateSagaInProgressChangedHandler;
+    CDUnknownBlockType _updateJaliscoInProgressChangedHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,11 +27,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateInProgressChangedHandler; // @synthesize updateInProgressChangedHandler=_updateInProgressChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType updateJaliscoInProgressChangedHandler; // @synthesize updateJaliscoInProgressChangedHandler=_updateJaliscoInProgressChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType updateSagaInProgressChangedHandler; // @synthesize updateSagaInProgressChangedHandler=_updateSagaInProgressChangedHandler;
 
 - (void).cxx_destruct;
 - (void)_sendConfigurationToDaemon;
 - (void)_serverDidLaunch;
-- (void)_serverUpdateInProgressDidChange;
+- (void)_serverJaliscoUpdateInProgressDidChange;
+- (void)_serverSagaUpdateInProgressDidChange;
 - (void)addGeniusPlaylistWithPersistentID:(long long)arg1 name:(id)arg2 seedItemSagaIDs:(id)arg3 itemSagaIDs:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)addItemWithSagaID:(long long)arg1 toPlaylistWithPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addStoreItemWithAdamID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -97,10 +102,14 @@
 - (void)loadBooksForStoreIDs:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadGeniusItemsForSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadIsJaliscoGeniusSupportedWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadIsJaliscoUpdateInProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadIsSagaUpdateInProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadIsUpdateInProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoGeniusCUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoGeniusLearnMoreURLWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoGeniusOperationStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadJaliscoUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadSagaUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadScreenshotInfoForPurchaseHistoryID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadScreenshotInfoForPurchaseHistoryIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadScreenshotInfoForSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

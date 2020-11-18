@@ -9,7 +9,7 @@
 #import <NewsFoundation/NFDefinitionContainer-Protocol.h>
 #import <NewsFoundation/NFRegistrationContainer-Protocol.h>
 
-@class NFContainerPool, NSMutableDictionary, NSString;
+@class NFCallbackStore, NFContainerPool, NSMutableDictionary, NSString;
 @protocol NFResolver;
 
 @interface NFContainer : NSObject <NFDefinitionContainer, NFRegistrationContainer>
@@ -17,9 +17,11 @@
     id<NFResolver> _resolver;
     NSMutableDictionary *_definitions;
     NFContainerPool *_pool;
+    NFCallbackStore *_callbackStore;
     NSMutableDictionary *_privateContainers;
 }
 
+@property (strong, nonatomic) NFCallbackStore *callbackStore; // @synthesize callbackStore=_callbackStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSMutableDictionary *definitions; // @synthesize definitions=_definitions;
 @property (readonly, copy) NSString *description;

@@ -6,12 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSCache, NSDictionary, NSSet, NSURL, TSDShapeSearchIndex;
+#import <iWorkImport/TSDShapeSearchResultProviding-Protocol.h>
+
+@class NSArray, NSCache, NSDictionary, NSSet, NSURL, TSDShapeSearchIndex, TSULocale;
 
 __attribute__((visibility("hidden")))
-@interface TSDShapeLibrary : NSObject
+@interface TSDShapeLibrary : NSObject <TSDShapeSearchResultProviding>
 {
     NSArray *_categories;
+    TSULocale *_locale;
     NSArray *_categorySort;
     unsigned long long _dataLoadStatus;
     NSDictionary *_library;
@@ -22,6 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSArray *categories; // @synthesize categories=_categories;
+@property (readonly, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSArray *p_categorySort; // @synthesize p_categorySort=_categorySort;
 @property (nonatomic) unsigned long long p_dataLoadStatus; // @synthesize p_dataLoadStatus=_dataLoadStatus;
 @property (strong, nonatomic) NSDictionary *p_library; // @synthesize p_library=_library;
@@ -33,7 +37,7 @@ __attribute__((visibility("hidden")))
 + (void)loadDataInBackground;
 + (id)sharedLibrary;
 - (void).cxx_destruct;
-- (id)initWithShapeLibraryURL:(id)arg1 categorySortURL:(id)arg2;
+- (id)initWithShapeLibraryURL:(id)arg1 categorySortURL:(id)arg2 locale:(id)arg3;
 - (void)p_cacheDataAfterParsingWithSearchIndex:(id)arg1;
 - (void)p_createSearchIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)p_keywordDelimiter;
@@ -50,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)p_shouldLoadCategoriesAndSearchIndex;
 - (id)p_sortedCategoriesFromLibrary:(id)arg1;
 - (id)resultsForSearchTerm:(id)arg1;
+- (id)shapeFromSearchResult:(id)arg1;
 - (id)shapeWithID:(id)arg1;
 - (id)shapeWithLocalizationKey:(id)arg1;
 

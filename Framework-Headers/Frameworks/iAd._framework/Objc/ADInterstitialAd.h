@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/ADAdRecipient-Protocol.h>
 
@@ -21,6 +21,7 @@
     BOOL _reUsed;
     BOOL _actionInProgress;
     BOOL _dimmingEnabled;
+    BOOL _requestCalledbackError;
     BOOL _canLoadMoreThanOnce;
     BOOL _hasLoadedFirstAd;
     int _screenfuls;
@@ -57,6 +58,7 @@
 @property (strong, nonatomic) ADInterstitialAdPresentationViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
 @property (nonatomic) BOOL reUsed; // @synthesize reUsed=_reUsed;
+@property (nonatomic) BOOL requestCalledbackError; // @synthesize requestCalledbackError=_requestCalledbackError;
 @property (readonly, nonatomic) BOOL requiresMRAID;
 @property (nonatomic) int screenfuls; // @synthesize screenfuls=_screenfuls;
 @property (nonatomic) int slotPosition; // @synthesize slotPosition=_slotPosition;
@@ -67,17 +69,26 @@
 - (void)_notifyDelegateOfBannerLoad;
 - (void)_presentFromViewController:(id)arg1;
 - (BOOL)_shouldClampPresentedFrame;
+- (void)adlibManagedVideoAdDidCompletePlay:(int)arg1;
+- (void)adlibManagedVideoAdDidImpress;
+- (void)adlibManagedVideoAdDidPausePlay;
+- (void)adlibManagedVideoAdDidResumePlay;
+- (void)adlibManagedVideoAdDidTapForMoreInfo;
+- (void)adlibManagedVideoAdDidTapVideo;
+- (void)adlibManagedVideoAdDidToggleToMute:(BOOL)arg1;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (void)cancelAction;
 - (int)clickAction;
 - (id)context;
 - (void)creativeControllerViewWasTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
+- (id)currentAdIdentifier;
 - (void)dealloc;
 - (BOOL)hasImpressed;
 - (id)identifier;
 - (id)init;
 - (id)initWithCreativeType:(int)arg1 options:(long long)arg2;
+- (void)missedOpportunityToFill;
 - (void)pauseBannerMedia;
 - (void)presentFromViewController:(id)arg1;
 - (BOOL)presentInView:(id)arg1;

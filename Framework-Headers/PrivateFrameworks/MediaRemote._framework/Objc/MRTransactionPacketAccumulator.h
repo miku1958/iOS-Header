@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _currentLength;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)mergePacket:(id)arg1;
 

@@ -10,7 +10,7 @@
 #import <iWorkImport/TSDMagicMoveMatching-Protocol.h>
 #import <iWorkImport/TSWPShapeLayoutDelegate-Protocol.h>
 
-@class CALayer, NSObject, NSString, TSWPRep, TSWPStorage;
+@class CALayer, NSArray, NSObject, NSString, TSWPRep, TSWPStorage;
 @protocol TSDContainerInfo;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     TSWPRep *_containedRep;
 }
 
+@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) TSWPRep *containedRep; // @synthesize containedRep=_containedRep;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
@@ -45,10 +46,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addAdditionalChildLayersToArray:(id)arg1;
 - (BOOL)canSelectChildRep:(id)arg1;
-- (id)childReps;
 - (void)dealloc;
-- (id)hitRep:(struct CGPoint)arg1;
-- (id)hitReps:(struct CGPoint)arg1 withSlop:(struct CGSize)arg2;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (id)newTextureRenderableForRange:(struct _NSRange)arg1 includeListLabel:(BOOL)arg2 isMagicMove:(BOOL)arg3 desiredContentRect:(struct CGRect)arg4 textureByGlyphStyle:(int)arg5 includeGroupedShadow:(BOOL)arg6 groupedShadowOnly:(BOOL)arg7 textureBounds:(struct CGRect *)arg8;
 - (void)p_drawRubyInContext:(struct CGContext *)arg1 forRange:(struct _NSRange)arg2;

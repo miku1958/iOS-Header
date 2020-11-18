@@ -22,6 +22,7 @@
     BOOL _displayGivenNameFirst;
     BOOL _displayPhoneticName;
     BOOL _readOnly;
+    BOOL _requirementsMet;
     id<PKAddressEditorViewControllerDelegate> _delegate;
     NSString *_givenName;
     NSString *_familyName;
@@ -77,6 +78,7 @@
 @property (weak, nonatomic) PKAddressTextField *phoneticGivenNameTextField; // @synthesize phoneticGivenNameTextField=_phoneticGivenNameTextField;
 @property (nonatomic) BOOL readOnly; // @synthesize readOnly=_readOnly;
 @property (strong, nonatomic) NSArray *requiredFieldKeys; // @synthesize requiredFieldKeys=_requiredFieldKeys;
+@property (nonatomic) BOOL requirementsMet; // @synthesize requirementsMet=_requirementsMet;
 @property (strong, nonatomic) MKLocalSearchCompleter *searchCompleter; // @synthesize searchCompleter=_searchCompleter;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
@@ -102,7 +104,7 @@
 - (void)recomputeEditingFields;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)textDidChange:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;

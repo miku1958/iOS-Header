@@ -128,6 +128,7 @@
     unsigned long long m_previousReturnKeyBehavior;
     BOOL m_usesCandidateSelection;
     BOOL m_UsedCandidateSelection;
+    BOOL m_hasEditedMarkedTextInExtendedView;
     BOOL m_updatingLayout;
     BOOL m_suppressUpdateLayout;
     BOOL m_animateUpdateBars;
@@ -553,6 +554,7 @@
 - (void)hardwareKeyboardAvailabilityChanged;
 - (id)hardwareKeyboardsSeenPreference;
 - (BOOL)hasAutoRepeat;
+- (BOOL)hasDelegate;
 - (BOOL)hasEditableMarkedText;
 - (BOOL)hasMarkedText;
 - (BOOL)hideAccessoryViewsDuringSplit;
@@ -563,6 +565,7 @@
 - (id)inputForMarkedText;
 - (void)inputManagerDidGenerateAutocorrections:(id)arg1 executionContext:(id)arg2;
 - (void)inputManagerDidGenerateCandidatesForRequest:(id)arg1 resultSet:(id)arg2;
+- (BOOL)inputModeHasHardwareLayout:(id)arg1;
 - (id)inputModeLastUsedPreference;
 - (id)inputModePreference;
 - (id)inputOverlayContainer;

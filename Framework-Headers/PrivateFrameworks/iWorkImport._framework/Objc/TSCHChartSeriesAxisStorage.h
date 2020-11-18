@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSCHChartGridAdapter *adapter; // @synthesize adapter;
 @property (strong, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)numberOfValues;
 - (void)setValue:(id)arg1 atIndex:(unsigned long long)arg2 multiDataSetIndex:(unsigned long long)arg3;
 - (id)valueAtIndex:(unsigned long long)arg1 multiDataSetIndex:(unsigned long long)arg2;

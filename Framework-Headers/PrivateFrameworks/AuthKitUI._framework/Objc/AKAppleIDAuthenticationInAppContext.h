@@ -10,8 +10,8 @@
 #import <AuthKitUI/AKBasicLoginAlertControllerDelegate-Protocol.h>
 #import <AuthKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAUICDPStingrayRemoteUIController, AKAppleIDServerResourceLoadDelegate, AKAppleIDServerUIDataHarvester, AKBasicLoginAlertController, NSHTTPURLResponse, NSString, RUIObjectModel, RemoteUIController, UINavigationController, UIViewController;
-@protocol AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextDelegate;
+@class AAUICDPStingrayRemoteUIController, AKAppleIDServerUIContextController, AKBasicLoginAlertController, NSHTTPURLResponse, NSString, RUIObjectModel, RemoteUIController, UINavigationController, UIViewController;
+@protocol AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate;
 
 @interface AKAppleIDAuthenticationInAppContext : AKAppleIDAuthenticationContext <AKBasicLoginAlertControllerDelegate, AKAppleIDAuthenticationUIProvider, RemoteUIControllerDelegate>
 {
@@ -21,11 +21,8 @@
     UINavigationController *_navController;
     UINavigationController *_modalRemoteUINavController;
     RemoteUIController *_remoteUIController;
-    CDUnknownBlockType _serverUICompletion;
-    AKAppleIDServerResourceLoadDelegate *_serverUIDelegate;
-    AKAppleIDServerUIDataHarvester *_serverUIHelper;
     RUIObjectModel *_currentRemoteOM;
-    NSHTTPURLResponse *_latestReadResponse;
+    AKAppleIDServerUIContextController *_serverUIContextController;
     NSHTTPURLResponse *_deferredResponse;
     BOOL _isPresentingServerUI;
     AAUICDPStingrayRemoteUIController *_stingrayController;
@@ -33,8 +30,10 @@
     UIViewController *_presentingViewController;
     id<AKAppleIDAuthenticationInAppContextDelegate> _delegate;
     id<AKAppleIDAuthenticationInAppContextAlertDelegate> _alertDelegate;
+    id<AKAppleIDAuthenticationInAppContextPasswordDelegate> __passwordDelegate;
 }
 
+@property (weak, nonatomic, setter=_setPasswordDelegate:) id<AKAppleIDAuthenticationInAppContextPasswordDelegate> _passwordDelegate; // @synthesize _passwordDelegate=__passwordDelegate;
 @property (weak, nonatomic) id<AKAppleIDAuthenticationInAppContextAlertDelegate> alertDelegate; // @synthesize alertDelegate=_alertDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AKAppleIDAuthenticationInAppContextDelegate> delegate; // @synthesize delegate=_delegate;
@@ -48,11 +47,20 @@
 - (void)_assertValidPresentingViewController;
 - (void)_cleanUpBasicLogin;
 - (void)_cleanUpBasicLoginWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_completeWithFinalResponse:(id)arg1;
+- (void)_contextDidDismissLoginAlertController;
+- (void)_contextDidEndPresentingSecondaryUI;
+- (void)_contextDidPresentLoginController;
+- (void)_contextWillBeginPresentingSecondaryUI;
+- (void)_contextWillDismissLoginAlertController;
+- (void)_dismissServerProvidedUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleBackButtonTap:(id)arg1;
 - (BOOL)_isDeferrableFinalResponseHarvested;
+- (BOOL)_isSatisfyingPasswordRequirements;
 - (id)_navController;
+- (void)_presentBasicLoginUIAlertWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_presentIDPProvidedUIWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 waitForInteraction:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_presentServerProvidedUIWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_remoteUIController;
 - (void)basicLoginAlertControllerDidDismiss:(id)arg1;
 - (void)basicLoginAlertControllerDidPresent:(id)arg1;
@@ -69,7 +77,7 @@
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentSecondFactorAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
-- (void)presentServerProvidedUIWithURLRequest:(id)arg1 delegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentServerProvidedUIWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
 - (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

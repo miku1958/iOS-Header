@@ -11,18 +11,19 @@
 __attribute__((visibility("hidden")))
 @interface TSKCOAbstractOperation : NSObject <TSKCOOperation>
 {
-    BOOL mNoop;
+    BOOL _noop;
 }
 
-@property (readonly, nonatomic) BOOL isNoop; // @synthesize isNoop=mNoop;
+@property (readonly, nonatomic) BOOL isNoop; // @synthesize isNoop=_noop;
 
 + (id)_classRegistry;
 + (id)newObjectForUnarchiver:(id)arg1 message:(const struct Message *)arg2;
 + (void)registerClass:(Class)arg1 forExtensionNumber:(int)arg2;
-- (void)dealloc;
+- (id)description;
 - (id)initWithNoop:(BOOL)arg1;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
+- (id)toString;
 
 @end
 

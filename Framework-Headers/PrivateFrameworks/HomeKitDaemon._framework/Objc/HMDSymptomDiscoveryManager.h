@@ -37,6 +37,7 @@
 - (void)_deviceFoundHandler:(id)arg1;
 - (void)_deviceLostHandler:(id)arg1;
 - (void)_initiateFixForAccessory:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_initiateFixWithRepairSessionForAccessory:(id)arg1 device:(id)arg2 idsIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_start;
 - (void)_stop;
 - (void)deregisterProblemFlagsChangedForDevice:(id)arg1;

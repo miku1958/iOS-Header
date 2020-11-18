@@ -15,8 +15,8 @@
 
 @property (readonly, copy) NSArray *testRuns;
 
+- (void).cxx_destruct;
 - (void)addTestRun:(id)arg1;
-- (void)dealloc;
 - (unsigned long long)executionCount;
 - (unsigned long long)failureCount;
 - (id)initWithTest:(id)arg1;

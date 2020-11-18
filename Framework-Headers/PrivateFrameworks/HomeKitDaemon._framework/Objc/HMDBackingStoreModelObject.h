@@ -39,6 +39,7 @@
 @property (readonly, nonatomic, getter=isReadOnly) BOOL isReadOnly; // @dynamic isReadOnly;
 @property (nonatomic) unsigned long long objectChangeType; // @synthesize objectChangeType=_objectChangeType;
 @property (strong, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
+@property (readonly, nonatomic, getter=isReplayable) BOOL replayable;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 

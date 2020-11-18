@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreSharedBufferData : NSData
 {
-    struct RefPtr<const WebCore::SharedBuffer::DataSegment> sharedBufferDataSegment;
+    struct RefPtr<const WebCore::SharedBuffer::DataSegment, WTF::DumbPtrTraits<const WebCore::SharedBuffer::DataSegment>> sharedBufferDataSegment;
 }
 
 + (void)initialize;

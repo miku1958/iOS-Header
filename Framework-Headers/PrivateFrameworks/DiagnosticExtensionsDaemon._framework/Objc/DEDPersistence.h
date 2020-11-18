@@ -7,14 +7,17 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSUserDefaults;
+@protocol OS_os_log;
 
 @interface DEDPersistence : NSObject
 {
     NSMutableSet *_bugSessionIdentifiers;
     NSUserDefaults *_userDefaults;
+    NSObject<OS_os_log> *_log;
 }
 
 @property (strong) NSMutableSet *bugSessionIdentifiers; // @synthesize bugSessionIdentifiers=_bugSessionIdentifiers;
+@property (strong) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (strong) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 + (id)sharedInstance;

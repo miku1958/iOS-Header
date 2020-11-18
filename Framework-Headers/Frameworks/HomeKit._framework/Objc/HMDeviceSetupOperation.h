@@ -9,13 +9,14 @@
 #import <HomeKit/HMDeviceSetupSessionDelegate-Protocol.h>
 #import <HomeKit/HMFLogging-Protocol.h>
 
-@class HMAccessory, HMDeviceSetupSession, NSObject, NSString, TRSession;
+@class HMAccessory, HMDeviceSetupSession, NSError, NSObject, NSString, TRSession;
 @protocol OS_dispatch_queue;
 
 @interface HMDeviceSetupOperation : NSOperation <HMDeviceSetupSessionDelegate, HMFLogging>
 {
     BOOL _executing;
     BOOL _finished;
+    NSError *_error;
     HMAccessory *_accessory;
     TRSession *_session;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSError *error; // @synthesize error=_error;
 @property (getter=isExecuting) BOOL executing; // @synthesize executing=_executing;
 @property (getter=isFinished) BOOL finished; // @synthesize finished=_finished;
 @property (readonly) unsigned long long hash;
@@ -40,12 +42,14 @@
 - (void).cxx_destruct;
 - (void)_reallyStart;
 - (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (void)finish;
 - (id)init;
 - (id)initWithSession:(id)arg1;
 - (BOOL)isAsynchronous;
 - (id)logIdentifier;
 - (void)setAccessory:(id)arg1;
+- (void)setError:(id)arg1;
 - (void)setupSession:(id)arg1 didCloseWithError:(id)arg2;
 - (void)setupSession:(id)arg1 didReceiveExchangeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)start;

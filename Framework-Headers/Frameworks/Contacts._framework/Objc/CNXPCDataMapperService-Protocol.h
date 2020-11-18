@@ -7,7 +7,7 @@
 #import <Contacts/NSObject-Protocol.h>
 
 @class CNChangeHistoryAnchor, CNChangeHistoryFetchRequest, CNContact, CNContactFetchRequest, CNContainer, CNSaveRequest, NSArray, NSData, NSDictionary, NSPredicate, NSString;
-@protocol CNEncodedFetchCursor, ProgressiveResultsHandlerProtocol;
+@protocol ProgressiveResultsHandlerProtocol;
 
 @protocol CNXPCDataMapperService <NSObject>
 - (void)accountsMatchingPredicate:(NSPredicate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
@@ -24,7 +24,6 @@
 - (void)groupsMatchingPredicate:(NSPredicate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)identifierWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)meContactIdentifiersWithReply:(void (^)(NSArray *, NSError *))arg1;
-- (void)nextEncodedContactsForCursor:(id<CNEncodedFetchCursor>)arg1 withReply:(void (^)(NSData *, BOOL, NSError *))arg2;
 - (void)policyForContainerWithIdentifier:(NSString *)arg1 withReply:(void (^)(CNPolicy *, NSError *))arg2;
 - (void)progressiveContactsForFetchRequest:(CNContactFetchRequest *)arg1 progressHandler:(id<ProgressiveResultsHandlerProtocol>)arg2 reply:(void (^)(id<CNCancelable>))arg3;
 - (void)registerChangeHistoryClientIdentifier:(NSString *)arg1 withReply:(void (^)(NSNumber *, NSError *))arg2;

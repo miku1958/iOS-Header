@@ -66,6 +66,7 @@
 @property (readonly, getter=isZoomSupported) BOOL zoomSupported;
 
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (CDStruct_79c71658)_maxUseableSensorDimensions;
 - (CDStruct_79c71658)_outputDimensions;
 - (void)_resolveProperties;
@@ -77,6 +78,7 @@
 - (struct opaqueCMFormatDescription *)formatDescription;
 - (id)frontEndScalerCompanionFormats;
 - (int)horizontalSensorBinningFactor;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFigCaptureStreamFormatDictionary:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isCompatibleWithInfraredFormat:(id)arg1;

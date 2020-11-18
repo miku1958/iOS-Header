@@ -50,6 +50,7 @@
 - (id)initWithConfiguration:(id)arg1;
 - (BOOL)prefersStatusBarHidden;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (BOOL)shouldAutorotate;
 - (void)startPrewarming;
 - (void)stopPrewarming;
 - (void)tapGestureRecognized:(id)arg1;

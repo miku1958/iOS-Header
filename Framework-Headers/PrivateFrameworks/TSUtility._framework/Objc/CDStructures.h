@@ -188,7 +188,7 @@ struct vector<std::__1::shared_ptr<TSUStringChunk>, std::__1::allocator<std::__1
     struct shared_ptr<TSUStringChunk> *__begin_;
     struct shared_ptr<TSUStringChunk> *__end_;
     struct __compressed_pair<std::__1::shared_ptr<TSUStringChunk>*, std::__1::allocator<std::__1::shared_ptr<TSUStringChunk>>> {
-        struct shared_ptr<TSUStringChunk> *__first_;
+        struct shared_ptr<TSUStringChunk> *__value_;
     } __end_cap_;
 };
 

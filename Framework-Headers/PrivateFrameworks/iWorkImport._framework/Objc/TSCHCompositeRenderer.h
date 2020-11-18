@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (void)p_delegateSelector:(SEL)arg1 toRenderer:(id)arg2 transparencyLayer:(int)arg3 inContext:(struct CGContext *)arg4;
 + (void)renderTSCHCompositeRendering:(id)arg1 intoContext:(struct CGContext *)arg2 visible:(struct CGRect)arg3;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didBeginTransparencyLayer:(int)arg1 inContext:(struct CGContext *)arg2;
 - (void)didEndTransparencyLayer:(int)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawIntoLayer:(int)arg1 inContext:(struct CGContext *)arg2 visible:(struct CGRect)arg3;

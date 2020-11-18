@@ -10,8 +10,8 @@
 
 @interface CKFetchWebAuthTokenOperation : CKDatabaseOperation
 {
-    NSString *_APIToken;
     CDUnknownBlockType _fetchWebAuthTokenCompletionBlock;
+    NSString *_APIToken;
     NSString *_webAuthToken;
 }
 

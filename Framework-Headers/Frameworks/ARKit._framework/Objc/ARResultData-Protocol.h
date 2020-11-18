@@ -15,7 +15,9 @@
 - (CDStruct_14d5dc5e)cameraTransform;
 - (ARPointCloud *)featurePoints;
 - (ARLightEstimate *)lightEstimate;
-- (CDStruct_fdd7a678)trackingState;
-- (CDStruct_14d5dc5e)worldOriginTransform;
+- (double)timestamp;
+- (CDStruct_ca3abd1f)trackingState;
+- (unsigned long long)worldAlignmentModifiers;
+- (CDStruct_14d5dc5e)worldAlignmentTransform;
 @end
 

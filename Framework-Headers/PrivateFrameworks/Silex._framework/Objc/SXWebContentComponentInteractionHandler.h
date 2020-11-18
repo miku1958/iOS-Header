@@ -23,7 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)handleInteractionType:(unsigned long long)arg1;
+- (void)handleInteractionType:(unsigned long long)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (id)initWithInteraction:(id)arg1;
 
 @end

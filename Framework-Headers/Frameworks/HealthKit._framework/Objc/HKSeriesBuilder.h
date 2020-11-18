@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/NSSecureCoding-Protocol.h>
-
 @class HKDevice, HKHealthStore;
 @protocol OS_dispatch_queue;
 
-@interface HKSeriesBuilder : NSObject <NSSecureCoding>
+@interface HKSeriesBuilder : NSObject
 {
     BOOL _hasData;
     long long _state;
@@ -28,14 +26,11 @@
 @property (nonatomic) long long state;
 @property (readonly, nonatomic) HKHealthStore *store; // @synthesize store=_store;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithHealthStore:(id)arg1 device:(id)arg2;
 - (void)_resourceQueue_discardWithHandler:(CDUnknownBlockType)arg1;
 - (void)discard;
-- (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

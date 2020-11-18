@@ -12,6 +12,7 @@
 
 @property (readonly, copy, nonatomic) NSURL *URL;
 
+- (id)identifier;
 - (unsigned long long)itemType;
 @end
 

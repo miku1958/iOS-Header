@@ -79,6 +79,7 @@
 - (BOOL)isIdentityEnrolled;
 - (BOOL)isTouchIDAvailableWithInfo:(long long *)arg1;
 - (BOOL)isTouchIDCapable;
+- (void)logEventOrCode:(unsigned long long)arg1;
 - (int)match:(id)arg1;
 - (int)match:(id)arg1 withOptions:(id)arg2;
 - (int)matchIdentities:(id)arg1;

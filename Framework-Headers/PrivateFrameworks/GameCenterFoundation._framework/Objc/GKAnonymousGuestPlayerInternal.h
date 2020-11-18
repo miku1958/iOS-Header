@@ -17,6 +17,7 @@
 @property (strong, nonatomic) GKPlayerInternal *hostPlayerInternal; // @synthesize hostPlayerInternal=_hostPlayerInternal;
 
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)guestIdentifier;
 - (id)initWithHostPlayerInternal:(id)arg1 guestIdentifier:(id)arg2;

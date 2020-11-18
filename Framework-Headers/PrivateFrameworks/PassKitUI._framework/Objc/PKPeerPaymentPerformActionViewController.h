@@ -22,6 +22,8 @@
     PKPeerPaymentBankAccountInformation *_bankInformation;
     RemoteUIController *_termsController;
     BOOL _performingAction;
+    BOOL _viewHasAppeared;
+    BOOL _fieldsVerified;
     PKPaymentPass *_pass;
     UIView<PKPeerPaymentPerformActionView> *_actionView;
     id<PKPeerPaymentPerformActionViewControllerDelegate> _delegate;
@@ -44,6 +46,7 @@
 - (id)_actionViewForPass:(id)arg1 action:(unsigned long long)arg2;
 - (void)_cancelButtonPressed:(id)arg1;
 - (void)_doneBarButtonPressed:(id)arg1;
+- (void)_handleApplicationDidBecomeActiveNotification:(id)arg1;
 - (void)_handleError:(id)arg1;
 - (void)_handleError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_navigationBarTitle;
@@ -54,6 +57,7 @@
 - (void)_rightBarButtonPressed:(id)arg1;
 - (id)_rightBarButtonTitle;
 - (void)_showNavigationBarSpinner:(BOOL)arg1;
+- (void)dealloc;
 - (id)doneBarButton;
 - (id)initWithPaymentPass:(id)arg1 account:(id)arg2 peerPaymentAction:(unsigned long long)arg3;
 - (id)initWithPaymentPass:(id)arg1 account:(id)arg2 peerPaymentAction:(unsigned long long)arg3 detailViewStyle:(long long)arg4;
@@ -66,6 +70,7 @@
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

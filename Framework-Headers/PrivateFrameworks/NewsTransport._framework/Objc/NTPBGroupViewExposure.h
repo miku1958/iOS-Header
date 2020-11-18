@@ -12,22 +12,27 @@
 
 @interface NTPBGroupViewExposure : PBCodable <NSCopying>
 {
+    int _curatedContentType;
     int _feedAutoSubscribeType;
     NSData *_feedViewExposureId;
     int _groupArticleCountInForYou;
+    int _groupDisplayMode;
     int _groupDisplayRankInForYou;
     NSString *_groupFeedId;
     int _groupFormationReason;
     int _groupPresentationReason;
     int _groupType;
+    NSData *_groupViewExposureId;
     NSMutableArray *_groupedArticleIds;
     int _topStoryMandatoryArticleCount;
     int _topStoryOptionalArticleCount;
     BOOL _isSubscribedToGroupFeed;
     BOOL _reachedEndOfGroup;
     struct {
+        unsigned int curatedContentType:1;
         unsigned int feedAutoSubscribeType:1;
         unsigned int groupArticleCountInForYou:1;
+        unsigned int groupDisplayMode:1;
         unsigned int groupDisplayRankInForYou:1;
         unsigned int groupFormationReason:1;
         unsigned int groupPresentationReason:1;
@@ -39,23 +44,29 @@
     } _has;
 }
 
+@property (nonatomic) int curatedContentType; // @synthesize curatedContentType=_curatedContentType;
 @property (nonatomic) int feedAutoSubscribeType; // @synthesize feedAutoSubscribeType=_feedAutoSubscribeType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (nonatomic) int groupArticleCountInForYou; // @synthesize groupArticleCountInForYou=_groupArticleCountInForYou;
+@property (nonatomic) int groupDisplayMode; // @synthesize groupDisplayMode=_groupDisplayMode;
 @property (nonatomic) int groupDisplayRankInForYou; // @synthesize groupDisplayRankInForYou=_groupDisplayRankInForYou;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupFormationReason; // @synthesize groupFormationReason=_groupFormationReason;
 @property (nonatomic) int groupPresentationReason; // @synthesize groupPresentationReason=_groupPresentationReason;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (strong, nonatomic) NSMutableArray *groupedArticleIds; // @synthesize groupedArticleIds=_groupedArticleIds;
+@property (nonatomic) BOOL hasCuratedContentType;
 @property (nonatomic) BOOL hasFeedAutoSubscribeType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (nonatomic) BOOL hasGroupArticleCountInForYou;
+@property (nonatomic) BOOL hasGroupDisplayMode;
 @property (nonatomic) BOOL hasGroupDisplayRankInForYou;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupFormationReason;
 @property (nonatomic) BOOL hasGroupPresentationReason;
 @property (nonatomic) BOOL hasGroupType;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (nonatomic) BOOL hasIsSubscribedToGroupFeed;
 @property (nonatomic) BOOL hasReachedEndOfGroup;
 @property (nonatomic) BOOL hasTopStoryMandatoryArticleCount;
@@ -67,6 +78,7 @@
 
 + (Class)groupedArticleIdsType;
 - (void).cxx_destruct;
+- (int)StringAsCuratedContentType:(id)arg1;
 - (int)StringAsFeedAutoSubscribeType:(id)arg1;
 - (int)StringAsGroupFormationReason:(id)arg1;
 - (int)StringAsGroupPresentationReason:(id)arg1;
@@ -74,6 +86,7 @@
 - (void)addGroupedArticleIds:(id)arg1;
 - (void)clearGroupedArticleIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)curatedContentTypeAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)feedAutoSubscribeTypeAsString:(int)arg1;

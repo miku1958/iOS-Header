@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRAVRoutingDiscoverySession : NSObject
@@ -25,13 +25,14 @@
 @property (readonly, nonatomic) NSArray *endpointsChangedCallbacks;
 @property (readonly, nonatomic) BOOL hasAvailableEndpoints; // @dynamic hasAvailableEndpoints;
 @property (readonly, nonatomic) NSArray *outputDevicesChangedCallbacks;
+@property (copy, nonatomic) NSString *routingContextUID; // @dynamic routingContextUID;
 @property (nonatomic) unsigned int targetAudioSessionID; // @dynamic targetAudioSessionID;
 
 + (id)discoverySessionWithEndpointFeatures:(unsigned int)arg1;
+- (void).cxx_destruct;
 - (id)_init;
 - (id)addEndpointsChangedCallback:(CDUnknownBlockType)arg1;
 - (id)addOutputDevicesChangedCallback:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)removeEndpointsChangedCallback:(id)arg1;
 - (void)removeOutputDevicesChangedCallback:(id)arg1;
 

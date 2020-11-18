@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSDictionary *seriesIndexedPieWedgeExplosions;
 
 + (id)propertiesThatInvalidateLayout;
+- (void).cxx_destruct;
 - (void)beginDynamicOperation;
 - (struct CGRect)boundsForResize;
 - (struct CGRect)chartAreaFrame;
@@ -54,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)p_layoutNowForCircumscribingSize:(struct CGSize)arg1;
 - (id)renderersWithRep:(id)arg1;
 - (void)setDataSetIndex:(unsigned long long)arg1;
-- (void)setLayoutSettings:(CDStruct_44ada6bf)arg1;
+- (void)setLayoutSettings:(CDStruct_b1c75024)arg1;
 - (void)setLegendGeometryFrame:(struct CGRect)arg1;
 - (void)setLegendModelGeometryFrame:(struct CGRect)arg1;
 - (void)setLegendSize:(struct CGSize)arg1;

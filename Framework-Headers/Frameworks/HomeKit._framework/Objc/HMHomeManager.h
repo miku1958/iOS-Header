@@ -20,6 +20,7 @@
     BOOL _residentEnabledForThisDevice;
     BOOL _accessAllowedWhenLocked;
     BOOL _didUpdateHomes;
+    BOOL _frameworkMergeComplete;
     BOOL _fetchInProgress;
     BOOL _viewServiceActive;
     id<HMHomeManagerDelegate> _delegate;
@@ -61,6 +62,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didUpdateHomes; // @synthesize didUpdateHomes=_didUpdateHomes;
 @property (nonatomic) BOOL fetchInProgress; // @synthesize fetchInProgress=_fetchInProgress;
+@property (nonatomic) BOOL frameworkMergeComplete; // @synthesize frameworkMergeComplete=_frameworkMergeComplete;
 @property (nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
 @property (readonly) unsigned long long hash;
 @property (strong) NSString *homeCache; // @synthesize homeCache=_homeCache;

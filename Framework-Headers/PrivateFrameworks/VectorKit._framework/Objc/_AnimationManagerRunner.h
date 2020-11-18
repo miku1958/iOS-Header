@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
             struct _retain_objc _field3;
             struct _release_objc _field4;
         };
+        struct RunLoopController *;
         struct mutex;
         struct array<std::__1::unordered_set<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::hash<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::equal_to<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::allocator<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>>, 2>;
-        struct RunLoopController *;
-        BOOL;
+        struct atomic<bool>;
     } *_animationManager;
 }
 

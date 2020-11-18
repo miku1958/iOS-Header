@@ -26,19 +26,20 @@
     BOOL _isInTransaction;
     BOOL _isTemporaryInMemoryDatabase;
     BOOL _didEncounterExternalResourceErrorInTransaction;
+    NSMutableArray *_filesAddedDuringTransaction;
+    NSMutableArray *_filesDeletedDuringTransaction;
+    NSMapTable *_virtualTables;
     union {
         struct atomic_flag flag;
         int dummy;
     } _didTearDown;
-    NSMutableArray *_filesAddedDuringTransaction;
-    NSMutableArray *_filesDeletedDuringTransaction;
-    NSMapTable *_virtualTables;
 }
 
 @property (readonly, nonatomic) NSString *dbFilePath;
 @property (readonly, nonatomic) BOOL isDBReady;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *isolationQueue;
 @property (readonly, nonatomic) NSError *lastError;
+@property (readonly, nonatomic) NSObject<OS_os_log> *log;
 @property (readonly, nonatomic) NSDictionary *pragmas;
 @property (readonly, nonatomic) struct sqlite3 *sqliteDB;
 
@@ -78,6 +79,8 @@
 - (BOOL)deleteExternalResourceAtURL:(id)arg1 error:(id *)arg2;
 - (id)description;
 - (double)doubleForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;
+- (BOOL)dropAllTables;
+- (BOOL)dropTablesLike:(id)arg1;
 - (void)executeAsync:(CDUnknownBlockType)arg1;
 - (void)executeAsync:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (BOOL)executeInTransaction:(CDUnknownBlockType)arg1;
@@ -85,6 +88,8 @@
 - (BOOL)executeStatement:(id)arg1 statementBlock:(CDUnknownBlockType)arg2;
 - (void)executeSync:(CDUnknownBlockType)arg1;
 - (void)executeSync:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)getAllTables;
+- (id)getTablesLike:(id)arg1;
 - (id)initWithQueueName:(const char *)arg1 log:(id)arg2 databaseFileURL:(id)arg3 sqliteFlags:(int)arg4 pragmas:(id)arg5 setupBlock:(CDUnknownBlockType)arg6;
 - (id)initWithQueueName:(const char *)arg1 logFacility:(const char *)arg2 dbFilePath:(id)arg3 sqliteFlags:(int)arg4 pragmas:(id)arg5 setupBlock:(CDUnknownBlockType)arg6;
 - (long long)int64ForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;

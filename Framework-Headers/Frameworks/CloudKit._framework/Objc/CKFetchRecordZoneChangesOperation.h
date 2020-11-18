@@ -12,13 +12,13 @@
 {
     BOOL _fetchAllChanges;
     BOOL _shouldFetchAssetContents;
-    NSArray *_recordZoneIDs;
-    NSDictionary *_optionsByRecordZoneID;
     CDUnknownBlockType _recordChangedBlock;
     CDUnknownBlockType _recordWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneChangeTokensUpdatedBlock;
     CDUnknownBlockType _recordZoneFetchCompletionBlock;
     CDUnknownBlockType _fetchRecordZoneChangesCompletionBlock;
+    NSArray *_recordZoneIDs;
+    NSDictionary *_optionsByRecordZoneID;
     NSMutableDictionary *_statusByZoneID;
     NSMutableSet *_zoneIDsWithPendingArchivedRecords;
     NSMutableDictionary *_perItemErrors;

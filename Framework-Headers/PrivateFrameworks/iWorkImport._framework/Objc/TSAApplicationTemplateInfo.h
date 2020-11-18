@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 + (id)localizationBundleForTemplateURL:(id)arg1;
 + (id)localizationBundleURLForTemplateName:(id)arg1;
 + (void)setBundledTemplatesDirectoryURL:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)documentURL;
 - (id)initHeadlessWithName:(id)arg1;

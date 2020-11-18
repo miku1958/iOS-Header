@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (readonly, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) NSString *firstName; // @dynamic firstName;
+@property (readonly, nonatomic) NSString *friendLevel; // @dynamic friendLevel;
 @property (strong, nonatomic) NSArray *friends; // @synthesize friends=_friends;
 @property (readonly, nonatomic) NSString *guestIdentifier; // @dynamic guestIdentifier;
 @property (readonly, nonatomic) BOOL hasPhoto;
@@ -87,6 +88,7 @@
 - (id)minimalPlayer;
 - (void)postChangeNotification;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (void)setFriendLevel:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)sortName;
 - (id)valueForUndefinedKey:(id)arg1;

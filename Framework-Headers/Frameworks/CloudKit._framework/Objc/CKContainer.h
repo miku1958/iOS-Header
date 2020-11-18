@@ -24,6 +24,7 @@
     int _identityUpdateToken;
     CKContainerID *_containerID;
     CKRecordID *_containerScopedUserID;
+    CKRecordID *_orgAdminUserID;
     CKContainerOptions *_options;
     CKDatabase *_privateCloudDatabase;
     CKDatabase *_publicCloudDatabase;
@@ -65,6 +66,7 @@
 @property (nonatomic) int identityUpdateToken; // @synthesize identityUpdateToken=_identityUpdateToken;
 @property (nonatomic) int killSwitchToken; // @synthesize killSwitchToken=_killSwitchToken;
 @property (strong, nonatomic) CKContainerOptions *options; // @synthesize options=_options;
+@property (strong, nonatomic) CKRecordID *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property (strong, nonatomic) CKDatabase *organizationCloudDatabase; // @synthesize organizationCloudDatabase=_organizationCloudDatabase;
 @property (strong, nonatomic) CKDatabase *privateCloudDatabase; // @synthesize privateCloudDatabase=_privateCloudDatabase;
 @property (strong, nonatomic) CKDatabase *publicCloudDatabase; // @synthesize publicCloudDatabase=_publicCloudDatabase;
@@ -99,11 +101,14 @@
 - (id)_allStatusReports;
 - (void)_cleanupSandboxExtensionHandles:(id)arg1;
 - (void)_discoverUserIdentityWithLookupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_fetchImportantUserRecordIDOfType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchLongLivedOperationsWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_importantUserRecordIDOfType:(long long)arg1;
 - (id)_initWithContainerIdentifier:(id)arg1;
 - (id)_initWithContainerIdentifier:(id)arg1 environment:(long long)arg2;
 - (void)_prepareForDaemonLaunch;
 - (void)_scheduleConvenienceOperation:(id)arg1;
+- (void)_setImportantUserRecordID:(id)arg1 ofType:(long long)arg2;
 - (void)_setupWithContainerID:(id)arg1 options:(id)arg2;
 - (id)_untrustedContainerEntitlementsForKey:(id)arg1;
 - (void)acceptShareMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -140,6 +145,7 @@
 - (void)fetchFullNameAndPrimaryEmailOnAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchLongLivedOperationWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchLongLivedOperationsWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchOrgAdminUserRecordIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchServerEnvironment:(CDUnknownBlockType)arg1;
 - (void)fetchShareMetadataWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchShareParticipantWithEmailAddress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

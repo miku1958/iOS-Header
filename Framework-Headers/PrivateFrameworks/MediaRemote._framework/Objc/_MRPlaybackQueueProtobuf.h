@@ -15,12 +15,13 @@
     NSMutableArray *_contentItems;
     _MRPlaybackQueueContextProtobuf *_context;
     int _location;
+    NSString *_queueIdentifier;
     NSString *_requestID;
     _MRNowPlayingPlayerPathProtobuf *_resolvedPlayerPath;
-    BOOL _notSendingTransaction;
+    BOOL _sendingPlaybackQueueTransaction;
     struct {
         unsigned int location:1;
-        unsigned int notSendingTransaction:1;
+        unsigned int sendingPlaybackQueueTransaction:1;
     } _has;
 }
 
@@ -28,22 +29,24 @@
 @property (strong, nonatomic) _MRPlaybackQueueContextProtobuf *context; // @synthesize context=_context;
 @property (readonly, nonatomic) BOOL hasContext;
 @property (nonatomic) BOOL hasLocation;
-@property (nonatomic) BOOL hasNotSendingTransaction;
+@property (readonly, nonatomic) BOOL hasQueueIdentifier;
 @property (readonly, nonatomic) BOOL hasRequestID;
 @property (readonly, nonatomic) BOOL hasResolvedPlayerPath;
+@property (nonatomic) BOOL hasSendingPlaybackQueueTransaction;
 @property (nonatomic) int location; // @synthesize location=_location;
-@property (nonatomic) BOOL notSendingTransaction; // @synthesize notSendingTransaction=_notSendingTransaction;
+@property (strong, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
 @property (strong, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *resolvedPlayerPath; // @synthesize resolvedPlayerPath=_resolvedPlayerPath;
+@property (nonatomic) BOOL sendingPlaybackQueueTransaction; // @synthesize sendingPlaybackQueueTransaction=_sendingPlaybackQueueTransaction;
 
 + (Class)contentItemType;
+- (void).cxx_destruct;
 - (void)addContentItem:(id)arg1;
 - (void)clearContentItems;
 - (id)contentItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)contentItemsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

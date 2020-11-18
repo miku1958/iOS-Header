@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     unsigned long long mSheetIndex;
     unsigned long long mPageIndex;
     unsigned long long mTotalPagesCount;
-    vector_88016b54 mSheetPageCountArray;
-    vector_88016b54 mSheetPageStartArray;
+    vector_06e666a8 mSheetPageCountArray;
+    vector_06e666a8 mSheetPageStartArray;
     TNPageController *mPageController;
     TNPdfHyperlinkController *mHyperlinkController;
     NSMutableArray *mCanvasBasedSheets;
@@ -41,8 +41,8 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)p_boundsRectForFirstPage;
 - (id)p_canvasBasedSheets;
 - (BOOL)p_isActiveSheetForm;
-- (vector_88016b54)p_pageCountArray;
-- (vector_88016b54)p_pageStartArray;
+- (vector_06e666a8)p_pageCountArray;
+- (vector_06e666a8)p_pageStartArray;
 - (id)pageController;
 - (unsigned long long)pageCount;
 - (long long)pageIndexFromQuickLookSheet:(id)arg1;

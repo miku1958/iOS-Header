@@ -70,6 +70,8 @@
 @property (readonly, nonatomic) BOOL hasExpiredComponents;
 @property (readonly, nonatomic, getter=_hasFeatureLink) BOOL hasFeatureLink;
 @property (readonly, nonatomic, getter=_hasFlyover) BOOL hasFlyover;
+@property (readonly, nonatomic, getter=_hasGenderNeutralRestroom) BOOL hasGenderNeutralRestroom;
+@property (readonly, nonatomic, getter=_hasGenderNeutralRestroomAmenity) BOOL hasGenderNeutralRestroomAmenity;
 @property (readonly, nonatomic, getter=_hasGoodForKidsAmenity) BOOL hasGoodForKidsAmenity;
 @property (readonly, nonatomic, getter=_hasMUID) BOOL hasMUID;
 @property (readonly, nonatomic, getter=_hasOperatingHours) BOOL hasOperatingHours;
@@ -142,7 +144,8 @@
 
 - (id)_arrivalMapRegionForTransportType:(int)arg1;
 - (id)_asPlaceInfo;
-- (id)_bestBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)_bestAvatarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)_bestNavbarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (BOOL)_hasTravelTimeForTransportType:(int)arg1;
 - (id)_localizedCategoryNamesForType:(unsigned int)arg1;

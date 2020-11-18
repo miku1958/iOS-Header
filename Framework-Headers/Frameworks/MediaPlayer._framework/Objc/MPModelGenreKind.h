@@ -16,6 +16,7 @@
 @property (readonly, copy, nonatomic) MPModelAlbumKind *albumKind; // @synthesize albumKind=_albumKind;
 
 + (id)kindWithAlbumKind:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

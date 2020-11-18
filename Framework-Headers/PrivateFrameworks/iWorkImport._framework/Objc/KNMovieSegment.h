@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface KNMovieSegment : NSObject
 {
-    TSPData *mMovieData;
-    double mStartTime;
+    TSPData *_movieData;
+    double _startTime;
 }
 
 @property (readonly, nonatomic, getter=isEmptySegment) BOOL emptySegment;
-@property (readonly, nonatomic) TSPData *movieData; // @synthesize movieData=mMovieData;
-@property (readonly, nonatomic) double startTime; // @synthesize startTime=mStartTime;
+@property (readonly, nonatomic) TSPData *movieData; // @synthesize movieData=_movieData;
+@property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initEmptySegmentWithStartTime:(double)arg1;
 - (id)initWithContext:(id)arg1 archive:(const struct MovieSegmentArchive *)arg2 unarchiver:(id)arg3;

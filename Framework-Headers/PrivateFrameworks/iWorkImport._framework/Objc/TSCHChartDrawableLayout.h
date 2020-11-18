@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDLayoutGeometry *legendGeometry;
 @property (copy, nonatomic) TSDLayoutGeometry *legendModelGeometry;
 @property (readonly, nonatomic) TSCHChartModel *model;
-@property (readonly, strong, nonatomic) TSCHChartLayout *p_chartLayout;
+@property (readonly, nonatomic) TSCHChartLayout *p_chartLayout;
 @property (strong, nonatomic) TSCHChartLayout *p_chartLayoutNoCreate; // @synthesize p_chartLayoutNoCreate=mChartLayout;
 @property (copy, nonatomic) TSDLayoutGeometry *p_lastChartAreaGeometry; // @synthesize p_lastChartAreaGeometry=mLastChartAreaGeometry;
 @property (copy, nonatomic) TSDLayoutGeometry *p_lastPureGeometry; // @synthesize p_lastPureGeometry=mLastPureGeometry;
@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSDictionary *seriesIndexedPieNormalizedLabelDistancesFromWedgeTips;
 @property (copy, nonatomic) NSDictionary *seriesIndexedPieWedgeExplosions;
 
+- (void).cxx_destruct;
 - (struct CGRect)alignmentFrame;
 - (struct CGRect)alignmentFrameForProvidingGuidesInRoot;
 - (struct CGRect)boundsForStandardKnobs;
@@ -54,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)changesShouldClearLayout:(id)arg1;
 - (BOOL)changesShouldSetNeedsLayout:(id)arg1;
 - (id)chartDrawableInfo;
-- (id)childSearchTargets;
 - (id)computeInfoGeometryDuringResize;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (id)layoutGeometryFromInfo;
 - (struct CGSize)minimumSize;
 - (void)offsetGeometryBy:(struct CGPoint)arg1;
+- (id)optimizedLabelRectsToPreventOverlapWithCheckTitle:(BOOL)arg1;
 - (void)p_addEdgeAlignmentGuidesForRect:(struct CGRect)arg1 array:(id)arg2;
 - (struct CGRect)p_addMultiDataControlToInlineWrapBounds:(struct CGRect)arg1;
 - (double)p_approximateMultiDataControlUnscaledHeight;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsCategoryAxisPlotToEdgesOption;
 - (BOOL)supportsSeriesFill;
 - (id)userInterfaceName;
+- (long long)userInterfaceTag;
 
 @end
 

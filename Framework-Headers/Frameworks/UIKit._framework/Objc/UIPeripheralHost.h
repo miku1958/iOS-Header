@@ -147,6 +147,7 @@
 - (void)_beginPersistingInputAccessoryViewForResponder:(id)arg1 withId:(id)arg2;
 - (void)_beginPinningInputViewsOnBehalfOfResponder:(id)arg1;
 - (struct CGRect)_centerStretchRectForWidth:(double)arg1;
+- (void)_clearMultiDocumentTokenIfNecessary:(id)arg1 withId:(id)arg2;
 - (void)_clearPinningResponders;
 - (void)_clearPreservedInputViewsWithId:(id)arg1 clearKeyboard:(BOOL)arg2;
 - (void)_clearPreservedInputViewsWithRestorableResponder:(id)arg1;
@@ -176,12 +177,14 @@
 - (void)_preserveInputViewsWithId:(id)arg1;
 - (void)_preserveInputViewsWithId:(id)arg1 animated:(BOOL)arg2;
 - (void)_preserveInputViewsWithId:(id)arg1 animated:(BOOL)arg2 reset:(BOOL)arg3;
+- (BOOL)_preserveMultiDocumentTokenIfNecessary:(id)arg1 withId:(id)arg2 reset:(BOOL)arg3;
 - (void)_reloadInputViewsForResponder:(id)arg1;
 - (id)_renderConfigForCurrentResponder;
 - (id)_renderConfigForResponder:(id)arg1;
 - (void)_resignFirstResponderIfHostingOnBehalfOfResponder:(id)arg1;
 - (void)_restoreInputAccessoryViewOverrideWithId:(id)arg1;
 - (BOOL)_restoreInputViewsWithId:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)_restoreMultiDocumentTokenIfNecessary:(id)arg1 withId:(id)arg2;
 - (id)_screenForFirstResponder:(id)arg1;
 - (void)_setHosted:(BOOL)arg1;
 - (void)_setIgnoresPinning:(BOOL)arg1 allowImmediateReload:(BOOL)arg2;

@@ -15,12 +15,13 @@ __attribute__((visibility("hidden")))
 {
     TSDCommentStorage *mStorage;
     TSTInfo *_tableInfo;
+    NSString *_annotationUUID;
     struct TSTCellUID _cellUID;
 }
 
 @property (readonly, nonatomic) int annotationDisplayStringType;
 @property (readonly, nonatomic) int annotationType;
-@property (readonly, nonatomic) NSString *annotationUUID;
+@property (strong, nonatomic) NSString *annotationUUID; // @synthesize annotationUUID=_annotationUUID;
 @property (strong, nonatomic) TSKAnnotationAuthor *author;
 @property (readonly, nonatomic) struct TSUCellCoord cellID;
 @property (readonly, nonatomic) struct TSTCellUID cellUID; // @synthesize cellUID=_cellUID;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 cellID:(struct TSUCellCoord)arg3;
 - (BOOL)isFloatingComment;
 - (BOOL)isInDocument;
+- (void)p_updateAnnotationUUID;
 
 @end
 

@@ -8,17 +8,17 @@
 
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSNumber;
+@class CNPromise, NSDictionary, NSNumber;
 
 @interface CNContactMatchInfo : NSObject <NSSecureCoding>
 {
     BOOL _matchedNameProperty;
     NSNumber *_relevanceScore;
     NSDictionary *_matchedProperties;
-    NSAttributedString *_excerpt;
+    CNPromise *_excerpt;
 }
 
-@property (strong, nonatomic) NSAttributedString *excerpt; // @synthesize excerpt=_excerpt;
+@property (strong, nonatomic) CNPromise *excerpt; // @synthesize excerpt=_excerpt;
 @property (nonatomic) BOOL matchedNameProperty; // @synthesize matchedNameProperty=_matchedNameProperty;
 @property (copy, nonatomic) NSDictionary *matchedProperties; // @synthesize matchedProperties=_matchedProperties;
 @property (copy, nonatomic) NSNumber *relevanceScore; // @synthesize relevanceScore=_relevanceScore;

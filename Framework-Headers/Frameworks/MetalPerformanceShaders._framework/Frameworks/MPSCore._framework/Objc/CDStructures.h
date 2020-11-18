@@ -20,17 +20,43 @@ struct HeapNode {
     unsigned long long _field3;
 };
 
+struct MPSAutoBuffer {
+    struct atomic<void *> _field1;
+    unsigned long long _field2;
+    id _field3;
+    id _field4;
+    unsigned long long _field5;
+};
+
 struct MPSAutoCache {
     id _field1;
     id _field2;
+    struct CacheFrame *_field3;
 };
 
 struct MPSAutoTexture {
     struct atomic<void *> _texture;
-    MTLTextureDescriptor *_descriptor;
-    id _device;
-    MPSCommandBufferImageCache *_cache;
-    int _twiddled;
+    unsigned long long _resourceSize;
+    union {
+        struct {
+            struct MPSAutoTexture *parent;
+            unsigned int subRangeStart;
+            unsigned int subRangeSize;
+        } _subTex;
+        struct {
+            MTLTextureDescriptor *_descriptor;
+            union {
+                struct {
+                    id device;
+                } _tex;
+                struct {
+                    MPSCommandBufferImageCache *cache;
+                } _temporary;
+            } ;
+        } ;
+    } ;
+    unsigned char _type;
+    unsigned char _twiddled;
 };
 
 struct MPSDevice {
@@ -46,7 +72,7 @@ struct MPSDevice {
     unsigned int _field10;
     int _field11;
     struct MPSGPUInfo _field12;
-    struct atomic<MPSLibrary *> _field13[48];
+    struct atomic<MPSLibrary *> _field13[69];
 };
 
 struct MPSDeviceBehaviors;
@@ -107,6 +133,11 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field13;
     struct MPSDeviceSpecificInfo _field14;
     struct MPSDeviceSpecificInfo _field15;
+    struct MPSDeviceSpecificInfo _field16;
+    struct MPSDeviceSpecificInfo _field17;
+    struct MPSDeviceSpecificInfo _field18;
+    struct MPSDeviceSpecificInfo _field19;
+    struct MPSDeviceSpecificInfo _field20;
 };
 
 struct MPSPixelCapabilities {
@@ -142,7 +173,35 @@ struct MPSPixelInfo {
     unsigned int _padding:5;
 };
 
+struct MPSStateResource {
+    unsigned short _field1;
+    union {
+        struct MPSAutoTexture _field1;
+        struct MPSAutoBuffer _field2;
+    } _field2;
+};
+
+struct MPSStateTextureInfo {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    unsigned long long _field8[4];
+};
+
 struct MTLLibraryNode;
+
+struct NSArray {
+    Class _field1;
+};
+
+struct ResourceListNode {
+    CDUnknownFunctionPointerType *_field1;
+    struct ResourceListNode *_field2;
+};
 
 struct ResourceNode {
     struct ResourceNode *_field1;

@@ -24,7 +24,6 @@
 + (void)logDidShareDocument;
 + (void)logDidShareLink;
 + (void)logDidSuccessfullyEnroll;
-+ (void)logDidTombstoneCourse;
 + (void)logWillAutomaticallyJoinCourses:(BOOL)arg1;
 + (void)pushDouble:(double)arg1 forKey:(id)arg2;
 + (void)resetConfigurationCounts;

@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 + (id)predicateWithPersistentIDs:(const long long *)arg1 count:(unsigned long long)arg2 shouldContain:(BOOL)arg3;
++ (BOOL)supportsSecureCoding;
 - (id)ML3PredicateForContainer;
 - (id)ML3PredicateForTrack;
 - (id)_ML3PredicateForEntityClass:(Class)arg1;

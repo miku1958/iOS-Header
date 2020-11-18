@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarActivityView *activityView; // @synthesize activityView=_activityView;
 @property (strong, nonatomic) UIActivityIndicatorView *syncStartView; // @synthesize syncStartView=_syncStartView;
 
++ (id)pillDisplayIdentifier;
 + (id)syncStartDisplayIdentifier;
-+ (id)verticalDisplayIdentifier;
 - (void).cxx_destruct;
 - (BOOL)_enableForType:(long long)arg1;
 - (struct UIEdgeInsets)activityIndicatorAlignmentRectInsets;

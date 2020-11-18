@@ -11,7 +11,7 @@
 #import <iWorkImport/TSDSelectionStatisticsContributor-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
 
-@class NSObject, NSString, TSDInfoGeometry, TSPObject, TSWPColumns, TSWPPadding, TSWPShapeStyle, TSWPStorage;
+@class NSArray, NSObject, NSString, TSDInfoGeometry, TSPObject, TSWPColumns, TSWPPadding, TSWPShapeStyle, TSWPStorage;
 @protocol TSDContainerInfo, TSDOwningAttachment, TSWPFlowInfo;
 
 __attribute__((visibility("hidden")))
@@ -19,11 +19,15 @@ __attribute__((visibility("hidden")))
 {
     TSWPStorage *_containedStorage;
     BOOL _isTextBox;
+    BOOL _preventsComments;
     TSPObject<TSWPFlowInfo> *_textFlow;
 }
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText; // @dynamic anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (readonly, nonatomic) BOOL autoListRecognition;
+@property (readonly, nonatomic) BOOL autoListTermination;
+@property (readonly, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) int columnDirection;
 @property (strong, nonatomic) TSWPColumns *columns;
 @property (readonly, nonatomic) TSWPStorage *containedStorage;
@@ -44,9 +48,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
 @property (strong, nonatomic) TSWPPadding *padding;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @dynamic parentInfo;
+@property (readonly, nonatomic) BOOL preventsComments; // @synthesize preventsComments=_preventsComments;
+@property (readonly, nonatomic) BOOL shouldIgnoreWPContent;
 @property (nonatomic) BOOL shrinkTextToFit;
+@property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) TSPObject<TSWPFlowInfo> *textFlow; // @synthesize textFlow=_textFlow;
+@property (readonly, nonatomic) BOOL textIsLinked;
 @property (nonatomic) BOOL textIsVertical;
 @property (readonly, nonatomic) TSWPStorage *textStorage;
 @property (readonly, nonatomic) TSWPShapeStyle *tswpShapeStyle;
@@ -67,15 +75,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
-- (BOOL)autoListRecognition;
-- (BOOL)autoListTermination;
 - (struct CGPoint)autosizePositionOffset;
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 dynamicallyDraggedLayout:(id)arg2;
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 size:(struct CGSize)arg2;
 - (struct CGAffineTransform)autosizedTransformForInfoGeometry:(id)arg1 size:(struct CGSize)arg2;
 - (BOOL)canAnchor;
 - (id)childEnumerator;
-- (id)childInfos;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 byGlyphStyle:(int)arg2 animationFilter:(id)arg3;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
@@ -114,7 +119,6 @@ __attribute__((visibility("hidden")))
 - (id)stylesForCopyStyle;
 - (BOOL)supportsShrinkTextToFit;
 - (BOOL)supportsTextInset;
-- (BOOL)textIsLinked;
 - (id)textStorageForHeadOfTextFlow;
 - (id)textureDeliveryStylesLocalized:(BOOL)arg1 animationFilter:(id)arg2;
 - (struct CGPoint)transformableObjectAnchorPoint;

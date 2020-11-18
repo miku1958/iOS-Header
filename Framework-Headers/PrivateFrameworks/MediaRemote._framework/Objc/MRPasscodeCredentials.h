@@ -21,7 +21,7 @@
 
 + (id)_randomPasscode;
 + (id)standardCredentials;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

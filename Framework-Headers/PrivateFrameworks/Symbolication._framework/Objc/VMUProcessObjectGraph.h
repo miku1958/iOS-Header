@@ -26,11 +26,16 @@
     VMURangeToStringMap *_binarySectionNameRanges;
     VMURangeToStringMap *_regionSymbolNameRanges;
     BOOL _gotObjcClassStructureRanges;
+    BOOL _showRawClassNames;
+    BOOL _javaScriptCoreUsingPoisoning;
     NSDictionary *_pthreadOffsets;
     VMUNodeToStringMap *_nodeLabels;
     void *_userMarked;
     VMUGraphStackLogReader *_stackLogReader;
     VMUDebugTimer *_debugTimer;
+    unsigned long long _physicalFootprint;
+    unsigned long long _physicalFootprintPeak;
+    BOOL _showsPhysFootprint;
 }
 
 @property (readonly, nonatomic) NSString *binaryImagesDescription;
@@ -39,13 +44,18 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL is64bit;
+@property (nonatomic) BOOL javaScriptCoreUsingPoisoning; // @synthesize javaScriptCoreUsingPoisoning=_javaScriptCoreUsingPoisoning;
 @property (readonly, nonatomic) unsigned int nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
+@property (nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
+@property (nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
 @property (readonly, nonatomic) NSString *processDescriptionString;
 @property (readonly, nonatomic) NSString *processName;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses;
 @property (readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionCount;
+@property (nonatomic) BOOL showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
+@property (nonatomic) BOOL showsPhysFootprint; // @synthesize showsPhysFootprint=_showsPhysFootprint;
 @property (nonatomic) unsigned long long snapshotMachTime; // @synthesize snapshotMachTime=_machAbsolute;
 @property (strong, nonatomic) id<VMUStackLogReader> stackLogReader; // @synthesize stackLogReader=_stackLogReader;
 @property (readonly) Class superclass;

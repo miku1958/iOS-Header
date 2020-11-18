@@ -16,6 +16,7 @@
 
 @property (nonatomic) BOOL showsDecimalPointButton; // @synthesize showsDecimalPointButton=_showsDecimalPointButton;
 
++ (struct CGSize)defaultSize;
 - (void).cxx_destruct;
 - (void)_numericKeyPressed:(id)arg1;
 - (void)_performDelete;

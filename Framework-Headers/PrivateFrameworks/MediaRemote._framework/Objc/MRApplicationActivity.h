@@ -29,9 +29,9 @@
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

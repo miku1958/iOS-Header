@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _MRVoiceInputDeviceDescriptorProtobuf *protobuf;
 @property (readonly, nonatomic) NSArray *supportedFormats; // @synthesize supportedFormats=_supportedFormats;
 
+- (void).cxx_destruct;
 - (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithData:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;

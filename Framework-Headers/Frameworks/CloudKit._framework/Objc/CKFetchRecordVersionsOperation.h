@@ -12,11 +12,11 @@
 {
     BOOL _isDeleted;
     BOOL _shouldFetchAssetContent;
+    CDUnknownBlockType _fetchRecordVersionsProgressBlock;
+    CDUnknownBlockType _fetchRecordVersionsCompletionBlock;
     NSArray *_recordIDs;
     NSArray *_desiredKeys;
     NSString *_minimumVersionETag;
-    CDUnknownBlockType _fetchRecordVersionsProgressBlock;
-    CDUnknownBlockType _fetchRecordVersionsCompletionBlock;
     NSMutableDictionary *_recordErrors;
 }
 

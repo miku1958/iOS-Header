@@ -101,8 +101,8 @@
 - (void)noteWebServiceUpdateNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performWorkAfterFirstLibraryLoad:(CDUnknownBlockType)arg1;
 - (id)preferredPaymentApplicationForPaymentPass:(id)arg1;
-- (void)processFelicaTransitAppletState:(id)arg1 forPassUniqueID:(id)arg2;
-- (void)processFelicaTransitHistory:(id)arg1 forPaymentApplication:(id)arg2 withPassUniqueIdentifier:(id)arg3 transactionDate:(id)arg4;
+- (void)processTransitAppletState:(id)arg1 forPassUniqueID:(id)arg2;
+- (void)processTransitHistory:(id)arg1 forPaymentApplication:(id)arg2 withPassUniqueIdentifier:(id)arg3 transactionDate:(id)arg4;
 - (void)requestPeerAccountTermsAndConditionsAcceptance;
 - (void)setExpressTransitUniqueID:(id)arg1 applicationIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPreferredPaymentApplication:(id)arg1 forPaymentPass:(id)arg2 completion:(CDUnknownBlockType)arg3;

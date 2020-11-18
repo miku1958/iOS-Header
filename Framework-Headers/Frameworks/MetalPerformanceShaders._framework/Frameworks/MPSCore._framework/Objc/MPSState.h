@@ -4,25 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSString;
 @protocol MTLResource;
 
 @interface MPSState : NSObject
 {
+    struct MPSStateResource *_resources;
+    unsigned long long _resourceCount;
     unsigned long long _readCount;
-    id<MTLResource> _resource;
-    struct MPSAutoCache *_cache;
+    NSString *_label;
+    unsigned short _flags;
+    BOOL _updatedAlready;
 }
 
 @property (readonly, nonatomic) BOOL isTemporary;
 @property (copy) NSString *label;
 @property (nonatomic) unsigned long long readCount; // @synthesize readCount=_readCount;
+@property (readonly, strong, nonatomic) id<MTLResource> resource;
+@property (readonly, nonatomic) unsigned long long resourceCount; // @synthesize resourceCount=_resourceCount;
 
++ (id)temporaryStateWithCommandBuffer:(id)arg1;
++ (id)temporaryStateWithCommandBuffer:(id)arg1 bufferSize:(unsigned long long)arg2;
++ (id)temporaryStateWithCommandBuffer:(id)arg1 resourceList:(id)arg2;
++ (id)temporaryStateWithCommandBuffer:(id)arg1 textureDescriptor:(id)arg2;
+- (unsigned long long)bufferSizeAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)debugDescription;
-- (id)initWithResource:(id)arg1 cache:(struct MPSAutoCache *)arg2;
+- (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 forKernel:(id)arg3 suggestedDescriptor:(id)arg4;
+- (id)initWithDevice:(id)arg1 bufferSize:(unsigned long long)arg2;
+- (id)initWithDevice:(id)arg1 resourceList:(id)arg2;
+- (id)initWithDevice:(id)arg1 textureDescriptor:(id)arg2;
+- (id)initWithResource:(id)arg1;
+- (id)initWithResources:(id)arg1;
+- (id)resourceAtIndex:(unsigned long long)arg1 allocateMemory:(BOOL)arg2;
+- (unsigned long long)resourceSize;
+- (unsigned long long)resourceTypeAtIndex:(unsigned long long)arg1;
+- (void)synchronizeOnCommandBuffer:(id)arg1;
+- (struct MPSStateTextureInfo)textureInfoAtIndex:(unsigned long long)arg1;
 
 @end
 

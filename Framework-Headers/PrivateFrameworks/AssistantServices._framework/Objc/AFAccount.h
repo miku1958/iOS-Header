@@ -24,6 +24,7 @@
     NSString *_peerSpeechIdentifier;
     NSString *_peerUserAgentString;
     NSString *_peerLanguageCode;
+    NSString *_peerHostname;
     NSString *_predefinedServer;
     NSString *_aceHost;
     NSDictionary *_connectionPolicy;
@@ -32,12 +33,14 @@
     NSString *_group;
     NSDictionary *_lastSyncDates;
     NSString *_localeIdentifier;
+    NSDate *_connectionPolicyFirstFailureDate;
 }
 
 @property (copy, nonatomic) NSString *aceHost; // @synthesize aceHost=_aceHost;
 @property (copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property (copy, nonatomic) NSDictionary *connectionPolicy; // @synthesize connectionPolicy=_connectionPolicy;
 @property (copy, nonatomic) NSDate *connectionPolicyDate; // @synthesize connectionPolicyDate=_connectionPolicyDate;
+@property (copy, nonatomic) NSDate *connectionPolicyFirstFailureDate; // @synthesize connectionPolicyFirstFailureDate=_connectionPolicyFirstFailureDate;
 @property (copy, nonatomic) NSString *connectionPolicyHostname; // @synthesize connectionPolicyHostname=_connectionPolicyHostname;
 @property (copy, nonatomic) NSString *group; // @synthesize group=_group;
 @property (copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
@@ -47,6 +50,7 @@
 @property (copy, nonatomic) NSDictionary *lastSyncDates; // @synthesize lastSyncDates=_lastSyncDates;
 @property (copy, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
 @property (copy, nonatomic) NSString *peerAssistantIdentifier; // @synthesize peerAssistantIdentifier=_peerAssistantIdentifier;
+@property (copy, nonatomic) NSString *peerHostname; // @synthesize peerHostname=_peerHostname;
 @property (copy, nonatomic) NSString *peerLanguageCode; // @synthesize peerLanguageCode=_peerLanguageCode;
 @property (nonatomic) BOOL peerSiriEnabled; // @synthesize peerSiriEnabled=_peerSiriEnabled;
 @property (copy, nonatomic) NSString *peerSpeechIdentifier; // @synthesize peerSpeechIdentifier=_peerSpeechIdentifier;

@@ -90,6 +90,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSSet *inspectableAttributes;
 @property (readonly, nonatomic) BOOL isActionBuild;
 @property (readonly, nonatomic) BOOL isActionMotionBuild;
+@property (readonly, nonatomic) BOOL isContentBuild;
 @property (readonly, nonatomic) BOOL isEmphasisBuild;
 @property (readonly, nonatomic) BOOL isOnSlide;
 @property (readonly, nonatomic) unsigned long long lastActiveChunkIndexInBuild;
@@ -127,7 +128,6 @@ __attribute__((visibility("hidden")))
 - (id)deliveriesLocalized:(BOOL)arg1;
 - (void)didInitFromSOS;
 - (unsigned long long)endChunkIndexFromEndOffset:(unsigned long long)arg1;
-- (BOOL)hasComplementInBuilds:(id)arg1;
 - (id)i_buildChunkForChunkIdentifier:(id)arg1;
 - (void)i_deregisterBuildChunkWithChunkIdentifier:(id)arg1;
 - (id)i_drawableForArchiving:(BOOL)arg1;
@@ -145,6 +145,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)p_calculateActiveChunkRange;
 - (id)p_chunkAtIndex:(unsigned long long)arg1;
 - (id)p_chunkTitleByTruncatingTitle:(id)arg1 toLength:(unsigned long long)arg2;
+- (BOOL)p_hasComplementInBuilds:(id)arg1;
 - (BOOL)p_isDeliveryLocalized:(id)arg1 forNonNilDrawable:(id)arg2;
 - (BOOL)p_supportsCustomEffectTimingCurveForLayoutStyles:(id)arg1;
 - (BOOL)p_supportsCustomTextDeliveryOptionsForAttributes:(id)arg1;

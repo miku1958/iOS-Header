@@ -23,6 +23,7 @@
 @property (copy, nonatomic) CDUnknownBlockType messageHandler; // @synthesize messageHandler=_messageHandler;
 @property (readonly, nonatomic) int pid;
 
+- (void).cxx_destruct;
 - (void)_registerCallbacks;
 - (void)addCustomXPCHandler:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (void)dealloc;

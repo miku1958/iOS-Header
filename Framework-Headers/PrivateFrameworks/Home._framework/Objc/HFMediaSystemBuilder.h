@@ -8,7 +8,7 @@
 
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
-@class HFRoomBuilder, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSString;
+@class HFAppleMusicAccountArbitrator, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSString;
 @protocol HFIconDescriptor;
 
 @interface HFMediaSystemBuilder : HFItemBuilder <HFServiceLikeBuilder>
@@ -17,13 +17,17 @@
     BOOL _hasSetRoom;
     BOOL _isCreatingMediaSystem;
     id<HFIconDescriptor> _iconDescriptor;
+    HFAppleMusicAccountArbitrator *_accountArbitrator;
+    HMAccessory *_firstSetupSourceAccessory;
     HMMediaSystemBuilder *_homeKitMediaSystemBuilder;
     HFRoomBuilder *_roomBuilder;
 }
 
+@property (strong, nonatomic) HFAppleMusicAccountArbitrator *accountArbitrator; // @synthesize accountArbitrator=_accountArbitrator;
 @property (readonly, nonatomic) NSArray *availableIconDescriptors;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) HMAccessory *firstSetupSourceAccessory; // @synthesize firstSetupSourceAccessory=_firstSetupSourceAccessory;
 @property (nonatomic) BOOL hasSetRoom; // @synthesize hasSetRoom=_hasSetRoom;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMMediaSystemBuilder *homeKitMediaSystemBuilder; // @synthesize homeKitMediaSystemBuilder=_homeKitMediaSystemBuilder;
@@ -46,7 +50,7 @@
 - (id)_rooms;
 - (id)_updateAssistantAccessControl;
 - (id)_updateFavorite;
-- (id)_updateRooms;
+- (id)_updateRoomAndName;
 - (id)accessories;
 - (id)accessoryForRole:(id)arg1;
 - (void)addAccessory:(id)arg1;

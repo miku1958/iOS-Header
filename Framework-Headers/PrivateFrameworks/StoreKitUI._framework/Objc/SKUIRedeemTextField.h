@@ -14,9 +14,11 @@
     UIView *_topBorderView;
     UIView *_backdropView;
     BOOL _backdropBackground;
+    BOOL _suppressBorder;
 }
 
 @property (nonatomic) BOOL backdropBackground; // @synthesize backdropBackground=_backdropBackground;
+@property (nonatomic) BOOL suppressBorder; // @synthesize suppressBorder=_suppressBorder;
 
 - (void).cxx_destruct;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;

@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     BOOL _fullScreen;
     BOOL _isEditing;
     BOOL _isTransitioningPage;
+    BOOL _hasTriggeredInteractiveTransitionAnimation;
     QLPageViewController *_pageViewController;
     id<QLPreviewControllerStateProtocol> _stateManager;
     UIPanGestureRecognizer *_slideGesture;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
+@property BOOL hasTriggeredInteractiveTransitionAnimation; // @synthesize hasTriggeredInteractiveTransitionAnimation=_hasTriggeredInteractiveTransitionAnimation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isAvailable; // @synthesize isAvailable=_isAvailable;
 @property (nonatomic) BOOL isEditing; // @synthesize isEditing=_isEditing;
@@ -137,10 +139,11 @@ __attribute__((visibility("hidden")))
 - (void)setSourceIsManaged:(BOOL)arg1;
 - (void)slideToDismissGestureRecognized:(id)arg1;
 - (void)startNonInteractiveTransitionPresenting:(BOOL)arg1;
-- (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(BOOL)arg3 useInteractiveTransition:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)tearDownTransition:(BOOL)arg1;
 - (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonsForTraitCollection:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)triggerInteractiveTransitionAnimationIfNeeded;
 - (void)updateCurrentPreviewConfiguration;
 - (void)updateTransitionWithProgress:(double)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

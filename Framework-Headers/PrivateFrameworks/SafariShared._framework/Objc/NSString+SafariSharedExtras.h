@@ -17,7 +17,6 @@
 + (id)safari_stringWithJSValue:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2;
 + (id)safari_stringWithJSValue:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2 nullStringPolicy:(long long)arg3;
 + (id)safari_stringWithUTF8Bytes:(const void *)arg1 length:(unsigned long long)arg2;
-- (id)safari_base64DecodedData;
 - (id)safari_bestLanguageTag;
 - (id)safari_bestURLForUserTypedString;
 - (id)safari_bestURLStringForUserTypedString;
@@ -31,6 +30,7 @@
 - (BOOL)safari_isJavaScriptURLString;
 - (BOOL)safari_isPathExtensionAllowedForAnalytics;
 - (BOOL)safari_isVisualDuplicateOfURLString:(id)arg1;
+- (BOOL)safari_looksLikeObscuredPassword;
 - (id)safari_md5Hash;
 - (id)safari_possibleTopLevelDomainCorrectionForUserTypedString;
 - (id)safari_scriptIfJavaScriptURLString;

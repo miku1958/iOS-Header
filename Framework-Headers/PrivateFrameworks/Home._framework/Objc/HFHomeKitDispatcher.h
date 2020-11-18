@@ -166,7 +166,6 @@
 - (BOOL)hasRequestedUpdate:(id)arg1;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)home:(id)arg1 didAddActionSet:(id)arg2;
-- (void)home:(id)arg1 didAddMediaSystem:(id)arg2;
 - (void)home:(id)arg1 didAddResidentDevice:(id)arg2;
 - (void)home:(id)arg1 didAddRoom:(id)arg2;
 - (void)home:(id)arg1 didAddRoom:(id)arg2 toZone:(id)arg3;
@@ -178,7 +177,6 @@
 - (void)home:(id)arg1 didEncounterError:(id)arg2 forAccessory:(id)arg3;
 - (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
 - (void)home:(id)arg1 didRemoveActionSet:(id)arg2;
-- (void)home:(id)arg1 didRemoveMediaSystem:(id)arg2;
 - (void)home:(id)arg1 didRemoveResidentDevice:(id)arg2;
 - (void)home:(id)arg1 didRemoveRoom:(id)arg2;
 - (void)home:(id)arg1 didRemoveRoom:(id)arg2 fromZone:(id)arg3;
@@ -204,6 +202,7 @@
 - (void)home:(id)arg1 didUpdateNameForServiceGroup:(id)arg2;
 - (void)home:(id)arg1 didUpdateNameForTrigger:(id)arg2;
 - (void)home:(id)arg1 didUpdateNameForZone:(id)arg2;
+- (void)home:(id)arg1 didUpdateReprovisionStateForAccessory:(id)arg2;
 - (void)home:(id)arg1 didUpdateRoom:(id)arg2 forAccessory:(id)arg3;
 - (void)home:(id)arg1 didUpdateStateForOutgoingInvitations:(id)arg2;
 - (void)home:(id)arg1 didUpdateTrigger:(id)arg2;
@@ -232,8 +231,6 @@
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;
 - (void)mediaSession:(id)arg1 failedToUpdatePlaybackStateWithError:(id)arg2;
 - (void)mediaSession:(id)arg1 willUpdatePlaybackState:(long long)arg2;
-- (void)mediaSystem:(id)arg1 didUpdateComponents:(id)arg2;
-- (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (void)removeAccessoryObserver:(id)arg1;
 - (void)removeCameraObserver:(id)arg1;
 - (void)removeHomeManagerObserver:(id)arg1;

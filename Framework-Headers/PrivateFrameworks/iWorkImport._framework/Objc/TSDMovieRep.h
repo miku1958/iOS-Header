@@ -6,69 +6,31 @@
 
 #import <iWorkImport/TSDMediaRep.h>
 
-#import <iWorkImport/TSDPlayableMediaRep-Protocol.h>
-
-@class AVAsset, CALayer, NSObject, NSString, TSDButtonKnob, TSDFrameRep, TSDMovieInfo;
-@protocol TSKMediaPlayerController;
+@class TSDFrameRep, TSDMovieInfo;
 
 __attribute__((visibility("hidden")))
-@interface TSDMovieRep : TSDMediaRep <TSDPlayableMediaRep>
+@interface TSDMovieRep : TSDMediaRep
 {
-    NSObject<TSKMediaPlayerController> *mPlayerController;
-    BOOL mCurrentlyObservingPlayerLayer;
-    BOOL mPlayerLayerShouldBeDisplayed;
-    BOOL mDirectlyManagesLayerContent;
-    CALayer *mPlayerLayer;
-    CALayer *mLayerToStroke;
-    CALayer *mMovieReflectionLayer;
-    CALayer *mMovieReflectionMaskLayer;
-    CALayer *mReflectionPlayerLayer;
-    CALayer *mReflectionPlayerStrokeMaskLayer;
-    CALayer *mPlayerStrokeLayer;
-    CALayer *mReflectionPlayerStrokeLayer;
-    CALayer *mFrameMaskLayer;
-    struct CGRect mLastPictureFrameLayerRect;
     TSDFrameRep *mReflectionFrameRep;
-    CALayer *mReflectionFrameMaskLayer;
-    AVAsset *mAssetForPlayability;
-    BOOL mDidCheckPlayability;
-    BOOL mIsPlayable;
-    TSDButtonKnob *mPlayButtonKnob;
-    BOOL mPlayButtonKnobVisible;
-    BOOL mDidCancelUpdatingPlayButtonVisibility;
-    BOOL mInReadMode;
     struct CGImage *mAlternatePosterImage;
-    unsigned long long mIsChangingDynamicVisibleTimeCount;
-    float mDynamicVolume;
-    BOOL mIsChangingDynamicVolume;
-    BOOL mNeedsTeardownPlayerController;
-    BOOL mDelayTearingDownPlayerController;
 }
 
 @property (nonatomic) struct CGImage *alternatePosterImage; // @synthesize alternatePosterImage=mAlternatePosterImage;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) TSDMovieInfo *movieInfo;
-@property (readonly, nonatomic, getter=isPlayable) BOOL playable; // @synthesize playable=mIsPlayable;
-@property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
 - (void).cxx_destruct;
-- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
-- (id)downloadProgressPlaceholderImage;
 - (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
-- (void)drawInLayerContext:(struct CGContext *)arg1;
+- (void)i_updateFrameRep;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
-- (BOOL)isDataCurrentlyDownloading;
 - (id)movieLayout;
 - (struct CGImage *)newFrameMaskForViewScale:(double)arg1 frameRect:(struct CGRect *)arg2;
 - (void)p_drawInContext:(struct CGContext *)arg1 withContent:(BOOL)arg2 withStroke:(BOOL)arg3 withOpacity:(double)arg4 withMask:(BOOL)arg5 forShadowOrHitTest:(BOOL)arg6;
 - (void)p_drawPosterImageInContext:(struct CGContext *)arg1 forShadowOrHitTest:(BOOL)arg2;
-- (void)p_drawReflectionGradientIntoMovieReflectionLayer:(struct CGContext *)arg1 reflectionSize:(struct CGSize)arg2;
-- (void)p_updateMovieReflectionMaskLayer;
-- (BOOL)shouldShowCheckerboard;
+- (void)p_updateReflectionFrameRep;
+- (void)updateFromLayout;
+- (void)willBeRemoved;
 
 @end
 

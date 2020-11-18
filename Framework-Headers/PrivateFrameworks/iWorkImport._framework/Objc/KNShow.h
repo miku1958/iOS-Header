@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchive:(struct ShowArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (void)setStylesheetForThemePreview:(id)arg1;
 - (void)setStylesheetForUpgradeToSingleStylesheet:(id)arg1;
 - (id)slideNodeAtIndex:(unsigned long long)arg1;
 - (id)slideNodesAtIndexes:(id)arg1;

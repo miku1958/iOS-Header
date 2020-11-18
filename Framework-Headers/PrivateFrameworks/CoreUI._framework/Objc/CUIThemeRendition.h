@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     double _opacity;
     NSString *_utiType;
     struct CGImage *_uncroppedImage;
+    struct CGSize _physicalSizeInMeters;
 }
 
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)assetPackIdentifier;
 - (int)bitmapEncoding;
 - (unsigned long long)colorSpaceID;
+- (id)contentNames;
 - (struct CGImage *)createImageFromPDFRenditionWithScale:(double)arg1;
 - (const struct _csicolor *)csiColor;
 - (id)data;
@@ -93,8 +95,8 @@ __attribute__((visibility("hidden")))
 - (id)name;
 - (BOOL)optOutOfThinning;
 - (struct CGSize)originalUncroppedSize;
-- (id)packedContents;
 - (struct CGPDFDocument *)pdfDocument;
+- (struct CGSize)physicalSizeInMeters;
 - (int)pixelFormat;
 - (BOOL)preservedVectorRepresentation;
 - (id)provideTextureInfo;

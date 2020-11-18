@@ -12,10 +12,10 @@
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 #import <Silex/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class NSString, SXColumnLayout, SXComponent, SXComponentExposureEvent, SXComponentExposureMonitor, SXComponentLayout, SXComponentStyle, SXDocumentController, SXFillView, SXViewport;
-@protocol SXAnalyticsReporting, SXComponentHosting, SXComponentStyleRenderer, SXComponentStyleRendererFactory, SXPresentationDelegate;
+@class NSString, SXColumnLayout, SXComponentExposureEvent, SXComponentExposureMonitor, SXComponentStyle, SXDocumentController, SXFillView, SXViewport;
+@protocol SXAnalyticsReporting, SXComponent, SXComponentHosting, SXComponentLayout, SXComponentStyleRenderer, SXComponentStyleRendererFactory, SXPresentationDelegate;
 
-@interface SXComponentView : UIView <UIGestureRecognizerDelegate, SXAXAssistiveTechStatusChangeListener, STTextCanvasRenderSource, SXTransitionDataSource, UIViewControllerPreviewingDelegate>
+@interface SXComponentView : UIView <UIGestureRecognizerDelegate, STTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXTransitionDataSource, UIViewControllerPreviewingDelegate>
 {
     BOOL _hasRenderedContents;
     BOOL _requiresThoroughFrameCalculations;
@@ -27,8 +27,8 @@
     BOOL _hasAnimation;
     BOOL _hasBehaviors;
     CDStruct_1cc9d0d0 _presentationChanges;
-    SXComponentLayout *_componentLayout;
-    SXComponent *_component;
+    id<SXComponentLayout> _componentLayout;
+    id<SXComponent> _component;
     SXDocumentController *_documentController;
     SXViewport *_viewport;
     id<SXPresentationDelegate> _presentationDelegate;
@@ -55,12 +55,12 @@
 @property (nonatomic) BOOL allowViewHierarchyRemoval; // @synthesize allowViewHierarchyRemoval=_allowViewHierarchyRemoval;
 @property (readonly, weak, nonatomic) id<SXAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property (nonatomic) BOOL animationsAndBehaviorsEnabled; // @synthesize animationsAndBehaviorsEnabled=_animationsAndBehaviorsEnabled;
-@property (readonly, nonatomic) SXComponent *component; // @synthesize component=_component;
+@property (readonly, nonatomic) id<SXComponent> component; // @synthesize component=_component;
 @property (strong, nonatomic) SXComponentExposureEvent *componentExposureEvent; // @synthesize componentExposureEvent=_componentExposureEvent;
 @property (strong, nonatomic) SXComponentExposureMonitor *componentExposureMonitor; // @synthesize componentExposureMonitor=_componentExposureMonitor;
 @property (weak, nonatomic) id<SXComponentHosting> componentHost; // @synthesize componentHost=_componentHost;
 @property (nonatomic) unsigned long long componentIndex; // @synthesize componentIndex=_componentIndex;
-@property (readonly, nonatomic) SXComponentLayout *componentLayout; // @synthesize componentLayout=_componentLayout;
+@property (readonly, nonatomic) id<SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
 @property (strong, nonatomic) SXComponentStyle *componentStyle; // @synthesize componentStyle=_componentStyle;
 @property (readonly, nonatomic) id<SXComponentStyleRenderer> componentStyleRenderer; // @synthesize componentStyleRenderer=_componentStyleRenderer;
 @property (readonly, nonatomic) id<SXComponentStyleRendererFactory> componentStyleRendererFactory; // @synthesize componentStyleRendererFactory=_componentStyleRendererFactory;

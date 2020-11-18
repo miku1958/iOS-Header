@@ -8,10 +8,11 @@
 
 #import <Intents/INSpeakable-Protocol.h>
 #import <Intents/INSpeakableStringExport-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface INSpeakableString : NSObject <INSpeakableStringExport, INSpeakable>
+@interface INSpeakableString : NSObject <INSpeakableStringExport, INSpeakable, NSSecureCoding>
 {
     NSString *_spokenPhrase;
     NSString *_pronunciationHint;

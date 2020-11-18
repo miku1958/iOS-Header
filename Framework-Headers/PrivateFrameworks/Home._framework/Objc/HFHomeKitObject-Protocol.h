@@ -12,5 +12,8 @@
 
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
+
+@optional
+- (BOOL)hf_isValidObject;
 @end
 

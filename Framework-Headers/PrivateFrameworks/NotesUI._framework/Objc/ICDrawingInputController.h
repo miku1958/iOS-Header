@@ -11,7 +11,7 @@
 
 @interface ICDrawingInputController : NSObject
 {
-    vector_c0e7c5b2 _drawPoints;
+    vector_930301b0 _drawPoints;
     NSObject<OS_dispatch_queue> *_inputQueue;
     NSObject<OS_dispatch_queue> *_outputQueue;
     id<ICDrawingInputControllerDelegate> _delegate;
@@ -21,7 +21,7 @@
     double _inputScale;
     float _smoothingKernel[7];
     long long _immutableCount;
-    vector_c0e7c5b2 _updatedDrawPoints;
+    vector_930301b0 _updatedDrawPoints;
     BOOL _drawingEndedButNotFinished;
     NSObject<OS_dispatch_semaphore> *_drawingWaitForFinishSemaphore;
     BOOL _isSnappedToRuler;
@@ -82,18 +82,18 @@
 - (CDStruct_47a7c924)baseValuesforCommandType:(unsigned int)arg1 inputType:(long long)arg2;
 - (CDStruct_f17e9403)calculateVelocityForFirstPoint:(CDStruct_f17e9403)arg1;
 - (CDStruct_f17e9403)calculateVelocityForNewPoint:(CDStruct_f17e9403)arg1 previousPoint:(CDStruct_f17e9403)arg2;
-- (unsigned long long)copyInputUpdatedRangeFromIndex:(unsigned long long)arg1 into:(vector_c0e7c5b2 *)arg2;
+- (unsigned long long)copyInputUpdatedRangeFromIndex:(unsigned long long)arg1 into:(vector_930301b0 *)arg2;
 - (void)dealloc;
 - (double)distanceToRulerCenter:(struct CGPoint)arg1;
 - (void)drawingAddPoint:(CDStruct_f17e9403)arg1;
-- (void)drawingAddPoints:(vector_c0e7c5b2)arg1;
+- (void)drawingAddPoints:(vector_930301b0)arg1;
 - (void)drawingBeganWithCommand:(id)arg1 inputType:(long long)arg2 start:(CDUnknownBlockType)arg3;
 - (void)drawingCancelledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)drawingEndedWithPreCompletion:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)drawingUpdateAllPoints;
 - (void)drawingUpdatePoint:(CDStruct_f17e9403)arg1;
 - (CDStruct_47a7c924)eraserOutputPoint:(CDStruct_f17e9403)arg1 baseValues:(CDStruct_47a7c924)arg2;
-- (vector_c0e7c5b2 *)getInputUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
+- (vector_930301b0 *)getInputUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
 - (struct CGPoint)getRulerSnapLineOriginAndTangent:(struct CGPoint *)arg1 andNormal:(struct CGPoint *)arg2;
 - (vector_d46ea067 *)getUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
 - (void)handleMarkerStartCapPoint:(CDStruct_47a7c924 *)arg1 forInput:(CDStruct_f17e9403 *)arg2;

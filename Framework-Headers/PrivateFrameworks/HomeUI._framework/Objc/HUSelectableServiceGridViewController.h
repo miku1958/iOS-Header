@@ -38,6 +38,7 @@
 - (void)_setSelected:(BOOL)arg1 forItemsInSection:(long long)arg2;
 - (void)_updateSelectionState:(BOOL)arg1 forCell:(id)arg2;
 - (void)_updateToggleStateForSection:(long long)arg1 headerView:(id)arg2;
+- (BOOL)_wantsToggleButtonForSection:(unsigned long long)arg1;
 - (void)addItemToSelection:(id)arg1;
 - (BOOL)canSelectItem:(id)arg1 indexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

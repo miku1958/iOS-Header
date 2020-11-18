@@ -6,9 +6,11 @@
 
 #import <PhotoEditSupport/AutoEncodeDecodeObject.h>
 
+#import <PhotoEditSupport/NSSecureCoding-Protocol.h>
+
 @class NSDictionary;
 
-@interface BLRedEyeBrushTap : AutoEncodeDecodeObject
+@interface BLRedEyeBrushTap : AutoEncodeDecodeObject <NSSecureCoding>
 {
     int _destinationWidth;
     double _timestamp;
@@ -21,6 +23,7 @@
 @property (nonatomic) struct CGPoint point; // @synthesize point=_point;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)init;
 - (id)keysToEncode;

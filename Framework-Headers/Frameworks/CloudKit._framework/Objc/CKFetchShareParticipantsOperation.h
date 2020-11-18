@@ -10,9 +10,9 @@
 
 @interface CKFetchShareParticipantsOperation : CKOperation
 {
-    NSArray *_userIdentityLookupInfos;
     CDUnknownBlockType _shareParticipantFetchedBlock;
     CDUnknownBlockType _fetchShareParticipantsCompletionBlock;
+    NSArray *_userIdentityLookupInfos;
     NSMutableSet *_discoveredUserIdentities;
     NSMutableDictionary *_lookupErrors;
 }

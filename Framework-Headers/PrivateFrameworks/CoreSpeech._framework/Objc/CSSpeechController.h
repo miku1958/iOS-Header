@@ -10,7 +10,7 @@
 #import <CoreSpeech/CSSpeechManagerDelegate-Protocol.h>
 
 @class CSAudioConverter, CSAudioFileWriter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSEndpointerProxy, CSSpeechManager, NSDictionary, NSString;
-@protocol CSEndpointAnalyzer, CSSpeechControllerDelegate, OS_dispatch_queue;
+@protocol CSEndpointAnalyzer, CSSpeechControllerDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 @interface CSSpeechController : NSObject <CSSpeechManagerDelegate, CSAudioConverterDelegate>
 {
@@ -22,10 +22,17 @@
     NSDictionary *_requestedRecordSettings;
     NSDictionary *_lastVoiceTriggerInfo;
     CSAudioZeroCounter *_continuousZeroCounter;
+    NSObject<OS_dispatch_queue> *_twoShotAudibleFeedbackQueue;
+    NSObject<OS_dispatch_group> *_twoShotAudibleFeedbackDecisionGroup;
     BOOL _isOpus;
     BOOL _isActivated;
     BOOL _isNarrowBand;
     BOOL _twoShotNotificationEnabled;
+    BOOL _isMediaPlaying;
+    BOOL _isAlarmPlaying;
+    BOOL _isTimerPlaying;
+    BOOL _isSoundPlaying;
+    BOOL _myriadPreventingTwoShotFeedback;
     id<CSSpeechControllerDelegate> _delegate;
     CSEndpointerProxy *_endpointerProxy;
     CSSpeechManager *_speechManager;
@@ -45,26 +52,41 @@
 @property (strong, nonatomic) CSEndpointerProxy *endpointerProxy; // @synthesize endpointerProxy=_endpointerProxy;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isActivated; // @synthesize isActivated=_isActivated;
+@property (nonatomic) BOOL isAlarmPlaying; // @synthesize isAlarmPlaying=_isAlarmPlaying;
+@property (nonatomic) BOOL isMediaPlaying; // @synthesize isMediaPlaying=_isMediaPlaying;
 @property (nonatomic) BOOL isNarrowBand; // @synthesize isNarrowBand=_isNarrowBand;
 @property (nonatomic) BOOL isOpus; // @synthesize isOpus=_isOpus;
+@property (nonatomic) BOOL isSoundPlaying; // @synthesize isSoundPlaying=_isSoundPlaying;
+@property (nonatomic) BOOL isTimerPlaying; // @synthesize isTimerPlaying=_isTimerPlaying;
+@property (nonatomic) BOOL myriadPreventingTwoShotFeedback; // @synthesize myriadPreventingTwoShotFeedback=_myriadPreventingTwoShotFeedback;
 @property (weak, nonatomic) CSSpeechManager *speechManager; // @synthesize speechManager=_speechManager;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL twoShotNotificationEnabled; // @synthesize twoShotNotificationEnabled=_twoShotNotificationEnabled;
 
 + (id)sharedController;
 - (void).cxx_destruct;
+- (void)CSAlarmMonitor:(id)arg1 didReceiveAlarmChanged:(long long)arg2;
+- (void)CSMediaPlayingMonitor:(id)arg1 didReceiveMediaPlayingChanged:(long long)arg2;
+- (void)CSTimerMonitor:(id)arg1 didReceiveTimerChanged:(long long)arg2;
 - (id)_contextToString:(id)arg1;
 - (long long)_currentAudioRecorderSampleRate;
 - (void)_deviceAudioLogging;
 - (id)_getRecordSettings;
 - (id)_getSpeechIdentifier;
+- (void)_initializeAlarmState;
+- (void)_initializeMediaPlayingState;
+- (void)_initializeTimerState;
+- (BOOL)_isAutoPrompted;
 - (BOOL)_isVoiceTriggered;
+- (void)_setSoundPlayingState;
 - (BOOL)_setupAudioConverter:(BOOL)arg1;
 - (void)_setupDownsamplerIfNeeded;
 - (unsigned long long)alertStartTime;
 - (void)audioConverterDidConvertPackets:(id)arg1 packets:(id)arg2 timestamp:(unsigned long long)arg3;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (float)averagePowerForOutputReference;
+- (void)beginWaitingForMyriad;
+- (void)endWaitingForMyriadWithDecision:(unsigned long long)arg1;
 - (id)endpointerModelVersion;
 - (struct AudioStreamBasicDescription)getLPCMAudioStreamBasicDescription;
 - (double)getRecordBufferDuration;
@@ -99,9 +121,11 @@
 - (BOOL)setRecordBufferDuration:(double)arg1;
 - (void)setSynchronousCallbackEnabled:(BOOL)arg1;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)speechManager:(id)arg1 didSetAudioSessionActive:(BOOL)arg2;
+- (void)speechManager:(id)arg1 willSetAudioSessionActive:(BOOL)arg2;
 - (void)speechManagerBeginRecordInterruption:(id)arg1;
 - (void)speechManagerBeginRecordInterruption:(id)arg1 withContext:(id)arg2;
-- (void)speechManagerDetectedSystemVolumeChange:(id)arg1 withVolume:(float)arg2;
+- (void)speechManagerDetectedSystemVolumeChange:(id)arg1 withVolume:(float)arg2 forReason:(unsigned long long)arg3;
 - (void)speechManagerDidStartForwarding:(id)arg1 successfully:(BOOL)arg2 error:(id)arg3;
 - (void)speechManagerDidStopForwarding:(id)arg1 forReason:(long long)arg2;
 - (void)speechManagerEndRecordInterruption:(id)arg1;

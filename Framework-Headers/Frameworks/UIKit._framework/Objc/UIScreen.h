@@ -126,6 +126,7 @@
 + (id)__displayConfigurationsIncludingMain:(BOOL)arg1;
 + (id)_carScreen;
 + (void)_enumerateScreensWithBlock:(CDUnknownBlockType)arg1;
++ (BOOL)_isProbablyBeingRecorded;
 + (void)_prepareCarScreensForResume;
 + (void)_prepareScreensForAppResume;
 + (id)_screenForScene:(id)arg1;

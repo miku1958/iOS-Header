@@ -6,11 +6,12 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class WKFileUploadPanel;
+@class UIViewController, WKFileUploadPanel;
 
 @protocol WKFileUploadPanelDelegate <NSObject>
 
 @optional
 - (void)fileUploadPanelDidDismiss:(WKFileUploadPanel *)arg1;
+- (UIViewController *)viewControllerForPresentingFileUploadPanel:(WKFileUploadPanel *)arg1;
 @end
 

@@ -29,6 +29,7 @@
 - (void)noteObjectSharedWithUniqueID:(NSString *)arg1;
 - (void)notifyPassUsed:(PKPass *)arg1 fromSource:(long long)arg2;
 - (void)nukeDatabaseAndExit;
+- (void)openDigitalIssuanceUIForIdentifier:(NSString *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)openPaymentUIWithCompletion:(void (^)(BOOL))arg1;
 - (void)openWalletUIWithRelevantPass:(NSString *)arg1;
 - (void)personalizePassWithUniqueIdentifier:(NSString *)arg1 contact:(PKContact *)arg2 personalizationToken:(NSString *)arg3 requiredPersonalizationFields:(unsigned long long)arg4 personalizationSource:(unsigned long long)arg5 handler:(void (^)(BOOL))arg6;

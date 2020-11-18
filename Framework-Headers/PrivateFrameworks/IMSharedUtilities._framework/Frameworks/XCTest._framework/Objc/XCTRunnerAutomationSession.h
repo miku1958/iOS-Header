@@ -15,12 +15,13 @@
     NSXPCConnection *_connection;
 }
 
-@property NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)initWithEndpoint:(id)arg1;
 - (id)matchesForQuery:(id)arg1 error:(id *)arg2;
 

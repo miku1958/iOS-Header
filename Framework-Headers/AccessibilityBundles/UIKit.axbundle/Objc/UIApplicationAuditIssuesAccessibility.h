@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <UIKit/__UIApplicationAuditIssuesAccessibility_super.h>
 
-@interface UIApplicationAuditIssuesAccessibility : NSObject
+@interface UIApplicationAuditIssuesAccessibility : __UIApplicationAuditIssuesAccessibility_super
 {
 }
 
 + (id)_accessibilityGetAllSubviews:(id)arg1 withFiltering:(BOOL)arg2;
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (void)_axAuditCaptureReferenceToCellsForViewHierarchy:(id)arg1;
 + (void)_axAuditCheckElementForClipping:(id)arg1 storeIntoSet:(id)arg2;
 + (id)_axAuditCreateElementInfoDictionariesForSubviews:(id)arg1;
@@ -50,6 +51,8 @@
 + (void)_axAuditUpdateFontsForReferenceMatches:(id)arg1 forFontSize:(id)arg2;
 + (void)_axAuditUpdateReferenceOfCellsForViewHierarchy:(id)arg1 forFontSize:(id)arg2;
 + (void)_axAuditUpdateRowHeightForTableAndCollectionViewsOfElements:(id)arg1;
++ (Class)safeCategoryBaseClass;
++ (id)safeCategoryTargetClassName;
 
 @end
 

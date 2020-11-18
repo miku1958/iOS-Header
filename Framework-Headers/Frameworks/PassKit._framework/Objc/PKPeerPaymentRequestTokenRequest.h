@@ -13,6 +13,7 @@
     NSString *_recipientIdentifier;
     NSDecimalNumber *_amount;
     NSString *_currency;
+    NSString *_senderAddress;
     NSString *_recipientPhoneOrEmail;
 }
 
@@ -20,6 +21,7 @@
 @property (copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property (copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
 @property (copy, nonatomic) NSString *recipientPhoneOrEmail; // @synthesize recipientPhoneOrEmail=_recipientPhoneOrEmail;
+@property (copy, nonatomic) NSString *senderAddress; // @synthesize senderAddress=_senderAddress;
 
 - (void).cxx_destruct;
 - (id)_urlRequestWithServiceURL:(id)arg1 account:(id)arg2 deviceIdentifier:(id)arg3 deviceScore:(id)arg4 deviceMetadata:(id)arg5;

@@ -10,39 +10,24 @@
 
 @interface MPModelArtist : MPModelPerson
 {
-    BOOL _hasBiography;
-    long long _songCount;
-    long long _albumCount;
-    MPModelGenre *_genre;
-    NSDate *_libraryAddedDate;
-    CDUnknownBlockType _artworkCatalogBlock;
-    CDUnknownBlockType _editorialArtworkCatalogBlock;
 }
 
-@property (nonatomic) long long albumCount; // @synthesize albumCount=_albumCount;
-@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @synthesize artworkCatalogBlock=_artworkCatalogBlock;
-@property (copy, nonatomic) CDUnknownBlockType editorialArtworkCatalogBlock; // @synthesize editorialArtworkCatalogBlock=_editorialArtworkCatalogBlock;
-@property (copy, nonatomic) MPModelGenre *genre; // @synthesize genre=_genre;
-@property (nonatomic) BOOL hasBiography; // @synthesize hasBiography=_hasBiography;
-@property (copy, nonatomic) NSDate *libraryAddedDate; // @synthesize libraryAddedDate=_libraryAddedDate;
-@property (nonatomic) long long songCount; // @synthesize songCount=_songCount;
+@property (nonatomic) long long albumCount; // @dynamic albumCount;
+@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @dynamic artworkCatalogBlock;
+@property (copy, nonatomic) CDUnknownBlockType editorialArtworkCatalogBlock; // @dynamic editorialArtworkCatalogBlock;
+@property (copy, nonatomic) MPModelGenre *genre; // @dynamic genre;
+@property (nonatomic) BOOL hasBiography; // @dynamic hasBiography;
+@property (copy, nonatomic) NSDate *libraryAddedDate; // @dynamic libraryAddedDate;
+@property (nonatomic) long long songCount; // @dynamic songCount;
 
-+ (id)__MPModelPropertyArtistAlbumCount__PROPERTY;
-+ (id)__MPModelPropertyArtistArtwork__PROPERTY;
-+ (id)__MPModelPropertyArtistEditorialArtwork__PROPERTY;
-+ (id)__MPModelPropertyArtistHasBiography__PROPERTY;
-+ (id)__MPModelPropertyArtistLibraryAddedDate__PROPERTY;
-+ (id)__MPModelPropertyArtistSongCount__PROPERTY;
-+ (id)__MPModelRelationshipArtistGenre__PROPERTY;
-+ (id)__albumCount__KEY;
-+ (id)__artworkCatalogBlock__KEY;
-+ (id)__editorialArtworkCatalogBlock__KEY;
-+ (id)__genre__KEY;
-+ (id)__hasBiography__KEY;
-+ (id)__libraryAddedDate__KEY;
-+ (id)__songCount__KEY;
++ (id)__albumCount_KEY;
++ (id)__artworkCatalogBlock_KEY;
++ (id)__editorialArtworkCatalogBlock_KEY;
++ (id)__genre_KEY;
++ (id)__hasBiography_KEY;
++ (id)__libraryAddedDate_KEY;
++ (id)__songCount_KEY;
 + (id)kindWithAlbumKind:(id)arg1;
-- (void).cxx_destruct;
 - (id)artworkCatalog;
 - (id)editorialArtworkCatalog;
 

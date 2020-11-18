@@ -4,40 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <PassKitCore/PKTransitAppletHistory.h>
 
-#import <PassKitCore/NSSecureCoding-Protocol.h>
+@class NSNumber, NSSet, NSString, PKFelicaGreenCarTicket, PKFelicaShinkansenTicket;
 
-@class NSArray, NSNumber, NSSet, PKFelicaGreenCarTicket, PKFelicaShinkansenTicket;
-
-@interface PKFelicaAppletHistory : NSObject <NSSecureCoding>
+@interface PKFelicaAppletHistory : PKTransitAppletHistory
 {
     NSSet *_existingKeys;
-    BOOL _blacklisted;
-    BOOL _inStation;
     BOOL _inShinkansenStation;
     BOOL _shinkansenTicketActive;
     BOOL _greenCarTicketUsed;
-    long long _source;
+    BOOL _balanceAllowedForCommute;
+    BOOL _lowBalanceNotificationEnabled;
     long long _type;
+    NSString *_transactionID;
     NSNumber *_SPID;
-    NSNumber *_balance;
-    NSArray *_historyRecords;
+    long long _transactionType;
     PKFelicaShinkansenTicket *_shinkansenTicket;
     PKFelicaGreenCarTicket *_greenCarTicket;
 }
 
 @property (readonly, copy, nonatomic) NSNumber *SPID; // @synthesize SPID=_SPID;
-@property (readonly, copy, nonatomic) NSNumber *balance; // @synthesize balance=_balance;
-@property (readonly, nonatomic, getter=isBlacklisted) BOOL blacklisted; // @synthesize blacklisted=_blacklisted;
+@property (readonly, nonatomic, getter=isBalanceAllowedForCommute) BOOL balanceAllowedForCommute; // @synthesize balanceAllowedForCommute=_balanceAllowedForCommute;
 @property (readonly, nonatomic) PKFelicaGreenCarTicket *greenCarTicket; // @synthesize greenCarTicket=_greenCarTicket;
 @property (readonly, nonatomic, getter=isGreenCarTicketUsed) BOOL greenCarTicketUsed; // @synthesize greenCarTicketUsed=_greenCarTicketUsed;
-@property (readonly, copy, nonatomic) NSArray *historyRecords; // @synthesize historyRecords=_historyRecords;
 @property (readonly, nonatomic, getter=isInShinkansenStation) BOOL inShinkansenStation; // @synthesize inShinkansenStation=_inShinkansenStation;
-@property (readonly, nonatomic, getter=isInStation) BOOL inStation; // @synthesize inStation=_inStation;
+@property (readonly, nonatomic, getter=isLowBalanceNotificationEnabled) BOOL lowBalanceNotificationEnabled; // @synthesize lowBalanceNotificationEnabled=_lowBalanceNotificationEnabled;
 @property (readonly, copy, nonatomic) PKFelicaShinkansenTicket *shinkansenTicket; // @synthesize shinkansenTicket=_shinkansenTicket;
 @property (readonly, nonatomic, getter=isShinkansenTicketActive) BOOL shinkansenTicketActive; // @synthesize shinkansenTicketActive=_shinkansenTicketActive;
-@property (readonly, nonatomic) long long source; // @synthesize source=_source;
+@property (readonly, copy, nonatomic) NSString *transactionID; // @synthesize transactionID=_transactionID;
+@property (readonly, nonatomic) long long transactionType; // @synthesize transactionType=_transactionType;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (long long)appletTypeForDictionary:(id)arg1;
@@ -45,7 +41,6 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 source:(long long)arg2;
 - (void)sanitizeValuesWithState:(id)arg1;

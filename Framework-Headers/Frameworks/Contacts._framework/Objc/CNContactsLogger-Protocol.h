@@ -6,7 +6,7 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNContact, NSArray, NSData, NSError, NSPredicate, NSString, Protocol;
+@class CNContact, NSArray, NSData, NSError, NSPredicate, NSString;
 
 @protocol CNContactsLogger <NSObject>
 - (void)SPIUsageLackingEntitlementGrantedForPID:(int)arg1;
@@ -20,7 +20,6 @@
 - (void)deletingContact:(CNContact *)arg1;
 - (void)didFetchContacts:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)didFetchEncodedContacts:(NSData *)arg1 error:(NSError *)arg2;
-- (void)errorWhenRetrievingProxyForInterface:(Protocol *)arg1;
 - (void)fetchContactsMatchingPredicate:(NSPredicate *)arg1 unifyResults:(BOOL)arg2 keysToFetch:(NSArray *)arg3;
 - (void)fetchContactsProgressivelyMatchingPredicate:(NSPredicate *)arg1 unifyResults:(BOOL)arg2 keysToFetch:(NSArray *)arg3;
 - (void)fetchEncodedContactsMatchingPredicate:(NSPredicate *)arg1 unifyResults:(BOOL)arg2 keysToFetch:(NSArray *)arg3;

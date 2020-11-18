@@ -19,6 +19,8 @@
 @property (readonly, nonatomic) float c; // @synthesize c=_c;
 
 - (id)debugDescription;
+- (id)descriptor;
+- (Class)gradientClass;
 - (id)initWithSource:(id)arg1 type:(int)arg2 a:(float)arg3 b:(float)arg4 c:(float)arg5;
 - (BOOL)isEqual:(id)arg1;
 

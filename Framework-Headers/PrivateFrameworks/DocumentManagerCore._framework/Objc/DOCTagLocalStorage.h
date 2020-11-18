@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property (strong, nonatomic) NSOrderedSet *userTags;
 
-+ (id)sharedInstance;
++ (id)sharedAppGroupStorage;
 - (void).cxx_destruct;
 - (id)_unarchivedTagsFromData:(id)arg1;
 - (id)init;

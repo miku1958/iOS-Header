@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 + (id)colorWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4 targetRGBSpace:(unsigned long long)arg5;
 + (id)colorWithPatternImage:(id)arg1;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
++ (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 targetRGBSpace:(unsigned long long)arg5;
 + (id)colorWithUIColor:(id)arg1;
 + (id)colorWithWhite:(double)arg1 alpha:(double)arg2;
 + (id)cyanColor;
@@ -64,6 +65,7 @@ __attribute__((visibility("hidden")))
 + (id)yellowColor;
 - (id)blendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
 - (double)brightnessComponent;
+- (id)colorByCompositingSourceOverDestinationColor:(id)arg1;
 - (id)colorWithAlphaComponent:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -94,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)newBlendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
+- (id)p_colorForComparingWithColor:(id)arg1;
 - (BOOL)p_isEqualToColor:(id)arg1 withTolerance:(double)arg2;
 - (double)p_rgbComponentWithIndex:(unsigned char)arg1;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;

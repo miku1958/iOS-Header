@@ -17,11 +17,13 @@
     BOOL _isRequestedRating;
     NSURL *_defaultToroServerURL;
     NSURL *_defaultAdTargetingServerURL;
-    NSString *_storefrontLocalizationLanguage;
     NSString *_algoID;
     NSArray *_userKeyboards;
     double _requestedLocationAccuracy;
     double _locationGridSpacing;
+    NSString *_requestedText;
+    NSString *_requestedIcon;
+    NSString *_templateType;
     double _reverseGeolocationRefreshThresholdInMeters;
     double _clickExpirationThresholdInSeconds;
     double _frequencyCapExpirationInSeconds;
@@ -44,15 +46,17 @@
 @property (nonatomic) double locationGridSpacing; // @synthesize locationGridSpacing=_locationGridSpacing;
 @property (nonatomic) unsigned long long maxClickCapElements; // @synthesize maxClickCapElements=_maxClickCapElements;
 @property (nonatomic) unsigned long long maxFrequencyCapElements; // @synthesize maxFrequencyCapElements=_maxFrequencyCapElements;
+@property (strong, nonatomic) NSString *requestedIcon; // @synthesize requestedIcon=_requestedIcon;
 @property (nonatomic) double requestedLocationAccuracy; // @synthesize requestedLocationAccuracy=_requestedLocationAccuracy;
+@property (strong, nonatomic) NSString *requestedText; // @synthesize requestedText=_requestedText;
 @property (nonatomic) double reverseGeolocationRefreshThresholdInMeters; // @synthesize reverseGeolocationRefreshThresholdInMeters=_reverseGeolocationRefreshThresholdInMeters;
-@property (strong, nonatomic) NSString *storefrontLocalizationLanguage; // @synthesize storefrontLocalizationLanguage=_storefrontLocalizationLanguage;
+@property (strong, nonatomic) NSString *templateType; // @synthesize templateType=_templateType;
 @property (strong, nonatomic) NSArray *userKeyboards; // @synthesize userKeyboards=_userKeyboards;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)applyClientSettings;
-- (void)checkForInternalSettingsOverrides;
+- (void)checkDefaultsAndSetInternalSettingsOverrides;
 - (double)clientSettingsExpirationDate;
 - (void)expireClientSettings;
 - (id)init;

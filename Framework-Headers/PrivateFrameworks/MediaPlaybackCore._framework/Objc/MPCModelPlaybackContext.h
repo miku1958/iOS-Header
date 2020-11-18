@@ -28,8 +28,10 @@
 + (id)defaultRequestEnvironment;
 + (Class)queueFeederClass;
 + (id)requiredPropertiesForStaticMediaClips;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

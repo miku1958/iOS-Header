@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface TSTCellDiffMap : TSPObject <NSCopying>
 {
-    vector_13f93596 _cellIDs;
+    vector_38b190b0 _cellIDs;
     BOOL _uidBased;
     TSTCellUIDList *_cellUIDList;
     NSMutableArray *_mutableDiffList;
@@ -29,10 +29,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addCellDiff:(id)arg1 andCellID:(struct TSUCellCoord)arg2;
 - (void)addCellDiff:(id)arg1 andCellUID:(struct TSTCellUID)arg2;
-- (id)cellDiffMapByIntersectingUIDs:(const vector_dadc1b26 *)arg1 inRows:(BOOL)arg2;
-- (id)cellDiffMapByRemovingColumns:(const vector_dadc1b26 *)arg1;
-- (id)cellDiffMapByRemovingRows:(const vector_dadc1b26 *)arg1;
-- (const vector_13f93596 *)cellIDs;
+- (id)cellDiffMapByIntersectingUIDs:(const vector_4dc5f307 *)arg1 inRows:(BOOL)arg2;
+- (id)cellDiffMapByRemovingColumns:(const vector_4dc5f307 *)arg1;
+- (id)cellDiffMapByRemovingRows:(const vector_4dc5f307 *)arg1;
+- (const vector_38b190b0 *)cellIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)enumerateCellIDElementsUsingBlock:(CDUnknownBlockType)arg1;

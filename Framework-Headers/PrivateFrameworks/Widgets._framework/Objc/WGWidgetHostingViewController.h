@@ -173,7 +173,6 @@
 - (void)managingContainerDidDisappear:(id)arg1;
 - (void)managingContainerWillAppear:(id)arg1;
 - (void)maximumSizeDidChangeForDisplayMode:(long long)arg1;
-- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)setActiveDisplayMode:(long long)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;

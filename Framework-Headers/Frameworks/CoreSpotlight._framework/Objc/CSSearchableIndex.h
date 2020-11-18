@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CSIndexingQueue, NSMutableArray, NSString;
+@class CSIndexConnection, CSIndexingQueue, NSMutableArray, NSString;
 @protocol CSSearchableIndexDelegate, OS_dispatch_queue;
 
 @interface CSSearchableIndex : NSObject
@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSMutableArray *batchedItemIdentifiersToDelete; // @synthesize batchedItemIdentifiersToDelete=_batchedItemIdentifiersToDelete;
 @property (strong, nonatomic) NSMutableArray *batchedItemsToIndex; // @synthesize batchedItemsToIndex=_batchedItemsToIndex;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly) CSIndexConnection *connection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (weak) id<CSSearchableIndexDelegate> indexDelegate; // @synthesize indexDelegate=_indexDelegate;
 @property (readonly, nonatomic) int indexID; // @synthesize indexID=_indexID;
@@ -117,7 +118,7 @@
 - (void)unthrottle;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)xpc_dictionary_for_command:(const char *)arg1;
+- (id)xpc_dictionary_for_command:(const char *)arg1 requiresInitialization:(BOOL)arg2;
 
 @end
 

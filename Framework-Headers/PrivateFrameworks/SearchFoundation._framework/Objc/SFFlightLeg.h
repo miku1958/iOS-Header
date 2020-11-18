@@ -32,11 +32,13 @@
     NSDate *_departureGateClosedTime;
     NSDate *_departureRunwayTime;
     NSDate *_arrivalRunwayTime;
+    NSDate *_arrivalGateTime;
 }
 
 @property (copy, nonatomic) NSDate *arrivalActualTime; // @synthesize arrivalActualTime=_arrivalActualTime;
 @property (strong, nonatomic) SFAirport *arrivalAirport; // @synthesize arrivalAirport=_arrivalAirport;
 @property (copy, nonatomic) NSString *arrivalGate; // @synthesize arrivalGate=_arrivalGate;
+@property (copy, nonatomic) NSDate *arrivalGateTime; // @synthesize arrivalGateTime=_arrivalGateTime;
 @property (copy, nonatomic) NSDate *arrivalPublishedTime; // @synthesize arrivalPublishedTime=_arrivalPublishedTime;
 @property (copy, nonatomic) NSDate *arrivalRunwayTime; // @synthesize arrivalRunwayTime=_arrivalRunwayTime;
 @property (copy, nonatomic) NSString *arrivalTerminal; // @synthesize arrivalTerminal=_arrivalTerminal;

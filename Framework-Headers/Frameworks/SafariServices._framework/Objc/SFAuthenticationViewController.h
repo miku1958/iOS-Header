@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface SFAuthenticationViewController : SFSafariViewController <UIViewControllerTransitioningDelegate>
 {
     _UIFallbackPresentationViewController *_fallbackPresentationViewController;
+    NSString *_callbackURLScheme;
     CDUnknownBlockType _dismissCompletionHandler;
 }
 
@@ -25,11 +26,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_presentViewController;
+- (void)_restartServiceViewController;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2;
 - (void)remoteViewController:(id)arg1 didDecideCookieSharingForURL:(id)arg2 shouldCancel:(BOOL)arg3;
 - (void)remoteViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;
-- (void)viewDidLoad;
+- (void)setDefersAddingRemoteViewController:(BOOL)arg1;
 
 @end
 

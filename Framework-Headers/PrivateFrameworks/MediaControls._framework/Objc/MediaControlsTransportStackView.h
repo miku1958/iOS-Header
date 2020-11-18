@@ -33,6 +33,7 @@
 @property (strong, nonatomic) UIColor *tintColorForCurrentStyle; // @synthesize tintColorForCurrentStyle=_tintColorForCurrentStyle;
 
 - (void).cxx_destruct;
+- (void)_resetTransportButton:(id)arg1;
 - (void)_updateButtonBlendMode:(id)arg1;
 - (void)_updateButtonImage:(id)arg1 button:(id)arg2;
 - (void)buttonHoldBegan:(id)arg1;

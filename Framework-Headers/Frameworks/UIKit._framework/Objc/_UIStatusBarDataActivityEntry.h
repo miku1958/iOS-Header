@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSString *displayId; // @synthesize displayId=_displayId;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_ui_descriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -40,14 +40,14 @@
     ETPointFIFO *_secondaryPointFIFO;
     unsigned long long _vertexOffset;
     double _delayBetweenStrokes;
-    vector_32896a2d _vertexBatches;
-    vector_761af77e _controlBatches;
-    vector_88016b54 _vertexBatchCount;
-    vector_88016b54 _secondaryVertexBatchCount;
+    vector_c2d99b46 _vertexBatches;
+    vector_e654105b _controlBatches;
+    vector_06e666a8 _vertexBatchCount;
+    vector_06e666a8 _secondaryVertexBatchCount;
 }
 
 @property (strong, nonatomic) EAGLContext *context; // @synthesize context=_context;
-@property (nonatomic) vector_b97278d5 controlBatches; // @synthesize controlBatches=_controlBatches;
+@property (nonatomic) vector_80ea899f controlBatches; // @synthesize controlBatches=_controlBatches;
 @property (nonatomic) double delayBetweenStrokes; // @synthesize delayBetweenStrokes=_delayBetweenStrokes;
 @property (strong, nonatomic) ETQuadCurvePointFIFO *interpolatingFIFO; // @synthesize interpolatingFIFO=_interpolatingFIFO;
 @property (strong, nonatomic) ETSketchMessage *messageData; // @synthesize messageData=_messageData;
@@ -59,13 +59,13 @@
 @property (strong, nonatomic) ETQuadCurvePointFIFO *secondaryInterpolatingFIFO; // @synthesize secondaryInterpolatingFIFO=_secondaryInterpolatingFIFO;
 @property (strong, nonatomic) ETPointFIFO *secondaryPointFIFO; // @synthesize secondaryPointFIFO=_secondaryPointFIFO;
 @property (strong, nonatomic) ETBoxcarFilterPointFIFO *secondarySmoothingFIFO; // @synthesize secondarySmoothingFIFO=_secondarySmoothingFIFO;
-@property (nonatomic) vector_88016b54 secondaryVertexBatchCount; // @synthesize secondaryVertexBatchCount=_secondaryVertexBatchCount;
+@property (nonatomic) vector_06e666a8 secondaryVertexBatchCount; // @synthesize secondaryVertexBatchCount=_secondaryVertexBatchCount;
 @property (strong, nonatomic) ETBoxcarFilterPointFIFO *smoothingFIFO; // @synthesize smoothingFIFO=_smoothingFIFO;
 @property (nonatomic) double timestampForLastDrawnPoint; // @synthesize timestampForLastDrawnPoint=_timestampForLastDrawnPoint;
 @property (nonatomic) float unitSize; // @synthesize unitSize=_unitSize;
 @property (nonatomic) BOOL useFastVerticalWisp; // @synthesize useFastVerticalWisp=_useFastVerticalWisp;
-@property (nonatomic) vector_88016b54 vertexBatchCount; // @synthesize vertexBatchCount=_vertexBatchCount;
-@property (nonatomic) vector_32896a2d vertexBatches; // @synthesize vertexBatches=_vertexBatches;
+@property (nonatomic) vector_06e666a8 vertexBatchCount; // @synthesize vertexBatchCount=_vertexBatchCount;
+@property (nonatomic) vector_c2d99b46 vertexBatches; // @synthesize vertexBatches=_vertexBatches;
 @property (nonatomic) unsigned long long vertexOffset; // @synthesize vertexOffset=_vertexOffset;
 @property (nonatomic) double wispDelay; // @synthesize wispDelay=_wispDelay;
 

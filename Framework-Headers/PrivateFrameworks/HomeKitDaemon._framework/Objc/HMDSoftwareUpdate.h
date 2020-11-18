@@ -7,15 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDSoftwareUpdateModel, HMFMessageDispatcher, HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSObject, NSString, NSUUID;
+@class HMDAccessory, HMDSoftwareUpdateModel, HMFMessageDispatcher, HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDSoftwareUpdate : HMFObject <HMFLogging, HMFObject, HMDBackingStoreObjectProtocol, HMFMessageReceiver, NSSecureCoding>
+@interface HMDSoftwareUpdate : HMFObject <HMFLogging, HMFObject, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
 {
     long long _state;
     HMSoftwareUpdateDocumentationMetadata *_documentationMetadata;
@@ -38,6 +38,7 @@
 @property (copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, copy) HMDSoftwareUpdateModel *model;
 @property (readonly, copy) NSString *propertyDescription;
@@ -46,6 +47,7 @@
 @property (readonly) Class superclass;
 @property (readonly, copy) HMFSoftwareVersion *version; // @synthesize version=_version;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)modelNamespace;
 + (BOOL)supportsSecureCoding;

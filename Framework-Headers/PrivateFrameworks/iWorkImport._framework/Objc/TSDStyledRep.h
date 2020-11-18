@@ -8,18 +8,11 @@
 
 #import <iWorkImport/CALayerDelegate-Protocol.h>
 
-@class CALayer, NSString, TSDMutableReflection, TSDReflection, TSDShadow;
+@class NSString, TSDReflection, TSDShadow, TSDStyledInfo, TSDStyledLayout;
 
 __attribute__((visibility("hidden")))
 @interface TSDStyledRep : TSDRep <CALayerDelegate>
 {
-    CALayer *mShadowLayer;
-    CALayer *mReflectionLayer;
-    struct CGPoint mOriginalReflectionLayerPositionInScaledCanvas;
-    BOOL mIsUpdatingReflectionOpacity;
-    TSDMutableReflection *mDynamicReflection;
-    BOOL mIsUpdatingShadow;
-    TSDShadow *mDynamicShadow;
     struct {
         unsigned int shadowInvalid:1;
     } mFlags;
@@ -28,11 +21,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInvisible;
 @property (readonly, nonatomic) double opacity;
 @property (readonly, nonatomic) TSDReflection *reflection;
-@property (readonly, nonatomic) CALayer *reflectionLayer; // @synthesize reflectionLayer=mReflectionLayer;
 @property (readonly, nonatomic) TSDShadow *shadow;
-@property (readonly, nonatomic) CALayer *shadowLayer; // @synthesize shadowLayer=mShadowLayer;
+@property (readonly, nonatomic) BOOL shouldShowReflection;
+@property (readonly, nonatomic) BOOL shouldShowShadow;
+@property (readonly, nonatomic) TSDStyledInfo *styledInfo;
+@property (readonly, nonatomic) TSDStyledLayout *styledLayout;
 @property (readonly) Class superclass;
 
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
@@ -52,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)drawReflectionInContext:(struct CGContext *)arg1 withTransparencyLayer:(BOOL)arg2 applyingOpacity:(BOOL)arg3 shouldClipGradient:(BOOL)arg4 withBlock:(CDUnknownBlockType)arg5;
 - (void)drawReflectionIntoReflectionFrameInContext:(struct CGContext *)arg1 withTransparencyLayer:(BOOL)arg2 applyingOpacity:(BOOL)arg3 drawChildren:(BOOL)arg4;
 - (void)drawShadowInContext:(struct CGContext *)arg1 withChildren:(BOOL)arg2 withDrawableOpacity:(BOOL)arg3;
-- (BOOL)isInvisible;
 - (struct CGImage *)newFrameMaskForViewScale:(double)arg1 frameRect:(struct CGRect *)arg2;
 - (struct CGImage *)newShadowImageWithSize:(struct CGSize)arg1 shadow:(id)arg2 drawSelector:(SEL)arg3 unflipped:(BOOL)arg4;
 - (struct CGImage *)newShadowImageWithSize:(struct CGSize)arg1 unflipped:(BOOL)arg2 withChildren:(BOOL)arg3;
@@ -64,11 +59,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)rectWithEffectsAppliedToRect:(struct CGRect)arg1;
 - (struct CGRect)reflectionLayerFrameInRoot;
 - (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect)arg2;
-- (BOOL)shouldShowReflection;
-- (BOOL)shouldShowShadow;
 - (struct CGRect)strokeBoundsWithOptions:(unsigned long long)arg1 fallbackBounds:(struct CGRect)arg2;
-- (id)styledInfo;
-- (id)styledLayout;
 - (id)textureForDescription:(id)arg1;
 
 @end

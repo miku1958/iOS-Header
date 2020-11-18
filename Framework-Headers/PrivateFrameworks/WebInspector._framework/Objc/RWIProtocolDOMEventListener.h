@@ -12,6 +12,8 @@
 {
 }
 
+@property (nonatomic) BOOL disabled;
+@property (nonatomic) int eventListenerId;
 @property (strong, nonatomic) RWIProtocolRuntimeRemoteObject *handler;
 @property (copy, nonatomic) NSString *handlerBody;
 @property (nonatomic) BOOL isAttribute;
@@ -23,7 +25,7 @@
 @property (copy, nonatomic) NSString *type;
 @property (nonatomic) BOOL useCapture;
 
-- (id)initWithType:(id)arg1 useCapture:(BOOL)arg2 isAttribute:(BOOL)arg3 nodeId:(int)arg4 handlerBody:(id)arg5;
+- (id)initWithEventListenerId:(int)arg1 type:(id)arg2 useCapture:(BOOL)arg3 isAttribute:(BOOL)arg4 nodeId:(int)arg5 handlerBody:(id)arg6;
 
 @end
 

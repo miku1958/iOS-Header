@@ -10,6 +10,7 @@
 
 @interface ASDPurgeAppsRequestOptions : ASDRequestOptions
 {
+    BOOL _offloadOnly;
     BOOL _performAvailablityCheck;
     NSArray *_apps;
     NSNumber *_desiredPurgeAmount;
@@ -19,6 +20,7 @@
 
 @property (copy, nonatomic) NSArray *apps; // @synthesize apps=_apps;
 @property (copy, nonatomic) NSNumber *desiredPurgeAmount; // @synthesize desiredPurgeAmount=_desiredPurgeAmount;
+@property (nonatomic) BOOL offloadOnly; // @synthesize offloadOnly=_offloadOnly;
 @property (nonatomic) BOOL performAvailablityCheck; // @synthesize performAvailablityCheck=_performAvailablityCheck;
 @property (nonatomic) long long urgency; // @synthesize urgency=_urgency;
 @property (copy, nonatomic) NSString *volume; // @synthesize volume=_volume;

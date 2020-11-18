@@ -34,8 +34,8 @@
     NFLCellGeneratorManager *_cellGeneratorManager;
     id<NFLFeedLayoutSearchConfiguration> _defaultFeedLayoutSearchConfiguration;
     NFLFontCache *_fontCache;
-    id<FCFeedTheming> _feedTheme;
     UITraitCollection *_traitCollection;
+    id<FCFeedTheming> _feedTheme;
     struct CGSize _viewportSize;
 }
 

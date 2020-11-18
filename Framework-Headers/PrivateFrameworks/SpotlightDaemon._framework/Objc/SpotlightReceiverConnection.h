@@ -6,7 +6,7 @@
 
 #import <CoreSpotlight/CSXPCConnection.h>
 
-@class NSArray, NSMutableSet, NSObject, NSSet, NSString;
+@class NSArray, NSMutableSet, NSObject, NSSet;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface SpotlightReceiverConnection : CSXPCConnection
@@ -23,7 +23,6 @@
     NSSet *_bundleIDs;
     NSArray *_contentTypes;
     NSSet *_INIntentClassNames;
-    NSString *_serviceName;
     NSObject<OS_dispatch_queue> *_senderQueue;
     double _minDate;
     NSObject<OS_dispatch_semaphore> *_setupSemaphore;
@@ -35,7 +34,6 @@
 @property (nonatomic) double minDate; // @synthesize minDate=_minDate;
 @property (readonly, nonatomic) _Atomic unsigned int requestCount; // @synthesize requestCount=_requestCount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *senderQueue; // @synthesize senderQueue=_senderQueue;
-@property (readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (nonatomic) BOOL setupComplete; // @synthesize setupComplete=_setupComplete;
 @property (strong) NSObject<OS_dispatch_semaphore> *setupSemaphore; // @synthesize setupSemaphore=_setupSemaphore;
 @property (nonatomic) BOOL skipFileProviderItems; // @synthesize skipFileProviderItems=_skipFileProviderItems;

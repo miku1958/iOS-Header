@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL nullData; // @synthesize nullData=mCurrentSeriesNullData;
 @property (readonly) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=mParagraphStyle;
 @property (readonly) double percentage; // @synthesize percentage=mCurrentSeriesPercentage;
-@property (readonly) TSCHChartSeries *series; // @synthesize series=mCurrentSeries;
+@property (readonly, weak) TSCHChartSeries *series; // @synthesize series=mCurrentSeries;
 @property (readonly) double seriesAxisValue; // @synthesize seriesAxisValue=mCurrentSeriesAxisValue;
 @property (readonly) TSDFill *seriesFill; // @synthesize seriesFill=mSeriesFill;
 @property (readonly) unsigned long long seriesIndex; // @synthesize seriesIndex=mCurrentSeriesIndex;
@@ -68,7 +68,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSString *valueLabelString; // @synthesize valueLabelString=mValueLabelString;
 @property (readonly) float wedgeExplosion; // @synthesize wedgeExplosion=mWedgeExplosion;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithPrior:(id)arg1 orChartModel:(id)arg2 forSeries:(unsigned long long)arg3;
 - (id)labelStringForType:(long long)arg1;

@@ -16,6 +16,7 @@
 + (id)collectionEventForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (BOOL)contentTypeTree:(id)arg1 conformsToUTIType:(id)arg2;
 + (BOOL)contentTypeTree:(id)arg1 conformsToUTITypes:(id)arg2;
++ (id)contextDictionaryForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (id)expectedSupportedUTIs;
 + (id)expectedUTIsForMechanism:(long long)arg1;
 + (long long)getInteractionMechanismForContentUTI:(id)arg1 typeTree:(id)arg2;

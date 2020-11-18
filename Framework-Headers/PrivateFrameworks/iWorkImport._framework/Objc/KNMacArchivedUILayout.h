@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface KNMacArchivedUILayout : TSPObject
 {
-    KNMacUILayout *mUILayout;
+    KNMacUILayout *_uiLayout;
 }
 
-@property (readonly, nonatomic) KNMacUILayout *uiLayout; // @synthesize uiLayout=mUILayout;
+@property (readonly, nonatomic) KNMacUILayout *uiLayout; // @synthesize uiLayout=_uiLayout;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithUILayout:(id)arg1 context:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;

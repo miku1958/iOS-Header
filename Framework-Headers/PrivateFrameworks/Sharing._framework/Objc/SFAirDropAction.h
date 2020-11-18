@@ -38,7 +38,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransferIdentifier:(id)arg1 actionIdentifier:(id)arg2 title:(id)arg3 singleItemTitle:(id)arg4;
 - (BOOL)isEqual:(id)arg1;

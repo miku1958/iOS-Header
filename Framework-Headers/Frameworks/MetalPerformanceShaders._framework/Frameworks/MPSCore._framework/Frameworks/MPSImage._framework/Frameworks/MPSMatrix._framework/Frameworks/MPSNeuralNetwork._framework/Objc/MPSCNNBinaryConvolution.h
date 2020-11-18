@@ -36,6 +36,7 @@
 - (void)createBuffersFromkernelWeights:(const unsigned int *)arg1 inputBiasTerms:(const float *)arg2 inputScaleTerms:(const float *)arg3 outputBiasTerms:(const float *)arg4 outputScaleTerms:(const float *)arg5 useHalfPrecision:(BOOL)arg6;
 - (void)dealloc;
 - (id)debugDescription;
+- (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 sourceOffset:(CDStruct_d6af7fc0 *)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;

@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class SXDocumentController, SXHost;
-@protocol SXResourceDataSource, SXTextContentProvider;
+@class SXDocumentController;
+@protocol SXHost, SXResourceDataSource, SXTextContentProvider;
 
 @interface SXContext : NSObject
 {
-    SXHost *_host;
+    id<SXHost> _host;
     SXDocumentController *_documentController;
     id<SXTextContentProvider> _textContentProvider;
     id<SXResourceDataSource> _resourceDataSource;
 }
 
 @property (readonly, nonatomic) SXDocumentController *documentController; // @synthesize documentController=_documentController;
-@property (readonly, nonatomic) SXHost *host; // @synthesize host=_host;
+@property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (readonly, weak, nonatomic) id<SXResourceDataSource> resourceDataSource; // @synthesize resourceDataSource=_resourceDataSource;
 @property (readonly, nonatomic) id<SXTextContentProvider> textContentProvider; // @synthesize textContentProvider=_textContentProvider;
 

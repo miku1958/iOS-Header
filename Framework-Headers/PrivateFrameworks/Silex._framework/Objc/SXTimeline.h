@@ -6,31 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSTimer;
+@class NSMutableArray;
 
 @interface SXTimeline : NSObject
 {
     double _duration;
     double _time;
     NSMutableArray *_timeline;
-    NSTimer *_timer;
 }
 
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic) double time; // @synthesize time=_time;
 @property (strong, nonatomic) NSMutableArray *timeline; // @synthesize timeline=_timeline;
-@property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 
 - (void).cxx_destruct;
-- (void)cancelDelayedBlock;
+- (void)addAction:(id)arg1;
 - (void)cancelScheduledBlocks;
 - (void)dealloc;
 - (void)executeActionsForTime:(double)arg1 withDuration:(double)arg2;
 - (double)executionTimeOfTime:(double)arg1 withinDuration:(double)arg2;
 - (BOOL)hasPassedTimeOffset:(double)arg1;
 - (id)init;
-- (void)performBlock:(CDUnknownBlockType)arg1 after:(double)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1 at:(double)arg2;
+- (void)removeAction:(id)arg1;
 - (void)resetTime;
 
 @end

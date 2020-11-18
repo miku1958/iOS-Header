@@ -6,14 +6,14 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, _MRNowPlayingPlayerPathProtobuf;
 
 @interface MRNotificationMessage : MRProtocolMessage
 {
 }
 
 @property (readonly, nonatomic) NSString *notification;
-@property (readonly, nonatomic) void *playerPath;
+@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
 @property (readonly, nonatomic) NSDictionary *userInfo;
 
 - (id)initWithNotification:(id)arg1;

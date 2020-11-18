@@ -8,13 +8,13 @@
 
 #import <Silex/STAXCustomRotorItemProvider-Protocol.h>
 #import <Silex/SXAnimatedImageDelegate-Protocol.h>
-#import <Silex/SXDragable-Protocol.h>
+#import <Silex/SXDraggable-Protocol.h>
 #import <Silex/SXReachabilityObserver-Protocol.h>
 
 @class NSMapTable, NSString, NSTimer, SXAnimatedImage, SXImageResource, UIActivityIndicatorView, UIImage, UILongPressGestureRecognizer, UIView;
-@protocol SXImageViewDelegate, SXReachabilityProvider, SXResourceDataSource, UIItemProviderWriting;
+@protocol NSItemProviderWriting, SXImageViewDelegate, SXReachabilityProvider, SXResourceDataSource;
 
-@interface SXImageView : UIImageView <STAXCustomRotorItemProvider, SXAnimatedImageDelegate, SXReachabilityObserver, SXDragable>
+@interface SXImageView : UIImageView <STAXCustomRotorItemProvider, SXAnimatedImageDelegate, SXReachabilityObserver, SXDraggable>
 {
     BOOL _shouldShowLoadingIndicator;
     BOOL _scrubbingEnabled;
@@ -55,7 +55,7 @@
 @property (weak, nonatomic) id<SXImageViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *dragIdentifier;
-@property (readonly, nonatomic) id<UIItemProviderWriting> dragObject;
+@property (readonly, nonatomic) id<NSItemProviderWriting> dragObject;
 @property (readonly, nonatomic) UIView *dragPreviewView;
 @property (copy, nonatomic) CDUnknownBlockType frameChangeBlock; // @synthesize frameChangeBlock=_frameChangeBlock;
 @property (nonatomic) unsigned long long frameIndex; // @synthesize frameIndex=_frameIndex;

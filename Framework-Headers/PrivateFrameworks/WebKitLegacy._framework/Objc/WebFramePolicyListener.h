@@ -14,8 +14,8 @@
 __attribute__((visibility("hidden")))
 @interface WebFramePolicyListener : NSObject <WebPolicyDecisionListener, WebFormSubmissionListener>
 {
-    struct RefPtr<WebCore::Frame> _frame;
-    Function_3679792b _policyFunction;
+    struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame>> _frame;
+    Function_b05ff6eb _policyFunction;
     struct RetainPtr<NSURL> _appLinkURL;
 }
 
@@ -31,8 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)download;
 - (void)ignore;
-- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_3679792b *)arg2;
-- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_3679792b *)arg2 appLinkURL:(id)arg3;
+- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_b05ff6eb *)arg2;
+- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_b05ff6eb *)arg2 appLinkURL:(id)arg3;
 - (void)invalidate;
 - (void)receivedPolicyDecision:(int)arg1;
 - (void)use;

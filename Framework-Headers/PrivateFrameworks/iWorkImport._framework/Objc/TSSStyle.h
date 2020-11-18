@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
 @interface TSSStyle : TSPObject <NSCopying, TSSPropertyValueValidator, TSSStyleObject, TSSPropertySource, TSSStyleClient, TSKModel, TSKTransformableObject>
 {
     TSSPropertyMap *mOverridePropertyMap;
+    TSSStylesheet *mStylesheet;
     NSString *mName;
     NSString *mStyleIdentifier;
     TSSStyle *mParent;
     BOOL mIsVariation;
-    TSSStylesheet *mStylesheet;
     BOOL mWasUnarchivedAsOrphanVariation;
 }
 
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSSStyle *rootAncestor;
 @property (readonly, nonatomic) TSSStyle *rootIdentifiedAncestor;
 @property (readonly, nonatomic) NSString *styleIdentifier;
-@property (readonly, nonatomic) TSSStylesheet *stylesheet; // @synthesize stylesheet=mStylesheet;
+@property (weak, nonatomic) TSSStylesheet *stylesheet; // @synthesize stylesheet=mStylesheet;
 @property (readonly) Class superclass;
 
 + (id)boxedDefaultValueForProperty:(int)arg1;
@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)validateIntValue:(int *)arg1 forProperty:(int)arg2 min:(int)arg3 max:(int)arg4;
 + (BOOL)validateIntValueAsBool:(int *)arg1 forProperty:(int)arg2;
 + (BOOL)validateObjectValue:(id *)arg1 withClass:(Class)arg2 forProperty:(int)arg3;
+- (void).cxx_destruct;
 - (double)CGFloatValueForProperty:(int)arg1;
 - (id)additionalPropertiesNeededForVariationWithPropertyMap:(id)arg1;
 - (BOOL)allowsImplicitComponentOwnership;
@@ -93,7 +94,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1 includeParentProperties:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 context:(id)arg2;
-- (void)dealloc;
 - (BOOL)definesProperty:(int)arg1;
 - (double)doubleValueForProperty:(int)arg1;
 - (void)fadeReflectionForSwatchGeneration;
@@ -156,7 +156,6 @@ __attribute__((visibility("hidden")))
 - (void)setOverridePropertyMap:(id)arg1;
 - (void)setParent:(id)arg1;
 - (void)setStyleIdentifier:(id)arg1;
-- (void)setStylesheet:(id)arg1;
 - (void)setValue:(id)arg1 forProperty:(int)arg2;
 - (void)setValuesForProperties:(id)arg1;
 - (id)shapeStyleByRemovingShadowFrameAndReflectionForContext:(id)arg1;

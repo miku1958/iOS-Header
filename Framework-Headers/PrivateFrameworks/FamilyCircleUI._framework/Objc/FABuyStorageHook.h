@@ -16,6 +16,7 @@
 {
     PSCloudStorageOffersManager *_storageOffersManager;
     CDUnknownBlockType _completion;
+    BOOL _loadingStorage;
     id<AAUIServerHookDelegate> _delegate;
 }
 
@@ -27,6 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_completionWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_invokeBuyStorageWithServerAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)manager:(id)arg1 didCompleteWithError:(id)arg2;
 - (void)manager:(id)arg1 loadDidFailWithError:(id)arg2;

@@ -35,7 +35,7 @@
 - (void)_migrateToCloudKitWithTarget:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_validateResultsOfMigrationWithTarget:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)runWithTarget:(id)arg1 deviceCoordinator:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)runWithTarget:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

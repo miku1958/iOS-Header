@@ -34,7 +34,6 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
 + (id)supportedImageMIMETypes;
 + (id)supportedMIMETypes;
 + (id)supportedMediaMIMETypes;
@@ -42,9 +41,8 @@
 + (id)unsupportedTextMIMETypes;
 - (id)_accessibilityParentForSubview:(id)arg1;
 - (double)_adjustedBottomOfPageWithTop:(double)arg1 bottom:(double)arg2 limit:(double)arg3;
-- (void)_applyEditingStyleToSelection:(Ref_72bb9b7b *)arg1 withUndoAction:(int)arg2;
+- (void)_applyEditingStyleToSelection:(Ref_8e48ecf0 *)arg1 withUndoAction:(int)arg2;
 - (void)_applyStyleToSelection:(id)arg1 withUndoAction:(int)arg2;
-- (void)_autoscroll;
 - (BOOL)_beginPrintModeWithMinimumPageWidth:(double)arg1 height:(double)arg2 maximumPageWidth:(double)arg3;
 - (BOOL)_beginPrintModeWithPageWidth:(float)arg1 height:(float)arg2 shrinkToFit:(BOOL)arg3;
 - (BOOL)_beginScreenPaginationModeWithPageSize:(struct CGSize)arg1 shrinkToFit:(BOOL)arg2;
@@ -55,7 +53,6 @@
 - (BOOL)_canIncreaseSelectionListLevel;
 - (BOOL)_canSmartCopyOrDelete;
 - (void)_changeWordCaseWithSelector:(SEL)arg1;
-- (void)_clearLastHitViewIfSelf;
 - (id)_compositingLayersHostingView;
 - (id)_dataSource;
 - (void)_decreaseSelectionListLevel;
@@ -70,7 +67,6 @@
 - (void)_frameOrBoundsChanged;
 - (id)_frameView;
 - (BOOL)_handleEditingKeyEvent:(struct KeyboardEvent *)arg1;
-- (BOOL)_hasHTMLDocument;
 - (BOOL)_hasInsertionPoint;
 - (BOOL)_hasSelection;
 - (BOOL)_hasSelectionOrInsertionPoint;
@@ -79,7 +75,6 @@
 - (id)_increaseSelectionListLevelUnordered;
 - (id)_insertOrderedList;
 - (id)_insertUnorderedList;
-- (BOOL)_insideAnotherHTMLView;
 - (BOOL)_isEditable;
 - (BOOL)_isInPrintMode;
 - (BOOL)_isInScreenPaginationMode;
@@ -97,24 +92,14 @@
 - (void)_setMouseDownEvent:(id)arg1;
 - (void)_setPrinting:(BOOL)arg1 minimumPageLogicalWidth:(float)arg2 logicalHeight:(float)arg3 originalPageWidth:(float)arg4 originalPageHeight:(float)arg5 maximumShrinkRatio:(float)arg6 adjustViewSize:(BOOL)arg7 paginateScreenContent:(BOOL)arg8;
 - (void)_setToolTip:(id)arg1;
-- (void)_setTransparentBackground:(BOOL)arg1;
-- (BOOL)_shouldDeleteRange:(id)arg1;
 - (BOOL)_shouldInsertFragment:(id)arg1 replacingDOMRange:(id)arg2 givenAction:(long long)arg3;
 - (BOOL)_shouldInsertText:(id)arg1 replacingDOMRange:(id)arg2 givenAction:(long long)arg3;
 - (BOOL)_shouldReplaceSelectionWithText:(id)arg1 givenAction:(long long)arg2;
-- (void)_startAutoscrollTimer:(id)arg1;
 - (void)_stopAutoscrollTimer;
 - (id)_topHTMLView;
-- (BOOL)_transparentBackground;
-- (void)_updateControlTints;
-- (void)_updateSelectionForInputManager;
 - (BOOL)_wantsKeyDownForEvent:(id)arg1;
 - (id)_webView;
-- (BOOL)_web_isDrawingIntoAcceleratedLayer;
-- (BOOL)_web_isDrawingIntoLayer;
-- (void)_web_makePluginSubviewsPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)_web_updateLayoutAndStyleIfNeededRecursive;
-- (void)_windowChangedKeyState;
 - (BOOL)acceptsFirstResponder;
 - (id)accessibilityFocusedUIElement;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;
@@ -124,7 +109,6 @@
 - (void)alignJustified:(id)arg1;
 - (void)alignLeft:(id)arg1;
 - (void)alignRight:(id)arg1;
-- (void)attachRootLayer:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (BOOL)callDelegateDoCommandBySelectorIfNeeded:(SEL)arg1;
 - (void)capitalizeWord:(id)arg1;
@@ -154,7 +138,6 @@
 - (void)deleteWordBackward:(id)arg1;
 - (void)deleteWordForward:(id)arg1;
 - (void)deselectAll;
-- (void)detachRootLayer;
 - (void)doCommandBySelector:(SEL)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawSingleRect:(struct CGRect)arg1;

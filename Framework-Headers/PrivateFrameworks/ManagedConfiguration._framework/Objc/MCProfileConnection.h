@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (id)features;
 + (id)profileInstallationErrorWithUnderlyingError:(id)arg1;
 + (id)sharedConnection;
 - (void).cxx_destruct;
@@ -67,7 +68,7 @@
 - (id)acceptedMIMETypes;
 - (id)activationLockBypassHash;
 - (id)activationLockBypassKey;
-- (id)activationLockBypassKeyCreateNewIfNeeded:(BOOL)arg1;
+- (id)activationLockBypassKeyCreateNewIfNeeded:(BOOL)arg1 outError:(id *)arg2;
 - (BOOL)activationRecordIndicatesCloudConfigurationIsAvailable;
 - (id)activeClassroomRoles;
 - (void)addActiveClassroomRole:(id)arg1;
@@ -168,13 +169,16 @@
 - (void)effectiveWhitelistedAppBundleIDsIncludingWatchBundleIDs:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)effectiveWhitelistedAppBundleIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)effectiveWhitelistedAppsAndOptions;
+- (unsigned long long)enforcedSoftwareUpdateDelayInDays;
 - (void)enrollProvisionallyWithNonce:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)filteredMailSheetAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (id)filteredOpenInAccounts:(id)arg1 originatingAppBundleID:(id)arg2 sourceAccountManagement:(int)arg3;
+- (id)filteredOpenInOriginatingAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;
 - (void)flush;
 - (void)getPasscodeComplianceWarningLastLockDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (int)getPasscodeComplianceWarningLastLockDate:(id)arg1 outLocalizedTitle:(id *)arg2 outLocalizedMessage:(id *)arg3;
 - (unsigned long long)gracePeriod;
+- (BOOL)hasAnyMailAccountIgnoringFiltering;
 - (BOOL)hasAppAnalyticsAllowedBeenSet;
 - (BOOL)hasDiagnosticSubmissionAllowedBeenSet;
 - (BOOL)hasHealthDataSubmission2BeenSet;
@@ -239,6 +243,7 @@
 - (BOOL)isClassroomAutomaticClassJoiningForced;
 - (BOOL)isClassroomEnabled;
 - (BOOL)isClassroomInstructorRoleEnabled;
+- (BOOL)isClassroomRequestPermissionToLeaveClassesForced;
 - (BOOL)isClassroomStudentRoleEnabled;
 - (BOOL)isClassroomUnpromptedAppAndDeviceLockForced;
 - (BOOL)isClassroomUnpromptedScreenObservationForced;
@@ -324,6 +329,7 @@
 - (BOOL)isTodayViewModificationAllowed;
 - (BOOL)isUIAppInstallationAllowed;
 - (BOOL)isURLManaged:(id)arg1;
+- (BOOL)isUSBRestrictedModeAllowed;
 - (BOOL)isUninstalledAppNearMeSuggestionsAllowed;
 - (BOOL)isUnionSettingLockedDownByRestrictions:(id)arg1;
 - (BOOL)isVPNCreationAllowed;
@@ -362,6 +368,7 @@
 - (BOOL)mayShareToMessagesForOriginatingAppBundleID:(id)arg1 originatingAccountIsManaged:(BOOL)arg2;
 - (BOOL)mayShareToMessagesOriginatingAccountIsManaged:(BOOL)arg1;
 - (BOOL)mayShowLocalAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
+- (BOOL)mayShowLocalAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2;
 - (void)migratePostDataMigrator;
 - (void)migratePostMDMDataMigratorWithContext:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -534,6 +541,7 @@
 - (void)setWheelchairDataSubmissionAllowed:(BOOL)arg1;
 - (void)setupAssistantDidFinish;
 - (BOOL)shouldApplyFilterForBundleID:(id)arg1 sourceAccountManagement:(int)arg2 outAllowManagedAccounts:(BOOL *)arg3 outAllowUnmanagedAccounts:(BOOL *)arg4;
+- (BOOL)shouldApplyFilterForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2 outAllowManagedAccounts:(BOOL *)arg3 outAllowUnmanagedAccounts:(BOOL *)arg4;
 - (BOOL)shouldDestroyOldKeybag;
 - (BOOL)shouldInstallStoredProfileForPurpose:(int)arg1;
 - (BOOL)shouldShowCloudConfigurationUI;
@@ -549,6 +557,7 @@
 - (void)storeCloudConfigurationDetails:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)storeCloudConfigurationDetails:(id)arg1 waitUntilCompleted:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)storeProfileData:(id)arg1 configurationSource:(int)arg2 purpose:(int)arg3;
+- (void)storeProfileData:(id)arg1 configurationSource:(int)arg2 purpose:(int)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)submitUserInputResponses:(id)arg1;
 - (id)trustedCodeSigningIdentities;
 - (void)unenrollWithCompletionBlock:(CDUnknownBlockType)arg1;

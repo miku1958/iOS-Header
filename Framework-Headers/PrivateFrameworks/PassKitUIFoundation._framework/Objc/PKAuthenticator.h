@@ -46,8 +46,7 @@
 - (void)cancelEvaluation;
 - (void)cancelEvaluationWithOptions:(unsigned long long)arg1;
 - (void)dealloc;
-- (void)evaluatePolicy:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)evaluateRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)evaluateRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fallbackToSystemPasscodeUI;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;

@@ -31,8 +31,8 @@
 
 + (id)emptyPath;
 + (id)pathWithKeyState:(unsigned long long)arg1 next:(id)arg2 inputs:(id)arg3 output:(id)arg4;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithKeyState:(unsigned long long)arg1 next:(id)arg2 inputs:(id)arg3 output:(id)arg4;

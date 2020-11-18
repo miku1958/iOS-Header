@@ -25,6 +25,8 @@
     BOOL _showsFamilyNameFirst;
     BOOL _showsPhoneticName;
     BOOL _editingUser;
+    BOOL _isObserving;
+    BOOL _isPresentingFullScreenView;
     UIViewController *_presentingViewController;
     id<CRKUserTableViewCellDelegate> _delegate;
     CRKUser *_user;
@@ -34,6 +36,7 @@
     UILabel *_fullNameLabel;
     UITableView *_editorTableView;
     UIButton *_editButton;
+    UIImageView *_screenObservationImageView;
     UITextField *_givenNameTextField;
     UITextField *_phoneticGivenNameTextField;
     UITextField *_familyNameTextField;
@@ -54,9 +57,12 @@
 @property (weak, nonatomic) UITextField *givenNameTextField; // @synthesize givenNameTextField=_givenNameTextField;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
+@property (nonatomic) BOOL isObserving; // @synthesize isObserving=_isObserving;
+@property (nonatomic) BOOL isPresentingFullScreenView; // @synthesize isPresentingFullScreenView=_isPresentingFullScreenView;
 @property (weak, nonatomic) UITextField *phoneticFamilyNameTextField; // @synthesize phoneticFamilyNameTextField=_phoneticFamilyNameTextField;
 @property (weak, nonatomic) UITextField *phoneticGivenNameTextField; // @synthesize phoneticGivenNameTextField=_phoneticGivenNameTextField;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (strong, nonatomic) UIImageView *screenObservationImageView; // @synthesize screenObservationImageView=_screenObservationImageView;
 @property (nonatomic) BOOL showsFamilyNameFirst; // @synthesize showsFamilyNameFirst=_showsFamilyNameFirst;
 @property (nonatomic) BOOL showsPhoneticName; // @synthesize showsPhoneticName=_showsPhoneticName;
 @property (readonly) Class superclass;
@@ -67,6 +73,7 @@
 - (void)_didPressEditButton:(id)arg1;
 - (void)_didTapUserImage:(id)arg1;
 - (void)_textFieldDidChange:(id)arg1;
+- (id)accessibilityLabel;
 - (struct CGRect)aspectFillFrameForViewOfSize:(struct CGSize)arg1 inFrame:(struct CGRect)arg2;
 - (BOOL)becomeFirstResponder;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;

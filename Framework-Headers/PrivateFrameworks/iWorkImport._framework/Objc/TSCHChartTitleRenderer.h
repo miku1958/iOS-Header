@@ -12,15 +12,19 @@ __attribute__((visibility("hidden")))
     struct CGRect mStartingEditingFrame;
 }
 
-- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2;
++ (id)defaultParagraphStyleForCenteredTitleEllipsisWithChartInfo:(id)arg1 originalParagraphStyle:(id)arg2 scaleTextPercent:(double)arg3 titleRootedLayoutRect:(struct CGRect)arg4;
+- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2 useWrapWidth:(BOOL)arg3;
 - (BOOL)canEditTextForSelectionPath:(id)arg1;
 - (BOOL)canRenderSelectionPath:(id)arg1;
 - (struct CGRect)frameForEditingTextForSelectionPath:(id)arg1;
 - (double)frameHeightChangeForPath:(id)arg1;
+- (void)p_debugRenderRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withColor:(id)arg3;
 - (void)p_drawTitle:(struct CGContext *)arg1 rangePtr:(struct _NSRange *)arg2;
 - (struct CGRect)p_rawFrameForEditingTextForSelectionPath:(id)arg1;
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (void)renderIntoContext:(struct CGContext *)arg1 selection:(id)arg2;
+- (BOOL)shouldPlaceTitleAtCenter;
+- (id)textLayoutPropertiesWithWrapWidth:(double)arg1;
 - (void)useEditedString:(id)arg1;
 
 @end

@@ -16,6 +16,7 @@
 @property (nonatomic) id<CMWakeGestureDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (BOOL)isWakeGestureAvailable;
++ (BOOL)isWakeGestureEnabledOniPad;
 + (id)sharedManager;
 - (void)logAssert;
 - (BOOL)simulateGestureWithDelay:(double)arg1 Duration:(double)arg2;

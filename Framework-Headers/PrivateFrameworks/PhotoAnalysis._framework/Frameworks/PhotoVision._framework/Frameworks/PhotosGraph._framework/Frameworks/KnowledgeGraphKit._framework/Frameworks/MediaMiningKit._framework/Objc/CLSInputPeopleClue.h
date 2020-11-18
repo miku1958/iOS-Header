@@ -6,11 +6,9 @@
 
 #import <MediaMiningKit/CLSInputClue.h>
 
-#import <MediaMiningKit/NSCoding-Protocol.h>
-
 @class CLSPerson, PHPhotoLibrary;
 
-@interface CLSInputPeopleClue : CLSInputClue <NSCoding>
+@interface CLSInputPeopleClue : CLSInputClue
 {
     CLSPerson *_person;
     PHPhotoLibrary *_photoLibrary;
@@ -25,12 +23,9 @@
 + (id)clueWithPeopleUUID:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)cluesWithPeopleUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)cluesWithPeoples:(id)arg1;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_prepareOperation;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqualToClue:(id)arg1;
 - (id)name;
 

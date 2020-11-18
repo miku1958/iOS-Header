@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, STTextTangierContainerInfo, STTextTangierDocumentRoot, SXTextSource, TSDLayoutController;
+@class NSArray, NSSet, STTextTangierContainerInfo, STTextTangierDocumentRoot, SXTextSource, TSDLayoutController;
 
 @interface SXTextLayouter : NSObject
 {
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) STTextTangierDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
 @property (strong, nonatomic) NSSet *exclusionPaths; // @synthesize exclusionPaths=_exclusionPaths;
 @property (strong, nonatomic) TSDLayoutController *layoutController; // @synthesize layoutController=_layoutController;
+@property (readonly, nonatomic) NSArray *paragraphRanges;
 @property (strong, nonatomic) STTextTangierContainerInfo *textInfo; // @synthesize textInfo=_textInfo;
 @property (strong, nonatomic) SXTextSource *textSource; // @synthesize textSource=_textSource;
 
@@ -39,6 +40,7 @@
 - (void)reset;
 - (id)textLayout;
 - (struct _NSRange)validAnchorRangeForRange:(struct _NSRange)arg1;
+- (double)verticalLocationOfCharacterAtIndex:(unsigned long long)arg1;
 - (id)wpLayout;
 - (id)wpStorage;
 

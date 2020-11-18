@@ -10,14 +10,14 @@
 #import <iWorkImport/TSSPreset-Protocol.h>
 #import <iWorkImport/TSTCellDiffing-Protocol.h>
 
-@class NSString;
+@class NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
 @interface TSWPParagraphStyle : TSSStyle <TSTCellDiffing, TSSPreset, TSDMixing>
 {
-    void *_coreTextParagraphStyle;
-    struct __CFDictionary *_styleCache;
-    struct __CFDictionary *_scalePercentStyleCaches;
+    struct __CTParagraphStyle *_coreTextParagraphStyle;
+    NSMapTable *_styleCache;
+    NSMapTable *_scalePercentStyleCaches;
 }
 
 @property (readonly, nonatomic) BOOL allowAsBookmarkSuggestionStyle;
@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 + (id)defaultStyleWithDefaultPropertiesInContext:(id)arg1;
 + (id)defaultValueForProperty:(int)arg1;
 + (id)deprecatedProperties;
-+ (void)initialize;
 + (id)nonEmphasisParagraphProperties;
 + (id)p_normalDecimalSeparator;
 + (id)paragraphProperties;
@@ -42,6 +41,7 @@ __attribute__((visibility("hidden")))
 + (id)properties;
 + (id)propertiesAllowingNSNull;
 + (id)styleSummaryForPropertyMap:(id)arg1;
+- (void).cxx_destruct;
 - (void)addMissingClassProperties;
 - (id)archivableRepresentationOfChangeSet:(id)arg1;
 - (double)ascent;
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (struct __CTFont *)findCachedFontForCharacterStyle:(id)arg1 scalePercent:(unsigned long long)arg2;
 - (id)followingParagraphStyle;
 - (id)fullPropertyMap;
-- (struct __CFDictionary *)getTypesetterAttributes:(id)arg1 scalePercent:(unsigned long long)arg2 isRightToLeft:(BOOL)arg3;
+- (id)getTypesetterAttributes:(id)arg1 scalePercent:(unsigned long long)arg2 isRightToLeft:(BOOL)arg3;
 - (id)initialListStyle;
 - (void)loadFromArchive:(const struct ParagraphStyleArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -60,9 +60,9 @@ __attribute__((visibility("hidden")))
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4;
 - (BOOL)p_contentTagIsBody;
+- (id)p_coreTextCharacterStyle:(id)arg1 allowLigatures:(BOOL)arg2 scalePercent:(unsigned long long)arg3;
 - (BOOL)p_coreTextWritingDirectionFromWPWritingDirection:(int)arg1;
 - (struct __CTParagraphStyle *)p_createCoreTextParagraphStyleWithCharacterStyle:(id)arg1 writingDirection:(int)arg2;
-- (struct __CFDictionary *)p_newCoreTextCharacterStyle:(id)arg1 allowLigatures:(BOOL)arg2 scalePercent:(unsigned long long)arg3;
 - (id)parentStyleForFixingOrphanVariation;
 - (void)saveToArchive:(struct ParagraphStyleArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;

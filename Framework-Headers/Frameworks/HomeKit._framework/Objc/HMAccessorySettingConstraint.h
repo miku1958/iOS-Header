@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
 @class NSUUID;
 @protocol NSCopying><NSSecureCoding;
 
-@interface HMAccessorySettingConstraint : NSObject <NSSecureCoding>
+@interface HMAccessorySettingConstraint : NSObject <NSSecureCoding, NSCopying>
 {
     NSUUID *_identifier;
     long long _type;
@@ -26,6 +27,7 @@
 + (id)supportedValueClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)descriptionWithPointer:(BOOL)arg1;

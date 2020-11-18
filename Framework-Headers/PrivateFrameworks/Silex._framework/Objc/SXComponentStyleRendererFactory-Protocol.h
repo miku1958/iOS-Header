@@ -6,10 +6,9 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXComponent;
-@protocol SXComponentStyleRenderer;
+@protocol SXComponent, SXComponentStyleRenderer;
 
 @protocol SXComponentStyleRendererFactory <NSObject>
-- (id<SXComponentStyleRenderer>)componentStyleRendererForComponent:(SXComponent *)arg1;
+- (id<SXComponentStyleRenderer>)componentStyleRendererForComponent:(id<SXComponent>)arg1;
 @end
 

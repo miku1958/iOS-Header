@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface _RWITCPConnection : NSObject
 {
-    id<_RWITCPConnectionDelegate> _delegate;
     int _socket;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSObject<OS_dispatch_source> *_inputSource;
@@ -25,12 +24,14 @@ __attribute__((visibility("hidden")))
     NSMutableData *_incomingData;
     _RWITCPServer *_server;
     long long _type;
+    id<_RWITCPConnectionDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<_RWITCPConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (id)TCPConnectionWithPort:(unsigned short)arg1;
 + (id)TCPConnectionWithResolvedNetService:(id)arg1;
++ (id)TCPConnectionWithSocketPath:(id)arg1;
 - (void).cxx_destruct;
 - (void)_closeInputStream;
 - (void)_closeOutputStream;

@@ -7,6 +7,7 @@
 #import <Foundation/NSFileHandle.h>
 
 @interface NSFileHandle (HealthKit)
+- (long long)hk_countLines;
 - (void)hk_readLinesInFile:(CDUnknownBlockType)arg1;
 @end
 

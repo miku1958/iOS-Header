@@ -18,9 +18,9 @@
 @property (strong, nonatomic) _MRVirtualTouchDeviceDescriptorProtobuf *deviceDescriptor; // @synthesize deviceDescriptor=_deviceDescriptor;
 @property (readonly, nonatomic) BOOL hasDeviceDescriptor;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

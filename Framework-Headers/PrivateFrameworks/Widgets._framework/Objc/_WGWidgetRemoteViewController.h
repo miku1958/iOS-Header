@@ -26,6 +26,7 @@
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 - (void)__closeTransactionForAppearanceCallWithState:(int)arg1 withIdentifier:(id)arg2;
+- (void)__requestPreferredViewHeight:(double)arg1;
 - (void)__setLargestAvailableDisplayMode:(long long)arg1;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)__viewServiceDidRegisterScrollToTopView;

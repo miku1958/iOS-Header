@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface TSTCellMap : TSPObject <NSCopying>
 {
-    vector_13f93596 _cellIDs;
+    vector_38b190b0 _cellIDs;
     NSMutableArray *_mergeActions;
     BOOL _mayModifyFormulasInCells;
     BOOL _mayModifyValuesReferencedByFormulas;
@@ -47,12 +47,12 @@ __attribute__((visibility("hidden")))
 - (id)cellAtIndex:(unsigned long long)arg1;
 - (struct TSUCellCoord)cellIDAtIndex:(unsigned long long)arg1;
 - (id)cellIDBasedCellMapByTableInfo:(id)arg1;
-- (const vector_13f93596 *)cellIDs;
-- (id)cellMapMaskedByUIDs:(const vector_dadc1b26 *)arg1 inRows:(BOOL)arg2;
+- (const vector_38b190b0 *)cellIDs;
+- (id)cellMapMaskedByUIDs:(const vector_4dc5f307 *)arg1 inRows:(BOOL)arg2;
 - (id)changeDescriptorsForTable:(id)arg1;
 - (void)clearDataListIDs;
 - (void)clearMerges;
-- (const vector_dadc1b26 *)columnUIDs;
+- (const vector_4dc5f307 *)columnUIDs;
 - (BOOL)containsMergeChanges;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 copyingCells:(BOOL)arg2;
@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (id)findCellForCellID:(struct TSUCellCoord)arg1;
 - (id)findCellForCellUID:(const struct TSTCellUID *)arg1;
 - (id)initWithContext:(id)arg1;
-- (id)initWithContext:(id)arg1 cell:(id)arg2 cellIDList:(const vector_13f93596 *)arg3;
+- (id)initWithContext:(id)arg1 cell:(id)arg2 cellIDList:(const vector_38b190b0 *)arg3;
 - (id)initWithContext:(id)arg1 cell:(id)arg2 cellUIDList:(id)arg3;
 - (id)initWithContext:(id)arg1 uidBased:(BOOL)arg2;
 - (id)iterator;
@@ -75,9 +75,9 @@ __attribute__((visibility("hidden")))
 - (void)p_copyCellsAndUUIDsFromCellMap:(id)arg1 convertingToCellIDsWithTableInfo:(id)arg2;
 - (void)p_resolveCellIDsToUUIDsByTableInfo:(id)arg1 preserveHostCells:(BOOL)arg2;
 - (void)popLastCell;
-- (void)remapUIDsByColumnMap:(const UUIDMap_727ee07e *)arg1 rowMap:(const UUIDMap_727ee07e *)arg2 ownerMap:(const UUIDMap_727ee07e *)arg3;
+- (void)remapUIDsByColumnMap:(const UUIDMap_b66c2694 *)arg1 rowMap:(const UUIDMap_b66c2694 *)arg2 ownerMap:(const UUIDMap_b66c2694 *)arg3;
 - (void)replaceCellAtIndex0:(id)arg1;
-- (const vector_dadc1b26 *)rowUIDs;
+- (const vector_4dc5f307 *)rowUIDs;
 - (void)saveToArchiver:(id)arg1;
 - (id)uuidBasedCellMapByTableInfo:(id)arg1;
 - (id)uuidBasedCellMapByTableInfo:(id)arg1 preserveHostCells:(BOOL)arg2;

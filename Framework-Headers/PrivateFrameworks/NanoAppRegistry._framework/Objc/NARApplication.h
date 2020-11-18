@@ -16,7 +16,6 @@
     NSString *_launchServicesBundleType;
     NSString *_parentApplicationBundleIdentifier;
     NSArray *_appTags;
-    NARGlance *_glance;
     NARApplicationState *_appState;
     NSDictionary *_infoPlist;
     NSDictionary *_localizedStrings;
@@ -28,7 +27,7 @@
 @property (readonly, nonatomic) NSString *applicationIdentifier;
 @property (readonly, nonatomic) NSString *bundleName;
 @property (readonly, nonatomic) NSString *bundleVersion;
-@property (strong, nonatomic) NARGlance *glance; // @synthesize glance=_glance;
+@property (readonly, nonatomic) NARGlance *glance;
 @property (strong, nonatomic) NSDictionary *iTunesPlistStrings; // @synthesize iTunesPlistStrings=_iTunesPlistStrings;
 @property (strong, nonatomic) NSDictionary *infoPlist; // @synthesize infoPlist=_infoPlist;
 @property (readonly, nonatomic) BOOL isHidden;

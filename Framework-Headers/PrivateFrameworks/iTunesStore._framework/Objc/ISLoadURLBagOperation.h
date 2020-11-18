@@ -14,9 +14,11 @@
 {
     SSURLBagContext *_context;
     ISURLBag *_outputBag;
+    NSNumber *_accountDSID;
 }
 
 @property (readonly) ISURLBag *URLBag;
+@property (strong, nonatomic) NSNumber *accountDSID; // @synthesize accountDSID=_accountDSID;
 @property (readonly) SSURLBagContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

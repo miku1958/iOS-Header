@@ -14,6 +14,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) BOOL hasFinishedTryingToFetchCorrectThumbnail;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRepresentativeIcon;
 @property (readonly, nonatomic, getter=isLoading) BOOL loading;
@@ -23,5 +24,6 @@
 
 - (void)addListener:(id)arg1;
 - (void)removeListener:(id)arg1;
+- (void)scheduleUpdateIfNeeded;
 @end
 

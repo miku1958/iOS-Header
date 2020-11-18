@@ -6,7 +6,9 @@
 
 #import <Silex/NSObject-Protocol.h>
 
+@class UIView;
+
 @protocol SXComponentInteractionHandler <NSObject>
-- (void)handleInteractionType:(unsigned long long)arg1;
+- (void)handleInteractionType:(unsigned long long)arg1 sourceView:(UIView *)arg2 sourceRect:(struct CGRect)arg3;
 @end
 

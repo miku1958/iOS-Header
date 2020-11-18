@@ -12,7 +12,7 @@
 #import <iWorkImport/TSKSearchable-Protocol.h>
 #import <iWorkImport/TSKTransformableObject-Protocol.h>
 
-@class NSData, NSObject, NSString, NSURL, TSDDefaultPartitioner, TSDDrawableComment, TSDExteriorTextWrap, TSDInfoGeometry, TSPLazyReference, TSSPropertySetChangeDetails;
+@class NSArray, NSData, NSObject, NSSet, NSString, NSURL, TSDDefaultPartitioner, TSDDrawableComment, TSDExteriorTextWrap, TSDInfoGeometry, TSPLazyReference, TSSPropertySetChangeDetails;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
@@ -29,17 +29,22 @@ __attribute__((visibility("hidden")))
     TSDDefaultPartitioner *mDefaultPartitioner;
     NSURL *mHyperlinkURL;
     TSDDrawableComment *mComment;
+    NSArray *mPencilAnnotations;
     NSString *mAccessibilityDescription;
 }
 
 @property (copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=mAccessibilityDescription;
+@property (readonly, nonatomic, getter=isAllowedInFreehandDrawings) BOOL allowedInFreehandDrawings;
+@property (readonly, nonatomic, getter=isAllowedInGroups) BOOL allowedInGroups;
 @property (readonly, nonatomic) BOOL allowsParentGroupToBeResizedWithoutAspectRatioLock;
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
+@property (readonly, nonatomic) NSSet *animationFilters;
 @property (nonatomic) BOOL aspectRatioLocked; // @synthesize aspectRatioLocked=mAspectRatioLocked;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) BOOL canAspectRatioLockBeChangedByUser;
 @property (readonly, nonatomic) BOOL canSizeBeChangedIncrementally;
 @property (strong, nonatomic) TSDDrawableComment *comment;
+@property (readonly, nonatomic) BOOL contentsAreRightToLeft;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) int elementKind;
@@ -54,14 +59,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isLockable) BOOL lockable;
 @property (nonatomic, getter=isLocked) BOOL locked; // @synthesize locked=mLocked;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
+@property (readonly, nonatomic) BOOL needsDownload;
 @property (readonly, nonatomic) NSData *originalPDFDataForCopy;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @synthesize owningAttachment=mOwningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (strong, nonatomic) NSArray *pencilAnnotations;
+@property (readonly, nonatomic) BOOL shouldBeIgnoredWhenCopying;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsAttachedComments;
 @property (readonly, nonatomic) BOOL supportsHyperlinks;
 @property (readonly, nonatomic) BOOL supportsParentRotation;
+@property (readonly, nonatomic) BOOL willRenderContentViaImager;
 
 + (BOOL)canPartition;
 + (Class)classForUnarchiver:(id)arg1;
@@ -69,7 +78,6 @@ __attribute__((visibility("hidden")))
 + (void)setShouldPartitionByDefault:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
-- (id)animationFilters;
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 dynamicallyDraggedLayout:(id)arg2;
 - (void)beginCollectingChanges;
 - (BOOL)canAnchor;
@@ -87,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)didCopy;
 - (id)endCollectingChanges;
 - (id)exteriorTextWrapForMovingToFloating;
+- (void)finalizeDataOnDeepCopyBeforeSerializingForDragAndDrop;
 - (struct CGAffineTransform)fullTransformInRoot;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (BOOL)isLockedForSpecificInfo;
@@ -101,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)performBlockWithTemporaryLayout:(CDUnknownBlockType)arg1;
 - (id)presetKind;
 - (id)promisedDataForType:(id)arg1;
+- (id)promisedTSPDataForType:(id)arg1;
 - (Class)repClass;
 - (BOOL)requiresStagesBuildingInReverse;
 - (void)saveToArchive:(struct DrawableArchive *)arg1 archiver:(id)arg2;
@@ -108,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)setParentInfoDuringUnarchiving:(id)arg1 inDocument:(BOOL)arg2;
 - (void)setPrimitiveGeometry:(id)arg1;
 - (BOOL)shouldCancelScrollingToSelectionPath:(id)arg1 forChanges:(id)arg2;
+- (BOOL)shouldPreventCopyOperationWithOtherInfos:(id)arg1;
 - (BOOL)suppliesFinalTextures;
 - (unsigned long long)textureDeliveryStyleFromDeliveryString:(id)arg1;
 - (id)textureDeliveryStylesLocalized:(BOOL)arg1 animationFilter:(id)arg2;

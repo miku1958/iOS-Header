@@ -68,6 +68,7 @@
 - (id)initWithName:(id)arg1 type:(id)arg2 scan:(unsigned int)arg3 offset:(unsigned int)arg4 size:(unsigned int)arg5;
 - (id)initWithObjcIvar:(struct objc_ivar *)arg1 size:(unsigned int)arg2 isARC:(BOOL)arg3 is64Bit:(BOOL)arg4;
 - (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3;
+- (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3 returnedDestinationLayoutClassInfoIndex:(unsigned int *)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopy;
 - (void)serializeWithClassMap:(id)arg1 simpleSerializer:(id)arg2 version:(unsigned int)arg3;

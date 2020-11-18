@@ -26,7 +26,6 @@
 - (void)clearRecordCacheWithSetupInfo:(CKContainerSetupInfo *)arg1 databaseScope:(long long)arg2;
 - (void)currentDeviceIDWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)currentUserBoundaryKeyWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
-- (void)currentUserIDWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)dataclassEnabled:(NSString *)arg1 withSetupInfo:(CKContainerSetupInfo *)arg2 completionHandler:(void (^)(NSString *, BOOL, NSError *))arg3;
 - (void)decryptPersonalInfoOnShare:(CKShare *)arg1 setupInfo:(CKContainerSetupInfo *)arg2 completionHandler:(void (^)(CKShare *, NSError *))arg3;
 - (void)displayInfoOnAccountWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSPersonNameComponents *, NSString *, NSString *, NSError *))arg2;
@@ -41,6 +40,7 @@
 - (void)getPCSDiagnosticsForZonesWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(CKPCSDiagnosticInformation *))arg2;
 - (void)getRecordPCSDiagnosticsForZonesWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)getSandboxExtensionsWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)importantUserIDsWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)performAcceptSharesOperation:(CKAcceptSharesOperationInfo *)arg1 withBlock:(void (^)(void))arg2;
 - (void)performAggregateZonePCSOperation:(CKAggregateZonePCSOperationInfo *)arg1 withBlock:(void (^)(void))arg2;
 - (void)performArchiveRecordsOperation:(CKArchiveRecordsOperationInfo *)arg1 withBlock:(void (^)(void))arg2;

@@ -36,10 +36,10 @@
 @property (nonatomic) BOOL supportsExtendedMotion; // @synthesize supportsExtendedMotion=_supportsExtendedMotion;
 @property (strong, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 
+- (void).cxx_destruct;
 - (int)StringAsProfile:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

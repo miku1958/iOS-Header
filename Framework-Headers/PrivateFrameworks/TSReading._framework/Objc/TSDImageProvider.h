@@ -12,16 +12,17 @@
 {
     int mLoadState;
     TSPData *mImageData;
-    _Atomic int mRetainCount;
-    _Atomic int mOwnerCount;
     TSUFlushingManager *mFlushingManager;
     int mInterest;
     struct os_unfair_lock_s mInterestLock;
+    struct atomic<int> mRetainCount;
+    struct atomic<int> mOwnerCount;
 }
 
 @property (readonly, nonatomic) unsigned long long imageGamut;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (id).cxx_construct;
 - (void)addInterest;
 - (void)addOwner;
 - (void)dealloc;

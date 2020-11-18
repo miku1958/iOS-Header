@@ -445,7 +445,7 @@
 - (id)_horizontalFeedbackGenerator;
 - (double)_horizontalScrollIndicatorHeight;
 - (double)_horizontalVelocity;
-- (void)_incrementForScrollTest;
+- (void)_incrementForScrollTest:(id)arg1;
 - (id)_indexBarEntries;
 - (long long)_indicatorInsetAdjustmentBehavior;
 - (struct CGSize)_interpageSpacing;
@@ -466,6 +466,7 @@
 - (id)_layoutVariablesWithAmbiguousValue;
 - (struct CGRect)_layoutVerticalScrollIndicatorWithBounds:(struct CGRect)arg1 effectiveInset:(struct UIEdgeInsets)arg2 contentOffset:(struct CGPoint)arg3 fraction:(double)arg4 additionalInset:(double)arg5 cornerAdjust:(double)arg6 showing:(BOOL)arg7 recalcSize:(BOOL)arg8;
 - (void)_lowFidelityScrollInDirection:(struct CGPoint)arg1;
+- (void)_managedSubviewAdded:(id)arg1;
 - (void)_markScrollViewAnimationForKey:(id)arg1 ofView:(id)arg2;
 - (double)_maxTopOffsetAdjustedForRevealableContentPadding:(double)arg1;
 - (void)_moveContentSubview:(id)arg1 toBack:(BOOL)arg2;

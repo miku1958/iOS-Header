@@ -66,10 +66,13 @@
 - (void)paymentWebServiceDidUpdateConfiguration:(id)arg1;
 - (BOOL)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
 - (id)secureElementIdentifiers;
+- (BOOL)secureElementIsAvailable;
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (BOOL)supportsAutomaticPassPresentation;
+- (BOOL)supportsCredentialType:(long long)arg1;
+- (BOOL)supportsExpressMode:(id)arg1;
 - (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
 - (id)trustedDeviceEnrollmentInfoForWebService:(id)arg1;
 

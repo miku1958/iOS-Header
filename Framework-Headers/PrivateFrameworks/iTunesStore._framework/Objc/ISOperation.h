@@ -48,10 +48,11 @@
 - (void)_sendErrorToDelegate:(id)arg1;
 - (void)_sendSuccessToDelegate;
 - (void)_sendWillStartToDelegate;
+- (unsigned long long)authenticatedAccountCredentialSource;
 - (id)authenticatedAccountDSID;
 - (void)cancel;
-- (BOOL)copyAccountID:(id *)arg1 byAuthenticatingWithContext:(id)arg2 returningError:(id *)arg3;
-- (BOOL)copyAccountID:(id *)arg1 byHandlingAuthenticateResponse:(id)arg2 returningError:(id *)arg3;
+- (BOOL)copyAccountID:(id *)arg1 credentialSource:(unsigned long long *)arg2 byAuthenticatingWithContext:(id)arg3 returningError:(id *)arg4;
+- (BOOL)copyAccountID:(id *)arg1 credentialSource:(unsigned long long *)arg2 byHandlingAuthenticateResponse:(id)arg3 returningError:(id *)arg4;
 - (id)copyActivePowerAssertionIdentifiers;
 - (id)copySerializationLocks;
 - (void)delegateDispatch:(CDUnknownBlockType)arg1;
@@ -59,6 +60,7 @@
 - (id)init;
 - (BOOL)loadSoftwareMapReturningError:(id *)arg1;
 - (BOOL)loadURLBagWithContext:(id)arg1 returningError:(id *)arg2;
+- (id)loadedURLBagWithContext:(id)arg1 accountDSID:(id)arg2 returningError:(id *)arg3;
 - (id)loadedURLBagWithContext:(id)arg1 returningError:(id *)arg2;
 - (void)lock;
 - (void)main;

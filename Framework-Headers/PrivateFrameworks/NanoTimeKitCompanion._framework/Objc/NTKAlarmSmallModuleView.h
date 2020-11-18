@@ -34,6 +34,7 @@
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateSecondaryForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_layoutContentView;
+- (void)_setStateAlarmsUnknown;
 - (void)_updateTime;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setIsXL:(BOOL)arg1;

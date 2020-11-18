@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 {
     TSTInfo *mTableInfo;
     TSDInfoGeometry *mInfoGeometry;
+    BOOL mTableIsLTR;
+    BOOL mLayoutIsLTR;
     double mFirstPartitionWidth;
     struct CGSize mScaleToFit;
     TSTLayout *mScaledLayout;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)p_flushCacheAfterPartitioningFinished:(id)arg1 lastHint:(id)arg2 horizontally:(BOOL)arg3;
 - (id)partitioningPassForFirstPartitionSize:(struct CGSize)arg1;
 - (id)partitioningPassForHint:(id)arg1 withPreviousHint:(id)arg2;
+- (void)setLayoutPartititionsRightToLeft:(BOOL)arg1 contentPartitionsRightToLeft:(BOOL)arg2;
 - (BOOL)shouldReuseLayout:(id)arg1 forSize:(struct CGSize)arg2 parentLayout:(id)arg3 hint:(id)arg4;
 - (void)validateScaledLayout;
 

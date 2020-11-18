@@ -6,12 +6,13 @@
 
 #import <MPSMatrix/MPSMatrixBinaryKernel.h>
 
-@protocol MTLBuffer;
+@protocol MPSExternalMatrixFullyConnected, MTLBuffer;
 
 @interface MPSMatrixFullyConnected : MPSMatrixBinaryKernel
 {
     CDUnknownFunctionPointerType _encode;
     id<MTLBuffer> neuronAParamBuf;
+    id<MPSExternalMatrixFullyConnected> _plugin;
     int _neuronType;
     float _neuronA;
     float _neuronB;

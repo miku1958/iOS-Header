@@ -164,7 +164,7 @@ __attribute__((visibility("hidden")))
 - (void)setShouldLimitTrackingCameraHeight:(BOOL)arg1;
 - (void)setShowsPointsOfInterest:(BOOL)arg1;
 - (void)setStylesheetMapDisplayStyle:(struct DisplayStyle)arg1;
-- (void)setStylesheetName:(const basic_string_805fe43b *)arg1;
+- (void)setStylesheetName:(const basic_string_23d93216 *)arg1;
 - (void)setTargetDisplay:(unsigned char)arg1;
 - (void)setVehicleState:(struct VehicleState)arg1;
 - (BOOL)shouldHideOffscreenSelectedAnnotation;

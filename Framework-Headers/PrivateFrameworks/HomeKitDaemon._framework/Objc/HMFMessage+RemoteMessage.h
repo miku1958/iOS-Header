@@ -11,6 +11,7 @@
 @interface HMFMessage (RemoteMessage)
 
 @property (readonly, nonatomic, getter=isRemote) BOOL remote;
+@property (readonly, nonatomic) unsigned long long remoteRestriction;
 @property (readonly, nonatomic) HMDDevice *remoteSourceDevice;
 @property (readonly, nonatomic) NSString *remoteSourceID;
 @property (readonly, nonatomic) HAPPairingIdentity *remoteUserPairingIdentity;

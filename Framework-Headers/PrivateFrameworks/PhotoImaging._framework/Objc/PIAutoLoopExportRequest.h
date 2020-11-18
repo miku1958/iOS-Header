@@ -6,7 +6,7 @@
 
 #import <NeutrinoCore/NUVideoExportRequest.h>
 
-@class NSString, NSURL;
+@class NSString, NSURL, NUColorSpace;
 
 @interface PIAutoLoopExportRequest : NUVideoExportRequest
 {
@@ -18,6 +18,7 @@
 @property (readonly) NSURL *destinationLongExposureURL; // @synthesize destinationLongExposureURL=_destinationLongExposureURL;
 @property (readonly) NSURL *destinationMaskURL; // @synthesize destinationMaskURL=_destinationMaskURL;
 @property (readonly) NSString *destinationUTI; // @synthesize destinationUTI=_destinationUTI;
+@property (readonly) NUColorSpace *outputColorSpace;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

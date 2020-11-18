@@ -29,6 +29,7 @@
 + (id)typeString;
 - (double)aspectRatioWithValue:(id)arg1 withType:(int)arg2;
 - (BOOL)enablePrerollWithValue:(id)arg1 withType:(int)arg2;
+- (unsigned long long)traits;
 
 @end
 

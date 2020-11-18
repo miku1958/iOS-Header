@@ -11,7 +11,6 @@
     struct __SCPreferences *_prefs;
 }
 
-+ (void)releaseSharedInstance;
 + (id)sharedInstance;
 - (void)cleanupPrefs;
 - (struct __CFString *)dataServiceID;

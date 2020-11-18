@@ -18,9 +18,9 @@
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
+- (void).cxx_destruct;
 - (void)_init;
 - (void)close;
-- (void)dealloc;
 - (id)delegate;
 - (id)init;
 - (id)initToBuffer:(char *)arg1 capacity:(unsigned long long)arg2;

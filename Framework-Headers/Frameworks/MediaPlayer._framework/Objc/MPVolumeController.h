@@ -40,6 +40,7 @@
 
 - (void).cxx_destruct;
 - (void)_updateVolumeControlAvailability;
+- (void)adjustVolumeValue:(float)arg1;
 - (id)init;
 - (id)initWithDataSource:(id)arg1;
 - (BOOL)muted;

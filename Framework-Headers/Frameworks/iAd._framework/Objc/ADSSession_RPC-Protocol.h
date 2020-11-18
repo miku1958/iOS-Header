@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class ADAdSpaceConfiguration, ADAdSpaceEventInfo, ADMRAIDAction, NSArray, NSData, NSDictionary, NSString, NSURL, NSValue;
+@class ADAdSpaceConfiguration, ADAdSpaceEventInfo, ADMRAIDAction, AdAnalyticsEventInfo, NSArray, NSData, NSDictionary, NSString, NSURL, NSValue;
 
 @protocol ADSSession_RPC
 - (void)_priv_adSpaceDidAppearForAdSpaceIdentifier:(NSString *)arg1;
@@ -15,13 +15,13 @@
 - (void)_remote_bannerBeginActionForAdSpaceWithIdentifier:(NSString *)arg1 FromFrame:(NSValue *)arg2 tapLocation:(NSValue *)arg3 completionHandler:(void (^)(BOOL))arg4;
 - (void)_remote_bannerCancelActionForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_bannerRefuseActionForAdSpaceWithIdentifier:(NSString *)arg1;
+- (void)_remote_captureAnalytics:(AdAnalyticsEventInfo *)arg1 completion:(void (^)(AdAnalyticsEventInfo *, NSError *))arg2;
 - (void)_remote_closeAdSpaceWithIdentifier:(NSString *)arg1;
+- (void)_remote_creativeControllerNavigationAttemptBlockedDueToAccidentalTapForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_creativeControllerTapGestureTimerDidExpireBeforePrimaryActionWasInvokedForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_determineActionForAdSpaceWithIdentifier:(NSString *)arg1 ForTapAtLocation:(NSValue *)arg2 inFrame:(NSValue *)arg3 withMRAIDAction:(ADMRAIDAction *)arg4 completeHandler:(void (^)(ADAdActionPublicAttributes *))arg5;
-- (void)_remote_determineAppInstallAttributionWithCompletionHandler:(void (^)(BOOL))arg1;
 - (void)_remote_disablePolicyEngine;
 - (void)_remote_enablePolicyEngine;
-- (void)_remote_lookupAdConversionDetails:(void (^)(NSDate *, NSDate *))arg1;
 - (void)_remote_playbackFailedForURL:(NSString *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_playbackFinishedForContentHash:(NSData *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_playbackPausedForAdSpaceWithIdentifier:(NSString *)arg1;
@@ -40,7 +40,6 @@
 - (void)_remote_reportSystemEvent:(int)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_reportTotalCreativeRequestCount:(long long)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_requestAdSpaceWithConfiguration:(ADAdSpaceConfiguration *)arg1;
-- (void)_remote_requestAttributionDetailsWithBlock:(void (^)(NSDictionary *))arg1;
 - (void)_remote_segmentDataForSignedInUser:(void (^)(NSString *, NSString *, double, NSError *))arg1;
 - (void)_remote_sendAdspaceStatusEventForAdSpaceWithIdentifier:(NSString *)arg1 withAdSpaceInfo:(ADAdSpaceEventInfo *)arg2;
 - (void)_remote_setAdSpaceType:(int)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;

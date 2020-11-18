@@ -43,6 +43,7 @@
 - (id)logMsgEventForStateTransition:(id)arg1 generateOnlyIfStateChanged:(BOOL)arg2 userSessionSnapshot:(id)arg3;
 - (id)logMsgEventForTablebookedSessionWithSessionID:(id)arg1 bookedTables:(id)arg2;
 - (id)logMsgEventForTablebookingWithSessionID:(id)arg1 endState:(int)arg2 endView:(int)arg3 bookTableAppId:(id)arg4 muid:(unsigned long long)arg5 blurredReservationTimestamp:(long long)arg6 blurredBookingTimestamp:(long long)arg7 durationOfSessionInSeconds:(double)arg8 installNeeded:(BOOL)arg9 installNeededTappedAppId:(id)arg10 installCompleted:(BOOL)arg11 tableSize:(unsigned int)arg12 addedSpecialRequest:(BOOL)arg13 swipedAvailableTimes:(BOOL)arg14 tappedDatePicker:(BOOL)arg15 errorMessages:(id)arg16;
+- (id)logMsgEventForTelemetricWithEntities:(id)arg1;
 - (id)logMsgEventForTelemetricWithEventKey:(int)arg1 eventValue:(unsigned long long)arg2 eventDetail:(id)arg3;
 - (id)logMsgEventForTileSetState:(int)arg1 newCoverage:(double)arg2 oldCoverage:(double)arg3 seconds:(double)arg4;
 - (id)logMsgEventForTileUsageWithRequestAppId:(id)arg1 andTileUsageInfo:(id)arg2;
@@ -50,6 +51,7 @@
 - (id)logMsgEventForTimeToLeaveIntialTravelTime:(double)arg1;
 - (id)logMsgEventForTransitAppLaunchWithBundleId:(id)arg1 sourceLocation:(id)arg2 destinationLocation:(id)arg3 userSessionSnapshot:(id)arg4;
 - (id)logMsgEventForUserAction:(id)arg1 eventValue:(id)arg2 eventTarget:(int)arg3;
+- (id)logMsgEventForWiFiConnectionQuality:(id)arg1;
 - (id)logMsgsEventForMapsWidgetsInteractionForType:(int)arg1 endState:(int)arg2 widgetSpecificObject:(id)arg3 wasLocked:(BOOL)arg4 startDate:(id)arg5 forDuration:(double)arg6;
 
 @end

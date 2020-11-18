@@ -9,7 +9,7 @@
 #import <IMCore/NSCopying-Protocol.h>
 #import <IMCore/NSSecureCoding-Protocol.h>
 
-@class DDScannerResult, IMBalloonPluginDataSource, NSArray, NSAttributedString, NSData, NSDictionary, NSString, NSURL;
+@class DDScannerResult, IMBalloonPluginDataSource, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSString, NSURL;
 
 @interface IMPluginPayload : NSObject <NSSecureCoding, NSCopying>
 {
@@ -25,6 +25,7 @@
     NSString *_statusText;
     NSDictionary *_userInfo;
     NSString *_messageGUID;
+    NSDate *_time;
     NSString *_associatedMessageGUID;
     NSString *_pluginBundleID;
     NSArray *_consumedSessionPayloads;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) NSString *statusText; // @synthesize statusText=_statusText;
 @property (nonatomic, getter=isSticker) BOOL sticker; // @synthesize sticker=_sticker;
 @property (strong, nonatomic) NSAttributedString *text; // @synthesize text=_text;
+@property (strong, nonatomic) NSDate *time; // @synthesize time=_time;
 @property (nonatomic, getter=isUpdate) BOOL update; // @synthesize update=_update;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (strong, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;

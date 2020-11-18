@@ -6,6 +6,7 @@
 
 #import <iWorkImport/TSDMediaInfo.h>
 
+#import <iWorkImport/TSDAttachmentAwareContainerInfo-Protocol.h>
 #import <iWorkImport/TSDCompatibilityAwareMediaContainer-Protocol.h>
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
 #import <iWorkImport/TSDMixing-Protocol.h>
@@ -13,11 +14,11 @@
 #import <iWorkImport/TSKTransformableObject-Protocol.h>
 #import <iWorkImport/TSSPresetSource-Protocol.h>
 
-@class NSObject, NSString, TSDImageAdjustments, TSDInfoGeometry, TSDMaskInfo, TSDMediaStyle, TSPData, TSPObject, TSUBezierPath;
+@class NSArray, NSObject, NSSet, NSString, TSDImageAdjustments, TSDImageDataHelper, TSDInfoGeometry, TSDMaskInfo, TSDMediaStyle, TSPData, TSPObject, TSUBezierPath;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSDImageInfo : TSDMediaInfo <TSDReducibleImageContainer, TSDContainerInfo, TSDMixing, TSSPresetSource, TSKTransformableObject, TSDCompatibilityAwareMediaContainer>
+@interface TSDImageInfo : TSDMediaInfo <TSDReducibleImageContainer, TSDContainerInfo, TSDMixing, TSSPresetSource, TSKTransformableObject, TSDCompatibilityAwareMediaContainer, TSDAttachmentAwareContainerInfo>
 {
     TSPData *mImageData;
     TSPData *mThumbnailImageData;
@@ -25,6 +26,8 @@ __attribute__((visibility("hidden")))
     TSDImageAdjustments *mImageAdjustments;
     TSPData *mAdjustedImageData;
     TSPData *mThumbnailAdjustedImageData;
+    TSDImageDataHelper *mImageDataHelper;
+    TSDImageDataHelper *mAdjustedImageDataHelper;
     TSPData *mEnhancedImageData;
     TSDMediaStyle *mStyle;
     TSDMaskInfo *mMaskInfo;
@@ -37,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSPData *adjustedImageData; // @synthesize adjustedImageData=mAdjustedImageData;
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText; // @dynamic anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (readonly, nonatomic) NSArray *childInfos;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double descentForInlineLayout;
 @property (readonly, copy) NSString *description;
@@ -47,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDImageAdjustments *imageAdjustments; // @synthesize imageAdjustments=mImageAdjustments;
 @property (strong, nonatomic) TSPData *imageData; // @synthesize imageData=mImageData;
 @property (readonly, nonatomic) TSDMediaStyle *imageStyle;
+@property (readonly, nonatomic) NSSet *infosToObserveForAttachedInfo;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
 @property (strong, nonatomic) TSUBezierPath *instantAlphaPath;
 @property (strong, nonatomic) TSDMaskInfo *maskInfo; // @synthesize maskInfo=mMaskInfo;
@@ -73,11 +78,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canResetMediaSize;
 - (struct CGPoint)centerForReplacingWithNewMedia;
-- (id)childInfos;
 - (struct CGAffineTransform)computeFullTransform;
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithContext:(id)arg1 style:(id)arg2;
-- (id)datasForReplacingMediaContentsWithAssociatedHints;
 - (void)dealloc;
 - (id)defaultMaskInfo;
 - (id)defaultMaskInfoWithContext:(id)arg1;
@@ -86,7 +89,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasPDFDataForCopy;
 - (id)i_instantAlphaPathIgnoringNaturalSize;
 - (id)infoForSelectionPath:(id)arg1;
-- (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 imageData:(id)arg4 originalImageData:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 imageData:(id)arg4 thumbnailImageData:(id)arg5 originalImageData:(id)arg6 imageAdjustments:(id)arg7 adjustedImageData:(id)arg8 thumbnailAdjustedImageData:(id)arg9;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
@@ -109,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (void)p_upgradeImageGeometry;
 - (void)p_upgradeImageThumbnail;
 - (id)presetKind;
+- (id)promisedDataForType:(id)arg1;
 - (id)propertyNameForFlagsCommand;
 - (id)propertyNameForOriginalSizeCommand;
 - (struct CGSize)rawDataSize;
@@ -124,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (Class)styleClass;
 - (id)styleIdentifierTemplateForNewPreset;
 - (struct CGSize)targetSizeForImageData:(id)arg1 associatedHint:(id)arg2;
+- (id)typesToPromiseWhenCopyingSingleDrawable;
 - (void)updateGeometryToReplaceMediaInfo:(id)arg1;
 - (id)updatedMaskInfoGeometryForImageDraggedBy:(struct CGPoint)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

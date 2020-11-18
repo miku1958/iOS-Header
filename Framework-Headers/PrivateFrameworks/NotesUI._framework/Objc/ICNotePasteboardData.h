@@ -20,7 +20,6 @@
 @property (readonly, nonatomic) ICDataPersister *dataPersister; // @synthesize dataPersister=_dataPersister;
 
 + (id)pasteboardDataFromPersistenceData:(id)arg1;
-+ (id)pasteboardDataFromPersistenceData:(id)arg1 secureCoding:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

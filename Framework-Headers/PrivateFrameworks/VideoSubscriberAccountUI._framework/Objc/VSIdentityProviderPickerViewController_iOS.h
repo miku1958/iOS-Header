@@ -10,7 +10,7 @@
 #import <VideoSubscriberAccountUI/VSIdentityProviderPickerViewController-Protocol.h>
 #import <VideoSubscriberAccountUI/VSTableHeaderFooterViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UISearchController, VSFontCenter, VSIdentityProvider, VSIdentityProviderFilter, VSIdentityProviderTableViewDataSource, VSSearchBarDelegate;
+@class NSArray, NSString, UISearchController, VSFontCenter, VSIdentityProvider, VSIdentityProviderFilter, VSIdentityProviderTableViewDataSource, VSOnboardingInfoCenter, VSSearchBarDelegate;
 @protocol VSIdentityProviderPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSString *_requestingAppDisplayName;
     NSString *_resourceTitle;
     UISearchController *_searchController;
+    VSOnboardingInfoCenter *_onboardingInfoCenter;
     VSIdentityProviderFilter *_filter;
     VSSearchBarDelegate *_searchBarDelegate;
     VSIdentityProviderTableViewDataSource *_unfilteredDataSource;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *identityProviders; // @synthesize identityProviders=_identityProviders;
+@property (strong, nonatomic) VSOnboardingInfoCenter *onboardingInfoCenter; // @synthesize onboardingInfoCenter=_onboardingInfoCenter;
 @property (copy, nonatomic) NSString *requestingAppDisplayName; // @synthesize requestingAppDisplayName=_requestingAppDisplayName;
 @property (copy, nonatomic) NSString *resourceTitle; // @synthesize resourceTitle=_resourceTitle;
 @property (strong, nonatomic) VSSearchBarDelegate *searchBarDelegate; // @synthesize searchBarDelegate=_searchBarDelegate;
@@ -55,7 +57,6 @@ __attribute__((visibility("hidden")))
 - (void)_cancelButtonPressed:(id)arg1;
 - (void)_didPickAdditionalIdentityProviders;
 - (void)_didPickIdentityProvider:(id)arg1;
-- (void)_dismissAboutPrivacy:(id)arg1;
 - (void)_performSelectionForIdentityProvider:(id)arg1;
 - (void)_showAboutPrivacy:(id)arg1;
 - (id)_titleForTableHeaderView;

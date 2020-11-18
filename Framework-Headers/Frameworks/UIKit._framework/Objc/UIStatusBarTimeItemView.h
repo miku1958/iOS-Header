@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)contentsImage;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setVisible:(BOOL)arg1 frame:(struct CGRect)arg2 duration:(double)arg3;
+- (BOOL)shouldTintContentImage;
 - (long long)textStyle;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
 

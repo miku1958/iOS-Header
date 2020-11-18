@@ -23,6 +23,7 @@
 @property (readonly) NSData *rawImageprintDescriptor;
 
 + (id)calculateDistanceBetweenImageprint1:(id)arg1 andImageprint2:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)calculateDistanceFromImageprint:(id)arg1;
 - (id)calculateDistanceFromImageprintObservation:(id)arg1;

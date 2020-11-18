@@ -9,12 +9,12 @@
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/RadiosPreferencesDelegate-Protocol.h>
 
-@class AWDMailNetworkDiagnosticsReport, MFObservable, NSLock, NSMutableArray, NSMutableSet, NSString, NSThread, RadiosPreferences;
+@class AWDMailNetworkDiagnosticsReport, MFObservable, NSConditionLock, NSMutableArray, NSMutableSet, NSString, NSThread, RadiosPreferences;
 @protocol OS_dispatch_queue;
 
 @interface MFNetworkController : NSObject <MFDiagnosticsGenerator, RadiosPreferencesDelegate>
 {
-    NSLock *_lock;
+    NSConditionLock *_lock;
     struct __CFRunLoop *_rl;
     NSThread *_thread;
     NSMutableArray *_observers;
@@ -51,6 +51,7 @@
 + (id)networkAssertionWithIdentifier:(id)arg1;
 + (id)sharedInstance;
 - (void)_checkKeys:(id)arg1 forStore:(struct __SCDynamicStore *)arg2;
+- (void)_checkKeys_nts:(id)arg1 forStore:(struct __SCDynamicStore *)arg2;
 - (void)_handleNotification:(id)arg1 info:(id)arg2 forConnection:(struct __CTServerConnection *)arg3;
 - (void)_handleWiFiNotification:(unsigned int)arg1;
 - (void)_inititializeWifiManager;

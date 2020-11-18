@@ -25,6 +25,7 @@
     UIView *_contentView;
     UITableView *_detailTableView;
     PKPaymentAuthorizationSummaryItemsView *_summaryItemsView;
+    NSLayoutConstraint *_summaryHeightConstraint;
     PKPaymentAuthorizationTotalView *_totalView;
     PKPaymentAuthorizationFooterView *_footerView;
     PKPaymentAuthorizationPasswordButtonView *_passwordButtonView;
@@ -113,6 +114,7 @@
 - (Class)_tableViewClassForDataItem:(id)arg1;
 - (long long)_totalViewStyle;
 - (void)_updateBackgroundedState:(BOOL)arg1;
+- (void)_updateCancelButtonEnabledForState:(unsigned long long)arg1 param:(id)arg2;
 - (void)_updateFooterStateForBiometricMatchMissIfNecessary;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_updatePhysicalButtonInstruction;
@@ -157,6 +159,7 @@
 - (void)presentPassphraseViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)resumeAndUpdateContentSize;
 - (void)setFooterState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3;
+- (void)setFooterState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)signInViewController:(id)arg1 didAuthenticateWithResults:(id)arg2 error:(id)arg3;
 - (BOOL)signInViewController:(id)arg1 shouldContinueWithAuthenticationResults:(id)arg2 error:(id)arg3 forContext:(id)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

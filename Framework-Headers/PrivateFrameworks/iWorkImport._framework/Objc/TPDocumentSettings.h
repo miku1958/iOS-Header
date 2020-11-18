@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasBody;
     BOOL _hasHeaders;
     BOOL _hasFooters;
-    BOOL _hasLlamaPanda;
+    BOOL _hasFacingPages;
     BOOL _qlPreview;
     BOOL _copyMovies;
     BOOL _copyAssets;
@@ -31,9 +31,9 @@ __attribute__((visibility("hidden")))
     BOOL _formatChangesVisible;
     BOOL _annotationsVisible;
     BOOL _documentIsRTL;
-    int _footnoteKind;
-    int _footnoteFormat;
-    int _footnoteNumbering;
+    long long _footnoteKind;
+    long long _footnoteFormat;
+    long long _footnoteNumbering;
     long long _footnoteGap;
     NSString *_decimalTab;
     NSString *_language;
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL annotationsVisible;
 @property (nonatomic) BOOL autoHyphenation;
-@property (readonly, nonatomic) int basicFootnoteFormat;
+@property (readonly, nonatomic) long long basicFootnoteFormat;
 @property (copy, nonatomic) NSString *bibliographyFormat;
 @property (nonatomic) BOOL changeBarsVisible;
 @property (nonatomic) BOOL copyMovies;
@@ -56,15 +56,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int ctBubblesVisibility; // @synthesize ctBubblesVisibility=_ctBubblesVisibility;
 @property (copy, nonatomic) NSString *decimalTab;
 @property (nonatomic) BOOL documentIsRTL;
-@property (nonatomic) int footnoteFormat;
+@property (nonatomic) long long footnoteFormat;
 @property (nonatomic) long long footnoteGap;
-@property (nonatomic) int footnoteKind;
-@property (nonatomic) int footnoteNumbering;
+@property (nonatomic) long long footnoteKind;
+@property (nonatomic) long long footnoteNumbering;
 @property (nonatomic) BOOL formatChangesVisible;
 @property (nonatomic) BOOL hasBody;
+@property (nonatomic) BOOL hasFacingPages;
 @property (nonatomic) BOOL hasFooters;
 @property (nonatomic) BOOL hasHeaders;
-@property (nonatomic) BOOL hasLlamaPanda;
 @property (nonatomic) BOOL hyperlinksEnabled;
 @property (copy, nonatomic) NSString *hyphenationLanguage;
 @property (copy, nonatomic) NSString *language;

@@ -7,30 +7,44 @@
 #import <Foundation/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
+#import <iWorkImport/NSMutableCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface TSWPRangeArray : NSObject <NSCopying>
+@interface TSWPRangeArray : NSObject <NSCopying, NSMutableCopying>
 {
-    struct TSWPRangeVector *_rangeVectorOpaque;
+    vector_b5e32e34 _rangeVector;
 }
 
-@property (readonly, nonatomic) unsigned long long finish;
-@property (readonly, nonatomic) BOOL isEmpty;
+@property (readonly, nonatomic) unsigned long long indexCount;
 @property (readonly, nonatomic) unsigned long long rangeCount;
-@property (readonly, nonatomic) unsigned long long start;
+@property (readonly, nonatomic) struct _NSRange superRange;
 
-- (void)addRange:(struct _NSRange)arg1;
++ (id)rangeArray;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (BOOL)containsCharacterAtIndex:(unsigned long long)arg1;
+- (BOOL)containsCharacterAtIndex:(unsigned long long)arg1 inclusive:(BOOL)arg2;
+- (BOOL)containsRange:(struct _NSRange)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
+- (void)enumerateRanges:(CDUnknownBlockType)arg1;
 - (void)enumerateRangesInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateRangesUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)indexForRange:(struct _NSRange)arg1;
 - (id)init;
 - (id)initWithRange:(struct _NSRange)arg1;
-- (id)initWithRangeVector:(const void *)arg1;
+- (id)initWithRangeVector:(const vector_b5e32e34 *)arg1;
+- (id)intersection:(struct _NSRange)arg1;
+- (BOOL)intersectsRange:(struct _NSRange)arg1;
+- (BOOL)isEqualToRangeArray:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)p_finish;
+- (unsigned long long)p_start;
 - (struct _NSRange)rangeAtIndex:(unsigned long long)arg1;
-- (struct _NSRange *)rangeReferenceAtIndex:(unsigned long long)arg1;
-- (void)removeRange:(struct _NSRange)arg1;
+- (struct _NSRange)rangeContainingPosition:(unsigned long long)arg1;
+- (struct _NSRange)rangeContainingPosition:(unsigned long long)arg1 excludeInitialPosition:(BOOL)arg2;
+- (id)rangesIntersecting:(struct _NSRange)arg1;
+- (void)reverseEnumerateRanges:(CDUnknownBlockType)arg1;
+- (id)shortDescription;
 
 @end
 

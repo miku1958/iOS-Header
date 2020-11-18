@@ -16,8 +16,10 @@
     BOOL _shouldSendEphemeralAuthHeader;
     BOOL _shouldSendICSCIntentHeader;
     BOOL _shouldSendLocalUserHasAppleIDLoginHeader;
+    BOOL _shouldSendPhoneNumber;
     BOOL _shouldSendAbsintheHeader;
     NSString *_serviceToken;
+    NSString *_phoneNumberCertificate;
     long long _serviceType;
     NSArray *_loggedInServices;
     NSString *_passwordResetToken;
@@ -40,6 +42,7 @@
 @property (copy, nonatomic) NSString *identityToken; // @synthesize identityToken=_identityToken;
 @property (copy, nonatomic) NSArray *loggedInServices; // @synthesize loggedInServices=_loggedInServices;
 @property (copy, nonatomic) NSString *passwordResetToken; // @synthesize passwordResetToken=_passwordResetToken;
+@property (copy, nonatomic) NSString *phoneNumberCertificate; // @synthesize phoneNumberCertificate=_phoneNumberCertificate;
 @property (strong, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
 @property (strong, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
 @property (copy, nonatomic) NSString *proxyAppName; // @synthesize proxyAppName=_proxyAppName;
@@ -50,6 +53,7 @@
 @property (nonatomic) BOOL shouldSendEphemeralAuthHeader; // @synthesize shouldSendEphemeralAuthHeader=_shouldSendEphemeralAuthHeader;
 @property (nonatomic) BOOL shouldSendICSCIntentHeader; // @synthesize shouldSendICSCIntentHeader=_shouldSendICSCIntentHeader;
 @property (nonatomic) BOOL shouldSendLocalUserHasAppleIDLoginHeader; // @synthesize shouldSendLocalUserHasAppleIDLoginHeader=_shouldSendLocalUserHasAppleIDLoginHeader;
+@property (nonatomic) BOOL shouldSendPhoneNumber; // @synthesize shouldSendPhoneNumber=_shouldSendPhoneNumber;
 
 + (id)sharedController;
 + (unsigned long long)signalFromServerResponse:(id)arg1;

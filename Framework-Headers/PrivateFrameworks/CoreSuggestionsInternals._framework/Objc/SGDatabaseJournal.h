@@ -22,6 +22,7 @@
 
 @property (readonly, nonatomic) BOOL journaling; // @synthesize journaling=_journaling;
 
++ (id)_allowedTypesForQueryKeyedArchives;
 + (CDUnknownBlockType)_binderForDictionary:(id)arg1;
 + (id)journalForInMemoryDb;
 + (id)journalWithName:(id)arg1;

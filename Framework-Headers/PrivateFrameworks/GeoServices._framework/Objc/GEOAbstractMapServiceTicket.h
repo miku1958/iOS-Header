@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldEnableRedoSearch;
     GEOResolvedItem *_clientResolvedResult;
     GEODirectionIntent *_directionIntent;
+    NSArray *_retainedSearchMetadata;
     unsigned int _dymSuggestionVisibleTime;
     BOOL _showDymSuggestionCloseButton;
 }
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion; // @synthesize resultBoundingRegion=_resultBoundingRegion;
 @property (readonly, nonatomic) NSString *resultDisplayHeader; // @synthesize resultDisplayHeader=_resultDisplayHeader;
 @property (readonly, nonatomic) NSString *resultSectionHeader; // @synthesize resultSectionHeader=_resultSectionHeader;
+@property (readonly, nonatomic) NSArray *retainedSearchMetadata; // @synthesize retainedSearchMetadata=_retainedSearchMetadata;
 @property (readonly, nonatomic) int searchResultType; // @synthesize searchResultType=_searchResultType;
 @property (readonly, nonatomic) BOOL shouldEnableRedoSearch; // @synthesize shouldEnableRedoSearch=_shouldEnableRedoSearch;
 @property (readonly, nonatomic) BOOL showDymSuggestionCloseButton; // @synthesize showDymSuggestionCloseButton=_showDymSuggestionCloseButton;

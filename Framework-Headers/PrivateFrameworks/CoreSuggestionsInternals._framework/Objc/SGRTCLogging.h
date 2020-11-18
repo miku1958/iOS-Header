@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSuggestionsInternals/NSCoding-Protocol.h>
+#import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
 
 @class NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface SGRTCLogging : NSObject <NSCoding>
+@interface SGRTCLogging : NSObject <NSSecureCoding>
 {
     struct _opaque_pthread_mutex_t _lock;
     NSString *_path;
@@ -33,6 +33,7 @@
 + (id)locationTypeForRealtimeEvent:(id)arg1;
 + (unsigned long long)numberOfDaysBetweenDate:(id)arg1 andDate:(id)arg2;
 + (double)round:(double)arg1 toSignificantFigures:(long long)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_createInteractionForEventWithStartTime:(id)arg1 interactionKey:(id)arg2 interactionAttributes:(id)arg3;
 - (id)_createInteractionSummaryForEventKey:(id)arg1 expirationDate:(id)arg2 interactionKey:(id)arg3 interactionAttributes:(id)arg4;

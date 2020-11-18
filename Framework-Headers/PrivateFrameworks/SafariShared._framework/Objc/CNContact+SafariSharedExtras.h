@@ -10,7 +10,7 @@
 
 @interface CNContact (SafariSharedExtras)
 
-@property (readonly, nonatomic) NSString *fullName;
+@property (readonly, nonatomic) NSString *safari_fullName;
 
 + (id)safari_defaultDescriptors;
 + (id)safari_imageViewDescriptors;

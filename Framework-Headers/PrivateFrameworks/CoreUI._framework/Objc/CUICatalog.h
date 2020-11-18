@@ -35,6 +35,7 @@
 - (id)_baseAtlasKeyForName:(id)arg1;
 - (id)_baseKeyForName:(id)arg1;
 - (id)_baseMultisizeImageSetKeyForName:(id)arg1;
+- (id)_baseRecognitionGroupImageSetKeyForName:(id)arg1;
 - (id)_baseTextureKeyForName:(id)arg1;
 - (id)_baseVectorRenditionKey:(id)arg1;
 - (id)_colorWithName:(id)arg1 displayGamut:(long long)arg2 deviceIdiom:(long long)arg3;
@@ -52,6 +53,7 @@
 - (id)_namedTextureWithName:(id)arg1 scaleFactor:(double)arg2;
 - (id)_namedTextureWithName:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3;
 - (id)_namedVectorImageWithName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 displayGamut:(long long)arg5 layoutDirection:(long long)arg6 sizeClassHorizontal:(long long)arg7 sizeClassVertical:(long long)arg8;
+- (id)_recognitionImageWithName:(id)arg1;
 - (id)_resolvedRenditionKeyForName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 displayGamut:(long long)arg5 layoutDirection:(long long)arg6 sizeClassHorizontal:(long long)arg7 sizeClassVertical:(long long)arg8 memoryClass:(unsigned long long)arg9 graphicsClass:(unsigned long long)arg10 graphicsFallBackOrder:(id)arg11 withBaseKeySelector:(SEL)arg12;
 - (id)_resolvedRenditionKeyFromThemeRef:(unsigned long long)arg1 withBaseKey:(id)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 displayGamut:(long long)arg6 layoutDirection:(long long)arg7 sizeClassHorizontal:(long long)arg8 sizeClassVertical:(long long)arg9 memoryClass:(unsigned long long)arg10 graphicsClass:(unsigned long long)arg11 graphicsFallBackOrder:(id)arg12 iconSizeIndex:(unsigned long long)arg13;
 - (void)_resourceUnPinnedNotification:(id)arg1;
@@ -109,6 +111,7 @@
 - (id)namedLookupWithName:(id)arg1 scaleFactor:(double)arg2;
 - (id)namedLookupWithName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 displayGamut:(long long)arg5 layoutDirection:(long long)arg6 sizeClassHorizontal:(long long)arg7 sizeClassVertical:(long long)arg8;
 - (id)namedLookupWithName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 sizeClassHorizontal:(long long)arg5 sizeClassVertical:(long long)arg6;
+- (id)namedRecognitionGroupWithName:(id)arg1;
 - (id)namedTextureWithName:(id)arg1 scaleFactor:(double)arg2;
 - (id)namedTextureWithName:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3;
 - (id)namedVectorImageWithName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 displayGamut:(long long)arg5 layoutDirection:(long long)arg6 sizeClassHorizontal:(long long)arg7 sizeClassVertical:(long long)arg8;

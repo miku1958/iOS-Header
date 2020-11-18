@@ -33,9 +33,9 @@
 + (id)mailNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)noFeedAppDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)pageLoadErrorWithMessage:(id)arg1;
++ (id)permanentlyAcceptCertificateDialogWithAcceptanceHandler:(CDUnknownBlockType)arg1;
 + (id)printBlockedDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)redirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (id)saveBasicAuthenticationPasswordDialog:(BOOL)arg1 presentsAsActionSheet:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)telephonyNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)userMediaPermissionDialogWithHost:(id)arg1 devices:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)completeWithResponse:(id)arg1;

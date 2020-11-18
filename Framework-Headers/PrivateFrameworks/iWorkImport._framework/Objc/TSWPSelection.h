@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSDTextSelection-Protocol.h>
 
-@class NSString;
+@class NSString, TSWPRangeArray;
 
 __attribute__((visibility("hidden")))
 @interface TSWPSelection : TSKSelection <TSDTextSelection>
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     int _styleInsertionBehavior;
     int _caretAffinity;
     struct _NSRange _smartFieldRange;
-    struct TSWPRangeVector _visualRanges;
+    TSWPRangeArray *_visualRanges;
 }
 
 @property (readonly, nonatomic) int caretAffinity; // @synthesize caretAffinity=_caretAffinity;
@@ -53,24 +53,22 @@ __attribute__((visibility("hidden")))
 + (id)selectionFromWPSelection:(id)arg1;
 + (id)selectionWithRange:(struct _NSRange)arg1;
 + (id)selectionWithRange:(struct _NSRange)arg1 type:(int)arg2 leadingEdge:(BOOL)arg3 storage:(id)arg4;
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (id)constrainToRange:(struct _NSRange)arg1;
 - (BOOL)containsCharacterAtIndex:(unsigned long long)arg1;
-- (BOOL)containsCharacterAtIndex:(unsigned long long)arg1 allowRightEdge:(BOOL)arg2;
 - (id)copyWithNewRange:(struct _NSRange)arg1;
 - (id)copyWithNewStyleInsertionBehavior:(int)arg1 newCaretAffinity:(int)arg2;
 - (id)copyWithNewType:(int)arg1;
 - (id)copyWithNewType:(int)arg1 range:(struct _NSRange)arg2;
 - (id)copyWithNewType:(int)arg1 smartFieldRange:(struct _NSRange)arg2;
-- (id)copyWithNewVisualRanges:(const struct TSWPRangeVector *)arg1;
+- (id)copyWithNewVisualRanges:(id)arg1;
 - (id)copyWithNewVisualTypeRange:(struct _NSRange)arg1 head:(unsigned long long)arg2 tail:(unsigned long long)arg3;
-- (id)copyWithVisualRanges:(const struct TSWPRangeVector *)arg1 headChar:(unsigned long long)arg2 tailChar:(unsigned long long)arg3 rightToLeft:(BOOL)arg4 sameLine:(BOOL)arg5;
+- (id)copyWithVisualRanges:(id)arg1 headChar:(unsigned long long)arg2 tailChar:(unsigned long long)arg3 rightToLeft:(BOOL)arg4 sameLine:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)end;
-- (void)i_setVisualRanges:(const struct TSWPRangeVector *)arg1;
-- (struct TSWPRangeVector *)i_visualRanges;
+- (void)i_setVisualRanges:(id)arg1;
+- (id)i_visualRanges;
 - (id)initWithArchive:(const struct SelectionArchive *)arg1;
 - (id)initWithRange:(struct _NSRange)arg1;
 - (id)initWithType:(int)arg1 range:(struct _NSRange)arg2 styleInsertionBehavior:(int)arg3 caretAffinity:(int)arg4;
@@ -88,7 +86,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)start;
 - (struct _NSRange)superRange;
 - (unsigned long long)visualRangeCount;
-- (const struct TSWPRangeVector *)visualRanges;
+- (id)visualRanges;
 - (id)visualRangesArray;
 
 @end

@@ -10,6 +10,7 @@
 
 @interface ISServerAuthenticationOperation : ISOperation
 {
+    unsigned long long _authenticatedAccountCredentialSource;
     NSNumber *_authenticatedAccountDSID;
     SSAuthenticationContext *_authenticationContext;
     ISDialog *_dialog;
@@ -19,6 +20,7 @@
     ISDialogButton *_selectedButton;
 }
 
+@property unsigned long long authenticatedAccountCredentialSource; // @synthesize authenticatedAccountCredentialSource=_authenticatedAccountCredentialSource;
 @property (strong) NSNumber *authenticatedAccountDSID; // @synthesize authenticatedAccountDSID=_authenticatedAccountDSID;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (strong) ISDialog *dialog; // @synthesize dialog=_dialog;

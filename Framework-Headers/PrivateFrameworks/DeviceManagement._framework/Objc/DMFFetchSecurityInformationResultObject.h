@@ -6,14 +6,18 @@
 
 #import <Catalyst/CATTaskResultObject.h>
 
-@class DMFSecurityInformation;
+@class DMFSecurityInformation, NSDictionary;
 
 @interface DMFFetchSecurityInformationResultObject : CATTaskResultObject
 {
     DMFSecurityInformation *_securityInformation;
+    NSDictionary *_valuesByPropertyKey;
+    NSDictionary *_errorsByPropertyKey;
 }
 
+@property (readonly, copy, nonatomic) NSDictionary *errorsByPropertyKey; // @synthesize errorsByPropertyKey=_errorsByPropertyKey;
 @property (readonly, copy, nonatomic) DMFSecurityInformation *securityInformation; // @synthesize securityInformation=_securityInformation;
+@property (readonly, copy, nonatomic) NSDictionary *valuesByPropertyKey; // @synthesize valuesByPropertyKey=_valuesByPropertyKey;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -21,6 +25,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSecurityInformation:(id)arg1;
+- (id)initWithValuesByPropertyKey:(id)arg1 errorsByPropertyKey:(id)arg2;
 
 @end
 

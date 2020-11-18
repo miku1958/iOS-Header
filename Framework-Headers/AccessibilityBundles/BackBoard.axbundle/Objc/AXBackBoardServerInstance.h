@@ -33,6 +33,7 @@
 - (id)_gaxBackboard;
 - (id)_handleAXUIServerPID:(id)arg1;
 - (id)_handleAdaptationEnabled:(id)arg1;
+- (id)_handleAssistiveTouchPID:(id)arg1;
 - (id)_handleBlueLightStatusEnabled:(id)arg1;
 - (id)_handleBrightnessFiltersEnabled:(id)arg1;
 - (id)_handleContextHostingIdForContextId:(id)arg1;
@@ -50,6 +51,7 @@
 - (id)_handleGuidedAccessEffectiveAppBundleIdentifier:(id)arg1;
 - (id)_handleGuidedAccessIgnoredRegions:(id)arg1;
 - (id)_handleHomeClickSwallowedForGuidedAccess:(id)arg1;
+- (id)_handleInCheckerBoardMode:(id)arg1;
 - (id)_handleInPreBoardMode:(id)arg1;
 - (id)_handleInvertColorsChange:(id)arg1;
 - (id)_handleIsGuidedAccessActive:(id)arg1;
@@ -60,7 +62,7 @@
 - (id)_handleLoadGAXBundleForUnmanagedASAM:(id)arg1;
 - (id)_handleLockScreenDimTimerEnabled:(id)arg1;
 - (id)_handlePostEvent:(id)arg1;
-- (id)_handleRegisterAccessibilityUIPID:(id)arg1;
+- (id)_handleRegisterAccessibilityUIServerPID:(id)arg1;
 - (id)_handleRegisterAssistiveTouchPID:(id)arg1;
 - (id)_handleRegisterSiriViewServicePID:(id)arg1;
 - (id)_handleRegisterZoomConflict:(id)arg1;
@@ -69,6 +71,7 @@
 - (id)_handleSessionIsLoginSession:(id)arg1;
 - (id)_handleSetCapsLockLightOn:(id)arg1;
 - (void)_handleSetGuidedAccessEnabledByRequestingApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_handleSetInCheckerBoardMode:(id)arg1;
 - (id)_handleSetInPreBoardMode:(id)arg1;
 - (id)_handleSetSessionIsLoginSession:(id)arg1;
 - (id)_handleSetSwitchControlHasScreenSwitch:(id)arg1;
@@ -82,6 +85,7 @@
 - (id)_handleZoomAdjustment:(id)arg1;
 - (id)_handleZoomAttributesChanged:(id)arg1;
 - (id)_handleZoomAttributesListenerRegistration:(id)arg1;
+- (BOOL)_inCheckerBoardMode;
 - (BOOL)_inPreBoardMode;
 - (id)_initServer;
 - (void)_initializeHandlers;

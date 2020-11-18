@@ -78,7 +78,6 @@
 
 + (BOOL)_canReloadDuringUnitTests;
 - (void).cxx_destruct;
-- (void)_accessorySettingValueUpdated:(id)arg1;
 - (id)_allDisplayedItemsIncludingInternalItems;
 - (id)_allItemsIncludingInternalItems;
 - (id)_allSuppressedCharacteristics;
@@ -113,6 +112,7 @@
 - (id)_itemsToUpdateForAllowAccessWhileLockedSettingChange;
 - (id)_itemsToUpdateForIncomingInvitation:(id)arg1;
 - (id)_itemsToUpdateForMediaObjectChange:(id)arg1;
+- (id)_itemsToUpdateForMediaProfileContainer:(id)arg1;
 - (id)_itemsToUpdateForMediaSessionChange:(id)arg1;
 - (id)_itemsToUpdateForMediaSystemChange:(id)arg1;
 - (id)_itemsToUpdateForModifiedAccessories:(id)arg1;
@@ -254,6 +254,7 @@
 - (void)home:(id)arg1 didUpdateNameForServiceGroup:(id)arg2;
 - (void)home:(id)arg1 didUpdateNameForTrigger:(id)arg2;
 - (void)home:(id)arg1 didUpdateNameForZone:(id)arg2;
+- (void)home:(id)arg1 didUpdateReprovisionStateForAccessory:(id)arg2;
 - (void)home:(id)arg1 didUpdateRoom:(id)arg2 forAccessory:(id)arg3;
 - (void)home:(id)arg1 didUpdateStateForOutgoingInvitations:(id)arg2;
 - (void)home:(id)arg1 didUpdateTrigger:(id)arg2;
@@ -300,6 +301,7 @@
 - (void)residentDevice:(id)arg1 didUpdateName:(id)arg2;
 - (void)residentDevice:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (unsigned long long)sectionIndexForDisplayedSectionIdentifier:(id)arg1;
+- (void)settingsDidUpdate:(id)arg1;
 - (void)softwareUpdate:(id)arg1 didUpdateDocumentation:(id)arg2;
 - (void)softwareUpdate:(id)arg1 didUpdateDocumentationAvailable:(BOOL)arg2;
 - (void)softwareUpdate:(id)arg1 didUpdateState:(long long)arg2;

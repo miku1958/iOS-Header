@@ -22,7 +22,7 @@
 - (BOOL)hasResponse;
 - (id)idmsAccountForiCloud;
 - (id)responsePayload;
-- (void)setResponseFromDictionary:(id)arg1;
+- (void)setResponseFromData:(id)arg1;
 
 @end
 

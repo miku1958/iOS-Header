@@ -31,9 +31,13 @@
 @property (copy, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
 
 + (Class)queueFeederClass;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)descriptionComponents;
+- (void)encodeWithCoder:(id)arg1;
+- (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

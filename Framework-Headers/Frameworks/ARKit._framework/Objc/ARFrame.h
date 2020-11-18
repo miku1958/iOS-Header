@@ -8,12 +8,13 @@
 
 #import <ARKit/NSCopying-Protocol.h>
 
-@class ARAnchor, ARCamera, ARFaceData, ARLightEstimate, ARPlaneData, ARPointCloud, ARTrackingErrorData, AVDepthData, NSArray, NSDate;
+@class ARCamera, ARFaceData, ARFrameTimingData, ARLightEstimate, ARPlaneData, ARPointCloud, ARWorldTrackingErrorData, AVDepthData, NSArray, NSDate;
 
 @interface ARFrame : NSObject <NSCopying>
 {
     ARPlaneData *_cachedHorizontalPlaneData;
     ARPlaneData *_cachedVerticalPlaneData;
+    unsigned long long _transformFlags;
     BOOL _shouldRestrictFrameRate;
     double _timestamp;
     struct __CVBuffer *_capturedImage;
@@ -25,11 +26,16 @@
     ARPointCloud *_featurePoints;
     ARPointCloud *_referenceFeaturePoints;
     NSArray *_cachedPointClouds;
-    ARAnchor *_worldOrigin;
-    ARTrackingErrorData *_trackingErrorData;
+    long long _worldAlignment;
+    ARFrameTimingData *_timingData;
+    ARWorldTrackingErrorData *_trackingErrorData;
     long long _renderFramesPerSecond;
     NSDate *_captureDate;
     ARFaceData *_faceData;
+    CDStruct_14d5dc5e _referenceOriginTransform;
+    CDStruct_14d5dc5e _referenceOriginDelta;
+    CDStruct_14d5dc5e _sessionOriginTransform;
+    CDStruct_14d5dc5e _worldAlignmentTransform;
 }
 
 @property (copy, nonatomic) NSArray *anchors; // @synthesize anchors=_anchors;
@@ -44,23 +50,39 @@
 @property (strong, nonatomic) ARLightEstimate *lightEstimate; // @synthesize lightEstimate=_lightEstimate;
 @property (readonly, nonatomic) ARPointCloud *rawFeaturePoints;
 @property (strong, nonatomic) ARPointCloud *referenceFeaturePoints; // @synthesize referenceFeaturePoints=_referenceFeaturePoints;
+@property (nonatomic) CDStruct_14d5dc5e referenceOriginDelta; // @synthesize referenceOriginDelta=_referenceOriginDelta;
+@property (nonatomic) CDStruct_14d5dc5e referenceOriginTransform; // @synthesize referenceOriginTransform=_referenceOriginTransform;
 @property (nonatomic) long long renderFramesPerSecond; // @synthesize renderFramesPerSecond=_renderFramesPerSecond;
+@property (nonatomic) CDStruct_14d5dc5e sessionOriginTransform; // @synthesize sessionOriginTransform=_sessionOriginTransform;
 @property (nonatomic) BOOL shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
-@property (strong, nonatomic) ARTrackingErrorData *trackingErrorData; // @synthesize trackingErrorData=_trackingErrorData;
-@property (strong, nonatomic) ARAnchor *worldOrigin; // @synthesize worldOrigin=_worldOrigin;
+@property (strong, nonatomic) ARFrameTimingData *timingData; // @synthesize timingData=_timingData;
+@property (strong, nonatomic) ARWorldTrackingErrorData *trackingErrorData; // @synthesize trackingErrorData=_trackingErrorData;
+@property (nonatomic) long long worldAlignment; // @synthesize worldAlignment=_worldAlignment;
+@property (nonatomic) CDStruct_14d5dc5e worldAlignmentTransform; // @synthesize worldAlignmentTransform=_worldAlignmentTransform;
 
 - (void).cxx_destruct;
+- (id)_hitTestEstimatedPlanesFromOrigin:(long long)arg1 withDirection:planeAlignment: /* Error: Ran out of types for this method. */;
 - (id)_hitTestFromOrigin:(unsigned long long)arg1 withDirection:types: /* Error: Ran out of types for this method. */;
+- (id)_horizontalPlaneEstimateFromFeaturePoint:fromOrigin:withDirection: /* Error: Ran out of types for this method. */;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (struct CGAffineTransform)displayTransformForOrientation:(long long)arg1 viewportSize:(struct CGSize)arg2;
+- (CDStruct_14d5dc5e)gravityAlignmentTransform;
 - (unsigned long long)hash;
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
 - (id)initWithCamera:(id)arg1 timestamp:(double)arg2;
-- (id)initWithContext:(id)arg1;
+- (id)initWithTimestamp:(double)arg1 context:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)referenceOriginChanged;
+- (BOOL)referenceOriginDeltaAvailable;
+- (BOOL)referenceOriginTransformAvailable;
+- (BOOL)referenceOriginTransformUpdated;
+- (BOOL)sessionOriginTransformAvailable;
+- (void)setReferenceOriginChanged:(BOOL)arg1;
+- (void)setReferenceOriginTransformUpdated:(BOOL)arg1;
+- (BOOL)worldAlignmentTransformAvailable;
 
 @end
 

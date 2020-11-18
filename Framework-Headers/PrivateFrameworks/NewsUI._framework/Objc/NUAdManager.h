@@ -53,10 +53,10 @@
 - (id)prerollRootDefinition;
 - (void)videoAdForContextProviders:(id)arg1 constructor:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (id)videoInTodayHeaderDefinition;
-- (id)videoInTodayMidrollBodyDefinition;
-- (id)videoInTodayMidrollContextConstructor;
-- (void)videoInTodayMidrollForContextProviders:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-- (id)videoInTodayMidrollRootDefinition;
+- (id)videoPlaylistAdBodyDefinition;
+- (id)videoPlaylistAdContextConstructor;
+- (void)videoPlaylistAdForContextProviders:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (id)videoPlaylistAdRootDefinition;
 
 @end
 

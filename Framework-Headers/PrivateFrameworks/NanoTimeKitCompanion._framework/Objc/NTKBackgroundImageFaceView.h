@@ -16,12 +16,14 @@
     UIView *_transitionViewFrom;
     NTKEditOption *_editOptionTo;
     UIView *_transitionViewTo;
-    UIView *_animationView;
-    UIImageView *_animationMaskImageView;
+    UIView *_transitionDimmingView;
     BOOL _shouldAdjustLayoutForTimeTravel;
     UIView *_timeTravelDimmingOverlayView;
     UIView *_selectedContentView;
+    double _breathScaleModifier;
+    double _rubberBandScaleModifier;
     NTKDigitalTimeLabel *_timeLabel;
+    UIView *_backgroundContainerView;
     UIView *_zoomMaskView;
     UIImageView *_zoomVignette;
     UIView *_borrowedCircleView;
@@ -31,6 +33,7 @@
     struct CGRect _maskZoomStartingBounds;
 }
 
+@property (readonly, nonatomic) UIView *backgroundContainerView; // @synthesize backgroundContainerView=_backgroundContainerView;
 @property (strong, nonatomic) UIView *borrowedCircleView; // @synthesize borrowedCircleView=_borrowedCircleView;
 @property (strong, nonatomic) UIView *borrowedTimeView; // @synthesize borrowedTimeView=_borrowedTimeView;
 @property (readonly, copy) NSString *debugDescription;
@@ -49,6 +52,7 @@
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyForegroundZoomAlpha:(double)arg1;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyScaleTransform:(id)arg1;
 - (void)_applyShowContentForUnadornedSnapshot;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (double)_backgroundImageAlphaForEditMode:(long long)arg1;

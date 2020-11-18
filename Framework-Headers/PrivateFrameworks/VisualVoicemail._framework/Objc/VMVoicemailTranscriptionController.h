@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSLocale, NSOperationQueue, NSProgress, VMTranscriptionAssetModelOperation;
+@class NSLocale, NSMapTable, NSOperationQueue, NSProgress, VMTranscriptionAssetModelOperation;
 @protocol OS_dispatch_queue, VMNetworkObserver, VMSpeechRecognizer;
 
 @interface VMVoicemailTranscriptionController : NSObject
@@ -19,9 +19,11 @@
     NSOperationQueue *_transcriptionOperationQueue;
     NSProgress *_transcriptionProgress;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
+    NSMapTable *_delegateToQueue;
 }
 
 @property (weak, nonatomic) VMTranscriptionAssetModelOperation *assetModelOperation; // @synthesize assetModelOperation=_assetModelOperation;
+@property (readonly, nonatomic) NSMapTable *delegateToQueue; // @synthesize delegateToQueue=_delegateToQueue;
 @property (readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) id<VMNetworkObserver> networkObserver; // @synthesize networkObserver=_networkObserver;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
@@ -31,6 +33,7 @@
 @property (readonly, nonatomic) NSProgress *transcriptionProgress; // @synthesize transcriptionProgress=_transcriptionProgress;
 
 - (void).cxx_destruct;
+- (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (id)assetModelOperationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancelQueuedTranscriptions;
 - (void)dealloc;
@@ -41,6 +44,7 @@
 - (BOOL)isDictationModelInstalled;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
+- (void)removeDelegate:(id)arg1;
 - (void)removeNetworkReachableObserver;
 - (void)reportDictationProblemForFileAtURL:(id)arg1;
 - (void)requestAssetModelInstallation;

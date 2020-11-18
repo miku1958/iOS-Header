@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSTimer, WAKView, WebDataSource, WebEvent, WebPluginController;
+@class WAKView;
 
 __attribute__((visibility("hidden")))
 @interface WebHTMLViewPrivate : NSObject
@@ -16,28 +16,21 @@ __attribute__((visibility("hidden")))
     BOOL printing;
     BOOL paginateScreenContent;
     WAKView *layerHostingView;
-    BOOL drawingIntoLayer;
-    BOOL drawingIntoAcceleratedLayer;
-    WebEvent *mouseDownEvent;
+    struct RetainPtr<WebEvent> mouseDownEvent;
     BOOL handlingMouseDownEvent;
-    WebEvent *keyDownEvent;
+    struct RetainPtr<WebEvent> keyDownEvent;
     BOOL exposeInputContext;
     struct CGPoint lastScrollPosition;
     BOOL inScrollPositionChanged;
-    WebPluginController *pluginController;
-    NSString *toolTip;
-    id trackingRectOwner;
-    void *trackingRectUserData;
-    NSTimer *autoscrollTimer;
-    WebEvent *autoscrollTriggerEvent;
-    NSArray *pageRects;
-    BOOL transparentBackground;
+    struct RetainPtr<WebPluginController> pluginController;
+    struct RetainPtr<NSArray> pageRects;
     struct WebHTMLViewInterpretKeyEventsParameters *interpretKeyEventsParameters;
-    WebDataSource *dataSource;
+    struct RetainPtr<WebDataSource> dataSource;
     SEL selectorForDoCommandBySelector;
 }
 
-+ (void)initialize;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)clear;
 - (void)dealloc;
 

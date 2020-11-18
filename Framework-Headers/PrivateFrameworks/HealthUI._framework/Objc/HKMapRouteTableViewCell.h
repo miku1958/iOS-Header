@@ -27,7 +27,7 @@
 - (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
 - (void)setUpConstraints;
-- (void)setUpSubviews;
+- (void)setupSubviews;
 
 @end
 

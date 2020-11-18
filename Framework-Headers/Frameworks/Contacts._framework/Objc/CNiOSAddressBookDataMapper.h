@@ -8,7 +8,7 @@
 
 #import <Contacts/CNDataMapper-Protocol.h>
 
-@class CNContactsEnvironment, CNiOSAddressBook, NSString;
+@class CNContactsEnvironment, CNManagedAccountsCache, CNManagedConfiguration, CNiOSAddressBook, NSString;
 @protocol CNContactsLogger;
 
 @interface CNiOSAddressBookDataMapper : NSObject <CNDataMapper>
@@ -16,6 +16,8 @@
     CNiOSAddressBook *_addressBook;
     CNContactsEnvironment *_environment;
     id<CNContactsLogger> _logger;
+    CNManagedConfiguration *_managedConfiguration;
+    CNManagedAccountsCache *_managedAccountsCache;
 }
 
 @property (readonly, nonatomic) CNiOSAddressBook *addressBook; // @synthesize addressBook=_addressBook;
@@ -24,17 +26,28 @@
 @property (readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<CNContactsLogger> logger; // @synthesize logger=_logger;
+@property (strong, nonatomic) CNManagedAccountsCache *managedAccountsCache; // @synthesize managedAccountsCache=_managedAccountsCache;
+@property (readonly, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property (readonly) Class superclass;
 
 + (id)contactBuffersDecoderForFetchRequest:(id)arg1;
++ (id)encodedPeopleFetcherForForFetchRequest:(id)arg1 addressBook:(void *)arg2 managedConfiguration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 environment:(id)arg5;
 + (void)initialize;
 - (void).cxx_destruct;
+- (void *)_alternativeSourceWithAccessibleAccountFromAddressBook:(void *)arg1;
+- (BOOL)_canReadUnderManagementRestrictionsFromSource:(void *)arg1 inAddressBook:(void *)arg2;
+- (BOOL)_canWriteUnderManagementRestrictionsToSource:(void *)arg1 inAddressBook:(void *)arg2;
 - (id)_containersMatchingPredicate:(id)arg1 remote:(BOOL)arg2 error:(id *)arg3;
+- (void *)_defaultSourceInAddressBook:(void *)arg1 error:(id *)arg2;
 - (BOOL)_fechAllRecordsInSaveContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_fetchAccountsInSaveContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_fetchContactsInSaveContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_fetchContainersInSaveContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_fetchGroupsInSaveContext:(id)arg1 error:(id *)arg2;
+- (BOOL)_hasAccessToReadFromAccountCorrespondingToSource:(void *)arg1 fromAddressBook:(void *)arg2;
+- (BOOL)_hasAccessToWriteToAccountCorrespondingToSource:(void *)arg1 fromAddressBook:(void *)arg2;
+- (BOOL)_hasManagementRestrictionsEnabled;
+- (BOOL)_hasWriteAccessToAccountContainingPerson:(void *)arg1 fromSaveContext:(id)arg2;
 - (void)_postProcessContactsFromSaveContext:(id)arg1;
 - (void)_postProcessContainersFromSaveContext:(id)arg1;
 - (void)_postProcessGroupsFromSaveContext:(id)arg1;
@@ -54,9 +67,9 @@
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)defaultContainerIdentifier;
-- (id)defaultContainerIdentifierForAddressBook:(void *)arg1;
+- (id)defaultContainerIdentifierForAddressBook:(void *)arg1 error:(id *)arg2;
 - (id)descriptorForRequiredKeysForMatchingDictionary;
-- (id)encodedContactsCursorForFetchRequest:(id)arg1 error:(id *)arg2;
+- (id)encodedContactsCursorForFetchRequest:(id)arg1 cursorCleanupBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 error:(id *)arg3;
@@ -67,9 +80,10 @@
 - (id)groupsWithIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)identifierWithError:(id *)arg1;
 - (id)init;
-- (id)initWithAddressBook:(id)arg1;
+- (id)initWithAddressBook:(id)arg1 managedConfiguration:(id)arg2;
 - (id)initWithContactsEnvironment:(id)arg1;
-- (id)initWithContactsEnvironment:(id)arg1 addressBook:(id)arg2;
+- (id)initWithContactsEnvironment:(id)arg1 addressBook:(id)arg2 managedConfiguration:(id)arg3;
+- (id)initWithContactsEnvironment:(id)arg1 managedConfiguration:(id)arg2;
 - (id)matchingDictionaryForContact:(id)arg1;
 - (id)meContactIdentifiers:(id *)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;

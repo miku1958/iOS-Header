@@ -6,7 +6,7 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSArray, NSMutableArray, NSObject, TSDCanvas, TSDDrawableInfo, TSDLayout, TSPObject, TSUBezierPath, TSWPStorage;
+@class NSArray, NSMutableArray, NSObject, TSDCanvas, TSDLayout, TSDWrapSegments, TSPObject, TSUBezierPath, TSWPStorage;
 @protocol TSDHint, TSDInfo, TSWPColumnMetrics, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 @protocol TSWPLayoutTarget <NSObject>
@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
 @property (readonly, nonatomic) unsigned int autosizeFlags;
 @property (readonly, nonatomic) TSDCanvas *canvas;
-@property (readonly, strong, nonatomic) NSMutableArray *columns;
+@property (readonly, nonatomic) NSMutableArray *columns;
 @property (readonly, nonatomic) struct CGSize currentSize;
 @property (readonly, nonatomic) id<TSWPFootnoteHeightMeasurer> footnoteHeightMeasurer;
 @property (readonly, nonatomic) id<TSWPFootnoteMarkProvider> footnoteMarkProvider;
@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) BOOL isInstructional;
 @property (readonly, nonatomic) BOOL isLinked;
 @property (readonly, nonatomic) BOOL layoutIsValid;
+@property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, nonatomic) struct CGRect maskRect;
 @property (readonly, nonatomic) double maxAnchorY;
 @property (readonly, nonatomic) struct CGSize maxSize;
@@ -30,13 +31,13 @@
 @property (readonly, nonatomic) int naturalAlignment;
 @property (readonly, nonatomic) int naturalDirection;
 @property (readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
-@property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
+@property (readonly, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
 @property (readonly, nonatomic) unsigned long long pageCount;
 @property (readonly, nonatomic) unsigned long long pageNumber;
 @property (readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property (readonly, nonatomic) struct CGPoint position;
-@property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
+@property (readonly, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
 @property (readonly, nonatomic) BOOL repShouldPreventCaret;
 @property (readonly, nonatomic) BOOL shouldHyphenate;
@@ -60,10 +61,10 @@
 @optional
 - (struct CGPoint)anchoredAttachmentPositionFromLayoutPosition:(struct CGPoint)arg1;
 - (TSUBezierPath *)interiorClippingPath;
+- (TSDWrapSegments *)interiorWrapSegments;
 - (BOOL)invalidateForPageCountChange;
 - (struct CGPoint)layoutPositionFromAnchoredAttachmentPosition:(struct CGPoint)arg1;
 - (struct CGPoint)layoutPositionFromInlineAttachmentPosition:(struct CGPoint)arg1;
 - (unsigned int)pageIndex;
-- (BOOL)siblingTargetIsManipulatingDrawable:(TSDDrawableInfo *)arg1;
 @end
 

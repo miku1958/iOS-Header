@@ -13,6 +13,7 @@
 - (id)tsu_dequeue;
 - (void)tsu_enqueue:(id)arg1;
 - (unsigned long long)tsu_insertObject:(id)arg1 usingComparator:(CDUnknownBlockType)arg2;
+- (id)tsu_peek;
 - (id)tsu_pop;
 - (void)tsu_push:(id)arg1;
 - (void)tsu_removeObjectsIdenticalToObjectsInArray:(id)arg1;

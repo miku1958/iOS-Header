@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
-@interface ICSDuration : NSObject <NSCoding>
+@interface ICSDuration : NSObject <NSSecureCoding>
 {
     double _duration;
 }
@@ -16,6 +16,7 @@
 + (id)durationFromICSString:(id)arg1;
 + (id)durationFromRFC2445UTF8String:(const char *)arg1;
 + (id)generateDurationFromICSString:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (id)ICSStringWithOptions:(unsigned long long)arg1;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
 - (long long)days;

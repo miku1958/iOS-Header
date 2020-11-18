@@ -6,10 +6,10 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class NSArray, NSDateInterval, _HKAchievementPredicateMonthlyAggregatesEnvironment;
+@class NSDate, _HKAchievementPredicateMonthlyAggregatesEnvironment;
 
 @protocol _HKActivitySummaryHistoryEnvironmentDataSource <NSObject>
 - (_HKAchievementPredicateMonthlyAggregatesEnvironment *)aggregateEnvironmentForMonthOffsetFromNow:(long long)arg1;
-- (NSArray *)dayEnvironmentsInDateInterval:(NSDateInterval *)arg1;
+- (NSDate *)currentDateForMonthlyAggregatesEnvironment;
 @end
 

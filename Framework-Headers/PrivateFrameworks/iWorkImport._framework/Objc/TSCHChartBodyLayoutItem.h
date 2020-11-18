@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)calcOverhangRect;
 - (unsigned long long)countOfElementsForModel:(id)arg1 series:(id)arg2 forGroupsBySeries:(id)arg3 outNewElementBounds:(struct CGRect **)arg4 outNewClipRects:(struct CGRect **)arg5 outNewElementPaths:(const struct CGPath ***)arg6;
 - (id)initWithParent:(id)arg1;
+- (BOOL)layoutSpacePointIsInChartBody:(struct CGPoint)arg1;
 - (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (void)p_addRendererOfClass:(Class)arg1 andRep:(id)arg2 toArray:(id)arg3;
 - (struct CGRect)p_calcDrawingRectForModel:(id)arg1;

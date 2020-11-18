@@ -18,11 +18,11 @@
 @property (strong, nonatomic) NSMutableArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 
 + (Class)supportedCommandType;
+- (void).cxx_destruct;
 - (void)addSupportedCommand:(id)arg1;
 - (void)clearSupportedCommands;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

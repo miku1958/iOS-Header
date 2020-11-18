@@ -9,7 +9,9 @@
 @class NSArray;
 
 @protocol PKServiceAddPassesViewControllerProtocol <NSObject>
+- (void)evaluateBrightness;
 - (void)ingestPassesWithData:(NSArray *)arg1 fromPresentationSource:(unsigned long long)arg2;
+- (void)resetBrightness;
 - (void)setDisplayPropertiesWithScreenSize:(struct CGSize)arg1 scale:(double)arg2;
 @end
 

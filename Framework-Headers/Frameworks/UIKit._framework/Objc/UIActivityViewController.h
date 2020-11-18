@@ -24,6 +24,9 @@
     BOOL _willDismissActivityViewController;
     BOOL _performActivityForStateRestoration;
     BOOL _shouldMatchOnlyUserElectedExtensions;
+    BOOL _hasPerformedInitialPresentation;
+    BOOL _isPerformingPresentation;
+    BOOL _presentationWasDelayed;
     BOOL _allowsEmbedding;
     BOOL _showKeyboardAutomatically;
     BOOL _sourceIsManaged;
@@ -51,6 +54,8 @@
     long long _completedProviderCount;
     unsigned long long _backgroundTaskIdentifier;
     NSString *_subject;
+    unsigned long long _beginShareUIConnectionTimestamp;
+    unsigned long long _beginPerformingActivityTimestamp;
     NSArray *_activityTypesToCreateInShareService;
     NSArray *_resolvedActivityItemsForCurrentActivity;
     CDUnknownBlockType _preCompletionHandler;
@@ -80,6 +85,8 @@
 @property (nonatomic) BOOL allowsEmbedding; // @synthesize allowsEmbedding=_allowsEmbedding;
 @property (copy, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
 @property (nonatomic) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
+@property (nonatomic, getter=_beginPerformingActivityTimestamp, setter=_setBeginPerformingActivityTimestamp:) unsigned long long beginPerformingActivityTimestamp; // @synthesize beginPerformingActivityTimestamp=_beginPerformingActivityTimestamp;
+@property (nonatomic, getter=_beginShareUIConnectionTimestamp, setter=_setBeginShareUIConnectionTimestamp:) unsigned long long beginShareUIConnectionTimestamp; // @synthesize beginShareUIConnectionTimestamp=_beginShareUIConnectionTimestamp;
 @property (nonatomic) long long completedProviderCount; // @synthesize completedProviderCount=_completedProviderCount;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (copy, nonatomic) CDUnknownBlockType completionWithItemsHandler; // @synthesize completionWithItemsHandler=_completionWithItemsHandler;
@@ -90,12 +97,15 @@
 @property (nonatomic) long long excludedActivityCategories; // @synthesize excludedActivityCategories=_excludedActivityCategories;
 @property (copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property (copy, nonatomic) id<NSCopying> extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
+@property (nonatomic, getter=_hasPerformedInitialPresentation, setter=_setHasPerformedInitialPresentation:) BOOL hasPerformedInitialPresentation; // @synthesize hasPerformedInitialPresentation=_hasPerformedInitialPresentation;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *includedActivityTypes; // @synthesize includedActivityTypes=_includedActivityTypes;
+@property (nonatomic, getter=_isPerformingPresentation, setter=_setIsPerformingPresentation:) BOOL isPerformingPresentation; // @synthesize isPerformingPresentation=_isPerformingPresentation;
 @property (nonatomic) long long originalPopoverBackgroundStyle; // @synthesize originalPopoverBackgroundStyle=_originalPopoverBackgroundStyle;
 @property (strong, nonatomic) Class originalPopoverBackgroundViewClass; // @synthesize originalPopoverBackgroundViewClass=_originalPopoverBackgroundViewClass;
 @property (nonatomic) BOOL performActivityForStateRestoration; // @synthesize performActivityForStateRestoration=_performActivityForStateRestoration;
 @property (copy, nonatomic) CDUnknownBlockType preCompletionHandler; // @synthesize preCompletionHandler=_preCompletionHandler;
+@property (nonatomic, getter=_presentationWasDelayed, setter=_setPresentationWasDelayed:) BOOL presentationWasDelayed; // @synthesize presentationWasDelayed=_presentationWasDelayed;
 @property (strong, nonatomic) _UIShareExtensionRemoteViewController *remoteContentViewController; // @synthesize remoteContentViewController=_remoteContentViewController;
 @property (readonly, nonatomic) NSArray *resolvedActivityItemsForCurrentActivity; // @synthesize resolvedActivityItemsForCurrentActivity=_resolvedActivityItemsForCurrentActivity;
 @property (strong, nonatomic) NSExtension *shareExtension; // @synthesize shareExtension=_shareExtension;

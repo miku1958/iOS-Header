@@ -119,7 +119,6 @@
 - (BOOL)_shouldEnable3DTouchPreview;
 - (struct CGRect)_sourceRectForPhotoLibraryPresentationInCoordinateSpace:(id)arg1;
 - (void)_stageAsset:(id)arg1 withReference:(id)arg2 atIndexPath:(struct PXSimpleIndexPath)arg3 suppressLivePhotoContent:(BOOL)arg4;
-- (void)_stagePackageWithLivePhotoContentSuppressed:(id)arg1;
 - (void)_updatePhotoLibraryPresentationIfNeeded;
 - (id)_validateAssetReference:(id)arg1 forScrollViewPoint:(struct CGPoint)arg2;
 - (void)applyExistingGeometryForTile:(id)arg1;

@@ -26,9 +26,10 @@
 - (void)clearData:(id)arg1;
 - (void)clearLocalSyncState:(id)arg1;
 - (void)cloudKitEventNotificationManager:(id)arg1 syncStateDidChange:(id)arg2;
-- (id)iMessageOniCloudEnabled:(id)arg1;
-- (void)setiMessageOniCloudEnabled:(id)arg1 specifier:(id)arg2;
+- (id)messagesOniCloudEnabled:(id)arg1;
+- (void)setMessagesOniCloudEnabled:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;
+- (void)syncToiCloudNow:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

@@ -13,15 +13,15 @@
 
 @interface PKStrokeGenerator : NSObject <PKInputProvider>
 {
-    vector_0f1b893d _drawPoints;
-    vector_5de2d2d9 _outputPoints;
+    vector_58517711 _drawPoints;
+    vector_03cfcf00 _outputPoints;
     long long _outputImmutableCount;
     BOOL _inputHasChanged;
     NSObject<OS_dispatch_queue> *_inputQueue;
     PKStroke *_currentStroke;
     long long _currentInputType;
     long long _immutableCount;
-    vector_0f1b893d _updatedDrawPoints;
+    vector_58517711 _updatedDrawPoints;
     BOOL _drawingEndedButNotFinished;
     NSObject<OS_dispatch_semaphore> *_drawingWaitForFinishSemaphore;
     BOOL _useRuler;
@@ -83,14 +83,14 @@
 @property (nonatomic) struct PKVelocityCalculationFilter *velocityFilter; // @synthesize velocityFilter=_velocityFilter;
 
 + (void)initialize;
-+ (vector_0f1b893d)inputPointsFromPath:(struct CGPath *)arg1;
++ (vector_58517711)inputPointsFromPath:(struct CGPath *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_drawingAddPoint:(CDStruct_f17e9403)arg1;
 - (void)addPoint:(CDStruct_f17e9403)arg1;
-- (void)addPoints:(vector_0f1b893d)arg1;
+- (void)addPoints:(vector_58517711)arg1;
 - (void)allowSnappingToRuler:(struct CGAffineTransform)arg1 width:(double)arg2;
-- (unsigned long long)copyInputUpdatedRangeFromIndex:(unsigned long long)arg1 into:(vector_0f1b893d *)arg2;
+- (unsigned long long)copyInputUpdatedRangeFromIndex:(unsigned long long)arg1 into:(vector_58517711 *)arg2;
 - (void)dealloc;
 - (double)distanceToRulerCenter:(struct CGPoint)arg1;
 - (void)drawingBeganWithStroke:(id)arg1 inputType:(long long)arg2 inputScale:(double)arg3 start:(CDUnknownBlockType)arg4;
@@ -99,9 +99,9 @@
 - (void)drawingUpdateAllPoints;
 - (void)drawingUpdatePoint:(CDStruct_f17e9403)arg1;
 - (long long)fetchFilteredPointsFromIndex:(long long)arg1 accessBlock:(CDUnknownBlockType)arg2;
-- (vector_0f1b893d *)getInputUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
+- (vector_58517711 *)getInputUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
 - (struct CGPoint)getRulerSnapLineOriginAndTangent:(struct CGPoint *)arg1 andNormal:(struct CGPoint *)arg2;
-- (vector_5de2d2d9 *)getUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
+- (vector_03cfcf00 *)getUpdatedRangeFromIndex:(inout unsigned long long *)arg1;
 - (id)init;
 - (void)maskToRuler;
 - (struct _PKStrokePoint)outputCurrentStrokePoint:(CDStruct_f17e9403)arg1;

@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSDictionary *relationshipKinds; // @synthesize relationshipKinds=_relationshipKinds;
 
 + (id)kindWithRelationshipKinds:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

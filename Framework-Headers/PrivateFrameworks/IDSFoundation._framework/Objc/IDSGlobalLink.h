@@ -159,7 +159,7 @@
 - (id)_interfaceTypeListToString:(unsigned char)arg1;
 - (BOOL)_isBetterCandidatePair:(id)arg1 newCandidatePair:(id)arg2;
 - (BOOL)_isExtIPDiscoveryDone;
-- (BOOL)_isLocalAddressUsed:(const struct sockaddr *)arg1;
+- (BOOL)_isInterfaceUsedForRelay:(int)arg1 candidatePairs:(id)arg2;
 - (BOOL)_isReachableInterface:(id)arg1 interfaceIPVersion:(unsigned long long)arg2;
 - (id)_linkTypeListToString:(unsigned char)arg1;
 - (id)_linkTypeMaskToString:(unsigned char)arg1;

@@ -63,6 +63,7 @@
 @property (copy, nonatomic) NSData *fetchThrottlerData;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double historyAgeLimit; // @synthesize historyAgeLimit=_historyAgeLimit;
+@property (readonly, nonatomic) BOOL isUsingInMemoryDatabase;
 @property (nonatomic) BOOL pushNotificationsAreInitialized; // @synthesize pushNotificationsAreInitialized=_pushNotificationsAreInitialized;
 @property (copy, nonatomic) NSData *pushThrottlerData;
 @property (readonly, nonatomic) NSData *salt;

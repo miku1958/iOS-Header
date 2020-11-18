@@ -6,7 +6,6 @@
 
 #import <iWorkImport/TSWPTextHostLayout.h>
 
-#import <iWorkImport/TSKSearchTarget-Protocol.h>
 #import <iWorkImport/TSWPColumnMetrics-Protocol.h>
 #import <iWorkImport/TSWPLayoutParent-Protocol.h>
 #import <iWorkImport/TSWPStorageObserver-Protocol.h>
@@ -14,7 +13,7 @@
 @class NSMutableDictionary, NSString, TSTInfo, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSTTableModel, TSWPLayout, TSWPPadding;
 
 __attribute__((visibility("hidden")))
-@interface TSTLayout : TSWPTextHostLayout <TSKSearchTarget, TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
+@interface TSTLayout : TSWPTextHostLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
 {
     TSTMasterLayout *mMasterLayout;
     TSTLayoutHint *mLayoutHint;
@@ -97,7 +96,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)canvasShouldScrollForSelectionPath:(id)arg1;
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (id)cellIteratorWithRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3;
-- (id)childSearchTargets;
 - (id)children;
 - (id)computeLayoutGeometry;
 - (void)dealloc;
@@ -111,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithInfo:(id)arg1 layoutHint:(id)arg2;
 - (id)initialInfoGeometry;
 - (struct CGSize)initialTextSize;
+- (id)inspectorGeometry;
 - (void)invalidate;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (void)invalidateLayoutSpaceCoordinates;
@@ -127,9 +126,6 @@ __attribute__((visibility("hidden")))
 - (void)iterateCellsAndTerminateWithIterator:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)iterateCellsInRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)layoutGeometryFromInfo;
-- (void)layoutSearchForAnnotationWithHitBlock:(CDUnknownBlockType)arg1;
-- (void)layoutSearchForSpellingErrorsWithHitBlock:(CDUnknownBlockType)arg1 stop:(BOOL *)arg2;
-- (void)layoutSearchForString:(id)arg1 options:(unsigned long long)arg2 hitBlock:(CDUnknownBlockType)arg3;
 - (struct CGRect)maskRectForTextLayout:(id)arg1;
 - (double)maxAutoGrowWidthForTextLayout:(id)arg1;
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
@@ -167,7 +163,6 @@ __attribute__((visibility("hidden")))
 - (void)setupContainedTextEditingLayout:(struct TSUCellCoord)arg1;
 - (BOOL)supportsRotation;
 - (BOOL)textIsVertical;
-- (void)transferLayoutGeometryToInfo:(id)arg1;
 - (void)updateChildrenFromInfo;
 - (void)validate;
 - (void)validatePageNumberCount;

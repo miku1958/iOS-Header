@@ -21,5 +21,6 @@
 @optional
 - (BOOL)shouldContinuePresentingFormAfterFeedback;
 - (BOOL)wantsCustomFeedbackSection;
+- (BOOL)wantsPositiveFeedbackSection;
 @end
 

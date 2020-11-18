@@ -6,9 +6,10 @@
 
 #import <Silex/SXComponentTypeDescribing-Protocol.h>
 
-@class SXComponent, SXComponentLayout, SXComponentSizer, SXLayoutAttributes;
+@class SXComponentSizer, SXLayoutAttributes;
+@protocol SXComponent, SXComponentLayout;
 
 @protocol SXComponentSizerFactory <SXComponentTypeDescribing>
-- (SXComponentSizer *)sizerForComponent:(SXComponent *)arg1 componentLayout:(SXComponentLayout *)arg2 layoutAttributes:(SXLayoutAttributes *)arg3;
+- (SXComponentSizer *)sizerForComponent:(id<SXComponent>)arg1 componentLayout:(id<SXComponentLayout>)arg2 layoutAttributes:(SXLayoutAttributes *)arg3;
 @end
 

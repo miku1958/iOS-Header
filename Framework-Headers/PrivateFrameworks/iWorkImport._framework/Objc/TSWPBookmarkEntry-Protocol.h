@@ -11,6 +11,7 @@
 @protocol TSWPBookmarkEntry <NSObject>
 
 @property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *key;
 @property (readonly, nonatomic) struct _NSRange range;
 @property (readonly, nonatomic) NSURL *url;
 

@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) unsigned long long IDMSEnvironment;
 @property (readonly, nonatomic) NSURL *absintheCertURL;
 @property (readonly, nonatomic) NSURL *absintheSessionURL;
+@property (readonly, nonatomic) NSURL *acsURL;
 @property (strong, nonatomic) id<AKURLBagDictionaryProvider> bagProvider; // @synthesize bagProvider=_bagProvider;
 @property (readonly, nonatomic) NSURL *basicAuthURL;
 @property (readonly, nonatomic) NSURL *changePasswordURL;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) NSURL *deviceListURL;
 @property (readonly, nonatomic) NSURL *endProvisioningURL;
 @property (readonly, nonatomic) NSURL *escapeHatchURL;
+@property (readonly, nonatomic) NSURL *fetchAuthenticationModeURL;
 @property (readonly, nonatomic) NSURL *fetchConfigDataURL;
 @property (readonly, nonatomic) NSURL *fetchFollowUps;
 @property (readonly, nonatomic) NSURL *fetchUserInfoURL;

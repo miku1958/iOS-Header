@@ -14,12 +14,15 @@
     struct unique_ptr<quasar::G2P, std::__1::default_delete<quasar::G2P>> _g2p;
     struct shared_ptr<quasar::PronCache<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>> _pronCache;
     struct BasicTextSanitizer _sanitizer;
+    struct unique_ptr<quasar::PersonalizationRecipe, std::__1::default_delete<quasar::PersonalizationRecipe>> _personalizationRecipe;
     struct unique_ptr<quasar::LmeData, std::__1::default_delete<quasar::LmeData>> _quasarLmeData;
 }
 
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)addPersonalizationData:(id)arg1;
+- (void)addPersonalizationJsonData:(id)arg1;
 - (void)addWordWithParts:(id)arg1 templateName:(id)arg2;
 - (id)dataProfile;
 - (id)initWithConfiguration:(id)arg1 language:(id)arg2 overrides:(id)arg3 sdapiOverrides:(id)arg4 generalVoc:(id)arg5 emptyVoc:(id)arg6 pgVoc:(id)arg7 lexiconEnh:(id)arg8 tokenEnh:(id)arg9 paramsetHolder:(id)arg10;
@@ -29,6 +32,7 @@
 - (void)readUserProfile:(id)arg1;
 - (void)removeAllWords;
 - (id)sanitizedStringWithString:(id)arg1;
+- (void)writeOutUserDataToJson:(id)arg1 withConfig:(id)arg2;
 
 @end
 

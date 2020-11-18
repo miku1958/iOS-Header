@@ -17,6 +17,7 @@
     CDStruct_95bda58d _knownClientResolvedTypes;
     GEOABSecondPartyPlaceRequestClientMetaData *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
+    NSMutableArray *_businessChatPreflightIdentifiers;
     unsigned int _dayOfWeek;
     NSString *_debugApiKey;
     NSString *_deviceCountryCode;
@@ -42,6 +43,7 @@
 
 @property (strong, nonatomic) GEOABSecondPartyPlaceRequestClientMetaData *abClientMetadata;
 @property (strong, nonatomic) GEOAdditionalEnabledMarkets *additionalEnabledMarkets; // @synthesize additionalEnabledMarkets=_additionalEnabledMarkets;
+@property (strong, nonatomic) NSMutableArray *businessChatPreflightIdentifiers; // @synthesize businessChatPreflightIdentifiers=_businessChatPreflightIdentifiers;
 @property (nonatomic) unsigned int dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
 @property (strong, nonatomic) NSString *debugApiKey; // @synthesize debugApiKey=_debugApiKey;
 @property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
@@ -75,18 +77,24 @@
 @property (nonatomic) unsigned int timeSinceMapEnteredForeground; // @synthesize timeSinceMapEnteredForeground=_timeSinceMapEnteredForeground;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)businessChatPreflightIdentifierType;
 + (Class)deviceHistoricalLocationType;
 - (void).cxx_destruct;
 - (int)StringAsKnownClientResolvedTypeDeprecateds:(id)arg1;
 - (int)StringAsKnownClientResolvedTypes:(id)arg1;
 - (int)StringAsRequiredVersion:(id)arg1;
 - (int)StringAsResultListAttributionSupport:(id)arg1;
+- (void)addBusinessChatPreflightIdentifier:(id)arg1;
 - (void)addDeviceHistoricalLocation:(id)arg1;
 - (void)addKnownClientResolvedType:(int)arg1;
 - (void)addKnownClientResolvedTypeDeprecated:(int)arg1;
+- (id)businessChatPreflightIdentifierAtIndex:(unsigned long long)arg1;
+- (unsigned long long)businessChatPreflightIdentifiersCount;
+- (void)clearBusinessChatPreflightIdentifiers;
 - (void)clearDeviceHistoricalLocations;
 - (void)clearKnownClientResolvedTypeDeprecateds;
 - (void)clearKnownClientResolvedTypes;
+- (void)clearLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

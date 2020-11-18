@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (readonly, nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;

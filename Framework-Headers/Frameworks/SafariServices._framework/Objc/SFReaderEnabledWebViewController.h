@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)createReaderWebViewForReaderController:(id)arg1;
 - (void)dealloc;
 - (void)loadView;
 - (void)readerController:(id)arg1 didClickLinkInReaderWithRequest:(id)arg2;

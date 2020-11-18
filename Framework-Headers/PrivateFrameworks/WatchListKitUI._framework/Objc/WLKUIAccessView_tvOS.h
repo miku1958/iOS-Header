@@ -23,15 +23,16 @@
     UIButton *_allowButton;
     UIButton *_disallowButton;
     UIButton *_nackButton;
-    UIButton *_privacyButton;
     UIButton *_seeAllButton;
     TVCarouselView *_carouselView;
     BOOL _didLayout;
+    UIView *_privacyView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIView *privacyView; // @synthesize privacyView=_privacyView;
 @property (readonly) Class superclass;
 
 + (struct CGSize)iconSize;
@@ -49,7 +50,6 @@
 - (void)layoutSubviews;
 - (id)nackButton;
 - (unsigned long long)numberOfItemsInCarouselView:(id)arg1;
-- (id)privacyButton;
 - (id)seeAllButton;
 - (void)setBody:(id)arg1;
 - (void)setTitle:(id)arg1;

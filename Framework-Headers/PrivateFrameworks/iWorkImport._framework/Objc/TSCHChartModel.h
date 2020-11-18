@@ -36,9 +36,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) unsigned long long analyticsDataSize;
-@property (readonly, strong, nonatomic) NSArray *axisList;
-@property (readonly, strong, nonatomic) NSArray *categoryAxisList;
-@property (nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mInfo;
+@property (readonly, nonatomic) NSArray *axisList;
+@property (readonly, nonatomic) NSArray *categoryAxisList;
+@property (weak, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mInfo;
 @property (strong, nonatomic) TSCHChartGrid *grid; // @synthesize grid=mGrid;
 @property (readonly, nonatomic) BOOL isMultiData;
 @property (readonly, nonatomic) BOOL isTransient; // @synthesize isTransient=mIsTransient;
@@ -50,12 +50,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long numberOfSeries;
 @property (readonly, nonatomic) unsigned long long numberOfSeriesForCalculatingBarWidth;
 @property (readonly, nonatomic) unsigned long long numberOfValues;
-@property (readonly, strong, nonatomic) NSDictionary *referenceLinesMap;
+@property (readonly, nonatomic) NSDictionary *referenceLinesMap;
 @property (nonatomic) int scatterFormat; // @synthesize scatterFormat=mScatterFormat;
-@property (readonly, strong, nonatomic) NSArray *seriesList;
-@property (readonly, strong, nonatomic) id syncRoot;
-@property (readonly, strong, nonatomic) NSArray *valueAxisList;
+@property (readonly, nonatomic) NSArray *seriesList;
+@property (readonly, nonatomic) id syncRoot;
+@property (readonly, nonatomic) NSArray *valueAxisList;
 
+- (void).cxx_destruct;
 - (id)axisForID:(id)arg1;
 - (id)barModelCacheForSeries:(unsigned long long)arg1;
 - (int)cachedChartMediatorGridDirection;

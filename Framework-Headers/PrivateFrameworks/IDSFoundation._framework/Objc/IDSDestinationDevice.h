@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL isGuest; // @synthesize isGuest=_isGuest;
 
 + (BOOL)isDeviceURI:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (id)destinationURIs;

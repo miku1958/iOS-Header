@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@interface SXVideoViewControllerConfiguration : NSObject
+#import <Silex/NSCopying-Protocol.h>
+#import <Silex/SXVideoViewControllerConfiguration-Protocol.h>
+
+@interface SXVideoViewControllerConfiguration : NSObject <NSCopying, SXVideoViewControllerConfiguration>
 {
     BOOL _preferredMuteState;
+    BOOL _pagingAllowed;
 }
 
+@property (readonly, nonatomic, getter=isPagingAllowed) BOOL pagingAllowed; // @synthesize pagingAllowed=_pagingAllowed;
 @property (readonly, nonatomic) BOOL preferredMuteState; // @synthesize preferredMuteState=_preferredMuteState;
 
-- (id)initWithPreferredMuteState:(BOOL)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithPreferredMuteState:(BOOL)arg1 pagingAllowed:(BOOL)arg2;
 
 @end
 

@@ -12,18 +12,14 @@
 
 @interface SXVideoAdViewControllerProvider : NSObject <SXVideoAdViewControllerProviding>
 {
-    UIViewController *_viewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 @property (readonly, nonatomic) UIViewController *viewControllerForModalPresentation;
 
-- (void).cxx_destruct;
-- (id)initWithViewController:(id)arg1;
 
 @end
 

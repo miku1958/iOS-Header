@@ -23,6 +23,10 @@
 - (id)dateReducedToResolution:(unsigned long long)arg1 calendar:(id)arg2;
 - (id)endOfDay;
 - (unsigned long long)hour;
+- (BOOL)isAfterDate:(id)arg1;
+- (BOOL)isBeforeDate:(id)arg1;
+- (BOOL)isOnOrAfter:(id)arg1;
+- (BOOL)isOnOrBefore:(id)arg1;
 - (unsigned long long)minute;
 - (id)startOfDay;
 - (id)stringFromDate;

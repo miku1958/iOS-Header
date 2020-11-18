@@ -6,9 +6,12 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXComponent, SXComponentView;
+@class SXComponentView;
+@protocol SXComponent, SXComponentViewFactory;
 
 @protocol SXComponentViewEngine <NSObject>
-- (SXComponentView *)componentViewForComponent:(SXComponent *)arg1;
+- (void)addFactory:(id<SXComponentViewFactory>)arg1;
+- (SXComponentView *)componentViewForComponent:(id<SXComponent>)arg1;
+- (void)removeFactory:(id<SXComponentViewFactory>)arg1;
 @end
 

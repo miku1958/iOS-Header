@@ -13,6 +13,7 @@
     struct CGSize _size;
     NSString *_name;
     NSString *_utiType;
+    struct CGSize _physicalSizeInMeters;
     NSMutableArray *_slices;
     NSMutableArray *_bitmaps;
     NSMutableArray *_metrics;
@@ -45,7 +46,7 @@
     unsigned short _linkLayout;
     struct CGSize _originalUncroppedSize;
     struct CGRect _alphaCroppedFrame;
-    NSArray *_explicitlyPackedContents;
+    NSArray *_containedNamedElements;
     double _compressionQuality;
     long long _compressionType;
     BOOL _isCubeMap;
@@ -83,6 +84,7 @@
 @property (nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property (nonatomic) BOOL optOutOfThinning; // @synthesize optOutOfThinning=_optOutOfThinning;
 @property (nonatomic) struct CGSize originalUncroppedSize; // @synthesize originalUncroppedSize=_originalUncroppedSize;
+@property (nonatomic) struct CGSize physicalSizeInMeters; // @synthesize physicalSizeInMeters=_physicalSizeInMeters;
 @property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property (nonatomic) BOOL preservedVectorRepresentation; // @synthesize preservedVectorRepresentation=_preservedVectorRepresentation;
 @property (nonatomic) unsigned int scaleFactor; // @synthesize scaleFactor=_scaleFactor;
@@ -110,11 +112,11 @@
 - (void)formatCSIHeader:(struct _csiheader *)arg1;
 - (id)initWithCanvasSize:(struct CGSize)arg1 sliceCount:(unsigned int)arg2 layout:(short)arg3;
 - (id)initWithColorNamed:(id)arg1 colorSpaceID:(unsigned long long)arg2 components:(id)arg3;
-- (id)initWithExplicitlyPackedList:(id)arg1;
 - (id)initWithExternalReference:(id)arg1 tags:(id)arg2;
 - (id)initWithInternalReferenceRect:(struct CGRect)arg1 layout:(short)arg2;
 - (id)initWithLayerStackData:(id)arg1 withCanvasSize:(struct CGSize)arg2;
 - (id)initWithMultisizeImageSetNamed:(id)arg1 sizesByIndex:(id)arg2;
+- (id)initWithNameList:(id)arg1;
 - (id)initWithRawData:(id)arg1 pixelFormat:(unsigned int)arg2 layout:(short)arg3;
 - (id)initWithShapeEffectPreset:(id)arg1 forScaleFactor:(unsigned int)arg2;
 - (id)initWithTextureForPixelFormat:(long long)arg1;

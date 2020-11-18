@@ -20,7 +20,7 @@
 @property (readonly, nonatomic, getter=isUserSignedInToiCloud) BOOL userSignedInToiCloud;
 @property (readonly, nonatomic) NSString *userStoreFrontID;
 
-- (void)checkAlliOSDevicesRunningMajorOSVersionOrLater:(long long)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)checkAlliOSDevicesRunningMinimumOSVersion:(CDStruct_912cb5d2)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (NSString *)currentStoreFrontID;
 - (NSString *)iTunesAccountDSID;
 - (NSString *)iTunesAccountName;

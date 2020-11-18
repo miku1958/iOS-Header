@@ -11,7 +11,7 @@
 - (long long)_accessibilityCompareGeometryForViewOrDictionary:(id)arg1;
 - (id)_accessibilityElementsInDirectionWithCount:(unsigned long long)arg1 options:(id)arg2;
 - (void)_accessibilityEnumerateSiblingsFromOrderedChildrenContainer:(id)arg1 fromChildAtIndex:(long long)arg2 headerIndex:(long long)arg3 footerIndex:(long long)arg4 isMovingForward:(BOOL)arg5 usingBlock:(CDUnknownBlockType)arg6;
-- (void)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_accessibilityHasVisibleFrame;
 - (id)_accessibilityLeafDescendantsWithCount:(unsigned long long)arg1 options:(id)arg2;
 - (id)_accessibilityLeafDescendantsWithCount:(unsigned long long)arg1 shouldStopAtRemoteElement:(BOOL)arg2 options:(id)arg3;

@@ -6,33 +6,33 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray;
+@class NSArray, _MRDeviceInfoMessageProtobuf;
 @protocol MRCryptoPairingSessionDelegate;
 
 @interface MRCryptoPairingSession : NSObject
 {
-    void *_device;
+    _MRDeviceInfoMessageProtobuf *_device;
     unsigned long long _role;
     id<MRCryptoPairingSessionDelegate> _delegate;
 }
 
-@property (nonatomic) id<MRCryptoPairingSessionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) void *device; // @synthesize device=_device;
+@property (weak, nonatomic) id<MRCryptoPairingSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *device; // @synthesize device=_device;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (readonly, nonatomic) NSArray *pairedDevices;
 @property (readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (void).cxx_destruct;
 - (void)close;
-- (void)dealloc;
 - (id)decryptData:(id)arg1 withError:(id *)arg2;
 - (BOOL)deleteIdentityWithError:(id *)arg1;
 - (id)encryptData:(id)arg1 withError:(id *)arg2;
 - (void)handlePairingExchangeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handlePairingFailureWithStatus:(int)arg1;
 - (id)init;
-- (id)initWithRole:(unsigned long long)arg1 device:(void *)arg2;
+- (id)initWithRole:(unsigned long long)arg1 device:(id)arg2;
 - (void)open;
 - (id)removePeer;
 - (id)updatePeer;

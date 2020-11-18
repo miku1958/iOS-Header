@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 + (id)axisForInfo:(id)arg1;
 + (unsigned char)styleOwnerPathType;
 - (id)computeMajorGridlinesFromMinMaxInAnalysis:(id)arg1;
-- (void)dealloc;
 - (id)defaultProperties;
 - (id)g_genericToSpecificPropertyMap;
 - (unsigned long long)indexForSelectionPathLabelIndex:(unsigned long long)arg1;

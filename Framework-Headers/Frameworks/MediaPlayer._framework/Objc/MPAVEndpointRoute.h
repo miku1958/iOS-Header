@@ -20,23 +20,31 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_endpointOutputDevicesDidChange:(id)arg1;
+- (unsigned long long)_outputDevicesComposition;
 - (BOOL)canAccessRemoteAssets;
 - (id)connection;
 - (void)dealloc;
 - (id)description;
+- (id)designatedGroupLeaderName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)groupUID;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEndpoint:(void *)arg1;
+- (BOOL)isAirPlayingToDevice;
 - (BOOL)isAppleTVRoute;
 - (BOOL)isDeviceRoute;
 - (BOOL)isDeviceSpeakerRoute;
 - (BOOL)isHomePodRoute;
+- (BOOL)isProxyGroupPlayer;
 - (BOOL)isRoutingToWirelessDevice;
+- (BOOL)isStereoPair;
 - (id)routeName;
+- (id)routeNames;
 - (long long)routeSubtype;
 - (long long)routeType;
 - (id)routeUID;
+- (BOOL)supportsGrouping;
+- (BOOL)supportsRemoteControl;
 
 @end
 

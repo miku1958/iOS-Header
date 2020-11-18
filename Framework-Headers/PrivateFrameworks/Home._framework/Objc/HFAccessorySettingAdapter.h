@@ -48,12 +48,12 @@
 - (id)_endMonitoringSettingsKeyPath:(id)arg1;
 - (id)_missingKeyPaths;
 - (void)_reportUpdatedValueForSetting:(id)arg1;
-- (void)_setupKeyPaths;
+- (BOOL)_setupKeyPaths;
 - (void)_setupMissingKeyPaths;
 - (void)_tearDownKeyPaths;
 - (void)_teardownSetting:(id)arg1;
-- (void)_updateRootAccessorySettings:(id)arg1;
-- (void)_updateRootAccessorySettingsIfNeeded:(id)arg1;
+- (BOOL)_updateRootAccessorySettings;
+- (BOOL)_updateRootAccessorySettingsIfNeeded;
 - (void)_watchSetting:(id)arg1;
 - (void)accessorySettingWasUpdated:(id)arg1 value:(id)arg2;
 - (void)accessorySettings:(id)arg1 didUpdateSetting:(id)arg2;

@@ -17,6 +17,7 @@
     NSString *_newDisplayName;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)applyToFolderMap:(id)arg1;
 - (void)dealloc;
 - (id)description;

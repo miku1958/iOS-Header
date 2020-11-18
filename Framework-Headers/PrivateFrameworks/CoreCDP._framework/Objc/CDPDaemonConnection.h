@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, NSXPCConnection;
+@class NSLock, NSXPCConnection, NSXPCListenerEndpoint;
 
 @interface CDPDaemonConnection : NSObject
 {
     NSXPCConnection *_conn;
     NSLock *_connLock;
+    NSXPCListenerEndpoint *_daemonXPCEndpoint;
 }
+
+@property (strong, nonatomic) NSXPCListenerEndpoint *daemonXPCEndpoint; // @synthesize daemonXPCEndpoint=_daemonXPCEndpoint;
 
 - (void).cxx_destruct;
 - (id)connection;

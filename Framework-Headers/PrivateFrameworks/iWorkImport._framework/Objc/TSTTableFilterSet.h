@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL mIsEnabled;
     NSArray *mRules;
     BOOL mNeedsFormulaRewriteForImport;
-    vector_88016b54 mFilterOffsets;
+    vector_06e666a8 mFilterOffsets;
 }
 
 @property (readonly, nonatomic) BOOL canAddRules;

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     NSArray *mDependees;
     TSCH3DShaderProgram *mProgram;
     struct TSCH3DShaderType mLinkageType;
-    vector_aeadf634 mDependeeScopes;
+    vector_22c20f1a mDependeeScopes;
 }
 
 @property (readonly, nonatomic) TSCH3DShaderVariableLinkage *assignee; // @synthesize assignee=mAssignee;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (vector_aeadf634 *)dependeeScopes;
+- (vector_22c20f1a *)dependeeScopes;
 - (struct TSCH3DShaderType)dominantDependeeLinkageType;
 - (id)expressionStringForType:(struct TSCH3DShaderType)arg1;
 - (id)forceLinkageForType:(struct TSCH3DShaderType)arg1;

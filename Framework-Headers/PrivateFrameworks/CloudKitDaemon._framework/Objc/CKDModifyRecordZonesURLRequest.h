@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
-- (BOOL)shouldSendKeyIDs;
 - (id)zoneIDsToLock;
 
 @end

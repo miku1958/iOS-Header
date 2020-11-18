@@ -35,10 +35,10 @@
 @property (nonatomic) unsigned long long totalWritePosition; // @synthesize totalWritePosition=_totalWritePosition;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customDictionaryRepresentation;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

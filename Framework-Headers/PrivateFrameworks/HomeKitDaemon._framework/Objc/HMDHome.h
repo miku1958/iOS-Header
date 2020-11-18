@@ -9,19 +9,19 @@
 #import <HomeKitDaemon/HMDAccessoryBrowserDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMDRelayManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDResidentDeviceManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDUserManagementOperationDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessoryBrowser, HMDApplicationData, HMDBackingStore, HMDHomeKitVersion, HMDHomeLocationHandler, HMDHomeManager, HMDHomeObjectChangeHandler, HMDHomeObjectLookup, HMDHomePeriodicReader, HMDHomePresenceMonitor, HMDHomeRemoteNotificationHandler, HMDNotificationRegistry, HMDPredicateUtilities, HMDRelayManager, HMDRemoteAdminEnforcementMessageFilter, HMDRemoteMessageFilter, HMDResidentDevice, HMDResidentDeviceManager, HMDRoom, HMDSharedHomeUpdateHandler, HMDUser, HMDUserPresenceFeeder, HMFMessageDispatcher, HMFTimer, HMUserPresenceAuthorization, HMUserPresenceCompute, NSArray, NSDate, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMDApplicationData, HMDBackingStore, HMDHomeKitVersion, HMDHomeLocationHandler, HMDHomeManager, HMDHomeMediaSystemHandler, HMDHomeObjectChangeHandler, HMDHomeObjectLookup, HMDHomePeriodicReader, HMDHomePresenceMonitor, HMDHomeRemoteNotificationHandler, HMDHomeRemoteUserAuthenticationMessageFilter, HMDHomeReprovisionHandler, HMDNotificationRegistry, HMDPredicateUtilities, HMDRelayManager, HMDRemoteAdminEnforcementMessageFilter, HMDRemoteMessageFilter, HMDResidentDevice, HMDResidentDeviceManager, HMDRoom, HMDSharedHomeUpdateHandler, HMDUser, HMDUserPresenceFeeder, HMFMessageDispatcher, HMFTimer, HMUserPresenceAuthorization, HMUserPresenceCompute, NSArray, NSDate, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
+@protocol HMDAccessoryBrowserProtocol, OS_dispatch_queue;
 
-@interface HMDHome : HMFObject <HMDBulletinIdentifiers, HMDResidentDeviceManagerDelegate, HMFLogging, HMDAccessoryBrowserDelegate, HMFMessageReceiver, HMDRelayManagerDelegate, HMFTimerDelegate, HMFDumpState, HMDUserManagementOperationDelegate, NSSecureCoding, HMDBackingStoreObjectProtocol>
+@interface HMDHome : HMFObject <HMDBulletinIdentifiers, HMDResidentDeviceManagerDelegate, HMFLogging, HMDAccessoryBrowserDelegate, HMDHomeMessageReceiver, HMDRelayManagerDelegate, HMFTimerDelegate, HMFDumpState, HMDUserManagementOperationDelegate, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     NSMutableArray *_accessories;
     NSMutableArray *_mediaSessions;
@@ -59,6 +59,7 @@
     HMDHomeRemoteNotificationHandler *_remoteNotificationHandler;
     HMDHomePresenceMonitor *_presenceMonitor;
     HMDUserPresenceFeeder *_presenceFeeder;
+    HMDHomeMediaSystemHandler *_mediaSystemHandler;
     HMDHomePeriodicReader *_periodicReader;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSHashTable *_removeAccessoryInProgressForHMDAccessories;
@@ -69,10 +70,12 @@
     NSMutableSet *_addPendingAccessories;
     NSMapTable *_retrievalCompletionTuplesForAccessories;
     NSMutableDictionary *_notificationHandlerMap;
+    HMDHomeReprovisionHandler *_homeReprovisionHandler;
+    HMDHomeRemoteUserAuthenticationMessageFilter *_remoteUserFilter;
     HMDHomeObjectChangeHandler *_homeObjectChangeHandler;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
-    HMDAccessoryBrowser *_accessoryBrowser;
+    id<HMDAccessoryBrowserProtocol> _accessoryBrowser;
     unsigned long long _stateHandle;
     HMDBackingStore *_backingStore;
     HMDRelayManager *_relayManager;
@@ -122,7 +125,7 @@
 }
 
 @property (copy) NSArray *accessories; // @synthesize accessories=_accessories;
-@property (strong, nonatomic) HMDAccessoryBrowser *accessoryBrowser; // @synthesize accessoryBrowser=_accessoryBrowser;
+@property (strong, nonatomic) id<HMDAccessoryBrowserProtocol> accessoryBrowser; // @synthesize accessoryBrowser=_accessoryBrowser;
 @property (strong, nonatomic) NSMutableArray *actionSets; // @synthesize actionSets=_actionSets;
 @property (strong, nonatomic) NSMutableSet *addPendingAccessories; // @synthesize addPendingAccessories=_addPendingAccessories;
 @property (strong, nonatomic) NSMutableDictionary *addPendingAccessorySetupCodeHandlers; // @synthesize addPendingAccessorySetupCodeHandlers=_addPendingAccessorySetupCodeHandlers;
@@ -146,6 +149,7 @@
 @property (readonly, nonatomic) NSMutableDictionary *enableNotificationPayload; // @synthesize enableNotificationPayload=_enableNotificationPayload;
 @property (readonly, copy, nonatomic) NSArray *enabledResidents;
 @property (nonatomic) long long expectedConfigurationVersion; // @synthesize expectedConfigurationVersion=_expectedConfigurationVersion;
+@property (readonly, nonatomic) NSArray *hapAccessories;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *heartbeatPingMessagesQueuedWithServer; // @synthesize heartbeatPingMessagesQueuedWithServer=_heartbeatPingMessagesQueuedWithServer;
 @property (nonatomic) unsigned long long homeHubState; // @synthesize homeHubState=_homeHubState;
@@ -153,12 +157,16 @@
 @property (strong, nonatomic) HMDHomeLocationHandler *homeLocationHandler; // @synthesize homeLocationHandler=_homeLocationHandler;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, nonatomic) HMDHomeObjectChangeHandler *homeObjectChangeHandler; // @synthesize homeObjectChangeHandler=_homeObjectChangeHandler;
+@property (strong, nonatomic) HMDHomeReprovisionHandler *homeReprovisionHandler; // @synthesize homeReprovisionHandler=_homeReprovisionHandler;
 @property (nonatomic) long long lastKnownReachableAccessoryCount; // @synthesize lastKnownReachableAccessoryCount=_lastKnownReachableAccessoryCount;
 @property (nonatomic) long long lastKnownReachableIPAndMediaAccessoryCount; // @synthesize lastKnownReachableIPAndMediaAccessoryCount=_lastKnownReachableIPAndMediaAccessoryCount;
 @property (readonly, nonatomic) HMDHomeObjectLookup *lookup; // @synthesize lookup=_lookup;
 @property (strong, nonatomic) NSArray *mediaSessionStates; // @synthesize mediaSessionStates=_mediaSessionStates;
 @property (strong, nonatomic) NSArray *mediaSessions; // @synthesize mediaSessions=_mediaSessions;
+@property (readonly, nonatomic) HMDHomeMediaSystemHandler *mediaSystemHandler; // @synthesize mediaSystemHandler=_mediaSystemHandler;
+@property (readonly, copy, nonatomic) NSArray *mediaSystems;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (nonatomic, getter=isMigratingAfterResidentChange) BOOL migratingAfterResidentChange; // @synthesize migratingAfterResidentChange=_migratingAfterResidentChange;
 @property (strong, nonatomic) HMFTimer *modifyNotificationsCoalesceTimer; // @synthesize modifyNotificationsCoalesceTimer=_modifyNotificationsCoalesceTimer;
@@ -196,6 +204,7 @@
 @property (readonly, nonatomic) HMDRemoteMessageFilter *remoteMessageFilter; // @synthesize remoteMessageFilter=_remoteMessageFilter;
 @property (readonly, nonatomic) HMDHomeRemoteNotificationHandler *remoteNotificationHandler; // @synthesize remoteNotificationHandler=_remoteNotificationHandler;
 @property (strong, nonatomic) NSMutableArray *remoteReachabilityNotificationPendingAccessories; // @synthesize remoteReachabilityNotificationPendingAccessories=_remoteReachabilityNotificationPendingAccessories;
+@property (readonly, nonatomic) HMDHomeRemoteUserAuthenticationMessageFilter *remoteUserFilter; // @synthesize remoteUserFilter=_remoteUserFilter;
 @property (strong, nonatomic) NSHashTable *removeAccessoryInProgressForHMDAccessories; // @synthesize removeAccessoryInProgressForHMDAccessories=_removeAccessoryInProgressForHMDAccessories;
 @property (strong, nonatomic) NSMutableArray *removedUsers; // @synthesize removedUsers=_removedUsers;
 @property (strong, nonatomic) HMDResidentDevice *resident; // @synthesize resident=_resident;
@@ -227,6 +236,7 @@
 + (void)appendCharacteristicsToAccessoryList:(id)arg1 responseTuples:(id)arg2 forMultipleCharacteristicsRemoteRead:(id)arg3;
 + (void)appendCharacteristicsToAccessoryList:(id)arg1 responseTuples:(id)arg2 forMultipleCharacteristicsRemoteWrite:(id)arg3;
 + (id)getBuiltinActionSets;
++ (BOOL)hasMessageReceiverChildren;
 + (BOOL)isObjectContainedInHome:(id)arg1;
 + (id)logCategory;
 + (id)notificationPayloadForChangedCharacterisitics:(id)arg1 destinationIsXPCTransport:(BOOL)arg2;
@@ -283,7 +293,7 @@
 - (void)_evaluateShouldRelaunchAndSetRelaunch;
 - (id)_getContainerForAppData:(id)arg1 keyName:(id *)arg2;
 - (id)_getLogEventsForOperation:(BOOL)arg1 accessories:(id)arg2 readRequestMap:(id)arg3 identifier:(id)arg4;
-- (void)_getRunTimeStateUpdate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getRunTimeStateUpdate:(BOOL)arg1 includeHAPAccessoryState:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_getTunnelAccessoryUpdate:(id)arg1;
 - (void)_handleAccessoryReachabilityChange:(id)arg1;
 - (void)_handleAccessoryReachabilityRegistration:(id)arg1 register:(BOOL)arg2;
@@ -326,6 +336,7 @@
 - (void)_handleEnableRemoteAccess:(id)arg1;
 - (void)_handleExecuteActionSet:(id)arg1;
 - (void)_handleExecuteConfirmationOfTrigger:(id)arg1;
+- (void)_handleFetchAccessories:(id)arg1;
 - (void)_handleHomeLocationUpdateFromSharedAdmin:(id)arg1;
 - (void)_handleLegacyAddAccessory:(id)arg1;
 - (void)_handleMediaPropertiesRead:(id)arg1;
@@ -375,6 +386,7 @@
 - (void)_handleUpdatePresenceConsent:(id)arg1;
 - (void)_handleUpdateRequestForHomeInvitationFromInvitee:(id)arg1;
 - (void)_handleUpdateUserAccess:(id)arg1;
+- (void)_handleUserConsentResponseForAccessory:(id)arg1;
 - (void)_handleUserInvitations:(id)arg1;
 - (void)_handleWriteMediaProperties:(struct NSDictionary *)arg1 source:(unsigned long long)arg2 requestMessage:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_hasPairedReachableBTLEAccessories;
@@ -389,6 +401,8 @@
 - (BOOL)_isValidEventIdentifier:(id)arg1;
 - (void)_migrateHomeMediaSettingsCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_migrateHomeSettingsCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_migrateHomeUsersCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_migrateResidentDevicesCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_modifyAllRegistrationsForNotificationsInNotificationRegistry:(BOOL)arg1;
 - (void)_modifyCharacteristicNotifications:(id)arg1 mediaNotifications:(id)arg2 enableNotification:(BOOL)arg3 withDevice:(id)arg4;
 - (void)_modifyCharacteristicNotificationsOnRemoteGateways:(id)arg1 mediaNotifications:(id)arg2 enableNotification:(BOOL)arg3;
@@ -431,6 +445,7 @@
 - (void)_registerForMessages;
 - (void)_registerForReachabilityChangeNotifications:(id)arg1 mode:(BOOL)arg2;
 - (void)_registerPairedAccessory:(id)arg1 btleTransport:(BOOL)arg2 airPlay:(BOOL)arg3;
+- (void)_registerProgressHandlerForAddAccessory:(id)arg1;
 - (void)_registerStateHandler;
 - (void)_relayAddTriggerToResident:(id)arg1;
 - (void)_remoteAccessEnabled:(BOOL)arg1;
@@ -501,6 +516,8 @@
 - (void)accessoryBrowser:(id)arg1 accessoryServer:(id)arg2 isBlockedWithCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)accessoryBrowser:(id)arg1 didAddAccessoryAdvertisement:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didFindAccessoryServer:(id)arg2 stateChanged:(BOOL)arg3 stateNumber:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)accessoryBrowser:(id)arg1 didFindAccessoryServerNeedingReprovisioning:(id)arg2 error:(id)arg3;
+- (void)accessoryBrowser:(id)arg1 didFinishWACForAccessoryWithIdentifier:(id)arg2 error:(id)arg3;
 - (void)accessoryBrowser:(id)arg1 didRemoveAccessoryAdvertisement:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didRemoveAccessoryServer:(id)arg2 error:(id)arg3;
 - (void)accessoryBrowser:(id)arg1 didTombstoneAccessoryServer:(id)arg2;
@@ -545,6 +562,7 @@
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (void)disableNotificationsForDevices:(id)arg1;
 - (void)dispatchRequestToEvaluateCondition:(id)arg1 forCharacteristics:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dropAllChangesWithArrayOfObjectIDs:(id)arg1;
 - (void)dropAllChangesWithObjectID:(id)arg1;
 - (id)dumpActionSetDescription;
 - (id)dumpCharacteristicNotificationRegistry;
@@ -565,7 +583,7 @@
 - (id)getHomeConfigurationForAWD;
 - (id)getReachabilityTupleForAccessoryUUID:(id)arg1;
 - (void)getReachableIPAccessories:(unsigned long long *)arg1 btleAccessories:(unsigned long long *)arg2 mediaAccessories:(unsigned long long *)arg3;
-- (void)getRunTimeStateUpdate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRunTimeStateUpdate:(BOOL)arg1 includeHAPAccessoryState:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)getServiceTransaction:(id)arg1 parentUUID:(id)arg2 changeType:(unsigned long long)arg3;
 - (id)getTransactionFromHAPAccessory:(id)arg1 hmdAccessory:(id)arg2 uuid:(id)arg3 bridgeUUID:(id)arg4 configurationAppIdentifier:(id)arg5 objectChangeType:(unsigned long long)arg6;
 - (BOOL)getUpdateTransactionForAccessory:(id)arg1 hapAccessory:(id)arg2 accessoryTransaction:(id *)arg3 addSvcTransactions:(id *)arg4 updateSvcTransactions:(id *)arg5 removeSvcTransactions:(id *)arg6;
@@ -600,7 +618,9 @@
 - (id)mediaSessionStateWithIdentifier:(id)arg1;
 - (id)mediaSessionWithIdentifier:(id)arg1;
 - (id)mediaSessionWithUUID:(id)arg1;
+- (id)mediaSystemWithUUID:(id)arg1;
 - (id)messageDestination;
+- (void)migrateAfterCloudMerge:(id)arg1;
 - (void)migrateAfterResidentChange;
 - (void)migrateCloudZone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)migrateOwnedTriggers;
@@ -703,6 +723,7 @@
 - (void)updateNetworkConnectivity:(BOOL)arg1 companionReachable:(BOOL)arg2;
 - (id)url;
 - (void)userManagementOperationDidFinish:(id)arg1;
+- (id)userWithPairingIdentity:(id)arg1;
 - (id)userWithUUID:(id)arg1;
 - (id)users;
 - (void)validateDuetEventIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;

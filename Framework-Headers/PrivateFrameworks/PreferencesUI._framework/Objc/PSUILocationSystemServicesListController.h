@@ -16,6 +16,7 @@
 @property (strong, nonatomic) RTRoutineManager *routineManager; // @synthesize routineManager=_routineManager;
 
 + (id)locationBasedAlertBundlesForSystemVersion:(id)arg1;
++ (int)systemServicesLocationUsage;
 - (void).cxx_destruct;
 - (id)_areLocationBasedAlertsAuthorized;
 - (id)_locationBasedAlertBundles;

@@ -35,10 +35,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSIndexSet *visibleColumnIndices;
 @property (readonly, nonatomic) NSIndexSet *visibleRowIndices;
 
+- (void).cxx_destruct;
 - (BOOL)anyHiddenColumnsInCellRange:(struct TSUCellRect)arg1;
 - (BOOL)anyHiddenRowsInCellRange:(struct TSUCellRect)arg1;
 - (BOOL)anyRowsUserHiddenInCellRange:(struct TSUCellRect)arg1;
-- (void)dealloc;
 - (BOOL)hasHiddenColumnAtIndex:(unsigned char)arg1;
 - (BOOL)hasHiddenRowAtIndex:(unsigned short)arg1;
 - (unsigned char)indexOfVisibleColumnAfterAndIncludingColumnAtIndex:(unsigned char)arg1;

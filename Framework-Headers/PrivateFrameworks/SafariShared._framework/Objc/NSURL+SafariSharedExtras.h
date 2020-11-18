@@ -7,6 +7,12 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (SafariSharedExtras)
+
+@property (readonly, nonatomic) BOOL safari_isEligibleToShowNotSecureWarning;
+@property (readonly, nonatomic) BOOL safari_isLocalOrPrivateNetworkURL;
+@property (readonly, nonatomic) BOOL safari_isTopLevelURL;
+@property (readonly, nonatomic) BOOL safari_isURLTooLongToDisplay;
+
 + (id)safari_URLWithDataAsString:(id)arg1;
 + (id)safari_URLWithDataAsString:(id)arg1 relativeToURL:(id)arg2;
 + (id)safari_URLWithUserTypedString:(id)arg1;
@@ -16,10 +22,12 @@
 - (id)safari_URLByDeletingPort;
 - (id)safari_URLByDeletingScheme;
 - (id)safari_URLByDeletingUserAndPassword;
+- (id)safari_URLByRemovingUserAndPath;
 - (id)safari_URLByReplacingHostWithString:(id)arg1;
 - (id)safari_URLByReplacingQueryWithString:(id)arg1;
 - (id)safari_URLByReplacingSchemeWithString:(id)arg1;
 - (id)safari_URLWithUniqueFilename;
+- (BOOL)safari_canBeSafelyRedirectedToURL:(id)arg1;
 - (id)safari_canonicalURL;
 - (id)safari_displayNameWithTitle:(id)arg1;
 - (BOOL)safari_hasCharactersBeyondPath;
@@ -28,10 +36,12 @@
 - (BOOL)safari_hasUserOrPassword;
 - (BOOL)safari_isDataURL;
 - (BOOL)safari_isHTTPFamilyURL;
+- (BOOL)safari_isHTTPURL;
 - (id)safari_originalDataAsString;
 - (id)safari_path;
 - (id)safari_userVisibleHost;
 - (id)safari_userVisibleHostWithoutWWWSubdomain;
 - (id)safari_userVisibleString;
+- (id)safari_userVisibleStringConsideringLongURLs;
 @end
 

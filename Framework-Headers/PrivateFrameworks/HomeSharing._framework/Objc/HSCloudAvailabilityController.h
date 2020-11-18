@@ -24,6 +24,7 @@
     BOOL _isShowingAllVideo;
     BOOL _isUpdateInProgress;
     BOOL _isWiFiEnabled;
+    BOOL _isWiFiAssociated;
     BOOL _isNetworkReachable;
     BOOL _canShowCloudMusic;
     BOOL _canShowCloudVideo;
@@ -55,7 +56,7 @@
 - (BOOL)_uncachedIsAutoDownloadOnCellularAllowed;
 - (BOOL)_uncachedIsShowingAllMusic;
 - (BOOL)_uncachedIsShowingAllVideo;
-- (void)_wifiEnabledDidChangeNotification:(id)arg1;
+- (void)_wifiStateDidChangeNotification:(id)arg1;
 - (void)airplaneModeChanged;
 - (void)beginObservingNetworkReachability;
 - (BOOL)canShowCloudDownloadButtons;
@@ -64,6 +65,7 @@
 - (void)dealloc;
 - (void)endObservingNetworkReachability;
 - (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
+- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (BOOL)hasProperNetworkConditionsToPlayMedia;
 - (BOOL)hasProperNetworkConditionsToShowCloudMedia;
 - (id)init;

@@ -73,6 +73,8 @@
 - (void)_applyViewMode:(long long)arg1;
 - (void)_asyncUpdateLocale;
 - (void)_asyncUpdateTime;
+- (void)_becameActiveFace;
+- (void)_becameInactiveFace;
 - (BOOL)_canEnterInteractiveMode;
 - (void)_cleanupAfterZoom;
 - (id)_date;

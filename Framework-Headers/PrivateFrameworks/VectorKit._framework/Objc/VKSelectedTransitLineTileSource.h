@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (struct _GEOTileKey)downloadKeyAtX:(unsigned int)arg1 y:(unsigned int)arg2 z:(unsigned int)arg3;
 - (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 taskContext:(shared_ptr_e963992e)arg5 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg6 transitLineSharedResources:(const shared_ptr_f4e206f4 *)arg7;
 - (unsigned char)mapLayerForZoomLevelRange;
-- (void)performDownload:(const struct _GEOTileKey *)arg1;
+- (void)performDownload:(const struct _GEOTileKey *)arg1 isPrefetch:(BOOL)arg2;
 - (struct VKTileKey)sourceKeyForDownloadKey:(const struct _GEOTileKey *)arg1;
 
 @end

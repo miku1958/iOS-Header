@@ -51,6 +51,7 @@
     long long _peerPaymentType;
     NSString *_peerPaymentCounterpartHandle;
     NSString *_peerPaymentMemo;
+    NSDate *_peerPaymentMessageReceivedDate;
     PKPaymentTransactionForeignExchangeInformation *_foreignExchangeInformation;
     PKPaymentTransactionFees *_fees;
     NSDecimalNumber *_primaryFundingSourceAmount;
@@ -68,6 +69,7 @@
     long long _transactionType;
     long long _technologyType;
     unsigned long long _transactionSource;
+    long long _transactionDeclinedReason;
     unsigned long long _updateReasons;
 }
 
@@ -106,6 +108,7 @@
 @property (copy, nonatomic) NSString *paymentHash; // @synthesize paymentHash=_paymentHash;
 @property (copy, nonatomic) NSString *peerPaymentCounterpartHandle; // @synthesize peerPaymentCounterpartHandle=_peerPaymentCounterpartHandle;
 @property (copy, nonatomic) NSString *peerPaymentMemo; // @synthesize peerPaymentMemo=_peerPaymentMemo;
+@property (copy, nonatomic) NSDate *peerPaymentMessageReceivedDate; // @synthesize peerPaymentMessageReceivedDate=_peerPaymentMessageReceivedDate;
 @property (nonatomic) long long peerPaymentStatus;
 @property (nonatomic) long long peerPaymentType; // @synthesize peerPaymentType=_peerPaymentType;
 @property (copy, nonatomic) NSDecimalNumber *primaryFundingSourceAmount; // @synthesize primaryFundingSourceAmount=_primaryFundingSourceAmount;
@@ -131,6 +134,7 @@
 @property (readonly, nonatomic) PKCurrencyAmount *subtotalCurrencyAmount;
 @property (nonatomic) long long technologyType; // @synthesize technologyType=_technologyType;
 @property (copy, nonatomic) NSDate *transactionDate; // @synthesize transactionDate=_transactionDate;
+@property (nonatomic) long long transactionDeclinedReason; // @synthesize transactionDeclinedReason=_transactionDeclinedReason;
 @property (nonatomic) unsigned long long transactionSource; // @synthesize transactionSource=_transactionSource;
 @property (nonatomic) long long transactionStatus; // @synthesize transactionStatus=_transactionStatus;
 @property (copy, nonatomic) NSDate *transactionStatusChangedDate; // @synthesize transactionStatusChangedDate=_transactionStatusChangedDate;
@@ -148,6 +152,7 @@
 - (id)_formatBalanceAdjustmentAmount:(id)arg1;
 - (id)_transactionSourceString;
 - (id)_transactionTypeString;
+- (id)_transitSubtypeString;
 - (void)addUpdateReasons:(unsigned long long)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -163,6 +168,7 @@
 - (BOOL)isEqualToPaymentTransaction:(id)arg1;
 - (id)recordTypesAndNames;
 - (id)updateReasonsDescription;
+- (void)updateTransactionTypeFromDetailString:(id)arg1;
 
 @end
 

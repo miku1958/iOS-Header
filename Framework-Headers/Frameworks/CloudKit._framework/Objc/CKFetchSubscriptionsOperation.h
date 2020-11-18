@@ -11,8 +11,8 @@
 @interface CKFetchSubscriptionsOperation : CKDatabaseOperation
 {
     BOOL _isFetchAllSubscriptionsOperation;
-    NSArray *_subscriptionIDs;
     CDUnknownBlockType _fetchSubscriptionCompletionBlock;
+    NSArray *_subscriptionIDs;
     NSArray *_subscriptions;
     NSMutableDictionary *_subscriptionsBySubscriptionID;
     NSMutableDictionary *_subscriptionErrors;

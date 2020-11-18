@@ -13,8 +13,8 @@
 {
     unsigned long long _suggestedRoomLimit;
     HMHome *_home;
-    NSSet *_suggestionItems;
     id<HFRoomSuggestionVendor> _suggestionVendor;
+    NSSet *_suggestionItems;
 }
 
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
@@ -26,6 +26,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1;
+- (id)initWithHome:(id)arg1 suggestionVendor:(id)arg2;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

@@ -42,6 +42,7 @@
 @property (weak, nonatomic) HMDResidentDeviceManager *residentDeviceManager; // @synthesize residentDeviceManager=_residentDeviceManager;
 @property (readonly, nonatomic) unsigned long long status;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsMediaSystem;
 @property (readonly, nonatomic) BOOL supportsSharedEventTriggerActivation;
 
 + (id)batteryStateAsString:(long long)arg1;

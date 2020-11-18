@@ -15,6 +15,7 @@
     NSMutableArray *_zoomAttributeListeners;
 }
 
+@property (nonatomic) BOOL inCheckerBoardMode;
 @property (nonatomic) BOOL inPreboardMode;
 @property (nonatomic) BOOL invertColorsEnabled; // @dynamic invertColorsEnabled;
 @property (nonatomic) BOOL sessionIsLoginSession;
@@ -28,6 +29,7 @@
 - (BOOL)_shouldDispatchLocally;
 - (id)_springboardParametersForGuidedAccessAvailability;
 - (void)_willClearServer;
+- (int)accessibilityAssistiveTouchPID;
 - (int)accessibilityUIServicePID;
 - (BOOL)adaptationEnabled;
 - (void)adjustSystemZoom:(int)arg1;

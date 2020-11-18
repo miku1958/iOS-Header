@@ -10,6 +10,10 @@
 
 @property (readonly, nonatomic) BOOL hf_isFixingSymptom;
 
++ (CDUnknownBlockType)hf_symptomArraySortComparator;
++ (id)hf_symptomTypesSortedByPriority;
++ (void)load;
+- (id)hf_fakeSymptomsImplementationUsedForDebuggingPleaseDontTouchThisItIsFragileSwizzlingIsBadMKay;
 - (id)hf_symptomsSortedByPriority;
 @end
 

@@ -17,6 +17,7 @@
 + (id)predicateForEventsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 + (id)predicateForEventsBetweenStartSecondOfDay:(unsigned long long)arg1 endSecondOfDay:(unsigned long long)arg2;
 + (id)predicateForEventsContainingDateRangeFrom:(id)arg1 to:(id)arg2;
++ (id)predicateForEventsExcludingIntegerValue:(long long)arg1;
 + (id)predicateForEventsIntersectingDateRangeFrom:(id)arg1 to:(id)arg2;
 + (id)predicateForEventsWithCategoryValue:(id)arg1;
 + (id)predicateForEventsWithDayOfWeek:(unsigned long long)arg1;

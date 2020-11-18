@@ -12,7 +12,7 @@
 #import <GeoServices/GEOStateCapturing-Protocol.h>
 
 @class GEOClientMetrics, GEODataSession, GEODataURLSessionTask, GEODataXPCSessionTask, NSData, NSError, NSString, NSURL;
-@protocol GEODataSessionTask, GEODataSessionTaskDelegate, GEODataSessionTaskRules, OS_dispatch_queue, OS_os_activity;
+@protocol GEODataSessionTask, GEODataSessionTaskDelegate, GEODataSessionTaskRules, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface GEODataSessionTask : NSObject <GEODataSessionTaskDelegate, GEODataSessionTaskRulesObserver, GEOStateCapturing, GEODataSessionTask>
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     double _startTime;
     double _endTime;
     BOOL _didStart;
+    BOOL _willSendRequestDelegateCalled;
 }
 
 @property (readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
@@ -57,12 +58,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long incomingPayloadSize;
 @property (readonly, nonatomic) NSURL *originalRequestURL;
 @property (readonly, nonatomic) unsigned long long outgoingPayloadSize;
+@property (readonly, nonatomic) id<NSObject> parsedResponse;
 @property float priority;
 @property (readonly, nonatomic) BOOL protocolBufferHasPreamble;
 @property (readonly, nonatomic) BOOL protocolBufferHasPreamble;
 @property (readonly, nonatomic) NSData *receivedData;
 @property (readonly, nonatomic) NSData *receivedData;
 @property (readonly, nonatomic) NSString *remoteAddressAndPort;
+@property (readonly, nonatomic) id<GEORequestCounterTicket> requestCounterTicket;
 @property (readonly, nonatomic) int requestKind; // @synthesize requestKind=_requestKind;
 @property (readonly, nonatomic) long long responseSource;
 @property (weak, nonatomic) GEODataSession *session; // @synthesize session=_session;
@@ -82,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)didValidateEntityTagForData:(id *)arg1 entityTag:(id *)arg2;
 - (BOOL)getHeaderValue:(id *)arg1 forField:(id)arg2;
-- (id)initWithSession:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 requestKind:(int)arg5;
+- (id)initWithSession:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 requestKind:(int)arg5 requestCounterTicket:(id)arg6;
 - (void)rulesDidChooseCompletedSubtask:(id)arg1;
 - (void)start;
 - (void)startSubtasksApplyingRules:(id)arg1 URL:(id)arg2 XPC:(id)arg3;

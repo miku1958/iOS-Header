@@ -6,9 +6,9 @@
 
 #import <Foundation/NSObject.h>
 
-#import <DataAccess/NSCoding-Protocol.h>
+#import <DataAccess/NSSecureCoding-Protocol.h>
 
-@interface DAAction : NSObject <NSCoding>
+@interface DAAction : NSObject <NSSecureCoding>
 {
     int _changeId;
     unsigned long long _itemChangeType;
@@ -27,6 +27,7 @@
 @property (nonatomic) unsigned long long itemChangeType; // @synthesize itemChangeType=_itemChangeType;
 @property (strong, nonatomic) id serverId; // @synthesize serverId=_serverId;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct ASContact *)contact;
 - (id)deletedContactID;

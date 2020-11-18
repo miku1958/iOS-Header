@@ -21,7 +21,7 @@
     MPMediaQuery *_query;
     NSArray *_queryItems;
     MPShuffleController *_shuffleController;
-    vector_c1c297d2 _itemPIDs;
+    vector_bbba3654 _itemPIDs;
     MPMutableBidirectionalDictionary *_indexToIdentifierCache;
     unsigned long long _currentInvalidationRevision;
     NSDictionary *_startTimeModifications;
@@ -42,6 +42,7 @@
 + (id)_itemsForQuery:(id)arg1 shuffleType:(long long)arg2;
 + (id)audioSessionModeForMediaType:(unsigned long long)arg1;
 + (Class)playbackItemMetadataClass;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;

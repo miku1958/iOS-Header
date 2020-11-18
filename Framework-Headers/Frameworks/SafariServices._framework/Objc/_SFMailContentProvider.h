@@ -16,7 +16,7 @@
 @property (weak, nonatomic) id<_SFMailContentProviderDataSource> dataSource; // @synthesize dataSource=_dataSource;
 
 - (void).cxx_destruct;
-- (void)prepareContentForMail:(id)arg1;
+- (void)prepareMailComposeViewController:(id)arg1 withURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -21,7 +21,6 @@
 - (id)_axLikedBannedValueForState:(long long)arg1;
 - (void)_axLikedStateCommandChanged:(id)arg1;
 - (void)_axMediaRemoteCommandChanged:(id)arg1;
-- (id)_axPlayerPath;
 - (id)_axTrackList;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)axAudioRouteNotificationRegistered;

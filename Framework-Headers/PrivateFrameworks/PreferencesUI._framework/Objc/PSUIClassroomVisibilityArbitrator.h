@@ -6,29 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
-#import <PreferencesUI/CRKCourseEnrollmentControllerDelegate-Protocol.h>
+@protocol CRKSettingsUIVisibilityProvider;
 
-@class CRKCourseEnrollmentController, NSString;
-
-@interface PSUIClassroomVisibilityArbitrator : NSObject <CRKCourseEnrollmentControllerDelegate>
+@interface PSUIClassroomVisibilityArbitrator : NSObject
 {
-    CRKCourseEnrollmentController *_enrollmentController;
-    BOOL _previouslyEnrolled;
     unsigned long long _visibilityState;
     CDUnknownBlockType _visibilityStateChangeHandler;
+    id<CRKSettingsUIVisibilityProvider> _visibilityProvider;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) id<CRKSettingsUIVisibilityProvider> visibilityProvider; // @synthesize visibilityProvider=_visibilityProvider;
 @property (nonatomic) unsigned long long visibilityState; // @synthesize visibilityState=_visibilityState;
 @property (copy, nonatomic) CDUnknownBlockType visibilityStateChangeHandler; // @synthesize visibilityStateChangeHandler=_visibilityStateChangeHandler;
 
 - (void).cxx_destruct;
-- (void)enrollmentControllerDidUpdateCourses:(id)arg1;
-- (void)enrollmentControllerDidUpdateInvitations:(id)arg1;
+- (void)connectToDaemon;
 - (id)init;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)reloadVisibilityState;
 
 @end

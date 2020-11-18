@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, TIInputMode, TILanguageModelAdaptationContext;
 @protocol TILanguageLikelihoodModeling, TILanguageSelectionControllerDelegate, TIMultilingualPreferenceProviding;
@@ -12,7 +12,7 @@
 @interface TILanguageSelectionController : NSObject
 {
     id<TILanguageLikelihoodModeling> _languageLikelihoodModel;
-    vector_60995c96 m_buffered_tokens;
+    vector_5bda1073 m_buffered_tokens;
     id<TILanguageSelectionControllerDelegate> _delegate;
     TILanguageModelAdaptationContext *_adaptationContext;
     NSArray *_activeInputModes;
@@ -42,7 +42,7 @@
 + (id)inferInputModeForLanguage:(id)arg1 enabled:(id)arg2;
 + (id)inferSecondaryInputModeForPrimary:(id)arg1 enabled:(id)arg2;
 + (id)multilingualInputModesForInputModes:(id)arg1;
-+ (void)reportTypedTokens:(const vector_60995c96 *)arg1 activeInputModes:(id)arg2;
++ (void)reportTypedTokens:(const vector_5bda1073 *)arg1 activeInputModes:(id)arg2;
 + (id)sharedLanguageLikelihoodModel;
 - (id).cxx_construct;
 - (void).cxx_destruct;

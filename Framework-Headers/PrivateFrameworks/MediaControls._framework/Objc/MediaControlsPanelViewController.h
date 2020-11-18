@@ -23,7 +23,6 @@
     BOOL _coverSheetRoutingViewControllerShouldBePresented;
     BOOL _onScreen;
     BOOL _isListeningForResponse;
-    BOOL _allowDoneButton;
     UIView *_contentView;
     UIView *_backgroundView;
     MPAVRoutingViewController *_routingViewController;
@@ -41,11 +40,9 @@
     unsigned long long _supportedModes;
     long long _selectedMode;
     MediaControlsEndpointController *_endpointController;
-    CDUnknownBlockType _launchNowPlayingAppBlock;
     CDUnknownBlockType _routingCornerViewTappedBlock;
 }
 
-@property (nonatomic, getter=isAllowingDoneButton) BOOL allowDoneButton; // @synthesize allowDoneButton=_allowDoneButton;
 @property (strong, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIView *bottomDividerView; // @synthesize bottomDividerView=_bottomDividerView;
@@ -60,7 +57,6 @@
 @property (strong, nonatomic) MediaControlsHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (nonatomic) BOOL isListeningForResponse; // @synthesize isListeningForResponse=_isListeningForResponse;
 @property (copy, nonatomic) NSString *label;
-@property (copy, nonatomic) CDUnknownBlockType launchNowPlayingAppBlock; // @synthesize launchNowPlayingAppBlock=_launchNowPlayingAppBlock;
 @property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
 @property (strong, nonatomic) MediaControlsParentContainerView *parentContainerView; // @synthesize parentContainerView=_parentContainerView;
 @property (strong, nonatomic) MediaControlsRoutingCornerView *routingCornerView; // @synthesize routingCornerView=_routingCornerView;
@@ -78,7 +74,6 @@
 
 + (id)panelViewControllerForCoverSheet;
 - (void).cxx_destruct;
-- (id)_bundleID;
 - (void)_dismissRoutingViewControllerFromCoverSheetIfNeeded;
 - (void)_mediaControlsPanelViewControllerReceivedInteraction:(id)arg1;
 - (void)_presentRoutingViewControllerFromCoverSheet;

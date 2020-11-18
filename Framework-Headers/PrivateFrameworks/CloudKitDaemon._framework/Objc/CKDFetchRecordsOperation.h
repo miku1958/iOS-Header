@@ -74,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)_decryptPropertiesOnRecord:(id)arg1 recordID:(id)arg2;
 - (void)_didDownloadAssetsWithError:(id)arg1;
 - (void)_downloadAssets;
-- (void)_findCurrentUserParticipantOnShare:(id)arg1 identityDelegate:(id)arg2;
+- (void)_findSpecialParticipantsOnShare:(id)arg1 identityDelegate:(id)arg2;
 - (void)_finishAllDownloadTasksWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleRecordFetch:(id)arg1 recordID:(id)arg2 etagMatched:(BOOL)arg3 responseCode:(id)arg4;

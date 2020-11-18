@@ -39,7 +39,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, getter=isReachable) BOOL reachable;
 @property (readonly) Class superclass;
-@property (readonly, copy) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (copy, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)logCategory;
 + (id)otherAccessoryCategory;

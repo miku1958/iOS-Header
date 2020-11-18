@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryClientResolved, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryQuery, PBUnknownFields;
+@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryClientResolved, GEOPDAutocompleteEntryDirectionIntent, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryQuery, GEOPDRetainedSearchMetadata, PBUnknownFields;
 
 @interface GEOPDAutocompleteEntry : PBCodable <NSCopying>
 {
@@ -18,9 +18,11 @@
     GEOPDAutocompleteEntryBusiness *_business;
     GEOPDAutocompleteEntryCategory *_category;
     GEOPDAutocompleteEntryClientResolved *_clientResolved;
+    GEOPDAutocompleteEntryDirectionIntent *_directionIntent;
     GEOPDAutocompleteEntryHighlightLine *_highlightExtra;
     GEOPDAutocompleteEntryHighlightLine *_highlightMain;
     GEOPDAutocompleteEntryQuery *_query;
+    GEOPDRetainedSearchMetadata *_retainSearch;
     int _type;
     struct {
         unsigned int type:1;
@@ -32,18 +34,22 @@
 @property (strong, nonatomic) GEOPDAutocompleteEntryBusiness *business; // @synthesize business=_business;
 @property (strong, nonatomic) GEOPDAutocompleteEntryCategory *category; // @synthesize category=_category;
 @property (strong, nonatomic) GEOPDAutocompleteEntryClientResolved *clientResolved; // @synthesize clientResolved=_clientResolved;
+@property (strong, nonatomic) GEOPDAutocompleteEntryDirectionIntent *directionIntent; // @synthesize directionIntent=_directionIntent;
 @property (readonly, nonatomic) BOOL hasAddress;
 @property (readonly, nonatomic) BOOL hasBrandProfile;
 @property (readonly, nonatomic) BOOL hasBusiness;
 @property (readonly, nonatomic) BOOL hasCategory;
 @property (readonly, nonatomic) BOOL hasClientResolved;
+@property (readonly, nonatomic) BOOL hasDirectionIntent;
 @property (readonly, nonatomic) BOOL hasHighlightExtra;
 @property (readonly, nonatomic) BOOL hasHighlightMain;
 @property (readonly, nonatomic) BOOL hasQuery;
+@property (readonly, nonatomic) BOOL hasRetainSearch;
 @property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) GEOPDAutocompleteEntryHighlightLine *highlightExtra; // @synthesize highlightExtra=_highlightExtra;
 @property (strong, nonatomic) GEOPDAutocompleteEntryHighlightLine *highlightMain; // @synthesize highlightMain=_highlightMain;
 @property (strong, nonatomic) GEOPDAutocompleteEntryQuery *query; // @synthesize query=_query;
+@property (strong, nonatomic) GEOPDRetainedSearchMetadata *retainSearch; // @synthesize retainSearch=_retainSearch;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 

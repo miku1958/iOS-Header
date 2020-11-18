@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
 
-@class NSString, PKFelicaPassProperties, PKPaymentPass, PKPaymentTransaction, PKPeerPaymentContactResolver, PKStackedTextItemGroup, PKStackedTextItemGroupView, UIImageView;
+@class NSString, PKPaymentPass, PKPaymentTransaction, PKPeerPaymentContactResolver, PKStackedTextItemGroup, PKStackedTextItemGroupView, PKTransitPassProperties, UIImageView;
 
 @interface PKFooterTransactionView : UIView <PKPeerPaymentContactResolverDelegate>
 {
@@ -22,19 +22,19 @@
     BOOL _needsContentUpdate;
     PKPaymentPass *_pass;
     PKPaymentTransaction *_transaction;
-    PKFelicaPassProperties *_felicaProperties;
+    PKTransitPassProperties *_transitProperties;
     PKPeerPaymentContactResolver *_peerPaymentContactResolver;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) PKFelicaPassProperties *felicaProperties; // @synthesize felicaProperties=_felicaProperties;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (readonly, nonatomic) PKPeerPaymentContactResolver *peerPaymentContactResolver; // @synthesize peerPaymentContactResolver=_peerPaymentContactResolver;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+@property (readonly, nonatomic) PKTransitPassProperties *transitProperties; // @synthesize transitProperties=_transitProperties;
 
 - (void).cxx_destruct;
 - (BOOL)_deemphasizeAmount;
@@ -52,9 +52,9 @@
 - (id)initWithFrame:(struct CGRect)arg1 peerPaymentContactResolver:(id)arg2;
 - (void)layoutIfNeededAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
-- (void)setFelicaProperties:(id)arg1 animated:(BOOL)arg2;
 - (void)setPass:(id)arg1 animated:(BOOL)arg2;
 - (void)setTransaction:(id)arg1 animated:(BOOL)arg2;
+- (void)setTransitProperties:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

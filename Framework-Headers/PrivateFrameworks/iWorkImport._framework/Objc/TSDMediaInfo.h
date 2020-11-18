@@ -6,35 +6,44 @@
 
 #import <iWorkImport/TSDStyledInfo.h>
 
-@class NSString, TSPData;
+#import <iWorkImport/TSDFittingOnInsertion-Protocol.h>
+
+@class NSString, TSDAttribution, TSPData;
 
 __attribute__((visibility("hidden")))
-@interface TSDMediaInfo : TSDStyledInfo
+@interface TSDMediaInfo : TSDStyledInfo <TSDFittingOnInsertion>
 {
-    struct CGSize mOriginalSize;
+    struct CGSize _originalSize;
+    TSDAttribution *_attribution;
     struct {
         unsigned int isPlaceholder:1;
         unsigned int wasMediaReplaced:1;
-    } mFlags;
+    } _flags;
 }
 
+@property (copy, nonatomic) TSDAttribution *attribution;
 @property (readonly, nonatomic) BOOL canResetMediaSize;
+@property (readonly, nonatomic) struct CGPoint centerForReplacingWithNewMedia;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) struct CGSize defaultOriginalSize;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int flags;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isPlaceholder;
 @property (readonly, nonatomic) TSPData *mediaDataForDragging;
 @property (readonly, nonatomic) NSString *mediaDisplayName;
 @property (readonly, nonatomic) NSString *mediaFileType;
-@property (nonatomic) struct CGSize originalSize; // @synthesize originalSize=mOriginalSize;
+@property (nonatomic) struct CGSize originalSize; // @synthesize originalSize=_originalSize;
+@property (readonly, nonatomic) NSString *propertyNameForFlagsCommand;
+@property (readonly, nonatomic) NSString *propertyNameForOriginalSizeCommand;
 @property (readonly, nonatomic) struct CGSize rawDataSize;
+@property (readonly, nonatomic) struct CGSize rawOriginalSize;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL wasMediaReplaced;
 
-- (struct CGPoint)centerForReplacingWithNewMedia;
+- (void).cxx_destruct;
 - (id)copyWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
-- (id)propertyNameForFlagsCommand;
-- (id)propertyNameForOriginalSizeCommand;
-- (struct CGSize)rawOriginalSize;
 - (void)scaleDownSizeToFitWithinSize:(struct CGSize)arg1;
 - (void)setFlagsWithPlaceholder:(BOOL)arg1 wasMediaReplaced:(BOOL)arg2;
 - (void)setGeometry:(id)arg1;

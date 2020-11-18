@@ -17,6 +17,7 @@
 {
     BOOL _didEndActivationTransaction;
     BOOL _observingData;
+    BOOL _isCollectingData;
     NSDictionary *_baseDataEntityEncodingOptions;
     HKQueryServerConfiguration *_configuration;
     CDUnknownBlockType _queryDidFinishHandler;
@@ -63,15 +64,16 @@
 - (id)_activationTransactionString;
 - (id)_collectionObserverState;
 - (void)_currentWorkoutDidChange:(id)arg1;
-- (void)_pauseServerValidate:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_predicateString;
 - (id)_queryStateString;
 - (void)_queue_beginObservingDataTypes;
 - (void)_queue_closeActivationTransactionIfNecessary;
 - (void)_queue_endObservingDataTypes;
+- (id)_queue_sampleTypesForObservation;
 - (void)_queue_setQueryState:(long long)arg1;
 - (void)_queue_start;
 - (void)_queue_startDataCollection;
+- (void)_queue_startDataCollectionIfNecessary;
 - (void)_queue_startQueryIfNecessary;
 - (void)_queue_stop;
 - (void)_queue_stopDataCollection;
@@ -79,6 +81,7 @@
 - (void)_queue_transitionToPaused;
 - (void)_queue_transitionToRunning;
 - (void)_queue_transitionToSuspendedState:(long long)arg1;
+- (void)_queue_updateDataCollectionAssertions;
 - (BOOL)_queue_validateConfiguration:(id *)arg1;
 - (id)_sampleTypeToObserveForUpdates;
 - (void)_scheduleStartQuery;
@@ -88,7 +91,7 @@
 - (BOOL)_shouldObserveOnPause;
 - (BOOL)_shouldStopProcessingQuery;
 - (BOOL)_shouldSuspendQuery;
-- (void)activateServerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)activateServerPaused:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clientStateChanged;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)deactivateServerWithCompletion:(CDUnknownBlockType)arg1;
@@ -100,7 +103,6 @@
 - (id)newDataEntityEnumerator;
 - (void)onQueue:(CDUnknownBlockType)arg1;
 - (void)pauseServer;
-- (void)pauseServerValidateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)readAuthorizationStatusForType:(id)arg1 error:(id *)arg2;
 - (void)remote_deactivateServer;
 - (id)requiredEntitlements;

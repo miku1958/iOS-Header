@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/SXDynamicAdLayout-Protocol.h>
+#import <Silex/SXAutoPlacementLayout-Protocol.h>
 
 @class NSString;
 @protocol SXEdgeSpacing;
 
-@interface SXDebugAdLayout : NSObject <SXDynamicAdLayout>
+@interface SXDebugAdLayout : NSObject <SXAutoPlacementLayout>
 {
     id<SXEdgeSpacing> _margin;
 }

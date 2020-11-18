@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL baseStyleSetUpdated;
 @property (readonly, nonatomic) NSSet *baseStyles;
 @property (nonatomic) BOOL canCullStyles;
-@property (readonly, nonatomic) TSSStylesheet *child; // @synthesize child=mChild;
+@property (weak, nonatomic) TSSStylesheet *child; // @synthesize child=mChild;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) TSWPParagraphStyle *defaultPresenterNotesParagraphStyle;
 @property (readonly, copy) NSString *description;
@@ -40,11 +40,13 @@ __attribute__((visibility("hidden")))
 + (id)p_presenterNotesListStyleIdentifierForListLabelType:(int)arg1;
 + (id)presenterNotesParagraphStyleIdentifier;
 + (id)variationMapForVaryingCharacterStyle:(id)arg1 overParagraphStyle:(id)arg2 withPropertyMap:(id)arg3;
+- (void).cxx_destruct;
 - (id)_defaultCharacterStyleWasCreated:(BOOL *)arg1;
 - (id)_defaultColumnStyleWasCreated:(BOOL *)arg1;
 - (id)_defaultListStyleWasCreated:(BOOL *)arg1;
 - (id)_defaultParagraphStyleWasCreated:(BOOL *)arg1;
 - (id)_defaultStyleOfClass:(Class)arg1 withIdentifier:(id)arg2 wasCreated:(BOOL *)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (id)_defaultTOCEntryStyleWasCreated:(BOOL *)arg1;
 - (id)_hyperlinkStyleWasCreated:(BOOL *)arg1;
 - (void)addDefaultPresenterNotesStylesIfAbsent;
 - (id)addDuplicateOfStyle:(id)arg1 withIdentifier:(id)arg2;
@@ -60,12 +62,12 @@ __attribute__((visibility("hidden")))
 - (id)cascadedStylesPassingTest:(CDUnknownBlockType)arg1;
 - (id)childrenOfStyle:(id)arg1;
 - (BOOL)containsStyle:(id)arg1;
-- (void)dealloc;
 - (id)defaultCharacterStyle;
 - (id)defaultColumnStyle;
 - (id)defaultEquationStyle;
 - (id)defaultListStyle;
 - (id)defaultParagraphStyle;
+- (id)defaultTOCEntryStyle;
 - (unsigned int)delayedArchivingPriority;
 - (unsigned long long)descendantCount;
 - (void)didLoadChildObjectFromDocumentSupport:(id)arg1;
@@ -107,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (void)p_upgradeDefaultPresenterNotesStylesResetExisting:(BOOL)arg1;
 - (id)packageLocator;
 - (void)removeStyle:(id)arg1;
+- (id)repairOrReplaceErrantStyle:(id)arg1;
 - (void)resetBaseStyleSetUpdatedFlag;
 - (id)rootAncestor;
 - (void)saveStyles:(id)arg1 toArchiver:(id)arg2;
@@ -114,7 +117,6 @@ __attribute__((visibility("hidden")))
 - (void)setIdentifier:(id)arg1 ofStyle:(id)arg2;
 - (void)setParent:(id)arg1;
 - (void)setParent:(id)arg1 ofStyle:(id)arg2;
-- (void)setParent:(id)arg1 withParentStyleMap:(struct __CFDictionary *)arg2;
 - (BOOL)shouldDelayArchiving;
 - (id)stickyCommentStyles;
 - (void)style:(id)arg1 didChangeUUIDToValue:(id)arg2 fromValue:(id)arg3;

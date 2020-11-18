@@ -16,9 +16,11 @@
     NSArray *_buyParameters;
     BOOL _createsJobs;
     BOOL _displaysOnLockScreen;
+    BOOL _installUniversalVariant;
     BOOL _isBackgroundUpdate;
     BOOL _isRedownload;
     BOOL _shouldCancelForInstalledBundleItems;
+    BOOL _isRefresh;
     BOOL _sendGUID;
     NSString *_bundleID;
     NSNumber *_itemID;
@@ -34,6 +36,8 @@
     NSString *_referrerURL;
     long long _purchaseID;
     NSArray *_requiredCapabilities;
+    NSString *_clientID;
+    NSNumber *_ownerDSID;
     NSNumber *_purchaserDSID;
 }
 
@@ -43,14 +47,18 @@
 @property (copy, nonatomic) NSString *bagKey; // @synthesize bagKey=_bagKey;
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (copy, nonatomic) NSString *buyParameters;
+@property (copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property (nonatomic) BOOL createsJobs; // @synthesize createsJobs=_createsJobs;
 @property (nonatomic) BOOL displaysOnLockScreen; // @synthesize displaysOnLockScreen=_displaysOnLockScreen;
 @property long long extensionsToEnable; // @synthesize extensionsToEnable=_extensionsToEnable;
 @property (copy, nonatomic) NSArray *gratisIdentifiers; // @synthesize gratisIdentifiers=_gratisIdentifiers;
+@property (nonatomic) BOOL installUniversalVariant; // @synthesize installUniversalVariant=_installUniversalVariant;
 @property (nonatomic) BOOL isBackgroundUpdate; // @synthesize isBackgroundUpdate=_isBackgroundUpdate;
 @property (nonatomic) BOOL isRedownload; // @synthesize isRedownload=_isRedownload;
+@property (nonatomic) BOOL isRefresh; // @synthesize isRefresh=_isRefresh;
 @property (copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
+@property (copy, nonatomic) NSNumber *ownerDSID; // @synthesize ownerDSID=_ownerDSID;
 @property long long purchaseID; // @synthesize purchaseID=_purchaseID;
 @property (copy, nonatomic) NSNumber *purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
 @property (copy, nonatomic) NSString *referrerName; // @synthesize referrerName=_referrerName;

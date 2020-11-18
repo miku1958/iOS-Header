@@ -25,8 +25,12 @@
     PKAddressSearchModel *_searchModel;
     long long _style;
     CNPostalAddress *_selectedAddress;
+    NSArray *_completionSearchResults;
+    NSArray *_contactsSearchResults;
 }
 
+@property (strong, nonatomic) NSArray *completionSearchResults; // @synthesize completionSearchResults=_completionSearchResults;
+@property (strong, nonatomic) NSArray *contactsSearchResults; // @synthesize contactsSearchResults=_contactsSearchResults;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKAddressSearcherViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

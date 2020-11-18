@@ -50,6 +50,7 @@
     BOOL _clientLostDueToTrumping;
     BOOL _clientIsListeningAfterRecentWin;
     BOOL _clientIsWatchActivation;
+    BOOL _clientIsWatchTrumpPromote;
     NSObject<OS_dispatch_source> *_timerSource;
     NSDateFormatter *_dateFormat;
     _DKKnowledgeStore *_coreDuetStore;
@@ -84,6 +85,7 @@
 - (void)_enterState:(unsigned long long)arg1;
 - (BOOL)_inTaskTriggerWasTooSoon;
 - (void)_initDeviceClassAndAdjustments;
+- (void)_initializeTimer;
 - (BOOL)_isAPhone:(unsigned char)arg1;
 - (BOOL)_okayToSuppressOnOutput;
 - (void)_resetActionWindows;

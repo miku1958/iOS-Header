@@ -69,10 +69,13 @@
 - (void)delayedUpdateTimerDidFire:(id)arg1;
 - (int)forceLoadingAuthorizationStatus;
 - (void)forceLocationUpdate;
+- (BOOL)hasCrossedHourBoundary;
 - (id)init;
 - (id)initWithPreferences:(id)arg1;
 - (id)initWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;
+- (BOOL)isCacheOutOfDate;
 - (BOOL)isLocalStaleOrOutOfDate;
+- (BOOL)isLocationWithInRange:(id)arg1;
 - (BOOL)localWeatherAuthorized;
 - (id)location;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
@@ -83,7 +86,9 @@
 - (void)setLocationTrackingActive:(BOOL)arg1;
 - (void)setLocationTrackingReady:(BOOL)arg1 activelyTracking:(BOOL)arg2 watchKitExtension:(BOOL)arg3;
 - (void)setLocationTrackingReady:(BOOL)arg1 activelyTracking:(BOOL)arg2 watchKitExtension:(BOOL)arg3 shouldRequestAuthorization:(BOOL)arg4;
+- (void)stopLocationUpdate;
 - (void)updateLocation:(id)arg1;
+- (void)updateLocationWithNoConditionCheck;
 
 @end
 

@@ -7,11 +7,11 @@
 #import <SplashBoard/XBApplicationSnapshotManifest.h>
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
-#import <SplashBoard/NSCoding-Protocol.h>
+#import <SplashBoard/NSSecureCoding-Protocol.h>
 
 @class BSAtomicSignal, BSTimer, NSFileManager, NSMutableArray, NSMutableDictionary, NSString, XBSnapshotContainerIdentity, XBSnapshotManifestIdentity;
 
-@interface XBApplicationSnapshotManifestImpl : XBApplicationSnapshotManifest <NSCoding, BSDescriptionProviding>
+@interface XBApplicationSnapshotManifestImpl : XBApplicationSnapshotManifest <NSSecureCoding, BSDescriptionProviding>
 {
     XBSnapshotContainerIdentity *_containerIdentity;
     XBSnapshotManifestIdentity *_identity;
@@ -40,7 +40,10 @@
 + (void)_queue_noteManifestInvalidated:(id)arg1;
 + (id)_snapshotPredicateForRequest:(id)arg1;
 + (id)acquireManifestForContainerIdentity:(id)arg1 store:(id)arg2 creatingIfNecessary:(BOOL)arg3;
++ (void)initialize;
++ (BOOL)isUnderMemoryPressure;
 + (void)relinquishManifest:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_allSnapshotGroups;
 - (void)_commonInit;
@@ -49,6 +52,7 @@
 - (id)_generatableSnapshotForGroupID:(id)arg1 generationContext:(id)arg2;
 - (BOOL)_imageAccessQueue_saveData:(id)arg1 forSnapshot:(id)arg2;
 - (id)_initWithContainerIdentity:(id)arg1;
+- (BOOL)_invalidate;
 - (void)_noteDirtied;
 - (void)_queue_accessSnapshotsWithBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_checkClientCount;
@@ -57,6 +61,7 @@
 - (void)_queue_deleteSnapshots:(id)arg1;
 - (void)_queue_doArchiveWithCompletions:(id)arg1;
 - (void)_queue_gatherPaths:(id)arg1 forSnapshot:(id)arg2;
+- (void)_queue_handleMemoryPressure;
 - (void)_queue_incrementClientCount;
 - (void)_queue_reallyCheckClientCount;
 - (void)_queue_reapExpiredAndInvalidSnapshots;
@@ -65,6 +70,7 @@
 - (id)_queue_snapshotsMatchingPredicate:(id)arg1;
 - (BOOL)_queue_validateWithContainerIdentity:(id)arg1;
 - (void)_scheduleArchivingIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_snapshotGroupsByID;
 - (void)_synchronizeDataStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)bundleIdentifier;

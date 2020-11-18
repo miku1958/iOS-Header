@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
+@class NSArray, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
 
 @protocol SUManagerServerInterface
 - (void)cancelAutoInstallOperation:(NSUUID *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
@@ -12,11 +12,14 @@
 - (void)consentToAutoInstallOperation:(NSUUID *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 - (void)createInstallationKeybag:(NSString *)arg1 forUnattendedInstall:(BOOL)arg2 withResult:(void (^)(BOOL, NSError *))arg3;
 - (void)currentAutoInstallOperation:(BOOL)arg1 withResult:(void (^)(_SUAutoInstallOperationModel *, NSError *))arg2;
+- (void)delayEndDate:(void (^)(NSDate *, NSError *))arg1;
 - (void)deviceHasSufficientSpaceForDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)downloadAndInstallState:(void (^)(SUDownload *, SUInstallPolicy *, _SUAutoInstallOperationModel *, NSError *))arg1;
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(void (^)(NSNumber *, NSError *))arg1;
+- (void)getMandatorySoftwareUpdateDictionary:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)installUpdate:(void (^)(BOOL, NSError *))arg1;
 - (void)installUpdateWithOptions:(NSArray *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
+- (void)isDelayingUpdates:(void (^)(BOOL, NSError *))arg1;
 - (void)isDownloading:(void (^)(BOOL, NSError *))arg1;
 - (void)isInstallationKeybagRequired:(void (^)(BOOL, NSError *))arg1;
 - (void)isScanning:(void (^)(BOOL, NSError *))arg1;
@@ -26,6 +29,7 @@
 - (void)resumeDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)scanForUpdates:(SUScanOptions *)arg1 withResult:(void (^)(SUDescriptor *, NSError *))arg2;
 - (void)setClientType:(int)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
+- (void)setMandatorySoftwareUpdateDictionary:(NSDictionary *)arg1;
 - (void)slaVersion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)startDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)startDownloadWithMetadata:(SUDownloadMetadata *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;

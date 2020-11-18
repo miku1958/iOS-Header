@@ -8,7 +8,7 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString, WKWebsiteDataStore;
 
 @interface _WKWebsitePolicies : NSObject <WKObject>
 {
@@ -19,10 +19,12 @@
 @property (nonatomic) unsigned long long allowedAutoplayQuirks;
 @property (nonatomic) long long autoplayPolicy;
 @property (nonatomic) BOOL contentBlockersEnabled;
+@property (copy, nonatomic) NSDictionary *customHeaderFields;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) WKWebsiteDataStore *websiteDataStore;
 
 - (void)dealloc;
 - (id)init;

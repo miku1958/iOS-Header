@@ -10,7 +10,7 @@
 
 @protocol FBSystemServiceFacilityClient <NSObject>
 
-@property (readonly, nonatomic) id<FBSystemServiceClient> systemServiceClient;
+@property (readonly, weak, nonatomic) id<FBSystemServiceClient> systemServiceClient;
 
 + (id)facilityClientWithSystemServiceClient:(id<FBSystemServiceClient>)arg1;
 @end

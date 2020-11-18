@@ -21,10 +21,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) TSWPStorage *parentStorage; // @synthesize parentStorage=_parentStorage;
+@property (weak, nonatomic) TSWPStorage *parentStorage; // @synthesize parentStorage=_parentStorage;
 @property (readonly) Class superclass;
 
 + (BOOL)needsObjectUUID;
+- (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)copyWithContext:(id)arg1;
 - (void)i_ensureHeaderFooterStoragesExistWithStylesheet:(id)arg1;

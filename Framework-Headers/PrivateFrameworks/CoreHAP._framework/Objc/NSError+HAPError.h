@@ -10,5 +10,6 @@
 + (id)errorWithOSStatus:(int)arg1;
 + (id)hapErrorWithcode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4 underlyingError:(id)arg5;
 - (BOOL)isHAPError;
+- (BOOL)isHMError;
 @end
 

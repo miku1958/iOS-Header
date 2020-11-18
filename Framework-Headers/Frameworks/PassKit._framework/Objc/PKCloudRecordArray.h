@@ -27,6 +27,7 @@
 - (id)description;
 - (id)descriptionWithItem:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)filteredCloudRecordArrayWithPredicate:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

@@ -6,13 +6,15 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
+@class _MRNowPlayingClientProtobuf;
+
 @interface MRSetNowPlayingClientMessage : MRProtocolMessage
 {
 }
 
-@property (readonly, nonatomic) void *client;
+@property (readonly, nonatomic) _MRNowPlayingClientProtobuf *client;
 
-- (id)initWithClient:(void *)arg1;
+- (id)initWithClient:(id)arg1;
 - (unsigned long long)type;
 
 @end

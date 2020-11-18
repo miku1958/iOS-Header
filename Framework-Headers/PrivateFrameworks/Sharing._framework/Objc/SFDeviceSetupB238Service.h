@@ -6,27 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class CUAudioPlayer, HMDeviceSetupOperationHandler, NSDate, NSString, SFClient, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession, SFSiriClient, SFSiriDeviceSetupGreetingDetails, SFSiriWordTimingPlayer;
+@class CUAudioPlayer, HMDeviceSetupOperationHandler, NSDate, NSString, RPCompanionLinkClient, SFClient, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession, SFSiriClient, SFSiriDeviceSetupGreetingDetails;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceSetupB238Service : NSObject
 {
     BOOL _activateCalled;
     BOOL _advertiseFast;
+    RPCompanionLinkClient *_companionLinkClient;
+    NSObject<OS_dispatch_source> *_finishApplyTimer;
+    NSObject<OS_dispatch_source> *_finishTimeoutTimer;
     BOOL _finished;
     BOOL _finished2;
     BOOL _finishedEventSent;
     BOOL _finishSessionEnded;
-    NSObject<OS_dispatch_source> *_finishTimer;
     BOOL _invalidateCalled;
+    BOOL _iTunesCloudCompleted;
+    int _iTunesCloudCompleteToken;
+    BOOL _mediaSystemReady;
     unsigned long long _peerFeatureFlags;
-    SFClient *_preventExitForLocaleClient;
+    SFClient *_sfClient;
     SFService *_sfService;
     SFSession *_sfSession;
     SFSiriClient *_siriClient;
     SFSiriDeviceSetupGreetingDetails *_siriGreetingDetails;
     BOOL _siriHeardWhatCanYouDo;
-    SFSiriWordTimingPlayer *_siriWordPlayer;
     BOOL _wifiSetupEnabled;
     HMDeviceSetupOperationHandler *_homeKitSetupHandler;
     SFDeviceOperationHandlerWiFiSetup *_wifiSetupHandler;
@@ -59,6 +63,8 @@
 - (int)_handleBasicConfigRequest:(id)arg1;
 - (void)_handleBasicConfigResponse:(id)arg1;
 - (void)_handleFinishApply:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_handleFinishDone2:(unsigned int)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_handleFinishDone2Ready;
 - (void)_handleFinishDone:(unsigned int)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handleFinishRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handlePlaySoundRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
@@ -68,6 +74,7 @@
 - (void)_handleSessionStarted:(id)arg1;
 - (void)_handleSiriDialogIdentifier:(id)arg1;
 - (void)_invalidate;
+- (void)_playReadyToSetupSound;
 - (void)_setSiriLanguageInfo;
 - (void)_setSystemName:(id)arg1 hostname:(id)arg2;
 - (void)_sfServiceStart;

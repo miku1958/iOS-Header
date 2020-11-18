@@ -27,9 +27,15 @@
 + (id)journalForInMemoryDb;
 + (id)journalWithDbPath:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addCurrentFileToLog;
+- (void)_clearCurrentFile;
+- (void)_closeCurrentFile;
 - (BOOL)_executeFile:(id)arg1 onDb:(id)arg2 becameLocked:(BOOL *)arg3;
+- (BOOL)_executeNextRecordFromFile:(id)arg1 onDb:(id)arg2 becameLocked:(BOOL *)arg3 deleteFile:(BOOL *)arg4;
+- (id)_getCurrentFile;
 - (BOOL)deleteAllJournaledQueries;
 - (id)description;
+- (id)directoryPath;
 - (BOOL)executeQueriesOnDatabase:(id)arg1;
 - (void)runQuery:(id)arg1 values:(id)arg2 onDb:(id)arg3;
 - (BOOL)startJournaling;

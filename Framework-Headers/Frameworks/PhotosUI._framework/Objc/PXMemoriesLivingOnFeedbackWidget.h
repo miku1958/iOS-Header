@@ -55,7 +55,7 @@
 - (struct CGSize)_layoutTokenViewsWithWidth:(double)arg1;
 - (void)_loadContentData;
 - (struct NSObject *)_loadContentView;
-- (void)_loadFeaturesFromPhotosGraphData:(id)arg1;
+- (void)_loadFeaturesFromPhotosGraphProperties:(id)arg1;
 - (void)_showReportFeedback;
 - (id)_tokenViewsWithSuperview:(struct NSObject *)arg1;
 - (void)loadContentData;

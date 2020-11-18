@@ -11,7 +11,7 @@
 }
 
 + (id)sharedStyle;
-- (struct CGSize)_effectiveSizeForIcon:(id)arg1 inView:(id)arg2;
+- (struct CGSize)_effectiveSizeForIconSize:(struct CGSize)arg1 inView:(id)arg2;
 - (void)applyThemeToAllTableViews;
 - (void)applyThemeToLabel:(id)arg1;
 - (void)applyThemeToNavigationController:(id)arg1;
@@ -30,10 +30,11 @@
 - (double)headerIconBaselineOffsetForView:(id)arg1;
 - (double)headerSubheaderBaselineSpacingForView:(id)arg1;
 - (double)headerTitleBaselineOffsetForView:(id)arg1 hasIcon:(BOOL)arg2;
-- (double)headerTitleBaselineOffsetForView:(id)arg1 icon:(id)arg2;
+- (double)headerTitleBaselineOffsetForView:(id)arg1 iconSize:(struct CGSize)arg2;
 - (double)headerTitleBaselineOffsetHasIcon:(BOOL)arg1;
 - (id)headerTitleFont;
 - (double)headerYOffsetForIcon:(id)arg1 inView:(id)arg2;
+- (double)headerYOffsetForIconSize:(struct CGSize)arg1 inView:(id)arg2;
 - (struct UIEdgeInsets)horizontalInsetsForContainingInView:(id)arg1 width:(double)arg2;
 - (double)horizontalMarginForView:(id)arg1;
 - (double)nonTableHorizontalMargin;

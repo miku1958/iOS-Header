@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSString;
 @protocol MTLDevice, MTLTexture;
@@ -20,7 +20,9 @@
     unsigned long long _textureType;
     NSString *_label;
     struct MPSPixelInfo _pixelInfo;
+    MPSImage *_parent;
     struct MPSAutoTexture _texture;
+    BOOL _updatedAlready;
 }
 
 @property (readonly, strong, nonatomic) id<MTLDevice> device;
@@ -29,6 +31,7 @@
 @property (readonly, nonatomic) unsigned long long height; // @synthesize height=_height;
 @property (copy) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) unsigned long long numberOfImages; // @synthesize numberOfImages=_numberOfImages;
+@property (readonly, strong, nonatomic) MPSImage *parent; // @synthesize parent=_parent;
 @property (readonly, nonatomic) unsigned long long pixelFormat;
 @property (readonly, nonatomic) unsigned long long pixelSize;
 @property (readonly, nonatomic) unsigned long long precision;
@@ -40,6 +43,8 @@
 + (id)defaultAllocator;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct NSArray *)batchRepresentation;
+- (struct NSArray *)batchRepresentationWithSubRange:(struct _NSRange)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)debugQuickLookObject;
@@ -47,12 +52,18 @@
 - (id)init;
 - (id)initWithDescriptor:(id)arg1 featureChannels:(unsigned long long)arg2 featureChannelsLayout:(unsigned long long)arg3 onDevice:(id)arg4;
 - (id)initWithDevice:(id)arg1 imageDescriptor:(id)arg2;
+- (id)initWithParentImage:(id)arg1 sliceRange:(struct _NSRange)arg2 featureChannels:(unsigned long long)arg3;
 - (id)initWithTexture:(id)arg1 featureChannels:(unsigned long long)arg2;
 - (id)initWithTexture:(id)arg1 featureChannels:(unsigned long long)arg2 featureChannelsLayout:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (void)readBytes:(void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4 region:(CDStruct_4c83c94d)arg5 featureChannelInfo:(CDStruct_4bcfbbae)arg6 imageIndex:(unsigned long long)arg7;
 - (void)readBytes:(void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 region:(CDStruct_4c83c94d)arg4 featureChannelInfo:(CDStruct_4bcfbbae)arg5 imageIndex:(unsigned long long)arg6;
 - (void)readBytes:(void *)arg1 dataLayout:(unsigned long long)arg2 imageIndex:(unsigned long long)arg3;
+- (unsigned long long)resourceSize;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
+- (id)subImageWithFeatureChannelRange:(struct _NSRange)arg1;
+- (void)synchronizeOnCommandBuffer:(id)arg1;
+- (void)writeBytes:(const void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4 region:(CDStruct_4c83c94d)arg5 featureChannelInfo:(CDStruct_4bcfbbae)arg6 imageIndex:(unsigned long long)arg7;
 - (void)writeBytes:(const void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 region:(CDStruct_4c83c94d)arg4 featureChannelInfo:(CDStruct_4bcfbbae)arg5 imageIndex:(unsigned long long)arg6;
 - (void)writeBytes:(const void *)arg1 dataLayout:(unsigned long long)arg2 imageIndex:(unsigned long long)arg3;
 

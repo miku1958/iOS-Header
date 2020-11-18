@@ -14,6 +14,7 @@
 @interface CKShareParticipant : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isCurrentUser;
+    BOOL _isOrgAdminUser;
     BOOL _createdInProcess;
     BOOL _acceptedInProcess;
     CKUserIdentity *_userIdentity;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) NSData *encryptedPersonalInfo; // @synthesize encryptedPersonalInfo=_encryptedPersonalInfo;
 @property (strong, nonatomic) NSString *inviterID; // @synthesize inviterID=_inviterID;
 @property (nonatomic) BOOL isCurrentUser; // @synthesize isCurrentUser=_isCurrentUser;
+@property (nonatomic) BOOL isOrgAdminUser; // @synthesize isOrgAdminUser=_isOrgAdminUser;
 @property (nonatomic) long long originalAcceptanceStatus; // @synthesize originalAcceptanceStatus=_originalAcceptanceStatus;
 @property (nonatomic) long long originalParticipantType; // @synthesize originalParticipantType=_originalParticipantType;
 @property (nonatomic) long long originalPermission; // @synthesize originalPermission=_originalPermission;

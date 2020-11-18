@@ -21,7 +21,8 @@
 + (id)indexAgent;
 + (void)initialize;
 - (void).cxx_destruct;
-- (BOOL)allowClientConnection:(id)arg1;
+- (BOOL)addClientConnectionIfAllowedForConfiguration:(id)arg1;
+- (BOOL)addClientConnectionIfAllowedForConnection:(id)arg1;
 - (BOOL)handleCommand:(const char *)arg1 info:(id)arg2 connection:(id)arg3;
 - (id)indexConnection:(id)arg1;
 - (BOOL)lostClientConnection:(id)arg1 error:(id)arg2;

@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 + (id)mediaTimingFunctionForPath:(id)arg1 reversed:(BOOL)arg2;
 + (void)p_loadAllParametersIfNecessary;
 + (id)parameterGroupForName:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)boolForKey:(id)arg1;
-- (void)dealloc;
 - (double)doubleForAnimationCurve:(id)arg1 atPercent:(double)arg2;
 - (double)doubleForKey:(id)arg1;
 - (id)initWithFileName:(id)arg1;

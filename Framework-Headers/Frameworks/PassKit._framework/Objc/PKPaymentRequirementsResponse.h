@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 - (id)initWithProduct:(id)arg1;
+- (id)initWithProvisioningMethodMetadata:(id)arg1;
 
 @end
 

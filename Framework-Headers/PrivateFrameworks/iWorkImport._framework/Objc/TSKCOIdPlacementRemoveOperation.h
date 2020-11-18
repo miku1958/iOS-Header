@@ -13,16 +13,16 @@
 __attribute__((visibility("hidden")))
 @interface TSKCOIdPlacementRemoveOperation : TSKCOIdPlacementBaseOperation <TSKCOObjectCountConstraint>
 {
-    int mObjectCount;
-    int mObjectCounterSpace;
+    int _objectCount;
+    int _objectCounterSpace;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isNoop;
-@property (readonly, nonatomic) int objectCount; // @synthesize objectCount=mObjectCount;
-@property (readonly, nonatomic) int objectCounterSpace; // @synthesize objectCounterSpace=mObjectCounterSpace;
+@property (readonly, nonatomic) int objectCount; // @synthesize objectCount=_objectCount;
+@property (readonly, nonatomic) int objectCounterSpace; // @synthesize objectCounterSpace=_objectCounterSpace;
 @property (readonly) Class superclass;
 
 - (id)initWithIdAddress:(id)arg1 fromIndex:(int)arg2;
@@ -33,16 +33,15 @@ __attribute__((visibility("hidden")))
 - (id)operationWithNewFromIndex:(int)arg1 toIndex:(int)arg2 dominating:(BOOL)arg3;
 - (id)operationWithNewNoop:(BOOL)arg1;
 - (id)operationWithNewObjectCount:(int)arg1;
-- (id)p_transformAdd:(id)arg1 isHigherPriority:(BOOL)arg2;
 - (id)p_transformObjectCount:(id)arg1;
-- (id)p_transformPlacement:(id)arg1 isHigherPriority:(BOOL)arg2;
-- (id)p_transformRearrange:(id)arg1 isHigherPriority:(BOOL)arg2;
-- (id)p_transformRearrangeOrPlacementOperation:(id)arg1 isHigherPriority:(BOOL)arg2;
-- (id)p_transformRemove:(id)arg1 isHigherPriority:(BOOL)arg2;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2;
-- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(BOOL)arg2;
-- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2;
+- (id)toString;
+- (id)transformAddOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformRearrangeOrPlacementOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformRemoveOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
+- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
 
 @end
 

@@ -24,7 +24,9 @@
 
 - (void).cxx_destruct;
 - (void)_getRemoteObjectProxyOnQueue:(CDUnknownBlockType)arg1;
+- (void)activate;
 - (id)exportedInterface;
+- (void)invalidate;
 - (id)machServiceName;
 - (id)remoteObjectInterface;
 - (BOOL)shouldEscapeXpcTryCatch;

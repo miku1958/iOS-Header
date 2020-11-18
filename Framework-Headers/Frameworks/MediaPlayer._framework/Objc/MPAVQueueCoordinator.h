@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPAVItem, MPQueuePlayer, NSArray, NSDate, NSHashTable, NSMutableSet, NSOperationQueue;
+@class MPAVItem, MPQueuePlayer, NSArray, NSHashTable, NSMutableSet, NSOperationQueue;
 @protocol MPAVQueueCoordinatorDataSource;
 
 @interface MPAVQueueCoordinator : NSObject
@@ -19,12 +19,11 @@
     BOOL _isSyncingPlayerItems;
     NSHashTable *_itemsPendingAssetLoading;
     MPAVItem *_lastItemAnchor;
-    NSDate *_lastPausedDate;
     unsigned long long _lastPreferredQueueDepth;
     BOOL _needsCurrentItemUpdateAfterPlayerItemSync;
     BOOL _preventLoadingItems;
-    double _rateQueueDepthAdjustmentDelay;
     NSMutableSet *_reusableItems;
+    BOOL _shouldExpectEmptyQueue;
     BOOL _shouldDeferItemLoading;
     MPQueuePlayer *_player;
     id<MPAVQueueCoordinatorDataSource> _dataSource;
@@ -39,6 +38,7 @@
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (readonly, nonatomic) MPQueuePlayer *player; // @synthesize player=_player;
 @property (nonatomic) BOOL shouldDeferItemLoading; // @synthesize shouldDeferItemLoading=_shouldDeferItemLoading;
+@property (nonatomic) BOOL shouldExpectEmptyQueue; // @synthesize shouldExpectEmptyQueue=_shouldExpectEmptyQueue;
 
 - (void).cxx_destruct;
 - (void)_beginBackgroundTaskAssertion;

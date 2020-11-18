@@ -235,6 +235,7 @@ __attribute__((visibility("hidden")))
 - (int)state;
 - (void)stopDictation;
 - (void)stopDictation:(BOOL)arg1;
+- (void)stopDictationByTimer;
 - (void)stopDictationIgnoreFinalizePhrases;
 - (void)stopHelpMessageDisplay;
 - (id)streamingOperations;

@@ -9,7 +9,7 @@
 #import <GeoServices/GEOStateCapturing-Protocol.h>
 
 @class GEOApplicationAuditToken, NSData, NSDictionary, NSString, NSURL;
-@protocol OS_xpc_object;
+@protocol GEORequestCounterTicket, OS_xpc_object;
 
 @interface GEODataRequest : NSObject <GEOStateCapturing>
 {
@@ -27,6 +27,7 @@
     BOOL _allowedRequestMode;
     BOOL _allowTLSSessionTicketUse;
     BOOL _allowTFOUse;
+    id<GEORequestCounterTicket> _requestCounterTicket;
 }
 
 @property (readonly, nonatomic) BOOL HTTPMethod; // @synthesize HTTPMethod=_HTTPMethod;
@@ -44,6 +45,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int kind; // @synthesize kind=_kind;
+@property (readonly, nonatomic) id<GEORequestCounterTicket> requestCounterTicket; // @synthesize requestCounterTicket=_requestCounterTicket;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcRequest; // @synthesize xpcRequest=_xpcRequest;
@@ -51,10 +53,11 @@
 - (void).cxx_destruct;
 - (id)captureStateWithHints:(struct os_state_hints_s *)arg1;
 - (id)init;
-- (id)initHttpOnlyRequestWithKind:(int)arg1 protobufRequest:(id)arg2 URL:(id)arg3 additionalHTTPHeaders:(id)arg4 allowCellularUse:(BOOL)arg5 compressRequest:(BOOL)arg6;
-- (id)initWithKind:(int)arg1 URL:(id)arg2 xpcRequest:(id)arg3 auditToken:(id)arg4 timeoutInterval:(double)arg5 additionalHTTPHeaders:(id)arg6 HTTPMethod:(BOOL)arg7 bodyData:(id)arg8 HTTPShouldHandleCookies:(BOOL)arg9 allowsCellularAccess:(BOOL)arg10 allowTLSSessionTicketUse:(BOOL)arg11 allowTFOUse:(BOOL)arg12 allowedRequestMode:(BOOL)arg13 userAgent:(id)arg14 entityTag:(id)arg15 cachedData:(id)arg16;
-- (id)initWithKind:(int)arg1 protobufRequest:(id)arg2 URL:(id)arg3 additionalHTTPHeaders:(id)arg4 auditToken:(id)arg5 traits:(id)arg6;
+- (id)initHttpOnlyRequestWithKind:(int)arg1 protobufRequest:(id)arg2 URL:(id)arg3 additionalHTTPHeaders:(id)arg4 allowCellularUse:(BOOL)arg5 compressRequest:(BOOL)arg6 requestCounterTicket:(id)arg7;
+- (id)initWithKind:(int)arg1 URL:(id)arg2 xpcRequest:(id)arg3 auditToken:(id)arg4 timeoutInterval:(double)arg5 additionalHTTPHeaders:(id)arg6 HTTPMethod:(BOOL)arg7 bodyData:(id)arg8 HTTPShouldHandleCookies:(BOOL)arg9 allowsCellularAccess:(BOOL)arg10 allowTLSSessionTicketUse:(BOOL)arg11 allowTFOUse:(BOOL)arg12 allowedRequestMode:(BOOL)arg13 userAgent:(id)arg14 entityTag:(id)arg15 cachedData:(id)arg16 requestCounterTicket:(id)arg17;
+- (id)initWithKind:(int)arg1 protobufRequest:(id)arg2 URL:(id)arg3 additionalHTTPHeaders:(id)arg4 auditToken:(id)arg5 traits:(id)arg6 requestCounterTicket:(id)arg7;
 - (id)newURLRequest;
+- (id)publicLogDescription;
 - (id)updatedRequestWithNewBodyData:(id)arg1;
 - (id)updatedRequestWithNewProtobufRequest:(id)arg1;
 

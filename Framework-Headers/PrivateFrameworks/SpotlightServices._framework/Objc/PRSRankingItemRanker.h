@@ -45,6 +45,8 @@
 + (id)musicBundle;
 + (id)notesBundle;
 + (id)requiredAttributes;
++ (void)setDockApps:(id)arg1;
++ (id)settingsBundle;
 + (CDUnknownBlockType)shouldUpdateFuncForSnippetFeature:(unsigned long long)arg1;
 + (id)sortedUniqueBundleFeatureValuesFromBundleFeatures:(id)arg1;
 - (void).cxx_destruct;

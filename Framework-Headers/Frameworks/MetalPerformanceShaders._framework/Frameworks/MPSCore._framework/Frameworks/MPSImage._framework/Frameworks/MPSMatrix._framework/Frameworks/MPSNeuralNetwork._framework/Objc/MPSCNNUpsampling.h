@@ -19,6 +19,7 @@
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
+- (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 sourceOffset:(CDStruct_d6af7fc0 *)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;

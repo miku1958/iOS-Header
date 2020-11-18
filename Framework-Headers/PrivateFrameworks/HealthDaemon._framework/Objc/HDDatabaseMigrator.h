@@ -6,16 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HDSQLiteDatabase;
+@class HDDatabaseSchemaManager, HDProfile, HDSQLiteDatabase, NSMutableArray, NSString;
 
 @interface HDDatabaseMigrator : NSObject
 {
-    HDSQLiteDatabase *_database;
+    BOOL _hasPerformedMigration;
+    NSMutableArray *_migrationSteps;
     HDProfile *_profile;
+    HDSQLiteDatabase *_database;
+    NSString *_databaseName;
+    HDDatabaseSchemaManager *_schemaManager;
 }
 
 @property (readonly, nonatomic) HDSQLiteDatabase *database; // @synthesize database=_database;
+@property (readonly, copy, nonatomic) NSString *databaseName; // @synthesize databaseName=_databaseName;
 @property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (readonly, nonatomic) HDDatabaseSchemaManager *schemaManager; // @synthesize schemaManager=_schemaManager;
 
 - (void).cxx_destruct;
 - (long long)_addAnchorForCompanionWorkoutCreditWithError:(id *)arg1;
@@ -95,6 +101,18 @@
 - (BOOL)_deleteDataEntitySubclassTables:(id)arg1 intermediateTables:(id)arg2 error:(out id *)arg3;
 - (long long)_dropDataSessionActivitiesTableWithError:(id *)arg1;
 - (long long)_dropMenstruationTable:(id *)arg1;
+- (long long)_emet_addPatientHashtoClinicalAccountsTable:(out id *)arg1;
+- (long long)_emet_addSchemaColumnToSyncAnchorTableWithError:(out id *)arg1;
+- (long long)_emet_createEmetClinicalHealthRecordsTablesWithError:(out id *)arg1;
+- (long long)_emet_dropSubscriptionDataAnchorsTableWithError:(out id *)arg1;
+- (long long)_emet_migrateWorkoutEventMetadataToProtobufWithError:(out id *)arg1;
+- (long long)_emet_recreateClinicalHealthRecordsTablesWithError:(out id *)arg1;
+- (long long)_emet_removeTigrisClinicalHealthRecordsTablesWithError:(out id *)arg1;
+- (long long)_emet_updateDiagnosticTestResultSamplesTable:(out id *)arg1;
+- (long long)_emet_updateFHIRIdentifierNullabilityAddQuantityDispensedWithError:(out id *)arg1;
+- (long long)_emet_updateFHIRResourcesAndLastSeenTable:(out id *)arg1;
+- (long long)_emet_updateMedicationSamplesTablesWithError:(out id *)arg1;
+- (long long)_emet_updateProcedureTableWithError:(out id *)arg1;
 - (long long)_erie_removeBadTurkeyTrotAchievementsWithError:(id *)arg1;
 - (long long)_fixDanglingSourcesAndProvenancesWithError:(id *)arg1;
 - (long long)_fixDataProvenanceProductTypeAgainWithError:(id *)arg1;
@@ -104,6 +122,8 @@
 - (long long)_fixSyncProvenanceForPostOkemoZurs:(id *)arg1;
 - (long long)_fixupMigratedProtectedSchemaWithError:(id *)arg1;
 - (long long)_initializeDatabaseIdentifiersWithProfile:(id)arg1 error:(id *)arg2;
+- (BOOL)_insertDeletedObjectTombstoneWithUUID:(id)arg1 provenanceIdentifier:(id)arg2 deletionDate:(id)arg3 insertedRowID:(out id *)arg4 error:(out id *)arg5;
+- (BOOL)_insertDeletedSampleTombstoneWithUUID:(id)arg1 provenanceIdentifier:(id)arg2 dataTypeCode:(id)arg3 deletionDate:(id)arg4 error:(out id *)arg5;
 - (id)_lastReceivedNatalieDatum:(id *)arg1;
 - (id)_lastReceivedPedometerDatum:(id *)arg1;
 - (long long)_migrateAchievementDataStoreSessionCountsWithError:(id *)arg1;
@@ -127,11 +147,10 @@
 - (long long)_migrateSourcesTableForSync:(id *)arg1;
 - (long long)_migrateSourcesToProvenanceWithError:(id *)arg1;
 - (long long)_migrateStoredDateOfBirthTimeZoneWithError:(id *)arg1;
-- (id)_migrationStepsForProtectedDatabaseWithProfile:(id)arg1;
-- (id)_migrationStepsForUnprotectedDatabase;
 - (long long)_recreateDataProvenanceTableIncludingOriginVersionsWithError:(id *)arg1;
 - (long long)_recreateDataProvenanceTableIncludingTimeZoneNamesWithError:(id *)arg1;
 - (long long)_recreateDataSeriesTableWithError:(id *)arg1;
+- (BOOL)_recreateMedicalRecordTable:(id)arg1 intermediateTables:(id)arg2 creationSQL:(id)arg3 error:(out id *)arg4;
 - (long long)_removeAchievementsAndActivityCachesFromUnprotectedDatabaseWithError:(id *)arg1;
 - (long long)_removeActivitySharingDataWithError:(id *)arg1;
 - (long long)_removeOrphanedDeletedObjectsWithError:(id *)arg1;
@@ -142,11 +161,12 @@
 - (long long)_removeVO2MaxTestTypeMetadataKeyAppleWatch:(out id *)arg1;
 - (long long)_renameCDATableWithError:(id *)arg1;
 - (long long)_renameKeyValueSyncStoreColumnInProtectedDabase:(BOOL)arg1 error:(id *)arg2;
-- (long long)_runMigrationStep:(id)arg1 currentVersion:(long long *)arg2 databaseName:(id)arg3 error:(id *)arg4;
-- (long long)_runMigrationSteps:(id)arg1 currentVersion:(long long *)arg2 databaseName:(id)arg3 expectedFinalVersion:(long long)arg4 error:(id *)arg5;
+- (long long)_runMigrationStep:(id)arg1 currentVersion:(long long *)arg2 finalVersion:(long long)arg3 databaseName:(id)arg4 error:(id *)arg5;
+- (long long)_runMigrationSteps:(id)arg1 currentVersion:(long long)arg2 databaseName:(id)arg3 expectedFinalVersion:(long long)arg4 error:(id *)arg5;
 - (long long)_setAuthorizationAnchorWithError:(id *)arg1;
 - (long long)_setLastOkemoZursObjectAnchorWithError:(id *)arg1;
 - (long long)_setupNFCForFitnessMachinesWithError:(out id *)arg1;
+- (id)_sortedAndPrunedMigrationSteps:(id)arg1 currentVersion:(long long)arg2 databaseName:(id)arg3 error:(id *)arg4;
 - (long long)_tigris_addContainerColumnToCloudSyncStores:(id *)arg1;
 - (long long)_tigris_addEmptyZonesColumnWithError:(id *)arg1;
 - (long long)_tigris_addEpochColumnToSyncAnchorTable:(id *)arg1;
@@ -164,6 +184,10 @@
 - (long long)_updateKeyValueEntityUniquenessWithProtectedDatabase:(BOOL)arg1 error:(id *)arg2;
 - (long long)_updateOriginVersionsWithError:(id *)arg1;
 - (long long)_updateWithComputedStatsColumnsInActivityCacheTableWithError:(id *)arg1;
+- (void)addLockstepMigrationForSchema:(id)arg1 to:(long long)arg2 requiring:(long long)arg3 foreignKeys:(long long)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)addMigrationForSchema:(id)arg1 to:(long long)arg2 foreignKeys:(long long)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)addMigrationSteps:(id)arg1;
+- (void)addMigrationTo:(long long)arg1 foreignKeys:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)boulderProtectedMigrationSteps;
 - (id)boulderUnprotectedMigrationSteps;
 - (id)butlerProtectedMigrationSteps;
@@ -172,22 +196,25 @@
 - (id)cinarUnprotectedMigrationSteps;
 - (id)corryProtectedMigrationSteps;
 - (id)corryUnprotectedMigrationSteps;
+- (long long)deleteDatabaseStatusForVersion:(long long)arg1 errorMessage:(id)arg2 error:(id *)arg3;
 - (id)eagleProtectedMigrationSteps;
 - (id)eagleUnprotectedMigrationSteps;
+- (id)emetProtectedMigrationSteps;
+- (id)emetUnprotectedMigrationSteps;
 - (id)erieProtectedMigrationSteps;
 - (id)erieUnprotectedMigrationSteps;
 - (BOOL)executeSQL:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSQLStatements:(id)arg1 error:(id *)arg2;
-- (long long)fatalStatusForVersion:(long long)arg1 errorMessage:(id)arg2 error:(id *)arg3;
 - (id)init;
-- (id)initWithProfile:(id)arg1 database:(id)arg2;
-- (long long)migrateProtectedDatabaseFromVersion:(long long)arg1 profile:(id)arg2 error:(id *)arg3;
-- (long long)migrateUnprotectedDatabaseFromVersion:(long long)arg1 error:(id *)arg2;
+- (id)initWithProfile:(id)arg1 database:(id)arg2 databaseName:(id)arg3;
+- (long long)migrateFromVersion:(long long)arg1 toVersion:(long long)arg2 error:(id *)arg3;
 - (id)monarchProtectedMigrationSteps;
 - (id)monarchUnprotectedMigrationSteps;
 - (id)okemoZursProtectedMigrationStepsForProfile:(id)arg1;
 - (id)okemoZursUnprotectedMigrationSteps;
 - (long long)performHFDMigrationToVersion:(long long)arg1 handler:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)primaryProtectedMigrationSteps;
+- (id)primaryUnprotectedMigrationSteps;
 - (long long)statusForUnhandledVersion:(long long)arg1 error:(id *)arg2;
 - (id)tigrisProtectedMigrationSteps;
 - (id)tigrisUnprotectedMigrationSteps;

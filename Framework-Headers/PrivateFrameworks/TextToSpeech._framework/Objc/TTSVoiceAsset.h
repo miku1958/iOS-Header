@@ -19,6 +19,7 @@
     NSArray *_languages;
     long long _gender;
     long long _footprint;
+    NSString *_voicePath;
 }
 
 @property (readonly, nonatomic) long long footprint; // @synthesize footprint=_footprint;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) BOOL isInstalled; // @synthesize isInstalled=_isInstalled;
 @property (readonly, nonatomic) NSArray *languages; // @synthesize languages=_languages;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSString *voicePath; // @synthesize voicePath=_voicePath;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

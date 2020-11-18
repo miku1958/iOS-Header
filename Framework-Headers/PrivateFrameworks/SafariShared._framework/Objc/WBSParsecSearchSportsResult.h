@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariShared/WBSParsecSearchResult.h>
+#import <SafariShared/WBSParsecLegacySearchResult.h>
 
 @class NSArray, NSString, WBSParsecSearchSportsAttributionExtraCompletionItem, WBSParsecSportsScoreSummary;
 
-@interface WBSParsecSearchSportsResult : WBSParsecSearchResult
+@interface WBSParsecSearchSportsResult : WBSParsecLegacySearchResult
 {
     WBSParsecSportsScoreSummary *_scoreSummary;
     WBSParsecSearchSportsAttributionExtraCompletionItem *_extraCompletionItem;

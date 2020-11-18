@@ -53,6 +53,7 @@
 @property (strong, nonatomic) HMDEventTriggerUserConfirmationSession *userConfirmationSession; // @synthesize userConfirmationSession=_userConfirmationSession;
 
 + (BOOL)__validateRecurrences:(id)arg1;
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -113,6 +114,7 @@
 - (void)invalidate;
 - (BOOL)isEventTriggerOnLocalDeviceForAccessory:(id)arg1;
 - (BOOL)isEventTriggerOnRemoteGatewayForAccessory:(id)arg1;
+- (id)messageReceiverChildren;
 - (id)metric:(BOOL)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (void)processEventRecords:(id)arg1 message:(id)arg2;

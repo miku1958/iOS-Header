@@ -13,6 +13,7 @@
 - (void)configure:(PARSessionConfiguration *)arg1 reply:(void (^)(NSXPCListenerEndpoint *))arg2;
 - (void)feedback:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fileHandleAndAttributesForResource:(NSString *)arg1 completion:(void (^)(NSFileHandle *, NSDictionary *, NSError *))arg2;
+- (void)fileHandleForWritingFeedbackType:(unsigned long long)arg1 reply:(void (^)(NSFileHandle *, NSError *))arg2;
 - (void)getImageMap:(void (^)(NSDictionary *))arg1;
 - (void)listSessions:(void (^)(NSArray *))arg1;
 - (void)listenToFlusher:(void (^)(NSXPCListenerEndpoint *))arg1;

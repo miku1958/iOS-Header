@@ -8,7 +8,7 @@
 
 #import <Foundation/_NSExtensionContextHosting-Protocol.h>
 
-@class BKSProcessAssertion, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID;
+@class NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue, PKPlugIn;
 
 @interface NSExtension : NSObject <_NSExtensionContextHosting>
@@ -31,18 +31,14 @@
     NSMutableDictionary *__extensionServiceConnections;
     NSMutableDictionary *__extensionContexts;
     NSSet *__allowedErrorClasses;
-    BKSProcessAssertion *__extensionProcessAssertion;
-    long long __assertionRefCount;
     NSUUID *_connectionUUID;
     NSObject<OS_dispatch_queue> *__safePluginQueue;
 }
 
 @property (copy, nonatomic, setter=_setAllowedErrorClasses:) NSSet *_allowedErrorClasses; // @synthesize _allowedErrorClasses=__allowedErrorClasses;
-@property (nonatomic, setter=_setAssertionRefCount:) long long _assertionRefCount; // @synthesize _assertionRefCount=__assertionRefCount;
 @property (strong, nonatomic, setter=_setExtensionBundle:) NSBundle *_extensionBundle; // @synthesize _extensionBundle=__extensionBundle;
 @property (strong, nonatomic, setter=_setExtensionContexts:) NSMutableDictionary *_extensionContexts; // @synthesize _extensionContexts=__extensionContexts;
 @property (strong, nonatomic, setter=_setExtensionExpirationsIdentifiers:) NSMutableDictionary *_extensionExpirationIdentifiers; // @synthesize _extensionExpirationIdentifiers=__extensionExpirationIdentifiers;
-@property (strong, setter=_setExtensionProcessAssertion:) BKSProcessAssertion *_extensionProcessAssertion; // @synthesize _extensionProcessAssertion=__extensionProcessAssertion;
 @property (strong, nonatomic, setter=_setExtensionServiceConnections:) NSMutableDictionary *_extensionServiceConnections; // @synthesize _extensionServiceConnections=__extensionServiceConnections;
 @property (copy, nonatomic, getter=_extensionState, setter=_setExtensionState:) NSDictionary *_extensionState; // @dynamic _extensionState;
 @property (readonly, nonatomic, getter=_isMarkedNew) BOOL _markedNew;
@@ -102,9 +98,11 @@
 - (void)_loadPreviewImageForPayload:(id)arg1 contextIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (int)_plugInProcessIdentifier;
-- (void)_reallyBeginExtensionRequestWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_reallyBeginExtensionRequestWithInputItems:(id)arg1 processAssertion:(id)arg2 listenerEndpoint:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_resetExtensionState;
 - (void)_safelyBeginUsing:(CDUnknownBlockType)arg1;
+- (void)_safelyBeginUsing_withAssertion:(CDUnknownBlockType)arg1;
+- (void)_safelyBeginUsing_withAssertion_onSafeQueue:(CDUnknownBlockType)arg1;
 - (void)_safelyEndUsing:(CDUnknownBlockType)arg1;
 - (void)_safelyEndUsingWithProcessAssertion:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (BOOL)_wantsProcessPerRequest;

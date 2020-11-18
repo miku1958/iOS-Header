@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)presetImagerForChartType:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)imageWithPreset:(id)arg1 target:(int)arg2 imageSize:(struct CGSize)arg3 imageScale:(double)arg4 swatchFrame:(struct CGRect)arg5 documentRoot:(id)arg6 shouldCache:(BOOL *)arg7;
 - (id)initWithChartType:(id)arg1;
 - (double)p_canvasScale;

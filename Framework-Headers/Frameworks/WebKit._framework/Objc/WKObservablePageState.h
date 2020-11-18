@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WKObservablePageState : NSObject <_WKObservablePageState>
 {
-    RefPtr_0cd9f53a _page;
+    RefPtr_a805eeb8 _page;
     struct unique_ptr<WebKit::PageLoadStateObserver, std::__1::default_delete<WebKit::PageLoadStateObserver>> _observer;
 }
 
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithPage:(RefPtr_0cd9f53a *)arg1;
+- (id)initWithPage:(RefPtr_a805eeb8 *)arg1;
 
 @end
 

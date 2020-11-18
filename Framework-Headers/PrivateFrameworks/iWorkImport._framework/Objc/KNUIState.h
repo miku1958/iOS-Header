@@ -8,7 +8,7 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class KNMacUILayout, KNSlideCollectionSelection, NSArray, NSMutableDictionary, NSSet, TSKSelectionPath;
+@class KNMacUILayout, KNSlideCollectionSelection, NSArray, NSMutableDictionary, NSSet, TSDFreehandDrawingToolkitUIState, TSKSelectionPath;
 
 __attribute__((visibility("hidden")))
 @interface KNUIState : NSObject <NSCopying>
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSSet *_outlineCollapsedSlideNodes;
     NSSet *_outlineHasBodySlideNodes;
     NSArray *_elementListExpandedGroups;
+    TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
     struct CGPoint _desktopMainWindowOrigin;
     struct CGSize _desktopMainContentSize;
 }
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double desktopPresenterNotesScrollPosition; // @synthesize desktopPresenterNotesScrollPosition=_desktopPresenterNotesScrollPosition;
 @property (copy, nonatomic) KNMacUILayout *documentUILayout; // @synthesize documentUILayout=_documentUILayout;
 @property (copy, nonatomic) NSArray *elementListExpandedGroups; // @synthesize elementListExpandedGroups=_elementListExpandedGroups;
+@property (strong, nonatomic) TSDFreehandDrawingToolkitUIState *freehandDrawingToolkitUIState; // @synthesize freehandDrawingToolkitUIState=_freehandDrawingToolkitUIState;
 @property (nonatomic) BOOL lightTableHidesSkippedSlides; // @synthesize lightTableHidesSkippedSlides=_lightTableHidesSkippedSlides;
 @property (nonatomic) double lightTableZoomScale; // @synthesize lightTableZoomScale=_lightTableZoomScale;
 @property (nonatomic) BOOL mobileLightTableHidesSkippedSlides; // @synthesize mobileLightTableHidesSkippedSlides=_mobileLightTableHidesSkippedSlides;

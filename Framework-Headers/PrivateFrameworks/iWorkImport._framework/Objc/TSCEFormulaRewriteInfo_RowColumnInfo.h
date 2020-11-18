@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     UUIDData_5fbc143e _tableUID;
     UUIDData_5fbc143e _conditionalStyleOwnerUID;
     TSCEFormulaRewrite_Uids *_rowOrColumnUids;
-    vector_dadc1b26 _rowOrColumnUuids;
+    vector_4dc5f307 _rowOrColumnUuids;
     BOOL _isRows;
     NSArray *_rangeEntries;
     struct TSCERangeCoordinate _tableRange;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isRows; // @synthesize isRows=_isRows;
 @property (readonly, strong, nonatomic) NSIndexSet *rowOrColumnIndices;
 @property (readonly, strong, nonatomic) TSCEFormulaRewrite_Uids *rowOrColumnUids; // @synthesize rowOrColumnUids=_rowOrColumnUids;
-@property (readonly, nonatomic) const vector_dadc1b26 *rowOrColumnUuids; // @synthesize rowOrColumnUuids=_rowOrColumnUuids;
+@property (readonly, nonatomic) const vector_4dc5f307 *rowOrColumnUuids; // @synthesize rowOrColumnUuids=_rowOrColumnUuids;
 @property (readonly, nonatomic) const UUIDData_5fbc143e *tableUID; // @synthesize tableUID=_tableUID;
 
 - (id).cxx_construct;
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (unsigned short)indexForUuid:(const UUIDData_5fbc143e *)arg1;
 - (BOOL)indexIsAffected:(unsigned short)arg1;
 - (id)initFromMessage:(const struct ColumnOrRowUuidsInfoArchive *)arg1;
-- (id)initWithFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1 uuids:(const vector_dadc1b26 *)arg2 areRows:(BOOL)arg3;
+- (id)initWithFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1 uuids:(const vector_4dc5f307 *)arg2 areRows:(BOOL)arg3;
 - (void)loadIndexesForTable:(id)arg1 forRemoveRows:(BOOL)arg2;
 - (unsigned short)offsetForRowIndex:(unsigned short)arg1;
 - (unsigned short)offsetForUpdatedRowIndex:(unsigned short)arg1 isRemoveRows:(BOOL)arg2;
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)unloadIndexes;
 - (struct TSUCellCoord)updatedCellCoordinateForRewriteType:(int)arg1 forTableUID:(const UUIDData_5fbc143e *)arg2 originalCellCoordinate:(struct TSUCellCoord)arg3;
 - (UUIDData_5fbc143e)uuidForIndex:(unsigned short)arg1;
-- (vector_dadc1b26)uuidsForRowsInRange:(struct _NSRange)arg1;
+- (vector_4dc5f307)uuidsForRowsInRange:(struct _NSRange)arg1;
 
 @end
 

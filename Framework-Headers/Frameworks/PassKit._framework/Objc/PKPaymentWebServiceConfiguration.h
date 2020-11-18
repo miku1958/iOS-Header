@@ -28,6 +28,7 @@
 - (id)_queue_region:(id)arg1;
 - (id)_queue_regions;
 - (BOOL)_queue_supportedForOSVersion:(id)arg1 inRegion:(id)arg2 deviceClass:(id)arg3 platform:(id)arg4;
+- (id)betaTransitPaymentNetworksForRegion:(id)arg1;
 - (id)brokerURLForRegion:(id)arg1;
 - (BOOL)buddyManualProvisioningEnabledForRegion:(id)arg1;
 - (BOOL)buddyProvisioningEnabledForRegion:(id)arg1;
@@ -40,6 +41,9 @@
 - (id)initWithConfiguration:(id)arg1 url:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)manualProvisioningEnabledForRegion:(id)arg1;
+- (id)marketGeoRegionNoitificationHourForRegion:(id)arg1;
+- (id)marketGeoRegionNoitificationSendLimitForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationDisabledNetworksForRegion:(id)arg1;
 - (id)maxRefreshIntervalForRegion:(id)arg1;
 - (id)maxRefreshIntervalForUnsupportedRegion;
 - (id)paymentServicesMerchantURLForRegion:(id)arg1;

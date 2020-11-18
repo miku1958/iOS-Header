@@ -8,11 +8,11 @@
 
 @protocol TSDAnimationSession <NSObject>
 
+@property (readonly, nonatomic) BOOL isOffscreenPlayback;
 @property (nonatomic) BOOL shouldDrawTexturesAsynchronously;
 @property (nonatomic) BOOL shouldForceTextureGeneration;
 @property (nonatomic) BOOL shouldUseSourceImage;
+@property (readonly, nonatomic) double showScale;
 
-- (BOOL)isOffscreenPlayback;
-- (double)showScale;
 @end
 

@@ -61,7 +61,7 @@
 - (id)messageID;
 - (unsigned long long)messageSize;
 - (id)messageStore;
-- (id)metadataValueForKey:(id)arg1;
+- (id)metadataValueOfClass:(Class)arg1 forKey:(id)arg2;
 - (unsigned int)originalMailboxID;
 - (id)originalMailboxURL;
 - (id)path;

@@ -8,12 +8,13 @@
 
 #import <SafariServices/UITableViewDataSource-Protocol.h>
 #import <SafariServices/UITableViewDelegate-Protocol.h>
+#import <SafariServices/_SFBookmarkInfoViewControllerDelegate-Protocol.h>
 #import <SafariServices/_SFBookmarkTextEntryTableViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UITextField, WebBookmark, WebBookmarkCollection, _SFBookmarkTextEntryTableViewCell, _SFSiteIconView;
 @protocol _SFBookmarkInfoViewControllerDelegate;
 
-@interface _SFBookmarkInfoViewController : _SFPopoverSizingTableViewController <_SFBookmarkTextEntryTableViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface _SFBookmarkInfoViewController : _SFPopoverSizingTableViewController <_SFBookmarkInfoViewControllerDelegate, _SFBookmarkTextEntryTableViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     WebBookmarkCollection *_collection;
     WebBookmark *_parentBookmark;
@@ -29,6 +30,7 @@
     NSArray *_folders;
     long long _selectedFolderIndex;
     UITextField *_textFieldToRestoreFirstResponder;
+    BOOL _enableAddFolder;
     id<_SFBookmarkInfoViewControllerDelegate> _delegate;
     WebBookmark *_bookmark;
 }
@@ -44,13 +46,20 @@
 - (void)_addActionsForTextFields;
 - (void)_bookmarksDidReload:(id)arg1;
 - (BOOL)_canEditFieldsInCurrentViewController;
+- (id)_cellForExpandedFolderAtIndex:(long long)arg1 withTableView:(id)arg2;
+- (id)_cellForNewFolderRowWithTableView:(id)arg1;
+- (id)_cellForParentBookmarkWithTableView:(id)arg1;
 - (struct UIEdgeInsets)_cellInset;
 - (struct CGPoint)_centerForIconView;
 - (void)_createCellsIfNeeded;
+- (void)_createNewFolder;
+- (id)_dequeueFolderPickerCellFromTableView:(id)arg1;
 - (void)_didBeginEditingTextField:(id)arg1;
 - (void)_didChangeEditingTextField:(id)arg1;
 - (void)_editField:(unsigned long long)arg1;
 - (id)_iconForViewCellGivenBookmark:(id)arg1;
+- (BOOL)_isIndexPathForNewFolderRow:(id)arg1;
+- (long long)_numberOfExpandedFolderPickerRows;
 - (void)_reloadFolderInfoForced:(BOOL)arg1;
 - (void)_removeActionsForTextFields;
 - (void)_returnWasPressedInTextField:(id)arg1;
@@ -62,6 +71,9 @@
 - (void)_updateSaveButton;
 - (void)_valuesChanged;
 - (id)backgroundColorUsingTranslucentAppearance:(BOOL)arg1;
+- (void)bookmarkInfoViewController:(id)arg1 didFinishWithResult:(BOOL)arg2;
+- (BOOL)bookmarkInfoViewControllerCanSaveBookmarkChanges:(id)arg1;
+- (BOOL)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (void)bookmarkTextEntryTableViewController:(id)arg1 dismissedWithText:(id)arg2;
 - (BOOL)bookmarkTextEntryTableViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (BOOL)canSaveChanges;

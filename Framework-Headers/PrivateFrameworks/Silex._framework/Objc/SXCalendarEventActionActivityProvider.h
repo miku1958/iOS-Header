@@ -8,20 +8,20 @@
 
 #import <Silex/SXActionActivityProvider-Protocol.h>
 
-@class NSString, SXHost;
-@protocol SXCalendarPresenter;
+@class NSString;
+@protocol SXCalendarPresenter, SXHost;
 
 @interface SXCalendarEventActionActivityProvider : NSObject <SXActionActivityProvider>
 {
     id<SXCalendarPresenter> _calendarPresenter;
-    SXHost *_host;
+    id<SXHost> _host;
 }
 
 @property (readonly, nonatomic) id<SXCalendarPresenter> calendarPresenter; // @synthesize calendarPresenter=_calendarPresenter;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) SXHost *host; // @synthesize host=_host;
+@property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

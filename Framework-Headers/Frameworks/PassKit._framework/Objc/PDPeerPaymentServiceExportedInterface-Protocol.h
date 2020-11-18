@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext;
+@class NSData, NSDate, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext;
 
 @protocol PDPeerPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)accountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
@@ -30,6 +30,7 @@
 - (void)unregisterDeviceWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)updateAccountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
 - (void)updateMemo:(NSString *)arg1 forTransactionWithIdentifier:(NSString *)arg2 handler:(void (^)(void))arg3;
+- (void)updateMessageReceivedDate:(NSDate *)arg1 forTransactionWithIdentifier:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)updateMockAccountBalanceByAddingAmount:(NSDecimalNumber *)arg1 completion:(void (^)(PKPeerPaymentAccount *))arg2;
 
 @optional

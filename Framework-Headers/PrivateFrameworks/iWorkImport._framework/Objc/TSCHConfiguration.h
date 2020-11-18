@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     BOOL mSupportsTextWrapping;
     Class mMultiDataChartOptionsControllerBuildSupportClass;
     NSString *mSaveChartStyleHelpKey;
+    long long _analyticsAppType;
 }
 
+@property (nonatomic) long long analyticsAppType; // @synthesize analyticsAppType=_analyticsAppType;
 @property (readonly) TSSPropertyMap *appSpecificPropertyOverrides;
 @property (nonatomic) BOOL disableHighQualityRenderingIfNecessary; // @synthesize disableHighQualityRenderingIfNecessary=mDisableHighQualityRenderingIfNecessary;
 @property (nonatomic) BOOL exportsUsingSageKeynoteChartNonStyleDefaultsOverride; // @synthesize exportsUsingSageKeynoteChartNonStyleDefaultsOverride=mExportsUsingSageKeynoteChartNonStyleDefaultsOverride;
-@property (nonatomic) Class multiDataChartOptionsControllerBuildSupportClass; // @synthesize multiDataChartOptionsControllerBuildSupportClass=mMultiDataChartOptionsControllerBuildSupportClass;
+@property (strong, nonatomic) Class multiDataChartOptionsControllerBuildSupportClass; // @synthesize multiDataChartOptionsControllerBuildSupportClass=mMultiDataChartOptionsControllerBuildSupportClass;
 @property (copy, nonatomic) NSString *saveChartStyleHelpKey; // @synthesize saveChartStyleHelpKey=mSaveChartStyleHelpKey;
 @property (nonatomic) BOOL shouldForceDiscreteGraphicsFor3D; // @synthesize shouldForceDiscreteGraphicsFor3D=mShouldForceDiscreteGraphicsFor3D;
 @property (nonatomic) BOOL showMessageOnSelection; // @synthesize showMessageOnSelection=mShowMessageOnSelection;
@@ -45,13 +47,9 @@ __attribute__((visibility("hidden")))
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)resetSharedChartConfiguration;
 + (id)sharedChartConfiguration;
-- (id)autorelease;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
 
 @end
 

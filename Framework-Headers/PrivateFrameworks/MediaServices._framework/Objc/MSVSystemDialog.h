@@ -30,6 +30,7 @@
 - (void)addTextFieldWithTitle:(id)arg1 secure:(BOOL)arg2;
 - (void)clearTextFields;
 - (void)dealloc;
+- (void)dismiss;
 - (id)initWithOptions:(id)arg1;
 - (void)presentWithCompletion:(CDUnknownBlockType)arg1;
 

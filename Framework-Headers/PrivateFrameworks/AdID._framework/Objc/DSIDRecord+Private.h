@@ -16,11 +16,11 @@
 @property (nonatomic) BOOL accountIsU18; // @dynamic accountIsU18;
 @property (strong, nonatomic) NSString *iAdIDBeforeReset; // @dynamic iAdIDBeforeReset;
 @property (strong, nonatomic) NSString *iCloudDSID; // @dynamic iCloudDSID;
-@property (nonatomic) double lastSegmentServedTimestamp; // @dynamic lastSegmentServedTimestamp;
-@property (nonatomic) double lastSentSegmentDataTimestamp; // @dynamic lastSentSegmentDataTimestamp;
-@property (nonatomic) double limitAdTrackingTimestamp; // @dynamic limitAdTrackingTimestamp;
+@property (nonatomic) int lastSegmentServedTimestamp; // @dynamic lastSegmentServedTimestamp;
+@property (nonatomic) int lastSentSegmentDataTimestamp; // @dynamic lastSentSegmentDataTimestamp;
+@property (nonatomic) int limitAdTrackingTimestamp; // @dynamic limitAdTrackingTimestamp;
 @property (strong, nonatomic) NSString *segmentData; // @dynamic segmentData;
-@property (nonatomic) double segmentDataTimestamp; // @dynamic segmentDataTimestamp;
+@property (nonatomic) int segmentDataTimestamp; // @dynamic segmentDataTimestamp;
 
 - (BOOL)LATStatusChangeInProgress;
 - (void)ensureiAdIDs;
@@ -35,7 +35,7 @@
 - (void)sendLATStatusToAdPlatforms:(CDUnknownBlockType)arg1;
 - (void)sendSegmentDataToAdPlatforms:(CDUnknownBlockType)arg1;
 - (void)sendSegmentsAndLATToAdPlatformsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)setLimitAdTrackingStatus:(BOOL)arg1 timestamp:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setLimitAdTrackingStatus:(BOOL)arg1 timestamp:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateDeviceLATStatusWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @end
 

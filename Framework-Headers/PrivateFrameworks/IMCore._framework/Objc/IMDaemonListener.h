@@ -110,6 +110,7 @@
 - (void)receivedUrgentRequestForMessages:(id)arg1;
 - (void)releaseHeldChatMessages;
 - (void)removeHandler:(id)arg1;
+- (void)returnMOCEnabledState:(unsigned long long)arg1;
 - (void)service:(id)arg1 properties:(id)arg2 defaults:(id)arg3 defaultAccountSettings:(id)arg4 allAccounts:(id)arg5 activeAccounts:(id)arg6;
 - (id)serviceWithName:(id)arg1;
 - (void)services:(id)arg1 properties:(id)arg2 persistentProperties:(id)arg3;

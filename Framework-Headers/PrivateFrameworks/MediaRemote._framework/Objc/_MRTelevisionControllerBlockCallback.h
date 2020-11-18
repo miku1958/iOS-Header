@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CDUnknownBlockType callbackBlock; // @synthesize callbackBlock=_callbackBlock;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithCallbackBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 
 @end

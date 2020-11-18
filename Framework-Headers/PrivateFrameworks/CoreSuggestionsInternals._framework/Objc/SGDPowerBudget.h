@@ -6,18 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@protocol OS_os_log;
 
 @interface SGDPowerBudget : NSObject
 {
-    NSString *_bundleId;
+    NSObject<OS_os_log> *_log;
 }
 
 + (id)defaultBudget;
 - (void).cxx_destruct;
+- (void)_endDuetBudgetedWork;
+- (void)_endThrottleBudgetedWork;
+- (BOOL)_hasDuetBudgetRemaining;
+- (BOOL)_hasThrottleBudgetRemaining;
+- (void)_startDuetBudgetedWork;
+- (void)_startThrottleBudgetedWork;
 - (BOOL)canDoDiscretionaryWork;
+- (void)dealloc;
 - (void)doDiscretionaryWork:(CDUnknownBlockType)arg1 orElse:(CDUnknownBlockType)arg2;
 - (void)endWork;
+- (id)init;
 - (void)startWork;
 
 @end

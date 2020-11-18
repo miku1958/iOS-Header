@@ -101,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasPredictions;
 - (double)heightBeforeStateChangeForInterfaceOrientation:(long long)arg1;
 - (double)heightForInterfaceOrientation:(long long)arg1;
+- (double)heightForInterfaceOrientation:(long long)arg1 state:(int)arg2;
 - (unsigned long long)indexForPoint:(struct CGPoint)arg1;
 - (void)initCells;
 - (id)initWithFrame:(struct CGRect)arg1;

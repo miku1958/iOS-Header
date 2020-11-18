@@ -6,17 +6,31 @@
 
 #import <HomeKit/HMAccessory.h>
 
-@class HMResidentDevice, NSSet;
+@class HMResidentDevice, NSSet, NSString;
 
 @interface HMAccessory (HFAdditions)
 
 @property (readonly, nonatomic) long long hf_appPunchOutReason;
+@property (readonly, copy, nonatomic) NSString *hf_defaultName;
 @property (readonly, copy, nonatomic) NSSet *hf_displayNamesForVisibleTiles;
+@property (readonly, nonatomic) NSString *hf_editingName;
+@property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
+@property (readonly, nonatomic) BOOL hf_fakeGeneralFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeHardwareFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeHomeKitSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeICloudSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeITunesSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeInternetFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeShouldDisplayManualFixOption;
+@property (readonly, nonatomic) BOOL hf_fakeUnreachableError;
+@property (readonly, nonatomic) BOOL hf_fakeWiFiPerformanceSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeWiFiSymptom;
 @property (readonly, nonatomic) BOOL hf_isBridge;
 @property (readonly, nonatomic) BOOL hf_isCamera;
 @property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
 @property (readonly, nonatomic) BOOL hf_isVisibleAsBridge;
 @property (readonly, nonatomic) HMResidentDevice *hf_linkedResidentDevice;
+@property (readonly, nonatomic) BOOL hf_needsReprovisioningCheck;
 @property (readonly, nonatomic) unsigned long long hf_numberOfProgrammableSwitches;
 @property (readonly, nonatomic) HMAccessory *hf_owningBridgeAccessory;
 @property (readonly, nonatomic) NSSet *hf_programmableSwitchNamespaceServices;

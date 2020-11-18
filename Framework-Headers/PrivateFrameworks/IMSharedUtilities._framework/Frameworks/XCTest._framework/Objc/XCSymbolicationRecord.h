@@ -24,7 +24,7 @@
 + (id)failureRecord;
 + (id)symbolicationRecordForAddress:(unsigned long long)arg1;
 + (struct _CSTypeRef)symbolicator;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

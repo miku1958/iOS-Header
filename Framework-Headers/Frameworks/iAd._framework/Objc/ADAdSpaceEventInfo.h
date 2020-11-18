@@ -4,27 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/NSSecureCoding-Protocol.h>
 
 @interface ADAdSpaceEventInfo : NSObject <NSSecureCoding>
 {
-    BOOL _adReused;
     unsigned long long _screenfuls;
     unsigned long long _slotPosition;
+    unsigned long long _reuseCount;
     long long _lastErrorCode;
 }
 
-@property (nonatomic) BOOL adReused; // @synthesize adReused=_adReused;
 @property (nonatomic) long long lastErrorCode; // @synthesize lastErrorCode=_lastErrorCode;
+@property (nonatomic) unsigned long long reuseCount; // @synthesize reuseCount=_reuseCount;
 @property (nonatomic) unsigned long long screenfuls; // @synthesize screenfuls=_screenfuls;
 @property (nonatomic) unsigned long long slotPosition; // @synthesize slotPosition=_slotPosition;
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRecipient:(id)arg1;
+- (id)initWithRecipient:(id)arg1 reuseCount:(unsigned long long)arg2;
 
 @end
 

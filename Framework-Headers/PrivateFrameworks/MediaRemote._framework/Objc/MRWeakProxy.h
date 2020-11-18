@@ -4,13 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaRemote/MRWeakRef.h>
+#import <Foundation/NSObject.h>
 
-@interface MRWeakProxy : MRWeakRef
+@interface MRWeakProxy : NSObject
 {
+    id _object;
 }
 
+@property (weak, nonatomic) id object; // @synthesize object=_object;
+
++ (id)weakProxyWithObject:(id)arg1;
+- (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 
 @end

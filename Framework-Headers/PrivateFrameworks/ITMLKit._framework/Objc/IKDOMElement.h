@@ -10,22 +10,22 @@
 #import <ITMLKit/IKJSDOMElement-Protocol.h>
 #import <ITMLKit/IKJSDOMParentNode-Protocol.h>
 #import <ITMLKit/IKStyleableElement-Protocol.h>
-#import <ITMLKit/NSObject-Protocol.h>
 #import <ITMLKit/_IKJSDOMElement-Protocol.h>
 #import <ITMLKit/_IKJSDOMElementProxy-Protocol.h>
 
 @class IKDOMHTMLCollection, IKDOMNamedNodeMap, IKViewElementStyleComposer, NSArray, NSDictionary, NSMutableDictionary, NSString;
 @protocol IKStyleableElement;
 
-@interface IKDOMElement : IKDOMNode <IKJDOMParsingElement, NSObject, IKStyleableElement, IKJSDOMElement, _IKJSDOMElementProxy, _IKJSDOMElement, IKJSDOMParentNode>
+@interface IKDOMElement : IKDOMNode <IKJDOMParsingElement, IKStyleableElement, IKJSDOMElement, _IKJSDOMElementProxy, _IKJSDOMElement, IKJSDOMParentNode>
 {
     NSMutableDictionary *_metadataDict;
     NSArray *_cachedChildElements;
     NSDictionary *_cachedAttributes;
     IKViewElementStyleComposer *styleComposer;
-    id<IKStyleableElement> parentStyleableElement;
+    IKDOMElement *__aliasOf;
 }
 
+@property (weak, nonatomic, setter=_setAliasOf:) IKDOMElement *_aliasOf; // @synthesize _aliasOf=__aliasOf;
 @property (readonly, nonatomic) BOOL _isPrototypeElement;
 @property (readonly, copy, nonatomic) IKDOMNamedNodeMap *attributes;
 @property (readonly, nonatomic) unsigned long long childElementCount;
@@ -38,7 +38,7 @@
 @property (strong, nonatomic) NSString *innerHTML;
 @property (readonly, nonatomic) IKDOMElement *lastElementChild;
 @property (strong, nonatomic) NSString *outerHTML;
-@property (readonly, weak, nonatomic) id<IKStyleableElement> parentStyleableElement; // @synthesize parentStyleableElement;
+@property (readonly, weak, nonatomic) id<IKStyleableElement> parentStyleableElement;
 @property (strong, nonatomic) IKViewElementStyleComposer *styleComposer; // @synthesize styleComposer;
 @property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) NSString *tagName;
@@ -54,16 +54,24 @@
 - (void)childrenUpdatedWithUpdatedChildNodes:(id)arg1 notify:(BOOL)arg2;
 - (id)domb_dataBinding;
 - (void)domb_setDataBinding:(id)arg1;
+- (id)domp_derivativeDOMElementsBySelector;
+- (id)domp_prototype;
+- (void)domp_setDerivativeDOMElementsBySelector:(id)arg1;
+- (void)domp_setPrototype:(id)arg1;
 - (id)dse_appDataSet;
+- (id)dse_filteredJSDataItemIndexes;
 - (id)dse_jsDataItems;
 - (void)dse_setAppDataSet:(id)arg1;
+- (void)dse_setFilteredJSDataItemIndexes:(id)arg1;
 - (void)dse_setJSDataItems:(id)arg1;
-- (void)dse_setUsedPrototypesByType:(id)arg1;
-- (id)dse_usedPrototypesByType;
+- (void)dse_setUsedPrototypeMappingsByType:(id)arg1;
+- (id)dse_usedPrototypeMappingsByType;
 - (id)getAttribute:(id)arg1;
 - (id)getElementsByTagName:(id)arg1;
 - (BOOL)hasAttribute:(id)arg1;
 - (BOOL)hasAttributes;
+- (id)ik_templateElementCSSSelectorList;
+- (id)ik_templateName;
 - (void)insertAdjacentHTML:(id)arg1:(id)arg2;
 - (id)nodeName;
 - (long long)nodeType;
@@ -74,6 +82,16 @@
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setTextContent:(id)arg1;
 - (id)textContent;
+- (BOOL)ve_arePrototypesUpdated;
+- (id)ve_filteredJSDataItemIndexes;
+- (id)ve_jsDataItems;
+- (id)ve_prototypesID;
+- (void)ve_setFilteredJSDataItemIndexes:(id)arg1;
+- (void)ve_setJSDataItems:(id)arg1;
+- (void)ve_setPrototypesID:(id)arg1;
+- (void)ve_setPrototypesUpdated:(BOOL)arg1;
+- (void)ve_setUsedPrototypesByType:(id)arg1;
+- (id)ve_usedPrototypesByType;
 
 @end
 

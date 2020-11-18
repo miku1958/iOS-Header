@@ -9,7 +9,8 @@
 @class AXEventRepresentation, NSArray, NSString;
 
 @protocol AXBackBoardServerInstanceDelegate <NSObject>
-- (int)accessibilityUIPid;
+- (int)accessibilityAssistiveTouchPid;
+- (int)accessibilityUIServerPid;
 - (unsigned int)contextIdForDisplayPoint:(struct CGPoint)arg1;
 - (unsigned int)contextIdHosterForContextId:(unsigned int)arg1;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
@@ -17,7 +18,7 @@
 - (void)enableEventTap:(BOOL)arg1 forApplication:(int)arg2;
 - (void)postEvent:(AXEventRepresentation *)arg1 systemEvent:(BOOL)arg2 afterNamedTap:(NSString *)arg3 namedTaps:(NSArray *)arg4;
 - (void)registerEventListener:(BOOL)arg1;
-- (void)setAccessibilityUIPid:(int)arg1;
+- (void)setAccessibilityUIServerPid:(int)arg1;
 - (void)setAssistiveTouchPid:(int)arg1;
 - (void)setCapsLockLightOn:(BOOL)arg1;
 - (void)setDisableSystemGestureRecognitionInEvents:(BOOL)arg1;

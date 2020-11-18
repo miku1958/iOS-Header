@@ -12,6 +12,7 @@
 @interface MPCPlaybackIntent : NSObject
 {
     id<MPCPlaybackIntentDataSource> _resolvedTracklistDataSource;
+    BOOL _preventAutomaticPlayback;
     NSString *_localizedTitle;
     long long _tracklistSource;
     id<NSSecureCoding> _tracklistToken;
@@ -23,11 +24,13 @@
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
+@property (nonatomic) BOOL preventAutomaticPlayback; // @synthesize preventAutomaticPlayback=_preventAutomaticPlayback;
 @property (nonatomic) long long shuffleMode; // @synthesize shuffleMode=_shuffleMode;
 @property (readonly, nonatomic) id<MPCPlaybackIntentDataSource> tracklistDataSource;
 @property (nonatomic) long long tracklistSource; // @synthesize tracklistSource=_tracklistSource;
 @property (strong, nonatomic) id<NSSecureCoding> tracklistToken; // @synthesize tracklistToken=_tracklistToken;
 
++ (id)intentFromQueueDescriptor:(id)arg1;
 + (id)radioPlaybackIntentFromAlbum:(id)arg1;
 + (id)radioPlaybackIntentFromArtist:(id)arg1;
 + (id)radioPlaybackIntentFromSong:(id)arg1;

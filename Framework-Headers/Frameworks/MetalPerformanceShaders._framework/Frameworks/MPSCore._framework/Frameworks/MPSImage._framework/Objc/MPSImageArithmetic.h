@@ -11,12 +11,16 @@
     float _primaryScale;
     float _secondaryScale;
     float _bias;
+    float _minimumValue;
+    float _maximumValue;
     CDStruct_da2e99ad _primaryStrideInPixels;
     CDStruct_da2e99ad _secondaryStrideInPixels;
     int _arithmeticType;
 }
 
 @property (nonatomic) float bias; // @synthesize bias=_bias;
+@property (nonatomic) float maximumValue; // @synthesize maximumValue=_maximumValue;
+@property (nonatomic) float minimumValue; // @synthesize minimumValue=_minimumValue;
 @property (nonatomic) float primaryScale; // @synthesize primaryScale=_primaryScale;
 @property (nonatomic) CDStruct_14f26992 primaryStrideInPixels; // @synthesize primaryStrideInPixels=_primaryStrideInPixels;
 @property (nonatomic) float secondaryScale; // @synthesize secondaryScale=_secondaryScale;

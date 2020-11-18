@@ -24,9 +24,9 @@
 @property (nonatomic) BOOL multipleBuiltInDevices; // @synthesize multipleBuiltInDevices=_multipleBuiltInDevices;
 @property (strong, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

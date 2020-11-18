@@ -37,8 +37,11 @@
 @property (copy, nonatomic) CDUnknownBlockType secureElementSessionPrelude;
 @property (readonly, nonatomic) unsigned long long supportedTechnologies;
 
++ (BOOL)hardwareSupportsExpressMode:(id)arg1;
 + (id)primarySecureElementIdentifier;
 + (id)secureElementIdentifiers;
++ (BOOL)supportsExpressMode:(id)arg1;
++ (BOOL)supportsExpressMode:(id)arg1 byHardware:(BOOL *)arg2;
 - (void).cxx_destruct;
 - (void)SEPPairingInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)allAppletsWithCompletion:(CDUnknownBlockType)arg1;

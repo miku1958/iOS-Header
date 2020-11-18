@@ -6,14 +6,20 @@
 
 #import <Silex/SXJSONObject.h>
 
+#import <Silex/SXComponentLayout-Protocol.h>
+
+@class NSString;
 @protocol SXEdgeSpacing;
 
-@interface SXComponentLayout : SXJSONObject
+@interface SXComponentLayout : SXJSONObject <SXComponentLayout>
 {
 }
 
 @property (readonly, nonatomic) struct _NSRange columnRange; // @dynamic columnRange;
 @property (readonly, nonatomic) struct _SXComponentContentInset contentInset; // @dynamic contentInset;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long horizontalContentAlignment; // @dynamic horizontalContentAlignment;
 @property (readonly, nonatomic) unsigned long long ignoreDocumentGutter; // @dynamic ignoreDocumentGutter;
 @property (readonly, nonatomic) unsigned long long ignoreDocumentMargin; // @dynamic ignoreDocumentMargin;
@@ -21,6 +27,7 @@
 @property (readonly, nonatomic) struct _SXConvertibleValue maximumContentWidth; // @dynamic maximumContentWidth;
 @property (readonly, nonatomic) struct _SXConvertibleValue minimumHeight; // @dynamic minimumHeight;
 @property (readonly, nonatomic) struct _SXConvertibleValue suggestedHeight; // @dynamic suggestedHeight;
+@property (readonly) Class superclass;
 
 + (Class)classForProtocolProperty:(id)arg1 withValue:(id)arg2;
 - (unsigned long long)horizontalContentAlignmentWithValue:(id)arg1 withType:(int)arg2;

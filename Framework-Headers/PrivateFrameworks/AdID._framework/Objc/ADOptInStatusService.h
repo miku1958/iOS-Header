@@ -7,12 +7,11 @@
 #import <AdCore/ADSingleton.h>
 
 #import <AdID/ADOptInStatus_XPC-Protocol.h>
-#import <AdID/BackgroundTaskDelegate-Protocol.h>
 #import <AdID/NSXPCListenerDelegate-Protocol.h>
 
 @class NSString, NSXPCListener;
 
-@interface ADOptInStatusService : ADSingleton <NSXPCListenerDelegate, ADOptInStatus_XPC, BackgroundTaskDelegate>
+@interface ADOptInStatusService : ADSingleton <NSXPCListenerDelegate, ADOptInStatus_XPC>
 {
     BOOL _requestInFlight;
     NSXPCListener *_listener;
@@ -29,8 +28,6 @@
 - (void).cxx_destruct;
 - (void)advertisingIdentifierChanged:(CDUnknownBlockType)arg1;
 - (void)callOptInStatusCompletionHandler:(long long)arg1 refreshWeakToken:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)checkOnTask:(id)arg1 activity:(id)arg2;
-- (void)doRunTask;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (long long)optInStatusFromRecord:(id)arg1;
@@ -38,8 +35,6 @@
 - (void)reconcileAndUpdateBeforeResponding:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshOptInStatusRefreshingWeakToken:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestOptInStatusFromJingle:(CDUnknownBlockType)arg1;
-- (BOOL)runTask:(id)arg1;
-- (void)scheduleDeferredLATStatusChange:(BOOL)arg1;
 - (void)setOptInStatus:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

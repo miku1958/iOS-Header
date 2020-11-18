@@ -6,12 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@protocol NSSNewsAnalyticsSessionManager, NSSNewsAnalyticsUserIDProvider;
+
 @interface NSSNewsAnalyticsEventAnnotator : NSObject
 {
+    id<NSSNewsAnalyticsSessionManager> _sessionManager;
+    id<NSSNewsAnalyticsUserIDProvider> _userIDProvider;
 }
 
+@property (readonly, weak, nonatomic) id<NSSNewsAnalyticsSessionManager> sessionManager; // @synthesize sessionManager=_sessionManager;
+@property (readonly, nonatomic) id<NSSNewsAnalyticsUserIDProvider> userIDProvider; // @synthesize userIDProvider=_userIDProvider;
+
+- (void).cxx_destruct;
 - (void)annotateEvent:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)init;
+- (id)initWithSessionManager:(id)arg1 userIDProvider:(id)arg2;
 
 @end
 

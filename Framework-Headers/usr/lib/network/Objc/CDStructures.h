@@ -106,7 +106,8 @@ struct netcore_stats_tcp_statistics_report {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :6;
+    unsigned int :1;
+    unsigned int :5;
     unsigned char _field37[6];
 };
 

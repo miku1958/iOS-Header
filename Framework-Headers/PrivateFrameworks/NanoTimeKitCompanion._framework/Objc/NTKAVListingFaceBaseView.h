@@ -45,6 +45,7 @@
 - (void)_cancelPauseLockout;
 - (BOOL)_changeCurrentListing;
 - (void)_cleanupAfterOrb:(BOOL)arg1;
+- (void)_complicationFlickerWorkaroundAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
 - (id)_curtainView;
 - (BOOL)_curtainViewVisible;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -72,6 +73,7 @@
 - (void)_reset;
 - (void)_resetVideoForListing;
 - (void)_selectDefaultListing;
+- (BOOL)_shouldPlayVideoOnScreenWake;
 - (void)_showCurtainView;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_timeLabelUsesLegibility;

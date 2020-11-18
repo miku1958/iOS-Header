@@ -10,19 +10,23 @@
 
 @interface WBSTouchIconRequest : WBSSiteMetadataRequest
 {
+    BOOL _iconGenerationEnabled;
     NSString *_monogramTitle;
     struct CGSize _minimumIconSize;
     struct CGSize _maximumIconSize;
 }
 
+@property (readonly, nonatomic, getter=isIconGenerationEnabled) BOOL iconGenerationEnabled; // @synthesize iconGenerationEnabled=_iconGenerationEnabled;
 @property (readonly, nonatomic) struct CGSize maximumIconSize; // @synthesize maximumIconSize=_maximumIconSize;
 @property (readonly, nonatomic) struct CGSize minimumIconSize; // @synthesize minimumIconSize=_minimumIconSize;
 @property (readonly, copy, nonatomic) NSString *monogramTitle; // @synthesize monogramTitle=_monogramTitle;
 
 + (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4;
++ (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(BOOL)arg5;
 - (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4;
+- (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

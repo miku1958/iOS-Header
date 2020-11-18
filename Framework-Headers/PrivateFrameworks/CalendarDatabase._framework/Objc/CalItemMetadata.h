@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-#import <CalendarDatabase/NSCoding-Protocol.h>
+#import <CalendarDatabase/NSSecureCoding-Protocol.h>
 
 @class NSDictionary;
 
-@interface CalItemMetadata : NSObject <NSCoding>
+@interface CalItemMetadata : NSObject <NSSecureCoding>
 {
     NSDictionary *_x_props;
     int _classification;
@@ -19,8 +19,10 @@
 @property int classification; // @synthesize classification=_classification;
 @property (strong) NSDictionary *x_props; // @synthesize x_props=_x_props;
 
++ (id)_whitelistedClassesForSecureCoding;
 + (id)metadataWithData:(id)arg1;
 + (id)metadataWithICSComponent:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToComponent:(id)arg1;
 - (id)dataRepresentationWithExistingMetaData:(id)arg1;

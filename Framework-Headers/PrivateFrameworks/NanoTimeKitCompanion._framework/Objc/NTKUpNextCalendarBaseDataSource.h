@@ -18,7 +18,7 @@
 + (id)_pillImage;
 + (id)_tomorrowElementIdentifier;
 + (id)_upNextElementContentForForTitle:(id)arg1 location:(id)arg2 organizer:(id)arg3 calendarColor:(id)arg4 eventInterval:(id)arg5 isAllDay:(BOOL)arg6;
-+ (id)_upNextElementForTimedEventWithTitle:(id)arg1 location:(id)arg2 organizer:(id)arg3 calendarColor:(id)arg4 eventInterval:(id)arg5 isAllDay:(BOOL)arg6 irrelevanceDate:(id)arg7 inSection:(unsigned long long)arg8 eventIdentifier:(id)arg9 eventURL:(id)arg10;
++ (id)_upNextElementForTimedEventWithTitle:(id)arg1 location:(id)arg2 organizer:(id)arg3 calendarColor:(id)arg4 eventInterval:(id)arg5 isAllDay:(BOOL)arg6 irrelevanceDate:(id)arg7 inSection:(unsigned long long)arg8 eventIdentifier:(id)arg9 eventURL:(id)arg10 logHeader:(id)arg11;
 + (id)bundleIdentifier;
 + (void)initialize;
 + (id)sampleContentElements;

@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <AccessibilityUtilities/NSCoding-Protocol.h>
+#import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 
-@interface AXReplayableGesture : NSObject <NSCoding>
+@interface AXReplayableGesture : NSObject <NSSecureCoding>
 {
     NSArray *_allEvents;
     BOOL _arePointsDeviceRelative;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)tapGestureForInterfaceOrientedPoint:(struct CGPoint)arg1;
 - (void).cxx_destruct;
 - (BOOL)arePointsDeviceRelative;

@@ -83,11 +83,11 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
+- (void).cxx_destruct;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -260,7 +260,7 @@
 - (id)pathToStaticDictionary;
 - (long long)performHitTestForTouchEvent:(id)arg1 keyboardState:(id)arg2;
 - (unsigned long long)phraseBoundary;
-- (id)phraseCandidateCompletedByWord:(const struct String *)arg1 allowNoSuggest:(BOOL)arg2;
+- (id)phraseCandidateCompletedByWord:(const struct String *)arg1 allowNoSuggest:(BOOL)arg2 forAutocorrection:(BOOL)arg3;
 - (id)phraseDictionaryPathForInputMode:(id)arg1;
 - (const struct USet *)precomposedCharacterSet;
 - (id)predictionCandidates:(unsigned long long)arg1;

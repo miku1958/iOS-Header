@@ -22,6 +22,7 @@
 
 + (id)_displayableErrorForSPStatusCode:(unsigned long long)arg1 seldError:(id)arg2;
 + (id)debugDescriptionForStatus:(unsigned long long)arg1;
++ (BOOL)isSupported;
 - (void).cxx_destruct;
 - (void)_cancelCardIngestion;
 - (void)_ingestCardWithCardSessionToken:(id)arg1 completion:(CDUnknownBlockType)arg2;

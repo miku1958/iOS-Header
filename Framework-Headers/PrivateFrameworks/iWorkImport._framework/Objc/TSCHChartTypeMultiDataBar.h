@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (Class)presetImagerClass;
 - (Class)repClass;
 - (id)userInterfaceName;
+- (long long)userInterfaceTag;
 
 @end
 

@@ -12,8 +12,9 @@
 @interface MRNotificationClient : NSObject
 {
     unsigned long long _registeredNowPlayingObservers;
-    NSObject<OS_dispatch_queue> *_nowPlayingNotificationsQueue;
+    NSObject<OS_dispatch_queue> *_customNotificationsQueue;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
     NSOrderedSet *_nowPlayingNotifications;
     NSOrderedSet *_routesChangedNotifications;
     NSOrderedSet *_volumeControlNotifications;
@@ -22,7 +23,6 @@
     NSOrderedSet *_supportedCommandsNotifications;
     NSOrderedSet *_voiceInputNotifications;
     NSOrderedSet *_errorNotifications;
-    CDUnknownBlockType _notificationCallback;
     BOOL _receivesExternalScreenTypeChangedNotifications;
     BOOL _receivesSupportedCommandsNotifications;
     BOOL _receivesRoutesChangedNotifications;
@@ -32,8 +32,7 @@
     BOOL _receivesVoiceInputRecordingStateNotifications;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType notificationCallback;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *nowPlayingNotificationQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue;
 @property (nonatomic) BOOL receivesExternalScreenTypeChangedNotifications; // @synthesize receivesExternalScreenTypeChangedNotifications=_receivesExternalScreenTypeChangedNotifications;
 @property (nonatomic) BOOL receivesOriginChangedNotifications; // @synthesize receivesOriginChangedNotifications=_receivesOriginChangedNotifications;
 @property (nonatomic) BOOL receivesPlaybackErrorNotifications; // @synthesize receivesPlaybackErrorNotifications=_receivesPlaybackErrorNotifications;
@@ -44,10 +43,12 @@
 @property (readonly, nonatomic, getter=isRegisteredForNowPlayingNotifications) BOOL registeredForNowPlayingNotifications;
 
 + (id)nowPlayingNotifications;
-- (void)dealloc;
-- (id)initWithNotificationCallback:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
+- (BOOL)_postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (id)init;
 - (BOOL)postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;
 - (void)registerForNowPlayingNotificationsWithQueue:(id)arg1;
+- (void)registerForNowPlayingNotificationsWithQueue:(id)arg1 force:(BOOL)arg2;
 - (void)unregisterForNowPlayingNotifications;
 
 @end

@@ -12,12 +12,12 @@
 
 @interface ADServer : ADSingleton <NSURLSessionDelegate>
 {
+    int _configurationExpirationTime;
     NSDictionary *_configurations;
-    double _configurationExpirationTime;
     NSURLSession *_session;
 }
 
-@property double configurationExpirationTime; // @synthesize configurationExpirationTime=_configurationExpirationTime;
+@property int configurationExpirationTime; // @synthesize configurationExpirationTime=_configurationExpirationTime;
 @property (strong) NSDictionary *configurations; // @synthesize configurations=_configurations;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

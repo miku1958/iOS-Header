@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface UISUIActivityConfiguration : NSObject <NSSecureCoding>
 {
     BOOL _activitySupportsPromiseURLs;
+    BOOL _appIsDocumentTypeOwner;
     NSUUID *_activityUUID;
     long long _activityCategory;
     NSString *_activityType;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *activityTitle; // @dynamic activityTitle;
 @property (readonly, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
 @property (readonly, nonatomic) NSUUID *activityUUID; // @synthesize activityUUID=_activityUUID;
+@property (readonly, nonatomic) BOOL appIsDocumentTypeOwner; // @synthesize appIsDocumentTypeOwner=_appIsDocumentTypeOwner;
 @property (readonly, nonatomic) NSString *defaultActivityTitle; // @synthesize defaultActivityTitle=_defaultActivityTitle;
 @property (readonly, nonatomic) long long defaultSortGroup; // @synthesize defaultSortGroup=_defaultSortGroup;
 @property (nonatomic) long long encodingType; // @synthesize encodingType=_encodingType;
@@ -53,13 +55,13 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_collectPropertiesFromAttributesOfUnderlyingActivity:(id)arg1;
+- (void)_decodeBasicPropertiesWithCoder:(id)arg1;
+- (void)_decodeForEncodingByClassNameWithCoder:(id)arg1;
+- (void)_decodeForEncodingByPropertiesWithCoder:(id)arg1;
+- (void)_encodeBasicPropertiesWithCoder:(id)arg1;
 - (void)_encodeByClassNameWithCoder:(id)arg1;
 - (void)_encodeByPropertiesWithCoder:(id)arg1;
-- (void)_encodeOverridePropertiesWithCoder:(id)arg1;
 - (id)_init;
-- (void)_initByLoadingClassNameWithCoder:(id)arg1;
-- (void)_initByLoadingOverridePropertiesWithCoder:(id)arg1;
-- (void)_initByLoadingPropertiesWithCoder:(id)arg1;
 - (void)_validateProperties;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithActivity:(id)arg1 encodingType:(long long)arg2;

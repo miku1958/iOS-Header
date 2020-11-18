@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSDMutableContainerRep-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString;
+@class NSArray, NSMutableArray, NSObject, NSString;
 @protocol TSDContainerInfo, TSDMutableContainerInfo;
 
 __attribute__((visibility("hidden")))
@@ -17,25 +17,18 @@ __attribute__((visibility("hidden")))
     NSMutableArray *mChildReps;
 }
 
+@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<TSDMutableContainerInfo> *mutableContainerInfo;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *visibleChildLayouts;
 
-- (void)addAdditionalChildLayersToArray:(id)arg1;
+- (void).cxx_destruct;
 - (void)addChildRep:(id)arg1;
-- (BOOL)canSelectChildRep:(id)arg1;
-- (id)childReps;
-- (id)childRepsForHitTesting;
-- (void)dealloc;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (id)hitRep:(struct CGPoint)arg1;
-- (id)hitRep:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
-- (id)hitRepChrome:(struct CGPoint)arg1;
-- (id)hitRepChrome:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
-- (id)hitReps:(struct CGPoint)arg1 withSlopBlock:(CDUnknownBlockType)arg2;
 - (id)initWithLayout:(id)arg1 canvasView:(id)arg2;
 - (void)insertChildRep:(id)arg1 above:(id)arg2;
 - (void)insertChildRep:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -48,10 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
 - (void)removeChildRep:(id)arg1;
 - (void)replaceChildRep:(id)arg1 with:(id)arg2;
-- (void)selectChildRep:(id)arg1 extendingSelection:(BOOL)arg2;
 - (void)setChildReps:(id)arg1;
 - (void)updateChildrenFromLayout;
-- (id)visibleChildLayouts;
 
 @end
 

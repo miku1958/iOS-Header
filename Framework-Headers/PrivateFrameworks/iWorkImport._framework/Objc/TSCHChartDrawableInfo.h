@@ -18,7 +18,7 @@
 #import <iWorkImport/TSSPresetSource-Protocol.h>
 #import <iWorkImport/TSSStyleClient-Protocol.h>
 
-@class NSString, TSCHChartInfo, TSCHChunkManager, TSPObject;
+@class NSString, TSCHChartDrawableInfoProxy, TSCHChartInfo, TSCHChunkManager, TSPObject;
 @protocol TSCHMediatorProvider;
 
 __attribute__((visibility("hidden")))
@@ -27,9 +27,11 @@ __attribute__((visibility("hidden")))
     TSCHChartInfo *mChart;
     TSPObject<TSCHMediatorProvider> *mMediatorPersistentObject;
     TSCHChunkManager *mChunkManager;
+    TSCHChartDrawableInfoProxy *_chartDrawableInfoProxy;
 }
 
 @property (readonly, nonatomic) TSCHChartInfo *chart; // @synthesize chart=mChart;
+@property (weak, nonatomic) TSCHChartDrawableInfoProxy *chartDrawableInfoProxy; // @synthesize chartDrawableInfoProxy=_chartDrawableInfoProxy;
 @property (readonly, nonatomic) TSCHChunkManager *chunkManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
 + (BOOL)needsObjectUUID;
 + (id)presetKinds;
+- (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)animationFilters;
@@ -59,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
 - (int)elementKind;
+- (void)finalizeDataOnDeepCopyBeforeSerializingForDragAndDrop;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (id)geometry;
 - (BOOL)hasBackgroundLayerForPieChart;

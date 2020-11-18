@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (struct CGRect)boundsForStandardKnobs;
-- (id)childSearchTargets;
 - (unsigned long long)columnCount;
 - (id)commandToClampModelToLayoutSize;
 - (id)computeLayoutGeometry;
@@ -38,14 +37,13 @@ __attribute__((visibility("hidden")))
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (BOOL)isDraggable;
 - (id)layoutMargins;
-- (void)layoutSearchForString:(id)arg1 options:(unsigned long long)arg2 hitBlock:(CDUnknownBlockType)arg3;
 - (double)maxAutoGrowHeightForTextLayout:(id)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;
 - (Class)repClassForTextLayout:(id)arg1;
 - (BOOL)shrinkTextToFit;
 - (BOOL)textLayoutShouldWrapAroundExternalDrawables:(id)arg1;
-- (void)transferLayoutGeometryToInfo:(id)arg1;
+- (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 

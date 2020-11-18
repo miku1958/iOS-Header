@@ -8,41 +8,56 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSMutableArray, NSString;
 
 @interface PKProtobufPaymentMerchantSession : PBCodable <NSCopying>
 {
     unsigned long long _epochTimestamp;
+    unsigned long long _expiresAt;
     NSString *_displayName;
     NSString *_domain;
+    NSString *_initiative;
+    NSString *_initiativeContext;
     NSString *_merchantIdentifier;
     NSString *_nonce;
     NSString *_retryNonce;
     NSString *_sessionIdentifier;
     NSData *_signature;
+    NSMutableArray *_signedFields;
     struct {
         unsigned int epochTimestamp:1;
+        unsigned int expiresAt:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (nonatomic) unsigned long long epochTimestamp; // @synthesize epochTimestamp=_epochTimestamp;
+@property (nonatomic) unsigned long long expiresAt; // @synthesize expiresAt=_expiresAt;
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (readonly, nonatomic) BOOL hasDomain;
 @property (nonatomic) BOOL hasEpochTimestamp;
+@property (nonatomic) BOOL hasExpiresAt;
+@property (readonly, nonatomic) BOOL hasInitiative;
+@property (readonly, nonatomic) BOOL hasInitiativeContext;
 @property (readonly, nonatomic) BOOL hasMerchantIdentifier;
 @property (readonly, nonatomic) BOOL hasNonce;
 @property (readonly, nonatomic) BOOL hasRetryNonce;
 @property (readonly, nonatomic) BOOL hasSessionIdentifier;
 @property (readonly, nonatomic) BOOL hasSignature;
+@property (strong, nonatomic) NSString *initiative; // @synthesize initiative=_initiative;
+@property (strong, nonatomic) NSString *initiativeContext; // @synthesize initiativeContext=_initiativeContext;
 @property (strong, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property (strong, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
 @property (strong, nonatomic) NSString *retryNonce; // @synthesize retryNonce=_retryNonce;
 @property (strong, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (strong, nonatomic) NSData *signature; // @synthesize signature=_signature;
+@property (strong, nonatomic) NSMutableArray *signedFields; // @synthesize signedFields=_signedFields;
 
++ (Class)signedFieldsType;
 - (void).cxx_destruct;
+- (void)addSignedFields:(id)arg1;
+- (void)clearSignedFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -51,6 +66,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)signedFieldsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)signedFieldsCount;
 - (void)writeTo:(id)arg1;
 
 @end

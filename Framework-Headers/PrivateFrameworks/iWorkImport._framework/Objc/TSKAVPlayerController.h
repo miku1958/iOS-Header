@@ -6,13 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-#import <iWorkImport/TSKMediaPlayerController-Protocol.h>
+#import <iWorkImport/TSKLayerMediaPlayerController-Protocol.h>
 
-@class AVPlayer, NSString;
+@class AVPlayer, NSMutableSet, NSString;
 @protocol TSKMediaPlayerControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSKAVPlayerController : NSObject <TSKMediaPlayerController>
+@interface TSKAVPlayerController : NSObject <TSKLayerMediaPlayerController>
 {
     AVPlayer *mPlayer;
     id<TSKMediaPlayerControllerDelegate> mDelegate;
@@ -26,31 +26,14 @@ __attribute__((visibility("hidden")))
     BOOL mFastReversing;
     BOOL mFastForwarding;
     BOOL mIsObservingStatus;
+    NSMutableSet *mObservationTokens;
 }
 
-@property (readonly, nonatomic) double absoluteCurrentTime;
-@property (readonly, nonatomic) double absoluteDuration;
-@property (readonly, nonatomic) BOOL canFastForward;
-@property (readonly, nonatomic) BOOL canFastReverse;
-@property (readonly, nonatomic) BOOL canPlay; // @synthesize canPlay=mCanPlay;
-@property (readonly, nonatomic) double currentTime;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<TSKMediaPlayerControllerDelegate> delegate; // @synthesize delegate=mDelegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) double duration;
-@property (nonatomic) double endTime;
-@property (nonatomic, getter=isFastForwarding) BOOL fastForwarding; // @synthesize fastForwarding=mFastForwarding;
-@property (nonatomic, getter=isFastReversing) BOOL fastReversing; // @synthesize fastReversing=mFastReversing;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) AVPlayer *player; // @synthesize player=mPlayer;
-@property (nonatomic, getter=isPlaying) BOOL playing; // @synthesize playing=mPlaying;
-@property (nonatomic) float rate;
-@property (readonly, nonatomic) double remainingTime;
-@property (nonatomic) long long repeatMode; // @synthesize repeatMode=mRepeatMode;
-@property (readonly, nonatomic, getter=isScrubbing) BOOL scrubbing;
-@property (nonatomic) double startTime;
 @property (readonly) Class superclass;
-@property (nonatomic) float volume; // @synthesize volume=mVolume;
 
 + (BOOL)automaticallyNotifiesObserversOfEndTime;
 + (BOOL)automaticallyNotifiesObserversOfRate;
@@ -62,13 +45,27 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingEndTime;
 + (id)keyPathsForValuesAffectingRate;
 + (id)keyPathsForValuesAffectingStartTime;
+- (double)absoluteCurrentTime;
+- (double)absoluteDuration;
+- (void)addObservationToken:(id)arg1;
 - (id)addPeriodicTimeObserverForInterval:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (void)beginScrubbing;
+- (BOOL)canFastForward;
+- (BOOL)canFastReverse;
+- (BOOL)canPlay;
 - (void)cancelPendingSeeks;
+- (double)currentTime;
 - (void)dealloc;
+- (id)delegate;
+- (double)duration;
 - (void)endScrubbing;
+- (double)endTime;
 - (id)init;
 - (id)initWithPlayer:(id)arg1 delegate:(id)arg2 streaming:(BOOL)arg3;
+- (BOOL)isFastForwarding;
+- (BOOL)isFastReversing;
+- (BOOL)isPlaying;
+- (BOOL)isScrubbing;
 - (id)newLayer;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)p_applyVolumeToPlayerItem;
@@ -78,15 +75,29 @@ __attribute__((visibility("hidden")))
 - (void)p_playerItemDidJumpTime:(id)arg1;
 - (void)p_playerItemDidPlayToEndTime:(id)arg1;
 - (void)playerItemDidPlayToEndTimeAtRate:(float)arg1;
+- (float)rate;
+- (double)remainingTime;
+- (void)removeObservationToken:(id)arg1;
 - (void)removePeriodicTimeObserver:(id)arg1;
+- (long long)repeatMode;
 - (void)scrubToTime:(double)arg1 withTolerance:(double)arg2;
 - (void)scrubToTime:(double)arg1 withTolerance:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)seekBackwardByOneFrame;
 - (void)seekForwardByOneFrame;
 - (void)seekToBeginning;
 - (void)seekToEnd;
+- (void)setEndTime:(double)arg1;
+- (void)setFastForwarding:(BOOL)arg1;
+- (void)setFastReversing:(BOOL)arg1;
+- (void)setPlaying:(BOOL)arg1;
+- (void)setRate:(float)arg1;
+- (void)setRepeatMode:(long long)arg1;
+- (void)setStartTime:(double)arg1;
+- (void)setVolume:(float)arg1;
+- (double)startTime;
 - (void)stopSynchronously;
 - (void)teardown;
+- (float)volume;
 
 @end
 

@@ -56,6 +56,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (void)_handleConfiguredQueueFeeder:(id)arg1 fromPlaybackContext:(id)arg2;
@@ -115,7 +116,7 @@
 - (long long)playlistIndexOfItemIdentifier:(id)arg1;
 - (long long)playlistIndexOfQueueIdentifier:(id)arg1 inPlaylistFeeder:(id)arg2;
 - (long long)playlistIndexWithDelta:(long long)arg1 fromIndex:(long long)arg2 ignoreElapsedTime:(BOOL)arg3 didReachEnd:(BOOL *)arg4;
-- (unsigned long long)playlistItemCount;
+- (long long)playlistItemCount;
 - (BOOL)preventsHardQueueModificationsForItem:(id)arg1;
 - (id)queueCoordinator:(id)arg1 itemToFollowItem:(id)arg2;
 - (void)queueFeeder:(id)arg1 didChangeContentsWithPreferredStartIndex:(unsigned long long)arg2 error:(id)arg3;
@@ -128,6 +129,7 @@
 - (BOOL)setPlaylistFeeder:(id)arg1 startIndex:(long long)arg2 keepPlaying:(BOOL)arg3;
 - (void)setRepeatMode:(long long)arg1;
 - (BOOL)supportsAddToQueue;
+- (id)uniqueIdentifier;
 - (long long)upNextItemCount;
 - (void)updateLocationDependentPropertiesForItem:(id)arg1;
 

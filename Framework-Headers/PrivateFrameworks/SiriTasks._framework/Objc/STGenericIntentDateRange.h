@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SiriTasks/NSCoding-Protocol.h>
+#import <SiriTasks/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface STGenericIntentDateRange : NSObject <NSCoding>
+@interface STGenericIntentDateRange : NSObject <NSSecureCoding>
 {
     NSString *_name;
     NSDate *_startDate;
@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

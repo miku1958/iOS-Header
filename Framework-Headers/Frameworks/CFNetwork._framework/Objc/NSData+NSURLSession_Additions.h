@@ -8,5 +8,6 @@
 
 @interface NSData (NSURLSession_Additions)
 - (BOOL)_isSafeResumeDataForBackgroundDownload;
+- (id)_requestFromResumeData;
 @end
 

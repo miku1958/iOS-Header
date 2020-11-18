@@ -11,17 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface KNSlideCollectionSelection : TSKSelection
 {
-    NSOrderedSet *mSlideNodes;
-    KNSlideNode *mSlideNodeToEdit;
+    NSOrderedSet *_slideNodes;
+    KNSlideNode *_slideNodeToEdit;
 }
 
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
-@property (readonly, nonatomic) KNSlideNode *slideNodeToEdit; // @synthesize slideNodeToEdit=mSlideNodeToEdit;
-@property (readonly, nonatomic) NSOrderedSet *slideNodes; // @synthesize slideNodes=mSlideNodes;
+@property (readonly, nonatomic) KNSlideNode *slideNodeToEdit; // @synthesize slideNodeToEdit=_slideNodeToEdit;
+@property (readonly, nonatomic) NSOrderedSet *slideNodes; // @synthesize slideNodes=_slideNodes;
 
 + (Class)archivedSelectionClass;
+- (void).cxx_destruct;
 - (id)UUIDDescription;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

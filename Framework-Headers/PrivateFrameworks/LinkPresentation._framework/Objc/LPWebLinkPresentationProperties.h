@@ -8,7 +8,7 @@
 
 #import <LinkPresentation/LPLinkPresentationPropertyProvider-Protocol.h>
 
-@class LPCaptionBarPresentationProperties, LPImage, LPVideo, LPiTunesPlaybackInformation, NSString, UIColor;
+@class LPCaptionBarPresentationProperties, LPImage, LPVideo, LPiTunesPlaybackInformation, NSNumber, NSString, UIColor;
 
 @interface LPWebLinkPresentationProperties : NSObject <LPLinkPresentationPropertyProvider>
 {
@@ -21,6 +21,7 @@
     LPImage *_image;
     LPVideo *_video;
     UIColor *_backgroundColor;
+    NSNumber *_minimumHeight;
     LPiTunesPlaybackInformation *_iTunesPlaybackInformation;
 }
 
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) LPImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) LPCaptionBarPresentationProperties *mediaBottomCaptionBar; // @synthesize mediaBottomCaptionBar=_mediaBottomCaptionBar;
 @property (strong, nonatomic) LPCaptionBarPresentationProperties *mediaTopCaptionBar; // @synthesize mediaTopCaptionBar=_mediaTopCaptionBar;
+@property (strong, nonatomic) NSNumber *minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property (nonatomic, getter=isPreliminary) BOOL preliminary; // @synthesize preliminary=_preliminary;
 @property (copy, nonatomic) NSString *quotedText; // @synthesize quotedText=_quotedText;
 @property (nonatomic) long long style; // @synthesize style=_style;

@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VK3DObjectSubTile : NSObject
 {
-    vector_fbcf581f _objectGroups;
+    vector_defea32f _objectGroups;
     GEOVectorTile *_modelTile;
     shared_ptr_a3c46825 _styleManager;
     VKSharedResources *_sharedResources;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) double contentScale; // @synthesize contentScale=_contentScale;
 @property (strong, nonatomic) GEOVectorTile *modelTile; // @synthesize modelTile=_modelTile;
-@property (readonly, nonatomic) vector_fbcf581f *objectGroups;
+@property (readonly, nonatomic) vector_defea32f *objectGroups;
 @property (strong, nonatomic) VKSharedResources *sharedResources; // @synthesize sharedResources=_sharedResources;
 @property (nonatomic) shared_ptr_a3c46825 styleManager; // @synthesize styleManager=_styleManager;
 

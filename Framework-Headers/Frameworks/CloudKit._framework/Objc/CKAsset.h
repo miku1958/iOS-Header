@@ -44,6 +44,7 @@
     NSDate *_downloadURLExpiration;
     NSData *_assetKey;
     NSData *_wrappedAssetKey;
+    NSData *_clearAssetKey;
     NSData *_referenceSignature;
     NSString *_uploadReceipt;
     double _uploadReceiptExpiration;
@@ -66,6 +67,7 @@
 @property (copy, nonatomic) NSData *authRequest; // @synthesize authRequest=_authRequest;
 @property (copy, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property (copy, nonatomic) NSData *boundaryKey; // @synthesize boundaryKey=_boundaryKey;
+@property (strong, nonatomic) NSData *clearAssetKey; // @synthesize clearAssetKey=_clearAssetKey;
 @property (strong, nonatomic) NSFileHandle *clientOpenedFileHandle; // @synthesize clientOpenedFileHandle=_clientOpenedFileHandle;
 @property (strong, nonatomic) NSURL *contentBaseURL; // @synthesize contentBaseURL=_contentBaseURL;
 @property (readonly, copy) NSString *debugDescription;

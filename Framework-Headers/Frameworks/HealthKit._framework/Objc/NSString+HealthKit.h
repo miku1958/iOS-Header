@@ -7,9 +7,20 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (HealthKit)
++ (id)hk_randomStringOfLength:(long long)arg1;
+- (id)hk_MD2Hash;
+- (id)hk_MD4Hash;
+- (id)hk_MD5Hash;
+- (id)hk_SHA1Hash;
+- (id)hk_SHA224Hash;
+- (id)hk_SHA256Hash;
+- (id)hk_SHA384Hash;
+- (id)hk_SHA512Hash;
 - (long long)hk_compareBuildVersionWithString:(id)arg1;
 - (id)hk_copyNonEmptyString;
 - (BOOL)hk_isBase64;
+- (id)hk_stringByAppendingKeyPathComponent:(id)arg1;
+- (id)hk_stringByRemovingCharactersInSet:(id)arg1;
 - (id)hk_stripLeadingTrailingWhitespace;
 - (id)hk_trimWhitespaceAndNewlines;
 @end

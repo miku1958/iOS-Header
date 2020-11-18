@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (int)deprecated3DBevelEdgesSpecificProperty;
 - (int)deprecated3DShadowSpecificProperty;
 - (id)genericToSpecificPropertyMap;
-- (id)initialSceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_44ada6bf)arg2;
+- (id)initialSceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 - (BOOL)isHorizontal;
 - (int)labelOrientation;
 - (double)maxDepthRatio;

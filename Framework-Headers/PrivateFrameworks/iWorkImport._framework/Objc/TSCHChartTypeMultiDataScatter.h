@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (Class)repClass;
 - (BOOL)supportsSeriesStroke;
 - (id)userInterfaceName;
+- (long long)userInterfaceTag;
 
 @end
 

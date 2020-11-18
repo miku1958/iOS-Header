@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)needsObjectUUID;
 + (void)performUpgradeUsingBlock:(CDUnknownBlockType)arg1;
 + (id)tsp_deserializeFromData:(id)arg1 options:(id)arg2 context:(id)arg3 error:(id *)arg4;
-+ (id)tsp_deserializeFromURL:(id)arg1 options:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)tsp_deserializeFromURL:(id)arg1 options:(id)arg2 context:(id)arg3 isCrossDocumentPaste:(BOOL)arg4 isCrossAppPaste:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 + (BOOL)tsp_isTransientObjectIdentifier:(long long)arg1;
 - (void).cxx_destruct;
 - (void)commonInit;

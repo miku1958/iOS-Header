@@ -45,6 +45,7 @@
 - (void)_resetTextBadge;
 - (int)backgroundBlendModeForElementInRow:(long long)arg1 atIndex:(long long)arg2;
 - (id)backgroundImageForScorecardViewMaterial:(id)arg1;
+- (void)backgroundImageSizeDidChange:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)layoutWithElement:(id)arg1;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaMiningKit/NSCoding-Protocol.h>
-
 @class CLSInformant, CLSProfile, NSDictionary, NSString;
 
-@interface CLSClue : NSObject <NSCoding>
+@interface CLSClue : NSObject
 {
     BOOL _transient;
     NSString *_key;
@@ -39,18 +37,15 @@
 
 + (id)_clueWithValue:(id)arg1 forKey:(id)arg2;
 + (id)_clueWithValue:(id)arg1 forKey:(id)arg2 confidence:(double)arg3 relevance:(double)arg4;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_incrementVersionCount;
 - (long long)compare:(id)arg1;
 - (long long)compareScore:(id)arg1;
 - (id)description;
 - (double)doubleValue;
-- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)enumValue;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (long long)integerValue;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToClue:(id)arg1;

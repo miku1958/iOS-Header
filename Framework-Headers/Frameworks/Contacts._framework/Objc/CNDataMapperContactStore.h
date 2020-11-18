@@ -55,6 +55,7 @@
 - (id)init;
 - (id)initWithDataMapper:(id)arg1 environment:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
+- (id)initWithEnvironment:(id)arg1 managedConfiguration:(id)arg2;
 - (BOOL)isValidSaveRequest:(id)arg1 error:(id *)arg2;
 - (id)matchingDictionaryForContact:(id)arg1;
 - (id)meContactIdentifiers:(id *)arg1;

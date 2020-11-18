@@ -149,6 +149,7 @@ __attribute__((visibility("hidden")))
 - (void)startDownloadItemsAtURLs:(id)arg1 options:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toCleanShareSubitemsAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toCopyAvailableQuotaWithReply:(CDUnknownBlockType)arg2;
+- (void)startOperation:(id)arg1 toCopyDocumentURLForRecordID:(id)arg2 syncIfNeeded:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)startOperation:(id)arg1 toCopyEtagAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toCopyParticipantTokenAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toCopyShareInfoAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;

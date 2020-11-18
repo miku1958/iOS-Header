@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSString *property; // @synthesize property=_property;
 
 + (id)predicateWithProperty:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)SQLJoinClausesForClass:(Class)arg1;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;

@@ -57,6 +57,7 @@
 - (void)_addDiscoveredConferenceRooms:(id)arg1;
 - (void)_handleAvailabilityResults:(id)arg1 forOperation:(id)arg2;
 - (void)_processDirectorySearchResultSet:(id)arg1 forOperation:(id)arg2;
+- (void)_updateContactsSearchWithResults:(id)arg1 forToken:(id)arg2;
 - (void)addLocationToRecents:(id)arg1 addressString:(id)arg2;
 - (void)beginSearchForTerm:(id)arg1;
 - (void)cancelSearch;

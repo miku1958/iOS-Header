@@ -34,12 +34,14 @@
     struct LogCategory *_ucatCrypto;
     NSXPCConnection *_xpcCnx;
     unsigned char _deviceActionType;
+    BOOL _needsAWDL;
+    BOOL _needsKeyboard;
+    BOOL _needsNAN;
     BOOL _needsSetup;
     BOOL _overrideScreenOff;
     BOOL _pairSetupDisabled;
     BOOL _tlsEnabled;
     BOOL _hasProblem;
-    BOOL _needsKeyboard;
     BOOL _supportsAirPlayReceiver;
     BOOL _wakeDevice;
     BOOL _autoUnlockEnabled;
@@ -105,7 +107,9 @@
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *myAppleID; // @synthesize myAppleID=_myAppleID;
 @property (strong, nonatomic) CUAppleIDClient *myAppleIDInfoClient; // @synthesize myAppleIDInfoClient=_myAppleIDInfoClient;
+@property (nonatomic) BOOL needsAWDL; // @synthesize needsAWDL=_needsAWDL;
 @property (nonatomic) BOOL needsKeyboard; // @synthesize needsKeyboard=_needsKeyboard;
+@property (nonatomic) BOOL needsNAN; // @synthesize needsNAN=_needsNAN;
 @property (nonatomic) BOOL needsSetup; // @synthesize needsSetup=_needsSetup;
 @property (nonatomic) BOOL overrideScreenOff; // @synthesize overrideScreenOff=_overrideScreenOff;
 @property (copy, nonatomic) NSDictionary *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;

@@ -16,6 +16,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
 - (id)compositeName;
 - (void)dealloc;
 - (id)firstName;

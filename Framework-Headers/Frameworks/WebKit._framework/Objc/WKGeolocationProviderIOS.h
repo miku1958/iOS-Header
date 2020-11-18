@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface WKGeolocationProviderIOS : NSObject
 {
-    struct RefPtr<WebKit::WebGeolocationManagerProxy> _geolocationManager;
+    struct RefPtr<WebKit::WebGeolocationManagerProxy, WTF::DumbPtrTraits<WebKit::WebGeolocationManagerProxy>> _geolocationManager;
     struct RetainPtr<id<_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
     BOOL _isWebCoreGeolocationActive;
-    struct RefPtr<WebKit::WebGeolocationPosition> _lastActivePosition;
-    struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16> _requestsWaitingForCoreLocationAuthorization;
+    struct RefPtr<WebKit::WebGeolocationPosition, WTF::DumbPtrTraits<WebKit::WebGeolocationPosition>> _lastActivePosition;
+    struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _requestsWaitingForCoreLocationAuthorization;
 }
 
 - (id).cxx_construct;
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)_setEnableHighAccuracy:(BOOL)arg1;
 - (void)_startUpdating;
 - (void)_stopUpdating;
-- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 request:(struct GeolocationPermissionRequestProxy *)arg3 view:(id)arg4;
+- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 completionHandler:(Function_f7a043c0 *)arg3 view:(id)arg4;
 - (void)errorOccurred:(id)arg1;
 - (void)geolocationAuthorizationDenied;
 - (void)geolocationAuthorizationGranted;

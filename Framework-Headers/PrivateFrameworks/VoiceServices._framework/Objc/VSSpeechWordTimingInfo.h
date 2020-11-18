@@ -18,6 +18,7 @@
 @property (nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 
 + (BOOL)supportsSecureCoding;
++ (id)wordTimingInfoFrom:(id)arg1 timestamps:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

@@ -8,23 +8,28 @@
 
 #import <ClockKit/NSXPCListenerDelegate-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSMutableDictionary, NSMutableSet, NSString;
+@class BKSApplicationStateMonitor, NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface CLKComplicationClientManager : NSObject <NSXPCListenerDelegate>
 {
+    NSMutableDictionary *_clientsByIdentifier;
+    NSLock *_clientsByIdentifierLock;
     NSMutableDictionary *_waitForClientRegistriesByIdentifier;
+    NSLock *_waitForClientRegistriesByIdentifierLock;
     NSMutableSet *_anonymousClients;
+    NSLock *_anonymousClientsLock;
     NSMutableSet *_clientPIDs;
-    BKSApplicationStateMonitor *_applicationStateMonitor;
+    NSLock *_clientPIDsLock;
     unsigned long long _nextWaitForClientTokenValue;
+    NSLock *_nextWaitForClientTokenValueLock;
+    BKSApplicationStateMonitor *_applicationStateMonitor;
     CDUnknownBlockType _clientRegistrationHandler;
     CDUnknownBlockType _clientUnregistrationHandler;
-    NSMutableDictionary *_clientsByIdentifier;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType clientRegistrationHandler; // @synthesize clientRegistrationHandler=_clientRegistrationHandler;
 @property (copy, nonatomic) CDUnknownBlockType clientUnregistrationHandler; // @synthesize clientUnregistrationHandler=_clientUnregistrationHandler;
-@property (strong, nonatomic) NSMutableDictionary *clientsByIdentifier; // @synthesize clientsByIdentifier=_clientsByIdentifier;
+@property (readonly, nonatomic) NSDictionary *clientsByIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)_setUpExtensionControllerInterface;
 - (void)clearExtensionScriptWorlds;
 - (void)dealloc;
-- (void)evaluateJavaScriptForSharingExtension:(id)arg1 javaScript:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)evaluateJavaScriptForSharingExtension:(id)arg1 javaScript:(id)arg2 extraArguments:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)finalizeJavaScriptForSharingExtension:(id)arg1 arguments:(id)arg2;
 - (id)initWithBrowserContextController:(id)arg1;
 

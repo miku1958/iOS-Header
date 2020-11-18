@@ -11,21 +11,20 @@
 @interface TDSimpleArtworkRenditionSpec : TDRenditionSpec
 {
     struct CGRect _alignmentRect;
-    BOOL _allowsMultiPassEncoding;
-    BOOL _allowsOptimalRowbytesPacking;
-    BOOL _allowsCompactCompression;
 }
 
 @property (nonatomic) struct CGRect alignmentRect; // @dynamic alignmentRect;
 @property (strong, nonatomic) NSString *alignmentRectString; // @dynamic alignmentRectString;
-@property (nonatomic) BOOL allowsCompactCompression; // @synthesize allowsCompactCompression=_allowsCompactCompression;
-@property (nonatomic) BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
-@property (nonatomic) BOOL allowsOptimalRowbytesPacking; // @synthesize allowsOptimalRowbytesPacking=_allowsOptimalRowbytesPacking;
+@property (nonatomic) BOOL allowsCompactCompression; // @dynamic allowsCompactCompression;
+@property (nonatomic) BOOL allowsMultiPassEncoding; // @dynamic allowsMultiPassEncoding;
+@property (nonatomic) BOOL allowsOptimalRowbytesPacking; // @dynamic allowsOptimalRowbytesPacking;
 @property (strong, nonatomic) TDPNGAsset *asset; // @dynamic asset;
 @property (strong, nonatomic) TDThemeCompressionType *compressionType; // @dynamic compressionType;
 @property (nonatomic) BOOL isTintable; // @dynamic isTintable;
 @property (strong, nonatomic) NSString *nonAlphaImageAreaString; // @dynamic nonAlphaImageAreaString;
 @property (strong, nonatomic) NSString *originalImageSizeString; // @dynamic originalImageSizeString;
+@property (nonatomic) struct CGSize physicalSizeInMeters;
+@property (strong, nonatomic) NSString *physicalSizeInMetersString; // @dynamic physicalSizeInMetersString;
 @property (nonatomic) struct CGRect primitiveAlignmentRect;
 @property (strong, nonatomic) NSOrderedSet *slices; // @dynamic slices;
 
@@ -36,6 +35,7 @@
 - (void)_logExtra:(id)arg1;
 - (void)_logWarning:(id)arg1;
 - (int)_rawPixelFormatOfCGImage:(struct CGImage *)arg1;
+- (struct CGSize)_scaleRecognitionImageFromSize:(struct CGSize)arg1;
 - (id)_sliceRectanglesForRenditionSize:(CDStruct_1ef3fb1f)arg1 unadjustedSliceRectangles:(id *)arg2 imageSlicesNeedAdjustment:(BOOL *)arg3 newRenditionSize:(CDStruct_1ef3fb1f *)arg4;
 - (id)_slicesToUseForCSI;
 - (id)associatedFileModificationDateWithDocument:(id)arg1;
@@ -44,7 +44,6 @@
 - (void)copyAttributesInto:(id)arg1;
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
 - (void)drawPackableRenditionInContext:(struct CGContext *)arg1 withDocument:(id)arg2;
-- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 - (BOOL)updatePackingPropertiesWithDocument:(id)arg1;
 
 @end

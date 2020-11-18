@@ -31,6 +31,7 @@
     BOOL _viewSizeIsTransitioning;
     struct UIEdgeInsets _verticalScrollIndicatorBaseInsets;
     struct UIEdgeInsets _horizontalScrollIndicatorBaseInsets;
+    BOOL _defersAddingRemoteViewController;
     id<SFSafariViewControllerDelegate> _delegate;
     UIColor *_preferredBarTintColor;
     UIColor *_preferredControlTintColor;
@@ -45,6 +46,7 @@
 @property (nonatomic, setter=_setShowingLinkPreviewWithMinimalUI:) BOOL _showingLinkPreviewWithMinimalUI;
 @property (readonly, copy, nonatomic) SFSafariViewControllerConfiguration *configuration;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL defersAddingRemoteViewController; // @synthesize defersAddingRemoteViewController=_defersAddingRemoteViewController;
 @property (weak, nonatomic) id<SFSafariViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long dismissButtonStyle; // @synthesize dismissButtonStyle=_dismissButtonStyle;
@@ -65,9 +67,11 @@
 - (id)_fetchExcludedActivityTypesForURL:(id)arg1 title:(id)arg2;
 - (void)_forwardNotificationToViewService:(id)arg1;
 - (void)_removeRemoteView;
+- (void)_restartServiceViewController;
 - (void)_setEdgeSwipeDismissalEnabled:(BOOL)arg1;
 - (void)_setUpWithURL:(id)arg1 configuration:(id)arg2;
 - (void)_updateScrollViewIndicatorInsets;
+- (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

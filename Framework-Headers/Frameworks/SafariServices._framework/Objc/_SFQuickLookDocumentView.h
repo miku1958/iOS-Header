@@ -19,7 +19,6 @@
     _SFQuickLookDocumentInfoView *_documentInfoView;
     NSArray *_actionButtons;
     UIStackView *_actionButtonsView;
-    NSLayoutConstraint *_topContentInsetConstraint;
     NSLayoutConstraint *_documentInfoViewBottomAnchorConstraint;
     id<_SFQuickLookDocumentViewDelegate> _quickLookDocumentViewDelegate;
 }
@@ -32,12 +31,12 @@
 
 - (void).cxx_destruct;
 - (void)_actionButtonTapped:(id)arg1;
-- (id)_api_dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (void)_configureOrientationBasedConstraints:(long long)arg1;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_setUpLayoutConstraints;
 - (void)_updatePropertiesDefinedByContentSizeCategory;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (struct CGRect)frameForButtonAtIndex:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -46,7 +45,6 @@
 - (void)updateDocumentFileSize:(id)arg1;
 - (void)updateDocumentFileType:(id)arg1;
 - (void)updateDocumentIcon:(id)arg1;
-- (void)updateTopContentInset:(double)arg1;
 
 @end
 

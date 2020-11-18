@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSNumber *accessLevel; // @dynamic accessLevel;
+@property (copy, nonatomic) NSString *billingIdentifier; // @dynamic billingIdentifier;
 @property (copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (copy, nonatomic) NSString *derivedSubscriptionInfo; // @dynamic derivedSubscriptionInfo;
 @property (copy, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)awakeFromInsert;
 - (void)didChangeValueForKey:(id)arg1;
 - (BOOL)validateAccessLevel:(id *)arg1 error:(id *)arg2;
+- (BOOL)validateBillingIdentifier:(id *)arg1 error:(id *)arg2;
 - (BOOL)validateCreationDate:(id *)arg1 error:(id *)arg2;
 - (BOOL)validateExpirationDate:(id *)arg1 error:(id *)arg2;
 - (BOOL)validateModificationDate:(id *)arg1 error:(id *)arg2;

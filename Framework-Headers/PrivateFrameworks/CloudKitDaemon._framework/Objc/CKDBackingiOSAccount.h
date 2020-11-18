@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithParentAccount:(id)arg1 inStore:(id)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
 - (BOOL)canAuthWithCloudKit;
+- (BOOL)canRenew;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
 - (id)dsid;
 - (id)fullName;

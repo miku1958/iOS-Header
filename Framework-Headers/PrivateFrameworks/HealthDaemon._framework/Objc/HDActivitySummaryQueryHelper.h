@@ -39,7 +39,6 @@
 
 - (void).cxx_destruct;
 - (id)_fetchActivityCacheIndicesWithAnchor:(long long)arg1 predicate:(id)arg2 error:(id *)arg3;
-- (void)_onClientQueue:(CDUnknownBlockType)arg1;
 - (id)_queue_addActivityCacheToCachedSamples:(id)arg1;
 - (void)_queue_deliverActivitySummariesMatchingPredicate:(id)arg1;
 - (void)_queue_deliverActivitySummariesToClient:(id)arg1;

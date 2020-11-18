@@ -115,6 +115,7 @@
 - (void)_generateTitleForRelatedResults:(id)arg1 withReferenceEvent:(id)arg2 referenceAsset:(id)arg3;
 - (id)_getDefaultOutputPathForMetadataSnapshot;
 - (BOOL)_hasMomentsForPersonIdentifiers:(id)arg1;
+- (id)_highlightEstimatesStatistics;
 - (id)_interestingStatistics;
 - (void)_invalidatePersistentCaches;
 - (void)_invalidateTransientCaches;

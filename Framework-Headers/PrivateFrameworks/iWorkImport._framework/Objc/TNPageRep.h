@@ -18,10 +18,6 @@ __attribute__((visibility("hidden")))
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isOpaque;
-- (id)p_childRepForInfo:(id)arg1;
-- (BOOL)p_headerFooterIsVisibleAndInteractive:(int)arg1;
-- (int)p_hitHeaderFooterFragment:(int)arg1 atPoint:(struct CGPoint)arg2;
-- (id)p_repForHeaderLayout:(id)arg1;
 
 @end
 

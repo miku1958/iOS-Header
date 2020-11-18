@@ -31,6 +31,7 @@
 + (id)mediaValueForStoreLookupCollectionPropertyValues:(id)arg1 mediaProperty:(id)arg2;
 + (id)offerDictionariesForLookupCollectionPropertyValues:(id)arg1;
 + (long long)offerPassTypeForLookupCollectionPropertyValues:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_checkIsUsableOffer;
 - (BOOL)_hasRestrictedContent;

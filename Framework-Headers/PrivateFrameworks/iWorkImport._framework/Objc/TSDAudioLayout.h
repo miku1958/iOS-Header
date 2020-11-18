@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canFlip;
 - (struct CGRect)computeAlignmentFrameInRoot:(BOOL)arg1;
+- (struct CGRect)frameForCulling;
 - (id)initWithInfo:(id)arg1;
 - (id)layoutGeometryFromInfo;
 - (id)movieInfo;

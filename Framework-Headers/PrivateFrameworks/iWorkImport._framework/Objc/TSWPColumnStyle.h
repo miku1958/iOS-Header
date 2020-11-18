@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
 - (BOOL)equalWidth;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
+- (id)layoutMarginsForTarget:(id)arg1;
 - (void)loadFromArchive:(const struct ColumnStyleArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;

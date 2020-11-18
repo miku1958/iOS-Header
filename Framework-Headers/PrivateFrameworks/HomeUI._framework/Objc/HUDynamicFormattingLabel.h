@@ -27,7 +27,9 @@
 - (void).cxx_destruct;
 - (id)_formattedValueWithFont:(id)arg1;
 - (void)_updateFormattedValueIncludingFont:(BOOL)arg1;
+- (void)_updateFormattedValueObservation;
 - (void)_updatePreferredFontIncludingValue:(BOOL)arg1;
+- (void)didMoveToWindow;
 - (void)layoutSubviews;
 
 @end

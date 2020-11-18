@@ -19,11 +19,13 @@
 - (void)ping;
 - (void)postSettings:(NSDictionary *)arg1 replyHandler:(void (^)(BOOL))arg2;
 - (void)prewarm;
+- (void)readLocation:(void (^)(NSDictionary *))arg1;
 - (void)readSettingsStore:(void (^)(NSDictionary *))arg1;
 - (void)requestConsentForBundleID:(NSString *)arg1 forceAuth:(BOOL)arg2 replyHandler:(void (^)(BOOL))arg3;
 - (void)requestPlaybackSummary:(void (^)(WLKPlaybackSummary *))arg1;
 - (void)requestPlaybackSummaryForID:(NSNumber *)arg1 completion:(void (^)(WLKPlaybackSummary *))arg2;
 - (void)setNextConfigurationEK:(NSString *)arg1;
+- (void)writeLocation:(NSDictionary *)arg1 replyHandler:(void (^)(BOOL))arg2;
 - (void)writeSettingsStore:(NSDictionary *)arg1 replyHandler:(void (^)(BOOL))arg2;
 @end
 

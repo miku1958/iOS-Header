@@ -13,16 +13,18 @@
 #import <ITMLKit/_IKJSDOMDocumentProxy-Protocol.h>
 
 @class IKDOMElement, IKDOMImplementation, IKJSNavigationDocument, NSString;
-@protocol IKJSDOMDocumentAppBridge;
+@protocol IKJSDOMDocumentAppBridge, IKNetworkRequestLoader;
 
 @interface IKDOMDocument : IKDOMNode <NSObject, IKJSDOMDocument, _IKJSDOMDocumentProxy, _IKJSDOMDocument, IKJSDOMXPathEvaluator>
 {
+    id<IKNetworkRequestLoader> __requestLoader;
     id<IKJSDOMDocumentAppBridge> _appBridge;
     unsigned long long _itmlIDSequence;
     NSString *__documentURI;
 }
 
 @property (strong, nonatomic, setter=_setDocumentURI:) NSString *_documentURI; // @synthesize _documentURI=__documentURI;
+@property (readonly, nonatomic) id<IKNetworkRequestLoader> _requestLoader; // @synthesize _requestLoader=__requestLoader;
 @property (weak, nonatomic) id<IKJSDOMDocumentAppBridge> appBridge; // @synthesize appBridge=_appBridge;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -40,6 +42,7 @@
 @property (strong, nonatomic) NSString *xmlVersion;
 
 + (struct _xmlDoc *)_documentWithXMLStr:(id)arg1 lsInput:(id)arg2 error:(id *)arg3;
++ (void)_resetUpdatesForNode:(id)arg1;
 - (void).cxx_destruct;
 - (void)_updateITMLIDRecursivelyForNodePtr:(struct _xmlNode *)arg1;
 - (id)adoptNode:(id)arg1;
@@ -50,6 +53,7 @@
 - (id)createElement:(id)arg1;
 - (id)createExpression:(id)arg1:(id)arg2;
 - (id)createTextNode:(id)arg1;
+- (void)dealloc;
 - (id)evaluate:(id)arg1:(id)arg2:(id)arg3:(long long)arg4:(id)arg5;
 - (id)getElementById:(id)arg1;
 - (id)getElementsByTagName:(id)arg1;
@@ -68,6 +72,7 @@
 - (void)setITMLIDForNode:(id)arg1;
 - (void)setNeedsUpdate;
 - (id)snapshotImpressions;
+- (void)swapITMLIDForNode:(id)arg1 withITMLIDForNode:(id)arg2;
 
 @end
 

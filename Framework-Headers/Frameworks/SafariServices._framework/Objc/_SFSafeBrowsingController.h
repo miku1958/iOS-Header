@@ -34,6 +34,7 @@
 
 + (id)_localizedStringsForSafeBrowsing;
 - (void).cxx_destruct;
+- (void)_databaseDidUpdate:(id)arg1;
 - (void)_fraudulentWebsiteCheckCompletedForURL:(id)arg1 withResult:(id)arg2 error:(id)arg3;
 - (void)_safeBrowsingCheckFinishedWithSecurityInfo:(id)arg1;
 - (id)_securityWarningPageURL;

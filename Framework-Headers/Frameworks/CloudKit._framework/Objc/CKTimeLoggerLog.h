@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKit/NSCoding-Protocol.h>
+#import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface CKTimeLoggerLog : NSObject <NSCoding>
+@interface CKTimeLoggerLog : NSObject <NSSecureCoding>
 {
     NSString *_type;
     double _beginTime;
@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSMutableArray *pauseRecords; // @synthesize pauseRecords=_pauseRecords;
 @property (strong, nonatomic) NSString *type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)appendStatusReportToString:(id)arg1 withIndent:(unsigned long long)arg2 showingPointers:(BOOL)arg3;
 - (void)dealloc;

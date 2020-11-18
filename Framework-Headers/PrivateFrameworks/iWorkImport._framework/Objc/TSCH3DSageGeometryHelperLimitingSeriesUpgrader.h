@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)containingViewportByResizingScene:(id)arg1 toResizingFrame:(struct CGRect)arg2;
 - (void)dealloc;
 - (struct CGRect)oldResizingFrame;
-- (id)sceneResetWithLayoutSettings:(CDStruct_44ada6bf)arg1;
+- (id)sceneResetWithLayoutSettings:(CDStruct_b1c75024)arg1;
 
 @end
 

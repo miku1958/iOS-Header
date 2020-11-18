@@ -7,9 +7,14 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (ADCoreExtensions)
-+ (id)dateFromServerTime:(double)arg1;
++ (id)dateFromServerTime:(int)arg1;
++ (int)maxServerTime;
++ (int)minServerTime;
+- (id)doubleDateTimeAsString;
 - (BOOL)isAfterDate:(id)arg1;
 - (BOOL)isBeforeDate:(id)arg1;
-- (double)toServerTime;
+- (id)localDateTimeAsString;
+- (int)toServerTime;
+- (id)universalDateTimeAsString;
 @end
 

@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     NSSet *_tiles;
     Box_3d7e3c2c _visibleRect;
     Box_3d7e3c2c _snappingRect;
-    vector_b9326b03 _rectsForSnapping;
+    vector_d0224be8 _rectsForSnapping;
     struct vector<VKTileKey, std::__1::allocator<VKTileKey>> _snappedTileKeys;
 }
 
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initForKeysInView:(id)arg1 tiles:(id)arg2 allowsSnapping:(BOOL)arg3;
 - (BOOL)isEquivalentToNewRegion:(id)arg1;
-- (const vector_b9326b03 *)rectsForSnapping;
+- (const vector_d0224be8 *)rectsForSnapping;
 
 @end
 

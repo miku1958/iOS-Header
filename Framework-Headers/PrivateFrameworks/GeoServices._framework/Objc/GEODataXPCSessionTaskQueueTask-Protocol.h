@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSObject;
+@class NSError, NSObject;
 @protocol OS_dispatch_queue, OS_os_activity, OS_xpc_object;
 
 @protocol GEODataXPCSessionTaskQueueTask
@@ -14,8 +14,10 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionIsolation;
 @property (readonly, nonatomic) unsigned int taskQueue;
 @property (readonly, nonatomic) float taskQueuePriority;
+@property (readonly, nonatomic) double timeoutInterval;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcRequest;
 
-- (void)processResult:(int)arg1 xpcReply:(NSObject<OS_xpc_object> *)arg2;
+- (void)processResult:(int)arg1 xpcReply:(NSObject<OS_xpc_object> *)arg2 error:(NSError *)arg3;
+- (void)willSendTask:(void (^)(void))arg1;
 @end
 

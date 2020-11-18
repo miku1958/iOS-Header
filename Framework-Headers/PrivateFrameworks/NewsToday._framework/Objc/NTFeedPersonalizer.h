@@ -39,6 +39,7 @@
 @property (copy, nonatomic) id<FCTodayPrivateData> todayData; // @synthesize todayData=_todayData;
 
 - (void).cxx_destruct;
+- (double)decayedPublisherDiversificationPenalty;
 - (id)diversifyArticles:(id)arg1 limit:(unsigned long long)arg2;
 - (id)diversifyArticles:(id)arg1 limit:(unsigned long long)arg2 preselectedArticles:(id)arg3;
 - (id)init;

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     TSCH3DChartElementSceneObject *mSceneObject;
     TSCH3DSceneRenderPipeline *mPipeline;
     TSCH3DChartElementProperties *mProperties;
-    vector_cd7372eb mDelayedItems;
+    vector_d7c2985b mDelayedItems;
 }
 
 @property (readonly, nonatomic) BOOL geometryOnly;

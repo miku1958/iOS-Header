@@ -17,6 +17,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
+- (id)accessibilityIdentifier;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)shouldGroupAccessibilityChildren;
 

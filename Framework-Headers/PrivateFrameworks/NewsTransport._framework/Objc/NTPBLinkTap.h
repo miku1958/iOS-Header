@@ -8,29 +8,40 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface NTPBLinkTap : PBCodable <NSCopying>
 {
     NSString *_articleId;
+    NSData *_articleViewingSessionId;
+    int _groupType;
+    int _linkType;
     NSString *_referencedArticleId;
     int _tapLocationType;
     NSString *_tappedLinkUrl;
     NSString *_webEmbedId;
     int _webEmbedLocation;
     struct {
+        unsigned int groupType:1;
+        unsigned int linkType:1;
         unsigned int tapLocationType:1;
         unsigned int webEmbedLocation:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
+@property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
+@property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (readonly, nonatomic) BOOL hasArticleId;
+@property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
+@property (nonatomic) BOOL hasGroupType;
+@property (nonatomic) BOOL hasLinkType;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
 @property (nonatomic) BOOL hasTapLocationType;
 @property (readonly, nonatomic) BOOL hasTappedLinkUrl;
 @property (readonly, nonatomic) BOOL hasWebEmbedId;
 @property (nonatomic) BOOL hasWebEmbedLocation;
+@property (nonatomic) int linkType; // @synthesize linkType=_linkType;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (nonatomic) int tapLocationType; // @synthesize tapLocationType=_tapLocationType;
 @property (strong, nonatomic) NSString *tappedLinkUrl; // @synthesize tappedLinkUrl=_tappedLinkUrl;
@@ -38,10 +49,12 @@
 @property (nonatomic) int webEmbedLocation; // @synthesize webEmbedLocation=_webEmbedLocation;
 
 - (void).cxx_destruct;
+- (int)StringAsGroupType:(id)arg1;
 - (int)StringAsWebEmbedLocation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

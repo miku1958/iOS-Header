@@ -9,7 +9,7 @@
 #import <CoreUtils/CXCallObserverDelegate-Protocol.h>
 #import <CoreUtils/FMFSessionDelegate-Protocol.h>
 
-@class CUWiFiManager, CXCallObserver, NSString;
+@class CUBluetoothClient, CUWiFiManager, CXCallObserver, NSData, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,13 +17,18 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     struct NSMutableSet *_monitors;
+    CDStruct_83abfce7 _bluetoothAddress48;
+    NSData *_bluetoothAddressData;
+    CUBluetoothClient *_bluetoothClient;
     CXCallObserver *_callObserver;
     int _activeCallCount;
     int _fmfDevicesChangedToken;
     int _meDeviceChangedToken;
+    int _meDeviceRetryToken;
     NSString *_meDeviceFMFDeviceID;
     NSString *_meDeviceIDSDeviceID;
     NSString *_meDeviceName;
+    BOOL _meDeviceValid;
     int _powerSourceToken;
     BOOL _powerUnlimited;
     BOOL _primaryAppleIDIsHSA2;
@@ -45,6 +50,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (int)_activeCallCountUnached;
+- (void)_bluetoothAddressMonitorStart;
+- (void)_bluetoothAddressMonitorStop;
 - (void)_callMonitorStart;
 - (void)_callMonitorStop;
 - (BOOL)_hasMonitorPassingTest:(CDUnknownBlockType)arg1;

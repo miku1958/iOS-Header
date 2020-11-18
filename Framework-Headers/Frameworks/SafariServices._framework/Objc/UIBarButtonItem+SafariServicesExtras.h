@@ -12,5 +12,6 @@
 
 + (double)_sf_longPressAllowableMovement;
 - (void)_sf_setLongPressTarget:(id)arg1 action:(SEL)arg2;
+- (void)_sf_test_simulateLongPressInvocation;
 @end
 

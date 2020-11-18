@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreDuetContext/NSSecureCoding-Protocol.h>
+
 @class _CDContextValue, _CDContextualKeyPath;
 
-@interface _CDContextualKeyPathAndValue : NSObject
+@interface _CDContextualKeyPathAndValue : NSObject <NSSecureCoding>
 {
     _CDContextualKeyPath *_keyPath;
     _CDContextValue *_value;

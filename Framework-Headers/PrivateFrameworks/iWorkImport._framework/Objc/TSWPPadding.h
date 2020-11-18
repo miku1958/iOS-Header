@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+- (id)paddingByMirroringHorizontal;
 - (void)saveToArchive:(struct PaddingArchive *)arg1 archiver:(id)arg2;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (void)transform:(struct CGAffineTransform)arg1;

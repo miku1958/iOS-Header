@@ -20,11 +20,15 @@
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 
 + (id)highlightedIconImage;
++ (id)highlightedIconImageForVideo;
 + (id)iconImage;
++ (id)iconImageForVideo;
 - (void)dealloc;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
+- (void)resetIconImagesForVideo;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)setIconImageSize:(struct CGSize)arg1;
 
 @end
 

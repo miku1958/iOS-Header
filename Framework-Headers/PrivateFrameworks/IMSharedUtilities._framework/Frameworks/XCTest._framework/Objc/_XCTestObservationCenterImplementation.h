@@ -17,7 +17,7 @@
 @property (strong) NSMutableArray *observers; // @synthesize observers=_observers;
 @property BOOL suspended; // @synthesize suspended=_suspended;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

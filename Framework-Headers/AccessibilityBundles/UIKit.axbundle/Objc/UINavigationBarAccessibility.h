@@ -16,10 +16,13 @@
 - (BOOL)_accessibilityAllowOutOfBoundsHitTestAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityFauxBackButton;
 - (id)_accessibilityFetchCachedNavBarElements;
+- (BOOL)_accessibilityHasLeftRightButtonCountChanged;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
+- (id)_accessibilityLeftButtonElements;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityNavBarElements;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
+- (id)_accessibilityRightButtonElements;
 - (void)_accessibilitySetFauxBackButton:(id)arg1;
 - (void)_accessibilitySetNavBarElements:(id)arg1;
 - (void)_accessibility_navigationBarContentsDidChange;

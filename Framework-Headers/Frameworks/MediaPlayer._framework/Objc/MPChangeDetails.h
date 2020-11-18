@@ -22,14 +22,18 @@
     NSArray *_updatedItemIndexPaths;
 }
 
+@property (readonly, copy, nonatomic) NSIndexSet *deletedIndexes;
 @property (copy, nonatomic) NSArray *deletedItemIndexPaths; // @synthesize deletedItemIndexPaths=_deletedItemIndexPaths;
 @property (copy, nonatomic) NSIndexSet *deletedSections; // @synthesize deletedSections=_deletedSections;
 @property (readonly, nonatomic) BOOL hasChanges;
+@property (readonly, copy, nonatomic) NSIndexSet *insertedIndexes;
 @property (copy, nonatomic) NSArray *insertedItemIndexPaths; // @synthesize insertedItemIndexPaths=_insertedItemIndexPaths;
 @property (copy, nonatomic) NSIndexSet *insertedSections; // @synthesize insertedSections=_insertedSections;
+@property (readonly, copy, nonatomic) NSIndexSet *updatedIndexes;
 @property (copy, nonatomic) NSArray *updatedItemIndexPaths; // @synthesize updatedItemIndexPaths=_updatedItemIndexPaths;
 @property (copy, nonatomic) NSIndexSet *updatedSections; // @synthesize updatedSections=_updatedSections;
 
++ (id)changeDetailsWithPreviousCount:(long long)arg1 finalCount:(long long)arg2 isEqualBlock:(CDUnknownBlockType)arg3 isUpdatedBlock:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)_finalize;
 - (void)appendItemMoveFromIndexPath:(id)arg1 toIndexPath:(id)arg2 updated:(BOOL)arg3;
@@ -37,6 +41,7 @@
 - (id)debugDescription;
 - (id)description;
 - (void)enumerateItemMovesWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateMovesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionMovesWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeItemMoveFromIndexPath:(id)arg1;

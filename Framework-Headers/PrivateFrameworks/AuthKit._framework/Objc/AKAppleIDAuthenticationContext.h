@@ -31,8 +31,11 @@
     unsigned long long _attemptIndex;
     BOOL _isProxyingForApp;
     BOOL _shouldSendIdentityTokenForRemoteUI;
+    BOOL _shouldSendGrandSlamTokensForRemoteUI;
     BOOL _isPasswordEditable;
     BOOL _shouldSkipInitialReachabilityCheck;
+    BOOL _shouldPreventInteractiveAuth;
+    BOOL _shouldForceInteractiveAuth;
     BOOL _isUsernameEditable;
     BOOL _shouldAllowAppleIDCreation;
     BOOL _needsCredentialRecovery;
@@ -43,8 +46,6 @@
     BOOL _shouldOfferSecurityUpgrade;
     BOOL _shouldPromptForPasswordOnly;
     BOOL _shouldUpdatePersistentServiceTokens;
-    BOOL _shouldPreventInteractiveAuth;
-    BOOL _shouldForceInteractiveAuth;
     BOOL _shouldRequestRecoveryPET;
     BOOL _shouldRequestShortLivedToken;
     BOOL _shouldRequestConfigurationInfo;
@@ -54,6 +55,7 @@
     BOOL _shouldSkipSettingsLaunchAlert;
     NSString *_proxiedAppBundleID;
     NSUUID *_identifier;
+    NSString *_identityToken;
     NSString *_passwordPromptTitle;
     NSString *_proxiedAppName;
     NSString *_password;
@@ -73,6 +75,7 @@
     NSString *_title;
     NSString *_helpAnchor;
     NSString *_helpBook;
+    unsigned long long _authenticationType;
     id<AKAnisetteServiceProtocol> _anisetteDataProvider;
     NSNumber *_isAppleIDLoginEnabled;
     NSNumber *_hasEmptyPassword;
@@ -88,7 +91,9 @@
 @property (nonatomic) unsigned long long _attemptIndex; // @synthesize _attemptIndex;
 @property (readonly, nonatomic) unsigned long long _capabilityForUIDisplay; // @synthesize _capabilityForUIDisplay;
 @property (readonly, nonatomic) NSUUID *_identifier; // @synthesize _identifier;
+@property (copy, nonatomic, setter=_setIdentityToken:) NSString *_identityToken; // @synthesize _identityToken;
 @property (readonly, nonatomic) NSString *_interpolatedReason;
+@property (readonly, nonatomic) NSString *_interpolatedReasonWithBlame;
 @property (nonatomic) BOOL _isPasswordEditable; // @synthesize _isPasswordEditable;
 @property (nonatomic, setter=_setProxyingForApp:) BOOL _isProxyingForApp; // @synthesize _isProxyingForApp;
 @property (copy, nonatomic, setter=_setMessage:) NSString *_message; // @synthesize _message;
@@ -96,12 +101,15 @@
 @property (copy, nonatomic) NSString *_passwordPromptTitle; // @synthesize _passwordPromptTitle;
 @property (copy, nonatomic, setter=_setProxiedAppBundleID:) NSString *_proxiedAppBundleID; // @synthesize _proxiedAppBundleID;
 @property (copy, nonatomic, setter=_setProxiedAppName:) NSString *_proxiedAppName; // @synthesize _proxiedAppName;
+@property (readonly, nonatomic) BOOL _requiresPasswordInput;
 @property (copy, nonatomic, setter=_setShortLivedToken:) NSString *_shortLivedToken; // @synthesize _shortLivedToken;
+@property (nonatomic) BOOL _shouldSendGrandSlamTokensForRemoteUI; // @synthesize _shouldSendGrandSlamTokensForRemoteUI;
 @property (nonatomic) BOOL _shouldSendIdentityTokenForRemoteUI; // @synthesize _shouldSendIdentityTokenForRemoteUI;
 @property (readonly, nonatomic) BOOL _shouldSkipInitialReachabilityCheck; // @synthesize _shouldSkipInitialReachabilityCheck;
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property (nonatomic) BOOL anticipateEscrowAttempt; // @synthesize anticipateEscrowAttempt=_anticipateEscrowAttempt;
+@property (nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
 @property (strong, nonatomic) id<CDPStateUIProvider> cdpUiProvider; // @synthesize cdpUiProvider=_cdpUiProvider;
 @property (strong, nonatomic) id clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (copy, nonatomic) AKDevice *companionDevice;
@@ -164,6 +172,8 @@
 - (void)_startListeningForSecondFactorCodeEntryNotification;
 - (void)_stopListeningForSecondFactorCodeEntryNotification;
 - (void)_updateWithValuesFromContext:(id)arg1;
+- (id)authKitAccount:(id *)arg1;
+- (id)authKitAccountForSilentServiceToken:(id *)arg1;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissNativeRecoveryUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;

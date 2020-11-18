@@ -11,11 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface KNAnimationInfo : NSObject
 {
-    Class mAnimationClass;
-    NSSet *mValidAnimationTypes;
+    Class _animationClass;
+    NSSet *_validAnimationTypes;
 }
 
-@property (readonly, nonatomic) Class animationClass; // @synthesize animationClass=mAnimationClass;
+@property (strong, nonatomic) Class animationClass; // @synthesize animationClass=_animationClass;
 @property (readonly, nonatomic) NSString *animationFilter;
 @property (readonly, nonatomic) long long category;
 @property (readonly, nonatomic) NSDictionary *customAttributeDefaults;
@@ -27,14 +27,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *localizedActionBuildName;
 @property (readonly, nonatomic) NSString *localizedBuildInName;
 @property (readonly, nonatomic) NSString *localizedBuildOutName;
+@property (readonly, nonatomic) NSString *localizedContentBuildName;
 @property (readonly, nonatomic) NSString *localizedTransitionName;
-@property (readonly, nonatomic) NSSet *validAnimationTypes; // @synthesize validAnimationTypes=mValidAnimationTypes;
+@property (strong, nonatomic) NSSet *validAnimationTypes; // @synthesize validAnimationTypes=_validAnimationTypes;
 
 + (id)effectIdentifiersForAnimationInfos:(id)arg1;
 + (id)localizedEffectNamesForAnimationInfos:(id)arg1 animationType:(long long)arg2;
+- (void).cxx_destruct;
 - (id)customAttributesForAttributeKey:(id)arg1;
 - (id)customEffectTimingCurveDisplayParametersForAttributes:(id)arg1 layoutStyleOnly:(BOOL)arg2;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithAnimationClass:(Class)arg1;

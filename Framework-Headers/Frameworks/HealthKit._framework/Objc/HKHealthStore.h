@@ -115,6 +115,7 @@
 - (BOOL)_setBloodType:(long long)arg1 error:(id *)arg2;
 - (BOOL)_setBodyMassCharacteristicQuantity:(id)arg1 error:(id *)arg2;
 - (BOOL)_setCharacteristic:(id)arg1 forDataType:(id)arg2 error:(id *)arg3;
+- (void)_setDaemonPreferenceValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_setDateOfBirthComponents:(id)arg1 error:(id *)arg2;
 - (BOOL)_setFitzpatrickSkinType:(long long)arg1 error:(id *)arg2;
 - (BOOL)_setHeightCharacteristicQuantity:(id)arg1 error:(id *)arg2;
@@ -137,6 +138,7 @@
 - (void)allSourcesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)associateSampleUUIDs:(id)arg1 withSampleUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (long long)authorizationStatusForType:(id)arg1;
+- (void)badgeForDomain:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 sourceHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (id)biologicalSexWithError:(id *)arg1;
@@ -198,6 +200,7 @@
 - (void)fetchMedicalIDEmergencyContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchNanoSyncPairedDevicesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchPluginServiceEndpointForIdentifier:(id)arg1 endpointHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)fetchURLForAnalyticsFileWithName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishWorkoutRoute:(id)arg1 workout:(id)arg2 metadata:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fitzpatrickSkinTypeWithError:(id *)arg1;
 - (void)forceCloudResetWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
@@ -254,7 +257,7 @@
 - (void)saveWorkoutRouteData:(id)arg1 withRoute:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)select:(id)arg1 from:(id)arg2 where:(id)arg3 groupBy:(id)arg4 orderBy:(id)arg5 limit:(long long)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)setAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setBadgeCount:(long long)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setBadge:(id)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDisplayName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setHealthLiteValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;

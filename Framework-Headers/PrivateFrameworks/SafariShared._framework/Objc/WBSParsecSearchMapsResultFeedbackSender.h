@@ -9,17 +9,17 @@
 #import <SafariShared/_MKPlaceViewControllerFeedbackDelegate-Protocol.h>
 
 @class NSString;
-@protocol WBSCompletionListItem><WBSParsecSearchResultPresentedInCard;
+@protocol WBSParsecSearchResultPresentedInCard><WBSCompletionListItem;
 
 @interface WBSParsecSearchMapsResultFeedbackSender : NSObject <_MKPlaceViewControllerFeedbackDelegate>
 {
-    id<WBSCompletionListItem><WBSParsecSearchResultPresentedInCard> _searchResult;
+    id<WBSParsecSearchResultPresentedInCard><WBSCompletionListItem> _searchResult;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) id<WBSCompletionListItem><WBSParsecSearchResultPresentedInCard> searchResult; // @synthesize searchResult=_searchResult;
+@property (readonly, weak, nonatomic) id<WBSParsecSearchResultPresentedInCard><WBSCompletionListItem> searchResult; // @synthesize searchResult=_searchResult;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

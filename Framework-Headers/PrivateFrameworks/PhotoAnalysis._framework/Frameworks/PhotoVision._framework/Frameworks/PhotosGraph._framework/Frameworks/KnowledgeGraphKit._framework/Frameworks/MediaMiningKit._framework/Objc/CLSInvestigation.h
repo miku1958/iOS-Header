@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaMiningKit/NSCoding-Protocol.h>
-
 @class CLSArchiveRoom, CLSClueCollection, CLSInspector, CLSInvestigationFeeder, NSArray, NSMutableArray, NSMutableDictionary, NSString, PIGroup;
 @protocol CLSInvestigationDelegate, CLSInvestigationInterviewDelegate;
 
-@interface CLSInvestigation : NSObject <NSCoding>
+@interface CLSInvestigation : NSObject
 {
     NSString *_uuid;
     unsigned long long _priority;
@@ -65,11 +63,8 @@
 @property (getter=isSuspended) BOOL suspended;
 @property (readonly, copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
-+ (id)investigationAtPath:(id)arg1;
 + (id)investigationWithProfiles:(id)arg1;
 + (id)investigationWithProfiles:(id)arg1 clueDates:(id)arg2 clueLocations:(id)arg3 cluePeoples:(id)arg4;
-+ (id)investigationsDirectory;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addOperations:(id)arg1;
 - (void)_didEndInvestigation:(BOOL)arg1;
@@ -79,21 +74,15 @@
 - (void)cancel:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)description:(BOOL)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (double)executionTime;
 - (id)init;
 - (id)initWithClueCollection:(id)arg1 profiles:(id)arg2;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFeeder:(id)arg1 profiles:(id)arg2;
 - (id)initWithProfiles:(id)arg1;
-- (id)investigationsDirectory;
 - (id)itemMetadataWithKeys:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)itemThumbnailAtIndex:(unsigned long long)arg1 withResolution:(unsigned long long)arg2;
 - (unsigned long long)numberOfItems;
 - (id)sampleOfItems;
-- (id)saveToDirectory:(id)arg1;
-- (id)saveToDisk;
-- (BOOL)saveToPath:(id)arg1;
 - (id)tracesDescription;
 - (void)waitUntilFinished;
 - (double)wallTime;

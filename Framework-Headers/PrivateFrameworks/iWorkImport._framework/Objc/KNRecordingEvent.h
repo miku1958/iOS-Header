@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface KNRecordingEvent : NSObject <NSCopying>
 {
-    double mStartTime;
+    double _startTime;
 }
 
 @property (readonly, nonatomic) BOOL canPrecedeDiscontinuity;
 @property (readonly, nonatomic, getter=isIgnoredWhenSeeking) BOOL ignoredWhenSeeking;
-@property (readonly, nonatomic) double startTime; // @synthesize startTime=mStartTime;
+@property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

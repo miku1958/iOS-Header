@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSMutableArray;
 
 @interface SXComponentTypeMatching : NSObject
 {
-    NSArray *_descriptions;
+    NSMutableArray *_descriptions;
 }
 
-@property (readonly, nonatomic) NSArray *descriptions; // @synthesize descriptions=_descriptions;
+@property (readonly, nonatomic) NSMutableArray *descriptions; // @synthesize descriptions=_descriptions;
 
 - (void).cxx_destruct;
-- (id)initWithDescriptions:(id)arg1;
+- (void)addDescription:(id)arg1;
+- (id)init;
 - (id)match:(id)arg1;
+- (void)removeDescription:(id)arg1;
 
 @end
 

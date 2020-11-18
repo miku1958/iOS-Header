@@ -91,6 +91,7 @@
 - (id)getServiceTypeAlias:(id)arg1;
 - (id)getStatusCharacteristicTypes:(id)arg1 forServiceType:(id)arg2;
 - (id)initWithDictionary:(id)arg1 hapMetadata:(id)arg2 error:(id *)arg3;
+- (BOOL)isSecondsDownCounterCharacteristicType:(id)arg1;
 - (BOOL)isStandardCharacteristicType:(id)arg1;
 - (BOOL)isStandardServiceType:(id)arg1;
 - (id)mapCharacteristicValueType:(id)arg1;

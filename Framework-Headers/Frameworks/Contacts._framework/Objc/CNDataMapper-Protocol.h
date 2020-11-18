@@ -6,7 +6,7 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNChangeHistoryAnchor, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNObservable, CNPolicy, CNSaveRequest, NSArray, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
+@class CNChangeHistoryAnchor, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNManagedConfiguration, CNObservable, CNPolicy, CNSaveRequest, NSArray, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
 @protocol CNCancelable, CNKeyDescriptor;
 
 @protocol CNDataMapper <NSObject>
@@ -17,7 +17,7 @@
 - (BOOL)executeSaveRequest:(CNSaveRequest *)arg1 error:(id *)arg2;
 - (BOOL)executeSaveRequest:(CNSaveRequest *)arg1 response:(id *)arg2 error:(id *)arg3;
 - (NSArray *)groupsMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
-- (id)initWithContactsEnvironment:(CNContactsEnvironment *)arg1;
+- (id)initWithContactsEnvironment:(CNContactsEnvironment *)arg1 managedConfiguration:(CNManagedConfiguration *)arg2;
 - (NSArray *)meContactIdentifiers:(id *)arg1;
 - (CNPolicy *)policyForContainerWithIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;

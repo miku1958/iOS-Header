@@ -44,6 +44,7 @@
 + (BOOL)isWiFiCapable;
 + (void)postFailureNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4;
 + (id)prettyPrintDate:(id)arg1;
++ (void)purgeV1SUAssets;
 + (id)serialNumber;
 + (void)setCacheable:(BOOL)arg1;
 + (void)setIsDaemon:(BOOL)arg1;

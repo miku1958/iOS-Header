@@ -8,7 +8,7 @@
 
 #import <HomeUI/UITextFieldDelegate-Protocol.h>
 
-@class HMRoom, HUEditableTextCell, HUTitleValueCell, NSString;
+@class HFZoneModule, HMRoom, HUEditableTextCell, HUTitleValueCell, NSString;
 
 @interface HUZoneModuleController : HUItemTableModuleController <UITextFieldDelegate>
 {
@@ -22,6 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HFZoneModule *module; // @dynamic module;
 @property (strong, nonatomic) HMRoom *room; // @synthesize room=_room;
 @property (readonly) Class superclass;
 
@@ -45,7 +46,6 @@
 - (BOOL)textFieldShouldEndEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(BOOL)arg3;
-- (id)zoneModule;
 
 @end
 

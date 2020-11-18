@@ -30,6 +30,7 @@
 - (id)audioFile;
 - (id)audioFileName;
 - (id)audioURL;
+- (void)commonInit;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithAVAudioNode:(id)arg1;

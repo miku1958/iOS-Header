@@ -4,33 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <PassKitCore/PKTransitAppletHistoryRecord.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
-#import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSNumber, NSString;
+@class NSNumber, NSString;
 
-@interface PKFelicaAppletHistoryRecord : NSObject <NSCopying, NSSecureCoding>
+@interface PKFelicaAppletHistoryRecord : PKTransitAppletHistoryRecord <NSCopying>
 {
-    NSNumber *_historySequenceNumber;
-    NSNumber *_balance;
-    NSString *_transactionID;
     NSNumber *_transactionType;
     NSNumber *_sectorCombination;
     NSNumber *_amountType;
-    NSNumber *_amount;
-    NSData *_startStation;
-    NSData *_endStation;
+    NSString *_transactionID;
 }
 
-@property (copy, nonatomic) NSNumber *amount; // @synthesize amount=_amount;
 @property (copy, nonatomic) NSNumber *amountType; // @synthesize amountType=_amountType;
-@property (copy, nonatomic) NSNumber *balance; // @synthesize balance=_balance;
-@property (copy, nonatomic) NSData *endStation; // @synthesize endStation=_endStation;
-@property (copy, nonatomic) NSNumber *historySequenceNumber; // @synthesize historySequenceNumber=_historySequenceNumber;
 @property (copy, nonatomic) NSNumber *sectorCombination; // @synthesize sectorCombination=_sectorCombination;
-@property (copy, nonatomic) NSData *startStation; // @synthesize startStation=_startStation;
 @property (copy, nonatomic) NSString *transactionID; // @synthesize transactionID=_transactionID;
 @property (copy, nonatomic) NSNumber *transactionType; // @synthesize transactionType=_transactionType;
 

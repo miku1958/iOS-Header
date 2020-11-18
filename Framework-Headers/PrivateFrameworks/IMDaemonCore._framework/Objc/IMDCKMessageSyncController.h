@@ -6,36 +6,39 @@
 
 #import <IMDaemonCore/IMDCKAbstractSyncController.h>
 
-@class CKServerChangeToken, IMDCKMessageSyncCKOperationFactory, IMDRecordZoneManager, NSObject;
+@class CKServerChangeToken, IMDCKMessageSyncCKOperationFactory, IMDRecordZoneManager, NSMutableDictionary, NSObject;
 @protocol IMDCKSyncTokenStore, OS_dispatch_queue, OS_xpc_object;
 
 @interface IMDCKMessageSyncController : IMDCKAbstractSyncController
 {
     BOOL _shouldCheckDeviceConditions;
-    CKServerChangeToken *_latestSyncToken;
     CKServerChangeToken *_archivedRecordSyncToken;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDRecordZoneManager *_recordZoneManager;
     id<IMDCKSyncTokenStore> _syncTokenStore;
     IMDCKMessageSyncCKOperationFactory *_CKOperationFactory;
     NSObject<OS_xpc_object> *_activity;
+    NSMutableDictionary *_visitedChats;
 }
 
 @property (strong, nonatomic) IMDCKMessageSyncCKOperationFactory *CKOperationFactory; // @synthesize CKOperationFactory=_CKOperationFactory;
 @property NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property (strong, nonatomic) CKServerChangeToken *archivedRecordSyncToken; // @synthesize archivedRecordSyncToken=_archivedRecordSyncToken;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
-@property (strong, nonatomic) CKServerChangeToken *latestSyncToken; // @synthesize latestSyncToken=_latestSyncToken;
+@property (strong, nonatomic) CKServerChangeToken *latestSyncToken;
 @property (strong, nonatomic) IMDRecordZoneManager *recordZoneManager; // @synthesize recordZoneManager=_recordZoneManager;
 @property (nonatomic) BOOL shouldCheckDeviceConditions; // @synthesize shouldCheckDeviceConditions=_shouldCheckDeviceConditions;
 @property (strong, nonatomic) id<IMDCKSyncTokenStore> syncTokenStore; // @synthesize syncTokenStore=_syncTokenStore;
+@property (strong, nonatomic) NSMutableDictionary *visitedChats; // @synthesize visitedChats=_visitedChats;
 
 + (id)sharedInstance;
+- (id)_changeTokenKey;
 - (id)_chatRegistry;
 - (id)_ckUtilitiesInstance;
 - (id)_constructMessageRecordIDUsingTombStoneDictionary:(id)arg1;
 - (id)_copyRecordIDsToDeleteWithLimit:(unsigned long long)arg1;
 - (void)_deleteMessagesWithRecordIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_deleteStingRaySyncToken;
 - (BOOL)_deviceConditionsAllowsMessageSync;
 - (BOOL)_doesAnyRecordZoneIDHavePendingArchivedRecords:(long long)arg1;
 - (void)_fetchArchivedRecordsIfNeeded:(BOOL)arg1 currentBatchCount:(long long)arg2 maxNumberOfBatches:(long long)arg3 WithCompletionBlock:(CDUnknownBlockType)arg4;
@@ -78,6 +81,7 @@
 - (void)deleteMessagesZone;
 - (id)init;
 - (id)initWithSyncTokenStore:(id)arg1;
+- (long long)syncControllerRecordType;
 - (void)syncDeletedMessagesToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncMessagesWithSyncType:(long long)arg1 shouldCheckDeviceConditions:(BOOL)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 

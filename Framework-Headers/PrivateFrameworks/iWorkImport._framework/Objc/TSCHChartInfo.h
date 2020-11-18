@@ -69,16 +69,16 @@ __attribute__((visibility("hidden")))
     struct CGSize _minimumChartBodySizeForTransformingGeometry;
 }
 
-@property (readonly, strong, nonatomic) TSCHChartType *chartType; // @synthesize chartType=mChartType;
+@property (readonly, nonatomic) TSCHChartType *chartType; // @synthesize chartType=mChartType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) CDStruct_44ada6bf defaultLayoutSettings;
+@property (nonatomic) CDStruct_b1c75024 defaultLayoutSettings;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL displayMessageOnRepCreation; // @synthesize displayMessageOnRepCreation=mDisplayMessageOnRepCreation;
 @property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
 @property (readonly, nonatomic) TSSStylesheet *documentStylesheet;
-@property (readonly, nonatomic) TSCHChartDrawableInfo *drawableInfo; // @synthesize drawableInfo=mDrawableInfo;
+@property (readonly, weak, nonatomic) TSCHChartDrawableInfo *drawableInfo; // @synthesize drawableInfo=mDrawableInfo;
 @property (readonly, nonatomic) TSCHChartStylePreset *firstPresetFromTheme;
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly, nonatomic) int gridDirection;
@@ -140,7 +140,9 @@ __attribute__((visibility("hidden")))
 + (id)specificPropertiesThatCanContainCustomNumberFormats;
 + (unsigned char)styleOwnerPathType;
 + (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2 forStyleOwner:(id)arg3;
++ (BOOL)updateInitialLabelExplosionIfNeededForChartType:(id)arg1 seriesNonStyles:(inout id *)arg2 stylePreset:(id)arg3 rowCount:(unsigned long long)arg4 columnCount:(unsigned long long)arg5;
 + (id)valueAxisStyleIdentifierForRoleIndex:(unsigned long long)arg1 ordinal:(unsigned long long)arg2;
+- (void).cxx_destruct;
 - (unsigned long long)addParagraphStyle:(id)arg1;
 - (void)addReferenceLineForAxisID:(id)arg1 nonStyle:(id)arg2 style:(id)arg3 uuid:(id)arg4;
 - (void)addViewStyleProxyForMutationTuples:(id)arg1 layouts:(id)arg2;
@@ -173,7 +175,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 context:(id)arg2;
-- (id)create3DSceneWithLayoutSettings:(const CDStruct_44ada6bf *)arg1;
+- (id)create3DSceneWithLayoutSettings:(const CDStruct_b1c75024 *)arg1;
 - (void)dealloc;
 - (void)debugLayoutCache;
 - (void)debugVerifyPreset;
@@ -192,6 +194,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasIntValueForProperty:(int)arg1 value:(int *)arg2;
 - (BOOL)hasObjectValueForProperty:(int)arg1 value:(id *)arg2;
 - (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1;
+- (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1 omitLabelPlacement:(BOOL)arg2;
 - (id)infoGeometryForDesiredPureLayoutGeometry:(id)arg1;
 - (id)infoGeometryForVisiblePositioningInfoGeometry:(id)arg1;
 - (id)infoGeometryForVisuallyCenteringOnUnscaledCanvasPoint:(struct CGPoint)arg1;
@@ -231,7 +234,7 @@ __attribute__((visibility("hidden")))
 - (void)p_duplicatePersistableMembersOfCopiedChartUsingContext:(id)arg1;
 - (id)p_genericToDefaultPropertyMap;
 - (id)p_getLocalizableDefaultDataDictionaryForChartType:(id)arg1 forDocumentLocale:(id)arg2;
-- (id)p_infoGeometryForGeometry:(id)arg1 isCircumscribing:(BOOL)arg2;
+- (id)p_infoGeometryForGeometry:(id)arg1 isCircumscribing:(BOOL)arg2 omitLabelPlacement:(BOOL)arg3;
 - (id)p_init;
 - (void)p_invalidateCachesInLayouts:(id)arg1;
 - (unsigned long long)p_paragraphStyleIndexOfFirstCategoryAxisParagraphStyle;

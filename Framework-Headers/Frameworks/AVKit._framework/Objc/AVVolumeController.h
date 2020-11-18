@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString;
-@protocol AVVolumeControllerDelegate;
+@class AVSystemController, NSNumber, NSString;
 
 @interface AVVolumeController : NSObject
 {
@@ -19,12 +18,13 @@
     BOOL _EUVolumeLimitOverridden;
     BOOL _volumeChangesThrottled;
     BOOL _canOverrideEUVolumeLimit;
+    BOOL _fullyInitialized;
     float _volume;
     float _EUVolumeLimit;
-    id<AVVolumeControllerDelegate> _delegate;
     NSNumber *_targetVolumeInternal;
     NSNumber *_maximumTargetVolumeSinceChangingVolumeBegan;
     NSString *_volumeCategory;
+    AVSystemController *_sharedSystemController;
 }
 
 @property (nonatomic) float EUVolumeLimit; // @synthesize EUVolumeLimit=_EUVolumeLimit;
@@ -33,16 +33,18 @@
 @property (nonatomic) BOOL canOverrideEUVolumeLimit; // @synthesize canOverrideEUVolumeLimit=_canOverrideEUVolumeLimit;
 @property (nonatomic, getter=isChangingVolume) BOOL changingVolume; // @synthesize changingVolume=_changingVolume;
 @property (nonatomic) BOOL currentRouteHasVolumeControl; // @synthesize currentRouteHasVolumeControl=_currentRouteHasVolumeControl;
-@property (weak, nonatomic) id<AVVolumeControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) float effectiveVolumeLimit;
+@property (nonatomic, getter=isFullyInitialized) BOOL fullyInitialized; // @synthesize fullyInitialized=_fullyInitialized;
 @property (strong, nonatomic) NSNumber *maximumTargetVolumeSinceChangingVolumeBegan; // @synthesize maximumTargetVolumeSinceChangingVolumeBegan=_maximumTargetVolumeSinceChangingVolumeBegan;
 @property (nonatomic) BOOL prefersSystemVolumeHUDHidden; // @synthesize prefersSystemVolumeHUDHidden=_prefersSystemVolumeHUDHidden;
 @property (nonatomic) BOOL prefersSystemVolumeHUDHiddenInternal; // @synthesize prefersSystemVolumeHUDHiddenInternal=_prefersSystemVolumeHUDHiddenInternal;
+@property (strong, nonatomic) AVSystemController *sharedSystemController; // @synthesize sharedSystemController=_sharedSystemController;
 @property (strong, nonatomic) NSNumber *targetVolumeInternal; // @synthesize targetVolumeInternal=_targetVolumeInternal;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 @property (readonly, nonatomic) NSString *volumeCategory; // @synthesize volumeCategory=_volumeCategory;
 @property (nonatomic) BOOL volumeChangesThrottled; // @synthesize volumeChangesThrottled=_volumeChangesThrottled;
 
++ (id)sharedVolumeController;
 - (void).cxx_destruct;
 - (void)_applyProposedVolumeIfNeeded;
 - (void)_applyProposedVolumeImmediately;

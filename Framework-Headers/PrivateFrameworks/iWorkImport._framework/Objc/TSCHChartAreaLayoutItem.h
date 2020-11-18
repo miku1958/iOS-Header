@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSCHChartReferenceLineLabelsLayoutItem *rightRefLineLabels;
 @property (readonly, nonatomic) TSCHChartReferenceLineLabelsLayoutItem *topRefLineLabels;
 
+- (void).cxx_destruct;
 - (void)buildSubTree;
-- (void)dealloc;
 - (struct CGRect)i_currentBufferAreaUnitRect;
 - (void)p_arrangeSizedChildren;
 - (Class)p_axisLayoutItemClassForAxisID:(id)arg1;

@@ -16,6 +16,7 @@
     NSDate *_expirationDate;
     long long _accessLevel;
     NSArray *_tierIdentifiers;
+    NSString *_billingIdentifier;
     NSDate *_creationDate;
     NSDate *_modificationDate;
     NSString *_derivedSubscriptionInfo;
@@ -25,6 +26,7 @@
 }
 
 @property (nonatomic) long long accessLevel; // @synthesize accessLevel=_accessLevel;
+@property (copy, nonatomic) NSString *billingIdentifier; // @synthesize billingIdentifier=_billingIdentifier;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (copy, nonatomic) NSString *derivedSubscriptionInfo; // @synthesize derivedSubscriptionInfo=_derivedSubscriptionInfo;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;

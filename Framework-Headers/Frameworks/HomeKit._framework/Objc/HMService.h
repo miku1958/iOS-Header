@@ -41,7 +41,7 @@
 }
 
 @property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
-@property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
+@property (readonly, nonatomic) HMApplicationData *applicationData;
 @property (copy, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
 @property (readonly, nonatomic) HMBulletinBoardNotification *bulletinBoardNotificationInternal; // @synthesize bulletinBoardNotificationInternal=_bulletinBoardNotificationInternal;
 @property (readonly, copy, nonatomic) NSArray *characteristics;

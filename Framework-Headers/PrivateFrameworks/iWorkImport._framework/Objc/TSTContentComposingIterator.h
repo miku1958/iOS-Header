@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
 {
     struct TSUCellCoord _minCursorCellID;
     NSMutableArray *_iterators;
-    vector_13f93596 _cursorCellIDs;
+    vector_38b190b0 _cursorCellIDs;
 }
 
-@property (nonatomic) vector_13f93596 cursorCellIDs; // @synthesize cursorCellIDs=_cursorCellIDs;
+@property (nonatomic) vector_38b190b0 cursorCellIDs; // @synthesize cursorCellIDs=_cursorCellIDs;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

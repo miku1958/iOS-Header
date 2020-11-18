@@ -20,7 +20,9 @@
     MPCFuture *_supportedCommandsFuture;
     long long _supportedCommandsCacheState;
     long long _playingIdentifierCacheState;
+    long long _queueIdentifierCacheState;
     NSString *_playingItemIdentifier;
+    NSString *_queueIdentifier;
     struct _MSVSignedRange _maximumLoadedRange;
     NSMutableArray *_contentItemIDs;
     MSVLRUDictionary *_contentItems;
@@ -29,6 +31,7 @@
     MSVLRUDictionary *_contentItemArtwork;
     NSMutableDictionary *_contentItemArtworkIdentifiers;
     MPCFuture *_playingItemIdentifierFuture;
+    MPCFuture *_queueIdentifierFuture;
     NSMapTable *_contentItemIDsFutures;
     NSMapTable *_contentItemFutures;
     NSMutableDictionary *_contentItemArtworkFutures;
@@ -49,6 +52,8 @@
 @property (readonly, nonatomic) long long playbackStateCacheState; // @synthesize playbackStateCacheState=_playbackStateCacheState;
 @property (readonly, nonatomic) MPCFuture *playingIdentifier;
 @property (readonly, nonatomic) long long playingIdentifierCacheState; // @synthesize playingIdentifierCacheState=_playingIdentifierCacheState;
+@property (readonly, nonatomic) MPCFuture *queueIdentifier;
+@property (readonly, nonatomic) long long queueIdentifierCacheState; // @synthesize queueIdentifierCacheState=_queueIdentifierCacheState;
 @property (readonly, nonatomic) id<MPArtworkDataSource> remotePlayerArtworkDataSource; // @synthesize remotePlayerArtworkDataSource=_remotePlayerArtworkDataSource;
 @property (strong, nonatomic) MPCPlayerPath *resolvedPlayerPath; // @synthesize resolvedPlayerPath=_resolvedPlayerPath;
 @property (readonly) Class superclass;
@@ -69,6 +74,7 @@
 - (void)_onQueue_setOptimisticPlaybackPositionWithOptions:(id)arg1;
 - (void)_onQueue_setOptimisticPlaybackState:(unsigned int)arg1 withOptions:(id)arg2;
 - (void)_onQueue_updateOptimisticElapsedTimeForContentItem:(id)arg1 elapsedTime:(double)arg2 rate:(float)arg3;
+- (void)_onQueue_updateOptimisticReorderedPlaybackQueueWithMovingContentItemIdentifier:(id)arg1 afterContentItemIdentifier:(id)arg2;
 - (void)_onQueue_updateOptimisticStateForCommand:(unsigned int)arg1 options:(id)arg2;
 - (void)_playbackQueueChangedNotification:(id)arg1;
 - (void)_playbackQueueContentItemsChangedNotification:(id)arg1;
@@ -87,6 +93,7 @@
 - (id)playQueueIdentifiersForRange:(struct _MSVSignedRange)arg1;
 - (id)playQueueIdentifiersForRequest:(void *)arg1;
 - (void)sendCommand:(unsigned int)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateOptimisticStateForCommand:(unsigned int)arg1 options:(id)arg2;
 
 @end
 

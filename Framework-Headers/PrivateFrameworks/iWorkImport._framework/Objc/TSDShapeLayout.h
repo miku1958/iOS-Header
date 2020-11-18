@@ -6,7 +6,7 @@
 
 #import <iWorkImport/TSDStyledLayout.h>
 
-@class TSDEditableBezierPathSource, TSDFill, TSDInfoGeometry, TSDLineEnd, TSDMutableStroke, TSDPathSource, TSDShapeInfo, TSUBezierPath;
+@class NSArray, TSDEditableBezierPathSource, TSDFill, TSDInfoGeometry, TSDLineEnd, TSDMutableStroke, TSDPathSource, TSDShapeInfo, TSUBezierPath;
 
 __attribute__((visibility("hidden")))
 @interface TSDShapeLayout : TSDStyledLayout
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     double mTailCutT;
     TSUBezierPath *mCachedClippedPath;
     TSDPathSource *mShrunkenPathSource;
+    TSDPathSource *mOriginalShrunkenPathSource;
     TSDEditableBezierPathSource *mCachedEditableBezierPathSource;
     TSDPathSource *mCachedPathSource;
     TSDPathSource *mResizePathSource;
@@ -51,16 +52,15 @@ __attribute__((visibility("hidden")))
     TSDInfoGeometry *mInitialInfoGeometry;
     TSDMutableStroke *mDynamicStroke;
     TSDFill *mDynamicFill;
+    NSArray *mDynamicStrokeOffsetArray;
 }
 
-@property (readonly, nonatomic) BOOL canBeIntersected;
-@property (readonly, nonatomic) BOOL canResetTextAndObjectHandles;
 @property (readonly, nonatomic) TSUBezierPath *clippedPathForLineEnds;
-@property (strong, nonatomic) TSDFill *dynamicFill; // @synthesize dynamicFill=mDynamicFill;
 @property (readonly, nonatomic) TSDFill *fill;
 @property (readonly, nonatomic) double headLineEndAngle;
 @property (readonly, nonatomic) struct CGPoint headLineEndPoint;
 @property (readonly, nonatomic) struct CGPoint headPoint;
+@property (readonly, nonatomic) BOOL isFreehandDrawingSpacerShape;
 @property (readonly, nonatomic) BOOL isTailEndOnLeft;
 @property (readonly, nonatomic) TSDInfoGeometry *layoutInfoGeometry;
 @property (readonly, nonatomic) TSUBezierPath *path;
@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL pathIsOpen;
 @property (readonly, nonatomic) TSDPathSource *pathSource;
 @property (readonly, nonatomic) TSDShapeInfo *shapeInfo;
-@property (readonly, nonatomic) BOOL shouldAdjustForStrokeWidthForCollabCursor;
 @property (readonly, nonatomic) TSDLineEnd *strokeHeadLineEnd;
 @property (readonly, nonatomic) TSDLineEnd *strokeTailLineEnd;
 @property (readonly, nonatomic) double tailLineEndAngle;
@@ -86,24 +85,23 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)alignmentFrame;
 - (struct CGRect)alignmentFrameInRoot;
 - (struct CGRect)boundsForStandardKnobs;
+- (BOOL)canBeIntersected;
+- (BOOL)canResetTextAndObjectHandles;
 - (struct CGPoint)centerForConnecting;
 - (id)computeLayoutGeometry;
 - (struct CGAffineTransform)computeLayoutTransform;
 - (void)dealloc;
-- (void)dynamicStrokeWidthChangeDidBegin;
-- (void)dynamicStrokeWidthChangeDidEnd;
 - (id)editablePathSource;
 - (struct CGRect)frameForCulling;
 - (id)i_computeWrapPath;
 - (id)i_computeWrapPathClosed:(BOOL)arg1;
 - (id)initWithInfo:(id)arg1;
-- (id)initialInfoGeometry;
+- (void)invalidate;
 - (void)invalidateFrame;
 - (void)invalidatePath;
 - (void)invalidatePathBounds;
 - (BOOL)isInvisible;
 - (BOOL)isInvisibleAutosizingShape;
-- (BOOL)isStrokeBeingManipulated;
 - (id)layoutGeometryFromInfo;
 - (double)lineEndScale:(BOOL)arg1;
 - (struct CGSize)minimumSize;
@@ -118,14 +116,15 @@ __attribute__((visibility("hidden")))
 - (void)p_invalidateHead;
 - (void)p_invalidateTail;
 - (id)p_unitePath:(id)arg1 withLineEndForHead:(BOOL)arg2 stroke:(id)arg3;
-- (void)p_updateResizeInfoGeometryFromResizePathSource;
 - (void)p_validateHeadAndTail;
 - (void)p_validateHeadLineEnd;
 - (void)p_validateTailLineEnd;
 - (void)processChangedProperty:(int)arg1;
+- (id)reliedOnLayouts;
 - (void)setGeometry:(id)arg1;
 - (struct CGRect)shapeFrameWithTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)shapeFrameWithTransform:(struct CGAffineTransform)arg1 strokeDrawOptions:(unsigned long long)arg2;
+- (BOOL)shouldAdjustForStrokeWidthForCollabCursor;
 - (BOOL)shouldBeDisplayedInShowMode;
 - (id)smartPathSource;
 - (id)stroke;
@@ -133,7 +132,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsResize;
 - (BOOL)supportsRotation;
 - (id)textWrapperForExteriorWrap;
-- (void)transferLayoutGeometryToInfo:(id)arg1;
+- (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
+- (void)validate;
 
 @end
 

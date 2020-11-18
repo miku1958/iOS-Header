@@ -8,9 +8,12 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
+@class HDCodableEntityIdentifier;
+
 @interface HDCodableNanoSyncAnchor : PBCodable <NSCopying>
 {
     long long _anchor;
+    HDCodableEntityIdentifier *_entityIdentifier;
     int _objectType;
     struct {
         unsigned int anchor:1;
@@ -19,10 +22,13 @@
 }
 
 @property (nonatomic) long long anchor; // @synthesize anchor=_anchor;
+@property (strong, nonatomic) HDCodableEntityIdentifier *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
 @property (nonatomic) BOOL hasAnchor;
+@property (readonly, nonatomic) BOOL hasEntityIdentifier;
 @property (nonatomic) BOOL hasObjectType;
 @property (nonatomic) int objectType; // @synthesize objectType=_objectType;
 
+- (void).cxx_destruct;
 - (int)StringAsObjectType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

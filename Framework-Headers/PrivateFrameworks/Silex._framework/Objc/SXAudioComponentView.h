@@ -8,15 +8,15 @@
 
 #import <Silex/SXMediaPlaybackDelegate-Protocol.h>
 
-@class AVPlayerViewController, NSString, SXAVPlayer, SXAudioComponentOverlayView, SXHost;
-@protocol SXResourceDataSource;
+@class AVPlayerViewController, NSString, SXAVPlayer, SXAudioComponentOverlayView;
+@protocol SXHost, SXResourceDataSource;
 
 @interface SXAudioComponentView : SXMediaComponentView <SXMediaPlaybackDelegate>
 {
     BOOL _audioHasPlayed;
     BOOL _startPlaybackWhenReady;
     id<SXResourceDataSource> _resourceDataSource;
-    SXHost *_host;
+    id<SXHost> _host;
     SXAudioComponentOverlayView *_overlayView;
     AVPlayerViewController *_playerViewController;
     SXAVPlayer *_player;
@@ -26,7 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) SXHost *host; // @synthesize host=_host;
+@property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (readonly, nonatomic) SXAudioComponentOverlayView *overlayView; // @synthesize overlayView=_overlayView;
 @property (strong, nonatomic) SXAVPlayer *player; // @synthesize player=_player;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;

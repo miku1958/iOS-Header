@@ -118,6 +118,7 @@
 - (void)handleIncomingAirDropURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)hasModelInitialized;
 - (oneway void)iCloudAccountNameWithCompletion:(CDUnknownBlockType)arg1;
+- (void)includeDeviceInAutomations:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2;

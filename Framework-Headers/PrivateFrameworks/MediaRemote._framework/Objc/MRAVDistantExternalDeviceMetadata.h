@@ -9,7 +9,7 @@
 #import <MediaRemote/NSMutableCopying-Protocol.h>
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
-@class MRSupportedProtocolMessages, NSString;
+@class MRSupportedProtocolMessages, NSString, _MRDeviceInfoMessageProtobuf;
 
 @interface MRAVDistantExternalDeviceMetadata : NSObject <NSMutableCopying, NSSecureCoding>
 {
@@ -17,12 +17,12 @@
     NSString *_hostName;
     long long _hostPort;
     MRSupportedProtocolMessages *_supportedMessages;
-    void *_deviceInfo;
+    _MRDeviceInfoMessageProtobuf *_deviceInfo;
     BOOL _paired;
     BOOL _usingSystemPairing;
 }
 
-@property (readonly, nonatomic) void *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
+@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property (readonly, nonatomic) NSString *hostName; // @synthesize hostName=_hostName;
 @property (readonly, nonatomic) long long hostPort; // @synthesize hostPort=_hostPort;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
@@ -31,9 +31,9 @@
 @property (readonly, nonatomic) BOOL usingSystemPairing; // @synthesize usingSystemPairing=_usingSystemPairing;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

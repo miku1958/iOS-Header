@@ -28,15 +28,19 @@
     NSInvocation *_currentFriendRequestInvocation;
     long long _environment;
     GKEventEmitter<GKLocalPlayerListener> *_eventEmitter;
+    double _authStartTimeStamp;
+    unsigned long long _authenticationType;
 }
 
 @property (strong, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
 @property (strong, nonatomic) NSString *accountName; // @dynamic accountName;
 @property (readonly, nonatomic) BOOL allowNearbyMultiplayer; // @dynamic allowNearbyMultiplayer;
 @property (nonatomic) BOOL appIsInBackground;
+@property (nonatomic) double authStartTimeStamp; // @synthesize authStartTimeStamp=_authStartTimeStamp;
 @property (copy, nonatomic) CDUnknownBlockType authenticateHandler;
 @property (nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (readonly, nonatomic, getter=isAuthenticating) BOOL authenticating; // @dynamic authenticating;
+@property (nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
 @property (readonly, nonatomic) BOOL canChangePhoto; // @dynamic canChangePhoto;
 @property (nonatomic) UIAlertView *currentAlert; // @synthesize currentAlert=_currentAlert;
 @property (strong, nonatomic) NSInvocation *currentFriendRequestInvocation; // @synthesize currentFriendRequestInvocation=_currentFriendRequestInvocation;
@@ -102,6 +106,11 @@
 - (void)registerListener:(id)arg1;
 - (void)removeAllFriends:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)removeFriend:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)reportAuthenticatingWithAuthKitInvocation;
+- (void)reportAuthenticatingWithGreenBuddyInvocation;
+- (void)reportAuthenticationErrorNoInternetConnection;
+- (void)reportAuthenticationFailedForPlayer;
+- (void)reportAuthenticationLoginCanceled;
 - (void)resolveConflictingSavedGames:(id)arg1 withData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)saveGameData:(id)arg1 withName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setDefaultLeaderboardCategoryID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -110,6 +119,7 @@
 - (void)setStatus:(id)arg1;
 - (void)setStatus:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setupForCloudSavedGames;
+- (BOOL)shouldDisplayWelcomeBannerForPlayer:(id)arg1 lastAuthDate:(id)arg2 remoteUI:(BOOL)arg3 timeBetweenBanners:(double)arg4;
 - (void)showSettings;
 - (void)signOutWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterAllListeners;

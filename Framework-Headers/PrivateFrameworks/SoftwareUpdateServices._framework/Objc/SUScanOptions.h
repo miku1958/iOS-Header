@@ -15,10 +15,14 @@
     NSString *_identifier;
     BOOL _forced;
     NSMutableSet *_types;
+    NSString *_requestedPMV;
+    BOOL _MDMUseDelayPeriod;
 }
 
+@property (nonatomic) BOOL MDMUseDelayPeriod; // @synthesize MDMUseDelayPeriod=_MDMUseDelayPeriod;
 @property (nonatomic, getter=isForced) BOOL forced; // @synthesize forced=_forced;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *requestedPMV; // @synthesize requestedPMV=_requestedPMV;
 @property (strong, nonatomic) NSSet *types; // @synthesize types=_types;
 
 + (BOOL)supportsSecureCoding;

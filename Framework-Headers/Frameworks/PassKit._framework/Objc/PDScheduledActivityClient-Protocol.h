@@ -7,9 +7,12 @@
 #import <PassKitCore/NSObject-Protocol.h>
 
 @class NSString, PDScheduledActivityCriteria;
-@protocol NSCoding;
+@protocol NSObject><NSSecureCoding;
 
 @protocol PDScheduledActivityClient <NSObject>
-- (void)performScheduledActivityWithIdentifier:(NSString *)arg1 activityCriteria:(PDScheduledActivityCriteria *)arg2 activityContext:(id<NSCoding>)arg3;
+
+@optional
+- (void)performScheduledActivityWithIdentifier:(NSString *)arg1 activityCriteria:(PDScheduledActivityCriteria *)arg2;
+- (void)performScheduledActivityWithIdentifier:(NSString *)arg1 activityCriteria:(PDScheduledActivityCriteria *)arg2 activityContext:(id<NSObject><NSSecureCoding>)arg3;
 @end
 

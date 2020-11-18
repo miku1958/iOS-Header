@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) TSCHChartValueAxis *valueAxis; // @synthesize valueAxis=mValueAxis;
 @property (readonly) BOOL valueLabelsOn; // @synthesize valueLabelsOn=mValueLabelsOn;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithChartModel:(id)arg1 forSeries:(unsigned long long)arg2;
 

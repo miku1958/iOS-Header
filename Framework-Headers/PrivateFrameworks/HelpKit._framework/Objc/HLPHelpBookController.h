@@ -11,6 +11,7 @@
 @interface HLPHelpBookController : HLPRemoteDataController
 {
     BOOL _hasSectionIcon;
+    BOOL _fullBookView;
     long long _contentFormatVersion;
     long long _serverType;
     NSMutableDictionary *_helpItemMap;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSString *contentVersion; // @synthesize contentVersion=_contentVersion;
 @property (strong, nonatomic) NSString *copyrightText; // @synthesize copyrightText=_copyrightText;
 @property (strong, nonatomic) NSString *copyrightTopicIdentifier; // @synthesize copyrightTopicIdentifier=_copyrightTopicIdentifier;
+@property (nonatomic) BOOL fullBookView; // @synthesize fullBookView=_fullBookView;
 @property (nonatomic) BOOL hasSectionIcon; // @synthesize hasSectionIcon=_hasSectionIcon;
 @property (strong, nonatomic) NSURL *helpBookURL; // @synthesize helpBookURL=_helpBookURL;
 @property (strong, nonatomic) NSMutableDictionary *helpItemMap; // @synthesize helpItemMap=_helpItemMap;

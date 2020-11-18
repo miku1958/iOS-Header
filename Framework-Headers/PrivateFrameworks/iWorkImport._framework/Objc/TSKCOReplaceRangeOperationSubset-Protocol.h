@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSKCOAbstractOperation, TSKCOReplaceRangeOperation;
+@class TSKCOReplaceRangeOperation;
 
 @protocol TSKCOReplaceRangeOperationSubset
-- (TSKCOAbstractOperation *)fromReplaceRangeOperation:(TSKCOReplaceRangeOperation *)arg1;
 - (TSKCOReplaceRangeOperation *)toReplaceRangeOperation;
 @end
 

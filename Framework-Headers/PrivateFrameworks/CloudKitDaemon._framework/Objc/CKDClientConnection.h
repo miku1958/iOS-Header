@@ -42,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)clearRecordCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2;
 - (void)currentDeviceIDWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)currentUserBoundaryKeyWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)currentUserIDWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dataclassEnabled:(id)arg1 withSetupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)decryptPersonalInfoOnShare:(id)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)displayInfoOnAccountWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -57,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)getPCSDiagnosticsForZonesWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getRecordPCSDiagnosticsForZonesWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSandboxExtensionsWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)importantUserIDsWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithConnection:(id)arg1;
 - (void)performAcceptSharesOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)performAggregateZonePCSOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;

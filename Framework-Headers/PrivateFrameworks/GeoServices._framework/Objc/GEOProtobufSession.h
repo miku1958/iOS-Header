@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol GEODataSession;
+@protocol GEODataSession, GEODataSessionRulesProvider;
 
 @interface GEOProtobufSession : NSObject
 {
     id<GEODataSession> _dataSession;
+    id<GEODataSessionRulesProvider> _rulesProvider;
     _Atomic unsigned long long _lastTaskIdentifier;
 }
 
@@ -21,9 +22,9 @@
 + (id)sharedProtobufSession;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithDataSession:(id)arg1;
+- (id)initWithDataSession:(id)arg1 rulesProvider:(id)arg2;
 - (id)taskWithRequest:(id)arg1 requestTypeCode:(unsigned int)arg2 responseClass:(Class)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
-- (id)taskWithRequestKind:(int)arg1 protobufRequest:(id)arg2 URL:(id)arg3 additionalHTTPHeaders:(id)arg4 auditToken:(id)arg5 traits:(id)arg6 delegate:(id)arg7 delegateQueue:(id)arg8;
+- (id)taskWithRequestKind:(int)arg1 protobufRequest:(id)arg2 URL:(id)arg3 additionalHTTPHeaders:(id)arg4 auditToken:(id)arg5 traits:(id)arg6 delegate:(id)arg7 delegateQueue:(id)arg8 requestCounterTicket:(id)arg9;
 
 @end
 

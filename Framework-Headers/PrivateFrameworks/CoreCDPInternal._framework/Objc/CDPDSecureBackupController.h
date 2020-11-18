@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSDictionary *cachedAccountInfo; // @synthesize cachedAccountInfo=_cachedAccountInfo;
 @property (strong, nonatomic) CDPDSecureBackupConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) CDPContext *context; // @synthesize context=_context;
-@property (readonly, weak, nonatomic) id<CDPDSecureBackupDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CDPDSecureBackupDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL fakeNearlyDepletedRecords; // @synthesize fakeNearlyDepletedRecords=_fakeNearlyDepletedRecords;
 @property (strong, nonatomic) id<CDPDSecureBackupProxy> secureBackupProxy; // @synthesize secureBackupProxy=_secureBackupProxy;
 @property (readonly, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;

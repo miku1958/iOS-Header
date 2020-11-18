@@ -13,9 +13,9 @@
 
 @interface TTMergeableString : NSObject <CRDataType>
 {
-    vector_6c07be0f _startNodes;
-    vector_6c07be0f _endNodes;
-    vector_6c07be0f _orderedSubstrings;
+    vector_c5c053b6 _startNodes;
+    vector_c5c053b6 _endNodes;
+    vector_c5c053b6 _orderedSubstrings;
     unsigned int _unserializedClock;
     unsigned long long _editCount;
     BOOL _cacheInvalid;
@@ -59,29 +59,29 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)deleteCharactersInRange:(struct _NSRange)arg1;
-- (void)deleteSubstrings:(vector_6c07be0f *)arg1 withCharacterRanges:(vector_7053a16b *)arg2;
+- (void)deleteSubstrings:(vector_c5c053b6 *)arg1 withCharacterRanges:(vector_7053a16b *)arg2;
 - (id)deltaSince:(id)arg1 in:(id)arg2;
 - (id)dotDescription:(unsigned long long)arg1;
 - (void)dumpMergeData:(id)arg1;
 - (void)endEditing;
-- (vector_6c07be0f *)endNodes;
+- (vector_c5c053b6 *)endNodes;
 - (void)enumerateRangesModifiedAfter:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateSubstrings:(CDUnknownBlockType)arg1;
 - (void)generateIdsForLocalChanges;
 - (void)generateIdsForLocalChangesSafeForSharedTimestamp:(BOOL)arg1;
 - (unsigned long long)getCharacterIndexForCharID:(struct TopoID)arg1;
-- (void)getCharacterRanges:(vector_7053a16b *)arg1 forSubstrings:(vector_6c07be0f *)arg2;
+- (void)getCharacterRanges:(vector_7053a16b *)arg1 forSubstrings:(vector_c5c053b6 *)arg2;
 - (struct TopoSubstring *)getSubstringBeforeTopoID:(struct TopoID)arg1;
-- (void)getSubstrings:(vector_6c07be0f *)arg1 forCharacterRange:(struct _NSRange)arg2;
-- (void)getSubstrings:(vector_6c07be0f *)arg1 forTopoIDRange:(struct TopoIDRange)arg2;
-- (void)getSubstrings:(vector_6c07be0f *)arg1 inOrderedSubstrings:(vector_6c07be0f *)arg2 forCharacterRange:(struct _NSRange)arg3;
+- (void)getSubstrings:(vector_c5c053b6 *)arg1 forCharacterRange:(struct _NSRange)arg2;
+- (void)getSubstrings:(vector_c5c053b6 *)arg1 forTopoIDRange:(struct TopoIDRange)arg2;
+- (void)getSubstrings:(vector_c5c053b6 *)arg1 inOrderedSubstrings:(vector_c5c053b6 *)arg2 forCharacterRange:(struct _NSRange)arg3;
 - (BOOL)graphIsEqual:(id)arg1;
 - (id)i_saveDeltasSinceTimestamp:(id)arg1 toArchive:(struct String *)arg2;
 - (id)init;
 - (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2;
 - (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2 andSharedTimestamp:(id)arg3;
-- (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2 withOrderedSubstrings:(vector_6c07be0f *)arg3;
-- (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2 withOrderedSubstrings:(vector_6c07be0f *)arg3 timestamp:(id)arg4;
+- (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2 withOrderedSubstrings:(vector_c5c053b6 *)arg3;
+- (id)initWithArchive:(const struct String *)arg1 andReplicaID:(id)arg2 withOrderedSubstrings:(vector_c5c053b6 *)arg3 timestamp:(id)arg4;
 - (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
 - (id)initWithReplicaID:(id)arg1;
 - (id)initWithReplicaID:(id)arg1 asFragment:(BOOL)arg2;
@@ -96,14 +96,14 @@
 - (unsigned long long)mergeWithString:(id)arg1;
 - (unsigned long long)mergeWithString:(id)arg1 mergeTimestamps:(BOOL)arg2;
 - (void)moveRange:(struct _NSRange)arg1 toIndex:(unsigned long long)arg2;
-- (vector_6c07be0f *)orderedSubstrings;
+- (vector_c5c053b6 *)orderedSubstrings;
 - (void)realizeLocalChangesIn:(id)arg1;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withAttributedString:(id)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (id)replicaUUIDForCharacterAtIndex:(unsigned long long)arg1;
 - (void)resetLocalReplicaClocksToTimestampValues;
 - (void)saveDeltaSinceTimestamp:(id)arg1 toArchive:(struct String *)arg2;
-- (void)saveSubstrings:(vector_6c07be0f *)arg1 archiveSet:(unordered_set_0f32d0a8 *)arg2 linkSet:(unordered_set_0f32d0a8 *)arg3 archivedString:(id *)arg4 toArchive:(struct String *)arg5;
+- (void)saveSubstrings:(vector_c5c053b6 *)arg1 archiveSet:(unordered_set_0f32d0a8 *)arg2 linkSet:(unordered_set_0f32d0a8 *)arg3 archivedString:(id *)arg4 toArchive:(struct String *)arg5;
 - (void)saveToArchive:(struct String *)arg1;
 - (BOOL)selection:(id)arg1 wasModifiedAfter:(id)arg2;
 - (id)selectionForCharacterRanges:(id)arg1;
@@ -112,7 +112,7 @@
 - (id)serializeDeltaSinceTimestamp:(id)arg1;
 - (void)sortSplitNodes;
 - (struct TopoSubstring *)splitTopoSubstring:(struct TopoSubstring *)arg1 atIndex:(unsigned int)arg2;
-- (vector_6c07be0f *)startNodes;
+- (vector_c5c053b6 *)startNodes;
 - (id)string;
 - (long long)substring:(struct TopoSubstring *)arg1 modifiedAfter:(id)arg2;
 - (BOOL)textEitherSideOfSelectionAnchor:(struct TopoID)arg1 wasModifiedAfter:(id)arg2;

@@ -58,7 +58,6 @@
 - (void)sendWindowMiniaturizeByMouseFeedback;
 - (void)userDidCancelSession;
 - (void)userDidCancelSession:(long long)arg1;
-- (void)userDidEngageWithCardShowingResult:(id)arg1 onCardOfType:(id)arg2 actionType:(id)arg3 actionTarget:(id)arg4 destination:(id)arg5;
 - (void)userDidEngageWithCompletionListItem:(id)arg1 onActionButton:(BOOL)arg2 method:(long long)arg3;
 - (void)userDidEngageWithCompletionListItem:(id)arg1 onActionButton:(BOOL)arg2 method:(long long)arg3 doesMatchSiriSuggestion:(BOOL)arg4;
 - (void)userTypedGoToSearch:(id)arg1 endpoint:(unsigned long long)arg2;

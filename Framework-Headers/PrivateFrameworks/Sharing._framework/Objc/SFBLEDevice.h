@@ -15,7 +15,10 @@
     char _rssiHistory[8];
     unsigned char _rssiCount;
     unsigned char _rssiIndex;
+    BOOL _insideBubble;
     BOOL _paired;
+    BOOL _triggered;
+    int _rssiEstimate;
     unsigned int _connectedServices;
     NSData *_advertisementData;
     NSDictionary *_advertisementFields;
@@ -29,6 +32,7 @@
     long long _rssiCeiling;
     long long _rssiFloor;
     long long _smoothedRSSI;
+    SFProximityEstimator *_infoProximityEstimator;
     double _lastSeen;
     double _pairCheckTime;
     SFProximityEstimator *_setupProximityEstimator;
@@ -42,15 +46,19 @@
 @property (nonatomic) long long distance; // @synthesize distance=_distance;
 @property (nonatomic) unsigned long long foundTicks; // @synthesize foundTicks=_foundTicks;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) SFProximityEstimator *infoProximityEstimator; // @synthesize infoProximityEstimator=_infoProximityEstimator;
+@property (nonatomic) BOOL insideBubble; // @synthesize insideBubble=_insideBubble;
 @property (nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) double pairCheckTime; // @synthesize pairCheckTime=_pairCheckTime;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
 @property (nonatomic) long long rssi; // @synthesize rssi=_rssi;
 @property (nonatomic) long long rssiCeiling; // @synthesize rssiCeiling=_rssiCeiling;
+@property (nonatomic) int rssiEstimate; // @synthesize rssiEstimate=_rssiEstimate;
 @property (nonatomic) long long rssiFloor; // @synthesize rssiFloor=_rssiFloor;
 @property (strong, nonatomic) SFProximityEstimator *setupProximityEstimator; // @synthesize setupProximityEstimator=_setupProximityEstimator;
 @property (nonatomic) long long smoothedRSSI; // @synthesize smoothedRSSI=_smoothedRSSI;
+@property (nonatomic) BOOL triggered; // @synthesize triggered=_triggered;
 
 + (void)setRSSIEstimatorInfo:(id)arg1;
 + (BOOL)supportsSecureCoding;

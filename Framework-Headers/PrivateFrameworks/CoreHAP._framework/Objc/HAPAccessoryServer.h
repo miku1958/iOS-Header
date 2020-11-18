@@ -23,6 +23,7 @@
     id<HAPAccessoryServerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSData *_setupHash;
+    unsigned long long _authMethod;
     HAPAccessory *_primaryAccessory;
     NSArray *_accessories;
     long long _linkType;
@@ -32,9 +33,11 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     id<HAPKeyStore> _keyStore;
+    unsigned long long _pairSetupType;
 }
 
 @property (copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
+@property (nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
 @property (copy, nonatomic) NSNumber *category; // @synthesize category=_category;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
@@ -49,6 +52,7 @@
 @property (readonly, weak, nonatomic) id<HAPKeyStore> keyStore; // @synthesize keyStore=_keyStore;
 @property (readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) unsigned long long pairSetupType; // @synthesize pairSetupType=_pairSetupType;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (strong, nonatomic) HAPAccessory *primaryAccessory; // @synthesize primaryAccessory=_primaryAccessory;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -82,7 +86,7 @@
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)requiresTimedWrite:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
-- (void)startPairing;
+- (void)startPairingWithConsentRequired:(BOOL)arg1;
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

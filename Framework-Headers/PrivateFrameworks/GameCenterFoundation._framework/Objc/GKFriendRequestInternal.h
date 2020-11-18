@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (int)defaultFamiliarity;
 

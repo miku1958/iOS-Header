@@ -13,6 +13,9 @@
     BOOL _useTiling;
     id<MPSExternalMatrixMultiplication> _plugin;
     CDUnknownFunctionPointerType _encode;
+    unsigned long long _MPlugin;
+    unsigned long long _NPlugin;
+    unsigned long long _KPlugin;
     BOOL _transA;
     BOOL _transB;
     unsigned long long _batchStart;
@@ -42,6 +45,7 @@
 
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
+- (void)dealloc;
 - (id)debugDescription;
 - (void)encodeToCommandBuffer:(id)arg1 encoder:(id)arg2 leftMatrix:(id)arg3 rightMatrix:(id)arg4 resultMatrix:(id)arg5;
 - (void)encodeToCommandBuffer:(id)arg1 leftMatrix:(id)arg2 rightMatrix:(id)arg3 resultMatrix:(id)arg4;

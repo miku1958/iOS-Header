@@ -8,9 +8,16 @@
 
 #import <KeychainCircle/KCJoiningAcceptCircleDelegate-Protocol.h>
 
+@class NSString;
+
 @interface KCJoiningAcceptAccountCircleDelegate : NSObject <KCJoiningAcceptCircleDelegate>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)delegate;
 - (id)circleGetInitialSyncViews:(id *)arg1;

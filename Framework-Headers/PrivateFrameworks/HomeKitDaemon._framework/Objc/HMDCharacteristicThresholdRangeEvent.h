@@ -6,15 +6,15 @@
 
 #import <HomeKitDaemon/HMDCharacteristicEventBase.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSObject, NSString, NSUUID;
+@class NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDCharacteristicThresholdRangeEvent : HMDCharacteristicEventBase <NSSecureCoding, HMFDumpState, HMFLogging, HMFMessageReceiver>
+@interface HMDCharacteristicThresholdRangeEvent : HMDCharacteristicEventBase <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
     NSNumber *_min;
     NSNumber *_max;
@@ -25,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSNumber *max; // @synthesize max=_max;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) NSNumber *min; // @synthesize min=_min;
 @property (readonly) Class superclass;

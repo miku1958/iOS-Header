@@ -20,14 +20,15 @@
 }
 
 @property (strong, nonatomic) NSMutableSet *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
-@property (nonatomic) PKPaymentAuthorizationRemoteAlertViewController *controller; // @synthesize controller=_controller;
+@property (weak, nonatomic) PKPaymentAuthorizationRemoteAlertViewController *controller; // @synthesize controller=_controller;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPaymentAuthorizationServiceProtocol> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentAuthorizationServiceProtocol> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_executeCompletionHandlers;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;

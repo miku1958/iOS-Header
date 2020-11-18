@@ -10,6 +10,7 @@
 {
 }
 
+- (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

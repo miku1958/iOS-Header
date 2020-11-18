@@ -22,7 +22,6 @@
     NSMutableArray *_diagnosticReasons;
     NSURLSession *_urlSession;
     NSObject<OS_dispatch_queue> *_diagnosticReasonsQueue;
-    NSObject<OS_dispatch_queue> *_diagnosticSessionQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
 }
@@ -49,6 +48,7 @@
 - (BOOL)_trustPassesExtendedValidation:(struct __SecTrust *)arg1;
 - (id)_urlRequestTaggedWithDiagnosticReasonHeader:(id)arg1 forTaskID:(unsigned long long)arg2;
 - (id)_urlRequestTaggedWithWebServiceSessionMarkerHeader:(id)arg1;
+- (void)addDiagnosticReason:(id)arg1;
 - (BOOL)canBypassTrustExtendedValidation;
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)diagnosticSessionWithReason:(id)arg1 sessionHandler:(CDUnknownBlockType)arg2;
@@ -66,6 +66,7 @@
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 retries:(unsigned long long)arg3 authHandling:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)processRetryRequest:(id)arg1 responseData:(id)arg2 orginalRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)refreshSessionWithConfiguration:(id)arg1;
+- (void)removeDiagnosticReason:(id)arg1;
 - (void)resetWebServiceSessionMarker;
 - (void)setUrlSession:(id)arg1;
 - (id)urlSession;

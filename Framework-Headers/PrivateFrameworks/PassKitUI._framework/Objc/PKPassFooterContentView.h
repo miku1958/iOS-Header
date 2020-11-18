@@ -12,6 +12,7 @@
 @interface PKPassFooterContentView : UIView
 {
     BOOL _userIntentRequired;
+    BOOL _invalidated;
     long long _style;
     id<PKPassFooterContentViewDelegate> _delegate;
     PKPass *_pass;
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) UIView *bottomRule; // @synthesize bottomRule=_bottomRule;
 @property (nonatomic) id<PKPassFooterContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
+@property (readonly, nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (readonly, nonatomic, getter=isPassAuthorized) BOOL passAuthorized;
 @property (readonly, nonatomic) PKPaymentPass *paymentPass;

@@ -15,12 +15,14 @@
     NSDictionary *_componentMetadata;
     unsigned long long _adType;
     NSDictionary *_campaignData;
+    double _aspectRatioOfVideoPlayer;
     struct CGPoint _positionInArticle;
     struct CGSize _viewportSize;
     struct CGSize _contentSize;
 }
 
 @property (nonatomic) unsigned long long adType; // @synthesize adType=_adType;
+@property (nonatomic) double aspectRatioOfVideoPlayer; // @synthesize aspectRatioOfVideoPlayer=_aspectRatioOfVideoPlayer;
 @property (strong, nonatomic) NSDictionary *campaignData; // @synthesize campaignData=_campaignData;
 @property (strong, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
 @property (strong, nonatomic) NSDictionary *componentMetadata; // @synthesize componentMetadata=_componentMetadata;

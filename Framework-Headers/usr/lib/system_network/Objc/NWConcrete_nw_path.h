@@ -34,7 +34,10 @@
     NSObject<OS_xpc_object> *network_agent_dictionary;
     NSObject<OS_xpc_object> *proxy_settings;
     NSObject<OS_xpc_object> *asserted_browse_agents;
-    NSObject<OS_xpc_object> *stats_regions;
+    struct nw_protocol_identifier *transport_stats_protocol;
+    struct nw_protocol_identifier *internet_stats_protocol;
+    void *transport_stats_region;
+    void *internet_stats_region;
     struct necp_all_stats *flow_stats_area;
     struct ifnet_stats_per_flow *flow_interface_stats;
     void *nexus_key;
@@ -73,6 +76,7 @@
     unsigned int link_quality_abort:1;
     unsigned int partial_checksum_offload:1;
     unsigned int ctl_command_valid:1;
+    unsigned int checked_dns:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

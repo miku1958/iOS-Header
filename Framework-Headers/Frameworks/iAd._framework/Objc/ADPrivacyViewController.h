@@ -45,6 +45,7 @@
 - (void)_resetRemoteViewController;
 - (void)adPrivacyRemoteViewControllerClientRequestsDismisal;
 - (void)adPrivacyRemoteViewControllerDidAppear;
+- (void)adPrivacyRemoteViewControllerDidDisappear;
 - (void)adPrivacyRemoteViewControllerDidLinkOut;
 - (void)adPrivacyRemoteViewControllerDidLoad;
 - (void)adPrivacyRemoteViewControllerDidRenderTransparency;

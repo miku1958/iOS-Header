@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (struct TSCH3DChartRotationLimit)rotation3DLimit;
 - (BOOL)supportsElementChunking;
 - (id)userInterfaceName;
+- (long long)userInterfaceTag;
 
 @end
 

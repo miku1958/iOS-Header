@@ -13,8 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_axRetrieveLabelForSource:(id)arg1;
-- (id)_getImageFromURLorBundle:(id)arg1;
 - (id)_viewFromElement:(id)arg1 existingView:(id)arg2;
 
 @end

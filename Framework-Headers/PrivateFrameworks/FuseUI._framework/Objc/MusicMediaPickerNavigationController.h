@@ -57,6 +57,7 @@
 - (id)_allPlayableChildrenMetadataObjectsForMetadata:(id)arg1;
 - (void)_configureNavigationBar;
 - (void)_insertSearchBarIntoTableView:(id)arg1;
+- (void)_insertSearchBarIntoViewControllerIfNeeded:(id)arg1;
 - (BOOL)_isMetadataAddable:(id)arg1;
 - (void)_reloadDataInViewController:(id)arg1;
 - (id)_searchBarInViewController:(id)arg1;
@@ -76,6 +77,7 @@
 - (void)selectMediaItem:(id)arg1 fromViewController:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewSafeAreaInsetsDidChange;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

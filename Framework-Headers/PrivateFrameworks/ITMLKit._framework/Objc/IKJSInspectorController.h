@@ -6,53 +6,80 @@
 
 #import <objc/NSObject.h>
 
-@class IKAppContext, IKDOMDocument, IKJSInspectorCSSAgent, IKJSInspectorDOMAgent, IKJSInspectorNetworkAgent, IKJSInspectorPageAgent, IKJSInspectorStorageAgent, NSDate, NSMutableArray, NSString, RWIProtocolInspector;
-@protocol IKJSInspectorControllerDelegate;
+#import <ITMLKit/IKJSInspectorControllerDelegate-Protocol.h>
 
-@interface IKJSInspectorController : NSObject
+@class IKAppContext, IKDOMDocument, IKJSInspectorCSSAgent, IKJSInspectorDOMAgent, IKJSInspectorNetworkAgent, IKJSInspectorPageAgent, IKJSInspectorStorageAgent, NSDate, NSMutableArray, NSString, RWIProtocolInspector;
+@protocol IKJSInspectorControllerDelegate, IKNetworkRequestLoader;
+
+@interface IKJSInspectorController : NSObject <IKJSInspectorControllerDelegate>
 {
-    IKDOMDocument *_activeDocument;
-    NSMutableArray *_appDocumentStack;
+    struct {
+        BOOL respondsToInspectElementModeChanged;
+        BOOL respondsToHighlightViewForElementWithOneID;
+        BOOL respondsToHighlightViewForElementWithManyIDs;
+        BOOL respondsToCancelHighlightView;
+    } _delegateFlags;
+    IKAppContext *_appContext;
+    id<IKJSInspectorControllerDelegate> _delegate;
     RWIProtocolInspector *_inspector;
+    NSDate *_inspectorConnectDate;
+    id<IKNetworkRequestLoader> _requestLoader;
+    IKDOMDocument *_activeDocument;
+    NSString *_activeDocumentIdentifier;
+    NSMutableArray *_appDocumentStack;
     IKJSInspectorDOMAgent *_domAgent;
     IKJSInspectorNetworkAgent *_networkAgent;
     IKJSInspectorPageAgent *_pageAgent;
     IKJSInspectorCSSAgent *_cssAgent;
     IKJSInspectorStorageAgent *_storageAgent;
     id _inspectorConnectedToken;
-    id _inspectorDisconntectedToken;
-    IKAppContext *_appContext;
-    id<IKJSInspectorControllerDelegate> _delegate;
-    NSDate *_inspectorConnectDate;
-    NSString *_activeDocumentIdentifier;
+    id _inspectorDisconnectedToken;
 }
 
 @property (readonly, weak, nonatomic) IKDOMDocument *activeDocument; // @synthesize activeDocument=_activeDocument;
 @property (readonly, copy, nonatomic) NSString *activeDocumentIdentifier; // @synthesize activeDocumentIdentifier=_activeDocumentIdentifier;
 @property (readonly, weak) IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property (readonly, nonatomic) NSMutableArray *appDocumentStack; // @synthesize appDocumentStack=_appDocumentStack;
+@property (readonly, weak, nonatomic) IKJSInspectorCSSAgent *cssAgent; // @synthesize cssAgent=_cssAgent;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<IKJSInspectorControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly, weak, nonatomic) IKJSInspectorDOMAgent *domAgent; // @synthesize domAgent=_domAgent;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isInspectElementModeEnabled) BOOL inspectElementModeEnabled;
 @property (readonly, nonatomic) RWIProtocolInspector *inspector; // @synthesize inspector=_inspector;
 @property (readonly, nonatomic) NSDate *inspectorConnectDate; // @synthesize inspectorConnectDate=_inspectorConnectDate;
+@property (readonly, nonatomic) id inspectorConnectedToken; // @synthesize inspectorConnectedToken=_inspectorConnectedToken;
+@property (readonly, nonatomic) id inspectorDisconnectedToken; // @synthesize inspectorDisconnectedToken=_inspectorDisconnectedToken;
+@property (readonly, weak, nonatomic) IKJSInspectorNetworkAgent *networkAgent; // @synthesize networkAgent=_networkAgent;
+@property (readonly, weak, nonatomic) IKJSInspectorPageAgent *pageAgent; // @synthesize pageAgent=_pageAgent;
+@property (readonly, nonatomic) id<IKNetworkRequestLoader> requestLoader; // @synthesize requestLoader=_requestLoader;
+@property (readonly, weak, nonatomic) IKJSInspectorStorageAgent *storageAgent; // @synthesize storageAgent=_storageAgent;
+@property (readonly) Class superclass;
 
-+ (id)_nodeById:(long long)arg1 fromNode:(id)arg2;
-+ (id)_nodesByIds:(id)arg1 fromNode:(id)arg2;
-+ (id)_templateNameForDocument:(id)arg1;
 - (void).cxx_destruct;
 - (void)appDocumentDidAppear:(id)arg1;
 - (void)appDocumentDidDisappear:(id)arg1;
 - (void)appDocumentDidLoad:(id)arg1;
 - (void)appDocumentDidUnload:(id)arg1;
 - (void)appDocumentDidUpdate:(id)arg1;
+- (BOOL)cancelHighlightView;
 - (void)dealloc;
+- (void)didAddEventListenerForDOMNode:(id)arg1;
 - (void)evaluateMediaQuery:(CDUnknownBlockType)arg1;
+- (BOOL)highlightViewForElementWithID:(long long)arg1 contentColor:(id)arg2 paddingColor:(id)arg3 borderColor:(id)arg4 marginColor:(id)arg5;
+- (BOOL)highlightViewsForElementsWithIDs:(id)arg1 contentColor:(id)arg2 paddingColor:(id)arg3 borderColor:(id)arg4 marginColor:(id)arg5;
 - (id)initWithAppContext:(id)arg1;
-- (void)mediaQueryResultDidChange;
+- (void)inspectElementModeChanged:(BOOL)arg1;
+- (void)inspectNodeWithID:(long long)arg1;
 - (id)nodeById:(long long)arg1;
 - (id)nodesByIds:(id)arg1;
-- (id)registerNetworkRequestLoader:(id)arg1;
+- (id)registerLoaderWithIdentifier:(id)arg1;
 - (void)resetStylesFromNode:(id)arg1;
 - (id)styleFromComposer:(id)arg1;
+- (void)unregisterLoaderWithIdentifier:(id)arg1;
 - (void)updateStylesheets;
+- (void)willRemoveEventListenerForDOMNode:(id)arg1;
 
 @end
 

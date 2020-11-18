@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/IDSServiceDelegate-Protocol.h>
 
 @class IDSService, NSMutableArray, NSString;
 @protocol DEDClientProtocol, IDSServiceDelegate, OS_dispatch_group, OS_dispatch_queue, OS_os_log;
 
-@interface DEDIDSConnection : NSObject <IDSServiceDelegate>
+@interface DEDIDSConnection : NSObject <IDSServiceDelegate, DEDSecureArchiving>
 {
     id<DEDClientProtocol> _remoteSideDelegate;
     NSObject<OS_os_log> *_log;
@@ -36,6 +37,7 @@
 @property (strong) IDSService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 
++ (id)archivedClasses;
 + (id)packPayload:(id)arg1;
 + (id)unpackProtobuf:(id)arg1;
 - (void).cxx_destruct;

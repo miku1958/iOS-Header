@@ -15,14 +15,18 @@
     BOOL _showAccessoryText;
     Class _subBatchLayoutTilingOperationClass;
     Class _rankedLayoutGenerationOperationClass;
+    long long _cellType;
+    long long _rowSpan;
 }
 
 @property (readonly, nonatomic) NSArray *allRowTypes;
+@property (nonatomic) long long cellType; // @synthesize cellType=_cellType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long preferredTileInfoBatchSize;
 @property (strong, nonatomic) Class rankedLayoutGenerationOperationClass; // @synthesize rankedLayoutGenerationOperationClass=_rankedLayoutGenerationOperationClass;
+@property (nonatomic) long long rowSpan; // @synthesize rowSpan=_rowSpan;
 @property (nonatomic, getter=isShowingAccessoryText) BOOL showAccessoryText; // @synthesize showAccessoryText=_showAccessoryText;
 @property (strong, nonatomic) Class subBatchLayoutTilingOperationClass; // @synthesize subBatchLayoutTilingOperationClass=_subBatchLayoutTilingOperationClass;
 @property (readonly) Class superclass;
@@ -31,7 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionForRowType:(unsigned long long)arg1;
 - (id)init;
-- (id)initWithSubBatchLayoutTilingOperationClass:(Class)arg1 rankedLayoutGenerationOperationClass:(Class)arg2;
+- (id)initWithSubBatchLayoutTilingOperationClass:(Class)arg1 rankedLayoutGenerationOperationClass:(Class)arg2 cellType:(long long)arg3 rowSpan:(long long)arg4;
 - (id)nextRowTypeCandidatesForRowType:(unsigned long long)arg1;
 - (unsigned long long)numberOfTileInfosUsedByRowType:(unsigned long long)arg1;
 - (Class)rankedLayoutGenerationOperationClassForRequest:(id)arg1;

@@ -24,6 +24,10 @@ __attribute__((visibility("hidden")))
 + (id)controlInteractionDurationDistributionWithCategory:(id)arg1 suffix:(id)arg2;
 + (id)controlTapCountWithCategory:(id)arg1 suffix:(id)arg2;
 + (id)controlValueChangeEmittedCountWithCategory:(id)arg1 suffix:(id)arg2;
++ (id)coverSheetButtonFirstActivationDurationWithCategory:(id)arg1;
++ (id)coverSheetButtonInteractionCountWithActivation:(BOOL)arg1 category:(id)arg2;
++ (id)coverSheetButtonInteractionDurationWithCategory:(id)arg1;
++ (id)coverSheetButtonMaximumForceWithActivation:(BOOL)arg1 category:(id)arg2;
 + (unsigned long long)currentTime;
 + (id)feedbackEngineActivationCountWithSuffix:(id)arg1;
 + (id)feedbackEngineActivationDurationWithSuffix:(id)arg1;

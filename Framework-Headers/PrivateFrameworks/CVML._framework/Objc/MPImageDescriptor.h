@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <CVML/NSCoding-Protocol.h>
+#import <CVML/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPImageDescriptor : NSObject <NSCoding>
+@interface MPImageDescriptor : NSObject <NSSecureCoding>
 {
     float _quality;
     float _nextLeafDescriptorDistance;
@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSData *rawColorGaborDescriptor;
 @property (readonly) void *sceneClassifierDescriptor; // @synthesize sceneClassifierDescriptor=_sceneClassifierDescriptor;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)computeConvnetDescriptorForImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (BOOL)computeDescriptorForImageData:(id)arg1 context:(id)arg2 error:(id *)arg3;

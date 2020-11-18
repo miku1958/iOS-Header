@@ -18,9 +18,13 @@
     BOOL mConnectionHasInvalidated;
 }
 
+@property (readonly) int auditSessionIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) unsigned int effectiveGroupIdentifier;
+@property (readonly) unsigned int effectiveUserIdentifier;
 @property (readonly) unsigned long long hash;
+@property (readonly) int processIdentifier;
 @property (readonly) Class superclass;
 
 + (id)new;

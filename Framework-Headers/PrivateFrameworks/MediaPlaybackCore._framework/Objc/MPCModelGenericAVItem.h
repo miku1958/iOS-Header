@@ -203,11 +203,11 @@
 - (void)setRating:(float)arg1;
 - (BOOL)shouldPreventPlayback;
 - (BOOL)shouldShowComposer;
-- (BOOL)stationAllowsItemLiking;
 - (id)stationHash;
 - (long long)stationID;
 - (id)stationName;
 - (id)stationStringID;
+- (id)storeFrontIdentifier;
 - (long long)storeItemInt64ID;
 - (long long)storeSubscriptionAdamID;
 - (BOOL)supportsLikedState;

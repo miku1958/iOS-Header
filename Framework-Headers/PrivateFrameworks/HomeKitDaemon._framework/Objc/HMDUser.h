@@ -7,15 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HAPPairingIdentity, HMDAccount, HMDAssistantAccessControl, HMDHome, HMUserPresenceAuthorization, NSMutableArray, NSObject, NSString, NSUUID;
+@class HAPPairingIdentity, HMDAccount, HMDAssistantAccessControl, HMDHome, HMUserPresenceAuthorization, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDUser : HMFObject <HMFLogging, HMFMessageReceiver, HMFDumpState, HMDBackingStoreObjectProtocol, NSSecureCoding>
+@interface HMDUser : HMFObject <HMFLogging, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
 {
     NSMutableArray *_relayAccessTokens;
     BOOL _remoteAccessAllowed;
@@ -46,6 +46,7 @@
 @property (readonly, nonatomic) BOOL isAdministrator;
 @property (readonly, nonatomic) BOOL isOwner;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HAPPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 @property (copy, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
@@ -63,6 +64,7 @@
 + (id)UUIDWithUserID:(id)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3 pairingIdentity:(id)arg4;
 + (id)currentUserWithPrivilege:(unsigned long long)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3;
 + (id)destinationWithUserID:(id)arg1;
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 + (id)userWithDictionary:(id)arg1 forHomeIdentifier:(id)arg2;
@@ -89,6 +91,7 @@
 - (BOOL)mergeFromUser:(id)arg1 dataVersion:(long long)arg2;
 - (id)messageDestination;
 - (id)messageDispatcher;
+- (void)migrateAfterCloudMerge:(CDUnknownBlockType)arg1;
 - (void)migrateCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;

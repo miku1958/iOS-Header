@@ -33,11 +33,11 @@
 @property (readonly, copy) NSString *string; // @synthesize string=_string;
 @property (readonly) struct _NSRange unsolvedRange; // @synthesize unsolvedRange=_unsolvedRange;
 
+- (void).cxx_destruct;
 - (id)_solve;
 - (void)advancePath:(id)arg1 range:(id)arg2;
 - (unsigned long long)advancePaths;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)extractCompletePathsWithSolutionRange:(struct _NSRange)arg1;
 - (id)init;
 - (id)initWithKeyMap:(id)arg1 string:(id)arg2;

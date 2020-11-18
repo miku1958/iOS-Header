@@ -24,6 +24,7 @@
 + (Class)notificationType;
 + (Class)playerPathType;
 + (Class)userInfoType;
+- (void).cxx_destruct;
 - (void)addNotification:(id)arg1;
 - (void)addPlayerPath:(id)arg1;
 - (void)addUserInfo:(id)arg1;
@@ -32,7 +33,6 @@
 - (void)clearUserInfos;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

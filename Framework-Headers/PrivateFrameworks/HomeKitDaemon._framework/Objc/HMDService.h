@@ -8,14 +8,14 @@
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMDHome, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSString, NSUUID;
+@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMDHome, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDService : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol, HMFMessageReceiver>
+@interface HMDService : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
 {
     BOOL _hidden;
     BOOL _primary;
@@ -62,6 +62,7 @@
 @property (copy, nonatomic) NSArray *linkedServices; // @synthesize linkedServices=_linkedServices;
 @property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
@@ -75,6 +76,7 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)generateUUIDWithAccessoryUUID:(id)arg1 serviceID:(id)arg2;
++ (BOOL)hasMessageReceiverChildren;
 + (BOOL)supportsSecureCoding;
 + (BOOL)validateProvidedName:(id)arg1;
 - (void).cxx_destruct;

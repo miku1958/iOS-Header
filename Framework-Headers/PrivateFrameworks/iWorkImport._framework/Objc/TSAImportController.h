@@ -10,13 +10,13 @@
 #import <iWorkImport/TSDImportExportDelegate-Protocol.h>
 #import <iWorkImport/TSPObjectContextDelegate-Protocol.h>
 
-@class NSDictionary, NSError, NSMutableArray, NSMutableSet, NSOperationQueue, NSProgress, NSSet, NSString, NSURL, NSUUID, TSPObjectContext, TSUProgressContext, TSUTemporaryDirectory;
+@class NSDictionary, NSError, NSMapTable, NSMutableArray, NSMutableSet, NSOperationQueue, NSProgress, NSSet, NSString, NSURL, NSUUID, TSPObjectContext, TSUProgressContext, TSUTemporaryDirectory;
 @protocol NSFilePresenter, OS_dispatch_group, TSAImportDelegate, TSKImporter;
 
 __attribute__((visibility("hidden")))
 @interface TSAImportController : NSObject <TSPObjectContextDelegate, NSFilePresenter, TSDImportExportDelegate>
 {
-    TSUTemporaryDirectory *_temporaryDirectory;
+    NSURL *_temporaryURL;
     TSUTemporaryDirectory *_temporaryDFFDirectory;
     NSString *_documentType;
     NSObject<OS_dispatch_group> *_passphraseCompletionGroup;
@@ -30,12 +30,12 @@ __attribute__((visibility("hidden")))
         unsigned int isPasswordProtected:1;
         unsigned int isCleanedUp:1;
         unsigned int isImportCancelled:1;
-        unsigned int preserveDocumentAfterImport:1;
         unsigned int shouldNotifyProgress:1;
     } _flags;
     id<TSKImporter> _importer;
     id<TSAImportDelegate> _delegate;
     NSString *_sourcePath;
+    TSUTemporaryDirectory *_temporaryDirectory;
     NSError *_error;
     TSPObjectContext *_documentContext;
     TSUProgressContext *_progressContext;
@@ -58,8 +58,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL ignoreDocumentSupport;
 @property (readonly, nonatomic) id<TSKImporter> importer; // @synthesize importer=_importer;
-@property (readonly, nonatomic) NSDictionary *incompatibleMediaContainersWithDataUnsupportedOnAllDevices;
-@property (readonly, nonatomic) NSDictionary *incompatibleMediaContainersWithDataUnsupportedOnThisDevice;
+@property (readonly, nonatomic) NSMapTable *incompatibleMediaContainersWithDataUnsupportedOnAllDevices;
+@property (readonly, nonatomic) NSMapTable *incompatibleMediaContainersWithDataUnsupportedOnThisDevice;
 @property (readonly, nonatomic) BOOL isBrowsingVersions;
 @property (readonly, nonatomic) BOOL isDocumentSupportTemporary;
 @property (readonly, nonatomic) BOOL isImportCancelled;
@@ -67,14 +67,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue; // @synthesize presentedItemOperationQueue=_presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL; // @synthesize presentedItemURL=_presentedItemURL;
-@property (nonatomic) BOOL preserveDocumentAfterImport;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;
 @property (strong, nonatomic) TSUProgressContext *progressContext; // @synthesize progressContext=_progressContext;
 @property (readonly, nonatomic) BOOL shouldUpdateAdditionalResourceRequestsAfterImport;
 @property (readonly, nonatomic) NSString *sourcePath; // @synthesize sourcePath=_sourcePath;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) TSUTemporaryDirectory *temporaryDirectory; // @synthesize temporaryDirectory=_temporaryDirectory;
 @property (readonly, nonatomic) NSURL *temporaryURL;
 
+- (void).cxx_destruct;
 - (void)_beginImport;
 - (void)_continueImportWithSuccess:(BOOL)arg1 error:(id)arg2 completedSteps:(int)arg3;
 - (void)_performImportWithCompletedSteps:(int)arg1;
@@ -88,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)beginImport;
 - (void)beginImportAsync;
 - (void)cancelImport;
+- (void)checkDownloadPermissionForMissingResourceAccessTypes:(long long)arg1 estimatedMissingResourcesSize:(unsigned long long)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)defaultDraftName;
 - (void)didSaveImportedDocumentWithPassphrase:(id)arg1;
@@ -97,13 +99,16 @@ __attribute__((visibility("hidden")))
 - (Class)importerClass;
 - (id)initWithPath:(id)arg1 delegate:(id)arg2;
 - (id)initWithPath:(id)arg1 documentType:(id)arg2 delegate:(id)arg3;
+- (id)logContext;
 - (id)makeObjectContextWithTemplateInfo:(id)arg1 error:(id *)arg2;
 - (id)name;
 - (BOOL)needsFileCoordination;
 - (id)packageDataForWrite;
+- (long long)packageType;
 - (void)prepareForImportDisplayingProgress:(BOOL)arg1;
 - (void)presentPersistenceError:(id)arg1;
 - (void)presentedItemDidMoveToURL:(id)arg1;
+- (id)progressTitleForDownloadingResourceAccessTypes:(long long)arg1;
 - (void)relinquishPresentedItemToWriter:(CDUnknownBlockType)arg1;
 - (void)removeFilePresenter;
 - (void)removeWarning:(id)arg1;

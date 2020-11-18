@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (readonly, nonatomic) BOOL autoListRecognition;
+@property (readonly, nonatomic) BOOL autoListTermination;
+@property (readonly, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,7 +39,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (readonly, nonatomic) BOOL preventsComments;
+@property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL textIsLinked;
+@property (readonly, nonatomic) BOOL textIsVertical;
 @property (strong, nonatomic) TSWPStorage *textStorage; // @synthesize textStorage=_textStorage;
 @property (strong, nonatomic) NSArray *textboxes; // @synthesize textboxes=_textboxes;
 @property (readonly, nonatomic) TSUColor *userInterfaceFillColor;
@@ -51,10 +58,7 @@ __attribute__((visibility("hidden")))
 + (id)strokeColorForUserInterfaceIdentifier:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
-- (BOOL)autoListRecognition;
-- (BOOL)autoListTermination;
 - (id)childEnumerator;
-- (id)childInfos;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
@@ -76,8 +80,6 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (void)saveWithOnlyLinkedTextBoxes:(id)arg1 archiver:(id)arg2;
 - (void)setPrimitiveGeometry:(id)arg1;
-- (BOOL)textIsLinked;
-- (BOOL)textIsVertical;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

@@ -11,6 +11,7 @@
 @protocol HFSoftwareUpdatableItemProtocol <NSObject>
 
 @property (readonly, nonatomic) NSSet *accessoriesSupportingSoftwareUpdate;
+@property (readonly, nonatomic) NSSet *availableSoftwareUpdates;
 
 @end
 

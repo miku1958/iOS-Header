@@ -8,10 +8,12 @@
 
 @interface UIScreen (TSKAdditions)
 + (BOOL)tsk_appCanUseSidebar;
++ (double)tsk_appFrameScreenWidthFraction;
 + (BOOL)tsk_appIsInDarkMode;
 + (BOOL)tsk_appIsInSplitViewMode;
 + (BOOL)tsk_deviceCanUseSidebar;
 + (double)tsk_expectedScreenScale;
++ (BOOL)tsk_pad1112H;
 + (BOOL)tsk_pad1366H;
 + (BOOL)tsk_phoneUI568H;
 + (BOOL)tsk_phoneUI568HOrSmaller;

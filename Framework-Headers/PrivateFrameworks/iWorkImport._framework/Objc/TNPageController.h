@@ -76,8 +76,8 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)firstPartitionFrameForInfo:(id)arg1 outStartPageCoordinate:(out struct TSUCellCoord *)arg2;
 - (void)i_invalidateHintCache;
 - (void)i_invalidatePageLayoutCache;
-- (id)i_layerForHeaderType:(int)arg1 fragment:(int)arg2 atPageCoordinate:(struct TSUCellCoord)arg3;
-- (void)i_setLayer:(id)arg1 forHeaderType:(int)arg2 fragment:(int)arg3 atPageCoordinate:(struct TSUCellCoord)arg4;
+- (id)i_layerForHeaderType:(long long)arg1 fragment:(long long)arg2 atPageCoordinate:(struct TSUCellCoord)arg3;
+- (void)i_setLayer:(id)arg1 forHeaderType:(long long)arg2 fragment:(long long)arg3 atPageCoordinate:(struct TSUCellCoord)arg4;
 - (id)initWithDocumentRoot:(id)arg1;
 - (void)invalidateCachedAutoFitContentScaleForSheet:(id)arg1;
 - (void)invalidateDrawableLayouts;

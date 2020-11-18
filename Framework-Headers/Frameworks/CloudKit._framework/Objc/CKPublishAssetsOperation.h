@@ -10,11 +10,11 @@
 
 @interface CKPublishAssetsOperation : CKDatabaseOperation
 {
+    CDUnknownBlockType _assetPublishedBlock;
+    CDUnknownBlockType _publishAssetCompletionBlock;
     NSDictionary *_fileNamesByAssetFieldNames;
     unsigned long long _requestedTTL;
     unsigned long long _URLOptions;
-    CDUnknownBlockType _assetPublishedBlock;
-    CDUnknownBlockType _publishAssetCompletionBlock;
     NSArray *_recordIDs;
     NSMutableDictionary *_perItemErrorsByRecordID;
 }

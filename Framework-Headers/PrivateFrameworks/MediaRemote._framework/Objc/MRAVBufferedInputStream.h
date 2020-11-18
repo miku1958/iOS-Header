@@ -19,10 +19,10 @@
     NSMutableData *_buffer;
 }
 
+- (void).cxx_destruct;
 - (void)_init;
 - (void)_onRunLoop_notifyDelegateOfStreamEvent:(unsigned long long)arg1;
 - (void)close;
-- (void)dealloc;
 - (id)delegate;
 - (BOOL)getBuffer:(char **)arg1 length:(unsigned long long *)arg2;
 - (void)handleDataReceived:(id)arg1;

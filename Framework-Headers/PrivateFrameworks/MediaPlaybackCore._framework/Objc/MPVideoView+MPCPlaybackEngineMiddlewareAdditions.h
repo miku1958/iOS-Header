@@ -22,6 +22,6 @@
 @property (strong, nonatomic) NSString *videoGravity;
 
 + (id)keyPathsForValuesAffectingPreferredContentSize;
-+ (id)keyPathsForValuesAffectingReadyForDisplay;
++ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 @end
 

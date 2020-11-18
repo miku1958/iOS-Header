@@ -43,9 +43,13 @@ __attribute__((visibility("hidden")))
     long long __responseHeaderBytesReceived;
     long long __responseBodyBytesReceived;
     long long __responseBodyBytesDecoded;
+    BOOL __apsRelayAttempted;
+    BOOL __apsRelaySucceeded;
 }
 
 + (BOOL)supportsSecureCoding;
+- (BOOL)_apsRelayAttempted;
+- (BOOL)_apsRelaySucceeded;
 - (BOOL)_cellular;
 - (id)_connectionIdentifier;
 - (BOOL)_connectionRace;
@@ -99,6 +103,8 @@ __attribute__((visibility("hidden")))
 - (void)setReusedConnection:(BOOL)arg1;
 - (void)setSecureConnectionEndDate:(id)arg1;
 - (void)setSecureConnectionStartDate:(id)arg1;
+- (void)set_apsRelayAttempted:(BOOL)arg1;
+- (void)set_apsRelaySucceeded:(BOOL)arg1;
 - (void)set_cellular:(BOOL)arg1;
 - (void)set_connectionIdentifier:(id)arg1;
 - (void)set_connectionRace:(BOOL)arg1;

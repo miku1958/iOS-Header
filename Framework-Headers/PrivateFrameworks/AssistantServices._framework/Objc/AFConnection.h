@@ -95,9 +95,11 @@
 - (void)_tellDelegateAudioPlaybackRequestDidStart:(id)arg1;
 - (void)_tellDelegateAudioPlaybackRequestDidStop:(id)arg1 error:(id)arg2;
 - (void)_tellDelegateAudioPlaybackRequestWillStart:(id)arg1;
+- (void)_tellDelegateAudioSessionDidBecomeActive:(BOOL)arg1;
 - (void)_tellDelegateAudioSessionDidBeginInterruption;
 - (void)_tellDelegateAudioSessionDidEndInterruption:(BOOL)arg1;
 - (void)_tellDelegateAudioSessionIDChanged:(unsigned int)arg1;
+- (void)_tellDelegateAudioSessionWillBecomeActive:(BOOL)arg1;
 - (void)_tellDelegateCacheImage:(id)arg1;
 - (void)_tellDelegateDidDetectMusic;
 - (void)_tellDelegateDidFinishAcousticIDRequestWithSuccess:(BOOL)arg1;

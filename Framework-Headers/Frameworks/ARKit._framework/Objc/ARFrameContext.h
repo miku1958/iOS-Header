@@ -8,24 +8,52 @@
 
 #import <ARKit/ARResultDataContext-Protocol.h>
 
-@class ARImageData, NSString;
+@class ARImageData, NSMutableArray, NSString;
 
 @interface ARFrameContext : NSObject <ARResultDataContext>
 {
+    NSMutableArray *_anchorsToAdd;
+    NSMutableArray *_anchorsToRemove;
+    BOOL _didRelocalize;
+    BOOL _sessionTransformUpdated;
+    BOOL _sessionTransformReset;
+    BOOL _sessionTransformShouldResumeCameraHeading;
+    BOOL _sessionTransformShouldResumeCameraPosition;
+    BOOL _shouldRemoveExistingAnchors;
     ARImageData *_imageData;
-    CDStruct_14d5dc5e _sessionOriginTransform;
+    long long _worldAlignment;
+    unsigned long long _frameDebugOptions;
+    CDStruct_14d5dc5e _relocalizationDeltaTransform;
+    CDStruct_14d5dc5e _sessionTransform;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didRelocalize; // @synthesize didRelocalize=_didRelocalize;
+@property (nonatomic) unsigned long long frameDebugOptions; // @synthesize frameDebugOptions=_frameDebugOptions;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) ARImageData *imageData; // @synthesize imageData=_imageData;
-@property (nonatomic) CDStruct_14d5dc5e sessionOriginTransform; // @synthesize sessionOriginTransform=_sessionOriginTransform;
+@property (strong, nonatomic) ARImageData *imageData; // @synthesize imageData=_imageData;
+@property (nonatomic) CDStruct_14d5dc5e relocalizationDeltaTransform; // @synthesize relocalizationDeltaTransform=_relocalizationDeltaTransform;
+@property (nonatomic) CDStruct_14d5dc5e sessionTransform; // @synthesize sessionTransform=_sessionTransform;
+@property (readonly, nonatomic) BOOL sessionTransformReset; // @synthesize sessionTransformReset=_sessionTransformReset;
+@property (readonly, nonatomic) BOOL sessionTransformShouldResumeCameraHeading; // @synthesize sessionTransformShouldResumeCameraHeading=_sessionTransformShouldResumeCameraHeading;
+@property (readonly, nonatomic) BOOL sessionTransformShouldResumeCameraPosition; // @synthesize sessionTransformShouldResumeCameraPosition=_sessionTransformShouldResumeCameraPosition;
+@property (readonly, nonatomic) BOOL sessionTransformUpdated; // @synthesize sessionTransformUpdated=_sessionTransformUpdated;
+@property (readonly, nonatomic) BOOL shouldRemoveExistingAnchors; // @synthesize shouldRemoveExistingAnchors=_shouldRemoveExistingAnchors;
 @property (readonly) Class superclass;
+@property (nonatomic) long long worldAlignment; // @synthesize worldAlignment=_worldAlignment;
 
 - (void).cxx_destruct;
-- (id)initWithImageData:(id)arg1;
+- (void)addAnchor:(id)arg1;
+- (id)anchorsToAdd;
+- (id)anchorsToRemove;
+- (long long)cameraPosition;
+- (void)clearAddedAnchors;
+- (void)removeAnchor:(id)arg1;
+- (void)resetSessionTransform;
 - (id)resultDataOfClass:(Class)arg1;
+- (void)resumeSessionCameraPosition;
+- (void)resumeSessionCameraPositionAndHeading;
 
 @end
 

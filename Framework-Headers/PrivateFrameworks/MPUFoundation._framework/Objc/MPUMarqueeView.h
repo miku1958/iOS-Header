@@ -20,6 +20,7 @@
     BOOL _marqueeEnabled;
     double _contentGap;
     UIView *_contentView;
+    UIView *_animationReferenceView;
     id<MPUMarqueeViewDelegate> _delegate;
     double _marqueeDelay;
     double _marqueeScrollRate;
@@ -30,6 +31,7 @@
 }
 
 @property (nonatomic) long long animationDirection; // @synthesize animationDirection=_animationDirection;
+@property (weak, nonatomic) UIView *animationReferenceView; // @synthesize animationReferenceView=_animationReferenceView;
 @property (nonatomic) double contentGap; // @synthesize contentGap=_contentGap;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

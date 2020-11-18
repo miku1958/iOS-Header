@@ -17,12 +17,13 @@ __attribute__((visibility("hidden")))
     struct __CTLine *_lineRef;
 }
 
-@property (nonatomic) TSWPAttachment *attachment; // @synthesize attachment=_attachment;
+@property (weak, nonatomic) TSWPAttachment *attachment; // @synthesize attachment=_attachment;
 @property (strong, nonatomic) TSDLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic) BOOL layoutNeedsRevalidation; // @synthesize layoutNeedsRevalidation=_layoutNeedsRevalidation;
 @property (readonly, nonatomic) struct __CTLine *lineRef; // @synthesize lineRef=_lineRef;
 
 + (id)mapWithAttachment:(id)arg1 layout:(id)arg2 pageNumber:(unsigned long long)arg3 pageCount:(unsigned long long)arg4 footnoteMarkProvider:(id)arg5 styleProvider:(id)arg6 colorOverride:(id)arg7 textScalePercent:(unsigned long long)arg8;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 

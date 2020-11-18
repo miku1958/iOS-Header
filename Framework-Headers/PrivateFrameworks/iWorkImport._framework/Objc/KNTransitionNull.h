@@ -6,12 +6,12 @@
 
 #import <iWorkImport/KNAnimationEffect.h>
 
-#import <iWorkImport/KNTransitionAnimator-Protocol.h>
+#import <iWorkImport/KNTransitionCAAnimator-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface KNTransitionNull : KNAnimationEffect <KNTransitionAnimator>
+@interface KNTransitionNull : KNAnimationEffect <KNTransitionCAAnimator>
 {
 }
 

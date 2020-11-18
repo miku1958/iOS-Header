@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) unsigned int deviceID; // @synthesize deviceID=_deviceID;
 @property (nonatomic) unsigned int recordingState; // @synthesize recordingState=_recordingState;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithData:(id)arg1;
 - (id)initWithDeviceID:(unsigned int)arg1;

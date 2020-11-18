@@ -10,6 +10,7 @@
 
 @interface DMFRequestAirPlayMirroringRequest : CATTaskRequest
 {
+    BOOL _force;
     NSString *_destinationName;
     NSString *_destinationDeviceID;
     NSString *_password;
@@ -18,6 +19,7 @@
 
 @property (copy, nonatomic) NSString *destinationDeviceID; // @synthesize destinationDeviceID=_destinationDeviceID;
 @property (copy, nonatomic) NSString *destinationName; // @synthesize destinationName=_destinationName;
+@property (nonatomic) BOOL force; // @synthesize force=_force;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) double scanWaitInterval; // @synthesize scanWaitInterval=_scanWaitInterval;
 

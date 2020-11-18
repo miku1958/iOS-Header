@@ -37,6 +37,7 @@
 + (id)primaryAccountInStore:(id)arg1;
 - (id)_init;
 - (id)accountPropertiesForDataclass:(id)arg1;
+- (BOOL)canRenew;
 - (id)ckAccount;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
 - (void)displayAuthenticationPromptWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

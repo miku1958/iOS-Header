@@ -8,12 +8,11 @@
 
 #import <Home/HFDynamicFormattingValue-Protocol.h>
 #import <Home/HFSynchronizedTimerObserver-Protocol.h>
-#import <Home/NAIdentifiable-Protocol.h>
 
 @class NSDate, NSDateComponentsFormatter, NSMapTable, NSString;
 @protocol HFStringGenerator;
 
-@interface HFFormattedTimeRemainingValue : NSObject <HFSynchronizedTimerObserver, HFDynamicFormattingValue, NAIdentifiable>
+@interface HFFormattedTimeRemainingValue : NSObject <HFSynchronizedTimerObserver, HFDynamicFormattingValue>
 {
     NSMapTable *_observationBlocks;
     NSDate *_value;
@@ -31,7 +30,6 @@
 @property (readonly, nonatomic) NSDate *value; // @synthesize value=_value;
 
 + (id)defaultFormatter;
-+ (id)na_identity;
 + (id)valueWithRemainingDuration:(double)arg1 relativeToDate:(id)arg2;
 - (void).cxx_destruct;
 - (id)_generateFormattedValue;
@@ -41,7 +39,6 @@
 - (void)countdownTimerDidFire:(id)arg1;
 - (id)initWithFireDate:(id)arg1;
 - (id)initWithFireDate:(id)arg1 formatter:(id)arg2;
-- (BOOL)isEqual:(id)arg1;
 - (id)observeFormattedValueChangesWithBlock:(CDUnknownBlockType)arg1;
 
 @end

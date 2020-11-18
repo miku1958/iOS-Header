@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     BOOL _isExpectingClientRedirect;
     BOOL _hasBegunFirstNavigation;
     SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
-    BOOL _isBeingUsedForLinkPreview;
     SFUserNotification *_userNotification;
     NSString *_hostApplicationCallbackURLScheme;
 }
@@ -31,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *hostApplicationCallbackURLScheme; // @synthesize hostApplicationCallbackURLScheme=_hostApplicationCallbackURLScheme;
-@property (nonatomic) BOOL isBeingUsedForLinkPreview; // @synthesize isBeingUsedForLinkPreview=_isBeingUsedForLinkPreview;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SFUserNotification *userNotification; // @synthesize userNotification=_userNotification;
 
@@ -45,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_dismiss;
 - (BOOL)_ensureWebsiteDataStoreURL:(id)arg1 cookieStoreURL:(id)arg2;
 - (void)_fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_getSafariDataSharingModeWithPrivacyPrompt:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getSafariDataSharingModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
 - (BOOL)_notifyInitialLoadDidFinish:(BOOL)arg1;
@@ -56,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateRemoteSwipeGestureState;
 - (id)_webDataStoreRootURL;
 - (void)_willAppearInRemoteViewController;
+- (id)bundleIdentifierForProfileInstallation;
 - (void)dealloc;
 - (void)decideCookieSharingForURL:(id)arg1 callbackURLScheme:(id)arg2;
 - (void)didDetectRemoteViewControllerViewIsHidden;

@@ -6,12 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPassFooterContentViewDelegate-Protocol.h>
+#import <PassKitUI/PKUIForegroundActiveArbiterDeactivationObserver-Protocol.h>
 
 @class NSObject, NSString, PKPassFooterContentView, PKPassView, PKPaymentSessionHandle;
 @protocol OS_dispatch_group, OS_dispatch_source, PKPassFooterViewDelegate;
 
-@interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate>
+@interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate, PKForegroundActiveArbiterObserver, PKUIForegroundActiveArbiterDeactivationObserver>
 {
     PKPassView *_passView;
     PKPassFooterContentView *_contentView;
@@ -22,6 +24,7 @@
     BOOL _isAssistantActive;
     BOOL _acquiringSession;
     unsigned long long _sessionToken;
+    BOOL _invalidated;
     unsigned char _visibility;
     unsigned char _contentViewVisibility;
     NSObject<OS_dispatch_group> *_sessionDelayGroup;
@@ -53,10 +56,6 @@
 - (void)_deleteButtonTapped;
 - (void)_endSession;
 - (void)_endSessionStartTimer;
-- (void)_handleAddDeactivationReasonNotification:(id)arg1;
-- (void)_handleEnterBackgroundNotification:(id)arg1;
-- (void)_handleEnterForegroundNotification:(id)arg1;
-- (void)_handleRemoveDeactivationReasonNotification:(id)arg1;
 - (void)_lostModeButtonTapped;
 - (void)_setContentView:(id)arg1 animated:(BOOL)arg2;
 - (void)_setUserIntentRequired:(BOOL)arg1;
@@ -67,7 +66,10 @@
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateDeactivationReasons:(unsigned int)arg2;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (id)initWithPassView:(id)arg1 state:(long long)arg2 context:(id)arg3;
+- (void)invalidate;
 - (void)layoutSubviews;
 - (void)passFooterContentViewDidBeginAuthenticating:(id)arg1;
 - (void)passFooterContentViewDidChangeUserIntentRequirement:(id)arg1;

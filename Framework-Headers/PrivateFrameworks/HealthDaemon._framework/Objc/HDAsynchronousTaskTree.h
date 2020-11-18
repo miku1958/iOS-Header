@@ -19,6 +19,8 @@
     BOOL _queue_started;
     BOOL _queue_finished;
     CDUnknownBlockType _queue_completion;
+    NSObject<OS_dispatch_queue> *_default_task_queue;
+    BOOL _rejectAddTask;
     NSString *_groupDescription;
 }
 
@@ -30,6 +32,8 @@
 - (void)_queue_completeCurrentTaskWithResult:(long long)arg1 error:(id)arg2;
 - (void)_queue_insertPendingSubtasks;
 - (void)_queue_reportResult:(long long)arg1;
+- (void)_queue_runPendingCheckpointTasks:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addCheckpointTask:(CDUnknownBlockType)arg1;
 - (void)addTask:(CDUnknownBlockType)arg1;
 - (void)addTaskOnQueue:(id)arg1 task:(CDUnknownBlockType)arg2;
 - (void)addTaskOnQueue:(id)arg1 timeout:(double)arg2 task:(CDUnknownBlockType)arg3;

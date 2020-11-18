@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (double)timestamp;
 
 @end
 

@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (int)_atomicIncrementAssertCount;
++ (void)_logBacktraceWithCallStackSymbols:(id)arg1;
 + (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(long long)arg3 isFatal:(BOOL)arg4 description:(const char *)arg5;
-+ (void)logBacktrace;
-+ (void)logBacktraceThrottled;
-+ (void)logBacktraceWithCallStackSymbols:(id)arg1;
++ (void)logFullBacktrace;
 + (id)p_performBlockIgnoringAssertions:(CDUnknownBlockType)arg1 onlyFatal:(BOOL)arg2;
++ (id)packedBacktraceString;
 + (id)performBlockIgnoringAssertions:(CDUnknownBlockType)arg1;
 + (id)performBlockIgnoringFatalAssertions:(CDUnknownBlockType)arg1;
 + (void)simulateCrashWithMessage:(id)arg1;

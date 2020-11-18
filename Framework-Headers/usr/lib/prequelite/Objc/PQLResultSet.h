@@ -19,7 +19,6 @@
     CDUnknownBlockType _objectsConstructor;
     id _lastEnumeratedObject;
     BOOL _inTransaction;
-    BOOL _requiresSecureCoding;
     NSSet *_defaultUnarchivingAllowedClasses;
     NSError *_error;
     unsigned long long _rowNumber;
@@ -31,7 +30,6 @@
 @property (readonly, nonatomic) PQLConnection *db; // @synthesize db=_db;
 @property (strong, nonatomic) NSSet *defaultUnarchivingAllowedClasses; // @synthesize defaultUnarchivingAllowedClasses=_defaultUnarchivingAllowedClasses;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property (nonatomic) BOOL requiresSecureCoding; // @synthesize requiresSecureCoding=_requiresSecureCoding;
 @property (readonly, nonatomic) unsigned long long rowNumber; // @synthesize rowNumber=_rowNumber;
 @property (readonly, nonatomic) struct sqlite3_stmt *stmt;
 

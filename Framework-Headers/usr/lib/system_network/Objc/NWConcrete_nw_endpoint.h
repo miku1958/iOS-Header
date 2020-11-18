@@ -18,6 +18,8 @@
     char *parent_endpoint_domain;
     char *description;
     NWConcrete_nw_endpoint *proxy_original_endpoint;
+    unsigned short alternate_port;
+    struct os_unfair_lock_s lock;
 }
 
 @property (readonly, copy) NSString *debugDescription;

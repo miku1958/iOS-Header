@@ -8,15 +8,17 @@
 
 #import <AXHearingSupport/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface TTYUtterance : NSObject <NSSecureCoding>
 {
     NSString *_contactPath;
     NSString *_text;
+    NSDate *_lastChangeDate;
 }
 
 @property (strong, nonatomic) NSString *contactPath; // @synthesize contactPath=_contactPath;
+@property (strong, nonatomic) NSDate *lastChangeDate; // @synthesize lastChangeDate=_lastChangeDate;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (BOOL)supportsSecureCoding;
@@ -25,10 +27,13 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasTimedOut;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isComplete;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isMe;
+- (void)resetTimeout;
+- (void)updateText:(id)arg1;
 
 @end
 

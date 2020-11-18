@@ -16,10 +16,12 @@
 }
 
 - (void).cxx_destruct;
-- (id)initWithContext:(long long)arg1 productDisplayName:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 productDisplayName:(id)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 productDisplayName:(id)arg2;
+- (id)initWithContext:(long long)arg1 product:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 product:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 product:(id)arg2;
 - (void)layoutSubviews;
+- (void)setDigitalCardImage:(id)arg1;
+- (void)setPlasticCardImage:(id)arg1;
 - (void)setState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setTransferringProgress:(double)arg1 duration:(double)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

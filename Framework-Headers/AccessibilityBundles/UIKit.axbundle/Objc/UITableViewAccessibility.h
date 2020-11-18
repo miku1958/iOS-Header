@@ -60,6 +60,7 @@
 - (id)_accessibilityUserTestingVisibleSections;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
 - (id)_accessibilityVisibleHeaderSections;
+- (BOOL)_automationPrefersRealElements;
 - (id)_axAttemptCreationOfViewType:(int)arg1 identifier:(id)arg2;
 - (id)_axAttemptStoryboard:(id)arg1 viewType:(int)arg2;
 - (id)_axFirstLastOpaqueHeaderElementFromSection:(long long)arg1 options:(id)arg2 direction:(long long)arg3;

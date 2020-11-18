@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface TSTCellUIDIterator : NSObject
 {
-    deque_c2509c49 _recentRowResults;
-    deque_c2509c49 _recentColumnResults;
+    deque_5668141c _recentRowResults;
+    deque_5668141c _recentColumnResults;
     TSTCellUIDList *_cellUIDList;
     unsigned long long _index;
     unsigned long long _rowIndex;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithCellUIDList:(id)arg1;
 - (struct TSTCellUID)nextCellUID;
-- (UUIDData_5fbc143e)p_nextCellRefIdWithUIDIndexList:(const vector_e0f2bd7e *)arg1 UIDs:(const vector_dadc1b26 *)arg2 index:(unsigned long long *)arg3 remainDup:(unsigned long long *)arg4 lastDiffPos:(unsigned long long *)arg5 recentResults:(deque_c2509c49 *)arg6;
+- (UUIDData_5fbc143e)p_nextCellRefIdWithUIDIndexList:(const vector_12bd641b *)arg1 UIDs:(const vector_4dc5f307 *)arg2 index:(unsigned long long *)arg3 remainDup:(unsigned long long *)arg4 lastDiffPos:(unsigned long long *)arg5 recentResults:(deque_5668141c *)arg6;
 
 @end
 

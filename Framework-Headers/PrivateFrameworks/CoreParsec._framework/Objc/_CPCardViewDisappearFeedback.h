@@ -38,7 +38,7 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
 - (id)init;
 - (id)initWithDictionary:(id)arg1;

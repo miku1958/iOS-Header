@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSArray *iCloudMediaUsage;
 @property (readonly, nonatomic) NSURL *manageStorageURL;
 @property (readonly, nonatomic) NSNumber *totalStorageInByes;
+@property (readonly, nonatomic) NSNumber *totalStorageInBytes;
 @property (readonly, nonatomic) NSArray *usage;
 @property (readonly, nonatomic) NSNumber *usedStorageInBytes;
 

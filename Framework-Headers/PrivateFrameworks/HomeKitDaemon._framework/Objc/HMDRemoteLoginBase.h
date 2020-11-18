@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDAppleMediaAccessory, HMDRemoteLoginHandler, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@class HMDAppleMediaAccessory, HMDRemoteLoginHandler, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDRemoteLoginBase : HMFObject <HMFLogging, HMFMessageReceiver>
+@interface HMDRemoteLoginBase : HMFObject <HMFLogging, HMDHomeMessageReceiver>
 {
     NSUUID *_uuid;
     HMDAppleMediaAccessory *_accessory;
@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logString; // @synthesize logString=_logString;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, weak, nonatomic) HMDRemoteLoginHandler *remoteLoginHandler; // @synthesize remoteLoginHandler=_remoteLoginHandler;
@@ -35,7 +36,9 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
++ (BOOL)shouldAcceptMessage:(id)arg1 home:(id)arg2;
 - (void).cxx_destruct;
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 - (id)initWithUUID:(id)arg1 accessory:(id)arg2 remoteLoginHandler:(id)arg3;

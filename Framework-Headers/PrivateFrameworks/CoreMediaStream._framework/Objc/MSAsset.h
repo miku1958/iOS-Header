@@ -11,7 +11,6 @@
 #import <CoreMediaStream/NSSecureCoding-Protocol.h>
 
 @class NSData, NSDate, NSDictionary, NSError, NSString, NSURL;
-@protocol NSCoding;
 
 @interface MSAsset : NSObject <MMCSAsset, NSSecureCoding, NSCopying>
 {
@@ -32,7 +31,7 @@
     NSString *_assetCollectionGUID;
     NSDate *_batchCreationDate;
     NSDate *_photoCreationDate;
-    id<NSCoding> _userInfo;
+    id _userInfo;
     unsigned long long _mediaAssetType;
 }
 
@@ -64,7 +63,7 @@
 @property (nonatomic) unsigned long long protocolFileSize;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *type;
-@property (strong, nonatomic) id<NSCoding> userInfo; // @synthesize userInfo=_userInfo;
+@property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
 + (id)MSASPAssetFromProtocolDictionary:(id)arg1;
 + (id)asset;

@@ -19,12 +19,11 @@ struct PQLResultSet {
     CDUnknownBlockType _field6;
     id _field7;
     BOOL _field8;
-    BOOL _field9;
+    id _field9;
     id _field10;
-    id _field11;
+    unsigned long long _field11;
     unsigned long long _field12;
-    unsigned long long _field13;
-    id _field14;
+    id _field13;
 };
 
 struct __va_list_tag {

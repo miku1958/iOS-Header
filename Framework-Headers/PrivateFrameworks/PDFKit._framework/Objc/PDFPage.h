@@ -69,11 +69,13 @@
 - (id)debugQuickLookObject;
 - (id)description;
 - (BOOL)didChangeBounds;
+- (BOOL)disableUndoManagerForAK;
 - (void)drawBurnedInAnnotationsWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawPopupAnnotationsWithBox:(long long)arg1;
 - (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 isThumbnail:(BOOL)arg3;
 - (void)drawWithBox:(long long)arg1 toContext:(struct CGContext *)arg2;
+- (void)enableUndoManagerForAK:(BOOL)arg1;
 - (BOOL)enqueuedForDataDetection;
 - (BOOL)enqueuedForLayout;
 - (void)fetchPageLayoutOnThread:(id)arg1;

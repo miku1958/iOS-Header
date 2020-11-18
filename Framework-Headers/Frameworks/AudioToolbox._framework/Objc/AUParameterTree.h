@@ -23,13 +23,13 @@
     struct AURemoteParameterObserver *_remoteObserverToken;
     struct AURemoteParameterObserver *_remoteRecorderToken;
     id<_AURemoteParameterSynchronization> _remoteParameterSynchronizer;
-    vector_2580a1ea _addrToParamIndex;
+    vector_66b3461a _addrToParamIndex;
 }
 
 @property (nonatomic) AUAudioUnit_XH *_auXH; // @synthesize _auXH=__auXH;
 @property (nonatomic) BOOL _autoCreatedForV2AU; // @synthesize _autoCreatedForV2AU=__autoCreatedForV2AU;
 @property (nonatomic) BOOL _suppressObserverCallbacks; // @synthesize _suppressObserverCallbacks=__suppressObserverCallbacks;
-@property (nonatomic) vector_2580a1ea addrToParamIndex; // @synthesize addrToParamIndex=_addrToParamIndex;
+@property (nonatomic) vector_66b3461a addrToParamIndex; // @synthesize addrToParamIndex=_addrToParamIndex;
 @property (nonatomic) int numRecorders; // @synthesize numRecorders=_numRecorders;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observationQueue; // @synthesize observationQueue=_observationQueue;
 @property (nonatomic) struct AUObserverController *observerController; // @synthesize observerController=_observerController;

@@ -19,6 +19,7 @@
     unsigned int _endpointFeatures;
     unsigned int _discoveryMode;
     unsigned int _targetAudioSessionID;
+    NSString *_routingContextUID;
     MRExternalDeviceController *_genericExternalDeviceController;
     struct NSMutableDictionary *_availableGenericExternalDevices;
     BOOL _createEndpointsOnlyIfGenericEquivalentAvailable;
@@ -36,6 +37,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_availableOutputDevicesDidChangeNotification:(id)arg1;
 - (void)_onQueue_reloadAvailableEndpointsAndOutputDevices;
 - (void)_registerNotifications;
@@ -48,7 +50,9 @@
 - (void)externalDeviceController:(id)arg1 didRemoveDevice:(id)arg2;
 - (BOOL)hasAvailableEndpoints;
 - (id)initWithEndpointFeatures:(unsigned int)arg1;
+- (id)routingContextUID;
 - (void)setDiscoveryMode:(unsigned int)arg1;
+- (void)setRoutingContextUID:(id)arg1;
 - (void)setTargetAudioSessionID:(unsigned int)arg1;
 - (unsigned int)targetAudioSessionID;
 

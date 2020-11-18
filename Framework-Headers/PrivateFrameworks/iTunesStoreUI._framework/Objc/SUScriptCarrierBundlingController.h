@@ -12,6 +12,9 @@
 {
 }
 
+@property (readonly) NSString *provisioningStyleAlways;
+@property (readonly) NSString *provisioningStyleNever;
+@property (readonly) NSString *provisioningStyleOnce;
 @property (readonly) NSString *statusEligible;
 @property (readonly) NSString *statusNeedsManualVerification;
 @property (readonly) NSString *statusNotEligible;

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
 @class NSNumber;
 
-@interface ICSByDayValue : NSObject <NSCoding>
+@interface ICSByDayValue : NSObject <NSSecureCoding>
 {
     NSNumber *_number;
     int _weekday;
@@ -20,6 +20,7 @@
 @property int weekday; // @synthesize weekday=_weekday;
 
 + (id)byDayValueFromICSString:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (int)weekdayFromICSString:(id)arg1;
 - (void).cxx_destruct;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;

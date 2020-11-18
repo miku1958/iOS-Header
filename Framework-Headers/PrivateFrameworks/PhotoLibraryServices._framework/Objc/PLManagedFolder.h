@@ -37,6 +37,7 @@
 + (id)entityName;
 + (id)insertInManagedObjectContext:(id)arg1;
 + (id)localizedRecoveredTitle;
++ (id)validKindsForPersistence;
 - (void)addChildCollections:(id)arg1;
 - (void)addChildCollectionsObject:(id)arg1;
 - (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;

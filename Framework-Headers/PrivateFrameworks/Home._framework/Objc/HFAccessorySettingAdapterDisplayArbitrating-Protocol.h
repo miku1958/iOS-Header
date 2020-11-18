@@ -6,12 +6,13 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HFAccessorySettingsEntity, HFMutableItemSection;
+@class HFAccessorySettingsEntity, HFMutableItemSection, NSArray;
 
 @protocol HFAccessorySettingAdapterDisplayArbitrating <NSObject>
 - (BOOL)shouldShowSettingsEntity:(HFAccessorySettingsEntity *)arg1;
 
 @optional
 - (void)configureSection:(HFMutableItemSection *)arg1 forEntity:(HFAccessorySettingsEntity *)arg2;
+- (NSArray *)customizeSections:(NSArray *)arg1 forEntity:(HFAccessorySettingsEntity *)arg2;
 @end
 

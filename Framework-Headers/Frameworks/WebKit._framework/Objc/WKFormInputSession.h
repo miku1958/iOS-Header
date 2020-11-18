@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 @interface WKFormInputSession : NSObject <_WKFormInputSession>
 {
     WKContentView *_contentView;
-    struct RetainPtr<NSObject<NSSecureCoding>> _userObject;
     struct RetainPtr<WKFocusedElementInfo> _focusedElementInfo;
     struct RetainPtr<UIView> _customInputView;
     struct RetainPtr<NSArray<UITextSuggestion *>> _suggestions;
@@ -38,7 +37,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithContentView:(id)arg1 focusedElementInfo:(id)arg2 userObject:(id)arg3;
+- (id)initWithContentView:(id)arg1 focusedElementInfo:(id)arg2;
 - (void)invalidate;
 
 @end

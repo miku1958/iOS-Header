@@ -11,6 +11,7 @@
 @property (readonly, nonatomic) BOOL tsu_isCurrentQueue;
 
 + (id)tsu_newSerialOperationQueueWithName:(id)arg1;
++ (id)tsu_newSerialOperationQueueWithName:(id)arg1 attribute:(id)arg2;
 - (void)tsu_performBlock:(CDUnknownBlockType)arg1;
 @end
 

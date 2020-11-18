@@ -11,6 +11,7 @@
     int _batterySaverModeToken;
 }
 
++ (BOOL)isAudioAccessory;
 + (BOOL)isBatterySaverEnabled;
 + (BOOL)isBetaBuild;
 + (BOOL)isDemoModeEnabled;

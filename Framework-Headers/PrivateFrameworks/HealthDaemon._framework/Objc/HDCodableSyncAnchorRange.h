@@ -8,11 +8,14 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
+@class HDCodableEntityIdentifier;
+
 @interface HDCodableSyncAnchorRange : PBCodable <NSCopying>
 {
     long long _endAnchor;
     long long _entityType;
     long long _startAnchor;
+    HDCodableEntityIdentifier *_entityIdentifier;
     struct {
         unsigned int endAnchor:1;
         unsigned int entityType:1;
@@ -21,12 +24,15 @@
 }
 
 @property (nonatomic) long long endAnchor; // @synthesize endAnchor=_endAnchor;
+@property (strong, nonatomic) HDCodableEntityIdentifier *entityIdentifier; // @synthesize entityIdentifier=_entityIdentifier;
 @property (nonatomic) long long entityType; // @synthesize entityType=_entityType;
 @property (nonatomic) BOOL hasEndAnchor;
+@property (readonly, nonatomic) BOOL hasEntityIdentifier;
 @property (nonatomic) BOOL hasEntityType;
 @property (nonatomic) BOOL hasStartAnchor;
 @property (nonatomic) long long startAnchor; // @synthesize startAnchor=_startAnchor;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

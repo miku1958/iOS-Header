@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MPButton, MPCPlayerPath, MPUMarqueeView, NSString, UIButton, UIImageView, UILabel;
+@class MPButton, MPCPlayerPath, MPUMarqueeView, MediaControlsRouteLabel, NSString, UIButton, UIImageView, UILabel;
 
 @interface MediaControlsHeaderView : UIView
 {
@@ -17,7 +17,7 @@
     UIImageView *_artworkView;
     UIImageView *_placeholderArtworkView;
     long long _style;
-    NSString *_routeName;
+    MediaControlsRouteLabel *_routeLabel;
     NSString *_primaryString;
     NSString *_secondaryString;
     MPButton *_routingButton;
@@ -27,8 +27,6 @@
     long long _buttonType;
     UIView *_artworkBackgroundView;
     UIView *_shadow;
-    MPUMarqueeView *_titleMarqueeView;
-    UILabel *_routeLabel;
     MPUMarqueeView *_primaryMarqueeView;
     UILabel *_primaryLabel;
     MPUMarqueeView *_secondaryMarqueeView;
@@ -51,8 +49,7 @@
 @property (strong, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property (strong, nonatomic) MPUMarqueeView *primaryMarqueeView; // @synthesize primaryMarqueeView=_primaryMarqueeView;
 @property (copy, nonatomic) NSString *primaryString; // @synthesize primaryString=_primaryString;
-@property (strong, nonatomic) UILabel *routeLabel; // @synthesize routeLabel=_routeLabel;
-@property (copy, nonatomic) NSString *routeName; // @synthesize routeName=_routeName;
+@property (strong, nonatomic) MediaControlsRouteLabel *routeLabel; // @synthesize routeLabel=_routeLabel;
 @property (strong, nonatomic) MPButton *routingButton; // @synthesize routingButton=_routingButton;
 @property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) MPUMarqueeView *secondaryMarqueeView; // @synthesize secondaryMarqueeView=_secondaryMarqueeView;
@@ -60,7 +57,6 @@
 @property (strong, nonatomic) UIView *shadow; // @synthesize shadow=_shadow;
 @property (nonatomic) BOOL shouldUseOverrideSize; // @synthesize shouldUseOverrideSize=_shouldUseOverrideSize;
 @property (nonatomic) long long style; // @synthesize style=_style;
-@property (strong, nonatomic) MPUMarqueeView *titleMarqueeView; // @synthesize titleMarqueeView=_titleMarqueeView;
 @property (nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
 
 - (void).cxx_destruct;
@@ -74,6 +70,7 @@
 - (void)layoutSubviews;
 - (struct CGSize)layoutTextInAvailableBounds:(struct CGRect)arg1 setFrames:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)tintColorDidChange;
 - (void)updateArtworkStyle;
 
 @end

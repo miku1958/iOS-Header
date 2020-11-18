@@ -11,24 +11,26 @@
 @interface IMCloudKitHookTestSingleton : IMSingletonOverride
 {
     IMCloudKitMockSyncState *_testState;
+    BOOL _rampedIntoTruthZone;
     BOOL _isStartingSync;
     BOOL _isDisablingDevices;
-    NSArray *_lastSyncErrors;
     long long _isChangingEnabledState;
+    unsigned long long _syncControllerSyncState;
+    long long _syncType;
     NSDictionary *_syncStats;
 }
 
-@property (nonatomic) unsigned long long controllerSyncState;
-@property (nonatomic) unsigned long long controllerSyncType;
+@property (strong, nonatomic) NSArray *IMCloudKitSyncErrors;
 @property (nonatomic) BOOL eligibleForTruthZone;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (nonatomic) long long isChangingEnabledState; // @synthesize isChangingEnabledState=_isChangingEnabledState;
 @property (nonatomic) BOOL isDisablingDevices; // @synthesize isDisablingDevices=_isDisablingDevices;
 @property (nonatomic) BOOL isStartingSync; // @synthesize isStartingSync=_isStartingSync;
 @property (strong, nonatomic) NSDate *lastSyncDate;
-@property (strong, nonatomic) NSArray *lastSyncErrors; // @synthesize lastSyncErrors=_lastSyncErrors;
-@property (nonatomic) BOOL rampedIntoTruthZone;
+@property (nonatomic) BOOL rampedIntoTruthZone; // @synthesize rampedIntoTruthZone=_rampedIntoTruthZone;
+@property (nonatomic) unsigned long long syncControllerSyncState; // @synthesize syncControllerSyncState=_syncControllerSyncState;
 @property (strong, nonatomic) NSDictionary *syncStats; // @synthesize syncStats=_syncStats;
+@property (nonatomic) long long syncType; // @synthesize syncType=_syncType;
 @property (nonatomic, getter=isSyncing) BOOL syncing;
 @property (strong, nonatomic) IMCloudKitMockSyncState *testState; // @synthesize testState=_testState;
 
@@ -38,8 +40,11 @@
 - (void)initiatePeriodicSync;
 - (BOOL)isInExitState;
 - (void)sendSyncChangedEvent;
+- (void)setControllerSyncState:(unsigned long long)arg1;
+- (void)setControllerSyncType:(long long)arg1;
 - (void)setIsInExitState:(BOOL)arg1;
 - (id)syncStateDictionary;
+- (void)updateCloudKitSyncingState;
 
 @end
 

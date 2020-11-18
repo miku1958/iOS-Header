@@ -19,6 +19,7 @@
     BOOL _nonCatalogSBEnabled;
     unsigned long long _nonCatalogSourceType;
     unsigned long long _nonCatalogStoreAccountID;
+    NSString *_nonCatalogBuildVersion;
     NSString *_nonCatalogStoreFrontID;
     BOOL _shouldReportAggregateTimePlayActivityEvents;
     BOOL _shouldReportPlayActivityEvents;

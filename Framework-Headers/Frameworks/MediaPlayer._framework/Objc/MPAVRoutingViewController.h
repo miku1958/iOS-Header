@@ -12,7 +12,7 @@
 #import <MediaPlayer/UITableViewDelegate-Protocol.h>
 
 @class MPAVEndpointRoute, MPAVRoutingController, MPAVRoutingEmptyStateView, MPAVRoutingTableHeaderView, MPAVRoutingViewControllerUpdate, MPWeakTimer, NSArray, NSNumber, NSString, UIColor, UITableView, UIView;
-@protocol MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
+@protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
 
 @interface MPAVRoutingViewController : UIViewController <MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -49,6 +49,7 @@
     NSNumber *_discoveryModeOverride;
     id<MPAVRoutingViewControllerThemeDelegate> _themeDelegate;
     MPAVEndpointRoute *_endpointRoute;
+    id<MPAVOutputDevicePlaybackDataSource> _playbackDataSource;
 }
 
 @property (readonly, nonatomic) double _expandedCellHeight;
@@ -69,6 +70,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long iconStyle; // @synthesize iconStyle=_iconStyle;
 @property (nonatomic) unsigned long long mirroringStyle; // @synthesize mirroringStyle=_mirroringStyle;
+@property (weak, nonatomic) id<MPAVOutputDevicePlaybackDataSource> playbackDataSource; // @synthesize playbackDataSource=_playbackDataSource;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<MPAVRoutingViewControllerThemeDelegate> themeDelegate; // @synthesize themeDelegate=_themeDelegate;
@@ -79,6 +81,7 @@
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_applyUpdate:(id)arg1;
 - (void)_beginRouteDiscovery;
+- (void)_configureCell:(id)arg1 forIndexPath:(id)arg2;
 - (id)_crashLogDateFormatter;
 - (id)_displayAsPickedRoutesInRoutes:(id)arg1;
 - (id)_displayableRoutesInRoutes:(id)arg1;
@@ -86,8 +89,8 @@
 - (void)_endRouteDiscovery;
 - (id)_generatePropertyListFromUpdateDisplayedRoutesState:(id)arg1 exception:(id)arg2;
 - (void)_initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
-- (BOOL)_pickOrGroupRoute:(id)arg1;
-- (void)_pickRoute:(id)arg1;
+- (BOOL)_pickOrGroupRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_promptForHijackIfNeeded:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_registerNotifications;
 - (void)_reloadEmptyStateVisibility;
 - (void)_setNeedsDisplayedRoutesUpdate;
@@ -121,6 +124,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 

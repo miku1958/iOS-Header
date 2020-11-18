@@ -42,6 +42,7 @@
 - (void)submitAutomaticReaderActivation:(int)arg1;
 - (void)submitVersioningMetricWithVersion:(id)arg1 variant:(int)arg2;
 - (void)unableToSilentlyMigrateToCKBookmarksWithReason:(int)arg1;
+- (void)userDidParticipateInPasswordAutoFillWithInteraction:(int)arg1;
 - (void)userTappedAutoFillQuickTypeSuggestionWithCategory:(int)arg1 formProperty:(id)arg2;
 
 @end

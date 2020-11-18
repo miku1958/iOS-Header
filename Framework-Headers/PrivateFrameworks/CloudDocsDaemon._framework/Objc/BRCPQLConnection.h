@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     double _flushInterval;
     BOOL _flushImmediately;
     BOOL _autovacuumInProgress;
+    long long _changesOverride;
     unsigned long long _vmStepsExecuted;
 }
 
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)attachDBAtPath:(id)arg1 as:(id)arg2 error:(id *)arg3;
 - (void)autovacuumIfNeeded;
 - (void)brc_close;
+- (long long)changes;
 - (void)disableProfilingForQueriesInBlock:(CDUnknownBlockType)arg1;
 - (BOOL)executeWithErrorHandler:(CDUnknownBlockType)arg1 sql:(id)arg2;
 - (BOOL)executeWithExpectedIndex:(id)arg1 sql:(id)arg2;

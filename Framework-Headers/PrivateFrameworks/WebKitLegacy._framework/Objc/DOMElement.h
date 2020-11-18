@@ -82,7 +82,6 @@
 - (int)structuralComplexityContribution;
 - (id)uiactions;
 - (BOOL)webkitMatchesSelector:(id)arg1;
-- (id)webkitRegionOverset;
 
 @end
 

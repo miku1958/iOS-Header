@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
     double mUnitSpaceIntercept;
     struct ValueEnumerator mSeries;
     struct ValueEnumerator mCoordinate;
-    vector_3f7ffb82 mSeriesValues;
-    vector_3f7ffb82 mCoordinateValues;
+    vector_b67dfe3a mSeriesValues;
+    vector_b67dfe3a mCoordinateValues;
 }
 
 @property (readonly, nonatomic) TSCH3DChartType *chartType; // @synthesize chartType=mChartType;

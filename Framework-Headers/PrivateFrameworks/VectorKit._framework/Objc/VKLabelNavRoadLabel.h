@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     float _desiredOffsetDistance;
     unsigned int _displayID;
     BOOL _isPicked;
+    Mercator2_57ec32b6 _mercatorPoint;
 }
 
 @property (nonatomic) unsigned char alignment; // @synthesize alignment=_alignment;
@@ -32,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isShieldLabel;
 @property (readonly, nonatomic) BOOL isTrafficCameraLabel;
 @property (readonly, nonatomic) const shared_ptr_93ff9d4a *label; // @synthesize label=_label;
-@property (nonatomic) Mercator2_57ec32b6 mercatorPoint;
+@property (nonatomic) Mercator2_57ec32b6 mercatorPoint; // @synthesize mercatorPoint=_mercatorPoint;
 @property (nonatomic) id<VKLabelNavFeature> navFeature; // @synthesize navFeature=_navFeature;
 @property (nonatomic) unsigned short renderOrder;
 

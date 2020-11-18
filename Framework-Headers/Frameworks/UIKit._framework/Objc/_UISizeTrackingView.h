@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (BOOL)_fencingEffectsAreVisible;
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 - (long long)_interfaceOrientationForScene:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;

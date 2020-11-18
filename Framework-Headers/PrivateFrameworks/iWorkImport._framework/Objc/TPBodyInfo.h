@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
 
-@class NSString, TPPageHint, TPPageInfo, TSDInfoGeometry, TSPObject, TSWPStorage;
+@class NSArray, NSString, TPPageHint, TPPageInfo, TSDInfoGeometry, TSPObject, TSWPStorage;
 @protocol TSDContainerInfo, TSDHint, TSDOwningAttachment, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) TSWPStorage *bodyStorage;
+@property (readonly, nonatomic) NSArray *childInfos;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText;
@@ -40,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSWPStorage *storage;
 @property (readonly) Class superclass;
 
-- (id)childInfos;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)inflateBodyLayout:(id)arg1;

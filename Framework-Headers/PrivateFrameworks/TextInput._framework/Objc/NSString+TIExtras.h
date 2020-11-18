@@ -45,6 +45,7 @@
 - (BOOL)_containsJapaneseOnly;
 - (BOOL)_containsKatakanaOrKanji;
 - (BOOL)_containsSubstring:(id)arg1;
+- (BOOL)_containsSymbolsAndPunctuationOnly;
 - (BOOL)_contentsExclusivelyInCharacterSet:(struct USet *)arg1;
 - (unsigned long long)_editDistanceFrom:(id)arg1;
 - (BOOL)_endsSentence;

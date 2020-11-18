@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 + (id)paddingForTensorflowAveragePooling;
++ (id)paddingForTensorflowAveragePoolingValidOnly;
 + (id)paddingWithMethod:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

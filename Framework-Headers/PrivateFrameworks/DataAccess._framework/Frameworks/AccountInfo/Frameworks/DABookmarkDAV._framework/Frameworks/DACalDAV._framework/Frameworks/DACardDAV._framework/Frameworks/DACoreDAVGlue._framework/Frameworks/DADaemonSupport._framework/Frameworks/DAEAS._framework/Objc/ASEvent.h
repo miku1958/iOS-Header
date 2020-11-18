@@ -7,11 +7,11 @@
 #import <DAEAS/ASChangedCollectionLeaf.h>
 
 #import <DAEAS/DADataElement-Protocol.h>
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class ASEventUID, ASLocation, ASRecurrence, ASTimeZone, NSArray, NSCalendarDate, NSDate, NSNumber, NSString;
 
-@interface ASEvent : ASChangedCollectionLeaf <NSCoding, DADataElement>
+@interface ASEvent : ASChangedCollectionLeaf <NSSecureCoding, DADataElement>
 {
     BOOL _bodyTruncated;
     BOOL _doNotSendBody;
@@ -115,12 +115,15 @@
 + (void)_setFakeDTStampDateForUnitTests:(id)arg1;
 + (BOOL)acceptsTopLevelLeaves;
 + (id)asParseRules;
++ (id)attendeeExternalRepClasses;
++ (id)calendarItemExternalRepClasses;
 + (id)eventWithCalEvent:(void *)arg1 serverID:(id)arg2 account:(id)arg3;
 + (BOOL)frontingBasicTypes;
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
 + (void)setSystemTimeZoneNameForUnitTests:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_bailIfNotNewestDataForAccount:(id)arg1;
 - (void)_determineSelfnessWithLocalEvent:(void *)arg1 forAccount:(id)arg2;

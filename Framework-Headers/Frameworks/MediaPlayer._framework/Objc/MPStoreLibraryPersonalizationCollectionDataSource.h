@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPModelLazySectionedCollectionDataSource-Protocol.h>
 
-@class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPModelRequest, MPSectionedCollection, NSMapTable, NSMutableDictionary, NSString;
+@class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPPropertySet, MPSectionedCollection, NSDictionary, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPModelLazySectionedCollectionDataSource>
@@ -16,7 +16,9 @@
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
     struct vector<std::__1::shared_ptr<mlcore::EntityCache>, std::__1::allocator<std::__1::shared_ptr<mlcore::EntityCache>>> _entityCaches;
     MPSectionedCollection *_unpersonalizedContentDescriptors;
-    MPModelRequest *_unpersonalizedRequest;
+    MPPropertySet *_itemProperties;
+    MPPropertySet *_sectionProperties;
+    NSDictionary *_itemIndexPathToOverridePropertySet;
     MPMediaLibraryView *_libraryView;
     MPMediaLibraryEntityTranslationContext *_translatingContext;
     NSMapTable *_relativeModelClassToMappingResponse;
@@ -26,13 +28,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSDictionary *itemIndexPathToOverridePropertySet; // @synthesize itemIndexPathToOverridePropertySet=_itemIndexPathToOverridePropertySet;
+@property (copy, nonatomic) MPPropertySet *itemProperties; // @synthesize itemProperties=_itemProperties;
 @property (copy, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
 @property (copy, nonatomic) NSMapTable *relativeModelClassToMappingResponse; // @synthesize relativeModelClassToMappingResponse=_relativeModelClassToMappingResponse;
+@property (copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;
 @property (copy, nonatomic) NSMutableDictionary *sectionToLibraryAddedOverride; // @synthesize sectionToLibraryAddedOverride=_sectionToLibraryAddedOverride;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MPMediaLibraryEntityTranslationContext *translatingContext; // @synthesize translatingContext=_translatingContext;
 @property (strong, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
-@property (copy, nonatomic) MPModelRequest *unpersonalizedRequest; // @synthesize unpersonalizedRequest=_unpersonalizedRequest;
 
 + (id)_completePersonalizedObjectWithLibraryObject:(id)arg1 personalizationProperties:(id)arg2 overrideLibraryAddedStatus:(long long)arg3;
 + (id)_identifiersByCombiningPersonalizedIdentifiers:(id)arg1 unpersonalizedIdentifiers:(id)arg2;

@@ -11,6 +11,7 @@
 @interface MAAssetQuery : NSObject
 {
     BOOL _augmentState;
+    NSDate *_postedDate;
     NSMutableArray *_queryParams;
     NSString *_assetType;
     NSArray *_results;
@@ -21,6 +22,7 @@
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property (readonly, nonatomic) BOOL augmentState; // @synthesize augmentState=_augmentState;
 @property (readonly, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
+@property (readonly, nonatomic) NSDate *postedDate; // @synthesize postedDate=_postedDate;
 @property (readonly, nonatomic) NSMutableArray *queryParams; // @synthesize queryParams=_queryParams;
 @property (readonly, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (readonly, nonatomic) long long returnTypes; // @synthesize returnTypes=_returnTypes;

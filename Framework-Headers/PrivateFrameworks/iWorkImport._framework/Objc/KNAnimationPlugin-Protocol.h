@@ -6,7 +6,7 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class KNAnimatedBuild, KNAnimationContext, KNAnimationPluginMenu, NSArray, NSDictionary, NSString, TSDCapabilities;
+@class KNAnimatedBuild, KNAnimationContext, KNAnimationPluginMenu, NSArray, NSDictionary, NSString;
 
 @protocol KNAnimationPlugin <NSObject>
 + (long long)animationCategory;
@@ -23,7 +23,7 @@
 @optional
 + (NSArray *)customAttributes;
 + (NSDictionary *)customEffectTimingCurveDisplayParametersForAttributes:(NSDictionary *)arg1 layoutStyleOnly:(BOOL)arg2;
-+ (long long)rendererTypeForCapabilities:(TSDCapabilities *)arg1;
++ (long long)rendererTypeForAnimationContext:(KNAnimationContext *)arg1;
 - (NSDictionary *)animationInfoForAnimatedBuild:(KNAnimatedBuild *)arg1;
 @end
 

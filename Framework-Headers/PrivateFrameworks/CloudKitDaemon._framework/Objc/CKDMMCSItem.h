@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
     NSError *_error;
     NSData *_assetKey;
     NSData *_wrappedAssetKey;
+    NSData *_clearAssetKey;
     NSData *_boundaryKey;
     NSData *_referenceSignature;
     CKDMMCSItemCommandWriter *_writer;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property (strong, nonatomic) NSData *boundaryKey; // @synthesize boundaryKey=_boundaryKey;
 @property (nonatomic) unsigned int chunkCount; // @synthesize chunkCount=_chunkCount;
+@property (strong, nonatomic) NSData *clearAssetKey; // @synthesize clearAssetKey=_clearAssetKey;
 @property (strong, nonatomic) NSFileHandle *clientOpenedFileHandle; // @synthesize clientOpenedFileHandle=_clientOpenedFileHandle;
 @property (strong, nonatomic) NSURL *contentBaseURL; // @synthesize contentBaseURL=_contentBaseURL;
 @property (strong, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;

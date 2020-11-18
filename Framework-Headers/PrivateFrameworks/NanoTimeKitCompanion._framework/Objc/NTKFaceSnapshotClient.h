@@ -28,6 +28,7 @@
 - (id)init;
 - (void)performAfterCompletingCurrentlyPendingSnapshots:(CDUnknownBlockType)arg1;
 - (void)requestSnapshotOfFace:(id)arg1;
+- (void)snapshotFace:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)synchronouslyUpdateAllSnapshots;
 
 @end

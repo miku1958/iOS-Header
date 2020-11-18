@@ -18,6 +18,7 @@
 
 + (void)setSharedTestObservationCenter:(id)arg1;
 + (id)sharedTestObservationCenter;
+- (void).cxx_destruct;
 - (void)_observeTestExecutionForBlock:(CDUnknownBlockType)arg1;
 - (void)_resumeObservation;
 - (void)_suspendObservation;
@@ -32,7 +33,6 @@
 - (void)_testSuiteDidStart:(id)arg1;
 - (void)_testSuiteDidStop:(id)arg1;
 - (void)addTestObserver:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initBasicCenter;

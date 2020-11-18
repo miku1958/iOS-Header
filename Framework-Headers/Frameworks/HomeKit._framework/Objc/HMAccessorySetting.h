@@ -14,7 +14,6 @@
 
 @interface HMAccessorySetting : NSObject <_HMAccesorySettingDelegate, HMFLogging>
 {
-    BOOL _reflected;
     _HMAccessorySetting *_internal;
     HMAccessorySettingGroup *_group;
 }
@@ -26,7 +25,7 @@
 @property (readonly) _HMAccessorySetting *internal; // @synthesize internal=_internal;
 @property (readonly, copy) NSString *keyPath;
 @property (readonly, copy) NSString *localizedTitle;
-@property (readonly, getter=isReflected) BOOL reflected; // @synthesize reflected=_reflected;
+@property (readonly, getter=isReflected) BOOL reflected;
 @property (readonly) Class superclass;
 @property (readonly, copy) id<NSObject><NSCopying><NSSecureCoding> value;
 @property (readonly) Class valueClass;
@@ -36,7 +35,9 @@
 + (id)logCategory;
 + (id)settingForInternal:(id)arg1;
 - (void).cxx_destruct;
+- (void)_settingDidUpdateReflected:(id)arg1;
 - (void)_settingDidUpdateValue:(id)arg1;
+- (void)_settingWillUpdateReflected:(id)arg1;
 - (void)_settingWillUpdateValue:(id)arg1;
 - (id)init;
 - (id)initWithInternal:(id)arg1;

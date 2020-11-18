@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) BOOL volumeWarningEnabled;
 @property (readonly, nonatomic) long long volumeWarningState;
 
+- (void)adjustVolumeValue:(float)arg1;
 - (void)reload;
 - (void)reloadWarning;
 @end

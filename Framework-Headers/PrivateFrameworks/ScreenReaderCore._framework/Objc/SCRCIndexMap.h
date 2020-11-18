@@ -6,14 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
-#import <ScreenReaderCore/NSCoding-Protocol.h>
 #import <ScreenReaderCore/NSCopying-Protocol.h>
+#import <ScreenReaderCore/NSSecureCoding-Protocol.h>
 
-@interface SCRCIndexMap : NSObject <NSCopying, NSCoding>
+@interface SCRCIndexMap : NSObject <NSCopying, NSSecureCoding>
 {
     struct __CFDictionary *_map;
 }
 
++ (BOOL)supportsSecureCoding;
 - (unsigned long long *)_createIndexesWithSize:(unsigned long long *)arg1;
 - (id)_initAndDeepCopyIndexMap:(id)arg1;
 - (id)_initWithIndexMap:(id)arg1;

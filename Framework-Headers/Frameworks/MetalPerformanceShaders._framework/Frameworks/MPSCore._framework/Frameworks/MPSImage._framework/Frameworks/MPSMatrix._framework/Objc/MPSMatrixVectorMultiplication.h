@@ -33,6 +33,7 @@
 - (unsigned long long)batchSize;
 - (unsigned long long)batchStart;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
+- (void)dealloc;
 - (void)encodeToCommandBuffer:(id)arg1 inputMatrix:(id)arg2 inputVector:(id)arg3 resultVector:(id)arg4;
 - (id)initWithDevice:(id)arg1 rows:(unsigned long long)arg2 columns:(unsigned long long)arg3;
 - (id)initWithDevice:(id)arg1 transpose:(BOOL)arg2 rows:(unsigned long long)arg3 columns:(unsigned long long)arg4 alpha:(double)arg5 beta:(double)arg6;

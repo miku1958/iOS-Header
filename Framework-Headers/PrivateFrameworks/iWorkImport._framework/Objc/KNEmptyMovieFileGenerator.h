@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface KNEmptyMovieFileGenerator : NSObject
 {
-    NSURL *mGeneratedFileURL;
-    double mDuration;
+    double _duration;
+    NSURL *_generatedFileURL;
 }
 
-@property (readonly, nonatomic) NSURL *generatedFileURL; // @synthesize generatedFileURL=mGeneratedFileURL;
+@property (readonly, nonatomic) NSURL *generatedFileURL; // @synthesize generatedFileURL=_generatedFileURL;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)generateFileWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithGeneratedFileURL:(id)arg1 duration:(double)arg2;

@@ -42,7 +42,7 @@
 @property (nonatomic) unsigned long long numberOfFulfillments; // @synthesize numberOfFulfillments=_numberOfFulfillments;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

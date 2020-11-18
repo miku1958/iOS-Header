@@ -32,10 +32,10 @@
 + (double)IDEConnectionTimeout;
 + (void)initialize;
 + (id)sharedTestDriver;
+- (void).cxx_destruct;
 - (void)_queue_flushDebugMessageBufferWithBlock:(CDUnknownBlockType)arg1;
 - (id)_readyIDESession:(id *)arg1;
 - (id)_transportForIDESession:(id *)arg1;
-- (void)dealloc;
 - (id)initWithTestConfiguration:(id)arg1;
 - (void)logDebugMessage:(id)arg1;
 - (void)logStartupInfo;

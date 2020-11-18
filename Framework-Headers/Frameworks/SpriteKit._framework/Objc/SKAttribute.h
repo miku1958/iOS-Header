@@ -14,7 +14,7 @@
 {
     long long _type;
     NSString *_name;
-    basic_string_805fe43b _nameString;
+    basic_string_23d93216 _nameString;
 }
 
 @property (readonly, nonatomic) NSString *name;
@@ -24,7 +24,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (const basic_string_805fe43b *)getNameString;
+- (const basic_string_23d93216 *)getNameString;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 type:(long long)arg2;

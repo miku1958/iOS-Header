@@ -28,10 +28,10 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSString *version; // @synthesize version=_version;
 
++ (id)newWithBuilder:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
-- (id)builder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -39,6 +39,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1 identifier:(id)arg2 version:(id)arg3 controlGroup:(id)arg4 experimentGroups:(id)arg5 salt:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
+- (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 
 @end
 

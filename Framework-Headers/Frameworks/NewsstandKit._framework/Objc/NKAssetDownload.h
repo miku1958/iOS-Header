@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <NewsstandKit/NSSecureCoding-Protocol.h>
+
 @class NKIssue, NSData, NSDictionary, NSString, NSURLConnection, NSURLRequest;
 
-@interface NKAssetDownload : NSObject
+@interface NKAssetDownload : NSObject <NSSecureCoding>
 {
     NKIssue *_issue;
     NSString *_identifier;
@@ -27,6 +29,7 @@
 @property (copy) NSDictionary *userInfo;
 @property (strong) NSData *userInfoData; // @synthesize userInfoData=_userInfoData;
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)_attemptedConnection;
 - (void)_cancel;
 - (id)_connection;

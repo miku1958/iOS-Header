@@ -19,6 +19,7 @@
 @property (nonatomic) double nextRestingHeartRateSampleTime; // @synthesize nextRestingHeartRateSampleTime=_nextRestingHeartRateSampleTime;
 @property (nonatomic) double nextWalkingHeartRateAverageSampleTime; // @synthesize nextWalkingHeartRateAverageSampleTime=_nextWalkingHeartRateAverageSampleTime;
 
++ (BOOL)supportsSecureCoding;
 - (double)_computeRestingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (double)_computeWalkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;

@@ -28,9 +28,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)init;
+- (id)initPrivateWithDescriptor:(id)arg1 device:(struct MPSDevice *)arg2;
 - (id)initWithBuffer:(id)arg1 descriptor:(id)arg2;
 - (id)initWithBuffer:(id)arg1 length:(unsigned long long)arg2 dataType:(unsigned int)arg3;
-- (id)initWithDescriptor:(id)arg1 device:(struct MPSDevice *)arg2;
+- (id)initWithDevice:(id)arg1 descriptor:(id)arg2;
+- (unsigned long long)resourceSize;
+- (void)synchronizeOnCommandBuffer:(id)arg1;
 
 @end
 

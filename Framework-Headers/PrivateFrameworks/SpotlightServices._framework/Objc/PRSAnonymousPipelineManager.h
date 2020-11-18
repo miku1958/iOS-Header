@@ -46,9 +46,9 @@
 + (id)whitelistedBundles;
 - (void).cxx_destruct;
 - (id)_abandonedItemsFromItems:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2;
-- (void)_addQueryInfoToFeatureMetadata:(id)arg1 withQuery:(id)arg2 cepData:(id)arg3 forClient:(id)arg4;
+- (void)_addQueryInfoToFeatureMetadata:(id)arg1 withQuery:(id)arg2 cepData:(id)arg3 forClient:(id)arg4 keyboardPrimaryLanguage:(id)arg5;
 - (void)_addRelativePositionToFeatureDict:(id)arg1 relativePosition:(id)arg2 forItem:(id)arg3;
-- (void)_extractTrainingSamplesForQuery:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2 withItems:(id)arg3 withCEPData:(id)arg4 forClientBundle:(id)arg5;
+- (void)_extractTrainingSamplesForQuery:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2 withItems:(id)arg3 withCEPData:(id)arg4 forClientBundle:(id)arg5 keyboardPrimaryLanguage:(id)arg6;
 - (void)_increaseUserDefaultsEngagementCountForBundle:(id)arg1;
 - (id)_relativePositionForItem:(id)arg1 inItems:(id)arg2 withIndexOfEngagedItem:(long long)arg3;
 - (BOOL)_shouldDataCollectWithEngagedBundle:(id)arg1 withQueryId:(id)arg2 forClientBundle:(id)arg3;
@@ -57,8 +57,8 @@
 - (BOOL)dateIsExpired:(id)arg1;
 - (void)deleteCandidateLogs;
 - (void)deleteExpiredSubmittedLogs;
-- (void)extractTrainingDataWithItemAtIndex:(unsigned long long)arg1 withItems:(id)arg2 forQuery:(id)arg3 dataCollectAllowed:(BOOL)arg4 forClientBundle:(id)arg5;
-- (void)extractTrainingDataWithItemAtIndex:(unsigned long long)arg1 withItems:(id)arg2 forQuery:(id)arg3 dataCollectAllowed:(BOOL)arg4 queryID:(id)arg5 withCEPData:(id)arg6 forClientBundle:(id)arg7;
+- (void)extractTrainingDataWithItemAtIndex:(unsigned long long)arg1 withItems:(id)arg2 forQuery:(id)arg3 dataCollectAllowed:(BOOL)arg4 forClientBundle:(id)arg5 keyboardPrimaryLanguage:(id)arg6;
+- (void)extractTrainingDataWithItemAtIndex:(unsigned long long)arg1 withItems:(id)arg2 forQuery:(id)arg3 dataCollectAllowed:(BOOL)arg4 queryID:(id)arg5 withCEPData:(id)arg6 forClientBundle:(id)arg7 keyboardPrimaryLanguage:(id)arg8;
 - (id)init;
 - (void)queryWillFinishWithItems:(id)arg1 forClient:(id)arg2 forQuery:(id)arg3 anonymousDataCollectionAllowed:(BOOL)arg4;
 - (void)registerXPCActivity;

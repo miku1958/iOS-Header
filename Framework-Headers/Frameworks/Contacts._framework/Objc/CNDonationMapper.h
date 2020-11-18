@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 error:(id *)arg3;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
-- (id)initWithContactsEnvironment:(id)arg1;
+- (id)initWithContactsEnvironment:(id)arg1 managedConfiguration:(id)arg2;
 - (id)initWithDonationStore:(id)arg1 environment:(id)arg2;
 - (id)meContactIdentifiers:(id *)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;

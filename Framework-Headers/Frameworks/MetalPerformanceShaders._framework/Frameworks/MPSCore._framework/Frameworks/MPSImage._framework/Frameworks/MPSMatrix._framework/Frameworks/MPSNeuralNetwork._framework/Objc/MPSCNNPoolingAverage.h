@@ -20,6 +20,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 kernelWidth:(unsigned long long)arg2 kernelHeight:(unsigned long long)arg3 strideInPixelsX:(unsigned long long)arg4 strideInPixelsY:(unsigned long long)arg5;
+- (BOOL)isResultStateReusedAcrossBatch;
 - (id)newPlugin;
 
 @end

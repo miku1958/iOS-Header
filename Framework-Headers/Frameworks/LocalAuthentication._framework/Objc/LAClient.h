@@ -38,6 +38,7 @@
 - (void)_performCallIdCore:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
 - (void)_recoverConnection;
 - (void)_scheduleRecovery;
+- (void)_serializedInvalidateWithMessage:(id)arg1;
 - (BOOL)_setPermanentError:(id)arg1;
 - (id)_updateOptions:(id)arg1;
 - (void)connectToServerWithInterruptionHandler:(CDUnknownBlockType)arg1;

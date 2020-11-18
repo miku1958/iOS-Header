@@ -57,7 +57,7 @@
 @property (readonly, nonatomic) NSData *movieData; // @synthesize movieData=_movieData;
 @property (readonly, nonatomic) unsigned long long notificationState; // @synthesize notificationState=_notificationState;
 @property (readonly, nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
-@property (readonly, nonatomic) NSData *photosGraphData; // @synthesize photosGraphData=_photosGraphData;
+@property (readonly, nonatomic) NSDictionary *photosGraphProperties; // @synthesize photosGraphProperties=_photosGraphProperties;
 @property (readonly, nonatomic) long long photosGraphVersion; // @synthesize photosGraphVersion=_photosGraphVersion;
 @property (readonly, nonatomic) long long playCount;
 @property (readonly, nonatomic, getter=isRejected) BOOL rejected; // @synthesize rejected=_rejected;
@@ -91,7 +91,6 @@
 - (void).cxx_destruct;
 - (id)_curatedAssetIDs;
 - (id)_extendedCuratedAssetIDs;
-- (id)_photosGraphProperties;
 - (id)_representativeAndCuratedAssetIDs;
 - (BOOL)canContainAssets;
 - (BOOL)canPerformEditOperation:(long long)arg1;

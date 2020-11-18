@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSKApplicationDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSArray, NSData, NSDate, NSString;
 @protocol TSKCompatibilityDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, getter=isActivating) BOOL activating;
-@property (copy, nonatomic) id appTextDefaults;
+@property (readonly, copy, nonatomic) id appTextDefaults;
+@property (readonly, nonatomic) NSString *applicationDisplayName;
 @property (readonly, nonatomic) NSDate *applicationLaunchTime;
 @property (readonly, nonatomic) NSString *applicationName;
 @property (readonly, nonatomic) unsigned long long applicationType;
@@ -34,11 +35,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long iWorkAuthorColorIndex;
 @property (copy, nonatomic) NSString *iWorkAuthorName;
 @property (copy, nonatomic) NSString *iWorkAuthorPrivateID; // @dynamic iWorkAuthorPrivateID;
+@property (readonly, copy, nonatomic) NSData *iWorkTextDefaultsPassphraseVerifier;
+@property (readonly, nonatomic) BOOL imageGalleryCaptionsUsePlaceholderText;
 @property (readonly, getter=isInBackground) BOOL inBackground;
 @property (readonly, nonatomic) NSString *initialInputLanguage; // @synthesize initialInputLanguage=_initialInputLanguage;
 @property (readonly, nonatomic) BOOL isCanvasFullScreen;
 @property (readonly, nonatomic) BOOL performanceModeEnabled;
-@property (readonly, nonatomic) BOOL supportsNativeEquations;
+@property (readonly, nonatomic) BOOL supportsCanvasNativeEquationObjects;
+@property (readonly, nonatomic) BOOL supportsInlineNativeEquationObjects;
+@property (readonly, nonatomic) BOOL supportsLinkedTextBoxes;
 @property (readonly, nonatomic) BOOL supportsPastingIntoGroups;
 @property (readonly, nonatomic) BOOL tableCellInspectorShowsNaturalAlignment;
 @property (readonly, nonatomic) BOOL tableHeaderInspectorShowsFreezeHeaderColumnsSwitch;
@@ -69,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)openURL:(id)arg1;
 - (BOOL)openURL:(id)arg1 withDocumentRoot:(id)arg2;
 - (id)previewImageForType:(id)arg1;
+- (void)setAppTextDefaults:(id)arg1 passphraseVerifier:(id)arg2;
 - (BOOL)shouldRenderContactShadow;
 - (BOOL)shouldRenderCurvedShadow;
 - (BOOL)shouldRenderLargeImages;

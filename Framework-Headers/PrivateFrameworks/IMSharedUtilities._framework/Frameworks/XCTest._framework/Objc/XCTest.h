@@ -25,7 +25,7 @@
 @property (readonly) Class testRunClass;
 
 + (id)languageAgnosticTestClassNameForTestClass:(Class)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (void)performTest:(id)arg1;
 - (void)removeTestsWithNames:(id)arg1;

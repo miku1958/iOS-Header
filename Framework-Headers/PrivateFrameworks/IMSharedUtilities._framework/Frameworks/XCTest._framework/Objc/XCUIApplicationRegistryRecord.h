@@ -19,7 +19,7 @@
 @property (readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly) BOOL isTestDependency; // @synthesize isTestDependency=_isTestDependency;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithURL:(id)arg1 bundleIdentifier:(id)arg2 isTestDependency:(BOOL)arg3;
 
 @end

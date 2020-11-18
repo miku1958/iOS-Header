@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSCoding-Protocol.h>
+#import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface WKUserContentController : NSObject <WKObject, NSCoding>
+@interface WKUserContentController : NSObject <WKObject, NSSecureCoding>
 {
     struct ObjectStorage<WebKit::WebUserContentControllerProxy> _userContentControllerProxy;
 }
@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *userScripts;
 
++ (BOOL)supportsSecureCoding;
 - (void)_addScriptMessageHandler:(id)arg1 name:(id)arg2 userContentWorld:(id)arg3;
 - (void)_addUserContentFilter:(id)arg1;
 - (void)_addUserStyleSheet:(id)arg1;

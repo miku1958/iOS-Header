@@ -25,6 +25,7 @@
 @property (nonatomic) BOOL hasErrorCode;
 
 + (Class)handlerReturnStatusDataType;
+- (void).cxx_destruct;
 - (void)addHandlerReturnStatus:(unsigned int)arg1;
 - (void)addHandlerReturnStatusData:(id)arg1;
 - (void)clearHandlerReturnStatus;

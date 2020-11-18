@@ -10,38 +10,23 @@
 
 @interface MPModelCurator : MPModelPerson
 {
-    NSString *_shortName;
-    NSString *_editorNotes;
-    NSString *_shortEditorNotes;
-    long long _curatorKind;
-    NSString *_handle;
-    CDUnknownBlockType _editorialArtworkCatalogBlock;
-    CDUnknownBlockType _brandLogoArtworkCatalogBlock;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType brandLogoArtworkCatalogBlock; // @synthesize brandLogoArtworkCatalogBlock=_brandLogoArtworkCatalogBlock;
-@property (nonatomic) long long curatorKind; // @synthesize curatorKind=_curatorKind;
-@property (copy, nonatomic) NSString *editorNotes; // @synthesize editorNotes=_editorNotes;
-@property (copy, nonatomic) CDUnknownBlockType editorialArtworkCatalogBlock; // @synthesize editorialArtworkCatalogBlock=_editorialArtworkCatalogBlock;
-@property (copy, nonatomic) NSString *handle; // @synthesize handle=_handle;
-@property (copy, nonatomic) NSString *shortEditorNotes; // @synthesize shortEditorNotes=_shortEditorNotes;
-@property (copy, nonatomic) NSString *shortName; // @synthesize shortName=_shortName;
+@property (copy, nonatomic) CDUnknownBlockType brandLogoArtworkCatalogBlock; // @dynamic brandLogoArtworkCatalogBlock;
+@property (nonatomic) long long curatorKind; // @dynamic curatorKind;
+@property (copy, nonatomic) NSString *editorNotes; // @dynamic editorNotes;
+@property (copy, nonatomic) CDUnknownBlockType editorialArtworkCatalogBlock; // @dynamic editorialArtworkCatalogBlock;
+@property (copy, nonatomic) NSString *handle; // @dynamic handle;
+@property (copy, nonatomic) NSString *shortEditorNotes; // @dynamic shortEditorNotes;
+@property (copy, nonatomic) NSString *shortName; // @dynamic shortName;
 
-+ (id)__MPModelPropertyCuratorBrandLogoArtwork__PROPERTY;
-+ (id)__MPModelPropertyCuratorEditorNotes__PROPERTY;
-+ (id)__MPModelPropertyCuratorEditorialArtwork__PROPERTY;
-+ (id)__MPModelPropertyCuratorHandle__PROPERTY;
-+ (id)__MPModelPropertyCuratorKind__PROPERTY;
-+ (id)__MPModelPropertyCuratorShortEditorNotes__PROPERTY;
-+ (id)__MPModelPropertyCuratorShortName__PROPERTY;
-+ (id)__brandLogoArtworkCatalogBlock__KEY;
-+ (id)__curatorKind__KEY;
-+ (id)__editorNotes__KEY;
-+ (id)__editorialArtworkCatalogBlock__KEY;
-+ (id)__handle__KEY;
-+ (id)__shortEditorNotes__KEY;
-+ (id)__shortName__KEY;
-- (void).cxx_destruct;
++ (id)__brandLogoArtworkCatalogBlock_KEY;
++ (id)__curatorKind_KEY;
++ (id)__editorNotes_KEY;
++ (id)__editorialArtworkCatalogBlock_KEY;
++ (id)__handle_KEY;
++ (id)__shortEditorNotes_KEY;
++ (id)__shortName_KEY;
 - (id)brandLogoArtworkCatalog;
 - (id)editorialArtworkCatalog;
 

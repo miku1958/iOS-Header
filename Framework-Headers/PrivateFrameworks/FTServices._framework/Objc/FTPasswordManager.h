@@ -39,6 +39,7 @@
 - (void)_setKeychainAuthToken:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
 - (void)_setKeychainPassword:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
 - (id)acAccountWithProfileID:(id)arg1 username:(id)arg2 accountStore:(id)arg3;
+- (double)authTokenGracePeriod;
 - (void)cancelRequestID:(id)arg1 serviceIdentifier:(id)arg2;
 - (void)cleanUpAccountsBasedOnInUseUsernames:(id)arg1 profileIDs:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)cleanUpAccountsWithUsername:(id)arg1 orProfileID:(id)arg2 basedOnInUseUsernames:(id)arg3 profileIDs:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
@@ -46,7 +47,9 @@
 - (void)fetchPasswordForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 outRequestID:(id *)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (id)init;
 - (id)initWithUserNotificationCenter:(id)arg1;
+- (BOOL)isAuthTokenReceiptTime:(double)arg1 withinGracePeriod:(double)arg2;
 - (id)profileIDForACAccount:(id)arg1;
+- (void)removeAuthTokenAllowingGracePeriodForProfileID:(id)arg1 username:(id)arg2;
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 failIfNotSilent:(BOOL)arg6 outRequestID:(id *)arg7 completionBlock:(CDUnknownBlockType)arg8;
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 outRequestID:(id *)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)requestPasswordForUsername:(id)arg1 service:(id)arg2 badPassword:(BOOL)arg3 showForgotPassword:(BOOL)arg4 shouldRememberPassword:(BOOL)arg5 outRequestID:(id *)arg6 completionBlock:(CDUnknownBlockType)arg7;

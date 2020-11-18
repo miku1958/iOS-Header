@@ -20,6 +20,7 @@
 @property (readonly) id observedObject;
 @property (readonly) unsigned long long options;
 
+- (void).cxx_destruct;
 - (void)cleanup;
 - (void)dealloc;
 - (id)initWithKeyPath:(id)arg1 object:(id)arg2;

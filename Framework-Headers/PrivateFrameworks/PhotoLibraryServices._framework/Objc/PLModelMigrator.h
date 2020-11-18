@@ -62,6 +62,7 @@
 + (BOOL)_fixCustomKeyAssetForAlbum:(id)arg1;
 + (BOOL)_fixCustomRenderedValues:(id)arg1;
 + (BOOL)_fixDuplicatedAssets:(id)arg1;
++ (BOOL)_fixDuplicatedRootFolderAndOrphanedAlbumsInStore:(id)arg1;
 + (BOOL)_fixEmptyVideoResourcePathsInStore:(id)arg1;
 + (BOOL)_fixFaceAlgorithmVersion:(id)arg1;
 + (BOOL)_fixFaceGroupUnverifiedPerson:(id)arg1;

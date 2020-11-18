@@ -16,11 +16,11 @@
 {
     BOOL _broadcastNotificationEnabled;
     BOOL _notificationRegisteredWithRemoteGateway;
+    NSSet *_hapCharacteristicTuples;
     HMDHAPAccessory *_accessory;
     HMDService *_service;
     NSNumber *_stateNumber;
     NSData *_authorizationData;
-    NSSet *_hapCharacteristicTuples;
     NSString *_characteristicType;
     id _lastKnownValue;
     NSDate *_lastKnownValueUpdateTime;

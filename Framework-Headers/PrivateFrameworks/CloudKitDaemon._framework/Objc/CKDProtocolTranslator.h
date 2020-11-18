@@ -13,6 +13,7 @@
 {
     BOOL _dontCreateValidatingParentReferences;
     NSString *_bundleIdentifier;
+    NSString *_orgAdminUserID;
     long long _databaseScope;
     id<CKDProtocolTranslatorIdentityDelegate> _identityDelegate;
     NSString *_containerScopedUserID;
@@ -24,12 +25,13 @@
 @property (readonly, nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property (nonatomic) BOOL dontCreateValidatingParentReferences; // @synthesize dontCreateValidatingParentReferences=_dontCreateValidatingParentReferences;
 @property (weak, nonatomic) id<CKDProtocolTranslatorIdentityDelegate> identityDelegate; // @synthesize identityDelegate=_identityDelegate;
+@property (copy, nonatomic) NSString *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property (copy, nonatomic) NSString *overriddenContainerScopedUserID; // @synthesize overriddenContainerScopedUserID=_overriddenContainerScopedUserID;
 @property (readonly, nonatomic) CKDPIdentifier *pUserID;
 
 + (id)translatorIgnoringUserIDsWithDatabaseScope:(long long)arg1;
 - (void).cxx_destruct;
-- (id)_initWithContainerScopedUserID:(id)arg1 bundleIdentifier:(id)arg2 databaseScope:(long long)arg3;
+- (id)_initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 bundleIdentifier:(id)arg3 databaseScope:(long long)arg4;
 - (BOOL)_isDefaultUserNameFromClient:(id)arg1;
 - (BOOL)_isDefaultUserNameFromServer:(id)arg1;
 - (id)_pRecordFromRecordSansValues:(id)arg1 forCache:(BOOL)arg2;
@@ -47,7 +49,7 @@
 - (int)fieldValueTypeFromEncryptedDataObject:(id)arg1 isInList:(BOOL)arg2;
 - (int)fieldValueTypeFromObject:(id)arg1;
 - (id)identityFromPUser:(id)arg1;
-- (id)initWithContainerScopedUserID:(id)arg1 bundleIdentifier:(id)arg2 databaseScope:(long long)arg3;
+- (id)initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 bundleIdentifier:(id)arg3 databaseScope:(long long)arg4;
 - (id)locationFieldValueWithLatitude:(double)arg1 longitude:(double)arg2;
 - (id)notificationFromPPushMessage:(id)arg1;
 - (BOOL)objectIsAnEncryptedType:(id)arg1;

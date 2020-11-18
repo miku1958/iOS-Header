@@ -21,7 +21,8 @@
 + (void)initialize;
 + (id)searchAgent;
 - (void).cxx_destruct;
-- (BOOL)allowClientConnection:(id)arg1;
+- (BOOL)addClientConnectionIfAllowedForConfiguration:(id)arg1;
+- (BOOL)addClientConnectionIfAllowedForConnection:(id)arg1;
 - (void)cancelQuery:(id)arg1;
 - (void)cancelSimpleQuery:(id)arg1;
 - (BOOL)handleCommand:(const char *)arg1 info:(id)arg2 connection:(id)arg3;

@@ -21,7 +21,7 @@
 @property (copy) NSSet *matchingSnapshots; // @synthesize matchingSnapshots=_matchingSnapshots;
 @property (strong) XCSourceCodeTreeNode *node; // @synthesize node=_node;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithNode:(id)arg1 matchingSnapshots:(id)arg2 ancestorFinder:(id)arg3;
 - (void)invalidate;

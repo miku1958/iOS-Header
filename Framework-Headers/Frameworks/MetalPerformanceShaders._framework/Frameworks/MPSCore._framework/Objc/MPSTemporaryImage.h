@@ -17,9 +17,12 @@
 + (void)prefetchStorageWithCommandBuffer:(id)arg1 imageDescriptorList:(id)arg2;
 + (id)temporaryImageWithCommandBuffer:(id)arg1 imageDescriptor:(id)arg2;
 + (id)temporaryImageWithCommandBuffer:(id)arg1 textureDescriptor:(id)arg2;
++ (id)temporaryImageWithCommandBuffer:(id)arg1 textureDescriptor:(id)arg2 featureChannels:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)debugDescription;
+- (id)initWithParentImage:(id)arg1 sliceRange:(struct _NSRange)arg2 featureChannels:(unsigned long long)arg3;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
+- (void)synchronizeOnCommandBuffer:(id)arg1;
 
 @end
 

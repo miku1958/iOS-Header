@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (id)_cachedStateOfType:(int)arg1;
 - (void)_captureLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2 withMergedContext:(id)arg3;
+- (void)_generateAndQueueLogMessagesForLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2 currentContext:(id)arg3;
 - (void)cachedStateOfType:(int)arg1 getCachedStateOfTypeBlock:(CDUnknownBlockType)arg2;
 - (void)captureLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2;
 - (void)captureLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2 withLogContext:(id)arg3;

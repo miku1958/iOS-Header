@@ -19,6 +19,7 @@
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 
++ (CDUnknownBlockType)priorityComparator;
 + (id)suggestionWithName:(id)arg1 priority:(long long)arg2;
 + (id)suggestionWithName:(id)arg1 priority:(long long)arg2 aliases:(id)arg3;
 - (void).cxx_destruct;

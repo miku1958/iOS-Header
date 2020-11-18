@@ -20,9 +20,11 @@
 @property (readonly) long long type; // @synthesize type=_type;
 
 + (id)archive:(id)arg1;
++ (id)archiveSymptomDict:(struct NSDictionary *)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)symptomWithType:(long long)arg1;
 + (id)unarchive:(id)arg1;
++ (struct NSDictionary *)unarchiveSymptomDict:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

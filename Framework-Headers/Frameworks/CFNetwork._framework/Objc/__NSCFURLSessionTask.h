@@ -110,10 +110,12 @@ __attribute__((visibility("hidden")))
     NSURL *_backgroundPublishingURL;
     struct os_unfair_lock_s _unfair_lock;
     BOOL _preconnect;
+    NSString *_APSRelayTopic;
     BOOL _extractorPreparedForExtraction;
 }
 
 + (BOOL)supportsSecureCoding;
+- (id)_APSRelayTopic;
 - (id)_DuetActivityProperties;
 - (id)_TCPConnectionMetadata;
 - (unsigned short)_TLSNegotiatedCipherSuite;
@@ -263,6 +265,7 @@ __attribute__((visibility("hidden")))
 - (void)setTaskDependency:(id)arg1;
 - (void)setTaskDescription:(id)arg1;
 - (void)setTaskIdentifier:(unsigned long long)arg1;
+- (void)set_APSRelayTopic:(id)arg1;
 - (void)set_DuetActivityProperties:(id)arg1;
 - (void)set_TCPConnectionMetadata:(id)arg1;
 - (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;

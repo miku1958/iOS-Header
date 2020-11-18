@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (struct CGAffineTransform)computeLayoutTransform;
 - (void)createContainedLayoutForEditing;
 - (void)createContainedLayoutForInstructionalText;
-- (unsigned int)cropLine:(struct CGRect)arg1 lineSegmentRects:(struct CGRect [128])arg2;
 - (void)dealloc;
 - (id)dependentLayouts;
 - (id)dependentsOfTextLayout:(id)arg1;

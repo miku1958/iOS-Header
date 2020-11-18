@@ -6,12 +6,12 @@
 
 #import <Silex/SXJSONObject.h>
 
-#import <Silex/SXDynamicAdLayout-Protocol.h>
+#import <Silex/SXAutoPlacementLayout-Protocol.h>
 
 @class NSString;
 @protocol SXEdgeSpacing;
 
-@interface SXJSONDynamicAdLayout : SXJSONObject <SXDynamicAdLayout>
+@interface SXJSONDynamicAdLayout : SXJSONObject <SXAutoPlacementLayout>
 {
 }
 

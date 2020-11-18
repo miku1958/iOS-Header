@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, GEOPDVenueIdentifier, GEOPDViewportInfo, NSData, NSString, PBUnknownFields;
+@class GEOPDAutocompleteEntry, GEOPDRetainedSearchMetadata, GEOPDVenueIdentifier, GEOPDViewportInfo, NSData, NSString, PBUnknownFields;
 
 @interface GEOPDAutocompleteParametersAllEntriesWithBrowse : PBCodable <NSCopying>
 {
@@ -17,14 +17,19 @@
     NSData *_categorySuggestionEntryMetadata;
     int _maxResults;
     NSString *_query;
+    GEOPDRetainedSearchMetadata *_retainedSearch;
     GEOPDVenueIdentifier *_venueIdentifier;
     GEOPDViewportInfo *_viewportInfo;
     BOOL _highlightDiff;
     BOOL _interleaveCategorySuggestions;
+    BOOL _supportDirectionIntentSuggestions;
+    BOOL _supportUnresolvedDirectionIntent;
     struct {
         unsigned int maxResults:1;
         unsigned int highlightDiff:1;
         unsigned int interleaveCategorySuggestions:1;
+        unsigned int supportDirectionIntentSuggestions:1;
+        unsigned int supportUnresolvedDirectionIntent:1;
     } _has;
 }
 
@@ -36,12 +41,18 @@
 @property (nonatomic) BOOL hasInterleaveCategorySuggestions;
 @property (nonatomic) BOOL hasMaxResults;
 @property (readonly, nonatomic) BOOL hasQuery;
+@property (readonly, nonatomic) BOOL hasRetainedSearch;
+@property (nonatomic) BOOL hasSupportDirectionIntentSuggestions;
+@property (nonatomic) BOOL hasSupportUnresolvedDirectionIntent;
 @property (readonly, nonatomic) BOOL hasVenueIdentifier;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
 @property (nonatomic) BOOL highlightDiff; // @synthesize highlightDiff=_highlightDiff;
 @property (nonatomic) BOOL interleaveCategorySuggestions; // @synthesize interleaveCategorySuggestions=_interleaveCategorySuggestions;
 @property (nonatomic) int maxResults; // @synthesize maxResults=_maxResults;
 @property (strong, nonatomic) NSString *query; // @synthesize query=_query;
+@property (strong, nonatomic) GEOPDRetainedSearchMetadata *retainedSearch; // @synthesize retainedSearch=_retainedSearch;
+@property (nonatomic) BOOL supportDirectionIntentSuggestions; // @synthesize supportDirectionIntentSuggestions=_supportDirectionIntentSuggestions;
+@property (nonatomic) BOOL supportUnresolvedDirectionIntent; // @synthesize supportUnresolvedDirectionIntent=_supportUnresolvedDirectionIntent;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDVenueIdentifier *venueIdentifier; // @synthesize venueIdentifier=_venueIdentifier;
 @property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;

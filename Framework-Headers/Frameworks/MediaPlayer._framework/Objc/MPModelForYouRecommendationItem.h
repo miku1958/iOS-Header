@@ -10,37 +10,23 @@
 
 @interface MPModelForYouRecommendationItem : MPModelObject
 {
-    BOOL _backedByStoreItemMetadata;
-    unsigned long long _itemType;
-    MPModelAlbum *_album;
-    MPModelPlaylist *_playlist;
-    MPModelForYouRecommendationGroup *_parentGroup;
-    long long _subgroupIndex;
 }
 
-@property (strong, nonatomic) MPModelAlbum *album; // @synthesize album=_album;
-@property (nonatomic, getter=isBackedByStoreItemMetadata) BOOL backedByStoreItemMetadata; // @synthesize backedByStoreItemMetadata=_backedByStoreItemMetadata;
-@property (nonatomic) unsigned long long itemType; // @synthesize itemType=_itemType;
-@property (weak, nonatomic) MPModelForYouRecommendationGroup *parentGroup; // @synthesize parentGroup=_parentGroup;
-@property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
+@property (strong, nonatomic) MPModelAlbum *album; // @dynamic album;
+@property (nonatomic, getter=isBackedByStoreItemMetadata) BOOL backedByStoreItemMetadata; // @dynamic backedByStoreItemMetadata;
+@property (nonatomic) unsigned long long itemType; // @dynamic itemType;
+@property (weak, nonatomic) MPModelForYouRecommendationGroup *parentGroup; // @dynamic parentGroup;
+@property (strong, nonatomic) MPModelPlaylist *playlist; // @dynamic playlist;
 @property (readonly, nonatomic) MPModelForYouRecommendationGroup *subgroup;
-@property (nonatomic) long long subgroupIndex; // @synthesize subgroupIndex=_subgroupIndex;
+@property (nonatomic) long long subgroupIndex; // @dynamic subgroupIndex;
 
-+ (id)__MPModelForYouRecommendationItemPropertyBackedByStoreItemMetadata__PROPERTY;
-+ (id)__MPModelForYouRecommendationItemPropertyItemType__PROPERTY;
-+ (id)__MPModelForYouRecommendationItemPropertyParentGroup__PROPERTY;
-+ (id)__MPModelForYouRecommendationItemPropertySubgroupIndex__PROPERTY;
-+ (id)__MPModelForYouRecommendationItemRelationshipAlbum__PROPERTY;
-+ (id)__MPModelForYouRecommendationItemRelationshipPlaylist__PROPERTY;
-+ (id)__album__KEY;
-+ (id)__backedByStoreItemMetadata__KEY;
-+ (id)__itemType__KEY;
-+ (id)__parentGroup__KEY;
-+ (id)__playlist__KEY;
-+ (id)__subgroupIndex__KEY;
++ (id)__album_KEY;
++ (id)__backedByStoreItemMetadata_KEY;
++ (id)__itemType_KEY;
++ (id)__parentGroup_KEY;
++ (id)__playlist_KEY;
++ (id)__subgroupIndex_KEY;
 + (id)requiredStoreLibraryPersonalizationProperties;
-- (void).cxx_destruct;
-- (id)descriptionWithType:(long long)arg1;
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;
 - (id)relativeModelObjectForStoreLibraryPersonalization;

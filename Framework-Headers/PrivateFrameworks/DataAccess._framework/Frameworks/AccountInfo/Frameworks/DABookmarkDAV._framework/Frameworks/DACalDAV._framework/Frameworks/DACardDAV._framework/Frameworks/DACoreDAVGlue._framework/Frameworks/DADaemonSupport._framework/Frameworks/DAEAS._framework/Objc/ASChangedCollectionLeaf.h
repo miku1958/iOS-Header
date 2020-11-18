@@ -6,11 +6,11 @@
 
 #import <DAEAS/ASItem.h>
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSNumber, NSString;
 
-@interface ASChangedCollectionLeaf : ASItem <NSCoding>
+@interface ASChangedCollectionLeaf : ASItem <NSSecureCoding>
 {
     BOOL _isResponse;
     BOOL _validateOpeningTokens;
@@ -39,6 +39,7 @@
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)appendActiveSyncDataForTask:(id)arg1 toWBXMLData:(id)arg2;
 - (long long)dataclass;

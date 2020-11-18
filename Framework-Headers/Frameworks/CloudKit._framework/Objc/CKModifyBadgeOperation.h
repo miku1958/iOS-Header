@@ -8,8 +8,8 @@
 
 @interface CKModifyBadgeOperation : CKOperation
 {
-    unsigned long long _badgeValue;
     CDUnknownBlockType _modifyBadgeCompletionBlock;
+    unsigned long long _badgeValue;
 }
 
 @property (nonatomic) unsigned long long badgeValue; // @synthesize badgeValue=_badgeValue;

@@ -10,7 +10,7 @@
 #import <GeoServices/GEOSimpleTileRequesterSubclass-Protocol.h>
 
 @class GEODataSession, GEOTileRequestBalancer, NSMutableArray, NSObject, NSString;
-@protocol OS_dispatch_queue, OS_os_activity;
+@protocol OS_dispatch_queue, OS_os_activity, OS_voucher;
 
 @interface GEOSimpleTileRequester : GEOTileRequester <GEOSimpleTileRequesterSubclass, GEOSimpleTileRequesterOperationDelegate>
 {
@@ -18,6 +18,7 @@
     NSMutableArray *_running;
     NSMutableArray *_errors;
     NSObject<OS_os_activity> *_activity;
+    NSObject<OS_voucher> *_voucher;
     NSObject<OS_dispatch_queue> *_workQueue;
     GEODataSession *_dataSession;
     unsigned int _qos;
@@ -69,7 +70,7 @@
 - (id)localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)mergeBaseTile:(id)arg1 withLocalizationTile:(id)arg2;
 - (id)mergeBaseTileEtag:(id)arg1 withLocalizationTileEtag:(id)arg2;
-- (id)newRequestWithType:(int)arg1 URL:(id)arg2 xpcRequest:(id)arg3 entityTag:(id)arg4 cachedData:(id)arg5 allowedRequestMode:(BOOL)arg6;
+- (id)newRequestWithType:(int)arg1 URL:(id)arg2 xpcRequest:(id)arg3 entityTag:(id)arg4 cachedData:(id)arg5 allowedRequestMode:(BOOL)arg6 requestCounterTicket:(id)arg7;
 - (id)newXPCDataRequestForTileKey:(const struct _GEOTileKey *)arg1;
 - (void)operationFailed:(id)arg1 error:(id)arg2;
 - (void)operationFinished:(id)arg1;

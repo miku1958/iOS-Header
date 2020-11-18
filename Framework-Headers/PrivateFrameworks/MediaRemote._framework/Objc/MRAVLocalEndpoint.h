@@ -6,11 +6,15 @@
 
 #import <MediaRemote/MRAVConcreteEndpoint.h>
 
-@class MRAVOutputContext, NSArray, NSString;
+#import <MediaRemote/NSSecureCoding-Protocol.h>
+
+@class MRAVOutputContext, NSArray, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MRAVLocalEndpoint : MRAVConcreteEndpoint
+@interface MRAVLocalEndpoint : MRAVConcreteEndpoint <NSSecureCoding>
 {
+    NSObject<OS_dispatch_queue> *_serialQueue;
     MRAVOutputContext *_outputContext;
     NSString *_uniqueIdentifier;
     NSArray *_outputDevices;
@@ -18,10 +22,15 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSArray *outputDevices;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)_localizeOutputDevices:(id)arg1;
 - (void)_outputContextDevicesDidChangeNotification:(id)arg1;
 - (void)_reloadOutputDevicesFromContext;
 - (void)addOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithOutputContext:(id)arg1;
 - (id)initWithOutputDevices:(id)arg1;
 - (id)instanceIdentifier;

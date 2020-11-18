@@ -10,7 +10,7 @@
 
 @protocol TSKDocumentRootProvider <NSObject>
 
-@property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
+@property (readonly, strong, nonatomic) TSKDocumentRoot *documentRoot;
 
 @end
 

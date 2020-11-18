@@ -8,11 +8,11 @@
 
 #import <ITMLKit/RWIProtocolNetworkDomainHandler-Protocol.h>
 
-@class IKJSInspectorController, NSMutableSet, NSString;
+@class IKJSInspectorController, NSMutableDictionary, NSString;
 
 @interface IKJSInspectorNetworkAgent : NSObject <RWIProtocolNetworkDomainHandler>
 {
-    NSMutableSet *_requestRecords;
+    NSMutableDictionary *_loaders;
     IKJSInspectorController *_controller;
 }
 
@@ -29,11 +29,11 @@
 - (void)getResponseBodyWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 requestId:(id)arg3;
 - (id)initWithInspectorController:(id)arg1;
 - (void)loadResourceWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 url:(id)arg4;
-- (id)registerNetworkRequestLoader:(id)arg1;
+- (id)registerLoaderWithIdentifier:(id)arg1;
 - (void)resolveWebSocketWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 requestId:(id)arg3 objectGroup:(id *)arg4;
-- (void)setCacheDisabledWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 cacheDisabled:(BOOL)arg3;
 - (void)setExtraHTTPHeadersWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 headers:(id)arg3;
 - (void)setResourceCachingDisabledWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 disabled:(BOOL)arg3;
+- (void)unregisterLoaderWithIdentifier:(id)arg1;
 
 @end
 

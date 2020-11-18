@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1 resourceManager:(id)arg2 device:(Device_9226c869 *)arg3;
 - (void)purge;
+- (void)purgeAll;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (shared_ptr_479d1306)textureWithName:(id)arg1 forScale:(float)arg2 mipmap:(BOOL)arg3 samplerState:(shared_ptr_cedd5232)arg4;

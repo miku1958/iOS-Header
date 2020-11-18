@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MediaPlayer/NSCoding-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class MPAVItem, NSData, NSString;
 
-@interface MPPlaybackContext : NSObject <NSCoding>
+@interface MPPlaybackContext : NSObject <NSSecureCoding>
 {
     MPAVItem *_playerCurrentItem;
     BOOL _shouldStartPlayback;
@@ -38,6 +38,7 @@
 @property (nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
 
 + (Class)queueFeederClass;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (id)descriptionComponents;

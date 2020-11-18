@@ -13,7 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axUnhideSearchBar;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
+- (void)viewDidLoad;
 
 @end
 

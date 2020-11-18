@@ -8,19 +8,17 @@
 
 #import <MediaPlayer/MPAVRoutingThemeableCellView-Protocol.h>
 
-@class MPAVBatteryLevel, MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel, UIStackView;
+@class MPAVRoutingTableViewCellSubtitleTextState, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel;
 @protocol MPAVRoutingTableViewCellDelegate;
 
 @interface MPAVRoutingTableViewCell : UITableViewCell <MPAVRoutingThemeableCellView>
 {
     UIImageView *_iconImageView;
-    UIStackView *_detailStackView;
     UILabel *_routeNameLabel;
     UILabel *_subtitleTextLabel;
     NSTimer *_subtitleTextUpdateTimer;
     UIActivityIndicatorView *_spinnerView;
     UIImageView *_smartAudioImageView;
-    MPVolumeSlider *_volumeSlider;
     BOOL _mirroringSwitchVisible;
     BOOL _pendingSelection;
     BOOL _isDisplayedAsPicked;
@@ -29,12 +27,10 @@
     id<MPAVRoutingTableViewCellDelegate> _delegate;
     unsigned long long _mirroringStyle;
     unsigned long long _iconStyle;
-    MPAVBatteryLevel *_batteryLevel;
     double _subtitleViewAlpha;
     MPAVRoutingTableViewCellSubtitleTextState *_subtitleTextState;
 }
 
-@property (strong, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPAVRoutingTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -73,7 +69,6 @@
 - (id)subtitleView;
 - (id)titleView;
 - (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(BOOL)arg3;
-- (id)volumeView;
 
 @end
 

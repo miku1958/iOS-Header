@@ -9,9 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface TSCH3DExtrusionDoubleBevelGenerator : NSObject
 {
-    vector_45b393db mInputSpinePoints;
-    vector_45b393db mSpinePoints;
-    vector_35283da1 mScaleValues;
+    vector_7200ab52 mInputSpinePoints;
+    vector_7200ab52 mSpinePoints;
+    vector_d73af98f mScaleValues;
     float mBevelHeight;
     long long mBevelSlices;
     BOOL mEnableBevelEdges;
@@ -37,11 +37,11 @@ __attribute__((visibility("hidden")))
 - (void)generateBottom;
 - (void)generateTop;
 - (id)init;
-- (vector_45b393db *)inputSpinePoints;
+- (vector_7200ab52 *)inputSpinePoints;
 - (void)resetAllScales;
 - (float)scaleUValueAtIndex:(long long)arg1;
-- (const vector_35283da1 *)scaleValues;
-- (const vector_45b393db *)spinePoints;
+- (const vector_d73af98f *)scaleValues;
+- (const vector_7200ab52 *)spinePoints;
 - (float)spineUValueAtIndex:(long long)arg1;
 - (long long)topBevelStartIndex;
 - (long long)topSlices;

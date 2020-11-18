@@ -10,10 +10,10 @@
 
 @interface CKModifyWebSharingOperation : CKDatabaseOperation
 {
-    NSArray *_recordIDsToShareReadWrite;
     CDUnknownBlockType _recordSharedBlock;
     CDUnknownBlockType _recordUnsharedBlock;
     CDUnknownBlockType _webShareRecordsCompletionBlock;
+    NSArray *_recordIDsToShareReadWrite;
     NSArray *_recordIDsToShare;
     NSArray *_recordIDsToUnshare;
     NSMutableDictionary *_recordErrors;

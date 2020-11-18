@@ -10,7 +10,6 @@
 #import <CoreMediaStream/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSString;
-@protocol NSCoding;
 
 @interface MSASAssetCollection : NSObject <NSCopying, NSSecureCoding>
 {
@@ -23,7 +22,7 @@
     NSArray *_assets;
     NSString *_fileName;
     NSString *_path;
-    id<NSCoding> _userInfo;
+    id _userInfo;
     NSDictionary *_metadata;
     long long _photoNumber;
     NSDate *_timestamp;
@@ -51,7 +50,7 @@
 @property (strong, nonatomic) NSString *personID; // @synthesize personID=_personID;
 @property (nonatomic) long long photoNumber; // @synthesize photoNumber=_photoNumber;
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
-@property (strong, nonatomic) id<NSCoding> userInfo; // @synthesize userInfo=_userInfo;
+@property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
 + (id)MSASPAssetCollectionFromProtocolDictionary:(id)arg1;
 + (id)assetCollectionWithAssetCollection:(id)arg1;

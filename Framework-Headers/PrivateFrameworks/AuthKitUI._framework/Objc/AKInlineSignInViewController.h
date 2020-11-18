@@ -6,11 +6,12 @@
 
 #import <AuthKitUI/AKBaseSignInViewController.h>
 
+#import <AuthKitUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext, AKTextField, NSString, UIActivityIndicatorView, UIButton, UIView;
+@class AKAppleIDAuthenticationInAppContext, AKTextField, NSString, UIActivityIndicatorView, UIButton, UIColor, UIView;
 
-@interface AKInlineSignInViewController : AKBaseSignInViewController <UITextFieldDelegate>
+@interface AKInlineSignInViewController : AKBaseSignInViewController <UITextFieldDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate>
 {
     BOOL _usesDarkMode;
     BOOL _usesVibrancy;
@@ -18,8 +19,10 @@
     NSString *_secondaryButtonTitle;
     NSString *_tertiaryButtonTitle;
     AKAppleIDAuthenticationInAppContext *_context;
+    CDUnknownBlockType _passwordRequiredCompletion;
     BOOL _wantsAuthenticationProgress;
     NSString *_primaryButtonTitle;
+    UIColor *_fieldBackgroundColor;
     UIView *_loginFieldsContainer;
     AKTextField *_appleIDField;
     AKTextField *_passwordField;
@@ -34,6 +37,7 @@
 @property (strong) UIButton *createAppleIDButton; // @synthesize createAppleIDButton=_createAppleIDButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIColor *fieldBackgroundColor; // @synthesize fieldBackgroundColor=_fieldBackgroundColor;
 @property (readonly) unsigned long long hash;
 @property (strong) UIButton *iforgotButton; // @synthesize iforgotButton=_iforgotButton;
 @property (strong) UIView *loginFieldsContainer; // @synthesize loginFieldsContainer=_loginFieldsContainer;
@@ -53,6 +57,7 @@
 - (void)_hidebusyWorkUI;
 - (void)_passwordTextFieldDidChange:(id)arg1;
 - (void)_prefillAuthFields;
+- (void)_setPasswordFieldHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_startBusyWorkUI;
 - (void)_updateFonts:(id)arg1;
 - (void)_updatePlaceholderIfNeeded;
@@ -60,6 +65,7 @@
 - (void)_updateSignInFieldStatuses;
 - (void)_updateVibrancyAndBlurInTextFields;
 - (id)context;
+- (void)context:(id)arg1 needsPasswordWithCompletion:(CDUnknownBlockType)arg2;
 - (void)createAppleIDButtonWasTapped:(id)arg1;
 - (void)dealloc;
 - (void)iForgotButtonWasTapped:(id)arg1;
@@ -70,9 +76,11 @@
 - (void)setTertiaryButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)setUsesDarkMode:(BOOL)arg1;
 - (void)signInButtonWasTapped:(id)arg1;
+- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (BOOL)usesDarkMode;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

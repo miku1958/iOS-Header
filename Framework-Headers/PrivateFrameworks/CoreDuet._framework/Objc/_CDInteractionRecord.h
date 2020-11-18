@@ -13,6 +13,7 @@
 }
 
 @property (strong, nonatomic) NSString *account; // @dynamic account;
+@property (strong, nonatomic) NSSet *attachments; // @dynamic attachments;
 @property (strong, nonatomic) NSString *bundleId; // @dynamic bundleId;
 @property (strong, nonatomic) NSString *contentURL; // @dynamic contentURL;
 @property (nonatomic) double creationDate; // @dynamic creationDate;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) NSSet *recipients; // @dynamic recipients;
 @property (strong, nonatomic) _CDContactRecord *sender; // @dynamic sender;
 @property (nonatomic) double startDate; // @dynamic startDate;
+@property (strong, nonatomic) NSString *targetBundleId; // @dynamic targetBundleId;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 
 @end

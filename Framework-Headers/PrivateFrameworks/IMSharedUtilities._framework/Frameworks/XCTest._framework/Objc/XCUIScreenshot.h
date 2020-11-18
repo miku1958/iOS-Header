@@ -20,7 +20,7 @@
 + (void)initialize;
 + (void)setSystemScreenshotQuality:(long long)arg1;
 + (long long)systemScreenshotQuality;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)debugQuickLookObject;
 - (id)initWithImage:(id)arg1;
 

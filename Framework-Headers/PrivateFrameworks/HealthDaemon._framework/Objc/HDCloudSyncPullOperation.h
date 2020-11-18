@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSProgressReporting-Protocol.h>
 
-@class CKServerChangeToken, HDCloudSyncOperationConfiguration, HDCloudSyncStore, HDCloudSyncStoreRecord, NSFileHandle, NSMutableArray, NSProgress, NSString, _HDCloudSyncStorePersistableState;
+@class CKServerChangeToken, HDCloudSyncOperationConfiguration, HDCloudSyncStore, HDCloudSyncStoreRecord, NSDate, NSFileHandle, NSMutableArray, NSProgress, NSString, NSUUID, _HDCloudSyncStorePersistableState;
 @protocol OS_dispatch_queue;
 
 @interface HDCloudSyncPullOperation : NSObject <NSProgressReporting>
@@ -23,6 +23,8 @@
     NSFileHandle *_fileHandle;
     NSProgress *_allAssetProgress;
     NSProgress *_perAssetRecordProgress;
+    NSUUID *_operationIdentifier;
+    NSDate *_startTime;
     BOOL _hasAppliedChange;
     BOOL _queue_hasStarted;
     CDUnknownBlockType _completion;

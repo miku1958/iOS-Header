@@ -15,6 +15,7 @@
 @interface HMDCloudDataSyncStateFilter : HMDMessageFilter <HMFMessageReceiver, HMFTimerDelegate>
 {
     BOOL _decryptionFailed;
+    BOOL _deviceSetupRunning;
     BOOL _keychainSyncEnabled;
     BOOL _keychainSyncRequiredPopShown;
     BOOL _iCloudSwitchRequiredPopShown;
@@ -27,6 +28,7 @@
     BOOL _resetConfigDisplayTimeHasElapsed;
     BOOL _keychainSyncPeerAvailable;
     BOOL _cloudDataSyncPeerAvailable;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSUUID *_uuid;
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_source> *_popupTimer;
@@ -48,6 +50,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL decryptionFailed; // @synthesize decryptionFailed=_decryptionFailed;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL deviceSetupRunning; // @synthesize deviceSetupRunning=_deviceSetupRunning;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (nonatomic) BOOL iCloudAccountActive; // @synthesize iCloudAccountActive=_iCloudAccountActive;
@@ -63,6 +66,7 @@
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (nonatomic) BOOL networkConnectivityAvailable; // @synthesize networkConnectivityAvailable=_networkConnectivityAvailable;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *popupTimer; // @synthesize popupTimer=_popupTimer;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic) double remainingDataSyncPeriod; // @synthesize remainingDataSyncPeriod=_remainingDataSyncPeriod;
 @property (nonatomic) double remainingResetConfigDisplayPeriod; // @synthesize remainingResetConfigDisplayPeriod=_remainingResetConfigDisplayPeriod;
 @property (nonatomic) BOOL resetConfigDisplayTimeHasElapsed; // @synthesize resetConfigDisplayTimeHasElapsed=_resetConfigDisplayTimeHasElapsed;
@@ -75,6 +79,7 @@
 
 + (BOOL)isWhitelistedRemoteTransportMessage:(id)arg1;
 - (void).cxx_destruct;
+- (void)__handleDeviceSetupRunningUpdated;
 - (void)_clearResetConfigDisplayTimer;
 - (BOOL)_cloudSyncinProgressCheck:(id)arg1 supressPopup:(BOOL)arg2 sendCanceledError:(BOOL *)arg3 dataSyncState:(unsigned long long *)arg4;
 - (void)_handleAccountStatusChanged:(id)arg1;
@@ -97,14 +102,16 @@
 - (void)_updateCurrentAccount:(id)arg1;
 - (void)_updateKeychainSyncEnabled:(BOOL)arg1;
 - (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
-- (BOOL)dataSyncInProgressWithState:(unsigned long long *)arg1;
+- (BOOL)dataSyncInProgressWithState:(unsigned long long *)arg1 withMessage:(id)arg2;
 - (void)dealloc;
 - (void)handleKeychainSyncStateChangedNotification:(id)arg1;
 - (id)initWithName:(id)arg1 homeManager:(id)arg2 messageDispatcher:(id)arg3 serverTokenAvailable:(BOOL)arg4 homeDataHasBeenDecrypted:(BOOL)arg5 homeManagerServerTokenAvailable:(BOOL)arg6 localDataDecryptionFailed:(BOOL)arg7 totalHomes:(long long)arg8 currentAccount:(id)arg9;
 - (BOOL)isLocalDataDecryptionFailed;
 - (BOOL)isiCloudSwitchEnabled;
+- (void)kickResetConfigDisplayTimer;
 - (void)resetConfiguration;
 - (BOOL)shouldCloudSyncData;
+- (void)startDataConfigResetTimers;
 - (void)timerDidFire:(id)arg1;
 - (void)updateCloudDataSyncState:(BOOL)arg1;
 - (void)updateCurrentAccount:(id)arg1;

@@ -23,6 +23,7 @@
 - (void)_axListenForRemoteElement;
 - (void)_axRemoteElementRegistered:(id)arg1;
 - (void)_axSetCachedRootObject:(id)arg1;
+- (id)_axUnarchivedTokenForData:(id)arg1;
 - (void)_disableCaching;
 - (void)_enableCaching;
 - (void)_initializeRemoteElement:(id)arg1;

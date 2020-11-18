@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateContentAndInvalidate:(BOOL)arg1;
 - (void)_updateFontMetrics;
 - (void)adoptFinalStateFromTransition:(id)arg1 transitionCompleted:(BOOL)arg2;
+- (void)ensureBackButtonTruncationOccursWithContext:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

@@ -38,7 +38,7 @@
 - (void)_timerFired;
 - (void)_waitForWriteCompletion;
 - (void)_writeData:(id)arg1;
-- (void)_writeDataAsynchronously:(id)arg1;
+- (void)_writeDataAsynchronously:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelPendingWriteSynchronously;
 - (void)completePendingWriteSynchronously;
 - (void)dealloc;
@@ -49,6 +49,7 @@
 - (void)performScheduledWriteSynchronously;
 - (void)scheduleWrite;
 - (void)startScheduledWriteNow;
+- (void)startScheduledWriteNowWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

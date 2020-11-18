@@ -9,17 +9,17 @@
 __attribute__((visibility("hidden")))
 @interface TSTMergeRegionMap : TSPObject
 {
-    unordered_map_47ee37d2 mCellIDToMergeOrigin;
-    unordered_map_41e29bd8 mMergeOriginToSize;
+    unordered_map_ddbde191 mCellIDToMergeOrigin;
+    unordered_map_89444acf mMergeOriginToSize;
     struct TSUCellRect mUnionedMergeRange;
 }
 
 + (id)mergeRegionMapFromMap:(id)arg1 intersectingRange:(struct TSUCellRect)arg2;
-+ (id)mergeRegionMapWithContext:(id)arg1 andCellRanges:(const vector_db509b29 *)arg2;
++ (id)mergeRegionMapWithContext:(id)arg1 andCellRanges:(const vector_e87daf7b *)arg2;
 + (id)mergeRegionMapWithContext:(id)arg1 andCellRangesSet:(const unordered_set_ea210bc4 *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (const unordered_map_47ee37d2 *)cellIDToMergeOrigin;
+- (const unordered_map_ddbde191 *)cellIDToMergeOrigin;
 - (unsigned long long)count;
 - (void)enumerateRangesUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)find:(struct TSUCellRect)arg1;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)insert:(struct TSUCellRect)arg1;
 - (id)iterator;
 - (void)loadFromUnarchiver:(id)arg1;
-- (const unordered_map_41e29bd8 *)mergeOriginToSize;
+- (const unordered_map_89444acf *)mergeOriginToSize;
 - (struct TSUCellRect)mergedRangeForCellID:(struct TSUCellCoord)arg1;
 - (BOOL)remove:(struct TSUCellRect)arg1;
 - (void)saveToArchiver:(id)arg1;

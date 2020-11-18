@@ -61,12 +61,12 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property (nonatomic) int tuscanyStatus; // @synthesize tuscanyStatus=_tuscanyStatus;
 @property (copy, nonatomic) NSString *url; // @synthesize url=_url;
 @property (readonly, copy, nonatomic) NSString *uuid;
-@property (copy, nonatomic) NSString *uuid;
+@property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) unsigned long long whichTrigger; // @synthesize whichTrigger=_whichTrigger;
 
 + (id)startSearchFeedbackWithUUID;

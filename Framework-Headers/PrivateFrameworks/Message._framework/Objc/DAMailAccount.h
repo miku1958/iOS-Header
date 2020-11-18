@@ -71,6 +71,8 @@
 + (id)displayedAccountTypeString;
 + (id)displayedShortAccountTypeString;
 + (id)folderIDForRelativePath:(id)arg1 accountID:(id *)arg2;
++ (id)legacyPathForAccountIdentifier:(id)arg1 withHostname:(id)arg2 username:(id)arg3;
+- (id)URLStringFromLegacyURLString:(id)arg1;
 - (id)_URLScheme;
 - (id)_copyMailboxUidWithParent:(id)arg1 name:(id)arg2 attributes:(unsigned int)arg3 existingMailboxUid:(id)arg4 dictionary:(id)arg5;
 - (id)_copyMailboxWithParent:(id)arg1 name:(id)arg2 attributes:(unsigned int)arg3 dictionary:(id)arg4;

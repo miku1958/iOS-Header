@@ -29,14 +29,14 @@ __attribute__((visibility("hidden")))
 - (int)geometryCount;
 - (unsigned int)geometryOffset;
 - (id)init;
-- (vector_45b393db *)normalArray;
+- (vector_7200ab52 *)normalArray;
 - (tvec3_17f03ce0 *)normalArrayPointer;
 - (id)normalBuffer;
 - (int)numVertices;
 - (void)reset;
 - (id)selectionKnobPositions;
 - (void)transformArrays:(const tmat4x4_3074befe *)arg1;
-- (vector_45b393db *)vertexArray;
+- (vector_7200ab52 *)vertexArray;
 - (tvec3_17f03ce0 *)vertexArrayPointer;
 - (id)vertexBuffer;
 

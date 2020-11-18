@@ -9,7 +9,7 @@
 #import <Silex/SXReachabilityObserver-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NFPendingPromise, NFStateMachine, NSString, SXComponentExposureMonitor, SXWebContentComponentExposureEvent, SXWebContentComponentInteractionManager, SXWebContentContainerViewController, UIActivityIndicatorView, UILabel;
+@class NFPendingPromise, NFStateMachine, NSString, SXComponentExposureMonitor, SXWebContentComponentExposureEvent, SXWebContentComponentInteractionManager, SXWebContentContainerViewController, UIActivityIndicatorView, UILabel, UITapGestureRecognizer;
 @protocol SXReachabilityProvider, SXWebContentConfigurationProvider, SXWebContentNavigationManager;
 
 @interface SXWebContentComponentView : SXComponentView <SXViewportChangeListener, SXReachabilityObserver>
@@ -21,6 +21,7 @@
     id<SXReachabilityProvider> _reachabilityProvider;
     NFStateMachine *_stateMachine;
     UIActivityIndicatorView *_loadingIndicator;
+    UITapGestureRecognizer *_tapGestureRecognizer;
     UILabel *_errorLabel;
     NFPendingPromise *_invalidationPromise;
     SXComponentExposureMonitor *_componentExposureMonitor;
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic) id<SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property (readonly, nonatomic) NFStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 
 - (void).cxx_destruct;
 - (void)configure;
@@ -56,6 +58,7 @@
 - (id)createLoadingState;
 - (id)createPresentationState;
 - (id)createStateMachine;
+- (void)handleTap:(id)arg1;
 - (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 containerViewController:(id)arg6 configurationProvider:(id)arg7 navigationManager:(id)arg8 componentExposureMonitor:(id)arg9 interactionManagerFactory:(id)arg10 reachabilityProvider:(id)arg11;
 - (void)layout;
 - (void)layoutErrorView;

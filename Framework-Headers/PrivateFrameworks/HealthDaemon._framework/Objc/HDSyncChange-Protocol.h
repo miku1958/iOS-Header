@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class NSArray, NSNumber;
+@class HDProfile, HDSyncEntityIdentifier, NSArray, NSNumber;
 @protocol HDSyncAnchorMap;
 
 @protocol HDSyncChange <NSObject>
@@ -16,10 +16,11 @@
 @property (readonly, nonatomic, getter=isSpeculative) BOOL speculative;
 @property (readonly, nonatomic) struct HDSyncAnchorRange syncAnchorRange;
 
-- (NSArray *)decodedObjects;
-- (id<HDSyncAnchorMap>)requiredAnchorMapWithError:(id *)arg1;
+- (NSArray *)decodedObjectsForProfile:(HDProfile *)arg1 error:(id *)arg2;
+- (id<HDSyncAnchorMap>)requiredAnchorMapWithProfile:(HDProfile *)arg1 error:(id *)arg2;
 - (void)setObjects:(NSArray *)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 requiredAnchorMap:(id<HDSyncAnchorMap>)arg3;
 - (void)setSequenceNumber:(long long)arg1 done:(BOOL)arg2;
-- (Class)syncEntityClass;
+- (Class)syncEntityClassForProfile:(HDProfile *)arg1;
+- (HDSyncEntityIdentifier *)syncEntityIdentifier;
 @end
 

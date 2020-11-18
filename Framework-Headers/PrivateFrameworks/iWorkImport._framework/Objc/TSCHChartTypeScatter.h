@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)supportsErrorBarsScatterX;
 - (id)userInterfaceName;
+- (long long)userInterfaceTag;
 
 @end
 

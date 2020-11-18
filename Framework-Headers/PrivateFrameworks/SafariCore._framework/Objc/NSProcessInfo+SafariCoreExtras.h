@@ -6,6 +6,11 @@
 
 #import <Foundation/NSProcessInfo.h>
 
+@class NSString;
+
 @interface NSProcessInfo (SafariCoreExtras)
+
+@property (readonly, copy, nonatomic) NSString *safari_deviceUDID;
+
 @end
 

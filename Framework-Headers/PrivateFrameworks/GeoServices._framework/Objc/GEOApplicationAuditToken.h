@@ -32,6 +32,7 @@
 - (id)initWithProxiedApplicationBundleId:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)publicLogDescription;
 
 @end
 

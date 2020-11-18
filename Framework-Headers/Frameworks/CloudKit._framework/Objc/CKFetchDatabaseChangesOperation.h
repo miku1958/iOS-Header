@@ -11,13 +11,13 @@
 @interface CKFetchDatabaseChangesOperation : CKDatabaseOperation
 {
     BOOL _fetchAllChanges;
-    CKServerChangeToken *_previousServerChangeToken;
-    unsigned long long _resultsLimit;
     CDUnknownBlockType _recordZoneWithIDChangedBlock;
     CDUnknownBlockType _recordZoneWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneWithIDWasPurgedBlock;
     CDUnknownBlockType _changeTokenUpdatedBlock;
     CDUnknownBlockType _fetchDatabaseChangesCompletionBlock;
+    CKServerChangeToken *_previousServerChangeToken;
+    unsigned long long _resultsLimit;
     CKServerChangeToken *_serverChangeToken;
     long long _status;
 }

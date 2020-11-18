@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <iAd/AdAnalyzable-Protocol.h>
 #import <iAd/NSObject-Protocol.h>
 
 @class ADMRAIDAction, NSError, NSString, UIView, UIViewController;
 
-@protocol ADAdRecipient <NSObject>
+@protocol ADAdRecipient <NSObject, AdAnalyzable>
 
 @property (copy, nonatomic) NSString *adResponseId;
 @property (readonly, nonatomic) UIView *adSpaceView;
@@ -21,6 +22,13 @@
 @property (nonatomic) int screenfuls;
 @property (nonatomic) int slotPosition;
 
+- (void)adlibManagedVideoAdDidCompletePlay:(int)arg1;
+- (void)adlibManagedVideoAdDidImpress;
+- (void)adlibManagedVideoAdDidPausePlay;
+- (void)adlibManagedVideoAdDidResumePlay;
+- (void)adlibManagedVideoAdDidTapForMoreInfo;
+- (void)adlibManagedVideoAdDidTapVideo;
+- (void)adlibManagedVideoAdDidToggleToMute:(BOOL)arg1;
 - (void)pauseBannerMedia;
 - (void)privacyButtonWasTapped;
 - (void)resumeBannerMedia;

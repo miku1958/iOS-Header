@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSDShapeCollection-Protocol.h>
 
-@class NSOrderedSet, NSString, TSDBasicShapeLibrary, TSDShapeLibrary, TSDUserDefinedShapeLibrary, TSUNoCopyDictionary;
+@class NSArray, NSString, TSDBasicShapeLibrary, TSDShapeLibrary, TSDUserDefinedShapeLibrary, TSULocale, TSUNoCopyDictionary;
 @protocol TSDShapeCollectionShape;
 
 __attribute__((visibility("hidden")))
@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     TSDBasicShapeLibrary *_basicShapeLibrary;
     TSDShapeLibrary *_shapeLibrary;
     TSDUserDefinedShapeLibrary *_userDefinedShapeLibrary;
-    NSOrderedSet<TSDShapeCollectionShape> *_exactMatches;
-    NSOrderedSet<TSDShapeCollectionShape> *_partialMatches;
+    NSArray<TSDShapeCollectionShape> *_exactMatches;
+    NSArray<TSDShapeCollectionShape> *_partialMatches;
+    NSArray<TSDShapeCollectionShape> *_allShapes;
     TSUNoCopyDictionary *_shapeToDisplayNameMap;
+    TSULocale *_locale;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,9 +33,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned long long numberOfSections;
 @property (readonly, nonatomic) unsigned long long numberOfShapes;
+@property (copy, nonatomic) NSArray<TSDShapeCollectionShape> *p_allShapes; // @synthesize p_allShapes=_allShapes;
 @property (strong, nonatomic) TSDBasicShapeLibrary *p_basicShapeLibrary; // @synthesize p_basicShapeLibrary=_basicShapeLibrary;
-@property (copy, nonatomic) NSOrderedSet<TSDShapeCollectionShape> *p_exactMatches; // @synthesize p_exactMatches=_exactMatches;
-@property (copy, nonatomic) NSOrderedSet<TSDShapeCollectionShape> *p_partialMatches; // @synthesize p_partialMatches=_partialMatches;
+@property (copy, nonatomic) NSArray<TSDShapeCollectionShape> *p_exactMatches; // @synthesize p_exactMatches=_exactMatches;
+@property (strong, nonatomic) TSULocale *p_locale; // @synthesize p_locale=_locale;
+@property (copy, nonatomic) NSArray<TSDShapeCollectionShape> *p_partialMatches; // @synthesize p_partialMatches=_partialMatches;
 @property (strong, nonatomic) TSDShapeLibrary *p_shapeLibrary; // @synthesize p_shapeLibrary=_shapeLibrary;
 @property (strong, nonatomic) TSUNoCopyDictionary *p_shapeToDisplayNameMap; // @synthesize p_shapeToDisplayNameMap=_shapeToDisplayNameMap;
 @property (strong, nonatomic) TSDUserDefinedShapeLibrary *p_userDefinedShapeLibrary; // @synthesize p_userDefinedShapeLibrary=_userDefinedShapeLibrary;
@@ -45,10 +49,14 @@ __attribute__((visibility("hidden")))
 - (id)indexPathOfShape:(id)arg1;
 - (id)initWithShapeLibrary:(id)arg1 basicShapeLibrary:(id)arg2 userDefinedShapeLibrary:(id)arg3 searchTerm:(id)arg4;
 - (unsigned long long)numberOfShapesInSection:(unsigned long long)arg1;
-- (id)p_allShapes;
 - (CDUnknownBlockType)p_comparatorForSortingMatches;
+- (long long)p_comparePositionOfShape:(id)arg1 withOtherShape:(id)arg2;
 - (BOOL)p_hasPartialMatches;
-- (id)p_separateExactAndPartialMatchesFromResults:(id)arg1 searchTerm:(id)arg2 shapeToDisplayNameDict:(id)arg3 searchResultToShapeMap:(CDUnknownBlockType)arg4;
+- (id)p_separateExactAndPartialMatchesFromResults:(id)arg1 searchTerm:(id)arg2 withProvider:(id)arg3 shapeToDisplayNameDict:(id)arg4;
+- (long long)p_sequentialShapePosition:(id)arg1;
+- (id)p_shapesByMappingSearchResults:(id)arg1 withProvider:(id)arg2 shapeToDisplayNameDict:(id)arg3;
+- (BOOL)p_updateSearchResultsBasedOnAnchoredSearchForSearchTerm:(id)arg1;
+- (BOOL)p_updateSearchResultsBasedOnStringScoreSearchForSearchTerm:(id)arg1;
 - (BOOL)p_updateSearchResultsForSearchTerm:(id)arg1;
 - (void)resetSearchResults;
 - (void)setSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

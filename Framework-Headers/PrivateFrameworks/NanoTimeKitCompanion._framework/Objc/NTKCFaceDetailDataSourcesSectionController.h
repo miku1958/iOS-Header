@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (void)_buildRows;
 - (void)_commonInit;
+- (BOOL)_dataSourceAvailableOnGizmo:(id)arg1;
 - (id)_getDisabledDataSources;
 - (void)dealloc;
 - (void)faceDidChange;

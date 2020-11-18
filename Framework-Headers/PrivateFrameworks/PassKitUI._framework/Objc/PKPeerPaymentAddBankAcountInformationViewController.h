@@ -38,7 +38,8 @@
 - (id)_bankInformationTextForRow:(unsigned long long)arg1;
 - (BOOL)_cellValuesAreValid;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1;
-- (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 digitsString:(id)arg2;
+- (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 minDigits:(unsigned long long)arg2 maxDigits:(unsigned long long)arg3;
+- (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 numberOfDigits:(unsigned long long)arg2;
 - (void)_deleteBankInformation;
 - (id)_footerView;
 - (id)_headerSubTitle;

@@ -34,9 +34,12 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)fetchChangeHistory;
-- (void)handleNotification:(id)arg1;
+- (void)handleDistributedNotification:(id)arg1;
+- (void)handleLocalSaveNotification:(id)arg1;
+- (void)handleXPCStoreNotification:(id)arg1;
 - (id)init;
 - (id)initWithStore:(id)arg1 context:(id)arg2;
+- (void)postDistributedSaveNotification;
 - (void)startListening;
 - (void)stopListening;
 

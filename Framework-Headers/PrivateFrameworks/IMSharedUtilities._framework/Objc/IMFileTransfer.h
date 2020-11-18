@@ -20,6 +20,8 @@
     BOOL _isAuxVideo;
     BOOL _isSticker;
     BOOL _hideAttachment;
+    BOOL _isLocation;
+    BOOL _isContact;
     BOOL _appMessageFallbackImage;
     unsigned short _hfsFlags;
     unsigned int _hfsType;
@@ -52,6 +54,9 @@
     long long _cloudKitSyncState;
     NSData *_cloudKitServerChangeTokenBlob;
     NSString *_cloudKitRecordID;
+    long long _srCloudKitSyncState;
+    NSData *_srCloudKitServerChangeTokenBlob;
+    NSString *_srCloudKitRecordID;
     NSURL *_localURL;
     NSURL *_temporaryHighQualityLocalURL;
     NSDictionary *_attributionInfo;
@@ -87,9 +92,11 @@
 @property (readonly, nonatomic) BOOL isAutoloopVideo;
 @property (nonatomic) BOOL isAuxImage; // @synthesize isAuxImage=_isAuxImage;
 @property (nonatomic) BOOL isAuxVideo; // @synthesize isAuxVideo=_isAuxVideo;
+@property (nonatomic) BOOL isContact; // @synthesize isContact=_isContact;
 @property (nonatomic) BOOL isDirectory; // @synthesize isDirectory=_isDirectory;
 @property (readonly, nonatomic) BOOL isFinished;
 @property (nonatomic) BOOL isIncoming; // @synthesize isIncoming=_isIncoming;
+@property (nonatomic) BOOL isLocation; // @synthesize isLocation=_isLocation;
 @property (readonly, nonatomic) BOOL isRecipeBasedSticker;
 @property (nonatomic) BOOL isSticker; // @synthesize isSticker=_isSticker;
 @property (strong, nonatomic, setter=_setLocalPath:) NSString *localPath;
@@ -101,6 +108,9 @@
 @property (readonly, strong, nonatomic) NSString *permanentHighQualityLocalPath;
 @property (nonatomic) BOOL shouldAttemptToResume; // @synthesize shouldAttemptToResume=_shouldAttemptToResume;
 @property (nonatomic, setter=_setForceArchive:) BOOL shouldForceArchive; // @synthesize shouldForceArchive=_shouldForceArchive;
+@property (strong, nonatomic) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
+@property (strong, nonatomic) NSData *srCloudKitServerChangeTokenBlob; // @synthesize srCloudKitServerChangeTokenBlob=_srCloudKitServerChangeTokenBlob;
+@property (nonatomic) long long srCloudKitSyncState; // @synthesize srCloudKitSyncState=_srCloudKitSyncState;
 @property (strong, nonatomic, setter=_setStartDate:) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (strong, nonatomic) NSDictionary *stickerUserInfo; // @synthesize stickerUserInfo=_stickerUserInfo;
 @property (readonly, strong, nonatomic) NSString *temporaryHighQualityLocalPath;

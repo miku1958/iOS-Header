@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/NSSecureCoding-Protocol.h>
 
@@ -20,6 +20,7 @@
     NSString *_authenticationUserName;
     NSSet *_context;
     NSString *_adSpaceContextJSON;
+    struct CGRect _currentAppSize;
 }
 
 @property (copy, nonatomic) NSString *adSpaceContextJSON; // @synthesize adSpaceContextJSON=_adSpaceContextJSON;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSString *authenticationUserName; // @synthesize authenticationUserName=_authenticationUserName;
 @property (copy, nonatomic) NSSet *context; // @synthesize context=_context;
 @property (nonatomic) int creativeType; // @synthesize creativeType=_creativeType;
+@property (nonatomic) struct CGRect currentAppSize; // @synthesize currentAppSize=_currentAppSize;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;

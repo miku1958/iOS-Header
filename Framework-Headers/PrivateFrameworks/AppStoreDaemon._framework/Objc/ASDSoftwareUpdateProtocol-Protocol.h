@@ -10,13 +10,17 @@
 
 @protocol ASDSoftwareUpdateProtocol <NSObject>
 - (void)clearExpiredUpdateHistoryWithCompletionBlock:(void (^)(BOOL, NSError *))arg1;
-- (void)getUpdateableFirstPartyAppMetadataWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)getManagedUpdatesWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
+- (void)getUpdatesIncludingMetricsWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
+- (void)getUpdatesMetricsWithCompletionBlock:(void (^)(ASDSoftwareUpdateMetrics *, NSError *))arg1;
 - (void)getUpdatesWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)hideApplicationBadgeForPendingUpdates;
 - (void)migrateUpdatesStoreWithCompletionBlock:(void (^)(BOOL, NSError *))arg1;
 - (void)refreshUpdateCountWithCompletionBlock:(void (^)(long long, NSError *))arg1;
+- (void)refreshUpdatesWithCompletionBlock:(NSArray *)arg1 userInitiated:(BOOL)arg2 completionBlock:(void (^)(BOOL, NSError *))arg3;
 - (void)reloadFromServerInBackgroundWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)reloadFromServerWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
+- (void)reloadManagedUpdatesWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)removeUpdateBulletins;
 - (void)showApplicationBadgeForPendingUpdates;
 - (void)showApplicationUpdatesBulletin;

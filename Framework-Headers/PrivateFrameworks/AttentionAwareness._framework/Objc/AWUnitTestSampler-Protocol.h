@@ -10,5 +10,7 @@
 - (void)setDisplayCallback:(void (^)(BOOL))arg1;
 - (void)setDisplayState:(BOOL)arg1;
 - (void)setSampleState:(BOOL)arg1;
+- (void)setSmartCoverCallback:(void (^)(BOOL))arg1;
+- (void)setSmartCoverClosed:(BOOL)arg1;
 @end
 

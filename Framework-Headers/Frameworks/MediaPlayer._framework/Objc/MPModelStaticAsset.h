@@ -10,26 +10,17 @@
 
 @interface MPModelStaticAsset : MPModelObject
 {
-    double _duration;
-    long long _flavorType;
-    long long _mediaType;
-    NSURL *_url;
 }
 
-@property (nonatomic) double duration; // @synthesize duration=_duration;
-@property (nonatomic) long long flavorType; // @synthesize flavorType=_flavorType;
-@property (nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
-@property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
+@property (nonatomic) double duration; // @dynamic duration;
+@property (nonatomic) long long flavorType; // @dynamic flavorType;
+@property (nonatomic) long long mediaType; // @dynamic mediaType;
+@property (copy, nonatomic) NSURL *url; // @dynamic url;
 
-+ (id)__MPModelPropertyStaticAssetDuration__PROPERTY;
-+ (id)__MPModelPropertyStaticAssetFlavorType__PROPERTY;
-+ (id)__MPModelPropertyStaticAssetMediaType__PROPERTY;
-+ (id)__MPModelPropertyStaticAssetURL__PROPERTY;
-+ (id)__duration__KEY;
-+ (id)__flavorType__KEY;
-+ (id)__mediaType__KEY;
-+ (id)__url__KEY;
-- (void).cxx_destruct;
++ (id)__duration_KEY;
++ (id)__flavorType_KEY;
++ (id)__mediaType_KEY;
++ (id)__url_KEY;
 
 @end
 

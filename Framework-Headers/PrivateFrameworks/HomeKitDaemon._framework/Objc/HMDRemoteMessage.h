@@ -10,16 +10,14 @@
 
 @interface HMDRemoteMessage : HMFMessage
 {
-    BOOL _secure;
     long long _type;
     NSUUID *_transactionIdentifier;
     double _timeout;
-    unsigned long long _restriction;
     HMDHomeKitVersion *_sourceVersion;
 }
 
-@property (nonatomic) unsigned long long restriction; // @synthesize restriction=_restriction;
-@property (nonatomic, getter=isSecure) BOOL secure; // @synthesize secure=_secure;
+@property (nonatomic) unsigned long long restriction;
+@property (nonatomic, getter=isSecure) BOOL secure;
 @property (strong, nonatomic) HMDHomeKitVersion *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 @property (readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property (copy, nonatomic) NSUUID *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
@@ -39,7 +37,6 @@
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4 type:(long long)arg5 timeout:(double)arg6 secure:(BOOL)arg7 restriction:(unsigned long long)arg8;
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 userInfo:(id)arg4 headers:(id)arg5 payload:(id)arg6;
 - (BOOL)isRemote;
-- (BOOL)isSecureRemote;
 - (void)setInternalResponseHandler:(CDUnknownBlockType)arg1;
 - (void)setResponseHandler:(CDUnknownBlockType)arg1;
 

@@ -32,6 +32,7 @@
 - (BOOL)canAccessRemoteAssets;
 - (BOOL)canBeGroupLeader;
 - (BOOL)canBeGrouped;
+- (BOOL)canRelayCommunicationChannel;
 - (BOOL)canSetVolume;
 - (void)configureUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)connectedPairedDevices;
@@ -54,6 +55,7 @@
 - (id)modelSpecificInformation;
 - (void)outputDeviceImplDidChangeCanChangeVolume:(id)arg1;
 - (void)outputDeviceImplDidChangeVolume:(id)arg1;
+- (BOOL)participatesInGroupPlayback;
 - (BOOL)requiresAuthorization;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;

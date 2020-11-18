@@ -13,6 +13,7 @@
 @property (strong, nonatomic) _SFPBDate *arrivalActualTime;
 @property (strong, nonatomic) _SFPBAirport *arrivalAirport;
 @property (copy, nonatomic) NSString *arrivalGate;
+@property (strong, nonatomic) _SFPBDate *arrivalGateTime;
 @property (strong, nonatomic) _SFPBDate *arrivalPublishedTime;
 @property (strong, nonatomic) _SFPBDate *arrivalRunwayTime;
 @property (copy, nonatomic) NSString *arrivalTerminal;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) BOOL hasArrivalActualTime;
 @property (readonly, nonatomic) BOOL hasArrivalAirport;
 @property (readonly, nonatomic) BOOL hasArrivalGate;
+@property (readonly, nonatomic) BOOL hasArrivalGateTime;
 @property (readonly, nonatomic) BOOL hasArrivalPublishedTime;
 @property (readonly, nonatomic) BOOL hasArrivalRunwayTime;
 @property (readonly, nonatomic) BOOL hasArrivalTerminal;

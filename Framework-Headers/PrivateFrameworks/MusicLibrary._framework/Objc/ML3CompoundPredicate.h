@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSArray *predicates; // @synthesize predicates=_predicates;
 
 + (id)predicateMatchingPredicates:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)SQLJoinClausesForClass:(Class)arg1;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;

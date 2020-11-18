@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     VKTileProvider *_additionalManifestTileProvider;
     VKTileProvider *_rasterOverlayProvider[2];
     BOOL _activeMapLayers[33];
-    VKTrafficTileSource *_trafficSource;
     GEOResourceManifestConfiguration *_additionalManifestConfiguration;
     long long _mapMode;
     long long _desiredMapMode;
@@ -78,6 +77,7 @@ __attribute__((visibility("hidden")))
     struct CartographicRenderer *_renderer;
     struct mutex _rendererMutex;
     struct LogicManager *_logicManager;
+    VKTrafficTileSource *_trafficSource[1];
     struct unique_ptr<md::TrafficSharedResources, std::__1::default_delete<md::TrafficSharedResources>> _trafficSharedResources;
     shared_ptr_887a193f _dataOverrideManager;
     float _navigationPuckSize;
@@ -168,6 +168,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_beginNavMapModeTransitionToMode:(unsigned char)arg1;
+- (void)_createTrafficTileSourceAtIndex:(unsigned int)arg1 roadTileSource:(id)arg2 origin:(unsigned char)arg3 sharedResources:(id)arg4;
+- (void)_createTrafficTileSourcesIfNecessary:(id)arg1 sharedResources:(id)arg2;
 - (void)_forceLayout;
 - (void)_localeChanged:(id)arg1;
 - (void)_mapConfigurationDidChange;
@@ -203,13 +205,12 @@ __attribute__((visibility("hidden")))
 - (void)configureTileSources;
 - (id)createSourceForLayer:(unsigned char)arg1 tileSet:(id)arg2 useAdditionalManifest:(BOOL)arg3;
 - (id)createSourceForLayer:(unsigned char)arg1 useAdditionalManifest:(BOOL)arg2;
-- (void)createTrafficTileSourceIfNecessary:(id)arg1;
 - (void)dealloc;
 - (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
 - (id)debugLabelString:(BOOL)arg1;
 - (void)deselectTransitLineMarker;
-- (void)destroyRenderer;
+- (void)destroyRendererStopObserving;
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
 - (void)didBeginTransitionToNavigation;

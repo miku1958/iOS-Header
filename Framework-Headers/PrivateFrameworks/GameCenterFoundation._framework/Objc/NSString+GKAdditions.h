@@ -17,6 +17,7 @@
 - (BOOL)_gkIsMixedDirection;
 - (BOOL)_gkIsNaturallyRTL;
 - (id)_gkLocaleSensitiveUppercaseString;
+- (BOOL)_gkSearchMatchesItem:(id)arg1 withSearchTerms:(id)arg2;
 - (id)_gkStringByAddingBidiEmbeddingMarkers;
 - (id)_gkStringByEscapingHTMLEntities;
 - (id)_gkStringByQuotingWithFormat:(id)arg1;

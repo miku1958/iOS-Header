@@ -9,7 +9,8 @@
 #import <PhotosUI/PUAssetSharedViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
 
-@class NSString, PLRoundProgressView, PUAssetSharedViewModel, PUBrowsingVideoPlayer, PUOperationStatus, UIButton, UILabel;
+@class NSObject, NSString, PLRoundProgressView, PUAssetSharedViewModel, PUBrowsingVideoPlayer, PUOperationStatus, UIButton, UILabel;
+@protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
 @interface PUProgressIndicatorTileViewController : PUTileViewController <PUAssetSharedViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver>
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL __needsUpdateSizeClass;
     BOOL __needsUpdateStatusViews;
     BOOL __isProgressViewVisible;
+    BOOL __didStartProgressLogging;
     PUAssetSharedViewModel *_assetSharedViewModel;
     PUBrowsingVideoPlayer *_videoPlayer;
     long long __progressViewStyle;
@@ -30,12 +32,14 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic, setter=_setDebugProgressLabel:) UILabel *_debugProgressLabel; // @synthesize _debugProgressLabel=__debugProgressLabel;
+@property (nonatomic, getter=_didStartProgressLogging, setter=_setDidStartProgressLogging:) BOOL _didStartProgressLogging; // @synthesize _didStartProgressLogging=__didStartProgressLogging;
 @property (strong, nonatomic, setter=_setErrorButton:) UIButton *_errorButton; // @synthesize _errorButton=__errorButton;
 @property (nonatomic, setter=_setProgressViewVisible:) BOOL _isProgressViewVisible; // @synthesize _isProgressViewVisible=__isProgressViewVisible;
 @property (nonatomic, setter=_setNeedsUpdateProgressViewStyle:) BOOL _needsUpdateProgressViewStyle; // @synthesize _needsUpdateProgressViewStyle=__needsUpdateProgressViewStyle;
 @property (nonatomic, setter=_setNeedsUpdateSizeClass:) BOOL _needsUpdateSizeClass; // @synthesize _needsUpdateSizeClass=__needsUpdateSizeClass;
 @property (nonatomic, setter=_setNeedsUpdateStatus:) BOOL _needsUpdateStatus; // @synthesize _needsUpdateStatus=__needsUpdateStatus;
 @property (nonatomic, setter=_setNeedsUpdateStatusViews:) BOOL _needsUpdateStatusViews; // @synthesize _needsUpdateStatusViews=__needsUpdateStatusViews;
+@property (readonly, nonatomic) NSObject<OS_os_log> *_progressLog;
 @property (strong, nonatomic, setter=_setProgressView:) PLRoundProgressView *_progressView; // @synthesize _progressView=__progressView;
 @property (nonatomic, setter=_setProgressViewStyle:) long long _progressViewStyle; // @synthesize _progressViewStyle=__progressViewStyle;
 @property (nonatomic, setter=_setSizeClass:) long long _sizeClass; // @synthesize _sizeClass=__sizeClass;

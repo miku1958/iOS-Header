@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 + (id)propertiesAllowingNSNull;
 + (id)styleIDForPreset:(unsigned long long)arg1;
 - (id)boxedValueForProperty:(int)arg1 oldBoxedValue:(id)arg2 transformedByTransform:(struct CGAffineTransform)arg3;
-- (void)dealloc;
 - (id)exteriorStrokeForStrokePreset:(unsigned long long)arg1;
 - (id)horizontalStrokeForStrokePreset:(unsigned long long)arg1;
 - (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(BOOL)arg4;

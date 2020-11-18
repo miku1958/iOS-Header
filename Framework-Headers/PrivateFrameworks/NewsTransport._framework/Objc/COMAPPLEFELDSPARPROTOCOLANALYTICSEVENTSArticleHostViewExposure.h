@@ -44,6 +44,7 @@
     int _coverArticleDisplayRank;
     int _coverArticleFeatureType;
     NSString *_creativeId;
+    int _curatedContentType;
     int _displayRank;
     int _feedAutoSubscribeType;
     int _feedCellHostType;
@@ -128,7 +129,7 @@
     BOOL _isVideoInFeed;
     BOOL _subscriptionOnlyArticle;
     BOOL _viewFromNotificationDirectOpen;
-    CDStruct_5e5ef9bf _has;
+    CDStruct_23675145 _has;
 }
 
 @property (nonatomic) int activeTimeSpent; // @synthesize activeTimeSpent=_activeTimeSpent;
@@ -157,6 +158,7 @@
 @property (nonatomic) int coverArticleDisplayRank; // @synthesize coverArticleDisplayRank=_coverArticleDisplayRank;
 @property (nonatomic) int coverArticleFeatureType; // @synthesize coverArticleFeatureType=_coverArticleFeatureType;
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
+@property (nonatomic) int curatedContentType; // @synthesize curatedContentType=_curatedContentType;
 @property (nonatomic) BOOL didBounce; // @synthesize didBounce=_didBounce;
 @property (nonatomic) BOOL didOpenInSafari; // @synthesize didOpenInSafari=_didOpenInSafari;
 @property (nonatomic) int displayRank; // @synthesize displayRank=_displayRank;
@@ -202,6 +204,7 @@
 @property (nonatomic) BOOL hasCoverArticleDisplayRank;
 @property (nonatomic) BOOL hasCoverArticleFeatureType;
 @property (readonly, nonatomic) BOOL hasCreativeId;
+@property (nonatomic) BOOL hasCuratedContentType;
 @property (nonatomic) BOOL hasDidBounce;
 @property (nonatomic) BOOL hasDidOpenInSafari;
 @property (nonatomic) BOOL hasDisplayRank;
@@ -369,6 +372,7 @@
 - (int)StringAsArticleType:(id)arg1;
 - (int)StringAsArticleViewPresentationReason:(id)arg1;
 - (int)StringAsCoverArticleFeatureType:(id)arg1;
+- (int)StringAsCuratedContentType:(id)arg1;
 - (int)StringAsFeedAutoSubscribeType:(id)arg1;
 - (int)StringAsFeedCellHostType:(id)arg1;
 - (int)StringAsFeedPresentationReason:(id)arg1;
@@ -398,6 +402,7 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)coverArticleFeatureTypeAsString:(int)arg1;
+- (id)curatedContentTypeAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)feedAutoSubscribeTypeAsString:(int)arg1;

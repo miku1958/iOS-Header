@@ -122,6 +122,7 @@
 - (void)replayMessagesFromDatabasePath:(NSString *)arg1;
 - (void)requestBuddyPicturesAndPropertiesForAccount:(NSString *)arg1;
 - (void)requestGroupsAccount:(NSString *)arg1;
+- (void)requestMOCEnabledState;
 - (void)requestPendingACInvites;
 - (void)requestPendingMessages;
 - (void)requestPendingVCInvites;
@@ -168,6 +169,7 @@
 - (void)syncMessages;
 - (void)terminateForcingIfNeeded:(BOOL)arg1;
 - (void)toggleiCloudBackupsIfNeeded;
+- (void)tryToAutoCollectLogsWithErrorString:(NSString *)arg1 sendLogsTo:(NSString *)arg2;
 - (void)tryToDisableAllDevices;
 - (void)unEnrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
 - (void)unregisterAccount:(NSString *)arg1;

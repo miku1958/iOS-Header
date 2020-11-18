@@ -6,13 +6,15 @@
 
 #import <iWorkImport/TSDMediaInfo.h>
 
+#import <iWorkImport/KNImplicitAmbientAnimating-Protocol.h>
 #import <iWorkImport/TSDCompatibilityAwareMediaContainer-Protocol.h>
 #import <iWorkImport/TSDMixing-Protocol.h>
+#import <iWorkImport/TSDPlayableInfo-Protocol.h>
 
 @class NSString, NSURL, TSDMediaStyle, TSPData;
 
 __attribute__((visibility("hidden")))
-@interface TSDMovieInfo : TSDMediaInfo <TSDMixing, TSDCompatibilityAwareMediaContainer>
+@interface TSDMovieInfo : TSDMediaInfo <KNImplicitAmbientAnimating, TSDMixing, TSDCompatibilityAwareMediaContainer, TSDPlayableInfo>
 {
     TSPData *mMovieData;
     NSURL *mMovieRemoteURL;
@@ -25,7 +27,7 @@ __attribute__((visibility("hidden")))
     TSPData *mPosterImageData;
     BOOL mPosterImageGeneratedWithAlphaSupport;
     struct CGSize mNaturalSize;
-    unsigned long long mLoopOption;
+    long long mLoopOption;
     float mVolume;
     BOOL mAudioOnly;
     BOOL mStreaming;
@@ -34,13 +36,18 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, getter=isAudioOnly) BOOL audioOnly;
 @property (strong, nonatomic) TSPData *audioOnlyImageData;
+@property (readonly, nonatomic) BOOL canAddImplicitAmbientAnimations;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double endTime;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isImplicitAmbientAnimationInteractive) BOOL implicitAmbientAnimationInteractive;
 @property (strong, nonatomic) TSPData *importedAuxiliaryMovieData;
 @property (copy, nonatomic) NSString *importedAuxiliaryMovieDataOriginalFilename;
-@property (nonatomic) unsigned long long loopOption; // @synthesize loopOption=mLoopOption;
+@property (nonatomic) long long loopOption; // @synthesize loopOption=mLoopOption;
 @property (strong, nonatomic) TSPData *movieData;
 @property (strong, nonatomic) NSURL *movieRemoteURL;
 @property (strong, nonatomic) TSPData *posterImageData; // @synthesize posterImageData=mPosterImageData;
@@ -48,17 +55,20 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double startTime;
 @property (nonatomic, getter=isStreaming) BOOL streaming; // @synthesize streaming=mStreaming;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsLooping;
+@property (readonly, nonatomic) BOOL supportsStartTimeAndEndTime;
 @property (nonatomic) float volume;
 
 + (double)defaultPosterTimeForDuration:(double)arg1;
 + (id)presetKinds;
+- (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (id)animationFilters;
 - (BOOL)canChangeWrapType;
 - (BOOL)canResetMediaSize;
 - (BOOL)containsProperty:(int)arg1;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (double)doubleValueForProperty:(int)arg1;
 - (float)floatValueForProperty:(int)arg1;
 - (id)generateEmptyPosterImageForContext:(id)arg1;
@@ -67,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 movieData:(id)arg4 loadedAsset:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 movieRemoteURL:(id)arg4 loadedAsset:(id)arg5;
 - (int)intValueForProperty:(int)arg1;
+- (BOOL)isAllowedInGroups;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct MovieArchive *)arg1 unarchiver:(id)arg2;
@@ -80,10 +91,13 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (BOOL)needsDownload;
+- (id)newImplicitAmbientBuildRendererWithAnimatedBuild:(id)arg1 buildChunk:(id)arg2 session:(id)arg3 animatedSlideView:(id)arg4;
 - (id)objectForProperty:(int)arg1;
 - (id)p_makePosterImageDataWithAVAsset:(id)arg1 inContext:(id)arg2;
 - (void)p_setPropertiesFromLoadedAsset:(id)arg1;
 - (id)presetKind;
+- (id)promisedDataForType:(id)arg1;
+- (id)promisedTSPDataForType:(id)arg1;
 - (struct CGSize)rawDataSize;
 - (Class)repClass;
 - (void)saveToArchive:(struct MovieArchive *)arg1 archiver:(id)arg2;
@@ -96,6 +110,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsHyperlinks;
 - (BOOL)supportsStyleInspecting;
 - (id)synchronouslyGenerateDefaultPosterImageForContext:(id)arg1;
+- (id)typesToPromiseWhenCopyingSingleDrawable;
+- (BOOL)willRenderContentViaImager;
 
 @end
 

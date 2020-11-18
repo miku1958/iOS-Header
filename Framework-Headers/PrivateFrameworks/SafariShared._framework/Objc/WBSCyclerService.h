@@ -7,21 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <SafariShared/NSXPCListenerDelegate-Protocol.h>
-#import <SafariShared/WBSCyclerDeviceCoordinatorDelegate-Protocol.h>
 #import <SafariShared/WBSCyclerServiceProtocol-Protocol.h>
 
-@class NSString, NSXPCListener, WBSCyclerDeviceCoordinator, WBSCyclerTestRunner, WBSCyclerTestTargetProxyController;
+@class NSString, NSXPCListener, WBSCyclerTestRunner, WBSCyclerTestTargetProxyController;
 @protocol WBSCyclerTestSuite;
 
-@interface WBSCyclerService : NSObject <NSXPCListenerDelegate, WBSCyclerDeviceCoordinatorDelegate, WBSCyclerServiceProtocol>
+@interface WBSCyclerService : NSObject <NSXPCListenerDelegate, WBSCyclerServiceProtocol>
 {
     NSXPCListener *_xpcListener;
     WBSCyclerTestTargetProxyController *_testTargetProxyController;
     Class _testSuiteClass;
     id<WBSCyclerTestSuite> _testSuite;
     WBSCyclerTestRunner *_testRunner;
-    WBSCyclerDeviceCoordinator *_deviceCoordinator;
-    CDUnknownBlockType _deviceAddressRequestReply;
     NSString *_identifier;
 }
 
@@ -38,11 +35,6 @@
 - (void)_setSeed:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_setTestSuiteName:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)_startCyclingFromBeginning:(BOOL)arg1;
-- (void)deviceCoordinator:(id)arg1 didBeginPrimaryDeviceCoordinationWithAddress:(id)arg2;
-- (void)deviceCoordinator:(id)arg1 didEncounterError:(id)arg2;
-- (void)deviceCoordinator:(id)arg1 didReceiveData:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)deviceCoordinatorDidEstablishConnectionsToAllDevices:(id)arg1;
-- (void)fetchDeviceAddressWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchStatusWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

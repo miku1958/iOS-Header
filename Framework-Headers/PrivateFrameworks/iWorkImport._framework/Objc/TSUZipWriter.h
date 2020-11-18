@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSArray *_sortedEntries;
     NSMutableDictionary *_entriesMap;
     TSUZipWriterEntry *_currentEntry;
+    BOOL _isClosed;
     BOOL _calculateSize;
     BOOL _force32BitSize;
     BOOL _calculateCRC;
@@ -34,13 +35,12 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_writeQueue;
     long long _writtenOffset;
     NSError *_error;
-    BOOL _isClosed;
 }
 
-@property (readonly, nonatomic) unsigned long long archiveLength;
-@property (readonly, nonatomic) unsigned long long entriesCount;
-@property (readonly, nonatomic) BOOL isClosed; // @synthesize isClosed=_isClosed;
-@property (readonly, nonatomic) NSArray *sortedEntries;
+@property (readonly) unsigned long long archiveLength;
+@property (readonly) unsigned long long entriesCount;
+@property (readonly) BOOL isClosed;
+@property (readonly) NSArray *sortedEntries;
 
 - (void).cxx_destruct;
 - (void)addBarrier:(CDUnknownBlockType)arg1;
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)beginEntryWithName:(id)arg1 force32BitSize:(BOOL)arg2 lastModificationDate:(id)arg3 size:(unsigned long long)arg4 CRC:(unsigned int)arg5 forceCalculatingSizeAndCRCForPreservingLastModificationDate:(BOOL)arg6;
 - (void)beginEntryWithNameImpl:(id)arg1 force32BitSize:(BOOL)arg2 lastModificationDate:(id)arg3 size:(unsigned long long)arg4 CRC:(unsigned int)arg5 forceCalculatingSizeAndCRCForPreservingLastModificationDate:(BOOL)arg6;
 - (void)closeWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)entriesCountImpl;
 - (id)entryWithName:(id)arg1;
 - (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)finishEntry;

@@ -36,6 +36,7 @@
     MPAVRouteConnection *_connection;
 }
 
+@property (readonly, nonatomic, getter=isAirPlayingToDevice) BOOL airPlayingToDevice;
 @property (readonly, nonatomic, getter=isAirpodsRoute) BOOL airpodsRoute;
 @property (readonly, nonatomic, getter=isAppleTVRoute) BOOL appleTVRoute;
 @property (readonly, nonatomic) NSArray *auxiliaryDevices; // @synthesize auxiliaryDevices=_auxiliaryDevices;
@@ -48,6 +49,7 @@
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
 @property (readonly, nonatomic, getter=isCarplayRoute) BOOL carplayRoute; // @synthesize carplayRoute=_carplayRoute;
 @property (readonly, nonatomic) MPAVRouteConnection *connection; // @synthesize connection=_connection;
+@property (readonly, nonatomic) NSString *designatedGroupLeaderName;
 @property (readonly, nonatomic, getter=isDeviceSpeakerRoute) BOOL deviceSpeakerRoute;
 @property (readonly, nonatomic, getter=isDisplayedAsPicked) BOOL displayAsPicked;
 @property (nonatomic) long long displayRouteType;
@@ -63,14 +65,18 @@
 @property (readonly, nonatomic) NSString *playingPairedDeviceName; // @synthesize playingPairedDeviceName=_playingPairedDeviceName;
 @property (readonly, nonatomic, getter=isPowerbeatsRoute) BOOL powerbeatsRoute;
 @property (readonly, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
+@property (readonly, nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer;
 @property (readonly, nonatomic) BOOL requiresPassword; // @synthesize requiresPassword=_requiresPassword;
 @property (copy, nonatomic) NSString *routeName;
+@property (readonly, nonatomic) NSArray *routeNames;
 @property (readonly, nonatomic) long long routeSubtype; // @synthesize routeSubtype=_routeSubtype;
 @property (readonly, nonatomic) long long routeType; // @synthesize routeType=_routeType;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property (readonly, nonatomic, getter=isRoutingToWirelessDevice) BOOL routingToWirelessDevice;
 @property (readonly, nonatomic, getter=isSmartAudio) BOOL smartAudio;
 @property (readonly, nonatomic, getter=isStereoPair) BOOL stereoPair;
+@property (readonly, nonatomic) BOOL supportsGrouping;
+@property (readonly, nonatomic) BOOL supportsRemoteControl;
 @property (readonly, nonatomic) BOOL supportsWirelessDisplay;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
 @property (readonly, nonatomic, getter=isW1Route) BOOL w1Route;

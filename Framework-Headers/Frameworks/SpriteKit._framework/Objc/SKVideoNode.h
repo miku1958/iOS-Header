@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
+- (void)commonInit;
 - (void)dealloc;
 - (id)debugHierarchyPropertyDescriptions;
 - (id)debugHierarchyValueForPropertyWithName:(id)arg1;

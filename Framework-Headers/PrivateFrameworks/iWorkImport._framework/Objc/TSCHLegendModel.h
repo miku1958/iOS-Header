@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     struct CGRect mLegendFrame;
 }
 
-@property (nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+@property (weak, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (unsigned char)styleOwnerPathType;
+- (void).cxx_destruct;
 - (void)clearParent;
 - (id)context;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)_initializeShmemPage:(union **)arg1;
 - (void)checkIn;
 - (void)flushDomainInAgents:(const char *)arg1;
+- (void)flushDomainInDaemon:(const char *)arg1;
 - (void)getShmemName:(char *)arg1 bufLen:(unsigned long long)arg2;
 - (void)handleAgentCheckInMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)handleError:(id)arg1;
@@ -40,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (CDUnion_f9025cb3 *)shmem;
 - (void)synchronousWithSourceCache:(CDUnknownBlockType)arg1;
 - (unsigned int)userID;
-- (void)withSourceForDomain:(struct __CFString *)arg1 inContainer:(struct __CFString *)arg2 user:(struct __CFString *)arg3 byHost:(BOOL)arg4 managed:(BOOL)arg5 managedUsesContainer:(BOOL)arg6 cloudStoreEntitlement:(id)arg7 cloudConfigurationPath:(struct __CFString *)arg8 perform:(CDUnknownBlockType)arg9;
+- (void)withSourceForDomain:(struct __CFString *)arg1 inContainer:(struct __CFString *)arg2 user:(struct __CFString *)arg3 byHost:(BOOL)arg4 managed:(BOOL)arg5 managedUsesContainer:(BOOL)arg6 cloudStoreEntitlement:(id)arg7 cloudConfigurationPath:(struct __CFString *)arg8 performWithSourceLock:(CDUnknownBlockType)arg9 afterReleasingSourceLock:(CDUnknownBlockType)arg10;
 - (void)withSources:(CDUnknownBlockType)arg1;
 
 @end

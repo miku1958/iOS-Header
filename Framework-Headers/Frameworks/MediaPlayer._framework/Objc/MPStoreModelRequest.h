@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

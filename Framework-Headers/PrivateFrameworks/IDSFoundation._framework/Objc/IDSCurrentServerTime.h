@@ -7,23 +7,25 @@
 #import <objc/NSObject.h>
 
 @class IDSCurrentServerTimePair;
+@protocol IDSCurrentServerTimeProvider;
 
 @interface IDSCurrentServerTime : NSObject
 {
     IDSCurrentServerTimePair *_timePair;
+    id<IDSCurrentServerTimeProvider> _serverTimeProvider;
 }
 
+@property (strong, nonatomic) id<IDSCurrentServerTimeProvider> serverTimeProvider; // @synthesize serverTimeProvider=_serverTimeProvider;
 @property (strong) IDSCurrentServerTimePair *timePair; // @synthesize timePair=_timePair;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_refreshServerTime;
 - (double)_refreshTimeInterval;
-- (BOOL)_shouldReturnCourierTime;
 - (void)_storeInitialServerTime;
 - (id)currentServerTimeDate;
-- (unsigned long long)currentServerTimeInSeconds;
+- (double)currentServerTimeInterval;
+- (id)initWithServerTimeProvider:(id)arg1;
 
 @end
 

@@ -57,6 +57,7 @@
 - (id)_childAccountsForAccountWithID:(id)arg1;
 - (id)_clientTokenForAccountIdentifier:(id)arg1 error:(id)arg2;
 - (id)_clientTokenQueue;
+- (id)_commitOrRollbackDataclassActions:(id)arg1 forAccount:(id)arg2 originalEnabledDataclasses:(id)arg3;
 - (void)_completeSave:(id)arg1 dataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_credentialItemWithAccountIdentifier:(id)arg1 serviceName:(id)arg2;
 - (id)_dataclassWithName:(id)arg1 createIfNecessary:(BOOL)arg2;
@@ -68,6 +69,7 @@
 - (id)_legacyCredentialForAccount:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (id)_lockForAccountType:(id)arg1;
 - (void)_noteAccountStoreDidSaveAccountsWithAccountTypeIdentifiers:(id)arg1 accountIdentifiers:(id)arg2;
+- (BOOL)_performDataclassActions:(id)arg1 forAccount:(id)arg2 error:(id *)arg3;
 - (id)_predicateForFetchingAccountsWithManagedAccountTypeID:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)_removeAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 withError:(id *)arg3;
 - (void)_removeClientTokenForAccountIdentifer:(id)arg1;
@@ -130,6 +132,7 @@
 - (void)openAuthenticationURLForAccount:(id)arg1 withDelegateClassName:(id)arg2 fromBundleAtPath:(id)arg3 shouldConfirm:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)parentAccountForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)permissionForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)preloadDataclassOwnersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)provisionedDataclassesForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)remoteAccountStoreSession;
 - (void)removeAccount:(id)arg1 withDataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;

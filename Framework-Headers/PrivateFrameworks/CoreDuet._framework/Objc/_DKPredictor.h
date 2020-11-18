@@ -26,6 +26,7 @@
 + (int)startingSlotFromDate:(id)arg1;
 - (void).cxx_destruct;
 - (id)deviceActivityLikelihood;
+- (id)displayOnLikelihood;
 - (id)expectedInBedPeriod;
 - (id)initWithKnowledgeStore:(id)arg1;
 - (id)launchLikelihoodForTopNApplications:(long long)arg1 withLikelihoodGreaterThan:(double)arg2 withTemporalResolution:(int)arg3;

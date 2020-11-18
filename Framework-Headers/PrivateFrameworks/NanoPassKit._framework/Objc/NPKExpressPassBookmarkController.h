@@ -13,6 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *_internalQueue;
     int _bookmarkDidChangeToken;
+    int _deviceDidPairToken;
     id<NPKExpressPassBookmarkControllerDelegate> _delegate;
     NPSDomainAccessor *_domainAccessor;
     NPSManager *_preferenceSyncManager;
@@ -31,6 +32,7 @@
 - (void)_queueBackwardCompatibilityRemoveDefaultExpressFelicaTransitBookmark;
 - (void)_queueBackwardCompatibilitySetDefaultExpressFelicaTransitBookmark:(id)arg1;
 - (void)_registerDefaultExpressPassDidUpdateDarwinNotification;
+- (void)_registerDeviceRegistryDeviceDidPairNotificationDarwinNotification;
 - (void)_synchronizeDomainAccessorWithExpressPassType:(long long)arg1;
 - (id)allBookmarks;
 - (id)bookmarkForExpressMode:(id)arg1;

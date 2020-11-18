@@ -10,8 +10,8 @@
 
 @interface CKRepairZonePCSOperation : CKDatabaseOperation
 {
-    NSArray *_zoneIDs;
     CDUnknownBlockType _zoneRepairedBlock;
+    NSArray *_zoneIDs;
 }
 
 @property (strong, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;

@@ -6,11 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-#import <CalendarDatabase/NSCoding-Protocol.h>
+#import <CalendarDatabase/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface CalAlarmMetadata : NSObject <NSCoding>
+@interface CalAlarmMetadata : NSObject <NSSecureCoding>
 {
     NSArray *_attach;
     NSArray *_attendee;
@@ -24,6 +24,7 @@
 @property (strong) NSString *summary; // @synthesize summary=_summary;
 
 + (id)metadataWithData:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToAlarm:(id)arg1;
 - (id)dataRepresentation;

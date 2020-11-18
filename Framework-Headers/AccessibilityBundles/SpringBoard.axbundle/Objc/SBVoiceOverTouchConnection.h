@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class SBVOTWindow, SBVoiceOverTouchLabelElementAlertItem, UIView;
+@class SBVoiceOverTouchLabelElementAlertItem;
 
 @interface SBVoiceOverTouchConnection : NSObject
 {
     struct __CFMachPort *_votMachPort;
-    SBVOTWindow *_votWindow;
-    UIView *_contentView;
     SBVoiceOverTouchLabelElementAlertItem *_labelAlert;
     BOOL _screenCurtainEnabled;
     BOOL inVoiceOverPassthroughMode;
@@ -35,7 +33,6 @@
 - (BOOL)voiceOverTouchLabelElementAlertItem:(id)arg1 textFieldShouldReturn:(id)arg2;
 - (void)voiceOverTouchLabelElementAlertItemDidAccept:(id)arg1 withTextField:(id)arg2;
 - (void)voiceOverTouchLabelElementAlertItemDidCancel:(id)arg1;
-- (id)votWindow;
 
 @end
 

@@ -176,6 +176,7 @@
     UIAlertController *__flashOrTorchUnavailableAlertController;
     CAMDisabledModeOverlayView *__disabledModeOverlayView;
     NSMutableSet *__filterNamesSelectedBeforeCapture;
+    long long __lastZoomInteractionType;
     CAMBarsAccessibilityHUDManager *__topBarHUDManager;
     CAMBarsAccessibilityHUDManager *__bottomBarHUDManager;
     UISelectionFeedbackGenerator *__modeSelectionFeedbackGenerator;
@@ -252,6 +253,7 @@
 @property (nonatomic, setter=_setLastConfigurationRequestID:) int _lastConfigurationRequestID; // @synthesize _lastConfigurationRequestID=__lastConfigurationRequestID;
 @property (nonatomic, setter=_setLastShutterButtonTouchDownTime:) unsigned long long _lastShutterButtonTouchDownTime; // @synthesize _lastShutterButtonTouchDownTime=__lastShutterButtonTouchDownTime;
 @property (strong, nonatomic, setter=_setLastTimerIndicatorFaceUpdateDate:) NSDate *_lastTimerIndicatorFaceUpdateDate; // @synthesize _lastTimerIndicatorFaceUpdateDate=__lastTimerIndicatorFaceUpdateDate;
+@property (nonatomic, setter=_setLastZoomInteractionType:) long long _lastZoomInteractionType; // @synthesize _lastZoomInteractionType=__lastZoomInteractionType;
 @property (nonatomic, setter=_setLayoutStyle:) long long _layoutStyle; // @synthesize _layoutStyle=__layoutStyle;
 @property (readonly, nonatomic) CAMLevelIndicatorView *_levelView; // @synthesize _levelView=__levelView;
 @property (readonly, nonatomic) CAMLevelViewModel *_levelViewModel; // @synthesize _levelViewModel=__levelViewModel;
@@ -367,6 +369,7 @@
 @property (nonatomic, getter=isUserInteractionLoggingEnabled) BOOL userInteractionLoggingEnabled; // @synthesize userInteractionLoggingEnabled=_userInteractionLoggingEnabled;
 
 - (void).cxx_destruct;
+- (void)_aggregateLowDiskEventWithIdentifier:(id)arg1;
 - (BOOL)_allowsPhysicalCaptureInteraction;
 - (void)_applyAutorotationCorrectingTransformForOrientation:(long long)arg1;
 - (void)_applyTransformsForAutorotationStyle:(long long)arg1;
@@ -594,6 +597,7 @@
 - (void)_readUserPreferencesAndHandleChanges;
 - (void)_reconfigureCaptureGraphWithCurrentMode;
 - (void)_resetAggregateInfoForPhotoFilters;
+- (void)_resetZoom;
 - (void)_resolveAndUpdatePotentiallyConflictingControls:(BOOL)arg1;
 - (void)_resolvePotentiallyConflictingControlsForGraphConfiguration:(id)arg1 resolvedFlashMode:(long long *)arg2 resolvedHDRMode:(long long *)arg3 resolvedLivePhotoMode:(long long *)arg4;
 - (void)_rotateTopBarAndControlsToOrientation:(long long)arg1 shouldAnimate:(BOOL)arg2;
@@ -774,7 +778,7 @@
 - (void)_updateUserInitiationTimeForRequest:(id)arg1;
 - (void)_updateUserPreferencesForFilterUsage;
 - (void)_updateVideoConfigurationAggregateDictionaryForRequest:(id)arg1;
-- (void)_updateZoomAggregateDictionaryForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3 zoomFactor:(double)arg4;
+- (void)_updateZoomAggregateDictionaryForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3 zoomFactor:(double)arg4 zoomInteractionType:(long long)arg5;
 - (void)_updateZoomAggregateDictionaryForRequest:(id)arg1 response:(id)arg2;
 - (void)_updateZoomButtonTelephotoToggleForDevice:(long long)arg1;
 - (void)_updateZoomControlWithZoomFactor:(double)arg1 forGraphConfiguration:(id)arg2;

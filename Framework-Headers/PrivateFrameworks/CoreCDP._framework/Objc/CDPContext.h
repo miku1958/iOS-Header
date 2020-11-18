@@ -15,6 +15,7 @@
 @interface CDPContext : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isHSA2Account;
+    BOOL _isFederatedAccount;
     BOOL _didUseSMSVerification;
     BOOL _guestMode;
     BOOL _supportsSkipSignIn;
@@ -55,6 +56,7 @@
 @property (nonatomic) BOOL guestMode; // @synthesize guestMode=_guestMode;
 @property (nonatomic) BOOL idmsMasterKeyRecovery; // @synthesize idmsMasterKeyRecovery=_idmsMasterKeyRecovery;
 @property (nonatomic) BOOL idmsRecovery; // @synthesize idmsRecovery=_idmsRecovery;
+@property (nonatomic) BOOL isFederatedAccount; // @synthesize isFederatedAccount=_isFederatedAccount;
 @property (nonatomic) BOOL isHSA2Account; // @synthesize isHSA2Account=_isHSA2Account;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (copy, nonatomic) NSString *passwordEquivToken; // @synthesize passwordEquivToken=_passwordEquivToken;

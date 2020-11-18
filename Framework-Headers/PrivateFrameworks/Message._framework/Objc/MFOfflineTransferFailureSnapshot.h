@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/NSCoding-Protocol.h>
+#import <Message/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface MFOfflineTransferFailureSnapshot : NSObject <NSCoding>
+@interface MFOfflineTransferFailureSnapshot : NSObject <NSSecureCoding>
 {
     NSString *_originalRemoteID;
     NSString *_originalMailboxID;
@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) unsigned long long originalMessageFlags; // @synthesize originalMessageFlags=_originalMessageFlags;
 @property (readonly, nonatomic) NSString *originalRemoteID; // @synthesize originalRemoteID=_originalRemoteID;
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

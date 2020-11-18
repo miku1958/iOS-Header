@@ -26,9 +26,9 @@
 - (void)_clearGlyph;
 - (long long)_inferredIconSize;
 - (void)_setGlyph:(id)arg1 withBackgroundColor:(id)arg2;
-- (void)_setImage:(id)arg1;
+- (void)_setImage:(id)arg1 withBackgroundColor:(id)arg2;
 - (void)_setMonogramWithString:(id)arg1 backgroundColor:(id)arg2;
-- (void)_setSiteIcon:(id)arg1;
+- (void)_setSiteIcon:(id)arg1 withBackgroundColor:(id)arg2;
 - (void)_setState:(long long)arg1;
 - (id)_tintedFolderImage;
 - (void)_updateMonogramLabelSizeAndFont;

@@ -8,38 +8,85 @@
 
 #import <HomeKit/HMAccessorySettingsContainer-Protocol.h>
 #import <HomeKit/HMApplicationData-Protocol.h>
+#import <HomeKit/HMControllable-Protocol.h>
+#import <HomeKit/HMFLogging-Protocol.h>
+#import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMMediaObject-Protocol.h>
+#import <HomeKit/HMObjectMerge-Protocol.h>
+#import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessorySettings, HMApplicationData, HMHome, HMMediaSession, NSArray, NSString, NSUUID;
-@protocol HMMediaSystemDelegate;
+@class HMAccessorySettings, HMApplicationData, HMHome, HMMediaSession, HMSymptomsHandler, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID, _HMContext;
+@protocol HMMediaSystemDelegate, OS_dispatch_queue;
 
-@interface HMMediaSystem : NSObject <HMMediaObject, HMApplicationData, HMAccessorySettingsContainer>
+@interface HMMediaSystem : NSObject <HMFLogging, NSSecureCoding, HMObjectMerge, HMFMessageReceiver, HMControllable, HMMediaObject, HMApplicationData, HMAccessorySettingsContainer>
 {
     BOOL _compatible;
-    id<HMMediaSystemDelegate> _delegate;
     NSString *_name;
-    HMHome *_home;
     NSUUID *_uniqueIdentifier;
-    NSArray *_components;
+    HMAccessorySettings *_settings;
+    id<HMMediaSystemDelegate> _delegate;
+    HMApplicationData *_applicationData;
+    HMHome *_home;
+    HMSymptomsHandler *_symptomsHandler;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
+    NSUUID *_uuid;
+    _HMContext *_context;
+    HMThreadSafeMutableArrayCollection *_componentsArray;
 }
 
-@property (readonly, nonatomic) HMApplicationData *applicationData;
+@property (strong, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, nonatomic, getter=isCompatible) BOOL compatible; // @synthesize compatible=_compatible;
-@property (readonly, nonatomic) NSArray *components; // @synthesize components=_components;
+@property (readonly, nonatomic) NSArray *components;
+@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *componentsArray; // @synthesize componentsArray=_componentsArray;
 @property (readonly, weak) HMHome *containerHome;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property (readonly, getter=isControllable) BOOL controllable;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMMediaSystemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, copy) HMMediaSession *mediaSession;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly) HMAccessorySettings *settings;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly) HMAccessorySettings *settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) HMSymptomsHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)logCategory;
++ (id)mediaSystemWithDictionary:(id)arg1 home:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_configureWithContext:(id)arg1;
+- (void)_handleAppDataUpdatedNotification:(id)arg1;
+- (void)_handleRootSettingsUpdated:(id)arg1;
+- (void)_handleSystemUpdatedNotification:(id)arg1;
+- (void)_invalidate;
+- (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2 includeSettingsAndAppData:(BOOL)arg3;
+- (void)_registerNotificationHandlers;
+- (void)_updateAccessoryReference;
+- (void)_updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithHome:(id)arg1 uuid:(id)arg2 name:(id)arg3 compatible:(BOOL)arg4 components:(id)arg5 settings:(id)arg6 symptomHandler:(id)arg7;
+- (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
+- (void)notifyDelegateOfUpdatedApplicationData:(id)arg1;
+- (void)notifyDelegateOfUpdatedComponents:(id)arg1;
+- (void)notifyDelegateOfUpdatedMediaSession:(id)arg1;
+- (void)notifyDelegateOfUpdatedName:(id)arg1;
+- (void)notifyDelegateOfUpdatedSettings:(id)arg1;
+- (void)setName:(id)arg1;
+- (void)setSettings:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateMediaSession:(id)arg1 forMediaProfile:(id)arg2;
 
 @end
 

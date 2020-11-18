@@ -10,8 +10,8 @@
 
 @protocol SXVideoControlItem <NSObject>
 
-@property (readonly, nonatomic) double autoAppearanceTimeInterval;
 @property (readonly, nonatomic) BOOL hideable;
+@property (readonly, nonatomic) BOOL supportsAutoAppearance;
 
 - (void)hide:(BOOL)arg1 withAnimationCoordinator:(id<SXVideoControlItemAnimating>)arg2;
 - (BOOL)isVisible;

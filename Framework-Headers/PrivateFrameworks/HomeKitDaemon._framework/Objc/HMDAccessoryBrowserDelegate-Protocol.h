@@ -9,8 +9,6 @@
 @class HAPAccessoryServer, HMDAccessoryAdvertisement, HMDAccessoryBrowser, HMDMediaEndpoint, HMFOSTransaction, NSArray, NSError, NSNumber, NSString;
 
 @protocol HMDAccessoryBrowserDelegate <NSObject>
-
-@optional
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 accessoryServer:(HAPAccessoryServer *)arg2 didDiscoverAccessories:(NSArray *)arg3 transaction:(HMFOSTransaction *)arg4 error:(NSError *)arg5;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 accessoryServer:(HAPAccessoryServer *)arg2 didStopPairingWithError:(NSError *)arg3;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 accessoryServer:(HAPAccessoryServer *)arg2 didUpdateCategory:(NSNumber *)arg3;
@@ -20,16 +18,15 @@
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 accessoryServer:(HAPAccessoryServer *)arg2 isBlockedWithCompletionHandler:(void (^)(BOOL))arg3;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didAddAccessoryAdvertisement:(HMDAccessoryAdvertisement *)arg2;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didFindAccessoryServer:(HAPAccessoryServer *)arg2 stateChanged:(BOOL)arg3 stateNumber:(NSNumber *)arg4 completion:(void (^)(BOOL))arg5;
+- (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didFindAccessoryServerNeedingReprovisioning:(HAPAccessoryServer *)arg2 error:(NSError *)arg3;
+- (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didFinishWACForAccessoryWithIdentifier:(NSString *)arg2 error:(NSError *)arg3;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didRemoveAccessoryAdvertisement:(HMDAccessoryAdvertisement *)arg2;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didRemoveAccessoryServer:(HAPAccessoryServer *)arg2 error:(NSError *)arg3;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didTombstoneAccessoryServer:(HAPAccessoryServer *)arg2;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didUpdateEndpoint:(HMDMediaEndpoint *)arg2;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didUpdateReachability:(BOOL)arg2 forBTLEAccessoriesWithServerIdentifier:(NSString *)arg3;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 discoveryFailedWithError:(NSError *)arg2 accessoryServer:(NSString *)arg3 linkType:(long long)arg4;
-- (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 identifier:(NSString *)arg2 didUpdateSessionIdentifier:(NSString *)arg3;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 identifier:(NSString *)arg2 reachable:(BOOL)arg3;
-- (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 retrieveAccessoryServersForAccessories:(NSArray *)arg2;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 setupID:(NSString *)arg2 isPairedWithCompletionHandler:(void (^)(BOOL))arg3;
-- (void)accessoryBrowserDidFindNewAccessory:(HMDAccessoryBrowser *)arg1;
 @end
 

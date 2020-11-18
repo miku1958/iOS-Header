@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSProgressReporting-Protocol.h>
 
-@class HDCloudSyncFetchOperationResult, HDCloudSyncOperationConfiguration, HDCloudSyncStoreRecord, NSProgress, NSString;
+@class HDCloudSyncFetchOperationResult, HDCloudSyncOperationConfiguration, HDCloudSyncStoreRecord, NSDate, NSProgress, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HDCloudSyncRebaseOperation : NSObject <NSProgressReporting>
@@ -16,6 +16,8 @@
     HDCloudSyncOperationConfiguration *_configuration;
     HDCloudSyncFetchOperationResult *_fetchOperationResult;
     HDCloudSyncStoreRecord *_pushStoreRecord;
+    NSUUID *_operationIdentifier;
+    NSDate *_startTime;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _queue_hasStarted;
     CDUnknownBlockType _completion;

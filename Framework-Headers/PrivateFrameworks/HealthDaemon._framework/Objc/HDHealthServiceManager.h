@@ -9,7 +9,7 @@
 #import <HealthDaemon/CBCentralManagerPrivateDelegate-Protocol.h>
 #import <HealthDaemon/CBPairingAgentDelegate-Protocol.h>
 
-@class CBCentralManager, CBUUID, HDDataCollectionManager, HDIdentifierTable, HDProfile, NSLock, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class CBCentralManager, CBUUID, HDDataCollectionManager, HDIdentifierTable, HDProfile, NSLock, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDHealthServiceManager : NSObject <CBCentralManagerPrivateDelegate, CBPairingAgentDelegate>
@@ -24,7 +24,6 @@
     NSMutableDictionary *_discoveryInfosByServiceUUID;
     NSSet *_scanServiceUUIDs;
     CBUUID *_allServicesUUID;
-    NSMutableArray *_allServicesArray;
     NSLock *_connectionLock;
     HDIdentifierTable *_connectionInfosTable;
     NSMutableDictionary *_connectionInfosByPeripheralUUID;
@@ -32,7 +31,6 @@
     NSMutableDictionary *_bluetoothUpdateHandlers;
 }
 
-@property (strong, nonatomic) NSMutableArray *allServicesArray; // @synthesize allServicesArray=_allServicesArray;
 @property (strong, nonatomic) CBUUID *allServicesUUID; // @synthesize allServicesUUID=_allServicesUUID;
 @property (strong, nonatomic) NSMutableDictionary *bluetoothUpdateHandlers; // @synthesize bluetoothUpdateHandlers=_bluetoothUpdateHandlers;
 @property (strong, nonatomic) CBCentralManager *central; // @synthesize central=_central;
@@ -55,6 +53,7 @@
 + (long long)_isBTLESupportedWithCentral:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (unsigned long long)_addConnectedPeripheral:(id)arg1 service:(id)arg2 connectionInfo:(id)arg3;
+- (id)_allServiceUUIDs;
 - (unsigned long long)_connectHealthService:(id)arg1 connectionInfo:(id)arg2 error:(id *)arg3;
 - (id)_copyConnectionInfosForPeripheralUUID:(id)arg1;
 - (id)_copyDiscoveryInfosForServiceUUID:(id)arg1;

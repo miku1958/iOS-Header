@@ -23,7 +23,7 @@
 + (id)pk_predicateForContactsMatchingPhoneNumber:(id)arg1;
 - (void *)ABPerson;
 - (id)_fullNameFromComponents:(id)arg1 style:(long long)arg2;
-- (id)_fullNameFromComponents:(id)arg1 style:(long long)arg2 preferPhoneticName:(BOOL)arg3;
+- (id)_phoneticNameFromComponents:(id)arg1 style:(long long)arg2;
 - (id)contactWithCleanedUpDistrict;
 - (BOOL)isSubsetOfMeCard;
 - (id)localizedDisplayNameWithLabel:(id)arg1;
@@ -36,7 +36,6 @@
 - (id)pkFormattedContactAddressIncludingPhoneticName:(BOOL)arg1;
 - (id)pkFullAndPhoneticName;
 - (id)pkFullName;
-- (id)pkFullNameForDisplay;
 - (id)pkFullyQualifiedName;
 - (id)pkPhoneticName;
 - (id)pkSingleLineFormattedContactAddress;

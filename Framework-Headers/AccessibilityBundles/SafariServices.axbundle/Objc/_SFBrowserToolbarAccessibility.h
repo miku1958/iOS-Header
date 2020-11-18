@@ -14,8 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (id)_toolbarItems;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)shouldGroupAccessibilityChildren;
 

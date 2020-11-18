@@ -23,6 +23,8 @@
     NSArray *_binaryImages;
 }
 
+@property (copy, nonatomic) NSString *binaryImagesDescription; // @synthesize binaryImagesDescription=_binaryImagesDescription;
+
 - (void).cxx_destruct;
 - (id)addBacktrace:(id)arg1;
 - (id)addBacktrace:(id)arg1 count:(unsigned int)arg2 numBytes:(unsigned long long)arg3;

@@ -75,7 +75,6 @@
 
 + (id)callCenterWithQueue:(id)arg1;
 + (id)callCenterWithQueue:(id)arg1 daemonDelegate:(id)arg2 shouldRegister:(BOOL)arg3;
-+ (BOOL)isInCallServiceProcess;
 + (const void *)sharedAddressBook;
 + (id)sharedContactStore;
 + (id)sharedInstance;
@@ -90,7 +89,7 @@
 - (BOOL)_existingCallsAllowDialRequest:(id)arg1 allowVoiceWithData:(BOOL)arg2;
 - (BOOL)_isCallingAvailableOnSecondaryDeviceWithRelayCallingAvailability:(int)arg1 isProviderAvailable:(BOOL)arg2 isRelayAllowed:(BOOL)arg3 isEmergency:(BOOL)arg4 supportsBasebandCalling:(BOOL)arg5 shouldUseRelay:(BOOL *)arg6;
 - (void)_preflightDisconnectForCalls:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (BOOL)_shouldPreferRelayOverDirectSecondaryCallingForRelayingCallingAvailability:(int)arg1 isRelayCallingSupported:(BOOL)arg2;
+- (BOOL)_shouldPreferRelayOverDirectSecondaryCallingForRelayingCallingAvailability:(int)arg1 isRelayCallingSupported:(BOOL)arg2 isEmergencyCallbackPossible:(BOOL)arg3;
 - (BOOL)allCallsAreOfService:(int)arg1;
 - (BOOL)allCallsPassTest:(CDUnknownBlockType)arg1;
 - (void)answerCall:(id)arg1;

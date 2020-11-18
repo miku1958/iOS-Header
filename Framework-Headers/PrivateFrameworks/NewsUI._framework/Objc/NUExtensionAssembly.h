@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithExtensionContextProvider:(id)arg1;
-- (void)loadPublicContainer:(id)arg1 privateContainer:(id)arg2;
+- (void)loadInRegistry:(id)arg1;
 
 @end
 

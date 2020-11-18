@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 + (void)sendSingleMessage:(id)arg1 category:(unsigned short)arg2 type:(unsigned short)arg3 serviceType:(unsigned short)arg4 defaults:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
 - (id)createSummaryEventForSession;
+- (void)dealloc;
 - (void)end;
 - (void)endSync:(BOOL)arg1;
 - (id)initWithID:(long long)arg1;

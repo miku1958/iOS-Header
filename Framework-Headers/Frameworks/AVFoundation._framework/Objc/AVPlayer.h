@@ -32,6 +32,7 @@
 @property (nonatomic) float maxRateForAudioPlayback;
 @property (nonatomic) float minRateForAudioPlayback;
 @property (copy, nonatomic) NSString *multichannelAudioStrategy;
+@property (nonatomic) unsigned long long preferredVideoDecoderGPURegistryID;
 @property (readonly, nonatomic) long long status;
 
 + (int)_createFigPlayerWithType:(long long)arg1 player:(struct OpaqueFigPlayer **)arg2;

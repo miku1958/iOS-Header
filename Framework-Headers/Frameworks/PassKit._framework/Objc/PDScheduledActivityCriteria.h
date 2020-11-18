@@ -22,9 +22,11 @@
     NSDate *_startDate;
     NSDate *_endDate;
     double _repeatInterval;
+    NSString *_reason;
 }
 
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (nonatomic) double repeatInterval; // @synthesize repeatInterval=_repeatInterval;
 @property (nonatomic, getter=isRepeating) BOOL repeating; // @synthesize repeating=_repeating;
 @property (nonatomic) BOOL requireMainsPower; // @synthesize requireMainsPower=_requireMainsPower;

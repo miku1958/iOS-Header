@@ -18,6 +18,7 @@
     long long _musicRepeatType;
     long long _musicShuffleType;
     BOOL _soundCheckEnabled;
+    BOOL _speakerRouteEnabled;
     NSMutableDictionary *_lastSiriPlaybackContextIDs;
     struct vector<int, std::__1::allocator<int>> _notifyTokens;
     NSObject<OS_dispatch_queue> *_userDefaultsMutationQueue;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled;
 @property (readonly, nonatomic) BOOL shouldUseNewQueueManagement;
 @property (readonly, nonatomic) BOOL soundCheckEnabled;
+@property (readonly, nonatomic) BOOL speakerRouteEnabled;
 
 + (id)standardUserDefaults;
 - (id).cxx_construct;

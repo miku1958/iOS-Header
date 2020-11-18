@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class GEOPDHoursThreshold, PBUnknownFields;
 
 @interface GEOPDHours : PBCodable <NSCopying>
 {
@@ -17,10 +17,13 @@
     struct GEOPDLocalTimeRange *_timeRanges;
     unsigned long long _timeRangesCount;
     unsigned long long _timeRangesSpace;
+    GEOPDHoursThreshold *_hoursThreshold;
 }
 
 @property (readonly, nonatomic) int *days;
 @property (readonly, nonatomic) unsigned long long daysCount;
+@property (readonly, nonatomic) BOOL hasHoursThreshold;
+@property (strong, nonatomic) GEOPDHoursThreshold *hoursThreshold; // @synthesize hoursThreshold=_hoursThreshold;
 @property (readonly, nonatomic) struct GEOPDLocalTimeRange *timeRanges;
 @property (readonly, nonatomic) unsigned long long timeRangesCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;

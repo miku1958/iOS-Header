@@ -13,6 +13,8 @@
     int _needsSpotlightReindex;
 }
 
++ (BOOL)_mobileMailNeedsSpotlightReIndex;
++ (BOOL)_setMobileMailNeedsSpotlightReIndex:(BOOL)arg1;
 - (BOOL)migrateWithSQLiteConnection:(id)arg1;
 - (BOOL)needsRebuildMessageInfoIndex;
 - (BOOL)needsRebuildTriggers;

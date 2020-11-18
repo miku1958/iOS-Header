@@ -6,14 +6,16 @@
 
 #import <PassKitUI/PKNavigationController.h>
 
+#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
 @class NSString, PKPaymentProvisioningController;
 @protocol PKPaymentSetupDelegate;
 
-@interface PKPaymentSetupNavigationController : PKNavigationController <PKPaymentSetupViewControllerDelegate>
+@interface PKPaymentSetupNavigationController : PKNavigationController <PKPaymentSetupViewControllerDelegate, PKPaymentSetupRequiresPreflightProtocol>
 {
     long long _context;
+    BOOL _rootViewControllerNeedsConfiguration;
     BOOL _showsWelcomeViewController;
     BOOL _allowsManualEntry;
     PKPaymentProvisioningController *_provisioningController;
@@ -33,11 +35,13 @@
 
 + (id)viewControllerForPresentingPaymentError:(id)arg1;
 - (void).cxx_destruct;
+- (void)_dirtyConfigurationAndReloadIfNeeded;
 - (void)_reconfigureRootViewController;
 - (void)cancel:(id)arg1;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2;
 - (void)loadView;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setCustomFormSheetPresentationStyleForiPad;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;

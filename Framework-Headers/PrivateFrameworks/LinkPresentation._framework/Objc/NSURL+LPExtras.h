@@ -11,5 +11,6 @@
 - (id)_lp_highLevelDomain;
 - (id)_lp_simplifiedDisplayString;
 - (id)_lp_userVisibleString;
+- (BOOL)_lp_userVisibleStringUsesEncodedHost;
 @end
 

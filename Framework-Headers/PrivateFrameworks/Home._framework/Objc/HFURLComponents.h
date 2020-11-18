@@ -24,6 +24,7 @@
 + (id)aboutResidentDeviceURL;
 + (id)homeKitObjectURLForDestination:(unsigned long long)arg1 secondaryDestination:(unsigned long long)arg2 UUID:(id)arg3;
 + (id)locationPrivacyURL;
++ (id)musicLoginURL;
 + (id)musicPrivacyURL;
 + (id)siriPrivacyURL;
 - (void).cxx_destruct;

@@ -25,11 +25,11 @@
 @property (strong, nonatomic) _MRNowPlayingPlayerProtobuf *player; // @synthesize player=_player;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customDescription;
 - (id)customDictionaryRepresentation;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

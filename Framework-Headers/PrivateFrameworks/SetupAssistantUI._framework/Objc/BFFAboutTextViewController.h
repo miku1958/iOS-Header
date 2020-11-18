@@ -18,6 +18,7 @@
     NSString *_HTMLString;
     NSString *_linkString;
     UIViewController *_linkedController;
+    CDUnknownBlockType _linkTappedBlock;
 }
 
 @property (strong, nonatomic) NSString *HTMLString; // @synthesize HTMLString=_HTMLString;
@@ -27,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includesAdditionalFormatting; // @synthesize includesAdditionalFormatting=_includesAdditionalFormatting;
 @property (strong, nonatomic) NSString *linkString; // @synthesize linkString=_linkString;
+@property (copy, nonatomic) CDUnknownBlockType linkTappedBlock; // @synthesize linkTappedBlock=_linkTappedBlock;
 @property (strong, nonatomic) UIViewController *linkedController; // @synthesize linkedController=_linkedController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *titleString; // @synthesize titleString=_titleString;

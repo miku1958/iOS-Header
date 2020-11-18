@@ -6,19 +6,25 @@
 
 #import <ProtectedCloudStorage/PCSCKKSOperation.h>
 
-@class PCSCKKSItemModifyContext;
+@class CKKSControl, NSString, PCSCKKSItemModifyContext;
 
 @interface PCSCKKSSyncViewOperation : PCSCKKSOperation
 {
     PCSCKKSItemModifyContext *_context;
+    CKKSControl *_CKKSControl;
+    NSString *_view;
 }
 
+@property (strong) CKKSControl *CKKSControl; // @synthesize CKKSControl=_CKKSControl;
 @property (readonly) PCSCKKSItemModifyContext *context; // @synthesize context=_context;
+@property (strong) NSString *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
+- (void)checkTLKStatus;
+- (BOOL)ensureControl;
 - (id)initWithItemModifyContext:(id)arg1;
 - (void)start;
-- (void)syncView:(id)arg1;
+- (void)syncView;
 
 @end
 

@@ -7,26 +7,29 @@
 #import <UIKit/UITableViewCell.h>
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
-#import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HFItem, HUGridServiceCell, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UILabel, UIStackView, UITextView;
+@class HFItem, HUGridServiceCell, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UIStackView, UITextView;
 @protocol HUResizableCellDelegate;
 
-@interface HUServiceDetailsHeaderCell : UITableViewCell <UITextViewDelegate, HUCellProtocol>
+@interface HUServiceDetailsHeaderCell : UITableViewCell <HUCellProtocol>
 {
     HFItem *_item;
     id<HUResizableCellDelegate> _resizingDelegate;
+    UIButton *_actionButton;
+    UITextView *_messageTextView;
     HUGridServiceCell *_serviceCell;
     NSArray *_hiddenMessageTextViewConstraints;
     NSArray *_visibleMessageTextViewConstraints;
-    UITextView *_messageTextView;
     UIStackView *_titleSpinnerStackView;
     UIActivityIndicatorView *_checkingForUpdateSpinner;
     UILabel *_titleLabel;
     NSLayoutConstraint *_spinnerBottomConstraint;
     NSLayoutConstraint *_messageBottomConstraint;
+    NSLayoutConstraint *_actionBottomConstraint;
 }
 
+@property (strong, nonatomic) NSLayoutConstraint *actionBottomConstraint; // @synthesize actionBottomConstraint=_actionBottomConstraint;
+@property (strong, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
 @property (strong, nonatomic) UIActivityIndicatorView *checkingForUpdateSpinner; // @synthesize checkingForUpdateSpinner=_checkingForUpdateSpinner;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -53,7 +56,6 @@
 - (id)_visibleMessageTextViewConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
-- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end

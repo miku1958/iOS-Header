@@ -11,10 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface KNCanvasSelection : TSDCanvasSelection
 {
-    NSSet *mBuildChunks;
+    NSSet *_buildChunks;
 }
 
-@property (readonly, nonatomic) NSSet *buildChunks; // @synthesize buildChunks=mBuildChunks;
+@property (strong, nonatomic) NSSet *buildChunks; // @synthesize buildChunks=_buildChunks;
 @property (readonly, nonatomic) BOOL containsOnlyUnlockedInfosSupportingHyperlinkActions;
 @property (readonly, nonatomic) NSSet *drawableInfos;
 @property (readonly, nonatomic) NSSet *unlockedDrawableInfos;
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)archivedSelectionClass;
 + (id)emptySelection;
+- (void).cxx_destruct;
 - (id)UUIDDescription;
 - (BOOL)containsBuildChunksOfAnimationType:(long long)arg1;
 - (id)copyExcludingBuildChunks:(id)arg1;

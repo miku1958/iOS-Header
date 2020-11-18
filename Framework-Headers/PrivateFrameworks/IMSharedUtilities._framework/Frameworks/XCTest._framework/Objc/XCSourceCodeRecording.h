@@ -22,6 +22,7 @@
 @property (readonly) unsigned long long language; // @synthesize language=_language;
 @property (strong) NSMutableDictionary *variableNameToContentNodeDictionary; // @synthesize variableNameToContentNodeDictionary=_variableNameToContentNodeDictionary;
 
+- (void).cxx_destruct;
 - (BOOL)_createAndShareLocalVariableUsingSourceNode:(id)arg1 atIndex:(long long)arg2;
 - (id)_nodes:(id)arg1 matchingDistanceFromRoot:(BOOL)arg2 variableContentNode:(id)arg3 withVariableName:(id)arg4 startingIndex:(long long)arg5 replacedNodes:(long long *)arg6 indexOfFirstReplacedNode:(long long *)arg7;
 - (void)_shareCommonSectionsInLocalVariables;
@@ -37,7 +38,6 @@
 - (id)_variableSuffixForElementType:(unsigned long long)arg1 classType:(unsigned long long)arg2;
 - (void)appendNode:(id)arg1 replaceLastNode:(BOOL)arg2;
 - (id)copy;
-- (void)dealloc;
 - (id)init;
 - (id)initWithLanguage:(unsigned long long)arg1 reservedNames:(id)arg2;
 - (id)stringRepresentationWithError:(id *)arg1;

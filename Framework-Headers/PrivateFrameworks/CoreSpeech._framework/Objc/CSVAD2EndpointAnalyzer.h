@@ -65,6 +65,7 @@
 @property (nonatomic) BOOL detectedOneShotStartpoint; // @synthesize detectedOneShotStartpoint=_detectedOneShotStartpoint;
 @property (nonatomic) BOOL detectedRecurrentEndpoint; // @synthesize detectedRecurrentEndpoint=_detectedRecurrentEndpoint;
 @property (nonatomic) BOOL detectedRecurrentStartpoint; // @synthesize detectedRecurrentStartpoint=_detectedRecurrentStartpoint;
+@property (readonly, nonatomic) double elapsedTimeWithNoSpeech;
 @property (nonatomic) double endWaitTime; // @synthesize endWaitTime=_endWaitTime;
 @property (nonatomic) long long endpointMode; // @synthesize endpointMode=_endpointMode;
 @property (nonatomic) long long endpointStyle; // @synthesize endpointStyle=_endpointStyle;

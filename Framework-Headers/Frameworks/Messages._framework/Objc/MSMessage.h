@@ -9,7 +9,7 @@
 #import <Messages/NSCopying-Protocol.h>
 #import <Messages/NSSecureCoding-Protocol.h>
 
-@class MSMessageLayout, MSSession, NSData, NSError, NSString, NSURL, NSUUID;
+@class MSMessageLayout, MSSession, NSData, NSDate, NSError, NSString, NSURL, NSUUID;
 
 @interface MSMessage : NSObject <NSCopying, NSSecureCoding>
 {
@@ -24,6 +24,7 @@
     NSString *_accessibilityLabel;
     NSString *_summaryText;
     NSError *_error;
+    NSDate *_time;
     NSData *__data;
     NSString *_statusText;
     NSString *_breadcrumbText;
@@ -43,6 +44,7 @@
 @property (nonatomic) BOOL shouldExpire; // @synthesize shouldExpire=_shouldExpire;
 @property (copy, nonatomic) NSString *statusText; // @synthesize statusText=_statusText;
 @property (copy, nonatomic) NSString *summaryText; // @synthesize summaryText=_summaryText;
+@property (strong, nonatomic) NSDate *time; // @synthesize time=_time;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

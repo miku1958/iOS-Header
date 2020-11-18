@@ -24,6 +24,8 @@
 @property (readonly, copy, nonatomic) NSNumber *fairPlayDeviceTypeOverride;
 @property (readonly, copy, nonatomic) NSString *hardwarePlatformOverride;
 @property (nonatomic) BOOL ignoreExtendedCertificateValidation;
+@property (copy, nonatomic) NSNumber *lastActiveAccountDSID;
+@property (copy, nonatomic) NSDictionary *lastCookieHeadersForRevokingMusicUserTokens;
 @property (copy, nonatomic) NSDictionary *mediaLibraryAccessApplicationIdentifiersWithTCCAcceptanceDates;
 @property (readonly, copy, nonatomic) NSString *productPlatformOverride;
 @property (readonly, copy, nonatomic) NSString *productVersionOverride;

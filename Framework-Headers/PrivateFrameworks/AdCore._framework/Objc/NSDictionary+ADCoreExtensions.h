@@ -8,7 +8,9 @@
 
 @interface NSDictionary (ADCoreExtensions)
 - (id)dictionaryForJSON;
+- (BOOL)hasObjectForKey:(id)arg1 ofKindOfClass:(Class)arg2;
 - (id)jsonString;
 - (id)jsonStringWithPrettyPrint:(BOOL)arg1;
+- (id)objectForKey:(id)arg1 ofKindOfClass:(Class)arg2;
 @end
 

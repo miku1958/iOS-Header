@@ -17,6 +17,14 @@
 
 + (id)ic_sharedAccountStore;
 - (id)_ic_storeAccountType;
+- (void)ic_activeLockerAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ic_activeStoreAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ic_allStoreAccountsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ic_primaryAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ic_setActiveLockerAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)ic_setActiveStoreAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)ic_storeAccountForStoreAccountID:(id)arg1;
+- (void)ic_storeAccountForStoreAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)ic_storeAccountTypeWithCompletion:(CDUnknownBlockType)arg1;
 @end
 

@@ -10,7 +10,7 @@
 #import <Silex/SXVideoAdProviding-Protocol.h>
 
 @class NSString, SXPrerollAdResponse, SXTimeline, SXVideoAdStateManager;
-@protocol SXAnalyticsReporting, SXVideoAdProviderDataSource, SXVideoAdViewControllerProviding, SXVideoMetadataProviding;
+@protocol SXAnalyticsReporting, SXVASTAnalyticsEventInfoFactory, SXVideoAdProviderDataSource, SXVideoAdViewControllerProviding, SXVideoMetadataProviding, SXVisibilityMonitoring;
 
 @interface SXVideoAdProvider : NSObject <ADBannerViewInternalDelegate, SXVideoAdProviding>
 {
@@ -21,8 +21,12 @@
     SXTimeline *_timeline;
     id<SXVideoAdViewControllerProviding> _fullscreenViewControllerProvider;
     SXVideoAdStateManager *_stateManager;
+    id<SXVisibilityMonitoring> _videoVisibilityMonitor;
+    id<SXVisibilityMonitoring> _videoPlayerVisibilityMonitor;
+    id<SXVASTAnalyticsEventInfoFactory> _analyticsEventInfoFactory;
 }
 
+@property (readonly, nonatomic) id<SXVASTAnalyticsEventInfoFactory> analyticsEventInfoFactory; // @synthesize analyticsEventInfoFactory=_analyticsEventInfoFactory;
 @property (strong, nonatomic) id<SXAnalyticsReporting> analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
 @property (weak, nonatomic) id<SXVideoAdProviderDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,12 +39,18 @@
 @property (readonly, nonatomic) unsigned long long skipThreshold;
 @property (readonly, nonatomic) SXVideoAdStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) double threshold;
 @property (readonly, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
+@property (readonly, nonatomic) id<SXVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
+@property (readonly, nonatomic) id<SXVisibilityMonitoring> videoVisibilityMonitor; // @synthesize videoVisibilityMonitor=_videoVisibilityMonitor;
 
 - (void).cxx_destruct;
 - (void)configureTimelineForImpressionReporting;
-- (id)initWithDataSource:(id)arg1 viewControllerProvider:(id)arg2;
+- (void)enteredFullscreen;
+- (void)exitedFullscreen;
+- (id)initWithViewControllerProvider:(id)arg1 analyticsEventInfoFactory:(id)arg2 videoPlayerVisibilityMonitor:(id)arg3 videoVisibilityMonitor:(id)arg4;
 - (CDUnknownBlockType)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)muteStateChanged:(BOOL)arg1;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
 - (void)playbackInitiated;
@@ -51,6 +61,7 @@
 - (void)presentPrivacyStatement;
 - (void)reportEngagementEventWithType:(unsigned long long)arg1;
 - (void)skipped;
+- (void)tappedToToggleControls;
 - (void)timeElapsed:(double)arg1 duration:(double)arg2;
 - (id)viewControllerForStoryboardPresentationFromBannerView:(id)arg1;
 

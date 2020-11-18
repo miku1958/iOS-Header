@@ -13,6 +13,7 @@
 
 @property (nonatomic) long long status; // @synthesize status=_status;
 
++ (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItemChangeType:(unsigned long long)arg1 changedItem:(id)arg2 serverId:(id)arg3 status:(long long)arg4;

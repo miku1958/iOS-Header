@@ -8,11 +8,12 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPCompanionLinkXPCClientInterface-Protocol.h>
+#import <Rapport/RPMessageable-Protocol.h>
 
 @class NSArray, NSString, NSXPCConnection, RPCompanionLinkDevice;
 @protocol OS_dispatch_queue;
 
-@interface RPCompanionLinkClient : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface>
+@interface RPCompanionLinkClient : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface, RPMessageable>
 {
     BOOL _activateCalled;
     struct NSMutableSet *_assertions;
@@ -28,6 +29,7 @@
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
     NSString *_password;
+    CDUnknownBlockType _promptForPasswordHandler;
     CDUnknownBlockType _deviceFoundHandler;
     CDUnknownBlockType _deviceLostHandler;
     CDUnknownBlockType _deviceChangedHandler;
@@ -35,8 +37,8 @@
     CDUnknownBlockType _localDeviceUpdatedHandler;
 }
 
-@property (readonly, copy, nonatomic) NSArray *activeDevices;
-@property (readonly, copy, nonatomic) RPCompanionLinkDevice *activePersonalCompanion;
+@property (readonly, copy) NSArray *activeDevices;
+@property (readonly) RPCompanionLinkDevice *activePersonalCompanion;
 @property (strong, nonatomic) RPCompanionLinkDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
 @property (copy, nonatomic) CDUnknownBlockType deviceChangedHandler; // @synthesize deviceChangedHandler=_deviceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
@@ -45,9 +47,10 @@
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (readonly, copy, nonatomic) RPCompanionLinkDevice *localDevice; // @synthesize localDevice=_localDevice;
+@property (strong) RPCompanionLinkDevice *localDevice; // @synthesize localDevice=_localDevice;
 @property (copy, nonatomic) CDUnknownBlockType localDeviceUpdatedHandler; // @synthesize localDeviceUpdatedHandler=_localDeviceUpdatedHandler;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
+@property (copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -81,6 +84,7 @@
 - (void)registerRequestID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)sendEventID:(id)arg1 event:(id)arg2 destinationID:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 destinationID:(id)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
+- (void)tryPassword:(id)arg1;
 
 @end
 

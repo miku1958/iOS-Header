@@ -31,7 +31,6 @@
 - (void)bookmarkableStringFromDocumentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)documentURLFromBookmarkableString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dumpStateTo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)endpointForItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)evictItemAtURL:(id)arg1 evenIfEnumeratingFP:(BOOL)arg2 andClearACLForConsumer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)extendBookmarkForFileURL:(id)arg1 toConsumerID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)extendSandboxAndCreatePlaceholderForFileURL:(id)arg1 fromProviderID:(id)arg2 toConsumerID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

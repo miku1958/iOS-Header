@@ -33,6 +33,8 @@
 - (id)_recordIDUsingName:(id)arg1 zoneID:(id)arg2;
 - (id)_recordNameUsingSalt:(id)arg1;
 - (id)_recordType;
+- (BOOL)_shouldDownloadIfPhoneNumberAndNoSIM:(id)arg1;
+- (BOOL)_usingStingRay;
 - (id)compressedProtobufDataForGroupActionItem;
 - (id)compressedProtobufDataForGroupTitleChangeItem;
 - (id)compressedProtobufDataForLocationShareStatusChangeItem;

@@ -47,7 +47,7 @@
 @property (readonly) BOOL documentNeedsDownloadOnRevert; // @synthesize documentNeedsDownloadOnRevert=_documentNeedsDownloadOnRevert;
 @property (copy, nonatomic) NSString *documentPasswordHint;
 @property (readonly) BOOL documentRevertWasAbandoned; // @synthesize documentRevertWasAbandoned=_documentRevertWasAbandoned;
-@property (readonly, nonatomic) TSADocumentRoot *documentRoot;
+@property (readonly, strong, nonatomic) TSADocumentRoot *documentRoot;
 @property (strong, nonatomic) SFUCryptoKey *encryptionKey; // @synthesize encryptionKey=_encryptionKey;
 @property (readonly, nonatomic) id<NSFilePresenter> filePresenter;
 @property (readonly) BOOL hasPersistenceErrors;

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSCoding-Protocol.h>
 #import <WebKit/NSCopying-Protocol.h>
+#import <WebKit/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebsiteDataStore, _WKVisitedLinkStore, _WKWebsiteDataStore;
+@class NSMutableDictionary, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebsiteDataStore, _WKApplicationManifest, _WKVisitedLinkStore, _WKWebsiteDataStore;
 
-@interface WKWebViewConfiguration : NSObject <NSCoding, NSCopying>
+@interface WKWebViewConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     struct LazyInitialized<WTF::RetainPtr<WKProcessPool>> _processPool;
     struct LazyInitialized<WTF::RetainPtr<WKPreferences>> _preferences;
@@ -36,7 +36,6 @@
     BOOL _allowsInlineMediaPlayback;
     BOOL _inlineMediaPlaybackRequiresPlaysInlineAttribute;
     BOOL _allowsInlineMediaPlaybackAfterFullscreen;
-    BOOL _allowsBlockSelection;
     unsigned long long _dragLiftDelay;
     BOOL _invisibleAutoplayNotPermitted;
     BOOL _mediaDataLoadsAutomatically;
@@ -45,6 +44,7 @@
     BOOL _initialCapitalizationEnabled;
     BOOL _waitsForPaintAfterViewDidMoveToWindow;
     BOOL _controlledByAutomation;
+    struct RetainPtr<_WKApplicationManifest> _applicationManifest;
     BOOL _applePayEnabled;
     BOOL _needsStorageAccessFromFileURLsQuirk;
     BOOL _legacyEncryptedMediaAPIEnabled;
@@ -62,13 +62,13 @@
 
 @property (nonatomic, setter=_setAllowMediaContentTypesRequiringHardwareSupportAsFallback:) BOOL _allowMediaContentTypesRequiringHardwareSupportAsFallback;
 @property (nonatomic, setter=_setAllowUniversalAccessFromFileURLs:) BOOL _allowUniversalAccessFromFileURLs;
-@property (nonatomic, setter=_setAllowsBlockSelection:) BOOL _allowsBlockSelection;
 @property (nonatomic, setter=_setAllowsInlineMediaPlaybackAfterFullscreen:) BOOL _allowsInlineMediaPlaybackAfterFullscreen;
 @property (nonatomic, setter=_setAllowsJavaScriptMarkup:) BOOL _allowsJavaScriptMarkup;
 @property (nonatomic, setter=_setAllowsMetaRefresh:) BOOL _allowsMetaRefresh;
 @property (weak, nonatomic, setter=_setAlternateWebViewForNavigationGestures:) WKWebView *_alternateWebViewForNavigationGestures;
 @property (nonatomic, setter=_setAlwaysRunsAtForegroundPriority:) BOOL _alwaysRunsAtForegroundPriority;
 @property (nonatomic, setter=_setApplePayEnabled:) BOOL _applePayEnabled;
+@property (nonatomic, setter=_setApplicationManifest:) _WKApplicationManifest *_applicationManifest;
 @property (nonatomic, setter=_setAttachmentElementEnabled:) BOOL _attachmentElementEnabled;
 @property (nonatomic, setter=_setContentProviderRegistry:) WKWebViewContentProviderRegistry *_contentProviderRegistry;
 @property (nonatomic, getter=_isControlledByAutomation, setter=_setControlledByAutomation:) BOOL _controlledByAutomation;
@@ -112,10 +112,10 @@
 @property (strong, nonatomic) WKUserContentController *userContentController;
 @property (strong, nonatomic) WKWebsiteDataStore *websiteDataStore;
 
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_setVisitedLinkProvider:(id)arg1;
-- (void)_validate;
 - (id)_visitedLinkProvider;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

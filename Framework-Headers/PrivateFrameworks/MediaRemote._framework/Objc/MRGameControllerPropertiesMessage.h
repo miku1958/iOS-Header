@@ -6,16 +6,16 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
+@class _MRGameControllerPropertiesProtobuf;
+
 @interface MRGameControllerPropertiesMessage : MRProtocolMessage
 {
-    void *_properties;
 }
 
 @property (readonly, nonatomic) unsigned long long controllerID;
-@property (readonly, nonatomic) void *properties;
+@property (readonly, nonatomic) _MRGameControllerPropertiesProtobuf *properties;
 
-- (void)dealloc;
-- (id)initWithGameControllerProperties:(void *)arg1 controllerID:(unsigned long long)arg2;
+- (id)initWithGameControllerProperties:(id)arg1 controllerID:(unsigned long long)arg2;
 - (unsigned long long)type;
 
 @end

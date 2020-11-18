@@ -12,7 +12,7 @@
 @protocol TPPageLayoutInfoProvider <NSObject>
 - (BOOL)canProvideInfoForPageIndex:(unsigned long long)arg1;
 - (BOOL)canProvideNumberingInfoForPageIndex:(unsigned long long)arg1;
-- (int)contentFlagsForPageIndex:(unsigned long long)arg1;
+- (unsigned long long)contentFlagsForPageIndex:(unsigned long long)arg1;
 - (NSString *)displayPageNumberForCharIndex:(unsigned long long)arg1;
 - (NSString *)displayPageNumberForPageIndex:(unsigned long long)arg1;
 - (id<TSWPHeaderFooterProvider>)headerFooterProviderForPageIndex:(unsigned long long)arg1;

@@ -212,6 +212,7 @@
 - (id)mutableCopy;
 - (id)pl_aggregateKeysForPreviousPhotoEditModel:(id)arg1;
 - (id)pl_aggregateNameForEffectFilter;
+- (id)pl_aggregateNameForPortraitFilter;
 
 @end
 

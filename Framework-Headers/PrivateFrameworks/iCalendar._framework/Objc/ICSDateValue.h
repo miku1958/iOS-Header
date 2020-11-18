@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
-@interface ICSDateValue : NSObject <NSCoding>
+@interface ICSDateValue : NSObject <NSSecureCoding>
 {
     long long _year;
     long long _month;
@@ -21,6 +21,7 @@
 
 + (id)dateFromICSString:(id)arg1;
 + (id)dateFromICSUTF8String:(const char *)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
 - (long long)compare:(id)arg1;
 - (id)components;

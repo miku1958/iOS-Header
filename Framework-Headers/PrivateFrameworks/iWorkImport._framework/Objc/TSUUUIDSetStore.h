@@ -25,14 +25,14 @@ __attribute__((visibility("hidden")))
 - (void)_foreachUuidSet:(CDUnknownBlockType)arg1;
 - (unsigned int)addSet:(id)arg1;
 - (unsigned int)addSetForSingleUuid:(const UUIDData_5fbc143e *)arg1;
-- (unsigned int)addSetForUuids:(const vector_dadc1b26 *)arg1;
+- (unsigned int)addSetForUuids:(const vector_4dc5f307 *)arg1;
 - (BOOL)containsUuidSet:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeToArchive:(struct UuidSetStoreArchive *)arg1;
 - (void)foreachUuidSet:(CDUnknownBlockType)arg1;
 - (unsigned int)indexOfSet:(id)arg1;
-- (id)indexesUsingAnyOfUuids:(const vector_dadc1b26 *)arg1;
+- (id)indexesUsingAnyOfUuids:(const vector_4dc5f307 *)arg1;
 - (id)indexesUsingUuid:(const UUIDData_5fbc143e *)arg1;
 - (id)init;
 - (id)initFromMessage:(const struct UuidSetStoreArchive *)arg1;

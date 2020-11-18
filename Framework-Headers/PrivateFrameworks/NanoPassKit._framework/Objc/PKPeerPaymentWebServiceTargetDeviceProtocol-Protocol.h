@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSString, NSURL, PKPaymentProvisioningController, PKPeerPaymentAccount, PKPeerPaymentCredential;
+@class NSArray, NSString, NSURL, PKPaymentProvisioningController, PKPeerPaymentAccount, PKPeerPaymentCredential;
 
 @protocol PKPeerPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (PKPeerPaymentAccount *)account;
@@ -14,12 +14,14 @@
 - (void)cloudStoreStatusWithCompletion:(void (^)(CKAccountInfo *, BOOL, NSError *))arg1;
 - (void)downloadPassIfNecessaryWithCompletion:(void (^)(BOOL))arg1;
 - (void)provisionPeerPaymentPassWithProvisioningController:(PKPaymentProvisioningController *)arg1 credential:(PKPeerPaymentCredential *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (NSArray *)secureElementIdentifiers;
 - (void)setUserHasDisabledPeerPayment:(BOOL)arg1;
 - (void)updateAccountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
 - (BOOL)userHasDisabledPeerPayment;
 
 @optional
 - (void)checkTLKsMissingWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (NSString *)deviceRegion;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(void (^)(BOOL))arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)peerPaymentReRegisterWithURL:(NSURL *)arg1 pushToken:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;

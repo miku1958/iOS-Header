@@ -9,7 +9,7 @@
 @interface UIApplication (UIAccessibilityElementTraversal)
 - (void)_accessibilityAddKeyboardWindowToArray:(id)arg1 forModalWindow:(id)arg2;
 - (id)_accessibilityElementWindowsWithOptions:(id)arg1 referenceWindow:(id)arg2;
-- (void)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1 referenceWindow:(id)arg2;
 @end

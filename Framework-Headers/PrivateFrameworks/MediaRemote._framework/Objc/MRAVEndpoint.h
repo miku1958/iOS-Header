@@ -6,11 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRAVOutputDevice, MRExternalDevice, NSArray, NSString, _MRAVEndpointDescriptorProtobuf;
+@class MRAVOutputDevice, MRExternalDevice, NSArray, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf;
 
 __attribute__((visibility("hidden")))
 @interface MRAVEndpoint : NSObject
 {
+    NSMutableArray *_pendingConnectionHandlers;
+    NSOperationQueue *_connectionHandlerOperationQueue;
+    BOOL _registeredForConnectionStateDidChangeNotifications;
+    NSTimer *_connectionTimeoutTimer;
     NSString *_localizedName;
     NSString *_uniqueIdentifier;
 }
@@ -19,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) MRAVOutputDevice *designatedGroupLeader;
 @property (readonly, nonatomic) MRExternalDevice *externalDevice;
 @property (readonly, nonatomic) NSString *instanceIdentifier;
+@property (readonly, nonatomic) BOOL isProxyGroupPlayer;
 @property (readonly, nonatomic, getter=isLocalEndpoint) BOOL localEndpoint;
 @property (strong, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) NSArray *outputDevices;
@@ -26,7 +31,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
+- (void).cxx_destruct;
+- (void)_callAllCompletionHandlersWithError:(id)arg1;
 - (void)_connectToExternalDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_externalDeviceConnectionStateDidChangeNotification:(id)arg1;
 - (id)_init;
 - (void)_requestSharedAudioPresentationOutputContextModificationWithAddingDevices:(id)arg1 removingDevices:(id)arg2 settingDevices:(id)arg3 replyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (unsigned long long)_volumeControlMode;

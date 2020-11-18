@@ -8,16 +8,14 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface NTPBSectionDisplayDescriptor : PBCodable <NSCopying>
 {
     NSString *_actionTitle;
     NSString *_actionURLString;
     NSString *_backgroundGradientColor;
-    NSString *_discoverMoreVideosSubtitle;
-    NSString *_discoverMoreVideosTitle;
-    NSString *_discoverMoreVideosURLString;
+    NSData *_discoverMoreVideosInfoData;
     NSString *_name;
     NSString *_nameColor;
     BOOL _displaysAsVideoPlaylist;
@@ -33,16 +31,12 @@
 @property (strong, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
 @property (strong, nonatomic) NSString *actionURLString; // @synthesize actionURLString=_actionURLString;
 @property (strong, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
-@property (strong, nonatomic) NSString *discoverMoreVideosSubtitle; // @synthesize discoverMoreVideosSubtitle=_discoverMoreVideosSubtitle;
-@property (strong, nonatomic) NSString *discoverMoreVideosTitle; // @synthesize discoverMoreVideosTitle=_discoverMoreVideosTitle;
-@property (strong, nonatomic) NSString *discoverMoreVideosURLString; // @synthesize discoverMoreVideosURLString=_discoverMoreVideosURLString;
+@property (strong, nonatomic) NSData *discoverMoreVideosInfoData; // @synthesize discoverMoreVideosInfoData=_discoverMoreVideosInfoData;
 @property (nonatomic) BOOL displaysAsVideoPlaylist; // @synthesize displaysAsVideoPlaylist=_displaysAsVideoPlaylist;
 @property (readonly, nonatomic) BOOL hasActionTitle;
 @property (readonly, nonatomic) BOOL hasActionURLString;
 @property (readonly, nonatomic) BOOL hasBackgroundGradientColor;
-@property (readonly, nonatomic) BOOL hasDiscoverMoreVideosSubtitle;
-@property (readonly, nonatomic) BOOL hasDiscoverMoreVideosTitle;
-@property (readonly, nonatomic) BOOL hasDiscoverMoreVideosURLString;
+@property (readonly, nonatomic) BOOL hasDiscoverMoreVideosInfoData;
 @property (nonatomic) BOOL hasDisplaysAsVideoPlaylist;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasNameColor;

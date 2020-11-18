@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/NSObject-Protocol.h>
+#import <Silex/SXComponent-Protocol.h>
 
 @class NSURL;
 
-@protocol SXWebContentComponent <NSObject>
+@protocol SXWebContentComponent <SXComponent>
 
 @property (readonly, nonatomic) NSURL *URL;
 

@@ -6,23 +6,60 @@
 
 #import <Foundation/NSObject.h>
 
+#import <IMSharedUtilities/CUTPowerMonitorDelegate-Protocol.h>
+#import <IMSharedUtilities/CUTWiFiManagerDelegate-Protocol.h>
+
+@class NSString;
 @protocol OS_dispatch_queue;
 
-@interface IMLogDump : NSObject
+@interface IMLogDump : NSObject <CUTPowerMonitorDelegate, CUTWiFiManagerDelegate>
 {
+    BOOL _shouldCollectStats;
     NSObject<OS_dispatch_queue> *_logDumpQueue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *logDumpQueue; // @synthesize logDumpQueue=_logDumpQueue;
+@property (readonly, nonatomic) BOOL shouldCollectStats; // @synthesize shouldCollectStats=_shouldCollectStats;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+- (void)_calculateConnectedMinutesForDateKey:(id)arg1 durationKey:(id)arg2 daysDictionary:(id)arg3 totalDurationDictionary:(id)arg4 totalDurationKey:(id)arg5;
+- (double)_calculateMinutesSyncingWithDurationKey:(id)arg1 attemptDateKey:(id)arg2;
+- (id)_calculatePowerAndWifiConnectedTimeInMinutesForDictionary:(id)arg1;
 - (BOOL)_checkArgumentValidity:(id)arg1 withFileName:(id)arg2 withError:(id *)arg3;
-- (void)_compressAndDeleteFileAtPath:(id)arg1 destinationFilePath:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_compressAndDeleteFilesAtPath:(id)arg1 destinationFilePath:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)_dictionaryForDayKey:(id)arg1;
+- (void)_includeCloudKitDebugFilesAtPath:(id)arg1;
+- (void)_incrementSyncAttemptsWithKey:(id)arg1 syncDateKey:(id)arg2;
+- (BOOL)_isOnPower;
+- (BOOL)_isWifiUsable;
 - (id)_lastHoursToAppend:(int)arg1;
+- (void)_noteSyncEndedForDurationKey:(id)arg1 dateKey:(id)arg2;
 - (id)_predicateToAppend:(id)arg1;
+- (void)clearSyncStats;
+- (id)createTodaysStatisticDictionaryIfNeeded;
+- (void)cutPowerMonitorBatteryConnectedStateDidChange:(id)arg1;
+- (void)cutWiFiManagerLinkDidChange:(id)arg1 context:(id)arg2;
 - (void)dealloc;
-- (void)dumpLogsToFolderAtPath:(id)arg1 withFileName:(id)arg2 lastHours:(int)arg3 predicate:(id)arg4 shouldCompress:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (void)disconnectFromResourceForTotalDurationKey:(id)arg1 dateKey:(id)arg2 powerWifiDict:(id)arg3;
+- (void)dumpLogsToFolderAtPath:(id)arg1 withFileName:(id)arg2 lastHours:(int)arg3 predicate:(id)arg4 includeCKDebug:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (void)dumpMOCLoggingMetaData;
+- (id)getPowerAndWifiDictionaryForKey:(id)arg1;
+- (void)incrementAHDASyncAttempts;
+- (void)incrementCoreDuetSyncAttempts;
 - (id)init;
+- (id)logShowCommandToFilePath:(id)arg1 lastHours:(int)arg2 predicate:(id)arg3;
+- (void)noteAHDASyncEnded;
+- (void)noteCoreDuetSyncEnded;
+- (void)printIfWeAreInTheMiddleOfASync;
+- (void)printPowerAndWifiStats;
+- (void)printSyncDurationStats;
+- (void)reconnectToResourceForTotalDurationKey:(id)arg1 dateKey:(id)arg2 powerWifiDict:(id)arg3;
+- (id)todaysKey;
 
 @end
 

@@ -10,43 +10,45 @@
 #import <TelephonyUtilities/TUCallCapabilitiesXPCServerActions-Protocol.h>
 
 @class NSString, NSXPCConnection, TUCallCapabilitiesState;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, TUCallCapabilitiesXPCServer;
+@protocol OS_dispatch_queue;
 
 @interface TUCallCapabilitiesXPCClient : NSObject <TUCallCapabilitiesXPCClient, TUCallCapabilitiesXPCServerActions>
 {
     int _token;
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
-    id<TUCallCapabilitiesXPCServer> _server;
     TUCallCapabilitiesState *_state;
-    NSObject<OS_dispatch_semaphore> *_stateSemaphore;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) id<TUCallCapabilitiesXPCServer> server; // @synthesize server=_server;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) TUCallCapabilitiesState *state; // @synthesize state=_state;
-@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *stateSemaphore; // @synthesize stateSemaphore=_stateSemaphore;
 @property (readonly) Class superclass;
-@property (nonatomic) int token; // @synthesize token=_token;
+@property (readonly, nonatomic) int token; // @synthesize token=_token;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (id)asynchronousServer;
++ (id)callCapabilitiesClientXPCInterface;
++ (id)callCapabilitiesServerXPCInterface;
++ (void)setAsynchronousServer:(id)arg1;
++ (void)setSynchronousServer:(id)arg1;
++ (id)synchronousServer;
 - (void).cxx_destruct;
-- (void)_retrieveStateForInitialUpdate:(BOOL)arg1;
+- (void)_retrieveState;
 - (void)_updateState:(id)arg1;
+- (id)asynchronousServer;
+- (id)asynchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
 - (oneway void)cancelPinRequestFromPrimaryDevice;
 - (oneway void)capabilityStateUpdated:(id)arg1;
 - (void)dealloc;
 - (oneway void)endEmergencyCallbackMode;
 - (id)init;
-- (id)initWithServer:(id)arg1;
+- (void)invalidate;
 - (oneway void)invalidateAndRefreshThumperCallingProvisioningURL;
 - (oneway void)invalidateAndRefreshWiFiCallingProvisioningURL;
-- (void)invalidateXPCConnection;
 - (oneway void)requestPinFromPrimaryDevice;
-- (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
 - (oneway void)setRelayCallingEnabled:(BOOL)arg1;
 - (oneway void)setRelayCallingEnabled:(BOOL)arg1 forDeviceWithID:(id)arg2;
 - (oneway void)setThumperCallingAllowed:(BOOL)arg1 onSecondaryDeviceWithID:(id)arg2;
@@ -55,6 +57,7 @@
 - (oneway void)setVoLTECallingEnabled:(BOOL)arg1;
 - (oneway void)setWiFiCallingEnabled:(BOOL)arg1;
 - (oneway void)setWiFiCallingRoamingEnabled:(BOOL)arg1;
+- (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end
 

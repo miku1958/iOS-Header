@@ -47,11 +47,11 @@
 @property (strong, nonatomic) NSString *remoteControlInterfaceID; // @synthesize remoteControlInterfaceID=_remoteControlInterfaceID;
 @property (strong, nonatomic) NSString *senderAppDisplayID; // @synthesize senderAppDisplayID=_senderAppDisplayID;
 
+- (void).cxx_destruct;
 - (int)StringAsCommand:(id)arg1;
 - (id)commandAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

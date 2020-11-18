@@ -40,7 +40,8 @@
 - (void)_cleanUpAndDismissWithSuccess:(BOOL)arg1 agreeURL:(id)arg2;
 - (void)_cleanupRUILoader;
 - (void)_displayConnectionErrorAndDismiss;
-- (void)_loadRequestPreferingPassword:(BOOL)arg1;
+- (BOOL)_isUnauthorizedError:(id)arg1;
+- (void)_loadRequestPreferringPassword:(BOOL)arg1;
 - (void)_popObjectModelAnimated:(BOOL)arg1;
 - (id)initWithAccount:(id)arg1 inStore:(id)arg2;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;

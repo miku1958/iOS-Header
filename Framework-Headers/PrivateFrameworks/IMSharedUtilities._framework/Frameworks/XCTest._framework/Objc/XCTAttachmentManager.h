@@ -20,6 +20,7 @@
 @property (readonly) XCTestCase *testCase; // @synthesize testCase=_testCase;
 
 + (void)_synthesizeActivityForAttachment:(id)arg1 testCase:(id)arg2;
+- (void).cxx_destruct;
 - (void)_invalidate;
 - (void)dealloc;
 - (void)dequeueAndReportBackgroundAttachments;

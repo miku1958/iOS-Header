@@ -13,6 +13,7 @@
 - (void)remote_dropEntitlement:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_fetchAllDevicesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_fetchDiagnosticsWithKeys:(NSArray *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)remote_fetchURLForAnalyticsFileWithName:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)remote_generateFakeDataForActivityType:(long long)arg1 minutes:(double)arg2 completion:(void (^)(id, NSError *))arg3;
 - (void)remote_observeDataCollectionForType:(HKObjectType *)arg1 interval:(double)arg2 inBackground:(BOOL)arg3 hasRunningWorkout:(BOOL)arg4;
 - (void)remote_resetAWDTask:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;

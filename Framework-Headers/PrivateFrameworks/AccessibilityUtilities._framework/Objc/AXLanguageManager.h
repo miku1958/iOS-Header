@@ -12,6 +12,7 @@
 {
     AXDialectMap *_dialectForSystemLanguage;
     AXDialectMap *_dialectForCurrentLocale;
+    AXDialectMap *_dialectForCurrentRegion;
     NSArray *_langMaps;
     NSCharacterSet *_commonCharacters;
     NSLocale *_userLocale;
@@ -19,6 +20,7 @@
 
 @property (strong, nonatomic) NSCharacterSet *commonCharacters; // @synthesize commonCharacters=_commonCharacters;
 @property (weak, nonatomic) AXDialectMap *dialectForCurrentLocale;
+@property (weak, nonatomic) AXDialectMap *dialectForCurrentRegion;
 @property (weak, nonatomic) AXDialectMap *dialectForSystemLanguage;
 @property (readonly, weak, nonatomic) AXDialectMap *dialectForUserLocale;
 @property (strong, nonatomic) NSArray *langMaps; // @synthesize langMaps=_langMaps;

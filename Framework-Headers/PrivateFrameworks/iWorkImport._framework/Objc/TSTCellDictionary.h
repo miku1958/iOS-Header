@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)applyBlockToAllCells:(CDUnknownBlockType)arg1;
 - (id)cellAtCellID:(struct TSUCellCoord)arg1;
 - (id)init;
-- (vector_13f93596)removeAllCells;
+- (vector_38b190b0)removeAllCells;
 - (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 
 @end

@@ -35,8 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)p_layoutTree;
 - (void)p_resetSceneProperties;
 - (void)p_resetSeriesStorage;
-- (BOOL)p_shouldClearSceneForLayoutSettings:(CDStruct_44ada6bf)arg1;
-- (void)setLayoutSettings:(CDStruct_44ada6bf)arg1;
+- (BOOL)p_shouldClearSceneForLayoutSettings:(CDStruct_b1c75024)arg1;
+- (void)setLayoutSettings:(CDStruct_b1c75024)arg1;
 - (void)setSeriesIndexedPieWedgeExplosions:(id)arg1;
 
 @end

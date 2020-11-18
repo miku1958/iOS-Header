@@ -22,7 +22,6 @@
 - (void).cxx_destruct;
 - (id)_cyclerProxy;
 - (void)dealloc;
-- (void)fetchDeviceAddressWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchStatusWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)sendRequestToTestSuite:(id)arg1 reply:(CDUnknownBlockType)arg2;

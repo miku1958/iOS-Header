@@ -4,27 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Rapport/RPProfileSession.h>
+#import <Foundation/NSObject.h>
 
-@class NSUUID;
+@class NSArray, NSUUID, RPDevice, RPSession;
+@protocol OS_dispatch_queue;
 
-@interface RPFileTransferSession : RPProfileSession
+@interface RPFileTransferSession : NSObject
 {
-    NSUUID *_transferIdentifier;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;
+    RPDevice *_peerDevice;
     CDUnknownBlockType _progressHandler;
+    RPSession *_session;
+    NSUUID *_transferIdentifier;
+    NSArray *_urls;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property (strong, nonatomic) RPDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (strong, nonatomic) RPSession *session; // @synthesize session=_session;
 @property (copy, nonatomic) NSUUID *transferIdentifier; // @synthesize transferIdentifier=_transferIdentifier;
+@property (copy, nonatomic) NSArray *urls; // @synthesize urls=_urls;
 
 - (void).cxx_destruct;
-- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_cleanup;
-- (void)_invalidate;
+- (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addFileURL:(id)arg1;
 - (id)init;
+- (void)invalidate;
 
 @end
 

@@ -8,7 +8,7 @@
 
 @interface ARPatchGrid : NSObject
 {
-    vector_b5b5dea7 _patchesVector;
+    vector_f87b304d _patchesVector;
     float _angle;
 }
 
@@ -19,7 +19,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithPatchesVector:(vector_b5b5dea7)arg1 pivotAngle:(float)arg2;
+- (id)initWithPatchesVector:(vector_f87b304d)arg1 pivotAngle:(float)arg2;
 
 @end
 

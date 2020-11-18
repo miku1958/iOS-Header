@@ -76,6 +76,8 @@
     BOOL reversesMoreVideoFramesInMemoryWasSet;
     BOOL aggressivelyCachesVideoFrames;
     BOOL aggressivelyCachesVideoFramesWasSet;
+    BOOL decodesAllFramesDuringOrdinaryPlayback;
+    BOOL decodesAllFramesDuringOrdinaryPlaybackWasSet;
     BOOL initialContinuesPlayingDuringPrerollForSeek;
     BOOL initialContinuesPlayingDuringPrerollForRateChange;
     BOOL usesIFrameOnlyPlaybackForHighRateScaledEditsWasSet;

@@ -21,6 +21,8 @@
     BOOL _allowsExplicitContent;
     BOOL _allowsStorePurchases;
     BOOL _allowsRadioPurchases;
+    long long _maximumTVShowRatingForAgeGate;
+    long long _maximumMovieRatingForAgeGate;
 }
 
 @property (readonly, nonatomic) BOOL allowsAccountModification; // @synthesize allowsAccountModification=_allowsAccountModification;
@@ -33,7 +35,9 @@
 @property (readonly, nonatomic) BOOL hasRestrictionsPasscode;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long maximumMovieRating;
+@property (nonatomic) long long maximumMovieRatingForAgeGate; // @synthesize maximumMovieRatingForAgeGate=_maximumMovieRatingForAgeGate;
 @property (readonly, nonatomic) long long maximumTVShowRating;
+@property (nonatomic) long long maximumTVShowRatingForAgeGate; // @synthesize maximumTVShowRatingForAgeGate=_maximumTVShowRatingForAgeGate;
 @property (readonly) Class superclass;
 
 + (id)sharedRestrictionsMonitor;

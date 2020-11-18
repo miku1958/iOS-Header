@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_awQueue;
     AWUnitTestFaceDetectOperation *_lastOperation;
     CDUnknownBlockType _displayCallback;
+    CDUnknownBlockType _smartCoverCallback;
     BOOL _facePresent;
     id<BKDevicePearlDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
@@ -39,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (void)setDisplayCallback:(CDUnknownBlockType)arg1;
 - (void)setDisplayState:(BOOL)arg1;
 - (void)setSampleState:(BOOL)arg1;
+- (void)setSmartCoverCallback:(CDUnknownBlockType)arg1;
+- (void)setSmartCoverClosed:(BOOL)arg1;
 
 @end
 

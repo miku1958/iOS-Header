@@ -15,6 +15,7 @@
 - (void)clientPerformServiceRequest:(NSDictionary *)arg1 replyBlock:(void (^)(NSDictionary *))arg2;
 - (void)clientPurge:(NSDictionary *)arg1 replyBlock:(void (^)(NSDictionary *))arg2;
 - (void)clientPurgeableSpace:(NSDictionary *)arg1 replyBlock:(void (^)(NSDictionary *))arg2;
+- (void)clientRegisterLowDiskFailure:(NSString *)arg1 failureType:(int)arg2 isRoot:(BOOL)arg3;
 - (void)clientRequestCacheableSpaceGuidance:(NSDictionary *)arg1 replyBlock:(void (^)(NSDictionary *))arg2;
 - (void)clientSetState:(id)arg1 key:(NSString *)arg2 replyBlock:(void (^)(void))arg3;
 - (void)clientUpdatePurgeable:(NSDictionary *)arg1 replyBlock:(void (^)(void))arg2;

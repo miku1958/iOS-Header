@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NewsToday/NSCopying-Protocol.h>
+#import <NewsToday/NFCopying-Protocol.h>
 #import <NewsToday/NSObject-Protocol.h>
 #import <NewsToday/NSSecureCoding-Protocol.h>
 #import <NewsToday/NTTodayItem-Protocol.h>
@@ -12,23 +12,27 @@
 @class NSDate, NSObject, NSString, NSURL, SFSearchResult;
 @protocol NTHeadlineAdElement, NTHeadlineAnalyticsElementProviding, NTHeadlineBackingElement, NTHeadlinePersonalizationMetadata;
 
-@protocol NTHeadlineProviding <NSObject, NSCopying, NSSecureCoding, NTTodayItem>
+@protocol NTHeadlineProviding <NSObject, NFCopying, NSSecureCoding, NTTodayItem>
 
 @property (readonly, copy, nonatomic) NSURL *NewsURL;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlineAdElement> *adElement;
 @property (readonly, copy, nonatomic) NSDate *ageDisplayDate;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlineAnalyticsElementProviding> *analyticsElement;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlineBackingElement> *backingElement;
+@property (readonly, nonatomic, getter=isBoundToContext) BOOL boundToContext;
+@property (readonly, copy, nonatomic) NSString *compactSourceName;
+@property (readonly, copy, nonatomic) NSURL *compactSourceNameImageRemoteURL;
 @property (readonly, nonatomic) BOOL displaysWithLeadingCellAppearance;
 @property (readonly, copy, nonatomic) NSURL *flintDocumentURL;
+@property (readonly, nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlinePersonalizationMetadata> *personalizationMetadata;
 @property (readonly, copy, nonatomic) SFSearchResult *searchResult;
 @property (readonly, copy, nonatomic) NSString *shortExcerpt;
-@property (readonly, copy, nonatomic) NSString *sourceIdentifier;
 @property (readonly, copy, nonatomic) NSString *sourceName;
 @property (readonly, copy, nonatomic) NSURL *sourceNameImageRemoteURL;
 @property (readonly, nonatomic) double sourceNameImageScale;
+@property (readonly, copy, nonatomic) NSString *sourceTagID;
 @property (readonly, copy, nonatomic) NSString *storyType;
 @property (readonly, nonatomic) BOOL supportsSavingForLater;
 @property (readonly, nonatomic) struct CGRect thumbnailFocalFrame;
@@ -36,6 +40,8 @@
 @property (readonly, nonatomic) unsigned long long thumbnailSizePreset;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *titleCompact;
+@property (readonly, copy, nonatomic) NSString *videoCallToActionTitle;
+@property (readonly, copy, nonatomic) NSURL *videoCallToActionURL;
 @property (readonly, nonatomic) double videoDuration;
 @property (readonly, copy, nonatomic) NSURL *videoURL;
 @property (readonly, copy, nonatomic) NSURL *webURL;

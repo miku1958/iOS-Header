@@ -8,21 +8,102 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
 @interface HDCodableGeneratedObjectCollection : PBCodable <NSCopying>
 {
+    NSMutableArray *_accountOwners;
+    NSMutableArray *_allergyRecords;
+    NSMutableArray *_conditionRecords;
+    NSMutableArray *_diagnosticTestReports;
+    NSMutableArray *_diagnosticTestResults;
+    NSMutableArray *_medicationDispenseRecords;
+    NSMutableArray *_medicationOrders;
+    NSMutableArray *_medicationRecords;
+    NSMutableArray *_procedureRecords;
+    NSMutableArray *_unknownRecords;
+    NSMutableArray *_vaccinationRecords;
 }
 
+@property (strong, nonatomic) NSMutableArray *accountOwners; // @synthesize accountOwners=_accountOwners;
+@property (strong, nonatomic) NSMutableArray *allergyRecords; // @synthesize allergyRecords=_allergyRecords;
+@property (strong, nonatomic) NSMutableArray *conditionRecords; // @synthesize conditionRecords=_conditionRecords;
+@property (strong, nonatomic) NSMutableArray *diagnosticTestReports; // @synthesize diagnosticTestReports=_diagnosticTestReports;
+@property (strong, nonatomic) NSMutableArray *diagnosticTestResults; // @synthesize diagnosticTestResults=_diagnosticTestResults;
+@property (strong, nonatomic) NSMutableArray *medicationDispenseRecords; // @synthesize medicationDispenseRecords=_medicationDispenseRecords;
+@property (strong, nonatomic) NSMutableArray *medicationOrders; // @synthesize medicationOrders=_medicationOrders;
+@property (strong, nonatomic) NSMutableArray *medicationRecords; // @synthesize medicationRecords=_medicationRecords;
+@property (strong, nonatomic) NSMutableArray *procedureRecords; // @synthesize procedureRecords=_procedureRecords;
+@property (strong, nonatomic) NSMutableArray *unknownRecords; // @synthesize unknownRecords=_unknownRecords;
+@property (strong, nonatomic) NSMutableArray *vaccinationRecords; // @synthesize vaccinationRecords=_vaccinationRecords;
+
++ (Class)accountOwnerType;
++ (Class)allergyRecordType;
++ (Class)conditionRecordType;
++ (Class)diagnosticTestReportType;
++ (Class)diagnosticTestResultType;
++ (Class)medicationDispenseRecordType;
++ (Class)medicationOrderType;
++ (Class)medicationRecordType;
++ (Class)procedureRecordType;
++ (Class)unknownRecordType;
++ (Class)vaccinationRecordType;
+- (void).cxx_destruct;
+- (id)accountOwnerAtIndex:(unsigned long long)arg1;
+- (unsigned long long)accountOwnersCount;
+- (void)addAccountOwner:(id)arg1;
+- (void)addAllergyRecord:(id)arg1;
+- (void)addConditionRecord:(id)arg1;
+- (void)addDiagnosticTestReport:(id)arg1;
+- (void)addDiagnosticTestResult:(id)arg1;
+- (void)addMedicationDispenseRecord:(id)arg1;
+- (void)addMedicationOrder:(id)arg1;
+- (void)addMedicationRecord:(id)arg1;
+- (void)addProcedureRecord:(id)arg1;
+- (void)addUnknownRecord:(id)arg1;
+- (void)addVaccinationRecord:(id)arg1;
+- (id)allergyRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)allergyRecordsCount;
+- (void)clearAccountOwners;
+- (void)clearAllergyRecords;
+- (void)clearConditionRecords;
+- (void)clearDiagnosticTestReports;
+- (void)clearDiagnosticTestResults;
+- (void)clearMedicationDispenseRecords;
+- (void)clearMedicationOrders;
+- (void)clearMedicationRecords;
+- (void)clearProcedureRecords;
+- (void)clearUnknownRecords;
+- (void)clearVaccinationRecords;
+- (id)conditionRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)conditionRecordsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (id)decodedObjects;
 - (id)description;
+- (id)diagnosticTestReportAtIndex:(unsigned long long)arg1;
+- (unsigned long long)diagnosticTestReportsCount;
+- (id)diagnosticTestResultAtIndex:(unsigned long long)arg1;
+- (unsigned long long)diagnosticTestResultsCount;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)medicationDispenseRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)medicationDispenseRecordsCount;
+- (id)medicationOrderAtIndex:(unsigned long long)arg1;
+- (unsigned long long)medicationOrdersCount;
+- (id)medicationRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)medicationRecordsCount;
 - (void)mergeFrom:(id)arg1;
+- (id)procedureRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)procedureRecordsCount;
 - (BOOL)readFrom:(id)arg1;
 - (BOOL)unitTest_isEquivalentToGeneratedObjectCollection:(id)arg1;
+- (id)unknownRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)unknownRecordsCount;
+- (id)vaccinationRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)vaccinationRecordsCount;
 - (void)writeTo:(id)arg1;
 
 @end

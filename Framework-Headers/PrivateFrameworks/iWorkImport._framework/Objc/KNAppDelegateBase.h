@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2;
 - (id)appChartPropertyOverrides;
 - (void)applicationDidFinishLaunching;
+- (id)applicationDisplayName;
 - (id)applicationName;
 - (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
 - (unsigned long long)applicationType;
@@ -41,13 +42,12 @@ __attribute__((visibility("hidden")))
 - (id)previewImageNameForNativeDocument;
 - (void)registerAllowedElementKinds;
 - (void)registerClassTypeMappings;
+- (void)registerSOSClassTypeMappings;
 - (id)sharedAlertMessageWithUserName:(id)arg1;
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
 - (BOOL)sidebarPositionRespectsUserInterfaceLayoutDirection;
 - (id)stringForApplicationUpdateError;
-- (id)stringForBoxCollaborationOptInLearnMoreURL;
 - (id)stringForBoxCollaborationOptInMessage;
-- (id)stringForBoxCollaborationOptInTermsOfServiceURL;
 - (id)stringForCloseDocument;
 - (id)stringForCloseDocumentConfirmationAlertMessage;
 - (id)stringForCloseDocumentConfirmationWillContinueToUpdateInformativeText;
@@ -65,6 +65,9 @@ __attribute__((visibility("hidden")))
 - (id)stringForDocumentUpdatedByOwnerDetails;
 - (id)stringForDocumentUpdatedByOwnerWithKeepDetails;
 - (id)stringForDocumentUpdatedTitle;
+- (id)stringForDocumentViewOnly;
+- (id)stringForDocumentViewOnlyMessage;
+- (id)stringForDocumentViewOnlyTitle;
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
@@ -79,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (id)stringForRemoveSelfAlertConfirmationTitle;
 - (id)stringForStopSharingAlertConfirmationMessage;
 - (id)stringForStopSharingAlertConfirmationTitle;
-- (id)stringForUpdatingDocument;
+- (id)stringForUpdatingDocumentWithoutServiceType;
 - (BOOL)supportsPastingIntoGroups;
 - (BOOL)supportsRTL;
 - (BOOL)supportsShrinkTextToFit;

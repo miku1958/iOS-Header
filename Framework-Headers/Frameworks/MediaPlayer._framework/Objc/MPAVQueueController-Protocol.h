@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/NSObject-Protocol.h>
 
-@class MPAVController, MPAVItem, MPPlaybackContext, MPQueuePlayer, NSString;
+@class MPAVController, MPAVItem, MPPlaybackContext, NSString;
 @protocol MPAVItemQueueIdentifier;
 
 @protocol MPAVQueueController <NSObject>
@@ -17,19 +17,17 @@
 @property (readonly, nonatomic) long long currentIndex;
 @property (readonly, nonatomic) MPAVItem *currentItem;
 @property (weak, nonatomic) id delegate;
-@property (readonly, nonatomic) BOOL isTransitioningSource;
-@property (readonly, nonatomic) MPQueuePlayer *player;
+@property (readonly, nonatomic) long long playlistItemCount;
 @property (nonatomic) long long repeatMode;
 @property (nonatomic) BOOL shouldDeferItemLoading;
+@property (readonly, nonatomic) NSString *uniqueIdentifier;
 @property (readonly, nonatomic) long long upNextItemCount;
 
 - (long long)_indexForStringIdentifier:(NSString *)arg1;
 - (BOOL)canSeekItem:(MPAVItem *)arg1;
 - (BOOL)canSkipItem:(MPAVItem *)arg1;
 - (BOOL)canSkipToPreviousItemForItem:(MPAVItem *)arg1;
-- (void)connectPlayer;
 - (NSString *)contentItemIDForPlaylistIndex:(long long)arg1;
-- (void)disconnectPlayer;
 - (unsigned long long)displayCountForItem:(MPAVItem *)arg1;
 - (unsigned long long)displayIndexForItem:(MPAVItem *)arg1;
 - (void)finalizeStateRestorationWithCompletionHandler:(void (^)(NSError *))arg1;

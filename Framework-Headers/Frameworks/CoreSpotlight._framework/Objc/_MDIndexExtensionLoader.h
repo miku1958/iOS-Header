@@ -14,9 +14,11 @@
     id _matchingContext;
     NSObject<OS_dispatch_queue> *_queue;
     NSDictionary *_extensionsByBundleId;
+    NSDictionary *_fileProviderBundleMap;
 }
 
 @property (strong, nonatomic) NSDictionary *extensionsByBundleId; // @synthesize extensionsByBundleId=_extensionsByBundleId;
+@property (strong, nonatomic) NSDictionary *fileProviderBundleMap; // @synthesize fileProviderBundleMap=_fileProviderBundleMap;
 @property (strong, nonatomic) id matchingContext; // @synthesize matchingContext=_matchingContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
@@ -24,6 +26,7 @@
 - (void).cxx_destruct;
 - (id)_filterIndexExtensions:(id)arg1;
 - (id)_loadExtensionsSynchronously;
+- (id)fetchFileProviderBundleMap;
 - (void)findExtensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)startLookingForExtensionsWithMatchUpdateHandler:(CDUnknownBlockType)arg1;

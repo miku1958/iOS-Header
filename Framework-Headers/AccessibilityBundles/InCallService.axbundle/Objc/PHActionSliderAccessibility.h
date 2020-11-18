@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityScannerShouldUseActivateInPointMode;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (BOOL)isAccessibilityElement;
 
 @end

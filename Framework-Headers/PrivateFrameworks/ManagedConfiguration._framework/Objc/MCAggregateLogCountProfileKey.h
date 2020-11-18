@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ManagedConfiguration/MCAggregateLogCountKey.h>
+#import <ManagedConfiguration/MCAggregateLogKey.h>
 
-@interface MCAggregateLogCountProfileKey : MCAggregateLogCountKey
+@interface MCAggregateLogCountProfileKey : MCAggregateLogKey
 {
     unsigned long long _type;
 }
@@ -16,6 +16,7 @@
 + (id)_type:(unsigned long long)arg1;
 + (id)all;
 + (id)carrier;
++ (id)encrypted;
 + (id)signed;
 + (id)signedByApple;
 + (void)updateProfileCounts;

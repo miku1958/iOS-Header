@@ -205,6 +205,7 @@ __attribute__((visibility("hidden")))
 - (void)setSpareFormat:(id)arg1 isExplicit:(BOOL)arg2;
 - (void)setStringValue:(id)arg1 clearingID:(BOOL)arg2;
 - (void)setTextStyle:(id)arg1 clearingID:(BOOL)arg2;
+- (void)shallowCopyToCell:(id)arg1;
 - (id)spareFormatOfType:(int)arg1 allowMismatchedSpare:(BOOL)arg2;
 - (void)updateCustomFormatFromPaste:(id)arg1;
 - (void)writeToStorageRef:(struct TSTCellStorage *)arg1;

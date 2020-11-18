@@ -19,6 +19,7 @@
     BOOL _fetchesURLs;
     BOOL _gatherEnded;
     unsigned long long _foundItemCount;
+    BOOL _privateIndex;
     CDUnknownBlockType _foundItemsHandler;
     CDUnknownBlockType _completionHandler;
     NSArray *_resolvedFetchAttributes;
@@ -34,6 +35,7 @@
     CDUnknownBlockType _changedAttributesHandler;
     CDUnknownBlockType _countChangedHandler;
     CDUnknownBlockType _resolvedAttributeNamesHandler;
+    NSString *_privateBundleID;
 }
 
 @property (readonly, getter=isCancelled) BOOL cancelled;
@@ -48,6 +50,8 @@
 @property (copy) CDUnknownBlockType gatherEndedHandler; // @synthesize gatherEndedHandler=_gatherEndedHandler;
 @property (strong, nonatomic) NSMapTable *liveIndexBundleIDToBundleString; // @synthesize liveIndexBundleIDToBundleString=_liveIndexBundleIDToBundleString;
 @property (strong, nonatomic) NSMapTable *liveIndexBundleIDToIndexItemIDMap; // @synthesize liveIndexBundleIDToIndexItemIDMap=_liveIndexBundleIDToIndexItemIDMap;
+@property (strong, nonatomic) NSString *privateBundleID; // @synthesize privateBundleID=_privateBundleID;
+@property (nonatomic) BOOL privateIndex; // @synthesize privateIndex=_privateIndex;
 @property (copy) NSArray *protectionClasses;
 @property (strong, nonatomic) CSSearchQueryContext *queryContext; // @synthesize queryContext=_queryContext;
 @property (copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
@@ -67,6 +71,7 @@
 - (BOOL)attribute;
 - (id)bundleIDs;
 - (void)cancel;
+- (id)connection;
 - (BOOL)counting;
 - (id)createCSSearchableItemWithOID:(long long)arg1 values:(id *)arg2 valueCount:(unsigned long long)arg3 protectionClass:(id)arg4 isTopHitQuery:(BOOL)arg5;
 - (id)debugDescription;

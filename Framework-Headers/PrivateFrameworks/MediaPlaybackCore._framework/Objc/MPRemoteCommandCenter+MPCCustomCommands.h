@@ -10,6 +10,7 @@
 
 @interface MPRemoteCommandCenter (MPCCustomCommands)
 
+@property (readonly, nonatomic) MPRemoteCommand *disableQueueModificationsCommand;
 @property (readonly, nonatomic) MPRemoteCommand *startPictureInPictureCommand;
 
 @end

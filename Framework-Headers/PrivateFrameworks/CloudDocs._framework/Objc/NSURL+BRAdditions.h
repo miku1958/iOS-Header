@@ -25,6 +25,7 @@
 - (id)br_containerIDIfIsDocumentsContainerURL;
 - (void)br_containerIDsWithExternalReferencesWithHandler:(CDUnknownBlockType)arg1;
 - (id)br_debugDescription;
+- (id)br_documentRecordIDWithError:(id *)arg1;
 - (id)br_externalDocumentPropertiesWithError:(id *)arg1;
 - (void)br_isConflictedWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)br_isDocumentsContainer;

@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) double symbolGap; // @synthesize symbolGap=mSymbolGap;
 @property (readonly) double verticalCellSpacing; // @synthesize verticalCellSpacing=mVerticalCellSpacing;
 
+- (void).cxx_destruct;
 - (id)cellForSeriesIndex:(unsigned long long)arg1 cellType:(int)arg2;
 - (void)dealloc;
 - (id)initWithChartModel:(id)arg1 textEditingSelectionPair:(id)arg2;

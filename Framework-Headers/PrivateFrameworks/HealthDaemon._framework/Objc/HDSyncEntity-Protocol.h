@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDProfile, HDSQLitePredicate, HDSyncSession, NSArray, NSData, NSSet;
+@class HDProfile, HDSQLitePredicate, HDSyncEntityIdentifier, HDSyncSession, NSArray, NSData, NSSet;
 @protocol HDSyncCodable, HDSyncStore;
 
 @protocol HDSyncEntity <NSObject>
@@ -15,6 +15,9 @@
 + (long long)nextSyncAnchorWithSession:(HDSyncSession *)arg1 predicate:(HDSQLitePredicate *)arg2 startSyncAnchor:(long long)arg3 profile:(HDProfile *)arg4 error:(id *)arg5;
 + (long long)receiveSyncObjects:(NSArray *)arg1 syncStore:(id<HDSyncStore>)arg2 profile:(HDProfile *)arg3 error:(id *)arg4;
 + (NSSet *)syncEntityDependenciesForSyncProtocolVersion:(int)arg1;
-+ (long long)syncEntityType;
++ (HDSyncEntityIdentifier *)syncEntityIdentifier;
+
+@optional
++ (BOOL)supportsSyncStore:(id<HDSyncStore>)arg1;
 @end
 

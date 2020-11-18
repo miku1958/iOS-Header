@@ -15,12 +15,14 @@
     NSString *_bundleVersion;
     NSNumber *_externalVersionIdentifier;
     NSNumber *_itemIdentifier;
+    long long _requestType;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (readonly, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;
 @property (readonly, nonatomic) NSNumber *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (nonatomic) long long requestType; // @synthesize requestType=_requestType;
 @property (readonly, nonatomic) BOOL skipDownloads; // @synthesize skipDownloads=_skipDownloads;
 
 + (BOOL)supportsSecureCoding;

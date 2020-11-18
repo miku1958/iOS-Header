@@ -21,5 +21,6 @@
 - (NSProgress *)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 currentLanguageOptionsForContentItem:(MPNowPlayingContentItem *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (NSProgress *)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 infoForContentItem:(MPNowPlayingContentItem *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (NSProgress *)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 lyricsForContentItem:(MPNowPlayingContentItem *)arg2 completion:(void (^)(MPNowPlayingInfoLyricsItem *, NSError *))arg3;
+- (NSString *)playbackQueueIdentifierForNowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1;
 @end
 

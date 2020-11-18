@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)containsDocumentPageIndex:(unsigned long long)arg1;
 - (id)copyForArchiving;
-- (BOOL)hasPageHintOfKind:(int)arg1 atPageIndex:(unsigned long long)arg2;
-- (BOOL)hasPageHintOfKind:(int)arg1 beforePageIndex:(unsigned long long)arg2;
+- (BOOL)hasPageHintOfKind:(long long)arg1 atPageIndex:(unsigned long long)arg2;
+- (BOOL)hasPageHintOfKind:(long long)arg1 beforePageIndex:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithArchive:(const struct SectionHintArchive *)arg1 unarchiver:(id)arg2;
 - (id)pageHintForPageIndex:(unsigned long long)arg1;

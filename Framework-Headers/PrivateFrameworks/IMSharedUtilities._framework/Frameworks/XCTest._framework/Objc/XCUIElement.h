@@ -12,7 +12,7 @@
 #import <XCTest/XCUIElementTypeQueryProvider-Protocol.h>
 #import <XCTest/XCUIScreenshotProviding-Protocol.h>
 
-@class NSString, XCElementSnapshot, XCUIApplication, XCUICoordinate, XCUIElementQuery;
+@class NSString, XCElementSnapshot, XCTLocalizableStringInfo, XCUIApplication, XCUICoordinate, XCUIElementQuery;
 
 @interface XCUIElement : NSObject <XCUIScreenshotProviding, XCTNSPredicateExpectationObject, XCElementAttributesPrivate, XCUIElementAttributes, XCUIElementTypeQueryProvider>
 {
@@ -71,6 +71,7 @@
 @property (readonly, copy) XCUIElementQuery *layoutItems;
 @property (readonly, copy) XCUIElementQuery *levelIndicators;
 @property (readonly, copy) XCUIElementQuery *links;
+@property (readonly, copy) XCTLocalizableStringInfo *localizableStringInfo;
 @property (readonly, copy) XCUIElementQuery *maps;
 @property (readonly, copy) XCUIElementQuery *mattes;
 @property (readonly, copy) XCUIElementQuery *menuBarItems;
@@ -136,12 +137,14 @@
 @property (readonly, copy) XCUIElementQuery *windows;
 
 + (BOOL)_isInvalidEventDuration:(double)arg1;
+- (void).cxx_destruct;
 - (id)_debugDescriptionWithSnapshot:(id)arg1;
 - (void)_dispatchEvent:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_highestNonWindowAncestorOfElement:(id)arg1 notSharedWithElement:(id)arg2;
 - (struct CGPoint)_hitPointByAttemptingToScrollToVisibleSnapshot:(id)arg1;
 - (id)_pointsInFrame:(struct CGRect)arg1 numberOfTouches:(unsigned long long)arg2;
 - (id)_screen;
+- (BOOL)_shouldDispatchEvent:(id *)arg1;
 - (void)_swipe:(unsigned long long)arg1;
 - (void)_tapWithNumberOfTaps:(unsigned long long)arg1 numberOfTouches:(unsigned long long)arg2 activityTitle:(id)arg3;
 - (BOOL)_waitForExistenceWithTimeout:(double)arg1;
@@ -149,9 +152,9 @@
 - (void)adjustToPickerWheelValue:(id)arg1;
 - (id)childrenMatchingType:(unsigned long long)arg1;
 - (id)coordinateWithNormalizedOffset:(struct CGVector)arg1;
-- (void)dealloc;
 - (id)descendantsMatchingType:(unsigned long long)arg1;
 - (void)doubleTap;
+- (id)elementBoundByAccessibilityElement;
 - (BOOL)evaluatePredicateForExpectation:(id)arg1 debugMessage:(id *)arg2;
 - (void)forcePress;
 - (id)initWithElementQuery:(id)arg1;

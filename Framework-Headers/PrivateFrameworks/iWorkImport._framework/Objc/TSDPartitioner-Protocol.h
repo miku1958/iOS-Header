@@ -13,6 +13,7 @@
 - (TSDLayout *)layoutForHint:(id<TSDHint>)arg1 parentLayout:(TSDLayout *)arg2;
 - (id<TSDHint>)nextHintForSize:(struct CGSize)arg1 parentLayout:(TSDLayout *)arg2 previousHint:(id<TSDHint>)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
 - (TSDLayout *)nextLayoutForSize:(struct CGSize)arg1 parentLayout:(TSDLayout *)arg2 previousHint:(id<TSDHint>)arg3 horizontally:(BOOL)arg4 outFinished:(out BOOL *)arg5;
+- (void)setLayoutPartititionsRightToLeft:(BOOL)arg1 contentPartitionsRightToLeft:(BOOL)arg2;
 
 @optional
 - (void)reset;

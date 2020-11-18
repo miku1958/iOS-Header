@@ -13,9 +13,12 @@
 @interface CUPowerSource : NSObject <NSSecureCoding>
 {
     struct OpaqueIOPSPowerSourceID *_psID;
+    BOOL _aggregate;
     BOOL _charging;
+    BOOL _showChargingUI;
     BOOL _adapterSharedSource;
     BOOL _present;
+    unsigned int _expectedComponents;
     int _powerState;
     int _role;
     NSString *_accessoryCategory;
@@ -30,29 +33,33 @@
     long long _productID;
     long long _sourceID;
     NSString *_state;
+    CUPowerSource *_subLeft;
+    CUPowerSource *_subRight;
+    CUPowerSource *_subCase;
+    CUPowerSource *_subMain;
     long long _temperature;
     NSString *_transportType;
     NSString *_type;
     long long _vendorID;
+    long long _adapterErrorFlags;
     long long _adapterFamilyCode;
     NSString *_adapterName;
     long long _adapterSourceID;
     NSDictionary *_ioKitAdapterDescription;
     NSDictionary *_ioKitDescription;
-    CUPowerSource *_subLeft;
-    CUPowerSource *_subRight;
-    CUPowerSource *_subCase;
-    CUPowerSource *_subMain;
 }
 
 @property (copy, nonatomic) NSString *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
 @property (copy, nonatomic) NSString *accessoryID; // @synthesize accessoryID=_accessoryID;
+@property (nonatomic) long long adapterErrorFlags; // @synthesize adapterErrorFlags=_adapterErrorFlags;
 @property (nonatomic) long long adapterFamilyCode; // @synthesize adapterFamilyCode=_adapterFamilyCode;
 @property (copy, nonatomic) NSString *adapterName; // @synthesize adapterName=_adapterName;
 @property (nonatomic) BOOL adapterSharedSource; // @synthesize adapterSharedSource=_adapterSharedSource;
 @property (nonatomic) long long adapterSourceID; // @synthesize adapterSourceID=_adapterSourceID;
+@property (nonatomic) BOOL aggregate; // @synthesize aggregate=_aggregate;
 @property (nonatomic) double chargeLevel; // @synthesize chargeLevel=_chargeLevel;
 @property (nonatomic) BOOL charging; // @synthesize charging=_charging;
+@property (nonatomic) unsigned int expectedComponents; // @synthesize expectedComponents=_expectedComponents;
 @property (nonatomic) long long familyCode; // @synthesize familyCode=_familyCode;
 @property (copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (copy, nonatomic) NSDictionary *ioKitAdapterDescription; // @synthesize ioKitAdapterDescription=_ioKitAdapterDescription;
@@ -65,6 +72,7 @@
 @property (nonatomic) BOOL present; // @synthesize present=_present;
 @property (nonatomic) long long productID; // @synthesize productID=_productID;
 @property (nonatomic) int role; // @synthesize role=_role;
+@property (nonatomic) BOOL showChargingUI; // @synthesize showChargingUI=_showChargingUI;
 @property (nonatomic) long long sourceID; // @synthesize sourceID=_sourceID;
 @property (copy, nonatomic) NSString *state; // @synthesize state=_state;
 @property (strong, nonatomic) CUPowerSource *subCase; // @synthesize subCase=_subCase;
@@ -82,9 +90,13 @@
 - (id)description;
 - (id)detailedDescription;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleSubComponentsUpdated;
+- (void)handleSubComponentsUpdatedWithBaseSource:(id)arg1;
+- (BOOL)hasAllComponents;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
+- (BOOL)isAggregateComponent;
 - (BOOL)isEqual:(id)arg1;
 - (int)publish;
 - (unsigned int)updateWithPowerAdapterDetails:(id)arg1;

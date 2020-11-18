@@ -13,13 +13,14 @@
     BOOL _atomic;
     BOOL _shouldReportRecordsInFlight;
     BOOL _shouldOnlySaveAssetContent;
+    CDUnknownBlockType _perRecordProgressBlock;
+    CDUnknownBlockType _perRecordCompletionBlock;
+    CDUnknownBlockType _modifyRecordsCompletionBlock;
+    CDUnknownBlockType _recordsInFlightBlock;
     NSArray *_recordsToSave;
     NSArray *_recordIDsToDelete;
     long long _savePolicy;
     NSData *_clientChangeTokenData;
-    CDUnknownBlockType _perRecordProgressBlock;
-    CDUnknownBlockType _perRecordCompletionBlock;
-    CDUnknownBlockType _modifyRecordsCompletionBlock;
     NSMutableArray *_savedRecords;
     NSMutableArray *_deletedRecordIDs;
     NSMutableDictionary *_recordsByRecordIDs;
@@ -29,7 +30,6 @@
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
     NSDictionary *_pluginFieldsForRecordDeletesByID;
-    CDUnknownBlockType _recordsInFlightBlock;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *assetsByRecordIDAndRecordKey; // @synthesize assetsByRecordIDAndRecordKey=_assetsByRecordIDAndRecordKey;

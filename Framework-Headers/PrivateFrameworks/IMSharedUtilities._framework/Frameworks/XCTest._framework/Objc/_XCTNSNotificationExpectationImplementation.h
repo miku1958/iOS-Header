@@ -25,6 +25,7 @@
 @property (readonly, copy) NSString *notificationName; // @synthesize notificationName=_notificationName;
 @property (readonly) id observedObject; // @synthesize observedObject=_observedObject;
 
+- (void).cxx_destruct;
 - (void)_observeExpectedNotification:(id)arg1;
 - (void)cleanup;
 - (void)dealloc;

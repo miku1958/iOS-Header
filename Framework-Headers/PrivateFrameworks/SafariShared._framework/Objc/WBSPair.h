@@ -19,6 +19,7 @@
 - (void)getFirst:(id *)arg1 second:(id *)arg2;
 - (id)init;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

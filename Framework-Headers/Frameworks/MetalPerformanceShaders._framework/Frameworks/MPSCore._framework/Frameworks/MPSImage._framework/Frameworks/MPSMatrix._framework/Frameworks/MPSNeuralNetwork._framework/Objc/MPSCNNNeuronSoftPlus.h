@@ -10,10 +10,9 @@
 {
 }
 
-@property (readonly, nonatomic) float a;
-@property (readonly, nonatomic) float b;
-
 - (id)initWithDevice:(id)arg1 a:(float)arg2 b:(float)arg3;
+- (id)initWithDevice:(id)arg1 neuronDescriptor:(id)arg2;
+- (id)initWithDevice:(id)arg1 neuronDescriptor:(id)arg2 aArray:(const float *)arg3;
 
 @end
 

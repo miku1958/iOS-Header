@@ -35,6 +35,7 @@
 @property (readonly, copy, nonatomic) LPImageProperties *properties;
 
 + (id)_PNGImageNamed:(id)arg1;
++ (id)_loadImageSubsampledToScreenSizeFromData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_createDataFromPlatformImage;

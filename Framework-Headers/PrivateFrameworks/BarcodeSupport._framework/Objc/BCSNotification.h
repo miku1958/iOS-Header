@@ -36,6 +36,7 @@
 - (id)_initWithAction:(id)arg1;
 - (id)_orderAppLinkActionsByRecency:(id)arg1;
 - (void)_performActionAfterUnlock:(CDUnknownBlockType)arg1;
+- (void)_performActionAfterUnlock:(BOOL)arg1 actionBlock:(CDUnknownBlockType)arg2;
 - (id)_pickerLabelForURLActionPickerItem:(id)arg1;
 - (id)_previewableData;
 - (BOOL)_shouldHandleActionPickerItemLocally:(id)arg1;

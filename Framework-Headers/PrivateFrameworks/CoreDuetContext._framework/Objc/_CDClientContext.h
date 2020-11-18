@@ -50,6 +50,7 @@
 - (void)addKeyPathsWithRegistrationsForAnyChangeFromRegistration:(id)arg1;
 - (void)cleanupInternalReferencesToRegistration:(id)arg1;
 - (void)clearCacheForKeyPathsWithFireOnChangeRegistrations:(id)arg1;
+- (id)currentConnection;
 - (void)dealloc;
 - (void)deregisterCallback:(id)arg1;
 - (BOOL)evaluatePredicate:(id)arg1;
@@ -66,7 +67,7 @@
 - (void)retryTimes:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
-- (void)setUpXPCConnectionWithEndpoint:(id)arg1;
+- (void)unprotectedSetUpXPCConnectionWithEndpoint:(id)arg1;
 - (id)valuesForKeyPaths:(id)arg1 inContextsMatchingPredicate:(id)arg2;
 
 @end

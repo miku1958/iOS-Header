@@ -10,7 +10,7 @@
 #import <NanoRegistry/NSFastEnumeration-Protocol.h>
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
-@class NRMutableDeviceCollection, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet;
+@class NRMutableDeviceCollection, NRSwitchRecordCollection, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet;
 
 @interface NRDeviceCollectionHistory : NSObject <NRMutableStateParentDelegate, NSSecureCoding, NSFastEnumeration>
 {
@@ -19,6 +19,7 @@
     NRMutableDeviceCollection *_deviceCollection;
     unsigned long long _startIndex;
     NSMutableArray *_history;
+    NRSwitchRecordCollection *_switchRecords;
     NSMutableDictionary *_historyStateCache;
     NSMutableArray *_historyStateCacheMRU;
     NSMutableArray *_historyStateCacheIndex;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) unsigned long long nextIndex;
 @property (nonatomic) unsigned long long startIndex; // @synthesize startIndex=_startIndex;
 @property (readonly, nonatomic) unsigned int switchIndex;
+@property (strong, nonatomic) NRSwitchRecordCollection *switchRecords; // @synthesize switchRecords=_switchRecords;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

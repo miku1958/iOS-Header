@@ -131,6 +131,7 @@
 @property (readonly, copy) XCUIElementQuery *webViews;
 @property (readonly, copy) XCUIElementQuery *windows;
 
+- (void).cxx_destruct;
 - (id)_containingPredicate:(id)arg1 queryDescription:(id)arg2;
 - (id)_debugDescriptionWithIndent:(id *)arg1 rootElementSnapshot:(id)arg2;
 - (id)_derivedExpressedIdentifiers;
@@ -145,7 +146,6 @@
 - (id)childrenMatchingType:(unsigned long long)arg1;
 - (id)containingPredicate:(id)arg1;
 - (id)containingType:(unsigned long long)arg1 identifier:(id)arg2;
-- (void)dealloc;
 - (id)debugDescriptionWithSnapshot:(id)arg1;
 - (id)descendantsMatchingType:(unsigned long long)arg1;
 - (id)descending:(unsigned long long)arg1;

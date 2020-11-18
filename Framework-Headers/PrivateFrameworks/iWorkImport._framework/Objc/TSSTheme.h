@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultEquationStyle;
 - (id)defaultListStyle;
 - (id)defaultParagraphStyle;
+- (id)defaultTOCEntryStyle;
 - (void)disablePresetValidation;
 - (void)enablePresetValidation;
 - (BOOL)hasPresetsOfKind:(id)arg1;

@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MessageUI/MFMailCompositionUTITypes-Protocol.h>
+
 @class MFAttachmentCompositionContext, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString, UIView;
 @protocol MFComposeBodyField;
 
-@interface _MFMailCompositionContext : NSObject
+@interface _MFMailCompositionContext : NSObject <MFMailCompositionUTITypes>
 {
     NSString *_sendingAddress;
     NSString *_subject;
@@ -33,11 +35,13 @@
     BOOL _usingDefaultAccount;
     BOOL _prefersFirstLineSelection;
     int _sourceAccountManagement;
+    NSArray *UTITypes;
     unsigned long long _caretPosition;
     NSString *_originatingBundleID;
     UIView<MFComposeBodyField> *_bodyField;
 }
 
+@property (copy, nonatomic) NSArray *UTITypes; // @synthesize UTITypes;
 @property (readonly, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property (strong, nonatomic) NSString *attachmentToMarkupContentID; // @synthesize attachmentToMarkupContentID=_attachmentToMarkupContentID;
 @property (readonly, nonatomic) id autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;

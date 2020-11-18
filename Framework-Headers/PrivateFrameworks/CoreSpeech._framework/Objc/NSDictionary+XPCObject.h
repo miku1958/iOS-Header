@@ -7,7 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (XPCObject)
-- (id)initWithXPCObject:(id)arg1;
-- (id)xpcObject;
+- (id)_cs_initWithXPCObject:(id)arg1;
+- (id)_cs_xpcObject;
 @end
 

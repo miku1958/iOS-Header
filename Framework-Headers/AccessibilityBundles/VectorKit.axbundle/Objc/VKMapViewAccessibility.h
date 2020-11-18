@@ -55,6 +55,7 @@
 - (void)_axUserTrackingModeChange:(id)arg1;
 - (void)_axVoiceOverTouchEnabled;
 - (id)_axWindow;
+- (id)_retrieveAXElementManager;
 - (BOOL)accessibilityActivate;
 - (CDStruct_aca18c62)accessibilityBounds;
 - (id)accessibilityCalloutAnnotationView;

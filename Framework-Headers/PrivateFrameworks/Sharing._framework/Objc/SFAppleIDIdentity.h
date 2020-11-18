@@ -14,6 +14,7 @@
 {
     NSString *_encDSID;
     BOOL _linkedToCurrentUser;
+    NSString *_accountIdentifier;
     NSString *_altDSID;
     NSString *_appleID;
     NSDate *_certificateExpirationDate;
@@ -26,6 +27,7 @@
     NSString *_serialNumber;
 }
 
+@property (strong, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (readonly, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (readonly, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (strong, nonatomic) NSDate *certificateExpirationDate; // @synthesize certificateExpirationDate=_certificateExpirationDate;

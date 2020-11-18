@@ -13,17 +13,17 @@
 __attribute__((visibility("hidden")))
 @interface KNSlideTree : TSPContainedObject <KNSlideCollection>
 {
-    NSMutableOrderedSet *mSlideNodes;
-    NSMutableArray *mDisplayedSlideNodeCache;
-    NSMutableDictionary *mSlideNodesForUniqueIdentifiersCache;
-    NSMutableDictionary *mSlideNodesForFormulaReferenceNamesCache;
-    TSUPointerKeyDictionary *mFormulaReferenceNamesForSlideNodesCache;
+    NSMutableOrderedSet *_slideNodes;
+    NSMutableArray *_displayedSlideNodeCache;
+    NSMutableDictionary *_slideNodesForUniqueIdentifiersCache;
+    NSMutableDictionary *_slideNodesForFormulaReferenceNamesCache;
+    TSUPointerKeyDictionary *_formulaReferenceNamesForSlideNodesCache;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) KNSlideNode *defaultSlideNodeForNewSelection;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSArray *displayedSlideNodes; // @synthesize displayedSlideNodes=mDisplayedSlideNodeCache;
+@property (strong, nonatomic) NSArray *displayedSlideNodes; // @synthesize displayedSlideNodes=_displayedSlideNodeCache;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *slideNodes;
 @property (readonly) Class superclass;
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)slideNodeDepthMapToCleanUpSlideNodes:(id)arg1 atDepths:(id)arg2 minimumValidDepth:(unsigned long long)arg3 canExceedSlideTreeMaxDepth:(BOOL)arg4;
 + (id)slideNodeDepthMapToCleanUpSlideNodes:(id)arg1 minimumValidDepth:(unsigned long long)arg2;
 + (id)slideNodeDepthMapToCleanUpSlideNodes:(id)arg1 minimumValidDepth:(unsigned long long)arg2 canExceedSlideTreeMaxDepth:(BOOL)arg3;
+- (void).cxx_destruct;
 - (void)addSlideNode:(id)arg1 atDepth:(unsigned long long)arg2 dolcContext:(id)arg3;
 - (void)addSlideNodeForDocumentUpgrade:(id)arg1 atDepth:(unsigned long long)arg2;
 - (unsigned long long)byBuildPageIndexForSlideIndex:(unsigned long long)arg1 andEventIndex:(unsigned long long)arg2;

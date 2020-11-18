@@ -6,16 +6,17 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
+@class _MRGameControllerMessageProtobuf;
+
 @interface MRGameControllerMessage : MRProtocolMessage
 {
-    void *_event;
     unsigned long long _priority;
 }
 
 @property (readonly, nonatomic) unsigned long long controllerID;
-@property (readonly, nonatomic) void *event;
+@property (readonly, nonatomic) _MRGameControllerMessageProtobuf *event;
 
-- (id)initWithGameControllerEvent:(void *)arg1 controllerID:(unsigned long long)arg2;
+- (id)initWithGameControllerEvent:(id)arg1 controllerID:(unsigned long long)arg2;
 - (unsigned long long)priority;
 - (BOOL)shouldLog;
 - (unsigned long long)type;

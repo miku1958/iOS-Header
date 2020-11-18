@@ -6,13 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <iWorkImport/NSCoding-Protocol.h>
 #import <iWorkImport/NSCopying-Protocol.h>
 
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface TSUBezierPath : NSObject <NSCopying, NSCoding>
+@interface TSUBezierPath : NSObject <NSCopying>
 {
     long long sfr_elementCount;
     long long sfr_elementMax;
@@ -28,7 +27,7 @@ __attribute__((visibility("hidden")))
     double *sfr_dashedLinePattern;
     unsigned long long sfr_dashedLineCount;
     double sfr_dashedLinePhase;
-    void *sfr_path;
+    struct CGPath *sfr_path;
     long long sfr_extraSegmentCount;
     long long sfr_extraSegmentMax;
     struct {
@@ -50,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *visuallyDistinctSubregions;
 
 + (id)appendBezierPaths:(id)arg1;
++ (id)arrayOfFillablePathsFromPaths:(id)arg1 withConnectionThreshold:(double)arg2;
 + (id)bezierPath;
 + (id)bezierPathWithCGPath:(struct CGPath *)arg1;
 + (id)bezierPathWithConvexHullOfPoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2;
@@ -82,7 +82,10 @@ __attribute__((visibility("hidden")))
 + (id)outsideEdgeOfBezierPath:(id)arg1;
 + (Path_1b135553 *)p_bezierToPath:(id)arg1;
 + (id)p_booleanWithBezierPaths:(id)arg1 operation:(int)arg2;
++ (id)p_connectionPathsForFillableAreas:(id)arg1 withConnectionThreshold:(double)arg2;
 + (struct CGPoint)p_findPointWithGreatestSlopeFromStartPoint:(struct CGPoint)arg1 toPointA:(struct CGPoint)arg2 orPointB:(struct CGPoint)arg3;
++ (id)p_mergeIntersectingSubpaths:(id)arg1 stopAfterFoundTwo:(BOOL)arg2;
++ (id)p_normalizeSubpaths:(id)arg1;
 + (id)p_pathToBezier:(Path_1b135553 *)arg1;
 + (struct CGRect)p_pathToBounds:(Path_1b135553 *)arg1;
 + (void)setDefaultFlatness:(double)arg1;
@@ -109,7 +112,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPath *)CGPath;
 - (void)_addPathSegment:(long long)arg1 point:(struct CGPoint)arg2;
 - (void)_appendArcSegmentWithCenter:(struct CGPoint)arg1 radius:(double)arg2 angle1:(double)arg3 angle2:(double)arg4;
-- (void)_appendToPath:(id)arg1;
+- (void)_appendToPath:(id)arg1 skippingInitialMoveIfPossible:(BOOL)arg2;
 - (struct CGPoint)_checkPointForValidity:(struct CGPoint)arg1;
 - (id)_copyFlattenedPath;
 - (void)_deviceClosePath;
@@ -129,6 +132,7 @@ __attribute__((visibility("hidden")))
 - (void)appendBezierPath:(id)arg1;
 - (void)appendBezierPath:(id)arg1 fromSegment:(long long)arg2 t:(double)arg3 toSegment:(long long)arg4 t:(double)arg5 withoutMove:(BOOL)arg6;
 - (void)appendBezierPath:(id)arg1 fromSegment:(long long)arg2 toSegment:(long long)arg3;
+- (void)appendBezierPath:(id)arg1 skippingInitialMoveIfPossible:(BOOL)arg2;
 - (void)appendBezierPathWithArcFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 radius:(double)arg3;
 - (void)appendBezierPathWithArcWithCenter:(struct CGPoint)arg1 radius:(double)arg2 startAngle:(double)arg3 endAngle:(double)arg4;
 - (void)appendBezierPathWithArcWithCenter:(struct CGPoint)arg1 radius:(double)arg2 startAngle:(double)arg3 endAngle:(double)arg4 clockwise:(BOOL)arg5;
@@ -137,6 +141,8 @@ __attribute__((visibility("hidden")))
 - (void)appendBezierPathWithOvalInRect:(struct CGRect)arg1;
 - (void)appendBezierPathWithPoints:(struct CGPoint *)arg1 count:(long long)arg2;
 - (void)appendBezierPathWithRect:(struct CGRect)arg1;
+- (void)appendPointsInRange:(struct _NSRange)arg1 fromBezierPath:(id)arg2;
+- (id)arrayOfSubpathsWithEffectivelyEmptySubpathsRemoved:(BOOL)arg1;
 - (id)bezierPathByFittingCurve;
 - (id)bezierPathByFittingCurve:(id)arg1;
 - (id)bezierPathByFlatteningPath;
@@ -159,6 +165,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)controlPointBounds;
 - (id)copyFromSegment:(int)arg1 t:(double)arg2 toSegment:(int)arg3 t:(double)arg4;
 - (void)copyPathAttributesTo:(id)arg1;
+- (id)copyWithPointsInRange:(struct _NSRange)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct CGPoint)currentPoint;
 - (double)curvatureAt:(double)arg1;
@@ -173,7 +180,6 @@ __attribute__((visibility("hidden")))
 - (long long)elementCount;
 - (long long)elementPercentage:(double *)arg1 forOverallPercentage:(double)arg2;
 - (double)elementPercentageFromElement:(long long)arg1 forOverallPercentage:(double)arg2;
-- (void)encodeWithCoder:(id)arg1;
 - (void)fill;
 - (double)flatness;
 - (void)flattenIntoPath:(id)arg1;
@@ -186,7 +192,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithArchive:(const struct Path *)arg1;
 - (id)initWithCString:(const char *)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)intersectBezierPath:(id)arg1;
 - (BOOL)intersectsRect:(struct CGRect)arg1 hasFill:(BOOL)arg2;
 - (BOOL)isCircular;
@@ -197,6 +202,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isFlat;
 - (BOOL)isRectangular;
 - (BOOL)isTriangular;
+- (void)iterateOverPathWithPointDistancePerIteration:(double)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (double)length;
 - (double)lengthOfElement:(long long)arg1;
 - (double)lengthToElement:(long long)arg1;
@@ -213,10 +219,13 @@ __attribute__((visibility("hidden")))
 - (id)outlineStroke;
 - (id)p_aliasedPathInContext:(struct CGContext *)arg1 viewScale:(float)arg2 effectiveStrokeWidth:(float)arg3;
 - (id)p_bezierPathByRemovingRedundantElementAndSubregionsSmallerThanThreshold:(double)arg1;
-- (id)p_mergeIntersectingSubpaths:(id)arg1 stopAfterFoundTwo:(BOOL)arg2;
+- (id)p_copyWithPointsInRange:(struct _NSRange)arg1 countingSubpaths:(unsigned long long *)arg2;
+- (id)p_pathBySplittingAtPointGuaranteedToBeOnPath:(struct CGPoint)arg1 controlPointDistanceEqual:(BOOL)arg2 elementIndex:(long long)arg3 parametricValue:(double)arg4;
+- (id)pathByCreatingHoleInPathAtPoint:(struct CGPoint)arg1 withDiameter:(double)arg2 andThreshold:(double)arg3 updatingPatternOffsetsBySubpath:(id)arg4;
 - (id)pathBySplittingAtPointOnPath:(struct CGPoint)arg1 controlPointDistanceEqual:(BOOL)arg2;
 - (id)pathByWobblingByUpTo:(double)arg1 subdivisions:(unsigned long long)arg2;
 - (struct CGPoint)pointAlongPathAtPercentage:(double)arg1;
+- (struct CGPoint)pointAlongPathAtPercentage:(double)arg1 withFlattenedPath:(id)arg2 andLength:(double *)arg3 atStartIndex:(unsigned long long *)arg4;
 - (struct CGPoint)pointAt:(double)arg1;
 - (struct CGPoint)pointAt:(double)arg1 fromElement:(long long)arg2;
 - (BOOL)pointOnPath:(struct CGPoint)arg1 tolerance:(double)arg2;

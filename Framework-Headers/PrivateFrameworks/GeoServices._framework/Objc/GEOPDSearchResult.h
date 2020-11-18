@@ -24,6 +24,7 @@
     NSMutableArray *_resultDetourInfos;
     NSString *_resultDisplayHeader;
     unsigned int _retainSearchTime;
+    NSMutableArray *_retainSearchs;
     GEOPDSearchClientBehavior *_searchClientBehavior;
     int _searchResultType;
     BOOL _enablePartialClientization;
@@ -64,6 +65,7 @@
 @property (strong, nonatomic) NSMutableArray *resultDetourInfos; // @synthesize resultDetourInfos=_resultDetourInfos;
 @property (strong, nonatomic) NSString *resultDisplayHeader; // @synthesize resultDisplayHeader=_resultDisplayHeader;
 @property (nonatomic) unsigned int retainSearchTime; // @synthesize retainSearchTime=_retainSearchTime;
+@property (strong, nonatomic) NSMutableArray *retainSearchs; // @synthesize retainSearchs=_retainSearchs;
 @property (strong, nonatomic) GEOPDSearchClientBehavior *searchClientBehavior; // @synthesize searchClientBehavior=_searchClientBehavior;
 @property (nonatomic) int searchResultType; // @synthesize searchResultType=_searchResultType;
 @property (nonatomic) BOOL showDymSuggestionCloseButton; // @synthesize showDymSuggestionCloseButton=_showDymSuggestionCloseButton;
@@ -73,16 +75,19 @@
 + (Class)displayHeaderSubstituteType;
 + (Class)relatedSearchSuggestionType;
 + (Class)resultDetourInfoType;
++ (Class)retainSearchType;
 - (void).cxx_destruct;
 - (int)StringAsSearchResultType:(id)arg1;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)addDisplayHeaderSubstitute:(id)arg1;
 - (void)addRelatedSearchSuggestion:(id)arg1;
 - (void)addResultDetourInfo:(id)arg1;
+- (void)addRetainSearch:(id)arg1;
 - (void)clearDisambiguationLabels;
 - (void)clearDisplayHeaderSubstitutes;
 - (void)clearRelatedSearchSuggestions;
 - (void)clearResultDetourInfos;
+- (void)clearRetainSearchs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -99,6 +104,8 @@
 - (unsigned long long)relatedSearchSuggestionsCount;
 - (id)resultDetourInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)resultDetourInfosCount;
+- (id)retainSearchAtIndex:(unsigned long long)arg1;
+- (unsigned long long)retainSearchsCount;
 - (id)searchResultTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

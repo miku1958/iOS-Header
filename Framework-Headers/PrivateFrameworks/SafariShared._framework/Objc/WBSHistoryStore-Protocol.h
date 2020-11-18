@@ -15,6 +15,7 @@
 @property (weak, nonatomic) id<WBSHistoryStoreDelegate> delegate;
 @property (copy, nonatomic) NSData *fetchThrottlerData;
 @property (nonatomic) double historyAgeLimit;
+@property (readonly, nonatomic) BOOL isUsingInMemoryDatabase;
 @property (nonatomic) BOOL pushNotificationsAreInitialized;
 @property (copy, nonatomic) NSData *pushThrottlerData;
 @property (copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;

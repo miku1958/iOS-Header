@@ -6,25 +6,24 @@
 
 #import <SafariServices/_SFToolbar.h>
 
-@class UIBarButtonItem;
-@protocol _SFBrowserToolbarDataSource, _SFBrowserToolbarDelegate;
+#import <SafariServices/_SFBarRegistrationObserving-Protocol.h>
+
+@class NSString;
+@protocol _SFBarRegistrationToken, _SFBrowserToolbarDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _SFBrowserToolbar : _SFToolbar
+@interface _SFBrowserToolbar : _SFToolbar <_SFBarRegistrationObserving>
 {
-    UIBarButtonItem *_backItem;
-    UIBarButtonItem *_forwardItem;
-    id<_SFBrowserToolbarDelegate> _browserDelegate;
+    id<_SFBarRegistrationToken> _barRegistration;
     id<_SFBrowserToolbarDataSource> _dataSource;
-    UIBarButtonItem *_actionItem;
-    UIBarButtonItem *_openInSafariItem;
 }
 
-@property (readonly, nonatomic) UIBarButtonItem *actionItem; // @synthesize actionItem=_actionItem;
-@property (weak, nonatomic) id<_SFBrowserToolbarDelegate> browserDelegate; // @synthesize browserDelegate=_browserDelegate;
 @property (weak, nonatomic) id<_SFBrowserToolbarDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double differenceBetweenWidthsOfLeadingAndTrailingItems;
-@property (readonly, nonatomic) UIBarButtonItem *openInSafariItem; // @synthesize openInSafariItem=_openInSafariItem;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (double)URLFieldHorizontalMargin;
@@ -32,14 +31,10 @@ __attribute__((visibility("hidden")))
 - (id)_toolbarItems;
 - (double)_totalWidthOfLeadingItems;
 - (double)_totalWidthOfTrailingItems;
-- (void)actionButtonPressed;
-- (void)backButtonPressed;
-- (void)forwardButtonPressed;
+- (void)didCompleteBarRegistrationWithToken:(id)arg1;
 - (BOOL)isMinibar;
 - (void)layoutSubviews;
-- (void)openInSafariButtonPressed;
-- (struct CGRect)popoverPresentationRectForButtonItem:(id)arg1;
-- (void)updateButtonStates;
+- (id)popoverSourceInfoForBarItem:(long long)arg1;
 
 @end
 

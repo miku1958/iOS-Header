@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <SplashBoard/BSSettingDescriptionProvider-Protocol.h>
-#import <SplashBoard/NSCoding-Protocol.h>
 #import <SplashBoard/NSCopying-Protocol.h>
 #import <SplashBoard/NSMutableCopying-Protocol.h>
+#import <SplashBoard/NSSecureCoding-Protocol.h>
 
 @class BSMutableSettings, NSString;
 
-@interface XBStatusBarSettings : NSObject <BSSettingDescriptionProvider, NSCopying, NSMutableCopying, NSCoding>
+@interface XBStatusBarSettings : NSObject <BSSettingDescriptionProvider, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     BSMutableSettings *_settings;
 }
@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) long long style;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithBSSettings:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -33,6 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;

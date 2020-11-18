@@ -7,7 +7,7 @@
 @protocol VKPolygonTile
 
 @property (nonatomic) float alpha;
-@property (readonly, nonatomic) const vector_2e22b445 *polygonGroups;
+@property (readonly, nonatomic) const vector_5d257bd0 *polygonGroups;
 
 @end
 

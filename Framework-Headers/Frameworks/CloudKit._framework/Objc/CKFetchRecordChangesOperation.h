@@ -12,19 +12,19 @@
 {
     BOOL _shouldFetchAssetContents;
     BOOL _fetchAllChanges;
+    CDUnknownBlockType _recordChangedBlock;
+    CDUnknownBlockType _recordWithIDWasDeletedBlock;
+    CDUnknownBlockType _fetchRecordChangesCompletionBlock;
+    CDUnknownBlockType _serverChangeTokenFetchedBlock;
+    CDUnknownBlockType _changeTokensUpdatedBlock;
     CKRecordZoneID *_recordZoneID;
     CKServerChangeToken *_previousServerChangeToken;
     unsigned long long _resultsLimit;
     NSArray *_desiredKeys;
-    CDUnknownBlockType _recordChangedBlock;
-    CDUnknownBlockType _recordWithIDWasDeletedBlock;
-    CDUnknownBlockType _fetchRecordChangesCompletionBlock;
     CKServerChangeToken *_resultServerChangeToken;
     NSData *_resultClientChangeTokenData;
     long long _status;
     NSMutableDictionary *_recordErrors;
-    CDUnknownBlockType _serverChangeTokenFetchedBlock;
-    CDUnknownBlockType _changeTokensUpdatedBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType changeTokensUpdatedBlock; // @synthesize changeTokensUpdatedBlock=_changeTokensUpdatedBlock;

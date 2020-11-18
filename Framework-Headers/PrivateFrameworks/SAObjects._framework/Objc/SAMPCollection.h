@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) BOOL editable;
 @property (copy, nonatomic) NSArray *items;
 
 + (id)collection;

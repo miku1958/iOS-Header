@@ -10,39 +10,23 @@
 
 @interface MPModelPlaybackPosition : MPModelObject
 {
-    BOOL _shouldRememberBookmarkTime;
-    BOOL _hasBeenPlayed;
-    double _bookmarkTime;
-    double _startTime;
-    NSNumber *_stopTime;
-    NSString *_storeUbiquitousIdentifier;
-    long long _userPlayCount;
 }
 
-@property (nonatomic) double bookmarkTime; // @synthesize bookmarkTime=_bookmarkTime;
-@property (nonatomic) BOOL hasBeenPlayed; // @synthesize hasBeenPlayed=_hasBeenPlayed;
-@property (nonatomic) BOOL shouldRememberBookmarkTime; // @synthesize shouldRememberBookmarkTime=_shouldRememberBookmarkTime;
-@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
-@property (copy, nonatomic) NSNumber *stopTime; // @synthesize stopTime=_stopTime;
-@property (copy, nonatomic) NSString *storeUbiquitousIdentifier; // @synthesize storeUbiquitousIdentifier=_storeUbiquitousIdentifier;
-@property (nonatomic) long long userPlayCount; // @synthesize userPlayCount=_userPlayCount;
+@property (nonatomic) double bookmarkTime; // @dynamic bookmarkTime;
+@property (nonatomic) BOOL hasBeenPlayed; // @dynamic hasBeenPlayed;
+@property (nonatomic) BOOL shouldRememberBookmarkTime; // @dynamic shouldRememberBookmarkTime;
+@property (nonatomic) double startTime; // @dynamic startTime;
+@property (copy, nonatomic) NSNumber *stopTime; // @dynamic stopTime;
+@property (copy, nonatomic) NSString *storeUbiquitousIdentifier; // @dynamic storeUbiquitousIdentifier;
+@property (nonatomic) long long userPlayCount; // @dynamic userPlayCount;
 
-+ (id)__MPModelPropertyPlaybackPositionBookmarkTime__PROPERTY;
-+ (id)__MPModelPropertyPlaybackPositionHasBeenPlayed__PROPERTY;
-+ (id)__MPModelPropertyPlaybackPositionShouldRememberBookmarkTime__PROPERTY;
-+ (id)__MPModelPropertyPlaybackPositionStartTime__PROPERTY;
-+ (id)__MPModelPropertyPlaybackPositionStopTime__PROPERTY;
-+ (id)__MPModelPropertyPlaybackPositionStoreUbiquitousIdentifier__PROPERTY;
-+ (id)__MPModelPropertyPlaybackPositionUserPlayCount__PROPERTY;
-+ (id)__bookmarkTime__KEY;
-+ (id)__hasBeenPlayed__KEY;
-+ (id)__shouldRememberBookmarkTime__KEY;
-+ (id)__startTime__KEY;
-+ (id)__stopTime__KEY;
-+ (id)__storeUbiquitousIdentifier__KEY;
-+ (id)__userPlayCount__KEY;
-- (void).cxx_destruct;
-- (id)descriptionWithType:(long long)arg1;
++ (id)__bookmarkTime_KEY;
++ (id)__hasBeenPlayed_KEY;
++ (id)__shouldRememberBookmarkTime_KEY;
++ (id)__startTime_KEY;
++ (id)__stopTime_KEY;
++ (id)__storeUbiquitousIdentifier_KEY;
++ (id)__userPlayCount_KEY;
 
 @end
 

@@ -35,6 +35,7 @@
 - (void)dealloc;
 - (BOOL)finalizeEvent:(id)arg1 addingDicitonary:(id)arg2;
 - (id)init;
+- (void)metricAttachmentValidation:(BOOL)arg1 attachmentSize:(id)arg2 operationalErrorDomain:(id)arg3 operationalErrorCode:(id)arg4 validationErrorDomain:(id)arg5 validationErrorCode:(id)arg6;
 - (void)noteCompletedInitialSync;
 - (void)noteMeticsForSyncEndedWithSuccces:(BOOL)arg1 duration:(id)arg2;
 - (void)noteMeticsForSyncStartFrom:(id)arg1 fullSync:(BOOL)arg2;

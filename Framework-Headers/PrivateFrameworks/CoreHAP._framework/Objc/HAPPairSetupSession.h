@@ -8,18 +8,22 @@
 
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, NSObject, NSString;
+@class HMFTimer, NSData, NSMutableData, NSObject, NSString;
 @protocol HAPPairSetupSessionDelegate, OS_dispatch_queue;
 
 @interface HAPPairSetupSession : HMFObject <HMFTimerDelegate>
 {
     id<HAPPairSetupSessionDelegate> _delegate;
     long long _role;
-    long long _options;
     NSObject<OS_dispatch_queue> *_clientQueue;
     unsigned long long _state;
     struct PairingSessionPrivate *_pairingSession;
     HMFTimer *_backoffTimer;
+    unsigned long long _pairSetupType;
+    NSData *_sessionReadKey;
+    NSData *_sessionWriteKey;
+    NSMutableData *_sessionReadNonce;
+    NSMutableData *_sessionWriteNonce;
 }
 
 @property (strong, nonatomic) HMFTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
@@ -28,9 +32,13 @@
 @property (readonly, weak) id<HAPPairSetupSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) long long options; // @synthesize options=_options;
+@property (nonatomic) unsigned long long pairSetupType; // @synthesize pairSetupType=_pairSetupType;
 @property (readonly, nonatomic) struct PairingSessionPrivate *pairingSession; // @synthesize pairingSession=_pairingSession;
 @property (readonly, nonatomic) long long role; // @synthesize role=_role;
+@property (strong, nonatomic) NSData *sessionReadKey; // @synthesize sessionReadKey=_sessionReadKey;
+@property (strong, nonatomic) NSMutableData *sessionReadNonce; // @synthesize sessionReadNonce=_sessionReadNonce;
+@property (strong, nonatomic) NSData *sessionWriteKey; // @synthesize sessionWriteKey=_sessionWriteKey;
+@property (strong, nonatomic) NSMutableData *sessionWriteNonce; // @synthesize sessionWriteNonce=_sessionWriteNonce;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
@@ -47,13 +55,17 @@
 - (void)_processSetupExchangeData:(id)arg1 error:(id)arg2;
 - (void)_stopWithError:(id)arg1;
 - (void)dealloc;
+- (id)decryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
 - (id)descriptionWithPointer:(BOOL)arg1;
+- (id)encryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
+- (void)generateSessionKeys;
 - (void)handleBackoffRequestWithTimeout:(double)arg1;
 - (void)handleInvalidSetupCode;
 - (BOOL)handleSavePeerRequestWithPeerIdentity:(id)arg1 error:(id *)arg2;
 - (void)handleSetupCodeRequest;
 - (id)init;
-- (id)initWithRole:(long long)arg1 options:(long long)arg2 delegate:(id)arg3;
+- (id)initWithRole:(long long)arg1 pairSetupType:(unsigned long long)arg2 delegate:(id)arg3;
+- (BOOL)isSecureSession;
 - (void)receivedSetupExchangeData:(id)arg1 error:(id)arg2;
 - (id)shortDescription;
 - (void)start;

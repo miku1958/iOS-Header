@@ -6,45 +6,33 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <HomeUI/UITextViewDelegate-Protocol.h>
+@class NSArray, UILabel, UITextView;
+@protocol HFStringGenerator;
 
-@class NSArray, NSString, UIColor, UILabel, UITextView;
-@protocol HFStringGenerator, HUTextInteractionHandling;
-
-@interface HUItemTableSectionHeaderFooterView : UITableViewHeaderFooterView <UITextViewDelegate>
+@interface HUItemTableSectionHeaderFooterView : UITableViewHeaderFooterView
 {
     id<HFStringGenerator> _message;
-    unsigned long long _type;
-    id<HUTextInteractionHandling> _textInteractionHandler;
     UITextView *_messageTextView;
+    unsigned long long _type;
     NSArray *_constraints;
 }
 
 @property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UILabel *detailTextLabel; // @dynamic detailTextLabel;
-@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) id<HFStringGenerator> message; // @synthesize message=_message;
 @property (strong, nonatomic) UITextView *messageTextView; // @synthesize messageTextView=_messageTextView;
-@property (readonly) Class superclass;
-@property (nonatomic) long long textAlignment;
-@property (strong, nonatomic) UIColor *textColor;
-@property (weak, nonatomic) id<HUTextInteractionHandling> textInteractionHandler; // @synthesize textInteractionHandler=_textInteractionHandler;
 @property (readonly, nonatomic) UILabel *textLabel; // @dynamic textLabel;
-@property (nonatomic) struct UIEdgeInsets textViewEdgeInsets;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
 + (id)defaultAttributesForType:(unsigned long long)arg1;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_updateDefaultValuesForType;
+- (BOOL)_updateViewContent;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1 type:(unsigned long long)arg2;
-- (struct CGSize)intrinsicContentSize;
 - (void)prepareForReuse;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (void)updateConstraints;
 
 @end
 

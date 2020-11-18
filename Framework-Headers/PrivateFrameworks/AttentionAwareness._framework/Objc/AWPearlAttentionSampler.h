@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _lastErrorTime;
     int _displayNotifyToken;
     BOOL _displayState;
+    BOOL _smartCoverClosed;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,11 +49,13 @@ __attribute__((visibility("hidden")))
 - (void)operation:(id)arg1 stateChanged:(long long)arg2;
 - (void)setDisplayState:(BOOL)arg1;
 - (void)setDisplayStateFromNotification;
+- (void)setSmartCoverClosed:(BOOL)arg1;
 - (void)shouldSample:(BOOL)arg1 withDeadline:(unsigned long long)arg2;
 - (void)triggerFaceDetectWithDeadline:(unsigned long long)arg1;
 - (id)unitTestSampler;
 - (void)updateFaceState:(BOOL)arg1;
 - (void)updateSamplingDeadline:(unsigned long long)arg1 forClient:(id)arg2;
+- (void)updateSuppressedMaskWithDisplayState:(BOOL)arg1 smartCoverClosed:(BOOL)arg2;
 
 @end
 

@@ -94,8 +94,7 @@
 - (id)messagesWithSummariesForMailbox:(id)arg1 range:(struct _NSRange)arg2;
 - (id)messagesWithoutSummariesForMailbox:(id)arg1;
 - (id)messagesWithoutSummariesForMailbox:(id)arg1 fromRowID:(unsigned int)arg2 limit:(unsigned int)arg3;
-- (id)metadataForMessage:(id)arg1;
-- (id)metadataForMessage:(id)arg1 key:(id)arg2;
+- (id)metadataForMessage:(id)arg1 ofClass:(Class)arg2 key:(id)arg3;
 - (unsigned int)minimumRemoteIDForMailbox:(id)arg1;
 - (unsigned long long)mostRecentStatusCountForMailbox:(id)arg1;
 - (unsigned int)nonDeletedCountForAggregatedMailboxes:(id)arg1;

@@ -11,8 +11,9 @@
 
 @interface HUQuickControlContainerView : UIView
 {
+    BOOL _shouldShowActiveControl;
+    BOOL _shouldShowAlternateControlButton;
     BOOL _shouldShowDetailsButton;
-    BOOL _shouldShowControls;
     BOOL _controlViewSupportsTransformTransition;
     BOOL _showAlternateControlButton;
     double _controlTransitionProgress;
@@ -23,6 +24,7 @@
     UIView *_activeControlView;
     UILayoutGuide *_controlViewPreferredFrameLayoutGuide;
     NSString *_alternateControlButtonTitle;
+    HUPillButton *_alternateControlButton;
     HUQuickControlSummaryView *_summaryView;
     id<HUQuickControlContainerViewDelegate> _delegate;
     HUControlHostView *_controlHostView;
@@ -35,7 +37,6 @@
     HUQuickControlAuxiliaryHostView *_auxiliaryHostView;
     HUQuickControlButtonRowView *_buttonRowView;
     HUPillButton *_detailsButton;
-    HUPillButton *_alternateControlButton;
     UILayoutGuide *_contentToAuxiliarySpacingLayoutGuide;
     UILayoutGuide *_topToSummarySpacingLayoutGuide;
     struct CGRect _sourceRect;
@@ -64,7 +65,8 @@
 @property (nonatomic) unsigned long long edgesForExtendedLayout; // @synthesize edgesForExtendedLayout=_edgesForExtendedLayout;
 @property (nonatomic) double initialSourceViewScale; // @synthesize initialSourceViewScale=_initialSourceViewScale;
 @property (readonly, nonatomic) struct CGRect presentedControlFrame;
-@property (nonatomic) BOOL shouldShowControls; // @synthesize shouldShowControls=_shouldShowControls;
+@property (nonatomic) BOOL shouldShowActiveControl; // @synthesize shouldShowActiveControl=_shouldShowActiveControl;
+@property (nonatomic) BOOL shouldShowAlternateControlButton; // @synthesize shouldShowAlternateControlButton=_shouldShowAlternateControlButton;
 @property (nonatomic) BOOL shouldShowDetailsButton; // @synthesize shouldShowDetailsButton=_shouldShowDetailsButton;
 @property (nonatomic) BOOL showAlternateControlButton; // @synthesize showAlternateControlButton=_showAlternateControlButton;
 @property (readonly, nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
@@ -99,6 +101,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 delegate:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)setshouldShowActiveControl:(BOOL)arg1;
 - (void)showAuxiliaryView:(id)arg1;
 - (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

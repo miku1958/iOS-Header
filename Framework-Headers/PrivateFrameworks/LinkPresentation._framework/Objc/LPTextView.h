@@ -21,10 +21,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, strong, nonatomic) LPTextViewStyle *style;
-@property (nonatomic) long long textAlignment;
 
 - (void).cxx_destruct;
-- (id)_createTextViewWithText:(id)arg1 style:(id)arg2;
+- (id)_createTextViewWithAttributedString:(id)arg1 style:(id)arg2;
 - (struct UIEdgeInsets)_effectiveContentInset;
 - (double)ascender;
 - (double)descender;

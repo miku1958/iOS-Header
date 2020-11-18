@@ -25,8 +25,6 @@
     BOOL _didMeasureMetrics;
     BOOL _didStartMeasuring;
     BOOL _didStopMeasuring;
-    NSString *_filePathForUnexpectedFailure;
-    unsigned long long _lineNumberForUnexpectedFailure;
     NSString *_filePathForNestedFailure;
     unsigned long long _lineNumberForNestedFailure;
     long long _runLoopNestingCount;
@@ -53,13 +51,11 @@
 @property (strong, nonatomic) NSMutableSet *expectations; // @synthesize expectations=_expectations;
 @property (strong, nonatomic) NSMutableArray *failureRecords; // @synthesize failureRecords=_failureRecords;
 @property (copy) NSString *filePathForNestedFailure; // @synthesize filePathForNestedFailure=_filePathForNestedFailure;
-@property (copy) NSString *filePathForUnexpectedFailure; // @synthesize filePathForUnexpectedFailure=_filePathForUnexpectedFailure;
 @property BOOL hasAttemptedToCaptureScreenshotOnFailure; // @synthesize hasAttemptedToCaptureScreenshotOnFailure=_hasAttemptedToCaptureScreenshotOnFailure;
 @property BOOL hasDequeuedTeardownBlocks; // @synthesize hasDequeuedTeardownBlocks=_hasDequeuedTeardownBlocks;
 @property (strong) NSInvocation *invocation; // @synthesize invocation=_invocation;
 @property BOOL isMeasuringMetrics; // @synthesize isMeasuringMetrics=_isMeasuringMetrics;
 @property unsigned long long lineNumberForNestedFailure; // @synthesize lineNumberForNestedFailure=_lineNumberForNestedFailure;
-@property unsigned long long lineNumberForUnexpectedFailure; // @synthesize lineNumberForUnexpectedFailure=_lineNumberForUnexpectedFailure;
 @property unsigned long long measuringIteration; // @synthesize measuringIteration=_measuringIteration;
 @property (strong) NSMutableDictionary *perfMetricsForID; // @synthesize perfMetricsForID=_perfMetricsForID;
 @property (strong) NSThread *primaryThread; // @synthesize primaryThread=_primaryThread;
@@ -73,6 +69,7 @@
 @property (strong) XCTestCaseRun *testCaseRun; // @synthesize testCaseRun=_testCaseRun;
 @property (readonly) XCUITestContext *testContext; // @synthesize testContext=_testContext;
 
+- (void).cxx_destruct;
 - (void)addExpectation:(id)arg1;
 - (void)dealloc;
 - (id)init;

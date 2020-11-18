@@ -20,6 +20,7 @@
 + (id)bindPlaceholderStringOfCount:(unsigned long long)arg1;
 + (id)predicateForContactsInContainerWithIdentifier:(id)arg1;
 + (id)predicateForContactsInGroupWithIdentifier:(id)arg1;
++ (id)predicateForContactsInRange:(struct _NSRange)arg1 allowedStoreIdentifiers:(id)arg2 sortOrder:(int)arg3;
 + (id)predicateForContactsInRange:(struct _NSRange)arg1 sortOrder:(int)arg2;
 + (id)predicateForContactsMatchingMultivalueProperty:(int)arg1 value:(id)arg2;
 + (id)predicateForContactsMatchingName:(id)arg1 addressBook:(void *)arg2;

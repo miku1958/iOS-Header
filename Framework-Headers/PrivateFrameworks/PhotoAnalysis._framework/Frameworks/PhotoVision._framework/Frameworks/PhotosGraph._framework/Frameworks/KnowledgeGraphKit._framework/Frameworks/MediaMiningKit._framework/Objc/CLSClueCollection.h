@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <MediaMiningKit/CLSClueCollectionJSExports-Protocol.h>
-#import <MediaMiningKit/NSCoding-Protocol.h>
 
 @class CLSInputPeopleClue, CLSMeaningClue, NSMapTable;
 @protocol OS_dispatch_queue;
 
-@interface CLSClueCollection : NSObject <NSCoding, CLSClueCollectionJSExports>
+@interface CLSClueCollection : NSObject <CLSClueCollectionJSExports>
 {
     unsigned long long _versionCount;
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -30,7 +29,6 @@
 @property (readonly) double timeInterval;
 @property (readonly) unsigned long long versionCount; // @synthesize versionCount=_versionCount;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_activityString;
 - (id)_healthDynamismString;
@@ -72,7 +70,6 @@
 - (id)detailedLocationDescription;
 - (id)distanceFromHome;
 - (id)distanceFromWork;
-- (void)encodeWithCoder:(id)arg1;
 - (void)enumerateLocationClues:(CDUnknownBlockType)arg1;
 - (void)enumeratePeopleClues:(CDUnknownBlockType)arg1;
 - (void)enumerateTimeClues:(CDUnknownBlockType)arg1;
@@ -82,7 +79,6 @@
 - (BOOL)hasOutputClueWithKey:(id)arg1 andValue:(id)arg2;
 - (BOOL)hasOutputClueWithKey:(id)arg1 value:(id)arg2 andMinimumScore:(double)arg3;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)inputClues;
 - (id)inputCluesForKey:(id)arg1;
 - (id)localDates;

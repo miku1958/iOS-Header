@@ -9,12 +9,11 @@
 #import <iWorkImport/TSCEResolverContainer-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 #import <iWorkImport/TSKModel-Protocol.h>
-#import <iWorkImport/TSKSearchTarget-Protocol.h>
 
 @class KNAbstractSlide, KNSlideTree, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, TSPLazyReference;
 
 __attribute__((visibility("hidden")))
-@interface KNSlideNode : TSPObject <TSKDocumentObject, TSKModel, TSKSearchTarget, TSCEResolverContainer>
+@interface KNSlideNode : TSPObject <TSKDocumentObject, TSKModel, TSCEResolverContainer>
 {
     TSPLazyReference *_slideReference;
     NSMutableDictionary *_thumbnails;
@@ -39,7 +38,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _buildEventCount;
     BOOL _buildEventCountIsUpToDate;
     NSMutableSet *_remappedTableNames;
-    NSString *mPreviousIdentifier;
     KNSlideTree *_slideTree;
 }
 
@@ -65,7 +63,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) KNSlideNode *nextSkippingCollapsed;
 @property (readonly, nonatomic) KNSlideNode *nextSkippingHidden;
 @property (readonly, nonatomic) KNSlideNode *previous;
-@property (strong, nonatomic) NSString *previousIdentifier; // @synthesize previousIdentifier=mPreviousIdentifier;
+@property (strong, nonatomic) NSString *previousIdentifier; // @synthesize previousIdentifier=_previousIdentifier;
 @property (readonly, nonatomic) KNSlideNode *previousSkippingCollapsed;
 @property (readonly, nonatomic) KNSlideNode *previousSkippingHidden;
 @property (strong, nonatomic) KNAbstractSlide *slide;
@@ -90,7 +88,6 @@ __attribute__((visibility("hidden")))
 - (void)addRemappedTableName:(id)arg1;
 - (void)addThumbnail:(id)arg1 atSize:(struct CGSize)arg2;
 - (id)childEnumerator;
-- (id)childSearchTargets;
 - (void)cleanOutInvalidSlideSpecificInfoEntries;
 - (void)clearRemappedTableNames;
 - (void)clearSlideSpecificLinkMap;

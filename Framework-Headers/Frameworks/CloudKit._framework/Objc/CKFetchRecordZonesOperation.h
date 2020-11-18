@@ -12,8 +12,8 @@
 {
     BOOL _isFetchAllRecordZonesOperation;
     BOOL _ignorePCSFailures;
-    NSArray *_recordZoneIDs;
     CDUnknownBlockType _fetchRecordZonesCompletionBlock;
+    NSArray *_recordZoneIDs;
     NSArray *_recordZones;
     NSMutableDictionary *_recordZonesByZoneID;
     NSMutableDictionary *_recordZoneErrors;

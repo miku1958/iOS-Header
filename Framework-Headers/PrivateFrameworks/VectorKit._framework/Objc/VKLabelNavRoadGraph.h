@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_offRouteJunctions;
     struct PolylineCoordinate _routeUserOffset;
     BOOL _routeFeatureMapValid;
-    unordered_map_923201b5 _routeFeatureMap;
+    unordered_map_e9427026 _routeFeatureMap;
     BOOL _simplifiedRouteValid;
-    vector_e20517dc _simplifiedRoutePoints;
+    vector_554e3200 _simplifiedRoutePoints;
     unsigned long long _currentRoadStartSimplifiedPointIndex;
     BOOL _screenRouteValid;
     struct vector<RouteSegment, std::__1::allocator<RouteSegment>> _screenRouteSegments;

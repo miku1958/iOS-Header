@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     TSUZipFileWriter *_delayedZipArchiveWriter;
     TSUSafeSaveAssistant *_safeSaveAssistant;
     BOOL _onlyWriteToDelayedZipArchive;
+    BOOL _apfsMode;
 }
 
 - (void).cxx_destruct;

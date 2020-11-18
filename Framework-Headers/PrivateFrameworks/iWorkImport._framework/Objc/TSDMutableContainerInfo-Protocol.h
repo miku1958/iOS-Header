@@ -5,11 +5,12 @@
 //
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
+#import <iWorkImport/TSDModelContainer-Protocol.h>
 
 @class NSArray, NSIndexSet, NSObject;
 @protocol TSDInfo;
 
-@protocol TSDMutableContainerInfo <TSDContainerInfo>
+@protocol TSDMutableContainerInfo <TSDContainerInfo, TSDModelContainer>
 - (void)addChildInfo:(NSObject<TSDInfo> *)arg1;
 - (void)insertChildInfo:(NSObject<TSDInfo> *)arg1 above:(NSObject<TSDInfo> *)arg2;
 - (void)insertChildInfo:(NSObject<TSDInfo> *)arg1 atIndex:(unsigned long long)arg2;

@@ -47,6 +47,7 @@
 + (BOOL)isAvailable;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_copyStringOnly:(id)arg1;
 - (void)_copyURL:(id)arg1;
 - (void)_copyURL:(id)arg1 andString:(id)arg2;
 - (void)_performFromView:(id)arg1 byOpeningURL:(id)arg2;

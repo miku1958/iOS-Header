@@ -21,15 +21,18 @@
     long long _mechanism;
     long long _direction;
     NSString *_bundleId;
+    NSString *_targetBundleId;
     NSURL *_contentURL;
     NSString *_domainIdentifier;
     NSString *_account;
     _CDContact *_sender;
     NSArray *_recipients;
     NSArray *_keywords;
+    NSArray *_attachments;
 }
 
 @property (strong) NSString *account; // @synthesize account=_account;
+@property (strong) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (strong) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong) NSURL *contentURL; // @synthesize contentURL=_contentURL;
 @property (readonly, copy) NSString *debugDescription;
@@ -47,6 +50,7 @@
 @property (strong) _CDContact *sender; // @synthesize sender=_sender;
 @property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
+@property (strong) NSString *targetBundleId; // @synthesize targetBundleId=_targetBundleId;
 @property (readonly, nonatomic) NSDate *timestamp;
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) BOOL userIsSender;
@@ -59,7 +63,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initwithINInteraction:(id)arg1 bundleID:(id)arg2;
+- (id)initWithINInteraction:(id)arg1 bundleID:(id)arg2;
 
 @end
 

@@ -11,25 +11,25 @@
 #import <iWorkImport/TSWPColumnMetrics-Protocol.h>
 #import <iWorkImport/TSWPLayoutParent-Protocol.h>
 
-@class NSArray, NSMutableSet, NSSet, TPBodyLayout, TPFootnoteContainerLayout, TPMarginAdjustLayout, TSURetainedPointerKeyDictionary, TSWPPadding;
+@class NSArray, NSMutableSet, NSSet, TPBodyLayout, TPFootnoteContainerLayout, TPiOSMarginAdjustLayout, TSURetainedPointerKeyDictionary, TSWPPadding;
 @protocol NSFastEnumeration, TPMasterDrawableProvider, TSWPHeaderFooterProvider;
 
 __attribute__((visibility("hidden")))
 @interface TPPageLayout : TSWPPageLayout <TSWPLayoutParent, TSWPColumnMetrics, TPAttachmentLayoutParent, TSDWrapInvalidationParent>
 {
     id<TSWPHeaderFooterProvider> _headerFooterProvider;
-    TPMarginAdjustLayout *_marginAdjustLayout;
     TPFootnoteContainerLayout *_footnoteContainerLayout;
     unsigned long long _pageNumber;
     unsigned long long _pageCount;
     BOOL _childLayoutsValid;
     TSURetainedPointerKeyDictionary *_oldChildLayouts;
     id<TPMasterDrawableProvider> _masterDrawableProvider;
-    int _contentFlags;
+    unsigned long long _contentFlags;
     int _inInvalidationClusterCount;
     BOOL _childTextLayoutsNeedInvalidationForExteriorWrap;
     BOOL _validating;
     NSMutableSet *_anchoredDrawableLayouts;
+    TPiOSMarginAdjustLayout *_marginAdjustLayout;
 }
 
 @property (readonly, nonatomic) BOOL allowsBody;
@@ -44,7 +44,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *floatingDrawableLayouts;
 @property (readonly, nonatomic) TPFootnoteContainerLayout *footnoteContainerLayout; // @synthesize footnoteContainerLayout=_footnoteContainerLayout;
 @property (readonly, nonatomic) TSWPPadding *layoutMargins;
-@property (readonly, nonatomic) TPMarginAdjustLayout *marginAdjustLayout; // @synthesize marginAdjustLayout=_marginAdjustLayout;
+@property (readonly, nonatomic) TPiOSMarginAdjustLayout *marginAdjustLayout; // @synthesize marginAdjustLayout=_marginAdjustLayout;
+@property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, weak, nonatomic) id<TPMasterDrawableProvider> masterDrawableProvider;
 @property (readonly, nonatomic) unsigned long long pageCount;
 @property (readonly, nonatomic) unsigned long long pageIndex;
@@ -107,7 +108,6 @@ __attribute__((visibility("hidden")))
 - (void)p_insertFootnoteContainerLayout;
 - (id)p_insertValidatedChildLayoutForInfo:(id)arg1;
 - (void)p_insertValidatedFloatingLayouts;
-- (void)p_insertValidatedMarginAdjustLayout;
 - (void)p_insertValidatedMasterLayouts;
 - (BOOL)p_isHeaderFooterLayout:(id)arg1;
 - (id)p_orderedChildInfos;
@@ -131,7 +131,7 @@ __attribute__((visibility("hidden")))
 - (void)replaceChild:(id)arg1 with:(id)arg2;
 - (void)setChildren:(id)arg1;
 - (void)setNeedsInflation;
-- (BOOL)shouldHeaderFooterBeVisible:(int)arg1;
+- (BOOL)shouldHeaderFooterBeVisible:(long long)arg1;
 - (BOOL)shouldHeaderFooterBeVisibleForPageIndex:(unsigned long long)arg1;
 - (BOOL)shouldProvideGuidesDuringExclusiveAlignmentOperation;
 - (BOOL)textIsVertical;

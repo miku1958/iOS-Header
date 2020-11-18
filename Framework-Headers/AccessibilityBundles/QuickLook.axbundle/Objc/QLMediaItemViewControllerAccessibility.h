@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axApplyContentOffset:(id)arg1 contentOffset:(struct CGPoint)arg2;
 - (void)_axSetLabelForTimeLabel;
 - (void)_axSetUpScrubberView;
 - (void)_axUpdateAccessibleElements;

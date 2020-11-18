@@ -9,7 +9,7 @@
 #import <NanoPassKit/NSCopying-Protocol.h>
 #import <NanoPassKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSSet, NSString, PKColor, PKFelicaTransitAppletState, PKImage, PKNFCPayload, PKPaymentApplication;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSSet, NSString, PKColor, PKImage, PKNFCPayload, PKPaymentApplication, PKTransitAppletState;
 
 @interface NPKPassDescription : NSObject <NSSecureCoding, NSCopying>
 {
@@ -49,7 +49,7 @@
     NSString *_issuerCountryCode;
     NSArray *_availableActions;
     NSString *_organizationName;
-    PKFelicaTransitAppletState *_felicaTransitAppletState;
+    PKTransitAppletState *_transitAppletState;
     NSArray *_frontFieldBuckets;
     NSArray *_backFieldBuckets;
     NSDecimalNumber *_lastAddValueAmount;
@@ -71,7 +71,6 @@
 @property (readonly, nonatomic) long long effectiveContactlessPaymentApplicationState;
 @property (nonatomic) long long effectivePaymentApplicationState; // @synthesize effectivePaymentApplicationState=_effectivePaymentApplicationState;
 @property (nonatomic) unsigned long long expressPassTypesMask; // @synthesize expressPassTypesMask=_expressPassTypesMask;
-@property (strong, nonatomic) PKFelicaTransitAppletState *felicaTransitAppletState; // @synthesize felicaTransitAppletState=_felicaTransitAppletState;
 @property (strong, nonatomic) PKColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (strong, nonatomic) NSArray *frontFieldBuckets; // @synthesize frontFieldBuckets=_frontFieldBuckets;
 @property (strong, nonatomic) NSNumber *groupID; // @synthesize groupID=_groupID;
@@ -97,6 +96,7 @@
 @property (strong, nonatomic) NSDate *relevantDate; // @synthesize relevantDate=_relevantDate;
 @property (nonatomic) unsigned long long settings; // @synthesize settings=_settings;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (strong, nonatomic) PKTransitAppletState *transitAppletState; // @synthesize transitAppletState=_transitAppletState;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 
 + (BOOL)isCachingEnabled;
@@ -108,7 +108,6 @@
 - (id)encodeAsData:(id)arg1;
 - (void)encodeObject:(id)arg1 asDataInCoder:(id)arg2 withKey:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
-- (id)felicaProperties;
 - (id)fieldForKey:(id)arg1;
 - (BOOL)hasValidNFCPayload;
 - (unsigned long long)hash;
@@ -121,6 +120,7 @@
 - (BOOL)supportsExpressPassType:(long long)arg1;
 - (BOOL)supportsInAppPaymentOnNetworks:(id)arg1 capabilities:(unsigned long long)arg2 issuerCountryCodes:(id)arg3 paymentApplicationStates:(id)arg4;
 - (BOOL)supportsInAppPaymentOnNetworks:(id)arg1 issuerCountryCodes:(id)arg2;
+- (id)transitProperties;
 
 @end
 

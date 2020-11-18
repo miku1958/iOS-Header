@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/NSSecureCoding-Protocol.h>
 
@@ -15,11 +15,13 @@
     BOOL _unbranded;
     BOOL _hasAction;
     BOOL _requiresMRAID;
+    BOOL _adLibManagedVideo;
     NSString *_batchResponseIdentifier;
     NSString *_accessibilityLabel;
     double _skipThreshold;
     double _minimumIntervalBetweenPresentations;
     NSArray *_videoAssets;
+    NSDictionary *_mediaAsset;
     NSString *_uniqueIdentifier;
     NSURL *_audioURL;
     NSURL *_staticImageURL;
@@ -41,6 +43,7 @@
 }
 
 @property (copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
+@property (nonatomic) BOOL adLibManagedVideo; // @synthesize adLibManagedVideo=_adLibManagedVideo;
 @property (nonatomic) long long adPrivacyMarkPosition; // @synthesize adPrivacyMarkPosition=_adPrivacyMarkPosition;
 @property (strong, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;
 @property (copy, nonatomic) NSString *batchResponseIdentifier; // @synthesize batchResponseIdentifier=_batchResponseIdentifier;
@@ -55,6 +58,7 @@
 @property (strong, nonatomic) NSURL *logoImageURL; // @synthesize logoImageURL=_logoImageURL;
 @property (strong, nonatomic) NSArray *matchClauses; // @synthesize matchClauses=_matchClauses;
 @property (nonatomic) long long maximumPretapRequestCount; // @synthesize maximumPretapRequestCount=_maximumPretapRequestCount;
+@property (strong, nonatomic) NSDictionary *mediaAsset; // @synthesize mediaAsset=_mediaAsset;
 @property (nonatomic) double minimumIntervalBetweenPresentations; // @synthesize minimumIntervalBetweenPresentations=_minimumIntervalBetweenPresentations;
 @property (strong, nonatomic) NSDictionary *nativeMediaCreativeMetadata; // @synthesize nativeMediaCreativeMetadata=_nativeMediaCreativeMetadata;
 @property (strong, nonatomic) NSArray *nativeMetadata; // @synthesize nativeMetadata=_nativeMetadata;

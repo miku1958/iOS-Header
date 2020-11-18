@@ -7,20 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEODataSessionTask-Protocol.h>
+#import <GeoServices/GEODataSessionUpdatableTask-Protocol.h>
 #import <GeoServices/GEOStateCapturing-Protocol.h>
 
 @class GEOClientMetrics, GEODataRequest, GEODataURLSessionTaskQueue, NSData, NSError, NSHTTPURLResponse, NSMutableData, NSString, NSURL, NSURLRequest, NSURLSessionDataTask, NSURLSessionTaskMetrics;
-@protocol GEODataSessionTaskDelegate, OS_dispatch_queue, OS_os_activity;
+@protocol GEODataSessionTaskDelegate, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity, OS_voucher;
 
 __attribute__((visibility("hidden")))
-@interface GEODataURLSessionTask : NSObject <GEOStateCapturing, GEODataSessionTask>
+@interface GEODataURLSessionTask : NSObject <GEOStateCapturing, GEODataSessionTask, GEODataSessionUpdatableTask>
 {
     id<GEODataSessionTaskDelegate> _delegate;
     GEODataRequest *_request;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_sessionIsolation;
     NSURLSessionDataTask *_backingTask;
-    NSError *_error;
+    NSError *_nonBackingTaskError;
     NSData *_cachedData;
     NSMutableData *_receivedData;
     NSURLSessionTaskMetrics *_urlTaskMetrics;
@@ -36,6 +37,8 @@ __attribute__((visibility("hidden")))
     BOOL _finished;
     unsigned int _qos;
     NSObject<OS_os_activity> *_activity;
+    NSObject<OS_voucher> *_voucher;
+    id<NSObject> _parsedResponse;
 }
 
 @property (readonly, nonatomic) long long HTTPStatusCode;
@@ -54,7 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) double elapsedTime;
 @property (readonly, nonatomic) NSString *entityTag;
-@property (readonly, nonatomic) NSError *error;
+@property (strong, nonatomic) NSError *error;
 @property (readonly, nonatomic) BOOL failedDueToCancel;
 @property (readonly) BOOL failedDueToCancel;
 @property (readonly, nonatomic) BOOL finished; // @synthesize finished=_finished;
@@ -64,11 +67,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *originalRequestURL;
 @property (readonly, nonatomic) NSURLRequest *originalURLRequest;
 @property (readonly, nonatomic) unsigned long long outgoingPayloadSize;
+@property (readonly, nonatomic) id<NSObject> parsedResponse;
 @property float priority;
 @property (readonly, nonatomic) BOOL protocolBufferHasPreamble;
 @property (readonly, nonatomic) NSData *receivedData;
 @property (readonly, nonatomic) NSString *remoteAddressAndPort;
 @property (readonly, nonatomic) GEODataRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) id<GEORequestCounterTicket> requestCounterTicket;
 @property (readonly, nonatomic) int requestKind; // @synthesize requestKind=_requestKind;
 @property (readonly, nonatomic) NSHTTPURLResponse *response;
 @property (nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
@@ -97,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(int)arg4;
 - (void)notifyDelegateWithSession:(id)arg1;
+- (void)setParsedResponse:(id)arg1;
 - (void)start;
 - (void)startDequeuedFromQueue:(id)arg1;
 - (void)updateRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

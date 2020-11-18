@@ -6,6 +6,14 @@
 
 #import <ITMLKit/NSObject-Protocol.h>
 
+@class NSString;
+@protocol IKNetworkRequestRecord;
+
 @protocol IKNetworkRequestLoader <NSObject>
+
+@property (readonly, copy, nonatomic) NSString *identifier;
+@property (copy, nonatomic) NSString *parentIdentifier;
+
+- (id<IKNetworkRequestRecord>)recordWithForResource:(long long)arg1 withInitiator:(long long)arg2;
 @end
 

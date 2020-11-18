@@ -6,12 +6,12 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXComponent, SXComponentView;
-@protocol SXComponentViewPostProcessor;
+@class SXComponentView;
+@protocol SXComponent, SXComponentViewPostProcessor;
 
 @protocol SXComponentViewPostProcessorManager <NSObject>
 - (void)addProcessor:(id<SXComponentViewPostProcessor>)arg1;
-- (void)processComponent:(SXComponent *)arg1 view:(SXComponentView *)arg2;
+- (void)processComponent:(id<SXComponent>)arg1 view:(SXComponentView *)arg2;
 - (void)removeProcessor:(id<SXComponentViewPostProcessor>)arg1;
 @end
 

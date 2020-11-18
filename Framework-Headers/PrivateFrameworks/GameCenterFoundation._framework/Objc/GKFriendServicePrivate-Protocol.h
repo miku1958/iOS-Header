@@ -11,7 +11,7 @@
 @protocol GKFriendServicePrivate <GKFriendService>
 - (oneway void)getCommonFriendsForPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getConcernsForPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
-- (oneway void)removeAllFriendsWithPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)removeAllFriends:(NSArray *)arg1 handler:(void (^)(BOOL))arg2;
 - (oneway void)removeFriendWithPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)reportConcern:(GKConcernInternal *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)requestGKPlayerIDforiCloudIDs:(NSArray *)arg1 handler:(void (^)(NSString *, NSError *))arg2;

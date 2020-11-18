@@ -20,6 +20,7 @@
 @property double pollingInterval;
 @property (readonly, copy) NSPredicate *predicate;
 
+- (void).cxx_destruct;
 - (void)cleanup;
 - (void)considerFulfilling;
 - (void)dealloc;

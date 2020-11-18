@@ -27,18 +27,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double headerHeight;
 
 - (void).cxx_destruct;
-- (struct CGRect)borderRectForHeaderFooter:(int)arg1 atIndex:(int)arg2;
-- (struct CGRect)clipRectForHeaderFooter:(int)arg1 atIndex:(int)arg2;
-- (id)headerFooterLayout:(int)arg1 atIndex:(int)arg2;
+- (struct CGRect)borderRectForHeaderFooter:(long long)arg1 atIndex:(long long)arg2;
+- (struct CGRect)clipRectForHeaderFooter:(long long)arg1 atIndex:(long long)arg2;
+- (id)headerFooterLayout:(long long)arg1 atIndex:(long long)arg2;
 - (void)i_clearHeaderFooterLayouts;
 - (void)i_insertValidatedHeaderFooterLayouts;
 - (BOOL)i_updateHeaderFooterLayouts;
 - (BOOL)isHeaderFooterLayout:(id)arg1;
-- (BOOL)p_isHeaderFooter:(int)arg1 editingAtFragmentIndex:(int)arg2;
+- (BOOL)p_isHeaderFooter:(long long)arg1 editingAtFragmentIndex:(long long)arg2;
 - (void)p_updateHeaderFooterClipAndBorderRect;
-- (void)p_updateHeaderFooterClipAndBorderRects:(int)arg1;
+- (void)p_updateHeaderFooterClipAndBorderRects:(long long)arg1;
 - (void)parentWillChangeTo:(id)arg1;
-- (BOOL)shouldHeaderFooterBeVisible:(int)arg1;
+- (BOOL)shouldHeaderFooterBeVisible:(long long)arg1;
 
 @end
 

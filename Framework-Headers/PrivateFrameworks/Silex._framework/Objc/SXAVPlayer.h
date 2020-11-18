@@ -54,6 +54,7 @@
 - (void)addObservers;
 - (void)dealloc;
 - (void)durationChanged;
+- (id)initWithPlayerItem:(id)arg1 audioMode:(int)arg2;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 audioMode:(int)arg2;
 - (void)loadFrameRate;
@@ -65,6 +66,7 @@
 - (void)statusChanged;
 - (void)stopTimeObserver;
 - (void)timeControlStatusChanged;
+- (void)updateTime:(CDStruct_1b6d18a9)arg1 duration:(CDStruct_1b6d18a9)arg2;
 
 @end
 

@@ -17,7 +17,7 @@
 @property (strong, nonatomic) PLDetectedFaceGroup *associatedFaceGroup; // @dynamic associatedFaceGroup;
 @property (nonatomic) short cloudLocalState;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
-@property (nonatomic) int cloudVerifiedType;
+@property (nonatomic) int cloudVerifiedType; // @dynamic cloudVerifiedType;
 @property (nonatomic) int cloudVerifiedType; // @dynamic cloudVerifiedType;
 @property (strong, nonatomic) NSSet *clusterRejectedFaces; // @dynamic clusterRejectedFaces;
 @property (strong, nonatomic) NSDictionary *contactMatchingDictionary; // @dynamic contactMatchingDictionary;
@@ -52,7 +52,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) int type; // @dynamic type;
 @property (readonly, nonatomic) BOOL userVerified;
-@property (nonatomic) int verifiedType;
+@property (nonatomic) int verifiedType; // @dynamic verifiedType;
 @property (nonatomic) int verifiedType; // @dynamic verifiedType;
 
 + (id)_batchFetchPersonUUIDsByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 inManagedObjectContext:(id)arg3 error:(id *)arg4;

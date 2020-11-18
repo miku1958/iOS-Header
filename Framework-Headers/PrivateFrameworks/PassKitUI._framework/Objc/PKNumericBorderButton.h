@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIView;
+@class UIColor, UIView;
 
 @interface PKNumericBorderButton : UIButton
 {
@@ -14,12 +14,18 @@
     UIView *_topBorder;
     UIView *_trailingBorder;
     UIView *_leadingBorder;
+    UIColor *_normalBackgroundColor;
+    UIColor *_highlightedBackgroundColor;
 }
+
+@property (copy, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
+@property (copy, nonatomic) UIColor *normalBackgroundColor; // @synthesize normalBackgroundColor=_normalBackgroundColor;
 
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)pk_applyAppearance:(id)arg1;
 - (void)setBorder:(unsigned long long)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 

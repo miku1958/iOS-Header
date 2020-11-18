@@ -7,6 +7,10 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (CRKAdditions)
+
+@property (readonly, nonatomic) id crk_keyValueObservingNewObject;
+@property (readonly, nonatomic) id crk_keyValueObservingOldObject;
+
 - (id)crk_dictionaryByAddingEntriesFromDictionary:(id)arg1;
 - (id)crk_mapUsingBlock:(CDUnknownBlockType)arg1;
 @end

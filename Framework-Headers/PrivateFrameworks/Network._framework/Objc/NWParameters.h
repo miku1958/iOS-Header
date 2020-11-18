@@ -23,6 +23,7 @@
 @property (copy, nonatomic) NSData *TLSSessionID;
 @property (copy, nonatomic) NSString *account;
 @property (nonatomic) BOOL allowSocketAccess;
+@property (nonatomic) BOOL allowUnusableAddresses;
 @property (nonatomic) unsigned long long dataMode;
 @property (nonatomic) BOOL disableBlackHoleDetection;
 @property (nonatomic) BOOL disableNagleAlgorithm;
@@ -53,6 +54,7 @@
 @property (nonatomic) BOOL noProxy;
 @property (strong, nonatomic) NSUUID *parentID;
 @property (nonatomic) int pid;
+@property (nonatomic) BOOL preferNoProxy;
 @property (readonly, copy, nonatomic) NSString *privateDescription;
 @property (copy, nonatomic) NSUUID *processUUID;
 @property (readonly, nonatomic) BOOL prohibitCellular;

@@ -13,22 +13,30 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _detectionTimeMs;
     unsigned long long _timestamp;
+    int _appLinkPreferredOpenStrategy;
     int _barcodeDataType;
+    int _barcodeURLType;
     int _clientType;
     int _invalidBarcodeDataType;
     struct {
         unsigned int detectionTimeMs:1;
         unsigned int timestamp:1;
+        unsigned int appLinkPreferredOpenStrategy:1;
         unsigned int barcodeDataType:1;
+        unsigned int barcodeURLType:1;
         unsigned int clientType:1;
         unsigned int invalidBarcodeDataType:1;
     } _has;
 }
 
+@property (nonatomic) int appLinkPreferredOpenStrategy; // @synthesize appLinkPreferredOpenStrategy=_appLinkPreferredOpenStrategy;
 @property (nonatomic) int barcodeDataType; // @synthesize barcodeDataType=_barcodeDataType;
+@property (nonatomic) int barcodeURLType; // @synthesize barcodeURLType=_barcodeURLType;
 @property (nonatomic) int clientType; // @synthesize clientType=_clientType;
 @property (nonatomic) unsigned long long detectionTimeMs; // @synthesize detectionTimeMs=_detectionTimeMs;
+@property (nonatomic) BOOL hasAppLinkPreferredOpenStrategy;
 @property (nonatomic) BOOL hasBarcodeDataType;
+@property (nonatomic) BOOL hasBarcodeURLType;
 @property (nonatomic) BOOL hasClientType;
 @property (nonatomic) BOOL hasDetectionTimeMs;
 @property (nonatomic) BOOL hasInvalidBarcodeDataType;
@@ -36,10 +44,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int invalidBarcodeDataType; // @synthesize invalidBarcodeDataType=_invalidBarcodeDataType;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
+- (int)StringAsAppLinkPreferredOpenStrategy:(id)arg1;
 - (int)StringAsBarcodeDataType:(id)arg1;
+- (int)StringAsBarcodeURLType:(id)arg1;
 - (int)StringAsClientType:(id)arg1;
 - (int)StringAsInvalidBarcodeDataType:(id)arg1;
+- (id)appLinkPreferredOpenStrategyAsString:(int)arg1;
 - (id)barcodeDataTypeAsString:(int)arg1;
+- (id)barcodeURLTypeAsString:(int)arg1;
 - (id)clientTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

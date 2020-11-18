@@ -12,7 +12,7 @@
 #import <ControlCenterUIKit/CCUIGroupRendering-Protocol.h>
 #import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, CCUICAPackageDescription, CCUICAPackageView, NSArray, NSString, NSTimer, UIImage, UIImageView, UIPanGestureRecognizer, UISelectionFeedbackGenerator, _UIEdgeFeedbackGenerator;
+@class CALayer, CCUICAPackageDescription, CCUICAPackageView, NSArray, NSString, NSTimer, UIImage, UIImageView, UIPanGestureRecognizer, UISelectionFeedbackGenerator, UIView, _UIEdgeFeedbackGenerator;
 
 @interface CCUIModuleSliderView : UIControl <UIGestureRecognizerDelegate, CCUIContentModuleTopLevelGestureProvider, CCUIContentModuleExpandedStateListener, CCUIContentClipping, CCUIGroupRendering>
 {
@@ -20,6 +20,8 @@
     CCUICAPackageView *_glyphPackageView;
     CCUICAPackageView *_compensatingGlyphPackageView;
     NSArray *_stepBackgroundViews;
+    UIView *_continuousValueClippingView;
+    UIView *_continuousValueBackgroundView;
     NSArray *_separatorViews;
     double _startingHeight;
     float _startingValue;
@@ -37,11 +39,13 @@
     UIImage *_glyphImage;
     CCUICAPackageDescription *_glyphPackageDescription;
     NSString *_glyphState;
+    double _continuousSliderCornerRadius;
     unsigned long long _numberOfSteps;
     unsigned long long _step;
 }
 
 @property (readonly, nonatomic, getter=isContentClippingRequired) BOOL contentClippingRequired;
+@property (nonatomic) double continuousSliderCornerRadius; // @synthesize continuousSliderCornerRadius=_continuousSliderCornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL firstStepIsDisabled; // @synthesize firstStepIsDisabled=_firstStepIsDisabled;
@@ -68,8 +72,9 @@
 - (void)_configureCompensatingGlyphPackageView:(id)arg1;
 - (void)_configureGlyphPackageView:(id)arg1;
 - (void)_continueTrackingWithGestureRecognizer:(id)arg1;
-- (id)_continuousValueView;
+- (id)_continuousValueClippingView;
 - (id)_createBackgroundViewForStep:(unsigned long long)arg1;
+- (void)_createContinuousSliderClippingViewWithBackgroundView:(id)arg1;
 - (id)_createSeparatorView;
 - (void)_createSeparatorViewsForNumberOfSteps:(unsigned long long)arg1;
 - (void)_createStepViewsForNumberOfSteps:(unsigned long long)arg1;

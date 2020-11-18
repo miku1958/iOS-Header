@@ -8,10 +8,14 @@
 
 @interface MAProgressNotification : NSObject
 {
+    BOOL _isStalled;
     long long _totalExpected;
     long long _totalWritten;
+    double _expectedTimeRemaining;
 }
 
+@property (nonatomic) double expectedTimeRemaining; // @synthesize expectedTimeRemaining=_expectedTimeRemaining;
+@property (nonatomic) BOOL isStalled; // @synthesize isStalled=_isStalled;
 @property (nonatomic) long long totalExpected; // @synthesize totalExpected=_totalExpected;
 @property (nonatomic) long long totalWritten; // @synthesize totalWritten=_totalWritten;
 

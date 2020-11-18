@@ -13,19 +13,21 @@
 __attribute__((visibility("hidden")))
 @interface TSTSortRuleReferenceTracker : NSObject <TSCEReferenceTrackerDelegate>
 {
-    TSTInfo *mTableInfo;
-    NSMutableSet *mReferences;
-    TSCEReferenceTracker *mReferenceTracker;
+    TSTInfo *_tableInfo;
+    NSMutableSet *_references;
+    TSCEReferenceTracker *_referenceTracker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) TSCEReferenceTracker *referenceTracker; // @synthesize referenceTracker=_referenceTracker;
+@property (strong, nonatomic) NSMutableSet *references; // @synthesize references=_references;
 @property (readonly) Class superclass;
-@property (nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=mTableInfo;
+@property (weak, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 
+- (void).cxx_destruct;
 - (id)cellRangeWasInserted:(const struct TSCERangeRef *)arg1;
-- (void)dealloc;
 - (void)encodeToArchive:(struct SortRuleReferenceTrackerArchive *)arg1 archiver:(id)arg2;
 - (id)initFromArchive:(const struct SortRuleReferenceTrackerArchive *)arg1 unarchiver:(id)arg2;
 - (id)initWithTableInfo:(id)arg1 context:(id)arg2;

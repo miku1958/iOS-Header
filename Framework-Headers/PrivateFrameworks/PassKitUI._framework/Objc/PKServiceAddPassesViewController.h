@@ -9,13 +9,14 @@
 #import <PassKitUI/PKAddPassesCardStackViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKServiceAddPassesViewControllerProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PKAddPassesCardStackViewController;
 
 @interface PKServiceAddPassesViewController : PKNavigationController <PKAddPassesCardStackViewControllerDelegate, PKServiceAddPassesViewControllerProtocol>
 {
     struct CGSize _screenSize;
     double _screenScale;
     BOOL _placeholderViewControllerDidCancel;
+    PKAddPassesCardStackViewController *_cardStackViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,11 +27,15 @@
 + (id)_exportedInterface;
 + (BOOL)_preventsAppearanceProxyCustomization;
 + (id)_remoteViewControllerInterface;
+- (void).cxx_destruct;
 - (void)addPassesCardStackViewController:(id)arg1 didCancelAddingPasses:(id)arg2;
 - (void)addPassesCardStackViewController:(id)arg1 didFinishAddingPasses:(id)arg2;
+- (void)evaluateBrightness;
 - (void)ingestPassesWithData:(id)arg1 fromPresentationSource:(unsigned long long)arg2;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
+- (void)resetBrightness;
 - (void)setDisplayPropertiesWithScreenSize:(struct CGSize)arg1 scale:(double)arg2;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;

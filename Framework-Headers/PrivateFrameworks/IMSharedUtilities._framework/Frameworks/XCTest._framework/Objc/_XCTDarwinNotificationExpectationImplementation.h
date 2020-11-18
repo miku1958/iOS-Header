@@ -22,6 +22,7 @@
 @property (copy) CDUnknownBlockType handler;
 @property (readonly, copy) NSString *notificationName; // @synthesize notificationName=_notificationName;
 
+- (void).cxx_destruct;
 - (void)_handleNotification;
 - (void)cleanup;
 - (void)dealloc;

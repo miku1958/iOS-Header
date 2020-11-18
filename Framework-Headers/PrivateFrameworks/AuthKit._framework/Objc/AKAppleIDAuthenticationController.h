@@ -32,6 +32,7 @@
 - (void)checkSecurityUpgradeEligibilityForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)configurationInfoWithIdentifiers:(id)arg1 forAltDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (void)fetchAuthModeWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchDeviceListWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fetchDeviceListWithContext:(id)arg1 error:(id *)arg2;
 - (void)fetchURLBagWithCompletion:(CDUnknownBlockType)arg1;

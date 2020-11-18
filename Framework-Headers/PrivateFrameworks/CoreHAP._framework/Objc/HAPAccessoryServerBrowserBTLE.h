@@ -113,6 +113,7 @@
 - (long long)linkType;
 - (void)markNotifyingCharacteristicUpdatedForIdentifier:(id)arg1;
 - (void)matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)pauseScans;
 - (void)probeReachabilityForAccessoryServersWithIdentifiers:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)registerPairedAccessoryWithIdentifier:(id)arg1;
 - (void)removeCachedAccessoryWithIdentifier:(id)arg1;

@@ -30,6 +30,7 @@
 + (id)_serviceTypeToServiceItemClassMap;
 + (Class)itemClassForService:(id)arg1;
 + (id)serviceItemForService:(id)arg1 valueSource:(id)arg2;
++ (id)supportedServiceTypes;
 - (void).cxx_destruct;
 - (id)_actionableCharacteristics;
 - (id)_allRepresentedServices;

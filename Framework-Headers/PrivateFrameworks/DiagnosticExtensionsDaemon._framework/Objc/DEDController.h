@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <DiagnosticExtensionsDaemon/DEDPairingProtocol-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDXPCProtocol-Protocol.h>
 
 @class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol DEDClientProtocol, DEDPairingProtocol, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
-@interface DEDController : NSObject <DEDXPCProtocol, DEDPairingProtocol>
+@interface DEDController : NSObject <DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
 {
     BOOL _isDaemon;
     BOOL _started;
@@ -69,6 +70,7 @@
 @property (strong) DEDXPCInbound *xpcInbound; // @synthesize xpcInbound=_xpcInbound;
 @property (weak) NSXPCConnection *xpcOutboundConnection; // @synthesize xpcOutboundConnection=_xpcOutboundConnection;
 
++ (id)archivedClasses;
 - (void).cxx_destruct;
 - (void)_didAbortSessionWithID:(id)arg1;
 - (void)_timeOutSessionStartBlockWithIdentifier:(id)arg1 timeout:(double)arg2;

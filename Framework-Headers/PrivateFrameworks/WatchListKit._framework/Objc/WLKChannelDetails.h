@@ -19,6 +19,7 @@
     BOOL _requiresSubscriptionForConsent;
     BOOL _requiresAccountLevelConsent;
     BOOL _shouldPromptForConsentOnSubscriptionChange;
+    BOOL _shouldTrackPlayActivity;
     BOOL _shouldIncludeInConsent;
     BOOL _appInstalled;
     NSString *_channelID;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) BOOL requiresSubscriptionForConsent; // @synthesize requiresSubscriptionForConsent=_requiresSubscriptionForConsent;
 @property (readonly, nonatomic) BOOL shouldIncludeInConsent; // @synthesize shouldIncludeInConsent=_shouldIncludeInConsent;
 @property (readonly, nonatomic) BOOL shouldPromptForConsentOnSubscriptionChange; // @synthesize shouldPromptForConsentOnSubscriptionChange=_shouldPromptForConsentOnSubscriptionChange;
+@property (readonly, nonatomic) BOOL shouldTrackPlayActivity; // @synthesize shouldTrackPlayActivity=_shouldTrackPlayActivity;
 @property (readonly, nonatomic, getter=isSubscribed) BOOL subscribed; // @synthesize subscribed=_subscribed;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isWatchListEnabled) BOOL watchListEnabled; // @synthesize watchListEnabled=_watchListEnabled;

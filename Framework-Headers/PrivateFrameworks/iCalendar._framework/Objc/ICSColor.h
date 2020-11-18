@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
-@interface ICSColor : NSObject <NSCoding>
+@interface ICSColor : NSObject <NSSecureCoding>
 {
     unsigned char _red;
     unsigned char _green;
@@ -16,6 +16,7 @@
 }
 
 + (BOOL)colorDetailsAreEffectivelyDifferentFirstColor:(id)arg1 secondColor:(id)arg2 firstSymbolicName:(id)arg3 secondSymbolicName:(id)arg4;
++ (BOOL)supportsSecureCoding;
 + (id)symbolicColorForLegacyRGB:(id)arg1;
 - (unsigned char)blue;
 - (void)encodeWithCoder:(id)arg1;

@@ -9,7 +9,9 @@
 @class NSArray;
 
 @protocol TSDContainerInfo <TSDInfo>
-- (NSArray *)childInfos;
+
+@property (readonly, nonatomic) NSArray *childInfos;
+
 
 @optional
 - (BOOL)prohibitsModificationToChildren;

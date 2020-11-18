@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSString *fmipToken;
 @property (readonly, nonatomic) NSString *hsaToken;
 @property (readonly, nonatomic) NSString *mapsToken;
+@property (readonly, nonatomic) NSString *mdmServerToken;
 @property (readonly, nonatomic) NSString *personID;
 
 - (void).cxx_destruct;

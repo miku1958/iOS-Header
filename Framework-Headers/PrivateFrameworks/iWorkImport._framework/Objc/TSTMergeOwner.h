@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
     UUIDData_5fbc143e _ownerUID;
     TSTFormulaStore *_mergeRangeStorage;
     _Atomic id _mergeRangeCache;
-    unordered_map_47ee37d2 _mergeOriginsMap;
-    unordered_map_47ee37d2 _reverseOriginsMap;
+    unordered_map_ddbde191 _mergeOriginsMap;
+    unordered_map_ddbde191 _reverseOriginsMap;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -64,10 +64,10 @@ __attribute__((visibility("hidden")))
 - (id)mergeIndexesForCellRegion:(id)arg1;
 - (id)mergeIndexesForRange:(struct TSUCellRect)arg1;
 - (struct TSUCellCoord)mergeOriginForCellID:(struct TSUCellCoord)arg1;
-- (vector_db509b29)mergeRanges;
-- (vector_db509b29)mergeRangesAndCrumbsIntersectingRange:(struct TSUCellRect)arg1;
-- (vector_db509b29)mergeRangesIntersectingCellRegion:(id)arg1;
-- (vector_db509b29)mergeRangesIntersectingRange:(struct TSUCellRect)arg1;
+- (vector_e87daf7b)mergeRanges;
+- (vector_e87daf7b)mergeRangesAndCrumbsIntersectingRange:(struct TSUCellRect)arg1;
+- (vector_e87daf7b)mergeRangesIntersectingCellRegion:(id)arg1;
+- (vector_e87daf7b)mergeRangesIntersectingRange:(struct TSUCellRect)arg1;
 - (id)mergedGridIndicesForDimension:(long long)arg1;
 - (struct TSUCellRect)mergedRangeForCellID:(struct TSUCellCoord)arg1;
 - (id)mergesIntersectingCellRegion:(id)arg1;
@@ -91,14 +91,14 @@ __attribute__((visibility("hidden")))
 - (id)regionFromUIDMergeFormula:(const struct TSCEFormula *)arg1;
 - (int)registerWithCalculationEngine:(id)arg1;
 - (void)reloadMergeCacheForIndexes:(id)arg1;
-- (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_727ee07e *)arg1 calcEngine:(id)arg2;
+- (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
 - (void)removeMergeRange:(struct TSUCellRect)arg1;
 - (id)removeReturningInverseForRegion:(id)arg1;
 - (void)resetMergeCache;
 - (void)resetMergeOriginMap;
 - (void)rewriteForCalculationEngine:(id)arg1 formulaID:(CDStruct_ed6d627d)arg2 rewriteSpec:(id)arg3;
-- (void)rewriteMergesForInsertedRange:(struct _NSRange)arg1 uids:(const vector_dadc1b26 *)arg2 isRows:(BOOL)arg3;
-- (void)rewriteMergesForRemovedRange:(struct _NSRange)arg1 uids:(const vector_dadc1b26 *)arg2 isRows:(BOOL)arg3;
+- (void)rewriteMergesForInsertedRange:(struct _NSRange)arg1 uids:(const vector_4dc5f307 *)arg2 isRows:(BOOL)arg3;
+- (void)rewriteMergesForRemovedRange:(struct _NSRange)arg1 uids:(const vector_4dc5f307 *)arg2 isRows:(BOOL)arg3;
 - (struct TSUCellRect)rewroteFormula:(struct TSCEFormula)arg1 atCoordinate:(struct TSUCellCoord *)arg2 withRewriteSpec:(id)arg3 isUndo:(BOOL)arg4;
 - (void)rollbackToMark:(unsigned long long)arg1;
 - (void)saveToArchive:(struct MergeOwnerArchive *)arg1 archiver:(id)arg2;

@@ -21,7 +21,7 @@
 @property (copy) UIImage *platformImage; // @synthesize platformImage=_platformImage;
 @property double scale; // @synthesize scale=_scale;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

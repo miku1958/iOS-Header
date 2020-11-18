@@ -20,6 +20,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *queueInsertions;
 @property (readonly, copy, nonatomic) NSArray *removals;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

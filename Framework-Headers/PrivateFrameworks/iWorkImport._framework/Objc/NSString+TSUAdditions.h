@@ -44,6 +44,9 @@
 - (id)tsu_stringByUniquingPathInsideDirectory:(id)arg1;
 - (id)tsu_stringByUniquingPathInsideDirectory:(id)arg1 withFormat:(id)arg2;
 - (id)tsu_stringQuotedIfContainsCharacterSet:(id)arg1;
+- (id)tsu_stringWithNormalizedHyphens;
+- (id)tsu_stringWithNormalizedHyphensAndQuotationMarks;
+- (id)tsu_stringWithNormalizedQuotationMarks;
 - (id)tsu_stringWithPathRelativeTo:(id)arg1;
 - (id)tsu_stringWithPathRelativeTo:(id)arg1 allowBacktracking:(BOOL)arg2;
 - (id)tsu_stringWithRealpath;

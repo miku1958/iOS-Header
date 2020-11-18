@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <ClassroomKit/CATTaskClientDelegate-Protocol.h>
+#import <ClassroomKit/CRKRequestPerformingProtocol-Protocol.h>
 
 @class CATOperationQueue, CATTaskClient, NSHashTable, NSString;
 
-@interface CRKStudentDaemonProxy : NSObject <CATTaskClientDelegate>
+@interface CRKStudentDaemonProxy : NSObject <CATTaskClientDelegate, CRKRequestPerformingProtocol>
 {
     CATTaskClient *mTaskClient;
     CATOperationQueue *mOperationQueue;

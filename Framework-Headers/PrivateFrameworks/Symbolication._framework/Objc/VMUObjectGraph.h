@@ -52,11 +52,11 @@
 - (id)initWithNodeCount:(unsigned int)arg1 nodeProvider:(CDUnknownBlockType)arg2;
 - (id)initWithNodesNoCopy:(struct _VMUBlockNode *)arg1 nodeCount:(unsigned int)arg2;
 - (void)internalizeNodes;
-- (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
 - (unsigned int)nodeForAddress:(unsigned long long)arg1;
 - (unsigned int)nodeReferencedFromSourceNode:(unsigned int)arg1 byIvarWithName:(id)arg2;
 - (CDStruct_8b65991f)referenceInfoWithName:(unsigned int)arg1;
+- (unsigned int)scanTypeOfReferenceWithName:(unsigned int)arg1;
 - (void)stronglyConnectedComponentSearch:(unsigned int)arg1 withRecorder:(CDUnknownBlockType)arg2;
 - (id)subgraphWithShortestPathsFromNode:(unsigned int)arg1 toNodes:(void *)arg2;
 - (id)subgraphWithUniquePathsFromNode:(unsigned int)arg1 toNodes:(void *)arg2;

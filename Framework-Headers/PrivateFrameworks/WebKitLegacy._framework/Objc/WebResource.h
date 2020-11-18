@@ -24,7 +24,7 @@
 
 - (struct ArchiveResource *)_coreResource;
 - (void)_ignoreWhenUnarchiving;
-- (id)_initWithCoreResource:(Ref_e6cb3a5e *)arg1;
+- (id)_initWithCoreResource:(Ref_23906fc6 *)arg1;
 - (id)_initWithData:(id)arg1 URL:(id)arg2 MIMEType:(id)arg3 textEncodingName:(id)arg4 frameName:(id)arg5 response:(id)arg6 copyData:(BOOL)arg7;
 - (id)_initWithData:(id)arg1 URL:(id)arg2 response:(id)arg3;
 - (id)_response;

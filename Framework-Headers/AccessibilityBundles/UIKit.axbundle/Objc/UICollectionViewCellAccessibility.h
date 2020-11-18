@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityChildren;
+- (void)_accessibilityClearInternalCaches;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityIndexPath;
 - (BOOL)_accessibilityIsOutsideParentBounds;

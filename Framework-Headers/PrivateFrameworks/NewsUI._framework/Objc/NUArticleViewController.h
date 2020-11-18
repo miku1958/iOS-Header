@@ -12,7 +12,7 @@
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 #import <NewsUI/SXScrollViewControllerDelegate-Protocol.h>
 
-@class FCObservable, NSString, NUArticleAdManager, NUEventManager, NUMultiDelegate, SXScrollViewController, SXVideoPlayerViewControllerManager;
+@class FCObservable, NSString, NUArticleAdManager, NUEventManager, NUMultiDelegate, SXScrollViewController;
 @protocol NUArticleDataProvider, NUDynamicTypeProviding, NUEndOfArticleDataProvider, NULoadingDelegate, NUScrollViewKeyCommandHandler, SXAnalyticsReporting;
 
 @interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXAnalyticsReporting, NUEndOfArticleDataProviderDelegate, NUDynamicTypeObserving, NULoadable>
@@ -29,7 +29,6 @@
     NUArticleAdManager *_adManager;
     id<NUDynamicTypeProviding> _dynamicTypeProviding;
     NUEventManager *_eventManager;
-    SXVideoPlayerViewControllerManager *_videoPlayerViewControllerManager;
     id<NUScrollViewKeyCommandHandler> _keyCommandHandler;
     struct UIEdgeInsets _contentInsets;
 }
@@ -52,7 +51,6 @@
 @property (readonly, nonatomic) NUMultiDelegate *multiScrollViewDelegate; // @synthesize multiScrollViewDelegate=_multiScrollViewDelegate;
 @property (readonly, nonatomic) SXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) SXVideoPlayerViewControllerManager *videoPlayerViewControllerManager; // @synthesize videoPlayerViewControllerManager=_videoPlayerViewControllerManager;
 
 - (void).cxx_destruct;
 - (BOOL)canBecomeFirstResponder;

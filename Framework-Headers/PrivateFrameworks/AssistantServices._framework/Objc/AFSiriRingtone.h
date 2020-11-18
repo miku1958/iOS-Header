@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) AFVoiceInfo *voiceInfo; // @synthesize voiceInfo=_voiceInfo;
 
 - (void).cxx_destruct;
+- (id)_bestVoiceInfoWithCurrentLocale:(id)arg1;
 - (id)_escapeCallDestinationIDString:(id)arg1 forType:(long long)arg2;
 - (id)_escapeCallerIDString:(id)arg1 forType:(long long)arg2;
 - (id)_generateSpokenTextForContacts:(id)arg1 voiceLanguage:(id)arg2 displayedCallerID:(id)arg3 callerIDType:(long long)arg4 callDestinationID:(id)arg5 callDestinationIDType:(long long)arg6 callServiceSpeakableName:(id)arg7;

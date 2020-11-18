@@ -97,6 +97,7 @@
 - (void)_wheelChangedWithEvent:(id)arg1;
 - (void)acceptAutocorrection;
 - (void)activate;
+- (void)activateIfNeeded;
 - (BOOL)allowExternalChangeForFocusHeading:(unsigned long long)arg1 cursorLocation:(unsigned long long)arg2;
 - (void)autoAdjustOrientation;
 - (BOOL)canBecomeFocused;

@@ -25,7 +25,6 @@
 - (void).cxx_destruct;
 - (BOOL)canBecomeFirstResponder;
 - (void)dealloc;
-- (void)fullScreenPresentationDidEnd:(BOOL)arg1;
 - (void)fullScreenPresentationWillBegin;
 - (id)initWithDelegate:(id)arg1 presentingViewController:(id)arg2 sourceView:(id)arg3;
 - (id)keyCommands;

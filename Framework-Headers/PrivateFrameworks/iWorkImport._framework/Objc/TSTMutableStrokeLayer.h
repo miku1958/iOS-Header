@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 - (void)appendStroke:(id)arg1 inRange:(struct TSTSimpleRange)arg2 order:(int)arg3;
 - (void)flattenStrokeOrder;
+- (BOOL)hasStrokeInRange:(struct TSTSimpleRange)arg1;
 - (void)insertSpaceAtRange:(struct TSTSimpleRange)arg1;
 - (void)invalidate;
 - (void)invalidateRange:(struct TSTSimpleRange)arg1;

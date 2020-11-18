@@ -39,6 +39,7 @@
 @property (nonatomic) double nextWeightSampleTime; // @synthesize nextWeightSampleTime=_nextWeightSampleTime;
 @property (nonatomic) double weightAdultStartInKg; // @synthesize weightAdultStartInKg=_weightAdultStartInKg;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_heightCurveForAge:(double)arg1 sex:(long long)arg2;
 - (id)_weightCurveForAge:(double)arg1 sex:(long long)arg2;

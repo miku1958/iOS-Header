@@ -178,7 +178,6 @@
 - (void)replyWithExtensionTimingData:(id)arg1;
 - (void)rootInterfaceController:(id)arg1 performActionWithItemID:(id)arg2 forNotificationID:(id)arg3 userInfo:(id)arg4 clientIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)sendCacheRequestMessage:(id)arg1;
-- (void)sendComplicationObject:(id)arg1;
 - (void)sendData:(id)arg1 clientIdentifiers:(id)arg2;
 - (void)sendData:(id)arg1 clientIdentifiers:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)sendPlist:(id)arg1 clientIdentifiers:(id)arg2;

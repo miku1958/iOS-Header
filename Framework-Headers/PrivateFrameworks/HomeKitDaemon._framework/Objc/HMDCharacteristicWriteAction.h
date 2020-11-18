@@ -33,6 +33,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 characteristic:(id)arg2 targetValue:(id)arg3 actionSet:(id)arg4;
+- (BOOL)isSecureAction;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)replaceCharacteristic:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;

@@ -15,6 +15,7 @@
     NSDictionary *_certificates;
     NSString *_recipientPhoneOrEmail;
     NSString *_pushToken;
+    NSData *_signedEnrollmentDataSignature;
 }
 
 @property (copy, nonatomic) NSDictionary *certificates; // @synthesize certificates=_certificates;
@@ -22,6 +23,7 @@
 @property (copy, nonatomic) NSString *pushToken; // @synthesize pushToken=_pushToken;
 @property (copy, nonatomic) NSString *quoteIdentifier; // @synthesize quoteIdentifier=_quoteIdentifier;
 @property (copy, nonatomic) NSString *recipientPhoneOrEmail; // @synthesize recipientPhoneOrEmail=_recipientPhoneOrEmail;
+@property (copy, nonatomic) NSData *signedEnrollmentDataSignature; // @synthesize signedEnrollmentDataSignature=_signedEnrollmentDataSignature;
 
 + (id)requestWithAuthorizedPeerPaymentQuote:(id)arg1;
 - (void).cxx_destruct;

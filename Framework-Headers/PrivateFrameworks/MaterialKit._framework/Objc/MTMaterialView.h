@@ -8,7 +8,7 @@
 
 #import <MaterialKit/MTMaterialSettingsObserving-Protocol.h>
 
-@class MTVibrantStylingProvider, NSString;
+@class MTVibrantStylingProvider, NSString, UIViewFloatAnimatableProperty;
 @protocol MTMaterialSettings, MTMaterialSettings><MTMaterialSettingsObservable;
 
 @interface MTMaterialView : UIView <MTMaterialSettingsObserving>
@@ -16,6 +16,7 @@
     id<MTMaterialSettings> _settings;
     unsigned long long _options;
     UIView *_backdropView;
+    UIView *_baseOverlayView;
     UIView *_primaryOverlayView;
     UIView *_secondaryOverlayView;
     BOOL _cornerRadiusIsContinuous;
@@ -24,12 +25,15 @@
     BOOL _highlighted;
     BOOL _shouldCrossfadeIfNecessary;
     BOOL _forceCrossfadeIfNecessary;
+    BOOL _useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
     NSString *_groupName;
     double _weighting;
     CDUnknownBlockType _backdropScaleAdjustment;
+    UIViewFloatAnimatableProperty *_backdropFloatAnimatableProperty;
 }
 
 @property (nonatomic) BOOL allowsInPlaceFiltering;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *backdropFloatAnimatableProperty; // @synthesize backdropFloatAnimatableProperty=_backdropFloatAnimatableProperty;
 @property (copy, nonatomic) CDUnknownBlockType backdropScaleAdjustment;
 @property (copy, nonatomic) CDUnknownBlockType backdropScaleAdjustment; // @synthesize backdropScaleAdjustment=_backdropScaleAdjustment;
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +48,8 @@
 @property (nonatomic) BOOL shouldCrossfadeIfNecessary;
 @property (nonatomic) BOOL shouldCrossfadeIfNecessary; // @synthesize shouldCrossfadeIfNecessary=_shouldCrossfadeIfNecessary;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
+@property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustment; // @synthesize useBuiltInAlphaTransformerAndBackdropScaleAdjustment=_useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
 @property (readonly, weak, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider;
 @property (nonatomic) double weighting; // @synthesize weighting=_weighting;
 
@@ -59,6 +65,7 @@
 - (id)_backdropViewSettingsForMaterialSettings:(id)arg1 options:(unsigned long long)arg2;
 - (id)_basicOverlaySettings;
 - (void)_configureBackdropViewIfNecessaryWithWeighting:(double)arg1;
+- (void)_configureBaseOverlayViewIfNecessaryWithWeighting:(double)arg1;
 - (void)_configureIfNecessaryWithWeighting:(double)arg1;
 - (void)_configureMTBackdropView:(id)arg1 withWeighting:(double)arg2;
 - (id)_configureOverlayView:(id *)arg1 ofClass:(Class)arg2 withOptions:(unsigned long long)arg3 color:(id)arg4 alpha:(double)arg5 weighting:(double)arg6;
@@ -67,13 +74,16 @@
 - (void)_configurePrimaryOverlayViewIfNecessaryWithWeighting:(double)arg1;
 - (void)_configureSecondaryOverlayViewIfNecessaryWithWeighting:(double)arg1;
 - (double)_continuousCornerRadius;
+- (BOOL)_isBackdropRequiredForOverlay;
 - (BOOL)_isCrossfadeNecessary;
 - (id)_luminanceOverlaySettings;
 - (id)_mtBackdropView;
 - (id)_observableSettings;
+- (void)_reduceMotionStatusDidChange;
 - (void)_reduceTransparencyStatusDidChange;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setCornerRadius:(double)arg1;
+- (void)_setupOrInvalidateTransformer;
 - (BOOL)_supportsVariableWeighting;
 - (void)_transitionToSettings:(id)arg1 options:(unsigned long long)arg2;
 - (double)cornerRadius;

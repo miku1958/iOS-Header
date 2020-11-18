@@ -13,6 +13,7 @@
 
 + (BOOL)canFilterByProperty:(id)arg1;
 + (id)defaultPropertyValues;
++ (BOOL)supportsSecureCoding;
 - (BOOL)didSkipWithPlayedToTime:(double)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateValuesForProperties:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;

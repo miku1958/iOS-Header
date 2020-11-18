@@ -11,7 +11,7 @@
 
 @interface WebCoreNSURLSession : NSObject
 {
-    struct RefPtr<WebCore::PlatformMediaResourceLoader> _loader;
+    struct RefPtr<WebCore::PlatformMediaResourceLoader, WTF::DumbPtrTraits<WebCore::PlatformMediaResourceLoader>> _loader;
     struct RetainPtr<id<NSURLSessionDelegate>> _delegate;
     struct RetainPtr<NSOperationQueue> _queue;
     NSString *_sessionDescription;
@@ -32,7 +32,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addDelegateOperation:(CDUnknownBlockType)arg1;
+- (void)addDelegateOperation:(Function_89d21b48 *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataTaskWithRequest:(id)arg1;
 - (id)dataTaskWithURL:(id)arg1;

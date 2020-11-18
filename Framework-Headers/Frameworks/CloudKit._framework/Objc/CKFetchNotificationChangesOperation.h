@@ -11,10 +11,10 @@
 @interface CKFetchNotificationChangesOperation : CKOperation
 {
     BOOL _moreComing;
-    CKServerChangeToken *_previousServerChangeToken;
-    unsigned long long _resultsLimit;
     CDUnknownBlockType _notificationChangedBlock;
     CDUnknownBlockType _fetchNotificationChangesCompletionBlock;
+    CKServerChangeToken *_previousServerChangeToken;
+    unsigned long long _resultsLimit;
     CKServerChangeToken *_resultServerChangeToken;
 }
 

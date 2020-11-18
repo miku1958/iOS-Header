@@ -10,6 +10,7 @@
 
 @interface NSURL (SafariServicesExtras)
 
+@property (readonly, nonatomic) NSString *_sf_highLevelDomainFromHostFallingBackToHostOrAbsoluteString;
 @property (readonly, nonatomic) NSString *_sf_topLevelDomain;
 @property (readonly, nonatomic) NSString *sf_absoluteStringWithoutFragment;
 @property (readonly, nonatomic) LSAppLink *sf_appLink;

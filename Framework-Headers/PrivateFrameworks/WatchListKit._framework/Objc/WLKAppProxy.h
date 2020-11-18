@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) BOOL isBetaApp; // @synthesize isBetaApp=_isBetaApp;
 @property (readonly, nonatomic) BOOL isEntitled; // @synthesize isEntitled=_isEntitled;
 @property (readonly, nonatomic) BOOL isSystemApp; // @synthesize isSystemApp=_isSystemApp;
+@property (readonly, nonatomic) BOOL isTVApp;
 @property (readonly, copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (readonly, copy, nonatomic) NSString *subscriptionInfo; // @synthesize subscriptionInfo=_subscriptionInfo;
 @property (readonly, nonatomic) BOOL supportsTVApp; // @synthesize supportsTVApp=_supportsTVApp;

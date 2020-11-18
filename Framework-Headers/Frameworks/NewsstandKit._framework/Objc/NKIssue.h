@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <NewsstandKit/NSSecureCoding-Protocol.h>
+
 @class NKLibrary, NSArray, NSDate, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSURL;
 
-@interface NKIssue : NSObject
+@interface NKIssue : NSObject <NSSecureCoding>
 {
     NKLibrary *_library;
     NSString *_name;
@@ -21,6 +23,7 @@
     BOOL _isDecodingValid;
 }
 
+@property (nonatomic, setter=_setLibrary:) NKLibrary *_library;
 @property (readonly, copy) NSURL *contentURL;
 @property (copy) NSDate *date; // @synthesize date=_date;
 @property (copy) NSString *directory; // @synthesize directory=_directory;
@@ -28,6 +31,7 @@
 @property (copy) NSString *name; // @synthesize name=_name;
 @property (readonly) long long status;
 
++ (BOOL)supportsSecureCoding;
 - (void)_assetChanged:(id)arg1;
 - (id)_assetsForRequest:(id)arg1;
 - (void)_cleanupAsset:(id)arg1;
@@ -35,9 +39,7 @@
 - (id)_directory;
 - (id)_initWithName:(id)arg1 date:(id)arg2 directory:(id)arg3;
 - (BOOL)_isDecodingValid;
-- (id)_library;
 - (void)_markAssetAsResolved:(id)arg1;
-- (void)_setLibrary:(id)arg1;
 - (id)addAssetWithRequest:(id)arg1;
 - (void)dealloc;
 - (id)description;

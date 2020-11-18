@@ -22,6 +22,7 @@
 @property (readonly, copy, nonatomic) NSArray *timedMetadataGroups; // @synthesize timedMetadataGroups=_timedMetadataGroups;
 
 + (id)metadataIdentifiers;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithGenericObject:(id)arg1 timedMetadataGroups:(id)arg2 storeRequestContext:(id)arg3;

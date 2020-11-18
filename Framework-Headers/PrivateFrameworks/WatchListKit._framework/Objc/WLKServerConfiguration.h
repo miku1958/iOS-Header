@@ -17,6 +17,7 @@
     WLKServerConfigurationResponse *_response;
     NSArray *_orderedChannels;
     NSDictionary *_channelsByID;
+    long long _vppaStatus;
     int _didChangeNotificationToken;
     NSMutableDictionary *_completions;
     NSString *_nextEK;
@@ -36,6 +37,7 @@
 @property (readonly, copy, nonatomic) NSArray *orderedChannels;
 @property (strong, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary; // @synthesize requiredRequestKeyValuePairsDictionary=_requiredRequestKeyValuePairsDictionary;
 @property (readonly, copy, nonatomic) NSDictionary *serverRoutesDictionary;
+@property (readonly, nonatomic) long long vppaStatus;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -70,6 +72,7 @@
 - (id)initOffline;
 - (BOOL)isTVEnabled;
 - (id)serverRouteForKey:(id)arg1;
+- (id)utsc;
 
 @end
 

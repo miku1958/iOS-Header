@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 + (id)bubbleSeries;
 + (id)column3DSeries;
 + (id)columnSeries;
++ (id)donut3DSeries;
++ (id)donutSeries;
 + (id)expandProperties:(id)arg1;
 + (id)inspectorDefaultLocalizedValueLabelsDisclosureTitle;
 + (id)inspectorDefaultLocalizedValueLabelsTabName;
@@ -43,8 +45,8 @@ __attribute__((visibility("hidden")))
 + (id)stackedColumn3DSeries;
 + (id)stackedColumnSeries;
 + (id)styleArchTypes;
+- (void).cxx_destruct;
 - (unsigned int)adjustLabelPosition:(unsigned int)arg1 forAxisValue:(double)arg2 intercept:(double)arg3;
-- (id)autorelease;
 - (id)axisTypesForValueLabels;
 - (double)beginDataValueForSeries:(id)arg1 groupIndex:(unsigned long long)arg2 valueAxisID:(id)arg3;
 - (double)beginValueForSeries:(unsigned long long)arg1 index:(unsigned long long)arg2 unitSpaceIntercept:(double)arg3 relativelyPositive:(BOOL)arg4 valueAxis:(id)arg5;
@@ -53,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)chunkedBuildsIncludeInterceptValues;
 - (id)coordinateAxisForSeries:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (int)defaultSymbolType;
 - (id)elementBuilder;
 - (int)fillPropertyType;
@@ -75,11 +76,9 @@ __attribute__((visibility("hidden")))
 - (id)p_axisForSeries:(id)arg1 isCategory:(BOOL)arg2;
 - (id)p_supportedSymbolsIfSymbolsSupported;
 - (id)propertiesForReferenceColors;
-- (oneway void)release;
 - (id)resetSeriesStorage:(id)arg1 forSeries:(id)arg2;
-- (id)retain;
-- (unsigned long long)retainCount;
 - (Class)sceneObjectClass;
+- (id)seriesFillLabelUIString;
 - (unsigned long long)seriesIndexForDrawing:(id)arg1;
 - (id)seriesRendererClasses;
 - (int)specificFillSetFillProperty;

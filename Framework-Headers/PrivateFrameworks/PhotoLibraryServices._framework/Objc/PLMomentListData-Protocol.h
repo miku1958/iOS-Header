@@ -11,6 +11,7 @@
 
 @protocol PLMomentListData <PLMomentRefreshable>
 
+@property (readonly, strong, nonatomic) NSArray *batchedMoments;
 @property (strong, nonatomic) NSDate *endDate;
 @property (nonatomic) short generationType;
 @property (nonatomic) short granularityLevel;

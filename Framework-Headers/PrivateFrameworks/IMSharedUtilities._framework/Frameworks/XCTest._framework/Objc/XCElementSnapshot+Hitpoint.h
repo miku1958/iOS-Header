@@ -11,7 +11,6 @@
 @property (readonly) struct CGPoint hitPoint;
 @property (readonly) struct CGPoint hitPointForScrolling;
 
-- (id)_accessibilityElementAtPoint:(struct CGPoint)arg1 error:(id *)arg2;
 - (id)_snapshotForAccessibilityElement:(id)arg1 error:(id *)arg2;
 - (struct CGPoint)_transformPoint:(struct CGPoint)arg1 windowContextID:(id)arg2 windowDisplayID:(id)arg3;
 - (struct CGRect)_transformRect:(struct CGRect)arg1 windowContextID:(id)arg2 windowDisplayID:(id)arg3;

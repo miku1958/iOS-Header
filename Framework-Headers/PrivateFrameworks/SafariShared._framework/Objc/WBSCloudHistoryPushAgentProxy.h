@@ -26,6 +26,8 @@
 - (void)dealloc;
 - (void)getPushNotifications:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
+- (id)queryMemoryFootprintWithError:(id *)arg1;
 
 @end
 

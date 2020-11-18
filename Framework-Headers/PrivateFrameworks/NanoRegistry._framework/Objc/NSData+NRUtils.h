@@ -11,6 +11,8 @@
 @property (readonly, nonatomic) NSData *NRSHA256;
 
 + (id)dataWithRandomBytesOfSize:(unsigned long long)arg1;
++ (id)fromUUID:(id)arg1;
 - (void)NRSHA256:(unsigned char [32])arg1;
+- (id)toUUID;
 @end
 

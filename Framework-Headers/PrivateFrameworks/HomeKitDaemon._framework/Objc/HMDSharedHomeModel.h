@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSData *homeData; // @dynamic homeData;
 
 + (id)properties;
+- (BOOL)isReplayable;
 
 @end
 

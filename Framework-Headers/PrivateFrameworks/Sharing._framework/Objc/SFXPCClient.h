@@ -29,7 +29,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)activate;
+- (void)_activate;
+- (void)_invalidate;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (void)connectionEstablished;
 - (void)dealloc;
@@ -37,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)getRemoteObjectProxyOnQueue:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)interrupted;
-- (void)invalidate;
 - (void)invalidated;
 - (id)machServiceName;
 - (void)onqueue_activate;

@@ -6,16 +6,16 @@
 
 #import <HomeKitDaemon/HMDEvent.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMDTriggerEventProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDEventTriggerExecutionSession, HMPresenceEventActivation, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSUUID;
+@class HMDEventTriggerExecutionSession, HMPresenceEventActivation, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDPresenceEvent : HMDEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMFMessageReceiver, HMDTriggerEventProtocol>
+@interface HMDPresenceEvent : HMDEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver, HMDTriggerEventProtocol>
 {
     BOOL _currentStatus;
     NSString *_presenceType;
@@ -33,6 +33,7 @@
 @property (weak, nonatomic) HMDEventTriggerExecutionSession *executionSession; // @synthesize executionSession=_executionSession;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) NSString *presenceType; // @synthesize presenceType=_presenceType;
 @property (readonly) Class superclass;

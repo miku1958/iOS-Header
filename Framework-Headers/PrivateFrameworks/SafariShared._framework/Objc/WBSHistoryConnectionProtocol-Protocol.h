@@ -14,5 +14,6 @@
 - (void)getServiceInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getVisitedLinksWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)groupVisitsIntoSessionsBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+- (void)queryMemoryFootprint:(void (^)(WBSMemoryFootprint *, NSError *))arg1;
 @end
 

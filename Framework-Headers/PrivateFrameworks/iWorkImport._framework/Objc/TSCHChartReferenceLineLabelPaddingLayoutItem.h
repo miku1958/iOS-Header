@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
 
+- (void).cxx_destruct;
 - (struct CGSize)calcMinSize;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1 axisID:(id)arg2;
 - (struct CGSize)p_calcMinSizeForModel:(id)arg1;
 - (BOOL)p_hasReferenceLineLabelsWithModel:(id)arg1;

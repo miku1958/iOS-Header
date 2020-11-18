@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <DiagnosticExtensionsDaemon/DEDFinisher-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSURLSessionDataDelegate-Protocol.h>
 
 @class DEDBugSession, NSArray, NSMutableArray, NSString;
 @protocol OS_os_log;
 
-@interface DEDRadarFinisher : NSObject <NSURLSessionDataDelegate, DEDFinisher, NSSecureCoding>
+@interface DEDRadarFinisher : NSObject <NSURLSessionDataDelegate, DEDFinisher, NSSecureCoding, DEDSecureArchiving>
 {
     float _percentComplete;
     DEDBugSession *_session;
@@ -32,6 +33,7 @@
 @property (weak) DEDBugSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
++ (id)archivedClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;

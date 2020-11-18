@@ -17,6 +17,7 @@
     double _cornerRadius;
     UIImage *_backgroundImage;
     unsigned long long _badgeStyle;
+    unsigned long long _textAlignmentStyle;
     UIColor *_tintColor;
     double _fontSize;
     struct UIEdgeInsets _badgeInsets;
@@ -29,12 +30,14 @@
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (nonatomic) double strokeSize; // @synthesize strokeSize=_strokeSize;
+@property (nonatomic) unsigned long long textAlignmentStyle; // @synthesize textAlignmentStyle=_textAlignmentStyle;
 @property (nonatomic) int textBlendMode; // @synthesize textBlendMode=_textBlendMode;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)attributedTextFromString:(id)arg1 fontColor:(id)arg2 fontSize:(double)arg3;
 - (void).cxx_destruct;
+- (struct CGSize)_textSize;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithAttributedString:(id)arg1 tintColor:(id)arg2 cornerRadius:(double)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;

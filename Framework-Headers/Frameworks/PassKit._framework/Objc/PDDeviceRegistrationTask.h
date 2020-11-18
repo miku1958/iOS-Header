@@ -6,14 +6,19 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSMutableArray, NSString;
+
 @interface PDDeviceRegistrationTask : NSObject
 {
-    CDUnknownBlockType _registrationCompletion;
+    NSMutableArray *_completionHandlers;
+    NSString *_reason;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType registrationCompletion; // @synthesize registrationCompletion=_registrationCompletion;
+@property (strong, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
+@property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

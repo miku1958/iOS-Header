@@ -20,8 +20,6 @@
     BOOL _isDeleting;
     BOOL _isDemoting;
     BOOL _isPseudoApp;
-    BOOL _purgeableCalculated;
-    BOOL _specialCalculated;
     LSApplicationProxy *_appProxy;
     long long _demoteSize;
     PSUsageBundleApp *_usageBundleApp;
@@ -52,9 +50,7 @@
 @property (readonly, nonatomic) NSDate *lastUsedDate;
 @property (strong, nonatomic) NSArray *mediaTypes; // @synthesize mediaTypes=_mediaTypes;
 @property (readonly, nonatomic) NSString *name;
-@property BOOL purgeableCalculated; // @synthesize purgeableCalculated=_purgeableCalculated;
 @property (readonly, nonatomic) long long purgeableSize;
-@property BOOL specialCalculated; // @synthesize specialCalculated=_specialCalculated;
 @property (readonly, nonatomic) long long specialSize;
 @property (readonly, nonatomic) long long staticSize;
 @property (readonly, nonatomic) long long totalSize;
@@ -66,9 +62,6 @@
 - (void).cxx_destruct;
 - (id)initWithApplicationProxy:(id)arg1;
 - (void)reloadProxy;
-- (void)setNeedsPurgeableSizeUpdate;
-- (void)setNeedsSpecialSizeUpdate;
-- (long long)specialStorageUsageForBundleID:(id)arg1;
 - (BOOL)valueForBooleanInfoKey:(id)arg1;
 
 @end

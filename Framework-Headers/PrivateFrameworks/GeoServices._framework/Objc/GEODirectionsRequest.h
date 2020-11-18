@@ -141,7 +141,9 @@
 - (void)addServiceTag:(id)arg1;
 - (void)addWaypointTyped:(id)arg1;
 - (void)clearDeviceHistoricalLocations;
+- (void)clearLocations;
 - (void)clearServiceTags;
+- (void)clearSessionId;
 - (void)clearWaypointTypeds;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

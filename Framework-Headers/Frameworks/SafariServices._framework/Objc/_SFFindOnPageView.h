@@ -78,9 +78,11 @@
 - (id)inputAccessoryView;
 - (void)insertText:(id)arg1;
 - (id)keyCommands;
+- (id)matchLabelText;
 - (void)next;
 - (void)prepareFindOnPageWithString:(id)arg1;
 - (void)previous;
+- (void)selectFindOnPageText;
 - (void)showFindOnPage;
 - (id)textForToolbarLabel;
 - (id)toolbar;

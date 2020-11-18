@@ -8,14 +8,14 @@
 
 #import <NewsUI/NUArticleDataProviderFactory-Protocol.h>
 
-@class NSString, SXHost;
-@protocol FCContentContext, NUEmbedDataManager, NUFontRegistration;
+@class NSString;
+@protocol FCContentContext, NUEmbedDataManager, NUFontRegistration, SXHost;
 
 @interface NUANFArticleDataProviderFactory : NSObject <NUArticleDataProviderFactory>
 {
     id<FCContentContext> _contentContext;
     id<NUFontRegistration> _fontRegistration;
-    SXHost *_host;
+    id<SXHost> _host;
     id<NUEmbedDataManager> _embedDataManager;
 }
 
@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) id<NUEmbedDataManager> embedDataManager; // @synthesize embedDataManager=_embedDataManager;
 @property (readonly, nonatomic) id<NUFontRegistration> fontRegistration; // @synthesize fontRegistration=_fontRegistration;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) SXHost *host; // @synthesize host=_host;
+@property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

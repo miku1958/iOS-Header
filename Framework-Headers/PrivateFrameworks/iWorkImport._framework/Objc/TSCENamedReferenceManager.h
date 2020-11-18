@@ -8,18 +8,20 @@
 
 #import <iWorkImport/TSCEReferenceTrackerDelegate-Protocol.h>
 
-@class NSLock, NSString, TSCECalculationEngine, TSCENamedReferenceTrie, TSCEReferenceTracker;
+@class NSObject, NSString, TSCECalculationEngine, TSCENamedReferenceTrie, TSCEReferenceTracker;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface TSCENamedReferenceManager : TSPObject <TSCEReferenceTrackerDelegate>
 {
     TSCENamedReferenceTrie *_names;
     struct unordered_map<TSU::UUIDData<TSP::UUIDData>, SFUtility::ObjcSharedPtr<TSUPointerKeyDictionary>, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, SFUtility::ObjcSharedPtr<TSUPointerKeyDictionary>>>> _stringsByTrackedReferenceByTable;
-    NSLock *_nrmLock;
+    NSObject<OS_dispatch_queue> *_nrmQueue;
     TSCEReferenceTracker *_referenceTracker;
     TSCECalculationEngine *_calcEngine;
 }
 
+@property (weak) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)beginTrackingNamesInRange:(struct TSCERangeCoordinate)arg1 ofResolver:(id)arg2 addingTrackedReferencesTo:(id)arg3;
 - (id)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1 limitedToRange:(struct TSCERangeCoordinate)arg2;
 - (id)cellRangeWasInserted:(const struct TSCERangeRef *)arg1;
+- (void)commonInit;
 - (void)endTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (void)headerCellContentWasModified:(id)arg1;

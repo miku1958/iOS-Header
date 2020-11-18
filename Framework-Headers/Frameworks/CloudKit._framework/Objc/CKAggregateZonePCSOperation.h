@@ -10,9 +10,9 @@
 
 @interface CKAggregateZonePCSOperation : CKDatabaseOperation
 {
+    CDUnknownBlockType _aggregateZonePCSCompletionBlock;
     NSArray *_sourceZoneIDs;
     CKRecordZone *_targetZone;
-    CDUnknownBlockType _aggregateZonePCSCompletionBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType aggregateZonePCSCompletionBlock; // @synthesize aggregateZonePCSCompletionBlock=_aggregateZonePCSCompletionBlock;

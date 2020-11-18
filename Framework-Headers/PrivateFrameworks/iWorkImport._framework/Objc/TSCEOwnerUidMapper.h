@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface TSCEOwnerUidMapper : TSKSosBase
 {
-    UUIDMap_727ee07e _uidMap;
+    UUIDMap_b66c2694 _uidMap;
     UUIDData_5fbc143e _tableUid;
     UUIDData_5fbc143e _nextTableUid;
     UUIDData_5fbc143e _hiddenStateForRowsOwnerUid;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithIdentityMapping;
 - (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 pasteBoardTableUID:(const UUIDData_5fbc143e *)arg2 hiddenStateOwnerForRowsUID:(const UUIDData_5fbc143e *)arg3 hiddenStateOwnerForColumnsUID:(const UUIDData_5fbc143e *)arg4 conditionalStyleOwnerUID:(const UUIDData_5fbc143e *)arg5 sortRuleReferenceTrackerOwnerUID:(const UUIDData_5fbc143e *)arg6 mergeOwnerUID:(const UUIDData_5fbc143e *)arg7;
 - (id)makeInverse;
-- (const UUIDMap_727ee07e *)ownerUIDMap;
+- (const UUIDMap_b66c2694 *)ownerUIDMap;
 - (void)recreateUIDs;
 - (void)saveToArchive:(struct OwnerUIDMapperArchive *)arg1;
 - (void)setToIdentityMapping;

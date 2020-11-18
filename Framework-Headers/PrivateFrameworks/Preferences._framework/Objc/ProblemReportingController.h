@@ -15,18 +15,23 @@
     NSArray *_appActivitySpecifiers;
     NSArray *_iCloudSpecifiers;
     PSSpecifier *_spinnerSpecifier;
+    BOOL _shouldShareHealthRecordsData;
     NSArray *_healthDataSpecifiers;
+    NSArray *_healthRecordsDataSpecifiers;
     NSArray *_wheelchairDataSpecifiers;
 }
 
 @property (readonly) NSArray *appActivitySpecifiers;
 @property (readonly) PSSpecifier *filesystemMetadataSnapshotSpecifier;
 @property (readonly) NSArray *healthDataSpecifiers; // @synthesize healthDataSpecifiers=_healthDataSpecifiers;
+@property (readonly) NSArray *healthRecordsDataSpecifiers; // @synthesize healthRecordsDataSpecifiers=_healthRecordsDataSpecifiers;
+@property (nonatomic) BOOL shouldShareHealthRecordsData; // @synthesize shouldShareHealthRecordsData=_shouldShareHealthRecordsData;
 @property (readonly) PSSpecifier *spinnerSpecifier;
 @property (readonly) NSArray *wheelchairDataSpecifiers; // @synthesize wheelchairDataSpecifiers=_wheelchairDataSpecifiers;
 
 + (BOOL)isProblemReportingEnabled;
 - (void).cxx_destruct;
+- (void)_handleUpdateForSpecifierID:(id)arg1 value:(id)arg2 error:(id)arg3;
 - (void)checkDiagnosticsSessionAvailability;
 - (void)dismissAboutSheet:(id)arg1;
 - (id)iCloudSpecifiers;
@@ -37,21 +42,26 @@
 - (void)setProblemReportingEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setShouldShareAppActivityWithAppDevelopers:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareHealthData:(id)arg1 specifier:(id)arg2;
+- (void)setShouldShareHealthRecordsData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareWheelchairData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareiCloudAnalytics:(id)arg1 specifier:(id)arg2;
 - (id)shouldShareAppActivityWithAppDevelopers;
 - (id)shouldShareHealthDataForSpecifier:(id)arg1;
+- (id)shouldShareHealthRecordsDataForSpecifier:(id)arg1;
 - (id)shouldShareWheelchairDataForSpecifier:(id)arg1;
 - (id)shouldShareiCloudAnalytics:(id)arg1;
+- (BOOL)shouldShowiCloudSpecifiersForAccount:(id)arg1;
+- (void)showAboutAnalyticsSheet;
 - (void)showAboutAppAnalyticsSheet;
-- (void)showAboutDiagnosticsSheet;
 - (void)showAboutHealthDataSheet;
+- (void)showAboutHealthRecordsDataSheet;
 - (void)showAboutSheetWithTitle:(id)arg1 content:(id)arg2;
 - (void)showAboutWheelchairDataSheet;
 - (void)showAboutiCloudAnalyticsSheet;
 - (void)snapshot:(id)arg1;
 - (id)specifiers;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (void)updateHealthRecordsPreferenceForSpecifierID:(id)arg1;
 - (void)updateiCloudAnalyticsForSpecifierID:(id)arg1;
 
 @end

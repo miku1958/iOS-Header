@@ -7,14 +7,14 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSArray, NSDate, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSArray, NSDate, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDActionSet : HMFObject <HMFMessageReceiver, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol>
+@interface HMDActionSet : HMFObject <HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol>
 {
     BOOL _executionInProgress;
     NSString *_name;
@@ -38,6 +38,7 @@
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSDate *lastExecutionDate; // @synthesize lastExecutionDate=_lastExecutionDate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
@@ -47,6 +48,7 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (BOOL)isBuiltinActionSetType:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

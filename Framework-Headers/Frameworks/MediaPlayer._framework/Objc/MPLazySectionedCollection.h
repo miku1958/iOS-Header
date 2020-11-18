@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) id<MPLazySectionedCollectionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)cachedObjectAtIndexPath:(id)arg1;

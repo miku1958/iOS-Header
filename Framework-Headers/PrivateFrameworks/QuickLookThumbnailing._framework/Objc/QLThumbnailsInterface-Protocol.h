@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSFileHandle, NSString, NSURL, QLTThumbnailRequest, QLThumbnailItem;
+@class FPSandboxingURLWrapper, NSArray, NSFileHandle, NSString, NSURL, QLTThumbnailRequest, QLThumbnailItem;
 
 @protocol QLThumbnailsInterface
 - (void)askThumbnailAdditionIndex:(void (^)(id<QLThumbnailAdditionIndexInterface>))arg1;
-- (void)hasThumbnailForURL:(NSURL *)arg1 updateLastHitDate:(BOOL)arg2 andSize:(unsigned long long)arg3 completion:(void (^)(BOOL))arg4;
+- (void)hasThumbnailForURLWrapper:(FPSandboxingURLWrapper *)arg1 updateLastHitDate:(BOOL)arg2 andSize:(unsigned long long)arg3 completion:(void (^)(BOOL))arg4;
 - (void)removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)removeThumbnailAdditionsOnURL:(NSURL *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)requestThumbnailOfMaximumSize:(struct CGSize)arg1 scale:(double)arg2 forThumbnailItem:(QLThumbnailItem *)arg3 completionHandler:(void (^)(UIImage *))arg4;

@@ -6,7 +6,7 @@
 
 #import <ARKit/ARTechnique.h>
 
-@class AVAssetWriter, AVAssetWriterInput, AVAssetWriterInputMetadataAdaptor, AVAssetWriterInputPixelBufferAdaptor, NSMutableArray, NSMutableDictionary, NSObject, NSURL;
+@class AVAssetWriter, AVAssetWriterInput, AVAssetWriterInputMetadataAdaptor, AVAssetWriterInputPixelBufferAdaptor, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSURL;
 @protocol ARRecordingTechniqueDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ARRecordingTechnique : ARTechnique
@@ -21,14 +21,16 @@
     AVAssetWriterInputPixelBufferAdaptor *_videoInputAdaptor;
     AVAssetWriterInput *_depthInput;
     AVAssetWriterInputPixelBufferAdaptor *_depthInputAdaptor;
-    struct __CVPixelBufferPool *_depthBufferPoolFloat16;
     AVAssetWriterInputMetadataAdaptor *_accelInputAdaptor;
     AVAssetWriterInputMetadataAdaptor *_gyroInputAdaptor;
     AVAssetWriterInputMetadataAdaptor *_videoMetadataInputAdaptor;
     AVAssetWriterInputMetadataAdaptor *_deviceOrientationInputAdaptor;
+    NSDictionary *_resultAdaptors;
+    NSDictionary *_resultInputs;
     NSObject<OS_dispatch_semaphore> *_inputIsReadySemaphore;
     BOOL _isWaitingUntilInputIsReady;
     unsigned long long _sensorDataTypes;
+    NSSet *_recordableResultClasses;
     NSMutableArray *_motionDataCache;
     double _sessionSourceTime;
     NSMutableDictionary *_lastRecordedTimestamps;
@@ -42,30 +44,38 @@
 
 @property (nonatomic) BOOL expectDepthData; // @synthesize expectDepthData=_expectDepthData;
 @property (readonly, nonatomic) NSURL *outputFileURL; // @synthesize outputFileURL=_outputFileURL;
+@property (readonly, nonatomic) NSSet *recordingResultDataClasses;
+@property (readonly, nonatomic) unsigned long long recordingSensorDataTypes;
 @property (weak, nonatomic) id<ARRecordingTechniqueDelegate> recordingTechniqueDelegate; // @synthesize recordingTechniqueDelegate=_recordingTechniqueDelegate;
 @property (nonatomic) BOOL shouldSaveVideoInPhotosLibrary; // @synthesize shouldSaveVideoInPhotosLibrary=_shouldSaveVideoInPhotosLibrary;
 
++ (id)metadataIdentifierForARRecordableResultsClass:(Class)arg1;
 - (void).cxx_destruct;
-- (CDStruct_1b6d18a9)cmTimestampFromNSTimeInterval:(double)arg1;
 - (struct CGAffineTransform)computeVideoTransformForDeviceOrientationWithCameraPosition:(long long)arg1;
 - (void)copyVideoToPhotoLibrary;
+- (void)createAssetWriter;
 - (id)createFileMetadata;
 - (void)dealloc;
 - (void)finishRecording;
 - (void)initAssetWriterIfRequiredWithImageData:(id)arg1;
+- (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3;
 - (id)initWithFileURL:(id)arg1 sensorDataTypes:(unsigned long long)arg2;
+- (id)initWithTechniques:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)processData:(id)arg1;
 - (void)removeTemporaryVideoFile;
-- (void)setupAssetWriterWithImageData:(id)arg1;
+- (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
+- (void)setupResultTracks;
+- (void)setupSensorTracksWithImageData:(id)arg1;
+- (void)startAssetWriterAtTimestamp:(double)arg1;
 - (void)writeAccelerometerMetadata:(id)arg1;
-- (void)writeData:(id)arg1 toInputAdaptor:(id)arg2 withIdentifier:(id)arg3;
+- (void)writeData:(id)arg1 withTimestamp:(double)arg2 toInputAdaptor:(id)arg3 withIdentifier:(id)arg4;
 - (void)writeDepthMap:(id)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2;
 - (void)writeDeviceOrientationMetadata:(id)arg1;
 - (void)writeGyroscopeMetadata:(id)arg1;
 - (void)writeImageData:(id)arg1;
-- (void)writeImageMetadata:(id)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2;
+- (void)writeImageMetadata:(id)arg1;
 - (void)writeOutCachedMotionDataIfPresent;
 - (void)writePixelBuffer:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2;
 

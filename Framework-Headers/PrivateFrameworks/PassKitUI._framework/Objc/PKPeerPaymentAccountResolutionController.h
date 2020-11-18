@@ -11,13 +11,12 @@
 #import <PassKitUI/PKPeerPaymentPerformActionViewControllerDelegate-Protocol.h>
 
 @class NSString, PKPeerPaymentAccount, PKPeerPaymentPerformActionViewController, PKPeerPaymentWebService;
-@protocol PKPassLibraryDataProvider, PKPaymentSetupDelegate, PKPaymentSetupViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate;
+@protocol PKPassLibraryDataProvider, PKPaymentSetupDelegate, PKPeerPaymentAccountResolutionControllerDelegate;
 
 @interface PKPeerPaymentAccountResolutionController : NSObject <MFMailComposeViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPeerPaymentPerformActionViewControllerDelegate>
 {
     id<PKPeerPaymentAccountResolutionControllerDelegate> _delegate;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
-    id<PKPaymentSetupViewControllerDelegate> _setupViewControllerDelegate;
     long long _context;
     PKPeerPaymentWebService *_webService;
     PKPeerPaymentPerformActionViewController *_peerPaymentActionViewController;

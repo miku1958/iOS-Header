@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSDictionary *mutations; // @synthesize mutations=mMutations;
 @property (readonly) id<TSCHStyleOwning> styleOwner; // @synthesize styleOwner=mStyleOwner;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)indirectTuple;
 - (id)initWithStyleOwner:(id)arg1 mutationMap:(id)arg2;

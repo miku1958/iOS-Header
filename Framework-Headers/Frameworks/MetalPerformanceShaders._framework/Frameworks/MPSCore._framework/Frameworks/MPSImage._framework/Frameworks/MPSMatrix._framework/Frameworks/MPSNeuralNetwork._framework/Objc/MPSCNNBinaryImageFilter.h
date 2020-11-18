@@ -6,25 +6,15 @@
 
 #import <MPSNeuralNetwork/MPSCNNBinaryKernel.h>
 
-@class MPSBinaryImageKernel;
-
 @interface MPSCNNBinaryImageFilter : MPSCNNBinaryKernel
 {
-    MPSBinaryImageKernel *_k;
 }
 
 + (const struct MPSLibraryInfo *)libraryInfo;
-- (void)dealloc;
-- (id)debugDescription;
-- (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 updateOffset:(BOOL)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithFilter:(id)arg1;
-- (void)setLabel:(id)arg1;
-- (void)setOptions:(unsigned long long)arg1;
-- (void)setPrimaryEdgeMode:(unsigned long long)arg1;
-- (void)setSecondaryEdgeMode:(unsigned long long)arg1;
 
 @end
 

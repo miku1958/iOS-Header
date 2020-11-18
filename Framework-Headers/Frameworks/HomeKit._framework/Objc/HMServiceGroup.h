@@ -28,7 +28,7 @@
     HMThreadSafeMutableArrayCollection *_currentServices;
 }
 
-@property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
+@property (readonly, nonatomic) HMApplicationData *applicationData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentServices; // @synthesize currentServices=_currentServices;
 @property (readonly, copy) NSString *debugDescription;

@@ -65,6 +65,8 @@
 - (void)device:(NSString *)arg1 pairingAdded:(BOOL)arg2;
 - (void)device:(NSString *)arg1 pairingDeleted:(BOOL)arg2;
 - (void)deviceIdentifierDidChange:(NSString *)arg1;
+- (void)didAuthenticatePhoneWithAuthenticationCertificateData:(NSData *)arg1 requestUUID:(NSString *)arg2 error:(NSError *)arg3;
+- (void)didGeneratePhoneAuthenticationSignature:(NSData *)arg1 nonce:(NSData *)arg2 certificate:(NSData *)arg3 inputData:(NSData *)arg4 requestUUID:(NSString *)arg5 error:(NSError *)arg6;
 - (void)didSwitchActivePairedDevice:(NSString *)arg1;
 - (void)didSwitchActivePairedDevice:(NSString *)arg1 forService:(NSString *)arg2 wasHandled:(BOOL *)arg3;
 - (void)engramDataReceived:(NSDictionary *)arg1 withGUID:(NSString *)arg2 forTopic:(NSString *)arg3 toIdentifier:(NSString *)arg4 fromID:(NSString *)arg5 context:(NSDictionary *)arg6;

@@ -76,8 +76,11 @@
         unsigned int server:1;
         unsigned int is_fallback:1;
         unsigned int desperate_ivan:1;
+        unsigned int allow_unusable_addresses:1;
+        unsigned int prefer_no_proxy:1;
         unsigned int tls_should_trust_invalid_certificates:1;
-        unsigned char __pad[5];
+        unsigned int __pad_bits:6;
+        unsigned char __pad[4];
     } value;
     char *e_bundle_id;
     char *account_id;
@@ -103,9 +106,9 @@
     NSObject<OS_xpc_object> *preferred_netagent_uuids;
     NSObject<OS_xpc_object> *ssl_cipher_suites;
     NSObject<OS_dispatch_data> *initial_data_payload;
-    NSObject<OS_xpc_object> *application_protocols;
-    NSObject<OS_xpc_object> *transport_protocols;
-    NSObject<OS_xpc_object> *internet_protocols;
+    NSObject<OS_nw_array> *application_protocols;
+    NSObject<OS_nw_array> *transport_protocols;
+    NSObject<OS_nw_array> *internet_protocols;
     NSObject<OS_xpc_object> *metadata;
 }
 

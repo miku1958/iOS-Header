@@ -41,10 +41,10 @@ __attribute__((visibility("hidden")))
 + (id)tabStopLeaderStringDash;
 + (id)tabStopLeaderStringPoint;
 + (id)tabStopLeaderStringUnderscore;
+- (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (long long)compareToPosition:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

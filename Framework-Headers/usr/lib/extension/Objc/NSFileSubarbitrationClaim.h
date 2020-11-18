@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _nullified;
 }
 
+@property (readonly) BOOL nullified; // @synthesize nullified=_nullified;
 @property (strong) NSXPCConnection *subarbiterConnection; // @synthesize subarbiterConnection=_subarbiterConnection;
 
 + (BOOL)supportsSecureCoding;

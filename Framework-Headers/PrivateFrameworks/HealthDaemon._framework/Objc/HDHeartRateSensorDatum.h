@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) HKQuantity *heartRate;
 @property (readonly, nonatomic) long long heartRateContext; // @synthesize heartRateContext=_heartRateContext;
 
++ (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 dateInterval:(id)arg2 heartRate:(id)arg3 heartRateContext:(long long)arg4 resumeContext:(id)arg5;

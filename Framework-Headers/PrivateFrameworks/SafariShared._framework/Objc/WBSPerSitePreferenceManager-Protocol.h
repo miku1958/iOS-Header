@@ -17,7 +17,7 @@
 - (void)getDefaultPreferenceValueForPreference:(WBSPerSitePreference *)arg1 completionHandler:(void (^)(WBSPerSitePreferenceValue *))arg2;
 - (void)getValueOfPreference:(WBSPerSitePreference *)arg1 forDomain:(NSString *)arg2 withTimeout:(WBSPerSitePreferenceTimeout *)arg3 usingBlock:(void (^)(WBSPerSitePreferenceValue *, BOOL))arg4;
 - (NSArray *)preferences;
-- (void)removePreferenceValuesForDomains:(NSSet *)arg1 fromPreference:(WBSPerSitePreference *)arg2;
+- (void)removePreferenceValuesForDomains:(NSSet *)arg1 fromPreference:(WBSPerSitePreference *)arg2 completionHandler:(void (^)(BOOL))arg3;
 - (void)setDefaultValue:(WBSPerSitePreferenceValue *)arg1 ofPreference:(WBSPerSitePreference *)arg2 completionHandler:(void (^)(BOOL))arg3;
 - (void)setValue:(WBSPerSitePreferenceValue *)arg1 ofPreference:(WBSPerSitePreference *)arg2 forDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL))arg4;
 - (NSArray *)valuesForPreference:(WBSPerSitePreference *)arg1;

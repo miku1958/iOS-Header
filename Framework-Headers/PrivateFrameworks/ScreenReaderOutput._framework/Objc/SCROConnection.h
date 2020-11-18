@@ -6,8 +6,10 @@
 
 #import <Foundation/NSObject.h>
 
+#import <ScreenReaderOutput/NSSecureCoding-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface SCROConnection : NSObject
+@interface SCROConnection : NSObject <NSSecureCoding>
 {
     BOOL _isConnectionStarted;
     unsigned int _pingPort;
@@ -23,13 +25,16 @@ __attribute__((visibility("hidden")))
 + (void)_createConnectionRunLoop;
 + (void)_unconfigServerAndRetry:(BOOL)arg1;
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_ping;
 - (void)_startConnection;
 - (void)_stopConnection;
+- (void)encodeWithCoder:(id)arg1;
 - (id)handlerArrayValueForKey:(int)arg1;
 - (id)handlerValueForKey:(int)arg1;
 - (id)handlerValueForKey:(int)arg1 withObject:(id)arg2;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithHandlerType:(int)arg1 delegate:(id)arg2;
 - (void)invalidate;
 - (int)performHandlerActionForKey:(int)arg1;

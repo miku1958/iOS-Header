@@ -82,6 +82,8 @@
 @property (readonly, nonatomic) BOOL hasExpiredComponents;
 @property (readonly, nonatomic, getter=_hasFeatureLink) BOOL hasFeatureLink;
 @property (readonly, nonatomic, getter=_hasFlyover) BOOL hasFlyover;
+@property (readonly, nonatomic, getter=_hasGenderNeutralRestroom) BOOL hasGenderNeutralRestroom;
+@property (readonly, nonatomic, getter=_hasGenderNeutralRestroomAmenity) BOOL hasGenderNeutralRestroomAmenity;
 @property (readonly, nonatomic, getter=_hasGoodForKidsAmenity) BOOL hasGoodForKidsAmenity;
 @property (readonly, nonatomic) BOOL hasInternalDetourInfo;
 @property (readonly, nonatomic, getter=_hasMUID) BOOL hasMUID;
@@ -185,7 +187,8 @@
 - (void).cxx_destruct;
 - (id)_arrivalMapRegionForTransportType:(int)arg1;
 - (id)_asPlaceInfo;
-- (id)_bestBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)_bestAvatarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)_bestNavbarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (id)_geoMapItem;
 - (id)_geoMapItemCreatingAndAssociatingIfNeeded;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;

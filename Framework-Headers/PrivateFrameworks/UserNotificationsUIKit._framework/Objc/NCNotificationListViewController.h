@@ -103,6 +103,7 @@
 - (id)init;
 - (BOOL)insertNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 - (BOOL)isContentExtensionVisible:(id)arg1;
+- (BOOL)isNotificationListCellVisibleForNotificationRequest:(id)arg1;
 - (void)listViewControllerPresentedByUserAction;
 - (void)loadView;
 - (void)longLookDidDismissForNotificationViewController:(id)arg1;

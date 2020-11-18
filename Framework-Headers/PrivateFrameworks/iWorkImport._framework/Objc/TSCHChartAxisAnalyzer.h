@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)analyzerForAxis:(id)arg1 needsMedian:(BOOL)arg2;
+- (void).cxx_destruct;
 - (void)addGridValue:(id)arg1 forSeries:(id)arg2;
 - (double)average;
-- (void)dealloc;
 - (id)initForAxis:(id)arg1 needsMedian:(BOOL)arg2;
 - (double)max;
 - (double)median;

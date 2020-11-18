@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)allCacheEntries;
 - (id)componentForKey:(union _GEOPlaceDataComponentKey)arg1;
 - (void)dealloc;
+- (id)initWithPath:(id)arg1;
 - (unsigned long long)muidForPhoneNumber:(unsigned long long)arg1;
 - (id)placeDataForKey:(struct _GEOTileKey)arg1;
 - (id)placeDataForMUID:(unsigned long long)arg1;

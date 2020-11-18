@@ -46,8 +46,8 @@ __attribute__((visibility("hidden")))
     VKTimedAnimation *_snapPitchAnimation;
     VKTimedAnimation *_snapHeadingAnimation;
     CameraFrame_406dbd31 _transitionFrame;
-    basic_string_805fe43b _currentStyleName;
-    vector_be85b44e _coordinatesToFrame;
+    basic_string_23d93216 _currentStyleName;
+    vector_36073df6 _coordinatesToFrame;
     unsigned char _styleManeuversToFrame;
     unsigned char _maneuversToFrame;
     double _minCameraHeight;
@@ -117,7 +117,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_addAdditionalRoutePointsToFrameToList:(vector_be85b44e *)arg1;
+- (void)_addAdditionalRoutePointsToFrameToList:(vector_36073df6 *)arg1;
 - (BOOL)_canZoomIn;
 - (BOOL)_canZoomOut;
 - (id)_debugText:(BOOL)arg1 showNavCameraDebugConsoleAttributes:(BOOL)arg2;

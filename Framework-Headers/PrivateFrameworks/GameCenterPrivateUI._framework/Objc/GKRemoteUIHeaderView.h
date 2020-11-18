@@ -27,7 +27,6 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) GKLabel *textLabel; // @synthesize textLabel=_textLabel;
 
-- (void)dealloc;
 - (double)headerHeightForWidth:(double)arg1 inTableView:(id)arg2;
 - (id)initWithAttributes:(id)arg1;
 - (void)setSectionIsFirst:(BOOL)arg1;

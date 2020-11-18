@@ -58,6 +58,7 @@
 @property (strong, nonatomic) UIView *imageDropSnapshot; // @synthesize imageDropSnapshot=_imageDropSnapshot;
 @property (copy, nonatomic) NSString *localDragSessionID; // @synthesize localDragSessionID=_localDragSessionID;
 @property (nonatomic) id<MFMailComposeViewDelegate> mailComposeViewDelegate;
+@property (readonly, nonatomic) BOOL shouldShowInsertPhotosButton;
 @property (readonly, nonatomic) BOOL shouldShowMarkupButton;
 @property BOOL shouldShowStandardButtons; // @synthesize shouldShowStandardButtons=_shouldShowStandardButtons;
 @property (readonly) Class superclass;

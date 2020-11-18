@@ -46,6 +46,8 @@
 @property (nonatomic) BOOL isSendCurrentLocation; // @synthesize isSendCurrentLocation=_isSendCurrentLocation;
 @property (readonly, nonatomic) NSString *label;
 @property (readonly, strong, nonatomic) TIProactiveTrigger *proactiveTrigger;
+@property (readonly, nonatomic, getter=isPunctuationCompletionCandidate) BOOL punctuationCompletionCandidate;
+@property (readonly, nonatomic, getter=isPunctuationKeyCandidate) BOOL punctuationKeyCandidate;
 @property (readonly, nonatomic, getter=isRegionalCandidate) BOOL regionalCandidate;
 @property (readonly, nonatomic, getter=isSecureContentCandidate) BOOL secureContentCandidate;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
@@ -62,6 +64,7 @@
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isPunctuation;
 
 @end
 

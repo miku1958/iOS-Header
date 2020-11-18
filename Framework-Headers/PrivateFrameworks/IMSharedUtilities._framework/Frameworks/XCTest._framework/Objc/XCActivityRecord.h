@@ -40,9 +40,11 @@
 @property (copy) NSString *title; // @synthesize title=_title;
 @property BOOL useLegacySerializationFormat; // @synthesize useLegacySerializationFormat=_useLegacySerializationFormat;
 @property (copy) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (readonly, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
 + (BOOL)_shouldSaveAttachmentWithName:(id)arg1 lifetime:(long long)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_decodeLegacyAttachments:(id)arg1;
 - (void)_synchronized_addAttachment:(id)arg1;
 - (id)_synchronized_attachmentForName:(id)arg1;
@@ -50,13 +52,14 @@
 - (void)_synchronized_removeAttachmentsWithName:(id)arg1;
 - (void)addAttachment:(id)arg1;
 - (void)addDiagnosticReportData:(id)arg1;
+- (void)addLocalizableStringsData:(id)arg1;
 - (void)addMemoryGraphData:(id)arg1;
-- (void)addScreenImageData:(id)arg1;
+- (void)addScreenImageData:(id)arg1 forceKeepAlways:(BOOL)arg2;
 - (void)addSnapshot:(id)arg1;
 - (void)addSynthesizedEvent:(id)arg1;
 - (void)attachAutomaticScreenshot;
+- (void)attachDiagnosticsIncludingLocalizableStringsData:(BOOL)arg1;
 - (id)attachmentForName:(id)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

@@ -33,6 +33,7 @@
 
 - (void).cxx_destruct;
 - (id)_overriddenSectionInfoForSectionID:(id)arg1;
+- (void)connect;
 - (void)dealloc;
 - (void)disableStandaloneTestMode;
 - (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3;

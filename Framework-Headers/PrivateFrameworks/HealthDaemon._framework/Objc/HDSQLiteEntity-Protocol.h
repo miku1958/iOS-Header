@@ -10,6 +10,7 @@
 
 @protocol HDSQLiteEntity <NSObject>
 + (NSArray *)allDatabaseColumnNames;
++ (NSSet *)checkConstraints;
 + (NSArray *)columnsDefinition;
 + (NSString *)databaseName;
 + (NSString *)databaseTable;

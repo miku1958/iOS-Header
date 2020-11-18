@@ -4,22 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSCH2DChartType.h>
+#import <iWorkImport/TSCHChartTypePieFamily.h>
 
 __attribute__((visibility("hidden")))
-@interface TSCHChartTypePie : TSCH2DChartType
+@interface TSCHChartTypePie : TSCHChartTypePieFamily
 {
 }
 
-- (id)animationDeliveryStylesForFilter:(id)arg1;
 - (Class)chartLayoutItemClass;
+- (double)defaultLabelExplosionValue;
 - (id)defaultSeriesType:(unsigned long long)arg1;
-- (BOOL)explosionAffectsChartBodyBounds;
 - (id)init;
-- (BOOL)layoutFrameShouldEncloseInfoGeometry;
-- (struct CGSize)mungeBodySize:(struct CGSize)arg1;
-- (Class)repClass;
 - (id)userInterfaceName;
+- (long long)userInterfaceTag;
 
 @end
 

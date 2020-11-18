@@ -36,6 +36,7 @@
 @property (copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (nonatomic) struct CGRect originalCrop; // @synthesize originalCrop=_originalCrop;
 @property (copy, nonatomic) NTKPhotoAnalysis *topAnalysis; // @synthesize topAnalysis=_topAnalysis;
+@property (readonly, nonatomic) NSString *uuidFromLocalIdentifierAndModificationDate;
 
 + (id)decodeFromDictionary:(id)arg1 forResourceDirectory:(id)arg2;
 - (void).cxx_destruct;

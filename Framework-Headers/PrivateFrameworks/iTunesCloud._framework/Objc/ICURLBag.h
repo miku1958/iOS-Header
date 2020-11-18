@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICURLBagRadioConfiguration, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
+@class ICURLBagLibraryDAAPConfiguration, ICURLBagRadioConfiguration, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICURLBag : NSObject
@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSDictionary *bagValues; // @synthesize bagValues=_bagValues;
 @property (readonly, nonatomic) BOOL canPostKeybagSyncData;
 @property (strong, nonatomic) NSMutableDictionary *convertedActionsCache; // @synthesize convertedActionsCache=_convertedActionsCache;
+@property (readonly, nonatomic) ICURLBagLibraryDAAPConfiguration *libraryDAAPConfiguration;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) ICURLBagRadioConfiguration *radioConfiguration;
 @property (readonly, copy, nonatomic) NSString *storefrontHeaderSuffix;

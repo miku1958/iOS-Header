@@ -30,6 +30,10 @@
 - (oneway void)getDevicesWithAvailablePHSAssetsForLanguage:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (oneway void)getOfflineDictationStatusWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getPeerIdentifiers:(void (^)(NSArray *))arg1;
+- (oneway void)getSupplementalLanguageDictionaryForProduct:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (oneway void)getSupplementalLanguagesDictionary:(void (^)(NSDictionary *, NSError *))arg1;
+- (oneway void)getSupplementalLanguagesForProduct:(NSString *)arg1 forBuildVersion:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (oneway void)getSupplementalLanguagesModificationDate:(void (^)(NSDate *, NSError *))arg1;
 - (oneway void)purgeAnalyticsStoreWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)resetAnalyticsStoreWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)retrieveAccountMessageDictionariesWithReply:(void (^)(NSArray *))arg1;
@@ -46,6 +50,8 @@
 - (oneway void)setLanguage:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setOfflineDictationProfileOverridePath:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)setOutputVoice:(AFVoiceInfo *)arg1 withCompletion:(void (^)(void))arg2;
+- (oneway void)setSupplementalLanguageDictionary:(NSDictionary *)arg1 forProduct:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)setSupplementalLanguages:(NSArray *)arg1 forProduct:(NSString *)arg2 forBuildVersion:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)startRemoteRequest:(AFRequestInfo *)arg1 onPeer:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startUIRequestWithSpeechAudioFileURL:(NSURL *)arg1;

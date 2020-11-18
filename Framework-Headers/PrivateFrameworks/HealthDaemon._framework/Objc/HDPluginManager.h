@@ -10,24 +10,32 @@
 
 @interface HDPluginManager : NSObject
 {
-    HDDaemon *_daemon;
     NSArray *_plugins;
-    NSDictionary *_pluginsByIdentifier;
+    HDDaemon *_daemon;
+    NSArray *_legacyPlugins;
+    NSDictionary *_legacyPluginsByIdentifier;
 }
 
 @property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
-@property (strong, nonatomic) NSArray *plugins; // @synthesize plugins=_plugins;
-@property (strong, nonatomic) NSDictionary *pluginsByIdentifier; // @synthesize pluginsByIdentifier=_pluginsByIdentifier;
+@property (strong, nonatomic) NSArray *legacyPlugins; // @synthesize legacyPlugins=_legacyPlugins;
+@property (strong, nonatomic) NSDictionary *legacyPluginsByIdentifier; // @synthesize legacyPluginsByIdentifier=_legacyPluginsByIdentifier;
 
 - (void).cxx_destruct;
+- (id)_createLegacyPluginsFromClasses:(id)arg1;
+- (id)_createPluginsFromClasses:(id)arg1;
 - (id)_internalPluginsPath;
-- (Class)_loadPrincipalClassConformingToProtocol:(id)arg1 fromBundleAtPath:(id)arg2;
-- (id)_loadPrincipalClassesConformingToProtocol:(id)arg1 fromBundlesInDirectoryAtPath:(id)arg2 error:(id *)arg3;
+- (void)_loadPlugins;
+- (Class)_loadPrincipalClassConformingToProtocols:(id)arg1 fromBundleAtPath:(id)arg2;
+- (id)_loadPrincipalClassesConformingToProtocols:(id)arg1 fromBundlesInDirectoryAtPath:(id)arg2 error:(id *)arg3;
 - (id)_pluginClasses;
+- (id)_pluginPaths;
 - (id)_pluginsPath;
+- (id)_principalClassProtocols;
+- (id)createExtensionsForDaemon:(id)arg1;
+- (id)createExtensionsForProfile:(id)arg1;
 - (id)initWithDaemon:(id)arg1;
-- (void)loadPlugins;
 - (id)pluginForIdentifier:(id)arg1;
+- (id)pluginsConformingToProtocol:(id)arg1;
 - (id)pluginsForProtocol:(id)arg1;
 - (id)queryServerForUUID:(id)arg1 serverDataObject:(id)arg2 queryClass:(Class)arg3 clientProxy:(id)arg4 client:(id)arg5 profile:(id)arg6 queryDelegate:(id)arg7;
 

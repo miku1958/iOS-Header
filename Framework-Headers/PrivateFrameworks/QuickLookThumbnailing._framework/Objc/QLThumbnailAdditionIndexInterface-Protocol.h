@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDate, NSURL;
+@class FPSandboxingURLWrapper, NSDate, NSURL;
 
 @protocol QLThumbnailAdditionIndexInterface
-- (void)addThumbnailForURL:(NSURL *)arg1 size:(unsigned long long)arg2 completion:(void (^)(BOOL))arg3;
-- (void)hasThumbnailForURL:(NSURL *)arg1 updateLastHitDate:(BOOL)arg2 andSize:(unsigned long long)arg3 completion:(void (^)(BOOL))arg4;
+- (void)addThumbnailForURLWrapper:(FPSandboxingURLWrapper *)arg1 size:(unsigned long long)arg2 completion:(void (^)(BOOL))arg3;
+- (void)hasThumbnailForURLWrapper:(FPSandboxingURLWrapper *)arg1 updateLastHitDate:(BOOL)arg2 andSize:(unsigned long long)arg3 completion:(void (^)(BOOL))arg4;
 - (void)removeAllAdditions;
 - (void)removeThumbnailForURL:(NSURL *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)retrieveAllAdditions:(void (^)(NSArray *))arg1;

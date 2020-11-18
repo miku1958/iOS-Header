@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSCoding-Protocol.h>
+#import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSString, WKGeolocationProviderIOS, _WKProcessPoolConfiguration;
 @protocol _WKAutomationDelegate, _WKDownloadDelegate, _WKGeolocationCoreLocationProvider;
 
-@interface WKProcessPool : NSObject <WKObject, NSCoding>
+@interface WKProcessPool : NSObject <WKObject, NSSecureCoding>
 {
     struct ObjectStorage<WebKit::WebProcessPool> _processPool;
     struct WeakObjCPtr<id<_WKAutomationDelegate>> _automationDelegate;
@@ -29,6 +29,7 @@
 @property (nonatomic, setter=_setCoreLocationProvider:) id<_WKGeolocationCoreLocationProvider> _coreLocationProvider;
 @property (weak, nonatomic, setter=_setDownloadDelegate:) id<_WKDownloadDelegate> _downloadDelegate;
 @property (readonly) WKGeolocationProviderIOS *_geolocationProvider;
+@property (nonatomic, getter=_isStorageAccessAPIEnabled, setter=_setStorageAccessAPIEnabled:) BOOL _storageAccessAPIEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -38,22 +39,31 @@
 + (id)_sharedProcessPool;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1 bundleIdentifierIfNotInContainer:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_automationCapabilitiesDidChange;
 - (id)_initWithConfiguration:(id)arg1;
 - (int)_networkProcessIdentifier;
 - (id)_objectForBundleParameter:(id)arg1;
+- (unsigned long long)_pluginProcessCount;
+- (void)_preconnectToServer:(id)arg1;
+- (void)_registerURLSchemeServiceWorkersCanHandle:(id)arg1;
+- (void)_setAllowsAnySSLCertificateForServiceWorker:(BOOL)arg1;
 - (void)_setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
 - (void)_setAutomationSession:(id)arg1;
 - (void)_setCanHandleHTTPSServerTrustEvaluation:(BOOL)arg1;
 - (void)_setCookieAcceptPolicy:(unsigned long long)arg1;
+- (void)_setMaximumNumberOfProcesses:(unsigned long long)arg1;
 - (void)_setObject:(id)arg1 forBundleParameter:(id)arg2;
 - (void)_setObjectsForBundleParametersWithDictionary:(id)arg1;
+- (int)_storageProcessIdentifier;
 - (void)_syncNetworkProcessCookies;
-- (void)_terminateDatabaseProcess;
 - (void)_terminateNetworkProcess;
+- (void)_terminateServiceWorkerProcess;
+- (void)_terminateStorageProcess;
 - (void)_warmInitialProcess;
+- (unsigned long long)_webPageContentProcessCount;
 - (unsigned long long)_webProcessCount;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

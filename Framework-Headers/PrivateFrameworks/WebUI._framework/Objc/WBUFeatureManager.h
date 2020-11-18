@@ -32,6 +32,7 @@
 @property (readonly, nonatomic, getter=isInMemoryBookmarkChangeTrackingAvailable) BOOL inMemoryBookmarkChangeTrackingAvailable; // @synthesize inMemoryBookmarkChangeTrackingAvailable=_inMemoryBookmarkChangeTrackingAvailable;
 @property (readonly, nonatomic, getter=isOfflineReadingListAvailable) BOOL offlineReadingListAvailable; // @synthesize offlineReadingListAvailable=_offlineReadingListAvailable;
 @property (readonly, nonatomic, getter=isParsecITunesResultsAvailable) BOOL parsecITunesResultsAvailable;
+@property (readonly, nonatomic, getter=isPrivateBrowsingAvailable) BOOL privateBrowsingAvailable;
 @property (readonly, nonatomic, getter=isReadingListAvailable) BOOL readingListAvailable; // @synthesize readingListAvailable=_readingListAvailable;
 
 + (long long)accessLevel;

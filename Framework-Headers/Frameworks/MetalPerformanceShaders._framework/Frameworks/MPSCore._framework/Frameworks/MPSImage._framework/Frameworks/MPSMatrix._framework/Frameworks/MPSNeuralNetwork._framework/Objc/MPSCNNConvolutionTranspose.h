@@ -20,6 +20,7 @@
     struct NeuronInfo _neuronInfo;
 }
 
+@property (nonatomic) unsigned long long accumulatorPrecisionOption;
 @property (readonly, nonatomic) unsigned long long featureChannelsLayout; // @synthesize featureChannelsLayout=_featureChannelsLayout;
 @property (readonly, nonatomic) unsigned long long groups; // @synthesize groups=_groups;
 @property (readonly, nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
@@ -33,6 +34,10 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 sourceOffset:(CDStruct_d6af7fc0 *)arg4;
+- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 convolutionGradientStates:(struct NSArray *)arg3;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 convolutionGradientStates:(struct NSArray *)arg3 destinationImages:(struct NSArray *)arg4;
+- (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 convolutionGradientState:(id)arg3;
+- (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 convolutionGradientState:(id)arg3 destinationImage:(id)arg4;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 convolutionState:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;

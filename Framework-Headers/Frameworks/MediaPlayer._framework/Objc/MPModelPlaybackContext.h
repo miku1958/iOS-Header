@@ -27,6 +27,7 @@
 
 + (Class)queueFeederClass;
 + (id)requiredPropertiesForStaticMediaClips;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)init;
 

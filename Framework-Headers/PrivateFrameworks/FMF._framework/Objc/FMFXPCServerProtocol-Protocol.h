@@ -41,6 +41,7 @@
 - (oneway void)getPrettyNameForHandle:(FMFHandle *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)handleAndLocationForPayload:(NSString *)arg1 completion:(void (^)(FMFHandle *, CLLocation *, NSError *))arg2;
 - (oneway void)importMappingPacket:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (oneway void)includeDeviceInAutomations:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)invalidateMappingPackets:(NSSet *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)isMyLocationEnabled:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)isNetworkReachable:(void (^)(BOOL, NSError *))arg1;

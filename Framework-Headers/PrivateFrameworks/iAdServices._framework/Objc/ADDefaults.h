@@ -33,6 +33,7 @@
 + (void)setString:(id)arg1 forKey:(id)arg2;
 + (id)sharedInstance;
 + (id)stringForKey:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

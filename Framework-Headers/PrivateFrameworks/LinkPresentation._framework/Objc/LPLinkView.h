@@ -35,6 +35,7 @@
     UIColor *_backgroundColor;
     UIColor *_overrideBackgroundColor;
     LPiTunesPlaybackInformation *_iTunesPlaybackInformation;
+    double _minimumHeight;
     LPLinkViewComponents *_components;
     LPLinkViewComponents *_componentsForSizing;
     UIView *_contentView;

@@ -20,8 +20,8 @@
 @property struct _PCSIdentitySetData *set; // @synthesize set=_set;
 
 - (void).cxx_destruct;
+- (void)createIdentity:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (id)createIdentityOperation:(id)arg1;
-- (void)createNewIdentity:(id)arg1 roll:(BOOL)arg2 complete:(CDUnknownBlockType)arg3;
 - (void)createNewIdentity:(id)arg1 roll:(BOOL)arg2 sync:(BOOL)arg3 complete:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)ensurePCSFieldsOperation:(id)arg1;

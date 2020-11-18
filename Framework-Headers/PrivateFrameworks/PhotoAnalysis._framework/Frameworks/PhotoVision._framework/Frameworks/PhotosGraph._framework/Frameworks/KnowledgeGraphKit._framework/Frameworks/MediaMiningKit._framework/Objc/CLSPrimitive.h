@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaMiningKit/NSCoding-Protocol.h>
+#import <MediaMiningKit/NSSecureCoding-Protocol.h>
 
-@interface CLSPrimitive : NSObject <NSCoding>
+@interface CLSPrimitive : NSObject <NSSecureCoding>
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

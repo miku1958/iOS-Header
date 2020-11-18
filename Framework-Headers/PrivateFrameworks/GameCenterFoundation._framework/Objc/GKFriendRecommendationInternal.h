@@ -22,6 +22,7 @@
 @property (nonatomic) int source; // @synthesize source=_source;
 
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (int)defaultFamiliarity;
 

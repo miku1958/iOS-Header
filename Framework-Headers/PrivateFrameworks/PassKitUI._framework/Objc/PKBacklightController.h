@@ -6,17 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class BrightnessSystemClient;
+@class BrightnessSystemClient, NSHashTable;
 
 @interface PKBacklightController : NSObject
 {
     BrightnessSystemClient *_brightnessClient;
+    BOOL _foregroundActive;
+    NSHashTable *_requesters;
+    NSHashTable *_allowers;
+    BOOL _isBacklightRamped;
 }
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_changeBacklightMinimumEnabledIfNecessary;
 - (void)_updateBacklightNits:(float)arg1 period:(double)arg2;
+- (void)beginAllowingBacklightRamping:(id)arg1;
+- (void)beginRequestingBacklightRamping:(id)arg1;
+- (void)endAllowingBacklightRamping:(id)arg1;
+- (void)endRequestingBacklightRamping:(id)arg1;
 - (id)init;
-- (void)setBacklightMinimumEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end
 

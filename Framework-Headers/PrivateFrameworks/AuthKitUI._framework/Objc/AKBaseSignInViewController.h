@@ -33,7 +33,10 @@
 - (BOOL)_isAccountModificationRestricted;
 - (BOOL)_isSignInAllowed;
 - (void)_provideDelegateWithAuthResults:(id)arg1 error:(id)arg2;
+- (void)_setPasswordFieldHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setPasswordFieldHiddenIfNeeded;
 - (void)_startBusyWorkUI;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

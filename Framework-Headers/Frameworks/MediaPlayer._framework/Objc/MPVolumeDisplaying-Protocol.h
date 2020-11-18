@@ -11,7 +11,10 @@
 @protocol MPVolumeDisplaying <NSObject>
 
 @property (readonly, nonatomic, getter=isOnScreen) BOOL onScreen;
+@property (readonly, nonatomic, getter=isOnScreenForVolumeDisplay) BOOL onScreenForVolumeDisplay;
 @property (readonly, nonatomic) NSString *volumeAudioCategory;
 
+
+@optional
 @end
 

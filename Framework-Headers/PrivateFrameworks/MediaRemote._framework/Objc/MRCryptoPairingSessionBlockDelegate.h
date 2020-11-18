@@ -29,7 +29,7 @@
 @property (copy, nonatomic) CDUnknownBlockType showSetupCodeBlock; // @synthesize showSetupCodeBlock=_showSetupCodeBlock;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)pairingSession:(id)arg1 didCompleteExchangeWithError:(id)arg2;
 - (void)pairingSession:(id)arg1 didPrepareExchangeData:(id)arg2;
 - (void)pairingSession:(id)arg1 promptForSetupCodeWithCompletion:(CDUnknownBlockType)arg2;

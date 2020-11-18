@@ -16,6 +16,7 @@
 @property (nonatomic) long long value; // @synthesize value=_value;
 
 + (id)predicateWithProperty:(id)arg1 mask:(long long)arg2 value:(long long)arg3;
++ (BOOL)supportsSecureCoding;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;
 - (id)databaseStatementParameters;
 - (id)description;

@@ -4,19 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSCH2DChartAbstractAreaLayoutItem.h>
+#import <iWorkImport/TSCHChartRadialAreaLayoutItem.h>
 
 __attribute__((visibility("hidden")))
-@interface TSCHChartPieAreaLayoutItem : TSCH2DChartAbstractAreaLayoutItem
+@interface TSCHChartPieAreaLayoutItem : TSCHChartRadialAreaLayoutItem
 {
 }
 
-- (void)buildSubTree;
-- (void)p_layoutInward;
-- (void)p_layoutOutward;
-- (id)renderersWithRep:(id)arg1;
-- (id)seriesIndexedPieNormalizedLabelDistancesFromWedgeTips;
-- (struct CGRect)titleFrame;
+- (Class)bodyLayoutItemClass;
 
 @end
 

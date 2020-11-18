@@ -24,10 +24,10 @@
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) int securityType; // @synthesize securityType=_securityType;
 
+- (void).cxx_destruct;
 - (int)StringAsSecurityType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

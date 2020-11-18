@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <nfshared/NFTag-Protocol.h>
 #import <nfshared/NSSecureCoding-Protocol.h>
@@ -53,7 +53,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNFTag:(id)arg1;
-- (id)initWithNFTagForUIDOnly:(id)arg1;
 
 @end
 

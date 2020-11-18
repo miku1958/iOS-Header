@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
-#import <SplashBoard/NSCoding-Protocol.h>
+#import <SplashBoard/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBSnapshotContainerIdentity, XBStatusBarSettings;
 @protocol XBSnapshotManifestStore;
 
-@interface XBApplicationSnapshot : NSObject <NSCoding, BSDescriptionProviding>
+@interface XBApplicationSnapshot : NSObject <NSSecureCoding, BSDescriptionProviding>
 {
     XBSnapshotContainerIdentity *_containerIdentity;
     id<XBSnapshotManifestStore> _store;
@@ -50,6 +50,7 @@
     UIImage *_cachedImage;
     unsigned long long _imageAccessCount;
     BOOL _keepImageAccessUntilExpiration;
+    BOOL _hasProtectedContent;
     NSDictionary *_extendedData;
     CDUnknownBlockType _imageGenerator;
     struct CGAffineTransform _imageTransform;
@@ -77,11 +78,12 @@
 @property (readonly, nonatomic) BOOL fileExists;
 @property (readonly, nonatomic) long long fileFormat; // @synthesize fileFormat=_fileFormat;
 @property (nonatomic) long long fileLocation; // @synthesize fileLocation=_fileLocation;
-@property (readonly, copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
+@property (copy, nonatomic, getter=filename, setter=_setFilename:) NSString *filename; // @synthesize filename=_filename;
 @property (nonatomic, getter=isFullScreen) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
 @property (readonly, nonatomic) XBApplicationSnapshotGenerationContext *generationContext; // @synthesize generationContext=_generationContext;
 @property (readonly, copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly, nonatomic) BOOL hasFullSizedContent;
+@property (readonly, nonatomic) BOOL hasProtectedContent;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) CDUnknownBlockType imageGenerator; // @synthesize imageGenerator=_imageGenerator;
@@ -95,8 +97,9 @@
 @property (readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) struct CGSize naturalSize;
-@property (readonly, copy, nonatomic) NSString *path; // @synthesize path=_path;
+@property (copy, nonatomic, setter=_setPath:) NSString *path; // @synthesize path=_path;
 @property (nonatomic) struct CGSize referenceSize; // @synthesize referenceSize=_referenceSize;
+@property (copy, nonatomic, getter=_relativePath, setter=_setRelativePath:) NSString *relativePath; // @synthesize relativePath=_relativePath;
 @property (copy, nonatomic) NSString *requiredOSVersion; // @synthesize requiredOSVersion=_requiredOSVersion;
 @property (copy, nonatomic) NSString *scheme; // @synthesize scheme=_scheme;
 @property (copy, nonatomic) XBStatusBarSettings *statusBarSettings; // @synthesize statusBarSettings=_statusBarSettings;
@@ -106,6 +109,7 @@
 
 + (id)dataForImage:(id)arg1 withFormat:(long long)arg2;
 + (id)normalizeSnapshotName:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_cacheImage:(id)arg1;
 - (id)_cachedImage;
@@ -115,6 +119,7 @@
 - (id)_createVariantWithIdentifier:(id)arg1;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 includeVariants:(BOOL)arg2;
 - (id)_determineRelativePathForPath:(id)arg1 location:(long long *)arg2;
+- (long long)_fileLocation;
 - (BOOL)_hasGenerationContext;
 - (id)_initWithContainerIdentity:(id)arg1 store:(id)arg2 groupID:(id)arg3 generationContext:(id)arg4;
 - (void)_invalidate;
@@ -123,6 +128,8 @@
 - (BOOL)_path:(id)arg1 isRelativeToPath:(id)arg2 outRelativePath:(id *)arg3;
 - (void)_purgeCachedImageIfAppropriate:(BOOL)arg1;
 - (struct CGRect)_referenceBounds;
+- (void)_setFileLocation:(long long)arg1;
+- (void)_setHasProtectedContent:(BOOL)arg1;
 - (BOOL)_shouldDeleteFileOnPurge;
 - (void)_snynchronized_evaluateImageAccessUntilExpirationEnablingIfNecessary:(BOOL)arg1;
 - (BOOL)_synchronized_isExpired;

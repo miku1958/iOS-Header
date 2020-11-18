@@ -17,6 +17,8 @@
 
 + (id)sharedCookieStore;
 - (void).cxx_destruct;
+- (void)_handleCookiesDidChangeNotification:(id)arg1;
+- (void)dealloc;
 - (id)getCookie:(id)arg1 userIdentifier:(id)arg2;
 - (id)getCookiesForURL:(id)arg1;
 - (id)getCookiesForURL:(id)arg1 userIdentifier:(id)arg2;

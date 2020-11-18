@@ -100,6 +100,7 @@
 - (unsigned long long)_getEffectivePreferredFramesPerSecond;
 - (id)_getPerformanceStats;
 - (float)_getViewContentsScale;
+- (void)_ibSetSceneName:(id)arg1;
 - (long long)_preferredFocusMovementStyle;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_renderContent;

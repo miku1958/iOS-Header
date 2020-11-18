@@ -10,8 +10,8 @@
 
 @interface CKMarkNotificationsReadOperation : CKOperation
 {
-    NSArray *_notificationIDs;
     CDUnknownBlockType _markNotificationsReadCompletionBlock;
+    NSArray *_notificationIDs;
     NSMutableArray *_notificationIDsMarkedRead;
     NSMutableDictionary *_errorsByNotificationID;
 }

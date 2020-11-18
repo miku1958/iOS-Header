@@ -146,6 +146,7 @@
 - (id)geoMapItem;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 addressDictionary:(id)arg3;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 placeType:(int)arg3;
 - (id)initWithLocation:(id)arg1 addressDictionary:(id)arg2 name:(id)arg3 businessURL:(id)arg4 phoneNumber:(id)arg5 muid:(unsigned long long)arg6 attributionID:(id)arg7 sampleSizeForUserRatingScore:(unsigned int)arg8 normalizedUserRatingScore:(float)arg9;
 - (id)initWithName:(id)arg1 placeType:(int)arg2 areaInMeters:(double)arg3;
 - (id)initWithPlaceInfo:(id)arg1 entity:(id)arg2 addressObject:(id)arg3 bounds:(id)arg4 roadAccessInfo:(id)arg5;

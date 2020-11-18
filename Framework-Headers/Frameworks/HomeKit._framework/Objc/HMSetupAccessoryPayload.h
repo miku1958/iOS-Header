@@ -20,8 +20,8 @@
     NSString *_setupCode;
     NSString *_setupID;
     NSNumber *_categoryNumber;
-    NSURL *_setupPayloadURL;
     NSNumber *_flags;
+    NSURL *_setupPayloadURL;
 }
 
 @property (strong, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;

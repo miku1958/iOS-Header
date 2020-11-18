@@ -13,6 +13,7 @@
     unsigned int _task;
     int _pid;
     BOOL _taskIsCorpse;
+    NSString *_hardwareModel;
     NSString *_processName;
     BOOL _processNameNeedsCorrection;
     NSString *_executablePath;
@@ -22,6 +23,8 @@
     int _cpuType;
     BOOL _is64Bit;
     struct timeval _proc_starttime;
+    unsigned long long _physicalFootprint;
+    unsigned long long _physicalFootprintPeak;
     NSDictionary *_lsApplicationInformation;
     NSMutableArray *_binaryImages;
     NSArray *_sortedBinaryImages;
@@ -37,6 +40,9 @@
     NSDate *_date;
     NSMutableDictionary *_environment;
 }
+
+@property (readonly, nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
+@property (readonly, nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
 
 + (id)parseBinaryImagesDescription:(id)arg1;
 + (struct _CSTypeRef)symbolicatorFromBinaryImagesDescription:(id)arg1;
@@ -69,6 +75,7 @@
 - (id)executablePath;
 - (BOOL)initFromCorpse;
 - (void)initFromLiveProcess;
+- (id)initWithPid:(int)arg1 orTask:(unsigned int)arg2;
 - (id)initWithTask:(unsigned int)arg1 getBinariesList:(BOOL)arg2;
 - (BOOL)is64Bit;
 - (BOOL)isAppleApplication;
@@ -77,6 +84,7 @@
 - (id)processDescriptionHeader;
 - (id)processIdentifier;
 - (id)processName;
+- (id)processStatisticsDescription;
 - (id)processVersion;
 - (id)processVersionDictionary;
 - (void)setCrashReporterInfo;

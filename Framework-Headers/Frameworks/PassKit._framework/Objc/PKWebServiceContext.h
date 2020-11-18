@@ -13,8 +13,10 @@
 }
 
 + (id)contextWithArchive:(id)arg1;
++ (id)contextWithArchive:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void)archiveAtPath:(id)arg1;
+- (BOOL)archiveAtPath:(id)arg1 error:(id *)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SplashBoard/BSXPCCoding-Protocol.h>
-#import <SplashBoard/NSCoding-Protocol.h>
+#import <SplashBoard/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString, XBLaunchInterface;
 
-@interface XBApplicationLaunchCompatibilityInfo : NSObject <BSXPCCoding, NSCoding>
+@interface XBApplicationLaunchCompatibilityInfo : NSObject <BSXPCCoding, NSSecureCoding>
 {
     XBLaunchInterface *_defaultInterface;
     BOOL _launchesOpaque;
@@ -36,6 +36,7 @@
 @property (readonly) Class superclass;
 
 + (id)compatibilityInfoForAppInfo:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
@@ -44,6 +45,7 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)launchInterfaceIdentifierForRequest:(id)arg1;
 - (id)launchInterfaceWithIdentifier:(id)arg1;
+- (void)set_launchInterfaces:(id)arg1;
 
 @end
 

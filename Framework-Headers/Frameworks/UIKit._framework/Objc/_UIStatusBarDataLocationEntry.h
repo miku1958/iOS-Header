@@ -13,6 +13,7 @@
 
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (id)_ui_descriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

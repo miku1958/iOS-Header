@@ -4,25 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <PassKitCore/PKTransitAppletState.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
-#import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSData, NSNumber, NSString;
 
-@interface PKFelicaTransitAppletState : NSObject <NSCopying, NSSecureCoding>
+@interface PKFelicaTransitAppletState : PKTransitAppletState <NSCopying>
 {
-    BOOL _blacklisted;
-    BOOL _inStation;
     BOOL _inShinkansenStation;
     BOOL _shinkansenTicketActive;
     BOOL _greenCarTicketUsed;
+    BOOL _balanceAllowedForCommute;
+    BOOL _lowBalanceNotificationEnabled;
     BOOL _hasShinkansenTicket;
     BOOL _hasGreenCarTicket;
-    BOOL _needsStationProcessing;
-    NSNumber *_historySequenceNumber;
-    NSNumber *_balance;
     NSNumber *_shinkansenValidityStartDate;
     NSNumber *_shinkansenValidityTerm;
     NSData *_shinkansenOriginStationCode;
@@ -52,8 +48,7 @@
     NSString *_greenCarDestinationStationString;
 }
 
-@property (copy, nonatomic) NSNumber *balance; // @synthesize balance=_balance;
-@property (nonatomic, getter=isBlacklisted) BOOL blacklisted; // @synthesize blacklisted=_blacklisted;
+@property (nonatomic, getter=isBalanceAllowedForCommute) BOOL balanceAllowedForCommute; // @synthesize balanceAllowedForCommute=_balanceAllowedForCommute;
 @property (copy, nonatomic) NSData *greenCarDestinationStationCode; // @synthesize greenCarDestinationStationCode=_greenCarDestinationStationCode;
 @property (copy, nonatomic) NSString *greenCarDestinationStationString; // @synthesize greenCarDestinationStationString=_greenCarDestinationStationString;
 @property (copy, nonatomic) NSData *greenCarOriginStationCode; // @synthesize greenCarOriginStationCode=_greenCarOriginStationCode;
@@ -62,10 +57,8 @@
 @property (copy, nonatomic) NSNumber *greenCarValidityStartDate; // @synthesize greenCarValidityStartDate=_greenCarValidityStartDate;
 @property (nonatomic) BOOL hasGreenCarTicket; // @synthesize hasGreenCarTicket=_hasGreenCarTicket;
 @property (nonatomic) BOOL hasShinkansenTicket; // @synthesize hasShinkansenTicket=_hasShinkansenTicket;
-@property (copy, nonatomic) NSNumber *historySequenceNumber; // @synthesize historySequenceNumber=_historySequenceNumber;
 @property (nonatomic, getter=isInShinkansenStation) BOOL inShinkansenStation; // @synthesize inShinkansenStation=_inShinkansenStation;
-@property (nonatomic, getter=isInStation) BOOL inStation; // @synthesize inStation=_inStation;
-@property (nonatomic) BOOL needsStationProcessing; // @synthesize needsStationProcessing=_needsStationProcessing;
+@property (nonatomic, getter=isLowBalanceNotificationEnabled) BOOL lowBalanceNotificationEnabled; // @synthesize lowBalanceNotificationEnabled=_lowBalanceNotificationEnabled;
 @property (copy, nonatomic) NSNumber *shinkansenArrivalTime; // @synthesize shinkansenArrivalTime=_shinkansenArrivalTime;
 @property (copy, nonatomic) NSNumber *shinkansenCarNumber; // @synthesize shinkansenCarNumber=_shinkansenCarNumber;
 @property (copy, nonatomic) NSNumber *shinkansenDepartureTime; // @synthesize shinkansenDepartureTime=_shinkansenDepartureTime;
@@ -99,10 +92,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithAppletHistory:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransactions:(id *)arg3;
+- (id)transitPassPropertiesWithPaymentApplication:(id)arg1;
 
 @end
 

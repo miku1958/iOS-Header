@@ -9,34 +9,30 @@
 #import <SafariServices/SFFormAutoFillControllerDelegate-Protocol.h>
 #import <SafariServices/WKNavigationDelegatePrivate-Protocol.h>
 #import <SafariServices/WKUIDelegatePrivate-Protocol.h>
-#import <SafariServices/_SFAuthenticationClient-Protocol.h>
-#import <SafariServices/_SFAuthenticationContextDelegate-Protocol.h>
 #import <SafariServices/_SFDialogControllerDelegate-Protocol.h>
 #import <SafariServices/_SFDialogPresenting-Protocol.h>
 #import <SafariServices/_SFDialogViewControllerPresenting-Protocol.h>
 #import <SafariServices/_SFWebViewDelegate-Protocol.h>
 #import <SafariServices/_WKInputDelegate-Protocol.h>
 
-@class NSString, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFAutoFillAuthenticationCache, _SFDialogController, _SFFormAutoFillController;
+@class NSString, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialogController, _SFFormAutoFillController;
 @protocol SFWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFWebViewDelegate, _WKInputDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate, _SFDialogPresenting>
+@interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFWebViewDelegate, _WKInputDelegate, _SFDialogPresenting>
 {
     _SFFormAutoFillController *_autoFillController;
     BOOL _didFirstLayout;
     BOOL _didFinishDocumentLoad;
     BOOL _shouldSuppressDialogsThatBlockWebProcess;
-    _SFAutoFillAuthenticationCache *_autoFillAuthenticationCache;
     BOOL _loading;
     BOOL _didFirstVisuallyNonEmptyLayout;
     id<SFWebViewControllerDelegate> _delegate;
     WKWebViewConfiguration *_webViewConfiguration;
     _SFDialogController *_dialogController;
-    _SFAuthenticationContext *_autoFillPearlAuthenticationContext;
 }
 
-@property (readonly, nonatomic) _SFAuthenticationContext *autoFillPearlAuthenticationContext; // @synthesize autoFillPearlAuthenticationContext=_autoFillPearlAuthenticationContext;
+@property (readonly, nonatomic) _SFAuthenticationContext *autoFillAuthenticationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SFWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -51,12 +47,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_actionsForElement:(id)arg1 defaultActions:(id)arg2 isPreviewing:(BOOL)arg3;
 - (int)_analyticsClient;
-- (void)_authenticationContextInvalidated:(id)arg1;
 - (id)_presentingViewControllerForWebView:(id)arg1;
 - (void)_webView:(id)arg1 accessoryViewCustomButtonTappedInFormInputSession:(id)arg2;
 - (id)_webView:(id)arg1 actionsForElement:(id)arg2 defaultActions:(id)arg3;
 - (void)_webView:(id)arg1 commitPreviewedViewController:(id)arg2;
 - (void)_webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (long long)_webView:(id)arg1 dataOwnerForDragSession:(id)arg2;
+- (long long)_webView:(id)arg1 dataOwnerForDropSession:(id)arg2;
 - (void)_webView:(id)arg1 didChangeSafeAreaShouldAffectObscuredInsets:(BOOL)arg2;
 - (void)_webView:(id)arg1 didStartInputSession:(id)arg2;
 - (void)_webView:(id)arg1 insertTextSuggestion:(id)arg2 inInputSession:(id)arg3;
@@ -72,12 +69,6 @@ __attribute__((visibility("hidden")))
 - (void)_webViewDidCancelClientRedirect:(id)arg1;
 - (void)_webViewDidEndNavigationGesture:(id)arg1 withNavigationToBackForwardListItem:(id)arg2;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
-- (id)authenticationCustomUIProgressObserverForContext:(id)arg1;
-- (BOOL)authenticationEnabledForContext:(id)arg1;
-- (id)authenticationMessageForContext:(id)arg1;
-- (BOOL)contextRequiresSessionBasedAuthentication:(id)arg1;
-- (BOOL)contextShouldAllowMultipleBiometricFailures:(id)arg1;
-- (BOOL)contextShouldAllowPasscodeFallback:(id)arg1;
 - (void)dealloc;
 - (void)dialogController:(id)arg1 dismissViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 - (void)dialogController:(id)arg1 presentViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;

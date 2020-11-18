@@ -20,6 +20,11 @@ __attribute__((visibility("hidden")))
     _UIDynamicAnimationGroup *_animationGroup;
     long long _style;
     struct CGPoint _offsetWhenPanStarted;
+    CDStruct_5e2aa800 _previousPanVelocity;
+    unsigned long long _accelerationSwipeCount;
+    double _accelerationMultiplier;
+    double _accelerationStartMultiplier;
+    double _accelerationLastSwipeTime;
     NSArray *_displayedEntries;
     double _initialEdgeDigitizerLocation;
     long long _initialIndexEntry;
@@ -87,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)_interpretDigitzerLocation:(struct CGPoint)arg1 toFindEntryIndex:(long long *)arg2 deflection:(double *)arg3;
 - (void)_pressAnimationHeartbeat:(id)arg1;
 - (void)_resetAllPressGestures;
+- (void)_resetSwipeAcceleration;
 - (void)_setContentOffset:(struct CGPoint)arg1 withVelocity:(CDStruct_c3b9c2ee)arg2;
 - (BOOL)_shouldShowEntriesInIndexBar;
 - (void)_showDestinationIndicators;

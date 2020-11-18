@@ -6,29 +6,33 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NSMutableArray, PKPaymentAuthorizationLayout;
+@class NSMutableArray, NSString, PKPaymentAuthorizationLayout, UILabel;
 
 @interface PKPaymentAuthorizationSummaryItemsView : UIView
 {
     NSMutableArray *_labelViews;
     NSMutableArray *_valueViews;
     NSMutableArray *_hasBottomPadding;
-    NSMutableArray *_constraints;
-    NSLayoutConstraint *_emptyConstraint;
+    UILabel *_titleLabel;
     PKPaymentAuthorizationLayout *_layout;
+    NSString *_title;
 }
 
 @property (nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (id)_labelAttributedStringWithString:(id)arg1;
+- (id)_labelAttributedStringWithString:(id)arg1 withDarkColor:(BOOL)arg2;
 - (id)_valueAttributedStringWithString:(id)arg1 type:(unsigned long long)arg2;
-- (void)addLabel:(id)arg1 value:(id)arg2 itemType:(unsigned long long)arg3 maxLabelLines:(long long)arg4 hasBottomPadding:(BOOL)arg5;
+- (void)addLabel:(id)arg1 value:(id)arg2 itemType:(unsigned long long)arg3 maxLabelLines:(long long)arg4 maxValueLines:(long long)arg5 hasBottomPadding:(BOOL)arg6 useDarkColor:(BOOL)arg7;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayout:(id)arg1;
+- (void)layoutSubviews;
 - (void)removeLabelsAndValues;
-- (void)updateConstraints;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1 andLayout:(BOOL)arg2;
+- (id)titleLabel;
 
 @end
 

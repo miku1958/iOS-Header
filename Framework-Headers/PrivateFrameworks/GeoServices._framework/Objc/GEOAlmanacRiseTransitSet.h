@@ -16,9 +16,15 @@ __attribute__((visibility("hidden")))
     NSDate *_sunrise;
     NSDate *_transit;
     NSDate *_sunset;
+    unsigned long long _firstEventType;
+    unsigned long long _lastEventType;
 }
 
+@property (readonly, nonatomic) NSDate *firstEventDate;
+@property (readonly, nonatomic) unsigned long long firstEventType;
 @property (readonly, nonatomic) double julianDay; // @synthesize julianDay=_julianDay;
+@property (readonly, nonatomic) NSDate *lastEventDate;
+@property (readonly, nonatomic) unsigned long long lastEventType;
 @property (readonly, nonatomic) struct CAARiseTransitSetDetails riseTransitSet; // @synthesize riseTransitSet=_riseTransitSet;
 @property (readonly, nonatomic) NSDate *sunrise;
 @property (readonly, nonatomic) NSDate *sunset;
@@ -26,8 +32,11 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_dateFromOffset:(double)arg1 ofJulianDay:(double)arg2;
-- (id)initWithJulianDay:(double)arg1 riseTransitSet:(struct CAARiseTransitSetDetails)arg2;
+- (void)_calculateFirstAndLastEvents;
+- (id)_dateFromOffset:(double)arg1 ofJulianEphemerisDay:(double)arg2;
+- (long long)compareToDate:(id)arg1;
+- (id)initWithJulianEphemerisDay:(double)arg1 riseTransitSet:(struct CAARiseTransitSetDetails)arg2;
+- (BOOL)isCompatibleWith:(id)arg1;
 
 @end
 

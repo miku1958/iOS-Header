@@ -6,13 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData, NSDate, NSString, PCSMTT;
+@class NSData, NSDate, NSString, PCSLockAssertion, PCSMTT;
+@protocol OS_os_transaction;
 
 @interface PCSCKKSItemModifyContext : NSObject
 {
     struct __CFDictionary *_rollAttributes;
     BOOL _sync;
     BOOL _roll;
+    int _retryLeftCount;
     struct _PCSIdentitySetData *_set;
     struct __PCSLogContext *_log;
     long long _timeoutValue;
@@ -28,16 +30,22 @@
     NSDate *_server_NextRollDate;
     struct _PCSIdentityData *_relocateIdentity;
     PCSMTT *_mtt;
+    NSObject<OS_os_transaction> *_transaction;
+    PCSLockAssertion *_lockAssertion;
+    id _activityAssertion;
 }
 
+@property (strong) id activityAssertion; // @synthesize activityAssertion=_activityAssertion;
 @property struct _PCSIdentityData *currentIdentity; // @synthesize currentIdentity=_currentIdentity;
 @property (strong) NSData *currentItemReference; // @synthesize currentItemReference=_currentItemReference;
 @property (strong) NSString *dsid; // @synthesize dsid=_dsid;
 @property (strong) NSData *existingItemReference; // @synthesize existingItemReference=_existingItemReference;
 @property (strong) NSData *existingItemSHA1; // @synthesize existingItemSHA1=_existingItemSHA1;
+@property (strong) PCSLockAssertion *lockAssertion; // @synthesize lockAssertion=_lockAssertion;
 @property struct __PCSLogContext *log; // @synthesize log=_log;
 @property (readonly) PCSMTT *mtt; // @synthesize mtt=_mtt;
 @property struct _PCSIdentityData *relocateIdentity; // @synthesize relocateIdentity=_relocateIdentity;
+@property int retryLeftCount; // @synthesize retryLeftCount=_retryLeftCount;
 @property BOOL roll; // @synthesize roll=_roll;
 @property struct _PCSIdentityData *rollIdentity; // @synthesize rollIdentity=_rollIdentity;
 @property (strong) NSData *rollItemReference; // @synthesize rollItemReference=_rollItemReference;
@@ -47,6 +55,7 @@
 @property struct _PCSIdentitySetData *set; // @synthesize set=_set;
 @property BOOL sync; // @synthesize sync=_sync;
 @property long long timeoutValue; // @synthesize timeoutValue=_timeoutValue;
+@property (strong) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 
 - (void).cxx_destruct;
 - (void)dealloc;

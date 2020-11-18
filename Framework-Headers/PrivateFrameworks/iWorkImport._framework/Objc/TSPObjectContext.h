@@ -12,21 +12,24 @@
 #import <iWorkImport/TSPPassphraseConsumer-Protocol.h>
 #import <iWorkImport/TSPSupportDirectoryDelegate-Protocol.h>
 
-@class NSData, NSHashTable, NSMapTable, NSMutableArray, NSProgress, NSRecursiveLock, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPComponentManager, TSPDataDownloadManager, TSPDataManager, TSPDocumentMetadata, TSPDocumentProperties, TSPDocumentRevision, TSPDocumentSaveOperationState, TSPObject, TSPObjectContainer, TSPObjectUUIDMap, TSPPackage, TSPPackageWriteCoordinator, TSPRegistry, TSPResourceContext, TSPSupportManager, TSPSupportMetadata, TSUTemporaryDirectory;
+@class NSData, NSHashTable, NSMapTable, NSMutableArray, NSProgress, NSRecursiveLock, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPCancellationState, TSPComponentManager, TSPDataDownloadManager, TSPDataManager, TSPDocumentMetadata, TSPDocumentProperties, TSPDocumentRevision, TSPDocumentSaveOperationState, TSPObject, TSPObjectContainer, TSPObjectUUIDMap, TSPPackage, TSPPackageWriteCoordinator, TSPRegistry, TSPResourceContext, TSPSupportManager, TSPSupportMetadata, TSUTemporaryDirectory;
 @protocol NSFilePresenter, OS_dispatch_group, OS_dispatch_queue, TSPObjectContextDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSPObjectContext : NSObject <TSPFileCoordinatorDelegate, TSPObjectDelegate, TSPLazyReferenceDelegate, TSPSupportDirectoryDelegate, TSPPassphraseConsumer>
+@interface TSPObjectContext : NSObject <TSPFileCoordinatorDelegate, TSPLazyReferenceDelegate, TSPObjectDelegate, TSPSupportDirectoryDelegate, TSPPassphraseConsumer>
 {
     _Atomic long long _lastObjectIdentifier;
     _Atomic long long _modifyObjectToken;
     _Atomic int _modifyObjectCount;
+    _Atomic BOOL _didClose;
     unsigned int _mode;
     SFUCryptoKey *_decryptionKey;
     NSURL *_documentURL;
     TSPPackage *_documentPackage;
     TSPPackage *_supportPackage;
     NSURL *_supportURL;
+    NSProgress *_readProgress;
+    TSPCancellationState *_readCancellationState;
     TSPDocumentProperties *_documentProperties;
     NSMapTable *_objects;
     TSPObjectUUIDMap *_objectUUIDMap;
@@ -135,6 +138,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isDocumentSupportTemporary;
 @property (readonly, nonatomic) BOOL isInReadOnlyMode;
 @property (readonly, nonatomic) BOOL isPasswordProtected;
+@property (readonly, nonatomic) BOOL isReadCancelled;
 @property (readonly, nonatomic) BOOL isSupportModified;
 @property (readonly, nonatomic) NSData *keychainGenericItem;
 @property (nonatomic) long long lastObjectIdentifier;

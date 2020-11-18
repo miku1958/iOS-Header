@@ -12,10 +12,15 @@
 {
     NSString *_path;
     unsigned long long _len;
+    unsigned long long _readCursor;
     int _fd;
     BOOL _written;
     BOOL _dead;
 }
+
+@property (readonly, nonatomic) BOOL isAlive;
+@property (readonly, nonatomic) BOOL isFullyRead;
+@property (readonly, nonatomic) unsigned long long length;
 
 - (void).cxx_destruct;
 - (void)clear;

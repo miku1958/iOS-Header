@@ -6,6 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
+@class TSPCancellationState;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -13,15 +14,17 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     long long _rootObjectIdentifier;
+    TSPCancellationState *_cancellationState;
     struct vector<TSP::FinalizeHandlerItem *, std::__1::allocator<TSP::FinalizeHandlerItem *>> _order;
     struct unordered_map<const long long, TSP::FinalizeHandlerItem, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::FinalizeHandlerItem>>> _map;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addFinalizeHandlers:(vector_667badbd *)arg1 strongReferencesOrNull:(unordered_map_502345cb *)arg2 forIdentifier:(long long)arg3;
+- (void)addFinalizeHandlers:(vector_3c415888 *)arg1 strongReferencesOrNull:(unordered_map_38045d47 *)arg2 forIdentifier:(long long)arg3;
 - (id)init;
 - (id)initWithRootObjectIdentifier:(long long)arg1;
+- (id)initWithRootObjectIdentifier:(long long)arg1 cancellationState:(id)arg2;
 - (void)reset;
 - (void)runFinalizeHandlerForItem:(struct FinalizeHandlerItem *)arg1;
 - (BOOL)runFinalizeHandlers;

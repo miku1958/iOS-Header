@@ -261,7 +261,7 @@
 - (void)p_attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [19])arg2 attributesTable:(id [19])arg3 effectiveRange:(struct _NSRange *)arg4;
 - (void)p_didChangeRange:(struct _NSRange)arg1 delta:(long long)arg2 broadcastKind:(int)arg3;
 - (struct _NSRange)p_extendRangeToIncludeSmartFields:(struct _NSRange)arg1;
-- (void)p_fillMarkers:(vector_88016b54 *)arg1 startingAtCharIndex:(unsigned long long)arg2 forCount:(unsigned long long)arg3;
+- (void)p_fillMarkers:(vector_06e666a8 *)arg1 startingAtCharIndex:(unsigned long long)arg2 forCount:(unsigned long long)arg3;
 - (void)p_fillMarkers:(vector_a36e5995 *)arg1 string:(id)arg2 length:(unsigned long long)arg3 hasAttachments:(BOOL *)arg4 hasFootnotes:(BOOL *)arg5 hasBreaks:(BOOL *)arg6;
 - (void)p_findChangesInRange:(struct _NSRange)arg1 onHit:(CDUnknownBlockType)arg2 withAttributeKind:(unsigned int)arg3;
 - (void)p_handleChangeSplittingForInsertedRange:(struct _NSRange)arg1 changeSession:(id)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;

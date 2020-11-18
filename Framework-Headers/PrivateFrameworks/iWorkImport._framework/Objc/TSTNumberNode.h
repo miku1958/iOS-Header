@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
 - (void)dealloc;
 - (id)exportString;
+- (void)fixStorageLanguage:(id)arg1;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
 - (id)initWithContext:(id)arg1 children:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
 - (id)initWithContext:(id)arg1 number:(double)arg2 locale:(id)arg3 firstIndex:(unsigned long long)arg4 lastIndex:(unsigned long long)arg5;

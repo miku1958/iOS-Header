@@ -6,13 +6,14 @@
 
 #import <HomeKitDaemon/HMDBackingStoreModelObject.h>
 
-@class NSArray, NSNumber;
+@class NSArray, NSNumber, NSString;
 
 @interface HMDAssistantAccessControlModel : HMDBackingStoreModelObject
 {
 }
 
 @property (strong, nonatomic) NSArray *accessoryModelIDs; // @dynamic accessoryModelIDs;
+@property (strong, nonatomic) NSString *changeTag; // @dynamic changeTag;
 @property (strong, nonatomic) NSNumber *enabled; // @dynamic enabled;
 @property (strong, nonatomic) NSNumber *options; // @dynamic options;
 

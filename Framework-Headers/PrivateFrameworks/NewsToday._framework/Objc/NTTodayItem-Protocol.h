@@ -7,8 +7,11 @@
 #import <NewsToday/NFCopying-Protocol.h>
 #import <NewsToday/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol NTTodayItem <NSObject, NFCopying>
 
+@property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) unsigned long long itemType;
 
 @end

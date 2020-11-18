@@ -14,10 +14,11 @@
 + (id)_createTempAudioFileWriterWithInputFormat:(struct AudioStreamBasicDescription)arg1 outputFormat:(struct AudioStreamBasicDescription)arg2;
 + (id)_getDateLabel;
 + (void)_readDataFromFileHandle:(id)arg1 toFileHandle:(id)arg2;
-+ (void)_removeOldLoggingFilesIfNeededAtDirectory:(id)arg1;
 + (id)_sharedAudioLoggingQueue;
 + (id)createAudioFileWriterFromWithInputFormat:(struct AudioStreamBasicDescription)arg1 outputFormat:(struct AudioStreamBasicDescription)arg2;
 + (void)generateDeviceAudioLogging:(id)arg1 numChannels:(unsigned int)arg2 speechId:(id)arg3;
++ (void)pruneNumberOfLogFilesTo:(unsigned long long)arg1;
++ (void)removeLogFilesOlderThanNDays:(float)arg1;
 
 @end
 

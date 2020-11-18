@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _unfair_lock;
 }
 
+- (id)_APSRelayTopic;
 - (const struct __CFDictionary **)_DuetActivityProperties;
 - (const struct __CFData **)_TCPConnectionMetadata;
 - (unsigned short)_TLSNegotiatedCipherSuite;

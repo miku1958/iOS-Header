@@ -31,9 +31,13 @@
 + (id)nodeHandleWithJSValue:(id)arg1 inContext:(id)arg2;
 - (void)dealloc;
 - (id)htmlIFrameElementContentFrame;
+- (long long)htmlInputElementAutoFillButtonType;
+- (long long)htmlInputElementLastAutoFillButtonType;
+- (BOOL)isHTMLInputElementAutoFillButtonEnabled;
 - (BOOL)isTextField;
 - (id)renderedImageWithOptions:(unsigned int)arg1;
 - (id)renderedImageWithOptions:(unsigned int)arg1 width:(id)arg2;
+- (void)setHTMLInputElementAutoFillButtonEnabledWithButtonType:(long long)arg1;
 
 @end
 

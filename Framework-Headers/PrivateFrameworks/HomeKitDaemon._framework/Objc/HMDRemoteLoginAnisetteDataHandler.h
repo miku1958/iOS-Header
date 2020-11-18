@@ -6,24 +6,27 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class AKAnisetteProvisioningController, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@class AKAnisetteProvisioningController, HMDAppleMediaAccessory, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDRemoteLoginAnisetteDataHandler : HMFObject <HMFLogging, HMFMessageReceiver>
+@interface HMDRemoteLoginAnisetteDataHandler : HMFObject <HMFLogging, HMDHomeMessageReceiver>
 {
+    HMDAppleMediaAccessory *_accessory;
     NSUUID *_uuid;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
     AKAnisetteProvisioningController *_provisioningController;
 }
 
+@property (readonly, weak) HMDAppleMediaAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) AKAnisetteProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
@@ -31,10 +34,11 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
-- (id)initWithUUID:(id)arg1;
+- (id)initWithUUID:(id)arg1 accessory:(id)arg2;
 - (id)logIdentifier;
 - (void)registerForMessages;
 

@@ -23,7 +23,6 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)label;
-- (unsigned long long)paddingMethod;
 
 @end
 

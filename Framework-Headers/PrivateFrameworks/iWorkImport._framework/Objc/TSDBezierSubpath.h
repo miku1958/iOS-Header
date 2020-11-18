@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, TSDBezierNode, TSUBezierPath;
+@class NSArray, NSMutableArray, TSDBezierNode, TSUBezierPath;
 
 __attribute__((visibility("hidden")))
 @interface TSDBezierSubpath : NSObject
 {
-    NSArray *mNodes;
+    NSMutableArray *mNodes;
     BOOL mClosed;
 }
 

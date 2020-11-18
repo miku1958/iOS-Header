@@ -27,10 +27,10 @@
 @property (readonly, nonatomic) WebView *webView;
 @property (readonly, nonatomic) WebScriptObject *windowObject;
 
-+ (Ref_3893e693)_createFrameWithPage:(struct Page *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3 ownerElement:(struct HTMLFrameOwnerElement *)arg4;
++ (Ref_840bf4f8)_createFrameWithPage:(struct Page *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3 ownerElement:(struct HTMLFrameOwnerElement *)arg4;
 + (void)_createMainFrameWithPage:(struct Page *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3;
 + (void)_createMainFrameWithSimpleHTMLDocumentWithPage:(struct Page *)arg1 frameView:(id)arg2 style:(id)arg3;
-+ (Ref_3893e693)_createSubframeWithOwnerElement:(struct HTMLFrameOwnerElement *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3;
++ (Ref_840bf4f8)_createSubframeWithOwnerElement:(struct HTMLFrameOwnerElement *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3;
 + (id)stringWithData:(id)arg1 textEncodingName:(id)arg2;
 - (BOOL)_allowsFollowingLink:(id)arg1;
 - (void)_attachScriptDebugger;
@@ -48,8 +48,8 @@
 - (id)_computePageRectsWithPrintScaleFactor:(float)arg1 pageSize:(struct CGSize)arg2;
 - (struct _NSRange)_convertDOMRangeToNSRange:(id)arg1;
 - (id)_convertNSRangeToDOMRange:(struct _NSRange)arg1;
-- (RefPtr_59db400e)_convertToDOMRange:(struct _NSRange)arg1;
-- (RefPtr_59db400e)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
+- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1;
+- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
 - (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
 - (id)_dataSource;
 - (void)_detachScriptDebugger;
@@ -84,7 +84,7 @@
 - (BOOL)_loadsSynchronously;
 - (id)_markDOMRange;
 - (BOOL)_needsLayout;
-- (id)_nodesFromList:(Vector_1d266cd7 *)arg1;
+- (id)_nodesFromList:(Vector_2ce69415 *)arg1;
 - (unsigned int)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
 - (unsigned int)_pendingFrameUnloadEventCount;
 - (id)_rectsForRange:(id)arg1;
@@ -171,7 +171,6 @@
 - (BOOL)hasEditableSelection;
 - (BOOL)hasRichlyEditableSelection;
 - (BOOL)hasSelection;
-- (struct CGImage *)imageForNode:(id)arg1 allowDownsampling:(BOOL)arg2 drawContentBehindTransparentNodes:(BOOL)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1 webFrameView:(id)arg2 webView:(id)arg3;
 - (int)innerLineHeight:(id)arg1;

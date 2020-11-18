@@ -33,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<DOCThumbnail> fallback; // @synthesize fallback=_fallback;
+@property (readonly) BOOL hasFinishedTryingToFetchCorrectThumbnail;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRepresentativeIcon;
 @property (readonly, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;

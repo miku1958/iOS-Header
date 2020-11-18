@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
     float _lastMidDisplayZoomLevel;
     CDStruct_34734122 _sortPoint;
     double _contentScale;
-    vector_ea81101c _exclusionAreas;
+    vector_6d9977eb _exclusionAreas;
     BOOL _exclusionAreaVisible;
     _VKTileProviderTimerTarget *_evaluationTarget;
     _VKTileProviderTimerTarget *_prefetchTarget;
@@ -146,7 +146,7 @@ __attribute__((visibility("hidden")))
 - (void)retireNeighborTiles:(id)arg1;
 - (void)retireRenderTiles:(id)arg1;
 - (id)selectTiles:(int *)arg1 needRasterization:(BOOL *)arg2;
-- (void)setTileExclusionAreas:(const vector_ea81101c *)arg1;
+- (void)setTileExclusionAreas:(const vector_6d9977eb *)arg1;
 - (void)setTileSource:(id)arg1 forMapLayer:(unsigned char)arg2 optional:(BOOL)arg3;
 - (id)sourceForLayer:(unsigned char)arg1;
 - (id)sourceForMapLayer:(id)arg1;

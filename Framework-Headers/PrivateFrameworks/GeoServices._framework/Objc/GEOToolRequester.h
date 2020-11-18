@@ -20,11 +20,14 @@
 + (void)useProxy:(Class)arg1;
 + (void)useRemoteProxy;
 - (void).cxx_destruct;
+- (unsigned long long)calculatePurgableSpaceForUrgency:(int)arg1;
+- (unsigned long long)freePurgableSpace:(unsigned long long)arg1 forUrgency:(int)arg2;
 - (id)getDefault:(id)arg1;
 - (id)init;
 - (void)lockDBs;
 - (void)resetMapDataExtension;
 - (void)unlockDBs;
+- (void)validateMapLayerDataWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

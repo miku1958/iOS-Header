@@ -19,7 +19,6 @@
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (readonly, nonatomic) double valueLeftMargin; // @synthesize valueLeftMargin=_valueLeftMargin;
 
-- (void)applyTraitCollection:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 
 @end

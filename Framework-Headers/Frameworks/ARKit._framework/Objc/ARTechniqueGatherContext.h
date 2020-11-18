@@ -24,10 +24,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)anchorsToAdd;
+- (id)anchorsToRemove;
+- (long long)cameraPosition;
 - (id)imageData;
 - (id)initWithParentContext:(id)arg1;
 - (id)resultDataOfClass:(Class)arg1;
-- (CDStruct_14d5dc5e)sessionOriginTransform;
 
 @end
 

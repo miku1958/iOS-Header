@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL scaleToFit; // @synthesize scaleToFit=mScaleToFit;
 @property (nonatomic) unsigned long long width; // @synthesize width=mWidth;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithRenderingExporter:(id)arg1;
 - (struct CGContext *)newCGContextForURL:(id)arg1;
 - (void)releaseCGContext:(struct CGContext *)arg1;

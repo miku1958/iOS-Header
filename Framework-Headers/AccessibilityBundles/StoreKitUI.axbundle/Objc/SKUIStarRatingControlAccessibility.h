@@ -12,8 +12,8 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilitySupportsActivateAction;
 - (void)_axSetRating:(long long)arg1;
+- (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (id)accessibilityLabel;

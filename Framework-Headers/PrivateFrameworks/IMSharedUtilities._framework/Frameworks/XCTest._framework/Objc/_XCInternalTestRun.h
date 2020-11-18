@@ -37,7 +37,7 @@
 @property (readonly) unsigned long long unexpectedExceptionCount;
 @property unsigned long long unexpectedExceptionCountBeforeCrash; // @synthesize unexpectedExceptionCountBeforeCrash=_unexpectedExceptionCountBeforeCrash;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithTest:(id)arg1;
 - (void)recordFailureWithDescription:(id)arg1 inFile:(id)arg2 atLine:(unsigned long long)arg3 expected:(BOOL)arg4;
 - (void)start;

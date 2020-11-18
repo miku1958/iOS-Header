@@ -12,7 +12,7 @@
 #import <PassKitUI/PKPerformActionView-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSString, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKFelicaPassProperties, PKNumberPadSuggestionsView, PKNumericSuggestionLastInput, PKNumericSuggestionsEnterValueAlgorithm, PKPass, PKPaymentPassAction, PKPeerPaymentAccount, PKPeerPaymentService, UITextField;
+@class NSDecimalNumber, NSString, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKNumberPadSuggestionsView, PKNumericSuggestionLastInput, PKNumericSuggestionsEnterValueAlgorithm, PKPass, PKPaymentPassAction, PKPeerPaymentAccount, PKPeerPaymentService, PKTransitPassProperties, UITextField;
 @protocol PKPaymentDataProvider, PKPerformActionViewDelegate;
 
 @interface PKPerformActionEnterValueView : UIView <PKNumberPadSuggestionsViewDelegate, UITextFieldDelegate, PKPaymentDataProviderDelegate, PKEnterCurrencyAmountViewDelegate, PKPerformActionView>
@@ -24,15 +24,17 @@
     PKPaymentPassAction *_action;
     PKNumericSuggestionsEnterValueAlgorithm *_suggestionGenerator;
     PKNumericSuggestionLastInput *_lastInput;
-    PKFelicaPassProperties *_felicaProperties;
+    PKTransitPassProperties *_transitProperties;
     NSDecimalNumber *_currentAmount;
     id<PKPerformActionViewDelegate> _delegate;
     id<PKPaymentDataProvider> _paymentServiceDataProvider;
     PKPeerPaymentService *_peerPaymentService;
     PKPeerPaymentAccount *_peerPaymentAccount;
     NSDecimalNumber *_cardBalance;
-    NSDecimalNumber *_minAmount;
-    NSDecimalNumber *_maxAmount;
+    NSDecimalNumber *_minLoadAmount;
+    NSDecimalNumber *_maxLoadAmount;
+    NSDecimalNumber *_minLoadedBalance;
+    NSDecimalNumber *_maxLoadedBalance;
 }
 
 @property (readonly, nonatomic) UITextField *amountTextField;
@@ -41,8 +43,10 @@
 @property (weak, nonatomic) id<PKPerformActionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSDecimalNumber *maxAmount; // @synthesize maxAmount=_maxAmount;
-@property (copy, nonatomic) NSDecimalNumber *minAmount; // @synthesize minAmount=_minAmount;
+@property (copy, nonatomic) NSDecimalNumber *maxLoadAmount; // @synthesize maxLoadAmount=_maxLoadAmount;
+@property (copy, nonatomic) NSDecimalNumber *maxLoadedBalance; // @synthesize maxLoadedBalance=_maxLoadedBalance;
+@property (copy, nonatomic) NSDecimalNumber *minLoadAmount; // @synthesize minLoadAmount=_minLoadAmount;
+@property (copy, nonatomic) NSDecimalNumber *minLoadedBalance; // @synthesize minLoadedBalance=_minLoadedBalance;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -54,7 +58,7 @@
 - (void)_readCurrentBalance;
 - (BOOL)_shouldShakeCard:(id)arg1;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
-- (void)_updateCurrentBalanceWithUpdatedFelicaProperties;
+- (void)_updateCurrentBalanceWithUpdatedTransitProperties;
 - (void)_updatePeerPaymentAccount;
 - (void)dealloc;
 - (BOOL)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
@@ -64,9 +68,10 @@
 - (void)layoutSubviews;
 - (void)numberPadSuggestionsView:(id)arg1 didSelectSuggestion:(id)arg2;
 - (id)pass;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithFelicaPassProperties:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)saveLastInputValues;
 - (id)serviceProviderData;
+- (void)setMinBalance:(id)arg1;
 - (id)transactionAmount;
 - (id)transactionCurrency;
 - (void)willDismissViewController;

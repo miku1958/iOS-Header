@@ -10,41 +10,23 @@
 
 @interface MPModelStoreBrowseSection : MPModelObject
 {
-    BOOL _memberOfChartSet;
-    BOOL _brick;
-    NSString *_title;
-    long long _sectionType;
-    NSURL *_loadAdditionalContentURL;
-    long long _uniformContentItemType;
-    MPModelStoreBrowseResponse *_previouslyRetrievedNestedResponse;
 }
 
-@property (nonatomic, getter=isBrick) BOOL brick; // @synthesize brick=_brick;
-@property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @synthesize loadAdditionalContentURL=_loadAdditionalContentURL;
-@property (nonatomic, getter=isMemberOfChartSet) BOOL memberOfChartSet; // @synthesize memberOfChartSet=_memberOfChartSet;
-@property (strong, nonatomic) MPModelStoreBrowseResponse *previouslyRetrievedNestedResponse; // @synthesize previouslyRetrievedNestedResponse=_previouslyRetrievedNestedResponse;
-@property (nonatomic) long long sectionType; // @synthesize sectionType=_sectionType;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property (nonatomic) long long uniformContentItemType; // @synthesize uniformContentItemType=_uniformContentItemType;
+@property (nonatomic, getter=isBrick) BOOL brick; // @dynamic brick;
+@property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @dynamic loadAdditionalContentURL;
+@property (nonatomic, getter=isMemberOfChartSet) BOOL memberOfChartSet; // @dynamic memberOfChartSet;
+@property (strong, nonatomic) MPModelStoreBrowseResponse *previouslyRetrievedNestedResponse; // @dynamic previouslyRetrievedNestedResponse;
+@property (nonatomic) long long sectionType; // @dynamic sectionType;
+@property (copy, nonatomic) NSString *title; // @dynamic title;
+@property (nonatomic) long long uniformContentItemType; // @dynamic uniformContentItemType;
 
-+ (id)__MPModelStoreBrowseSectionPropertyBrick__PROPERTY;
-+ (id)__MPModelStoreBrowseSectionPropertyLoadAdditionalContentURL__PROPERTY;
-+ (id)__MPModelStoreBrowseSectionPropertyMemberOfChartSet__PROPERTY;
-+ (id)__MPModelStoreBrowseSectionPropertyPreviouslyRetrievedNestedResponse__PROPERTY;
-+ (id)__MPModelStoreBrowseSectionPropertyTitle__PROPERTY;
-+ (id)__MPModelStoreBrowseSectionPropertyType__PROPERTY;
-+ (id)__MPModelStoreBrowseSectionPropertyUniformContentItemType__PROPERTY;
-+ (id)__brick__KEY;
-+ (id)__loadAdditionalContentURL__KEY;
-+ (id)__memberOfChartSet__KEY;
-+ (id)__previouslyRetrievedNestedResponse__KEY;
-+ (id)__sectionType__KEY;
-+ (id)__title__KEY;
-+ (id)__uniformContentItemType__KEY;
-- (void).cxx_destruct;
-- (id)descriptionWithType:(long long)arg1;
-- (unsigned long long)hash;
-- (BOOL)isEqual:(id)arg1;
++ (id)__brick_KEY;
++ (id)__loadAdditionalContentURL_KEY;
++ (id)__memberOfChartSet_KEY;
++ (id)__previouslyRetrievedNestedResponse_KEY;
++ (id)__sectionType_KEY;
++ (id)__title_KEY;
++ (id)__uniformContentItemType_KEY;
 
 @end
 

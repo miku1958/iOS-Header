@@ -44,7 +44,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long defaultItemEQPresetType; // @synthesize defaultItemEQPresetType=_defaultItemEQPresetType;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL disallowsAMRAudio;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic, getter=isExternalPlaybackActive) BOOL externalPlaybackActive;
 @property (readonly, nonatomic) long long externalPlaybackType;

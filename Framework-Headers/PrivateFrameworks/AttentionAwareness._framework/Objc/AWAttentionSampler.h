@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     int _currentState;
     AWSampleLogger *_sampleLogger;
     CDUnknownBlockType _stateChangedCallback;
+    unsigned long long _samplingSuppressedMask;
     unsigned long long _lastTriggerTime;
     unsigned long long _lastPositiveDetectTime;
     unsigned long long _lastPollTimeoutTime;
@@ -27,12 +28,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long lastPositiveDetectTime; // @synthesize lastPositiveDetectTime=_lastPositiveDetectTime;
 @property (nonatomic) unsigned long long lastTriggerTime; // @synthesize lastTriggerTime=_lastTriggerTime;
 @property (strong, nonatomic) AWSampleLogger *sampleLogger; // @synthesize sampleLogger=_sampleLogger;
+@property (nonatomic) unsigned long long samplingSuppressedMask; // @synthesize samplingSuppressedMask=_samplingSuppressedMask;
 @property (copy) CDUnknownBlockType stateChangedCallback; // @synthesize stateChangedCallback=_stateChangedCallback;
 
 - (void).cxx_destruct;
 - (void)finishDeadlineComputation;
 - (id)init;
 - (id)initWithMask:(unsigned long long)arg1;
+- (void)setSmartCoverClosed:(BOOL)arg1;
 - (void)setUnitTestMode;
 - (void)shouldSample:(BOOL)arg1 withDeadline:(unsigned long long)arg2;
 - (void)startDeadlineComputation;

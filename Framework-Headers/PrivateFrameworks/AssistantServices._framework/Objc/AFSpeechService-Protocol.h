@@ -15,8 +15,10 @@
 - (oneway void)fetchAssetsForLanguage:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)fetchUserDataForLanguage:(NSString *)arg1 completion:(void (^)(SiriCoreLocalSpeechUserData *))arg2;
 - (oneway void)finishAudio;
+- (oneway void)getInstalledAssetSizeWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)getOfflineDictationStatusIgnoringCache:(BOOL)arg1 withCompletion:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)preheatSpeechRecognitionWithLanguage:(NSString *)arg1;
+- (oneway void)purgeInstalledAssetsWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)runAdaptationRecipeEvaluation:(NSDictionary *)arg1 localSpeechDESRecord:(SiriCoreLocalSpeechDESRecord *)arg2 attachments:(NSArray *)arg3 completion:(void (^)(NSDictionary *, NSData *, NSError *))arg4;
 - (oneway void)startRequestActivityWithCompletion:(void (^)(void))arg1;
 - (oneway void)startSpeechRecognitionWithLanguage:(NSString *)arg1 task:(NSString *)arg2 context:(NSArray *)arg3 profile:(NSData *)arg4 narrowband:(BOOL)arg5 detectUtterances:(BOOL)arg6 censorSpeech:(BOOL)arg7 maximumRecognitionDuration:(double)arg8 farField:(BOOL)arg9 overrides:(NSDictionary *)arg10 modelOverrideURL:(NSURL *)arg11 didStartHandler:(void (^)(NSString *, NSError *))arg12;

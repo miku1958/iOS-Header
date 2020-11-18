@@ -33,6 +33,7 @@
 - (id)initWithSolver:(id)arg1;
 - (float)predict:(id)arg1;
 - (id)toPlistWithChunks:(id)arg1;
+- (id)weights;
 
 @end
 

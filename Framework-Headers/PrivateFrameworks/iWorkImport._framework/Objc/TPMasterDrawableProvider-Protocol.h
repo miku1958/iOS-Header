@@ -9,11 +9,13 @@
 @class NSArray, NSSet, TSDDrawableInfo, TSKAddedToDocumentContext;
 
 @protocol TPMasterDrawableProvider <NSObject>
+
+@property (readonly, nonatomic) unsigned long long countOfMasterDrawables;
+@property (readonly, nonatomic) NSArray *masterDrawables;
+
 - (void)addMasterDrawable:(TSDDrawableInfo *)arg1 atIndex:(unsigned long long)arg2 insertContext:(TSKAddedToDocumentContext *)arg3 suppressDOLC:(BOOL)arg4;
 - (void)addMasterDrawables:(NSArray *)arg1 atIndex:(unsigned long long)arg2 insertContext:(TSKAddedToDocumentContext *)arg3 suppressDOLC:(BOOL)arg4;
-- (unsigned long long)countOfMasterDrawables;
 - (unsigned long long)indexOfMasterDrawable:(TSDDrawableInfo *)arg1;
-- (NSArray *)masterDrawables;
 - (NSArray *)masterDrawablesSortedByZOrder:(NSSet *)arg1;
 - (void)removeMasterDrawable:(TSDDrawableInfo *)arg1 suppressDOLC:(BOOL)arg2;
 @end

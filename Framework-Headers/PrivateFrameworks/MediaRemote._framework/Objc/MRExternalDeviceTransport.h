@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSError, NSString;
+@class NSError, NSString, _MRDeviceInfoMessageProtobuf;
 
 __attribute__((visibility("hidden")))
 @interface MRExternalDeviceTransport : NSObject
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _requiresCustomPairing;
 }
 
-@property (readonly, nonatomic) void *deviceInfo;
+@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic) NSString *hostname;
 @property (readonly, nonatomic) NSString *name;

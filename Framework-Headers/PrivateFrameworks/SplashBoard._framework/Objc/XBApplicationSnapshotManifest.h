@@ -7,27 +7,34 @@
 #import <objc/NSObject.h>
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
+#import <SplashBoard/XBApplicationSnapshotManifestDelegate-Protocol.h>
 
 @class NSString, XBApplicationSnapshotManifestImpl;
+@protocol XBApplicationSnapshotManifestDelegate;
 
-@interface XBApplicationSnapshotManifest : NSObject <BSDescriptionProviding>
+@interface XBApplicationSnapshotManifest : NSObject <XBApplicationSnapshotManifestDelegate, BSDescriptionProviding>
 {
     XBApplicationSnapshotManifestImpl *_manifestImpl;
+    id<XBApplicationSnapshotManifestDelegate> _delegate;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *containerPath;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<XBApplicationSnapshotManifestDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) XBApplicationSnapshotManifestImpl *manifestImpl; // @synthesize manifestImpl=_manifestImpl;
 @property (readonly) Class superclass;
 
++ (id)_manifestQueue;
++ (id)_manifestsByIdentity;
 + (id)debugDescription;
 + (void)deleteAllSystemSnapshots;
 + (void)initialize;
 + (unsigned long long)maximumInFlightDataSize;
 - (void).cxx_destruct;
+- (BOOL)_invalidate;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)createSnapshotWithGroupID:(id)arg1;
 - (id)createVariantForSnapshot:(id)arg1 withIdentifier:(id)arg2;
@@ -46,6 +53,7 @@
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 didGenerateImage:(CDUnknownBlockType)arg4 didSaveImage:(CDUnknownBlockType)arg5;
 - (id)initWithApplicationInfo:(id)arg1;
 - (id)initWithContainerIdentity:(id)arg1 store:(id)arg2;
+- (void)manifestDidUpdateUnderMemoryPressure:(id)arg1;
 - (void)saveSnapshot:(id)arg1 atPath:(id)arg2 withContext:(id)arg3;
 - (id)snapshotsForGroupID:(id)arg1;
 - (id)snapshotsForGroupID:(id)arg1 fetchRequest:(id)arg2;

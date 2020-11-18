@@ -48,12 +48,12 @@ __attribute__((visibility("hidden")))
     CKTimeLogger *_timeLogger;
     id<CKDURLRequestMetricsDelegate> _metricsDelegate;
     id<CKDURLRequestAuthRetryDelegate> _authRetryDelegate;
-    CKDOperation *_operation;
     CKDProtocolTranslator *_translator;
     NSString *_automatedDeviceGroup;
     NSDictionary *_clientProvidedAdditionalHeaderValues;
     NSDictionary *_fakeResponseOperationResultByItemID;
     NSError *_error;
+    CKDOperation *_operation;
     NSObject<OS_dispatch_queue> *_lifecycleQueue;
     NSURLSessionDataTask *_urlSessionTask;
     C2RequestOptions *_c2RequestOptions;
@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
     NSString *_iCloudAuthToken;
     NSString *_serverProvidedAutoBugCaptureReason;
     CKDTapToRadarRequest *_serverProvidedTapToRadarRequest;
+    NSString *_serverProvidedAutoSysdiagnoseCollectionReason;
     NSMutableDictionary *_countsByRequestOperationType;
     NSMutableDictionary *_overriddenHeaders;
     NSMutableArray *_redirectHistory;
@@ -156,10 +157,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property (readonly, nonatomic) NSString *sectionID;
 @property (copy, nonatomic) NSString *serverProvidedAutoBugCaptureReason; // @synthesize serverProvidedAutoBugCaptureReason=_serverProvidedAutoBugCaptureReason;
+@property (strong, nonatomic) NSString *serverProvidedAutoSysdiagnoseCollectionReason; // @synthesize serverProvidedAutoSysdiagnoseCollectionReason=_serverProvidedAutoSysdiagnoseCollectionReason;
 @property (strong, nonatomic) CKDTapToRadarRequest *serverProvidedTapToRadarRequest; // @synthesize serverProvidedTapToRadarRequest=_serverProvidedTapToRadarRequest;
 @property (readonly, nonatomic) long long serverType;
 @property (readonly, nonatomic) BOOL shouldCompressBody;
-@property (readonly, nonatomic) BOOL shouldSendKeyIDs;
 @property (readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly, nonatomic) CKDProtobufStreamWriter *streamWriter; // @synthesize streamWriter=_streamWriter;
@@ -219,7 +220,6 @@ __attribute__((visibility("hidden")))
 - (CDUnknownBlockType)_xmlObjectParsedBlock;
 - (BOOL)allowsAnonymousAccount;
 - (BOOL)allowsAuthedAccount;
-- (BOOL)canSendKeyIDs;
 - (void)cancel;
 - (id)ckShortDescription;
 - (void)dealloc;

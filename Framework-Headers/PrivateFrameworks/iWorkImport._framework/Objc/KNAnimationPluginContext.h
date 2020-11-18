@@ -16,24 +16,25 @@ __attribute__((visibility("hidden")))
     BOOL _isMotionBlurred;
     BOOL _isPreview;
     BOOL _isWarmingUp;
-    KNAnimatedBuild *_animatedBuild;
-    NSArray *_magicMoveMatches;
-    double _percent;
     NSArray *_textures;
+    NSDictionary *_scaledTextures;
     NSArray *_tags;
-    NSDictionary *_transitionAttributes;
-    KNAnimationRandomGenerator *_randomGenerator;
     unsigned long long _direction;
     double _duration;
+    double _percent;
+    KNAnimatedBuild *_animatedBuild;
+    NSDictionary *_transitionAttributes;
+    NSArray *_magicMoveMatches;
     TSDGLState *_GLState;
     TSDRep *_rep;
     long long _rendererType;
+    KNAnimationRandomGenerator *_randomGenerator;
     struct CGRect _boundingRectOnCanvas;
     struct CGRect _boundingRect;
 }
 
 @property (strong, nonatomic) TSDGLState *GLState; // @synthesize GLState=_GLState;
-@property (nonatomic) KNAnimatedBuild *animatedBuild; // @synthesize animatedBuild=_animatedBuild;
+@property (weak, nonatomic) KNAnimatedBuild *animatedBuild; // @synthesize animatedBuild=_animatedBuild;
 @property (nonatomic) struct CGRect boundingRect; // @synthesize boundingRect=_boundingRect;
 @property (nonatomic) struct CGRect boundingRectOnCanvas; // @synthesize boundingRectOnCanvas=_boundingRectOnCanvas;
 @property (readonly, copy) NSString *debugDescription;
@@ -44,21 +45,24 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isBuild;
 @property (readonly, nonatomic) BOOL isFrameRenderer;
 @property (readonly, nonatomic) BOOL isMagicMove;
+@property (readonly, nonatomic) BOOL isMetalRenderer;
 @property (nonatomic) BOOL isMotionBlurred; // @synthesize isMotionBlurred=_isMotionBlurred;
+@property (readonly, nonatomic) BOOL isOpenGLRenderer;
 @property (nonatomic) BOOL isPreview; // @synthesize isPreview=_isPreview;
 @property (readonly, nonatomic) BOOL isTransition;
 @property (nonatomic) BOOL isWarmingUp; // @synthesize isWarmingUp=_isWarmingUp;
-@property (nonatomic) NSArray *magicMoveMatches; // @synthesize magicMoveMatches=_magicMoveMatches;
+@property (weak, nonatomic) NSArray *magicMoveMatches; // @synthesize magicMoveMatches=_magicMoveMatches;
 @property (nonatomic) double percent; // @synthesize percent=_percent;
-@property (readonly, nonatomic) KNAnimationRandomGenerator *randomGenerator; // @synthesize randomGenerator=_randomGenerator;
+@property (strong, nonatomic) KNAnimationRandomGenerator *randomGenerator; // @synthesize randomGenerator=_randomGenerator;
 @property (nonatomic) long long rendererType; // @synthesize rendererType=_rendererType;
-@property (nonatomic) TSDRep *rep; // @synthesize rep=_rep;
+@property (weak, nonatomic) TSDRep *rep; // @synthesize rep=_rep;
+@property (strong, nonatomic) NSDictionary *scaledTextures; // @synthesize scaledTextures=_scaledTextures;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *tags; // @synthesize tags=_tags;
 @property (strong, nonatomic) NSArray *textures; // @synthesize textures=_textures;
-@property (nonatomic) NSDictionary *transitionAttributes; // @synthesize transitionAttributes=_transitionAttributes;
+@property (weak, nonatomic) NSDictionary *transitionAttributes; // @synthesize transitionAttributes=_transitionAttributes;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)copyAsShapeInfoWithContext:(id)arg1;
 - (BOOL)displaysInstructionalText;
 - (id)instructionalText;
+- (BOOL)isAllowedInGroups;
 - (BOOL)isEmpty;
 - (int)kind;
 - (Class)layoutClass;

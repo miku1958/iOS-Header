@@ -11,42 +11,26 @@
 @interface MPModelForYouRecommendationGroup : MPModelObject
 {
     NSURL *_refreshURL;
-    unsigned long long _groupType;
-    NSDate *_lastUpdatedDate;
-    NSString *_title;
-    NSURL *_loadAdditionalContentURL;
-    MPSectionedCollection *_sectionedItems;
-    long long _sectionIndex;
-    NSArray *_subgroups;
 }
 
-@property (nonatomic) unsigned long long groupType; // @synthesize groupType=_groupType;
-@property (strong, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
-@property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @synthesize loadAdditionalContentURL=_loadAdditionalContentURL;
-@property (copy, nonatomic) NSURL *refreshURL;
-@property (nonatomic) long long sectionIndex; // @synthesize sectionIndex=_sectionIndex;
-@property (strong, nonatomic) MPSectionedCollection *sectionedItems; // @synthesize sectionedItems=_sectionedItems;
-@property (copy, nonatomic) NSArray *subgroups; // @synthesize subgroups=_subgroups;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (nonatomic) unsigned long long groupType; // @dynamic groupType;
+@property (strong, nonatomic) NSDate *lastUpdatedDate; // @dynamic lastUpdatedDate;
+@property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @dynamic loadAdditionalContentURL;
+@property (copy, nonatomic) NSURL *refreshURL; // @dynamic refreshURL;
+@property (nonatomic) long long sectionIndex; // @dynamic sectionIndex;
+@property (strong, nonatomic) MPSectionedCollection *sectionedItems; // @dynamic sectionedItems;
+@property (copy, nonatomic) NSArray *subgroups; // @dynamic subgroups;
+@property (copy, nonatomic) NSString *title; // @dynamic title;
 
-+ (id)__MPModelForYouRecommendationGroupPropertyGroupType__PROPERTY;
-+ (id)__MPModelForYouRecommendationGroupPropertyLastUpdatedDate__PROPERTY;
-+ (id)__MPModelForYouRecommendationGroupPropertyLoadAdditionalContentURL__PROPERTY;
-+ (id)__MPModelForYouRecommendationGroupPropertyRefreshURL__PROPERTY;
-+ (id)__MPModelForYouRecommendationGroupPropertySectionIndex__PROPERTY;
-+ (id)__MPModelForYouRecommendationGroupPropertySectionedItems__PROPERTY;
-+ (id)__MPModelForYouRecommendationGroupPropertySubgroups__PROPERTY;
-+ (id)__MPModelForYouRecommendationGroupPropertyTitle__PROPERTY;
-+ (id)__groupType__KEY;
-+ (id)__lastUpdatedDate__KEY;
-+ (id)__loadAdditionalContentURL__KEY;
-+ (id)__refreshURL__KEY;
-+ (id)__sectionIndex__KEY;
-+ (id)__sectionedItems__KEY;
-+ (id)__subgroups__KEY;
-+ (id)__title__KEY;
++ (id)__groupType_KEY;
++ (id)__lastUpdatedDate_KEY;
++ (id)__loadAdditionalContentURL_KEY;
++ (id)__refreshURL_KEY;
++ (id)__sectionIndex_KEY;
++ (id)__sectionedItems_KEY;
++ (id)__subgroups_KEY;
++ (id)__title_KEY;
 - (void).cxx_destruct;
-- (id)descriptionWithType:(long long)arg1;
 - (id)itemAtIndex:(long long)arg1;
 - (long long)numberOfItems;
 

@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL ignoreInvalidation; // @synthesize ignoreInvalidation=mIgnoreInvalidation;
 
 + (id)cacheWithCacheItem:(id)arg1;
+- (void).cxx_destruct;
 - (void)accessWithCacheItemBlock:(CDUnknownBlockType)arg1 calculateBlock:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initWithCacheItem:(id)arg1;
 - (void)invalidate;

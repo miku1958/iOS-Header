@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKAccountOverrideInfo;
+@class CKAccountOverrideInfo, NSString;
 
 @interface CKContainerOptions : NSObject
 {
@@ -17,13 +17,17 @@
     BOOL _useMMCSEncryptionV2;
     BOOL _bypassPCSEncryption;
     BOOL _enforceNamedOperationGroups;
+    BOOL _forceEnableReadOnlyManatee;
     CKAccountOverrideInfo *_accountInfoOverride;
+    NSString *_encryptionServiceName;
 }
 
 @property (copy, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
 @property (nonatomic) BOOL bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
 @property (nonatomic) BOOL captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
+@property (strong, nonatomic) NSString *encryptionServiceName; // @synthesize encryptionServiceName=_encryptionServiceName;
 @property (nonatomic) BOOL enforceNamedOperationGroups; // @synthesize enforceNamedOperationGroups=_enforceNamedOperationGroups;
+@property (nonatomic) BOOL forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property (nonatomic) BOOL returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
 @property (nonatomic) BOOL useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
 @property (nonatomic) BOOL useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;

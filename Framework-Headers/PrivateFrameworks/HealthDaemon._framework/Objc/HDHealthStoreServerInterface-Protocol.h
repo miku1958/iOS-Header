@@ -34,6 +34,7 @@
 - (void)remote_fetchDaemonPreferenceForKey:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (void)remote_fetchDevicesMatchingProperty:(NSString *)arg1 values:(NSSet *)arg2 completion:(void (^)(NSSet *, NSError *))arg3;
 - (void)remote_fetchDisplayNameWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)remote_fetchPluginServiceEndpointWithIdentifier:(NSString *)arg1 completion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
 - (void)remote_fetchUnitPreferencesForTypes:(NSSet *)arg1 withCompletion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)remote_finishWorkoutRoute:(HKWorkoutRoute *)arg1 workout:(HKWorkout *)arg2 metadata:(NSDictionary *)arg3 completion:(void (^)(HKWorkoutRoute *, NSError *))arg4;
 - (void)remote_getDefaultForKey:(NSString *)arg1 withHandler:(void (^)(id, NSError *))arg2;
@@ -68,6 +69,7 @@
 - (void)remote_setAuthorizationStatuses:(NSDictionary *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setBackgroundDeliveryFrequency:(long long)arg1 forDataType:(HKObjectType *)arg2 handler:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setCharacteristic:(id)arg1 forDataType:(HKCharacteristicType *)arg2 handler:(void (^)(BOOL, NSError *))arg3;
+- (void)remote_setDaemonPreferenceValue:(id)arg1 forKey:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setDefaultValue:(id)arg1 forKey:(NSString *)arg2 withCompletion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setHealthLiteValue:(NSNumber *)arg1 forKey:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setObjectAuthorizationStatuses:(NSDictionary *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;

@@ -10,25 +10,22 @@
 #import <MediaPlayer/MPAVQueueCoordinatorDataSource-Protocol.h>
 #import <MediaPlayer/MPQueueBehaviorManaging-Protocol.h>
 #import <MediaPlayer/MPQueueFeederDelegate-Protocol.h>
-#import <MediaPlayer/NSCoding-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPAVController, MPAVItem, MPAVQueueCoordinator, MPQueueFeeder, MPQueuePlayer, NSString;
+@class MPAVController, MPAVItem, MPAVQueueCoordinator, MPQueueFeeder, NSString;
 @protocol MPAVItemQueueIdentifier, MPAVPlaylistManagerDelegate;
 
-@interface MPAVPlaylistManager : NSObject <MPQueueFeederDelegate, MPAVQueueCoordinatorDataSource, MPAVQueueController, MPQueueBehaviorManaging, NSCoding>
+@interface MPAVPlaylistManager : NSObject <MPQueueFeederDelegate, MPAVQueueCoordinatorDataSource, MPAVQueueController, MPQueueBehaviorManaging, NSSecureCoding>
 {
     MPAVItem *_currentItem;
     BOOL _goToTargetIndex;
     long long _lastSelectionDirection;
-    MPQueuePlayer *_player;
     MPQueueFeeder *_playlistFeeder;
     long long _repeatMode;
     long long _targetIndex;
     BOOL _updatedAudioSessionMode;
     MPQueueFeeder *_currentQueueFeeder;
     id<MPAVItemQueueIdentifier> _currentItemQueueIdentifier;
-    BOOL _changingPlayer;
-    BOOL _changingPlaylistFeeder;
     long long _playbackMode;
     MPAVController *_avController;
     MPAVQueueCoordinator *_queueCoordinator;
@@ -40,25 +37,24 @@
 @property (weak, nonatomic) MPAVController *avController; // @synthesize avController=_avController;
 @property (readonly, nonatomic) BOOL canSeek;
 @property (readonly, nonatomic) BOOL canSkipToPreviousItem;
-@property (readonly, nonatomic, getter=isChangingPlayer) BOOL changingPlayer; // @synthesize changingPlayer=_changingPlayer;
-@property (readonly, nonatomic, getter=isChangingPlaylistFeeder) BOOL changingPlaylistFeeder; // @synthesize changingPlaylistFeeder=_changingPlaylistFeeder;
 @property (readonly) long long currentIndex;
-@property (readonly) MPAVItem *currentItem; // @synthesize currentItem=_currentItem;
+@property (strong) MPAVItem *currentItem; // @synthesize currentItem=_currentItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPAVPlaylistManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isTransitioningSource;
 @property (readonly, nonatomic) long long playbackMode; // @synthesize playbackMode=_playbackMode;
-@property (readonly) MPQueuePlayer *player; // @synthesize player=_player;
 @property (readonly, nonatomic) MPQueueFeeder *playlistFeeder; // @synthesize playlistFeeder=_playlistFeeder;
+@property (readonly, nonatomic) long long playlistItemCount;
 @property (readonly) MPAVQueueCoordinator *queueCoordinator; // @synthesize queueCoordinator=_queueCoordinator;
 @property (nonatomic) long long repeatMode;
 @property (nonatomic) BOOL shouldDeferItemLoading;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *uniqueIdentifier;
 @property (readonly, nonatomic) long long upNextItemCount;
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_applyVolumeNormalizationForQueuedItems;
 - (long long)_indexForStringIdentifier:(id)arg1;
@@ -74,16 +70,15 @@
 - (void)_reloadQueuedItemsIfPathBecameAvailable;
 - (void)_updateAudioSessionModeWithIndex:(unsigned long long)arg1;
 - (void)_willFinishReloadWithQueueFeeder:(id)arg1 fromPlaybackContext:(id)arg2;
-- (BOOL)canChangePlaylistFeeder;
 - (BOOL)canSeekItem:(id)arg1;
 - (BOOL)canSkipItem:(id)arg1;
 - (BOOL)canSkipToPreviousItemForItem:(id)arg1;
 - (void)clearQueueFeeder;
-- (void)connectPlayer;
+- (void)connectQueueCoordinator:(id)arg1;
 - (id)contentItemIDForPlaylistIndex:(long long)arg1;
 - (id)currentQueueUUID;
 - (void)dealloc;
-- (void)disconnectPlayer;
+- (void)disconnectQueueCoordinator;
 - (unsigned long long)displayCountForItem:(id)arg1;
 - (unsigned long long)displayIndexForItem:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -100,7 +95,6 @@
 - (id)itemForPlaylistIndex:(long long)arg1;
 - (id)metadataItemForPlaylistIndex:(long long)arg1;
 - (id)musicPlayerControllerQueueForUUID:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)player:(id)arg1 currentItemDidChangeFromItem:(id)arg2 toItem:(id)arg3;
 - (id)playlistFeederForPlaylistIndex:(long long)arg1;
 - (long long)playlistIndexOfIndex:(long long)arg1 inPlaylistFeeder:(id)arg2;

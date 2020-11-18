@@ -13,8 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface TSWPDocumentRoot : TSKDocumentRoot <TSWPObjectIndex>
 {
-    BOOL _didRemoveMissingAttachments;
     NSUUID *_uuid;
+    BOOL _didRemoveMissingAttachments;
 }
 
 @property (readonly, nonatomic, getter=isChangeTrackingEnabled) BOOL changeTrackingEnabled;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double stickyCommentScaleMultiplier;
 @property (readonly, nonatomic) BOOL supportHeaderFooterParagraphAlignmentInInspectors;
 
+- (void).cxx_destruct;
 - (double)bodyWidth;
 - (BOOL)cellCommentsAllowedOnInfo:(id)arg1;
 - (id)changeSessionManagerForModel:(id)arg1;
@@ -32,7 +33,9 @@ __attribute__((visibility("hidden")))
 - (id)documentId;
 - (id)documentTSWPFontObjects;
 - (id)flowInfoContainer;
-- (struct __CFLocale *)hyphenationLocale;
+- (void)fontUpdatedForStyleClient:(id)arg1;
+- (BOOL)has_30356142_build;
+- (const struct __CFLocale *)hyphenationLocale;
 - (BOOL)isDrawableOnPageMaster:(id)arg1;
 - (int)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
 - (id)p_fontsInStylesheetUsingBlock:(CDUnknownBlockType)arg1;

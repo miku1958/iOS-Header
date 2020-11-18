@@ -8,7 +8,7 @@
 
 #import <HealthUI/HKTitledBuddyHeaderViewDelegate-Protocol.h>
 
-@class HKTitledLogoBuddyHeaderView, NSArray, UIActivityIndicatorView, UIScrollView, UIStackView, UIVisualEffectView;
+@class HKTitledLogoBuddyHeaderView, NSArray, NSString, UIActivityIndicatorView, UIScrollView, UIStackView, UIVisualEffectView;
 
 @interface HKTitledBuddyViewController : HKViewController <HKTitledBuddyHeaderViewDelegate>
 {
@@ -23,7 +23,11 @@
 }
 
 @property (readonly, nonatomic) NSArray *buttons;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIActivityIndicatorView *loadingIndicator; // @synthesize loadingIndicator=_loadingIndicator;
+@property (readonly) Class superclass;
 
 + (id)embedView:(id)arg1 inContainerViewWithMinimumEdgeInsets:(struct UIEdgeInsets)arg2;
 - (void).cxx_destruct;
@@ -32,6 +36,7 @@
 - (id)_createHeaderView;
 - (void)_updateForCurrentSizeCategory;
 - (id)bodyString;
+- (long long)bodyTextAlignment;
 - (id)bottomAnchoredButtons;
 - (void)buttonAtIndexTapped:(long long)arg1;
 - (id)headerView;
@@ -47,6 +52,7 @@
 - (id)titleString;
 - (void)titledBuddyHeaderViewDidTapLinkButton:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateBodyTextAttributesWithMutableString:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

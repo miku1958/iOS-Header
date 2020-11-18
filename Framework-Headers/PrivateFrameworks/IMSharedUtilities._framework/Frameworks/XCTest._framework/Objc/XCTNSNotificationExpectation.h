@@ -19,8 +19,8 @@
 @property (readonly, copy) NSString *notificationName;
 @property (readonly) id observedObject;
 
+- (void).cxx_destruct;
 - (void)cleanup;
-- (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 object:(id)arg2;
 - (id)initWithName:(id)arg1 object:(id)arg2 notificationCenter:(id)arg3;

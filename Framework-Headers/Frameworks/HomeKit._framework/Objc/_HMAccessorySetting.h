@@ -17,6 +17,7 @@
 @interface _HMAccessorySetting : NSObject <HMFLogging, HMFMessageReceiver, HMFMerging, NSSecureCoding>
 {
     NSMutableOrderedSet *_constraints;
+    BOOL _reflected;
     id<NSCopying><NSSecureCoding> _value;
     id<_HMAccesorySettingDelegate> _delegate;
     NSUUID *_identifier;
@@ -42,6 +43,7 @@
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly) unsigned long long properties; // @synthesize properties=_properties;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly, getter=isReflected) BOOL reflected; // @synthesize reflected=_reflected;
 @property (readonly) Class superclass;
 @property (readonly) long long type; // @synthesize type=_type;
 @property (copy) id<NSCopying><NSSecureCoding> value; // @synthesize value=_value;
@@ -53,6 +55,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleAddedConstraint:(id)arg1;
+- (void)_handleReflectedUpdate:(id)arg1;
 - (void)_handleRemovedConstraint:(id)arg1;
 - (void)_handleUpdatedValue:(id)arg1;
 - (void)_registerNotificationHandlers;
@@ -76,6 +79,7 @@
 - (void)removeConstraint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)replaceConstraints:(id)arg1 withConstraints:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setConstraints:(id)arg1;
+- (void)setReflected:(BOOL)arg1;
 - (id)shortDescription;
 - (void)updateConstraints:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

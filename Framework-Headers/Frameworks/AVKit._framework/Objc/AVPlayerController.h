@@ -6,7 +6,7 @@
 
 #import <UIKit/UIResponder.h>
 
-@class AVPlayer, AVValueTiming, NSArray, NSDate, NSDictionary, NSError, NSNumber, NSObject;
+@class AVPlayer, AVPlayerPropertyCache, AVValueTiming, NSArray, NSDate, NSDictionary, NSError, NSNumber, NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface AVPlayerController : UIResponder
@@ -23,6 +23,7 @@
     double _timeOfLastUpdate;
     NSObject<OS_dispatch_queue> *_seekQueue;
     BOOL _ignoreRateKeyValueChange;
+    void *_observationInfo;
     id _updateAtMinMaxTimePeriodicObserverToken;
     id _timebaseEffectiveRateObserver;
     id _timebaseTimeJumpedObserver;
@@ -69,6 +70,7 @@
     BOOL _disablingAutomaticTermination;
     BOOL _deviceBatteryChargingOrFull;
     AVPlayer *_player;
+    AVPlayerPropertyCache *_propertyCache;
     AVValueTiming *_timing;
     AVValueTiming *_minTiming;
     AVValueTiming *_maxTiming;
@@ -78,15 +80,11 @@
     NSArray *_availableMetadataFormats;
     double _rateBeforeScrubBegan;
     CDStruct_1b6d18a9 _seekToTimeInternal;
-    CDStruct_1b6d18a9 _cachedContentDuration;
-    CDStruct_1b6d18a9 _forwardPlaybackEndTime;
-    CDStruct_1b6d18a9 _reversePlaybackEndTime;
 }
 
 @property (nonatomic, getter=isAtMaxTime) BOOL atMaxTime; // @synthesize atMaxTime=_atMaxTime;
 @property (nonatomic, getter=isAtMinTime) BOOL atMinTime; // @synthesize atMinTime=_atMinTime;
 @property (strong, nonatomic) NSArray *availableMetadataFormats; // @synthesize availableMetadataFormats=_availableMetadataFormats;
-@property (nonatomic) CDStruct_1b6d18a9 cachedContentDuration; // @synthesize cachedContentDuration=_cachedContentDuration;
 @property (nonatomic, getter=isCompatibleWithAirPlayVideo) BOOL compatibleWithAirPlayVideo; // @synthesize compatibleWithAirPlayVideo=_compatibleWithAirPlayVideo;
 @property (nonatomic, getter=isComposable) BOOL composable; // @synthesize composable=_composable;
 @property (strong, nonatomic) NSArray *contentChapters; // @synthesize contentChapters=_contentChapters;
@@ -94,7 +92,6 @@
 @property (nonatomic, getter=isDeviceBatteryChargingOrFull) BOOL deviceBatteryChargingOrFull; // @synthesize deviceBatteryChargingOrFull=_deviceBatteryChargingOrFull;
 @property (nonatomic, getter=isDisablingAutomaticTermination) BOOL disablingAutomaticTermination; // @synthesize disablingAutomaticTermination=_disablingAutomaticTermination;
 @property (readonly, nonatomic) NSError *error;
-@property (nonatomic) CDStruct_1b6d18a9 forwardPlaybackEndTime; // @synthesize forwardPlaybackEndTime=_forwardPlaybackEndTime;
 @property (nonatomic) BOOL hasProtectedContent; // @synthesize hasProtectedContent=_hasProtectedContent;
 @property (strong, nonatomic) AVValueTiming *maxTiming; // @synthesize maxTiming=_maxTiming;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
@@ -103,8 +100,8 @@
 @property (nonatomic, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen;
 @property (nonatomic, getter=isPreventingIdleDisplaySleep) BOOL preventingIdleDisplaySleep; // @synthesize preventingIdleDisplaySleep=_preventingIdleDisplaySleep;
 @property (nonatomic, getter=isPreventingIdleSystemSleep) BOOL preventingIdleSystemSleep; // @synthesize preventingIdleSystemSleep=_preventingIdleSystemSleep;
+@property (readonly, nonatomic) AVPlayerPropertyCache *propertyCache; // @synthesize propertyCache=_propertyCache;
 @property (nonatomic) double rateBeforeScrubBegan; // @synthesize rateBeforeScrubBegan=_rateBeforeScrubBegan;
-@property (nonatomic) CDStruct_1b6d18a9 reversePlaybackEndTime; // @synthesize reversePlaybackEndTime=_reversePlaybackEndTime;
 @property (nonatomic, getter=isScrubbing) BOOL scrubbing; // @synthesize scrubbing=_scrubbing;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *seekTimer;
 @property (nonatomic) double seekToTime; // @synthesize seekToTime=_seekToTime;
@@ -133,12 +130,14 @@
 + (id)keyPathsForValuesAffectingContentDimensions;
 + (id)keyPathsForValuesAffectingContentDuration;
 + (id)keyPathsForValuesAffectingContentDurationWithinEndTimes;
++ (id)keyPathsForValuesAffectingCurrentAssetIfReady;
 + (id)keyPathsForValuesAffectingCurrentTime;
 + (id)keyPathsForValuesAffectingCurrentTimeWithinEndTimes;
 + (id)keyPathsForValuesAffectingError;
 + (id)keyPathsForValuesAffectingExternalPlaybackActive;
 + (id)keyPathsForValuesAffectingExternalPlaybackAirPlayDeviceLocalizedName;
 + (id)keyPathsForValuesAffectingExternalPlaybackType;
++ (id)keyPathsForValuesAffectingForwardPlaybackEndTime;
 + (id)keyPathsForValuesAffectingHasAudioMediaSelectionOptions;
 + (id)keyPathsForValuesAffectingHasContent;
 + (id)keyPathsForValuesAffectingHasContentChapters;
@@ -158,11 +157,11 @@
 + (id)keyPathsForValuesAffectingPictureInPicturePossible;
 + (id)keyPathsForValuesAffectingPlaying;
 + (id)keyPathsForValuesAffectingPlayingOnExternalScreen;
-+ (id)keyPathsForValuesAffectingRate;
++ (id)keyPathsForValuesAffectingReversePlaybackEndTime;
 + (id)keyPathsForValuesAffectingSeekableTimeRanges;
-+ (id)keyPathsForValuesAffectingSegmentDuration;
 + (id)keyPathsForValuesAffectingShouldPreventIdleDisplaySleep;
 + (id)keyPathsForValuesAffectingStatus;
++ (id)keyPathsForValuesAffectingStreaming;
 + (id)keyPathsForValuesAffectingTimeControlStatus;
 - (void).cxx_destruct;
 - (void)_cancelPendingSeeksIfNeeded;
@@ -176,6 +175,7 @@
 - (void)_retryPlayImmediatelyIfNeeded;
 - (id)_selectedMediaOptionWithMediaCharacteristic:(id)arg1;
 - (void)_setMediaOption:(id)arg1 mediaCharacteristic:(id)arg2;
+- (void)_setMinTiming:(id)arg1 maxTiming:(id)arg2;
 - (void)_updateScanningBackwardRate;
 - (void)_updateScanningForwardRate;
 - (void)actuallySeekToTime;
@@ -207,6 +207,7 @@
 - (struct CGSize)contentDimensions;
 - (double)contentDuration;
 - (double)contentDurationWithinEndTimes;
+- (id)currentAssetIfReady;
 - (id)currentAudioMediaSelectionOption;
 - (id)currentLegibleMediaSelectionOption;
 - (double)currentTime;
@@ -219,6 +220,7 @@
 - (void)endScrubbing:(id)arg1;
 - (id)externalPlaybackAirPlayDeviceLocalizedName;
 - (long long)externalPlaybackType;
+- (CDStruct_1b6d18a9)forwardPlaybackEndTime;
 - (void)gotoEndOfSeekableRanges:(id)arg1;
 - (BOOL)hasAudioMediaSelectionOptions;
 - (BOOL)hasContent;
@@ -237,6 +239,7 @@
 - (id)initWithPlayer:(id)arg1;
 - (BOOL)isCompletelySeekable;
 - (BOOL)isExternalPlaybackActive;
+- (BOOL)isInspectionSuspended;
 - (BOOL)isLooping;
 - (BOOL)isMuted;
 - (BOOL)isPictureInPictureInterrupted;
@@ -253,6 +256,7 @@
 - (id)mediaSelectionGroupForMediaCharacteristic:(id)arg1;
 - (double)minTime;
 - (float)nominalFrameRate;
+- (void *)observationInfo;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause:(id)arg1;
 - (void)play:(id)arg1;
@@ -260,6 +264,7 @@
 - (void)reloadAudioOptions;
 - (void)reloadLegibleOptions;
 - (void)reloadOptions;
+- (CDStruct_1b6d18a9)reversePlaybackEndTime;
 - (long long)savedCaptionAppearanceDisplayType;
 - (void)scanBackward:(id)arg1;
 - (void)scanForward:(id)arg1;
@@ -278,21 +283,24 @@
 - (void)seekToTime:(double)arg1;
 - (void)seekToTime:(double)arg1 toleranceBefore:(double)arg2 toleranceAfter:(double)arg3;
 - (id)seekableTimeRanges;
-- (double)segmentDuration;
 - (void)setAllowsExternalPlayback:(BOOL)arg1;
 - (void)setAudioMediaSelectionOptions:(id)arg1;
 - (void)setCanUseNetworkResourcesForLiveStreamingWhilePaused:(BOOL)arg1;
 - (void)setCurrentAudioMediaSelectionOption:(id)arg1;
 - (void)setCurrentLegibleMediaSelectionOption:(id)arg1;
+- (void)setForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg1;
+- (void)setInspectionSuspended:(BOOL)arg1;
 - (void)setLegibleMediaSelectionOptions:(id)arg1;
 - (void)setLooping:(BOOL)arg1;
 - (void)setMaxTime:(double)arg1;
 - (void)setMinTime:(double)arg1;
 - (void)setMuted:(BOOL)arg1;
+- (void)setObservationInfo:(void *)arg1;
 - (void)setPictureInPictureInterrupted:(BOOL)arg1;
 - (void)setPlaying:(BOOL)arg1;
 - (void)setRate:(double)arg1;
 - (void)setRateWithForce:(double)arg1;
+- (void)setReversePlaybackEndTime:(CDStruct_1b6d18a9)arg1;
 - (void)setSavedCaptionAppearanceDisplayType:(long long)arg1;
 - (void)setVolume:(double)arg1;
 - (void)skipBackwardThirtySeconds:(id)arg1;

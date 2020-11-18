@@ -43,24 +43,28 @@
 - (void)_checkRecordZoneExists:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_createRecordZone:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_createRecordZoneIfNeeded:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_createSubscriptionForZoneID:(id)arg1 subscriptionID:(id)arg2 recordType:(id)arg3;
-- (void)_createSubscriptionIfNeededForZoneID:(id)arg1 subscriptionID:(id)arg2 recordType:(id)arg3;
+- (void)_createSubscriptionForZoneID:(id)arg1 subscriptionID:(id)arg2 recordType:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_createSubscriptionIfNeededForZoneID:(id)arg1 subscriptionID:(id)arg2 recordType:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_deleteAllZonesForDatabase:(id)arg1;
 - (void)_deleteZone:(id)arg1;
+- (void)_deleteZone:(id)arg1 forDatabase:(id)arg2;
 - (void)_handleNotificationForZoneID:(id)arg1 subscriptionID:(id)arg2;
 - (void)_setUpPushConnection;
+- (id)ckUtilities;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)createAttachmentZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)createChatZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)createDeDupeSaltZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)createMessageZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)createSubscriptionIfNeededOnDeDupeZoneForSubscription:(id)arg1 recordType:(id)arg2;
+- (void)createSubscriptionIfNeededOnDeDupeZoneForSubscription:(id)arg1 recordType:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)deleteAllZones;
 - (void)deleteAttachmentZone;
 - (void)deleteChatZone;
 - (void)deleteDeDupeSaltZone;
 - (void)deleteMessageZone;
+- (void)fetchChatZoneToCheckManateeStatus:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

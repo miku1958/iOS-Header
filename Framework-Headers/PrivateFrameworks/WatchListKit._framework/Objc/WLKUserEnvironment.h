@@ -17,6 +17,7 @@
     NSDictionary *_entitlements;
     NSString *_restrictions;
     NSArray *_consentedBrands;
+    NSDictionary *_location;
     unsigned long long _protocolVersion;
 }
 
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSArray *consentedBrands; // @synthesize consentedBrands=_consentedBrands;
 @property (strong, nonatomic) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property (strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (readonly, nonatomic) NSDictionary *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property (strong, nonatomic) NSString *restrictions; // @synthesize restrictions=_restrictions;
 @property (strong, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;

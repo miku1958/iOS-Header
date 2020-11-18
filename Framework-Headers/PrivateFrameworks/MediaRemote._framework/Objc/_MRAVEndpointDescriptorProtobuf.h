@@ -18,8 +18,10 @@
     NSMutableArray *_outputDevices;
     NSString *_uniqueIdentifier;
     BOOL _isLocalEndpoint;
+    BOOL _isProxyGroupPlayer;
     struct {
         unsigned int isLocalEndpoint:1;
+        unsigned int isProxyGroupPlayer:1;
     } _has;
 }
 
@@ -27,20 +29,22 @@
 @property (readonly, nonatomic) BOOL hasDesignatedGroupLeader;
 @property (readonly, nonatomic) BOOL hasInstanceIdentifier;
 @property (nonatomic) BOOL hasIsLocalEndpoint;
+@property (nonatomic) BOOL hasIsProxyGroupPlayer;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
 @property (strong, nonatomic) NSString *instanceIdentifier; // @synthesize instanceIdentifier=_instanceIdentifier;
 @property (nonatomic) BOOL isLocalEndpoint; // @synthesize isLocalEndpoint=_isLocalEndpoint;
+@property (nonatomic) BOOL isProxyGroupPlayer; // @synthesize isProxyGroupPlayer=_isProxyGroupPlayer;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSMutableArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (Class)outputDevicesType;
+- (void).cxx_destruct;
 - (void)addOutputDevices:(id)arg1;
 - (void)clearOutputDevices;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

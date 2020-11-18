@@ -23,6 +23,7 @@
     long long _state;
     PKGlyphView *_glyph;
     UILabel *_label;
+    UILabel *_debugLabel;
     double _labelAlpha;
     id<PKPassPaymentPayStateViewDelegate> _delegate;
 }
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL accessPass; // @synthesize accessPass=_accessPass;
 @property (nonatomic) BOOL biometricsUnavailableHint; // @synthesize biometricsUnavailableHint=_biometricsUnavailableHint;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) UILabel *debugLabel; // @synthesize debugLabel=_debugLabel;
 @property (nonatomic) id<PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PKGlyphView *glyph; // @synthesize glyph=_glyph;
@@ -57,6 +59,7 @@
 - (void)layoutSubviews;
 - (void)setState:(long long)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)setState:(long long)arg1 preservingGlyphState:(BOOL)arg2 overridingText:(id)arg3 animated:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)updateDebugLabel:(id)arg1 isErrorState:(BOOL)arg2;
 
 @end
 

@@ -17,7 +17,7 @@
 @property (strong) NSMutableArray *handlers; // @synthesize handlers=_handlers;
 @property (readonly) XCUITestContextScope *parentScope; // @synthesize parentScope=_parentScope;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithParentScope:(id)arg1;
 
 @end

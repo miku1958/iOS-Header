@@ -8,20 +8,30 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSNumber, NSString;
+@class NSArray, NSData, NSDate, NSNumber, NSString;
 
 @interface SFAppleIDValidationRecord : NSObject <NSSecureCoding>
 {
+    NSString *_altDSID;
     NSData *_data;
     NSString *_identifier;
     NSDate *_nextCheckDate;
+    unsigned long long _suggestedValidDuration;
+    NSArray *_validatedEmailHashes;
+    NSArray *_validatedPhoneHashes;
+    NSDate *_validStartDate;
     NSNumber *_version;
 }
 
+@property (strong, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL needsUpdate;
 @property (strong, nonatomic) NSDate *nextCheckDate; // @synthesize nextCheckDate=_nextCheckDate;
+@property (nonatomic) unsigned long long suggestedValidDuration; // @synthesize suggestedValidDuration=_suggestedValidDuration;
+@property (strong, nonatomic) NSDate *validStartDate; // @synthesize validStartDate=_validStartDate;
+@property (strong, nonatomic) NSArray *validatedEmailHashes; // @synthesize validatedEmailHashes=_validatedEmailHashes;
+@property (strong, nonatomic) NSArray *validatedPhoneHashes; // @synthesize validatedPhoneHashes=_validatedPhoneHashes;
 @property (strong, nonatomic) NSNumber *version; // @synthesize version=_version;
 
 + (BOOL)supportsSecureCoding;

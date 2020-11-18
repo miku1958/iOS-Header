@@ -9,6 +9,8 @@
 @interface NSURL (HUAdditions)
 + (id)hu_allowAccessWhileLockedSettingsURL;
 + (id)hu_locationDeviceSettingsURL;
++ (id)hu_locationServicesSettingsURL;
 + (id)hu_notificationSettingsURL;
++ (id)hu_wifiSettingsURL;
 @end
 

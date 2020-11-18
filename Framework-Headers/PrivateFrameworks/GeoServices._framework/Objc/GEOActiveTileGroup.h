@@ -16,9 +16,9 @@
     struct GEOTileSetRegion *_hybridUnavailableRegions;
     unsigned long long _hybridUnavailableRegionsCount;
     unsigned long long _hybridUnavailableRegionsSpace;
+    struct GEOMapLayersMetadata _mapLayersMetadata;
     CDStruct_95bda58d _activeScales;
     CDStruct_95bda58d _activeScenarios;
-    struct GEOMapLayersMetadata _mapLayersMetadata;
     NSString *_abExperimentURL;
     NSMutableArray *_activeResources;
     NSString *_addressCorrectionInitURL;
@@ -75,6 +75,7 @@
     NSMutableArray *_tileSets;
     NSString *_uniqueIdentifier;
     GEOVersionManifest *_versionManifest;
+    NSString *_wifiConnectionQualityProbeURL;
     NSMutableArray *_xmlChecksums;
     NSMutableArray *_xmls;
     struct {
@@ -145,6 +146,7 @@
 @property (readonly, nonatomic) BOOL hasSpatialLookupURL;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
 @property (readonly, nonatomic) BOOL hasVersionManifest;
+@property (readonly, nonatomic) BOOL hasWifiConnectionQualityProbeURL;
 @property (readonly, nonatomic) struct GEOTileSetRegion *hybridUnavailableRegions;
 @property (readonly, nonatomic) unsigned long long hybridUnavailableRegionsCount;
 @property (strong, nonatomic) NSMutableArray *iconChecksums; // @synthesize iconChecksums=_iconChecksums;
@@ -186,6 +188,7 @@
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOVersionManifest *versionManifest; // @synthesize versionManifest=_versionManifest;
+@property (strong, nonatomic) NSString *wifiConnectionQualityProbeURL; // @synthesize wifiConnectionQualityProbeURL=_wifiConnectionQualityProbeURL;
 @property (strong, nonatomic) NSMutableArray *xmlChecksums; // @synthesize xmlChecksums=_xmlChecksums;
 @property (strong, nonatomic) NSMutableArray *xmls; // @synthesize xmls=_xmls;
 

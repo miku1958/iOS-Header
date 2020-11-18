@@ -52,6 +52,7 @@
 - (id)_tableNameForClass:(Class)arg1;
 - (id)allTableNames;
 - (void)analyze;
+- (void)attemptProperDatabasePermissions;
 - (void)begin;
 - (int)changes;
 - (void)close;

@@ -24,6 +24,7 @@
     long long _volumeControlStateForPickedRoute;
     int _deviceAvailabilityNotifyToken;
     BOOL _deviceAvailabilityOverrideState;
+    BOOL _fetchAvailableRoutesSynchronously;
     id<MPAVRoutingControllerDelegate> _delegate;
     MPAVRoutingDataSource *_dataSource;
     NSString *_name;
@@ -38,6 +39,7 @@
 @property (weak, nonatomic) id<MPAVRoutingControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long discoveryMode; // @synthesize discoveryMode=_discoveryMode;
 @property (readonly, nonatomic) long long externalScreenType;
+@property (nonatomic) BOOL fetchAvailableRoutesSynchronously; // @synthesize fetchAvailableRoutesSynchronously=_fetchAvailableRoutesSynchronously;
 @property (readonly, nonatomic) BOOL hasPendingPickedRoutes;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) MPAVRoute *pendingPickedRoute;
@@ -80,14 +82,17 @@
 - (void)_setVolumeControlStateForPickedRoute:(long long)arg1;
 - (void)_unregisterNotifications;
 - (void)_updateCachedRoutes;
+- (BOOL)_updateGroupMembership:(long long)arg1 forRoute:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_volumeControlAvailabilityDidChangeNotification:(id)arg1;
 - (long long)_volumeControlStateForPickedRoute;
 - (BOOL)addPickedRoute:(id)arg1;
+- (BOOL)addPickedRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)airtunesRouteIsPicked;
 - (void)clearCachedRoutes;
 - (void)dealloc;
 - (id)description;
 - (void)fetchAvailableRoutesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchAvailableRoutesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)handsetRouteIsPicked;
 - (id)init;
@@ -102,6 +107,7 @@
 - (BOOL)pickSpeakerRoute;
 - (BOOL)receiverRouteIsPicked;
 - (BOOL)removePickedRoute:(id)arg1;
+- (BOOL)removePickedRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)routeIsLeaderOfEndpoint:(id)arg1;
 - (BOOL)routeIsPendingPick:(id)arg1;
 - (BOOL)routeOtherThanHandsetAndSpeakerAvailable;

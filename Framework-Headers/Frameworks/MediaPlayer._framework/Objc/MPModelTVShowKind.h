@@ -16,6 +16,7 @@
 @property (readonly, copy, nonatomic) MPModelTVSeasonKind *seasonKind; // @synthesize seasonKind=_seasonKind;
 
 + (id)kindWithSeasonKind:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

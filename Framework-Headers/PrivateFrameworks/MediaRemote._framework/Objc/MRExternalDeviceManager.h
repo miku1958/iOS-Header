@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *allDevices;
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (void)clearDevices;
-- (void)dealloc;
 - (id)deviceWithIdentifier:(id)arg1;
 - (id)init;
 - (void)registerDevice:(id)arg1;

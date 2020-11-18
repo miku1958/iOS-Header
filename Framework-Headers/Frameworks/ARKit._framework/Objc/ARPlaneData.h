@@ -8,34 +8,41 @@
 
 #import <ARKit/ARResultData-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface ARPlaneData : NSObject <ARResultData>
 {
+    int _surfaceCount;
+    struct SurfaceDetectionPlane **_surfaces;
     unsigned long long _detectionTypeMask;
-    unsigned long long _techniqueIdentifier;
-    CovariantVector_bf42e37e _detectedSurfaces;
+    long long _techniqueID;
+    NSArray *_anchorIdentifierMap;
 }
 
+@property (strong, nonatomic) NSArray *anchorIdentifierMap; // @synthesize anchorIdentifierMap=_anchorIdentifierMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) CovariantVector_bf42e37e detectedSurfaces; // @synthesize detectedSurfaces=_detectedSurfaces;
 @property (readonly, nonatomic) unsigned long long detectionTypeMask; // @synthesize detectionTypeMask=_detectionTypeMask;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long maxPlaneID;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long techniqueIdentifier; // @synthesize techniqueIdentifier=_techniqueIdentifier;
+@property (readonly, nonatomic) int surfaceCount; // @synthesize surfaceCount=_surfaceCount;
+@property (readonly, nonatomic) struct SurfaceDetectionPlane **surfaces; // @synthesize surfaces=_surfaces;
+@property (readonly, nonatomic) long long techniqueID; // @synthesize techniqueID=_techniqueID;
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
-- (int)_alignmentRotationForAnchorTransform:(CDStruct_14d5dc5e)arg1 planeAlignment:(long long)arg2;
-- (id)_anchorForSurface:(const IAlignedSurface_10111481 *)arg1 identifier:(id)arg2 referenceOriginTransform:(CDStruct_14d5dc5e)arg3;
-- (CDStruct_183601bc)_boundsFromSurfaceExtent:(const SurfaceExtent_3e61329a *)arg1 planeToAnchorTransform:(CDStruct_14d5dc5e)arg2 alignmentRotation:(int)arg3;
-- (id)_gridExtentFromSurfaceExtent:(const SurfaceExtent_3e61329a *)arg1 planeToAnchorTransform:(CDStruct_14d5dc5e)arg2 alignmentRotation:(int)arg3;
-- (CDStruct_14d5dc5e)_planeToWorldTransformForSurface:(const IAlignedSurface_10111481 *)arg1;
-- (id)_updatedAnchor:(id)arg1 forSurface:(const IAlignedSurface_10111481 *)arg2 identifier:(id)arg3 referenceOriginTransform:(CDStruct_14d5dc5e)arg4;
+- (id)_anchorForSurface:(struct SurfaceDetectionPlane *)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2;
+- (CDStruct_183601bc)_boundsForSurface:(struct SurfaceDetectionPlane *)arg1 planeToAnchorTransform:(CDStruct_14d5dc5e)arg2 alignmentRotation:(long long)arg3;
+- (id)_geometryForSurface:(struct SurfaceDetectionPlane *)arg1 planeToAnchorTransform:(CDStruct_14d5dc5e)arg2 alignmentRotation:(long long)arg3 planeBounds:(CDStruct_183601bc)arg4;
+- (id)_gridExtentForSurface:(struct SurfaceDetectionPlane *)arg1 planeToAnchorTransform:(CDStruct_14d5dc5e)arg2 alignmentRotation:(long long)arg3;
+- (long long)_identifierForSurfaceID:(long long)arg1;
+- (CDStruct_14d5dc5e)_planeToWorldTransformForSurface:(struct SurfaceDetectionPlane *)arg1;
+- (id)_updatedAnchor:(id)arg1 forSurface:(struct SurfaceDetectionPlane *)arg2 referenceOriginTransform:(CDStruct_14d5dc5e)arg3;
+- (long long)_worldAlignmentRotationForReferenceTransform:(CDStruct_14d5dc5e)arg1 planeAlignment:(long long)arg2;
 - (id)anchorsForCameraWithTransform:(CDStruct_14d5dc5e)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 existingAnchors:(id)arg3 anchorsToRemove:(id)arg4;
-- (id)hitTestFromOrigin:withDirection: /* Error: Ran out of types for this method. */;
-- (id)initWithDetectedSurfaces:(CovariantVector_bf42e37e)arg1 detectionTypeMask:(unsigned long long)arg2 techniqueIdentifier:(unsigned long long)arg3;
+- (void)dealloc;
+- (id)hitTestFromOrigin:(long long)arg1 withDirection:planeAlignment: /* Error: Ran out of types for this method. */;
+- (id)initWithSurfaces:(struct SurfaceDetectionPlane **)arg1 surfaceCount:(int)arg2 detectionTypeMask:(unsigned long long)arg3 techniqueIdentifier:(long long)arg4;
 
 @end
 

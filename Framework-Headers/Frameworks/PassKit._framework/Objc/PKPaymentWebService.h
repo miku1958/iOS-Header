@@ -125,6 +125,7 @@
 - (void)processRetryRequest:(id)arg1 responseData:(id)arg2 orginalRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)provisionForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)provisionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)provisioningMethodWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)registerDeviceAtBrokerURL:(id)arg1 withConsistencyData:(id)arg2 retries:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)registerDeviceWithConsistencyData:(id)arg1 completion:(CDUnknownBlockType)arg2;

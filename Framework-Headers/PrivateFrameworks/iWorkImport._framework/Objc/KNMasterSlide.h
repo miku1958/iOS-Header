@@ -13,30 +13,30 @@
 __attribute__((visibility("hidden")))
 @interface KNMasterSlide : KNAbstractSlide <TSKTransformableObject>
 {
-    NSString *mName;
-    struct CGRect mObjectRect;
-    KNClassicStylesheetRecord *mClassicStylesheetRecord;
-    NSArray *mBodyParagraphStyles;
-    NSArray *mBodyListStyles;
-    NSString *mThumbnailTextForTitlePlaceholder;
-    NSString *mThumbnailTextForBodyPlaceholder;
-    BOOL mSlideObjectsLayerWithMaster;
-    BOOL mHasBug16580905;
-    BOOL mCalculatedHasBug16580905;
+    NSString *_name;
+    struct CGRect _objectRect;
+    KNClassicStylesheetRecord *_classicStylesheetRecord;
+    NSArray *_bodyParagraphStyles;
+    NSArray *_bodyListStyles;
+    NSString *_thumbnailTextForTitlePlaceholder;
+    NSString *_thumbnailTextForBodyPlaceholder;
+    BOOL _slideObjectsLayerWithMaster;
+    BOOL _hasBug16580905;
+    BOOL _calculatedHasBug16580905;
 }
 
 @property (copy, nonatomic) NSArray *bodyListStyles;
 @property (copy, nonatomic) NSArray *bodyParagraphStyles;
-@property (readonly, nonatomic) KNClassicStylesheetRecord *classicStylesheetRecord; // @synthesize classicStylesheetRecord=mClassicStylesheetRecord;
+@property (readonly, nonatomic) KNClassicStylesheetRecord *classicStylesheetRecord; // @synthesize classicStylesheetRecord=_classicStylesheetRecord;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *name;
 @property (nonatomic) struct CGRect objectRect;
 @property (nonatomic) BOOL slideObjectsLayerWithMaster;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *thumbnailTextForBodyPlaceholder;
-@property (strong, nonatomic) NSString *thumbnailTextForTitlePlaceholder;
+@property (copy, nonatomic) NSString *thumbnailTextForBodyPlaceholder;
+@property (copy, nonatomic) NSString *thumbnailTextForTitlePlaceholder;
 
 + (BOOL)hasLocalizedThumbnailText;
 + (void)initialize;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 + (void)mastersNotEquivalentWithFile:(id)arg1 lineNumber:(long long)arg2 reason:(id)arg3;
 + (id)p_defaultMasterGuideColor;
 + (void)setMasterGuideColor:(id)arg1;
+- (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)addBuild:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
@@ -53,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (id)builds;
 - (id)childEnumerator;
 - (BOOL)containsProperty:(int)arg1;
-- (void)dealloc;
 - (void)flushClassicStylesheetRecord;
 - (void)generateObjectPlaceholderIfNecessary;
 - (BOOL)hasBug16580905;

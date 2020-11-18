@@ -37,6 +37,7 @@
 - (void)getPushNotifications:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
 
 @end
 

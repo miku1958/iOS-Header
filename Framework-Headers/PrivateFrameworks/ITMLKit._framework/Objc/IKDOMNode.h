@@ -56,6 +56,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *textContent;
 
++ (long long)ITMLIDForITMLIDString:(id)arg1;
 + (id)ITMLIDStringforITMLID:(unsigned long long)arg1;
 + (id)_eventListenerMapKeyForType:(id)arg1 useCapture:(BOOL)arg2;
 + (void)handleNodeParentDidChange:(struct _xmlNode *)arg1;
@@ -90,6 +91,10 @@
 - (id)firstElementChild;
 - (id)getFeature:(id)arg1:(id)arg2;
 - (BOOL)hasChildNodes;
+- (id)ik_nodePath;
+- (id)ik_nodeWithId:(long long)arg1;
+- (id)ik_nodesWithIds:(id)arg1;
+- (id)ik_pathsForSearchQuery:(id)arg1 currentPath:(id)arg2;
 - (id)initWithAppContext:(id)arg1 xmlNode:(struct _xmlNode *)arg2;
 - (id)insertBefore:(id)arg1:(id)arg2;
 - (BOOL)isEqualNode:(id)arg1;

@@ -47,10 +47,10 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property (readonly, copy, nonatomic) NSString *uuid;
-@property (copy, nonatomic) NSString *uuid;
+@property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
 - (id)init;

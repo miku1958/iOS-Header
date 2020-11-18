@@ -15,7 +15,10 @@
 {
     long long _trackingState;
     long long _trackingStateReason;
+    unsigned long long _lensType;
     struct CGSize _imageResolution;
+    MISSING_TYPE *_tangentialDistortion;
+    MISSING_TYPE *_radialDistortion;
     CDStruct_8e0628e6 _intrinsics;
     CDStruct_14d5dc5e _transform;
 }
@@ -23,7 +26,10 @@
 @property (readonly, nonatomic) MISSING_TYPE *eulerAngles;
 @property (nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
 @property (nonatomic) CDStruct_8e0628e6 intrinsics; // @synthesize intrinsics=_intrinsics;
+@property (nonatomic) unsigned long long lensType; // @synthesize lensType=_lensType;
 @property (readonly, nonatomic) CDStruct_14d5dc5e projectionMatrix;
+@property (nonatomic) MISSING_TYPE *radialDistortion; // @synthesize radialDistortion=_radialDistortion;
+@property (nonatomic) MISSING_TYPE *tangentialDistortion; // @synthesize tangentialDistortion=_tangentialDistortion;
 @property (nonatomic) long long trackingState; // @synthesize trackingState=_trackingState;
 @property (nonatomic) long long trackingStateReason; // @synthesize trackingStateReason=_trackingStateReason;
 @property (nonatomic) CDStruct_14d5dc5e transform; // @synthesize transform=_transform;

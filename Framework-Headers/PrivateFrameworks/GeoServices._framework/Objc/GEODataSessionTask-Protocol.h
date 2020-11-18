@@ -7,6 +7,7 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class GEOClientMetrics, NSData, NSError, NSString;
+@protocol GEORequestCounterTicket, NSObject;
 
 @protocol GEODataSessionTask <NSObject>
 
@@ -15,9 +16,11 @@
 @property (readonly) BOOL failedDueToCancel;
 @property (readonly, nonatomic) unsigned long long incomingPayloadSize;
 @property (readonly, nonatomic) unsigned long long outgoingPayloadSize;
+@property (readonly, nonatomic) id<NSObject> parsedResponse;
 @property (readonly, nonatomic) BOOL protocolBufferHasPreamble;
 @property (readonly, nonatomic) NSData *receivedData;
 @property (readonly, nonatomic) NSString *remoteAddressAndPort;
+@property (readonly, nonatomic) id<GEORequestCounterTicket> requestCounterTicket;
 @property (readonly, nonatomic) unsigned int taskIdentifier;
 
 - (void)cancel;

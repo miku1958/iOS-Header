@@ -26,7 +26,7 @@
 + (id)activationRequestFromLaunchRequest:(id)arg1;
 + (id)activationRequestWithLaunchArguments:(id)arg1 environmentVariables:(id)arg2 usePlatformLauncher:(BOOL)arg3;
 + (id)launchRequestWithLaunchArguments:(id)arg1 environmentVariables:(id)arg2 usePlatformLauncher:(BOOL)arg3;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

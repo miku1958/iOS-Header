@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)chartInfo;
 - (id)chartType;
 - (id)initWithSceneInfo:(const struct ChartSceneInfo *)arg1;
-- (const CDStruct_44ada6bf *)layoutSettings;
+- (const CDStruct_b1c75024 *)layoutSettings;
 - (id)scene;
 - (id)seriesType;
 

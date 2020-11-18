@@ -6,14 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString, TSDShapeSearchIndex;
+#import <iWorkImport/TSDShapeSearchResultProviding-Protocol.h>
+
+@class NSString, TSDShapeSearchIndex, TSULocale;
 
 __attribute__((visibility("hidden")))
-@interface TSDBasicShapeLibrary : NSObject
+@interface TSDBasicShapeLibrary : NSObject <TSDShapeSearchResultProviding>
 {
+    TSULocale *_locale;
     TSDShapeSearchIndex *_searchIndex;
 }
 
+@property (readonly, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned long long numberOfBasicShapes;
 @property (strong, nonatomic) TSDShapeSearchIndex *p_searchIndex; // @synthesize p_searchIndex=_searchIndex;
@@ -21,11 +25,12 @@ __attribute__((visibility("hidden")))
 + (id)sharedLibrary;
 - (void).cxx_destruct;
 - (id)basicShapeAtIndex:(unsigned long long)arg1;
-- (id)init;
+- (id)initWithLocale:(id)arg1;
 - (id)p_baseName;
 - (int)p_shapeTypeAtIndex:(unsigned long long)arg1;
 - (void)p_updateSearchIndex:(id)arg1;
 - (id)resultsForSearchTerm:(id)arg1;
+- (id)shapeFromSearchResult:(id)arg1;
 
 @end
 

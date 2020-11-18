@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canFetchTileForKey:(const struct VKTileKey *)arg1;
 - (void)dealloc;
 - (struct _GEOTileKey)downloadKeyAtX:(unsigned int)arg1 y:(unsigned int)arg2 z:(unsigned int)arg3;
-- (void)fetchTileForKey:(const struct VKTileKey *)arg1;
+- (void)fetchTileForKey:(const struct VKTileKey *)arg1 isPrefetch:(BOOL)arg2;
 - (void)matchTilesFromSource:(id)arg1;
 - (unsigned int)maximumDownloadZoomLevel;
 - (long long)maximumZoomLevel;

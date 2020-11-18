@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRAVOutputDeviceSourceInfo, NSData, NSDictionary, NSString, _MRAVOutputDeviceDescriptorProtobuf;
+@class MRAVEndpoint, MRAVOutputDeviceSourceInfo, NSData, NSDictionary, NSString, _MRAVOutputDeviceDescriptorProtobuf;
 
 @interface MRAVOutputDevice : NSObject
 {
@@ -14,6 +14,8 @@
     BOOL _remoteControllable;
     BOOL _groupLeader;
     BOOL _groupable;
+    BOOL _canRelayCommunicationChannel;
+    BOOL _deviceGroupable;
     BOOL _pickedOnPairedDevice;
     BOOL _hasBatteryLevel;
     BOOL _localDevice;
@@ -33,16 +35,18 @@
     NSDictionary *_modelSpecificInfo;
     NSString *_playingPairedDeviceName;
     MRAVOutputDeviceSourceInfo *_sourceInfo;
-    void *_endpoint;
+    MRAVEndpoint *_endpoint;
 }
 
 @property (readonly, nonatomic) NSData *MACAddress; // @synthesize MACAddress=_MACAddress;
 @property (readonly, nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
+@property (readonly, nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (readonly, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
+@property (readonly, nonatomic, getter=isDeviceGroupable) BOOL deviceGroupable; // @synthesize deviceGroupable=_deviceGroupable;
 @property (readonly, nonatomic) unsigned int deviceSubtype; // @synthesize deviceSubtype=_deviceSubtype;
 @property (readonly, nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
-@property (nonatomic) void *endpoint; // @synthesize endpoint=_endpoint;
+@property (weak, nonatomic) MRAVEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly, nonatomic, getter=isGroupLeader) BOOL groupLeader; // @synthesize groupLeader=_groupLeader;
 @property (readonly, nonatomic, getter=isGroupable) BOOL groupable; // @synthesize groupable=_groupable;
@@ -63,7 +67,9 @@
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable; // @synthesize volumeControlAvailable=_volumeControlAvailable;
 
 + (id)localDeviceUID;
+- (void).cxx_destruct;
 - (id)description;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 
 @end

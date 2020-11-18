@@ -79,7 +79,6 @@ __attribute__((visibility("hidden")))
 - (double)fontHeight:(id)arg1;
 - (BOOL)isArea;
 - (BOOL)isLine;
-- (BOOL)isPie;
 - (BOOL)isScatter;
 - (BOOL)isVertical;
 - (BOOL)leftAxisLabelsVisible;

@@ -6,96 +6,40 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <Silex/SXPlaybackTransitionCoordinatorDelegate-Protocol.h>
-#import <Silex/SXVideoControlsViewControllerDelegate-Protocol.h>
-#import <Silex/SXVideoPlaybackObserver-Protocol.h>
-#import <Silex/SXVideoViewDelegate-Protocol.h>
-#import <Silex/SXVolumeObserver-Protocol.h>
-#import <Silex/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <Silex/SXAnimatableVideoViewController-Protocol.h>
 
-@class NSMutableArray, NSString, SXMediaSelectionController, SXPlaybackCoordinator, SXScreenDimmingManager, SXVideoControlsViewController, SXVideoPlaybackQueue, SXVideoView, SXVideoViewControllerConfiguration, SXVideoVisibilityMonitor, SXVolumeController;
-@protocol SXVideoViewControllerDataSource, SXVideoViewControllerDelegate;
+@class SXTimelineManager, SXVideoCollectionViewController, SXVideoControlsVisibilityManager, SXVideoPlaybackManager, SXVideoPrefetchManager, SXVideoView, SXVideoViewControllerConfiguration, SXVideoVolumeManager, UITapGestureRecognizer, UIView;
 
-@interface SXVideoViewController : UIViewController <SXVideoPlaybackObserver, UIViewControllerTransitioningDelegate, SXVideoControlsViewControllerDelegate, SXPlaybackTransitionCoordinatorDelegate, SXVolumeObserver, SXVideoViewDelegate>
+@interface SXVideoViewController : UIViewController <SXAnimatableVideoViewController>
 {
+    UIViewController *_controlsViewController;
     SXVideoViewControllerConfiguration *_configuration;
-    id<SXVideoViewControllerDataSource> _dataSource;
-    id<SXVideoViewControllerDelegate> _delegate;
-    SXVideoView *_videoView;
-    SXVideoControlsViewController *_controlsViewController;
-    SXPlaybackCoordinator *_playbackCoordinator;
-    SXVideoPlaybackQueue *_queue;
-    NSMutableArray *_videos;
-    NSMutableArray *_ads;
-    unsigned long long _numberOfVideos;
-    SXMediaSelectionController *_mediaSelectionController;
-    SXScreenDimmingManager *_screenDimmingManager;
-    SXVolumeController *_volumeController;
-    SXVideoVisibilityMonitor *_videoVisibilityMonitor;
+    SXVideoCollectionViewController *_collectionViewController;
+    SXVideoPlaybackManager *_playbackManager;
+    SXVideoControlsVisibilityManager *_controlsVisibilityManager;
+    UITapGestureRecognizer *_tapGestureRecognizer;
+    SXTimelineManager *_timelineManager;
+    SXVideoVolumeManager *_volumeManager;
+    SXVideoPrefetchManager *_prefetchManager;
 }
 
-@property (strong, nonatomic) NSMutableArray *ads; // @synthesize ads=_ads;
+@property (readonly, nonatomic) SXVideoCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
 @property (readonly, nonatomic) SXVideoViewControllerConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (strong, nonatomic) SXVideoControlsViewController *controlsViewController; // @synthesize controlsViewController=_controlsViewController;
-@property (weak, nonatomic) id<SXVideoViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<SXVideoViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) SXMediaSelectionController *mediaSelectionController; // @synthesize mediaSelectionController=_mediaSelectionController;
-@property (readonly, nonatomic) BOOL muted;
-@property (nonatomic) unsigned long long numberOfVideos; // @synthesize numberOfVideos=_numberOfVideos;
-@property (strong, nonatomic) SXPlaybackCoordinator *playbackCoordinator; // @synthesize playbackCoordinator=_playbackCoordinator;
-@property (strong, nonatomic) SXVideoPlaybackQueue *queue; // @synthesize queue=_queue;
-@property (readonly, nonatomic) SXScreenDimmingManager *screenDimmingManager; // @synthesize screenDimmingManager=_screenDimmingManager;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) SXVideoView *videoView; // @synthesize videoView=_videoView;
-@property (readonly, nonatomic) SXVideoVisibilityMonitor *videoVisibilityMonitor; // @synthesize videoVisibilityMonitor=_videoVisibilityMonitor;
-@property (strong, nonatomic) NSMutableArray *videos; // @synthesize videos=_videos;
-@property (readonly, nonatomic) SXVolumeController *volumeController; // @synthesize volumeController=_volumeController;
+@property (readonly, nonatomic) UIViewController *controlsViewController; // @synthesize controlsViewController=_controlsViewController;
+@property (readonly, nonatomic) SXVideoControlsVisibilityManager *controlsVisibilityManager; // @synthesize controlsVisibilityManager=_controlsVisibilityManager;
+@property (readonly, nonatomic) SXVideoPlaybackManager *playbackManager; // @synthesize playbackManager=_playbackManager;
+@property (readonly, nonatomic) SXVideoPrefetchManager *prefetchManager; // @synthesize prefetchManager=_prefetchManager;
+@property (readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
+@property (readonly, nonatomic) SXTimelineManager *timelineManager; // @synthesize timelineManager=_timelineManager;
+@property (readonly, nonatomic) UIView *videoHostView;
+@property (readonly, nonatomic) SXVideoView *videoView;
+@property (readonly, nonatomic) SXVideoVolumeManager *volumeManager; // @synthesize volumeManager=_volumeManager;
 
 - (void).cxx_destruct;
-- (void)accessibilityDidActivateVideoView:(id)arg1;
-- (void)advance;
-- (void)dealloc;
-- (unsigned long long)indexOfVideo:(id)arg1;
-- (unsigned long long)indexOfVideoForAd:(id)arg1;
-- (id)initWithConfiguration:(id)arg1;
-- (id)layoutForAd:(id)arg1 withPlaybackCoordinator:(id)arg2 reason:(unsigned long long)arg3;
-- (id)layoutForVideo:(id)arg1 withPlaybackCoordinator:(id)arg2 reason:(unsigned long long)arg3;
-- (void)muteStateChanged:(BOOL)arg1;
-- (void)pause;
-- (void)play;
-- (BOOL)playbackAllowed:(id)arg1;
-- (void)playbackCoordinator:(id)arg1 loadingProgressed:(double)arg2;
-- (void)playbackCoordinator:(id)arg1 playbackFailedWithError:(id)arg2;
-- (void)playbackCoordinator:(id)arg1 timeElapsed:(double)arg2 duration:(double)arg3;
-- (void)playbackCoordinatorFinishedPlayback:(id)arg1;
-- (void)playbackCoordinatorStartedPlayback:(id)arg1;
-- (void)playbackCoordinatorStateChanged:(id)arg1;
-- (void)playbackTransitionCoordinator:(id)arg1 addObserversToPlaybackCoordinator:(id)arg2;
-- (void)playbackTransitionCoordinator:(id)arg1 removeObserversFromPlaybackCoordinator:(id)arg2;
-- (void)refreshVideoControlsForPlaybackCoordinator:(id)arg1 reason:(unsigned long long)arg2;
-- (void)setupVideoQueueIfNeeded;
-- (BOOL)skipToPrevious;
-- (id)subtitleForVideoAtIndex:(unsigned long long)arg1;
-- (id)titleForVideoAtIndex:(unsigned long long)arg1;
-- (void)transitionToPlaybackCoordinator:(id)arg1 direction:(unsigned long long)arg2;
-- (void)videoControlsViewController:(id)arg1 didToggleControlVisibility:(BOOL)arg2;
-- (void)videoControlsViewControllerWantsSelectCaptions:(id)arg1;
-- (void)videoControlsViewControllerWantsToClose:(id)arg1;
-- (void)videoControlsViewControllerWantsToLearnMore:(id)arg1;
-- (void)videoControlsViewControllerWantsToPause:(id)arg1;
-- (void)videoControlsViewControllerWantsToPlay:(id)arg1;
-- (void)videoControlsViewControllerWantsToSeePrivacyStatement:(id)arg1;
-- (void)videoControlsViewControllerWantsToSeekToStart:(id)arg1;
-- (BOOL)videoControlsViewControllerWantsToSkipToNextVideo:(id)arg1;
-- (BOOL)videoControlsViewControllerWantsToSkipToPreviousVideo:(id)arg1;
-- (void)videoControlsViewControllsWantsToToggleVolume:(id)arg1;
+- (id)initWithCollectionViewController:(id)arg1 videoControlsViewController:(id)arg2 videoPlaybackManager:(id)arg3 controlsVisibilityManager:(id)arg4 timelineManager:(id)arg5 volumeManager:(id)arg6 prefetchManager:(id)arg7 tapGestureRecognizer:(id)arg8;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
-- (void)viewWillDisappear:(BOOL)arg1;
-- (void)volumeLevelChanged:(double)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

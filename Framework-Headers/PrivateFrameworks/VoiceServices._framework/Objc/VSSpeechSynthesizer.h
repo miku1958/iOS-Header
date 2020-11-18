@@ -91,6 +91,7 @@
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
 - (id)availableLanguageCodes;
 - (id)availableVoicesForLanguageCode:(id)arg1;
+- (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
 - (void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
 - (void)connection:(id)arg1 presynthesizedAudioRequest:(id)arg2 didStopAtEnd:(BOOL)arg3 error:(id)arg4;
 - (void)connection:(id)arg1 presynthesizedAudioRequest:(id)arg2 successWithInstrumentMetrics:(id)arg3 error:(id)arg4;
@@ -106,10 +107,12 @@
 - (BOOL)continueSpeakingRequest:(id)arg1 withError:(id *)arg2;
 - (BOOL)continueSpeakingWithError:(id *)arg1;
 - (void)dealloc;
+- (void)endAudioPowerUpdate;
 - (void)getAutoDownloadedVoiceAssets:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;
 - (void)getLogToFile:(CDUnknownBlockType)arg1;
+- (void)getTTSServerVoicesWithFilter:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getVoiceInfoForLanguageCode:(id)arg1 footprint:(long long)arg2 gender:(long long)arg3 type:(long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)getVoiceResourceForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;

@@ -13,6 +13,7 @@
 
 @property (nonatomic) long long automatchPosition; // @synthesize automatchPosition=_automatchPosition;
 
++ (BOOL)supportsSecureCoding;
 - (id)alias;
 - (BOOL)isAutomatchPlayer;
 - (id)playerID;

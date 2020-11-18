@@ -4,39 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <SafariServices/_SFPasswordViewController.h>
 
-#import <SafariServices/SFPasswordRemoteViewControllerDelegate-Protocol.h>
-#import <SafariServices/SFQueueingServiceViewControllerProxyDelegate-Protocol.h>
+@class SFPasswordRemoteViewController, SFQueueingServiceViewControllerProxy;
+@protocol SFPasswordPickerServiceViewControllerProtocol;
 
-@class NSString, SFPasswordRemoteViewController, SFQueueingServiceViewControllerProxy, _UIAsyncInvocation;
-@protocol SFPasswordServiceViewControllerProtocol, _SFAppAutoFillPasswordViewControllerDelegate;
-
-@interface _SFAppAutoFillPasswordViewController : UIViewController <SFPasswordRemoteViewControllerDelegate, SFQueueingServiceViewControllerProxyDelegate>
+@interface _SFAppAutoFillPasswordViewController : _SFPasswordViewController
 {
-    _UIAsyncInvocation *_cancelViewServiceRequest;
     SFPasswordRemoteViewController *_remoteViewController;
-    SFQueueingServiceViewControllerProxy<SFPasswordServiceViewControllerProtocol> *_serviceProxy;
-    BOOL _hasAttemptedAuthenticationForPasswords;
-    id<_SFAppAutoFillPasswordViewControllerDelegate> _delegate;
+    SFQueueingServiceViewControllerProxy<SFPasswordPickerServiceViewControllerProtocol> *_serviceProxy;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<_SFAppAutoFillPasswordViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 - (void).cxx_destruct;
-- (void)_addRemoteView;
-- (void)_addRemoteViewAsChild;
 - (void)_applicationDidEnterBackground:(id)arg1;
-- (void)_connectToService;
+- (id)_connectToServiceWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_remoteViewController;
+- (void)_setUpServiceProxyIfNeeded;
 - (void)authenticateToPresentInPopover:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)remoteViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
-- (void)remoteViewControllerWillDismiss:(id)arg1;
-- (void)serviceProxyWillQueueInvocation:(id)arg1;
+- (void)setWebViewURL:(id)arg1;
 - (void)viewDidLoad;
 
 @end

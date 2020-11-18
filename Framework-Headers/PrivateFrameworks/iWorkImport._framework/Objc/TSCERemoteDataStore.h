@@ -63,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (void)removeRemoteDataInterest:(id)arg1 forOwner:(const UUIDData_5fbc143e *)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)unregisterWithCoordinator;
+- (void)updateCachedStocksFromKnownStocks:(id)arg1;
+- (void)updateCachedStocksIntoStore:(id)arg1;
 - (void)updateWithRemoteDataMap:(id)arg1 quotes:(struct NSDictionary *)arg2 syncKey:(double)arg3;
 - (struct TSCEValue)valueForRemoteData:(id)arg1;
 

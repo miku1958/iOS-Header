@@ -29,10 +29,14 @@
 
 + (id)blendShapeMapping;
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (const MISSING_TYPE **)imageVertices;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 trackingData:(id)arg2;
+- (BOOL)isEqualToFaceAnchor:(id)arg1;
 
 @end
 

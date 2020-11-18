@@ -12,6 +12,7 @@
 
 + (id)aleStringsCacheDirectoryPath;
 + (id)geoServicesCacheDirectoryPath;
++ (id)geodCacheDirectoryPath;
 + (id)geodLibraryDirectoryURL;
 + (id)homeDirectory;
 + (void)initialize;

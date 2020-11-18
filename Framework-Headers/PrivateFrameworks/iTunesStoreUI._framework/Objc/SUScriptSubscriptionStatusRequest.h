@@ -10,12 +10,14 @@
 
 @interface SUScriptSubscriptionStatusRequest : SUScriptObject
 {
+    long long _carrierBundleProvisioningStyle;
     BOOL _ignoreCache;
     long long _reason;
     long long _service;
     BOOL _wantsPartialResults;
 }
 
+@property (copy) NSString *carrierBundleProvisioningStyleName;
 @property id ignoreCache;
 @property (copy) NSString *reasonName;
 @property (readonly) NSString *reasonNameDeepLink;
@@ -29,6 +31,7 @@
 - (id)_className;
 - (void)_handleRequestCompletionWithSubscriptionStatus:(id)arg1 isFinal:(BOOL)arg2 scriptCallbackFunction:(id)arg3;
 - (id)attributeKeys;
+- (id)init;
 - (void)performRequestWithCallbackFunction:(id)arg1;
 - (id)scriptAttributeKeys;
 

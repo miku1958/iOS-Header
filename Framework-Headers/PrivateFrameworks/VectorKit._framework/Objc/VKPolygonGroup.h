@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VKPolygonGroup : VKPolygonalItemGroup
 {
     struct optional<md::MeshSet<ggl::PolygonCommonStroke::MeshMesh, ggl::PolygonCommonStroke::DefaultVbo>> _strokeMeshInfo;
-    vector_78bd515f _strokeMeshes;
+    vector_d473a3e0 _strokeMeshes;
     VKSharedResources *_sharedResources;
     shared_ptr_479d1306 _sourceTexture;
     shared_ptr_479d1306 _targetTexture;
@@ -23,14 +23,14 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) struct Texture2D *sourceRoofTexture;
 @property (readonly, nonatomic) struct Texture2D *sourceTexture;
-@property (readonly, nonatomic) vector_78bd515f *strokeMeshes;
+@property (readonly, nonatomic) vector_d473a3e0 *strokeMeshes;
 @property (readonly, nonatomic) struct FeatureAttributeSet styleAttributes;
 @property (readonly, nonatomic) struct Texture2D *targetRoofTexture;
 @property (readonly, nonatomic) struct Texture2D *targetTexture;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (shared_ptr_479d1306)_textureForName:(const basic_string_805fe43b *)arg1;
+- (shared_ptr_479d1306)_textureForName:(const basic_string_23d93216 *)arg1;
 - (BOOL)addFillForSection:(const struct PolygonSection *)arg1 precision:(unsigned char)arg2 styleIndex:(unsigned int)arg3 cullingMask:(unsigned int)arg4 accessor:(struct ResourceAccessor *)arg5 triangulator:(id)arg6;
 - (void)addPolygon:(CDStruct_f65f1467 *)arg1 hasNonWaterStyle:(BOOL)arg2 accessor:(struct ResourceAccessor *)arg3 triangulator:(id)arg4;
 - (void)addStrokeForSection:(const struct PolygonSection *)arg1 paddedCount:(unsigned int)arg2 key:(pair_1503616b)arg3 attributes:(id)arg4 styles:(vector_0496561e *)arg5 cullingMask:(unsigned int)arg6 accessor:(struct ResourceAccessor *)arg7;

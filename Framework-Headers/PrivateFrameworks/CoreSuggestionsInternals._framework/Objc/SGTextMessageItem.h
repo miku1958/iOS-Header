@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSString, SGTextMessage;
 
-@interface SGTextMessageItem : NSObject
+@interface SGTextMessageItem : NSObject <NSSecureCoding>
 {
     NSString *_content;
     NSString *_language;
@@ -21,6 +23,7 @@
 @property (readonly) NSString *language;
 @property (readonly) SGTextMessage *message; // @synthesize message=_message;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

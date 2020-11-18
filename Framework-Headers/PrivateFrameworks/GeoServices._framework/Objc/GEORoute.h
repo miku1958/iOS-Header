@@ -52,6 +52,7 @@
     BOOL _avoidsHighways;
     BOOL _avoidsTolls;
     BOOL _avoidsTraffic;
+    BOOL _isOfflineResponse;
     struct {
         unsigned int arrivalStepID:1;
         unsigned int departureStepID:1;
@@ -67,6 +68,7 @@
         unsigned int avoidsHighways:1;
         unsigned int avoidsTolls:1;
         unsigned int avoidsTraffic:1;
+        unsigned int isOfflineResponse:1;
     } _has;
 }
 
@@ -101,6 +103,7 @@
 @property (nonatomic) BOOL hasDrivingSide;
 @property (nonatomic) BOOL hasExpectedTime;
 @property (nonatomic) BOOL hasHistoricTravelTime;
+@property (nonatomic) BOOL hasIsOfflineResponse;
 @property (readonly, nonatomic) BOOL hasLaunchAndGoCardText;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasPhoneticName;
@@ -120,6 +123,7 @@
 @property (readonly, nonatomic) unsigned long long incidentEndOffsetsInRoutesCount;
 @property (readonly, nonatomic) unsigned int *incidentIndices;
 @property (readonly, nonatomic) unsigned long long incidentIndicesCount;
+@property (nonatomic) BOOL isOfflineResponse;
 @property (strong, nonatomic) GEOLaunchAndGoCardText *launchAndGoCardText; // @synthesize launchAndGoCardText=_launchAndGoCardText;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *phoneticName; // @synthesize phoneticName=_phoneticName;

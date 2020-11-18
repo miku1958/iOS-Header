@@ -14,8 +14,7 @@
     BOOL _subtractAdditionalAmountFromCurrentAmount;
     BOOL _showSpinner;
     NSNumberFormatter *_currentAmountFormatter;
-    UILabel *_newBalancePrompt;
-    UILabel *_newBalanceAmount;
+    UILabel *_label;
     UIActivityIndicatorView *_spinner;
     NSString *_promptText;
     NSString *_updatedBalancePromptText;
@@ -42,6 +41,7 @@
 - (void)_addSubviews;
 - (void)_createAmountFormatter;
 - (id)_minimalFormattedStringForAmount:(id)arg1;
+- (id)_textForPrompt:(id)arg1 amount:(id)arg2;
 - (void)_updateAdditionalAmount:(id)arg1 subtractAdditionalAmountFromCurrentAmount:(BOOL)arg2;
 - (void)_updateBalanceText;
 - (void)addAmountToBalance:(id)arg1;

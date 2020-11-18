@@ -13,15 +13,14 @@
 @interface SXLearnMoreButton : SXMaterialButton <SXVideoControlItem>
 {
     BOOL hideable;
-    double autoAppearanceTimeInterval;
 }
 
-@property (readonly, nonatomic) double autoAppearanceTimeInterval; // @synthesize autoAppearanceTimeInterval;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideable; // @synthesize hideable;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsAutoAppearance;
 
 - (id)accessibilityElements;
 - (id)accessibilityLabel;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString;
+@class NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AVKeyValueObservationControllerProxyObserver : NSObject
@@ -15,23 +15,24 @@
     id _unsafeUnretainedObservedObject;
     void *_context;
     NSObject<OS_dispatch_queue> *_proxyObserverIvarAccessQueue;
+    NSMutableDictionary *_previousValues;
+    BOOL _includeInitialValue;
     NSString *_token;
-    unsigned long long _options;
     id _observer;
     NSSet *_keyPaths;
     CDUnknownBlockType _changesBlock;
 }
 
 @property (readonly, nonatomic) CDUnknownBlockType changesBlock; // @synthesize changesBlock=_changesBlock;
+@property (readonly, nonatomic) BOOL includeInitialValue; // @synthesize includeInitialValue=_includeInitialValue;
 @property (readonly, nonatomic) NSSet *keyPaths; // @synthesize keyPaths=_keyPaths;
 @property (readonly, nonatomic) id observedObject;
 @property (readonly, weak, nonatomic) id observer; // @synthesize observer=_observer;
-@property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSString *token; // @synthesize token=_token;
 
 - (void).cxx_destruct;
-- (void)_handleValueChangeForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)initWithObservedObject:(id)arg1 observer:(id)arg2 keyPaths:(id)arg3 retainingObservedObject:(BOOL)arg4 options:(unsigned long long)arg5 changesBlock:(CDUnknownBlockType)arg6;
+- (void)_handleValueChangeForKeyPath:(id)arg1 ofObject:(id)arg2 context:(void *)arg3;
+- (id)initWithObservedObject:(id)arg1 observer:(id)arg2 keyPaths:(id)arg3 retainingObservedObject:(BOOL)arg4 includeInitialValue:(BOOL)arg5 changesBlock:(CDUnknownBlockType)arg6;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)startObserving;
 - (void)stopObserving;

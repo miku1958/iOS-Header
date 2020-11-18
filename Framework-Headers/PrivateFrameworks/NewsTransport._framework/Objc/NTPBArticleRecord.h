@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBArticleRecord : PBCodable <NSCopying>
 {
@@ -28,6 +28,7 @@
     double _videoDuration;
     NSString *_accessoryText;
     NSMutableArray *_allowedStorefrontIDs;
+    NSData *_articleRecirculationConfiguration;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
     NSString *_clusterID;
@@ -44,6 +45,7 @@
     NSMutableArray *_moreFromPublisherArticleIDs;
     NSString *_primaryAudience;
     NTPBDate *_publishDate;
+    NSMutableArray *_publisherSpecifiedArticleIds;
     NSString *_referencedArticleID;
     NSMutableArray *_relatedArticleIDs;
     NSString *_shortExcerpt;
@@ -65,6 +67,8 @@
     NSString *_title;
     NSString *_titleCompact;
     NSMutableArray *_topics;
+    NSString *_videoCallToActionTitle;
+    NSString *_videoCallToActionURL;
     NSString *_videoURL;
     BOOL _isDraft;
     BOOL _isFeatureCandidate;
@@ -96,6 +100,7 @@
 
 @property (strong, nonatomic) NSString *accessoryText; // @synthesize accessoryText=_accessoryText;
 @property (strong, nonatomic) NSMutableArray *allowedStorefrontIDs; // @synthesize allowedStorefrontIDs=_allowedStorefrontIDs;
+@property (strong, nonatomic) NSData *articleRecirculationConfiguration; // @synthesize articleRecirculationConfiguration=_articleRecirculationConfiguration;
 @property (nonatomic) long long backendArticleVersion; // @synthesize backendArticleVersion=_backendArticleVersion;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
@@ -109,6 +114,7 @@
 @property (strong, nonatomic) NSMutableArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
 @property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *globalCohort; // @synthesize globalCohort=_globalCohort;
 @property (readonly, nonatomic) BOOL hasAccessoryText;
+@property (readonly, nonatomic) BOOL hasArticleRecirculationConfiguration;
 @property (nonatomic) BOOL hasBackendArticleVersion;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (nonatomic) BOOL hasBehaviorFlags;
@@ -155,6 +161,8 @@
 @property (readonly, nonatomic) BOOL hasThumbnailWidgetURL;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasTitleCompact;
+@property (readonly, nonatomic) BOOL hasVideoCallToActionTitle;
+@property (readonly, nonatomic) BOOL hasVideoCallToActionURL;
 @property (nonatomic) BOOL hasVideoDuration;
 @property (readonly, nonatomic) BOOL hasVideoURL;
 @property (strong, nonatomic) NSMutableArray *iAdCategories; // @synthesize iAdCategories=_iAdCategories;
@@ -169,6 +177,7 @@
 @property (strong, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
 @property (strong, nonatomic) NTPBDate *publishDate; // @synthesize publishDate=_publishDate;
 @property (nonatomic) long long publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
+@property (strong, nonatomic) NSMutableArray *publisherSpecifiedArticleIds; // @synthesize publisherSpecifiedArticleIds=_publisherSpecifiedArticleIds;
 @property (strong, nonatomic) NSString *referencedArticleID; // @synthesize referencedArticleID=_referencedArticleID;
 @property (strong, nonatomic) NSMutableArray *relatedArticleIDs; // @synthesize relatedArticleIDs=_relatedArticleIDs;
 @property (strong, nonatomic) NSString *shortExcerpt; // @synthesize shortExcerpt=_shortExcerpt;
@@ -199,6 +208,8 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *titleCompact; // @synthesize titleCompact=_titleCompact;
 @property (strong, nonatomic) NSMutableArray *topics; // @synthesize topics=_topics;
+@property (strong, nonatomic) NSString *videoCallToActionTitle; // @synthesize videoCallToActionTitle=_videoCallToActionTitle;
+@property (strong, nonatomic) NSString *videoCallToActionURL; // @synthesize videoCallToActionURL=_videoCallToActionURL;
 @property (nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
 @property (strong, nonatomic) NSString *videoURL; // @synthesize videoURL=_videoURL;
 
@@ -209,6 +220,7 @@
 + (Class)iAdKeywordsType;
 + (Class)iAdSectionIDsType;
 + (Class)moreFromPublisherArticleIDsType;
++ (Class)publisherSpecifiedArticleIdsType;
 + (Class)relatedArticleIDsType;
 + (Class)topicsType;
 - (void)addAllowedStorefrontIDs:(id)arg1;
@@ -218,6 +230,7 @@
 - (void)addIAdKeywords:(id)arg1;
 - (void)addIAdSectionIDs:(id)arg1;
 - (void)addMoreFromPublisherArticleIDs:(id)arg1;
+- (void)addPublisherSpecifiedArticleIds:(id)arg1;
 - (void)addRelatedArticleIDs:(id)arg1;
 - (void)addTopics:(id)arg1;
 - (id)allowedStorefrontIDsAtIndex:(unsigned long long)arg1;
@@ -231,6 +244,7 @@
 - (void)clearIAdKeywords;
 - (void)clearIAdSectionIDs;
 - (void)clearMoreFromPublisherArticleIDs;
+- (void)clearPublisherSpecifiedArticleIds;
 - (void)clearRelatedArticleIDs;
 - (void)clearTopics;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -250,6 +264,8 @@
 - (void)mergeFrom:(id)arg1;
 - (id)moreFromPublisherArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)moreFromPublisherArticleIDsCount;
+- (id)publisherSpecifiedArticleIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)publisherSpecifiedArticleIdsCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)relatedArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)relatedArticleIDsCount;

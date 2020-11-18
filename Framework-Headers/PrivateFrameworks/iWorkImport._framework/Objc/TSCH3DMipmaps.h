@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)mipmapsFromData:(id)arg1;
 + (id)mipmapsWithWidth:(int)arg1 height:(int)arg2 components:(unsigned long long)arg3 mipmapData:(id)arg4;
 + (struct CGSize)optimizedMipmapLevel0Size;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initFromData:(id)arg1;
 - (id)initWithWidth:(int)arg1 height:(int)arg2 components:(unsigned long long)arg3 mipmapData:(id)arg4;

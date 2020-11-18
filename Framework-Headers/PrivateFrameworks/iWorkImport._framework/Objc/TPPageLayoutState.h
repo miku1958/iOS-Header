@@ -11,15 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface TPPageLayoutState : NSObject
 {
+    TSWPStorage *_bodyStorage;
+    BOOL _doingLayout;
+    BOOL _allowParagraphMetrics;
     TPPageIndexPath *_pageIndexPath;
     unsigned long long _documentPageIndex;
-    TSWPStorage *_bodyStorage;
     void *_bodyLayoutState;
     unsigned long long _bodyCharIndex;
     unsigned long long _footnoteIndex;
-    BOOL _doingLayout;
-    BOOL _allowParagraphMetrics;
-    BOOL _onLastSection;
     unsigned long long _lastLaidOutSectionIndex;
 }
 
@@ -42,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)advancePageIndex;
 - (void)advanceSectionIndex;
-- (void)backUpToPage:(id)arg1 pageIndex:(unsigned long long)arg2;
+- (void)backUpToPageIndexPath:(id)arg1 documentPageIndex:(unsigned long long)arg2;
 - (id)initWithBodyStorage:(id)arg1;
 - (BOOL)isLayoutCompleteThroughDocumentPageIndex:(unsigned long long)arg1;
 - (BOOL)isLayoutCompleteUpToDocumentPageIndex:(unsigned long long)arg1;

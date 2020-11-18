@@ -10,13 +10,15 @@
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 
 @class NSString, NTKFace, NTKFaceCollection;
-@protocol NTKLibrarySelectedFaceSnapshotProviderDelegate;
+@protocol NTKLibrarySelectedFaceSnapshotProviderDelegate, OS_dispatch_queue;
 
 @interface NTKLibrarySelectedFaceSnapshotProvider : NSObject <NTKFaceCollectionObserver, NTKFaceObserver>
 {
     NTKFaceCollection *_libraryCollection;
     NTKFace *_selectedFace;
     NSString *_snapshotKey;
+    NSObject<OS_dispatch_queue> *_snapshotRequestsQueue;
+    BOOL _resumedQueue;
     id<NTKLibrarySelectedFaceSnapshotProviderDelegate> _delegate;
 }
 
@@ -38,6 +40,7 @@
 - (void)faceResourceDirectoryDidChange:(id)arg1;
 - (id)initWithDeviceUUID:(id)arg1;
 - (id)snapshotImage;
+- (void)snapshotSelectedFaceWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

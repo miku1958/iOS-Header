@@ -21,6 +21,7 @@
     double _startTime;
     double _endTime;
     MISSING_TYPE *_upAxis;
+    BOOL _isSceneKitBridged;
     NSMapTable *_components;
     double _frameInterval;
     id<MDLAssetResolver> _resolver;
@@ -61,6 +62,7 @@
 - (BOOL)exportAssetToURL:(id)arg1;
 - (BOOL)exportAssetToURL:(id)arg1 error:(id *)arg2;
 - (id)init;
+- (id)initThroughSCNKitBridgeWithURL:(id)arg1 preserveTopology:(BOOL)arg2 error:(id)arg3;
 - (id)initWithBufferAllocator:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 bufferAllocator:(id)arg2 preserveIndexing:(BOOL)arg3 error:(id *)arg4;

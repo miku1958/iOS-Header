@@ -47,6 +47,7 @@
 - (void)sendInvitationWithData:(id)arg1 declineOnError:(BOOL)arg2;
 - (void)sendInvitationWithOptions:(id)arg1;
 - (void)sendSessionMessage:(id)arg1;
+- (void)sendSessionMessage:(id)arg1 toDestinations:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setPreferences:(id)arg1;
 - (void)setStreamPreferences:(id)arg1;

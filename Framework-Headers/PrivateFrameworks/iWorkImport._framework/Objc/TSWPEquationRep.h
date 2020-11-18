@@ -27,13 +27,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (struct CGRect)clipRect;
-- (BOOL)containsPoint:(struct CGPoint)arg1;
-- (BOOL)directlyManagesLayerContent;
-- (id)dragItemsForBeginningDragAtPoint:(struct CGPoint)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)drawInLayerContext:(struct CGContext *)arg1;
-- (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
-- (BOOL)shouldIgnoreEditMenuTapAtPoint:(struct CGPoint)arg1 withRecognizer:(id)arg2;
 - (void)willBeRemoved;
 
 @end

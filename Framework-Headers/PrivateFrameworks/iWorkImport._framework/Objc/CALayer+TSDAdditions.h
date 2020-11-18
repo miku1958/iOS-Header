@@ -68,6 +68,8 @@
 - (void)resumeAtTime:(double)arg1;
 - (void)setIfDifferentFrame:(struct CGRect)arg1 orTransform:(struct CGAffineTransform)arg2;
 - (struct CATransform3D)transform3DByApplyingAnimation:(id)arg1 atTime:(double)arg2 offset:(struct CGPoint)arg3 animationCache:(id)arg4;
+- (BOOL)tsd_hideOverlayLayerDuringZoomOperations;
+- (void)tsd_setHideOverlayLayerDuringZoomOperations:(BOOL)arg1;
 - (id)zoomDownAnimation;
 @end
 

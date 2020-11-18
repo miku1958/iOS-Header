@@ -17,6 +17,7 @@
 - (id)_accessibilityAnnotationViews;
 - (id)_accessibilityFilterVisibleElements:(id)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityZoom:(BOOL)arg1 point:(struct CGPoint)arg2;
 - (id)accessibilityElements;
 - (BOOL)accessibilityIsShowingAnnotationCallout;

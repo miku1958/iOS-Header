@@ -7,6 +7,7 @@
 #import <HomeKit/HMService.h>
 
 @interface HMService (HFRoomContextProviding)
+- (BOOL)hf_isValidObject;
 - (id)hf_parentRoom;
 @end
 

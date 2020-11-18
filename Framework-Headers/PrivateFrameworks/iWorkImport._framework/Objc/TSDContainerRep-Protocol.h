@@ -6,16 +6,13 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSArray, NSMutableArray, NSObject, TSDRep;
+@class NSArray, NSObject;
 @protocol TSDContainerInfo;
 
 @protocol TSDContainerRep <NSObject>
 
+@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 
-- (void)addAdditionalChildLayersToArray:(NSMutableArray *)arg1;
-- (BOOL)canSelectChildRep:(TSDRep *)arg1;
-- (NSArray *)childReps;
-- (void)selectChildRep:(TSDRep *)arg1 extendingSelection:(BOOL)arg2;
 @end
 

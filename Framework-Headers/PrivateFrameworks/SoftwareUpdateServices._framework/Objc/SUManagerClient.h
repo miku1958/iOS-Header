@@ -61,6 +61,7 @@
 - (BOOL)createInstallationKeybag:(id)arg1 forUnattendedInstall:(BOOL)arg2;
 - (void)currentAutoInstallOperation:(BOOL)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)delayEndDate:(CDUnknownBlockType)arg1;
 - (void)deviceHasSufficientSpaceForDownload:(CDUnknownBlockType)arg1;
 - (void)download:(CDUnknownBlockType)arg1;
 - (void)downloadAndInstallState:(CDUnknownBlockType)arg1;
@@ -71,6 +72,7 @@
 - (void)downloadProgressDidChange:(id)arg1;
 - (void)downloadWasInvalidatedForNewUpdateAvailable:(id)arg1;
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(CDUnknownBlockType)arg1;
+- (void)getMandatorySoftwareUpdateDictionary:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 clientType:(int)arg2;
@@ -83,6 +85,7 @@
 - (void)installationConstraintMonitor:(id)arg1 constraintsDidChange:(unsigned long long)arg2;
 - (void)installationConstraintObserverDidRemoveAllObserverBlocks:(id)arg1;
 - (void)invalidate;
+- (void)isDelayingUpdates:(CDUnknownBlockType)arg1;
 - (void)isDownloading:(CDUnknownBlockType)arg1;
 - (BOOL)isInstallationKeybagRequired;
 - (void)isScanning:(CDUnknownBlockType)arg1;
@@ -97,6 +100,7 @@
 - (void)scanForUpdates:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)scanRequestDidFinishForOptions:(id)arg1 update:(id)arg2 error:(id)arg3;
 - (void)scanRequestDidStartForOptions:(id)arg1;
+- (void)setMandatorySoftwareUpdateDictionary:(id)arg1;
 - (void)slaVersion:(CDUnknownBlockType)arg1;
 - (void)startDownload:(CDUnknownBlockType)arg1;
 - (void)startDownloadWithMetadata:(id)arg1 withResult:(CDUnknownBlockType)arg2;

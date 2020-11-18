@@ -41,7 +41,6 @@
 
 + (id)publicAccountIdentityFromKeyHistory:(id)arg1;
 + (id)publicDeviceIdentityFromClientData:(id)arg1 accountPublicIdentity:(id)arg2;
-+ (id)publicLegacyIdentityFromClientData:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -50,6 +49,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7;
 - (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(BOOL)arg9;
+- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(BOOL)arg9 serializedPublicMessageProtectionIdentity:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) struct CGRect legendModelGeometryFrame;
 
+- (void).cxx_destruct;
 - (struct CGRect)calcDrawingRect;
 - (struct CGSize)calcMinSize;
 - (void)clearAll;
 - (void)clearLayoutSize;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1;
 - (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (double)p_legendModelWidth;

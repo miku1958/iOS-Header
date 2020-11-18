@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, strong, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
 
+- (void).cxx_destruct;
 - (struct CGRect)calcDrawingRect;
 - (struct CGSize)calcMinSize;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1 axisID:(id)arg2;
 - (id)p_areaLayoutItem;
 - (struct CGRect)p_drawingRectForModel:(id)arg1;

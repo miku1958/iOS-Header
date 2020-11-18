@@ -9,7 +9,7 @@
 #import <NewsUI/NUActivityProvider-Protocol.h>
 
 @class FCReadingHistory, FCReadingList, FCSubscriptionList, NSString;
-@protocol FCHeadlineProviding, NUReportConcernViewPresenter, NUURLHandling;
+@protocol FCHeadlineProviding, NUReportConcernViewPresenter, NUURLHandling, NUURLModifying;
 
 @interface NUArticleActivityManager : NSObject <NUActivityProvider>
 {
@@ -19,9 +19,11 @@
     FCSubscriptionList *_subscriptionList;
     id<NUURLHandling> _URLHandler;
     id<NUReportConcernViewPresenter> _reportConcernViewPresenter;
+    id<NUURLModifying> _URLModifier;
 }
 
 @property (readonly, nonatomic) id<NUURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
+@property (readonly, nonatomic) id<NUURLModifying> URLModifier; // @synthesize URLModifier=_URLModifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -42,7 +44,7 @@
 - (BOOL)articleLikedForHeadline:(id)arg1;
 - (BOOL)articleSavedForHeadline:(id)arg1;
 - (BOOL)channelMutedForHeadline:(id)arg1;
-- (id)initWithHeadline:(id)arg1 readingHistory:(id)arg2 readingList:(id)arg3 subscriptionList:(id)arg4 URLHandler:(id)arg5 reportConcernViewPresenter:(id)arg6;
+- (id)initWithHeadline:(id)arg1 readingHistory:(id)arg2 readingList:(id)arg3 subscriptionList:(id)arg4 URLHandler:(id)arg5 reportConcernViewPresenter:(id)arg6 URLModifier:(id)arg7;
 - (CDUnknownBlockType)performBlockForHeadline:(id)arg1 withType:(unsigned long long)arg2;
 - (id)supportedActivities;
 - (void)toggleArticleDislikeStatusForHeadline:(id)arg1;

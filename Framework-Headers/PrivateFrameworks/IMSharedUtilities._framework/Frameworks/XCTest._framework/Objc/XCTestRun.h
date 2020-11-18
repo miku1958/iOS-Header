@@ -30,7 +30,7 @@
 @property unsigned long long unexpectedExceptionCountBeforeCrash;
 
 + (id)testRunWithTest:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (id)initWithTest:(id)arg1;

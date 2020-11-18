@@ -55,6 +55,7 @@
 - (double)expectedDuration;
 - (unsigned long long)hash;
 - (id)hlsOfflinePlaybackKeys;
+- (id)hlsPlaylistURLString;
 - (id)iTunesStoreContentDSID;
 - (id)iTunesStoreContentID;
 - (id)init;

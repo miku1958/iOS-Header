@@ -20,7 +20,9 @@
     struct {
         unsigned int delegateWidth:1;
         unsigned int delegateHeight:1;
+        unsigned int containerDirection:1;
     } _flags;
+    struct CGRect _bounds;
 }
 
 @property (nonatomic, getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement;
@@ -42,8 +44,8 @@
 - (id)initWithContainer:(id)arg1 dataSource:(id)arg2;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (struct CGSize)layoutSizeFittingSize:(struct CGSize)arg1;
-- (void)populateGridArrangementCells:(vector_f7a18e83 *)arg1;
-- (void)populateGridArrangementDimension:(vector_29d414c0 *)arg1 withCells:(const vector_f7a18e83 *)arg2 axis:(long long)arg3;
+- (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
+- (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
 - (void)positionItemsInBounds:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
 - (void)positionItemsInColumns:(struct _NSRange)arg1 rows:(struct _NSRange)arg2 inBounds:(struct CGRect)arg3 block:(CDUnknownBlockType)arg4;
 - (void)reloadData;

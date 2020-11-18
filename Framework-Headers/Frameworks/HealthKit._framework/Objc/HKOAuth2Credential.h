@@ -9,27 +9,28 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSArray, NSData, NSDate, NSString;
 
 @interface HKOAuth2Credential : NSObject <NSCopying, NSSecureCoding>
 {
-    NSString *_accessToken;
+    NSData *_accessToken;
     NSString *_tokenType;
-    NSString *_refreshToken;
+    NSData *_refreshToken;
     NSDate *_expiration;
     NSArray *_scope;
 }
 
-@property (readonly, copy, nonatomic) NSString *accessToken; // @synthesize accessToken=_accessToken;
+@property (readonly, copy, nonatomic) NSData *accessToken; // @synthesize accessToken=_accessToken;
 @property (readonly, copy, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
-@property (readonly, copy, nonatomic) NSString *refreshToken; // @synthesize refreshToken=_refreshToken;
+@property (readonly, copy, nonatomic) NSData *refreshToken; // @synthesize refreshToken=_refreshToken;
 @property (readonly, copy, nonatomic) NSArray *scope; // @synthesize scope=_scope;
+@property (readonly, copy, nonatomic) NSString *scopeString;
 @property (readonly, copy, nonatomic) NSString *tokenType; // @synthesize tokenType=_tokenType;
 
++ (id)_scopeStringFromScope:(id)arg1;
 + (id)expirationFromTimeInterval:(double)arg1;
 + (id)scopeFromScopeString:(id)arg1;
-+ (id)scopeStringFromScope:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_commonInitWithAccessToken:(id)arg1 tokenType:(id)arg2 refreshToken:(id)arg3 expiration:(id)arg4 scope:(id)arg5;
@@ -38,6 +39,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithAccessToken:(id)arg1 tokenType:(id)arg2 refreshToken:(id)arg3 expiration:(id)arg4 scope:(id)arg5;
+- (id)initWithAccessToken:(id)arg1 tokenType:(id)arg2 refreshToken:(id)arg3 expiration:(id)arg4 scopeString:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCredential:(id)arg1 epsilonExpiration:(double)arg2;

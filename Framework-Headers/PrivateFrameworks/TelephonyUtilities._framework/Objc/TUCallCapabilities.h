@@ -10,15 +10,11 @@
 {
 }
 
-+ (id)_client;
 + (void)_sendNotificationsAfterRunningBlock:(CDUnknownBlockType)arg1;
-+ (void)_setClientServer:(id)arg1;
 + (BOOL)accountsMatchForSecondaryCalling;
 + (BOOL)accountsSupportSecondaryCalling;
 + (BOOL)areCTCapabilitiesValid;
 + (BOOL)areRelayCallingFeaturesEnabled;
-+ (id)callCapabilitiesClientXPCInterface;
-+ (id)callCapabilitiesServerXPCInterface;
 + (BOOL)canAttemptEmergencyCallsInAirplaneMode;
 + (BOOL)canAttemptEmergencyCallsWithoutCellularConnection;
 + (BOOL)canAttemptTelephonyCallsInAirplaneMode;
@@ -38,6 +34,7 @@
 + (BOOL)isDirectFaceTimeVideoCallingCurrentlyAvailable;
 + (BOOL)isDirectTelephonyCallingCurrentlyAvailable;
 + (BOOL)isEmergencyCallbackModeEnabled;
++ (BOOL)isEmergencyCallbackPossible;
 + (BOOL)isFaceTimeAudioAvailable;
 + (BOOL)isFaceTimeVideoAvailable;
 + (BOOL)isRelayCallingEnabled;

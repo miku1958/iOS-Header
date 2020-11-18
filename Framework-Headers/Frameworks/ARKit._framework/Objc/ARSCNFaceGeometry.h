@@ -12,9 +12,11 @@
 {
     id<MTLBuffer> _vertexBuffer;
     id<MTLBuffer> _normalBuffer;
+    id<MTLBuffer> _textureBuffer;
 }
 
 @property (strong, nonatomic) id<MTLBuffer> normalBuffer; // @synthesize normalBuffer=_normalBuffer;
+@property (strong, nonatomic) id<MTLBuffer> textureBuffer; // @synthesize textureBuffer=_textureBuffer;
 @property (strong, nonatomic) id<MTLBuffer> vertexBuffer; // @synthesize vertexBuffer=_vertexBuffer;
 
 + (id)faceGeometryWithDevice:(id)arg1;

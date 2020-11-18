@@ -13,6 +13,7 @@
 {
     id<UITraitEnvironment> _traitEnvironment;
     UITraitCollection *_traitCollection;
+    UIFont *_title0Font;
     UIFont *_title1Font;
     UIFont *_title2Font;
     UIFont *_title3Font;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic) UIFont *footnoteFont; // @synthesize footnoteFont=_footnoteFont;
 @property (copy, nonatomic) UIFont *headlineFont; // @synthesize headlineFont=_headlineFont;
 @property (copy, nonatomic) UIFont *subheadlineFont; // @synthesize subheadlineFont=_subheadlineFont;
+@property (copy, nonatomic) UIFont *title0Font; // @synthesize title0Font=_title0Font;
 @property (copy, nonatomic) UIFont *title1Font; // @synthesize title1Font=_title1Font;
 @property (copy, nonatomic) UIFont *title2Font; // @synthesize title2Font=_title2Font;
 @property (copy, nonatomic) UIFont *title3Font; // @synthesize title3Font=_title3Font;

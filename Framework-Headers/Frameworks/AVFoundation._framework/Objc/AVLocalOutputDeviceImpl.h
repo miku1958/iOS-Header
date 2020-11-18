@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets;
 @property (readonly, nonatomic) BOOL canBeGroupLeader;
 @property (readonly, nonatomic) BOOL canBeGrouped;
+@property (readonly, nonatomic) BOOL canRelayCommunicationChannel;
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property (readonly, copy, nonatomic) NSArray *connectedPairedDevices;
@@ -41,6 +42,7 @@
 @property (readonly, copy, nonatomic) NSString *modelID;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (weak) AVOutputDevice *parentOutputDevice; // @synthesize parentOutputDevice=_parentDevice;
+@property (readonly, nonatomic) BOOL participatesInGroupPlayback;
 @property (readonly, nonatomic) BOOL requiresAuthorization;
 @property (readonly, nonatomic) NSNumber *rightBatteryLevel;
 @property (readonly, nonatomic) NSString *serialNumber;

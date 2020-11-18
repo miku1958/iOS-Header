@@ -8,18 +8,22 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
+@class NSString;
+
 @interface PKExpressTransactionState : NSObject <NSSecureCoding>
 {
     BOOL _processing;
-    long long _expressType;
+    NSString *_expressMode;
     unsigned long long _receivedEvents;
 }
 
-@property (nonatomic) long long expressType; // @synthesize expressType=_expressType;
+@property (copy, nonatomic) NSString *expressMode; // @synthesize expressMode=_expressMode;
+@property (readonly, nonatomic) long long expressType;
 @property (nonatomic, getter=isProcessing) BOOL processing; // @synthesize processing=_processing;
 @property (nonatomic) unsigned long long receivedEvents; // @synthesize receivedEvents=_receivedEvents;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

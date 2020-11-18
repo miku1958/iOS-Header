@@ -9,6 +9,7 @@
 @interface NSData (SafariCoreExtras)
 - (id)safari_SHA1Hash;
 - (BOOL)safari_dataAppearsToBeCompressed;
+- (id)safari_dataByAppendingData:(id)arg1;
 - (id)safari_dataByCompressingData;
 - (id)safari_dataByDecompressingData;
 - (id)safari_descriptionWithoutSpaces;

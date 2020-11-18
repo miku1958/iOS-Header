@@ -4,21 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXHost.h>
+#import <objc/NSObject.h>
 
-@class NSExtensionContext;
+#import <Silex/SXHost-Protocol.h>
 
-@interface SXHostExtension : SXHost
+@class NSExtensionContext, NSString;
+
+@interface SXHostExtension : NSObject <SXHost>
 {
     BOOL _isActive;
     NSExtensionContext *_extensionContext;
 }
 
+@property (readonly, nonatomic) BOOL active;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (weak, nonatomic) NSExtensionContext *extensionContext; // @synthesize extensionContext=_extensionContext;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)active;
 - (BOOL)canOpenURL:(id)arg1;
 - (void)extensionHostDidBecomeActive:(id)arg1;
 - (void)extensionHostDidEnterBackground:(id)arg1;

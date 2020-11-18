@@ -27,13 +27,15 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSString *bonjourServiceType; // @synthesize bonjourServiceType=_bonjourServiceType;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<MRExternalDeviceControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MRExternalDeviceControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDiscovering) BOOL discovering; // @synthesize discovering=_discovering;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (Class)externalDeviceClass;
+- (void).cxx_destruct;
+- (BOOL)_isManagedConfigIDAllowed:(id)arg1;
 - (void)beginDiscovery;
 - (void)dealloc;
 - (void)endDiscovery;

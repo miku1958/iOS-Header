@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isOpaque;
 - (Class)layerClass;
 - (BOOL)masksToBounds;
-- (void)updateLayerGeometryFromLayout:(id)arg1;
 
 @end
 

@@ -6,16 +6,19 @@
 
 #import <SAObjects/SADomainObject.h>
 
-@class NSString;
+@class NSString, SACalendar, SAMPPlaybackInfo;
 
 @interface SAMPMediaEntity : SADomainObject
 {
 }
 
+@property (strong, nonatomic) SACalendar *dateAdded;
 @property (copy, nonatomic) NSString *mediaType;
+@property (strong, nonatomic) SAMPPlaybackInfo *playbackInfo;
 @property (copy, nonatomic) NSString *rawPlaybackInfo;
 @property (copy, nonatomic) NSString *releaseDate;
 @property (copy, nonatomic) NSString *sortTitle;
+@property (copy, nonatomic) NSString *storeId;
 @property (copy, nonatomic) NSString *title;
 
 + (id)mediaEntity;

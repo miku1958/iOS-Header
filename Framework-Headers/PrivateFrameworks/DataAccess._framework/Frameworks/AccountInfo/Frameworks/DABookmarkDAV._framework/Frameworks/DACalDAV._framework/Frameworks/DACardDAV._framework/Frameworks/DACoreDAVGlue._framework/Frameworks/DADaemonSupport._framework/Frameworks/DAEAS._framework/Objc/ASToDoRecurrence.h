@@ -6,11 +6,11 @@
 
 #import <DAEAS/ASRecurrence.h>
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class ASToDo, NSDate, NSNumber;
 
-@interface ASToDoRecurrence : ASRecurrence <NSCoding>
+@interface ASToDoRecurrence : ASRecurrence <NSSecureCoding>
 {
     NSDate *_startTime;
     NSNumber *_regenerate;
@@ -29,6 +29,7 @@
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_requiresParentEvent;
 - (id)_transformedUntilDateForActiveSync:(id)arg1;

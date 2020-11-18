@@ -8,7 +8,7 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class FBSSceneSettings, NSDate, NSSet, NSString;
+@class BSSettings, FBSSceneSettings, NSDate, NSSet, NSString;
 
 @interface FBSceneSnapshotContext : NSObject <BSDescriptionProviding>
 {
@@ -20,8 +20,10 @@
     long long _orientation;
     NSDate *_expirationDate;
     double _scale;
+    BSSettings *_clientExtendedData;
 }
 
+@property (copy, nonatomic) BSSettings *clientExtendedData; // @synthesize clientExtendedData=_clientExtendedData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;

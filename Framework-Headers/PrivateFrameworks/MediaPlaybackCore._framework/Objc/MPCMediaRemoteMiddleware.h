@@ -17,8 +17,10 @@
     NSArray *_invalidationObservers;
     MPCMediaRemoteController *_controller;
     MPSectionedCollection *_queueContentItems;
+    MPSectionedCollection *_queueModelObjects;
     id<MPCSupportedCommands> _supportedCommands;
     NSIndexPath *_playingIndexPath;
+    NSString *_queueIdentifier;
     long long _playerState;
 }
 
@@ -31,17 +33,16 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *invalidationObservers; // @synthesize invalidationObservers=_invalidationObservers;
 @property (nonatomic) long long playerState; // @synthesize playerState=_playerState;
-@property (nonatomic) NSIndexPath *playingIndexPath; // @synthesize playingIndexPath=_playingIndexPath;
+@property (copy, nonatomic) NSIndexPath *playingIndexPath; // @synthesize playingIndexPath=_playingIndexPath;
 @property (strong, nonatomic) MPSectionedCollection *queueContentItems; // @synthesize queueContentItems=_queueContentItems;
+@property (copy, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
+@property (strong, nonatomic) MPSectionedCollection *queueModelObjects; // @synthesize queueModelObjects=_queueModelObjects;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<MPCSupportedCommands> supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 
 - (void).cxx_destruct;
-- (id)_genericObjectPropertySetForContentItem:(id)arg1 preferredRelationships:(id)arg2 propertySet:(id)arg3;
-- (id)_itemGenericObjectPropertySetForContentItem:(id)arg1 propertySet:(id)arg2;
 - (float)_playbackRateForContentItem:(id)arg1;
-- (id)_sectionGenericObjectPropertySetForContentItem:(id)arg1 propertySet:(id)arg2;
 - (id)_supportedCommands:(unsigned int)arg1 infoValueForKey:(id)arg2;
 - (id)controller:(id)arg1 chain:(id)arg2;
 - (id)init;
@@ -64,6 +65,7 @@
 - (long long)playerState:(long long)arg1 chain:(id)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(id)arg2;
 - (id)playerVideoView:(id)arg1 chain:(id)arg2;
+- (id)tracklistUniqueIdentifier:(id)arg1 chain:(id)arg2;
 
 @end
 

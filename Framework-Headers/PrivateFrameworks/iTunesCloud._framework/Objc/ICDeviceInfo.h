@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSData, NSString;
+@protocol OS_dispatch_queue;
 
 @interface ICDeviceInfo : NSObject
 {
@@ -25,7 +26,9 @@
     NSString *_name;
     NSString *_pairedDeviceGUID;
     NSString *_serialNumber;
+    struct CGSize _mainScreenSize;
     NSString *_systemReleaseType;
+    NSObject<OS_dispatch_queue> *_accessQueue;
 }
 
 @property (readonly, copy, nonatomic) NSString *buildVersion;
@@ -43,6 +46,7 @@
 @property (readonly, nonatomic) BOOL isIPhone;
 @property (readonly, nonatomic) BOOL isIPod;
 @property (readonly, nonatomic) BOOL isWatch;
+@property (readonly, nonatomic) struct CGSize mainScreenSize;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *pairedDeviceGUID;
 @property (readonly, copy, nonatomic) NSString *productPlatform;
@@ -55,6 +59,7 @@
 + (id)defaultInfo;
 - (void).cxx_destruct;
 - (int)_gestaltDeviceClass;
+- (id)_init;
 - (void)dealloc;
 
 @end

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
-- (void)layoutInRootChangedFrom:(id)arg1 to:(id)arg2 translatedOnly:(BOOL)arg3;
 - (void)p_create2DRep;
 - (id)p_layoutFrom3DInfo:(id)arg1 layout3D:(id)arg2;
 - (id)p_mutationsForConverting3DFillFromSeries:(id)arg1;

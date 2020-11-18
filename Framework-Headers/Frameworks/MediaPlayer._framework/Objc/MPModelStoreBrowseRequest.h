@@ -25,6 +25,7 @@
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)configureWithParentSection:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

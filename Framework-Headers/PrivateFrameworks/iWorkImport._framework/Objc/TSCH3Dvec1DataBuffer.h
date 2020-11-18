@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface TSCH3Dvec1DataBuffer : TSCH3DFloatVectorDataBuffer
 {
-    vector_7cfb452c mContainer;
+    vector_9ed239ac mContainer;
 }
 
-@property (readonly, nonatomic) vector_7cfb452c *container;
+@property (readonly, nonatomic) vector_9ed239ac *container;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

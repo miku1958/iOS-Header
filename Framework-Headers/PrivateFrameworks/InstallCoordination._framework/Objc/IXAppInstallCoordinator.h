@@ -14,12 +14,13 @@
 @interface IXAppInstallCoordinator : NSObject <IXCoordinatorWithPlaceholderPromise>
 {
     BOOL _complete;
+    NSError *_error;
+    unsigned long long _errorSourceIdentifier;
     id<IXAppInstallCoordinatorObserver> _observer;
     IXAppInstallCoordinatorSeed *_seed;
     NSObject<OS_dispatch_queue> *_observerCalloutQueue;
+    NSObject<OS_dispatch_queue> *_internalQueue;
     unsigned long long _observersCalled;
-    NSError *_error;
-    unsigned long long _errorSourceIdentifier;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleID; // @dynamic bundleID;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) BOOL hasPlaceholderPromise;
 @property (readonly, nonatomic) BOOL hasUserDataPromise;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (readonly, nonatomic) NSString *localDescription;
 @property (weak, nonatomic) id<IXAppInstallCoordinatorObserver> observer; // @synthesize observer=_observer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observerCalloutQueue; // @synthesize observerCalloutQueue=_observerCalloutQueue;
@@ -58,6 +60,7 @@
 + (Class)classForIntent:(unsigned long long)arg1;
 + (BOOL)coordinationIsEnabled;
 + (id)coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 createIfNotExisting:(BOOL)arg3 created:(BOOL *)arg4 error:(id *)arg5;
++ (int)daemonPid;
 + (BOOL)demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 error:(id *)arg3;
 + (void)enumerateCoordinatorsUsingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)enumerateCoordinatorsWithBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
@@ -74,7 +77,7 @@
 + (void)resumeCoordinatorForAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)resumeCoordinatorForAppWithBundleID:(id)arg1 error:(id *)arg2;
 + (void)setRemovability:(unsigned long long)arg1 forAppWithBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (BOOL)setTestModeForBundleWithPrefix:(id)arg1 testMode:(unsigned long long)arg2;
++ (BOOL)setTestModeForIdentifierPrefix:(id)arg1 testMode:(unsigned long long)arg2;
 + (BOOL)setTestingEnabled:(BOOL)arg1;
 + (BOOL)uninstallAppWithBundleID:(id)arg1 error:(id *)arg2;
 + (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

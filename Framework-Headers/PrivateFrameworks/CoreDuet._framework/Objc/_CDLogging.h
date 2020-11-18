@@ -15,7 +15,9 @@
 + (id)contextChannel;
 + (id)instrumentationChannel;
 + (id)interactionChannel;
++ (id)interactionSignpost;
 + (id)knowledgeChannel;
++ (id)knowledgeSignpost;
 + (id)syncChannel;
 
 @end

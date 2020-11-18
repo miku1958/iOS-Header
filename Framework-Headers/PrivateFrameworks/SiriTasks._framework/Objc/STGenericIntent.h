@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SiriTasks/NSCoding-Protocol.h>
+#import <SiriTasks/NSSecureCoding-Protocol.h>
 
 @class AFSiriTask, NSMutableDictionary, NSString, STGenericIntentRequest;
 
-@interface STGenericIntent : NSObject <NSCoding>
+@interface STGenericIntent : NSObject <NSSecureCoding>
 {
     BOOL _appInForeground;
     BOOL _isLaunch;
@@ -35,6 +35,7 @@
 @property (strong, nonatomic) AFSiriTask *siriTask; // @synthesize siriTask=_siriTask;
 @property (copy, nonatomic) NSString *utterance; // @synthesize utterance=_utterance;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addParam:(id)arg1 withValue:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

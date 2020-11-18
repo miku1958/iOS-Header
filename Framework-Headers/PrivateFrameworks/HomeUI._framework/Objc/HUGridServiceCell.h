@@ -64,6 +64,7 @@
 - (void)_setupServiceCell;
 - (id)_textConfiguration;
 - (void)_updateAccessoryView;
+- (void)_updateExclamationViewColor;
 - (void)_updateIconAnimated:(BOOL)arg1;
 - (void)_updateSecondaryContentDisplayStyle;
 - (void)_updateText;

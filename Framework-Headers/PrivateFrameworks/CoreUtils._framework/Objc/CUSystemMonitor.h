@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
+@class NSData, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUSystemMonitor : NSObject
@@ -17,6 +17,7 @@
     BOOL _invalidateCalled;
     BOOL _invalidateCalled2;
     CDUnknownBlockType _invalidationHandler;
+    CDUnknownBlockType _bluetoothAddressChangedHandler;
     CDUnknownBlockType _callChangedHandler;
     CDUnknownBlockType _meDeviceChangedHandler;
     CDUnknownBlockType _powerUnlimitedChangedHandler;
@@ -28,6 +29,9 @@
 }
 
 @property (readonly) int activeCallCount;
+@property (readonly) CDStruct_83abfce7 bluetoothAddress48;
+@property (copy) CDUnknownBlockType bluetoothAddressChangedHandler; // @synthesize bluetoothAddressChangedHandler=_bluetoothAddressChangedHandler;
+@property (readonly, copy) NSData *bluetoothAddressData;
 @property (copy) CDUnknownBlockType callChangedHandler; // @synthesize callChangedHandler=_callChangedHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
@@ -35,6 +39,7 @@
 @property (readonly, copy) NSString *meDeviceFMFDeviceID;
 @property (readonly, copy) NSString *meDeviceIDSDeviceID;
 @property (readonly, copy) NSString *meDeviceName;
+@property (readonly) BOOL meDeviceValid;
 @property (readonly) BOOL powerUnlimited;
 @property (copy) CDUnknownBlockType powerUnlimitedChangedHandler; // @synthesize powerUnlimitedChangedHandler=_powerUnlimitedChangedHandler;
 @property (copy) CDUnknownBlockType primaryAppleIDChangedHandler; // @synthesize primaryAppleIDChangedHandler=_primaryAppleIDChangedHandler;

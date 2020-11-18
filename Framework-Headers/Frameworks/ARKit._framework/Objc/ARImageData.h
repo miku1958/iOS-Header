@@ -10,19 +10,18 @@
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARFaceData, AVDepthData, NSDate, NSString;
+@class ARFaceData, AVDepthData, MISSING_TYPE, NSDate, NSString;
 
 @interface ARImageData : NSObject <ARSensorData, NSCopying, NSSecureCoding>
 {
-    BOOL _pixelBufferIsMirrored;
+    BOOL _mirrored;
     BOOL _shouldRestrictFrameRate;
     float _exposureTargetOffset;
     float _temperature;
-    float _tint;
-    float _ISO;
     double _timestamp;
     NSDate *_captureDate;
     struct __CVBuffer *_pixelBuffer;
+    unsigned long long _lensType;
     double _exposureDuration;
     ARFaceData *_faceData;
     AVDepthData *_depthData;
@@ -30,10 +29,11 @@
     long long _cameraPosition;
     long long _captureFramesPerSecond;
     long long _renderFramesPerSecond;
+    MISSING_TYPE *_tangentialDistortion;
+    MISSING_TYPE *_radialDistortion;
     CDStruct_8e0628e6 _cameraIntrinsics;
 }
 
-@property (nonatomic) float ISO; // @synthesize ISO=_ISO;
 @property (nonatomic) CDStruct_8e0628e6 cameraIntrinsics; // @synthesize cameraIntrinsics=_cameraIntrinsics;
 @property (nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
 @property (strong, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
@@ -47,22 +47,27 @@
 @property (strong, nonatomic) ARFaceData *faceData; // @synthesize faceData=_faceData;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGSize imageResolution;
+@property (nonatomic) unsigned long long lensType; // @synthesize lensType=_lensType;
+@property (nonatomic, getter=isMirrored) BOOL mirrored; // @synthesize mirrored=_mirrored;
+@property (readonly, nonatomic) ARImageData *originalImage;
 @property (nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
-@property (nonatomic) BOOL pixelBufferIsMirrored; // @synthesize pixelBufferIsMirrored=_pixelBufferIsMirrored;
+@property (nonatomic) MISSING_TYPE *radialDistortion; // @synthesize radialDistortion=_radialDistortion;
 @property (nonatomic) long long renderFramesPerSecond; // @synthesize renderFramesPerSecond=_renderFramesPerSecond;
 @property (nonatomic) BOOL shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
 @property (readonly) Class superclass;
+@property (nonatomic) MISSING_TYPE *tangentialDistortion; // @synthesize tangentialDistortion=_tangentialDistortion;
 @property (nonatomic) float temperature; // @synthesize temperature=_temperature;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
-@property (nonatomic) float tint; // @synthesize tint=_tint;
 
 + (id)captureDateFromPresentationTimestamp:(CDStruct_1b6d18a9)arg1 session:(id)arg2;
++ (CDStruct_8e0628e6)intrinsicsFromDeviceFormat:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithImageData:(id)arg1;
 - (id)initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 captureFramePerSecond:(long long)arg2 renderFramePerSecond:(long long)arg3 captureDevice:(id)arg4 captureSession:(id)arg5;
 
 @end

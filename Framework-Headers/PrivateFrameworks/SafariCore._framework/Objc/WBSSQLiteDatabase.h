@@ -28,7 +28,9 @@
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (id)_errorWithErrorCode:(int)arg1;
++ (id)inMemoryDatabaseURL;
 + (void)initialize;
++ (id)privateOnDiskDatabaseURL;
 + (void)setUpLogCollection;
 + (id)writeAheadLogSharedMemoryURLForDatabaseURL:(id)arg1;
 + (id)writeAheadLogURLForDatabaseURL:(id)arg1;

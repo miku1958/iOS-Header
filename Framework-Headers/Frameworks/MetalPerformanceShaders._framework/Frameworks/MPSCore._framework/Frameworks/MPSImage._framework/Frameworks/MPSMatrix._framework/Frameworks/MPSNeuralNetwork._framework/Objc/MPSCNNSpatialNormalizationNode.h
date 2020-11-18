@@ -16,6 +16,7 @@
 @property (nonatomic) unsigned long long kernelWidth; // @synthesize kernelWidth=_kernelWidth;
 
 + (id)nodeWithSource:(id)arg1 kernelSize:(unsigned long long)arg2;
+- (Class)gradientClass;
 - (id)initWithSource:(id)arg1;
 - (id)initWithSource:(id)arg1 kernelSize:(unsigned long long)arg2;
 - (struct FilterGraphNode *)newFilterNode;

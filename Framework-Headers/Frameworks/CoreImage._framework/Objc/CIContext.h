@@ -60,6 +60,7 @@
 - (id)createColorCubeDataForFilters:(id)arg1 dimension:(int)arg2;
 - (void)dealloc;
 - (id)description;
+- (id)device;
 - (void)drawImage:(id)arg1 atPoint:(struct CGPoint)arg2 fromRect:(struct CGRect)arg3;
 - (void)drawImage:(id)arg1 inRect:(struct CGRect)arg2 fromRect:(struct CGRect)arg3;
 - (id)flatten:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4;

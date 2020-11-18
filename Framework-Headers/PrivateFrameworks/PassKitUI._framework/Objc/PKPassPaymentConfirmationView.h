@@ -9,8 +9,8 @@
 #import <PassKitUI/PKPassPaymentPayStateViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSDate, NSObject, NSString, PKExpressTransactionState, PKFooterTransactionView, PKPassPaymentPayStateView, PKPaymentService;
-@protocol NSObject, OS_dispatch_source;
+@class NSDate, NSMutableDictionary, NSObject, NSString, PKExpressTransactionState, PKFooterTransactionView, PKPassPaymentPayStateView, PKPaymentService;
+@protocol OS_dispatch_source;
 
 @interface PKPassPaymentConfirmationView : PKPassFooterContentView <PKPassPaymentPayStateViewDelegate, PKPaymentServiceDelegate>
 {
@@ -21,14 +21,12 @@
     BOOL _receivedTransaction;
     BOOL _receivedExit;
     BOOL _needsResolution;
+    BOOL _showingAlert;
     BOOL _showingResolution;
     BOOL _animatingResolution;
     NSObject<OS_dispatch_source> *_activityResolutionTimer;
     NSDate *_visibleDate;
-    id<NSObject> _expressTransactionStartedObserver;
-    id<NSObject> _expressTransactionTimeoutObserver;
-    id<NSObject> _expressTransactionEndedObserver;
-    id<NSObject> _expressExitObserver;
+    NSMutableDictionary *_registeredExpressObservers;
     PKPaymentService *_paymentService;
 }
 
@@ -38,16 +36,19 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_disableActivityTimer;
+- (id)_expressNotificationNames;
 - (void)_handleExpressNotification:(id)arg1;
 - (BOOL)_isExpressOutstanding;
 - (BOOL)_isRegisteredForAllExpressTransactionNotifications;
 - (BOOL)_isRegisteredForAnyExpressTransactionNotifications;
 - (void)_presentCheckmarkIfNecessary;
 - (void)_registerForExpressTransactionNotifications:(BOOL)arg1;
+- (void)_registerObserverForNotificationName:(id)arg1 center:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_resolveActivityIfNecessary;
-- (void)_updateContentViewsWithFelicaProperties:(id)arg1;
 - (void)_updateContentViewsWithTransaction:(id)arg1;
-- (void)_updateContentViewsWithTransaction:(id)arg1 felicaProperties:(id)arg2;
+- (void)_updateContentViewsWithTransaction:(id)arg1 transitProperties:(id)arg2;
+- (void)_updateContentViewsWithTransitProperties:(id)arg1;
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;
@@ -56,7 +57,7 @@
 - (void)layoutSubviews;
 - (void)payStateView:(id)arg1 revealingCheckmark:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithFelicaPassProperties:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;
 - (void)willBecomeVisibleAnimated:(BOOL)arg1;
 

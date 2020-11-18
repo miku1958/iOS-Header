@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <QuartzCore/CAMediaTiming-Protocol.h>
 #import <QuartzCore/CAPropertyInfo-Protocol.h>
@@ -59,7 +59,9 @@
 @property struct CGRect cornerContentsCenter;
 @property BOOL cornerContentsMasksEdges;
 @property double cornerRadius;
+@property BOOL definesDisplayRegionOfInterest;
 @property (weak) id<CALayerDelegate> delegate;
+@property unsigned int disableUpdateMask;
 @property (getter=isDoubleSided) BOOL doubleSided;
 @property BOOL drawsAsynchronously;
 @property double duration;
@@ -184,7 +186,6 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)dependentStatesOfState:(id)arg1;
-- (unsigned int)disableUpdateMask;
 - (void)display;
 - (void)displayIfNeeded;
 - (BOOL)doubleSided;
@@ -239,7 +240,6 @@
 - (void)scrollRectToVisible:(struct CGRect)arg1;
 - (void)setAffineTransform:(struct CGAffineTransform)arg1;
 - (void)setContentsChanged;
-- (void)setDisableUpdateMask:(unsigned int)arg1;
 - (void)setFlipped:(BOOL)arg1;
 - (void)setLights:(id)arg1;
 - (void)setNeedsDisplay;

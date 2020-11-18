@@ -7,23 +7,27 @@
 #import <objc/NSObject.h>
 
 #import <SafariServices/SFFormMetadataObserver-Protocol.h>
+#import <SafariServices/_SFAuthenticationClient-Protocol.h>
 
-@class NSMutableIndexSet, NSString, NSTimer, SFFormAutocompleteState, UIView, WKWebView, _WKRemoteObjectInterface;
+@class NSMutableIndexSet, NSMutableSet, NSString, NSTimer, SFFormAutocompleteState, UIView, WKWebView, _SFAuthenticationContext, _SFAutoFillAuthenticationCache, _WKRemoteObjectInterface;
 @protocol SFFormAutoFillControllerDelegate, SFFormAutoFiller, WBUFormAutoFillWebView;
 
-@interface _SFFormAutoFillController : NSObject <SFFormMetadataObserver>
+@interface _SFFormAutoFillController : NSObject <SFFormMetadataObserver, _SFAuthenticationClient>
 {
     WKWebView<WBUFormAutoFillWebView> *_webView;
     id<SFFormAutoFillControllerDelegate> _delegate;
     _WKRemoteObjectInterface *_remoteObjectInterface;
     id<SFFormAutoFiller> _autoFiller;
+    BOOL _isCurrentlyAuthenticating;
     SFFormAutocompleteState *_state;
     NSTimer *_prefillTimer;
     NSMutableIndexSet *_uniqueIDsOfFormsThatWereAutoFilled;
-    BOOL _isCurrentlyAuthenticating;
+    NSMutableSet *_uniqueIDsOfControlsThatWereAutoFilled;
     BOOL _metadataCorrectionsEnabled;
 }
 
+@property (readonly, nonatomic) _SFAutoFillAuthenticationCache *authenticationCache;
+@property (readonly, nonatomic) _SFAuthenticationContext *authenticationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,12 +36,17 @@
 @property (readonly, nonatomic) UIView<WBUFormAutoFillWebView> *webView;
 
 - (void).cxx_destruct;
+- (void)_addUniqueIDsOfAutoFilledForm:(id)arg1;
+- (void)_authenticateForAutoFillForHighLevelDomain:(id)arg1 onPageLoad:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_autoFillLoginFormSynchronouslyAndClearMetadata:(id)arg1 inFrame:(id)arg2;
 - (void)_didCollectURLsForPreFilling:(id)arg1 atURL:(id)arg2;
 - (void)_fieldFocused:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3 inputSession:(id)arg4;
 - (void)_prefillTimerFired:(id)arg1;
+- (void)_removeUniqueIDsOfAutoFilledForm:(id)arg1;
 - (void)annotateForm:(long long)arg1 inFrame:(id)arg2 withValues:(id)arg3;
 - (void)authenticateForAutoFillOnPageLoad:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)authenticationCustomUIProgressObserverForContext:(id)arg1;
+- (id)authenticationMessageForContext:(id)arg1;
 - (void)autoFill;
 - (void)autoFillDidFinishWithUpdatedFormMetadata:(id)arg1;
 - (void)autoFillForm:(long long)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;

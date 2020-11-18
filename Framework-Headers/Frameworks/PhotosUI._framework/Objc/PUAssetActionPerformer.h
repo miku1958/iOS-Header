@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, UIViewController;
-@protocol PUAssetActionPerformerDelegate;
+@protocol OS_os_log, PUAssetActionPerformerDelegate;
 
 @interface PUAssetActionPerformer : NSObject
 {
@@ -16,10 +16,12 @@
     unsigned long long _state;
     id<PUAssetActionPerformerDelegate> _delegate;
     UIViewController *_presentedViewController;
+    NSObject<OS_os_log> *_actionPerformerLog;
     NSArray *_assets;
     NSDictionary *_assetsByAssetCollection;
 }
 
+@property (weak, nonatomic) NSObject<OS_os_log> *actionPerformerLog; // @synthesize actionPerformerLog=_actionPerformerLog;
 @property (readonly, nonatomic) unsigned long long actionType; // @synthesize actionType=_actionType;
 @property (readonly, copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 @property (readonly, copy, nonatomic) NSDictionary *assetsByAssetCollection; // @synthesize assetsByAssetCollection=_assetsByAssetCollection;

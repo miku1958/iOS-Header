@@ -4,19 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXHost.h>
+#import <objc/NSObject.h>
 
-@class UIApplication;
+#import <Silex/SXHost-Protocol.h>
 
-@interface SXHostApplication : SXHost
+@class NSString, UIApplication;
+
+@interface SXHostApplication : NSObject <SXHost>
 {
     UIApplication *_application;
 }
 
+@property (readonly, nonatomic) BOOL active;
 @property (weak, nonatomic) UIApplication *application; // @synthesize application=_application;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)active;
 - (BOOL)canOpenURL:(id)arg1;
 - (id)initWithApplication:(id)arg1;
 - (void)openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;

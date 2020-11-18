@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSCopying-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 
 @class NSString, SFDevice;
 
-@interface DEDDevice : NSObject <NSSecureCoding, NSCopying>
+@interface DEDDevice : NSObject <NSSecureCoding, NSCopying, DEDSecureArchiving>
 {
     NSString *_address;
     NSString *_build;
@@ -32,8 +33,11 @@
 @property (strong) NSString *address; // @synthesize address=_address;
 @property (strong) NSString *build; // @synthesize build=_build;
 @property (strong) NSString *color; // @synthesize color=_color;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) NSString *deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (strong) NSString *enclosureColor; // @synthesize enclosureColor=_enclosureColor;
+@property (readonly) unsigned long long hash;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong) NSString *model; // @synthesize model=_model;
 @property (strong) NSString *name; // @synthesize name=_name;
@@ -42,8 +46,10 @@
 @property long long remoteTransport; // @synthesize remoteTransport=_remoteTransport;
 @property (strong) SFDevice *sfDevice; // @synthesize sfDevice=_sfDevice;
 @property long long status; // @synthesize status=_status;
+@property (readonly) Class superclass;
 @property long long transport; // @synthesize transport=_transport;
 
++ (id)archivedClasses;
 + (id)currentDevice;
 + (id)deviceClassForProductType:(id)arg1;
 + (id)deviceForSFDevice:(id)arg1 andStatus:(long long)arg2;
@@ -55,7 +61,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchIconImageDataForScale:(float)arg1 completionCompletion:(CDUnknownBlockType)arg2;
 - (id)imageData;

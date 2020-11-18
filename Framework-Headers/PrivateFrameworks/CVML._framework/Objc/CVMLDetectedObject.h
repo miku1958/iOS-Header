@@ -6,11 +6,11 @@
 
 #import <CVML/CVMLObservation.h>
 
-#import <CVML/NSCoding-Protocol.h>
+#import <CVML/NSSecureCoding-Protocol.h>
 
 @class NSUUID;
 
-@interface CVMLDetectedObject : CVMLObservation <NSCoding>
+@interface CVMLDetectedObject : CVMLObservation <NSSecureCoding>
 {
     NSUUID *_identifier;
     struct CGRect _boundingBox;
@@ -20,6 +20,7 @@
 @property (strong) NSUUID *identifier; // @synthesize identifier=_identifier;
 
 + (id)observationWithBoundingBox:(struct CGRect)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

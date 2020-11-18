@@ -13,7 +13,7 @@
 + (id)_firstSourceWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (id)_firstSourceWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)_insertSourceWithUUID:(id)arg1 bundleIdentifier:(id)arg2 name:(id)arg3 options:(unsigned long long)arg4 isCurrentDevice:(BOOL)arg5 productType:(id)arg6 deleted:(BOOL)arg7 modificationDate:(id)arg8 provenance:(long long)arg9 database:(id)arg10 error:(id *)arg11;
-+ (id)_sourcesWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (id)_sourcesWithPredicate:(id)arg1 includeDeleted:(BOOL)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)bundleIdentifiersForSourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (id)columnsDefinition;
 + (id)databaseTable;
@@ -28,9 +28,9 @@
 + (id)propertyForSyncProvenance;
 + (long long)protectionClass;
 + (id)sourceForLocalDeviceWithDatabase:(id)arg1 error:(id *)arg2;
-+ (id)sourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
-+ (id)sourcesWithPredicate:(id)arg1 orderingProperties:(id)arg2 orderingDirections:(id)arg3 database:(id)arg4 error:(id *)arg5;
-+ (id)sourcesWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (id)sourcesWithPredicate:(id)arg1 includeDeleted:(BOOL)arg2 database:(id)arg3 error:(id *)arg4;
++ (id)sourcesWithPredicate:(id)arg1 includeDeleted:(BOOL)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)sourcesWithPredicate:(id)arg1 orderingProperties:(id)arg2 orderingDirections:(id)arg3 includeDeleted:(BOOL)arg4 database:(id)arg5 error:(id *)arg6;
 - (BOOL)_updateValues:(id)arg1 forProperties:(id)arg2 profile:(id)arg3 didUpdate:(BOOL *)arg4 error:(id *)arg5;
 - (id)codableSourceWithEncoder:(id)arg1 error:(id *)arg2;
 - (id)codableSourceWithProfile:(id)arg1 error:(id *)arg2;

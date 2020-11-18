@@ -6,13 +6,17 @@
 
 #import <MediaPlayer/MPNondurableMediaItem.h>
 
-@class NSDictionary;
+@class MPModelObject, NSDictionary;
 
 @interface MPModelObjectMediaItem : MPNondurableMediaItem
 {
     NSDictionary *_propertyValues;
+    MPModelObject *_modelObject;
 }
 
+@property (readonly, nonatomic) MPModelObject *modelObject; // @synthesize modelObject=_modelObject;
+
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithPropertyValues:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

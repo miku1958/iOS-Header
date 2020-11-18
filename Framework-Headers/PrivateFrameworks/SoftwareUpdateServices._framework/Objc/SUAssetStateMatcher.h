@@ -25,8 +25,10 @@
 
 - (id)_findMatchFromCandidates:(id)arg1 error:(id *)arg2;
 - (BOOL)_matchesFilterType:(id)arg1;
+- (void)_modifyMADownloadOptions:(id)arg1;
 - (id)findMatchFromCandidates:(id)arg1 error:(id *)arg2;
 - (id)initWithType:(id)arg1 interestedStates:(int)arg2;
+- (void)modifyMADownloadOptions:(id)arg1;
 
 @end
 

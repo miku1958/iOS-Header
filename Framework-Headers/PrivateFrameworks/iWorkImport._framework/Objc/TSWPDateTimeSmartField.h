@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
 
 + (id)dateStringFromTime:(double)arg1 withFormat:(id)arg2 localeIdentifier:(id)arg3 dateStyle:(long long)arg4 timeStyle:(long long)arg5;
 + (id)newDateFormatWithLocaleIdentifier:(id)arg1 dateStyle:(long long)arg2 timeStyle:(long long)arg3;
+- (void).cxx_destruct;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (id)generateInlineText;
 - (id)initWithLocaleIdentifier:(id)arg1 dateStyle:(long long)arg2 timeStyle:(long long)arg3 autoUpdate:(BOOL)arg4 context:(id)arg5;
 - (id)initWithLocaleIdentifier:(id)arg1 dateStyle:(long long)arg2 timeStyle:(long long)arg3 format:(id)arg4 autoUpdate:(BOOL)arg5 context:(id)arg6;

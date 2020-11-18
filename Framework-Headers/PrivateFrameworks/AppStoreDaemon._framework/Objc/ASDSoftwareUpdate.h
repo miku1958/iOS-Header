@@ -9,22 +9,32 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface ASDSoftwareUpdate : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _perDevice;
+    BOOL _profileValidated;
+    NSArray *_blockedBy;
     NSDate *_installDate;
     NSDictionary *_rawUpdateDictionary;
     NSDate *_timestamp;
     long long _updateState;
+    NSDictionary *_metrics;
+    long long _rawUpdateState;
 }
 
+@property (copy, nonatomic) NSArray *blockedBy; // @synthesize blockedBy=_blockedBy;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) NSString *buyParams;
 @property (readonly, nonatomic) NSNumber *externalVersionIdentifier;
 @property (copy, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
+@property (copy, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) long long parentalControlsRank;
+@property (nonatomic, getter=isPerDevice) BOOL perDevice; // @synthesize perDevice=_perDevice;
+@property (nonatomic, getter=isProfileValidated) BOOL profileValidated; // @synthesize profileValidated=_profileValidated;
 @property (readonly, nonatomic) NSDictionary *rawUpdateDictionary; // @synthesize rawUpdateDictionary=_rawUpdateDictionary;
+@property (nonatomic) long long rawUpdateState; // @synthesize rawUpdateState=_rawUpdateState;
 @property (readonly, nonatomic) long long storeItemIdentifier;
 @property (copy, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) NSDictionary *updateDictionary;

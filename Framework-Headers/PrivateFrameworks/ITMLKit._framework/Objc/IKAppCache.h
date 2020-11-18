@@ -15,30 +15,30 @@
 {
     NSObject<OS_dispatch_queue> *_appCacheQueue;
     BOOL _shouldIgnoreHTTPCache;
-    id<IKAppCacheDelegate> _delegate;
     id<IKAppContextDelegate> _appContextDelegate;
-    NSURL *_appJSURL;
+    id<IKAppCacheDelegate> _delegate;
+    NSURL *_currentAppJSURL;
+    NSString *_currentAppJSChecksum;
+    NSURL *_appLocalJSFileURL;
+    NSString *_appLocalJSChecksum;
+    NSURL *_appJSFileURL;
     NSString *_appJSChecksum;
-    NSString *_cacheAppLocalJSChecksum;
-    NSString *_cacheAppJSChecksum;
-    NSArray *_cacheAppJSChecksumHistory;
+    NSArray *_appJSChecksumHistory;
+    id<IKApplication> _app;
     unsigned long long _status;
     IKAppContext *_validationContext;
     CDUnknownBlockType _validationCompletionHandler;
-    NSURL *_cacheFileURL;
-    NSURL *_appLocalJSFileURL;
-    id<IKApplication> _app;
 }
 
 @property (weak, nonatomic) id<IKApplication> app; // @synthesize app=_app;
 @property (weak, nonatomic) id<IKAppContextDelegate> appContextDelegate; // @synthesize appContextDelegate=_appContextDelegate;
 @property (readonly, nonatomic) NSString *appJSChecksum; // @synthesize appJSChecksum=_appJSChecksum;
-@property (readonly, nonatomic) NSURL *appJSURL; // @synthesize appJSURL=_appJSURL;
+@property (readonly, nonatomic) NSArray *appJSChecksumHistory; // @synthesize appJSChecksumHistory=_appJSChecksumHistory;
+@property (readonly, copy, nonatomic) NSURL *appJSFileURL; // @synthesize appJSFileURL=_appJSFileURL;
+@property (readonly, nonatomic) NSString *appLocalJSChecksum; // @synthesize appLocalJSChecksum=_appLocalJSChecksum;
 @property (readonly, copy, nonatomic) NSURL *appLocalJSFileURL; // @synthesize appLocalJSFileURL=_appLocalJSFileURL;
-@property (readonly, nonatomic) NSString *cacheAppJSChecksum; // @synthesize cacheAppJSChecksum=_cacheAppJSChecksum;
-@property (readonly, nonatomic) NSArray *cacheAppJSChecksumHistory; // @synthesize cacheAppJSChecksumHistory=_cacheAppJSChecksumHistory;
-@property (readonly, nonatomic) NSString *cacheAppLocalJSChecksum; // @synthesize cacheAppLocalJSChecksum=_cacheAppLocalJSChecksum;
-@property (readonly, copy, nonatomic) NSURL *cacheFileURL; // @synthesize cacheFileURL=_cacheFileURL;
+@property (readonly, nonatomic) NSString *currentAppJSChecksum; // @synthesize currentAppJSChecksum=_currentAppJSChecksum;
+@property (readonly, nonatomic) NSURL *currentAppJSURL; // @synthesize currentAppJSURL=_currentAppJSURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<IKAppCacheDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

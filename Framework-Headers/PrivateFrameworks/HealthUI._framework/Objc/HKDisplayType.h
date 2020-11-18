@@ -8,7 +8,7 @@
 
 #import <HealthUI/NSCopying-Protocol.h>
 
-@class HKDisplayCategory, HKDisplayTypeChartingRules, HKObjectType, HKSampleType, NSAttributedString, NSDictionary, NSPredicate, NSSet, NSString, UIImage;
+@class HKDisplayCategory, HKDisplayTypeChartingRules, HKObjectType, HKSampleType, HKValueRange, NSAttributedString, NSDictionary, NSPredicate, NSSet, NSString, UIImage;
 
 @interface HKDisplayType : NSObject <NSCopying>
 {
@@ -30,6 +30,7 @@
     BOOL _showAllDataHierarchically;
     BOOL _shouldDisplayUnitStringOnYAxis;
     BOOL _disallowsSourceReordering;
+    BOOL _excludeFromDataTypeSearch;
     BOOL _shouldUseSingleSecondaryValue;
     BOOL __wheelchairUser;
     long long _displayTypeIdentifier;
@@ -40,6 +41,7 @@
     NSAttributedString *_attributedSummaryAttribution;
     HKDisplayTypeChartingRules *_chartingRules;
     unsigned long long _statisticsMergeStrategy;
+    HKValueRange *_defaultAxisRangeOverride;
     HKObjectType *_objectType;
 }
 
@@ -51,6 +53,7 @@
 @property (readonly, nonatomic) long long categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (readonly, nonatomic) NSString *cautionaryText;
 @property (readonly, nonatomic) HKDisplayTypeChartingRules *chartingRules; // @synthesize chartingRules=_chartingRules;
+@property (strong, nonatomic) HKValueRange *defaultAxisRangeOverride; // @synthesize defaultAxisRangeOverride=_defaultAxisRangeOverride;
 @property (readonly, nonatomic) UIImage *detailImage; // @synthesize detailImage=_detailImage;
 @property (readonly, nonatomic) BOOL disallowsSourceReordering; // @synthesize disallowsSourceReordering=_disallowsSourceReordering;
 @property (readonly, nonatomic) HKDisplayCategory *displayCategory;
@@ -58,6 +61,7 @@
 @property (readonly, nonatomic) UIImage *displayTypeIcon;
 @property (readonly, nonatomic) long long displayTypeIdentifier; // @synthesize displayTypeIdentifier=_displayTypeIdentifier;
 @property (readonly, nonatomic) NSString *embeddedDisplayName;
+@property (readonly, nonatomic) BOOL excludeFromDataTypeSearch; // @synthesize excludeFromDataTypeSearch=_excludeFromDataTypeSearch;
 @property (readonly, nonatomic) BOOL hidden;
 @property (readonly, nonatomic) BOOL isActivitySummary;
 @property (readonly, nonatomic) BOOL isCharacteristic;

@@ -11,43 +11,49 @@
 #import <iWorkImport/TSKTransformableObject-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
 
-@class NSObject, NSString, TSDInfoGeometry, TSWPStorage;
+@class NSArray, NSObject, NSString, TSDInfoGeometry, TSWPStorage;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
 @interface KNNoteInfo : TSPObject <TSDContainerInfo, TSWPStorageParent, TSKDocumentObject, TSKTransformableObject>
 {
-    NSObject<TSDContainerInfo> *mParentInfo;
-    TSWPStorage *mContainedStorage;
-    struct CGRect mFrameForPrinting;
-    BOOL mShrinkTextForPrinting;
+    NSObject<TSDContainerInfo> *_parentInfo;
+    BOOL _shrinkTextForPrinting;
+    NSObject<TSDContainerInfo> *parentInfo;
+    TSWPStorage *_containedStorage;
+    struct CGRect _frameForPrinting;
 }
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
-@property (strong, nonatomic) TSWPStorage *containedStorage; // @synthesize containedStorage=mContainedStorage;
+@property (readonly, nonatomic) BOOL autoListRecognition;
+@property (readonly, nonatomic) BOOL autoListTermination;
+@property (readonly, nonatomic) NSArray *childInfos;
+@property (strong, nonatomic) TSWPStorage *containedStorage; // @synthesize containedStorage=_containedStorage;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText;
-@property (nonatomic) struct CGRect frameForPrinting; // @synthesize frameForPrinting=mFrameForPrinting;
+@property (nonatomic) struct CGRect frameForPrinting; // @synthesize frameForPrinting=_frameForPrinting;
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=mParentInfo;
-@property (nonatomic) BOOL shrinkTextForPrinting; // @synthesize shrinkTextForPrinting=mShrinkTextForPrinting;
+@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo;
+@property (readonly, nonatomic) BOOL preventsComments;
+@property (nonatomic) BOOL shrinkTextForPrinting; // @synthesize shrinkTextForPrinting=_shrinkTextForPrinting;
+@property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL textIsLinked;
+@property (readonly, nonatomic) BOOL textIsVertical;
 @property (readonly, nonatomic) int verticalAlignment;
 
 + (BOOL)needsObjectUUID;
+- (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
-- (BOOL)autoListRecognition;
-- (BOOL)autoListTermination;
 - (id)childEnumerator;
-- (id)childInfos;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
@@ -65,8 +71,6 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (void)setPrimitiveGeometry:(id)arg1;
 - (BOOL)shouldHideEmptyBullets;
-- (BOOL)textIsLinked;
-- (BOOL)textIsVertical;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

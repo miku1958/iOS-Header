@@ -8,14 +8,11 @@
 
 #import <iWorkImport/CALayerDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSString, TSDFrameRep, TSDMediaInfo, TSDMediaLayout;
+@class NSString, TSDFrameRep, TSDMediaInfo, TSDMediaLayout;
 
 __attribute__((visibility("hidden")))
 @interface TSDMediaRep : TSDStyledRep <CALayerDelegate>
 {
-    BOOL mIsZooming;
-    CALayer *mTapToReplaceLayer;
-    CAShapeLayer *mMaskLayer;
     TSDFrameRep *mFrameRep;
 }
 
@@ -23,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) TSDFrameRep *frameRep; // @synthesize frameRep=mFrameRep;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CAShapeLayer *maskLayer; // @synthesize maskLayer=mMaskLayer;
 @property (readonly, nonatomic) TSDMediaInfo *mediaInfo;
 @property (readonly, nonatomic) TSDMediaLayout *mediaLayout;
 @property (readonly) Class superclass;
@@ -33,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)i_shouldRenderStroke:(id)arg1;
 - (void)i_updateFrameRep;
 - (BOOL)isPlaceholder;
+- (void)willBeRemoved;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class ADWebView;
 
@@ -17,7 +17,9 @@
 
 + (id)sharedManager;
 - (id)_webViewForCreative;
+- (id)_webViewForCreativeForVideo;
 - (id)creativeView;
+- (id)creativeViewForVideo;
 - (void)dealloc;
 - (void)preallocateWebViewWithBackgroundPriority;
 

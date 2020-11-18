@@ -8,14 +8,16 @@
 
 #import <Sharing/AVAudioPlayerDelegate-Protocol.h>
 
-@class AVAudioPlayer, AVAudioSession, HMAccessory, HMHome, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, SSAccount, TROperationQueue, TRSession, UIViewController;
-@protocol OS_dispatch_queue;
+@class ACAccount, ACAccountStore, AVAudioPlayer, AVAudioSession, HMAccessory, HMHome, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, RPCompanionLinkClient, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, SSAccount, TROperationQueue, TRSession, UIViewController;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceSetupB238Session : NSObject <AVAudioPlayerDelegate>
 {
     BOOL _activateCalled;
+    RPCompanionLinkClient *_companionLinkClient;
     BOOL _invalidateCalled;
     unsigned long long _startTicks;
+    int _proxSetupActiveToken;
     BOOL _audioProgress;
     AVAudioSession *_audioSession;
     AVAudioPlayer *_audioPlayerStart;
@@ -25,25 +27,30 @@
     int _preflightWiFiState;
     int _preflightiCloudState;
     BOOL _preventAppleWiFi;
+    ACAccountStore *_iCloudAccountStore;
+    ACAccount *_iCloudAccount;
     NSString *_iCloudUserID;
+    unsigned char _iCloudPropertiesCompleted;
     BOOL _homeiCloudEnabled;
     int _preflightiTunesState;
     SSAccount *_iTunesAccount;
     BOOL _iTunesSignInSkip;
     NSString *_iTunesUserID;
     BOOL _appleMusicEnabled;
-    int _appleMusicEligibleState;
+    int _appleMusicState;
     BOOL _appleMusicForce;
+    NSObject<OS_dispatch_source> *_appleMusicTimeoutTimer;
     int _preflightAppleMusicState;
     int _preflightMiscState;
     BOOL _locationEnabled;
     BOOL _locationDecided;
     BOOL _siriEnabled;
     BOOL _prefStereoPairEnabled;
+    BOOL _prefStereoWait;
+    NSArray *_potentialStereoCounterparts;
     HMAccessory *_stereoCounterpartAccessory;
     int _stereoPairUserInputState;
     int _stereoPairRole;
-    NSString *_stereoPairTightSyncGroupID;
     SFSession *_sfSession;
     BOOL _sfSessionSecured;
     int _sfSessionState;
@@ -69,6 +76,7 @@
     BOOL _termsAgreed;
     int _shareSettingsState;
     BOOL _shareSettingsAgreed;
+    int _authKitTrustState;
     int _basicConfigState;
     unsigned long long _basicConfigStartTicks;
     double _basicConfigSecs;
@@ -128,6 +136,7 @@
     CDUnknownBlockType _promptToShareSettingsHandler;
     CDUnknownBlockType _promptForSiriLanguageHandler;
     CDUnknownBlockType _promptForStereoRoleHandler;
+    CDUnknownBlockType _promptForStereoMultipleHandler;
 }
 
 @property (copy, nonatomic) NSDictionary *additionalMetrics; // @synthesize additionalMetrics=_additionalMetrics;
@@ -148,12 +157,14 @@
 @property (copy, nonatomic) CDUnknownBlockType promptForRoomHandler; // @synthesize promptForRoomHandler=_promptForRoomHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForSiriEnableHandler; // @synthesize promptForSiriEnableHandler=_promptForSiriEnableHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForSiriLanguageHandler; // @synthesize promptForSiriLanguageHandler=_promptForSiriLanguageHandler;
+@property (copy, nonatomic) CDUnknownBlockType promptForStereoMultipleHandler; // @synthesize promptForStereoMultipleHandler=_promptForStereoMultipleHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForStereoRoleHandler; // @synthesize promptForStereoRoleHandler=_promptForStereoRoleHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForTermsHandler; // @synthesize promptForTermsHandler=_promptForTermsHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForiTunesSignInHandler; // @synthesize promptForiTunesSignInHandler=_promptForiTunesSignInHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptToInstallHomeAppHandler; // @synthesize promptToInstallHomeAppHandler=_promptToInstallHomeAppHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptToShareSettingsHandler; // @synthesize promptToShareSettingsHandler=_promptToShareSettingsHandler;
 @property (readonly, nonatomic) HMHome *selectedHome;
+@property (readonly, nonatomic) NSString *selectedSiriLanguage;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int testFlags; // @synthesize testFlags=_testFlags;
 @property (nonatomic) BOOL touchRemoteEnabled; // @synthesize touchRemoteEnabled=_touchRemoteEnabled;
@@ -169,14 +180,18 @@
 - (void)_playLocalSoundID:(int)arg1 remoteSoundID:(int)arg2;
 - (void)_playLocalSoundID:(int)arg1 remoteSoundID:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_preflightAppleMusic;
+- (void)_preflightAppleMusicCompleted:(int)arg1;
 - (void)_promptForPINWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
 - (void)_reportError:(id)arg1 label:(id)arg2;
 - (void)_run;
 - (int)_runAppleMusic;
+- (int)_runAuthKitTrustFinish;
+- (void)_runAuthKitTrustStartIfNeeded;
 - (int)_runBasicConfig;
 - (void)_runBasicConfigReceiveResponse:(id)arg1 error:(id)arg2;
 - (void)_runBasicConfigSendRequest;
-- (void)_runFinishResponse:(id)arg1;
+- (void)_runFinishRequest;
+- (void)_runFinishResponse:(id)arg1 error:(id)arg2;
 - (int)_runFinishStart;
 - (int)_runHomeKitSetup;
 - (int)_runHomeKitUserInput;
@@ -232,6 +247,7 @@
 - (void)skipiTunesSignIn;
 - (void)speakPasscodeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)speakPasscodeWithInstructions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stereoMultiplePicked:(id)arg1;
 - (void)stereoRolePicked:(int)arg1;
 - (void)termsAgreed;
 

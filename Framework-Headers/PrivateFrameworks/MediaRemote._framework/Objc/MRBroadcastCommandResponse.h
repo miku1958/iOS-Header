@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) NSData *responseData; // @synthesize responseData=_responseData;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

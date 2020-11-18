@@ -57,6 +57,7 @@
 - (double)_accessibilityViewAlpha;
 - (id)_accessibilityViewController;
 - (BOOL)_accessibilityViewIsActive;
+- (BOOL)_accessibilityViewIsBeingHitTested:(id)arg1;
 - (BOOL)_axHasNoVisibleAxElements;
 - (void)_axPrintSubviews:(long long)arg1 string:(id)arg2;
 - (id)_axResponderChain;

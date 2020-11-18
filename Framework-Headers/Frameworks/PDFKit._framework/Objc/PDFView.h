@@ -175,6 +175,7 @@
 - (BOOL)isRectVisible:(struct CGRect)arg1 onPage:(id)arg2;
 - (unsigned long long)lastPageIndex;
 - (void)layoutDocumentView;
+- (void)layoutSubviews;
 - (double)lineWidthThreshold;
 - (id)longPressGestureRecognizer;
 - (id)nextPage;

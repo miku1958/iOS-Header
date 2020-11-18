@@ -54,8 +54,6 @@
 @property (readonly, nonatomic) BOOL transactionMarkedForRollBack;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
-+ (id)_lastCorruptionRestoreAttemptDate;
-+ (void)_updateLastCorruptionRestoreAttemptDate;
 - (void).cxx_destruct;
 - (BOOL)_alreadyAttemptedCorruptionRecovery;
 - (BOOL)_alterTableNamed:(id)arg1 withNewColumnDefinitions:(id)arg2 newColumnNames:(id)arg3 oldColumnNames:(id)arg4;

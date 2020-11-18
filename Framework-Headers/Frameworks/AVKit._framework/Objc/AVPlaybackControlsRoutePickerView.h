@@ -18,7 +18,6 @@
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
     struct CGSize _extrinsicContentSize;
-    struct NSDirectionalEdgeInsets _hitRectInsets;
 }
 
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
@@ -30,14 +29,11 @@
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct CGRect)hitRect;
 - (struct CGSize)intrinsicContentSize;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)updateButtonAppearance;
 
 @end

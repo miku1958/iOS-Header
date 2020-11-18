@@ -29,7 +29,7 @@
     struct CPMLDelegate *_cpmlDelegate;
     struct CPMLTunableData *cpTuneableData;
     int mapFunction;
-    vector_e0f2bd7e boundedRemappedValues;
+    vector_12bd641b boundedRemappedValues;
     struct CPMLDelegateEngine *_delegateEngine;
     CPMLStorageManager *_storageManager;
     id<CPMLAlgorithmProtocol> _delegateAlgorithm;
@@ -41,7 +41,7 @@
 - (void)buildEvaluateMachineLearningAlgorithm;
 - (void)constructVector:(struct CPMLFeatureVector *)arg1 withColumnPosition:(unsigned long long)arg2 maxColNumber:(unsigned long long)arg3 withValue:(id)arg4;
 - (void)dealloc;
-- (id)doEvaluate:(struct CPMLFeatureVector *)arg1 withBoundedList:(vector_e0f2bd7e *)arg2;
+- (id)doEvaluate:(struct CPMLFeatureVector *)arg1 withBoundedList:(vector_12bd641b *)arg2;
 - (void)doRemapToFeatureVector:(struct CPMLFeatureVector *)arg1 withPositionID:(unsigned long long)arg2 withMaxCol:(unsigned long long)arg3 withValue:(id)arg4;
 - (id)evalArray:(id)arg1;
 - (id)evalCTypesV:(char *)arg1;

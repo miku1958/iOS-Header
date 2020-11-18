@@ -75,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)_markAsSavedCommon;
 - (void)_markAsUndeletedCommon;
 - (id)_multiRelationshipKeysToCheckForChanges;
-- (void)_performBlockOnOwnedRelatedObjects:(CDUnknownBlockType)arg1;
+- (void)_performBlockOnOwnedCachedRelatedObjects:(CDUnknownBlockType)arg1;
 - (void)_performWithReadLock:(CDUnknownBlockType)arg1;
 - (void)_performWithWriteLock:(CDUnknownBlockType)arg1;
 - (id)_previousValueForKey:(id)arg1;

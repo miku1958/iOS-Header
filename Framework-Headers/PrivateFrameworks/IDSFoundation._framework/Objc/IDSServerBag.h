@@ -87,7 +87,6 @@
 - (void)dealloc;
 - (void)forceBagLoad;
 - (id)objectForKey:(id)arg1;
-- (BOOL)shouldForceDevicesToCarry;
 - (void)startBagLoad;
 - (BOOL)trustRefFromCertificates:(id)arg1 trustRef:(struct __SecTrust **)arg2;
 - (id)urlWithKey:(id)arg1;

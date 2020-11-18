@@ -26,6 +26,7 @@
 - (void)addObserver:(id<SBUIBiometricResourceObserver>)arg1;
 - (void)refreshMatchMode;
 - (void)removeObserver:(id<SBUIBiometricResourceObserver>)arg1;
-- (void)restartMatchingIfNeededForAssertion:(id<BSInvalidatable>)arg1;
+- (void)resumeMatchingAdvisory:(BOOL)arg1;
+- (void)resumeMatchingForAssertion:(id<BSInvalidatable>)arg1 advisory:(BOOL)arg2;
 @end
 

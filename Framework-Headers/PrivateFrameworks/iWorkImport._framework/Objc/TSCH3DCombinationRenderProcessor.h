@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     tmat4x4_3074befe mProjection;
     BOOL mTransformChanged;
     BOOL mProjectionChanged;
-    StateStack_22d3dc01 mObjectStateStack;
+    StateStack_6cdf83e9 mObjectStateStack;
     TSCH3DShaderEffects *mEffects;
     TSCH3DShaderEffectsStates *mShaderEffectsStates;
 }
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)matrixEnabled;
 - (void)multiply:(tmat4x4_3074befe *)arg1;
 - (BOOL)objectStateEnabled;
-- (StateStack_22d3dc01 *)objectStateStack;
+- (StateStack_6cdf83e9 *)objectStateStack;
 - (void)popMatrix;
 - (void)popState;
 - (void)projection:(tmat4x4_3074befe *)arg1;

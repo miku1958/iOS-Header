@@ -65,6 +65,7 @@
 - (void)dealloc;
 - (void)enumerateFaceNamesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFacesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateFacesWithIndexesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)faceAtIndex:(unsigned long long)arg1;
 - (id)facesByUUID;
 - (unsigned long long)indexOfFace:(id)arg1;

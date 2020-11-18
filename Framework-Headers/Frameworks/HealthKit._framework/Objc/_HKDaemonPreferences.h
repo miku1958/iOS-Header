@@ -12,9 +12,10 @@
 
 + (BOOL)_boolValueForKey:(id)arg1;
 + (id)_safePreferenceForKey:(id)arg1 expectedReturnClass:(Class)arg2;
-+ (void)_setPreferenceValue:(void *)arg1 forKey:(id)arg2;
++ (BOOL)_setPreferenceValue:(void *)arg1 forKey:(id)arg2;
 + (BOOL)isGenerateDemoDataSet;
 + (BOOL)isStoreDemoModeSet;
++ (BOOL)setValue:(id)arg1 forKey:(id)arg2;
 + (BOOL)shouldGenerateDemoData;
 + (void)synchronizePreferencesWithWatch:(id)arg1;
 + (BOOL)usingDemoDataDatabase;

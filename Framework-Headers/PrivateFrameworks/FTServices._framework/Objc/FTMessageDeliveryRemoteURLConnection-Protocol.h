@@ -20,6 +20,7 @@
 @property int keepAliveWifi;
 @property (strong) NSURLRequest *request;
 @property BOOL requireIDSHost;
+@property BOOL shouldReturnTimingData;
 @property BOOL shouldUsePipelining;
 
 - (void)cancel;

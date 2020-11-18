@@ -9,38 +9,40 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 #import <iWorkImport/TSTResolverContainerNameProvider-Protocol.h>
 
-@class KNRecordingSyncMaintainer, KNShow, KNSlidePreviewManager, KNThumbnailManager, NSString;
+@class KNRecordingSyncMaintainer, KNShow, NSString;
 @protocol KNDocumentRootDelegate;
 
 __attribute__((visibility("hidden")))
 @interface KNDocumentRoot : TSADocumentRoot <TSKModel, TSTResolverContainerNameProvider>
 {
-    KNShow *mShow;
-    KNThumbnailManager *mThumbnailManager;
-    KNSlidePreviewManager *mSlidePreviewManager;
-    KNRecordingSyncMaintainer *mRecordingSyncMaintainer;
-    BOOL mIsObservingRecording;
+    BOOL _isObservingRecording;
+    KNShow *_show;
+    KNRecordingSyncMaintainer *_recordingSyncMaintainer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<KNDocumentRootDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<KNDocumentRootDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isShowcastAllowed;
-@property (readonly, nonatomic) KNRecordingSyncMaintainer *recordingSyncMaintainer; // @synthesize recordingSyncMaintainer=mRecordingSyncMaintainer;
-@property (strong, nonatomic) KNShow *show;
+@property (strong, nonatomic) KNRecordingSyncMaintainer *recordingSyncMaintainer; // @synthesize recordingSyncMaintainer=_recordingSyncMaintainer;
+@property (strong, nonatomic) KNShow *show; // @synthesize show=_show;
 @property (readonly) Class superclass;
 
 + (void)localizeModelObject:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
+- (void).cxx_destruct;
 - (id)UIStateForChart:(id)arg1;
+- (void)addDefaultGalleryCaptionParagraphStyleIfNeededToStylesheet:(id)arg1;
 - (unsigned long long)applicationType;
 - (void)changeShowSizeTo:(struct CGSize)arg1;
+- (void)changeShowThemeUsingTemplate:(id)arg1 themeDocumentRoot:(id)arg2 toSize:(struct CGSize)arg3 keepChangesToThemeDefaults:(BOOL)arg4 commandGroupActionStringOverride:(id)arg5;
 - (id)childEnumerator;
 - (void)collectDocumentOpenAnalyticsWithLogger:(id)arg1;
 - (long long)compareLocationSortingInfo:(id)arg1 toSortingInfo:(id)arg2;
 - (id)createViewStateRootForContinuation:(BOOL)arg1;
 - (void)dealloc;
 - (void)documentDidLoad;
+- (id)freehandDrawingToolkitUIState;
 - (id)initWithContext:(id)arg1;
 - (BOOL)isMultiPageForQuickLook;
 - (BOOL)isSharedReadOnly;
@@ -61,14 +63,12 @@ __attribute__((visibility("hidden")))
 - (id)resolverMatchingName:(id)arg1 contextContainerName:(id)arg2;
 - (id)resolverMatchingName:(id)arg1 contextResolver:(id)arg2;
 - (id)resolversMatchingPrefix:(id)arg1;
-- (unsigned long long)rootSearchTargetCountThroughIndex:(unsigned long long)arg1;
 - (void)saveToArchive:(struct DocumentArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setStylesheetForUpgradeToSingleStylesheet:(id)arg1;
 - (void)setTheme:(id)arg1;
 - (void)setThemeForTemplateImport:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
-- (BOOL)shouldAllowDrawableInGroups:(id)arg1 forImport:(BOOL)arg2;
 - (BOOL)shouldShowComments;
 - (id)slideNodeForClearedShow;
 - (double)stickyCommentScaleMultiplier;
@@ -80,7 +80,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateUIState:(id)arg1;
 - (id)warningLocationDescriptionForAffectedObjects:(id)arg1 sortingInfo:(id *)arg2;
 - (void)willClose;
-- (void)withRootSearchTargetAtIndex:(unsigned long long)arg1 executeBlock:(CDUnknownBlockType)arg2;
 - (unsigned long long)writingDirection;
 - (unsigned long long)writingDirectionForStorage;
 

@@ -19,6 +19,8 @@
     NSString *_topic;
     NSString *_serverURLString;
     NSString *_checkInURLString;
+    NSString *_controlURLString;
+    NSString *_statusURLString;
     NSArray *_serverCapabilities;
     NSNumber *_useDevelopmentAPNSNum;
     NSNumber *_signMessageNum;
@@ -29,6 +31,7 @@
 @property (readonly, strong, nonatomic) NSString *checkInURLString; // @synthesize checkInURLString=_checkInURLString;
 @property (readonly, nonatomic) BOOL checkOutWhenRemoved; // @synthesize checkOutWhenRemoved=_checkOutWhenRemoved;
 @property (readonly, nonatomic) NSNumber *checkOutWhenRemovedNum; // @synthesize checkOutWhenRemovedNum=_checkOutWhenRemovedNum;
+@property (readonly, strong, nonatomic) NSString *controlURLString; // @synthesize controlURLString=_controlURLString;
 @property (strong, nonatomic) NSData *identityPersistentID; // @synthesize identityPersistentID=_identityPersistentID;
 @property (readonly, strong, nonatomic) NSString *identityUUID; // @synthesize identityUUID=_identityUUID;
 @property (readonly, strong, nonatomic) NSArray *localizedAccessRightDescriptions;
@@ -36,6 +39,7 @@
 @property (readonly, strong, nonatomic) NSString *serverURLString; // @synthesize serverURLString=_serverURLString;
 @property (readonly, nonatomic) BOOL signMessage; // @synthesize signMessage=_signMessage;
 @property (readonly, nonatomic) NSNumber *signMessageNum; // @synthesize signMessageNum=_signMessageNum;
+@property (readonly, strong, nonatomic) NSString *statusURLString; // @synthesize statusURLString=_statusURLString;
 @property (readonly, strong, nonatomic) NSString *topic; // @synthesize topic=_topic;
 @property (readonly, nonatomic) BOOL useDevelopmentAPNS; // @synthesize useDevelopmentAPNS=_useDevelopmentAPNS;
 @property (readonly, nonatomic) NSNumber *useDevelopmentAPNSNum; // @synthesize useDevelopmentAPNSNum=_useDevelopmentAPNSNum;

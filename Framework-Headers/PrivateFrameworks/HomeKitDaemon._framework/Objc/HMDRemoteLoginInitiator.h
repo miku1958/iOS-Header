@@ -25,6 +25,7 @@
 @property (strong, nonatomic) HMDRemoteLoginMessageSender *remoteMessageSender; // @synthesize remoteMessageSender=_remoteMessageSender;
 @property (readonly) Class superclass;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_callCompletion:(id)arg1 loggedInAccount:(id)arg2 authSession:(id)arg3;
@@ -40,6 +41,7 @@
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 - (void)didCompleteAuthentication:(id)arg1 error:(id)arg2 loggedInAccount:(id)arg3;
 - (id)initWithUUID:(id)arg1 accessory:(id)arg2 remoteLoginHandler:(id)arg3;
+- (id)messageReceiverChildren;
 - (void)registerForMessages;
 
 @end

@@ -153,6 +153,7 @@
 + (BOOL)acceptsTopLevelLeaves;
 + (id)asParseRules;
 + (id)contactWithABRecord:(void *)arg1 serverID:(id)arg2;
++ (id)externalRepClasses;
 + (BOOL)frontingBasicTypes;
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;

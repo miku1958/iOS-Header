@@ -41,6 +41,7 @@
 @property (readonly) BOOL isAppleIDLoginEnabled;
 @property (readonly) BOOL isInCircle;
 @property (readonly) BOOL isInternalBuild;
+@property (readonly) BOOL isMultiUserMode;
 @property (readonly) BOOL isProtectedWithPasscode;
 @property (readonly) BOOL isUnlocked;
 @property (setter=setLinkType:) unsigned long long linkType; // @synthesize linkType=_linkType;

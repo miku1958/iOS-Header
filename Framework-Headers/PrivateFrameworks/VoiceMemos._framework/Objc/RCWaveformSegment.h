@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceMemos/NSCoding-Protocol.h>
+#import <VoiceMemos/NSSecureCoding-Protocol.h>
 
 @class NSData;
 
-@interface RCWaveformSegment : NSObject <NSCoding>
+@interface RCWaveformSegment : NSObject <NSSecureCoding>
 {
     NSData *_averagePowerLevelData;
     CDStruct_73a5d3ca _timeRange;
@@ -30,6 +30,7 @@
 + (id)segmentsByMergingSegments:(id)arg1 preferredSegmentDuration:(double)arg2;
 + (id)segmentsByReparingDiscontinuitiesInSegments:(id)arg1;
 + (id)segmentsByShiftingSegments:(id)arg1 byTimeOffset:(double)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithTimeRange:(CDStruct_73a5d3ca)arg1 averagePowerLevelData:(id)arg2;
 - (id)_segmentWithValuesInContainedTimeRange:(CDStruct_73a5d3ca)arg1;
@@ -41,7 +42,7 @@
 - (BOOL)hasUniformPowerLevel:(float)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTimeRange:(CDStruct_73a5d3ca)arg1 averagePowerLevelData:(id)arg2;
-- (id)initWithTimeRange:(CDStruct_73a5d3ca)arg1 averagePowerLevelVector:(vector_ec52ae8c *)arg2;
+- (id)initWithTimeRange:(CDStruct_73a5d3ca)arg1 averagePowerLevelVector:(vector_7584168e *)arg2;
 - (BOOL)isWaveformDataEqualToDataInSegment:(id)arg1;
 - (id)segmentByClippingToTimeRange:(CDStruct_73a5d3ca)arg1;
 - (id)segmentsByJoiningIfSmallSegment:(id)arg1;

@@ -24,9 +24,9 @@
 @property (nonatomic) BOOL hasVirtualDeviceID;
 @property (nonatomic) unsigned long long virtualDeviceID; // @synthesize virtualDeviceID=_virtualDeviceID;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

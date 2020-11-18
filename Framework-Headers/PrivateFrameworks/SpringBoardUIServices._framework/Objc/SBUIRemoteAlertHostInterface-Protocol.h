@@ -18,6 +18,7 @@
 - (void)setBackgroundStyle:(long long)arg1 withDuration:(double)arg2;
 - (void)setBackgroundWeighting:(double)arg1 animationsSettings:(BSAnimationSettings *)arg2;
 - (void)setDesiredAutoLockDuration:(double)arg1;
+- (void)setDesiredAutoLockDurationWithoutWarn:(double)arg1;
 - (void)setDesiredHardwareButtonEvents:(unsigned long long)arg1;
 - (void)setDesiredStatusBarStyleOverrides:(int)arg1;
 - (void)setDismissalAnimationStyle:(long long)arg1;

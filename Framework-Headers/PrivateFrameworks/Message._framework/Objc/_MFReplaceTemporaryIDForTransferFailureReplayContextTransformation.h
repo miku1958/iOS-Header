@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <Message/MFOfflineCacheReplayContextTransformation-Protocol.h>
+#import <Message/MFOfflineCacheReplayContextTransformation.h>
 
 @class NSString;
 
-@interface _MFReplaceTemporaryIDForTransferFailureReplayContextTransformation : NSObject <MFOfflineCacheReplayContextTransformation>
+@interface _MFReplaceTemporaryIDForTransferFailureReplayContextTransformation : MFOfflineCacheReplayContextTransformation
 {
     NSString *_temporaryID;
     NSString *_newTemporaryID;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)applyToReplayContext:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

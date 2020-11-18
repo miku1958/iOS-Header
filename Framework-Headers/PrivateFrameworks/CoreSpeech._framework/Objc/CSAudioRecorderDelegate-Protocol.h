@@ -13,6 +13,8 @@
 - (void)audioRecorderBufferAvailable:(CSAudioRecorder *)arg1 buffer:(NSData *)arg2 atTime:(unsigned long long)arg3;
 
 @optional
+- (void)audioRecorder:(CSAudioRecorder *)arg1 didSetAudioSessionActive:(BOOL)arg2;
+- (void)audioRecorder:(CSAudioRecorder *)arg1 willSetAudioSessionActive:(BOOL)arg2;
 - (void)audioRecorderBeginRecordInterruption:(CSAudioRecorder *)arg1;
 - (void)audioRecorderBeginRecordInterruption:(CSAudioRecorder *)arg1 withContext:(NSDictionary *)arg2;
 - (void)audioRecorderDidStartRecording:(CSAudioRecorder *)arg1 successfully:(BOOL)arg2 error:(NSError *)arg3;

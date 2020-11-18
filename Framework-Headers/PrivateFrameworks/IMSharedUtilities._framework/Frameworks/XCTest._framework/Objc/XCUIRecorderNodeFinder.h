@@ -44,13 +44,13 @@
 + (id)_nodeFindersForSnapshots:(id)arg1 ancestorMatch:(id)arg2 ancestorIndex:(unsigned long long)arg3 stopCombinatorialExpansionIndexes:(id)arg4 excludeUnlessNecessaryElementTypes:(id)arg5 language:(unsigned long long)arg6 platform:(unsigned long long)arg7;
 + (id)_stopCombinatorialExpansionElementTypesForPlatform:(unsigned long long)arg1;
 + (id)nodeToFindElementForSnapshots:(id)arg1 language:(unsigned long long)arg2 platform:(unsigned long long)arg3;
+- (void).cxx_destruct;
 - (id)_stringConstantForString:(id)arg1;
 - (id)childAtIndexNodeWithTargetElementType;
 - (id)childAtIndexNodeWithTargetElementTypeAndIdentifierValue:(id)arg1;
 - (id)childrenQueryNodeWithTargetElementTypeAndIdentifierValue:(id)arg1;
 - (id)childrenWithTargetElementType;
 - (id)childrenWithTargetElementTypeAndIdentifierValue:(id)arg1;
-- (void)dealloc;
 - (id)descendantsQueryNodeWithElementType:(unsigned long long)arg1;
 - (id)descendantsQueryNodeWithTargetElementTypeAndIdentifierValue:(id)arg1;
 - (id)descendantsQueryNodeWithTargetElementTypeContainingElementsOfType:(unsigned long long)arg1 identifierValue:(id)arg2;

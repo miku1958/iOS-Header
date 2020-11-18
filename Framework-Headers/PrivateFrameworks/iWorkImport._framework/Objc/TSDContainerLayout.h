@@ -6,12 +6,17 @@
 
 #import <iWorkImport/TSDLayout.h>
 
+@class NSObject;
+@protocol TSDContainerInfo;
+
 __attribute__((visibility("hidden")))
 @interface TSDContainerLayout : TSDLayout
 {
 }
 
-- (id)containerInfo;
+@property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
+
+- (id)additionalInfosForChildLayouts;
 - (id)initWithInfo:(id)arg1;
 - (void)updateChildrenFromInfo;
 

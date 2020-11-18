@@ -23,6 +23,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) Class transportGroupClass;
+@property (readonly, nonatomic) Class userIdentifierClass;
 
 + (id)platformImplementationProtocol;
 - (void).cxx_destruct;

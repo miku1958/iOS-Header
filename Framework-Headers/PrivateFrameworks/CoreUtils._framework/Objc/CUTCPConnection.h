@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
+#import <CoreUtils/CUReadWriteRequestable-Protocol.h>
+
 @class CUBonjourDevice, CUNetLinkEndpoint, CUNetLinkManager, CUReadRequest, CUWriteRequest, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface CUTCPConnection : NSObject
+@interface CUTCPConnection : NSObject <CUReadWriteRequestable>
 {
     struct AsyncConnection *_connector;
     NSObject<OS_dispatch_source> *_readSource;

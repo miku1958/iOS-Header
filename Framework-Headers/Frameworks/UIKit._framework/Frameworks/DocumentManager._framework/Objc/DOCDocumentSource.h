@@ -37,7 +37,7 @@
 + (void)defaultSourceForBundleIdentifier:(id)arg1 selectedSourceIdentifier:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)defaultSourceIdentifierForBundleIdentifier:(id)arg1;
 + (void)endSearchingSources:(id)arg1;
-+ (BOOL)isICloudFileProviderEnabled;
++ (BOOL)isICloudFileProviderEnabledForBundleIdentifier:(id)arg1;
 + (void)setDefaultSource:(id)arg1 forBundleIdentifier:(id)arg2;
 + (void)setDefaultSourceIdentifier:(id)arg1 forBundleIdentifier:(id)arg2;
 + (id)sourceIdentifierOrderWithDefault:(id)arg1;

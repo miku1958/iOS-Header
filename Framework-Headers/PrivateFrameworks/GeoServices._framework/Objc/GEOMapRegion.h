@@ -48,6 +48,7 @@
 - (void)clearVertexs;
 - (BOOL)containsCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (BOOL)containsMapRect:(CDStruct_90e2a262)arg1;
+- (BOOL)containsRegion:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

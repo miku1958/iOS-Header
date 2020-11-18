@@ -9,30 +9,30 @@
 #import <iWorkImport/TSDContainerRep-Protocol.h>
 #import <iWorkImport/TSWPStorageObserver-Protocol.h>
 
-@class NSObject, NSString, TSWPRep;
+@class NSArray, NSObject, NSString, TSWPRep;
 @protocol TSDContainerInfo;
 
 __attribute__((visibility("hidden")))
 @interface KNNoteRep : TSDRep <TSDContainerRep, TSWPStorageObserver>
 {
-    TSWPRep *mContainedRep;
+    TSWPRep *_containedRep;
 }
 
-@property (readonly, nonatomic) TSWPRep *containedRep; // @synthesize containedRep=mContainedRep;
+@property (readonly, nonatomic) NSArray *childReps;
+@property (readonly, nonatomic) TSWPRep *containedRep; // @synthesize containedRep=_containedRep;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)addAdditionalChildLayersToArray:(id)arg1;
 - (BOOL)canBeginEditingChildRepOnDoubleTap:(id)arg1;
 - (BOOL)canSelectChildRep:(id)arg1;
-- (id)childReps;
 - (double)columnHeight;
 - (void)dealloc;
 - (id)editingRep;
-- (id)hitRep:(struct CGPoint)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (void)recursivelyPerformSelector:(SEL)arg1;
 - (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;

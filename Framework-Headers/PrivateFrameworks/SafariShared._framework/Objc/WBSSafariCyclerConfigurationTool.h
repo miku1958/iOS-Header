@@ -19,7 +19,6 @@
 - (id)_descriptionForErrorCode:(long long)arg1;
 - (id)_errorWithCode:(long long)arg1;
 - (void)_exitWithError:(id)arg1;
-- (void)_fetchPrimaryDeviceAddress:(id)arg1;
 - (void)_fetchStatus:(id)arg1;
 - (void)_printUsage;
 - (void)_resumeCycler:(id)arg1;

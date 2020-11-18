@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CameraUI/NSCoding-Protocol.h>
 #import <CameraUI/NSCopying-Protocol.h>
+#import <CameraUI/NSSecureCoding-Protocol.h>
 
 @class CLLocation, NSDate, NSString;
 
-@interface CAMTimelapseState : NSObject <NSCoding, NSCopying>
+@interface CAMTimelapseState : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _allFramesWritten;
     BOOL _preferHEVC;
@@ -51,6 +51,7 @@
 
 + (double)maxTimeToWaitForWrittenFrameAfterStop;
 + (id)stateWithContentsOfFile:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_commonCAMTimelapseStateInitWithCoder:(id)arg1;
 - (BOOL)addStopReasons:(long long)arg1 stopTime:(id)arg2;

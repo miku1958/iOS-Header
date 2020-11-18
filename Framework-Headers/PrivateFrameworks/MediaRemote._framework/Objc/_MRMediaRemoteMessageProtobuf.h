@@ -8,7 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString, _MRAVModifyOutputContextRequestProtobuf, _MRClientUpdatesConfigurationProtobuf, _MRCryptoPairingMessageProtobuf, _MRDeviceInfoMessageProtobuf, _MRGameControllerMessageProtobuf, _MRGameControllerPropertiesMessageProtobuf, _MRGenericMessageProtobuf, _MRGetKeyboardSessionProtobuf, _MRGetStateMessageProtobuf, _MRGetVoiceInputDevicesMessageProtobuf, _MRGetVoiceInputDevicesResponseMessageProtobuf, _MRGetVolumeMessageProtobuf, _MRGetVolumeResultMessageProtobuf, _MRKeyboardMessageProtobuf, _MRNotificationMessageProtobuf, _MRPlaybackQueueProtobuf, _MRPlaybackQueueRequestProtobuf, _MRRegisterForGameControllerEventsMessageProtobuf, _MRRegisterGameControllerMessageProtobuf, _MRRegisterGameControllerResponseMessageProtobuf, _MRRegisterHIDDeviceMessageProtobuf, _MRRegisterHIDDeviceResultMessageProtobuf, _MRRegisterVoiceInputDeviceMessageProtobuf, _MRRegisterVoiceInputDeviceResponseMessageProtobuf, _MRSendButtonEventMessageProtobuf, _MRSendCommandMessageProtobuf, _MRSendCommandResultMessageProtobuf, _MRSendHIDEventMessageProtobuf, _MRSendHIDReportMessageProtobuf, _MRSendLyricsEventMessageProtobuf, _MRSendPackedVirtualTouchEventMessageProtobuf, _MRSendVirtualTouchEventMessageProtobuf, _MRSendVoiceInputMessageProtobuf, _MRSetArtworkMessageProtobuf, _MRSetConnectionStateMessageProtobuf, _MRSetHiliteModeMessageProtobuf, _MRSetNowPlayingClientMessageProtobuf, _MRSetNowPlayingPlayerMessageProtobuf, _MRSetReadyStateMessageProtobuf, _MRSetRecordingStateMessageProtobuf, _MRSetStateMessageProtobuf, _MRSetVolumeMessageProtobuf, _MRTextInputMessageProtobuf, _MRTransactionMessageProtobuf, _MRUnregisterGameControllerMessageProtobuf, _MRVolumeControlAvailabilityProtobuf, _MRVolumeDidChangeMessageProtobuf, _MRWakeDeviceMessageProtobuf;
+@class NSString, _MRAVModifyOutputContextRequestProtobuf, _MRClientUpdatesConfigurationProtobuf, _MRCryptoPairingMessageProtobuf, _MRDeviceInfoMessageProtobuf, _MRGameControllerMessageProtobuf, _MRGameControllerPropertiesMessageProtobuf, _MRGenericMessageProtobuf, _MRGetKeyboardSessionProtobuf, _MRGetStateMessageProtobuf, _MRGetVoiceInputDevicesMessageProtobuf, _MRGetVoiceInputDevicesResponseMessageProtobuf, _MRGetVolumeMessageProtobuf, _MRGetVolumeResultMessageProtobuf, _MRKeyboardMessageProtobuf, _MRNotificationMessageProtobuf, _MRPlaybackQueueProtobuf, _MRPlaybackQueueRequestProtobuf, _MRPresentRouteAuthorizationStatusMessageProtobuf, _MRPromptForRouteAuthorizationMessageProtobuf, _MRPromptForRouteAuthorizationResponseMessageProtobuf, _MRRegisterForGameControllerEventsMessageProtobuf, _MRRegisterGameControllerMessageProtobuf, _MRRegisterGameControllerResponseMessageProtobuf, _MRRegisterHIDDeviceMessageProtobuf, _MRRegisterHIDDeviceResultMessageProtobuf, _MRRegisterVoiceInputDeviceMessageProtobuf, _MRRegisterVoiceInputDeviceResponseMessageProtobuf, _MRRemoveClientMessageProtobuf, _MRRemovePlayerMessageProtobuf, _MRSendButtonEventMessageProtobuf, _MRSendCommandMessageProtobuf, _MRSendCommandResultMessageProtobuf, _MRSendHIDEventMessageProtobuf, _MRSendHIDReportMessageProtobuf, _MRSendLyricsEventMessageProtobuf, _MRSendPackedVirtualTouchEventMessageProtobuf, _MRSendVirtualTouchEventMessageProtobuf, _MRSendVoiceInputMessageProtobuf, _MRSetArtworkMessageProtobuf, _MRSetConnectionStateMessageProtobuf, _MRSetHiliteModeMessageProtobuf, _MRSetNowPlayingClientMessageProtobuf, _MRSetNowPlayingPlayerMessageProtobuf, _MRSetReadyStateMessageProtobuf, _MRSetRecordingStateMessageProtobuf, _MRSetStateMessageProtobuf, _MRSetVolumeMessageProtobuf, _MRTextInputMessageProtobuf, _MRTransactionMessageProtobuf, _MRUnregisterGameControllerMessageProtobuf, _MRUpdateClientMessageProtobuf, _MRUpdateContentItemArtworkMessageProtobuf, _MRUpdateContentItemMessageProtobuf, _MRUpdatePlayerMessageProtobuf, _MRVolumeControlAvailabilityProtobuf, _MRVolumeDidChangeMessageProtobuf, _MRWakeDeviceMessageProtobuf;
 
 @interface _MRMediaRemoteMessageProtobuf : PBCodable <NSCopying>
 {
@@ -34,6 +34,9 @@
     _MRAVModifyOutputContextRequestProtobuf *_modifyOutputContextRequestMessage;
     _MRNotificationMessageProtobuf *_notificationMessage;
     _MRPlaybackQueueRequestProtobuf *_playbackQueueRequest;
+    _MRPresentRouteAuthorizationStatusMessageProtobuf *_presentRouteAuthorizationStatusMessage;
+    _MRPromptForRouteAuthorizationMessageProtobuf *_promptForRouteAuthorizationMessage;
+    _MRPromptForRouteAuthorizationResponseMessageProtobuf *_promptForRouteAuthorizationResponseMessage;
     _MRSetReadyStateMessageProtobuf *_readyStateMessage;
     _MRRegisterForGameControllerEventsMessageProtobuf *_registerForGameControllerEvents;
     _MRRegisterGameControllerMessageProtobuf *_registerGameController;
@@ -42,6 +45,8 @@
     _MRRegisterHIDDeviceResultMessageProtobuf *_registerHIDDeviceResultMessage;
     _MRRegisterVoiceInputDeviceMessageProtobuf *_registerVoiceInputDeviceMessage;
     _MRRegisterVoiceInputDeviceResponseMessageProtobuf *_registerVoiceInputDeviceResponseMessage;
+    _MRRemoveClientMessageProtobuf *_removeClientMessage;
+    _MRRemovePlayerMessageProtobuf *_removePlayerMessage;
     _MRSendButtonEventMessageProtobuf *_sendButtonEventMessage;
     _MRSendCommandMessageProtobuf *_sendCommandMessage;
     _MRSendCommandResultMessageProtobuf *_sendCommandResultMessage;
@@ -62,6 +67,10 @@
     _MRTransactionMessageProtobuf *_transactionPackets;
     int _type;
     _MRUnregisterGameControllerMessageProtobuf *_unregisterGameController;
+    _MRUpdateClientMessageProtobuf *_updateClientMessage;
+    _MRUpdateContentItemArtworkMessageProtobuf *_updateContentItemArtworkMessage;
+    _MRUpdateContentItemMessageProtobuf *_updateContentItemMessage;
+    _MRUpdatePlayerMessageProtobuf *_updatePlayerMessage;
     _MRVolumeControlAvailabilityProtobuf *_volumeControlAvailabilityMessage;
     _MRVolumeDidChangeMessageProtobuf *_volumeDidChangeMessage;
     _MRWakeDeviceMessageProtobuf *_wakeDeviceMessage;
@@ -109,6 +118,9 @@
 @property (readonly, nonatomic) BOOL hasModifyOutputContextRequestMessage;
 @property (readonly, nonatomic) BOOL hasNotificationMessage;
 @property (readonly, nonatomic) BOOL hasPlaybackQueueRequest;
+@property (readonly, nonatomic) BOOL hasPresentRouteAuthorizationStatusMessage;
+@property (readonly, nonatomic) BOOL hasPromptForRouteAuthorizationMessage;
+@property (readonly, nonatomic) BOOL hasPromptForRouteAuthorizationResponseMessage;
 @property (readonly, nonatomic) BOOL hasReadyStateMessage;
 @property (readonly, nonatomic) BOOL hasRegisterForGameControllerEvents;
 @property (readonly, nonatomic) BOOL hasRegisterGameController;
@@ -117,6 +129,8 @@
 @property (readonly, nonatomic) BOOL hasRegisterHIDDeviceResultMessage;
 @property (readonly, nonatomic) BOOL hasRegisterVoiceInputDeviceMessage;
 @property (readonly, nonatomic) BOOL hasRegisterVoiceInputDeviceResponseMessage;
+@property (readonly, nonatomic) BOOL hasRemoveClientMessage;
+@property (readonly, nonatomic) BOOL hasRemovePlayerMessage;
 @property (readonly, nonatomic) BOOL hasSendButtonEventMessage;
 @property (readonly, nonatomic) BOOL hasSendCommandMessage;
 @property (readonly, nonatomic) BOOL hasSendCommandResultMessage;
@@ -138,6 +152,10 @@
 @property (readonly, nonatomic) BOOL hasTransactionPackets;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasUnregisterGameController;
+@property (readonly, nonatomic) BOOL hasUpdateClientMessage;
+@property (readonly, nonatomic) BOOL hasUpdateContentItemArtworkMessage;
+@property (readonly, nonatomic) BOOL hasUpdateContentItemMessage;
+@property (readonly, nonatomic) BOOL hasUpdatePlayerMessage;
 @property (readonly, nonatomic) BOOL hasVolumeControlAvailabilityMessage;
 @property (readonly, nonatomic) BOOL hasVolumeDidChangeMessage;
 @property (readonly, nonatomic) BOOL hasWakeDeviceMessage;
@@ -146,6 +164,9 @@
 @property (strong, nonatomic) _MRAVModifyOutputContextRequestProtobuf *modifyOutputContextRequestMessage; // @synthesize modifyOutputContextRequestMessage=_modifyOutputContextRequestMessage;
 @property (strong, nonatomic) _MRNotificationMessageProtobuf *notificationMessage; // @synthesize notificationMessage=_notificationMessage;
 @property (strong, nonatomic) _MRPlaybackQueueRequestProtobuf *playbackQueueRequest; // @synthesize playbackQueueRequest=_playbackQueueRequest;
+@property (strong, nonatomic) _MRPresentRouteAuthorizationStatusMessageProtobuf *presentRouteAuthorizationStatusMessage; // @synthesize presentRouteAuthorizationStatusMessage=_presentRouteAuthorizationStatusMessage;
+@property (strong, nonatomic) _MRPromptForRouteAuthorizationMessageProtobuf *promptForRouteAuthorizationMessage; // @synthesize promptForRouteAuthorizationMessage=_promptForRouteAuthorizationMessage;
+@property (strong, nonatomic) _MRPromptForRouteAuthorizationResponseMessageProtobuf *promptForRouteAuthorizationResponseMessage; // @synthesize promptForRouteAuthorizationResponseMessage=_promptForRouteAuthorizationResponseMessage;
 @property (strong, nonatomic) _MRSetReadyStateMessageProtobuf *readyStateMessage; // @synthesize readyStateMessage=_readyStateMessage;
 @property (strong, nonatomic) _MRRegisterForGameControllerEventsMessageProtobuf *registerForGameControllerEvents; // @synthesize registerForGameControllerEvents=_registerForGameControllerEvents;
 @property (strong, nonatomic) _MRRegisterGameControllerMessageProtobuf *registerGameController; // @synthesize registerGameController=_registerGameController;
@@ -154,6 +175,8 @@
 @property (strong, nonatomic) _MRRegisterHIDDeviceResultMessageProtobuf *registerHIDDeviceResultMessage; // @synthesize registerHIDDeviceResultMessage=_registerHIDDeviceResultMessage;
 @property (strong, nonatomic) _MRRegisterVoiceInputDeviceMessageProtobuf *registerVoiceInputDeviceMessage; // @synthesize registerVoiceInputDeviceMessage=_registerVoiceInputDeviceMessage;
 @property (strong, nonatomic) _MRRegisterVoiceInputDeviceResponseMessageProtobuf *registerVoiceInputDeviceResponseMessage; // @synthesize registerVoiceInputDeviceResponseMessage=_registerVoiceInputDeviceResponseMessage;
+@property (strong, nonatomic) _MRRemoveClientMessageProtobuf *removeClientMessage; // @synthesize removeClientMessage=_removeClientMessage;
+@property (strong, nonatomic) _MRRemovePlayerMessageProtobuf *removePlayerMessage; // @synthesize removePlayerMessage=_removePlayerMessage;
 @property (strong, nonatomic) _MRSendButtonEventMessageProtobuf *sendButtonEventMessage; // @synthesize sendButtonEventMessage=_sendButtonEventMessage;
 @property (strong, nonatomic) _MRSendCommandMessageProtobuf *sendCommandMessage; // @synthesize sendCommandMessage=_sendCommandMessage;
 @property (strong, nonatomic) _MRSendCommandResultMessageProtobuf *sendCommandResultMessage; // @synthesize sendCommandResultMessage=_sendCommandResultMessage;
@@ -175,14 +198,18 @@
 @property (strong, nonatomic) _MRTransactionMessageProtobuf *transactionPackets; // @synthesize transactionPackets=_transactionPackets;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) _MRUnregisterGameControllerMessageProtobuf *unregisterGameController; // @synthesize unregisterGameController=_unregisterGameController;
+@property (strong, nonatomic) _MRUpdateClientMessageProtobuf *updateClientMessage; // @synthesize updateClientMessage=_updateClientMessage;
+@property (strong, nonatomic) _MRUpdateContentItemArtworkMessageProtobuf *updateContentItemArtworkMessage; // @synthesize updateContentItemArtworkMessage=_updateContentItemArtworkMessage;
+@property (strong, nonatomic) _MRUpdateContentItemMessageProtobuf *updateContentItemMessage; // @synthesize updateContentItemMessage=_updateContentItemMessage;
+@property (strong, nonatomic) _MRUpdatePlayerMessageProtobuf *updatePlayerMessage; // @synthesize updatePlayerMessage=_updatePlayerMessage;
 @property (strong, nonatomic) _MRVolumeControlAvailabilityProtobuf *volumeControlAvailabilityMessage; // @synthesize volumeControlAvailabilityMessage=_volumeControlAvailabilityMessage;
 @property (strong, nonatomic) _MRVolumeDidChangeMessageProtobuf *volumeDidChangeMessage; // @synthesize volumeDidChangeMessage=_volumeDidChangeMessage;
 @property (strong, nonatomic) _MRWakeDeviceMessageProtobuf *wakeDeviceMessage; // @synthesize wakeDeviceMessage=_wakeDeviceMessage;
 
+- (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

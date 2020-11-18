@@ -15,6 +15,5 @@
 - (id)CKLowercaseHexStringWithoutSpaces;
 - (id)CKSHA256;
 - (id)CKUppercaseHexStringWithoutSpaces;
-- (id)ck_securelyDecodeRootObjectOfClass:(Class)arg1;
 @end
 

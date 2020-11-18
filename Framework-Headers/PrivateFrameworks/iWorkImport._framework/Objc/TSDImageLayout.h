@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     TSDLayoutGeometry *mBaseImageLayoutGeometry;
     TSDInfoGeometry *mDynamicInfoGeometry;
     TSDInfoGeometry *mBaseInfoGeometry;
-    int mMaskEditMode;
+    long long mMaskEditMode;
     BOOL mScalingInMaskMode;
     BOOL mInInstantAlphaMode;
     BOOL mIsUpdatingImageAdjustments;
@@ -65,7 +65,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeOfFrameRectIncludingCoverage;
 - (id)smartPathSource;
 - (BOOL)supportsRotation;
-- (void)transferLayoutGeometryToInfo:(id)arg1;
+- (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
 - (void)updateChildrenFromInfo;
 
 @end

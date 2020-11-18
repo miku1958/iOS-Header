@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface HMMediaSystemRole : NSObject
+#import <HomeKit/NSSecureCoding-Protocol.h>
+
+@interface HMMediaSystemRole : NSObject <NSSecureCoding>
 {
     unsigned long long _type;
 }
@@ -15,7 +17,15 @@
 
 + (id)leftRole;
 + (id)rightRole;
-- (id)init;
++ (BOOL)supportsSecureCoding;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithRole:(unsigned long long)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)serialize;
 
 @end
 

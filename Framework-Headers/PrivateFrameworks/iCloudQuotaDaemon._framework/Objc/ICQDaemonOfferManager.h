@@ -51,6 +51,7 @@
 - (void)_teardownCachedOfferAndNotify:(BOOL)arg1;
 - (void)_teardownCachedOffersAndNotify:(BOOL)arg1;
 - (void)_updateOffer:(id)arg1 buttonId:(id)arg2 info:(id)arg3 account:(id)arg4 accountStore:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_updateQuotaForAccount:(id)arg1 withServerDictionary:(id)arg2;
 - (BOOL)_useFetchOffersDataDirectly;
 - (void)clearFollowupsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)daemonBuddyOfferDictionaryForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;

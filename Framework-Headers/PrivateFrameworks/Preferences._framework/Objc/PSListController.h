@@ -12,12 +12,13 @@
 #import <Preferences/UIAppearance-Protocol.h>
 #import <Preferences/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <Preferences/UITableViewDataSource-Protocol.h>
+#import <Preferences/UITableViewDataSourcePrefetching-Protocol.h>
 #import <Preferences/UITableViewDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSString, PSListContainerView, UIColor, UIKeyboard, UITableView;
 @protocol PSSpecifierDataSource;
 
-@interface PSListController : PSViewController <UIAppearance, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, PSSpecifierObserver, PSViewControllerOffsetProtocol>
+@interface PSListController : PSViewController <UIAppearance, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, PSSpecifierObserver, PSViewControllerOffsetProtocol>
 {
     NSMutableArray *_prequeuedReusablePSTableCells;
     NSMutableDictionary *_cells;
@@ -48,6 +49,7 @@
     BOOL _sectionContentInsetInitialized;
     NSIndexPath *_savedSelectedIndexPath;
     BOOL _edgeToEdgeCells;
+    BOOL _prefetchingEnabled;
     BOOL _usesDarkTheme;
     NSDictionary *_pendingURLResourceDictionary;
     NSString *_specifierIDPendingPush;
@@ -89,6 +91,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long observerType;
 @property (strong, nonatomic) NSDictionary *pendingURLResourceDictionary; // @synthesize pendingURLResourceDictionary=_pendingURLResourceDictionary;
+@property (nonatomic) BOOL prefetchingEnabled; // @synthesize prefetchingEnabled=_prefetchingEnabled;
 @property (strong, nonatomic) UIColor *segmentedSliderTrackColor; // @synthesize segmentedSliderTrackColor=_segmentedSliderTrackColor;
 @property (strong, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
 @property (strong, nonatomic) id<PSSpecifierDataSource> specifierDataSource;
@@ -212,6 +215,7 @@
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
 - (id)popupStylePopoverController;
 - (void)popupViewWillDisappear;
+- (void)prefetchResourcesFor:(id)arg1;
 - (BOOL)prepareHandlingURLForSpecifierID:(id)arg1 resourceDictionary:(id)arg2 animatePush:(BOOL *)arg3;
 - (void)prepareSpecifiersMetadata;
 - (void)pushController:(id)arg1 animate:(BOOL)arg2;
@@ -276,6 +280,7 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)tableView:(id)arg1 prefetchRowsAtIndexPaths:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 titleAlignmentForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 titleAlignmentForHeaderInSection:(long long)arg2;

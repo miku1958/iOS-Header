@@ -9,15 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface KNPdfHandoutExporter : KNPdfExporter
 {
-    BOOL mPrintingRuledLines;
-    BOOL mPrintingNotes;
-    BOOL mPrintingDivider;
-    BOOL mIsPrintingNote;
+    BOOL _printingRuledLines;
+    BOOL _printingNotes;
+    BOOL _printingDivider;
+    BOOL _isPrintingNote;
 }
 
-@property (nonatomic, getter=isPrintingDivider) BOOL printingDivider; // @synthesize printingDivider=mPrintingDivider;
-@property (nonatomic, getter=isPrintingNotes) BOOL printingNotes; // @synthesize printingNotes=mPrintingNotes;
-@property (nonatomic, getter=isPrintingRuledLines) BOOL printingRuledLines; // @synthesize printingRuledLines=mPrintingRuledLines;
+@property (nonatomic, getter=isPrintingDivider) BOOL printingDivider; // @synthesize printingDivider=_printingDivider;
+@property (nonatomic, getter=isPrintingNotes) BOOL printingNotes; // @synthesize printingNotes=_printingNotes;
+@property (nonatomic, getter=isPrintingRuledLines) BOOL printingRuledLines; // @synthesize printingRuledLines=_printingRuledLines;
 
 - (id)currentInfos;
 - (BOOL)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(BOOL)arg4;

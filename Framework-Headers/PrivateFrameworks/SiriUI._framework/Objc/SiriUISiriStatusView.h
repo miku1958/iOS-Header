@@ -61,6 +61,7 @@
 - (void)_attachFlamesViewIfNeeded;
 - (void)_configureGlyph;
 - (void)_createLooperIfNeeded;
+- (void)_createQueuePlayerIfNeeded;
 - (struct CGRect)_flamesFrame;
 - (id)_flamesView;
 - (struct CGRect)_flamesViewFrame;

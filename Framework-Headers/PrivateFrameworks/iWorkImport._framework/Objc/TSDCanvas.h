@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray, NSSet, TSDInteractiveCanvasController, TSDLayoutController, TSKAccessController, TSKChangeNotifier, TSKDocumentRoot, TSPObjectContext, TSUColor, TSUPointerKeyDictionary;
+@class NSArray, NSHashTable, NSMutableArray, NSSet, TSDInteractiveCanvasController, TSDLayoutController, TSKAccessController, TSKChangeNotifier, TSKDocumentRoot, TSPObjectContext, TSUColor, TSUPointerKeyDictionary;
 @protocol OS_dispatch_queue, TSDCanvasDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,24 +25,27 @@ __attribute__((visibility("hidden")))
     double mViewScale;
     double mContentsScale;
     BOOL mWideGamut;
+    BOOL mIsAnchoredAtRight;
     struct {
         unsigned int layout:1;
         unsigned int reps:1;
         unsigned int visibleBounds:1;
         unsigned int layers:1;
     } mInvalidFlags;
+    BOOL mShouldUpdateLayersDuringLayout;
     BOOL mInLayout;
     NSArray *mPreviouslyVisibleLayouts;
     NSMutableArray *mBlocksToPerform;
     NSObject<OS_dispatch_queue> *mBlocksToPerformAccessQueue;
+    NSHashTable *mCanvasLayoutObservers;
     BOOL mIgnoringClickThrough;
     TSUColor *mBackgroundColor;
     struct UIEdgeInsets mContentInset;
     BOOL mAllowsFontSubpixelQuantization;
     BOOL mSuppressesShadowsAndReflections;
-    BOOL mSuppressesColorAlphaComponent;
     BOOL mSuppressesShapeText;
-    BOOL mSuppressesColorAlphaComponen;
+    BOOL mShouldRenderAudioObjectsInNonInteractiveCanvas;
+    double i_viewScaleForAudioObjectsInNonInteractiveCanvas;
 }
 
 @property (readonly, nonatomic) TSKAccessController *accessController;
@@ -57,16 +60,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double contentsScale;
 @property (weak, nonatomic) id<TSDCanvasDelegate> delegate; // @synthesize delegate=mDelegate;
 @property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
+@property (nonatomic) BOOL i_shouldRenderAudioObjectsInNonInteractiveCanvas; // @synthesize i_shouldRenderAudioObjectsInNonInteractiveCanvas=mShouldRenderAudioObjectsInNonInteractiveCanvas;
+@property (nonatomic) double i_viewScaleForAudioObjectsInNonInteractiveCanvas; // @synthesize i_viewScaleForAudioObjectsInNonInteractiveCanvas;
 @property (copy, nonatomic) NSArray *infosToDisplay; // @synthesize infosToDisplay=mInfos;
+@property (nonatomic) BOOL isAnchoredAtRight; // @synthesize isAnchoredAtRight=mIsAnchoredAtRight;
 @property (readonly, nonatomic) BOOL isCanvasInteractive;
 @property (readonly, nonatomic) BOOL isTemporaryForLayout; // @synthesize isTemporaryForLayout=mIsTemporaryForLayout;
 @property (readonly, nonatomic) TSDLayoutController *layoutController; // @synthesize layoutController=mLayoutController;
 @property (readonly, nonatomic) TSPObjectContext *objectContext;
 @property (readonly, nonatomic) BOOL supportsAdaptiveLayout;
-@property (nonatomic) BOOL suppressesColorAlphaComponent; // @synthesize suppressesColorAlphaComponent=mSuppressesColorAlphaComponen;
 @property (nonatomic) BOOL suppressesShadowsAndReflections; // @synthesize suppressesShadowsAndReflections=mSuppressesShadowsAndReflections;
 @property (nonatomic) BOOL suppressesShapeText; // @synthesize suppressesShapeText=mSuppressesShapeText;
 @property (readonly, nonatomic) NSArray *topLevelReps; // @synthesize topLevelReps=mTopLevelReps;
+@property (readonly, nonatomic) struct CGRect unscaledRectOfLayouts;
 @property (nonatomic) struct CGSize unscaledSize; // @synthesize unscaledSize=mUnscaledSize;
 @property (nonatomic) double viewScale; // @synthesize viewScale=mViewScale;
 
@@ -80,7 +86,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)convertUnscaledToBoundsRect:(struct CGRect)arg1;
 - (struct CGSize)convertUnscaledToBoundsSize:(struct CGSize)arg1;
 - (void)dealloc;
-- (id)hitRep:(struct CGPoint)arg1 inTopLevelReps:(id)arg2 smallRepOutset:(double)arg3 passingTest:(CDUnknownBlockType)arg4;
 - (struct CGRect)i_approximateScaledFrameOfEditingMenuAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)i_clipRectForCreatingRepsFromLayouts;
 - (struct CGContext *)i_createContextToDrawImageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(BOOL)arg3 returningBounds:(struct CGRect *)arg4 integralBounds:(struct CGRect *)arg5;
@@ -91,17 +96,19 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)i_image;
 - (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1;
 - (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(BOOL)arg3;
+- (void)i_layoutIfNeededUpdatingLayerTree;
 - (BOOL)i_needsLayout;
 - (struct CGImage *)i_newImageInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2 integralBounds:(struct CGRect)arg3 distortedToMatch:(BOOL)arg4;
 - (void)i_performBlockWhileIgnoringClickThrough:(CDUnknownBlockType)arg1;
+- (void)i_registerCanvasLayoutObserver:(id)arg1;
 - (void)i_registerRep:(id)arg1;
 - (void)i_setCanvasController:(id)arg1;
 - (void)i_setCanvasIsWideGamut:(BOOL)arg1;
 - (void)i_setContentsScale:(double)arg1;
 - (void)i_setInfosToDisplay:(id)arg1 updatingLayoutController:(BOOL)arg2;
 - (BOOL)i_shouldIgnoreClickThrough;
+- (void)i_unregisterCanvasLayoutObserver:(id)arg1;
 - (void)i_unregisterRep:(id)arg1;
-- (struct CGRect)i_unscaledRectOfLayouts;
 - (void)i_updateInfosInLayoutController;
 - (id)init;
 - (id)initForTemporaryLayout;
@@ -110,17 +117,15 @@ __attribute__((visibility("hidden")))
 - (void)invalidateReps;
 - (void)invalidateVisibleBounds;
 - (BOOL)isDrawingIntoPDF;
-- (BOOL)isExportingFixedLayoutEPub;
+- (BOOL)isExportingFixedLayoutEPUB;
 - (BOOL)isPrinting;
 - (BOOL)isRenderingForKPF;
 - (void)layoutIfNeeded;
 - (void)layoutInvalidated;
 - (void)orderRepsForLayout:(id)arg1;
 - (struct CGRect)p_bounds;
-- (BOOL)p_expandHitRegionOfPoint:(struct CGPoint)arg1 forRep:(id)arg2 smallRepOutset:(double)arg3 forShortestDistance:(double *)arg4;
 - (void)p_layoutWithReadLock;
 - (void)p_removeAllReps;
-- (BOOL)p_shouldRep:(id)arg1 countAsClosestSmallRepForSizeLimit:(double)arg2;
 - (BOOL)p_updateRepsFromLayouts;
 - (void)performBlockAfterLayoutIfNecessary:(CDUnknownBlockType)arg1;
 - (void)recreateAllLayoutsAndReps;

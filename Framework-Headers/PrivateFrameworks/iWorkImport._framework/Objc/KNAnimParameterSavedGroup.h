@@ -6,12 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <iWorkImport/NSCoding-Protocol.h>
+#import <iWorkImport/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface KNAnimParameterSavedGroup : NSObject <NSCoding>
+@interface KNAnimParameterSavedGroup : NSObject <NSSecureCoding>
 {
     NSString *_name;
     NSString *_version;
@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *parameters; // @synthesize parameters=_parameters;
 @property (copy, nonatomic) NSString *version; // @synthesize version=_version;
 
-- (id)allParameterNames;
-- (void)dealloc;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

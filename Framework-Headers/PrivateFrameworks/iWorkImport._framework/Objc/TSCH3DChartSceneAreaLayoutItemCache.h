@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSCH3DVector *containingViewportVector; // @synthesize containingViewportVector=_containingViewportVector;
 @property (readonly, nonatomic) BOOL forcedValid;
 @property (readonly, nonatomic) tvec4_ac57c72d infoChartScale;
-@property (readonly, nonatomic) CDStruct_44ada6bf layoutSettings;
+@property (readonly, nonatomic) CDStruct_b1c75024 layoutSettings;
 @property (readonly, nonatomic) struct CGSize layoutSize;
 @property (readonly, nonatomic) tvec2_3b141483 modelSize;
 @property (readonly, nonatomic) struct CGSize requestChartBodyLayoutSize;

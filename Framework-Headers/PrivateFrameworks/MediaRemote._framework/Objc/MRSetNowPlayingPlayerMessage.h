@@ -6,13 +6,15 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
+@class _MRNowPlayingPlayerPathProtobuf;
+
 @interface MRSetNowPlayingPlayerMessage : MRProtocolMessage
 {
 }
 
-@property (readonly, nonatomic) void *playerPath;
+@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
 
-- (id)initWithPlayerPath:(void *)arg1;
+- (id)initWithPlayerPath:(id)arg1;
 - (unsigned long long)type;
 
 @end

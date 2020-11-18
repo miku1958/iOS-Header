@@ -14,11 +14,11 @@
     BOOL _shouldFetchAssetContentInMemory;
     BOOL _dropInMemoryAssetContentASAP;
     BOOL _isFetchCurrentUserOperation;
-    NSArray *_recordIDs;
-    NSArray *_desiredKeys;
     CDUnknownBlockType _perRecordProgressBlock;
     CDUnknownBlockType _perRecordCompletionBlock;
     CDUnknownBlockType _fetchRecordsCompletionBlock;
+    NSArray *_recordIDs;
+    NSArray *_desiredKeys;
     NSMutableSet *_packagesToDestroy;
     NSMutableDictionary *_assetInfoByArrayIndexByRecordKeyByRecordID;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;

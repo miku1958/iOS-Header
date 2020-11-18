@@ -11,7 +11,9 @@
 @interface HMFMutableMessage (RemoteMessage)
 
 @property (nonatomic, getter=isRemote) BOOL remote;
+@property (nonatomic) unsigned long long remoteRestriction;
 @property (strong, nonatomic) NSString *remoteSourceID;
+@property (nonatomic, getter=isSecureRemote) BOOL secureRemote;
 
 @end
 

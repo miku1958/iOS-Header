@@ -6,12 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
+#import <AudioToolbox/NSSecureCoding-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface _ACComponentWrapper : NSObject
+@interface _ACComponentWrapper : NSObject <NSSecureCoding>
 {
     shared_ptr_a99cf2ba mComponent;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

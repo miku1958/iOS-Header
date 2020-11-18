@@ -10,22 +10,15 @@
 
 @interface MPModelMediaClip : MPModelObject
 {
-    NSArray *_staticAssets;
-    NSString *_title;
-    CDUnknownBlockType _previewArtworkCatalogBlock;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType previewArtworkCatalogBlock; // @synthesize previewArtworkCatalogBlock=_previewArtworkCatalogBlock;
-@property (copy, nonatomic) NSArray *staticAssets; // @synthesize staticAssets=_staticAssets;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) CDUnknownBlockType previewArtworkCatalogBlock; // @dynamic previewArtworkCatalogBlock;
+@property (copy, nonatomic) NSArray *staticAssets; // @dynamic staticAssets;
+@property (copy, nonatomic) NSString *title; // @dynamic title;
 
-+ (id)__MPModelPropertyMediaClipPreviewArtwork__PROPERTY;
-+ (id)__MPModelPropertyMediaClipTitle__PROPERTY;
-+ (id)__MPModelRelationshipMediaClipStaticAssets__PROPERTY;
-+ (id)__previewArtworkCatalogBlock__KEY;
-+ (id)__staticAssets__KEY;
-+ (id)__title__KEY;
-- (void).cxx_destruct;
++ (id)__previewArtworkCatalogBlock_KEY;
++ (id)__staticAssets_KEY;
++ (id)__title_KEY;
 - (id)previewArtworkCatalog;
 
 @end

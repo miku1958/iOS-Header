@@ -52,10 +52,10 @@
 - (unsigned long long)_peerPaymentErrorStateForRegistrationResponse:(id)arg1 error:(id)arg2;
 - (BOOL)_peerPaymentPassExists;
 - (void)_performPeerPaymentPassDownloadActivity;
-- (void)_performPeerPaymentReregisterActivity;
+- (void)_performPeerPaymentReregisterActivityForReason:(id)arg1;
 - (void)_registerWithPeerPaymentWebService:(id)arg1 registerURL:(id)arg2 pushToken:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_schedulePeerPaymentCoordinatorActivities;
-- (void)_schedulePeerPaymentReregisterActivity;
+- (void)_schedulePeerPaymentReregisterActivityForReason:(id)arg1;
 - (BOOL)_shouldAttemptBackgroundPeerPaymentPassDownload;
 - (void)_updateAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateSharedCacheWithAccount:(id)arg1;
@@ -76,7 +76,7 @@
 - (id)initWithPushNotificationManager:(id)arg1 paymentWebService:(id)arg2 assertionManager:(id)arg3 dataSource:(id)arg4 passStore:(id)arg5;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
-- (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2 activityContext:(id)arg3;
+- (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2;
 - (id)pushNotificationTopics;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerDeviceWithRegistrationURL:(id)arg1 pushToken:(id)arg2 completion:(CDUnknownBlockType)arg3;

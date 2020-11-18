@@ -11,9 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)keywordByCapitalizingLowercasedKeyword:(id)arg1;
-+ (id)keywordsByCapitalizingLowercasedKeywords:(id)arg1;
++ (id)keywordByCapitalizingLowercasedKeyword:(id)arg1 locale:(id)arg2;
++ (id)keywordsByCapitalizingLowercasedKeywords:(id)arg1 locale:(id)arg2;
 + (BOOL)shouldAddBaseShapeNameAndKeywordsForLocale:(id)arg1;
++ (BOOL)shouldUseStringScoreBasedSearchForLocale:(id)arg1;
 
 @end
 

@@ -33,13 +33,13 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 
 + (Class)characteristicsType;
+- (void).cxx_destruct;
 - (void)addCharacteristics:(id)arg1;
 - (id)characteristicsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)characteristicsCount;
 - (void)clearCharacteristics;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) BOOL userControllable; // @dynamic userControllable;
 
 + (id)typeString;
+- (unsigned long long)traits;
 
 @end
 

@@ -6,13 +6,13 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, TSPData, TSUWarning;
+@class NSArray, NSMapTable, TSPData, TSUWarning;
 @protocol TSDCompatibilityAwareMediaContainer;
 
 @protocol TSDImportExportDelegate <NSObject>
 
-@property (readonly, nonatomic) NSDictionary *incompatibleMediaContainersWithDataUnsupportedOnAllDevices;
-@property (readonly, nonatomic) NSDictionary *incompatibleMediaContainersWithDataUnsupportedOnThisDevice;
+@property (readonly, nonatomic) NSMapTable *incompatibleMediaContainersWithDataUnsupportedOnAllDevices;
+@property (readonly, nonatomic) NSMapTable *incompatibleMediaContainersWithDataUnsupportedOnThisDevice;
 @property (readonly, nonatomic) BOOL isBrowsingVersions;
 
 - (void)addWarning:(TSUWarning *)arg1;

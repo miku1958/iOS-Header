@@ -35,6 +35,7 @@
     struct nw_protocol protocol_handler;
     struct nw_protocol *transport_protocol;
     struct nw_protocol *tls_protocol;
+    struct nw_protocol_identifier *ip_protocol_identifier;
     struct tcp_info *tcp_info;
     struct tcp_connection_info *tcp_connection_info;
     NSObject<OS_nw_write_request> *write_requests;

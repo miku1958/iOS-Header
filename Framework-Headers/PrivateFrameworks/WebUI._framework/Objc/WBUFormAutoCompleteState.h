@@ -32,6 +32,7 @@
     BOOL _hasDeterminedIfURLIsAllowedByWhiteList;
     CDUnknownBlockType _displayOtherContactsCompletionHandler;
     CDUnknownBlockType _customAutoFillContactCompletionHandler;
+    BOOL _hasNotedThatTextDidChangeInPasswordField;
     WBUFormDataController *_dataController;
 }
 
@@ -97,8 +98,8 @@
 - (void)dealloc;
 - (void)dismissCustomAutoFill;
 - (void)fetchFormMetadataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fillCredential:(id)arg1 setAutoFilled:(BOOL)arg2;
-- (void)fillCredentialAfterAuthenticationIfNeeded:(id)arg1;
+- (void)fillCredential:(id)arg1 setAutoFilled:(BOOL)arg2 setAsDefaultCredential:(BOOL)arg3;
+- (void)fillCredentialAfterAuthenticationIfNeeded:(id)arg1 setAsDefaultCredential:(BOOL)arg2;
 - (void)fillGeneratedPassword:(id)arg1 inField:(id)arg2;
 - (void)getLoginFormUser:(id *)arg1 password:(id *)arg2 userIsAutoFilled:(BOOL *)arg3 passwordIsAutoFilled:(BOOL *)arg4;
 - (void)getTextFieldMetadata:(id *)arg1 formMetadata:(id *)arg2;

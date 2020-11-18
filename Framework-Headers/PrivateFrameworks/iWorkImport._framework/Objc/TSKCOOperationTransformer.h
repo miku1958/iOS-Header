@@ -8,24 +8,25 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class TSPObject;
+@class TSKCOOperationTransformHistory, TSPObject;
 @protocol TSKCOIntermediateOperationEnumerator;
 
 __attribute__((visibility("hidden")))
 @interface TSKCOOperationTransformer : NSObject <NSCopying>
 {
-    NSObject<TSKCOIntermediateOperationEnumerator> *mEnumerator;
-    BOOL mIsHigherPriority;
-    TSPObject *mDelegate;
+    BOOL _isHigherPriority;
+    TSKCOOperationTransformHistory *_history;
+    TSPObject *_delegate;
+    NSObject<TSKCOIntermediateOperationEnumerator> *_enumerator;
 }
 
-@property (nonatomic) TSPObject *delegate; // @synthesize delegate=mDelegate;
-@property (readonly, nonatomic) NSObject<TSKCOIntermediateOperationEnumerator> *enumerator; // @synthesize enumerator=mEnumerator;
+@property (weak, nonatomic) TSPObject *delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) NSObject<TSKCOIntermediateOperationEnumerator> *enumerator; // @synthesize enumerator=_enumerator;
 @property (readonly, nonatomic) BOOL hasOperations;
 
+- (void).cxx_destruct;
 - (void)appendOperation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithOperationEnumerator:(id)arg1;
 - (id)initWithOperationEnumerator:(id)arg1 isHigherPriority:(BOOL)arg2;

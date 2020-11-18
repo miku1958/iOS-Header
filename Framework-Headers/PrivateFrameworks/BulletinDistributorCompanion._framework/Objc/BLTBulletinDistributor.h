@@ -31,7 +31,6 @@
     BLTSectionConfiguration *_sectionConfiguration;
     BLTUserNotificationList *_userNotificationList;
     BLTBulletinFetcher *_bulletinFetcher;
-    NSMutableDictionary *_transcodedAttachmentsForBulletinID;
     BLTPingSubscriberManager *_pingSubscriberManager;
 }
 
@@ -55,7 +54,6 @@
 @property (nonatomic) BOOL standaloneTestModeEnabled; // @synthesize standaloneTestModeEnabled=_standaloneTestModeEnabled;
 @property (strong, nonatomic) NSDate *startupTime; // @synthesize startupTime=_startupTime;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableDictionary *transcodedAttachmentsForBulletinID; // @synthesize transcodedAttachmentsForBulletinID=_transcodedAttachmentsForBulletinID;
 @property (strong, nonatomic) BLTUserNotificationList *userNotificationList; // @synthesize userNotificationList=_userNotificationList;
 @property (strong, nonatomic) BLTWatchKitAppList *watchKitAppList; // @synthesize watchKitAppList=_watchKitAppList;
 

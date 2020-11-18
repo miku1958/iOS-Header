@@ -11,7 +11,7 @@
 #import <HelpKit/HLPHelpTopicViewControllerDelegate-Protocol.h>
 #import <HelpKit/HLPReachabilityManagerDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem, UIView;
 @protocol HLPHelpViewControllerDelegate;
 
 @interface HLPHelpViewController : UIViewController <HLPHelpTableOfContentViewControllerDelegate, HLPHelpTopicViewControllerDelegate, HLPReachabilityManagerDelegate, HLPHelpLoadingViewDelegate>
@@ -23,6 +23,7 @@
     NSMutableDictionary *_localHelpBookNameIDMap;
     UIBarButtonItem *_doneBarButtonItem;
     NSLayoutConstraint *_loadingViewTopConstraint;
+    UIView *_fullBookViewSeparator;
     HLPHelpUsageController *_usageController;
     HLPHelpLocaleController *_localeListController;
     HLPHelpBookController *_helpBookController;
@@ -31,6 +32,7 @@
     BOOL _displayHelpTopicsOnly;
     BOOL _showTopicNameAsTitle;
     BOOL _showTopicViewOnLoad;
+    BOOL __fullBookView;
     id<HLPHelpViewControllerDelegate> _delegate;
     NSString *_identifier;
     NSString *_version;
@@ -44,6 +46,7 @@
     HLPHelpTableOfContentViewController *_tableOfContentViewController;
 }
 
+@property (nonatomic, getter=_fullBookView, setter=_setFullBookView:) BOOL _fullBookView; // @synthesize _fullBookView=__fullBookView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HLPHelpViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -83,9 +86,12 @@
 - (id)init;
 - (void)loadFromStaticServer;
 - (void)loadHelpBook;
+- (void)loadHelpTopicID:(id)arg1;
 - (void)popWelcomeTopicView;
 - (void)reachabilityManagerConnectionStatusChanged:(id)arg1 connected:(BOOL)arg2;
+- (void)setupFullBookView;
 - (void)setupTableContentViewController;
+- (void)setupTopicViewController;
 - (void)showHelpBookInfo:(id)arg1;
 - (void)showHelpTopicItem:(id)arg1 anchor:(id)arg2 animate:(BOOL)arg3;
 - (void)showMessageForError:(id)arg1;
@@ -93,6 +99,7 @@
 - (void)tableOfContentViewController:(id)arg1 showHelpTopicItem:(id)arg2;
 - (void)tableOfContentViewControllerShowHelpBookInfo:(id)arg1;
 - (id)topicIDForTopicName:(id)arg1 locale:(id)arg2;
+- (void)updateChildViewConstraints;
 - (void)updateDoneButton;
 - (void)updateTOCButton;
 - (void)viewDidAppear:(BOOL)arg1;

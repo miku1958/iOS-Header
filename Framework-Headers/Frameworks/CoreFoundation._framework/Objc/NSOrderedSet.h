@@ -36,7 +36,6 @@
 + (BOOL)supportsSecureCoding;
 - (id)allObjects;
 - (id)array;
-- (Class)classForCoder;
 - (BOOL)containsObject:(id)arg1;
 - (BOOL)containsObject:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

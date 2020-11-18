@@ -26,6 +26,7 @@
 @property (nonatomic) long long shouldDisablePiggybacking;
 @property (nonatomic) long long shouldFakeAuthSuccess;
 @property (nonatomic) long long shouldSuppressHSA2Suggestions;
+@property (nonatomic) long long shouldSuppressModalSheetsInMacBuddy;
 
 + (id)sharedConfiguration;
 - (void).cxx_destruct;

@@ -18,9 +18,11 @@
     NSNumber *_offset;
     long long _size;
     NSFileHandle *_dataFile;
+    NSNumber *_index;
 }
 
 @property (strong) NSFileHandle *dataFile; // @synthesize dataFile=_dataFile;
+@property (copy) NSNumber *index; // @synthesize index=_index;
 @property (copy) NSNumber *offset; // @synthesize offset=_offset;
 @property long long size; // @synthesize size=_size;
 @property (copy) NSString *type; // @synthesize type=_type;

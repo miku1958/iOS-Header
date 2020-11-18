@@ -56,6 +56,7 @@
 - (void)captureStaleResourcesEventForResources:(id)arg1;
 - (void)captureStateTransition:(id)arg1 force:(BOOL)arg2;
 - (void)captureStateTransitionEventWithStates:(id)arg1 generateOnlyIfStateChanged:(BOOL)arg2;
+- (void)captureTelemetricEnties:(id)arg1;
 - (void)captureTelemetricEntityCountForEventKey:(int)arg1 eventDetail:(id)arg2;
 - (void)captureTelemetricEntityForEventKey:(int)arg1 eventValue:(unsigned long long)arg2 eventDetail:(id)arg3;
 - (void)captureTileSetStateEventForType:(int)arg1 newCoverage:(double)arg2 oldCoverage:(double)arg3 seconds:(double)arg4;
@@ -77,6 +78,7 @@
 - (void)captureUserActionAsString:(id)arg1 onTarget:(int)arg2 eventValue:(id)arg3 resultsArray:(id)arg4;
 - (void)captureUserActionAsString:(id)arg1 onTarget:(int)arg2 eventValue:(id)arg3 routeDetails:(id)arg4;
 - (void)captureUserActionAsString:(id)arg1 onTarget:(int)arg2 eventValue:(id)arg3 selectedReportAnIssueIndex:(unsigned int)arg4;
+- (void)captureWiFiConnectionQualityEvent:(id)arg1;
 - (void)capturerTimeToLeaveHypothesisEventWithEarlyDepartureDelta:(double)arg1 lateDepartureDelta:(double)arg2 earlyArrivalDelta:(double)arg3 lateArrivalDelta:(double)arg4 rerouteCount:(unsigned long long)arg5 uiNotification:(int)arg6;
 - (void)clearStateTimingData;
 - (id)init;

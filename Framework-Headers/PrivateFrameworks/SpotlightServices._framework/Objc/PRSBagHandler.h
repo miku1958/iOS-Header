@@ -65,7 +65,7 @@
 @property (strong, nonatomic) NSMutableDictionary *resourceMetadata; // @synthesize resourceMetadata=_resourceMetadata;
 @property (nonatomic) BOOL resourceMetadataNeedsWrite; // @synthesize resourceMetadataNeedsWrite=_resourceMetadataNeedsWrite;
 @property (strong, nonatomic) NSString *resourceMetadataPath; // @synthesize resourceMetadataPath=_resourceMetadataPath;
-@property (readonly) double searchRenderTimeout; // @synthesize searchRenderTimeout=_searchRenderTimeout;
+@property (nonatomic) double searchRenderTimeout; // @synthesize searchRenderTimeout=_searchRenderTimeout;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (strong, nonatomic) NSArray *suggestionRankerModelParams; // @synthesize suggestionRankerModelParams=_suggestionRankerModelParams;
 @property (nonatomic) BOOL use2LayerRanking; // @synthesize use2LayerRanking=_use2LayerRanking;

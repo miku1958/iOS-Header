@@ -8,14 +8,14 @@
 
 #import <Silex/SXActionActivityProvider-Protocol.h>
 
-@class NSString, SXHost;
-@protocol SXLinkActionURLQualifier, SXURLHandling, SXURLPreviewing;
+@class NSString;
+@protocol SXHost, SXLinkActionURLQualifier, SXURLHandling, SXURLPreviewing;
 
 @interface SXLinkActionActivityProvider : NSObject <SXActionActivityProvider>
 {
     id<SXURLHandling> _URLHandler;
     id<SXURLPreviewing> _URLPreviewing;
-    SXHost *_host;
+    id<SXHost> _host;
     id<SXLinkActionURLQualifier> _URLQualifier;
 }
 
@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) SXHost *host; // @synthesize host=_host;
+@property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

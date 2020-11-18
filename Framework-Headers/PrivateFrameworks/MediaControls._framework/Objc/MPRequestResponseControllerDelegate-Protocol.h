@@ -13,5 +13,7 @@
 @optional
 - (void)controller:(MPRequestResponseController *)arg1 defersResponseReplacement:(void (^)(void))arg2;
 - (BOOL)controller:(MPRequestResponseController *)arg1 shouldRetryFailedRequestWithError:(NSError *)arg2;
+- (void)didFinishLoadingRequestForController:(MPRequestResponseController *)arg1;
+- (void)willBeginLoadingRequestForController:(MPRequestResponseController *)arg1;
 @end
 

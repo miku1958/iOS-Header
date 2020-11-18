@@ -9,15 +9,15 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class PDScheduledActivityCriteria;
-@protocol NSCoding;
+@protocol NSObject><NSSecureCoding;
 
 @interface PDScheduledActivityRegistration : NSObject <NSSecureCoding>
 {
     PDScheduledActivityCriteria *_activityCriteria;
-    id<NSCoding> _activityContext;
+    id<NSObject><NSSecureCoding> _activityContext;
 }
 
-@property (readonly, nonatomic) id<NSCoding> activityContext; // @synthesize activityContext=_activityContext;
+@property (readonly, nonatomic) id<NSObject><NSSecureCoding> activityContext; // @synthesize activityContext=_activityContext;
 @property (readonly, nonatomic) PDScheduledActivityCriteria *activityCriteria; // @synthesize activityCriteria=_activityCriteria;
 
 + (BOOL)supportsSecureCoding;

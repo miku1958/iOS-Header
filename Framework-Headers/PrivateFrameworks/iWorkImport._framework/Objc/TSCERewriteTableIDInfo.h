@@ -9,19 +9,19 @@
 __attribute__((visibility("hidden")))
 @interface TSCERewriteTableIDInfo : NSObject
 {
-    UUIDMap_727ee07e _tableIDMap;
+    UUIDMap_b66c2694 _tableIDMap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)description;
-- (id)extendMappingWithTableIDs:(const UUIDMap_727ee07e *)arg1 calcEngine:(id)arg2;
+- (id)extendMappingWithTableIDs:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
 - (id)initFromMessage:(const struct RewriteTableIDInfoArchive *)arg1;
-- (id)initWithTableIDMap:(const UUIDMap_727ee07e *)arg1;
-- (vector_dadc1b26)originalTableIDs;
+- (id)initWithTableIDMap:(const UUIDMap_b66c2694 *)arg1;
+- (vector_4dc5f307)originalTableIDs;
 - (void)rollbackMappings:(id)arg1;
 - (void)saveToMessage:(struct RewriteTableIDInfoArchive *)arg1;
-- (const UUIDMap_727ee07e *)tableIDMap;
+- (const UUIDMap_b66c2694 *)tableIDMap;
 - (void)tableWasAdded:(const UUIDData_5fbc143e *)arg1;
 
 @end

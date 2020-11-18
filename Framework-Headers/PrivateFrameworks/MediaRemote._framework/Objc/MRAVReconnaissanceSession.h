@@ -6,14 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRAVEndpoint, MRAVRoutingDiscoverySession, NSArray, NSMutableSet, NSSet, NSTimer;
+@class MRAVEndpoint, MRAVRoutingDiscoverySession, NSArray, NSMutableSet, NSSet, NSString, NSTimer;
 
 @interface MRAVReconnaissanceSession : NSObject
 {
+    double _timeoutTimerTimeout;
     BOOL _useWeakMatching;
     BOOL _searchInProgress;
     unsigned int _endpointFeatures;
     NSSet *_matchingOutputDeviceUIDsSet;
+    NSString *_matchingOutputDeviceGroupID;
     MRAVRoutingDiscoverySession *_discoverySession;
     id _discoverySessionCallbackToken;
     CDUnknownBlockType _callback;
@@ -27,6 +29,7 @@
 @property (strong, nonatomic) id discoverySessionCallbackToken; // @synthesize discoverySessionCallbackToken=_discoverySessionCallbackToken;
 @property (readonly, nonatomic) unsigned int endpointFeatures; // @synthesize endpointFeatures=_endpointFeatures;
 @property (strong, nonatomic) NSMutableSet *matchingDevicesFound; // @synthesize matchingDevicesFound=_matchingDevicesFound;
+@property (strong, nonatomic) NSString *matchingOutputDeviceGroupID; // @synthesize matchingOutputDeviceGroupID=_matchingOutputDeviceGroupID;
 @property (readonly, nonatomic) NSArray *matchingOutputDeviceUIDs;
 @property (strong, nonatomic) NSSet *matchingOutputDeviceUIDsSet; // @synthesize matchingOutputDeviceUIDsSet=_matchingOutputDeviceUIDsSet;
 @property (nonatomic) BOOL searchInProgress; // @synthesize searchInProgress=_searchInProgress;
@@ -34,6 +37,7 @@
 @property (strong, nonatomic) MRAVEndpoint *unanimousEndpoint; // @synthesize unanimousEndpoint=_unanimousEndpoint;
 @property (nonatomic) BOOL useWeakMatching; // @synthesize useWeakMatching=_useWeakMatching;
 
+- (void).cxx_destruct;
 - (void)_concludeSearch;
 - (void)_discoverySessionEndpointsChangedCallback:(id)arg1;
 - (void)_endSearch;
@@ -41,7 +45,7 @@
 - (void)beginSearchWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelSearch;
 - (void)dealloc;
-- (id)initWithOutputDeviceUIDs:(id)arg1 features:(unsigned int)arg2;
+- (id)initWithOutputDeviceUIDs:(id)arg1 outputDeviceGroupID:(id)arg2 features:(unsigned int)arg3;
 
 @end
 

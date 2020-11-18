@@ -26,6 +26,7 @@
 - (id)_getTimebaseObserverForRenderer:(id)arg1;
 - (int)_initializeTimebase;
 - (BOOL)_multipleAudioRenderersDisallowed;
+- (void)_performRendererRemoval:(id)arg1;
 - (void)_removeTimebaseObserverForRenderer:(id)arg1;
 - (BOOL)_rendererConfigurationIsValid:(id *)arg1;
 - (BOOL)_scheduleTimedRendererRemovalAtTime:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 withClientCompletionHandler:(CDUnknownBlockType)arg3;

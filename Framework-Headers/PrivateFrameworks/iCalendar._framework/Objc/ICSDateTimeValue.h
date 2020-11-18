@@ -6,9 +6,9 @@
 
 #import <iCalendar/ICSDateValue.h>
 
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
-@interface ICSDateTimeValue : ICSDateValue <NSCoding>
+@interface ICSDateTimeValue : ICSDateValue <NSSecureCoding>
 {
     long long _hour;
     long long _minute;
@@ -19,6 +19,7 @@
 @property (readonly) long long minute; // @synthesize minute=_minute;
 @property (readonly) long long second; // @synthesize second=_second;
 
++ (BOOL)supportsSecureCoding;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
 - (id)components;
 - (int)dateType;

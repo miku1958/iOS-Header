@@ -22,7 +22,8 @@
 
 - (void).cxx_destruct;
 - (id)initWithParentServer:(id)arg1;
-- (void)remote_setBadgeCount:(long long)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_badgeForDomain:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_setBadge:(id)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

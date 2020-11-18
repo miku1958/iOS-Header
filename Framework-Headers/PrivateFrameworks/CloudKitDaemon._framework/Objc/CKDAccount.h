@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
 
 + (id)globalAuthTokenQueue;
 - (void).cxx_destruct;
+- (void)_fetchContainerInfoForOperation:(id)arg1 requireUserIDs:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_initWithContext:(id)arg1;
 - (id)_lockedCloudKitAuthTokenWithError:(id *)arg1;
 - (void)_lockedRenewTokenWithReason:(id)arg1 shouldForce:(BOOL)arg2 tokenFetchBlock:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -78,8 +79,8 @@ __attribute__((visibility("hidden")))
 - (void)displayAuthenticationPromptWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)dsid;
 - (void)fetchConfigurationForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchContainerScopedUserIDForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDeviceIDForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchImportantUserIDsForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateURLForServerType:(long long)arg1 operation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPublicURLForServerType:(long long)arg1 operation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchServerEnvironmentForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

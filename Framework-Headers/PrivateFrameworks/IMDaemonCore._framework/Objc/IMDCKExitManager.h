@@ -12,14 +12,15 @@
 @interface IMDCKExitManager : IMDCKAbstractSyncController
 {
     BOOL _fetchedExitDateOnLaunch;
+    NSDate *_exitRecordDate;
+    NSError *_errorFetchingExitDate;
     CKRecordID *_exitRecordID;
     CKOperationConfiguration *_exitConfigurtation;
     NSNumber *_saltZoneCreatedOverride;
+    NSNumber *_subscriptionCreatedOverride;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDRecordZoneManager *_recordZoneManager;
     IMDCKDatabaseManager *_databaseManager;
-    NSDate *_exitRecordDate;
-    NSError *_errorFetchingExitDate;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
@@ -31,13 +32,19 @@
 @property (nonatomic) BOOL fetchedExitDateOnLaunch; // @synthesize fetchedExitDateOnLaunch=_fetchedExitDateOnLaunch;
 @property (strong, nonatomic) IMDRecordZoneManager *recordZoneManager; // @synthesize recordZoneManager=_recordZoneManager;
 @property (strong, nonatomic) NSNumber *saltZoneCreatedOverride; // @synthesize saltZoneCreatedOverride=_saltZoneCreatedOverride;
+@property (strong, nonatomic) NSNumber *subscriptionCreatedOverride; // @synthesize subscriptionCreatedOverride=_subscriptionCreatedOverride;
 
 + (id)sharedInstance;
+- (void)_evalToggleiCloudSettingsSwitch;
 - (void)_fetchExitRecordDateWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_modifiedOpGroupName:(id)arg1 useManatee:(BOOL)arg2;
 - (BOOL)_saltZoneCreated;
+- (void)_scheduleMetricOperation:(id)arg1 useManate:(BOOL)arg2;
 - (void)_scheduleOperation:(id)arg1;
 - (BOOL)_serverAllowsMetricSubmission;
 - (void)_setUpSubscription;
+- (id)_sharedCKUtilities;
+- (BOOL)_subscriptionCreated;
 - (void)dealloc;
 - (void)deleteExitRecordWithCompletion:(CDUnknownBlockType)arg1;
 - (void)exitRecordDateWithCompletion:(CDUnknownBlockType)arg1;
@@ -45,12 +52,12 @@
 - (id)init;
 - (id)initRecordZoneManager:(id)arg1 databaseManager:(id)arg2;
 - (void)sendCloudKitZoneFetchRequestToNoteFeatureIsOn;
-- (void)submitCloudKitMetricWithData:(id)arg1 operationGroupName:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)submitCloudKitMetricWithOperationGroupName:(id)arg1;
+- (void)submitCloudKitMetricWithData:(id)arg1 operationGroupName:(id)arg2 useManatee:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)submitCloudKitMetricWithOperationGroupName:(id)arg1 useManatee:(BOOL)arg2;
 - (id)syncCompleteRecordID;
 - (void)writeExitRecordWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)writeInitialSyncCompletedRecordIfNeeded;
-- (void)writeSyncCompletedRecordWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)writeSyncCompletedRecordWithDate:(id)arg1 useManatee:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

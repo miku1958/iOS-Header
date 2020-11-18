@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     NSDate *_lastModificationDate;
     unsigned long long _size;
+    NSString *_collapsedName;
     unsigned long long _compressedSize;
     unsigned long long _offset;
     unsigned long long _fileHeaderLength;
 }
 
 @property (nonatomic) unsigned int CRC; // @synthesize CRC=_CRC;
+@property (copy, nonatomic) NSString *collapsedName; // @synthesize collapsedName=_collapsedName;
 @property (nonatomic, getter=isCompressed) BOOL compressed; // @synthesize compressed=_compressed;
 @property (nonatomic) unsigned long long compressedSize; // @synthesize compressedSize=_compressedSize;
 @property (nonatomic) unsigned short extraFieldsLength; // @synthesize extraFieldsLength=_extraFieldsLength;

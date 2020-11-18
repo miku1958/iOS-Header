@@ -17,8 +17,8 @@
 @property (readonly, nonatomic) float gain;
 @property (readonly, nonatomic) CDStruct_ace97b7a time;
 
+- (void).cxx_destruct;
 - (void)_initializeDataIfNecessary;
-- (void)dealloc;
 - (id)initWithBuffer:(id)arg1 time:(CDStruct_ace97b7a)arg2 gain:(float)arg3;
 - (unsigned long long)priority;
 - (unsigned long long)type;

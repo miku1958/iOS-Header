@@ -134,6 +134,7 @@
 - (void)remote_fetchDaemonPreferenceForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchDevicesMatchingProperty:(id)arg1 values:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_fetchDisplayNameWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_fetchPluginServiceEndpointWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchUnitPreferencesForTypes:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)remote_finishWorkoutRoute:(id)arg1 workout:(id)arg2 metadata:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remote_getDefaultForKey:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
@@ -168,6 +169,7 @@
 - (void)remote_setAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setBackgroundDeliveryFrequency:(long long)arg1 forDataType:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)remote_setCharacteristic:(id)arg1 forDataType:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)remote_setDaemonPreferenceValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setDefaultValue:(id)arg1 forKey:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)remote_setHealthLiteValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setObjectAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;

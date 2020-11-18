@@ -8,16 +8,19 @@
 
 #import <HomeKitDaemon/HAPAccessoryServerBrowserDelegate-Protocol.h>
 #import <HomeKitDaemon/HAPAccessoryServerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDAccessoryBrowserHapProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDAccessoryBrowserProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDAuthServerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDMediaBrowserDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDWatchSystemStateDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HAPAccessoryServerBrowserRelay, HMDHomeManager, HMDMediaBrowser, HMFMessageDispatcher, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HAPAccessoryServerBrowserRelay, HMDAuthServer, HMDHomeManager, HMDMediaBrowser, HMFMessageDispatcher, HMFTimer, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
+@protocol HMDAccessoryBrowserManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDAccessoryBrowser : HMFObject <HAPAccessoryServerBrowserDelegate, HAPAccessoryServerDelegate, HMFMessageReceiver, HMFTimerDelegate, HMDMediaBrowserDelegate, HMDWatchSystemStateDelegate, HMFLogging>
+@interface HMDAccessoryBrowser : HMFObject <HAPAccessoryServerBrowserDelegate, HAPAccessoryServerDelegate, HMFMessageReceiver, HMFTimerDelegate, HMDMediaBrowserDelegate, HMDWatchSystemStateDelegate, HMDAuthServerDelegate, HMFLogging, HMDAccessoryBrowserProtocol, HMDAccessoryBrowserHapProtocol>
 {
     NSMutableSet *_unpairedHAPAccessories;
     NSMutableSet *_unassociatedMediaAccessories;
@@ -26,6 +29,7 @@
     BOOL _browseForMediaAccessories;
     BOOL _appIsInForeground;
     BOOL _activeSiriCommand;
+    HAPAccessoryServerBrowserRelay *_relayAccessoryServerBrowser;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSUUID *_uuid;
@@ -34,16 +38,21 @@
     NSMutableSet *_browsingXPCConnections;
     HMDHomeManager *_homeManager;
     NSMapTable *_delegates;
+    id<HMDAccessoryBrowserManagerDelegate> _managerDelegate;
     NSMutableArray *_accessoryServerBrowsers;
     HAPAccessoryServerBrowserIP *_ipAccessoryServerBrowser;
     HAPAccessoryServerBrowserBTLE *_btleAccessoryServerBrowser;
-    HAPAccessoryServerBrowserRelay *_relayAccessoryServerBrowser;
     HMDMediaBrowser *_mediaBrowser;
+    HMDAuthServer *_authServer;
+    HMFTimer *_stopReprovisioningTimer;
+    HMFTimer *_stopBrowsingAccessoriesNeedingReprovisioningTimer;
+    NSString *_identifierOfAccessoryBeingReprovisioned;
     NSMutableSet *_identifiersOfBTLEPairedAccessories;
     NSObject<OS_dispatch_source> *_reachabilityTimerForBTLE;
     NSMutableSet *_identifiersOfPairedAccessories;
     NSMutableSet *_identifiersOfAssociatedMediaAccessories;
     NSMutableArray *_currentlyPairingAccessories;
+    NSMutableArray *_currentlyPairingProgressHandlers;
     NSHashTable *_tombstonedHAPAccessoryServers;
     NSHashTable *_discoveringBLEAccessoryServerIdentifiers;
     NSMutableSet *_discoveredAccessoryServerIdentifiers;
@@ -52,10 +61,12 @@
 @property (strong, nonatomic) NSMutableArray *accessoryServerBrowsers; // @synthesize accessoryServerBrowsers=_accessoryServerBrowsers;
 @property (nonatomic) BOOL activeSiriCommand; // @synthesize activeSiriCommand=_activeSiriCommand;
 @property (nonatomic) BOOL appIsInForeground; // @synthesize appIsInForeground=_appIsInForeground;
+@property (strong, nonatomic) HMDAuthServer *authServer; // @synthesize authServer=_authServer;
 @property (nonatomic) BOOL browseForMediaAccessories; // @synthesize browseForMediaAccessories=_browseForMediaAccessories;
 @property (strong, nonatomic) NSMutableSet *browsingXPCConnections; // @synthesize browsingXPCConnections=_browsingXPCConnections;
 @property (strong, nonatomic) HAPAccessoryServerBrowserBTLE *btleAccessoryServerBrowser; // @synthesize btleAccessoryServerBrowser=_btleAccessoryServerBrowser;
 @property (strong, nonatomic) NSMutableArray *currentlyPairingAccessories; // @synthesize currentlyPairingAccessories=_currentlyPairingAccessories;
+@property (strong, nonatomic) NSMutableArray *currentlyPairingProgressHandlers; // @synthesize currentlyPairingProgressHandlers=_currentlyPairingProgressHandlers;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSMapTable *delegates; // @synthesize delegates=_delegates;
 @property (readonly, copy) NSString *description;
@@ -65,10 +76,12 @@
 @property (nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
+@property (strong, nonatomic) NSString *identifierOfAccessoryBeingReprovisioned; // @synthesize identifierOfAccessoryBeingReprovisioned=_identifierOfAccessoryBeingReprovisioned;
 @property (strong, nonatomic) NSMutableSet *identifiersOfAssociatedMediaAccessories; // @synthesize identifiersOfAssociatedMediaAccessories=_identifiersOfAssociatedMediaAccessories;
 @property (strong, nonatomic) NSMutableSet *identifiersOfBTLEPairedAccessories; // @synthesize identifiersOfBTLEPairedAccessories=_identifiersOfBTLEPairedAccessories;
 @property (strong, nonatomic) NSMutableSet *identifiersOfPairedAccessories; // @synthesize identifiersOfPairedAccessories=_identifiersOfPairedAccessories;
 @property (strong, nonatomic) HAPAccessoryServerBrowserIP *ipAccessoryServerBrowser; // @synthesize ipAccessoryServerBrowser=_ipAccessoryServerBrowser;
+@property (weak, nonatomic) id<HMDAccessoryBrowserManagerDelegate> managerDelegate; // @synthesize managerDelegate=_managerDelegate;
 @property (strong, nonatomic) HMDMediaBrowser *mediaBrowser; // @synthesize mediaBrowser=_mediaBrowser;
 @property (strong, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
@@ -76,6 +89,8 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *reachabilityTimerForBTLE; // @synthesize reachabilityTimerForBTLE=_reachabilityTimerForBTLE;
 @property (readonly, nonatomic) HAPAccessoryServerBrowserRelay *relayAccessoryServerBrowser; // @synthesize relayAccessoryServerBrowser=_relayAccessoryServerBrowser;
+@property (strong, nonatomic) HMFTimer *stopBrowsingAccessoriesNeedingReprovisioningTimer; // @synthesize stopBrowsingAccessoriesNeedingReprovisioningTimer=_stopBrowsingAccessoriesNeedingReprovisioningTimer;
+@property (strong, nonatomic) HMFTimer *stopReprovisioningTimer; // @synthesize stopReprovisioningTimer=_stopReprovisioningTimer;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSHashTable *tombstonedHAPAccessoryServers; // @synthesize tombstonedHAPAccessoryServers=_tombstonedHAPAccessoryServers;
 @property (readonly, copy) NSArray *unassociatedAccessories;
@@ -86,17 +101,24 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)__addMediaAccessoryControlObserver:(id)arg1;
 - (void)__evaluateStartDiscoveringAssociatedMediaAccessories;
 - (void)__evaluateStopDiscoveringAssociatedMediaAccessories;
+- (BOOL)__isConnectionBeingObserved:(id)arg1;
 - (BOOL)__isCurrentDevicePrimaryResident;
+- (BOOL)__isMediaAccessoryControlRequested;
+- (id)__observerMatchingConnection:(id)arg1;
+- (void)__removeMediaAccessoryControlObserver:(id)arg1;
 - (void)_addReconfirmTimer:(id)arg1 accessoryServer:(id)arg2;
 - (void)_addUnpairedAccessoryForServer:(id)arg1;
 - (void)_btleAccessoryReachabilityProbeTimer:(BOOL)arg1;
+- (void)_callProgressOrErrorOut:(id)arg1 pairingInfo:(id)arg2 accessoryInfo:(id)arg3 unpairedAccessory:(id)arg4 progress:(long long)arg5 certStatus:(unsigned long long)arg6;
 - (void)_cancelCurrentlyPairingAccessories:(id)arg1;
 - (void)_cancelPairingWithAccessory:(id)arg1 error:(id)arg2;
 - (void)_checkDelegatesOfAccessoryWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_checkDelegatesofBlockedAccessoryServer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_checkIfPairingWithPairedAccessoryServer:(id)arg1 errorCode:(long long)arg2;
+- (void)_continueAfterPPIDValidation:(BOOL)arg1 server:(id)arg2;
 - (void)_discoverAccessories:(id)arg1;
 - (void)_discoverAccessoryServer:(id)arg1 linkType:(long long)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)_handleActiveAppOrSiriCommand;
@@ -119,6 +141,7 @@
 - (void)_notifyDelegatesOfAccessoryServer:(id)arg1 didUpdateHasPairings:(BOOL)arg2;
 - (void)_notifyDelegatesOfAccessoryServer:(id)arg1 didUpdateName:(id)arg2;
 - (void)_notifyDelegatesOfAccessoryServer:(id)arg1 didUpdateValuesForCharacteristics:(id)arg2 stateNumber:(id)arg3 broadcast:(BOOL)arg4;
+- (void)_notifyDelegatesOfAccessoryServerNeedingReprovisioning:(id)arg1 error:(id)arg2;
 - (void)_notifyDelegatesOfDiscoveryFailure:(id)arg1 accessoryServer:(id)arg2 linkType:(long long)arg3;
 - (void)_notifyDelegatesOfNewAccessory:(id)arg1;
 - (void)_notifyDelegatesOfNewPairedAccessoryServer:(id)arg1 stateChanged:(BOOL)arg2 stateNumber:(id)arg3;
@@ -126,27 +149,31 @@
 - (void)_notifyDelegatesOfReachabilityChange:(BOOL)arg1 forBTLEAccessories:(id)arg2;
 - (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1 error:(id)arg2;
 - (void)_notifyDelegatesOfTombstonedAccessoryServer:(id)arg1;
-- (void)_notifyDelegatesToRetrieveAccessoryServers:(id)arg1;
+- (void)_notifyDelegatesOfWACCompletionForAccessoryServerWithIdentifier:(id)arg1 error:(id)arg2;
 - (void)_pairAccessory:(id)arg1 homeName:(id)arg2 setupCode:(id)arg3 setupCodeProvider:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_pairAccessoryWithDescription:(id)arg1 homeName:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_pairAccessoryWithDescription:(id)arg1 homeName:(id)arg2 neeedsUserConfirmation:(BOOL)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_pairingInformationForUnpairedAccessory:(id)arg1;
+- (id)_progressHandlerForUnpairedAccessory:(id)arg1;
 - (void)_promptForPairingPasswordForServer:(id)arg1 reason:(id)arg2;
 - (void)_registerForMessages;
-- (void)_removeMediaAccessoryControlObserver:(id)arg1;
+- (void)_removeMediaAccessoryControlObserverMatchingConnection:(id)arg1;
 - (void)_removePairingInformation:(id)arg1 errorCode:(long long)arg2;
 - (void)_removePairingInformationForUnpairedAccessory:(id)arg1;
+- (void)_reprovisionAccessoryWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_resurrectAccessoryServer:(id)arg1;
 - (void)_sendNewAccessoryData:(id)arg1 added:(BOOL)arg2 requiresSPIEntitlement:(BOOL)arg3;
 - (void)_sendPairingCompletionStatusForServer:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setBTLEPowerChangeCompletionHandler;
 - (BOOL)_shouldAccessoryServerBeTombstoned:(id)arg1;
 - (void)_startDiscoveringAccessories;
+- (void)_startDiscoveringAccessoriesNeedingReprovisioning;
 - (void)_startDiscoveringPairedAccessories;
 - (void)_startOrStopAccessoryDiscovery;
 - (void)_startPairingInterruptionTimer:(id)arg1;
 - (void)_stopBtleAccessoryReachabilityProbeTimer;
 - (void)_stopDiscoveringAccessoriesWithForce:(BOOL)arg1;
 - (void)_stopReconfirmTimer:(id)arg1;
+- (void)_stopReprovisioningTimerHandler;
 - (void)_stopSearchingWithXPCConnection:(id)arg1;
 - (void)_tombstoneAccessoryServer:(id)arg1;
 - (id)_tombstonedAccessoryServerWithServerIdentifier:(id)arg1;
@@ -155,7 +182,10 @@
 - (id)_unpairedAccessoryMatchingPairingInfo:(id)arg1;
 - (id)_unpairedAccessoryWithServerIdentifier:(id)arg1;
 - (void)_updatePairingRetryTimerForAccessory:(id)arg1 delay:(long long)arg2;
+- (void)accessoryServer:(id)arg1 authenticateUUID:(id)arg2 token:(id)arg3;
+- (void)accessoryServer:(id)arg1 confirmUUID:(id)arg2 token:(id)arg3;
 - (void)accessoryServer:(id)arg1 didDiscoverAccessories:(id)arg2 transaction:(id)arg3 error:(id)arg4;
+- (void)accessoryServer:(id)arg1 didFinishAuth:(id)arg2;
 - (void)accessoryServer:(id)arg1 didReceiveBadPasswordThrottleAttemptsWithDelay:(long long)arg2;
 - (void)accessoryServer:(id)arg1 didStopPairingWithError:(id)arg2;
 - (void)accessoryServer:(id)arg1 didUpdateCategory:(id)arg2;
@@ -164,11 +194,16 @@
 - (void)accessoryServer:(id)arg1 didUpdateValuesForCharacteristics:(id)arg2 stateNumber:(id)arg3 broadcast:(BOOL)arg4;
 - (void)accessoryServer:(id)arg1 isBlockedWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)accessoryServer:(id)arg1 promptUserForPasswordWithType:(unsigned long long)arg2;
-- (void)accessoryServer:(id)arg1 requestUserPermission:(long long)arg2;
+- (void)accessoryServer:(id)arg1 promtDialog:(id)arg2 forNotCertifiedAccessory:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)accessoryServer:(id)arg1 requestUserPermission:(long long)arg2 accessoryInfo:(id)arg3 error:(id)arg4;
+- (void)accessoryServer:(id)arg1 validateUUID:(id)arg2 token:(id)arg3 model:(id)arg4;
 - (void)accessoryServerBrowser:(id)arg1 accessoryServer:(id)arg2 didUpdateValuesForCharacteristics:(id)arg3 stateNumber:(id)arg4 broadcast:(BOOL)arg5;
 - (void)accessoryServerBrowser:(id)arg1 didChangeReachability:(BOOL)arg2 forAccessoryServerWithIdentifier:(id)arg3;
 - (void)accessoryServerBrowser:(id)arg1 didFailToDiscoverAccessoryServerWithIdentifier:(id)arg2;
 - (void)accessoryServerBrowser:(id)arg1 didFindAccessoryServer:(id)arg2 stateChanged:(BOOL)arg3 stateNumber:(id)arg4;
+- (void)accessoryServerBrowser:(id)arg1 didFindAccessoryServerForReprovisioning:(id)arg2;
+- (void)accessoryServerBrowser:(id)arg1 didFindAccessoryServerNeedingReprovisioning:(id)arg2 error:(id)arg3;
+- (void)accessoryServerBrowser:(id)arg1 didFinishWACForAccessoryWithIdentifier:(id)arg2 error:(id)arg3;
 - (void)accessoryServerBrowser:(id)arg1 didRemoveAccessoryServer:(id)arg2 error:(id)arg3;
 - (void)accessoryServerBrowser:(id)arg1 didStartDiscoveringWithError:(id)arg2;
 - (void)accessoryServerBrowser:(id)arg1 didStopDiscoveringWithError:(id)arg2;
@@ -176,6 +211,7 @@
 - (void)accessoryServerBrowser:(id)arg1 removeCacheForAccessoryWithIdentifier:(id)arg2;
 - (void)accessoryServerBrowser:(id)arg1 saveCache:(id)arg2 serverIdentifier:(id)arg3;
 - (void)accessoryServerDidUpdateStateNumber:(id)arg1;
+- (id)acessoryBrowserHapProtocol;
 - (void)activate:(BOOL)arg1;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)addUnassociatedAccessory:(id)arg1 forDeviceSetup:(BOOL)arg2;
@@ -190,16 +226,20 @@
 - (void)cancelPairingWithAccessory:(id)arg1 error:(id)arg2;
 - (void)cancelPairingWithAccessoryDescription:(id)arg1 error:(id)arg2;
 - (void)configureAccessory:(id)arg1 trackState:(BOOL)arg2 connectionPriority:(BOOL)arg3;
-- (void)configureBTLEQoSLimits:(unsigned long long)arg1;
 - (void)configureWithHomeManager:(id)arg1;
+- (void)continueAddingAccesosryToHomeAfterUserConfirmation:(id)arg1 withError:(id)arg2;
 - (void)dealloc;
 - (void)deregisterPairedAccessory:(id)arg1;
+- (void)didFinishActivation:(id)arg1 context:(id)arg2;
+- (void)didReceiveUserConsentResponseForSetupAccessoryDescription:(id)arg1 consent:(BOOL)arg2;
 - (void)discoverAccessories:(id)arg1;
 - (void)discoverAccessoryServer:(id)arg1 linkType:(long long)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (id)discoveredAccessoryServers;
 - (id)dumpBrowsingConnections;
 - (id)dumpRegisteredPairedAccessories;
 - (id)dumpUnassociatedAccessories;
+- (id)findAccessoryServerForAccessoryDescription:(id)arg1;
+- (void)handleActivationResponse:(id)arg1 context:(id)arg2;
 - (void)handleActiveSiriCommand:(id)arg1;
 - (void)handleAddedAccessory:(id)arg1;
 - (void)handleAppTermination:(id)arg1;
@@ -207,26 +247,34 @@
 - (void)handleNewlyPairedAccessory:(id)arg1 linkType:(long long)arg2;
 - (void)handleNoActiveHomeKitApp:(id)arg1;
 - (void)handleNoActiveSiriCommand:(id)arg1;
+- (void)handlePPIDInfoResponse:(id)arg1 context:(id)arg2 error:(id)arg3;
 - (void)handleRemovedAccessory:(id)arg1;
 - (void)handleSetupCodeAvailable:(id)arg1;
 - (void)handleStartDiscoveringAssociatedMediaAccessories:(BOOL)arg1 forTransport:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)hasClientRequestedMediaAccessoryControl:(id)arg1;
 - (void)homeLocationChangeNotification:(id)arg1;
 - (id)initWithMessageDispatcher:(id)arg1;
+- (id)initWithMessageDispatcher:(id)arg1 workQueue:(id)arg2 injectedSettings:(id)arg3;
 - (BOOL)isBrowsingAllowed;
+- (id)messageDestination;
 - (void)notifyDelegatesOfReachability:(BOOL)arg1 forAccessoryWithIdentifier:(id)arg2;
 - (unsigned long long)numPairedIPAccessories;
 - (void)pairAccessory:(id)arg1 homeName:(id)arg2 setupCode:(id)arg3 setupCodeProvider:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)pairAccessoryWithDescription:(id)arg1 homeName:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)pairAccessoryWithDescription:(id)arg1 homeName:(id)arg2 neeedsUserConfirmation:(BOOL)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)probeReachabilityForBTLEAccessoryServersWithIdentifiers:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)registerPairedAccessory:(id)arg1 btleTransport:(BOOL)arg2 airPlay:(BOOL)arg3;
+- (void)registerProgressHandler:(CDUnknownBlockType)arg1 unpairedAccessoryUUID:(id)arg2;
 - (void)removeDelegate:(id)arg1;
 - (void)removeUnassociatedAccessory:(id)arg1;
 - (void)removeUnassociatedMediaAccessory:(id)arg1;
 - (void)removeUnpairedHAPAccessory:(id)arg1;
+- (void)reprovisionAccessoryWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resetConfiguration;
 - (void)resurrectAccessoryServer:(id)arg1;
 - (void)retrieveCurrentStateForIdentifer:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)setQOS:(long long)arg1;
 - (void)startDiscoveringAccessories;
+- (void)startDiscoveringAccessoriesNeedingReprovisioning;
 - (void)startDiscoveringPairedAccessories;
 - (void)stopDiscoveringAccessories;
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(id)arg1;

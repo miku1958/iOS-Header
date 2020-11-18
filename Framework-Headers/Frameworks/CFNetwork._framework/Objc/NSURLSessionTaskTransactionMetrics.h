@@ -12,6 +12,8 @@
 {
 }
 
+@property BOOL _apsRelayAttempted; // @dynamic _apsRelayAttempted;
+@property BOOL _apsRelaySucceeded; // @dynamic _apsRelaySucceeded;
 @property BOOL _cellular; // @dynamic _cellular;
 @property (copy) NSUUID *_connectionIdentifier; // @dynamic _connectionIdentifier;
 @property BOOL _connectionRace; // @dynamic _connectionRace;

@@ -4,43 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariShared/WBSParsecSearchResult.h>
+#import <SafariShared/WBSParsecLegacySearchResult.h>
 
-#import <SafariShared/WBSParsecSearchMapsResultFeedbackSenderClient-Protocol.h>
-#import <SafariShared/WBSParsecSearchResultPresentedInCard-Protocol.h>
+#import <SafariShared/WBSParsecSearchMapsResult-Protocol.h>
 
-@class NSString, NSURL, WBSParsecSearchMapsResultExtraCompletionItem, WBSParsecSearchMapsResultFeedbackSender;
+@class NSString, SFSearchResult, WBSParsecSearchMapsResultFeedbackSender, WBSQuerySuggestion;
 @protocol WBSParsecSearchSession;
 
-@interface WBSParsecSearchMapsResult : WBSParsecSearchResult <WBSParsecSearchMapsResultFeedbackSenderClient, WBSParsecSearchResultPresentedInCard>
+@interface WBSParsecSearchMapsResult : WBSParsecLegacySearchResult <WBSParsecSearchMapsResult>
 {
-    NSString *_mapsDataType;
-    WBSParsecSearchMapsResultFeedbackSender *_mapsFeedbackSender;
-    NSString *_mapsResultType;
-    NSURL *_moreURL;
-    NSString *_nearbyBusinessesString;
-    WBSParsecSearchMapsResultExtraCompletionItem *_extraCompletionItem;
     id<WBSParsecSearchSession> _parsecSearchSession;
-    WBSParsecSearchResult *_hiddenParsecResult;
+    WBSParsecSearchMapsResultFeedbackSender *_mapsFeedbackSender;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) WBSParsecSearchMapsResultExtraCompletionItem *extraCompletionItem; // @synthesize extraCompletionItem=_extraCompletionItem;
+@property (readonly, nonatomic) unsigned long long engagementDestination;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) WBSParsecSearchResult *hiddenParsecResult; // @synthesize hiddenParsecResult=_hiddenParsecResult;
+@property (readonly, nonatomic) NSString *lastSearchQuery;
 @property (strong, nonatomic) WBSParsecSearchMapsResultFeedbackSender *mapsFeedbackSender; // @synthesize mapsFeedbackSender=_mapsFeedbackSender;
-@property (readonly, nonatomic) NSString *mapsResultType; // @synthesize mapsResultType=_mapsResultType;
-@property (readonly, nonatomic) NSURL *moreURL; // @synthesize moreURL=_moreURL;
-@property (readonly, nonatomic) NSString *nearbyBusinessesString; // @synthesize nearbyBusinessesString=_nearbyBusinessesString;
+@property (readonly, nonatomic) NSString *parsecDomainIdentifier;
 @property (strong, nonatomic) id<WBSParsecSearchSession> parsecSearchSession; // @synthesize parsecSearchSession=_parsecSearchSession;
+@property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
+@property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL willPresentResultInCard;
 
 - (void).cxx_destruct;
 - (void)didDisplayMapsResultForQuery:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
-- (id)supportedStyleOverrides;
 
 @end
 

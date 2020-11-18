@@ -7,15 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDCentralMessageDispatcher, HMDHome, HMDResidentDevice, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableSet, NSObject, NSString, NSUUID;
+@class HMDCentralMessageDispatcher, HMDHome, HMDResidentDevice, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDResidentDeviceManagerDelegate, OS_dispatch_queue;
 
-@interface HMDResidentDeviceManager : HMFObject <HMFTimerDelegate, HMFLogging, HMFMessageReceiver, NSSecureCoding, HMDBackingStoreObjectProtocol>
+@interface HMDResidentDeviceManager : HMFObject <HMFTimerDelegate, HMFLogging, HMDHomeMessageReceiver, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     NSMutableSet *_residentDevices;
     BOOL _residentAvailable;
@@ -49,6 +49,7 @@
 @property (nonatomic) long long lastAtHomeLevel; // @synthesize lastAtHomeLevel=_lastAtHomeLevel;
 @property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, weak, nonatomic) HMDResidentDevice *primaryResidentDevice;
 @property (strong, nonatomic) NSUUID *primaryResidentUUID; // @synthesize primaryResidentUUID=_primaryResidentUUID;
@@ -62,6 +63,7 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (long long)compareElectionVersions:(id)arg1 otherVersion:(id)arg2;
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;

@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface TSCEFormulaRewrite_Uids : NSObject
 {
-    vector_dadc1b26 _uids;
+    vector_4dc5f307 _uids;
     NSIndexSet *_indexes;
     struct unordered_map<TSU::UUIDData<TSP::UUIDData>, unsigned short, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, unsigned short>>> _indexesForUids;
     struct unordered_map<unsigned short, TSU::UUIDData<TSP::UUIDData>, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, TSU::UUIDData<TSP::UUIDData>>>> _uidsForIndexes;
 }
 
 @property (readonly) NSIndexSet *indexes; // @synthesize indexes=_indexes;
-@property (readonly) const vector_dadc1b26 *uids; // @synthesize uids=_uids;
+@property (readonly) const vector_4dc5f307 *uids; // @synthesize uids=_uids;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (unsigned short)indexForUid:(const UUIDData_5fbc143e *)arg1;
 - (id)initFromMessage:(const struct IndexedUidsArchive *)arg1;
-- (id)initWithUids:(const vector_dadc1b26 *)arg1;
+- (id)initWithUids:(const vector_4dc5f307 *)arg1;
 - (void)loadIndexesForTable:(id)arg1 isRows:(BOOL)arg2;
 - (void)saveToMessage:(struct IndexedUidsArchive *)arg1;
 - (void)subtractIndexesFromIndexSet:(id)arg1;

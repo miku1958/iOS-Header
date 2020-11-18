@@ -12,5 +12,6 @@
 - (id)_ak_truncatedTokensCopy;
 - (id)ak_map:(CDUnknownBlockType)arg1;
 - (id)ak_redactedCopy;
+- (id)ak_urlQueryString;
 @end
 

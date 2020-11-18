@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (BOOL)IsFollowUpItemNotificationForced:(id)arg1;
 - (id)_actionFromInfo:(id)arg1;
 - (id)_actionsFromPayload:(id)arg1;
 - (id)_clearAction;

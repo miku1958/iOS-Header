@@ -10,40 +10,25 @@
 
 @interface MPModelSocialPerson : MPModelPerson
 {
-    BOOL _privatePerson;
-    BOOL _verified;
-    NSString *_uncensoredName;
-    NSString *_handle;
-    NSString *_biography;
-    long long _pendingRequestsCount;
-    CDUnknownBlockType _artworkCatalogBlock;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @synthesize artworkCatalogBlock=_artworkCatalogBlock;
-@property (copy, nonatomic) NSString *biography; // @synthesize biography=_biography;
-@property (copy, nonatomic) NSString *handle; // @synthesize handle=_handle;
-@property (nonatomic) long long pendingRequestsCount; // @synthesize pendingRequestsCount=_pendingRequestsCount;
-@property (nonatomic, getter=isPrivate) BOOL privatePerson; // @synthesize privatePerson=_privatePerson;
-@property (copy, nonatomic) NSString *uncensoredName; // @synthesize uncensoredName=_uncensoredName;
-@property (nonatomic, getter=isVerified) BOOL verified; // @synthesize verified=_verified;
+@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @dynamic artworkCatalogBlock;
+@property (copy, nonatomic) NSString *biography; // @dynamic biography;
+@property (copy, nonatomic) NSString *handle; // @dynamic handle;
+@property (nonatomic) long long pendingRequestsCount; // @dynamic pendingRequestsCount;
+@property (nonatomic, getter=isPrivate) BOOL privatePerson; // @dynamic privatePerson;
+@property (copy, nonatomic) NSString *uncensoredName; // @dynamic uncensoredName;
+@property (nonatomic, getter=isVerified) BOOL verified; // @dynamic verified;
 
-+ (id)__MPModelPropertySocialPersonArtwork__PROPERTY;
-+ (id)__MPModelPropertySocialPersonBiography__PROPERTY;
-+ (id)__MPModelPropertySocialPersonHandle__PROPERTY;
-+ (id)__MPModelPropertySocialPersonIsPrivate__PROPERTY;
-+ (id)__MPModelPropertySocialPersonIsVerified__PROPERTY;
-+ (id)__MPModelPropertySocialPersonPendingRequestsCount__PROPERTY;
-+ (id)__MPModelPropertySocialPersonUncensoredName__PROPERTY;
-+ (id)__artworkCatalogBlock__KEY;
-+ (id)__biography__KEY;
-+ (id)__handle__KEY;
-+ (id)__pendingRequestsCount__KEY;
-+ (id)__privatePerson__KEY;
-+ (id)__uncensoredName__KEY;
-+ (id)__verified__KEY;
++ (id)__artworkCatalogBlock_KEY;
++ (id)__biography_KEY;
++ (id)__handle_KEY;
++ (id)__pendingRequestsCount_KEY;
++ (id)__privatePerson_KEY;
++ (id)__uncensoredName_KEY;
++ (id)__verified_KEY;
 + (id)kind;
 + (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
-- (void).cxx_destruct;
 - (id)artworkCatalog;
 
 @end

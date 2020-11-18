@@ -23,6 +23,9 @@
 + (id)getLocalDefaultSoftwareUpdateAssetIfExists;
 + (id)getLocalDefaultSoftwareUpdateAssetIfExistsWithReleaseDate:(id *)arg1;
 + (void)purgeMSUUpdate:(CDUnknownBlockType)arg1;
++ (long long)requestCatalogDownload:(id)arg1;
++ (void)setAssetQueryFilters:(id)arg1;
++ (void)setCleanupFilters:(id)arg1;
 + (id)tryCreateDescriptorFromSoftwareUpdateAsset:(id)arg1 withReleaseDate:(id)arg2;
 + (id)tryCreateDocumentationFromDocumentationAsset:(id)arg1;
 

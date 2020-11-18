@@ -86,8 +86,8 @@
 - (BOOL)isColumnAtIndexHidden:(long long)arg1;
 - (BOOL)isRowAtIndexHidden:(long long)arg1;
 - (BOOL)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
-- (void)populateGridArrangementCells:(vector_f7a18e83 *)arg1;
-- (void)populateGridArrangementDimension:(vector_29d414c0 *)arg1 withCells:(const vector_f7a18e83 *)arg2 axis:(long long)arg3;
+- (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
+- (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
 - (void)removeColumnAtIndex:(long long)arg1;
 - (void)removeRowAtIndex:(long long)arg1;
 - (void)replaceArrangedSubview:(id)arg1 inColumnAtIndex:(long long)arg2 rowAtIndex:(long long)arg3;

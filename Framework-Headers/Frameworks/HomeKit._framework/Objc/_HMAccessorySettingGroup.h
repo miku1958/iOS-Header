@@ -21,10 +21,10 @@
     id<_HMAccesorySettingGroupDelegate> _delegate;
     NSUUID *_identifier;
     NSString *_name;
+    _HMContext *_context;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMAccessorySettings *_accessorySettings;
-    _HMContext *_context;
 }
 
 @property (strong, nonatomic) HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *sourceContainerId; // @synthesize sourceContainerId=_sourceContainerId;
 @property (strong, nonatomic) NSString *sourceServerId; // @synthesize sourceServerId=_sourceServerId;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

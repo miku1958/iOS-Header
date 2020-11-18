@@ -18,9 +18,9 @@
 @property (strong, nonatomic) _MRLyricsEventProtobuf *event; // @synthesize event=_event;
 @property (readonly, nonatomic) BOOL hasEvent;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

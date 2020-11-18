@@ -17,12 +17,14 @@
     BOOL _isOutstandingOperation;
     BOOL _isFinished;
     BOOL _clouddConnectionInterrupted;
+    BOOL _queueHasStarted;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CKOperationConfiguration *_resolvedConfiguration;
+    CDUnknownBlockType _longLivedOperationWasPersistedBlock;
+    CDUnknownBlockType _requestCompletedBlock;
     CKOperationConfiguration *_configuration;
     CKOperationGroup *_group;
     NSString *_operationID;
-    CDUnknownBlockType _longLivedOperationWasPersistedBlock;
     NSObject<OS_dispatch_source> *_timeoutSource;
     long long _usesBackgroundSessionOverride;
     NSError *_cancelError;
@@ -36,7 +38,6 @@
     id _context;
     CKTimeLogger *_timeLogger;
     CKOperationMetrics *_metrics;
-    CDUnknownBlockType _requestCompletedBlock;
     NSString *_deviceIdentifier;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
 }
@@ -64,6 +65,7 @@
 @property (readonly, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;
 @property (strong) CKPlaceholderOperation *placeholderOperation; // @synthesize placeholderOperation=_placeholderOperation;
 @property (nonatomic) BOOL preferAnonymousRequests;
+@property BOOL queueHasStarted; // @synthesize queueHasStarted=_queueHasStarted;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletedBlock; // @synthesize requestCompletedBlock=_requestCompletedBlock;
 @property (readonly, nonatomic) NSArray *requestUUIDs;
 @property (readonly, nonatomic) CKOperationConfiguration *resolvedConfiguration; // @synthesize resolvedConfiguration=_resolvedConfiguration;

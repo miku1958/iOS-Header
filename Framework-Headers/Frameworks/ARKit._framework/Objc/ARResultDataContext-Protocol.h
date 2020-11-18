@@ -9,8 +9,12 @@
 @class ARImageData, NSArray;
 
 @protocol ARResultDataContext <NSObject>
+- (long long)cameraPosition;
 - (ARImageData *)imageData;
 - (NSArray *)resultDataOfClass:(Class)arg1;
-- (CDStruct_14d5dc5e)sessionOriginTransform;
+
+@optional
+- (NSArray *)anchorsToAdd;
+- (NSArray *)anchorsToRemove;
 @end
 

@@ -13,6 +13,8 @@
 @property (readonly, nonatomic) NSString *binaryImagesDescription;
 @property (readonly, nonatomic) unsigned int nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
+@property (readonly, nonatomic) unsigned long long physicalFootprint;
+@property (readonly, nonatomic) unsigned long long physicalFootprintPeak;
 @property (readonly, nonatomic) int pid;
 @property (readonly, nonatomic) NSString *processDescriptionString;
 @property (readonly, nonatomic) NSString *processName;

@@ -43,6 +43,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_assertNoActiveStatements;
+- (int)_copyContentsFromDatabase:(struct sqlite3 *)arg1 toDatabase:(struct sqlite3 *)arg2;
 - (BOOL)_executeSQL:(id)arg1 cache:(BOOL)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4 enumerationHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_executeSQL:(id)arg1 error:(id *)arg2;
 - (BOOL)_executeSQL:(id)arg1 error:(id *)arg2 retryIfBusy:(BOOL)arg3;
@@ -72,14 +73,18 @@
 - (BOOL)detachProtectedDatabaseWithError:(id *)arg1;
 - (id)dumpSchemaWithError:(id *)arg1;
 - (BOOL)enableIncrementalAutovacuumWithError:(id *)arg1;
+- (BOOL)executeSQL:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSQL:(id)arg1 error:(id *)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
+- (BOOL)executeSQLStatements:(id)arg1 error:(id *)arg2;
 - (BOOL)executeUncachedSQL:(id)arg1 error:(id *)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 - (BOOL)foreignKeyExistsFromTable:(id)arg1 column:(id)arg2 toTable:(id)arg3 column:(id)arg4 error:(id *)arg5;
 - (int)getChangesCount;
 - (id)getLastErrorWithResultCode:(int)arg1;
 - (id)highFrequencyDatabaseURL;
 - (BOOL)incrementalVacuumDatabaseIfNeeded:(id)arg1 error:(id *)arg2;
+- (id)initMemoryDatabaseFromURL:(id)arg1 delegate:(id)arg2;
 - (id)initMemoryDatabaseWithDelegate:(id)arg1;
+- (id)initWithDatabaseURL:(id)arg1 copyingDatabase:(id)arg2 delegate:(id)arg3;
 - (id)initWithDatabaseURL:(id)arg1 delegate:(id)arg2;
 - (BOOL)isDatabaseWithNameAttached:(id)arg1;
 - (BOOL)isProtectedDatabaseAttached;

@@ -12,6 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface SFDeviceAssetTask : NSObject
 {
+    BOOL _useProcessLocalCache;
+    BOOL _fallbackIsCachedResult;
     SFDeviceAssetQuery *_deviceAssetQuery;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSObject<OS_dispatch_source> *_timer;
@@ -27,15 +29,20 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSBundle *fallbackAssetBundle; // @synthesize fallbackAssetBundle=_fallbackAssetBundle;
+@property (readonly, nonatomic) BOOL fallbackIsCachedResult; // @synthesize fallbackIsCachedResult=_fallbackIsCachedResult;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
+@property (readonly, nonatomic) BOOL useProcessLocalCache; // @synthesize useProcessLocalCache=_useProcessLocalCache;
 
 - (void).cxx_destruct;
 - (id)bundleAtURL:(id)arg1 error:(id *)arg2;
-- (id)bundleFromAsset:(id)arg1;
+- (id)bundleURLFromAssetURL:(id)arg1;
 - (void)cancelTimeout;
 - (void)complete;
-- (id)initWithDeviceQuery:(id)arg1 dispatchQueue:(id)arg2 timeout:(double)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (BOOL)updateTaskWithAsset:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3;
+- (id)initWithDeviceQuery:(id)arg1 dispatchQueue:(id)arg2 useProcessLocalCache:(BOOL)arg3 timeout:(double)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (BOOL)processCanAccessURL:(id)arg1 error:(id *)arg2;
+- (BOOL)updateTaskWithAssetBundleURL:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isCached:(BOOL)arg4;
+- (BOOL)updateTaskWithAssetURL:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isCached:(BOOL)arg4;
+- (BOOL)updateTaskWithBundle:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isCached:(BOOL)arg4;
 
 @end
 

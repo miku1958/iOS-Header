@@ -6,17 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
-@class TSWPColumn, TSWPShapeLayout;
+@class TSDLayout, TSWPColumn;
+@protocol TSWPLayoutTarget;
 
 __attribute__((visibility("hidden")))
 @interface TSWPInteriorCookie : NSObject
 {
     TSWPColumn *_column;
-    TSWPShapeLayout *_layout;
+    TSDLayout<TSWPLayoutTarget> *_layout;
 }
 
 @property (weak, nonatomic) TSWPColumn *column; // @synthesize column=_column;
-@property (weak, nonatomic) TSWPShapeLayout *layout; // @synthesize layout=_layout;
+@property (weak, nonatomic) TSDLayout<TSWPLayoutTarget> *layout; // @synthesize layout=_layout;
 
 - (void).cxx_destruct;
 

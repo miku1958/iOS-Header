@@ -22,6 +22,7 @@
 @property (nonatomic) BOOL verified; // @synthesize verified=_verified;
 
 + (id)secureCodedPropertyKeys;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

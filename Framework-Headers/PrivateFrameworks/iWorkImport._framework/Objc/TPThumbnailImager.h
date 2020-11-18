@@ -6,19 +6,10 @@
 
 #import <iWorkImport/TSDImager.h>
 
-#import <iWorkImport/TSKSearchCanvasDelegate-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface TPThumbnailImager : TSDImager <TSKSearchCanvasDelegate>
+@interface TPThumbnailImager : TSDImager
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void)canvasDidValidateLayouts:(id)arg1;
 - (void)canvasWillLayout:(id)arg1;

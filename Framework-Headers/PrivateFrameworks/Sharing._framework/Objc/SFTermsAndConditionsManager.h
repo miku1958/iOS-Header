@@ -15,6 +15,7 @@
     UINavigationController *_genericTermsUIViewController;
     UIViewController *_presenter;
     BOOL _showWarranty;
+    BOOL _showingOfflineTerms;
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _loadedHandler;
     RemoteUIController *_termsController;
@@ -29,7 +30,10 @@
 @property (strong, nonatomic) RemoteUIController *termsController; // @synthesize termsController=_termsController;
 
 - (void).cxx_destruct;
+- (void)_handleAgreeFromObjectModel:(id)arg1;
+- (void)_termsDisagree;
 - (void)activate;
+- (void)dismissTerms:(BOOL)arg1;
 - (void)doneButtonPressed;
 - (id)initWithPresenter:(id)arg1 showWarranty:(BOOL)arg2;
 - (void)loadOfflineTerms;

@@ -21,7 +21,7 @@
 @property (strong) XCTestConfiguration *testConfiguration; // @synthesize testConfiguration=_testConfiguration;
 @property (strong) NSMutableArray *tests; // @synthesize tests=_tests;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithName:(id)arg1;
 
 @end

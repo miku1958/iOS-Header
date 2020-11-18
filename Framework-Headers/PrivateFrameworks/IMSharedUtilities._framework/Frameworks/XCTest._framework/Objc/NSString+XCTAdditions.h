@@ -8,5 +8,6 @@
 
 @interface NSString (XCTAdditions)
 - (id)xct_quotedSwiftStringRepresentation;
+- (id)xct_realPath;
 @end
 

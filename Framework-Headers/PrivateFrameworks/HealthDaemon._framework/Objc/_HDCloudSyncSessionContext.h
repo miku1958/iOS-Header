@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSProgressReporting-Protocol.h>
 
-@class HDSyncAnchorRangeMap, NSError, NSMutableSet, NSProgress, NSString, _HKArchiveCreator;
+@class HDProfile, HDSyncAnchorRangeMap, NSError, NSMutableSet, NSProgress, NSString, _HKArchiveCreator;
 
 @interface _HDCloudSyncSessionContext : NSObject <NSProgressReporting>
 {
@@ -16,6 +16,7 @@
     BOOL _isComplete;
     BOOL _success;
     BOOL _hasOpenSequence;
+    HDProfile *_profile;
     _HKArchiveCreator *_archiveCreator;
     HDSyncAnchorRangeMap *_pendingAnchorRangeMap;
     unsigned long long _changesetCount;
@@ -37,6 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isComplete; // @synthesize isComplete=_isComplete;
 @property (readonly, nonatomic) HDSyncAnchorRangeMap *pendingAnchorRangeMap; // @synthesize pendingAnchorRangeMap=_pendingAnchorRangeMap;
+@property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 @property (readonly) Class superclass;
@@ -45,7 +47,8 @@
 + (BOOL)_updateAnchorRangeMap:(id)arg1 withChange:(id)arg2 outError:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)addChangeData:(id)arg1 changes:(id)arg2 sessionIdentifier:(id)arg3 outError:(id *)arg4;
-- (id)initWithChangedSyncEntityCount:(unsigned long long)arg1;
+- (void)finishProgress;
+- (id)initWithChangedSyncEntityCount:(unsigned long long)arg1 profile:(id)arg2;
 - (BOOL)resetInvalidArchiveCreatorWithSessionUUID:(id)arg1 error:(id *)arg2;
 
 @end

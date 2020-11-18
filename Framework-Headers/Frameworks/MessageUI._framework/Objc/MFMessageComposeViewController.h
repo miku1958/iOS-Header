@@ -19,6 +19,7 @@
     unsigned long long _currentAttachedVideoCount;
     unsigned long long _currentAttachedAudioCount;
     unsigned long long _currentAttachedImageCount;
+    NSArray *_UTITypes;
     NSArray *_attachments;
 }
 
@@ -48,6 +49,7 @@
 + (BOOL)isiMessageEnabled;
 + (double)maxTrimDurationForAudio;
 + (double)maxTrimDurationForVideo;
+- (id)UTITypes;
 - (id)_MIMETypeForURL:(id)arg1;
 - (id)_contentTypeForMIMEType:(id)arg1;
 - (BOOL)_isAudioMIMEType:(id)arg1;
@@ -67,6 +69,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)mutableAttachmentURLs;
 - (void)setModalPresentationStyle:(long long)arg1;
+- (void)setUTITypes:(id)arg1;
 - (void)smsComposeControllerCancelled:(id)arg1;
 - (void)smsComposeControllerSendStarted:(id)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;

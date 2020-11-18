@@ -25,7 +25,9 @@
 @optional
 - (NSString *)deviceName;
 - (BOOL)hasFelicaSecureElement;
-- (void)setDefaultExpressFelicaTransitPassIdentifier:(NSString *)arg1 visibleViewController:(UIViewController *)arg2 completion:(void (^)(BOOL, NSString *))arg3;
+- (void)setDefaultExpressTransitPassIdentifier:(NSString *)arg1 visibleViewController:(UIViewController *)arg2 completion:(void (^)(BOOL, NSString *))arg3;
+- (NSArray *)setupBrowsableProductTypesForDevice;
 - (NSArray *)setupFeaturedNetworksForDevice;
+- (BOOL)supportsCredentialType:(long long)arg1;
 @end
 

@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;
 @property (readonly, nonatomic) NSString *resultDisplayHeader;
 @property (readonly, nonatomic) NSString *resultSectionHeader;
+@property (readonly, nonatomic) NSArray *retainedSearchMetadata;
 @property (readonly, nonatomic) int searchResultType;
 @property (readonly, nonatomic) BOOL shouldEnableRedoSearch;
 @property (readonly, nonatomic) BOOL showDymSuggestionCloseButton;

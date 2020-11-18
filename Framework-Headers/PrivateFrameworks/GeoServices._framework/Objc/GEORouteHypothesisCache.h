@@ -6,15 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class GEONavdCachePersistenceManager;
+#import <GeoServices/GEOKeyBagProtectedDataDidBecomeAvailableObserver-Protocol.h>
 
-@interface GEORouteHypothesisCache : NSObject
+@class GEONavdCachePersistenceManager, NSString;
+
+@interface GEORouteHypothesisCache : NSObject <GEOKeyBagProtectedDataDidBecomeAvailableObserver>
 {
     GEONavdCachePersistenceManager *_persistenceManager;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
-- (void)_protectedDataDidBecomeAvailable;
 - (void)_removeAllEntries;
 - (void)dealloc;
 - (id)descriptionOfAllEntries;
@@ -25,6 +31,7 @@
 - (id)loadValueForKey:(id)arg1;
 - (double)nextRefreshTimeStamp;
 - (long long)numberOfEntriesOnDisk;
+- (void)protectedDataDidBecomeAvailable:(id)arg1;
 - (void)removeKey:(id)arg1 value:(id)arg2;
 - (id)rowIdsOfEntriesBeforeTimeStamp:(double)arg1;
 - (void)saveValue:(id)arg1 forKey:(id)arg2;

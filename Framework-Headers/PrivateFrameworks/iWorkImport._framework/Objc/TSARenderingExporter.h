@@ -32,11 +32,11 @@ __attribute__((visibility("hidden")))
 @property (strong) TSUProgressContext *progressContext; // @synthesize progressContext=mProgressContext;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)bitmapRenderingQualityInfo;
 - (struct CGRect)boundsRect;
 - (void)cancel;
 - (id)currentInfos;
-- (void)dealloc;
 - (id)documentRoot;
 - (void)drawAllPagesWithContext:(struct CGContext *)arg1 returnSuccess:(BOOL *)arg2;
 - (BOOL)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(BOOL)arg4;

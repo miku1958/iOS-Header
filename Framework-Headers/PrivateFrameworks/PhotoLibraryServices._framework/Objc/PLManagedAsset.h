@@ -130,7 +130,6 @@
 @property (strong, nonatomic) PLFaceCrop *faceCrop; // @dynamic faceCrop;
 @property (strong, nonatomic) NSSet *faceCrops; // @dynamic faceCrops;
 @property (readonly, nonatomic) BOOL faceDetectionComplete;
-@property (readonly, nonatomic) BOOL faceProcessed;
 @property (strong, nonatomic) NSData *faceRegions;
 @property (nonatomic) BOOL favorite; // @dynamic favorite;
 @property (readonly, copy, nonatomic) NSString *fileExtension;
@@ -377,7 +376,6 @@
 + (BOOL)guaranteedFlashOffForAssetAtURL:(id)arg1;
 + (BOOL)hasRequiredExtendedAttributesForMainFileURL:(id)arg1;
 + (short)highDynamicRangeTypeFromCustomRenderedValue:(short)arg1;
-+ (id)incompleteAssetsInManagedObjectContext:(id)arg1;
 + (id)insertAssetIntoPhotoLibrary:(id)arg1 mainFileURL:(id)arg2 savedAssetType:(short)arg3 replacementUUID:(id)arg4 imageSource:(struct CGImageSource **)arg5 imageData:(id *)arg6;
 + (id)insertAssetIntoPhotoLibrary:(id)arg1 mainFileURL:(id)arg2 savedAssetType:(short)arg3 replacementUUID:(id)arg4 imageSource:(struct CGImageSource **)arg5 imageData:(id *)arg6 isPlaceholder:(BOOL)arg7 deleteFileOnFailure:(BOOL)arg8;
 + (id)insertInManagedObjectContext:(id)arg1;
@@ -401,6 +399,8 @@
 + (id)newImagePropertiesFromImageSource:(struct CGImageSource *)arg1;
 + (id)newLocationDataFromLocation:(id)arg1;
 + (id)newLocationFromLocationData:(id)arg1 timestampIfMissing:(id)arg2;
++ (id)originalResourceTypesForAsset;
++ (id)originalResourceTypesForMaster;
 + (id)pathAndDateDictionariesForAllIncompleteAssetsInManagedObjectContext:(id)arg1;
 + (id)pathForAdjustmentDirectoryWithMutationsDirectory:(id)arg1;
 + (id)pathForMutationsDirectoryWithDirectory:(id)arg1 filename:(id)arg2;
@@ -416,6 +416,7 @@
 + (id)predicateForSupportedAssetTypesForUpload;
 + (id)predicateForUploadableAssetsWithCloudLocalState:(short)arg1;
 + (id)predicateForUploadableAssetsWithMasterCloudLocalStateNotEqualTo:(short)arg1;
++ (id)predicateToExcludeAssetsMissingThumbnailsWithThumbnailIndexKeyPath:(id)arg1;
 + (id)predicateToExcludeHiddenAssets;
 + (id)predicateToExcludeHiddenAssetsWithHiddenKeyPath:(id)arg1;
 + (id)predicateToExcludeNonvisibleBurstAssets;
@@ -789,6 +790,7 @@
 - (void)setUploadAttempts:(short)arg1;
 - (BOOL)setVideoInfoFromFileAtURL:(id)arg1 fullSizeRenderURL:(id)arg2 overwriteOriginalProperties:(BOOL)arg3;
 - (id)shortenedFilePath;
+- (id)shotType;
 - (BOOL)shouldUseNonAdjustedVideo;
 - (id)sidecarWithObjectID:(id)arg1;
 - (BOOL)supportsCloudUpload;

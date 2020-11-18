@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldShowInstructionalText;
     KNBodyPlaceholderInfo *_replacementBodyPlaceholder;
     KNTitlePlaceholderInfo *_replacementTitlePlaceholder;
+    BOOL _shouldTintWhiteImages;
     unsigned long long _slideNumber;
     KNAbstractSlide *_slide;
     double _elementListThumbnailContentInset;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) KNBodyPlaceholderInfo *replacementBodyPlaceholder; // @synthesize replacementBodyPlaceholder=_replacementBodyPlaceholder;
 @property (strong, nonatomic) KNTitlePlaceholderInfo *replacementTitlePlaceholder; // @synthesize replacementTitlePlaceholder=_replacementTitlePlaceholder;
 @property (nonatomic) BOOL shouldShowInstructionalText; // @synthesize shouldShowInstructionalText=_shouldShowInstructionalText;
+@property (nonatomic) BOOL shouldTintWhiteImages; // @synthesize shouldTintWhiteImages=_shouldTintWhiteImages;
 @property (weak, nonatomic) KNAbstractSlide *slide; // @synthesize slide=_slide;
 @property (nonatomic) unsigned long long slideNumber; // @synthesize slideNumber=_slideNumber;
 @property (readonly) Class superclass;

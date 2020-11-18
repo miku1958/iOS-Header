@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/NSCoding-Protocol.h>
+#import <WebKit/NSCopying-Protocol.h>
+#import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSString;
 
-@interface WKPreferences : NSObject <WKObject, NSCoding>
+@interface WKPreferences : NSObject <WKObject, NSCopying, NSSecureCoding>
 {
     struct ObjectStorage<WebKit::WebPreferences> _preferences;
 }
@@ -30,12 +31,14 @@
 @property (nonatomic, setter=_setDiagnosticLoggingEnabled:) BOOL _diagnosticLoggingEnabled;
 @property (nonatomic, setter=_setDisplayListDrawingEnabled:) BOOL _displayListDrawingEnabled;
 @property (nonatomic, setter=_setDOMPasteAllowed:) BOOL _domPasteAllowed;
+@property (nonatomic, setter=_setEditableLinkBehavior:) long long _editableLinkBehavior;
 @property (nonatomic, setter=_setEnumeratingAllNetworkInterfacesEnabled:) BOOL _enumeratingAllNetworkInterfacesEnabled;
 @property (copy, nonatomic, setter=_setFixedPitchFontFamily:) NSString *_fixedPitchFontFamily;
 @property (nonatomic, setter=_setFullScreenEnabled:) BOOL _fullScreenEnabled;
 @property (nonatomic, setter=_setHiddenPageDOMTimerThrottlingAutoIncreases:) BOOL _hiddenPageDOMTimerThrottlingAutoIncreases;
 @property (nonatomic, setter=_setHiddenPageDOMTimerThrottlingEnabled:) BOOL _hiddenPageDOMTimerThrottlingEnabled;
-@property (nonatomic, setter=_setICECandidateFilteringEnabled:) BOOL _iceCandidateFiltertingEnabled;
+@property (nonatomic, setter=_setICECandidateFilteringEnabled:) BOOL _iceCandidateFilteringEnabled;
+@property (nonatomic, setter=_setInactiveMediaCaptureSteamRepromptIntervalInMinutes:) double _inactiveMediaCaptureSteamRepromptIntervalInMinutes;
 @property (nonatomic, setter=_setJavaScriptCanAccessClipboard:) BOOL _javaScriptCanAccessClipboard;
 @property (nonatomic, setter=_setJavaScriptRuntimeFlags:) unsigned long long _javaScriptRuntimeFlags;
 @property (nonatomic, setter=_setLargeImageAsyncDecodingEnabled:) BOOL _largeImageAsyncDecodingEnabled;
@@ -43,11 +46,14 @@
 @property (nonatomic, setter=_setLogsPageMessagesToSystemConsoleEnabled:) BOOL _logsPageMessagesToSystemConsoleEnabled;
 @property (nonatomic, setter=_setMediaCaptureRequiresSecureConnection:) BOOL _mediaCaptureRequiresSecureConnection;
 @property (nonatomic, setter=_setMediaDevicesEnabled:) BOOL _mediaDevicesEnabled;
-@property (nonatomic, setter=_setMediaDocumentEntersFullscreenAutomatically:) BOOL _mediaDocumentEntersFullscreenAutomatically;
 @property (nonatomic, setter=_setMockCaptureDevicesEnabled:) BOOL _mockCaptureDevicesEnabled;
+@property (nonatomic, setter=_setMockCaptureDevicesPromptEnabled:) BOOL _mockCaptureDevicesPromptEnabled;
 @property (nonatomic, setter=_setOfflineApplicationCacheIsEnabled:) BOOL _offlineApplicationCacheIsEnabled;
 @property (nonatomic, setter=_setPageVisibilityBasedProcessSuppressionEnabled:) BOOL _pageVisibilityBasedProcessSuppressionEnabled;
+@property (nonatomic, setter=_setPeerConnectionEnabled:) BOOL _peerConnectionEnabled;
 @property (nonatomic, setter=_setResourceUsageOverlayVisible:) BOOL _resourceUsageOverlayVisible;
+@property (nonatomic, setter=_setScreenCaptureEnabled:) BOOL _screenCaptureEnabled;
+@property (nonatomic, setter=_setShouldAllowUserInstalledFonts:) BOOL _shouldAllowUserInstalledFonts;
 @property (nonatomic, setter=_setShouldSuppressKeyboardInputDuringProvisionalNavigation:) BOOL _shouldSuppressKeyboardInputDuringProvisionalNavigation;
 @property (nonatomic, setter=_setSimpleLineLayoutDebugBordersEnabled:) BOOL _simpleLineLayoutDebugBordersEnabled;
 @property (nonatomic, setter=_setSimpleLineLayoutEnabled:) BOOL _simpleLineLayoutEnabled;
@@ -69,8 +75,10 @@
 @property (readonly) Class superclass;
 
 + (id)_experimentalFeatures;
++ (BOOL)supportsSecureCoding;
 - (BOOL)_isEnabledForFeature:(id)arg1;
 - (void)_setEnabled:(BOOL)arg1 forFeature:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

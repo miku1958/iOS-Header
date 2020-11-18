@@ -12,7 +12,6 @@
 
 @interface ISDialog : NSObject <SSXPCCoding>
 {
-    BOOL _allowsBioAuthorization;
     BOOL _allowDuplicates;
     SSAuthenticationContext *_authenticationContext;
     BOOL _authorizationIsForced;
@@ -43,7 +42,6 @@
 }
 
 @property BOOL allowDuplicates; // @synthesize allowDuplicates=_allowDuplicates;
-@property (readonly) BOOL allowsBioAuthorization;
 @property (copy) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property BOOL authorizationIsForced; // @synthesize authorizationIsForced=_authorizationIsForced;
 @property (strong) NSArray *buttons; // @synthesize buttons=_buttons;

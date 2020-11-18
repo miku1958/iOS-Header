@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, SXComponent, SXComponentLayout, SXComponentStyle, SXDocumentController, SXLayoutAttributes;
+@class NSMutableDictionary, SXComponentStyle, SXDocumentController, SXLayoutAttributes;
+@protocol SXComponent, SXComponentLayout;
 
 @interface SXComponentSizer : NSObject
 {
-    SXComponent *_component;
-    SXComponentLayout *_componentLayout;
+    id<SXComponent> _component;
+    id<SXComponentLayout> _componentLayout;
     SXComponentStyle *_componentStyle;
     SXDocumentController *_documentController;
     SXLayoutAttributes *_layoutAttributes;
@@ -19,8 +20,8 @@
     struct CGSize _suggestedSize;
 }
 
-@property (readonly, nonatomic) SXComponent *component; // @synthesize component=_component;
-@property (readonly, nonatomic) SXComponentLayout *componentLayout; // @synthesize componentLayout=_componentLayout;
+@property (readonly, nonatomic) id<SXComponent> component; // @synthesize component=_component;
+@property (readonly, nonatomic) id<SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
 @property (readonly, nonatomic) SXComponentStyle *componentStyle; // @synthesize componentStyle=_componentStyle;
 @property (readonly, nonatomic) SXDocumentController *documentController; // @synthesize documentController=_documentController;
 @property (readonly, nonatomic) NSMutableDictionary *infoForRendering; // @synthesize infoForRendering=_infoForRendering;

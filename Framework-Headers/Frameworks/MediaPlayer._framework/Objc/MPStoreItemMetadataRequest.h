@@ -12,6 +12,7 @@
 {
     BOOL _allowLocalEquivalencies;
     BOOL _shouldIgnoreCache;
+    BOOL _shouldRequireCachedResults;
     unsigned long long _reason;
     NSArray *_itemIdentifiers;
     NSNumber *_timeoutInterval;
@@ -38,6 +39,7 @@
 @property (copy, nonatomic) NSString *requestingBundleVersion;
 @property (nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;
 @property (nonatomic) BOOL shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
+@property (nonatomic) BOOL shouldRequireCachedResults; // @synthesize shouldRequireCachedResults=_shouldRequireCachedResults;
 @property (readonly, copy, nonatomic) ICStorePlatformRequest *storePlatformRequest;
 @property (copy, nonatomic) NSNumber *timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property (copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;

@@ -13,7 +13,11 @@
 - (id)hk_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)hk_firstObjectWithMaximumValueUsingEvaluationBlock:(CDUnknownBlockType)arg1;
 - (id)hk_firstObjectWithMinimumValueUsingEvaluationBlock:(CDUnknownBlockType)arg1;
+- (id)hk_foldRightFrom:(id)arg1 with:(CDUnknownBlockType)arg2;
 - (id)hk_map:(CDUnknownBlockType)arg1;
+- (id)hk_map:(CDUnknownBlockType)arg1 error:(out id *)arg2;
+- (id)hk_mapToDictionary:(CDUnknownBlockType)arg1;
+- (id)hk_mapToSet:(CDUnknownBlockType)arg1;
 - (id)hk_orPredicateWithPredicateBlock:(CDUnknownBlockType)arg1;
 - (void)hk_partitionArrayWithPartitionSetupBlock:(CDUnknownBlockType)arg1 partitionMembershipCheckBlock:(CDUnknownBlockType)arg2 partitionExtendBlock:(CDUnknownBlockType)arg3 partitionFinalizeBlock:(CDUnknownBlockType)arg4;
 - (double)hk_sumUsingEvaulationBlock:(CDUnknownBlockType)arg1;

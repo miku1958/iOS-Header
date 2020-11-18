@@ -10,22 +10,25 @@
 #import <ClassroomKit/CATTransportDelegate-Protocol.h>
 
 @class CATRemoteTransport, CATStateMachine, CATTransport, NSString;
-@protocol CRKSessionDelegate;
+@protocol CRKGrowthFunction, CRKSessionDelegate;
 
 @interface CRKSession : NSObject <CATTransportDelegate, CATRemoteTransportDelegate>
 {
     CATStateMachine *mFSM;
     CATRemoteTransport *mTransport;
+    double mCurrentBackoffInterval;
     BOOL _allowUntrustedConnections;
     BOOL _requiresBeacon;
     id<CRKSessionDelegate> _delegate;
     NSString *_ipAddress;
+    id<CRKGrowthFunction> _backoffGrowthFunction;
     double _lostBeaconTimeout;
     double _willLoseBeaconWarningTimeout;
     double _failedConnectionRetryInterval;
 }
 
 @property (readonly, nonatomic) BOOL allowUntrustedConnections; // @synthesize allowUntrustedConnections=_allowUntrustedConnections;
+@property (readonly, nonatomic) id<CRKGrowthFunction> backoffGrowthFunction; // @synthesize backoffGrowthFunction=_backoffGrowthFunction;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CRKSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -40,6 +43,7 @@
 @property (nonatomic) double willLoseBeaconWarningTimeout; // @synthesize willLoseBeaconWarningTimeout=_willLoseBeaconWarningTimeout;
 
 - (void).cxx_destruct;
+- (void)backoffDidFinish;
 - (void)cancelConnectionAttempt;
 - (void)connect;
 - (void)delegateConnected;
@@ -50,7 +54,10 @@
 - (void)delegateInvalidated;
 - (void)delegateWillLoseBeacon;
 - (void)didConnect;
-- (void)disconnect;
+- (void)enterBackoffCanConnect;
+- (void)enterNoNetwork;
+- (void)enterOutOfRange;
+- (void)exitBackoffCanConnect;
 - (void)failedToConnect;
 - (void)foundBeacon;
 - (id)initWithIPAddress:(id)arg1;
@@ -60,6 +67,8 @@
 - (void)lostBeacon;
 - (void)lostConnection;
 - (void)registerDefaults;
+- (void)rejected;
+- (void)resetBackoff;
 - (id)studentSocketOptions;
 - (void)transport:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)transport:(id)arg1 encounteredTrustDecisionWhileTryingToSecure:(id)arg2;

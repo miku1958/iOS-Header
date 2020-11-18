@@ -7,10 +7,11 @@
 #import <DAEAS/ASItem.h>
 
 #import <DAEAS/ASParsingAcceptingTopLevelLeaves-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSMutableDictionary, NSString;
 
-@interface ASAttendee : ASItem <ASParsingAcceptingTopLevelLeaves>
+@interface ASAttendee : ASItem <ASParsingAcceptingTopLevelLeaves, NSSecureCoding>
 {
     int _status;
     int _role;
@@ -39,6 +40,7 @@
 + (BOOL)notifyOfUnknownTokens;
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)appendActiveSyncDataForTask:(id)arg1 toData:(id)arg2;
 - (void)applyPlaceHolder;

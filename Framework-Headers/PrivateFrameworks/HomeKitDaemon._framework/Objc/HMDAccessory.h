@@ -8,15 +8,15 @@
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMDAccessoryTransaction, HMDAccessoryVersion, HMDApplicationData, HMDApplicationRegistry, HMDHome, HMDRoom, HMDVendorModelEntry, HMFMessageDispatcher, NSArray, NSMutableSet, NSNumber, NSObject, NSString, NSUUID;
+@class HMAccessoryCategory, HMDAccessoryTransaction, HMDAccessoryVersion, HMDApplicationData, HMDApplicationRegistry, HMDHome, HMDRoom, HMDVendorModelEntry, HMFMessageDispatcher, NSArray, NSMutableSet, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAccessory : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFMessageReceiver, HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging>
+@interface HMDAccessory : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMDHomeMessageReceiver, HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging>
 {
     BOOL _primary;
     BOOL _reachable;
@@ -45,9 +45,11 @@
     unsigned long long _configNumber;
     HMDApplicationRegistry *_appRegistry;
     HMDAccessoryTransaction *_transaction;
+    unsigned long long _accessoryReprovisionState;
 }
 
 @property (readonly, copy) NSArray *accessoryProfiles;
+@property (nonatomic) unsigned long long accessoryReprovisionState; // @synthesize accessoryReprovisionState=_accessoryReprovisionState;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (strong, nonatomic) HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
 @property (nonatomic, getter=isBlocked) BOOL blocked; // @synthesize blocked=_blocked;
@@ -67,6 +69,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+@property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
@@ -89,17 +92,20 @@
 @property (readonly, copy, nonatomic) HMDVendorModelEntry *vendorInfo;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_createCameraProfiles:(id)arg1;
 - (void)_handleGetAccessoryAdvertisingParams:(id)arg1;
+- (void)_handleIdentify:(id)arg1;
 - (void)_handleListPairings:(id)arg1;
 - (void)_handleRename:(id)arg1;
 - (void)_handleSetAppData:(id)arg1;
 - (void)_handleUpdateRoom:(id)arg1;
 - (void)_notifyConnectivityChangedWithReachabilityState:(BOOL)arg1 remoteAccessChanged:(BOOL)arg2;
 - (void)_registerForMessages;
+- (void)_relayIdentifyAccessorytoResidentForMessage:(id)arg1;
 - (void)_remoteAccessEnabled:(BOOL)arg1;
 - (void)_sendBlockedNotification:(BOOL)arg1 withError:(id)arg2 withIdentifier:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)_updateCategory:(id)arg1 notifyClients:(BOOL)arg2;
@@ -122,6 +128,7 @@
 - (void)handleReachabilityChange:(BOOL)arg1;
 - (void)handleRemoteReachabilityChange:(BOOL)arg1;
 - (void)handleUpdatedName:(id)arg1;
+- (id)hashRouteID;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
@@ -132,6 +139,7 @@
 - (void)notifyAccessoryNameChanged:(BOOL)arg1;
 - (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
+- (BOOL)providesHashRouteID;
 - (void)registerForMessagesWithNewUUID:(id)arg1;
 - (void)remoteAccessEnabled:(BOOL)arg1;
 - (void)removeAccessoryProfile:(id)arg1;
@@ -142,6 +150,7 @@
 - (void)setModel:(id)arg1;
 - (void)setSerialNumber:(id)arg1;
 - (BOOL)shouldEnableDaemonRelaunch;
+- (BOOL)supportsMinimumUserPrivilege;
 - (void)takeOwnershipOfAppData:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

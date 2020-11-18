@@ -25,12 +25,12 @@
 + (id)_dataForImage:(id)arg1 quality:(long long)arg2;
 + (double)_scaleForImage:(id)arg1;
 + (double)compressionQualityForQuality:(long long)arg1;
+- (void).cxx_destruct;
 - (void)_ensureImage;
 - (id)_init;
 - (id)attachment;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataWithQuality:(long long)arg1;
-- (void)dealloc;
 - (id)debugQuickLookObject;
 - (id)initWithData:(id)arg1 scale:(double)arg2;
 - (id)initWithImage:(id)arg1;

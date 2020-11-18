@@ -10,9 +10,9 @@
 
 @interface CKArchiveRecordsOperation : CKDatabaseOperation
 {
-    NSArray *_recordIDs;
     CDUnknownBlockType _recordArchivedBlock;
     CDUnknownBlockType _archiveRecordsCompletionBlock;
+    NSArray *_recordIDs;
     NSMutableDictionary *_perItemErrors;
 }
 

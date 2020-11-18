@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariShared/WBSParsecSearchResult.h>
+#import <SafariShared/WBSParsecLegacySearchResult.h>
 
 @class NSMutableArray, NSString;
 
-@interface WBSParsecSearchMoviesResult : WBSParsecSearchResult
+@interface WBSParsecSearchMoviesResult : WBSParsecLegacySearchResult
 {
     NSMutableArray *_posterRepresentations;
     NSString *_descriptionLeadInText;

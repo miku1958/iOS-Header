@@ -11,10 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface TSKCOIdAddress : TSKCOAddress
 {
-    NSString *mId;
+    NSString *_identifier;
 }
 
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=mId;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
 + (id)addressWithId:(id)arg1;
 + (id)addressWithIdPath:(id)arg1;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)addressWithUUID:(id)arg1;
 + (id)addressWithUUIDPath:(id)arg1;
 + (id)idFromIdPath:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)initWithParent:(id)arg1 identifier:(id)arg2;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct Address *)arg2;

@@ -6,13 +6,16 @@
 
 #import <SAObjects/SASStartSpeech.h>
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface SASStartSpeechRequest : SASStartSpeech
 {
 }
 
+@property (copy, nonatomic) NSArray *bargeInModes;
 @property (copy, nonatomic) NSString *clientModelVersion;
+@property (copy, nonatomic) NSNumber *durationSincePreviousTTSFinish;
+@property (copy, nonatomic) NSNumber *durationSincePreviousTTSStart;
 @property (nonatomic) BOOL eyesFree;
 @property (nonatomic) BOOL handsFree;
 @property (nonatomic) BOOL talkOnly;

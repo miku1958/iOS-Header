@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *transferID;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)description;
 - (id)initWithDocument:(id)arg1 stageID:(id)arg2 transferSize:(unsigned long long)arg3;
 

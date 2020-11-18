@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPUDataSourceConfiguration, NSString;
+@class MPUDataSourceConfiguration;
 
 @interface MPUViewControllerConfiguration : NSObject
 {
@@ -14,13 +14,11 @@
     BOOL _wantsNavigationController;
     Class _cellConfigurationClass;
     Class _viewControllerClass;
-    NSString *_aggregateStatisticDisplayCountKey;
     MPUDataSourceConfiguration *_dataSourceConfiguration;
     CDUnknownBlockType _configurationBlock;
     Class _navigationControllerClass;
 }
 
-@property (copy, nonatomic) NSString *aggregateStatisticDisplayCountKey; // @synthesize aggregateStatisticDisplayCountKey=_aggregateStatisticDisplayCountKey;
 @property (readonly, nonatomic) Class cellConfigurationClass; // @synthesize cellConfigurationClass=_cellConfigurationClass;
 @property (copy, nonatomic) CDUnknownBlockType configurationBlock; // @synthesize configurationBlock=_configurationBlock;
 @property (strong, nonatomic) MPUDataSourceConfiguration *dataSourceConfiguration; // @synthesize dataSourceConfiguration=_dataSourceConfiguration;

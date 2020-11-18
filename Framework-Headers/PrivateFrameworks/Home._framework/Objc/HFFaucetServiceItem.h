@@ -10,6 +10,7 @@
 {
 }
 
++ (id)supportedServiceTypes;
 - (BOOL)_shouldSubsumeValveInOverallActiveState;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (BOOL)containsActionableCharacteristics;

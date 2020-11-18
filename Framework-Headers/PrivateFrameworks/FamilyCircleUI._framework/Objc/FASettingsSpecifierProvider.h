@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 #import <FamilyCircleUI/AAUISpecifierProvider-Protocol.h>
-#import <FamilyCircleUI/FAFamilyInvitationsViewControllerDelegate-Protocol.h>
 #import <FamilyCircleUI/FAFamilySettingsViewControllerDelegate-Protocol.h>
 #import <FamilyCircleUI/FASetupDelegate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
@@ -15,7 +14,7 @@
 @class AAFamilyDetailsResponse, AAFamilyEligibilityResponse, AAGrandSlamSigner, AAUIAccountManager, FACircleContext, FAFamilyMemberDetailsPageSurrogate, FAFamilyNotificationObserver, FARequestConfigurator, NSArray, NSMutableArray, NSOperationQueue, NSString, PSListController, PSSpecifier;
 @protocol AAUISpecifierProviderDelegate;
 
-@interface FASettingsSpecifierProvider : NSObject <FASetupDelegate, FAFamilyInvitationsViewControllerDelegate, FAFamilySettingsViewControllerDelegate, RemoteUIControllerDelegate, AAUISpecifierProvider>
+@interface FASettingsSpecifierProvider : NSObject <FASetupDelegate, FAFamilySettingsViewControllerDelegate, RemoteUIControllerDelegate, AAUISpecifierProvider>
 {
     FAFamilyMemberDetailsPageSurrogate *_profileSurrogate;
     FAFamilyNotificationObserver *_familyNotificationObserver;
@@ -70,7 +69,6 @@
 - (void)_loadFamilyEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_pendingInvitationsSpecifierWasTapped:(id)arg1;
 - (void)_presentPendingInvitesRemoteUI;
-- (void)_pushInvitationsViewControllerWithSpecifier:(id)arg1 invites:(id)arg2 viewingInviteAtIndex:(long long)arg3;
 - (void)_reloadFamily;
 - (void)_reloadFamilySpecifiers;
 - (void)_reloadFamilySpecifiersAnimated:(BOOL)arg1;
@@ -83,8 +81,6 @@
 - (id)_valueForInvitiationsSpecifier:(id)arg1;
 - (void)_viewFamilySpecifierWasTapped:(id)arg1;
 - (void)dealloc;
-- (void)familyInvitationsViewController:(id)arg1 didProcessInvite:(id)arg2;
-- (void)familyInvitationsViewControllerDidFinish:(id)arg1;
 - (void)familySettingsViewControllerDidDeleteFamily:(id)arg1;
 - (void)familySettingsViewControllerDidUpdateFamily:(id)arg1;
 - (void)familySetupViewController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2;

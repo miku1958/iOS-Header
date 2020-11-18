@@ -6,15 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
+#import <MediaPlayer/MPAVLightweightRoutingControllerDelegate-Protocol.h>
 #import <MediaPlayer/NSCoding-Protocol.h>
 
-@class MPAVRoutingController, MPMediaControlsStandaloneViewController, MPVolumeSlider, NSString, UIButton, UIImage, UILabel;
+@class MPAVLightweightRoutingController, MPMediaControlsStandaloneViewController, MPVolumeSlider, NSString, UIButton, UIImage, UILabel;
 
-@interface MPVolumeView : UIView <MPAVRoutingControllerDelegate, NSCoding>
+@interface MPVolumeView : UIView <MPAVLightweightRoutingControllerDelegate, NSCoding>
 {
     MPMediaControlsStandaloneViewController *_mediaControlsViewController;
-    MPAVRoutingController *_routingController;
+    MPAVLightweightRoutingController *_lightweightRoutingController;
     BOOL _hasNonDefaultRouteButtonImages;
     BOOL _hasNonDefaultMaxVolumeSliderImage;
     BOOL _hasNonDefaultMinVolumeSliderImage;
@@ -63,13 +63,13 @@
 - (void)_initWithStyle:(long long)arg1;
 - (void)_loadAudioRoutePickerIfNeeded;
 - (id)_routeButton;
-- (void)_routingControllerDidUpdateVolumeControlState:(id)arg1;
 - (void)_setRouteDiscoveryEnabled:(BOOL)arg1;
 - (void)_setShowsRouteButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setShowsVolumeSlider:(BOOL)arg1;
 - (void)_startPrewarmingAudioRoutePicker;
 - (void)_stopPrewarmingAudioRoutePicker;
 - (void)_updateWirelessRouteStatus;
+- (void)_volumeSliderVolumeControlAvailabilityDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
@@ -80,13 +80,13 @@
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 - (BOOL)isShowingActiveOverlays;
 - (void)layoutSubviews;
+- (void)lightweightRoutingController:(id)arg1 didChangeDevicePresenceDetected:(BOOL)arg2;
+- (void)lightweightRoutingController:(id)arg1 didChangePickedRoutes:(id)arg2;
 - (id)maximumVolumeSliderImageForState:(unsigned long long)arg1;
 - (id)minimumVolumeSliderImageForState:(unsigned long long)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)routeButtonImageForState:(unsigned long long)arg1;
 - (struct CGRect)routeButtonRectForBounds:(struct CGRect)arg1;
-- (void)routingController:(id)arg1 volumeControlAvailabilityDidChange:(BOOL)arg2;
-- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setAlpha:(double)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)setMaximumVolumeSliderImage:(id)arg1 forState:(unsigned long long)arg2;

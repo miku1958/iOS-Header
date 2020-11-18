@@ -11,12 +11,14 @@
     id *recurrentImages;
     id *cellImages;
     int nLayers;
+    BOOL _isTemporary;
 }
 
 - (void)dealloc;
 - (id)getMemoryCellImageForLayerIndex:(unsigned long long)arg1;
 - (id)getRecurrentOutputImageForLayerIndex:(unsigned long long)arg1;
 - (id)initWithCommandBuffer:(id)arg1 recurrentImageDescriptors:(id *)arg2 cellImageDescriptors:(id *)arg3 isTemporary:(BOOL)arg4 layerCount:(int)arg5;
+- (BOOL)isTemporary;
 - (void)setReadCount:(unsigned long long)arg1;
 
 @end

@@ -22,6 +22,7 @@
     NSLayoutConstraint *_copyrightFooterLabelHeightConstraint;
     NSLayoutConstraint *_copyrightFooterLabelTopConstraint;
     HLPHelpSearchResultTableViewController *_searchResultTableViewController;
+    BOOL _fullBookView;
     id<HLPHelpTableOfContentViewControllerDelegate> _delegate;
     NSArray *_searchTerms;
     HLPHelpLocale *_locale;
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HLPHelpTableOfContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL fullBookView; // @synthesize fullBookView=_fullBookView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HLPHelpBookController *helpBookController; // @synthesize helpBookController=_helpBookController;
 @property (strong, nonatomic) HLPHelpSearchIndexController *helpSearchIndexController; // @synthesize helpSearchIndexController=_helpSearchIndexController;
@@ -52,6 +54,7 @@
 - (void)copyrightButtonTapped;
 - (void)deselectCurrentRow;
 - (id)initWithStyle:(long long)arg1;
+- (void)loadError;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)numberOfVisibleHelpItemForSectionItem:(id)arg1;
 - (void)openHelpItem:(id)arg1 animated:(BOOL)arg2;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 
 - (void).cxx_destruct;
-- (id)initWithEndpoint:(id)arg1;
+- (id)init;
 
 @end
 

@@ -30,6 +30,7 @@
 @property double pollingInterval; // @synthesize pollingInterval=_pollingInterval;
 @property (readonly, copy) NSPredicate *predicate; // @synthesize predicate=_predicate;
 
+- (void).cxx_destruct;
 - (void)_considerFulfilling;
 - (void)_scheduleTimer;
 - (BOOL)_shouldFulfillForExpectation:(id)arg1 object:(id)arg2 handler:(CDUnknownBlockType)arg3;

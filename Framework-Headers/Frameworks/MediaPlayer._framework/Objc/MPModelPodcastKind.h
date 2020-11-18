@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) MPModelPodcastEpisodeKind *episodeKind; // @synthesize episodeKind=_episodeKind;
 
 + (id)kindWithEpisodeKind:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

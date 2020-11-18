@@ -28,7 +28,6 @@
     long long _distribution;
     long long _alignment;
     double _spacing;
-    Class _spacingViewClass;
 }
 
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
@@ -40,7 +39,6 @@
 @property (readonly, nonatomic) long long effectiveAxis; // @synthesize effectiveAxis=_effectiveAxis;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double spacing; // @synthesize spacing=_spacing;
-@property (strong, nonatomic) Class spacingViewClass; // @synthesize spacingViewClass=_spacingViewClass;
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
@@ -59,8 +57,8 @@
 - (BOOL)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(BOOL)arg1;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (BOOL)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
-- (void)populateGridArrangementCells:(vector_f7a18e83 *)arg1;
-- (void)populateGridArrangementDimension:(vector_29d414c0 *)arg1 withCells:(const vector_f7a18e83 *)arg2 axis:(long long)arg3;
+- (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
+- (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
 - (void)setBaselineRelativeArrangement:(BOOL)arg1;
 - (void)setCustomSpacing:(double)arg1 afterView:(id)arg2;
 - (void)setSpacing:(double)arg1 afterArrangedSubviewAtIndex:(long long)arg2;

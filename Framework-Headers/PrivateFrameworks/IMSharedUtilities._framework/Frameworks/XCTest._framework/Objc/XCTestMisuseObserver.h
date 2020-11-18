@@ -26,7 +26,7 @@
 @property (readonly) NSMutableArray *testSuiteStack; // @synthesize testSuiteStack=_testSuiteStack;
 @property (readonly, copy) CDUnknownBlockType warningLogHandler; // @synthesize warningLogHandler=_warningLogHandler;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)emitWarningLog:(id)arg1;
 - (id)initWithWarningLogHandler:(CDUnknownBlockType)arg1;
 - (void)popCurrentTestSuite;

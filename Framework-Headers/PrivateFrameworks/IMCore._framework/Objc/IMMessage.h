@@ -40,6 +40,7 @@
     NSString *_associatedBalloonBundleID;
     NSData *_customTypingIndicatorIcon;
     NSString *_notificationIDSTokenURI;
+    unsigned long long _sortID;
     struct _NSRange _associatedMessageRange;
 }
 
@@ -90,6 +91,7 @@
 @property (readonly, nonatomic) NSString *plainBody;
 @property (strong, nonatomic, setter=_updateSender:) IMHandle *sender; // @synthesize sender=_sender;
 @property (readonly, nonatomic) NSString *senderName;
+@property (nonatomic) unsigned long long sortID; // @synthesize sortID=_sortID;
 @property (readonly, nonatomic) IMHandle *subject; // @synthesize subject=_subject;
 @property (readonly, nonatomic) NSString *summaryString;
 @property (strong, nonatomic, setter=_updateText:) NSAttributedString *text; // @synthesize text=_text;

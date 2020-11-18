@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     struct ResizeData mCurrent;
     tvec2_84d5962d mTarget;
     unsigned long long mIndex;
-    CDStruct_44ada6bf mLayoutSettings;
+    CDStruct_b1c75024 mLayoutSettings;
 }
 
 @property (nonatomic) float minStep; // @synthesize minStep=mMinStep;

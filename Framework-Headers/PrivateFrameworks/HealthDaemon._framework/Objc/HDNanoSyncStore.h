@@ -63,11 +63,11 @@
 @property (readonly, nonatomic) long long restoreState; // @synthesize restoreState=_restoreState;
 @property (readonly, copy) NSString *sourceBundleIdentifier;
 @property (readonly) Class superclass;
+@property (readonly) long long syncStoreType;
 
-+ (id)_allOrderedNanoSyncEntities;
 + (id)_observedDeviceProperties;
 + (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
-+ (id)orderedSyncEntitiesForProtocolVersion:(int)arg1 companion:(BOOL)arg2;
++ (id)orderedSyncEntitiesForProfile:(id)arg1 protocolVersion:(int)arg2 companion:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 protocolVersion:(int)arg4 delegate:(id)arg5 profile:(id)arg6;
 - (void)_notifyIncomingSyncObservers;
@@ -79,6 +79,7 @@
 - (BOOL)canRecieveSyncObjectsForEntityClass:(Class)arg1;
 - (void)configureOutgoingResponse:(id)arg1;
 - (id)createRequestWithMessageID:(unsigned short)arg1;
+- (id)databaseIdentifier;
 - (void)dealloc;
 - (void)device:(id)arg1 propertyDidChange:(id)arg2 fromValue:(id)arg3;
 - (id)deviceInfo;
@@ -101,7 +102,6 @@
 - (long long)syncProvenance;
 - (id)syncStoreDefaultSourceBundleIdentifier;
 - (id)syncStoreIdentifier;
-- (id)syncStoreTypeIdentifier;
 - (BOOL)validatePairingUUIDsWithIncomingMessage:(id)arg1;
 - (BOOL)validateVersionWithIncomingMessage:(id)arg1;
 

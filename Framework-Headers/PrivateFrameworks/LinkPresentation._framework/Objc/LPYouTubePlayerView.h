@@ -8,7 +8,7 @@
 
 #import <LinkPresentation/UIScrollViewDelegate-Protocol.h>
 
-@class LPYouTubePlayerScriptMessageHandler, NSString, WKWebView;
+@class LPYouTubePlayerScriptMessageHandler, NSMutableArray, NSString, WKWebView;
 @protocol LPYouTubePlayerDelegate;
 
 @interface LPYouTubePlayerView : UIView <UIScrollViewDelegate>
@@ -17,6 +17,8 @@
     NSString *_videoID;
     long long _state;
     LPYouTubePlayerScriptMessageHandler *_scriptMessageHandler;
+    BOOL _ready;
+    NSMutableArray *_commandsPendingPlayerReadiness;
     BOOL _startsPlayingAutomatically;
     BOOL _showsControls;
     BOOL _muted;
@@ -43,6 +45,7 @@
 - (void)didReceiveScriptMessage:(id)arg1;
 - (void)dispatchErrorForInvalidURL;
 - (void)enterFullScreen;
+- (void)evaluatePlayerCommand:(id)arg1;
 - (void)exitFullScreen;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 - (void).cxx_destruct;
-- (id)_disambiguateMultipleAccessoryResponses:(id)arg1;
+- (id)_disambiguateMultipleAccessoryResponses:(id)arg1 forMediaSystem:(id)arg2;
 - (id)accessories;
 - (id)init;
 - (id)initWithMediaProfileContainer:(id)arg1 valueSource:(id)arg2;

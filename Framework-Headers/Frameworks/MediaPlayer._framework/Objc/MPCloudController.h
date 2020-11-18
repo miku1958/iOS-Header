@@ -17,7 +17,10 @@
     BOOL _preferencesChangedNotifyTokenIsValid;
     NSObject<OS_dispatch_queue> *_queue;
     MSVDistributedNotificationObserver *_addToPlaylistBehaviorChangedObserver;
-    BOOL _isInitialImport;
+    BOOL _isCloudLibraryUpdateInProgress;
+    BOOL _isCloudLibraryInitialImport;
+    BOOL _isJaliscoUpdateInProgress;
+    BOOL _isJaliscoInitialImport;
     BOOL _isCloudEnabled;
     BOOL _jaliscoGeniusEnabled;
     HSCloudClient *_cloudClient;
@@ -32,9 +35,13 @@
 @property (readonly, nonatomic) BOOL hasCloudLockerAccount;
 @property (readonly, nonatomic) BOOL hasPurchaseHistoryAccount;
 @property (readonly, nonatomic) BOOL isCloudEnabled; // @synthesize isCloudEnabled=_isCloudEnabled;
+@property (readonly, nonatomic) BOOL isCloudLibraryInitialImport; // @synthesize isCloudLibraryInitialImport=_isCloudLibraryInitialImport;
+@property (readonly, nonatomic) BOOL isCloudLibraryUpdateInProgress; // @synthesize isCloudLibraryUpdateInProgress=_isCloudLibraryUpdateInProgress;
 @property (readonly, nonatomic) BOOL isGeniusEnabled;
-@property (readonly, nonatomic) BOOL isInitialImport; // @synthesize isInitialImport=_isInitialImport;
-@property (readonly, nonatomic) BOOL isUpdateInProgress; // @synthesize isUpdateInProgress=_isUpdateInProgress;
+@property (readonly, nonatomic) BOOL isInitialImport;
+@property (readonly, nonatomic) BOOL isJaliscoInitialImport; // @synthesize isJaliscoInitialImport=_isJaliscoInitialImport;
+@property (readonly, nonatomic) BOOL isJaliscoUpdateInProgress; // @synthesize isJaliscoUpdateInProgress=_isJaliscoUpdateInProgress;
+@property (readonly, nonatomic) BOOL isUpdateInProgress;
 @property (readonly, nonatomic, getter=isJaliscoGeniusEnabled) BOOL jaliscoGeniusEnabled; // @synthesize jaliscoGeniusEnabled=_jaliscoGeniusEnabled;
 
 + (BOOL)isEnablingCloudLibraryDestructive;
@@ -73,8 +80,10 @@
 - (BOOL)isCloudLibraryEnabled;
 - (void)loadArtworkForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)loadArtworkInfoForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)loadCloudMusicLibraryUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadGeniusItemsForSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadJaliscoGeniusTermsAndConditionsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadJaliscoLibraryUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)publishPlaylistWithSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeItemsWithSagaIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

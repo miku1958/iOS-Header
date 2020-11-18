@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_pendingTiles;
     NSMutableArray *_junctions;
     VKLabelNavRoadGraph *_roadGraph;
-    vector_c899b68f _activeSigns;
+    vector_ecfc0b70 _activeSigns;
     NSMutableArray *_fadingLabels;
     NSMutableDictionary *_visibleLabelsByName;
     NSMutableArray *_visibleLabels;
@@ -57,10 +57,10 @@ __attribute__((visibility("hidden")))
     BOOL _debugEnableShieldsOnRouteLine;
     shared_ptr_a3c46825 _styleManager;
     BOOL _shouldLabelOppositeCarriageways;
-    vector_13142ee6 _externalCollisionLabelsForLayout;
+    vector_b4a52264 _externalCollisionLabelsForLayout;
 }
 
-@property (readonly, nonatomic) const vector_c899b68f *activeSigns; // @synthesize activeSigns=_activeSigns;
+@property (readonly, nonatomic) const vector_ecfc0b70 *activeSigns; // @synthesize activeSigns=_activeSigns;
 @property (nonatomic) struct VKLabelNavArtworkCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 @property (strong, nonatomic) NSString *currentLocationText; // @synthesize currentLocationText=_currentLocationText;
 @property (strong, nonatomic) NSString *currentRoadName; // @synthesize currentRoadName=_currentRoadName;
@@ -101,7 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)grabTilesFromScene:(id)arg1;
 - (id)init;
 - (BOOL)isNavMode;
-- (void)layoutWithNavContext:(struct NavContext *)arg1 externalCollisionLabels:(const vector_13142ee6 *)arg2;
+- (void)layoutWithNavContext:(struct NavContext *)arg1 externalCollisionLabels:(const vector_b4a52264 *)arg2;
 - (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext *)arg3;
 - (void)setStyleManager:(shared_ptr_a3c46825)arg1;
 

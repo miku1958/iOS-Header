@@ -9,6 +9,7 @@
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
 @class NSMutableData, NSString, NSURLResponse, NSURLSession;
+@protocol GEORequestCounterTicket;
 
 __attribute__((visibility("hidden")))
 @interface _GEONSURLSessionWaiter : NSObject <NSURLSessionDataDelegate>
@@ -17,12 +18,14 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _callback;
     NSMutableData *_data;
     NSURLResponse *_response;
+    id<GEORequestCounterTicket> _requestCounterTicket;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<GEORequestCounterTicket> requestCounterTicket; // @synthesize requestCounterTicket=_requestCounterTicket;
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 

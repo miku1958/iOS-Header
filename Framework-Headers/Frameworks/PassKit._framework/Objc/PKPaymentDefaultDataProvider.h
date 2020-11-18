@@ -38,21 +38,22 @@
 - (void)addDelegate:(id)arg1;
 - (void)dealloc;
 - (id)defaultExpressFelicaTransitPassIdentifier;
+- (id)defaultExpressTransitPassIdentifier;
 - (id)defaultPaymentApplicationForPassUniqueIdentifier:(id)arg1;
 - (void)deletePaymentTransactionWithIdentifier:(id)arg1 forPassWithUniqueIdentifier:(id)arg2;
 - (id)expressPassInformationForMode:(id)arg1;
 - (id)expressPassesInformation;
-- (void)felicaStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableMessageService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithFelicaPassProperties:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)removeDelegate:(id)arg1;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setExpressWithPassInformation:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPaymentHandoffDisabled:(BOOL)arg1;
+- (BOOL)supportsExpressMode:(id)arg1;
 - (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
 - (BOOL)supportsInAppPaymentsForPass:(id)arg1;
 - (BOOL)supportsMessagesForPass:(id)arg1;
@@ -62,6 +63,7 @@
 - (id)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 limit:(long long)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)transitStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

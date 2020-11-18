@@ -47,6 +47,7 @@
 @property (readonly, nonatomic) NSXPCConnection *unzipServiceConnection; // @synthesize unzipServiceConnection=_unzipServiceConnection;
 
 + (void)enableDebugLogging;
++ (id)knownSZExtractorImplementations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_invalidateObject;

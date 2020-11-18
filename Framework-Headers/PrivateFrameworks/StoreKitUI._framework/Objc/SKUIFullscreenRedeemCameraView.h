@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, SKUIRedeemTextField, UIImage;
+@class NSString, SKUIRedeemTextField, UIImage, _UIBackdropView;
 @protocol SKUIRedeemCameraViewDelegate;
 
 @interface SKUIFullscreenRedeemCameraView : UIView <UITextFieldDelegate>
@@ -17,6 +17,7 @@
     UIView *_overlay;
     UIView *_redeemerView;
     SKUIRedeemTextField *_textField;
+    _UIBackdropView *_textFieldSafeAreaBackdrop;
     struct CGRect _keyboardRect;
     BOOL _enabled;
 }

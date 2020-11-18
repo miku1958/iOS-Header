@@ -7,11 +7,11 @@
 #import <Foundation/NSObject.h>
 
 #import <CVML/CVMLFaceprintModel-Protocol.h>
-#import <CVML/NSCoding-Protocol.h>
+#import <CVML/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 
-@interface CVMLFaceprint : NSObject <CVMLFaceprintModel, NSCoding>
+@interface CVMLFaceprint : NSObject <CVMLFaceprintModel, NSSecureCoding>
 {
     unsigned int _platform;
     unsigned int _profile;
@@ -26,6 +26,7 @@
 @property unsigned int platform; // @synthesize platform=_platform;
 @property unsigned int profile; // @synthesize profile=_profile;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)computeDistanceToFaceprint:(id)arg1 withDistanceFunction:(long long)arg2 error:(id *)arg3;
 - (void)encodeWithCoder:(id)arg1;

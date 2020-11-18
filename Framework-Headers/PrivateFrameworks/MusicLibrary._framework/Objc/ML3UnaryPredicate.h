@@ -14,6 +14,7 @@
 @property (strong, nonatomic) ML3Predicate *predicate; // @synthesize predicate=_predicate;
 
 + (id)predicateWithPredicate:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)SQLJoinClausesForClass:(Class)arg1;
 - (id)databaseStatementParameters;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)centerPointForSeries:(id)arg1 index:(unsigned long long)arg2 frame:(struct CGRect)arg3 point:(struct CGPoint *)arg4 nullsUseIntercept:(BOOL)arg5;
 + (void)drawFill:(id)arg1 inContext:(struct CGContext *)arg2 frame:(struct CGRect)arg3;
 + (void)drawFill:(id)arg1 inContext:(struct CGContext *)arg2 path:(struct CGPath *)arg3;
++ (void)drawImageFill:(id)arg1 inContext:(struct CGContext *)arg2 path:(struct CGPath *)arg3 withinBounds:(struct CGRect)arg4;
 + (void)drawNullFillSwatchInContext:(struct CGContext *)arg1 frame:(struct CGRect)arg2;
 + (void)drawSymbol:(int)arg1 inContext:(struct CGContext *)arg2 at:(struct CGPoint)arg3 width:(double)arg4 fill:(id)arg5 stroke:(id)arg6;
 + (struct CGRect)integralFillRenderingRectFromElementRect:(struct CGRect)arg1;

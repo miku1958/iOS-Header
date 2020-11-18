@@ -21,15 +21,19 @@
     MISSING_TYPE **_path;
 }
 
+@property (readonly, nonatomic) int cellGridHeight; // @synthesize cellGridHeight=_cellGridHeight;
+@property (readonly, nonatomic) int cellGridWidth; // @synthesize cellGridWidth=_cellGridWidth;
+@property (readonly, nonatomic) int pathLength; // @synthesize pathLength=_pathLength;
+
 + (id)pathfinderFromDirectory:(id)arg1;
 + (id)pathfinderFromFile:(id)arg1;
 + (id)pathfinderWithImage:(id)arg1;
-+ (id)pathfinderWithImage:(id)arg1 divisor:(float)arg2;
 + (BOOL)supportsSecureCoding;
+- (void)adjustPathStart: /* Error: Ran out of types for this method. */;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithImage:(id)arg1 divisor:(float)arg2;
+- (id)initWithImage:(id)arg1;
 - (struct NTKKaleidoscopePathfinderPoint)pointForTime:(float)arg1;
 - (BOOL)writeToDirectory:(id)arg1;
 - (BOOL)writeToFile:(id)arg1;

@@ -4,22 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXJSONObject.h>
+#import <objc/NSObject.h>
+
+#import <Silex/SXComponentAnchor-Protocol.h>
 
 @class NSString;
 
-@interface SXComponentAnchor : SXJSONObject
+@interface SXComponentAnchor : NSObject <SXComponentAnchor>
 {
+    NSString *_targetComponentIdentifier;
+    long long _targetAnchorPosition;
+    long long _originAnchorPosition;
+    struct _NSRange _range;
 }
 
-@property (readonly, nonatomic) long long originAnchorPosition; // @dynamic originAnchorPosition;
-@property (readonly, nonatomic) struct _NSRange range; // @dynamic range;
-@property (readonly, nonatomic) long long targetAnchorPosition; // @dynamic targetAnchorPosition;
-@property (readonly, nonatomic) NSString *targetComponentIdentifier; // @dynamic targetComponentIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long originAnchorPosition; // @synthesize originAnchorPosition=_originAnchorPosition;
+@property (nonatomic) struct _NSRange range; // @synthesize range=_range;
+@property (readonly) Class superclass;
+@property (nonatomic) long long targetAnchorPosition; // @synthesize targetAnchorPosition=_targetAnchorPosition;
+@property (readonly, nonatomic) NSString *targetComponentIdentifier; // @synthesize targetComponentIdentifier=_targetComponentIdentifier;
 
-- (long long)anchorAlignmentForString:(id)arg1;
-- (long long)originAnchorPositionWithValue:(id)arg1 withType:(int)arg2;
-- (long long)targetAnchorPositionWithValue:(id)arg1 withType:(int)arg2;
+- (void).cxx_destruct;
+- (id)initWithTargetComponentIdentifier:(id)arg1;
 
 @end
 

@@ -54,6 +54,7 @@
 - (void)setValue:(float)arg1 animated:(BOOL)arg2;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

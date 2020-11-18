@@ -10,21 +10,17 @@
 
 @interface MSVCallback : NSObject
 {
-    CDUnknownBlockType _block;
+    id _block;
     NSObject<OS_dispatch_queue> *_queue;
-    SEL _selector;
-    id _target;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
+@property (copy, nonatomic) id block; // @synthesize block=_block;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) SEL selector; // @synthesize selector=_selector;
-@property (weak, nonatomic) id target; // @synthesize target=_target;
 
-+ (id)callbackWithBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
-+ (id)callbackWithSelector:(SEL)arg1 target:(id)arg2 queue:(id)arg3;
++ (id)callbackWithQueue:(id)arg1 block:(id)arg2;
 - (void).cxx_destruct;
-- (void)invoke:(id)arg1;
+- (void)invoke;
+- (void)invokeWithObject:(id)arg1;
 
 @end
 

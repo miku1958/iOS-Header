@@ -24,16 +24,21 @@
 @property (copy, nonatomic) NSString *longDescription; // @synthesize longDescription=_longDescription;
 @property (strong, nonatomic) PKPaymentRequirementsResponse *requirementsResponse; // @synthesize requirementsResponse=_requirementsResponse;
 @property (copy, nonatomic) NSString *sanitizedPrimaryAccountNumber; // @synthesize sanitizedPrimaryAccountNumber=_sanitizedPrimaryAccountNumber;
+@property (readonly, nonatomic, getter=isTransitCredential) BOOL transitCredential;
 
 + (id)fakeRemoteCredentials;
 - (void).cxx_destruct;
 - (id)contactlessProductCredential;
+- (id)digitalIssuanceProductCredential;
 - (BOOL)isContactlessProductCredential;
+- (BOOL)isDigitalIssuanceProductCredential;
 - (BOOL)isLocalPassCredential;
 - (BOOL)isPeerPaymentCredential;
+- (BOOL)isPurchasedProductCredential;
 - (BOOL)isRemoteCredential;
 - (id)localPassCredential;
 - (id)peerPaymentCredential;
+- (id)purchasedProductCredential;
 - (id)remoteCredential;
 
 @end

@@ -14,10 +14,12 @@
 @property (readonly, nonatomic) BOOL serviceAvailable;
 
 + (id)sharedInstance;
+- (float)audioGainForType:(long long)arg1;
 - (void)dealloc;
 - (float)defaultDownGainForType:(long long)arg1;
 - (float)defaultUpGainForType:(long long)arg1;
 - (BOOL)hapticAssetType:(long long)arg1 hasAudio:(BOOL *)arg2 hasHaptic:(BOOL *)arg3 error:(id *)arg4;
+- (float)hapticGainForType:(long long)arg1;
 - (BOOL)loadButtonHapticOfType:(long long)arg1 atSlot:(long long)arg2 error:(id *)arg3;
 - (BOOL)loadButtonHapticOfType:(long long)arg1 withParameters:(id)arg2 atSlot:(long long)arg3 error:(id *)arg4;
 

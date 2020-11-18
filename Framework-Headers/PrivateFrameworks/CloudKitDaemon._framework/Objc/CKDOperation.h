@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _isFinished;
     BOOL _isExecuting;
     BOOL _useEncryption;
+    BOOL _useClearAssetEncryption;
     BOOL _isProxyOperation;
     BOOL _shouldPipelineFetchAllChangesRequests;
     _Atomic int _pcsWaitCount;
@@ -99,6 +100,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double timeoutIntervalForRequest;
 @property (readonly, nonatomic) double timeoutIntervalForResource;
 @property (readonly, weak, nonatomic) CKDOperation *topmostParentOperation;
+@property (nonatomic) BOOL useClearAssetEncryption; // @synthesize useClearAssetEncryption=_useClearAssetEncryption;
 @property (nonatomic) BOOL useEncryption; // @synthesize useEncryption=_useEncryption;
 @property (readonly, nonatomic) BOOL usesBackgroundSession;
 

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (BOOL)_suppressesAccessibilityHairlineThickening;
 
 @end

@@ -6,27 +6,28 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary;
+@class MRMediaRemoteService, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MRAVRoutingClientController : NSObject
 {
-    struct MRMediaRemoteService *_mediaRemoteService;
+    MRMediaRemoteService *_mediaRemoteService;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableDictionary *_pendingCompletionHandlersForCategories;
     NSMutableDictionary *_cachedRoutesForCategories;
 }
 
-@property (readonly, nonatomic) struct MRMediaRemoteService *mediaRemoteService; // @synthesize mediaRemoteService=_mediaRemoteService;
+@property (readonly, nonatomic) MRMediaRemoteService *mediaRemoteService; // @synthesize mediaRemoteService=_mediaRemoteService;
 
+- (void).cxx_destruct;
 - (void)_cacheFetchedPickableRoutes:(id)arg1 forCategory:(id)arg2;
 - (void)_flushPendingCompletionHandlersWithPickableRoutes:(id)arg1 forCategory:(id)arg2;
 - (void)_pickableRoutesDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (void)fetchPickableRoutesForCategory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithMediaRemoteService:(struct MRMediaRemoteService *)arg1;
+- (id)initWithMediaRemoteService:(id)arg1;
 
 @end
 

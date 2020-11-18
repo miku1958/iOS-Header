@@ -13,6 +13,7 @@
 @property (copy, nonatomic) NSDate *arrivalActualTime;
 @property (strong, nonatomic) SFAirport *arrivalAirport;
 @property (copy, nonatomic) NSString *arrivalGate;
+@property (copy, nonatomic) NSDate *arrivalGateTime;
 @property (copy, nonatomic) NSDate *arrivalPublishedTime;
 @property (copy, nonatomic) NSDate *arrivalRunwayTime;
 @property (copy, nonatomic) NSString *arrivalTerminal;

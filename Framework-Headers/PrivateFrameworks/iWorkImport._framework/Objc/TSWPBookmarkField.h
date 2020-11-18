@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL forRange; // @synthesize forRange=_forRange;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
+@property (readonly, nonatomic) NSString *key;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) struct _NSRange range;
 @property (readonly) Class superclass;

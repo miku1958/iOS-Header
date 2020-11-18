@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_recalcHighPriorityQueue;
     NSObject<OS_dispatch_queue> *_recalcLowPriorityQueue;
     NSObject<OS_dispatch_semaphore> *_modifiedOwnersSem;
-    unordered_set_3f00ed57 _modifiedOwnersInThisRecalcCycle;
+    unordered_set_c6a929bd _modifiedOwnersInThisRecalcCycle;
     BOOL _shouldRefillRecalcQueue;
     NSMutableSet *_retainReferenceResolvers;
     struct unordered_map<TSU::UUIDData<TSP::UUIDData>, id<TSCEReferenceResolving>, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, id<TSCEReferenceResolving>>>> _referenceResolversByUid;
@@ -43,6 +43,8 @@ __attribute__((visibility("hidden")))
     BOOL _dirtyAllFormulasInDocumentDidLoad;
     UUIDData_5fbc143e _transposingTableUID;
     BOOL _duringRollback;
+    BOOL _calculationWillShutDown;
+    BOOL _sentSetNowCommand;
     int _XLImportDateMode;
     TSKAccessController *_accessController;
     TSKChangeNotifier *_changeNotifier;
@@ -71,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSString *previousLocaleIdentifier; // @synthesize previousLocaleIdentifier=_previousLocaleIdentifier;
 @property (readonly) TSCERemoteDataStore *remoteDataStore; // @synthesize remoteDataStore=_remoteDataStore;
 @property (readonly) BOOL shouldAbortRecalculation;
+@property (readonly, nonatomic) BOOL shouldSendSetNowCommand;
 @property (readonly) TSCERewriteTableIDInfo *tableIDHistory; // @synthesize tableIDHistory=_tableIDHistory;
 @property (readonly) TSCETableInfosByName *tableInfosByName; // @synthesize tableInfosByName=_tableInfosByName;
 @property UUIDData_5fbc143e transposingTableUID; // @synthesize transposingTableUID=_transposingTableUID;
@@ -90,10 +93,11 @@ __attribute__((visibility("hidden")))
 - (id)allCellDependenciesAsString;
 - (BOOL)allCellsAreClean;
 - (id)allFormulaOwnersAsString;
-- (vector_dadc1b26)allOwnerUIDs;
+- (vector_4dc5f307)allOwnerUIDs;
 - (BOOL)allOwnersRegistered;
 - (id)allSpanningDependenciesAsString;
 - (id)allWholeOwnerDependenciesAsString;
+- (id)anyResolver;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)applicationWillResignActive:(id)arg1;
 - (void)assertAllDirtyCellsAreOnLeafStack;
@@ -134,8 +138,8 @@ __attribute__((visibility("hidden")))
 - (id)extendTableIDHistoryWithRewrite:(id)arg1;
 - (void)foreachFormulaInOwner:(const UUIDData_5fbc143e *)arg1 block:(CDUnknownBlockType)arg2;
 - (unordered_set_7ec2a700)formulaCellsUsingVolatiles:(unsigned long long)arg1;
-- (vector_13f93596)formulaCoordsInRange:(const struct TSCERangeCoordinate *)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (vector_13f93596)formulaCoordsReferringToRange:(const struct TSCERangeRef *)arg1 fromOwner:(const UUIDData_5fbc143e *)arg2;
+- (vector_38b190b0)formulaCoordsInRange:(const struct TSCERangeCoordinate *)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
+- (vector_38b190b0)formulaCoordsReferringToRange:(const struct TSCERangeRef *)arg1 fromOwner:(const UUIDData_5fbc143e *)arg2;
 - (int)forwardRegisterOwnerWithOwnerUID:(const UUIDData_5fbc143e *)arg1 legacyGlobalID:(id)arg2;
 - (BOOL)hasMaxNumFormulas;
 - (BOOL)hasRunRecalculationALongTime;
@@ -228,7 +232,7 @@ __attribute__((visibility("hidden")))
 - (void)updateDirtyPrecedentCountsForRemovedIndex:(int)arg1 inTable:(const UUIDData_5fbc143e *)arg2 forColumns:(BOOL)arg3;
 - (UUIDData_5fbc143e)uuidForTableUID:(const UUIDData_5fbc143e *)arg1 andIndex:(unsigned short)arg2 direction:(BOOL)arg3;
 - (void)willClose;
-- (void)wroteCells:(const vector_13f93596 *)arg1 inOwnerUID:(const UUIDData_5fbc143e *)arg2;
+- (void)wroteCells:(const vector_38b190b0 *)arg1 inOwnerUID:(const UUIDData_5fbc143e *)arg2;
 
 @end
 

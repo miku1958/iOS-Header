@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)archivedSelectionClass;
 + (id)controlCellSelection;
+- (id)copy;
 - (id)initWithKeyboardShown:(BOOL)arg1;
 
 @end

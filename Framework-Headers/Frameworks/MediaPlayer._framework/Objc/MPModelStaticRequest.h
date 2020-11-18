@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) MPModelStaticResponse *staticResponse; // @synthesize staticResponse=_staticResponse;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;

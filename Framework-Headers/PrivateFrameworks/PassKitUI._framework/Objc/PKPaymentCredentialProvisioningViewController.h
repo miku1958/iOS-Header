@@ -14,7 +14,6 @@
 
 @interface PKPaymentCredentialProvisioningViewController : PKPaymentSetupProvisioningFieldsViewController <PKPaymentSetupRequiresPreflightProtocol, PKPaymentProvisioningControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
-    UIImage *_passSnapshot;
     UIImage *_passSnapshotPlaceHolder;
     unsigned long long _credentialProvisioningType;
     unsigned long long _displayType;
@@ -22,11 +21,16 @@
     PKPaymentCredential *_paymentCredential;
     PKPaymentSetupProduct *_setupProduct;
     BOOL _allowsManualEntry;
+    BOOL _previouslyAcceptedTerms;
+    BOOL _shouldAutoProvision;
+    UIImage *_passSnapshot;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) UIImage *passSnapshot; // @synthesize passSnapshot=_passSnapshot;
+@property (nonatomic) BOOL shouldAutoProvision; // @synthesize shouldAutoProvision=_shouldAutoProvision;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -49,7 +53,7 @@
 - (id)defaultFields;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
-- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 paymentCredential:(id)arg4 setupProduct:(id)arg5 allowsManualEntry:(BOOL)arg6;
+- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 paymentCredential:(id)arg4 setupProduct:(id)arg5 allowsManualEntry:(BOOL)arg6 previouslyAcceptedTerms:(BOOL)arg7;
 - (BOOL)isComplete;
 - (void)loadView;
 - (id)newPaymentEligibilityRequest;

@@ -17,6 +17,7 @@
 @property (copy, nonatomic) _UIStatusBarDataBatteryEntry *batteryEntry; // @synthesize batteryEntry=_batteryEntry;
 @property (nonatomic) long long state; // @synthesize state=_state;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_ui_descriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;

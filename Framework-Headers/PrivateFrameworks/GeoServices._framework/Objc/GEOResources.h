@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_tileGroups;
     NSMutableArray *_tileSets;
     GEOVersionManifest *_versionManifest;
+    NSString *_wifiConnectionQualityProbeURL;
     NSMutableArray *_xmlChecksums;
     NSMutableArray *_xmls;
     struct {
@@ -120,6 +121,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasSimpleETAURL;
 @property (readonly, nonatomic) BOOL hasSpatialLookupURL;
 @property (readonly, nonatomic) BOOL hasVersionManifest;
+@property (readonly, nonatomic) BOOL hasWifiConnectionQualityProbeURL;
 @property (strong, nonatomic) NSMutableArray *iconChecksums; // @synthesize iconChecksums=_iconChecksums;
 @property (strong, nonatomic) NSMutableArray *icons; // @synthesize icons=_icons;
 @property (strong, nonatomic) NSMutableArray *locationShiftEnabledRegions; // @synthesize locationShiftEnabledRegions=_locationShiftEnabledRegions;
@@ -149,6 +151,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *tileSets; // @synthesize tileSets=_tileSets;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOVersionManifest *versionManifest; // @synthesize versionManifest=_versionManifest;
+@property (strong, nonatomic) NSString *wifiConnectionQualityProbeURL; // @synthesize wifiConnectionQualityProbeURL=_wifiConnectionQualityProbeURL;
 @property (strong, nonatomic) NSMutableArray *xmlChecksums; // @synthesize xmlChecksums=_xmlChecksums;
 @property (strong, nonatomic) NSMutableArray *xmls; // @synthesize xmls=_xmls;
 

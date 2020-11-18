@@ -28,6 +28,7 @@
 - (void)addCompletionBlock:(id)arg1 forIdentifier:(id)arg2;
 - (void)addEvent:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
 - (void)addEvents:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
+- (void)addProgressHandler:(id)arg1 forAccessoryIdentifier:(id)arg2;
 - (void)addRequest:(id)arg1 ofType:(long long)arg2 forIdentifier:(id)arg3;
 - (void)addTrigger:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
 - (id)init;

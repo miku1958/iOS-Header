@@ -8,41 +8,49 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, NTPBDate;
+@class NSMutableArray, NSString, NTPBColor, NTPBColorGradient, NTPBDate, NTPBDiscoverMoreVideosInfo;
 
 @interface NTPBFeedViewportGroup : PBCodable <NSCopying>
 {
     unsigned long long _mergeID;
     unsigned long long _options;
+    NTPBColorGradient *_backgroundGradient;
     NTPBDate *_creationDate;
+    NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
     NTPBDate *_editionFeedEndDate;
     NTPBDate *_editionFeedStartDate;
     NTPBDate *_editionKeyDate;
     NSMutableArray *_headlines;
     NSString *_identifier;
     int _l2TagIDRef;
-    int _nameRef;
     int _sourceIdentifierRef;
-    int _themeTagIDRef;
+    int _subtitleRef;
+    NTPBColor *_titleColor;
+    int _titleRef;
     int _type;
+    NSMutableArray *_videoPlaylistHeadlines;
     BOOL _isFirstFromEdition;
     struct {
         unsigned int mergeID:1;
         unsigned int options:1;
         unsigned int l2TagIDRef:1;
-        unsigned int nameRef:1;
         unsigned int sourceIdentifierRef:1;
-        unsigned int themeTagIDRef:1;
+        unsigned int subtitleRef:1;
+        unsigned int titleRef:1;
         unsigned int type:1;
         unsigned int isFirstFromEdition:1;
     } _has;
 }
 
+@property (strong, nonatomic) NTPBColorGradient *backgroundGradient; // @synthesize backgroundGradient=_backgroundGradient;
 @property (strong, nonatomic) NTPBDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (strong, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
 @property (strong, nonatomic) NTPBDate *editionFeedEndDate; // @synthesize editionFeedEndDate=_editionFeedEndDate;
 @property (strong, nonatomic) NTPBDate *editionFeedStartDate; // @synthesize editionFeedStartDate=_editionFeedStartDate;
 @property (strong, nonatomic) NTPBDate *editionKeyDate; // @synthesize editionKeyDate=_editionKeyDate;
+@property (readonly, nonatomic) BOOL hasBackgroundGradient;
 @property (readonly, nonatomic) BOOL hasCreationDate;
+@property (readonly, nonatomic) BOOL hasDiscoverMoreVideosInfo;
 @property (readonly, nonatomic) BOOL hasEditionFeedEndDate;
 @property (readonly, nonatomic) BOOL hasEditionFeedStartDate;
 @property (readonly, nonatomic) BOOL hasEditionKeyDate;
@@ -50,25 +58,31 @@
 @property (nonatomic) BOOL hasIsFirstFromEdition;
 @property (nonatomic) BOOL hasL2TagIDRef;
 @property (nonatomic) BOOL hasMergeID;
-@property (nonatomic) BOOL hasNameRef;
 @property (nonatomic) BOOL hasOptions;
 @property (nonatomic) BOOL hasSourceIdentifierRef;
-@property (nonatomic) BOOL hasThemeTagIDRef;
+@property (nonatomic) BOOL hasSubtitleRef;
+@property (readonly, nonatomic) BOOL hasTitleColor;
+@property (nonatomic) BOOL hasTitleRef;
 @property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) NSMutableArray *headlines; // @synthesize headlines=_headlines;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isFirstFromEdition; // @synthesize isFirstFromEdition=_isFirstFromEdition;
 @property (nonatomic) int l2TagIDRef; // @synthesize l2TagIDRef=_l2TagIDRef;
 @property (nonatomic) unsigned long long mergeID; // @synthesize mergeID=_mergeID;
-@property (nonatomic) int nameRef; // @synthesize nameRef=_nameRef;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (nonatomic) int sourceIdentifierRef; // @synthesize sourceIdentifierRef=_sourceIdentifierRef;
-@property (nonatomic) int themeTagIDRef; // @synthesize themeTagIDRef=_themeTagIDRef;
+@property (nonatomic) int subtitleRef; // @synthesize subtitleRef=_subtitleRef;
+@property (strong, nonatomic) NTPBColor *titleColor; // @synthesize titleColor=_titleColor;
+@property (nonatomic) int titleRef; // @synthesize titleRef=_titleRef;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (strong, nonatomic) NSMutableArray *videoPlaylistHeadlines; // @synthesize videoPlaylistHeadlines=_videoPlaylistHeadlines;
 
 + (Class)headlinesType;
++ (Class)videoPlaylistHeadlinesType;
 - (void)addHeadlines:(id)arg1;
+- (void)addVideoPlaylistHeadlines:(id)arg1;
 - (void)clearHeadlines;
+- (void)clearVideoPlaylistHeadlines;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -79,6 +93,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)videoPlaylistHeadlinesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)videoPlaylistHeadlinesCount;
 - (void)writeTo:(id)arg1;
 
 @end

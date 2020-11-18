@@ -9,7 +9,7 @@
 #import <SafariServices/RequestDesktopSiteWebProcessPlugInListener-Protocol.h>
 #import <SafariServices/SFReaderWebProcessControllerProtocol-Protocol.h>
 
-@class NSDictionary, NSMutableSet, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInPageSafeBrowsingController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
+@class NSDictionary, NSMutableDictionary, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInAppleConnectExtensionController, _SFWebProcessPlugInPageSafeBrowsingController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
 @protocol RequestDesktopSiteUIProcessListener, SFReaderEventsListener;
 
 @interface _SFWebProcessPlugInReaderEnabledPageController : _SFWebProcessPlugInAutoFillPageController <RequestDesktopSiteWebProcessPlugInListener, SFReaderWebProcessControllerProtocol>
@@ -24,18 +24,18 @@
     SFWebProcessPlugInPageExtensionController *_extensionController;
     _SFWebProcessSharingLinkExtractor *_sharingLinkExtractor;
     SFWebProcessPlugInCertificateWarningController *_certificateWarningController;
+    _SFWebProcessPlugInAppleConnectExtensionController *_appleConnectExtensionController;
     id<RequestDesktopSiteUIProcessListener> _requestDesktopSiteUIProcessListener;
     _WKRemoteObjectInterface *_requestDesktopSiteWebProcessPlugInListenerInterface;
+    NSMutableDictionary *_domainToUserAgentPolicyMap;
     BOOL _viewingReadingListArchive;
     NSDictionary *_initalArticleScrollPositionAsDictionary;
     NSDictionary *_initialReaderConfiguration;
-    NSMutableSet *_domainsNeedingDesktopUserAgent;
 }
 
 @property (nonatomic) long long cachedReaderTopScrollOffset; // @synthesize cachedReaderTopScrollOffset=_cachedReaderTopScrollOffset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSMutableSet *domainsNeedingDesktopUserAgent; // @synthesize domainsNeedingDesktopUserAgent=_domainsNeedingDesktopUserAgent;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDictionary *initalArticleScrollPositionAsDictionary; // @synthesize initalArticleScrollPositionAsDictionary=_initalArticleScrollPositionAsDictionary;
 @property (readonly, nonatomic) NSDictionary *initialReaderConfiguration; // @synthesize initialReaderConfiguration=_initialReaderConfiguration;
@@ -46,11 +46,13 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_clearReaderControllerInterface;
-- (void)_deferPageLoadingUntilSafeBrowsingCheckCompleteForFrame:(id)arg1;
+- (void)_deferPageLoadingUntilSafeBrowsingCheckCompleteForFrame:(id)arg1 isMainFrame:(BOOL)arg2;
 - (void)_detectAvailabilityAfterDelay:(double)arg1 loadEvent:(int)arg2;
 - (void)_detectReaderAvailabilityAfterSameDocumentNavigation;
+- (void)_removeLoadDeferringReasonsForSafeBrowsingIfNecessary;
 - (void)_setUpReaderActivityListenerProxy;
 - (void)_setUpReaderControllerInterface;
+- (void)_setUpUIProcessListenerIfNeeded;
 - (void)collectReaderContentForMail;
 - (void)collectReadingListItemInfoWithBookmarkID:(id)arg1;
 - (void)decreaseReaderTextSize;
@@ -64,7 +66,7 @@
 - (struct OpaqueJSValue *)originalArticleFinder;
 - (void)prepareReaderContentForPrinting;
 - (void)prepareToTransitionToReader;
-- (void)readerContentIsReadyForDisplay:(id)arg1;
+- (void)readerContentDidBecomeReadyWithDetectedLanguage:(id)arg1;
 - (void)readerTextWasExtracted:(id)arg1;
 - (void)setReaderFont:(id)arg1;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(BOOL)arg3;
@@ -72,9 +74,9 @@
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didCommitLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishDocumentLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishLoadForFrame:(id)arg2;
-- (void)webProcessPlugInBrowserContextController:(id)arg1 didReceiveServerRedirectForProvisionalLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didSameDocumentNavigation:(long long)arg2 forFrame:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didStartProvisionalLoadForFrame:(id)arg2;
+- (id)webProcessPlugInBrowserContextController:(id)arg1 frame:(id)arg2 userAgentForURL:(id)arg3;
 - (id)webProcessPlugInBrowserContextController:(id)arg1 frame:(id)arg2 willSendRequestForResource:(unsigned long long)arg3 request:(id)arg4 redirectResponse:(id)arg5;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;

@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSWPOffscreenColumn-Protocol.h>
 
-@class NSString, TSWPStorage;
+@class NSMutableArray, NSString, TSWPStorage;
 @protocol TSWPStyleProvider;
 
 __attribute__((visibility("hidden")))
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
     id<TSWPStyleProvider> _styleProvider;
     shared_ptr_1a254aea _lineFragmentArray;
     unsigned long long _storageChangeCount;
-    vector_e65b05c3 *_paragraphAdornments;
+    NSMutableArray *_paragraphAdornments;
     BOOL _textIsVertical;
 }
 
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double erasableContentBottom; // @synthesize erasableContentBottom=_erasableContentBottom;
 @property (readonly, nonatomic) struct CGRect frameBounds;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL lastLineIsEmptyAndHasListLabel;
 @property (nonatomic) int layoutResultFlags; // @synthesize layoutResultFlags=_layoutResultFlags;
 @property (nonatomic) double nextLinePosition; // @synthesize nextLinePosition=_nextLinePosition;
 @property (nonatomic) unsigned long long nextWidowPullsDownFromCharIndex; // @synthesize nextWidowPullsDownFromCharIndex=_nextWidowPullsDownFromCharIndex;
@@ -60,12 +61,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL textIsVertical; // @synthesize textIsVertical=_textIsVertical;
 @property (nonatomic) struct CGAffineTransform transformFromWP; // @synthesize transformFromWP=_transform;
 @property (readonly, nonatomic) struct CGAffineTransform transformToWP;
-@property (readonly, nonatomic) struct CGRect typographicBoundsForCell;
+@property (readonly, nonatomic) struct CGRect typographicBounds;
 @property (nonatomic) struct CGRect wpBounds; // @synthesize wpBounds=_frameBounds;
 
 + (struct CGRect)boundsRectForSelection:(id)arg1 columnArray:(id)arg2 includeRuby:(BOOL)arg3 includePaginatedAttachments:(BOOL)arg4;
 + (struct CGRect)caretRectForInsertionPoint:(id)arg1 withColumns:(id)arg2;
 + (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6;
++ (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 pastCenterGoesToNextChar:(BOOL)arg5 constrainToAscentAndDescent:(BOOL)arg6 isAtEndOfLine:(BOOL *)arg7 leadingEdge:(BOOL *)arg8;
 + (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 pastCenterGoesToNextChar:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7;
 + (id)closestColumnInColumnsArray:(id)arg1 forPoint:(struct CGPoint)arg2 ignoreEmptyColumns:(BOOL)arg3 ignoreDrawableOnlyColumns:(BOOL)arg4;
 + (id)columnForCharIndex:(unsigned long long)arg1 allowEndOfColumn:(BOOL)arg2 withColumns:(id)arg3;
@@ -81,22 +83,24 @@ __attribute__((visibility("hidden")))
 + (id)smartFieldWithAttributeKind:(int)arg1 inColumnArray:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addAdornmentRect:(const struct TSWPAdornmentRect *)arg1;
+- (void)addAdornmentRect:(id)arg1;
 - (unsigned long long)anchoredCharCount;
 - (struct CGRect)boundsOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (struct _TSWPCharIndexAndPosition)calcAttachmentPositionForDrawable:(id)arg1 atPoint:(struct CGPoint)arg2 inTextLayoutTarget:(id)arg3 tlBoundsInfluencingWrap:(struct CGPoint)arg4 wrapOutset:(struct CGSize)arg5 wrapMargin:(double)arg6 makeInline:(BOOL)arg7;
 - (struct CGRect)caretRectForSelection:(id)arg1;
 - (struct CGRect)changeBarRectForLineFragment:(const struct TSWPLineFragment *)arg1 layoutTarget:(id)arg2;
 - (unsigned long long)charIndexForSelectionFromPoint:(struct CGPoint)arg1 isTail:(BOOL)arg2;
+- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 pastCenterGoesToNextChar:(BOOL)arg3 allowNotFound:(BOOL)arg4 constrainToAscentAndDescent:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7;
+- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 pastCenterGoesToNextChar:(BOOL)arg3 allowNotFound:(BOOL)arg4 constrainToAscentAndDescent:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 outFragment:(const struct TSWPLineFragment **)arg7 leadingEdge:(BOOL *)arg8;
 - (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 pastCenterGoesToNextChar:(BOOL)arg3 allowNotFound:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6;
 - (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 pastCenterGoesToNextChar:(BOOL)arg3 allowNotFound:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 outFragment:(const struct TSWPLineFragment **)arg6 leadingEdge:(BOOL *)arg7;
-- (unsigned long long)charIndexFromWPPoint:(struct CGPoint)arg1 pastCenterGoesToNextChar:(BOOL)arg2 allowNotFound:(BOOL)arg3 outFragment:(const struct TSWPLineFragment **)arg4 leadingEdge:(BOOL *)arg5;
+- (unsigned long long)charIndexFromWPPoint:(struct CGPoint)arg1 pastCenterGoesToNextChar:(BOOL)arg2 allowNotFound:(BOOL)arg3 constrainToAscentAndDescent:(BOOL)arg4 outFragment:(const struct TSWPLineFragment **)arg5 leadingEdge:(BOOL *)arg6;
 - (void)clearAdornments;
 - (struct CGRect)columnRectForRange:(struct _NSRange)arg1;
 - (void)dealloc;
 - (id)drawableIntersectionRectsForSelection:(id)arg1 inTarget:(id)arg2;
 - (void)enumerateParagraphAdornmentsUsingBlock:(CDUnknownBlockType)arg1;
-- (struct CGRect)erasableBounds:(unsigned int)arg1;
+- (struct CGRect)erasableBounds:(unsigned long long)arg1;
 - (struct CGRect)erasableRectForSelectionRange:(struct _NSRange)arg1;
 - (struct CGRect)firstRectForSelection:(id)arg1 includeSpaceAfter:(BOOL)arg2 includeSpaceBefore:(BOOL)arg3 includeLeading:(BOOL)arg4;
 - (unsigned int)fontTraitsForRange:(struct _NSRange)arg1 includingLabel:(BOOL)arg2;
@@ -115,7 +119,7 @@ __attribute__((visibility("hidden")))
 - (const struct TSWPLineFragment *)lineFragmentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lineFragmentCountForBaseline:(double)arg1;
 - (unsigned long long)lineIndexForCharIndex:(unsigned long long)arg1 eol:(BOOL)arg2;
-- (CDStruct_b7a3d57d)lineMetricsAtCharIndex:(unsigned long long)arg1 allowEndOfLine:(BOOL)arg2;
+- (CDStruct_d12891c8)lineMetricsAtCharIndex:(unsigned long long)arg1 allowEndOfLine:(BOOL)arg2;
 - (id)lineSelectionsForSelection:(id)arg1;
 - (double)logicalBoundsBottom;
 - (double)logicalBoundsTop;
@@ -130,12 +134,14 @@ __attribute__((visibility("hidden")))
 - (void)pInfoForCharIndex:(unsigned long long)arg1 isAtStart:(out BOOL *)arg2 isAtEnd:(out BOOL *)arg3;
 - (id)pMutableRectsForSelectionRange:(struct _NSRange)arg1 selectionType:(int)arg2 includeSpaceAfter:(BOOL)arg3 includeSpaceBefore:(BOOL)arg4 includeLeading:(BOOL)arg5 forParagraphMode:(BOOL)arg6 includeRuby:(BOOL)arg7 includePaginatedAttachments:(BOOL)arg8 inranges:(id)arg9 outranges:(id *)arg10;
 - (unsigned long long)pRemapCharIndex:(unsigned long long)arg1 outIsAfterBreak:(out BOOL *)arg2 outWithTextSource:(out id *)arg3;
+- (unsigned long long)p_charIndexWithTextClosestToWPPoint:(struct CGPoint)arg1 pastCenterGoesToNextChar:(BOOL)arg2 outFragment:(const struct TSWPLineFragment **)arg3 leadingEdge:(BOOL *)arg4;
+- (BOOL)p_pencilAnnotationsShouldSkipLineFragment:(const struct TSWPLineFragment *)arg1;
 - (id)partitionedLayoutForInfo:(id)arg1;
 - (struct _NSRange)rangeOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (id)rectsForSelection:(id)arg1 ranges:(id *)arg2;
 - (id)rectsForSelectionRange:(struct _NSRange)arg1 selectionType:(int)arg2 forParagraphMode:(BOOL)arg3 includeRuby:(BOOL)arg4 includePaginatedAttachments:(BOOL)arg5;
 - (id)rectsForSelectionRanges:(id)arg1 selectionType:(int)arg2;
-- (void)renderWithRenderer:(id)arg1 currentSelection:(id)arg2 limitSelection:(id)arg3 listRange:(struct _NSRange)arg4 rubyGlyphRange:(struct _NSRange)arg5 isCanvasInteractive:(BOOL)arg6 suppressedMisspellingRange:(struct _NSRange)arg7 blackAndWhite:(BOOL)arg8 dictationInterpretations:(const struct TSWPRangeVector *)arg9 autocorrections:(const struct TSWPRangeVector *)arg10 markedRange:(struct _NSRange)arg11 markedText:(id)arg12 renderMode:(int)arg13 pageCount:(unsigned long long)arg14 suppressInvisibles:(BOOL)arg15 suppressFontSmoothing:(BOOL)arg16 currentCanvasSelection:(id)arg17;
+- (void)renderWithRenderer:(id)arg1 currentSelection:(id)arg2 limitSelection:(id)arg3 listRange:(struct _NSRange)arg4 rubyGlyphRange:(struct _NSRange)arg5 isCanvasInteractive:(BOOL)arg6 suppressedMisspellingRange:(struct _NSRange)arg7 blackAndWhite:(BOOL)arg8 dictationInterpretations:(id)arg9 autocorrections:(id)arg10 markedRange:(struct _NSRange)arg11 markedText:(id)arg12 renderMode:(int)arg13 pageCount:(unsigned long long)arg14 suppressInvisibles:(BOOL)arg15 suppressFontSmoothing:(BOOL)arg16 currentCanvasSelection:(id)arg17;
 - (BOOL)requiresGlyphVectorsForHeightMeasurement;
 - (void)setLineFragmentArray:(const shared_ptr_1a254aea *)arg1;
 - (id)singleLinePartitionedInfoAtStart:(BOOL)arg1;

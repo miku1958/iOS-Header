@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <iAd/ADAdSheetConnectionDelegate-Protocol.h>
-#import <iAd/ADAdSheetProxyDelegate-Protocol.h>
 
 @class ADAdSheetConnection, NSString;
 
-@interface ADOptInManager : NSObject <ADAdSheetConnectionDelegate, ADAdSheetProxyDelegate>
+@interface ADOptInManager : NSObject <ADAdSheetConnectionDelegate>
 {
     ADAdSheetConnection *_connection;
 }
@@ -25,7 +24,6 @@
 + (id)sharedManager;
 - (void)adSheetConnectionInterrupted;
 - (id)adSheetMachServiceName;
-- (id)additionalAdSheetLaunchOptions;
 - (void)configureConnection:(id)arg1;
 - (void)dealloc;
 - (void)getiAdIDsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -36,7 +34,6 @@
 - (void)refreshOptInStatus;
 - (void)refreshOptInStatusRefreshingWeakToken:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setOptInStatus:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)shouldLaunchAdSheet;
 
 @end
 

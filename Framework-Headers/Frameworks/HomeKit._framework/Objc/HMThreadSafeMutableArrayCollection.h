@@ -24,6 +24,7 @@
 + (id)arrayWithArray:(id)arg1;
 - (void).cxx_destruct;
 - (void)addObject:(id)arg1;
+- (void)addObjectIfNotPresent:(id)arg1;
 - (void)addObjectsFromArray:(id)arg1;
 - (BOOL)containsObject:(id)arg1;
 - (id)filteredArrayUsingPredicate:(id)arg1;

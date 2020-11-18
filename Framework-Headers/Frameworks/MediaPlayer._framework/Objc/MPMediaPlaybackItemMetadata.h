@@ -52,6 +52,7 @@
     NSNumber *_iTunesStoreContentDSID;
     NSNumber *_rentalIdentifier;
     NSDictionary *_hlsOfflinePlaybackKeys;
+    NSString *_hlsPlaylistURLString;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *additionalHTTPHeaderFields;
@@ -74,6 +75,7 @@
 @property (readonly, nonatomic) double expectedDuration; // @synthesize expectedDuration=_expectedDuration;
 @property (readonly, copy, nonatomic) NSString *genreTitle; // @synthesize genreTitle=_genreTitle;
 @property (readonly, nonatomic) NSDictionary *hlsOfflinePlaybackKeys; // @synthesize hlsOfflinePlaybackKeys=_hlsOfflinePlaybackKeys;
+@property (readonly, copy, nonatomic) NSString *hlsPlaylistURLString; // @synthesize hlsPlaylistURLString=_hlsPlaylistURLString;
 @property (readonly, copy, nonatomic) NSNumber *iTunesStoreContentDSID; // @synthesize iTunesStoreContentDSID=_iTunesStoreContentDSID;
 @property (readonly, copy, nonatomic) NSString *iTunesStoreContentDownloadParameters;
 @property (readonly, copy, nonatomic) NSNumber *iTunesStoreContentID; // @synthesize iTunesStoreContentID=_iTunesStoreContentID;

@@ -20,6 +20,7 @@
     long long _ivarQueue_videoPlayerItemRequestID;
     BOOL _ivarQueue_aggressivelyCacheVideoFrames;
     BOOL _ivarQueue_reversesMoreVideoFramesInMemory;
+    BOOL _ivarQueue_decodesAllFramesDuringOrdinaryPlayback;
     CDStruct_1b6d18a9 _ivarQueue_prePhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_postPhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_playerItemPhotoTime;
@@ -93,6 +94,7 @@
 - (id)_videoPlayerItem;
 - (void)cancelLoading;
 - (void)dealloc;
+- (BOOL)decodesAllFramesDuringOrdinaryPlayback;
 - (void)didPerformChanges;
 - (void)discardContentBelowLoadingTarget;
 - (id)init;
@@ -100,6 +102,7 @@
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)resetAVObjects;
+- (void)setDecodesAllFramesDuringOrdinaryPlayback:(BOOL)arg1;
 
 @end
 

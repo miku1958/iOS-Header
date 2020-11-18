@@ -27,9 +27,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL needsFeedItemHeadlinesFetch;
+@property (readonly, nonatomic) unsigned long long preferredDynamicSlotAllocation;
 @property (readonly, copy, nonatomic) SFSearchResult *searchResult;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long todayItemType;
+@property (readonly, nonatomic) BOOL usesDynamicSlotAllocation;
 @property (readonly, copy, nonatomic) NTPBTodaySectionConfigWebEmbed *webEmbed; // @synthesize webEmbed=_webEmbed;
 
 - (void).cxx_destruct;

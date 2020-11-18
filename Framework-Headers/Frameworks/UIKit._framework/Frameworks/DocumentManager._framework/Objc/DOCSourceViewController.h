@@ -10,7 +10,7 @@
 #import <DocumentManager/DOCHostSourceViewControllerProxy-Protocol.h>
 #import <DocumentManager/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class DOCAppearance, DOCConfiguration, NSString, UINavigationController, _UIResilientRemoteViewContainerViewController;
+@class DOCAppearance, DOCConfiguration, NSArray, NSString, UINavigationController, _UIResilientRemoteViewContainerViewController;
 @protocol DOCRemoteAppearanceInterface, DOCServiceSourceViewControllerProxy, DOCSourceViewControllerDelegate;
 
 @interface DOCSourceViewController : UIViewController <DOCHostSourceViewControllerProxy, DOCAppearanceProtocol, UIPopoverPresentationControllerDelegate>
@@ -22,10 +22,12 @@
     BOOL _editing;
     UINavigationController *_internalNavigationController;
     id<DOCSourceViewControllerDelegate> _sourceDelegate;
+    NSArray *_additionalTrailingNavigationBarButtonItems;
     id<DOCServiceSourceViewControllerProxy> _serviceProxy;
     DOCConfiguration *_configuration;
 }
 
+@property (strong, nonatomic) NSArray *additionalTrailingNavigationBarButtonItems; // @synthesize additionalTrailingNavigationBarButtonItems=_additionalTrailingNavigationBarButtonItems;
 @property (readonly) DOCConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -56,10 +58,12 @@
 - (void)removeViewController:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showLocation:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAppearance:(id)arg1;
 - (void)updatePreferredSize:(struct CGSize)arg1;
 - (void)updateViewsForParent:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

@@ -62,6 +62,7 @@
 @property (readonly, nonatomic) double scale;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long tags; // @synthesize tags=_tags;
+@property (readonly, nonatomic, getter=isTatlDisplay) BOOL tatlDisplay;
 
 + (BOOL)supportsSecureCoding;
 - (id)CADisplay;

@@ -22,6 +22,8 @@
 + (Class)controlItemClass;
 - (id)createDetailsViewController;
 - (id)createInteractionCoordinator;
+- (id)secondaryQuickControlPresentationStyle;
+- (BOOL)shouldShowControlWhenUnreachable;
 
 @end
 

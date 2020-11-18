@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariShared/WBSParsecSearchResult.h>
+#import <SafariShared/WBSParsecLegacySearchResult.h>
 
-#import <SafariShared/WBSParsecSearchMapsResultFeedbackSenderClient-Protocol.h>
-#import <SafariShared/WBSParsecSearchResultPresentedInCard-Protocol.h>
+#import <SafariShared/WBSParsecSearchSimpleResult-Protocol.h>
 
 @class NSArray, NSNumber, NSString, WBSParsecImageRepresentation, WBSParsecSearchMapsResultFeedbackSender;
 @protocol WBSParsecSearchSession;
 
-@interface WBSParsecSearchSimpleResult : WBSParsecSearchResult <WBSParsecSearchMapsResultFeedbackSenderClient, WBSParsecSearchResultPresentedInCard>
+@interface WBSParsecSearchSimpleResult : WBSParsecLegacySearchResult <WBSParsecSearchSimpleResult>
 {
     WBSParsecImageRepresentation *_titleGlyph;
     NSArray *_moreIconRepresentations;
@@ -32,18 +31,15 @@
 @property (readonly, nonatomic) NSNumber *descriptionMaximumNumberOfLines; // @synthesize descriptionMaximumNumberOfLines=_descriptionMaximumNumberOfLines;
 @property (readonly, nonatomic) BOOL descriptionTextCanWrap; // @synthesize descriptionTextCanWrap=_descriptionTextCanWrap;
 @property (readonly, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
-@property (readonly, nonatomic) BOOL hasMoreIcons;
 @property (readonly, nonatomic) BOOL hasSingleLineDescriptionAndTitle; // @synthesize hasSingleLineDescriptionAndTitle=_hasSingleLineDescriptionAndTitle;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WBSParsecSearchMapsResultFeedbackSender *mapsFeedbackSender; // @synthesize mapsFeedbackSender=_mapsFeedbackSender;
 @property (strong, nonatomic) id<WBSParsecSearchSession> parsecSearchSession; // @synthesize parsecSearchSession=_parsecSearchSession;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSNumber *titleMaximumNumberOfLines; // @synthesize titleMaximumNumberOfLines=_titleMaximumNumberOfLines;
-@property (readonly, nonatomic) BOOL willPresentResultInCard;
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
-- (id)moreIconsWithSession:(id)arg1;
 - (id)titleGlyphWithSession:(id)arg1;
 
 @end

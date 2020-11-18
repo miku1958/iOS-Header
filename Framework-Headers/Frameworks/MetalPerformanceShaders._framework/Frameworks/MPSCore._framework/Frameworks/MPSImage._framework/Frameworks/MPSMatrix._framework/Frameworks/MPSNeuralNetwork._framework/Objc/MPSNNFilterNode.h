@@ -28,8 +28,16 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)debugQuickLookObject;
+- (Class)gradientClass;
+- (id)gradientFilterWithSource:(id)arg1;
+- (id)gradientFilterWithSources:(id)arg1;
+- (id)gradientFiltersWithSource:(id)arg1;
+- (id)gradientFiltersWithSources:(id)arg1;
 - (id)initWithSourceImages:(id)arg1 sourceStates:(id)arg2 paddingPolicy:(id)arg3;
 - (struct FilterGraphNode *)newFilterNode;
+- (id)resultStatesNoAllocate;
+- (id)sourceImages;
+- (id)sourceStates;
 
 @end
 

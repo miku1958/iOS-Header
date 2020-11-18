@@ -6,19 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSLocale, NSUserDefaults;
-@protocol OS_dispatch_queue;
+@class NSLocale, NSNumberFormatter, NSUserDefaults;
+@protocol FMDistanceCalculatorLocalizationDelegate, OS_dispatch_queue;
 
 @interface FMDistanceCalculator : NSObject
 {
+    NSObject<FMDistanceCalculatorLocalizationDelegate> *_localizationDelegate;
     NSLocale *_locale;
+    NSLocale *_measurementSystemLocale;
     NSUserDefaults *_userDefaults;
     NSObject<OS_dispatch_queue> *_calculationQueue;
+    NSNumberFormatter *_formatter;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *calculationQueue; // @synthesize calculationQueue=_calculationQueue;
+@property (strong, nonatomic) NSNumberFormatter *formatter; // @synthesize formatter=_formatter;
 @property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property (weak, nonatomic) NSObject<FMDistanceCalculatorLocalizationDelegate> *localizationDelegate; // @synthesize localizationDelegate=_localizationDelegate;
 @property (nonatomic) long long measurementSystem;
+@property (strong, nonatomic) NSLocale *measurementSystemLocale; // @synthesize measurementSystemLocale=_measurementSystemLocale;
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 - (void).cxx_destruct;
@@ -30,7 +36,10 @@
 - (id)init;
 - (id)initWithDefaultsSuiteName:(id)arg1;
 - (id)initWithDefaultsSuiteName:(id)arg1 locale:(id)arg2;
+- (id)initWithDefaultsSuiteName:(id)arg1 locale:(id)arg2 measurementSystemLocale:(id)arg3;
 - (id)localizedDistanceFromLocation:(id)arg1 toLocation:(id)arg2;
+- (id)localizedStringForKey:(id)arg1 value:(id)arg2;
+- (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 
 @end
 

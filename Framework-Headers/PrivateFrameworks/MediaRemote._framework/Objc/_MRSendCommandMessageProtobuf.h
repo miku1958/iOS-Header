@@ -27,11 +27,11 @@
 @property (strong, nonatomic) _MRCommandOptionsProtobuf *options; // @synthesize options=_options;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 
+- (void).cxx_destruct;
 - (int)StringAsCommand:(id)arg1;
 - (id)commandAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

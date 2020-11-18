@@ -68,7 +68,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_axUpdatesFrequentlyTrait;
 - (unsigned long long)_axVisitedTrait;
 - (unsigned long long)_axWebContentTrait;
-- (RefPtr_59db400e)_convertToDOMRange:(struct _NSRange)arg1;
+- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1;
 - (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
 - (BOOL)_prepareAccessibilityCall;
 - (id)_stringForRange:(struct _NSRange)arg1 attributed:(BOOL)arg2;
@@ -115,8 +115,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)accessibilityIsDialog;
 - (BOOL)accessibilityIsExpanded;
 - (BOOL)accessibilityIsMathTopObject;
+- (BOOL)accessibilityIsMediaMuted;
+- (BOOL)accessibilityIsMediaPlaying;
 - (BOOL)accessibilityIsPressed;
 - (BOOL)accessibilityIsShowingValidationMessage;
+- (BOOL)accessibilityIsWebInteractiveVideo;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
 - (id)accessibilityLinkedElement;
@@ -152,9 +155,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)accessibilitySupportsARIAExpanded;
 - (BOOL)accessibilitySupportsARIAPressed;
 - (id)accessibilityTitleElement;
+- (void)accessibilityToggleMuteForMedia;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityURL;
 - (id)accessibilityValue;
+- (void)accessibilityVideoEnterFullscreen;
 - (id)arrayOfTextForTextMarkers:(id)arg1 attributed:(BOOL)arg2;
 - (id)attachmentView;
 - (id)attributedStringForRange:(struct _NSRange)arg1;
@@ -175,6 +180,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)frameForTextMarkers:(id)arg1;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (id)initWithAccessibilityObject:(struct AccessibilityObject *)arg1;
+- (id)interactiveVideoDescription;
 - (BOOL)isAccessibilityElement;
 - (BOOL)isAttachment;
 - (BOOL)isSVGGroupElement;
@@ -197,9 +203,9 @@ __attribute__((visibility("hidden")))
 - (void)postValueChangedNotification;
 - (id)previousMarkerForCharacterOffset:(struct CharacterOffset *)arg1;
 - (id)previousMarkerForMarker:(id)arg1;
-- (RefPtr_59db400e)rangeForTextMarkers:(id)arg1;
-- (RefPtr_59db400e)rangeFromMarkers:(id)arg1 withText:(id)arg2;
-- (id)rectsForSelectionRects:(const Vector_2a2f4e8a *)arg1;
+- (RefPtr_033e7b31)rangeForTextMarkers:(id)arg1;
+- (RefPtr_033e7b31)rangeFromMarkers:(id)arg1 withText:(id)arg2;
+- (id)rectsForSelectionRects:(const Vector_871663bb *)arg1;
 - (id)selectedTextMarker;
 - (id)selectionRangeString;
 - (id)startOrEndTextMarkerForTextMarkers:(id)arg1 isStart:(BOOL)arg2;
@@ -214,7 +220,7 @@ __attribute__((visibility("hidden")))
 - (id)textMarkerRangeForMarkers:(id)arg1;
 - (id)textMarkerRangeForSelection;
 - (id)textMarkerRangeFromMarkers:(id)arg1 withText:(id)arg2;
-- (id)textMarkersForRange:(RefPtr_59db400e)arg1;
+- (id)textMarkersForRange:(RefPtr_033e7b31)arg1;
 - (id)textRectsFromMarkers:(id)arg1 withText:(id)arg2;
 - (struct AccessibilityObject *)treeItemParentForObject:(struct AccessibilityObject *)arg1;
 

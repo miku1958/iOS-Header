@@ -9,7 +9,7 @@
 #import <ARKit/ARSensor-Protocol.h>
 #import <ARKit/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
 
-@class AVCaptureAudioDataOutput, AVCaptureDevice, AVCaptureSession, AVCaptureVideoDataOutput, NSString;
+@class ARImageSensorSettings, AVCaptureAudioDataOutput, AVCaptureDevice, AVCaptureSession, AVCaptureVideoDataOutput, NSString;
 @protocol ARSensorDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, OS_dispatch_queue;
 
 @interface ARImageSensor : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, ARSensor>
@@ -18,26 +18,26 @@
     id<AVCaptureVideoDataOutputSampleBufferDelegate> _previousOutputDelegate;
     NSObject<OS_dispatch_queue> *_previousOutputCallbackQueue;
     NSObject<OS_dispatch_queue> *_captureQueue;
-    BOOL _autoFocusEnabled;
     BOOL _running;
     BOOL _interrupted;
+    float _defaultLensPosition;
     id<ARSensorDelegate> _delegate;
+    ARImageSensorSettings *_settings;
     AVCaptureDevice *_captureDevice;
     AVCaptureSession *_captureSession;
     AVCaptureVideoDataOutput *_videoOutput;
     unsigned long long _powerUsage;
-    CDStruct_79c71658 _videoResolution;
     long long _captureFramesPerSecond;
     long long _renderFramesPerSecond;
 }
 
 @property (strong, nonatomic) AVCaptureAudioDataOutput *audioOutput;
-@property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @synthesize autoFocusEnabled=_autoFocusEnabled;
 @property (readonly, nonatomic) AVCaptureDevice *captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (readonly) long long captureFramesPerSecond;
 @property long long captureFramesPerSecond; // @synthesize captureFramesPerSecond=_captureFramesPerSecond;
 @property (readonly, nonatomic) AVCaptureSession *captureSession; // @synthesize captureSession=_captureSession;
 @property (readonly, copy) NSString *debugDescription;
+@property float defaultLensPosition; // @synthesize defaultLensPosition=_defaultLensPosition;
 @property (weak, nonatomic) id<ARSensorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -46,11 +46,10 @@
 @property (readonly) long long renderFramesPerSecond;
 @property long long renderFramesPerSecond; // @synthesize renderFramesPerSecond=_renderFramesPerSecond;
 @property BOOL running; // @synthesize running=_running;
+@property (readonly, nonatomic) ARImageSensorSettings *settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) AVCaptureVideoDataOutput *videoOutput; // @synthesize videoOutput=_videoOutput;
-@property (nonatomic) CDStruct_79c71658 videoResolution; // @synthesize videoResolution=_videoResolution;
 
-+ (id)bestFormatForDevice:(id)arg1 withResolution:(CDStruct_79c71658)arg2 pixelFormatType:(unsigned int)arg3 frameRate:(double)arg4;
 + (double)closestFrameRateIn:(id)arg1 target:(double)arg2 preferHigher:(BOOL)arg3;
 + (float)defaultLensPosition;
 - (void).cxx_destruct;
@@ -60,16 +59,20 @@
 - (void)_configureCameraWhiteBalanceForDevice:(id)arg1;
 - (id)_createAudioInput:(id *)arg1;
 - (BOOL)_validateCameraAuthorization;
+- (BOOL)canReconfigure:(id)arg1;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)captureSessionStateChanged:(id)arg1;
 - (id)configureCaptureDevice;
 - (id)configureCaptureSession;
 - (void)dealloc;
-- (id)initWithDevicePosition:(long long)arg1 deviceType:(id)arg2;
-- (id)initWithDevicePosition:(long long)arg1 deviceType:(id)arg2 captureSession:(id)arg3;
+- (void)enableAutoFocusForDevice:(id)arg1;
+- (id)init;
+- (id)initWithSettings:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (double)preferredCaptureFrameRateForPowerUsage:(unsigned long long)arg1 devicePosition:(long long)arg2;
 - (long long)preferredRenderFrameRateForPowerUsage:(unsigned long long)arg1 devicePosition:(long long)arg2;
 - (unsigned long long)providedDataTypes;
+- (void)reconfigure:(id)arg1;
 - (void)start;
 - (void)stop;
 

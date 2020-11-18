@@ -51,6 +51,7 @@
 - (void)preloadBuildingTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadRoadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadTransitTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)roadTileKeysNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2;
 
 @end
 

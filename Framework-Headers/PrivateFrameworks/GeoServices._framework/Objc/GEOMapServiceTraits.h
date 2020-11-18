@@ -60,8 +60,10 @@
     BOOL _isAPICall;
     BOOL _isRedoSearch;
     BOOL _navigating;
+    BOOL _supportDirectionIntentAutocomplete;
     BOOL _supportDirectionIntentSearch;
     BOOL _supportDymSuggestion;
+    BOOL _supportUnresolvedDirectionIntent;
     BOOL _useBackgroundUrl;
     BOOL _wantsBrandIcon;
     struct {
@@ -88,8 +90,10 @@
         unsigned int isAPICall:1;
         unsigned int isRedoSearch:1;
         unsigned int navigating:1;
+        unsigned int supportDirectionIntentAutocomplete:1;
         unsigned int supportDirectionIntentSearch:1;
         unsigned int supportDymSuggestion:1;
+        unsigned int supportUnresolvedDirectionIntent:1;
         unsigned int useBackgroundUrl:1;
         unsigned int wantsBrandIcon:1;
     } _has;
@@ -151,8 +155,10 @@
 @property (nonatomic) BOOL hasSessionId;
 @property (nonatomic) BOOL hasSessionRelativeTimestamp;
 @property (nonatomic) BOOL hasSource;
+@property (nonatomic) BOOL hasSupportDirectionIntentAutocomplete;
 @property (nonatomic) BOOL hasSupportDirectionIntentSearch;
 @property (nonatomic) BOOL hasSupportDymSuggestion;
+@property (nonatomic) BOOL hasSupportUnresolvedDirectionIntent;
 @property (nonatomic) BOOL hasTimeSinceMapEnteredForeground;
 @property (nonatomic) BOOL hasTimeSinceMapViewportChanged;
 @property (readonly, nonatomic) BOOL hasTransitOptions;
@@ -181,8 +187,10 @@
 @property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
 @property (nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property (nonatomic) int source; // @synthesize source=_source;
+@property (nonatomic) BOOL supportDirectionIntentAutocomplete; // @synthesize supportDirectionIntentAutocomplete=_supportDirectionIntentAutocomplete;
 @property (nonatomic) BOOL supportDirectionIntentSearch; // @synthesize supportDirectionIntentSearch=_supportDirectionIntentSearch;
 @property (nonatomic) BOOL supportDymSuggestion; // @synthesize supportDymSuggestion=_supportDymSuggestion;
+@property (nonatomic) BOOL supportUnresolvedDirectionIntent; // @synthesize supportUnresolvedDirectionIntent=_supportUnresolvedDirectionIntent;
 @property (nonatomic) unsigned int timeSinceMapEnteredForeground; // @synthesize timeSinceMapEnteredForeground=_timeSinceMapEnteredForeground;
 @property (nonatomic) unsigned int timeSinceMapViewportChanged; // @synthesize timeSinceMapViewportChanged=_timeSinceMapViewportChanged;
 @property (strong, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
@@ -225,8 +233,10 @@
 - (void)clearEngineTypes;
 - (void)clearHistoricalLocations;
 - (void)clearKnownClientResolvedTypes;
+- (void)clearLocations;
 - (void)clearPhotoSizes;
 - (void)clearReviewUserPhotoSizes;
+- (void)clearSessionId;
 - (void)clearTransportTypes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

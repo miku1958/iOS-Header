@@ -11,10 +11,10 @@
 @interface CKFetchShareMetadataOperation : CKOperation
 {
     BOOL _shouldFetchRootRecord;
-    NSArray *_shareURLs;
-    NSArray *_rootRecordDesiredKeys;
     CDUnknownBlockType _perShareMetadataBlock;
     CDUnknownBlockType _fetchShareMetadataCompletionBlock;
+    NSArray *_shareURLs;
+    NSArray *_rootRecordDesiredKeys;
     NSMutableDictionary *_errorsByURL;
     NSMutableSet *_packagesToDestroy;
 }

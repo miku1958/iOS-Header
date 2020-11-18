@@ -8,11 +8,12 @@
 
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 
-@class CLKImageProvider, CLKTextProvider, NSString, NTKUpNextAccessoryDescription, UIColor, UIImage;
+@class CLKImageProvider, CLKTextProvider, NSString, NSTimeZone, NTKUpNextAccessoryDescription, UIColor, UIImage;
 
 @interface NTKUpNextElementContent : NSObject <NSCopying>
 {
     BOOL _wantsFullCellPhoto;
+    NSTimeZone *_timeZone;
     BOOL _useMonospaceFont;
     BOOL _tintColorAffectsHeader;
     BOOL _bodyImageShouldStretch;
@@ -27,6 +28,7 @@
     CLKTextProvider *_description3TextProvider;
     UIColor *_tintColor;
     unsigned long long _style;
+    unsigned long long _headerFontStyle;
     unsigned long long _description1FontStyle;
     unsigned long long _description2FontStyle;
     NTKUpNextAccessoryDescription *_descriptionAccessory;
@@ -42,6 +44,7 @@
 @property (copy, nonatomic) CLKTextProvider *description2TextProvider; // @synthesize description2TextProvider=_description2TextProvider;
 @property (copy, nonatomic) CLKTextProvider *description3TextProvider; // @synthesize description3TextProvider=_description3TextProvider;
 @property (copy, nonatomic) NTKUpNextAccessoryDescription *descriptionAccessory; // @synthesize descriptionAccessory=_descriptionAccessory;
+@property (nonatomic) unsigned long long headerFontStyle; // @synthesize headerFontStyle=_headerFontStyle;
 @property (nonatomic) unsigned int headerImageEdge; // @synthesize headerImageEdge=_headerImageEdge;
 @property (copy, nonatomic) CLKImageProvider *headerImageProvider; // @synthesize headerImageProvider=_headerImageProvider;
 @property (copy, nonatomic) CLKTextProvider *headerTextProvider; // @synthesize headerTextProvider=_headerTextProvider;

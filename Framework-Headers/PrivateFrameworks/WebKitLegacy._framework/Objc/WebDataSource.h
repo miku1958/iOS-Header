@@ -40,7 +40,7 @@
 - (struct DocumentLoader *)_documentLoader;
 - (void)_finishedLoading;
 - (id)_imageElementWithImageResource:(id)arg1;
-- (id)_initWithDocumentLoader:(Ref_3e0aa115 *)arg1;
+- (id)_initWithDocumentLoader:(Ref_2c3922bd *)arg1;
 - (BOOL)_isDocumentHTML;
 - (id)_mainDocumentError;
 - (void)_makeRepresentation;

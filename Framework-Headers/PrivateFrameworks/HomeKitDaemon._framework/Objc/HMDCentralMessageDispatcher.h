@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFMessageDispatcher.h>
 
-@class HMDAdminEnforcementMessageFilter, HMDHomeManager, HMDMessageFilterChain, HMDSecureRemoteMessageTransport, NSMutableArray, NSMutableDictionary;
+@class HMDAdminEnforcementMessageFilter, HMDHomeManager, HMDMessageFilterChain, HMDSecureRemoteMessageFilter, HMDSecureRemoteMessageTransport, NSMutableArray, NSMutableDictionary;
 
 @interface HMDCentralMessageDispatcher : HMFMessageDispatcher
 {
@@ -14,6 +14,7 @@
     HMFMessageDispatcher *_recvDispatcher;
     NSMutableDictionary *_remoteGateways;
     HMDMessageFilterChain *_msgFilterChain;
+    HMDSecureRemoteMessageFilter *_secureRemoteMessageFilter;
     HMFMessageDispatcher *_notificationDispatcher;
     HMDHomeManager *_homeManager;
     NSMutableArray *_relayedMessages;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) HMFMessageDispatcher *recvDispatcher; // @synthesize recvDispatcher=_recvDispatcher;
 @property (readonly, nonatomic) NSMutableArray *relayedMessages; // @synthesize relayedMessages=_relayedMessages;
 @property (strong, nonatomic) NSMutableDictionary *remoteGateways; // @synthesize remoteGateways=_remoteGateways;
+@property (strong, nonatomic) HMDSecureRemoteMessageFilter *secureRemoteMessageFilter; // @synthesize secureRemoteMessageFilter=_secureRemoteMessageFilter;
 @property (readonly, nonatomic) HMDSecureRemoteMessageTransport *secureRemoteTransport;
 
 + (id)destinationWithTarget:(id)arg1 userID:(id)arg2 destination:(id)arg3 multicast:(BOOL)arg4;
