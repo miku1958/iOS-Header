@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
     SVXDeviceSetupContext *_deviceSetupContext;
     AFClockAlarmSnapshot *_clockAlarmSnapshot;
     AFClockTimerSnapshot *_clockTimerSnapshot;
+    unsigned long long _homeAnnouncementState;
     float _mediaPlaybackVolume;
     id _myriadToken;
     long long _myriadState;
@@ -71,7 +72,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_activateWithContext:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 nowPlayingAppPlaybackState:(long long)arg7 mediaPlaybackVolume:(float)arg8 speechSynthesisRecord:(id)arg9 speechSynthesisState:(long long)arg10 speechRecordingAlertPolicy:(id)arg11 taskTracker:(id)arg12 completion:(CDUnknownBlockType)arg13;
+- (void)_activateWithContext:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 homeAnnouncementState:(unsigned long long)arg7 nowPlayingAppPlaybackState:(long long)arg8 mediaPlaybackVolume:(float)arg9 speechSynthesisRecord:(id)arg10 speechSynthesisState:(long long)arg11 speechRecordingAlertPolicy:(id)arg12 taskTracker:(id)arg13 completion:(CDUnknownBlockType)arg14;
 - (void)_addRequestBarrier:(CDUnknownBlockType)arg1;
 - (void)_beginThinking;
 - (void)_beginWaitingForMyriadDecisionWithToken:(id)arg1;
@@ -146,7 +147,7 @@ __attribute__((visibility("hidden")))
 - (void)_startActiveAudioSessionRequestWithOptions:(unsigned long long)arg1 taskTracker:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_startRequestWithInfo:(id)arg1 clearsContext:(BOOL)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 taskTracker:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_startSessionIdleTimerWithTimeInterval:(double)arg1;
-- (void)_startSpeechRequestWithOptions:(id)arg1 clearsContext:(BOOL)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 nowPlayingAppPlaybackState:(long long)arg7 taskTracker:(id)arg8 completion:(CDUnknownBlockType)arg9;
+- (void)_startSpeechRequestWithOptions:(id)arg1 clearsContext:(BOOL)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 homeAnnouncementState:(unsigned long long)arg7 nowPlayingAppPlaybackState:(long long)arg8 taskTracker:(id)arg9 completion:(CDUnknownBlockType)arg10;
 - (void)_startSpeechSynthesisRequest:(id)arg1 languageCode:(id)arg2 gender:(long long)arg3 audioSessionID:(unsigned int)arg4 introductionSoundID:(long long)arg5 conclusionSoundID:(long long)arg6 taskTracker:(id)arg7 postActivationHandler:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)_stopSessionIdleTimer;
 - (void)_stopSpeech;
@@ -158,8 +159,8 @@ __attribute__((visibility("hidden")))
 - (void)_willChangeFromState:(long long)arg1 toState:(long long)arg2;
 - (void)acquireAudioSessionForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)activateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)activateWithContext:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 nowPlayingAppPlaybackState:(long long)arg7 mediaPlaybackVolume:(float)arg8 speechSynthesisRecord:(id)arg9 speechSynthesisState:(long long)arg10 speechRecordingAlertPolicy:(id)arg11 completion:(CDUnknownBlockType)arg12;
-- (void)activateWithSpeechRequestOptions:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 nowPlayingAppPlaybackState:(long long)arg7 completion:(CDUnknownBlockType)arg8;
+- (id)activateWithContext:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 homeAnnouncementState:(unsigned long long)arg7 nowPlayingAppPlaybackState:(long long)arg8 mediaPlaybackVolume:(float)arg9 speechSynthesisRecord:(id)arg10 speechSynthesisState:(long long)arg11 speechRecordingAlertPolicy:(id)arg12 completion:(CDUnknownBlockType)arg13;
+- (void)activateWithSpeechRequestOptions:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 homeAnnouncementState:(unsigned long long)arg7 nowPlayingAppPlaybackState:(long long)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)addRequestBarrier:(CDUnknownBlockType)arg1;
 - (void)assistantConnection:(id)arg1 audioSessionDidBecomeActive:(BOOL)arg2;
 - (void)assistantConnection:(id)arg1 audioSessionWillBecomeActive:(BOOL)arg2;
@@ -232,6 +233,7 @@ __attribute__((visibility("hidden")))
 - (void)updateClockTimerSnapshot:(id)arg1;
 - (void)updateDeviceProblemsState:(id)arg1;
 - (void)updateDeviceSetupContext:(id)arg1;
+- (void)updateHomeAnnouncementState:(unsigned long long)arg1;
 - (void)updateMediaPlaybackVolume:(float)arg1;
 - (void)updateNowPlayingAppPlaybackState:(long long)arg1;
 

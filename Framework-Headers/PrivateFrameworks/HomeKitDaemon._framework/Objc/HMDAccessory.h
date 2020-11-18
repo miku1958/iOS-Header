@@ -128,9 +128,11 @@
 @property (strong, nonatomic) HMDUserManagementOperationTimestamp *sharedAdminAddedTimestamp; // @synthesize sharedAdminAddedTimestamp=_sharedAdminAddedTimestamp;
 @property (strong, nonatomic) HMDSoftwareUpdate *softwareUpdate; // @synthesize softwareUpdate=_softwareUpdate;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsAnnounce;
 @property (readonly, nonatomic) BOOL supportsCompanionInitiatedRestart;
 @property (readonly, nonatomic) BOOL supportsMediaContentProfile;
 @property (readonly, nonatomic) BOOL supportsMultiUser;
+@property (readonly, nonatomic) BOOL supportsMusicAlarm;
 @property (readonly, nonatomic) BOOL supportsPersonalRequests;
 @property (readonly, nonatomic) BOOL supportsTargetControl;
 @property (readonly, nonatomic) BOOL supportsTargetController;

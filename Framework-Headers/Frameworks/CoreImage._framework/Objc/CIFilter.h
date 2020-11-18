@@ -227,6 +227,7 @@
 + (id)pinchDistortionFilter;
 + (id)pixellateFilter;
 + (id)pointillizeFilter;
++ (id)prewarmedFilterFromString:(id)arg1;
 + (id)radialGradientFilter;
 + (id)randomGeneratorFilter;
 + (void)registerFilterName:(id)arg1 constructor:(id)arg2 classAttributes:(id)arg3;
@@ -304,6 +305,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)outputImageCatchAll:(unsigned int)arg1;
+- (id)prewarmingString;
 - (void)setDefaults;
 - (void)setIdentity;
 - (void)setOption:(id)arg1 forKey:(id)arg2;
@@ -311,6 +313,7 @@
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)userInfo;
 - (id)valueForUndefinedKey:(id)arg1;
+- (BOOL)verifyPrewarmedFilter:(id)arg1;
 - (id)wrappedOutputImage10;
 - (id)wrappedOutputImage11;
 - (id)wrappedOutputImage12;

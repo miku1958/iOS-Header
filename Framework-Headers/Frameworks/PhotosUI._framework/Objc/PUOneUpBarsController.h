@@ -183,6 +183,7 @@
 - (void)_performToggleFavoriteAction;
 - (void)_performTrashAction;
 - (void)_resetIdentifierIndexes;
+- (void)_revealGainMapImage;
 - (long long)_scrubberType;
 - (BOOL)_shouldShowDoneEditingButton;
 - (unsigned long long)_sourceContextForActionPerformer;

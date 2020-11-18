@@ -34,6 +34,14 @@
 @property (nonatomic) BOOL inHomeCountry; // @synthesize inHomeCountry=_inHomeCountry;
 @property (nonatomic) int indicator; // @synthesize indicator=_indicator;
 @property (nonatomic) int indicatorOverride; // @synthesize indicatorOverride=_indicatorOverride;
+@property (readonly, nonatomic) BOOL newRadioCoverage;
+@property (readonly, nonatomic) BOOL newRadioDataBearer;
+@property (readonly, nonatomic) BOOL newRadioMmWaveDataBearer;
+@property (readonly, nonatomic) BOOL newRadioNsaCoverage;
+@property (readonly, nonatomic) BOOL newRadioNsaDataBearer;
+@property (readonly, nonatomic) BOOL newRadioSaCoverage;
+@property (readonly, nonatomic) BOOL newRadioSaDataBearer;
+@property (readonly, nonatomic) BOOL newRadioSub6DataBearer;
 @property (nonatomic) int radioTechnology; // @synthesize radioTechnology=_radioTechnology;
 @property (nonatomic) BOOL roamAllowed; // @synthesize roamAllowed=_roamAllowed;
 @property (nonatomic) unsigned int totalActiveContexts; // @synthesize totalActiveContexts=_totalActiveContexts;

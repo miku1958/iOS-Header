@@ -21,18 +21,22 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)deviceSupportsHDR;
 - (void).cxx_destruct;
 - (id)fileURLIfLocal;
 - (BOOL)hasAssociatedMediaMetadata;
 - (id)initWithBackingResource:(id)arg1;
 - (BOOL)isDownloadable;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isHDRDerivative;
+- (BOOL)isHDROrSDRDependingOnMasterVideo;
 - (BOOL)isLocallyAvailable;
 - (BOOL)isLocallyGeneratable;
 - (BOOL)isMediumHighQuality;
 - (BOOL)isOriginalVideo;
 - (BOOL)isOriginalVideoComplement;
 - (BOOL)isPlayable;
+- (BOOL)isSDRFallback;
 - (BOOL)isStreamable;
 - (BOOL)matchesOrExceedsQualityLevel:(unsigned int)arg1;
 - (id)uniformTypeIdentifier;

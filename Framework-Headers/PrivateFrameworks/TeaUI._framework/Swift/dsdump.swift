@@ -4875,7 +4875,7 @@ WARNING: couldn't find address 0x2edd4000d46e0 (0x5d4000d46e0) in binary!
 	0x28558  @objc SegmentedColorView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	0x60cffed4cc0  @objc SegmentedColorView.(null) <stripped>
-	0x214000d4a30  @objc SegmentedColorView. <stripped>
+	0x214000d4cc8  @objc SegmentedColorView. <stripped>
 WARNING: couldn't find address 0xffed5370 (0xffed5370) in binary!
 	0x57c000d6070  @objc SegmentedColorView.(null) <stripped>
 WARNING: couldn't find address 0xd4dd4ffed6a08 (0x5d4ffed6a08) in binary!

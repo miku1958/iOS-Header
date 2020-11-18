@@ -45,6 +45,7 @@
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (id)_occludingRegions;
 - (long long)_preferredDistanceComparisonType;
+- (double)_regionFocusPriority;
 - (id)_resizeToRect:(struct CGRect)arg1;
 - (BOOL)_shouldCropRegionToSearchArea;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;

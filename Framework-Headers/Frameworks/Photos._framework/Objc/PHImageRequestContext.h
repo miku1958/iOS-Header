@@ -28,6 +28,7 @@
 - (id)_lazyProgress;
 - (id)_produceFinalImageRequestForRequest:(id)arg1;
 - (id)_produceIntermediateImageRequestForRequest:(id)arg1;
+- (BOOL)_shouldLoadHDRGainMapBasedOnChoosingPolicy:(long long)arg1;
 - (id)initWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 displaySpec:(id)arg4 options:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 - (id)initialRequests;
 - (BOOL)isNetworkAccessAllowed;

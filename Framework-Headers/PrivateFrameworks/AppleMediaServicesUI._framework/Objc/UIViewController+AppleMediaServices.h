@@ -18,6 +18,7 @@
 
 - (void)ams_didMoveToParentViewController:(id)arg1;
 - (void)ams_dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)ams_dismissViewControllerAnimated:(BOOL)arg1 includePresented:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)ams_setChildViewController:(id)arg1;
 - (void)ams_transitionFromViewController:(id)arg1 toViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)ams_willMoveToParentViewController:(id)arg1;

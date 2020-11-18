@@ -31,6 +31,7 @@
 - (BOOL)isPlaceholder;
 - (id)sanitizedInfoDictionary;
 - (void)setDegraded:(BOOL)arg1;
+- (void)setHighDynamicRangeGainMap:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 averagePixelLuminance:(id)arg3;
 - (void)setImageData:(id)arg1;
 - (void)setImageRef:(struct CGImage *)arg1;
 - (void)setImageURL:(id)arg1;

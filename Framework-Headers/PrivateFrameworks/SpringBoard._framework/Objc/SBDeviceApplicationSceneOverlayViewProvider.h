@@ -12,6 +12,7 @@
 @interface SBDeviceApplicationSceneOverlayViewProvider : NSObject
 {
     SBIsolatedSceneOrientationFollowingWrapperViewController *_orientationWrapperViewController;
+    BOOL _prefersStatusBarHidden;
     id<SBDeviceApplicationSceneOverlayViewProviderDelegate> _delegate;
     SBDeviceApplicationSceneHandle *_sceneHandle;
 }
@@ -19,6 +20,7 @@
 @property (readonly, weak, nonatomic) id<SBDeviceApplicationSceneOverlayViewProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UIViewController<SBDeviceApplicationSceneOverlayViewController> *overlayViewController;
 @property (readonly, nonatomic) long long preferredStatusBarStyle;
+@property (readonly, nonatomic) BOOL prefersStatusBarHidden; // @synthesize prefersStatusBarHidden=_prefersStatusBarHidden;
 @property (readonly, nonatomic) long long priority;
 @property (strong, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
 @property (readonly, nonatomic) BOOL wantsResignActiveAssertion;

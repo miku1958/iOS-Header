@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) HFUserNotificationServiceTopic *topic; // @synthesize topic=_topic;
 
 - (void).cxx_destruct;
+- (id)_notificationModeToString:(unsigned long long)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)initWithHome:(id)arg1 topic:(id)arg2;
 

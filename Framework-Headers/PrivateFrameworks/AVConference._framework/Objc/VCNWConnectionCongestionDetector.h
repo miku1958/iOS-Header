@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VCNWConnectionCongestionDetector : NSObject
 {
     AVCStatisticsCollector *_statisticsCollector;
-    CDStruct_56e8fa21 _previousStatistics;
+    CDStruct_1a067c5f _previousStatistics;
     unsigned int _averageThroughputBps;
     unsigned int _averagePacketDelayMs;
     unsigned int _maxAveragePacketDelayMs;

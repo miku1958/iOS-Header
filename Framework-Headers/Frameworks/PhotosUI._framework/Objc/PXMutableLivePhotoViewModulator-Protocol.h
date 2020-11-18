@@ -10,7 +10,11 @@
 
 @protocol PXMutableLivePhotoViewModulator <NSObject>
 
+@property (strong, nonatomic) struct CGImage *gainMapImage;
+@property (nonatomic) float gainMapValue;
 @property (strong, nonatomic) ISLivePhotoUIView *livePhotoView;
+@property (nonatomic) BOOL revealsGainMapImage;
 
+- (void)setGainMapImage:(struct CGImage *)arg1 animated:(BOOL)arg2;
 @end
 

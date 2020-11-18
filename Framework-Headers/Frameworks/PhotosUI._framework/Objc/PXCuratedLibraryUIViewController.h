@@ -127,7 +127,7 @@
 - (id)_hitTestAssetReferenceAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)_hitTestResultAtLocation:(struct CGPoint)arg1 withPadding:(struct UIEdgeInsets)arg2 swipeSelectionManager:(id)arg3;
 - (struct PXSimpleIndexPath)_indexPathForAssetAtLocation:(struct CGPoint)arg1 withPadding:(struct UIEdgeInsets)arg2 forSwipeSelectionManager:(id)arg3;
-- (void)_invalidateSecondaryToolbarContent;
+- (void)_invalidateSecondaryToolbar;
 - (void)_navigateToInitialScrollPositionForNavigationRequest:(id)arg1;
 - (void)_navigateToRevealAssetForNavigationRequest:(id)arg1;
 - (void)_prepareGestureRecognizers;
@@ -144,7 +144,7 @@
 - (void)_setWantsOptionalChromeVisible:(BOOL)arg1 changeReason:(long long)arg2;
 - (BOOL)_shouldExposeCursorAnimations;
 - (void)_updateEmptyPlaceholder;
-- (void)_updateSecondaryToolbarContent;
+- (void)_updateSecondaryToolbar;
 - (void)_updateSkimmingSlideshowEnabled;
 - (void)_updateStatusBarStyle;
 - (void)_updateTrackedScrollLevelIfNeeded;

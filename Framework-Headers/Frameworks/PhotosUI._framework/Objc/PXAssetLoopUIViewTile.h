@@ -43,6 +43,7 @@
 
 - (void).cxx_destruct;
 - (void)_reloadVideoSessionIfNecessary;
+- (void)_updateDesiredDynamicRange;
 - (void)_updateImageRequester;
 - (void)_updateLayer;
 - (void)_updateVideoSession;

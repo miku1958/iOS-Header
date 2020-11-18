@@ -23,10 +23,13 @@
 + (BOOL)tsk_phoneUI568HOrSmaller;
 + (BOOL)tsk_phoneUI667H;
 + (BOOL)tsk_phoneUI667HOrSmaller;
++ (BOOL)tsk_phoneUI693H;
 + (BOOL)tsk_phoneUI736H;
 + (BOOL)tsk_phoneUI812H;
 + (BOOL)tsk_phoneUI812HOrLarger;
++ (BOOL)tsk_phoneUI844H;
 + (BOOL)tsk_phoneUI896H;
++ (BOOL)tsk_phoneUI926H;
 + (void)tsk_resetScreenScaleCache;
 + (double)tsk_screenScale;
 @end

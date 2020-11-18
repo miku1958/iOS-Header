@@ -74,6 +74,7 @@
 - (id)initWithCity:(id)arg1 withUnits:(int)arg2 onConnection:(id)arg3;
 - (id)initWithLocation:(id)arg1 onConnection:(id)arg2;
 - (void)main;
+- (BOOL)shouldRequestChangeInConditions;
 
 @end
 

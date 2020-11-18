@@ -23,6 +23,7 @@
     NSUserDefaults *_defaults;
     BOOL _hasUserMutations;
     BOOL _allowsQueueModifications;
+    BOOL _autoPlayIsTriggered;
     NSString *_preferredFirstContentItemID;
     MPAVItem *_currentItem;
     id<MPAVQueueControllerDelegate> _delegate;
@@ -49,6 +50,7 @@
 @property (nonatomic) BOOL autoPlayEnabled;
 @property (strong, nonatomic) MPSectionedIdentifierListPosition *autoPlayEndPosition; // @synthesize autoPlayEndPosition=_autoPlayEndPosition;
 @property (strong, nonatomic) MPSectionedIdentifierList *autoPlayIdentifierList; // @synthesize autoPlayIdentifierList=_autoPlayIdentifierList;
+@property (nonatomic) BOOL autoPlayIsTriggered; // @synthesize autoPlayIsTriggered=_autoPlayIsTriggered;
 @property (nonatomic) long long autoPlayState; // @synthesize autoPlayState=_autoPlayState;
 @property (readonly, nonatomic, getter=_autoplayMode) long long autoplayMode;
 @property (strong, nonatomic) NSMutableDictionary *coderVersions; // @synthesize coderVersions=_coderVersions;

@@ -41,6 +41,8 @@ __attribute__((visibility("hidden")))
     NSString *_frameworkVersion;
     NSString *_osVersion;
     NSString *_deviceType;
+    BOOL _isVideoQualityNearDegraded;
+    double _videoNearDegradedThreshold;
 }
 
 @property (copy, nonatomic) NSString *OSVersion; // @synthesize OSVersion=_osVersion;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isIOS; // @synthesize isIOS;
 @property (nonatomic) BOOL isPreLionOS; // @synthesize isPreLionOS;
 @property (nonatomic) BOOL isVideoQualityDegraded; // @synthesize isVideoQualityDegraded;
+@property (nonatomic) BOOL isVideoQualityNearDegraded; // @synthesize isVideoQualityNearDegraded=_isVideoQualityNearDegraded;
 @property (nonatomic) unsigned int maxBandwidth; // @synthesize maxBandwidth;
 @property (copy, nonatomic) NSString *participantID; // @synthesize participantID;
 @property (readonly, nonatomic) BOOL requiresImplicitFeatureString;

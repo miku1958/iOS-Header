@@ -33,6 +33,8 @@
 @property (readonly, nonatomic, getter=isPrimaryImageFormat) BOOL primaryImageFormat;
 @property (readonly) Class superclass;
 
++ (id)_commonConformanceValuesForUTIString:(id)arg1;
++ (void)applyPersistedConformanceValuesToUTI:(id)arg1;
 + (id)entityName;
 + (BOOL)isPlayableVideoTypeIdentifierString:(id)arg1;
 + (id)jpegUniformTypeIdentifierInContext:(id)arg1;
@@ -41,6 +43,7 @@
 + (id)utisConformingToRAWInContext:(id)arg1;
 + (id)videoComplementUniformTypeIdentifierInContext:(id)arg1;
 - (void).cxx_destruct;
+- (void)refreshPersistedConformanceValues;
 - (BOOL)supportsCloudUpload;
 - (BOOL)validateForDelete:(id *)arg1;
 

@@ -55,6 +55,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProfile:(id)arg1 subscription:(id)arg2;
 - (long long)planDescriptionCompare:(id)arg1;
+- (id)redactedDescription;
 - (id)statusAsString:(id)arg1;
 
 @end

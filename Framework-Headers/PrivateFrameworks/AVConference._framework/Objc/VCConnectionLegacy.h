@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
     BOOL isRemoteExpensive;
     BOOL isLocalDelegated;
     BOOL isRemoteDelegated;
+    BOOL isLocalOn5G;
+    BOOL isRemoteOn5G;
 }
 
 @property (readonly) int connectionId;
@@ -37,12 +39,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL isLocalConstrained; // @synthesize isLocalConstrained;
 @property (readonly) BOOL isLocalDelegated; // @synthesize isLocalDelegated;
 @property (readonly) BOOL isLocalExpensive; // @synthesize isLocalExpensive;
+@property (readonly) BOOL isLocalOn5G; // @synthesize isLocalOn5G;
 @property (readonly) BOOL isLocalOnCellular;
 @property (readonly) BOOL isLocalOnWiFi;
 @property (readonly) BOOL isRelay;
 @property (readonly) BOOL isRemoteConstrained; // @synthesize isRemoteConstrained;
 @property (readonly) BOOL isRemoteDelegated; // @synthesize isRemoteDelegated;
 @property (readonly) BOOL isRemoteExpensive; // @synthesize isRemoteExpensive;
+@property (readonly) BOOL isRemoteOn5G; // @synthesize isRemoteOn5G;
 @property (readonly) BOOL isRemoteOnCellular;
 @property (readonly) BOOL isRemoteOnWiFi;
 @property (readonly) BOOL isReplaceOnly;

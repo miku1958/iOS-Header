@@ -7,10 +7,14 @@
 #import <SpringBoard/NSObject-Protocol.h>
 
 @class NSArray, NSString;
-@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@protocol CSAccessoryStatusProviding, CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
 @protocol CSCoverSheetContextProviding <NSObject>
 
+@property (readonly, copy, nonatomic) NSString *accessoryAnimationStatusChangedNotificationName;
+@property (readonly, copy, nonatomic) NSString *accessoryAttachedNotificationName;
+@property (readonly, copy, nonatomic) NSString *accessoryDetachedNotificationName;
+@property (readonly, nonatomic) id<CSAccessoryStatusProviding> accessoryStatusProvider;
 @property (readonly, nonatomic) id<CSAppHostConfiguring> appHostConfiguring;
 @property (readonly, nonatomic) id<CSApplicationInforming> applicationInformer;
 @property (readonly, nonatomic) id<SBFAuthenticationAssertionProviding> authenticationAssertionProvider;

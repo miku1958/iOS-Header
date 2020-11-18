@@ -139,9 +139,9 @@
 - (void)_performSessionNonstartRecoveryIfNeeded;
 - (void)_performSessionRuntimeRecovery:(id)arg1;
 - (id)_photoOutputFromSession:(id)arg1;
-- (CDStruct_7270c63f)_previewFilterSetForRequest:(id)arg1 photo:(id)arg2;
-- (CDStruct_7270c63f)_previewFilterSetForRequest:(id)arg1 previewSize:(struct CGSize)arg2;
-- (id)_previewFiltersForFilterSet:(CDStruct_7270c63f)arg1;
+- (CDStruct_c1e2adca)_previewFilterSetForRequest:(id)arg1 photo:(id)arg2;
+- (CDStruct_c1e2adca)_previewFilterSetForRequest:(id)arg1 previewSize:(struct CGSize)arg2;
+- (id)_previewFiltersForFilterSet:(CDStruct_c1e2adca)arg1;
 - (void)_recoverFromSessionRuntimeError;
 - (void)_resetPerformingRecoveryState;
 - (void)_resultsQueue_logReceivedCallbacksForID:(long long)arg1 withIntroString:(id)arg2;

@@ -29,6 +29,7 @@
     BOOL _accessoryViewVisible;
     BOOL _lowMemoryMode;
     BOOL _toggleCTM;
+    BOOL _revealsGainMapImage;
     BOOL __needsUpdateVideoPlayers;
     id<PUDisplayAsset> _asset;
     PUModelTileTransform *_modelTileTransform;
@@ -92,6 +93,7 @@
 @property (copy, nonatomic) PUModelTileTransform *modelTileTransform; // @synthesize modelTileTransform=_modelTileTransform;
 @property (nonatomic) struct CGPoint overridingContentOffset; // @synthesize overridingContentOffset=_overridingContentOffset;
 @property (nonatomic) struct CGPoint preferredContentOffset; // @synthesize preferredContentOffset=_preferredContentOffset;
+@property (nonatomic) BOOL revealsGainMapImage; // @synthesize revealsGainMapImage=_revealsGainMapImage;
 @property (strong, nonatomic) NSProgress *saveProgress; // @synthesize saveProgress=_saveProgress;
 @property (readonly, nonatomic) long long saveState; // @synthesize saveState=_saveState;
 @property (readonly) Class superclass;

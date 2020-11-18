@@ -10,8 +10,10 @@
 {
 }
 
++ (BOOL)canRetainDolbyMetadata:(id)arg1;
 + (BOOL)dumpComposition:(id)arg1 toURL:(id)arg2 error:(out id *)arg3;
 + (BOOL)dumpComposition:(id)arg1 withName:(id)arg2;
++ (BOOL)isHDRComposition:(id)arg1;
 
 @end
 

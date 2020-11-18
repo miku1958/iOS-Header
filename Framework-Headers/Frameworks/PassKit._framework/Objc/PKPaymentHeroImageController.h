@@ -26,6 +26,7 @@
 @property (nonatomic) long long watchSize; // @synthesize watchSize=_watchSize;
 
 + (struct CGSize)cardArtSizeForWatchViewSize:(struct CGSize)arg1;
++ (double)cardAspectRatio;
 + (id)defaultImages;
 - (void).cxx_destruct;
 - (struct CGSize)cardArtSizeForSize:(struct CGSize)arg1;

@@ -44,12 +44,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL isLocalConstrained; // @synthesize isLocalConstrained=_isLocalConstrained;
 @property (readonly) BOOL isLocalDelegated; // @synthesize isLocalDelegated=_isLocalDelegated;
 @property (readonly) BOOL isLocalExpensive; // @synthesize isLocalExpensive=_isLocalExpensive;
+@property (readonly) BOOL isLocalOn5G;
 @property (readonly) BOOL isLocalOnCellular;
 @property (readonly) BOOL isLocalOnWiFi;
 @property (readonly) BOOL isRelay;
 @property (readonly) BOOL isRemoteConstrained; // @synthesize isRemoteConstrained=_isRemoteConstrained;
 @property (readonly) BOOL isRemoteDelegated; // @synthesize isRemoteDelegated=_isRemoteDelegated;
 @property (readonly) BOOL isRemoteExpensive; // @synthesize isRemoteExpensive=_isRemoteExpensive;
+@property (readonly) BOOL isRemoteOn5G;
 @property (readonly) BOOL isRemoteOnCellular;
 @property (readonly) BOOL isRemoteOnWiFi;
 @property (readonly) BOOL isVPN;

@@ -41,6 +41,7 @@
     NSString *_PIOrientationAdjustmentKey;
     NSString *_PIRawAdjustmentKey;
     NSString *_PIRawNoiseReductionAdjustmentKey;
+    NSString *_PISemanticEnhanceAdjustmentKey;
     NSString *_PIVideoReframeAdjustmentKey;
     NSString *_PISourceSelectAdjustmentKey;
     NSString *_PIVideoStabilizeAdjustmentKey;
@@ -72,6 +73,7 @@
 @property (readonly, nonatomic) NSString *PIRedEyeAdjustmentKey; // @synthesize PIRedEyeAdjustmentKey=_PIRedEyeAdjustmentKey;
 @property (readonly, nonatomic) NSString *PIRetouchAdjustmentKey; // @synthesize PIRetouchAdjustmentKey=_PIRetouchAdjustmentKey;
 @property (readonly, nonatomic) NSString *PISelectiveColorAdjustmentKey; // @synthesize PISelectiveColorAdjustmentKey=_PISelectiveColorAdjustmentKey;
+@property (readonly, nonatomic) NSString *PISemanticEnhanceAdjustmentKey; // @synthesize PISemanticEnhanceAdjustmentKey=_PISemanticEnhanceAdjustmentKey;
 @property (readonly, nonatomic) NSString *PISharpenAdjustmentKey; // @synthesize PISharpenAdjustmentKey=_PISharpenAdjustmentKey;
 @property (readonly, nonatomic) NSString *PISlomoAdjustmentKey; // @synthesize PISlomoAdjustmentKey=_PISlomoAdjustmentKey;
 @property (readonly, nonatomic) NSString *PISmartBWAdjustmentKey; // @synthesize PISmartBWAdjustmentKey=_PISmartBWAdjustmentKey;

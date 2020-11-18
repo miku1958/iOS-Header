@@ -33,6 +33,8 @@
 @property (readonly, nonatomic) BOOL hf_hasAtleastOneHomePod;
 @property (readonly, nonatomic) BOOL hf_hasAtleastOneReachableHomePod;
 @property (readonly, nonatomic) NSArray *hf_pairedHomePods;
+@property (readonly, nonatomic) BOOL hf_shouldShowAnnounceButtonForThisRoom;
+@property (readonly, nonatomic) BOOL hf_shouldShowAnnounceFeatureForThisRoom;
 @property (readonly, weak, nonatomic) HMCameraProfile *hf_unitaryCameraProfile;
 @property (readonly, nonatomic) NSArray *hf_visibleAccessories;
 @property (readonly, nonatomic) UIImage *hf_wallpaperImage;
@@ -44,6 +46,8 @@
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 - (id)availableHomePodsSupportingStereoPairingVersions:(unsigned long long)arg1;
+- (BOOL)hf_atleastOneHomePodSupportsAndHasAnnounceEnabled;
+- (BOOL)hf_atleastOneHomePodSupportsAnnounce;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateWallpaperImage:(id)arg1;

@@ -63,6 +63,7 @@
 - (void)armApplePay;
 - (BOOL)canSetDockIconActivationMode;
 - (void)cancelReachabilityDetection;
+- (void)cancelSiriDismissalForAssistiveTouch;
 - (void)cleanupAlertHandler;
 - (BOOL)connectedDevicesRequireAssistiveTouch;
 - (void)copyStringToPasteboard:(id)arg1;
@@ -88,6 +89,7 @@
 - (BOOL)isDarkModeActive;
 - (BOOL)isDockVisible;
 - (BOOL)isInspectorMinimized;
+- (BOOL)isLockScreenVisible;
 - (BOOL)isMagnifierVisible;
 - (void)isMagnifierVisibleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)isMakingEmergencyCall;

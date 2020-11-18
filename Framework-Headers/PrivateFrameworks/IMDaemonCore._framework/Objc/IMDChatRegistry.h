@@ -66,6 +66,7 @@
 - (id)_blackholedChatInfoForNumberOfChats:(long long)arg1;
 - (BOOL)_chat:(id)arg1 isDuplicateOfChat:(id)arg2;
 - (id)_chatForTUGroupID:(id)arg1;
+- (id)_chatGUIDToChatMapForChats:(id)arg1;
 - (void)_chatGUIDsThatNeedRemerging:(id *)arg1 chatDictionaryArray:(id *)arg2 aliasMap:(id)arg3;
 - (void)_chatGUIDsThatNeedRemergingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_chatInfoForConnection;
@@ -89,6 +90,7 @@
 - (id)_findLosingChatGUIDsInArrayOfChats:(id)arg1 withWinner:(id)arg2;
 - (void)_fixSMSGroupChatAndStoreIfNeeded:(id)arg1 iMessageChat:(id)arg2 chatToRegenerate:(id *)arg3;
 - (void)_fixUpChatParticipantsIfNeeded:(id)arg1;
+- (void)_fixUpChatParticipantsIfNeeded:(id)arg1 usingChatGUIDToChatMap:(id)arg2;
 - (void)_forceReloadChats:(BOOL)arg1;
 - (id)_generateCurrentAliasToCNIDDictionary;
 - (id)_handlesThatNeedPCMIDUpdatedGivenArray:(id)arg1;
@@ -124,6 +126,7 @@
 - (BOOL)_shouldMigrateIMDHandlesPersonCentricIDsOnAllChats;
 - (BOOL)_shouldUpdateSyncStatsForChat:(id)arg1 originalSyncState:(long long)arg2;
 - (BOOL)_shouldUpdateSyncStatsForMessage:(id)arg1 originalSyncState:(long long)arg2;
+- (id)_siblingChatForChat:(id)arg1 usingChatGUIDToChatMap:(id)arg2;
 - (id)_spamMessageCreator;
 - (id)_statsCollector;
 - (void)_updateCachedAliasToCNIDMap:(id)arg1 withHistoryToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

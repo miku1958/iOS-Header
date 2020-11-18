@@ -23,6 +23,7 @@
     unsigned long long _event_code;
     BOOL _aleFlag;
     NSSet *_visibilityEndowmentState;
+    NSSet *_audioAssertionState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -43,10 +44,12 @@
 - (id)appleCareDetails;
 - (void)dealloc;
 - (void)generateLogAtLevel:(BOOL)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)initWithIncidentID:(id)arg1 visibliltyEndowmentState:(id)arg2;
+- (id)initWithIncidentID:(id)arg1 visibilityEndowmentState:(id)arg2 audioAssertionState:(id)arg3;
+- (void)instrumentEvents:(BOOL)arg1;
 - (BOOL)isActionable;
 - (id)problemType;
 - (id)reportNamePrefix;
+- (BOOL)saveWithOptions:(id)arg1;
 
 @end
 

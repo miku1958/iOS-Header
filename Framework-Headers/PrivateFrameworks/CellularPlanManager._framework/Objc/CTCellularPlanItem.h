@@ -75,6 +75,7 @@
 - (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2 type:(long long)arg3 phoneNumber:(id)arg4 label:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIccid:(id)arg1 uuid:(id)arg2 name:(id)arg3 phoneNumber:(id)arg4 label:(id)arg5;
+- (id)redactedDescription;
 - (id)typeAsString:(long long)arg1;
 
 @end

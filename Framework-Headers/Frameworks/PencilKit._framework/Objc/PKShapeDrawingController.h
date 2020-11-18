@@ -16,6 +16,7 @@
     struct CGRect _currentStrokeBounds;
     BOOL _closedShapeDetected;
     BOOL _stopGestureDetected;
+    BOOL _shouldDetect;
     struct vector<TimestampedPoint, std::__1::allocator<TimestampedPoint>> _timestampedPoints;
     CDStruct_6422aa5d _averageInputPoint;
     unsigned long long _numInputPoints;
@@ -31,7 +32,6 @@
     PKStrokeRenderMask *_smartFillRenderMask;
     NSUUID *_smartFillGroupID;
     CHRecognizer *_shapeRecognizer;
-    CDUnknownBlockType _timerBlock;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
@@ -45,7 +45,6 @@
 @property (nonatomic, getter=isSmartFillEnabled) BOOL smartFillEnabled; // @synthesize smartFillEnabled=_smartFillEnabled;
 @property (strong, nonatomic) NSUUID *smartFillGroupID; // @synthesize smartFillGroupID=_smartFillGroupID;
 @property (strong, nonatomic) PKStrokeRenderMask *smartFillRenderMask; // @synthesize smartFillRenderMask=_smartFillRenderMask;
-@property (copy, nonatomic) CDUnknownBlockType timerBlock; // @synthesize timerBlock=_timerBlock;
 
 + (void)_addBottomCenterCloudPath:(struct CGPath *)arg1 transform:(struct CGAffineTransform)arg2;
 + (void)_addLeftCloudPath:(struct CGPath *)arg1;
@@ -63,7 +62,6 @@
 - (void)_addCurrentStrokePoint:(struct CGPoint)arg1;
 - (double)_arrowRadiusForStroke:(id)arg1 inputScale:(double)arg2;
 - (id)_arrowStrokesWithInputScale:(double)arg1 firstPt:(struct CGPoint)arg2 secondPt:(struct CGPoint)arg3 radius:(double)arg4 averageInputPoint:(CDStruct_6422aa5d)arg5 sourceStroke:(id)arg6;
-- (void)_cancelTimer;
 - (id)_chDrawingFromStroke:(id)arg1;
 - (void)_checkDetectedStroke;
 - (id)_generateChatBubble:(id)arg1 sourceStroke:(id)arg2 inputScale:(double)arg3 averageInputPoint:(CDStruct_6422aa5d)arg4;
@@ -78,7 +76,6 @@
 - (id)_generateStar:(id)arg1 sourceStroke:(id)arg2 inputScale:(double)arg3 averageInputPoint:(CDStruct_6422aa5d)arg4;
 - (id)_generateTriangle:(id)arg1 sourceStroke:(id)arg2 inputScale:(double)arg3 averageInputPoint:(CDStruct_6422aa5d)arg4;
 - (double)_movementSpeed;
-- (void)_scheduleTimer;
 - (long long)_shapeTypeFromResultName:(id)arg1;
 - (void)_smartFillRenderMaskFromStroke:(id)arg1 outPoints:(vector_2e7754b6 *)arg2 strokeTransform:(struct CGAffineTransform)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)_strokeFromPoints:(const vector_2e7754b6 *)arg1 inputScale:(double)arg2 averageInputPoint:(CDStruct_6422aa5d)arg3 sourceStroke:(id)arg4;
@@ -97,6 +94,7 @@
 - (void)resetStroke;
 - (id)shapeFromStroke:(id)arg1 inputScale:(double)arg2 averageInputPoint:(CDStruct_6422aa5d)arg3;
 - (struct CGRect)smartFillStrokeBounds;
+- (void)updateDetectedStrokeState;
 
 @end
 

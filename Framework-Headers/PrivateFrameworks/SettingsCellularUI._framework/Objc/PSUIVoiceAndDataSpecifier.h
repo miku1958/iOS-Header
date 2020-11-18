@@ -6,7 +6,7 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, Logger, PSListController, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyRegistrationCache, PSUIDeviceWiFiState;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, Logger, NSArray, PSConfirmationSpecifier, PSListController, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyRegistrationCache, PSUIDeviceWiFiState;
 
 __attribute__((visibility("hidden")))
 @interface PSUIVoiceAndDataSpecifier : PSSpecifier
@@ -21,21 +21,24 @@ __attribute__((visibility("hidden")))
     PSUICoreTelephonyRegistrationCache *_regCache;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
     PSUIDeviceWiFiState *_deviceWifiState;
+    NSArray *_supportedDataRates;
     BOOL _3GOverrideTo4G;
     BOOL _LTEOverrideTo4G;
-    BOOL _supports2G;
-    BOOL _supports3G;
-    BOOL _supports4G;
+    PSConfirmationSpecifier *_warningFor5G;
     BOOL _showLegacyRAT;
     Logger *_logger;
 }
 
 - (void).cxx_destruct;
+- (void)accepted5GWarning:(id)arg1;
 - (void)acceptedRATSelectionDuringCall:(id)arg1;
 - (void)canceledRATSelectionDuringCall;
 - (id)createCallMayEndConfirmationSpecifierForTargetRATMode:(int)arg1 currentRATMode:(int)arg2;
+- (id)getLocalizedStringFromRATMode:(int)arg1;
+- (id)getLocalizedStringsFromDataRate:(long long)arg1;
 - (id)getLogger;
 - (id)getRATMode;
+- (id)getRATModesFromDataRate:(long long)arg1;
 - (id)getSmartDataModeState;
 - (void)handleMaxDataRateChanged;
 - (id)initWithName:(id)arg1 identifier:(id)arg2 hostController:(id)arg3 subscriptionContext:(id)arg4 groupSpecifierToUpdateFooterFor:(id)arg5;
@@ -43,16 +46,21 @@ __attribute__((visibility("hidden")))
 - (id)localizedRATModeStringForPrefix:(id)arg1 targetMode:(int)arg2;
 - (id)localizedWarningStringForKey:(id)arg1 andRATMode:(int)arg2;
 - (void)populateSpecifiers:(id)arg1 values:(id)arg2;
+- (void)rejected5GWarning;
 - (void)setMaxDataRateForRATMode:(int)arg1;
 - (void)setRATMode:(id)arg1 specifier:(id)arg2;
 - (void)setSmartDataModeState:(int)arg1;
+- (void)setUp5GWarningSpecifier:(id)arg1;
 - (void)setUpInternalState;
 - (void)setUpRATSpecifers;
 - (BOOL)shouldOverrideRATModeForCBKey:(id)arg1;
+- (BOOL)shouldShow5GUnsupportedWarningForTargetRATMode:(int)arg1 currentRATMode:(int)arg2;
 - (BOOL)shouldShowCallEndWarningForTargetRATMode:(int)arg1 currentRATMode:(int)arg2;
+- (void)show5GUnsupportedWarning:(id)arg1;
 - (void)showCallMayEndWarningForTargetRATMode:(int)arg1 currentRATMode:(int)arg2;
 - (void)startObservingNotifications;
 - (id)suffixStringFromRATMode:(int)arg1;
+- (void)update5GWarningSpecifierTargetRATModeWithUserInput:(id)arg1;
 - (int)warningRATModeForTargetMode:(int)arg1 currentMode:(int)arg2;
 
 @end

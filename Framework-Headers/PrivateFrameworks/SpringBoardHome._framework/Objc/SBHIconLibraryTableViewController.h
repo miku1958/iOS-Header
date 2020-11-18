@@ -27,6 +27,7 @@
     NSHashTable *_observedIcons;
     NSMapTable *_dragSessionsForIconView;
     SBHAppLibrarySettings *_settings;
+    BOOL _hasAppeared;
     SBIconView *_cachedHiddenIconView;
     _UILegibilitySettings *_legibilitySettings;
     SBHIconTableViewDiffableDataSource *_dataSource;

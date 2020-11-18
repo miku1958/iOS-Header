@@ -6,17 +6,15 @@
 
 #import <UIKit/UIBarButtonItem.h>
 
-@class AKMarkupButtonContainerView, UIButton, UIImage;
+@class AKMarkupButtonContainerView, UIButton;
 
 @interface AKMarkupBarButtonItem : UIBarButtonItem
 {
     UIButton *_toggleButton;
     AKMarkupButtonContainerView *_toggleView;
-    UIImage *_toggleButtonImage;
 }
 
 @property (strong, nonatomic) UIButton *toggleButton; // @synthesize toggleButton=_toggleButton;
-@property (strong, nonatomic) UIImage *toggleButtonImage; // @synthesize toggleButtonImage=_toggleButtonImage;
 @property (strong, nonatomic) AKMarkupButtonContainerView *toggleView; // @synthesize toggleView=_toggleView;
 
 + (id)markupBarButtonWithTarget:(id)arg1 action:(SEL)arg2;

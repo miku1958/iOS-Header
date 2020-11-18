@@ -6,12 +6,29 @@
 
 #import <PhotosUICore/PXSettings.h>
 
+@class NSString;
+
 @interface PXImageModulationSettings : PXSettings
 {
     BOOL _enabled;
+    BOOL _gainMapEnabled;
+    BOOL _showGainMapBorder;
+    BOOL _animateGainMapAppearance;
+    BOOL _useThresholdForVideos;
     BOOL _forceCurrentScreenSupportsHDR;
+    float _gainMapFaceMaxStops;
+    float _gainMapFaceKneeStops;
+    float _gainMapFaceKnee;
+    float _gainMapFaceMinStops;
+    float _gainMapMaxStops;
+    float _gainMapKneeStops;
+    float _gainMapKnee;
+    float _gainMapMinStops;
     long long _filterType;
     long long _HDRConsideration;
+    double _gainMapAnimationDuration;
+    NSString *_gainMapAnimationTimingFunction;
+    double _gainMapAnimationActivationThreshold;
     double _HDRModulationIntensity;
     double _SDRModulationIntensity;
     double _videoComplementModulationIntensity;
@@ -32,17 +49,33 @@
 @property (nonatomic) long long HDRConsideration; // @synthesize HDRConsideration=_HDRConsideration;
 @property (nonatomic) double HDRModulationIntensity; // @synthesize HDRModulationIntensity=_HDRModulationIntensity;
 @property (nonatomic) double SDRModulationIntensity; // @synthesize SDRModulationIntensity=_SDRModulationIntensity;
+@property (nonatomic) BOOL animateGainMapAppearance; // @synthesize animateGainMapAppearance=_animateGainMapAppearance;
 @property (nonatomic) double deviceMaximumEDRHeadroomStops; // @synthesize deviceMaximumEDRHeadroomStops=_deviceMaximumEDRHeadroomStops;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) long long filterType; // @synthesize filterType=_filterType;
 @property (nonatomic) BOOL forceCurrentScreenSupportsHDR; // @synthesize forceCurrentScreenSupportsHDR=_forceCurrentScreenSupportsHDR;
+@property (nonatomic) double gainMapAnimationActivationThreshold; // @synthesize gainMapAnimationActivationThreshold=_gainMapAnimationActivationThreshold;
+@property (nonatomic) double gainMapAnimationDuration; // @synthesize gainMapAnimationDuration=_gainMapAnimationDuration;
+@property (copy, nonatomic) NSString *gainMapAnimationTimingFunction; // @synthesize gainMapAnimationTimingFunction=_gainMapAnimationTimingFunction;
+@property (nonatomic) BOOL gainMapEnabled; // @synthesize gainMapEnabled=_gainMapEnabled;
+@property (nonatomic) float gainMapFaceKnee; // @synthesize gainMapFaceKnee=_gainMapFaceKnee;
+@property (nonatomic) float gainMapFaceKneeStops; // @synthesize gainMapFaceKneeStops=_gainMapFaceKneeStops;
+@property (nonatomic) float gainMapFaceMaxStops; // @synthesize gainMapFaceMaxStops=_gainMapFaceMaxStops;
+@property (nonatomic) float gainMapFaceMinStops; // @synthesize gainMapFaceMinStops=_gainMapFaceMinStops;
+@property (nonatomic) float gainMapKnee; // @synthesize gainMapKnee=_gainMapKnee;
+@property (nonatomic) float gainMapKneeStops; // @synthesize gainMapKneeStops=_gainMapKneeStops;
+@property (nonatomic) float gainMapMaxStops; // @synthesize gainMapMaxStops=_gainMapMaxStops;
+@property (nonatomic) float gainMapMinStops; // @synthesize gainMapMinStops=_gainMapMinStops;
 @property (nonatomic) double highEDRRequestedHeadroomStops; // @synthesize highEDRRequestedHeadroomStops=_highEDRRequestedHeadroomStops;
 @property (nonatomic) double lowEDRRequestedHeadroomStops; // @synthesize lowEDRRequestedHeadroomStops=_lowEDRRequestedHeadroomStops;
 @property (nonatomic) double manualEDRHeadroomRequestStops; // @synthesize manualEDRHeadroomRequestStops=_manualEDRHeadroomRequestStops;
+@property (nonatomic) BOOL showGainMapBorder; // @synthesize showGainMapBorder=_showGainMapBorder;
+@property (nonatomic) BOOL useThresholdForVideos; // @synthesize useThresholdForVideos=_useThresholdForVideos;
 @property (nonatomic) double videoComplementModulationIntensity; // @synthesize videoComplementModulationIntensity=_videoComplementModulationIntensity;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)parentSettings;
 - (void)setDefaultValues;
 

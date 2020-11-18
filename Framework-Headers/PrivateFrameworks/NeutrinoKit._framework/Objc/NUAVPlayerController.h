@@ -17,6 +17,7 @@
         BOOL registeredPlayer;
     } _playerControllerKVOFlags;
     NSMutableArray *_playerItemObservations;
+    BOOL _appliesPerFrameHDRDisplayMetadata;
     BOOL _loopsVideo;
     BOOL _currentlySeeking;
     BOOL _muted;
@@ -72,6 +73,7 @@
 - (void)seekBack;
 - (void)seekForward;
 - (void)step:(long long)arg1;
+- (void)updateAppliesPerFrameHDRDisplayMetadata:(BOOL)arg1;
 - (void)updateAudioMix:(id)arg1;
 - (void)updateVideoComposition:(id)arg1;
 

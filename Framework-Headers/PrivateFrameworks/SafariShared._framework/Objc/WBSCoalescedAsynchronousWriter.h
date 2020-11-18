@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSDictionary, NSString, NSURL;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, WBSCoalescedAsynchronousWriterDelegate;
 
 @interface WBSCoalescedAsynchronousWriter : NSObject
@@ -16,6 +16,7 @@
     CDUnknownBlockType _writerBlock;
     CDUnknownBlockType _dataSourceBlock;
     NSObject<OS_dispatch_queue> *_dataSourceQueue;
+    NSDictionary *_fileResourceValues;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_source> *_timer;
     double _writeDelayInterval;
@@ -32,7 +33,7 @@
 - (void).cxx_destruct;
 - (void)_cancelPendingWriteSynchronouslyLeavingSuddenTerminationIntact;
 - (id)_dataFromDataSource;
-- (id)_initWithName:(id)arg1 fileURL:(id)arg2 writerBlock:(CDUnknownBlockType)arg3 dataSourceQueue:(id)arg4 dataSourceBlock:(CDUnknownBlockType)arg5 writeDelayInterval:(double)arg6;
+- (id)_initWithName:(id)arg1 fileURL:(id)arg2 writerBlock:(CDUnknownBlockType)arg3 dataSourceQueue:(id)arg4 dataSourceBlock:(CDUnknownBlockType)arg5 writeDelayInterval:(double)arg6 fileResourceValues:(id)arg7;
 - (void)_invalidateTimer;
 - (void)_scheduleTimer;
 - (void)_timerFired;
@@ -45,6 +46,7 @@
 - (id)initWithName:(id)arg1 fileURL:(id)arg2 dataSourceBlock:(CDUnknownBlockType)arg3;
 - (id)initWithName:(id)arg1 fileURL:(id)arg2 dataSourceBlock:(CDUnknownBlockType)arg3 writeDelayInterval:(double)arg4;
 - (id)initWithName:(id)arg1 fileURL:(id)arg2 dataSourceQueue:(id)arg3 dataSourceBlock:(CDUnknownBlockType)arg4;
+- (id)initWithName:(id)arg1 fileURL:(id)arg2 dataSourceQueue:(id)arg3 dataSourceBlock:(CDUnknownBlockType)arg4 fileResourceValues:(id)arg5;
 - (id)initWithName:(id)arg1 writerBlock:(CDUnknownBlockType)arg2 dataSourceBlock:(CDUnknownBlockType)arg3;
 - (id)initWithName:(id)arg1 writerBlock:(CDUnknownBlockType)arg2 dataSourceQueue:(id)arg3 dataSourceBlock:(CDUnknownBlockType)arg4;
 - (void)performScheduledWriteSynchronously;

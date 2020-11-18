@@ -19,8 +19,8 @@
     NSMutableDictionary *_carrierBundleVersionDict;
     NSMutableDictionary *_volteCustomerCarePhoneNumberDict;
     NSMutableDictionary *_volteCustomerCareWebsiteDict;
-    NSMutableDictionary *_show3GSwitchWithVolteDict;
     NSMutableDictionary *_showVolteWarningUnsupportedCarrierDict;
+    NSMutableDictionary *_show5GWarningUnsupportedCarrierDict;
     NSMutableDictionary *_carrierServicesDict;
     NSMutableDictionary *_showServiceCodes;
     NSMutableDictionary *_carrierServicesAccountUrlDict;
@@ -36,7 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSMutableDictionary *show3GSwitchWithVolteDict; // @synthesize show3GSwitchWithVolteDict=_show3GSwitchWithVolteDict;
+@property (strong) NSMutableDictionary *show5GWarningUnsupportedCarrierDict; // @synthesize show5GWarningUnsupportedCarrierDict=_show5GWarningUnsupportedCarrierDict;
 @property (strong) NSMutableDictionary *showServiceCodes; // @synthesize showServiceCodes=_showServiceCodes;
 @property (strong) NSMutableDictionary *showVolteWarningUnsupportedCarrierDict; // @synthesize showVolteWarningUnsupportedCarrierDict=_showVolteWarningUnsupportedCarrierDict;
 @property (readonly) Class superclass;
@@ -62,7 +62,7 @@
 - (void)fetchCarrierName;
 - (void)fetchCarrierServices;
 - (void)fetchCarrierServicesAccountUrl;
-- (void)fetchShow3GSwitchWithVolte;
+- (void)fetchShow5GWarningUnsupportedCarrier;
 - (void)fetchShowServiceCodes;
 - (void)fetchShowVolteWarningUnsupportedCarrier;
 - (void)fetchVolteCustomerCarePhoneNumber;
@@ -71,7 +71,7 @@
 - (id)initPrivate;
 - (id)mmsInfoTitle:(id)arg1;
 - (id)mmsInfoUrl:(id)arg1;
-- (BOOL)show3GSwitchWithVolte:(id)arg1;
+- (BOOL)show5GWarningUnsupportedCarrier:(id)arg1;
 - (BOOL)showServiceCodes:(id)arg1;
 - (BOOL)showVolteWarningUnsupportedCarrier:(id)arg1;
 - (id)volteCustomerCarePhoneNumber:(id)arg1;

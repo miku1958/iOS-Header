@@ -26,6 +26,7 @@
     BOOL _wifiAssociated;
     BOOL _networkConstrained;
     BOOL _ethernetWired;
+    BOOL _currentNetworkLinkExpensive;
     BOOL _remoteServerReachable;
     NSString *_telephonyOperatorName;
     NSString *_telephonyRegistrationStatus;
@@ -38,6 +39,7 @@
 
 @property (readonly, nonatomic, getter=isCharging) BOOL charging; // @synthesize charging=_isCharging;
 @property (readonly, nonatomic) double currentBatteryLevel; // @synthesize currentBatteryLevel=_currentBatteryLevel;
+@property (readonly, nonatomic, getter=isCurrentNetworkLinkExpensive) BOOL currentNetworkLinkExpensive; // @synthesize currentNetworkLinkExpensive=_currentNetworkLinkExpensive;
 @property (readonly, nonatomic, getter=isCurrentNetworkLinkHighQuality) BOOL currentNetworkLinkHighQuality; // @synthesize currentNetworkLinkHighQuality=_currentNetworkLinkHighQuality;
 @property (readonly, nonatomic) unsigned long long currentThermalLevel; // @synthesize currentThermalLevel=_currentThermalLevel;
 @property (readonly, nonatomic, getter=isEthernetWired) BOOL ethernetWired; // @synthesize ethernetWired=_ethernetWired;

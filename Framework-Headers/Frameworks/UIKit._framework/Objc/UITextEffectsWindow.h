@@ -42,6 +42,8 @@
 @property (nonatomic) struct CGSize hostedSceneSize; // @synthesize hostedSceneSize=_hostedSceneSize;
 @property (nonatomic) struct CGPoint hostedWindowOffset; // @synthesize hostedWindowOffset=_hostedWindowOffset;
 @property (readonly, nonatomic) BOOL isFullscreen; // @synthesize isFullscreen=_isFullscreen;
+@property (readonly, nonatomic) struct CGSize keyboardScreenReferenceSize;
+@property (readonly, nonatomic) double keyboardWidthForCurrentDevice;
 @property (readonly) Class superclass;
 
 + (id)_canvasForScreen:(id)arg1;

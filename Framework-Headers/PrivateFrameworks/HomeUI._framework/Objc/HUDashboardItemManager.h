@@ -17,6 +17,7 @@
     HFItem *_headlineItem;
     HFItem *_statusBannerItem;
     HFItem *_multiUserTokenFixBannerItem;
+    HFItem *_welcomeUIBannerItem;
     HFItem *_statusListItem;
     HFActionSetListItem *_sceneListItem;
     HFStaticItem *_placeholderSceneListItem;
@@ -63,6 +64,7 @@
 @property (strong, nonatomic) HFItem *statusBannerItem; // @synthesize statusBannerItem=_statusBannerItem;
 @property (strong, nonatomic) HFItem *statusListItem; // @synthesize statusListItem=_statusListItem;
 @property (strong, nonatomic) HFTargetControlItemProvider *targetControlItemProvider; // @synthesize targetControlItemProvider=_targetControlItemProvider;
+@property (strong, nonatomic) HFItem *welcomeUIBannerItem; // @synthesize welcomeUIBannerItem=_welcomeUIBannerItem;
 
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
@@ -93,6 +95,7 @@
 - (void)settings:(id)arg1 didUpdateSetting:(id)arg2;
 - (void)settings:(id)arg1 didWriteValueForSettings:(id)arg2 failedSettings:(id)arg3;
 - (void)settingsDidUpdate:(id)arg1;
+- (BOOL)shouldShowWelcomeUIBanner;
 
 @end
 

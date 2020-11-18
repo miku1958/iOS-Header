@@ -137,6 +137,7 @@
 - (long long)_hapticZoneForDisplayValue:(double)arg1;
 - (BOOL)_isPointWithinButtonPlatter:(struct CGPoint)arg1;
 - (BOOL)_isTouchWithinButtonPlatter:(id)arg1;
+- (BOOL)_isWithinZoomButtonAccessoryAtLocationInZoomButton:(struct CGPoint)arg1;
 - (BOOL)_isWithinZoomButtonBoundsWithTouch:(id)arg1;
 - (double)_normalizeValue:(double)arg1 betweenMinimumValue:(double)arg2 maximumValue:(double)arg3;
 - (void)_resetSnapping;

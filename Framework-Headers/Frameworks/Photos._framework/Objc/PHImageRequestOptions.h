@@ -19,6 +19,8 @@
     BOOL _synchronous;
     BOOL _allowPlaceholder;
     BOOL _allowSecondaryOpportunisticImage;
+    BOOL _includeHDRGainMap;
+    BOOL _includeHDRGainMapInIntermediateImage;
     BOOL _onlyUseFetchedAssetPropertiesDuringChoosing;
     BOOL _useLowMemoryMode;
     BOOL _useLimitedLibraryMode;
@@ -41,6 +43,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL includeHDRGainMap; // @synthesize includeHDRGainMap=_includeHDRGainMap;
+@property (nonatomic) BOOL includeHDRGainMapInIntermediateImage; // @synthesize includeHDRGainMapInIntermediateImage=_includeHDRGainMapInIntermediateImage;
 @property (nonatomic) long long loadingMode; // @synthesize loadingMode=_loadingMode;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (nonatomic) struct CGRect normalizedCropRect; // @synthesize normalizedCropRect=_normalizedCropRect;

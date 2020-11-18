@@ -79,6 +79,7 @@
 - (struct CGRect)_dateTimeFrame;
 - (id)_fontWithTextStyle:(id)arg1 cappedToSize:(id)arg2;
 - (id)_labelWithNumberOfLines:(unsigned long long)arg1 font:(id)arg2;
+- (double)_modalViewBottomBaselineOffsetPortrait;
 - (void)_positionBottomElementWithLayoutAnchor:(id)arg1 lessThanOrEqual:(BOOL)arg2;
 - (id)_preferredContentSizeCategoryCappedToSize:(id)arg1;
 - (id)_primaryActionFont;

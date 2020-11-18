@@ -7,12 +7,12 @@
 #import <NeutrinoCore/NURenderPipelineHelper.h>
 
 @interface NURenderPipelineHelper (PI)
-- (id)debugNodeByApplyingFilterWithName:(id)arg1 settingsAndInputs:(id)arg2;
-- (id)nodeByApplyingFilterWithName:(id)arg1 settingsAndInputs:(id)arg2;
+- (id)debugNodeByApplyingFilterWithName:(id)arg1 useHDRFilter:(BOOL)arg2 settingsAndInputs:(id)arg3;
+- (id)nodeByApplyingFilterWithName:(id)arg1 useHDRFilter:(BOOL)arg2 settingsAndInputs:(id)arg3;
 - (struct CGRect)overcaptureRectForAutoCrop:(CDStruct_912cb5d2)arg1 overcaptureVideoComplementSize:(CDStruct_912cb5d2)arg2 primarySize:(CDStruct_912cb5d2)arg3 CGRect:(struct CGRect)arg4;
-- (id)performApertureRedeyeOnImage:(id)arg1 redEyeAdjustment:(id)arg2;
-- (id)performLongExposureFusionForComposition:(id)arg1 longExposureImage:(id)arg2 error:(out id *)arg3;
-- (id)performRedeyeOnImage:(id)arg1 redEyeAdjustment:(id)arg2;
+- (id)performApertureRedeyeOnImage:(id)arg1 useHDRFilter:(BOOL)arg2 redEyeAdjustment:(id)arg3;
+- (id)performLongExposureFusionForComposition:(id)arg1 longExposureImage:(id)arg2 useHDRFilter:(BOOL)arg3 error:(out id *)arg4;
+- (id)performRedeyeOnImage:(id)arg1 useHDRFilter:(BOOL)arg2 redEyeAdjustment:(id)arg3;
 - (id)remapPortraitV2Strength:(id)arg1 portraitEffectKind:(id)arg2;
 - (long long)versionForPortraitEffect:(id)arg1;
 - (id)videoCrossfadeLoop:(id)arg1 crossfadeAdjustment:(id)arg2 error:(out id *)arg3;

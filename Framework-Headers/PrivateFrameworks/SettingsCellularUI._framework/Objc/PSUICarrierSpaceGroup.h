@@ -6,14 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
 #import <SettingsCellularUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class CTCarrierSpaceCapabilities, NSString, PSListController, PSSpecifier, PSUICarrierSpaceOptInSplashScreen, RemoteUIController;
+@class CTCarrierSpaceCapabilities, CTXPCServiceSubscriptionContext, CoreTelephonyClient, Logger, NSDictionary, NSString, PSListController, PSSpecifier, PSUICarrierSpaceOptInSplashScreen, RemoteUIController;
 
 __attribute__((visibility("hidden")))
-@interface PSUICarrierSpaceGroup : NSObject <RemoteUIControllerDelegate, PSSpecifierGroup>
+@interface PSUICarrierSpaceGroup : NSObject <RemoteUIControllerDelegate>
 {
+    CTXPCServiceSubscriptionContext *_subscriptionContext;
+    CoreTelephonyClient *_ctClient;
+    Logger *_logger;
+    NSDictionary *_specifersByID;
+    BOOL _isSubscriptionDataPreferred;
     RemoteUIController *_remoteUIController;
     PSListController *_listController;
     PSSpecifier *_groupSpecifier;
@@ -37,18 +41,22 @@ __attribute__((visibility("hidden")))
 - (void)agreePressed;
 - (id)carrierServicesSpecifier;
 - (void)carrierSpaceChanged;
+- (id)cellularPlansSpecifier;
 - (id)descriptionForPlans:(id)arg1;
 - (id)descriptionForUsage:(id)arg1;
 - (void)disagreeOrCancelPressed;
-- (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;
-- (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2 parentSpecifier:(id)arg3;
+- (id)getLogger;
+- (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2 parentSpecifier:(id)arg3 ctClient:(id)arg4;
 - (void)newCarrierNotification;
 - (void)openURLWithSpecifier:(id)arg1;
+- (void)prepareSpecifiers;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
+- (void)setIsSubscriptionDataPreferred;
 - (void)showConsentFlow:(id)arg1;
 - (void)showTermsAndConditions:(id)arg1 consentFlowInfo:(id)arg2;
-- (id)specifiers;
+- (id)specifierForID:(id)arg1;
+- (id)usageSpecifier;
 
 @end
 

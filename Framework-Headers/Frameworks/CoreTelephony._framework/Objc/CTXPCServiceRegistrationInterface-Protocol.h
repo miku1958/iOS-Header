@@ -38,6 +38,7 @@
 - (void)getEnhancedVoiceLinkQualityMetric:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTEnhancedLinkQualityMetric *, NSError *))arg2;
 - (void)getIMSRegistrationStatus:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTIMSRegistrationStatus *, NSError *))arg2;
 - (void)getMaxDataRate:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(long long, NSError *))arg2;
+- (void)getNRDisableStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTNRStatus *, NSError *))arg2;
 - (void)getPublicSignalStrength:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getRatSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)getRatSelectionMask:(CTServiceDescriptor *)arg1 completion:(void (^)(CTRatSelection *, NSError *))arg2;
@@ -45,6 +46,7 @@
 - (void)getSignalStrengthMeasurements:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getSignalStrengthMeasurementsAsync:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getSupportedDataRates:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSupportedMaxDataRates *, NSError *))arg2;
+- (void)getSupports5GStandalone:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)getVoiceLinkQualityMetric:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTVoiceLinkQualityMetric *, NSError *))arg2;
 - (void)isNetworkReselectionNeeded:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)isNetworkSelectionMenuAvailable:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
@@ -53,5 +55,6 @@
 - (void)setBandInfo:(CTXPCServiceSubscriptionContext *)arg1 bands:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setMaxDataRate:(CTXPCServiceSubscriptionContext *)arg1 rate:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setRatSelection:(CTXPCServiceSubscriptionContext *)arg1 selection:(NSString *)arg2 preferred:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)setSupports5GStandalone:(CTServiceDescriptor *)arg1 enabled:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

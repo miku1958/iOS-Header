@@ -9,28 +9,17 @@
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKFieldDetectSuppressor-Protocol.h>
 
-@class AVPlayer, AVPlayerItem, AVPlayerLayer, NSString, PKMobileAssetManager, PKPaymentHeroImageController, PKPaymentPass, PKPaymentSetupHeroView, PKPaymentSetupInitialCardEducationIconsView, UIImageView, UILabel, UIView;
+@class NSString, PKEducationPhone, PKPaymentHeroImageController, PKPaymentPass, UIImageView, UIView;
 
 @interface PKEducationViewController : PKExplanationViewController <PKExplanationViewDelegate, PKFieldDetectSuppressor>
 {
-    UIImageView *_heroPhone;
-    UIView *_heroPhoneBackground;
-    UIImageView *_passSnapshot;
-    UILabel *_instructionLabel;
     PKPaymentHeroImageController *_heroImageController;
-    PKPaymentSetupHeroView *_heroView;
-    PKPaymentSetupInitialCardEducationIconsView *_iconsView;
-    PKMobileAssetManager *_mobileAssetManager;
+    UIImageView *_heroPadImageView;
+    UIView *_heroPadBackground;
     PKPaymentPass *_paymentPass;
     unsigned long long _educationContext;
+    PKEducationPhone *_educationBodyView;
     BOOL _isFaceIDDevice;
-    BOOL _isPad;
-    double _maxHeight;
-    AVPlayerLayer *_video;
-    UIView *_videoBoundingView;
-    AVPlayer *_player;
-    AVPlayerItem *_playerItem;
-    BOOL _playerStarted;
     BOOL _invalidated;
     BOOL _offerAddToWatch;
     CDUnknownBlockType _continueHandler;
@@ -53,21 +42,17 @@
 + (BOOL)shouldPresentForPass:(id)arg1 inEducationContext:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (id)_heroPadImage;
 - (void)_performAddToWatchFlow;
-- (void)_removePlayerItem;
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)dealloc;
-- (void)didFinishPlaying;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (id)init;
 - (id)initWithPaymentPass:(id)arg1 setupContext:(long long)arg2 educationContext:(unsigned long long)arg3;
 - (void)invalidate;
 - (void)loadView;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performContinue;
-- (void)startPlayingVideo;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 
 @end

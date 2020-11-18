@@ -76,7 +76,9 @@
 + (void)saveDeviceOfferEligibility:(id)arg1;
 + (void)saveDeviceOffers:(id)arg1;
 + (BOOL)saveDeviceOffersForAccount:(id)arg1 response:(id)arg2 logKey:(id)arg3;
++ (id)screenHeight;
 + (id)screenScale;
++ (id)screenWidth;
 + (id)serialNumber;
 + (void)setBiometricState:(long long)arg1;
 + (void)setDeviceOffersCheckEncodingForRequestParameters:(id)arg1;

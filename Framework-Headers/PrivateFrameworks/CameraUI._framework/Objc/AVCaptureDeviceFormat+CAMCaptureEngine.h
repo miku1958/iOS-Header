@@ -20,8 +20,8 @@
 - (double)cam_maximumFrameRate;
 - (BOOL)cam_supportsFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (BOOL)cam_supportsFrameRate:(double)arg1;
-- (BOOL)cam_supportsFrameRate:(double)arg1 width:(long long)arg2 height:(long long)arg3 colorSpace:(long long)arg4;
+- (BOOL)cam_supportsFrameRate:(double)arg1 width:(long long)arg2 height:(long long)arg3 colorSpace:(long long)arg4 enableHDR10BitVideo:(BOOL)arg5;
 - (BOOL)cam_supportsPanoramaConfiguration:(id)arg1;
-- (BOOL)cam_supportsVideoConfiguration:(long long)arg1 colorSpace:(long long)arg2;
+- (BOOL)cam_supportsVideoConfiguration:(long long)arg1 colorSpace:(long long)arg2 enableHDR10BitVideo:(BOOL)arg3;
 @end
 

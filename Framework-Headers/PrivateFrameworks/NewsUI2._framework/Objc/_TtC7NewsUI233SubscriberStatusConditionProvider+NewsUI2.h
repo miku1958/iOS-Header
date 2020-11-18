@@ -7,7 +7,8 @@
 #import <NewsUI2/_TtC7NewsUI233SubscriberStatusConditionProvider.h>
 
 @interface _TtC7NewsUI233SubscriberStatusConditionProvider (NewsUI2)
-- (void)bundleSubscriptionDidChange:(id)arg1 previousBundleSubscription:(id)arg2 changeSet:(id)arg3;
+- (void)bundleSubscriptionDidExpire:(id)arg1;
+- (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)configurationManager:(id)arg1 appConfigurationDidChange:(id)arg2;
 @end
 

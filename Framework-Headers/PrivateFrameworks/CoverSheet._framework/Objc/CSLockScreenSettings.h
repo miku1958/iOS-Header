@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class CSBounceSettings, CSCoverSheetDismissGestureSettings, CSCoverSheetTransitionsSettings, CSDashBoardNotificationVersusPagingScrollSettings, CSDashBoardQuickActionsButtonSettings, CSDashBoardRemoteContentSettings, CSDashBoardScrollModifierSettings, CSHorizontalScrollFailureRecognizerSettings, CSLockScreenMesaSettings, CSLockScreenPasscodeSettings, CSLockScreenPearlSettings, CSLockScreenTestPluginSettings, PTOutlet, SBFAnimationSettings;
+@class CSBounceSettings, CSCoverSheetDismissGestureSettings, CSCoverSheetTransitionsSettings, CSDashBoardNotificationVersusPagingScrollSettings, CSDashBoardQuickActionsButtonSettings, CSDashBoardRemoteContentSettings, CSDashBoardScrollModifierSettings, CSHorizontalScrollFailureRecognizerSettings, CSLockScreenChargingSettings, CSLockScreenMesaSettings, CSLockScreenPasscodeSettings, CSLockScreenPearlSettings, CSLockScreenTestPluginSettings, PTOutlet, SBFAnimationSettings;
 
 @interface CSLockScreenSettings : PTSettings
 {
@@ -33,6 +33,7 @@
     CSBounceSettings *_verticalBounceSettings;
     CSBounceSettings *_horizontalBounceSettings;
     CSLockScreenPasscodeSettings *_passcodeSettings;
+    CSLockScreenChargingSettings *_chargingSettings;
     CSLockScreenMesaSettings *_mesaSettings;
     CSLockScreenPearlSettings *_pearlSettings;
     CSCoverSheetTransitionsSettings *_coverSheetTransitionsSettings;
@@ -76,6 +77,7 @@
 @property double cameraPrewarmAutoCancelTimeInterval; // @synthesize cameraPrewarmAutoCancelTimeInterval=_cameraPrewarmAutoCancelTimeInterval;
 @property double cameraPrewarmDebounceTimeInterval; // @synthesize cameraPrewarmDebounceTimeInterval=_cameraPrewarmDebounceTimeInterval;
 @property double cameraPrewarmThresholdOnSwipe; // @synthesize cameraPrewarmThresholdOnSwipe=_cameraPrewarmThresholdOnSwipe;
+@property (strong) CSLockScreenChargingSettings *chargingSettings; // @synthesize chargingSettings=_chargingSettings;
 @property (strong) CSCoverSheetDismissGestureSettings *coverSheetDismissGestureSettings; // @synthesize coverSheetDismissGestureSettings=_coverSheetDismissGestureSettings;
 @property (strong) CSCoverSheetTransitionsSettings *coverSheetTransitionsSettings; // @synthesize coverSheetTransitionsSettings=_coverSheetTransitionsSettings;
 @property (strong) CSDashBoardNotificationVersusPagingScrollSettings *dashBoardNotificationScrollSettings; // @synthesize dashBoardNotificationScrollSettings=_dashBoardNotificationScrollSettings;

@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) CAMZoomFactorLabel *_zoomFactorLabel; // @synthesize _zoomFactorLabel=__zoomFactorLabel;
 @property (readonly, nonatomic) UIImageView *_zoomSymbolView; // @synthesize _zoomSymbolView=__zoomSymbolView;
 @property (nonatomic) BOOL abbreviateAndEnlargeText; // @synthesize abbreviateAndEnlargeText=_abbreviateAndEnlargeText;
+@property (readonly, nonatomic) struct CGRect accessoryFrame;
 @property (nonatomic) long long accessoryState; // @synthesize accessoryState=_accessoryState;
 @property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (nonatomic) long long contentType; // @synthesize contentType=_contentType;

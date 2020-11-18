@@ -54,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)calculateBitratesAndDelaysWithTotalQueueDepth:(unsigned int)arg1;
 - (void)dealloc;
 - (void)enableBasebandLogDump:(void *)arg1;
-- (CDStruct_56e8fa21)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
+- (CDStruct_1a067c5f)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
 - (void)normalizeBDCD:(double)arg1;
 - (void)resetBBNoteHistoryList;
 - (void)resetBDCDList;

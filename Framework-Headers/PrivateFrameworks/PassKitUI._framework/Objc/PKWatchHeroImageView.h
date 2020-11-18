@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <PassKitUI/PKHeroImageView-Protocol.h>
+@class UIImageView, UILabel;
 
-@class NSString, UIImageView, UILabel;
-
-@interface PKWatchHeroImageView : UIView <PKHeroImageView>
+@interface PKWatchHeroImageView : UIView
 {
     UIImageView *_watchView;
     struct CGSize _originalWatchViewSize;
@@ -19,12 +17,8 @@
 }
 
 @property (readonly, nonatomic) struct CGRect cardFrame;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideDoneLabel; // @synthesize hideDoneLabel=_hideDoneLabel;
 @property (readonly, nonatomic) BOOL isCompactWatch;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGPoint watchScreenCenter;
 @property (readonly, nonatomic) struct CGRect watchScreenFrame;
 
@@ -40,6 +34,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (double)scale;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)spaceBelowCardFrame;
 
 @end

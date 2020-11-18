@@ -20,6 +20,7 @@
     double _pageControlAreaHeight;
     double _rubberBandIntervalForOverscroll;
     struct CGSize _contentBackgroundSize;
+    struct CGSize _pageControlCustomPadding;
 }
 
 @property (nonatomic) struct CGSize contentBackgroundSize; // @synthesize contentBackgroundSize=_contentBackgroundSize;
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double pageControlAreaHeight; // @synthesize pageControlAreaHeight=_pageControlAreaHeight;
+@property (nonatomic) struct CGSize pageControlCustomPadding; // @synthesize pageControlCustomPadding=_pageControlCustomPadding;
 @property (nonatomic) double rubberBandIntervalForOverscroll; // @synthesize rubberBandIntervalForOverscroll=_rubberBandIntervalForOverscroll;
 @property (readonly) Class superclass;
 @property (nonatomic) double titleFontSizeInLandscape; // @synthesize titleFontSizeInLandscape=_titleFontSizeInLandscape;

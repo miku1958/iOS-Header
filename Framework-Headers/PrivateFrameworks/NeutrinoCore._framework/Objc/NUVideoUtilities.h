@@ -21,11 +21,14 @@
 + (id)deepMutableCopyVideoComposition:(id)arg1;
 + (id)defaultExportCodecForComposition:(id)arg1;
 + (id)defaultOutputColorSpaceForComposition:(id)arg1;
-+ (id)defaultVideoSettingsForAVAssetReader;
++ (id)defaultVideoSettingsForAVAssetReaderWithHDR:(BOOL)arg1;
 + (BOOL)deviceSupportsHardware10BitHEVCEncoding;
 + (BOOL)deviceSupportsHardwareHEVCEncoding;
++ (BOOL)deviceSupportsHighDynamicRangeVideo;
 + (CDStruct_912cb5d2)encodedPixelSizeOfTrack:(id)arg1 oriented:(BOOL)arg2;
 + (id)firstEnabledVideoTrackInAsset:(id)arg1 error:(out id *)arg2;
++ (BOOL)isAVAssetDolbyProfile5:(id)arg1 error:(out id *)arg2;
++ (BOOL)isAVAssetHDR:(id)arg1 error:(out id *)arg2;
 + (BOOL)isMetadataTrackStillImageDisplayTimeMarkerInLivePhoto:(id)arg1;
 + (BOOL)isMetadataTrackWithLivePhotoInfo:(id)arg1;
 + (BOOL)isMetadataTrackWithStillImageDimensionsInLivePhoto:(id)arg1;
@@ -56,6 +59,7 @@
 + (id)videoDescription:(id)arg1;
 + (long long)videoOrientationForAsset:(id)arg1 videoComposition:(id)arg2;
 + (long long)videoOrientationForAssetPreferredTransform:(struct CGAffineTransform)arg1;
++ (BOOL)videoTrackContainsDolbyVisionMetadata:(id)arg1;
 
 @end
 

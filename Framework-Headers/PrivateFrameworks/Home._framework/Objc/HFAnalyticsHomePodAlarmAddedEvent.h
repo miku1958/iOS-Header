@@ -11,12 +11,18 @@
 @interface HFAnalyticsHomePodAlarmAddedEvent : HFAnalyticsEvent
 {
     BOOL _alarmAddedSuccessfully;
+    BOOL _isMusicAlarm;
+    BOOL _hasCustomVolume;
+    float _customVolumeLevel;
     NSString *_homePodAlarmID;
     NSString *_processName;
 }
 
 @property (nonatomic) BOOL alarmAddedSuccessfully; // @synthesize alarmAddedSuccessfully=_alarmAddedSuccessfully;
+@property (nonatomic) float customVolumeLevel; // @synthesize customVolumeLevel=_customVolumeLevel;
+@property (nonatomic) BOOL hasCustomVolume; // @synthesize hasCustomVolume=_hasCustomVolume;
 @property (strong, nonatomic) NSString *homePodAlarmID; // @synthesize homePodAlarmID=_homePodAlarmID;
+@property (nonatomic) BOOL isMusicAlarm; // @synthesize isMusicAlarm=_isMusicAlarm;
 @property (strong, nonatomic) NSString *processName; // @synthesize processName=_processName;
 
 - (void).cxx_destruct;

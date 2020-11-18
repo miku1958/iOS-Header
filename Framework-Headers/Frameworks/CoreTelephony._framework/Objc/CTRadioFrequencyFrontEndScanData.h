@@ -22,6 +22,8 @@
     unsigned long long _hwHousing;
     unsigned long long _rfcHwid;
     unsigned long long _rfcRev;
+    unsigned long long _rfcMmwHwid;
+    unsigned long long _rfcMmwRev;
     unsigned long long _numExpectedDevices;
     unsigned long long _numDetectedDevices;
     unsigned long long _numMissingDevices;
@@ -37,6 +39,8 @@
 @property (nonatomic) unsigned long long numMissingDevices; // @synthesize numMissingDevices=_numMissingDevices;
 @property (nonatomic) unsigned long long rfcHwid; // @synthesize rfcHwid=_rfcHwid;
 @property (nonatomic) BOOL rfcInitPass; // @synthesize rfcInitPass=_rfcInitPass;
+@property (nonatomic) unsigned long long rfcMmwHwid; // @synthesize rfcMmwHwid=_rfcMmwHwid;
+@property (nonatomic) unsigned long long rfcMmwRev; // @synthesize rfcMmwRev=_rfcMmwRev;
 @property (nonatomic) unsigned long long rfcRev; // @synthesize rfcRev=_rfcRev;
 @property (strong, nonatomic) NSMutableArray *rffeScanInfo; // @synthesize rffeScanInfo=_rffeScanInfo;
 @property (nonatomic) BOOL rffeScanPass; // @synthesize rffeScanPass=_rffeScanPass;

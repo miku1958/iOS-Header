@@ -25,7 +25,7 @@
 {
     SBHLibraryCategoryMapProvider *_categoryMapProvider;
     NSArray *_containerViewControllerConstraints;
-    NSMutableArray *_iconViewControllersCache;
+    NSMapTable *_iconViewControllerForCategoryIdentifier;
     SBFolderIconImageCache *_folderIconImageCache;
     SBHLibraryCategoryMap *_pendingLibraryCategoryMap;
     _SBHLibraryCollectionOfModelThings *_model;
@@ -101,6 +101,7 @@
 - (void)_enumerateObservers:(CDUnknownBlockType)arg1;
 - (void)_flushPendingLibraryCategoryMapUpdateIfNeeded;
 - (id)_iconIdentifierForDragItem:(id)arg1;
+- (id)_iconViewControllerForCategoryIdentifier:(id)arg1;
 - (void)_installCategoryMap:(id)arg1;
 - (void)_invalidateLibraryViewControllerDismissalTimer;
 - (void)_notifyObserversDidDismiss;
@@ -117,6 +118,7 @@
 - (void)_notifyObserversWillPresent;
 - (void)_notifyObserversWillPresentFolderController:(id)arg1;
 - (void)_notifyObserversWillPresentSearchController:(id)arg1;
+- (void)_precacheIconViewControllersForCategories:(id)arg1;
 - (void)_rebuildIconCache;
 - (void)_scrollIconViewToVisible:(id)arg1 animated:(BOOL)arg2;
 - (void)_setupIconTableViewController:(BOOL)arg1;

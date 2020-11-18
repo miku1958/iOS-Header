@@ -61,14 +61,14 @@
 
 + (struct CGSize)iconImageSize;
 + (id)primaryLabelColor;
-+ (id)primaryLabelFont;
 + (id)secondaryLabelColor;
-+ (id)secondaryLabelFont;
++ (id)secondaryLabelFontWithLanguage:(id)arg1;
 - (void).cxx_destruct;
 - (void)_accessibilitySizeCategoryDidChange;
 - (void)_actionTapped;
 - (void)_closeTapped;
 - (void)_contentSizeCategoryDidChange;
+- (id)_currentContentLanguage;
 - (void)_hintTapped;
 - (BOOL)_imageIsSymbol;
 - (id)_initWithContent:(id)arg1 asPopover:(BOOL)arg2 tipContentDelegate:(id)arg3;

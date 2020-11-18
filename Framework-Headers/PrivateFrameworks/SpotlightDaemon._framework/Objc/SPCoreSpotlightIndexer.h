@@ -143,7 +143,6 @@
 - (void)issueDefrag:(id)arg1 group:(id)arg2;
 - (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)issueDumpReverse:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)issueDuplicateOidCheck:(id)arg1;
 - (void)issueRepair:(id)arg1;
 - (void)issueSplit:(id)arg1;
 - (double)lastUpdateTime;

@@ -14,9 +14,7 @@
 
 @interface _INPBPlayMessageSoundIntent : PBCodable <_INPBPlayMessageSoundIntent, NSSecureCoding, NSCopying>
 {
-    struct {
-        unsigned int soundType:1;
-    } _has;
+    CDStruct_13553b0f _has;
     int _soundType;
     _INPBIntentMetadata *_intentMetadata;
     NSString *_messageIdentifier;

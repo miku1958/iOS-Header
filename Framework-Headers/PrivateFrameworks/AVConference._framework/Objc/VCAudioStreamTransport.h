@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)setWRMCallId:(unsigned int)arg1;
 - (void)setWRMCoexMetrics:(id)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
-- (void)setWRMNotification:(CDStruct_b018697d *)arg1;
+- (void)setWRMNotification:(CDStruct_cd8cfafa *)arg1;
 - (void)startWRM;
 - (void)stopWRM;
 

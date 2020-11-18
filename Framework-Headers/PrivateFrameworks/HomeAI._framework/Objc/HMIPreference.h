@@ -36,6 +36,7 @@
 + (BOOL)isAudioAccessory;
 + (BOOL)isInternalInstall;
 + (BOOL)isProductTypeB238;
++ (BOOL)isProductTypeB520;
 + (BOOL)isProductTypeJ105;
 + (BOOL)isProductTypeJ42;
 + (id)logCategory;

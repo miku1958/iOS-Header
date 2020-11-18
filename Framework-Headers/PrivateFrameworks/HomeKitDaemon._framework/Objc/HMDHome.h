@@ -20,7 +20,7 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDAccessoryCount, HMDAccessoryNetworkProtectionGroupRegistry, HMDApplicationData, HMDBackingStore, HMDDevice, HMDHAPAccessory, HMDHomeAdministratorHandler, HMDHomeKitVersion, HMDHomeLocationHandler, HMDHomeManager, HMDHomeMediaSystemHandler, HMDHomeNaturalLightingContextUpdater, HMDHomeNaturalLightingCurveWriter, HMDHomeObjectChangeHandler, HMDHomeObjectLookup, HMDHomePeriodicReader, HMDHomePersonDataManager, HMDHomePersonManager, HMDHomePresenceMonitor, HMDHomeRemoteNotificationHandler, HMDHomeReprovisionHandler, HMDLogEventDispatcher, HMDMediaActionRouter, HMDNaturalLightingContext, HMDNetworkRouterClientManager, HMDNotificationRegistry, HMDPredicateUtilities, HMDRelayManager, HMDResidentDevice, HMDResidentDeviceManager, HMDResidentReachabilityNotificationManager, HMDRoom, HMDSharedHomeUpdateHandler, HMDUser, HMDUserActionPredictionManager, HMDUserPresenceFeeder, HMFMessageDestination, HMFMessageDispatcher, HMFTimer, HMHomePersonManagerSettings, HMUserPresenceAuthorization, HMUserPresenceCompute, NSArray, NSDate, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
+@class HMDAccessory, HMDAccessoryCount, HMDAccessoryNetworkProtectionGroupRegistry, HMDApplicationData, HMDBackingStore, HMDBonjourBrowserHelper, HMDDevice, HMDHAPAccessory, HMDHomeAdministratorHandler, HMDHomeKitVersion, HMDHomeLocationHandler, HMDHomeManager, HMDHomeMediaSystemHandler, HMDHomeNaturalLightingContextUpdater, HMDHomeNaturalLightingCurveWriter, HMDHomeObjectChangeHandler, HMDHomeObjectLookup, HMDHomePeriodicReader, HMDHomePersonDataManager, HMDHomePersonManager, HMDHomePresenceMonitor, HMDHomeRemoteNotificationHandler, HMDHomeReprovisionHandler, HMDLogEventDispatcher, HMDMediaActionRouter, HMDNaturalLightingContext, HMDNetworkRouterClientManager, HMDNotificationRegistry, HMDPredicateUtilities, HMDRelayManager, HMDResidentDevice, HMDResidentDeviceManager, HMDResidentReachabilityNotificationManager, HMDRoom, HMDSharedHomeUpdateHandler, HMDUser, HMDUserActionPredictionManager, HMDUserPresenceFeeder, HMFMessageDestination, HMFMessageDispatcher, HMFTimer, HMHomePersonManagerSettings, HMUserPresenceAuthorization, HMUserPresenceCompute, NSArray, NSDate, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDAccessoryBrowserProtocol, HMFLocking, NSObject, OS_dispatch_queue;
 
 @interface HMDHome : HMFObject <HMDBulletinIdentifiers, HMDResidentDeviceManagerDelegate, HMDHomeMediaSystemHandlerDelegate, HMFLogging, HMDAccessoryBrowserDelegate, HMDHomeMessageReceiver, HMDRelayManagerDelegate, HMFTimerDelegate, HMFDumpState, HMDUserManagementOperationDelegate, HMDMediaActionRouterDataSource, NSSecureCoding, HMDBackingStoreObjectProtocol>
@@ -45,6 +45,7 @@
     BOOL _watchSkipVersionCheck;
     BOOL _ownerTrustZoneCapable;
     BOOL _migrationNeeded;
+    BOOL _threadNetworkRunning;
     BOOL _multiUserEnabled;
     BOOL _doorbellChimeEnabled;
     BOOL _hasAnyUserAcknowledgedCameraRecordingOnboarding;
@@ -69,6 +70,8 @@
     unsigned long long _networkRouterSupport;
     unsigned long long _networkRouterSupportDisableReason;
     NSMutableArray *_currentTriggers;
+    NSString *_unfilteredThreadNetworkID;
+    unsigned long long _threadNetworkSequenceNumber;
     HMHomePersonManagerSettings *_personManagerSettings;
     HMDNaturalLightingContext *_naturalLightingContext;
     NSString *_name;
@@ -108,6 +111,7 @@
     long long _previousReachableAppleMediaAccessoriesCount;
     HMDHomePersonDataManager *_personDataManager;
     HMDHomeNaturalLightingContextUpdater *_naturalLightingContextUpdater;
+    HMDBonjourBrowserHelper *_borderRouterBrowser;
     HMDHomeObjectChangeHandler *_homeObjectChangeHandler;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
@@ -182,6 +186,7 @@
 @property (strong, nonatomic) NSMutableArray *assistantOperations; // @synthesize assistantOperations=_assistantOperations;
 @property (nonatomic) long long atHomeLevel; // @synthesize atHomeLevel=_atHomeLevel;
 @property (strong, nonatomic) HMDBackingStore *backingStore; // @synthesize backingStore=_backingStore;
+@property (strong, nonatomic) HMDBonjourBrowserHelper *borderRouterBrowser; // @synthesize borderRouterBrowser=_borderRouterBrowser;
 @property (readonly, copy) NSArray *cameraAccessories;
 @property (readonly, weak, nonatomic) HMDDevice *companionDevice;
 @property (readonly, nonatomic, getter=isCompanionReachable) BOOL companionReachable;
@@ -307,9 +312,13 @@
 @property (nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportsRouterManagement;
+@property (copy, nonatomic) NSString *threadNetworkID; // @dynamic threadNetworkID;
+@property (nonatomic, getter=isThreadNetworkRunning) BOOL threadNetworkRunning; // @synthesize threadNetworkRunning=_threadNetworkRunning;
+@property (nonatomic) unsigned long long threadNetworkSequenceNumber; // @synthesize threadNetworkSequenceNumber=_threadNetworkSequenceNumber;
 @property (strong, nonatomic) NSMutableArray *triggerOwnedActionSets; // @synthesize triggerOwnedActionSets=_triggerOwnedActionSets;
 @property (readonly, copy) NSArray *triggers;
 @property (strong, nonatomic) NSMutableArray *unconfiguredResidentDevices; // @synthesize unconfiguredResidentDevices=_unconfiguredResidentDevices;
+@property (readonly, nonatomic) NSString *unfilteredThreadNetworkID; // @synthesize unfilteredThreadNetworkID=_unfilteredThreadNetworkID;
 @property (readonly, nonatomic) NSHashTable *unpairedSecondaryHAPAccessories; // @synthesize unpairedSecondaryHAPAccessories=_unpairedSecondaryHAPAccessories;
 @property (strong) HMDUserActionPredictionManager *userActionPredictionManager; // @synthesize userActionPredictionManager=_userActionPredictionManager;
 @property (readonly, copy) NSArray *usersSupportingPresence;
@@ -460,6 +469,7 @@
 - (void)_handleFetchLastModifiedServiceOfType:(id)arg1;
 - (void)_handleHasAnyUserAcknowledgedCameraRecordingOnboardingChange:(id)arg1 message:(id)arg2;
 - (void)_handleHomeLocationUpdateFromSharedAdmin:(id)arg1;
+- (void)_handleJoinOrFormThreadNetworkMessage:(id)arg1;
 - (void)_handleLegacyAddAccessory:(id)arg1;
 - (void)_handleMediaContentProfileAccessControlUpdate:(id)arg1;
 - (void)_handleMediaPropertiesRead:(id)arg1;
@@ -502,6 +512,7 @@
 - (id)_handleRenameHomeModel:(id)arg1 message:(id)arg2;
 - (void)_handleRequestHomeDataSync:(id)arg1;
 - (void)_handleResidentChange;
+- (void)_handleResolveThreadNetworkRequest:(id)arg1;
 - (void)_handleResponseForElectMessageToResident:(id)arg1 error:(id)arg2;
 - (void)_handleSetAppData:(id)arg1;
 - (void)_handleSetDoorbellChimeEnabledRequest:(id)arg1;
@@ -510,6 +521,7 @@
 - (void)_handleSetMinimumNetworkRouterHomeKitVersion:(id)arg1;
 - (void)_handleStartDiscoveringSymptomsForNearbyDevicesMessage:(id)arg1;
 - (void)_handleStopDiscoveringSymptomsForNearbyDevicesMessage:(id)arg1;
+- (void)_handleUnjoinThreadNetworkMessage:(id)arg1;
 - (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleUpdateAutomaticSoftwareUpdate:(id)arg1;
 - (void)_handleUpdateMediaPassword:(id)arg1;
@@ -521,6 +533,7 @@
 - (void)_handleUpdatePresenceConsent:(id)arg1;
 - (void)_handleUpdateRequestForHomeInvitationFromInvitee:(id)arg1;
 - (void)_handleUpdateUserAccess:(id)arg1;
+- (void)_handleUpdateUserAnnounceAccess:(id)arg1;
 - (void)_handleUpdateUserCamerasAccessLevel:(id)arg1;
 - (void)_handleUpdatedCharacteristics:(id)arg1 accessoryServer:(id)arg2 stateNumber:(id)arg3 broadcast:(BOOL)arg4 internal:(BOOL)arg5;
 - (void)_handleUserConsentForAccessoryReplacement:(id)arg1 consent:(BOOL)arg2 message:(id)arg3;
@@ -598,6 +611,7 @@
 - (void)_registerPairedAccessory:(id)arg1 transports:(unsigned long long)arg2 setupHash:(id)arg3;
 - (void)_registerReachabilityEventNotifications;
 - (void)_registerStateHandler;
+- (void)_registerThreadResidentCommissioningMessageHandlers;
 - (void)_relayAddTriggerToResident:(id)arg1;
 - (void)_remoteAccessEnabled:(BOOL)arg1;
 - (void)_remoteAccessHealthMonitorTimerDidFire;
@@ -670,6 +684,7 @@
 - (void)_updateOwnedTriggers;
 - (void)_updateReachabilityChangeToRegisteredDevices:(id)arg1;
 - (void)_updateRemoteReachability:(BOOL)arg1 accessories:(id)arg2;
+- (void)_updateThreadNetworkWithModel:(id)arg1 message:(id)arg2;
 - (void)_updateWoWState:(id)arg1;
 - (BOOL)_validateAddingNewTriggerWithName:(id)arg1 message:(id)arg2;
 - (BOOL)_verifyUserManagementPermissionForAccessory:(id)arg1 error:(id *)arg2;
@@ -715,6 +730,7 @@
 - (unsigned long long)assistantAccessCapableAccessoryCount;
 - (id)assistantObject;
 - (id)assistantUniqueIdentifier;
+- (BOOL)attemptToUpdateThreadNetworkID:(id)arg1;
 - (void)auditUsersForNotifications:(id)arg1;
 - (BOOL)awdPrimaryReportingDevice;
 - (id)backingStoreObjects:(long long)arg1;
@@ -910,6 +926,8 @@
 - (id)sharedHomeModel;
 - (id)shortDescription;
 - (BOOL)shouldRelayNotificationToRegisteredDevicesForSource:(id)arg1;
+- (void)startThreadNetwork;
+- (void)stopThreadNetwork;
 - (void)subscribeForNotificationsFromRemoteGateway;
 - (void)takeOwnershipOfAccessories:(id)arg1;
 - (void)takeOwnershipOfAppData:(id)arg1;

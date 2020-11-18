@@ -15,15 +15,19 @@
 @property (nonatomic) BOOL hasAddTasksIntentTargetTaskListConfirmationReason;
 @property (readonly, nonatomic) BOOL hasConfirmationItem;
 @property (nonatomic) BOOL hasReason;
+@property (nonatomic) BOOL hasSendAnnouncementIntentAnnouncementConfirmationReason;
 @property (nonatomic) BOOL hasStartCallIntentContactsConfirmationReason;
 @property (nonatomic) int reason;
+@property (nonatomic) int sendAnnouncementIntentAnnouncementConfirmationReason;
 @property (nonatomic) int startCallIntentContactsConfirmationReason;
 
 - (int)StringAsAddTasksIntentTargetTaskListConfirmationReason:(NSString *)arg1;
 - (int)StringAsReason:(NSString *)arg1;
+- (int)StringAsSendAnnouncementIntentAnnouncementConfirmationReason:(NSString *)arg1;
 - (int)StringAsStartCallIntentContactsConfirmationReason:(NSString *)arg1;
 - (NSString *)addTasksIntentTargetTaskListConfirmationReasonAsString:(int)arg1;
 - (NSString *)reasonAsString:(int)arg1;
+- (NSString *)sendAnnouncementIntentAnnouncementConfirmationReasonAsString:(int)arg1;
 - (NSString *)startCallIntentContactsConfirmationReasonAsString:(int)arg1;
 @end
 

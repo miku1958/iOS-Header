@@ -14,11 +14,9 @@
     BOOL _familySubscription;
     BOOL _freeTrialEligible;
     BOOL _purchaser;
-    BOOL _carrierRequiresVerification;
-    BOOL _carrierStatusUnknown;
-    BOOL _carrierUnlinked;
     unsigned int _source;
     unsigned int _status;
+    unsigned int _carrierStatus;
     NSDate *_expiration;
     NSNumber *_inAppAdamId;
     NSString *_inAppVersion;
@@ -34,10 +32,8 @@
 @property (nonatomic) long long carrierErrorCode; // @synthesize carrierErrorCode=_carrierErrorCode;
 @property (strong, nonatomic) NSString *carrierOperatorName; // @synthesize carrierOperatorName=_carrierOperatorName;
 @property (strong, nonatomic) NSString *carrierPhoneNumber; // @synthesize carrierPhoneNumber=_carrierPhoneNumber;
-@property (nonatomic) BOOL carrierRequiresVerification; // @synthesize carrierRequiresVerification=_carrierRequiresVerification;
 @property (strong, nonatomic) NSString *carrierSessionId; // @synthesize carrierSessionId=_carrierSessionId;
-@property (nonatomic) BOOL carrierStatusUnknown; // @synthesize carrierStatusUnknown=_carrierStatusUnknown;
-@property (nonatomic) BOOL carrierUnlinked; // @synthesize carrierUnlinked=_carrierUnlinked;
+@property (nonatomic) unsigned int carrierStatus; // @synthesize carrierStatus=_carrierStatus;
 @property (strong, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property (nonatomic) BOOL familySubscription; // @synthesize familySubscription=_familySubscription;
 @property (nonatomic) BOOL freeTrialEligible; // @synthesize freeTrialEligible=_freeTrialEligible;
@@ -51,7 +47,6 @@
 
 - (void).cxx_destruct;
 - (id)exportObject;
-- (id)init;
 
 @end
 

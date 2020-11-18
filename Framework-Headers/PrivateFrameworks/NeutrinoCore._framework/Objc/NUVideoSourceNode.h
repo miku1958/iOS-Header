@@ -26,6 +26,7 @@
 
 @property (readonly) CDStruct_996ac03c cleanAperture;
 @property (readonly) CDStruct_1b6d18a9 duration;
+@property (readonly) BOOL isHDR;
 
 - (void).cxx_destruct;
 - (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;

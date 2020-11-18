@@ -17,6 +17,7 @@
 
 @property (copy, nonatomic) NSNumber *remoteGatewayCapable; // @dynamic remoteGatewayCapable;
 @property (copy, nonatomic) NSNumber *residentCapable; // @dynamic residentCapable;
+@property (copy, nonatomic) NSNumber *supportsAnnounce; // @dynamic supportsAnnounce;
 @property (copy, nonatomic) NSNumber *supportsAssistantAccessControl; // @dynamic supportsAssistantAccessControl;
 @property (copy, nonatomic) NSNumber *supportsCameraActivityZones; // @dynamic supportsCameraActivityZones;
 @property (copy, nonatomic) NSNumber *supportsCameraRecording; // @dynamic supportsCameraRecording;
@@ -34,6 +35,7 @@
 @property (copy, nonatomic) NSNumber *supportsKeychainSync; // @dynamic supportsKeychainSync;
 @property (copy, nonatomic) NSNumber *supportsMediaActions; // @dynamic supportsMediaActions;
 @property (copy, nonatomic) NSNumber *supportsMultiUser; // @dynamic supportsMultiUser;
+@property (copy, nonatomic) NSNumber *supportsMusicAlarm; // @dynamic supportsMusicAlarm;
 @property (copy, nonatomic) NSNumber *supportsNaturalLighting; // @dynamic supportsNaturalLighting;
 @property (copy, nonatomic) NSNumber *supportsRouterManagement; // @dynamic supportsRouterManagement;
 @property (copy, nonatomic) NSNumber *supportsShortcutActions; // @dynamic supportsShortcutActions;
@@ -42,6 +44,7 @@
 @property (copy, nonatomic) NSNumber *supportsStereoPairingV2; // @synthesize supportsStereoPairingV2=_supportsStereoPairingV2;
 @property (copy, nonatomic) NSNumber *supportsTargetControl; // @dynamic supportsTargetControl;
 @property (copy, nonatomic) NSNumber *supportsThirdPartyMusic; // @dynamic supportsThirdPartyMusic;
+@property (copy, nonatomic) NSNumber *supportsThreadBorderRouter; // @dynamic supportsThreadBorderRouter;
 @property (copy, nonatomic) NSNumber *supportsWholeHouseAudio; // @dynamic supportsWholeHouseAudio;
 
 + (id)properties;

@@ -150,7 +150,7 @@
 - (void)_checkForImproperScrollOffsetForPageState;
 - (void)_configureAppStatusBarInsetsAnimated:(BOOL)arg1;
 - (void)_configureAppStatusBarInsetsForOrientation:(long long)arg1;
-- (void)_configureDockViewForOrientationDuringAnimation:(long long)arg1 dockAnimationWindow:(id)arg2;
+- (void)_configureDockViewForOrientationDuringAnimation:(long long)arg1 dockAnimationWindow:(id)arg2 dockBorrowedAssertion:(id)arg3;
 - (void)_configureDockViewForOrientationWithoutAnimation:(long long)arg1;
 - (void)_configureTodayViewPageForOrientation:(long long)arg1;
 - (void)_configureViewForOrientationWithoutAnimation:(long long)arg1;

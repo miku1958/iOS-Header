@@ -26,7 +26,7 @@
 #import <SpringBoard/SBProximitySensorManagerObserver-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString, SBDashBoardNotificationPresenter, SBProximitySensorManager, SBSyncController, SBWallpaperAggdLogger;
-@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@protocol CSAccessoryStatusProviding, CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
 @interface SBDefaultCoverSheetContext : NSObject <CSAuthenticationManaging, CSCarPlayStatusProviding, CSMediaControlling, CSReachabilityControlling, CSResetRestoreStatusProviding, CSTelephonyStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSOverlayProviding, CSAppHostConfiguring, CSSystemPointerInteractionManaging, CSProximitySensorProviding, CSDeviceOrientationProviding, SBProximitySensorManagerObserver, SBFOverlayObserving, CSCoverSheetContextProviding>
 {
@@ -44,6 +44,10 @@
     id<CSLegibilityProviding> _legibilityProvider;
     id<CSPowerStatusProviding> _powerStatusProvider;
     NSString *_powerStatusChangeNotificationName;
+    id<CSAccessoryStatusProviding> _accessoryStatusProvider;
+    NSString *_accessoryAttachedNotificationName;
+    NSString *_accessoryDetachedNotificationName;
+    NSString *_accessoryAnimationStatusChangedNotificationName;
     id<CSThermalStatusProviding> _thermalStatusProvider;
     id<SBUIBiometricResource> _biometricResource;
     id<CSScreenStateProviding> _screenStateProvider;
@@ -57,6 +61,10 @@
     long long _rawDeviceOrientationIgnoringOrientationLocks;
 }
 
+@property (readonly, copy, nonatomic) NSString *accessoryAnimationStatusChangedNotificationName; // @synthesize accessoryAnimationStatusChangedNotificationName=_accessoryAnimationStatusChangedNotificationName;
+@property (readonly, copy, nonatomic) NSString *accessoryAttachedNotificationName; // @synthesize accessoryAttachedNotificationName=_accessoryAttachedNotificationName;
+@property (readonly, copy, nonatomic) NSString *accessoryDetachedNotificationName; // @synthesize accessoryDetachedNotificationName=_accessoryDetachedNotificationName;
+@property (readonly, nonatomic) id<CSAccessoryStatusProviding> accessoryStatusProvider; // @synthesize accessoryStatusProvider=_accessoryStatusProvider;
 @property (readonly, nonatomic) id<CSAppHostConfiguring> appHostConfiguring;
 @property (readonly, nonatomic) id<CSApplicationInforming> applicationInformer; // @synthesize applicationInformer=_applicationInformer;
 @property (readonly, nonatomic) id<SBFAuthenticationAssertionProviding> authenticationAssertionProvider; // @synthesize authenticationAssertionProvider=_authenticationAssertionProvider;

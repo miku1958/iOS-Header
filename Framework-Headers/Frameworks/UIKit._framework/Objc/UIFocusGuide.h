@@ -48,6 +48,7 @@
 - (void)_didUpdateFocusToPreferredFocusedView;
 - (id)_encodablePreferredFocusEnvironments;
 - (id)_focusDebugOverlayParentView;
+- (double)_focusPriority;
 - (id)_focusRegionFocusSystem;
 - (struct CGRect)_focusRegionFrame;
 - (id)_focusRegionGuides;

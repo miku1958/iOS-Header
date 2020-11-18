@@ -9,7 +9,7 @@
 #import <QuickLook/AVEditBehaviorDelegate-Protocol.h>
 #import <QuickLook/AVPictureInPictureControllerDelegate-Protocol.h>
 
-@class AVEditBehavior, AVPlayerViewController, NSLayoutConstraint, NSString, PHPlaceholderView, QLMovieEdits, QLOverlayPlayButton, QLVideoScrubberView, UIScrollView, UIView;
+@class AVEditBehavior, AVPlayerViewController, NSLayoutConstraint, NSNumber, NSString, PHPlaceholderView, PXUIAssetBadgeView, QLMovieEdits, QLOverlayPlayButton, QLVideoScrubberView, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface QLMovieItemViewController : QLMediaItemViewController <AVPictureInPictureControllerDelegate, AVEditBehaviorDelegate>
@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
     double _scrubberVerticalOffset;
     UIView *_playerViewContainer;
     UIScrollView *_playerViewControllerScrollView;
+    NSNumber *_assetIsHDR;
+    PXUIAssetBadgeView *_hdrBadgeView;
     AVEditBehavior *_editBehavior;
     QLMovieEdits *_edits;
     QLMovieEdits *_editsSinceLastSave;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) PHPlaceholderView *airPlayPlaceholderView;
 @property (nonatomic) BOOL assetCanBeRotated; // @synthesize assetCanBeRotated=_assetCanBeRotated;
+@property (strong, nonatomic) NSNumber *assetIsHDR; // @synthesize assetIsHDR=_assetIsHDR;
 @property (strong) NSLayoutConstraint *bottomScrubberConstraint; // @synthesize bottomScrubberConstraint=_bottomScrubberConstraint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) QLMovieEdits *edits; // @synthesize edits=_edits;
 @property (strong, nonatomic) QLMovieEdits *editsSinceLastSave; // @synthesize editsSinceLastSave=_editsSinceLastSave;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PXUIAssetBadgeView *hdrBadgeView; // @synthesize hdrBadgeView=_hdrBadgeView;
 @property (nonatomic) BOOL isEditing; // @synthesize isEditing=_isEditing;
 @property (nonatomic) BOOL isSavingEditsBeforeDismissing; // @synthesize isSavingEditsBeforeDismissing=_isSavingEditsBeforeDismissing;
 @property (strong) QLOverlayPlayButton *playButton; // @synthesize playButton=_playButton;
@@ -56,9 +60,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addHDRBadgeViewToHierarchyIfNeeded:(id)arg1;
+- (void)_displayHDRBadgeView:(id)arg1;
 - (void)_enterEditMode;
 - (BOOL)_enterEditModeIfPossible;
 - (void)_exitEditMode:(BOOL)arg1;
+- (void)_hideHDRBadgeViewAfterDelayIfNeeded:(double)arg1;
+- (void)_hideHDRBadgeViewIfVisible;
 - (id)_metadataItemTitle;
 - (void)_resetTrimmingValues;
 - (void)_rotateIfPossible;
@@ -69,8 +77,12 @@ __attribute__((visibility("hidden")))
 - (void)_setupEditBehavior;
 - (void)_setupScrubberPlaceholderThumbnail;
 - (void)_showFailedToSaveChangesAlertWithError:(id)arg1;
+- (void)_showHDRBadgeView:(id)arg1;
+- (void)_showHDRBadgeViewIfNeeded;
 - (void)_updateEditMode;
 - (void)_updateEditsTrimmingValuesWithTrimStartTime:(double)arg1 trimEndTime:(double)arg2;
+- (void)_updateHDRBadgeViewVisibilityForFullscreenMode:(BOOL)arg1;
+- (void)_updateHDRBadgeViewVisibilityWithNewPlayingStatus:(long long)arg1;
 - (void)_updateInterfaceAfterExitingEditMode;
 - (void)_updatePlaceHolderView;
 - (void)_updatePlayButtonVisibility;
@@ -97,8 +109,10 @@ __attribute__((visibility("hidden")))
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (BOOL)play;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (void)previewBecameFullScreen:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
+- (void)previewWillAppear:(BOOL)arg1;
 - (id)registeredKeyCommands;
 - (void)savePreviewEditedCopyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)scrollView;

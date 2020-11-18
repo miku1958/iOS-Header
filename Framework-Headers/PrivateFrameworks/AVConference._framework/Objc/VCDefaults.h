@@ -134,6 +134,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int prominenceInactiveProbabilityThreshold;
 @property (readonly) BOOL rateControlAllowBurstyLossRampDown;
 @property (readonly) BOOL rateControlAllowVideoStop;
+@property (readonly) int rateControlBasebandSlowDownFactor;
 @property (readonly) BOOL rateControlDumpEnabled;
 @property (readonly) int rateControlForceRxCap;
 @property (readonly) int rateControlForceRxRate;

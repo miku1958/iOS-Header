@@ -93,6 +93,7 @@
     SBIconVisibilityService *_iconVisibilityService;
     id<BSInvalidatable> _stateCaptureHandlerForKeyDisplayIDsWithBadgingEnabled;
     id<BSInvalidatable> _stateCaptureHandleForHomeScreenDefaults;
+    id<BSInvalidatable> _stateCaptureHandleForInterestingAppIconLocations;
     BOOL _showingHomeScreenOverlay;
     BOOL _hasRestrictedEnforcedLayout;
     BOOL _uninstallingSystemAppsRestricted;
@@ -218,6 +219,7 @@
 - (void)_acquireAssertionsForFolderController:(id)arg1;
 - (void)_addSmartStackToTodayList:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_addStateCaptureHandlerForHomeScreenDefaults;
+- (id)_addStateCaptureHandlerForInterestingAppIconLocations;
 - (id)_addStateCaptureHandlerForKeyDisplayIDsWithBadgingEnabled;
 - (id)_aggregateLoggingAppKeyForIcon:(id)arg1;
 - (void)_backupRestoringDidChange:(id)arg1;

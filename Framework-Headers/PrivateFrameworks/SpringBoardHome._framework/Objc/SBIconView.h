@@ -93,6 +93,7 @@
     NSHashTable *_contextMenuInteractionConfigurations;
     NSObject<OS_os_activity> *_iconContextMenuActivity;
     struct os_activity_scope_state_s _iconContextMenuActivityState;
+    NSCountedSet *_activePointerRegions;
     BOOL _lastContextMenuInteractionFailedToLoad;
     BOOL _enabled;
     BOOL _paused;
@@ -208,6 +209,7 @@
 @property (readonly, nonatomic) UIPointerInteraction *iconViewCursorInteraction; // @synthesize iconViewCursorInteraction=_iconViewCursorInteraction;
 @property (readonly, nonatomic) struct CGSize iconViewSize;
 @property (nonatomic) unsigned long long imageLoadingBehavior;
+@property (readonly, nonatomic) BOOL isCursorActive;
 @property (nonatomic, getter=isLabelAccessoryHidden) BOOL labelAccessoryHidden;
 @property (readonly, nonatomic) double labelAccessoryTotalWidth;
 @property (strong, nonatomic) UIFont *labelFont; // @synthesize labelFont=_labelFont;
@@ -516,6 +518,8 @@
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (id)prepareForIconDrop;
 - (void)prepareForReuse;
 - (void)prepareToCrossfadeImageWithView:(id)arg1 anchorPoint:(struct CGPoint)arg2 options:(unsigned long long)arg3;

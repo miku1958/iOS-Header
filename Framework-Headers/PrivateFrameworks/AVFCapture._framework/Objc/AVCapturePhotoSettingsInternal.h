@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
     NSString *spatialOverCaptureLivePhotoContentIdentifierForOriginalPhoto;
     NSString *spatialOverCaptureGroupIdentifierForOriginalPhoto;
     BOOL processedPhotoZoomWithoutUpscalingEnabled;
+    BOOL autoContentAwareDistortionCorrectionEnabled;
     NSString *livePhotoContentIdentifier;
     NSString *livePhotoContentIdentifierForOriginalPhoto;
 }

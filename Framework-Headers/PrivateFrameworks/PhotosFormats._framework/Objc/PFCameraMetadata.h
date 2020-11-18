@@ -25,6 +25,11 @@
     NSArray *_detectedDogBodies;
     NSArray *_detectedSalientObjects;
     unsigned long long _stitchConfidence;
+    NSArray *_semanticDevelopmentGatingObservations;
+    NSArray *_faceObservations;
+    NSArray *_foodAndDrinkObservations;
+    long long _semanticEnhanceScene;
+    double _semanticEnhanceSceneConfidence;
     NSString *_captureFolderPath;
 }
 
@@ -36,19 +41,24 @@
 @property (readonly, nonatomic) NSArray *detectedHumanBodies; // @synthesize detectedHumanBodies=_detectedHumanBodies;
 @property (readonly, nonatomic) NSArray *detectedHumanFaces; // @synthesize detectedHumanFaces=_detectedHumanFaces;
 @property (readonly, nonatomic) NSArray *detectedSalientObjects; // @synthesize detectedSalientObjects=_detectedSalientObjects;
+@property (readonly, nonatomic) NSArray *faceObservations; // @synthesize faceObservations=_faceObservations;
+@property (readonly, nonatomic) NSArray *foodAndDrinkObservations; // @synthesize foodAndDrinkObservations=_foodAndDrinkObservations;
 @property (readonly, nonatomic) float horizonLineAngleInDegrees; // @synthesize horizonLineAngleInDegrees=_horizonLineAngleInDegrees;
 @property (readonly, nonatomic) BOOL horizonLinePresent; // @synthesize horizonLinePresent=_horizonLinePresent;
 @property (readonly, nonatomic) VNImageAestheticsObservation *imageAestheticsObservation; // @synthesize imageAestheticsObservation=_imageAestheticsObservation;
 @property (readonly, nonatomic) NSArray *junkImageClassificationObservations; // @synthesize junkImageClassificationObservations=_junkImageClassificationObservations;
 @property (readonly, nonatomic) VNSaliencyImageObservation *saliencyObservation; // @synthesize saliencyObservation=_saliencyObservation;
 @property (readonly, nonatomic) VNSceneObservation *scenePrintObservation; // @synthesize scenePrintObservation=_scenePrintObservation;
+@property (readonly, nonatomic) NSArray *semanticDevelopmentGatingObservations; // @synthesize semanticDevelopmentGatingObservations=_semanticDevelopmentGatingObservations;
+@property (nonatomic) long long semanticEnhanceScene; // @synthesize semanticEnhanceScene=_semanticEnhanceScene;
+@property (nonatomic) double semanticEnhanceSceneConfidence; // @synthesize semanticEnhanceSceneConfidence=_semanticEnhanceSceneConfidence;
 @property (readonly, nonatomic) unsigned long long stitchConfidence; // @synthesize stitchConfidence=_stitchConfidence;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithJunkImageClassificationObservations:(id)arg1 imageAestheticsObservation:(id)arg2 saliencyObservation:(id)arg3 scenePrintObservation:(id)arg4 compressedScenePrintObservation:(id)arg5 detectedObjectsInfoHumanFaces:(id)arg6 detectedObjectsInfoHumanBodies:(id)arg7 detectedObjectsInfoCatBodies:(id)arg8 detectedObjectsInfoDogBodies:(id)arg9 detectedObjectsSalientObjects:(id)arg10 stitchConfidence:(unsigned long long)arg11 horizonLinePresent:(BOOL)arg12 horizonLineAngleInDegrees:(float)arg13 captureFolderPath:(id)arg14;
+- (id)initWithJunkImageClassificationObservations:(id)arg1 imageAestheticsObservation:(id)arg2 saliencyObservation:(id)arg3 scenePrintObservation:(id)arg4 compressedScenePrintObservation:(id)arg5 detectedObjectsInfoHumanFaces:(id)arg6 detectedObjectsInfoHumanBodies:(id)arg7 detectedObjectsInfoCatBodies:(id)arg8 detectedObjectsInfoDogBodies:(id)arg9 detectedObjectsSalientObjects:(id)arg10 stitchConfidence:(unsigned long long)arg11 horizonLinePresent:(BOOL)arg12 horizonLineAngleInDegrees:(float)arg13 captureFolderPath:(id)arg14 semanticDevelopmentGatingObservations:(id)arg15 faceObservations:(id)arg16 foodAndDrinkObservations:(id)arg17 semanticEnhanceScene:(long long)arg18;
 - (id)initWithSpatialOverCapturePrivateClientMetadata:(id)arg1;
 
 @end

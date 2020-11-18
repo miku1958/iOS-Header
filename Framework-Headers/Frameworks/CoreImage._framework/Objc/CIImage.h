@@ -126,6 +126,7 @@
 - (id)autoRedEyeFilterWithFeatures:(id)arg1 imageProperties:(id)arg2 options:(id)arg3;
 - (id)autoRedEyeFilterWithFeatures:(id)arg1 options:(id)arg2;
 - (id)autoRotateFilterFFT:(id)arg1 image:(struct CGImage *)arg2 inputRect:(struct CGRect)arg3 minTiltAngle:(float)arg4 maxTiltAngle:(float)arg5 detectVerticalLines:(BOOL)arg6 thrVertAngle:(float)arg7 thrDomAngleDiff:(float)arg8;
+- (struct CGColorSpace *)baseColorSpace;
 - (BOOL)cacheHint;
 - (struct CGPoint)calcIntersection:(struct CGPoint)arg1 slope1:(struct CGPoint)arg2 pt2:(struct CGPoint)arg3 slope2:(struct CGPoint)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -160,6 +161,7 @@
 - (id)imageBySettingProperties:(id)arg1;
 - (id)imageBySettingPropertiesNoCopy:(id)arg1;
 - (id)imageByTaggingWithColorSpace:(struct CGColorSpace *)arg1;
+- (id)imageByToneMappingColorSpaceToWorkingSpace:(struct CGColorSpace *)arg1;
 - (id)imageByUnpremultiplyingAlpha;
 - (struct CGAffineTransform)imageTransformForCGOrientation:(unsigned int)arg1;
 - (struct CGAffineTransform)imageTransformForOrientation:(int)arg1;

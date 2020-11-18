@@ -16,6 +16,7 @@
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (unsigned long long)kernelDimensionalityForSourceArrays:(id)arg1;
+- (id)workloadStatisticsForSourceArrays:(id)arg1 destArrays:(id)arg2 kernel:(id)arg3 sourceState:(id)arg4;
 
 @end
 

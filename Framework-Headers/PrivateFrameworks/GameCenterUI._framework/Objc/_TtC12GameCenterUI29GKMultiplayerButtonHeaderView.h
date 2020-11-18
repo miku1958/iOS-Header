@@ -34,6 +34,7 @@
 - (void)layoutSubviews;
 - (struct JUMeasurements)measurementsWithFitting:(struct CGSize)arg1 in:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateStepperWithValue:(long long)arg1;
 
 @end
 

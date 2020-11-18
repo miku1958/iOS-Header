@@ -27,6 +27,7 @@
     int _maxQualityPrioritization;
     BOOL _deferredProcessingEnabled;
     BOOL _digitalFlashCaptureEnabled;
+    BOOL _intelligentDistortionCorrectionEnabled;
     BOOL _previewQualityAdjustedPhotoFilterRenderingEnabled;
     BOOL _fastCapturePrioritizationEnabled;
     BOOL _irisFrameHarvestingEnabled;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) NSArray *enabledSemanticSegmentationMatteURNs; // @synthesize enabledSemanticSegmentationMatteURNs=_enabledSemanticSegmentationMatteURNs;
 @property (nonatomic) BOOL fastCapturePrioritizationEnabled; // @synthesize fastCapturePrioritizationEnabled=_fastCapturePrioritizationEnabled;
 @property (nonatomic) BOOL filterRenderingEnabled; // @synthesize filterRenderingEnabled=_filterRenderingEnabled;
+@property (nonatomic) BOOL intelligentDistortionCorrectionEnabled; // @synthesize intelligentDistortionCorrectionEnabled=_intelligentDistortionCorrectionEnabled;
 @property (nonatomic) BOOL irisFrameHarvestingEnabled; // @synthesize irisFrameHarvestingEnabled=_irisFrameHarvestingEnabled;
 @property (nonatomic) int irisMovieAutoTrimMethod; // @synthesize irisMovieAutoTrimMethod=_movieAutoTrimMethod;
 @property (nonatomic) BOOL irisMovieCaptureEnabled; // @synthesize irisMovieCaptureEnabled=_movieCaptureEnabled;

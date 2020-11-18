@@ -12,7 +12,7 @@
 #import <HomeKit/HMSettingsContainer-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMediaContentProfileAccessControl, HMMutableArray, HMPhotosPersonManager, HMPhotosPersonManagerSettings, HMSettings, HMSettingsController, IDSURI, NSString, NSUUID, _HMContext;
+@class HMAnnounceUserSettings, HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMediaContentProfileAccessControl, HMMutableArray, HMPhotosPersonManager, HMPhotosPersonManagerSettings, HMSettings, HMSettingsController, IDSURI, NSString, NSUUID, _HMContext;
 @protocol HMUserDelegatePrivate, OS_dispatch_queue;
 
 @interface HMUser : NSObject <HMFLogging, HMFMessageReceiver, HMSettingsContainer, NSSecureCoding, HMObjectMerge>
@@ -33,6 +33,7 @@
     HMFPairingIdentity *_pairingIdentity;
     HMSettings *_settings;
     HMSettings *_privateSettings;
+    HMAnnounceUserSettings *_announceUserSettings;
     HMPhotosPersonManager *_photosPersonManager;
     HMPhotosPersonManagerSettings *_photosPersonManagerSettings;
     id<HMUserDelegatePrivate> _delegate;
@@ -42,6 +43,7 @@
     _HMContext *_context;
 }
 
+@property (strong) HMAnnounceUserSettings *announceUserSettings; // @synthesize announceUserSettings=_announceUserSettings;
 @property (copy) HMAssistantAccessControl *assistantAccessControl; // @synthesize assistantAccessControl=_assistantAccessControl;
 @property (strong) _HMContext *context; // @synthesize context=_context;
 @property (nonatomic, getter=isCurrentUser) BOOL currentUser; // @synthesize currentUser=_currentUser;
@@ -107,8 +109,9 @@
 - (id)senderCorrelationIdentifier;
 - (void)setNeedsiTunesMultiUserRepair:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setPendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1;
+- (void)updateAnnounceUserSettings:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAssistantAccessControl:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateHomeAccessControl:(BOOL)arg1 remoteAccess:(BOOL)arg2 camerasAccess:(id)arg3;
+- (void)updateHomeAccessControl:(BOOL)arg1 remoteAccess:(BOOL)arg2 announceAccess:(BOOL)arg3 camerasAccess:(id)arg4;
 - (void)updateMediaContentProfileAccessControl:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updatePersonManagerSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updatePhotosPersonManagerSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;

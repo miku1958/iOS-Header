@@ -12,7 +12,7 @@
 #import <PhotosUICore/PXPhotosGlobalFooterViewDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 
-@class NSString, NSTimer, PXAssetsDataSourceCountsController, PXCuratedLibraryFooterViewModel, PXCuratedLibraryLayout, PXCuratedLibraryViewModel, PXGView, PXPhotosGlobalFooterView, PXUpdater, UIView;
+@class NSString, NSTimer, PXAssetsDataSourceCountsController, PXCuratedLibraryFooterViewModel, PXCuratedLibraryLayout, PXCuratedLibraryStyleGuide, PXCuratedLibraryViewModel, PXGView, PXPhotosGlobalFooterView, PXUpdater, UIView;
 @protocol PXCuratedLibraryFooterControllerDelegate;
 
 @interface PXCuratedLibraryFooterController : PXObservable <PXMutableCuratedLibraryFooterController, PXChangeObserver, PXScrollViewControllerObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterViewModelPresentationDelegate>
@@ -30,11 +30,13 @@
     BOOL _isFooterVisible;
     BOOL _hasAppearedOnce;
     BOOL _footerNeedsReveal;
+    BOOL _footerFullyMasked;
     id<PXCuratedLibraryFooterControllerDelegate> _delegate;
     double _footerMaskVerticalOffset;
     PXGView *_gridView;
     PXCuratedLibraryLayout *_layout;
     PXCuratedLibraryViewModel *_viewModel;
+    PXCuratedLibraryStyleGuide *_styleGuide;
     PXAssetsDataSourceCountsController *_itemCountsController;
     PXUpdater *_updater;
     PXCuratedLibraryFooterViewModel *_footerViewModelIfLoaded;
@@ -45,6 +47,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXCuratedLibraryFooterControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isFooterFullyMasked) BOOL footerFullyMasked; // @synthesize footerFullyMasked=_footerFullyMasked;
 @property (readonly, nonatomic) double footerMaskVerticalOffset; // @synthesize footerMaskVerticalOffset=_footerMaskVerticalOffset;
 @property (strong, nonatomic) UIView *footerMaskView; // @synthesize footerMaskView=_footerMaskView;
 @property (nonatomic) BOOL footerNeedsReveal; // @synthesize footerNeedsReveal=_footerNeedsReveal;
@@ -59,6 +62,7 @@
 @property (readonly, nonatomic) BOOL isPullingFooter;
 @property (readonly, nonatomic) PXAssetsDataSourceCountsController *itemCountsController; // @synthesize itemCountsController=_itemCountsController;
 @property (readonly, nonatomic) PXCuratedLibraryLayout *layout; // @synthesize layout=_layout;
+@property (readonly, nonatomic) PXCuratedLibraryStyleGuide *styleGuide; // @synthesize styleGuide=_styleGuide;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property (readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
@@ -72,6 +76,7 @@
 - (void)_footerHasImportantInformationDidChange;
 - (void)_invalidateFooter;
 - (void)_invalidateFooterAlpha;
+- (void)_invalidateFooterAndMaskVisibility;
 - (void)_invalidateFooterMaskViewFrame;
 - (void)_invalidateFooterMode;
 - (void)_invalidateIsFooterVisible;
@@ -83,6 +88,7 @@
 - (BOOL)_shouldShowFooterForPresentedZoomLevel;
 - (void)_updateFooter;
 - (void)_updateFooterAlpha;
+- (void)_updateFooterAndMaskVisibility;
 - (void)_updateFooterMaskViewFrame;
 - (void)_updateFooterMode;
 - (void)_updateIsFooterVisible;

@@ -46,6 +46,7 @@
 - (id)initWithEndpoint:(void *)arg1;
 - (BOOL)isAirPlayingToDevice;
 - (BOOL)isAppleTVRoute;
+- (BOOL)isB520Route;
 - (BOOL)isClusterRoute;
 - (BOOL)isDeviceRoute;
 - (BOOL)isDeviceSpeakerRoute;

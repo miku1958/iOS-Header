@@ -15,6 +15,7 @@
 @interface BKSMousePointerDevice : NSObject <BSProtobufSerializable, NSSecureCoding, NSCopying>
 {
     BOOL _hasVirtualMouseButtons;
+    BOOL _supportsDragLock;
     BKSHIDEventSenderDescriptor *_senderDescriptor;
     NSString *_productName;
     NSString *_manufacturerName;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) NSString *productName; // @synthesize productName=_productName;
 @property (readonly, copy, nonatomic) BKSHIDEventSenderDescriptor *senderDescriptor; // @synthesize senderDescriptor=_senderDescriptor;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsDragLock; // @synthesize supportsDragLock=_supportsDragLock;
 
 + (id)protobufSchema;
 + (BOOL)supportsSecureCoding;

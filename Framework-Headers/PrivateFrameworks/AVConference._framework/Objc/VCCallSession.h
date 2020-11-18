@@ -214,6 +214,8 @@ __attribute__((visibility("hidden")))
     BOOL _isConnectedOnIPv6_LowestConnectionQuality;
     void *_callLogFile;
     NSString *peerReportingID;
+    BOOL _isWRMNotificationPending;
+    CDStruct_cd8cfafa _savedWRMNotification;
 }
 
 @property (readonly) BOOL audioIsPaused; // @synthesize audioIsPaused;
@@ -522,7 +524,7 @@ __attribute__((visibility("hidden")))
 - (void)setUpFirstRemoteFrameTimer;
 - (void)setWRMCoexMetrics:(id)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
-- (void)setWRMNotification:(CDStruct_b018697d *)arg1;
+- (void)setWRMNotification:(CDStruct_cd8cfafa *)arg1;
 - (void)setupAACELDPayload:(int)arg1;
 - (void)setupABTesting;
 - (BOOL)setupAudioCodecWithPayload:(int)arg1;
@@ -598,7 +600,7 @@ __attribute__((visibility("hidden")))
 - (void)updateNetworkCheckHint:(double)arg1;
 - (void)updateRemoteMediaStallState:(double)arg1;
 - (void)updateRemoteMediaStallStateReporting:(double)arg1;
-- (void)updateStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateStatistics:(CDStruct_1a067c5f)arg1;
 - (void)updateVCRateControlWRMMetrics:(struct tagWRMMetricsInfo *)arg1;
 - (void)updateVideoQualityNotification:(double)arg1;
 - (void)updateVideoQualityStatus:(double)arg1 bitrate:(double)arg2 time:(double)arg3 isRemote:(BOOL)arg4;

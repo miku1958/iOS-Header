@@ -142,10 +142,12 @@
 - (BOOL)shouldUpdateWithDevice:(id)arg1;
 - (void)startMonitoringReachability;
 - (id)supportedMultiUserLanguageCodesForAccessorySettingsController:(id)arg1;
+- (BOOL)supportsAnnounce;
 - (BOOL)supportsCompanionInitiatedRestart;
 - (BOOL)supportsDoorbellChime;
 - (BOOL)supportsMediaContentProfile;
 - (BOOL)supportsMultiUser;
+- (BOOL)supportsMusicAlarm;
 - (BOOL)supportsPersonalRequests;
 - (BOOL)supportsSettings;
 - (BOOL)supportsSoftwareUpdate;

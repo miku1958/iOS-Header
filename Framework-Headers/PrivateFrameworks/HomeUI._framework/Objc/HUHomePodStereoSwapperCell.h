@@ -12,19 +12,22 @@
 @interface HUHomePodStereoSwapperCell : UITableViewCell
 {
     UIButton *_swapButton;
+    unsigned long long _homePodVariant;
     HUHomePodDetailView *_leftHomePod;
     HUHomePodDetailView *_rightHomePod;
     id<HUHomePodStereoSwapperCellDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<HUHomePodStereoSwapperCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) HUHomePodDetailView *leftHomePod; // @synthesize leftHomePod=_leftHomePod;
-@property (readonly, nonatomic) HUHomePodDetailView *rightHomePod; // @synthesize rightHomePod=_rightHomePod;
-@property (readonly, nonatomic) UIButton *swapButton; // @synthesize swapButton=_swapButton;
+@property (nonatomic) unsigned long long homePodVariant; // @synthesize homePodVariant=_homePodVariant;
+@property (strong, nonatomic) HUHomePodDetailView *leftHomePod; // @synthesize leftHomePod=_leftHomePod;
+@property (strong, nonatomic) HUHomePodDetailView *rightHomePod; // @synthesize rightHomePod=_rightHomePod;
+@property (strong, nonatomic) UIButton *swapButton; // @synthesize swapButton=_swapButton;
 
 - (void).cxx_destruct;
 - (void)_setupConstraints;
 - (void)_swap;
+- (void)finishSetupWithDelegate:(id)arg1 selectionStyle:(long long)arg2 homePodVariant:(unsigned long long)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

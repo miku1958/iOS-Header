@@ -11,6 +11,7 @@
 @interface HUDashboardContext : NSObject
 {
     BOOL _allowsAdding;
+    BOOL _allowsAnnounce;
     BOOL _allowsEditing;
     BOOL _shouldHideHeadline;
     BOOL _shouldHideStatus;
@@ -25,6 +26,7 @@
 }
 
 @property (nonatomic) BOOL allowsAdding; // @synthesize allowsAdding=_allowsAdding;
+@property (nonatomic) BOOL allowsAnnounce; // @synthesize allowsAnnounce=_allowsAnnounce;
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property (readonly, nonatomic) unsigned long long dashboardType; // @synthesize dashboardType=_dashboardType;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;

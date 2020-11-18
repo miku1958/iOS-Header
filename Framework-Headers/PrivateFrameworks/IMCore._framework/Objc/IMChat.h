@@ -163,7 +163,7 @@
 @property (nonatomic) BOOL localUserIsTyping;
 @property (readonly, nonatomic) MKMapItem *mapItem;
 @property (strong, nonatomic) NSMutableArray *mentionMessageGuidsToRemove; // @synthesize mentionMessageGuidsToRemove=_mentionMessageGuidsToRemove;
-@property (readonly, nonatomic) NSSet *mergedPinningIdentifiers; // @synthesize mergedPinningIdentifiers=_mergedPinningIdentifiers;
+@property (strong, nonatomic) NSSet *mergedPinningIdentifiers; // @synthesize mergedPinningIdentifiers=_mergedPinningIdentifiers;
 @property (readonly, nonatomic) unsigned long long messageCount;
 @property (readonly, nonatomic) unsigned long long messageFailureCount;
 @property (nonatomic) unsigned long long numberOfMessagesToKeepLoaded;

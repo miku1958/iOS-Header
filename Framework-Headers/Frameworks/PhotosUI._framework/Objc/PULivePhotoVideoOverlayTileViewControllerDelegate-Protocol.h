@@ -10,6 +10,7 @@
 
 @protocol PULivePhotoVideoOverlayTileViewControllerDelegate <NSObject>
 - (BOOL)livePhotoVideoPlaybackTileViewControllerCanBeginPlaying:(PULivePhotoVideoOverlayTileViewController *)arg1;
+- (struct CGImage *)livePhotoVideoPlaybackTileViewControllerCurrentGainMapImage:(PULivePhotoVideoOverlayTileViewController *)arg1 outGainMapAvailable:(BOOL *)arg2 outGainMapValue:(float *)arg3;
 - (UIImage *)livePhotoVideoPlaybackTileViewControllerCurrentImage:(PULivePhotoVideoOverlayTileViewController *)arg1;
 - (void)livePhotoVideoPlaybackTileViewControllerDidEndPlaying:(PULivePhotoVideoOverlayTileViewController *)arg1;
 - (PUDisplayTileTransform *)livePhotoVideoPlaybackTileViewControllerDisplayTileTransform:(PULivePhotoVideoOverlayTileViewController *)arg1;

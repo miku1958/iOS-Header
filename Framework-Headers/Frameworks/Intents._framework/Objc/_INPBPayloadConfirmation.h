@@ -15,10 +15,12 @@
 @interface _INPBPayloadConfirmation : PBCodable <_INPBPayloadConfirmation, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int sendAnnouncementIntentAnnouncementConfirmationReason:1;
         unsigned int startCallIntentContactsConfirmationReason:1;
         unsigned int reason:1;
         unsigned int addTasksIntentTargetTaskListConfirmationReason:1;
     } _has;
+    int _sendAnnouncementIntentAnnouncementConfirmationReason;
     int _startCallIntentContactsConfirmationReason;
     int _reason;
     int _addTasksIntentTargetTaskListConfirmationReason;
@@ -32,9 +34,11 @@
 @property (nonatomic) BOOL hasAddTasksIntentTargetTaskListConfirmationReason;
 @property (readonly, nonatomic) BOOL hasConfirmationItem;
 @property (nonatomic) BOOL hasReason;
+@property (nonatomic) BOOL hasSendAnnouncementIntentAnnouncementConfirmationReason;
 @property (nonatomic) BOOL hasStartCallIntentContactsConfirmationReason;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int reason; // @synthesize reason=_reason;
+@property (nonatomic) int sendAnnouncementIntentAnnouncementConfirmationReason; // @synthesize sendAnnouncementIntentAnnouncementConfirmationReason=_sendAnnouncementIntentAnnouncementConfirmationReason;
 @property (nonatomic) int startCallIntentContactsConfirmationReason; // @synthesize startCallIntentContactsConfirmationReason=_startCallIntentContactsConfirmationReason;
 @property (readonly) Class superclass;
 
@@ -42,6 +46,7 @@
 - (void).cxx_destruct;
 - (int)StringAsAddTasksIntentTargetTaskListConfirmationReason:(id)arg1;
 - (int)StringAsReason:(id)arg1;
+- (int)StringAsSendAnnouncementIntentAnnouncementConfirmationReason:(id)arg1;
 - (int)StringAsStartCallIntentContactsConfirmationReason:(id)arg1;
 - (id)addTasksIntentTargetTaskListConfirmationReasonAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -51,6 +56,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)reasonAsString:(int)arg1;
+- (id)sendAnnouncementIntentAnnouncementConfirmationReasonAsString:(int)arg1;
 - (id)startCallIntentContactsConfirmationReasonAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -20,6 +20,7 @@
         unsigned int deleteAlarmIntentAlarmsUnsupportedReason:1;
         unsigned int searchAlarmIntentAlarmsUnsupportedReason:1;
         unsigned int snoozeAlarmIntentAlarmsUnsupportedReason:1;
+        unsigned int sendAnnouncementIntentAnnouncementUnsupportedReason:1;
         unsigned int startCallIntentCallCapabilityUnsupportedReason:1;
         unsigned int startCallIntentCallRecordToCallBackUnsupportedReason:1;
         unsigned int addTasksIntentContactEventTriggerUnsupportedReason:1;
@@ -43,6 +44,7 @@
         unsigned int shareETAIntentRecipientUnsupportedReason:1;
         unsigned int stopShareETAIntentRecipientUnsupportedReason:1;
         unsigned int sendMessageIntentRecipientUnsupportedReason:1;
+        unsigned int sendAnnouncementIntentRecipientsUnsupportedReason:1;
         unsigned int saveHealthSampleIntentRecordDateUnsupportedReason:1;
         unsigned int addTasksIntentTargetTaskListMembersUnsupportedReason:1;
         unsigned int setTimerAttributeIntentTargetTimerUnsupportedReason:1;
@@ -58,6 +60,7 @@
     int _deleteAlarmIntentAlarmsUnsupportedReason;
     int _searchAlarmIntentAlarmsUnsupportedReason;
     int _snoozeAlarmIntentAlarmsUnsupportedReason;
+    int _sendAnnouncementIntentAnnouncementUnsupportedReason;
     int _startCallIntentCallCapabilityUnsupportedReason;
     int _startCallIntentCallRecordToCallBackUnsupportedReason;
     int _addTasksIntentContactEventTriggerUnsupportedReason;
@@ -81,6 +84,7 @@
     int _shareETAIntentRecipientUnsupportedReason;
     int _stopShareETAIntentRecipientUnsupportedReason;
     int _sendMessageIntentRecipientUnsupportedReason;
+    int _sendAnnouncementIntentRecipientsUnsupportedReason;
     int _saveHealthSampleIntentRecordDateUnsupportedReason;
     int _addTasksIntentTargetTaskListMembersUnsupportedReason;
     int _setTimerAttributeIntentTargetTimerUnsupportedReason;
@@ -130,6 +134,8 @@
 @property (nonatomic) BOOL hasSaveHealthSampleIntentRecordDateUnsupportedReason;
 @property (nonatomic) BOOL hasSearchAlarmIntentAlarmsUnsupportedReason;
 @property (nonatomic) BOOL hasSearchForMediaIntentMediaItemsUnsupportedReason;
+@property (nonatomic) BOOL hasSendAnnouncementIntentAnnouncementUnsupportedReason;
+@property (nonatomic) BOOL hasSendAnnouncementIntentRecipientsUnsupportedReason;
 @property (nonatomic) BOOL hasSendMessageIntentRecipientUnsupportedReason;
 @property (nonatomic) BOOL hasSendPaymentIntentCurrencyAmountUnsupportedReason;
 @property (nonatomic) BOOL hasSendPaymentIntentPayeeUnsupportedReason;
@@ -156,6 +162,8 @@
 @property (nonatomic) int saveHealthSampleIntentRecordDateUnsupportedReason; // @synthesize saveHealthSampleIntentRecordDateUnsupportedReason=_saveHealthSampleIntentRecordDateUnsupportedReason;
 @property (nonatomic) int searchAlarmIntentAlarmsUnsupportedReason; // @synthesize searchAlarmIntentAlarmsUnsupportedReason=_searchAlarmIntentAlarmsUnsupportedReason;
 @property (nonatomic) int searchForMediaIntentMediaItemsUnsupportedReason; // @synthesize searchForMediaIntentMediaItemsUnsupportedReason=_searchForMediaIntentMediaItemsUnsupportedReason;
+@property (nonatomic) int sendAnnouncementIntentAnnouncementUnsupportedReason; // @synthesize sendAnnouncementIntentAnnouncementUnsupportedReason=_sendAnnouncementIntentAnnouncementUnsupportedReason;
+@property (nonatomic) int sendAnnouncementIntentRecipientsUnsupportedReason; // @synthesize sendAnnouncementIntentRecipientsUnsupportedReason=_sendAnnouncementIntentRecipientsUnsupportedReason;
 @property (nonatomic) int sendMessageIntentRecipientUnsupportedReason; // @synthesize sendMessageIntentRecipientUnsupportedReason=_sendMessageIntentRecipientUnsupportedReason;
 @property (nonatomic) int sendPaymentIntentCurrencyAmountUnsupportedReason; // @synthesize sendPaymentIntentCurrencyAmountUnsupportedReason=_sendPaymentIntentCurrencyAmountUnsupportedReason;
 @property (nonatomic) int sendPaymentIntentPayeeUnsupportedReason; // @synthesize sendPaymentIntentPayeeUnsupportedReason=_sendPaymentIntentPayeeUnsupportedReason;
@@ -197,6 +205,8 @@
 - (int)StringAsSaveHealthSampleIntentRecordDateUnsupportedReason:(id)arg1;
 - (int)StringAsSearchAlarmIntentAlarmsUnsupportedReason:(id)arg1;
 - (int)StringAsSearchForMediaIntentMediaItemsUnsupportedReason:(id)arg1;
+- (int)StringAsSendAnnouncementIntentAnnouncementUnsupportedReason:(id)arg1;
+- (int)StringAsSendAnnouncementIntentRecipientsUnsupportedReason:(id)arg1;
 - (int)StringAsSendMessageIntentRecipientUnsupportedReason:(id)arg1;
 - (int)StringAsSendPaymentIntentCurrencyAmountUnsupportedReason:(id)arg1;
 - (int)StringAsSendPaymentIntentPayeeUnsupportedReason:(id)arg1;
@@ -242,6 +252,8 @@
 - (id)saveHealthSampleIntentRecordDateUnsupportedReasonAsString:(int)arg1;
 - (id)searchAlarmIntentAlarmsUnsupportedReasonAsString:(int)arg1;
 - (id)searchForMediaIntentMediaItemsUnsupportedReasonAsString:(int)arg1;
+- (id)sendAnnouncementIntentAnnouncementUnsupportedReasonAsString:(int)arg1;
+- (id)sendAnnouncementIntentRecipientsUnsupportedReasonAsString:(int)arg1;
 - (id)sendMessageIntentRecipientUnsupportedReasonAsString:(int)arg1;
 - (id)sendPaymentIntentCurrencyAmountUnsupportedReasonAsString:(int)arg1;
 - (id)sendPaymentIntentPayeeUnsupportedReasonAsString:(int)arg1;

@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 + (id)customAttributes;
 + (id)getEspressoResources;
 - (void)dealloc;
+- (id)getSelectedFacesInpaintingModelDescriptor;
 - (id)getSelectedGeneralInpaintingModelDescriptor;
 - (id)init;
 - (struct CGRect)inputMaskBoundingBoxAsValidCGRect;

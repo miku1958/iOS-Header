@@ -8,6 +8,7 @@
 
 #import <SiriVOX/AFClockAlarmListening-Protocol.h>
 #import <SiriVOX/AFClockTimerListening-Protocol.h>
+#import <SiriVOX/AFHomeAnnouncementListening-Protocol.h>
 #import <SiriVOX/AFMyriadDelegate-Protocol.h>
 #import <SiriVOX/AFNotifyObserverDelegate-Protocol.h>
 #import <SiriVOX/SVXModuleInstance-Protocol.h>
@@ -16,11 +17,11 @@
 #import <SiriVOX/SVXSpeechSynthesisListening-Protocol.h>
 #import <SiriVOX/SVXSystemVolumeListening-Protocol.h>
 
-@class AFClockAlarmObserver, AFClockAlarmSnapshot, AFClockTimerObserver, AFClockTimerSnapshot, AFExperimentContext, AFMyriadCoordinator, AFNotifyObserver, AFQueue, AFRemoteRequestWatcher, AFSiriTether, AFSpeechSynthesisRecord, NSDate, NSString, SVXAudioPowerUpdateAnnouncer, SVXDeviceProblemsState, SVXDeviceSetupContext, SVXModule, SVXNowPlayingObserver, SVXServiceCommandHandler, SVXSession, SVXSessionActivationAnnouncer, SVXSessionActivityAnnouncer, SVXSpeechSynthesizer;
+@class AFClockAlarmObserver, AFClockAlarmSnapshot, AFClockTimerObserver, AFClockTimerSnapshot, AFExperimentContext, AFHomeAnnouncementObserver, AFMyriadCoordinator, AFNotifyObserver, AFQueue, AFRemoteRequestWatcher, AFSiriTether, AFSpeechSynthesisRecord, NSDate, NSString, SVXAudioPowerUpdateAnnouncer, SVXDeviceProblemsState, SVXDeviceSetupContext, SVXModule, SVXNowPlayingObserver, SVXServiceCommandHandler, SVXSession, SVXSessionActivationAnnouncer, SVXSessionActivityAnnouncer, SVXSpeechSynthesizer;
 @protocol OS_dispatch_queue, SVXTaskTracking;
 
 __attribute__((visibility("hidden")))
-@interface SVXSessionManager : NSObject <AFMyriadDelegate, SVXModuleInstance, AFNotifyObserverDelegate, SVXSessionDelegate, SVXSpeechSynthesisListening, SVXNowPlayingPlaybackStateListening, AFClockAlarmListening, AFClockTimerListening, SVXSystemVolumeListening>
+@interface SVXSessionManager : NSObject <AFHomeAnnouncementListening, AFMyriadDelegate, SVXModuleInstance, AFNotifyObserverDelegate, SVXSessionDelegate, SVXSpeechSynthesisListening, SVXNowPlayingPlaybackStateListening, AFClockAlarmListening, AFClockTimerListening, SVXSystemVolumeListening>
 {
     SVXModule *_module;
     AFNotifyObserver *_borealisTriggerNotifyObserver;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
     SVXServiceCommandHandler *_serviceCommandHandler;
     AFClockAlarmObserver *_clockAlarmObserver;
     AFClockTimerObserver *_clockTimerObserver;
+    AFHomeAnnouncementObserver *_homeAnnouncementObserver;
     float _mediaPlaybackVolume;
     id _myriadToken;
     AFMyriadCoordinator *_myriadCoordinator;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
     SVXDeviceProblemsState *_deviceProblemsState;
     AFClockAlarmSnapshot *_clockAlarmSnapshot;
     AFClockTimerSnapshot *_clockTimerSnapshot;
+    unsigned long long _homeAnnouncementState;
     NSObject<OS_dispatch_queue> *_coreDuetQueue;
     double _nowPlayingPlaybackStateRecordTime;
     BOOL _needsClearContext;
@@ -80,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleDeviceProblemsStateChanged:(id)arg1;
 - (void)_handleFetchedExperimentContext:(id)arg1;
 - (void)_handleFetchedStereoPartnerLastMyriadWinDate:(id)arg1;
+- (void)_handleHomeAnnouncementObserver:(id)arg1 stateDidUpdateFrom:(unsigned long long)arg2 to:(unsigned long long)arg3;
 - (void)_handleMyriadForActivationContext:(id)arg1;
 - (void)_handleNowPlayingObserver:(id)arg1 playbackStateDidChangeFrom:(long long)arg2 to:(long long)arg3;
 - (void)_handleRemoteRequestDismissalWithReason:(long long)arg1 options:(unsigned long long)arg2 analyticsContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -132,6 +136,8 @@ __attribute__((visibility("hidden")))
 - (void)fetchCurrentStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAudioSessionProviderWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getCurrentSessionUsingBlock:(CDUnknownBlockType)arg1;
+- (void)homeAnnouncementObserver:(id)arg1 snapshotDidUpdateFrom:(id)arg2 to:(id)arg3;
+- (void)homeAnnouncementObserver:(id)arg1 stateDidUpdateFrom:(unsigned long long)arg2 to:(unsigned long long)arg3;
 - (id)initWithModule:(id)arg1;
 - (void)notifyObserver:(id)arg1 didChangeStateFrom:(unsigned long long)arg2 to:(unsigned long long)arg3;
 - (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;

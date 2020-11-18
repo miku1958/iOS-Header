@@ -28,6 +28,7 @@
     BOOL _showPaddedFacesRect;
     BOOL _showBestSquareRect;
     BOOL _showToggleCTMButton;
+    BOOL _showGainMapButton;
     BOOL _hideToolbarWhenShowingAccessoryView;
     BOOL _useGlobalDetailsVisibility;
     BOOL _useGlobalCommentsVisibility;
@@ -202,6 +203,7 @@
 @property (nonatomic) BOOL showFacesRect; // @synthesize showFacesRect=_showFacesRect;
 @property (nonatomic) BOOL showFileRadarButtonForOneUpErrorPresentationsOnInternalInstalls; // @synthesize showFileRadarButtonForOneUpErrorPresentationsOnInternalInstalls=_showFileRadarButtonForOneUpErrorPresentationsOnInternalInstalls;
 @property (nonatomic) BOOL showGIFLoadingDelays; // @synthesize showGIFLoadingDelays=_showGIFLoadingDelays;
+@property (nonatomic) BOOL showGainMapButton; // @synthesize showGainMapButton=_showGainMapButton;
 @property (nonatomic) BOOL showInitialDetailsIndicator; // @synthesize showInitialDetailsIndicator=_showInitialDetailsIndicator;
 @property (nonatomic) BOOL showLoadingIndicatorDuringDownload; // @synthesize showLoadingIndicatorDuringDownload=_showLoadingIndicatorDuringDownload;
 @property (nonatomic) BOOL showOffBadgeForDisabledLivePhotos; // @synthesize showOffBadgeForDisabledLivePhotos=_showOffBadgeForDisabledLivePhotos;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, NSURL;
 @protocol SBUIRemoteAlertHostInterface;
 
 @interface HUHomeControlServiceContext : NSObject
@@ -17,8 +17,10 @@
     unsigned long long _serviceType;
     NSString *_homeName;
     NSString *_roomName;
+    NSURL *_defaultActionURL;
 }
 
+@property (copy, nonatomic) NSURL *defaultActionURL; // @synthesize defaultActionURL=_defaultActionURL;
 @property (strong, nonatomic) NSString *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
 @property (copy, nonatomic) NSString *homeName; // @synthesize homeName=_homeName;
 @property (strong, nonatomic) id<SBUIRemoteAlertHostInterface> remoteViewControllerProxy; // @synthesize remoteViewControllerProxy=_remoteViewControllerProxy;

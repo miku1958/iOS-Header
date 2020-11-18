@@ -79,6 +79,7 @@
 @property (nonatomic) BOOL wantsAutoDualCameraFusion; // @dynamic wantsAutoDualCameraFusion;
 @property (nonatomic) BOOL wantsHighResolutionStills; // @dynamic wantsHighResolutionStills;
 @property (nonatomic) BOOL wantsPortraitEffect; // @dynamic wantsPortraitEffect;
+@property (nonatomic) BOOL wantsSemanticSceneFilter; // @dynamic wantsSemanticSceneFilter;
 @property (nonatomic) BOOL wantsSpatialOverCapture; // @dynamic wantsSpatialOverCapture;
 @property (nonatomic) BOOL wantsSquareCrop; // @dynamic wantsSquareCrop;
 

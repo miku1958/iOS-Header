@@ -22,6 +22,7 @@
 + (void)_generateImageDerivativeResourcesFromInputResource:(id)arg1 destinationDirectory:(id)arg2 isAdjusted:(BOOL)arg3 derivativesFilter:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 + (void)_generateVideoDerivativeResourcesFromInputResource:(id)arg1 withCPLAdjustments:(id)arg2 destinationDirectory:(id)arg3 derivativesFilter:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 + (id)_imageServiceClient;
++ (BOOL)_shouldGenerateHDRMediumVideoDerivative;
 + (BOOL)_shouldGenerateLargeVideoDerivativeForAVAsset:(id)arg1;
 + (id)_videoServiceClient;
 + (BOOL)canGenerateImageDerivativesFromUTI:(id)arg1;

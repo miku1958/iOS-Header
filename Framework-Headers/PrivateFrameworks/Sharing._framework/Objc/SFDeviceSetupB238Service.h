@@ -35,6 +35,7 @@
     SFSiriDeviceSetupGreetingDetails *_siriGreetingDetails;
     BOOL _siriHeardWhatCanYouDo;
     BOOL _wifiSetupEnabled;
+    BOOL _identifyB238AsB520;
     SFDeviceOperationHandlerCDPSetup *_cdpSetupHandler;
     HMDeviceSetupOperationHandler *_homeKitSetupHandler;
     SFDeviceOperationHandlerWiFiSetup *_wifiSetupHandler;

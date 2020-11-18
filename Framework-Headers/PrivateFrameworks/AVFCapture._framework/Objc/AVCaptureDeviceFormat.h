@@ -54,6 +54,7 @@
 - (CDStruct_1b6d18a9)highestSupportedVideoFrameDuration;
 - (id)initWithFigCaptureSourceFormat:(id)arg1;
 - (BOOL)isCameraCalibrationDataDeliverySupported;
+- (BOOL)isContentAwareDistortionCorrectionSupported;
 - (BOOL)isDeepFusionSupported;
 - (BOOL)isDefaultActiveFormat;
 - (BOOL)isDeferredPhotoProcessingSupported;

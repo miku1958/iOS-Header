@@ -277,6 +277,7 @@
 - (BOOL)iconScrollView:(id)arg1 shouldSetContentOffset:(struct CGPoint *)arg2 animated:(BOOL)arg3;
 - (void)iconScrollViewDidCancelTouchTracking:(id)arg1;
 - (void)iconScrollViewWillCancelTouchTracking:(id)arg1;
+- (id)iconVisibilityDescription;
 - (unsigned long long)indexOfIconListView:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (BOOL)isPageTypeIcon:(long long)arg1;
@@ -322,6 +323,7 @@
 - (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)transitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (unsigned long long)typeForPage:(long long)arg1;
 - (void)updateAccessibilityTintColors;

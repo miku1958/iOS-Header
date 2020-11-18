@@ -19,15 +19,18 @@
     BOOL _shouldUseModernHDRBehavior;
     BOOL _shouldMirrorFrontCameraCaptures;
     BOOL _shouldUseVolumeUpBurst;
+    BOOL _shouldUseContentAwareDistortionCorrection;
     BOOL _didAcknowledgePortraitModeDescription;
     BOOL _videoConfigurationControlEnabled;
     BOOL _lowLightVideoEnabled;
     BOOL _shouldForceMonoAudioRecording;
+    BOOL _HDR10BitVideoEnabled;
     BOOL _photoOverCaptureEnabled;
     BOOL _videoOverCaptureEnabled;
     BOOL _autoAdjustmentsEnabled;
     BOOL _didAcknowledgeCTMDescription;
     BOOL _overCapturePreviewEnabled;
+    BOOL _semanticDevelopmentEnabled;
     BOOL _preserveEffectFilter;
     BOOL _preserveCaptureMode;
     BOOL _preserveLivePhoto;
@@ -41,6 +44,7 @@
     CAMConflictingControlConfiguration *_conflictingControlConfiguration;
     long long _videoConfiguration;
     long long _slomoConfiguration;
+    long long _VFRMode;
     long long _previewViewAspectMode;
     long long _photoModeLastCapturedEffectFilterType;
     long long _squareModeLastCapturedEffectFilterType;
@@ -53,7 +57,9 @@
     double __resetTimeoutOverride;
 }
 
+@property (readonly, nonatomic) BOOL HDR10BitVideoEnabled; // @synthesize HDR10BitVideoEnabled=_HDR10BitVideoEnabled;
 @property (readonly, nonatomic) BOOL QRBannersEnabledInSettings; // @synthesize QRBannersEnabledInSettings=_QRBannersEnabledInSettings;
+@property (readonly, nonatomic) long long VFRMode; // @synthesize VFRMode=_VFRMode;
 @property (readonly, nonatomic) BOOL _preferHEVCWhenAvailable; // @synthesize _preferHEVCWhenAvailable=__preferHEVCWhenAvailable;
 @property (readonly, nonatomic) double _resetTimeoutOverride; // @synthesize _resetTimeoutOverride=__resetTimeoutOverride;
 @property (readonly, nonatomic) BOOL _shouldDisableCameraSwitchingDuringVideoRecording; // @synthesize _shouldDisableCameraSwitchingDuringVideoRecording=__shouldDisableCameraSwitchingDuringVideoRecording;
@@ -85,12 +91,14 @@
 @property (nonatomic) long long previewViewAspectMode; // @synthesize previewViewAspectMode=_previewViewAspectMode;
 @property (strong, nonatomic, setter=_setResetTimeoutDate:) NSDate *resetTimeoutDate; // @synthesize resetTimeoutDate=_resetTimeoutDate;
 @property (readonly, nonatomic) BOOL responsiveShutterEnabled; // @synthesize responsiveShutterEnabled=_responsiveShutterEnabled;
+@property (readonly, nonatomic) BOOL semanticDevelopmentEnabled; // @synthesize semanticDevelopmentEnabled=_semanticDevelopmentEnabled;
 @property (readonly, nonatomic) BOOL shouldCaptureHDREV0; // @synthesize shouldCaptureHDREV0=_shouldCaptureHDREV0;
 @property (readonly, nonatomic) BOOL shouldDelayRemotePersistence; // @synthesize shouldDelayRemotePersistence=_shouldDelayRemotePersistence;
 @property (readonly, nonatomic) BOOL shouldForceMonoAudioRecording; // @synthesize shouldForceMonoAudioRecording=_shouldForceMonoAudioRecording;
 @property (nonatomic) BOOL shouldMirrorFrontCameraCaptures; // @synthesize shouldMirrorFrontCameraCaptures=_shouldMirrorFrontCameraCaptures;
 @property (readonly, nonatomic) BOOL shouldShowGridView; // @synthesize shouldShowGridView=_shouldShowGridView;
 @property (readonly, nonatomic) BOOL shouldShowQRBanners;
+@property (readonly, nonatomic) BOOL shouldUseContentAwareDistortionCorrection; // @synthesize shouldUseContentAwareDistortionCorrection=_shouldUseContentAwareDistortionCorrection;
 @property (readonly, nonatomic) BOOL shouldUseModernHDRBehavior; // @synthesize shouldUseModernHDRBehavior=_shouldUseModernHDRBehavior;
 @property (readonly, nonatomic) BOOL shouldUseVolumeUpBurst; // @synthesize shouldUseVolumeUpBurst=_shouldUseVolumeUpBurst;
 @property (readonly, nonatomic) long long slomoConfiguration; // @synthesize slomoConfiguration=_slomoConfiguration;
@@ -105,8 +113,10 @@
 + (id)defaultCaptureConfiguration;
 + (long long)defaultFilterTypeForMode:(long long)arg1;
 + (long long)defaultLightingTypeForMode:(long long)arg1;
++ (void)performLowLightVideoMigration;
 + (void)performResponsiveShutterMigration;
 + (id)preferences;
++ (BOOL)shouldEnableHDR10BitVideoForHEVCEnabled:(BOOL)arg1 capabilities:(id)arg2;
 - (void).cxx_destruct;
 - (void)_publishAnalyticsIfNeeded;
 - (long long)_sanitizeEffectFilterType:(long long)arg1 forMode:(long long)arg2;
@@ -121,7 +131,7 @@
 - (BOOL)shouldDisableCameraSwitchingDuringVideoRecordingForMode:(long long)arg1;
 - (BOOL)shouldResetCaptureConfiguration;
 - (void)updateResetTimeoutDate;
-- (long long)videoEncodingBehaviorForConfiguration:(long long)arg1;
+- (long long)videoEncodingBehaviorForConfiguration:(long long)arg1 wantsHDR10BitVideo:(BOOL)arg2;
 - (void)writePreferences;
 
 @end

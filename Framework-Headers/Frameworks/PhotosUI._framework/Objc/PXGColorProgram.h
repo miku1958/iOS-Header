@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) struct CGColorSpace *destinationColorSpace; // @synthesize destinationColorSpace=_destinationColorSpace;
 @property (readonly, nonatomic) id<MTLDevice> device; // @synthesize device=_device;
 @property (readonly, nonatomic) unsigned long long flags; // @synthesize flags=_flags;
+@property (readonly, nonatomic) BOOL needsHDRToSDRConversion;
 @property (readonly, nonatomic) unsigned short numInputs; // @synthesize numInputs=_numInputs;
 @property (readonly, nonatomic) unsigned int opcodes; // @synthesize opcodes=_opcodes;
 @property (readonly, nonatomic) id<MTLBuffer> params; // @synthesize params=_params;

@@ -83,6 +83,7 @@
 - (void)scrollViewWillEndDragging:(id)arg1;
 - (void)searchBarDidFocus;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (id)sharedRemoteSearchViewController;
 
 @end
 

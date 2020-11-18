@@ -42,6 +42,7 @@
 - (id)initWithAssetType:(id)arg1 productType:(id)arg2;
 - (id)initWithBluetoothProductIdentifier:(unsigned long long)arg1 color:(unsigned long long)arg2;
 - (id)initWithHomePodColor:(unsigned long long)arg1;
+- (id)initWithHomePodColor:(unsigned long long)arg1 version:(unsigned int)arg2;
 - (id)initWithProductType:(id)arg1 additionalQueryParameters:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)loggingProductType;

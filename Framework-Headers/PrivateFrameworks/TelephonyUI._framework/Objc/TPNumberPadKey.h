@@ -31,10 +31,14 @@ __attribute__((visibility("hidden")))
 + (float)absoluteTrackingValueForString:(id)arg1 pointSize:(float)arg2 unitsPerEm:(float)arg3;
 + (void)initialize;
 - (void).cxx_destruct;
+- (double)digitFontSizeForScreenSizeCategory:(unsigned long long)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(BOOL)arg3;
 - (void)doLayoutNow;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (double)letterFontSizeForScreenSizeCategory:(unsigned long long)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(BOOL)arg3;
+- (double)secondaryLetterFontSizeForScreenSizeCategory:(unsigned long long)arg1;
 - (void)setDigit:(id)arg1 primaryLetters:(id)arg2 secondaryLetters:(id)arg3;
-- (void)setFontStylesForHighlightState:(BOOL)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(BOOL)arg3 shouldCenterDigit:(BOOL)arg4 fontColor:(BOOL)arg5 circleDiameter:(double)arg6 largeFont:(BOOL)arg7 isCarPlay:(BOOL)arg8;
+- (void)setFontStylesForHighlightState:(BOOL)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(BOOL)arg3 shouldCenterDigit:(BOOL)arg4 fontColor:(BOOL)arg5 circleDiameter:(double)arg6 isCarPlay:(BOOL)arg7 screenSizeCategory:(unsigned long long)arg8;
+- (void)updateBaselineConstraintConstantsFor:(unsigned long long)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(BOOL)arg3;
 
 @end
 

@@ -197,6 +197,7 @@
 - (void)_updateInnerShapePowerTarget;
 - (void)_updateInnerShapeWidthTarget;
 - (void)_updateLeftLine;
+- (void)_updateLockGlyphTransformAndAlpha;
 - (void)_updateLockUI;
 - (void)_updateMetalViewAlpha;
 - (void)_updateOuterAndInnerLayersAnimated:(BOOL)arg1;

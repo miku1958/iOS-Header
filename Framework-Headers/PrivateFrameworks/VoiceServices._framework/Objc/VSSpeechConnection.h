@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)startSynthesisRequest:(id)arg1;
 - (void)stopCurrentSpeechRequestAtMark:(long long)arg1;
 - (void)stopPresynthesizedAudioRequest;
+- (void)triggerCellularDownloadedVoiceAssets:(id)arg1 withClientID:(id)arg2;
 - (void)updateWithConnectionIdentifier:(id)arg1;
 
 @end

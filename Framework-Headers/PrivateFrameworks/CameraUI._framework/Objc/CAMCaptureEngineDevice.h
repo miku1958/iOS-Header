@@ -28,9 +28,9 @@
 @property (readonly, nonatomic) AVCaptureDeviceInput *captureDeviceInput; // @synthesize captureDeviceInput=_captureDeviceInput;
 
 - (void).cxx_destruct;
-- (id)_highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)_highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)_keyForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)_highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2 enableHDR10BitVideo:(BOOL)arg3;
+- (id)_highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2 enableHDR10BitVideo:(BOOL)arg3;
+- (id)_keyForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2 enableHDR10BitVideo:(BOOL)arg3;
 - (id)_panoramaDeviceFormatForConfiguration:(id)arg1;
 - (id)_portraitModeDeviceFormat;
 - (id)_portraitModeSessionPreset;

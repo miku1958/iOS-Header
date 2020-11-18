@@ -393,7 +393,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let id : ÝÈ // +0xfeedfacf (0x0)
 	let type : EventType // +0x3 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : EÈ // +0x41 (0x0)
+	let date : EÈ // +0x42 (0x0)
 	let processName : String // +0x6100085 (0x10)
 	let category : String // +0x19 (0x10)
 	let message : String // +0x45545f5f (0x10)

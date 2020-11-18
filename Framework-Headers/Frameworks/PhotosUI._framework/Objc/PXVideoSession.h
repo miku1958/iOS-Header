@@ -29,6 +29,7 @@
     ISWrappedAVAudioSession *_audioSessionQueue_audioSession;
     NSMutableDictionary *_stateQueue_presentationStatesByContext;
     NSMutableSet *_stateQueue_pixelBufferOutputTokens;
+    NSMutableSet *_stateQueue_pixelBufferPausedOutputTokens;
     PXDisplayLink *_stateQueue_displayLink;
     id _stateQueue_playbackTimeRangeEndBoundaryObserver;
     long long _stateQueue_playState;
@@ -148,8 +149,8 @@
 - (void)_updatePlayerItem;
 - (void)_updatePlayerItemInPlayer;
 - (void)_updatePlayerVolume;
-- (void)_updatePreferredTransform;
 - (void)_updateReadyForSeeking;
+- (void)_updateRotationTransform;
 - (void)_updateStalled;
 - (void)_updateVideoOutput;
 - (void)_updateVolumeAnimator;

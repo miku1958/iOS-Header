@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) id<HFMediaValueSource> hf_mediaValueSource;
 @property (readonly, nonatomic) NSString *hf_prettyDescription;
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
+@property (readonly, nonatomic) BOOL hf_supportsMusicAlarm;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
 @property (readonly, nonatomic) BOOL hf_supportsStereoPairing;
 @property (readonly, nonatomic) NSSet *mediaProfiles;

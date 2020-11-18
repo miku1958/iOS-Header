@@ -15,6 +15,8 @@
     NSMutableDictionary *_settings;
 }
 
++ (double)HLGOpticalScale;
++ (BOOL)allAssetsCanUseHDRPipeline;
 + (BOOL)alwaysRequireHardwareVideoEncoder;
 + (BOOL)bufferStorageFactoryUsePool;
 + (long long)cacheNodeCacheSizeLimit;
@@ -25,9 +27,11 @@
 + (BOOL)deviceDisableMetal;
 + (BOOL)deviceDisableOpenGL;
 + (BOOL)devicePrintRenderer;
++ (BOOL)disablePacked10BitPixelFormats;
 + (BOOL)displayDisableColorMatching;
 + (BOOL)displayDisableDeepColor;
 + (BOOL)displayForceDeepColor;
++ (BOOL)enableHDRSupport;
 + (id)globalSettings;
 + (BOOL)imageLayerDebug;
 + (BOOL)imageRenderJobUseSurfaceRenderer;
@@ -49,6 +53,7 @@
 + (BOOL)rendererUseP3Linear;
 + (void)reset;
 + (BOOL)runNeutrinoSynchronously;
++ (void)setAllAssetsCanUseHDRPipeline:(BOOL)arg1;
 + (void)setAlwaysRequireHardwareVideoEncoder:(BOOL)arg1;
 + (void)setBufferStorageFactoryUsePool:(BOOL)arg1;
 + (void)setCacheNodeCacheSizeLimit:(long long)arg1;
@@ -57,9 +62,11 @@
 + (void)setCacheNodeImageCompression:(double)arg1;
 + (void)setDeviceDefaultSampleMode:(long long)arg1;
 + (void)setDevicePrintRenderer:(BOOL)arg1;
++ (void)setDisablePacked10BitPixelFormats:(BOOL)arg1;
 + (void)setDisplayDisableColorMatching:(BOOL)arg1;
 + (void)setDisplayDisableDeepColor:(BOOL)arg1;
 + (void)setDisplayForceDeepColor:(BOOL)arg1;
++ (void)setEnableHDRSupport:(BOOL)arg1;
 + (void)setImageLayerDebug:(BOOL)arg1;
 + (void)setImageRenderJobUseSurfaceRenderer:(BOOL)arg1;
 + (void)setImageRenderJobUseTextureRenderer:(BOOL)arg1;

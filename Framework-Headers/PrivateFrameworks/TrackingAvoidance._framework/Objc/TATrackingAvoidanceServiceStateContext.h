@@ -17,17 +17,21 @@
     BOOL _locationSimulationInProgress;
     BOOL _allowSimulatedEvents;
     BOOL _deviceUnlockedSinceBoot;
+    BOOL _hasKoreaCountryCode;
+    BOOL _userLocationInsideKorea;
 }
 
 @property BOOL airplaneMode; // @synthesize airplaneMode=_airplaneMode;
 @property BOOL allowSimulatedEvents; // @synthesize allowSimulatedEvents=_allowSimulatedEvents;
 @property BOOL batterySaverMode; // @synthesize batterySaverMode=_batterySaverMode;
 @property BOOL deviceUnlockedSinceBoot; // @synthesize deviceUnlockedSinceBoot=_deviceUnlockedSinceBoot;
+@property BOOL hasKoreaCountryCode; // @synthesize hasKoreaCountryCode=_hasKoreaCountryCode;
 @property BOOL highThermalState; // @synthesize highThermalState=_highThermalState;
 @property BOOL locationServicesEnabled; // @synthesize locationServicesEnabled=_locationServicesEnabled;
 @property BOOL locationSimulationInProgress; // @synthesize locationSimulationInProgress=_locationSimulationInProgress;
 @property BOOL restartRequired; // @synthesize restartRequired=_restartRequired;
 @property BOOL serviceEnabled; // @synthesize serviceEnabled=_serviceEnabled;
+@property BOOL userLocationInsideKorea; // @synthesize userLocationInsideKorea=_userLocationInsideKorea;
 
 - (id)init;
 

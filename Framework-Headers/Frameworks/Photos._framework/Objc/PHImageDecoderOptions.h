@@ -8,6 +8,7 @@
 
 @interface PHImageDecoderOptions : NSObject
 {
+    BOOL _shouldLoadGainMap;
     BOOL _applyOrientationTransform;
     BOOL _optimizeForDrawing;
     BOOL _highPriority;
@@ -21,6 +22,7 @@
 @property (nonatomic) long long maximumLongSideLength; // @synthesize maximumLongSideLength=_maximumLongSideLength;
 @property (nonatomic) BOOL optimizeForDrawing; // @synthesize optimizeForDrawing=_optimizeForDrawing;
 @property (nonatomic) long long resizeMode; // @synthesize resizeMode=_resizeMode;
+@property (nonatomic) BOOL shouldLoadGainMap; // @synthesize shouldLoadGainMap=_shouldLoadGainMap;
 @property (nonatomic) BOOL waitUntilComplete; // @synthesize waitUntilComplete=_waitUntilComplete;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

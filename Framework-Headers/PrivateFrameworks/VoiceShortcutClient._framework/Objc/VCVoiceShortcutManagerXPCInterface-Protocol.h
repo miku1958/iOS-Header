@@ -29,7 +29,6 @@
 - (void)getFirstUnsortedWorkflowWithCompletion:(void (^)(WFWorkflowDescriptor *, NSNumber *, NSError *))arg1;
 - (void)getNumberOfVoiceShortcutsWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
 - (void)getResultsForWorkflowQuery:(WFWorkflowQuery *)arg1 resultClassName:(NSString *)arg2 completion:(void (^)(NSArray *, WFCoreDataResultState *, NSError *))arg3;
-- (void)getShareSheetWorkflowReferencesForExtensionMatchingDictionaries:(NSArray *)arg1 hostBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getShareSheetWorkflowsForExtensionMatchingDictionaries:(NSArray *)arg1 hostBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;

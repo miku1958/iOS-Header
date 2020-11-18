@@ -16,20 +16,21 @@
     NSNumber *_maximumAperture;
     unsigned long long _portraitMajorVersion;
     unsigned long long _portraitMinorVersion;
-    CDStruct_6ed351db _versionInfo;
+    CDStruct_6ed351db _depthVersionInfo;
 }
 
 @property (nonatomic) float aperture; // @synthesize aperture=_aperture;
+@property (nonatomic) CDStruct_6ed351db depthVersionInfo; // @synthesize depthVersionInfo=_depthVersionInfo;
 @property (strong, nonatomic) NSNumber *maximumAperture; // @synthesize maximumAperture=_maximumAperture;
 @property (strong, nonatomic) NSNumber *minimumAperture; // @synthesize minimumAperture=_minimumAperture;
 @property (nonatomic) unsigned long long portraitMajorVersion; // @synthesize portraitMajorVersion=_portraitMajorVersion;
 @property (nonatomic) unsigned long long portraitMinorVersion; // @synthesize portraitMinorVersion=_portraitMinorVersion;
 @property (nonatomic) float portraitStrength; // @synthesize portraitStrength=_portraitStrength;
-@property (nonatomic) CDStruct_6ed351db versionInfo; // @synthesize versionInfo=_versionInfo;
 
 + (id)valuesAtCaptureFromImageProperties:(id)arg1 error:(out id *)arg2;
 - (void).cxx_destruct;
 - (id)description;
+- (id)initFromMinAperture:(float)arg1 maxAperture:(float)arg2 aperture:(float)arg3 portraitStrength:(float)arg4 SDOFRenderingVerion:(int)arg5 depthVersionInfo:(CDStruct_6ed351db)arg6;
 
 @end
 

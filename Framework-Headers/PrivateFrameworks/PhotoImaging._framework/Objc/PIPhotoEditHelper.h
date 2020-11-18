@@ -18,6 +18,7 @@
 + (id)effectNameForFilterName:(id)arg1;
 + (id)filterNameForEffectName:(id)arg1;
 + (id)geometryRequestWithComposition:(id)arg1;
++ (void)handlePIGlobalSettings:(id)arg1;
 + (id)imagePropertiesRequestWithComposition:(id)arg1;
 + (id)imageRenderRequestWithComposition:(id)arg1 fillInSize:(struct CGSize)arg2 wideGamut:(BOOL)arg3;
 + (id)imageRenderRequestWithComposition:(id)arg1 fitInSize:(struct CGSize)arg2 wideGamut:(BOOL)arg3;

@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 + (long long)_payeeInferredFromEnumeratedTitle:(id)arg1;
 + (long long)_salableIconForString:(id)arg1;
 - (void).cxx_destruct;
+- (id)_enrichedMetricsDictionaryWithFinanceDictionary:(id)arg1;
 - (id)initWithResponseDictionary:(id)arg1 confirmationOnly:(BOOL)arg2 taskInfo:(id)arg3;
 - (id)performWithTaskInfo:(id)arg1;
 

@@ -44,6 +44,7 @@
     HMUserCloudShareManager *_userCloudShareManager;
     HMSetupViewController *_setupViewController;
     id<HMSetupRemoteService> _setupRemoteViewController;
+    long long _multiUserStatus;
     HMMutableArray *_currentHomes;
     HMMutableArray *_homeInvitations;
     NSOperationQueue *_mergeOperationQueue;
@@ -91,6 +92,7 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong) NSString *metadataCache; // @synthesize metadataCache=_metadataCache;
 @property (nonatomic) unsigned long long metadataVersion; // @synthesize metadataVersion=_metadataVersion;
+@property (readonly) long long multiUserStatus; // @synthesize multiUserStatus=_multiUserStatus;
 @property (readonly) unsigned long long options; // @synthesize options=_options;
 @property (strong, nonatomic) HMHome *primaryHome; // @synthesize primaryHome=_primaryHome;
 @property (readonly, getter=isResidentEnabledForThisDevice) BOOL residentEnabledForThisDevice; // @synthesize residentEnabledForThisDevice=_residentEnabledForThisDevice;
@@ -187,6 +189,7 @@
 - (void)_updatePrimaryHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateResidentEnabledForThisDevice:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateStatusWithPayload:(id)arg1;
+- (void)_updateStatusWithPayload:(id)arg1 sourceIsFetch:(BOOL)arg2;
 - (void)_updateiCloudSwitchState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_writeCaches:(id)arg1 homeData:(BOOL)arg2 metadata:(BOOL)arg3;
 - (void)addAndSetupAccessoriesWithSetupPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -227,6 +230,7 @@
 - (void)setCurrentHome:(id)arg1;
 - (void)setDataSyncState:(unsigned long long)arg1;
 - (void)setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setMultiUserStatus:(long long)arg1;
 - (void)setResidentEnabledForThisDevice:(BOOL)arg1;
 - (void)setResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)setStatus:(unsigned long long)arg1;

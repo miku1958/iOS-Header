@@ -15,6 +15,7 @@
     AVApplePortraitMetadataInternal *_internal;
 }
 
+@property (readonly) unsigned int SDOFRenderingVersion;
 @property (readonly) float apertureFocalRatio;
 @property (readonly) NSData *faceObservationsData;
 @property (readonly) int faceOrientation;

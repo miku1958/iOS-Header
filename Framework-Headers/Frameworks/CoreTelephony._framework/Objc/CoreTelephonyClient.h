@@ -237,6 +237,7 @@
 - (void)getNATTKeepAliveOverCell:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned int)getNATTKeepAliveOverCell:(id)arg1 error:(id *)arg2;
 - (unsigned int)getNATTKeepAliveOverCellForPreferredDataContext:(id *)arg1;
+- (id)getNRDisableStatus:(id)arg1 error:(id *)arg2;
 - (void)getOperatorMultiPartyCallCountMaximum:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getOperatorMultiPartyCallCountMaximum:(id)arg1 error:(id *)arg2;
 - (void)getPNRContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -297,6 +298,8 @@
 - (BOOL)getSupportDynamicDataSimSwitchSync:(id *)arg1;
 - (void)getSupportedDataRates:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getSupportedDataRates:(id)arg1 error:(id *)arg2;
+- (id)getSupports5G:(id)arg1 error:(id *)arg2;
+- (id)getSupports5GStandalone:(id)arg1 error:(id *)arg2;
 - (void)getSweetgumApps:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSweetgumCapabilities:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSweetgumDataPlanMetrics:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -424,6 +427,7 @@
 - (void)setSupportDynamicDataSimSwitch:(BOOL)arg1 forIccid:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)setSupportDynamicDataSimSwitchOnBBCall:(BOOL)arg1;
 - (void)setSupportDynamicDataSimSwitchOnBBCall:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)setSupports5GStandalone:(id)arg1 enabled:(BOOL)arg2;
 - (void)setSweetgumUserConsent:(id)arg1 userConsent:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)setTetheringActive:(BOOL)arg1;
 - (void)setTetheringActive:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

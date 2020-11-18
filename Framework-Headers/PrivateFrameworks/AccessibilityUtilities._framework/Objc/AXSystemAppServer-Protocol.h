@@ -33,6 +33,7 @@
 - (void)wakeUpDeviceIfNecessary;
 
 @optional
+- (BOOL)isLockScreenVisible;
 - (BOOL)isPasscodeLockVisible;
 - (BOOL)isScreenshotWindowVisible;
 @end

@@ -114,6 +114,7 @@
 @property (nonatomic) BOOL wantsAutoLaunchForVOIP;
 @property (readonly, nonatomic) BOOL wantsLegacyFullscreenInterfaceOrientationBehaviors;
 
++ (BOOL)KJHKJHw39rq9w87q903475q0983rskjd;
 + (id)_appStateKeysToPrefetch;
 + (long long)_bestAvailableClassicModeForHostingExtensionContainedInApplication:(BOOL)arg1;
 + (unsigned long long)_canonicalScreenTypeForClassicMode:(long long)arg1;
@@ -138,7 +139,7 @@
 + (id)snapshotSortDescriptorPreferringProtectedContent;
 + (id)snapshotSortDescriptorsForNames:(id)arg1 scheme:(id)arg2 imageScale:(double)arg3 userInterfaceStyle:(long long)arg4 statusBarStateMask:(unsigned long long)arg5 interfaceOrientationMask:(unsigned long long)arg6 requiredOSVersion:(id)arg7;
 - (void).cxx_destruct;
-- (BOOL)KJHKJHw39rq9w87q903475q0983rskjd;
+- (BOOL)KSDKJFHDSFSDFSKJLH3894adfajk;
 - (void)__noteSnapshotDidUpdate:(long long)arg1 forSceneIdentifier:(id)arg2;
 - (int)_applicationRestorationCheckState;
 - (id)_baseSceneIdentifier;

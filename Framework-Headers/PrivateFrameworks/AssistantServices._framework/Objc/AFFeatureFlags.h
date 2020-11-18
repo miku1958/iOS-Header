@@ -12,6 +12,7 @@
 
 + (void)dump;
 + (id)featureFlags;
++ (BOOL)isAnnounceEnabled;
 + (BOOL)isEucalyptusEnabled;
 + (BOOL)isHALEnabled;
 + (BOOL)isHintsEnabled;

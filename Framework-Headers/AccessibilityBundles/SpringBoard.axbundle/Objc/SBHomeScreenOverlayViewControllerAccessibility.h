@@ -14,8 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (BOOL)_axIsAppLibraryOrTodayViewPresent;
-- (BOOL)_axIsCoverSheetTodayViewControllerPresent;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScroll:(long long)arg1;
 

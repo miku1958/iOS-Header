@@ -58,7 +58,7 @@
 
 - (void).cxx_destruct;
 - (id)_advertisementView;
-- (void)_playerControllerPlaybackDidEndNotification:(id)arg1;
+- (void)_avPlayerItemDidPlayToEndNotification:(id)arg1;
 - (id)_videoViewController;
 - (id)accessLog;
 - (void)beginSeekingBackward;

@@ -105,7 +105,6 @@
 - (void)issueDefrag:(id)arg1;
 - (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)issueDumpReverse:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)issueDuplicateOidCheck;
 - (void)issueRepair;
 - (void)issueSplit;
 - (void)mergeWithCompletionHandler:(CDUnknownBlockType)arg1;

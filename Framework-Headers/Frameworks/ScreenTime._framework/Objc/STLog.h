@@ -18,6 +18,7 @@
 + (id)awd;
 + (id)backgroundActivity;
 + (id)blueprint;
++ (id)cachingCodableStore;
 + (id)checkpoint;
 + (id)cloudkit;
 + (id)conduit;

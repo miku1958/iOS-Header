@@ -114,7 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)scheduleProbingSequenceAtTime:(double)arg1;
 - (void)scheduleProbingSequenceWithFrameSize:(unsigned int)arg1 paddingBytes:(unsigned int)arg2 timestamp:(unsigned int)arg3 fecRatio:(double)arg4 isProbingSequenceScheduled:(BOOL *)arg5;
 - (void)stopVideoByVCRateControl;
-- (void)updateBasebandSuggestionWithStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateBasebandSuggestionWithStatistics:(CDStruct_1a067c5f)arg1;
 - (void)updateLargeFrameSizeWithBandwidth:(unsigned int)arg1;
 - (void)updateProbingLargeFrameSizeCap;
 

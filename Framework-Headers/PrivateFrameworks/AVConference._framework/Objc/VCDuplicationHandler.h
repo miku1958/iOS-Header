@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     CDStruct_634abacb _localAlertInfo;
     CDStruct_634abacb _remoteAlertInfo;
     BOOL _isRemotePreAzul;
+    BOOL _iRATDuplicationEnabled;
 }
 
 @property (readonly) unsigned char duplicationReason; // @synthesize duplicationReason=_duplicationReason;
+@property BOOL iRATDuplicationEnabled; // @synthesize iRATDuplicationEnabled=_iRATDuplicationEnabled;
 @property (readonly) BOOL isDuplicationEnabled;
 @property (readonly) BOOL isDuplicationPending;
 @property BOOL isRemotePreAzul; // @synthesize isRemotePreAzul=_isRemotePreAzul;

@@ -77,6 +77,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isLockScreenActive;
 @property (readonly) BOOL isLockScreenVisible;
+@property (readonly) BOOL isSupressingLockButton;
 @property (readonly) BOOL isUILocked; // @synthesize isUILocked=_isUILocked;
 @property (readonly) BOOL isWaitingToLockUI; // @synthesize isWaitingToLockUI=_isWaitingToLockUI;
 @property (strong, nonatomic, getter=_liftToWakeManager, setter=_setLiftToWakeManager:) SBLiftToWakeManager *liftToWakeManager; // @synthesize liftToWakeManager=_liftToWakeManager;

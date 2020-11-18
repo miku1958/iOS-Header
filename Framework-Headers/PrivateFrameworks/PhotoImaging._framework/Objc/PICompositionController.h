@@ -85,6 +85,8 @@
 - (id)redEyeAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (void)removeAdjustmentWithKey:(id)arg1;
 - (void)replaceAdjustment:(id)arg1 withKey:(id)arg2;
+- (id)semanticEnhanceAdjustmentController;
+- (id)semanticEnhanceAdjustmentControllerCreatingIfNecessary:(BOOL)arg1;
 - (void)setOvercaptureSource:(id)arg1;
 - (void)setSource:(id)arg1 mediaType:(long long)arg2;
 - (id)sharpenAdjustmentController;

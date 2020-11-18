@@ -168,7 +168,9 @@
 - (void)_cleanupRubberBandPresentationTransitionForSlidingViewController:(id)arg1;
 - (void)_clearSecureAppViewControllersIncludingWindow:(BOOL)arg1;
 - (void)_enqueueBlock:(CDUnknownBlockType)arg1 withName:(id)arg2;
+- (id)_impactFeedbackGeneratorConfigurationForStyle:(long long)arg1;
 - (BOOL)_isEffectivelyLocked;
+- (id)_newRubberBandFeedbackGeneratorForSettings:(id)arg1;
 - (void)_noteEffectiveLockStatusMayHaveChangedForUserNotification:(BOOL)arg1 canDismiss:(BOOL)arg2;
 - (void)_notifyDelegateDidDismiss;
 - (void)_notifyDelegateDidPresent;

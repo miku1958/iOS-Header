@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) HMDAccountHandle *accountHandle; // @dynamic accountHandle;
 @property (strong, nonatomic) HMDAccountIdentifier *accountIdentifier; // @dynamic accountIdentifier;
+@property (strong, nonatomic) NSNumber *announceAccessAllowed; // @dynamic announceAccessAllowed;
+@property (strong, nonatomic) NSNumber *announceAccessLevel; // @dynamic announceAccessLevel;
 @property (strong, nonatomic) NSNumber *camerasAccessLevel; // @dynamic camerasAccessLevel;
 @property (strong, nonatomic) NSString *changeTag; // @dynamic changeTag;
 @property (strong, nonatomic) NSDictionary *pairingIdentity; // @dynamic pairingIdentity;

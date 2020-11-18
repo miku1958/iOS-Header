@@ -1924,7 +1924,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _mainBundle : __REAssetBundle // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : Y4 // +0x40 (0x8)
+	let handle : Y4 // +0x41 (0x8)
 
 	// Swift methods
 	0x6a080  class func __REAssetManager.__allocating_init(handle:) // init 

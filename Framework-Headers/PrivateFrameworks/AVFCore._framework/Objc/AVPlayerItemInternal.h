@@ -101,6 +101,8 @@ __attribute__((visibility("hidden")))
     BOOL imageQueueInterpolationCurveWasSet;
     BOOL blendsVideoFrames;
     BOOL blendsVideoFramesWasSet;
+    BOOL appliesPerFrameHDRDisplayMetadata;
+    BOOL appliesPerFrameHDRDisplayMetadataWasSet;
     NSString *videoApertureMode;
     BOOL usesMinimalLatencyForVideoCompositionRendering;
     BOOL initialAlwaysMonitorsPlayability;

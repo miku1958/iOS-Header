@@ -10,15 +10,18 @@
 
 @interface HUAlarmEditView : UIView
 {
+    BOOL _accessorySupportsMusicAlarm;
     UITableView *_settingsTable;
     UIDatePicker *_timePicker;
 }
 
+@property (nonatomic) BOOL accessorySupportsMusicAlarm; // @synthesize accessorySupportsMusicAlarm=_accessorySupportsMusicAlarm;
 @property (readonly, nonatomic) UITableView *settingsTable; // @synthesize settingsTable=_settingsTable;
 @property (readonly, nonatomic) UIDatePicker *timePicker; // @synthesize timePicker=_timePicker;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 supportsMusicAlarm:(BOOL)arg2;
 - (void)layoutSubviews;
 
 @end

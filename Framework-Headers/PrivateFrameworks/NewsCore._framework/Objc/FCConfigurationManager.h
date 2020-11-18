@@ -73,7 +73,7 @@
 - (id)_changeTagsInRecords:(id)arg1;
 - (id)_changeTagsInWidgetConfigurationDict:(id)arg1;
 - (BOOL)_checkIfShouldIgnoreCache;
-- (void)_configurationDidChangeSignificantConfigChange:(BOOL)arg1;
+- (void)_configurationDidChangeSignificantConfigChange:(BOOL)arg1 paywallConfigDidChange:(BOOL)arg2;
 - (id)_configurationSettingsWithRequestInfos:(id)arg1 feldsparID:(id)arg2 storefrontID:(id)arg3 contextConfiguration:(id)arg4 useBackgroundRefreshRate:(BOOL)arg5;
 - (unsigned long long)_configurationSourceForSourceName:(id)arg1;
 - (id)_deviceInfo;
@@ -83,6 +83,7 @@
 - (void)_loadConfigurationFromStore:(id)arg1;
 - (id)_mergeCachedDataWithWidgetConfigurationData:(id)arg1;
 - (id)_mergeRecords:(id)arg1 withCachedRecords:(id)arg2;
+- (BOOL)_paywallConfigDidChangeOldConfig:(id)arg1 newConfig:(id)arg2;
 - (id)_permanentURLForRequestKey:(id)arg1 storefrontID:(id)arg2;
 - (id)_recordIDForRequestKey:(id)arg1 storefrontID:(id)arg2;
 - (void)_refreshAppConfigurationWithConfigurationSettings:(id)arg1 force:(BOOL)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;

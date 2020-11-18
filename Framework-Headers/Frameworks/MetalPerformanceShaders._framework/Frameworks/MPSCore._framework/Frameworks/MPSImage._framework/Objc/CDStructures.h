@@ -72,7 +72,8 @@ struct MPSDevice {
     int _field10;
     unsigned int _field11;
     struct MPSGPUInfo _field12;
-    struct atomic<MPSLibrary *> _field13[122];
+    struct MPSGPUInfoPerfStats _field13;
+    struct atomic<MPSLibrary *> _field14[123];
 };
 
 struct MPSDeviceFreeList;
@@ -93,6 +94,15 @@ struct MPSGPUInfo {
     unsigned int :10;
 };
 
+struct MPSGPUInfoPerfStats {
+    unsigned short _field1;
+    unsigned short _field2;
+    unsigned short _field3;
+    unsigned short _field4;
+    unsigned short _field5;
+    unsigned short _field6;
+};
+
 struct MPSKernelInfo;
 
 struct MPSLibrary;
@@ -101,7 +111,7 @@ struct MPSLibraryInfo {
     int _field1;
     unsigned int _field2;
     char *_field3;
-    struct MPSDeviceSpecificInfo _field4;
+    CDUnknownFunctionPointerType _field4;
     struct MPSDeviceSpecificInfo _field5;
     struct MPSDeviceSpecificInfo _field6;
     struct MPSDeviceSpecificInfo _field7;
@@ -128,6 +138,8 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field28;
     struct MPSDeviceSpecificInfo _field29;
     struct MPSDeviceSpecificInfo _field30;
+    struct MPSDeviceSpecificInfo _field31;
+    struct MPSDeviceSpecificInfo _field32;
 };
 
 struct MPSOrigin {

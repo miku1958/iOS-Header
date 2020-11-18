@@ -38,6 +38,8 @@
     BOOL _supportsCompanionInitiatedRestart;
     BOOL _suspendCapable;
     BOOL _hasOnboardedForNaturalLighting;
+    BOOL _supportsMusicAlarm;
+    BOOL _supportsAnnounce;
     BOOL _supportsDoorbellChime;
     BOOL _supportsThirdPartyMusic;
     BOOL _supportsDiagnosticsTransfer;
@@ -73,6 +75,7 @@
     HMSymptomsHandler *_symptomsHandler;
     NSUUID *_networkProtectionGroupUUID;
     unsigned long long _supportedStereoPairVersions;
+    unsigned long long _homePodVariant;
     long long _reachableTransports;
     HMMutableArray *_currentServices;
     unsigned long long _accessoryReprovisionState;
@@ -125,6 +128,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) HMHome *home;
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly) unsigned long long homePodVariant;
+@property unsigned long long homePodVariant; // @synthesize homePodVariant=_homePodVariant;
 @property (readonly, copy, nonatomic) NSUUID *identifier;
 @property (readonly, copy, nonatomic) NSArray *identifiersForBridgedAccessories;
 @property (readonly) NSSet *lightProfiles;
@@ -156,7 +161,9 @@
 @property (readonly, copy, nonatomic) NSString *storeID;
 @property (copy) NSString *storeID; // @synthesize storeID=_storeID;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long supportedStereoPairVersions; // @synthesize supportedStereoPairVersions=_supportedStereoPairVersions;
+@property unsigned long long supportedStereoPairVersions; // @synthesize supportedStereoPairVersions=_supportedStereoPairVersions;
+@property (readonly, nonatomic) BOOL supportsAnnounce;
+@property (nonatomic) BOOL supportsAnnounce; // @synthesize supportsAnnounce=_supportsAnnounce;
 @property (readonly, nonatomic) BOOL supportsCompanionInitiatedRestart;
 @property (nonatomic) BOOL supportsCompanionInitiatedRestart; // @synthesize supportsCompanionInitiatedRestart=_supportsCompanionInitiatedRestart;
 @property (nonatomic) BOOL supportsDiagnosticsTransfer; // @synthesize supportsDiagnosticsTransfer=_supportsDiagnosticsTransfer;
@@ -166,6 +173,8 @@
 @property (nonatomic) BOOL supportsMediaAccessControl; // @synthesize supportsMediaAccessControl=_supportsMediaAccessControl;
 @property (readonly, nonatomic) BOOL supportsMultiUser;
 @property (nonatomic) BOOL supportsMultiUser; // @synthesize supportsMultiUser=_supportsMultiUser;
+@property (readonly, nonatomic) BOOL supportsMusicAlarm;
+@property (nonatomic) BOOL supportsMusicAlarm; // @synthesize supportsMusicAlarm=_supportsMusicAlarm;
 @property (nonatomic) BOOL supportsTargetControl; // @synthesize supportsTargetControl=_supportsTargetControl;
 @property (nonatomic) BOOL supportsTargetController; // @synthesize supportsTargetController=_supportsTargetController;
 @property (readonly) BOOL supportsThirdPartyMusic;
@@ -237,6 +246,7 @@
 - (void)_notifyClientsOfDiagnosticsTransferSupportUpdate;
 - (void)_notifyClientsOfMultiUserSupportUpdate;
 - (void)_notifyClientsOfSupportsCompanionInitiatedRestartUpdate;
+- (void)_notifyClientsOfSupportsMusicAlarmUpdate;
 - (void)_notifyClientsOfSymptomsHandlerAddedOrRemoved:(BOOL)arg1;
 - (void)_notifyClientsOfTargetControlSupportUpdate;
 - (void)_notifyDelegateOfAddedControlTarget:(id)arg1;

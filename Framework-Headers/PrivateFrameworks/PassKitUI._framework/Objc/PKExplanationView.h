@@ -36,6 +36,7 @@
     BOOL _hideTitleText;
     id<PKExplanationViewDelegate> _delegate;
     double _titleHyphenationFactor;
+    double _topLogoPadding;
     UIImage *_image;
     UIView *_heroView;
     UIColor *_topBackgroundColor;
@@ -94,6 +95,7 @@
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) long long titleTextAlignment; // @synthesize titleTextAlignment=_titleTextAlignment;
 @property (strong, nonatomic) UIColor *topBackgroundColor; // @synthesize topBackgroundColor=_topBackgroundColor;
+@property (nonatomic) double topLogoPadding; // @synthesize topLogoPadding=_topLogoPadding;
 @property (nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
 
 - (void).cxx_destruct;

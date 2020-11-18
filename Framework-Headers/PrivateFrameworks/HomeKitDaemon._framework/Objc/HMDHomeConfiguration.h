@@ -81,7 +81,16 @@
     unsigned long long _numAccessoryServiceGroups;
     long long _durationDaysSinceHomeCreationDate;
     long long _durationDaysSinceFirstHAPAccessoryAddedDate;
+    unsigned long long _poeCount;
+    unsigned long long _poe2Count;
     unsigned long long _homepodSynchLatency;
+    unsigned long long _numThreadAccessories;
+    unsigned long long _numThreadAccessoryMinCapable;
+    unsigned long long _numThreadAccessorySleepCapable;
+    unsigned long long _numThreadAccessoryFullCapable;
+    unsigned long long _numThreadAccessoryRouterCapable;
+    unsigned long long _numThreadAccessoryBorderRouterCapable;
+    unsigned long long _numThreadBorderRouters;
     unsigned long long _numHAPIPAccessoriesSupportJet;
     unsigned long long _numHAPBLEAccessoriesSupportJet;
     unsigned long long _numHAPNoeAccessoriesSupportJet;

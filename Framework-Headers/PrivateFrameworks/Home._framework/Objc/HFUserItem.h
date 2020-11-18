@@ -62,6 +62,7 @@
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)hasCompletedNonOwnerUserHomeSwitchingUI;
+- (BOOL)hasDismissedAnnounceOnboarding;
 - (BOOL)hasDismissedCameraRecordingOnboarding;
 - (BOOL)hasDismissedCameraRecordingReminderBanner;
 - (BOOL)hasDismissedIdentifyVoiceReminderBanner;
@@ -70,12 +71,15 @@
 - (BOOL)hasDismissedTVViewingProfilesReminderBanner;
 - (BOOL)hasDismissedUserSplitMediaAccountWarning;
 - (BOOL)hasDismissedVoiceProfileOnboarding;
+- (BOOL)hasDismissedWelcomeUIBanner;
 - (id)incrementAddSceneButtonPresentedCount;
 - (id)init;
 - (id)initWithHome:(id)arg1 user:(id)arg2 nameStyle:(unsigned long long)arg3;
+- (BOOL)isAnnounceEnabled;
 - (BOOL)isIdentifyVoiceEnabled;
 - (BOOL)isPlaybackInfluencesForYouEnabled;
 - (id)setCompletedNonOwnerUserHomeSwitchingUI:(BOOL)arg1;
+- (id)setDismissAnnounceOnboarding:(BOOL)arg1;
 - (id)setDismissCameraRecordingOnboarding:(BOOL)arg1;
 - (id)setDismissCameraRecordingReminderBanner:(BOOL)arg1;
 - (id)setDismissIdentifyVoiceOnboarding:(BOOL)arg1;
@@ -84,6 +88,8 @@
 - (id)setDismissTVViewingProfilesOnboarding:(BOOL)arg1;
 - (id)setDismissTVViewingProfilesReminderBanner:(BOOL)arg1;
 - (id)setDismissUserSplitMediaAccountWarning:(BOOL)arg1;
+- (id)setDismissedWelcomeUIBanner:(BOOL)arg1;
+- (id)setEnableAnnounce:(BOOL)arg1;
 - (id)setEnableIdentifyVoice:(BOOL)arg1;
 - (id)setPlaybackInfluencesForYou:(BOOL)arg1;
 - (BOOL)shouldHideAddSceneButton;

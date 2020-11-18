@@ -13,6 +13,7 @@
 @interface BYDevice : NSObject <BYDeviceProvider>
 {
     BOOL _hasHomeButton;
+    int _mainScreenClass;
     long long _type;
     long long _size;
 }
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasHomeButton; // @synthesize hasHomeButton=_hasHomeButton;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) int mainScreenClass; // @synthesize mainScreenClass=_mainScreenClass;
 @property (readonly, nonatomic) long long size; // @synthesize size=_size;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;

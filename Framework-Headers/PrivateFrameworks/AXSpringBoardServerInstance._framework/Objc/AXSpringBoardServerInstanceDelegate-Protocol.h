@@ -15,6 +15,7 @@
 - (BOOL)areSystemGesturesDisabledNativelyWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)armApplePayWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)canSetDockIconActivationModeForServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (void)cancelSiriDismissalForAssistiveTouchWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)connectedDevicesRequireAssistiveTouch;
 - (void)dismissAppSwitcherWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)dismissSiriWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -35,6 +36,7 @@
 - (BOOL)isDarkModeActiveWithServiceInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isDockVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isGuidedAccessActiveWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (BOOL)isLockScreenVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isMagnifierVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isMakingEmergencyCallWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isMediaPlayingWithServerInstance:(_AXSpringBoardServerInstance *)arg1 forBundleId:(NSString *)arg2;

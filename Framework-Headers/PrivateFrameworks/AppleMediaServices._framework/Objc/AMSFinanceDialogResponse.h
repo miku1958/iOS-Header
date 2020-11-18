@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_dialogDictionary;
     AMSDialogRequest *_dialogRequest;
     long long _kind;
+    NSDictionary *_responseDictionary;
     AMSURLTaskInfo *_taskInfo;
 }
 
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) AMSDialogRequest *dialogRequest; // @synthesize dialogRequest=_dialogRequest;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long kind; // @synthesize kind=_kind;
+@property (readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) AMSURLTaskInfo *taskInfo; // @synthesize taskInfo=_taskInfo;
 
@@ -46,8 +48,9 @@ __attribute__((visibility("hidden")))
 - (id)_createActionFromButtonDictionary:(id)arg1 title:(id)arg2;
 - (id)_createDialogRequest;
 - (id)_createRequestButtonsFromDialogDictionary:(id)arg1;
+- (id)_enrichedMetricsDictionaryWithFinanceDictionary:(id)arg1;
 - (BOOL)_isCommerceUIURL:(id)arg1 actionType:(long long)arg2 URLType:(long long)arg3;
-- (id)initWithDialogDictionary:(id)arg1 kind:(long long)arg2 taskInfo:(id)arg3;
+- (id)initWithResponseDictionary:(id)arg1 kind:(long long)arg2 taskInfo:(id)arg3;
 - (id)performWithTaskInfo:(id)arg1;
 
 @end

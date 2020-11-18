@@ -65,6 +65,7 @@
 - (struct CGLayer *)createCGLayerWithSize:(struct CGSize)arg1 info:(struct __CFDictionary *)arg2;
 - (id)createColorCubeDataForFilters:(id)arg1 dimension:(int)arg2;
 - (void)dealloc;
+- (id)depthBlurEffectFilterForImage:(id)arg1 disparityImage:(id)arg2 portraitEffectsMatte:(id)arg3 hairSemanticSegmentation:(id)arg4 glassesMatte:(id)arg5 gainMap:(id)arg6 orientation:(unsigned int)arg7 options:(id)arg8;
 - (id)depthBlurEffectFilterForImage:(id)arg1 disparityImage:(id)arg2 portraitEffectsMatte:(id)arg3 hairSemanticSegmentation:(id)arg4 orientation:(unsigned int)arg5 options:(id)arg6;
 - (id)depthBlurEffectFilterForImage:(id)arg1 disparityImage:(id)arg2 portraitEffectsMatte:(id)arg3 orientation:(unsigned int)arg4 options:(id)arg5;
 - (id)depthBlurEffectFilterForImageData:(id)arg1 options:(id)arg2;

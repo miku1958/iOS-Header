@@ -47,6 +47,8 @@ __attribute__((visibility("hidden")))
     BOOL _imageIsUsingReframe;
     BOOL _autoButtonInReframeMode;
     BOOL _disableSourceSwitch;
+    float _gainMapValue;
+    struct CGImage *_gainMapImage;
     PUAdjustmentsViewController *_adjustmentsViewController;
     UIView *_containerView;
     UIView *_adjustmentPickerView;
@@ -170,6 +172,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableSourceSwitch; // @synthesize disableSourceSwitch=_disableSourceSwitch;
+@property (strong, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property (nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL imageHasOriginalCrop; // @synthesize imageHasOriginalCrop=_imageHasOriginalCrop;
 @property (nonatomic) BOOL imageHasReframeData; // @synthesize imageHasReframeData=_imageHasReframeData;

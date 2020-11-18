@@ -39,6 +39,7 @@
     HAPPairingIdentity *_pairingIdentity;
     NSString *_displayName;
     HMDAssistantAccessControl *_assistantAccessControl;
+    unsigned long long _announceAccessLevel;
     HMBShareUserID *_cloudShareID;
     NAFuture *_cloudShareIDFuture;
     HMDUserPhotosPersonDataManager *_photosPersonDataManager;
@@ -49,12 +50,16 @@
     HMDUserSettingsBackingStoreController *_privateBackingStoreController;
     HMDUserDataController *_userDataController;
     HMFMessageDispatcher *_messageDispatcher;
+    unsigned long long _announceNotificationModeForCurrentDevice;
     HMDCloudShareTrustManager *_cloudShareTrustManager;
     HMDUserSettingsBackingStoreController *_sharedBackingStoreController;
 }
 
 @property (copy) HMDAccountIdentifier *accountIdentifier;
 @property (readonly, getter=isAdministrator) BOOL administrator;
+@property (readonly, getter=isAnnounceAccessAllowed) BOOL announceAccessAllowed;
+@property unsigned long long announceAccessLevel; // @synthesize announceAccessLevel=_announceAccessLevel;
+@property unsigned long long announceNotificationModeForCurrentDevice; // @synthesize announceNotificationModeForCurrentDevice=_announceNotificationModeForCurrentDevice;
 @property (strong) HMDAssistantAccessControl *assistantAccessControl; // @synthesize assistantAccessControl=_assistantAccessControl;
 @property (readonly) NSUUID *assistantAccessControlModelUUID;
 @property (readonly, copy) AVOutputDeviceAuthorizedPeer *av_authorizedPeer;
@@ -115,6 +120,7 @@
 - (void)_addRelayAccessToken:(id)arg1;
 - (unsigned long long)_compatiblePrivilege;
 - (void)_fixupRelayAccessTokens;
+- (void)_handleAnnounceSettingsUpdate:(id)arg1;
 - (void)_handleAssistantAccessControlUpdate:(id)arg1;
 - (void)_handleMediaContentProfileAccessControlUpdate:(id)arg1;
 - (void)_handleMultiUserSharePayloadRequest:(id)arg1;
@@ -131,6 +137,7 @@
 - (id)account;
 - (id)accountHandle;
 - (void)addRelayAccessToken:(id)arg1;
+- (id)announceUserSettingsModelWithChangeType:(unsigned long long)arg1;
 - (id)attributeDescriptions;
 - (id)backingStoreController:(id)arg1 createParticipantManagerForCloudZone:(id)arg2;
 - (void)backingStoreController:(id)arg1 didUpdatePhotosPersonManagerSettingsModel:(id)arg2 previousPhotosPersonManagerSettingsModel:(id)arg3;
@@ -145,6 +152,7 @@
 - (void)configureWithHome:(id)arg1;
 - (BOOL)containsRelayAccessToken:(id)arg1;
 - (void)dealloc;
+- (unsigned long long)defaultAnnounceUserAccessLevel;
 - (void)deregisterForMessages;
 - (void)deregisterIDSActivityObserver:(id)arg1;
 - (void)deregisterIDSActivityObserver:(id)arg1 subActivity:(id)arg2 subjectDevice:(id)arg3;

@@ -11,6 +11,7 @@
 
 @interface OBAnimationView : UIView
 {
+    BOOL _flipForRTL;
     double _scale;
     id<OBAnimationAppearanceChangeDelegate> _appearanceChangeDelegate;
     CALayer *_packageLayer;
@@ -19,6 +20,7 @@
 }
 
 @property (weak, nonatomic) id<OBAnimationAppearanceChangeDelegate> appearanceChangeDelegate; // @synthesize appearanceChangeDelegate=_appearanceChangeDelegate;
+@property BOOL flipForRTL; // @synthesize flipForRTL=_flipForRTL;
 @property (strong, nonatomic) CAPackage *package; // @synthesize package=_package;
 @property (strong, nonatomic) CALayer *packageLayer; // @synthesize packageLayer=_packageLayer;
 @property (nonatomic) struct CGRect preferredFrame; // @synthesize preferredFrame=_preferredFrame;

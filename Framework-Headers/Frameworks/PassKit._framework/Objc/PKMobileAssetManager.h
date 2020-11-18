@@ -23,14 +23,10 @@
 - (id)_queriesForEducationVideo;
 - (id)_queriesForMarketIdentifer:(id)arg1;
 - (void)_retrieveAssetWithQueries:(id)arg1 latestCompatibilityVersion:(unsigned long long)arg2 userInitiated:(BOOL)arg3 sortDescriptors:(id)arg4 timeout:(unsigned long long)arg5 catalogExpirationDays:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
-- (id)_sortDescriptorWithPreferredFeatureKey:(id)arg1 isFeaturePreferred:(BOOL)arg2 keyPath:(id)arg3;
 - (void)fetchAssetsForMarketWithIdentifier:(id)arg1 userInitiated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchCityStationProviderAssetForBaseProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchEducationVideoWithPreferredFeatures:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchNeededAssetsForThisDeviceWithPreferredFeatures:(unsigned long long)arg1;
 - (id)init;
 - (id)sortDescriptorsForCityCode;
-- (id)sortDescriptorsForEducationVideoWithPreferredFeatures:(unsigned long long)arg1;
 - (id)sortDescriptorsForMarkets;
 
 @end

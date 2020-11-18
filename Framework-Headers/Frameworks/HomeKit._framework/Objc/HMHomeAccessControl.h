@@ -13,12 +13,14 @@
     BOOL _owner;
     BOOL _administrator;
     BOOL _remoteAccessAllowed;
+    BOOL _announceAccessAllowed;
     HMUserPresenceAuthorization *_presenceAuthStatus;
     HMUserPresenceCompute *_presenceComputeStatus;
     HMUserCameraAccess *_camerasAccess;
 }
 
 @property (nonatomic, getter=isAdministrator) BOOL administrator; // @synthesize administrator=_administrator;
+@property (getter=isAnnounceAccessAllowed) BOOL announceAccessAllowed; // @synthesize announceAccessAllowed=_announceAccessAllowed;
 @property (strong, nonatomic) HMUserCameraAccess *camerasAccess; // @synthesize camerasAccess=_camerasAccess;
 @property (getter=isOwner) BOOL owner; // @synthesize owner=_owner;
 @property (strong, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
@@ -27,11 +29,12 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)camerasAccessLevel;
-- (id)initWithUser:(id)arg1 owner:(BOOL)arg2 administratorPrivilege:(BOOL)arg3 remoteAccess:(BOOL)arg4 presenceAuthStatus:(id)arg5 presenceComputeStatus:(id)arg6 camerasAccess:(id)arg7;
+- (id)initWithUser:(id)arg1 owner:(BOOL)arg2 administratorPrivilege:(BOOL)arg3 remoteAccess:(BOOL)arg4 presenceAuthStatus:(id)arg5 presenceComputeStatus:(id)arg6 announceAccess:(BOOL)arg7 camerasAccess:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)presenceAuthorizationStatus;
 - (unsigned long long)presenceComputationStatus;
 - (void)updateAdministratorAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateAnnounceAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateCamerasAccessLevel:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updatePresenceAuthorizationStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRemoteAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

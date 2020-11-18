@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
     BOOL _shouldRequestPenultimateVersion;
     BOOL _useLowMemoryMode;
     BOOL _networkAccessAllowed;
+    BOOL _includeGainMap;
     BOOL _imageIsFullQuality;
     BOOL _imageIsPlaceholder;
     BOOL __needsUpdate;
     BOOL __hasRequestedFullsizeImageData;
     BOOL __hasCurrentIncompleteRequest;
     BOOL __shouldUpdateImageOnCurrentRequestCompletion;
+    float _gainMapValue;
     int __currentFullsizeImageDataRequestID;
     int __currentImageRequestID;
     PUMediaProvider *_mediaProvider;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
     UIImage *_image;
     NSData *_fullsizeImageData;
     NSURL *_fullsizeImageURL;
+    struct CGImage *_gainMapImage;
     NSHashTable *__observers;
     long long __changeCount;
     PUImageRequesterChange *__currentChange;
@@ -49,9 +52,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (strong, nonatomic, setter=_setFullsizeImageData:) NSData *fullsizeImageData; // @synthesize fullsizeImageData=_fullsizeImageData;
 @property (strong, nonatomic, setter=_setFullsizeImageURL:) NSURL *fullsizeImageURL; // @synthesize fullsizeImageURL=_fullsizeImageURL;
+@property (strong, nonatomic, setter=_setGainMapImage:) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property (nonatomic, setter=_setGainMapValue:) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
 @property (strong, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
 @property (nonatomic, setter=_setImageIsFullQuality:) BOOL imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
 @property (nonatomic, setter=_setImageIsPlaceholder:) BOOL imageIsPlaceholder; // @synthesize imageIsPlaceholder=_imageIsPlaceholder;
+@property (nonatomic) BOOL includeGainMap; // @synthesize includeGainMap=_includeGainMap;
 @property (readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (strong, nonatomic) NSArray *requestFullSizeImageDataUTTypes; // @synthesize requestFullSizeImageDataUTTypes=_requestFullSizeImageDataUTTypes;
@@ -69,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)_update;
 - (void)_willChange;
 - (void)cancelAllImageRequests;
+- (void)dealloc;
 - (void)handlePreloadedImage:(id)arg1;
 - (id)init;
 - (id)initWithMediaProvider:(id)arg1 asset:(id)arg2;

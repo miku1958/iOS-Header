@@ -23,6 +23,7 @@
 {
     BOOL _isCustomVolumeSelected;
     BOOL _isPlayMediaSelected;
+    BOOL _accessorySupportsMusicAlarm;
     BOOL _isDatePickerWheelScrolled;
     id<HUAlarmEditViewControllerDelegate> _delegate;
     NSString *_loggedInAppleMusicAccountDSID;
@@ -41,6 +42,7 @@
     UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
+@property (nonatomic) BOOL accessorySupportsMusicAlarm; // @synthesize accessorySupportsMusicAlarm=_accessorySupportsMusicAlarm;
 @property (strong, nonatomic) NSMutableDictionary *appleMusicSubcriptionResult; // @synthesize appleMusicSubcriptionResult=_appleMusicSubcriptionResult;
 @property (strong, nonatomic) NSDateComponents *currentDatePickerTimeComponents; // @synthesize currentDatePickerTimeComponents=_currentDatePickerTimeComponents;
 @property (readonly, copy) NSString *debugDescription;
@@ -82,6 +84,7 @@
 - (BOOL)_hasUserSelectedToneAlarm;
 - (BOOL)_isAlarmTypeMedia;
 - (BOOL)_isDeviceSpecificAlarm;
+- (BOOL)_isMusicAlarmSupportedInAccessory;
 - (BOOL)_isNewAlarm;
 - (id)_mediaPropertiesTypeCellForTableView:(id)arg1 atIndexpath:(id)arg2;
 - (void)_presentMediaPickerUnavailablePromptWithReason:(long long)arg1 storeKitErrorObject:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PUTileLayoutInfo, PUTilingView;
+@class NSMutableArray, NSString, PUTileLayoutInfo, PUTilingView;
 
 @interface PUTileController : NSObject
 {
@@ -16,6 +16,7 @@
     BOOL _reusable;
     BOOL _wantsVisibleRectChanges;
     NSString *_reuseIdentifier;
+    NSMutableArray *_reasonsToSuppressAnimatedUpdates;
     long long _animationCount;
     PUTilingView *_tilingView;
     PUTileLayoutInfo *_layoutInfo;
@@ -28,10 +29,12 @@
 @property (readonly, nonatomic) BOOL isPresentationActive;
 @property (readonly, nonatomic) PUTileLayoutInfo *layoutInfo; // @synthesize layoutInfo=_layoutInfo;
 @property (readonly, nonatomic) PUTileLayoutInfo *presentationLayoutInfo;
+@property (strong, nonatomic) NSMutableArray *reasonsToSuppressAnimatedUpdates; // @synthesize reasonsToSuppressAnimatedUpdates=_reasonsToSuppressAnimatedUpdates;
 @property (nonatomic, getter=isReusable) BOOL reusable; // @synthesize reusable=_reusable;
 @property (readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
 @property (readonly, nonatomic) BOOL shouldAvoidInPlaceSnapshottedFadeOut;
 @property (nonatomic) BOOL shouldPreserveCurrentContent; // @synthesize shouldPreserveCurrentContent=_shouldPreserveCurrentContent;
+@property (readonly, nonatomic) BOOL shouldSuppressAnimatedUpdates;
 @property (readonly, weak, nonatomic) PUTilingView *tilingView; // @synthesize tilingView=_tilingView;
 @property (readonly, nonatomic) struct CGRect visibleRect;
 @property (readonly, nonatomic) BOOL wantsVisibleRectChanges; // @synthesize wantsVisibleRectChanges=_wantsVisibleRectChanges;
@@ -57,6 +60,8 @@
 - (void)setLayoutInfo:(id)arg1;
 - (void)setPreloadedImage:(id)arg1;
 - (void)setTilingView:(id)arg1;
+- (void)startSuppressingAnimatedUpdatesWithReason:(id)arg1;
+- (void)stopSuppressingAnimatedUpdatesWithReason:(id)arg1;
 - (long long)willBeginAnimation;
 
 @end

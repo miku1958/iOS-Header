@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSString, PXCuratedLibraryStyleGuide, PXCuratedLibraryViewModel, PXUpdater, UIView, UIVisualEffectView;
+@class NSString, PXCuratedLibraryStyleGuide, PXCuratedLibraryViewModel, PXUpdater, UIView;
 
 @interface PXCuratedLibrarySecondaryToolbarController : NSObject <PXChangeObserver>
 {
@@ -21,12 +21,10 @@
     PXUpdater *_updater;
     PXCuratedLibraryStyleGuide *_styleGuide;
     UIView *_secondaryToolbar;
-    UIVisualEffectView *_backgroundEffectView;
     double _height;
     struct UIEdgeInsets _padding;
 }
 
-@property (readonly, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property (readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, nonatomic) struct UIEdgeInsets containerViewAdditionalEdgeInsets;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

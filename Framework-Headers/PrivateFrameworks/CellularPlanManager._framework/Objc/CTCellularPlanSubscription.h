@@ -52,6 +52,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIccid:(id)arg1 subscriptionResult:(int)arg2 autoRenew:(BOOL)arg3 billingStartDate:(double)arg4 billingEndDate:(double)arg5 carrierName:(id)arg6 planType:(int)arg7 planDescription:(id)arg8 planStatus:(int)arg9 accountStatus:(int)arg10 accountURL:(id)arg11 timestamp:(double)arg12 homeCountryList:(id)arg13 dataUsage:(id)arg14;
 - (BOOL)isEqualOrNewerThanSubscription:(id)arg1;
+- (id)redactedDescription;
 
 @end
 

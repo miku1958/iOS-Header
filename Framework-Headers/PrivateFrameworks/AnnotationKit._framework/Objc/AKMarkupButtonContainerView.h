@@ -6,20 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UIImage;
+@class UIButton;
 
 @interface AKMarkupButtonContainerView : UIView
 {
     BOOL _selected;
     UIButton *_button;
-    UIImage *_templateImage;
-    UIImage *_colorizedImage;
 }
 
 @property (strong, nonatomic) UIButton *button; // @synthesize button=_button;
-@property (strong, nonatomic) UIImage *colorizedImage; // @synthesize colorizedImage=_colorizedImage;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
-@property (strong, nonatomic) UIImage *templateImage; // @synthesize templateImage=_templateImage;
 
 - (void).cxx_destruct;
 - (struct CGSize)_buttonSize;

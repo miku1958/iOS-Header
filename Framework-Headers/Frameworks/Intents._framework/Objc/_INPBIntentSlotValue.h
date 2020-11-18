@@ -83,6 +83,7 @@
     NSArray *_payloadActivityLists;
     NSArray *_payloadAlarms;
     NSArray *_payloadAlarmSearchs;
+    NSArray *_payloadAnnouncements;
     NSArray *_payloadAppIdentifiers;
     NSArray *_payloadArchivedObjects;
     NSArray *_payloadBillDetailsValues;
@@ -198,6 +199,8 @@
 @property (readonly, nonatomic) unsigned long long payloadAlarmSearchsCount;
 @property (copy, nonatomic) NSArray *payloadAlarms; // @synthesize payloadAlarms=_payloadAlarms;
 @property (readonly, nonatomic) unsigned long long payloadAlarmsCount;
+@property (copy, nonatomic) NSArray *payloadAnnouncements; // @synthesize payloadAnnouncements=_payloadAnnouncements;
+@property (readonly, nonatomic) unsigned long long payloadAnnouncementsCount;
 @property (copy, nonatomic) NSArray *payloadAppIdentifiers; // @synthesize payloadAppIdentifiers=_payloadAppIdentifiers;
 @property (readonly, nonatomic) unsigned long long payloadAppIdentifiersCount;
 @property (copy, nonatomic) NSArray *payloadArchivedObjects; // @synthesize payloadArchivedObjects=_payloadArchivedObjects;
@@ -426,6 +429,8 @@
 @property (readonly, nonatomic) unsigned long long payloadPrivateUpdateMediaAffinityIntentDatasCount;
 @property (readonly, nonatomic) int *payloadRadioTypes;
 @property (readonly, nonatomic) unsigned long long payloadRadioTypesCount;
+@property (readonly, nonatomic) int *payloadReadActionTypes;
+@property (readonly, nonatomic) unsigned long long payloadReadActionTypesCount;
 @property (readonly, nonatomic) int *payloadRelativeReferences;
 @property (readonly, nonatomic) unsigned long long payloadRelativeReferencesCount;
 @property (readonly, nonatomic) int *payloadRelativeSettings;
@@ -507,6 +512,7 @@
 + (Class)payloadActivityType;
 + (Class)payloadAlarmSearchType;
 + (Class)payloadAlarmType;
++ (Class)payloadAnnouncementType;
 + (Class)payloadAppIdentifierType;
 + (Class)payloadArchivedObjectType;
 + (Class)payloadBillDetailsValueType;
@@ -641,6 +647,7 @@
 - (int)StringAsPayloadPlaybackRepeatModes:(id)arg1;
 - (int)StringAsPayloadPreferredCallProviders:(id)arg1;
 - (int)StringAsPayloadRadioTypes:(id)arg1;
+- (int)StringAsPayloadReadActionTypes:(id)arg1;
 - (int)StringAsPayloadRelativeReferences:(id)arg1;
 - (int)StringAsPayloadRelativeSettings:(id)arg1;
 - (int)StringAsPayloadSettingActions:(id)arg1;
@@ -666,6 +673,7 @@
 - (void)addPayloadAlarmRepeatSchedule:(int)arg1;
 - (void)addPayloadAlarmSearch:(id)arg1;
 - (void)addPayloadAlarmSearchType:(int)arg1;
+- (void)addPayloadAnnouncement:(id)arg1;
 - (void)addPayloadAppIdentifier:(id)arg1;
 - (void)addPayloadArchivedObject:(id)arg1;
 - (void)addPayloadBalanceType:(int)arg1;
@@ -780,6 +788,7 @@
 - (void)addPayloadPrivateSearchForMediaIntentData:(id)arg1;
 - (void)addPayloadPrivateUpdateMediaAffinityIntentData:(id)arg1;
 - (void)addPayloadRadioType:(int)arg1;
+- (void)addPayloadReadActionType:(int)arg1;
 - (void)addPayloadRelativeReference:(int)arg1;
 - (void)addPayloadRelativeSetting:(int)arg1;
 - (void)addPayloadSendMessageAttachment:(id)arg1;
@@ -825,6 +834,7 @@
 - (void)clearPayloadAlarmSearchTypes;
 - (void)clearPayloadAlarmSearchs;
 - (void)clearPayloadAlarms;
+- (void)clearPayloadAnnouncements;
 - (void)clearPayloadAppIdentifiers;
 - (void)clearPayloadArchivedObjects;
 - (void)clearPayloadBalanceTypes;
@@ -939,6 +949,7 @@
 - (void)clearPayloadPrivateSearchForMediaIntentDatas;
 - (void)clearPayloadPrivateUpdateMediaAffinityIntentDatas;
 - (void)clearPayloadRadioTypes;
+- (void)clearPayloadReadActionTypes;
 - (void)clearPayloadRelativeReferences;
 - (void)clearPayloadRelativeSettings;
 - (void)clearPayloadSendMessageAttachments;
@@ -994,6 +1005,7 @@
 - (id)payloadAlarmSearchAtIndex:(unsigned long long)arg1;
 - (int)payloadAlarmSearchTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadAlarmSearchTypesAsString:(int)arg1;
+- (id)payloadAnnouncementAtIndex:(unsigned long long)arg1;
 - (id)payloadAppIdentifierAtIndex:(unsigned long long)arg1;
 - (id)payloadArchivedObjectAtIndex:(unsigned long long)arg1;
 - (int)payloadBalanceTypeAtIndex:(unsigned long long)arg1;
@@ -1150,6 +1162,8 @@
 - (id)payloadPrivateUpdateMediaAffinityIntentDataAtIndex:(unsigned long long)arg1;
 - (int)payloadRadioTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadRadioTypesAsString:(int)arg1;
+- (int)payloadReadActionTypeAtIndex:(unsigned long long)arg1;
+- (id)payloadReadActionTypesAsString:(int)arg1;
 - (int)payloadRelativeReferenceAtIndex:(unsigned long long)arg1;
 - (id)payloadRelativeReferencesAsString:(int)arg1;
 - (int)payloadRelativeSettingAtIndex:(unsigned long long)arg1;
@@ -1250,6 +1264,7 @@
 - (void)setPayloadPlaybackRepeatModes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadPreferredCallProviders:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadRadioTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setPayloadReadActionTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadRelativeReferences:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadRelativeSettings:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadSettingActions:(int *)arg1 count:(unsigned long long)arg2;

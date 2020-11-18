@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     CIImage *inputShiftmapImage;
     CIImage *inputMatteImage;
     CIImage *inputHairImage;
+    CIImage *inputGlassesImage;
+    CIImage *inputGainMap;
     NSNumber *inputAperture;
     CIVector *inputLeftEyePosition;
     CIVector *inputRightEyePosition;
@@ -36,6 +38,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputDraftMode; // @synthesize inputDraftMode;
 @property (strong) CIVector *inputFaceMidPoint; // @synthesize inputFaceMidPoint;
 @property (strong, nonatomic) CIVector *inputFocusRect; // @synthesize inputFocusRect;
+@property (strong) CIImage *inputGainMap; // @synthesize inputGainMap;
+@property (strong) CIImage *inputGlassesImage; // @synthesize inputGlassesImage;
 @property (strong) CIImage *inputHairImage; // @synthesize inputHairImage;
 @property (strong) CIImage *inputImage; // @synthesize inputImage;
 @property (strong) CIVector *inputLeftEyePosition; // @synthesize inputLeftEyePosition;

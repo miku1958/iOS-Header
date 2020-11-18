@@ -6,9 +6,7 @@
 
 #import <NewsUI2/_TtC7NewsUI230ConfigurationAdSegmentProvider.h>
 
-#import <NewsUI2/FCNewsAppConfigurationObserving-Protocol.h>
-
-@interface _TtC7NewsUI230ConfigurationAdSegmentProvider (NewsUI2) <FCNewsAppConfigurationObserving>
+@interface _TtC7NewsUI230ConfigurationAdSegmentProvider (NewsUI2)
 - (void)configurationManagerSignificantAppConfigChange:(id)arg1;
 @end
 

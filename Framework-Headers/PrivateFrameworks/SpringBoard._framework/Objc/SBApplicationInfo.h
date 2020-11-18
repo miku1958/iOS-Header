@@ -48,6 +48,7 @@
     BOOL _isYukonLinked;
     BOOL _isYukonELinked;
     BOOL _isAzulLinked;
+    BOOL _isAzulHWLinked;
     BOOL _prefersSavedSnapshots;
     BOOL _wantsLaunchWithoutPNG;
     BOOL _wantsFullScreen;
@@ -91,6 +92,7 @@
 @property (readonly, copy, nonatomic) NSString *applicationShortcutWidgetBundleIdentifier; // @synthesize applicationShortcutWidgetBundleIdentifier=_applicationShortcutWidgetBundleIdentifier;
 @property (readonly, nonatomic) unsigned long long applicationSizeInBytes; // @synthesize applicationSizeInBytes=_applicationSizeInBytes;
 @property (readonly, nonatomic, getter=isArcadeApplication) BOOL arcadeApplication; // @synthesize arcadeApplication=_arcadeApplication;
+@property (readonly, nonatomic, getter=isAzulHWLinked) BOOL azulHWLinked; // @synthesize azulHWLinked=_isAzulHWLinked;
 @property (readonly, nonatomic, getter=isAzulLinked) BOOL azulLinked; // @synthesize azulLinked=_isAzulLinked;
 @property (readonly, nonatomic) CRCarPlayAppDeclaration *carPlayDeclaration; // @synthesize carPlayDeclaration=_carPlayDeclaration;
 @property (readonly, nonatomic, getter=isCloudDemoted) BOOL cloudDemoted; // @synthesize cloudDemoted=_cloudDemoted;

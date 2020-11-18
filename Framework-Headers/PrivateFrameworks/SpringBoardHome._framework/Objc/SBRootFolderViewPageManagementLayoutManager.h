@@ -15,7 +15,7 @@
 #import <SpringBoardHome/UIScrollViewDelegate-Protocol.h>
 
 @class NSMapTable, NSString, SBIconListView, SBPageManagementIcon, SBRootFolderView, SBTitledHomeScreenButton, UILabel, UIScrollView, UITapGestureRecognizer;
-@protocol SBDockOffscreenFractionModifying;
+@protocol BSInvalidatable, SBDockOffscreenFractionModifying;
 
 @interface SBRootFolderViewPageManagementLayoutManager : NSObject <SBIconViewProviding, SBIconViewDelegate, SBIconListViewDragDelegate, SBPageManagementCellViewControllerDelegate, UIScrollViewDelegate, SBIconListViewDominoPivotAnimatorDelegate, SBRootFolderViewLayoutManager>
 {
@@ -33,17 +33,21 @@
     long long _layoutAction;
     long long _layoutConfiguration;
     UITapGestureRecognizer *_backgroundTapGestureRecognizer;
+    id<BSInvalidatable> _dockBorrowedAssertion;
+    id<BSInvalidatable> _pageControlBorrowedAssertion;
 }
 
 @property (strong, nonatomic) UITapGestureRecognizer *backgroundTapGestureRecognizer; // @synthesize backgroundTapGestureRecognizer=_backgroundTapGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) id<BSInvalidatable> dockBorrowedAssertion; // @synthesize dockBorrowedAssertion=_dockBorrowedAssertion;
 @property (strong, nonatomic) id<SBDockOffscreenFractionModifying> dockOffscreenAssertion; // @synthesize dockOffscreenAssertion=_dockOffscreenAssertion;
 @property (strong, nonatomic) SBTitledHomeScreenButton *doneButton; // @synthesize doneButton=_doneButton;
 @property (strong, nonatomic) SBPageManagementIcon *draggingIcon; // @synthesize draggingIcon=_draggingIcon;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutAction; // @synthesize layoutAction=_layoutAction;
 @property (nonatomic) long long layoutConfiguration; // @synthesize layoutConfiguration=_layoutConfiguration;
+@property (strong, nonatomic) id<BSInvalidatable> pageControlBorrowedAssertion; // @synthesize pageControlBorrowedAssertion=_pageControlBorrowedAssertion;
 @property (strong, nonatomic) UIScrollView *pageManagementScrollView; // @synthesize pageManagementScrollView=_pageManagementScrollView;
 @property (weak, nonatomic) SBRootFolderView *rootFolderView; // @synthesize rootFolderView=_rootFolderView;
 @property (strong, nonatomic) SBIconListView *rootListView; // @synthesize rootListView=_rootListView;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeUI/HUImageOBWelcomeController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
@@ -14,7 +14,7 @@
 @class HMHome, HULocationDevice, HUPersonalRequestsDevicesModuleController, HUPersonalRequestsEditorItemManager, NSArray, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
-@interface HUPersonalRequestsSetupViewController : HUImageOBWelcomeController <HFItemManagerDelegate, HUItemTableModuleControllerHosting, HUConfigurationViewController, HUPreloadableViewController>
+@interface HUPersonalRequestsSetupViewController : OBWelcomeController <HFItemManagerDelegate, HUItemTableModuleControllerHosting, HUConfigurationViewController, HUPreloadableViewController>
 {
     id<HUConfigurationViewControllerDelegate> _delegate;
     HMHome *_home;
@@ -40,6 +40,7 @@
 @property (strong, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
 @property (strong, nonatomic) OBTrayButton *usePRButton; // @synthesize usePRButton=_usePRButton;
 
++ (id)_bulletImageWithSystemName:(id)arg1 color:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_allPersonalRequestsDevicesSupportVoiceRecognition;
 - (void)_customizePersonalRequests:(id)arg1;
@@ -48,6 +49,7 @@
 - (void)_turnOnAllPersonalRequests:(id)arg1;
 - (id)hu_preloadContent;
 - (id)initWithHome:(id)arg1;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
 - (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 textFieldForVisibleItem:(id)arg2;

@@ -73,6 +73,7 @@
 - (id)concatTensor:(id)arg1 withTensor:(id)arg2 dimension:(unsigned long long)arg3 name:(id)arg4;
 - (id)concatTensors:(id)arg1 dimension:(unsigned long long)arg2 name:(id)arg3;
 - (id)constantWithData:(id)arg1 shape:(id)arg2 dataType:(unsigned int)arg3;
+- (id)constantWithScalar:(double)arg1 dataType:(unsigned int)arg2;
 - (id)constantWithScalar:(double)arg1 shape:(id)arg2 dataType:(unsigned int)arg3;
 - (id)convolution2DDataGradientWithIncomingGradientTensor:(id)arg1 weightsTensor:(id)arg2 outputShape:(id)arg3 forwardConvolutionDescriptor:(id)arg4 name:(id)arg5;
 - (id)convolution2DDataGradientWithIncomingGradientTensor:(id)arg1 weightsTensor:(id)arg2 outputShapeTensor:(id)arg3 forwardConvolutionDescriptor:(id)arg4 name:(id)arg5;
@@ -208,6 +209,7 @@
 - (id)runWithFeeds:(id)arg1 targetTensors:(id)arg2 targetOperations:(id)arg3;
 - (void)runWithMTLCommandQueue:(id)arg1 feeds:(id)arg2 targetOperations:(id)arg3 resultsDictionary:(id)arg4;
 - (id)runWithMTLCommandQueue:(id)arg1 feeds:(id)arg2 targetTensors:(id)arg3 targetOperations:(id)arg4;
+- (void)sanitizeExternalModuleWithVariableFetchHandler:(CDUnknownBlockType)arg1;
 - (id)scatterNDWithUpdatesTensor:(id)arg1 indicesTensor:(id)arg2 shape:(id)arg3 batchDimensions:(unsigned long long)arg4 name:(id)arg5;
 - (id)selectWithPredicateTensor:(id)arg1 truePredicateTensor:(id)arg2 falsePredicateTensor:(id)arg3 name:(id)arg4;
 - (id)shapeOfTensor:(id)arg1 name:(id)arg2;

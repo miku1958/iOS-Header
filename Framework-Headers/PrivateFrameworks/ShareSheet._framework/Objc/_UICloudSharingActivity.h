@@ -16,10 +16,12 @@
     NSString *_activityTitle;
     UIViewController *_activityViewController;
     BOOL _initialSharing;
+    BOOL _activityItemIsFolder;
     UIImage *_activityImage;
 }
 
 @property (strong, nonatomic) UIImage *activityImage; // @synthesize activityImage=_activityImage;
+@property (nonatomic) BOOL activityItemIsFolder; // @synthesize activityItemIsFolder=_activityItemIsFolder;
 @property (strong, nonatomic) NSString *activityTitle; // @synthesize activityTitle=_activityTitle;
 @property (strong, nonatomic) UIViewController *activityViewController;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,7 +36,7 @@
 - (BOOL)_activitySupportsPromiseURLs;
 - (void)_cloudShareControllerDidDismiss:(id)arg1;
 - (void)_documentSharingControllerDidDismiss:(id)arg1;
-- (BOOL)_isURLEligibleForSharing:(id)arg1 isInitial:(BOOL *)arg2;
+- (BOOL)_isURLEligibleForSharing:(id)arg1 isInitial:(BOOL *)arg2 isFolder:(BOOL *)arg3;
 - (void)_setupForInitialSharing;
 - (void)_setupForSharingInfo;
 - (id)_systemImageName;

@@ -53,11 +53,13 @@
 - (void)_onAllowSimulatedEvents:(BOOL)arg1;
 - (void)_onBatterySaverMode:(BOOL)arg1;
 - (void)_onDeviceUnlockedSinceBoot:(BOOL)arg1;
+- (void)_onHasKoreaCountryCode:(BOOL)arg1;
 - (void)_onHighThermalState:(BOOL)arg1;
 - (void)_onLocationAndPrivacyReset:(BOOL)arg1;
 - (void)_onLocationServicesEnabled:(BOOL)arg1;
 - (void)_onLocationSimulationInProgress:(BOOL)arg1;
 - (void)_onServiceEnabled:(BOOL)arg1;
+- (void)_onUserLocationInsideKorea:(BOOL)arg1;
 - (void)_registerForAvengerScanner;
 - (void)_registerForTATrackingAvoidanceServiceWithSettings:(id)arg1;
 - (void)_schedulePeriodicSaveAfterTimeInterval:(double)arg1;

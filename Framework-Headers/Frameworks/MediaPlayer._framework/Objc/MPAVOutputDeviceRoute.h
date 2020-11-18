@@ -33,6 +33,7 @@
 - (id)initWithOutputDevices:(id)arg1;
 - (BOOL)isAirPlayRoute;
 - (BOOL)isAppleTVRoute;
+- (BOOL)isB520Route;
 - (BOOL)isCarplayRoute;
 - (BOOL)isClusterRoute;
 - (BOOL)isDeviceRoute;

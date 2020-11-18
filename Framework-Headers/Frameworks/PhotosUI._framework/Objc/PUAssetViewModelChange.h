@@ -27,6 +27,7 @@
     BOOL _isInEditModeChanged;
     BOOL _toggleCTMChanged;
     BOOL _flippingFullSizeRenderStateChanged;
+    BOOL _revealsGainMapImageChanged;
     PUBrowsingVideoPlayerChange *_videoPlayerChange;
     PUBrowsingIrisPlayerChange *_irisPlayerChange;
     PUBrowsingAnimatedImagePlayerChange *_animatedImageChange;
@@ -48,6 +49,7 @@
 @property (nonatomic, setter=_setUserTransformingTileDidChange:) BOOL isUserTransformingTileDidChange; // @synthesize isUserTransformingTileDidChange=_isUserTransformingTileDidChange;
 @property (nonatomic, setter=_setLoadingStatusChanged:) BOOL loadingStatusChanged; // @synthesize loadingStatusChanged=_loadingStatusChanged;
 @property (nonatomic, setter=_setModelTileTransformChanged:) BOOL modelTileTransformChanged; // @synthesize modelTileTransformChanged=_modelTileTransformChanged;
+@property (nonatomic) BOOL revealsGainMapImageChanged; // @synthesize revealsGainMapImageChanged=_revealsGainMapImageChanged;
 @property (nonatomic, setter=_setSaveProgressChanged:) BOOL saveProgressChanged; // @synthesize saveProgressChanged=_saveProgressChanged;
 @property (nonatomic, setter=_setSaveStateChanged:) BOOL saveStateChanged; // @synthesize saveStateChanged=_saveStateChanged;
 @property (nonatomic, setter=_setToggleCTMChanged:) BOOL toggleCTMChanged; // @synthesize toggleCTMChanged=_toggleCTMChanged;

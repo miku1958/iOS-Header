@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_forceControllerToReload:(id)arg1;
 - (BOOL)_isResponderEditableTextInput:(id)arg1;
 - (void)_notifyFirstResponder:(id)arg1 isVisible:(BOOL)arg2;
 - (void)_textInputResponderDidChangeNotificationHandler:(id)arg1;

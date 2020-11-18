@@ -49,6 +49,7 @@
 - (id)initWithDevice:(id)arg1 ndArrayConvolution2DDescriptor:(id)arg2;
 - (unsigned long long)kernelDimensionalityForSourceArrays:(id)arg1;
 - (MISSING_TYPE *)stridesAtSourceIndex:(unsigned long long)arg1;
+- (id)workloadStatisticsForSourceArrays:(id)arg1 destArrays:(id)arg2 kernel:(id)arg3 sourceState:(id)arg4;
 
 @end
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)handle:(id)arg1 matchesHandle:(id)arg2;
 + (BOOL)isEmail:(id)arg1;
 + (BOOL)isPhoneNumberValid:(id)arg1;
++ (BOOL)isPossiblyTruncatedPhoneNumberValid:(id)arg1;
 + (id)normalizedPhoneNumber:(id)arg1;
 + (id)unformatPhoneNumber:(id)arg1;
 + (BOOL)updateTextField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;

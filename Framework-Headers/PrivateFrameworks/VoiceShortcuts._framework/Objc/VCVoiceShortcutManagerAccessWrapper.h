@@ -55,7 +55,6 @@
 - (void)getFirstUnsortedWorkflowWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getNumberOfVoiceShortcutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getResultsForWorkflowQuery:(id)arg1 resultClassName:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getShareSheetWorkflowReferencesForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

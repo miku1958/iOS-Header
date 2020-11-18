@@ -21,6 +21,8 @@
 @property (readonly, nonatomic) NSArray *availableRawPhotoFileTypes;
 @property (readonly, nonatomic) NSArray *availableRawPhotoPixelFormatTypes;
 @property (readonly, nonatomic, getter=isCameraCalibrationDataDeliverySupported) BOOL cameraCalibrationDataDeliverySupported;
+@property (nonatomic, getter=isContentAwareDistortionCorrectionEnabled) BOOL contentAwareDistortionCorrectionEnabled;
+@property (readonly, nonatomic, getter=isContentAwareDistortionCorrectionSupported) BOOL contentAwareDistortionCorrectionSupported;
 @property (nonatomic, getter=isDualCameraDualPhotoDeliveryEnabled) BOOL dualCameraDualPhotoDeliveryEnabled;
 @property (readonly, nonatomic, getter=isDualCameraDualPhotoDeliverySupported) BOOL dualCameraDualPhotoDeliverySupported;
 @property (readonly, nonatomic, getter=isDualCameraFusionSupported) BOOL dualCameraFusionSupported;
@@ -96,6 +98,7 @@
 - (void)_updateAvailableRawPhotoFileTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailableRawPhotoPixelFormatTypesForSourceDevice:(id)arg1;
 - (void)_updateCameraCalibrationDataDeliverySupportedForSourceDevice:(id)arg1;
+- (void)_updateContentAwareDistortionCorrectionSupportedForDevice:(id)arg1;
 - (void)_updateDeferredProcessingSupportedForSourceDevice:(id)arg1;
 - (void)_updateDepthDataDeliverySupportedForSourceDevice:(id)arg1;
 - (void)_updateDualCameraDualPhotoDeliverySupportedForSourceDevice:(id)arg1;

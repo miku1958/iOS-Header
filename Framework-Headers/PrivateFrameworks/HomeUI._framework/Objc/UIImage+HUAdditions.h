@@ -10,6 +10,8 @@
 + (id)hu_cameraErrorImage;
 + (id)hu_cellCheckmarkImage;
 + (id)hu_closeButtonImage;
++ (id)hu_fastForwardButtonImageDark;
++ (id)hu_fastForwardButtonImageLight;
 + (id)hu_flatWhiteResizableTemplateImage;
 + (id)hu_gearImageWithBadgeCount:(unsigned long long)arg1;
 + (id)hu_largeQRBadgeTemplateImage;
@@ -21,12 +23,19 @@
 + (id)hu_navigationBarGlyphPlus;
 + (id)hu_pauseButton;
 + (id)hu_playButton;
++ (id)hu_playButtonImageForAnnouncementPlaybackButton;
++ (id)hu_recordingButtonSendImage;
++ (id)hu_recordingButtonStopImage;
++ (id)hu_recordingButtonWaveformImage;
 + (id)hu_recordingDeleteButton;
 + (struct CGSize)hu_scaleSize:(struct CGSize)arg1 toSize:(struct CGSize)arg2 contentMode:(long long)arg3;
 + (id)hu_settingsImageUsingStandardSymbolConfiguration:(BOOL)arg1;
 + (id)hu_smallQRBadgeTemplateImage;
 + (id)hu_standardSymbolConfiguration;
 + (id)hu_stopButtonImage;
++ (id)hu_systemImageNamed:(id)arg1 withBackgroundColor:(id)arg2 symbolColor:(id)arg3 size:(struct CGSize)arg4 cornerRadius:(double)arg5;
++ (id)hu_systemImageNamed:(id)arg1 withBackgroundColor:(id)arg2 symbolColor:(id)arg3 size:(struct CGSize)arg4 cornerRadius:(double)arg5 configuration:(id)arg6;
++ (id)hu_waveformImage;
 - (id)hu_imageScaledToSize:(struct CGSize)arg1 contentMode:(long long)arg2;
 @end
 

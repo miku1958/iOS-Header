@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDelegate:(id)arg1 statisticsCollector:(id)arg2 mode:(unsigned int)arg3 maxAllowedRedundancyPercentage:(unsigned int)arg4;
 - (void)loadDefaultSettings;
 - (void)reportRedundancyPercentage:(unsigned int)arg1 redundancyInterval:(double)arg2;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_1a067c5f)arg1;
 
 @end
 

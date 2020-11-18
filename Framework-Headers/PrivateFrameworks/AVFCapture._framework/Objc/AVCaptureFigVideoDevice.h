@@ -159,6 +159,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_hasKeyValueObserversForHighFrequencyProperty:(id)arg1;
 - (void)_incrementObserverCountForHighFrequencyProperty:(id)arg1;
 - (id)_initWithFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
+- (BOOL)_isAppleManufacturer;
 - (BOOL)_isBravoVariant;
 - (BOOL)_isDepthDataDeliveryEnabled;
 - (BOOL)_isFlashScene;

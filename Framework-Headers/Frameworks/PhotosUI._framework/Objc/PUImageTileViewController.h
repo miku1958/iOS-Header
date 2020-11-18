@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     BOOL __isDisplayingFullQualityImage;
     BOOL _shouldUsePenultimateVersionForNextImageUpdate;
     BOOL _canUseFullsizeTiledLayer;
+    float _gainMapValue;
     PUAssetViewModel *_assetViewModel;
     id<PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
     PUImageRequester *__imageRequester;
     PXImageLayerModulator *_imageLayerModulator;
     UIImage *_image;
+    struct CGImage *_gainMapImage;
     struct CGSize __targetSize;
     struct CGSize __fullsizeImageUntransformedSize;
     struct CGSize __fullsizeImageSize;
@@ -72,6 +74,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL canUseFullsizeTiledLayer; // @synthesize canUseFullsizeTiledLayer=_canUseFullsizeTiledLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property (readonly, nonatomic) BOOL gainMapImageIsAvailable;
+@property (readonly, nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) BOOL imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
@@ -122,6 +127,8 @@ __attribute__((visibility("hidden")))
 - (id)loadView;
 - (void)mediaProviderDidChange;
 - (void)setEdgeAntialiasingEnabled:(BOOL)arg1;
+- (void)setGainMapImage:(struct CGImage *)arg1;
+- (void)setGainMapValue:(float)arg1;
 - (void)setPreloadedImage:(id)arg1;
 - (BOOL)shouldAvoidInPlaceSnapshottedFadeOut;
 - (struct CGSize)targetSizeForProposedTargetSize:(struct CGSize)arg1;

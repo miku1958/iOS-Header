@@ -21,8 +21,10 @@ __attribute__((visibility("hidden")))
     NSData *faceObservationsData;
     NSIndexSet *indexesOfShallowDepthOfFieldObservations;
     struct CGRect focusRectangle;
+    unsigned int SDOFRenderingVersion;
 }
 
+@property (nonatomic) unsigned int SDOFRenderingVersion; // @synthesize SDOFRenderingVersion;
 @property (nonatomic) float apertureFocalRatio; // @synthesize apertureFocalRatio;
 @property (strong, nonatomic) NSData *faceObservationsData; // @synthesize faceObservationsData;
 @property (nonatomic) int faceOrientation; // @synthesize faceOrientation;

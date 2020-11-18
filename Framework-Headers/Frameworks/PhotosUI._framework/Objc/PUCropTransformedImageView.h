@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     double _yawAngle;
     long long _orientation;
     struct CGSize _imageSize;
-    CDStruct_0b004a15 _imageModulationOptions;
+    CDStruct_910f5d27 _imageModulationOptions;
     struct CGRect _cropRect;
     struct CGRect _canvasFrame;
 }
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isDecelerating) BOOL decelerating; // @synthesize decelerating=_decelerating;
 @property (weak, nonatomic) id<PUCropTransformedImageViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (nonatomic) CDStruct_0b004a15 imageModulationOptions; // @synthesize imageModulationOptions=_imageModulationOptions;
+@property (nonatomic) CDStruct_910f5d27 imageModulationOptions; // @synthesize imageModulationOptions=_imageModulationOptions;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (strong, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 @property (nonatomic, getter=isMuted) BOOL muted;

@@ -6,12 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/HAP2CharacteristicTupleValue-Protocol.h>
 #import <CoreHAP/HMFMerging-Protocol.h>
 #import <CoreHAP/NSCopying-Protocol.h>
 
 @class CBCharacteristic, HAPCharacteristicMetadata, HAPService, HMFUnfairLock, NSDate, NSNumber, NSString;
 
-@interface HAPCharacteristic : HMFObject <NSCopying, HMFMerging>
+@interface HAPCharacteristic : HMFObject <HAP2CharacteristicTupleValue, NSCopying, HMFMerging>
 {
     HMFUnfairLock *_lock;
     BOOL _eventNotificationsEnabled;
@@ -32,8 +33,11 @@
 @property (readonly, nonatomic) HAPCharacteristicMetadata *accessoryMetadata; // @synthesize accessoryMetadata=_accessoryMetadata;
 @property (strong, nonatomic, setter=setCBCharacteristic:) CBCharacteristic *cbCharacteristic;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL eventNotificationsEnabled; // @synthesize eventNotificationsEnabled=_eventNotificationsEnabled;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isWriteWithResponseImplicitlySupported) BOOL implicitWriteWithResponse; // @synthesize implicitWriteWithResponse=_implicitWriteWithResponse;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
@@ -43,6 +47,7 @@
 @property (weak, nonatomic) HAPService *service; // @synthesize service=_service;
 @property (nonatomic) BOOL shouldValidateValueAfterReading; // @synthesize shouldValidateValueAfterReading=_shouldValidateValueAfterReading;
 @property (readonly, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsAdditionalAuthorizationData;
 @property (readonly, nonatomic) BOOL supportsWriteWithResponse;

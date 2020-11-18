@@ -21,6 +21,8 @@
     NSLayoutConstraint *__bottomSeparatorHeightConstraint;
     NSLayoutConstraint *__contentViewBottomConstraint;
     NSLayoutConstraint *__contentViewTopConstraint;
+    NSLayoutConstraint *__compactSizeClassLeadingConstraint;
+    NSLayoutConstraint *__compactSizeClassTrailingConstraint;
     NSArray *_compactSizeClassHorizontalConstraints;
     NSArray *_regularSizeClassHorizontalConstraints;
     BOOL _displaysBottomSeparator;
@@ -32,7 +34,7 @@
     unsigned long long _arrowDirection;
     id<TPKContentViewDelegate> __delegate;
     struct CGSize _preferredMicaLayerSize;
-    struct UIEdgeInsets _contentInsets;
+    struct NSDirectionalEdgeInsets _defaultDirectionalEdgeInsets;
 }
 
 @property (nonatomic, getter=_isAccessbilitySizeCategory) BOOL _accessbilitySizeCategory; // @synthesize _accessbilitySizeCategory=__accessbilitySizeCategory;
@@ -43,7 +45,7 @@
 @property (nonatomic) BOOL asPopover; // @synthesize asPopover=_asPopover;
 @property (copy, nonatomic) TPKContent *content; // @synthesize content=_content;
 @property (copy, nonatomic) UIColor *contentBackgroundColor; // @dynamic contentBackgroundColor;
-@property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
+@property (nonatomic) struct NSDirectionalEdgeInsets defaultDirectionalEdgeInsets; // @synthesize defaultDirectionalEdgeInsets=_defaultDirectionalEdgeInsets;
 @property (nonatomic) BOOL displaysBottomSeparator; // @synthesize displaysBottomSeparator=_displaysBottomSeparator;
 @property (copy, nonatomic) UIColor *preferredActionTintColor; // @synthesize preferredActionTintColor=_preferredActionTintColor;
 @property (copy, nonatomic) UIColor *preferredIconImageTintColor; // @synthesize preferredIconImageTintColor=_preferredIconImageTintColor;
@@ -58,6 +60,7 @@
 - (void)_accessibilitySizeCategoryDidChange;
 - (void)_configureAsPopover:(BOOL)arg1 withContent:(id)arg2;
 - (void)_contentSizeCategoryDidChange;
+- (id)_currentContentLanguage;
 - (id)_currentContentSizeCategory;
 - (id)_initWithContent:(id)arg1 asPopover:(BOOL)arg2;
 - (BOOL)_isAccessibilitySizeCategoryChanged;

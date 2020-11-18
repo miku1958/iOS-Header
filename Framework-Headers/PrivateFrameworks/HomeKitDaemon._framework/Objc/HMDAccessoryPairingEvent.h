@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
-@class HMDAccessory, HMDHome, NSString, NSUUID;
+@class HMDAccessory, HMDHome, NSError, NSString, NSUUID;
 
 @interface HMDAccessoryPairingEvent : HMDLogEvent <HMDAWDLogEvent>
 {
@@ -21,6 +21,11 @@
     BOOL _networkRouterReplace;
     BOOL _firstHAPAccessoryInHome;
     BOOL _firstHAPAccessoryInAnyHome;
+    BOOL _threadAccessory;
+    BOOL _btCommissioned;
+    BOOL _threadCommissioned;
+    unsigned int _threadCapabilities;
+    unsigned int _threadStatus;
     HMDAccessory *_pairedAccessory;
     long long _linkType;
     long long _certificationStatus;
@@ -33,6 +38,8 @@
     NSString *_accessoryManufacturer;
     NSString *_accessoryCategory;
     NSString *_primaryServiceType;
+    NSError *_threadCommissioningError;
+    double _threadCommissioningDuration;
 }
 
 @property (copy, nonatomic) NSString *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
@@ -43,6 +50,7 @@
 @property (nonatomic, getter=isAddViaWAC) BOOL addViaWAC; // @synthesize addViaWAC=_addViaWAC;
 @property (copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
+@property (nonatomic, getter=isBTCommissioned) BOOL btCommissioned; // @synthesize btCommissioned=_btCommissioned;
 @property (nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -57,6 +65,12 @@
 @property (strong, nonatomic) HMDAccessory *pairedAccessory; // @synthesize pairedAccessory=_pairedAccessory;
 @property (copy, nonatomic) NSString *primaryServiceType; // @synthesize primaryServiceType=_primaryServiceType;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isThreadAccessory) BOOL threadAccessory; // @synthesize threadAccessory=_threadAccessory;
+@property (nonatomic) unsigned int threadCapabilities; // @synthesize threadCapabilities=_threadCapabilities;
+@property (nonatomic, getter=isThreadCommissioned) BOOL threadCommissioned; // @synthesize threadCommissioned=_threadCommissioned;
+@property (nonatomic) double threadCommissioningDuration; // @synthesize threadCommissioningDuration=_threadCommissioningDuration;
+@property (strong, nonatomic) NSError *threadCommissioningError; // @synthesize threadCommissioningError=_threadCommissioningError;
+@property (nonatomic) unsigned int threadStatus; // @synthesize threadStatus=_threadStatus;
 @property (nonatomic, getter=isUsedOwnershipProof) BOOL usedOwnershipProof; // @synthesize usedOwnershipProof=_usedOwnershipProof;
 @property (nonatomic, getter=isUsedWiFiPPSK) BOOL usedWiFiPPSK; // @synthesize usedWiFiPPSK=_usedWiFiPPSK;
 @property (nonatomic, getter=isWacLegacy) BOOL wacLegacy; // @synthesize wacLegacy=_wacLegacy;
@@ -68,6 +82,7 @@
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;
+- (void)_updateThreadPropertiesWithPairedAccessory:(id)arg1;
 - (id)initWithAccessoryDescription:(id)arg1 home:(id)arg2;
 - (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 home:(id)arg4 isAddOperation:(BOOL)arg5;
 - (id)metricForAWD;

@@ -551,17 +551,29 @@
 	// method
  }
 
+ struct __C_Synthesized.SKError {
+
+	// Properties
+	let _nsError : NSError
+ }
+
+ struct __C_Synthesized.ASWebAuthenticationSessionError {
+
+	// Properties
+	let _nsError : NSError
+ }
+
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : ·û
+	var top : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : ·û
+	var left : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : ·û
+	var bottom : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : ·û
+	var right : ü
  }
 
  struct __C.CGRect {
@@ -579,9 +591,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : ·û
+	var width : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : ·û
+	var height : ü
  }
 
  struct __C.Key {
@@ -604,24 +616,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : ·û
+	var x : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : ·û
+	var y : ü
  }
 
  enum __C.Code { }
-
- struct __C_Synthesized.SKError {
-
-	// Properties
-	let _nsError : NSError
- }
-
- struct __C_Synthesized.ASWebAuthenticationSessionError {
-
-	// Properties
-	let _nsError : NSError
- }
 
  class NewsSubscription.BundlePaywallDataProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BundlePaywallDataProviderType {
 
@@ -631,7 +631,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let viewModel : BundlePaywallViewModel // +0x0 (0x0)
 
 	// Swift methods
-	0x3a50  class func BundlePaywallDataProvider.__allocating_init(assetManager:imageCache:viewModel:) // init 
+	0x39f0  class func BundlePaywallDataProvider.__allocating_init(assetManager:imageCache:viewModel:) // init 
  }
 
  class NewsSubscription.SubscriptionOffersDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SubscriptionOffersDataManagerType {
@@ -640,7 +640,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let purchaseManager : PurchaseManagerType
 
 	// Swift methods
-	0x8120  class func SubscriptionOffersDataManager.__allocating_init(purchaseManager:) // init 
+	0x80c0  class func SubscriptionOffersDataManager.__allocating_init(purchaseManager:) // init 
  }
 
  class NewsSubscription.BundleSoftPaywallViewProvider : NSObject /usr/lib/libobjc.A.dylib {
@@ -656,16 +656,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var images : UIUserInterfaceStyle // +0x0 (0x8)
 	var badgeImages : UIUserInterfaceStyle // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var videoFileURL : Õö // +0x0 (0x0)
+	var videoFileURL : ˝ö // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14a4c000647e8 (0x24c000647e8) in binary!
-	0x13d60  @objc BundleSoftPaywallViewProvider.(null) <stripped>
+WARNING: couldn't find address 0x14a7c00064848 (0x27c00064848) in binary!
+	0x13d90  @objc BundleSoftPaywallViewProvider.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff2a958  @objc BundleSoftPaywallViewProvider.(null) <stripped>
 
 	// Swift methods
-	0x87b0  class func BundleSoftPaywallViewProvider.__allocating_init(viewModel:dataProvider:styler:renderer:layoutAttributesFactory:) // init 
+	0x8750  class func BundleSoftPaywallViewProvider.__allocating_init(viewModel:dataProvider:styler:renderer:layoutAttributesFactory:) // init 
  }
 
  struct NewsSubscription.SubscriptionOffer {
@@ -698,7 +698,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let learnMoreText : String
 	let learnMoreButtonText : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let learnMoreURL : ö
+	let learnMoreURL : Gö
 	let webAuthButtonTitle : String
 	let hideWebAuthButton : Bool
  }
@@ -709,13 +709,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offers : SubscriptionOffer
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x149f400064790 (0x1f400064790) in binary!
-	0x13d08  @objc DisplayOfferTransitionContext.(null) <stripped>
+WARNING: couldn't find address 0x14a24000647f0 (0x224000647f0) in binary!
+	0x13d38  @objc DisplayOfferTransitionContext.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6acfff2df40  @objc DisplayOfferTransitionContext.(null) <stripped>
+	0x70cfff2df40  @objc DisplayOfferTransitionContext.(null) <stripped>
 
 	// Swift methods
-	0xd8f0  class func DisplayOfferTransitionContext.__allocating_init(offers:) // init 
+	0xd890  class func DisplayOfferTransitionContext.__allocating_init(offers:) // init 
  }
 
  class NewsSubscription.RefreshReceiptTransitionContext : NSObject /usr/lib/libobjc.A.dylib {
@@ -725,13 +725,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let purchaseID : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x149d400064770 (0x1d400064770) in binary!
-	0x13ce8  @objc RefreshReceiptTransitionContext.(null) <stripped>
+WARNING: couldn't find address 0x14a04000647d0 (0x204000647d0) in binary!
+	0x13d18  @objc RefreshReceiptTransitionContext.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x68cfff39b60  @objc RefreshReceiptTransitionContext.(null) <stripped>
+	0x6ecfff39b60  @objc RefreshReceiptTransitionContext.(null) <stripped>
 
 	// Swift methods
-	0xda70  class func RefreshReceiptTransitionContext.__allocating_init(receipt:purchaseID:) // init 
+	0xda10  class func RefreshReceiptTransitionContext.__allocating_init(receipt:purchaseID:) // init 
  }
 
  class NewsSubscription.ErrorTransitionContext : NSObject /usr/lib/libobjc.A.dylib {
@@ -741,13 +741,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let subtitle : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14a14000647b0 (0x214000647b0) in binary!
-	0x13d28  @objc ErrorTransitionContext.(null) <stripped>
+WARNING: couldn't find address 0x14a4400064810 (0x24400064810) in binary!
+	0x13d58  @objc ErrorTransitionContext.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6ccfff2de10  @objc ErrorTransitionContext.(null) <stripped>
+	0x72cfff2de10  @objc ErrorTransitionContext.(null) <stripped>
 
 	// Swift methods
-	0xdbf0  class func ErrorTransitionContext.__allocating_init(title:subtitle:) // init 
+	0xdb90  class func ErrorTransitionContext.__allocating_init(title:subtitle:) // init 
  }
 
  enum NewsSubscription.PurchaseTraits {
@@ -877,7 +877,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var $__lazy_storage_$_spinnerViewController : PurchasingSpinnerViewController
 
 	// Swift methods
-	0x16060  class func PurchasePresenter.__allocating_init(purchaseStarter:familySharingLandingPageLauncher:purchasingSpinnerViewControllerFactory:) // init 
+	0x16000  class func PurchasePresenter.__allocating_init(purchaseStarter:familySharingLandingPageLauncher:purchasingSpinnerViewControllerFactory:) // init 
  }
 
  struct NewsSubscription.SubscriptionOffersColorPalette {
@@ -904,16 +904,16 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var images : UIUserInterfaceStyle // +0x0 (0x8)
 	var badgeImages : UIUserInterfaceStyle // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var videoFileURL : Õö // +0x0 (0x0)
+	var videoFileURL : ˝ö // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x149b400064750 (0x1b400064750) in binary!
-	0x13cc8  @objc BundleHardPaywallViewProvider.(null) <stripped>
+WARNING: couldn't find address 0x149e4000647b0 (0x1e4000647b0) in binary!
+	0x13cf8  @objc BundleHardPaywallViewProvider.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x44cfff39ed0  @objc BundleHardPaywallViewProvider.(null) <stripped>
+	0x4acfff39ed0  @objc BundleHardPaywallViewProvider.(null) <stripped>
 
 	// Swift methods
-	0x17aa0  class func BundleHardPaywallViewProvider.__allocating_init(viewModel:dataProvider:styler:renderer:layoutAttributesFactory:) // init 
+	0x17a40  class func BundleHardPaywallViewProvider.__allocating_init(viewModel:dataProvider:styler:renderer:layoutAttributesFactory:) // init 
  }
 
  struct NewsSubscription.PurchaseDisabledAlert { }
@@ -925,7 +925,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let styler : SubscriptionOffersStylerType // +0x28 (0x28)
 	let eventHandler : SubscriptionOffersEventHandlerType // +0x50 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewManager : sù // +0x60 (0x8)
+	let coverViewManager : £ù // +0x60 (0x8)
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x68 (0x28)
 	var $__lazy_storage_$_verificationSpinner : PurchasingSpinnerViewController // +0x90 (0x8)
 	let purchasePresenter : PurchasePresenterType // +0x98 (0x28)
@@ -939,15 +939,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var tag : FCTagProviding? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x18784000648e0 (0x784000648e0) in binary!
-	0x12cfc  @objc SubscriptionOffersViewController.(null) <stripped>
-WARNING: couldn't find address 0x13c7c00064640 (0x47c00064640) in binary!
+WARNING: couldn't find address 0x187b400064940 (0x7b400064940) in binary!
+	0x12d2c  @objc SubscriptionOffersViewController.(null) <stripped>
+WARNING: couldn't find address 0x13cac000646a0 (0x4ac000646a0) in binary!
 	0x78000000c  @objc SubscriptionOffersViewController.(null) <stripped>
-WARNING: couldn't find address 0x17e74000648c0 (0x674000648c0) in binary!
-	0x17e68  @objc SubscriptionOffersViewController.(null) <stripped>
+WARNING: couldn't find address 0x17ea400064920 (0x6a400064920) in binary!
+	0x17e98  @objc SubscriptionOffersViewController.(null) <stripped>
 
 	// Swift methods
-	0x1af80  class func SubscriptionOffersViewController.__allocating_init(networkReachability:routeModel:styler:eventHandler:renderer:layoutAttributesFactory:viewModelFactory:purchasingSpinnerViewControllerFactory:purchasePresenter:purchaseController:) // init 
+	0x1af20  class func SubscriptionOffersViewController.__allocating_init(networkReachability:routeModel:styler:eventHandler:renderer:layoutAttributesFactory:viewModelFactory:purchasingSpinnerViewControllerFactory:purchasePresenter:purchaseController:) // init 
  }
 
  class NewsSubscription.BridgedPaywall : NSObject /usr/lib/libobjc.A.dylib {
@@ -961,29 +961,29 @@ WARNING: couldn't find address 0x17e74000648c0 (0x674000648c0) in binary!
 	var internalDelegate : PaywallDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x172b4000645b0 (0x2b4000645b0) in binary!
-	0x148d8  @objc BridgedPaywall.(null) <stripped>
-WARNING: couldn't find address 0x148cc00064588 (0xcc00064588) in binary!
-	0x148c0  @objc BridgedPaywall.(null) <stripped>
-WARNING: couldn't find address 0x148b400064700 (0xb400064700) in binary!
-	0x17abc  @objc BridgedPaywall.(null) <stripped>
-WARNING: couldn't find address 0x1489c00064638 (0x9c00064638) in binary!
-	0x13bb0  @objc BridgedPaywall.(null) <stripped>
+WARNING: couldn't find address 0x172e400064610 (0x2e400064610) in binary!
+	0x14908  @objc BridgedPaywall.(null) <stripped>
+WARNING: couldn't find address 0x148fc000645e8 (0xfc000645e8) in binary!
+	0x148f0  @objc BridgedPaywall.(null) <stripped>
+WARNING: couldn't find address 0x148e400064760 (0xe400064760) in binary!
+	0x17aec  @objc BridgedPaywall.(null) <stripped>
+WARNING: couldn't find address 0x148cc00064698 (0xcc00064698) in binary!
+	0x13be0  @objc BridgedPaywall.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x7dcfff41748  @objc BridgedPaywall.(null) <stripped>
-	0xfff41800  @objc BridgedPaywall.LãtLã| Hã}∞LâˆËJCˇˇIâ≈HãE∏HãHçÄ% <stripped>
+	0x3cfff41748  @objc BridgedPaywall.(null) <stripped>
+	0xfff41800  @objc BridgedPaywall.ﬂHÉƒ[]ÈT˚ˇˇ@ <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x7acfff455c8  @objc BridgedPaywall.(null) <stripped>
-	0xfff45680  @objc BridgedPaywall.IãD$HHâE–Lâˇˇ6˜ <stripped>
+	0xcfff455c8  @objc BridgedPaywall.(null) <stripped>
+	0xfff45680  @objc BridgedPaywall.˜ <stripped>
 
 	// Swift methods
-	0x1f260  func <stripped> // getter 
-	0x1f330  func <stripped> // getter 
-	0x1f3b0  func <stripped> // setter 
-	0x1f470  func <stripped> // modifyCoroutine 
-	0x1f660  class func BridgedPaywall.__allocating_init(bundleSoftPaywallViewController:softPaywallHeightProvider:) // init 
-	0x1f6c0  class func BridgedPaywall.__allocating_init(bundleHardPaywallViewController:) // init 
-	0x1f730  class func BridgedPaywall.__allocating_init(deferredBundleHardPaywallViewController:deferredHardPaywallHeightProvider:) // init 
+	0x1f200  func <stripped> // getter 
+	0x1f2d0  func <stripped> // getter 
+	0x1f350  func <stripped> // setter 
+	0x1f410  func <stripped> // modifyCoroutine 
+	0x1f600  class func BridgedPaywall.__allocating_init(bundleSoftPaywallViewController:softPaywallHeightProvider:) // init 
+	0x1f660  class func BridgedPaywall.__allocating_init(bundleHardPaywallViewController:) // init 
+	0x1f6d0  class func BridgedPaywall.__allocating_init(deferredBundleHardPaywallViewController:deferredHardPaywallHeightProvider:) // init 
  }
 
  enum NewsSubscription.PaywallViewControllerWrapper {
@@ -996,7 +996,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
  class NewsSubscription.PurchasingSpinnerViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchasingSpinnerViewStylerType {
 	// Swift methods
-	0x20670  class func PurchasingSpinnerViewStyler.__allocating_init() // init 
+	0x20610  class func PurchasingSpinnerViewStyler.__allocating_init() // init 
  }
 
  struct NewsSubscription.PurchasingSpinnerViewLayoutAttributes {
@@ -1014,22 +1014,22 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	// Properties
 	let contentView : UIView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gradientMaskView : /ú
+	let gradientMaskView : _ú
 	let titleTextView : UITextView
 	let descriptionTextView : UnselectableLinkEnabledTextView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton : ˚õ
+	let subscribeButton : +ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButton : ú
+	let webAuthButton : 5ú
 	let bottomHairline : UIView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1311c00064760 (0x11c00064760) in binary!
-	0x18680  @objc AlacartePaywallView.(null) <stripped>
-WARNING: couldn't find address 0x13b8400064548 (0x38400064548) in binary!
+WARNING: couldn't find address 0x1314c000647c0 (0x14c000647c0) in binary!
+	0x186b0  @objc AlacartePaywallView.(null) <stripped>
+WARNING: couldn't find address 0x13bb4000645a8 (0x3b4000645a8) in binary!
 	0x38000000c  @objc AlacartePaywallView.(null) <stripped>
-WARNING: couldn't find address 0x130ec00064730 (0xec00064730) in binary!
-	0x18650  @objc AlacartePaywallView.(null) <stripped>
+WARNING: couldn't find address 0x1311c00064790 (0x11c00064790) in binary!
+	0x18680  @objc AlacartePaywallView.(null) <stripped>
  }
 
  class NewsSubscription.FamilySharingStatusManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FamilySharingStatusManagerType {
@@ -1037,20 +1037,20 @@ WARNING: couldn't find address 0x130ec00064730 (0xec00064730) in binary!
 	// Properties
 	var delegate : FamilySharingStatusManagerDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cachedFamilyStatus : ïó
+	let cachedFamilyStatus : ≈ó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lazyStore : Eó
+	let lazyStore : uó
 	let familyStatusStoreKey : String
 	let familyEigibilityProvider : NPFamilyEligibilityProviderType
 
 	// Swift methods
-	0x21b10  func <stripped> // getter 
-	0x21b40  func <stripped> // setter 
-	0x21b90  func <stripped> // modifyCoroutine 
-	0x21ca0  class func FamilySharingStatusManager.__allocating_init(database:familyEigibilityProvider:) // init 
-	0x21ee0  func <stripped> // method 
-	0x21f20  func <stripped> // method 
-	0x22a20  func <stripped> // method 
+	0x21ab0  func <stripped> // getter 
+	0x21ae0  func <stripped> // setter 
+	0x21b30  func <stripped> // modifyCoroutine 
+	0x21c40  class func FamilySharingStatusManager.__allocating_init(database:familyEigibilityProvider:) // init 
+	0x21e80  func <stripped> // method 
+	0x21ec0  func <stripped> // method 
+	0x229c0  func <stripped> // method 
  }
 
  struct NewsSubscription.StoreDescriptor { }
@@ -1085,29 +1085,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let contentView : UIView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let logoImageView : 	ú
+	let logoImageView : 9ú
 	let accessLabel1 : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton1 : ˚õ
+	let subscribeButton1 : +ú
 	let accessLabel2 : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton2 : ˚õ
+	let subscribeButton2 : +ú
 	let accessLabel3 : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton3 : ˚õ
+	let subscribeButton3 : +ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButton : ú
+	let webAuthButton : 5ú
 	let learnMoreLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let learnMoreButton : ú
+	let learnMoreButton : 5ú
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x130ec00064730 (0xec00064730) in binary!
-	0x18650  @objc SubscriptionOffersView.(null) <stripped>
-WARNING: couldn't find address 0x13b5400064518 (0x35400064518) in binary!
+WARNING: couldn't find address 0x1311c00064790 (0x11c00064790) in binary!
+	0x18680  @objc SubscriptionOffersView.(null) <stripped>
+WARNING: couldn't find address 0x13b8400064578 (0x38400064578) in binary!
 	0x28000000c  @objc SubscriptionOffersView.(null) <stripped>
-WARNING: couldn't find address 0x1481c000645b8 (0x1c000645b8) in binary!
-	0x13b30  @objc SubscriptionOffersView.(null) <stripped>
+WARNING: couldn't find address 0x1484c00064618 (0x4c00064618) in binary!
+	0x13b60  @objc SubscriptionOffersView.(null) <stripped>
  }
 
  class NewsSubscription.BaseStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BaseStylerType {
@@ -1116,7 +1116,7 @@ WARNING: couldn't find address 0x1481c000645b8 (0x1c000645b8) in binary!
 	var colorPaletteProvider : ColorPaletteProviding
 
 	// Swift methods
-	0x25900  class func BaseStyler.__allocating_init(colorPaletteProvider:) // init 
+	0x258a0  class func BaseStyler.__allocating_init(colorPaletteProvider:) // init 
  }
 
  class NewsSubscription.MetricsProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MetricsProviderType {
@@ -1125,7 +1125,7 @@ WARNING: couldn't find address 0x1481c000645b8 (0x1c000645b8) in binary!
 	let configurationManager : FCCoreConfigurationManager
 
 	// Swift methods
-	0x262b0  class func MetricsProvider.__allocating_init(configurationManager:) // init 
+	0x26250  class func MetricsProvider.__allocating_init(configurationManager:) // init 
  }
 
  enum NewsSubscription.MetricKeys {
@@ -1144,13 +1144,13 @@ WARNING: couldn't find address 0x1481c000645b8 (0x1c000645b8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let learnMoreURL : ö // +0x0 (0x0)
+	let learnMoreURL : Gö // +0x0 (0x0)
 	let webAuthButtonTitle : String // +0x0 (0x10)
 	let purchaseController : FCPurchaseController // +0x0 (0x8)
 	let purchaseProvider : FCPurchaseProviderType // +0x0 (0x8)
 
 	// Swift methods
-	0x27430  class func AlacartePaywallViewModelFactory.__allocating_init(purchaseController:purchaseProvider:) // init 
+	0x273d0  class func AlacartePaywallViewModelFactory.__allocating_init(purchaseController:purchaseProvider:) // init 
  }
 
  class NewsSubscription.PurchaseManager : NSObject /usr/lib/libobjc.A.dylib, PurchaseManagerType {
@@ -1165,13 +1165,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1481c000645b8 (0x1c000645b8) in binary!
-	0x13b30  @objc PurchaseManager.(null) <stripped>
+WARNING: couldn't find address 0x1484c00064618 (0x4c00064618) in binary!
+	0x13b60  @objc PurchaseManager.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x29cfff4ee68  @objc PurchaseManager.(null) <stripped>
+	0x2fcfff4ee68  @objc PurchaseManager.(null) <stripped>
 
 	// Swift methods
-	0x28c90  class func PurchaseManager.__allocating_init(purchaseManager:purchaseController:purchaseContextEntriesManager:bundleSubscriptionManager:metricsBuilder:) // init 
+	0x28c30  class func PurchaseManager.__allocating_init(purchaseManager:purchaseController:purchaseContextEntriesManager:bundleSubscriptionManager:metricsBuilder:) // init 
  }
 
  class NewsSubscription.DisposableTransactionObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1208,7 +1208,7 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	var subscriptionsExpiredTagsByID : [String : FCTagProviding] // +0xe0 (0x8)
 
 	// Swift methods
-	0x32200  class func SubscriptionExpiryManager.__allocating_init(configurationManager:purchaseController:tagController:bundleSubscriptionManager:entitlementsManager:webAccessAuthenticatorFactory:spinnerViewControllerFactory:subscriptionRouter:) // init 
+	0x321a0  class func SubscriptionExpiryManager.__allocating_init(configurationManager:purchaseController:tagController:bundleSubscriptionManager:entitlementsManager:webAccessAuthenticatorFactory:spinnerViewControllerFactory:subscriptionRouter:) // init 
  }
 
  struct NewsSubscription.WebAccessOptInAlert {
@@ -1227,10 +1227,10 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	let purchasingScrim : UIImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x147ac00064548 (0x7ac00064548) in binary!
-	0x185b0  @objc PurchasingSpinnerView.(null) <stripped>
-WARNING: couldn't find address 0x1303400064678 (0x3400064678) in binary!
-	0x13aa8  @objc PurchasingSpinnerView.(null) <stripped>
+WARNING: couldn't find address 0x147dc000645a8 (0x7dc000645a8) in binary!
+	0x185e0  @objc PurchasingSpinnerView.(null) <stripped>
+WARNING: couldn't find address 0x13064000646d8 (0x64000646d8) in binary!
+	0x13ad8  @objc PurchasingSpinnerView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff5ad70  @objc PurchasingSpinnerView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
@@ -1250,25 +1250,25 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
  class NewsSubscription.UtilityAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1477400064510 (0x77400064510) in binary!
+WARNING: couldn't find address 0x147a400064570 (0x7a400064570) in binary!
 	0x18000000c  @objc UtilityAssembly.(null) <stripped>
 
 	// Swift methods
-	0x37c40  func <stripped> // method 
+	0x37be0  func <stripped> // method 
  }
 
  class NewsSubscription.AlacarteArticleSoftPaywallMeter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AlacarteArticleSoftPaywallMeterType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallShownCountSetting : ßè // +0x10 (0x8)
+	let paywallShownCountSetting : ◊è // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallShownDateSetting : ùè // +0x18 (0x8)
+	let paywallShownDateSetting : Õè // +0x18 (0x8)
 	let appConfigurationManager : FCNewsAppConfigurationManager // +0x20 (0x8)
 	let paywallShownEntriesManager : PaywallShownEntriesManagerType // +0x28 (0x28)
 
 	// Swift methods
-	0x3bc60  class func AlacarteArticleSoftPaywallMeter.__allocating_init(appConfigurationManager:paywallShownEntriesManager:paywallShownCountSetting:paywallShownDateSetting:) // init 
+	0x3bc00  class func AlacarteArticleSoftPaywallMeter.__allocating_init(appConfigurationManager:paywallShownEntriesManager:paywallShownCountSetting:paywallShownDateSetting:) // init 
  }
 
  enum NewsSubscription.SubscriptionType {
@@ -1300,24 +1300,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let purchaseManager : PurchaseManagerType // +0x10 (0x10)
 	let bundlePurchasePrewarmer : BundlePurchasePrewarmerType // +0x20 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var deferredPromise : Kè // +0x0 (0x0)
+	var deferredPromise : {è // +0x0 (0x0)
 	var purchaseContext : PurchaseContext // +0x0 (0x48)
 
 	// Swift methods
-	0x3cd30  class func PurchaseStarter.__allocating_init(purchaseManager:bundlePurchasePrewarmer:) // init 
+	0x3ccd0  class func PurchaseStarter.__allocating_init(purchaseManager:bundlePurchasePrewarmer:) // init 
  }
 
  class NewsSubscription.PurchaseContextEntriesManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchaseContextEntriesManagerType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let store : ßì // +0x0
+	let store : ◊ì // +0x0
 	var purchaseContexts : PurchaseContext // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var accessLock : oé // +0x30
+	var accessLock : üé // +0x30
 
 	// Swift methods
-	0x3f8d0  class func PurchaseContextEntriesManager.__allocating_init(database:) // init 
+	0x3f870  class func PurchaseContextEntriesManager.__allocating_init(database:) // init 
  }
 
  struct NewsSubscription.StoreDescriptor { }
@@ -1326,42 +1326,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let marginWidth : ·û // +0x10 (0x8)
+	let marginWidth : ü // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let softPaywallTitleOffset : ·û // +0x18 (0x8)
+	let softPaywallTitleOffset : ü // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let descriptionTextViewRegularWidth : ·û // +0x20 (0x8)
+	let descriptionTextViewRegularWidth : ü // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonTopOffset : ·û // +0x28 (0x8)
+	let subscribeButtonTopOffset : ü // +0x28 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let descriptionTextViewTopOffset : ·û // +0x30 (0x8)
+	let descriptionTextViewTopOffset : ü // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButtonTopOffset : ·û // +0x38 (0x8)
+	let webAuthButtonTopOffset : ü // +0x38 (0x8)
 	let styler : AlacartePaywallStylerType // +0x40 (0x28)
 
 	// Swift methods
-	0x41900  class func AlacartePaywallLayoutAttributesFactory.__allocating_init(styler:) // init 
+	0x418a0  class func AlacartePaywallLayoutAttributesFactory.__allocating_init(styler:) // init 
  }
 
  struct NewsSubscription.DeferredBundleHardPaywallVerticalSpacing {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleTextViewTopOffset : ·û // +0x0
+	let titleTextViewTopOffset : ü // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let descriptionTextViewTopOffset : ·û // +0x8
+	let descriptionTextViewTopOffset : ü // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonTopOffset : ·û // +0x10
+	let subscribeButtonTopOffset : ü // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonBottomSpacing : ·û // +0x18
+	let subscribeButtonBottomSpacing : ü // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offersButtonTopOffset : ·û // +0x20
+	let offersButtonTopOffset : ü // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButtonTopOffset : ·û // +0x28
+	let webAuthButtonTopOffset : ü // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hiddenWebAuthButtonTopOffset : ·û // +0x30
+	let hiddenWebAuthButtonTopOffset : ü // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButtonBottomSpacing : ·û // +0x38
+	let webAuthButtonBottomSpacing : ü // +0x38
  }
 
  class NewsSubscription.InAppSubscriptionStatusChecker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, InAppSubscriptionStatusCheckerType {
@@ -1375,13 +1375,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let entitlementsManager : EntitlementsManagerType
 
 	// Swift methods
-	0x42c50  class func InAppSubscriptionStatusChecker.__allocating_init(purchaseController:bundleSubscriptionManager:purchaseManager:subscriptionExpiryManager:entitlementsManager:subscriptionRouter:) // init 
+	0x42bf0  class func InAppSubscriptionStatusChecker.__allocating_init(purchaseController:bundleSubscriptionManager:purchaseManager:subscriptionExpiryManager:entitlementsManager:subscriptionRouter:) // init 
  }
 
  class NewsSubscription.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14744000644e0 (0x744000644e0) in binary!
-	0x13a58  @objc Images.(null) <stripped>
+WARNING: couldn't find address 0x1477400064540 (0x77400064540) in binary!
+	0x13a88  @objc Images.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff662a0  @objc Images.(null) <stripped>
  }
@@ -1392,18 +1392,18 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let styler : BundleSoftPaywallStylerType
 	let componentSizeProvider : BundlePaywallComponentSizeProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let smallMarginWidth : ·û
+	let smallMarginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let largeMarginWidth : ·û
+	let largeMarginWidth : ü
 	let smallSubscribeButtonSize : CGSize
 	let largeSubscribeButtonSize : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let smallButtonCapMarginWidth : ·û
+	let smallButtonCapMarginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let largeButtonCapMarginWidth : ·û
+	let largeButtonCapMarginWidth : ü
 
 	// Swift methods
-	0x442a0  class func BundleSoftPaywallLayoutAttributesFactory.__allocating_init(styler:componentSizeProvider:) // init 
+	0x44240  class func BundleSoftPaywallLayoutAttributesFactory.__allocating_init(styler:componentSizeProvider:) // init 
  }
 
  class NewsSubscription.SubscriptionOffersRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SubscriptionOffersRendererType {
@@ -1413,12 +1413,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let publisherLogoProvider : PublisherLogoProviderType
 
 	// Swift methods
-	0x453c0  class func SubscriptionOffersRenderer.__allocating_init(styler:publisherLogoProvider:) // init 
+	0x45360  class func SubscriptionOffersRenderer.__allocating_init(styler:publisherLogoProvider:) // init 
  }
 
  class NewsSubscription.StylerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14724000644c0 (0x724000644c0) in binary!
+WARNING: couldn't find address 0x1475400064520 (0x75400064520) in binary!
 	0x18000000c  @objc StylerAssembly.(null) <stripped>
  }
 
@@ -1426,21 +1426,21 @@ WARNING: couldn't find address 0x14724000644c0 (0x724000644c0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleTextViewTopOffset : ·û // +0x0
+	let titleTextViewTopOffset : ü // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let descriptionTextViewTopOffset : ·û // +0x8
+	let descriptionTextViewTopOffset : ü // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonTopOffset : ·û // +0x10
+	let subscribeButtonTopOffset : ü // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonBottomSpacing : ·û // +0x18
+	let subscribeButtonBottomSpacing : ü // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offersButtonTopOffset : ·û // +0x20
+	let offersButtonTopOffset : ü // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButtonTopOffset : ·û // +0x28
+	let webAuthButtonTopOffset : ü // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hiddenWebAuthButtonTopOffset : ·û // +0x30
+	let hiddenWebAuthButtonTopOffset : ü // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButtonBottomSpacing : ·û // +0x38
+	let webAuthButtonBottomSpacing : ü // +0x38
  }
 
  class NewsSubscription.DeferredBundleHardPaywallViewProvider : NSObject /usr/lib/libobjc.A.dylib {
@@ -1456,16 +1456,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var images : UIUserInterfaceStyle // +0x0 (0x8)
 	var badgeImages : UIUserInterfaceStyle // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var videoFileURL : Õö // +0x0 (0x0)
+	var videoFileURL : ˝ö // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x146f400064490 (0x6f400064490) in binary!
-	0x13a08  @objc DeferredBundleHardPaywallViewProvider.(null) <stripped>
+WARNING: couldn't find address 0x14724000644f0 (0x724000644f0) in binary!
+	0x13a38  @objc DeferredBundleHardPaywallViewProvider.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff687a0  @objc DeferredBundleHardPaywallViewProvider.(null) <stripped>
 
 	// Swift methods
-	0x467c0  class func DeferredBundleHardPaywallViewProvider.__allocating_init(viewModel:dataProvider:styler:renderer:layoutAttributesFactory:) // init 
+	0x46760  class func DeferredBundleHardPaywallViewProvider.__allocating_init(viewModel:dataProvider:styler:renderer:layoutAttributesFactory:) // init 
  }
 
  enum NewsSubscription.PurchaseModel {
@@ -1516,36 +1516,36 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var $__lazy_storage_$_verificationSpinner : PurchasingSpinnerViewController
 	let purchasePresenter : PurchasePresenterType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sceneStateManager : √ã
+	let sceneStateManager : Ûã
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x146b400064368 (0x6b400064368) in binary!
-	0x17be0  @objc PaywallViewController.(null) <stripped>
-WARNING: couldn't find address 0x146a400064340 (0x6a400064340) in binary!
-	0x178ac  @objc PaywallViewController.(null) <stripped>
-WARNING: couldn't find address 0x1849c000645f8 (0x49c000645f8) in binary!
+WARNING: couldn't find address 0x146e4000643c8 (0x6e4000643c8) in binary!
+	0x17c10  @objc PaywallViewController.(null) <stripped>
+WARNING: couldn't find address 0x146d4000643a0 (0x6d4000643a0) in binary!
+	0x178dc  @objc PaywallViewController.(null) <stripped>
+WARNING: couldn't find address 0x184cc00064658 (0x4cc00064658) in binary!
+	0x139d0  @objc PaywallViewController.(null) <stripped>
+WARNING: couldn't find address 0x17bd400064a88 (0x3d400064a88) in binary!
+	0x17bc8  @objc PaywallViewController.(null) <stripped>
+WARNING: couldn't find address 0x17bbc00064640 (0x3bc00064640) in binary!
 	0x139a0  @objc PaywallViewController.(null) <stripped>
-WARNING: couldn't find address 0x17ba400064a28 (0x3a400064a28) in binary!
-	0x17b98  @objc PaywallViewController.(null) <stripped>
-WARNING: couldn't find address 0x17b8c000645e0 (0x38c000645e0) in binary!
-	0x13970  @objc PaywallViewController.(null) <stripped>
-WARNING: couldn't find address 0x1785800064620 (0x5800064620) in binary!
-	0x129cc  @objc PaywallViewController.(null) <stripped>
-WARNING: couldn't find address 0x1394c00064310 (0x14c00064310) in binary!
+WARNING: couldn't find address 0x1788800064680 (0x8800064680) in binary!
+	0x129fc  @objc PaywallViewController.(null) <stripped>
+WARNING: couldn't find address 0x1397c00064370 (0x17c00064370) in binary!
 	0x48000000c  @objc PaywallViewController.(null) <stripped>
-WARNING: couldn't find address 0x1828200064090 (0x28200064090) in binary!
-	0x18276  @objc PaywallViewController.(null) <stripped>
-WARNING: couldn't find address 0x16fcc00064068 (0x7cc00064068) in binary!
-	0x16fc0  @objc PaywallViewController.(null) <stripped>
+WARNING: couldn't find address 0x182b2000640f0 (0x2b2000640f0) in binary!
+	0x182a6  @objc PaywallViewController.(null) <stripped>
+WARNING: couldn't find address 0x16ffc000640c8 (0x7fc000640c8) in binary!
+	0x16ff0  @objc PaywallViewController.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x254fff6ffe8  @objc PaywallViewController.(null) <stripped>
-	0x22cfff70550  @objc PaywallViewController.¡∏ˇˇˇˇB¡Î∏ˇˇˇˇÎÄ0 <stripped>
-	0x204fff70c38  @objc PaywallViewController.@ <stripped>
-	0x324fff711f0  @objc PaywallViewController.LÛHÉ LâÔHâﬁËŒâ <stripped>
+	0x2b4fff6ffe8  @objc PaywallViewController.(null) <stripped>
+	0x28cfff70550  @objc PaywallViewController.( <stripped>
+	0x264fff70c38  @objc PaywallViewController.√∆G0 <stripped>
+	0x384fff711f0  @objc PaywallViewController.ã@HIØ«HH9«sILâ˙ËKâ <stripped>
 
 	// Swift methods
-	0x4af70  class func PaywallViewController.__allocating_init(viewProvider:eventHandler:paywallModel:purchasingSpinnerViewControllerFactory:purchasePresenter:sceneStateManager:) // init 
-	0x4b020  class func PaywallViewController.__allocating_init(viewProvider:eventHandler:paywallModel:purchasingSpinnerViewControllerFactory:purchasePresenter:sceneStateManager:paywallViewportSizeProvider:paywallHeightProvider:) // init 
+	0x4af10  class func PaywallViewController.__allocating_init(viewProvider:eventHandler:paywallModel:purchasingSpinnerViewControllerFactory:purchasePresenter:sceneStateManager:) // init 
+	0x4afc0  class func PaywallViewController.__allocating_init(viewProvider:eventHandler:paywallModel:purchasingSpinnerViewControllerFactory:purchasePresenter:sceneStateManager:paywallViewportSizeProvider:paywallHeightProvider:) // init 
  }
 
  class NewsSubscription.FamilySharingLandingPageLauncher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FamilySharingLandingPageLauncherType {
@@ -1556,7 +1556,7 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	let router : SubscriptionsRouterType
 
 	// Swift methods
-	0x4e420  class func FamilySharingLandingPageLauncher.__allocating_init(configurationManager:familyEligibilityProvider:router:) // init 
+	0x4e3c0  class func FamilySharingLandingPageLauncher.__allocating_init(configurationManager:familyEligibilityProvider:router:) // init 
  }
 
  class NewsSubscription.BundleSoftPaywallRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BundleSoftPaywallRendererType {
@@ -1565,7 +1565,7 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	let styler : BundleSoftPaywallStylerType
 
 	// Swift methods
-	0x4eb60  class func BundleSoftPaywallRenderer.__allocating_init(styler:) // init 
+	0x4eb00  class func BundleSoftPaywallRenderer.__allocating_init(styler:) // init 
  }
 
  struct NewsSubscription.AppleAccountSignInErrorAlert { }
@@ -1576,7 +1576,7 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	let accountPageViewControllerFactory : BridgedAccountPageViewControllerFactory
 
 	// Swift methods
-	0x4f9d0  class func AccountPageViewControllerFactory.__allocating_init(accountPageViewControllerFactory:) // init 
+	0x4f970  class func AccountPageViewControllerFactory.__allocating_init(accountPageViewControllerFactory:) // init 
  }
 
  class NewsSubscription.BridgedPurchaseManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -1587,26 +1587,26 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	var purchaseObservers : ContainerPurchaseObserver
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x177f000064268 (0x7f000064268) in binary!
-	0x177e4  @objc BridgedPurchaseManager.(null) <stripped>
-WARNING: couldn't find address 0x177d800064240 (0x7d800064240) in binary!
-	0x177cc  @objc BridgedPurchaseManager.(null) <stripped>
-WARNING: couldn't find address 0x1007200064218 (0x7200064218) in binary!
-	0x15ba0  @objc BridgedPurchaseManager.(null) <stripped>
-WARNING: couldn't find address 0x15b94000641f0 (0x394000641f0) in binary!
-	0x14588  @objc BridgedPurchaseManager.(null) <stripped>
-WARNING: couldn't find address 0x1389c00064260 (0x9c00064260) in binary!
+WARNING: couldn't find address 0x17820000642c8 (0x20000642c8) in binary!
+	0x17814  @objc BridgedPurchaseManager.(null) <stripped>
+WARNING: couldn't find address 0x17808000642a0 (0x8000642a0) in binary!
+	0x177fc  @objc BridgedPurchaseManager.(null) <stripped>
+WARNING: couldn't find address 0x100a200064278 (0xa200064278) in binary!
+	0x15bd0  @objc BridgedPurchaseManager.(null) <stripped>
+WARNING: couldn't find address 0x15bc400064250 (0x3c400064250) in binary!
+	0x145b8  @objc BridgedPurchaseManager.(null) <stripped>
+WARNING: couldn't find address 0x138cc000642c0 (0xcc000642c0) in binary!
 	0x28000000c  @objc BridgedPurchaseManager.(null) <stripped>
-WARNING: couldn't find address 0x1456400064300 (0x56400064300) in binary!
-	0x13878  @objc BridgedPurchaseManager.(null) <stripped>
+WARNING: couldn't find address 0x1459400064360 (0x59400064360) in binary!
+	0x138a8  @objc BridgedPurchaseManager.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x78cfff84cc0  @objc BridgedPurchaseManager.(null) <stripped>
-	0x5400064178  @objc BridgedPurchaseManager._]√êUHâÂAWAVSPIâˆHâ˚HãHã?HâLã=  <stripped>
+	0x7ecfff84cc0  @objc BridgedPurchaseManager.(null) <stripped>
+	0x84000641d8  @objc BridgedPurchaseManager.∏ˇˇˇˇH9¡∏ˇˇˇˇB¡Î∏ˇˇˇˇÎÄ0 <stripped>
 WARNING: couldn't find address 0xfff896a0 (0xfff896a0) in binary!
-	0x5ac000643f0  @objc BridgedPurchaseManager.(null) <stripped>
+	0x5dc00064450  @objc BridgedPurchaseManager.(null) <stripped>
 
 	// Swift methods
-	0x4fbe0  class func BridgedPurchaseManager.__allocating_init(purchaseManager:) // init 
+	0x4fb80  class func BridgedPurchaseManager.__allocating_init(purchaseManager:) // init 
  }
 
  class NewsSubscription.ContainerPurchaseTransactionObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1615,7 +1615,7 @@ WARNING: couldn't find address 0xfff896a0 (0xfff896a0) in binary!
 	var bridgedPurchaseTransactionObserver : weak NPPurchaseTransactionObserver?
 
 	// Swift methods
-	0x529e0  class func ContainerPurchaseTransactionObserver.__allocating_init(bridgedPurchaseTransactionObserver:) // init 
+	0x52980  class func ContainerPurchaseTransactionObserver.__allocating_init(bridgedPurchaseTransactionObserver:) // init 
  }
 
  class NewsSubscription.ContainerPurchaseObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1624,7 +1624,7 @@ WARNING: couldn't find address 0xfff896a0 (0xfff896a0) in binary!
 	var bridgedPurchaseObserver : weak NPPurchaseObserver?
 
 	// Swift methods
-	0x4ff60  class func ContainerPurchaseObserver.__allocating_init(bridgedPurchaseObserver:) // init 
+	0x4ff00  class func ContainerPurchaseObserver.__allocating_init(bridgedPurchaseObserver:) // init 
  }
 
  class NewsSubscription.BundlePaywallViewModelFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BundlePaywallViewModelFactoryType {
@@ -1642,7 +1642,7 @@ WARNING: couldn't find address 0xfff896a0 (0xfff896a0) in binary!
 	let defaultDescriptionNonTrial : String // +0xa0 (0x10)
 	let defaultLearnMore : String // +0xb0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let defaultLearnMoreURL : ö // +0x0 (0x0)
+	let defaultLearnMoreURL : Gö // +0x0 (0x0)
 	let defaultWebAuthButtonTitle : String // +0x0 (0x10)
 	let webAuthButtonTitle : String // +0x0 (0x10)
 	let configurationManager : FCCoreConfigurationManager // +0x0 (0x8)
@@ -1651,7 +1651,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offerManager : OfferManagerType // +0x0 (0x10)
 
 	// Swift methods
-	0x52a30  class func BundlePaywallViewModelFactory.__allocating_init(configurationManager:purchaseProvider:offerOverrideProvider:offerManager:) // init 
+	0x529d0  class func BundlePaywallViewModelFactory.__allocating_init(configurationManager:purchaseProvider:offerOverrideProvider:offerManager:) // init 
  }
 
  struct NewsSubscription.Offer {
@@ -1670,7 +1670,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case buy : OfferActionData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case link : YÜ
+	case link : âÜ
  }
 
  struct NewsSubscription.OfferActionData {
@@ -1712,13 +1712,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let learnMoreURL : ö // +0x0 (0x0)
+	let learnMoreURL : Gö // +0x0 (0x0)
 	let learnMoreText : String // +0x0 (0x10)
 	let webAuthButtonTitle : String // +0x0 (0x10)
 	let subscribeButtonTextProvider : SubscribeButtonTextProviderType // +0x0 (0x28)
 
 	// Swift methods
-	0x5b380  class func SubscriptionOffersViewModelFactory.__allocating_init(subscribeButtonTextProvider:) // init 
+	0x5b320  class func SubscriptionOffersViewModelFactory.__allocating_init(subscribeButtonTextProvider:) // init 
  }
 
  struct NewsSubscription.InAppSubscriptionExpiredAlert {
@@ -1729,7 +1729,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsSubscription.SubscriptionSheetSubscribeButtonTextProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x5cbc0  class func SubscriptionSheetSubscribeButtonTextProvider.__allocating_init() // init 
+	0x5cb60  class func SubscriptionSheetSubscribeButtonTextProvider.__allocating_init() // init 
  }
 
  class NewsSubscription.OfferManager : NSObject /usr/lib/libobjc.A.dylib, OfferManagerType {
@@ -1740,30 +1740,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let serviceType : String // +0x28 (0x10)
 	let deDuperKey : String // +0x38 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cachedBestOffers : Ìá // +0x48 (0x8)
+	var cachedBestOffers : à // +0x48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cachedServicesBundleOffers : Ìá // +0x50 (0x8)
+	var cachedServicesBundleOffers : à // +0x50 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cachedNewsPlusOffers : Ìá // +0x58 (0x8)
+	var cachedNewsPlusOffers : à // +0x58 (0x8)
 	var lastSeenBestOffers : OfferPlacement // +0x60 (0x8)
 	let configurationManager : FCCoreConfigurationManager // +0x68 (0x8)
 	let processQueue : OS_dispatch_queue // +0x70 (0x8)
 	var observers : DisposableOfferObserver // +0x78 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastSessionEndTime : 1Ö // +0x0 (0x0)
+	var lastSessionEndTime : aÖ // +0x0 (0x0)
 	let offersResetTimeInterval : Double // +0x0 (0x8)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deduper : ùÜ // +0x0 (0x8)
+	let deduper : ÕÜ // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1456400064300 (0x56400064300) in binary!
-	0x13878  @objc OfferManager.(null) <stripped>
+WARNING: couldn't find address 0x1459400064360 (0x59400064360) in binary!
+	0x138a8  @objc OfferManager.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x78cfff84cc0  @objc OfferManager.(null) <stripped>
+	0x7ecfff84cc0  @objc OfferManager.(null) <stripped>
 
 	// Swift methods
-	0x5d790  class func OfferManager.__allocating_init(configurationManager:networkReachability:bundleSubscriptionManager:) // init 
+	0x5d730  class func OfferManager.__allocating_init(configurationManager:networkReachability:bundleSubscriptionManager:) // init 
  }
 
  enum NewsSubscription.Errors {
@@ -1790,13 +1790,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class NewsSubscription.PlayerView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12dac000643f0 (0x5ac000643f0) in binary!
-	0x18310  @objc PlayerView.(null) <stripped>
+WARNING: couldn't find address 0x12ddc00064450 (0x5dc00064450) in binary!
+	0x18340  @objc PlayerView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff8bdb8  @objc PlayerView.(null) <stripped>
 
 	// Swift methods
-	0x69710  func PlayerView.playerLayer.getter // getter 
+	0x696b0  func PlayerView.playerLayer.getter // getter 
  }
 
  struct NewsSubscription.PurchasingSpinnerViewLayoutOptions {
@@ -1814,7 +1814,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var minimumArticlesBeforeArticleSoftPaywall : Int
 
 	// Swift methods
-	0x69c40  class func BundleArticleSoftPaywallMeter.__allocating_init(configurationManager:) // init 
+	0x69be0  class func BundleArticleSoftPaywallMeter.__allocating_init(configurationManager:) // init 
  }
 
  class NewsSubscription.BundleHardPaywallStyler : BundlePaywallBaseStyler, BundleHardPaywallStylerType { }
@@ -1825,7 +1825,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let purchaseManager : PurchaseManagerType
 
 	// Swift methods
-	0x6b0b0  class func AlacartePaywallDataProvider.__allocating_init(purchaseManager:) // init 
+	0x6b050  class func AlacartePaywallDataProvider.__allocating_init(purchaseManager:) // init 
  }
 
  class NewsSubscription.WebAccessAuthenticatorFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebAccessAuthenticatorFactoryType {
@@ -1834,7 +1834,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let purchaseController : FCPurchaseController // +0x10 (0x8)
 
 	// Swift methods
-	0x6b410  class func WebAccessAuthenticatorFactory.__allocating_init(purchaseController:) // init 
+	0x6b3b0  class func WebAccessAuthenticatorFactory.__allocating_init(purchaseController:) // init 
  }
 
  struct NewsSubscription.SubscriptionOffersLayoutOptions {
@@ -1843,7 +1843,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let parentViewSize : CGSize // +0x0
 	let safeAreaInsets : UIEdgeInsets // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navBarHeight : ·û // +0x30
+	let navBarHeight : ü // +0x30
 	let traitCollection : UITraitCollection // +0x38
  }
 
@@ -1853,16 +1853,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let heightProvider : PaywallHeightProviderType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1746c00064138 (0x46c00064138) in binary!
+WARNING: couldn't find address 0x1749c00064198 (0x49c00064198) in binary!
 	0x18000000c  @objc SoftPaywallDocumentSectionItemHeightProvider.(null) <stripped>
 
 	// Swift methods
-	0x6bdb0  class func SoftPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
+	0x6bd50  class func SoftPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  class NewsSubscription.SubscriptionOffersAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x144d400064270 (0x4d400064270) in binary!
+WARNING: couldn't find address 0x14504000642d0 (0x504000642d0) in binary!
 	0x18000000c  @objc SubscriptionOffersAssembly.(null) <stripped>
  }
 
@@ -1877,18 +1877,18 @@ WARNING: couldn't find address 0x144d400064270 (0x4d400064270) in binary!
 	var webAccessAuthenticator : WebAccessAuthenticatorType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x144a400064240 (0x4a400064240) in binary!
-	0x137b8  @objc PaywallInteractor.(null) <stripped>
+WARNING: couldn't find address 0x144d4000642a0 (0x4d4000642a0) in binary!
+	0x137e8  @objc PaywallInteractor.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff8f920  @objc PaywallInteractor.(null) <stripped>
 
 	// Swift methods
-	0x6d9f0  class func PaywallInteractor.__allocating_init(webAccessAuthenticatorFactory:paywallModel:bundleSubscriptionManager:) // init 
+	0x6d990  class func PaywallInteractor.__allocating_init(webAccessAuthenticatorFactory:paywallModel:bundleSubscriptionManager:) // init 
  }
 
  class NewsSubscription.PurchasingSpinnerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1446c00064208 (0x46c00064208) in binary!
+WARNING: couldn't find address 0x1449c00064268 (0x49c00064268) in binary!
 	0x18000000c  @objc PurchasingSpinnerAssembly.(null) <stripped>
  }
 
@@ -1924,51 +1924,52 @@ WARNING: couldn't find address 0x1446c00064208 (0x46c00064208) in binary!
 	var campaignType : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1443c00064080 (0x43c00064080) in binary!
+WARNING: couldn't find address 0x1446c000640e0 (0x46c000640e0) in binary!
+	0x17674  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x14454000646d0 (0x454000646d0) in binary!
+	0x1765c  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x1443c00064098 (0x43c00064098) in binary!
 	0x17644  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1442400064670 (0x42400064670) in binary!
+WARNING: couldn't find address 0x14424000646f8 (0x424000646f8) in binary!
 	0x1762c  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1440c00064038 (0x40c00064038) in binary!
-	0x17614  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x143f400064698 (0x3f400064698) in binary!
+WARNING: couldn't find address 0x16ddc000646d0 (0x5dc000646d0) in binary!
+	0xfd32  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x143f400064de0 (0x3f400064de0) in binary!
 	0x175fc  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x16dac00064670 (0x5ac00064670) in binary!
-	0xfd02  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x143c400064d80 (0x3c400064d80) in binary!
+WARNING: couldn't find address 0x143dc00064010 (0x3dc00064010) in binary!
+	0x175e4  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x143c400063fe8 (0x3c400063fe8) in binary!
 	0x175cc  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x143ac00063fb0 (0x3ac00063fb0) in binary!
+WARNING: couldn't find address 0x143ac00063fc0 (0x3ac00063fc0) in binary!
 	0x175b4  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1439400063f88 (0x39400063f88) in binary!
-	0x1759c  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1437c00063f60 (0x37c00063f60) in binary!
+WARNING: couldn't find address 0x16d6400063f98 (0x56400063f98) in binary!
+	0xfcba  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x1437c00063f70 (0x37c00063f70) in binary!
 	0x17584  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x16d3400063f38 (0x53400063f38) in binary!
+WARNING: couldn't find address 0x16d3400063f48 (0x53400063f48) in binary!
 	0xfc8a  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1434c00063f10 (0x34c00063f10) in binary!
+WARNING: couldn't find address 0x1434c00063f20 (0x34c00063f20) in binary!
 	0x17554  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x16d0400063ee8 (0x50400063ee8) in binary!
-	0xfc5a  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1431c00063ec0 (0x31c00063ec0) in binary!
-	0x17524  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1430400063e98 (0x30400063e98) in binary!
-	0x1750c  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x142e400063e70 (0x2e400063e70) in binary!
-	0x17810  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x142cc00063e48 (0x2cc00063e48) in binary!
-	0x177f8  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x142bc00063e20 (0x2bc00063e20) in binary!
+WARNING: couldn't find address 0x1433400063ef8 (0x33400063ef8) in binary!
+	0x1753c  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x1431400063ed0 (0x31400063ed0) in binary!
+	0x17840  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x142fc00063ea8 (0x2fc00063ea8) in binary!
+	0x17828  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x142ec00063e80 (0x2ec00063e80) in binary!
+	0x174f4  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x142d4000649a8 (0x2d4000649a8) in binary!
+	0x174dc  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x142bc00063e38 (0x2bc00063e38) in binary!
 	0x174c4  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x142a400064948 (0x2a400064948) in binary!
-	0x174ac  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1428c00063dd8 (0x28c00063dd8) in binary!
-	0x17494  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x177b400063db0 (0x7b400063db0) in binary!
-	0x14268  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1357c00063f40 (0x57c00063f40) in binary!
+WARNING: couldn't find address 0x177e400063e10 (0x7e400063e10) in binary!
+	0x14298  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x135ac00063fa0 (0x5ac00063fa0) in binary!
 	0x48000000c  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1805400063d78 (0x5400063d78) in binary!
-	0x14230  @objc BridgedPurchaseContext.(null) <stripped>
-	0x14220  ___swift_memcpy0_1
+WARNING: couldn't find address 0x1808400063dd8 (0x8400063dd8) in binary!
+	0x14260  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x1425c00063db0 (0x25c00063db0) in binary!
+	0x14250  @objc BridgedPurchaseContext.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff96368  @objc BridgedPurchaseContext.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
@@ -1976,33 +1977,34 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff97ee8  @objc BridgedPurchaseContext.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x124fff98c30  @objc BridgedPurchaseContext.(null) <stripped>
-	0x4b4fff98cb8  @objc BridgedPurchaseContext.ˇ¬˝ <stripped>
-	0xfff98dd0  @objc BridgedPurchaseContext.âuàLâu∏HâuêHâÛHâu¿HâUòLâ}†HãE–Hã@HâE∞LâÔË*h <stripped>
+	0x184fff98c30  @objc BridgedPurchaseContext.(null) <stripped>
+	0x514fff98cb8  @objc BridgedPurchaseContext.ˇË
+ <stripped>
+	0xfff98dd0  @objc BridgedPurchaseContext.A]A^A_]√Ñ <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff9cb28  @objc BridgedPurchaseContext.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff9cb90  @objc BridgedPurchaseContext.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0xbcfffa2348  @objc BridgedPurchaseContext.(null) <stripped>
-	0x9cfffa2a50  @objc BridgedPurchaseContext.LâÁAˇ’Hã}–Aˇ’Hã}»Aˇ’HâÿHÉƒ[A\A]A^A_]√f.Ñ <stripped>
-	0xfffa2b48  @objc BridgedPurchaseContext.ãN(LâM»ãF0âE‘â$Lâ˜Lâ˛Lâ‚LâÈËS˛ˇˇHã;HãsHãSHãKLãC LãK(Lâ3Lâ{LâcLâkHãE¿HâC HãE»HâC(DãS0ãE‘àC0Dâ$Ë ˜ˇˇHâÿHÉƒ([A\A]A^A_]√Ñ <stripped>
+	0x11cfffa2348  @objc BridgedPurchaseContext.(null) <stripped>
+	0xfcfffa2a50  @objc BridgedPurchaseContext.~Lã{Hâ{Aˇ‘LâˇAˇ’Iã~ Lã{ Hâ{ Aˇ‘LâˇAˇ’Iã~(Lãs(Hâ{(Aˇ‘Lâ˜Aˇ’HâÿHÉƒ[A\A]A^A_]√êUHâÂAWAVSPIâˆHâ˚HãHã?HâLã=Ä <stripped>
+	0xfffa2b48  @objc BridgedPurchaseContext.(HâO(HãN HâO HãNHâOHãNHâOHãHãVHâWHâ√Ñ <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x5dcfffa8d90  @objc BridgedPurchaseContext.(null) <stripped>
-	0x23400063ba8  @objc BridgedPurchaseContext.HÖ¿tY√Hç=.Á <stripped>
+	0x63cfffa8d90  @objc BridgedPurchaseContext.(null) <stripped>
+	0x26400063c08  @objc BridgedPurchaseContext. <stripped>
 WARNING: couldn't find address 0xfffa9090 (0xfffa9090) in binary!
-	0xcc00063e68  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x63da4fffb1e18 (0x5a4fffb1e18) in binary!
+	0xfc00063ec8  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x63e04fffb1e18 (0x604fffb1e18) in binary!
 	0x38000000c  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1294c00063f90 (0x14c00063f90) in binary!
-	0x17eb0  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x133b400063d78 (0x3b400063d78) in binary!
+WARNING: couldn't find address 0x1297c00063ff0 (0x17c00063ff0) in binary!
+	0x17ee0  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x133e400063dd8 (0x3e400063dd8) in binary!
 	0x38000000c  @objc BridgedPurchaseContext.(null) <stripped>
-WARNING: couldn't find address 0x1407c00063b88 (0x7c00063b88) in binary!
-	0x14070  @objc BridgedPurchaseContext.(null) <stripped>
+WARNING: couldn't find address 0x140ac00063be8 (0xac00063be8) in binary!
+	0x140a0  @objc BridgedPurchaseContext.(null) <stripped>
 
 	// Swift methods
-	0x73020  class func BridgedPurchaseContext.__allocating_init(productID:purchaseID:purchaseType:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:feedID:parentFeedType:sectionID:groupID:groupType:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType:) // init 
+	0x72fc0  class func BridgedPurchaseContext.__allocating_init(productID:purchaseID:purchaseType:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:feedID:parentFeedType:sectionID:groupID:groupType:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType:) // init 
  }
 
  class NewsSubscription.InAppMessageCoordinator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2013,14 +2015,15 @@ WARNING: couldn't find address 0x1407c00063b88 (0x7c00063b88) in binary!
 	let applicationDidBecomeActiveEventName : String
 
 	// Swift methods
-	0x74660  class func InAppMessageCoordinator.__allocating_init() // init 
+	0x74600  class func InAppMessageCoordinator.__allocating_init() // init 
  }
 
  class NewsSubscription.InAppMessageContextProvider : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1805400063d78 (0x5400063d78) in binary!
-	0x14230  @objc InAppMessageContextProvider.(null) <stripped>
-	0x14220  ___swift_memcpy0_1
+WARNING: couldn't find address 0x1808400063dd8 (0x8400063dd8) in binary!
+	0x14260  @objc InAppMessageContextProvider.(null) <stripped>
+WARNING: couldn't find address 0x1425c00063db0 (0x25c00063db0) in binary!
+	0x14250  @objc InAppMessageContextProvider.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff96368  @objc InAppMessageContextProvider.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
@@ -2043,16 +2046,16 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
  class NewsSubscription.PaywallImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1801c00063d28 (0x1c00063d28) in binary!
+WARNING: couldn't find address 0x1804c00063d88 (0x4c00063d88) in binary!
 	0x18000000c  @objc PaywallImageProcessor.(null) <stripped>
 
 	// Swift methods
-	0x76700  class func PaywallImageProcessor.__allocating_init() // init 
+	0x766a0  class func PaywallImageProcessor.__allocating_init() // init 
  }
 
  class NewsSubscription.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x141f400063f90 (0x1f400063f90) in binary!
+WARNING: couldn't find address 0x1422400063ff0 (0x22400063ff0) in binary!
 	0x18000000c  @objc FactoryAssembly.(null) <stripped>
  }
 
@@ -2064,36 +2067,36 @@ WARNING: couldn't find address 0x141f400063f90 (0x1f400063f90) in binary!
 	let scrollView : UIScrollView
 	let playerView : PlayerView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gradientView : /ú
+	let gradientView : _ú
 	let contentView : UIView
 	let contentBackgroundView : UIView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let badgeImageView : 	ú
+	let badgeImageView : 9ú
 	let titleTextView : UITextView
 	let descriptionTextView : UnselectableLinkEnabledTextView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton : ˚õ
+	let subscribeButton : +ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offersButton : ú
+	let offersButton : 5ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButton : ú
+	let webAuthButton : 5ú
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12a64000640a8 (0x264000640a8) in binary!
-	0x17fc8  @objc BundleHardPaywallView.(null) <stripped>
-WARNING: couldn't find address 0x1043c00064908 (0x43c00064908) in binary!
-	0x17e60  @objc BundleHardPaywallView.(null) <stripped>
-WARNING: couldn't find address 0x134b400063e78 (0x4b400063e78) in binary!
+WARNING: couldn't find address 0x12a9400064108 (0x29400064108) in binary!
+	0x17ff8  @objc BundleHardPaywallView.(null) <stripped>
+WARNING: couldn't find address 0x1046c00064968 (0x46c00064968) in binary!
+	0x17e90  @objc BundleHardPaywallView.(null) <stripped>
+WARNING: couldn't find address 0x134e400063ed8 (0x4e400063ed8) in binary!
 	0x18000000c  @objc BundleHardPaywallView.(null) <stripped>
-WARNING: couldn't find address 0x1417c00063f18 (0x17c00063f18) in binary!
+WARNING: couldn't find address 0x141ac00063f78 (0x1ac00063f78) in binary!
 	0x18000000c  @objc BundleHardPaywallView.(null) <stripped>
-WARNING: couldn't find address 0x1737800063be8 (0x37800063be8) in binary!
+WARNING: couldn't find address 0x173a800063c48 (0x3a800063c48) in binary!
 	0x58000000c  @objc BundleHardPaywallView.(null) <stripped>
  }
 
  class NewsSubscription.PaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1417c00063f18 (0x17c00063f18) in binary!
+WARNING: couldn't find address 0x141ac00063f78 (0x1ac00063f78) in binary!
 	0x18000000c  @objc PaywallAssembly.(null) <stripped>
  }
 
@@ -2113,7 +2116,7 @@ WARNING: couldn't find address 0x1417c00063f18 (0x17c00063f18) in binary!
 	var webAccessAuthenticator : WebAccessAuthenticatorType
 
 	// Swift methods
-	0x7dd00  class func SubscriptionOffersInteractor.__allocating_init(networkReachability:routeModel:dataManager:tagController:purchaseController:receiptRefresher:webAccessAuthenticatorFactory:) // init 
+	0x7dca0  class func SubscriptionOffersInteractor.__allocating_init(networkReachability:routeModel:dataManager:tagController:purchaseController:receiptRefresher:webAccessAuthenticatorFactory:) // init 
  }
 
  class NewsSubscription.PurchasingSpinnerViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2126,19 +2129,19 @@ WARNING: couldn't find address 0x1417c00063f18 (0x17c00063f18) in binary!
 	let spinnerView : PurchasingSpinnerView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17f5c000640b8 (0x75c000640b8) in binary!
-	0x17670  @objc PurchasingSpinnerViewController.(null) <stripped>
-WARNING: couldn't find address 0x1345400064100 (0x45400064100) in binary!
-	0x124bc  @objc PurchasingSpinnerViewController.(null) <stripped>
-WARNING: couldn't find address 0x1343c00063e00 (0x43c00063e00) in binary!
+WARNING: couldn't find address 0x17f8c00064118 (0x78c00064118) in binary!
+	0x176a0  @objc PurchasingSpinnerViewController.(null) <stripped>
+WARNING: couldn't find address 0x1348400064160 (0x48400064160) in binary!
+	0x124ec  @objc PurchasingSpinnerViewController.(null) <stripped>
+WARNING: couldn't find address 0x1346c00063e60 (0x46c00063e60) in binary!
 	0x28000000c  @objc PurchasingSpinnerViewController.(null) <stripped>
-WARNING: couldn't find address 0x1410400063ea0 (0x10400063ea0) in binary!
-	0x13418  @objc PurchasingSpinnerViewController.(null) <stripped>
+WARNING: couldn't find address 0x1413400063f00 (0x13400063f00) in binary!
+	0x13448  @objc PurchasingSpinnerViewController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffa9090  @objc PurchasingSpinnerViewController.(null) <stripped>
 
 	// Swift methods
-	0x82890  class func PurchasingSpinnerViewController.__allocating_init(spinner:viewStyler:viewLayoutAttributesFactory:viewRenderer:) // init 
+	0x82830  class func PurchasingSpinnerViewController.__allocating_init(spinner:viewStyler:viewLayoutAttributesFactory:viewRenderer:) // init 
  }
 
  enum NewsSubscription.FamilyStatus {
@@ -2167,19 +2170,19 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleTextViewTopOffset : ·û // +0x0
+	let titleTextViewTopOffset : ü // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let descriptionTextViewTopOffset : ·û // +0x8
+	let descriptionTextViewTopOffset : ü // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonTopOffset : ·û // +0x10
+	let subscribeButtonTopOffset : ü // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offersButtonTopOffset : ·û // +0x18
+	let offersButtonTopOffset : ü // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButtonTopOffset : ·û // +0x20
+	let webAuthButtonTopOffset : ü // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hiddenWebAuthButtonTopOffset : ·û // +0x28
+	let hiddenWebAuthButtonTopOffset : ü // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButtonBottomSpacing : ·û // +0x30
+	let webAuthButtonBottomSpacing : ü // +0x30
  }
 
  class NewsSubscription.BundleSoftPaywallHeightProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2189,7 +2192,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let layoutAttributesFactory : BundleSoftPaywallLayoutAttributesFactoryType // +0x0 (0x28)
 
 	// Swift methods
-	0x855a0  class func BundleSoftPaywallHeightProvider.__allocating_init(softPaywallViewModel:layoutAttributesFactory:) // init 
+	0x85540  class func BundleSoftPaywallHeightProvider.__allocating_init(softPaywallViewModel:layoutAttributesFactory:) // init 
  }
 
  class NewsSubscription.PurchasingSpinnerViewControllerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchasingSpinnerViewControllerFactoryType {
@@ -2200,7 +2203,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let viewRenderer : PurchasingSpinnerViewRendererType
 
 	// Swift methods
-	0x859e0  class func PurchasingSpinnerViewControllerFactory.__allocating_init(viewStyler:viewLayoutAttributesFactory:viewRenderer:) // init 
+	0x85980  class func PurchasingSpinnerViewControllerFactory.__allocating_init(viewStyler:viewLayoutAttributesFactory:viewRenderer:) // init 
  }
 
  class NewsSubscription.AlacartePaywallStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AlacartePaywallStylerType {
@@ -2211,7 +2214,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let descriptionMaxLines : Int
 
 	// Swift methods
-	0x85db0  class func AlacartePaywallStyler.__allocating_init(colorPaletteProvider:) // init 
+	0x85d50  class func AlacartePaywallStyler.__allocating_init(colorPaletteProvider:) // init 
  }
 
  struct NewsSubscription.PaywallLayoutOptions {
@@ -2220,7 +2223,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let parentViewSize : CGSize // +0x0
 	let safeAreaInsets : UIEdgeInsets // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bottomPadding : ·û // +0x30
+	let bottomPadding : ü // +0x30
 	let traitCollection : UITraitCollection // +0x38
  }
 
@@ -2238,13 +2241,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let subscribeButtonTextProvider : SubscribeButtonTextProviderType // +0x0 (0x28)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1410400063ea0 (0x10400063ea0) in binary!
-	0x13418  @objc AlacartePaywallViewProvider.(null) <stripped>
+WARNING: couldn't find address 0x1413400063f00 (0x13400063f00) in binary!
+	0x13448  @objc AlacartePaywallViewProvider.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffa9090  @objc AlacartePaywallViewProvider.(null) <stripped>
 
 	// Swift methods
-	0x883d0  class func AlacartePaywallViewProvider.__allocating_init(paywallModel:viewModel:dataProvider:styler:renderer:layoutAttributesFactory:subscribeButtonTextProvider:) // init 
+	0x88370  class func AlacartePaywallViewProvider.__allocating_init(paywallModel:viewModel:dataProvider:styler:renderer:layoutAttributesFactory:subscribeButtonTextProvider:) // init 
  }
 
  struct NewsSubscription.SubscriptionOffersLayoutAttributes {
@@ -2280,7 +2283,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let image : UIImage?
 	let badgeImage : UIImage?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let videoFileURL : Õö
+	let videoFileURL : ˝ö
  }
 
  class NewsSubscription.BundleSoftPaywallStyler : BundlePaywallBaseStyler, BundleSoftPaywallStylerType { }
@@ -2290,10 +2293,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var defaultManageSubscriptionsUrl : String // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subscriptionsURL : Õö // +0x0 (0x0)
+	var subscriptionsURL : ˝ö // +0x0 (0x0)
 
 	// Swift methods
-	0x8ecc0  class func ManageSubscriptionsURLProvider.__allocating_init(defaultUrl:) // init 
+	0x8ec60  class func ManageSubscriptionsURLProvider.__allocating_init(defaultUrl:) // init 
  }
 
  class NewsSubscription.EntitlementsManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, EntitlementsManagerType {
@@ -2305,16 +2308,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var subscriptionExpiryManager : SubscriptionExpiryManagerType
 
 	// Swift methods
-	0x8f500  class func EntitlementsManager.__allocating_init(configurationManager:purchaseController:bundleSubscriptionManager:) // init 
+	0x8f4a0  class func EntitlementsManager.__allocating_init(configurationManager:purchaseController:bundleSubscriptionManager:) // init 
  }
 
  class NewsSubscription.PurchasingSpinnerViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchasingSpinnerViewLayoutAttributesFactoryType {
 
 	// Properties
-	let styler : PurchasingSpinnerViewStylerType // +0xe7ca0
+	let styler : PurchasingSpinnerViewStylerType // +0xe7c40
 
 	// Swift methods
-	0x90eb0  class func PurchasingSpinnerViewLayoutAttributesFactory.__allocating_init(styler:) // init 
+	0x90e50  class func PurchasingSpinnerViewLayoutAttributesFactory.__allocating_init(styler:) // init 
  }
 
  struct NewsSubscription.Layout { }
@@ -2326,13 +2329,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let metricsBuilder : MetricsProviderType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x140cc00063e68 (0xcc00063e68) in binary!
-	0x133e0  @objc DynamicViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0x140fc00063ec8 (0xfc00063ec8) in binary!
+	0x13410  @objc DynamicViewControllerFactory.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0xcfffb3178  @objc DynamicViewControllerFactory.(null) <stripped>
+	0x6cfffb3178  @objc DynamicViewControllerFactory.(null) <stripped>
 
 	// Swift methods
-	0x91680  class func DynamicViewControllerFactory.__allocating_init(metricsBuilder:dynamicViewControllerDelegate:) // init 
+	0x91620  class func DynamicViewControllerFactory.__allocating_init(metricsBuilder:dynamicViewControllerDelegate:) // init 
  }
 
  class NewsSubscription.DisposableOfferObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2342,19 +2345,19 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var keepAliveObject : weak Swift.AnyObject?
 
 	// Swift methods
-	0x92540  class func DisposableOfferObserver.__allocating_init(observer:) // init 
+	0x924e0  class func DisposableOfferObserver.__allocating_init(observer:) // init 
  }
 
  class NewsSubscription.SubscriptionOffersModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SubscriptionOffersModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +~
+	let resolver : [~
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : À}
+	let tracker : ˚}
 
 	// Swift methods
-	0x92bd0  class func SubscriptionOffersModule.__allocating_init(resolver:tracker:) // init 
+	0x92b70  class func SubscriptionOffersModule.__allocating_init(resolver:tracker:) // init 
  }
 
  enum NewsSubscription.FamilySharingError {
@@ -2368,25 +2371,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let contentView : UIView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headerImageView : 	ú
+	let headerImageView : 9ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let badgeImageView : 	ú
+	let badgeImageView : 9ú
 	let titleTextView : UITextView
 	let descriptionTextView : UnselectableLinkEnabledTextView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton : ˚õ
+	let subscribeButton : +ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offersButton : ú
+	let offersButton : 5ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButton : ú
+	let webAuthButton : 5ú
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1294c00063f90 (0x14c00063f90) in binary!
-	0x17eb0  @objc BundleSoftPaywallView.(null) <stripped>
-WARNING: couldn't find address 0x133b400063d78 (0x3b400063d78) in binary!
+WARNING: couldn't find address 0x1297c00063ff0 (0x17c00063ff0) in binary!
+	0x17ee0  @objc BundleSoftPaywallView.(null) <stripped>
+WARNING: couldn't find address 0x133e400063dd8 (0x3e400063dd8) in binary!
 	0x38000000c  @objc BundleSoftPaywallView.(null) <stripped>
-WARNING: couldn't find address 0x1407c00063b88 (0x7c00063b88) in binary!
-	0x14070  @objc BundleSoftPaywallView.(null) <stripped>
+WARNING: couldn't find address 0x140ac00063be8 (0xac00063be8) in binary!
+	0x140a0  @objc BundleSoftPaywallView.(null) <stripped>
  }
 
  enum NewsSubscription.PaywallViewKind {
@@ -2411,12 +2414,12 @@ WARNING: couldn't find address 0x1407c00063b88 (0x7c00063b88) in binary!
 	// Properties
 	let paywallViewKind : PaywallViewKind
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +~
+	let resolver : [~
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : À}
+	let tracker : ˚}
 
 	// Swift methods
-	0x945f0  class func PaywallModule.__allocating_init(resolver:tracker:paywallViewKind:) // init 
+	0x94590  class func PaywallModule.__allocating_init(resolver:tracker:paywallViewKind:) // init 
  }
 
  class NewsSubscription.BridgedOfferManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -2425,35 +2428,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offerManager : OfferManagerType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1407c00063b88 (0x7c00063b88) in binary!
-	0x14070  @objc BridgedOfferManager.(null) <stripped>
-WARNING: couldn't find address 0x1338400063d48 (0x38400063d48) in binary!
+WARNING: couldn't find address 0x140ac00063be8 (0xac00063be8) in binary!
+	0x140a0  @objc BridgedOfferManager.(null) <stripped>
+WARNING: couldn't find address 0x133b400063da8 (0x3b400063da8) in binary!
 	0x28000000c  @objc BridgedOfferManager.(null) <stripped>
-WARNING: couldn't find address 0x1404c00063de8 (0x4c00063de8) in binary!
-	0x13360  @objc BridgedOfferManager.(null) <stripped>
+WARNING: couldn't find address 0x1407c00063e48 (0x7c00063e48) in binary!
+	0x13390  @objc BridgedOfferManager.(null) <stripped>
 
 	// Swift methods
-	0x94e60  class func BridgedOfferManager.__allocating_init(offerManager:) // init 
+	0x94e00  class func BridgedOfferManager.__allocating_init(offerManager:) // init 
  }
 
  struct NewsSubscription.PaywallShownEntry {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : 5{
+	let date : e{
  }
 
  class NewsSubscription.PaywallShownEntriesManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PaywallShownEntriesManagerType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let store : yÅ // +0x14220
+	let store : ©Å // +0x141c0
 	var shownEntries : PaywallShownEntry // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var accessLock : oé // +0x64d0
+	var accessLock : üé // +0x6470
 
 	// Swift methods
-	0x95c40  class func PaywallShownEntriesManager.__allocating_init(database:) // init 
+	0x95be0  class func PaywallShownEntriesManager.__allocating_init(database:) // init 
  }
 
  struct NewsSubscription.StoreDescriptor { }
@@ -2470,53 +2473,53 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : DeferredBundleHardPaywallStylerType
 	let componentSizeProvider : BundlePaywallComponentSizeProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxTopOffset : ·û
+	let maxTopOffset : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minContentViewHeight : ·û
+	let minContentViewHeight : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxContentViewWidth : ·û
+	let maxContentViewWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let smallMarginWidth : ·û
+	let smallMarginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let largeMarginWidth : ·û
+	let largeMarginWidth : ü
 	let smallSubscribeButtonSize : CGSize
 	let largeSubscribeButtonSize : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let smallButtonCapMarginWidth : ·û
+	let smallButtonCapMarginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let largeButtonCapMarginWidth : ·û
+	let largeButtonCapMarginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewableAreaMaxHeight : ·û
+	let viewableAreaMaxHeight : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentViewRegularWidthHeightFactor : ·û
+	let contentViewRegularWidthHeightFactor : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentViewCompactWidthHeightFactor : ·û
+	let contentViewCompactWidthHeightFactor : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let largeGradientHeight : ·û
+	let largeGradientHeight : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediumGradientHeight : ·û
+	let mediumGradientHeight : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let smallGradientHeight : ·û
+	let smallGradientHeight : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let footerImageExtraHeight : ·û
+	let footerImageExtraHeight : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumBaseFooterImageHeight : ·û
+	let minimumBaseFooterImageHeight : ü
 
 	// Swift methods
-	0x98900  class func DeferredBundleHardPaywallLayoutAttributesFactory.__allocating_init(styler:componentSizeProvider:) // init 
+	0x988a0  class func DeferredBundleHardPaywallLayoutAttributesFactory.__allocating_init(styler:componentSizeProvider:) // init 
  }
 
  class NewsSubscription.SubscriptionsStartupTask : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let group : ˚{ // +0x117000 (0x0)
+	let group : +| // +0x117000 (0x0)
 	let manageSubscriptionsURLProvider : ManageSubscriptionsURLProviderType // +0x0 (0x28)
 	let bundlePurchasePrewarmer : BundlePurchasePrewarmerType // +0x0 (0x10)
 	let familySharingStatusManager : FamilySharingStatusManagerType // +0x0 (0x10)
 
 	// Swift methods
-	0x99fc0  class func SubscriptionsStartupTask.__allocating_init(manageSubscriptionsURLProvider:bundlePurchasePrewarmer:familySharingStatusManager:) // init 
+	0x99f60  class func SubscriptionsStartupTask.__allocating_init(manageSubscriptionsURLProvider:bundlePurchasePrewarmer:familySharingStatusManager:) // init 
  }
 
  struct NewsSubscription.AlacartePaywallLayoutAttributes {
@@ -2542,14 +2545,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : PurchasingSpinnerViewStylerType
 
 	// Swift methods
-	0x9b0a0  class func PurchasingSpinnerViewRenderer.__allocating_init(styler:) // init 
+	0x9b040  class func PurchasingSpinnerViewRenderer.__allocating_init(styler:) // init 
  }
 
  class NewsSubscription.DeferredBundleHardPaywallStyler : BundlePaywallBaseStyler, DeferredBundleHardPaywallStylerType { }
 
  class NewsSubscription.AMSUIBag : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x9bdf0  class func AMSUIBag.__allocating_init() // init 
+	0x9bd90  class func AMSUIBag.__allocating_init() // init 
  }
 
  class NewsSubscription.DeferredBundleHardPaywallRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DeferredBundleHardPaywallRendererType {
@@ -2558,7 +2561,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : DeferredBundleHardPaywallStylerType
 
 	// Swift methods
-	0x9c0b0  class func DeferredBundleHardPaywallRenderer.__allocating_init(styler:) // init 
+	0x9c050  class func DeferredBundleHardPaywallRenderer.__allocating_init(styler:) // init 
  }
 
  class NewsSubscription.SubscriptionOffersEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SubscriptionOffersEventHandlerType {
@@ -2571,7 +2574,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tracker : SubscriptionOffersTrackerType
 
 	// Swift methods
-	0x9ca40  class func SubscriptionOffersEventHandler.__allocating_init(interactor:router:tracker:) // init 
+	0x9c9e0  class func SubscriptionOffersEventHandler.__allocating_init(interactor:router:tracker:) // init 
  }
 
  class NewsSubscription.ArticlePaywallTypeProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticlePaywallTypeProviderType {
@@ -2585,29 +2588,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let alacarteArticleSoftPaywallMeter : AlacarteArticleSoftPaywallMeterType
 
 	// Swift methods
-	0x9e440  class func ArticlePaywallTypeProvider.__allocating_init(configurationManager:bundleSubscriptionManager:subscriptionAccessMeter:paidAccessChecker:bundleArticleSoftPaywallMeter:alacarteArticleSoftPaywallMeter:) // init 
+	0x9e3e0  class func ArticlePaywallTypeProvider.__allocating_init(configurationManager:bundleSubscriptionManager:subscriptionAccessMeter:paidAccessChecker:bundleArticleSoftPaywallMeter:alacarteArticleSoftPaywallMeter:) // init 
  }
 
  class NewsSubscription.BundlePurchasePrewarmer : NSObject /usr/lib/libobjc.A.dylib, BundlePurchasePrewarmerType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _purchase : üz
+	var _purchase : œz
 	let configurationManager : FCCoreConfigurationManager
 	let networkReachability : FCNetworkReachabilityType
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
 	let purchaseManager : PurchaseManagerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deduper : My
+	let deduper : }y
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1404c00063de8 (0x4c00063de8) in binary!
-	0x13360  @objc BundlePurchasePrewarmer.(null) <stripped>
+WARNING: couldn't find address 0x1407c00063e48 (0x7c00063e48) in binary!
+	0x13390  @objc BundlePurchasePrewarmer.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x274fffc1508  @objc BundlePurchasePrewarmer.(null) <stripped>
+	0x2d4fffc1508  @objc BundlePurchasePrewarmer.(null) <stripped>
 
 	// Swift methods
-	0xa0c00  class func BundlePurchasePrewarmer.__allocating_init(configurationManager:networkReachability:bundleSubscriptionManager:purchaseManager:) // init 
+	0xa0ba0  class func BundlePurchasePrewarmer.__allocating_init(configurationManager:networkReachability:bundleSubscriptionManager:purchaseManager:) // init 
  }
 
  enum NewsSubscription.PurchasingSpinner {
@@ -2647,7 +2650,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let layoutAttributesFactory : DeferredBundleHardPaywallLayoutAttributesFactoryType // +0x0 (0x28)
 
 	// Swift methods
-	0xa3560  class func DeferredBundleHardPaywallHeightProvider.__allocating_init(bundlePaywallViewModel:layoutAttributesFactory:) // init 
+	0xa3500  class func DeferredBundleHardPaywallHeightProvider.__allocating_init(bundlePaywallViewModel:layoutAttributesFactory:) // init 
  }
 
  class NewsSubscription.BundleHardPaywallRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BundleHardPaywallRendererType {
@@ -2656,7 +2659,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let styler : BundleHardPaywallStylerType
 
 	// Swift methods
-	0xa3b40  class func BundleHardPaywallRenderer.__allocating_init(styler:) // init 
+	0xa3ae0  class func BundleHardPaywallRenderer.__allocating_init(styler:) // init 
  }
 
  enum NewsSubscription.PaywallLayoutAttributes {
@@ -2689,13 +2692,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var bundleSubscriptionMeteredCountMaxLimit : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1974c00064970 (0x74c00064970) in binary!
-	0x17214  @objc SubscriptionAccessMeter.(null) <stripped>
+WARNING: couldn't find address 0x1977c000649d0 (0x77c000649d0) in binary!
+	0x17244  @objc SubscriptionAccessMeter.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffcaa98  @objc SubscriptionAccessMeter.(null) <stripped>
 
 	// Swift methods
-	0xa68d0  class func SubscriptionAccessMeter.__allocating_init(userInfo:readingHistory:purchaseProvider:bundleSubscriptionManager:configurationManager:) // init 
+	0xa6870  class func SubscriptionAccessMeter.__allocating_init(userInfo:readingHistory:purchaseProvider:bundleSubscriptionManager:configurationManager:) // init 
  }
 
  struct NewsSubscription.PurchaseReceiptVerificationFailureAlert { }
@@ -2708,7 +2711,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let router : SubscriptionsRouterType
 
 	// Swift methods
-	0xa96d0  class func FinanceURLHandler.__allocating_init(patterns:router:) // init 
+	0xa9670  class func FinanceURLHandler.__allocating_init(patterns:router:) // init 
  }
 
  class NewsSubscription.Contract : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2721,7 +2724,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsSubscription.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13fec00063d88 (0x7ec00063d88) in binary!
+WARNING: couldn't find address 0x1401c00063de8 (0x1c00063de8) in binary!
 	0x18000000c  @objc RendererAssembly.(null) <stripped>
  }
 
@@ -2736,7 +2739,7 @@ WARNING: couldn't find address 0x13fec00063d88 (0x7ec00063d88) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : +~
+	let resolver : [~
 	let purchaseProvider : FCPurchaseProviderType
 	let articlePaywallTypeProvider : ArticlePaywallTypeProviderType
 	let feedPaywallTypeProvider : FeedPaywallTypeProviderType
@@ -2744,13 +2747,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let configurationManager : FCCoreConfigurationManager
 	let bundlePurchasePrewarmer : BundlePurchasePrewarmerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : À}
+	let tracker : ˚}
 	let bundlePaywallViewModelFactory : BundlePaywallViewModelFactoryType
 	let alacartePaywallViewModelFactory : AlacartePaywallViewModelFactoryType
 	let offerManager : OfferManagerType
 
 	// Swift methods
-	0xab630  class func PaywallFactory.__allocating_init(resolver:articlePaywallTypeProvider:feedPaywallTypeProvider:configurationManager:purchaseProvider:bundleSubscriptionManager:bundlePurchasePrewarmer:bundlePaywallViewModelFactory:alacartePaywallViewModelFactory:offerManager:tracker:) // init 
+	0xab5d0  class func PaywallFactory.__allocating_init(resolver:articlePaywallTypeProvider:feedPaywallTypeProvider:configurationManager:purchaseProvider:bundleSubscriptionManager:bundlePurchasePrewarmer:bundlePaywallViewModelFactory:alacartePaywallViewModelFactory:offerManager:tracker:) // init 
  }
 
  class NewsSubscription.PaywallEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PaywallEventHandlerType {
@@ -2761,11 +2764,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let router : PaywallRouterType
 	var tracker : PaywallTrackerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let urlHandler : 9|
+	let urlHandler : i|
 	let paywallModel : PaywallModel
 
 	// Swift methods
-	0xae4c0  class func PaywallEventHandler.__allocating_init(interactor:router:urlHandler:paywallModel:) // init 
+	0xae460  class func PaywallEventHandler.__allocating_init(interactor:router:urlHandler:paywallModel:) // init 
  }
 
  struct NewsSubscription.SubscriptionNotSupportedAlert {
@@ -2788,7 +2791,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
 
 	// Swift methods
-	0xb09b0  class func FeedPaywallTypeProvider.__allocating_init(configurationManager:bundleSubscriptionManager:paidAccessChecker:) // init 
+	0xb0950  class func FeedPaywallTypeProvider.__allocating_init(configurationManager:bundleSubscriptionManager:paidAccessChecker:) // init 
  }
 
  class NewsSubscription.BundlePaywallComponentSizeProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BundlePaywallComponentSizeProviderType {
@@ -2799,7 +2802,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let defaultBadgeImageSize : CGSize // +0x0 (0x10)
 
 	// Swift methods
-	0xb1070  class func BundlePaywallComponentSizeProvider.__allocating_init(viewModel:styler:) // init 
+	0xb1010  class func BundlePaywallComponentSizeProvider.__allocating_init(viewModel:styler:) // init 
  }
 
  struct NewsSubscription.AlacartePaywallViewModel {
@@ -2809,7 +2812,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let description : String
 	let learnMore : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let learnMoreURL : ö
+	let learnMoreURL : Gö
 	var subscribeButtonTitle : String
 	var subscribeButtonSubTitle : String?
 	let subscribeButtonDestination : SubscribeButtonDestination
@@ -2835,15 +2838,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let offerManager : OfferManagerType
 
 	// Swift methods
-	0xb3330  class func OfferOverrideProvider.__allocating_init(configurationManager:offerManager:) // init 
-	0xb3390  func <stripped> // method 
-	0xb3690  func <stripped> // method 
-	0xb3990  func <stripped> // method 
-	0xb3c40  func <stripped> // method 
-	0xb3f90  func <stripped> // method 
-	0xb40d0  func <stripped> // method 
-	0xb4530  func <stripped> // method 
-	0xb4550  func <stripped> // method 
+	0xb32d0  class func OfferOverrideProvider.__allocating_init(configurationManager:offerManager:) // init 
+	0xb3330  func <stripped> // method 
+	0xb3630  func <stripped> // method 
+	0xb3930  func <stripped> // method 
+	0xb3be0  func <stripped> // method 
+	0xb3f30  func <stripped> // method 
+	0xb4070  func <stripped> // method 
+	0xb44d0  func <stripped> // method 
+	0xb44f0  func <stripped> // method 
  }
 
  struct NewsSubscription.WebAuthenticationNotSubscribedAlert { }
@@ -2854,18 +2857,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var assetHandles : [String : TSAssetHandleType] // +0x10 (0x8)
 	let size : CGSize // +0x18 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaling : ˘} // +0x15 (0x0)
+	let scaling : )~ // +0x15 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13fbc00063ab8 (0x7bc00063ab8) in binary!
-	0x171c4  @objc PaywallImageProcessorRequest.(null) <stripped>
-WARNING: couldn't find address 0x13fa400063a90 (0x7a400063a90) in binary!
+WARNING: couldn't find address 0x13fec00063b18 (0x7ec00063b18) in binary!
+	0x171f4  @objc PaywallImageProcessorRequest.(null) <stripped>
+WARNING: couldn't find address 0x13fd400063af0 (0x7d400063af0) in binary!
 	0x18000000c  @objc PaywallImageProcessorRequest.(null) <stripped>
-WARNING: couldn't find address 0x16f0c00063bd8 (0x70c00063bd8) in binary!
+WARNING: couldn't find address 0x16f3c00063c38 (0x73c00063c38) in binary!
 	0x18000000c  @objc PaywallImageProcessorRequest.(null) <stripped>
 
 	// Swift methods
-	0xb4c80  class func PaywallImageProcessorRequest.__allocating_init(assetHandle:size:scaling:) // init 
+	0xb4c20  class func PaywallImageProcessorRequest.__allocating_init(assetHandle:size:scaling:) // init 
  }
 
  class NewsSubscription.BundleHardPaywallLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BundleHardPaywallLayoutAttributesFactoryType {
@@ -2874,24 +2877,24 @@ WARNING: couldn't find address 0x16f0c00063bd8 (0x70c00063bd8) in binary!
 	let styler : BundleHardPaywallStylerType
 	let componentSizeProvider : BundlePaywallComponentSizeProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxContentViewWidth : ·û
+	let maxContentViewWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let smallMarginWidth : ·û
+	let smallMarginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let largeMarginWidth : ·û
+	let largeMarginWidth : ü
 	let smallSubscribeButtonSize : CGSize
 	let largeSubscribeButtonSize : CGSize
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let smallButtonCapMarginWidth : ·û
+	let smallButtonCapMarginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let largeButtonCapMarginWidth : ·û
+	let largeButtonCapMarginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewableAreaMinHeightFactor : ·û
+	let viewableAreaMinHeightFactor : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewableAreaMaxHeight : ·û
+	let viewableAreaMaxHeight : ü
 
 	// Swift methods
-	0xb54c0  class func BundleHardPaywallLayoutAttributesFactory.__allocating_init(styler:componentSizeProvider:) // init 
+	0xb5460  class func BundleHardPaywallLayoutAttributesFactory.__allocating_init(styler:componentSizeProvider:) // init 
  }
 
  enum NewsSubscription.PurchaseType { }
@@ -2958,9 +2961,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case link : Âr
+	case link : s
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case amsURL : Âr
+	case amsURL : s
  }
 
  struct NewsSubscription.BundlePaywallViewModel {
@@ -2972,27 +2975,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let description : String
 	let learnMore : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let learnMoreURL : ö
+	let learnMoreURL : Gö
 	let subscribeButtonTitle : String
 	let subscribeButtonDestination : SubscribeButtonDestination
 	let offersButtonTitle : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offersLinkURL : Õö
+	let offersLinkURL : ˝ö
 	let offersButtonDestination : OffersButtonDestination
 	let webAuthButtonTitle : String?
 	let topOffsetConfiguration : BundlePaywallTopOffsetConfiguration
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageURL : Õö
+	let imageURL : ˝ö
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let darkStyleImageURL : Õö
+	let darkStyleImageURL : ˝ö
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let badgeImageURL : Õö
+	let badgeImageURL : ˝ö
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let darkStyleBadgeImageURL : Õö
+	let darkStyleBadgeImageURL : ˝ö
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let smallVideoURL : Õö
+	let smallVideoURL : ˝ö
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let largeVideoURL : Õö
+	let largeVideoURL : ˝ö
 	let backgroundColor : UIColor?
 	let darkStyleBackgroundColor : UIColor?
  }
@@ -3003,11 +3006,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let heightProvider : PaywallHeightProviderType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x16f0c00063bd8 (0x70c00063bd8) in binary!
+WARNING: couldn't find address 0x16f3c00063c38 (0x73c00063c38) in binary!
 	0x18000000c  @objc DeferredHardPaywallDocumentSectionItemHeightProvider.(null) <stripped>
 
 	// Swift methods
-	0xbc2c0  class func DeferredHardPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
+	0xbc260  class func DeferredHardPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  class NewsSubscription.AlacarteSoftPaywallHeightProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3017,7 +3020,7 @@ WARNING: couldn't find address 0x16f0c00063bd8 (0x70c00063bd8) in binary!
 	let layoutAttributesFactory : AlacartePaywallLayoutAttributesFactoryType // +0x0 (0x28)
 
 	// Swift methods
-	0xbc4b0  class func AlacarteSoftPaywallHeightProvider.__allocating_init(softPaywallViewModel:layoutAttributesFactory:) // init 
+	0xbc450  class func AlacarteSoftPaywallHeightProvider.__allocating_init(softPaywallViewModel:layoutAttributesFactory:) // init 
  }
 
  enum NewsSubscription.WebAccessSubscriptionStatus {
@@ -3032,12 +3035,12 @@ WARNING: couldn't find address 0x16f0c00063bd8 (0x70c00063bd8) in binary!
 	// Properties
 	let purchaseController : FCPurchaseController // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let authenticationURL : Õö // +0x0 (0x0)
+	let authenticationURL : ˝ö // +0x0 (0x0)
 	let tagID : String // +0x0 (0x10)
 	var session : BridgedWebAuthenticationSession? // +0x0 (0x8)
 
 	// Swift methods
-	0xbc900  class func WebAccessAuthenticator.__allocating_init(authenticationURL:tagID:purchaseController:) // init 
+	0xbc8a0  class func WebAccessAuthenticator.__allocating_init(authenticationURL:tagID:purchaseController:) // init 
  }
 
  class NewsSubscription.BundlePaywallBaseStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BundlePaywallBaseStylerType {
@@ -3048,28 +3051,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let descriptionMaxLines : Int
 
 	// Swift methods
-	0xbf540  func BundlePaywallBaseStyler.smallTitleFont.getter // getter 
-	0xbda20  func BundlePaywallBaseStyler.largeTitleFont.getter // getter 
-	0xbf550  func BundlePaywallBaseStyler.smallDescriptionFont.getter // getter 
-	0xbda80  func BundlePaywallBaseStyler.largeDescriptionFont.getter // getter 
-	0xbf560  func BundlePaywallBaseStyler.smallSubscribeButtonFont.getter // getter 
-	0xbdae0  func BundlePaywallBaseStyler.largeSubscribeButtonFont.getter // getter 
-	0xbdb40  func BundlePaywallBaseStyler.offersButtonTitleFont.getter // getter 
-	0xbf570  func BundlePaywallBaseStyler.smallWebAuthButtonTitleFont.getter // getter 
-	0xbf580  func BundlePaywallBaseStyler.largeWebAuthButtonTitleFont.getter // getter 
-	0xbf280  class func BundlePaywallBaseStyler.__allocating_init(colorPaletteProvider:) // init 
-	0xbdba0  func BundlePaywallBaseStyler.style(contentView:backgroundColor:) // method 
-	0xbdca0  func BundlePaywallBaseStyler.style(badgeImageView:) // method 
-	0xbdd90  func BundlePaywallBaseStyler.style(titleTextView:) // method 
-	0xbdee0  func BundlePaywallBaseStyler.styled(title:for:) // method 
-	0xbe2b0  func BundlePaywallBaseStyler.style(descriptionTextView:) // method 
-	0xbe400  func BundlePaywallBaseStyler.styled(compiledDescription:for:learnMore:learnMoreURL:) // method 
-	0xbe8e0  func BundlePaywallBaseStyler.style(subscribeButton:) // method 
-	0xbe9c0  func BundlePaywallBaseStyler.styled(subscribeButtonTitle:for:) // method 
-	0xbec40  func BundlePaywallBaseStyler.style(offersButton:) // method 
-	0xbecd0  func BundlePaywallBaseStyler.styled(offersButtonTitle:for:) // method 
-	0xbef30  func BundlePaywallBaseStyler.style(webAuthButton:) // method 
-	0xbf000  func BundlePaywallBaseStyler.styled(webAuthButtonTitle:for:) // method 
+	0xbf4e0  func BundlePaywallBaseStyler.smallTitleFont.getter // getter 
+	0xbd9c0  func BundlePaywallBaseStyler.largeTitleFont.getter // getter 
+	0xbf4f0  func BundlePaywallBaseStyler.smallDescriptionFont.getter // getter 
+	0xbda20  func BundlePaywallBaseStyler.largeDescriptionFont.getter // getter 
+	0xbf500  func BundlePaywallBaseStyler.smallSubscribeButtonFont.getter // getter 
+	0xbda80  func BundlePaywallBaseStyler.largeSubscribeButtonFont.getter // getter 
+	0xbdae0  func BundlePaywallBaseStyler.offersButtonTitleFont.getter // getter 
+	0xbf510  func BundlePaywallBaseStyler.smallWebAuthButtonTitleFont.getter // getter 
+	0xbf520  func BundlePaywallBaseStyler.largeWebAuthButtonTitleFont.getter // getter 
+	0xbf220  class func BundlePaywallBaseStyler.__allocating_init(colorPaletteProvider:) // init 
+	0xbdb40  func BundlePaywallBaseStyler.style(contentView:backgroundColor:) // method 
+	0xbdc40  func BundlePaywallBaseStyler.style(badgeImageView:) // method 
+	0xbdd30  func BundlePaywallBaseStyler.style(titleTextView:) // method 
+	0xbde80  func BundlePaywallBaseStyler.styled(title:for:) // method 
+	0xbe250  func BundlePaywallBaseStyler.style(descriptionTextView:) // method 
+	0xbe3a0  func BundlePaywallBaseStyler.styled(compiledDescription:for:learnMore:learnMoreURL:) // method 
+	0xbe880  func BundlePaywallBaseStyler.style(subscribeButton:) // method 
+	0xbe960  func BundlePaywallBaseStyler.styled(subscribeButtonTitle:for:) // method 
+	0xbebe0  func BundlePaywallBaseStyler.style(offersButton:) // method 
+	0xbec70  func BundlePaywallBaseStyler.styled(offersButtonTitle:for:) // method 
+	0xbeed0  func BundlePaywallBaseStyler.style(webAuthButton:) // method 
+	0xbefa0  func BundlePaywallBaseStyler.styled(webAuthButtonTitle:for:) // method 
  }
 
  class NewsSubscription.SubscriptionStatusChecker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SubscriptionStatusCheckerType {
@@ -3080,11 +3083,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let purchaseManager : FCPurchaseManagerType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1329400064258 (0x29400064258) in binary!
+WARNING: couldn't find address 0x132c4000642b8 (0x2c4000642b8) in binary!
 	0x38000000c  @objc SubscriptionStatusChecker.(null) <stripped>
 
 	// Swift methods
-	0xbf590  class func SubscriptionStatusChecker.__allocating_init(inAppSubscriptionStatusChecker:webSubscriptionStatusChecker:purchaseManager:) // init 
+	0xbf530  class func SubscriptionStatusChecker.__allocating_init(inAppSubscriptionStatusChecker:webSubscriptionStatusChecker:purchaseManager:) // init 
  }
 
  class NewsSubscription.ColorPalette : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColorPaletteProviding {
@@ -3093,7 +3096,7 @@ WARNING: couldn't find address 0x1329400064258 (0x29400064258) in binary!
 	let userInterfaceStyle : UIUserInterfaceStyle
 
 	// Swift methods
-	0xc0140  class func ColorPalette.__allocating_init() // init 
+	0xc00e0  class func ColorPalette.__allocating_init() // init 
  }
 
  class NewsSubscription.AlacartePaywallSubscribeButtonTextProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3102,37 +3105,37 @@ WARNING: couldn't find address 0x1329400064258 (0x29400064258) in binary!
 	let paywallModel : PaywallModel
 
 	// Swift methods
-	0xc0650  class func AlacartePaywallSubscribeButtonTextProvider.__allocating_init(paywallModel:) // init 
+	0xc05f0  class func AlacartePaywallSubscribeButtonTextProvider.__allocating_init(paywallModel:) // init 
  }
 
  class NewsSubscription.DeferredBundleHardPaywallView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gradientView : /ú
+	let gradientView : _ú
 	let backgroundCoverView : UIView
 	let contentView : UIView
 	let playerView : PlayerView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let badgeImageView : 	ú
+	let badgeImageView : 9ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let footerImageView : 	ú
+	let footerImageView : 9ú
 	let titleTextView : UITextView
 	let descriptionTextView : UITextView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton : ˚õ
+	let subscribeButton : +ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offersButton : ú
+	let offersButton : 5ú
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButton : ˚õ
+	let webAuthButton : +ú
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x127fc00063e40 (0x7fc00063e40) in binary!
-	0x17d60  @objc DeferredBundleHardPaywallView.(null) <stripped>
-WARNING: couldn't find address 0x1326400063c28 (0x26400063c28) in binary!
+WARNING: couldn't find address 0x1282c00063ea0 (0x2c00063ea0) in binary!
+	0x17d90  @objc DeferredBundleHardPaywallView.(null) <stripped>
+WARNING: couldn't find address 0x1329400063c88 (0x29400063c88) in binary!
 	0x58000000c  @objc DeferredBundleHardPaywallView.(null) <stripped>
-WARNING: couldn't find address 0x13f2c000649d0 (0x72c000649d0) in binary!
-	0x13f18  @objc DeferredBundleHardPaywallView.(null) <stripped>
+WARNING: couldn't find address 0x13f5c00064a30 (0x75c00064a30) in binary!
+	0x13f48  @objc DeferredBundleHardPaywallView.(null) <stripped>
  }
 
  class NewsSubscription.WebSubscriptionStatusChecker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebSubscriptionStatusCheckerType {
@@ -3145,7 +3148,7 @@ WARNING: couldn't find address 0x13f2c000649d0 (0x72c000649d0) in binary!
 	let subscriptionExpiryManager : SubscriptionExpiryManagerType
 
 	// Swift methods
-	0xc39f0  class func WebSubscriptionStatusChecker.__allocating_init(appConfigurationManager:subscriptionExpiryManager:tagSettings:readingHistory:purchaseController:) // init 
+	0xc3990  class func WebSubscriptionStatusChecker.__allocating_init(appConfigurationManager:subscriptionExpiryManager:tagSettings:readingHistory:purchaseController:) // init 
  }
 
  struct NewsSubscription.BundleSubscriptionExpiredAlert {
@@ -3165,16 +3168,16 @@ WARNING: couldn't find address 0x13f2c000649d0 (0x72c000649d0) in binary!
 	let familyStatusManager : FamilySharingStatusManagerType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13ee4000639c8 (0x6e4000639c8) in binary!
-	0x13ed8  @objc BridgedFamilyStatusManager.(null) <stripped>
-WARNING: couldn't find address 0x13ecc00063c68 (0x6cc00063c68) in binary!
-	0x131e0  @objc BridgedFamilyStatusManager.(null) <stripped>
+WARNING: couldn't find address 0x13f1400063a28 (0x71400063a28) in binary!
+	0x13f08  @objc BridgedFamilyStatusManager.(null) <stripped>
+WARNING: couldn't find address 0x13efc00063cc8 (0x6fc00063cc8) in binary!
+	0x13210  @objc BridgedFamilyStatusManager.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x384fffe6088  @objc BridgedFamilyStatusManager.(null) <stripped>
-	0x60c000638d0  @objc BridgedFamilyStatusManager.HçM <stripped>
+	0x3e4fffe6088  @objc BridgedFamilyStatusManager.(null) <stripped>
+	0x63c00063930  @objc BridgedFamilyStatusManager. <stripped>
 
 	// Swift methods
-	0xc5d50  class func BridgedFamilyStatusManager.__allocating_init(familyStatusManager:) // init 
+	0xc5cf0  class func BridgedFamilyStatusManager.__allocating_init(familyStatusManager:) // init 
  }
 
  class NewsSubscription.BridgedSoftPaywallHeightProvider : NSObject /usr/lib/libobjc.A.dylib {
@@ -3183,13 +3186,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let heightProvider : PaywallHeightProviderType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13eac00063c48 (0x6ac00063c48) in binary!
-	0x131c0  @objc BridgedSoftPaywallHeightProvider.(null) <stripped>
+WARNING: couldn't find address 0x13edc00063ca8 (0x6dc00063ca8) in binary!
+	0x131f0  @objc BridgedSoftPaywallHeightProvider.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffe6158  @objc BridgedSoftPaywallHeightProvider.(null) <stripped>
 
 	// Swift methods
-	0xc66c0  class func BridgedSoftPaywallHeightProvider.__allocating_init(heightProvider:) // init 
+	0xc6660  class func BridgedSoftPaywallHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  struct NewsSubscription.FamilyMember {
@@ -3208,23 +3211,23 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let marginWidth : ·û
+	let marginWidth : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let logoTopOffset : ·û
+	let logoTopOffset : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let logoTopOffsetForUniqueOffers : ·û
+	let logoTopOffsetForUniqueOffers : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessLabelTopOffset : ·û
+	let accessLabelTopOffset : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spaceBetweenAccessTextAndSubscribeButton : ·û
+	let spaceBetweenAccessTextAndSubscribeButton : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webAuthButtonTopOffset : ·û
+	let webAuthButtonTopOffset : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spaceBetweenLearnMoreButtonAndLearnMoreLabel : ·û
+	let spaceBetweenLearnMoreButtonAndLearnMoreLabel : ü
 	let styler : SubscriptionOffersStylerType
 
 	// Swift methods
-	0xc72f0  class func SubscriptionOffersLayoutAttributesFactory.__allocating_init(styler:) // init 
+	0xc7290  class func SubscriptionOffersLayoutAttributesFactory.__allocating_init(styler:) // init 
  }
 
  enum NewsSubscription.SettingsArticleAccess {
@@ -3277,8 +3280,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var offerManager : OfferManagerType
 
 	// Swift methods
-	0xce080  class func ArticlePurchaseOffersProvider.__allocating_init(configurationManager:offerManager:) // init 
-	0xce140  func ArticlePurchaseOffersProvider.purchaseOffers(for:) // method 
+	0xce020  class func ArticlePurchaseOffersProvider.__allocating_init(configurationManager:offerManager:) // init 
+	0xce0e0  func ArticlePurchaseOffersProvider.purchaseOffers(for:) // method 
  }
 
  class NewsSubscription.SubscriptionOffersStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SubscriptionOffersStylerType {
@@ -3288,20 +3291,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let accessTextMaxLines : Int
 
 	// Swift methods
-	0xcea80  class func SubscriptionOffersStyler.__allocating_init(colorPaletteProvider:) // init 
+	0xcea20  class func SubscriptionOffersStyler.__allocating_init(colorPaletteProvider:) // init 
  }
 
  struct NewsSubscription.BundlePaywallTopOffsetConfiguration {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let compactPortraitTopOffsetRatio : ·û // +0x0
+	let compactPortraitTopOffsetRatio : ü // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let compactLandscapeTopOffsetRatio : ·û // +0x8
+	let compactLandscapeTopOffsetRatio : ü // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let regularPortraitTopOffsetRatio : ·û // +0x10
+	let regularPortraitTopOffsetRatio : ü // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let regularLandscapeTopOffsetRatio : ·û // +0x18
+	let regularLandscapeTopOffsetRatio : ü // +0x18
  }
 
  class NewsSubscription.Assembly : NSObject /usr/lib/libobjc.A.dylib {
@@ -3310,11 +3313,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let assemblies : [NFAssembly]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13e7400063948 (0x67400063948) in binary!
-	0x13e68  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x1317c00063b40 (0x17c00063b40) in binary!
+WARNING: couldn't find address 0x13ea4000639a8 (0x6a4000639a8) in binary!
+	0x13e98  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0x131ac00063ba0 (0x1ac00063ba0) in binary!
 	0x18000000c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x13e4400063be0 (0x64400063be0) in binary!
+WARNING: couldn't find address 0x13e7400063c40 (0x67400063c40) in binary!
 	0x18000000c  @objc Assembly.(null) <stripped>
  }
 
@@ -3322,7 +3325,7 @@ WARNING: couldn't find address 0x13e4400063be0 (0x64400063be0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topOffset : ·û // +0x0
+	let topOffset : ü // +0x0
 	let viewFrame : CGRect // +0x8
 	let contentViewFrame : CGRect // +0x28
 	let playerViewFrame : CGRect // +0x48
@@ -3352,7 +3355,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bridgedCampaignClickRecorder : BridgedCampaignClickRecorder
 
 	// Swift methods
-	0xd1b40  class func CampaignClickRecorder.__allocating_init(patterns:) // init 
+	0xd1ae0  class func CampaignClickRecorder.__allocating_init(patterns:) // init 
  }
 
  struct NewsSubscription.ProcessRedirectValue {
@@ -3376,7 +3379,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsSubscription.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13e4400063be0 (0x64400063be0) in binary!
+WARNING: couldn't find address 0x13e7400063c40 (0x67400063c40) in binary!
 	0x18000000c  @objc ManagerAssembly.(null) <stripped>
  }
 
@@ -3396,13 +3399,13 @@ WARNING: couldn't find address 0x13e4400063be0 (0x64400063be0) in binary!
 	let heightProvider : PaywallHeightProviderType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13e1400063bb0 (0x61400063bb0) in binary!
-	0x13128  @objc BridgedDeferredHardPaywallHeightProvider.(null) <stripped>
+WARNING: couldn't find address 0x13e4400063c10 (0x64400063c10) in binary!
+	0x13158  @objc BridgedDeferredHardPaywallHeightProvider.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x24ffff7170  @objc BridgedDeferredHardPaywallHeightProvider.(null) <stripped>
+	0x84ffff7170  @objc BridgedDeferredHardPaywallHeightProvider.(null) <stripped>
 
 	// Swift methods
-	0xd7770  class func BridgedDeferredHardPaywallHeightProvider.__allocating_init(heightProvider:) // init 
+	0xd7710  class func BridgedDeferredHardPaywallHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  enum NewsSubscription.PurchaseConversionLocation {
@@ -3451,22 +3454,22 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let router : SubscriptionsRouterType // +0x98 (0x28)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf8e4000638a0 (0xe4000638a0) in binary!
-	0x13dc8  @objc DynamicViewControllerDelegate.(null) <stripped>
-WARNING: couldn't find address 0x130dc00063aa0 (0xdc00063aa0) in binary!
+WARNING: couldn't find address 0xf91400063900 (0x11400063900) in binary!
+	0x13df8  @objc DynamicViewControllerDelegate.(null) <stripped>
+WARNING: couldn't find address 0x1310c00063b00 (0x10c00063b00) in binary!
 	0x18000000c  @objc DynamicViewControllerDelegate.(null) <stripped>
-WARNING: couldn't find address 0x13da400063b40 (0x5a400063b40) in binary!
+WARNING: couldn't find address 0x13dd400063ba0 (0x5d400063ba0) in binary!
 	0x18000000c  @objc DynamicViewControllerDelegate.(null) <stripped>
 
 	// Swift methods
-	0xd8830  class func DynamicViewControllerDelegate.__allocating_init(bundleSubscriptionManager:purchasingSpinnerViewControllerFactory:router:) // init 
+	0xd87d0  class func DynamicViewControllerDelegate.__allocating_init(bundleSubscriptionManager:purchasingSpinnerViewControllerFactory:router:) // init 
  }
 
  struct NewsSubscription.Databases { }
 
  class NewsSubscription.DatabaseAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13da400063b40 (0x5a400063b40) in binary!
+WARNING: couldn't find address 0x13dd400063ba0 (0x5d400063ba0) in binary!
 	0x18000000c  @objc DatabaseAssembly.(null) <stripped>
  }
 
@@ -3502,13 +3505,13 @@ WARNING: couldn't find address 0x13da400063b40 (0x5a400063b40) in binary!
 	let styler : AlacartePaywallStylerType
 
 	// Swift methods
-	0xdc7a0  class func AlacartePaywallRenderer.__allocating_init(styler:) // init 
+	0xdc740  class func AlacartePaywallRenderer.__allocating_init(styler:) // init 
  }
 
  class NewsSubscription.UnselectableLinkEnabledTextView : UITextView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1c7f4000648f0 (0x7f4000648f0) in binary!
-	0x17b78  @objc UnselectableLinkEnabledTextView.(null) <stripped>
+WARNING: couldn't find address 0x1c82400064950 (0x2400064950) in binary!
+	0x17ba8  @objc UnselectableLinkEnabledTextView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xffffcbd0  @objc UnselectableLinkEnabledTextView.(null) <stripped>
  }

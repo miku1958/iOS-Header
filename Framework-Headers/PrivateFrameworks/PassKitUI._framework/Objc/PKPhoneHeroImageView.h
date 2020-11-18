@@ -6,25 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-#import <PassKitUI/PKHeroImageView-Protocol.h>
+@class UIImageView;
 
-@class NSString, UIImageView;
-
-@interface PKPhoneHeroImageView : UIView <PKHeroImageView>
+@interface PKPhoneHeroImageView : UIView
 {
     UIImageView *_phoneView;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 - (void).cxx_destruct;
-- (struct CGSize)imageSize;
 - (id)initWithImage:(id)arg1;
 - (void)layoutSubviews;
 - (void)setContentMode:(long long)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

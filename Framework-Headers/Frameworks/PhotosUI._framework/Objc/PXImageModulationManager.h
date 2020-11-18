@@ -67,11 +67,11 @@
 + (double)HDRValueForAsset:(id)arg1;
 + (long long)_contentFormatForAsset:(id)arg1;
 + (double)_hdrGainForAsset:(id)arg1;
-+ (CDStruct_4f961314)optionsForAsset:(id)arg1;
++ (CDStruct_fd7332cd)optionsForAsset:(id)arg1;
 - (void).cxx_destruct;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidResignActive:(id)arg1;
-- (id)_checkoutImageLayerModulatorWithOptions:(CDStruct_4f961314)arg1 contentType:(long long)arg2;
+- (id)_checkoutImageLayerModulatorWithOptions:(CDStruct_fd7332cd)arg1 contentType:(long long)arg2;
 - (void)_didEndRequestingEDRHeadroomFactor:(double)arg1;
 - (void)_didStartRequestingEDRHeadroomFactor:(double)arg1;
 - (void)_invalidateActive;
@@ -102,8 +102,8 @@
 - (void)_updateRequestedEDRHeadroomFactorIfNeeded;
 - (void)checkInImageLayerModulator:(id)arg1;
 - (void)checkInLivePhotoViewModulator:(id)arg1;
-- (id)checkoutImageLayerModulatorWithOptions:(CDStruct_4f961314)arg1;
-- (id)checkoutLivePhotoViewModulatorWithOptions:(CDStruct_4f961314)arg1;
+- (id)checkoutImageLayerModulatorWithOptions:(CDStruct_fd7332cd)arg1;
+- (id)checkoutLivePhotoViewModulatorWithOptions:(CDStruct_fd7332cd)arg1;
 - (void)dealloc;
 - (void)didPerformChanges;
 - (id)init;

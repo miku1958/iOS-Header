@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
     unsigned char _linkProbingCapabilityVersion;
     unsigned char _remoteLinkProbingCapabilityVersion;
     VCLinkProbingHandler *_linkProbingHandler;
+    BOOL _iRATDuplicationEnabled;
     double _noRemoteDuplicationThresholdFast;
 }
 
@@ -100,6 +101,7 @@ __attribute__((visibility("hidden")))
 @property BOOL duplicationEnhancementEnabled; // @synthesize duplicationEnhancementEnabled=_duplicationEnhancementEnabled;
 @property BOOL fastMediaDuplicationEnabled; // @synthesize fastMediaDuplicationEnabled=_fastMediaDuplicationEnabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, setter=setiRATDuplicationEnabled:) BOOL iRATDuplicationEnabled; // @synthesize iRATDuplicationEnabled=_iRATDuplicationEnabled;
 @property BOOL isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
 @property (readonly) BOOL isLocalCellularInterfaceUsed;
 @property (readonly) BOOL isPreWarmStateEnabled; // @synthesize isPreWarmStateEnabled=_isPreWarmStateEnabled;
@@ -170,7 +172,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_7641bd18)processDuplicationStateUpdateEvent:(CDStruct_9629e118)arg1 didLocalHandover:(BOOL)arg2 timeDurationMs:(unsigned int)arg3 linkType:(int)arg4 wrmCallbackScenario:(unsigned char)arg5;
 - (int)processRemoteWRMSuggestion:(int)arg1 isRemoteDuplicating:(BOOL)arg2;
 - (void)processWRMCoexMetrics:(id)arg1;
-- (int)processWRMNotification:(CDStruct_b018697d *)arg1;
+- (int)processWRMNotification:(CDStruct_cd8cfafa *)arg1;
 - (void)promoteSecondaryConnectionToPrimary:(id)arg1;
 - (void)queryProbingResultsWithOptions:(id)arg1;
 - (const char *)reasonStringWithDuplicationReason:(unsigned char)arg1;

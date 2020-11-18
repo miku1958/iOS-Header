@@ -150,6 +150,15 @@ struct vector<float, std::__1::allocator<float>> {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    BOOL _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6[3];
+} CDStruct_31328b19;
+
+typedef struct {
     MISSING_TYPE *columns[3];
 } CDStruct_8e0628e6;
 

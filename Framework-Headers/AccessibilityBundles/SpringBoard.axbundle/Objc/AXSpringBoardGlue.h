@@ -26,6 +26,8 @@
 + (void)toggleVoiceOverInfoPanel;
 - (BOOL)_accessibilityAllowShowNotificationGestureOverride;
 - (void)_accessibilitySetAllowShowNotificationGestureOverride:(BOOL)arg1;
+- (BOOL)_axIsAppLibraryOrTodayViewPresent;
+- (BOOL)_axIsCoverSheetTodayViewControllerPresent;
 - (BOOL)isDimmed;
 
 @end

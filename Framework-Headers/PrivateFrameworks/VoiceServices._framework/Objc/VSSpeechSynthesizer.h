@@ -118,6 +118,7 @@
 - (id)startSynthesizingRequest:(id)arg1;
 - (BOOL)stopSpeakingAtNextBoundary:(long long)arg1 synchronously:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)stopSpeakingPresynthesizedAudioSynchronously:(BOOL)arg1 error:(id *)arg2;
+- (void)triggerCellularDownloadedVoiceAssets:(id)arg1;
 - (void)useSharedAudioSession:(BOOL)arg1;
 - (void)useSpecificAudioSession:(unsigned int)arg1;
 

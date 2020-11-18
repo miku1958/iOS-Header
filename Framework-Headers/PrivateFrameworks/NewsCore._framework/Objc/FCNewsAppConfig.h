@@ -67,6 +67,7 @@
 @property (readonly, nonatomic) NSString *breakingNewsChannelID;
 @property (readonly, nonatomic) NSString *briefingsTagID;
 @property (readonly, nonatomic) FCPersonalizationTreatment *cachedPersonalizationTreatment; // @synthesize cachedPersonalizationTreatment=_cachedPersonalizationTreatment;
+@property (readonly, nonatomic) BOOL checkForPaywallConfigChangesEnabled;
 @property (readonly, nonatomic) NSDictionary *configDictionary; // @synthesize configDictionary=_configDictionary;
 @property (readonly, nonatomic) NSString *conversionCohortsExpField;
 @property (readonly, nonatomic) BOOL corryBarHideDiscoverMoreInterstitialForNonOnboardedUsers;

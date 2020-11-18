@@ -20,6 +20,7 @@
     BOOL _isResidentAvailable;
     BOOL _isRemoteAccessAllowed;
     BOOL _isRemotelyReachable;
+    BOOL _threadAccessory;
     unsigned int _numAccessoriesInHome;
     unsigned int _numNonEmptyScenesInHome;
     NSArray *_characteristicsToRead;
@@ -62,6 +63,7 @@
 @property (readonly, nonatomic) NSString *primaryServiceType; // @synthesize primaryServiceType=_primaryServiceType;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isThreadAccessory) BOOL threadAccessory; // @synthesize threadAccessory=_threadAccessory;
 @property (nonatomic) double timeIntervalSinceFirstFailure; // @synthesize timeIntervalSinceFirstFailure=_timeIntervalSinceFirstFailure;
 @property (readonly, nonatomic) NSUUID *transactionId; // @synthesize transactionId=_transactionId;
 @property (readonly, copy, nonatomic) NSString *transportProtocolVersion; // @synthesize transportProtocolVersion=_transportProtocolVersion;

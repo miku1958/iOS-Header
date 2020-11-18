@@ -54,11 +54,13 @@
 - (id)newFrameStoreOfSegmentContainingEventTime:(double)arg1;
 - (id)newFramestoreWithTime:(double)arg1;
 - (void)nextEventFromFrameStore:(id)arg1 withOffset:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)pruneStreamToMaxStreamSizeInBytes:(unsigned long long)arg1;
 - (void)removeEventsFrom:(double)arg1 to:(double)arg2 pruneFutureEvents:(BOOL)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (BOOL)removeFrameStoreFileWithSegmentName:(id)arg1;
 - (BOOL)saveMetadata:(id)arg1;
 - (id)segmentNames;
 - (BOOL)shouldRemoveEmptyFrameStoreFromSegmentName:(id)arg1;
+- (unsigned long long)streamSizeInBytes;
 - (void)syncMappedFiles;
 - (BOOL)tryToAddTypeInfoToStoreEvent:(id)arg1;
 - (BOOL)updateWithNewSegmentNames;

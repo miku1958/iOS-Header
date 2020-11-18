@@ -28,7 +28,7 @@
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class CEKBadgeTextView, CEKLightingControl, CEKLightingNameBadge, NSArray, NSMutableSet, NSObject, NSString, NSTimer, NSURL, NUBufferRenderClient, NUComposition, NUMediaView, PHContentEditingInput, PICompositionController, PLEditSource, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditPluginSession, PUEditableMediaProvider, PUEnterEditPerformanceEventBuilder, PUExitEditPerformanceEventBuilder, PUFilterToolController, PULivePhotoEffectsToolController, PUMediaDestination, PUPhotoEditAggregateSession, PUPhotoEditButtonCenteredToolbar, PUPhotoEditIrisModel, PUPhotoEditLivePhotoVideoToolController, PUPhotoEditPerfHUD, PUPhotoEditPortraitToolController, PUPhotoEditReframeHUD, PUPhotoEditResourceLoader, PUPhotoEditSnapshot, PUPhotoEditToolController, PUPhotoEditToolPickerController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUTouchingGestureRecognizer, PXImageLayerModulator, PXLivePhotoViewModulator, PXTimeInterval, PXUIAssetBadgeView, PXUIButton, UIAlertController, UIButton, UIImageView, UIMenu, UIPencilInteraction, UITapGestureRecognizer, UIView, UIViewController, _PPTState;
+@class CEKBadgeTextView, CEKLightingControl, CEKLightingNameBadge, NSArray, NSMutableSet, NSObject, NSString, NSTimer, NSURL, NUBufferRenderClient, NUComposition, NUMediaView, PHContentEditingInput, PICompositionController, PLEditSource, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditPluginSession, PUEditableMediaProvider, PUEnterEditPerformanceEventBuilder, PUExitEditPerformanceEventBuilder, PUFilterToolController, PULivePhotoEffectsToolController, PUMediaDestination, PUPhotoEditAggregateSession, PUPhotoEditButtonCenteredToolbar, PUPhotoEditIrisModel, PUPhotoEditLivePhotoVideoToolController, PUPhotoEditPerfHUD, PUPhotoEditPortraitToolController, PUPhotoEditReframeHUD, PUPhotoEditResourceLoader, PUPhotoEditSnapshot, PUPhotoEditToolController, PUPhotoEditToolPickerController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUPhotoSceneHUD, PUProgressIndicatorView, PURedeyeToolController, PUTouchingGestureRecognizer, PXImageLayerModulator, PXLivePhotoViewModulator, PXTimeInterval, PXUIAssetBadgeView, PXUIButton, UIAlertController, UIButton, UIImageView, UIMenu, UIPencilInteraction, UITapGestureRecognizer, UIView, UIViewController, _PPTState;
 @protocol NUImageProperties, OS_dispatch_source, PUEditableAsset, PUPhotoEditViewControllerPresentationDelegate, PUPhotoEditViewControllerSessionDelegate;
 
 @interface PUPhotoEditViewController : PUEditViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UIPencilInteractionDelegate, PUPhotoEditToolControllerDelegate, PUVideoEditPluginSessionDataSource, PUImageEditPluginSessionDataSource, PUEditPluginSessionDelegate, PXPhotoLibraryUIChangeObserver, PUOneUpAssetTransitionViewController, PXForcedDismissableViewController, PUPhotoEditIrisModelChangeObserver, PHLivePhotoViewDelegate, PUPhotoEditResourceLoaderDelegate, PUViewControllerSpecChangeObserver, NUMediaViewDelegatePrivate, PUPhotoEditToolbarDelegate, PXChangeObserver, PICompositionControllerDelegate, PXTrimToolPlayerWrapperNUMediaViewPlayerItemSource, PUPhotoEditLayoutSource>
@@ -127,6 +127,7 @@
     BOOL _burningInTrim;
     BOOL _firstSinceBoot;
     BOOL _firstSinceLaunch;
+    float _gainMapValue;
     long long _layoutOrientation;
     PUPhotoEditViewControllerSpec *_photoEditSpec;
     NSObject<PUEditableAsset> *_photo;
@@ -173,6 +174,8 @@
     UIPencilInteraction *_pencilInteraction;
     PUPhotoEditPerfHUD *_perfHUD;
     PUPhotoEditReframeHUD *_reframeHUD;
+    struct CGImage *_gainMapImage;
+    PUPhotoSceneHUD *_sceneHUD;
     PXTimeInterval *_enterEditTimeInterval;
     PXTimeInterval *_resourceCheckingInterval;
     PXTimeInterval *_resourceDownloadInterval;
@@ -242,6 +245,8 @@
 @property (strong, nonatomic) PXTimeInterval *filterInterval; // @synthesize filterInterval=_filterInterval;
 @property (nonatomic, getter=isFirstSinceBoot) BOOL firstSinceBoot; // @synthesize firstSinceBoot=_firstSinceBoot;
 @property (nonatomic, getter=isFirstSinceLaunch) BOOL firstSinceLaunch; // @synthesize firstSinceLaunch=_firstSinceLaunch;
+@property (strong, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property (nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
 @property (readonly, nonatomic) BOOL isLoopingVideo;
@@ -275,6 +280,7 @@
 @property (strong, nonatomic) PXTimeInterval *resourceDownloadInterval; // @synthesize resourceDownloadInterval=_resourceDownloadInterval;
 @property (strong, nonatomic) PXTimeInterval *resourceLoadingInterval; // @synthesize resourceLoadingInterval=_resourceLoadingInterval;
 @property (nonatomic, getter=isRunningAutoCalculators) BOOL runningAutoCalculators; // @synthesize runningAutoCalculators=_runningAutoCalculators;
+@property (strong, nonatomic) PUPhotoSceneHUD *sceneHUD; // @synthesize sceneHUD=_sceneHUD;
 @property (weak, nonatomic) id<PUPhotoEditViewControllerSessionDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
 @property (readonly) Class superclass;
 
@@ -427,6 +433,7 @@
 - (void)compositionController:(id)arg1 didUpdateAdjustments:(id)arg2;
 - (void)compositionControllerDidChangeForAdjustments:(id)arg1;
 - (void)configureEnablenessOfControlButton:(id)arg1 animated:(BOOL)arg2 canVisuallyDisable:(BOOL)arg3;
+- (BOOL)currentAssetNeedsGainMap;
 - (long long)currentToolPickerLayoutDirection;
 - (void)dealloc;
 - (void)didFinishWithAsset:(id)arg1 savedChanges:(BOOL)arg2;
@@ -535,7 +542,7 @@
 - (void)toolControllerDidFinishLoadingThumbnails:(id)arg1;
 - (void)toolControllerDidUpdateToolbar:(id)arg1;
 - (id)toolControllerHitEventForwardView:(id)arg1;
-- (CDStruct_0b004a15)toolControllerImageModulationOptions:(id)arg1;
+- (CDStruct_910f5d27)toolControllerImageModulationOptions:(id)arg1;
 - (id)toolControllerLivePhoto:(id)arg1;
 - (id)toolControllerMainContainerView:(id)arg1;
 - (id)toolControllerMainRenderer:(id)arg1;

@@ -7,30 +7,33 @@
 #import <PhotosUI/PUTileViewController.h>
 
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXUIAssetBadgeViewDelegate-Protocol.h>
 
-@class NSString, PUAssetViewModel, PXUIAssetBadgeView;
+@class NSString, PUAssetViewModel, PUBadgeInfoProvider, PXUIAssetBadgeView;
 
 __attribute__((visibility("hidden")))
-@interface PUBadgeTileViewController : PUTileViewController <PUAssetViewModelChangeObserver, PXUIAssetBadgeViewDelegate>
+@interface PUBadgeTileViewController : PUTileViewController <PUAssetViewModelChangeObserver, PXUIAssetBadgeViewDelegate, PXChangeObserver>
 {
     BOOL __needsUpdateBadgeInfo;
+    BOOL __needsUpdateBadgeProvider;
     BOOL __needsUpdateBadgeView;
     BOOL __isOverContent;
-    BOOL __shouldAnimateNextBadgeViewUpdate;
     PUAssetViewModel *_assetViewModel;
+    PUBadgeInfoProvider *__badgeInfoProvider;
     PXUIAssetBadgeView *__badgeView;
     double __contentWidth;
     struct PXAssetBadgeInfo __badgeInfo;
 }
 
 @property (nonatomic, setter=_setBadgeInfo:) struct PXAssetBadgeInfo _badgeInfo; // @synthesize _badgeInfo=__badgeInfo;
+@property (strong, nonatomic) PUBadgeInfoProvider *_badgeInfoProvider; // @synthesize _badgeInfoProvider=__badgeInfoProvider;
 @property (readonly, nonatomic) PXUIAssetBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
 @property (nonatomic, setter=_setContentWidth:) double _contentWidth; // @synthesize _contentWidth=__contentWidth;
 @property (nonatomic, setter=_setOverContent:) BOOL _isOverContent; // @synthesize _isOverContent=__isOverContent;
 @property (nonatomic, setter=_setNeedsUpdateBadgeInfo:) BOOL _needsUpdateBadgeInfo; // @synthesize _needsUpdateBadgeInfo=__needsUpdateBadgeInfo;
+@property (nonatomic, setter=_setNeedsUpdateBadgeProvider:) BOOL _needsUpdateBadgeProvider; // @synthesize _needsUpdateBadgeProvider=__needsUpdateBadgeProvider;
 @property (nonatomic, setter=_setNeedsUpdateBadgeView:) BOOL _needsUpdateBadgeView; // @synthesize _needsUpdateBadgeView=__needsUpdateBadgeView;
-@property (nonatomic, setter=_setShouldAnimateNextBadgeViewUpdate:) BOOL _shouldAnimateNextBadgeViewUpdate; // @synthesize _shouldAnimateNextBadgeViewUpdate=__shouldAnimateNextBadgeViewUpdate;
 @property (strong, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,16 +46,19 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)badgeTileSizeForAssetViewModel:(id)arg1 contentWidth:(double)arg2;
 - (void).cxx_destruct;
 - (void)_invalidateBadgeInfo;
+- (void)_invalidateBadgeProvider;
 - (void)_invalidateBadgeView;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;
 - (void)_updateBadgeInfoIfNeeded;
+- (void)_updateBadgeProviderIfNeeded;
 - (void)_updateBadgeViewIfNeeded;
 - (void)_updateIfNeeded;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)assetBadgeView:(id)arg1 userDidSelectBadges:(unsigned long long)arg2;
 - (void)becomeReusable;
 - (id)loadView;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForReuse;
 - (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;

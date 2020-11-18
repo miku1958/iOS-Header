@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) NSString *audioConfigRecordID;
 @property (nonatomic, readonly) NSString *breakingNewsChannelID;
 @property (nonatomic, readonly) NSString *briefingsTagID;
+@property (nonatomic, readonly) BOOL checkForPaywallConfigChangesEnabled;
 @property (nonatomic, readonly) NSString *conversionCohortsExpField;
 @property (nonatomic, readonly) NSNumber *currentTreatment;
 @property (nonatomic, readonly) double delayBeforeRetryingDroppedFeeds;

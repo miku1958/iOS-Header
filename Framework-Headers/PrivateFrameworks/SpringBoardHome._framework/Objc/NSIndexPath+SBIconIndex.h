@@ -15,6 +15,7 @@
 - (id)sb_firstIconPathComponent;
 - (unsigned long long)sb_firstListIndex;
 - (unsigned long long)sb_iconPathCount;
+- (id)sb_iconPathDescription;
 - (id)sb_iconRelativePathComponents;
 - (id)sb_indexPathByAddingIndexPath:(id)arg1;
 - (id)sb_indexPathByAddingPathComponentWithListIndex:(unsigned long long)arg1 iconIndex:(unsigned long long)arg2;

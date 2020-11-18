@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, HMDHomeMediaSystemControllerMessageHandler, HMFMessageDispatcher, HMFUnfairLock, NSArray, NSMutableDictionary, NSNotificationCenter, NSObject, NSString, NSUUID;
+@class HMDHome, HMDHomeMediaSystemControllerMessageHandler, HMDStereoPairDailyCountProvider, HMFMessageDispatcher, HMFUnfairLock, NSArray, NSMutableDictionary, NSNotificationCenter, NSObject, NSString, NSUUID;
 @protocol HMDHomeMediaSystemHandlerDelegate, OS_dispatch_queue;
 
 @interface HMDHomeMediaSystemHandler : HMFObject <HMDDevicePreferenceDataSource, HMDHomeMediaSystemMessageHandlerDelegate, NSSecureCoding, HMFLogging>
@@ -25,6 +25,7 @@
     NSNotificationCenter *_notificationCenter;
     HMDHome *_home;
     HMDHomeMediaSystemControllerMessageHandler *_messageHandler;
+    HMDStereoPairDailyCountProvider *_stereoPairDailyCountProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) HMFMessageDispatcher *messsageDispatcher; // @synthesize messsageDispatcher=_messsageDispatcher;
 @property (strong) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (strong) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
+@property (readonly) HMDStereoPairDailyCountProvider *stereoPairDailyCountProvider; // @synthesize stereoPairDailyCountProvider=_stereoPairDailyCountProvider;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 

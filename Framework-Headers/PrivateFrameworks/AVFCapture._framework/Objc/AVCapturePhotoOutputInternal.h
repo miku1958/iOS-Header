@@ -88,6 +88,8 @@ __attribute__((visibility("hidden")))
     BOOL deferredProcessingSupported;
     BOOL deferredProcessingEnabled;
     BOOL processedPhotoZoomWithoutUpscalingSupported;
+    BOOL contentAwareDistortionCorrectionSupported;
+    BOOL contentAwareDistortionCorrectionEnabled;
     BOOL previewQualityAdjustedPhotoFilterRenderingSupported;
     BOOL previewQualityAdjustedPhotoFilterRenderingEnabled;
     BOOL fastCapturePrioritizationSupported;

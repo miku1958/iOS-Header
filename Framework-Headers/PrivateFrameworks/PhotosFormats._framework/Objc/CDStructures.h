@@ -93,6 +93,11 @@ struct vector_alloc_holder<boost::interprocess::allocator<boost::container::basi
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    long long _field1;
+    double _field2;
+} CDStruct_7f320dbc;
+
+typedef struct {
     long long value;
     int timescale;
     unsigned int flags;

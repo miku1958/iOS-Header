@@ -32,6 +32,8 @@
     BOOL _backSmartHDRSupported;
     BOOL _frontSmartHDRSupported;
     BOOL _HDREV0CaptureSupported;
+    BOOL _HDR10BitVideoSupported;
+    BOOL _HDR10BitVideoSupports60FPS;
     BOOL _backLivePhotoSupported;
     BOOL _frontLivePhotoSupported;
     BOOL _livePhotoAutoModeSupported;
@@ -53,6 +55,7 @@
     BOOL _front4k60VideoSupported;
     BOOL _HEVCEncodingSupported;
     BOOL _autoLowLightVideoSupported;
+    BOOL _variableFramerateVideoSupported;
     BOOL _stereoAudioRecordingSupported;
     BOOL _backSlomoSupported;
     BOOL _frontSlomoSupported;
@@ -88,6 +91,7 @@
     BOOL _pipelinedStillImageProcessingSupported;
     BOOL _deepFusionSupported;
     BOOL _deferredProcessingSupported;
+    BOOL _contentAwareDistortionCorrectionSupported;
     BOOL _hasSystemTelephonyOfAnyKind;
     BOOL _forceTouchSupported;
     BOOL _splitScreenSupported;
@@ -103,9 +107,13 @@
     BOOL _frontTripleCameraSupported;
     BOOL _backPearlSupported;
     BOOL _frontPearlSupported;
+    BOOL _backTimeOfFlightSupported;
+    BOOL _frontTimeOfFlightSupported;
     BOOL _depthEffectApertureSupported;
     BOOL _portraitEffectIntensitySupported;
     BOOL _neuralEngineSupported;
+    BOOL _semanticDevelopmentSupported;
+    BOOL _enableSemanticDevelopmentFilterDebugging;
     BOOL _internalInstall;
     BOOL _lockButtonAppropriateForShutter;
     BOOL _lowEndHardware;
@@ -115,6 +123,7 @@
     BOOL _exposureSliderSupported;
     BOOL __backStageLightPortaitEffectsSupported;
     BOOL __frontStageLightPortaitEffectsSupported;
+    BOOL __wideDualPortraitLowLightSupported;
     BOOL __tripleCamera1080p60Supported;
     BOOL __forceEnableExposureClippingIndicator;
     BOOL __forceDisableExposureClippingIndicator;
@@ -133,8 +142,10 @@
     long long _back1080pMaxFPS;
     long long _front1080pMaxFPS;
     double _timelapseFirstShotDelay;
-    unsigned long long _lowLightPreviewOverlayStyle;
-    UIColor *_lowLightPreviewOverlayColor;
+    unsigned long long _backLowLightPreviewOverlayStyle;
+    unsigned long long _frontLowLightPreviewOverlayStyle;
+    UIColor *_backLowLightPreviewOverlayColor;
+    UIColor *_frontLowLightPreviewOverlayColor;
     long long _zoomDialStyle;
     double _wideDisplayZoomFactor;
     double _superWideDisplayZoomFactor;
@@ -162,6 +173,8 @@
     double __forcedInitialZoomDisplayFactor;
 }
 
+@property (readonly, nonatomic, getter=isHDR10BitVideoSupported) BOOL HDR10BitVideoSupported; // @synthesize HDR10BitVideoSupported=_HDR10BitVideoSupported;
+@property (readonly, nonatomic, getter=isHDR10BitVideoSupports60FPS) BOOL HDR10BitVideoSupports60FPS; // @synthesize HDR10BitVideoSupports60FPS=_HDR10BitVideoSupports60FPS;
 @property (readonly, nonatomic, getter=isHDREV0CaptureSupported) BOOL HDREV0CaptureSupported; // @synthesize HDREV0CaptureSupported=_HDREV0CaptureSupported;
 @property (readonly, nonatomic, getter=isHEVCEncodingSupported) BOOL HEVCEncodingSupported; // @synthesize HEVCEncodingSupported=_HEVCEncodingSupported;
 @property (readonly, nonatomic) double _backCaptureInterval; // @synthesize _backCaptureInterval=__backCaptureInterval;
@@ -189,6 +202,7 @@
 @property (readonly, nonatomic) double _frontVideoModeMaximumZoomFactor; // @synthesize _frontVideoModeMaximumZoomFactor=__frontVideoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _frontWideDualCameraSwitchOverZoomFactor; // @synthesize _frontWideDualCameraSwitchOverZoomFactor=__frontWideDualCameraSwitchOverZoomFactor;
 @property (readonly, nonatomic, getter=_isTripleCamera1080p60Supported) BOOL _tripleCamera1080p60Supported; // @synthesize _tripleCamera1080p60Supported=__tripleCamera1080p60Supported;
+@property (readonly, nonatomic) BOOL _wideDualPortraitLowLightSupported; // @synthesize _wideDualPortraitLowLightSupported=__wideDualPortraitLowLightSupported;
 @property (readonly, nonatomic) BOOL allowControlDrawer; // @synthesize allowControlDrawer=_allowControlDrawer;
 @property (readonly, nonatomic) BOOL allowHaptics; // @synthesize allowHaptics=_allowHaptics;
 @property (readonly, nonatomic) BOOL allowHapticsOnConfigurationTaps; // @synthesize allowHapticsOnConfigurationTaps=_allowHapticsOnConfigurationTaps;
@@ -211,6 +225,8 @@
 @property (readonly, nonatomic, getter=isBackHDRSupported) BOOL backHDRSupported; // @synthesize backHDRSupported=_backHDRSupported;
 @property (readonly, nonatomic, getter=isBackLivePhotoSupported) BOOL backLivePhotoSupported; // @synthesize backLivePhotoSupported=_backLivePhotoSupported;
 @property (readonly, nonatomic, getter=isBackLiveStageLightSupported) BOOL backLiveStageLightSupported; // @synthesize backLiveStageLightSupported=_backLiveStageLightSupported;
+@property (readonly, nonatomic) UIColor *backLowLightPreviewOverlayColor; // @synthesize backLowLightPreviewOverlayColor=_backLowLightPreviewOverlayColor;
+@property (readonly, nonatomic) unsigned long long backLowLightPreviewOverlayStyle; // @synthesize backLowLightPreviewOverlayStyle=_backLowLightPreviewOverlayStyle;
 @property (readonly, nonatomic, getter=isBackLowLightSupported) BOOL backLowLightSupported; // @synthesize backLowLightSupported=_backLowLightSupported;
 @property (readonly, nonatomic, getter=isBackPanoramaSupported) BOOL backPanoramaSupported; // @synthesize backPanoramaSupported=_backPanoramaSupported;
 @property (readonly, nonatomic, getter=isBackPearlSupported) BOOL backPearlSupported; // @synthesize backPearlSupported=_backPearlSupported;
@@ -221,12 +237,14 @@
 @property (readonly, nonatomic, getter=isBackSpatialOverCaptureSupported) BOOL backSpatialOverCaptureSupported; // @synthesize backSpatialOverCaptureSupported=_backSpatialOverCaptureSupported;
 @property (readonly, nonatomic, getter=isBackSuperWideSupported) BOOL backSuperWideSupported; // @synthesize backSuperWideSupported=_backSuperWideSupported;
 @property (readonly, nonatomic, getter=isBackTelephotoSupported) BOOL backTelephotoSupported; // @synthesize backTelephotoSupported=_backTelephotoSupported;
+@property (readonly, nonatomic, getter=isBackTimeOfFlightSupported) BOOL backTimeOfFlightSupported; // @synthesize backTimeOfFlightSupported=_backTimeOfFlightSupported;
 @property (readonly, nonatomic, getter=isBackTimelapseSupported) BOOL backTimelapseSupported; // @synthesize backTimelapseSupported=_backTimelapseSupported;
 @property (readonly, nonatomic, getter=isBackTorchPatternSupported) BOOL backTorchPatternSupported; // @synthesize backTorchPatternSupported=_backTorchPatternSupported;
 @property (readonly, nonatomic, getter=isBackTorchSupported) BOOL backTorchSupported; // @synthesize backTorchSupported=_backTorchSupported;
 @property (readonly, nonatomic, getter=isBackTripleCameraSupported) BOOL backTripleCameraSupported; // @synthesize backTripleCameraSupported=_backTripleCameraSupported;
 @property (readonly, nonatomic, getter=isBackWideDualSupported) BOOL backWideDualSupported; // @synthesize backWideDualSupported=_backWideDualSupported;
 @property (readonly, nonatomic) BOOL captureOnTouchDown; // @synthesize captureOnTouchDown=_captureOnTouchDown;
+@property (readonly, nonatomic) BOOL contentAwareDistortionCorrectionSupported; // @synthesize contentAwareDistortionCorrectionSupported=_contentAwareDistortionCorrectionSupported;
 @property (readonly, nonatomic, getter=isCTMSupportSupressed) BOOL ctmSupportSuppressed; // @synthesize ctmSupportSuppressed=_ctmSupportSuppressed;
 @property (readonly, nonatomic, getter=isCTMSupported) BOOL ctmSupported; // @synthesize ctmSupported=_ctmSupported;
 @property (readonly, nonatomic, getter=isDeepFusionSupported) BOOL deepFusionSupported; // @synthesize deepFusionSupported=_deepFusionSupported;
@@ -236,6 +254,7 @@
 @property (readonly, nonatomic, getter=isDepthEffectApertureSupported) BOOL depthEffectApertureSupported; // @synthesize depthEffectApertureSupported=_depthEffectApertureSupported;
 @property (readonly, nonatomic) BOOL deviceSupportsCTM; // @synthesize deviceSupportsCTM=_deviceSupportsCTM;
 @property (readonly, nonatomic, getter=isDualSupported) BOOL dualSupported;
+@property (readonly, nonatomic) BOOL enableSemanticDevelopmentFilterDebugging; // @synthesize enableSemanticDevelopmentFilterDebugging=_enableSemanticDevelopmentFilterDebugging;
 @property (readonly, nonatomic, getter=isExposureSliderSupported) BOOL exposureSliderSupported; // @synthesize exposureSliderSupported=_exposureSliderSupported;
 @property (readonly, nonatomic) BOOL featureDevelopmentEmulateSuperWide; // @synthesize featureDevelopmentEmulateSuperWide=_featureDevelopmentEmulateSuperWide;
 @property (readonly, nonatomic) BOOL featureDevelopmentForceSingleCamera; // @synthesize featureDevelopmentForceSingleCamera=_featureDevelopmentForceSingleCamera;
@@ -258,6 +277,8 @@
 @property (readonly, nonatomic, getter=isFrontHDRSupported) BOOL frontHDRSupported; // @synthesize frontHDRSupported=_frontHDRSupported;
 @property (readonly, nonatomic, getter=isFrontLivePhotoSupported) BOOL frontLivePhotoSupported; // @synthesize frontLivePhotoSupported=_frontLivePhotoSupported;
 @property (readonly, nonatomic, getter=isFrontLiveStageLightSupported) BOOL frontLiveStageLightSupported; // @synthesize frontLiveStageLightSupported=_frontLiveStageLightSupported;
+@property (readonly, nonatomic) UIColor *frontLowLightPreviewOverlayColor; // @synthesize frontLowLightPreviewOverlayColor=_frontLowLightPreviewOverlayColor;
+@property (readonly, nonatomic) unsigned long long frontLowLightPreviewOverlayStyle; // @synthesize frontLowLightPreviewOverlayStyle=_frontLowLightPreviewOverlayStyle;
 @property (readonly, nonatomic, getter=isFrontLowLightSupported) BOOL frontLowLightSupported; // @synthesize frontLowLightSupported=_frontLowLightSupported;
 @property (readonly, nonatomic, getter=isFrontPanoramaSupported) BOOL frontPanoramaSupported; // @synthesize frontPanoramaSupported=_frontPanoramaSupported;
 @property (readonly, nonatomic, getter=isFrontPearlSupported) BOOL frontPearlSupported; // @synthesize frontPearlSupported=_frontPearlSupported;
@@ -268,6 +289,7 @@
 @property (readonly, nonatomic, getter=isFrontSpatialOverCaptureSupported) BOOL frontSpatialOverCaptureSupported; // @synthesize frontSpatialOverCaptureSupported=_frontSpatialOverCaptureSupported;
 @property (readonly, nonatomic, getter=isFrontSuperWideSupported) BOOL frontSuperWideSupported; // @synthesize frontSuperWideSupported=_frontSuperWideSupported;
 @property (readonly, nonatomic, getter=isFrontTelephotoSupported) BOOL frontTelephotoSupported; // @synthesize frontTelephotoSupported=_frontTelephotoSupported;
+@property (readonly, nonatomic, getter=isFrontTimeOfFlightSupported) BOOL frontTimeOfFlightSupported; // @synthesize frontTimeOfFlightSupported=_frontTimeOfFlightSupported;
 @property (readonly, nonatomic, getter=isFrontTimelapseSupported) BOOL frontTimelapseSupported; // @synthesize frontTimelapseSupported=_frontTimelapseSupported;
 @property (readonly, nonatomic, getter=isFrontTorchPatternSupported) BOOL frontTorchPatternSupported; // @synthesize frontTorchPatternSupported=_frontTorchPatternSupported;
 @property (readonly, nonatomic, getter=isFrontTorchSupported) BOOL frontTorchSupported; // @synthesize frontTorchSupported=_frontTorchSupported;
@@ -285,8 +307,6 @@
 @property (readonly, nonatomic, getter=isLivePhotoSupported) BOOL livePhotoSupported;
 @property (readonly, nonatomic, getter=isLockButtonAppropriateForShutter) BOOL lockButtonAppropriateForShutter; // @synthesize lockButtonAppropriateForShutter=_lockButtonAppropriateForShutter;
 @property (readonly, nonatomic, getter=isLowEndHardware) BOOL lowEndHardware; // @synthesize lowEndHardware=_lowEndHardware;
-@property (readonly, nonatomic) UIColor *lowLightPreviewOverlayColor; // @synthesize lowLightPreviewOverlayColor=_lowLightPreviewOverlayColor;
-@property (readonly, nonatomic) unsigned long long lowLightPreviewOverlayStyle; // @synthesize lowLightPreviewOverlayStyle=_lowLightPreviewOverlayStyle;
 @property (readonly, nonatomic, getter=isLowLightSupported) BOOL lowLightSupported;
 @property (readonly, nonatomic) long long maximumBurstLength; // @synthesize maximumBurstLength=_maximumBurstLength;
 @property (readonly, nonatomic) long long maximumNumberOfInflightRequests; // @synthesize maximumNumberOfInflightRequests=_maximumNumberOfInflightRequests;
@@ -304,6 +324,7 @@
 @property (readonly, nonatomic, getter=isPortraitModeSupported) BOOL portraitModeSupported;
 @property (readonly, nonatomic, getter=isPreviewDuringHDRSupported) BOOL previewSupportedDuringHDR; // @synthesize previewSupportedDuringHDR=_previewSupportedDuringHDR;
 @property (readonly, nonatomic) BOOL responsiveShutterSupported; // @synthesize responsiveShutterSupported=_responsiveShutterSupported;
+@property (readonly, nonatomic) BOOL semanticDevelopmentSupported; // @synthesize semanticDevelopmentSupported=_semanticDevelopmentSupported;
 @property (readonly, nonatomic) BOOL sfCameraFontSupported; // @synthesize sfCameraFontSupported=_sfCameraFontSupported;
 @property (readonly, nonatomic, getter=isShotBufferSupported) BOOL shotBufferSupported; // @synthesize shotBufferSupported=_shotBufferSupported;
 @property (readonly, nonatomic, getter=isSmartHDRSupported) BOOL smartHDRSupported;
@@ -317,11 +338,13 @@
 @property (readonly, nonatomic) long long supportedPortraitLightingVersion; // @synthesize supportedPortraitLightingVersion=_supportedPortraitLightingVersion;
 @property (readonly, nonatomic) double telephotoDisplayZoomFactor; // @synthesize telephotoDisplayZoomFactor=_telephotoDisplayZoomFactor;
 @property (readonly, nonatomic, getter=isTelephotoSupported) BOOL telephotoSupported;
+@property (readonly, nonatomic, getter=isTimeOfFlightSupported) BOOL timeOfFlightSupported;
 @property (readonly, nonatomic) double timelapseFirstShotDelay; // @synthesize timelapseFirstShotDelay=_timelapseFirstShotDelay;
 @property (readonly, nonatomic, getter=isTripleCameraSupported) BOOL tripleCameraSupported;
 @property (readonly, nonatomic) BOOL useCTMModeSelector; // @synthesize useCTMModeSelector=_useCTMModeSelector;
 @property (readonly, nonatomic) BOOL useCTMTransientImageWell; // @synthesize useCTMTransientImageWell=_useCTMTransientImageWell;
 @property (readonly, nonatomic) BOOL useReticleStroke; // @synthesize useReticleStroke=_useReticleStroke;
+@property (readonly, nonatomic, getter=isVariableFramerateVideoSupported) BOOL variableFramerateVideoSupported; // @synthesize variableFramerateVideoSupported=_variableFramerateVideoSupported;
 @property (readonly, nonatomic, getter=isVideoSupported) BOOL videoSupported; // @synthesize videoSupported=_videoSupported;
 @property (readonly, nonatomic) double wideDisplayZoomFactor; // @synthesize wideDisplayZoomFactor=_wideDisplayZoomFactor;
 @property (readonly, nonatomic, getter=isWideDualSupported) BOOL wideDualSupported;
@@ -332,6 +355,7 @@
 - (void).cxx_destruct;
 - (double)_doubleForKey:(id)arg1 applicationID:(id)arg2;
 - (BOOL)_isSpatialOverCaptureSupportedForMode:(long long)arg1;
+- (BOOL)_isVariableFramerateVideoSupportedForResolvedVideoConfiguration:(long long)arg1;
 - (BOOL)_shouldUseTripleCameraForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)allowCaptureWhileViewfinderIsOpeningForMode:(long long)arg1 devicePosition:(long long)arg2;
 - (double)captureIntervalForDevice:(long long)arg1;
@@ -354,6 +378,7 @@
 - (BOOL)isCTMVideoCaptureSupportedForMode:(long long)arg1;
 - (BOOL)isCameraSupportedForDevice:(long long)arg1;
 - (BOOL)isCameraSupportedForDevicePosition:(long long)arg1;
+- (BOOL)isContentAwareDistortionCorrectionSupportedForMode:(long long)arg1;
 - (BOOL)isDualSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isDualSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)isExposureClippingIndicatorSupportedForMode:(long long)arg1 videoConfiguration:(long long)arg2;
@@ -361,6 +386,8 @@
 - (BOOL)isFlashOrTorchSupportedForMode:(long long)arg1 devicePosition:(long long)arg2;
 - (BOOL)isFlashSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isFlashSupportedForMode:(long long)arg1 devicePosition:(long long)arg2;
+- (BOOL)isHDR10BitVideoSupportedForMode:(long long)arg1;
+- (BOOL)isHDR10BitVideoSupportedForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
 - (BOOL)isHDROnSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isHDRSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isHDRSupportedForMode:(long long)arg1 devicePosition:(long long)arg2;
@@ -375,6 +402,7 @@
 - (BOOL)isPortraitModeSupportedForDevice:(long long)arg1;
 - (BOOL)isPortraitModeSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isResponsiveShutterSupportedForMode:(long long)arg1;
+- (BOOL)isSemanticDevelopmentSupportedForMode:(long long)arg1;
 - (BOOL)isSingleCameraPortraitModeSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isSlomoSupportedForDevice:(long long)arg1;
 - (BOOL)isSmartHDRSupportedForMode:(long long)arg1 devicePosition:(long long)arg2;
@@ -391,6 +419,7 @@
 - (BOOL)isTapAndBiasSupportedForMode:(long long)arg1;
 - (BOOL)isTelephotoSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isTelephotoSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
+- (BOOL)isTimeOfFlightSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isTimelapseSupportedForDevice:(long long)arg1;
 - (BOOL)isTimerSupportedForMode:(long long)arg1;
 - (BOOL)isTorchPatternSupportedForDevicePosition:(long long)arg1;
@@ -398,11 +427,14 @@
 - (BOOL)isTorchSupportedForMode:(long long)arg1 devicePosition:(long long)arg2;
 - (BOOL)isTripleCameraSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isTripleCameraSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
+- (BOOL)isVariableFramerateVideoSupportedForMode:(long long)arg1 videoConfiguration:(long long)arg2;
 - (BOOL)isWideDualSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isWideDualSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)isWideSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isWideSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)isZoomAllowedForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
+- (id)lowLightPreviewOverlayColorForDevicePosition:(long long)arg1;
+- (unsigned long long)lowLightPreviewOverlayStyleForDevicePosition:(long long)arg1 sensitiveToChangingDisplayFeedback:(BOOL)arg2;
 - (double)maximumDepthEffectApertureForDevicePosition:(long long)arg1;
 - (double)maximumZoomFactorForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
 - (double)maximumZoomFactorForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3 shouldResolveDevice:(BOOL)arg4;

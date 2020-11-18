@@ -27,6 +27,7 @@
 + (id)_stringCharacterForCharacter:(long long)arg1;
 + (struct CGSize)defaultSize;
 + (double)highlightedCircleViewAlpha;
++ (double)outerCircleDiameter;
 + (struct UIEdgeInsets)paddingOutsideRing;
 + (double)unhighlightedCircleViewAlpha;
 - (void).cxx_destruct;

@@ -10,6 +10,8 @@
 {
     BOOL _HDREnabled;
     BOOL _portraitEffectEnabled;
+    BOOL _lowLightCaptureHasInitialPreviewFeedbackSensitivity;
+    BOOL _lowLightCaptureHasConstantPreviewFeedbackSensitivity;
     BOOL _captureBeforeResolvingSettingsEnabled;
     double _lowLightCaptureTime;
     struct CGColor *_lowLightPreviewColorEstimate;
@@ -17,12 +19,14 @@
 
 @property (readonly, nonatomic, getter=isHDREnabled) BOOL HDREnabled; // @synthesize HDREnabled=_HDREnabled;
 @property (readonly, nonatomic, getter=isCaptureBeforeResolvingSettingsEnabled) BOOL captureBeforeResolvingSettingsEnabled; // @synthesize captureBeforeResolvingSettingsEnabled=_captureBeforeResolvingSettingsEnabled;
+@property (readonly, nonatomic) BOOL lowLightCaptureHasConstantPreviewFeedbackSensitivity; // @synthesize lowLightCaptureHasConstantPreviewFeedbackSensitivity=_lowLightCaptureHasConstantPreviewFeedbackSensitivity;
+@property (readonly, nonatomic) BOOL lowLightCaptureHasInitialPreviewFeedbackSensitivity; // @synthesize lowLightCaptureHasInitialPreviewFeedbackSensitivity=_lowLightCaptureHasInitialPreviewFeedbackSensitivity;
 @property (readonly, nonatomic) double lowLightCaptureTime; // @synthesize lowLightCaptureTime=_lowLightCaptureTime;
 @property (readonly, nonatomic) struct CGColor *lowLightPreviewColorEstimate; // @synthesize lowLightPreviewColorEstimate=_lowLightPreviewColorEstimate;
 @property (readonly, nonatomic, getter=isPortraitEffectEnabled) BOOL portraitEffectEnabled; // @synthesize portraitEffectEnabled=_portraitEffectEnabled;
 
 - (void)dealloc;
-- (id)initWithHDREnabled:(BOOL)arg1 portraitEffectEnabled:(BOOL)arg2 lowLightCaptureTime:(double)arg3 lowLightPreviewColorEstimate:(struct CGColor *)arg4 captureBeforeResolvingSettingsEnabled:(BOOL)arg5;
+- (id)initWithHDREnabled:(BOOL)arg1 portraitEffectEnabled:(BOOL)arg2 lowLightCaptureTime:(double)arg3 lowLightPreviewColorEstimate:(struct CGColor *)arg4 lowLightCaptureHasInitialPreviewFeedbackSensitivity:(BOOL)arg5 lowLightCaptureHasConstantPreviewFeedbackSensitivity:(BOOL)arg6 captureBeforeResolvingSettingsEnabled:(BOOL)arg7;
 
 @end
 

@@ -864,6 +864,7 @@
 - (BOOL)_shouldHideLivePhotoBadgeForGraphConfiguration:(id)arg1;
 - (BOOL)_shouldHideLivePhotoButtonForGraphConfiguration:(id)arg1;
 - (BOOL)_shouldHideModeDialForGraphConfiguration:(id)arg1;
+- (BOOL)_shouldHideModeDialForGraphConfiguration:(id)arg1 isCapturingBurst:(BOOL)arg2;
 - (BOOL)_shouldHidePanoramaViewForGraphConfiguration:(id)arg1;
 - (BOOL)_shouldHidePhotosButtonForGraphConfiguration:(id)arg1;
 - (BOOL)_shouldHidePortraitModeDescriptionOverlayViewForGraphConfiguration:(id)arg1;

@@ -26,6 +26,7 @@
     NSMutableSet *_dropAnimatingDragItems;
     NSMutableDictionary *_initialIconPaths;
     NSMapTable *_bouncedIcons;
+    NSMutableSet *_allBouncedIcons;
     NSMapTable *_appDragLocalContexts;
     NSMapTable *_iconViewPrepareForDropAssertions;
     NSMapTable *_iconViewDroppingAssertions;
@@ -47,6 +48,7 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
+@property (readonly, copy, nonatomic) NSArray *allIconsEverBounced;
 @property (readonly, copy, nonatomic) NSSet *appLocalContexts;
 @property (nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (readonly, copy) NSString *debugDescription;

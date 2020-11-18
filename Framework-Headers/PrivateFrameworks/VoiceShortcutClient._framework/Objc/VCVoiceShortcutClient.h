@@ -93,7 +93,6 @@
 - (void)sendAceCommandDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setInteger:(long long)arg1 forKey:(id)arg2 inDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2;
-- (id)shareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 error:(id *)arg3;
 - (id)shareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 resolvedActivityItems:(id)arg2 hostBundleIdentifier:(id)arg3 iconSize:(struct CGSize)arg4 iconScale:(double)arg5 error:(id *)arg6;
 - (void)stopRunningWorkflowWithRunningContext:(id)arg1;
 - (void)subscribeToVoiceShortcutDataUpdateNotifications;

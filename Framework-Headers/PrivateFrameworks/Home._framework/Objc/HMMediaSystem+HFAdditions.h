@@ -54,6 +54,7 @@
 @property (readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
+@property (readonly, nonatomic) BOOL hf_supportsMusicAlarm;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
 @property (readonly, nonatomic) BOOL hf_supportsStereoPairing;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;

@@ -22,6 +22,7 @@
 + (void)skippedByCloudConfig;
 - (void)cancelHostedPresentation;
 - (BOOL)controllerAllowsNavigatingBack;
+- (BOOL)controllerNeedsToRun;
 - (void)controllerWasPopped;
 - (void)didReceiveInternalSkipInfo;
 - (NSString *)displayLanguage;

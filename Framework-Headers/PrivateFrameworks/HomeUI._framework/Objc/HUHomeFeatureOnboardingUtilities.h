@@ -23,6 +23,7 @@
 + (void)fetchSupportedVoiceRecognitionLanguagesWithCompletion:(CDUnknownBlockType)arg1;
 + (id)groupedFeaturesForOnboardingFlowKeyPaths:(id)arg1;
 + (BOOL)hasUserSaidYesToVoiceIdentificationInResults:(id)arg1;
++ (BOOL)home:(id)arg1 canShowAnnounceOnboardingWithUsageOptions:(id)arg2;
 + (BOOL)home:(id)arg1 canShowIdentifyVoiceOnboardingWithUsageOptions:(id)arg2;
 + (BOOL)home:(id)arg1 canShowNaturalLightingOnboardingWithUsageOptions:(id)arg2;
 + (unsigned long long)home:(id)arg1 checkForMultiUserDeviceUpgradeRequirements:(id)arg2;

@@ -8,23 +8,21 @@
 
 #import <PassKitUI/PKPaymentHeroImageControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, PKPaymentHeroImageController, UIImageView, UILabel;
-@protocol PKHeroImageView;
+@class NSMutableArray, NSMutableDictionary, NSString, PKImageSequenceView, PKPaymentHeroImageController, UIImageView;
 
 @interface PKPaymentSetupHeroView : UIView <PKPaymentHeroImageControllerDelegate>
 {
     long long _context;
     struct CGSize _aspectSize;
-    BOOL _isAnimating;
-    UIView *_backgroundView;
-    UIView<PKHeroImageView> *_heroImageView;
-    NSMutableArray *_cardViews;
-    UIImageView *_presentedCard;
-    unsigned long long _animationContext;
-    UILabel *_instructionLabel;
-    PKPaymentHeroImageController *_heroImageController;
-    NSMutableDictionary *_networkImageViewsMap;
     BOOL _imageDownloadFailed;
+    UIView *_backgroundView;
+    UIView *_bottomDividerView;
+    UIView *_heroDeviceView;
+    PKImageSequenceView *_cardCarouselView;
+    PKPaymentHeroImageController *_heroImageController;
+    UIImageView *_faceIDGlyphView;
+    NSMutableArray *_heroImageIdentifiers;
+    NSMutableDictionary *_heroImagesDictionary;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -34,19 +32,17 @@
 
 + (id)assetBackgroundColor;
 - (void).cxx_destruct;
-- (void)_createCardViewsWithImages:(id)arg1;
-- (void)_createSubviews:(id)arg1;
-- (void)_finishedTransitionToCard:(id)arg1;
-- (struct CGRect)_frameForCardView:(id)arg1;
-- (struct CGRect)_frameForInstructionLabel;
-- (id)_imageWithData:(id)arg1;
-- (unsigned long long)_indexOfNextObject:(id)arg1 withArray:(id)arg2;
+- (void)_configureHeroCardsFromHeroImages:(id)arg1;
+- (void)_createSubviews;
+- (id)_heroImages;
+- (void)_imageFailedToDownload:(id)arg1;
 - (double)_instructionFontSizeForContext:(long long)arg1;
 - (BOOL)_isSmallPhone;
+- (double)_phoneCardHeightInset;
+- (double)_phoneTopPadding;
 - (void)_promptTapToRadarWithTitle:(id)arg1 description:(id)arg2;
-- (id)_resizeImage:(id)arg1;
-- (void)_setCardViews:(id)arg1 networks:(id)arg2;
-- (void)_transitionFromCardToCard:(id)arg1;
+- (struct CGSize)_watchCardCarouselSizeForSize:(struct CGSize)arg1;
+- (struct CGRect)_watchCardViewFrameForBounds:(struct CGRect)arg1;
 - (void)heroImageController:(id)arg1 didFinishDownloadingImageData:(id)arg2 forImage:(id)arg3 error:(id)arg4;
 - (id)initWithContext:(long long)arg1 heroImageController:(id)arg2 heroImages:(id)arg3;
 - (void)layoutSubviews;

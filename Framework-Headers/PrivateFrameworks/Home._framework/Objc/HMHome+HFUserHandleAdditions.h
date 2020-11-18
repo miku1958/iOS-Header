@@ -92,6 +92,9 @@
 - (id)hf_allUsersIncludingCurrentUser;
 - (id)hf_allVisibleServices;
 - (id)hf_appleTVs;
+- (BOOL)hf_atleastOneHomePodSupportsAndHasAnnounceEnabled;
+- (BOOL)hf_atleastOneHomePodSupportsAnnounce;
+- (BOOL)hf_atleastTwoDistinctHomePodsSupportsAnnounce;
 - (id)hf_cameraProfileForSignificantEvent:(id)arg1;
 - (id)hf_cameraProfileWithIdentifier:(id)arg1;
 - (id)hf_cameraProfilesAffectedByServiceTopic:(id)arg1;
@@ -170,6 +173,8 @@
 - (void)hf_setSelectedRoom:(id)arg1;
 - (id)hf_setSharePhotosLibraryEnabled:(BOOL)arg1 forUser:(id)arg2;
 - (BOOL)hf_shouldDefaultFavoriteForHomeKitObject:(id)arg1 excludingHomeKitObjects:(id)arg2;
+- (BOOL)hf_shouldShowAnnounceButtonForThisHome;
+- (BOOL)hf_shouldShowAnnounceFeatureForThisHome;
 - (void)hf_startReprovisioningAccessory:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (BOOL)hf_supportsPerUserRemoteAccess;

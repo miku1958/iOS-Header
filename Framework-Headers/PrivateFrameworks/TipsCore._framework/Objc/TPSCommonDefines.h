@@ -24,6 +24,7 @@
     NSMutableDictionary *_appBundleIDMap;
     long long _assetRatioType;
     TPSTipStatusController *_tipStatusController;
+    NSString *_language;
     NSObject<OS_dispatch_queue> *_syncQueue;
     NSMutableDictionary *_collectionStatusMap;
 }
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSString *majorVersion; // @synthesize majorVersion=_majorVersion;
 @property (nonatomic) int maxVersion; // @synthesize maxVersion=_maxVersion;
 @property (strong, nonatomic) NSString *model; // @synthesize model=_model;

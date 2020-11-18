@@ -20,6 +20,7 @@
     NSString *_setupCode;
     NSString *_setupID;
     NSNumber *_categoryNumber;
+    NSNumber *_threadIdentifier;
     NSString *_productData;
     NSString *_productNumber;
     NSURL *_setupPayloadURL;
@@ -39,6 +40,7 @@
 @property (nonatomic) BOOL supportsBTLE; // @synthesize supportsBTLE=_supportsBTLE;
 @property (nonatomic) BOOL supportsIP; // @synthesize supportsIP=_supportsIP;
 @property (nonatomic) BOOL supportsWAC; // @synthesize supportsWAC=_supportsWAC;
+@property (strong, nonatomic) NSNumber *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

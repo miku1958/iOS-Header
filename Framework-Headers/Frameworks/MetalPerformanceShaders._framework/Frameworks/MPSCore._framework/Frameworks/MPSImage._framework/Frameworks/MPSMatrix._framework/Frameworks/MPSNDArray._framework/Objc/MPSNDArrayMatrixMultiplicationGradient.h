@@ -27,6 +27,7 @@
 - (id)initWithDevice:(id)arg1 sourceCount:(unsigned long long)arg2 sourceGradientIndex:(unsigned long long)arg3;
 - (unsigned long long)kernelDimensionalityForSourceArrays:(id)arg1;
 - (unsigned long long)maxSupportedDimensionsForSourceArrays:(id)arg1 destinationArray:(id)arg2;
+- (id)workloadStatisticsForSourceArrays:(id)arg1 destArrays:(id)arg2 kernel:(id)arg3 sourceState:(id)arg4;
 
 @end
 

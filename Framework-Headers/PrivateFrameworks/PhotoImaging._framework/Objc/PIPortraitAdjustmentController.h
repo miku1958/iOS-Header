@@ -6,7 +6,7 @@
 
 #import <PhotoImaging/PIAdjustmentController.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSNumber, NSString;
 
 @interface PIPortraitAdjustmentController : PIAdjustmentController
 {
@@ -15,11 +15,13 @@
 
 @property (copy, nonatomic) NSString *kind;
 @property (copy, nonatomic) NSDictionary *portraitInfo;
+@property (copy, nonatomic) NSNumber *spillMatteAllowed;
 @property (nonatomic) double strength;
 @property (nonatomic) long long version; // @synthesize version=_version;
 
 + (id)kindKey;
 + (id)portraitInfoKey;
++ (id)spillMatteAllowedKey;
 + (id)strengthKey;
 - (BOOL)canRenderPortraitEffect;
 - (id)initWithAdjustment:(id)arg1;

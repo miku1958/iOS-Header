@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSMutableSet;
 @protocol MTLDevice;
 
 @interface PXGColorProgramLibrary : NSObject
 {
     NSMutableArray *_programs;
+    NSMutableSet *_failedColorspaces;
     struct os_unfair_lock_s _lock;
     id<MTLDevice> _device;
     struct CGColorSpace *_destinationColorSpace;

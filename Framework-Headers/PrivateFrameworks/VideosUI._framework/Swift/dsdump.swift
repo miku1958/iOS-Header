@@ -1827,7 +1827,7 @@ WARNING: couldn't find address 0x2f03c001b7590 (0x3c001b7590) in binary!
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let requestID : )W // +0x3 (0x0)
-	var appContext : weak IKAppContext? // +0x77 (0x8)
+	var appContext : weak IKAppContext? // +0x78 (0x8)
 	var parent : TemplateViewModel // +0x6100085 (0x8)
 	let documentType : DocumentType // +0x19 (0x1)
 	let controllerRef : String // +0x45545f5f (0x10)

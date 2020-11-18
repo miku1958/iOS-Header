@@ -25,6 +25,7 @@
 - (int)accessorySettingFeatureBitMask;
 - (id)aclUID;
 - (id)address;
+- (int)autoAnswerMode;
 - (int)batteryLevel;
 - (unsigned int)clickHoldMode:(int *)arg1 rightAction:(int *)arg2;
 - (BOOL)cloudPaired;
@@ -72,6 +73,7 @@
 - (unsigned int)productId;
 - (id)productName;
 - (id)scoUID;
+- (BOOL)setAutoAnswerMode:(int)arg1;
 - (BOOL)setClickHoldMode:(int)arg1 rightMode:(int)arg2;
 - (void)setConnectingServicemask:(unsigned int)arg1;
 - (void)setDevice:(struct BTDeviceImpl *)arg1;

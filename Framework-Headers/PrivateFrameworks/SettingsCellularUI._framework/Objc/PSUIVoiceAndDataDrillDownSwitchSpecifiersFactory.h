@@ -12,7 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)isVoLTESwitchTurnedOnByDefaultAndHidden:(id)arg1;
++ (BOOL)shouldShow5GSASwitchForSpecifier:(id)arg1 RATMode:(int)arg2;
 + (BOOL)shouldShowVoLTESwitchForSubscriptionContext:(id)arg1 RATMode:(int)arg2;
+- (id)create5GSASwitchSpecifierWithHostController:(id)arg1 parentSpecifier:(id)arg2;
 - (id)createVoLTESwitchSpecifierWithHostController:(id)arg1 parentSpecifier:(id)arg2;
 
 @end

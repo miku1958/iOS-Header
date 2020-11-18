@@ -1595,7 +1595,7 @@ WARNING: couldn't find address 0x11d7400069e98 (0x57400069e98) in binary!
 	0x262910  @objc TTRSingleColorGradientView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	0xcffef4d20  @objc TTRSingleColorGradientView.(null) <stripped>
-	0x36400069708  @objc TTRSingleColorGradientView. <stripped>
+	0x36400069708  @objc TTRSingleColorGradientView.\ <stripped>
 
 	// Swift methods
 	0xaa8b0  func TTRSingleColorGradientView.color.getter // getter 

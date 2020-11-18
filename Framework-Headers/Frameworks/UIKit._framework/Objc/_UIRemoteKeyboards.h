@@ -12,7 +12,7 @@
 #import <UIKitCore/_UIRemoteKeyboardDistributedViewSource-Protocol.h>
 #import <UIKitCore/_UIRemoteKeyboardsEventObserverDelegate-Protocol.h>
 
-@class FBSScene, FBSSceneIdentityToken, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSXPCConnection, UIScreen, UIView, UIWindow, UIWindowScene, _UIAssertionController, _UIKeyboardChangedInformation, _UIRemoteKeyboardsEventObserver;
+@class FBSScene, FBSSceneIdentityToken, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSXPCConnection, UIRemoteKeyboardWindow, UIScreen, UIView, UIWindowScene, _UIAssertionController, _UIKeyboardChangedInformation, _UIRemoteKeyboardsEventObserver;
 @protocol _UIKeyboardArbitration;
 
 @interface _UIRemoteKeyboards : NSObject <_UIRemoteKeyboardDistributedViewSource, _UIKeyboardArbitrationClient, _UIRemoteKeyboardControllerDelegate, _UIRemoteKeyboardsEventObserverDelegate, _UIAssertionControllerSubject>
@@ -73,7 +73,7 @@
 @property (readonly) BOOL keyboardActive;
 @property (readonly, nonatomic) struct CGRect keyboardFrameIncludingRemoteIAV;
 @property (readonly) BOOL keyboardVisible;
-@property (readonly) UIWindow *keyboardWindow;
+@property (readonly) UIRemoteKeyboardWindow *keyboardWindow;
 @property (readonly, nonatomic) long long lastEventSource; // @synthesize lastEventSource=_lastEventSource;
 @property (readonly) BOOL oldPathForSnapshot;
 @property (readonly) id<_UIKeyboardArbitration> proxy;

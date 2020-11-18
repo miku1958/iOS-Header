@@ -11,9 +11,13 @@
 @protocol PXMutableImageLayerModulator <NSObject>
 
 @property (nonatomic) BOOL displayingVideoComplement;
+@property (nonatomic) struct CGImage *gainMapImage;
+@property (nonatomic) float gainMapValue;
 @property (strong, nonatomic) CALayer *layer;
+@property (nonatomic) BOOL revealsGainMapImage;
 
 - (void)animateChangesWithDuration:(double)arg1;
 - (void)removeFilterFromUnownedLayer:(CALayer *)arg1;
+- (void)setGainMapImage:(struct CGImage *)arg1 animated:(BOOL)arg2;
 @end
 

@@ -49,11 +49,12 @@
 - (id)_animationSettingsForBacklightChangeSource:(long long)arg1 isWake:(BOOL)arg2;
 - (void)_cleanupAnimationWhenInterruptingWaking:(BOOL)arg1;
 - (void)_handleAnimationCompletionIfNecessaryForWaking:(BOOL)arg1;
-- (void)_runCompletionHandlerForWake:(BOOL)arg1;
+- (void)_runCompletionHandlerForWake:(BOOL)arg1 reason:(id)arg2;
 - (void)_setInteractionEventsIgnored:(BOOL)arg1;
 - (void)_setLastBacklightChangeSource:(long long)arg1;
 - (void)_setRelevantLockScreenViewsHidden:(BOOL)arg1;
 - (void)_startWakeAnimationsForWaking:(BOOL)arg1 animationSettings:(id)arg2;
+- (void)_startWakeFromUnblankNotification;
 - (void)_startWakeIfNecessary;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

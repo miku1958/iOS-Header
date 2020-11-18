@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown;
+@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaIntercomMessageRecorded, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown;
 
 @interface SISchemaClientEvent : PBCodable
 {
@@ -39,6 +39,7 @@
     SISchemaUUFRSaid *_uufrSaid;
     SISchemaUUFRFatalError *_uufrFatalError;
     SISchemaDictationAlternativesViewed *_dictationAlternativesViewed;
+    SISchemaIntercomMessageRecorded *_intercomMessageRecorded;
     SISchemaCasinoRelationship *_casinoRelationship;
     BOOL _hasEventMetadata;
     BOOL _hasTransportMetadata;
@@ -69,6 +70,7 @@
     BOOL _hasUufrSaid;
     BOOL _hasUufrFatalError;
     BOOL _hasDictationAlternativesViewed;
+    BOOL _hasIntercomMessageRecorded;
     BOOL _hasCasinoRelationship;
     unsigned long long _whichEvent_Type;
 }
@@ -105,6 +107,7 @@
 @property (nonatomic) BOOL hasDictationEndPointStop; // @synthesize hasDictationEndPointStop=_hasDictationEndPointStop;
 @property (nonatomic) BOOL hasDictationTranscriptionMetadata; // @synthesize hasDictationTranscriptionMetadata=_hasDictationTranscriptionMetadata;
 @property (nonatomic) BOOL hasEventMetadata; // @synthesize hasEventMetadata=_hasEventMetadata;
+@property (nonatomic) BOOL hasIntercomMessageRecorded; // @synthesize hasIntercomMessageRecorded=_hasIntercomMessageRecorded;
 @property (nonatomic) BOOL hasInvocation; // @synthesize hasInvocation=_hasInvocation;
 @property (nonatomic) BOOL hasLocation; // @synthesize hasLocation=_hasLocation;
 @property (nonatomic) BOOL hasPunchOut; // @synthesize hasPunchOut=_hasPunchOut;
@@ -119,6 +122,7 @@
 @property (nonatomic) BOOL hasUufrPresented; // @synthesize hasUufrPresented=_hasUufrPresented;
 @property (nonatomic) BOOL hasUufrSaid; // @synthesize hasUufrSaid=_hasUufrSaid;
 @property (nonatomic) BOOL hasUufrShown; // @synthesize hasUufrShown=_hasUufrShown;
+@property (strong, nonatomic) SISchemaIntercomMessageRecorded *intercomMessageRecorded; // @synthesize intercomMessageRecorded=_intercomMessageRecorded;
 @property (strong, nonatomic) SISchemaInvocation *invocation; // @synthesize invocation=_invocation;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaLocation *location; // @synthesize location=_location;

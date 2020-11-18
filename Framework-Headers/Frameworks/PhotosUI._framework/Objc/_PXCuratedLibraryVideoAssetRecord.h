@@ -41,7 +41,6 @@
 - (BOOL)isPlaying;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForInvisible;
-- (void)prepareForOneUpVisible;
 - (void)prepareForVisible;
 - (void)setDesiredPlayState:(long long)arg1;
 

@@ -14,11 +14,13 @@
     BOOL _cancelRequested;
     PHImageDecoder *_initialDecoder;
     unsigned long long _figRequestID;
+    unsigned long long _figGainMapRequestID;
     struct FigPhotoDecompressionContainer *_figDecompressionContainer;
 }
 
 @property (readonly, nonatomic) BOOL cancelRequested;
 @property (strong, nonatomic) struct FigPhotoDecompressionContainer *figDecompressionContainer; // @synthesize figDecompressionContainer=_figDecompressionContainer;
+@property (nonatomic) unsigned long long figGainMapRequestID; // @synthesize figGainMapRequestID=_figGainMapRequestID;
 @property (nonatomic) unsigned long long figRequestID; // @synthesize figRequestID=_figRequestID;
 @property (readonly, nonatomic) PHImageDecoder *initialDecoder; // @synthesize initialDecoder=_initialDecoder;
 

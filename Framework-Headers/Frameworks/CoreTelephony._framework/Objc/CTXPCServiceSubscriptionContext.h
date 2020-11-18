@@ -48,6 +48,7 @@
 - (id)initWithUUID:(id)arg1;
 - (id)initWithUUID:(id)arg1 andSlot:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (id)redactedDescription;
 
 @end
 

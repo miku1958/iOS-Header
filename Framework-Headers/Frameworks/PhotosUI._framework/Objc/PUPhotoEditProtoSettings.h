@@ -21,8 +21,12 @@
     BOOL _enableLiveVideoRender;
     BOOL _enablePerfDebugHUD;
     BOOL _enableReframeDebugHUD;
+    BOOL _enableSemanticDevelopmentHUD;
     BOOL _enablePerfTTRButton;
     BOOL _alwaysShowPortraitV2;
+    BOOL _forceGlassesMatteOff;
+    BOOL _forceSpillMatteOff;
+    BOOL _allowSpillMatteOnOlderPortraitV2Captures;
     BOOL _showResetToolButton;
     BOOL _allowAnyPlugin;
     BOOL _attemptEditExtensionUndoAutoSetup;
@@ -57,6 +61,10 @@
     BOOL _useCALayerTileAssembly;
     BOOL _runNeutrinoSynchronously;
     BOOL _showSmartBlackAndWhiteAdjustment;
+    BOOL _showHDRDebugAdjustments;
+    BOOL _allAssetsCanUseHDRPipeline;
+    BOOL _disablePacked10BitPixelFormats;
+    BOOL _showSemanticDevelopmentSwitch;
     BOOL _showStabilizationWatermark;
     BOOL _applyVideoOrientationAsMetadata;
     double _videoStabilizeMaxCropFraction;
@@ -80,9 +88,11 @@
 }
 
 @property (nonatomic) double adjustmentLabelPlatterAlpha; // @synthesize adjustmentLabelPlatterAlpha=_adjustmentLabelPlatterAlpha;
+@property (nonatomic) BOOL allAssetsCanUseHDRPipeline; // @synthesize allAssetsCanUseHDRPipeline=_allAssetsCanUseHDRPipeline;
 @property (nonatomic) BOOL allowAnyPlugin; // @synthesize allowAnyPlugin=_allowAnyPlugin;
 @property (nonatomic) BOOL allowApertureRedEye; // @synthesize allowApertureRedEye=_allowApertureRedEye;
 @property (nonatomic) BOOL allowMakePosterFrameForVideo; // @synthesize allowMakePosterFrameForVideo=_allowMakePosterFrameForVideo;
+@property (nonatomic) BOOL allowSpillMatteOnOlderPortraitV2Captures; // @synthesize allowSpillMatteOnOlderPortraitV2Captures=_allowSpillMatteOnOlderPortraitV2Captures;
 @property (nonatomic) BOOL alwaysAllowKeyPhotoEditing; // @synthesize alwaysAllowKeyPhotoEditing=_alwaysAllowKeyPhotoEditing;
 @property (nonatomic) BOOL alwaysShowPortraitV2; // @synthesize alwaysShowPortraitV2=_alwaysShowPortraitV2;
 @property (nonatomic) BOOL alwaysShowValueWhenAdjustmentIsSelected; // @synthesize alwaysShowValueWhenAdjustmentIsSelected=_alwaysShowValueWhenAdjustmentIsSelected;
@@ -101,6 +111,7 @@
 @property (nonatomic) double cropSideMargins; // @synthesize cropSideMargins=_cropSideMargins;
 @property (nonatomic) double cropWheelSize; // @synthesize cropWheelSize=_cropWheelSize;
 @property (nonatomic) BOOL disableAsynchronousRenderingVideos; // @synthesize disableAsynchronousRenderingVideos=_disableAsynchronousRenderingVideos;
+@property (nonatomic) BOOL disablePacked10BitPixelFormats; // @synthesize disablePacked10BitPixelFormats=_disablePacked10BitPixelFormats;
 @property (nonatomic) BOOL enableCoreImageDebugInputs; // @synthesize enableCoreImageDebugInputs=_enableCoreImageDebugInputs;
 @property (nonatomic) BOOL enableCoreImageDebugIntermediates; // @synthesize enableCoreImageDebugIntermediates=_enableCoreImageDebugIntermediates;
 @property (nonatomic) BOOL enableCoreImageDebugMode; // @synthesize enableCoreImageDebugMode=_enableCoreImageDebugMode;
@@ -119,7 +130,10 @@
 @property (nonatomic) BOOL enablePerfDebugHUD; // @synthesize enablePerfDebugHUD=_enablePerfDebugHUD;
 @property (nonatomic) BOOL enablePerfTTRButton; // @synthesize enablePerfTTRButton=_enablePerfTTRButton;
 @property (nonatomic) BOOL enableReframeDebugHUD; // @synthesize enableReframeDebugHUD=_enableReframeDebugHUD;
+@property (nonatomic) BOOL enableSemanticDevelopmentHUD; // @synthesize enableSemanticDevelopmentHUD=_enableSemanticDevelopmentHUD;
 @property (nonatomic) BOOL enableVideoStabilizion; // @synthesize enableVideoStabilizion=_enableVideoStabilizion;
+@property (nonatomic) BOOL forceGlassesMatteOff; // @synthesize forceGlassesMatteOff=_forceGlassesMatteOff;
+@property (nonatomic) BOOL forceSpillMatteOff; // @synthesize forceSpillMatteOff=_forceSpillMatteOff;
 @property (nonatomic) BOOL loopBounceTrimAllowed; // @synthesize loopBounceTrimAllowed=_loopBounceTrimAllowed;
 @property (nonatomic) BOOL pauseAfterMovingPlayhead; // @synthesize pauseAfterMovingPlayhead=_pauseAfterMovingPlayhead;
 @property (nonatomic) BOOL perspectiveViewDebugCropEnabled; // @synthesize perspectiveViewDebugCropEnabled=_perspectiveViewDebugCropEnabled;
@@ -131,7 +145,9 @@
 @property (nonatomic) double selectionRingStrokeWidth; // @synthesize selectionRingStrokeWidth=_selectionRingStrokeWidth;
 @property (nonatomic) BOOL showEffectsPicker; // @synthesize showEffectsPicker=_showEffectsPicker;
 @property (nonatomic) BOOL showFileRadarButtonForEditEntryOnInternalInstalls; // @synthesize showFileRadarButtonForEditEntryOnInternalInstalls=_showFileRadarButtonForEditEntryOnInternalInstalls;
+@property (nonatomic) BOOL showHDRDebugAdjustments; // @synthesize showHDRDebugAdjustments=_showHDRDebugAdjustments;
 @property (nonatomic) BOOL showResetToolButton; // @synthesize showResetToolButton=_showResetToolButton;
+@property (nonatomic) BOOL showSemanticDevelopmentSwitch; // @synthesize showSemanticDevelopmentSwitch=_showSemanticDevelopmentSwitch;
 @property (nonatomic) BOOL showSmartBlackAndWhiteAdjustment; // @synthesize showSmartBlackAndWhiteAdjustment=_showSmartBlackAndWhiteAdjustment;
 @property (nonatomic) BOOL showStabilizationWatermark; // @synthesize showStabilizationWatermark=_showStabilizationWatermark;
 @property (nonatomic) BOOL showSuggestedKeyFrame; // @synthesize showSuggestedKeyFrame=_showSuggestedKeyFrame;
@@ -153,6 +169,7 @@
 + (id)sharedInstance;
 - (id)parentSettings;
 - (void)setDefaultValues;
+- (BOOL)showHDRDebugAdjustment;
 - (void)updateCoreImageDebug;
 
 @end

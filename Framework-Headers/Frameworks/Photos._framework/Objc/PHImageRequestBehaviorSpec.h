@@ -12,6 +12,8 @@
     BOOL _networkAccessAllowed;
     BOOL _allowPlaceholder;
     BOOL _onlyUseFetchedAssetPropertiesDuringChoosing;
+    BOOL _includeHDRGainMap;
+    BOOL _includeHDRGainMapInIntermediateImage;
     BOOL _useLowMemoryMode;
     BOOL _useLimitedLibraryMode;
     long long _choosingPolicy;
@@ -25,6 +27,8 @@
 @property (nonatomic) BOOL allowPlaceholder; // @synthesize allowPlaceholder=_allowPlaceholder;
 @property (nonatomic) long long choosingPolicy; // @synthesize choosingPolicy=_choosingPolicy;
 @property (nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
+@property (nonatomic) BOOL includeHDRGainMap; // @synthesize includeHDRGainMap=_includeHDRGainMap;
+@property (nonatomic) BOOL includeHDRGainMapInIntermediateImage; // @synthesize includeHDRGainMapInIntermediateImage=_includeHDRGainMapInIntermediateImage;
 @property (nonatomic) unsigned long long loadingOptions; // @synthesize loadingOptions=_loadingOptions;
 @property (nonatomic) double minimumTableThumbnailLongSide; // @synthesize minimumTableThumbnailLongSide=_minimumTableThumbnailLongSide;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;

@@ -30,6 +30,7 @@
     BOOL _supportsRelay;
     unsigned char _keyGenerationType;
     BOOL _systemTimeNeedsUpdate;
+    BOOL _supportsThreadCommissioning;
     NSString *_relayIdentifier;
     unsigned long long _currentRelayAccessoryState;
     HMDCharacteristic *_currentTimeCharacteristic;
@@ -59,6 +60,9 @@
     NSSet *_initialServiceTypeUUIDs;
     HMDAccessoryAdvertisement *_accessoryAdvertisement;
     HMDDoorbellChimeController *_doorbellChimeController;
+    NSNumber *_internalThreadCapabilities;
+    NSNumber *_internalThreadStatus;
+    NSNumber *_internalThreadActive;
     NSString *_uniqueIdentifier;
     long long _certificationStatus;
     unsigned long long _activationAttempts;
@@ -113,6 +117,9 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSSet *identifiersForBridgedAccessories; // @synthesize identifiersForBridgedAccessories=_identifiersForBridgedAccessories;
 @property (readonly, nonatomic) NSSet *initialServiceTypeUUIDs; // @synthesize initialServiceTypeUUIDs=_initialServiceTypeUUIDs;
+@property (strong, nonatomic) NSNumber *internalThreadActive; // @synthesize internalThreadActive=_internalThreadActive;
+@property (strong, nonatomic) NSNumber *internalThreadCapabilities; // @synthesize internalThreadCapabilities=_internalThreadCapabilities;
+@property (strong, nonatomic) NSNumber *internalThreadStatus; // @synthesize internalThreadStatus=_internalThreadStatus;
 @property BOOL keyGenerationInProgress; // @synthesize keyGenerationInProgress=_keyGenerationInProgress;
 @property unsigned char keyGenerationType; // @synthesize keyGenerationType=_keyGenerationType;
 @property (copy, nonatomic) NSNumber *keyUpdatedStateNumber; // @synthesize keyUpdatedStateNumber=_keyUpdatedStateNumber;
@@ -148,12 +155,16 @@
 @property (readonly) BOOL supportsIdentify;
 @property (nonatomic) BOOL supportsRelay; // @synthesize supportsRelay=_supportsRelay;
 @property (readonly, nonatomic) BOOL supportsSiri;
+@property (readonly, nonatomic) BOOL supportsThreadCommissioning; // @synthesize supportsThreadCommissioning=_supportsThreadCommissioning;
 @property (readonly) BOOL supportsUserManagement;
 @property (strong, nonatomic) HMDAccessorySymptomHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property (strong, nonatomic) HMFTimer *systemTimeInformationTimer; // @synthesize systemTimeInformationTimer=_systemTimeInformationTimer;
 @property (nonatomic) BOOL systemTimeNeedsUpdate; // @synthesize systemTimeNeedsUpdate=_systemTimeNeedsUpdate;
 @property (strong, nonatomic) HMDTargetControllerManager *targetControllerManager; // @synthesize targetControllerManager=_targetControllerManager;
 @property (strong, nonatomic) NSArray *targetUUIDs; // @synthesize targetUUIDs=_targetUUIDs;
+@property (readonly, nonatomic, getter=isThreadTheCurrentlyActiveTransport) BOOL threadActiveTransport;
+@property (readonly, nonatomic) unsigned short threadCapabilities;
+@property (readonly, nonatomic) unsigned short threadStatus;
 @property (readonly, nonatomic) BOOL timeInformationServiceExists; // @synthesize timeInformationServiceExists=_timeInformationServiceExists;
 @property (strong, nonatomic) HMFTimer *timeInformationTimer; // @synthesize timeInformationTimer=_timeInformationTimer;
 @property (readonly, weak, nonatomic) HMDCharacteristic *timeUpdateCharacteristic; // @synthesize timeUpdateCharacteristic=_timeUpdateCharacteristic;
@@ -179,6 +190,7 @@
 - (void)_cancelPowerOn;
 - (void)_checkRegisterForServerNotification;
 - (void)_checkResidentDeviceForReachabilityPing;
+- (void)_commissionToThreadNetwork:(id)arg1 activity:(id)arg2 pairingEvent:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_configureTargetControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_containsSecureCharacteristic;
 - (id)_createDiagnosticsManager:(id)arg1;
@@ -196,6 +208,7 @@
 - (void)_enableNotification:(BOOL)arg1 matchingHAPAccessory:(id)arg2 ignoreDeviceUnlockRequirement:(BOOL)arg3 clientIdentifier:(id)arg4 forCharacteristics:(id)arg5;
 - (BOOL)_enableNotificationOnResident:(BOOL)arg1 characteristic:(id)arg2 clientIdentifier:(id)arg3 ignoreDeviceUnlockRequirement:(BOOL)arg4;
 - (void)_evaluateLocalOperation:(long long)arg1 state:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_findThreadControlPointCharacteristicWithError:(id *)arg1;
 - (id)_getResponseTuple:(id)arg1 error:(id)arg2 source:(unsigned long long)arg3 suspended:(BOOL)arg4;
 - (id)_getSymptomHandler;
 - (void)_handleAddServiceTransaction:(id)arg1 message:(id)arg2;
@@ -221,7 +234,9 @@
 - (BOOL)_handleUpdatedServicesForMediaProfile:(id)arg1;
 - (BOOL)_handleUpdatedServicesForNetworkRouterProfileAndController:(id)arg1;
 - (void)_handleUpdatedServicesForProfilesAndControllers:(BOOL)arg1;
+- (void)_handleUpdatedServicesForThreadManagementWithActivity:(id)arg1;
 - (BOOL)_handleUpdatedServicesForWiFiManagementController;
+- (void)_maybeCommissionToThreadNetwork:(id)arg1 activity:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_messagesForUpdatedRoom:(id)arg1;
 - (void)_notifyCharacteristicNotificationChanges:(id)arg1 enableNotification:(BOOL)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
 - (void)_notifyClientsOfTargetControlSupportUpdate;
@@ -263,6 +278,7 @@
 - (void)_setWakeType;
 - (BOOL)_shouldFilterAccessoryProfile:(id)arg1;
 - (BOOL)_shouldTrackAccessoryWithPriority:(BOOL *)arg1;
+- (void)_startCommissioningToThreadNetwork:(id)arg1 activity:(id)arg2 threadControlPointCharacteristic:(id)arg3 pairingEvent:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_startSystemTimeWriteTimeInformationTimer;
 - (void)_startWriteTimeInformationTimer;
 - (void)_stopScan;
@@ -283,6 +299,8 @@
 - (void)_writeCharacteristicValues:(id)arg1 hapAccessory:(id)arg2 source:(unsigned long long)arg3 message:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_writeCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 message:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 errorBlock:(CDUnknownBlockType)arg7;
 - (void)_writeCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 errorBlock:(CDUnknownBlockType)arg6;
+- (void)_writeCredentialsForThreadNetwork:(id)arg1 activity:(id)arg2 pairingEvent:(id)arg3 metadata:(id)arg4 threadControlPointCharacteristic:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_writeThreadControlPointCharacteristic:(id)arg1 value:(id)arg2 activity:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_writeTimeInformationCharacteristicsForAccessory;
 - (void)_writeValue:(id)arg1 forCharacteristic:(id)arg2 hapAccessory:(id)arg3 authorizationData:(id)arg4 message:(id)arg5;
 - (void)accessory:(id)arg1 didActivateRelayWithError:(id)arg2;
@@ -318,6 +336,7 @@
 - (void)cancelPowerOn;
 - (id)characteristicsPassingTest:(CDUnknownBlockType)arg1;
 - (void)cleanupNotificationCenterObservers;
+- (void)commissionToThreadNetwork:(id)arg1 pairingEvent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)configureBulletinNotification;
 - (id)configureService:(id)arg1;
 - (void)configureWithAccessory:(id)arg1 homeNotificationsEnabled:(BOOL)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -363,6 +382,7 @@
 - (void)handleSetHasOnboardedForNaturalLighting:(id)arg1;
 - (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;
 - (void)handleUpdatedPassword:(id)arg1;
+- (void)handleUpdatedServicesForThreadManagementWithActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)hapCharacteristicWriteRequests:(id)arg1 hapAccessory:(id)arg2 hmdResponses:(id *)arg3 mapping:(id *)arg4;
 - (BOOL)hasAnyServiceWithTypes:(id)arg1;
 - (BOOL)hasBLELinkConnected;
@@ -398,6 +418,7 @@
 - (id)matchingTransportInformation:(id)arg1;
 - (id)matchingTransportInformationWithServerIdentifier:(id)arg1;
 - (id)matchingTransportInformationWithServerIdentifier:(id)arg1 linkType:(long long)arg2;
+- (void)maybeCommissionToThreadNetwork:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)messageReceiverChildren;
 - (id)messageSendPolicy;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;

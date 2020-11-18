@@ -13,7 +13,6 @@
 @interface PXPhotoKitVideoContentProvider : PXDisplayAssetVideoContentProvider <PXPhotoLibraryUIChangeObserver>
 {
     PHFetchResult *_fetchResult;
-    BOOL _wantsCustomCompositor;
 }
 
 @property (readonly, nonatomic) PHAsset *asset; // @dynamic asset;
@@ -25,9 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
-- (BOOL)needsPostprocessing;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (void)postprocessPlayerItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

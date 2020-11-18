@@ -17,24 +17,37 @@
     BOOL _isPerformingUpdates;
     struct {
         BOOL input;
+        BOOL gainMapImage;
     } _needsUpdateFlags;
+    BOOL _revealsGainMapImage;
+    BOOL _animateGainMapAppearance;
+    BOOL _displayingVideoComplement;
+    float _gainMapValue;
     ISLivePhotoUIView *_livePhotoView;
+    struct CGImage *_gainMapImage;
     PXImageLayerModulator *_imageModulator;
     PXImageLayerModulator *_videoModulator;
 }
 
+@property (nonatomic) BOOL animateGainMapAppearance; // @synthesize animateGainMapAppearance=_animateGainMapAppearance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL displayingVideoComplement; // @synthesize displayingVideoComplement=_displayingVideoComplement;
+@property (readonly, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property (readonly, nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PXImageLayerModulator *imageModulator; // @synthesize imageModulator=_imageModulator;
 @property (readonly, nonatomic) ISLivePhotoUIView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
+@property (readonly, nonatomic) BOOL revealsGainMapImage; // @synthesize revealsGainMapImage=_revealsGainMapImage;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PXImageLayerModulator *videoModulator; // @synthesize videoModulator=_videoModulator;
 
 - (void).cxx_destruct;
+- (void)_invalidateGainMapImage;
 - (void)_invalidateInput;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;
+- (void)_updateGainMapImage;
 - (void)_updateIfNeeded;
 - (void)_updateInput;
 - (void)basePlayerUIView:(id)arg1 didChange:(unsigned long long)arg2 withAnimationDuration:(double)arg3;
@@ -44,7 +57,11 @@
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)performChanges_Private:(CDUnknownBlockType)arg1;
 - (void)prepareForReuse;
+- (void)setGainMapImage:(struct CGImage *)arg1;
+- (void)setGainMapImage:(struct CGImage *)arg1 animated:(BOOL)arg2;
+- (void)setGainMapValue:(float)arg1;
 - (void)setLivePhotoView:(id)arg1;
+- (void)setRevealsGainMapImage:(BOOL)arg1;
 
 @end
 

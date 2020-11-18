@@ -28,6 +28,7 @@
 @property (readonly, nonatomic, getter=isRemoteGatewayCapable) BOOL remoteGatewayCapable;
 @property (readonly, nonatomic, getter=isResidentCapable) BOOL residentCapable;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsAnnounce;
 @property (readonly, nonatomic) BOOL supportsAssistantAccessControl;
 @property (readonly, nonatomic) BOOL supportsCameraActivityZones;
 @property (readonly, nonatomic) BOOL supportsCameraRecording;
@@ -45,18 +46,21 @@
 @property (readonly, nonatomic) BOOL supportsKeychainSync;
 @property (readonly, nonatomic) BOOL supportsMediaActions;
 @property (readonly, nonatomic) BOOL supportsMultiUser;
+@property (readonly, nonatomic) BOOL supportsMusicAlarm;
 @property (readonly, nonatomic) BOOL supportsNaturalLighting;
 @property (readonly, nonatomic) BOOL supportsRouterManagement;
 @property (readonly, nonatomic) BOOL supportsShortcutActions;
 @property (readonly, nonatomic) BOOL supportsStandaloneMode;
 @property (readonly, nonatomic) BOOL supportsTargetControl;
 @property (readonly) BOOL supportsThirdPartyMusic;
+@property (readonly, nonatomic) BOOL supportsThreadBorderRouter;
 @property (readonly, nonatomic) BOOL supportsWholeHouseAudio;
 
 + (id)deviceCapabilities;
 + (id)deviceCapabilitiesModelIdentifierWithParentIdentifier:(id)arg1;
 + (BOOL)isAppleMediaAccessory;
 + (BOOL)isCompanionCapable;
++ (BOOL)requiresHomePodPairing;
 + (unsigned long long)supportedPairingCapabilities;
 + (BOOL)supportsAddingAccessory;
 + (BOOL)supportsBackboard;

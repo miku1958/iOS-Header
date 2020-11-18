@@ -89,6 +89,7 @@
 + (double)referenceWidth;
 + (id)smallFont;
 + (struct CGSize)smallPillSize;
++ (BOOL)supportsAnimatedCellularNetworkType;
 + (id)systemUpdateFont;
 + (double)trailingCenteringEdgeInset;
 + (struct NSDirectionalEdgeInsets)trailingEdgeInsets;

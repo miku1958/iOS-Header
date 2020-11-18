@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) BOOL isInPopover; // @synthesize isInPopover=_isInPopover;
 @property (readonly, nonatomic) BOOL isKeyboardMinorEdgeWidth; // @synthesize isKeyboardMinorEdgeWidth=_isKeyboardMinorEdgeWidth;
 @property (nonatomic) double keyboardBarHeight; // @synthesize keyboardBarHeight=_keyboardBarHeight;
+@property (readonly, nonatomic) struct CGSize keyboardScreenReferenceSize;
 @property (nonatomic) double keyboardWidth; // @synthesize keyboardWidth=_keyboardWidth;
 @property (readonly, nonatomic) BOOL knobInput; // @synthesize knobInput=_knobInput;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) BOOL touchInput; // @synthesize touchInput=_touchInput;
 @property (readonly, nonatomic) BOOL touchpadInput; // @synthesize touchpadInput=_touchpadInput;
 
++ (id)_activeKeyboardWindowForScreen:(id)arg1;
 + (id)fullScreenTraitsWithScreen:(id)arg1 orientation:(long long)arg2;
 + (void)setMockIdiom:(long long)arg1;
 + (id)traitsForInputModeWithScreen:(id)arg1;

@@ -12,7 +12,9 @@
 {
     BOOL _enableAutoFPSVideo;
     BOOL _videoHDRSuspended;
+    BOOL _enableHDR10BitVideoIfSupported;
     BOOL _captureMirrored;
+    BOOL _enableContentAwareDistortionCorrection;
     BOOL _enableResponsiveShutter;
     long long _mode;
     long long _device;
@@ -34,6 +36,8 @@
 @property (readonly, nonatomic) long long device; // @synthesize device=_device;
 @property (readonly, nonatomic) long long devicePosition;
 @property (readonly, nonatomic) BOOL enableAutoFPSVideo; // @synthesize enableAutoFPSVideo=_enableAutoFPSVideo;
+@property (readonly, nonatomic) BOOL enableContentAwareDistortionCorrection; // @synthesize enableContentAwareDistortionCorrection=_enableContentAwareDistortionCorrection;
+@property (readonly, nonatomic) BOOL enableHDR10BitVideoIfSupported; // @synthesize enableHDR10BitVideoIfSupported=_enableHDR10BitVideoIfSupported;
 @property (readonly, nonatomic) BOOL enableResponsiveShutter; // @synthesize enableResponsiveShutter=_enableResponsiveShutter;
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) long long photoEncodingBehavior; // @synthesize photoEncodingBehavior=_photoEncodingBehavior;
@@ -49,7 +53,7 @@
 - (void).cxx_destruct;
 - (id)completeDescription;
 - (id)description;
-- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoFPSVideo:(BOOL)arg11 videoHDRSuspended:(BOOL)arg12 aspectRatioCrop:(long long)arg13 photoQualityPrioritization:(long long)arg14 captureMirrored:(BOOL)arg15 enableResponsiveShutter:(BOOL)arg16;
+- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoFPSVideo:(BOOL)arg11 videoHDRSuspended:(BOOL)arg12 aspectRatioCrop:(long long)arg13 photoQualityPrioritization:(long long)arg14 enableHDR10BitVideoIfSupported:(BOOL)arg15 captureMirrored:(BOOL)arg16 enableContentAwareDistortionCorrection:(BOOL)arg17 enableResponsiveShutter:(BOOL)arg18;
 - (id)shortDescription;
 
 @end

@@ -570,8 +570,7 @@ typedef struct {
 typedef struct {
     long long _field1;
     float _field2;
-    float _field3;
-} CDStruct_4f961314;
+} CDStruct_fd7332cd;
 
 typedef struct {
     long long value;

@@ -8,7 +8,7 @@
 
 #import <WorkflowUI/WFActionEventObserver-Protocol.h>
 
-@class NSString, UIButton, WFAction, WFModuleTitleButton;
+@class NSString, UIButton, UIImageView, UILabel, WFAction;
 @protocol WFModuleTitleViewDelegate;
 
 @interface WFModuleTitleView : UIView <WFActionEventObserver>
@@ -18,7 +18,9 @@
     WFAction *_action;
     unsigned long long _accessoryMode;
     unsigned long long _style;
-    WFModuleTitleButton *_titleButton;
+    UIImageView *_imageView;
+    UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
     UIButton *_handoffButton;
     UIButton *_installButton;
 }
@@ -31,10 +33,12 @@
 @property (weak, nonatomic) UIButton *handoffButton; // @synthesize handoffButton=_handoffButton;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideSubtitle; // @synthesize hideSubtitle=_hideSubtitle;
+@property (readonly, weak, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (weak, nonatomic) UIButton *installButton; // @synthesize installButton=_installButton;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
+@property (readonly, weak, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (readonly) Class superclass;
-@property (readonly, weak, nonatomic) WFModuleTitleButton *titleButton; // @synthesize titleButton=_titleButton;
+@property (readonly, weak, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 + (double)viewHeight;
 - (void).cxx_destruct;
@@ -47,12 +51,17 @@
 - (void)configureWithTitle:(id)arg1 subtitle:(id)arg2 applicationBundleIdentifer:(id)arg3;
 - (void)dealloc;
 - (void)handoffButtonPressed:(id)arg1;
+- (struct CGSize)iconSize;
+- (double)iconTitlePadding;
 - (double)imageViewWidth;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)installAction;
 - (void)installButtonPressed:(id)arg1;
 - (BOOL)isAccessibilityElement;
+- (BOOL)isTitleLabelMultiline;
 - (void)layoutSubviews;
+- (struct CGSize)sizeForLabel:(id)arg1 withMaxWidth:(double)arg2;
+- (double)titleSubtitlePadding;
 - (BOOL)toggleFavorited;
 - (void)updateFont;
 

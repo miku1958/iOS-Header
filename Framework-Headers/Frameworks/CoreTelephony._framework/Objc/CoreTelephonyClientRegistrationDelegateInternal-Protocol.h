@@ -6,7 +6,7 @@
 
 #import <CoreTelephony/NSObject-Protocol.h>
 
-@class CTCellInfo, CTEncryptionStatusInfo, CTEnhancedDataLinkQualityMetric, CTEnhancedLinkQualityMetric, CTIMSRegistrationTransportInfo, CTNetworkList, CTRatSelection, CTRegistrationDisplayStatus, CTServiceDescriptor, CTSignalStrengthInfo, CTVoiceLinkQualityMetric, CTXPCServiceSubscriptionContext, NSDictionary, NSNumber, NSString;
+@class CTCellInfo, CTEncryptionStatusInfo, CTEnhancedDataLinkQualityMetric, CTEnhancedLinkQualityMetric, CTIMSRegistrationTransportInfo, CTNRStatus, CTNetworkList, CTRatSelection, CTRegistrationDisplayStatus, CTServiceDescriptor, CTSignalStrengthInfo, CTVoiceLinkQualityMetric, CTXPCServiceSubscriptionContext, NSDictionary, NSNumber, NSString;
 
 @protocol CoreTelephonyClientRegistrationDelegateInternal <NSObject>
 
@@ -22,6 +22,7 @@
 - (void)networkListAvailable:(CTXPCServiceSubscriptionContext *)arg1 list:(CTNetworkList *)arg2;
 - (void)networkReselectionNeeded:(CTXPCServiceSubscriptionContext *)arg1;
 - (void)networkSelected:(CTXPCServiceSubscriptionContext *)arg1 success:(BOOL)arg2 mode:(NSString *)arg3;
+- (void)nrDisableStatusChanged:(CTServiceDescriptor *)arg1 status:(CTNRStatus *)arg2;
 - (void)operatorNameChanged:(CTXPCServiceSubscriptionContext *)arg1 name:(NSString *)arg2;
 - (void)ratSelectionChanged:(CTServiceDescriptor *)arg1 selection:(CTRatSelection *)arg2;
 - (void)rejectCauseCodeChanged:(CTXPCServiceSubscriptionContext *)arg1 causeCode:(NSNumber *)arg2;

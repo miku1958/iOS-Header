@@ -46,7 +46,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let contentType : PXTimelineContentType // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let widgetFamily : 	O // +0x32 (0x0)
+	let widgetFamily : 	O // +0x33 (0x0)
 	var layoutDescription : LayoutDescription // +0x2100085 (0x20)
 	let asset : PHAsset? // +0x19 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
@@ -57,7 +57,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var imageIsDegraded : Bool // +0x0 (0x1)
 
 	// Swift methods
-	0x2580  class func PhotosReliveWidgetViewModel.__allocating_init(contentType:widgetFamily:asset:destination:title:subtitle:image:imageIsDegraded:) // init 
+	0x2570  class func PhotosReliveWidgetViewModel.__allocating_init(contentType:widgetFamily:asset:destination:title:subtitle:image:imageIsDegraded:) // init 
  }
 
  class PhotosUIApps.PhotosReliveWidgetPlaceholderViewModel : PhotosReliveWidgetViewModel { }
@@ -159,10 +159,10 @@ WARNING: couldn't find address 0x3e9a000095b8 (0x69a000095b8) in binary!
 WARNING: couldn't find address 0x45a300009598 (0x5a300009598) in binary!
 	0x3e76  @objc PhotosReliveWidgetUITesterViewController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffffe7c5  @objc PhotosReliveWidgetUITesterViewController.(null) <stripped>
+	0xffffe7d5  @objc PhotosReliveWidgetUITesterViewController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3bcffffec85  @objc PhotosReliveWidgetUITesterViewController.(null) <stripped>
-	0x345000095a0  @objc PhotosReliveWidgetUITesterViewController. <stripped>
+	0x3bcffffec95  @objc PhotosReliveWidgetUITesterViewController.(null) <stripped>
+	0x345000095a0  @objc PhotosReliveWidgetUITesterViewController.M‰åH‰ÃH‰E ¿@ <stripped>
  }
 
  struct PhotosUIApps.TestWidget {

@@ -70,6 +70,7 @@
     BOOL _autoDeferredProcessingEnabled;
     int _qualityPrioritization;
     int _bravoImageFusionMode;
+    BOOL _autoIntelligentDistortionCorrectionEnabled;
     NSDictionary *_vtCompressionProperties;
     int _bracketType;
     unsigned int _bracketImageCount;
@@ -93,6 +94,7 @@
 @property (nonatomic) int HDRMode; // @synthesize HDRMode=_HDRMode;
 @property (readonly, nonatomic) float *ISOs; // @synthesize ISOs=_ISOs;
 @property (nonatomic) BOOL autoDeferredProcessingEnabled; // @synthesize autoDeferredProcessingEnabled=_autoDeferredProcessingEnabled;
+@property (nonatomic) BOOL autoIntelligentDistortionCorrectionEnabled; // @synthesize autoIntelligentDistortionCorrectionEnabled=_autoIntelligentDistortionCorrectionEnabled;
 @property (nonatomic) BOOL autoRedEyeReductionEnabled; // @synthesize autoRedEyeReductionEnabled=_autoRedEyeReductionEnabled;
 @property (nonatomic, getter=isBeginMomentCaptureSettings) BOOL beginMomentCaptureSettings; // @synthesize beginMomentCaptureSettings=_beginMomentCaptureSettings;
 @property (readonly, nonatomic) unsigned int bracketImageCount; // @synthesize bracketImageCount=_bracketImageCount;

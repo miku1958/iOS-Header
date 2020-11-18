@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSBundle, NSDictionary, NSError, NSHashTable, NSMutableDictionary, NSString, NSUserDefaults, TPSAssetSizes, TPSCollection, TPSFullTipContentManager;
+@class NSArray, NSBundle, NSDictionary, NSError, NSHashTable, NSMutableDictionary, NSUserDefaults, TPSAssetSizes, TPSCollection, TPSFullTipContentManager;
 @protocol OS_dispatch_queue;
 
 @interface TPSAppController : NSObject
@@ -22,7 +22,6 @@
     TPSCollection *_featuredCollection;
     NSArray *_collections;
     NSError *_lastFetchError;
-    NSString *_language;
     long long _userInterfaceStyle;
     NSObject<OS_dispatch_queue> *_syncQueue;
     NSBundle *_frameworkBundle;
@@ -44,7 +43,6 @@
 @property (strong, nonatomic) TPSCollection *featuredCollection; // @synthesize featuredCollection=_featuredCollection;
 @property (strong, nonatomic) NSBundle *frameworkBundle; // @synthesize frameworkBundle=_frameworkBundle;
 @property (strong, nonatomic) TPSFullTipContentManager *fullTipContentManager; // @synthesize fullTipContentManager=_fullTipContentManager;
-@property (copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSError *lastFetchError; // @synthesize lastFetchError=_lastFetchError;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 @property (strong, nonatomic) NSDictionary *tipMap; // @synthesize tipMap=_tipMap;

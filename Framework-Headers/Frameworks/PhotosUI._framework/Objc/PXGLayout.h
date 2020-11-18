@@ -167,6 +167,7 @@
 - (struct CGPoint)_offsetToDescendantLayout:(id)arg1;
 - (id)_paddingForLevel:(long long)arg1;
 - (void)_propagateHiddenSpriteIndexes:(id)arg1;
+- (void)_recursivelyResetHiddenSpriteIndexes;
 - (void)_recycleSpriteDataStore;
 - (void)_resetHiddenSpriteIndexes;
 - (void)_updateAnchoring;

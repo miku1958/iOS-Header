@@ -40,6 +40,7 @@
 - (BOOL)isPresentingTransientOverlay:(id)arg1;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredStatusBarStyle;
+- (BOOL)prefersStatusBarHidden;
 - (void)presentRemoteTransientOverlayViewController:(id)arg1 presentationTarget:(id)arg2;
 - (BOOL)shouldFollowSceneOrientation;
 - (unsigned long long)supportedInterfaceOrientations;

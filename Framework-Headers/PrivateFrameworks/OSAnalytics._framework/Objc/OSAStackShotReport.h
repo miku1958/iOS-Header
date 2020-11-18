@@ -8,7 +8,7 @@
 
 #import <OSAnalytics/OSAConcreteReport-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface OSAStackShotReport : OSAReport <OSAConcreteReport>
 {
@@ -17,6 +17,7 @@
     NSString *_reason;
     long long *_exceptionCodes;
     unsigned int _exceptionCodeCount;
+    NSDictionary *_additionalPayload;
     int _thermalNotificationCurrentLevel;
     NSArray *_thermalSensorValues;
     NSMutableArray *_frontmostPids;
@@ -65,6 +66,7 @@
 - (id)reportNamePrefix;
 - (int)resampleTruncatedBacktracesForTask:(int)arg1 forThreads:(id)arg2 usingCatalog:(id)arg3 in:(id)arg4;
 - (id)resampleUUIDsForTask:(int)arg1 usingCatalog:(id)arg2;
+- (void)setAdditionalPayload:(id)arg1;
 - (void)setIncidentID:(id)arg1;
 - (void)setReason:(id)arg1;
 - (void)useStackshotBuffer:(const void *)arg1 size:(unsigned int)arg2 frontmostPids:(id)arg3 atTime:(double)arg4 machTime:(unsigned long long)arg5 sequence:(unsigned int)arg6;

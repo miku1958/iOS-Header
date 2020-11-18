@@ -229,6 +229,7 @@
 - (void)_updateAggressivelyCachesVideoFramesOnFigPlaybackItem;
 - (void)_updateAllowedAudioSpatializationFormats;
 - (void)_updateAlwaysMonitorsPlayabilityOnFigPlaybackItem;
+- (void)_updateAppliesPerFrameHDRDisplayMetadataOnFigPlaybackItem;
 - (void)_updateAudioSpatializationAllowed;
 - (void)_updateAudioTapProcessorOnFigPlaybackItem;
 - (void)_updateBlendsVideoFramesOnFigPlaybackItem;
@@ -294,6 +295,8 @@
 - (BOOL)allowedAudioSpatializationFormatsWasSet;
 - (BOOL)allowsExtendedReadAhead;
 - (BOOL)alwaysMonitorsPlayability;
+- (BOOL)appliesPerFrameHDRDisplayMetadata;
+- (BOOL)appliesPerFrameHDRDisplayMetadataWasSet;
 - (id)asset;
 - (id)audioMix;
 - (BOOL)audioSpatializationAllowedWasSet;
@@ -400,6 +403,7 @@
 - (void)setAllowedAudioSpatializationFormats:(unsigned long long)arg1;
 - (void)setAllowsExtendedReadAhead:(BOOL)arg1;
 - (void)setAlwaysMonitorsPlayability:(BOOL)arg1;
+- (void)setAppliesPerFrameHDRDisplayMetadata:(BOOL)arg1;
 - (void)setAudioMix:(id)arg1;
 - (void)setAudioSpatializationAllowed:(BOOL)arg1;
 - (void)setAudioTapProcessor:(struct opaqueMTAudioProcessingTap *)arg1;

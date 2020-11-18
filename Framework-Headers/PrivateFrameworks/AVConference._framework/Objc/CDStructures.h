@@ -246,6 +246,7 @@ struct VCRateControlAlgorithmConfig {
     int oscillationDeviationTierNumber;
     int oscillationDeviationCountThreshold;
     BOOL preventBasebandRampDownCloseToKeyFrame;
+    int basebandRampDownSlowDownFactor;
 };
 
 struct VCRateControlMediaSuggestion {
@@ -1850,13 +1851,13 @@ typedef struct {
 } CDStruct_c3d3b44c;
 
 typedef struct {
-    int _field1;
-    int _field2;
-    unsigned long long _field3;
-    char _field4[128];
-    unsigned long long _field5;
-    unsigned long long _field6;
-} CDStruct_b018697d;
+    int applicationType;
+    int linkTypeSuggestion;
+    unsigned long long linkTypeChangeReasonCode;
+    char linkTypeChangeReasonString[128];
+    unsigned long long linkBandwidthMin;
+    unsigned long long linkBandwidthMax;
+} CDStruct_cd8cfafa;
 
 typedef struct {
     int _field1;
@@ -2015,6 +2016,7 @@ typedef struct {
             double normalizedBDCD;
             double normalizedDelay;
             char bbString[64];
+            int radioTechnology;
         } baseband;
         CDStruct_de0ff4c0 feedback;
         CDStruct_425c46ae network;
@@ -2052,7 +2054,7 @@ typedef struct {
             unsigned int packetLossPerFrame;
         } nwConnection;
     } ;
-} CDStruct_56e8fa21;
+} CDStruct_1a067c5f;
 
 // Ambiguous groups
 typedef struct {

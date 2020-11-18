@@ -14,29 +14,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var hostingController : ïú
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1a7a4000e7b98 (0x7a4000e7b98) in binary!
-	0x1a7a0  @objc ConditionsHostingView.(null) <stripped>
-WARNING: couldn't find address 0x1a78c000e9e98 (0x78c000e9e98) in binary!
-	0x1a788  @objc ConditionsHostingView.(null) <stripped>
-WARNING: couldn't find address 0x1a78c000e4248 (0x78c000e4248) in binary!
-	0x1a7aa  @objc ConditionsHostingView.(null) <stripped>
-WARNING: couldn't find address 0x1abac000e4218 (0x3ac000e4218) in binary!
+WARNING: couldn't find address 0x1a79c000e7b90 (0x79c000e7b90) in binary!
+	0x1a798  @objc ConditionsHostingView.(null) <stripped>
+WARNING: couldn't find address 0x1a784000e9e90 (0x784000e9e90) in binary!
+	0x1a780  @objc ConditionsHostingView.(null) <stripped>
+WARNING: couldn't find address 0x1a784000e4240 (0x784000e4240) in binary!
+	0x1a7a2  @objc ConditionsHostingView.(null) <stripped>
+WARNING: couldn't find address 0x1aba4000e4210 (0x3a4000e4210) in binary!
 	0x48000000c  @objc ConditionsHostingView.(null) <stripped>
-WARNING: couldn't find address 0x1ab94000e4210 (0x394000e4210) in binary!
-	0x1a86f  @objc ConditionsHostingView.(null) <stripped>
-WARNING: couldn't find address 0x1a72c000e4340 (0x72c000e4340) in binary!
-	0x1ab70  @objc ConditionsHostingView.(null) <stripped>
+WARNING: couldn't find address 0x1ab8c000e4208 (0x38c000e4208) in binary!
+	0x1a867  @objc ConditionsHostingView.(null) <stripped>
+WARNING: couldn't find address 0x1a724000e4338 (0x724000e4338) in binary!
+	0x1ab68  @objc ConditionsHostingView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe47300  @objc ConditionsHostingView.(null) <stripped>
+	0xffe472b8  @objc ConditionsHostingView.(null) <stripped>
 
 	// Swift methods
-	0x3b50  func <stripped> // getter 
-	0x3c20  func <stripped> // setter 
-	0x3d40  func <stripped> // modifyCoroutine 
-	0x3df0  func <stripped> // getter 
-	0x3eb0  func <stripped> // setter 
-	0x3fa0  func <stripped> // modifyCoroutine 
-	0x4080  func <stripped> // method 
+	0x3b10  func <stripped> // getter 
+	0x3be0  func <stripped> // setter 
+	0x3d00  func <stripped> // modifyCoroutine 
+	0x3db0  func <stripped> // getter 
+	0x3e70  func <stripped> // setter 
+	0x3f60  func <stripped> // modifyCoroutine 
+	0x4040  func <stripped> // method 
  }
 
  struct WorkflowEditor.IsShortcutProcessing { }
@@ -69,14 +69,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var action : weak WFAction? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1ab94000e4210 (0x394000e4210) in binary!
-	0x1a86f  @objc ActionParameterStateObserver.(null) <stripped>
-WARNING: couldn't find address 0x1a72c000e4340 (0x72c000e4340) in binary!
-	0x1ab70  @objc ActionParameterStateObserver.(null) <stripped>
+WARNING: couldn't find address 0x1ab8c000e4208 (0x38c000e4208) in binary!
+	0x1a867  @objc ActionParameterStateObserver.(null) <stripped>
+WARNING: couldn't find address 0x1a724000e4338 (0x724000e4338) in binary!
+	0x1ab68  @objc ActionParameterStateObserver.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe47300  @objc ActionParameterStateObserver.(null) <stripped>
+	0xffe472b8  @objc ActionParameterStateObserver.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe473a8  @objc ActionParameterStateObserver.(null) <stripped>
+	0xffe47360  @objc ActionParameterStateObserver.(null) <stripped>
 
 	// Swift methods
  }
@@ -155,21 +155,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var textTokenChooser : WFTextTokenChooser?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1a71e000e41b8 (0x71e000e41b8) in binary!
-	0x1ab0d  @objc VariableSheetViewController.(null) <stripped>
-WARNING: couldn't find address 0x1a40c000e4330 (0x40c000e4330) in binary!
-	0x1a420  @objc VariableSheetViewController.(null) <stripped>
-WARNING: couldn't find address 0x1ac88000e4388 (0x488000e4388) in binary!
-	0x1aaf0  @objc VariableSheetViewController.(null) <stripped>
+WARNING: couldn't find address 0x1a716000e41b0 (0x716000e41b0) in binary!
+	0x1ab05  @objc VariableSheetViewController.(null) <stripped>
+WARNING: couldn't find address 0x1a404000e4328 (0x404000e4328) in binary!
+	0x1a418  @objc VariableSheetViewController.(null) <stripped>
+WARNING: couldn't find address 0x1ac80000e4380 (0x480000e4380) in binary!
+	0x1aae8  @objc VariableSheetViewController.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x15cffe544b0  @objc VariableSheetViewController.(null) <stripped>
-	0x36cffe547b8  @objc VariableSheetViewController.ÿÿÿ <stripped>
-	0x584ffe54940  @objc VariableSheetViewController.ÿÿÿ <stripped>
+	0x154ffe54468  @objc VariableSheetViewController.(null) <stripped>
+	0x364ffe54770  @objc VariableSheetViewController.ÿÿ?M‰ìH9Ã‡ð <stripped>
+	0x57cffe548f8  @objc VariableSheetViewController.H¸ÿÿÿÿÿÿÿ?M‰ìI9Æ‡Ã	 <stripped>
 
 	// Swift methods
-	0x161f0  func <stripped> // method 
-	0x169e0  func <stripped> // method 
-	0x16c90  func <stripped> // method 
+	0x161b0  func <stripped> // method 
+	0x169a0  func <stripped> // method 
+	0x16c50  func <stripped> // method 
  }
 
  struct WorkflowEditor.VariableSheet {
@@ -210,27 +210,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isEditable : Bool // +0x20 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1a6ce000e9890 (0x6ce000e9890) in binary!
-	0x1a6c2  @objc EditorHostingViewController.(null) <stripped>
-WARNING: couldn't find address 0x1aac4000e7128 (0x2c4000e7128) in binary!
-	0x1aab8  @objc EditorHostingViewController.(null) <stripped>
-WARNING: couldn't find address 0x1a227000e5a80 (0x227000e5a80) in binary!
-	0x1aa8d  @objc EditorHostingViewController.(null) <stripped>
-WARNING: couldn't find address 0x1ac20000e4320 (0x420000e4320) in binary!
-	0x1aa88  @objc EditorHostingViewController.(null) <stripped>
+WARNING: couldn't find address 0x1a6c6000e9888 (0x6c6000e9888) in binary!
+	0x1a6ba  @objc EditorHostingViewController.(null) <stripped>
+WARNING: couldn't find address 0x1aabc000e7120 (0x2bc000e7120) in binary!
+	0x1aab0  @objc EditorHostingViewController.(null) <stripped>
+WARNING: couldn't find address 0x1a21f000e5a78 (0x21f000e5a78) in binary!
+	0x1aa85  @objc EditorHostingViewController.(null) <stripped>
+WARNING: couldn't find address 0x1ac18000e4318 (0x418000e4318) in binary!
+	0x1aa80  @objc EditorHostingViewController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0xd4ffe55cb8  @objc EditorHostingViewController.(null) <stripped>
-	0x646000e4310  @objc EditorHostingViewController.¸ÿÿÿÿÿÿÿ?H9ÃL‹=eã$ <stripped>
-WARNING: couldn't find address 0xffe55b28 (0xffe55b28) in binary!
-	0x23c000e4360  @objc EditorHostingViewController.(null) <stripped>
-WARNING: couldn't find address 0xe4364ffe5a980 (0x364ffe5a980) in binary!
-	0x5d4000e41e8  @objc EditorHostingViewController.(null) <stripped>
+	0xccffe55c70  @objc EditorHostingViewController.(null) <stripped>
+	0x63e000e4308  @objc EditorHostingViewController.¸ÿÿÿÿÿÿÿ?H9Ã‡  <stripped>
+WARNING: couldn't find address 0xffe55ae0 (0xffe55ae0) in binary!
+	0x234000e4358  @objc EditorHostingViewController.(null) <stripped>
+WARNING: couldn't find address 0xe435cffe5a938 (0x35cffe5a938) in binary!
+	0x5cc000e41e0  @objc EditorHostingViewController.(null) <stripped>
 
 	// Swift methods
-	0x18090  class func EditorHostingViewController.__allocating_init(workflow:) // init 
-	0x186b0  func <stripped> // getter 
-	0x18720  func <stripped> // setter 
-	0x188b0  func <stripped> // modifyCoroutine 
+	0x18050  class func EditorHostingViewController.__allocating_init(workflow:) // init 
+	0x18670  func <stripped> // getter 
+	0x186e0  func <stripped> // setter 
+	0x18870  func <stripped> // modifyCoroutine 
  }
 
  class WorkflowEditor.ActionList : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -245,14 +245,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var actionsObserver : ‘Ê // +0x0 (0x8)
 
 	// Swift methods
-	0x18f90  func <stripped> // getter 
-	0x18ff0  func <stripped> // method 
-	0x191b0  func <stripped> // method 
+	0x18f50  func <stripped> // getter 
+	0x18fb0  func <stripped> // method 
+	0x19170  func <stripped> // method 
  }
 
  class WorkflowEditor.ActionGroup : WFTreeNode /System/Library/PrivateFrameworks/WorkflowUICore.framework/WorkflowUICore {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1a646000e4310 (0x646000e4310) in binary!
+WARNING: couldn't find address 0x1a63e000e4308 (0x63e000e4308) in binary!
 	0x48000000c  @objc ActionGroup.(null) <stripped>
  }
 
@@ -262,10 +262,10 @@ WARNING: couldn't find address 0x1a646000e4310 (0x646000e4310) in binary!
 	let action : WFAction
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1a666000e4330 (0x666000e4330) in binary!
-	0x1aa68  @objc ActionNode.(null) <stripped>
+WARNING: couldn't find address 0x1a65e000e4328 (0x65e000e4328) in binary!
+	0x1aa60  @objc ActionNode.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe55b28  @objc ActionNode.(null) <stripped>
+	0xffe55ae0  @objc ActionNode.(null) <stripped>
 
 	// Swift methods
  }
@@ -314,17 +314,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var button : weak WFVariableConfigurationButton?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1aa3c000e4360 (0x23c000e4360) in binary!
-	0x1aa30  @objc Coordinator.(null) <stripped>
-WARNING: couldn't find address 0x1a5d4000e41e8 (0x5d4000e41e8) in binary!
-	0x1aa18  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x1aa34000e4358 (0x234000e4358) in binary!
+	0x1aa28  @objc Coordinator.(null) <stripped>
+WARNING: couldn't find address 0x1a5cc000e41e0 (0x5cc000e41e0) in binary!
+	0x1aa10  @objc Coordinator.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe61348  @objc Coordinator.(null) <stripped>
+	0xffe61300  @objc Coordinator.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x6cffe61620  @objc Coordinator.(null) <stripped>
+	0x64ffe615d8  @objc Coordinator.(null) <stripped>
 
 	// Swift methods
-	0x1e7e0  func <stripped> // method 
+	0x1e7a0  func <stripped> // method 
  }
 
  struct WorkflowEditor.VariableButton {
@@ -401,27 +401,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var updatedState : WFParameterState?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1a5b4000e4070 (0x5b4000e4070) in binary!
-	0x1a5d2  @objc ParameterHostingView.(null) <stripped>
-WARNING: couldn't find address 0x1af3c000e6da0 (0x73c000e6da0) in binary!
-	0x1af50  @objc ParameterHostingView.(null) <stripped>
-WARNING: couldn't find address 0x1a574000e6d90 (0x574000e6d90) in binary!
-	0x1a9b0  @objc ParameterHostingView.(null) <stripped>
-WARNING: couldn't find address 0x1a9a4000e4010 (0x1a4000e4010) in binary!
+WARNING: couldn't find address 0x1a5ac000e4068 (0x5ac000e4068) in binary!
+	0x1a5ca  @objc ParameterHostingView.(null) <stripped>
+WARNING: couldn't find address 0x1af34000e6d98 (0x734000e6d98) in binary!
+	0x1af48  @objc ParameterHostingView.(null) <stripped>
+WARNING: couldn't find address 0x1a56c000e6d88 (0x56c000e6d88) in binary!
+	0x1a9a8  @objc ParameterHostingView.(null) <stripped>
+WARNING: couldn't find address 0x1a99c000e4008 (0x19c000e4008) in binary!
 	0x78000000c  @objc ParameterHostingView.(null) <stripped>
-WARNING: couldn't find address 0x7b1aa000eb930 (0x1aa000eb930) in binary!
-	0x7b1ae  @objc ParameterHostingView.(null) <stripped>
-WARNING: couldn't find address 0x7b20e000e7950 (0x20e000e7950) in binary!
-	0x7b18e  @objc ParameterHostingView.(null) <stripped>
-WARNING: couldn't find address 0x7b18a000e3fc0 (0x18a000e3fc0) in binary!
-	0x7b16e  @objc ParameterHostingView.(null) <stripped>
+WARNING: couldn't find address 0x7b1a2000eb928 (0x1a2000eb928) in binary!
+	0x7b1a6  @objc ParameterHostingView.(null) <stripped>
+WARNING: couldn't find address 0x7b206000e7948 (0x206000e7948) in binary!
+	0x7b186  @objc ParameterHostingView.(null) <stripped>
+WARNING: couldn't find address 0x7b182000e3fb8 (0x182000e3fb8) in binary!
+	0x7b166  @objc ParameterHostingView.(null) <stripped>
 
 	// Swift methods
-	0x25110  class func <stripped> // method 
-	0x254f0  func <stripped> // method 
-	0x258e0  func <stripped> // method 
-	0x25940  func <stripped> // method 
-	0x25a10  func <stripped> // method 
+	0x250d0  class func <stripped> // method 
+	0x254b0  func <stripped> // method 
+	0x258a0  func <stripped> // method 
+	0x25900  func <stripped> // method 
+	0x259d0  func <stripped> // method 
  }
 
  struct WorkflowEditor.ParameterView {

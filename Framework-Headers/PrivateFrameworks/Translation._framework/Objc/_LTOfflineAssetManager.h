@@ -37,7 +37,9 @@ __attribute__((visibility("hidden")))
 - (id)configurationPropertyListWithURL:(id)arg1;
 - (void)debugDumpAssets:(id)arg1;
 - (void)deleteAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)downloadAsset:(id)arg1 userInitiated:(BOOL)arg2 progessCallback:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)downloadAsset:(id)arg1 downloadOptions:(id)arg2 progressCallback:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)downloadAsset:(id)arg1 userInitiated:(BOOL)arg2 progressCallback:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)downloadAsset:(id)arg1 userInitiated:(BOOL)arg2 useCellular:(BOOL)arg3 progressCallback:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)downloadAssetsForLanguagePair:(id)arg1 userInitiated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)downloadVoiceAssetsForLanguagePair:(id)arg1;
 - (id)endpointAssetInfoWithContext:(id)arg1 error:(id *)arg2;

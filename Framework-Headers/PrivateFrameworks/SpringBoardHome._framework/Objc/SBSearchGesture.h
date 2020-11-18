@@ -21,6 +21,7 @@
     NSMutableSet *_disabledReasons;
     BOOL _isDismissing;
     BOOL _ignoreScrollingEnded;
+    BOOL _isDraggingAccordingToScrollView;
     BOOL _animatingResetOrReveal;
     UIView *_targetView;
 }
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic, getter=isAnimatingResetOrReveal) BOOL animatingResetOrReveal; // @synthesize animatingResetOrReveal=_animatingResetOrReveal;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isDragging) BOOL dragging;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isShowingSearch) BOOL showingSearch;
 @property (readonly) Class superclass;
@@ -38,6 +40,7 @@
 - (void).cxx_destruct;
 - (BOOL)_isShowingSearch;
 - (void)_notifyThaWeStartedShowingOrHiding;
+- (void)_notifyThatGestureEndedWithShowingIfNeeded:(BOOL)arg1;
 - (void)_updateForFinalContentOffset;
 - (void)_updateForScrollingEnded;
 - (void)_updateScrollingEnabled;

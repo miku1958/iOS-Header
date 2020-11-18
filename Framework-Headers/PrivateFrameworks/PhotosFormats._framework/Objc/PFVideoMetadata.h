@@ -21,8 +21,11 @@
 + (BOOL)readMetadataType:(unsigned char)arg1 fromAVAsset:(id)arg2 value:(id *)arg3 error:(id *)arg4;
 + (BOOL)readMetadataType:(unsigned char)arg1 fromFileURL:(id)arg2 value:(id *)arg3 error:(id *)arg4;
 + (BOOL)videoAssetIsDecodable:(id)arg1;
++ (BOOL)videoAssetIsHighDynamicRange:(id)arg1;
 + (BOOL)videoAssetIsPlayable:(id)arg1;
 + (unsigned int)videoCodecFourCharCodeNumberForAVAsset:(id)arg1;
++ (BOOL)videoTrackFormatDescriptionHasDolby8_4Metadata:(struct opaqueCMFormatDescription *)arg1;
++ (BOOL)videoTrackFormatDescriptionIsHighDynamicRange:(struct opaqueCMFormatDescription *)arg1;
 
 @end
 

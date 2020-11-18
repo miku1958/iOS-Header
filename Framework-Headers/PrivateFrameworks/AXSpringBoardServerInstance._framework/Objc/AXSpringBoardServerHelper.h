@@ -110,6 +110,7 @@
 - (BOOL)canLaunchAsFloatingApplicationForIconView:(id)arg1;
 - (BOOL)canLaunchAsPinnedApplicationForIconView:(id)arg1;
 - (BOOL)canSetDockIconActivationModeForServerInstance:(id)arg1;
+- (void)cancelSiriDismissalForAssistiveTouchWithServerInstance:(id)arg1;
 - (BOOL)connectedDevicesRequireAssistiveTouch;
 - (id)coverSheetViewController;
 - (void)dealloc;
@@ -140,6 +141,8 @@
 - (BOOL)isDarkModeActiveWithServiceInstance:(id)arg1;
 - (BOOL)isDockVisibleWithServerInstance:(id)arg1;
 - (BOOL)isGuidedAccessActiveWithServerInstance:(id)arg1;
+- (BOOL)isLockScreenVisible;
+- (BOOL)isLockScreenVisibleWithServerInstance:(id)arg1;
 - (BOOL)isMagnifierVisibleWithServerInstance:(id)arg1;
 - (BOOL)isMakingEmergencyCallWithServerInstance:(id)arg1;
 - (BOOL)isMediaPlayingWithServerInstance:(id)arg1 forBundleId:(id)arg2;

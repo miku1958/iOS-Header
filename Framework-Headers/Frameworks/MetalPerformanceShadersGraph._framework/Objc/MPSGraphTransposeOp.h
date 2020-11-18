@@ -14,6 +14,7 @@
 
 - (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 dimension:(unsigned long long)arg4 withDimension:(unsigned long long)arg5 name:(id)arg6;
 - (struct Value)makeMLIROpWithBuilder:(struct OpBuilder *)arg1 symbolTable:(struct MPSSymbolTable *)arg2 inputValues:(vector_c90d9c45 *)arg3 opInitialization:(BOOL)arg4 name:(id)arg5;
+- (id)partialDerivativeForInputTensor:(id)arg1 incomingGradient:(id)arg2 inputIndex:(unsigned long long)arg3 name:(id)arg4;
 
 @end
 

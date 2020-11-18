@@ -45,6 +45,7 @@
 - (id)_assertionClientForPort:(unsigned int)arg1;
 - (id)_canSetDockIconActivationMode:(id)arg1;
 - (id)_cancelGestureActivation:(id)arg1;
+- (id)_cancelSiriDismissalForAssistiveTouch:(id)arg1;
 - (id)_connectedDevicesRequireAssistiveTouch:(id)arg1;
 - (id)_copyStringToPasteboard:(id)arg1;
 - (id)_dismissAppSwitcher:(id)arg1;
@@ -90,6 +91,7 @@
 - (id)_isDarkModeActive:(id)arg1;
 - (id)_isDockVisible:(id)arg1;
 - (id)_isGuidedAccessActive:(id)arg1;
+- (id)_isLockScreenVisible:(id)arg1;
 - (id)_isMakingEmergencyCall:(id)arg1;
 - (id)_isMediaPlaying:(id)arg1;
 - (id)_isNotificationCenterVisible:(id)arg1;

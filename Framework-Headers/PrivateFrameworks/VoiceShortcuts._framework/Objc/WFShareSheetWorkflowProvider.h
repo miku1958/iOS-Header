@@ -18,7 +18,6 @@
 - (void).cxx_destruct;
 - (id)generateSingleUseTokenForWorkflowIdentifier:(id)arg1;
 - (id)initWithDatabaseProvider:(id)arg1;
-- (id)shareSheetWorkflowReferencesForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 error:(id *)arg3;
 - (id)shareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 error:(id *)arg3;
 
 @end

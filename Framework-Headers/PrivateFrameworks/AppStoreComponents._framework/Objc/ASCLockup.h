@@ -10,7 +10,7 @@
 #import <AppStoreComponents/NSCopying-Protocol.h>
 #import <AppStoreComponents/NSSecureCoding-Protocol.h>
 
-@class ASCAdamID, ASCArtwork, ASCViewMetrics, NSString;
+@class ASCAdamID, ASCArtwork, ASCViewMetrics, NSArray, NSSet, NSString;
 @protocol ASCOffer;
 
 @interface ASCLockup : NSObject <NSSecureCoding, NSCopying, ASCViewModel>
@@ -24,11 +24,13 @@
     NSString *_subtitle;
     NSString *_ageRating;
     id<ASCOffer> _offer;
+    NSArray *_features;
 }
 
 @property (readonly, copy, nonatomic) NSString *ageRating; // @synthesize ageRating=_ageRating;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSArray *features; // @synthesize features=_features;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *heading; // @synthesize heading=_heading;
 @property (readonly, copy, nonatomic) ASCArtwork *icon; // @synthesize icon=_icon;
@@ -36,6 +38,7 @@
 @property (readonly, copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property (readonly, copy, nonatomic) ASCViewMetrics *metrics; // @synthesize metrics=_metrics;
 @property (readonly, copy, nonatomic) id<ASCOffer> offer; // @synthesize offer=_offer;
+@property (readonly, copy, nonatomic) NSSet *signpostTags;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -44,11 +47,15 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)featureWithClass:(Class)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithID:(id)arg1 kind:(id)arg2 icon:(id)arg3 heading:(id)arg4 title:(id)arg5 subtitle:(id)arg6 ageRating:(id)arg7 offer:(id)arg8;
 - (id)initWithID:(id)arg1 kind:(id)arg2 metrics:(id)arg3 icon:(id)arg4 heading:(id)arg5 title:(id)arg6 subtitle:(id)arg7 ageRating:(id)arg8 offer:(id)arg9;
+- (id)initWithID:(id)arg1 kind:(id)arg2 metrics:(id)arg3 icon:(id)arg4 heading:(id)arg5 title:(id)arg6 subtitle:(id)arg7 ageRating:(id)arg8 offer:(id)arg9 features:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
+- (id)lockupByAddingFeature:(id)arg1;
 - (id)lockupWithOffer:(id)arg1;
+- (id)lockupWithSignpostTags:(id)arg1;
 
 @end
 

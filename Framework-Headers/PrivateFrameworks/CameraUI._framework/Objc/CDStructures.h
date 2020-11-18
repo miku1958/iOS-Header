@@ -205,7 +205,8 @@ typedef struct {
     long long _field1;
     long long _field2;
     struct CGSize _field3;
-} CDStruct_7270c63f;
+    long long _field4;
+} CDStruct_c1e2adca;
 
 typedef struct {
     struct CGPoint point;

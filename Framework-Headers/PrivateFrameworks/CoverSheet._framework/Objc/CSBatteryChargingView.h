@@ -21,8 +21,10 @@
 @property (readonly, nonatomic) double horizontalGapBetweenBatteryAndPercentLabel;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 
++ (id)batteryChargingRingViewWithConfiguration:(id)arg1;
 + (id)batteryChargingViewWithDoubleBattery;
 + (id)batteryChargingViewWithSingleBattery;
++ (id)horizontalBatteryChargingViewForBatterySize:(struct CGSize)arg1;
 + (id)maskImageNameForChargingBattery;
 + (id)maskImageNameForExternalChargingBattery;
 + (id)maskImageNameForInternalChargingBattery;

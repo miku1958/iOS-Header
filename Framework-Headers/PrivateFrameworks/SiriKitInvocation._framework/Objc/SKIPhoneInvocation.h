@@ -10,5 +10,8 @@
 {
 }
 
++ (id)announceHomeAnnouncementRequestFromApp:(id)arg1;
++ (id)readHomeAnnouncementRequestFromApp:(id)arg1;
+
 @end
 

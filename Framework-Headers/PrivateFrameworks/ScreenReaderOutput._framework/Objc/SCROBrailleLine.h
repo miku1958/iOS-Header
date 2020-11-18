@@ -93,8 +93,8 @@
 - (BOOL)_insertBrailleStringAtCursor:(id)arg1 modifiers:(id)arg2 silently:(BOOL)arg3;
 - (BOOL)_setMainCells:(const char *)arg1 length:(long long)arg2;
 - (id)_spokenStringForBrailleString:(id)arg1 isDelete:(BOOL)arg2 speakLiterally:(out BOOL *)arg3;
-- (id)_translatedTextForPrefixBraille:(id)arg1 printBraille:(id)arg2 contracted:(BOOL)arg3;
-- (id)_translatedTextInIsolationForBraille:(id)arg1 contracted:(BOOL)arg2;
+- (id)_translatedTextForPrefixBraille:(id)arg1 printBraille:(id)arg2 translationMode:(unsigned long long)arg3;
+- (id)_translatedTextInIsolationForBraille:(id)arg1 translationMode:(unsigned long long)arg2;
 - (id)_trimCommonPrefixWithString:(id)arg1 fromString:(id)arg2;
 - (void)_updateOffsets;
 - (void)addAttributedPaddingToLineBuffer:(id)arg1;

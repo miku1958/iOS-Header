@@ -33,6 +33,7 @@
 - (id)initWithDevice:(id)arg1 kernelSizes:(struct MPSNDArrayPoolingSizes_s)arg2 poolingMode:(int)arg3;
 - (unsigned long long)kernelDimensionalityForSourceArrays:(id)arg1;
 - (BOOL)supportsGradientForSourceIndex:(unsigned long long)arg1;
+- (id)workloadStatisticsForSourceArrays:(id)arg1 destArrays:(id)arg2 kernel:(id)arg3 sourceState:(id)arg4;
 
 @end
 

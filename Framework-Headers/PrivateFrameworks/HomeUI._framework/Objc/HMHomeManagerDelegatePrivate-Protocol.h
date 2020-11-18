@@ -6,12 +6,13 @@
 
 #import <HomeUI/HMHomeManagerDelegate-Protocol.h>
 
-@class HMHomeManager, NSArray;
+@class HMHomeManager, NSArray, NSString;
 
 @protocol HMHomeManagerDelegatePrivate <HMHomeManagerDelegate>
 
 @optional
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateAccessAllowedWhenLocked:(BOOL)arg2;
+- (void)homeManager:(HMHomeManager *)arg1 didUpdateMultiUserStatus:(long long)arg2 reason:(NSString *)arg3;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateResidentEnabledForThisDevice:(BOOL)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateStateForIncomingInvitations:(NSArray *)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateStatus:(unsigned long long)arg2;

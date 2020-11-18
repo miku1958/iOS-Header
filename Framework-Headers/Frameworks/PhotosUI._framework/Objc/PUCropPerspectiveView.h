@@ -44,11 +44,15 @@ __attribute__((visibility("hidden")))
     struct CGPoint _lastModelCropCenter;
     struct CGPoint _lastViewCropCenter;
     double _lastUICroppingRectToImageScale;
+    float _gainMapValue;
+    struct CGImage *_gainMapImage;
     struct CGRect _imageCropRect;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property (nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGRect imageCropRect; // @synthesize imageCropRect=_imageCropRect;
 @property (readonly) Class superclass;
@@ -92,7 +96,7 @@ __attribute__((visibility("hidden")))
 - (void)setCanvasFrame:(struct CGRect)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageCropRectFromViewCropRect:(struct CGRect)arg1 animated:(BOOL)arg2;
-- (void)setImageModulationOptions:(CDStruct_0b004a15)arg1;
+- (void)setImageModulationOptions:(CDStruct_910f5d27)arg1;
 - (void)setImageSize:(struct CGSize)arg1;
 - (void)setLivePhoto:(id)arg1;
 - (void)setModelCropRect:(struct CGRect)arg1 viewCropRect:(struct CGRect)arg2;

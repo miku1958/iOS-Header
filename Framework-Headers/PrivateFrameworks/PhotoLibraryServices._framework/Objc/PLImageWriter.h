@@ -25,25 +25,29 @@
     PLLibraryServicesManager *_libraryServicesManager;
 }
 
-+ (id)_assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4;
-+ (id)_assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4;
++ (id)_assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4 applySemanticEnhance:(BOOL)arg5;
++ (id)_assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4 applySemanticEnhance:(BOOL)arg5;
 + (id)_assetAdjustmentsFromCameraAdjustmentsFileAtPath:(id)arg1 exportProperties:(id)arg2 cameraMetadata:(id)arg3;
 + (id)_assetUUIDFromIncomingFilename:(id)arg1;
 + (BOOL)_hasPrimaryAssetAndAdjustmentsFilesWithType:(short)arg1 inIncomingFilenames:(id)arg2 forAssetUUID:(id)arg3;
 + (id)_pathsByAssetUUIDFromIncomingCrashRecoveryPaths:(id)arg1;
 + (BOOL)_requiresAssetUUIDForJobType:(id)arg1;
 + (BOOL)_requiresIndicatorFileForJobType:(id)arg1;
-+ (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3;
++ (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 applySemanticEnhance:(BOOL)arg4;
 + (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 exportProperties:(id)arg2;
 + (id)assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3;
++ (id)assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 applySemanticEnhance:(BOOL)arg4;
 + (id)assetAdjustmentsFromCameraFilters:(id)arg1 portraitMetadata:(id)arg2 exportProperties:(id)arg3 cameraMetadata:(id)arg4;
 + (id)assetAdjustmentsFromCompositionController:(id)arg1 exportProperties:(id)arg2;
++ (id)cameraMetadataURLForPrimaryAssetURL:(id)arg1 photoLibrary:(id)arg2;
 + (void)decorateThumbnail:(id)arg1 inContext:(struct CGContext *)arg2;
 + (void)decorateThumbnailInRect:(struct CGRect)arg1 size:(struct CGSize)arg2 duration:(id)arg3 inContext:(struct CGContext *)arg4 format:(id)arg5;
 + (id)deferredPhotoPreviewDestinationURLForPrimaryAssetURL:(id)arg1;
 + (id)finalizedAssetURLForDeferredPhotoPreviewURL:(id)arg1 extension:(id)arg2;
 + (BOOL)isDeferredPhotoPreviewURL:(id)arg1;
 + (BOOL)isSpatialOverCaptureURL:(id)arg1;
++ (id)semanticEnhancePreviewDestinationURLForPrimaryAssetURL:(id)arg1;
++ (BOOL)semanticEnhanceSceneIsValid:(long long)arg1;
 + (BOOL)setAdjustmentsForNewPhoto:(id)arg1 mainFileMetadata:(id)arg2 cameraAdjustmentData:(id)arg3 adjustmentDataPath:(id)arg4 filteredImagePath:(id)arg5 cameraMetadata:(id)arg6 finalAssetSize:(struct CGSize)arg7 isSubstandardRender:(BOOL)arg8;
 + (void)setAdjustmentsForNewVideo:(id)arg1 mainFileMetadata:(id)arg2 withAdjustmentsDictionary:(id)arg3 cameraAdjustments:(id)arg4 renderedContentPath:(id)arg5 renderedPosterFramePreviewPath:(id)arg6 finalAssetSize:(struct CGSize)arg7;
 + (id)spatialOverCaptureDestinationURLForPrimaryAssetURL:(id)arg1;
@@ -53,7 +57,7 @@
 - (void)_enablePhotoStreamJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_fetchPhotoAssetForUUID:(id)arg1 moc:(id)arg2;
 - (void)_handleAvalancheCrashRecovery:(id)arg1;
-- (void)_handleCameraAdjustments:(id)arg1 fullsizeRenders:(id)arg2;
+- (void)_handleCameraAdjustments:(id)arg1 fullsizeRenders:(id)arg2 largeThumbnails:(id)arg3;
 - (void)_handleCameraMetadataCrashRecovery:(id)arg1;
 - (void)_handlePhotoIrisCrashRecoveryForPhotoIndicatorFiles:(id)arg1;
 - (void)_handlePhotoIrisCrashRecoveryForVideos:(id)arg1;
@@ -87,6 +91,7 @@
 - (void)_resetSyncedAssetsDCIMDirectory;
 - (BOOL)_transferSpatialOverCaptureVideoFromIncomingPath:(id)arg1 forBaseDestinationPath:(id)arg2 shouldRemoveIncoming:(BOOL *)arg3;
 - (BOOL)_transferVideoFromIncomingPath:(id)arg1 toDestinationPath:(id)arg2 shouldRemoveIncoming:(BOOL *)arg3 error:(id *)arg4;
+- (BOOL)_writeOutCameraMetadata:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
 - (id)cameraAssetPathForNewAssetWithExtension:(id)arg1 assetUUID:(id)arg2;
 - (BOOL)canEnqueueJob:(id)arg1;
 - (void)cleanupFilesInLibrary:(id)arg1 afteriTunesSyncBeforeDate:(id)arg2;

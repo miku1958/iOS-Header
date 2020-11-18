@@ -15,39 +15,40 @@
     struct os_unfair_lock_s _downstreamLock;
     BOOL _recursion;
     BOOL _finished;
+    BOOL _errored;
     BOOL _cancelled;
     unsigned long long _upstreamCount;
     id<BPSSubscriber> _downstream;
     NSMutableArray *_subscriptions;
     NSMutableArray *_activeSubscriptions;
     NSMutableArray *_buffers;
-    NSMutableArray *_overflowBuffer;
-    NSMutableSet *_currentlyProcessing;
+    NSMutableArray *_requestsPerSubscription;
     NSMutableSet *_completedUpstreamIndexes;
     long long _demand;
-    unsigned long long _subscribedCount;
+    unsigned long long _finishCount;
 }
 
 @property (strong, nonatomic) NSMutableArray *activeSubscriptions; // @synthesize activeSubscriptions=_activeSubscriptions;
 @property (strong, nonatomic) NSMutableArray *buffers; // @synthesize buffers=_buffers;
 @property (nonatomic) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (strong, nonatomic) NSMutableSet *completedUpstreamIndexes; // @synthesize completedUpstreamIndexes=_completedUpstreamIndexes;
-@property (strong, nonatomic) NSMutableSet *currentlyProcessing; // @synthesize currentlyProcessing=_currentlyProcessing;
 @property (nonatomic) long long demand; // @synthesize demand=_demand;
 @property (strong, nonatomic) id<BPSSubscriber> downstream; // @synthesize downstream=_downstream;
+@property (nonatomic) BOOL errored; // @synthesize errored=_errored;
+@property (nonatomic) unsigned long long finishCount; // @synthesize finishCount=_finishCount;
 @property (nonatomic) BOOL finished; // @synthesize finished=_finished;
-@property (strong, nonatomic) NSMutableArray *overflowBuffer; // @synthesize overflowBuffer=_overflowBuffer;
 @property (nonatomic) BOOL recursion; // @synthesize recursion=_recursion;
-@property (nonatomic) unsigned long long subscribedCount; // @synthesize subscribedCount=_subscribedCount;
+@property (strong, nonatomic) NSMutableArray *requestsPerSubscription; // @synthesize requestsPerSubscription=_requestsPerSubscription;
 @property (strong, nonatomic) NSMutableArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property (nonatomic) unsigned long long upstreamCount; // @synthesize upstreamCount=_upstreamCount;
 
 - (void).cxx_destruct;
 - (void)cancel;
 - (long long)compareFirst:(id)arg1 withSecond:(id)arg2;
+- (void)flushBufferAndRequestMoreWhileLocked;
 - (id)initWithDownstream:(id)arg1 upstreamCount:(unsigned long long)arg2;
-- (id)nextProcessingIndex;
-- (id)nextValue;
+- (BOOL)isWaitingForMoreValues;
+- (id)nextValueIndex:(id *)arg1;
 - (void)receiveCompletion:(id)arg1 atIndex:(unsigned long long)arg2;
 - (long long)receiveInput:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)receiveSubscription:(id)arg1 atIndex:(unsigned long long)arg2;

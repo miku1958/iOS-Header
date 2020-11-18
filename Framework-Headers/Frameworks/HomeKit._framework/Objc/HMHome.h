@@ -47,6 +47,7 @@
     HMHomePersonManager *_personManager;
     HMHomePersonManagerSettings *_personManagerSettings;
     HMPersonSettingsManager *_personSettingsManager;
+    NSString *_threadNetworkID;
     NSArray *_managedTriggers;
     unsigned long long _homeHubState;
     HMMutableArray *_currentRooms;
@@ -143,6 +144,9 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSSet *supportedFeatures; // @synthesize supportedFeatures=_supportedFeatures;
 @property (readonly, nonatomic) BOOL supportsAddingNetworkRouter;
+@property (readonly, nonatomic) NSUUID *threadNetworkCredentialsUUID;
+@property (readonly, nonatomic) NSString *threadNetworkID;
+@property (strong, nonatomic) NSString *threadNetworkID; // @synthesize threadNetworkID=_threadNetworkID;
 @property (readonly, copy, nonatomic) NSArray *triggerOwnedActionSets; // @dynamic triggerOwnedActionSets;
 @property (readonly, copy, nonatomic) NSArray *triggers;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -283,6 +287,7 @@
 - (void)_startSearchForAccessoriesNeedingReprovisioning;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
+- (void)_updateAccessForUser:(id)arg1 announceAccess:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateAccessForUser:(id)arg1 camerasAccessLevel:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateApplicationData:(id)arg1 forAppDataContainer:(id)arg2 appDataContainerUUIDKeyName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_updateInvitation:(id)arg1 invitationState:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -349,6 +354,7 @@
 - (void)inviteUsersWithInviteInformation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)isDoorbellChimeEnabled;
 - (BOOL)isMultiUserEnabled;
+- (void)joinThreadNetworkWithCompletion:(CDUnknownBlockType)arg1;
 - (id)lightProfileWithProfileUUID:(id)arg1;
 - (id)location;
 - (id)logIdentifier;
@@ -386,6 +392,7 @@
 - (void)removeZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reprovisionAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)residentDevices;
+- (void)resolveThreadNetworkCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)roomForEntireHome;
 - (id)roomWithName:(id)arg1;
 - (id)roomWithUUID:(id)arg1;
@@ -412,7 +419,9 @@
 - (id)triggerWithUUID:(id)arg1;
 - (void)unblockAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unconfigure;
+- (void)unjoinThreadNetworkWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateAccessForUser:(id)arg1 administrator:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateAccessForUser:(id)arg1 announceAccess:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccessForUser:(id)arg1 camerasAccessLevel:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccessForUser:(id)arg1 remoteAccess:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccessoryNetworkProtectionGroup:(id)arg1 protectionMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;

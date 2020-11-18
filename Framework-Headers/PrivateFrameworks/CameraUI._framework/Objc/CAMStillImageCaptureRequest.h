@@ -35,6 +35,7 @@
     NSArray *_originalFilters;
     long long _photoQualityPrioritization;
     BOOL _wantsAutoDualCameraFusion;
+    BOOL _wantsSemanticSceneFilter;
     BOOL _wantsAudioForCapture;
     BOOL _wantsSquareCrop;
     long long _lowLightMode;
@@ -99,6 +100,7 @@
 @property (readonly, nonatomic) BOOL wantsAutoDualCameraFusion; // @synthesize wantsAutoDualCameraFusion=_wantsAutoDualCameraFusion;
 @property (readonly, nonatomic) BOOL wantsHighResolutionStills; // @synthesize wantsHighResolutionStills=_wantsHighResolutionStills;
 @property (readonly, nonatomic) BOOL wantsPortraitEffect; // @synthesize wantsPortraitEffect=_wantsPortraitEffect;
+@property (readonly, nonatomic) BOOL wantsSemanticSceneFilter; // @synthesize wantsSemanticSceneFilter=_wantsSemanticSceneFilter;
 @property (readonly, nonatomic) BOOL wantsSpatialOverCapture; // @synthesize wantsSpatialOverCapture=_wantsSpatialOverCapture;
 @property (readonly, nonatomic) BOOL wantsSquareCrop; // @synthesize wantsSquareCrop=_wantsSquareCrop;
 

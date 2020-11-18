@@ -342,6 +342,7 @@
 - (BOOL)layout:(id)arg1 shouldShowVideoPlaceholderForItemAtIndexPath:(id)arg2;
 - (BOOL)layoutShouldShowReviewScreenScrubberBar:(id)arg1;
 - (BOOL)livePhotoVideoPlaybackTileViewControllerCanBeginPlaying:(id)arg1;
+- (struct CGImage *)livePhotoVideoPlaybackTileViewControllerCurrentGainMapImage:(id)arg1 outGainMapAvailable:(BOOL *)arg2 outGainMapValue:(float *)arg3;
 - (id)livePhotoVideoPlaybackTileViewControllerCurrentImage:(id)arg1;
 - (void)livePhotoVideoPlaybackTileViewControllerDidEndPlaying:(id)arg1;
 - (id)livePhotoVideoPlaybackTileViewControllerDisplayTileTransform:(id)arg1;

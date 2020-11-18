@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSArray *recentlyBreachedPersistentIdentifiers;
 @property (strong, nonatomic) NSArray *resultRecords;
 
++ (id)_createPersistentIdentifierCanary;
++ (BOOL)_readAndValidatePersistentIdentifierCanaryWithPersistentIdentifier:(id)arg1 expectedValue:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithBackingStoreURL:(id)arg1;
 - (void)saveAndCloseStoreSynchronously;

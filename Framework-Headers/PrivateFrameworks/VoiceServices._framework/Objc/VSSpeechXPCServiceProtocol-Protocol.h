@@ -40,6 +40,7 @@
 - (oneway void)startSynthesisRequest:(VSSpeechRequest *)arg1;
 - (oneway void)stopPresynthesizedAudioRequest;
 - (oneway void)stopSpeechRequestAtMark:(long long)arg1;
+- (oneway void)triggerCellularDownloadedVoiceAssets:(NSArray *)arg1 withClientID:(NSString *)arg2;
 - (oneway void)updateWithConnectionIdentifier:(NSString *)arg1;
 @end
 

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)RATModeForSpecifier:(id)arg1;
 - (void)airplaneModeChanged;
+- (void)configure5GRATModeSpecifiersEnabledState;
 - (void)configureSpecifiers;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
 - (id)getLogger;
@@ -37,13 +38,17 @@ __attribute__((visibility("hidden")))
 - (void)handleMaxDataRateChanged;
 - (id)identifierForRATMode:(int)arg1;
 - (id)init;
+- (id)initWithCTClient:(id)arg1 switchFactory:(id)arg2;
 - (void)listItemSelected:(id)arg1;
+- (void)nrDisableStatusChanged:(id)arg1 status:(id)arg2;
 - (void)prepareSpecifiers:(id)arg1;
+- (void)reloadSpecifier:(id)arg1;
+- (void)set5GRATModeSpecifierEnabledState:(id)arg1;
 - (void)setRATGroupFooterText;
-- (void)setSA:(BOOL)arg1 andReload:(BOOL)arg2;
 - (void)setSpecifier:(id)arg1;
 - (void)setUpRATModeSpecifierIdentifiers:(id)arg1;
-- (void)setVoLTE:(BOOL)arg1 andReload:(BOOL)arg2;
+- (BOOL)shouldEnable5GRATModeSpecifiers;
+- (BOOL)shouldShow5GSASwitch:(id)arg1;
 - (BOOL)shouldShowFooterTextWithVoiceExplanation;
 - (BOOL)shouldShowVoLTESwitch;
 - (id)specifiers;

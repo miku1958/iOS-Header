@@ -17,12 +17,9 @@
 @property (nonatomic) struct CGPoint lastAnimatedScrollContentOffset; // @synthesize lastAnimatedScrollContentOffset=_lastAnimatedScrollContentOffset;
 
 - (void)_autoScrollAssistantUpdateContentOffset:(struct CGPoint)arg1;
-- (BOOL)_gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (void)_gestureRecognizerFailed:(id)arg1;
 - (struct CGPoint)_roundedProposedContentOffset:(struct CGPoint)arg1;
 - (BOOL)_scrollsToMakeFirstResponderVisible;
 - (BOOL)cancelTouchTracking;
-- (void)handlePan:(id)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 

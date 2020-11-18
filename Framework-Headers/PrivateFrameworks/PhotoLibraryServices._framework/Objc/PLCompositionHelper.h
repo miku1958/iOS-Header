@@ -21,6 +21,7 @@
 + (BOOL)compositionController:(id)arg1 isPortraitIntensityEqualToCompositionController:(id)arg2;
 + (void)compositionController:(id)arg1 setEffectFilterName:(id)arg2 version:(long long)arg3;
 + (void)compositionController:(id)arg1 setInputOrientation:(long long)arg2;
++ (void)compositionController:(id)arg1 updateSemanticEnhanceFromCameraMetadata:(id)arg2 exportProperties:(id)arg3;
 + (BOOL)compositionControllerHasAnyAutoEnhancement:(id)arg1;
 + (BOOL)compositionHasOvercaptureSourceSelection:(id)arg1;
 + (id)defaultValueForAdjustmentKey:(id)arg1 settingKey:(id)arg2;
@@ -38,6 +39,7 @@
 + (id)validatedCompositionCopyFor:(id)arg1 mediaType:(long long)arg2;
 + (id)valueForCompositionController:(id)arg1 adjustmentKey:(id)arg2 settingKey:(id)arg3;
 + (id)valueForType:(long long)arg1 adjustmentKey:(id)arg2 settingKey:(id)arg3;
++ (BOOL)wantsSemanticEnhanceForCameraMetadata:(id)arg1;
 
 @end
 

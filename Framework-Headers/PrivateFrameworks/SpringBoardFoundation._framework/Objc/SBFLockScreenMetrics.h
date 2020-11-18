@@ -25,6 +25,7 @@
 + (struct UIEdgeInsets)logoutInsets;
 + (double)logoutLabelFontSize;
 + (struct UIEdgeInsets)notificationListInsets;
++ (double)pinAlphanumericEntryFieldBottomYDistanceFromKeyboard;
 + (double)pinFixedDigitEntryFieldBottomYDistanceFromNumberPadTopButton:(BOOL)arg1;
 + (double)pinFixedDigitEntryFieldIndicatorDiameter;
 + (double)pinFixedDigitEntryFieldIndicatorPaddingWidth;

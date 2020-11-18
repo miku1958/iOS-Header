@@ -12,6 +12,7 @@
 
 @interface SBSpotlightTransientOverlayInteractiveGestureTransaction : SBMainWorkspaceTransaction <BSTransactionObserver>
 {
+    BOOL _gestureFinishedBeforeTransactionBegan;
     SBSpotlightSettings *_settings;
     SBSpotlightTransientOverlayViewController *_spotlightTransientOverlayViewController;
     SBMainWorkspaceTransaction *_presentTransientOverlayTransaction;
@@ -34,6 +35,7 @@
 - (BOOL)canInterruptForTransitionRequest:(id)arg1;
 - (void)endPresentation:(BOOL)arg1;
 - (id)initWithTransitionRequest:(id)arg1 spotlightTransientOverlayViewController:(id)arg2;
+- (void)noteGestureFinishedBeforeTransactionBegan;
 - (void)transactionDidComplete:(id)arg1;
 - (void)updatePresentationWithProgress:(double)arg1 translation:(double)arg2;
 

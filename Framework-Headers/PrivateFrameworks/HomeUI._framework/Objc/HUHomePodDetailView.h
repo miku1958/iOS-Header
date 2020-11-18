@@ -31,7 +31,7 @@
 - (void)_setupConstraints;
 - (void)_speakerTapped;
 - (void)_updateImagesForRole;
-- (id)initWithRole:(unsigned long long)arg1;
+- (id)initWithRole:(unsigned long long)arg1 variant:(unsigned long long)arg2;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBActivity, _INPBActivityList, _INPBAlarm, _INPBAlarmSearch, _INPBAppIdentifier, _INPBArchivedObject, _INPBBillDetailsValue, _INPBBillPayeeValue, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContactEventTrigger, _INPBContactList, _INPBContactValue, _INPBCurrencyAmount, _INPBCustomObject, _INPBDataString, _INPBDataStringList, _INPBDateTime, _INPBDateTimeRangeList, _INPBDateTimeRangeValue, _INPBDevice, _INPBDeviceDetail, _INPBDialingContact, _INPBDistanceList, _INPBDistanceValue, _INPBDoubleList, _INPBDoubleValue, _INPBEnergyValue, _INPBEvent, _INPBEventList, _INPBFile, _INPBFileProperty, _INPBFilePropertyValue, _INPBFinancialAccountValue, _INPBGeographicalFeature, _INPBGeographicalFeatureList, _INPBGetSettingResponseData, _INPBHomeAttribute, _INPBHomeAttributeValue, _INPBHomeEntity, _INPBHomeFilter, _INPBHomeUserTask, _INPBIntegerList, _INPBIntegerValue, _INPBIntent, _INPBIntentExecutionResult, _INPBLocationList, _INPBLocationValue, _INPBLongList, _INPBLongValue, _INPBMassValue, _INPBMediaDestination, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBModifyNickname, _INPBModifyRelationship, _INPBNote, _INPBNoteContent, _INPBNumericSettingValue, _INPBPaymentAmountValue, _INPBPaymentMethodList, _INPBPaymentMethodValue, _INPBPlace, _INPBPlaceList, _INPBPrivateAddMediaIntentData, _INPBPrivatePlayMediaIntentData, _INPBPrivateSearchForMediaIntentData, _INPBPrivateUpdateMediaAffinityIntentData, _INPBSendMessageAttachment, _INPBSettingMetadata, _INPBShareDestination, _INPBSleepAlarmAttribute, _INPBSpatialEventTrigger, _INPBSpeedValue, _INPBStringList, _INPBStringValue, _INPBTask, _INPBTaskList, _INPBTemperatureList, _INPBTemperatureValue, _INPBTemporalEventTrigger, _INPBTimer, _INPBURLValue, _INPBVoiceCommandDeviceInformation, _INPBVolumeValue, _INPBWellnessMetadataPair, _INPBWellnessObjectResultValue, _INPBWellnessUnitType, _INPBWellnessValue;
+@class NSArray, NSString, _INPBActivity, _INPBActivityList, _INPBAlarm, _INPBAlarmSearch, _INPBAnnouncement, _INPBAppIdentifier, _INPBArchivedObject, _INPBBillDetailsValue, _INPBBillPayeeValue, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContactEventTrigger, _INPBContactList, _INPBContactValue, _INPBCurrencyAmount, _INPBCustomObject, _INPBDataString, _INPBDataStringList, _INPBDateTime, _INPBDateTimeRangeList, _INPBDateTimeRangeValue, _INPBDevice, _INPBDeviceDetail, _INPBDialingContact, _INPBDistanceList, _INPBDistanceValue, _INPBDoubleList, _INPBDoubleValue, _INPBEnergyValue, _INPBEvent, _INPBEventList, _INPBFile, _INPBFileProperty, _INPBFilePropertyValue, _INPBFinancialAccountValue, _INPBGeographicalFeature, _INPBGeographicalFeatureList, _INPBGetSettingResponseData, _INPBHomeAttribute, _INPBHomeAttributeValue, _INPBHomeEntity, _INPBHomeFilter, _INPBHomeUserTask, _INPBIntegerList, _INPBIntegerValue, _INPBIntent, _INPBIntentExecutionResult, _INPBLocationList, _INPBLocationValue, _INPBLongList, _INPBLongValue, _INPBMassValue, _INPBMediaDestination, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBModifyNickname, _INPBModifyRelationship, _INPBNote, _INPBNoteContent, _INPBNumericSettingValue, _INPBPaymentAmountValue, _INPBPaymentMethodList, _INPBPaymentMethodValue, _INPBPlace, _INPBPlaceList, _INPBPrivateAddMediaIntentData, _INPBPrivatePlayMediaIntentData, _INPBPrivateSearchForMediaIntentData, _INPBPrivateUpdateMediaAffinityIntentData, _INPBSendMessageAttachment, _INPBSettingMetadata, _INPBShareDestination, _INPBSleepAlarmAttribute, _INPBSpatialEventTrigger, _INPBSpeedValue, _INPBStringList, _INPBStringValue, _INPBTask, _INPBTaskList, _INPBTemperatureList, _INPBTemperatureValue, _INPBTemporalEventTrigger, _INPBTimer, _INPBURLValue, _INPBVoiceCommandDeviceInformation, _INPBVolumeValue, _INPBWellnessMetadataPair, _INPBWellnessObjectResultValue, _INPBWellnessUnitType, _INPBWellnessValue;
 
 @protocol _INPBIntentSlotValue <NSObject>
 
@@ -27,6 +27,8 @@
 @property (readonly, nonatomic) unsigned long long payloadAlarmSearchsCount;
 @property (copy, nonatomic) NSArray *payloadAlarms;
 @property (readonly, nonatomic) unsigned long long payloadAlarmsCount;
+@property (copy, nonatomic) NSArray *payloadAnnouncements;
+@property (readonly, nonatomic) unsigned long long payloadAnnouncementsCount;
 @property (copy, nonatomic) NSArray *payloadAppIdentifiers;
 @property (readonly, nonatomic) unsigned long long payloadAppIdentifiersCount;
 @property (copy, nonatomic) NSArray *payloadArchivedObjects;
@@ -255,6 +257,8 @@
 @property (readonly, nonatomic) unsigned long long payloadPrivateUpdateMediaAffinityIntentDatasCount;
 @property (readonly, nonatomic) int *payloadRadioTypes;
 @property (readonly, nonatomic) unsigned long long payloadRadioTypesCount;
+@property (readonly, nonatomic) int *payloadReadActionTypes;
+@property (readonly, nonatomic) unsigned long long payloadReadActionTypesCount;
 @property (readonly, nonatomic) int *payloadRelativeReferences;
 @property (readonly, nonatomic) unsigned long long payloadRelativeReferencesCount;
 @property (readonly, nonatomic) int *payloadRelativeSettings;
@@ -335,6 +339,7 @@
 + (Class)payloadActivityType;
 + (Class)payloadAlarmSearchType;
 + (Class)payloadAlarmType;
++ (Class)payloadAnnouncementType;
 + (Class)payloadAppIdentifierType;
 + (Class)payloadArchivedObjectType;
 + (Class)payloadBillDetailsValueType;
@@ -467,6 +472,7 @@
 - (int)StringAsPayloadPlaybackRepeatModes:(NSString *)arg1;
 - (int)StringAsPayloadPreferredCallProviders:(NSString *)arg1;
 - (int)StringAsPayloadRadioTypes:(NSString *)arg1;
+- (int)StringAsPayloadReadActionTypes:(NSString *)arg1;
 - (int)StringAsPayloadRelativeReferences:(NSString *)arg1;
 - (int)StringAsPayloadRelativeSettings:(NSString *)arg1;
 - (int)StringAsPayloadSettingActions:(NSString *)arg1;
@@ -492,6 +498,7 @@
 - (void)addPayloadAlarmRepeatSchedule:(int)arg1;
 - (void)addPayloadAlarmSearch:(_INPBAlarmSearch *)arg1;
 - (void)addPayloadAlarmSearchType:(int)arg1;
+- (void)addPayloadAnnouncement:(_INPBAnnouncement *)arg1;
 - (void)addPayloadAppIdentifier:(_INPBAppIdentifier *)arg1;
 - (void)addPayloadArchivedObject:(_INPBArchivedObject *)arg1;
 - (void)addPayloadBalanceType:(int)arg1;
@@ -606,6 +613,7 @@
 - (void)addPayloadPrivateSearchForMediaIntentData:(_INPBPrivateSearchForMediaIntentData *)arg1;
 - (void)addPayloadPrivateUpdateMediaAffinityIntentData:(_INPBPrivateUpdateMediaAffinityIntentData *)arg1;
 - (void)addPayloadRadioType:(int)arg1;
+- (void)addPayloadReadActionType:(int)arg1;
 - (void)addPayloadRelativeReference:(int)arg1;
 - (void)addPayloadRelativeSetting:(int)arg1;
 - (void)addPayloadSendMessageAttachment:(_INPBSendMessageAttachment *)arg1;
@@ -651,6 +659,7 @@
 - (void)clearPayloadAlarmSearchTypes;
 - (void)clearPayloadAlarmSearchs;
 - (void)clearPayloadAlarms;
+- (void)clearPayloadAnnouncements;
 - (void)clearPayloadAppIdentifiers;
 - (void)clearPayloadArchivedObjects;
 - (void)clearPayloadBalanceTypes;
@@ -765,6 +774,7 @@
 - (void)clearPayloadPrivateSearchForMediaIntentDatas;
 - (void)clearPayloadPrivateUpdateMediaAffinityIntentDatas;
 - (void)clearPayloadRadioTypes;
+- (void)clearPayloadReadActionTypes;
 - (void)clearPayloadRelativeReferences;
 - (void)clearPayloadRelativeSettings;
 - (void)clearPayloadSendMessageAttachments;
@@ -814,6 +824,7 @@
 - (_INPBAlarmSearch *)payloadAlarmSearchAtIndex:(unsigned long long)arg1;
 - (int)payloadAlarmSearchTypeAtIndex:(unsigned long long)arg1;
 - (NSString *)payloadAlarmSearchTypesAsString:(int)arg1;
+- (_INPBAnnouncement *)payloadAnnouncementAtIndex:(unsigned long long)arg1;
 - (_INPBAppIdentifier *)payloadAppIdentifierAtIndex:(unsigned long long)arg1;
 - (_INPBArchivedObject *)payloadArchivedObjectAtIndex:(unsigned long long)arg1;
 - (int)payloadBalanceTypeAtIndex:(unsigned long long)arg1;
@@ -970,6 +981,8 @@
 - (_INPBPrivateUpdateMediaAffinityIntentData *)payloadPrivateUpdateMediaAffinityIntentDataAtIndex:(unsigned long long)arg1;
 - (int)payloadRadioTypeAtIndex:(unsigned long long)arg1;
 - (NSString *)payloadRadioTypesAsString:(int)arg1;
+- (int)payloadReadActionTypeAtIndex:(unsigned long long)arg1;
+- (NSString *)payloadReadActionTypesAsString:(int)arg1;
 - (int)payloadRelativeReferenceAtIndex:(unsigned long long)arg1;
 - (NSString *)payloadRelativeReferencesAsString:(int)arg1;
 - (int)payloadRelativeSettingAtIndex:(unsigned long long)arg1;
@@ -1069,6 +1082,7 @@
 - (void)setPayloadPlaybackRepeatModes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadPreferredCallProviders:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadRadioTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setPayloadReadActionTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadRelativeReferences:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadRelativeSettings:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadSettingActions:(int *)arg1 count:(unsigned long long)arg2;

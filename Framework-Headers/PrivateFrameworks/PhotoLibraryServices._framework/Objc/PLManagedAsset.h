@@ -789,6 +789,7 @@
 - (void)hideNonPrimaryAssetsInAssetGroup;
 - (id)imageDataForThumbGenerationAndIfNeededRAWUTI:(id *)arg1;
 - (id)imageProperties;
+- (BOOL)imagePropertiesIndicatePresenceOfGainMap:(id)arg1;
 - (id)imageWithFormat:(unsigned short)arg1;
 - (void)incrementUploadAttempts;
 - (id)indexSheetImage;
@@ -862,6 +863,7 @@
 - (id)pathForAdjustedLargeThumbnailFile;
 - (id)pathForAdjustedLargeVideoFile;
 - (id)pathForAdjustedMediaMetadataFile;
+- (id)pathForAdjustedMediumHDRVideoFile;
 - (id)pathForAdjustedMediumThumbnailFile;
 - (id)pathForAdjustedMediumVideoFile;
 - (id)pathForAdjustedSmallVideoFile;
@@ -884,6 +886,7 @@
 - (id)pathForNonAdjustedLargeSizeImageFile;
 - (id)pathForNonAdjustedLargeThumbnailFile;
 - (id)pathForNonAdjustedLargeVideoFile;
+- (id)pathForNonAdjustedMediumHDRVideoFile;
 - (id)pathForNonAdjustedMediumThumbnailFile;
 - (id)pathForNonAdjustedMediumVideoFile;
 - (id)pathForNonAdjustedSmallVideoFile;

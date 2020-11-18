@@ -44,6 +44,8 @@
 - (MISSING_TYPE *)stridesAtSourceIndex:(unsigned long long)arg1;
 - (CDStruct_f52b1b8f)stridesForSourceIndex:(unsigned long long)arg1;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceArrays:(id)arg2 sourceStates:(id)arg3 destinationArray:(id)arg4;
+- (id)workloadStatisticsForSourceArrays:(id)arg1 destArrays:(id)arg2 kernel:(id)arg3 sourceState:(id)arg4;
+- (id)workloadStatisticsForSourceArrays:(id)arg1 destArrays:(id)arg2 sourceState:(id)arg3;
 - (id)workloadStatisticsForSourceArrays:(id)arg1 sourceState:(id)arg2;
 
 @end

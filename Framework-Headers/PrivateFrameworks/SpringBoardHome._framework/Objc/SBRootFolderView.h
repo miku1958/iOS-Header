@@ -10,7 +10,7 @@
 #import <SpringBoardHome/SBFRemoteBasebandLoggingObserver-Protocol.h>
 #import <SpringBoardHome/_UISettingsKeyObserver-Protocol.h>
 
-@class NSHashTable, NSString, SBDockIconListView, SBDockView, SBFParallaxSettings, SBFTouchPassThroughView, SBHMinusPageStepper, SBHRootFolderSettings, SBIconListView, SBRootFolder, SBSearchBackdropView, SBSearchGesture, SBTitledHomeScreenButton, UILabel, UIView, _SBRootFolderLayoutWrapperView;
+@class NSHashTable, NSString, SBDockIconListView, SBDockView, SBFParallaxSettings, SBFTouchPassThroughView, SBHMinusPageStepper, SBHRootFolderSettings, SBIconListView, SBRootFolder, SBSearchBackdropView, SBSearchGesture, SBTitledHomeScreenButton, UILabel, UIView, _SBRootFolderLayoutWrapperView, _SBRootFolderViewElementBorrowedAssertion;
 @protocol BSInvalidatable, SBIconListViewIconLocationTransitioning, SBRootFolderViewDelegate, SBRootFolderViewLayoutManager;
 
 @interface SBRootFolderView : SBFolderView <_UISettingsKeyObserver, SBDockViewDelegate, SBFRemoteBasebandLoggingObserver>
@@ -47,8 +47,6 @@
     BOOL _sidebarEffectivelyVisible;
     BOOL _todayViewBouncing;
     BOOL _shiftsPullDownSearchForVisibility;
-    BOOL _dockViewBorrowed;
-    BOOL _pageControlBorrowed;
     BOOL _sidebarSlideGestureActive;
     BOOL _sidebarVisibleWhenScrollingBegan;
     BOOL _allowsFreeScrollingUntilScrollingEnds;
@@ -62,6 +60,8 @@
     double _todayViewVisibilityProgress;
     double _trailingCustomViewVisibilityProgress;
     double _pullDownSearchVisibilityProgress;
+    _SBRootFolderViewElementBorrowedAssertion *_dockBorrowedAssertion;
+    _SBRootFolderViewElementBorrowedAssertion *_pageControlBorrowedAssertion;
     SBFTouchPassThroughView *_titledButtonsContainerView;
     SBTitledHomeScreenButton *_doneButton;
     SBTitledHomeScreenButton *_widgetButton;
@@ -86,6 +86,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBRootFolderViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) _SBRootFolderViewElementBorrowedAssertion *dockBorrowedAssertion; // @synthesize dockBorrowedAssertion=_dockBorrowedAssertion;
 @property (nonatomic) unsigned long long dockEdge; // @synthesize dockEdge=_dockEdge;
 @property (readonly, nonatomic, getter=isDockExternal) BOOL dockExternal; // @synthesize dockExternal=_dockExternal;
 @property (readonly, nonatomic) double dockHeight;
@@ -93,7 +94,6 @@
 @property (readonly, nonatomic) SBDockIconListView *dockListView; // @synthesize dockListView=_dockListView;
 @property (readonly, nonatomic, getter=isDockPinnedForRotation) BOOL dockPinnedForRotation; // @synthesize dockPinnedForRotation=_dockPinnedForRotation;
 @property (readonly, nonatomic) SBDockView *dockView;
-@property (nonatomic, getter=isDockViewBorrowed) BOOL dockViewBorrowed; // @synthesize dockViewBorrowed=_dockViewBorrowed;
 @property (readonly, nonatomic, getter=isDockVisible) BOOL dockVisible;
 @property (strong, nonatomic) SBTitledHomeScreenButton *doneButton; // @synthesize doneButton=_doneButton;
 @property (readonly, nonatomic) double effectiveSidebarVisibilityProgress;
@@ -112,7 +112,7 @@
 @property (nonatomic, getter=isOccludedByOverlay) BOOL occludedByOverlay; // @synthesize occludedByOverlay=_occludedByOverlay;
 @property (readonly, nonatomic, getter=isOnTodayPage) BOOL onTodayPage;
 @property (readonly, nonatomic, getter=isOnTrailingCustomPage) BOOL onTrailingCustomPage;
-@property (nonatomic, getter=isPageControlBorrowed) BOOL pageControlBorrowed; // @synthesize pageControlBorrowed=_pageControlBorrowed;
+@property (nonatomic) _SBRootFolderViewElementBorrowedAssertion *pageControlBorrowedAssertion; // @synthesize pageControlBorrowedAssertion=_pageControlBorrowedAssertion;
 @property (readonly, nonatomic, getter=isPageManagementUIVisible) BOOL pageManagementUIVisible;
 @property (readonly, nonatomic) SBFParallaxSettings *parallaxSettings; // @synthesize parallaxSettings=_parallaxSettings;
 @property (readonly, nonatomic) UIView *pullDownSearchView;
@@ -234,8 +234,8 @@
 - (id)additionalIconListViews;
 - (double)additionalScrollWidthToKeepVisibleInOneDirection;
 - (id)beginModifyingDockOffscreenFractionForReason:(id)arg1;
-- (void)borrowDockView;
-- (void)borrowPageControl;
+- (id)borrowDockViewForReason:(id)arg1;
+- (id)borrowPageControlForReason:(id)arg1;
 - (void)cleanUpAfterTransition;
 - (void)clientDidChangeDockOffScreenFraction:(id)arg1;
 - (void)configurePageControlToAllowEnteringPageManagement:(BOOL)arg1;
@@ -243,6 +243,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)doneButtonTriggered:(id)arg1;
+- (void)elementBorrowedAssertionDidInvalidate:(id)arg1;
 - (void)enterPageManagementUIWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enumerateScrollViewPageViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)exitPageManagementUIWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -261,8 +262,10 @@
 - (void)iconScrollViewDidCancelTouchTracking:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (double)internalDockPageControlVerticalMargin;
+- (BOOL)isDockViewBorrowed;
 - (BOOL)isModifyingDockOffscreenFraction;
 - (BOOL)isOnSidebarPage;
+- (BOOL)isPageControlBorrowed;
 - (BOOL)isPageIndexCustomAndRightmost:(long long)arg1;
 - (void)layoutDockViewWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
 - (void)layoutIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(BOOL)arg3;
@@ -284,8 +287,6 @@
 - (void)remoteBasebandLogCollectionStateDidChange:(BOOL)arg1;
 - (void)removeDockOffscreenFractionClient:(id)arg1;
 - (void)resetIconListViews;
-- (void)returnDockView;
-- (void)returnPageControl;
 - (void)returnScalingView;
 - (id)rootFolderVisualConfiguration;
 - (id)rootListLayout;

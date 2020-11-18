@@ -47,8 +47,8 @@
 	var reachability : SCNetworkReachability
 
 	// Swift methods
-	0x50e0  func <stripped> // getter 
-	0x52c0  class func NetworkReachability.__allocating_init() // init 
+	0x4b70  func <stripped> // getter 
+	0x4d50  class func NetworkReachability.__allocating_init() // init 
  }
 
  class SPShared.UserDefaultsObserver : NSObject /usr/lib/libobjc.A.dylib {
@@ -59,18 +59,18 @@
 	var notify : (_:)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x38440000cfb8 (0x440000cfb8) in binary!
-	0x2d20  @objc UserDefaultsObserver.(null) <stripped>
-WARNING: couldn't find address 0x38240000cf90 (0x240000cf90) in binary!
-	0x3820  @objc UserDefaultsObserver.(null) <stripped>
+WARNING: couldn't find address 0x38840000d088 (0x840000d088) in binary!
+	0x2d60  @objc UserDefaultsObserver.(null) <stripped>
+WARNING: couldn't find address 0x38640000d060 (0x640000d060) in binary!
+	0x3860  @objc UserDefaultsObserver.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x764ffffca70  @objc UserDefaultsObserver.(null) <stripped>
-	0xffffcb48  @objc UserDefaultsObserver.tL‰ÿL‰îH‰ÂL‰ñE1Àè.¨ <stripped>
+	0x34ffffca30  @objc UserDefaultsObserver.(null) <stripped>
+	0xffffcb08  @objc UserDefaultsObserver.ÝH‰]ÈL‰ïè©¨ <stripped>
 
 	// Swift methods
-	0x6070  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
-	0x62f0  func <stripped> // method 
-	0x63d0  func <stripped> // method 
+	0x5b00  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
+	0x5d80  func <stripped> // method 
+	0x5e60  func <stripped> // method 
  }
 
  enum SPShared.FutureError {
@@ -94,10 +94,10 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let block : ()
 
 	// Swift methods
-	0xa8d0  func <stripped> // getter 
-	0xa900  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
-	0xa9c0  func <stripped> // method 
-	0xa9f0  func <stripped> // method 
+	0xa360  func <stripped> // getter 
+	0xa390  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
+	0xa450  func <stripped> // method 
+	0xa480  func <stripped> // method 
  }
 
  class SPShared.DarwinNotificationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -106,20 +106,20 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var helpers : DarwinNotificationHelper
 
 	// Swift methods
-	0xb2f0  func <stripped> // method 
-	0xb3b0  func <stripped> // method 
-	0xb5a0  func <stripped> // method 
+	0xad80  func <stripped> // method 
+	0xae40  func <stripped> // method 
+	0xb030  func <stripped> // method 
  }
 
  enum SPShared.Relativity {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case rightRelative : ‹@
+	case rightRelative : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case leftRelative : ‹@
+	case leftRelative : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case absolute : ‹@
+	case absolute : A
  }
 
  enum SPShared.ExtendedAttributeError {
@@ -150,10 +150,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct SPShared.SystemVersionNumber {
 
 	// Properties
-	let baseNumber : Int // +0x0
-	let baseLetter : Character // +0x8
-	let buildNumber : Int // +0x18
-	let suffix : Character? // +0x20
+	let rawValue : String // +0x0
+	let baseNumber : Int // +0x10
+	let baseLetter : Character // +0x18
+	let buildNumber : Int // +0x28
+	let suffix : Character? // +0x30
  }
 
  enum SPShared.PrivilegeDropper { }
@@ -187,7 +188,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let subscriber : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let identifier : A
+	let identifier : B
 	let unsubscribeBlock : Subscription
  }
 
@@ -236,11 +237,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let initializationVector : á> // +0x0
+	let initializationVector : i? // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tag : á> // +0x10
+	let tag : i? // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cipherText : á> // +0x20
+	let cipherText : i? // +0x20
  }
 
  class SPShared.XPCSession {
@@ -260,8 +261,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let accessQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x24810  func <stripped> // method 
-	0x249c0  func <stripped> // getter 
+	0x246f0  func <stripped> // method 
+	0x248a0  func <stripped> // getter 
  }
 
  class SPShared._ImmediateScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -270,8 +271,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SPShared._MainThreadScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
 	// Swift methods
-	0x24da0  func <stripped> // method 
-	0x24f50  func <stripped> // method 
+	0x24c80  func <stripped> // method 
+	0x24e30  func <stripped> // method 
  }
 
  class SPShared._QueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -280,9 +281,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x25570  func <stripped> // method 
-	0x25730  func <stripped> // method 
-	0x25940  func <stripped> // method 
+	0x25450  func <stripped> // method 
+	0x25610  func <stripped> // method 
+	0x25820  func <stripped> // method 
  }
 
  class SPShared._OperationQueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -291,8 +292,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : NSOperationQueue
 
 	// Swift methods
-	0x25c40  func <stripped> // method 
-	0x25d70  func <stripped> // method 
+	0x25b20  func <stripped> // method 
+	0x25c50  func <stripped> // method 
  }
 
  enum SPShared.LegacyResult {
@@ -300,7 +301,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case success : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failure : II
+	case failure : áI
  }
 
  class SPShared.Lock : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -309,7 +310,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let osLock : os_unfair_lock_s
 
 	// Swift methods
-	0x27610  class func Lock.__allocating_init() // init 
+	0x274f0  class func Lock.__allocating_init() // init 
  }
 
  class SPShared.DarwinNotificationHelper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -318,8 +319,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var notificationHandlers : CFString
 
 	// Swift methods
-	0x27950  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
-	0x28060  func <stripped> // method 
+	0x27830  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
+	0x27f40  func <stripped> // method 
  }
 
  enum SPShared.DispatchUtilities { }
@@ -329,13 +330,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let flag : String // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let start : ý< // +0x0 (0x0)
+	let start : …= // +0x0 (0x0)
 	var duration : Double // +0x19 (0x8)
 
 	// Swift methods
-	0x2adb0  func <stripped> // getter 
-	0x2ade0  class func PerformanceCapture.__allocating_init(flag:) // init 
-	0x2af30  func <stripped> // method 
+	0x2aca0  func <stripped> // getter 
+	0x2acd0  class func PerformanceCapture.__allocating_init(flag:) // init 
+	0x2ae20  func <stripped> // method 
  }
 
  class SPShared.XPCSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -347,9 +348,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var listeners : MachServiceName
 
 	// Swift methods
-	0x2b270  func <stripped> // getter 
-	0x2b300  class func XPCSessionManager.__allocating_init(name:) // init 
-	0x2b380  func <stripped> // method 
+	0x2b160  func <stripped> // getter 
+	0x2b1f0  class func XPCSessionManager.__allocating_init(name:) // init 
+	0x2b270  func <stripped> // method 
  }
 
  class SPShared._XPCListenerDelegateTrampoline : NSObject /usr/lib/libobjc.A.dylib {
@@ -358,9 +359,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var sessionManager : XPCSessionManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x37f60000cf28 (0x7f60000cf28) in binary!
-	0x37f8  @objc _XPCListenerDelegateTrampoline.(null) <stripped>
-WARNING: couldn't find address 0x37f40000cf18 (0x7f40000cf18) in binary!
+WARNING: couldn't find address 0x38360000cff8 (0x360000cff8) in binary!
+	0x3838  @objc _XPCListenerDelegateTrampoline.(null) <stripped>
+WARNING: couldn't find address 0x38340000cfe8 (0x340000cfe8) in binary!
 	0x1  @objc _XPCListenerDelegateTrampoline.(null) <stripped>
 WARNING: couldn't find address 0x2 (0x2) in binary!
 	0x4  @objc _XPCListenerDelegateTrampoline.(null) <stripped>
@@ -387,7 +388,7 @@ WARNING: couldn't find address 0x2 (0x2) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : +I
+	var _os_unfair_lock_opaque : ÃI
  }
 
  struct __C.NSKeyValueChangeKey {
@@ -400,25 +401,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sa_len : GI
+	var sa_len : ßI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sa_family : GI
+	var sa_family : ßI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sa_data : ÛH
+	var sa_data : sI
  }
 
  struct __C.sockaddr_in {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sin_len : GI
+	var sin_len : ßI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sin_family : GI
+	var sin_family : ßI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sin_port : YI
+	var sin_port : ñI
 	var sin_addr : in_addr
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sin_zero : íH
+	var sin_zero : …I
  }
 
  struct __C.DirectoryEnumerationOptions {
@@ -437,5 +438,5 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var s_addr : +I
+	var s_addr : ÃI
  }

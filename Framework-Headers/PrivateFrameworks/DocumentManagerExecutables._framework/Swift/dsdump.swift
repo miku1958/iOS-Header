@@ -127,8 +127,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class DocumentManagerExecutables.DOCLocalized : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x733c0001c500 (0x33c0001c500) in binary!
-	0x5db0  @objc DOCLocalized.(null) <stripped>
+WARNING: couldn't find address 0x734c0001c510 (0x34c0001c510) in binary!
+	0x5dc0  @objc DOCLocalized.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffbec98  @objc DOCLocalized.(null) <stripped>
  }
@@ -248,14 +248,14 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
  class DocumentManagerExecutables.DOCUserActivityController : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x731c0001c4e0 (0x31c0001c4e0) in binary!
+WARNING: couldn't find address 0x732c0001c4f0 (0x32c0001c4f0) in binary!
 	0x18000000c  @objc DOCUserActivityController.(null) <stripped>
 
 	// Swift methods
-	0xc110  class func static DOCUserActivityController.publishUserActivity(for:domainDisplayNameProvider:activityHosting:) // method 
-	0xc2a0  class func static DOCUserActivityController.userActivityFor(item:domainDisplayNameProvider:completion:) // method 
-	0xe930  class func static DOCUserActivityController.crossDeviceItemIDForItemID(_:_:) // method 
-	0xe9c0  class func static DOCUserActivityController.itemURLForCrossDeviceItemID(_:_:) // method 
+	0xc100  class func static DOCUserActivityController.publishUserActivity(for:domainDisplayNameProvider:activityHosting:) // method 
+	0xc290  class func static DOCUserActivityController.userActivityFor(item:domainDisplayNameProvider:completion:) // method 
+	0xe920  class func static DOCUserActivityController.crossDeviceItemIDForItemID(_:_:) // method 
+	0xe9b0  class func static DOCUserActivityController.itemURLForCrossDeviceItemID(_:_:) // method 
  }
 
  class DocumentManagerExecutables.DOCPostLaunchBuffer : DOCOperationBuffer {
@@ -264,11 +264,11 @@ WARNING: couldn't find address 0x731c0001c4e0 (0x31c0001c4e0) in binary!
 	let timeout : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5d840001c340 (0x5840001c340) in binary!
+WARNING: couldn't find address 0x5d940001c350 (0x5940001c350) in binary!
 	0x98000000c  @objc DOCPostLaunchBuffer.(null) <stripped>
 
 	// Swift methods
-	0xfbf0  func DOCPostLaunchBuffer.performAfterLaunch(alwaysAsync:_:) // method 
+	0xfbe0  func DOCPostLaunchBuffer.performAfterLaunch(alwaysAsync:_:) // method 
  }
 
  class DocumentManagerExecutables.DOCOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -282,31 +282,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var finishedBlock :  first-element-marker 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x72ec0001c4b0 (0x2ec0001c4b0) in binary!
-	0x5d60  @objc DOCOperation.(null) <stripped>
-WARNING: couldn't find address 0x839a0001c300 (0x39a0001c300) in binary!
-	0x838e  @objc DOCOperation.(null) <stripped>
-WARNING: couldn't find address 0x855e0001c660 (0x55e0001c660) in binary!
-	0x8376  @objc DOCOperation.(null) <stripped>
-WARNING: couldn't find address 0x85460001c640 (0x5460001c640) in binary!
-	0x5d18  @objc DOCOperation.(null) <stripped>
-WARNING: couldn't find address 0x5d0c0001c2c8 (0x50c0001c2c8) in binary!
+WARNING: couldn't find address 0x72fc0001c4c0 (0x2fc0001c4c0) in binary!
+	0x5d70  @objc DOCOperation.(null) <stripped>
+WARNING: couldn't find address 0x83aa0001c310 (0x3aa0001c310) in binary!
+	0x839e  @objc DOCOperation.(null) <stripped>
+WARNING: couldn't find address 0x856e0001c670 (0x56e0001c670) in binary!
+	0x8386  @objc DOCOperation.(null) <stripped>
+WARNING: couldn't find address 0x85560001c650 (0x5560001c650) in binary!
+	0x5d28  @objc DOCOperation.(null) <stripped>
+WARNING: couldn't find address 0x5d1c0001c2d8 (0x51c0001c2d8) in binary!
 	0x18000000c  @objc DOCOperation.(null) <stripped>
-WARNING: couldn't find address 0x72740001c288 (0x2740001c288) in binary!
+WARNING: couldn't find address 0x72840001c298 (0x2840001c298) in binary!
 	0x48000000c  @objc DOCOperation.(null) <stripped>
-WARNING: couldn't find address 0x725c0001c420 (0x25c0001c420) in binary!
-	0x5cd0  @objc DOCOperation.(null) <stripped>
-WARNING: couldn't find address 0x61440001c260 (0x1440001c260) in binary!
-	0x5cb8  @objc DOCOperation.(null) <stripped>
+WARNING: couldn't find address 0x726c0001c430 (0x26c0001c430) in binary!
+	0x5ce0  @objc DOCOperation.(null) <stripped>
+WARNING: couldn't find address 0x61540001c270 (0x1540001c270) in binary!
+	0x5cc8  @objc DOCOperation.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x324fffc78e0  @objc DOCOperation.(null) <stripped>
+	0x334fffc78e0  @objc DOCOperation.(null) <stripped>
 
 	// Swift methods
-	0x10a40  func DOCOperation.finishedBlock.getter // getter 
-	0x10ab0  func DOCOperation.finishedBlock.setter // setter 
-	0x10b30  func DOCOperation.finishedBlock.modify // modifyCoroutine 
-	0x11c70  func DOCOperation._finishIfCanceled() // method 
-	0x11fa0  func DOCOperation.completed(with:error:) // method 
+	0x10a30  func DOCOperation.finishedBlock.getter // getter 
+	0x10aa0  func DOCOperation.finishedBlock.setter // setter 
+	0x10b20  func DOCOperation.finishedBlock.modify // modifyCoroutine 
+	0x11c60  func DOCOperation._finishIfCanceled() // method 
+	0x11f90  func DOCOperation.completed(with:error:) // method 
  }
 
  struct DocumentManagerExecutables.DOCSmartFolderInputFile {
@@ -328,28 +328,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var domainDisplayNameProvider : DOCDomainDisplayNameProvider?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x725c0001c420 (0x25c0001c420) in binary!
-	0x5cd0  @objc DOCSmartFolderManager.(null) <stripped>
-WARNING: couldn't find address 0x61440001c260 (0x1440001c260) in binary!
-	0x5cb8  @objc DOCSmartFolderManager.(null) <stripped>
+WARNING: couldn't find address 0x726c0001c430 (0x26c0001c430) in binary!
+	0x5ce0  @objc DOCSmartFolderManager.(null) <stripped>
+WARNING: couldn't find address 0x61540001c270 (0x1540001c270) in binary!
+	0x5cc8  @objc DOCSmartFolderManager.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x324fffc78e0  @objc DOCSmartFolderManager.(null) <stripped>
-	0xfffc79d8  @objc DOCSmartFolderManager. <stripped>
+	0x334fffc78e0  @objc DOCSmartFolderManager.(null) <stripped>
+	0xfffc79d8  @objc DOCSmartFolderManager.Å˛˝ <stripped>
 
 	// Swift methods
-	0x126d0  func <stripped> // getter 
-	0x12790  func DOCSmartFolderManager.currentUserActivity.getter // getter 
-	0x127b0  func DOCSmartFolderManager.currentUserActivity.setter // setter 
-	0x127d0  func DOCSmartFolderManager.currentUserActivity.modify // modifyCoroutine 
-	0x12820  func DOCSmartFolderManager.defaultSaveLocationItemId.getter // getter 
-	0x12880  func DOCSmartFolderManager.defaultSaveLocationItemId.setter // setter 
-	0x128e0  func DOCSmartFolderManager.defaultSaveLocationItemId.modify // modifyCoroutine 
-	0x129f0  class func DOCSmartFolderManager.__allocating_init(_:) // init 
-	0x12d00  func DOCSmartFolderManager.refreshSmartFolders() // method 
-	0x12df0  func DOCSmartFolderManager.registerDomainDisplayNameProvider(_:) // method 
-	0x12e40  func DOCSmartFolderManager.register(savedFile:in:) // method 
-	0x136b0  func DOCSmartFolderManager.suggestions(for:) // method 
-	0x13e60  func DOCSmartFolderManager.makeHostedActivityCurrent() // method 
+	0x126c0  func <stripped> // getter 
+	0x12780  func DOCSmartFolderManager.currentUserActivity.getter // getter 
+	0x127a0  func DOCSmartFolderManager.currentUserActivity.setter // setter 
+	0x127c0  func DOCSmartFolderManager.currentUserActivity.modify // modifyCoroutine 
+	0x12810  func DOCSmartFolderManager.defaultSaveLocationItemId.getter // getter 
+	0x12870  func DOCSmartFolderManager.defaultSaveLocationItemId.setter // setter 
+	0x128d0  func DOCSmartFolderManager.defaultSaveLocationItemId.modify // modifyCoroutine 
+	0x129e0  class func DOCSmartFolderManager.__allocating_init(_:) // init 
+	0x12cf0  func DOCSmartFolderManager.refreshSmartFolders() // method 
+	0x12de0  func DOCSmartFolderManager.registerDomainDisplayNameProvider(_:) // method 
+	0x12e30  func DOCSmartFolderManager.register(savedFile:in:) // method 
+	0x136a0  func DOCSmartFolderManager.suggestions(for:) // method 
+	0x13e50  func DOCSmartFolderManager.makeHostedActivityCurrent() // method 
  }
 
  class DocumentManagerExecutables.DOCChainOperation : DOCOperation {
@@ -363,18 +363,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var mode : DOCChainOperationMode
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5c5c0001c598 (0x45c0001c598) in binary!
-	0x71d0  @objc DOCChainOperation.(null) <stripped>
-WARNING: couldn't find address 0x5c440001c200 (0x4440001c200) in binary!
+WARNING: couldn't find address 0x5c6c0001c5a8 (0x46c0001c5a8) in binary!
+	0x71e0  @objc DOCChainOperation.(null) <stripped>
+WARNING: couldn't find address 0x5c540001c210 (0x4540001c210) in binary!
 	0x38000000c  @objc DOCChainOperation.(null) <stripped>
-WARNING: couldn't find address 0x5c2c0001c568 (0x42c0001c568) in binary!
-	0x71a0  @objc DOCChainOperation.(null) <stripped>
+WARNING: couldn't find address 0x5c3c0001c578 (0x43c0001c578) in binary!
+	0x71b0  @objc DOCChainOperation.(null) <stripped>
 
 	// Swift methods
-	0x18120  func DOCChainOperation.mode.getter // getter 
-	0x18150  func DOCChainOperation.mode.setter // setter 
-	0x18190  func DOCChainOperation.mode.modify // modifyCoroutine 
-	0x181e0  class func DOCChainOperation.__allocating_init(operations:) // init 
+	0x18110  func DOCChainOperation.mode.getter // getter 
+	0x18140  func DOCChainOperation.mode.setter // setter 
+	0x18180  func DOCChainOperation.mode.modify // modifyCoroutine 
+	0x181d0  class func DOCChainOperation.__allocating_init(operations:) // init 
  }
 
  enum DocumentManagerExecutables.DOCChainOperationMode {
@@ -391,15 +391,15 @@ WARNING: couldn't find address 0x5c2c0001c568 (0x42c0001c568) in binary!
 	var chainOperation : DOCChainOperation
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5c2c0001c568 (0x42c0001c568) in binary!
-	0x71a0  @objc DOCChainableOperation.(null) <stripped>
-WARNING: couldn't find address 0x5c140001c1d0 (0x4140001c1d0) in binary!
+WARNING: couldn't find address 0x5c3c0001c578 (0x43c0001c578) in binary!
+	0x71b0  @objc DOCChainableOperation.(null) <stripped>
+WARNING: couldn't find address 0x5c240001c1e0 (0x4240001c1e0) in binary!
 	0x28000000c  @objc DOCChainableOperation.(null) <stripped>
-WARNING: couldn't find address 0x717c0001c340 (0x17c0001c340) in binary!
-	0x5bf0  @objc DOCChainableOperation.(null) <stripped>
+WARNING: couldn't find address 0x718c0001c350 (0x18c0001c350) in binary!
+	0x5c00  @objc DOCChainableOperation.(null) <stripped>
 
 	// Swift methods
-	0x19640  func DOCChainableOperation.main(with:previousOperationError:) // method 
+	0x19630  func DOCChainableOperation.main(with:previousOperationError:) // method 
  }
 
  struct DocumentManagerExecutables.DOCUTIDescriptor {
@@ -420,16 +420,16 @@ WARNING: couldn't find address 0x717c0001c340 (0x17c0001c340) in binary!
 	let gatheringQueue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x717c0001c340 (0x17c0001c340) in binary!
-	0x5bf0  @objc DOCUTIDescriptorCollector.(null) <stripped>
+WARNING: couldn't find address 0x718c0001c350 (0x18c0001c350) in binary!
+	0x5c00  @objc DOCUTIDescriptorCollector.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x18cfffcec28  @objc DOCUTIDescriptorCollector.(null) <stripped>
+	0x19cfffcec28  @objc DOCUTIDescriptorCollector.(null) <stripped>
 
 	// Swift methods
-	0x1a130  func DOCUTIDescriptorCollector.filteredUTIs(matching:allowedUTIs:completion:) // method 
-	0x1a540  func DOCUTIDescriptorCollector.cancelGathering() // method 
-	0x1a5c0  func <stripped> // method 
-	0x1be20  func <stripped> // method 
+	0x1a120  func DOCUTIDescriptorCollector.filteredUTIs(matching:allowedUTIs:completion:) // method 
+	0x1a530  func DOCUTIDescriptorCollector.cancelGathering() // method 
+	0x1a5b0  func <stripped> // method 
+	0x1be10  func <stripped> // method 
  }
 
  class DocumentManagerExecutables.DOCAnalyticsManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -439,8 +439,8 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let eventsQueue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x715c0001c320 (0x15c0001c320) in binary!
-	0x5bd0  @objc DOCAnalyticsManager.(null) <stripped>
+WARNING: couldn't find address 0x716c0001c330 (0x16c0001c330) in binary!
+	0x5be0  @objc DOCAnalyticsManager.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffcf5c8  @objc DOCAnalyticsManager.(null) <stripped>
  }
@@ -460,23 +460,23 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var qlItem : QLPreviewItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x71240001c2e8 (0x1240001c2e8) in binary!
-	0x8598  @objc DOCQuickLookInfoPreview.(null) <stripped>
-WARNING: couldn't find address 0x755c0001c678 (0x55c0001c678) in binary!
-	0x6215  @objc DOCQuickLookInfoPreview.(null) <stripped>
-WARNING: couldn't find address 0x75440001c680 (0x5440001c680) in binary!
-	0x5b68  @objc DOCQuickLookInfoPreview.(null) <stripped>
+WARNING: couldn't find address 0x71340001c2f8 (0x1340001c2f8) in binary!
+	0x85a8  @objc DOCQuickLookInfoPreview.(null) <stripped>
+WARNING: couldn't find address 0x756c0001c688 (0x56c0001c688) in binary!
+	0x6225  @objc DOCQuickLookInfoPreview.(null) <stripped>
+WARNING: couldn't find address 0x75540001c690 (0x5540001c690) in binary!
+	0x5b78  @objc DOCQuickLookInfoPreview.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7dcfffd39d0  @objc DOCQuickLookInfoPreview.(null) <stripped>
-	0xb40001c0b8  @objc DOCQuickLookInfoPreview.Ä <stripped>
-WARNING: couldn't find address 0x1c0a4fffd4840 (0xa4fffd4840) in binary!
-	0x4ec0001c090  @objc DOCQuickLookInfoPreview.(null) <stripped>
+	0x7ecfffd39d0  @objc DOCQuickLookInfoPreview.(null) <stripped>
+	0xc40001c0c8  @objc DOCQuickLookInfoPreview. <stripped>
+WARNING: couldn't find address 0x1c0b4fffd4840 (0xb4fffd4840) in binary!
+	0x4fc0001c0a0  @objc DOCQuickLookInfoPreview.(null) <stripped>
 
 	// Swift methods
-	0x23110  func DOCQuickLookInfoPreview.item.getter // getter 
-	0x23150  func DOCQuickLookInfoPreview.item.setter // setter 
-	0x231f0  func DOCQuickLookInfoPreview.item.modify // modifyCoroutine 
-	0x234a0  func DOCQuickLookInfoPreview.needsUpdate(for:) // method 
+	0x23100  func DOCQuickLookInfoPreview.item.getter // getter 
+	0x23140  func DOCQuickLookInfoPreview.item.setter // setter 
+	0x231e0  func DOCQuickLookInfoPreview.item.modify // modifyCoroutine 
+	0x23490  func DOCQuickLookInfoPreview.needsUpdate(for:) // method 
  }
 
  class DocumentManagerExecutables.DOCItemObserverSubscriber : NSObject /usr/lib/libobjc.A.dylib {
@@ -487,13 +487,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let updateBlock : (_:) // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6fe40001c1a8 (0x7e40001c1a8) in binary!
-	0x5a58  @objc DOCItemObserverSubscriber.(null) <stripped>
+WARNING: couldn't find address 0x6ff40001c1b8 (0x7f40001c1b8) in binary!
+	0x5a68  @objc DOCItemObserverSubscriber.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x1dcffff9350  @objc DOCItemObserverSubscriber.(null) <stripped>
+	0x1ecffff9350  @objc DOCItemObserverSubscriber.(null) <stripped>
 
 	// Swift methods
-	0x24650  class func DOCItemObserverSubscriber.__allocating_init(updateBlock:) // init 
+	0x24640  class func DOCItemObserverSubscriber.__allocating_init(updateBlock:) // init 
  }
 
  class DocumentManagerExecutables.DOCItemObserver : NSObject /usr/lib/libobjc.A.dylib {
@@ -504,19 +504,19 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var subscribers : DOCItemObserverSubscriber
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x70b40001c0b8 (0xb40001c0b8) in binary!
-	0x5fa8  @objc DOCItemObserver.(null) <stripped>
-WARNING: couldn't find address 0x74ec0001c090 (0x4ec0001c090) in binary!
-	0x5b10  @objc DOCItemObserver.(null) <stripped>
-WARNING: couldn't find address 0x70840001c248 (0x840001c248) in binary!
-	0x5af8  @objc DOCItemObserver.(null) <stripped>
+WARNING: couldn't find address 0x70c40001c0c8 (0xc40001c0c8) in binary!
+	0x5fb8  @objc DOCItemObserver.(null) <stripped>
+WARNING: couldn't find address 0x74fc0001c0a0 (0x4fc0001c0a0) in binary!
+	0x5b20  @objc DOCItemObserver.(null) <stripped>
+WARNING: couldn't find address 0x70940001c258 (0x940001c258) in binary!
+	0x5b08  @objc DOCItemObserver.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x7ecfffd5080  @objc DOCItemObserver.(null) <stripped>
-	0x7ccfffd50a8  @objc DOCItemObserver.Í <stripped>
-	0x734fffd50d0  @objc DOCItemObserver.HçπÍ <stripped>
+	0x7fcfffd5080  @objc DOCItemObserver.(null) <stripped>
+	0x7dcfffd50a8  @objc DOCItemObserver.ãEƒàC äE»àC!ãE¿àC"ãEºàC#äEàC$äE÷àC%äE◊àC&HÉƒ8[A\A]A^A_]√ <stripped>
+	0x744fffd50d0  @objc DOCItemObserver.HâCãEƒàC äE»àC!ãE¿àC"ãEºàC#äEàC$äE÷àC%äE◊àC&HÉƒ8[A\A]A^A_]√ <stripped>
 
 	// Swift methods
-	0x249e0  class func DOCItemObserver.__allocating_init(observedItem:) // init 
+	0x249d0  class func DOCItemObserver.__allocating_init(observedItem:) // init 
  }
 
  enum DocumentManagerExecutables.SharingStatusStringType {
@@ -540,20 +540,20 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 	var startLocationInWindow : CGPoint
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x63000001c638 (0x3000001c638) in binary!
-	0x62f4  @objc DOCButtonGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x62e80001c640 (0x2e80001c640) in binary!
-	0x62dc  @objc DOCButtonGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x59e40001c638 (0x1e40001c638) in binary!
-	0x66db  @objc DOCButtonGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x59cc0001bf88 (0x1cc0001bf88) in binary!
+WARNING: couldn't find address 0x63100001c648 (0x3100001c648) in binary!
+	0x6304  @objc DOCButtonGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x62f80001c650 (0x2f80001c650) in binary!
+	0x62ec  @objc DOCButtonGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x59f40001c648 (0x1f40001c648) in binary!
+	0x66eb  @objc DOCButtonGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x59dc0001bf98 (0x1dc0001bf98) in binary!
 	0x38000000c  @objc DOCButtonGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x73840001bf00 (0x3840001bf00) in binary!
-	0x5e28  @objc DOCButtonGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x62880001bed8 (0x2880001bed8) in binary!
+WARNING: couldn't find address 0x73940001bf10 (0x3940001bf10) in binary!
+	0x5e38  @objc DOCButtonGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x62980001bee8 (0x2980001bee8) in binary!
 	0x68000000c  @objc DOCButtonGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x6f040001bef0 (0x7040001bef0) in binary!
-	0x5df8  @objc DOCButtonGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x6f140001bf00 (0x7140001bf00) in binary!
+	0x5e08  @objc DOCButtonGestureRecognizer.(null) <stripped>
 
 	// Swift methods
  }
@@ -582,25 +582,25 @@ WARNING: couldn't find address 0x6f040001bef0 (0x7040001bef0) in binary!
 	var lastSelectedItem : FPItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6f040001bef0 (0x7040001bef0) in binary!
-	0x5df8  @objc DOCInteractionManager.(null) <stripped>
-WARNING: couldn't find address 0x6eec0001bec8 (0x6ec0001bec8) in binary!
-	0x5de0  @objc DOCInteractionManager.(null) <stripped>
-WARNING: couldn't find address 0x6ed40001c098 (0x6d40001c098) in binary!
-	0x5948  @objc DOCInteractionManager.(null) <stripped>
+WARNING: couldn't find address 0x6f140001bf00 (0x7140001bf00) in binary!
+	0x5e08  @objc DOCInteractionManager.(null) <stripped>
+WARNING: couldn't find address 0x6efc0001bed8 (0x6fc0001bed8) in binary!
+	0x5df0  @objc DOCInteractionManager.(null) <stripped>
+WARNING: couldn't find address 0x6ee40001c0a8 (0x6e40001c0a8) in binary!
+	0x5958  @objc DOCInteractionManager.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffddcd0  @objc DOCInteractionManager.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6ccfffe1308  @objc DOCInteractionManager.(null) <stripped>
-	0x40b0001be30  @objc DOCInteractionManager.UHâÂIæE <stripped>
+	0x6dcfffe1308  @objc DOCInteractionManager.(null) <stripped>
+	0x41b0001be40  @objc DOCInteractionManager.UHâÂA∂u <stripped>
 
 	// Swift methods
-	0x2c1c0  func DOCInteractionManager.lastOpenedItem.getter // getter 
-	0x2c200  func DOCInteractionManager.lastOpenedItem.setter // setter 
-	0x2c470  func DOCInteractionManager.lastOpenedItem.modify // modifyCoroutine 
-	0x2c550  func DOCInteractionManager.lastSelectedItem.getter // getter 
-	0x2c660  func DOCInteractionManager.lastSelectedItem.setter // setter 
-	0x2c8f0  func DOCInteractionManager.lastSelectedItem.modify // modifyCoroutine 
+	0x2c1b0  func DOCInteractionManager.lastOpenedItem.getter // getter 
+	0x2c1f0  func DOCInteractionManager.lastOpenedItem.setter // setter 
+	0x2c460  func DOCInteractionManager.lastOpenedItem.modify // modifyCoroutine 
+	0x2c540  func DOCInteractionManager.lastSelectedItem.getter // getter 
+	0x2c650  func DOCInteractionManager.lastSelectedItem.setter // setter 
+	0x2c8e0  func DOCInteractionManager.lastSelectedItem.modify // modifyCoroutine 
  }
 
  struct DocumentManagerExecutables.DOCLog { }
@@ -618,12 +618,12 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class DocumentManagerExecutables.DOCPostSearchInitializationBuffer : DOCOperationBuffer {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6eb40001c078 (0x6b40001c078) in binary!
+WARNING: couldn't find address 0x6ec40001c088 (0x6c40001c088) in binary!
 	0x28000000c  @objc DOCPostSearchInitializationBuffer.(null) <stripped>
 
 	// Swift methods
-	0x2ddd0  class func DOCPostSearchInitializationBuffer.__allocating_init() // init 
-	0x2dfb0  func DOCPostSearchInitializationBuffer.performAfterSearchInitialization(_:) // method 
+	0x2ddc0  class func DOCPostSearchInitializationBuffer.__allocating_init() // init 
+	0x2dfa0  func DOCPostSearchInitializationBuffer.performAfterSearchInitialization(_:) // method 
  }
 
  class DocumentManagerExecutables.DOCStateRequestAssertion : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -633,8 +633,8 @@ WARNING: couldn't find address 0x6eb40001c078 (0x6b40001c078) in binary!
 	var valid : Bool
 
 	// Swift methods
-	0x2e050  class func DOCStateRequestAssertion.__allocating_init(invalidationHandler:) // init 
-	0x2e150  func DOCStateRequestAssertion.invalidate() // method 
+	0x2e040  class func DOCStateRequestAssertion.__allocating_init(invalidationHandler:) // init 
+	0x2e140  func DOCStateRequestAssertion.invalidate() // method 
  }
 
  class DocumentManagerExecutables.DOCOperationBuffer : NSObject /usr/lib/libobjc.A.dylib {
@@ -646,16 +646,16 @@ WARNING: couldn't find address 0x6eb40001c078 (0x6b40001c078) in binary!
 	var $__lazy_storage_$_queue : OS_dispatch_queue?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6e9c0001c060 (0x69c0001c060) in binary!
-	0x5910  @objc DOCOperationBuffer.(null) <stripped>
+WARNING: couldn't find address 0x6eac0001c070 (0x6ac0001c070) in binary!
+	0x5920  @objc DOCOperationBuffer.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x5d4fffe28f8  @objc DOCOperationBuffer.(null) <stripped>
+	0x5e4fffe28f8  @objc DOCOperationBuffer.(null) <stripped>
 
 	// Swift methods
-	0x31340  class func DOCOperationBuffer.__allocating_init(label:targetQueue:) // init 
-	0x31030  func DOCOperationBuffer.signal() // method 
-	0x31100  func DOCOperationBuffer.buffer(_:) // method 
-	0x312b0  func <stripped> // getter 
+	0x31330  class func DOCOperationBuffer.__allocating_init(label:targetQueue:) // init 
+	0x31020  func DOCOperationBuffer.signal() // method 
+	0x310f0  func DOCOperationBuffer.buffer(_:) // method 
+	0x312a0  func <stripped> // getter 
  }
 
  class DocumentManagerExecutables.DOCImageContainerFittingView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -668,37 +668,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let imageView : DOCFittingImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6ba30001bdc8 (0x3a30001bdc8) in binary!
-	0x6b9f  @objc DOCImageContainerFittingView.(null) <stripped>
-WARNING: couldn't find address 0x6bac0001c5c8 (0x3ac0001c5c8) in binary!
-	0x7240  @objc DOCImageContainerFittingView.(null) <stripped>
-WARNING: couldn't find address 0x6bc40001bd90 (0x3c40001bd90) in binary!
-	0x6bd8  @objc DOCImageContainerFittingView.(null) <stripped>
-WARNING: couldn't find address 0x584c0001c528 (0x4c0001c528) in binary!
-	0x5840  @objc DOCImageContainerFittingView.(null) <stripped>
+WARNING: couldn't find address 0x6bb30001bdd8 (0x3b30001bdd8) in binary!
+	0x6baf  @objc DOCImageContainerFittingView.(null) <stripped>
+WARNING: couldn't find address 0x6bbc0001c5d8 (0x3bc0001c5d8) in binary!
+	0x7250  @objc DOCImageContainerFittingView.(null) <stripped>
+WARNING: couldn't find address 0x6bd40001bda0 (0x3d40001bda0) in binary!
+	0x6be8  @objc DOCImageContainerFittingView.(null) <stripped>
+WARNING: couldn't find address 0x585c0001c538 (0x5c0001c538) in binary!
+	0x5850  @objc DOCImageContainerFittingView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffe26b8  @objc DOCImageContainerFittingView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x5c4fffe6840  @objc DOCImageContainerFittingView.(null) <stripped>
-	0x6140001c5e8  @objc DOCImageContainerFittingView.ˇ]√D <stripped>
-WARNING: couldn't find address 0x1bd0cfffe78d0 (0x50cfffe78d0) in binary!
-	0xdc0001bcf8  @objc DOCImageContainerFittingView.(null) <stripped>
+	0x5d4fffe6840  @objc DOCImageContainerFittingView.(null) <stripped>
+	0x6240001c5f8  @objc DOCImageContainerFittingView.ˇ]√D <stripped>
+WARNING: couldn't find address 0x1bd1cfffe78d0 (0x51cfffe78d0) in binary!
+	0xec0001bd08  @objc DOCImageContainerFittingView.(null) <stripped>
 
 	// Swift methods
-	0x31770  func DOCImageContainerFittingView.isShadowHidden.getter // getter 
-	0x31790  func DOCImageContainerFittingView.isShadowHidden.setter // setter 
-	0x317c0  func DOCImageContainerFittingView.isShadowHidden.modify // modifyCoroutine 
-	0x31a20  func DOCImageContainerFittingView.imageIsFolder.getter // getter 
-	0x31a50  func DOCImageContainerFittingView.imageIsFolder.setter // setter 
-	0x31a90  func DOCImageContainerFittingView.imageIsFolder.modify // modifyCoroutine 
-	0x32010  func DOCImageContainerFittingView.fittingSize.getter // getter 
-	0x32030  func DOCImageContainerFittingView.fittingSize.setter // setter 
-	0x32060  func DOCImageContainerFittingView.fittingSize.modify // modifyCoroutine 
-	0x320f0  func DOCImageContainerFittingView.image.getter // getter 
-	0x32120  func DOCImageContainerFittingView.image.setter // setter 
-	0x32180  func DOCImageContainerFittingView.image.modify // modifyCoroutine 
-	0x32570  func DOCImageContainerFittingView.updateContentFrame() // method 
-	0x32780  func <stripped> // getter 
+	0x31760  func DOCImageContainerFittingView.isShadowHidden.getter // getter 
+	0x31780  func DOCImageContainerFittingView.isShadowHidden.setter // setter 
+	0x317b0  func DOCImageContainerFittingView.isShadowHidden.modify // modifyCoroutine 
+	0x31a10  func DOCImageContainerFittingView.imageIsFolder.getter // getter 
+	0x31a40  func DOCImageContainerFittingView.imageIsFolder.setter // setter 
+	0x31a80  func DOCImageContainerFittingView.imageIsFolder.modify // modifyCoroutine 
+	0x32000  func DOCImageContainerFittingView.fittingSize.getter // getter 
+	0x32020  func DOCImageContainerFittingView.fittingSize.setter // setter 
+	0x32050  func DOCImageContainerFittingView.fittingSize.modify // modifyCoroutine 
+	0x320e0  func DOCImageContainerFittingView.image.getter // getter 
+	0x32110  func DOCImageContainerFittingView.image.setter // setter 
+	0x32170  func DOCImageContainerFittingView.image.modify // modifyCoroutine 
+	0x32560  func DOCImageContainerFittingView.updateContentFrame() // method 
+	0x32770  func <stripped> // getter 
  }
 
  class DocumentManagerExecutables.DOCContainerFittingView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -713,25 +713,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var observationContext : —á // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6c0b0001be30 (0x40b0001be30) in binary!
-	0x6c07  @objc DOCContainerFittingView.(null) <stripped>
-WARNING: couldn't find address 0x58e40001c5c0 (0xe40001c5c0) in binary!
-	0x72a8  @objc DOCContainerFittingView.(null) <stripped>
-WARNING: couldn't find address 0x6c4c0001c5f0 (0x44c0001c5f0) in binary!
-	0x6c20  @objc DOCContainerFittingView.(null) <stripped>
-WARNING: couldn't find address 0x6be40001c600 (0x3e40001c600) in binary!
-	0x58a8  @objc DOCContainerFittingView.(null) <stripped>
+WARNING: couldn't find address 0x6c1b0001be40 (0x41b0001be40) in binary!
+	0x6c17  @objc DOCContainerFittingView.(null) <stripped>
+WARNING: couldn't find address 0x58f40001c5d0 (0xf40001c5d0) in binary!
+	0x72b8  @objc DOCContainerFittingView.(null) <stripped>
+WARNING: couldn't find address 0x6c5c0001c600 (0x45c0001c600) in binary!
+	0x6c30  @objc DOCContainerFittingView.(null) <stripped>
+WARNING: couldn't find address 0x6bf40001c610 (0x3f40001c610) in binary!
+	0x58b8  @objc DOCContainerFittingView.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x56cfffe1390  @objc DOCContainerFittingView.(null) <stripped>
-	0x35cfffe1c38  @objc DOCContainerFittingView.â”I9ƒuI9ﬂuLâˇæ <stripped>
-	0x57cfffe1ea0  @objc DOCContainerFittingView.∞HÉƒh[A\A]A^A_]√Hˇ√L!ÎHâÿH¡ËIãDƒ8H£ÿs^HâÿH¡‡Lã}∏Iã<IãtH9œu	L9ˆÑÁ˛ˇˇHãU–LâÒE1¿ËÇx <stripped>
-	0x5fcfffe2198  @objc DOCContainerFittingView.âﬂËqÅ <stripped>
+	0x57cfffe1390  @objc DOCContainerFittingView.(null) <stripped>
+	0x36cfffe1c38  @objc DOCContainerFittingView. <stripped>
+	0x58cfffe1ea0  @objc DOCContainerFittingView.Dƒ8H£ÿs^HâÿH¡‡Lã}∏Iã<IãtH9œu	L9ˆÑÁ˛ˇˇHãU–LâÒE1¿ËÇx <stripped>
+	0x60cfffe2198  @objc DOCContainerFittingView.ã8Ëˇ{ <stripped>
 
 	// Swift methods
-	0x32ad0  func DOCContainerFittingView.fittingSize.getter // getter 
-	0x32b10  func DOCContainerFittingView.fittingSize.setter // setter 
-	0x32b70  func DOCContainerFittingView.fittingSize.modify // modifyCoroutine 
-	0x32d50  class func DOCContainerFittingView.__allocating_init(containedViewController:) // init 
+	0x32ac0  func DOCContainerFittingView.fittingSize.getter // getter 
+	0x32b00  func DOCContainerFittingView.fittingSize.setter // setter 
+	0x32b60  func DOCContainerFittingView.fittingSize.modify // modifyCoroutine 
+	0x32d40  class func DOCContainerFittingView.__allocating_init(containedViewController:) // init 
  }
 
  class DocumentManagerExecutables.DOCThreadSafeState {
@@ -767,14 +767,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let setTagsOperationTimeout : ùà
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6d940001bf58 (0x5940001bf58) in binary!
-	0x5808  @objc DOCTagManager.(null) <stripped>
+WARNING: couldn't find address 0x6da40001bf68 (0x5a40001bf68) in binary!
+	0x5818  @objc DOCTagManager.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x50cfffe78d0  @objc DOCTagManager.(null) <stripped>
+	0x51cfffe78d0  @objc DOCTagManager.(null) <stripped>
 
 	// Swift methods
-	0x359b0  func DOCTagManager.scheduleAction(_:completionBlock:) // method 
-	0x36200  func <stripped> // method 
+	0x359a0  func DOCTagManager.scheduleAction(_:completionBlock:) // method 
+	0x361f0  func <stripped> // method 
  }
 
  class DocumentManagerExecutables.DOCTagCollectionObserver : NSObject /usr/lib/libobjc.A.dylib {
@@ -790,27 +790,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var collectionObservationContext : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6e140001c5e8 (0x6140001c5e8) in binary!
-	0x60d4  @objc DOCTagCollectionObserver.(null) <stripped>
-WARNING: couldn't find address 0x60dc0001bcf8 (0xdc0001bcf8) in binary!
-	0x60bc  @objc DOCTagCollectionObserver.(null) <stripped>
-WARNING: couldn't find address 0x60c40001bcd0 (0xc40001bcd0) in binary!
-	0x5c38  @objc DOCTagCollectionObserver.(null) <stripped>
-WARNING: couldn't find address 0x6de80001bca8 (0x5e80001bca8) in binary!
-	0x6d20  @objc DOCTagCollectionObserver.(null) <stripped>
-WARNING: couldn't find address 0x57940001bd50 (0x7940001bd50) in binary!
+WARNING: couldn't find address 0x6e240001c5f8 (0x6240001c5f8) in binary!
+	0x60e4  @objc DOCTagCollectionObserver.(null) <stripped>
+WARNING: couldn't find address 0x60ec0001bd08 (0xec0001bd08) in binary!
+	0x60cc  @objc DOCTagCollectionObserver.(null) <stripped>
+WARNING: couldn't find address 0x60d40001bce0 (0xd40001bce0) in binary!
+	0x5c48  @objc DOCTagCollectionObserver.(null) <stripped>
+WARNING: couldn't find address 0x6df80001bcb8 (0x5f80001bcb8) in binary!
+	0x6d30  @objc DOCTagCollectionObserver.(null) <stripped>
+WARNING: couldn't find address 0x57a40001bd60 (0x7a40001bd60) in binary!
 	0x38000000c  @objc DOCTagCollectionObserver.(null) <stripped>
-WARNING: couldn't find address 0x577c0001c0b8 (0x77c0001c0b8) in binary!
-	0x6cf0  @objc DOCTagCollectionObserver.(null) <stripped>
-WARNING: couldn't find address 0x57640001bd20 (0x7640001bd20) in binary!
+WARNING: couldn't find address 0x578c0001c0c8 (0x78c0001c0c8) in binary!
+	0x6d00  @objc DOCTagCollectionObserver.(null) <stripped>
+WARNING: couldn't find address 0x57740001bd30 (0x7740001bd30) in binary!
 	0x68000000c  @objc DOCTagCollectionObserver.(null) <stripped>
-WARNING: couldn't find address 0x711c0001c238 (0x11c0001c238) in binary!
-	0x5740  @objc DOCTagCollectionObserver.(null) <stripped>
-WARNING: couldn't find address 0x71140001c478 (0x1140001c478) in binary!
-	0x7138  @objc DOCTagCollectionObserver.(null) <stripped>
+WARNING: couldn't find address 0x712c0001c248 (0x12c0001c248) in binary!
+	0x5750  @objc DOCTagCollectionObserver.(null) <stripped>
+WARNING: couldn't find address 0x71240001c488 (0x1240001c488) in binary!
+	0x7148  @objc DOCTagCollectionObserver.(null) <stripped>
 
 	// Swift methods
-	0x36ee0  func <stripped> // method 
+	0x36ed0  func <stripped> // method 
  }
 
  struct DocumentManagerExecutables.DOCCollectionEdit {
@@ -845,15 +845,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let block :  first-element-marker 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x577c0001c0b8 (0x77c0001c0b8) in binary!
-	0x6cf0  @objc DOCBlockOperation.(null) <stripped>
-WARNING: couldn't find address 0x57640001bd20 (0x7640001bd20) in binary!
+WARNING: couldn't find address 0x578c0001c0c8 (0x78c0001c0c8) in binary!
+	0x6d00  @objc DOCBlockOperation.(null) <stripped>
+WARNING: couldn't find address 0x57740001bd30 (0x7740001bd30) in binary!
 	0x68000000c  @objc DOCBlockOperation.(null) <stripped>
-WARNING: couldn't find address 0x711c0001c238 (0x11c0001c238) in binary!
-	0x5740  @objc DOCBlockOperation.(null) <stripped>
+WARNING: couldn't find address 0x712c0001c248 (0x12c0001c248) in binary!
+	0x5750  @objc DOCBlockOperation.(null) <stripped>
 
 	// Swift methods
-	0x3cbd0  class func DOCBlockOperation.__allocating_init(block:) // init 
+	0x3cbc0  class func DOCBlockOperation.__allocating_init(block:) // init 
  }
 
  class DocumentManagerExecutables.DOCSafeCenteringContainerView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -865,16 +865,16 @@ WARNING: couldn't find address 0x711c0001c238 (0x11c0001c238) in binary!
 	var scrollContainerViewMinHeightConstraint : NSLayoutConstraint? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x711c0001c238 (0x11c0001c238) in binary!
-	0x5740  @objc DOCSafeCenteringContainerView.(null) <stripped>
-WARNING: couldn't find address 0x71140001c478 (0x1140001c478) in binary!
-	0x7138  @objc DOCSafeCenteringContainerView.(null) <stripped>
-WARNING: couldn't find address 0x6a4c0001c468 (0x24c0001c468) in binary!
-	0x5710  @objc DOCSafeCenteringContainerView.(null) <stripped>
+WARNING: couldn't find address 0x712c0001c248 (0x12c0001c248) in binary!
+	0x5750  @objc DOCSafeCenteringContainerView.(null) <stripped>
+WARNING: couldn't find address 0x71240001c488 (0x1240001c488) in binary!
+	0x7148  @objc DOCSafeCenteringContainerView.(null) <stripped>
+WARNING: couldn't find address 0x6a5c0001c478 (0x25c0001c478) in binary!
+	0x5720  @objc DOCSafeCenteringContainerView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x3dcfffedb18  @objc DOCSafeCenteringContainerView.(null) <stripped>
-	0x61cfffee0c0  @objc DOCSafeCenteringContainerView.)E¿(E†)E–HãEÿHãM–HãU¿Hãu»PQVRË*ê <stripped>
-	0xfffee148  @objc DOCSafeCenteringContainerView.˜ˇ¡ª <stripped>
+	0x3ecfffedb18  @objc DOCSafeCenteringContainerView.(null) <stripped>
+	0x62cfffee0c0  @objc DOCSafeCenteringContainerView.*ê <stripped>
+	0xfffee148  @objc DOCSafeCenteringContainerView.Hã8Ë~{ <stripped>
 
 	// Swift methods
  }
@@ -887,20 +887,20 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let completionBlock : (_:)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5fe80001bbf0 (0x7e80001bbf0) in binary!
-	0x5b70  @objc OpenAppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x5fd00001bbc8 (0x7d00001bbc8) in binary!
-	0x6c58  @objc OpenAppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x56cc0001bc88 (0x6cc0001bc88) in binary!
+WARNING: couldn't find address 0x5ff80001bc00 (0x7f80001bc00) in binary!
+	0x5b80  @objc OpenAppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x5fe00001bbd8 (0x7e00001bbd8) in binary!
+	0x6c68  @objc OpenAppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x56dc0001bc98 (0x6dc0001bc98) in binary!
 	0xb8000000c  @objc OpenAppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x7c7c0001bb90 (0x47c0001bb90) in binary!
-	0x7cdb  @objc OpenAppDelegate.(null) <stripped>
-WARNING: couldn't find address 0x6c1c0001bb68 (0x41c0001bb68) in binary!
-	0x7cd6  @objc OpenAppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x7c8c0001bba0 (0x48c0001bba0) in binary!
+	0x7ceb  @objc OpenAppDelegate.(null) <stripped>
+WARNING: couldn't find address 0x6c2c0001bb78 (0x42c0001bb78) in binary!
+	0x7ce6  @objc OpenAppDelegate.(null) <stripped>
 
 	// Swift methods
-	0x3e0e0  func <stripped> // method 
-	0x3e310  func <stripped> // method 
+	0x3e0d0  func <stripped> // method 
+	0x3e300  func <stripped> // method 
  }
 
  enum DocumentManagerExecutables.LaunchAction {
@@ -920,42 +920,42 @@ WARNING: couldn't find address 0x6c1c0001bb68 (0x41c0001bb68) in binary!
 	var typeToFocusInputView : UIView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7c7c0001bb90 (0x47c0001bb90) in binary!
-	0x7cdb  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x6c1c0001bb68 (0x41c0001bb68) in binary!
-	0x7cd6  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x56840001bdc0 (0x6840001bdc0) in binary!
-	0x5af8  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x566c0001bb20 (0x66c0001bb20) in binary!
-	0x6be0  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x56540001baf8 (0x6540001baf8) in binary!
-	0x6bc8  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x563c0001bbf8 (0x63c0001bbf8) in binary!
+WARNING: couldn't find address 0x7c8c0001bba0 (0x48c0001bba0) in binary!
+	0x7ceb  @objc DOCTypeToFocusController.(null) <stripped>
+WARNING: couldn't find address 0x6c2c0001bb78 (0x42c0001bb78) in binary!
+	0x7ce6  @objc DOCTypeToFocusController.(null) <stripped>
+WARNING: couldn't find address 0x56940001bdd0 (0x6940001bdd0) in binary!
+	0x5b08  @objc DOCTypeToFocusController.(null) <stripped>
+WARNING: couldn't find address 0x567c0001bb30 (0x67c0001bb30) in binary!
+	0x6bf0  @objc DOCTypeToFocusController.(null) <stripped>
+WARNING: couldn't find address 0x56640001bb08 (0x6640001bb08) in binary!
+	0x6bd8  @objc DOCTypeToFocusController.(null) <stripped>
+WARNING: couldn't find address 0x564c0001bc08 (0x64c0001bc08) in binary!
 	0x38000000c  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x69540001c370 (0x1540001c370) in binary!
-	0x6fe8  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x560c0001bbc8 (0x60c0001bbc8) in binary!
+WARNING: couldn't find address 0x69640001c380 (0x1640001c380) in binary!
+	0x6ff8  @objc DOCTypeToFocusController.(null) <stripped>
+WARNING: couldn't find address 0x561c0001bbd8 (0x61c0001bbd8) in binary!
 	0x48000000c  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x69240001c340 (0x1240001c340) in binary!
-	0x6fb8  @objc DOCTypeToFocusController.(null) <stripped>
-WARNING: couldn't find address 0x55dc0001c5f0 (0x5dc0001c5f0) in binary!
-	0x55d0  @objc DOCTypeToFocusController.(null) <stripped>
+WARNING: couldn't find address 0x69340001c350 (0x1340001c350) in binary!
+	0x6fc8  @objc DOCTypeToFocusController.(null) <stripped>
+WARNING: couldn't find address 0x55ec0001c600 (0x5ec0001c600) in binary!
+	0x55e0  @objc DOCTypeToFocusController.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x7443a4d4152  @objc DOCTypeToFocusController.(null) <stripped>
 
 	// Swift methods
-	0x46b60  func DOCTypeToFocusController.delegate.getter // getter 
-	0x46ba0  func DOCTypeToFocusController.delegate.setter // setter 
-	0x46c00  func DOCTypeToFocusController.delegate.modify // modifyCoroutine 
-	0x46cf0  func DOCTypeToFocusController.autocorrectionType.getter // getter 
-	0x46d10  func DOCTypeToFocusController.autocorrectionType.setter // setter 
-	0x46d20  func DOCTypeToFocusController.autocorrectionType.modify // modifyCoroutine 
-	0x46db0  func DOCTypeToFocusController.hasText.getter // getter 
-	0x46f40  func DOCTypeToFocusController.insertText(_:) // method 
-	0x47310  func DOCTypeToFocusController.deleteBackward() // method 
-	0x473d0  func <stripped> // method 
-	0x47640  func <stripped> // method 
-	0x47730  func <stripped> // method 
+	0x46b50  func DOCTypeToFocusController.delegate.getter // getter 
+	0x46b90  func DOCTypeToFocusController.delegate.setter // setter 
+	0x46bf0  func DOCTypeToFocusController.delegate.modify // modifyCoroutine 
+	0x46ce0  func DOCTypeToFocusController.autocorrectionType.getter // getter 
+	0x46d00  func DOCTypeToFocusController.autocorrectionType.setter // setter 
+	0x46d10  func DOCTypeToFocusController.autocorrectionType.modify // modifyCoroutine 
+	0x46da0  func DOCTypeToFocusController.hasText.getter // getter 
+	0x46f30  func DOCTypeToFocusController.insertText(_:) // method 
+	0x47300  func DOCTypeToFocusController.deleteBackward() // method 
+	0x473c0  func <stripped> // method 
+	0x47630  func <stripped> // method 
+	0x47720  func <stripped> // method 
  }
 
  enum DocumentManagerExecutables.DOCItemSortMode {
@@ -986,20 +986,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var message : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x69540001c370 (0x1540001c370) in binary!
-	0x6fe8  @objc DOCEmptyContentsInfoView.(null) <stripped>
-WARNING: couldn't find address 0x560c0001bbc8 (0x60c0001bbc8) in binary!
+WARNING: couldn't find address 0x69640001c380 (0x1640001c380) in binary!
+	0x6ff8  @objc DOCEmptyContentsInfoView.(null) <stripped>
+WARNING: couldn't find address 0x561c0001bbd8 (0x61c0001bbd8) in binary!
 	0x48000000c  @objc DOCEmptyContentsInfoView.(null) <stripped>
-WARNING: couldn't find address 0x69240001c340 (0x1240001c340) in binary!
-	0x6fb8  @objc DOCEmptyContentsInfoView.(null) <stripped>
+WARNING: couldn't find address 0x69340001c350 (0x1340001c350) in binary!
+	0x6fc8  @objc DOCEmptyContentsInfoView.(null) <stripped>
 
 	// Swift methods
-	0x4b3a0  func DOCEmptyContentsInfoView.title.getter // getter 
-	0x4b3c0  func DOCEmptyContentsInfoView.title.setter // setter 
-	0x4b3e0  func DOCEmptyContentsInfoView.title.modify // modifyCoroutine 
-	0x4b530  func DOCEmptyContentsInfoView.message.getter // getter 
-	0x4b5a0  func DOCEmptyContentsInfoView.message.setter // setter 
-	0x4b650  func DOCEmptyContentsInfoView.message.modify // modifyCoroutine 
+	0x4b390  func DOCEmptyContentsInfoView.title.getter // getter 
+	0x4b3b0  func DOCEmptyContentsInfoView.title.setter // setter 
+	0x4b3d0  func DOCEmptyContentsInfoView.title.modify // modifyCoroutine 
+	0x4b520  func DOCEmptyContentsInfoView.message.getter // getter 
+	0x4b590  func DOCEmptyContentsInfoView.message.setter // setter 
+	0x4b640  func DOCEmptyContentsInfoView.message.modify // modifyCoroutine 
  }
 
  class DocumentManagerExecutables.DOCEmtptyContentsLabelsView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1017,17 +1017,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let messageLabel : UILabel // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x69240001c340 (0x1240001c340) in binary!
-	0x6fb8  @objc DOCEmtptyContentsLabelsView.(null) <stripped>
-WARNING: couldn't find address 0x55dc0001c5f0 (0x5dc0001c5f0) in binary!
-	0x55d0  @objc DOCEmtptyContentsLabelsView.(null) <stripped>
+WARNING: couldn't find address 0x69340001c350 (0x1340001c350) in binary!
+	0x6fc8  @objc DOCEmtptyContentsLabelsView.(null) <stripped>
+WARNING: couldn't find address 0x55ec0001c600 (0x5ec0001c600) in binary!
+	0x55e0  @objc DOCEmtptyContentsLabelsView.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x7443a4d4152  @objc DOCEmtptyContentsLabelsView.(null) <stripped>
 WARNING: couldn't find address 0x616e614d746e656d (0x14d746e656d) in binary!
 	0x3656c626174  @objc DOCEmtptyContentsLabelsView.(null) <stripped>
 
 	// Swift methods
-	0x4bb50  func <stripped> // method 
+	0x4bb40  func <stripped> // method 
  }
 
  enum DocumentManagerExecutables.DOCContentLayoutSizeCategory {

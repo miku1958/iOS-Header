@@ -25,10 +25,10 @@ struct CGSize {
     double height;
 };
 
-struct UIEdgeInsets {
+struct NSDirectionalEdgeInsets {
     double top;
-    double left;
+    double leading;
     double bottom;
-    double right;
+    double trailing;
 };
 

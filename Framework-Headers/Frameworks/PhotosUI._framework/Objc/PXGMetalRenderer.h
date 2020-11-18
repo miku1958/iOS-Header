@@ -21,6 +21,7 @@
     id<MTLLibrary> _library;
     id<MTLCommandQueue> _commandQueue;
     id<MTLBuffer> _squareGeometryBuffer;
+    id<MTLBuffer> _yCbCrMatricesBuffer;
     unsigned long long _lastOffscreenRender;
     id<MTLTexture> _offscreenTexture;
     BOOL _isCreatingOffscreenTexture;
@@ -83,8 +84,10 @@
 - (void)_populateEffectSprites:(id)arg1 spriteRenderDataStore:(id)arg2 presentationDataStore:(id)arg3 metadataStore:(id)arg4;
 - (void)_render:(id)arg1 withCompletionCompletion:(CDUnknownBlockType)arg2;
 - (double)_screenScale;
-- (void)_setupBuffers;
+- (void)_setupConstantBuffers;
 - (void)_setupMetalIfNeeded;
+- (void)_setupSquareGeometryBuffer;
+- (void)_setupYCbCrMatrices;
 - (void)dealloc;
 - (void)drawInMTKView:(id)arg1;
 - (id)init;

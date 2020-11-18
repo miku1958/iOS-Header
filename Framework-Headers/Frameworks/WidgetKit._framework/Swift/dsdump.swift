@@ -1107,7 +1107,7 @@ WARNING: couldn't find address 0x7a3c0001ebf0 (0x23c0001ebf0) in binary!
 WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	0x74694b7465  @objc _AvocadoExtensionBaseContext.(null) <stripped>
 WARNING: couldn't find address 0x433a5443454a4f52 (0x443454a4f52) in binary!
-	0xa312e382e  @objc _AvocadoExtensionBaseContext.(null) <stripped>
+	0xa322e382e  @objc _AvocadoExtensionBaseContext.(null) <stripped>
 
 	// Swift methods
  }

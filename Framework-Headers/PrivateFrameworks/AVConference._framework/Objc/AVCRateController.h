@@ -120,9 +120,9 @@ __attribute__((visibility("hidden")))
 - (void)createVCRateControlAlgorithmWithConfiguration:(struct VCRateControlAlgorithmConfig)arg1;
 - (void)dealloc;
 - (void)deregisterPeriodicTask;
-- (void)doRateControlWithBasebandStatistics:(CDStruct_56e8fa21)arg1;
-- (void)doRateControlWithNWConnectionStatistics:(CDStruct_56e8fa21)arg1;
-- (void)doRateControlWithStatistics:(CDStruct_56e8fa21)arg1;
+- (void)doRateControlWithBasebandStatistics:(CDStruct_1a067c5f)arg1;
+- (void)doRateControlWithNWConnectionStatistics:(CDStruct_1a067c5f)arg1;
+- (void)doRateControlWithStatistics:(CDStruct_1a067c5f)arg1;
 - (void)getRealTimeStats:(struct __CFDictionary *)arg1;
 - (void)getRealTimeStatsForServerBasedRxOnly:(struct __CFDictionary *)arg1;
 - (void)getRealTimeStatsForServerBasedTxOnly:(struct __CFDictionary *)arg1;
@@ -139,9 +139,9 @@ __attribute__((visibility("hidden")))
 - (int)maxTierBelowBitrate:(unsigned int)arg1 maxTierIndex:(int)arg2 minTierIndex:(int)arg3;
 - (int)minTierAboveBitrate:(unsigned int)arg1 maxTierIndex:(int)arg2 minTierIndex:(int)arg3;
 - (void)periodicTask:(void *)arg1;
-- (void)printBasebandNotificationStatistics:(CDStruct_56e8fa21)arg1;
-- (void)printFeedbackMessage:(CDStruct_56e8fa21)arg1;
-- (void)printNWConnectionStatistics:(CDStruct_56e8fa21)arg1;
+- (void)printBasebandNotificationStatistics:(CDStruct_1a067c5f)arg1;
+- (void)printFeedbackMessage:(CDStruct_1a067c5f)arg1;
+- (void)printNWConnectionStatistics:(CDStruct_1a067c5f)arg1;
 - (unsigned int)radioAccessTechnologyFromAVConferenceCellTech:(int)arg1 isCellular:(BOOL)arg2;
 - (unsigned int)rateControlModeFromAVConferenceOperatingMode:(int)arg1;
 - (void)registerPeriodicTask;

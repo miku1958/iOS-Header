@@ -45,6 +45,8 @@
 @property (nonatomic) BOOL hasSaveHealthSampleIntentRecordDateUnsupportedReason;
 @property (nonatomic) BOOL hasSearchAlarmIntentAlarmsUnsupportedReason;
 @property (nonatomic) BOOL hasSearchForMediaIntentMediaItemsUnsupportedReason;
+@property (nonatomic) BOOL hasSendAnnouncementIntentAnnouncementUnsupportedReason;
+@property (nonatomic) BOOL hasSendAnnouncementIntentRecipientsUnsupportedReason;
 @property (nonatomic) BOOL hasSendMessageIntentRecipientUnsupportedReason;
 @property (nonatomic) BOOL hasSendPaymentIntentCurrencyAmountUnsupportedReason;
 @property (nonatomic) BOOL hasSendPaymentIntentPayeeUnsupportedReason;
@@ -70,6 +72,8 @@
 @property (nonatomic) int saveHealthSampleIntentRecordDateUnsupportedReason;
 @property (nonatomic) int searchAlarmIntentAlarmsUnsupportedReason;
 @property (nonatomic) int searchForMediaIntentMediaItemsUnsupportedReason;
+@property (nonatomic) int sendAnnouncementIntentAnnouncementUnsupportedReason;
+@property (nonatomic) int sendAnnouncementIntentRecipientsUnsupportedReason;
 @property (nonatomic) int sendMessageIntentRecipientUnsupportedReason;
 @property (nonatomic) int sendPaymentIntentCurrencyAmountUnsupportedReason;
 @property (nonatomic) int sendPaymentIntentPayeeUnsupportedReason;
@@ -108,6 +112,8 @@
 - (int)StringAsSaveHealthSampleIntentRecordDateUnsupportedReason:(NSString *)arg1;
 - (int)StringAsSearchAlarmIntentAlarmsUnsupportedReason:(NSString *)arg1;
 - (int)StringAsSearchForMediaIntentMediaItemsUnsupportedReason:(NSString *)arg1;
+- (int)StringAsSendAnnouncementIntentAnnouncementUnsupportedReason:(NSString *)arg1;
+- (int)StringAsSendAnnouncementIntentRecipientsUnsupportedReason:(NSString *)arg1;
 - (int)StringAsSendMessageIntentRecipientUnsupportedReason:(NSString *)arg1;
 - (int)StringAsSendPaymentIntentCurrencyAmountUnsupportedReason:(NSString *)arg1;
 - (int)StringAsSendPaymentIntentPayeeUnsupportedReason:(NSString *)arg1;
@@ -147,6 +153,8 @@
 - (NSString *)saveHealthSampleIntentRecordDateUnsupportedReasonAsString:(int)arg1;
 - (NSString *)searchAlarmIntentAlarmsUnsupportedReasonAsString:(int)arg1;
 - (NSString *)searchForMediaIntentMediaItemsUnsupportedReasonAsString:(int)arg1;
+- (NSString *)sendAnnouncementIntentAnnouncementUnsupportedReasonAsString:(int)arg1;
+- (NSString *)sendAnnouncementIntentRecipientsUnsupportedReasonAsString:(int)arg1;
 - (NSString *)sendMessageIntentRecipientUnsupportedReasonAsString:(int)arg1;
 - (NSString *)sendPaymentIntentCurrencyAmountUnsupportedReasonAsString:(int)arg1;
 - (NSString *)sendPaymentIntentPayeeUnsupportedReasonAsString:(int)arg1;

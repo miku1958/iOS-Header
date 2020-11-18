@@ -251,9 +251,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : 9
+	var x : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : 9
+	var y : Ø9
  }
 
  enum __C.TUConversationParticipantVideoQuality { }
@@ -268,37 +268,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m11 : 9
+	var m11 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m12 : 9
+	var m12 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m13 : 9
+	var m13 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m14 : 9
+	var m14 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m21 : 9
+	var m21 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m22 : 9
+	var m22 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m23 : 9
+	var m23 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m24 : 9
+	var m24 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m31 : 9
+	var m31 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m32 : 9
+	var m32 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m33 : 9
+	var m33 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m34 : 9
+	var m34 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m41 : 9
+	var m41 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m42 : 9
+	var m42 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m43 : 9
+	var m43 : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var m44 : 9
+	var m44 : Ø9
  }
 
  struct __C.OpenExternalURLOptionsKey {
@@ -315,9 +315,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 9
+	var width : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 9
+	var height : Ø9
  }
 
  enum __C.SymbolWeight { }
@@ -348,17 +348,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var a : 9
+	var a : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var b : 9
+	var b : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c : 9
+	var c : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var d : 9
+	var d : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tx : 9
+	var tx : Ø9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ty : 9
+	var ty : Ø9
  }
 
  struct __C.CGRect {
@@ -380,7 +380,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : g?
+	let rawValue : @
  }
 
  enum __C.UIViewAnimatingPosition { }
@@ -390,9 +390,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : ˚8
+	let date : õ9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupUUID : %9
+	let groupUUID : ≈9
 	let remoteMembers : Member
 	let activeParticipants : Participant
 	let isBackedByMessagesGroup : Bool
@@ -409,7 +409,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let handle : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let identifier : kA // +0x10
+	let identifier : B // +0x10
  }
 
  enum ConversationKit.CodingKeys {
@@ -442,24 +442,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tapGestureRecognizer : UITapGestureRecognizer
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x186e400044b68 (0x6e400044b68) in binary!
-	0xf318  @objc TapInteraction.(null) <stripped>
-WARNING: couldn't find address 0x108a000044798 (0xa000044798) in binary!
-	0xe361  @objc TapInteraction.(null) <stripped>
-WARNING: couldn't find address 0x186b400044790 (0x6b400044790) in binary!
-	0xf2e8  @objc TapInteraction.(null) <stripped>
-WARNING: couldn't find address 0xf2dc00044718 (0x2dc00044718) in binary!
-	0xf2d0  @objc TapInteraction.(null) <stripped>
-WARNING: couldn't find address 0xee94000446f8 (0x694000446f8) in binary!
+WARNING: couldn't find address 0x1873400044c08 (0x73400044c08) in binary!
+	0xf368  @objc TapInteraction.(null) <stripped>
+WARNING: couldn't find address 0x108f000044838 (0xf000044838) in binary!
+	0xe3b1  @objc TapInteraction.(null) <stripped>
+WARNING: couldn't find address 0x1870400044830 (0x70400044830) in binary!
+	0xf338  @objc TapInteraction.(null) <stripped>
+WARNING: couldn't find address 0xf32c000447b8 (0x32c000447b8) in binary!
+	0xf320  @objc TapInteraction.(null) <stripped>
+WARNING: couldn't find address 0xeee400044798 (0x6e400044798) in binary!
 	0x18000000c  @objc TapInteraction.(null) <stripped>
-WARNING: couldn't find address 0xe386000443a0 (0x386000443a0) in binary!
+WARNING: couldn't find address 0xe3d600044440 (0x3d600044440) in binary!
 	0x18000000c  @objc TapInteraction.(null) <stripped>
-WARNING: couldn't find address 0x10c1c000446c0 (0x41c000446c0) in binary!
+WARNING: couldn't find address 0x10c6c00044760 (0x46c00044760) in binary!
 	0x18000000c  @objc TapInteraction.(null) <stripped>
-WARNING: couldn't find address 0x1863c00044718 (0x63c00044718) in binary!
+WARNING: couldn't find address 0x1868c000447b8 (0x68c000447b8) in binary!
 	0x68000000c  @objc TapInteraction.(null) <stripped>
-WARNING: couldn't find address 0x1862400044688 (0x62400044688) in binary!
-	0x12a4e  @objc TapInteraction.(null) <stripped>
+WARNING: couldn't find address 0x1867400044728 (0x67400044728) in binary!
+	0x12a9e  @objc TapInteraction.(null) <stripped>
  }
 
  class ConversationKit.InCallControlsViewConstraintManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -475,19 +475,19 @@ WARNING: couldn't find address 0x1862400044688 (0x62400044688) in binary!
 	var type : InCallControlsLayoutType
 
 	// Swift methods
-	0xdf20  func InCallControlsViewConstraintManager.type.getter // getter 
-	0xdf50  func InCallControlsViewConstraintManager.type.setter // setter 
-	0xdf90  func InCallControlsViewConstraintManager.type.modify // modifyCoroutine 
-	0xe000  class func InCallControlsViewConstraintManager.__allocating_init(containingGuide:containingView:controlsView:type:) // init 
-	0xe360  func InCallControlsViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
-	0xe450  func InCallControlsViewConstraintManager.updateConstraints() // method 
+	0xde40  func InCallControlsViewConstraintManager.type.getter // getter 
+	0xde70  func InCallControlsViewConstraintManager.type.setter // setter 
+	0xdeb0  func InCallControlsViewConstraintManager.type.modify // modifyCoroutine 
+	0xdf20  class func InCallControlsViewConstraintManager.__allocating_init(containingGuide:containingView:controlsView:type:) // init 
+	0xe280  func InCallControlsViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0xe370  func InCallControlsViewConstraintManager.updateConstraints() // method 
  }
 
  enum ConversationKit.InCallControlsLayoutType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case effectsVisible : 9
+	case effectsVisible : Ø9
 	case leftFloating : DeviceOrientation
 	case hidden  
 	case bottomLeftFloating  
@@ -495,13 +495,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ConversationKit.TUBlockedCallerChecker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BlockedCallerChecker {
 	// Swift methods
-	0xee60  func TUBlockedCallerChecker.blockListContains(_:with:) // method 
-	0xef80  class func TUBlockedCallerChecker.__allocating_init() // init 
+	0xed80  func TUBlockedCallerChecker.blockListContains(_:with:) // method 
+	0xeea0  class func TUBlockedCallerChecker.__allocating_init() // init 
  }
 
  class ConversationKit.SpringBoardUtilities : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xf110  class func SpringBoardUtilities.__allocating_init() // init 
+	0xf030  class func SpringBoardUtilities.__allocating_init() // init 
  }
 
  class ConversationKit.RemoteParticipantVideoProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ParticipantVideoProvider {
@@ -510,14 +510,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let avcRemoteVideoClient : AVCRemoteVideoClient?
 
 	// Swift methods
-	0xf170  func RemoteParticipantVideoProvider.token.getter // getter 
-	0xf1a0  func RemoteParticipantVideoProvider.hasReceivedVideoFrames.getter // getter 
-	0xf1c0  func RemoteParticipantVideoProvider.isVideoMirrored.getter // getter 
-	0xf1d0  func RemoteParticipantVideoProvider.videoAttributeOrientation.getter // getter 
-	0xf1f0  func RemoteParticipantVideoProvider.videoAttributeCamera.getter // getter 
-	0xf280  class func RemoteParticipantVideoProvider.__allocating_init(avcRemoteVideoClient:) // init 
-	0xf3f0  func RemoteParticipantVideoProvider.setLayer(_:for:) // method 
-	0xf5b0  func RemoteParticipantVideoProvider.isEqual(to:) // method 
+	0xf090  func RemoteParticipantVideoProvider.token.getter // getter 
+	0xf0c0  func RemoteParticipantVideoProvider.hasReceivedVideoFrames.getter // getter 
+	0xf0e0  func RemoteParticipantVideoProvider.isVideoMirrored.getter // getter 
+	0xf0f0  func RemoteParticipantVideoProvider.videoAttributeOrientation.getter // getter 
+	0xf110  func RemoteParticipantVideoProvider.videoAttributeCamera.getter // getter 
+	0xf1a0  class func RemoteParticipantVideoProvider.__allocating_init(avcRemoteVideoClient:) // init 
+	0xf310  func RemoteParticipantVideoProvider.setLayer(_:for:) // method 
+	0xf4d0  func RemoteParticipantVideoProvider.isEqual(to:) // method 
  }
 
  struct ConversationKit.Colors { }
@@ -549,13 +549,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var initialZoomFactor : Float
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1863c00044718 (0x63c00044718) in binary!
+WARNING: couldn't find address 0x1868c000447b8 (0x68c000447b8) in binary!
 	0x68000000c  @objc PipZoomControl.(null) <stripped>
 
 	// Swift methods
-	0x12ef0  func <stripped> // method 
-	0x13000  func <stripped> // method 
-	0x13010  func <stripped> // method 
+	0x12e10  func <stripped> // method 
+	0x12f20  func <stripped> // method 
+	0x12f30  func <stripped> // method 
  }
 
  class ConversationKit.InCallControlsAddParticipantTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -570,17 +570,17 @@ WARNING: couldn't find address 0x1863c00044718 (0x63c00044718) in binary!
 	var isEnabled : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1862400044688 (0x62400044688) in binary!
-	0x12a4e  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0xf65c00044938 (0x65c00044938) in binary!
-	0xf240  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0xf23400044928 (0x23400044928) in binary!
-	0xedf8  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1867400044728 (0x67400044728) in binary!
+	0x12a9e  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0xf6ac000449d8 (0x6ac000449d8) in binary!
+	0xf290  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0xf284000449c8 (0x284000449c8) in binary!
+	0xee48  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff054d0  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
+	0xfff05490  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x11cfff04d28  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
-	0x60cfff04eb0  @objc InCallControlsAddParticipantTableViewCell.f÷EËHãEËHãM‡HãU–HãuÿPQVRËˇ <stripped>
+	0x1bcfff04ce8  @objc InCallControlsAddParticipantTableViewCell.(null) <stripped>
+	0x6acfff04e70  @objc InCallControlsAddParticipantTableViewCell.)v`)~pHçEÄD) <stripped>
  }
 
  class ConversationKit.AudioVisualizationView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -590,25 +590,25 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var gradient : [UIColor]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x185bc00044698 (0x5bc00044698) in binary!
-	0xe9a0  @objc AudioVisualizationView.(null) <stripped>
-WARNING: couldn't find address 0xf5f4000448d0 (0x5f4000448d0) in binary!
-	0xeda8  @objc AudioVisualizationView.(null) <stripped>
+WARNING: couldn't find address 0x1860c00044738 (0x60c00044738) in binary!
+	0xe9f0  @objc AudioVisualizationView.(null) <stripped>
+WARNING: couldn't find address 0xf64400044970 (0x64400044970) in binary!
+	0xedf8  @objc AudioVisualizationView.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x11cfff061f0  @objc AudioVisualizationView.(null) <stripped>
-	0x66cfff06738  @objc AudioVisualizationView.Lçu®LâˆHâ⁄ËŸ	 <stripped>
+	0x1bcfff061b0  @objc AudioVisualizationView.(null) <stripped>
+	0x70cfff066f8  @objc AudioVisualizationView. <stripped>
 
 	// Swift methods
-	0x14870  func AudioVisualizationView.audioVisualizationLayer.getter // getter 
-	0x14910  class func AudioVisualizationView.__allocating_init(colorStyle:) // init 
-	0x14d10  func AudioVisualizationView.scale.getter // getter 
-	0x14d60  func AudioVisualizationView.scale.setter // setter 
-	0x14dc0  func AudioVisualizationView.scale.modify // modifyCoroutine 
-	0x15080  func AudioVisualizationView.gradient.getter // getter 
-	0x150c0  func AudioVisualizationView.gradient.setter // setter 
-	0x15120  func AudioVisualizationView.gradient.modify // modifyCoroutine 
-	0x15190  func AudioVisualizationView.startAnimation() // method 
-	0x151b0  func AudioVisualizationView.stopAnimation() // method 
+	0x14790  func AudioVisualizationView.audioVisualizationLayer.getter // getter 
+	0x14830  class func AudioVisualizationView.__allocating_init(colorStyle:) // init 
+	0x14c30  func AudioVisualizationView.scale.getter // getter 
+	0x14c80  func AudioVisualizationView.scale.setter // setter 
+	0x14ce0  func AudioVisualizationView.scale.modify // modifyCoroutine 
+	0x14fa0  func AudioVisualizationView.gradient.getter // getter 
+	0x14fe0  func AudioVisualizationView.gradient.setter // setter 
+	0x15040  func AudioVisualizationView.gradient.modify // modifyCoroutine 
+	0x150b0  func AudioVisualizationView.startAnimation() // method 
+	0x150d0  func AudioVisualizationView.stopAnimation() // method 
  }
 
  class ConversationKit.AudioVisualizationLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -621,19 +621,19 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	var color : UIColor?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1858400044660 (0x58400044660) in binary!
-	0xf5c8  @objc AudioVisualizationLayer.(null) <stripped>
-WARNING: couldn't find address 0xf5bc00044898 (0x5bc00044898) in binary!
-	0xed70  @objc AudioVisualizationLayer.(null) <stripped>
-WARNING: couldn't find address 0xeaa400044900 (0x2a400044900) in binary!
-	0xeac8  @objc AudioVisualizationLayer.(null) <stripped>
-WARNING: couldn't find address 0x15dcc00044900 (0x5cc00044900) in binary!
-	0xed40  @objc AudioVisualizationLayer.(null) <stripped>
+WARNING: couldn't find address 0x185d400044700 (0x5d400044700) in binary!
+	0xf618  @objc AudioVisualizationLayer.(null) <stripped>
+WARNING: couldn't find address 0xf60c00044938 (0x60c00044938) in binary!
+	0xedc0  @objc AudioVisualizationLayer.(null) <stripped>
+WARNING: couldn't find address 0xeaf4000449a0 (0x2f4000449a0) in binary!
+	0xeb18  @objc AudioVisualizationLayer.(null) <stripped>
+WARNING: couldn't find address 0x15e1c000449a0 (0x61c000449a0) in binary!
+	0xed90  @objc AudioVisualizationLayer.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x3cfff0a358  @objc AudioVisualizationLayer.(null) <stripped>
-	0x54cfff0af50  @objc AudioVisualizationLayer.ﬂË–ˆ <stripped>
-	0x524fff0b028  @objc AudioVisualizationLayer.Ïà <stripped>
-	0x53cfff0b5f0  @objc AudioVisualizationLayer.ﬁËä	 <stripped>
+	0xdcfff0a318  @objc AudioVisualizationLayer.(null) <stripped>
+	0x5ecfff0af10  @objc AudioVisualizationLayer.u–Iâ˝Hç=è <stripped>
+	0x5c4fff0afe8  @objc AudioVisualizationLayer.âŒË¸ˇˇHÅƒ <stripped>
+	0x5dcfff0b5b0  @objc AudioVisualizationLayer.H9◊î¿ »]√Ä·â»]√f.Ñ <stripped>
  }
 
  class ConversationKit.LocalParticipantViewConstraintManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -652,12 +652,12 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	var type : LocalParticipantLayoutType
 
 	// Swift methods
-	0x17a70  func LocalParticipantViewConstraintManager.type.getter // getter 
-	0x17aa0  func LocalParticipantViewConstraintManager.type.setter // setter 
-	0x17af0  func LocalParticipantViewConstraintManager.type.modify // modifyCoroutine 
-	0x17b60  class func LocalParticipantViewConstraintManager.__allocating_init(containingGuide:containingView:localPIPView:controlsView:type:) // init 
-	0x18bd0  func LocalParticipantViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
-	0x18c60  func LocalParticipantViewConstraintManager.updateConstraints() // method 
+	0x17990  func LocalParticipantViewConstraintManager.type.getter // getter 
+	0x179c0  func LocalParticipantViewConstraintManager.type.setter // setter 
+	0x17a10  func LocalParticipantViewConstraintManager.type.modify // modifyCoroutine 
+	0x17a80  class func LocalParticipantViewConstraintManager.__allocating_init(containingGuide:containingView:localPIPView:controlsView:type:) // init 
+	0x18af0  func LocalParticipantViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0x18b80  func LocalParticipantViewConstraintManager.updateConstraints() // method 
  }
 
  enum ConversationKit.LocalParticipantLayoutType {
@@ -694,19 +694,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var calculatedContentSize : CGSize
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1851c000445f8 (0x51c000445f8) in binary!
-	0xf560  @objc ParticipantListLayout.(null) <stripped>
-WARNING: couldn't find address 0xed1400044928 (0x51400044928) in binary!
-	0xed18  @objc ParticipantListLayout.(null) <stripped>
-WARNING: couldn't find address 0xed2c00044538 (0x52c00044538) in binary!
-	0xf530  @objc ParticipantListLayout.(null) <stripped>
-WARNING: couldn't find address 0xe8c400044510 (0xc400044510) in binary!
-	0xecd8  @objc ParticipantListLayout.(null) <stripped>
+WARNING: couldn't find address 0x1856c00044698 (0x56c00044698) in binary!
+	0xf5b0  @objc ParticipantListLayout.(null) <stripped>
+WARNING: couldn't find address 0xed64000449c8 (0x564000449c8) in binary!
+	0xed68  @objc ParticipantListLayout.(null) <stripped>
+WARNING: couldn't find address 0xed7c000445d8 (0x57c000445d8) in binary!
+	0xf580  @objc ParticipantListLayout.(null) <stripped>
+WARNING: couldn't find address 0xe914000445b0 (0x114000445b0) in binary!
+	0xed28  @objc ParticipantListLayout.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x14fff15920  @objc ParticipantListLayout.(null) <stripped>
-	0x12cfff15ff8  @objc ParticipantListLayout.E»ÚEËÚE∏ÚEÚE∞ÚE¯HãE¯HãMHãU‡HãuËPQVRË¯ <stripped>
-	0x49cfff16300  @objc ParticipantListLayout.t¸ <stripped>
-	0xfff16448  @objc ParticipantListLayout.â¯j_Iâıˇ–HÉƒA]]√fD <stripped>
+	0xb4fff158e0  @objc ParticipantListLayout.(null) <stripped>
+	0x1ccfff15fb8  @objc ParticipantListLayout.â¡H!ŸH9ŸuL!u4Û~E¿fH~¿Hâ¡H!ŸH9ŸuL!uÛ~E»fH~¿Hâ¡H!ŸH9ŸuL!t1¿HÉƒ@[A^]√ÚE¿ÚE–ÚE»ÚEÿÚE∏ÚE‡Û~E∞f÷EËHãEËHãM‡HãU–HãuÿPQVRËﬂˇ <stripped>
+	0x53cfff162c0  @objc ParticipantListLayout.UHâÂ]È <stripped>
+	0xfff16408  @objc ParticipantListLayout. <stripped>
  }
 
  enum ConversationKit.ParticipantsViewControllerUpdateReason {
@@ -723,8 +723,8 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	let constraints : [NSLayoutConstraint]
 
 	// Swift methods
-	0x1e480  class func GridViewConstraintManager.__allocating_init(containingGuide:gridView:) // init 
-	0x1e730  func GridViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0x1e3a0  class func GridViewConstraintManager.__allocating_init(containingGuide:gridView:) // init 
+	0x1e650  func GridViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
  }
 
  enum ConversationKit.ParticipantViewModel {
@@ -739,7 +739,7 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identifier : %9
+	var identifier : ≈9
 	var displayName : String
 	var isMomentsAvailable : Bool
 	var isLocal : Bool
@@ -756,32 +756,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentDeviceOrientation : DeviceOrientation
 
 	// Swift methods
-	0x23af0  class func LargeStagingAreaViewControllerLayout.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserView:deviceOrientation:) // init 
+	0x23a10  class func LargeStagingAreaViewControllerLayout.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserView:deviceOrientation:) // init 
  }
 
  class ConversationKit.ParticipantCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var participantIdentifier : G9 // +0x10fca0 (0x0)
+	var participantIdentifier : Á9 // +0x10fc00 (0x0)
 	let participantView : ParticipantView // +0x0 (0x8)
 	var accessibilityDisplayName : String // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x184b4000444e8 (0x4b4000444e8) in binary!
-	0xe898  @objc ParticipantCell.(null) <stripped>
-WARNING: couldn't find address 0xf4ec000447c8 (0x4ec000447c8) in binary!
-	0xeca0  @objc ParticipantCell.(null) <stripped>
-WARNING: couldn't find address 0x18484000444b0 (0x484000444b0) in binary!
-	0xf0b8  @objc ParticipantCell.(null) <stripped>
-WARNING: couldn't find address 0xec7c000444e0 (0x47c000444e0) in binary!
+WARNING: couldn't find address 0x1850400044588 (0x50400044588) in binary!
+	0xe8e8  @objc ParticipantCell.(null) <stripped>
+WARNING: couldn't find address 0xf53c00044868 (0x53c00044868) in binary!
+	0xecf0  @objc ParticipantCell.(null) <stripped>
+WARNING: couldn't find address 0x184d400044550 (0x4d400044550) in binary!
+	0xf108  @objc ParticipantCell.(null) <stripped>
+WARNING: couldn't find address 0xeccc00044580 (0x4cc00044580) in binary!
 	0x78000000c  @objc ParticipantCell.(null) <stripped>
-WARNING: couldn't find address 0x1845400044470 (0x45400044470) in binary!
-	0x18448  @objc ParticipantCell.(null) <stripped>
-WARNING: couldn't find address 0x12872000446e0 (0x72000446e0) in binary!
-	0xf480  @objc ParticipantCell.(null) <stripped>
-WARNING: couldn't find address 0xf06400044758 (0x6400044758) in binary!
-	0xf058  @objc ParticipantCell.(null) <stripped>
+WARNING: couldn't find address 0x184a400044510 (0x4a400044510) in binary!
+	0x18498  @objc ParticipantCell.(null) <stripped>
+	0xf4d0  RemoteParticipantVideoProvider.isEqual(to:)
+WARNING: couldn't find address 0xf0b4000447f8 (0xb4000447f8) in binary!
+	0xf0a8  @objc ParticipantCell.(null) <stripped>
  }
 
  class ConversationKit.InCallControlsTitleCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -802,19 +801,18 @@ WARNING: couldn't find address 0xf06400044758 (0x6400044758) in binary!
 	var delegate : InCallControlsTitleCellDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1845400044470 (0x45400044470) in binary!
-	0x18448  @objc InCallControlsTitleCell.(null) <stripped>
-WARNING: couldn't find address 0x12872000446e0 (0x72000446e0) in binary!
-	0xf480  @objc InCallControlsTitleCell.(null) <stripped>
-WARNING: couldn't find address 0xf06400044758 (0x6400044758) in binary!
-	0xf058  @objc InCallControlsTitleCell.(null) <stripped>
-WARNING: couldn't find address 0xec1c00044480 (0x41c00044480) in binary!
+WARNING: couldn't find address 0x184a400044510 (0x4a400044510) in binary!
+	0x18498  @objc InCallControlsTitleCell.(null) <stripped>
+	0xf4d0  RemoteParticipantVideoProvider.isEqual(to:)
+WARNING: couldn't find address 0xf0b4000447f8 (0xb4000447f8) in binary!
+	0xf0a8  @objc InCallControlsTitleCell.(null) <stripped>
+WARNING: couldn't find address 0xec6c00044520 (0x46c00044520) in binary!
 	0x28000000c  @objc InCallControlsTitleCell.(null) <stripped>
-WARNING: couldn't find address 0x183f4000444d0 (0x3f4000444d0) in binary!
-	0xebf8  @objc InCallControlsTitleCell.(null) <stripped>
+WARNING: couldn't find address 0x1844400044570 (0x44400044570) in binary!
+	0xec48  @objc InCallControlsTitleCell.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x104fff1ae50  @objc InCallControlsTitleCell.(null) <stripped>
-	0xfcfff1af78  @objc InCallControlsTitleCell.ˇ’Hã5'. <stripped>
+	0x1a4fff1ae10  @objc InCallControlsTitleCell.(null) <stripped>
+	0x19cfff1af38  @objc InCallControlsTitleCell.Ñß <stripped>
  }
 
  enum ConversationKit.Command { }
@@ -835,7 +833,7 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	let cache : BoxedDetails
 
 	// Swift methods
-	0x29d40  class func ParticipantContactDetailsCache.__allocating_init(contactStore:) // init 
+	0x29c60  class func ParticipantContactDetailsCache.__allocating_init(contactStore:) // init 
  }
 
  class ConversationKit.BoxedDetails : NSObject /usr/lib/libobjc.A.dylib {
@@ -844,10 +842,10 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	let details : ParticipantContactDetails
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x183f4000444d0 (0x3f4000444d0) in binary!
-	0xebf8  @objc BoxedDetails.(null) <stripped>
+WARNING: couldn't find address 0x1844400044570 (0x44400044570) in binary!
+	0xec48  @objc BoxedDetails.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x104fff1ae50  @objc BoxedDetails.(null) <stripped>
+	0x1a4fff1ae10  @objc BoxedDetails.(null) <stripped>
 
 	// Swift methods
  }
@@ -862,24 +860,24 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	var colorConfiguration : State
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1099c00044908 (0x19c00044908) in binary!
-	0x117b8  @objc ParticipantViewButton.(null) <stripped>
-WARNING: couldn't find address 0x1098400044900 (0x18400044900) in binary!
-	0x117a0  @objc ParticipantViewButton.(null) <stripped>
-WARNING: couldn't find address 0xf3f4000446d0 (0x3f4000446d0) in binary!
-	0xeba8  @objc ParticipantViewButton.(null) <stripped>
-WARNING: couldn't find address 0xe77c000446f8 (0x77c000446f8) in binary!
-	0xeb90  @objc ParticipantViewButton.(null) <stripped>
+WARNING: couldn't find address 0x109ec000449a8 (0x1ec000449a8) in binary!
+	0x11808  @objc ParticipantViewButton.(null) <stripped>
+WARNING: couldn't find address 0x109d4000449a0 (0x1d4000449a0) in binary!
+	0x117f0  @objc ParticipantViewButton.(null) <stripped>
+WARNING: couldn't find address 0xf44400044770 (0x44400044770) in binary!
+	0xebf8  @objc ParticipantViewButton.(null) <stripped>
+WARNING: couldn't find address 0xe7cc00044798 (0x7cc00044798) in binary!
+	0xebe0  @objc ParticipantViewButton.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff1dd58  @objc ParticipantViewButton.(null) <stripped>
+	0xfff1dd18  @objc ParticipantViewButton.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff21df0  @objc ParticipantViewButton.(null) <stripped>
+	0xfff21db0  @objc ParticipantViewButton.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x69cfff21b68  @objc ParticipantViewButton.(null) <stripped>
-	0x38cfff21db0  @objc ParticipantViewButton.Ä	 <stripped>
+	0x73cfff21b28  @objc ParticipantViewButton.(null) <stripped>
+	0x42cfff21d70  @objc ParticipantViewButton.ÚUÚ]¯HãE¯HãMHãU‡HãuËPQVRËç <stripped>
 
 	// Swift methods
-	0x2b250  class func ParticipantViewButton.__allocating_init(imageName:) // init 
+	0x2b170  class func ParticipantViewButton.__allocating_init(imageName:) // init 
  }
 
  struct ConversationKit.ElementColors {
@@ -887,10 +885,10 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	// Properties
 	let glyph : UIColor // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let glyphAlpha : 9 // +0x8
+	let glyphAlpha : Ø9 // +0x8
 	let background : UIColor // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let backgroundAlpha : 9 // +0x18
+	let backgroundAlpha : Ø9 // +0x18
  }
 
  enum ConversationKit.LayerAnimationCoordinatorKeyPath {
@@ -909,18 +907,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let lookupManager : IDSLookupManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xefac00044950 (0x7ac00044950) in binary!
+WARNING: couldn't find address 0xeffc000449f0 (0x7fc000449f0) in binary!
 	0x18000000c  @objc IDSCapabilitiesChecker.(null) <stripped>
 
 	// Swift methods
-	0x2c930  func IDSCapabilitiesChecker.participantCapabilities.getter // getter 
-	0x2c9d0  func IDSCapabilitiesChecker.delegate.getter // getter 
-	0x2ca00  func IDSCapabilitiesChecker.delegate.setter // setter 
-	0x2ca50  func IDSCapabilitiesChecker.delegate.modify // modifyCoroutine 
-	0x2cb30  class func IDSCapabilitiesChecker.__allocating_init(participants:lookupManager:) // init 
-	0x2cc60  func IDSCapabilitiesChecker.update(withParticipants:) // method 
-	0x2cc70  func IDSCapabilitiesChecker.updateCapabilities(withParticipants:) // method 
-	0x2d890  func IDSCapabilitiesChecker.handleLookupManagerDidChangeNotification(_:) // method 
+	0x2c850  func IDSCapabilitiesChecker.participantCapabilities.getter // getter 
+	0x2c8f0  func IDSCapabilitiesChecker.delegate.getter // getter 
+	0x2c920  func IDSCapabilitiesChecker.delegate.setter // setter 
+	0x2c970  func IDSCapabilitiesChecker.delegate.modify // modifyCoroutine 
+	0x2ca50  class func IDSCapabilitiesChecker.__allocating_init(participants:lookupManager:) // init 
+	0x2cb80  func IDSCapabilitiesChecker.update(withParticipants:) // method 
+	0x2cb90  func IDSCapabilitiesChecker.updateCapabilities(withParticipants:) // method 
+	0x2d7b0  func IDSCapabilitiesChecker.handleLookupManagerDidChangeNotification(_:) // method 
  }
 
  enum ConversationKit.Capabilities {
@@ -934,7 +932,7 @@ WARNING: couldn't find address 0xefac00044950 (0x7ac00044950) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identifier : %9
+	var identifier : ≈9
 	var destination : String
  }
 
@@ -944,14 +942,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var colors : [UIColor]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1833c00044418 (0x33c00044418) in binary!
-	0xe720  @objc GradientView.(null) <stripped>
-WARNING: couldn't find address 0xf37400044650 (0x37400044650) in binary!
-	0xeb28  @objc GradientView.(null) <stripped>
+WARNING: couldn't find address 0x1838c000444b8 (0x38c000444b8) in binary!
+	0xe770  @objc GradientView.(null) <stripped>
+WARNING: couldn't find address 0xf3c4000446f0 (0x3c4000446f0) in binary!
+	0xeb78  @objc GradientView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff225a0  @objc GradientView.(null) <stripped>
+	0xfff22560  @objc GradientView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x60cfff240f8  @objc GradientView.(null) <stripped>
+	0x6acfff240b8  @objc GradientView.(null) <stripped>
  }
 
  class ConversationKit.LargeMultiwayControllerLayout : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -965,7 +963,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var currentDeviceOrientation : DeviceOrientation
 
 	// Swift methods
-	0x32800  class func LargeMultiwayControllerLayout.__allocating_init(containingView:participantListView:gridView:controlsView:localParticipantView:effectsView:effectsBrowserView:deviceOrientation:) // init 
+	0x32720  class func LargeMultiwayControllerLayout.__allocating_init(containingView:participantListView:gridView:controlsView:localParticipantView:effectsView:effectsBrowserView:deviceOrientation:) // init 
  }
 
  class ConversationKit.InCallControlsReportAProblemTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -979,13 +977,13 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var enabled : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1272200044590 (0x72200044590) in binary!
-	0xf330  @objc InCallControlsReportAProblemTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0xef1400044608 (0x71400044608) in binary!
-	0xead8  @objc InCallControlsReportAProblemTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1277200044630 (0x77200044630) in binary!
+	0xf380  @objc InCallControlsReportAProblemTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0xef64000446a8 (0x764000446a8) in binary!
+	0xeb28  @objc InCallControlsReportAProblemTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x5d4fff260e0  @objc InCallControlsReportAProblemTableViewCell.(null) <stripped>
-	0x7f4fff26628  @objc InCallControlsReportAProblemTableViewCell.ZHâ«Ë«˜ <stripped>
+	0x674fff260a0  @objc InCallControlsReportAProblemTableViewCell.(null) <stripped>
+	0x94fff265e8  @objc InCallControlsReportAProblemTableViewCell. <stripped>
  }
 
  class ConversationKit.ParticipantGridView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -995,25 +993,26 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let unfocusedParticipantOverlay : UIView
 	let organicLayoutConfiguration : Configuration
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentlyFocusedParticipantIdentifier : G9
+	var currentlyFocusedParticipantIdentifier : Á9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mostProminentParticipantIdentifier : G9
+	var mostProminentParticipantIdentifier : Á9
 	var mostRecentAnimationIndex : Int
 	var delegate : ParticipantGridViewDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentParticipantAnimationContextUUID : G9
+	var currentParticipantAnimationContextUUID : Á9
 	var cachedFrameSize : CGSize
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x182b400044390 (0x2b400044390) in binary!
-	0xf2f8  @objc ParticipantGridView.(null) <stripped>
-WARNING: couldn't find address 0xe68c00044608 (0x68c00044608) in binary!
-	0xeaa0  @objc ParticipantGridView.(null) <stripped>
-WARNING: couldn't find address 0xea94000442f8 (0x294000442f8) in binary!
+WARNING: couldn't find address 0x1830400044430 (0x30400044430) in binary!
+	0xf348  @objc ParticipantGridView.(null) <stripped>
+WARNING: couldn't find address 0xe6dc000446a8 (0x6dc000446a8) in binary!
+	0xeaf0  @objc ParticipantGridView.(null) <stripped>
+WARNING: couldn't find address 0xeae400044398 (0x2e400044398) in binary!
 	0x48000000c  @objc ParticipantGridView.(null) <stripped>
-	0xe650  InCallControlsViewConstraintManager.deinit
-WARNING: couldn't find address 0xea64000447b8 (0x264000447b8) in binary!
-	0xea58  @objc ParticipantGridView.(null) <stripped>
+WARNING: couldn't find address 0xf30c00044638 (0x30c00044638) in binary!
+	0xe6a0  @objc ParticipantGridView.(null) <stripped>
+WARNING: couldn't find address 0xeab400044858 (0x2b400044858) in binary!
+	0xeaa8  @objc ParticipantGridView.(null) <stripped>
  }
 
  enum ConversationKit.AnimationStyle {
@@ -1028,7 +1027,7 @@ WARNING: couldn't find address 0xea64000447b8 (0x264000447b8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identifier : %9
+	var identifier : ≈9
 	var view : ParticipantView
  }
 
@@ -1040,15 +1039,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isInRoster : Bool
 
 	// ObjC -> Swift bridged methods
-	0xe650  InCallControlsViewConstraintManager.deinit
-WARNING: couldn't find address 0xea64000447b8 (0x264000447b8) in binary!
-	0xea58  @objc LocalParticipantView.(null) <stripped>
+WARNING: couldn't find address 0xf30c00044638 (0x30c00044638) in binary!
+	0xe6a0  @objc LocalParticipantView.(null) <stripped>
+WARNING: couldn't find address 0xeab400044858 (0x2b400044858) in binary!
+	0xeaa8  @objc LocalParticipantView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x78cfff360c0  @objc LocalParticipantView.(null) <stripped>
-	0x284fff36468  @objc LocalParticipantView.∞f÷EËHãEËHãM‡HãU–HãuÿPQVRËüˇ <stripped>
+	0x2cfff36080  @objc LocalParticipantView.(null) <stripped>
+	0x324fff36428  @objc LocalParticipantView.Ï˝ <stripped>
 
 	// Swift methods
-	0x3f230  class func LocalParticipantView.__allocating_init(isInRoster:) // init 
+	0x3f150  class func LocalParticipantView.__allocating_init(isInRoster:) // init 
  }
 
  class ConversationKit.InCallControlsView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1066,16 +1066,16 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let buttonLabelWidthConstraints : [NSLayoutConstraint]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf28400044560 (0x28400044560) in binary!
-	0xea38  @objc InCallControlsView.(null) <stripped>
-WARNING: couldn't find address 0xe60c00044588 (0x60c00044588) in binary!
-	0xea20  @objc InCallControlsView.(null) <stripped>
+WARNING: couldn't find address 0xf2d400044600 (0x2d400044600) in binary!
+	0xea88  @objc InCallControlsView.(null) <stripped>
+WARNING: couldn't find address 0xe65c00044628 (0x65c00044628) in binary!
+	0xea70  @objc InCallControlsView.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x334fff371e8  @objc InCallControlsView.(null) <stripped>
-	0x2b4fff37860  @objc InCallControlsView. <stripped>
+	0x3d4fff371a8  @objc InCallControlsView.(null) <stripped>
+	0x354fff37820  @objc InCallControlsView.ç=Zq <stripped>
 
 	// Swift methods
-	0x418e0  class func InCallControlsView.__allocating_init(frame:capabilities:) // init 
+	0x41800  class func InCallControlsView.__allocating_init(frame:capabilities:) // init 
  }
 
  enum ConversationKit.JoinLeaveConfiguration {
@@ -1105,19 +1105,19 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 	var type : ParticipantListLayoutType
 
 	// Swift methods
-	0x46c40  func ParticipantListViewConstraintManager.type.getter // getter 
-	0x46c70  func ParticipantListViewConstraintManager.type.setter // setter 
-	0x46cb0  func ParticipantListViewConstraintManager.type.modify // modifyCoroutine 
-	0x46b80  class func ParticipantListViewConstraintManager.__allocating_init(containingGuide:rosterView:controlsView:type:) // init 
-	0x46fe0  func ParticipantListViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
-	0x46ff0  func ParticipantListViewConstraintManager.updateConstraints() // method 
+	0x46b60  func ParticipantListViewConstraintManager.type.getter // getter 
+	0x46b90  func ParticipantListViewConstraintManager.type.setter // setter 
+	0x46bd0  func ParticipantListViewConstraintManager.type.modify // modifyCoroutine 
+	0x46aa0  class func ParticipantListViewConstraintManager.__allocating_init(containingGuide:rosterView:controlsView:type:) // init 
+	0x46f00  func ParticipantListViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0x46f10  func ParticipantListViewConstraintManager.updateConstraints() // method 
  }
 
  enum ConversationKit.ParticipantListLayoutType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case nextToControls : 9
+	case nextToControls : Ø9
 	case bottom  
  }
 
@@ -1125,7 +1125,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let idsIdentifier : kA // +0x0
+	let idsIdentifier : B // +0x0
 	let videoQuality : TUConversationParticipantVideoQuality // +0x8
 	let visibility : Int // +0x10
 	let prominence : Int // +0x18
@@ -1141,54 +1141,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isSmall : Bool
 	var isExpanded : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var customCornerRadius : 9
+	var customCornerRadius : Ø9
 	var isMomentsAvailable : Bool
 	var recordingLocalVideo : Bool
 	var delegate : ParticipantInfoViewDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x181fc00044210 (0x1fc00044210) in binary!
-	0x107b8  @objc ParticipantInfoView.(null) <stripped>
-WARNING: couldn't find address 0x115d4000441f0 (0x5d4000441f0) in binary!
-	0x181d8  @objc ParticipantInfoView.(null) <stripped>
-WARNING: couldn't find address 0xf21c000444f8 (0x21c000444f8) in binary!
-	0xe9d0  @objc ParticipantInfoView.(null) <stripped>
-WARNING: couldn't find address 0xe9c400044990 (0x1c400044990) in binary!
-	0xe9b8  @objc ParticipantInfoView.(null) <stripped>
-WARNING: couldn't find address 0xe58c00044508 (0x58c00044508) in binary!
-	0xe9a0  @objc ParticipantInfoView.(null) <stripped>
+WARNING: couldn't find address 0x1824c000442b0 (0x24c000442b0) in binary!
+	0x10808  @objc ParticipantInfoView.(null) <stripped>
+WARNING: couldn't find address 0x1162400044290 (0x62400044290) in binary!
+	0x18228  @objc ParticipantInfoView.(null) <stripped>
+WARNING: couldn't find address 0xf26c00044598 (0x26c00044598) in binary!
+	0xea20  @objc ParticipantInfoView.(null) <stripped>
+WARNING: couldn't find address 0xea1400044a30 (0x21400044a30) in binary!
+	0xea08  @objc ParticipantInfoView.(null) <stripped>
+WARNING: couldn't find address 0xe5dc000445a8 (0x5dc000445a8) in binary!
+	0xe9f0  @objc ParticipantInfoView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x49cfff39628  @objc ParticipantInfoView.(null) <stripped>
-	0x6bcfff398f0  @objc ParticipantInfoView.UHâÂ1¿]√Ñ <stripped>
-	0xfff3a248  @objc ParticipantInfoView.¿Hâ¡H!ŸH9Ÿu	L!Öé <stripped>
+	0x53cfff395e8  @objc ParticipantInfoView.(null) <stripped>
+	0x75cfff398b0  @objc ParticipantInfoView.2ˇˇjH^jZHâ«Ë¯ <stripped>
+	0xfff3a208  @objc ParticipantInfoView.W _0g@oPw`pHçµ <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x124fff3b730  @objc ParticipantInfoView.(null) <stripped>
-	0xfff3c3b8  @objc ParticipantInfoView.˝ˇˇHÅƒà <stripped>
+	0x1c4fff3b6f0  @objc ParticipantInfoView.(null) <stripped>
+	0xfff3c378  @objc ParticipantInfoView. <stripped>
 
 	// Swift methods
-	0x475a0  func ParticipantInfoView.isSmall.getter // getter 
-	0x475c0  func ParticipantInfoView.isSmall.setter // setter 
-	0x47610  func ParticipantInfoView.isSmall.modify // modifyCoroutine 
-	0x47790  func ParticipantInfoView.isExpanded.getter // getter 
-	0x477b0  func ParticipantInfoView.isExpanded.setter // setter 
-	0x477d0  func ParticipantInfoView.isExpanded.modify // modifyCoroutine 
-	0x478e0  func ParticipantInfoView.customCornerRadius.getter // getter 
-	0x47910  func ParticipantInfoView.customCornerRadius.setter // setter 
-	0x47950  func ParticipantInfoView.customCornerRadius.modify // modifyCoroutine 
-	0x479f0  func ParticipantInfoView.isMomentsAvailable.getter // getter 
-	0x47a50  func ParticipantInfoView.isMomentsAvailable.setter // setter 
-	0x47b70  func ParticipantInfoView.isMomentsAvailable.modify // modifyCoroutine 
-	0x47d70  func ParticipantInfoView.recordingLocalVideo.getter // getter 
-	0x47dc0  func ParticipantInfoView.recordingLocalVideo.setter // setter 
-	0x47e20  func ParticipantInfoView.recordingLocalVideo.modify // modifyCoroutine 
-	0x47f30  func ParticipantInfoView.delegate.getter // getter 
-	0x47f70  func ParticipantInfoView.delegate.setter // setter 
-	0x47fd0  func ParticipantInfoView.delegate.modify // modifyCoroutine 
-	0x48a90  func ParticipantInfoView.configure(with:isMomentsAvailable:shouldHideShutterButton:) // method 
-	0x48bc0  func ParticipantInfoView.configure(shouldHideShutterButton:) // method 
-	0x48d00  func ParticipantInfoView._layout() // method 
-	0x491d0  func ParticipantInfoView.didTapExpandButton() // method 
-	0x49250  func ParticipantInfoView.didTapShutterButton() // method 
+	0x474c0  func ParticipantInfoView.isSmall.getter // getter 
+	0x474e0  func ParticipantInfoView.isSmall.setter // setter 
+	0x47530  func ParticipantInfoView.isSmall.modify // modifyCoroutine 
+	0x476b0  func ParticipantInfoView.isExpanded.getter // getter 
+	0x476d0  func ParticipantInfoView.isExpanded.setter // setter 
+	0x476f0  func ParticipantInfoView.isExpanded.modify // modifyCoroutine 
+	0x47800  func ParticipantInfoView.customCornerRadius.getter // getter 
+	0x47830  func ParticipantInfoView.customCornerRadius.setter // setter 
+	0x47870  func ParticipantInfoView.customCornerRadius.modify // modifyCoroutine 
+	0x47910  func ParticipantInfoView.isMomentsAvailable.getter // getter 
+	0x47970  func ParticipantInfoView.isMomentsAvailable.setter // setter 
+	0x47a90  func ParticipantInfoView.isMomentsAvailable.modify // modifyCoroutine 
+	0x47c90  func ParticipantInfoView.recordingLocalVideo.getter // getter 
+	0x47ce0  func ParticipantInfoView.recordingLocalVideo.setter // setter 
+	0x47d40  func ParticipantInfoView.recordingLocalVideo.modify // modifyCoroutine 
+	0x47e50  func ParticipantInfoView.delegate.getter // getter 
+	0x47e90  func ParticipantInfoView.delegate.setter // setter 
+	0x47ef0  func ParticipantInfoView.delegate.modify // modifyCoroutine 
+	0x489b0  func ParticipantInfoView.configure(with:isMomentsAvailable:shouldHideShutterButton:) // method 
+	0x48ae0  func ParticipantInfoView.configure(shouldHideShutterButton:) // method 
+	0x48c20  func ParticipantInfoView._layout() // method 
+	0x490f0  func ParticipantInfoView.didTapExpandButton() // method 
+	0x49170  func ParticipantInfoView.didTapShutterButton() // method 
  }
 
  class ConversationKit.ParticipantVideoView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1200,14 +1200,15 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var previousVideoSnapshot : UIView?
 
 	// ObjC -> Swift bridged methods
-	0xf1c0  RemoteParticipantVideoProvider.isVideoMirrored.getter
-WARNING: couldn't find address 0xe554000444d0 (0x554000444d0) in binary!
-	0xe968  @objc ParticipantVideoView.(null) <stripped>
-WARNING: couldn't find address 0xe95c000441c0 (0x15c000441c0) in binary!
+WARNING: couldn't find address 0x181cc000442f8 (0x1cc000442f8) in binary!
+	0xf210  @objc ParticipantVideoView.(null) <stripped>
+WARNING: couldn't find address 0xe5a400044570 (0x5a400044570) in binary!
+	0xe9b8  @objc ParticipantVideoView.(null) <stripped>
+WARNING: couldn't find address 0xe9ac00044260 (0x1ac00044260) in binary!
 	0x38000000c  @objc ParticipantVideoView.(null) <stripped>
-WARNING: couldn't find address 0x1014600044138 (0x14600044138) in binary!
-	0xed68  @objc ParticipantVideoView.(null) <stripped>
-WARNING: couldn't find address 0x1811c000441f8 (0x11c000441f8) in binary!
+WARNING: couldn't find address 0x10196000441d8 (0x196000441d8) in binary!
+	0xedb8  @objc ParticipantVideoView.(null) <stripped>
+WARNING: couldn't find address 0x1816c00044298 (0x16c00044298) in binary!
 	0x78000000c  @objc ParticipantVideoView.(null) <stripped>
  }
 
@@ -1223,26 +1224,26 @@ WARNING: couldn't find address 0x1811c000441f8 (0x11c000441f8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hue : 9 // +0x0
+	var hue : Ø9 // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var saturation : 9 // +0x8
+	var saturation : Ø9 // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lightness : 9 // +0x10
+	var lightness : Ø9 // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var alpha : 9 // +0x18
+	var alpha : Ø9 // +0x18
  }
 
  struct ConversationKit.RGBAComponents {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var red : 9 // +0x0
+	var red : Ø9 // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var green : 9 // +0x8
+	var green : Ø9 // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var blue : 9 // +0x10
+	var blue : Ø9 // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var alpha : 9 // +0x18
+	var alpha : Ø9 // +0x18
  }
 
  enum ConversationKit.ColorStyle {
@@ -1254,12 +1255,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ConversationKit.BuzzedAnimator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1014600044138 (0x14600044138) in binary!
-	0xed68  @objc BuzzedAnimator.(null) <stripped>
-WARNING: couldn't find address 0x1811c000441f8 (0x11c000441f8) in binary!
+WARNING: couldn't find address 0x10196000441d8 (0x196000441d8) in binary!
+	0xedb8  @objc BuzzedAnimator.(null) <stripped>
+WARNING: couldn't find address 0x1816c00044298 (0x16c00044298) in binary!
 	0x78000000c  @objc BuzzedAnimator.(null) <stripped>
-WARNING: couldn't find address 0xf154000444a8 (0x154000444a8) in binary!
-	0xf148  @objc BuzzedAnimator.(null) <stripped>
+WARNING: couldn't find address 0xf1a400044548 (0x1a400044548) in binary!
+	0xf198  @objc BuzzedAnimator.(null) <stripped>
  }
 
  struct ConversationKit.DefaultParticipantMediaProviderCreator: ParticipantMediaProviderCreator {
@@ -1274,24 +1275,24 @@ WARNING: couldn't find address 0xf154000444a8 (0x154000444a8) in binary!
 	let opacityMultiple : Float
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf154000444a8 (0x154000444a8) in binary!
-	0xf148  @objc AudioVisualizationRingLayer.(null) <stripped>
-WARNING: couldn't find address 0x1041a00044958 (0x41a00044958) in binary!
-	0x10416  @objc AudioVisualizationRingLayer.(null) <stripped>
-WARNING: couldn't find address 0xe62400044480 (0x62400044480) in binary!
-	0xe648  @objc AudioVisualizationRingLayer.(null) <stripped>
-WARNING: couldn't find address 0x180bc00044198 (0xbc00044198) in binary!
+WARNING: couldn't find address 0xf1a400044548 (0x1a400044548) in binary!
+	0xf198  @objc AudioVisualizationRingLayer.(null) <stripped>
+WARNING: couldn't find address 0x1046a000449f8 (0x46a000449f8) in binary!
+	0x10466  @objc AudioVisualizationRingLayer.(null) <stripped>
+WARNING: couldn't find address 0xe67400044520 (0x67400044520) in binary!
+	0xe698  @objc AudioVisualizationRingLayer.(null) <stripped>
+WARNING: couldn't find address 0x1810c00044238 (0x10c00044238) in binary!
 	0x78000000c  @objc AudioVisualizationRingLayer.(null) <stripped>
-WARNING: couldn't find address 0xf0f4000443d0 (0xf4000443d0) in binary!
-	0xe8a8  @objc AudioVisualizationRingLayer.(null) <stripped>
-WARNING: couldn't find address 0xe89c00044968 (0x9c00044968) in binary!
-	0x10648  @objc AudioVisualizationRingLayer.(null) <stripped>
-WARNING: couldn't find address 0xe88400044958 (0x8400044958) in binary!
-	0x10638  @objc AudioVisualizationRingLayer.(null) <stripped>
+WARNING: couldn't find address 0xf14400044470 (0x14400044470) in binary!
+	0xe8f8  @objc AudioVisualizationRingLayer.(null) <stripped>
+WARNING: couldn't find address 0xe8ec00044a08 (0xec00044a08) in binary!
+	0x10698  @objc AudioVisualizationRingLayer.(null) <stripped>
+WARNING: couldn't find address 0xe8d4000449f8 (0xd4000449f8) in binary!
+	0x10688  @objc AudioVisualizationRingLayer.(null) <stripped>
 
 	// Swift methods
-	0x4cca0  class func AudioVisualizationRingLayer.__allocating_init(opacityMultiple:) // init 
-	0x4d3d0  func AudioVisualizationRingLayer.addBoundsSizeAnimation(_:forKey:) // method 
+	0x4cbc0  class func AudioVisualizationRingLayer.__allocating_init(opacityMultiple:) // init 
+	0x4d2f0  func AudioVisualizationRingLayer.addBoundsSizeAnimation(_:forKey:) // method 
  }
 
  struct ConversationKit.ImageNames { }
@@ -1362,12 +1363,15 @@ WARNING: couldn't find address 0xe88400044958 (0x8400044958) in binary!
 	case beatsSolo  
 	case powerbeats  
 	case beatsX  
+	case beatsX2  
 	case beatsStudio  
 	case powerbeatsPro  
 	case beatsSoloPro  
 	case powerbeats4  
 	case homePod  
 	case homePodStereoPair  
+	case homePodMini  
+	case homePodMiniStereoPair  
 	case iPod  
 	case iPad  
 	case iPadPro  
@@ -1387,7 +1391,7 @@ WARNING: couldn't find address 0xe88400044958 (0x8400044958) in binary!
 	var currentConstraints : [NSLayoutConstraint]
 
 	// Swift methods
-	0x4f730  class func SmallMultiwayControllerLayout.__allocating_init(containingView:participantListView:participantListState:gridView:controlsViewController:inCallControlsState:localParticipantView:localParticipantState:effectsView:effectsBrowserViewController:) // init 
+	0x4f690  class func SmallMultiwayControllerLayout.__allocating_init(containingView:participantListView:participantListState:gridView:controlsViewController:inCallControlsState:localParticipantView:localParticipantState:effectsView:effectsBrowserViewController:) // init 
  }
 
  class ConversationKit.ParticipantGridViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1400,33 +1404,33 @@ WARNING: couldn't find address 0xe88400044958 (0x8400044958) in binary!
 	var sashedParticipant : Participant // +0x45545f5f (0x0)
 	var selectedParticipant : Participant // +0x0 (0x0)
 	var participantsViewControllerDelegate : ParticipantsViewControllerDelegate // +0x0 (0x10)
-	var participantGridViewControllerDelegate : ParticipantGridViewControllerDelegate // +0x11a6d8 (0x10)
+	var participantGridViewControllerDelegate : ParticipantGridViewControllerDelegate // +0x11a638 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf0f4000443d0 (0xf4000443d0) in binary!
-	0xe8a8  @objc ParticipantGridViewController.(null) <stripped>
-WARNING: couldn't find address 0xe89c00044968 (0x9c00044968) in binary!
-	0x10648  @objc ParticipantGridViewController.(null) <stripped>
-WARNING: couldn't find address 0xe88400044958 (0x8400044958) in binary!
-	0x10638  @objc ParticipantGridViewController.(null) <stripped>
-WARNING: couldn't find address 0xe86c000440d0 (0x6c000440d0) in binary!
+WARNING: couldn't find address 0xf14400044470 (0x14400044470) in binary!
+	0xe8f8  @objc ParticipantGridViewController.(null) <stripped>
+WARNING: couldn't find address 0xe8ec00044a08 (0xec00044a08) in binary!
+	0x10698  @objc ParticipantGridViewController.(null) <stripped>
+WARNING: couldn't find address 0xe8d4000449f8 (0xd4000449f8) in binary!
+	0x10688  @objc ParticipantGridViewController.(null) <stripped>
+WARNING: couldn't find address 0xe8bc00044170 (0xbc00044170) in binary!
 	0x28000000c  @objc ParticipantGridViewController.(null) <stripped>
-WARNING: couldn't find address 0xe434000443b0 (0x434000443b0) in binary!
-	0xf088  @objc ParticipantGridViewController.(null) <stripped>
+WARNING: couldn't find address 0xe48400044450 (0x48400044450) in binary!
+	0xf0d8  @objc ParticipantGridViewController.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x554fff57d80  @objc ParticipantGridViewController.(null) <stripped>
-	0x54cfff57ea8  @objc ParticipantGridViewController.pYË}÷ <stripped>
+	0x5f4fff57d80  @objc ParticipantGridViewController.(null) <stripped>
+	0x5ecfff57ea8  @objc ParticipantGridViewController.ƒ[A\A]A^A_]√Hç=De <stripped>
 
 	// Swift methods
-	0x59040  class func ParticipantGridViewController.__allocating_init(participants:) // init 
+	0x58fa0  class func ParticipantGridViewController.__allocating_init(participants:) // init 
  }
 
  class ConversationKit.ParticipantVideoCameraView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xe434000443b0 (0x434000443b0) in binary!
-	0xf088  @objc ParticipantVideoCameraView.(null) <stripped>
+WARNING: couldn't find address 0xe48400044450 (0x48400044450) in binary!
+	0xf0d8  @objc ParticipantVideoCameraView.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x554fff57d80  @objc ParticipantVideoCameraView.(null) <stripped>
+	0x5f4fff57d80  @objc ParticipantVideoCameraView.(null) <stripped>
  }
 
  class ConversationKit.MostActiveParticipantsController {
@@ -1461,26 +1465,26 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	var image : UIImage?
 	var colorConfiguration : State
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentAlpha : 9
+	var contentAlpha : Ø9
 	var menuDataSource : InCallControlButtonMenuDataSource
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x105ec00044558 (0x5ec00044558) in binary!
-	0x11408  @objc InCallControlButton.(null) <stripped>
-WARNING: couldn't find address 0x105d400044550 (0x5d400044550) in binary!
-	0x113f0  @objc InCallControlButton.(null) <stripped>
-WARNING: couldn't find address 0xf04400044320 (0x4400044320) in binary!
-	0xe7f8  @objc InCallControlButton.(null) <stripped>
-WARNING: couldn't find address 0x10b3c00043fc0 (0x33c00043fc0) in binary!
-	0xe3c0  @objc InCallControlButton.(null) <stripped>
-WARNING: couldn't find address 0xe7d400044038 (0x7d400044038) in binary!
+WARNING: couldn't find address 0x1063c000445f8 (0x63c000445f8) in binary!
+	0x11458  @objc InCallControlButton.(null) <stripped>
+WARNING: couldn't find address 0x10624000445f0 (0x624000445f0) in binary!
+	0x11440  @objc InCallControlButton.(null) <stripped>
+WARNING: couldn't find address 0xf094000443c0 (0x94000443c0) in binary!
+	0xe848  @objc InCallControlButton.(null) <stripped>
+WARNING: couldn't find address 0x10b8c00044060 (0x38c00044060) in binary!
+	0xe410  @objc InCallControlButton.(null) <stripped>
+WARNING: couldn't find address 0xe824000440d8 (0x24000440d8) in binary!
 	0x28000000c  @objc InCallControlButton.(null) <stripped>
-WARNING: couldn't find address 0x17fac00044088 (0x7ac00044088) in binary!
-	0xe7b0  @objc InCallControlButton.(null) <stripped>
+WARNING: couldn't find address 0x17ffc00044128 (0x7fc00044128) in binary!
+	0xe800  @objc InCallControlButton.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x4a4fff60e18  @objc InCallControlButton.(null) <stripped>
-	0x47cfff60660  @objc InCallControlButton. <stripped>
-	0x454fff608a8  @objc InCallControlButton.â˛LâoL-˚5 <stripped>
+	0x544fff60e18  @objc InCallControlButton.(null) <stripped>
+	0x51cfff60660  @objc InCallControlButton.Éc0 <stripped>
+	0x4f4fff608a8  @objc InCallControlButton.H«@ <stripped>
 
 	// Swift methods
  }
@@ -1530,13 +1534,13 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	var delegate : CallCenterProviderDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17fac00044088 (0x7ac00044088) in binary!
-	0xe7b0  @objc CallCenter.(null) <stripped>
+WARNING: couldn't find address 0x17ffc00044128 (0x7fc00044128) in binary!
+	0xe800  @objc CallCenter.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x4a4fff60e18  @objc CallCenter.(null) <stripped>
+	0x544fff60e18  @objc CallCenter.(null) <stripped>
 
 	// Swift methods
-	0x6f450  class func CallCenter.__allocating_init(callCenter:) // init 
+	0x6f3b0  class func CallCenter.__allocating_init(callCenter:) // init 
  }
 
  class ConversationKit.MonogramView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1548,19 +1552,19 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	var text : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17f2c00044008 (0x72c00044008) in binary!
-	0xe310  @objc MonogramView.(null) <stripped>
-WARNING: couldn't find address 0xef6400044240 (0x76400044240) in binary!
-	0xe488  @objc MonogramView.(null) <stripped>
-WARNING: couldn't find address 0xe70c00043f70 (0x70c00043f70) in binary!
+WARNING: couldn't find address 0x17f7c000440a8 (0x77c000440a8) in binary!
+	0xe360  @objc MonogramView.(null) <stripped>
+WARNING: couldn't find address 0xefb4000442e0 (0x7b4000442e0) in binary!
+	0xe4d8  @objc MonogramView.(null) <stripped>
+WARNING: couldn't find address 0xe75c00044010 (0x75c00044010) in binary!
 	0x38000000c  @objc MonogramView.(null) <stripped>
-WARNING: couldn't find address 0x104ac00043bd8 (0x4ac00043bd8) in binary!
-	0x112c8  @objc MonogramView.(null) <stripped>
-WARNING: couldn't find address 0xeb0c00044908 (0x30c00044908) in binary!
+WARNING: couldn't find address 0x104fc00043c78 (0x4fc00043c78) in binary!
+	0x11318  @objc MonogramView.(null) <stripped>
+WARNING: couldn't find address 0xeb5c000449a8 (0x35c000449a8) in binary!
 	0x78000000c  @objc MonogramView.(null) <stripped>
 
 	// Swift methods
-	0x71d30  class func MonogramView.__allocating_init(colorStyle:) // init 
+	0x71c90  class func MonogramView.__allocating_init(colorStyle:) // init 
  }
 
  class ConversationKit.InCallControlsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1575,7 +1579,7 @@ WARNING: couldn't find address 0xeb0c00044908 (0x30c00044908) in binary!
 	var viewContent : ViewContent
 	var mode : InCallControlsMode
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var topInset : 9
+	var topInset : Ø9
 	var isExpanded : Bool
 	var audioIsEnabled : Bool
 	var videoIsEnabled : Bool
@@ -1587,180 +1591,180 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var participantsViewControllerDelegate : ParticipantsViewControllerDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find offset 0xfffefc70 in binary!
-WARNING: couldn't find offset 0xfffefc70 in binary!
-	0x0  @objc InCallControlsViewController.ÎI≈Mç4MãdLâdIãL HâL IãD$¯Lã8Hã}–Ë}¬ <stripped>
-WARNING: couldn't find offset 0xfffefc58 in binary!
-WARNING: couldn't find offset 0xfffefc58 in binary!
-	0x0  @objc InCallControlsViewController.AäAàT <stripped>
-WARNING: couldn't find offset 0xfffefc40 in binary!
-WARNING: couldn't find offset 0xfffefc40 in binary!
-	0x0  @objc InCallControlsViewController.Q1ˇËW¿ˇˇHcHIãIâT <stripped>
-WARNING: couldn't find offset 0xfffefc28 in binary!
-WARNING: couldn't find offset 0xfffefc28 in binary!
-	0x0  @objc InCallControlsViewController.Hâ]∏Ñ  <stripped>
-WARNING: couldn't find offset 0xfffefc10 in binary!
-WARNING: couldn't find offset 0xfffefc10 in binary!
-	0x0  @objc InCallControlsViewController.UHâÂAWAVAUATSHÉÏ8Hâ”Iâ˜Iâ˝Hâ˜Hâ÷ËÖ√ <stripped>
-WARNING: couldn't find offset 0xfffefbf8 in binary!
-WARNING: couldn't find offset 0xfffefbf8 in binary!
-	0x0  @objc InCallControlsViewController.]È`√ <stripped>
-WARNING: couldn't find offset 0xffff67f0 in binary!
-WARNING: couldn't find offset 0xffff67f0 in binary!
-	0x0  @objc InCallControlsViewController. <stripped>
-WARNING: couldn't find offset 0xffff67d8 in binary!
-WARNING: couldn't find offset 0xffff67d8 in binary!
+WARNING: couldn't find offset 0xfffefc20 in binary!
+WARNING: couldn't find offset 0xfffefc20 in binary!
+	0x0  @objc InCallControlsViewController.lLâlIãLHâLIãL HâM∞HâL IãL(HâL(IãL0HâM®HâL0IãL8HâM¿HâL8AäL@HâU–àL@jHYIŒIÃMã|PHâﬂË°¡ <stripped>
+WARNING: couldn't find offset 0xfffefc08 in binary!
+WARNING: couldn't find offset 0xfffefc08 in binary!
+	0x0  @objc InCallControlsViewController.c@0Mçt <stripped>
+WARNING: couldn't find offset 0xfffefbf0 in binary!
+WARNING: couldn't find offset 0xfffefbf0 in binary!
+	0x0  @objc InCallControlsViewController.HcHAäAàT <stripped>
+WARNING: couldn't find offset 0xfffefbd8 in binary!
+WARNING: couldn't find offset 0xfffefbd8 in binary!
 	0x0  @objc InCallControlsViewController.âÔLâ˛Hâ¬ˇQ1ˇËñøˇˇHcHIãIâT <stripped>
-WARNING: couldn't find offset 0xfffed810 in binary!
-WARNING: couldn't find offset 0xfffed810 in binary!
-	0x0  @objc InCallControlsViewController.ﬂËˇ˝ˇIcF@Lç4äDh<t<tYÑ¿uPLâ˜ÈˇˇˇIã>ˇŸ√ <stripped>
-WARNING: couldn't find offset 0xfffecfb8 in binary!
-WARNING: couldn't find offset 0xfffecfb8 in binary!
-	0x0  @objc InCallControlsViewController.Hã|Ë„√ <stripped>
-WARNING: couldn't find offset 0xfffefb80 in binary!
-WARNING: couldn't find offset 0xfffefb80 in binary!
-	0x0  @objc InCallControlsViewController.HâE»IâD$ HãF(IâD$(Lãn0Mâl$0HãF8HâE–IâD$8äF@AàD$@jHA^Kç4IˆHãFPHâE∞ˇ∫ <stripped>
-WARNING: couldn't find offset 0xfffed3b8 in binary!
-WARNING: couldn't find offset 0xfffed3b8 in binary!
-	0x0  @objc InCallControlsViewController.@0Iç<H√∫® <stripped>
-WARNING: couldn't find offset 0xfffecf70 in binary!
-WARNING: couldn't find offset 0xfffecf70 in binary!
-	0x0  @objc InCallControlsViewController.F¯Hã <stripped>
-WARNING: couldn't find offset 0xfffeed10 in binary!
-WARNING: couldn't find offset 0xfffeed10 in binary!
-	0x0  @objc InCallControlsViewController.√∫® <stripped>
-WARNING: couldn't find offset 0xfffed370 in binary!
-WARNING: couldn't find offset 0xfffed370 in binary!
-	0x0  @objc InCallControlsViewController.UHâÂAWAVATSIâ÷HâÛIâˇHâ˜Hâ÷Ëãπ <stripped>
-WARNING: couldn't find offset 0xfffed358 in binary!
-WARNING: couldn't find offset 0xfffed358 in binary!
-	0x0  @objc InCallControlsViewController.UHâÂAWAVATSIâ÷HâÛIâˇHâ˜Hâ÷Ëãπ <stripped>
-WARNING: couldn't find offset 0xfffefaf0 in binary!
-WARNING: couldn't find offset 0xfffefaf0 in binary!
-	0x0  @objc InCallControlsViewController.ZLâˇHâﬁËÖ∫ <stripped>
-WARNING: couldn't find offset 0xfffed328 in binary!
-WARNING: couldn't find offset 0xfffed328 in binary!
-	0x0  @objc InCallControlsViewController.Hc@Hã|Ë∞ƒ <stripped>
-WARNING: couldn't find offset 0xffff66d0 in binary!
-WARNING: couldn't find offset 0xffff66d0 in binary!
-	0x0  @objc InCallControlsViewController.Ñ’ <stripped>
-WARNING: couldn't find offset 0xffff66b8 in binary!
-WARNING: couldn't find offset 0xffff66b8 in binary!
-	0x0  @objc InCallControlsViewController.A^A_]√f.Ñ <stripped>
-WARNING: couldn't find offset 0xffff66a0 in binary!
-WARNING: couldn't find offset 0xffff66a0 in binary!
-	0x0  @objc InCallControlsViewController.HâHã]»A∆D$hjZLâˇHâﬁËF∆ <stripped>
-WARNING: couldn't find offset 0xffff6688 in binary!
-WARNING: couldn't find offset 0xffff6688 in binary!
-	0x0  @objc InCallControlsViewController.Û§Î2jHXIçI∆IãFHâAIãFHâAIãIãVHâQHâHã]»A∆D$hjZLâˇHâﬁËF∆ <stripped>
-WARNING: couldn't find offset 0xffff6670 in binary!
-WARNING: couldn't find offset 0xffff6670 in binary!
-	0x0  @objc InCallControlsViewController.AäF(AàD$(A∆D$hË~≈ <stripped>
-WARNING: couldn't find offset 0xffff6658 in binary!
-WARNING: couldn't find offset 0xffff6658 in binary!
-	0x0  @objc InCallControlsViewController.Iâ$Iã~Iâ|$IãFIâD$MãnMâl$IãF IâD$ AäF(AàD$(A∆D$hË~≈ <stripped>
-WARNING: couldn't find offset 0xfffece50 in binary!
-WARNING: couldn't find offset 0xfffece50 in binary!
+WARNING: couldn't find offset 0xfffefbc0 in binary!
+WARNING: couldn't find offset 0xfffefbc0 in binary!
+	0x0  @objc InCallControlsViewController.∆jYLâÔLâˆÛH•HâﬂHãu∏1“ÈÌ <stripped>
+WARNING: couldn't find offset 0xfffefba8 in binary!
+WARNING: couldn't find offset 0xfffefba8 in binary!
+	0x0  @objc InCallControlsViewController.âL IãD$¯Lã8Hã}–ËΩ¬ <stripped>
+WARNING: couldn't find offset 0xffff67a0 in binary!
+WARNING: couldn't find offset 0xffff67a0 in binary!
+	0x0  @objc InCallControlsViewController.=ãj <stripped>
+WARNING: couldn't find offset 0xffff6788 in binary!
+WARNING: couldn't find offset 0xffff6788 in binary!
 	0x0  @objc InCallControlsViewController. <stripped>
+WARNING: couldn't find offset 0xfffed7c0 in binary!
+WARNING: couldn't find offset 0xfffed7c0 in binary!
+	0x0  @objc InCallControlsViewController.Q1ˇËW¿ˇˇHcHIãIâT <stripped>
+WARNING: couldn't find offset 0xfffecf68 in binary!
+WARNING: couldn't find offset 0xfffecf68 in binary!
+	0x0  @objc InCallControlsViewController. <stripped>
+WARNING: couldn't find offset 0xfffefb30 in binary!
+WARNING: couldn't find offset 0xfffefb30 in binary!
+	0x0  @objc InCallControlsViewController. <stripped>
+WARNING: couldn't find offset 0xfffed368 in binary!
+WARNING: couldn't find offset 0xfffed368 in binary!
+	0x0  @objc InCallControlsViewController.§Ú˝ˇIâƒHcp0Iç<7Hﬁ∫® <stripped>
+WARNING: couldn't find offset 0xfffecf20 in binary!
+WARNING: couldn't find offset 0xfffecf20 in binary!
+	0x0  @objc InCallControlsViewController.âD$Lãn Mâl$ HãF(IâD$(HãF0HâE∞IâD$0HãF8HâE¿IâD$8äF@AàD$@jHA^Kç4IˆLã~PˇS¿ <stripped>
+WARNING: couldn't find offset 0xfffeecc0 in binary!
+WARNING: couldn't find offset 0xfffeecc0 in binary!
+	0x0  @objc InCallControlsViewController.cp0Iç<7Hﬁ∫® <stripped>
+WARNING: couldn't find offset 0xfffed320 in binary!
+WARNING: couldn't find offset 0xfffed320 in binary!
+	0x0  @objc InCallControlsViewController.Hc@äAàHç=` <stripped>
+WARNING: couldn't find offset 0xfffed308 in binary!
+WARNING: couldn't find offset 0xfffed308 in binary!
+	0x0  @objc InCallControlsViewController.Hc@äAàHç=` <stripped>
+WARNING: couldn't find offset 0xfffefaa0 in binary!
+WARNING: couldn't find offset 0xfffefaa0 in binary!
+	0x0  @objc InCallControlsViewController.Q 1ˇËÔµˇˇHcHHãHãtIâtIâHcHäAàHc@äAàHç=` <stripped>
+WARNING: couldn't find offset 0xfffed2d8 in binary!
+WARNING: couldn't find offset 0xfffed2d8 in binary!
+	0x0  @objc InCallControlsViewController. <stripped>
+WARNING: couldn't find offset 0xffff6680 in binary!
+WARNING: couldn't find offset 0xffff6680 in binary!
+	0x0  @objc InCallControlsViewController. <stripped>
+WARNING: couldn't find offset 0xffff6668 in binary!
+WARNING: couldn't find offset 0xffff6668 in binary!
+	0x0  @objc InCallControlsViewController.Ëiƒ <stripped>
+WARNING: couldn't find offset 0xffff6650 in binary!
+WARNING: couldn't find offset 0xffff6650 in binary!
+	0x0  @objc InCallControlsViewController.k≈ <stripped>
+WARNING: couldn't find offset 0xffff6638 in binary!
+WARNING: couldn't find offset 0xffff6638 in binary!
+	0x0  @objc InCallControlsViewController.ËÎ¡ˇˇHc@Hã|Ë´ƒ <stripped>
+WARNING: couldn't find offset 0xffff6620 in binary!
+WARNING: couldn't find offset 0xffff6620 in binary!
+	0x0  @objc InCallControlsViewController.˝ˇHcx0Hﬂ[A^]ÈÊˇ˝ˇ1ˇËæ <stripped>
+WARNING: couldn't find offset 0xffff6608 in binary!
+WARNING: couldn't find offset 0xffff6608 in binary!
+	0x0  @objc InCallControlsViewController.HâﬂHâ∆ˇQ1ˇË0¬ˇˇHc@Hã|Ëƒ <stripped>
+WARNING: couldn't find offset 0xfffece00 in binary!
+WARNING: couldn't find offset 0xfffece00 in binary!
+	0x0  @objc InCallControlsViewController.ãVIâT$HãF IâD$ HãB¯LâÁˇA∆D$h <stripped>
 WARNING: couldn't find address 0x238000000c (0x238000000c) in binary!
-	0x47cfff8dfe8  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffed260 in binary!
-WARNING: couldn't find offset 0xfffed260 in binary!
-WARNING: couldn't find address 0xfff8e04cfffed260 (0x0) in binary!
-	0x454fff8e0a0  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffeebd0 in binary!
-WARNING: couldn't find offset 0xfffeebd0 in binary!
-WARNING: couldn't find address 0xfff8e0e4fffeebd0 (0x0) in binary!
-	0x42cfff8e0f8  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffec291 in binary!
-WARNING: couldn't find offset 0xfffec291 in binary!
-WARNING: couldn't find address 0xfff8e15cfffec291 (0x0) in binary!
-	0x404fff8ebb0  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffef9c8 in binary!
-WARNING: couldn't find offset 0xfffef9c8 in binary!
-WARNING: couldn't find address 0xfff8ec04fffef9c8 (0x0) in binary!
-	0x6a4fff8f708  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffed200 in binary!
-WARNING: couldn't find offset 0xfffed200 in binary!
-WARNING: couldn't find address 0xfff8f77cfffed200 (0x0) in binary!
-	0x3c4fff8f940  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffef998 in binary!
-WARNING: couldn't find offset 0xfffef998 in binary!
-WARNING: couldn't find address 0xfff8f9c4fffef998 (0x0) in binary!
-	0x39cfff8fa68  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffeeb60 in binary!
-WARNING: couldn't find offset 0xfffeeb60 in binary!
-WARNING: couldn't find address 0xfff8fc5cfffeeb60 (0x0) in binary!
-	0xa4fff8fe30  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffed5c8 in binary!
-WARNING: couldn't find offset 0xfffed5c8 in binary!
-WARNING: couldn't find address 0xfff93a54fffed5c8 (0x0) in binary!
-	0x63cfff93bb8  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffecd70 in binary!
-WARNING: couldn't find offset 0xfffecd70 in binary!
-WARNING: couldn't find address 0xfff94dacfffecd70 (0x0) in binary!
-	0x554fff94f40  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffef938 in binary!
-WARNING: couldn't find offset 0xfffef938 in binary!
-WARNING: couldn't find address 0xfff95024fffef938 (0x0) in binary!
-	0x7f4fff950a8  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffed170 in binary!
-WARNING: couldn't find offset 0xfffed170 in binary!
-WARNING: couldn't find address 0xfff9516cfffed170 (0x0) in binary!
-	0xcfff951c0  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffecd28 in binary!
-WARNING: couldn't find offset 0xfffecd28 in binary!
-WARNING: couldn't find address 0xfff95264fffecd28 (0x0) in binary!
-	0x304fff95da8  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffecd10 in binary!
-WARNING: couldn't find offset 0xfffecd10 in binary!
-WARNING: couldn't find address 0xfff9672cfffecd10 (0x0) in binary!
-	0x2dcfff96830  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffeccf8 in binary!
-WARNING: couldn't find offset 0xfffeccf8 in binary!
-WARNING: couldn't find address 0xfff96874fffeccf8 (0x0) in binary!
-	0x4e4fff968b8  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xffff37b0 in binary!
-WARNING: couldn't find offset 0xffff37b0 in binary!
-WARNING: couldn't find address 0xfff96bacffff37b0 (0x0) in binary!
-	0x294fff96ca0  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffef8a8 in binary!
-WARNING: couldn't find offset 0xfffef8a8 in binary!
-WARNING: couldn't find address 0xfff97294fffef8a8 (0x0) in binary!
-	0x56cfff97318  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffeea70 in binary!
-WARNING: couldn't find offset 0xfffeea70 in binary!
-WARNING: couldn't find address 0xfff973ecfffeea70 (0x0) in binary!
-	0xfff93b00  @objc InCallControlsViewController.(null) <stripped>
+	0x47cfff8df48  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffed210 in binary!
+WARNING: couldn't find offset 0xfffed210 in binary!
+WARNING: couldn't find address 0xfff8dfacfffed210 (0x0) in binary!
+	0x454fff8e000  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffeeb80 in binary!
+WARNING: couldn't find offset 0xfffeeb80 in binary!
+WARNING: couldn't find address 0xfff8e044fffeeb80 (0x0) in binary!
+	0x42cfff8e058  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffec241 in binary!
+WARNING: couldn't find offset 0xfffec241 in binary!
+WARNING: couldn't find address 0xfff8e0bcfffec241 (0x0) in binary!
+	0x404fff8eb10  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffef978 in binary!
+WARNING: couldn't find offset 0xfffef978 in binary!
+WARNING: couldn't find address 0xfff8eb64fffef978 (0x0) in binary!
+	0x6a4fff8f668  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffed1b0 in binary!
+WARNING: couldn't find offset 0xfffed1b0 in binary!
+WARNING: couldn't find address 0xfff8f6dcfffed1b0 (0x0) in binary!
+	0x3c4fff8f8a0  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffef948 in binary!
+WARNING: couldn't find offset 0xfffef948 in binary!
+WARNING: couldn't find address 0xfff8f924fffef948 (0x0) in binary!
+	0x39cfff8f9c8  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffeeb10 in binary!
+WARNING: couldn't find offset 0xfffeeb10 in binary!
+WARNING: couldn't find address 0xfff8fbbcfffeeb10 (0x0) in binary!
+	0xa4fff8fd90  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffed578 in binary!
+WARNING: couldn't find offset 0xfffed578 in binary!
+WARNING: couldn't find address 0xfff939b4fffed578 (0x0) in binary!
+	0x63cfff93b18  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffecd20 in binary!
+WARNING: couldn't find offset 0xfffecd20 in binary!
+WARNING: couldn't find address 0xfff94d0cfffecd20 (0x0) in binary!
+	0x554fff94ea0  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffef8e8 in binary!
+WARNING: couldn't find offset 0xfffef8e8 in binary!
+WARNING: couldn't find address 0xfff94f84fffef8e8 (0x0) in binary!
+	0x7f4fff95008  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffed120 in binary!
+WARNING: couldn't find offset 0xfffed120 in binary!
+WARNING: couldn't find address 0xfff950ccfffed120 (0x0) in binary!
+	0xcfff95120  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffeccd8 in binary!
+WARNING: couldn't find offset 0xfffeccd8 in binary!
+WARNING: couldn't find address 0xfff951c4fffeccd8 (0x0) in binary!
+	0x304fff95d08  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffeccc0 in binary!
+WARNING: couldn't find offset 0xfffeccc0 in binary!
+WARNING: couldn't find address 0xfff9668cfffeccc0 (0x0) in binary!
+	0x2dcfff96790  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffecca8 in binary!
+WARNING: couldn't find offset 0xfffecca8 in binary!
+WARNING: couldn't find address 0xfff967d4fffecca8 (0x0) in binary!
+	0x4e4fff96818  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xffff3760 in binary!
+WARNING: couldn't find offset 0xffff3760 in binary!
+WARNING: couldn't find address 0xfff96b0cffff3760 (0x0) in binary!
+	0x294fff96c00  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffef858 in binary!
+WARNING: couldn't find offset 0xfffef858 in binary!
+WARNING: couldn't find address 0xfff971f4fffef858 (0x0) in binary!
+	0x56cfff97278  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffeea20 in binary!
+WARNING: couldn't find offset 0xfffeea20 in binary!
+WARNING: couldn't find address 0xfff9734cfffeea20 (0x0) in binary!
+	0xfff93a60  @objc InCallControlsViewController.(null) <stripped>
 WARNING: couldn't find address 0x1e8000000c (0x1e8000000c) in binary!
-	0x28cfffc2708  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffef860 in binary!
-WARNING: couldn't find offset 0xfffef860 in binary!
-WARNING: couldn't find address 0xfffc275cfffef860 (0x0) in binary!
-	0x21cfffc29c0  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffef848 in binary!
-WARNING: couldn't find offset 0xfffef848 in binary!
-WARNING: couldn't find address 0xfffc2a14fffef848 (0x0) in binary!
-	0x524fffc2a68  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffed080 in binary!
-WARNING: couldn't find offset 0xfffed080 in binary!
-WARNING: couldn't find address 0xfffc2abcfffed080 (0x0) in binary!
-	0x1dcfffc2b90  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffed068 in binary!
-WARNING: couldn't find offset 0xfffed068 in binary!
-WARNING: couldn't find address 0xfffc2c14fffed068 (0x0) in binary!
-	0x1bcfffc2e48  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffed050 in binary!
-WARNING: couldn't find offset 0xfffed050 in binary!
-WARNING: couldn't find address 0xfffc2ebcfffed050 (0x0) in binary!
-	0x234fffc2ff0  @objc InCallControlsViewController.(null) <stripped>
-WARNING: couldn't find offset 0xfffec099 in binary!
-WARNING: couldn't find offset 0xfffec099 in binary!
-WARNING: couldn't find address 0xfffc3054fffec099 (0x0) in binary!
-	0x20cfffc3318  @objc InCallControlsViewController.(null) <stripped>
+	0x28cfffc2668  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffef810 in binary!
+WARNING: couldn't find offset 0xfffef810 in binary!
+WARNING: couldn't find address 0xfffc26bcfffef810 (0x0) in binary!
+	0x21cfffc2920  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffef7f8 in binary!
+WARNING: couldn't find offset 0xfffef7f8 in binary!
+WARNING: couldn't find address 0xfffc2974fffef7f8 (0x0) in binary!
+	0x524fffc29c8  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffed030 in binary!
+WARNING: couldn't find offset 0xfffed030 in binary!
+WARNING: couldn't find address 0xfffc2a1cfffed030 (0x0) in binary!
+	0x1dcfffc2af0  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffed018 in binary!
+WARNING: couldn't find offset 0xfffed018 in binary!
+WARNING: couldn't find address 0xfffc2b74fffed018 (0x0) in binary!
+	0x1bcfffc2da8  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffed000 in binary!
+WARNING: couldn't find offset 0xfffed000 in binary!
+WARNING: couldn't find address 0xfffc2e1cfffed000 (0x0) in binary!
+	0x234fffc2f50  @objc InCallControlsViewController.(null) <stripped>
+WARNING: couldn't find offset 0xfffec049 in binary!
+WARNING: couldn't find offset 0xfffec049 in binary!
+WARNING: couldn't find address 0xfffc2fb4fffec049 (0x0) in binary!
+	0x20cfffc3278  @objc InCallControlsViewController.(null) <stripped>
 
 	// Swift methods
-	0x75660  class func InCallControlsViewController.__allocating_init(localParticipant:remoteParticipants:mode:representedLegacyCallIdentifier:) // init 
+	0x755c0  class func InCallControlsViewController.__allocating_init(localParticipant:remoteParticipants:mode:representedLegacyCallIdentifier:) // init 
  }
 
  struct ConversationKit.ViewContent {
@@ -1798,26 +1802,26 @@ WARNING: couldn't find address 0xfffc3054fffec099 (0x0) in binary!
 	let subtitleLabelContainer : ParticipantViewLabelContainerView
 	var isInRoster : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var customCornerRadius : 9
+	var customCornerRadius : Ø9
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17eb400043d90 (0x6b400043d90) in binary!
-	0x17ea8  @objc ParticipantMonogramView.(null) <stripped>
-WARNING: couldn't find address 0x17e9c00043f78 (0x69c00043f78) in binary!
-	0xeee0  @objc ParticipantMonogramView.(null) <stripped>
-WARNING: couldn't find address 0xe274000441f0 (0x274000441f0) in binary!
-	0xe688  @objc ParticipantMonogramView.(null) <stripped>
-WARNING: couldn't find address 0xe67c00043ee0 (0x67c00043ee0) in binary!
+WARNING: couldn't find address 0x17f0400043e30 (0x70400043e30) in binary!
+	0x17ef8  @objc ParticipantMonogramView.(null) <stripped>
+WARNING: couldn't find address 0x17eec00044018 (0x6ec00044018) in binary!
+	0xef30  @objc ParticipantMonogramView.(null) <stripped>
+WARNING: couldn't find address 0xe2c400044290 (0x2c400044290) in binary!
+	0xe6d8  @objc ParticipantMonogramView.(null) <stripped>
+WARNING: couldn't find address 0xe6cc00043f80 (0x6cc00043f80) in binary!
 	0xc8000000c  @objc ParticipantMonogramView.(null) <stripped>
-WARNING: couldn't find address 0xea94000449d0 (0x294000449d0) in binary!
-	0xee98  @objc ParticipantMonogramView.(null) <stripped>
-WARNING: couldn't find address 0xe64c00044718 (0x64c00044718) in binary!
-	0x103f8  @objc ParticipantMonogramView.(null) <stripped>
-WARNING: couldn't find address 0xd73400043cf0 (0x73400043cf0) in binary!
-	0x1201e  @objc ParticipantMonogramView.(null) <stripped>
+WARNING: couldn't find address 0xeae400044a70 (0x2e400044a70) in binary!
+	0xeee8  @objc ParticipantMonogramView.(null) <stripped>
+WARNING: couldn't find address 0xe69c000447b8 (0x69c000447b8) in binary!
+	0x10448  @objc ParticipantMonogramView.(null) <stripped>
+WARNING: couldn't find address 0xd78400043d90 (0x78400043d90) in binary!
+	0x1206e  @objc ParticipantMonogramView.(null) <stripped>
 
 	// Swift methods
-	0x7f700  class func ParticipantMonogramView.__allocating_init(colorStyle:) // init 
+	0x7f660  class func ParticipantMonogramView.__allocating_init(colorStyle:) // init 
  }
 
  struct ConversationKit.ViewModel {
@@ -1839,7 +1843,7 @@ WARNING: couldn't find address 0xd73400043cf0 (0x73400043cf0) in binary!
 	let subtitleView : ParticipantViewLabelContainerView
 
 	// Swift methods
-	0x81370  class func ParticipantMonogramViewLayout.__allocating_init(audioVisualizer:contactView:titleView:subtitleView:glowView:) // init 
+	0x812d0  class func ParticipantMonogramViewLayout.__allocating_init(audioVisualizer:contactView:titleView:subtitleView:glowView:) // init 
  }
 
  class ConversationKit.InCallControlsParticipantsTableViewController : UITableViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1854,30 +1858,30 @@ WARNING: couldn't find address 0xd73400043cf0 (0x73400043cf0) in binary!
 	var inCallControlsParticipantsTableViewControllerDelegate : InCallControlsParticipantsTableViewControllerDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xea94000449d0 (0x294000449d0) in binary!
-	0xee98  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
-WARNING: couldn't find address 0xe64c00044718 (0x64c00044718) in binary!
-	0x103f8  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
-WARNING: couldn't find address 0xd73400043cf0 (0x73400043cf0) in binary!
-	0x1201e  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x103dc00043cc8 (0x3dc00043cc8) in binary!
-	0x15690  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x1201400043ca0 (0x1400043ca0) in binary!
-	0x12016  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x103ac000446a8 (0x3ac000446a8) in binary!
-	0xe5e0  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+WARNING: couldn't find address 0xeae400044a70 (0x2e400044a70) in binary!
+	0xeee8  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+WARNING: couldn't find address 0xe69c000447b8 (0x69c000447b8) in binary!
+	0x10448  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+WARNING: couldn't find address 0xd78400043d90 (0x78400043d90) in binary!
+	0x1206e  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x1042c00043d68 (0x42c00043d68) in binary!
+	0x156e0  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x1206400043d40 (0x6400043d40) in binary!
+	0x12066  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x103fc00044748 (0x3fc00044748) in binary!
+	0xe630  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x54fff77f68  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
-	0x2fcfff78c40  @objc InCallControlsParticipantsTableViewController.Èj <stripped>
-	0x5f4fff79e58  @objc InCallControlsParticipantsTableViewController.Iã}Hã5U_ <stripped>
-	0x5bc00044098  @objc InCallControlsParticipantsTableViewController.@HâMÿIâE@Î|ÚÖA <stripped>
-WARNING: couldn't find address 0x4463cfff7e6b8 (0x63cfff7e6b8) in binary!
-	0x194000449c0  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x44614fff7ef20 (0x614fff7ef20) in binary!
-	0x54c00043db0  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+	0xf4fff77f68  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+	0x39cfff78c40  @objc InCallControlsParticipantsTableViewController.«(⁄Ë≠« <stripped>
+	0x694fff79e58  @objc InCallControlsParticipantsTableViewController.HÉƒA]]√PHç=–£ <stripped>
+	0x60c00044138  @objc InCallControlsParticipantsTableViewController.UHâÂAUPMãm <stripped>
+WARNING: couldn't find address 0x446dcfff7e6b8 (0x6dcfff7e6b8) in binary!
+	0x1e400044a60  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x446b4fff7ef20 (0x6b4fff7ef20) in binary!
+	0x59c00043e50  @objc InCallControlsParticipantsTableViewController.(null) <stripped>
 
 	// Swift methods
-	0x81f40  class func InCallControlsParticipantsTableViewController.__allocating_init(participants:mode:isLegacy:groupName:) // init 
+	0x81ea0  class func InCallControlsParticipantsTableViewController.__allocating_init(participants:mode:isLegacy:groupName:) // init 
  }
 
  enum ConversationKit.TableViewSection {
@@ -1893,7 +1897,7 @@ WARNING: couldn't find address 0x44614fff7ef20 (0x614fff7ef20) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case buzz : %9
+	case buzz : ≈9
 	case showMessages  
 	case addParticipant  
 	case reportAProblem  
@@ -1911,16 +1915,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : InCallControlsParticipantTableViewCellDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17dbc00043c60 (0x5bc00043c60) in binary!
-	0x121e6  @objc InCallControlsParticipantTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0xedf4000440d0 (0x5f4000440d0) in binary!
-	0xe5a8  @objc InCallControlsParticipantTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0xe9cc00044968 (0x1cc00044968) in binary!
-	0xe590  @objc InCallControlsParticipantTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x17e0c00043d00 (0x60c00043d00) in binary!
+	0x12236  @objc InCallControlsParticipantTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0xee4400044170 (0x64400044170) in binary!
+	0xe5f8  @objc InCallControlsParticipantTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0xea1c00044a08 (0x21c00044a08) in binary!
+	0xe5e0  @objc InCallControlsParticipantTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x63cfff7e6b8  @objc InCallControlsParticipantTableViewCell.(null) <stripped>
-	0x614fff7ef20  @objc InCallControlsParticipantTableViewCell.Lâp MãeLâ`(Mã} Lâx0HãMÿHâH8IãM@HâMÿIâE@Î|ÚÖA <stripped>
-	0xfff7f8a8  @objc InCallControlsParticipantTableViewCell.ˇ]È1 <stripped>
+	0x6dcfff7e6b8  @objc InCallControlsParticipantTableViewCell.(null) <stripped>
+	0x6b4fff7ef20  @objc InCallControlsParticipantTableViewCell.UHâÂËßˇˇˇjQ^jZHâ«]È§ <stripped>
+	0xfff7f8a8  @objc InCallControlsParticipantTableViewCell.ç=∫u <stripped>
  }
 
  struct ConversationKit.NotifyDispatchName {
@@ -1948,23 +1952,22 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let activityIndicator : UIActivityIndicatorView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xedbc00044098 (0x5bc00044098) in binary!
-	0xe570  @objc ReportAProblemContractViewController.(null) <stripped>
-WARNING: couldn't find address 0xe994000449c0 (0x194000449c0) in binary!
-	0x10318  @objc ReportAProblemContractViewController.(null) <stripped>
-WARNING: couldn't find address 0xe54c00043db0 (0x54c00043db0) in binary!
+	0xe5c0  InCallControlsViewConstraintManager.__deallocating_deinit
+WARNING: couldn't find address 0xe9e400044a60 (0x1e400044a60) in binary!
+	0x10368  @objc ReportAProblemContractViewController.(null) <stripped>
+WARNING: couldn't find address 0xe59c00043e50 (0x59c00043e50) in binary!
 	0x68000000c  @objc ReportAProblemContractViewController.(null) <stripped>
-WARNING: couldn't find address 0x17d2400043e00 (0x52400043e00) in binary!
-	0xe108  @objc ReportAProblemContractViewController.(null) <stripped>
-WARNING: couldn't find address 0xed5c00044038 (0x55c00044038) in binary!
-	0xe510  @objc ReportAProblemContractViewController.(null) <stripped>
+WARNING: couldn't find address 0x17d7400043ea0 (0x57400043ea0) in binary!
+	0xe158  @objc ReportAProblemContractViewController.(null) <stripped>
+WARNING: couldn't find address 0xedac000440d8 (0x5ac000440d8) in binary!
+	0xe560  @objc ReportAProblemContractViewController.(null) <stripped>
 
 	// Swift methods
-	0x8ea30  class func ReportAProblemContractViewController.__allocating_init(call:conversation:) // init 
-	0x8f540  func ReportAProblemContractViewController.didTapCancel(_:) // method 
-	0x8f5f0  func ReportAProblemContractViewController.didTapButton() // method 
-	0x8fa10  func ReportAProblemContractViewController.handleRadarIdentifierRequest(_:) // method 
-	0x8fad0  func ReportAProblemContractViewController.handleFailedToGetRadarIdentifier() // method 
+	0x8e990  class func ReportAProblemContractViewController.__allocating_init(call:conversation:) // init 
+	0x8f4a0  func ReportAProblemContractViewController.didTapCancel(_:) // method 
+	0x8f550  func ReportAProblemContractViewController.didTapButton() // method 
+	0x8f970  func ReportAProblemContractViewController.handleRadarIdentifierRequest(_:) // method 
+	0x8fa30  func ReportAProblemContractViewController.handleFailedToGetRadarIdentifier() // method 
  }
 
  class ConversationKit.ReportAProblemSymptomsViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1977,25 +1980,25 @@ WARNING: couldn't find address 0xed5c00044038 (0x55c00044038) in binary!
 	var textViewBottomConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xed2400044000 (0x52400044000) in binary!
-	0xe4d8  @objc ReportAProblemSymptomsViewController.(null) <stripped>
-WARNING: couldn't find address 0x110ac00044a40 (0xac00044a40) in binary!
-	0xe8f0  @objc ReportAProblemSymptomsViewController.(null) <stripped>
-WARNING: couldn't find address 0xe8e400044a80 (0xe400044a80) in binary!
-	0x10268  @objc ReportAProblemSymptomsViewController.(null) <stripped>
-WARNING: couldn't find address 0xe49c00043d00 (0x49c00043d00) in binary!
+WARNING: couldn't find address 0xed74000440a0 (0x574000440a0) in binary!
+	0xe528  @objc ReportAProblemSymptomsViewController.(null) <stripped>
+WARNING: couldn't find address 0x110fc00044ae0 (0xfc00044ae0) in binary!
+	0xe940  @objc ReportAProblemSymptomsViewController.(null) <stripped>
+WARNING: couldn't find address 0xe93400044b20 (0x13400044b20) in binary!
+	0x102b8  @objc ReportAProblemSymptomsViewController.(null) <stripped>
+WARNING: couldn't find address 0xe4ec00043da0 (0x4ec00043da0) in binary!
 	0x78000000c  @objc ReportAProblemSymptomsViewController.(null) <stripped>
-WARNING: couldn't find address 0xd43400043b10 (0x43400043b10) in binary!
-	0xecb8  @objc ReportAProblemSymptomsViewController.(null) <stripped>
-WARNING: couldn't find address 0xe46c00044538 (0x46c00044538) in binary!
-	0xfe24  @objc ReportAProblemSymptomsViewController.(null) <stripped>
-WARNING: couldn't find address 0xe88400044990 (0x8400044990) in binary!
-	0x10208  @objc ReportAProblemSymptomsViewController.(null) <stripped>
+WARNING: couldn't find address 0xd48400043bb0 (0x48400043bb0) in binary!
+	0xed08  @objc ReportAProblemSymptomsViewController.(null) <stripped>
+WARNING: couldn't find address 0xe4bc000445d8 (0x4bc000445d8) in binary!
+	0xfe74  @objc ReportAProblemSymptomsViewController.(null) <stripped>
+WARNING: couldn't find address 0xe8d400044a30 (0xd400044a30) in binary!
+	0x10258  @objc ReportAProblemSymptomsViewController.(null) <stripped>
 
 	// Swift methods
-	0x90030  func <stripped> // setter 
-	0x90d10  func <stripped> // method 
-	0x91420  func <stripped> // method 
+	0x8ff90  func <stripped> // setter 
+	0x90c70  func <stripped> // method 
+	0x91380  func <stripped> // method 
  }
 
  class ConversationKit.ReportAProblemAcknowledgmentViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2006,24 +2009,24 @@ WARNING: couldn't find address 0xe88400044990 (0x8400044990) in binary!
 	let reportAProblemView : ReportAProblemView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xd43400043b10 (0x43400043b10) in binary!
-	0xecb8  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
-WARNING: couldn't find address 0xe46c00044538 (0x46c00044538) in binary!
-	0xfe24  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
-WARNING: couldn't find address 0xe88400044990 (0x8400044990) in binary!
-	0x10208  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
-WARNING: couldn't find address 0xe43c00043ca0 (0x43c00043ca0) in binary!
+WARNING: couldn't find address 0xd48400043bb0 (0x48400043bb0) in binary!
+	0xed08  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
+WARNING: couldn't find address 0xe4bc000445d8 (0x4bc000445d8) in binary!
+	0xfe74  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
+WARNING: couldn't find address 0xe8d400044a30 (0xd400044a30) in binary!
+	0x10258  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
+WARNING: couldn't find address 0xe48c00043d40 (0x48c00043d40) in binary!
 	0x88000000c  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
-WARNING: couldn't find address 0x17c1400043b80 (0x41400043b80) in binary!
-	0xe848  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
-WARNING: couldn't find address 0x101c400043a88 (0x1c400043a88) in binary!
-	0x101c0  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
-WARNING: couldn't find address 0xe3f400043a60 (0x3f400043a60) in binary!
-	0xe818  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
+WARNING: couldn't find address 0x17c6400043c20 (0x46400043c20) in binary!
+	0xe898  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
+WARNING: couldn't find address 0x1021400043b28 (0x21400043b28) in binary!
+	0x10210  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
+WARNING: couldn't find address 0xe44400043b00 (0x44400043b00) in binary!
+	0xe868  @objc ReportAProblemAcknowledgmentViewController.(null) <stripped>
 
 	// Swift methods
-	0x91fd0  func <stripped> // method 
-	0x92290  func <stripped> // method 
+	0x91f30  func <stripped> // method 
+	0x921f0  func <stripped> // method 
  }
 
  class ConversationKit.ReportAProblemView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2035,21 +2038,21 @@ WARNING: couldn't find address 0xe3f400043a60 (0x3f400043a60) in binary!
 	var didTapButton : ()?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17d2400043e00 (0x52400043e00) in binary!
-	0xe108  @objc ReportAProblemView.(null) <stripped>
-WARNING: couldn't find address 0xed5c00044038 (0x55c00044038) in binary!
-	0xe510  @objc ReportAProblemView.(null) <stripped>
-WARNING: couldn't find address 0xe93400043fd0 (0x13400043fd0) in binary!
-	0xe4f8  @objc ReportAProblemView.(null) <stripped>
+WARNING: couldn't find address 0x17d7400043ea0 (0x57400043ea0) in binary!
+	0xe158  @objc ReportAProblemView.(null) <stripped>
+WARNING: couldn't find address 0xedac000440d8 (0x5ac000440d8) in binary!
+	0xe560  @objc ReportAProblemView.(null) <stripped>
+WARNING: couldn't find address 0xe98400044070 (0x18400044070) in binary!
+	0xe548  @objc ReportAProblemView.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x5a4fff7fcb0  @objc ReportAProblemView.(null) <stripped>
-	0x244fff805f8  @objc ReportAProblemView.ˇj@^jZHâ«Ë· <stripped>
-	0x564fff810e0  @objc ReportAProblemView.ÚUÿHÉƒ`]√D <stripped>
+	0x644fff7fcb0  @objc ReportAProblemView.(null) <stripped>
+	0x2e4fff805f8  @objc ReportAProblemView.@HâMÿIâE@ˇ	 <stripped>
+	0x604fff810e0  @objc ReportAProblemView.ÚE»ÚEÿÚE∏ÚE‡Û~E∞f÷EËHãEËHãM‡HãU–HãuÿPQVRËﬂˇ <stripped>
 
 	// Swift methods
-	0x925d0  func <stripped> // setter 
-	0x93480  func <stripped> // method 
-	0x93780  func <stripped> // method 
+	0x92530  func <stripped> // setter 
+	0x933e0  func <stripped> // method 
+	0x936e0  func <stripped> // method 
  }
 
  class ConversationKit.StagingAreaViewControllerLayout : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2060,7 +2063,7 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	var currentConstraints : [NSLayoutConstraint]
 
 	// Swift methods
-	0x943b0  class func StagingAreaViewControllerLayout.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserView:) // init 
+	0x94310  class func StagingAreaViewControllerLayout.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserView:) // init 
  }
 
  class ConversationKit.EffectsBrowserViewConstraintManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2070,8 +2073,8 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	let effectsBrowserViewTopAnchor : NSLayoutConstraint
 
 	// Swift methods
-	0x95350  class func EffectsBrowserViewConstraintManager.__allocating_init(containingGuide:effectsBrowserView:controlsView:) // init 
-	0x95600  func EffectsBrowserViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0x952b0  class func EffectsBrowserViewConstraintManager.__allocating_init(containingGuide:effectsBrowserView:controlsView:) // init 
+	0x95560  func EffectsBrowserViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
  }
 
  class ConversationKit.RadarSession : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2080,16 +2083,16 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	let session : NSURLSession
 	var pendingTask : NSURLSessionTask?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_encoder : ˇ
+	var $__lazy_storage_$_encoder : ü
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let decoder : Á
+	let decoder : á
 
 	// Swift methods
-	0x958f0  func RadarSession.encoder.getter // getter 
-	0x957b0  class func RadarSession.__allocating_init() // init 
-	0x96090  func RadarSession.requestRadarIdentifier(withRequest:completion:) // method 
-	0x966e0  func RadarSession.addSymptom(withRequest:) // method 
-	0x96a80  func RadarSession.cancel() // method 
+	0x95850  func RadarSession.encoder.getter // getter 
+	0x95710  class func RadarSession.__allocating_init() // init 
+	0x95ff0  func RadarSession.requestRadarIdentifier(withRequest:completion:) // method 
+	0x96640  func RadarSession.addSymptom(withRequest:) // method 
+	0x969e0  func RadarSession.cancel() // method 
  }
 
  enum ConversationKit.CameraPosition {
@@ -2111,24 +2114,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var disabledScrollViews : [UIScrollView]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17c1400043b80 (0x41400043b80) in binary!
-	0xe848  @objc InCallControlsDragController.(null) <stripped>
-WARNING: couldn't find address 0x101c400043a88 (0x1c400043a88) in binary!
-	0x101c0  @objc InCallControlsDragController.(null) <stripped>
-WARNING: couldn't find address 0xe3f400043a60 (0x3f400043a60) in binary!
-	0xe818  @objc InCallControlsDragController.(null) <stripped>
-WARNING: couldn't find address 0x17bcc00043ca8 (0x3cc00043ca8) in binary!
-	0xe3d0  @objc InCallControlsDragController.(null) <stripped>
+WARNING: couldn't find address 0x17c6400043c20 (0x46400043c20) in binary!
+	0xe898  @objc InCallControlsDragController.(null) <stripped>
+WARNING: couldn't find address 0x1021400043b28 (0x21400043b28) in binary!
+	0x10210  @objc InCallControlsDragController.(null) <stripped>
+WARNING: couldn't find address 0xe44400043b00 (0x44400043b00) in binary!
+	0xe868  @objc InCallControlsDragController.(null) <stripped>
+WARNING: couldn't find address 0x17c1c00043d48 (0x41c00043d48) in binary!
+	0xe420  @objc InCallControlsDragController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff88bc8  @objc InCallControlsDragController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x384fff8a170  @objc InCallControlsDragController.(null) <stripped>
-	0xfff8a438  @objc InCallControlsDragController.Ñ <stripped>
+	0x424fff8a170  @objc InCallControlsDragController.(null) <stripped>
+	0xfff8a438  @objc InCallControlsDragController.`]√D <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff93b30  @objc InCallControlsDragController.(null) <stripped>
 
 	// Swift methods
-	0x973d0  class func InCallControlsDragController.__allocating_init(inCallControlsView:constraintsController:) // init 
+	0x97330  class func InCallControlsDragController.__allocating_init(inCallControlsView:constraintsController:) // init 
  }
 
  struct ConversationKit.DragAnimation {
@@ -2138,9 +2141,9 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var validAnimationRange :  empty-list  // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gestureOffsetToTopOfControls : 9 // +0x18
+	var gestureOffsetToTopOfControls : Ø9 // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var initialTranslationInView : 9 // +0x20
+	var initialTranslationInView : Ø9 // +0x20
 	var isDraggingDown : Bool // +0x28
 	var expandedState : InCallControlsState // +0x30
 	var visibleState : InCallControlsState // +0x38
@@ -2159,11 +2162,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var duration : Double // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mass : 9 // +0x8
+	var mass : Ø9 // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stiffness : 9 // +0x10
+	var stiffness : Ø9 // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var damping : 9 // +0x18
+	var damping : Ø9 // +0x18
  }
 
  struct ConversationKit.CubicAnimationParameters {
@@ -2184,11 +2187,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class ConversationKit.CrossFadeAnimator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfba600043b98 (0x3a600043b98) in binary!
-	0xe7c8  @objc CrossFadeAnimator.(null) <stripped>
-WARNING: couldn't find address 0x17b7c00043c58 (0x37c00043c58) in binary!
+WARNING: couldn't find address 0xfbf600043c38 (0x3f600043c38) in binary!
+	0xe818  @objc CrossFadeAnimator.(null) <stripped>
+WARNING: couldn't find address 0x17bcc00043cf8 (0x3cc00043cf8) in binary!
 	0x18000000c  @objc CrossFadeAnimator.(null) <stripped>
-WARNING: couldn't find address 0xed7800043bc0 (0x57800043bc0) in binary!
+WARNING: couldn't find address 0xedc800043c60 (0x5c800043c60) in binary!
 	0x58000000c  @objc CrossFadeAnimator.(null) <stripped>
  }
 
@@ -2213,17 +2216,17 @@ WARNING: couldn't find address 0xed7800043bc0 (0x57800043bc0) in binary!
 	var otherButtonTitle : String?
 
 	// Swift methods
-	0x9aeb0  func PlatformAlert.currentPresentedUserNotification.getter // getter 
-	0x9af60  func PlatformAlert.buttonHandlers.getter // getter 
-	0x9b070  func PlatformAlert.title.setter // setter 
-	0x9b190  func PlatformAlert.message.setter // setter 
-	0x9b2b0  func PlatformAlert.defaultButtonTitle.setter // setter 
-	0x9b3d0  func PlatformAlert.alternateButtonTitle.setter // setter 
-	0x9b4f0  func PlatformAlert.otherButtonTitle.setter // setter 
-	0x9b530  class func static PlatformAlert.create(with:message:) // method 
-	0x9b680  func PlatformAlert.addAction(title:style:handler:) // method 
-	0x9b790  func PlatformAlert.show() // method 
-	0x9b630  class func PlatformAlert.__allocating_init() // init 
+	0x9ae10  func PlatformAlert.currentPresentedUserNotification.getter // getter 
+	0x9aec0  func PlatformAlert.buttonHandlers.getter // getter 
+	0x9afd0  func PlatformAlert.title.setter // setter 
+	0x9b0f0  func PlatformAlert.message.setter // setter 
+	0x9b210  func PlatformAlert.defaultButtonTitle.setter // setter 
+	0x9b330  func PlatformAlert.alternateButtonTitle.setter // setter 
+	0x9b450  func PlatformAlert.otherButtonTitle.setter // setter 
+	0x9b490  class func static PlatformAlert.create(with:message:) // method 
+	0x9b5e0  func PlatformAlert.addAction(title:style:handler:) // method 
+	0x9b6f0  func PlatformAlert.show() // method 
+	0x9b590  class func PlatformAlert.__allocating_init() // init 
  }
 
  struct ConversationKit.Participant: HasSortableHandle {
@@ -2231,7 +2234,7 @@ WARNING: couldn't find address 0xed7800043bc0 (0x57800043bc0) in binary!
 	// Properties
 	var state : State
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identifier : %9
+	var identifier : ≈9
 	var remoteIdentifiers : RemoteIdentifiers
 	var gradient : [UIColor]
 	var isMomentsAvailable : Bool
@@ -2241,13 +2244,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case waiting : ˚8
+	case waiting : õ9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case rung : ˚8
+	case rung : õ9
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case broadcasting : '-
+	case broadcasting : «-
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case left : ˚8
+	case left : õ9
 	case joining  
  }
 
@@ -2256,7 +2259,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var handle : TUHandle // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var idsIdentifier : ü! // +0x8
+	var idsIdentifier : ?" // +0x8
 	var avcIdentifier : String? // +0x18
  }
 
@@ -2304,28 +2307,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isCentered : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17b4c000439c0 (0x34c000439c0) in binary!
-	0xdf30  @objc ParticipantViewLabelContainerView.(null) <stripped>
-WARNING: couldn't find address 0xe35400044728 (0x35400044728) in binary!
-	0xeb78  @objc ParticipantViewLabelContainerView.(null) <stripped>
-WARNING: couldn't find address 0xe32c00043b90 (0x32c00043b90) in binary!
+	0xdf80  InCallControlsViewConstraintManager.init(containingGuide:containingView:controlsView:type:)
+WARNING: couldn't find address 0xe3a4000447c8 (0x3a4000447c8) in binary!
+	0xebc8  @objc ParticipantViewLabelContainerView.(null) <stripped>
+WARNING: couldn't find address 0xe37c00043c30 (0x37c00043c30) in binary!
 	0x48000000c  @objc ParticipantViewLabelContainerView.(null) <stripped>
-WARNING: couldn't find address 0x17b0400043be0 (0x30400043be0) in binary!
-	0xeb48  @objc ParticipantViewLabelContainerView.(null) <stripped>
-WARNING: couldn't find address 0xeb3c00043e18 (0x33c00043e18) in binary!
-	0xe2f0  @objc ParticipantViewLabelContainerView.(null) <stripped>
+WARNING: couldn't find address 0x17b5400043c80 (0x35400043c80) in binary!
+	0xeb98  @objc ParticipantViewLabelContainerView.(null) <stripped>
+WARNING: couldn't find address 0xeb8c00043eb8 (0x38c00043eb8) in binary!
+	0xe340  @objc ParticipantViewLabelContainerView.(null) <stripped>
  }
 
  class ConversationKit.ParticipantViewLabelContainerViewLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17b0400043be0 (0x30400043be0) in binary!
-	0xeb48  @objc ParticipantViewLabelContainerViewLayer.(null) <stripped>
-WARNING: couldn't find address 0xeb3c00043e18 (0x33c00043e18) in binary!
-	0xe2f0  @objc ParticipantViewLabelContainerViewLayer.(null) <stripped>
+WARNING: couldn't find address 0x17b5400043c80 (0x35400043c80) in binary!
+	0xeb98  @objc ParticipantViewLabelContainerViewLayer.(null) <stripped>
+WARNING: couldn't find address 0xeb8c00043eb8 (0x38c00043eb8) in binary!
+	0xe340  @objc ParticipantViewLabelContainerViewLayer.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff94988  @objc ParticipantViewLabelContainerViewLayer.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x384fff97300  @objc ParticipantViewLabelContainerViewLayer.(null) <stripped>
+	0x424fff97300  @objc ParticipantViewLabelContainerViewLayer.(null) <stripped>
  }
 
  class ConversationKit.DisplayLinkCallbackWrapper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2334,11 +2336,11 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var callback : (_:)?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xe70c000449e0 (0x70c000449e0) in binary!
+WARNING: couldn't find address 0xe75c00044a80 (0x75c00044a80) in binary!
 	0x38000000c  @objc DisplayLinkCallbackWrapper.(null) <stripped>
 
 	// Swift methods
-	0xa52b0  class func <stripped> // init 
+	0xa5210  class func <stripped> // init 
  }
 
  class ConversationKit.PlatformDisplayLink : PlatformDisplayLinkBase {
@@ -2355,10 +2357,10 @@ WARNING: couldn't find address 0xe70c000449e0 (0x70c000449e0) in binary!
 	var $__lazy_storage_$_displayLink : CADisplayLink?
 
 	// Swift methods
-	0xa56c0  func PlatformDisplayLinkBase.displayLink.getter // getter 
-	0xa5720  func PlatformDisplayLinkBase.start() // method 
-	0xa5740  func PlatformDisplayLinkBase.cancel() // method 
-	0xa58d0  class func PlatformDisplayLinkBase.__allocating_init() // init 
+	0xa5620  func PlatformDisplayLinkBase.displayLink.getter // getter 
+	0xa5680  func PlatformDisplayLinkBase.start() // method 
+	0xa56a0  func PlatformDisplayLinkBase.cancel() // method 
+	0xa5830  class func PlatformDisplayLinkBase.__allocating_init() // init 
  }
 
  struct ConversationKit.WeakPlatformDisplayLinkObserver {
@@ -2414,15 +2416,15 @@ WARNING: couldn't find address 0xe70c000449e0 (0x70c000449e0) in binary!
 	var containingViewController : weak UIViewController?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xeb0400043920 (0x30400043920) in binary!
-	0x17aa8  @objc EffectsLayoutController.(null) <stripped>
-WARNING: couldn't find address 0xe2ac00043b10 (0x2ac00043b10) in binary!
+WARNING: couldn't find address 0xeb54000439c0 (0x354000439c0) in binary!
+	0x17af8  @objc EffectsLayoutController.(null) <stripped>
+WARNING: couldn't find address 0xe2fc00043bb0 (0x2fc00043bb0) in binary!
 	0x58000000c  @objc EffectsLayoutController.(null) <stripped>
-WARNING: couldn't find address 0x17a8400043b60 (0x28400043b60) in binary!
-	0xeac8  @objc EffectsLayoutController.(null) <stripped>
+WARNING: couldn't find address 0x17ad400043c00 (0x2d400043c00) in binary!
+	0xeb18  @objc EffectsLayoutController.(null) <stripped>
 
 	// Swift methods
-	0xa7b20  class func EffectsLayoutController.__allocating_init(containingViewController:) // init 
+	0xa7a80  class func EffectsLayoutController.__allocating_init(containingViewController:) // init 
  }
 
  class ConversationKit.ParticipantContactView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2434,19 +2436,19 @@ WARNING: couldn't find address 0x17a8400043b60 (0x28400043b60) in binary!
 	var contactDetails : ParticipantContactDetails
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17a8400043b60 (0x28400043b60) in binary!
-	0xeac8  @objc ParticipantContactView.(null) <stripped>
-WARNING: couldn't find address 0xde5c00043dd8 (0x65c00043dd8) in binary!
-	0xe270  @objc ParticipantContactView.(null) <stripped>
-WARNING: couldn't find address 0xe26400043ac8 (0x26400043ac8) in binary!
+WARNING: couldn't find address 0x17ad400043c00 (0x2d400043c00) in binary!
+	0xeb18  @objc ParticipantContactView.(null) <stripped>
+WARNING: couldn't find address 0xdeac00043e78 (0x6ac00043e78) in binary!
+	0xe2c0  @objc ParticipantContactView.(null) <stripped>
+WARNING: couldn't find address 0xe2b400043b68 (0x2b400043b68) in binary!
 	0x28000000c  @objc ParticipantContactView.(null) <stripped>
-WARNING: couldn't find address 0x17a3c00043b18 (0x23c00043b18) in binary!
-	0xe240  @objc ParticipantContactView.(null) <stripped>
+WARNING: couldn't find address 0x17a8c00043bb8 (0x28c00043bb8) in binary!
+	0xe290  @objc ParticipantContactView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x6e4fff9d988  @objc ParticipantContactView.(null) <stripped>
+	0x784fff9d988  @objc ParticipantContactView.(null) <stripped>
 
 	// Swift methods
-	0xa7cf0  class func ParticipantContactView.__allocating_init(colorStyle:) // init 
+	0xa7c50  class func ParticipantContactView.__allocating_init(colorStyle:) // init 
  }
 
  class ConversationKit.ParticipantsCollectionViewDataSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -2458,13 +2460,13 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var didCreateCellForParticipant : ParticipantCell
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17a3c00043b18 (0x23c00043b18) in binary!
-	0xe240  @objc ParticipantsCollectionViewDataSource.(null) <stripped>
+WARNING: couldn't find address 0x17a8c00043bb8 (0x28c00043bb8) in binary!
+	0xe290  @objc ParticipantsCollectionViewDataSource.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x6e4fff9d988  @objc ParticipantsCollectionViewDataSource.(null) <stripped>
+	0x784fff9d988  @objc ParticipantsCollectionViewDataSource.(null) <stripped>
 
 	// Swift methods
-	0xa9e70  class func ParticipantsCollectionViewDataSource.__allocating_init(participants:participantIsShownInGrid:) // init 
+	0xa9dd0  class func ParticipantsCollectionViewDataSource.__allocating_init(participants:participantIsShownInGrid:) // init 
  }
 
  enum ConversationKit.SectionType {
@@ -2476,44 +2478,44 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
  class ConversationKit.Defaults : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xaf020  func Defaults.enableAudioVisualization.getter // getter 
-	0xaf040  func Defaults.enableAudioVisualizationLogging.getter // getter 
-	0xaf060  func Defaults.forceVideoLayerVisible.getter // getter 
-	0xaf080  func Defaults.shouldIngorePoorConnection.getter // getter 
-	0xaf0a0  func Defaults.showsForceAudioPriorityButton.getter // getter 
-	0xaf0c0  func Defaults.startUplinkMuted.getter // getter 
-	0xaf0e0  func Defaults.shouldEnableEffectsRendering.getter // getter 
-	0xaf100  func Defaults.supportsVideo.getter // getter 
-	0xaf130  func Defaults.supportsEffects.getter // getter 
-	0xaf170  func Defaults.useFlattenedUI.getter // getter 
-	0xaf190  func Defaults.activelyCommunicatingAudioThreshold.getter // getter 
-	0xaf1c0  func Defaults.activelyCommunicatingVideoThreshold.getter // getter 
-	0xaf1f0  func Defaults.mimimumActiveDuration.getter // getter 
-	0xaf220  func Defaults.mostActiveParticipantChangeInterval.getter // getter 
-	0xaf250  func Defaults.shouldShowProminenceDebuggingLabels.getter // getter 
-	0xaf270  func Defaults.organicSashFontSize.getter // getter 
-	0xaf290  func Defaults.organicCellCornerRadius.getter // getter 
-	0xaf2b0  func Defaults.organicCellGlowSizeMultiplier.getter // getter 
-	0xaf2d0  func Defaults.emaTimeScale.getter // getter 
-	0xaf300  func Defaults.emaTimerFrequency.getter // getter 
-	0xaf330  func Defaults.emaProminenceWeight1.getter // getter 
-	0xaf360  func Defaults.emaProminenceWeight2.getter // getter 
-	0xaf390  func Defaults.emaProminenceWeight3.getter // getter 
-	0xaf3c0  func Defaults.emaProminenceWeight4.getter // getter 
-	0xaf3f0  func Defaults.emaMinUIUpdateInterval.getter // getter 
-	0xaf420  func Defaults.emaLowerBoundTreshold.getter // getter 
-	0xaf450  func Defaults.shouldCenterRoster.getter // getter 
-	0xaf470  func Defaults.allowSelfZoom.getter // getter 
-	0xaf480  func Defaults.allowAudioProminence.getter // getter 
-	0xaf4a0  func Defaults.allowVideoProminence.getter // getter 
-	0xaf520  func Defaults.disableAutomaticDrawerHiding.getter // getter 
-	0xaf580  func Defaults.allowLocalVideoRecording.getter // getter 
-	0xaf590  func Defaults.reduceMotion.getter // getter 
-	0xaf8f0  func Defaults.isInternalInstall.getter // getter 
-	0xaf9c0  func Defaults.bool(for:domain:default:) // method 
-	0xafad0  func Defaults.float(for:default:) // method 
-	0xafc30  func Defaults.double(for:default:) // method 
-	0xaefc0  class func Defaults.__allocating_init() // init 
+	0xaef80  func Defaults.enableAudioVisualization.getter // getter 
+	0xaefa0  func Defaults.enableAudioVisualizationLogging.getter // getter 
+	0xaefc0  func Defaults.forceVideoLayerVisible.getter // getter 
+	0xaefe0  func Defaults.shouldIngorePoorConnection.getter // getter 
+	0xaf000  func Defaults.showsForceAudioPriorityButton.getter // getter 
+	0xaf020  func Defaults.startUplinkMuted.getter // getter 
+	0xaf040  func Defaults.shouldEnableEffectsRendering.getter // getter 
+	0xaf060  func Defaults.supportsVideo.getter // getter 
+	0xaf090  func Defaults.supportsEffects.getter // getter 
+	0xaf0d0  func Defaults.useFlattenedUI.getter // getter 
+	0xaf0f0  func Defaults.activelyCommunicatingAudioThreshold.getter // getter 
+	0xaf120  func Defaults.activelyCommunicatingVideoThreshold.getter // getter 
+	0xaf150  func Defaults.mimimumActiveDuration.getter // getter 
+	0xaf180  func Defaults.mostActiveParticipantChangeInterval.getter // getter 
+	0xaf1b0  func Defaults.shouldShowProminenceDebuggingLabels.getter // getter 
+	0xaf1d0  func Defaults.organicSashFontSize.getter // getter 
+	0xaf1f0  func Defaults.organicCellCornerRadius.getter // getter 
+	0xaf210  func Defaults.organicCellGlowSizeMultiplier.getter // getter 
+	0xaf230  func Defaults.emaTimeScale.getter // getter 
+	0xaf260  func Defaults.emaTimerFrequency.getter // getter 
+	0xaf290  func Defaults.emaProminenceWeight1.getter // getter 
+	0xaf2c0  func Defaults.emaProminenceWeight2.getter // getter 
+	0xaf2f0  func Defaults.emaProminenceWeight3.getter // getter 
+	0xaf320  func Defaults.emaProminenceWeight4.getter // getter 
+	0xaf350  func Defaults.emaMinUIUpdateInterval.getter // getter 
+	0xaf380  func Defaults.emaLowerBoundTreshold.getter // getter 
+	0xaf3b0  func Defaults.shouldCenterRoster.getter // getter 
+	0xaf3d0  func Defaults.allowSelfZoom.getter // getter 
+	0xaf3e0  func Defaults.allowAudioProminence.getter // getter 
+	0xaf400  func Defaults.allowVideoProminence.getter // getter 
+	0xaf480  func Defaults.disableAutomaticDrawerHiding.getter // getter 
+	0xaf4e0  func Defaults.allowLocalVideoRecording.getter // getter 
+	0xaf4f0  func Defaults.reduceMotion.getter // getter 
+	0xaf850  func Defaults.isInternalInstall.getter // getter 
+	0xaf920  func Defaults.bool(for:domain:default:) // method 
+	0xafa30  func Defaults.float(for:default:) // method 
+	0xafb90  func Defaults.double(for:default:) // method 
+	0xaef20  class func Defaults.__allocating_init() // init 
  }
 
  class ConversationKit.BoxedValue : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2526,12 +2528,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
  class ConversationKit.StagingAreaAnimator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf9fe000439f0 (0x1fe000439f0) in binary!
-	0xe620  @objc StagingAreaAnimator.(null) <stripped>
-WARNING: couldn't find address 0x179d400043ab0 (0x1d400043ab0) in binary!
+WARNING: couldn't find address 0xfa4e00043a90 (0x24e00043a90) in binary!
+	0xe670  @objc StagingAreaAnimator.(null) <stripped>
+WARNING: couldn't find address 0x17a2400043b50 (0x22400043b50) in binary!
 	0x68000000c  @objc StagingAreaAnimator.(null) <stripped>
-WARNING: couldn't find address 0xea0c00043ce8 (0x20c00043ce8) in binary!
-	0xe1c0  @objc StagingAreaAnimator.(null) <stripped>
+WARNING: couldn't find address 0xea5c00043d88 (0x25c00043d88) in binary!
+	0xe210  @objc StagingAreaAnimator.(null) <stripped>
  }
 
  struct ConversationKit.OrganicLayout {
@@ -2552,38 +2554,38 @@ WARNING: couldn't find address 0xea0c00043ce8 (0x20c00043ce8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minCellOverlap : 9 // +0x0
+	var minCellOverlap : Ø9 // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var minCellOverlapThreshold : 9 // +0x8
+	var minCellOverlapThreshold : Ø9 // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxCellOverlap : 9 // +0x10
+	var maxCellOverlap : Ø9 // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxCellOverlapThreshold : 9 // +0x18
+	var maxCellOverlapThreshold : Ø9 // +0x18
  }
 
  class ConversationKit.MostActiveParticipantViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	var participants : Participant // +0x8 (0x8)
-	var focusedParticipant : Participant // +0x128fec (0x0)
+	var focusedParticipant : Participant // +0x128f9c (0x0)
 	var participantsViewControllerDelegate : ParticipantsViewControllerDelegate // +0x11d0 (0x10)
-	let participantView : ParticipantView // +0x128fec (0x8)
+	let participantView : ParticipantView // +0x128f9c (0x8)
 	var widthConstraint : NSLayoutConstraint? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xea0c00043ce8 (0x20c00043ce8) in binary!
-	0xe1c0  @objc MostActiveParticipantViewController.(null) <stripped>
-WARNING: couldn't find address 0xff6c00043990 (0x76c00043990) in binary!
-	0xe1a8  @objc MostActiveParticipantViewController.(null) <stripped>
-WARNING: couldn't find address 0xff5c00044258 (0x75c00044258) in binary!
-	0xe190  @objc MostActiveParticipantViewController.(null) <stripped>
+WARNING: couldn't find address 0xea5c00043d88 (0x25c00043d88) in binary!
+	0xe210  @objc MostActiveParticipantViewController.(null) <stripped>
+WARNING: couldn't find address 0xffbc00043a30 (0x7bc00043a30) in binary!
+	0xe1f8  @objc MostActiveParticipantViewController.(null) <stripped>
+WARNING: couldn't find address 0xffac000442f8 (0x7ac000442f8) in binary!
+	0xe1e0  @objc MostActiveParticipantViewController.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x23cfffa5e28  @objc MostActiveParticipantViewController.(null) <stripped>
-	0x444fffa6340  @objc MostActiveParticipantViewController. <stripped>
-	0x1fcfffa6508  @objc MostActiveParticipantViewController.âÁË-	 <stripped>
+	0x2dcfffa5e28  @objc MostActiveParticipantViewController.(null) <stripped>
+	0x4e4fffa6340  @objc MostActiveParticipantViewController.( <stripped>
+	0x29cfffa6508  @objc MostActiveParticipantViewController. <stripped>
 
 	// Swift methods
-	0xb37e0  class func MostActiveParticipantViewController.__allocating_init(participants:) // init 
+	0xb3740  class func MostActiveParticipantViewController.__allocating_init(participants:) // init 
  }
 
  class ConversationKit.ParticipantListViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2591,26 +2593,25 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	// Properties
 	var collectionViewDataSource : ParticipantsCollectionViewDataSource // +0x0
 	var viewContent : ViewContent // +0x0
-	var lastLayedOutViewSize : CGSize // +0x118dd0
+	var lastLayedOutViewSize : CGSize // +0x118d30
 	var participantsViewControllerDelegate : ParticipantsViewControllerDelegate // +0x0
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xe9bc00043c98 (0x1bc00043c98) in binary!
-	0xe170  @objc ParticipantListViewController.(null) <stripped>
-WARNING: couldn't find address 0x10d4400044408 (0x54400044408) in binary!
-	0xe158  @objc ParticipantListViewController.(null) <stripped>
-WARNING: couldn't find address 0xff0400043928 (0x70400043928) in binary!
-	0xff00  @objc ParticipantListViewController.(null) <stripped>
-WARNING: couldn't find address 0xe13400043998 (0x13400043998) in binary!
+WARNING: couldn't find address 0xea0c00043d38 (0x20c00043d38) in binary!
+	0xe1c0  @objc ParticipantListViewController.(null) <stripped>
+WARNING: couldn't find address 0x10d94000444a8 (0x594000444a8) in binary!
+	0xe1a8  @objc ParticipantListViewController.(null) <stripped>
+	0xff50  TUVideoDeviceController.videoAttributeOrientation.getter
+WARNING: couldn't find address 0xe18400043a38 (0x18400043a38) in binary!
 	0x28000000c  @objc ParticipantListViewController.(null) <stripped>
-WARNING: couldn't find address 0x1354c000435d0 (0x54c000435d0) in binary!
-	0x13540  @objc ParticipantListViewController.(null) <stripped>
+WARNING: couldn't find address 0x1359c00043670 (0x59c00043670) in binary!
+	0x13590  @objc ParticipantListViewController.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x40cfffa9448  @objc ParticipantListViewController.(null) <stripped>
-	0x13cfffa96d0  @objc ParticipantListViewController.MÿÚU∏ÚU‡Ú]∞Ú]ËHãEËHãM‡HãU–HãuÿPQVRËx <stripped>
+	0x4acfffa9448  @objc ParticipantListViewController.(null) <stripped>
+	0x1dcfffa96d0  @objc ParticipantListViewController.UHâÂHÅÏ <stripped>
 
 	// Swift methods
-	0xb6610  class func ParticipantListViewController.__allocating_init(localParticipant:remoteParticipants:participantIsShownInGrid:) // init 
+	0xb6570  class func ParticipantListViewController.__allocating_init(localParticipant:remoteParticipants:participantIsShownInGrid:) // init 
  }
 
  struct ConversationKit.ViewContent {
@@ -2625,8 +2626,8 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let constraints : [NSLayoutConstraint]
 
 	// Swift methods
-	0xb9400  class func EffectsViewConstraintManager.__allocating_init(containingGuide:effectsView:) // init 
-	0xb9680  func EffectsViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
+	0xb9360  class func EffectsViewConstraintManager.__allocating_init(containingGuide:effectsView:) // init 
+	0xb95e0  func EffectsViewConstraintManager.constraintsForLayout(_:in:deviceOrientation:) // method 
  }
 
  class ConversationKit.ParticipantAlertView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2636,13 +2637,12 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let titleLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x178ec000439c8 (0xec000439c8) in binary!
-	0xe930  @objc ParticipantAlertView.(null) <stripped>
-WARNING: couldn't find address 0xdcc400043c40 (0x4c400043c40) in binary!
-	0xe0d8  @objc ParticipantAlertView.(null) <stripped>
+	0xe980  static CATransform3D.== infix(_:_:)
+WARNING: couldn't find address 0xdd1400043ce0 (0x51400043ce0) in binary!
+	0xe128  @objc ParticipantAlertView.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x3b4fffbec40  @objc ParticipantAlertView.(null) <stripped>
-	0x544fffbd778  @objc ParticipantAlertView.9ÊMLÙMÖˆtUHç=Æ∑ <stripped>
+	0x454fffbec40  @objc ParticipantAlertView.(null) <stripped>
+	0x5e4fffbd778  @objc ParticipantAlertView.ˇˇ <stripped>
  }
 
  struct ConversationKit.ViewModel {
@@ -2671,110 +2671,110 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	var isPipped : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find offset 0xfffed260 in binary!
-WARNING: couldn't find offset 0xfffed260 in binary!
-	0x0  @objc MultiwayViewController.$IãFIâD$Iã^Iâ\$IãFIâD$Mãn Mâl$ IãF(IâD$(IãF0HâE¿IâD$0IãF8HâE–IâD$8AäF@AàD$@IãFPHâE∏ˇQ∆ <stripped>
-WARNING: couldn't find offset 0xfffeebd0 in binary!
-WARNING: couldn't find offset 0xfffeebd0 in binary!
-	0x0  @objc MultiwayViewController.HâBHãHãIHâJHâHãu»jZLâˇÈU <stripped>
-WARNING: couldn't find offset 0xfffec291 in binary!
-WARNING: couldn't find offset 0xfffec291 in binary!
-	0x0  @objc MultiwayViewController.A∆D$h <stripped>
-WARNING: couldn't find offset 0xfffef9c8 in binary!
-WARNING: couldn't find offset 0xfffef9c8 in binary!
-	0x0  @objc MultiwayViewController. <stripped>
-WARNING: couldn't find offset 0xfffed200 in binary!
-WARNING: couldn't find offset 0xfffed200 in binary!
-	0x0  @objc MultiwayViewController.`Iâ\$`Ë«≈ <stripped>
-WARNING: couldn't find offset 0xfffef998 in binary!
-WARNING: couldn't find offset 0xfffef998 in binary!
-	0x0  @objc MultiwayViewController.âÊLâÚˇU¿j(XH√IƒjYHâﬂLâÊÛH•HãE–Hc@@Mç$Mçt <stripped>
-WARNING: couldn't find offset 0xfffeeb60 in binary!
-WARNING: couldn't find offset 0xfffeeb60 in binary!
-	0x0  @objc MultiwayViewController.MâtIãL IâL IãF¯Hã <stripped>
-WARNING: couldn't find offset 0xfffed5c8 in binary!
-WARNING: couldn't find offset 0xfffed5c8 in binary!
-	0x0  @objc MultiwayViewController.∏ˇQ∆ <stripped>
-WARNING: couldn't find offset 0xfffecd70 in binary!
-WARNING: couldn't find offset 0xfffecd70 in binary!
-	0x0  @objc MultiwayViewController.Hâ∆ˇQ1ˇËÎ¡ˇˇHc@Hã|Ëkƒ <stripped>
-WARNING: couldn't find offset 0xfffef938 in binary!
-WARNING: couldn't find offset 0xfffef938 in binary!
-	0x0  @objc MultiwayViewController. HãB¯LâÁˇA∆D$h <stripped>
-WARNING: couldn't find offset 0xfffed170 in binary!
-WARNING: couldn't find offset 0xfffed170 in binary!
-	0x0  @objc MultiwayViewController.IâNIâHãu∏jZLâˇÈR <stripped>
-WARNING: couldn't find offset 0xfffecd28 in binary!
-WARNING: couldn't find offset 0xfffecd28 in binary!
+WARNING: couldn't find offset 0xfffed210 in binary!
+WARNING: couldn't find offset 0xfffed210 in binary!
+	0x0  @objc MultiwayViewController.ãF IâD$ AäF(AàD$(A∆D$hËæ≈ <stripped>
+WARNING: couldn't find offset 0xfffeeb80 in binary!
+WARNING: couldn't find offset 0xfffeeb80 in binary!
+	0x0  @objc MultiwayViewController.≈ <stripped>
+WARNING: couldn't find offset 0xfffec241 in binary!
+WARNING: couldn't find offset 0xfffec241 in binary!
+	0x0  @objc MultiwayViewController.FHIâD$HIâ|$PIãFXIâD$XIã^`Iâ\$`Ë∆ <stripped>
+WARNING: couldn't find offset 0xfffef978 in binary!
+WARNING: couldn't find offset 0xfffef978 in binary!
+	0x0  @objc MultiwayViewController.âÔËK∆ <stripped>
+WARNING: couldn't find offset 0xfffed1b0 in binary!
+WARNING: couldn't find offset 0xfffed1b0 in binary!
+	0x0  @objc MultiwayViewController.Ñ’ <stripped>
+WARNING: couldn't find offset 0xfffef948 in binary!
+WARNING: couldn't find offset 0xfffef948 in binary!
+	0x0  @objc MultiwayViewController.(IâD$(IãF0HâE¿IâD$0IãF8HâE–IâD$8AäF@AàD$@IãFPHâE∏ˇ1« <stripped>
+WARNING: couldn't find offset 0xfffeeb10 in binary!
+WARNING: couldn't find offset 0xfffeeb10 in binary!
+	0x0  @objc MultiwayViewController.$IãFIâD$Iã^Iâ\$IãFIâD$Mãn Mâl$ IãF(IâD$(IãF0HâE¿IâD$0IãF8HâE–IâD$8AäF@AàD$@IãFPHâE∏ˇ1« <stripped>
+WARNING: couldn't find offset 0xfffed578 in binary!
+WARNING: couldn't find offset 0xfffed578 in binary!
+	0x0  @objc MultiwayViewController.HâHã]»A∆D$hjZLâˇHâﬁËÜ∆ <stripped>
+WARNING: couldn't find offset 0xfffecd20 in binary!
+WARNING: couldn't find offset 0xfffecd20 in binary!
+	0x0  @objc MultiwayViewController.>ˇπƒ <stripped>
+WARNING: couldn't find offset 0xfffef8e8 in binary!
+WARNING: couldn't find offset 0xfffef8e8 in binary!
 	0x0  @objc MultiwayViewController. <stripped>
-WARNING: couldn't find offset 0xfffecd10 in binary!
-WARNING: couldn't find offset 0xfffecd10 in binary!
-	0x0  @objc MultiwayViewController.âˆDâ‚ËË∂ <stripped>
-WARNING: couldn't find offset 0xfffeccf8 in binary!
-WARNING: couldn't find offset 0xfffeccf8 in binary!
-	0x0  @objc MultiwayViewController.» <stripped>
-WARNING: couldn't find offset 0xffff37b0 in binary!
-WARNING: couldn't find offset 0xffff37b0 in binary!
-	0x0  @objc MultiwayViewController.Hã}–Ë9» <stripped>
-WARNING: couldn't find offset 0xfffef8a8 in binary!
-WARNING: couldn't find offset 0xfffef8a8 in binary!
-	0x0  @objc MultiwayViewController.L0IãL8HâM∏IâL8AäL@AàL@MãlPHã}–Ë9» <stripped>
-WARNING: couldn't find offset 0xfffeea70 in binary!
-WARNING: couldn't find offset 0xfffeea70 in binary!
-	0x0  @objc MultiwayViewController.ãLIâLMãd Mâd IãL(IâL(IãL0HâM¿IâL0IãL8HâM∏IâL8AäL@AàL@MãlPHã}–Ë9» <stripped>
-	0x1e8000000c  @objc MultiwayViewController.Hã}–Ë˘≈ <stripped>
-WARNING: couldn't find offset 0xfffef860 in binary!
-WARNING: couldn't find offset 0xfffef860 in binary!
-	0x0  @objc MultiwayViewController.0HâM¿IâL0IãL8HâM∏IâL8AäL@AàL@MãlPHã}–Ë9» <stripped>
-WARNING: couldn't find offset 0xfffef848 in binary!
-WARNING: couldn't find offset 0xfffef848 in binary!
-	0x0  @objc MultiwayViewController.AàHc@AäL <stripped>
-WARNING: couldn't find offset 0xfffed080 in binary!
-WARNING: couldn't find offset 0xfffed080 in binary!
-	0x0  @objc MultiwayViewController.L IâL IãF¯Hã <stripped>
-WARNING: couldn't find offset 0xfffed068 in binary!
-WARNING: couldn't find offset 0xfffed068 in binary!
-	0x0  @objc MultiwayViewController.ËI¬ <stripped>
-WARNING: couldn't find offset 0xfffed050 in binary!
-WARNING: couldn't find offset 0xfffed050 in binary!
-	0x0  @objc MultiwayViewController.IâLIã\Iâ\IãLIâLMãd Mâd IãL(IâL(IãL0HâM¿IâL0IãL8HâM∏IâL8AäL@AàL@MãlPHã}–Ë9» <stripped>
-WARNING: couldn't find offset 0xfffec099 in binary!
-WARNING: couldn't find offset 0xfffec099 in binary!
-	0x0  @objc MultiwayViewController.ËÉ˛ˇHc@0IçHâM®IçL <stripped>
-WARNING: couldn't find offset 0xfffef7d0 in binary!
-WARNING: couldn't find offset 0xfffef7d0 in binary!
-	0x0  @objc MultiwayViewController.U–IâTHcHAäT <stripped>
-WARNING: couldn't find offset 0xffff63d9 in binary!
-WARNING: couldn't find offset 0xffff63d9 in binary!
-	0x0  @objc MultiwayViewController. <stripped>
-WARNING: couldn't find offset 0xfffecbc0 in binary!
-WARNING: couldn't find offset 0xfffecbc0 in binary!
-	0x0  @objc MultiwayViewController.Jã|3`È£ <stripped>
-WARNING: couldn't find offset 0xfffecba8 in binary!
-WARNING: couldn't find offset 0xfffecba8 in binary!
-	0x0  @objc MultiwayViewController.â|$HãFIâD$LãvMât$HãF IâD$ äF(AàD$(A∆D$hË∞π <stripped>
-WARNING: couldn't find offset 0xfffee948 in binary!
-WARNING: couldn't find offset 0xfffee948 in binary!
-	0x0  @objc MultiwayViewController.0HãL8HâM¿IâL8äL@AàL@jHYIŒIÃHã\PHã}–ËZº <stripped>
-WARNING: couldn't find offset 0xfffecb78 in binary!
-WARNING: couldn't find offset 0xfffecb78 in binary!
-	0x0  @objc MultiwayViewController.÷â¬]Èâ∂ <stripped>
-WARNING: couldn't find offset 0xfffecb60 in binary!
-WARNING: couldn't find offset 0xfffecb60 in binary!
+WARNING: couldn't find offset 0xfffed120 in binary!
+WARNING: couldn't find offset 0xfffed120 in binary!
+	0x0  @objc MultiwayViewController. <stripped>
+WARNING: couldn't find offset 0xfffeccd8 in binary!
+WARNING: couldn't find offset 0xfffeccd8 in binary!
+	0x0  @objc MultiwayViewController.A^A_]√f.Ñ <stripped>
+WARNING: couldn't find offset 0xfffeccc0 in binary!
+WARNING: couldn't find offset 0xfffeccc0 in binary!
+	0x0  @objc MultiwayViewController.MâeHç} <stripped>
+WARNING: couldn't find offset 0xfffecca8 in binary!
+WARNING: couldn't find offset 0xfffecca8 in binary!
+	0x0  @objc MultiwayViewController.v« <stripped>
+WARNING: couldn't find offset 0xffff3760 in binary!
+WARNING: couldn't find offset 0xffff3760 in binary!
+	0x0  @objc MultiwayViewController.çd <stripped>
+WARNING: couldn't find offset 0xfffef858 in binary!
+WARNING: couldn't find offset 0xfffef858 in binary!
 	0x0  @objc MultiwayViewController.L <stripped>
-WARNING: couldn't find offset 0xffff3618 in binary!
-WARNING: couldn't find offset 0xffff3618 in binary!
-	0x0  @objc MultiwayViewController.ˇˇHcHIãT <stripped>
-WARNING: couldn't find offset 0xfffecb30 in binary!
-WARNING: couldn't find offset 0xfffecb30 in binary!
-	0x0  @objc MultiwayViewController.HâLâ{IãFHâCMãvLâsLâˇËÛæ <stripped>
+WARNING: couldn't find offset 0xfffeea20 in binary!
+WARNING: couldn't find offset 0xfffeea20 in binary!
+	0x0  @objc MultiwayViewController.T <stripped>
+	0x1e8000000c  @objc MultiwayViewController.Éƒ8[A\A]A^A_]√f.Ñ <stripped>
+WARNING: couldn't find offset 0xfffef810 in binary!
+WARNING: couldn't find offset 0xfffef810 in binary!
+	0x0  @objc MultiwayViewController.Hc@AäL <stripped>
+WARNING: couldn't find offset 0xfffef7f8 in binary!
+WARNING: couldn't find offset 0xfffef7f8 in binary!
+	0x0  @objc MultiwayViewController.®HâAHLâiPHãBXHâAXHãZ`HâY`LâÔË» <stripped>
+WARNING: couldn't find offset 0xfffed030 in binary!
+WARNING: couldn't find offset 0xfffed030 in binary!
+	0x0  @objc MultiwayViewController.$Iã^Iâ\$IãFIâD$Mãn Mâl$ IãF(IâD$(IãF0HâE¿IâD$0IãF8HâE–IâD$8AäF@AàD$@IãFPHâE∏ˇ1« <stripped>
+WARNING: couldn't find offset 0xfffed018 in binary!
+WARNING: couldn't find offset 0xfffed018 in binary!
+	0x0  @objc MultiwayViewController. <stripped>
+WARNING: couldn't find offset 0xfffed000 in binary!
+WARNING: couldn't find offset 0xfffed000 in binary!
+	0x0  @objc MultiwayViewController.ˇQ1ˇË≈ˇˇHcHIãT <stripped>
+WARNING: couldn't find offset 0xfffec049 in binary!
+WARNING: couldn't find offset 0xfffec049 in binary!
+	0x0  @objc MultiwayViewController.`LâÔË» <stripped>
+WARNING: couldn't find offset 0xfffef780 in binary!
+WARNING: couldn't find offset 0xfffef780 in binary!
+	0x0  @objc MultiwayViewController.ÑG <stripped>
+WARNING: couldn't find offset 0xffff6389 in binary!
+WARNING: couldn't find offset 0xffff6389 in binary!
+	0x0  @objc MultiwayViewController. <stripped>
+WARNING: couldn't find offset 0xfffecb70 in binary!
+WARNING: couldn't find offset 0xfffecb70 in binary!
+	0x0  @objc MultiwayViewController.AUATSHÉÏ8Hâ”Iâ˜Iâ˝Hâ˜Hâ÷Ë≈√ <stripped>
+WARNING: couldn't find offset 0xfffecb58 in binary!
+WARNING: couldn't find offset 0xfffecb58 in binary!
+	0x0  @objc MultiwayViewController.ˇËb∂ˇˇHcHHãHãtIâtIâHcHäAàHc@äAàHç=ü` <stripped>
+WARNING: couldn't find offset 0xfffee8f8 in binary!
+WARNING: couldn't find offset 0xfffee8f8 in binary!
+	0x0  @objc MultiwayViewController.AàHç=kc <stripped>
+WARNING: couldn't find offset 0xfffecb28 in binary!
+WARNING: couldn't find offset 0xfffecb28 in binary!
+	0x0  @objc MultiwayViewController.SPIâˆHâ˚HãB¯ã@P∫‡rMIâ◊1ˇËÁ≠ <stripped>
+WARNING: couldn't find offset 0xfffecb10 in binary!
+WARNING: couldn't find offset 0xfffecb10 in binary!
+	0x0  @objc MultiwayViewController.AäL <stripped>
+WARNING: couldn't find offset 0xffff35c8 in binary!
+WARNING: couldn't find offset 0xffff35c8 in binary!
+	0x0  @objc MultiwayViewController.d∆ˇˇHcHIãT <stripped>
+WARNING: couldn't find offset 0xfffecae0 in binary!
+WARNING: couldn't find offset 0xfffecae0 in binary!
+	0x0  @objc MultiwayViewController.Ñ» <stripped>
 WARNING: couldn't find address 0x1c00000001 (0x1c00000001) in binary!
 	0x6c00000000  @objc MultiwayViewController.(null) <stripped>
 WARNING: couldn't find address 0x100000000000006 (0x6) in binary!
 	0x101020021  @objc MultiwayViewController.(null) <stripped>
 
 	// Swift methods
-	0xc1c70  class func MultiwayViewController.__allocating_init(activeCall:conversationController:) // init 
+	0xc1bd0  class func MultiwayViewController.__allocating_init(activeCall:conversationController:) // init 
  }
 
  struct ConversationKit.ViewContent {
@@ -2806,7 +2806,7 @@ WARNING: couldn't find address 0x100000000000006 (0x6) in binary!
 	var localParticipant : Participant // +0x77735f5f (0x0)
 	var remoteParticipants : Participant // +0x6665725f (0x8)
 	let includeLocalParticipantInVisibleParticipants : Bool // +0x0 (0x1)
-	var carPlayDisconnectRequiresLocalVideoEnable : Bool // +0x361e (0x1)
+	var carPlayDisconnectRequiresLocalVideoEnable : Bool // +0x364e (0x1)
 	var audioFrequencyController : TUAudioFrequencyController? // +0x0 (0x8)
 	var audioCallbackQueue : OS_dispatch_queue // +0x0 (0x8)
 	var $__lazy_storage_$_momentsController : TUMomentsController? // +0x0 (0x8)
@@ -2824,9 +2824,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var didUpdateVisibleParticipant : Participant // +0x6569665f (0x10)
 	var visibleParticipantDidBecomeActive : Participant // +0x45545f5f (0x10)
 	var didStartVideoForVisibleParticipant : Participant // +0x0 (0x10)
-	var participantsMediaPrioritiesDidChange : ParticipantMediaPriorities // +0x12d7e0 (0x10)
-	var participantAudioPowerDidChange : Participant // +0x331c (0x10)
-	var audioRouteDidChange : (_:)? // +0x12d7e0 (0x10)
+	var participantsMediaPrioritiesDidChange : ParticipantMediaPriorities // +0x12d7c0 (0x10)
+	var participantAudioPowerDidChange : Participant // +0x3340 (0x10)
+	var audioRouteDidChange : (_:)? // +0x12d7c0 (0x10)
 	var cameraZoomAvailabiltyDidChange : (_:)? // +0x0 (0x10)
 	var carPlayConnectedDidChange : (_:)? // +0x0 (0x10)
 	var didUpdateLocalParticipant : Participant // +0x0 (0x10)
@@ -2837,25 +2837,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var blocklistCheckedHandles : Set<TUHandle>? // +0x0 (0x8)
 	var needsUserConfirmationForBlockedCaller : Bool // +0x0 (0x1)
 	var enableVideoOnJoin : Bool // +0x0 (0x1)
-	var participantMediaProviderCreator : ParticipantMediaProviderCreator // +0x130afc (0x28)
+	var participantMediaProviderCreator : ParticipantMediaProviderCreator // +0x130b00 (0x28)
 	var callCenter : CallCenterProvider // +0x45545f5f (0x28)
-	let call : TUCall // +0x12a1c0 (0x8)
+	let call : TUCall // +0x12a170 (0x8)
 	let blockedCallerChecker : BlockedCallerChecker // +0x258 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var conversationUUID : G9 // +0x0 (0x0)
-	var localVideoRecordingTransactionID : String? // +0x12a1c0 (0x10)
+	var conversationUUID : Á9 // +0x0 (0x0)
+	var localVideoRecordingTransactionID : String? // +0x12a170 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1783c00043ec0 (0x3c00043ec0) in binary!
-	0xe040  @objc ConversationController.(null) <stripped>
-WARNING: couldn't find address 0x1782400043900 (0x2400043900) in binary!
-	0xe028  @objc ConversationController.(null) <stripped>
+WARNING: couldn't find address 0x1788c00043f60 (0x8c00043f60) in binary!
+	0xe090  @objc ConversationController.(null) <stripped>
+WARNING: couldn't find address 0x17874000439a0 (0x74000439a0) in binary!
+	0xe078  @objc ConversationController.(null) <stripped>
 WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
-	0x84fffdbfd0  @objc ConversationController.(null) <stripped>
-	0x74fffdcaa8  @objc ConversationController.xˇˇˇZˇˇˇÑˇˇˇNˇˇˇNˇˇˇNˇˇˇUHâÂAWAVATSHÉÏIãE <stripped>
+	0x124fffdbfd0  @objc ConversationController.(null) <stripped>
+	0x114fffdcaa8  @objc ConversationController. <stripped>
 
 	// Swift methods
-	0xd60f0  class func ConversationController.__allocating_init(activeCall:callCenter:participantMediaProviderCreator:blockedCallerChecker:includeLocalParticipantInVisibleParticipants:) // init 
+	0xd6050  class func ConversationController.__allocating_init(activeCall:callCenter:participantMediaProviderCreator:blockedCallerChecker:includeLocalParticipantInVisibleParticipants:) // init 
  }
 
  struct ConversationKit.InCallControlsTitleCellModel {
@@ -2950,51 +2950,51 @@ WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
 	var isOnScreen : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find offset 0xfffef860 in binary!
-WARNING: couldn't find offset 0xfffef860 in binary!
-	0x0  @objc StagingAreaViewController.0HâM¿IâL0IãL8HâM∏IâL8AäL@AàL@MãlPHã}–Ë9» <stripped>
-WARNING: couldn't find offset 0xfffef848 in binary!
-WARNING: couldn't find offset 0xfffef848 in binary!
-	0x0  @objc StagingAreaViewController.AàHc@AäL <stripped>
-WARNING: couldn't find offset 0xfffed080 in binary!
-WARNING: couldn't find offset 0xfffed080 in binary!
-	0x0  @objc StagingAreaViewController.L IâL IãF¯Hã <stripped>
-WARNING: couldn't find offset 0xfffed068 in binary!
-WARNING: couldn't find offset 0xfffed068 in binary!
-	0x0  @objc StagingAreaViewController.ËI¬ <stripped>
-WARNING: couldn't find offset 0xfffed050 in binary!
-WARNING: couldn't find offset 0xfffed050 in binary!
-	0x0  @objc StagingAreaViewController.IâLIã\Iâ\IãLIâLMãd Mâd IãL(IâL(IãL0HâM¿IâL0IãL8HâM∏IâL8AäL@AàL@MãlPHã}–Ë9» <stripped>
-WARNING: couldn't find offset 0xfffec099 in binary!
-WARNING: couldn't find offset 0xfffec099 in binary!
-	0x0  @objc StagingAreaViewController.ËÉ˛ˇHc@0IçHâM®IçL <stripped>
-WARNING: couldn't find offset 0xfffef7d0 in binary!
-WARNING: couldn't find offset 0xfffef7d0 in binary!
-	0x0  @objc StagingAreaViewController.U–IâTHcHAäT <stripped>
-WARNING: couldn't find offset 0xffff63d9 in binary!
-WARNING: couldn't find offset 0xffff63d9 in binary!
+WARNING: couldn't find offset 0xfffef810 in binary!
+WARNING: couldn't find offset 0xfffef810 in binary!
+	0x0  @objc StagingAreaViewController.Hc@AäL <stripped>
+WARNING: couldn't find offset 0xfffef7f8 in binary!
+WARNING: couldn't find offset 0xfffef7f8 in binary!
+	0x0  @objc StagingAreaViewController.®HâAHLâiPHãBXHâAXHãZ`HâY`LâÔË» <stripped>
+WARNING: couldn't find offset 0xfffed030 in binary!
+WARNING: couldn't find offset 0xfffed030 in binary!
+	0x0  @objc StagingAreaViewController.$Iã^Iâ\$IãFIâD$Mãn Mâl$ IãF(IâD$(IãF0HâE¿IâD$0IãF8HâE–IâD$8AäF@AàD$@IãFPHâE∏ˇ1« <stripped>
+WARNING: couldn't find offset 0xfffed018 in binary!
+WARNING: couldn't find offset 0xfffed018 in binary!
 	0x0  @objc StagingAreaViewController. <stripped>
-WARNING: couldn't find offset 0xfffecbc0 in binary!
-WARNING: couldn't find offset 0xfffecbc0 in binary!
-	0x0  @objc StagingAreaViewController.Jã|3`È£ <stripped>
-WARNING: couldn't find offset 0xfffecba8 in binary!
-WARNING: couldn't find offset 0xfffecba8 in binary!
-	0x0  @objc StagingAreaViewController.â|$HãFIâD$LãvMât$HãF IâD$ äF(AàD$(A∆D$hË∞π <stripped>
-WARNING: couldn't find offset 0xfffee948 in binary!
-WARNING: couldn't find offset 0xfffee948 in binary!
-	0x0  @objc StagingAreaViewController.0HãL8HâM¿IâL8äL@AàL@jHYIŒIÃHã\PHã}–ËZº <stripped>
-WARNING: couldn't find offset 0xfffecb78 in binary!
-WARNING: couldn't find offset 0xfffecb78 in binary!
-	0x0  @objc StagingAreaViewController.÷â¬]Èâ∂ <stripped>
-WARNING: couldn't find offset 0xfffecb60 in binary!
-WARNING: couldn't find offset 0xfffecb60 in binary!
-	0x0  @objc StagingAreaViewController.L <stripped>
-WARNING: couldn't find offset 0xffff3618 in binary!
-WARNING: couldn't find offset 0xffff3618 in binary!
-	0x0  @objc StagingAreaViewController.ˇˇHcHIãT <stripped>
-WARNING: couldn't find offset 0xfffecb30 in binary!
-WARNING: couldn't find offset 0xfffecb30 in binary!
-	0x0  @objc StagingAreaViewController.HâLâ{IãFHâCMãvLâsLâˇËÛæ <stripped>
+WARNING: couldn't find offset 0xfffed000 in binary!
+WARNING: couldn't find offset 0xfffed000 in binary!
+	0x0  @objc StagingAreaViewController.ˇQ1ˇË≈ˇˇHcHIãT <stripped>
+WARNING: couldn't find offset 0xfffec049 in binary!
+WARNING: couldn't find offset 0xfffec049 in binary!
+	0x0  @objc StagingAreaViewController.`LâÔË» <stripped>
+WARNING: couldn't find offset 0xfffef780 in binary!
+WARNING: couldn't find offset 0xfffef780 in binary!
+	0x0  @objc StagingAreaViewController.ÑG <stripped>
+WARNING: couldn't find offset 0xffff6389 in binary!
+WARNING: couldn't find offset 0xffff6389 in binary!
+	0x0  @objc StagingAreaViewController. <stripped>
+WARNING: couldn't find offset 0xfffecb70 in binary!
+WARNING: couldn't find offset 0xfffecb70 in binary!
+	0x0  @objc StagingAreaViewController.AUATSHÉÏ8Hâ”Iâ˜Iâ˝Hâ˜Hâ÷Ë≈√ <stripped>
+WARNING: couldn't find offset 0xfffecb58 in binary!
+WARNING: couldn't find offset 0xfffecb58 in binary!
+	0x0  @objc StagingAreaViewController.ˇËb∂ˇˇHcHHãHãtIâtIâHcHäAàHc@äAàHç=ü` <stripped>
+WARNING: couldn't find offset 0xfffee8f8 in binary!
+WARNING: couldn't find offset 0xfffee8f8 in binary!
+	0x0  @objc StagingAreaViewController.AàHç=kc <stripped>
+WARNING: couldn't find offset 0xfffecb28 in binary!
+WARNING: couldn't find offset 0xfffecb28 in binary!
+	0x0  @objc StagingAreaViewController.SPIâˆHâ˚HãB¯ã@P∫‡rMIâ◊1ˇËÁ≠ <stripped>
+WARNING: couldn't find offset 0xfffecb10 in binary!
+WARNING: couldn't find offset 0xfffecb10 in binary!
+	0x0  @objc StagingAreaViewController.AäL <stripped>
+WARNING: couldn't find offset 0xffff35c8 in binary!
+WARNING: couldn't find offset 0xffff35c8 in binary!
+	0x0  @objc StagingAreaViewController.d∆ˇˇHcHIãT <stripped>
+WARNING: couldn't find offset 0xfffecae0 in binary!
+WARNING: couldn't find offset 0xfffecae0 in binary!
+	0x0  @objc StagingAreaViewController.Ñ» <stripped>
 WARNING: couldn't find address 0x1c00000001 (0x1c00000001) in binary!
 	0x6c00000000  @objc StagingAreaViewController.(null) <stripped>
 WARNING: couldn't find address 0x100000000000006 (0x6) in binary!
@@ -3005,11 +3005,11 @@ WARNING: couldn't find address 0x204080202020400 (0x202020400) in binary!
 	0x11100000000  @objc StagingAreaViewController.(null) <stripped>
 WARNING: couldn't find address 0x206100402040c0a (0x402040c0a) in binary!
 	0xb4000000b4  @objc StagingAreaViewController.(null) <stripped>
-WARNING: couldn't find address 0xc080001e210 (0x4080001e210) in binary!
+WARNING: couldn't find address 0xc080001e130 (0x4080001e130) in binary!
 	0xb400001c08  @objc StagingAreaViewController.(null) <stripped>
-WARNING: couldn't find address 0x2c080009a980 (0x4080009a980) in binary!
+WARNING: couldn't find address 0x2c080009a8e0 (0x4080009a8e0) in binary!
 	0xb4000042a4  @objc StagingAreaViewController.(null) <stripped>
-	0x22c0288000c  @objc StagingAreaViewController.%p <stripped>
+	0x22c0288000c  @objc StagingAreaViewController.%	 <stripped>
 WARNING: couldn't find address 0x200003000000000 (0x3000000000) in binary!
 	0x15000000100  @objc StagingAreaViewController.(null) <stripped>
 WARNING: couldn't find address 0x400019000000180 (0x19000000180) in binary!
@@ -3026,7 +3026,7 @@ WARNING: couldn't find address 0x4000b5000000b30 (0x35000000b30) in binary!
 	0x44000000be0  @objc StagingAreaViewController.(null) <stripped>
 
 	// Swift methods
-	0xf5a30  class func StagingAreaViewController.__allocating_init(activeCall:hasJoined:) // init 
+	0xf5990  class func StagingAreaViewController.__allocating_init(activeCall:hasJoined:) // init 
  }
 
  struct ConversationKit.EffectsCaptureInfo {
@@ -3065,7 +3065,7 @@ WARNING: couldn't find address 0x4000b5000000b30 (0x35000000b30) in binary!
 	var inCallControlsViewFrames : InCallControlsState
 
 	// Swift methods
-	0xff2b0  class func InCallControlsFramesCache.__allocating_init() // init 
+	0xff210  class func InCallControlsFramesCache.__allocating_init() // init 
  }
 
  class ConversationKit.ParticipantView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3081,35 +3081,35 @@ WARNING: couldn't find address 0x4000b5000000b30 (0x35000000b30) in binary!
 	let debugLabel : UILabel // +0x40 (0x8)
 	var mostRecentViewModelHash : Int? // +0x48 (0x9)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let loggingIdentifier : %9 // +0x0 (0x0)
+	let loggingIdentifier : ≈9 // +0x0 (0x0)
 	var hideBottomBarTimer : NSTimer? // +0x0 (0x8)
 	var hideAlertViewTimer : NSTimer? // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var participantIdentifier : G9 // +0x0 (0x0)
+	var participantIdentifier : Á9 // +0x0 (0x0)
 	var delegate : ParticipantViewDelegate // +0x131af8 (0x10)
 	var isInRoster : Bool // +0x45545f5f (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var customCornerRadius : 9 // +0x580 (0x8)
+	var customCornerRadius : Ø9 // +0x580 (0x8)
 	var isExpanded : Bool // +0x131af8 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1770c000434a0 (0x70c000434a0) in binary!
-	0xfcc8  @objc ParticipantView.(null) <stripped>
-WARNING: couldn't find address 0x10ae400043478 (0x2e400043478) in binary!
-	0xfcb0  @objc ParticipantView.(null) <stripped>
-WARNING: couldn't find address 0x10acc000436a8 (0x2cc000436a8) in binary!
-	0xdac0  @objc ParticipantView.(null) <stripped>
-WARNING: couldn't find address 0xe714000439f0 (0x714000439f0) in binary!
-	0xdec8  @objc ParticipantView.(null) <stripped>
-WARNING: couldn't find address 0xdebc00043c10 (0x6bc00043c10) in binary!
-	0xdeb0  @objc ParticipantView.(null) <stripped>
+WARNING: couldn't find address 0x1775c00043540 (0x75c00043540) in binary!
+	0xfd18  @objc ParticipantView.(null) <stripped>
+WARNING: couldn't find address 0x10b3400043518 (0x33400043518) in binary!
+	0xfd00  @objc ParticipantView.(null) <stripped>
+WARNING: couldn't find address 0x10b1c00043748 (0x31c00043748) in binary!
+	0xdb10  @objc ParticipantView.(null) <stripped>
+WARNING: couldn't find address 0xe76400043a90 (0x76400043a90) in binary!
+	0xdf18  @objc ParticipantView.(null) <stripped>
+WARNING: couldn't find address 0xdf0c00043cb0 (0x70c00043cb0) in binary!
+	0xdf00  @objc ParticipantView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x1acffff72f8  @objc ParticipantView.(null) <stripped>
-	0x3ccffff75c0  @objc ParticipantView.Áˇê» <stripped>
-	0xffff79a8  @objc ParticipantView. <stripped>
+	0x24cffff72f8  @objc ParticipantView.(null) <stripped>
+	0x46cffff75c0  @objc ParticipantView.UHâÂ(ﬂ(÷(Õ(ƒ]√f.Ñ <stripped>
+	0xffff79a8  @objc ParticipantView.1…Ëâ <stripped>
 WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
-	0x3acffff94c0  @objc ParticipantView.(null) <stripped>
-	0x384ffff9848  @objc ParticipantView.ˇLâÊË>¸ <stripped>
+	0x44cffff94c0  @objc ParticipantView.(null) <stripped>
+	0x424ffff9848  @objc ParticipantView.»LâM¿Mãt$L9ÛILﬁHÖ€tRHâœË©QˇˇH¡„HÉ√ jZHâ«HâﬁËÀ <stripped>
  }
 
  struct ConversationKit.InCallControlsParticipantTableViewCellModel {
@@ -3117,7 +3117,7 @@ WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
 	// Properties
 	var contactDetails : ParticipantContactDetails
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var participantIdentifier : %9
+	var participantIdentifier : ≈9
 	var name : String
 	var subtitle : SubtitleState
 	var ringButtonLabel : String
@@ -3143,15 +3143,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let monogramView : ParticipantMonogramView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1768c00043768 (0x68c00043768) in binary!
-	0xe6d0  @objc ParticipantVideoOverlayView.(null) <stripped>
-WARNING: couldn't find address 0xda64000439e0 (0x264000439e0) in binary!
-	0xde78  @objc ParticipantVideoOverlayView.(null) <stripped>
-WARNING: couldn't find address 0xde6c000436d0 (0x66c000436d0) in binary!
+	0xe720  CGRect.flipIfNeeded(in:)
+WARNING: couldn't find address 0xdab400043a80 (0x2b400043a80) in binary!
+	0xdec8  @objc ParticipantVideoOverlayView.(null) <stripped>
+WARNING: couldn't find address 0xdebc00043770 (0x6bc00043770) in binary!
 	0xb8000000c  @objc ParticipantVideoOverlayView.(null) <stripped>
-WARNING: couldn't find address 0xf818000433c0 (0x18000433c0) in binary!
-	0xd2d9  @objc ParticipantVideoOverlayView.(null) <stripped>
-	0xd2c1  @objc ParticipantVideoOverlayView.LâˇËÄ]˝ˇLâ¯Hˇ¿Ä( <stripped>
+WARNING: couldn't find address 0xf86800043460 (0x6800043460) in binary!
+	0xd329  @objc ParticipantVideoOverlayView.(null) <stripped>
+WARNING: couldn't find address 0xf85000043438 (0x5000043438) in binary!
+	0xd311  @objc ParticipantVideoOverlayView.(null) <stripped>
  }
 
  enum ConversationKit.ViewModel {
@@ -3192,16 +3192,17 @@ WARNING: couldn't find address 0xf818000433c0 (0x18000433c0) in binary!
 	let inCallControlsFramesCache : InCallControlsFramesCache
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf818000433c0 (0x18000433c0) in binary!
-	0xd2d9  @objc MultiwayViewConstraintsController.(null) <stripped>
-	0xd2c1  @objc MultiwayViewConstraintsController.LâˇËÄ]˝ˇLâ¯Hˇ¿Ä( <stripped>
-WARNING: couldn't find address 0x180d400043370 (0xd400043370) in binary!
-	0x180e8  @objc MultiwayViewConstraintsController.(null) <stripped>
-WARNING: couldn't find address 0x1810c00043348 (0x10c00043348) in binary!
-	0xde00  @objc MultiwayViewConstraintsController.(null) <stripped>
-WARNING: couldn't find address 0x13c5400043320 (0x45400043320) in binary!
-	0x175d8  @objc MultiwayViewConstraintsController.(null) <stripped>
-WARNING: couldn't find address 0xdddc00043640 (0x5dc00043640) in binary!
+WARNING: couldn't find address 0xf86800043460 (0x6800043460) in binary!
+	0xd329  @objc MultiwayViewConstraintsController.(null) <stripped>
+WARNING: couldn't find address 0xf85000043438 (0x5000043438) in binary!
+	0xd311  @objc MultiwayViewConstraintsController.(null) <stripped>
+WARNING: couldn't find address 0x1812400043410 (0x12400043410) in binary!
+	0x18138  @objc MultiwayViewConstraintsController.(null) <stripped>
+WARNING: couldn't find address 0x1815c000433e8 (0x15c000433e8) in binary!
+	0xde50  @objc MultiwayViewConstraintsController.(null) <stripped>
+WARNING: couldn't find address 0x13ca4000433c0 (0x4a4000433c0) in binary!
+	0x17628  @objc MultiwayViewConstraintsController.(null) <stripped>
+WARNING: couldn't find address 0xde2c000436e0 (0x62c000436e0) in binary!
 	0x25029232840  @objc MultiwayViewConstraintsController.(null) <stripped>
 WARNING: couldn't find address 0x766e6f433a4d4152 (0x7433a4d4152) in binary!
 	0x202074694b  @objc MultiwayViewConstraintsController.(null) <stripped>
@@ -3215,8 +3216,8 @@ WARNING: couldn't find address 0x17ffffe00000014 (0x7fe00000014) in binary!
 	0x7fe0000001c  @objc MultiwayViewConstraintsController.(null) <stripped>
 
 	// Swift methods
-	0x1099d0  class func MultiwayViewConstraintsController.__allocating_init(containingView:participantListView:participantListState:gridView:controlsViewController:inCallControlsState:localParticipantView:localParticipantState:effectsView:effectsBrowserViewController:floatingControlsState:floatingControlsView:deviceOrientation:) // init 
-	0x109c10  class func MultiwayViewConstraintsController.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserViewController:deviceOrientation:) // init 
+	0x109930  class func MultiwayViewConstraintsController.__allocating_init(containingView:participantListView:participantListState:gridView:controlsViewController:inCallControlsState:localParticipantView:localParticipantState:effectsView:effectsBrowserViewController:floatingControlsState:floatingControlsView:deviceOrientation:) // init 
+	0x109b70  class func MultiwayViewConstraintsController.__allocating_init(containingView:controlsViewController:inCallControlsState:effectsView:effectsBrowserViewController:deviceOrientation:) // init 
  }
 
  enum ConversationKit.ParticipantListState {

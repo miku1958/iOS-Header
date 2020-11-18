@@ -37,6 +37,7 @@
 + (id)registeredPhotosSchemaIdentifier;
 + (id)retouchSchema;
 + (id)selectiveColorSchema;
++ (id)semanticEnhance;
 + (id)sharpenSchema;
 + (id)slomoSchema;
 + (id)smartBlackAndWhiteSchema;

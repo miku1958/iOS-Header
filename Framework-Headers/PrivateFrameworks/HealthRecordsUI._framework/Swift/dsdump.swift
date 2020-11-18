@@ -1404,7 +1404,7 @@ WARNING: couldn't find address 0x14f7c0006ba20 (0x77c0006ba20) in binary!
 WARNING: couldn't find address 0x14f640006c558 (0x7640006c558) in binary!
 	0x19f98  @objc MedicalRecordChartPoint.(null) <stripped>
 WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
-	0x304fff7d9a0  @objc MedicalRecordChartPoint.(null) <stripped>
+	0x30cfff7d9a0  @objc MedicalRecordChartPoint.(null) <stripped>
 	0x25cfff7dae8  @objc MedicalRecordChartPoint.‰Çèõ¦ <stripped>
 	0x25cfff7dc70  @objc MedicalRecordChartPoint.‰Çè§ <stripped>
 	0x24cfff7dd18  @objc MedicalRecordChartPoint.äuXH‹5Ü <stripped>
@@ -2279,7 +2279,7 @@ WARNING: couldn't find address 0x1a03d0006b1e8 (0x3d0006b1e8) in binary!
 	0x14680  @objc HealthRecordsSupportedStateChangeListener.(null) <stripped>
 WARNING: couldn't find address 0x196b40006aa60 (0x6b40006aa60) in binary!
 	0x28000000c  @objc HealthRecordsSupportedStateChangeListener.(null) <stripped>
-WARNING: couldn't find address 0x12ecc0006b210 (0x6cc0006b210) in binary!
+WARNING: couldn't find address 0x12ecc0006b218 (0x6cc0006b218) in binary!
 	0x14650  @objc HealthRecordsSupportedStateChangeListener.(null) <stripped>
 
 	// Swift methods

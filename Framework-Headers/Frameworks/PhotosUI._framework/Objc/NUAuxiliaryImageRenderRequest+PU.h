@@ -7,5 +7,6 @@
 #import <NeutrinoCore/NUAuxiliaryImageRenderRequest.h>
 
 @interface NUAuxiliaryImageRenderRequest (PU)
++ (struct CGImage *)createGainMapForComposition:(id)arg1;
 @end
 

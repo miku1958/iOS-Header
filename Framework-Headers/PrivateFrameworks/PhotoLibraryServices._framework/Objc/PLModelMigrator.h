@@ -202,6 +202,7 @@
 - (BOOL)_fixupSharedStreamOrientationsInStore:(id)arg1;
 - (BOOL)_fixupSharedVideosWithoutThumbnailsInStore:(id)arg1;
 - (BOOL)_fixupSyncedAssetAttributesInStore:(id)arg1;
+- (BOOL)_fixupUniformTypeIdentifierForCommonTypesInStore:(id)arg1;
 - (BOOL)_flattenUnknownCustomRenderedValues:(id)arg1;
 - (BOOL)_forceAlbumMetadataToDiskInStore:(id)arg1;
 - (void)_forceDupeAnalysis;

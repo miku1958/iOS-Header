@@ -9,7 +9,7 @@
 #import <HomeUI/HUGridDisplayOptions-Protocol.h>
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class HUDashboardButtonCellLayoutOptions, HUGridBannerCellLayoutOptions, HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridPlaceholderServiceCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridScenePlaceholderLayoutOptions, HUGridServiceCellLayoutOptions, HUGridStatusBannerCellLayoutOptions, HUGridStatusCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
+@class HUDashboardButtonCellLayoutOptions, HUGridBannerCellLayoutOptions, HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridPlaceholderServiceCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridScenePlaceholderLayoutOptions, HUGridServiceCellLayoutOptions, HUGridStatusBannerCellLayoutOptions, HUGridStatusCellLayoutOptions, HUGridWelcomeUIBannerCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
 
 @interface HUGridLayoutOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
@@ -53,6 +53,7 @@
     HUDashboardButtonCellLayoutOptions *_dashboardButtonCellOptions;
     HUGridBannerCellLayoutOptions *_bannerCellOptions;
     HUGridStatusBannerCellLayoutOptions *_statusBannerCellOptions;
+    HUGridWelcomeUIBannerCellLayoutOptions *_welcomeUIBannerCellOptions;
     long long _numberOfCameraCellsPerRow;
     NSNumber *_overrideViewSizeSubclass;
     struct CGSize _viewSize;
@@ -122,6 +123,7 @@
 @property (nonatomic) double topOfViewToFirstStatusItemBaselineDistance; // @synthesize topOfViewToFirstStatusItemBaselineDistance=_topOfViewToFirstStatusItemBaselineDistance;
 @property (readonly, nonatomic) struct CGSize viewSize; // @synthesize viewSize=_viewSize;
 @property (readonly, nonatomic) long long viewSizeSubclass;
+@property (copy, nonatomic) HUGridWelcomeUIBannerCellLayoutOptions *welcomeUIBannerCellOptions; // @synthesize welcomeUIBannerCellOptions=_welcomeUIBannerCellOptions;
 
 + (unsigned long long)_numberOfColumnsForFlexibleWidthStyleWithSizeSubclass:(long long)arg1;
 + (id)defaultOptionsForViewSize:(struct CGSize)arg1;

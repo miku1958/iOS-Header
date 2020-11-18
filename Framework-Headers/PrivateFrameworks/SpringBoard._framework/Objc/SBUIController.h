@@ -7,8 +7,10 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BCBatteryDeviceObserving-Protocol.h>
+#import <SpringBoard/CSAccessoryStatusProviding-Protocol.h>
 #import <SpringBoard/CSPowerStatusProviding-Protocol.h>
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
+#import <SpringBoard/SBFMotionAlarmDelegate-Protocol.h>
 #import <SpringBoard/SBHomeScreenBackdropViewBaseDelegate-Protocol.h>
 #import <SpringBoard/SBReachabilityObserver-Protocol.h>
 #import <SpringBoard/SBWallpaperObserver-Protocol.h>
@@ -16,9 +18,9 @@
 #import <SpringBoard/UIInteractionProgressObserver-Protocol.h>
 #import <SpringBoard/UIWindowDelegate-Protocol.h>
 
-@class ATXAppDirectoryClient, BCBatteryDeviceController, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBHUDController, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
+@class ATXAppDirectoryClient, BCBatteryDeviceController, BSPersistentTimer, CSAccessory, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBFMotionAlarmController, SBHUDController, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
 
-@interface SBUIController : NSObject <SBWallpaperObserver, PTSettingsKeyObserver, UIInteractionProgressObserver, SBWallpaperOrientationProvider, SBReachabilityObserver, SBHomeScreenBackdropViewBaseDelegate, BCBatteryDeviceObserving, UIWindowDelegate, CSPowerStatusProviding>
+@interface SBUIController : NSObject <SBWallpaperObserver, PTSettingsKeyObserver, UIInteractionProgressObserver, SBWallpaperOrientationProvider, SBReachabilityObserver, SBHomeScreenBackdropViewBaseDelegate, BCBatteryDeviceObserving, SBFMotionAlarmDelegate, UIWindowDelegate, CSPowerStatusProviding, CSAccessoryStatusProviding>
 {
     SBHomeScreenWindow *_window;
     SBIconContentView *_iconsView;
@@ -39,6 +41,9 @@
     unsigned int _isConnectedToExternalChargingAccessory:1;
     unsigned int _isConnectedToUnsupportedChargingAccessory:1;
     unsigned int _isConnectedToChargeIncapablePowerSource:1;
+    unsigned int _wasConnectedToWirelessChargingAccessory:1;
+    unsigned int _isConnectedToWirelessInternalChargingAccessory:1;
+    unsigned int _isConnectedToWirelessInternalAccessory:1;
     unsigned int _isConnectedToQiPower:1;
     SBHUDController *_HUDController;
     SBVolumeControl *_volumeControl;
@@ -53,6 +58,14 @@
     NSMutableSet *_contentRequiringReasons;
     ATXAppDirectoryClient *_appDirectoryClient;
     BOOL _disallowsPointerInteraction;
+    SBFMotionAlarmController *_motionAlarmController;
+    BOOL _disableChimeForWirelessCharging;
+    BOOL _disableScreenWakeForWirelessCharging;
+    BSPersistentTimer *_debounceWirelessChargingTimer;
+    BOOL _isAccessoryAnimationAllowed;
+    CSAccessory *_lastAttachedAccessory;
+    CSAccessory *_lastDetachedAccessory;
+    NSMutableDictionary *_accessoriesAttachedByUUID;
     BOOL _chargingChimeEnabled;
     SBIconController *_iconController;
 }
@@ -60,11 +73,15 @@
 @property (nonatomic) BOOL chargingChimeEnabled; // @synthesize chargingChimeEnabled=_chargingChimeEnabled;
 @property (readonly, nonatomic, getter=isConnectedToExternalChargingSource) BOOL connectedToExternalChargingSource;
 @property (readonly, nonatomic, getter=isConnectedToQiPower) BOOL connectedToQiPower;
+@property (readonly, nonatomic, getter=isConnectedToWirelessInternalChargingAccessory) BOOL connectedToWirelessInternalChargingAccessory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL homeScreenAutorotatesEvenWhenIconIsDragging;
 @property (readonly, nonatomic) SBIconController *iconController; // @synthesize iconController=_iconController;
+@property (readonly, nonatomic) BOOL isAccessoryAnimationAllowed;
+@property (readonly, nonatomic) CSAccessory *lastAttachedAccessory;
+@property (readonly, nonatomic) CSAccessory *lastDetachedAccessory;
 @property (readonly, nonatomic, getter=isOnAC) BOOL onAC;
 @property (readonly) Class superclass;
 
@@ -83,16 +100,22 @@
 - (void)_activateApplicationFromAccessibility:(id)arg1;
 - (void)_activateWorkspaceEntity:(id)arg1 fromIcon:(id)arg2 location:(id)arg3 validator:(CDUnknownBlockType)arg4;
 - (void)_backgroundContrastDidChange:(id)arg1;
+- (void)_cancelDebounceWirelessChargingTimer;
 - (void)_closeOpenFolderIfNecessary;
 - (id)_currentHomeScreenLegibilitySettings;
+- (void)_debounceWirelessChargingTimerFired;
 - (void)_deviceUILocked;
 - (void)_enumeratePowerSourcesWithBlock:(CDUnknownBlockType)arg1;
 - (id)_fakeSpringBoardStatusBar;
 - (void)_hideKeyboard;
+- (BOOL)_isConnectedToWirelessCharging;
 - (id)_legibilitySettings;
+- (void)_playAccessoryAttachChimeIfAppropriateWithDelay:(double)arg1;
 - (BOOL)_powerSourceWantsToPlayChime;
 - (void)_reduceMotionStatusDidChange:(id)arg1;
 - (void)_removeReachabilityEffectViewIfNecessary;
+- (void)_resetWirelessChargingState;
+- (void)_setDebounceWirelessChargingTimerWithDuration:(double)arg1;
 - (void)_setupHomeScreenContentBackdropView;
 - (void)_setupHomeScreenDimmingWindow;
 - (void)_switchToHomeScreenWallpaperAnimated:(BOOL)arg1;
@@ -116,6 +139,7 @@
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)didDetectDeviceMotion;
 - (void)disableAnimationForNextIconRotation;
 - (BOOL)disableAppSwitchForcePressDueToHomeButtonForce;
 - (BOOL)dissmissAlertItemsAndSheetsIfPossible;
@@ -141,6 +165,7 @@
 - (BOOL)isBatteryCharging;
 - (BOOL)isConnectedToChargeIncapablePowerSource;
 - (BOOL)isConnectedToUnsupportedChargingAccessory;
+- (BOOL)isConnectedToWirelessInternalAccessory;
 - (BOOL)isFakeStatusBarStyleEffectivelyDoubleHeight:(long long)arg1;
 - (BOOL)isFullyCharged;
 - (BOOL)isHeadsetBatteryCharging;
@@ -150,6 +175,7 @@
 - (void)nudgeIconInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)playChargingChimeIfAppropriate;
 - (void)possiblyWakeForPowerStatusChangeWithUnlockSource:(int)arg1;
+- (void)removeDetachedAccessory:(id)arg1;
 - (void)removeFakeSpringBoardStatusBar;
 - (void)restoreContent;
 - (void)restoreContentAndUnscatterIconsAnimated:(BOOL)arg1;
@@ -163,10 +189,14 @@
 - (void)setHomeScreenBlurProgress:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenDimmingAlpha:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenScale:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setIsAccessoryAnimationAllowed:(BOOL)arg1;
 - (void)setIsConnectedToUnsupportedChargingAccessory:(BOOL)arg1;
+- (void)setLastAttachedAccessory:(id)arg1;
+- (void)setLastDetachedAccessory:(id)arg1;
 - (void)setPointerInteractionsEnabled:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)statusBarOverridesDidChange:(id)arg1;
+- (void)storeAttachedAccessory:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (BOOL)supportsDetailedBatteryCapacity;

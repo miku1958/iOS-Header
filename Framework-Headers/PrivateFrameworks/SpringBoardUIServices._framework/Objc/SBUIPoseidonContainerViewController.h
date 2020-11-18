@@ -53,7 +53,6 @@
 - (void)resetRestToOpen;
 - (void)showCoaching:(BOOL)arg1;
 - (void)startRestToOpenCoaching:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)viewDidLoad;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

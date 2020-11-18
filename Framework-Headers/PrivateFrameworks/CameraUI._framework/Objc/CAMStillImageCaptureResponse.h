@@ -20,6 +20,7 @@
     unsigned long long _burstRepresentedCount;
     UIImage *_imageWellImage;
     long long _captureID;
+    long long _semanticEnhanceScene;
     struct CGSize _finalExpectedPixelSize;
 }
 
@@ -45,13 +46,14 @@
 @property (readonly, copy, nonatomic) NSURL *persistenceURL;
 @property (readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
 @property (readonly, nonatomic) UIImage *placeholderImage;
+@property (readonly, nonatomic) long long semanticEnhanceScene; // @synthesize semanticEnhanceScene=_semanticEnhanceScene;
 @property (readonly, nonatomic) unsigned short sessionIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *stillImageMetadata;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uuid;
 
 - (void).cxx_destruct;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 finalExpectedPixelSize:(struct CGSize)arg9 expectingPairedVideo:(BOOL)arg10 captureID:(long long)arg11;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 finalExpectedPixelSize:(struct CGSize)arg9 expectingPairedVideo:(BOOL)arg10 captureID:(long long)arg11 semanticEnhanceScene:(long long)arg12;
 
 @end
 

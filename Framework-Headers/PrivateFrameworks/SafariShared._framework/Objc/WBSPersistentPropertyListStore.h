@@ -34,6 +34,7 @@
 - (id)dateForKey:(id)arg1;
 - (id)dictionaryForKey:(id)arg1;
 - (id)initWithBackingStoreURL:(id)arg1;
+- (id)initWithBackingStoreURL:(id)arg1 fileResourceValues:(id)arg2;
 - (id)numberForKey:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (void)saveAndCloseStoreSynchronously;

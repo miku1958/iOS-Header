@@ -33,6 +33,7 @@
 + (BOOL)areAnyAccessoriesConfigured;
 + (BOOL)areAnyAppleTVAccessoriesConfigured;
 + (BOOL)areAnyHomePodsConfigured;
++ (BOOL)areAnySmallHomePodsConfigured;
 + (BOOL)areAnySpeakersConfigured;
 + (BOOL)areAnyTelevisionAccessoriesConfigured;
 + (BOOL)areHomesConfigured;

@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
     unsigned int _remoteBandwidthEstimation;
     unsigned int _localBandwidthEstimation;
     BOOL _isFirstInitialRampUpDone;
+    double _statisticsArrivalTime;
+    double _previousStatisticsArrivalTime;
     CDStruct_55dce769 _owrdList;
     BOOL _isOWRDListReady;
     BOOL _isOWRDConstant;
@@ -83,6 +85,7 @@ __attribute__((visibility("hidden")))
     double _lastHighNBDCDTime;
     double _lastEmergencyBasebandRampDownTime;
     int _basebandAdditionalTiersForRampUp;
+    BOOL _basebandAdaptationEnabled;
     int _currentTierIndex;
     int _previousTierIndex;
     unsigned int _targetBitrate;
@@ -130,9 +133,9 @@ __attribute__((visibility("hidden")))
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
 - (int)countDeviationChangeInTierWindow;
 - (void)dealloc;
-- (BOOL)doRateControlWithBasebandStatistics:(CDStruct_56e8fa21)arg1;
-- (BOOL)doRateControlWithStatistics:(CDStruct_56e8fa21)arg1;
-- (BOOL)doRateControlWithVCRCStatistics:(CDStruct_56e8fa21)arg1;
+- (BOOL)doRateControlWithBasebandStatistics:(CDStruct_1a067c5f)arg1;
+- (BOOL)doRateControlWithStatistics:(CDStruct_1a067c5f)arg1;
+- (BOOL)doRateControlWithVCRCStatistics:(CDStruct_1a067c5f)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(BOOL)arg2;
 - (double)getDoubleTimeFromTimestamp:(unsigned int)arg1 timestampTick:(unsigned int)arg2 wrapAroundCounter:(unsigned int)arg3;

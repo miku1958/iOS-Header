@@ -50,6 +50,7 @@
 @property (readonly, getter=isHighResPhotoFormat) BOOL highResPhotoFormat;
 @property (readonly) CDStruct_79c71658 highResStillImageDimensions;
 @property (readonly, getter=isHighResStillImageSupported) BOOL highResStillImageSupported;
+@property (readonly, nonatomic) int intelligentDistortionCorrectionVersion;
 @property (readonly, getter=isIrisSupported) BOOL irisSupported;
 @property (readonly, getter=isIrisVideoStabilizationSupported) BOOL irisVideoStabilizationSupported;
 @property (readonly) BOOL is10bitVideoFormat;
@@ -144,9 +145,11 @@
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isCaptureTimePhotoCurationSupported;
 - (BOOL)isCompatibleWithInfraredFormat:(id)arg1;
+- (BOOL)isGainMapSupported;
 - (BOOL)isStabilizationModeSupported:(int)arg1;
 - (BOOL)isStillImageISPChromaNoiseReductionEnabled;
 - (BOOL)isValidDerivedBravoFormatForUnderlyingFormat:(id)arg1;
+- (BOOL)isWideDigitalFlashAvailableShallowDepthOfFieldEffectsEnabled;
 - (BOOL)ispChromaNoiseReductionEnabled;
 - (float)lowLightVideoAEMaxGain;
 - (int)maxIntegrationTimeOverride;
@@ -157,6 +160,7 @@
 - (int)previewImageQueueSyncStrategy;
 - (id)rawLensShadingCorrection;
 - (int)redEyeReductionVersion;
+- (int)semanticDevelopmentVersion;
 - (int)semanticRenderingVersion;
 - (CDStruct_79c71658)sensorCropDimensions;
 - (int)sensorHDRCompanionIndex;

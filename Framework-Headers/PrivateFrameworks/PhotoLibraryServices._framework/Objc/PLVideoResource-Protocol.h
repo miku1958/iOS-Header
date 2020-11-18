@@ -9,15 +9,19 @@
 @class NSString, NSURL;
 
 @protocol PLVideoResource <NSObject>
++ (BOOL)deviceSupportsHDR;
 - (NSURL *)fileURLIfLocal;
 - (BOOL)hasAssociatedMediaMetadata;
 - (BOOL)isDownloadable;
+- (BOOL)isHDRDerivative;
+- (BOOL)isHDROrSDRDependingOnMasterVideo;
 - (BOOL)isLocallyAvailable;
 - (BOOL)isLocallyGeneratable;
 - (BOOL)isMediumHighQuality;
 - (BOOL)isOriginalVideo;
 - (BOOL)isOriginalVideoComplement;
 - (BOOL)isPlayable;
+- (BOOL)isSDRFallback;
 - (BOOL)isStreamable;
 - (BOOL)matchesOrExceedsQualityLevel:(unsigned int)arg1;
 - (NSString *)uniformTypeIdentifier;

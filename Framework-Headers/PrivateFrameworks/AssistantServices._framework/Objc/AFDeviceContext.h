@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFClockAlarmSnapshot, AFClockTimerSnapshot, AFDeviceContextMetadata, AFLocationSnapshot, AFMediaPlaybackStateSnapshot, AFMultiUserStateSnapshot, AFPeerInfo, NSData, NSMutableDictionary, NSString, NSUUID;
+@class AFClockAlarmSnapshot, AFClockTimerSnapshot, AFDeviceContextMetadata, AFHomeAnnouncementSnapshot, AFLocationSnapshot, AFMediaPlaybackStateSnapshot, AFMultiUserStateSnapshot, AFPeerInfo, NSData, NSMutableDictionary, NSString, NSUUID;
 
 @interface AFDeviceContext : NSObject <NSCopying, NSSecureCoding>
 {
@@ -29,6 +29,8 @@
 @property (readonly, nonatomic) BOOL fromLocalDevice; // @synthesize fromLocalDevice=_fromLocalDevice;
 @property (readonly, nonatomic) long long heardVoiceTrigger;
 @property (readonly, nonatomic) AFDeviceContextMetadata *heardVoiceTriggerMetadata;
+@property (readonly, nonatomic) AFHomeAnnouncementSnapshot *homeAnnouncementSnapshot;
+@property (readonly, nonatomic) AFDeviceContextMetadata *homeAnnouncementSnapshotMetadata;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) AFDeviceContextMetadata *locationMetadata;
 @property (readonly, nonatomic) AFLocationSnapshot *locationSnapshot;

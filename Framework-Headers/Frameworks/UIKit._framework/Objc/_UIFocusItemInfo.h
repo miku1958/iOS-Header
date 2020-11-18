@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
         unsigned int hasResolvedFocusTouchSensitivityStyle:1;
         unsigned int hasResolvedFocusMovementFlippedHorizontally:1;
         unsigned int hasResolvedFocusedRegion:1;
+        unsigned int useFallbackAncestorScroller:1;
     } _flags;
     BOOL _focusMovementFlippedHorizontally;
     NSArray *_ancestorScrollableContainers;
@@ -45,10 +46,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) UIScreen *screen;
 
 + (id)infoWithItem:(id)arg1;
++ (id)infoWithItem:(id)arg1 useFallbackAncestorScroller:(BOOL)arg2;
 + (id)infoWithView:(id)arg1;
 - (void).cxx_destruct;
 - (id)_focusedRegionInCoordinateSpace:(id)arg1;
-- (id)_initWithItem:(id)arg1 containingView:(id)arg2;
+- (id)_initWithItem:(id)arg1 containingView:(id)arg2 useFallbackAncestorScroller:(BOOL)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct CGRect)focusedRectInCoordinateSpace:(id)arg1;
 - (id)init;

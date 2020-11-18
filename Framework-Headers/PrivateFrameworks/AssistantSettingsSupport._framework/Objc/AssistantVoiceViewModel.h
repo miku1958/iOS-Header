@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString;
+@class AFVoiceInfo, NSSet, NSString;
 
 @interface AssistantVoiceViewModel : NSObject
 {
@@ -18,11 +18,15 @@
     long long _genderToSpin;
     long long _genderToCheckmark;
     NSString *_genderGroupFooterText;
+    AFVoiceInfo *_inProgressVoice;
+    AFVoiceInfo *_currentVoice;
 }
 
+@property (strong, nonatomic) AFVoiceInfo *currentVoice; // @synthesize currentVoice=_currentVoice;
 @property (copy, nonatomic) NSString *genderGroupFooterText; // @synthesize genderGroupFooterText=_genderGroupFooterText;
 @property (nonatomic) long long genderToCheckmark; // @synthesize genderToCheckmark=_genderToCheckmark;
 @property (nonatomic) long long genderToSpin; // @synthesize genderToSpin=_genderToSpin;
+@property (strong, nonatomic) AFVoiceInfo *inProgressVoice; // @synthesize inProgressVoice=_inProgressVoice;
 @property (copy, nonatomic) NSString *languageGroupFooterText; // @synthesize languageGroupFooterText=_languageGroupFooterText;
 @property (copy, nonatomic) NSSet *languageOptions; // @synthesize languageOptions=_languageOptions;
 @property (copy, nonatomic) NSString *selectedLanguage; // @synthesize selectedLanguage=_selectedLanguage;

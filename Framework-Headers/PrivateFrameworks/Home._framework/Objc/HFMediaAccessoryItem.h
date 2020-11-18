@@ -63,11 +63,13 @@
 - (id)createControlItems;
 - (id)currentStateActionBuildersForHome:(id)arg1;
 - (id)enableDoorbellChime:(BOOL)arg1;
+- (unsigned long long)homePodVariant;
 - (id)iconDescriptor:(id)arg1;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 homeKitObject:(id)arg2;
 - (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2;
 - (BOOL)isAirPort;
+- (BOOL)isAnnounceEnabled;
 - (BOOL)isAppleTV;
 - (BOOL)isAudioReceiver;
 - (BOOL)isContainedWithinMediaSystem;
@@ -83,6 +85,7 @@
 - (id)room;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)serviceNameComponents;
+- (id)setEnableAnnounce:(BOOL)arg1;
 - (id)settings;
 - (BOOL)supportsAlarmQuickControls;
 - (BOOL)supportsMediaQuickControls;

@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)detectOutOfOrderFeedbackMessage:(CDStruct_de0ff4c0)arg1;
 - (BOOL)getFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
 - (BOOL)getRateControlFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
-- (BOOL)getVCStatisticsFeedbackMessage:(CDStruct_56e8fa21 *)arg1 time:(double)arg2;
+- (BOOL)getVCStatisticsFeedbackMessage:(CDStruct_1a067c5f *)arg1 time:(double)arg2;
 - (id)initWithStatisticsCollector:(id)arg1;
 - (BOOL)processFeedbackMessage:(id)arg1 type:(unsigned int)arg2 metaData:(id)arg3 error:(id *)arg4;
 - (BOOL)processRateControlFeedbackMessage:(CDStruct_de0ff4c0)arg1 type:(unsigned int)arg2 error:(id *)arg3 time:(double)arg4;

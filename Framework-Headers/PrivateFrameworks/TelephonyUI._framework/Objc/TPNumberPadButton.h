@@ -51,7 +51,6 @@
 + (void)resetLocaleIfNeeded;
 + (id)scriptKey;
 + (double)unhighlightedCircleViewAlpha;
-+ (BOOL)useLargeFont;
 + (BOOL)usesBoldAssets;
 + (BOOL)usesButtonSaturationFilters;
 + (BOOL)usesTelephonyGlyphsWhereAvailable;

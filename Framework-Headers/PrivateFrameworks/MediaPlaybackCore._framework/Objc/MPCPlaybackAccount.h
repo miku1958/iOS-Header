@@ -8,7 +8,7 @@
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 
-@class ICMusicSubscriptionStatus, ICUserIdentity, NSString;
+@class ICMusicSubscriptionStatus, ICURLBag, ICUserIdentity, NSString;
 
 @interface MPCPlaybackAccount : NSObject <NSCopying>
 {
@@ -20,9 +20,11 @@
     ICMusicSubscriptionStatus *_subscriptionStatus;
     NSString *_hashedDSID;
     NSString *_storeFrontIdentifier;
+    ICURLBag *_bag;
 }
 
 @property (nonatomic, getter=isActiveAccount) BOOL activeAccount; // @synthesize activeAccount=_activeAccount;
+@property (strong, nonatomic) ICURLBag *bag; // @synthesize bag=_bag;
 @property (readonly, nonatomic) BOOL canAutoPlay;
 @property (readonly, nonatomic, getter=isDelegated) BOOL delegated; // @synthesize delegated=_delegated;
 @property (readonly, nonatomic) BOOL hasCatalogPlaybackCapability;

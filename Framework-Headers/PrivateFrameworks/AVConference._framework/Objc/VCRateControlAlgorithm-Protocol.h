@@ -32,7 +32,7 @@
 @property (readonly, nonatomic) double worstRecentRoundTripTime;
 
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
-- (BOOL)doRateControlWithStatistics:(CDStruct_56e8fa21)arg1;
+- (BOOL)doRateControlWithStatistics:(CDStruct_1a067c5f)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(BOOL)arg2;
 @end

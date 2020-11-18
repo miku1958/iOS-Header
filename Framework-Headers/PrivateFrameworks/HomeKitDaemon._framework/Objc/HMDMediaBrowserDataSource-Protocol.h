@@ -10,8 +10,10 @@
 
 @property (readonly) NSString *currentAccessoryMediaRouteIdentifier;
 @property (readonly) BOOL isAppleMediaAccessory;
+@property (readonly) BOOL requiresHomePodPairing;
 @property (readonly) HMFSystemInfo *systemInfo;
 
 - (HMDUnassociatedAppleMediaAccessory *)createUnassociatedAppleMediaAccessory:(NSString *)arg1 name:(NSString *)arg2 category:(HMAccessoryCategory *)arg3 messageDispatcher:(HMFMessageDispatcher *)arg4;
+- (HMDUnassociatedAppleMediaAccessory *)createUnassociatedHomePodAccessory:(NSString *)arg1 name:(NSString *)arg2 category:(HMAccessoryCategory *)arg3 messageDispatcher:(HMFMessageDispatcher *)arg4;
 @end
 

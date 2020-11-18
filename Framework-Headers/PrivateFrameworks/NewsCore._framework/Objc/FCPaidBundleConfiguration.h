@@ -132,6 +132,7 @@
 + (id)defaultVanityURLMappingResourceIDByLocalizedStorefrontID;
 + (id)renewalLandingPageByLocalizedStorefrontID;
 - (void).cxx_destruct;
+- (BOOL)arePaywallConfigsEqualToOtherPaidBundleConfig:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)defaultAudioPaywallConfigs;
 - (id)defaultMagazineGenres;
