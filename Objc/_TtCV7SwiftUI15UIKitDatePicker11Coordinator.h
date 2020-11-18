@@ -8,7 +8,8 @@
 
 @class MISSING_TYPE;
 
-@interface _TtCV7SwiftUIP33_7647B8DD4181297A53FB830E389DD7E015UIKitDatePicker11Coordinator : _TtC7SwiftUI23PlatformViewCoordinator
+__attribute__((visibility("hidden")))
+@interface _TtCV7SwiftUI15UIKitDatePicker11Coordinator : _TtC7SwiftUI23PlatformViewCoordinator
 {
     MISSING_TYPE *configuration;
 }

@@ -8,7 +8,7 @@
 
 @class MISSING_TYPE;
 
-@interface _TtC7SwiftUIP33_FD2B36BBCDC44C2A4C267987C06FEA7111Coordinator : _TtC7SwiftUI23PlatformViewCoordinator
+@interface _TtC7SwiftUIP33_F1E9485F33A623EEFA647AA5EC4AE09411Coordinator : _TtC7SwiftUI23PlatformViewCoordinator
 {
     MISSING_TYPE *configuration;
 }

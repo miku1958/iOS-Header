@@ -53,7 +53,7 @@
     MISSING_TYPE *cachedIdealSize;
     MISSING_TYPE *cachedSizeThatFits;
     MISSING_TYPE *sizeThatFitsObserver;
-    MISSING_TYPE *outputs;
+    MISSING_TYPE *requestedOutputs;
     MISSING_TYPE *disabledOutputs;
     MISSING_TYPE *needsFocusUpdate;
     MISSING_TYPE *pendingTransactions;

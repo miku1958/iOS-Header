@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <SwiftUI/NSCopying-Protocol.h>
+
 @class MISSING_TYPE, NSString;
 
-@interface _TtC7SwiftUIP33_C881219A53D4B960D55BEB57A34CE5C919ViewIdentityWrapper : NSObject
+@interface _TtC7SwiftUIP33_32FACBD077E80DBEC9C9CF82638EFBF514CursorIdentity : NSObject <NSCopying>
 {
-    MISSING_TYPE *id;
+    MISSING_TYPE *base;
+    MISSING_TYPE *identifier;
 }
 
 @property (nonatomic, readonly) NSString *description;
 @property (nonatomic, readonly) long long hash;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(void *)arg1;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

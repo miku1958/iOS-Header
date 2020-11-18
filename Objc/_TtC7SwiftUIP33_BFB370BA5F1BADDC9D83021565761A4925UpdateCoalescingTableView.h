@@ -11,10 +11,17 @@
 @interface _TtC7SwiftUIP33_BFB370BA5F1BADDC9D83021565761A4925UpdateCoalescingTableView : UITableView
 {
     MISSING_TYPE *visibleCellsUpdate;
+    MISSING_TYPE *previousHorizontalMargin;
+    MISSING_TYPE *bridgedState;
+    MISSING_TYPE *viewGraph;
 }
 
+@property (nonatomic) struct CGRect frame;
+
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 
