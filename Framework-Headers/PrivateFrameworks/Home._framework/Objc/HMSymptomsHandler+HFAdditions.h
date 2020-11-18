@@ -12,7 +12,7 @@
 
 + (CDUnknownBlockType)hf_symptomArraySortComparator;
 + (id)hf_symptomTypesSortedByPriority;
-+ (void)load;
++ (void)initialize;
 - (id)hf_fakeSymptomsImplementationUsedForDebuggingPleaseDontTouchThisItIsFragileSwizzlingIsBadMKay;
 - (id)hf_symptomsSortedByPriority;
 @end

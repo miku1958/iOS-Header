@@ -22,13 +22,14 @@
     NSArray *_components;
     HMDApplicationData *_appData;
     HMDAccessorySettingGroup *_rootSettings;
+    HMDMediaSession *_mediaSession;
+    NSString *_configuredName;
     NSUUID *_uuid;
     HMDHome *_home;
     NSArray *_accessories;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
-    HMDMediaSession *_mediaSession;
     HMFTimer *_auditSettingsTimer;
     HMFTimer *_fixupSettingsTimer;
     HMDMediaSystemSymptomHandler *_symptomsHandler;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (strong, nonatomic) HMFTimer *auditSettingsTimer; // @synthesize auditSettingsTimer=_auditSettingsTimer;
 @property (strong, nonatomic) NSArray *components; // @synthesize components=_components;
+@property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HMFTimer *fixupSettingsTimer; // @synthesize fixupSettingsTimer=_fixupSettingsTimer;
@@ -108,6 +110,7 @@
 - (void)timerDidFire:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (void)unconfigureMediaSystemComponents;
 - (void)unconfigureMediaSystemComponents:(id)arg1;
 - (void)updateMediaSystemSettingsGroup;
 - (id)url;

@@ -6,14 +6,18 @@
 
 #import <Foundation/NSObject.h>
 
+@class Protocol;
+
 @interface MRWeakProxy : NSObject
 {
     id _object;
+    Protocol *_protocol;
 }
 
 @property (weak, nonatomic) id object; // @synthesize object=_object;
+@property (strong, nonatomic) Protocol *protocol; // @synthesize protocol=_protocol;
 
-+ (id)weakProxyWithObject:(id)arg1;
++ (id)weakProxyWithObject:(id)arg1 protocol:(id)arg2;
 - (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
 - (unsigned long long)hash;

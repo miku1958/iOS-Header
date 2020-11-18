@@ -12,11 +12,11 @@
 {
 }
 
-@property (readonly, nonatomic) NSString *endpointIdentifier;
-@property (readonly, nonatomic) NSString *outputDeviceIdentifier;
+@property (readonly, nonatomic) NSString *endpointUID;
+@property (readonly, nonatomic) NSString *outputDeviceUID;
 @property (readonly, nonatomic) float volume;
 
-- (id)initWithVolume:(float)arg1 endpointIdentifier:(id)arg2 outputDeviceIdentifier:(id)arg3;
+- (id)initWithVolume:(float)arg1 endpointUID:(id)arg2 outputDeviceUID:(id)arg3;
 - (unsigned long long)type;
 
 @end

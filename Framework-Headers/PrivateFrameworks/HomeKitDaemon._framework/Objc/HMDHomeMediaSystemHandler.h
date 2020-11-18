@@ -40,6 +40,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addMediaSystem:(id)arg1;
+- (id)_currentMediaSystemIfPrimary;
 - (void)_handleAddMediaSystem:(id)arg1;
 - (void)_handleAddMediaSystemModel:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveMediaSystem:(id)arg1;
@@ -47,6 +48,7 @@
 - (void)_handleUpdateMediaSystemModel:(id)arg1 message:(id)arg2;
 - (void)_registerForMessages;
 - (void)_removeMediaSystem:(id)arg1;
+- (void)_userAssistantAccessControlDidUpdate:(id)arg1 accessories:(id)arg2;
 - (id)backingStoreObjects;
 - (void)configure:(id)arg1 queue:(id)arg2 messageDispatcher:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;

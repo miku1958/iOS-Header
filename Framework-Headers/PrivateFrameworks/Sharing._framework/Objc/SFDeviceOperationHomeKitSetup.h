@@ -10,7 +10,7 @@
 #import <Sharing/HMHomeManagerDelegate-Protocol.h>
 #import <Sharing/HMHomeManagerDelegatePrivate-Protocol.h>
 
-@class HMAccessory, HMAccessoryBrowser, HMDeviceSetupOperation, HMHome, HMHomeManager, HMRoom, NSDictionary, NSString, TROperationQueue, TRSession;
+@class ACAccount, HMAccessory, HMAccessoryBrowser, HMDeviceSetupOperation, HMHome, HMHomeManager, HMRoom, NSDictionary, NSString, TROperationQueue, TRSession;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceOperationHomeKitSetup : NSObject <HMAccessoryBrowserDelegate, HMHomeManagerDelegate, HMHomeManagerDelegatePrivate>
@@ -44,6 +44,7 @@
     HMHome *_homeKitSelectedHome;
     NSString *_homeKitSelectedRoomName;
     NSString *_iTunesAccountID;
+    ACAccount *_iTunesAccount;
     double _metricNonUserSeconds;
     double _metricUserSeconds;
     CDUnknownBlockType _pauseHandler;
@@ -63,6 +64,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *homeKitSelectedHome; // @synthesize homeKitSelectedHome=_homeKitSelectedHome;
 @property (readonly, copy, nonatomic) NSString *homeKitSelectedRoomName; // @synthesize homeKitSelectedRoomName=_homeKitSelectedRoomName;
+@property (strong, nonatomic) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 @property (copy, nonatomic) NSString *iTunesAccountID; // @synthesize iTunesAccountID=_iTunesAccountID;
 @property (nonatomic) BOOL keyExchangeOnly; // @synthesize keyExchangeOnly=_keyExchangeOnly;
 @property (readonly, nonatomic) double metricNonUserSeconds; // @synthesize metricNonUserSeconds=_metricNonUserSeconds;
@@ -99,6 +101,7 @@
 - (void)_runInit;
 - (void)_runPersonalRequestsStart;
 - (void)_startTimeout:(double)arg1;
+- (void)_updateAccount;
 - (void)_updateHomeHasHomePod;
 - (void)accessoryBrowser:(id)arg1 didFindNewAccessory:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didRemoveNewAccessory:(id)arg2;

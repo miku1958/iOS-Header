@@ -19,6 +19,8 @@
     long long _shuffleMode;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
+    NSString *_siriAssetInfo;
+    NSString *_siriReferenceIdentifier;
 }
 
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
@@ -26,6 +28,8 @@
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
 @property (nonatomic) BOOL preventAutomaticPlayback; // @synthesize preventAutomaticPlayback=_preventAutomaticPlayback;
 @property (nonatomic) long long shuffleMode; // @synthesize shuffleMode=_shuffleMode;
+@property (copy, nonatomic) NSString *siriAssetInfo; // @synthesize siriAssetInfo=_siriAssetInfo;
+@property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property (readonly, nonatomic) id<MPCPlaybackIntentDataSource> tracklistDataSource;
 @property (nonatomic) long long tracklistSource; // @synthesize tracklistSource=_tracklistSource;
 @property (strong, nonatomic) id<NSSecureCoding> tracklistToken; // @synthesize tracklistToken=_tracklistToken;

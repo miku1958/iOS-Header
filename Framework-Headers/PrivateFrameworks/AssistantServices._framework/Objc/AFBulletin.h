@@ -14,6 +14,7 @@
 {
     BOOL _read;
     BOOL _allDay;
+    BOOL _previewRestricted;
     BBBulletin *_bbBulletin;
     NSString *_bulletinID;
     NSString *_recordID;
@@ -41,6 +42,7 @@
 @property (readonly, copy, nonatomic) NSArray *intentIDs; // @synthesize intentIDs=_intentIDs;
 @property (readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, copy, nonatomic) NSString *modalAlertContentMessage; // @synthesize modalAlertContentMessage=_modalAlertContentMessage;
+@property (readonly, nonatomic) BOOL previewRestricted; // @synthesize previewRestricted=_previewRestricted;
 @property (readonly, copy, nonatomic) NSString *publisherBulletinID; // @synthesize publisherBulletinID=_publisherBulletinID;
 @property (nonatomic, getter=isRead) BOOL read; // @synthesize read=_read;
 @property (readonly, copy, nonatomic) NSDate *recencyDate; // @synthesize recencyDate=_recencyDate;

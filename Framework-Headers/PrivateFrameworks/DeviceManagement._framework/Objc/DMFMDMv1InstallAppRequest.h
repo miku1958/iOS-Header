@@ -26,6 +26,7 @@
 @property (copy, nonatomic) NSString *redemptionCode; // @synthesize redemptionCode=_redemptionCode;
 
 + (BOOL)supportsSecureCoding;
++ (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

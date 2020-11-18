@@ -14,6 +14,7 @@
     struct __CFDictionary *_rollAttributes;
     BOOL _sync;
     BOOL _roll;
+    BOOL _returnedExistingIdentity;
     int _retryLeftCount;
     struct _PCSIdentitySetData *_set;
     struct __PCSLogContext *_log;
@@ -46,6 +47,7 @@
 @property (readonly) PCSMTT *mtt; // @synthesize mtt=_mtt;
 @property struct _PCSIdentityData *relocateIdentity; // @synthesize relocateIdentity=_relocateIdentity;
 @property int retryLeftCount; // @synthesize retryLeftCount=_retryLeftCount;
+@property BOOL returnedExistingIdentity; // @synthesize returnedExistingIdentity=_returnedExistingIdentity;
 @property BOOL roll; // @synthesize roll=_roll;
 @property struct _PCSIdentityData *rollIdentity; // @synthesize rollIdentity=_rollIdentity;
 @property (strong) NSData *rollItemReference; // @synthesize rollItemReference=_rollItemReference;

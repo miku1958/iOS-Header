@@ -15,6 +15,7 @@
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    unsigned int _volumeCapabilities;
     NSMutableArray *_nowPlayingClients;
     NSMutableDictionary *_transactionCallbacks;
     _MROriginProtobuf *_origin;
@@ -22,9 +23,11 @@
 
 @property (copy, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property (readonly, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
+@property (nonatomic) unsigned int volumeCapabilities;
 
 - (void).cxx_destruct;
 - (void)_handleDeviceInfoDidChange:(id)arg1;
+- (void)_handleVolumeControlCapabilitiesDidChange:(id)arg1;
 - (id)debugDescription;
 - (id)existingNowPlayingClientRequestsForPlayerPath:(id)arg1;
 - (id)initWithOrigin:(id)arg1;

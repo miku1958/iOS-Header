@@ -22,6 +22,8 @@
 @property (readonly, nonatomic) long long volumeWarningState;
 
 - (void)adjustVolumeValue:(float)arg1;
+- (void)getVolumeValueWithCompletion:(void (^)(float))arg1;
+- (void)initializeVolume;
 - (void)reload;
 - (void)reloadWarning;
 @end

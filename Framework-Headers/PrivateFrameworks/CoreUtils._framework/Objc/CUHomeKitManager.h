@@ -83,7 +83,7 @@
 
 - (void).cxx_destruct;
 - (void)_activate;
-- (id)_bestPairingIdentity;
+- (id)_bestPairingIdentityAndLabel:(id *)arg1;
 - (id)_cuPairingIdentityWithHMFPairingIdentity:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)_findPairedPeer:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_getPairingIdentityForAccessoryWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -123,6 +123,7 @@
 - (id)init;
 - (void)invalidate;
 - (void)mediaSystem:(id)arg1 didUpdateComponents:(id)arg2;
+- (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (void)user:(id)arg1 didUpdateAssistantAccessControl:(id)arg2 forHome:(id)arg3;
 - (void)user:(id)arg1 didUpdatePairingIdentity:(id)arg2;
 

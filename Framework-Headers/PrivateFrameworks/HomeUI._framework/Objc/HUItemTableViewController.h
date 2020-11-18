@@ -18,6 +18,8 @@
 @interface HUItemTableViewController : HUTableViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
 {
     BOOL _wantsPreferredContentSize;
+    BOOL _viewHasAppeared;
+    BOOL _hasForcedLoadingVisibleCells;
     BOOL _hasFinishedInitialLoad;
     BOOL _visibilityUpdatesEnabled;
     HFItemManager *_itemManager;
@@ -34,12 +36,14 @@
 @property (strong, nonatomic) NSMutableArray *foregroundUpdateFutures; // @synthesize foregroundUpdateFutures=_foregroundUpdateFutures;
 @property (strong, nonatomic) HUGridLayoutOptions *gridLayoutOptions; // @synthesize gridLayoutOptions=_gridLayoutOptions;
 @property (nonatomic) BOOL hasFinishedInitialLoad; // @synthesize hasFinishedInitialLoad=_hasFinishedInitialLoad;
+@property (nonatomic) BOOL hasForcedLoadingVisibleCells; // @synthesize hasForcedLoadingVisibleCells=_hasForcedLoadingVisibleCells;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HFItem *hu_presentedItem;
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property (readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
+@property (nonatomic) BOOL viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 @property (nonatomic) BOOL visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
 @property (nonatomic) BOOL wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
 
@@ -56,6 +60,7 @@
 - (void)_updateTableHeaderAndFooter;
 - (void)_updateTitle;
 - (id)_visibleCellForItem:(id)arg1;
+- (BOOL)alwaysUseDeltaTableViewUpdatesAfterViewHasAppeared;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
 - (BOOL)automaticallyUpdatesViewControllerTitle;
 - (BOOL)bypassInitialItemUpdateReload;

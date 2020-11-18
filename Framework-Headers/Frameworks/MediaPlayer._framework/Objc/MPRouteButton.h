@@ -34,6 +34,7 @@
 @property (readonly, copy, nonatomic) NSString *routeTitle; // @synthesize routeTitle=_routeTitle;
 
 - (void).cxx_destruct;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

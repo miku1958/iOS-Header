@@ -22,7 +22,7 @@
 + (id)_predicateForTypes:(id)arg1;
 + (id)_propertiesForCodableAuthorization;
 + (BOOL)_resetAuthorizationStatusesWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (BOOL)_setAuthorizationStatuses:(id)arg1 authorizationRequests:(id)arg2 sourceEntity:(id)arg3 dateModified:(id)arg4 syncProvenance:(long long)arg5 objectAnchor:(long long)arg6 database:(id)arg7 error:(id *)arg8;
++ (BOOL)_setAuthorizationStatuses:(id)arg1 authorizationRequests:(id)arg2 sourceEntity:(id)arg3 dateModified:(id)arg4 syncProvenance:(long long)arg5 objectAnchor:(long long)arg6 profile:(id)arg7 database:(id)arg8 error:(id *)arg9;
 + (id)authorizationRecordsBySourceForType:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)authorizationRecordsByTypeForBundleIdentifier:(id)arg1 types:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)authorizationStatusesForBundleIdentifier:(id)arg1 types:(id)arg2 profile:(id)arg3 error:(id *)arg4;

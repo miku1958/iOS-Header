@@ -15,7 +15,7 @@
 
 + (id)sharedLogger;
 - (id)init;
-- (void)logMessage:(id)arg1 protocolMessage:(id)arg2;
+- (void)logMessage:(id)arg1 client:(id)arg2 protocolMessage:(id)arg3;
 
 @end
 

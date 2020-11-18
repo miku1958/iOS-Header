@@ -35,7 +35,7 @@
 @property (copy, nonatomic) NSString *_title; // @synthesize _title=__title;
 @property (copy, nonatomic) NSString *_topic; // @synthesize _topic=__topic;
 @property (strong, nonatomic) NSURL *_universalLinkURL; // @synthesize _universalLinkURL=__universalLinkURL;
-@property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (nonatomic) long long authorizationStatus;
 @property (copy, nonatomic) NSString *contentStoreIdentifier;
 @property (readonly, nonatomic) CLSActivity *currentActivity;

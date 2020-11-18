@@ -29,6 +29,7 @@
     SFService *_sfService;
     SFSession *_sfSession;
     SFSiriClient *_siriClient;
+    BOOL _siriDidDeviceSetup;
     SFSiriDeviceSetupGreetingDetails *_siriGreetingDetails;
     BOOL _siriHeardWhatCanYouDo;
     BOOL _wifiSetupEnabled;

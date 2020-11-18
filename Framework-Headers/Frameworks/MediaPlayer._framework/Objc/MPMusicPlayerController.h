@@ -25,6 +25,7 @@
     BOOL _hasPreparedToPlay;
     MPMediaItem *_pendingNowPlayingItem;
     NSObject<OS_dispatch_queue> *_pendingPrepareCalloutQueue;
+    BOOL _legacyClient;
     MPMusicPlayerQueueDescriptor *_queueDescriptor;
     MPVolumeController *_volumeController;
     MPRequestResponseController *_requestController;
@@ -37,6 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long indexOfNowPlayingItem;
 @property (readonly, nonatomic) BOOL isPreparedToPlay;
+@property (readonly, nonatomic, getter=isLegacyClient) BOOL legacyClient; // @synthesize legacyClient=_legacyClient;
 @property (copy, nonatomic) MPMediaItem *nowPlayingItem;
 @property (readonly, nonatomic) long long playbackState;
 @property (strong, nonatomic) MPMusicPlayerQueueDescriptor *queueDescriptor; // @synthesize queueDescriptor=_queueDescriptor;

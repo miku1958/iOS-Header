@@ -21,6 +21,7 @@
     int _personalDeviceState;
     int _personalRequestsState;
     int _mediaSystemRoleEffective;
+    NSString *_deviceColor;
     NSString *_groupID;
     NSUUID *_homeKitIdentifier;
     NSString *_identifier;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) CUBonjourDevice *bonjourDevice; // @synthesize bonjourDevice=_bonjourDevice;
 @property (nonatomic) BOOL changed; // @synthesize changed=_changed;
 @property (nonatomic) BOOL daemon; // @synthesize daemon=_daemon;
+@property (copy, nonatomic) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
 @property (readonly, copy, nonatomic) NSString *effectiveIdentifier;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;

@@ -15,43 +15,50 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_connectionHandlerOperationQueue;
     BOOL _registeredForConnectionStateDidChangeNotifications;
     NSTimer *_connectionTimeoutTimer;
+    BOOL _outputDevicesDidChangeNotificationScheduled;
+    BOOL _proxyGroupPlayer;
+    long long _connectionType;
     NSString *_localizedName;
     NSString *_uniqueIdentifier;
 }
 
+@property (readonly, nonatomic) BOOL canModifyGroupMembership;
+@property (readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
 @property (readonly, nonatomic) _MRAVEndpointDescriptorProtobuf *descriptor;
 @property (readonly, nonatomic) MRAVOutputDevice *designatedGroupLeader;
 @property (readonly, nonatomic) MRExternalDevice *externalDevice;
-@property (readonly, nonatomic) NSString *instanceIdentifier;
-@property (readonly, nonatomic) BOOL isProxyGroupPlayer;
-@property (readonly, nonatomic, getter=isLocalEndpoint) BOOL localEndpoint;
 @property (strong, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (readonly, nonatomic) unsigned long long logicalOutputDeviceCount;
+@property (readonly, nonatomic) NSArray *outputDeviceUIDs;
 @property (readonly, nonatomic) NSArray *outputDevices;
+@property (nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
 @property (readonly, nonatomic) NSString *shortDescription;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
++ (void)_modifyOutputDevices:(id)arg1 inGroup:(id)arg2 queue:(id)arg3 modifyDevices:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
++ (id)_notificationSerialQueue;
 + (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
 - (void).cxx_destruct;
 - (void)_callAllCompletionHandlersWithError:(id)arg1;
-- (void)_connectToExternalDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_externalDeviceConnectionStateDidChangeNotification:(id)arg1;
 - (id)_init;
 - (void)_requestSharedAudioPresentationOutputContextModificationWithAddingDevices:(id)arg1 removingDevices:(id)arg2 settingDevices:(id)arg3 replyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (unsigned long long)_volumeControlMode;
 - (void)addOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)connectToExternalDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)containsOutputDevice:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isVolumeControlAvailable;
+- (id)outputDeviceUIDsMatchingPredicate:(CDUnknownBlockType)arg1;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)outputDevicesMatchingPredicate:(CDUnknownBlockType)arg1;
+- (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)scheduleEndpointOutputDevicesDidChangeNotification;
 - (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setVolume:(float)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)volumeControlCapabilitiesForOutputDevice:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)volumeControlCapabilitiesWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)volumeWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

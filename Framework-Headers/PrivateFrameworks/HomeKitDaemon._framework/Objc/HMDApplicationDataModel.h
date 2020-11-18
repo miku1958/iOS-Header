@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSDictionary *appDataDictionary; // @dynamic appDataDictionary;
 
 + (id)properties;
++ (id)schemaHashRoot;
 
 @end
 

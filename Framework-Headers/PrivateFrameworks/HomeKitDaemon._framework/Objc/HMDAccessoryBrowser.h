@@ -12,23 +12,27 @@
 #import <HomeKitDaemon/HMDAccessoryBrowserProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDAuthServerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDMediaBrowserDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDWACAccessoryConfigurationDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDWACBrowserDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDWatchSystemStateDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HAPAccessoryServerBrowserRelay, HMDAuthServer, HMDHomeManager, HMDMediaBrowser, HMFMessageDispatcher, HMFTimer, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
+@class HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HAPAccessoryServerBrowserRelay, HMDAuthServer, HMDHomeManager, HMDMediaBrowser, HMDUnassociatedWACAccessory, HMDWACBrowser, HMFMessageDispatcher, HMFTimer, NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
 @protocol HMDAccessoryBrowserManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDAccessoryBrowser : HMFObject <HAPAccessoryServerBrowserDelegate, HAPAccessoryServerDelegate, HMFMessageReceiver, HMFTimerDelegate, HMDMediaBrowserDelegate, HMDWatchSystemStateDelegate, HMDAuthServerDelegate, HMFLogging, HMDAccessoryBrowserProtocol, HMDAccessoryBrowserHapProtocol>
+@interface HMDAccessoryBrowser : HMFObject <HAPAccessoryServerBrowserDelegate, HAPAccessoryServerDelegate, HMFMessageReceiver, HMFTimerDelegate, HMDMediaBrowserDelegate, HMDWACBrowserDelegate, HMDWACAccessoryConfigurationDelegate, HMDWatchSystemStateDelegate, HMDAuthServerDelegate, HMFLogging, HMDAccessoryBrowserProtocol, HMDAccessoryBrowserHapProtocol>
 {
     NSMutableSet *_unpairedHAPAccessories;
     NSMutableSet *_unassociatedMediaAccessories;
     NSMutableSet *_deviceSetupMediaAccessories;
+    NSMutableSet *_unassociatedWACAccessories;
     NSMutableSet *_mediaAccessoryControlConnections;
     BOOL _browseForMediaAccessories;
     BOOL _appIsInForeground;
     BOOL _activeSiriCommand;
+    HMDUnassociatedWACAccessory *_accessoryPerformingWAC;
     HAPAccessoryServerBrowserRelay *_relayAccessoryServerBrowser;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
@@ -43,6 +47,7 @@
     HAPAccessoryServerBrowserIP *_ipAccessoryServerBrowser;
     HAPAccessoryServerBrowserBTLE *_btleAccessoryServerBrowser;
     HMDMediaBrowser *_mediaBrowser;
+    HMDWACBrowser *_wacBrowser;
     HMDAuthServer *_authServer;
     HMFTimer *_stopReprovisioningTimer;
     HMFTimer *_stopBrowsingAccessoriesNeedingReprovisioningTimer;
@@ -58,6 +63,7 @@
     NSMutableSet *_discoveredAccessoryServerIdentifiers;
 }
 
+@property (strong, nonatomic, getter=getActiveWACSession, setter=setActiveWACSession:) HMDUnassociatedWACAccessory *accessoryPerformingWAC; // @synthesize accessoryPerformingWAC=_accessoryPerformingWAC;
 @property (strong, nonatomic) NSMutableArray *accessoryServerBrowsers; // @synthesize accessoryServerBrowsers=_accessoryServerBrowsers;
 @property (nonatomic) BOOL activeSiriCommand; // @synthesize activeSiriCommand=_activeSiriCommand;
 @property (nonatomic) BOOL appIsInForeground; // @synthesize appIsInForeground=_appIsInForeground;
@@ -97,13 +103,12 @@
 @property (readonly, nonatomic) NSArray *unassociatedMediaAccessories;
 @property (readonly, nonatomic) NSArray *unpairedHAPAccessories;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (strong, nonatomic) HMDWACBrowser *wacBrowser; // @synthesize wacBrowser=_wacBrowser;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)__addMediaAccessoryControlObserver:(id)arg1;
-- (void)__evaluateStartDiscoveringAssociatedMediaAccessories;
-- (void)__evaluateStopDiscoveringAssociatedMediaAccessories;
 - (BOOL)__isConnectionBeingObserved:(id)arg1;
 - (BOOL)__isCurrentDevicePrimaryResident;
 - (BOOL)__isMediaAccessoryControlRequested;
@@ -216,6 +221,7 @@
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)addUnassociatedAccessory:(id)arg1 forDeviceSetup:(BOOL)arg2;
 - (void)addUnassociatedMediaAccessory:(id)arg1 forDeviceSetup:(BOOL)arg2;
+- (void)addUnassociatedWACAccessory:(id)arg1;
 - (void)addUnpairedAccessoryServer:(id)arg1 identifier:(id)arg2;
 - (void)addUnpairedHAPAccessory:(id)arg1;
 - (void)browser:(id)arg1 didAddAdvertisements:(id)arg2;
@@ -266,9 +272,12 @@
 - (void)registerProgressHandler:(CDUnknownBlockType)arg1 unpairedAccessoryUUID:(id)arg2;
 - (void)removeDelegate:(id)arg1;
 - (void)removeUnassociatedAccessory:(id)arg1;
+- (void)removeUnassociatedAccessoryWithIdentifier:(id)arg1;
 - (void)removeUnassociatedMediaAccessory:(id)arg1;
+- (void)removeUnassociatedWACAccessory:(id)arg1;
 - (void)removeUnpairedHAPAccessory:(id)arg1;
 - (void)reprovisionAccessoryWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)requestPermissionToAssociateWACAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetConfiguration;
 - (void)resurrectAccessoryServer:(id)arg1;
 - (void)retrieveCurrentStateForIdentifer:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -281,9 +290,12 @@
 - (void)timerDidFire:(id)arg1;
 - (void)tombstoneAccessoryServer:(id)arg1;
 - (id)unassociatedHAPAccessories;
+- (void)unassociatedWACAccessoryDidFinishAssociation:(id)arg1 withError:(id)arg2;
+- (void)unassociatedWACAccessoryDidStartAssociation:(id)arg1;
 - (id)unpairedAccessoryWithUUID:(id)arg1;
 - (void)updateBroadcastKeyForIdentifer:(id)arg1 key:(id)arg2 keyUpdatedStateNumber:(id)arg3 keyUpdatedTime:(double)arg4;
 - (void)updateStateForIdentifier:(id)arg1 stateNumber:(id)arg2;
+- (void)updateUnassociatedWACAccessory:(id)arg1;
 
 @end
 

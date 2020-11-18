@@ -39,7 +39,6 @@
 - (id)dumpDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 device:(id)arg2 messageDispatcher:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 - (id)logIdentifier;
 

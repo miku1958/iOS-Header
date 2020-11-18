@@ -6,19 +6,19 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDCloudGroupChange, HMDCloudShareGroup, NSArray, NSMutableArray;
+@class HMDCloudGroupChange, HMDCloudShareGroup, NSArray, NSMutableSet;
 
 @interface HMDCloudShareGroupChange : HMFObject
 {
     HMDCloudGroupChange *_cloudGroupChange;
     HMDCloudShareGroup *_cloudShareGroup;
-    NSMutableArray *_changedObjectIDs;
-    NSMutableArray *_changedRecordNames;
+    NSMutableSet *_changedObjectIDs;
+    NSMutableSet *_changedRecordNames;
 }
 
 @property (readonly, nonatomic) NSArray *allTransactionStoreRowIDs;
-@property (strong, nonatomic) NSMutableArray *changedObjectIDs; // @synthesize changedObjectIDs=_changedObjectIDs;
-@property (strong, nonatomic) NSMutableArray *changedRecordNames; // @synthesize changedRecordNames=_changedRecordNames;
+@property (strong, nonatomic) NSMutableSet *changedObjectIDs; // @synthesize changedObjectIDs=_changedObjectIDs;
+@property (strong, nonatomic) NSMutableSet *changedRecordNames; // @synthesize changedRecordNames=_changedRecordNames;
 @property (readonly, weak, nonatomic) HMDCloudGroupChange *cloudGroupChange; // @synthesize cloudGroupChange=_cloudGroupChange;
 @property (readonly, weak, nonatomic) HMDCloudShareGroup *cloudShareGroup; // @synthesize cloudShareGroup=_cloudShareGroup;
 @property (readonly, nonatomic) BOOL hasValidChanges;
@@ -28,7 +28,6 @@
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (void)_addChange:(id)arg1;
-- (void)_determineDeletesFromCache:(CDUnknownBlockType)arg1;
 - (void)addChange:(id)arg1 setAsProcessing:(BOOL)arg2;
 - (void)addChangeWithDeletedRecordID:(id)arg1;
 - (void)addChangeWithObjectChange:(id)arg1;
@@ -47,6 +46,7 @@
 - (BOOL)isRootRecord:(id)arg1;
 - (BOOL)isRootRecordName:(id)arg1;
 - (BOOL)isRootRecordRequired;
+- (void)loadCloudChangeTreeFromCache:(CDUnknownBlockType)arg1;
 - (void)loadCloudRecordsAndDetermineDeletesFromCache:(CDUnknownBlockType)arg1;
 - (void)loadCloudRecordsFromCache:(CDUnknownBlockType)arg1;
 - (BOOL)moreChangesToProcess;

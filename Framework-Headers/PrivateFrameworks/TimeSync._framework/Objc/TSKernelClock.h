@@ -6,6 +6,8 @@
 
 #import <TimeSync/TSClock.h>
 
+@class __TSKernelClockNotification;
+
 @interface TSKernelClock : TSClock
 {
     unsigned int _service;
@@ -13,6 +15,7 @@
     struct IONotificationPort *_notificationPort;
     unsigned int _interestNotification;
     BOOL _serviceIsAlive;
+    __TSKernelClockNotification *_clockForNotification;
 }
 
 @property (readonly, nonatomic) unsigned int connection; // @dynamic connection;
@@ -28,6 +31,7 @@
 + (unsigned int)serviceForClockIdentifier:(unsigned long long)arg1;
 - (void)_handleInterestNotification:(unsigned int)arg1 withArgument:(void *)arg2;
 - (void)_handleNotification:(unsigned int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
+- (int)_lockState;
 - (id)clockName;
 - (unsigned long long)convertFromDomainIntervalToMachAbsoluteInterval:(unsigned long long)arg1;
 - (BOOL)convertFromDomainTime:(unsigned long long *)arg1 toMachAbsoluteTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
@@ -41,7 +45,6 @@
 - (BOOL)getRateRatioNumerator:(unsigned long long *)arg1 denominator:(unsigned long long *)arg2 machAnchor:(unsigned long long *)arg3 andDomainAnchor:(unsigned long long *)arg4 withError:(id *)arg5;
 - (double)hostRateRatio;
 - (id)initWithClockIdentifier:(unsigned long long)arg1;
-- (int)lockState;
 - (BOOL)registerAsyncCallback;
 - (void)setServiceIsAlive:(BOOL)arg1;
 

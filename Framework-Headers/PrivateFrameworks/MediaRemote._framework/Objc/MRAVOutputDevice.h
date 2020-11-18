@@ -11,10 +11,16 @@
 @interface MRAVOutputDevice : NSObject
 {
     BOOL _canAccessRemoteAssets;
+    BOOL _canAccessAppleMusic;
+    BOOL _canAccessiCloudMusicLibrary;
     BOOL _remoteControllable;
     BOOL _groupLeader;
+    BOOL _groupContainsGroupLeader;
+    BOOL _airPlayReceiverSessionActive;
     BOOL _groupable;
+    BOOL _proxyGroupPlayer;
     BOOL _canRelayCommunicationChannel;
+    BOOL _supportsBufferedAirPlay;
     BOOL _deviceGroupable;
     BOOL _pickedOnPairedDevice;
     BOOL _hasBatteryLevel;
@@ -29,6 +35,7 @@
     NSString *_name;
     NSString *_uid;
     NSString *_modelID;
+    NSString *_firmwareVersion;
     NSString *_groupID;
     NSString *_logicalDeviceID;
     NSData *_MACAddress;
@@ -39,15 +46,20 @@
 }
 
 @property (readonly, nonatomic) NSData *MACAddress; // @synthesize MACAddress=_MACAddress;
+@property (readonly, nonatomic, getter=isAirPlayReceiverSessionActive) BOOL airPlayReceiverSessionActive; // @synthesize airPlayReceiverSessionActive=_airPlayReceiverSessionActive;
 @property (readonly, nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
+@property (readonly, nonatomic) BOOL canAccessAppleMusic; // @synthesize canAccessAppleMusic=_canAccessAppleMusic;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
+@property (readonly, nonatomic) BOOL canAccessiCloudMusicLibrary; // @synthesize canAccessiCloudMusicLibrary=_canAccessiCloudMusicLibrary;
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (readonly, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
 @property (readonly, nonatomic, getter=isDeviceGroupable) BOOL deviceGroupable; // @synthesize deviceGroupable=_deviceGroupable;
 @property (readonly, nonatomic) unsigned int deviceSubtype; // @synthesize deviceSubtype=_deviceSubtype;
 @property (readonly, nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
 @property (weak, nonatomic) MRAVEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property (readonly, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
+@property (readonly, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
+@property (readonly, nonatomic) BOOL groupContainsGroupLeader; // @synthesize groupContainsGroupLeader=_groupContainsGroupLeader;
+@property (copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly, nonatomic, getter=isGroupLeader) BOOL groupLeader; // @synthesize groupLeader=_groupLeader;
 @property (readonly, nonatomic, getter=isGroupable) BOOL groupable; // @synthesize groupable=_groupable;
 @property (readonly, nonatomic) BOOL hasBatteryLevel; // @synthesize hasBatteryLevel=_hasBatteryLevel;
@@ -58,9 +70,11 @@
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic, getter=isPickedOnPairedDevice) BOOL pickedOnPairedDevice; // @synthesize pickedOnPairedDevice=_pickedOnPairedDevice;
 @property (readonly, nonatomic) NSString *playingPairedDeviceName; // @synthesize playingPairedDeviceName=_playingPairedDeviceName;
+@property (readonly, nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
 @property (readonly, nonatomic, getter=isRemoteControllable) BOOL remoteControllable; // @synthesize remoteControllable=_remoteControllable;
 @property (readonly, nonatomic) BOOL requiresAuthorization; // @synthesize requiresAuthorization=_requiresAuthorization;
 @property (readonly, nonatomic) MRAVOutputDeviceSourceInfo *sourceInfo; // @synthesize sourceInfo=_sourceInfo;
+@property (readonly, nonatomic) BOOL supportsBufferedAirPlay; // @synthesize supportsBufferedAirPlay=_supportsBufferedAirPlay;
 @property (readonly, nonatomic) BOOL supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
 @property (readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
 @property (nonatomic) float volume; // @synthesize volume=_volume;

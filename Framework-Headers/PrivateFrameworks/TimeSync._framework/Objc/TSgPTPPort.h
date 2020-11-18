@@ -6,6 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
+@class __TSgPTPPortNotification;
 @protocol OS_dispatch_queue;
 
 @interface TSgPTPPort : NSObject
@@ -14,23 +15,33 @@
     NSObject<OS_dispatch_queue> *_notificationsQueue;
     struct IONotificationPort *_notificationPort;
     unsigned int _interestNotification;
+    __TSgPTPPortNotification *_portForNotification;
+    NSObject<OS_dispatch_queue> *_internalPropertyUpdateQueue;
+    unsigned short _portNumber;
+    long long _portRole;
+    NSObject<OS_dispatch_queue> *_propertyUpdateQueue;
 }
 
-@property (readonly, nonatomic) unsigned short portNumber; // @dynamic portNumber;
-@property (readonly, nonatomic) long long portRole; // @dynamic portRole;
+@property (nonatomic) unsigned short portNumber; // @synthesize portNumber=_portNumber;
+@property (nonatomic) long long portRole; // @synthesize portRole=_portRole;
 @property (readonly, nonatomic) long long portType; // @dynamic portType;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyUpdateQueue; // @synthesize propertyUpdateQueue=_propertyUpdateQueue;
 @property (readonly, nonatomic) unsigned int service;
 
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
 + (id)diagnosticInfoForService:(unsigned int)arg1;
 + (id)gPTPPortWithService:(unsigned int)arg1;
 - (BOOL)_commonInitWithService:(unsigned int)arg1;
-- (void)_registryPropertyChanged;
+- (unsigned short)_portNumber;
+- (long long)_portRole;
 - (void)dealloc;
 - (id)init;
 - (id)initWithMatchingDictionary:(id)arg1;
 - (id)initWithService:(unsigned int)arg1;
 - (void)serviceTerminated;
+- (BOOL)startAutomaticPropertyUpdates;
+- (BOOL)stopAutomaticPropertyUpdates;
+- (void)updateProperties;
 
 @end
 

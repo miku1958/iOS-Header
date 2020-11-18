@@ -51,6 +51,8 @@
 - (void)_recoverSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithHasPeersForRemoteApproval:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_refreshAndAuthenticateWithContext:(id)arg1;
+- (void)_renewAndRepairWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resetAccountCDPStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;

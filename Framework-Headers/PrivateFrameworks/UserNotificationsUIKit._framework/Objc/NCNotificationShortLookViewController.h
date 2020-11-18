@@ -37,7 +37,6 @@
 
 - (void).cxx_destruct;
 - (void)_configureScrollViewIfNecessary;
-- (id)_customContentProvidingViewControllerCreateIfNecessary;
 - (struct CGRect)_frameForTransitionViewInScrollView;
 - (void)_handleTapOnView:(id)arg1;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(BOOL)arg2;

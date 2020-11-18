@@ -63,9 +63,9 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HMDUser *user; // @synthesize user=_user;
 
-+ (id)addUserManagementOperationForUser:(id)arg1 accessory:(id)arg2;
++ (id)addUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
 + (id)operationWithDictionary:(id)arg1 home:(id)arg2;
-+ (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2;
++ (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -84,7 +84,7 @@
 - (void)executeWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithOperationType:(unsigned long long)arg1 user:(id)arg2 accessory:(id)arg3 expiration:(id)arg4;
+- (id)initWithOperationType:(unsigned long long)arg1 identifier:(id)arg2 user:(id)arg3 accessory:(id)arg4 expiration:(id)arg5;
 - (BOOL)isValid;
 - (BOOL)mergeWithOperation:(id)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;

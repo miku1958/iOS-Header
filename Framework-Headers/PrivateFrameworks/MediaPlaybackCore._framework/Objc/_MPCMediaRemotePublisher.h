@@ -38,6 +38,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_becomeActiveIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_disableQueueModificationsChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
 - (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;

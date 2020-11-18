@@ -21,6 +21,7 @@
 - (void)_updateCloudKitState;
 - (void)_updateCloudKitStateWithDictionary:(id)arg1;
 - (void)broadcastCloudKitState;
+- (void)broadcastCloudKitStateAfterClearingErrors;
 - (void)clearChatZoneSyncToken;
 - (void)clearDataFromCloudKit;
 - (void)clearLocalSyncState;
@@ -39,6 +40,7 @@
 - (void)fetchExitRecord;
 - (void)fetchLatestRampState;
 - (void)fetchLatestSalt;
+- (void)fetchSecurityLevelAndUpdateMiCSwitchEligibility;
 - (void)fetchSyncStateStatistics;
 - (id)init;
 - (void)initiatePeriodicSync;
@@ -55,6 +57,7 @@
 - (id)logHandle;
 - (void)markAllChatsAsDirty;
 - (void)metricAttachments:(long long)arg1;
+- (BOOL)mocAccountsMatch;
 - (void)performAdditionalStorageRequiredCheck;
 - (void)printCachedRampState;
 - (void)printCachedSalt;
@@ -63,6 +66,7 @@
 - (void)removePathFromiCloudBackups:(id)arg1;
 - (BOOL)removedFromiCloudBackup;
 - (void)requestMOCEnabledState;
+- (void)sendRestoreFailuresLogDumps;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setShouldOptimizeAttachmentStorage:(BOOL)arg1;
 - (void)setiCloudBackupsDisabled:(BOOL)arg1;

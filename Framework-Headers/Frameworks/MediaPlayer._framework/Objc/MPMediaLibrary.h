@@ -169,8 +169,10 @@
 - (long long)cloudFilteringType;
 - (BOOL)collectionExistsContainedWithinPersistentIDs:(const unsigned long long *)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long *)arg4;
 - (BOOL)collectionExistsContainedWithinSyncIDs:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
+- (BOOL)collectionExistsWithCloudUniversalLibraryID:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithName:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
+- (BOOL)collectionExistsWithSagaID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (id)collectionWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
 - (id)collectionWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2 verifyExistence:(BOOL)arg3;
@@ -183,6 +185,7 @@
 - (id)databasePath;
 - (void)dealloc;
 - (id)decodeItemWithCoder:(id)arg1;
+- (BOOL)deleteDatabaseProperty:(id)arg1;
 - (BOOL)deleteItems:(id)arg1;
 - (id)description;
 - (void)disconnect;

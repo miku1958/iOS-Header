@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDAccessorySettingUpdateInitiator.h>
+#import <HomeKitDaemon/HMDAccessorySettingUpdateBase.h>
 
-@interface HMDAccessorySettingUpdateRelayInitiator : HMDAccessorySettingUpdateInitiator
+@interface HMDAccessorySettingUpdateRelayInitiator : HMDAccessorySettingUpdateBase
 {
 }
 

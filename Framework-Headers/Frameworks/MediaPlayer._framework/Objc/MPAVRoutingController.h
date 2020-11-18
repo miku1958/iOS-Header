@@ -61,7 +61,7 @@
 + (id)systemRouteWithContextUID:(id)arg1;
 - (void).cxx_destruct;
 - (void)_activeAudioRouteDidChangeNotification:(id)arg1;
-- (void)_addPendingRoute:(id)arg1;
+- (id)_addPendingRoute:(id)arg1;
 - (BOOL)_deviceAvailabilityOverrideState;
 - (long long)_externalScreenType:(BOOL *)arg1;
 - (void)_externalScreenTypeDidChangeNotification:(id)arg1;

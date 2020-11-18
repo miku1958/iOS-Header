@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMCore/IMCloudKitEventNotificationTest.h>
+#import <IMCore/IMCloudKitSyncProgressRuntimeTest.h>
 
 @class NSError;
 
-@interface IMCloudKitErrorProgressTest : IMCloudKitEventNotificationTest
+@interface IMCloudKitErrorProgressTest : IMCloudKitSyncProgressRuntimeTest
 {
     NSError *_error;
 }
 
-@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 
 - (void).cxx_destruct;
 - (id)initWithErrorCode:(long long)arg1;
-- (void)startTest;
+- (void)willUpdateSyncState:(id)arg1;
 
 @end
 

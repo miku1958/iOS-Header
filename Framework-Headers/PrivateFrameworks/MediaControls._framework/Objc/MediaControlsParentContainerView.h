@@ -28,8 +28,8 @@
 - (void).cxx_destruct;
 - (void)_setInitialFrameForRoutingView:(id)arg1;
 - (void)_toggleRoutingPickerAnimated:(BOOL)arg1;
-- (void)_updateRoutingPickerVisibility;
-- (void)_updateTimeControlVisibility;
+- (void)_updateRoutingPickerVisibilityAnimated:(BOOL)arg1;
+- (void)_updateTimeControlVisibility:(id)arg1;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

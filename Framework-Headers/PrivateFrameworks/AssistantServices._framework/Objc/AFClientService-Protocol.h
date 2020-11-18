@@ -31,10 +31,8 @@
 - (oneway void)didDismissUI;
 - (oneway void)endSession;
 - (oneway void)endUpdateOutputAudioPower;
-- (oneway void)forceAudioSessionActive;
 - (oneway void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 completion:(void (^)(unsigned int, NSError *))arg2;
-- (oneway void)forceAudioSessionInactive;
-- (oneway void)forceAudioSessionInactiveWithCompletion:(void (^)(void))arg1;
+- (oneway void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(void (^)(void))arg2;
 - (oneway void)getDeferredObjectsWithIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getSerializedCachedObjectsWithIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (oneway void)performGenericAceCommand:(NSDictionary *)arg1 interruptOutstandingRequest:(BOOL)arg2 reply:(void (^)(BOOL))arg3;

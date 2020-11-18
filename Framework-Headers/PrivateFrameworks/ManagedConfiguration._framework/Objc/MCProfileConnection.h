@@ -68,7 +68,6 @@
 - (id)acceptedMIMETypes;
 - (id)activationLockBypassHash;
 - (id)activationLockBypassKey;
-- (id)activationLockBypassKeyCreateNewIfNeeded:(BOOL)arg1 outError:(id *)arg2;
 - (BOOL)activationRecordIndicatesCloudConfigurationIsAvailable;
 - (id)activeClassroomRoles;
 - (void)addActiveClassroomRole:(id)arg1;
@@ -171,6 +170,7 @@
 - (id)effectiveWhitelistedAppsAndOptions;
 - (unsigned long long)enforcedSoftwareUpdateDelayInDays;
 - (void)enrollProvisionallyWithNonce:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)fetchActivationLockBypassKeyWithError:(id *)arg1;
 - (id)filteredMailSheetAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (id)filteredOpenInAccounts:(id)arg1 originatingAppBundleID:(id)arg2 sourceAccountManagement:(int)arg3;
 - (id)filteredOpenInOriginatingAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;

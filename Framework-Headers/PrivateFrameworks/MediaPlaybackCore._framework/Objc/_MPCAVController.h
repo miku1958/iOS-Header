@@ -39,6 +39,7 @@
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setRepeatType:(long long)arg1;
 - (void)setShuffleType:(long long)arg1;
+- (void)updateAudioSession;
 
 @end
 

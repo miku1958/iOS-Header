@@ -11,7 +11,7 @@
 #import <MediaRemote/MSVMessageParserDelegate-Protocol.h>
 #import <MediaRemote/NSStreamDelegate-Protocol.h>
 
-@class MRProtocolMessageQueue, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRProtocolMessageQueue, MRSupportedProtocolMessages, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString, _MRDeviceInfoMessageProtobuf;
 @protocol MRProtocolClientConnectionDelegate;
 
 @interface MRProtocolClientConnection : NSObject <NSStreamDelegate, MSVMessageParserDelegate, MRProtocolMessageQueueDelegate, MRProtocolMessageQueueDataSource>
@@ -25,6 +25,7 @@
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
     _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    MRSupportedProtocolMessages *_supportedMessages;
     id<MRProtocolClientConnectionDelegate> _delegate;
 }
 
@@ -37,9 +38,11 @@
 @property (readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
 @property (readonly, nonatomic) BOOL streamsAreValid;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) MRSupportedProtocolMessages *supportedMessages; // @synthesize supportedMessages=_supportedMessages;
 
 - (void).cxx_destruct;
 - (void)_adjustTimestamp:(id)arg1;
+- (BOOL)_clientSupportsMessage:(id)arg1;
 - (void)_closeStream:(id)arg1;
 - (void)_disconnectClient;
 - (void)_flush;
@@ -57,6 +60,8 @@
 - (id)encryptDataForMessage:(id)arg1;
 - (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
 - (id)messageQueue:(id)arg1 dataForMessage:(id)arg2;
+- (void)messageQueue:(id)arg1 didPurgeMessage:(id)arg2;
+- (void)messageQueue:(id)arg1 didSendMessage:(id)arg2;
 - (unsigned long long)messageQueue:(id)arg1 processData:(id)arg2 atReadPosition:(long long)arg3;
 - (void)parser:(id)arg1 didParseMessage:(id)arg2;
 - (void)sendMessage:(id)arg1;

@@ -7,10 +7,11 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreChangeObject-Protocol.h>
+#import <HomeKitDaemon/HMDBackingStoreRecordMapping-Protocol.h>
 
 @class CKRecord, CKRecordID, HMDBackingStoreModelObject, HMDCloudRecord, NSArray, NSMutableSet, NSSet, NSString, NSUUID;
 
-@interface HMDCloudChange : HMFObject <HMDBackingStoreChangeObject>
+@interface HMDCloudChange : HMFObject <HMDBackingStoreChangeObject, HMDBackingStoreRecordMapping>
 {
     HMDBackingStoreModelObject *_objectChange;
     HMDCloudRecord *_cloudRecord;
@@ -37,13 +38,18 @@
 @property (readonly, nonatomic, getter=isInvalid) BOOL invalidChange;
 @property (strong, nonatomic) HMDBackingStoreModelObject *objectChange; // @synthesize objectChange=_objectChange;
 @property (readonly, nonatomic) NSUUID *objectID;
+@property (readonly, nonatomic) NSUUID *parentObjectID;
+@property (readonly, nonatomic) NSUUID *parentUuid;
 @property (readonly, nonatomic, getter=isPushAfterApply) BOOL pushAfterApply;
 @property (readonly, nonatomic) CKRecord *record;
 @property (readonly, nonatomic) CKRecordID *recordID;
+@property (readonly, nonatomic) NSString *recordName;
 @property (readonly, nonatomic) NSArray *rowIDs;
 @property (readonly, nonatomic) NSMutableSet *rowIDsSet; // @synthesize rowIDsSet=_rowIDsSet;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *type;
 @property (readonly, nonatomic, getter=isUpdated) BOOL updateChange;
+@property (readonly, nonatomic) NSUUID *uuid;
 
 + (id)shortDescription;
 - (void).cxx_destruct;

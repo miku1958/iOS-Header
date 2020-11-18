@@ -21,7 +21,9 @@
 - (BOOL)isRequestingImmediatePlayback;
 - (long long)replaceIntent;
 - (void)setReplaceIntent:(long long)arg1;
+- (id)siriAssetInfo;
 - (id)siriRecommendationIdentifier;
+- (id)siriWHAMetricsInfo;
 
 @end
 

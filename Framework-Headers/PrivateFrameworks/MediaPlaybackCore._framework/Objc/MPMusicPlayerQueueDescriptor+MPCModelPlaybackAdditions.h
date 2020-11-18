@@ -7,6 +7,7 @@
 #import <MediaPlayer/MPMusicPlayerQueueDescriptor.h>
 
 @interface MPMusicPlayerQueueDescriptor (MPCModelPlaybackAdditions)
+- (void)_addRequestingBundleIdentifierToPlaybackRequestEnvironment:(id)arg1;
 - (id)playbackContext;
 @end
 

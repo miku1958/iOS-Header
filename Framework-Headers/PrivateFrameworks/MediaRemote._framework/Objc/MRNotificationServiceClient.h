@@ -14,7 +14,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)_dispatchAsychWithPriority:(CDUnknownBlockType)arg1;
+- (void)_dispatchAsyncWithDonatedPriority:(CDUnknownBlockType)arg1;
 - (void)_handleActiveApplicationDidChangeNotification:(id)arg1;
 - (void)_handleActiveOriginDidChangeNotification:(id)arg1;
 - (void)_handleActivePlayerDidChangeNotification:(id)arg1;
@@ -44,6 +44,7 @@
 - (void)_processActivePlayerChanges:(id)arg1;
 - (void)_processActivePlayerPathChanges:(id)arg1;
 - (void)_processApplicationChanges:(id)arg1;
+- (BOOL)_processNeedsNonPlayerPathBasedNotificationsForBackwardCompatabilitySupport;
 - (void)_processOriginChanges:(id)arg1;
 - (void)_processPlayerChanges:(id)arg1;
 - (BOOL)_shouldPostNotifications;

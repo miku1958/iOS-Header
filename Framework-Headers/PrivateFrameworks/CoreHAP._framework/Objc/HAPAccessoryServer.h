@@ -67,6 +67,7 @@
 - (void)addInternalDelegate:(id)arg1;
 - (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)continuePairingAfterAuthPrompt;
+- (void)continuePairingUsingWAC;
 - (void)discoverAccessories;
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)enumerateInternalDelegatesUsingBlock:(CDUnknownBlockType)arg1;

@@ -34,9 +34,7 @@
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (id)__cloudRecordWithObjectID:(id)arg1;
-- (void)_appendToChildren:(id)arg1 forParentIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addCloudRecord:(id)arg1;
-- (id)childCloudRecordsWithParentID:(id)arg1;
 - (id)cloudRecordWithName:(id)arg1;
 - (void)cloudRecordWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordWithNames:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -46,6 +44,7 @@
 - (void)cloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteCloudRecord:(id)arg1;
 - (id)description;
+- (void)fetchCloudRecordMap:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithBackingStoreCacheGroup:(id)arg1 cloudZone:(id)arg2;
 - (BOOL)isRootRecord:(id)arg1;

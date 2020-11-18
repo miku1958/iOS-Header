@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-#import <Home/HFAVRoutingControllerObserver-Protocol.h>
 #import <Home/HFAccessoryObserver-Protocol.h>
 #import <Home/HFCameraObserver-Protocol.h>
 #import <Home/HFHomeManagerObserver-Protocol.h>
@@ -25,7 +24,7 @@
 @class HFItem, HFItemManagerBatchedDelegateAdapter, HMHome, NAFuture, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol HFCharacteristicReadPolicy, HFItemManagerDelegate;
 
-@interface HFItemManager : NSObject <HFStateDumpSerializable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFAVRoutingControllerObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTemperatureUnitObserver, HFItemUpdating>
+@interface HFItemManager : NSObject <HFStateDumpSerializable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTemperatureUnitObserver, HFItemUpdating>
 {
     BOOL _hasRequestedFirstUpdate;
     id<HFItemManagerDelegate> _delegate;
@@ -288,6 +287,7 @@
 - (void)mediaSession:(id)arg1 failedToUpdatePlaybackStateWithError:(id)arg2;
 - (void)mediaSession:(id)arg1 willUpdatePlaybackState:(long long)arg2;
 - (void)mediaSystem:(id)arg1 didUpdateComponents:(id)arg2;
+- (void)mediaSystem:(id)arg1 didUpdateConfiguredName:(id)arg2;
 - (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (void)notificationSettingsInvalidatedForManager:(id)arg1;
 - (unsigned long long)numberOfSections;

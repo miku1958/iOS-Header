@@ -6,19 +6,23 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFStaticItemProvider, HFUserItem, HMAssistantAccessControl, HMHome, HMUser, HUPersonalRequestsDevicesItemModule;
+@class HFItem, HFStaticItemProvider, HFUserItem, HMAssistantAccessControl, HMHome, HMUser, HUPersonalRequestsDevicesItemModule;
 
 @interface HUPersonalRequestsEditorItemManager : HFItemManager
 {
     HUPersonalRequestsDevicesItemModule *_prDevicesModule;
+    HFItem *_requireAuthenticationForSecureRequestsItem;
+    HFItem *_neverRequireAuthenticationItem;
     HMHome *_homeForUser;
     HFStaticItemProvider *_staticItemProvider;
 }
 
 @property (readonly, nonatomic) HMAssistantAccessControl *accessControl;
 @property (readonly, nonatomic) HMHome *homeForUser; // @synthesize homeForUser=_homeForUser;
-@property (nonatomic) unsigned long long personalRequestsAuthenticationRequirement;
+@property (readonly, nonatomic) HFItem *neverRequireAuthenticationItem; // @synthesize neverRequireAuthenticationItem=_neverRequireAuthenticationItem;
+@property (nonatomic) BOOL personalRequestsAuthenticationRequired;
 @property (strong, nonatomic) HUPersonalRequestsDevicesItemModule *prDevicesModule; // @synthesize prDevicesModule=_prDevicesModule;
+@property (readonly, nonatomic) HFItem *requireAuthenticationForSecureRequestsItem; // @synthesize requireAuthenticationForSecureRequestsItem=_requireAuthenticationForSecureRequestsItem;
 @property (strong, nonatomic) HFUserItem *sourceItem; // @dynamic sourceItem;
 @property (readonly, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property (readonly, nonatomic) HMUser *user;

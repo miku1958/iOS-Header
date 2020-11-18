@@ -34,8 +34,8 @@
 + (id)pathWithRoute:(id)arg1 mediaRemotePlayerPath:(void *)arg2;
 + (BOOL)supportsSecureCoding;
 + (id)systemMusicPathWithRoute:(id)arg1 playerID:(id)arg2;
++ (id)unresolvablePathWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 - (void).cxx_destruct;
-- (void *)_createMediaRemotePlayerPathWithOrigin:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

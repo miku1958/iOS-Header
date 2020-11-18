@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 @property (readonly) HMDAccessorySymptomHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 
++ (id)__deviceMediaRouteIdentifier;
 + (BOOL)hasMessageReceiverChildren;
 + (BOOL)shouldAcceptMessage:(id)arg1 home:(id)arg2 privilege:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
@@ -74,6 +75,7 @@
 - (void)notifyClientsOfUpdatedRootSettings:(id)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
 - (long long)reachableTransports;
+- (void)reconfigureOnMediaSystemDisolve;
 - (id)remoteMessageDestination;
 - (BOOL)requiresHomeAppForManagement;
 - (void)setDevice:(id)arg1;

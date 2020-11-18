@@ -11,8 +11,9 @@
 @interface MRExternalClientConnection : MRProtocolClientConnection
 {
     BOOL _registeredToNowPlayingUpdates;
-    BOOL _registeredVolumeControlAvailabilityUpdates;
+    BOOL _registeredToVolumeUpdates;
     BOOL _registeredKeyboardUpdates;
+    BOOL _registeredToOutputDeviceUpdates;
     BOOL _cryptoEnabled;
     unsigned int _voiceRecordingState;
     MRCryptoPairingSession *_cryptoSession;
@@ -22,7 +23,8 @@
 @property (strong, nonatomic) MRCryptoPairingSession *cryptoSession; // @synthesize cryptoSession=_cryptoSession;
 @property (nonatomic) BOOL registeredKeyboardUpdates; // @synthesize registeredKeyboardUpdates=_registeredKeyboardUpdates;
 @property (nonatomic) BOOL registeredToNowPlayingUpdates; // @synthesize registeredToNowPlayingUpdates=_registeredToNowPlayingUpdates;
-@property (nonatomic) BOOL registeredVolumeControlAvailabilityUpdates; // @synthesize registeredVolumeControlAvailabilityUpdates=_registeredVolumeControlAvailabilityUpdates;
+@property (nonatomic) BOOL registeredToOutputDeviceUpdates; // @synthesize registeredToOutputDeviceUpdates=_registeredToOutputDeviceUpdates;
+@property (nonatomic) BOOL registeredToVolumeUpdates; // @synthesize registeredToVolumeUpdates=_registeredToVolumeUpdates;
 @property (nonatomic) unsigned int voiceRecordingState; // @synthesize voiceRecordingState=_voiceRecordingState;
 
 - (void).cxx_destruct;

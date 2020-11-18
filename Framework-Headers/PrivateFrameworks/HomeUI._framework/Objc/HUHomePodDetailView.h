@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIImageView, UILabel, UIView;
+@class HUMonogramView, UILabel, UIView;
 @protocol HFStringGenerator, HUHomePodDetailViewDelegate;
 
 @interface HUHomePodDetailView : UIButton
@@ -15,14 +15,14 @@
     unsigned long long _role;
     UILabel *_unitNameLabel;
     UIView *_unitImageView;
-    UIImageView *_unitBadge;
+    HUMonogramView *_unitBadgeLabel;
     id<HUHomePodDetailViewDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<HUHomePodDetailViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL isAnimatingPop; // @synthesize isAnimatingPop=_isAnimatingPop;
 @property (readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
-@property (readonly, nonatomic) UIImageView *unitBadge; // @synthesize unitBadge=_unitBadge;
+@property (readonly, nonatomic) HUMonogramView *unitBadgeLabel; // @synthesize unitBadgeLabel=_unitBadgeLabel;
 @property (readonly, nonatomic) UIView *unitImageView; // @synthesize unitImageView=_unitImageView;
 @property (copy, nonatomic) id<HFStringGenerator> unitName; // @dynamic unitName;
 @property (readonly, nonatomic) UILabel *unitNameLabel; // @synthesize unitNameLabel=_unitNameLabel;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)createDeviceInfoFromNetService:(id)arg1;
 + (id)createDeviceInfoFromTXTRecord:(id)arg1;
 - (void).cxx_destruct;
+- (long long)connectionType;
 - (id)description;
 - (id)deviceInfo;
 - (id)error;

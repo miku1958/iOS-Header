@@ -34,6 +34,8 @@
 - (void)audioSessionInterruptionNotification:(id)arg1;
 - (void)audioSessionRouteChangeNotification:(id)arg1;
 - (void)dealloc;
+- (void)disableDetailedDiscoveryMode;
+- (void)enableDetailedDiscoveryMode;
 - (void)fetchAvailableRoutesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithName:(id)arg1;
 - (BOOL)makeAudioSessionCategoryActive:(BOOL)arg1;

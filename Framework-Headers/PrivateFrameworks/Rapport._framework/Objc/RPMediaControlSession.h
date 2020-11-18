@@ -24,6 +24,7 @@
 - (void)mediaCommand:(int)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)mediaGetVolumeFromDestinationID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mediaSetVolume:(double)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)mediaSkipBySeconds:(double)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

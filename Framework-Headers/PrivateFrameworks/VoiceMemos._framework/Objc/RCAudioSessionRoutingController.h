@@ -69,6 +69,8 @@
 - (BOOL)_wirelessRouteIsPickedOrPreferred;
 - (void)addRouteAssertion:(id)arg1;
 - (void)dealloc;
+- (void)disableDetailedDiscoveryMode;
+- (void)enableDetailedDiscoveryMode;
 - (void)fetchActiveInputRouteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)removeRouteAssertion:(id)arg1;

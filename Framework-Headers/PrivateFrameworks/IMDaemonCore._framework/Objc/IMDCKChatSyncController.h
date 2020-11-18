@@ -54,7 +54,7 @@
 - (id)_newckRecordsFromChats:(id)arg1;
 - (unsigned long long)_numberOfChatsToFetch;
 - (unsigned long long)_numberOfChatsToWrite;
-- (void)_processFetchRecordChangesCompleted:(id)arg1 completion:(CDUnknownBlockType)arg2 isUsingStingRay:(BOOL)arg3;
+- (void)_processFetchRecordChangesCompleted:(id)arg1 completion:(CDUnknownBlockType)arg2 isUsingStingRay:(BOOL)arg3 syncType:(long long)arg4;
 - (void)_processModifyPerRecordCallBack:(id)arg1 error:(id)arg2 isUsingStingRay:(BOOL)arg3;
 - (void)_processModifyRecordCompletion:(id)arg1 deletedRecordIDs:(id)arg2 error:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_processRecordChanged:(id)arg1 isUsingStingRay:(BOOL)arg2;
@@ -68,7 +68,7 @@
 - (void)_scheduleOperation:(id)arg1;
 - (BOOL)_shouldMarkAllChatsAsNeedingReUpload;
 - (BOOL)_shouldResyncChatsForError:(id)arg1;
-- (void)_syncChatsWithCloudKitWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_syncChatsWithCloudKitWithCompletionType:(long long)arg1 syncChatsCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_updateAllChatsAsNotNeedingReUpload;
 - (void)_updateChatUsingCKRecord:(id)arg1;
 - (void)_writeCKRecordsToChatZone:(id)arg1 isUsingStingRay:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;

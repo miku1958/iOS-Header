@@ -24,6 +24,8 @@
 - (id)safari_highLevelDomainFromHost;
 - (BOOL)safari_isCaseAndDiacriticInsensitiveEqualToString:(id)arg1;
 - (BOOL)safari_isCaseInsensitiveEqualToString:(id)arg1;
+- (BOOL)safari_isVersionStringBetweenVersionString:(id)arg1 andVersionString:(id)arg2;
+- (BOOL)safari_isVersionStringGreaterThanVersionString:(id)arg1;
 - (id)safari_simplifiedUserVisibleURLString;
 - (id)safari_simplifiedUserVisibleURLStringWithSimplifications:(unsigned long long)arg1 forDisplayOnly:(BOOL)arg2 simplifiedStringOffset:(unsigned long long *)arg3;
 - (id)safari_stringByRedactingBookmarkDAVServerID;

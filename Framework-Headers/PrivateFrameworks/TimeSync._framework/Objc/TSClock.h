@@ -13,15 +13,18 @@
 {
     NSMutableArray *_clients;
     NSObject<OS_dispatch_queue> *_notificationsQueue;
+    int _lockState;
     unsigned long long _clockIdentifier;
+    NSObject<OS_dispatch_queue> *_propertyUpdateQueue;
 }
 
 @property (readonly, strong, nonatomic) NSMutableArray *clients; // @dynamic clients;
 @property (nonatomic) unsigned long long clockIdentifier; // @synthesize clockIdentifier=_clockIdentifier;
 @property (readonly, copy, nonatomic) NSString *clockName; // @dynamic clockName;
 @property (readonly, nonatomic) double hostRateRatio; // @dynamic hostRateRatio;
-@property (readonly, nonatomic) int lockState; // @dynamic lockState;
+@property (nonatomic) int lockState; // @synthesize lockState=_lockState;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @dynamic notificationQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyUpdateQueue; // @synthesize propertyUpdateQueue=_propertyUpdateQueue;
 
 + (unsigned long long)_mach_absolute_time;
 + (id)clockNameForClockIdentifier:(unsigned long long)arg1;

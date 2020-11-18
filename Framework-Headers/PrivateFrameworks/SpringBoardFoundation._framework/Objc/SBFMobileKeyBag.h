@@ -24,6 +24,7 @@
 @property (readonly, copy, nonatomic) SBFMobileKeyBagState *extendedState;
 @property (readonly, nonatomic) BOOL hasBeenUnlockedSinceBoot;
 @property (readonly, nonatomic) BOOL hasPasscodeSet;
+@property (readonly, nonatomic) long long maxUnlockAttempts;
 @property (readonly, copy, nonatomic) SBFMobileKeyBagState *state;
 
 + (id)sharedInstance;

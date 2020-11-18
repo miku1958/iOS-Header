@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class HMSetupAccessoryPayload;
+@class HMSetupAccessoryBrowsingRequest, HMSetupAccessoryPayload, NSString;
 
 @interface HMAccessorySetupPayload : NSObject
 {
     HMSetupAccessoryPayload *_internalSetupPayload;
+    HMSetupAccessoryBrowsingRequest *_accessoryBrowsingRequest;
+    NSString *_suggestedRoomName;
 }
 
+@property (strong) HMSetupAccessoryBrowsingRequest *accessoryBrowsingRequest; // @synthesize accessoryBrowsingRequest=_accessoryBrowsingRequest;
 @property (strong) HMSetupAccessoryPayload *internalSetupPayload; // @synthesize internalSetupPayload=_internalSetupPayload;
+@property (copy) NSString *suggestedRoomName; // @synthesize suggestedRoomName=_suggestedRoomName;
 
 - (void).cxx_destruct;
+- (BOOL)_parseURLForBrowsingRequest:(id)arg1;
 - (id)initWithURL:(id)arg1;
 
 @end

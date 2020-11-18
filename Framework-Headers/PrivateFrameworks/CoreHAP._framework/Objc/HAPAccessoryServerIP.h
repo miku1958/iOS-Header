@@ -102,9 +102,10 @@
 - (void).cxx_destruct;
 - (void)__registerForInternalCharacteristicNotifications;
 - (int)_continuePairingAfterAuthPrompt;
-- (void)_continuePairingAfterConfirmingLegacyWAC;
+- (void)_continuePairingAfterConfirmingSecureWAC;
 - (void)_continuePairingAfterConfirmingSoftAuthWAC;
 - (void)_continuePairingAfterWAC:(id)arg1;
+- (void)_continuePairingUsingWAC;
 - (int)_continuePairingWithSetupCode:(id)arg1;
 - (BOOL)_delegateRespondsToSelector:(SEL)arg1;
 - (void)_enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
@@ -180,6 +181,7 @@
 - (void)authenticateAccessory;
 - (void)continueAuthAfterValidation:(BOOL)arg1;
 - (void)continuePairingAfterAuthPrompt;
+- (void)continuePairingUsingWAC;
 - (void)dealloc;
 - (void)discoverAccessories;
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;

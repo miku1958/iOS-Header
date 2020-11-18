@@ -12,6 +12,7 @@
 {
     BOOL _isInternalDevice;
     BOOL _policyDisabled;
+    float _lastIsSpaceFeature;
     NSString *_searchString;
     CSAttributeEvaluator *_fuzzyEvaluator;
     CSAttributeEvaluator *_evaluator;
@@ -20,7 +21,6 @@
     double _experimentalWeight1;
     double _experimentalWeight2;
     NSString *_meContactIdentifier;
-    double _lastIsSpaceFeature;
 }
 
 @property (strong, nonatomic) NSMapTable *bundleFeatures; // @synthesize bundleFeatures=_bundleFeatures;
@@ -30,7 +30,7 @@
 @property (nonatomic) double experimentalWeight2; // @synthesize experimentalWeight2=_experimentalWeight2;
 @property (strong, nonatomic) CSAttributeEvaluator *fuzzyEvaluator; // @synthesize fuzzyEvaluator=_fuzzyEvaluator;
 @property BOOL isInternalDevice; // @synthesize isInternalDevice=_isInternalDevice;
-@property (nonatomic) double lastIsSpaceFeature; // @synthesize lastIsSpaceFeature=_lastIsSpaceFeature;
+@property (nonatomic) float lastIsSpaceFeature; // @synthesize lastIsSpaceFeature=_lastIsSpaceFeature;
 @property (strong, nonatomic) NSString *meContactIdentifier; // @synthesize meContactIdentifier=_meContactIdentifier;
 @property (nonatomic) BOOL policyDisabled; // @synthesize policyDisabled=_policyDisabled;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;

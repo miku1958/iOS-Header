@@ -138,6 +138,7 @@
 - (id)localizedDescriptionForDiff:(id)arg1;
 - (id)localizedValueForFieldKey:(id)arg1;
 - (id)logoImage;
+- (BOOL)shouldSuppressNoChargeAmount;
 - (id)stripImage;
 - (BOOL)supportsSharing;
 - (id)thumbnailImage;

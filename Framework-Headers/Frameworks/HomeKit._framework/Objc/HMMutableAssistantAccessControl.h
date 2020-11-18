@@ -13,12 +13,14 @@
 }
 
 @property (copy) NSArray *accessories;
+@property BOOL allowUnauthenticatedRequests;
 @property (getter=isEnabled) BOOL enabled;
-@property unsigned long long options;
 
 - (void)addAccessory:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)options;
 - (void)removeAccessory:(id)arg1;
+- (void)setOptions:(unsigned long long)arg1;
 
 @end
 

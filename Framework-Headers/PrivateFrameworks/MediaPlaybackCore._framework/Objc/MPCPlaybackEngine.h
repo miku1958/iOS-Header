@@ -24,8 +24,10 @@
     _MPCMediaRemotePublisher *_mediaRemotePublisher;
     _MPCReportingController *_reportingController;
     _MPCLeaseManager *_leaseManager;
+    NSString *_audioSessionCategory;
 }
 
+@property (copy, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
 @property (weak, nonatomic) id<MPCPlaybackEngineDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) MPProtocolProxy<MPCPlaybackEngineEventObserving> *eventObserver; // @synthesize eventObserver=_eventObserver;
 @property (strong, nonatomic) MPCPlaybackIntent *fallbackPlaybackIntent; // @synthesize fallbackPlaybackIntent=_fallbackPlaybackIntent;

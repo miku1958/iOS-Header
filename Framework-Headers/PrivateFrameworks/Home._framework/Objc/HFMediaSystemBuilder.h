@@ -46,11 +46,10 @@
 - (void).cxx_destruct;
 - (id)_commitChangesToMediaSystemBuilder;
 - (id)_firstUnpopulatedRole;
-- (id)_performValidation;
 - (id)_rooms;
 - (id)_updateAssistantAccessControl;
 - (id)_updateFavorite;
-- (id)_updateRoomAndName;
+- (id)_updateRoom;
 - (id)accessories;
 - (id)accessoryForRole:(id)arg1;
 - (void)addAccessory:(id)arg1;

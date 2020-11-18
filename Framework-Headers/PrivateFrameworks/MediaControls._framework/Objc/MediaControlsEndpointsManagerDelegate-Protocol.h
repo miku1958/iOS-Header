@@ -6,10 +6,10 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MPAVEndpointRoute, MediaControlsEndpointsManager, NSArray;
+@class MPAVEndpointRoute, MediaControlsEndpointsManager;
 
 @protocol MediaControlsEndpointsManagerDelegate <NSObject>
 - (void)endpointsManager:(MediaControlsEndpointsManager *)arg1 activeSystemRouteDidChange:(MPAVEndpointRoute *)arg2;
-- (void)endpointsManager:(MediaControlsEndpointsManager *)arg1 willUpdateRoutes:(NSArray *)arg2 defersRoutesReplacement:(MPChangeDetails * (^)(void))arg3;
+- (void)endpointsManager:(MediaControlsEndpointsManager *)arg1 defersRoutesReplacement:(MPChangeDetails * (^)(void))arg2;
 @end
 

@@ -9,15 +9,33 @@
 #import <RapportUI/UIKeyInput-Protocol.h>
 #import <RapportUI/UITextInputTraits-Protocol.h>
 
-@class NSArray, NSMutableString, NSString;
+@class NSArray, NSMutableString, NSString, UIColor, UILabel;
 
 @interface RPPINEntryView : UIView <UIKeyInput, UITextInputTraits>
 {
     NSMutableString *_text;
     BOOL _alphaNumeric;
     BOOL _disabled;
-    NSArray *_fields;
+    NSArray *_labels;
+    UILabel *_label1;
+    UILabel *_label2;
+    UILabel *_label3;
+    UILabel *_label4;
+    UILabel *_label5;
+    UILabel *_label6;
+    UILabel *_label7;
+    UILabel *_label8;
     CDUnknownBlockType _textChangedHandler;
+    NSArray *_wells;
+    UIView *_well1;
+    UIView *_well2;
+    UIView *_well3;
+    UIView *_well4;
+    UIView *_well5;
+    UIView *_well6;
+    UIView *_well7;
+    UIView *_well8;
+    UIColor *_wellFocusColor;
 }
 
 @property (nonatomic) BOOL alphaNumeric; // @synthesize alphaNumeric=_alphaNumeric;
@@ -27,11 +45,19 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
-@property (strong, nonatomic) NSArray *fields; // @synthesize fields=_fields;
 @property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
+@property (strong, nonatomic) UILabel *label1; // @synthesize label1=_label1;
+@property (strong, nonatomic) UILabel *label2; // @synthesize label2=_label2;
+@property (strong, nonatomic) UILabel *label3; // @synthesize label3=_label3;
+@property (strong, nonatomic) UILabel *label4; // @synthesize label4=_label4;
+@property (strong, nonatomic) UILabel *label5; // @synthesize label5=_label5;
+@property (strong, nonatomic) UILabel *label6; // @synthesize label6=_label6;
+@property (strong, nonatomic) UILabel *label7; // @synthesize label7=_label7;
+@property (strong, nonatomic) UILabel *label8; // @synthesize label8=_label8;
+@property (strong, nonatomic) NSArray *labels; // @synthesize labels=_labels;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long smartDashesType;
@@ -42,13 +68,24 @@
 @property (copy, nonatomic) NSString *text;
 @property (copy, nonatomic) CDUnknownBlockType textChangedHandler; // @synthesize textChangedHandler=_textChangedHandler;
 @property (copy, nonatomic) NSString *textContentType;
+@property (strong, nonatomic) UIView *well1; // @synthesize well1=_well1;
+@property (strong, nonatomic) UIView *well2; // @synthesize well2=_well2;
+@property (strong, nonatomic) UIView *well3; // @synthesize well3=_well3;
+@property (strong, nonatomic) UIView *well4; // @synthesize well4=_well4;
+@property (strong, nonatomic) UIView *well5; // @synthesize well5=_well5;
+@property (strong, nonatomic) UIView *well6; // @synthesize well6=_well6;
+@property (strong, nonatomic) UIView *well7; // @synthesize well7=_well7;
+@property (strong, nonatomic) UIView *well8; // @synthesize well8=_well8;
+@property (strong, nonatomic) UIColor *wellFocusColor; // @synthesize wellFocusColor=_wellFocusColor;
+@property (strong, nonatomic) NSArray *wells; // @synthesize wells=_wells;
 
 - (void).cxx_destruct;
 - (void)_updateFields;
+- (void)awakeFromNib;
 - (BOOL)canBecomeFirstResponder;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
-- (BOOL)resignFirstResponder;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -6,36 +6,30 @@
 
 #import <MediaRemote/MRAVEndpoint.h>
 
-@class MRAVConcreteOutputDevice, MRTransportExternalDevice, NSArray, NSDictionary, NSObject, NSString;
+@class MRAVOutputDevice, MRTransportExternalDevice, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRAVConcreteEndpoint : MRAVEndpoint
 {
-    NSObject<OS_dispatch_queue> *_serialQueue;
     NSString *_uniqueIdentifier;
     NSArray *_outputDevices;
     MRTransportExternalDevice *_externalDevice;
-    MRAVConcreteOutputDevice *_designatedGroupLeader;
-    NSString *_instanceIdentifier;
-    id _outputContextDidChangeNotificationToken;
-    NSDictionary *_outsourcedExternalDeviceCache;
+    MRAVOutputDevice *_designatedGroupLeader;
+    long long _connectionType;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
-@property (strong, nonatomic) MRAVConcreteOutputDevice *designatedGroupLeader;
 @property (strong, nonatomic) MRTransportExternalDevice *externalDevice;
 @property (copy, nonatomic) NSArray *outputDevices;
-@property (copy, nonatomic) NSDictionary *outsourcedExternalDeviceCache; // @synthesize outsourcedExternalDeviceCache=_outsourcedExternalDeviceCache;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 
 - (void).cxx_destruct;
-- (void)_onQueue_reloadExternalDevice;
-- (void)_onQueue_setDesignatedGroupLeader:(id)arg1;
-- (void)_onQueue_setExternalDevice:(id)arg1;
-- (void)_updateOutputContextInfo;
+- (BOOL)canModifyGroupMembership;
+- (long long)connectionType;
 - (void)dealloc;
-- (id)initWithOutputDevices:(id)arg1;
-- (id)instanceIdentifier;
+- (id)designatedGroupLeader;
+- (id)initWithDesignatedGroupLeader:(id)arg1 outputDevices:(id)arg2;
 - (BOOL)isProxyGroupPlayer;
-- (id)outputDeviceForDistantDevice:(id)arg1;
 - (id)uniqueIdentifier;
 
 @end

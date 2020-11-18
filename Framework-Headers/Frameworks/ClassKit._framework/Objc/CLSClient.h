@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (oneway void)clientRemote_databaseRecreated;
-- (oneway void)clientRemote_devModeDidChange:(int)arg1;
 
 @end
 

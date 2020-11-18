@@ -11,30 +11,23 @@
 @interface IMDCKAbstractSyncController : NSObject
 {
     BOOL _isSyncing;
-    BOOL _busy;
 }
 
-@property (nonatomic, getter=isBusy) BOOL busy; // @synthesize busy=_busy;
 @property (nonatomic) BOOL isSyncing; // @synthesize isSyncing=_isSyncing;
 @property (readonly, nonatomic) BOOL isUsingStingRay;
 @property (readonly, nonatomic) IMDCKSyncState *syncState;
 
 - (void)addSyncDebuggingInfoToDictionary:(id)arg1;
 - (id)ckUtilities;
-- (id)prefsWriter;
-- (BOOL)readPersistentBoolForKey:(id)arg1;
-- (id)readPersistentValueForKey:(id)arg1;
-- (void)setStartingInitialSync;
-- (void)setStartingPeriodicSync;
-- (void)setSyncStateToDeleting;
-- (void)setSyncStateToDownloading;
-- (void)setSyncStateToFinished;
-- (void)setSyncStateToPreparing;
-- (void)setSyncStateToUploading;
+- (void)setBroadcastedSyncStateStateToFinished;
+- (void)setBroadcastedSyncStateStateToStarting;
+- (void)setBroadcastedSyncStateToDeleting;
+- (void)setBroadcastedSyncStateToDownloading;
+- (void)setBroadcastedSyncStateToStartingInitialSync;
+- (void)setBroadcastedSyncStateToStartingPeriodicSync;
+- (void)setBroadcastedSyncStateToUploading;
 - (long long)syncControllerRecordType;
 - (id)syncStateDebuggingInfo:(id)arg1;
-- (void)writePersistentBool:(BOOL)arg1 forKey:(id)arg2;
-- (void)writePersistentValue:(id)arg1 forKey:(id)arg2;
 
 @end
 

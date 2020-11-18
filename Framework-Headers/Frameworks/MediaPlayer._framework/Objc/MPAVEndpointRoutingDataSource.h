@@ -6,16 +6,21 @@
 
 #import <MediaPlayer/MPAVRoutingDataSource.h>
 
-@class NSMapTable, NSObject;
+@class NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPAVEndpointRoutingDataSource : MPAVRoutingDataSource
 {
-    NSMapTable *_cachedEndpoints;
-    NSObject<OS_dispatch_queue> *_serialQueue;
     void *_discoverySession;
     void *_callbackToken;
+    NSString *_routingContextUID;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSMutableDictionary *_endpoints;
 }
+
+@property (strong, nonatomic) NSMutableDictionary *endpoints; // @synthesize endpoints=_endpoints;
+@property (copy, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 
 - (void).cxx_destruct;
 - (void)_endpointsDidChange:(id)arg1;

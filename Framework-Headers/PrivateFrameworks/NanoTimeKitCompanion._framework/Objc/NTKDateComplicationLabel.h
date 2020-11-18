@@ -62,6 +62,7 @@
 - (id)initWithSizeStyle:(long long)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setContentsMultiplyColor:(id)arg1 animated:(BOOL)arg2 withDuration:(double)arg3;
 - (void)setDateComplicationText:(id)arg1 forDateStyle:(unsigned long long)arg2;
 - (BOOL)shouldCancelTouchesInScrollview;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

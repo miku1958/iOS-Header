@@ -807,6 +807,7 @@
 - (void)updateAutocorrectPrompt:(id)arg1;
 - (void)updateAutocorrectPrompt:(id)arg1 correctionRects:(id)arg2;
 - (void)updateAutocorrectPrompt:(id)arg1 executionContext:(id)arg2;
+- (void)updateAutofillContextForInputDelegate:(id)arg1;
 - (void)updateCandidateDisplay;
 - (void)updateCandidateDisplayAsyncWithCandidateSet:(id)arg1;
 - (void)updateChangeTimeAndIncrementCount;

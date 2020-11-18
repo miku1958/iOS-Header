@@ -15,10 +15,12 @@
     MFMimePart *_topLevelPart;
     unsigned int _preferredAlternative:16;
     unsigned int _numAlternatives:16;
+    long long _encryptedDescendantState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasEncryptedDescendantPart;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *mimeSubtype;
 @property (readonly, copy, nonatomic) NSString *mimeType;
@@ -32,7 +34,6 @@
 - (id)attachments;
 - (id)contentToOffset:(unsigned long long)arg1 resultOffset:(unsigned long long *)arg2 asHTML:(BOOL)arg3 isComplete:(BOOL *)arg4;
 - (void)dealloc;
-- (id)firstPartPassingTest:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)isHTML;
 - (BOOL)isRich;

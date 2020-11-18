@@ -16,9 +16,11 @@
     MFCancelationToken *_cancelable;
     MFObservable<MFObserver> *_inputObservable;
     MFObservable *_contentObservable;
-    MFObservable *_smimeObservable;
     MFObservable *_analysisSuggestionsObservable;
     id<MFScheduler> _analysisScheduler;
+    id<MFScheduler> _trustReevaluationScheduler;
+    MFObservable<MFObserver> *_trustReevaluationObservable;
+    MFObservable *_smimeObservable;
     BOOL _shouldAnalyzeMessage;
     NSString *_eventUniqueID;
     NSString *_meetingName;
@@ -72,6 +74,7 @@
 - (void)load:(long long)arg1 scheduler:(id)arg2;
 - (id)onScheduler:(id)arg1 addLoadObserver:(CDUnknownBlockType)arg2;
 - (void)processMeetingInvitations:(id)arg1;
+- (void)reevaluateSMIMETrustWithNetworkAccessAllowed;
 - (id)suggestionsFromIndexableItem:(id)arg1;
 - (id)unsubscribeSuggestions;
 

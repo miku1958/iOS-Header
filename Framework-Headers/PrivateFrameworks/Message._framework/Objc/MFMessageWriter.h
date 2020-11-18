@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSDictionary;
 
@@ -36,6 +36,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithCompositionSpecification:(id)arg1;
+- (id)newDataForMimePart:(id)arg1 withPartData:(id)arg2;
 - (void)setAllows8BitMimeParts:(BOOL)arg1;
 - (void)setAllowsBinaryMimeParts:(BOOL)arg1;
 - (void)setAllowsQuotedPrintable:(BOOL)arg1;

@@ -8,25 +8,35 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString, _MRNowPlayingPlayerPathProtobuf;
 
 @interface _MRSendCommandResultMessageProtobuf : PBCodable <NSCopying>
 {
-    CDStruct_9f2792e4 _handlerReturnStatus;
-    unsigned int _errorCode;
+    CDStruct_95bda58d _handlerReturnStatus;
+    NSString *_commandID;
     NSMutableArray *_handlerReturnStatusDatas;
-    CDStruct_70a7dc3e _has;
+    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    int _sendError;
+    struct {
+        unsigned int sendError:1;
+    } _has;
 }
 
-@property (nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
-@property (readonly, nonatomic) unsigned int *handlerReturnStatus;
+@property (strong, nonatomic) NSString *commandID; // @synthesize commandID=_commandID;
+@property (readonly, nonatomic) int *handlerReturnStatus;
 @property (readonly, nonatomic) unsigned long long handlerReturnStatusCount;
 @property (strong, nonatomic) NSMutableArray *handlerReturnStatusDatas; // @synthesize handlerReturnStatusDatas=_handlerReturnStatusDatas;
-@property (nonatomic) BOOL hasErrorCode;
+@property (readonly, nonatomic) BOOL hasCommandID;
+@property (readonly, nonatomic) BOOL hasPlayerPath;
+@property (nonatomic) BOOL hasSendError;
+@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (nonatomic) int sendError; // @synthesize sendError=_sendError;
 
 + (Class)handlerReturnStatusDataType;
 - (void).cxx_destruct;
-- (void)addHandlerReturnStatus:(unsigned int)arg1;
+- (int)StringAsHandlerReturnStatus:(id)arg1;
+- (int)StringAsSendError:(id)arg1;
+- (void)addHandlerReturnStatus:(int)arg1;
 - (void)addHandlerReturnStatusData:(id)arg1;
 - (void)clearHandlerReturnStatus;
 - (void)clearHandlerReturnStatusDatas;
@@ -35,14 +45,16 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned int)handlerReturnStatusAtIndex:(unsigned long long)arg1;
+- (id)handlerReturnStatusAsString:(int)arg1;
+- (int)handlerReturnStatusAtIndex:(unsigned long long)arg1;
 - (id)handlerReturnStatusDataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)handlerReturnStatusDatasCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setHandlerReturnStatus:(unsigned int *)arg1 count:(unsigned long long)arg2;
+- (id)sendErrorAsString:(int)arg1;
+- (void)setHandlerReturnStatus:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

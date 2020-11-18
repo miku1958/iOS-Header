@@ -57,6 +57,7 @@
     BOOL _likedStateEnabled;
     BOOL _supportsLikedState;
     BOOL _prefersSeekOverSkip;
+    BOOL _startItem;
     BOOL _shouldPreventPlayback;
     BOOL _allowsAirPlayFromCloud;
     BOOL _allowsExternalPlayback;
@@ -194,6 +195,7 @@
 @property (readonly, nonatomic) BOOL shouldPreventPlayback; // @synthesize shouldPreventPlayback=_shouldPreventPlayback;
 @property (readonly, nonatomic) BOOL shouldShowComposer;
 @property (nonatomic) float soundCheckVolumeNormalization; // @synthesize soundCheckVolumeNormalization=_soundCheckVolumeNormalization;
+@property (nonatomic, getter=isStartItem) BOOL startItem; // @synthesize startItem=_startItem;
 @property (readonly, nonatomic) BOOL stationAllowsItemLiking;
 @property (readonly, copy, nonatomic) NSString *stationHash;
 @property (readonly, nonatomic) long long stationID;

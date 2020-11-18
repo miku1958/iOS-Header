@@ -6,15 +6,20 @@
 
 #import <AVFoundation/NSObject-Protocol.h>
 
-@class AVOutputDevice, NSArray, NSData, NSNumber, NSString;
+@class AVOutputDevice, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @protocol AVOutputDeviceImpl <NSObject>
 
 @property (readonly, copy, nonatomic) NSString *ID;
+@property (readonly, nonatomic) NSDictionary *airPlayProperties;
+@property (readonly, nonatomic) BOOL automaticallyAllowsConnectionsFromPeersInHomeGroup;
 @property (readonly, nonatomic) NSNumber *batteryLevel;
+@property (readonly, nonatomic) BOOL canAccessAppleMusic;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets;
+@property (readonly, nonatomic) BOOL canAccessiCloudMusicLibrary;
 @property (readonly, nonatomic) BOOL canBeGroupLeader;
 @property (readonly, nonatomic) BOOL canBeGrouped;
+@property (readonly, nonatomic) BOOL canCommunicateWithAllLogicalDeviceMembers;
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel;
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
@@ -28,19 +33,22 @@
 @property (readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property (readonly, nonatomic, getter=isInUseByPairedDevice) BOOL inUseByPairedDevice;
 @property (readonly, nonatomic) BOOL isGroupLeader;
+@property (readonly, nonatomic) BOOL isLogicalDeviceLeader;
 @property (readonly, nonatomic) NSNumber *leftBatteryLevel;
 @property (readonly, nonatomic) NSString *logicalDeviceID;
 @property (readonly, nonatomic) NSString *manufacturer;
 @property (readonly, copy, nonatomic) NSString *modelID;
 @property (readonly, copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) BOOL onlyAllowsConnectionsFromPeersInHomeGroup;
 @property (weak) AVOutputDevice *parentOutputDevice;
 @property (readonly, nonatomic) BOOL participatesInGroupPlayback;
 @property (readonly, nonatomic) BOOL requiresAuthorization;
 @property (readonly, nonatomic) NSNumber *rightBatteryLevel;
 @property (readonly, nonatomic) NSString *serialNumber;
+@property (readonly, nonatomic) BOOL supportsBufferedAirPlay;
 @property (readonly) float volume;
 
-- (void)configureUsingBlock:(void (^)(id<AVOutputDeviceConfigurationModification>))arg1 completionHandler:(void (^)(id<AVOutputDeviceConfigurationRetrieval>, NSError *))arg2;
+- (void)configureUsingBlock:(void (^)(id<AVOutputDeviceConfigurationModification>))arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(int, id<AVOutputDeviceConfigurationRetrieval>, NSString *, NSError *))arg3;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 @end

@@ -23,11 +23,8 @@
 @property (nonatomic) BOOL started; // @synthesize started=_started;
 
 - (void).cxx_destruct;
-- (void)_runIfNecessary;
-- (id)addCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)addFailureBlock:(CDUnknownBlockType)arg1;
-- (id)addSuccessBlock:(CDUnknownBlockType)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1 scheduler:(id)arg2;
+- (void)willAddCompletionBlock;
 
 @end
 

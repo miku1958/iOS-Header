@@ -56,6 +56,7 @@
 + (id)properties;
 + (id)readonlyBefore;
 + (BOOL)resolveInstanceMethod:(SEL)arg1;
++ (id)schemaHashRoot;
 - (void).cxx_destruct;
 - (BOOL)_validateType:(id)arg1 error:(id *)arg2;
 - (void)clearVersionOverride;

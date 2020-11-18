@@ -14,8 +14,9 @@
 }
 
 @property (readonly, getter=isCharging) BOOL charging;
+@property (weak, nonatomic) id<IMBatteryStatusTestDelegate> testDelegate; // @synthesize testDelegate=_testDelegate;
 
-- (void)setTestDelegate:(id)arg1;
+- (void).cxx_destruct;
 
 @end
 

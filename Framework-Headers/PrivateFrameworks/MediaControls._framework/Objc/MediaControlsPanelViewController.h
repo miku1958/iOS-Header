@@ -12,7 +12,7 @@
 #import <MediaControls/MediaControlsEndpointControllerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsRatingActionSheet-Protocol.h>
 
-@class MPAVRoutingViewController, MPArtworkCatalog, MPMediaControlsViewController, MediaControlsEndpointController, MediaControlsHeaderView, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsVolumeContainerView, NSMutableArray, NSString, UIView;
+@class MPAVRoutingViewController, MPArtworkCatalog, MPMediaControlsViewController, MPVolumeGroupSliderCoordinator, MediaControlsEndpointController, MediaControlsHeaderView, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsVolumeContainerView, NSMutableArray, NSString, UIView;
 @protocol MediaControlsPanelViewControllerDelegate;
 
 @interface MediaControlsPanelViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsRatingActionSheet, MPAVRoutingViewControllerThemeDelegate, MPMediaControlsViewControllerDelegate, MediaControlsCollectionItemViewController>
@@ -37,6 +37,8 @@
     NSMutableArray *_secondaryStringComponents;
     MPMediaControlsViewController *_coverSheetRoutingViewController;
     MPArtworkCatalog *_artworkCatalog;
+    MPVolumeGroupSliderCoordinator *_groupSliderCoordinator;
+    NSString *_label;
     unsigned long long _supportedModes;
     long long _selectedMode;
     MediaControlsEndpointController *_endpointController;
@@ -53,10 +55,11 @@
 @property (weak, nonatomic) id<MediaControlsPanelViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MediaControlsEndpointController *endpointController; // @synthesize endpointController=_endpointController;
+@property (strong, nonatomic) MPVolumeGroupSliderCoordinator *groupSliderCoordinator; // @synthesize groupSliderCoordinator=_groupSliderCoordinator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MediaControlsHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (nonatomic) BOOL isListeningForResponse; // @synthesize isListeningForResponse=_isListeningForResponse;
-@property (copy, nonatomic) NSString *label;
+@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
 @property (strong, nonatomic) MediaControlsParentContainerView *parentContainerView; // @synthesize parentContainerView=_parentContainerView;
 @property (strong, nonatomic) MediaControlsRoutingCornerView *routingCornerView; // @synthesize routingCornerView=_routingCornerView;
@@ -88,7 +91,6 @@
 - (void)_updateRouteNameLabel;
 - (void)_updateRoutingCornerView;
 - (void)_updateSecondaryStringFormat;
-- (void)_updateShouldForceVolumeControlDisabled;
 - (void)_updateStyle;
 - (struct UIEdgeInsets)contentInsetsForRoutingViewController:(id)arg1;
 - (void)endpointController:(id)arg1 didLoadNewResponse:(id)arg2;
@@ -98,10 +100,12 @@
 - (void)headerViewButtonPressed:(id)arg1;
 - (void)headerViewLaunchNowPlayingAppButtonPressed:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithStyle:(long long)arg1;
 - (void)mediaControlsViewControllerDidReceiveInteraction:(id)arg1;
 - (void)presentRatingActionSheet:(id)arg1;
 - (void)routingViewController:(id)arg1 willDisplayCell:(id)arg2;
 - (void)setSelectedMode:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

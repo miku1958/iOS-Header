@@ -6,25 +6,30 @@
 
 #import <Foundation/NSObject.h>
 
-@class MSVMultiCallback, NSData, NSError, NSString, PBCodable;
+@class MRProtocolClientConnection, MSVMultiCallback, NSData, NSError, NSString, PBCodable;
 
 @interface MRProtocolMessage : NSObject
 {
     NSData *_protobufData;
+    BOOL _replied;
+    MSVMultiCallback *_messageSentCallbacks;
+    MSVMultiCallback *_messagePurgedCallbacks;
+    BOOL _isReply;
     PBCodable *_underlyingCodableMessage;
     NSError *_error;
     NSString *_identifier;
     unsigned long long _timestamp;
-    MSVMultiCallback *_messageSentCallbacks;
-    MSVMultiCallback *_messagePurgedCallbacks;
+    MRProtocolClientConnection *_clientConnection;
 }
 
+@property (weak, nonatomic) MRProtocolClientConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
 @property (readonly, nonatomic) NSString *description;
 @property (readonly, nonatomic) unsigned long long encryptionType;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) MSVMultiCallback *messagePurgedCallbacks; // @synthesize messagePurgedCallbacks=_messagePurgedCallbacks;
-@property (readonly, nonatomic) MSVMultiCallback *messageSentCallbacks; // @synthesize messageSentCallbacks=_messageSentCallbacks;
+@property (nonatomic) BOOL isReply; // @synthesize isReply=_isReply;
+@property (readonly, nonatomic) MSVMultiCallback *messagePurgedCallbacks;
+@property (readonly, nonatomic) MSVMultiCallback *messageSentCallbacks;
 @property (readonly, nonatomic) unsigned long long priority;
 @property (readonly, nonatomic) NSData *protobufData;
 @property (readonly, nonatomic) BOOL shouldLog;
@@ -35,8 +40,10 @@
 + (unsigned long long)currentProtocolVersion;
 + (id)protocolMessageWithProtobufData:(id)arg1;
 - (void).cxx_destruct;
-- (id)init;
-- (id)initWithUnderlyingCodableMessage:(id)arg1 identifier:(id)arg2 error:(id)arg3;
+- (void)dealloc;
+- (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
+- (BOOL)reply;
+- (BOOL)replyWithMessage:(id)arg1;
 
 @end
 

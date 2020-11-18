@@ -41,9 +41,11 @@
 - (id)initWithConfiguration:(id)arg1 url:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)manualProvisioningEnabledForRegion:(id)arg1;
-- (id)marketGeoRegionNoitificationHourForRegion:(id)arg1;
-- (id)marketGeoRegionNoitificationSendLimitForRegion:(id)arg1;
 - (id)marketGeoRegionNotificationDisabledNetworksForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationHourForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationNetworkThresholdsForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationSendLimitForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationTimeRangeForRegion:(id)arg1;
 - (id)maxRefreshIntervalForRegion:(id)arg1;
 - (id)maxRefreshIntervalForUnsupportedRegion;
 - (id)paymentServicesMerchantURLForRegion:(id)arg1;

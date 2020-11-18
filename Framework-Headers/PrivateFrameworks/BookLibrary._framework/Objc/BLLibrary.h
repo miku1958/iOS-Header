@@ -28,6 +28,7 @@
 + (id)defaultBookLibrary;
 + (void)initialize;
 - (void).cxx_destruct;
+- (BOOL)_addBookItemToEduContainer:(id)arg1 error:(id *)arg2;
 - (BOOL)_addSharedBookToPurchasesPlistWithPermlink:(id)arg1 error:(id *)arg2;
 - (id)_allPlists;
 - (id)_bookItemFromPermlink:(id)arg1 error:(id *)arg2;
@@ -42,6 +43,7 @@
 - (BOOL)_isMultiUser;
 - (BOOL)_isShareableBook:(id)arg1;
 - (id)_list:(id)arg1 testBlock:(CDUnknownBlockType)arg2;
+- (id)_lookupBookItemExhaustiveFromPermlink:(id)arg1 error:(id *)arg2;
 - (id)_orphanedBookURLs;
 - (id)_perUserBookURLForBookURL:(id)arg1;
 - (long long)_periodicPurgeVolume:(id)arg1 urgency:(long long)arg2 requested:(id)arg3;

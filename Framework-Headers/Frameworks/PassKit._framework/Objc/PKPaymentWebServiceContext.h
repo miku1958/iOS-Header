@@ -61,6 +61,7 @@
 - (id)TSMPushTopics;
 - (double)_contextProvisioningEnablementValue;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
+- (BOOL)contextMeetsMarketGeoNotificationThresholdForRegion:(id)arg1 paymentNetwork:(long long)arg2;
 - (BOOL)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

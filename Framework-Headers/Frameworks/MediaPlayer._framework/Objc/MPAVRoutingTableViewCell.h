@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPAVRoutingThemeableCellView-Protocol.h>
 
-@class MPAVRoutingTableViewCellSubtitleTextState, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel;
+@class MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel;
 @protocol MPAVRoutingTableViewCellDelegate;
 
 @interface MPAVRoutingTableViewCell : UITableViewCell <MPAVRoutingThemeableCellView>
@@ -24,10 +24,12 @@
     BOOL _isDisplayedAsPicked;
     BOOL _useSmartAudioCheckmarkStyle;
     BOOL _provideOwnSeparator;
+    BOOL _showingVolumeSlider;
     id<MPAVRoutingTableViewCellDelegate> _delegate;
     unsigned long long _mirroringStyle;
     unsigned long long _iconStyle;
     double _subtitleViewAlpha;
+    MPVolumeSlider *_volumeSlider;
     MPAVRoutingTableViewCellSubtitleTextState *_subtitleTextState;
 }
 
@@ -41,21 +43,25 @@
 @property (nonatomic) BOOL mirroringSwitchVisible; // @synthesize mirroringSwitchVisible=_mirroringSwitchVisible;
 @property (nonatomic, getter=isPendingSelection) BOOL pendingSelection; // @synthesize pendingSelection=_pendingSelection;
 @property (nonatomic) BOOL provideOwnSeparator; // @synthesize provideOwnSeparator=_provideOwnSeparator;
+@property (nonatomic, getter=isShowingVolumeSlider) BOOL showingVolumeSlider; // @synthesize showingVolumeSlider=_showingVolumeSlider;
 @property (strong, nonatomic) MPAVRoutingTableViewCellSubtitleTextState *subtitleTextState; // @synthesize subtitleTextState=_subtitleTextState;
 @property (nonatomic) double subtitleViewAlpha; // @synthesize subtitleViewAlpha=_subtitleViewAlpha;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useSmartAudioCheckmarkStyle; // @synthesize useSmartAudioCheckmarkStyle=_useSmartAudioCheckmarkStyle;
+@property (strong, nonatomic) MPVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
 
 - (void).cxx_destruct;
 - (void)_animateSubtitleLabelToNextAvailableText;
 - (id)_batteryTextForRoute:(id)arg1;
 - (id)_checkmarkImageForSmartAudio;
+- (id)_checkmarkImageNameForSmartAudio;
 - (void)_configureDetailLabel:(id)arg1;
 - (void)_configureLabel:(id)arg1;
+- (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;
 - (id)_iconImageForRoute:(id)arg1;
 - (id)_pairedDeviceTextForRoute:(id)arg1;
+- (void)_removeVolumeSlider;
 - (BOOL)_shouldShowSeparateBatteryPercentagesForBatteryLevel:(id)arg1;
-- (void)_updateDetailStackViewForEndpoint:(id)arg1 route:(id)arg2;
 - (void)_updateSmartAudioAccessory;
 - (void)_updateSpinnerStyle;
 - (void)_updateSubtitleTextLabelForRoute:(id)arg1;
@@ -63,12 +69,14 @@
 - (id)iconView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (id)separatorView;
 - (void)setAccessoryType:(long long)arg1;
 - (void)setTintColor:(id)arg1;
 - (id)subtitleView;
 - (id)titleView;
 - (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(BOOL)arg3;
+- (id)volumeView;
 
 @end
 

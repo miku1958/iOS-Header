@@ -20,8 +20,8 @@
 }
 
 @property (readonly, copy) NSArray *accessories;
+@property (readonly) BOOL allowUnauthenticatedRequests;
 @property (readonly, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property (readonly) unsigned long long options; // @synthesize options=_options;
 
 + (BOOL)isAccessorySupported:(id)arg1;
 + (id)shortDescription;
@@ -36,6 +36,7 @@
 - (id)initWithUser:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)options;
 - (id)shortDescription;
 
 @end

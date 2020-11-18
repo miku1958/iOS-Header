@@ -49,6 +49,7 @@
     unsigned int excessive_keepalive_count;
     unsigned int excessive_keepalive_interval;
     CDUnknownBlockType excessive_keepalive_handler;
+    unsigned int interface_time_delta;
     struct nw_connection_timestamp_s *timestamps;
     unsigned short num_timestamps;
     unsigned short used_timestamps;

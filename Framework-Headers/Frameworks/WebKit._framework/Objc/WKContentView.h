@@ -361,7 +361,7 @@ __attribute__((visibility("hidden")))
 - (void)_showImageSheet;
 - (void)_showInspectorHighlight:(const struct Highlight *)arg1;
 - (void)_showLinkSheet;
-- (void)_showPlaybackTargetPicker:(BOOL)arg1 fromRect:(const struct IntRect *)arg2;
+- (void)_showPlaybackTargetPicker:(BOOL)arg1 fromRect:(const struct IntRect *)arg2 routeSharingPolicy:(int)arg3 routingContextUID:(id)arg4;
 - (void)_showRunOpenPanel:(struct OpenPanelParameters *)arg1 resultListener:(struct WebOpenPanelResultListenerProxy *)arg2;
 - (void)_showTapHighlight;
 - (void)_showTextStyleOptions:(id)arg1;

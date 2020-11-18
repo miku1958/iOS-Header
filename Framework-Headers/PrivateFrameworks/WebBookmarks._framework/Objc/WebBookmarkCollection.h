@@ -235,6 +235,7 @@
 - (int)_specialIDForBookmarkBeingSaved:(id)arg1;
 - (int)_specialIDForBookmarkTitle:(id)arg1;
 - (struct sqlite3_stmt *)_sqliteStatementWithQuery:(id)arg1;
+- (int)_sqliteStatementWithQuery:(id)arg1 runInBlock:(CDUnknownBlockType)arg2;
 - (void)_startReadingListFetcher;
 - (BOOL)_syncAdd:(id)arg1 toParent:(int)arg2 withOrderIndex:(unsigned int)arg3 error:(id *)arg4;
 - (id)_syncKeysForServerIDs:(id)arg1;
@@ -291,6 +292,7 @@
 - (id)firstReadingListBookmarkNeedingArchiveInMode:(int)arg1;
 - (id)firstReadingListBookmarkNeedingArchiveInMode:(int)arg1 automaticArchivingEnabled:(BOOL)arg2;
 - (id)firstReadingListBookmarkWithURLMatchingString:(id)arg1 prefixMatch:(BOOL)arg2;
+- (BOOL)fixCachedNumberOfChildrenIfNeeded;
 - (id)frequentlyVisitedSitesFolder;
 - (id)frequentlyVisitedSitesFolderBookmarkID;
 - (id)frequentlyVisitedSitesList;

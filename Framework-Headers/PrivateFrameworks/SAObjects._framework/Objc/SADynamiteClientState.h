@@ -6,14 +6,21 @@
 
 #import <SAObjects/SAAceClientState.h>
 
-@class NSString, SACalendar;
+#import <SAObjects/SABackgroundContextObject-Protocol.h>
 
-@interface SADynamiteClientState : SAAceClientState
+@class NSNumber, NSString, SACalendar;
+
+@interface SADynamiteClientState : SAAceClientState <SABackgroundContextObject>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SACalendar *expirationDate;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *status;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSNumber *userHistoryUnmodifiable;
 @property (copy, nonatomic) NSString *userToken;
 @property (copy, nonatomic) NSString *xpAbCookie;
 

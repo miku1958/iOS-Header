@@ -62,6 +62,7 @@
 - (void)_handleRemoveGroup:(id)arg1;
 - (void)_handleRemoveSetting:(id)arg1;
 - (void)_relayRequestMessage:(id)arg1 targetAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)accessoryFromTarget;
 - (void)addGroup:(id)arg1;
 - (void)addSetting:(id)arg1;
 - (BOOL)compareSettingsTree:(id)arg1;
@@ -82,9 +83,13 @@
 - (id)initWithName:(id)arg1;
 - (void)intersectSettingGroup:(id)arg1 groupMetadata:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isOwnerCurrentDevice;
+- (BOOL)isPrivateToDevice;
+- (BOOL)isTargetCurrentDevice;
 - (id)logIdentifier;
 - (id)mergeWithGroupMetadata:(id)arg1;
 - (id)messageDestination;
+- (id)ownerAccessory;
 - (void)registerForMessages;
 - (id)remoteMessageDestination:(id)arg1;
 - (void)removeGroup:(id)arg1;

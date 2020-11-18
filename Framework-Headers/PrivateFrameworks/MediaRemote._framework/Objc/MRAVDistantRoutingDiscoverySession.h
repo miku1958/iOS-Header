@@ -8,7 +8,7 @@
 
 #import <MediaRemote/MRAVDistantRoutingDiscoveryClientProtocol-Protocol.h>
 
-@class NSArray, NSObject, NSString, NSXPCConnection;
+@class NSArray, NSMutableDictionary, NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface MRAVDistantRoutingDiscoverySession : MRAVRoutingDiscoverySession <MRAVDistantRoutingDiscoveryClientProtocol>
@@ -22,11 +22,13 @@
     int _serviceResetNotifyToken;
     BOOL _hostedRoutingConnectionDidInitialize;
     NSXPCConnection *_hostedRoutingSessionConnection;
+    NSMutableDictionary *_distantExternalDevices;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *distantEndpoints;
+@property (strong, nonatomic) NSMutableDictionary *distantExternalDevices; // @synthesize distantExternalDevices=_distantExternalDevices;
 @property (strong, nonatomic) NSArray *distantOutputDevices;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSXPCConnection *hostedRoutingSessionConnection; // @synthesize hostedRoutingSessionConnection=_hostedRoutingSessionConnection;
@@ -47,9 +49,9 @@
 - (id)availableOutputDevices;
 - (void)availableOutputDevicesDidChange:(id)arg1;
 - (void)dealloc;
+- (BOOL)devicePresenceDetected;
 - (unsigned int)discoveryMode;
 - (unsigned int)endpointFeatures;
-- (BOOL)hasAvailableEndpoints;
 - (id)initWithEndpointFeatures:(unsigned int)arg1;
 - (id)routingContextUID;
 - (void)setDiscoveryMode:(unsigned int)arg1;

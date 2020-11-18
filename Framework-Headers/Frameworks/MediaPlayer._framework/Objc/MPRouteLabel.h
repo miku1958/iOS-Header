@@ -43,11 +43,14 @@
 @property (nonatomic) long long truncationMode; // @synthesize truncationMode=_truncationMode;
 
 - (void).cxx_destruct;
+- (id)_bestStringThatFitsSize:(struct CGSize)arg1;
 - (long long)_compareLength:(id)arg1 with:(id)arg2;
-- (id)_formattedRouteNameForText:(id)arg1;
-- (BOOL)_labelFitsText:(id)arg1;
+- (id)_formattedRouteNameForDesignatedGroupLeaderNameText:(id)arg1 routeNamesText:(id)arg2;
+- (BOOL)_labelFitsText:(id)arg1 withSize:(struct CGSize)arg2;
 - (struct CGSize)_labelSizeForText:(id)arg1;
+- (id)_marketingNames;
 - (id)_plusSeparatedRouteNames:(id)arg1;
+- (void)_routeDidChangeNotification:(id)arg1;
 - (id)_routeNamesSortedAlphanumeric:(id)arg1;
 - (id)_routeNamesSortedLength:(id)arg1;
 - (id)_truncateText:(id)arg1 by:(long long)arg2;

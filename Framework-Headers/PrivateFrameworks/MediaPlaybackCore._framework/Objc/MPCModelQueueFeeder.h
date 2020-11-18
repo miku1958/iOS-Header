@@ -26,6 +26,7 @@
     BOOL _hasFoundStartItem;
     BOOL _hasLoadedFinalResponse;
     BOOL _hasShuffledInitialResult;
+    long long _preferredStartIndexFromPlaybackContext;
     NSObject<OS_dispatch_queue> *_itemListChangeDetectionQueue;
     NSOperationQueue *_operationQueue;
     MPPlaceholderAVItem *_placeholderAVItem;

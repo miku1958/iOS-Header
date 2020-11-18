@@ -24,7 +24,6 @@
     NSString *_primaryString;
     NSString *_secondaryString;
     NSString *_tertiaryString;
-    NSAttributedString *_transactionValueAttributedText;
     NSString *_transactionIdentifier;
     CNAvatarView *_avatarView;
 }
@@ -40,7 +39,7 @@
 @property (strong, nonatomic) UIColor *tertiaryColor; // @synthesize tertiaryColor=_tertiaryColor;
 @property (strong, nonatomic) NSString *tertiaryString; // @synthesize tertiaryString=_tertiaryString;
 @property (strong, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
-@property (strong, nonatomic) NSAttributedString *transactionValueAttributedText; // @synthesize transactionValueAttributedText=_transactionValueAttributedText;
+@property (strong, nonatomic) NSAttributedString *transactionValueAttributedText; // @dynamic transactionValueAttributedText;
 
 + (id)defaultPrimaryLabelFont;
 + (id)defaultSecondaryLabelFont;

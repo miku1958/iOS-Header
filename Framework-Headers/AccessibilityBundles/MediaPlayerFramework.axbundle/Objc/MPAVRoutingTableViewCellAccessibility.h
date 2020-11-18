@@ -14,6 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityDescriptionForRoute:(id)arg1;
+- (BOOL)_axIsUsingSmartAudioCheckmarkStyle;
+- (BOOL)_axIsVolumeSliderVisible;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLabel;
 - (id)accessibilityMediaRoute;
 - (id)accessibilityValue;

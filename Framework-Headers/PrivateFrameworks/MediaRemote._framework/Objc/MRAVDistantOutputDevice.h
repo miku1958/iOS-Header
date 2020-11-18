@@ -21,29 +21,39 @@
 - (void).cxx_destruct;
 - (id)MACAddress;
 - (float)batteryLevel;
+- (BOOL)canAccessAppleMusic;
 - (BOOL)canAccessRemoteAssets;
+- (BOOL)canAccessiCloudMusicLibrary;
 - (BOOL)canRelayCommunicationChannel;
 - (id)descriptor;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
 - (void)encodeWithCoder:(id)arg1;
+- (id)firmwareVersion;
+- (BOOL)groupContainsGroupLeader;
 - (id)groupID;
 - (BOOL)hasBatteryLevel;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDescriptor:(id)arg1;
+- (id)initWithSkeleton:(id)arg1;
+- (BOOL)isAirPlayReceiverSessionActive;
 - (BOOL)isDeviceGroupable;
 - (BOOL)isGroupLeader;
 - (BOOL)isGroupable;
 - (BOOL)isLocalDevice;
+- (BOOL)isProxyGroupPlayer;
 - (BOOL)isRemoteControllable;
+- (BOOL)isVolumeControlAvailable;
 - (id)logicalDeviceID;
 - (id)modelID;
 - (id)modelSpecificInfo;
 - (id)name;
 - (BOOL)requiresAuthorization;
 - (id)sourceInfo;
+- (BOOL)supportsBufferedAirPlay;
 - (BOOL)supportsExternalScreen;
 - (id)uid;
+- (float)volume;
 
 @end
 

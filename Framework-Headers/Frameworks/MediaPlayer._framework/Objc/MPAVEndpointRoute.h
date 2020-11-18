@@ -6,27 +6,37 @@
 
 #import <MediaPlayer/MPAVRoute.h>
 
-@class MPAVRouteConnection;
+@class MPAVRouteConnection, MPMRAVEndpointWrapper, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface MPAVEndpointRoute : MPAVRoute
 {
     MPAVRouteConnection *_connection;
-    void *_endpoint;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
+    NSString *_sortName;
+    MPMRAVEndpointWrapper *_endpointWrapper;
 }
 
-@property (readonly, nonatomic) void *endpoint; // @synthesize endpoint=_endpoint;
+@property (readonly, nonatomic) BOOL canModifyGroupMembership;
+@property (strong, nonatomic) MPAVRouteConnection *connection;
+@property (readonly, nonatomic) void *endpoint;
+@property (strong, nonatomic) MPMRAVEndpointWrapper *endpointWrapper; // @synthesize endpointWrapper=_endpointWrapper;
+@property (readonly, nonatomic) NSString *sortName;
 
 + (void)getActiveEndpointRouteWithCompletion:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_endpointDidChange:(id)arg1;
 - (void)_endpointOutputDevicesDidChange:(id)arg1;
+- (BOOL)_groupLeaderIsOfDeviceSubtype:(unsigned int)arg1;
 - (unsigned long long)_outputDevicesComposition;
 - (BOOL)canAccessRemoteAssets;
-- (id)connection;
 - (void)dealloc;
 - (id)description;
 - (id)designatedGroupLeaderName;
 - (void)encodeWithCoder:(id)arg1;
+- (void)establishGroup;
 - (id)groupUID;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEndpoint:(void *)arg1;

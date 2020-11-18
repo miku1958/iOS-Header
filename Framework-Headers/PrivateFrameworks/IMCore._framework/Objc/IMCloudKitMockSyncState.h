@@ -12,6 +12,7 @@
 {
     BOOL _IMCloudKitSyncingEnabled;
     BOOL _IMCloudKitIsSyncing;
+    BOOL _IMCloudKitSyncPaused;
     BOOL _IMCloudKitIsEligibleForTruthZone;
     BOOL _IMCloudKitIsInExitState;
     BOOL _IMCloudKitIsRemovedFromBackup;
@@ -39,6 +40,7 @@
 @property long long IMCloudKitSyncControllerSyncType; // @synthesize IMCloudKitSyncControllerSyncType=_IMCloudKitSyncControllerSyncType;
 @property (strong) NSDate *IMCloudKitSyncDate; // @synthesize IMCloudKitSyncDate=_IMCloudKitSyncDate;
 @property (strong) NSArray *IMCloudKitSyncErrors; // @synthesize IMCloudKitSyncErrors=_IMCloudKitSyncErrors;
+@property BOOL IMCloudKitSyncPaused; // @synthesize IMCloudKitSyncPaused=_IMCloudKitSyncPaused;
 @property BOOL IMCloudKitSyncingEnabled; // @synthesize IMCloudKitSyncingEnabled=_IMCloudKitSyncingEnabled;
 
 - (void).cxx_destruct;

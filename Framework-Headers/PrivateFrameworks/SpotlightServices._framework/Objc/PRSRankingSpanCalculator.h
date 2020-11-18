@@ -10,12 +10,12 @@
 {
     float _unordered;
     float _ordered;
+    float _firstTermPosition;
     float _normCount;
     float _pairDist;
-    unsigned long long _firstTermPosition;
 }
 
-@property (nonatomic) unsigned long long firstTermPosition; // @synthesize firstTermPosition=_firstTermPosition;
+@property (nonatomic) float firstTermPosition; // @synthesize firstTermPosition=_firstTermPosition;
 @property (nonatomic) float normCount; // @synthesize normCount=_normCount;
 @property (nonatomic) float ordered; // @synthesize ordered=_ordered;
 @property (nonatomic) float pairDist; // @synthesize pairDist=_pairDist;

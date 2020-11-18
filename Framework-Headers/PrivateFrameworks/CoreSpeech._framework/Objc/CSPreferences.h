@@ -10,11 +10,13 @@
 {
 }
 
++ (unsigned long long)_deviceCategoryForDeviceProductType:(id)arg1;
++ (id)deviceCategoryStringRepresentationForCategoryType:(unsigned long long)arg1;
++ (BOOL)isCurrentDeviceCompatibleWithVoiceProfileAt:(id)arg1;
 + (id)sharedPreferences;
 - (id)CSSATBasePath;
 - (id)_CSSATUpdatePath;
 - (id)_CSSATUploadPath;
-- (id)_deviceCategoryMap;
 - (id)_getEnrolledLanguageList;
 - (BOOL)_isDirectory:(id)arg1;
 - (BOOL)_markSATEnrollmentMigratedForLanguageCode:(id)arg1;
@@ -23,6 +25,7 @@
 - (BOOL)_storeModeEnabled;
 - (id)assistantAudioFileLogDirectory;
 - (id)assistantLogDirectory;
+- (double)audioSessionActivationDelay;
 - (id)baseDir;
 - (BOOL)fileLoggingIsEnabled;
 - (id)fileLoggingLevel;
@@ -32,7 +35,6 @@
 - (id)getUserVoiceProfileUploadPathWithEnrolledLanguageList:(id *)arg1;
 - (id)interstitialAbsoluteDirForLevel:(long long)arg1;
 - (id)interstitialRelativeDirForLevel:(long long)arg1;
-- (BOOL)isCurrentDeviceCompatibleWithVoiceProfileAt:(id)arg1;
 - (BOOL)myriadFileLoggingEnabled;
 - (void)notifyUserVoiceProfileUpdateReady;
 - (void)notifyUserVoiceProfileUploadComplete;

@@ -104,6 +104,8 @@
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setComplicationTemplate:(id)arg1;
+- (void)setContentsMultiplyColor:(id)arg1;
+- (void)setContentsMultiplyColor:(id)arg1 animated:(BOOL)arg2 withDuration:(double)arg3;
 - (void)setEditing:(BOOL)arg1;
 - (void)setMaxSize:(struct CGSize)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;

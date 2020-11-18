@@ -244,6 +244,7 @@
 - (void)__registerIncomingInvitations:(id)arg1;
 - (void)_acceptHomeInviteFromUser:(id)arg1 message:(id)arg2 trackInvite:(BOOL)arg3;
 - (void)_accessoriesAreLocallyReachableOnTransientDevice:(BOOL)arg1 forHome:(id)arg2;
+- (void)_accountAvailabilityChanged:(BOOL)arg1;
 - (void)_addCloudZone:(id)arg1 ownerName:(id)arg2;
 - (void)_addCurrentResidentDeviceToHomes:(id)arg1;
 - (void)_addPendingDataSyncAcksForUser:(id)arg1 forHome:(id)arg2;
@@ -329,8 +330,10 @@
 - (void)_handleLogControl:(id)arg1;
 - (void)_handleMetadataAssetUpdated;
 - (void)_handleMetadataSync:(id)arg1;
+- (void)_handlePairingIdentityRequest:(id)arg1;
 - (void)_handlePrimaryAccountDeleted:(id)arg1;
 - (void)_handlePrimaryAccountModified:(id)arg1;
+- (void)_handleQueryHomeNamespace:(id)arg1;
 - (void)_handleQueryMetadata:(id)arg1;
 - (void)_handleQueryVersionInformation:(id)arg1;
 - (void)_handleQueryiCloudSwitchState:(id)arg1;
@@ -408,7 +411,7 @@
 - (void)_removeCurrentResidentDeviceFromHomes:(id)arg1;
 - (void)_removeFromAssociatedPeers:(id)arg1 home:(id)arg2;
 - (void)_removeFromUnassociatedPeers:(id)arg1 home:(id)arg2;
-- (void)_removeHome:(id)arg1 withMessage:(id)arg2 saveToStore:(BOOL)arg3 notifyUsers:(BOOL)arg4;
+- (void)_removeHome:(id)arg1 withMessage:(id)arg2 saveToStore:(BOOL)arg3 notifyUsers:(BOOL)arg4 shouldRemovePairings:(BOOL)arg5;
 - (void)_removePendingDataSyncAcksForUser:(id)arg1 forHome:(id)arg2;
 - (void)_requestHomeDataSync;
 - (void)_resetCloudOperationRetryCounters;
@@ -512,6 +515,7 @@
 - (void)electRemoteAccessPeerForHome:(id)arg1;
 - (id)emptyModelObjectWithChangeType:(unsigned long long)arg1;
 - (void)eraseLocalHomeData;
+- (void)evaluateIfMediaPlaybackStateChanged:(id)arg1;
 - (void)evaluateToPushMetadataWhenHomeKitInUse;
 - (void)fetchAllZones;
 - (void)fetchHomeDataFromCloudWithCloudConflict:(BOOL)arg1 withDelay:(double)arg2;
@@ -544,7 +548,7 @@
 - (BOOL)isDataSyncInProgressWithMessage:(id)arg1;
 - (BOOL)isPairedWithWatch;
 - (BOOL)isResidentCapable;
-- (void)mediaPlaybackStateChanged:(id)arg1;
+- (void)kickAccountAvailabilityCheck;
 - (id)messageDestination;
 - (void)migrateModelObjectsToCloud:(long long)arg1 schemaVersion:(long long)arg2;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
@@ -576,6 +580,7 @@
 - (void)pushMetadataToAllWatches;
 - (void)pushMetadataToCloud;
 - (void)redispatchMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 toResidentForHome:(id)arg4;
+- (void)registerForMediaPlaybackStateChangeNotifications:(BOOL)arg1;
 - (void)registerQueriableAwdMetrics;
 - (void)registerStateHandler;
 - (void)relayMessage:(id)arg1;
@@ -600,8 +605,8 @@
 - (void)sendUserRemoved:(id)arg1 fromHome:(id)arg2 pairingUsername:(id)arg3 pushToCloud:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)setHomekitLastSyncedAssistantConfigurationVersion:(unsigned long long)arg1;
 - (BOOL)setLocalPairingIdentity:(id)arg1 error:(id *)arg2;
+- (void)setMediaAccessoriesPresent:(BOOL)arg1 homePodsPresent:(BOOL)arg2 inOwnedHomes:(BOOL)arg3;
 - (void)setSiriSyncRequest:(id)arg1;
-- (void)setSpeakersAreConfigured:(BOOL)arg1 inOwnedHomes:(BOOL)arg2;
 - (void)setupSession:(id)arg1 didCloseWithError:(id)arg2;
 - (void)startLocalTransport;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;

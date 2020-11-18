@@ -18,16 +18,17 @@
     NSMutableDictionary *_endpointControllersMap;
     BOOL _didLoadHomeUIDsOnce;
     BOOL _isRequestingActiveRoute;
-    MPAVEndpointRoute *_activeSystemRoute;
     MPMediaControlsConfiguration *_configuration;
     long long _discoveryMode;
     NSArray *_routes;
     id<MediaControlsEndpointsManagerDelegate> _delegate;
     MediaControlsHomeObserver *_homeObserver;
     MPAVRoutingController *_routingController;
+    NSString *_activeSystemRouteUID;
 }
 
-@property (strong, nonatomic) MPAVEndpointRoute *activeSystemRoute; // @synthesize activeSystemRoute=_activeSystemRoute;
+@property (strong, nonatomic) MPAVEndpointRoute *activeSystemRoute;
+@property (readonly, copy, nonatomic) NSString *activeSystemRouteUID; // @synthesize activeSystemRouteUID=_activeSystemRouteUID;
 @property (readonly, copy, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MediaControlsEndpointsManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -41,10 +42,9 @@
 
 - (void).cxx_destruct;
 - (void)_activeSystemRouteDidChange:(id)arg1;
-- (id)_endpointControllerContainingOutputDevice:(id)arg1 externalDeviceRef:(void **)arg2;
+- (id)_endpointControllerContainingOutputDevice:(id)arg1 endpointWrapper:(id *)arg2;
 - (BOOL)_homeHasRoute:(id)arg1;
-- (long long)_indexOfActiveRoute;
-- (long long)_indexOfRoute:(id)arg1;
+- (long long)_indexOfRouteWithUID:(id)arg1;
 - (void)_setRoutes:(id)arg1 withChangeDetails:(id)arg2;
 - (void)_updateActiveRoute;
 - (void)_updateWithRoutes:(id)arg1;

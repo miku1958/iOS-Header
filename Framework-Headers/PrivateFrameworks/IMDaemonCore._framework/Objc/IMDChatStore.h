@@ -30,6 +30,7 @@
 - (void)deleteChat:(id)arg1;
 - (id)init;
 - (id)loadAllChats;
+- (id)newestChatWithOriginalGroupID:(id)arg1 onService:(id)arg2;
 - (void)removeMessageWithGUID:(id)arg1 fromChat:(id)arg2;
 - (void)setChatIsFiltered:(BOOL)arg1 withChatGuid:(id)arg2;
 - (id)storeChat:(id)arg1;

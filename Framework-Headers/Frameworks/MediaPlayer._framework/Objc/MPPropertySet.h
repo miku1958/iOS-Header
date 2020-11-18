@@ -18,6 +18,7 @@
     NSDictionary *_relationships;
 }
 
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, nonatomic) NSSet *properties; // @synthesize properties=_properties;
 @property (readonly, nonatomic) NSDictionary *relationships; // @synthesize relationships=_relationships;
 

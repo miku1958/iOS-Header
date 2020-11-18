@@ -6,24 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-#import <IMSharedUtilities/CUTPowerMonitorDelegate-Protocol.h>
-#import <IMSharedUtilities/CUTWiFiManagerDelegate-Protocol.h>
-
-@class NSString;
 @protocol OS_dispatch_queue;
 
-@interface IMLogDump : NSObject <CUTPowerMonitorDelegate, CUTWiFiManagerDelegate>
+@interface IMLogDump : NSObject
 {
-    BOOL _shouldCollectStats;
+    BOOL _shouldCollectPowerWifiStats;
     NSObject<OS_dispatch_queue> *_logDumpQueue;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *logDumpQueue; // @synthesize logDumpQueue=_logDumpQueue;
-@property (readonly, nonatomic) BOOL shouldCollectStats; // @synthesize shouldCollectStats=_shouldCollectStats;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL shouldCollectPowerWifiStats; // @synthesize shouldCollectPowerWifiStats=_shouldCollectPowerWifiStats;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -42,13 +34,8 @@
 - (id)_predicateToAppend:(id)arg1;
 - (void)clearSyncStats;
 - (id)createTodaysStatisticDictionaryIfNeeded;
-- (void)cutPowerMonitorBatteryConnectedStateDidChange:(id)arg1;
-- (void)cutWiFiManagerLinkDidChange:(id)arg1 context:(id)arg2;
-- (void)dealloc;
-- (void)disconnectFromResourceForTotalDurationKey:(id)arg1 dateKey:(id)arg2 powerWifiDict:(id)arg3;
 - (void)dumpLogsToFolderAtPath:(id)arg1 withFileName:(id)arg2 lastHours:(int)arg3 predicate:(id)arg4 includeCKDebug:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (void)dumpMOCLoggingMetaData;
-- (id)getPowerAndWifiDictionaryForKey:(id)arg1;
 - (void)incrementAHDASyncAttempts;
 - (void)incrementCoreDuetSyncAttempts;
 - (id)init;
@@ -58,8 +45,6 @@
 - (void)printIfWeAreInTheMiddleOfASync;
 - (void)printPowerAndWifiStats;
 - (void)printSyncDurationStats;
-- (void)reconnectToResourceForTotalDurationKey:(id)arg1 dateKey:(id)arg2 powerWifiDict:(id)arg3;
-- (id)todaysKey;
 
 @end
 

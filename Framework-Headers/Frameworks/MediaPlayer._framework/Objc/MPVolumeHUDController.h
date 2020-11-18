@@ -20,7 +20,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_addCategory:(id)arg1;
-- (id)_representedCategoryForCategory:(id)arg1;
 - (void)_updateVisibility;
 - (void)addVolumeDisplay:(id)arg1;
 - (id)init;

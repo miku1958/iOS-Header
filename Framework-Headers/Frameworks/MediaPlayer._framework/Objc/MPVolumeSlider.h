@@ -28,6 +28,8 @@
     double _originalMinTrackViewAlphaOverride;
     double _originalMinValueViewAlphaOverride;
     double _originalMaxValueViewAlphaOverride;
+    BOOL _optimisticState;
+    float _optimisticValue;
     UILayoutGuide *_trackLayoutGuide;
     MPVolumeController *_volumeController;
     struct UIEdgeInsets _hitRectInsets;
@@ -40,6 +42,8 @@
 @property (nonatomic) struct UIEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property (readonly, nonatomic, getter=isOnScreen) BOOL onScreen;
 @property (readonly, nonatomic, getter=isOnScreenForVolumeDisplay) BOOL onScreenForVolumeDisplay;
+@property (nonatomic, getter=isInOptimisticState) BOOL optimisticState; // @synthesize optimisticState=_optimisticState;
+@property (nonatomic) float optimisticValue; // @synthesize optimisticValue=_optimisticValue;
 @property (strong, nonatomic) MPAVController *player;
 @property (strong, nonatomic) MPAVRoute *route;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
@@ -48,7 +52,7 @@
 @property (readonly, nonatomic) UILayoutGuide *trackLayoutGuide; // @synthesize trackLayoutGuide=_trackLayoutGuide;
 @property (readonly, nonatomic) NSString *volumeAudioCategory;
 @property (readonly, copy, nonatomic) NSString *volumeControlLabel;
-@property (readonly, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
+@property (strong, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 @property (strong, nonatomic) UIImage *volumeWarningTrackImage; // @synthesize volumeWarningTrackImage=_volumeWarningTrackImage;
 
 - (void).cxx_destruct;
@@ -77,6 +81,7 @@
 - (struct CGRect)hitRect;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (id)initWithoutDataSource:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (float)maximumValue;
 - (float)minimumValue;

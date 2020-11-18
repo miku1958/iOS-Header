@@ -8,10 +8,11 @@
 
 #import <UserNotificationsUIKit/NCNotificationCustomContentProviding-Protocol.h>
 
-@class NSString;
+@class NCNotificationContentContainerViewController, NSString;
 
 @interface NCNotificationRequestCustomContentProvider : NSObject <NCNotificationCustomContentProviding>
 {
+    NCNotificationContentContainerViewController *_customContentViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)longLookContentProvidingViewControllerForNotificationViewController:(id)arg1;
 
 @end

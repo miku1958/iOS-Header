@@ -51,9 +51,12 @@
 - (void)_removeTransferringTransfer:(id)arg1;
 - (id)_removeWrapperForTransfer:(id)arg1;
 - (BOOL)_shouldDownloadAssetForTransfer:(id)arg1 forMessageItem:(id)arg2;
+- (BOOL)_shouldUpdateSyncStats:(id)arg1 originalSyncState:(long long)arg2;
+- (id)_statsCollector;
 - (id)_temporaryPathForGUID:(id)arg1 filename:(id)arg2;
 - (void)_transferTimerTick:(id)arg1;
 - (void)_updateContextStamp;
+- (void)_updateSyncStatsForAttachments:(id)arg1 incrementTotalAttachmentCount:(unsigned long long)arg2;
 - (BOOL)_usingStingRay;
 - (void)acceptTransfer:(id)arg1 path:(id)arg2;
 - (void)addDefaultGatekeeperPropertiesToDirectory:(id)arg1;

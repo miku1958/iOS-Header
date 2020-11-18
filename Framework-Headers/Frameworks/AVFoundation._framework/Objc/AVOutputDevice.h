@@ -28,13 +28,19 @@
 + (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1 routingContextFactory:(id)arg2;
 + (id)sharedLocalDevice;
 - (id)ID;
+- (id)airPlayProperties;
+- (BOOL)automaticallyAllowsConnectionsFromPeersInHomeGroup;
 - (float)batteryLevel;
+- (BOOL)canAccessAppleMusic;
 - (BOOL)canAccessRemoteAssets;
+- (BOOL)canAccessiCloudMusicLibrary;
 - (BOOL)canBeGroupLeader;
 - (BOOL)canBeGrouped;
+- (BOOL)canCommunicateWithAllLogicalDeviceMembers;
 - (BOOL)canRelayCommunicationChannel;
 - (BOOL)canSetVolume;
 - (void)configureUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)configureUsingBlock:(CDUnknownBlockType)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)connectedPairedDevices;
 - (void)dealloc;
 - (id)description;
@@ -51,14 +57,17 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGroupLeader;
 - (BOOL)isInUseByPairedDevice;
+- (BOOL)isLogicalDeviceLeader;
 - (id)logicalDeviceID;
 - (id)modelSpecificInformation;
+- (BOOL)onlyAllowsConnectionsFromPeersInHomeGroup;
 - (void)outputDeviceImplDidChangeCanChangeVolume:(id)arg1;
 - (void)outputDeviceImplDidChangeVolume:(id)arg1;
 - (BOOL)participatesInGroupPlayback;
 - (BOOL)requiresAuthorization;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
+- (BOOL)supportsBufferedAirPlay;
 - (void)updateFrecencyScore;
 - (float)volume;
 

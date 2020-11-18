@@ -12,7 +12,6 @@
 @interface IMDCKAttachmentSyncController : IMDCKAbstractSyncController
 {
     BOOL _assetDownloadInProgress;
-    BOOL _shouldCheckDeviceConditions;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDRecordZoneManager *_recordZoneManager;
     IMDCKAttachmentSyncCKOperationFactory *_CKOperationFactory;
@@ -21,6 +20,7 @@
     NSMutableDictionary *_recordIDToTransferMap;
     CDUnknownBlockType _perTransferProgress;
     NSMutableArray *_downloadAssetsForTransferGUIDs;
+    unsigned long long _deviceConditionsToCheck;
     NSObject<OS_xpc_object> *_activity;
 }
 
@@ -29,12 +29,12 @@
 @property (nonatomic) BOOL assetDownloadInProgress; // @synthesize assetDownloadInProgress=_assetDownloadInProgress;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
 @property (strong, nonatomic) NSMutableDictionary *completionBlocksForAssetFetchOperations; // @synthesize completionBlocksForAssetFetchOperations=_completionBlocksForAssetFetchOperations;
+@property (nonatomic) unsigned long long deviceConditionsToCheck; // @synthesize deviceConditionsToCheck=_deviceConditionsToCheck;
 @property (strong, nonatomic) NSMutableArray *downloadAssetsForTransferGUIDs; // @synthesize downloadAssetsForTransferGUIDs=_downloadAssetsForTransferGUIDs;
 @property (strong, nonatomic) CKServerChangeToken *latestSyncToken;
 @property (copy, nonatomic) CDUnknownBlockType perTransferProgress; // @synthesize perTransferProgress=_perTransferProgress;
 @property (strong, nonatomic) NSMutableDictionary *recordIDToTransferMap; // @synthesize recordIDToTransferMap=_recordIDToTransferMap;
 @property (strong, nonatomic) IMDRecordZoneManager *recordZoneManager; // @synthesize recordZoneManager=_recordZoneManager;
-@property (nonatomic) BOOL shouldCheckDeviceConditions; // @synthesize shouldCheckDeviceConditions=_shouldCheckDeviceConditions;
 @property (strong, nonatomic) id<IMDCKSyncTokenStore> syncTokenStore; // @synthesize syncTokenStore=_syncTokenStore;
 
 + (id)sharedInstance;
@@ -55,9 +55,11 @@
 - (BOOL)_deviceConditionsAllowsMessageSync;
 - (BOOL)_deviceConditionsAllowsMessageSyncIgnoreFeatureEnabled:(BOOL)arg1;
 - (void)_downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(BOOL)arg2 useNonHSA2ManateeDatabase:(BOOL)arg3 retryCount:(unsigned long long)arg4 numAttachmentsDownloaded:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(BOOL)arg2 useNonHSA2ManateeDatabase:(BOOL)arg3 retryCount:(unsigned long long)arg4 numAttachmentsDownloaded:(unsigned long long)arg5 transfers:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_fetchAndValidateFileTransfersFromCloudKit:(id)arg1 capturedWithABC:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchAttachmentZoneChangesShouldWriteBackChanges:(BOOL)arg1 desiredKeys:(long long)arg2 syncType:(long long)arg3 currentBatchCount:(long long)arg4 maxBatchCount:(long long)arg5 syncToken:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)_fetchAttachmentZoneRecords:(id)arg1 desiredKeys:(long long)arg2 useNonHSA2ManateeDatabase:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_fetchedAllChangesFromCloudKit;
 - (void)_kickOffAssetFetchForTransfersIfNeeded;
 - (void)_markAllUnsuccessFullSyncAttachmentsAsNeedingSync;
 - (void)_markAttachmentWithROWIDAsSyncedWithCloudKit:(id)arg1;
@@ -97,6 +99,7 @@
 - (void)dealloc;
 - (void)deleteAttachmentSyncToken;
 - (void)deleteAttachmentZone;
+- (void)downloadAttachmentAssetsForChatIDs:(id)arg1 services:(id)arg2 style:(unsigned char)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(BOOL)arg2;
 - (void)downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(BOOL)arg2 useNonHSA2ManateeDatabase:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchAttachmentDataForTransfers:(id)arg1 highQuality:(BOOL)arg2 perTransferProgress:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
@@ -104,8 +107,10 @@
 - (id)fileTransferCenter;
 - (id)init;
 - (id)initWithSyncTokenStore:(id)arg1;
+- (unsigned long long)purgedAttachmentsCountForChat:(id)arg1 services:(id)arg2;
+- (id)purgedAttachmentsForChat:(id)arg1 services:(id)arg2 limit:(long long)arg3;
 - (void)syncAttachmentDeletesToCloudKit:(CDUnknownBlockType)arg1;
-- (void)syncAttachmentsWithSyncType:(long long)arg1 shouldCheckDeviceConditions:(BOOL)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)syncAttachmentsWithSyncType:(long long)arg1 deviceConditionsToCheck:(unsigned long long)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (long long)syncControllerRecordType;
 
 @end

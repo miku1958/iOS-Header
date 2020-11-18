@@ -11,7 +11,7 @@
 #import <MediaPlayer/UITableViewDataSource-Protocol.h>
 #import <MediaPlayer/UITableViewDelegate-Protocol.h>
 
-@class MPAVEndpointRoute, MPAVRoutingController, MPAVRoutingEmptyStateView, MPAVRoutingTableHeaderView, MPAVRoutingViewControllerUpdate, MPWeakTimer, NSArray, NSNumber, NSString, UIColor, UITableView, UIView;
+@class MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingEmptyStateView, MPAVRoutingTableHeaderView, MPAVRoutingViewControllerUpdate, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSMutableSet, NSNumber, NSString, UIColor, UITableView, UIView;
 @protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
 
 @interface MPAVRoutingViewController : UIViewController <MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -22,6 +22,7 @@
     MPAVRoutingEmptyStateView *_emptyStateView;
     MPAVRoutingViewControllerUpdate *_pendingUpdate;
     BOOL _isAnimatingUpdate;
+    MPAVRoute *_displayedEndpointRoute;
     NSArray *_cachedRoutes;
     NSArray *_cachedPickedRoutes;
     NSArray *_cachedPendingPickedRoutes;
@@ -50,6 +51,9 @@
     id<MPAVRoutingViewControllerThemeDelegate> _themeDelegate;
     MPAVEndpointRoute *_endpointRoute;
     id<MPAVOutputDevicePlaybackDataSource> _playbackDataSource;
+    NSMapTable *_outputDeviceVolumeSliders;
+    NSMutableSet *_outputDeviceVolumeControllers;
+    MPVolumeGroupSliderCoordinator *_groupSliderCoordinator;
 }
 
 @property (readonly, nonatomic) double _expandedCellHeight;
@@ -67,9 +71,12 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSNumber *discoveryModeOverride; // @synthesize discoveryModeOverride=_discoveryModeOverride;
 @property (strong, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
+@property (strong, nonatomic) MPVolumeGroupSliderCoordinator *groupSliderCoordinator; // @synthesize groupSliderCoordinator=_groupSliderCoordinator;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long iconStyle; // @synthesize iconStyle=_iconStyle;
 @property (nonatomic) unsigned long long mirroringStyle; // @synthesize mirroringStyle=_mirroringStyle;
+@property (strong, nonatomic) NSMutableSet *outputDeviceVolumeControllers; // @synthesize outputDeviceVolumeControllers=_outputDeviceVolumeControllers;
+@property (strong, nonatomic) NSMapTable *outputDeviceVolumeSliders; // @synthesize outputDeviceVolumeSliders=_outputDeviceVolumeSliders;
 @property (weak, nonatomic) id<MPAVOutputDevicePlaybackDataSource> playbackDataSource; // @synthesize playbackDataSource=_playbackDataSource;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
@@ -81,12 +88,15 @@
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_applyUpdate:(id)arg1;
 - (void)_beginRouteDiscovery;
-- (void)_configureCell:(id)arg1 forIndexPath:(id)arg2;
+- (void)_configureCell:(id)arg1 forIndexPath:(id)arg2 withDisplayedRoutes:(id)arg3;
 - (id)_crashLogDateFormatter;
+- (id)_createReloadUpdate;
+- (id)_createVolumeSlider;
 - (id)_displayAsPickedRoutesInRoutes:(id)arg1;
 - (id)_displayableRoutesInRoutes:(id)arg1;
 - (id)_displayedRoutes;
 - (void)_endRouteDiscovery;
+- (void)_enqueueUpdate:(id)arg1;
 - (id)_generatePropertyListFromUpdateDisplayedRoutesState:(id)arg1 exception:(id)arg2;
 - (void)_initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
 - (BOOL)_pickOrGroupRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -105,6 +115,8 @@
 - (unsigned long long)_tableViewNumberOfRows;
 - (void)_unregisterNotifications;
 - (void)_updateDisplayedRoutes;
+- (BOOL)_volumeSliderVisibility:(id)arg1;
+- (void)_volumeSliderVolumeControlAvailabilityDidChangeNotification:(id)arg1;
 - (id)_writeToDiskWithUpdateDisplayedRoutesStatePropertyList:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

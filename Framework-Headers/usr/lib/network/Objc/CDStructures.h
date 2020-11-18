@@ -145,7 +145,7 @@ struct nw_connection_report_s {
     unsigned int _field31;
     unsigned int _field32;
     unsigned int _field33;
-    int _field34;
+    unsigned int _field34;
     int _field35;
     int _field36;
     int _field37;
@@ -153,8 +153,9 @@ struct nw_connection_report_s {
     int _field39;
     int _field40;
     int _field41;
-    unsigned char _field42;
+    int _field42;
     unsigned char _field43;
+    unsigned char _field44;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -175,8 +176,9 @@ struct nw_connection_report_s {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :4;
-    unsigned char _field44[3];
+    unsigned int :1;
+    unsigned int :3;
+    unsigned char _field45[7];
 };
 
 struct nw_connection_throughput_monitor_s {

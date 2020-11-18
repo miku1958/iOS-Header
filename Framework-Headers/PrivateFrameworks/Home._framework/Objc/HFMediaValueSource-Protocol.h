@@ -13,7 +13,7 @@
 
 @property (readonly, nonatomic) NSError *cachedPlaybackStateWriteError;
 @property (readonly, nonatomic) BOOL hasPendingWrites;
-@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfile;
+@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer;
 
 - (long long)lastPlaybackStateForProfile;
 - (NAFuture *)writePlaybackState:(long long)arg1;

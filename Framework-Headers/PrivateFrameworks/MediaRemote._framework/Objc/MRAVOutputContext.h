@@ -15,6 +15,13 @@
     MRAVOutputDeviceSourceInfo *_outputDeviceSourceInfo;
     NSMutableArray *_pendingModifications;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    BOOL _isVolumeControlAvailable;
+    BOOL _attemptingLogicalDeviceRecovery;
+    BOOL _postOutputDeviceChangedScheduled;
+    BOOL _postOutputDevicesChangedScheduled;
+    BOOL _handleOutputDeviceChangedScheduled;
+    BOOL _handleOutputDevicesChangedScheduled;
+    BOOL _handleDiscoverySessionOutputDevicesChangedScheduled;
     unsigned int _type;
     NSString *_uniqueIdentifier;
     AVOutputContext *_avOutputContext;
@@ -22,11 +29,15 @@
 
 @property (readonly, nonatomic) AVOutputContext *avOutputContext; // @synthesize avOutputContext=_avOutputContext;
 @property (copy, nonatomic) NSArray *outputDevices;
+@property (readonly, nonatomic) BOOL supportsVolumeControl;
 @property (readonly, nonatomic) unsigned int type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (nonatomic) float volume;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
 
++ (void)_initializeAVFNotificationForwarding;
++ (id)_notificationQueue;
++ (id)_sharedOutputContextFromType:(unsigned int)arg1;
 + (id)createOutputContextWithUniqueIdentifier:(id)arg1;
 + (id)sharedAudioPresentationContext;
 + (id)sharedSystemAudioContext;
@@ -35,15 +46,21 @@
 - (void)_clearAnyCompletedModifications;
 - (void)_commitModification:(id)arg1;
 - (BOOL)_contextSupportsMultipleDevices;
-- (void)_handleOutputContextVolumeDidChangeNotification:(id)arg1;
+- (void)_handleDiscoverySessionOutputDevicesDidChangeNotification:(id)arg1;
+- (void)_handleOutputDeviceCanSetVolumeDidChangeNotification:(id)arg1;
+- (void)_handleOutputDeviceDidChangeNotification:(id)arg1;
+- (void)_handleOutputDeviceSupportsVolumeDidChangeNotification:(id)arg1;
 - (void)_handleOutputDeviceVolumeDidChangeNotification:(id)arg1;
+- (void)_handleOutputDevicesDidChangeNotification:(id)arg1;
 - (void)_outputContextChangeInitiatedNotification:(id)arg1;
-- (void)_outputDevicesDidChangeNotification:(id)arg1;
 - (id)_pendingModifications;
 - (void)_registerNotifications;
-- (void)_reloadOutputDevices;
+- (void)_reloadOutputDevicesForInitialLoad:(BOOL)arg1;
+- (void)_scheduleOutputContextDeviceDidChangeNotification;
+- (void)_scheduleOutputContextDevicesDidChangeNotification;
 - (void)_unregisterNotifications;
 - (void)addOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)attemptLogicalDeviceRecovery;
 - (void)dealloc;
 - (id)description;
 - (id)initWithAVOutputContext:(id)arg1 type:(unsigned int)arg2;

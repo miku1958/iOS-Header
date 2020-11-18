@@ -31,10 +31,13 @@
 - (void)clearLocationPropertiesOfItemWithIdentifier:(long long)arg1;
 - (BOOL)collectionExistsContainedWithinPersistentIDs:(const unsigned long long *)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long *)arg4;
 - (BOOL)collectionExistsContainedWithinSyncIDs:(NSArray *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
+- (BOOL)collectionExistsWithCloudUniversalLibraryID:(NSString *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithName:(NSString *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
+- (BOOL)collectionExistsWithSagaID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (BOOL)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
 - (void *)createGeniusClusterPlaylistWithSeedItemIdentifiers:(long long *)arg1 count:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)deleteDatabaseProperty:(NSString *)arg1;
 - (BOOL)deleteItemsWithIdentifiers:(long long *)arg1 count:(unsigned long long)arg2;
 - (long long *)generateItemIdentifiersForGeniusClusterPlaylist:(void *)arg1 count:(unsigned long long *)arg2 error:(id *)arg3;
 - (void)geniusItemsForSeedItem:(MPMediaItem *)arg1 completion:(void (^)(NSArray *))arg2;

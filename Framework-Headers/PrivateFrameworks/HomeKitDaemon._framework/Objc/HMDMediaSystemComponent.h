@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)accessoryForMediaSystemComponentWithDictionary:(id)arg1 home:(id)arg2;
 + (id)logCategory;
 + (id)mediaSystemComponentWithDictionary:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;

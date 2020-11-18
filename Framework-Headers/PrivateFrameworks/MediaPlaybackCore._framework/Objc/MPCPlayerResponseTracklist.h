@@ -34,6 +34,8 @@
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) long long upNextItemCount; // @synthesize upNextItemCount=_upNextItemCount;
 
++ (id)insertCommandForPlayerPath:(id)arg1 devices:(id)arg2;
++ (id)resetCommandForPlayerPath:(id)arg1 devices:(id)arg2;
 - (void).cxx_destruct;
 - (id)changeItemCommand;
 - (id)disableModificationsCommand;

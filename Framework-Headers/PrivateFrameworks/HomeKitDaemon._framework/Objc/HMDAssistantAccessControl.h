@@ -57,6 +57,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (void)notifyClientOfUpdateWithMessage:(id)arg1;
+- (void)removeAccessoriesAddedByOldController:(id)arg1;
 - (void)removeAccessory:(id)arg1;
 - (void)setAccessories:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;

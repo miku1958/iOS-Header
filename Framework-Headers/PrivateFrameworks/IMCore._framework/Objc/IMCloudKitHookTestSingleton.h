@@ -34,17 +34,18 @@
 @property (nonatomic, getter=isSyncing) BOOL syncing;
 @property (strong, nonatomic) IMCloudKitMockSyncState *testState; // @synthesize testState=_testState;
 
++ (id)logHandle;
 - (void).cxx_destruct;
 - (void)fetchSyncStateStatistics;
 - (id)init;
 - (void)initiatePeriodicSync;
 - (BOOL)isInExitState;
+- (id)logHandle;
 - (void)sendSyncChangedEvent;
 - (void)setControllerSyncState:(unsigned long long)arg1;
 - (void)setControllerSyncType:(long long)arg1;
 - (void)setIsInExitState:(BOOL)arg1;
 - (id)syncStateDictionary;
-- (void)updateCloudKitSyncingState;
 
 @end
 

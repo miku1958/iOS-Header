@@ -13,7 +13,6 @@
 @interface CLSActivity : CLSObject <CLSRelationable>
 {
     double _duration;
-    BOOL _started;
     BOOL _paused;
     NSDate *_activityStartDate;
     NSString *__primaryActivityItemIdentifier;

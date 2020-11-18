@@ -13,6 +13,7 @@
 @interface _MPCPlayerResetTracklistCommand : _MPCPlayerCommand <MPCPlayerResetTracklistCommand>
 {
     BOOL _supportsSetQueueCommand;
+    NSArray *_devices;
     NSDictionary *_supportedSpecializedQueues;
     NSSet *_supportedQueueTypes;
     NSSet *_supportedCustomDataQueueIdentifiers;
@@ -20,6 +21,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *specializedIntents;
 @property (readonly) Class superclass;

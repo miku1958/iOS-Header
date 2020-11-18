@@ -30,6 +30,7 @@
 - (id)_cn_stringByDeletingCharactersInSet:(id)arg1;
 - (id)_cn_stringByDeletingNumberOfPathComponents:(unsigned long long)arg1;
 - (id)_cn_stringByNormalizingCase;
+- (id)_cn_take:(unsigned long long)arg1;
 - (id)_cn_tokens;
 - (id)_cn_trimmedString;
 @end

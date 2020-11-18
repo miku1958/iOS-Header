@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSData *value; // @dynamic value;
 
 + (id)properties;
++ (id)schemaHashRoot;
 
 @end
 

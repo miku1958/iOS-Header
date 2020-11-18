@@ -22,6 +22,8 @@
 @interface CSSpeechManager : NSObject <CSAudioRecorderDelegate, CSStateMachineDelegate, CSVoiceTriggerDelegate, CSSiriEnabledMonitorDelegate, CSVolumeMonitorDelegate, CSAlarmMonitorDelegate, CSTimerMonitorDelegate, CSAssetManagerDelegate, CSLanguageCodeUpdateMonitorDelegate>
 {
     BOOL _isSiriEnabled;
+    BOOL _deviceRoleIsStereo;
+    BOOL _isAudioSessionActive;
     CSAudioRecorder *_audioRecorder;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_assetQueryQueue;
@@ -41,12 +43,14 @@
     long long _clearLoggingFileTimerCount;
     NSUUID *_pendingSetRecordModeToRecordingToken;
     CDUnknownBlockType _pendingSetRecordModeToRecordingCompletion;
+    double _audioSessionActivationDelay;
 }
 
 @property (strong, nonatomic) NSHashTable *activeAudioProcessors; // @synthesize activeAudioProcessors=_activeAudioProcessors;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *assetQueryQueue; // @synthesize assetQueryQueue=_assetQueryQueue;
 @property (strong, nonatomic) CSAudioCircularBuffer *audioBuffer; // @synthesize audioBuffer=_audioBuffer;
 @property (strong, nonatomic) CSAudioRecorder *audioRecorder; // @synthesize audioRecorder=_audioRecorder;
+@property (nonatomic) double audioSessionActivationDelay; // @synthesize audioSessionActivationDelay=_audioSessionActivationDelay;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *clearLoggingFileTimer; // @synthesize clearLoggingFileTimer=_clearLoggingFileTimer;
 @property (nonatomic) long long clearLoggingFileTimerCount; // @synthesize clearLoggingFileTimerCount=_clearLoggingFileTimerCount;
 @property (weak, nonatomic) id<CSSpeechManagerDelegate> clientController; // @synthesize clientController=_clientController;
@@ -54,7 +58,9 @@
 @property (strong, nonatomic) NSHashTable *continuousAudioProcessors; // @synthesize continuousAudioProcessors=_continuousAudioProcessors;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL deviceRoleIsStereo; // @synthesize deviceRoleIsStereo=_deviceRoleIsStereo;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isAudioSessionActive; // @synthesize isAudioSessionActive=_isAudioSessionActive;
 @property (nonatomic) BOOL isSiriEnabled; // @synthesize isSiriEnabled=_isSiriEnabled;
 @property (nonatomic) unsigned long long lastForwardedSampleCount; // @synthesize lastForwardedSampleCount=_lastForwardedSampleCount;
 @property (strong, nonatomic) NSDictionary *lastVoiceTriggerEventInfo; // @synthesize lastVoiceTriggerEventInfo=_lastVoiceTriggerEventInfo;
@@ -94,6 +100,7 @@
 - (void)_scheduleSetRecordModeToRecordingWithDelay:(double)arg1 forReason:(id)arg2 validator:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_setCurrentContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_setRecordMode:(long long)arg1 error:(id *)arg2;
+- (BOOL)_setRecordMode:(long long)arg1 withDelay:(double)arg2 error:(id *)arg3;
 - (void)_setupCircularBuffer;
 - (void)_setupStateMachine;
 - (void)_startClearLoggingFilesTimer;

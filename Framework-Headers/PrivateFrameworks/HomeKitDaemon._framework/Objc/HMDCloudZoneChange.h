@@ -53,7 +53,6 @@
 - (void)setDeleteAsProcessedWithRecordID:(id)arg1;
 - (void)setSaveAsProcessedWithRecord:(id)arg1;
 - (id)shortDescription;
-- (id)transactionStoreRowIDsForObjectID:(id)arg1;
 
 @end
 

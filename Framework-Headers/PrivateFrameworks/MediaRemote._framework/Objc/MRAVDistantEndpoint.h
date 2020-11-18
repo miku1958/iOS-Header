@@ -13,36 +13,37 @@
 
 @interface MRAVDistantEndpoint : MRAVEndpoint <NSSecureCoding>
 {
-    NSObject<OS_dispatch_queue> *_accessSerialQueue;
-    MRDistantExternalDevice *_distantExternalDevice;
+    BOOL _canModifyGroupMembership;
+    long long _connectionType;
     NSString *_localizedName;
     NSString *_uniqueIdentifier;
-    NSString *_instanceIdentifier;
-    BOOL _isLocalEndpoint;
-    BOOL _proxyGroupPlayer;
-    NSXPCListenerEndpoint *_externalDeviceListenerEndpoint;
+    NSObject<OS_dispatch_queue> *_externalDeviceQueue;
     NSArray *_distantOutputDevices;
     MRAVDistantOutputDevice *_distantGroupLeader;
+    MRDistantExternalDevice *_distantExternalDevice;
+    NSXPCListenerEndpoint *_externalDeviceListenerEndpoint;
 }
 
+@property (strong, nonatomic) MRDistantExternalDevice *distantExternalDevice; // @synthesize distantExternalDevice=_distantExternalDevice;
 @property (strong, nonatomic) MRAVDistantOutputDevice *distantGroupLeader; // @synthesize distantGroupLeader=_distantGroupLeader;
 @property (copy, nonatomic) NSArray *distantOutputDevices; // @synthesize distantOutputDevices=_distantOutputDevices;
 @property (strong, nonatomic) NSXPCListenerEndpoint *externalDeviceListenerEndpoint; // @synthesize externalDeviceListenerEndpoint=_externalDeviceListenerEndpoint;
-@property (copy, nonatomic) NSString *localizedName;
-@property (nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *externalDeviceQueue; // @synthesize externalDeviceQueue=_externalDeviceQueue;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)canModifyGroupMembership;
+- (long long)connectionType;
 - (id)designatedGroupLeader;
 - (void)encodeWithCoder:(id)arg1;
 - (id)externalDevice;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDescriptor:(id)arg1;
-- (id)instanceIdentifier;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isLocalEndpoint;
+- (BOOL)isProxyGroupPlayer;
+- (id)localizedName;
 - (id)outputDevices;
+- (void)setLocalizedName:(id)arg1;
+- (void)setUniqueIdentifier:(id)arg1;
 - (id)uniqueIdentifier;
 
 @end

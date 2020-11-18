@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NAFuture *writeFuture; // @synthesize writeFuture=_writeFuture;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)init;
 
 @end

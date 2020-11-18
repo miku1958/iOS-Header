@@ -14,7 +14,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessorySettingContainer, HMDAccessorySettingGroup, HMDAccessorySettingModel, HMDAccessorySettingUpdateBase, HMFMessageDestination, HMFMessageDispatcher, NSArray, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
+@class HMDAccessorySettingContainer, HMDAccessorySettingGroup, HMDAccessorySettingModel, HMDAccessorySettingUpdateBase, HMFMessageDestination, HMFMessageDispatcher, NSArray, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDAccessorySetting : HMFObject <HMDBackingStoreObjectProtocol, HMDAccessorySettingUpdateDelegate, HMFLogging, HMDAccessorySettingUpdateProtocol, HMDAccessorySettingProtocol, HMDHomeMessageReceiver, NSSecureCoding>
@@ -23,6 +23,7 @@
     NSString *_name;
     long long _type;
     NSMutableArray *_constraints;
+    NSMutableSet *_constraintItemsMarkedForRemoval;
     unsigned long long _configurationVersion;
     HMDAccessorySetting *_mediaSystemSetting;
     NSUUID *_identifier;
@@ -70,12 +71,20 @@
 - (void).cxx_destruct;
 - (id)__init;
 - (void)_fixupAccessorySetting;
+- (id)_fixupMergeStrategyConstraints;
 - (void)_handleAddConstraint:(id)arg1;
 - (void)_handleRemoveConstraint:(id)arg1;
 - (void)_handleReplaceConstraints:(id)arg1;
+- (void)_handleReplaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleUpdateValue:(id)arg1;
 - (void)_handleUpdatedConstraints:(id)arg1;
+- (void)_mergeConstraintsLocallyWithAdditions:(id)arg1 removals:(id)arg2;
+- (void)_relayConstraintsMessage:(id)arg1 toTargetAccessory:(id)arg2 additions:(id)arg3 removals:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_relayRequestMessage:(id)arg1 targetAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_relayRequestMessageNoRemoteCheck:(id)arg1 targetAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_replaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_saveHomeConfiguration:(id)arg1;
+- (id)accessoryFromTarget;
 - (void)addConstraint:(id)arg1;
 - (BOOL)compareConstraints:(id)arg1;
 - (void)configureWithContainer:(id)arg1 messageDispatcher:(id)arg2;
@@ -86,17 +95,21 @@
 - (void)fixupAccessorySetting;
 - (void)handleAddConstraint:(id)arg1;
 - (void)handleRemoveConstraint:(id)arg1;
+- (void)handleReplaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleUpdateValue:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1;
+- (BOOL)isConstraintMergeStrategyReflection;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 - (id)logIdentifier;
+- (void)mergeConstraintsFromOther:(id)arg1;
 - (id)modelsForConstraintsUpdate:(id)arg1;
 - (void)registerForMessages;
 - (id)remoteMessageDestination:(id)arg1;
 - (void)removeConstraint:(id)arg1;
+- (void)replaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendReflectedNotification:(BOOL)arg1;
 - (void)setConstraints:(id)arg1;
 - (void)setValue:(id)arg1;

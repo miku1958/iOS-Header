@@ -63,6 +63,7 @@
 - (void)alarmEditControllerDidCancel:(id)arg1;
 - (id)alarmItemManager;
 - (void)alarmItemModuleController:(id)arg1 didSelectAlarm:(id)arg2;
+- (BOOL)alwaysUseDeltaTableViewUpdatesAfterViewHasAppeared;
 - (id)backgroundView;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)editViewControllerForAlarm:(id)arg1;

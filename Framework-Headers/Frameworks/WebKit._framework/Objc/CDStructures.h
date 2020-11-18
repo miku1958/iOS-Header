@@ -1395,12 +1395,13 @@ struct NetworkDataTaskCocoa {
     struct ResourceRequest _field16;
     BOOL _field17;
     struct String _field18;
-    struct RefPtr<WebKit::SandboxExtension, WTF::DumbPtrTraits<WebKit::SandboxExtension>> _field19;
-    struct RetainPtr<NSURLSessionDataTask> _field20;
-    struct NetworkLoadMetrics _field21;
-    unsigned long long _field22;
+    BOOL _field19;
+    struct RefPtr<WebKit::SandboxExtension, WTF::DumbPtrTraits<WebKit::SandboxExtension>> _field20;
+    struct RetainPtr<NSURLSessionDataTask> _field21;
+    struct NetworkLoadMetrics _field22;
     unsigned long long _field23;
-    BOOL _field24;
+    unsigned long long _field24;
+    BOOL _field25;
 };
 
 struct NetworkLoadMetrics {
@@ -3203,6 +3204,13 @@ struct Vector<WebCore::SelectionRect, 0, WTF::CrashOnOverflow, 16, WTF::FastMall
 
 struct Vector<WebCore::TimerBase *, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc>;
 
+struct Vector<WebCore::URL, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
+    struct URL *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+};
+
 struct Vector<WebKit::BackForwardListItemState, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> {
     struct BackForwardListItemState *m_buffer;
     unsigned int m_capacity;
@@ -3659,7 +3667,8 @@ struct WebFrameProxy {
     struct RefPtr<WebKit::WebCertificateInfo, WTF::DumbPtrTraits<WebKit::WebCertificateInfo>> _field9;
     struct RefPtr<WebKit::WebFrameListenerProxy, WTF::DumbPtrTraits<WebKit::WebFrameListenerProxy>> _field10;
     unsigned long long _field11;
-    struct ContentFilterUnblockHandler _field12;
+    struct Vector<WebCore::URL, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _field12;
+    struct ContentFilterUnblockHandler _field13;
 };
 
 struct WebGeolocationManagerProxy;
@@ -4061,6 +4070,7 @@ struct WebPageProxy {
     struct WeakPtrFactory<WebKit::WebPageProxy> _field210;
     struct HashMap<WTF::String, WTF::Ref<WebKit::WebURLSchemeHandler, WTF::DumbPtrTraits<WebKit::WebURLSchemeHandler>>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::Ref<WebKit::WebURLSchemeHandler, WTF::DumbPtrTraits<WebKit::WebURLSchemeHandler>>>> _field211;
     struct HashMap<unsigned long long, WTF::Ref<WebKit::WebURLSchemeHandler, WTF::DumbPtrTraits<WebKit::WebURLSchemeHandler>>, WTF::IntHash<unsigned long long>, WTF::HashTraits<unsigned long long>, WTF::HashTraits<WTF::Ref<WebKit::WebURLSchemeHandler, WTF::DumbPtrTraits<WebKit::WebURLSchemeHandler>>>> _field212;
+    struct optional<WTF::MonotonicTime> _field213;
 };
 
 struct WebPaymentCoordinatorProxy {
@@ -4229,6 +4239,11 @@ struct function<void (std::__1::function<void (bool)>)> {
 struct optional<CGRect> {
     BOOL init_;
     union constexpr_storage_t<CGRect> storage_;
+};
+
+struct optional<WTF::MonotonicTime> {
+    BOOL _field1;
+    union constexpr_storage_t<WTF::MonotonicTime> _field2;
 };
 
 struct optional<WTF::Seconds> {
@@ -4872,6 +4887,11 @@ union DataUnion {
 union constexpr_storage_t<CGRect> {
     unsigned char dummy_;
     struct CGRect value_;
+};
+
+union constexpr_storage_t<WTF::MonotonicTime> {
+    unsigned char _field1;
+    struct MonotonicTime _field2;
 };
 
 union constexpr_storage_t<WTF::Seconds> {

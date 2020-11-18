@@ -20,6 +20,7 @@
 - (void)autoReconnectAccount:(NSString *)arg1;
 - (void)beginRecordingMessagesToReplayDatabase:(NSString *)arg1;
 - (void)broadcastCloudKitState;
+- (void)broadcastCloudKitStateAfterClearingErrors;
 - (void)cancelVCRequestWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
 - (void)cancelVCRequestWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 reason:(NSNumber *)arg4 account:(NSString *)arg5;
 - (void)changeGroup:(NSString *)arg1 changes:(NSDictionary *)arg2 account:(NSString *)arg3;
@@ -48,6 +49,7 @@
 - (void)deleteSalt;
 - (void)downloadAttachmentAssets;
 - (void)downloadHighQualityVariantOfFileTransferWithGUID:(NSString *)arg1;
+- (void)downloadPurgedAttachmentsForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4;
 - (void)downloadStickerPackWithGUID:(NSString *)arg1 isIncomingMessage:(BOOL)arg2 ignoreCache:(BOOL)arg3;
 - (void)downloadStickerWithGUID:(NSString *)arg1;
 - (void)enrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
@@ -56,6 +58,7 @@
 - (void)fetchExitRecord;
 - (void)fetchLatestRampState;
 - (void)fetchLatestSalt;
+- (void)fetchSecurityLevelAndUpdateMiCSwitchEligibility;
 - (void)fetchSyncStateStatistics;
 - (void)fetchSyncStateStats;
 - (void)fileTransfer:(NSString *)arg1 acceptedWithPath:(NSString *)arg2 autoRename:(BOOL)arg3 overwrite:(BOOL)arg4;
@@ -81,8 +84,10 @@
 - (void)loadDirtyMessagesWithLimit:(long long)arg1;
 - (void)loadFrequentRepliesForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 chatID:(NSString *)arg5 queryID:(NSString *)arg6;
 - (void)loadHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 beforeGUID:(NSString *)arg5 afterGUID:(NSString *)arg6 chatID:(NSString *)arg7 queryID:(NSString *)arg8;
+- (void)loadIsDownloadingPurgedAttachmentsForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5;
 - (void)loadMessageWithGUID:(NSString *)arg1 queryID:(NSString *)arg2;
 - (void)loadPagedHistoryForGUID:(NSString *)arg1 chatIdentifiers:(NSArray *)arg2 style:(unsigned char)arg3 onServices:(NSArray *)arg4 numberOfMessagesBefore:(unsigned long long)arg5 numberOfMessagesAfter:(unsigned long long)arg6 chatID:(NSString *)arg7 queryID:(NSString *)arg8;
+- (unsigned long long)loadUncachedAttachmentCountForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5;
 - (void)loadUnreadForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 fallbackGUID:(NSString *)arg5 chatId:(NSString *)arg6 queryID:(NSString *)arg7;
 - (void)logDumpAndSendMessageTo:(NSString *)arg1 forHours:(int)arg2;
 - (void)loginAccount:(NSString *)arg1;
@@ -142,6 +147,7 @@
 - (void)sendNotificationMessageToUniqueID:(NSString *)arg1 withCommand:(long long)arg2;
 - (void)sendPlayedReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendReadReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
+- (void)sendRestoreFailuresLogDumps;
 - (void)sendSavedReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendStandaloneFileTransfer:(NSString *)arg1;
 - (void)sendStickerAtPath:(NSString *)arg1 toChatID:(NSString *)arg2 forNBubbleFromTheBottom:(unsigned long long)arg3 atX:(NSString *)arg4 atY:(NSString *)arg5 scale:(NSString *)arg6 balloonWidth:(NSString *)arg7;
@@ -176,7 +182,6 @@
 - (void)unvalidateAliases:(NSArray *)arg1 account:(NSString *)arg2;
 - (void)updateAuthorizationCredentials:(NSString *)arg1 token:(NSString *)arg2 account:(NSString *)arg3;
 - (void)updateBalloonPayload:(NSData *)arg1 attachments:(NSArray *)arg2 forMessageGUID:(NSString *)arg3;
-- (void)updateCloudKitSyncingState;
 - (void)updateMessage:(IMMessageItem *)arg1;
 - (void)updateUnformattedID:(NSString *)arg1 forBuddyID:(NSString *)arg2 onService:(NSString *)arg3;
 - (void)validateAliases:(NSArray *)arg1 account:(NSString *)arg2;

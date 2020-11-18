@@ -27,6 +27,7 @@
 - (void)setMuted:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 - (void)setVolumeAudioCategory:(id)arg1;
+- (void)updateVolumeControlCapabilities:(unsigned int)arg1;
 
 @end
 

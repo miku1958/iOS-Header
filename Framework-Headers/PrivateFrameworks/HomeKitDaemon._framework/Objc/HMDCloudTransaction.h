@@ -73,6 +73,7 @@
 - (id)init;
 - (id)initWithType:(unsigned long long)arg1 temporaryCache:(BOOL)arg2;
 - (void)loadCloudRecordsAndDetermineDeletesFromCache:(CDUnknownBlockType)arg1;
+- (void)loadObjectChanges;
 - (BOOL)moreChangesToProcess;
 - (void)removeChangeWithObjectID:(id)arg1;
 - (id)replayTransaction:(id)arg1 stagedTransaction:(id)arg2;
@@ -81,7 +82,6 @@
 - (void)setDeleteAsProcessedWithRecordID:(id)arg1;
 - (void)setSaveAsProcessedWithRecord:(id)arg1;
 - (id)shortDescription;
-- (id)transactionStoreRowIDsForObjectID:(id)arg1;
 - (void)updateCloudCache;
 - (void)updateCloudZone:(id)arg1;
 

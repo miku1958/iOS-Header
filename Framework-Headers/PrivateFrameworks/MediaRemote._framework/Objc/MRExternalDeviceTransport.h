@@ -11,9 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface MRExternalDeviceTransport : NSObject
 {
+    long long _connectionType;
     BOOL _requiresCustomPairing;
+    NSString *_uid;
 }
 
+@property (readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
 @property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic) NSString *hostname;
@@ -21,7 +24,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long port;
 @property (readonly, nonatomic) BOOL requiresCustomPairing; // @synthesize requiresCustomPairing=_requiresCustomPairing;
 @property (nonatomic) BOOL shouldUseSystemAuthenticationPrompt; // @dynamic shouldUseSystemAuthenticationPrompt;
+@property (readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
 
+- (void).cxx_destruct;
 - (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2;
 - (void)reset;
 

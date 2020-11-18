@@ -12,7 +12,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HAPPairingIdentity, HMDAccount, HMDAssistantAccessControl, HMDHome, HMUserPresenceAuthorization, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
+@class AVOutputDeviceAuthorizedPeer, HAPPairingIdentity, HMDAccount, HMDAssistantAccessControl, HMDHome, HMUserPresenceAuthorization, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDUser : HMFObject <HMFLogging, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
@@ -35,6 +35,7 @@
 
 @property (readonly, copy) HMDAccount *account;
 @property (strong) HMDAssistantAccessControl *assistantAccessControl; // @synthesize assistantAccessControl=_assistantAccessControl;
+@property (readonly, copy) AVOutputDeviceAuthorizedPeer *av_authorizedPeer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, nonatomic, getter=isCurrentUser) BOOL currentUser;
 @property (readonly, copy) NSString *debugDescription;
@@ -82,10 +83,12 @@
 - (id)dictionaryEncoding;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleAssistantAccessControlUpdate:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModelObject:(id)arg1;
 - (id)initWithUserID:(id)arg1 displayName:(id)arg2 forHomeIdentifier:(id)arg3 uuid:(id)arg4 pairingIdentity:(id)arg5 privilege:(unsigned long long)arg6;
 - (id)initWithUserID:(id)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3 pairingIdentity:(id)arg4 privilege:(unsigned long long)arg5;
+- (BOOL)isCurrentUserAndOwner;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (BOOL)mergeFromUser:(id)arg1 dataVersion:(long long)arg2;
@@ -101,6 +104,7 @@
 - (void)registerForMessages;
 - (id)relayAccessTokenForAccessory:(id)arg1;
 - (id)relayAccessTokens;
+- (void)removeAccessoriesFromAssistantAccessControlList:(id)arg1;
 - (void)removeRelayAccessToken:(id)arg1;
 - (void)removeRelayAccessTokenForAccessory:(id)arg1;
 - (id)residentCopy;

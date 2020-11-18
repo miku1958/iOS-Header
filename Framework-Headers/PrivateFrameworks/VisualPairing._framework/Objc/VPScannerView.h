@@ -27,11 +27,15 @@
     BOOL _scanning;
     CAShapeLayer *_viewfinderBorderLayer;
     CAShapeLayer *_viewfinderRevealLayer;
+    long long _autoFocusRangeRestriction;
+    long long _focusMode;
     CDUnknownBlockType _scannedCodeHandler;
 }
 
+@property (nonatomic) long long autoFocusRangeRestriction; // @synthesize autoFocusRangeRestriction=_autoFocusRangeRestriction;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long focusMode; // @synthesize focusMode=_focusMode;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType scannedCodeHandler; // @synthesize scannedCodeHandler=_scannedCodeHandler;
 @property (readonly) Class superclass;

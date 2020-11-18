@@ -8,7 +8,7 @@
 
 #import <AVFoundation/AVOutputDeviceImpl-Protocol.h>
 
-@class AVOutputDevice, AVWeakReference, NSArray, NSData, NSNumber, NSString;
+@class AVOutputDevice, AVWeakReference, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @interface AVFigEndpointOutputDeviceImpl : NSObject <AVOutputDeviceImpl>
 {
@@ -18,10 +18,15 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *ID;
+@property (readonly, nonatomic) NSDictionary *airPlayProperties;
+@property (readonly, nonatomic) BOOL automaticallyAllowsConnectionsFromPeersInHomeGroup;
 @property (readonly, nonatomic) NSNumber *batteryLevel;
+@property (readonly, nonatomic) BOOL canAccessAppleMusic;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets;
+@property (readonly, nonatomic) BOOL canAccessiCloudMusicLibrary;
 @property (readonly, nonatomic) BOOL canBeGroupLeader;
 @property (readonly, nonatomic) BOOL canBeGrouped;
+@property (readonly, nonatomic) BOOL canCommunicateWithAllLogicalDeviceMembers;
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel;
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
@@ -38,17 +43,20 @@
 @property (readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property (readonly, nonatomic, getter=isInUseByPairedDevice) BOOL inUseByPairedDevice;
 @property (readonly, nonatomic) BOOL isGroupLeader;
+@property (readonly, nonatomic) BOOL isLogicalDeviceLeader;
 @property (readonly, nonatomic) NSNumber *leftBatteryLevel;
 @property (readonly, nonatomic) NSString *logicalDeviceID;
 @property (readonly, nonatomic) NSString *manufacturer;
 @property (readonly, copy, nonatomic) NSString *modelID;
 @property (readonly, copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) BOOL onlyAllowsConnectionsFromPeersInHomeGroup;
 @property (weak) AVOutputDevice *parentOutputDevice; // @synthesize parentOutputDevice=_parentDevice;
 @property (readonly, nonatomic) BOOL participatesInGroupPlayback;
 @property (readonly, nonatomic) BOOL requiresAuthorization;
 @property (readonly, nonatomic) NSNumber *rightBatteryLevel;
 @property (readonly, nonatomic) NSString *serialNumber;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsBufferedAirPlay;
 @property (readonly) float volume;
 
 + (void)initialize;
@@ -56,7 +64,7 @@
 - (void)_canSetEndpointVolumeDidChangeForEndpointWithID:(struct __CFString *)arg1;
 - (id)_figEndpointPropertyValueForKey:(struct __CFString *)arg1;
 - (void)_volumeDidChangeForEndpointWithID:(struct __CFString *)arg1;
-- (void)configureUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)configureUsingBlock:(CDUnknownBlockType)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (struct OpaqueFigEndpoint *)figEndpoint;
 - (id)init;

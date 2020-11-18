@@ -16,6 +16,8 @@
     float _pendingVolume;
     BOOL _hasPendingVolume;
     BOOL _hasVolumeInFlight;
+    BOOL _volumeInitialized;
+    BOOL _volumeCapabilitiesInitialized;
     BOOL _volumeControlAvailable;
     BOOL _muted;
     BOOL _volumeWarningEnabled;
@@ -44,12 +46,15 @@
 @property (readonly, nonatomic) long long volumeWarningState; // @synthesize volumeWarningState=_volumeWarningState;
 
 - (void).cxx_destruct;
-- (void)_pickedRouteVolumeControlAvailabilityChanged:(id)arg1;
-- (void)_routeConnectionVolumeDidChangeNotification:(id)arg1;
+- (void)_routeVolumeControlCapabilitiesDidChangeNotification:(id)arg1;
+- (void)_routeVolumeDidChangeNotification:(id)arg1;
 - (void)_setPendingVolumeIfNeeded;
+- (void)_updateVolumeControlCapabilities:(unsigned int)arg1;
 - (void)adjustVolumeValue:(float)arg1;
 - (void)dealloc;
+- (void)getVolumeValueWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithGroupRoute:(id)arg1 outputDeviceRoute:(id)arg2;
+- (void)initializeVolume;
 - (void)reload;
 - (void)reloadWarning;
 

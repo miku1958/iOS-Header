@@ -15,6 +15,7 @@
     HMAccessoryCategory *_category;
 }
 
+@property (readonly) long long associationOptions;
 @property (readonly, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;

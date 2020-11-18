@@ -12,12 +12,14 @@
 {
 }
 
+@property (strong, nonatomic) NSString *configuredName; // @dynamic configuredName;
 @property (strong, nonatomic) NSArray *mediaSystemComponents; // @dynamic mediaSystemComponents;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSData *symptoms; // @dynamic symptoms;
 
 + (id)modelWithMessage:(id)arg1 home:(id)arg2 changetype:(unsigned long long)arg3 outError:(id *)arg4;
 + (id)properties;
++ (id)schemaHashRoot;
 - (id)dependentUUIDs;
 
 @end

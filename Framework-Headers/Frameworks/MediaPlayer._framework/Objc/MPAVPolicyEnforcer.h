@@ -20,6 +20,8 @@
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_isScreenRecordingDidChange:(BOOL)arg1;
+- (void)_registerForScreenRecordingNotifications;
+- (void)_unregisterForScreenRecordingNotifications;
 - (void)_updateScreenRecordingState;
 - (void)dealloc;
 - (id)initWithAVController:(id)arg1;

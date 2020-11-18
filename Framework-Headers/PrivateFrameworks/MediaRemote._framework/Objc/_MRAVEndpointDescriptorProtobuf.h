@@ -12,20 +12,28 @@
 
 @interface _MRAVEndpointDescriptorProtobuf : PBCodable <NSCopying>
 {
+    int _connectionType;
     _MRAVOutputDeviceDescriptorProtobuf *_designatedGroupLeader;
     NSString *_instanceIdentifier;
     NSString *_name;
     NSMutableArray *_outputDevices;
     NSString *_uniqueIdentifier;
+    BOOL _canModifyGroupMembership;
     BOOL _isLocalEndpoint;
     BOOL _isProxyGroupPlayer;
     struct {
+        unsigned int connectionType:1;
+        unsigned int canModifyGroupMembership:1;
         unsigned int isLocalEndpoint:1;
         unsigned int isProxyGroupPlayer:1;
     } _has;
 }
 
+@property (nonatomic) BOOL canModifyGroupMembership; // @synthesize canModifyGroupMembership=_canModifyGroupMembership;
+@property (nonatomic) int connectionType; // @synthesize connectionType=_connectionType;
 @property (strong, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *designatedGroupLeader; // @synthesize designatedGroupLeader=_designatedGroupLeader;
+@property (nonatomic) BOOL hasCanModifyGroupMembership;
+@property (nonatomic) BOOL hasConnectionType;
 @property (readonly, nonatomic) BOOL hasDesignatedGroupLeader;
 @property (readonly, nonatomic) BOOL hasInstanceIdentifier;
 @property (nonatomic) BOOL hasIsLocalEndpoint;
@@ -41,8 +49,10 @@
 
 + (Class)outputDevicesType;
 - (void).cxx_destruct;
+- (int)StringAsConnectionType:(id)arg1;
 - (void)addOutputDevices:(id)arg1;
 - (void)clearOutputDevices;
+- (id)connectionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

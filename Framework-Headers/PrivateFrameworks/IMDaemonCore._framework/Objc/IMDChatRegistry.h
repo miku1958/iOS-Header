@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class IMDCNPersonAliasResolver, IMDMessageHistorySyncController, IMDMessageProcessingController, NSArray, NSCache, NSMutableDictionary, NSRecursiveLock;
+@class IMDCKUtilities, IMDCNPersonAliasResolver, IMDChatStore, IMDMessageHistorySyncController, IMDMessageProcessingController, NSArray, NSCache, NSMutableDictionary, NSRecursiveLock;
 
 @interface IMDChatRegistry : NSObject
 {
@@ -16,12 +16,18 @@
     BOOL _doneLoadingAfterMerge;
     NSCache *_allChatsByIDCache;
     NSMutableDictionary *_chatsByGroupID;
+    BOOL _hasDumpedLogsForNoExisitingGroup;
+    IMDCKUtilities *_ckUtilities;
+    IMDChatStore *_chatStore;
     IMDMessageProcessingController *_messageProcessingController;
     IMDMessageHistorySyncController *_messageHistorySyncController;
 }
 
+@property (strong, nonatomic) IMDChatStore *chatStore; // @synthesize chatStore=_chatStore;
 @property (readonly, nonatomic) NSArray *chats;
+@property (strong, nonatomic) IMDCKUtilities *ckUtilities; // @synthesize ckUtilities=_ckUtilities;
 @property (readonly, nonatomic) IMDCNPersonAliasResolver *cnaliasResolver;
+@property (nonatomic) BOOL hasDumpedLogsForNoExisitingGroup; // @synthesize hasDumpedLogsForNoExisitingGroup=_hasDumpedLogsForNoExisitingGroup;
 @property (readonly, nonatomic) IMDMessageHistorySyncController *messageHistorySyncController; // @synthesize messageHistorySyncController=_messageHistorySyncController;
 @property (readonly, nonatomic) IMDMessageProcessingController *messageProcessingController; // @synthesize messageProcessingController=_messageProcessingController;
 
@@ -37,6 +43,7 @@
 - (id)_chatInfoForSaving;
 - (id)_chatInfoInRange:(struct _NSRange)arg1;
 - (struct NSArray *)_createGroupChatsArray;
+- (BOOL)_ensureNoExistingGroupForCKRecord:(id)arg1;
 - (id)_existingChatForCKRecord:(id)arg1;
 - (id)_existingChatWithOriginalGroupID:(id)arg1 onService:(id)arg2;
 - (id)_existingiMessageChatForChatIdentifier:(id)arg1 style:(unsigned char)arg2;
@@ -51,7 +58,12 @@
 - (BOOL)_mergeDuplicateGroupsIfNeeded;
 - (void)_populateCNRecordIDForHandles:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_saveChats;
+- (BOOL)_shouldUpdateSyncStatsForChat:(id)arg1 originalSyncState:(long long)arg2;
+- (BOOL)_shouldUpdateSyncStatsForMessage:(id)arg1 originalSyncState:(long long)arg2;
+- (id)_statsCollector;
 - (BOOL)_updateDuplicateUnnamedGroupsWithNewGroupIDIfNeeded;
+- (void)_updateSyncStatisticsForChat:(id)arg1 incrementTotalCount:(unsigned long long)arg2;
+- (void)_updateSyncStatisticsForMessage:(id)arg1 incrementTotalCount:(unsigned long long)arg2;
 - (void)addChat:(id)arg1;
 - (void)addChat:(id)arg1 firstLoad:(BOOL)arg2;
 - (void)addItem:(id)arg1 toChat:(id)arg2;

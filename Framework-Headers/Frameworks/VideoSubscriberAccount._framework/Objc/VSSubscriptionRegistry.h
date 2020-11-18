@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
 - (id)_predicateForCurrentConnectionWithRequestKind:(long long)arg1;
 - (id)_predicateForPersistentAttributesOfSubscriptions:(id)arg1 withEntity:(id)arg2 forFiltering:(BOOL)arg3;
-- (BOOL)_saveChangesToContext:(id)arg1 error:(id *)arg2;
-- (long long)_saveChangesToContext:(id)arg1 withDate:(id)arg2 error:(id *)arg3;
+- (BOOL)_saveChangesToContext:(id)arg1;
+- (long long)_saveChangesToContext:(id)arg1 withDate:(id)arg2;
 - (id)_securityTaskForCurrentConnection;
 - (void)_sendRemoteNotification;
 - (id)_subscriptionEntity;

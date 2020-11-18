@@ -22,6 +22,7 @@
 + (id)defaultClockPersonalities;
 + (id)diagnosticDescriptionForClockService:(unsigned int)arg1 withIndent:(id)arg2;
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (void)notifyWhenClockManagerIsAvailable:(CDUnknownBlockType)arg1;
 + (id)sharedClockManager;
 + (id)sharedClockManagerSyncWithTimeout:(unsigned long long)arg1;
 + (id)timeSyncAudioClockDeviceUIDForClockIdentifier:(unsigned long long)arg1;

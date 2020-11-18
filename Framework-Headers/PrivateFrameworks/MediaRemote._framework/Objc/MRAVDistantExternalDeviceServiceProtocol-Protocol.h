@@ -6,7 +6,7 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class MRAVDistantOutputDevice, NSArray, NSData, NSError, NSString;
+@class NSArray, NSData, NSError, NSString;
 
 @protocol MRAVDistantExternalDeviceServiceProtocol <NSObject>
 - (void)connectWithOptions:(unsigned int)arg1;
@@ -15,11 +15,12 @@
 - (void)getCustomOriginDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)getExternalDeviceMetadataWithCompletion:(void (^)(MRAVDistantExternalDeviceMetadata *, NSError *))arg1;
 - (void)modifyOutputContextOfType:(unsigned int)arg1 addingDeviceUIDs:(NSArray *)arg2 removingDeviceUIDs:(NSArray *)arg3 settingDeviceUIDs:(NSArray *)arg4 completion:(void (^)(NSError *))arg5;
-- (void)outputDeviceVolume:(MRAVDistantOutputDevice *)arg1 withCompletion:(void (^)(float, NSError *))arg2;
+- (void)outputDeviceVolume:(NSString *)arg1 withCompletion:(void (^)(float, NSError *))arg2;
+- (void)outputDeviceVolumeControlCapabilities:(NSString *)arg1 withCompletion:(void (^)(unsigned int, NSError *))arg2;
 - (void)pingWithTimeout:(double)arg1 callback:(void (^)(NSError *))arg2;
 - (void)sendCustomData:(NSData *)arg1 withName:(NSString *)arg2;
 - (void)setNotifications:(unsigned long long)arg1;
-- (void)setOutputDeviceVolume:(float)arg1 forOutputDevice:(MRAVDistantOutputDevice *)arg2 withCompletion:(void (^)(NSError *))arg3;
+- (void)setOutputDeviceVolume:(float)arg1 forOutputDevice:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)setRegisteredCallbacks:(unsigned long long)arg1;
 - (void)unpair;
 @end

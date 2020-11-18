@@ -6,26 +6,29 @@
 
 #import <HomeKitDaemon/HMDAccessoryAdvertisement.h>
 
-@class HMDMediaOutputDevice, NSObject, NSString;
+#import <HomeKitDaemon/HMDWACAccessoryAssociation-Protocol.h>
+
+@class HMDMediaOutputDevice, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface HMDMediaAccessoryAdvertisement : HMDAccessoryAdvertisement
+@interface HMDMediaAccessoryAdvertisement : HMDAccessoryAdvertisement <HMDWACAccessoryAssociation>
 {
     BOOL _associated;
     HMDMediaOutputDevice *_outputDevice;
-    NSString *_sessionIdentifier;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (getter=isAssociated) BOOL associated; // @synthesize associated=_associated;
 @property (strong) HMDMediaOutputDevice *outputDevice; // @synthesize outputDevice=_outputDevice;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (strong, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 
++ (BOOL)canAirPortExpressSupportMediaAccessory:(id)arg1;
 - (void).cxx_destruct;
+- (long long)associationOptions;
 - (id)description;
-- (id)initWithIdentifier:(id)arg1 sessionIdentifier:(id)arg2 name:(id)arg3 category:(id)arg4;
-- (id)initWithOutputDevice:(id)arg1 sessionIdentifier:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3;
+- (id)initWithOutputDevice:(id)arg1;
+- (BOOL)matchesWACDeviceID:(id)arg1;
 
 @end
 

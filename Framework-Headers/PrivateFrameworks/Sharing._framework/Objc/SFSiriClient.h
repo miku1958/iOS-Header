@@ -40,9 +40,10 @@
 - (void)_deviceSetupEnd;
 - (void)_invalidate;
 - (void)_processQueuedRequests;
-- (void)_speakText:(id)arg1 flags:(unsigned int)arg2 rate:(double)arg3 delay:(double)arg4 startHandler:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_speakPasscode:(id)arg1 instructions:(id)arg2 languageCode:(id)arg3 flags:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_speakText:(id)arg1 languageCode:(id)arg2 flags:(unsigned int)arg3 rate:(double)arg4 delay:(double)arg5 startHandler:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)activate;
-- (void)deviceSetupBegin;
+- (void)deviceSetupBegin:(unsigned long long)arg1;
 - (void)deviceSetupEnd;
 - (void)deviceSetupPlayGreetingID:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deviceSetupPrepareGreeting:(CDUnknownBlockType)arg1;
@@ -51,8 +52,10 @@
 - (void)invalidateWithFlags:(unsigned int)arg1;
 - (void)preWarmDeviceSetupWelcomePhaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)speakDeviceSetupWelcomePhaseWithCompletion:(CDUnknownBlockType)arg1;
+- (void)speakPasscode:(id)arg1 instructions:(id)arg2 languageCode:(id)arg3 flags:(unsigned int)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)speakText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)speakText:(id)arg1 flags:(unsigned int)arg2 rate:(double)arg3 delay:(double)arg4 startHandler:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)speakText:(id)arg1 languageCode:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)speakText:(id)arg1 rate:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)speechSynthesizer:(id)arg1 didFinishSpeakingRequest:(id)arg2 successfully:(BOOL)arg3 phonemesSpoken:(id)arg4 withError:(id)arg5;
 - (void)speechSynthesizer:(id)arg1 didFinishSpeakingRequest:(id)arg2 successfully:(BOOL)arg3 withError2:(id)arg4;

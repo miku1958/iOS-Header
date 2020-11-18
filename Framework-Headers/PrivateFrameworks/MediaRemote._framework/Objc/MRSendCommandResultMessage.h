@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) unsigned int sendError;
 
 - (void).cxx_destruct;
-- (id)initWithSendError:(unsigned int)arg1 results:(id)arg2;
+- (id)initWithCommandID:(id)arg1 sendError:(unsigned int)arg2 results:(id)arg3;
 - (unsigned long long)type;
 
 @end

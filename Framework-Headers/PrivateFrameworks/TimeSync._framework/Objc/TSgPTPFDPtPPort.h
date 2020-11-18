@@ -10,13 +10,27 @@
 
 @interface TSgPTPFDPtPPort : TSgPTPNetworkPort
 {
+    BOOL _localPDelayLogMeanInterval;
+    BOOL _remotePDelayLogMeanInterval;
+    BOOL _multipleRemotes;
+    TSgPTPPortStatistics *_statistics;
 }
 
-@property (readonly, nonatomic) BOOL localPDelayLogMeanInterval; // @dynamic localPDelayLogMeanInterval;
-@property (readonly, nonatomic) BOOL remotePDelayLogMeanInterval; // @dynamic remotePDelayLogMeanInterval;
-@property (readonly, nonatomic) TSgPTPPortStatistics *statistics; // @dynamic statistics;
+@property (nonatomic) BOOL localPDelayLogMeanInterval; // @synthesize localPDelayLogMeanInterval=_localPDelayLogMeanInterval;
+@property (nonatomic) BOOL multipleRemotes; // @synthesize multipleRemotes=_multipleRemotes;
+@property (nonatomic) BOOL remotePDelayLogMeanInterval; // @synthesize remotePDelayLogMeanInterval=_remotePDelayLogMeanInterval;
+@property (strong, nonatomic) TSgPTPPortStatistics *statistics; // @synthesize statistics=_statistics;
 
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
+- (BOOL)_commonInitWithService:(unsigned int)arg1;
+- (BOOL)_localPDelayLogMeanInterval;
+- (BOOL)_multipleRemotes;
+- (BOOL)_remotePDelayLogMeanInterval;
+- (id)_statistics;
+- (void)dealloc;
+- (id)initWithMatchingDictionary:(id)arg1;
+- (id)initWithService:(unsigned int)arg1;
+- (void)updateProperties;
 
 @end
 

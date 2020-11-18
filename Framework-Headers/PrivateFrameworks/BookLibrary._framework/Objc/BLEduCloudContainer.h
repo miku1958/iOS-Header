@@ -29,8 +29,8 @@
 - (BOOL)_writePlist:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (BOOL)addBookItem:(id)arg1 error:(id *)arg2;
 - (id)allBookItems;
-- (id)bookItemForPath:(id)arg1;
 - (id)bookItemForPermlink:(id)arg1;
+- (id)bookItemForURL:(id)arg1;
 - (id)bookItemsForPermlinks:(id)arg1;
 - (id)cloudUrlForPermlink:(id)arg1;
 - (id)dictionaryAsBookItem:(id)arg1 path:(id)arg2;

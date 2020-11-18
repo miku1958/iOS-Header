@@ -18,6 +18,7 @@
     BOOL _connectionBorked;
     BOOL _interrupted;
     int _progressdAvailableToken;
+    int _devModeChangedToken;
     NSString *_overrideBundleIdentifier;
     CDUnknownBlockType _onInterupt;
     CDUnknownBlockType _onConnect;
@@ -43,13 +44,13 @@
 - (void)_updateBundleIdentifier:(id)arg1 forConnection:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)accountChanged;
 - (void)addBarrierBlock:(CDUnknownBlockType)arg1;
-- (void)client:(id)arg1 recievedNewDevMode:(int)arg2;
 - (void)connect;
 - (void)connectionBorked;
 - (void)connectionInterupted;
 - (id)dataServer:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)devModeChanged;
 - (id)init;
 - (id)initWithEndpoint:(id)arg1;
 - (void)invalidate;

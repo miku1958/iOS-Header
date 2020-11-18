@@ -35,6 +35,7 @@
 - (id)_actionableCharacteristics;
 - (id)_allRepresentedServices;
 - (id)_augmentedStandardResultsForUpdateResponse:(id)arg1 controlItems:(id)arg2;
+- (id)_descriptionBuilder;
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;

@@ -74,6 +74,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEduCloudData:(id)arg1 path:(id)arg2;
 - (id)initWithEntry:(id)arg1 basePath:(id)arg2;
+- (id)initWithPeristentIdentifier:(id)arg1 permlink:(id)arg2 title:(id)arg3;
 - (id)initWithStoreDownload:(id)arg1 permlink:(id)arg2 title:(id)arg3;
 
 @end

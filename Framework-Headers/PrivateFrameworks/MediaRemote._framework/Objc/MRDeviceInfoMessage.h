@@ -17,6 +17,8 @@
 @property (readonly, nonatomic) MRSupportedProtocolMessages *supportedProtocolMessages;
 
 - (void).cxx_destruct;
+- (unsigned long long)_lastSupportedMessageType;
+- (unsigned long long)_lastSupportedMessageTypeBeforeSupportedMessagesWereAddedToDeviceInfo;
 - (unsigned long long)encryptionType;
 - (id)initWithDeviceInfo:(id)arg1;
 - (unsigned long long)type;

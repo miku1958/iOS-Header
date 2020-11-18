@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class MFCertificateTrustInfo, MFError;
 
@@ -22,6 +22,7 @@
 
 - (void)dealloc;
 - (id)initWithSender:(id)arg1 signingTrust:(struct __SecTrust *)arg2 encryptionTrust:(struct __SecTrust *)arg3 verification:(int)arg4;
+- (void)reevaluateTrustWithNetworkAccessAllowed;
 
 @end
 

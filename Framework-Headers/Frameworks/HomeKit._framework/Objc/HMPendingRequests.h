@@ -28,6 +28,7 @@
 - (void)addCompletionBlock:(id)arg1 forIdentifier:(id)arg2;
 - (void)addEvent:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
 - (void)addEvents:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
+- (void)addMediaSystemBuilder:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
 - (void)addProgressHandler:(id)arg1 forAccessoryIdentifier:(id)arg2;
 - (void)addRequest:(id)arg1 ofType:(long long)arg2 forIdentifier:(id)arg3;
 - (void)addTrigger:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
@@ -39,6 +40,7 @@
 - (id)removeCompletionBlockForIdentifier:(id)arg1;
 - (id)removeEventForIdentifier:(id)arg1;
 - (id)removeEventsForIdentifier:(id)arg1;
+- (id)removeMediaSystemBuilderForIdentifier:(id)arg1;
 - (id)removeProgressBlockForIdentifier:(id)arg1;
 - (id)removeRequestOfType:(long long)arg1 forIdentifier:(id)arg2;
 - (id)removeTriggerForIdentifier:(id)arg1;

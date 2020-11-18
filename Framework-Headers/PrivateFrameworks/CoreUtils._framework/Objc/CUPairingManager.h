@@ -46,7 +46,7 @@
 - (int)_ensureXPCStarted;
 - (void)_findPairedPeer:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_getPairedPeersWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_getPairingIdentityWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getPairingIdentityWithOptions:(unsigned long long)arg1 tryCount:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_interrupted;
 - (void)_invalidate;
 - (void)_invalidated;

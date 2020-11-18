@@ -32,7 +32,7 @@
 - (void)_handleMediaSessionSetAudioControl:(id)arg1;
 - (void)_handleRefreshPlayback:(id)arg1;
 - (void)_handleSetPlayback:(id)arg1;
-- (void)_sessionPlaybackStateUpdated:(id)arg1 forceNotifyXPCClients:(BOOL)arg2;
+- (void)_sessionPlaybackStateUpdated:(id)arg1 notifyXPCClients:(BOOL)arg2;
 - (void)configureWithMessageDispatcher:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleMediaResponses:(id)arg1 message:(id)arg2;

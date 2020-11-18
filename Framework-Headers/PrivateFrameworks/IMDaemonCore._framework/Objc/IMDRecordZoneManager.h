@@ -20,6 +20,7 @@
     CKRecordZone *_messageRecordZone;
     CKRecordZoneID *_deDupeSaltZoneID;
     CKRecordZone *_deDupeSaltRecordZone;
+    CKRecordZoneID *_metricZoneID;
     IMDCKDatabaseManager *_dataBaseManager;
     APSConnection *_pushConnection;
 }
@@ -36,6 +37,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CKRecordZone *messageRecordZone; // @synthesize messageRecordZone=_messageRecordZone;
 @property (readonly, nonatomic) CKRecordZoneID *messageRecordZoneID; // @synthesize messageRecordZoneID=_messageRecordZoneID;
+@property (readonly, nonatomic) CKRecordZoneID *metricZoneID; // @synthesize metricZoneID=_metricZoneID;
 @property (strong, nonatomic) APSConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
 @property (readonly) Class superclass;
 

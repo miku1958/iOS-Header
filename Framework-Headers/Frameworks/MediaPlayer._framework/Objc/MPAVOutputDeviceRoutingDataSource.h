@@ -6,36 +6,37 @@
 
 #import <MediaPlayer/MPAVRoutingDataSource.h>
 
-@class MPAVEndpointRoute, NSArray, NSError, NSObject, NSString;
+@class MPAVEndpointRoute, MPMRAVOutputContextWrapper, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPAVOutputDeviceRoutingDataSource : MPAVRoutingDataSource
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    void *_applicationOutputContext;
-    NSError *_applicationOutputContextCreationError;
     BOOL _attemptedToInitializeAppOutputContext;
     void *_discoverySession;
     void *_callbackToken;
     BOOL _supportsMultipleSelection;
     BOOL _devicePresenceDetected;
     NSArray *_outputDeviceRoutes;
+    BOOL _shouldSourceOutputDevicesFromAVODDS;
+    MPMRAVOutputContextWrapper *_applicationOutputContext;
     MPAVEndpointRoute *_endpointRoute;
 }
 
+@property (strong, nonatomic) MPMRAVOutputContextWrapper *applicationOutputContext; // @synthesize applicationOutputContext=_applicationOutputContext;
 @property (strong, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
 @property (copy, nonatomic) NSString *routingContextUID;
+@property (nonatomic) BOOL supportsMultipleSelection; // @synthesize supportsMultipleSelection=_supportsMultipleSelection;
 
 + (id)_globalAudioSessionLock;
 - (void).cxx_destruct;
-- (void *)_copyApplicationOutputContext:(id *)arg1;
-- (void *)_createDefaultApplicationOutputContext:(id *)arg1 outAudioSessionID:(unsigned int *)arg2;
 - (void)_endpointsDidChangeNotification:(id)arg1;
 - (id)_outputDeviceRouteWithUID:(id)arg1;
 - (void)_outputDevicesDidChange:(id)arg1;
 - (void)_outputDevicesDidChangeNotification:(id)arg1;
 - (void)_registerNotifications;
 - (void)_routeStatusDidChangeNotification:(id)arg1;
+- (void)_setShouldSourceOutputDevicesFromAVODDS:(BOOL)arg1;
 - (void)_unregisterNotifications;
 - (void)addRouteToGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
@@ -47,7 +48,6 @@
 - (BOOL)routeIsLeaderOfEndpoint:(id)arg1;
 - (void)setDiscoveryMode:(long long)arg1;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)supportsMultipleSelection;
 
 @end
 

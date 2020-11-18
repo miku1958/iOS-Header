@@ -11,6 +11,7 @@
 @protocol AFClientConfigurationMutating <NSObject>
 - (void)setIsDeviceInCarDNDMode:(BOOL)arg1;
 - (void)setIsDeviceInSetupFlow:(BOOL)arg1;
+- (void)setOutputVolume:(float)arg1;
 - (void)setTapToSiriAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1;
 - (void)setTwoShotAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1;
 @end

@@ -28,6 +28,8 @@
     BOOL _isPerformingBatchUpdates;
     BOOL _needsReloadData;
     MediaControlsCollectionViewCountData *_countData;
+    long long _highlightedItemIndex;
+    BOOL _appeared;
     id<MediaControlsCollectionViewDataSource> _dataSource;
     id<MediaControlsCollectionViewDelegate> _delegate;
     CDUnknownBlockType _dismissalBlock;
@@ -61,9 +63,13 @@
 - (void)_adjustForEnvironmentChangeIfNeededWithSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (void)_adjustForEnvironmentChangeWithSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (double)_backgroundCornerRadius;
+- (void)_beginAppearanceTransitionForChildViewControllers:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_beginAppearanceTransitionIfNeeded:(BOOL)arg1 forChildViewController:(id)arg2 animated:(BOOL)arg3;
 - (long long)_closestItemAtPoint:(struct CGPoint)arg1;
 - (void)_commonInit;
 - (void)_dequeueAndPerformBatchUpdatesIfNeeded;
+- (void)_endAppearanceTransitionForChildViewControllerIfNeeded:(id)arg1;
+- (void)_endAppearanceTransitionForChildViewControllers;
 - (void)_enumerateActiveViewControllers:(CDUnknownBlockType)arg1;
 - (struct CGRect)_frameForViewAtIndex:(long long)arg1;
 - (struct CGRect)_frameForViewAtIndex:(long long)arg1 displayMode:(long long)arg2 size:(struct CGSize)arg3;
@@ -85,6 +91,7 @@
 - (double)_selectedItemHeightInSize:(struct CGSize)arg1;
 - (double)_selectedItemHeightInSize:(struct CGSize)arg1 shouldIgnoreInsets:(BOOL)arg2;
 - (void)_setFrame:(struct CGRect)arg1 forVisibleViewAtIndex:(long long)arg2;
+- (void)_setHighlighted:(BOOL)arg1 forViewController:(id)arg2;
 - (void)_setHighlighted:(BOOL)arg1 forViewControllerAtIndex:(long long)arg2;
 - (void)_setSelectedItemIndex:(long long)arg1 animated:(BOOL)arg2 shouldScroll:(BOOL)arg3 shouldNotifyDelegate:(BOOL)arg4 withReason:(long long)arg5;
 - (void)_tileViews;
@@ -121,11 +128,16 @@
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setSelectedItemIndex:(long long)arg1 animated:(BOOL)arg2 shouldScroll:(BOOL)arg3;
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (id)viewControllerForItemAtIndex:(long long)arg1;
 - (id)viewControllerForItemAtPoint:(struct CGPoint)arg1;
 - (id)viewControllerForSelectedItem;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

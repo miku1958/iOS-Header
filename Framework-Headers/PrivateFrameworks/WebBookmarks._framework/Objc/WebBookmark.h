@@ -114,6 +114,7 @@
 - (id)initBuiltinDeviceBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initCarrierBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initFolderWithParentID:(int)arg1;
+- (id)initFrequentlyVisitedSiteWithWebBookmark:(id)arg1 title:(id)arg2;
 - (id)initReadingListBookmarkWithTitle:(id)arg1 address:(id)arg2 previewText:(id)arg3;
 - (id)initWhiteListBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initWithDictionaryRepresentationForInMemoryChangeTracking:(id)arg1;

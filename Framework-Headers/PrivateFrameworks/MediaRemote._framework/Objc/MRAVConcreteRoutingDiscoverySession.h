@@ -6,12 +6,10 @@
 
 #import <MediaRemote/MRAVRoutingDiscoverySession.h>
 
-#import <MediaRemote/MRExternalDeviceControllerDelegate-Protocol.h>
-
-@class AVOutputDeviceDiscoverySession, MRExternalDeviceController, NSArray, NSObject, NSString;
+@class AVOutputDeviceDiscoverySession, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MRAVConcreteRoutingDiscoverySession : MRAVRoutingDiscoverySession <MRExternalDeviceControllerDelegate>
+@interface MRAVConcreteRoutingDiscoverySession : MRAVRoutingDiscoverySession
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
@@ -20,35 +18,23 @@
     unsigned int _discoveryMode;
     unsigned int _targetAudioSessionID;
     NSString *_routingContextUID;
-    MRExternalDeviceController *_genericExternalDeviceController;
-    struct NSMutableDictionary *_availableGenericExternalDevices;
-    BOOL _createEndpointsOnlyIfGenericEquivalentAvailable;
-    NSArray *_availableEndpoints;
     NSArray *_availableOutputDevices;
-    struct NSMapTable *_groupIDsToWeakEndpointsTable;
-    struct NSMapTable *_deviceIDsToWeakOutputDevicesTable;
     BOOL _scheduledAvailableEndpointsAndOutputDevicesReload;
+    int _airplayActiveNotificationToken;
+    BOOL _isLocalDeviceBeingAirplayedTo;
 }
 
 @property (readonly, nonatomic) NSArray *availableEndpoints; // @dynamic availableEndpoints;
 @property (readonly, nonatomic) NSArray *availableOutputDevices; // @dynamic availableOutputDevices;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_availableOutputDevicesDidChangeNotification:(id)arg1;
-- (void)_onQueue_reloadAvailableEndpointsAndOutputDevices;
-- (void)_registerNotifications;
+- (void)_onQueue_reloadAvailableOutputDevices;
 - (void)_scheduleAvailableEndpointsAndOutputDevicesReload;
-- (void)_unregisterNotifications;
 - (void)dealloc;
+- (BOOL)devicePresenceDetected;
 - (unsigned int)discoveryMode;
 - (unsigned int)endpointFeatures;
-- (void)externalDeviceController:(id)arg1 didDiscoverDevice:(id)arg2;
-- (void)externalDeviceController:(id)arg1 didRemoveDevice:(id)arg2;
-- (BOOL)hasAvailableEndpoints;
 - (id)initWithEndpointFeatures:(unsigned int)arg1;
 - (id)routingContextUID;
 - (void)setDiscoveryMode:(unsigned int)arg1;

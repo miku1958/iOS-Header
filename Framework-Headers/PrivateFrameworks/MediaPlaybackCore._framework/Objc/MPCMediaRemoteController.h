@@ -60,8 +60,12 @@
 @property (readonly, nonatomic) MPCFuture *supportedCommands;
 @property (readonly, nonatomic) long long supportedCommandsCacheState; // @synthesize supportedCommandsCacheState=_supportedCommandsCacheState;
 
++ (void)_sendCommand:(unsigned int)arg1 options:(id)arg2 appOptions:(unsigned int)arg3 toPlayerPath:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_sendLocalCommand:(unsigned int)arg1 playbackIntent:(id)arg2 options:(id)arg3 toPlayerPath:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_sendRemoteCommand:(unsigned int)arg1 playbackIntent:(id)arg2 options:(id)arg3 toPlayerPath:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (BOOL)_shouldRegisterForNotifications;
 + (id)controllerForPlayerPath:(id)arg1;
++ (void)sendCommand:(unsigned int)arg1 options:(id)arg2 toPlayerPath:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)_contentItemArtworkChangedNotification:(id)arg1;
 - (id)_init;
@@ -79,8 +83,6 @@
 - (void)_playbackQueueChangedNotification:(id)arg1;
 - (void)_playbackQueueContentItemsChangedNotification:(id)arg1;
 - (void)_playbackStateDidChangeNotification:(id)arg1;
-- (void)_sendLocalCommand:(unsigned int)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_sendRemoteCommand:(unsigned int)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_supportedCommandsDidChangedNotification:(id)arg1;
 - (long long)contentItemArtworkCacheStateForArtworkIdentifier:(id)arg1 size:(struct CGSize)arg2;
 - (id)contentItemArtworkForContentItemIdentifier:(id)arg1 artworkIdentifier:(id)arg2 size:(struct CGSize)arg3;

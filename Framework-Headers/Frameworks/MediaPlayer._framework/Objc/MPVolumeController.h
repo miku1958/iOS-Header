@@ -14,9 +14,7 @@
 @interface MPVolumeController : NSObject <MPVolumeControllerDataSourceDelegate>
 {
     id<MPVolumeControllerDataSource> _dataSource;
-    BOOL _shouldForceVolumeControlDisabled;
-    BOOL _dataSourceVolumeControlAvailable;
-    BOOL _volumeControlAvailable;
+    int _userRecentlyChangedVolumeCount;
     id<MPVolumeControllerDelegate> _delegate;
     MPAVController *_player;
 }
@@ -29,7 +27,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isMuted) BOOL muted;
 @property (strong, nonatomic) MPAVController *player; // @synthesize player=_player;
-@property (nonatomic) BOOL shouldForceVolumeControlDisabled; // @synthesize shouldForceVolumeControlDisabled=_shouldForceVolumeControlDisabled;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *volumeAudioCategory;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
@@ -40,7 +37,9 @@
 
 - (void).cxx_destruct;
 - (void)_updateVolumeControlAvailability;
+- (void)_userChangedVolume;
 - (void)adjustVolumeValue:(float)arg1;
+- (void)getVolumeValueWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDataSource:(id)arg1;
 - (BOOL)muted;

@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPAVItem, NSData, NSString;
+@class MPAVItem, NSData, NSDictionary, NSString;
 
 @interface MPPlaybackContext : NSObject <NSSecureCoding>
 {
@@ -23,6 +23,7 @@
     NSData *_playActivityRecommendationData;
     NSString *_siriAssetInfo;
     NSString *_siriReferenceIdentifier;
+    NSDictionary *_siriWHAMetricsInfo;
 }
 
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
@@ -35,6 +36,7 @@
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (copy, nonatomic) NSString *siriAssetInfo; // @synthesize siriAssetInfo=_siriAssetInfo;
 @property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
+@property (copy, nonatomic) NSDictionary *siriWHAMetricsInfo; // @synthesize siriWHAMetricsInfo=_siriWHAMetricsInfo;
 @property (nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
 
 + (Class)queueFeederClass;

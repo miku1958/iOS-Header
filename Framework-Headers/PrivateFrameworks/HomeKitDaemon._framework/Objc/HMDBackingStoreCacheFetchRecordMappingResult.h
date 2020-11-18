@@ -6,24 +6,33 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreRecordMapping-Protocol.h>
+
 @class HMDBackingStoreCacheGroup, HMDBackingStoreCacheShareGroup, NSString, NSUUID;
 
-@interface HMDBackingStoreCacheFetchRecordMappingResult : HMFObject
+@interface HMDBackingStoreCacheFetchRecordMappingResult : HMFObject <HMDBackingStoreRecordMapping>
 {
-    HMDBackingStoreCacheShareGroup *_share;
-    HMDBackingStoreCacheGroup *_group;
     NSString *_recordName;
     NSUUID *_uuid;
+    NSUUID *_parentUuid;
+    NSString *_type;
+    HMDBackingStoreCacheShareGroup *_share;
+    HMDBackingStoreCacheGroup *_group;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HMDBackingStoreCacheGroup *group; // @synthesize group=_group;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSUUID *parentUuid; // @synthesize parentUuid=_parentUuid;
 @property (readonly, nonatomic) NSString *recordName; // @synthesize recordName=_recordName;
 @property (readonly, nonatomic) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
-- (id)description;
-- (id)initWithGroup:(id)arg1 share:(id)arg2 recordName:(id)arg3 uuid:(id)arg4;
+- (id)initWithGroup:(id)arg1 share:(id)arg2 recordName:(id)arg3 uuid:(id)arg4 parentUuid:(id)arg5 type:(id)arg6;
 
 @end
 

@@ -20,10 +20,10 @@
 @property (nonatomic) BOOL alwaysAllowUpdates; // @synthesize alwaysAllowUpdates=_alwaysAllowUpdates;
 @property (readonly, nonatomic) NSArray *availableEndpoints; // @dynamic availableEndpoints;
 @property (readonly, nonatomic) NSArray *availableOutputDevices; // @dynamic availableOutputDevices;
+@property (readonly, nonatomic) BOOL devicePresenceDetected; // @dynamic devicePresenceDetected;
 @property (nonatomic) unsigned int discoveryMode; // @dynamic discoveryMode;
 @property (readonly, nonatomic) unsigned int endpointFeatures; // @dynamic endpointFeatures;
 @property (readonly, nonatomic) NSArray *endpointsChangedCallbacks;
-@property (readonly, nonatomic) BOOL hasAvailableEndpoints; // @dynamic hasAvailableEndpoints;
 @property (readonly, nonatomic) NSArray *outputDevicesChangedCallbacks;
 @property (copy, nonatomic) NSString *routingContextUID; // @dynamic routingContextUID;
 @property (nonatomic) unsigned int targetAudioSessionID; // @dynamic targetAudioSessionID;

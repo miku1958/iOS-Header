@@ -11,13 +11,13 @@
 
 @interface IMDCKMessageSyncController : IMDCKAbstractSyncController
 {
-    BOOL _shouldCheckDeviceConditions;
     CKServerChangeToken *_archivedRecordSyncToken;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDRecordZoneManager *_recordZoneManager;
     id<IMDCKSyncTokenStore> _syncTokenStore;
     IMDCKMessageSyncCKOperationFactory *_CKOperationFactory;
     NSObject<OS_xpc_object> *_activity;
+    unsigned long long _deviceConditionsToCheck;
     NSMutableDictionary *_visitedChats;
 }
 
@@ -25,9 +25,9 @@
 @property NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property (strong, nonatomic) CKServerChangeToken *archivedRecordSyncToken; // @synthesize archivedRecordSyncToken=_archivedRecordSyncToken;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
+@property (nonatomic) unsigned long long deviceConditionsToCheck; // @synthesize deviceConditionsToCheck=_deviceConditionsToCheck;
 @property (strong, nonatomic) CKServerChangeToken *latestSyncToken;
 @property (strong, nonatomic) IMDRecordZoneManager *recordZoneManager; // @synthesize recordZoneManager=_recordZoneManager;
-@property (nonatomic) BOOL shouldCheckDeviceConditions; // @synthesize shouldCheckDeviceConditions=_shouldCheckDeviceConditions;
 @property (strong, nonatomic) id<IMDCKSyncTokenStore> syncTokenStore; // @synthesize syncTokenStore=_syncTokenStore;
 @property (strong, nonatomic) NSMutableDictionary *visitedChats; // @synthesize visitedChats=_visitedChats;
 
@@ -83,7 +83,7 @@
 - (id)initWithSyncTokenStore:(id)arg1;
 - (long long)syncControllerRecordType;
 - (void)syncDeletedMessagesToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
-- (void)syncMessagesWithSyncType:(long long)arg1 shouldCheckDeviceConditions:(BOOL)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)syncMessagesWithSyncType:(long long)arg1 deviceConditionsToCheck:(unsigned long long)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 
 @end
 

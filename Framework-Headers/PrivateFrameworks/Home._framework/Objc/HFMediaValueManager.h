@@ -17,9 +17,8 @@
 @interface HFMediaValueManager : NSObject <HFMediaObjectObserver, HFMediaSessionObserver, HFMediaValueSource, HFHomeKitItemProtocol>
 {
     NSError *_cachedPlaybackStateWriteError;
-    id<HFMediaProfileContainer> _mediaProfile;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
     NSMutableArray *_transactionStack;
-    long long _lastKnownPlaybackState;
 }
 
 @property (readonly, nonatomic) NSError *cachedPlaybackStateWriteError; // @synthesize cachedPlaybackStateWriteError=_cachedPlaybackStateWriteError;
@@ -28,20 +27,19 @@
 @property (readonly, nonatomic) BOOL hasPendingWrites;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
-@property (nonatomic) long long lastKnownPlaybackState; // @synthesize lastKnownPlaybackState=_lastKnownPlaybackState;
-@property (readonly, weak, nonatomic) id<HFMediaProfileContainer> mediaProfile; // @synthesize mediaProfile=_mediaProfile;
+@property (readonly, weak, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableArray *transactionStack; // @synthesize transactionStack=_transactionStack;
 
 - (void).cxx_destruct;
-- (void)_clearCachedPlaybackStateWriteErrorWithReason:(id)arg1;
+- (void)_clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(BOOL)arg2;
 - (void)_notifyDelegatesDidUpdatePlaybackState:(long long)arg1 mediaSession:(id)arg2;
 - (void)_notifyDelegatesFailedToUpdatePlaybackStateWithError:(id)arg1 mediaSession:(id)arg2;
 - (void)_notifyDelegatesWillUpdatePlaybackState:(long long)arg1 mediaSession:(id)arg2;
 - (void)_updateCachedPlaybackStateWriteError:(id)arg1 operationType:(id)arg2 notifyDelegates:(BOOL)arg3;
 - (void)_updateLastPlaybackState:(long long)arg1 sender:(SEL)arg2 notifyWillUpdate:(BOOL)arg3 notifyDidUpdate:(BOOL)arg4;
 - (id)init;
-- (id)initWithMediaProfile:(id)arg1;
+- (id)initWithMediaProfileContainer:(id)arg1;
 - (long long)lastPlaybackStateForProfile;
 - (void)mediaObject:(id)arg1 didUpdateMediaSession:(id)arg2;
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;

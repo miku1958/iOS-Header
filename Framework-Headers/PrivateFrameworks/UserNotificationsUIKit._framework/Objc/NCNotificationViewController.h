@@ -74,6 +74,7 @@
 - (void)_askDelegateToExecuteAction:(id)arg1 withParameters:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)_canPan;
 - (void)_configureScrollViewIfNecessary;
+- (id)_customContentProvidingViewControllerCreateIfNecessary;
 - (long long)_dateFormatStyle;
 - (void)_executeCancelAction:(BOOL)arg1;
 - (void)_executeClearAction:(BOOL)arg1;

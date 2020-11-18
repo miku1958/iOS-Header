@@ -92,7 +92,6 @@
     NSMutableArray *_removedUsers;
     NSMutableArray *_unconfiguredResidentDevices;
     HMDRoom *_roomForEntireHome;
-    long long _lastKnownReachableIPAndMediaAccessoryCount;
     long long _lastKnownReachableAccessoryCount;
     long long _configurationVersion;
     long long _expectedConfigurationVersion;
@@ -159,7 +158,6 @@
 @property (readonly, nonatomic) HMDHomeObjectChangeHandler *homeObjectChangeHandler; // @synthesize homeObjectChangeHandler=_homeObjectChangeHandler;
 @property (strong, nonatomic) HMDHomeReprovisionHandler *homeReprovisionHandler; // @synthesize homeReprovisionHandler=_homeReprovisionHandler;
 @property (nonatomic) long long lastKnownReachableAccessoryCount; // @synthesize lastKnownReachableAccessoryCount=_lastKnownReachableAccessoryCount;
-@property (nonatomic) long long lastKnownReachableIPAndMediaAccessoryCount; // @synthesize lastKnownReachableIPAndMediaAccessoryCount=_lastKnownReachableIPAndMediaAccessoryCount;
 @property (readonly, nonatomic) HMDHomeObjectLookup *lookup; // @synthesize lookup=_lookup;
 @property (strong, nonatomic) NSArray *mediaSessionStates; // @synthesize mediaSessionStates=_mediaSessionStates;
 @property (strong, nonatomic) NSArray *mediaSessions; // @synthesize mediaSessions=_mediaSessions;
@@ -456,7 +454,7 @@
 - (void)_removeAccessoriesFromContainers:(id)arg1;
 - (void)_removeAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeAccessoryWithUUID:(id)arg1 message:(id)arg2;
-- (void)_removeAllAccessoriesWithCompletionHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
+- (void)_removeAllAccessoriesAndPairings:(BOOL)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_removeAllUsersFromAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeCharacteristic:(id)arg1;
 - (void)_removeMediaSessionWithIdentifier:(id)arg1;
@@ -573,6 +571,7 @@
 - (void)enableHomeNotificationsForMediaAccessory:(id)arg1;
 - (void)enableNotificationsForDevices:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)evaluateIfMediaPlaybackStateChanged:(id)arg1;
 - (void)evaluateNotificationConditionForCharacteristics:(id)arg1 homePresence:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)evaluatePredicate:(id)arg1;
 - (void)evaluateShouldRelaunchAndSetRelaunch;
@@ -613,7 +612,6 @@
 - (BOOL)isMediaPeerToPeerEnabled;
 - (id)logIdentifier;
 - (id)mediaPassword;
-- (void)mediaPlaybackStateChanged:(id)arg1;
 - (id)mediaProfileWithUUID:(id)arg1;
 - (id)mediaSessionStateWithIdentifier:(id)arg1;
 - (id)mediaSessionWithIdentifier:(id)arg1;
@@ -640,7 +638,7 @@
 - (id)outgoingInvitationWithUUID:(id)arg1;
 - (id)owner;
 - (id)prepareUserManagementOperationForUser:(id)arg1 accessories:(id)arg2 type:(unsigned long long)arg3 error:(id *)arg4;
-- (id)prepareUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 type:(unsigned long long)arg3 error:(id *)arg4;
+- (id)prepareUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 type:(unsigned long long)arg3 model:(id)arg4 error:(id *)arg5;
 - (void)reEvaluateHomeHubState;
 - (void)reEvaluateTriggers;
 - (void)reachabilityChangedForAccessory:(id)arg1 reachable:(BOOL)arg2;
@@ -661,10 +659,11 @@
 - (void)relayMessage:(id)arg1;
 - (void)remoteAccessEnabled:(BOOL)arg1;
 - (void)remoteAccessHealthMonitorTimerDidFire;
+- (void)removeAccessoriesFromAssistantAccessControl:(id)arg1 accessories:(id)arg2;
 - (void)removeAccessoriesFromContainers:(id)arg1;
 - (void)removeAccessory:(id)arg1;
 - (void)removeAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)removeAllAccessoriesWithCompletionHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
+- (void)removeAllAccessoriesAndPairings:(BOOL)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeCharacteristic:(id)arg1;
 - (void)removeMediaSession:(id)arg1;
 - (void)removeMediaSessionState:(id)arg1;
@@ -722,6 +721,7 @@
 - (id)updateHomeWithModel:(id)arg1 message:(id)arg2;
 - (void)updateNetworkConnectivity:(BOOL)arg1 companionReachable:(BOOL)arg2;
 - (id)url;
+- (void)userAssistantAccessControlDidUpdate:(id)arg1 accessories:(id)arg2;
 - (void)userManagementOperationDidFinish:(id)arg1;
 - (id)userWithPairingIdentity:(id)arg1;
 - (id)userWithUUID:(id)arg1;

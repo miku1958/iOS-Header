@@ -15,12 +15,14 @@
 {
     BOOL _isDeviceInSetupFlow;
     BOOL _isDeviceInCarDNDMode;
+    float _outputVolume;
     AFAudioPlaybackRequest *_tapToSiriAudioPlaybackRequest;
     AFAudioPlaybackRequest *_twoShotAudioPlaybackRequest;
 }
 
 @property (readonly, nonatomic) BOOL isDeviceInCarDNDMode; // @synthesize isDeviceInCarDNDMode=_isDeviceInCarDNDMode;
 @property (readonly, nonatomic) BOOL isDeviceInSetupFlow; // @synthesize isDeviceInSetupFlow=_isDeviceInSetupFlow;
+@property (readonly, nonatomic) float outputVolume; // @synthesize outputVolume=_outputVolume;
 @property (readonly, copy, nonatomic) AFAudioPlaybackRequest *tapToSiriAudioPlaybackRequest; // @synthesize tapToSiriAudioPlaybackRequest=_tapToSiriAudioPlaybackRequest;
 @property (readonly, copy, nonatomic) AFAudioPlaybackRequest *twoShotAudioPlaybackRequest; // @synthesize twoShotAudioPlaybackRequest=_twoShotAudioPlaybackRequest;
 
@@ -33,7 +35,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIsDeviceInSetupFlow:(BOOL)arg1 isDeviceInCarDNDMode:(BOOL)arg2 tapToSiriAudioPlaybackRequest:(id)arg3 twoShotAudioPlaybackRequest:(id)arg4;
+- (id)initWithIsDeviceInSetupFlow:(BOOL)arg1 isDeviceInCarDNDMode:(BOOL)arg2 outputVolume:(float)arg3 tapToSiriAudioPlaybackRequest:(id)arg4 twoShotAudioPlaybackRequest:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 

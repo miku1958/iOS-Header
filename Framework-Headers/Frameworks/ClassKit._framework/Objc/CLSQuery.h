@@ -47,7 +47,6 @@
 - (oneway void)clientRemote_invalidate;
 - (id)initWithObjectType:(Class)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 error:(id *)arg4;
 - (void)reset;
-- (void)withQuery:(CDUnknownBlockType)arg1;
 
 @end
 

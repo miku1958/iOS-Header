@@ -9,7 +9,7 @@
 #import <UserNotificationsUIKit/NCNotificationCustomContent-Protocol.h>
 #import <UserNotificationsUIKit/_UNNotificationExtensionHostDelegate-Protocol.h>
 
-@class NCMediaPlayPauseButton, NCNotificationAction, NCNotificationRequest, NSExtension, NSMutableArray, NSString, UIView, _UNNotificationExtensionHostViewController;
+@class NCMediaPlayPauseButton, NCNotificationAction, NCNotificationRequest, NSMutableArray, NSString, UIView, _UNNotificationExtensionHostViewController;
 @protocol NCNotificationCustomContentDelegate, _UNNotificationExtensionRemoteInterface;
 
 @interface NCNotificationExtensionContainerViewController : UIViewController <_UNNotificationExtensionHostDelegate, NCNotificationCustomContent>
@@ -19,7 +19,8 @@
     BOOL _defaultContentHidden;
     BOOL _overridesDefaultTitle;
     id<NCNotificationCustomContentDelegate> _delegate;
-    NSExtension *_extension;
+    NSString *_extensionIdentifier;
+    double _contentSizeRatio;
     NCNotificationRequest *_notificationRequest;
     _UNNotificationExtensionHostViewController *_extensionViewController;
     id<_UNNotificationExtensionRemoteInterface> _remoteService;
@@ -31,11 +32,12 @@
 @property (nonatomic) BOOL allowManualDismiss; // @synthesize allowManualDismiss=_allowManualDismiss;
 @property (strong, nonatomic) UIView *blockingView; // @synthesize blockingView=_blockingView;
 @property (readonly, nonatomic) NSString *contentExtensionIdentifier;
+@property (nonatomic) double contentSizeRatio; // @synthesize contentSizeRatio=_contentSizeRatio;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL defaultContentHidden; // @synthesize defaultContentHidden=_defaultContentHidden;
 @property (weak, nonatomic) id<NCNotificationCustomContentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+@property (strong, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property (strong, nonatomic) _UNNotificationExtensionHostViewController *extensionViewController; // @synthesize extensionViewController=_extensionViewController;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCMediaPlayPauseButton *mediaPlayPauseButton; // @synthesize mediaPlayPauseButton=_mediaPlayPauseButton;
@@ -52,7 +54,7 @@
 - (void)_addExtensionViewFromViewController:(id)arg1;
 - (double)_contentHeightForWidth:(double)arg1;
 - (void)_flushQueuedRequests;
-- (void)_loadViewControllerForExtension:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_loadExtensionViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_mediaPlayPauseButtonTapped:(id)arg1;
 - (id)_requestActionForActionIdentifier:(id)arg1;
 - (id)_responseForAction:(id)arg1 notification:(id)arg2 response:(id)arg3;

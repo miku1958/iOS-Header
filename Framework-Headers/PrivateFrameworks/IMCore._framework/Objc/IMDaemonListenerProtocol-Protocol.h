@@ -74,6 +74,7 @@
 - (void)didFetchSyncStateStats:(NSDictionary *)arg1;
 - (void)didPerformAdditionalStorageRequiredCheckWithSuccess:(BOOL)arg1 additionalStorageRequired:(unsigned long long)arg2 forAccountId:(NSString *)arg3 error:(NSError *)arg4;
 - (void)displayPinCodeForAccount:(NSString *)arg1 pinCode:(NSNumber *)arg2 deviceName:(NSString *)arg3 deviceType:(NSString *)arg4 phoneNumber:(NSString *)arg5;
+- (void)downloadedPurgedAssetBatchForChatIDs:(NSArray *)arg1 completedTransferGUIDs:(NSArray *)arg2;
 - (void)engroupParticipantsUpdatedForChat:(NSString *)arg1;
 - (void)fileTransfer:(NSString *)arg1 createdWithProperties:(NSDictionary *)arg2;
 - (void)fileTransfer:(NSString *)arg1 highQualityDownloadSucceededWithPath:(NSString *)arg2;
@@ -81,9 +82,11 @@
 - (void)fileTransfer:(NSString *)arg1 updatedWithProperties:(NSDictionary *)arg2;
 - (void)fileTransferHighQualityDownloadFailed:(NSString *)arg1;
 - (void)fileTransfers:(NSArray *)arg1 createdWithLocalPaths:(NSArray *)arg2;
+- (void)finishedDownloadingPurgedAssetsForChatIDs:(NSArray *)arg1;
 - (void)frequentRepliesQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4 limit:(unsigned long long)arg5;
 - (void)historicalMessageGUIDsDeleted:(NSArray *)arg1 chatGUIDs:(NSArray *)arg2 queryID:(NSString *)arg3;
 - (void)historyQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4 limit:(unsigned long long)arg5;
+- (void)isDownloadingQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(BOOL)arg4;
 - (void)lastFailedMessageDateChanged:(long long)arg1;
 - (void)leftChat:(NSString *)arg1;
 - (void)loadedChats:(NSArray *)arg1;
@@ -105,6 +108,7 @@
 - (void)standaloneFileTransferRegistered:(NSString *)arg1;
 - (void)stickerPackRemoved:(NSArray *)arg1;
 - (void)stickerPackUpdated:(NSDictionary *)arg1;
+- (void)uncachedAttachmentCountQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSNumber *)arg4;
 - (void)unreadCountChanged:(long long)arg1;
 - (void)updateCloudKitState;
 - (void)updateCloudKitStateWithDictionary:(NSDictionary *)arg1;

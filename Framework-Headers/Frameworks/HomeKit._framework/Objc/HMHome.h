@@ -127,7 +127,7 @@
 - (void)_acceptInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addAccessory:(id)arg1 appID:(id)arg2 password:(id)arg3 setupCodeDeferred:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_addActionSetWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_addAndSetupAccessoriesWithSetupPayload:(id)arg1 legacyAPI:(BOOL)arg2 trustedOrigin:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_addAndSetupAccessoriesWithSetupPayload:(id)arg1 browseRequest:(id)arg2 suggestedRoomName:(id)arg3 legacyAPI:(BOOL)arg4 trustedOrigin:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_addIdentifier:(id)arg1 bridgeUUID:(id)arg2;
 - (void)_addRoomWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addServiceGroupWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

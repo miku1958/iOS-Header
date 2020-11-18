@@ -17,14 +17,19 @@
 @property (copy) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (strong) IMRuntimeTestRun *testRun; // @synthesize testRun=_testRun;
 
++ (id)logHandle;
++ (void)testLog:(id)arg1;
++ (id)testName;
 - (void).cxx_destruct;
 - (void)dispatchAfter:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (void)finishTest;
 - (void)finishTestAfterInterval:(double)arg1;
+- (id)logHandle;
 - (void)runTest:(CDUnknownBlockType)arg1;
 - (void)setUp;
 - (void)startTest;
 - (void)tearDown;
+- (void)testLog:(id)arg1;
 - (id)testName;
 - (Class)testRunClass;
 

@@ -8,6 +8,8 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface AWDNWConnectionReport : PBCodable <NSCopying>
 {
     unsigned long long _bestRTT;
@@ -39,6 +41,7 @@
     unsigned long long _proxyMilliseconds;
     unsigned long long _rTTvariance;
     unsigned long long _resolutionMilliseconds;
+    unsigned long long _secondsSinceInterfaceChange;
     unsigned long long _smoothedRTT;
     unsigned long long _synRetransmissionCount;
     unsigned long long _timestamp;
@@ -51,6 +54,7 @@
     int _connectionMode;
     int _failureReason;
     int _firstAddressFamily;
+    NSString *_processName;
     int _stackLevel;
     int _tlsVersion;
     int _usedProxyType;
@@ -59,6 +63,7 @@
     BOOL _firstParty;
     BOOL _ipv4Available;
     BOOL _ipv6Available;
+    BOOL _isDaemon;
     BOOL _multipathConfigured;
     BOOL _resolutionRequired;
     BOOL _synthesizedExtraIPv6Address;
@@ -101,6 +106,7 @@
         unsigned int proxyMilliseconds:1;
         unsigned int rTTvariance:1;
         unsigned int resolutionMilliseconds:1;
+        unsigned int secondsSinceInterfaceChange:1;
         unsigned int smoothedRTT:1;
         unsigned int synRetransmissionCount:1;
         unsigned int timestamp:1;
@@ -121,6 +127,7 @@
         unsigned int firstParty:1;
         unsigned int ipv4Available:1;
         unsigned int ipv6Available:1;
+        unsigned int isDaemon:1;
         unsigned int multipathConfigured:1;
         unsigned int resolutionRequired:1;
         unsigned int synthesizedExtraIPv6Address:1;
@@ -186,6 +193,7 @@
 @property (nonatomic) BOOL hasIpv6AddressCount;
 @property (nonatomic) BOOL hasIpv6Available;
 @property (nonatomic) BOOL hasIpv6DNSServerCount;
+@property (nonatomic) BOOL hasIsDaemon;
 @property (nonatomic) BOOL hasMultipathBytesInCell;
 @property (nonatomic) BOOL hasMultipathBytesInInitial;
 @property (nonatomic) BOOL hasMultipathBytesInWiFi;
@@ -197,10 +205,12 @@
 @property (nonatomic) BOOL hasPacketsIn;
 @property (nonatomic) BOOL hasPacketsOut;
 @property (nonatomic) BOOL hasPathTriggerMilliseconds;
+@property (readonly, nonatomic) BOOL hasProcessName;
 @property (nonatomic) BOOL hasProxyMilliseconds;
 @property (nonatomic) BOOL hasRTTvariance;
 @property (nonatomic) BOOL hasResolutionMilliseconds;
 @property (nonatomic) BOOL hasResolutionRequired;
+@property (nonatomic) BOOL hasSecondsSinceInterfaceChange;
 @property (nonatomic) BOOL hasSmoothedRTT;
 @property (nonatomic) BOOL hasStackLevel;
 @property (nonatomic) BOOL hasSynRetransmissionCount;
@@ -225,6 +235,7 @@
 @property (nonatomic) unsigned long long ipv6AddressCount; // @synthesize ipv6AddressCount=_ipv6AddressCount;
 @property (nonatomic) BOOL ipv6Available; // @synthesize ipv6Available=_ipv6Available;
 @property (nonatomic) unsigned long long ipv6DNSServerCount; // @synthesize ipv6DNSServerCount=_ipv6DNSServerCount;
+@property (nonatomic) BOOL isDaemon; // @synthesize isDaemon=_isDaemon;
 @property (nonatomic) unsigned long long multipathBytesInCell; // @synthesize multipathBytesInCell=_multipathBytesInCell;
 @property (nonatomic) unsigned long long multipathBytesInInitial; // @synthesize multipathBytesInInitial=_multipathBytesInInitial;
 @property (nonatomic) unsigned long long multipathBytesInWiFi; // @synthesize multipathBytesInWiFi=_multipathBytesInWiFi;
@@ -236,10 +247,12 @@
 @property (nonatomic) unsigned long long packetsIn; // @synthesize packetsIn=_packetsIn;
 @property (nonatomic) unsigned long long packetsOut; // @synthesize packetsOut=_packetsOut;
 @property (nonatomic) unsigned long long pathTriggerMilliseconds; // @synthesize pathTriggerMilliseconds=_pathTriggerMilliseconds;
+@property (strong, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property (nonatomic) unsigned long long proxyMilliseconds; // @synthesize proxyMilliseconds=_proxyMilliseconds;
 @property (nonatomic) unsigned long long rTTvariance; // @synthesize rTTvariance=_rTTvariance;
 @property (nonatomic) unsigned long long resolutionMilliseconds; // @synthesize resolutionMilliseconds=_resolutionMilliseconds;
 @property (nonatomic) BOOL resolutionRequired; // @synthesize resolutionRequired=_resolutionRequired;
+@property (nonatomic) unsigned long long secondsSinceInterfaceChange; // @synthesize secondsSinceInterfaceChange=_secondsSinceInterfaceChange;
 @property (nonatomic) unsigned long long smoothedRTT; // @synthesize smoothedRTT=_smoothedRTT;
 @property (nonatomic) int stackLevel; // @synthesize stackLevel=_stackLevel;
 @property (nonatomic) unsigned long long synRetransmissionCount; // @synthesize synRetransmissionCount=_synRetransmissionCount;
@@ -276,6 +289,7 @@
 - (id)connectionModeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)failureReasonAsString:(int)arg1;

@@ -15,6 +15,7 @@
 {
     NSArray *_components;
     NSString *_name;
+    NSString *_configuredName;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     _HMContext *_context;
     NSUUID *_uuid;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) NSString *builderSessionID; // @synthesize builderSessionID=_builderSessionID;
 @property (strong, nonatomic) NSArray *components; // @synthesize components=_components;
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *componentsArray; // @synthesize componentsArray=_componentsArray;
+@property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -23,6 +23,8 @@
 + (void *)logicalLeaderFromOutputDevices:(id)arg1;
 + (long long)pickableRouteTypeForOutputDevice:(void *)arg1;
 - (void).cxx_destruct;
+- (BOOL)_anyOutputDevicePassesMRFunction:(CDUnknownFunctionPointerType)arg1;
+- (BOOL)_anyOutputDevicePassesTest:(CDUnknownBlockType)arg1;
 - (BOOL)canAccessRemoteAssets;
 - (id)description;
 - (id)groupUID;
@@ -33,6 +35,7 @@
 - (BOOL)isDeviceSpeakerRoute;
 - (BOOL)isHomePodRoute;
 - (BOOL)isPickedOnPairedDevice;
+- (BOOL)isProxyGroupPlayer;
 - (BOOL)isStereoPair;
 - (BOOL)isVolumeControlAvailable;
 - (long long)pickableRouteType;

@@ -18,6 +18,8 @@
     float _volume;
     BOOL _muted;
     BOOL _volumeControlAvailable;
+    BOOL _volumeInitialized;
+    BOOL _volumeControlCapabilitiesInitialized;
     BOOL _volumeWarningEnabled;
     float _EUVolumeLimit;
     NSString *_volumeAudioCategory;
@@ -46,19 +48,23 @@
 - (void)_mediaServerDiedNotification:(id)arg1;
 - (void)_reloadEUVolumeLimits;
 - (void)_routeDidChangeNotification:(id)arg1;
-- (void)_routeVolumeDidChangeNotification:(id)arg1;
 - (void)_setup;
 - (void)_systemMuteDidChange:(id)arg1;
 - (void)_systemVolumeDidChange:(id)arg1;
 - (void)_tearDown;
 - (void)_updateRouteLabelForRoute:(id)arg1;
 - (float)_volumeApplyingEUVolumePolicyToVolume:(float)arg1;
-- (void)_volumeControlAvailablityNotification:(id)arg1;
+- (void)_volumeControlCapabilitiesDidChangeNotification:(id)arg1;
+- (void)_volumeDidChangeNotification:(id)arg1;
 - (void)adjustVolumeValue:(float)arg1;
 - (void)dealloc;
+- (void)getVolumeValueWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)initializeVolume;
 - (void)reload;
 - (void)reloadWarning;
+- (void)updateVolume:(float)arg1;
+- (void)updateVolumeControlCapabilities:(unsigned int)arg1;
 
 @end
 

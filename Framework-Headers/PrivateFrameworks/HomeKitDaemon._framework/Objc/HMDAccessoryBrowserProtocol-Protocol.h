@@ -41,6 +41,7 @@
 - (void)registerProgressHandler:(void (^)(NSUUID *, NSString *, NSString *, HMAccessoryCategory *, long long, unsigned long long))arg1 unpairedAccessoryUUID:(NSUUID *)arg2;
 - (void)removeDelegate:(id<HMDAccessoryBrowserDelegate>)arg1;
 - (void)removeUnassociatedAccessory:(HMDUnassociatedAccessory *)arg1;
+- (void)removeUnassociatedAccessoryWithIdentifier:(NSString *)arg1;
 - (void)reprovisionAccessoryWithIdentifier:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)resetConfiguration;
 - (void)resurrectAccessoryServer:(HAPAccessoryServer *)arg1;

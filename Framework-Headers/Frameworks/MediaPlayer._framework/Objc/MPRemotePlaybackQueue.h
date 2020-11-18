@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedQueue;
 @property (readonly, copy, nonatomic) NSString *siriAssetInfo;
 @property (copy, nonatomic) NSString *siriRecommendationIdentifier;
+@property (readonly, copy, nonatomic) NSDictionary *siriWHAMetricsInfo;
 @property (copy, nonatomic) NSDictionary *userInfo;
 
 + (id)queueWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;

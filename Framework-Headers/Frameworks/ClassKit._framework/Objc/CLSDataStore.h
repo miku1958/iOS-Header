@@ -8,7 +8,7 @@
 
 #import <ClassKit/CLSFaultProcessorDelegate-Protocol.h>
 
-@class CLSActivity, CLSContext, CLSCurrentUser, CLSEndpointConnection, CLSGraph, NSMutableDictionary, NSMutableSet, NSString;
+@class CLSActivity, CLSContext, CLSCurrentUser, CLSEndpointConnection, CLSGraph, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol CLSDataStoreDelegate;
 
 @interface CLSDataStore : NSObject <CLSFaultProcessorDelegate>
@@ -18,6 +18,7 @@
     NSMutableDictionary *_objectGenerationsByID;
     CLSCurrentUser *_cachedCurrentUser;
     int _accountChangeToken;
+    NSMutableArray *_runningActivities;
     id<CLSDataStoreDelegate> _delegate;
     CLSContext *_mainAppContext;
     CLSEndpointConnection *_endpointConnection;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) CLSGraph *graph; // @synthesize graph=_graph;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CLSContext *mainAppContext; // @synthesize mainAppContext=_mainAppContext;
+@property (readonly, copy, nonatomic) NSArray *runningActivities;
 @property (readonly, nonatomic) CLSActivity *runningActivity;
 @property (readonly) Class superclass;
 
@@ -57,6 +59,7 @@
 - (void)addFavorite:(id)arg1;
 - (void)addHandout:(id)arg1;
 - (id)addObject:(id)arg1;
+- (void)addRunningActivitiesObject:(id)arg1;
 - (id)allContexts;
 - (id)appIdentifier;
 - (void)applicationDidBecomeActive:(id)arg1;
@@ -100,6 +103,7 @@
 - (void)removeHandout:(id)arg1;
 - (void)removeObject:(id)arg1;
 - (void)removeObjectWithObjectID:(id)arg1 class:(Class)arg2;
+- (void)removeRunningActivitiesObject:(id)arg1;
 - (void)reset;
 - (void)saveObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveWithCompletion:(CDUnknownBlockType)arg1;

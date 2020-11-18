@@ -331,6 +331,7 @@
 - (void)applyRepeatSettings;
 - (void)applyShuffleSettings;
 - (void)autoclearDisplayOverride;
+- (BOOL)becomeActiveWithError:(id *)arg1;
 - (void)beginInterruption;
 - (void)beginSeek:(int)arg1;
 - (void)beginTickTimerWithInterval:(double)arg1;

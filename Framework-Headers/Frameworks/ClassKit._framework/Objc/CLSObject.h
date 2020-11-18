@@ -57,7 +57,6 @@
 - (id)_init;
 - (void)addChild:(id)arg1;
 - (void)addChild:(id)arg1 changedPropertyName:(id)arg2;
-- (void)addMetaProperty:(id)arg1;
 - (id)ancestorOfClass:(Class)arg1;
 - (id)childrenOfClass:(Class)arg1;
 - (id)childrenPassingTest:(CDUnknownBlockType)arg1;
@@ -72,10 +71,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeletedObjectID:(id)arg1;
 - (void)mergeWithObject:(id)arg1;
-- (id)metaProperties;
 - (void)removeChild:(id)arg1;
 - (void)removeChild:(id)arg1 changedPropertyName:(id)arg2;
-- (void)removeMetaProperty:(id)arg1;
 - (void)sync;
 - (BOOL)validateObject:(id *)arg1;
 - (void)willSaveObject;

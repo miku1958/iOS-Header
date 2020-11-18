@@ -22,6 +22,7 @@
 + (id)smimeInfoForLoadEvent:(id)arg1;
 - (void)dealloc;
 - (id)initWithLoadEvent:(id)arg1;
+- (void)reevaluateTrustWithNetworkAccessAllowed;
 - (id)signers;
 
 @end

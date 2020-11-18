@@ -25,6 +25,7 @@
 - (void)auditRootSettingsGroup:(unsigned long long)arg1;
 - (id)description;
 - (id)initWithAccessory:(id)arg1 mediaSystem:(id)arg2;
+- (BOOL)isMediaSystemContainer;
 
 @end
 

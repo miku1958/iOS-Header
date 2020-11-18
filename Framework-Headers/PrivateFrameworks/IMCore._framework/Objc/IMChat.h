@@ -35,6 +35,7 @@
     NSMutableDictionary *_participantProperties;
     NSArray *_frequentReplies;
     NSArray *_attachments;
+    NSNumber *_countOfAttachmentsNotCachedLocally;
     NSNumber *_countOfMessagesMarkedAsSpam;
     IMTimingCollection *_timingCollection;
     id<IMChatItemRules> _chatItemRules;
@@ -62,6 +63,7 @@
     NSString *_currentUnreadHistoryQuery;
     BOOL _hasEarlierMessagesToLoad;
     BOOL _hasMoreRecentMessagesToLoad;
+    BOOL _isCurrentlyDownloadingPurgedAssets;
     BOOL _hasSurfRequest;
     NSString *_personCentricID;
     NSDictionary *_bizIntent;
@@ -84,6 +86,7 @@
 @property (readonly, nonatomic) IMChatRegistry *chatRegistry;
 @property (readonly, nonatomic) unsigned char chatStyle; // @synthesize chatStyle=_style;
 @property (nonatomic) void *contextInfo; // @synthesize contextInfo=_context;
+@property (readonly, copy, nonatomic) NSNumber *countOfAttachmentsNotCachedLocally;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -112,6 +115,7 @@
 @property (strong, nonatomic) IMMessage *invitationForPendingParticipants; // @synthesize invitationForPendingParticipants=_invitationForPendingParticipants;
 @property (readonly, nonatomic) BOOL isAppleChat;
 @property (readonly, nonatomic) BOOL isBusinessChat;
+@property (readonly, nonatomic) BOOL isCurrentlyDownloadingPurgedAttachments;
 @property (nonatomic) BOOL isFiltered; // @dynamic isFiltered;
 @property (readonly, nonatomic) BOOL isMakoChat;
 @property (readonly, nonatomic) BOOL isReplyEnabled;
@@ -230,10 +234,12 @@
 - (void)_setAndIncrementDowngradeMarkersForManual:(BOOL)arg1;
 - (void)_setAttachments:(id)arg1;
 - (void)_setChatProperties:(id)arg1;
+- (void)_setCountOfAttachmentsNotCachedLocally:(id)arg1;
 - (void)_setCountOfMessagesMarkedAsSpam:(id)arg1;
 - (void)_setDBFailedCount:(unsigned long long)arg1;
 - (void)_setDBUnreadCount:(unsigned long long)arg1;
 - (void)_setDisplayName:(id)arg1;
+- (void)_setIsDownloadingPurgedAssets:(BOOL)arg1;
 - (void)_setJoinState:(long long)arg1;
 - (void)_setJoinState:(long long)arg1 quietly:(BOOL)arg2;
 - (void)_setLocalUserIsComposing:(id)arg1 suppliedGUID:(id)arg2;
@@ -286,6 +292,7 @@
 - (void)deleteExtensionPayloadData;
 - (void)deleteTransfers:(id)arg1;
 - (void)didUnregisterFromRegistry:(id)arg1;
+- (void)downloadPurgedAttachments;
 - (void)endHoldingUpdatesForAllKeys;
 - (void)endHoldingUpdatesForKey:(id)arg1;
 - (void)endListeningToAttributionChanges;

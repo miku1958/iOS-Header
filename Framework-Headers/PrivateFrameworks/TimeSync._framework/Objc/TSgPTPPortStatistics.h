@@ -27,6 +27,8 @@
     unsigned int _attemptedFollowUpCounter;
     unsigned int _attemptedAnnounceCounter;
     unsigned int _attemptedSignalCounter;
+    unsigned int _rawDelayExceededCounter;
+    unsigned int _rawDelayMeasurementCounter;
     unsigned int _receivedPDelayRequestCounter;
     unsigned int _transmittedPDelayResponseCounter;
     unsigned int _transmittedPDelayResponseFollowUpCounter;
@@ -61,6 +63,8 @@
 @property (readonly, copy, nonatomic) NSString *portIdentifier; // @synthesize portIdentifier=_portIdentifier;
 @property (readonly, nonatomic) long long portRole; // @synthesize portRole=_portRole;
 @property (readonly, nonatomic) long long portType; // @synthesize portType=_portType;
+@property (readonly, nonatomic) unsigned int rawDelayExceededCounter; // @synthesize rawDelayExceededCounter=_rawDelayExceededCounter;
+@property (readonly, nonatomic) unsigned int rawDelayMeasurementCounter; // @synthesize rawDelayMeasurementCounter=_rawDelayMeasurementCounter;
 @property (readonly, nonatomic) unsigned int receivedAnnounceCounter; // @synthesize receivedAnnounceCounter=_receivedAnnounceCounter;
 @property (readonly, nonatomic) unsigned int receivedDelayRequestCounter; // @synthesize receivedDelayRequestCounter=_receivedDelayRequestCounter;
 @property (readonly, nonatomic) unsigned int receivedDelayResponseCounter; // @synthesize receivedDelayResponseCounter=_receivedDelayResponseCounter;

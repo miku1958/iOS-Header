@@ -70,8 +70,13 @@
 - (BOOL)limitedAudioLoggingEnabled;
 - (id)manualEndpointingThreshold;
 - (BOOL)myriadCoordinationEnabled;
+- (float)myriadDeviceAdjust;
+- (unsigned char)myriadDeviceClass;
+- (double)myriadDeviceDelay;
 - (id)myriadDeviceGroup;
+- (double)myriadDeviceTrumpDelay;
 - (BOOL)myriadDuckingEnabled;
+- (BOOL)myriadServerHasProvisioned;
 - (BOOL)offlineDictationOverride;
 - (id)offlineDictationProfileOverridePath;
 - (id)outputVoice;
@@ -95,8 +100,13 @@
 - (void)setLimitedAudioLoggingEnabled:(BOOL)arg1;
 - (void)setManualEndpointingThreshold:(id)arg1;
 - (void)setMyriadCoordinationEnabled:(BOOL)arg1;
+- (void)setMyriadDeviceAdjust:(float)arg1;
+- (void)setMyriadDeviceClass:(unsigned char)arg1;
+- (void)setMyriadDeviceDelay:(double)arg1;
 - (void)setMyriadDeviceGroup:(id)arg1;
+- (void)setMyriadDeviceTrumpDelay:(double)arg1;
 - (void)setMyriadDuckingEnabled:(BOOL)arg1;
+- (void)setMyriadServerHasProvisioned:(BOOL)arg1;
 - (void)setOfflineDictationOverride:(BOOL)arg1;
 - (void)setOfflineDictationProfileOverridePath:(id)arg1;
 - (void)setOutputVoice:(id)arg1;

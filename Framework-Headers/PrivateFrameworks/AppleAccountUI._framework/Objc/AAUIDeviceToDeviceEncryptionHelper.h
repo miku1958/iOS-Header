@@ -11,14 +11,14 @@
 
 @interface AAUIDeviceToDeviceEncryptionHelper : NSObject
 {
-    id<AAUIDeviceToDeviceEncryptionHelperDelegate> _delegate;
     UIViewController *_presentingViewController;
+    id<AAUIDeviceToDeviceEncryptionHelperDelegate> _delegate;
     AKAppleIDAuthenticationController *_authController;
 }
 
 @property (strong, nonatomic) AKAppleIDAuthenticationController *authController; // @synthesize authController=_authController;
 @property (weak, nonatomic) id<AAUIDeviceToDeviceEncryptionHelperDelegate> delegate; // @synthesize delegate=_delegate;
-@property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (readonly, weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 
 - (void).cxx_destruct;
 - (void)_askPermissionToContinueFlowForEligibleAccountForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

@@ -24,6 +24,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPlayParametersQueue:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)setEndTime:(double)arg1 forItemWithPlayParameters:(id)arg2;
 - (void)setStartTime:(double)arg1 forItemWithPlayParameters:(id)arg2;
 

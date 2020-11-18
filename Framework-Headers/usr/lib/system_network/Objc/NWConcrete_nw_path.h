@@ -50,6 +50,7 @@
     unsigned int effective_mtu;
     unsigned int effective_traffic_class;
     unsigned int nexus_port;
+    unsigned int interface_time_delta;
     unsigned int ctl_command_code;
     unsigned int ctl_command_value;
     unsigned int ctl_command_tcp_seq_num;

@@ -24,6 +24,7 @@
     unsigned char _deviceClass;
     int _deviceAdjust;
     double _deviceDelay;
+    double _deviceTrumpDelay;
     unsigned char _deviceGroup;
     NSObject<OS_dispatch_queue> *_myriadWorkQueue;
     NSObject<OS_dispatch_queue> *_myriadWaitWiProxQueue;
@@ -68,6 +69,7 @@
 
 + (void)clearCurrentCoordinator;
 + (id)currentCoordinator;
++ (void)didChangeDefaults;
 - (void).cxx_destruct;
 - (void)_CreateDispatchTimerFor:(double)arg1 toExecute:(CDUnknownBlockType)arg2;
 - (void)_CreateDispatchTimerForEvent:(id)arg1 toExecute:(CDUnknownBlockType)arg2;
@@ -88,6 +90,7 @@
 - (void)_initializeTimer;
 - (BOOL)_isAPhone:(unsigned char)arg1;
 - (BOOL)_okayToSuppressOnOutput;
+- (void)_readDefaults;
 - (void)_resetActionWindows;
 - (void)_setupActionWindows;
 - (BOOL)_shouldContinueFor:(id)arg1;
@@ -126,6 +129,7 @@
 - (id)lateSuppressionRecord;
 - (void)logCoreDuetResults:(id)arg1;
 - (void)preheatWiProx;
+- (void)readDefaults;
 - (unsigned short)recentEventBump;
 - (void)resetReplies;
 - (id)responseObject:(unsigned short)arg1;

@@ -58,6 +58,7 @@
 - (id)logHandle;
 - (id)serializedRepresentation;
 - (void)setErrorToAccountNeedsRepair;
+- (void)setErrorToKeyRollingError;
 - (void)setStartingInitialSyncWithRecordType:(long long)arg1;
 - (void)setStartingPeriodicSyncWithRecordType:(long long)arg1;
 - (void)setSyncControllerSyncState:(unsigned long long)arg1 withRecordType:(long long)arg2;

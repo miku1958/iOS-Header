@@ -6,39 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <Home/HFAVRoutingControllerObserver-Protocol.h>
+@class ACAccountStore, NSArray, NSHashTable;
 
-@class ACAccountStore, MPAVRoutingController, NSArray, NSHashTable, NSString;
-
-@interface HFMediaDispatcher : NSObject <HFAVRoutingControllerObserver>
+@interface HFMediaDispatcher : NSObject
 {
     NSArray *_appleMusicMagicAuthCapableAccounts;
     NSHashTable *_appleMusicAccountObservers;
-    NSHashTable *_mediaRouteObservers;
-    MPAVRoutingController *_routingController;
 }
 
 @property (strong, nonatomic) NSHashTable *appleMusicAccountObservers; // @synthesize appleMusicAccountObservers=_appleMusicAccountObservers;
 @property (readonly, nonatomic) ACAccountStore *appleMusicAccountStore;
 @property (copy, nonatomic) NSArray *appleMusicMagicAuthCapableAccounts; // @synthesize appleMusicMagicAuthCapableAccounts=_appleMusicMagicAuthCapableAccounts;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isUsingiCloud;
-@property (strong, nonatomic) NSHashTable *mediaRouteObservers; // @synthesize mediaRouteObservers=_mediaRouteObservers;
-@property (strong, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
-@property (readonly) Class superclass;
 
 + (id)sharedDispatcher;
 - (void).cxx_destruct;
 - (id)_performStateDump;
 - (void)_setupAppleMusicAccountStoreIfNecessary;
 - (void)addAppleMusicAccountObserver:(id)arg1;
-- (void)addMediaRouteObserver:(id)arg1;
 - (id)init;
-- (id)mediaRouteForIdentifier:(id)arg1;
 - (void)removeAppleMusicAccountObserver:(id)arg1;
-- (void)removeMediaRouteObserver:(id)arg1;
 
 @end
 

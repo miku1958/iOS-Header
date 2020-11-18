@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPQueueBehaviorManaging-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPModelPlayEvent, MPMutableBidirectionalDictionary, NSData, NSMutableDictionary, NSString;
+@class MPModelPlayEvent, MPMutableBidirectionalDictionary, NSData, NSDictionary, NSMutableDictionary, NSString;
 @protocol MPQueueFeederDelegate;
 
 @interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSSecureCoding>
@@ -24,6 +24,7 @@
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
     NSString *_siriReferenceIdentifier;
+    NSDictionary *_siriWHAMetricsInfo;
     NSString *_playbackContextUniqueIdentifier;
     long long _activeShuffleType;
     NSString *_uniqueIdentifier;
@@ -55,6 +56,7 @@
 @property (nonatomic) BOOL requiresQueueChangeVerification; // @synthesize requiresQueueChangeVerification=_requiresQueueChangeVerification;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
+@property (copy, nonatomic) NSDictionary *siriWHAMetricsInfo; // @synthesize siriWHAMetricsInfo=_siriWHAMetricsInfo;
 @property (nonatomic) CDStruct_dcf4dde6 skipLimit; // @synthesize skipLimit=_skipLimit;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;

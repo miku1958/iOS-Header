@@ -48,6 +48,9 @@
 @property (readonly) long long type; // @synthesize type=_type;
 @property (copy) id<NSCopying><NSSecureCoding> value; // @synthesize value=_value;
 
++ (id)_encodedConstraintsToAdd:(id)arg1;
++ (id)_encodedConstraintsToRemove:(id)arg1;
++ (id)_replaceConstraintsPayloadWithAdditions:(id)arg1 removals:(id)arg2;
 + (id)logCategory;
 + (id)shortDescription;
 + (id)supportedConstraintClasses;

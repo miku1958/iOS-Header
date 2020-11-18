@@ -30,9 +30,10 @@
     float _playbackRate;
     NSString *_radioStationHash;
     float _rating;
+    NSString *_remoteControlInterface;
     int _repeatMode;
     int _replaceIntent;
-    unsigned int _sendOptions;
+    int _sendOptions;
     NSString *_senderID;
     int _shuffleMode;
     float _skipInterval;
@@ -90,6 +91,7 @@
 @property (readonly, nonatomic) BOOL hasRadioStationHash;
 @property (nonatomic) BOOL hasRadioStationID;
 @property (nonatomic) BOOL hasRating;
+@property (readonly, nonatomic) BOOL hasRemoteControlInterface;
 @property (nonatomic) BOOL hasRepeatMode;
 @property (nonatomic) BOOL hasReplaceIntent;
 @property (nonatomic) BOOL hasRequestDefermentToPlaybackQueuePosition;
@@ -117,10 +119,11 @@
 @property (strong, nonatomic) NSString *radioStationHash; // @synthesize radioStationHash=_radioStationHash;
 @property (nonatomic) long long radioStationID; // @synthesize radioStationID=_radioStationID;
 @property (nonatomic) float rating; // @synthesize rating=_rating;
+@property (strong, nonatomic) NSString *remoteControlInterface; // @synthesize remoteControlInterface=_remoteControlInterface;
 @property (nonatomic) int repeatMode; // @synthesize repeatMode=_repeatMode;
 @property (nonatomic) int replaceIntent; // @synthesize replaceIntent=_replaceIntent;
 @property (nonatomic) BOOL requestDefermentToPlaybackQueuePosition; // @synthesize requestDefermentToPlaybackQueuePosition=_requestDefermentToPlaybackQueuePosition;
-@property (nonatomic) unsigned int sendOptions; // @synthesize sendOptions=_sendOptions;
+@property (nonatomic) int sendOptions; // @synthesize sendOptions=_sendOptions;
 @property (strong, nonatomic) NSString *senderID; // @synthesize senderID=_senderID;
 @property (nonatomic) BOOL shouldBeginRadioPlayback; // @synthesize shouldBeginRadioPlayback=_shouldBeginRadioPlayback;
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedQueue; // @synthesize shouldOverrideManuallyCuratedQueue=_shouldOverrideManuallyCuratedQueue;
@@ -134,6 +137,7 @@
 - (void).cxx_destruct;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsReplaceIntent:(id)arg1;
+- (int)StringAsSendOptions:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -145,6 +149,7 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)repeatModeAsString:(int)arg1;
 - (id)replaceIntentAsString:(int)arg1;
+- (id)sendOptionsAsString:(int)arg1;
 - (id)shuffleModeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

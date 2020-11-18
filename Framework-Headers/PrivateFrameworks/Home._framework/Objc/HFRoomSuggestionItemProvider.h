@@ -14,6 +14,7 @@
     unsigned long long _suggestedRoomLimit;
     HMHome *_home;
     id<HFRoomSuggestionVendor> _suggestionVendor;
+    NSSet *_supplementaryRoomBuilders;
     NSSet *_suggestionItems;
 }
 
@@ -21,8 +22,12 @@
 @property (nonatomic) unsigned long long suggestedRoomLimit; // @synthesize suggestedRoomLimit=_suggestedRoomLimit;
 @property (strong, nonatomic) NSSet *suggestionItems; // @synthesize suggestionItems=_suggestionItems;
 @property (strong, nonatomic) id<HFRoomSuggestionVendor> suggestionVendor; // @synthesize suggestionVendor=_suggestionVendor;
+@property (copy, nonatomic) NSSet *supplementaryRoomBuilders; // @synthesize supplementaryRoomBuilders=_supplementaryRoomBuilders;
 
 - (void).cxx_destruct;
+- (id)_filteredSuggestions;
+- (id)_filteredSupplementaryRoomBuilders;
+- (id)_keyForRoomName:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1;

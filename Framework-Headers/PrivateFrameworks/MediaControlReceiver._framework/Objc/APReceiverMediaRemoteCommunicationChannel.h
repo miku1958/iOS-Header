@@ -18,6 +18,7 @@
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
 - (void)invalidate;
+- (id)objectID;
 - (void)sendData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

@@ -17,7 +17,7 @@
     _MRNowPlayingInfoProtobuf *_nowPlayingInfo;
     _MRPlaybackQueueProtobuf *_playbackQueue;
     _MRPlaybackQueueCapabilitiesProtobuf *_playbackQueueCapabilities;
-    unsigned int _playbackState;
+    int _playbackState;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
     _MRPlaybackQueueRequestProtobuf *_request;
     _MRSupportedCommandsProtobuf *_supportedCommands;
@@ -40,12 +40,13 @@
 @property (strong, nonatomic) _MRNowPlayingInfoProtobuf *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (strong, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue; // @synthesize playbackQueue=_playbackQueue;
 @property (strong, nonatomic) _MRPlaybackQueueCapabilitiesProtobuf *playbackQueueCapabilities; // @synthesize playbackQueueCapabilities=_playbackQueueCapabilities;
-@property (nonatomic) unsigned int playbackState; // @synthesize playbackState=_playbackState;
+@property (nonatomic) int playbackState; // @synthesize playbackState=_playbackState;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 @property (strong, nonatomic) _MRPlaybackQueueRequestProtobuf *request; // @synthesize request=_request;
 @property (strong, nonatomic) _MRSupportedCommandsProtobuf *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 
 - (void).cxx_destruct;
+- (int)StringAsPlaybackState:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -53,6 +54,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)playbackStateAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

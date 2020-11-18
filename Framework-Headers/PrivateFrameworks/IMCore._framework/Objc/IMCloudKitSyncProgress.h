@@ -22,10 +22,12 @@
     long long _actionType;
     IMCloudKitSyncState *_syncState;
     IMCloudKitSyncStatistics *_syncStatistics;
+    double _broadcastDeferralOverride;
 }
 
 @property (strong, nonatomic) NSString *actionLabel; // @synthesize actionLabel=_actionLabel;
 @property (nonatomic) long long actionType; // @synthesize actionType=_actionType;
+@property (nonatomic) double broadcastDeferralOverride; // @synthesize broadcastDeferralOverride=_broadcastDeferralOverride;
 @property (readonly, nonatomic) NSArray *errors; // @dynamic errors;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @dynamic hidden;
 @property (readonly, nonatomic) double percentComplete; // @dynamic percentComplete;
