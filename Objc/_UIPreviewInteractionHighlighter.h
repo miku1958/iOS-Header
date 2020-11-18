@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSUUID, UIControl, UIView, _UIInteractiveHighlightEffect;
+#import <UIKitCore/UIInteractionEffect-Protocol.h>
+
+@class NSArray, NSString, NSUUID, UIControl, UIView, _UIInteractiveHighlightEffect;
 @protocol UIInteraction, _UIInteractiveHighlighting;
 
-@interface _UIPreviewInteractionHighlighter : NSObject
+@interface _UIPreviewInteractionHighlighter : NSObject <UIInteractionEffect>
 {
     UIView *_view;
     id<_UIInteractiveHighlighting> _interactiveHighlightView;
@@ -18,6 +20,7 @@
     NSArray *_accessoryHighlightEffects;
     _UIInteractiveHighlightEffect *_presentationControllerHighlightEffect;
     id<UIInteraction> _interaction;
+    BOOL _active;
     BOOL _animatesContentEffects;
     NSUUID *_contentAnimationIdentifier;
     BOOL _animatesBackgroundEffects;
@@ -31,6 +34,7 @@
     BOOL _shouldTransferViewOwnership;
     BOOL _cancelsInteractionWhenScrolling;
     CDUnknownBlockType _completionBlock;
+    unsigned long long _clickEffectPhase;
     CDUnknownBlockType _privateCompletionBlock;
     UIView *_customContainerView;
     UIView *_customBackgroundEffectView;
@@ -39,9 +43,13 @@
 
 @property (copy, nonatomic) CDUnknownBlockType backgroundEffectApplyBlock; // @synthesize backgroundEffectApplyBlock=_backgroundEffectApplyBlock;
 @property (nonatomic) BOOL cancelsInteractionWhenScrolling; // @synthesize cancelsInteractionWhenScrolling=_cancelsInteractionWhenScrolling;
+@property (nonatomic) unsigned long long clickEffectPhase; // @synthesize clickEffectPhase=_clickEffectPhase;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong, nonatomic) UIView *customBackgroundEffectView; // @synthesize customBackgroundEffectView=_customBackgroundEffectView;
 @property (weak, nonatomic) UIView *customContainerView; // @synthesize customContainerView=_customContainerView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) _UIInteractiveHighlightEffect *interactiveHighlightEffect;
 @property (copy, nonatomic) CDUnknownBlockType privateCompletionBlock; // @synthesize privateCompletionBlock=_privateCompletionBlock;
 @property (nonatomic) BOOL shouldApplyBackgroundEffects; // @synthesize shouldApplyBackgroundEffects=_shouldApplyBackgroundEffects;
@@ -49,6 +57,7 @@
 @property (nonatomic) BOOL shouldApplyEffectsOnProxyView; // @synthesize shouldApplyEffectsOnProxyView=_shouldApplyEffectsOnProxyView;
 @property (nonatomic) BOOL shouldEndWithCancelAnimation; // @synthesize shouldEndWithCancelAnimation=_shouldEndWithCancelAnimation;
 @property (nonatomic) BOOL shouldTransferViewOwnership; // @synthesize shouldTransferViewOwnership=_shouldTransferViewOwnership;
+@property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
@@ -66,6 +75,7 @@
 - (void)_updateFromInteraction:(id)arg1 fractionComplete:(double)arg2 ended:(BOOL)arg3;
 - (void)_viewControllerPresentationDidEnd;
 - (id)initWithView:(id)arg1;
+- (void)interaction:(id)arg1 didChangeWithContext:(id)arg2;
 
 @end
 

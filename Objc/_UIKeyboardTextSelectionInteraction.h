@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_tidyUpGesture;
 - (void)_willBeginIndirectSelectionGesture:(id)arg1;
 - (struct CGPoint)acceleratedTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2 isActive:(BOOL)arg3;
+- (double)additionalPressDurationForTypingCadence:(id)arg1;
 - (void)beginCursorManipulationFromRect:(struct CGRect)arg1;
 - (void)beginIndirectBlockPanWithTranslation:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)beginTwoFingerCursorPanWithTranslation:(struct CGPoint)arg1 executionContext:(id)arg2;
@@ -67,7 +68,6 @@ __attribute__((visibility("hidden")))
 - (void)finishTwoFingerLongPressWithExecutionContext:(id)arg1;
 - (BOOL)forceTouchGestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2 forForce:(BOOL)arg3;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)gestureRecognizerShouldBeginResponse:(id)arg1;

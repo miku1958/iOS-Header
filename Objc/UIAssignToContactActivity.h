@@ -30,6 +30,7 @@
 @property (strong, nonatomic) CNContact *person; // @synthesize person=_person;
 @property (readonly) Class superclass;
 
++ (BOOL)_isCapabilityBasedActivity;
 + (unsigned long long)_xpcAttributes;
 - (void).cxx_destruct;
 - (id)_activityBundleImageConfiguration;

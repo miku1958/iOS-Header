@@ -6,12 +6,11 @@
 
 #import <UIKitCore/UIControl.h>
 
-#import <UIKitCore/UIClickInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UIInteractiveHighlighting-Protocol.h>
+#import <UIKitCore/_UIClickInteractionDelegate-Protocol.h>
 
-@class NSArray, NSString, UIClickInteraction, UIColor, UIImage, UIImageView, UIView, UIVisualEffectView;
+@class NSArray, NSString, UIColor, UIImage, UIImageView, UIView, UIVisualEffectView, _UIClickInteraction;
 
-@interface UICoverSheetButton : UIControl <UIClickInteractionDelegate, _UIInteractiveHighlighting>
+@interface UICoverSheetButton : UIControl <_UIClickInteractionDelegate>
 {
     UIView *_containerView;
     UIImageView *_contentView;
@@ -19,11 +18,11 @@
     NSArray *_backgroundEffects;
     NSArray *_selectedBackgroundEffects;
     UIView *_backgroundHighlightView;
-    UIClickInteraction *_clickInteraction;
+    _UIClickInteraction *_clickInteraction;
     BOOL _interactive;
-    double _interactiveHighlightMagnitude;
     BOOL _didActivateDuringInteraction;
     double _maxForceDuringInteraction;
+    double _highlightProgress;
     BOOL _pronounced;
     UIImage *_image;
     UIImage *_selectedImage;
@@ -49,22 +48,22 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_animateEffectUpdateWithProgress:(double)arg1 ended:(BOOL)arg2;
 - (id)_backgroundEffectsWithBrightness:(double)arg1;
 - (id)_firstActivationDurationStat;
-- (void)_highlightForInteraction:(id)arg1 fractionComplete:(double)arg2 ended:(BOOL)arg3;
 - (id)_interactionCountStatWithActivation:(BOOL)arg1;
 - (id)_interactionDurationStat;
 - (id)_maxForceStatWithActivation:(BOOL)arg1;
 - (void)clickInteraction:(id)arg1 didObserveForce:(double)arg2;
-- (void)clickInteractionDidBegin:(id)arg1;
+- (void)clickInteractionDidClickUp:(id)arg1;
 - (void)clickInteractionDidEnd:(id)arg1;
-- (BOOL)clickInteractionShouldInvokeAction:(id)arg1;
+- (BOOL)clickInteractionShouldBegin:(id)arg1;
+- (id)highlightEffectForClickInteraction:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutIfNeededAnimated;
 - (void)layoutSubviews;
 - (void)setSelected:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

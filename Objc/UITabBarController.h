@@ -10,11 +10,12 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UILayoutContainerViewDelegate-Protocol.h>
 #import <UIKitCore/UITabBarDelegate-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UITabBar, UITapGestureRecognizer, UIView;
+@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
-@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, UITabBarDelegate, NSCoding>
+@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, UITabBarDelegate, NSCoding>
 {
     UITabBar *_tabBar;
     UILayoutContainerView *_containerView;
@@ -35,6 +36,7 @@
     UIGestureRecognizer *_touchDetectionGestureRecognizer;
     UIFocusContainerGuide *_contentFocusContainerGuide;
     UILongPressGestureRecognizer *_accessibilityLongPressGestureRecognizer;
+    UIScrollView *_observingScrollView;
     struct {
         unsigned int isShowingMoreItem:1;
         unsigned int needsToRebuildItems:1;
@@ -86,6 +88,7 @@
 - (void)_accessibilityLongPressChanged:(id)arg1;
 - (id)_additionalViewControllersToCheckForUserActivity;
 - (struct CGRect)_adjustContentViewFrameForOffscreenFocus:(struct CGRect)arg1 viewController:(id)arg2;
+- (void)_adjustFloatingTabBarForContentScrollView:(id)arg1;
 - (struct CGRect)_adjustTabBarFrameForOffscreenFocus:(struct CGRect)arg1 barPosition:(long long)arg2;
 - (id)_allContainedViewControllers;
 - (BOOL)_allowSelectionWithinMoreList;
@@ -114,11 +117,13 @@
 - (BOOL)_ignoreUnselectedTabsForStateRestoration;
 - (void)_invalidateBarLayoutIfNecessary;
 - (BOOL)_isBarHidden;
+- (BOOL)_isFloaty;
 - (BOOL)_isPresentationContextByDefault;
 - (BOOL)_isSupportedInterfaceOrientation:(long long)arg1;
 - (BOOL)_isTabBarFocused;
 - (void)_layoutContainerView;
 - (void)_layoutViewController:(id)arg1;
+- (void)_observeScrollViewDidScroll:(id)arg1;
 - (id)_overridingPreferredFocusEnvironment;
 - (void)_performBackGesture:(id)arg1;
 - (void)_performFocusGesture:(unsigned long long)arg1;
@@ -163,6 +168,7 @@
 - (void)_updateLayoutForTraitCollection:(id)arg1;
 - (void)_updateOffscreenStatus:(BOOL)arg1;
 - (void)_updateTabBarLayout;
+- (void)_updateViewController:(id)arg1 forFloatingTabBar:(BOOL)arg2;
 - (id)_viewControllerForSelectAtIndex:(unsigned long long)arg1;
 - (id)_viewControllerForTabBarItem:(id)arg1;
 - (id)_viewControllersInTabBar;

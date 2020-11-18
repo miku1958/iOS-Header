@@ -7,19 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/UIInteraction-Protocol.h>
-#import <UIKitCore/_UIClickInteractionProgressProvidingDelegate-Protocol.h>
+#import <UIKitCore/_UIClickInteractionDriverDelegate-Protocol.h>
 #import <UIKitCore/_UIGestureStudyParticipating-Protocol.h>
 
 @class NSString, UIView;
-@protocol _UIClickInteractionProgressProviding;
+@protocol _UIClickInteractionDriving;
 
 __attribute__((visibility("hidden")))
-@interface _UIGestureStudyClickInteraction : NSObject <_UIClickInteractionProgressProvidingDelegate, UIInteraction, _UIGestureStudyParticipating>
+@interface _UIGestureStudyClickInteraction : NSObject <_UIClickInteractionDriverDelegate, UIInteraction, _UIGestureStudyParticipating>
 {
     BOOL _usesForce;
     UIView *_view;
-    id<_UIClickInteractionProgressProviding> _progressProvider;
-    long long _currentState;
+    id<_UIClickInteractionDriving> _progressProvider;
     id _target;
     SEL _action;
     double _startTimestamp;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) SEL action; // @synthesize action=_action;
-@property (nonatomic) long long currentState; // @synthesize currentState=_currentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
@@ -35,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double movement;
 @property (nonatomic) struct CGPoint originalCentroid; // @synthesize originalCentroid=_originalCentroid;
-@property (strong, nonatomic) id<_UIClickInteractionProgressProviding> progressProvider; // @synthesize progressProvider=_progressProvider;
+@property (strong, nonatomic) id<_UIClickInteractionDriving> progressProvider; // @synthesize progressProvider=_progressProvider;
 @property (nonatomic) double startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id target; // @synthesize target=_target;
@@ -43,9 +41,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
-- (void)clickProgressProvider:(id)arg1 didUpdateWithOverallProgress:(double)arg2 currentState:(long long)arg3;
-- (void)clickProgressProviderDidBegin:(id)arg1;
-- (void)clickProgressProviderDidEnd:(id)arg1;
+- (void)clickDriver:(id)arg1 didPerformStateChange:(unsigned long long)arg2;
+- (BOOL)clickDriverShouldBegin:(id)arg1;
 - (void)didMoveToView:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2 useForce:(BOOL)arg3;
 - (struct CGPoint)locationInCoordinateSpace:(id)arg1;

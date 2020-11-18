@@ -22,12 +22,12 @@
 @property (readonly, nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property (readonly, weak) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 
-+ (id)createItemForIdentifier:(id)arg1 visualProvider:(id)arg2;
++ (id)createItemForIdentifier:(id)arg1 statusBar:(id)arg2;
 + (id)defaultDisplayIdentifier;
 + (id)displayItemIdentifierFromIdentifier:(id)arg1 string:(id)arg2;
 + (id)displayItemIdentifierFromString:(id)arg1;
 + (id)identifier;
-+ (Class)itemClassForIdentifier:(id)arg1 visualProvider:(id)arg2;
++ (Class)itemClassForIdentifier:(id)arg1;
 + (id)itemIdentifierForDisplayItemIdentifier:(id)arg1;
 + (id)itemIdentifierFromString:(id)arg1;
 - (void).cxx_destruct;
@@ -43,6 +43,7 @@
 - (void)prepareAnimation:(id)arg1 forDisplayItem:(id)arg2;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (void)setNeedsUpdate;
+- (void)updatedDisplayItemsWithData:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

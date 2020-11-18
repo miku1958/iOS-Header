@@ -40,7 +40,6 @@
 @property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (readonly, nonatomic, getter=_contentViewFrame) struct CGRect contentViewFrame;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDragging) BOOL dragging; // @synthesize dragging=_dragging;
@@ -55,6 +54,7 @@
 + (Class)_contentViewClass;
 - (void).cxx_destruct;
 - (BOOL)_canFocusProgrammatically;
+- (struct CGRect)_contentViewFrame;
 - (BOOL)_descendantsShouldHighlight;
 - (void)_descendent:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_descendent:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;

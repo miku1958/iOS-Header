@@ -47,7 +47,6 @@
     _UIAnimationCoordinator *_temporaryAnimationCoordinator;
     UIPreviewInteractionController *_previewInteractionController;
     UIAlertControllerVisualStyle *__visualStyle;
-    UIViewController *_accessibilityViewControllerForSizing;
     NSIndexSet *_indexesOfActionSectionSeparators;
     NSMutableArray *__actionDelimiterIndices;
     UIPopoverController *__compatibilityPopoverController;
@@ -82,7 +81,6 @@
 @property (readonly) _UIAlertControllerTextFieldViewController *_textFieldViewController;
 @property (setter=_setTextFieldsHidden:) BOOL _textFieldsHidden;
 @property (strong, nonatomic, setter=_setVisualStyle:) UIAlertControllerVisualStyle *_visualStyle; // @synthesize _visualStyle=__visualStyle;
-@property (strong, nonatomic, getter=_getAccessibilityViewControllerForSizing, setter=_setAccessibilityViewControllerForSizing:) UIViewController *accessibilityViewControllerForSizing; // @synthesize accessibilityViewControllerForSizing=_accessibilityViewControllerForSizing;
 @property (strong, nonatomic, setter=_setActions:) NSArray *actions;
 @property (copy, nonatomic, getter=_attributedMessage, setter=_setAttributedMessage:) NSAttributedString *attributedMessage;
 @property (copy, nonatomic, getter=_attributedTitle, setter=_setAttributedTitle:) NSAttributedString *attributedTitle;
@@ -199,7 +197,6 @@
 - (void)_updateShouldAlignToKeyboard;
 - (void)_updateTextFieldViewControllerWithVisualStyle:(id)arg1;
 - (void)_updateViewFrameForLandscapePresentationInShimIfNecessary;
-- (id)_viewControllerForSizing;
 - (BOOL)_viewControllerIsPresentedInModalPresentationContext:(id)arg1;
 - (void)_willParentTextFieldViewController;
 - (void)addAction:(id)arg1;

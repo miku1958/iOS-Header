@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _reasonType;
     NSString *_lastRecognitionText;
     id _lastCorrectionIdentifier;
+    NSString *_lastMessageKeyboardLanguage;
     UIKeyboardInputMode *_currentInputModeForDictation;
     UIKeyboardInputMode *_keyboardInputModeToReturn;
     struct _NSRange _insertionRange;
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKeyboardInputMode *keyboardInputModeToReturn; // @synthesize keyboardInputModeToReturn=_keyboardInputModeToReturn;
 @property (copy, nonatomic) id lastCorrectionIdentifier; // @synthesize lastCorrectionIdentifier=_lastCorrectionIdentifier;
 @property (copy, nonatomic) NSString *lastHypothesis; // @synthesize lastHypothesis=_lastHypothesis;
+@property (copy, nonatomic) NSString *lastMessageKeyboardLanguage; // @synthesize lastMessageKeyboardLanguage=_lastMessageKeyboardLanguage;
 @property (copy, nonatomic) NSString *lastRecognitionText; // @synthesize lastRecognitionText=_lastRecognitionText;
 @property (strong, nonatomic) NSMutableArray *pendingEdits; // @synthesize pendingEdits=_pendingEdits;
 @property (nonatomic) BOOL performingStreamingEditingOperation; // @synthesize performingStreamingEditingOperation=_performingStreamingEditingOperation;

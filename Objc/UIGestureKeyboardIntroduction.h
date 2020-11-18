@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithLayoutStar:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)insertText:(id)arg1 forKey:(id)arg2;
 - (void)playGestureKeyboardIntroduction:(id)arg1;
-- (void)showGestureKeyboardIntroduction;
+- (BOOL)showGestureKeyboardIntroduction;
 - (void)tryGestureKeyboardFromView:(id)arg1 withEvent:(id)arg2;
 
 @end

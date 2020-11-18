@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)init;
+- (void)itemCreated:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
