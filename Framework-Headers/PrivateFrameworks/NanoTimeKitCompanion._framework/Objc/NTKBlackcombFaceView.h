@@ -26,7 +26,6 @@
 @property (readonly) Class superclass;
 
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
-+ (long long)uiSensitivity;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyComplicationTransitionFraction:(double)arg1 fromBlackcombDialColor:(unsigned long long)arg2 toBlackcombDialColor:(unsigned long long)arg3;

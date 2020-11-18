@@ -6,9 +6,12 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSData, WFContentCollection, WFWorkflowReference;
+@class NSData, NSString, WFContentCollection, WFWorkflowReference;
 
 @protocol WFOutOfProcessWorkflowControllerVendor <NSObject>
+
+@property (copy, nonatomic) NSString *automationType;
+
 - (void)runWorkflow:(NSData *)arg1 withInput:(WFContentCollection *)arg2 inEnvironment:(long long)arg3 workflowReference:(WFWorkflowReference *)arg4;
 - (void)stop;
 @end

@@ -97,6 +97,7 @@
 + (BOOL)_prefersHighQualityVideoContentForNetworkType:(long long)arg1;
 + (id)_utilitySerialQueue;
 - (void).cxx_destruct;
+- (void)_ageVerificationStateDidChangeNotification:(id)arg1;
 - (BOOL)_allowsAssetCaching;
 - (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
 - (BOOL)_allowsStreamingPlayback;
@@ -164,6 +165,7 @@
 - (void)dealloc;
 - (double)durationFromExternalMetadata;
 - (void)environmentMonitorDidChangeNetworkType:(id)arg1;
+- (id)explicitBadge;
 - (id)externalContentIdentifier;
 - (id)genre;
 - (unsigned long long)genrePersistentID;
@@ -220,6 +222,7 @@
 - (id)stationHash;
 - (long long)stationID;
 - (id)stationName;
+- (long long)stationProviderID;
 - (id)stationStringID;
 - (id)storeAccountID;
 - (id)storeFrontIdentifier;

@@ -11,11 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)initialize;
 + (id)savedPreferredAudioLanguageCode;
 + (void)setSavedPreferredAudioLanguageCode:(id)arg1;
 - (void)_configurePlayerForCurrentNetworkSettingsAndMediaItem;
 - (void)_currentMediaItemDidChange:(id)arg1;
-- (void)_videoPlaybackSettingsOrNetworkConfigurationDidChange:(id)arg1;
+- (void)_networkConfigurationDidChange:(id)arg1;
+- (void)_videoPlaybackSettingsDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;
 

@@ -695,7 +695,9 @@ struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
 };
 
 struct atomic<double> {
-    _Atomic double _field1;
+    struct __cxx_atomic_impl<double, std::__1::__cxx_atomic_base_impl<double>> {
+        _Atomic double _field1;
+    } _field1;
 };
 
 struct function<void (avfaudio::SessionConnector::ConnectionResult)>;

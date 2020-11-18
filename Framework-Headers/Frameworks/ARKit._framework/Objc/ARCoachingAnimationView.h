@@ -36,10 +36,10 @@
 - (void).cxx_destruct;
 - (double)calcNextAnimationSwitchTime:(double)arg1 forState:(unsigned long long)arg2;
 - (void)clampCubeToQuarterRotation;
-- (void)dealloc;
 - (void)drawInDrawable:(id)arg1 withCommandBuffer:(id)arg2 timeDelta:(double)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)killCoachingAnimation;
 - (void)layoutSubviews;
 - (void)orientationChanged;

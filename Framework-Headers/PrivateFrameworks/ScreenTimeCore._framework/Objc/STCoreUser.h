@@ -52,6 +52,7 @@
 @property (readonly) NSString *organizationIdentifier;
 @property (nonatomic) long long passcodeEntryAttemptCount; // @dynamic passcodeEntryAttemptCount;
 @property (copy, nonatomic) NSDate *passcodeEntryTimeoutEndDate; // @dynamic passcodeEntryTimeoutEndDate;
+@property (nonatomic) long long passcodeRecoveryAttemptCount; // @dynamic passcodeRecoveryAttemptCount;
 @property (readonly, copy, nonatomic) NSString *phoneticFamilyName; // @dynamic phoneticFamilyName;
 @property (readonly, copy, nonatomic) NSString *phoneticGivenName; // @dynamic phoneticGivenName;
 @property (readonly) BOOL screenTimeEnabled;

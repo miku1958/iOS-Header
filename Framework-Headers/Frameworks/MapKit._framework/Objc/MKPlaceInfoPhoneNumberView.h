@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)_valueString;
 - (int)analyticsTarget;
 - (id)draggableContent;
+- (id)formatPhoneNumber:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

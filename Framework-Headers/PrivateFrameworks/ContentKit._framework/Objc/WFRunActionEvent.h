@@ -15,9 +15,11 @@
     NSString *_key;
     NSString *_runSource;
     NSString *_actionIdentifier;
+    NSString *_automationType;
 }
 
 @property (copy, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
+@property (copy, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (copy, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;

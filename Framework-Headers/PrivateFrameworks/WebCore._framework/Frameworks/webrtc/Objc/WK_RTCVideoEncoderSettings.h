@@ -11,13 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface WK_RTCVideoEncoderSettings : NSObject
 {
-    struct VideoCodec _nativeVideoCodec;
     unsigned short _width;
     unsigned short _height;
     unsigned int _startBitrate;
     unsigned int _maxBitrate;
     unsigned int _minBitrate;
-    unsigned int _targetBitrate;
     unsigned int _maxFramerate;
     unsigned int _qpMax;
     NSString *_name;
@@ -32,10 +30,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned int qpMax; // @synthesize qpMax=_qpMax;
 @property (nonatomic) unsigned int startBitrate; // @synthesize startBitrate=_startBitrate;
-@property (nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property (nonatomic) unsigned short width; // @synthesize width=_width;
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)initWithNativeVideoCodec:(const struct VideoCodec *)arg1;
 - (struct VideoCodec)nativeVideoCodec;

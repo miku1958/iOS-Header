@@ -14,9 +14,11 @@
     NSDictionary *_info;
     SRAppInfoPlistHelper *_plistHelper;
     UITableView *_tableView;
+    NSString *_authGroup;
 }
 
 @property (copy, nonatomic) NSString *authCategory; // @synthesize authCategory=_authCategory;
+@property (strong, nonatomic) NSString *authGroup; // @synthesize authGroup=_authGroup;
 @property (strong, nonatomic) NSDictionary *info; // @synthesize info=_info;
 @property (strong, nonatomic) SRAppInfoPlistHelper *plistHelper; // @synthesize plistHelper=_plistHelper;
 @property (weak, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
@@ -40,7 +42,7 @@
 - (id)prepareGeneralInfoCell;
 - (id)prepareSelectionCell:(BOOL)arg1;
 - (id)prepareSwitchCellForIndexPath:(id)arg1 state:(id)arg2 delegate:(id)arg3;
-- (id)requiredAuthorizationAlertIfNeccesaryForBundle:(id)arg1 destructiveHandler:(CDUnknownBlockType)arg2;
+- (id)requiredAuthorizationAlertIfNeccesaryForBundle:(id)arg1 authCategory:(id)arg2 destructiveHandler:(CDUnknownBlockType)arg3;
 - (id)requiredAuthorizationAlertIfNeccesaryForBundle:(id)arg1 title:(id)arg2 message:(id)arg3 destructiveButtonTitle:(id)arg4 destructiveHandler:(CDUnknownBlockType)arg5 cancelButtonTitle:(id)arg6 cancelHandler:(CDUnknownBlockType)arg7;
 - (id)requiredAuthorizationRevokeAlertIfNeccesaryForBundle:(id)arg1 indexPath:(id)arg2 destructiveHandler:(CDUnknownBlockType)arg3;
 

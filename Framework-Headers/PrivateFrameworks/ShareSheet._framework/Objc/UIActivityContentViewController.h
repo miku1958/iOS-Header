@@ -8,7 +8,7 @@
 
 #import <ShareSheet/UICollectionViewDelegate-Protocol.h>
 
-@class LPLinkMetadata, LPLinkMetadataObserver, LPLinkView, NSArray, NSDictionary, NSDiffableDataSourceSnapshot, NSMutableDictionary, NSNumber, NSString, NSUUID, UIBarButtonItem, UICollectionViewDiffableDataSource, UIVisualEffectView, _UIActivityContentCollectionView, _UIActivityContentTitleView;
+@class LPLinkMetadata, LPLinkView, NSArray, NSDictionary, NSDiffableDataSourceSnapshot, NSMutableDictionary, NSNumber, NSString, NSUUID, UIBarButtonItem, UICollectionViewDiffableDataSource, UIVisualEffectView, _UIActivityContentCollectionView, _UIActivityContentTitleView;
 @protocol UIActivityContentDelegate;
 
 @interface UIActivityContentViewController : UIViewController <UICollectionViewDelegate>
@@ -31,7 +31,7 @@
     UICollectionViewDiffableDataSource *_dataSource;
     NSDiffableDataSourceSnapshot *_currentSnapshot;
     LPLinkView *_headerLinkView;
-    LPLinkMetadataObserver *_headerMetadataObserver;
+    NSMutableDictionary *_headerMetadataObservers;
     _UIActivityContentTitleView *_headerTitleView;
     UIBarButtonItem *_cancelButton;
     UIBarButtonItem *_nextButton;
@@ -69,7 +69,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) LPLinkView *headerLinkView; // @synthesize headerLinkView=_headerLinkView;
 @property (readonly, nonatomic) LPLinkMetadata *headerMetadata;
-@property (strong, nonatomic) LPLinkMetadataObserver *headerMetadataObserver; // @synthesize headerMetadataObserver=_headerMetadataObserver;
+@property (strong, nonatomic) NSMutableDictionary *headerMetadataObservers; // @synthesize headerMetadataObservers=_headerMetadataObservers;
 @property (strong, nonatomic) _UIActivityContentTitleView *headerTitleView; // @synthesize headerTitleView=_headerTitleView;
 @property (strong, nonatomic) NSMutableDictionary *identifierToProgress; // @synthesize identifierToProgress=_identifierToProgress;
 @property (strong, nonatomic) NSMutableDictionary *identifierToPulse; // @synthesize identifierToPulse=_identifierToPulse;

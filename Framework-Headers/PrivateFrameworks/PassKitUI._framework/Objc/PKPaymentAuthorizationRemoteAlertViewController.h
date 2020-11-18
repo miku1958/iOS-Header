@@ -7,6 +7,7 @@
 #import <SpringBoardUIServices/SBUIRemoteAlertServiceViewController.h>
 
 #import <PassKitUI/PKCompactNavigationContainerControllerDelegate-Protocol.h>
+#import <PassKitUI/PKLoadingViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationHostProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationServiceViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
@@ -16,7 +17,7 @@
 @class NSString, NSXPCConnection, PKAssertion, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceCompactNavigationContainerController, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController, PKPeerPaymentAccount;
 @protocol BSInvalidatable;
 
-@interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentSetupDelegate, SBSHardwareButtonEventConsuming, PKPaymentSetupViewControllerDelegate>
+@interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentSetupDelegate, SBSHardwareButtonEventConsuming, PKPaymentSetupViewControllerDelegate, PKLoadingViewControllerDelegate>
 {
     BOOL _didDismiss;
     BOOL _didSendAuthorizationDidPresent;
@@ -91,6 +92,7 @@
 - (BOOL)_shouldRemoveViewFromHierarchyOnDisappear;
 - (void)_updatePearlViews;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
+- (void)authorizationDidAuthorizeContext;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;
@@ -114,6 +116,7 @@
 - (void)dismissWithRemoteOrigination:(BOOL)arg1;
 - (void)handleButtonActions:(id)arg1;
 - (id)init;
+- (void)loadingViewControllerDidCancel:(id)arg1;
 - (void)paymentSetupDidFinish:(id)arg1;
 - (void)sendAuthorizationDidPresentIfNecessary;
 - (BOOL)shouldAutorotate;

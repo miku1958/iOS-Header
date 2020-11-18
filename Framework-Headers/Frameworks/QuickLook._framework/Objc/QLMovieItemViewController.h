@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)_enterEditMode;
 - (BOOL)_enterEditModeIfPossible;
 - (void)_exitEditMode:(BOOL)arg1;
+- (id)_metadataItemTitle;
 - (void)_resetTrimmingValues;
 - (void)_rotateIfPossible;
 - (void)_rotateMovieRight;
@@ -105,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (id)setupPlayerViewWithPlayer:(id)arg1;
 - (BOOL)shouldAllowEditingContents;
 - (BOOL)shouldDisplayPlayButtonInNavigationBar;
+- (BOOL)shouldHandleRegisteringForCommandCenterHandlers;
 - (id)timeLabelScrollView;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;

@@ -17,7 +17,6 @@
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
-- (void)loadView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 

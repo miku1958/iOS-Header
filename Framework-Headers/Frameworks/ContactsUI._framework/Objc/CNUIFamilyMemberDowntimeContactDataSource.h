@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface CNUIFamilyMemberDowntimeContactDataSource : NSObject
 {
+    BOOL _isShowingFamilyMemberContacts;
     BOOL _meContactNeedsUpdate;
     NSString *_filterString;
     CNContactStore *_store;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *familyMembers; // @synthesize familyMembers=_familyMembers;
 @property (copy, nonatomic) NSString *filterString; // @synthesize filterString=_filterString;
 @property (strong, nonatomic) NSArray *filteredSections; // @synthesize filteredSections=_filteredSections;
+@property (nonatomic) BOOL isShowingFamilyMemberContacts; // @synthesize isShowingFamilyMemberContacts=_isShowingFamilyMemberContacts;
 @property (strong, nonatomic) CNContact *meContact; // @synthesize meContact=_meContact;
 @property (nonatomic) BOOL meContactNeedsUpdate; // @synthesize meContactNeedsUpdate=_meContactNeedsUpdate;
 @property (readonly, nonatomic) NSArray *requiredKeys; // @synthesize requiredKeys=_requiredKeys;

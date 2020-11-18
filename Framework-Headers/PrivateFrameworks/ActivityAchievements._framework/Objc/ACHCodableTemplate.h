@@ -20,6 +20,7 @@
     long long _earnDateStrategy;
     long long _earnLimit;
     long long _minimumEngineVersion;
+    long long _mobileAssetVersion;
     long long _triggers;
     long long _version;
     NSString *_alertDates;
@@ -44,6 +45,7 @@
     NSString *_visibilityEndDate;
     NSString *_visibilityPredicate;
     NSString *_visibilityStartDate;
+    BOOL _availableOnPairedDevice;
     BOOL _displaysEarnedInstanceCount;
     struct {
         unsigned int createdDate:1;
@@ -54,8 +56,10 @@
         unsigned int earnDateStrategy:1;
         unsigned int earnLimit:1;
         unsigned int minimumEngineVersion:1;
+        unsigned int mobileAssetVersion:1;
         unsigned int triggers:1;
         unsigned int version:1;
+        unsigned int availableOnPairedDevice:1;
         unsigned int displaysEarnedInstanceCount:1;
     } _has;
 }
@@ -66,6 +70,7 @@
 @property (strong, nonatomic) NSString *availabilityPredicate; // @synthesize availabilityPredicate=_availabilityPredicate;
 @property (strong, nonatomic) NSString *availabilityStartDate; // @synthesize availabilityStartDate=_availabilityStartDate;
 @property (strong, nonatomic) NSString *availableCountryCodes; // @synthesize availableCountryCodes=_availableCountryCodes;
+@property (nonatomic) BOOL availableOnPairedDevice; // @synthesize availableOnPairedDevice=_availableOnPairedDevice;
 @property (strong, nonatomic) NSString *availableSuffixes; // @synthesize availableSuffixes=_availableSuffixes;
 @property (strong, nonatomic) NSString *canonicalUnit; // @synthesize canonicalUnit=_canonicalUnit;
 @property (nonatomic) double createdDate; // @synthesize createdDate=_createdDate;
@@ -88,6 +93,7 @@
 @property (readonly, nonatomic) BOOL hasAvailabilityPredicate;
 @property (readonly, nonatomic) BOOL hasAvailabilityStartDate;
 @property (readonly, nonatomic) BOOL hasAvailableCountryCodes;
+@property (nonatomic) BOOL hasAvailableOnPairedDevice;
 @property (readonly, nonatomic) BOOL hasAvailableSuffixes;
 @property (readonly, nonatomic) BOOL hasCanonicalUnit;
 @property (nonatomic) BOOL hasCreatedDate;
@@ -105,6 +111,7 @@
 @property (readonly, nonatomic) BOOL hasGraceValueExpression;
 @property (readonly, nonatomic) BOOL hasGraceVisibilityPredicate;
 @property (nonatomic) BOOL hasMinimumEngineVersion;
+@property (nonatomic) BOOL hasMobileAssetVersion;
 @property (readonly, nonatomic) BOOL hasPredicate;
 @property (readonly, nonatomic) BOOL hasProgressExpression;
 @property (readonly, nonatomic) BOOL hasSourceName;
@@ -116,6 +123,7 @@
 @property (readonly, nonatomic) BOOL hasVisibilityPredicate;
 @property (readonly, nonatomic) BOOL hasVisibilityStartDate;
 @property (nonatomic) long long minimumEngineVersion; // @synthesize minimumEngineVersion=_minimumEngineVersion;
+@property (nonatomic) long long mobileAssetVersion; // @synthesize mobileAssetVersion=_mobileAssetVersion;
 @property (strong, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
 @property (strong, nonatomic) NSString *progressExpression; // @synthesize progressExpression=_progressExpression;
 @property (strong, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;

@@ -8,41 +8,23 @@
 
 #import <InAppMessages/NSCopying-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSURL;
+@class NSArray, NSString;
 
 @interface IAMMessage : NSObject <NSCopying>
 {
-    BOOL _isCarousel;
-    BOOL _hasCloseButton;
+    BOOL _requiresCloseButton;
     NSString *_identifier;
-    NSArray *_targets;
-    long long _type;
-    long long _priority;
-    NSURL *_templateURL;
-    unsigned long long _maximumNumberOfDisplays;
-    NSDate *_startDate;
-    NSDate *_endDate;
     NSArray *_contentPages;
-    NSURL *_webArchiveURL;
 }
 
 @property (readonly, nonatomic) NSArray *contentPages; // @synthesize contentPages=_contentPages;
-@property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (readonly, nonatomic) BOOL hasCloseButton; // @synthesize hasCloseButton=_hasCloseButton;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) BOOL isCarousel; // @synthesize isCarousel=_isCarousel;
-@property (readonly, nonatomic) unsigned long long maximumNumberOfDisplays; // @synthesize maximumNumberOfDisplays=_maximumNumberOfDisplays;
-@property (readonly, nonatomic) long long priority; // @synthesize priority=_priority;
-@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property (readonly, copy, nonatomic) NSArray *targets; // @synthesize targets=_targets;
-@property (readonly, copy, nonatomic) NSURL *templateURL; // @synthesize templateURL=_templateURL;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
-@property (readonly, copy, nonatomic) NSURL *webArchiveURL; // @synthesize webArchiveURL=_webArchiveURL;
+@property (readonly, nonatomic) BOOL requiresCloseButton; // @synthesize requiresCloseButton=_requiresCloseButton;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithICApplicationMessage:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 targets:(id)arg2 type:(long long)arg3 contentPages:(id)arg4 maximumNumberOfDisplays:(unsigned long long)arg5 webArchiveURL:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 contentPages:(id)arg2 requiresCloseButton:(BOOL)arg3;
 
 @end
 

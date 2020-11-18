@@ -23,6 +23,8 @@
         unsigned int type:1;
         unsigned int subtype:1;
         unsigned int subscriptionRequired:1;
+        unsigned int providerUniversalLink:1;
+        unsigned int providerBundleIdentifier:1;
     } _requestedRadioStationProperties;
     MPPropertySet *_requestedProperties;
 }

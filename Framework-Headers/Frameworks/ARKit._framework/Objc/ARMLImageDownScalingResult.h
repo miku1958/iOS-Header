@@ -9,6 +9,7 @@
 @interface ARMLImageDownScalingResult : NSObject
 {
     struct __CVBuffer *_pixelBuffer;
+    struct __CVBuffer *_undistortedPixelBuffer;
     struct CGSize _regionOfInterest;
     struct CGRect _cropRegion;
 }
@@ -17,6 +18,7 @@
 @property (readonly, nonatomic) struct CGSize imageResolution;
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 @property (readonly, nonatomic) struct CGSize regionOfInterest; // @synthesize regionOfInterest=_regionOfInterest;
+@property (nonatomic) struct __CVBuffer *undistortedPixelBuffer; // @synthesize undistortedPixelBuffer=_undistortedPixelBuffer;
 
 - (void)dealloc;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 regionOfInterest:(struct CGSize)arg2 cropRegion:(struct CGRect)arg3;

@@ -37,9 +37,12 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)_fullDescription;
+- (BOOL)_textureDataIsBusy;
 - (BOOL)addProbeWithAnchor:(id)arg1 timestamp:(double)arg2 textureImmediately:(BOOL)arg3;
 - (id)initWithMode:(long long)arg1;
 - (void)insertIntoQueue:(id)arg1;
+- (BOOL)isBusy;
 - (void)requestTextureForProbe:(id)arg1;
 - (id)updateProbesForTimestamp:(double)arg1 planes:(vector_f1799d67)arg2 imageData:(id)arg3 pose:(id)arg4 enableDirectTexturingForProbesWithIdentifier:(id)arg5;
 - (void)updateProbesFromExistingAnchors:(id)arg1;

@@ -43,11 +43,11 @@
 - (unsigned long long)dilationRateYatIndex:(unsigned long long)arg1;
 - (unsigned long long)edgeMode;
 - (unsigned long long)edgeModeAtIndex:(unsigned long long)arg1;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationImages:(struct NSArray *)arg3;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationStates:(struct NSArray **)arg3 destinationStateIsTemporary:(BOOL)arg4;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 inStates:(struct NSArray *)arg3 destinationImages:(struct NSArray *)arg4;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(struct NSArray *)arg3;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationImages:(id)arg3;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationStates:(id *)arg3 destinationStateIsTemporary:(BOOL)arg4;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 inStates:(id)arg3 destinationImages:(id)arg4;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(id)arg3;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImages:(id)arg2;
 - (void)encodeToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationImage:(id)arg3;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationState:(id *)arg3 destinationStateIsTemporary:(BOOL)arg4;
@@ -65,7 +65,7 @@
 - (unsigned long long)maxBatchSize;
 - (CDStruct_d6af7fc0)offset;
 - (CDStruct_d6af7fc0)offsetAtIndex:(unsigned long long)arg1;
-- (struct NSArray *)resultStateBatchForSourceImages:(id)arg1 sourceStates:(id)arg2 destinationImage:(struct NSArray *)arg3;
+- (id)resultStateBatchForSourceImages:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)resultStateForSourceImages:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (void)setDilationRateX:(unsigned long long)arg1;
 - (void)setDilationRateX:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
@@ -95,7 +95,7 @@
 - (unsigned long long)strideInPixelsXatIndex:(unsigned long long)arg1;
 - (unsigned long long)strideInPixelsY;
 - (unsigned long long)strideInPixelsYatIndex:(unsigned long long)arg1;
-- (struct NSArray *)temporaryResultStateBatchForCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(id)arg3 destinationImage:(struct NSArray *)arg4;
+- (id)temporaryResultStateBatchForCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImages:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 
 @end

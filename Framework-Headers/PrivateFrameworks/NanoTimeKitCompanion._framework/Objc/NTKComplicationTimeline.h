@@ -40,9 +40,9 @@
 - (void)_recycleAllNodes;
 - (id)_rightmostDate;
 - (void)_setupWithEntry:(id)arg1;
-- (struct NSArray *)_sortedEntries:(struct NSArray *)arg1;
+- (id)_sortedEntries:(id)arg1;
 - (id)_timeTravelNode;
-- (id)_timelineSegmentFromSortedEntries:(struct NSArray *)arg1 withLowerBound:(id)arg2 upperBound:(id)arg3;
+- (id)_timelineSegmentFromSortedEntries:(id)arg1 withLowerBound:(id)arg2 upperBound:(id)arg3;
 - (void)_timerFired;
 - (void)_trimTimeline;
 - (void)_updateNowWindow;
@@ -51,8 +51,8 @@
 - (void)clearTimeTravelCache;
 - (void)dealloc;
 - (id)endOfVisibilityForNowEntry;
-- (void)extendLeftFromDate:(id)arg1 withEntries:(struct NSArray *)arg2 tritiumUpdatePriority:(long long)arg3;
-- (void)extendRightFromDate:(id)arg1 withEntries:(struct NSArray *)arg2 tritiumUpdatePriority:(long long)arg3;
+- (void)extendLeftFromDate:(id)arg1 withEntries:(id)arg2 tritiumUpdatePriority:(long long)arg3;
+- (void)extendRightFromDate:(id)arg1 withEntries:(id)arg2 tritiumUpdatePriority:(long long)arg3;
 - (id)initWithEntry:(id)arg1;
 - (id)nowEntry;
 - (id)nowWindow;

@@ -9,6 +9,8 @@
 @class NSArray, NSString, RWIProtocolCSSRuleId, RWIProtocolCSSStyleId;
 
 @protocol RWIProtocolCSSDomainHandler <NSObject>
+
+@optional
 - (void)addRuleWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolCSSRule *))arg2 styleSheetId:(NSString *)arg3 selector:(NSString *)arg4;
 - (void)createStyleSheetWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 frameId:(NSString *)arg3;
 - (void)disableWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;

@@ -29,7 +29,6 @@
 + (id)createTriggerActionEditorViewControllerForHome:(id)arg1 withTriggerActionSetBuilder:(id)arg2 andTriggerActionBuilderEditorDelegate:(id)arg3;
 - (void).cxx_destruct;
 - (void)_informUserShortcutsAreNotSupportedInThisHome;
-- (void)_preloadShortcutHomeManager;
 - (void)_showShortcutsEditor;
 - (void)_showShortcutsEditorIfPossible;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;

@@ -32,8 +32,10 @@
 - (BOOL)_loadNotificationsWithError:(id *)arg1;
 - (BOOL)_saveNotificationsWithError:(id *)arg1;
 - (void)addNotificationRecord:(id)arg1;
+- (void)addNotificationRecords:(id)arg1;
 - (id)initWithPath:(id)arg1;
 - (id)notificationRecords;
+- (void)removeAllNotificationRecords;
 - (void)removeNotificationRecordsPassingTest:(CDUnknownBlockType)arg1;
 
 @end

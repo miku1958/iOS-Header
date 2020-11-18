@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ActionKit/WFACEAction.h>
+#import <WorkflowKit/WFHandleSystemIntentAction.h>
 
-@interface WFStartTimerAction : WFACEAction
+@interface WFStartTimerAction : WFHandleSystemIntentAction
 {
 }
 
-- (void)constructAceCommandWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)selectedHandlerBundleIdentifier;
 
 @end
 

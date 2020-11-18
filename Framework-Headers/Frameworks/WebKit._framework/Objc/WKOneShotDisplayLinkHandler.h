@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (void)pause;
 - (void)schedule;
+- (void)setPreferredFramesPerSecond:(long long)arg1;
 
 @end
 

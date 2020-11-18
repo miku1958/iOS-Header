@@ -61,6 +61,7 @@
 - (id)objectReferenceForSpriteIndex:(unsigned int)arg1;
 - (void)referenceSizeDidChange;
 - (void)screenScaleDidChange;
+- (struct CGSize)sizeForItem:(long long)arg1;
 - (void)spritesDidUpdate;
 - (void)update;
 

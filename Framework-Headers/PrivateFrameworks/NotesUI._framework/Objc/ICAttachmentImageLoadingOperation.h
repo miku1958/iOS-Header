@@ -13,7 +13,7 @@
     BOOL _forceFullSizeImage;
     short _attachmentType;
     NSString *_cacheKey;
-    struct NSCache *_cache;
+    NSCache *_cache;
     NSManagedObjectID *_attachmentObjectID;
     NSURL *_mediaURL;
     NSMutableArray *_completionHandlers;
@@ -29,7 +29,7 @@
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)addCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithCache:(struct NSCache *)arg1 attachment:(id)arg2 attachmentType:(short)arg3 forceFullSizeImage:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)initWithCache:(id)arg1 attachment:(id)arg2 attachmentType:(short)arg3 forceFullSizeImage:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)main;
 - (void)removeCompletionHandler:(CDUnknownBlockType)arg1 cancelIfNoneLeft:(BOOL)arg2;
 

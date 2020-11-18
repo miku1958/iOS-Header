@@ -80,6 +80,7 @@
 - (id)setAttributeNodeNS:(id)arg1;
 - (void)setUiactions:(id)arg1;
 - (int)structuralComplexityContribution;
+- (int)structuralComplexityContribution;
 - (id)uiactions;
 - (BOOL)webkitMatchesSelector:(id)arg1;
 - (void)webkitRequestFullScreen:(unsigned short)arg1;

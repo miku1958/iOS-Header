@@ -33,6 +33,7 @@
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchUserIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)generateDAVServerIDsForExistingBookmarksWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getCloudTabContainerManateeStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getCloudTabDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)migrateToCloudKitWithCompletionHandler:(CDUnknownBlockType)arg1;

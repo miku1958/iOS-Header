@@ -33,7 +33,7 @@
 + (BOOL)faceIDEnabledForSharedPassword;
 + (id)faceIDFailurePrompt;
 + (BOOL)faceIDIsEnrolled;
-+ (struct UIImage *)imageForCurrentDecryptedStatusForNote:(id)arg1;
++ (id)imageForCurrentDecryptedStatusForNote:(id)arg1;
 + (void)requestAllowFaceIDIfRequired:(CDUnknownBlockType)arg1;
 + (void)setFaceIDEnabledForSharedPassword:(BOOL)arg1;
 + (void)setTouchIDEnabledForSharedPassword:(BOOL)arg1;
@@ -55,7 +55,7 @@
 - (void)authenticateIfNecessaryForDeletingNotes:(id)arg1 displayWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)authenticatePasswordForDeletingNotes:(id)arg1 displayWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)authenticatePasswordWithIntent:(unsigned long long)arg1 note:(id)arg2 displayWindow:(id)arg3 failedAttemptHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)authenticateUsingAlternateMethodForDeletingNotes:(id)arg1 displayWindow:(struct UIWindow *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)authenticateUsingAlternateMethodForDeletingNotes:(id)arg1 displayWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)authenticateWithBiometricIDForDeletingNotes:(id)arg1 displayWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)authenticateWithBiometricIDWithReason:(id)arg1 intent:(unsigned long long)arg2 note:(id)arg3 displayWindow:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)dealloc;

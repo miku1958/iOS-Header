@@ -43,8 +43,9 @@
 
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1;
-- (void)getContentWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getObjectRepresentationForClass:(Class)arg1 variableSource:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getContentWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getContentWithContext:(id)arg1 trackContentSource:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getObjectRepresentationForClass:(Class)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithDictionary:(id)arg1 variableProvider:(id)arg2;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
@@ -61,7 +62,7 @@
 - (void)variableProvider:(id)arg1 variableWasMoved:(id)arg2;
 - (void)variableProviderDidInvalidateOutputDetails:(id)arg1;
 - (void)variableUpdated;
-- (void)wf_getContentItemsWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)wf_getContentItemsWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)wf_lengthInVariableString;
 
 @end

@@ -23,6 +23,7 @@
     NSString *_bundleID;
     NSString *_device_type;
     NSDictionary *_searchThroughCEPData;
+    NSDictionary *_roundTripFeatures;
     MISSING_TYPE *_indexScore;
 }
 
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL isSiriAction;
 @property (nonatomic) float originalL2Score; // @synthesize originalL2Score=_originalL2Score;
 @property (readonly, nonatomic) BOOL receiverIsVip;
+@property (strong, nonatomic) NSDictionary *roundTripFeatures; // @synthesize roundTripFeatures=_roundTripFeatures;
 @property (strong, nonatomic) NSDictionary *searchThroughCEPData; // @synthesize searchThroughCEPData=_searchThroughCEPData;
 @property (readonly, nonatomic) BOOL senderIsVip;
 @property (readonly, nonatomic) BOOL vipSenderMatchesQuery;
@@ -52,7 +54,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationWithoutDefaultValues;
-- (float *)getAllScores:(float [1239])arg1;
+- (float *)getAllScores:(float [1519])arg1;
 - (id)init;
 - (id)initWithCache:(struct PRSL2FeatureScoreSmallCache)arg1 featureData:(void *)arg2 featureDataSize:(unsigned short)arg3 flags:(unsigned char)arg4 values:(unsigned char)arg5;
 - (void)restoreFromJazzkonHacks:(float *)arg1;

@@ -6,14 +6,16 @@
 
 #import <coreroutine/RTStore.h>
 
-@class RTDistanceCalculator;
+@class RTDistanceCalculator, RTPersistenceExpirationEnforcer;
 
 @interface RTLearnedLocationStore : RTStore
 {
+    RTPersistenceExpirationEnforcer *_expirationEnforcer;
     RTDistanceCalculator *_distanceCalculator;
 }
 
 @property (strong, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
+@property (strong, nonatomic) RTPersistenceExpirationEnforcer *expirationEnforcer; // @synthesize expirationEnforcer=_expirationEnforcer;
 
 + (id)filterLocationsOfInterests:(id)arg1;
 + (id)filterPlaces:(id)arg1;
@@ -23,6 +25,8 @@
 - (void)__removeUnreferencedMapItems:(CDUnknownBlockType)arg1;
 - (void)_associatePlacesToVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_clearWithHandler:(CDUnknownBlockType)arg1;
+- (void)_expireLifetimeOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_extendExpirationDateOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchCountOfVisitsToPlaceWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchEntityAsDictionaryWithEntityName:(id)arg1 propertiesToFetch:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchInferredMapItemForVisitIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -75,6 +79,10 @@
 - (void)_removeVisitsWithHandler:(CDUnknownBlockType)arg1;
 - (void)_replaceWithLocationsOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_storeVisits:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)_unionSetOfVisitIdentifiersOverlappingVisitIdentifiers:(id)arg1 allowThresholdBypass:(BOOL)arg2 context:(id)arg3 error:(id *)arg4;
+- (BOOL)_updateExpirationDateOfPlaceSubgraphWithVisitIdentifiers:(id)arg1 expirationDate:(id)arg2 context:(id)arg3 error:(id *)arg4;
+- (void)_updateExpirationDateOfVisitSubgraphWithVisitIdentifiers:(id)arg1 expirationDate:(id)arg2 allowThresholdBypass:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
+- (BOOL)_updateExpirationDateOfVisitsAndTransitionsWithVisitIdentifiers:(id)arg1 expirationDate:(id)arg2 context:(id)arg3 visitsUpdated:(unsigned long long *)arg4 error:(id *)arg5;
 - (void)_updateExpirationDateOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_updateLocationOfInterestWithIdentifier:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_updateTransitionWithIdentifier:(id)arg1 motionActivityType:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
@@ -86,6 +94,8 @@
 - (BOOL)deleteTransitionsReferencingVisitIdentifiers:(id)arg1 context:(id)arg2 tombstoneContext:(id)arg3 error:(id *)arg4;
 - (BOOL)deleteVisitsUsingCloudFetchRequest:(id)arg1 localFetchRequest:(id)arg2 context:(id)arg3 tombstoneContext:(id)arg4 error:(id *)arg5;
 - (void)enumerateStoredLocationsOfInterestWithOptions:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
+- (void)expireLifetimeOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)extendExpirationDateOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchAllLocationsOfInterestWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCountOfVisitsToPlaceWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchInferredMapItemForVisitIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -130,7 +140,7 @@
 - (id)identifiersForPlacesThatDedupeToPlace:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)identifiersForPlacesThatOwnVisitIdentifiers:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)init;
-- (id)initWithDistanceCalculator:(id)arg1 persistenceManager:(id)arg2;
+- (id)initWithDistanceCalculator:(id)arg1 expirationEnforcer:(id)arg2 persistenceManager:(id)arg3;
 - (void)logCloudStoreWithReason:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)logLocalStoreWithReason:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)migrateLegacyMapItemsWithEnumerationBlock:(CDUnknownBlockType)arg1;
@@ -159,6 +169,7 @@
 - (void)storeVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeVisits:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)submitMetricsOnExtendingLifetimeOfObjectsWithIdentifiers:(id)arg1 context:(id)arg2;
+- (void)updateExpirationDateOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 allowThresholdBypass:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)updateExpirationDateOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateLocationOfInterestWithIdentifier:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateLocationsOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;

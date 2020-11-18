@@ -12,7 +12,7 @@
 
 @interface MapsSuggestionsObservers : NSObject <MapsSuggestionsObject>
 {
-    struct NSString *_name;
+    NSString *_name;
     struct unique_ptr<MSg::Queue, std::__1::default_delete<MSg::Queue>> _callbackQueue;
     NSHashTable *_innerObservers;
     CDUnknownBlockType _onFirstObserverBlock;
@@ -33,9 +33,9 @@
 - (void)dealloc;
 - (BOOL)enumerateWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithCallbackQueue:(id)arg1 name:(struct NSString *)arg2;
-- (id)initWithCallbackQueue:(id)arg1 name:(struct NSString *)arg2 strong:(BOOL)arg3;
-- (id)initWithName:(struct NSString *)arg1;
+- (id)initWithCallbackQueue:(id)arg1 name:(id)arg2;
+- (id)initWithCallbackQueue:(id)arg1 name:(id)arg2 strong:(BOOL)arg3;
+- (id)initWithName:(id)arg1;
 - (void)onAddingObserverRunBlock:(CDUnknownBlockType)arg1;
 - (void)onRemovingObserverRunBlock:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;

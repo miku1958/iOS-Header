@@ -16,8 +16,8 @@
     long long _action;
     long long _longPressAction;
     NSString *_name;
-    struct NSString *_source;
-    struct NSString *_type;
+    NSString *_source;
+    NSString *_type;
     NSString *_productName;
     NSString *_manufacturerName;
     NSUUID *_uuid;
@@ -49,12 +49,12 @@
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
-+ (id)switchWithAction:(long long)arg1 name:(id)arg2 source:(struct NSString *)arg3 type:(struct NSString *)arg4;
++ (id)switchWithAction:(long long)arg1 name:(id)arg2 source:(id)arg3 type:(id)arg4;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithAction:(long long)arg1 name:(id)arg2 source:(struct NSString *)arg3 type:(struct NSString *)arg4;
+- (id)initWithAction:(long long)arg1 name:(id)arg2 source:(id)arg3 type:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

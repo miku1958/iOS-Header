@@ -10,8 +10,8 @@
 {
 }
 
-+ (struct UIColor *)defaultBubbleColor;
-+ (struct UIColor *)defaultThinkingDotColor;
++ (id)defaultBubbleColor;
++ (id)defaultThinkingDotColor;
 + (struct CGRect)iconImageFrame;
 + (double)iconImageLeadingSpace;
 - (id)iconImage;

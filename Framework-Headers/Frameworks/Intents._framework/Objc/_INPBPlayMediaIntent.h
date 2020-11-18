@@ -15,6 +15,7 @@
 @interface _INPBPlayMediaIntent : PBCodable <_INPBPlayMediaIntent, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int parsecCategory:1;
         unsigned int playShuffled:1;
         unsigned int playbackQueueLocation:1;
         unsigned int playbackRepeatMode:1;
@@ -24,6 +25,7 @@
     BOOL _playShuffled;
     BOOL _resumePlayback;
     BOOL __encodeLegacyGloryData;
+    int _parsecCategory;
     int _playbackQueueLocation;
     int _playbackRepeatMode;
     NSArray *_alternativeResults;
@@ -66,6 +68,7 @@
 @property (readonly, nonatomic) BOOL hasMediaSearch;
 @property (readonly, nonatomic) BOOL hasMediaUserContext;
 @property (readonly, nonatomic) BOOL hasMusicArtistName;
+@property (nonatomic) BOOL hasParsecCategory;
 @property (nonatomic) BOOL hasPlayShuffled;
 @property (nonatomic) BOOL hasPlaybackQueueLocation;
 @property (nonatomic) BOOL hasPlaybackRepeatMode;
@@ -85,6 +88,7 @@
 @property (strong, nonatomic) _INPBMediaSearch *mediaSearch; // @synthesize mediaSearch=_mediaSearch;
 @property (strong, nonatomic) _INPBString *mediaUserContext; // @synthesize mediaUserContext=_mediaUserContext;
 @property (strong, nonatomic) _INPBString *musicArtistName; // @synthesize musicArtistName=_musicArtistName;
+@property (nonatomic) int parsecCategory; // @synthesize parsecCategory=_parsecCategory;
 @property (nonatomic) BOOL playShuffled; // @synthesize playShuffled=_playShuffled;
 @property (nonatomic) int playbackQueueLocation; // @synthesize playbackQueueLocation=_playbackQueueLocation;
 @property (nonatomic) int playbackRepeatMode; // @synthesize playbackRepeatMode=_playbackRepeatMode;
@@ -103,6 +107,7 @@
 + (Class)mediaItemsType;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (int)StringAsParsecCategory:(id)arg1;
 - (int)StringAsPlaybackQueueLocation:(id)arg1;
 - (int)StringAsPlaybackRepeatMode:(id)arg1;
 - (void)addAlternativeResults:(id)arg1;
@@ -125,6 +130,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mediaItemsAtIndex:(unsigned long long)arg1;
+- (id)parsecCategoryAsString:(int)arg1;
 - (id)playbackQueueLocationAsString:(int)arg1;
 - (id)playbackRepeatModeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;

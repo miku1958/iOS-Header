@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class KCAESGCMDuplexSession, KCSRPClientContext, NSData, NSMutableDictionary, NSString, OTControl, OTJoiningConfiguration;
+@class KCAESGCMDuplexSession, KCSRPClientContext, NSData, NSMutableDictionary, NSString, OTControl;
 @protocol KCJoiningRequestSecretDelegate;
 
 @interface KCJoiningRequestSecretSession : NSObject
@@ -21,7 +21,7 @@
     unsigned long long _epoch;
     NSData *_challenge;
     NSData *_salt;
-    OTJoiningConfiguration *_joiningConfiguration;
+    NSString *_sessionUUID;
     OTControl *_otControl;
     NSMutableDictionary *_defaults;
 }
@@ -31,13 +31,13 @@
 @property (strong, nonatomic) NSMutableDictionary *defaults; // @synthesize defaults=_defaults;
 @property (readonly) unsigned long long dsid; // @synthesize dsid=_dsid;
 @property unsigned long long epoch; // @synthesize epoch=_epoch;
-@property (strong, nonatomic) OTJoiningConfiguration *joiningConfiguration; // @synthesize joiningConfiguration=_joiningConfiguration;
 @property (strong, nonatomic) OTControl *otControl; // @synthesize otControl=_otControl;
 @property (strong) NSString *piggy_uuid; // @synthesize piggy_uuid=_piggy_uuid;
 @property unsigned long long piggy_version; // @synthesize piggy_version=_piggy_version;
 @property (strong) NSData *salt; // @synthesize salt=_salt;
 @property (weak) id<KCJoiningRequestSecretDelegate> secretDelegate; // @synthesize secretDelegate=_secretDelegate;
 @property (readonly) KCAESGCMDuplexSession *session; // @synthesize session=_session;
+@property (strong) NSString *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
 @property (readonly) int state; // @synthesize state=_state;
 
 + (id)sessionWithSecretDelegate:(id)arg1 dsid:(unsigned long long)arg2 error:(id *)arg3;
@@ -55,7 +55,6 @@
 - (id)initialMessage:(id *)arg1;
 - (BOOL)isDone;
 - (id)processMessage:(id)arg1 error:(id *)arg2;
-- (void)setConfiguration:(id)arg1;
 - (void)setControlObject:(id)arg1;
 - (BOOL)setupSession:(id *)arg1;
 - (id)stateString;

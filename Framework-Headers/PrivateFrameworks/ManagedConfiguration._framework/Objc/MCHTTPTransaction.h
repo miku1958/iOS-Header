@@ -8,7 +8,7 @@
 
 #import <ManagedConfiguration/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSData, NSError, NSMutableData, NSString, NSURL, NSURLSession;
+@class NSArray, NSData, NSError, NSMutableData, NSString, NSURL, NSURLSession;
 @protocol OS_dispatch_semaphore;
 
 @interface MCHTTPTransaction : NSObject <NSURLSessionDataDelegate>
@@ -29,6 +29,8 @@
     NSError *_error;
     NSURLSession *_session;
     NSObject<OS_dispatch_semaphore> *_doneSema;
+    BOOL _pinningRevocationCheckRequired;
+    NSArray *_pinnedSecCertificateRefs;
 }
 
 @property (strong, nonatomic) NSString *CMSSignatureHeaderName; // @synthesize CMSSignatureHeaderName=_CMSSignatureHeaderName;
@@ -40,6 +42,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *method; // @synthesize method=_method;
 @property (readonly, strong, nonatomic) NSURL *permanentlyRedirectedURL; // @synthesize permanentlyRedirectedURL=_permanentlyRedirectedURL;
+@property (strong, nonatomic) NSArray *pinnedSecCertificateRefs; // @synthesize pinnedSecCertificateRefs=_pinnedSecCertificateRefs;
+@property (nonatomic) BOOL pinningRevocationCheckRequired; // @synthesize pinningRevocationCheckRequired=_pinningRevocationCheckRequired;
 @property (readonly, strong, nonatomic) NSData *responseData; // @synthesize responseData=_responseData;
 @property (readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property (readonly) Class superclass;
@@ -56,6 +60,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_beginTransaction;
 - (BOOL)_shouldAllowTrust:(struct __SecTrust *)arg1 forHost:(id)arg2;
+- (BOOL)_shouldAllowTrustWithPinning:(struct __SecTrust *)arg1 forHost:(id)arg2;
 - (struct __SecIdentity *)copyIdentity;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 method:(id)arg2;

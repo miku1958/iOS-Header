@@ -16,7 +16,7 @@
 
 @property (readonly, nonatomic) NSDictionary *_quickLookContent;
 @property (copy, nonatomic, setter=_setQuickLookContent:) NSDictionary *_quickLookContent;
-@property (nonatomic, setter=_setQuickLookPreviewLoaderClient:) struct PreviewLoaderClient *_quickLookPreviewLoaderClient;
+@property (nonatomic, setter=_setQuickLookPreviewLoaderClient:) struct LegacyPreviewLoaderClient *_quickLookPreviewLoaderClient;
 @property (readonly, copy, nonatomic) NSData *data;
 @property (readonly, nonatomic) NSURLRequest *initialRequest;
 @property (readonly, nonatomic, getter=isLoading) BOOL loading;

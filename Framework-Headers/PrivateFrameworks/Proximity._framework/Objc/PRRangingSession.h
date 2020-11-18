@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, PRPeer, PRRangingDevice;
+#import <Proximity/PRAidedRangingClientProtocol-Protocol.h>
+
+@class NSMutableSet, NSString, NSXPCConnection, PRPeer, PRRangingDevice;
 @protocol OS_dispatch_queue, OS_os_log, PRRangingSessionDelegate;
 
-@interface PRRangingSession : NSObject
+@interface PRRangingSession : NSObject <PRAidedRangingClientProtocol>
 {
     NSObject<OS_os_log> *_logger;
+    NSXPCConnection *_connection;
     PRPeer *_localPeer;
     PRRangingDevice *_rangingDevice;
     BOOL _isReady;
@@ -22,20 +25,35 @@
     PRPeer *_rangedPeer;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak) id<PRRangingSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property BOOL isReady; // @synthesize isReady=_isReady;
 @property (readonly, copy) PRPeer *localPeer; // @synthesize localPeer=_localPeer;
 @property (strong) PRPeer *rangedPeer; // @synthesize rangedPeer=_rangedPeer;
 @property (strong) NSMutableSet *sessionParticipants; // @synthesize sessionParticipants=_sessionParticipants;
+@property (readonly) Class superclass;
 @property (getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
++ (unsigned long long)computeLocalDeviceIndex:(id)arg1 sessionParticipants:(id)arg2;
 - (void).cxx_destruct;
+- (void)connectToDaemon;
+- (void)didFailWithError:(id)arg1;
+- (void)didReceiveNewSolutions:(id)arg1;
+- (void)handleInterruption;
+- (void)handleInvalidation;
 - (id)init;
 - (void)invalidate;
 - (void)invokeDelegateBlock:(CDUnknownBlockType)arg1;
 - (void)pushCollaborationData:(id)arg1;
+- (id)rangingConfigurationWithDeviceIndex:(unsigned long long)arg1;
+- (void)rangingRequestDidUpdateStatus:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (id)remoteObject;
 - (void)requestInitialCollaborationDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)sendDataToPeers:(id)arg1;
 - (void)startRangingWithPeer:(id)arg1;
 - (void)stopRangingWithPeer:(id)arg1;
 

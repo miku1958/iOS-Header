@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AppAnalytics/AAEndpointType-Protocol.h>
-
 @class MISSING_TYPE, NSString, NSURL;
 
-@interface AAEndpoint : NSObject <AAEndpointType>
+@interface AAEndpoint : NSObject
 {
     MISSING_TYPE *url;
     MISSING_TYPE *name;

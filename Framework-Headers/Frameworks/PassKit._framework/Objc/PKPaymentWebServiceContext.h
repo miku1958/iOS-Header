@@ -16,7 +16,7 @@
     NSDictionary *_regions;
     NSObject<OS_dispatch_queue> *_queue;
     struct os_unfair_lock_s _cacheLock;
-    NSMutableDictionary *_featureSupportedLangaugeCache;
+    NSMutableDictionary *_featureSupportedLanguageCache;
     BOOL _devSigned;
     BOOL _transactionServiceDisabled;
     BOOL _messageServiceDisabled;

@@ -54,6 +54,7 @@
 + (void)checkForAvailableHDRModesChanges;
 + (BOOL)eligibleForHDRPlayback;
 + (void)fireAvailableHDRModesDidChangeNotification;
++ (void)fireEligibleForHDRPlaybackDidChangeNotification;
 + (void)initialize;
 + (BOOL)isIAPDExtendedModeActive;
 + (id)keyPathsForValuesAffectingActionAtItemEnd;

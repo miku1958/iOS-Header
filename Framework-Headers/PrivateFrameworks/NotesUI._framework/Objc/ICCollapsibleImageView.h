@@ -10,9 +10,9 @@
 
 @interface ICCollapsibleImageView : ICCollapsibleBaseView
 {
-    struct UIImage *_image;
-    struct UIColor *_tintColor;
-    struct UIImageView *_imageView;
+    UIImage *_image;
+    UIColor *_tintColor;
+    UIImageView *_imageView;
 }
 
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;

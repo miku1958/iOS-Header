@@ -30,7 +30,7 @@
 
 + (id)_bestDateForDeliveringNotificationWithError:(id *)arg1;
 + (id)_notificationDeliveryDate;
-+ (struct NSObject *)filteredAlbumListForContentMode:(int)arg1 library:(id)arg2;
++ (id)filteredAlbumListForContentMode:(int)arg1 library:(id)arg2;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_addWaitingNotification:(id)arg1 forPhotosBatchID:(id)arg2;

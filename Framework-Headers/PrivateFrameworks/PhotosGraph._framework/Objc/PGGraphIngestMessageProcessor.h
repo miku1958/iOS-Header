@@ -30,10 +30,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_cnPostalAddressFromAddressComponents:(id)arg1;
 - (BOOL)_isInterestingGroupChatWithPersons:(id)arg1;
 - (id)addressComponentFromText:(id)arg1 usingDataDetector:(id)arg2;
-- (id)locationFromAddressComponents:(id)arg1;
 - (unsigned long long)numberOfEmojis:(id)arg1 inText:(id)arg2;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (BOOL)shouldRunWithGraphUpdate:(id)arg1;

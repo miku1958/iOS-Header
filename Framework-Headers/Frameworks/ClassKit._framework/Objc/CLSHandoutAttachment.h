@@ -6,11 +6,12 @@
 
 #import <ClassKit/CLSObject.h>
 
+#import <ClassKit/CLSCollaborationStateRepresentable-Protocol.h>
 #import <ClassKit/CLSRelationable-Protocol.h>
 
 @class CLSHandout, NSArray, NSDate, NSString, NSURL;
 
-@interface CLSHandoutAttachment : CLSObject <CLSRelationable>
+@interface CLSHandoutAttachment : CLSObject <CLSRelationable, CLSCollaborationStateRepresentable>
 {
     int _shareType;
     int _permissionType;
@@ -19,6 +20,8 @@
     NSString *_title;
     NSString *_bundleIdentifier;
     NSString *_contentStoreIdentifier;
+    NSString *_contextSummary;
+    NSString *_contextCustomTypeName;
     int _completionStatus;
     long long _displayOrder;
     long long _contextType;
@@ -31,10 +34,13 @@
 @property (copy, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) NSArray *assets;
 @property (copy, nonatomic) NSString *bundleIdentifier;
+@property (readonly, nonatomic) NSArray *collaborationStates;
 @property (readonly, nonatomic, getter=isComplete) BOOL complete;
 @property (nonatomic) int completionStatus;
 @property (copy, nonatomic) NSString *contentStoreIdentifier;
+@property (copy, nonatomic) NSString *contextCustomTypeName;
 @property (copy, nonatomic) NSArray *contextPath;
+@property (copy, nonatomic) NSString *contextSummary;
 @property (nonatomic) long long contextType;
 @property (strong, nonatomic) NSDate *dateLastCompleted;
 @property (readonly, copy) NSString *debugDescription;
@@ -58,6 +64,7 @@
 - (void)addAsset:(id)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (void)getNumberOfAttemptsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(int)arg1 title:(id)arg2;
 - (void)mergeWithObject:(id)arg1;

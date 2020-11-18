@@ -19,6 +19,7 @@
 }
 
 @property (readonly) unsigned long long allocatedSize;
+@property (readonly) unsigned long long allocationID;
 @property (readonly) BOOL allowGPUOptimizedContents;
 @property (readonly) unsigned long long arrayLength;
 @property (readonly) id<MTLBuffer> buffer; // @synthesize buffer=_buffer;

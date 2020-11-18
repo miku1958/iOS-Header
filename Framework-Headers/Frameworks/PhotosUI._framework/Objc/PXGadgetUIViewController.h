@@ -25,6 +25,7 @@
 {
     NSMutableSet *_registeredCellReuseIdentifiers;
     NSMapTable *_cellsToGadgets;
+    BOOL _isScrolling;
     BOOL _isInteractionPreviewCancelled;
     BOOL _currentlyVisible;
     BOOL _loadingGadgets;
@@ -74,7 +75,7 @@
 @property (strong, nonatomic) UIViewController *interactionPreviewViewController; // @synthesize interactionPreviewViewController=_interactionPreviewViewController;
 @property (nonatomic, setter=setContentVisible:) BOOL isContentVisible; // @synthesize isContentVisible=_isContentVisible;
 @property (nonatomic) BOOL isInteractionPreviewCancelled; // @synthesize isInteractionPreviewCancelled=_isInteractionPreviewCancelled;
-@property (readonly, nonatomic) BOOL isScrolling;
+@property (nonatomic) BOOL isScrolling; // @synthesize isScrolling=_isScrolling;
 @property (readonly, nonatomic) PXGadgetCollectionViewLayout *layout;
 @property (nonatomic, getter=isLoadingGadgets) BOOL loadingGadgets; // @synthesize loadingGadgets=_loadingGadgets;
 @property (readonly, nonatomic) PXGadgetNavigationHelper *navigationHelper; // @synthesize navigationHelper=_navigationHelper;
@@ -123,6 +124,7 @@
 - (void)_updateVisibleRectForGadget:(id)arg1 inCell:(id)arg2 collectionView:(id)arg3;
 - (void)_updaterNeedsUpdate;
 - (BOOL)anchorHelper:(id)arg1 indexPathIsFullyVisible:(id)arg2;
+- (BOOL)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (BOOL)collectionView:(id)arg1 canHandleDropSesson:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
@@ -134,8 +136,6 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
-- (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
-- (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)configureSectionHeader:(id)arg1;
@@ -147,14 +147,14 @@
 - (void)contextMenuInteractionDidEnd:(id)arg1;
 - (void)dealloc;
 - (id)debugURLsForDiagnostics;
-- (void)dismissGadgetViewController:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dismissGadgetViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)gadget:(id)arg1 animateChanges:(CDUnknownBlockType)arg2;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
-- (BOOL)gadget:(id)arg1 transitionToViewController:(struct NSObject *)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)gadget:(id)arg1 transitionToViewController:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)gadgetAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)gadgetControllerFinishedUpdatingDataSourceWithChange:(id)arg1;
 - (id)gadgetDataSourceForNavigationHelper:(id)arg1;
-- (struct NSObject *)gadgetViewControllerHostingGadget:(id)arg1;
+- (id)gadgetViewControllerHostingGadget:(id)arg1;
 - (id)initWithLayout:(id)arg1 dataSourceManager:(id)arg2;
 - (BOOL)isRootGadgetViewController;
 - (BOOL)navigateToGadget:(id)arg1 animated:(BOOL)arg2;
@@ -162,7 +162,7 @@
 - (void)navigationHelperDidNotFindValidGadget:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)presentGadgetViewController:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentGadgetViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)pu_scrollToInitialPositionAnimated:(BOOL)arg1;
 - (BOOL)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;

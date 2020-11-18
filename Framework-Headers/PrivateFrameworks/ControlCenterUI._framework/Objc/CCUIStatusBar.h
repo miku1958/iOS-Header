@@ -20,6 +20,7 @@
     unsigned long long _trailingState;
     double _maxCompactScaleFactor;
     double _verticalSecondaryServiceDelta;
+    double _expandedStatusBarTranslation;
     struct UIEdgeInsets _compactEdgeInsets;
     struct UIEdgeInsets _expandedEdgeInsets;
     struct CGAffineTransform _compactScaleTransform;
@@ -31,6 +32,8 @@
 @property (readonly, copy, nonatomic) UIStatusBarStyleRequest *compactTrailingStyleRequest; // @dynamic compactTrailingStyleRequest;
 @property (weak, nonatomic) id<CCUIStatusBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) struct UIEdgeInsets expandedEdgeInsets; // @synthesize expandedEdgeInsets=_expandedEdgeInsets;
+@property (readonly, nonatomic) double expandedStatusBarBaseline;
+@property (nonatomic) double expandedStatusBarTranslation; // @synthesize expandedStatusBarTranslation=_expandedStatusBarTranslation;
 @property (nonatomic) double expandedTrailingAlpha; // @dynamic expandedTrailingAlpha;
 @property (nonatomic) double leadingAlpha; // @dynamic leadingAlpha;
 @property (nonatomic) unsigned long long leadingState; // @synthesize leadingState=_leadingState;

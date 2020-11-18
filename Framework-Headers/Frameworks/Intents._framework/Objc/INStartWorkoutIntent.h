@@ -33,7 +33,7 @@
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithWorkoutName:(id)arg1 goalValue:(id)arg2 workoutGoalUnitType:(long long)arg3 workoutLocationType:(long long)arg4 isOpenEnded:(id)arg5;
-- (id)localizeValueOfSlotDescription:(id)arg1 forLanguage:(id)arg2;
+- (id)localizeValueOfSlotDescription:(id)arg1 withLocalizer:(id)arg2;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setGoalValue:(id)arg1;

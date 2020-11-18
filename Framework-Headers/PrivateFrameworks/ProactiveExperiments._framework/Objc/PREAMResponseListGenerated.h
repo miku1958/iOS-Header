@@ -18,6 +18,7 @@
     NSString *_hostProcess;
     NSString *_lang;
     NSString *_locale;
+    unsigned int _numberOfCustomResponses;
     unsigned int _numberOfResponsesGenerated;
     NSString *_treatmentId;
     NSString *_treatmentModelName;
@@ -26,6 +27,7 @@
     struct {
         unsigned int ageGroup:1;
         unsigned int generationStatus:1;
+        unsigned int numberOfCustomResponses:1;
         unsigned int numberOfResponsesGenerated:1;
         unsigned int isApricotDevice:1;
         unsigned int isCached:1;
@@ -43,6 +45,7 @@
 @property (nonatomic) BOOL hasIsCached;
 @property (readonly, nonatomic) BOOL hasLang;
 @property (readonly, nonatomic) BOOL hasLocale;
+@property (nonatomic) BOOL hasNumberOfCustomResponses;
 @property (nonatomic) BOOL hasNumberOfResponsesGenerated;
 @property (readonly, nonatomic) BOOL hasTreatmentId;
 @property (readonly, nonatomic) BOOL hasTreatmentModelName;
@@ -51,6 +54,7 @@
 @property (nonatomic) BOOL isCached; // @synthesize isCached=_isCached;
 @property (strong, nonatomic) NSString *lang; // @synthesize lang=_lang;
 @property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
+@property (nonatomic) unsigned int numberOfCustomResponses; // @synthesize numberOfCustomResponses=_numberOfCustomResponses;
 @property (nonatomic) unsigned int numberOfResponsesGenerated; // @synthesize numberOfResponsesGenerated=_numberOfResponsesGenerated;
 @property (strong, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
 @property (strong, nonatomic) NSString *treatmentModelName; // @synthesize treatmentModelName=_treatmentModelName;

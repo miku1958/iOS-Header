@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UIVisualEffectView;
+#import <ChatKit/_UICursorInteractionDelegate-Protocol.h>
 
-@interface CKEntryViewButton : UIView
+@class NSString, UIButton, UIVisualEffectView;
+
+@interface CKEntryViewButton : UIView <_UICursorInteractionDelegate>
 {
     BOOL _ckTintColor;
     BOOL _wantsVibrancy;
@@ -19,7 +21,11 @@
 
 @property (strong, nonatomic) UIButton *button; // @synthesize button=_button;
 @property (nonatomic) BOOL ckTintColor; // @synthesize ckTintColor=_ckTintColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long entryViewButtonType; // @synthesize entryViewButtonType=_entryViewButtonType;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIVisualEffectView *vibrancyView; // @synthesize vibrancyView=_vibrancyView;
 @property (nonatomic) BOOL wantsVibrancy; // @synthesize wantsVibrancy=_wantsVibrancy;
 
@@ -32,6 +38,8 @@
 + (id)overlayImageForImageNamed:(id)arg1 tintColor:(BOOL)arg2;
 + (void)prewarmEntryViewButtons;
 - (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 wantsVibrancy:(BOOL)arg2;
 - (BOOL)isEnabled;
 - (void)layoutSubviews;

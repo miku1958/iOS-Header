@@ -13,6 +13,7 @@
 @optional
 - (void)advertisingDidBegin:(AFMyriadCoordinator *)arg1;
 - (void)advertisingDidEnd:(AFMyriadCoordinator *)arg1;
+- (void)advertisingWillBeginWithDelay:(float)arg1 advertisingInterval:(float)arg2;
 - (void)listeningDidBegin:(AFMyriadCoordinator *)arg1;
 - (void)listeningDidEnd:(AFMyriadCoordinator *)arg1;
 - (void)shouldAbortAnotherDeviceBetter:(AFMyriadCoordinator *)arg1;

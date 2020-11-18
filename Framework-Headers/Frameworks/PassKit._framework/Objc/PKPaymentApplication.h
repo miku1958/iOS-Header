@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDecimalNumber, NSString, PKFelicaPassProperties, PKTransitPassProperties;
+@class NSArray, NSDecimalNumber, NSSet, NSString, PKFelicaPassProperties, PKTransitPassProperties;
 
 @interface PKPaymentApplication : NSObject <NSSecureCoding, NSCopying>
 {
@@ -40,6 +40,7 @@
     NSString *_appletDataFormat;
     PKTransitPassProperties *_transitProperties;
     NSArray *_supportedTransitNetworkIdentifiers;
+    NSSet *_subcredentials;
 }
 
 @property (copy, nonatomic) NSString *appletCurrencyCode; // @synthesize appletCurrencyCode=_appletCurrencyCode;
@@ -66,6 +67,7 @@
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSString *stateAsString;
 @property (readonly, nonatomic) NSString *stationCodeProvider;
+@property (copy, nonatomic) NSSet *subcredentials; // @synthesize subcredentials=_subcredentials;
 @property (copy, nonatomic) NSArray *supportedExpressModes; // @synthesize supportedExpressModes=_supportedExpressModes;
 @property (copy, nonatomic) NSArray *supportedTransitNetworkIdentifiers; // @synthesize supportedTransitNetworkIdentifiers=_supportedTransitNetworkIdentifiers;
 @property (nonatomic) BOOL supportsContactlessPayment; // @synthesize supportsContactlessPayment=_supportsContactlessPayment;
@@ -88,6 +90,7 @@
 - (BOOL)acceptedForNonWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 paymentApplicationStates:(id)arg4;
 - (BOOL)acceptedForWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 webService:(id)arg4;
 - (BOOL)acceptedForWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 webService:(id)arg4 paymentApplicationStates:(id)arg5;
+- (id)asDictionary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

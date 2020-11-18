@@ -55,6 +55,7 @@
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
 @property (readonly, nonatomic) BOOL hf_isAirPortExpressSpeaker;
 @property (readonly, nonatomic) BOOL hf_isAppleTV;
+@property (readonly, nonatomic) BOOL hf_isAudioReceiver;
 @property (readonly, nonatomic) BOOL hf_isBridge;
 @property (readonly, nonatomic) BOOL hf_isCamera;
 @property (readonly, nonatomic) BOOL hf_isDumbSpeaker;

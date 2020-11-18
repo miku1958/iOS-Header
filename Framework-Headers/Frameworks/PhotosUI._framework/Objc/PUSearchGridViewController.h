@@ -43,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (void)searchGridDataSourceHasPendingChanges:(id)arg1;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
-- (BOOL)updateSpec;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

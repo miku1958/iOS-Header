@@ -17,6 +17,7 @@
 - (BOOL)_accessibilityHasAccessibleSubviews;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityRetrieveTableViewCellText;
+- (BOOL)_accessibilityShouldSortTableViewCellChildren;
 - (id)_accessibilitySupplementaryFooterViews;
 - (BOOL)_accessibilityUsesOverrideContainerProtocol;
 - (id)accessibilityElements;

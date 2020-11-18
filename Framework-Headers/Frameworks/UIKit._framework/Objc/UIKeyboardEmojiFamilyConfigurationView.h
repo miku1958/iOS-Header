@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)_wellViewForSection:(long long)arg1 item:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)retestForTouchUpSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
 - (void)updateRenderConfig:(id)arg1;

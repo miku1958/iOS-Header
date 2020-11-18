@@ -6,7 +6,8 @@
 
 #import <Foundation/NSEnumerator.h>
 
-@class BRCClientZone, BRCLocalItem, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet;
+@class BRCClientZone, BRCLocalItem, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, PQLResultSet;
+@protocol PQLEnumeration;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncUpEnumerator : NSEnumerator
@@ -20,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_itemIDsNeedingOSUpgrade;
     NSMutableDictionary *_tombstonesEmbargo;
     NSMutableIndexSet *_returned;
-    struct PQLResultSet *_enumerator;
+    PQLResultSet<PQLEnumeration> *_enumerator;
     NSMutableArray *_stack;
     int _stage;
     unsigned long long _retryAfter;
@@ -39,12 +40,12 @@ __attribute__((visibility("hidden")))
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3;
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3 descendantBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_blackListDescendantStackAndItemIfThrottledOrNeedsOSUpgrade:(id)arg1 now:(unsigned long long)arg2;
-- (struct PQLResultSet *)_documentsOrAliasesNeedingSyncUpEnumerator;
+- (id)_documentsOrAliasesNeedingSyncUpEnumerator;
 - (BOOL)_handleSharedItemWhichMovedToNewShare:(id)arg1 rootItem:(id)arg2;
-- (struct PQLResultSet *)_liveOrNewDirectoriesNeedingSyncUpEnumerator;
+- (id)_liveDirectoriesNeedingSyncUpEnumerator;
 - (id)_nextLiveItem;
 - (id)_nextTombstone;
-- (struct PQLResultSet *)_tombstoneLeavesNeedingSyncUpEnumerator;
+- (id)_tombstoneLeavesNeedingSyncUpEnumerator;
 - (BOOL)handleItemForOSUpgrade:(id)arg1 parentItemID:(id)arg2;
 - (id)initWithClientZone:(id)arg1;
 - (void)invalidate;

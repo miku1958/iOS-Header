@@ -13,6 +13,7 @@
 - (void)contentController:(INKContentController *)arg1 didFinishWithContent:(INKContent *)arg2 animated:(BOOL)arg3;
 
 @optional
+- (void)contentController:(INKContentController *)arg1 actionTapped:(INKContent *)arg2;
 - (UIImage *)contentController:(INKContentController *)arg1 contentView:(INKContentView *)arg2 iconForCustomizationID:(long long)arg3;
 - (void)contentController:(INKContentController *)arg1 contentViewNeedsLayout:(INKContentView *)arg2;
 @end

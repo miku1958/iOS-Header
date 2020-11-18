@@ -11,13 +11,20 @@
 }
 
 @property (nonatomic) BOOL allowLocketGesture; // @dynamic allowLocketGesture;
+@property (nonatomic) double cameraSwipePrelaunchThreshold; // @dynamic cameraSwipePrelaunchThreshold;
+@property (nonatomic) double cameraSwipePrewarmThreshold; // @dynamic cameraSwipePrewarmThreshold;
 @property (nonatomic) BOOL forceWakeToMaps; // @dynamic forceWakeToMaps;
 @property (nonatomic) BOOL limitFeaturesForRemoteLock; // @dynamic limitFeaturesForRemoteLock;
 @property (nonatomic) double nowPlayingTimeout; // @dynamic nowPlayingTimeout;
+@property (nonatomic) BOOL prelaunchCameraOnButtonTouch; // @dynamic prelaunchCameraOnButtonTouch;
+@property (nonatomic) BOOL prelaunchCameraOnSwipe; // @dynamic prelaunchCameraOnSwipe;
+@property (nonatomic) BOOL prewarmCameraOnButtonTouch; // @dynamic prewarmCameraOnButtonTouch;
+@property (nonatomic) BOOL prewarmCameraOnSwipe; // @dynamic prewarmCameraOnSwipe;
 @property (nonatomic) BOOL showAuthenticationEngineeringUI; // @dynamic showAuthenticationEngineeringUI;
 @property (readonly, nonatomic) BOOL showLegalText; // @dynamic showLegalText;
 @property (nonatomic) BOOL showQuickNoteFingerGestureRecognizer; // @dynamic showQuickNoteFingerGestureRecognizer;
 @property (nonatomic) BOOL showSupervisionText; // @dynamic showSupervisionText;
+@property (nonatomic) BOOL useDefaultsValuesForCameraPrewarm; // @dynamic useDefaultsValuesForCameraPrewarm;
 @property (nonatomic) BOOL weDontNeedNoEducation; // @dynamic weDontNeedNoEducation;
 
 - (void)_bindAndRegisterDefaults;

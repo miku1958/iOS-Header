@@ -79,6 +79,7 @@
 - (id)playbackQueueIdentifierForNowPlayingInfoCenter:(id)arg1;
 - (void)publishIfNeeded;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
+- (void)reportUserBackgroundedApplication;
 - (BOOL)respondsToSelector:(SEL)arg1;
 
 @end

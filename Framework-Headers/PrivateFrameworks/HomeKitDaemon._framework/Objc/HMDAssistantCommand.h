@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/AFServiceCommand-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAssistantCommandHelper, HMDAssistantGather, HMDHome, HMDHomeManager, NSArray, NSObject, NSString, NSUUID;
+@class HMDAssistantCommandHelper, HMDAssistantGather, HMDHome, HMDHomeManager, HMFLogEventSession, NSArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDAssistantCommand : SAHACommand <AFServiceCommand, HMFLogging>
@@ -27,6 +27,7 @@
     HMDAssistantCommandHelper *_assistantCommandHelper;
     HMDHome *_home;
     unsigned long long _startTime;
+    HMFLogEventSession *_logEventSession;
 }
 
 @property (strong, nonatomic) HMDAssistantCommandHelper *assistantCommandHelper; // @synthesize assistantCommandHelper=_assistantCommandHelper;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSArray *homeKitObjects; // @synthesize homeKitObjects=_homeKitObjects;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
+@property (strong, nonatomic) HMFLogEventSession *logEventSession; // @synthesize logEventSession=_logEventSession;
 @property (nonatomic) long long numberOfHomes; // @synthesize numberOfHomes=_numberOfHomes;
 @property (strong, nonatomic) NSString *primaryHomeName; // @synthesize primaryHomeName=_primaryHomeName;
 @property (strong, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
@@ -94,7 +96,7 @@
 - (id)objectsWithIdentifierList:(id)arg1;
 - (id)objectsWithSearchFilter:(id)arg1 inHome:(id)arg2 serviceTypeIsATV:(BOOL)arg3 overrideServiceTypeIfNeeded:(id *)arg4;
 - (id)parseColorEncoding:(id)arg1;
-- (void)performWithGather:(id)arg1 queue:(id)arg2 msgDispatcher:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performWithGather:(id)arg1 queue:(id)arg2 msgDispatcher:(id)arg3 logEventSession:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)populateColorResult:(id)arg1 serviceType:(id)arg2 service:(id)arg3 action:(id)arg4 responses:(id)arg5 forObjects:(id)arg6;
 - (BOOL)populateMediaProfileWriteResult:(id)arg1 withValue:(id)arg2 serviceType:(id)arg3 action:(id)arg4;
 - (BOOL)populateResult:(id)arg1 fromResponse:(id)arg2 responses:(id)arg3 forAction:(id)arg4 serviceType:(id)arg5 forObjects:(id)arg6;

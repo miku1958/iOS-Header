@@ -15,6 +15,9 @@
 {
     CDStruct_d97c9657 _updateFlags;
     BOOL _isUpdatingSublayouts;
+    long long *_currentSingleLayouts;
+    long long *_pendingSingleLayouts;
+    BOOL *_pendingAnimations;
     PXGSublayoutComposition *_composition;
     id<PXGSublayoutFaultingDelegate> _sublayoutFaultingDelegate;
     struct UIEdgeInsets _faultInOutsets;
@@ -31,19 +34,25 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_invalidateStylableType:(long long)arg1;
 - (void)_invalidateSublayouts;
+- (void)_updateSublayoutOfStylableType:(long long)arg1;
 - (void)_updateSublayouts;
-- (void)didAddSublayout:(id)arg1;
+- (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
+- (void)didAddSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
+- (void)didApplySublayoutChangeDetails:(id)arg1 axAdjustedSubgroupChangeDetails:(id)arg2 countAfterChanges:(long long)arg3;
+- (id)init;
 - (id)initWithComposition:(id)arg1;
 - (void)insertSublayoutProvider:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)referenceSizeDidChange;
 - (void)screenScaleDidChange;
+- (void)setSublayoutIndex:(long long)arg1 forUniquelyStylableType:(long long)arg2 animated:(BOOL)arg3;
 - (void)sublayoutDidChangeContentSize:(id)arg1;
 - (void)sublayoutNeedsUpdate:(id)arg1;
 - (void)update;
 - (void)viewEnvironmentDidChange;
 - (void)visibleRectDidChange;
-- (void)willRemoveSublayout:(id)arg1;
+- (void)willRemoveSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 
 @end
 

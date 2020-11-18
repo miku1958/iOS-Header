@@ -58,6 +58,7 @@
 - (id)initWithName:(id)arg1 tag:(unsigned long long)arg2 facadePropertyName:(id)arg3 dataPropertyName:(id)arg4 valueType:(long long)arg5 valueStyle:(long long)arg6 isExtended:(BOOL)arg7 isPrivate:(BOOL)arg8 resolveSelectors:(SEL)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizeValue:(id)arg1 forLanguage:(id)arg2;
+- (id)localizeValue:(id)arg1 withLocalizer:(id)arg2;
 - (void)setValue:(id)arg1 forSlotComposer:(id)arg2;
 - (id)valueForSlotComposer:(id)arg1;
 

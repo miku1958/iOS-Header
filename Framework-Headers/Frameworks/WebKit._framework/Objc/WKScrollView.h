@@ -42,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateZoomability;
 - (void)dealloc;
 - (id)delegate;
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)setContentInsetAdjustmentBehavior:(long long)arg1;

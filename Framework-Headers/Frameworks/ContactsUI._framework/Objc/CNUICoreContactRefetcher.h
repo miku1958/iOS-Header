@@ -21,7 +21,7 @@
 @property (readonly, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 
 + (id)contactsByReplacingContacts:(id)arg1 withContactsHavingMatchingIdentifier:(id)arg2;
-+ (struct CNPair *)contactsFoundAndNotFoundByPartioningContacts:(id)arg1 usingFoundContacts:(id)arg2;
++ (id)contactsFoundAndNotFoundByPartioningContacts:(id)arg1 usingFoundContacts:(id)arg2;
 + (id)refetchedContacts:(id)arg1 fromStore:(id)arg2 keysToFetch:(id)arg3;
 - (void).cxx_destruct;
 - (id)allContacts;

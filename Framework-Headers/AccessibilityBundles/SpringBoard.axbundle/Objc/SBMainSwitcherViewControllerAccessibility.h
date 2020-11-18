@@ -18,6 +18,7 @@
 - (id)_axFloatingSwitcherViewController;
 - (BOOL)_axIsMainSwitcherVisible;
 - (id)_axMainSwitcherViewController;
+- (void)_axNotifyNeedsFocusUpdateWhenEnabled:(unsigned long long)arg1;
 - (void)_axSetUpSwitcherViewControllers;
 - (void)_axSetUpWrapperViews;
 - (void)_loadContentViewControllerIfNecessary;

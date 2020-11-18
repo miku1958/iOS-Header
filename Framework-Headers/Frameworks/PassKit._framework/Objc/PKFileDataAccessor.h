@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKDataAccessor.h>
 
-@class NSLock, NSObject, NSURL, PKRemoteAssetManager;
+@class NSArray, NSLock, NSObject, NSURL, PKRemoteAssetManager;
 @protocol OS_dispatch_queue;
 
 @interface PKFileDataAccessor : PKDataAccessor
@@ -14,11 +14,14 @@
     NSLock *_remoteAssetManagerLock;
     BOOL _remoteAssetManagerAccessed;
     PKRemoteAssetManager *_remoteAssetManager;
+    NSArray *_seids;
+    BOOL _ownsFileURL;
     NSObject<OS_dispatch_queue> *_processingQueue;
     NSURL *_fileURL;
 }
 
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (nonatomic) BOOL ownsFileURL; // @synthesize ownsFileURL=_ownsFileURL;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 
 - (void).cxx_destruct;
@@ -29,6 +32,7 @@
 - (id)dataForBundleResource:(id)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
 - (id)dataForBundleResources:(id)arg1;
+- (void)dealloc;
 - (id)dictionary;
 - (void)dictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayProfileOfType:(long long)arg1;
@@ -41,8 +45,9 @@
 - (id)initWithFileURL:(id)arg1 error:(id *)arg2 processingQueue:(id)arg3;
 - (id)manifestHash;
 - (id)remoteAssetManager;
-- (BOOL)remoteAssetsDownloaded;
-- (BOOL)remoteAssetsDownloadedForScreenScale:(double)arg1 suffix:(id)arg2;
+- (id)remoteAssetManagerForSEIDs:(id)arg1;
+- (BOOL)remoteAssetsDownloadedForSEIDs:(id)arg1;
+- (BOOL)remoteAssetsDownloadedForScreenScale:(double)arg1 seids:(id)arg2 suffix:(id)arg3;
 - (id)resourceValueForKey:(id)arg1;
 - (void)revocationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)serializedFileWrapper;

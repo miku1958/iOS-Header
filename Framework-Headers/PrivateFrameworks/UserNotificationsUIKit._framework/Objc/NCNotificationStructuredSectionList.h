@@ -114,6 +114,7 @@
 - (double)headerViewHeightForNotificationList:(id)arg1;
 - (id)initWithTitle:(id)arg1;
 - (void)insertNotificationRequest:(id)arg1;
+- (BOOL)isViewVisibleForNotificationGroupList:(id)arg1;
 - (id)legibilitySettingsForSectionHeaderView:(id)arg1;
 - (void)mergeNotificationGroups:(id)arg1;
 - (void)modifyNotificationRequest:(id)arg1;

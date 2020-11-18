@@ -286,8 +286,8 @@ __attribute__((visibility("hidden")))
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 pointer:(void *)arg3 copyBytes:(BOOL)arg4 deallocator:(CDUnknownBlockType)arg5;
 - (id)newCommandQueueWithDescriptor:(id)arg1;
-- (id)newComputePipelineWithDescriptor:(id)arg1 variant:(struct NSObject *)arg2 errorMessage:(id *)arg3;
-- (struct NSObject *)newComputeVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
+- (id)newComputePipelineWithDescriptor:(id)arg1 variant:(id)arg2 errorMessage:(id *)arg3;
+- (id)newComputeVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
 - (id)newDepthStencilStateWithDescriptor:(id)arg1;
 - (id)newEvent;
 - (id)newFence;
@@ -311,7 +311,7 @@ __attribute__((visibility("hidden")))
 - (id)newTiledTextureWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 descriptor:(id)arg3 offset:(unsigned long long)arg4 bytesPerRow:(unsigned long long)arg5;
 - (id)newVertexVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
 - (CDStruct_04792461)pipelineFlagsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
-- (id)pipelinePerformanceStatisticsWithComputeVariant:(struct NSObject *)arg1 compileTimeOutput:(id)arg2;
+- (id)pipelinePerformanceStatisticsWithComputeVariant:(id)arg1 compileTimeOutput:(id)arg2;
 - (id)pipelinePerformanceStatisticsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2 vertexCompileTimeOutput:(id)arg3 fragmentCompileTimeOutput:(id)arg4;
 - (id)productName;
 - (unsigned int)registerCommandBuffer:(id)arg1;

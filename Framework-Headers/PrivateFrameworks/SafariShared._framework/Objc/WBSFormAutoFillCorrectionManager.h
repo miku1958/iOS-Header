@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 @class WBSFormAutoFillClassificationToCorrectionsTransformer;
-@protocol WBSFormAutoFillCorrectionManagerDelegate;
+@protocol WBSFormAutoFillCorrectionManagerDelegate, WBSFormAutoFillCorrectionsStore;
 
 @interface WBSFormAutoFillCorrectionManager : NSObject
 {
+    id<WBSFormAutoFillCorrectionsStore> _correctionsStore;
     WBSFormAutoFillClassificationToCorrectionsTransformer *_classificationToCorrectionsTransformer;
     id<WBSFormAutoFillCorrectionManagerDelegate> _delegate;
 }
@@ -18,10 +19,10 @@
 @property (weak, nonatomic) id<WBSFormAutoFillCorrectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (id)_correctionsStore;
 - (id)_feedbackProcessor;
 - (void)_setCorrections:(id)arg1 forFingerprint:(id)arg2 onDomain:(id)arg3;
 - (void)getCorrectionsForFormFieldFingerprint:(id)arg1 onDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithCorrectionsStore:(id)arg1;
 - (void)setCorrectionSet:(id)arg1;
 
 @end

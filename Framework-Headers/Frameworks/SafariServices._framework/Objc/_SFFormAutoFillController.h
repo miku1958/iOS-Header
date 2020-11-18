@@ -35,6 +35,7 @@
     _SFAutoFillInputView *_autoFillInputView;
     NSArray *_preservedLeadingBarButtonGroups;
     NSArray *_preservedTrailingBarButtonGroups;
+    BOOL _attemptedOfferingStreamlinedLogin;
     NSDictionary *_externalCredentialIdentitiesForStreamlinedAutoFill;
     BOOL _metadataCorrectionsEnabled;
     CNContact *_lastFilledContact;
@@ -62,6 +63,7 @@
 - (void)_authenticateForAutoFillForHighLevelDomain:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_beginAutomaticPasswordInteractionWithInputSession:(id)arg1 generatedPassword:(id)arg2 ignorePreviousDecision:(BOOL)arg3;
 - (void)_didFocusSensitiveFormField;
+- (void)_dismissKeyboardAndSimulateCarriageReturnKeyEvents:(BOOL)arg1;
 - (void)_fieldFocused:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3 inputSession:(id)arg4;
 - (void)_fieldFocusedWithInputSession:(id)arg1;
 - (void)_hideInputAssistantItemsIfNecessary;
@@ -71,7 +73,6 @@
 - (void)_removeUniqueIDsOfAutoFilledForm:(id)arg1;
 - (void)_restoreInputAssistantItemsIfNecessary;
 - (BOOL)_showingAutoFillInputView;
-- (void)_simulateCarriageReturnKeyEvents;
 - (id)_simulatedWebEventForReturnKeyWithType:(int)arg1;
 - (id)_websiteForAuthenticationPrompt;
 - (void)annotateForm:(long long)arg1 inFrame:(id)arg2 withValues:(id)arg3;

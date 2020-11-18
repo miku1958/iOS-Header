@@ -29,6 +29,7 @@
 - (unsigned long long)_relationConsideringUserPreferenceForRelation:(unsigned long long)arg1 isBlankTab:(BOOL)arg2;
 - (BOOL)_tab:(id)arg1 isRelatedOrEqualToTab:(id)arg2;
 - (id)_tabInsertionHintForNewBlankTabWithRecommendedPosition:(unsigned long long)arg1;
+- (id)_tabInsertionHintForNewTabAfterTab:(id)arg1 relation:(unsigned long long)arg2;
 - (id)_tabInsertionHintForPosition:(unsigned long long)arg1 isBlankTab:(BOOL)arg2;
 - (unsigned long long)_userPreferredNewBlankTabPositionInCurrentContext:(BOOL)arg1;
 - (unsigned long long)_userPreferredNewSpawnedTabPosition;

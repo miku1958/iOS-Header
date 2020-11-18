@@ -10,18 +10,24 @@
 
 @protocol AXBackBoardServerInstanceDelegate <NSObject>
 - (int)accessibilityAssistiveTouchPid;
+- (int)accessibilityFullKeyboardAccessDaemonPid;
 - (int)accessibilityUIServerPid;
 - (unsigned int)contextIdForDisplayPoint:(struct CGPoint)arg1;
 - (unsigned int)contextIdHosterForContextId:(unsigned int)arg1;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (void)enableEventTap:(BOOL)arg1 forApplication:(int)arg2;
+- (int)hearingAidServerPid;
 - (void)postEvent:(AXEventRepresentation *)arg1 systemEvent:(BOOL)arg2 afterNamedTap:(NSString *)arg3 namedTaps:(NSArray *)arg4;
 - (void)registerEventListener:(BOOL)arg1;
 - (void)setAccessibilityUIServerPid:(int)arg1;
 - (void)setAssistiveTouchPid:(int)arg1;
 - (void)setCapsLockLightOn:(BOOL)arg1;
 - (void)setDisableSystemGestureRecognitionInEvents:(BOOL)arg1;
+- (void)setFullKeyboardAccessDaemonPID:(int)arg1;
+- (void)setHearingAidServerPid:(int)arg1;
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setSiriViewServicePid:(int)arg1;
 - (void)userEventOccurred;

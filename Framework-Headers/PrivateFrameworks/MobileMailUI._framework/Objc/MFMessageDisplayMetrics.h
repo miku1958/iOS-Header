@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ConversationFooterViewDisplayMetrics, UITraitCollection;
+@class ConversationFooterViewDisplayMetrics, UITraitCollection, UIView;
 
 @interface MFMessageDisplayMetrics : NSObject
 {
@@ -19,6 +19,7 @@
     double _statusIndicatorVerticalSpacing;
     double _footerViewButtonsAnimationOffset;
     ConversationFooterViewDisplayMetrics *_footerViewDisplayMetrics;
+    UIView *_trailingButtonView;
     struct UIEdgeInsets _layoutMargins;
     struct UIEdgeInsets _safeAreaInsets;
 }
@@ -43,6 +44,7 @@
 @property (nonatomic) double footerViewButtonsAnimationOffset; // @synthesize footerViewButtonsAnimationOffset=_footerViewButtonsAnimationOffset;
 @property (strong, nonatomic) ConversationFooterViewDisplayMetrics *footerViewDisplayMetrics; // @synthesize footerViewDisplayMetrics=_footerViewDisplayMetrics;
 @property (readonly, nonatomic) double footerViewTopToBaseline;
+@property (readonly, nonatomic) double footerViewTrailingButtonOrigin;
 @property (readonly, nonatomic) BOOL hasCompactLayout;
 @property (readonly, nonatomic) BOOL hasGenerousMargins;
 @property (readonly, nonatomic) double headerBottomPadding; // @synthesize headerBottomPadding=_headerBottomPadding;
@@ -67,11 +69,13 @@
 @property (readonly, nonatomic) double topToSenderBaseline; // @synthesize topToSenderBaseline=_topToSenderBaseline;
 @property (readonly, nonatomic) double topToSenderBaselineInConversation;
 @property (readonly, nonatomic) double topToSenderBaselineInConversationForMailActionHeader;
+@property (strong, nonatomic) UIView *trailingButtonView; // @synthesize trailingButtonView=_trailingButtonView;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (readonly, nonatomic) BOOL usePhoneLandscapeSymbolConfiguration;
 
 + (double)avatarDiameter;
 + (id)displayMetricsWithTraitCollection:(id)arg1 layoutMargins:(struct UIEdgeInsets)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3 interfaceOrientation:(long long)arg4;
++ (id)displayMetricsWithTraitCollection:(id)arg1 layoutMargins:(struct UIEdgeInsets)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3 interfaceOrientation:(long long)arg4 trailingButtonView:(id)arg5;
 - (void).cxx_destruct;
 - (id)_cachedFontForStyle:(id)arg1;
 - (double)_calculateFooterViewButtonsAnimationOffset;

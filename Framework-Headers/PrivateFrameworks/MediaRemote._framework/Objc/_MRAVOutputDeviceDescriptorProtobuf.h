@@ -50,6 +50,7 @@
     BOOL _shouldForceRemoteControlabillity;
     BOOL _supportsBufferedAirPlay;
     BOOL _supportsExternalScreen;
+    BOOL _supportsHAP;
     struct {
         unsigned int batteryLevel:1;
         unsigned int deviceSubType:1;
@@ -78,6 +79,7 @@
         unsigned int shouldForceRemoteControlabillity:1;
         unsigned int supportsBufferedAirPlay:1;
         unsigned int supportsExternalScreen:1;
+        unsigned int supportsHAP:1;
     } _has;
 }
 
@@ -129,6 +131,7 @@
 @property (readonly, nonatomic) BOOL hasSourceInfo;
 @property (nonatomic) BOOL hasSupportsBufferedAirPlay;
 @property (nonatomic) BOOL hasSupportsExternalScreen;
+@property (nonatomic) BOOL hasSupportsHAP;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
 @property (nonatomic) BOOL hasVolume;
 @property (nonatomic) BOOL hasVolumeCapabilities;
@@ -154,6 +157,7 @@
 @property (strong, nonatomic) _MRAVOutputDeviceSourceInfoProtobuf *sourceInfo; // @synthesize sourceInfo=_sourceInfo;
 @property (nonatomic) BOOL supportsBufferedAirPlay; // @synthesize supportsBufferedAirPlay=_supportsBufferedAirPlay;
 @property (nonatomic) BOOL supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
+@property (nonatomic) BOOL supportsHAP; // @synthesize supportsHAP=_supportsHAP;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 @property (nonatomic) int volumeCapabilities; // @synthesize volumeCapabilities=_volumeCapabilities;

@@ -14,6 +14,7 @@
     BOOL _requestHistoricalAudioDataWithHostTime;
     BOOL _requestHistoricalAudioDataSampleCount;
     BOOL _useOpportunisticZLL;
+    BOOL _skipAlertBehavior;
     unsigned long long _startRecordingHostTime;
     unsigned long long _startRecordingSampleCount;
     long long _startAlertBehavior;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) NSString *localizedDescription;
 @property (nonatomic) BOOL requestHistoricalAudioDataSampleCount; // @synthesize requestHistoricalAudioDataSampleCount=_requestHistoricalAudioDataSampleCount;
 @property (nonatomic) BOOL requestHistoricalAudioDataWithHostTime; // @synthesize requestHistoricalAudioDataWithHostTime=_requestHistoricalAudioDataWithHostTime;
+@property (nonatomic) BOOL skipAlertBehavior; // @synthesize skipAlertBehavior=_skipAlertBehavior;
 @property (nonatomic) long long startAlertBehavior; // @synthesize startAlertBehavior=_startAlertBehavior;
 @property (nonatomic) unsigned long long startRecordingHostTime; // @synthesize startRecordingHostTime=_startRecordingHostTime;
 @property (nonatomic) unsigned long long startRecordingSampleCount; // @synthesize startRecordingSampleCount=_startRecordingSampleCount;
@@ -32,7 +34,7 @@
 @property (nonatomic) BOOL useOpportunisticZLL; // @synthesize useOpportunisticZLL=_useOpportunisticZLL;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcObject;
 
-+ (id)mutedOption;
++ (id)noAlertOption;
 - (long long)_alertBehaviorTypeFromAVVCOberrideType:(long long)arg1;
 - (long long)_avvcAlertOverrideType:(long long)arg1;
 - (id)avvcAlertBehavior;

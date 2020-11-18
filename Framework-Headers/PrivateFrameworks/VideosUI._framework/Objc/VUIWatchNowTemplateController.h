@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAdjustForTabBarSafeAreaInsets;
 - (void)showcaseFactorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateWithViewElement:(id)arg1;
 - (void)viewDidLoad;
 
 @end

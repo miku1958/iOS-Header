@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axDidDismissPIP;
 - (void)_axTagSBInteractionPassThroughView;
 - (void)_createWindowAndRootViewControllerIfNeeded;
 - (void)_destroyWindowAndRootViewControllerIfPossible;

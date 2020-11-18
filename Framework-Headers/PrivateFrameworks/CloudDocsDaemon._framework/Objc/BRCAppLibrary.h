@@ -100,8 +100,8 @@ __attribute__((visibility("hidden")))
 - (void)_removeTargetSharedServerZoneForSharedServerZone:(id)arg1;
 - (void)_removedAliasItemForTargetAppLibrary:(id)arg1;
 - (void)_resolveTargetAppLibrariesAndSharedClientZones;
-- (struct PQLResultSet *)_targetAppLibrariesEnumerator;
-- (struct PQLResultSet *)_targetSharedServerZonesEnumerator;
+- (id)_targetAppLibrariesEnumerator;
+- (id)_targetSharedServerZonesEnumerator;
 - (id)_unwrappedDescriptionWithContext:(id)arg1;
 - (void)_updateContainerMetadataFromRecord:(id)arg1 stripIcons:(BOOL)arg2;
 - (void)_updateIsInCloudDocsZone;
@@ -131,10 +131,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)documentCountWithDB:(id)arg1;
 - (unsigned long long)documentSizeUsageWithDB:(id)arg1;
 - (id)documentsFolderItemID;
-- (struct PQLResultSet *)enumerateUserVisibleChildrenDirectoriesOfItemGlobalID:(id)arg1 db:(id)arg2;
-- (struct PQLResultSet *)enumerateUserVisibleChildrenOfItemGlobalID:(id)arg1 sortOrder:(unsigned char)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 db:(id)arg5;
-- (struct BRCDirectoryItem *)fetchRootItem;
-- (struct BRCDirectoryItem *)fetchRootItemInDB:(id)arg1;
+- (id)enumerateUserVisibleChildrenDirectoriesOfItemGlobalID:(id)arg1 db:(id)arg2;
+- (id)enumerateUserVisibleChildrenOfItemGlobalID:(id)arg1 sortOrder:(unsigned char)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 db:(id)arg5;
+- (id)fetchRootItem;
+- (id)fetchRootItemInDB:(id)arg1;
 - (void)freeFileCoordinationSlotsAfterDelayForRead:(BOOL)arg1;
 - (void)fsrootDidMoveToPath:(id)arg1;
 - (BOOL)hasDocumentsOrDirectory;
@@ -157,9 +157,9 @@ __attribute__((visibility("hidden")))
 - (id)itemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemIDByRowID:(unsigned long long)arg1;
 - (id)itemIDByRowID:(unsigned long long)arg1 db:(id)arg2;
-- (struct PQLResultSet *)itemsEnumeratorChildOf:(id)arg1 withDeadItems:(BOOL)arg2 rankMin:(unsigned long long)arg3 rankMax:(unsigned long long)arg4 count:(unsigned long long)arg5 db:(id)arg6;
-- (struct PQLResultSet *)itemsEnumeratorWithRankMin:(unsigned long long)arg1 rankMax:(unsigned long long)arg2 namePrefix:(id)arg3 withDeadItems:(BOOL)arg4 shouldIncludeFolders:(BOOL)arg5 shouldIncludeOnlyFolders:(BOOL)arg6 shouldIncludeDocumentsScope:(BOOL)arg7 shouldIncludeDataScope:(BOOL)arg8 shouldIncludeExternalScope:(BOOL)arg9 shouldIncludeTrashScope:(BOOL)arg10 count:(unsigned long long)arg11 db:(id)arg12;
-- (struct PQLResultSet *)liveAliasesEnumeratorTargetingThisAppLibrary;
+- (id)itemsEnumeratorChildOf:(id)arg1 withDeadItems:(BOOL)arg2 rankMin:(unsigned long long)arg3 rankMax:(unsigned long long)arg4 count:(unsigned long long)arg5 db:(id)arg6;
+- (id)itemsEnumeratorWithRankMin:(unsigned long long)arg1 rankMax:(unsigned long long)arg2 namePrefix:(id)arg3 withDeadItems:(BOOL)arg4 shouldIncludeFolders:(BOOL)arg5 shouldIncludeOnlyFolders:(BOOL)arg6 shouldIncludeDocumentsScope:(BOOL)arg7 shouldIncludeDataScope:(BOOL)arg8 shouldIncludeExternalScope:(BOOL)arg9 shouldIncludeTrashScope:(BOOL)arg10 count:(unsigned long long)arg11 db:(id)arg12;
+- (id)liveAliasesEnumeratorTargetingThisAppLibrary;
 - (BOOL)markChildrenLostForItemID:(id)arg1 inZone:(id)arg2 fileID:(id)arg3;
 - (BOOL)markChildrenLostForItemID:(id)arg1 inZone:(id)arg2 fileID:(id)arg3 startingFromRow:(unsigned long long)arg4 hasMoreWork:(BOOL *)arg5;
 - (void)notifyClient:(id)arg1 whenFaultingIsDone:(CDUnknownBlockType)arg2;

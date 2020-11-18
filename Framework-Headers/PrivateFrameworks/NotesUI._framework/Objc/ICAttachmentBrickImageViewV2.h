@@ -11,7 +11,7 @@
 @interface ICAttachmentBrickImageViewV2 : UIView
 {
     BOOL _transparentBackground;
-    struct UIImage *_image;
+    UIImage *_image;
     unsigned long long _imageScaling;
     CALayer *_imageLayer;
 }

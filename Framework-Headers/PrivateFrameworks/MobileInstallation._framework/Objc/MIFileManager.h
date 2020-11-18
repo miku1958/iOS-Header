@@ -37,6 +37,7 @@
 - (unsigned long long)diskUsageForURL:(id)arg1;
 - (id)enumerateURLsForItemsInDirectoryAtURL:(id)arg1 ignoreSymlinks:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)extendedAttributesFromURL:(id)arg1 error:(id *)arg2;
+- (id)insecureCachedAppIdentifierIfValidatedByFreeProfileForBundle:(id)arg1 error:(id *)arg2;
 - (id)installTypeForBundle:(id)arg1 error:(id *)arg2;
 - (BOOL)itemDoesNotExistAtURL:(id)arg1;
 - (BOOL)itemExistsAtURL:(id)arg1;
@@ -51,6 +52,7 @@
 - (BOOL)setOwnerOfURL:(id)arg1 toUID:(unsigned int)arg2 gid:(unsigned int)arg3 error:(id *)arg4;
 - (BOOL)setPermissionsForURL:(id)arg1 toMode:(unsigned short)arg2 error:(id *)arg3;
 - (BOOL)setUniqueInstallID:(id)arg1 onBundle:(id)arg2 error:(id *)arg3;
+- (BOOL)setValidatedByFreeProfileAppIdentifier:(id)arg1 insecurelyCachedOnBundle:(id)arg2 error:(id *)arg3;
 - (BOOL)stageURL:(id)arg1 toItemName:(id)arg2 inStagingDir:(id)arg3 stagingMode:(int)arg4 settingUID:(unsigned int)arg5 gid:(unsigned int)arg6 hasSymlink:(BOOL *)arg7 error:(id *)arg8;
 - (BOOL)standardizeOwnershipAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 removeACLs:(BOOL)arg4 setProtectionClass:(BOOL)arg5 foundSymlink:(BOOL *)arg6 error:(id *)arg7;
 - (id)uniqueInstallIDForBundle:(id)arg1 error:(id *)arg2;

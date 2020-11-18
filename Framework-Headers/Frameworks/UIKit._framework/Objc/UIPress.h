@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UIResponderForwardable-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIResponder, UIWindow;
+@class NSArray, NSMutableArray, NSString, UIKey, UIResponder, UIWindow;
 
 @interface UIPress : NSObject <_UIResponderForwardable>
 {
@@ -25,6 +25,7 @@
     UIWindow *_window;
     UIResponder *_responder;
     double _force;
+    UIKey *_key;
     unsigned long long _source;
     unsigned long long _gameControllerComponent;
     unsigned long long _clickCount;
@@ -41,6 +42,7 @@
 @property (copy, nonatomic) NSArray *gestureRecognizers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isDelayed; // @synthesize isDelayed=_isDelayed;
+@property (strong, nonatomic) UIKey *key; // @synthesize key=_key;
 @property (nonatomic, getter=isLongClick) BOOL longClick; // @synthesize longClick=_longClick;
 @property (nonatomic) long long phase; // @synthesize phase=_phase;
 @property (strong, nonatomic) UIResponder *responder; // @synthesize responder=_responder;

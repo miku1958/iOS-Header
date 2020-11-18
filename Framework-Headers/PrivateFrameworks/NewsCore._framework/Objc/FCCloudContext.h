@@ -41,6 +41,7 @@
     id<FCFlintHelper> _flintHelper;
     id<FCBackgroundTaskable> _backgroundTaskable;
     id<FCForYouMagazineFeedManaging> _forYouMagazineFeedManager;
+    CDUnknownBlockType _forYouPluginGroupManagingProvider;
     id<FCForYouPluginGroupManaging> _forYouPluginGroupManager;
     id<FCForYouBridgedConfigurationParser> _forYouBridgedConfigurationParser;
     id<FCPPTContext> _pptContext;
@@ -75,6 +76,7 @@
 @property (strong, nonatomic) id<FCForYouBridgedConfigurationParser> forYouBridgedConfigurationParser; // @synthesize forYouBridgedConfigurationParser=_forYouBridgedConfigurationParser;
 @property (weak, nonatomic) id<FCForYouMagazineFeedManaging> forYouMagazineFeedManager; // @synthesize forYouMagazineFeedManager=_forYouMagazineFeedManager;
 @property (weak, nonatomic) id<FCForYouPluginGroupManaging> forYouPluginGroupManager; // @synthesize forYouPluginGroupManager=_forYouPluginGroupManager;
+@property (copy, nonatomic) CDUnknownBlockType forYouPluginGroupManagingProvider; // @synthesize forYouPluginGroupManagingProvider=_forYouPluginGroupManagingProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<FCContentContextInternal> internalContentContext;
 @property (readonly, nonatomic) id<FCPrivateDataContextInternal> internalPrivateDataContext;

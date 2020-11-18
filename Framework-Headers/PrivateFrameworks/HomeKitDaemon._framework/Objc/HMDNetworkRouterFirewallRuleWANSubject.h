@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
 - (id)initWithHostnames:(id)arg1 addresses:(id)arg2 addressRange:(id)arg3;
-- (struct NSDictionary *)prettyJSONDictionary;
+- (id)prettyJSONDictionary;
 
 @end
 

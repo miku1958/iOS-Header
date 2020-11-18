@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _disableLoadURLMetrics;
     BOOL _knownToBeTrusted;
+    BOOL _remoteSecuritySigningEnabled;
     BOOL _disableResponseDecoding;
     BOOL _shouldSetCookiesFromResponse;
     BOOL _shouldSetStorefrontFromResponse;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
 @property (nonatomic) long long mescalType; // @synthesize mescalType=_mescalType;
 @property (strong, nonatomic) AMSPurchaseContext *purchaseContext; // @synthesize purchaseContext=_purchaseContext;
+@property (nonatomic) BOOL remoteSecuritySigningEnabled; // @synthesize remoteSecuritySigningEnabled=_remoteSecuritySigningEnabled;
 @property (strong, nonatomic) id<AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
 @property (nonatomic) long long reversePushType; // @synthesize reversePushType=_reversePushType;
 @property (nonatomic) BOOL shouldSetCookiesFromResponse; // @synthesize shouldSetCookiesFromResponse=_shouldSetCookiesFromResponse;

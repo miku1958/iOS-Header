@@ -48,6 +48,8 @@
 - (id)initWithOriginalRequest:(id)arg1 ident:(unsigned long long)arg2 taskGroup:(id)arg3;
 - (id)initWithTaskInfo:(id)arg1 taskGroup:(id)arg2 ident:(unsigned long long)arg3;
 - (void)setTaskDescription:(id)arg1;
+- (void)set_TLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
+- (void)set_TLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_discretionaryOverride:(long long)arg1;
 
 @end

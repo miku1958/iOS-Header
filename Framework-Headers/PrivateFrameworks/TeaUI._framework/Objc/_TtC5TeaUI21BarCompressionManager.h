@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaUI/UICollectionViewDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC5TeaUI21BarCompressionManager : NSObject <UICollectionViewDelegate>
+@interface _TtC5TeaUI21BarCompressionManager : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *scrollView;

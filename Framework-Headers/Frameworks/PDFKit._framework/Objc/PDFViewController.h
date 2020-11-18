@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)highlight:(id)arg1;
 - (id)initWithView:(id)arg1;
 - (void)interactWithAnnotation:(id)arg1;
+- (BOOL)isUpdatingSelectionMarkups;
 - (void)markupMenuController:(id)arg1 setMarkupStyle:(unsigned long long)arg2;
 - (void)markupMenuControllerDeleteAnnotation:(id)arg1;
 - (void)markupMenuControllerDidHide:(id)arg1;

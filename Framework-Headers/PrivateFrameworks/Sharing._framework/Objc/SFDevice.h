@@ -28,6 +28,7 @@
     unsigned char _osVersion;
     BOOL _paired;
     BOOL _testMode;
+    int _audioRoutingScore;
     unsigned int _deviceFlags;
     unsigned int _hotspotInfo;
     unsigned int _systemPairState;
@@ -49,6 +50,7 @@
 }
 
 @property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
+@property (nonatomic) int audioRoutingScore; // @synthesize audioRoutingScore=_audioRoutingScore;
 @property (nonatomic) BOOL autoUnlockEnabled; // @synthesize autoUnlockEnabled=_autoUnlockEnabled;
 @property (nonatomic) BOOL autoUnlockWatch; // @synthesize autoUnlockWatch=_autoUnlockWatch;
 @property (copy, nonatomic) NSArray *batteryInfo; // @synthesize batteryInfo=_batteryInfo;

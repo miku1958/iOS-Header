@@ -28,10 +28,10 @@
 - (void).cxx_destruct;
 - (void)_updateDirectionIfNeeded;
 - (struct ISVisibilityRange)_visibilityRangeForRect:(struct CGRect)arg1;
-- (struct CGRect)boundsForView:(struct NSObject *)arg1 inScrollView:(struct NSObject *)arg2;
+- (struct CGRect)boundsForView:(id)arg1 inScrollView:(id)arg2;
 - (void)computeVisibilityOffsetsInScrollView:(id)arg1 withTargetContentOffset:(struct CGPoint)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)getVisibility:(BOOL *)arg1 offset:(double *)arg2 targetVisibilityOffset:(double *)arg3 forView:(struct NSObject *)arg4;
-- (struct CGRect)visibleRectForScrollView:(struct NSObject *)arg1;
+- (void)getVisibility:(BOOL *)arg1 offset:(double *)arg2 targetVisibilityOffset:(double *)arg3 forView:(id)arg4;
+- (struct CGRect)visibleRectForScrollView:(id)arg1;
 
 @end
 

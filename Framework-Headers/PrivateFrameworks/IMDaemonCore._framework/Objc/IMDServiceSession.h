@@ -136,6 +136,7 @@
 - (void)_processPotentialNetworkChange;
 - (void)_reconnectIfNecessary;
 - (void)_reconnectIfNecessaryWithAccount:(id)arg1;
+- (void)_removeChatGuidFromCoreDuet:(id)arg1;
 - (void)_routingTimerFired;
 - (void)_setAutoReconnectTimer;
 - (void)_setPendingConnectionMonitorUpdate;
@@ -384,6 +385,7 @@
 - (void)setRegistrationStatus:(int)arg1 error:(int)arg2 alertInfo:(id)arg3;
 - (void)setValue:(id)arg1 ofProperty:(id)arg2 ofPerson:(id)arg3;
 - (BOOL)shouldImitateGroupChatUsingChatRooms;
+- (Class)spotlightItemRecorderClass;
 - (void)startWatchingBuddy:(id)arg1;
 - (void)stopWatchingBuddy:(id)arg1;
 - (void)systemDidUnlock;

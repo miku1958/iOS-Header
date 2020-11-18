@@ -18,10 +18,13 @@ __attribute__((visibility("hidden")))
 
 + (id)allMigrationKeysOrdered;
 + (id)documentSharesMigrationKey;
++ (id)folderShareAliasesMigrationKey;
 + (id)folderSharesMigrationKey;
 - (void).cxx_destruct;
+- (void)_performAfterQueryingForShareAliasesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performAfterQueryingForShareIDsOfFolders:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_performQuery:(id)arg1 recordFetchedBlock:(CDUnknownBlockType)arg2 cursorUpdatedBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_performQuery:(id)arg1 recordFetchedBlock:(CDUnknownBlockType)arg2 cursorUpdatedBlock:(CDUnknownBlockType)arg3 desiredKeys:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)_saveFetchedRecords:(id)arg1 cursor:(id)arg2 error:(id *)arg3;
 - (BOOL)_updatedContinuationCursor:(id)arg1 error:(id *)arg2;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithServerZone:(id)arg1 migrationKey:(id)arg2 continuationCursor:(id)arg3;

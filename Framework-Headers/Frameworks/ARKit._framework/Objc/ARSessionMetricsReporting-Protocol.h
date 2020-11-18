@@ -9,8 +9,7 @@
 @class NSString;
 
 @protocol ARSessionMetricsReporting <NSObject>
-- (void)addValue:(long long)arg1 forScalarKey:(NSString *)arg2;
 - (void)postDarwinNotification:(NSString *)arg1;
-- (void)pushValue:(double)arg1 forDistributionKey:(NSString *)arg2;
+- (void)sendEvent:(NSString *)arg1 dictionary:(NSDictionary * (^)(void))arg2;
 @end
 

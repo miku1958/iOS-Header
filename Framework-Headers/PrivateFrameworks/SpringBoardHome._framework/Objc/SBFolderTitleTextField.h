@@ -29,6 +29,7 @@
 - (struct CGRect)_textRectForBounds:(struct CGRect)arg1;
 - (void)_updateLegibility;
 - (struct CGRect)clearButtonRectForBounds:(struct CGRect)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setShowsEditUI:(BOOL)arg1 animated:(BOOL)arg2;

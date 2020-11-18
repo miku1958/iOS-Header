@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PUTrimToolControllerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSMutableArray, NSString, PUTrimToolController, UIButton, UILabel, UIView, _UIBackdropView;
+@class NSLayoutConstraint, NSMutableArray, NSString, PUTrimToolController, PXUIButton, UIButton, UILabel, UIView, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditLivePhotoVideoToolController : PUPhotoEditToolController <PUTrimToolControllerDelegate>
@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_trailingWidthConstraint;
     NSMutableArray *_constraints;
     PUTrimToolController *_trimController;
-    UIButton *_muteLivePhotoButton;
-    UIButton *_livePhotoButton;
+    PXUIButton *_muteLivePhotoButton;
+    PXUIButton *_livePhotoButton;
     UILabel *_videoLabelView;
     BOOL _trimControllerVisible;
     BOOL _viewHasAppeared;

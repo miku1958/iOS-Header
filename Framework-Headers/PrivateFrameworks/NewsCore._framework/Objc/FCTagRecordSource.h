@@ -18,6 +18,7 @@
 
 + (id)defaultCachePolicy;
 - (void).cxx_destruct;
+- (id)alwaysLocalizedKeys;
 - (id)experimentalizableKeys;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 desiredTagRecordFieldOptions:(unsigned long long)arg3;

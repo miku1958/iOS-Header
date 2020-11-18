@@ -26,6 +26,10 @@
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (void)_sf_sceneDidBecomeActive:(id)arg1;
+- (void)_sf_sceneDidEnterBackground:(id)arg1;
+- (void)_sf_sceneWillEnterForeground:(id)arg1;
+- (void)_sf_sceneWillResignActive:(id)arg1;
 - (void)didChangeFullScreen:(BOOL)arg1;
 - (void)didChangeLoadingState:(BOOL)arg1;
 - (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(BOOL)arg2;

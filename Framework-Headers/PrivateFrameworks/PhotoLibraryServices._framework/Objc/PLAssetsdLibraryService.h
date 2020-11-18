@@ -42,7 +42,7 @@
 - (void)publishRemoteChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)recoverFromCrashIfNeeded;
 - (void)repairSingletonObjectsWithReply:(CDUnknownBlockType)arg1;
-- (void)shutdownPhotoLibraryDatabaseWithReply:(CDUnknownBlockType)arg1;
+- (id)sandboxExtensionsByPath;
 - (void)updateThumbnailsForPhotos:(id)arg1 assignNewIndex:(BOOL)arg2 forceRefresh:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)upgradePhotoLibraryDatabaseWithOptions:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 

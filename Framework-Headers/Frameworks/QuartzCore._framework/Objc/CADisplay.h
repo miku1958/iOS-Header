@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) NSArray *availableModes;
 @property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, nonatomic, getter=isCloned) BOOL cloned;
+@property (readonly, nonatomic, getter=isCloning) BOOL cloning;
 @property (readonly, nonatomic, getter=isCloningSupported) BOOL cloningSupported;
 @property (copy, nonatomic) NSString *colorMode;
 @property (readonly, nonatomic) unsigned int connectionSeed;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) NSString *currentOrientation;
 @property (readonly, nonatomic) NSString *deviceName;
 @property (readonly, nonatomic) unsigned int displayId;
+@property (readonly, nonatomic) long long displayType;
 @property (readonly, nonatomic, getter=isExternal) BOOL external;
 @property (readonly, nonatomic) CADisplayAttributes *externalDisplayAttributes;
 @property (readonly, nonatomic) struct CGRect frame;

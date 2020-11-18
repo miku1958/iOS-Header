@@ -73,16 +73,17 @@
 - (void)sdk_createPlaylistWithPersistentID:(long long)arg1 properties:(NSDictionary *)arg2 trackList:(ICCloudItemIDList *)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(unsigned long long, NSError *))arg5;
 - (void)setAlbumProperties:(NSDictionary *)arg1 forAlbumPersistentID:(long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setCloudAddToPlaylistBehavior:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)setConnectionConfiguration:(ICConnectionConfiguration *)arg1 preferredVideoQuality:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setItemProperties:(NSDictionary *)arg1 forPurchaseHistoryID:(unsigned long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setItemProperties:(NSDictionary *)arg1 forSagaID:(unsigned long long)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setJaliscoGeniusCUID:(NSString *)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setPlaylistProperties:(NSDictionary *)arg1 trackList:(ICCloudItemIDList *)arg2 forPlaylistPersistentID:(long long)arg3 configuration:(ICConnectionConfiguration *)arg4 completion:(void (^)(NSError *))arg5;
+- (void)setPreferredVideoQuality:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setupInitialJaliscoPoolingForConfiguration:(ICConnectionConfiguration *)arg1;
 - (void)setupInitialSagaPoolingForConfiguration:(ICConnectionConfiguration *)arg1;
 - (void)updateArtistHeroImagesForConfiguration:(ICConnectionConfiguration *)arg1;
 - (void)updateJaliscoGeniusDataForConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateJaliscoLibraryWithReason:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)updatePinnedSubscribedPlaylistsWithConfiguration:(ICConnectionConfiguration *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateSagaLibraryWithReason:(long long)arg1 forConfiguration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)updateSubscribedPlaylistsWithSagaIDs:(NSArray *)arg1 ignoreMinRefreshInterval:(BOOL)arg2 configuration:(ICConnectionConfiguration *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)uploadArtworkForPlaylistWithPersistentID:(long long)arg1 configuration:(ICConnectionConfiguration *)arg2 completion:(void (^)(NSError *))arg3;

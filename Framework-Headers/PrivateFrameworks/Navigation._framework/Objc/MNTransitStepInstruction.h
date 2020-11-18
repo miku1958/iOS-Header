@@ -11,16 +11,16 @@
 @interface MNTransitStepInstruction : MNTransitInstruction
 {
     GEOComposedRouteStep *_step;
-    struct NSDictionary *_overridenInstructionsMapping;
+    NSDictionary *_overridenInstructionsMapping;
 }
 
 @property (readonly, nonatomic) NSDictionary *overridenInstructionsMapping; // @synthesize overridenInstructionsMapping=_overridenInstructionsMapping;
 @property (readonly, nonatomic) GEOComposedRouteStep *step; // @synthesize step=_step;
 
 + (id)instructionForStep:(id)arg1 context:(long long)arg2;
-+ (id)instructionForStep:(id)arg1 overrides:(struct NSDictionary *)arg2 context:(long long)arg3;
++ (id)instructionForStep:(id)arg1 overrides:(id)arg2 context:(long long)arg3;
 - (void).cxx_destruct;
-- (id)initWithStep:(id)arg1 overrides:(struct NSDictionary *)arg2 context:(long long)arg3;
+- (id)initWithStep:(id)arg1 overrides:(id)arg2 context:(long long)arg3;
 - (id)instructionSet;
 
 @end

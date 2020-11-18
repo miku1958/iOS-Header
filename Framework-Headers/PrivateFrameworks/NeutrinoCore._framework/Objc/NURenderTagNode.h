@@ -24,7 +24,7 @@
 - (id)_evaluateImageGeometry:(out id *)arg1;
 - (id)descriptionSubClassHook;
 - (id)initWithInput:(id)arg1 name:(id)arg2;
-- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
+- (id)initWithSettings:(id)arg1 inputs:(id)arg2;
 - (id)nodeByReplayingAgainstCache:(id)arg1 pipelineState:(id)arg2 error:(out id *)arg3;
 
 @end

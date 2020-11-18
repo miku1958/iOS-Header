@@ -9,11 +9,12 @@
 #import <PassKitCore/PDCloudStoreNotificationCoordinatorObserver-Protocol.h>
 #import <PassKitCore/PDPushNotificationConsumer-Protocol.h>
 #import <PassKitCore/PDScheduledActivityClient-Protocol.h>
+#import <PassKitCore/PKPeerPaymentRegistrationDelegate-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSString, PDAssertionManager, PDCloudStoreNotificationCoordinator, PDPeerPaymentWebServiceArchiver, PDPushNotificationManager, PDUserNotificationManager, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentWebService;
+@class NSHashTable, NSMutableArray, NSString, PDAssertionManager, PDCloudStoreNotificationCoordinator, PDDeviceRegistrationServiceCoordinator, PDPeerPaymentWebServiceArchiver, PDPushNotificationManager, PDUserNotificationManager, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentWebService;
 @protocol OS_dispatch_queue, PDPeerPaymentWebServiceCoordinatorDataSource, PDWebServiceCoordinatorPassStore;
 
-@interface PDPeerPaymentWebServiceCoordinator : NSObject <PDPushNotificationConsumer, PDScheduledActivityClient, PDCloudStoreNotificationCoordinatorObserver>
+@interface PDPeerPaymentWebServiceCoordinator : NSObject <PDPushNotificationConsumer, PDScheduledActivityClient, PDCloudStoreNotificationCoordinatorObserver, PKPeerPaymentRegistrationDelegate>
 {
     PDPushNotificationManager *_pushNotificationManager;
     NSObject<OS_dispatch_queue> *_sharedPeerPaymentWebServiceQueue;
@@ -32,12 +33,14 @@
     struct os_unfair_lock_s _lockObservers;
     NSHashTable *_observers;
     PDCloudStoreNotificationCoordinator *_cloudStoreNotificationCoordinator;
+    PDDeviceRegistrationServiceCoordinator *_deviceRegistrationCoordinator;
     PKPaymentWebService *_paymentWebService;
 }
 
 @property (strong, nonatomic) PDCloudStoreNotificationCoordinator *cloudStoreNotificationCoordinator; // @synthesize cloudStoreNotificationCoordinator=_cloudStoreNotificationCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PDDeviceRegistrationServiceCoordinator *deviceRegistrationCoordinator; // @synthesize deviceRegistrationCoordinator=_deviceRegistrationCoordinator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKPaymentWebService *paymentWebService; // @synthesize paymentWebService=_paymentWebService;
 @property (readonly, nonatomic) PKPeerPaymentWebService *sharedPeerPaymentWebService;
@@ -58,7 +61,6 @@
 - (BOOL)_peerPaymentPassExists;
 - (void)_performPeerPaymentPassDownloadActivity;
 - (void)_performPeerPaymentReregisterActivityForReason:(id)arg1;
-- (void)_registerWithPeerPaymentWebService:(id)arg1 registerURL:(id)arg2 pushToken:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_schedulePeerPaymentCoordinatorActivities;
 - (void)_schedulePeerPaymentReregisterActivityForReason:(id)arg1;
 - (BOOL)_shouldAttemptBackgroundPeerPaymentPassDownload;
@@ -68,7 +70,7 @@
 - (void)accountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)applyPushNotificationToken:(id)arg1;
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
-- (void)cloudStoreNotificationCoordinator:(id)arg1 createdZoneWithName:(id)arg2;
+- (void)cloudStoreNotificationCoordinator:(id)arg1 createdZoneWithName:(id)arg2 forContainerName:(id)arg3;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteAccountWithCompletion:(CDUnknownBlockType)arg1;
@@ -84,6 +86,7 @@
 - (id)initWithPushNotificationManager:(id)arg1 paymentWebService:(id)arg2 assertionManager:(id)arg3 userNotificationManager:(id)arg4 dataSource:(id)arg5 passStore:(id)arg6;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
+- (void)peformDeviceWithRegistrationURL:(id)arg1 pushToken:(id)arg2 forceReregister:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2;
 - (id)pushNotificationTopics;
 - (void)receivedPeerPaymentMessage:(id)arg1;

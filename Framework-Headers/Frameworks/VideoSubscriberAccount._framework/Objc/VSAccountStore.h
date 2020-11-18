@@ -35,7 +35,7 @@
 
 + (Class)accountClass;
 - (void).cxx_destruct;
-- (id)_accountForKeychainItem:(id)arg1;
+- (id)_accountForKeychainItem:(id)arg1 simulateExpiredToken:(BOOL)arg2;
 - (void)_insertAccount:(id)arg1 inContext:(id)arg2;
 - (id)_keychainItemsWithLimit:(unsigned long long)arg1;
 - (void)_sendLocalNotification;

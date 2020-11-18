@@ -24,6 +24,7 @@
     NSArray *_feedItems;
     NSDictionary *_resultTodayItemsBySectionDescriptor;
     NSDictionary *_resultAssetFileURLsByRemoteURL;
+    NSObject *_resultRecordsHoldToken;
     NSObject *_resultAssetsHoldToken;
 }
 
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) id<NTTodayResultOperationInfoProviding> operationInfo; // @synthesize operationInfo=_operationInfo;
 @property (strong, nonatomic) NSDictionary *resultAssetFileURLsByRemoteURL; // @synthesize resultAssetFileURLsByRemoteURL=_resultAssetFileURLsByRemoteURL;
 @property (strong, nonatomic) NSObject *resultAssetsHoldToken; // @synthesize resultAssetsHoldToken=_resultAssetsHoldToken;
+@property (strong, nonatomic) NSObject *resultRecordsHoldToken; // @synthesize resultRecordsHoldToken=_resultRecordsHoldToken;
 @property (strong, nonatomic) NSDictionary *resultTodayItemsBySectionDescriptor; // @synthesize resultTodayItemsBySectionDescriptor=_resultTodayItemsBySectionDescriptor;
 @property (copy, nonatomic) NSDictionary *slotAllocationByDynamicSlotItemID; // @synthesize slotAllocationByDynamicSlotItemID=_slotAllocationByDynamicSlotItemID;
 @property (strong, nonatomic) id<FCTodayPrivateData> todayData; // @synthesize todayData=_todayData;

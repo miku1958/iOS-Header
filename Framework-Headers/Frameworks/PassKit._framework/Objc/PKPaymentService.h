@@ -9,7 +9,7 @@
 #import <PassKitCore/PKPaymentServiceExportedInterface-Protocol.h>
 #import <PassKitCore/PKXPCServiceDelegate-Protocol.h>
 
-@class NSString, PKExpressTransactionState, PKFieldProperties, PKPaymentWebServiceContext, PKXPCService;
+@class NSMutableArray, NSString, PKExpressTransactionState, PKFieldProperties, PKPaymentWebServiceContext, PKXPCService;
 @protocol PKPaymentServiceDelegate;
 
 @interface PKPaymentService : NSObject <PKXPCServiceDelegate, PKPaymentServiceExportedInterface>
@@ -19,6 +19,8 @@
     _Atomic BOOL _cachedFieldPropertiesValid;
     BOOL _hasPaymentDeviceFieldProperties;
     BOOL _forceConnectionOnResume;
+    struct os_unfair_lock_s _pendingInvitationRequestsLock;
+    NSMutableArray *_pendingInvitationRequests;
     id<PKPaymentServiceDelegate> _delegate;
 }
 
@@ -50,6 +52,10 @@
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)accountAttestationAnonymizationSaltWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addPlaceholderPassWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addSharingInvitationReceipts:(id)arg1 onCredentialWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addSubcredential:(id)arg1 fromSharingInvitation:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)approvedTransactionsForPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 limit:(long long)arg6;
 - (void)approvedTransactionsForPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 limit:(long long)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)archiveMessageWithIdentifier:(id)arg1;
@@ -58,9 +64,11 @@
 - (void)cashbackByPeriodFromPassUniqueIdentifier:(id)arg1 withStartDate:(id)arg2 endDate:(id)arg3 calendar:(id)arg4 calendarUnit:(unsigned long long)arg5 type:(long long)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)categoryVisualizationMagnitudesForPassUniqueID:(id)arg1;
 - (void)categoryVisualizationMagnitudesForPassUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)commutePlanReminderForCommputePlan:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)conflictingExpressPassIdentifiersForPassInformation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)conflictingExpressPassIdentifiersForPassInformation:(id)arg1 withReferenceExpressState:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)consistencyCheck;
+- (void)credentialWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)defaultExpressFelicaTransitPassIdentifier;
 - (id)defaultExpressTransitPassIdentifier;
@@ -69,6 +77,11 @@
 - (void)deleteAllTransactionsForPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)deleteMessagesForPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)deletePaymentTransactionWithIdentifier:(id)arg1 forPassWithUniqueIdentifier:(id)arg2;
+- (void)deleteTransactionReceiptWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)didReceiveSharingInvitationRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)didReceiveSharingInvitationWithIdentifier:(id)arg1 fromOriginatorIDSHandle:(id)arg2 sharingSessionIdentifier:(id)arg3 metadata:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)didReceiveSharingInvitationWithIdentifier:(id)arg1 groupIdentifier:(id)arg2 metadata:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)didRecieveCredentialInvitation:(id)arg1;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)disbursementVoucherWithDisbursementSource:(unsigned long long)arg1 disbursementTarget:(unsigned long long)arg2 bundleIdentifier:(id)arg3 teamIdentifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)downloadAllPaymentPasses;
@@ -84,6 +97,7 @@
 - (void)featureApplicationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)featureApplicationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)finishedKeyExchangeForCredential:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)initializeSecureElement:(CDUnknownBlockType)arg1;
@@ -94,6 +108,7 @@
 - (void)installmentPlansWithTransactionReferennceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)installmentTransactionsForInstallmentPlanIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mapsMerchantsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)matchingInvitationOnDevice:(id)arg1 withTimeout:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)messagesAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
 - (void)messagesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)noteAccountDeleted;
@@ -111,6 +126,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateCategoryVisualizationWithStyle:(long long)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateCredential:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)pendingTransactionsForPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 limit:(long long)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
@@ -125,12 +141,17 @@
 - (void)removeExpressPassesWithCardType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeMapsDataForTransactionWithIdentifier:(id)arg1 forPassUniqueIdentifier:(id)arg2 issueReportIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeProductsCache;
+- (void)removeSharingInvitation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)removeSharingInvitationReceiptWithIdentifier:(id)arg1 onCredential:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)requestBackgroundRegistrationForCredentialWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requiresUpgradedPasscodeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sanitizeExpressPasses;
 - (void)scheduleAutomaticPresentationAvailableNotificationForPassWithUniqueIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)scheduleDeviceCheckInWithStartTimeOffset:(double)arg1;
 - (void)scheduleSetupReminders;
+- (void)setAccountAttestationAnonymizationSalt:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setBalanceReminder:(id)arg1 forBalance:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setCommutePlanReminder:(id)arg1 forCommutePlan:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setDefaultExpressFelicaTransitPassIdentifier:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultExpressTransitPassIdentifier:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -138,11 +159,14 @@
 - (void)setExpressWithPassInformation:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setExpressWithPassInformation:(id)arg1 credential:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)sharedPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)sharingInvitationWasInvalidated:(id)arg1 withCredentialIdentifier:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)simulateDefaultExpressTransitPassIdentifier:(id)arg1 forExpressMode:(id)arg2;
 - (void)simulatePaymentPush;
 - (void)simulatePaymentPushTopic:(id)arg1;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (void)storePassOwnershipToken:(id)arg1 withIdentifier:(id)arg2;
+- (void)storeTransactionReceiptData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)subcredentialInvitationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)submitApplyRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)submitDeleteRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)submitDocumentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -151,6 +175,9 @@
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3;
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)transactionCountByPeriodForPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 calendar:(id)arg4 unit:(unsigned long long)arg5 includePurchaseTotal:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)transactionReceiptForTransactionWithIdentifier:(id)arg1 updateIfNecessary:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)transactionReceiptWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)transactionWithIdentifier:(id)arg1 didDownloadTransactionReceipt:(id)arg2;
 - (void)transactionWithReferenceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transactionWithServiceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transactionWithTransactionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -167,6 +194,7 @@
 - (void)transactionsWithTransactionSource:(unsigned long long)arg1 withBackingData:(unsigned long long)arg2 limit:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)transitStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)unscheduleDeviceCheckIn;
+- (void)updateMetadataOnPassWithIdentifier:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)valueAddedServiceTransactionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)valueAddedServiceTransactionsForPassWithUniqueIdentifier:(id)arg1 limit:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)valueAddedServiceTransactionsForPaymentTransaction:(id)arg1 limit:(long long)arg2 completion:(CDUnknownBlockType)arg3;

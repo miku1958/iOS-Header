@@ -21,6 +21,7 @@
 
 + (Class)classForMimePart;
 + (Class)headersClass;
++ (id)log;
 + (void)setDefaultMessageHeadersClass:(Class)arg1;
 - (void).cxx_destruct;
 - (id)_bodyForMessage:(id)arg1 fetchIfNotAvailable:(BOOL)arg2 updateFlags:(BOOL)arg3;

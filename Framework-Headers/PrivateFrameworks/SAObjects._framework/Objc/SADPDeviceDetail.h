@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSString, SAPerson;
+@class NSArray, NSString, SAPerson;
 
 @interface SADPDeviceDetail : SADomainObject <SAAceSerializable>
 {
@@ -21,10 +21,12 @@
 @property (copy, nonatomic) NSString *deviceId;
 @property (copy, nonatomic) NSString *deviceLocality;
 @property (copy, nonatomic) NSString *deviceName;
+@property (copy, nonatomic) NSString *emoji;
 @property (nonatomic) BOOL foundNearby;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAPerson *owner;
 @property (copy, nonatomic) NSString *productName;
+@property (copy, nonatomic) NSArray *productTypes;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL thisDevice;
 

@@ -112,7 +112,7 @@
 @property (nonatomic) BOOL wantsUndoCommands; // @synthesize wantsUndoCommands=_wantsUndoCommands;
 @property (nonatomic) BOOL wantsUpdateTrackingForInitialLoading; // @synthesize wantsUpdateTrackingForInitialLoading=_wantsUpdateTrackingForInitialLoading;
 
-+ (id)bulletTextAttributesWithTextFont:(struct UIFont *)arg1 paragraphStyle:(id)arg2 letterpress:(BOOL)arg3 withStyler:(id)arg4;
++ (id)bulletTextAttributesWithTextFont:(id)arg1 paragraphStyle:(id)arg2 letterpress:(BOOL)arg3 withStyler:(id)arg4;
 + (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(BOOL)arg3 forStandardizedText:(BOOL)arg4 fixAttachments:(BOOL)arg5 insertListMarkers:(BOOL)arg6;
 + (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(BOOL)arg2 forStandardizedText:(BOOL)arg3;
 + (double)listItemGlyphPointSizeForUnorderedListStyle:(unsigned int)arg1 withStyler:(id)arg2;
@@ -192,7 +192,7 @@
 - (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1 styler:(id)arg2;
 - (id)string;
 - (void)styleTextInRange:(struct _NSRange)arg1;
-- (BOOL)textViewHasMarkedText:(struct UITextView *)arg1;
+- (BOOL)textViewHasMarkedText:(id)arg1;
 
 @end
 

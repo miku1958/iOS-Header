@@ -15,6 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIScreenFocusSystemManager : NSObject <BKSHIDEventDeliveryPolicyObserving, _UIFocusSystemDelegate, _UIFocusMovementPerformerDelegate>
 {
+    BOOL _disableFocusDeferral;
     BKSHIDEventDeliveryPolicyObserver *_observer;
     BOOL _allowsForwardingFocusMovementActions;
     UIScreen *_screen;

@@ -16,8 +16,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_cleanUpFinishedHandlers:(id)arg1;
+- (void)_failAllPendingRequests;
 - (id)_finished:(id)arg1 withResult:(id)arg2 error:(id)arg3;
-- (void)didResolveItems:(id)arg1;
+- (void)didResolveItems:(id)arg1 forIdentifiers:(id)arg2;
 - (void)failedToResolveIdentifiers:(id)arg1 withError:(id)arg2;
 - (id)identifiersRequested:(id)arg1 forHandler:(CDUnknownBlockType)arg2;
 - (id)init;

@@ -28,7 +28,6 @@
 - (void)_setLinkActions:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (void)loadView;
-- (id)previewActionItems;
 - (void)viewWillLayoutSubviews;
 
 @end

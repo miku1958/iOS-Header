@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaUI/TSMemoryCacheAccessorType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface TSMemoryCacheAccessQueue : NSObject <TSMemoryCacheAccessorType>
+@interface TSMemoryCacheAccessQueue : NSObject
 {
     MISSING_TYPE *accessQueue;
 }

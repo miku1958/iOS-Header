@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/FCForYouMagazineFeedCursor-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI230ForYouMagazineFeedGroupsCursor : NSObject <FCForYouMagazineFeedCursor>
+@interface _TtC7NewsUI230ForYouMagazineFeedGroupsCursor : NSObject
 {
     MISSING_TYPE *groups;
     MISSING_TYPE *identifier;

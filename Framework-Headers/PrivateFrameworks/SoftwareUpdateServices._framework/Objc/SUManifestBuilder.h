@@ -10,8 +10,7 @@
 {
 }
 
-+ (BOOL)isManifestRequiredForDescriptor:(id)arg1;
-+ (id)manifestFromDescriptor:(id)arg1 outRequired:(BOOL *)arg2;
++ (id)manifestFromDescriptor:(id)arg1;
 
 @end
 

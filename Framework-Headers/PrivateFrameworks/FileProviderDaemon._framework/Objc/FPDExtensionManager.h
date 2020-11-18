@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSObject<OS_dispatch_group> *_providersLoadedGroup;
     id _matchingContext;
-    struct NSMutableDictionary *_alternateContentsURLDictionary;
+    NSMutableDictionary *_alternateContentsURLDictionary;
     NSMapTable *_sessionQueueForExtensionIdentifier;
     FPDPushConnection *_pushConnection;
     FPDServer *_server;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)_domainForURL:(id)arg1;
 - (void)_garbageCollectRemovedProvidersForInstalledProviderIdentifiers:(id)arg1;
 - (void)_loadAlternateContentsDictionary;
-- (void)_serializeAlternateContentsURLDictionary:(struct NSMutableDictionary *)arg1;
+- (void)_serializeAlternateContentsURLDictionary:(id)arg1;
 - (void)_updateProviderListForMatchingExtensions:(id)arg1 allExtensionStartedHandler:(CDUnknownBlockType)arg2;
 - (void)afterFirstDiscovery;
 - (id)allProviders;

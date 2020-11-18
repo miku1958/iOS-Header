@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
+
 @interface SiriUIComponentConstraintFactory : NSObject
 {
-    struct NSMutableDictionary *_layoutStyleToComponentLayoutMaps;
+    NSMutableDictionary *_layoutStyleToComponentLayoutMaps;
 }
 
 + (id)sharedConstraintFactory;
 - (void).cxx_destruct;
-- (void)_addConstants:(struct NSDictionary *)arg1 forLowerComponentStyle:(unsigned long long)arg2 toMap:(struct NSMutableDictionary *)arg3;
+- (void)_addConstants:(id)arg1 forLowerComponentStyle:(unsigned long long)arg2 toMap:(id)arg3;
 - (id)_bestDistanceFromComponentType:(unsigned long long)arg1 toComponentType:(unsigned long long)arg2 layoutStyle:(long long)arg3;
 - (unsigned long long)_componentTypeForView:(id)arg1 component:(id)arg2;
-- (struct NSMutableDictionary *)_createMapForLayoutStyle:(long long)arg1;
+- (id)_createMapForLayoutStyle:(long long)arg1;
 - (long long)_layoutAttributeForView:(id)arg1 componentType:(unsigned long long)arg2 isLower:(BOOL)arg3;
 - (void)_setupMaps;
 - (id)bottomConstraintForView:(id)arg1 fromLayoutGuide:(id)arg2 templateComponent:(id)arg3 layoutStyle:(long long)arg4;

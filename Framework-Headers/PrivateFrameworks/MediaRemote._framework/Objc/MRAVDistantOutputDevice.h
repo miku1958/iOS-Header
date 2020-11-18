@@ -60,6 +60,7 @@
 - (id)sourceInfo;
 - (BOOL)supportsBufferedAirPlay;
 - (BOOL)supportsExternalScreen;
+- (BOOL)supportsHAP;
 - (id)uid;
 - (float)volume;
 - (unsigned int)volumeCapabilities;

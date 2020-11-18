@@ -8,6 +8,7 @@
 
 @interface AVVCStartRecordSettings : NSObject
 {
+    BOOL _skipAlert;
     unsigned long long _streamID;
     unsigned long long _startHostTime;
     long long _startAlert;
@@ -15,6 +16,7 @@
     long long _stopOnErrorAlert;
 }
 
+@property (nonatomic) BOOL skipAlert; // @synthesize skipAlert=_skipAlert;
 @property (nonatomic) long long startAlert; // @synthesize startAlert=_startAlert;
 @property (nonatomic) unsigned long long startHostTime; // @synthesize startHostTime=_startHostTime;
 @property (nonatomic) long long stopAlert; // @synthesize stopAlert=_stopAlert;

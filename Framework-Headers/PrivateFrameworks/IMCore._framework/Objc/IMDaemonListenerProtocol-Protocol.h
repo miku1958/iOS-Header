@@ -111,7 +111,6 @@
 - (void)property:(NSString *)arg1 changedTo:(id)arg2 from:(id)arg3;
 - (void)qosClassWhileServicingRequestsResponse:(unsigned int)arg1 identifier:(NSString *)arg2;
 - (void)receivedUrgentRequestForMessages:(NSArray *)arg1;
-- (void)returnMOCEnabledState:(unsigned long long)arg1;
 - (void)screenTimeEnablementChanged:(BOOL)arg1;
 - (void)setupComplete;
 - (void)setupComplete:(BOOL)arg1 info:(NSDictionary *)arg2;

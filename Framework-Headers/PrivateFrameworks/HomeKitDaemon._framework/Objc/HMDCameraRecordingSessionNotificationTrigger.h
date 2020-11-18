@@ -37,12 +37,10 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_configureAvailableCharacteristics:(id)arg1;
-- (void)_handleCharacteristicsValueUpdated:(id)arg1;
 - (void)_handleObservedCharacteristicsValueUpdate:(id)arg1;
-- (void)_setNotificationForCharacteristics:(id)arg1 to:(BOOL)arg2;
 - (void)dealloc;
 - (void)handleAccessoryConfigured:(id)arg1;
+- (void)handleCharacteristicsValueUpdated:(id)arg1;
 - (id)initWithCamera:(id)arg1 workQueue:(id)arg2;
 - (id)initWithCamera:(id)arg1 workQueue:(id)arg2 availabilityListener:(id)arg3 notificationCenter:(id)arg4;
 - (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2;

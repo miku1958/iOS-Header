@@ -30,6 +30,7 @@
 - (void)setPendingAddresses:(NSArray *)arg1;
 - (void)setPhotoIDs:(NSArray *)arg1;
 - (void)setShareSheetSessionID:(NSString *)arg1;
+- (void)setShouldDisableEntryField:(BOOL)arg1;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 chatGUID:(NSString *)arg4 groupName:(NSString *)arg5;
 - (void)setTextEntryContentsVisible:(BOOL)arg1;

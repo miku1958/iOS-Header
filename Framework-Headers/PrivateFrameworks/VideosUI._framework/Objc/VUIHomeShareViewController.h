@@ -10,7 +10,7 @@
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
 #import <VideosUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSArray, NSString, VUILibraryMenuItemViewCell;
+@class NSArray, NSString, VUILibraryMenuItemViewCell, VUIMediaLibrary, VUIViewControllerContentPresenter;
 @protocol VUIHomeShareViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,13 +19,17 @@ __attribute__((visibility("hidden")))
     id<VUIHomeShareViewControllerDelegate> _delegate;
     NSArray *_homeShares;
     VUILibraryMenuItemViewCell *_menuItemSizingCell;
+    VUIViewControllerContentPresenter *_contentPresenter;
+    VUIMediaLibrary *_mediaLibrary;
 }
 
+@property (strong, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VUIHomeShareViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *homeShares; // @synthesize homeShares=_homeShares;
+@property (readonly, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (strong, nonatomic) VUILibraryMenuItemViewCell *menuItemSizingCell; // @synthesize menuItemSizingCell=_menuItemSizingCell;
 @property (readonly) Class superclass;
 
@@ -44,8 +48,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithMediaLibrary:(id)arg1;
 - (void)loadView;
-- (void)start;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

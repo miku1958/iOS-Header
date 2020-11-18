@@ -32,7 +32,7 @@
 - (void).cxx_destruct;
 - (void)cancelWithError:(id)arg1;
 - (id)extensionPoint;
-- (void)flowDivertMatchAppRulesWithFlow:(unsigned int)arg1 auditToken:(struct __CFData *)arg2 signingIdentifier:(struct __CFString *)arg3;
+- (void)flowDivertMatchAppRulesWithFlow:(unsigned int)arg1 auditToken:(struct __CFData *)arg2 signingIdentifier:(struct __CFString *)arg3 realSigningIdentifier:(struct __CFString *)arg4 realAuditToken:(struct __CFData *)arg5;
 - (void)flowDivertNewFlow:(struct _NEFlow *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)flowDivertOpenControlSocket;
 - (void)openFlowDivertControlSocketWithCompletionHandler:(CDUnknownBlockType)arg1;

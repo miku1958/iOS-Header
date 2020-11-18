@@ -65,8 +65,10 @@
  struct __C.CGSize {
 
 	// Properties
-	var width : CGFloat
-	var height : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : F
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : F
  }
 
  struct __C.CGRect {
@@ -79,8 +81,10 @@
  struct __C.CGPoint {
 
 	// Properties
-	var x : CGFloat
-	var y : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : F
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : F
  }
 
  class TeaDB.KeyValueStore {
@@ -93,9 +97,9 @@
  struct TeaDB.KVSEntity {
 
 	// Properties
-	var id : Column<String>
-	var updatedAt : Column<Date>
-	var valueJson : Column<Data>
+	var id : Column
+	var updatedAt : Column
+	var valueJson : Column
  }
 
  struct TeaDB.KVSEntry {
@@ -146,7 +150,8 @@
 	case integer : Int
 	case bool : Bool
 	case double : Double
-	case blob : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case blob : ÁC
 	case null  
  }
 
@@ -164,11 +169,11 @@
  class TeaDB.Database : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var connection : Connection? // +0x10 (0x8)
+	var connection : Connection // +0x10 (0x8)
 	let queue : OS_dispatch_queue // +0x18 (0x8)
 
 	// Swift methods
-	0x13230  class func Database.__allocating_init(location:) // init 
+	0x11190  class func Database.__allocating_init(location:) // init 
  }
 
  enum TeaDB.Location {
@@ -188,16 +193,16 @@
  enum TeaDB.Expression {
 
 	// Properties
-	case eq : (String, QueryValueType)
-	case neq : (String, QueryValueType)
-	case gt : (String, QueryValueType)
-	case gte : (String, QueryValueType)
-	case lt : (String, QueryValueType)
-	case lte : (String, QueryValueType)
+	case eq : QueryValueType
+	case neq : QueryValueType
+	case gt : QueryValueType
+	case gte : QueryValueType
+	case lt : QueryValueType
+	case lte : QueryValueType
 	case and : Expression
 	case or : Expression
-	case in : (String, [QueryValueType])
-	case notIn : (String, [QueryValueType])
+	case in : QueryValueType
+	case notIn : QueryValueType
  }
 
  class TeaDB.Query {
@@ -245,7 +250,8 @@
  class TeaDB.Connection : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ConnectionType {
 
 	// Properties
-	let handle : OpaquePointer // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let handle : !D // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -253,16 +259,16 @@
  struct TeaDB.Versions {
 
 	// Properties
-	let create : Create<Versions.Entity> // +0x0
-	let save : Save<Versions.Entity> // +0x8
-	let query : Query<Versions.Entity> // +0x10
+	let create : Create // +0x0
+	let save : Save // +0x8
+	let query : Query // +0x10
  }
 
  struct TeaDB.Entity {
 
 	// Properties
-	let id : Column<String> // +0x0
-	let version : Column<String> // +0x8
+	let id : Column // +0x0
+	let version : Column // +0x8
  }
 
  enum TeaDB.CodingKeys {
@@ -296,7 +302,8 @@
  class TeaDB.PreparedStatement : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let handle : OpaquePointer // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let handle : !D // +0x10 (0x8)
 
 	// Swift methods
  }

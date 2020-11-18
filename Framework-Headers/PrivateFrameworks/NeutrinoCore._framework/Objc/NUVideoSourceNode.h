@@ -42,7 +42,7 @@
 - (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
 - (BOOL)requiresAudioMix;
 - (BOOL)requiresVideoComposition;
-- (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (BOOL)shouldCacheNodeForPipelineState:(id)arg1;
 - (id)sourceOptionsForSettings:(id)arg1 error:(out id *)arg2;
 - (long long)sourceOrientation;

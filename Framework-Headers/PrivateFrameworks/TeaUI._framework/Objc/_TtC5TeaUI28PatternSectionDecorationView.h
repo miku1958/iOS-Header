@@ -6,11 +6,9 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-#import <TeaUI/TUGutterViewBoundsObserver-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC5TeaUI28PatternSectionDecorationView : UICollectionReusableView <TUGutterViewBoundsObserver>
+@interface _TtC5TeaUI28PatternSectionDecorationView : UICollectionReusableView
 {
     MISSING_TYPE *patternView;
     MISSING_TYPE *model;

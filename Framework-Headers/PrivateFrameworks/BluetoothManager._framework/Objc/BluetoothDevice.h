@@ -43,6 +43,7 @@
 - (unsigned int)doubleTapCapability;
 - (void)endVoiceCommand;
 - (BOOL)featureCapability:(int)arg1;
+- (int)getBehaviorForHIDDevice;
 - (unsigned int)getConnectingServiceMask;
 - (int)getLowSecurityStatus;
 - (id)getServiceSetting:(unsigned int)arg1 key:(id)arg2;

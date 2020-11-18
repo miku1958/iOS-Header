@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/TSCacheFlushingManagerType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface TSCacheFlushingManager : NSObject <TSCacheFlushingManagerType>
+@interface TSCacheFlushingManager : NSObject
 {
     MISSING_TYPE *cacheFlusher;
     MISSING_TYPE *storageLevelProvider;

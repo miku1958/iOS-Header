@@ -39,6 +39,7 @@
 - (id)initWithLanguage:(struct __CFString *)arg1 defaultLanguage:(struct __CFString *)arg2 reinitIfNecessary:(unsigned char)arg3 instanceToDestroy:(struct _VE_HSAFE *)arg4 forceReinit:(unsigned char)arg5 voiceType:(long long)arg6 gender:(long long)arg7 footprint:(long long)arg8 voiceName:(struct __CFString *)arg9 error:(unsigned int *)arg10;
 - (void)loadResource:(struct _VE_HSAFE)arg1 mimeType:(struct __CFString *)arg2 resourceURL:(struct __CFURL *)arg3 supportsAccurateWordCallbacks:(unsigned char)arg4;
 - (BOOL)readyForSynthesis:(struct _VE_HSAFE *)arg1;
+- (void)stopSynthesis;
 
 @end
 

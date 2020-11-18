@@ -27,8 +27,8 @@
 - (void)_updateDisplayLinkFrameIntervalForSecondsPastMinute:(double)arg1;
 - (void)dealloc;
 - (id)init;
-- (struct NSNumber *)startMinuteUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopMinuteUpdatesForToken:(struct NSNumber *)arg1;
+- (id)startMinuteUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopMinuteUpdatesForToken:(id)arg1;
 
 @end
 

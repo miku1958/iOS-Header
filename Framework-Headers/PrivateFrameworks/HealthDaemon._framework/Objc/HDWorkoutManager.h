@@ -75,6 +75,7 @@
 - (unsigned long long)currentWorkoutActivityType;
 - (id)currentWorkoutClient;
 - (long long)currentWorkoutLocationType;
+- (id)currentWorkoutSessionServer;
 - (void)daemonReady:(id)arg1;
 - (void)dealloc;
 - (void)devicePowerMonitor:(id)arg1 primaryPowerSourceIsCharging:(BOOL)arg2;

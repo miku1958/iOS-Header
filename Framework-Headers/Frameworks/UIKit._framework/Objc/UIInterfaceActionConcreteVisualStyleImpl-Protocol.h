@@ -42,6 +42,7 @@
 - (struct CGSize)minimumActionContentSize;
 - (UIView<UIInterfaceActionVisualSeparatorDisplaying> *)newActionSeparatorViewForGroupViewState:(UIInterfaceActionGroupViewState *)arg1;
 - (UIView<UIInterfaceActionVisualSectionSeparatorDisplaying> *)newSectionSeparatorViewForGroupViewState:(UIInterfaceActionGroupViewState *)arg1;
+- (BOOL)selectByIndirectPointerTouchRequired;
 - (BOOL)selectByPressGestureRequired;
 - (BOOL)selectionFeedbackEnabled;
 @end

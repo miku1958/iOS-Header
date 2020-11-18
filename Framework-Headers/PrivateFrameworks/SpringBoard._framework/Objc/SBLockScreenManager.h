@@ -22,7 +22,7 @@
 #import <SpringBoard/SBUILockStateProvider-Protocol.h>
 #import <SpringBoard/SBWallpaperObserver-Protocol.h>
 
-@class CSCoverSheetViewController, NSMutableDictionary, NSMutableSet, NSString, SBCoverSheetBiometricResourceObserver, SBFAuthenticationAssertion, SBFUserAuthenticationController, SBIdleTimerCoordinatorHelper, SBLiftToWakeManager, SBLockScreenAutoUnlockAggregateRule, SBLockScreenBiometricAuthenticationCoordinator, SBLockScreenDisabledAssertionManager, SBLockScreenOrientationManager, SBLockScreenUnlockRequest, SBPasscodeEntryTransientOverlayViewController, SBPearlInterlockObserver, SBSRemoteAlertHandle, SBTapToWakeController, UINotificationFeedbackGenerator;
+@class CSCoverSheetViewController, NSMutableDictionary, NSMutableSet, NSString, SBCoverSheetBiometricResourceObserver, SBFAuthenticationAssertion, SBFMouseButtonDownGestureRecognizer, SBFUserAuthenticationController, SBIdleTimerCoordinatorHelper, SBLiftToWakeManager, SBLockScreenAutoUnlockAggregateRule, SBLockScreenBiometricAuthenticationCoordinator, SBLockScreenDisabledAssertionManager, SBLockScreenOrientationManager, SBLockScreenUnlockRequest, SBPasscodeEntryTransientOverlayViewController, SBPearlInterlockObserver, SBSRemoteAlertHandle, SBTapToWakeController, UINotificationFeedbackGenerator;
 @protocol SBFLockOutStatusProvider, SBHomeButtonShowPasscodeRecognizer, SBHomeButtonSuppressAfterUnlockRecognizer, SBLockScreenEnvironment, SBNotificationDestination;
 
 @interface SBLockScreenManager : NSObject <BSDescriptionProviding, SBPasscodeEntryTransientOverlayViewControllerDelegate, SBFPrivateAuthenticationObserver, CSCoverSheetViewControllerDelegate, CSWallpaperColorProvider, SBLockScreenBiometricAuthenticationCoordinatorDelegate, SBHomeButtonShowPasscodeRecognizerDelegate, SBHomeButtonSuppressAfterUnlockRecognizerDelegate, SBWallpaperObserver, SBCoverSheetPresentationDelegate, SBUILockStateProvider, SBTapToWakeDelegate, SBSRemoteAlertHandleObserver, SBIdleTimerProviding, SBIdleTimerCoordinating>
@@ -54,6 +54,7 @@
     SBFUserAuthenticationController *_userAuthController;
     SBLiftToWakeManager *_liftToWakeManager;
     SBTapToWakeController *_tapToWakeController;
+    SBFMouseButtonDownGestureRecognizer *_mouseButtonDownGesture;
     NSMutableDictionary *_mesaCoordinatorDisabledAssertions;
     NSMutableDictionary *_mesaWalletPreArmDisabledAssertions;
     NSMutableSet *_mesaWalletPreArmDisabledReasons;
@@ -146,6 +147,7 @@
 - (BOOL)_shouldLockAfterEndingTelephonyCall;
 - (BOOL)_shouldUnlockUIOnKeyDownEvent;
 - (BOOL)_unlockWithRequest:(id)arg1 cancelPendingRequests:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_wakeScreenForMouseButtonDown:(id)arg1;
 - (void)_wakeScreenForTapToWake;
 - (void)activateLostModeForRemoteLock:(BOOL)arg1;
 - (void)activationChanged:(id)arg1;

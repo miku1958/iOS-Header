@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class PKPass, PKPassFaceViewRendererState, PKPassView, PKPeerPaymentAccount, PKRemoteDataAccessor, PKTransitBalanceModel, UIColor, UIImageView, UILabel;
+@class PKPass, PKPassFaceViewRendererState, PKPassView, PKPeerPaymentAccount, PKRemoteDataAccessor, UIColor, UIImageView, UILabel;
 @protocol PKPassHeaderViewDelegate, PKPassLibraryDataProvider;
 
 @interface PKPassHeaderView : UIView
@@ -22,7 +22,6 @@
     BOOL _expiredPass;
     PKPass *_pass;
     PKPassView *_passView;
-    PKTransitBalanceModel *_transitBalanceModel;
     PKPeerPaymentAccount *_peerPaymentAccount;
     PKPassFaceViewRendererState *_rendererState;
     unsigned long long _suppressedContent;
@@ -44,7 +43,6 @@
 @property (nonatomic) BOOL showModificationDate; // @synthesize showModificationDate=_showModificationDate;
 @property (nonatomic, getter=isSmall) BOOL small; // @synthesize small=_small;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
-@property (strong, nonatomic) PKTransitBalanceModel *transitBalanceModel; // @synthesize transitBalanceModel=_transitBalanceModel;
 
 - (void).cxx_destruct;
 - (void)_passLibraryDidChange:(id)arg1;

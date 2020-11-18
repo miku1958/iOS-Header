@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithLayout:(id)arg1;
 - (void)layoutSubviews;
+- (struct CGSize)legendNameSizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

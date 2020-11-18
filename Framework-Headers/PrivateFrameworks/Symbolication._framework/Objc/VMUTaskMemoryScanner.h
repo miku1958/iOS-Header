@@ -30,6 +30,8 @@
     struct _VMURange _dataSegmentsRangeInSharedCache;
     struct _VMURange _dataSegmentsRangeOutsideSharedCache;
     VMURangeArray *_dataSegmentsRangeArrayOutsideSharedCache;
+    BOOL _recordRuntimeMetadataChunkInfo;
+    NSMutableDictionary *_addressToRuntimeMetadataChunkInfoDict;
     struct _VMUZoneNode *_zones;
     unsigned int _zonesCount;
     unsigned int _zonesSize;
@@ -82,6 +84,7 @@
 @property (readonly, nonatomic) VMUTaskMemoryCache *memoryCache; // @synthesize memoryCache=_memoryCache;
 @property (readonly, nonatomic) unsigned int nodeCount; // @synthesize nodeCount=_blocksCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
+@property (nonatomic) unsigned int objectContentLevel;
 @property (readonly, nonatomic) VMUObjectIdentifier *objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
 @property (readonly, nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
 @property (readonly, nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
@@ -89,6 +92,7 @@
 @property (readonly, nonatomic) NSString *processDescriptionString; // @synthesize processDescriptionString=_processDescriptionString;
 @property (readonly, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses;
+@property (nonatomic) BOOL recordRuntimeMetadataChunkInfo; // @synthesize recordRuntimeMetadataChunkInfo=_recordRuntimeMetadataChunkInfo;
 @property (readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionsCount;
 @property (nonatomic) unsigned int scanningMask; // @synthesize scanningMask=_scanningMask;
 @property (nonatomic) BOOL showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
@@ -114,6 +118,7 @@
 - (unsigned int)_indexForClassInfo:(id)arg1;
 - (id)_initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
 - (void)_orderedScanWithScanner:(CDUnknownBlockType)arg1 recorder:(CDUnknownBlockType)arg2 keepMapped:(BOOL)arg3 actions:(CDUnknownBlockType)arg4;
+- (id)_readonlyRegionRanges;
 - (void)_registerVariant:(id)arg1 forGenericInfo:(id)arg2 variantKey:(unsigned long long)arg3;
 - (unsigned int)_removeFalsePositiveLeakedVMregionsFromNodes:(unsigned int *)arg1 nodeCount:(unsigned int)arg2 recorder:(CDUnknownBlockType)arg3;
 - (void)_sortAndClassifyBlocks;
@@ -143,12 +148,14 @@
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
 - (id)labelForNode:(unsigned int)arg1;
+- (void)mapDyldSharedCacheFromTargetWithRegions:(id)arg1;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (id)nodeDescription:(unsigned int)arg1;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2;
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
 - (unsigned int)nodeForAddress:(unsigned long long)arg1;
 - (void)orderedNodeTraversal:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)printRuntimeMetadataInfo;
 - (id)processSnapshotGraph;
 - (id)processSnapshotGraphWithMallocStackLogs:(BOOL)arg1;
 - (id)processSnapshotGraphWithOptions:(unsigned long long)arg1;

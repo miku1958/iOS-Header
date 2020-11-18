@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithDelayInSeconds:(unsigned long long)arg1 name:(id)arg2;
 - (id)initWithEventType:(unsigned long long)arg1;
+- (id)initWithEventType:(unsigned long long)arg1 delayInSeconds:(unsigned long long)arg2 name:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

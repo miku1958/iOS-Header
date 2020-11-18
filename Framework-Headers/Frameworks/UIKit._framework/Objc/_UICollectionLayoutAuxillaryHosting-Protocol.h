@@ -14,7 +14,7 @@
 - (long long)auxillaryHostAuxillaryKind;
 - (id<NSCollectionLayoutContainer>)auxillaryHostContainer;
 - (struct CGSize)auxillaryHostContentSize;
-- (int)auxillaryHostLayoutAxis;
+- (unsigned long long)auxillaryHostLayoutAxis;
 - (struct CGSize)auxillaryHostPinningContentSize;
 - (id<_UICollectionPreferredSizes>)auxillaryHostPreferredSizes;
 - (BOOL)auxillaryHostShouldLayoutRTL;

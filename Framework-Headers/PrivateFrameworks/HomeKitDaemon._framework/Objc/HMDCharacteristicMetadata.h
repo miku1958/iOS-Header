@@ -7,11 +7,12 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSNumber, NSString;
 
-@interface HMDCharacteristicMetadata : HMFObject <NSSecureCoding, HMFDumpState>
+@interface HMDCharacteristicMetadata : HMFObject <NSSecureCoding, NSCopying, HMFDumpState>
 {
     NSNumber *_minimumValue;
     NSNumber *_maximumValue;
@@ -34,18 +35,20 @@
 @property (readonly, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *units; // @synthesize units=_units;
-@property (copy, nonatomic) NSArray *validValues; // @synthesize validValues=_validValues;
+@property (readonly, copy, nonatomic) NSArray *validValues; // @synthesize validValues=_validValues;
 
-+ (BOOL)isValidMetadata:(id)arg1;
++ (id)characteristicMetadataWithDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionDetails;
-- (BOOL)configureWithCharacteristicMetadata:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dictionaryRepresentation;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (id)getMetadataDictionary;
-- (id)initWithCharacteristicMetadata:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithMinimumValue:(id)arg1 maximumValue:(id)arg2 stepValue:(id)arg3 maxLength:(id)arg4 validValues:(id)arg5 format:(id)arg6 units:(id)arg7 manufacturerDescription:(id)arg8;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

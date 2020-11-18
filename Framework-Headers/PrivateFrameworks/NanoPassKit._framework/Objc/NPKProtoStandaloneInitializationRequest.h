@@ -8,24 +8,29 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NPKProtoStandaloneRequestHeader;
+@class NPKProtoStandaloneImageSize, NPKProtoStandaloneRequestHeader, NSString;
 
 @interface NPKProtoStandaloneInitializationRequest : PBRequest <NSCopying>
 {
+    NPKProtoStandaloneImageSize *_passImageSize;
+    NPKProtoStandaloneImageSize *_passThumbnailImageSize;
     NPKProtoStandaloneRequestHeader *_requestHeader;
-    BOOL _separateLocalDeviceEntryRequired;
+    NSString *_userLanguageCode;
     BOOL _useSimulatedFlowController;
     struct {
-        unsigned int separateLocalDeviceEntryRequired:1;
         unsigned int useSimulatedFlowController:1;
     } _has;
 }
 
-@property (nonatomic) BOOL hasSeparateLocalDeviceEntryRequired;
+@property (readonly, nonatomic) BOOL hasPassImageSize;
+@property (readonly, nonatomic) BOOL hasPassThumbnailImageSize;
 @property (nonatomic) BOOL hasUseSimulatedFlowController;
+@property (readonly, nonatomic) BOOL hasUserLanguageCode;
+@property (strong, nonatomic) NPKProtoStandaloneImageSize *passImageSize; // @synthesize passImageSize=_passImageSize;
+@property (strong, nonatomic) NPKProtoStandaloneImageSize *passThumbnailImageSize; // @synthesize passThumbnailImageSize=_passThumbnailImageSize;
 @property (strong, nonatomic) NPKProtoStandaloneRequestHeader *requestHeader; // @synthesize requestHeader=_requestHeader;
-@property (nonatomic) BOOL separateLocalDeviceEntryRequired; // @synthesize separateLocalDeviceEntryRequired=_separateLocalDeviceEntryRequired;
 @property (nonatomic) BOOL useSimulatedFlowController; // @synthesize useSimulatedFlowController=_useSimulatedFlowController;
+@property (strong, nonatomic) NSString *userLanguageCode; // @synthesize userLanguageCode=_userLanguageCode;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

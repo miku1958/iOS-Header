@@ -12,15 +12,17 @@
 {
     NSDate *_startTime;
     NSString *_messageName;
+    long long _qualityOfService;
     CDUnknownBlockType _responseHandler;
 }
 
 @property (readonly, nonatomic) NSString *messageName; // @synthesize messageName=_messageName;
+@property (readonly) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (readonly, copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property (readonly, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 
 - (void).cxx_destruct;
-- (id)initWithMessageName:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (id)initWithMessageName:(id)arg1 qualityOfService:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 
 @end
 

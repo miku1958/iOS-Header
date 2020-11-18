@@ -32,5 +32,6 @@
 - (void)addSignature:(BOOL)arg1;
 - (void)contentDidChange;
 - (unsigned long long)contentVariationIndex;
+- (void)setOriginalMessageWasEncrypted:(BOOL)arg1;
 @end
 

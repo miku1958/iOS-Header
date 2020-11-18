@@ -9,7 +9,7 @@
 #import <ScreenTimeUI/CNContactViewControllerDelegate-Protocol.h>
 #import <ScreenTimeUI/STLockoutPolicyControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, SBSLockScreenService, STHourglassView, STLockoutPolicyController, UIAlertController, UIButton, UILabel, UIResponder, UIVisualEffectView;
+@class NSDictionary, NSObject, NSString, SBSLockScreenService, STHourglassView, STLockoutPolicyController, UIAlertController, UIButton, UIImageView, UILabel, UIResponder, UIVisualEffectView;
 @protocol OS_dispatch_group, STLockoutViewControllerDelegate;
 
 @interface STLockoutViewController : UIViewController <CNContactViewControllerDelegate, STLockoutPolicyControllerDelegate>
@@ -33,7 +33,9 @@
     UIResponder *_customNextResponder;
     STLockoutPolicyController *_policyController;
     NSString *_applicationName;
+    NSDictionary *_contactNameByHandle;
     STHourglassView *_hourglassView;
+    UIImageView *_communicationLimitView;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
     UIButton *_mainButton;
@@ -44,6 +46,8 @@
 
 @property (readonly) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy, nonatomic) NSString *bundleIdentifier;
+@property (weak) UIImageView *communicationLimitView; // @synthesize communicationLimitView=_communicationLimitView;
+@property (readonly, copy) NSDictionary *contactNameByHandle; // @synthesize contactNameByHandle=_contactNameByHandle;
 @property (weak, nonatomic) UIResponder *customNextResponder; // @synthesize customNextResponder=_customNextResponder;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -71,9 +75,11 @@
 + (id)_messageForCategoryIdentifier:(id)arg1;
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1;
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2;
++ (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2 contactNameByHandle:(id)arg3;
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 conversationContext:(id)arg2 contactStore:(id)arg3;
 + (id)lockoutViewControllerWithCategoryIdentifier:(id)arg1;
 + (id)lockoutViewControllerWithConversationContext:(id)arg1 bundleIdentifier:(id)arg2 contactStore:(id)arg3 applicationName:(id)arg4;
++ (id)lockoutViewControllerWithConversationContext:(id)arg1 bundleIdentifier:(id)arg2 contactStore:(id)arg3 applicationName:(id)arg4 contactNameByHandle:(id)arg5;
 + (id)lockoutViewControllerWithWebsiteURL:(id)arg1;
 + (id)messageForApplicationName:(id)arg1 style:(long long)arg2;
 + (id)messageForBundleIdentifier:(id)arg1 style:(long long)arg2;
@@ -85,12 +91,13 @@
 - (void)_actionEnterScreenTimePasscodeActionSheet:(id)arg1;
 - (void)_actionIgnoreLimitActionSheet:(id)arg1;
 - (void)_actionOK:(id)arg1;
+- (void)_actionUnlockedAddContact;
 - (BOOL)_actionUnlockedAskOrApproveActionSheet;
 - (BOOL)_actionUnlockedEnterScreenTimePasscodeActionSheet;
 - (BOOL)_authenticatedApproveActionSheet;
 - (void)_authenticatedApproveForAdditionalTime:(double)arg1;
 - (BOOL)_canShowWhileLocked;
-- (void)_changeMainButtonToAddContact;
+- (void)_changeMainButtonToAddContact:(id)arg1;
 - (void)_changeMainButtonToAskForMore;
 - (void)_changeMainButtonToEnterScreenTimePasscode;
 - (void)_changeMainButtonToIgnoreLimit;
@@ -98,6 +105,7 @@
 - (void)_changeStateToApproved;
 - (void)_changeStateToAsk;
 - (void)_changeStateToContactBlocked;
+- (void)_changeStateToContactBlockedDuringDowntime;
 - (void)_changeStateToDisapproved;
 - (void)_changeStateToDismissing;
 - (void)_changeStateToPending;
@@ -119,6 +127,7 @@
 - (void)_restoreBackdrop;
 - (void)_restoreHourglass;
 - (void)_restoreTextAndButtons;
+- (void)_restrictionsPINControllerDidFinish:(BOOL)arg1;
 - (void)_setTextAndButtonsAlpha:(double)arg1;
 - (void)_setupCommon;
 - (void)_showApprovalAnimationIfNeeded;
@@ -130,6 +139,7 @@
 - (void)_undoApprovalAnimationIfNeeded;
 - (void)_unlockWithSuccessMainCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateMainButtonVisibility;
+- (id)_updateMessageLabelAndReturnHandleWithPhoneNumberFormat:(id)arg1 emailAddressFormat:(id)arg2 contactNameFormat:(id)arg3;
 - (void)_updateOKButtonVisibility;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;

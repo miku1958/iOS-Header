@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/FCForYouBridgedFeedGroupConfig-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI223TodayBridgedGroupConfig : NSObject <FCForYouBridgedFeedGroupConfig>
+@interface _TtC7NewsUI223TodayBridgedGroupConfig : NSObject
 {
     MISSING_TYPE *config;
     MISSING_TYPE *bridgedGroupType;

@@ -15,6 +15,7 @@
     BOOL _wasNearbyBrowsing;
     BOOL _nearbyBrowsing;
     BOOL _generatingCompatiblityHashes;
+    BOOL _serverHosted;
     int _matching;
     CDUnknownBlockType _inviteHandler;
     GKMatch *_match;
@@ -61,6 +62,7 @@
 @property (nonatomic) double nearbyQueryAllowance; // @synthesize nearbyQueryAllowance=_nearbyQueryAllowance;
 @property (strong, nonatomic) NSDate *nearbyQueryLastCheckDate; // @synthesize nearbyQueryLastCheckDate=_nearbyQueryLastCheckDate;
 @property (copy, nonatomic) CDUnknownBlockType recipientResponseHandler; // @synthesize recipientResponseHandler=_recipientResponseHandler;
+@property (nonatomic) BOOL serverHosted; // @synthesize serverHosted=_serverHosted;
 @property (strong, nonatomic) NSMutableArray *shareInvitees; // @synthesize shareInvitees=_shareInvitees;
 @property (nonatomic) BOOL wasNearbyBrowsing; // @synthesize wasNearbyBrowsing=_wasNearbyBrowsing;
 

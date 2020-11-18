@@ -64,6 +64,7 @@
 - (void)paymentSupportedInCurrentRegion:(CDUnknownBlockType)arg1;
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)registrationSupportedInCurrentRegionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removePass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)secureElementOwnershipStateForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;

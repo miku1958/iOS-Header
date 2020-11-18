@@ -4,37 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosGraph/PGSurveyQuestion.h>
 
-#import <PhotosGraph/PGQuestion-Protocol.h>
+@class NSDictionary, NSString, PHPerson;
 
-@class NSString, PHPerson;
-
-@interface PGNamingQuestion : NSObject <PGQuestion>
+@interface PGNamingQuestion : PGSurveyQuestion
 {
+    unsigned short _state;
+    NSDictionary *_additionalInfo;
+    NSString *_entityIdentifier;
+    double _localFactoryScore;
     PHPerson *_person;
-    long long _type;
-    double _score;
     NSString *_contactIdentifier;
 }
 
 @property (readonly, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHPerson *person; // @synthesize person=_person;
-@property (readonly, nonatomic) double score; // @synthesize score=_score;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)questionForPerson:(id)arg1;
 - (void).cxx_destruct;
+- (id)_additionalInfoFromContactIdentifier:(id)arg1;
 - (id)_personForContactSuggestion;
-- (id)initWithPerson:(id)arg1 contactIdentifier:(id)arg2 score:(double)arg3;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToQuestion:(id)arg1;
-- (void)persist;
+- (id)additionalInfo;
+- (unsigned short)displayType;
+- (id)entityIdentifier;
+- (unsigned short)entityType;
+- (id)initWithPerson:(id)arg1 contactIdentifier:(id)arg2 localFactoryScore:(double)arg3;
+- (void)legacyPersist;
+- (void)legacyRemove;
+- (double)localFactoryScore;
+- (void)persistWithCreationDate:(id)arg1;
 - (void)remove;
+- (unsigned short)state;
+- (unsigned short)type;
 
 @end
 

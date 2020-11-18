@@ -8,12 +8,13 @@
 
 #import <ClassroomKit/CRKFeatureDataStoreProtocol-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface CRKFeatureDataStore_iOS : NSObject <CRKFeatureDataStoreProtocol>
 {
 }
 
+@property (readonly, copy, nonatomic) NSSet *activeClassroomRoles;
 @property (readonly, nonatomic, getter=isClassroomAutomaticClassJoiningForced) BOOL classroomAutomaticClassJoiningForced;
 @property (nonatomic, getter=isClassroomInstructorRoleEnabled) BOOL classroomInstructorRoleEnabled;
 @property (readonly, nonatomic, getter=isClassroomRequestPermissionToLeaveClassesForced) BOOL classroomRequestPermissionToLeaveClassesForced;

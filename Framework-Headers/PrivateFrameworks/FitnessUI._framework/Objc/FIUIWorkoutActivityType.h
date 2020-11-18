@@ -33,6 +33,7 @@
 + (id)activityTypeWithHKWorkoutActivityTypeIdentifier:(unsigned long long)arg1 isIndoor:(BOOL)arg2 metadata:(id)arg3;
 + (id)activityTypeWithWorkout:(id)arg1;
 + (id)defaultActivityTypesWithIsWheelchairUser:(BOOL)arg1 isSwimmingSupported:(BOOL)arg2;
++ (id)gymKitCapableActivityTypes;
 + (unsigned long long)mapWheelchairUserActivityType:(unsigned long long)arg1 isWheelchairUser:(BOOL)arg2;
 + (id)optimizedActivityTypesWithIsWheelchairUser:(BOOL)arg1 isSwimmingSupported:(BOOL)arg2;
 + (id)possibleActivityTypesForIdentifier:(unsigned long long)arg1 locationType:(long long)arg2 swimmingLocationType:(long long)arg3 wheelchairUser:(BOOL)arg4;

@@ -107,13 +107,15 @@
 
 	// Properties
 	var ourl_lock : os_unfair_lock_s
-	var ourl_count : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var ourl_count : Ýw
  }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
-	var _os_unfair_lock_opaque : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _os_unfair_lock_opaque : Ýw
  }
 
  class Combine.Multicast {
@@ -122,7 +124,7 @@
 
 	// Properties
 	case ready : (A, A1)
-	case subscribed : (A, A1, Subscription)
+	case subscribed : Subscription
 	case terminal  
  }
 
@@ -134,9 +136,8 @@
 	var _cancel : ()? // +0x10 (0x10)
 
 	// Swift methods
-	0x5740  class func AnyCancellable.__allocating_init(_:) // init 
-	0x57e0  class func AnyCancellable.__allocating_init<A>(_:) // init 
-	0x5af0  func AnyCancellable.hashValue.getter // getter 
+	0x4e10  class func AnyCancellable.__allocating_init(_:) // init 
+	0x4e60  class func AnyCancellable.__allocating_init<A>(_:) // init 
  }
 
  enum Combine.SubscriptionStatus {
@@ -158,15 +159,15 @@
 	// Properties
 	let upstream : A
 	let scheduler : B
-	let options : B.Scheduler.SchedulerOptions?
+	let options : Scheduler
  }
 
  class Combine.Inner {
  enum Combine.State {
 
 	// Properties
-	case ready : (Publishers.SubscribeOn<A, B>, A1)
-	case subscribed : (Publishers.SubscribeOn<A, B>, A1, Subscription)
+	case ready : SubscribeOn
+	case subscribed : SubscribeOn
 	case terminal  
  }
 
@@ -190,8 +191,8 @@
  enum Combine.State {
 
 	// Properties
-	case ready : (Publishers.MeasureInterval<A, B>, A1)
-	case subscribed : (Publishers.MeasureInterval<A, B>, A1, Subscription)
+	case ready : MeasureInterval
+	case subscribed : MeasureInterval
 	case terminal  
  }
 
@@ -199,7 +200,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -207,7 +208,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -222,7 +223,7 @@
 	// Properties
 	var state : State
 	var output : [A]
-	var completion : Subscribers.Completion<B>
+	var completion : Completion
  }
 
  class Combine.Inner {
@@ -250,7 +251,7 @@
 
 	// Properties
 	let upstream : A
-	let isIncluded : (_:)
+	let isIncluded : Publisher
  }
 
  class Combine.Inner {
@@ -258,7 +259,7 @@
 
 	// Properties
 	let upstream : A
-	let isIncluded : (_:)
+	let isIncluded : Publisher
  }
 
  class Combine.Inner {
@@ -266,16 +267,16 @@
 
 	// Properties
 	let upstream : A
-	let receiveSubscription : (_:)?
-	let receiveOutput : (_:)?
-	let receiveCompletion : (_:)?
+	let receiveSubscription : Subscription
+	let receiveOutput : Publisher
+	let receiveCompletion : Completion
  }
 
  struct Combine.Inner {
 
 	// Properties
 	let downstream : A1
-	var breakpoint : Publishers.Breakpoint<A>
+	var breakpoint : Breakpoint
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -290,7 +291,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -298,7 +299,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -311,7 +312,8 @@
 	// Properties
 	let box : AnySubscriberBase
 	let descriptionThunk : ()
-	let customMirrorThunk : ()
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let customMirrorThunk : Ko
 	let playgroundDescriptionThunk : ()
 	let combineIdentifier : CombineIdentifier
  }
@@ -328,7 +330,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -336,7 +338,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -344,7 +346,7 @@
 
 	// Properties
 	let upstream : A
-	let _decode : (_:)
+	let _decode : Publisher
  }
 
  class Combine.Inner {
@@ -369,7 +371,7 @@
 
 	// Properties
 	let upstream : A
-	let output : A.Publisher.Output
+	let output : Publisher
  }
 
  class Combine.Inner {
@@ -411,7 +413,8 @@
  struct Combine.SubscriberList {
 
 	// Properties
-	var items : [Unmanaged<Swift.AnyObject>] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var items :  empty-list  // +0x0
 	var tickets : [Int] // +0x8
 	var nextTicket : Int // +0x10
  }
@@ -420,7 +423,7 @@
  enum Combine.State {
 
 	// Properties
-	case connected : (Int, Cancellable)
+	case connected : Cancellable
 	case disconnected  
  }
 
@@ -428,7 +431,7 @@
 
 	// Properties
 	var combineIdentifier : CombineIdentifier
-	var parent : Publishers.Autoconnect<A>
+	var parent : Autoconnect
 	var downstream : A1
  }
 
@@ -444,30 +447,32 @@
 	// Properties
 	let prefix : String
 	let upstream : A
-	let stream : TextOutputStream?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let stream : g
  }
 
  class Combine.Inner {
  struct Combine.PrintTarget {
 
 	// Properties
-	var stream : TextOutputStream
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var stream : ãf
  }
 
  class Combine.ObservableObjectPublisher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let lock : UnsafeMutablePointer<os_unfair_lock_s>
+	let lock : os_unfair_lock_s
 	var connections : Conduit
 	let identifier : ObjectIdentifier?
 
 	// Swift methods
-	0x397e0  class func ObservableObjectPublisher.__allocating_init() // init 
+	0x34d10  class func ObservableObjectPublisher.__allocating_init() // init 
  }
 
  class Combine.Conduit : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x38fe0  func ObservableObjectPublisher.Conduit.send() // method 
+	0x34570  func ObservableObjectPublisher.Conduit.send() // method 
  }
 
  class Combine.Inner {
@@ -478,6 +483,8 @@
 	case active  
 	case terminal  
  }
+
+ struct Combine.ObservableObjectTable { }
 
  struct Combine.Storage {
 
@@ -490,7 +497,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -498,7 +505,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -534,7 +541,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -542,7 +549,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -553,26 +560,26 @@
 	// Properties
 	var value : A
 	var publisher : Publisher
-	var objectWillChange : ObservableObjectPublisher?
+	var objectWillChange : ObservableObjectPublisher
  }
 
  struct Combine.Publisher {
 
 	// Properties
-	let subject : CurrentValueSubject<A, Never>
+	let subject : CurrentValueSubject
  }
 
  struct Combine.MakeConnectable: ConnectablePublisher {
 
 	// Properties
-	var inner : Publishers.Multicast<A, PassthroughSubject<A.Publisher.Output, A.Publisher.Failure>>
+	var inner : Multicast
  }
 
  enum Combine.TimeGroupingStrategy {
 
 	// Properties
-	case byTime : (A, A.Scheduler.SchedulerTimeType.Strideable.Stride)
-	case byTimeOrCount : (A, A.Scheduler.SchedulerTimeType.Strideable.Stride, Int)
+	case byTime : Scheduler
+	case byTimeOrCount : Scheduler
  }
 
  struct Combine.CollectByTime {
@@ -580,7 +587,7 @@
 	// Properties
 	let upstream : A
 	let strategy : TimeGroupingStrategy
-	let options : B.Scheduler.SchedulerOptions?
+	let options : Scheduler
  }
 
  class Combine.Inner {
@@ -605,15 +612,15 @@
 	// Properties
 	let upstream : A
 	let scheduler : B
-	let options : B.Scheduler.SchedulerOptions?
+	let options : Scheduler
  }
 
  class Combine.Inner {
  enum Combine.State {
 
 	// Properties
-	case ready : (Publishers.ReceiveOn<A, B>, A1)
-	case subscribed : (Publishers.ReceiveOn<A, B>, A1, Subscription)
+	case ready : ReceiveOn
+	case subscribed : ReceiveOn
 	case terminal  
  }
 
@@ -644,33 +651,42 @@
 
 	// Properties
 	let upstream : A
-	let keyPath : KeyPath<A.Publisher.Output, B>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath : ëa
  }
 
  struct Combine.MapKeyPath2 {
 
 	// Properties
 	let upstream : A
-	let keyPath0 : KeyPath<A.Publisher.Output, B>
-	let keyPath1 : KeyPath<A.Publisher.Output, C>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath0 : ëa
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath1 : Ía
  }
 
  struct Combine.MapKeyPath3 {
 
 	// Properties
 	let upstream : A
-	let keyPath0 : KeyPath<A.Publisher.Output, B>
-	let keyPath1 : KeyPath<A.Publisher.Output, C>
-	let keyPath2 : KeyPath<A.Publisher.Output, D>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath0 : ëa
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath1 : Ía
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath2 : ­a
  }
 
  struct Combine.Inner {
 
 	// Properties
 	let downstream : A1
-	let keyPath0 : KeyPath<A.Publisher.Output, B>
-	let keyPath1 : KeyPath<A.Publisher.Output, C>
-	let keyPath2 : KeyPath<A.Publisher.Output, D>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath0 : ëa
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath1 : Ía
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath2 : ­a
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -678,8 +694,10 @@
 
 	// Properties
 	let downstream : A1
-	let keyPath0 : KeyPath<A.Publisher.Output, B>
-	let keyPath1 : KeyPath<A.Publisher.Output, C>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath0 : ëa
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath1 : Ía
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -687,14 +705,15 @@
 
 	// Properties
 	let downstream : A1
-	let keyPath : KeyPath<A.Publisher.Output, B>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath : ëa
 	let combineIdentifier : CombineIdentifier
  }
 
  class Combine.DebugHook : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var lock : UnsafeMutablePointer<os_unfair_lock_s> // +0x10 (0x8)
+	var lock : os_unfair_lock_s // +0x10 (0x8)
 	var handlers : Handler // +0x18 (0x8)
 
 	// Swift methods
@@ -730,13 +749,13 @@
  struct Combine.Termination {
 
 	// Properties
-	var inner : Publishers.PrefixUntilOutput<A, B>.Inner<A1, B1>
+	var inner : Inner
  }
 
  struct Combine.Prefix {
 
 	// Properties
-	var inner : Publishers.PrefixUntilOutput<A, B>.Inner<A1, B1>
+	var inner : Inner
  }
 
  class Combine.SubjectSubscriber {
@@ -745,7 +764,7 @@
 	// Properties
 	let upstream : A
 	let initial : B
-	let nextPartialResult : (_:_:)
+	let nextPartialResult : Publisher
  }
 
  class Combine.Inner {
@@ -754,7 +773,7 @@
 	// Properties
 	let upstream : A
 	let initial : B
-	let nextPartialResult : (_:_:)
+	let nextPartialResult : Publisher
  }
 
  class Combine.Inner {
@@ -762,7 +781,7 @@
 
 	// Properties
 	let upstream : A
-	let transform : (_:)
+	let transform : Publisher
  }
 
  class Combine.Inner {
@@ -770,7 +789,7 @@
 
 	// Properties
 	let upstream : A
-	let transform : (_:)
+	let transform : Publisher
  }
 
  class Combine.Inner {
@@ -862,7 +881,8 @@
  struct Combine.Publisher {
 
 	// Properties
-	let result : Result<A, B>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let result : \
  }
 
  class Combine.Inner {
@@ -881,7 +901,7 @@
 	// Properties
 	let upstream : A
 	let initialResult : B
-	let nextPartialResult : (_:_:)
+	let nextPartialResult : Publisher
  }
 
  class Combine.Inner {
@@ -890,7 +910,7 @@
 	// Properties
 	let upstream : A
 	let initialResult : B
-	let nextPartialResult : (_:_:)
+	let nextPartialResult : Publisher
  }
 
  class Combine.Inner {
@@ -921,7 +941,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -929,7 +949,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -950,11 +970,12 @@
  }
 
  class Combine.Outer {
- class Combine.InnerLatest {
- struct Combine.RoutingSubscription {
+ struct Combine.Side {
 
 	// Properties
-	let _parent : Outer
+	let index : Int
+	let inner : Outer
+	let combineIdentifier : CombineIdentifier
  }
 
  struct Combine.Retry {
@@ -983,14 +1004,14 @@
 
 	// Properties
 	let upstream : A
-	let transform : (_:)
+	let transform : Publisher
  }
 
  struct Combine.Inner {
 
 	// Properties
 	let downstream : A1
-	let map : (_:)
+	let map : Publisher
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -998,7 +1019,7 @@
 
 	// Properties
 	let upstream : A
-	let interval : B.Scheduler.SchedulerTimeType.Strideable.Stride
+	let interval : Scheduler
 	let scheduler : B
 	let latest : Bool
  }
@@ -1007,8 +1028,8 @@
  enum Combine.State {
 
 	// Properties
-	case ready : (Publishers.Throttle<A, B>, A1)
-	case subscribed : (Publishers.Throttle<A, B>, A1, Subscription, Subscribers.Completion<A1.Subscriber.Failure>?)
+	case ready : Throttle
+	case subscribed : Throttle
 	case terminal  
  }
 
@@ -1017,7 +1038,7 @@
 
 	// Properties
 	let upstream : A
-	let areInIncreasingOrder : (_:_:)
+	let areInIncreasingOrder : Publisher
  }
 
  class Combine.Inner {
@@ -1025,14 +1046,14 @@
 
 	// Properties
 	let upstream : A
-	let areInIncreasingOrder : (_:_:)
+	let areInIncreasingOrder : Publisher
  }
 
  class Combine.Inner {
  struct Combine.ReplaceEmpty {
 
 	// Properties
-	let output : A.Publisher.Output
+	let output : Publisher
 	let upstream : A
  }
 
@@ -1040,7 +1061,7 @@
  struct Combine.ReplaceError {
 
 	// Properties
-	let output : A.Publisher.Output
+	let output : Publisher
 	let upstream : A
  }
 
@@ -1050,7 +1071,8 @@
 	// Properties
 	let upstream : A
 	let prefix : String
-	let file : StaticString
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let file : ¡S
 	let line : UInt
  }
 
@@ -1059,7 +1081,8 @@
 	// Properties
 	let downstream : A1
 	let prefix : String
-	let file : StaticString
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let file : ¡S
 	let line : UInt
 	let combineIdentifier : CombineIdentifier
  }
@@ -1082,11 +1105,11 @@
 
 	// Properties
 	let upstream : A
-	var receiveSubscription : (_:)?
-	var receiveOutput : (_:)?
-	var receiveCompletion : (_:)?
+	var receiveSubscription : Subscription
+	var receiveOutput : Publisher
+	var receiveCompletion : Completion
 	var receiveCancel : ()?
-	var receiveRequest : (_:)?
+	var receiveRequest : Demand
  }
 
  class Combine.Inner {
@@ -1101,16 +1124,17 @@
  struct Combine.CombineIdentifier {
 
 	// Properties
-	var value : UInt64 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : ÛS // +0x0
  }
 
  struct Combine.Debounce {
 
 	// Properties
 	let upstream : A
-	let dueTime : B.Scheduler.SchedulerTimeType.Strideable.Stride
+	let dueTime : Scheduler
 	let scheduler : B
-	let options : B.Scheduler.SchedulerOptions?
+	let options : Scheduler
  }
 
  class Combine.Inner {
@@ -1139,14 +1163,14 @@
 
 	// Properties
 	let upstream : A
-	let transform : (_:)
+	let transform : Publisher
  }
 
  struct Combine.TryMap {
 
 	// Properties
 	let upstream : A
-	let transform : (_:)
+	let transform : Publisher
  }
 
  class Combine.Inner {
@@ -1154,7 +1178,7 @@
 
 	// Properties
 	let downstream : A1
-	let map : (_:)
+	let map : Publisher
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -1162,10 +1186,10 @@
 
 	// Properties
 	let upstream : A
-	let interval : B.Scheduler.SchedulerTimeType.Strideable.Stride
+	let interval : Scheduler
 	let scheduler : B
-	let options : B.Scheduler.SchedulerOptions?
-	let customError : ()?
+	let options : Scheduler
+	let customError : Publisher
  }
 
  class Combine.Inner {
@@ -1197,8 +1221,8 @@
  enum Combine.State {
 
 	// Properties
-	case ready : (Publishers.Buffer<A>, A1)
-	case subscribed : (Publishers.Buffer<A>, A1, Subscription)
+	case ready : Buffer
+	case subscribed : Buffer
 	case terminal  
  }
 
@@ -1257,7 +1281,7 @@
 
 	// Properties
 	let upstream : A
-	let handler : (_:)
+	let handler : Publisher
  }
 
  class Combine.Inner {
@@ -1265,7 +1289,7 @@
 
 	// Properties
 	let upstream : A
-	let handler : (_:)
+	let handler : Publisher
  }
 
  class Combine.Inner {
@@ -1317,16 +1341,16 @@
 
 	// Properties
 	let upstream : B
-	let maxPublishers : Subscribers.Demand
-	let transform : (_:)
+	let maxPublishers : Demand
+	let transform : Publisher
  }
 
- class Combine.Inner {
+ class Combine.Outer {
  struct Combine.Side {
 
 	// Properties
 	let index : Int
-	let inner : Inner
+	let outer : Outer
 	let combineIdentifier : CombineIdentifier
  }
 
@@ -1334,18 +1358,18 @@
 
 	// Properties
 	let upstream : A
-	let interval : B.Scheduler.SchedulerTimeType.Strideable.Stride
-	let tolerance : B.Scheduler.SchedulerTimeType.Strideable.Stride
+	let interval : Scheduler
+	let tolerance : Scheduler
 	let scheduler : B
-	let options : B.Scheduler.SchedulerOptions?
+	let options : Scheduler
  }
 
  class Combine.Inner {
  enum Combine.State {
 
 	// Properties
-	case ready : (Publishers.Delay<A, B>, A1)
-	case subscribed : (Publishers.Delay<A, B>, A1, Subscription)
+	case ready : Delay
+	case subscribed : Delay
 	case terminal  
  }
 
@@ -1368,7 +1392,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {
@@ -1376,7 +1400,7 @@
 
 	// Properties
 	let upstream : A
-	let predicate : (_:)
+	let predicate : Publisher
  }
 
  class Combine.Inner {

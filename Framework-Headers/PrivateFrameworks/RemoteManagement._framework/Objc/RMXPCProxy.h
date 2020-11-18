@@ -10,8 +10,10 @@
 {
 }
 
++ (id)newAgentConnection;
 + (id)newConnection;
 + (id)newConnectionWithListenerEndpoint:(id)arg1;
++ (id)newDaemonConnection;
 + (id)newInterface;
 
 @end

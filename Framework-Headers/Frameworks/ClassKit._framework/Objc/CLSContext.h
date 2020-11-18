@@ -22,10 +22,12 @@
     long long _displayOrder;
     NSString *_identifier;
     long long _type;
-    NSString *_storeIdentifier;
-    NSString *_storeTeamID;
-    long long _authorizationStatus;
+    NSString *_customTypeName;
+    NSString *_summary;
     NSString *_stableObjectID;
+    NSString *_storeTeamID;
+    NSString *_storeIdentifier;
+    long long _authorizationStatus;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
@@ -33,16 +35,20 @@
 @property (copy, nonatomic) NSString *contentStoreIdentifier;
 @property (readonly, nonatomic) CLSActivity *currentActivity;
 @property (copy, nonatomic) NSString *currentActivityID;
+@property (copy, nonatomic) NSString *customTypeName; // @synthesize customTypeName=_customTypeName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayOrder;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSArray *identifierPath;
 @property (copy, nonatomic) NSArray *path; // @synthesize path=_path;
 @property (copy, nonatomic) NSString *stableObjectID; // @synthesize stableObjectID=_stableObjectID;
 @property (copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property (copy, nonatomic) NSString *storeTeamID; // @synthesize storeTeamID=_storeTeamID;
+@property (copy, nonatomic) NSString *summary; // @synthesize summary=_summary;
 @property (readonly) Class superclass;
+@property (nonatomic) struct CGImage *thumbnail;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *topic;
 @property (nonatomic) long long type; // @synthesize type=_type;
@@ -51,13 +57,17 @@
 + (id)allowedTopics;
 + (id)arrayOfStringClasses;
 + (BOOL)conformsToProtocol:(id)arg1;
++ (id)objectIDForIdentifierPath:(id)arg1;
 + (id)objectIDPathFromIdentifierPath:(id)arg1;
 + (id)relations;
 + (id)reservedContextTypes;
++ (id)stableObjectIDForIdentifierPath:(id)arg1;
 + (id)stableObjectIDPathFromIdentifierPath:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)validatedContextIdentifierPathFromPath:(id)arg1;
 - (void).cxx_destruct;
 - (id)_init;
+- (void)_setType:(long long)arg1 identifier:(id)arg2 title:(id)arg3;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (void)addChildContext:(id)arg1;
@@ -76,7 +86,8 @@
 - (id)newItemProvider;
 - (void)removeFromParent;
 - (void)resignActive;
-- (void)setPathAndGenerateObjectID:(id)arg1;
+- (void)setIdentifierPathAndGenerateObjectID:(id)arg1;
+- (id)thumbnailBlob;
 - (BOOL)validateObject:(id *)arg1;
 
 @end

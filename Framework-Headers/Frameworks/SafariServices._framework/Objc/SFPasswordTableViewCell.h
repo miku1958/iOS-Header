@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 - (void)safari_copyUserName;
 - (void)setIcon:(id)arg1;
 - (void)setSavedPassword:(id)arg1 searchPattern:(id)arg2;
+- (void)setSavedPassword:(id)arg1 searchPattern:(id)arg2 showWarningImage:(BOOL)arg3;
+- (void)setSavedPassword:(id)arg1 withWarnings:(id)arg2;
 - (void)showPlaceholderImageForDomain:(id)arg1 backgroundColor:(id)arg2;
 
 @end

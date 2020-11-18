@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class UIGestureRecognizer, UIPress, UITouch;
+@class UIEvent, UIGestureRecognizer, UIPress, UITouch;
 
 @protocol UIGestureRecognizerDelegatePrivate <UIGestureRecognizerDelegate>
 
@@ -14,6 +14,7 @@
 - (BOOL)_gestureRecognizer:(UIGestureRecognizer *)arg1 canBePreventedByGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (BOOL)_gestureRecognizer:(UIGestureRecognizer *)arg1 canPreventGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (BOOL)_gestureRecognizer:(UIGestureRecognizer *)arg1 shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)arg2;
+- (BOOL)_gestureRecognizer:(UIGestureRecognizer *)arg1 shouldReceiveEvent:(UIEvent *)arg2;
 - (BOOL)_gestureRecognizer:(UIGestureRecognizer *)arg1 shouldReceivePress:(UIPress *)arg2;
 - (BOOL)_gestureRecognizer:(UIGestureRecognizer *)arg1 shouldReceiveTouch:(UITouch *)arg2;
 - (BOOL)_gestureRecognizer:(UIGestureRecognizer *)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)arg2;

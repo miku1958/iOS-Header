@@ -73,6 +73,7 @@
 - (void)_identifyObjCClassStructureBlocksForIsa:(unsigned long long)arg1 isMetaclass:(BOOL)arg2 withScanner:(id)arg3 addressIdentifierBlock:(CDUnknownBlockType)arg4;
 - (id)_initWithClass:(unsigned long long)arg1 type:(unsigned int)arg2 realizedOnly:(BOOL)arg3 infoMap:(id)arg4 objectIdentifier:(id)arg5 reader:(CDUnknownBlockType)arg6;
 - (void)_logDescriptionWithSuperclasses:(BOOL)arg1 indentation:(int)arg2 toLogger:(CDUnknownBlockType)arg3;
+- (unsigned int)_objcABIFromObjectIdentifier:(id)arg1;
 - (void)_parseIvarsAndLayouts;
 - (void)_processARRLayout:(const char *)arg1 scanType:(unsigned int)arg2;
 - (void)_replaceField:(id)arg1 withFields:(id)arg2;

@@ -16,6 +16,7 @@
     int _mediaEntityType;
     NSString *_persistentID;
     NSString *_spotlightIdentifier;
+    NSString *_universalLibraryID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property (copy, nonatomic) NSString *spotlightIdentifier; // @synthesize spotlightIdentifier=_spotlightIdentifier;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *universalLibraryID; // @synthesize universalLibraryID=_universalLibraryID;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

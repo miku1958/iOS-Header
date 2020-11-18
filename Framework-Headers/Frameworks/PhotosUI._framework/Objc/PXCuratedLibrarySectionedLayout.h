@@ -73,7 +73,7 @@
 - (void)clearLastVisibleAreaAnchoringInformation;
 - (CDUnknownBlockType)dateIntervalFutureForContentInRect:(struct CGRect)arg1;
 - (void)dealloc;
-- (void)didFaultInSublayout:(id)arg1 fromEstimatedContentSize:(struct CGSize)arg2;
+- (void)didFaultInSublayout:(id)arg1 atIndex:(long long)arg2 fromEstimatedContentSize:(struct CGSize)arg3;
 - (void)enumerateAssetsSectionSublayoutsInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateAssetsSectionSublayoutsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateHeroSpritesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -95,7 +95,7 @@
 - (long long)sublayoutIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
 - (void)update;
 - (id)viewModel:(id)arg1 dominantAssetCollectionReferenceForZoomLevel:(long long)arg2;
-- (void)willFaultOutSublayout:(id)arg1;
+- (void)willFaultOutSublayout:(id)arg1 atIndex:(long long)arg2;
 
 @end
 

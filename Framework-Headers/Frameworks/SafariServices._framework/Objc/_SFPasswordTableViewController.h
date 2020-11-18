@@ -10,7 +10,7 @@
 #import <SafariServices/UISearchResultsUpdating-Protocol.h>
 #import <SafariServices/_SFPasswordIconControllerDelegate-Protocol.h>
 
-@class NSCountedSet, NSString, UISearchController, _SFPasswordIconController;
+@class NSCountedSet, NSString, UISearchController, _SFPasswordIconController, _SFPasswordTableConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface _SFPasswordTableViewController : UITableViewController <UISearchBarDelegate, UISearchResultsUpdating, _SFPasswordIconControllerDelegate>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _SFPasswordIconController *_iconController;
     NSCountedSet *_visibleDomains;
     UISearchController *_searchController;
+    _SFPasswordTableConfiguration *_configuration;
     NSString *_searchPattern;
 }
 
@@ -25,23 +26,27 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *searchPattern; // @synthesize searchPattern=_searchPattern;
+@property (strong, nonatomic) NSString *searchQuery;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_updateIconForDomain:(id)arg1 forCell:(id)arg2;
+- (void)handleContextMenuDeleteForIndexPath:(id)arg1;
 - (void)iconDidUpdateForDomain:(id)arg1 iconController:(id)arg2;
 - (id)initWithStyle:(long long)arg1 siteMetadataManager:(id)arg2 configuration:(id)arg3;
 - (long long)positionForBar:(id)arg1;
 - (void)searchPatternDidUpdate;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)shareSavedPassword:(id)arg1 modalPresentationSourceView:(id)arg2;
 - (BOOL)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
+- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (BOOL)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)updateSearchResultsForSearchController:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

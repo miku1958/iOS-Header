@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet;
+@class NSSet, NSString;
 
 @protocol ACDPluginEntryProtocol
 
+@property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) id principalObject;
 @property (readonly, nonatomic) NSSet *supportedAccountTypes;
 @property (readonly, nonatomic) NSSet *supportedDataclasses;

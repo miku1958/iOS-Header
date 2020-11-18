@@ -20,12 +20,15 @@
 @property (strong, nonatomic) NSMutableDictionary *defaults; // @synthesize defaults=_defaults;
 
 + (id)findOptimalBottleIDsWithContextData:(id)arg1 error:(id *)arg2;
++ (long long)getCDPStatus:(id)arg1 error:(id *)arg2;
 + (id)newFriendsWithContextData:(id)arg1 error:(id *)arg2;
 + (id)newFriendsWithContextData:(id)arg1 resetReason:(long long)arg2 error:(id *)arg3;
 + (id)performEscrowRecoveryWithContextData:(id)arg1 escrowArguments:(id)arg2 error:(id *)arg3;
 + (BOOL)platformSupportsSOS;
 + (void)recoverOctagonUsingData:(id)arg1 recoveryKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
 + (id)recoverWithContextData:(id)arg1 bottleID:(id)arg2 escrowedEntropy:(id)arg3 error:(id *)arg4;
++ (id)resetProtectedData:(id)arg1 error:(id *)arg2;
++ (BOOL)setCDPEnabled:(id)arg1 error:(id *)arg2;
 + (void)setNewRecoveryKeyWithData:(id)arg1 recoveryKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (long long)_fetchCliqueStatus:(id)arg1 error:(id *)arg2;
@@ -37,6 +40,7 @@
 - (long long)fetchCliqueStatus:(id *)arg1;
 - (long long)fetchCliqueStatus:(id)arg1 error:(id *)arg2;
 - (void)fetchEscrowContents:(CDUnknownBlockType)arg1;
+- (id)initWithContextData:(id)arg1;
 - (id)initWithContextData:(id)arg1 error:(id *)arg2;
 - (BOOL)isLastFriend:(id *)arg1;
 - (BOOL)isOctagonPairingEnabled;

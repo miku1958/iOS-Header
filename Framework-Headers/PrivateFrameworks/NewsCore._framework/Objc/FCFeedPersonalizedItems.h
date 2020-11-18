@@ -10,14 +10,12 @@
 
 @interface FCFeedPersonalizedItems : NSObject
 {
-    NSArray *_itemsToShow;
-    NSArray *_itemsToHide;
+    NSArray *_sortedItems;
     NSMapTable *_scoreProfiles;
 }
 
-@property (strong, nonatomic) NSArray *itemsToHide; // @synthesize itemsToHide=_itemsToHide;
-@property (strong, nonatomic) NSArray *itemsToShow; // @synthesize itemsToShow=_itemsToShow;
 @property (strong, nonatomic) NSMapTable *scoreProfiles; // @synthesize scoreProfiles=_scoreProfiles;
+@property (strong, nonatomic) NSArray *sortedItems; // @synthesize sortedItems=_sortedItems;
 
 - (void).cxx_destruct;
 

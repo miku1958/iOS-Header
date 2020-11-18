@@ -12,7 +12,7 @@
 
 @interface MPCStoreLibraryPersonalizationMiddlewareOperation : MPAsyncOperation <MPMiddlewareAutomaticDependencyOperation>
 {
-    struct NSMapTable *_inputOperations;
+    NSMapTable *_inputOperations;
     CDUnknownBlockType _invalidationHandler;
     NSArray *_invalidationObservers;
     MPCStoreLibraryPersonalizationMiddleware *_middleware;

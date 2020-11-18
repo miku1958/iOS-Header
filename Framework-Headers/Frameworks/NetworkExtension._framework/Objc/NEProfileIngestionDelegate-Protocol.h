@@ -29,6 +29,7 @@
 - (BOOL)saveIngestedConfiguration;
 - (NEConfiguration *)setAsideConfigurationName:(NSString *)arg1 unsetAside:(BOOL)arg2;
 - (void)unlockConfigurations;
+- (BOOL)updateAccountIdentifiers:(NSDictionary *)arg1;
 - (BOOL)updateAppLayerVPNMappingRules:(NSDictionary *)arg1;
 - (BOOL)updateDefaultAfterAddingConfiguration;
 - (BOOL)updateDefaultAfterDeletingConfiguration;

@@ -33,6 +33,7 @@
 - (void)_handleWirelessDataUsageChangedNotification:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)selectSpecifier:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (id)specifiers;

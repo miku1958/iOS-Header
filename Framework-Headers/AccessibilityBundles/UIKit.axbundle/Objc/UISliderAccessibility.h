@@ -18,15 +18,12 @@
 - (unsigned long long)_accessibilityAutomationType;
 - (void)_accessibilityBumpValue:(BOOL)arg1;
 - (double)_accessibilityIncreaseAmount:(BOOL)arg1;
-- (id)_accessibilityKeyCommands;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
 - (double)_accessibilityMaxValue;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
 - (double)_accessibilityMinValue;
 - (double)_accessibilityNumberValue;
 - (void)_accessibilitySetValue:(id)arg1;
-- (void)_axFKADecrement;
-- (void)_axFKAIncrement;
 - (id)_viewToAddFocusLayer;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;
@@ -37,6 +34,7 @@
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)isAccessibilityElement;
+- (void)layoutSubviews;
 
 @end
 

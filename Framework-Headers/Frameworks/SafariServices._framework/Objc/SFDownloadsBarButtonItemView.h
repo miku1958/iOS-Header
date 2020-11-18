@@ -4,32 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIButton.h>
 
 #import <SafariServices/CAStateControllerDelegate-Protocol.h>
 #import <SafariServices/SFDeferrableUpdateView-Protocol.h>
 
-@class CAStateController, UIBarButtonItem, UIButton, UIProgressView;
+@class CAStateController, UIBarButtonItem, UIProgressView;
 
 __attribute__((visibility("hidden")))
-@interface SFDownloadsBarButtonItemView : UIView <SFDeferrableUpdateView, CAStateControllerDelegate>
+@interface SFDownloadsBarButtonItemView : UIButton <SFDeferrableUpdateView, CAStateControllerDelegate>
 {
-    UIButton *_innerButton;
     UIProgressView *_progressView;
-    UIBarButtonItem *_item;
+    double _barButtonItemWidth;
     double _progress;
     CDStruct_4e0a34f2 deferrableUpdateViewState;
     CAStateController *_stateController;
+    UIBarButtonItem *_barButtonItem;
 }
 
+@property (weak, nonatomic) UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
+
++ (id)buttonWithBarButtonItem:(id)arg1;
 - (void).cxx_destruct;
+- (struct CGRect)_barButtonHitRect;
 - (void)_buttonPressed;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (struct CGRect)_selectedIndicatorBounds;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (CDStruct_4e0a34f2 *)deferrableUpdateViewState;
 - (void)didMoveToWindow;
-- (id)initWithBarButtonItem:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)pulse;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setProgress:(double)arg1;

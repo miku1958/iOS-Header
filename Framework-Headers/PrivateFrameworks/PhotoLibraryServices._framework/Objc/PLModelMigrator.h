@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSFileManager, PLLibraryServicesManager, PLMigrationPostProcessingToken, PLPhotoLibrary, PLPhotoLibraryPathManager, PLRelationshipOrderKeyManager, PLThumbnailManager, PLXPCTransaction;
+@class NSDictionary, NSFileManager, PLCoreAnalyticsEventManager, PLLazyObject, PLLibraryServicesManager, PLMigrationPostProcessingToken, PLPhotoLibrary, PLPhotoLibraryPathManager, PLRelationshipOrderKeyManager, PLXPCTransaction;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PLModelMigrator : NSObject
@@ -16,8 +16,9 @@
     NSDictionary *_syncedPropertiesByUUID;
     PLPhotoLibraryPathManager *_pathManager;
     PLPhotoLibrary *_photoLibrary;
-    PLThumbnailManager *_thumbnailManager;
     PLRelationshipOrderKeyManager *_relationshipOrderKeyManager;
+    PLLazyObject *_lazyThumbnailManager;
+    PLLazyObject *_lazyCoreAnalysticsEventManager;
     PLLibraryServicesManager *_libraryServicesManager;
     BOOL _didImportFileSystemAssets;
     BOOL _rebuildRequired;
@@ -32,6 +33,7 @@
     NSFileManager *_fileManager;
 }
 
+@property (readonly) PLCoreAnalyticsEventManager *analyticsEventManager;
 @property (readonly, getter=isCloudPhotoLibraryEnabled) BOOL cloudPhotoLibraryEnabled;
 @property (nonatomic) struct os_unfair_lock_s containedObjectsLock; // @synthesize containedObjectsLock=_containedObjectsLock;
 @property (strong, nonatomic) NSFileManager *fileManager; // @synthesize fileManager=_fileManager;
@@ -64,6 +66,7 @@
 - (BOOL)_addUUIDsToExistingKeywordsInStore:(id)arg1;
 - (BOOL)_applyDataProtectionToDCIMFromClassBToClassC;
 - (void)_applySyncedProperties:(id)arg1 toAsset:(id)arg2;
+- (unsigned long long)_assetCountForStore:(id)arg1;
 - (BOOL)_batchOfflineDeleteFromDatabaseOnlyAssets:(id)arg1 inManagedObjectContext:(id)arg2 error:(id *)arg3;
 - (BOOL)_cleanupInvalidAlbumsAndFoldersInStore:(id)arg1;
 - (BOOL)_cleanupLegacyFiles;
@@ -204,7 +207,7 @@
 - (BOOL)_identifyVariationsAndDepthAdjustmentsForAsset:(id)arg1;
 - (BOOL)_identifyVariationsAndDepthAdjustmentsIncludingBakedInLongExposure:(BOOL)arg1 inStore:(id)arg2;
 - (void)_importAfterCrash:(id)arg1 dictionariesByPhotoStreamID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)_importAllDCIMAssets:(id)arg1 pendingFraction:(float)arg2;
+- (void)_importAllDCIMAssets:(id)arg1 legacyRecoveryEnabled:(BOOL)arg2 pendingFraction:(float)arg3;
 - (id)_importFileSystemImportAssets:(id)arg1 forceUpdate:(BOOL)arg2 progress:(id)arg3;
 - (BOOL)_initiateLightweightReimportOfAllPhotoCloudSharingMetadataInStore:(id)arg1;
 - (BOOL)_invalidateReverseGeocodingDataInStore:(id)arg1;
@@ -383,6 +386,7 @@
 - (void)dontImportFileSystemDataIntoDatabase;
 - (long long)faceMigrationResetLevelRequiredForPreviousStoreVersion:(unsigned long long)arg1;
 - (BOOL)faceQualityResetRequiredForPreviousStoreVersion:(unsigned long long)arg1;
+- (void)filesystemImportResultsUpdateKeywordWithImportedAssets:(id)arg1;
 - (BOOL)fixPossiblyIncorrectAddedDateForAsset:(id)arg1;
 - (BOOL)fixupStatesWithUnreachableAssetUUIDsInStore:(id)arg1;
 - (BOOL)fixupUnknownAnalysisStatesInStore:(id)arg1;
@@ -418,6 +422,7 @@
 - (BOOL)processWelterweightMigrationStageOnStore:(id)arg1 fromVersion:(int)arg2 toVersion:(int)arg3 migrationContext:(id)arg4;
 - (BOOL)rebuildAllMomentsInStore:(id)arg1;
 - (BOOL)rebuildRequired;
+- (BOOL)reconsiderAllowedForAnalysisOnAssetsMarkedNotAllowedInStore:(id)arg1;
 - (BOOL)relocateOriginalUBFPaths:(id)arg1;
 - (void)repairSingletonObjectsInDatabase;
 - (BOOL)resetAnalysisStateForVideosWithMoc:(id)arg1;

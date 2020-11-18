@@ -21,6 +21,7 @@
 - (void)generateOnDemandResourcesForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)imageDataForAsset:(id)arg1 format:(int)arg2 allowPlaceholder:(BOOL)arg3 wantURLOnly:(BOOL)arg4 networkAccessAllowed:(BOOL)arg5 trackCPLDownload:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (BOOL)imageDataForAsset:(id)arg1 format:(int)arg2 allowPlaceholder:(BOOL)arg3 wantURLOnly:(BOOL)arg4 networkAccessAllowed:(BOOL)arg5 trackCPLDownload:(BOOL)arg6 outImageData:(id *)arg7 outImageDataInfo:(id *)arg8 outCPLDownloadContext:(id *)arg9 error:(id *)arg10;
+- (id)projectExtensionDataForProjectUuid:(id)arg1;
 - (BOOL)sandboxExtensionForAssetResourcePath:(id)arg1 sandboxExtensionToken:(id *)arg2 error:(id *)arg3;
 - (BOOL)sandboxExtensionForFileSystemBookmark:(id)arg1 bookmarkURL:(id *)arg2 sandboxExtensionToken:(id *)arg3 error:(id *)arg4;
 - (void)saveAssetWithJobDictionary:(id)arg1 imageSurface:(struct __IOSurface *)arg2 previewImageSurface:(struct __IOSurface *)arg3 completionHandler:(CDUnknownBlockType)arg4;

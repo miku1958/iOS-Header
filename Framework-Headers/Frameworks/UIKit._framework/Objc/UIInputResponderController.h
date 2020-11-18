@@ -22,6 +22,7 @@
     NSMutableDictionary *_preservedViewSets;
     NSMutableArray *_animationStyleStack;
     NSHashTable *_visibilityObservers;
+    NSMutableDictionary *_keyboardSnapshots;
     UIInputViewPostPinningReloadState *_postPinningReloadState;
     NSMutableSet *_pinningResponders;
     NSMutableDictionary *_persistentInputAccessoryResponders;
@@ -40,8 +41,9 @@
     BOOL _allowNilResponderReload;
     BOOL _reloadInputViewsForcedIsAllowed;
     BOOL _blockedReloadInputViewsForDictation;
+    id _keyForPreservingInputViews;
+    id _keyForRestoringInputViews;
     BOOL _hideSystemInputAssistantView;
-    BOOL _preservingInputViews;
     UIScene *_scene;
     long long _currentState;
     UIKBRenderConfig *_restorableRenderConfig;
@@ -68,7 +70,6 @@
 @property (readonly, nonatomic, getter=_isIgnoringReloadInputViews) BOOL ignoringReloadInputViews;
 @property (readonly, nonatomic) UIInputViewSet *inputViews;
 @property (readonly, nonatomic) BOOL isOnScreen;
-@property (nonatomic) BOOL preservingInputViews; // @synthesize preservingInputViews=_preservingInputViews;
 @property (readonly, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 @property (strong, nonatomic) UIKBRenderConfig *restorableRenderConfig; // @synthesize restorableRenderConfig=_restorableRenderConfig;
 @property (readonly, nonatomic) UIWindowScene *scene;
@@ -129,10 +130,12 @@
 - (void)forceOrderOutAutomaticExceptAccessoryView;
 - (void)forceOrderOutAutomaticToDirection:(int)arg1 withDuration:(double)arg2;
 - (void)forceReloadInputViews;
+- (id)getKeyboardSnapshotInWindow:(long long)arg1;
 - (BOOL)hasDictationKeyboard;
 - (id)initWithScene:(id)arg1;
 - (void)inputModeChangedForRenderConfig:(id)arg1;
 - (void)inputResponderControllerWillResume:(id)arg1;
+- (BOOL)isUndocked;
 - (BOOL)maximize;
 - (BOOL)maximizeWithAnimation:(BOOL)arg1;
 - (BOOL)maximizeWithAnimationStyle:(id)arg1;
@@ -155,6 +158,7 @@
 - (void)setInputViews:(id)arg1 animated:(BOOL)arg2;
 - (void)setInputViews:(id)arg1 animationStyle:(id)arg2;
 - (void)setKeyWindowSceneInputViews:(id)arg1 animationStyle:(id)arg2;
+- (void)setKeyboardSnapshot:(id)arg1 inWindow:(long long)arg2;
 - (void)setTextEffectsWindowLevelForInputView:(id)arg1 responder:(id)arg2;
 - (void)setWindowSceneInputViews:(id)arg1 animationStyle:(id)arg2;
 - (void)traitCollectionDidChange;

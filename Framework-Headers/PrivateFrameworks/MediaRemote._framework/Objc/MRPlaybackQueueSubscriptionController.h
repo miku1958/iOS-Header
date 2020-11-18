@@ -39,7 +39,7 @@
 - (id)offsetForIdentifier:(id)arg1;
 - (void)removeRequest:(id)arg1;
 - (id)requestForContentItemIdentifier:(id)arg1;
-- (id)requestForSubscribedContentItemIdentifier:(struct NSString *)arg1;
+- (id)requestForSubscribedContentItemIdentifier:(id)arg1;
 - (void)restoreStateFromController:(id)arg1;
 - (void)subscribeToPlaybackQueue:(id)arg1 forRequest:(id)arg2;
 

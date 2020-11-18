@@ -34,6 +34,7 @@
 + (void)initialize;
 + (BOOL)isCountryCodePartOfNorthernHemisphere:(id)arg1;
 + (BOOL)isCountryCodePartOfSouthernHemisphere:(id)arg1;
++ (BOOL)isDateValid:(id)arg1;
 + (BOOL)isFirstMonthOfSeasonForLocalDate:(id)arg1;
 + (BOOL)isFirstTenDaysOfSeasonForLocalDate:(id)arg1;
 + (BOOL)isFirstTwoWeeksOfMonthForLocalDate:(id)arg1;
@@ -59,6 +60,7 @@
 + (id)universalDateFromLocalDate:(id)arg1;
 + (id)universalDateFromLocalDate:(id)arg1 atLocation:(id)arg2;
 + (id)universalDateFromLocalDate:(id)arg1 inTimeZone:(id)arg2;
++ (id)validDateForDate:(id)arg1;
 + (long long)weekOfMonthFromDate:(id)arg1;
 + (long long)weekOfYearFromDate:(id)arg1;
 + (long long)yearForWeekOfYearFromDate:(id)arg1;

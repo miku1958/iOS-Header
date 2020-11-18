@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXGSolidColorSource-Protocol.h>
 #import <PhotosUICore/PXGSublayoutProvider-Protocol.h>
 
-@class NSIndexSet, NSString;
+@class NSIndexSet, NSString, UIColor;
 
 @interface PXGPPTGridStackLayout : PXGStackLayout <PXGSublayoutProvider, PXGSolidColorSource, PXGAssetBadgeDecorationSource, PXGSelectionDecorationSource>
 {
@@ -21,7 +21,7 @@
     long long _selectionDecorationStyle;
     BOOL _decorated;
     long long _estimatedNumberOfRowsPerSection;
-    struct UIColor *_spriteColor;
+    UIColor *_spriteColor;
     NSIndexSet *_selectedItemsPerSection;
     struct PXAssetBadgeInfo _assetBadgeInfos[12];
 }
@@ -35,11 +35,12 @@
 - (void)_initializeBadgeInfos;
 - (void)_initializeSelectedItems;
 - (struct PXAssetBadgeInfo)assetBadgeInfoForAsset:(id)arg1 atSpriteIndex:(unsigned int)arg2 inLayout:(id)arg3;
-- (struct UIColor *)colorAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
+- (id)colorAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)initWithSetting:(id)arg1;
 - (id)layout:(id)arg1 createSublayoutAtIndex:(long long)arg2;
 - (struct CGSize)layout:(id)arg1 estimatedContentSizeForSublayoutAtIndex:(long long)arg2 referenceSize:(struct CGSize)arg3;
 - (id)selectedSpriteIndexesInLayout:(id)arg1;
+- (unsigned long long)selectionDecorationAdditionsInLayout:(id)arg1;
 - (long long)selectionDecorationStyleInLayout:(id)arg1;
 - (BOOL)wantsAssetBadgeDecorationsInLayout:(id)arg1;
 

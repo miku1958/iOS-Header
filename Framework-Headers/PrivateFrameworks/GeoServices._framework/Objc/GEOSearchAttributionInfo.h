@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned int _attributionRequirementsMask;
 }
 
+@property (readonly, nonatomic) NSString *appAdamID;
 @property (readonly, nonatomic) NSArray *attributionApps;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) NSString *identifier;

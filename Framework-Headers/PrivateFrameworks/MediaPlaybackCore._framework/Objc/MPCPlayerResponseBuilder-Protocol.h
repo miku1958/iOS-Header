@@ -19,6 +19,7 @@
 - (NSArray *)playerItemCurrentLanguageOptions:(NSArray *)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
 - (CDStruct_fce57115)playerItemDuration:(CDStruct_fce57115)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
 - (long long)playerItemEditingStyleFlags:(long long)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
+- (NSString *)playerItemExplicitBadge:(NSString *)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
 - (BOOL)playerItemIsPlaceholder:(BOOL)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
 - (NSArray *)playerItemLanguageOptionGroups:(NSArray *)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
 - (NSString *)playerItemLocalizedDurationString:(NSString *)arg1 atIndexPath:(NSIndexPath *)arg2 chain:(MPMiddlewareChain *)arg3;
@@ -28,6 +29,7 @@
 - (unsigned long long)playerNumberOfSections:(unsigned long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerPlayingItemGlobalIndex:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (NSIndexPath *)playerPlayingItemIndexPath:(NSIndexPath *)arg1 chain:(MPMiddlewareChain *)arg2;
+- (long long)playerQueueEndAction:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerRepeatType:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerShuffleType:(long long)arg1 chain:(MPMiddlewareChain *)arg2;
 - (long long)playerState:(long long)arg1 chain:(MPMiddlewareChain *)arg2;

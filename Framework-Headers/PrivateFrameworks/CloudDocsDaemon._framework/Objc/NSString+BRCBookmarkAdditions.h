@@ -14,6 +14,7 @@
 + (void)brc_loadForcedPackageExtensions;
 - (id)brc_SHA1WithSalt:(id)arg1;
 - (id)brc_SHA256;
+- (id)brc_fixDocumentExtensionIfNeededForShareURL:(id)arg1;
 - (BOOL)brc_isBlacklistedPackageExtension;
 - (BOOL)brc_isForcedPackageExtension;
 - (id)brc_mangledNameFromURLFragment:(BOOL)arg1;

@@ -17,7 +17,7 @@
 - (void)CADDatabaseGetNextAssignableColorWithReply:(void (^)(int, NSString *))arg1;
 - (void)CADDatabaseGetSequenceNumber:(void (^)(int, int))arg1;
 - (void)CADDatabaseGetUUID:(void (^)(int, NSString *))arg1;
-- (void)CADDatabaseImportICSData:(NSArray *)arg1 intoCalendarsWithIDs:(NSArray *)arg2 optionsMask:(unsigned long long)arg3 reply:(void (^)(int, NSArray *))arg4;
+- (void)CADDatabaseImportEvents:(NSArray *)arg1 fromICSData:(NSArray *)arg2 intoCalendarsWithIDs:(NSArray *)arg3 optionsMask:(unsigned long long)arg4 batchSize:(int)arg5 reply:(void (^)(int, NSArray *))arg6;
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(void (^)(int, unsigned long long))arg1;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseMarkIndividualChangesConsumed:(NSArray *)arg1 reply:(void (^)(int))arg2;

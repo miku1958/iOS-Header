@@ -17,8 +17,6 @@
     long long _projectId;
     NSString *_name;
     WFColor *_color;
-    long long _indent;
-    long long _order;
 }
 
 @property (readonly, nonatomic) BOOL collapsed; // @synthesize collapsed=_collapsed;
@@ -27,9 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryValue;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) long long indent; // @synthesize indent=_indent;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) long long order; // @synthesize order=_order;
 @property (readonly, nonatomic) long long projectId; // @synthesize projectId=_projectId;
 @property (readonly) Class superclass;
 

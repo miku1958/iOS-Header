@@ -23,7 +23,6 @@
 + (id)_getTargetDateForTheLastDays:(long long)arg1 weeks:(long long)arg2 months:(long long)arg3 years:(long long)arg4 seconds:(long long)arg5 targetDate:(id)arg6;
 + (id)_getTargetDateWithUnit:(int)arg1 dateValue:(id)arg2;
 + (id)_infoFromSingleQuery:(id)arg1;
-+ (id)_invertedPersonMatchesPredicateForCriteria:(id)arg1;
 + (BOOL)_isTextComparator:(int)arg1;
 + (BOOL)_needEqualityForDoubleQuery:(int)arg1;
 + (BOOL)_needToNegateQueryForComparator:(int)arg1;

@@ -9,6 +9,7 @@
 @class NSArray, NSString, NSURL, SFSafariViewControllerConfiguration, UIColor;
 
 @protocol SFServiceViewControllerProtocol <NSObject>
+- (void)beginDigitalHealthTracking;
 - (void)decideCookieSharingForURL:(NSURL *)arg1 callbackURLScheme:(NSString *)arg2;
 - (void)didDetectRemoteViewControllerViewIsHidden;
 - (void)didDetectUserInteractionFromHostApp;
@@ -16,6 +17,7 @@
 - (void)didRequestShowLinkPreviews:(BOOL)arg1;
 - (void)loadURL:(NSURL *)arg1;
 - (void)openCurrentURLInSafari;
+- (void)prepareForDisplayWithCompletionHandler:(void (^)(void))arg1;
 - (void)repostNotificationInViewService:(NSString *)arg1;
 - (void)setConfiguration:(SFSafariViewControllerConfiguration *)arg1;
 - (void)setDismissButtonStyle:(long long)arg1;
@@ -25,6 +27,7 @@
 - (void)setPreferredBarTintColor:(UIColor *)arg1;
 - (void)setPreferredControlTintColor:(UIColor *)arg1;
 - (void)startResolveRedirectionForURL:(NSURL *)arg1;
+- (void)stopDigitalHealthTracking;
 - (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets)arg1 horizontalInsets:(struct UIEdgeInsets)arg2;
 @end
 

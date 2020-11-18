@@ -33,8 +33,7 @@
 - (id)initWithVariableString:(id)arg1 userInputInsertionIndex:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)parameterStateByRemovingAskVariablesAndPopulatingInsertionIndex;
-- (void)processWithVariableSource:(id)arg1 parameter:(id)arg2 isInputParameter:(BOOL)arg3 userInputRequiredHandler:(CDUnknownBlockType)arg4 valueHandler:(CDUnknownBlockType)arg5;
-- (void)processWithVariableSource:(id)arg1 parameter:(id)arg2 userInputRequiredHandler:(CDUnknownBlockType)arg3 valueHandler:(CDUnknownBlockType)arg4;
+- (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (id)serializedRepresentation;
 
 @end

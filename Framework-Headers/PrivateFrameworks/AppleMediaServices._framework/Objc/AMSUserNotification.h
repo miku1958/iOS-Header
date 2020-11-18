@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@class ACAccount, AMSUserNotificationAction, NSArray, NSDictionary, NSMutableDictionary, NSString, NSURL;
+@class ACAccount, AMSUserNotificationAction, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSString, NSURL;
 
 @interface AMSUserNotification : NSObject <AMSBagConsumer>
 {
@@ -18,12 +18,13 @@
     NSURL *_artworkUrl;
     NSURL *_videoUrl;
     NSArray *_buttonActions;
+    NSString *_centerBundleIdentifier;
     AMSUserNotificationAction *_defaultAction;
     NSString *_identifier;
     NSString *_informativeText;
     NSString *_logKey;
     NSDictionary *_metricsEvent;
-    NSString *_centerBundleIdentifier;
+    NSDate *_scheduledTime;
     NSString *_subtitle;
     NSString *_title;
     NSMutableDictionary *_userInfo;
@@ -47,6 +48,7 @@
 @property (nonatomic) long long intent; // @synthesize intent=_intent;
 @property (strong, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property (strong, nonatomic) NSDictionary *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
+@property (strong, nonatomic) NSDate *scheduledTime; // @synthesize scheduledTime=_scheduledTime;
 @property (nonatomic) BOOL shouldSuppressDefaultAction; // @synthesize shouldSuppressDefaultAction=_shouldSuppressDefaultAction;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
@@ -58,6 +60,8 @@
 + (id)_cachedImagePathForIdentifier:(id)arg1 assetURL:(id)arg2;
 + (BOOL)_canParseNotificationWithIdentifier:(id)arg1 userInfo:(id)arg2;
 + (id)_downloadAssetAtUrl:(id)arg1 withIdentifier:(id)arg2 logKey:(id)arg3 bag:(id)arg4;
++ (id)_identifierFromPayload:(id)arg1;
++ (id)_serverFriendlyFormatter;
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
 + (id)bagKeySet;
 + (id)bagSubProfile;
@@ -70,6 +74,7 @@
 + (id)notificationCenter:(id)arg1 openSettingsForNotification:(id)arg2 bag:(id)arg3;
 + (id)notificationWithPayload:(id)arg1 andConfig:(id)arg2;
 + (void)openAppUsingBundleIdentifier:(id)arg1;
++ (BOOL)shouldDeleteNotificationForPayload:(id)arg1 outIdentifier:(id *)arg2;
 + (BOOL)shouldHandleNotificationResponse:(id)arg1;
 + (BOOL)shouldHandleServiceExtensionNotificationRequest:(id)arg1;
 - (void).cxx_destruct;
@@ -78,6 +83,7 @@
 - (id)createNSUserNotification;
 - (id)createUNNotificationActions;
 - (id)createUNNotificationContent;
+- (id)createUNNotificationRequestFromContent:(id)arg1;
 - (id)handleSelectedButton:(id)arg1 bag:(id)arg2;
 - (id)handleSelectedButton:(id)arg1 bagContract:(id)arg2;
 - (id)initWithNSUserNotification:(id)arg1;

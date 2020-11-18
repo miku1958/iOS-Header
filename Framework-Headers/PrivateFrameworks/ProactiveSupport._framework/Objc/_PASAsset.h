@@ -52,8 +52,8 @@
 - (void)invokeWithBundleOverride:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)pathForResourceWithName:(id)arg1 extension:(id)arg2;
 - (id)pathForResourceWithName:(id)arg1 extension:(id)arg2 assetVersion:(unsigned long long *)arg3;
-- (id)pathForResourceWithNameAndExtension:(struct _PASTuple2 *)arg1;
-- (id)pathForResourceWithNameAndExtension:(struct _PASTuple2 *)arg1 assetVersion:(unsigned long long *)arg2;
+- (id)pathForResourceWithNameAndExtension:(id)arg1;
+- (id)pathForResourceWithNameAndExtension:(id)arg1 assetVersion:(unsigned long long *)arg2;
 - (id)pathsForResourcesWithNames:(id)arg1;
 - (id)pathsForResourcesWithNames:(id)arg1 assetVersion:(unsigned long long *)arg2;
 - (id)registerUpdateHandler:(CDUnknownBlockType)arg1;

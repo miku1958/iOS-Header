@@ -7,8 +7,16 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (BUAdditions)
++ (id)bu_URLQueryParameterValueAllowedCharacterSet;
++ (id)bu_booksGroupContainerDocumentsURL;
++ (id)bu_booksGroupContainerURL;
++ (id)bu_booksRepositoryURL;
++ (id)bu_dictionaryForQueryString:(id)arg1 unescapedValues:(BOOL)arg2;
++ (id)bu_mediaURL;
++ (id)bu_queryStringForDictionary:(id)arg1 escapedValues:(BOOL)arg2;
 + (id)bu_urlWithAssetID:(id)arg1;
 - (id)bu_assetIDFromURL;
+- (id)bu_dictionaryForQueryItems;
 - (unsigned long long)bu_fileAllocatedSizeWithError:(id *)arg1;
 - (id)bu_isbnForURI;
 - (id)bu_libraryIDFromURL;

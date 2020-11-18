@@ -280,6 +280,7 @@
 - (_Atomic unsigned long long)currentFullGraphRebuildStamp;
 - (id)dayInHistoryMemoriesForLocalDate:(id)arg1;
 - (id)dayInHistoryMemoryForLocalDate:(id)arg1;
+- (void)dealloc;
 - (void)debugTitlesForAssetCollection:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (id)defaultAssetSortDescriptors;
 - (id)defaultGraphExportFullPath;

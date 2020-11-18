@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsUI2/TSBridgedNewsActivityFactoryType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI226BridgedNewsActivityFactory : _TtCs12_SwiftObject <TSBridgedNewsActivityFactoryType>
+@interface _TtC7NewsUI226BridgedNewsActivityFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tagService;
     MISSING_TYPE *headlineService;

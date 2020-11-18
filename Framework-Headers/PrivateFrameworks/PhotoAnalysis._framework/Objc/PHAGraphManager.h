@@ -9,11 +9,12 @@
 #import <PhotoAnalysis/PFMulticasterDelegate-Protocol.h>
 #import <PhotoAnalysis/PFWeakContainerNilNotificationDelegate-Protocol.h>
 
-@class NSConditionLock, NSMutableSet, PFSerialQueue, PFWeakContainer, PGGraphUpdateManager, PGManager, PHAManager;
+@class NSConditionLock, NSMutableSet, PFDirectMessagingMulticaster, PFSerialQueue, PFWeakContainer, PGGraphUpdateManager, PGManager, PHAManager;
+@protocol PHAGraphManagerClientMessagesMulticaster;
 
 @interface PHAGraphManager : NSObject <PFMulticasterDelegate, PFWeakContainerNilNotificationDelegate>
 {
-    struct PFDirectMessagingMulticaster *_clientMulticaster;
+    PFDirectMessagingMulticaster<PHAGraphManagerClientMessagesMulticaster> *_clientMulticaster;
     NSMutableSet *_clientsWantingUpdates;
     long long _updateManagerSuspendCount;
     BOOL _rebuildInProgress;

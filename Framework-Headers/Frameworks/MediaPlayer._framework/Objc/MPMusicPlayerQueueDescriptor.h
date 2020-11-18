@@ -18,6 +18,7 @@
     NSDictionary *_endTimes;
 }
 
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, nonatomic) NSDictionary *endTimes; // @synthesize endTimes=_endTimes;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;

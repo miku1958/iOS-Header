@@ -20,7 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<ACHEarnedInstanceEntitySyncedEarnedInstancesObserver> syncedEarnedInstancesObserver; // @synthesize syncedEarnedInstancesObserver=_syncedEarnedInstancesObserver;
 

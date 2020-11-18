@@ -43,7 +43,7 @@
 + (id)log;
 + (id)messagesTableName;
 + (id)objectPropertyMapperForSchema:(id)arg1 protectedSchema:(id)arg2;
-+ (id)partialMessagesTableSchemaAndAssociationsToResolve:(id *)arg1;
++ (id)partialMessagesTableSchemaAndForeignKeysToResolve:(id *)arg1 associationsToResolve:(id *)arg2;
 + (id)protectedMessageDataTableSchema;
 + (id)protectedTablesAndForeignKeysToResolve:(id *)arg1;
 + (id)recipientsTableSchemaAndForeignKeysToResolve:(id *)arg1 associationsToResolve:(id *)arg2;

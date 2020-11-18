@@ -15,7 +15,7 @@
 #import <AvatarUI/UICollectionViewDelegate-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class AVTAvatarRecordDataSource, AVTUIEnvironment, AVTUIStickerGeneratorPool, NSArray, NSIndexPath, NSMutableDictionary, NSString, UICollectionView, UIView, _AVTAvatarRecordImageProvider;
+@class AVTAvatarRecordDataSource, AVTStickerConfigurationProvider, AVTUIEnvironment, AVTUIStickerGeneratorPool, NSArray, NSIndexPath, NSMutableDictionary, NSString, UICollectionView, UIView, _AVTAvatarRecordImageProvider;
 @protocol AVTAvatarPickerDelegate, AVTPresenterDelegate, AVTResourceCache, AVTStickerDisclosureValidationDelegate, AVTStickerPagingControllerDelegate, AVTTaskScheduler, OS_dispatch_queue;
 
 @interface AVTStickerPagingController : NSObject <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, AVTStickerSheetControllerDelegate, AVTNotifyingContainerViewDelegate, AVTAvatarActionsViewControllerDelegate, AVTObjectViewController, AVTAvatarPicker>
@@ -34,6 +34,7 @@
     id<AVTTaskScheduler> _taskScheduler;
     id<AVTResourceCache> _cache;
     _AVTAvatarRecordImageProvider *_imageProvider;
+    AVTStickerConfigurationProvider *_stickerConfigurationProvider;
     NSArray *_memojiStickerConfigurations;
     UIView *_view;
     UICollectionView *_collectionView;
@@ -64,6 +65,7 @@
 @property (strong, nonatomic) NSIndexPath *pageIndexBeforeSizeChange; // @synthesize pageIndexBeforeSizeChange=_pageIndexBeforeSizeChange;
 @property (weak, nonatomic) id<AVTPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *renderingQueue; // @synthesize renderingQueue=_renderingQueue;
+@property (readonly, nonatomic) AVTStickerConfigurationProvider *stickerConfigurationProvider; // @synthesize stickerConfigurationProvider=_stickerConfigurationProvider;
 @property (strong, nonatomic) AVTUIStickerGeneratorPool *stickerGeneratorPool; // @synthesize stickerGeneratorPool=_stickerGeneratorPool;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<AVTTaskScheduler> taskScheduler; // @synthesize taskScheduler=_taskScheduler;
@@ -83,7 +85,7 @@
 - (id)collectionViewForPPT;
 - (void)deletePageForRecord:(id)arg1 atIndex:(long long)arg2;
 - (id)firstPageItemView;
-- (id)initWithRecordDataSource:(id)arg1 recordImageProvider:(id)arg2 environment:(id)arg3 allowsPeel:(BOOL)arg4;
+- (id)initWithRecordDataSource:(id)arg1 recordImageProvider:(id)arg2 stickerConfigurationProvider:(id)arg3 environment:(id)arg4 allowsPeel:(BOOL)arg5;
 - (void)insertPageForRecord:(id)arg1 atIndex:(long long)arg2;
 - (void)loadView;
 - (void)notifyingContainerViewDidChangeSize:(struct CGSize)arg1;

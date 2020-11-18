@@ -75,6 +75,7 @@
 - (BOOL)isAppleMailAccount:(id)arg1;
 - (BOOL)isUserEnrollment;
 - (id)messageForAccountDeletionProgressUI;
+- (id)messageForAccountDeletionWarning;
 - (id)operationsHelper:(id)arg1 desiredDataclassActionFromPicker:(id)arg2;
 - (void)operationsHelper:(id)arg1 didRemoveAccount:(id)arg2 withSuccess:(BOOL)arg3 error:(id)arg4;
 - (void)operationsHelper:(id)arg1 didSaveAccount:(id)arg2 withSuccess:(BOOL)arg3 error:(id)arg4;

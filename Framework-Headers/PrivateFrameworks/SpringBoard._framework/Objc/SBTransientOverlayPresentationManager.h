@@ -108,6 +108,7 @@
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (id)idleTimerProvider:(id)arg1 didProposeBehavior:(id)arg2 forReason:(id)arg3;
 - (id)initWithScreen:(id)arg1 alertItemsController:(id)arg2 lockStateAggregator:(id)arg3 homeGestureArbiter:(id)arg4 reachabilityManager:(id)arg5;
+- (BOOL)isKeyboardVisibleForSpringBoardForTransientOverlayViewController:(id)arg1;
 - (BOOL)isPresentingViewController:(id)arg1;
 - (BOOL)isTopmostPresentedViewController:(id)arg1;
 - (id)newContentStatusBarHiddenAssertionWithReason:(id)arg1;

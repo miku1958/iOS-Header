@@ -8,7 +8,7 @@
 
 #import <Rapport/RPAuthenticatable-Protocol.h>
 
-@class CUBLEConnection, CUBluetoothScalablePipe, CUBonjourDevice, CUHomeKitManager, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSData, NSDictionary, NSError, NSString, NSUUID, RPCompanionLinkDevice, RPIdentity, RPIdentityDaemon;
+@class CUBLEConnection, CUBluetoothScalablePipe, CUBonjourDevice, CUHomeKitManager, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSData, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID, RPCompanionLinkDevice, RPIdentity, RPIdentityDaemon;
 @protocol CUReadWriteRequestable, OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPConnection : NSObject <RPAuthenticatable>
@@ -43,9 +43,9 @@
     id<CUReadWriteRequestable> _requestable;
     BOOL _receivingHeader;
     BOOL _readRequested;
-    struct NSMutableDictionary *_requests;
+    NSMutableDictionary *_requests;
     int _retryCount;
-    struct NSMutableArray *_sendArray;
+    NSMutableArray *_sendArray;
     BOOL _showPasswordCalled;
     struct LogCategory *_ucat;
     unsigned int _xidLast;

@@ -15,7 +15,7 @@
 
 + (id)deserializeAttributesFromDictionary:(id)arg1 error:(out id *)arg2;
 + (id)deserializeFromDictionary:(id)arg1 error:(out id *)arg2;
-+ (struct NSDictionary *)deserializeSettingsFromDictionary:(id)arg1 key:(id)arg2 error:(out id *)arg3;
++ (id)deserializeSettingsFromDictionary:(id)arg1 key:(id)arg2 error:(out id *)arg3;
 + (id)supportedAttributes;
 - (id)copy:(id)arg1;
 - (id)description;

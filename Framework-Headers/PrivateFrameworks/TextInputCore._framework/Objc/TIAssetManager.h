@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <TextInputCore/DDSAssetCenterDelegate-Protocol.h>
 #import <TextInputCore/TIAssetManaging-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, TIMobileAssetTimer, TIRequestedInputModes;
 @protocol OS_dispatch_queue, TIInputModePreferenceProvider, TIMobileAssetMediator;
 
-@interface TIAssetManager : NSObject <TIAssetManaging>
+@interface TIAssetManager : NSObject <DDSAssetCenterDelegate, TIAssetManaging>
 {
     NSMutableArray *_notificationTokens;
     BOOL _assetDownloadingEnabled;
@@ -55,13 +56,18 @@
 - (void).cxx_destruct;
 - (id)activeInputModeLevels;
 - (id)activeInputModes;
+- (void)addAssertionsForInputModes:(id)arg1;
 - (void)addAssets:(id)arg1;
 - (void)appleKeyboardsInternalSettingsChanged:(id)arg1;
 - (void)appleKeyboardsPreferencesChanged:(id)arg1;
 - (id)assetContentItemsWithContentType:(id)arg1 inputMode:(id)arg2;
+- (id)ddsAssertionIDFromLanguageIdentifier:(id)arg1;
+- (id)ddsAssetContentItemsWithContentType:(id)arg1 inputMode:(id)arg2 filteredWithRegion:(BOOL)arg3;
+- (id)ddsLanguageIdentifierFromInputMode:(id)arg1;
 - (void)dealloc;
 - (id)defaultEnabledInputModes;
 - (void)didUpdateAssets;
+- (void)didUpdateAssetsWithType:(id)arg1;
 - (id)enabledInputModes;
 - (void)gatherStatistics:(id)arg1;
 - (id)init;
@@ -74,11 +80,14 @@
 - (id)purgeableAssets;
 - (id)recursiveDescription;
 - (void)registerForNotifications;
+- (void)removeUnnecessaryAssertionsForInputModes:(id)arg1;
 - (void)requestAssetDownloadForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)scheduleNextDownload;
 - (void)startDownloadingUninstalledAssetsForInputModeLevels:(id)arg1 regions:(id)arg2;
 - (void)submitStatistics:(id)arg1;
+- (id)topActiveRegions;
 - (void)unregisterForNotifications;
+- (void)updateAssertionsForInputModes:(id)arg1;
 - (void)updateAssetDownloadingEnabled;
 - (void)updateInputModesAndLevels;
 - (void)updateInstalledAssets;

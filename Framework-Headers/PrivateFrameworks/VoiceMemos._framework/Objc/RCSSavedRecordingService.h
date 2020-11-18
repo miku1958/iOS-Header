@@ -9,7 +9,7 @@
 #import <VoiceMemos/RCSSavedRecordingServiceClientProtocol-Protocol.h>
 #import <VoiceMemos/RCSSavedRecordingServiceProtocol-Protocol.h>
 
-@class NSMutableDictionary, NSSet, NSString, NSXPCConnection;
+@class NSHashTable, NSMutableDictionary, NSSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, RCSSavedRecordingServiceProtocol;
 
 @interface RCSSavedRecordingService : NSObject <RCSSavedRecordingServiceClientProtocol, RCSSavedRecordingServiceProtocol>
@@ -21,6 +21,7 @@
     NSXPCConnection *_xpcConnection;
     id<RCSSavedRecordingServiceProtocol> _serviceProxy;
     id<RCSSavedRecordingServiceProtocol> _synchronousServiceProxy;
+    NSHashTable *_interruptionObservers;
     NSMutableDictionary *_pendingServiceCompletionHandlers;
     NSMutableDictionary *_pendingSynchronousServiceCompletionHandlers;
     NSSet *_compositionAVURLsBeingExported;
@@ -47,11 +48,11 @@
 - (void)_handleCompositionAVURLsBeingExportedDidChange;
 - (void)_handleCompositionAVURLsBeingModifiedDidChange;
 - (void)_invalidatePendingSynchronousCompletionHandlersWithError:(id)arg1;
-- (struct NSNumber *)_onQueueAddPendingServiceMessageReplyBlockInvalidationHandler:(CDUnknownBlockType)arg1;
+- (id)_onQueueAddPendingServiceMessageReplyBlockInvalidationHandler:(CDUnknownBlockType)arg1;
 - (void)_onQueueCloseServiceConnection;
 - (void)_onQueueInvalidatePendingCompletionHandlerWithToken:(id)arg1 withError:(id)arg2;
 - (void)_onQueueInvalidatePendingCompletionHandlersWithError:(id)arg1;
-- (void)_onQueueRemovePendingServiceMessageReplyBlockInvalidationHandlerForToken:(struct NSNumber *)arg1;
+- (void)_onQueueRemovePendingServiceMessageReplyBlockInvalidationHandlerForToken:(id)arg1;
 - (void)_sendServiceMessage:(SEL)arg1 accessRequestReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
 - (void)_sendServiceMessage:(SEL)arg1 connectionFailureReplyInfo:(id)arg2 infoAndErrorReplyHandler:(CDUnknownBlockType)arg3 messagingBlock:(CDUnknownBlockType)arg4;
 - (void)_sendServiceMessage:(SEL)arg1 connectionFailureReplyInfo:(id)arg2 infoAndErrorReplyHandler:(CDUnknownBlockType)arg3 withServiceProxy:(id)arg4 messagingBlock:(CDUnknownBlockType)arg5;
@@ -61,6 +62,7 @@
 - (void)_sendSynchronousServiceMessage:(SEL)arg1 accessRequestReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
 - (void)_sendSynchronousServiceMessage:(SEL)arg1 connectionFailureReplyInfo:(id)arg2 infoAndErrorReplyHandler:(CDUnknownBlockType)arg3 messagingBlock:(CDUnknownBlockType)arg4;
 - (void)_sendSynchronousServiceMessage:(SEL)arg1 withBasicReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
+- (void)addInterruptionObserver:(id)arg1;
 - (void)checkRecordingAvailability:(CDUnknownBlockType)arg1;
 - (oneway void)clearAndReloadSearchMetadataWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (oneway void)closeAudioFile:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -97,6 +99,7 @@
 - (id)prepareToTrimCompositionAVURL:(id)arg1 error:(id *)arg2;
 - (oneway void)reloadExistingSearchMetadataWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (oneway void)removeAllUserDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeInterruptionObserver:(id)arg1;
 - (id)serviceProxy;
 - (id)synchronousServiceProxy;
 - (oneway void)updateSearchMetadataWithRecordingURIsToInsert:(id)arg1 recordingURIsToUpdate:(id)arg2 recordingURIsToDelete:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;

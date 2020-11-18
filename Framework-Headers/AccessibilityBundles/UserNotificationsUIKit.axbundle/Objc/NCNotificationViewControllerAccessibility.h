@@ -24,6 +24,7 @@
 - (void)_axNotifyWillBeginUserInteraction:(BOOL)arg1;
 - (void)_axSetHasFinishedAnnouncement:(BOOL)arg1;
 - (void)_axSetHasSentAnnouncement:(BOOL)arg1;
+- (void)_logNotificationMessage:(id)arg1;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 

@@ -12,7 +12,7 @@
 {
     BOOL _showAsFileIcon;
     BOOL _isMovie;
-    struct UIImage *_image;
+    UIImage *_image;
     unsigned long long _imageScaling;
 }
 
@@ -22,7 +22,7 @@
 @property (nonatomic) BOOL showAsFileIcon; // @synthesize showAsFileIcon=_showAsFileIcon;
 
 - (void).cxx_destruct;
-- (id)initWithImage:(struct UIImage *)arg1 imageScaling:(unsigned long long)arg2 showAsFileIcon:(BOOL)arg3 isMovie:(BOOL)arg4;
+- (id)initWithImage:(id)arg1 imageScaling:(unsigned long long)arg2 showAsFileIcon:(BOOL)arg3 isMovie:(BOOL)arg4;
 
 @end
 

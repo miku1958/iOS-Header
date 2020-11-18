@@ -158,6 +158,7 @@
 - (void)_setLegacyToolbarHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setupAnnotationController;
 - (void)_setupInitialBaseModelScaleFactorWithScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
+- (BOOL)_shouldShowUndoRedoButtonsInNavigationBar;
 - (void)_showTextStyleOptions:(id)arg1;
 - (BOOL)_sourceImageMayContainBaseImageAndModel;
 - (void)_startObservingAnnotationController;

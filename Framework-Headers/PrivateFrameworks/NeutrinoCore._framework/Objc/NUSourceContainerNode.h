@@ -17,7 +17,7 @@
 + (id)sourceContainerNodeFromSource:(id)arg1 error:(out id *)arg2;
 - (unsigned long long)_hash;
 - (id)initWithAssetIdentifier:(id)arg1;
-- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
+- (id)initWithSettings:(id)arg1 inputs:(id)arg2;
 - (BOOL)isEqualToRenderNode:(id)arg1;
 - (id)preparedSourceNodeForPipelineState:(id)arg1 pipelineSettings:(id)arg2 sourceSettings:(id)arg3 error:(out id *)arg4;
 - (id)resolveSourceNodeForPipelineState:(id)arg1 foundScale:(CDStruct_912cb5d2 *)arg2 error:(out id *)arg3;

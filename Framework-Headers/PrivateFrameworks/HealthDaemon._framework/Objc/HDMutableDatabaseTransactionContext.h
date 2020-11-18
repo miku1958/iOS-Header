@@ -6,6 +6,8 @@
 
 #import <HealthDaemon/HDDatabaseTransactionContext.h>
 
+@class HDDatabaseTransactionContextStatistics;
+
 @interface HDMutableDatabaseTransactionContext : HDDatabaseTransactionContext
 {
 }
@@ -17,6 +19,7 @@
 @property (nonatomic) BOOL requiresProtectedData; // @dynamic requiresProtectedData;
 @property (nonatomic) BOOL requiresWrite; // @dynamic requiresWrite;
 @property (nonatomic) BOOL skipJournalMerge; // @dynamic skipJournalMerge;
+@property (strong, nonatomic) HDDatabaseTransactionContextStatistics *statistics; // @dynamic statistics;
 
 - (void)addAccessibilityAssertion:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

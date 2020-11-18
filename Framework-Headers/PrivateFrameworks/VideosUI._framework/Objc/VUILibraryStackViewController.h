@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/VUILibraryFetchControllerViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionView, VUILibraryStackView;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryStackViewController : VUILibraryFetchControllerViewController <UICollectionViewDelegate>
+@interface VUILibraryStackViewController : UIViewController <UICollectionViewDelegate>
 {
     BOOL _requiresRelayout;
     NSIndexPath *_focusedIndexPath;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)configureWithCollectionView:(id)arg1;
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)scrollToTop;

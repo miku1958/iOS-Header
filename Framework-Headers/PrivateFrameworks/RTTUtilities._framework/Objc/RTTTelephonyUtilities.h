@@ -16,6 +16,7 @@
 @interface RTTTelephonyUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate, TUCallCapabilitiesDelegatePrivate, TUCallCapabilitiesDelegate>
 {
     ACAccountStore *_accountStore;
+    NSNumber *_callCapabilitiesSupportsTelephonyCalls;
     AXDispatchTimer *_icloudAccountConsolidator;
     AXDispatchTimer *_icloudRelayConsolidator;
     BOOL _headphoneJackSupportsTTY;
@@ -26,16 +27,15 @@
     CoreTelephonyClient *_telephonyClient;
     NSObject<OS_dispatch_queue> *_telephonyUpdateQueue;
     NSObject<OS_dispatch_queue> *_accountStoreQueue;
-    NSNumber *_callCapabilitiesSupportsTelephonyCalls;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accountStoreQueue; // @synthesize accountStoreQueue=_accountStoreQueue;
-@property (nonatomic) unsigned long long activeContextCount; // @synthesize activeContextCount=_activeContextCount;
-@property (strong, nonatomic) NSSet *allVoiceContexts; // @synthesize allVoiceContexts=_allVoiceContexts;
-@property (strong, nonatomic) NSNumber *callCapabilitiesSupportsTelephonyCalls; // @synthesize callCapabilitiesSupportsTelephonyCalls=_callCapabilitiesSupportsTelephonyCalls;
+@property unsigned long long activeContextCount; // @synthesize activeContextCount=_activeContextCount;
+@property (strong) NSSet *allVoiceContexts; // @synthesize allVoiceContexts=_allVoiceContexts;
+@property (strong) NSNumber *callCapabilitiesSupportsTelephonyCalls;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) CTXPCServiceSubscriptionContext *defaultVoiceContext; // @synthesize defaultVoiceContext=_defaultVoiceContext;
+@property (strong) CTXPCServiceSubscriptionContext *defaultVoiceContext; // @synthesize defaultVoiceContext=_defaultVoiceContext;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL headphoneJackSupportsTTY; // @synthesize headphoneJackSupportsTTY=_headphoneJackSupportsTTY;

@@ -7,6 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (RCAdditions)
+
+@property (readonly, copy) NSString *rc_reversedString;
+@property (readonly, copy) NSString *rc_stringFromRealPath;
+
 + (id)rc_stringWithPersistentID:(long long)arg1;
 - (id)rc_intentionallyNonLocalizedString;
 - (long long)rc_persistentIDValue;

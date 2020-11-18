@@ -30,7 +30,7 @@
 
 - (void).cxx_destruct;
 - (void)_updateContent;
-- (struct UIColor *)colorAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
+- (id)colorAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)init;
 - (void)referenceSizeDidChange;
 - (void)update;

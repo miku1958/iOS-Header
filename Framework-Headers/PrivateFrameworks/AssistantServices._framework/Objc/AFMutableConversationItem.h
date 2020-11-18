@@ -14,6 +14,7 @@
 @interface AFMutableConversationItem : NSObject <AFConversationStorable, NSCopying>
 {
     BOOL _virgin;
+    BOOL _transient;
     NSUUID *_identifier;
     NSUUID *_revisionIdentifier;
     long long _type;
@@ -35,6 +36,7 @@
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property (readonly, copy, nonatomic) NSUUID *revisionIdentifier; // @synthesize revisionIdentifier=_revisionIdentifier;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isTransient) BOOL transient; // @synthesize transient=_transient;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (nonatomic, getter=isVirgin) BOOL virgin; // @synthesize virgin=_virgin;
 
@@ -45,10 +47,10 @@
 - (id)_propertyListStringForType;
 - (long long)_typeForPropertyListString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(id)arg1 revisionIdentifier:(id)arg2 type:(long long)arg3 aceObject:(id)arg4 dialogPhase:(id)arg5 presentationState:(long long)arg6 aceCommandIdentifier:(id)arg7 virgin:(BOOL)arg8 associatedDataStore:(id)arg9;
-- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 aceObject:(id)arg3 dialogPhase:(id)arg4 presentationState:(long long)arg5 aceCommandIdentifier:(id)arg6 virgin:(BOOL)arg7 associatedDataStore:(id)arg8;
+- (id)initWithIdentifier:(id)arg1 revisionIdentifier:(id)arg2 type:(long long)arg3 aceObject:(id)arg4 dialogPhase:(id)arg5 presentationState:(long long)arg6 aceCommandIdentifier:(id)arg7 virgin:(BOOL)arg8 transient:(BOOL)arg9 associatedDataStore:(id)arg10;
+- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 aceObject:(id)arg3 dialogPhase:(id)arg4 presentationState:(long long)arg5 aceCommandIdentifier:(id)arg6 virgin:(BOOL)arg7 transient:(BOOL)arg8 associatedDataStore:(id)arg9;
 - (id)initWithPropertyListRepresentation:(id)arg1;
-- (id)initWithType:(long long)arg1 aceObject:(id)arg2 dialogPhase:(id)arg3 presentationState:(long long)arg4 aceCommandIdentifier:(id)arg5 virgin:(BOOL)arg6 associatedDataStore:(id)arg7;
+- (id)initWithType:(long long)arg1 aceObject:(id)arg2 dialogPhase:(id)arg3 presentationState:(long long)arg4 aceCommandIdentifier:(id)arg5 virgin:(BOOL)arg6 transient:(BOOL)arg7 associatedDataStore:(id)arg8;
 - (id)propertyListRepresentation;
 
 @end

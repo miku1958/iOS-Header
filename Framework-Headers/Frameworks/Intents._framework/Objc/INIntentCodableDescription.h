@@ -9,7 +9,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableAttribute, NSString;
+@class INCodableAttribute, NSArray, NSString;
 
 @interface INIntentCodableDescription : INRootCodableDescription <NSSecureCoding, NSCopying>
 {
@@ -27,6 +27,7 @@
     NSString *_defaultImageName;
     long long _intentCategory;
     NSString *_verb;
+    NSArray *_entityVerbs;
 }
 
 @property (copy, nonatomic, setter=_setInputAttributeName:) NSString *_inputAttributeName; // @synthesize _inputAttributeName;
@@ -36,6 +37,7 @@
 @property (copy, nonatomic) NSString *descriptiveText; // @synthesize descriptiveText=_descriptiveText;
 @property (copy, nonatomic) NSString *descriptiveTextLocID; // @synthesize descriptiveTextLocID=_descriptiveTextLocID;
 @property (nonatomic, getter=isEligibleForSuggestions) BOOL eligibleForSuggestions; // @synthesize eligibleForSuggestions=_eligibleForSuggestions;
+@property (copy, nonatomic) NSArray *entityVerbs; // @synthesize entityVerbs=_entityVerbs;
 @property (readonly, nonatomic) INCodableAttribute *inputAttribute;
 @property (nonatomic) long long intentCategory; // @synthesize intentCategory=_intentCategory;
 @property (readonly, nonatomic) INCodableAttribute *keyAttribute;
@@ -50,16 +52,18 @@
 - (void).cxx_destruct;
 - (id)_attributeKeyPrefix;
 - (id)_attributesKeyPrefix;
+- (void)_establishReferencedCodableDescriptionsUsingTypes:(id)arg1 intentResponseCodableDescription:(id)arg2;
 - (id)_ignoredAttributeTags;
+- (void)_reestablishReferencedCodableDescriptionsUsingTypes:(id)arg1 intentResponseCodableDescription:(id)arg2;
 - (void)_updateWithIntentCodableDescription:(id)arg1;
 - (id)attributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)keyPrefix;
-- (id)localizedDescriptiveTextForLanguage:(id)arg1;
-- (id)localizedTitleForLanguage:(id)arg1;
+- (id)localizedDescriptiveTextWithLocalizer:(id)arg1;
+- (id)localizedTitleWithLocalizer:(id)arg1;
 - (id)resolvableParameterCombinationsWithParameterCombinations:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 

@@ -28,9 +28,9 @@
 - (id)_evaluateVideoProperties:(out id *)arg1;
 - (id)_stabilizeImage:(id)arg1 cleanRect:(struct CGRect)arg2 cropRect:(struct CGRect)arg3 transform:(CDStruct_8e0628e6)arg4 geometry:(id)arg5;
 - (id)initWithKeyframes:(id)arg1 stabCropRect:(CDStruct_996ac03c)arg2 input:(id)arg3;
-- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
+- (id)initWithSettings:(id)arg1 inputs:(id)arg2;
 - (BOOL)requiresVideoComposition;
-- (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (BOOL)shouldCacheNodeForPipelineState:(id)arg1;
 
 @end

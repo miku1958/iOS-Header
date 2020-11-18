@@ -8,7 +8,10 @@
 
 @interface WFSendEmailAction : WFHandleCustomIntentAction
 {
+    BOOL _contentManaged;
 }
+
+@property (nonatomic, getter=isContentManaged) BOOL contentManaged; // @synthesize contentManaged=_contentManaged;
 
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
 - (void)generateContentForIntents:(CDUnknownBlockType)arg1;
@@ -20,6 +23,7 @@
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
+- (id)targetDataInfo;
 
 @end
 

@@ -177,30 +177,40 @@
  struct __C.os_unfair_lock_options_t {
 
 	// Properties
-	let rawValue : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : í®
  }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
-	var _os_unfair_lock_opaque : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _os_unfair_lock_opaque : í®
  }
 
  struct __C.z_stream_s {
 
 	// Properties
-	var next_in : UnsafeMutablePointer<UInt8>?
-	var avail_in : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var next_in :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var avail_in : í®
 	var total_in : UInt
-	var next_out : UnsafeMutablePointer<UInt8>?
-	var avail_out : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var next_out :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var avail_out : í®
 	var total_out : UInt
-	var msg : UnsafeMutablePointer<Int8>?
-	var state : OpaquePointer?
-	var zalloc : @convention(c) (_:_:_:)?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var msg :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var state : q­
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var zalloc :  first-element-marker 
 	var zfree : @convention(c) (_:_:)?
 	var opaque : UnsafeMutableRawPointer?
-	var data_type : Int32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data_type : ñ­
 	var adler : UInt
 	var reserved : UInt
  }
@@ -208,9 +218,9 @@
  class AppAnalytics.ProcessorManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var sessionProvider : weak SessionProviderType?
+	var sessionProvider : SessionProviderType
 	let accessQueue : OS_dispatch_queue
-	var eventProcessors : [EventProcessorType]
+	var eventProcessors : EventProcessorType
 
 	// Swift methods
  }
@@ -230,7 +240,7 @@
 	let session : NSURLSession // +0x10 (0x8)
 
 	// Swift methods
-	0x4820  class func ExternalAnalyticsUploader.__allocating_init() // init 
+	0x5450  class func ExternalAnalyticsUploader.__allocating_init() // init 
  }
 
  enum AppAnalytics.Errors {
@@ -247,17 +257,18 @@
 	let identifier : String // +0x8 (0x10)
 	let kind : BridgedSessionKind // +0x18 (0x8)
 	let name : String? // +0x20 (0x10)
-	let startDate : Date // +0xfeedfacf (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startDate : Ù¥ // +0xfeedfacf (0x0)
 	let sessionData : [String : Any] // +0x3 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x50c0  @objc BridgedSession.identifier <stripped>
-	0x5140  @objc BridgedSession.kind <stripped>
-	0x5180  @objc BridgedSession.name <stripped>
-	0x5250  @objc BridgedSession.startDate <stripped>
-	0x52f0  @objc BridgedSession.sessionData <stripped>
-	0x53c0  @objc BridgedSession.init <stripped>
-	0x54a0  @objc BridgedSession..cxx_destruct <stripped>
+	0x5cf0  @objc BridgedSession.identifier <stripped>
+	0x5d70  @objc BridgedSession.kind <stripped>
+	0x5db0  @objc BridgedSession.name <stripped>
+	0x5e80  @objc BridgedSession.startDate <stripped>
+	0x5f20  @objc BridgedSession.sessionData <stripped>
+	0x60b0  @objc BridgedSession.init <stripped>
+	0x5ff0  @objc BridgedSession..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -284,7 +295,8 @@
 
 	// Properties
 	let eventID : String
-	let eventTimestamp : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventTimestamp : Ù¥
 	let eventPath : String
 	let sessionID : String
  }
@@ -305,13 +317,13 @@
 	let dictionary : [String : Any] // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7970  @objc BridgedRawDataEvent.initWithName:dictionary: <stripped>
-	0x7b40  @objc BridgedRawDataEvent.toDict <stripped>
-	0x7bf0  @objc BridgedRawDataEvent.init <stripped>
-	0x7c70  @objc BridgedRawDataEvent..cxx_destruct <stripped>
+	0x7fb0  @objc BridgedRawDataEvent.initWithName:dictionary: <stripped>
+	0x8110  @objc BridgedRawDataEvent.toDict <stripped>
+	0x8220  @objc BridgedRawDataEvent.init <stripped>
+	0x81a0  @objc BridgedRawDataEvent..cxx_destruct <stripped>
 
 	// Swift methods
-	0x77f0  class func BridgedRawDataEvent.__allocating_init(name:dictionary:) // init 
+	0x7ef0  class func BridgedRawDataEvent.__allocating_init(name:dictionary:) // init 
  }
 
  class AppAnalytics.BridgedDataEventTraits : NSObject /usr/lib/libobjc.A.dylib {
@@ -322,25 +334,25 @@
 	var discardWhenPresent : Bool // +0xa (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x7cd0  @objc BridgedDataEventTraits.onlyOnce <stripped>
-	0x7d10  @objc BridgedDataEventTraits.setOnlyOnce: <stripped>
-	0x7dd0  @objc BridgedDataEventTraits.unique <stripped>
-	0x7e10  @objc BridgedDataEventTraits.setUnique: <stripped>
-	0x7ed0  @objc BridgedDataEventTraits.discardWhenPresent <stripped>
-	0x7f80  @objc BridgedDataEventTraits.setDiscardWhenPresent: <stripped>
-	0x8270  @objc BridgedDataEventTraits.init <stripped>
+	0x82b0  @objc BridgedDataEventTraits.onlyOnce <stripped>
+	0x82f0  @objc BridgedDataEventTraits.setOnlyOnce: <stripped>
+	0x83b0  @objc BridgedDataEventTraits.unique <stripped>
+	0x83f0  @objc BridgedDataEventTraits.setUnique: <stripped>
+	0x84b0  @objc BridgedDataEventTraits.discardWhenPresent <stripped>
+	0x8550  @objc BridgedDataEventTraits.setDiscardWhenPresent: <stripped>
+	0x8810  @objc BridgedDataEventTraits.init <stripped>
 
 	// Swift methods
-	0x7cf0  func <stripped> // getter 
-	0x7d30  func <stripped> // setter 
-	0x7d90  func <stripped> // modifyCoroutine 
-	0x7df0  func <stripped> // getter 
-	0x7e30  func <stripped> // setter 
-	0x7e90  func <stripped> // modifyCoroutine 
-	0x7f30  func <stripped> // getter 
-	0x8000  func <stripped> // setter 
-	0x8120  func <stripped> // modifyCoroutine 
-	0x8320  func <stripped> // getter 
+	0x82d0  func <stripped> // getter 
+	0x8310  func <stripped> // setter 
+	0x8370  func <stripped> // modifyCoroutine 
+	0x83d0  func <stripped> // getter 
+	0x8410  func <stripped> // setter 
+	0x8470  func <stripped> // modifyCoroutine 
+	0x8500  func <stripped> // getter 
+	0x85b0  func <stripped> // setter 
+	0x86d0  func <stripped> // modifyCoroutine 
+	0x88b0  func <stripped> // getter 
  }
 
  enum AppAnalytics.JSONError { }
@@ -351,49 +363,49 @@
 	let value : Any? // +0x8 (0x20)
 
 	// ObjC -> Swift bridged methods
-	0x8cd0  @objc JSON.initWithData: <stripped>
-	0x8d40  @objc JSON.objectForKeyedSubscript: <stripped>
-	0x8dd0  @objc JSON.objectAtIndexedSubscript: <stripped>
-	0x9010  @objc JSON.exists <stripped>
-	0x90c0  @objc JSON.any <stripped>
-	0x9140  @objc JSON.string <stripped>
-	0x93c0  @objc JSON.array <stripped>
-	0x9650  @objc JSON.object <stripped>
-	0x9bf0  @objc JSON.number <stripped>
-	0x9f90  @objc JSON.toDataWithOptions:: <stripped>
-	0xa090  @objc JSON.init <stripped>
-	0xa110  @objc JSON..cxx_destruct <stripped>
+	0x9160  @objc JSON.initWithData: <stripped>
+	0x91d0  @objc JSON.objectForKeyedSubscript: <stripped>
+	0x9500  @objc JSON.objectAtIndexedSubscript: <stripped>
+	0x96e0  @objc JSON.exists <stripped>
+	0x9760  @objc JSON.any <stripped>
+	0x97e0  @objc JSON.string <stripped>
+	0x9a50  @objc JSON.array <stripped>
+	0x9c80  @objc JSON.object <stripped>
+	0xa140  @objc JSON.number <stripped>
+	0xa490  @objc JSON.toDataWithOptions:: <stripped>
+	0xa5e0  @objc JSON.init <stripped>
+	0xa570  @objc JSON..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8c00  class func JSON.__allocating_init(_:) // init 
-	0x8dc0  func <stripped> // getter 
-	0x8e10  func <stripped> // getter 
-	0x9080  func <stripped> // getter 
-	0x9120  func <stripped> // getter 
-	0x9200  func <stripped> // getter 
-	0x9270  func <stripped> // getter 
-	0x92e0  func <stripped> // getter 
-	0x9350  func <stripped> // getter 
-	0x9440  func <stripped> // getter 
-	0x96e0  func <stripped> // getter 
-	0x9c30  func <stripped> // getter 
-	0x9da0  func <stripped> // method 
+	0x90d0  class func JSON.__allocating_init(_:) // init 
+	0x9250  func <stripped> // getter 
+	0x9540  func <stripped> // getter 
+	0x9720  func <stripped> // getter 
+	0x97c0  func <stripped> // getter 
+	0x9890  func <stripped> // getter 
+	0x9900  func <stripped> // getter 
+	0x9970  func <stripped> // getter 
+	0x99e0  func <stripped> // getter 
+	0x9ab0  func <stripped> // getter 
+	0x9cf0  func <stripped> // getter 
+	0xa180  func <stripped> // getter 
+	0xa2f0  func <stripped> // method 
  }
 
  class AppAnalytics.BridgedEventMirrorStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var cache : [String : [EventMirrorProperty]] // +0x10 (0x8)
+	var cache : EventMirrorProperty // +0x10 (0x8)
 
 	// Swift methods
-	0xbd90  func <stripped> // method 
+	0xbf20  func <stripped> // method 
  }
 
  struct AppAnalytics.SnapshotEvent {
 
 	// Properties
 	let isValid : Bool
-	let entries : [SnapshotEntry]
+	let entries : SnapshotEntry
 	let missingData : MissingData
  }
 
@@ -416,8 +428,8 @@
 	let bag : AMSBag
 
 	// ObjC -> Swift bridged methods
-	0xf7d0  @objc Contract.init <stripped>
-	0xf840  @objc Contract..cxx_destruct <stripped>
+	0xf5f0  @objc Contract.init <stripped>
+	0xf640  @objc Contract..cxx_destruct <stripped>
  }
 
  struct AppAnalytics.SessionData {
@@ -477,19 +489,19 @@
 	let build : Int // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x124e0  @objc Client.identifier <stripped>
-	0x12520  @objc Client.name <stripped>
-	0x12560  @objc Client.version <stripped>
-	0x12610  @objc Client.build <stripped>
-	0x12650  @objc Client.fullVersion <stripped>
-	0x12850  @objc Client.initWithBundle: <stripped>
-	0x12a70  @objc Client.initWithIdentifier:name:version:build: <stripped>
-	0x12c30  @objc Client.init <stripped>
-	0x12cb0  @objc Client..cxx_destruct <stripped>
+	0x11f60  @objc Client.identifier <stripped>
+	0x11fa0  @objc Client.name <stripped>
+	0x11fe0  @objc Client.version <stripped>
+	0x12090  @objc Client.build <stripped>
+	0x120d0  @objc Client.fullVersion <stripped>
+	0x122d0  @objc Client.initWithBundle: <stripped>
+	0x12420  @objc Client.initWithIdentifier:name:version:build: <stripped>
+	0x125a0  @objc Client.init <stripped>
+	0x12500  @objc Client..cxx_destruct <stripped>
 
 	// Swift methods
-	0x126b0  func <stripped> // getter 
-	0x12890  class func Client.__allocating_init(identifier:name:version:build:) // init 
+	0x12130  func <stripped> // getter 
+	0x12310  class func Client.__allocating_init(identifier:name:version:build:) // init 
  }
 
  class AppAnalytics.SHA1Base64SigningService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SigningServiceType {
@@ -503,7 +515,7 @@
  class AppAnalytics.UnfairLock : _SwiftObject /usr/lib/swift/libswiftCore.dylib, Lock {
 
 	// Properties
-	var unfairLock : UnsafeMutablePointer<os_unfair_lock_s> // +0x10 (0x8)
+	var unfairLock : os_unfair_lock_s // +0x10 (0x8)
 	let options : os_unfair_lock_options_t // +0x18 (0x4)
 
 	// Swift methods
@@ -517,13 +529,13 @@
 	let accessQueue : OS_dispatch_queue
 	var suspendCount : AtomicCounter
 	var state : SessionState
-	var dataStacks : [String : DataEventStackType]
-	var observers : [SessionObserver]
+	var dataStacks : DataEventStackType
+	var observers : SessionObserver
 	let options : Options
 	let flushProcessor : FlushProcessor
 
 	// Swift methods
-	0x15de0  class func SessionManager.__allocating_init(accessQueue:options:flushProcessor:) // init 
+	0x150a0  class func SessionManager.__allocating_init(accessQueue:options:flushProcessor:) // init 
  }
 
  struct AppAnalytics.Options {
@@ -551,7 +563,7 @@
  enum AppAnalytics.LoggingEventProcessorFormat {
 
 	// Properties
-	case json : (writingOptions: NSJSONWritingOptions)
+	case json : WritingOptions
 	case custom : LoggingEventProcessorFormatterType
 	case default  
  }
@@ -565,12 +577,12 @@
 	let groupName : String? // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x20d20  @objc BridgedProcessEvent.name <stripped>
-	0x20d60  @objc BridgedProcessEvent.version <stripped>
-	0x20e10  @objc BridgedProcessEvent.json <stripped>
-	0x20e50  @objc BridgedProcessEvent.groupName <stripped>
-	0x20f30  @objc BridgedProcessEvent.init <stripped>
-	0x20fe0  @objc BridgedProcessEvent..cxx_destruct <stripped>
+	0x1e5d0  @objc BridgedProcessEvent.name <stripped>
+	0x1e610  @objc BridgedProcessEvent.version <stripped>
+	0x1e6c0  @objc BridgedProcessEvent.json <stripped>
+	0x1e700  @objc BridgedProcessEvent.groupName <stripped>
+	0x1e8a0  @objc BridgedProcessEvent.init <stripped>
+	0x1e7f0  @objc BridgedProcessEvent..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -581,23 +593,24 @@
 	var proxyEventProcessor : EventProcessorType // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x21380  @objc BridgedUploadBatchEventProcessor.initWithClient:endpoint: <stripped>
-	0x21620  @objc BridgedUploadBatchEventProcessor.initWithClient:endpoint:config: <stripped>
-	0x21750  @objc BridgedUploadBatchEventProcessor.processEvent: <stripped>
-	0x217f0  @objc BridgedUploadBatchEventProcessor.init <stripped>
-	0x21870  @objc BridgedUploadBatchEventProcessor..cxx_destruct <stripped>
+	0x1ead0  @objc BridgedUploadBatchEventProcessor.initWithClient:endpoint: <stripped>
+	0x1ed30  @objc BridgedUploadBatchEventProcessor.initWithClient:endpoint:config: <stripped>
+	0x1ee50  @objc BridgedUploadBatchEventProcessor.processEvent: <stripped>
+	0x1ef40  @objc BridgedUploadBatchEventProcessor.init <stripped>
+	0x1eed0  @objc BridgedUploadBatchEventProcessor..cxx_destruct <stripped>
 
 	// Swift methods
-	0x21190  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:) // init 
-	0x21470  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:config:) // init 
+	0x1e8f0  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:) // init 
+	0x1ebd0  class func BridgedUploadBatchEventProcessor.__allocating_init(client:endpoint:config:) // init 
  }
 
  class AppAnalytics.ActiveSession : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ActiveSessionType {
 
 	// Properties
 	let identifier : String // +0x10 (0x10)
-	let kind : Session.Kind // +0x20 (0x10)
-	let startDate : Date // +0x51 (0x0)
+	let kind : Kind // +0x20 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startDate : Ù¥ // +0x59 (0x0)
 
 	// Swift methods
  }
@@ -621,13 +634,13 @@
 	var proxyEventProcessor : EventProcessorType // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x22310  @objc BridgingLoggingEventProcessor.initWithFormat: <stripped>
-	0x22380  @objc BridgingLoggingEventProcessor.processEvent: <stripped>
-	0x22420  @objc BridgingLoggingEventProcessor.init <stripped>
-	0x224a0  @objc BridgingLoggingEventProcessor..cxx_destruct <stripped>
+	0x1f920  @objc BridgingLoggingEventProcessor.initWithFormat: <stripped>
+	0x1f990  @objc BridgingLoggingEventProcessor.processEvent: <stripped>
+	0x1fa80  @objc BridgingLoggingEventProcessor.init <stripped>
+	0x1fa10  @objc BridgingLoggingEventProcessor..cxx_destruct <stripped>
 
 	// Swift methods
-	0x21f40  class func BridgingLoggingEventProcessor.__allocating_init(format:) // init 
+	0x1f680  class func BridgingLoggingEventProcessor.__allocating_init(format:) // init 
  }
 
  class AppAnalytics.UploadService {
@@ -644,8 +657,8 @@
 	let eventMirrorStore : BridgedEventMirrorStore // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x262a0  @objc BridgedAccessTracker.init <stripped>
-	0x26350  @objc BridgedAccessTracker..cxx_destruct <stripped>
+	0x23130  @objc BridgedAccessTracker.init <stripped>
+	0x230b0  @objc BridgedAccessTracker..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -655,7 +668,7 @@
 	// Properties
 	var object : weak Swift.AnyObject? // +0x10 (0x8)
 	var sessionChangeTracker : AccessTracker // +0x18 (0x8)
-	let block : (_:_:) // +0x20 (0x10)
+	let block : AccessTracker // +0x20 (0x10)
 
 	// Swift methods
  }
@@ -667,12 +680,12 @@
 	var sealed : Bool // +0x18 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x286c0  @objc DelayedToken.commit <stripped>
-	0x28770  @objc DelayedToken.init <stripped>
-	0x28820  @objc DelayedToken..cxx_destruct <stripped>
+	0x265e0  @objc DelayedToken.commit <stripped>
+	0x26710  @objc DelayedToken.init <stripped>
+	0x266a0  @objc DelayedToken..cxx_destruct <stripped>
 
 	// Swift methods
-	0x28670  func <stripped> // method 
+	0x265a0  func <stripped> // method 
  }
 
  class AppAnalytics.LoggingEventProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -681,20 +694,22 @@
 	let logFormatter : LoggingEventProcessorFormatterType // +0x10 (0x28)
 
 	// Swift methods
-	0x28880  class func LoggingEventProcessor.__allocating_init(logFormat:) // init 
+	0x26780  class func LoggingEventProcessor.__allocating_init(logFormat:) // init 
  }
 
  enum AppAnalytics.GZIPError {
 
 	// Properties
-	case failed : (status: Int32)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failed : “¤
  }
 
  enum AppAnalytics.ExternalResult {
 
 	// Properties
 	case success : (value: A)
-	case failed : (error: Error)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failed : K¤
  }
 
  struct AppAnalytics.AnyDataEventEntry {
@@ -702,7 +717,7 @@
 	// Properties
 	let key : String // +0x0
 	let data : DataEventType // +0x10
-	let traits : [DataEventTrait] // +0x38
+	let traits : DataEventTrait // +0x38
 	let file : String // +0x40
 	let line : Int // +0x50
  }
@@ -711,7 +726,7 @@
 
 	// Properties
 	let data : A1
-	let traits : [DataEventTrait]
+	let traits : DataEventTrait
 	let file : String
 	let line : Int
  }
@@ -729,8 +744,8 @@
 	let processorManager : ProcessorManager // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2c410  @objc BridgedProcessorManager.init <stripped>
-	0x2c4c0  @objc BridgedProcessorManager..cxx_destruct <stripped>
+	0x2a040  @objc BridgedProcessorManager.init <stripped>
+	0x29fd0  @objc BridgedProcessorManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -739,21 +754,22 @@
 
 	// Properties
 	let eventID : String // +0x8 (0x10)
-	let eventDate : Date // +0x6100085 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventDate : Ù¥ // +0x6100085 (0x0)
 	let eventPath : String // +0x19 (0x10)
 	let sessionID : String // +0x45545f5f (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2cd10  @objc BridgedEventData.eventID <stripped>
-	0x2cd50  @objc BridgedEventData.eventDate <stripped>
-	0x2cdf0  @objc BridgedEventData.eventPath <stripped>
-	0x2ce30  @objc BridgedEventData.sessionID <stripped>
-	0x2cf80  @objc BridgedEventData.toDict <stripped>
-	0x2d020  @objc BridgedEventData.init <stripped>
-	0x2d0c0  @objc BridgedEventData..cxx_destruct <stripped>
+	0x2a790  @objc BridgedEventData.eventID <stripped>
+	0x2a7d0  @objc BridgedEventData.eventDate <stripped>
+	0x2a870  @objc BridgedEventData.eventPath <stripped>
+	0x2a8b0  @objc BridgedEventData.sessionID <stripped>
+	0x2aa00  @objc BridgedEventData.toDict <stripped>
+	0x2ab50  @objc BridgedEventData.init <stripped>
+	0x2aaa0  @objc BridgedEventData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2cf30  func <stripped> // method 
+	0x2a9b0  func <stripped> // method 
  }
 
  class AppAnalytics.BridgedTracker : NSObject /usr/lib/libobjc.A.dylib {
@@ -765,10 +781,10 @@
 	let eventMirrorStore : BridgedEventMirrorStore // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2d210  @objc BridgedTracker.name <stripped>
-	0x2d290  @objc BridgedTracker.identifier <stripped>
-	0x2d4a0  @objc BridgedTracker.init <stripped>
-	0x2d550  @objc BridgedTracker..cxx_destruct <stripped>
+	0x2ac50  @objc BridgedTracker.name <stripped>
+	0x2acd0  @objc BridgedTracker.identifier <stripped>
+	0x2ae70  @objc BridgedTracker.init <stripped>
+	0x2adc0  @objc BridgedTracker..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -776,20 +792,22 @@
  class AppAnalytics.BridgedTimedData : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let startDate : Date // +0x0 (0x0)
-	let endDate : Date // +0x0 (0x0)
-	let duration : Double // +0x8d000 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startDate : Ù¥ // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let endDate : Ù¥ // +0x0 (0x0)
+	let duration : Double // +0x85000 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x333d0  @objc BridgedTimedData.startDate <stripped>
-	0x33410  @objc BridgedTimedData.endDate <stripped>
-	0x33500  @objc BridgedTimedData.duration <stripped>
-	0x335e0  @objc BridgedTimedData.toDict <stripped>
-	0x33680  @objc BridgedTimedData.init <stripped>
-	0x33720  @objc BridgedTimedData..cxx_destruct <stripped>
+	0x30540  @objc BridgedTimedData.startDate <stripped>
+	0x30580  @objc BridgedTimedData.endDate <stripped>
+	0x30670  @objc BridgedTimedData.duration <stripped>
+	0x30750  @objc BridgedTimedData.toDict <stripped>
+	0x30890  @objc BridgedTimedData.init <stripped>
+	0x307f0  @objc BridgedTimedData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x33590  func <stripped> // method 
+	0x30700  func <stripped> // method 
  }
 
  struct AppAnalytics.Session {
@@ -797,7 +815,8 @@
 	// Properties
 	let identifier : String
 	let kind : Kind
-	let startDate : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startDate : Ù¥
 	let sessionData : [String : Any]
  }
 
@@ -813,10 +832,10 @@
  class AppAnalytics.EventMirrorStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var cache : [String : [EventMirrorProperty]] // +0x10 (0x8)
+	var cache : EventMirrorProperty // +0x10 (0x8)
 
 	// Swift methods
-	0x34450  func <stripped> // method 
+	0x31640  func <stripped> // method 
  }
 
  struct AppAnalytics.SnapshotEntry {
@@ -830,15 +849,15 @@
 
 	// Properties
 	let name : String // +0x8 (0x10)
-	let properties : [String : BridgedRawEventProperty] // +0x18 (0x8)
+	let properties : BridgedRawEventProperty // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x365e0  @objc BridgedRawEvent.initWithName:properties: <stripped>
-	0x36a40  @objc BridgedRawEvent.init <stripped>
-	0x36ac0  @objc BridgedRawEvent..cxx_destruct <stripped>
+	0x332c0  @objc BridgedRawEvent.initWithName:properties: <stripped>
+	0x33700  @objc BridgedRawEvent.init <stripped>
+	0x33680  @objc BridgedRawEvent..cxx_destruct <stripped>
 
 	// Swift methods
-	0x36460  class func BridgedRawEvent.__allocating_init(name:properties:) // init 
+	0x33200  class func BridgedRawEvent.__allocating_init(name:properties:) // init 
  }
 
  enum AppAnalytics.PushEvent {
@@ -851,20 +870,21 @@
  class AppAnalytics.Endpoint : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let url : URL // +0x0 (0x0)
-	let name : String // +0x8d000 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let url : éš // +0x0 (0x0)
+	let name : String // +0x85000 (0x10)
 	let sharedContainerIdentifier : String? // +0x5 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x38530  @objc Endpoint.url <stripped>
-	0x385d0  @objc Endpoint.name <stripped>
-	0x38650  @objc Endpoint.sharedContainerIdentifier <stripped>
-	0x38920  @objc Endpoint.initWithURL:name:sharedContainerIdentifier: <stripped>
-	0x38ae0  @objc Endpoint.init <stripped>
-	0x38b50  @objc Endpoint..cxx_destruct <stripped>
+	0x34dc0  @objc Endpoint.url <stripped>
+	0x34e60  @objc Endpoint.name <stripped>
+	0x34ee0  @objc Endpoint.sharedContainerIdentifier <stripped>
+	0x350b0  @objc Endpoint.initWithURL:name:sharedContainerIdentifier: <stripped>
+	0x35290  @objc Endpoint.init <stripped>
+	0x351e0  @objc Endpoint..cxx_destruct <stripped>
 
 	// Swift methods
-	0x386e0  class func Endpoint.__allocating_init(url:name:sharedContainerIdentifier:) // init 
+	0x34f70  class func Endpoint.__allocating_init(url:name:sharedContainerIdentifier:) // init 
  }
 
  enum AppAnalytics.UploadBatchQueueKey {
@@ -878,7 +898,8 @@
 
 	// Properties
 	case success : A
-	case failed : Error
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failed : …«
  }
 
  class AppAnalytics.Tracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -891,15 +912,16 @@
 	var eventMirrorStore : EventMirrorStore
 	var timers : Timer
 	var restartTimers : RestartTimerType
-	var dataStacks : [String : DataEventStackType]
+	var dataStacks : DataEventStackType
 	var parentTracker : Tracker
-	var groupStack : [Group]
-	var currentActionEntries : [Action.Entry]
+	var groupStack : Group
+	var currentActionEntries : Entry
 	let previousActionSequence : ActionSequence
 	var willSubmitObservers : TrackerWillSubmitObserver
 
 	// Swift methods
-	0x3ea00  func <stripped> // method 
+	0x382d0  func <stripped> // getter 
+	0x3a960  func <stripped> // method 
  }
 
  class AppAnalytics.AccessTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -918,13 +940,14 @@
 
 	// Properties
 	let address : UInt // +0x0
-	let block : (_:) // +0x8
+	let block : Tracker // +0x8
  }
 
  struct AppAnalytics.Timer {
 
 	// Properties
-	let startTime : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startTime : Ù¥
  }
 
  enum AppAnalytics.TrackerName {
@@ -937,13 +960,13 @@
  struct AppAnalytics.RestartTimer: RestartTimerType {
 
 	// Properties
-	let eventSubmit : EventSubmit<A>
+	let eventSubmit : EventSubmit
  }
 
  struct AppAnalytics.JSONLoggingEventProcessorFormatter: LoggingEventProcessorFormatterType {
 
 	// Properties
-	let writingOptions : NSJSONWritingOptions // +0x0
+	let writingOptions : WritingOptions // +0x0
 	let fallbackFormatter : LoggingEventProcessorFormatterType // +0x8
  }
 
@@ -958,20 +981,20 @@
 	let maxUploadTries : Int // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x50600  @objc UploadBatchEventConfig.maxEventsPerSessionBatch <stripped>
-	0x50640  @objc UploadBatchEventConfig.maxByteSizePerSessionBatch <stripped>
-	0x50680  @objc UploadBatchEventConfig.debuggingEnabled <stripped>
-	0x506c0  @objc UploadBatchEventConfig.maxUploadTries <stripped>
-	0x50850  @objc UploadBatchEventConfig.initWithBatchSize:enableDebugging: <stripped>
-	0x509a0  @objc UploadBatchEventConfig.withMaxEventsPerSessionBatch: <stripped>
-	0x50b20  @objc UploadBatchEventConfig.withMaxByteSizePerSessionBatch: <stripped>
-	0x50ca0  @objc UploadBatchEventConfig.withDebuggingEnabled: <stripped>
-	0x50e50  @objc UploadBatchEventConfig.withMaxUploadTries: <stripped>
-	0x50f60  @objc UploadBatchEventConfig.init <stripped>
-	0x50fe0  @objc UploadBatchEventConfig..cxx_destruct <stripped>
+	0x4b390  @objc UploadBatchEventConfig.maxEventsPerSessionBatch <stripped>
+	0x4b3d0  @objc UploadBatchEventConfig.maxByteSizePerSessionBatch <stripped>
+	0x4b410  @objc UploadBatchEventConfig.debuggingEnabled <stripped>
+	0x4b440  @objc UploadBatchEventConfig.maxUploadTries <stripped>
+	0x4b570  @objc UploadBatchEventConfig.initWithBatchSize:enableDebugging: <stripped>
+	0x4b690  @objc UploadBatchEventConfig.withMaxEventsPerSessionBatch: <stripped>
+	0x4b7e0  @objc UploadBatchEventConfig.withMaxByteSizePerSessionBatch: <stripped>
+	0x4b930  @objc UploadBatchEventConfig.withDebuggingEnabled: <stripped>
+	0x4ba80  @objc UploadBatchEventConfig.withMaxUploadTries: <stripped>
+	0x4bb70  @objc UploadBatchEventConfig.init <stripped>
+	0x4bbd0  @objc UploadBatchEventConfig..cxx_destruct <stripped>
 
 	// Swift methods
-	0x50700  class func UploadBatchEventConfig.__allocating_init(batchSize:batchDebugging:) // init 
+	0x4b480  class func UploadBatchEventConfig.__allocating_init(batchSize:batchDebugging:) // init 
  }
 
  class AppAnalytics.Lazy {
@@ -988,20 +1011,20 @@
 	let requirement : BridgedEventPropertyRequirement // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x520f0  @objc BridgedRawEventProperty.initWithDataName:requirement: <stripped>
-	0x521c0  @objc BridgedRawEventProperty.init <stripped>
-	0x52240  @objc BridgedRawEventProperty..cxx_destruct <stripped>
+	0x4cc60  @objc BridgedRawEventProperty.initWithDataName:requirement: <stripped>
+	0x4cd70  @objc BridgedRawEventProperty.init <stripped>
+	0x4cd00  @objc BridgedRawEventProperty..cxx_destruct <stripped>
 
 	// Swift methods
-	0x51fc0  class func BridgedRawEventProperty.__allocating_init(dataName:requirement:) // init 
+	0x4cba0  class func BridgedRawEventProperty.__allocating_init(dataName:requirement:) // init 
  }
 
  class AppAnalytics.UploadDropbox : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UploadDropboxType {
 
 	// Properties
 	let config : UploadBatchEventConfig // +0x10 (0x8)
-	let debugging : Debugging // +0x18 (0x8)
-	var files : [String : UploadDropboxFile] // +0x20 (0x8)
+	let debugging : Lazy // +0x18 (0x8)
+	var files : UploadDropboxFile // +0x20 (0x8)
 	let pathProvider : UploadDropboxPathProviderType // +0x28 (0x28)
 	let fileManager : UploadDropboxFileManagerType // +0x50 (0x28)
 	var lock : UnfairLock // +0x78 (0x8)
@@ -1012,14 +1035,16 @@
  enum AppAnalytics.Debugging {
 
 	// Properties
-	case enabled : (baseURL: URL)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case enabled : –
 	case none  
  }
 
  enum AppAnalytics.Errors {
 
 	// Properties
-	case emptyBatchFile : (String, data: Data)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case emptyBatchFile :  first-element-marker 
 	case malformedBatchFileEntry : [String : Any]
 	case failedToDecodeFile  
 	case failedToDecodeEntryUTF8  
@@ -1039,28 +1064,29 @@
 	// Properties
 	let service : UploadServiceType // +0x10 (0x10)
 	let dropbox : UploadDropboxType // +0x20 (0x28)
-	var batchIdentifiers : [UploadBatchQueueKey : String] // +0x48 (0x8)
+	var batchIdentifiers : UploadBatchQueueKey // +0x48 (0x8)
 	var flushQueue : OS_dispatch_queue // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5bf50  @objc UploadManager.flushWithCallbackQueue:completion: <stripped>
+	0x55b70  @objc UploadManager.flushWithCallbackQueue:completion: <stripped>
 
 	// Swift methods
-	0x5a3c0  func <stripped> // method 
-	0x5a6a0  func <stripped> // method 
+	0x54350  func <stripped> // method 
+	0x54670  func <stripped> // method 
  }
 
  class AppAnalytics.Group : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 	let name : String // +0x8 (0x10)
-	let startDate : Date // +0x14 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startDate : Ù¥ // +0x14 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x5d100  @objc Group.name <stripped>
-	0x5d180  @objc Group.startDate <stripped>
-	0x5d270  @objc Group.init <stripped>
-	0x5d310  @objc Group..cxx_destruct <stripped>
+	0x57430  @objc Group.name <stripped>
+	0x574b0  @objc Group.startDate <stripped>
+	0x575a0  @objc Group.init <stripped>
+	0x57620  @objc Group..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1069,7 +1095,7 @@
 
 	// Properties
 	let policy : SnapshotPolicy
-	let levels : [SnapshotLevel<A>]
+	let levels : SnapshotLevel
 	let eventMirrorStore : EventMirrorStore
  }
 
@@ -1092,7 +1118,8 @@
 
 	// Properties
 	var identifier : String // +0x10 (0x10)
-	let url : URL // +0x65745f5f (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let url : éš // +0x65745f5f (0x0)
 	var eventCount : Int // +0x0 (0x8)
 	var byteSize : Int // +0x45545f5f (0x8)
 	var state : UploadDropboxFileState // +0x0 (0xa)
@@ -1104,9 +1131,7 @@
 
  class AppAnalytics.UploadDropboxFileManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UploadDropboxFileManagerType {
 	// Swift methods
-	0x60de0  func <stripped> // method 
-	0x60f50  func <stripped> // method 
-	0x61090  func <stripped> // method 
+	0x5ace0  func <stripped> // method 
  }
 
  enum AppAnalytics.Errors {
@@ -1155,22 +1180,24 @@
  enum AppAnalytics.ExtendedAttributeError {
 
 	// Properties
-	case posixError : (errno: Int32, message: String)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case posixError : —š
 	case noSuchFileOrDirectory  
  }
 
  enum AppAnalytics.EventSubmitResult {
 
 	// Properties
-	case success : ProcessEvent<A>
-	case failed : Error
+	case success : ProcessEvent
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failed : …«
  }
 
  enum AppAnalytics.EventSubmit {
 
 	// Properties
-	case actual : (A.Type, EventMirrorStore)
-	case bridged : (AAEventType.Type, BridgedEventMirrorStore)
+	case actual : EventMirrorStore
+	case bridged : BridgedEventMirrorStore
 	case raw : BridgedRawEvent
  }
 
@@ -1178,7 +1205,7 @@
 
 	// Properties
 	let uploadManager : UploadManagerType // +0x10 (0x10)
-	var currentSession : Session? // +0x0 (0x0)
+	var currentSession : Session // +0x0 (0x0)
 	let isEnabled : Bool // +0x0 (0x1)
 
 	// Swift methods
@@ -1199,23 +1226,23 @@
  class AppAnalytics.FlushProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var sessionManager : weak SessionManager? // +0x10 (0x8)
+	var sessionManager : SessionManager // +0x10 (0x8)
 	let sessionEndFlushGroup : OS_dispatch_group // +0x18 (0x8)
 	let flushEvents : FlushEvents // +0x20 (0x8)
 	let flushInterval : Double // +0x28 (0x8)
 	var timer : OS_dispatch_source_timer? // +0x30 (0x8)
 
 	// Swift methods
-	0x6a000  func <stripped> // getter 
-	0x6a030  func <stripped> // setter 
-	0x6a080  func <stripped> // modifyCoroutine 
-	0x69b90  class func FlushProcessor.__allocating_init(flushEvents:flushInterval:) // init 
-	0x6a2e0  func <stripped> // method 
-	0x6a450  func <stripped> // method 
-	0x6a5b0  func <stripped> // method 
-	0x6a8b0  func <stripped> // method 
-	0x6a8c0  func <stripped> // method 
-	0x6a8d0  func <stripped> // method 
+	0x62740  func <stripped> // getter 
+	0x62770  func <stripped> // setter 
+	0x627c0  func <stripped> // modifyCoroutine 
+	0x623e0  class func FlushProcessor.__allocating_init(flushEvents:flushInterval:) // init 
+	0x62a00  func <stripped> // method 
+	0x62b20  func <stripped> // method 
+	0x62c30  func <stripped> // method 
+	0x62ed0  func <stripped> // method 
+	0x62ee0  func <stripped> // method 
+	0x62ef0  func <stripped> // method 
  }
 
  enum AppAnalytics.SessionChange { }
@@ -1226,12 +1253,12 @@
 	let sessionObserver : SessionObserver // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6b5e0  @objc BridgedSessionObserver.disposeOnObject: <stripped>
-	0x6b650  @objc BridgedSessionObserver.init <stripped>
-	0x6b700  @objc BridgedSessionObserver..cxx_destruct <stripped>
+	0x63b30  @objc BridgedSessionObserver.disposeOnObject: <stripped>
+	0x63ba0  @objc BridgedSessionObserver.init <stripped>
+	0x63c30  @objc BridgedSessionObserver..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6b5c0  func <stripped> // method 
+	0x63b10  func <stripped> // method 
  }
 
  class AppAnalytics.ProxyEventProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1246,29 +1273,35 @@
  class AppAnalytics.DocumentDirectoryUploadDropboxPathProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UploadDropboxPathProviderType {
 
 	// Properties
-	var $__lazy_storage_$_baseURL : URL?
-	var $__lazy_storage_$_debugBaseURL : URL?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_baseURL : ó‘
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_debugBaseURL : ó‘
 	let environmentName : String
 	let fileManager : UploadDropboxFileManagerType
 	let staticPathProvider : UploadDropboxPathProviderType
 
 	// Swift methods
-	0x6bc10  func <stripped> // getter 
-	0x6bda0  func <stripped> // getter 
+	0x64180  func <stripped> // getter 
+	0x642c0  func <stripped> // getter 
  }
 
  class AppAnalytics.StaticUploadDropboxPathProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UploadDropboxPathProviderType {
 
 	// Properties
-	var $__lazy_storage_$_baseURL : URL?
-	var $__lazy_storage_$_debugBaseURL : URL?
-	let baseURLProvider : ()
-	let debugURLProvider : ()
-	let fileManager : UploadDropboxFileManagerType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_baseURL : ó‘ // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_debugBaseURL : ó‘ // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let baseURLProvider : å‘ // +0x0 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let debugURLProvider : å‘ // +0x0 (0x10)
+	let fileManager : UploadDropboxFileManagerType // +0x0 (0x28)
 
 	// Swift methods
-	0x6c2b0  func <stripped> // getter 
-	0x6c2d0  func <stripped> // getter 
+	0x64740  func <stripped> // getter 
+	0x64760  func <stripped> // getter 
  }
 
  enum AppAnalytics.DataEventTrait {
@@ -1286,12 +1319,12 @@
 	let data : AADataEventType // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6d4d0  @objc BridgedSessionData.initWithKey:data: <stripped>
-	0x6d5f0  @objc BridgedSessionData.init <stripped>
-	0x6d670  @objc BridgedSessionData..cxx_destruct <stripped>
+	0x657e0  @objc BridgedSessionData.initWithKey:data: <stripped>
+	0x65910  @objc BridgedSessionData.init <stripped>
+	0x65890  @objc BridgedSessionData..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6d350  class func BridgedSessionData.__allocating_init(key:data:) // init 
+	0x65720  class func BridgedSessionData.__allocating_init(key:data:) // init 
  }
 
  class AppAnalytics.BridgedEventProperty : NSObject /usr/lib/libobjc.A.dylib {
@@ -1302,12 +1335,12 @@
 	let dataKey : String // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x6d860  @objc BridgedEventProperty.initWithDataType:requirement: <stripped>
-	0x6d970  @objc BridgedEventProperty.init <stripped>
-	0x6d9f0  @objc BridgedEventProperty..cxx_destruct <stripped>
+	0x65b40  @objc BridgedEventProperty.initWithDataType:requirement: <stripped>
+	0x65ca0  @objc BridgedEventProperty.init <stripped>
+	0x65c30  @objc BridgedEventProperty..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6d6d0  class func BridgedEventProperty.__allocating_init(dataType:requirement:) // init 
+	0x659a0  class func BridgedEventProperty.__allocating_init(dataType:requirement:) // init 
  }
 
  struct AppAnalytics.SequenceEntry {
@@ -1325,14 +1358,14 @@
 	let sessionManager : SessionManager
 
 	// ObjC -> Swift bridged methods
-	0x6e0b0  @objc BridgedSessionManager.tracker <stripped>
-	0x6e0f0  @objc BridgedSessionManager.processorManager <stripped>
-	0x6e430  @objc BridgedSessionManager.init <stripped>
-	0x6e4e0  @objc BridgedSessionManager.initWithAccessQueue: <stripped>
-	0x6e540  @objc BridgedSessionManager..cxx_destruct <stripped>
+	0x662a0  @objc BridgedSessionManager.tracker <stripped>
+	0x662e0  @objc BridgedSessionManager.processorManager <stripped>
+	0x66890  @objc BridgedSessionManager.init <stripped>
+	0x66920  @objc BridgedSessionManager.initWithAccessQueue: <stripped>
+	0x66990  @objc BridgedSessionManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6e450  class func BridgedSessionManager.__allocating_init(accessQueue:) // init 
+	0x668b0  class func BridgedSessionManager.__allocating_init(accessQueue:) // init 
  }
 
  class AppAnalytics.BridgedAccessSessionManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -1341,13 +1374,13 @@
 	let accessSessionManager : AccessSessionManager
 
 	// ObjC -> Swift bridged methods
-	0x6f670  @objc BridgedAccessSessionManager.isActive <stripped>
-	0x6f8e0  @objc BridgedAccessSessionManager.pushSessionData: <stripped>
-	0x6f970  @objc BridgedAccessSessionManager.pushSessionData:traits: <stripped>
-	0x6fa50  @objc BridgedAccessSessionManager.pushSessionData:submitEventQueues: <stripped>
-	0x6faf0  @objc BridgedAccessSessionManager.pushSessionData:traits:submitEventQueues: <stripped>
-	0x6fba0  @objc BridgedAccessSessionManager.init <stripped>
-	0x6fc30  @objc BridgedAccessSessionManager..cxx_destruct <stripped>
+	0x67a90  @objc BridgedAccessSessionManager.isActive <stripped>
+	0x67de0  @objc BridgedAccessSessionManager.pushSessionData: <stripped>
+	0x67e70  @objc BridgedAccessSessionManager.pushSessionData:traits: <stripped>
+	0x67f50  @objc BridgedAccessSessionManager.pushSessionData:submitEventQueues: <stripped>
+	0x67ff0  @objc BridgedAccessSessionManager.pushSessionData:traits:submitEventQueues: <stripped>
+	0x680e0  @objc BridgedAccessSessionManager.init <stripped>
+	0x68090  @objc BridgedAccessSessionManager..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1380,15 +1413,18 @@
 	// Properties
 	let name : String
 	let entries : A
-	let timers : [String : Tracker.Timer]
+	let timers : Timer
  }
 
  struct AppAnalytics.TimedData {
 
 	// Properties
-	let startTimestamp : Date
-	let endTimestamp : Date
-	let duration : Int64
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startTimestamp : Ù¥
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let endTimestamp : Ù¥
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let duration : Ÿ˜
  }
 
  enum AppAnalytics.CodingKeys {
@@ -1420,9 +1456,9 @@
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0x73b40  @objc ViewingSession.identifier <stripped>
-	0x73c10  @objc ViewingSession.init <stripped>
-	0x73c80  @objc ViewingSession..cxx_destruct <stripped>
+	0x6bd20  @objc ViewingSession.identifier <stripped>
+	0x6be40  @objc ViewingSession.init <stripped>
+	0x6bdd0  @objc ViewingSession..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1434,12 +1470,12 @@
 	var activeSession : Session
 
 	// ObjC -> Swift bridged methods
-	0x74220  @objc ViewingSessionManager.viewingSessionForContentIdentifier:object: <stripped>
-	0x742d0  @objc ViewingSessionManager.removeObject:forContentIdentifier: <stripped>
-	0x74370  @objc ViewingSessionManager.endViewingSessionForContentIdentifier: <stripped>
-	0x74510  @objc ViewingSessionManager.endActiveViewingSession <stripped>
-	0x747d0  @objc ViewingSessionManager.init <stripped>
-	0x748c0  @objc ViewingSessionManager..cxx_destruct <stripped>
+	0x6c970  @objc ViewingSessionManager.viewingSessionForContentIdentifier:object: <stripped>
+	0x6cbf0  @objc ViewingSessionManager.removeObject:forContentIdentifier: <stripped>
+	0x6d3b0  @objc ViewingSessionManager.endViewingSessionForContentIdentifier: <stripped>
+	0x6d530  @objc ViewingSessionManager.endActiveViewingSession <stripped>
+	0x6d8b0  @objc ViewingSessionManager.init <stripped>
+	0x6d800  @objc ViewingSessionManager..cxx_destruct <stripped>
  }
 
  class AppAnalytics.Session : _SwiftObject /usr/lib/swift/libswiftCore.dylib {

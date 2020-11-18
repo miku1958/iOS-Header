@@ -93,6 +93,7 @@
 - (oneway void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(void (^)(void))arg2;
 - (oneway void)setSiriDesignModeEnabled:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (oneway void)setSiriOutputVolume:(float)arg1 forAudioRoute:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)setSpokenNotificationProxCardSeen:(BOOL)arg1;
 - (oneway void)setSpokenNotificationShouldAlwaysSpeakNotifications:(BOOL)arg1;
 - (oneway void)setSpokenNotificationShouldSkipTriggerlessReplies:(BOOL)arg1;
 - (oneway void)setSpokenNotificationTemporarilyDisabledForApp:(NSString *)arg1 until:(NSDate *)arg2;
@@ -103,15 +104,17 @@
 - (oneway void)showMultiUsers:(void (^)(NSArray *))arg1;
 - (oneway void)siriDesignModeIsEnabled:(void (^)(BOOL))arg1;
 - (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)startMultiUserUIRequestWithText:(NSString *)arg1 expectedSpeakerSharedUserID:(NSString *)arg2 expectedSpeakerConfidenceScore:(unsigned long long)arg3 nonspeakerConfidenceScores:(NSDictionary *)arg4 completion:(void (^)(NSError *))arg5;
 - (oneway void)startObservingBluetoothWirelessSplitterSession;
 - (oneway void)startRemoteRequest:(AFRequestInfo *)arg1 onPeer:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startUIMockServerRequestWithReplayFileURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)startUIRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)startUIRequestWithSpeechAudioFileURL:(NSURL *)arg1;
 - (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)stopAllAudioPlaybackRequests:(BOOL)arg1;
 - (oneway void)stopAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 immediately:(BOOL)arg2;
 - (oneway void)stopObservingBluetoothWirelessSplitterSession;
-- (oneway void)updateMultiUserWithSharedUserId:(NSString *)arg1 companionId:(NSString *)arg2 companionSpeechId:(NSString *)arg3 idsIdentifier:(NSString *)arg4 productPrefix:(NSString *)arg5 completion:(void (^)(NSError *))arg6;
+- (oneway void)updateMultiUserWithSharedUserId:(NSString *)arg1 companionId:(NSString *)arg2 companionSpeechId:(NSString *)arg3 idsIdentifier:(NSString *)arg4 productPrefix:(NSString *)arg5 aceHost:(NSString *)arg6 completion:(void (^)(NSError *))arg7;
 - (oneway void)updateOfflineSpeechProfileWithLanguage:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)updateVoiceIdScoreToUser:(NSString *)arg1 score:(NSString *)arg2 reset:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
 @end

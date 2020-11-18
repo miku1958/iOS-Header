@@ -11,7 +11,7 @@
 @interface HUPresenceActivationOptionState : NSObject
 {
     BOOL _expanded;
-    struct HFTransformItemProvider *_userOptionItemProvider;
+    HFTransformItemProvider *_userOptionItemProvider;
     HUPresenceActivationOptionItem *_activationOptionItem;
 }
 
@@ -23,7 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithUserOptionItemProvider:(struct HFTransformItemProvider *)arg1 activationOptionItem:(id)arg2;
+- (id)initWithUserOptionItemProvider:(id)arg1 activationOptionItem:(id)arg2;
 
 @end
 

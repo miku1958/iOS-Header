@@ -21,7 +21,6 @@
 - (void).cxx_destruct;
 - (void)_updateStrokeThickness;
 - (id)initWithAxis:(long long)arg1 color:(id)arg2;
-- (struct CGSize)intrinsicContentSize;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

@@ -29,6 +29,15 @@ __attribute__((visibility("hidden")))
     unsigned int _roundTripTimeMilliseconds;
     unsigned int _packetLossPercentage;
     unsigned int _packetLossPercentageVideo;
+    unsigned int _sumPLR;
+    unsigned int _sumPLRVideo;
+    unsigned int _sumOverUtilizedBandwidth;
+    unsigned int _sumUnderUtilizedBandwidth;
+    unsigned int _sumOverShootSendBitrate;
+    unsigned int _sumUnderShootSendBitrate;
+    unsigned int _sumWorstRecentRTTInMillisecond;
+    unsigned int _sumWorstRecentBurstLoss;
+    unsigned int _countPeriodicTaskUpdate;
     unsigned int _totalPacketsReceived;
     unsigned int _totalPacketsSent;
     unsigned int _totalBytesSent;
@@ -79,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property (nonatomic) unsigned int targetBitrateCap; // @synthesize targetBitrateCap=_targetBitrateCap;
 
+- (void)accumulateStatsForPeriodicTaskUpdate;
 - (void)checkAndReportAbnormalSymptoms;
 - (void)configure:(struct AVCRateControlConfig)arg1;
 - (void)configureAlgorithmWithRestart:(BOOL)arg1;
@@ -116,6 +126,7 @@ __attribute__((visibility("hidden")))
 - (void)releaseLogDumpFiles;
 - (void)reportNetworkStatistics;
 - (void)reportTargetBitrateChange:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
+- (void)resetStatsForPeriodicTaskReport;
 - (void)setDefaultAlgorithmConfiguration:(struct VCRateControlAlgorithmConfig *)arg1;
 
 @end

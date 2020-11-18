@@ -12,5 +12,6 @@
 - (void)getConfigurationEndpoint:(void (^)(NSXPCListenerEndpoint *))arg1;
 - (void)getEndpoint:(void (^)(NSXPCListenerEndpoint *))arg1;
 - (void)getTokenEndpointForTokenID:(NSString *)arg1 reply:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
+- (void)getWatcherEndpoint:(void (^)(NSXPCListenerEndpoint *))arg1;
 @end
 

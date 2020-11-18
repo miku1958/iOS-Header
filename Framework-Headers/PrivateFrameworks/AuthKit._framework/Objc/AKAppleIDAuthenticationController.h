@@ -25,7 +25,7 @@
 + (id)sensitiveAuthenticationKeys;
 - (void).cxx_destruct;
 - (id)_authenticationServiceConnection;
-- (id)_urlBagFromCache:(BOOL)arg1 withError:(id *)arg2;
+- (id)_urlBagFromCache:(BOOL)arg1 altDSID:(id)arg2 withError:(id *)arg3;
 - (id)accountNamesForAltDSID:(id)arg1;
 - (id)activeLoginCode:(id *)arg1;
 - (void)authenticateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -40,8 +40,9 @@
 - (id)fetchDeviceListWithContext:(id)arg1 error:(id *)arg2;
 - (void)fetchDeviceMapWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fetchPrimaryBundleIDForWebServiceWithInfo:(id)arg1 error:(id *)arg2;
-- (void)fetchURLBagWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchURLBagForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchUserInformationForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceURLBagUpdateForAltDSID:(id)arg1 urlSwitchData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)generateLoginCodeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getServerUILoadDelegateForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getServerUILoadDelegateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

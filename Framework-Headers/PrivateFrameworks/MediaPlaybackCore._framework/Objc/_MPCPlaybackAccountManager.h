@@ -12,10 +12,13 @@
 {
     struct os_unfair_lock_s _lock;
     NSMutableDictionary *_accounts;
+    BOOL _needsRefreshDueToTimeout;
+    BOOL _hasLoadedInitialAccounts;
     MPCPlaybackEngine *_playbackEngine;
 }
 
 @property (readonly, copy, nonatomic) NSArray *accounts;
+@property (readonly, nonatomic) BOOL hasLoadedInitialAccounts; // @synthesize hasLoadedInitialAccounts=_hasLoadedInitialAccounts;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 
 - (void).cxx_destruct;

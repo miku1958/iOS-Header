@@ -66,6 +66,7 @@
 - (oneway void)speechRecordingWillBeginRecognitionUpdateForTask:(id)arg1;
 - (oneway void)speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)startPlaybackDidFail:(long long)arg1;
+- (oneway void)startUIRequestWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)willProcessStartPlayback:(long long)arg1 intent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

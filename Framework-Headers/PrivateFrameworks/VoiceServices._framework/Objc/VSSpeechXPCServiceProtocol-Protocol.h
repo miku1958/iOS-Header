@@ -29,7 +29,7 @@
 - (oneway void)getVoiceResourceForLanguage:(NSString *)arg1 reply:(void (^)(VSVoiceResourceAsset *))arg2;
 - (oneway void)killDaemon;
 - (oneway void)pauseSpeechRequestAtMark:(long long)arg1;
-- (oneway void)prewarmIfNeededWithRequest:(VSSpeechRequest *)arg1;
+- (oneway void)prewarmIfNeededWithRequest:(VSSpeechRequest *)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)queryPhaticCapabilityWithRequest:(VSSpeechRequest *)arg1 reply:(void (^)(BOOL))arg2;
 - (oneway void)setAutoDownloadedVoiceAssets:(NSArray *)arg1 withClientID:(NSString *)arg2;
 - (oneway void)setLogToFile:(BOOL)arg1;

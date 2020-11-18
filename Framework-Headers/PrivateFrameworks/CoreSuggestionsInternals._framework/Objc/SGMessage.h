@@ -15,6 +15,7 @@
 @interface SGMessage : NSObject <NSSecureCoding, NSCopying, SGSpotlightIdentifiers>
 {
     BOOL _isSent;
+    BOOL _isStoredEncrypted;
     NSString *_subject;
     NSString *_textContent;
     NSDate *_date;
@@ -36,6 +37,7 @@
 @property (copy, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isSent; // @synthesize isSent=_isSent;
+@property (nonatomic) BOOL isStoredEncrypted; // @synthesize isStoredEncrypted=_isStoredEncrypted;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *textContent; // @synthesize textContent=_textContent;

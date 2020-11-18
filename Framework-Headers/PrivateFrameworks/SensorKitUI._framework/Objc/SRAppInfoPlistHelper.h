@@ -25,21 +25,10 @@
 @property (readonly, copy, nonatomic) NSString *studyName; // @synthesize studyName=_studyName;
 @property (copy, nonatomic) NSString *usageDescription; // @synthesize usageDescription=_usageDescription;
 
-+ (id)_appNameWithInfoDictionary:(id)arg1 bundleId:(id)arg2;
-+ (id)_privacyLinkWithInfoDictionary:(id)arg1;
-+ (id)_studyNameWithInfoDictionary:(id)arg1 bundleId:(id)arg2;
-+ (id)_usageDescriptionWithInfoDictionary:(id)arg1;
-+ (id)appName:(id)arg1;
-+ (id)infoDictionaryForBundle:(id)arg1;
 + (void)initialize;
-+ (BOOL)isValidString:(id)arg1;
-+ (id)privacyLink:(id)arg1;
-+ (id)studyName:(id)arg1;
-+ (id)usageDescription:(id)arg1;
 - (void)crashWithMessage:(id)arg1;
 - (void)dealloc;
 - (id)initWithBundle:(id)arg1;
-- (id)initWithInfoDictionary:(id)arg1 bundleIdentifier:(id)arg2;
 - (void)verifyRequiredInfoPlistContentForRequestedServices:(id)arg1;
 
 @end

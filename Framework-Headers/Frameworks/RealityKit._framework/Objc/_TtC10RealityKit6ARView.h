@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSArray;
 
 @interface _TtC10RealityKit6ARView : UIView
 {
@@ -25,6 +25,8 @@
     MISSING_TYPE *useCAMetalLayer;
     MISSING_TYPE *pauseEngineOnLeaveForeground;
     MISSING_TYPE *__renderGraphEmitter;
+    MISSING_TYPE *__forceLocalizedProbes;
+    MISSING_TYPE *__parallaxBackgroundProbe;
     MISSING_TYPE *layerHandle;
     MISSING_TYPE *updateSubscription;
     MISSING_TYPE *renderSubscription;
@@ -37,8 +39,11 @@
     MISSING_TYPE *__disableStatisticsRendering;
 }
 
+@property (nonatomic, readonly) NSArray *entityAccessibilityWrappers;
+
 - (void).cxx_destruct;
 - (void)dealloc;
+- (float)distanceInMetersFromEntityAccessibilityWrapper:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

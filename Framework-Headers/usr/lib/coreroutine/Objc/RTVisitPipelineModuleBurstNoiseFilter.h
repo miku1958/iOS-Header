@@ -8,7 +8,7 @@
 
 #import <coreroutine/RTVisitPipelineModule-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, RTDistanceCalculator;
 
 @interface RTVisitPipelineModuleBurstNoiseFilter : NSObject <RTVisitPipelineModule>
 {
@@ -19,10 +19,12 @@
     double _minimumNoiseToLeftFlankDistance;
     unsigned long long _maximumWindowSize;
     double _maxHorizontalAccuracy;
+    RTDistanceCalculator *_distanceCalculator;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
 @property (readonly, nonatomic) BOOL firstTimeProcessingModule; // @synthesize firstTimeProcessingModule=_firstTimeProcessingModule;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long lastProcessedIndex; // @synthesize lastProcessedIndex=_lastProcessedIndex;
@@ -44,6 +46,7 @@
 - (void)identifyNoiseInWindowRange:(struct _NSRange)arg1;
 - (id)initWithHyperParameter:(id)arg1;
 - (id)initWithMaximumFlankDistance:(double)arg1 minimumNoiseToLeftFlankDistance:(double)arg2 maximumWindowSize:(unsigned long long)arg3 maxHorizontalAccuracy:(double)arg4;
+- (id)initWithMaximumFlankDistance:(double)arg1 minimumNoiseToLeftFlankDistance:(double)arg2 maximumWindowSize:(unsigned long long)arg3 maxHorizontalAccuracy:(double)arg4 distanceCalculator:(id)arg5;
 - (id)process:(id)arg1;
 - (void)removeNoiseLocations;
 - (void)setLastProcessedIndex:(unsigned long long)arg1;

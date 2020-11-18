@@ -20,7 +20,7 @@
 - (id)identifier;
 - (id)init;
 - (id)makeJSValue:(id)arg1 context:(id)arg2 error:(out id *)arg3;
-- (struct NSArray *)schemaDependencies;
+- (id)schemaDependencies;
 - (id)serialize:(id)arg1 error:(out id *)arg2;
 - (BOOL)serializeAssetIdentifier:(id)arg1 intoDictionary:(id)arg2 error:(out id *)arg3;
 - (BOOL)serializeIntoDictionary:(id)arg1 error:(out id *)arg2;

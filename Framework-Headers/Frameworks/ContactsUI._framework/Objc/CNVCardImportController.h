@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)authorizationCheckForSavingReceivedContacts;
 - (void)authorizeAndSaveUnknownPersons;
 - (void)cancelModalUnknownPersons:(id)arg1;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
@@ -50,7 +51,7 @@
 - (void)presentImportUIForContacts:(id)arg1;
 - (void)processNextContacts;
 - (void)saveUnknownPersons:(id)arg1;
-- (void)saveUnknownPersons:(id)arg1 isAuthorized:(BOOL)arg2;
+- (void)saveUnknownPersonsAndMarkSaveWithAuthorizationResult:(long long)arg1;
 - (void)showEditAuthorizationPane:(id)arg1 animated:(BOOL)arg2;
 
 @end

@@ -24,6 +24,7 @@
 - (id)brc_cloudKitErrorForRecordID:(id)arg1;
 - (id)brc_cloudKitErrorForSubscriptionID:(id)arg1;
 - (id)brc_cloudKitErrorForZone:(id)arg1;
+- (id)brc_cloudKitErrorMessage;
 - (unsigned long long)brc_containerResetErrorForSharedZone:(BOOL)arg1 resetReason:(const char **)arg2;
 - (BOOL)brc_containsCloudKitErrorCode:(long long)arg1;
 - (BOOL)brc_containsCloudKitInternalErrorCode:(long long)arg1;

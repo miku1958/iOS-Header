@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) NSArray *additionalPlaceInfos;
 @property (nonatomic, readonly) NSDictionary *addressDictionary;
 @property (nonatomic, readonly) int addressGeocodeAccuracy;
+@property (nonatomic, readonly) NSArray *alternateSearchableNames;
 @property (nonatomic, readonly) NSArray *amenities;
 @property (nonatomic, readonly) double areaInMeters;
 @property (nonatomic, readonly) NSArray *areasOfInterest;
@@ -155,6 +156,7 @@
 
 - (NSArray *)_additionalPlaceInfos;
 - (int)_addressGeocodeAccuracy;
+- (NSArray *)_alternateSearchableNames;
 - (NSArray *)_amenities;
 - (double)_areaInMeters;
 - (GEOMapRegion *)_arrivalMapRegionForTransportType:(int)arg1;

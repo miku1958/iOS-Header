@@ -6,18 +6,28 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIImage;
+#import <MessageUI/_UICursorInteractionDelegate-Protocol.h>
 
-@interface MFComposeSendAccessoryButton : UIButton
+@class NSString, UIImage;
+
+@interface MFComposeSendAccessoryButton : UIButton <_UICursorInteractionDelegate>
 {
     UIImage *_sendImage;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *sendImage; // @synthesize sendImage=_sendImage;
+@property (readonly) Class superclass;
 
 + (id)buttonWithType:(long long)arg1;
 - (void).cxx_destruct;
+- (id)_cursorForTargetedPreview:(id)arg1;
+- (id)_preview;
 - (void)_setupSendImage:(BOOL)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)setEnabled:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

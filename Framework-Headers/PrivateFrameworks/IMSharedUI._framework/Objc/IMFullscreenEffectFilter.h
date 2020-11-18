@@ -18,7 +18,7 @@
     double _balloonAlpha;
     double _contentAlpha;
     CAFilter *_textCompositingFilter;
-    struct UIColor *_textColor;
+    UIColor *_textColor;
 }
 
 @property (nonatomic) double balloonAlpha; // @synthesize balloonAlpha=_balloonAlpha;

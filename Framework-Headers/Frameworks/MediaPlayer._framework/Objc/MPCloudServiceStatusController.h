@@ -8,8 +8,8 @@
 
 #import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
 
-@class ICMusicSubscriptionFairPlayKeyStatus, ICMusicSubscriptionStatus, ICUserIdentity, NSString, SSVFairPlaySubscriptionStatus, SSVSubscriptionStatus;
-@protocol OS_dispatch_queue;
+@class ICMusicSubscriptionFairPlayKeyStatus, ICMusicSubscriptionStatus, ICMusicSubscriptionStatusMonitor, ICUserIdentity, NSString, SSVFairPlaySubscriptionStatus, SSVSubscriptionStatus;
+@protocol NSCopying, OS_dispatch_queue;
 
 @interface MPCloudServiceStatusController : NSObject <ICEnvironmentMonitorObserver>
 {
@@ -20,7 +20,8 @@
     unsigned long long _cloudLibraryObservationCount;
     BOOL _hasLoadedMatchStatus;
     BOOL _hasLoadedSubscriptionAvailability;
-    ICMusicSubscriptionStatus *_lastKnownMusicSubscriptionStatus;
+    ICMusicSubscriptionStatusMonitor *_subscriptionStatusMonitor;
+    id<NSCopying> _subscriptionStatusObservationToken;
     unsigned long long _matchStatusObservationCount;
     unsigned long long _matchStatus;
     BOOL _observingNetworkReachability;
@@ -71,11 +72,9 @@
 - (BOOL)_handlesSameAccountAs:(id)arg1;
 - (id)_initWithUserIdentity:(id)arg1;
 - (void)_performBlockOnControllerHandlingTheSameAccount:(CDUnknownBlockType)arg1;
-- (void)_subscriptionStatusDidChange:(id)arg1;
 - (void)_updateMatchStatus;
 - (void)_updateSubscriptionAvailability;
 - (void)_updateSubscriptionAvailabilityWithValue:(BOOL)arg1;
-- (void)_updateSubscriptionStatusWithIgnoreCachePolicy:(BOOL)arg1;
 - (void)_userIdentityStoreDidChange:(id)arg1;
 - (void)beginObservingCloudLibraryEnabled;
 - (void)beginObservingFairPlaySubscriptionStatus;

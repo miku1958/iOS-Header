@@ -32,6 +32,7 @@
     id<SBIdleTimerCoordinating> _idleTimerCoordinator;
 }
 
+@property (readonly, nonatomic, getter=_isKeyboardVisibleForSpringBoard) BOOL _isKeyboardVisibleForSpringBoard;
 @property (readonly, nonatomic, getter=_isUsingMedusaHostedKeyboardWindow) BOOL _isUsingMedusaHostedKeyboardWindow; // @synthesize _isUsingMedusaHostedKeyboardWindow;
 @property (readonly, nonatomic) SBMainDisplayLayoutStateManager *_layoutStateManager; // @dynamic _layoutStateManager;
 @property (readonly, nonatomic) UIWindow *_medusaHostedKeyboardWindow; // @synthesize _medusaHostedKeyboardWindow;

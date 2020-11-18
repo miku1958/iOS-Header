@@ -69,6 +69,7 @@
 @property (nonatomic) long long clearButtonMode; // @synthesize clearButtonMode=_clearButtonMode;
 @property (nonatomic) BOOL contentsIsSingleValue;
 @property (readonly, copy, nonatomic) NSString *currentEditingString;
+@property (readonly, nonatomic) long long cursorBehavior;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (weak, nonatomic) id<MFAtomTextViewDelegate> delegate; // @synthesize delegate=_delegate;

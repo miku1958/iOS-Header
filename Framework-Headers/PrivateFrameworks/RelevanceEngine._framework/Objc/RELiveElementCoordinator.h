@@ -43,7 +43,6 @@
 - (void)_queue_refreshElement:(id)arg1;
 - (void)_queue_reload;
 - (void)_queue_reloadElement:(id)arg1;
-- (BOOL)_queue_reloadElement:(id)arg1 withElement:(id)arg2;
 - (void)_queue_removeElement:(id)arg1;
 - (void)_queue_scheduleContentUpdate:(BOOL)arg1;
 - (void)addElement:(id)arg1 toSection:(id)arg2;

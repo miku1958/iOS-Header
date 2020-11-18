@@ -17,7 +17,7 @@
 @property (nonatomic) double topToBaseline; // @synthesize topToBaseline=_topToBaseline;
 @property (nonatomic) BOOL usePhoneLandscapeSymbolConfiguration; // @synthesize usePhoneLandscapeSymbolConfiguration=_usePhoneLandscapeSymbolConfiguration;
 
-+ (id)displayMetricsWithSafeAreaInsets:(struct UIEdgeInsets)arg1 interfaceOrientation:(long long)arg2;
++ (id)displayMetricsWithSafeAreaInsets:(struct UIEdgeInsets)arg1 interfaceOrientation:(long long)arg2 traitCollection:(id)arg3;
 
 @end
 

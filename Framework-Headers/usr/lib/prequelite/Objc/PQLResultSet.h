@@ -49,9 +49,9 @@
 - (void)dealloc;
 - (id)description;
 - (double)doubleAtIndex:(int)arg1;
-- (struct PQLResultSet *)enumerateObjects:(CDUnknownBlockType)arg1;
-- (struct PQLResultSet *)enumerateObjectsOfClass:(Class)arg1;
-- (struct PQLResultSet *)enumerateObjectsOfClass:(Class)arg1 initializer:(SEL)arg2;
+- (id)enumerateObjects:(CDUnknownBlockType)arg1;
+- (id)enumerateObjectsOfClass:(Class)arg1;
+- (id)enumerateObjectsOfClass:(Class)arg1 initializer:(SEL)arg2;
 - (float)floatAtIndex:(int)arg1;
 - (id)initWithStatement:(id)arg1 usingDatabase:(id)arg2;
 - (int)intAtIndex:(int)arg1;

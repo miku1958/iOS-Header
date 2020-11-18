@@ -56,7 +56,7 @@
 @property (nonatomic) id<WebResourceLoadDelegate> resourceLoadDelegate;
 @property (readonly, nonatomic) DOMRange *selectedDOMRange;
 @property (readonly, nonatomic) WebFrame *selectedFrame;
-@property (readonly, nonatomic) int selectionAffinity;
+@property (readonly, nonatomic) unsigned long long selectionAffinity;
 @property (nonatomic) BOOL shouldCloseWithWindow;
 @property (nonatomic) BOOL shouldUpdateWhileOffscreen;
 @property (nonatomic) BOOL smartInsertDeleteEnabled;
@@ -189,6 +189,7 @@
 - (id)_displayURL;
 - (void)_documentScaleChanged;
 - (id)_downloadURL:(id)arg1;
+- (id)_editableElementsInRect:(struct CGRect)arg1;
 - (id)_editingDelegateForwarder;
 - (id)_elementAtWindowPoint:(struct CGPoint)arg1;
 - (void)_endedDataInteraction:(struct CGPoint)arg1 global:(struct CGPoint)arg2;
@@ -202,6 +203,7 @@
 - (id)_fixedPositionContent;
 - (BOOL)_flushCompositingChanges;
 - (id)_focusedFrame;
+- (void)_forceRepaintForTesting;
 - (id)_formDelegate;
 - (id)_formDelegateForSelector:(SEL)arg1;
 - (id)_formDelegateForwarder;
@@ -318,7 +320,7 @@
 - (void)_setWantsTelephoneNumberParsing:(BOOL)arg1;
 - (void)_setWebGLEnabled:(BOOL)arg1;
 - (void)_setZoomMultiplier:(float)arg1 isTextOnly:(BOOL)arg2;
-- (BOOL)_shouldChangeSelectedDOMRange:(id)arg1 toDOMRange:(id)arg2 affinity:(int)arg3 stillSelecting:(BOOL)arg4;
+- (BOOL)_shouldChangeSelectedDOMRange:(id)arg1 toDOMRange:(id)arg2 affinity:(unsigned long long)arg3 stillSelecting:(BOOL)arg4;
 - (void)_simplifyMarkup:(id)arg1 endNode:(id)arg2;
 - (void)_startAllPlugIns;
 - (void)_startDrag:(const struct DragItem *)arg1;
@@ -569,7 +571,7 @@
 - (void)setPageSizeMultiplier:(float)arg1;
 - (void)setScriptDebugDelegate:(id)arg1;
 - (void)setSelectTrailingWhitespaceEnabled:(BOOL)arg1;
-- (void)setSelectedDOMRange:(id)arg1 affinity:(int)arg2;
+- (void)setSelectedDOMRange:(id)arg1 affinity:(unsigned long long)arg2;
 - (void)setShowingInspectorIndication:(BOOL)arg1;
 - (void)setTabKeyCyclesThroughElements:(BOOL)arg1;
 - (void)setTracksRepaints:(BOOL)arg1;

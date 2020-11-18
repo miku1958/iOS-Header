@@ -18,6 +18,7 @@
     NSDate *_firstPerformedDate;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _fetchingData;
+    NSDate *_lastFetchedDate;
     NSMutableArray *_fetchCompletionBlocks;
     REObserverStore *_observers;
 }
@@ -31,7 +32,7 @@
 - (void)_notifyObservers;
 - (void)_queue_fetchPredicitions;
 - (void)_queue_setupConnection;
-- (void)_requestPredictions;
+- (void)_requestPredictions:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (void)fetchFirstPerformedActionDate:(CDUnknownBlockType)arg1;

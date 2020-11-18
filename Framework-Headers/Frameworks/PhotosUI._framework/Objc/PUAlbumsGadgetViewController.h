@@ -31,6 +31,7 @@
 @property (strong, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 @property (readonly) Class superclass;
 
++ (id)_supportedActionsByKeyCommands;
 - (void).cxx_destruct;
 - (void)_handleDoneButton:(id)arg1;
 - (void)_handlePlusButton:(id)arg1;
@@ -40,16 +41,23 @@
 - (id)_newFolderActionWithSpec:(id)arg1;
 - (id)_newSharedAlbumActionWithSpec:(id)arg1;
 - (id)_newSmartAlbumActionWithSpec:(id)arg1;
-- (void)_presentNewActionAlertControllerIncludeNewFolderAction:(BOOL)arg1;
-- (void)_pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performActionOfActionType:(long long)arg1;
+- (void)_performCreateNewAlbum;
+- (void)_performCreateNewFolder;
+- (void)_performCreateNewSharedAlbum;
+- (void)_performCreateNewSmartAlbum;
+- (void)_performKeyCommand:(id)arg1;
 - (void)_updateNavigationBar;
 - (BOOL)canNavigateToCollection:(id)arg1;
 - (BOOL)canRouteToDestination:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)configureSectionHeader:(id)arg1;
 - (id)initWithLayout:(id)arg1 dataSourceManager:(id)arg2;
+- (id)keyCommands;
 - (void)navigateToCollection:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)presentNewActionAlertControllerWithOptions:(unsigned long long)arg1;
+- (void)pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)px_gridPresentation;
 - (long long)scrollAnimationIdentifier;
 - (void)selectNavigationListItem:(id)arg1 hintIndex:(long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;

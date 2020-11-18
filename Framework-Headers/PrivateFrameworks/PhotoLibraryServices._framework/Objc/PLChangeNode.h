@@ -28,6 +28,7 @@
 - (void)disconnectManagedObjectContext:(id)arg1;
 - (void)distributeRemoteContextDidSaveEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 transaction:(id)arg3;
 - (id)initWithLibraryURL:(id)arg1 changeMerger:(id)arg2 changePublisher:(id)arg3 libraryServicesManager:(id)arg4;
+- (void)invalidate;
 - (id)photoLibrary;
 - (void)publishChangesForDidSaveObjectIDsNotification:(id)arg1;
 - (void)publishRemoteChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 reply:(CDUnknownBlockType)arg3;

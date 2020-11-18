@@ -12,7 +12,6 @@
 
 @interface SASSiriPocketStateManager : NSObject <CMPocketStateDelegate>
 {
-    BOOL _pocketStateShouldPreventVoiceTrigger;
     CMPocketStateManager *_pocketStateManager;
     long long _currentPocketState;
 }
@@ -22,7 +21,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_pocketStateManager, setter=_setPocketStateManager:) CMPocketStateManager *pocketStateManager; // @synthesize pocketStateManager=_pocketStateManager;
-@property (nonatomic, getter=_pocketStateShouldPreventVoiceTrigger, setter=_setPocketStateShouldPreventVoiceTrigger:) BOOL pocketStateShouldPreventVoiceTrigger; // @synthesize pocketStateShouldPreventVoiceTrigger=_pocketStateShouldPreventVoiceTrigger;
 @property (readonly) Class superclass;
 
 + (id)new;
@@ -31,7 +29,6 @@
 - (id)_init;
 - (id)_stringForPocketState:(long long)arg1;
 - (void)_updateForPocketState:(long long)arg1;
-- (long long)currentPocketState;
 - (id)init;
 - (void)pocketStateManager:(id)arg1 didUpdateState:(long long)arg2;
 - (BOOL)pocketStateShouldPreventVoiceTrigger;

@@ -68,6 +68,10 @@ __attribute__((visibility("hidden")))
 - (id)_rebasedShadowUpdatesForUpdate:(id)arg1 initialSnapshot:(id)arg2;
 - (BOOL)_tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;
 - (BOOL)_tableView:(id)arg1 canHandleDropSession:(id)arg2;
+- (id)_tableView:(id)arg1 cursorRegionForRowAtIndexPath:(id)arg2 defaultRegion:(id)arg3;
+- (id)_tableView:(id)arg1 cursorStyleForModifiers:(long long)arg2 atIndexPath:(id)arg3;
+- (void)_tableView:(id)arg1 cursorWillEnterRowAtIndexPath:(id)arg2;
+- (void)_tableView:(id)arg1 cursorWillExitRowAtIndexPath:(id)arg2;
 - (long long)_tableView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (long long)_tableView:(id)arg1 dataOwnerForDropSession:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 dragSessionDidEnd:(id)arg2;

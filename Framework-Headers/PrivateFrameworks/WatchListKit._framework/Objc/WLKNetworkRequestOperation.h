@@ -12,6 +12,7 @@
 {
     NSString *_identifier;
     NSNumber *_DSID;
+    id _authenticationDelegate;
     NSURLRequest *_request;
     long long _options;
     NSHTTPURLResponse *_httpResponse;
@@ -26,6 +27,7 @@
 }
 
 @property (copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
+@property (weak, nonatomic) id authenticationDelegate; // @synthesize authenticationDelegate=_authenticationDelegate;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (strong, nonatomic) AMSURLRequestEncoder *encoder; // @synthesize encoder=_encoder;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;

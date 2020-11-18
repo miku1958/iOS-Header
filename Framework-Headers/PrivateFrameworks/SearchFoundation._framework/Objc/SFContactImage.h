@@ -18,11 +18,9 @@
         unsigned int threeDTouchEnabled:1;
     } _has;
     BOOL _threeDTouchEnabled;
-    NSString *_contactIdentifier;
     NSArray *_contactIdentifiers;
 }
 
-@property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property (copy, nonatomic) NSString *contentType;
 @property (nonatomic) double cornerRadius;

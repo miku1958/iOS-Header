@@ -14,11 +14,13 @@
 @interface AR3DSkeletonDetectionResult : NSObject <NSSecureCoding, NSCopying>
 {
     vector_1cb3ea33 _jointsVector;
+    vector_1cb3ea33 _jointsVectorLocalSpace;
     AR2DSkeletonDetectionResult *_skeletonDetectionResult2D;
 }
 
 @property (readonly, nonatomic) unsigned long long jointCount;
 @property (readonly, nonatomic) const MISSING_TYPE **joints;
+@property (readonly, nonatomic) const MISSING_TYPE **jointsLocalSpace;
 @property (readonly, nonatomic) AR2DSkeletonDetectionResult *skeletonDetectionResult2D; // @synthesize skeletonDetectionResult2D=_skeletonDetectionResult2D;
 
 + (id)childrenIndices;

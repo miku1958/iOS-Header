@@ -30,10 +30,13 @@
 - (void)add:(id)arg1:(id)arg2;
 - (void)add:(id)arg1 before:(id)arg2;
 - (unsigned int)completeLength;
+- (unsigned int)completeLength;
 - (id)item:(unsigned int)arg1;
+- (id)listItemAtIndex:(int)arg1;
 - (id)listItemAtIndex:(int)arg1;
 - (id)namedItem:(id)arg1;
 - (void)remove:(int)arg1;
+- (int)structuralComplexityContribution;
 - (int)structuralComplexityContribution;
 
 @end

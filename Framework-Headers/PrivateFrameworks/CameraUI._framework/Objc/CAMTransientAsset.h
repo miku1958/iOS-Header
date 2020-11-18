@@ -49,6 +49,7 @@
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly, nonatomic) BOOL hasPhotoColorAdjustments;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isHidden) BOOL hidden;
 @property (readonly, nonatomic) BOOL isAnimatedImage;
 @property (readonly, nonatomic) BOOL isLivePhoto;
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder; // @synthesize isPhotoIrisPlaceholder=_isPhotoIrisPlaceholder;

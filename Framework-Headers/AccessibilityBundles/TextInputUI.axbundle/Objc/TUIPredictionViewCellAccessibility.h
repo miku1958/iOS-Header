@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityInTopLevelTabLoop;
 - (id)_accessibilityRoleDescription;
 - (unsigned int)_accessibilitySlotID;
 - (void)_axActivateSpeaking:(id)arg1;
@@ -20,6 +21,7 @@
 - (BOOL)_axHideCell;
 - (BOOL)_axIsAutoFillKey;
 - (BOOL)_axIsAutocorrection;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (id)accessibilityCustomActions;
 - (BOOL)accessibilityElementsHidden;
 - (id)accessibilityLabel;

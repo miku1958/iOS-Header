@@ -85,6 +85,7 @@
     BOOL _expanded;
     BOOL _backdropGroupDisabled;
     BOOL _suppressesBlur;
+    BOOL _sendingBarMetricsChangeNotification;
     _SFNavigationBarItem *_item;
     _SFBarTheme *_theme;
     _SFNavigationBarTheme *_effectiveTheme;
@@ -124,6 +125,7 @@
 @property (readonly, nonatomic) double minimumHeight;
 @property (readonly, copy, nonatomic) NSArray *popoverPassthroughViews;
 @property (readonly, nonatomic) id<_SFPopoverSourceInfo> reloadButtonPopoverSourceInfo;
+@property (readonly, nonatomic, getter=isSendingBarMetricsChangeNotification) BOOL sendingBarMetricsChangeNotification; // @synthesize sendingBarMetricsChangeNotification=_sendingBarMetricsChangeNotification;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressesBlur; // @synthesize suppressesBlur=_suppressesBlur;
 @property (readonly, nonatomic) UITextField *textField; // @synthesize textField=_textField;

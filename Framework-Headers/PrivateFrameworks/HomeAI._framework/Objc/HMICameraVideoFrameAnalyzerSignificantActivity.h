@@ -36,7 +36,7 @@
 - (void)_addSimulatedDetectionForEventType:(long long)arg1 targetEventTypes:(long long)arg2 events:(long long *)arg3 annotationScores:(id)arg4 detections:(id)arg5;
 - (double)_confidenceScoreOverrideForEventType:(long long)arg1;
 - (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 error:(id *)arg3;
-- (id)initWithConfidenceThresholds:(struct NSDictionary *)arg1 nmsThreshold:(double)arg2 error:(id *)arg3;
+- (id)initWithConfidenceThresholds:(id)arg1 nmsThreshold:(double)arg2 error:(id *)arg3;
 - (void)preAnalyze:(id)arg1;
 - (long long)rankForClassLabel:(long long)arg1;
 

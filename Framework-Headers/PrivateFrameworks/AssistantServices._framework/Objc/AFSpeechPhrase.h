@@ -21,7 +21,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (struct NSDictionary *)allInterpretationStringsAndScores;
+- (id)allInterpretationStringsAndScores;
 - (id)bestInterpretation;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

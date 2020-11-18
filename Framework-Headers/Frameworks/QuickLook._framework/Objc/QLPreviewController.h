@@ -56,6 +56,7 @@
     BOOL _isObtainingEditsFromServiceBeforeDismissing;
     BOOL _isContentManaged;
     BOOL _useCustomActionButton;
+    BOOL _alwaysDisplayPreviewItemTitle;
     BOOL _showActionAsDefaultButton;
     long long _currentPreviewItemIndex;
     id<QLPreviewControllerDataSource> _dataSource;
@@ -98,6 +99,7 @@
 @property (strong) NSArray *additionalLeftBarButtonItems; // @synthesize additionalLeftBarButtonItems=_additionalLeftBarButtonItems;
 @property (strong) NSArray *additionalRightBarButtonItems; // @synthesize additionalRightBarButtonItems=_additionalRightBarButtonItems;
 @property (nonatomic) BOOL allowInteractiveTransitions; // @synthesize allowInteractiveTransitions=_allowInteractiveTransitions;
+@property (nonatomic) BOOL alwaysDisplayPreviewItemTitle; // @synthesize alwaysDisplayPreviewItemTitle=_alwaysDisplayPreviewItemTitle;
 @property (nonatomic) unsigned long long appearanceActions; // @synthesize appearanceActions=_appearanceActions;
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL canChangeCurrentPage; // @synthesize canChangeCurrentPage=_canChangeCurrentPage;

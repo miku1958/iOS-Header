@@ -35,9 +35,9 @@
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (void)_setMetadata:(id)arg1;
 - (id)_spotlightContentType;
-- (id)_subtitleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (id)_subtitleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 - (BOOL)_supportsBackgroundExecution;
-- (id)_titleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (id)_titleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 - (id)_typedBackingStore;
 - (id)_validParameterCombinationsWithSchema:(id)arg1;
 - (id)domain;

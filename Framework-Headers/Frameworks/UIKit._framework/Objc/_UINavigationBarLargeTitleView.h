@@ -6,12 +6,13 @@
 
 #import <UIKitCore/UIView.h>
 
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext;
+@class NSArray, NSDictionary, NSString, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext, _UIPointerInteractionAssistant;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarLargeTitleView : UIView <_UINavigationBarTransitionContextParticipant>
+@interface _UINavigationBarLargeTitleView : UIView <UIPointerInteractionDelegate, _UINavigationBarTransitionContextParticipant>
 {
     _UINavigationBarTransitionContext *_transitionContext;
     NSArray *_titleCandidates;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _providesExtraSpaceForExcessiveLineHeights;
     BOOL _alignAccessoryViewToTitleBaseline;
     NSDictionary *_effectiveTitleAttributes;
+    _UIPointerInteractionAssistant *_assistant;
     long long _titleType;
     NSString *_title;
     NSArray *_alternateTitles;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long accessoryViewHorizontalAlignment; // @synthesize accessoryViewHorizontalAlignment=_accessoryViewHorizontalAlignment;
 @property (nonatomic) BOOL alignAccessoryViewToTitleBaseline; // @synthesize alignAccessoryViewToTitleBaseline=_alignAccessoryViewToTitleBaseline;
 @property (strong, nonatomic) NSArray *alternateTitles; // @synthesize alternateTitles=_alternateTitles;
+@property (strong, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *effectiveTitleAttributes; // @synthesize effectiveTitleAttributes=_effectiveTitleAttributes;
@@ -48,9 +51,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long twoLineMode; // @synthesize twoLineMode=_twoLineMode;
 
 - (void).cxx_destruct;
+- (void)_clearAssistants;
 - (id)_effectiveTitle;
 - (id)_layoutForMeasurement;
 - (id)_newLayout;
+- (void)_setAssistants;
 - (id)_titleForCurrentWidth;
 - (void)_updateContentAndInvalidate:(BOOL)arg1;
 - (void)adoptLayout:(id)arg1;
@@ -61,6 +66,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)prepareToRecordToState:(id)arg1;
 - (void)recordFromStateForTransition:(id)arg1;
 - (void)recordToStateForTransition:(id)arg1;

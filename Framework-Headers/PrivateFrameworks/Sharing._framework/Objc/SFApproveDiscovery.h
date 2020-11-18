@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, SFDeviceDiscovery;
+@class NSArray, NSMutableDictionary, SFDeviceDiscovery;
 @protocol OS_dispatch_queue;
 
 @interface SFApproveDiscovery : NSObject
@@ -16,7 +16,7 @@
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     SFDeviceDiscovery *_deviceDiscovery;
-    struct NSMutableDictionary *_deviceDictionary;
+    NSMutableDictionary *_deviceDictionary;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _deviceFoundHandler;
     CDUnknownBlockType _deviceLostHandler;

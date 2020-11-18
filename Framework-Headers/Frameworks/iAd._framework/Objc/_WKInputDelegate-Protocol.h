@@ -23,5 +23,6 @@
 - (BOOL)_webView:(WKWebView *)arg1 shouldRevealFocusOverlayForInputSession:(id<_WKFormInputSession>)arg2;
 - (void)_webView:(WKWebView *)arg1 willStartInputSession:(id<_WKFormInputSession>)arg2;
 - (void)_webView:(WKWebView *)arg1 willSubmitFormValues:(NSDictionary *)arg2 userObject:(NSObject<NSSecureCoding> *)arg3 submissionHandler:(void (^)(void))arg4;
+- (NSDictionary *)_webViewAdditionalContextForStrongPasswordAssistance:(WKWebView *)arg1;
 @end
 

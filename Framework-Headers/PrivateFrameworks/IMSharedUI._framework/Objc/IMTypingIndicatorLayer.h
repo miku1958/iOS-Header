@@ -14,12 +14,12 @@
 {
     BOOL _hasDarkBackground;
     id _iconImage;
-    struct UIColor *_bubbleColor;
-    struct UIColor *_thinkingDotColor;
+    UIColor *_bubbleColor;
+    UIColor *_thinkingDotColor;
     UITraitCollection *_traitCollection;
     double _bubbleOpacity;
     double _thinkingDotOpacity;
-    struct UIColor *_customBubbleColor;
+    UIColor *_customBubbleColor;
     CALayer *_bubbleContainer;
     CALayer *_smallBubble;
     CALayer *_mediumBubble;
@@ -51,10 +51,10 @@
 @property (strong, nonatomic) CAReplicatorLayer *thinkingDots; // @synthesize thinkingDots=_thinkingDots;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
-+ (struct UIColor *)defaultBubbleColor;
++ (id)defaultBubbleColor;
 + (double)defaultBubbleOpacity;
 + (struct CGSize)defaultSize;
-+ (struct UIColor *)defaultThinkingDotColor;
++ (id)defaultThinkingDotColor;
 + (double)defaultThinkingDotOpacity;
 + (struct CGRect)iconImageFrame;
 + (double)iconImageTrailingSpace;

@@ -40,6 +40,7 @@
 - (BOOL)_setUsername:(id)arg1 forAccount:(id)arg2;
 - (id)_tokenWithName:(id)arg1 forAccount:(id)arg2 error:(id *)arg3;
 - (id)activeServiceNamesForAccount:(id)arg1;
+- (id)additionalInfoForAccount:(id)arg1;
 - (id)ageOfMajorityForAccount:(id)arg1;
 - (id)aliasesForAccount:(id)arg1;
 - (id)allAuthKitAccounts;
@@ -55,6 +56,7 @@
 - (BOOL)authorizationUsedForAccount:(id)arg1;
 - (id)continuationTokenForAccount:(id)arg1;
 - (id)continuationTokenForAccount:(id)arg1 error:(id *)arg2;
+- (BOOL)demoAccountForAccount:(id)arg1;
 - (BOOL)deviceTrustRevokedForAccount:(id)arg1;
 - (id)familyNameForAccount:(id)arg1;
 - (id)formattedUsernameForAccount:(id)arg1;
@@ -91,6 +93,7 @@
 - (BOOL)selectedPrivateEmailForAccount:(id)arg1;
 - (id)servicesUsingAccount:(id)arg1;
 - (void)setAccount:(id)arg1 inUse:(BOOL)arg2 byService:(long long)arg3;
+- (void)setAdditionalInfo:(id)arg1 forAccount:(id)arg2;
 - (void)setAgeOfMajority:(id)arg1 forAccount:(id)arg2;
 - (void)setAliases:(id)arg1 forAccount:(id)arg2;
 - (void)setAltDSID:(id)arg1 forAccount:(id)arg2;
@@ -98,6 +101,7 @@
 - (void)setAuthenticationMode:(unsigned long long)arg1 forAccount:(id)arg2;
 - (void)setAuthorizationUsed:(BOOL)arg1 forAccount:(id)arg2;
 - (void)setDSID:(id)arg1 forAccount:(id)arg2;
+- (void)setDemoAccount:(BOOL)arg1 forAccount:(id)arg2;
 - (void)setDeviceTrustRevoked:(BOOL)arg1 forAccount:(id)arg2;
 - (void)setFamilyName:(id)arg1 forAccount:(id)arg2;
 - (void)setForwardingEmail:(id)arg1 forAccount:(id)arg2;

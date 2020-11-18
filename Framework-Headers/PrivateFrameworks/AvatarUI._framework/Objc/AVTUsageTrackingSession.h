@@ -53,7 +53,7 @@
 + (CDUnknownBlockType)defaultTimeProvider;
 + (id)dpKeyBasePrefix;
 + (void)getPresetDescription:(out id *)arg1 usedCategoriesDescription:(out id *)arg2 forAvatarConfiguration:(id)arg3 defaultConfiguration:(id)arg4;
-+ (id)keyContentForAvatarRecord:(id)arg1 action:(id)arg2 includingPuppetName:(BOOL)arg3;
++ (id)keyContentForAvatarRecord:(id)arg1 action:(id)arg2 includingPuppetName:(BOOL)arg3 avatarTypeAsSuffix:(BOOL)arg4;
 + (CDUnknownBlockType)likenessComparator;
 + (id)makeDPKey:(id)arg1;
 + (id)makeKeyAggDCompliant:(id)arg1;

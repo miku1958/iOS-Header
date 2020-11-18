@@ -33,7 +33,7 @@
 + (double)attachmentParagraphSpacingBefore;
 + (double)bodyParagraphSpacing;
 + (double)bodyParagraphSpacingBefore;
-+ (struct UIFont *)preferredFontForTTTextStyle:(unsigned int)arg1;
++ (id)preferredFontForTTTextStyle:(unsigned int)arg1;
 + (double)superscriptScaleFactor;
 - (void).cxx_destruct;
 - (void)addBIToStyle:(id)arg1;

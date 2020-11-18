@@ -72,6 +72,7 @@
 - (id)removePlanConfirmationMessage:(id)arg1;
 - (id)removePlanConfirmationTitle:(id)arg1;
 - (void)retryCarrierListFetch:(id)arg1;
+- (id)selectSpecifier:(id)arg1;
 - (void)setupCellularFaceTime:(id)arg1;
 - (BOOL)shouldShowFaceTimeSetup;
 - (BOOL)shouldShowViewAccount;

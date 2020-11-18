@@ -16,7 +16,7 @@
 {
     NSString *_serviceName;
     long long _defaultPriority;
-    struct NSDictionary *_defaultOptions;
+    NSDictionary *_defaultOptions;
     NSDictionary *_customIDSOptions;
     SYSession *_currentSession;
     id<SYServiceDelegate> _delegate;
@@ -147,8 +147,8 @@
 - (void)_wrapUpCurrentSession:(id)arg1;
 - (void)currentDeviceConnectionChanged:(BOOL)arg1;
 - (void)currentDeviceProximityChanged:(BOOL)arg1;
-- (void)dataStreamWithMetadata:(id)arg1 options:(struct NSDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)dataStreamWithMetadata:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;
+- (void)dataStreamWithMetadata:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)dataStreamWithMetadata:(id)arg1 options:(id)arg2 identifier:(id *)arg3 error:(id *)arg4;
 - (void)dealloc;
 - (void)deliveredMessageWithID:(id)arg1 context:(id)arg2;
 - (void)enqueuedMessageWithID:(id)arg1 context:(id)arg2;
@@ -158,11 +158,11 @@
 - (void)handleSyncRequest:(id)arg1 ofType:(unsigned short)arg2 response:(CDUnknownBlockType)arg3;
 - (void)handleSyncResponse:(id)arg1 ofType:(unsigned short)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
-- (id)initWithService:(id)arg1 priority:(long long)arg2 asMasterStore:(BOOL)arg3 options:(struct NSDictionary *)arg4;
-- (id)initWithService:(id)arg1 priority:(long long)arg2 qos:(unsigned int)arg3 asMasterStore:(BOOL)arg4 options:(struct NSDictionary *)arg5;
+- (id)initWithService:(id)arg1 priority:(long long)arg2 asMasterStore:(BOOL)arg3 options:(id)arg4;
+- (id)initWithService:(id)arg1 priority:(long long)arg2 qos:(unsigned int)arg3 asMasterStore:(BOOL)arg4 options:(id)arg5;
 - (BOOL)resume:(id *)arg1;
-- (void)sendData:(id)arg1 options:(struct NSDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)sendData:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;
+- (void)sendData:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)sendData:(id)arg1 options:(id)arg2 identifier:(id *)arg3 error:(id *)arg4;
 - (void)sentMessageWithID:(id)arg1 context:(id)arg2;
 - (void)serializeForIncomingSession:(CDUnknownBlockType)arg1;
 - (void)sessionDidEnd:(id)arg1 withError:(id)arg2;

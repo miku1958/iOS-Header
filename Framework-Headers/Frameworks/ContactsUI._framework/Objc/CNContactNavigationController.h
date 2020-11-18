@@ -79,6 +79,7 @@
 @property (nonatomic) long long rightButtonBehavior; // @synthesize rightButtonBehavior=_rightButtonBehavior;
 @property (readonly) Class superclass;
 
++ (id)keyCommandForNewContact;
 + (id)newContactFormatter;
 - (void).cxx_destruct;
 - (void)_cnui_presentViewController:(id)arg1 animated:(BOOL)arg2;
@@ -126,6 +127,7 @@
 - (BOOL)shouldShowGroupsButton;
 - (BOOL)shouldShowLeftCancelAndRightAddButton;
 - (BOOL)shouldShowLeftCancelAndRightDoneButton;
+- (BOOL)shouldShowLeftDoneAndRightAddButton;
 - (BOOL)shouldShowRightAddAndCancelButton;
 - (BOOL)shouldShowRightAddButton;
 - (BOOL)shouldShowRightCancelButton;

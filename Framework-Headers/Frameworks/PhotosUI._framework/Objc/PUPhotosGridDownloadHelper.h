@@ -25,7 +25,7 @@
 + (id)createAlertControllerForDownloadErrorWithAsset:(id)arg1;
 - (void).cxx_destruct;
 - (void)_cancelPreviousDownloadsForAsset:(id)arg1;
-- (void)_checkIfDownloadIsRequiredForAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_checkIfRetrievalIsRequiredForAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_defaultOptions;
 - (id)_downloadContextForIdentifier:(id)arg1;
 - (void)_downloadForRequest:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 canceled:(BOOL)arg3 error:(id)arg4;

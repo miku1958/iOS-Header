@@ -40,6 +40,10 @@ struct CGColor;
 
 struct Detail;
 
+struct Handle {
+    unsigned int _field1;
+};
+
 struct IESData {
     int _field1;
     int _field2;
@@ -154,10 +158,17 @@ struct RTRenderable;
 struct SCNOctree;
 
 struct SdfPath {
-    struct intrusive_ptr<const Sdf_PathNode> _field1;
+    struct Sdf_PathNodeHandleImpl<Sdf_Pool<Sdf_PathPrimTag, 24, 8, 16384>::Handle, true, const Sdf_PathNode> _field1;
+    struct Sdf_PathNodeHandleImpl<Sdf_Pool<Sdf_PathPropTag, 24, 8, 16384>::Handle, false, const Sdf_PathNode> _field2;
 };
 
-struct Sdf_PathNode;
+struct Sdf_PathNodeHandleImpl<Sdf_Pool<Sdf_PathPrimTag, 24, 8, 16384>::Handle, true, const Sdf_PathNode> {
+    struct Handle _field1;
+};
+
+struct Sdf_PathNodeHandleImpl<Sdf_Pool<Sdf_PathPropTag, 24, 8, 16384>::Handle, false, const Sdf_PathNode> {
+    struct Handle _field1;
+};
 
 struct SkyDescriptor {
     float _field1;
@@ -258,10 +269,6 @@ struct __sbuf {
 
 struct float4x4 {
     MISSING_TYPE *columns[4];
-};
-
-struct intrusive_ptr<const Sdf_PathNode> {
-    struct Sdf_PathNode *_field1;
 };
 
 struct intrusive_ptr<const Usd_PrimData> {

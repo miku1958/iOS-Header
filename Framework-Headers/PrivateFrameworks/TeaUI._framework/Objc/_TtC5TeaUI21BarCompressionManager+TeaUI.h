@@ -6,9 +6,7 @@
 
 #import <TeaUI/_TtC5TeaUI21BarCompressionManager.h>
 
-#import <TeaUI/UIScrollViewDelegate-Protocol.h>
-
-@interface _TtC5TeaUI21BarCompressionManager (TeaUI) <UIScrollViewDelegate>
+@interface _TtC5TeaUI21BarCompressionManager (TeaUI)
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;

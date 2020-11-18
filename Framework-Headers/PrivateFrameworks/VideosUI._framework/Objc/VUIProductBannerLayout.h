@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_descriptionTitleTextLayout;
     VUIMediaTagsViewLayout *_tagsLayout;
     VUIMediaTagsViewLayout *_infoTagsLayout;
+    VUITextLayout *_promoTextLayout;
     TVImageLayout *_coverArtImageLayout;
     double _maxCoverArtImageHeight;
     VUITextLayout *_disclaimerTextLayout;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TVImageLayout *logoImageLayout; // @synthesize logoImageLayout=_logoImageLayout;
 @property (strong, nonatomic) VUITextLayout *logoTextLayout; // @synthesize logoTextLayout=_logoTextLayout;
 @property (readonly, nonatomic) double maxCoverArtImageHeight; // @synthesize maxCoverArtImageHeight=_maxCoverArtImageHeight;
+@property (readonly, nonatomic) VUITextLayout *promoTextLayout; // @synthesize promoTextLayout=_promoTextLayout;
 @property (readonly, nonatomic) VUITextLayout *subTextLayout; // @synthesize subTextLayout=_subTextLayout;
 @property (readonly, nonatomic) VUIMediaTagsViewLayout *tagsLayout; // @synthesize tagsLayout=_tagsLayout;
 

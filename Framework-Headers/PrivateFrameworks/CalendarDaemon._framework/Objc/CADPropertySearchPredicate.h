@@ -6,12 +6,13 @@
 
 #import <CalendarDaemon/CADPredicate.h>
 
-#import <CalendarDaemon/EKDefaultPropertiesLoading-Protocol.h>
+#import <CalendarDaemon/EKCustomPropertiesLoading-Protocol.h>
 
 @class CADObjectID, NSArray, NSString;
 
-@interface CADPropertySearchPredicate : CADPredicate <EKDefaultPropertiesLoading>
+@interface CADPropertySearchPredicate : CADPredicate <EKCustomPropertiesLoading>
 {
+    NSArray *_propertiesToLoad;
     int _entityType;
     NSArray *_filters;
     NSArray *_calendarRowIDs;
@@ -20,6 +21,7 @@
 
 @property (readonly, nonatomic) NSArray *calendarRowIDs; // @synthesize calendarRowIDs=_calendarRowIDs;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSArray *defaultPropertiesToLoad;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property (readonly, nonatomic) NSArray *filters; // @synthesize filters=_filters;
@@ -31,7 +33,6 @@
 - (void).cxx_destruct;
 - (id)buildWhereClauseWithValues:(id)arg1 andTypes:(id)arg2;
 - (id)copyMatchingItemsWithDatabase:(struct CalDatabase *)arg1;
-- (id)defaultPropertiesToLoad;
 - (void)encodeWithCoder:(id)arg1;
 - (id)extendWhereClauseWithCalendarOrSourceLimitation:(id)arg1 withValues:(id)arg2 andTypes:(id)arg3;
 - (id)extendWhereClauseWithEntityTypeLimitation:(id)arg1 withValues:(id)arg2 andTypes:(id)arg3;

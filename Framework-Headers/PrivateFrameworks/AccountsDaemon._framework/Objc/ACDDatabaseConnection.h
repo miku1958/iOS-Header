@@ -32,9 +32,12 @@ __attribute__((visibility("hidden")))
 - (void)_endObservingManagedObjectContextDidSaveNotifications;
 - (void)_handleManagedObjectContextError:(id)arg1;
 - (void)_managedObjectContextDidSave:(id)arg1;
+- (id)_managedObjectContextModificationDescription;
 - (id)_managedObjectModel;
+- (id)_managedObjectModificationDescription:(id)arg1;
 - (id)_persistentStore;
 - (void)_setupManagedObjectContextWithPersistentStoreCoodinator:(id)arg1;
+- (void)_traceDatabaseEvents;
 - (unsigned long long)countOfEntityNamed:(id)arg1 withPredicate:(id)arg2;
 - (void)dealloc;
 - (void)deleteAccountPropertyWithKey:(id)arg1 owner:(id)arg2;

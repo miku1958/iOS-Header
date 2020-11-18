@@ -19,12 +19,14 @@
     NSDecimalNumber *_balance;
     NSNumber *_loyaltyBalance;
     NSDate *_expirationDate;
+    NSArray *_balances;
     NSArray *_historyRecords;
     NSArray *_inStationDetails;
     NSSet *_enrouteTransitTypes;
 }
 
 @property (copy, nonatomic) NSDecimalNumber *balance; // @synthesize balance=_balance;
+@property (copy, nonatomic) NSArray *balances; // @synthesize balances=_balances;
 @property (nonatomic, getter=isBlacklisted) BOOL blacklisted; // @synthesize blacklisted=_blacklisted;
 @property (copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property (copy, nonatomic) NSSet *enrouteTransitTypes; // @synthesize enrouteTransitTypes=_enrouteTransitTypes;

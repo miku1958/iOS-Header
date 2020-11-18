@@ -21,6 +21,7 @@
     NSMutableSet *_noLongerMatchingMessages;
     struct os_unfair_lock_s _noLongerMatchingMessagesLock;
     BOOL _shouldReconcileJournal;
+    BOOL _addMessagesSynchronously;
     EFQuery *_query;
     EDMessagePersistence *_messagePersistence;
     EDPersistenceHookRegistry *_hookRegistry;
@@ -34,6 +35,7 @@
     NSString *_pendingJournaledMessageAddsKey;
 }
 
+@property (nonatomic) BOOL addMessagesSynchronously; // @synthesize addMessagesSynchronously=_addMessagesSynchronously;
 @property (strong, nonatomic) EFCancelationToken *cancelationToken; // @synthesize cancelationToken=_cancelationToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<EDMessageQueryHelperDelegate> delegate; // @synthesize delegate=_delegate;
@@ -59,7 +61,7 @@
 - (id)_transformAndFilterMessages:(id)arg1 includeDeleted:(BOOL)arg2;
 - (void)cancel;
 - (void)dealloc;
-- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 remoteSearchProvider:(id)arg4 scheduler:(id)arg5 delegate:(id)arg6 shouldReconcileJournal:(BOOL)arg7;
+- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 remoteSearchProvider:(id)arg4 scheduler:(id)arg5 delegate:(id)arg6 shouldReconcileJournal:(BOOL)arg7 shouldAddMessagesSynchronously:(BOOL)arg8;
 - (id)messagesWithAdditionalPredicates:(id)arg1 limit:(long long)arg2;
 - (void)persistenceDidAddMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(id)arg3;

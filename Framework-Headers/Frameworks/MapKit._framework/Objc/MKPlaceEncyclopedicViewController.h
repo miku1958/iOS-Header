@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)_textBlockTitle;
 - (void)_updateViews;
 - (void)_viewEncyclopedicContent;
+- (id)draggableContent;
 - (id)infoCardChildPossibleActions;
 - (id)infoCardChildUnactionableUIElements;
 - (void)viewDidLoad;

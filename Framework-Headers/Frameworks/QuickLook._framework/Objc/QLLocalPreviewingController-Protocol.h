@@ -13,6 +13,7 @@
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(QLPreviewContext *)arg2 completionHandler:(void (^)(NSError *))arg3;
 
 @optional
+- (BOOL)canClickToToggleFullscreen;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canShowNavBar;

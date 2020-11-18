@@ -52,19 +52,19 @@
 - (void)beginLoadingInitialGadgets:(unsigned long long)arg1;
 - (id)createInitialDataSource;
 - (void)didLoadDataForPriorities;
-- (void)dismissGadgetViewController:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)dismissGadgetViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)filteredUndisplayedGadgets:(id)arg1;
 - (void)gadget:(id)arg1 animateChanges:(CDUnknownBlockType)arg2;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
-- (BOOL)gadget:(id)arg1 transitionToViewController:(struct NSObject *)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (struct NSObject *)gadgetViewControllerHostingGadget:(id)arg1;
+- (BOOL)gadget:(id)arg1 transitionToViewController:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)gadgetViewControllerHostingGadget:(id)arg1;
 - (id)init;
 - (id)initWithQueueName:(id)arg1;
 - (void)invalidateGadgets;
 - (void)loadRemainingGadgetsIfNeeded;
 - (void)loadRemainingGadgetsIfNeededWithGenerateGadgetFinishedBlock:(CDUnknownBlockType)arg1;
 - (id)noContentGadget;
-- (void)presentGadgetViewController:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentGadgetViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeCachedProviders;
 
 @end

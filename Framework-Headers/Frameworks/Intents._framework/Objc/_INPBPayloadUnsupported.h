@@ -22,6 +22,7 @@
         unsigned int requestPaymentIntentCurrencyAmountUnsupportedReason:1;
         unsigned int sendPaymentIntentCurrencyAmountUnsupportedReason:1;
         unsigned int customUnsupportedReason:1;
+        unsigned int findDeviceAndPlaySoundIntentDeviceUnsupportedReason:1;
         unsigned int createTimerIntentLabelUnsupportedReason:1;
         unsigned int addMediaIntentMediaDestinationUnsupportedReason:1;
         unsigned int addMediaIntentMediaItemsUnsupportedReason:1;
@@ -52,6 +53,7 @@
     int _requestPaymentIntentCurrencyAmountUnsupportedReason;
     int _sendPaymentIntentCurrencyAmountUnsupportedReason;
     unsigned int _customUnsupportedReason;
+    int _findDeviceAndPlaySoundIntentDeviceUnsupportedReason;
     int _createTimerIntentLabelUnsupportedReason;
     int _addMediaIntentMediaDestinationUnsupportedReason;
     int _addMediaIntentMediaItemsUnsupportedReason;
@@ -90,6 +92,7 @@
 @property (nonatomic) int deleteTasksIntentTaskListUnsupportedReason; // @synthesize deleteTasksIntentTaskListUnsupportedReason=_deleteTasksIntentTaskListUnsupportedReason;
 @property (nonatomic) int deleteTasksIntentTaskUnsupportedReason; // @synthesize deleteTasksIntentTaskUnsupportedReason=_deleteTasksIntentTaskUnsupportedReason;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) int findDeviceAndPlaySoundIntentDeviceUnsupportedReason; // @synthesize findDeviceAndPlaySoundIntentDeviceUnsupportedReason=_findDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property (nonatomic) BOOL hasAddMediaIntentMediaDestinationUnsupportedReason;
 @property (nonatomic) BOOL hasAddMediaIntentMediaItemsUnsupportedReason;
 @property (nonatomic) BOOL hasAddTasksIntentContactEventTriggerUnsupportedReason;
@@ -99,6 +102,7 @@
 @property (nonatomic) BOOL hasCustomUnsupportedReason;
 @property (nonatomic) BOOL hasDeleteTasksIntentTaskListUnsupportedReason;
 @property (nonatomic) BOOL hasDeleteTasksIntentTaskUnsupportedReason;
+@property (nonatomic) BOOL hasFindDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property (nonatomic) BOOL hasPlayMediaIntentMediaItemsUnsupportedReason;
 @property (nonatomic) BOOL hasPlayMediaIntentPlaybackSpeedUnsupportedReason;
 @property (nonatomic) BOOL hasReason;
@@ -151,6 +155,7 @@
 - (int)StringAsCreateTimerIntentLabelUnsupportedReason:(id)arg1;
 - (int)StringAsDeleteTasksIntentTaskListUnsupportedReason:(id)arg1;
 - (int)StringAsDeleteTasksIntentTaskUnsupportedReason:(id)arg1;
+- (int)StringAsFindDeviceAndPlaySoundIntentDeviceUnsupportedReason:(id)arg1;
 - (int)StringAsPlayMediaIntentMediaItemsUnsupportedReason:(id)arg1;
 - (int)StringAsPlayMediaIntentPlaybackSpeedUnsupportedReason:(id)arg1;
 - (int)StringAsReason:(id)arg1;
@@ -184,6 +189,7 @@
 - (id)deleteTasksIntentTaskUnsupportedReasonAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (id)findDeviceAndPlaySoundIntentDeviceUnsupportedReasonAsString:(int)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)playMediaIntentMediaItemsUnsupportedReasonAsString:(int)arg1;

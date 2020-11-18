@@ -15,6 +15,8 @@
 @interface EDSearchableIndexItem : NSObject <EFLoggable, EDIndexableItem>
 {
     CSSearchableItem *_searchableItem;
+    BOOL _isEncrypted;
+    BOOL _includeEncryptedBody;
     BOOL _fetchBody;
     BOOL _hasCompleteData;
     NSString *_identifier;
@@ -35,7 +37,9 @@
 @property (nonatomic) BOOL hasCompleteData; // @synthesize hasCompleteData=_hasCompleteData;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL includeEncryptedBody; // @synthesize includeEncryptedBody=_includeEncryptedBody;
 @property (nonatomic) long long indexingType; // @synthesize indexingType=_indexingType;
+@property (nonatomic) BOOL isEncrypted; // @synthesize isEncrypted=_isEncrypted;
 @property (readonly, nonatomic) unsigned long long itemInstantiationTime; // @synthesize itemInstantiationTime=_itemInstantiationTime;
 @property (readonly, nonatomic) id<EDIndexableMessage> message; // @synthesize message=_message;
 @property (readonly, nonatomic) BOOL requiresPreprocessing;

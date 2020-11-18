@@ -24,6 +24,8 @@
 + (id)allAudioDevices;
 + (id)allDeviceTypes;
 + (id)allDevices;
++ (id)allPointCloudDeviceTypes;
++ (id)allPointCloudDevices;
 + (id)allSupportedMultiCamDeviceSets;
 + (id)allVideoDeviceTypes;
 + (id)allVideoDevices;

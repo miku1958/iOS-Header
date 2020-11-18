@@ -248,7 +248,7 @@
 - (void)moveToFlyoverTourStartPosition:(id)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)moveToMarker:(id)arg1 withHeading:(double)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)moveToStorefrontView:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)muninJunctionDidChange:(const struct MuninJunction *)arg1 currentRoad:(const struct MuninRoadEdge *)arg2;
+- (void)muninJunctionDidChange:(const struct MuninJunction *)arg1 currentRoad:(const struct MuninRoadEdge *)arg2 localize:(BOOL)arg3;
 - (id)muninMarkerAtCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (id)muninMarkerAtCoordinate:(CDStruct_c3b9c2ee)arg1 completeMarkerHandler:(CDUnknownBlockType)arg2;
 - (void)navigationCameraReturnToPuck;
@@ -365,6 +365,7 @@
 - (id)venueAtLocation:(CDStruct_c3b9c2ee)arg1 withMarginForError:(BOOL)arg2;
 - (id)venueAtLocation:(CDStruct_c3b9c2ee)arg1 withMarginForError:(BOOL)arg2 includeNonRevealedVenues:(BOOL)arg3;
 - (id)venueBuildingWithFocus;
+- (void)venueCreated:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
 - (id)venueWithFocus;
 - (id)venueWithID:(unsigned long long)arg1;
 - (id)viewportInfo;

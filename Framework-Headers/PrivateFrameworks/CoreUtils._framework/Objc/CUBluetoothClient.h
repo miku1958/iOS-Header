@@ -9,7 +9,7 @@
 #import <CoreUtils/CBCentralManagerDelegate-Protocol.h>
 #import <CoreUtils/CBPeripheralManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CBPeripheralManager, NSData, NSString;
+@class CBCentralManager, CBPeripheralManager, NSData, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUBluetoothClient : NSObject <CBCentralManagerDelegate, CBPeripheralManagerDelegate>
@@ -46,10 +46,10 @@
     struct BTPairingAgentImpl *_btPairingAgent;
     BOOL _btPairingAgentNeeded;
     BOOL _btPairingAgentStarted;
-    struct NSMutableDictionary *_btConnectedDevices;
-    struct NSMutableDictionary *_btPairedDevices;
+    NSMutableDictionary *_btConnectedDevices;
+    NSMutableDictionary *_btPairedDevices;
     BOOL _btPairedDevicesInitialized;
-    struct NSMutableArray *_findDeviceRequests;
+    NSMutableArray *_findDeviceRequests;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     struct LogCategory *_ucat;

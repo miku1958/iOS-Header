@@ -6,11 +6,22 @@
 
 #import <UIKit/UIScrollView.h>
 
+#import <WebKit/WKContentControlled-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface WKChildScrollView : UIScrollView
+@interface WKChildScrollView : UIScrollView <WKContentControlled>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -20,6 +20,8 @@
     BOOL _finishedLoadingImages;
     BOOL _tracking;
     BOOL _deterministicMode;
+    long long _maximumNumberOfTrackedImages;
+    BOOL _continuousDetection;
     struct shared_ptr<arkit::KeyMapBuffer<const void *, std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>>> _poseBuffer;
     BOOL _needsWorldTrackingPoseData;
     BOOL _enableAutomaticImageScaleEstimation;
@@ -41,13 +43,12 @@
 - (BOOL)deterministicMode;
 - (id)initWithReferenceImages:(id)arg1;
 - (id)initWithReferenceImages:(id)arg1 maximumNumberOfTrackedImages:(long long)arg2;
-- (id)initWithReferenceImages:(id)arg1 maximumNumberOfTrackedImages:(long long)arg2 continuousDetection:(BOOL)arg3 deterministicMode:(BOOL)arg4 processingQueue:(id)arg5;
+- (id)initWithReferenceImages:(id)arg1 maximumNumberOfTrackedImages:(long long)arg2 continuousDetection:(BOOL)arg3 processingQueue:(id)arg4;
 - (id)initWithReferenceImages:(id)arg1 maximumNumberOfTrackedImages:(long long)arg2 processingQueue:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)requiredSensorDataTypes;
 - (double)requiredTimeInterval;
 - (BOOL)syncWithProcessedImage;
-- (void)updateARPresentationMode:(long long)arg1;
 
 @end
 

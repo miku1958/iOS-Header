@@ -8,12 +8,12 @@
 
 #import <MapsSuggestions/MapsSuggestionsShortcutSuggestor-Protocol.h>
 
-@class NSError, NSString;
+@class NSArray, NSError, NSString;
 
 @interface MapsSuggestionsFakeShortcutSuggestor : NSObject <MapsSuggestionsShortcutSuggestor>
 {
     struct ReadWriteQueue _rwQueue;
-    struct NSArray *_configuredResults;
+    NSArray *_configuredResults;
     NSError *_configuredError;
     unsigned long long _calledPropose;
 }
@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)calledRequestSuggest;
 - (void)configureError:(id)arg1;
-- (void)configureResults:(struct NSArray *)arg1;
+- (void)configureResults:(id)arg1;
 - (id)init;
 - (void)reset;
 - (BOOL)suggestShortcutsOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;

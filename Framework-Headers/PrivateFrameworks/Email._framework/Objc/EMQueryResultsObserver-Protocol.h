@@ -10,6 +10,7 @@
 
 @protocol EMQueryResultsObserver <EMObject>
 - (BOOL)observerContainsObjectID:(EMObjectID *)arg1;
+- (void)queryAnticipatesDeletedObjectIDs:(NSArray *)arg1;
 - (void)queryDidFinishInitialLoad;
 - (void)queryDidFinishRemoteSearch;
 - (void)queryDidStartRecovery;

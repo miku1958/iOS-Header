@@ -12,6 +12,7 @@
 {
     NSArray *_nonLocalizableKeys;
     NSArray *_localizableKeys;
+    NSArray *_alwaysLocalizedKeys;
 }
 
 + (id)canaryRecordName;
@@ -21,6 +22,7 @@
 + (BOOL)supportsDeletions;
 + (BOOL)useTaggedImages;
 - (void).cxx_destruct;
+- (id)alwaysLocalizedKeys;
 - (id)experimentalizableKeys;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 desiredArticleRecordFieldOptions:(unsigned long long)arg3 experimentalizableFieldsPostfix:(id)arg4 activeTreatmentID:(id)arg5;

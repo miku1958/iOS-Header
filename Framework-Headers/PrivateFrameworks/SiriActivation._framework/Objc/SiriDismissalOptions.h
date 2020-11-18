@@ -14,10 +14,12 @@
     BOOL _animated;
     unsigned long long _deactivationOptions;
     long long _reason;
+    unsigned long long _dismissalReason;
 }
 
 @property (readonly, nonatomic) BOOL animated; // @synthesize animated=_animated;
 @property (readonly, nonatomic) unsigned long long deactivationOptions; // @synthesize deactivationOptions=_deactivationOptions;
+@property (readonly, nonatomic) unsigned long long dismissalReason; // @synthesize dismissalReason=_dismissalReason;
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 
 + (BOOL)supportsSecureCoding;
@@ -27,7 +29,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2 dismissalReason:(unsigned long long)arg3;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2 requestCancellationReason:(long long)arg3;
+- (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(BOOL)arg2 requestCancellationReason:(long long)arg3 dismissalReason:(unsigned long long)arg4;
 
 @end
 

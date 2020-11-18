@@ -23,6 +23,7 @@
 - (id)details;
 - (id)initWithAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 for:(unsigned char [16])arg3;
 - (id)initWithSymbol:(id)arg1;
+- (id)legacy_details;
 
 @end
 

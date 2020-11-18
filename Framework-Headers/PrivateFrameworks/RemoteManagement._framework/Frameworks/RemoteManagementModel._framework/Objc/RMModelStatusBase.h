@@ -6,19 +6,13 @@
 
 #import <RemoteManagementModel/RMModelPayloadBase.h>
 
-@class NSString;
-
 @interface RMModelStatusBase : RMModelPayloadBase
 {
-    NSString *_statusType;
 }
 
-@property (copy, nonatomic) NSString *statusType; // @synthesize statusType=_statusType;
-
-+ (id)load:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
-- (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)loadStatusFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (BOOL)loadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (BOOL)loadPayloadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (id)serializePayloadWithType:(short)arg1;
 - (id)serializeWithType:(short)arg1;
 
 @end

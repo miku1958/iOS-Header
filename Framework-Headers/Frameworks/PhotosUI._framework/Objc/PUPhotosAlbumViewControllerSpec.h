@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface PUPhotosAlbumViewControllerSpec : PULegacyViewControllerSpec
 {
+    BOOL _shouldUseAspectItems;
     long long _fullMomentsSectionHeaderStyle;
 }
 
@@ -16,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct UIEdgeInsets fullMomentsLevelSectionHeaderHighlightInset;
 @property (readonly, nonatomic) unsigned long long fullMomentsSectionHeaderBackgroundStyle;
 @property (readonly, nonatomic) long long fullMomentsSectionHeaderStyle; // @synthesize fullMomentsSectionHeaderStyle=_fullMomentsSectionHeaderStyle;
-@property (readonly, nonatomic) BOOL shouldUseAspectItems;
+@property (readonly, nonatomic) BOOL shouldUseAspectItems; // @synthesize shouldUseAspectItems=_shouldUseAspectItems;
 
 + (id)padSpec;
 + (id)phoneSpec;

@@ -87,7 +87,7 @@
 - (BOOL)isEqualToMerchant:(id)arg1;
 - (unsigned long long)itemType;
 - (id)jsonDictionaryRepresentation;
-- (id)recordTypesAndNames;
+- (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 - (id)uniqueIdentifier;
 
 @end

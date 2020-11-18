@@ -6,12 +6,17 @@
 
 #import <ContentKit/WFContentItem.h>
 
+@class INNote;
+
 @interface WFNoteContentItem : WFContentItem
 {
 }
 
+@property (readonly, nonatomic) INNote *note;
+
 + (id)contentCategories;
 + (id)countDescription;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (BOOL)hasLibrary;
 + (id)outputTypes;
 + (id)ownedTypes;
@@ -24,7 +29,6 @@
 - (id)fullText;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)modificationDate;
-- (id)note;
 
 @end
 

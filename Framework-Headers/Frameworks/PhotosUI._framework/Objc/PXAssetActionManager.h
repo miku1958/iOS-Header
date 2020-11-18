@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)actionPerformerForActionType:(id)arg1;
 - (BOOL)canPerformAssetVariationActions;
+- (void)executeActionForActionType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithSelectionManager:(id)arg1;
 - (void)px_registerAdditionalPerformerClasses;

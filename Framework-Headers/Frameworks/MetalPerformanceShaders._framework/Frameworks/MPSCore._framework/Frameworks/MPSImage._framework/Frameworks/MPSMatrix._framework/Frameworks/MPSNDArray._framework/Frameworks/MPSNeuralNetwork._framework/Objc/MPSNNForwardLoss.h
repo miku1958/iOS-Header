@@ -33,8 +33,8 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 labels:(struct NSArray *)arg3 weights:(struct NSArray *)arg4 destinationStates:(struct NSArray *)arg5 destinationImages:(struct NSArray *)arg6;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 labels:(struct NSArray *)arg3 weights:(struct NSArray *)arg4 destinationStates:(struct NSArray **)arg5 destinationStateIsTemporary:(BOOL)arg6;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 labels:(id)arg3 weights:(id)arg4 destinationStates:(id)arg5 destinationImages:(id)arg6;
+- (id)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 labels:(id)arg3 weights:(id)arg4 destinationStates:(id *)arg5 destinationStateIsTemporary:(BOOL)arg6;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;

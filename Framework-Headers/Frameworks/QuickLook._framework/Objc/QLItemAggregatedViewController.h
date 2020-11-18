@@ -28,6 +28,7 @@
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
 - (BOOL)automaticallyUpdateScrollViewIndicatorInset;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)canClickToToggleFullscreen;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (BOOL)canPinchToDismiss;

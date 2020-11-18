@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class NSData, PBUnknownFields;
 
 @interface GEOTransitEntry : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     unsigned long long _lineMuid;
+    NSData *_routingParameters;
     unsigned long long _tripMuid;
     unsigned int _tripStaticDepartureTime;
     unsigned int _windowStartTime;
@@ -26,10 +27,12 @@
 }
 
 @property (nonatomic) BOOL hasLineMuid;
+@property (readonly, nonatomic) BOOL hasRoutingParameters;
 @property (nonatomic) BOOL hasTripMuid;
 @property (nonatomic) BOOL hasTripStaticDepartureTime;
 @property (nonatomic) BOOL hasWindowStartTime;
 @property (nonatomic) unsigned long long lineMuid;
+@property (strong, nonatomic) NSData *routingParameters;
 @property (nonatomic) unsigned long long tripMuid;
 @property (nonatomic) unsigned int tripStaticDepartureTime;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;

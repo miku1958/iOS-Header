@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     PBDataReader *_reader;
     CDStruct_95bda58d _attributionRequirements;
+    NSString *_appAdamID;
     NSMutableArray *_attributionApps;
     NSMutableArray *_localizedAttributions;
     NSString *_sourceIdentifier;
@@ -28,12 +29,14 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_enforceAppStore:1;
         unsigned int read_attributionRequirements:1;
+        unsigned int read_appAdamID:1;
         unsigned int read_attributionApps:1;
         unsigned int read_localizedAttributions:1;
         unsigned int read_sourceIdentifier:1;
         unsigned int read_supportedComponentActions:1;
         unsigned int read_webBaseActionURL:1;
         unsigned int wrote_attributionRequirements:1;
+        unsigned int wrote_appAdamID:1;
         unsigned int wrote_attributionApps:1;
         unsigned int wrote_localizedAttributions:1;
         unsigned int wrote_sourceIdentifier:1;
@@ -44,10 +47,12 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
+@property (strong, nonatomic) NSString *appAdamID;
 @property (strong, nonatomic) NSMutableArray *attributionApps;
 @property (readonly, nonatomic) int *attributionRequirements;
 @property (readonly, nonatomic) unsigned long long attributionRequirementsCount;
 @property (nonatomic) BOOL enforceAppStore;
+@property (readonly, nonatomic) BOOL hasAppAdamID;
 @property (nonatomic) BOOL hasEnforceAppStore;
 @property (readonly, nonatomic) BOOL hasWebBaseActionURL;
 @property (strong, nonatomic) NSMutableArray *localizedAttributions;
@@ -66,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_addNoFlagsAttributionRequirements:(int)arg1;
 - (void)_addNoFlagsLocalizedAttribution:(id)arg1;
 - (void)_addNoFlagsSupportedComponentActions:(id)arg1;
+- (void)_readAppAdamID;
 - (void)_readAttributionApps;
 - (void)_readAttributionRequirements;
 - (void)_readLocalizedAttributions;

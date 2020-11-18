@@ -77,9 +77,6 @@
 @property (readonly, nonatomic) unsigned int trafficClass;
 
 - (void).cxx_destruct;
-- (id)_createDataUsageSnapshotFromStruct:(const struct netcore_stats_data_usage_snapshot *)arg1;
-- (id)_createFallbackReportFromStruct:(const struct netcore_stats_tcp_cell_fallback_report *)arg1;
-- (id)_createStatisticsReportFromStruct:(const struct netcore_stats_tcp_statistics_report *)arg1;
 - (id)initWithPBCodableData:(id)arg1;
 - (id)initWithTCPReport:(struct netcore_stats_tcp_report *)arg1 length:(unsigned long long)arg2 clientIdentifier:(id)arg3 sourceIdentifier:(id)arg4;
 - (BOOL)tlsHandshakeTimedOut;

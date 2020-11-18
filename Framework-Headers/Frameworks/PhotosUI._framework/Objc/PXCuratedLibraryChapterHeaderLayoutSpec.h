@@ -12,12 +12,12 @@
 {
     BOOL _shouldFloat;
     BOOL _shouldAbbreviateMonth;
-    struct UIFont *_titleFont;
+    UIFont *_titleFont;
     double _titleHeight;
-    struct UIColor *_titleColor;
-    struct UIColor *_floatingTitleColor;
-    struct UIColor *_subtitleColor;
-    struct UIColor *_floatingSubtitleColor;
+    UIColor *_titleColor;
+    UIColor *_floatingTitleColor;
+    UIColor *_subtitleColor;
+    UIColor *_floatingSubtitleColor;
     NSString *_chevronImageName;
     double _spacingBetweenTitleAndSubtitle;
     double _spacingBetweenTitleTopAndPreviousCardBottom;

@@ -18,6 +18,7 @@
 - (BOOL)_accessibilityIsAppReadyToBeProbed;
 - (BOOL)_accessibilityIsSystemAppServer;
 - (BOOL)_accessibilitySystemAppServerIsReady;
+- (id)_accessibilityTraversalWindows;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1 referenceWindow:(id)arg2;
 - (id)accessibilityPresentingViewController;

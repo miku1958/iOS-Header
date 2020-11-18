@@ -15,10 +15,12 @@
     unsigned long long _indexToScrollToAfterInsertion;
     struct CGPoint _contentOffsetBeforeInsertion;
     NSArray *_appLayoutsVisibleBeforeInsertion;
+    BOOL _updatesContentOffsetAfterInsertion;
     unsigned long long _phase;
 }
 
 @property (readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
+@property (nonatomic) BOOL updatesContentOffsetAfterInsertion; // @synthesize updatesContentOffsetAfterInsertion=_updatesContentOffsetAfterInsertion;
 
 - (void).cxx_destruct;
 - (id)appLayouts;

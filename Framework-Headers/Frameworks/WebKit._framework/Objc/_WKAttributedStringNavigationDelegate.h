@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType webContentProcessDidTerminate; // @synthesize webContentProcessDidTerminate=_webContentProcessDidTerminate;
 
+- (void)dealloc;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;

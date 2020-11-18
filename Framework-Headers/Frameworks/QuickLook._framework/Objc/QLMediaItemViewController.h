@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setTimeLabelNeedsUpdate;
 - (void)setUpTimeLabelIfNeeded;
+- (BOOL)shouldHandleRegisteringForCommandCenterHandlers;
 - (void)showTimeLabel;
 - (void)showTimeLabelIfNeeded;
 - (id)stringFromTimeInterval:(double)arg1;

@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDDevice, HMDHomeManager, HMDMessageDispatcher, HMDUser, HMDUserPresenceFeedRetryTimer, HMDUserPresenceRegion, HMDUserPresenceUpdateReason, HMUserPresenceAuthorization, HMUserPresenceCompute, NSDate, NSString, NSUUID;
+@class HMDDevice, HMDMessageDispatcher, HMDUser, HMDUserPresenceFeedRetryTimer, HMDUserPresenceRegion, HMDUserPresenceUpdateReason, HMUserPresenceAuthorization, HMUserPresenceCompute, NSDate, NSObject, NSString, NSUUID;
 @protocol HMDUserPresenceFeedSessionDelegate, OS_dispatch_queue;
 
-@interface HMDUserPresenceFeedSession : NSObject <HMFLogging, HMFTimerDelegate>
+@interface HMDUserPresenceFeedSession : HMFObject <HMFLogging, HMFTimerDelegate>
 {
     id<HMDUserPresenceFeedSessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMDHomeManager *_homeManager;
     NSUUID *_targetUUID;
     HMDMessageDispatcher *_remoteMessageDispatcher;
     HMDDevice *_residentDevice;
@@ -34,7 +33,6 @@
 @property (readonly, weak, nonatomic) id<HMDUserPresenceFeedSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
 @property (readonly, nonatomic) HMUserPresenceCompute *presenceComputeStatus; // @synthesize presenceComputeStatus=_presenceComputeStatus;
 @property (readonly, nonatomic) HMDUserPresenceRegion *presenceRegionStatus; // @synthesize presenceRegionStatus=_presenceRegionStatus;
@@ -54,8 +52,9 @@
 - (void)_callDelegate;
 - (void)_handleStatusUpdateMessageError:(id)arg1 responseTime:(double)arg2;
 - (void)_send;
+- (id)attributeDescriptions;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 homeManager:(id)arg2 workQueue:(id)arg3 targetUUID:(id)arg4 remoteMessageDispatcher:(id)arg5 residentDevice:(id)arg6 user:(id)arg7 presenceAuthStatus:(id)arg8 presenceComputeStatus:(id)arg9 presenceRegionStatus:(id)arg10 reason:(id)arg11;
+- (id)initWithDelegate:(id)arg1 workQueue:(id)arg2 targetUUID:(id)arg3 remoteMessageDispatcher:(id)arg4 residentDevice:(id)arg5 user:(id)arg6 presenceAuthStatus:(id)arg7 presenceComputeStatus:(id)arg8 presenceRegionStatus:(id)arg9 reason:(id)arg10;
 - (id)logIdentifier;
 - (void)send;
 - (void)timerDidFire:(id)arg1;

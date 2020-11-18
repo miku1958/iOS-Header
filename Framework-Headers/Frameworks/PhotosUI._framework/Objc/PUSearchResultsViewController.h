@@ -62,7 +62,7 @@
 @property (strong, nonatomic) PXSearchResultsViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 + (id)_gridViewControllerSpec;
-+ (id)_newSearchResultsControllerWithSpec:(id)arg1 searchResults:(id)arg2 orAlbum:(struct NSObject *)arg3 title:(id)arg4 headerViewTitle:(id)arg5;
++ (id)_newSearchResultsControllerWithSpec:(id)arg1 searchResults:(id)arg2 orAlbum:(id)arg3 title:(id)arg4 headerViewTitle:(id)arg5;
 + (id)preQuerySearchResultsLog;
 - (void).cxx_destruct;
 - (id)_activeSearch;
@@ -128,6 +128,7 @@
 - (void)searchResultsDataSource:(id)arg1 didFetchAssetsForSearchResult:(id)arg2 indexPath:(id)arg3;
 - (void)searchResultsDataSourceHasPendingChanges:(id)arg1 shouldMergePendingChanges:(BOOL)arg2;
 - (void)shouldShowSearchResultsController:(BOOL)arg1;
+- (BOOL)tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 cancelPrefetchingForRowsAtIndexPaths:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

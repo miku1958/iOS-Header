@@ -26,11 +26,11 @@
     BOOL _disableVibrancy;
     ICAttachment *_attachment;
     ICSearchResult *_searchResult;
-    struct UIView *_accessoryView;
+    UIView *_accessoryView;
     NSRegularExpression *_highlightPatternRegex;
     unsigned long long _defaultBrickSize;
     unsigned long long _brickSize;
-    struct UIView *_backgroundView;
+    UIView *_backgroundView;
     ICAttachmentBrickFrostedView *_frostedView;
     NSLayoutConstraint *_widthConstraint;
     NSLayoutConstraint *_heightConstraint;
@@ -46,7 +46,7 @@
     unsigned long long _brickType;
     unsigned long long _accessoryType;
     unsigned long long _imageScaling;
-    struct UIImage *_image;
+    UIImage *_image;
     struct CGSize _imageSize;
 }
 
@@ -110,7 +110,7 @@
 - (void)attachmentPreviewImagesDidUpdateNotification:(id)arg1;
 - (void)audioPlayerView:(id)arg1 updateTime:(double)arg2;
 - (void)audioPlayerViewStopped:(id)arg1;
-- (struct UIColor *)backgroundColorForCurrentVibrancy;
+- (id)backgroundColorForCurrentVibrancy;
 - (double)clampAccessoryViewScale:(double)arg1;
 - (void)clearAccessoryView;
 - (struct CGSize)computedAccessorySize;

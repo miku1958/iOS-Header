@@ -59,6 +59,7 @@
 - (void)_configureInlineMediaShelfView:(id)arg1 forInlineMediaShelf:(id)arg2 atIndexPath:(id)arg3;
 - (long long)_dismissButtonStyleForCard;
 - (void)_dismissButtonTapped;
+- (void)_dismissForActionCompleted:(BOOL)arg1 withRelevantPassUniqueIdentifier:(id)arg2;
 - (void)_handlePanGesture:(id)arg1;
 - (BOOL)_hasCardInGalleryView;
 - (void)_leftScreenEdgePanSwipeGesture:(id)arg1;

@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CPBaseTemplateProviding-Protocol.h>
 #import <CarPlaySupport/CPSBaseTemplateViewController-Protocol.h>
 #import <CarPlaySupport/CPSButtonDelegate-Protocol.h>
@@ -14,7 +15,7 @@
 @class CPTemplate, NAFuture, NSString, UITapGestureRecognizer;
 @protocol CPSTemplateViewControllerDelegate, CPTemplateDelegate;
 
-@interface CPSBaseTemplateViewController : UIViewController <CPSButtonDelegate, UIGestureRecognizerDelegate, CPBaseTemplateProviding, CPSBaseTemplateViewController>
+@interface CPSBaseTemplateViewController : UIViewController <CPSButtonDelegate, UIGestureRecognizerDelegate, CPBaseTemplateProviding, CPSBaseTemplateViewController, BSInvalidatable>
 {
     BOOL _isPopping;
     BOOL _didDisappear;
@@ -50,6 +51,7 @@
 - (void)didSelectButton:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceivePress:(id)arg2;
 - (id)initWithTemplate:(id)arg1 templateDelegate:(id)arg2;
+- (void)invalidate;
 - (void)setBarButton:(id)arg1 image:(id)arg2;
 - (void)setBarButton:(id)arg1 title:(id)arg2;
 - (void)setControl:(id)arg1 enabled:(BOOL)arg2;

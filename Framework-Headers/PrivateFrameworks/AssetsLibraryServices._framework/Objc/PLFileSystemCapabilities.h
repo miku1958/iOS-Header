@@ -38,6 +38,7 @@
 @property (readonly) BOOL isWholeFileLockCapable;
 
 + (id)capabilitiesWithURL:(id)arg1;
++ (unsigned long long)minimumAvailableBytesRequiredForLibraryOpen;
 - (void).cxx_destruct;
 - (id)description;
 - (BOOL)determineCapabilitiesWithURL:(id)arg1 error:(id *)arg2;

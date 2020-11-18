@@ -8,23 +8,31 @@
 
 #import <ARKit/ARResultData-Protocol.h>
 
-@class NSString;
+@class ARImageData, NSString;
 
 @interface ARMLDepthData : NSObject <ARResultData>
 {
+    struct os_unfair_lock_s _singleFrameDepthBufferLock;
+    struct __CVBuffer *_singleFrameDepthBuffer;
     double _timestamp;
     struct __CVBuffer *_depthBuffer;
+    long long _source;
+    ARImageData *_sourceImageData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) struct __CVBuffer *depthBuffer; // @synthesize depthBuffer=_depthBuffer;
+@property (readonly, nonatomic) struct CGSize depthBufferSize;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long source; // @synthesize source=_source;
+@property (strong, nonatomic) ARImageData *sourceImageData; // @synthesize sourceImageData=_sourceImageData;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
+- (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithTimestamp:(double)arg1 depthBuffer:(struct __CVBuffer *)arg2;
+- (id)initWithTimestamp:(double)arg1 depthBuffer:(struct __CVBuffer *)arg2 source:(long long)arg3;
 
 @end
 

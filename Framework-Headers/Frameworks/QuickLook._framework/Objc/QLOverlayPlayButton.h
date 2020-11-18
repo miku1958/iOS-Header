@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 - (void)setTarget:(id)arg1 action:(SEL)arg2;
 
 @end

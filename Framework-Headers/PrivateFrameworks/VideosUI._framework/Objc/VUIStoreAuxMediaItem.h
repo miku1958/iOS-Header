@@ -70,7 +70,6 @@
 - (id)_replacementErrorForSharedPurchasePlaybackError:(id)arg1;
 - (void)_scrubPlayerItemDidLoad:(id)arg1;
 - (id)_tvpRatingDomainFromUTSRatingDomain:(id)arg1;
-- (void)_userPlaybackSettingsDidChange:(id)arg1;
 - (void)cleanUpMediaItem;
 - (void)dealloc;
 - (BOOL)hasTrait:(id)arg1;
@@ -79,6 +78,7 @@
 - (BOOL)isEqualToMediaItem:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)mediaItem:(id)arg1 didChangeFromPlaybackState:(id)arg2 toPlaybackState:(id)arg3 updatedRate:(double)arg4 player:(id)arg5;
 - (void)mediaItem:(id)arg1 errorDidOccur:(id)arg2 player:(id)arg3;
 - (id)mediaItemMetadataForProperty:(id)arg1;
 - (id)mediaItemURL;

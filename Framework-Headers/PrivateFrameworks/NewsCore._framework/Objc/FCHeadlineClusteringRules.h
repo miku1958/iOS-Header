@@ -24,6 +24,8 @@
     double _maxExpandedAutofavoriteGroupCandidateRatio;
     double _expandedAutofavoriteClusterMinSizeMultiplier;
     double _expandedAutofavoriteClusterMaxSizeMultiplier;
+    double _topicDiversityThreshold;
+    unsigned long long _topicDiversityWindowSize;
     double _autoFavoriteClusterMinSizeMultiplier;
     double _autoFavoriteClusterMaxSizeMultiplier;
     FCSolConfiguration *_solConfiguration;
@@ -54,12 +56,14 @@
 @property (readonly, nonatomic) unsigned long long optimizedLayoutIncrementUnit; // @synthesize optimizedLayoutIncrementUnit=_optimizedLayoutIncrementUnit;
 @property (readonly, nonatomic) unsigned long long optimizedLayoutSizeThreshold; // @synthesize optimizedLayoutSizeThreshold=_optimizedLayoutSizeThreshold;
 @property (strong, nonatomic) FCSolConfiguration *solConfiguration; // @synthesize solConfiguration=_solConfiguration;
+@property (readonly, nonatomic) double topicDiversityThreshold; // @synthesize topicDiversityThreshold=_topicDiversityThreshold;
+@property (readonly, nonatomic) unsigned long long topicDiversityWindowSize; // @synthesize topicDiversityWindowSize=_topicDiversityWindowSize;
 
 + (id)rulesWithTreatment:(id)arg1 configurationSet:(long long)arg2 deviceIsiPad:(BOOL)arg3 limitUnpaidArticles:(BOOL)arg4 enforcePublisherCap:(BOOL)arg5;
 + (id)rulesWithTreatment:(id)arg1 deviceIsiPad:(BOOL)arg2 limitUnpaidArticles:(BOOL)arg3 enforcePublisherCap:(BOOL)arg4;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithMinClusterSize:(unsigned long long)arg1 maxClusterSize:(unsigned long long)arg2 minIdealClusterSize:(unsigned long long)arg3 maxIdealClusterSize:(unsigned long long)arg4 minClusterSizeAutoFavorite:(unsigned long long)arg5 maxClusterSizeAutoFavorite:(unsigned long long)arg6 minIdealClusterSizeAutoFavorite:(unsigned long long)arg7 maxIdealClusterSizeAutoFavorite:(unsigned long long)arg8 maxPublisherOccurrences:(unsigned long long)arg9 enforcePublisherCap:(BOOL)arg10 maxUnpaidArticles:(unsigned long long)arg11 enableOptimizedLayout:(BOOL)arg12 optimizedLayoutSizeThreshold:(unsigned long long)arg13 optimizedLayoutIncrementUnit:(unsigned long long)arg14 solConfiguration:(id)arg15 minSubscribedChannelRatioForUGroup:(double)arg16 maxExpandedAutofavoriteGroupCandidateRatio:(double)arg17 expandedAutofavoriteClusterMinSizeMultiplier:(double)arg18 expandedAutofavoriteClusterMaxSizeMultiplier:(double)arg19;
+- (id)initWithMinClusterSize:(unsigned long long)arg1 maxClusterSize:(unsigned long long)arg2 minIdealClusterSize:(unsigned long long)arg3 maxIdealClusterSize:(unsigned long long)arg4 minClusterSizeAutoFavorite:(unsigned long long)arg5 maxClusterSizeAutoFavorite:(unsigned long long)arg6 minIdealClusterSizeAutoFavorite:(unsigned long long)arg7 maxIdealClusterSizeAutoFavorite:(unsigned long long)arg8 maxPublisherOccurrences:(unsigned long long)arg9 enforcePublisherCap:(BOOL)arg10 maxUnpaidArticles:(unsigned long long)arg11 enableOptimizedLayout:(BOOL)arg12 optimizedLayoutSizeThreshold:(unsigned long long)arg13 optimizedLayoutIncrementUnit:(unsigned long long)arg14 solConfiguration:(id)arg15 minSubscribedChannelRatioForUGroup:(double)arg16 maxExpandedAutofavoriteGroupCandidateRatio:(double)arg17 expandedAutofavoriteClusterMinSizeMultiplier:(double)arg18 expandedAutofavoriteClusterMaxSizeMultiplier:(double)arg19 topicDiversityThreshold:(double)arg20 topicDiversityWindowSize:(unsigned long long)arg21;
 
 @end
 

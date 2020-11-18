@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/NSCopying-Protocol.h>
 
-@class AMSBuyParams, NSDictionary, NSNumber, NSString;
+@class AMSBuyParams, AMSProcessInfo, NSDictionary, NSNumber, NSString;
 
 @interface AMSPurchase : NSObject <NSCopying>
 {
@@ -19,6 +19,7 @@
     AMSBuyParams *_buyParams;
     NSString *_callerBundleId;
     NSString *_clientId;
+    AMSProcessInfo *_clientInfo;
     NSNumber *_ownerAccountId;
     long long _purchaseType;
     NSString *_storefront;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) AMSBuyParams *buyParams; // @synthesize buyParams=_buyParams;
 @property (copy, nonatomic) NSString *callerBundleId; // @synthesize callerBundleId=_callerBundleId;
 @property (copy, nonatomic) NSString *clientId; // @synthesize clientId=_clientId;
+@property (copy, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (copy, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
 @property (copy, nonatomic) NSNumber *ownerAccountId; // @synthesize ownerAccountId=_ownerAccountId;
 @property (readonly) long long purchaseType; // @synthesize purchaseType=_purchaseType;

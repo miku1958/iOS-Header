@@ -8,13 +8,13 @@
 
 #import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
 
-@class NSSet, NSString;
+@class NSArray, NSSet, NSString;
 @protocol MapsSuggestionsSourceDelegate;
 
 @interface MapsSuggestionsFakePullSource : MapsSuggestionsBaseSource <MapsSuggestionsSource>
 {
     struct ReadWriteQueue _readwrite;
-    struct NSArray *_entriesToPull;
+    NSArray *_entriesToPull;
     NSSet *_fakeCanProduceEntriesOfType;
     unsigned long long _calledStart;
     unsigned long long _calledUpdateSuggestionEntries;
@@ -52,8 +52,8 @@
 + (BOOL)isEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (unsigned long long)_addEntries:(struct NSArray *)arg1;
-- (struct NSArray *)_copyEntriesIfNecessary:(struct NSArray *)arg1;
+- (unsigned long long)_addEntries:(id)arg1;
+- (id)_copyEntriesIfNecessary:(id)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)configCanProduceEntriesOfType:(id)arg1;
 - (void)configureHandlerForFeedbackBlock:(CDUnknownBlockType)arg1;
@@ -61,9 +61,9 @@
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (id)initWithDelegate:(id)arg1 name:(id)arg2;
-- (void)pushEntries:(struct NSArray *)arg1;
+- (void)pushEntries:(id)arg1;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)setPullResponseEntries:(struct NSArray *)arg1;
+- (void)setPullResponseEntries:(id)arg1;
 - (void)start;
 - (void)startDebugTest;
 - (void)stop;

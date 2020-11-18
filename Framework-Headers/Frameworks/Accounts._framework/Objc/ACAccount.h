@@ -123,6 +123,7 @@
 - (BOOL)addClientToken:(id)arg1;
 - (BOOL)authenticated;
 - (id)childAccountsWithAccountTypeIdentifier:(id)arg1;
+- (id)childCardDAVAccountIdentifier;
 - (struct __SecIdentity *)copySecIdentity;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)correctPersonaScopedForAccount;
@@ -156,6 +157,7 @@
 - (void)setAccountProperties:(id)arg1;
 - (void)setAccountProperty:(id)arg1 forKey:(id)arg2;
 - (void)setAuthenticationType:(id)arg1;
+- (void)setChildCardDAVAccountIdentifier:(id)arg1;
 - (void)setCredentialType:(id)arg1;
 - (void)setDataclassProperties:(id)arg1;
 - (void)setDirty:(BOOL)arg1 forProperty:(id)arg2;

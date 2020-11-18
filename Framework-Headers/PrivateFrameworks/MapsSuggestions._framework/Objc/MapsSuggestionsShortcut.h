@@ -18,7 +18,7 @@
     NSString *_identifier;
     NSUUID *_storageIdentifier;
     NSString *_customName;
-    struct GEOMapItemStorage *_geoMapItem;
+    GEOMapItemStorage *_geoMapItem;
     NSString *_originatingAddressString;
     NSArray *_contacts;
 }
@@ -51,11 +51,11 @@
 - (id)initBackedPlaceholderWithType:(long long)arg1 identifier:(id)arg2 originatingAddress:(id)arg3 customName:(id)arg4;
 - (id)initSetupPlaceholderOfType:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithGEOMapItem:(struct GEOMapItemStorage *)arg1 customName:(id)arg2;
+- (id)initWithGEOMapItem:(id)arg1 customName:(id)arg2;
 - (id)initWithPinnedPlace:(id)arg1;
-- (id)initWithType:(long long)arg1 geoMapItem:(struct GEOMapItemStorage *)arg2 customName:(id)arg3;
-- (id)initWithType:(long long)arg1 identifier:(id)arg2 geoMapItem:(struct GEOMapItemStorage *)arg3 customName:(id)arg4;
-- (id)initWithType:(long long)arg1 identifier:(id)arg2 geoMapItem:(struct GEOMapItemStorage *)arg3 customName:(id)arg4 contacts:(id)arg5 isHidden:(BOOL)arg6 originatingAddress:(id)arg7;
+- (id)initWithType:(long long)arg1 geoMapItem:(id)arg2 customName:(id)arg3;
+- (id)initWithType:(long long)arg1 identifier:(id)arg2 geoMapItem:(id)arg3 customName:(id)arg4;
+- (id)initWithType:(long long)arg1 identifier:(id)arg2 geoMapItem:(id)arg3 customName:(id)arg4 contacts:(id)arg5 isHidden:(BOOL)arg6 originatingAddress:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPinnedPlace:(id)arg1;
 - (BOOL)isEqualToShortcut:(id)arg1;

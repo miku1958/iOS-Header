@@ -8,73 +8,60 @@
 
 #import <VideosUI/UICollectionViewDataSource-Protocol.h>
 #import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <VideosUI/VUIDownloadDataSourceDelegate-Protocol.h>
-#import <VideosUI/VUILibraryPopoverDataSource-Protocol.h>
-#import <VideosUI/VUILibraryPopoverDelegate-Protocol.h>
+#import <VideosUI/VUIFamilyMembersViewControllerDelegate-Protocol.h>
+#import <VideosUI/VUIFamilySharingContentProtocol-Protocol.h>
+#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 #import <VideosUI/VUILibraryShelfCollectionViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
-#import <VideosUI/VUIMediaItemEntityTypesFetchControllerDelegate-Protocol.h>
-#import <VideosUI/VUIMediaLibraryFetchControllerQueueDelegate-Protocol.h>
+#import <VideosUI/VUIMenuCollectionViewControllerDelegate-Protocol.h>
+#import <VideosUI/VUIShelvesDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIBarButtonItem, VUIDownloadDataSource, VUIDownloadViewController, VUILibraryBannerCollectionViewCell, VUILibraryListPopoverViewCell, VUILibraryMediaEntityShelvesViewModel, VUILibraryMenuItemViewCell, VUILibraryPopoverViewController, VUIMediaEntitiesFetchController, VUIMediaLibrary, _VUILibrarySeeAllController;
+@class NSArray, NSMutableArray, NSString, UIBarButtonItem, VUIDownloadViewController, VUIFamilyMember, VUILibraryBannerCollectionViewCell, VUILibraryMenuDataSource, VUILibraryMenuItemViewCell, VUILibraryShelvesDataSource, VUIMediaLibrary, VUIViewControllerContentPresenter, _VUILibrarySeeAllController;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUILibraryShelfCollectionViewControllerDelegate, VUIMediaItemEntityTypesFetchControllerDelegate, VUIMediaEntitiesFetchControllerDelegate, VUIMediaLibraryFetchControllerQueueDelegate, VUILibraryPopoverDataSource, VUILibraryPopoverDelegate, UIGestureRecognizerDelegate, VUIDownloadDataSourceDelegate>
+@interface VUILibraryViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUILibraryShelfCollectionViewControllerDelegate, UIGestureRecognizerDelegate, VUIShelvesDataSourceDelegate, VUILibraryDataSourceDelegate, VUIMenuCollectionViewControllerDelegate, VUIFamilyMembersViewControllerDelegate, VUIFamilySharingContentProtocol>
 {
     VUIDownloadViewController *_presentedDownloadViewController;
     BOOL _ppt_isLoaded;
-    BOOL _appliedNavigationItem;
     BOOL _hasMenuItemFetchCompleted;
-    BOOL _areLocalMediaItemsAvailable;
     BOOL _hasMediaEntitiesFetchCompleted;
-    BOOL _hasDownloadFetchCompleted;
     BOOL _doesDeviceSupportHDR;
-    BOOL _isIpad;
+    VUIFamilyMember *_familyMember;
     UIBarButtonItem *_libraryBarButton;
-    NSArray *_menuMediaItemEntityTypes;
+    VUIViewControllerContentPresenter *_contentPresenter;
+    VUILibraryMenuDataSource *_menuDataSource;
     NSArray *_menuCells;
     VUILibraryMenuItemViewCell *_menuItemSizingCell;
-    VUILibraryPopoverViewController *_popoverViewController;
-    NSArray *_popoverDropdownCells;
-    VUILibraryListPopoverViewCell *_sizingPopoverCell;
-    long long _currentlySelectedPopoverCell;
     NSArray *_homeShares;
     VUIMediaLibrary *_currentHomeShareMediaLibrary;
     VUILibraryBannerCollectionViewCell *_bannerViewSizingCell;
-    VUILibraryMediaEntityShelvesViewModel *_shelvesViewModel;
-    NSDictionary *_shelfTypeByFetchRequestIdentifier;
+    VUILibraryShelvesDataSource *_shelvesDataSource;
+    NSMutableArray *_shelves;
+    NSMutableArray *_validShelfTypes;
     _VUILibrarySeeAllController *_currentSeeAllController;
-    VUIMediaEntitiesFetchController *_rentalsUpdateFetchController;
-    VUIDownloadDataSource *_downloadDataSource;
+    VUIMediaLibrary *_mediaLibrary;
 }
 
-@property (nonatomic) BOOL appliedNavigationItem; // @synthesize appliedNavigationItem=_appliedNavigationItem;
-@property (nonatomic) BOOL areLocalMediaItemsAvailable; // @synthesize areLocalMediaItemsAvailable=_areLocalMediaItemsAvailable;
 @property (strong, nonatomic) VUILibraryBannerCollectionViewCell *bannerViewSizingCell; // @synthesize bannerViewSizingCell=_bannerViewSizingCell;
+@property (strong, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property (strong, nonatomic) VUIMediaLibrary *currentHomeShareMediaLibrary; // @synthesize currentHomeShareMediaLibrary=_currentHomeShareMediaLibrary;
 @property (strong, nonatomic) _VUILibrarySeeAllController *currentSeeAllController; // @synthesize currentSeeAllController=_currentSeeAllController;
-@property (nonatomic) long long currentlySelectedPopoverCell; // @synthesize currentlySelectedPopoverCell=_currentlySelectedPopoverCell;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL doesDeviceSupportHDR; // @synthesize doesDeviceSupportHDR=_doesDeviceSupportHDR;
-@property (strong, nonatomic) VUIDownloadDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
-@property (nonatomic) BOOL hasDownloadFetchCompleted; // @synthesize hasDownloadFetchCompleted=_hasDownloadFetchCompleted;
+@property (strong, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property (nonatomic) BOOL hasMediaEntitiesFetchCompleted; // @synthesize hasMediaEntitiesFetchCompleted=_hasMediaEntitiesFetchCompleted;
 @property (nonatomic) BOOL hasMenuItemFetchCompleted; // @synthesize hasMenuItemFetchCompleted=_hasMenuItemFetchCompleted;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *homeShares; // @synthesize homeShares=_homeShares;
-@property (nonatomic) BOOL isIpad; // @synthesize isIpad=_isIpad;
 @property (strong, nonatomic) UIBarButtonItem *libraryBarButton; // @synthesize libraryBarButton=_libraryBarButton;
+@property (readonly, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (strong, nonatomic) NSArray *menuCells; // @synthesize menuCells=_menuCells;
+@property (strong, nonatomic) VUILibraryMenuDataSource *menuDataSource; // @synthesize menuDataSource=_menuDataSource;
 @property (strong, nonatomic) VUILibraryMenuItemViewCell *menuItemSizingCell; // @synthesize menuItemSizingCell=_menuItemSizingCell;
-@property (strong, nonatomic) NSArray *menuMediaItemEntityTypes; // @synthesize menuMediaItemEntityTypes=_menuMediaItemEntityTypes;
-@property (strong, nonatomic) NSArray *popoverDropdownCells; // @synthesize popoverDropdownCells=_popoverDropdownCells;
-@property (strong, nonatomic) VUILibraryPopoverViewController *popoverViewController; // @synthesize popoverViewController=_popoverViewController;
-@property (strong, nonatomic) VUIMediaEntitiesFetchController *rentalsUpdateFetchController; // @synthesize rentalsUpdateFetchController=_rentalsUpdateFetchController;
-@property (strong, nonatomic) NSDictionary *shelfTypeByFetchRequestIdentifier; // @synthesize shelfTypeByFetchRequestIdentifier=_shelfTypeByFetchRequestIdentifier;
-@property (strong, nonatomic) VUILibraryMediaEntityShelvesViewModel *shelvesViewModel; // @synthesize shelvesViewModel=_shelvesViewModel;
-@property (strong, nonatomic) VUILibraryListPopoverViewCell *sizingPopoverCell; // @synthesize sizingPopoverCell=_sizingPopoverCell;
+@property (strong, nonatomic) NSMutableArray *shelves; // @synthesize shelves=_shelves;
+@property (strong, nonatomic) VUILibraryShelvesDataSource *shelvesDataSource; // @synthesize shelvesDataSource=_shelvesDataSource;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSMutableArray *validShelfTypes; // @synthesize validShelfTypes=_validShelfTypes;
 
 + (id)_localizedTitleForShelfType:(long long)arg1;
 + (CDUnknownBlockType)shelfTypesSortComparator;
@@ -82,70 +69,51 @@ __attribute__((visibility("hidden")))
 - (void)_accountsChanged:(id)arg1;
 - (void)_addMediaLibraryNotificationObservers;
 - (void)_addNotificationObserversWithDeviceLibrary:(id)arg1;
-- (void)_addRentalsUpdateNotificationObserver;
 - (void)_configureShelfViewController:(id)arg1 withShelfType:(long long)arg2;
 - (void)_constructLibraryDataSourceAndUpdateActiveView;
+- (void)_constructShelves;
+- (id)_dataSourceForShelves;
 - (id)_deviceMediaLibrary;
 - (void)_deviceMediaLibraryUpdateStateDidChange:(id)arg1;
-- (id)_fetchRequestsWithMediaLibrary:(id)arg1 shelfTypeMap:(id *)arg2;
+- (BOOL)_gestureRecognizerShouldBegin;
 - (BOOL)_haveAllInitialFetchesCompleted;
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
 - (BOOL)_isDeviceMediaLibraryInitialUpdateInProgress;
-- (id)_leftNavigationButtonWithTitle:(id)arg1;
-- (void)_libraryPopoverPressed;
 - (id)_localizedTitleForCellType:(long long)arg1;
-- (id)_menuItemsAndPopoverMenuItems:(id *)arg1;
+- (id)_menuItems;
 - (void)_networkReachabilityDidChange:(id)arg1;
-- (id)_popoverTitleForIndexPath:(id)arg1;
-- (void)_reloadPopoverViewController;
 - (void)_removeMediaLibraryNotificationObservers;
 - (void)_removeNotificationObserversWithDeviceLibrary:(id)arg1;
-- (void)_removeRentalsUpdateNotificationObserver;
-- (void)_reparentNavigationItem:(id)arg1;
-- (void)_selectLibraryCellType:(long long)arg1 fromPopover:(BOOL)arg2;
-- (BOOL)_shouldAutomaticallySelectHomeVideos;
+- (void)_selectLibraryCellType:(long long)arg1;
 - (BOOL)_shouldShowContentView;
 - (void)_showContentOrNoContentView;
-- (void)_showHomeVideosIfNoRecentlyAddedContent;
-- (void)_startFetchControllers;
 - (void)_startMonitoringDeviceMediaLibraryInitialUpdate;
 - (void)_stopMonitoringDeviceMediaLibraryInitialUpdate;
 - (void)_updateNavigationTitle;
-- (void)_updatePopoverSelectedItem;
-- (void)_updatePopoverStateWithCellType:(long long)arg1;
-- (void)_updateRentals;
 - (void)_updateViewIfFetchComplete;
-- (id)_viewControllerWithCellType:(long long)arg1 forPopover:(BOOL)arg2;
+- (id)_viewControllerWithCellType:(long long)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)configureWithCollectionView:(id)arg1;
-- (void)controller:(id)arg1 fetchDidCompleteWithResult:(id)arg2;
-- (void)controller:(id)arg1 fetchDidFailWithError:(id)arg2;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
+- (void)dataSourceDidFinishFetching:(id)arg1;
 - (void)dealloc;
-- (void)downloadManager:(id)arg1 downloadedFetchDidFinishWithEntities:(id)arg2;
-- (void)downloadManager:(id)arg1 downloadsDidChange:(id)arg2;
-- (void)fetchDidCompleteForMediaLibraryFetchControllerQueue:(id)arg1;
+- (void)didSelectMenuItemAtIndexPath:(id)arg1;
+- (void)familyMemberViewController:(id)arg1 didSelectFamilyMember:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (id)initWithMediaLibrary:(id)arg1;
+- (id)initWithMenuDataSource:(id)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (long long)numberOfSectionsInPopoverView:(id)arg1;
-- (id)popoverView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)popoverView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (long long)popoverView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (struct CGSize)popoverView:(id)arg1 sizeForItemAtIndexPath:(id)arg2;
 - (void)seeAllButtonPressed:(id)arg1;
 - (void)shelfCollectionViewController:(id)arg1 collectionView:(id)arg2 didSelectMediaEntity:(id)arg3 atIndexPath:(id)arg4;
+- (void)shelvesDidFinishWithDataSource:(id)arg1;
 - (void)start;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewWillLayoutSubviews;
 - (BOOL)vui_ppt_isLoading;
 
 @end

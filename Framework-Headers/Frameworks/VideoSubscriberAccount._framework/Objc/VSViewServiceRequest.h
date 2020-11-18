@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _requiresPrivacyUI;
     BOOL _canVetoAuthentication;
     BOOL _shouldInferFeaturedProviders;
+    BOOL _shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront;
     VSAccountMetadataRequest *_accountMetadataRequest;
     VSOptional *_requestingAppDisplayName;
     NSString *_requestingAppAdamID;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VSOptional *requestingAppDisplayName; // @synthesize requestingAppDisplayName=_requestingAppDisplayName;
 @property (nonatomic) BOOL requiresPrivacyUI; // @synthesize requiresPrivacyUI=_requiresPrivacyUI;
 @property (nonatomic) BOOL shouldInferFeaturedProviders; // @synthesize shouldInferFeaturedProviders=_shouldInferFeaturedProviders;
+@property (nonatomic) BOOL shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront; // @synthesize shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront=_shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront;
 @property (readonly, copy, nonatomic) NSArray *supportedAccountProviderAuthenticationSchemes;
 @property (readonly, copy, nonatomic) NSArray *supportedIdentityProviderIdentifiers;
 

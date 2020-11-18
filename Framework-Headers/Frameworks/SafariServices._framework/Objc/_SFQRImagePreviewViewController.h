@@ -6,20 +6,21 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, UIImageView, _WKActivatedElementInfo;
+@class UIImageView, _WKActivatedElementInfo;
+@protocol BCSAction;
 
 @interface _SFQRImagePreviewViewController : UIViewController
 {
     UIImageView *_imageView;
-    NSArray *_imageActions;
     _WKActivatedElementInfo *_activatedElementInfo;
 }
 
+@property (readonly, nonatomic) id<BCSAction> action;
+
 - (void).cxx_destruct;
 - (id)_contentViewSubtitleWithAction:(id)arg1;
-- (id)initWithImage:(id)arg1 defaultActions:(id)arg2 elementInfo:(id)arg3;
+- (id)initWithElementInfo:(id)arg1;
 - (void)loadView;
-- (id)previewActionItems;
 
 @end
 

@@ -10,7 +10,7 @@
 
 @interface NUGroupPattern : NUPattern
 {
-    struct NSArray *_group;
+    NSArray *_group;
 }
 
 @property (readonly) NSArray *group; // @synthesize group=_group;

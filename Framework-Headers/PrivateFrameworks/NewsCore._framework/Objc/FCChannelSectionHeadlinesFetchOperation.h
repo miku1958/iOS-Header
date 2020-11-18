@@ -17,6 +17,7 @@
     unsigned long long _maxHeadlinesCount;
     unsigned long long _maxHeadlinesPerFeed;
     double _fetchWindow;
+    double _sectionsCacheTimeToLive;
     id<FCChannelProviding> _channel;
     NSArray *_sectionHeadlinesGroups;
 }
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) unsigned long long maxHeadlinesCount; // @synthesize maxHeadlinesCount=_maxHeadlinesCount;
 @property (readonly, nonatomic) unsigned long long maxHeadlinesPerFeed; // @synthesize maxHeadlinesPerFeed=_maxHeadlinesPerFeed;
 @property (copy, nonatomic) NSArray *sectionHeadlinesGroups; // @synthesize sectionHeadlinesGroups=_sectionHeadlinesGroups;
+@property (readonly, nonatomic) double sectionsCacheTimeToLive; // @synthesize sectionsCacheTimeToLive=_sectionsCacheTimeToLive;
 
 - (void).cxx_destruct;
 - (id)_channelAndSectionTagsPromiseWithChannelID:(id)arg1;
@@ -41,7 +43,7 @@
 - (id)_headlinesPromiseWithFeedItems:(id)arg1 sectionsByID:(id)arg2 configuration:(id)arg3;
 - (id)_sectionsPromiseWithTagsByID:(id)arg1 sectionIDs:(id)arg2;
 - (id)init;
-- (id)initWithCloudContext:(id)arg1 channelID:(id)arg2 maxHeadlinesCount:(unsigned long long)arg3 maxHeadlinesPerFeed:(unsigned long long)arg4 fetchWindow:(double)arg5;
+- (id)initWithCloudContext:(id)arg1 channelID:(id)arg2 maxHeadlinesCount:(unsigned long long)arg3 maxHeadlinesPerFeed:(unsigned long long)arg4 fetchWindow:(double)arg5 sectionsCacheTimeToLive:(double)arg6;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (BOOL)validateOperation;

@@ -6,13 +6,12 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class IKImageElement, IKViewElement, NSShadow, TVImageLayout, VUILabel, VUITextLayout, _TVImageView;
+@class IKViewElement, NSShadow, TVImageLayout, VUILabel, VUITextLayout, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUITabItemCollectionViewCell : UICollectionViewCell
 {
     IKViewElement *_viewElement;
-    IKImageElement *_imageElement;
     VUILabel *_titleLabel;
     VUITextLayout *_titleLayout;
     _TVImageView *_imageView;
@@ -20,7 +19,6 @@ __attribute__((visibility("hidden")))
     NSShadow *_shadow;
 }
 
-@property (strong, nonatomic) IKImageElement *imageElement; // @synthesize imageElement=_imageElement;
 @property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
@@ -28,12 +26,26 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUITextLayout *titleLayout; // @synthesize titleLayout=_titleLayout;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
++ (double)_columnWidthForElement:(id)arg1 numberOfTabs:(unsigned long long)arg2;
++ (id)_findChildElementWithLongestTextInSectionElement:(id)arg1;
++ (struct CGSize)_glyphSizeForContentSizeCategory:(id)arg1 preferredNormalImageWidth:(double)arg2;
++ (double)_imageElementWidthForElement:(id)arg1;
++ (BOOL)_isContentSizeCategoryBetweenAX1toAX3:(id)arg1;
++ (double)_preferredHeightForContentSizeCategory:(id)arg1;
++ (BOOL)_shouldDisplayTitleInTwoLinesForElement:(id)arg1 tabItemSize:(struct CGSize)arg2 labelSize:(struct CGSize)arg3 contentSizeCategory:(id)arg4 numberOfTabs:(unsigned long long)arg5;
++ (BOOL)_shouldDoubleGlyphSizeForElement:(id)arg1 numberOfTabs:(unsigned long long)arg2;
++ (double)_tabItemImageToTextMarginForContentSizeCategory:(id)arg1;
++ (struct UIEdgeInsets)_tabItemPaddingForContentSizeCategory:(id)arg1 hasTitle:(BOOL)arg2;
++ (double)_windowWidthForElement:(id)arg1;
 + (id)configureViewWithElement:(id)arg1 existingCell:(id)arg2;
-+ (struct CGSize)tabItemSizeForElement:(id)arg1;
++ (BOOL)shouldDoubleGlyphSizeForSectionElement:(id)arg1;
 + (id)tabItemTextLayout;
 - (void).cxx_destruct;
+- (struct CGSize)_adjustedTabItemSizeForViewElement:(id)arg1 tabItemSize:(struct CGSize)arg2 labelSize:(struct CGSize)arg3 numberOfTabs:(unsigned long long)arg4;
 - (id)_imageLayout;
+- (struct CGSize)_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(BOOL)arg2;
 - (id)_titleLayout;
+- (double)_updatedLabelWidthWithTwoLinesTitleForText:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)largeContentImage;
 - (id)largeContentTitle;

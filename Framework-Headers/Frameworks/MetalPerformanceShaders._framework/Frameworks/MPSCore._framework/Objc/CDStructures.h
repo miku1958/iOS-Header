@@ -69,7 +69,7 @@ struct MPSDevice {
     unsigned int _field9;
     int _field10;
     struct MPSGPUInfo _field11;
-    struct atomic<MPSLibrary *> _field12[106];
+    struct atomic<MPSLibrary *> _field12[107];
 };
 
 struct MPSDeviceBehaviors;
@@ -203,10 +203,6 @@ struct MPSStateTextureInfo {
 
 struct MTLLibraryNode;
 
-struct NSArray {
-    Class _field1;
-};
-
 struct ResourceListNode {
     CDUnknownFunctionPointerType *_field1;
     struct ResourceListNode *_field2;
@@ -234,23 +230,33 @@ struct _NSRange {
 struct atomic<MPSKey_data *>;
 
 struct atomic<MPSLibrary *> {
-    _Atomic struct MPSLibrary *_field1;
+    struct __cxx_atomic_impl<MPSLibrary *, std::__1::__cxx_atomic_base_impl<MPSLibrary *>> {
+        _Atomic struct MPSLibrary *_field1;
+    } _field1;
 };
 
 struct atomic<MTLLibraryNode *> {
-    _Atomic struct MTLLibraryNode *_field1;
+    struct __cxx_atomic_impl<MTLLibraryNode *, std::__1::__cxx_atomic_base_impl<MTLLibraryNode *>> {
+        _Atomic struct MTLLibraryNode *_field1;
+    } _field1;
 };
 
 struct atomic<id<MTLTexture>> {
-    _Atomic id __a_;
+    struct __cxx_atomic_impl<id<MTLTexture>, std::__1::__cxx_atomic_base_impl<id<MTLTexture>>> {
+        _Atomic id __a_value;
+    } __a_;
 };
 
 struct atomic<long> {
-    _Atomic long long __a_;
+    struct __cxx_atomic_impl<long, std::__1::__cxx_atomic_base_impl<long>> {
+        _Atomic long long __a_value;
+    } __a_;
 };
 
 struct atomic<void *> {
-    _Atomic void *__a_;
+    struct __cxx_atomic_impl<void *, std::__1::__cxx_atomic_base_impl<void *>> {
+        _Atomic void *__a_value;
+    } __a_;
 };
 
 #pragma mark Typedef'd Structures

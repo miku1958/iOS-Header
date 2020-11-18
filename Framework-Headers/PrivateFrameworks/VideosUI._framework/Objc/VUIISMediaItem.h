@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)_sendStopForAssetID:(id)arg1;
 - (void)_sendURLRequestToServer:(id)arg1 forKeyRequest:(id)arg2 attemptNumber:(unsigned long long)arg3;
 - (void)_startKeyRequests:(id)arg1 token:(id)arg2;
-- (void)_userPlaybackSettingsDidChange:(id)arg1;
 - (void)cleanUpMediaItem;
 - (BOOL)hasTrait:(id)arg1;
 - (id)initWithURL:(id)arg1 tokenServerURL:(id)arg2 stopServerURL:(id)arg3 tokenServerParameters:(id)arg4;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Atomic long long _total_size;
     _Atomic long long _shortCircuitImageLookup;
     _Atomic long long _total_lookup;
+    _Atomic long long _missed_lookup;
     NSObject<OS_dispatch_queue> *_queue;
     int _notify_token;
 }
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)_logStatistics:(int)arg1;
 - (void)addStatisticAllocatedImageSize:(unsigned long long)arg1 roundedSize:(unsigned long long)arg2;
 - (void)dealloc;
+- (void)incrementMissedLookup;
 - (void)incrementStatisticDidShortCircuitImageLookup;
 - (void)incrementStatisticLookup;
 - (id)init;

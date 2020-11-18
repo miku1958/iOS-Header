@@ -39,6 +39,7 @@
 - (void)_getEngines:(id *)arg1 defaultSearchEngineIndex:(unsigned long long *)arg2;
 - (void)_loadSystemProperties;
 - (void)_populateSearchEngines;
+- (void)_postDefaultSearchEngineDidChange;
 - (void)_setDefaultSearchEngine:(id)arg1;
 - (void)_setEngines:(id)arg1 defaultSearchEngineIndex:(unsigned long long)arg2;
 - (id)defaultSearchEngine;

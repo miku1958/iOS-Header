@@ -17,13 +17,10 @@
     unsigned int _resultSizeLog10;
     BOOL _error;
     BOOL _exclusionSpec;
+    BOOL _limitHit;
     BOOL _timeLimited;
-    struct {
-        unsigned int resultSizeLog10:1;
-        unsigned int error:1;
-        unsigned int exclusionSpec:1;
-        unsigned int timeLimited:1;
-    } _has;
+    BOOL _timeSpec;
+    CDStruct_68ee747f _has;
 }
 
 @property (strong, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
@@ -32,12 +29,16 @@
 @property (readonly, nonatomic) BOOL hasBundleId;
 @property (nonatomic) BOOL hasError;
 @property (nonatomic) BOOL hasExclusionSpec;
+@property (nonatomic) BOOL hasLimitHit;
 @property (readonly, nonatomic) BOOL hasMappingId;
 @property (nonatomic) BOOL hasResultSizeLog10;
 @property (nonatomic) BOOL hasTimeLimited;
+@property (nonatomic) BOOL hasTimeSpec;
+@property (nonatomic) BOOL limitHit; // @synthesize limitHit=_limitHit;
 @property (strong, nonatomic) NSString *mappingId; // @synthesize mappingId=_mappingId;
 @property (nonatomic) unsigned int resultSizeLog10; // @synthesize resultSizeLog10=_resultSizeLog10;
 @property (nonatomic) BOOL timeLimited; // @synthesize timeLimited=_timeLimited;
+@property (nonatomic) BOOL timeSpec; // @synthesize timeSpec=_timeSpec;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

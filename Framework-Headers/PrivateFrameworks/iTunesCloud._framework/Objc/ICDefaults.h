@@ -11,11 +11,14 @@
 @interface ICDefaults : NSObject
 {
     NSUserDefaults *_userDefaults;
+    NSUserDefaults *_musicUserDefaults;
     BOOL _bypassBagSanityChecks;
     NSUserDefaults *_internalDefaults;
 }
 
+@property (copy, nonatomic) NSDictionary *accountNotificationsShowInLibraryDictionary;
 @property (copy, nonatomic) NSDate *ageVerificationExpirationDate;
+@property (readonly, nonatomic) BOOL allowLowAffinityRecommendations;
 @property (copy, nonatomic) NSDictionary *authServiceClientTokenCache;
 @property (readonly, copy, nonatomic) NSNumber *authServiceClientTokenTimeToLive;
 @property (nonatomic) BOOL bypassBagSanityChecks; // @synthesize bypassBagSanityChecks=_bypassBagSanityChecks;
@@ -41,14 +44,18 @@
 @property (copy, nonatomic) NSDictionary *lastKnownUserAgeVerificationState;
 @property (copy, nonatomic) NSDictionary *mediaLibraryAccessApplicationIdentifiersWithTCCAcceptanceDates;
 @property (readonly, copy, nonatomic) NSNumber *networkTypeOverride;
+@property (readonly, nonatomic, getter=isPrivacyAcknowledgementDisabledForMusic) BOOL privacyAcknowledgementDisabledForMusic;
 @property (readonly, copy, nonatomic) NSString *productPlatformOverride;
 @property (readonly, copy, nonatomic) NSString *productVersionOverride;
 @property (copy, nonatomic) NSDictionary *pushNotificationState;
+@property (readonly, nonatomic) BOOL shouldForceLibraryRecommendationAnalysis;
 @property (readonly, nonatomic) BOOL shouldForceiPhoneBehaviors;
+@property (readonly, nonatomic) BOOL shouldReduceLibraryRecommendationsXPCInterval;
 @property (nonatomic) BOOL shouldRunAgeVerification;
 
 + (id)standardDefaults;
 - (void).cxx_destruct;
+- (id)_musicUserDefaults;
 - (void)_setOrRemoveObject:(id)arg1 forKey:(id)arg2;
 - (BOOL)_shouldSpoofIPhoneRequestProperties;
 - (id)init;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICURLBagLibraryDAAPConfiguration, ICURLBagRadioConfiguration, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
+@class ICURLBagLibraryDAAPConfiguration, ICURLBagRadioConfiguration, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICURLBag : NSObject
@@ -16,25 +16,34 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSArray *_GUIDURLRegexPatterns;
     NSSet *_GUIDURLSchemes;
+    NSDate *_expirationDate;
+    NSString *_serverCorrelationKey;
+    NSString *_serverEnvironment;
 }
 
 @property (strong, nonatomic) NSArray *GUIDURLRegexPatterns; // @synthesize GUIDURLRegexPatterns=_GUIDURLRegexPatterns;
 @property (strong, nonatomic) NSSet *GUIDURLSchemes; // @synthesize GUIDURLSchemes=_GUIDURLSchemes;
+@property (readonly, nonatomic) NSDictionary *_propertyListRepresentation;
 @property (readonly, copy, nonatomic) NSDictionary *allValues;
-@property (strong, nonatomic) NSDictionary *bagValues; // @synthesize bagValues=_bagValues;
+@property (copy, nonatomic) NSDictionary *bagValues; // @synthesize bagValues=_bagValues;
 @property (readonly, nonatomic) BOOL canPostKeybagSyncData;
 @property (strong, nonatomic) NSMutableDictionary *convertedActionsCache; // @synthesize convertedActionsCache=_convertedActionsCache;
+@property (copy, nonatomic, setter=_setExpirationDate:) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly, nonatomic) ICURLBagLibraryDAAPConfiguration *libraryDAAPConfiguration;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) ICURLBagRadioConfiguration *radioConfiguration;
+@property (readonly, copy, nonatomic) NSString *serverCorrelationKey; // @synthesize serverCorrelationKey=_serverCorrelationKey;
+@property (readonly, copy, nonatomic) NSString *serverEnvironment; // @synthesize serverEnvironment=_serverEnvironment;
 @property (readonly, copy, nonatomic) NSString *storefrontHeaderSuffix;
 
 - (void).cxx_destruct;
+- (id)_initWithDictionary:(id)arg1 expirationDate:(id)arg2 serverCorrelationKey:(id)arg3 serverEnvironment:(id)arg4;
+- (id)_initWithPropertyListRepresentation:(id)arg1;
 - (BOOL)_shouldMescalSignBodyForURL:(id)arg1 withSignatureConfiguration:(id)arg2;
 - (void)_validateGUIDURLConfigIfNeeded;
 - (BOOL)boolValueForBagKey:(id)arg1;
 - (BOOL)hasValueForBagKey:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (long long)int64ValueForBagKey:(id)arg1;
 - (id)mescalConfigurationForRequest:(id)arg1;
 - (id)mescalConfigurationForRequestURL:(id)arg1;

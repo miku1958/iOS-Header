@@ -16,7 +16,9 @@
 @property (readonly, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
 
 - (void).cxx_destruct;
+- (id)currentSelectedCalendar;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (id)targetDataInfo;
 - (void)updateLists;
 - (void)wasAddedToWorkflow:(id)arg1;
 - (void)wasRemovedFromWorkflow:(id)arg1;

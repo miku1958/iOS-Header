@@ -16,7 +16,7 @@
     TUHandle *_handle;
 }
 
-@property (readonly, copy, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
+@property (readonly, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
 @property (readonly, copy, nonatomic) NSSet *handles;
 @property (readonly, copy, nonatomic) NSString *idsDestination;
 @property (readonly, copy, nonatomic) NSArray *idsDestinations;

@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (void)_sf_sceneDidEnterBackground:(id)arg1;
+- (void)_sf_sceneWillEnterForeground:(id)arg1;
 - (void)didChangeFullScreen:(BOOL)arg1;
 - (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(BOOL)arg2;
 - (void)didDecideShouldShowLinkPreviews:(BOOL)arg1;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)didResolveRedirectionWithURL:(id)arg1 appLink:(id)arg2;
 - (void)executeCustomActivityProxyID:(id)arg1;
 - (void)fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)initialLoadDidRedirectToURL:(id)arg1;
 - (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

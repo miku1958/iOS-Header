@@ -26,11 +26,13 @@
     long long _resultType;
     NSArray *_groupByProperties;
     CDUnknownBlockType _resultsHandler;
+    NSArray *_excludedMetadataKeys;
 }
 
 @property BOOL deduplicateValues; // @synthesize deduplicateValues=_deduplicateValues;
 @property (strong) NSSet *deviceIDs; // @synthesize deviceIDs=_deviceIDs;
 @property (strong) NSArray *eventStreams; // @synthesize eventStreams=_eventStreams;
+@property (strong) NSArray *excludedMetadataKeys; // @synthesize excludedMetadataKeys=_excludedMetadataKeys;
 @property (strong) NSArray *groupByProperties; // @synthesize groupByProperties=_groupByProperties;
 @property unsigned long long limit; // @synthesize limit=_limit;
 @property unsigned long long offset; // @synthesize offset=_offset;

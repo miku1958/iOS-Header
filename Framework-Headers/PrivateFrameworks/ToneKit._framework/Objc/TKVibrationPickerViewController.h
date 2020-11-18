@@ -88,6 +88,7 @@
 - (id)_indexPathForVibrationWithIdentifier:(id)arg1;
 - (id)_localizationIdentifierForHeaderInSection:(long long)arg1;
 - (id)_navigationItem;
+- (long long)_numberOfRowsInVibrationPickerSection:(long long)arg1;
 - (void)_presentVibrationRecorderViewController;
 - (void)_processCurrentVibrationSelection;
 - (id)_sanitizeVibrationIdentifierForPlayback:(id)arg1;

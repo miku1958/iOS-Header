@@ -38,8 +38,9 @@
 - (id)allMachineIDs;
 - (id)allPeerIDs;
 - (id)allPeers;
+- (id)allPolicyVersions;
 - (id)allVouchers;
-- (id)bestRecoveryKeyWithDynamicInfo:(id)arg1;
+- (id)bestRecoveryKeyForStableInfo:(id)arg1 dynamicInfo:(id)arg2;
 - (id)calculateDynamicInfoForPeerWithID:(id)arg1 addingPeerIDs:(id)arg2 removingPeerIDs:(id)arg3 preapprovedKeys:(id)arg4 signingKeyPair:(id)arg5 currentMachineIDs:(id)arg6 error:(id *)arg7;
 - (id)calculateDynamicInfoFromModel:(id)arg1 peer:(id)arg2 peerPermanentInfo:(id)arg3 peerStableInfo:(id)arg4 startingDynamicInfo:(id)arg5 addingPeerIDs:(id)arg6 removingPeerIDs:(id)arg7 preapprovedKeys:(id)arg8 signingKeyPair:(id)arg9 currentMachineIDs:(id)arg10 error:(id *)arg11;
 - (BOOL)canIntroduceCandidate:(id)arg1 withSponsor:(id)arg2 toEpoch:(unsigned long long)arg3 underPolicy:(id)arg4 disposition:(id)arg5;
@@ -52,11 +53,10 @@
 - (void)considerPreapprovalsSponsoredByPeer:(id)arg1 toRecursivelyExpandIncludedPeerIDs:(id)arg2 andExcludedPeerIDs:(id)arg3 dispositions:(id)arg4 currentMachineIDs:(id)arg5 forEpoch:(unsigned long long)arg6;
 - (void)considerVouchersSponsoredByPeerID:(id)arg1 sponsorPermanentInfo:(id)arg2 toRecursivelyExpandIncludedPeerIDs:(id)arg3 andExcludedPeerIDs:(id)arg4 dispositions:(id)arg5 currentMachineIDs:(id)arg6 forEpoch:(unsigned long long)arg7;
 - (id)createDynamicInfoWithIncludedPeerIDs:(id)arg1 excludedPeerIDs:(id)arg2 dispositions:(id)arg3 preapprovals:(id)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
-- (id)createStableInfoWithPolicyVersion:(unsigned long long)arg1 policyHash:(id)arg2 policySecrets:(id)arg3 deviceName:(id)arg4 serialNumber:(id)arg5 osVersion:(id)arg6 signingKeyPair:(id)arg7 recoverySigningPubKey:(id)arg8 recoveryEncryptionPubKey:(id)arg9 error:(id *)arg10;
+- (id)createStableInfoWithFrozenPolicyVersion:(id)arg1 flexiblePolicyVersion:(id)arg2 policySecrets:(id)arg3 deviceName:(id)arg4 serialNumber:(id)arg5 osVersion:(id)arg6 signingKeyPair:(id)arg7 recoverySigningPubKey:(id)arg8 recoveryEncryptionPubKey:(id)arg9 error:(id *)arg10;
 - (id)createVoucherForCandidate:(id)arg1 stableInfo:(id)arg2 withSponsorID:(id)arg3 reason:(unsigned long long)arg4 signingKeyPair:(id)arg5 error:(id *)arg6;
 - (id)currentCachedViableBottlesSet;
 - (void)deletePeerWithID:(id)arg1;
-- (BOOL)doesPeerRecoveryKeyMatchPeers:(id)arg1;
 - (id)dynamicInfoForJoiningPeerID:(id)arg1 peerPermanentInfo:(id)arg2 peerStableInfo:(id)arg3 sponsorID:(id)arg4 preapprovedKeys:(id)arg5 signingKeyPair:(id)arg6 currentMachineIDs:(id)arg7 error:(id *)arg8;
 - (id)filterPeerList:(id)arg1 byMachineIDs:(id)arg2 dispositions:(id)arg3;
 - (void)filterPreapprovals:(id)arg1 forExistingPeers:(id)arg2;
@@ -64,7 +64,7 @@
 - (id)getPeerIDsTrustedByPeerWithDynamicInfo:(id)arg1 toAccessView:(id)arg2 error:(id *)arg3;
 - (id)getPeerIDsTrustedByPeerWithID:(id)arg1 toAccessView:(id)arg2 error:(id *)arg3;
 - (id)getStableInfoForPeerWithID:(id)arg1;
-- (id)getViewsForPeer:(id)arg1 stableInfo:(id)arg2 inViews:(id)arg3 error:(id *)arg4;
+- (id)getViewsForPeer:(id)arg1 stableInfo:(id)arg2 error:(id *)arg3;
 - (BOOL)hasPeerWithID:(id)arg1;
 - (BOOL)hasPotentiallyTrustedPeerPreapprovingKey:(id)arg1;
 - (id)initWithDecrypter:(id)arg1;
@@ -76,7 +76,6 @@
 - (id)peerWithID:(id)arg1;
 - (id)peersWithMachineID:(id)arg1;
 - (id)policyForPeerIDs:(id)arg1 candidatePeerID:(id)arg2 candidateStableInfo:(id)arg3 error:(id *)arg4;
-- (id)policyForPeerIDs:(id)arg1 error:(id *)arg2;
 - (id)policyWithVersion:(unsigned long long)arg1;
 - (id)recoveryEncryptionPublicKey;
 - (id)recoverySigningPublicKey;

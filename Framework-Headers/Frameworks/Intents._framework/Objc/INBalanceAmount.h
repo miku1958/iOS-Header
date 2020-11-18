@@ -25,7 +25,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

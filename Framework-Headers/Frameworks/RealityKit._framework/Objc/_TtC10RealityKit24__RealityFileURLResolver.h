@@ -10,8 +10,7 @@
 
 @interface _TtC10RealityKit24__RealityFileURLResolver : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *assetPathPrefix;
-    MISSING_TYPE *$__lazy_storage_$_schemePrefix;
+    MISSING_TYPE *resolvedURLByAssetPathPrefixQueue;
     MISSING_TYPE *resolvedURLByAssetPathPrefix;
 }
 

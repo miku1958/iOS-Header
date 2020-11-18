@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_iOS_updateViews;
+- (long long)_overrideLargeTitleDisplayMode;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithViewElement:(id)arg1;
 - (void)viewDidLayoutSubviews;

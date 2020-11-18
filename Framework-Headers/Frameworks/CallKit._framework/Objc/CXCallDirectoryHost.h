@@ -35,6 +35,7 @@
 - (oneway void)getEnabledStatusForExtensionWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)getExtensionsWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
+- (oneway void)launchCallDirectorySettingsWithReply:(CDUnknownBlockType)arg1;
 - (void)performDelegateCallback:(CDUnknownBlockType)arg1;
 - (void)prepareStoreIfNecessary;
 - (oneway void)reloadExtensionWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;

@@ -6,11 +6,12 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class AFDictationConnection, AFSpeechPackage, NSArray, NSDictionary, NSError, NSFileHandle, NSString, SASMultilingualSpeechRecognized, SASSpeechPartialResult;
+@class AFDictationConnection, AFDictationOptions, AFSpeechPackage, NSArray, NSDictionary, NSError, NSFileHandle, NSString, SASMultilingualSpeechRecognized, SASSpeechPartialResult;
 
 @protocol AFDictationDelegate <NSObject>
 
 @optional
+- (void)dictationConnection:(AFDictationConnection *)arg1 didBeginLocalRecognitionWithModelInfo:(NSString *)arg2;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didDetectLanguage:(NSString *)arg2 confidenceScores:(NSDictionary *)arg3;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didDetectLanguage:(NSString *)arg2 confidenceScores:(NSDictionary *)arg3 isConfident:(BOOL)arg4;
 - (void)dictationConnection:(AFDictationConnection *)arg1 didFinishWritingAudioFile:(NSFileHandle *)arg2 error:(NSError *)arg3;
@@ -25,6 +26,7 @@
 - (void)dictationConnection:(AFDictationConnection *)arg1 didRecognizeTranscriptionObjects:(NSArray *)arg2 languageModel:(NSString *)arg3;
 - (void)dictationConnection:(AFDictationConnection *)arg1 languageDetectorFailedWithError:(NSError *)arg2;
 - (void)dictationConnection:(AFDictationConnection *)arg1 speechRecognitionDidFail:(NSError *)arg2;
+- (void)dictationConnection:(AFDictationConnection *)arg1 speechRecordingDidBeginWithOptions:(AFDictationOptions *)arg2;
 - (void)dictationConnection:(AFDictationConnection *)arg1 speechRecordingDidFail:(NSError *)arg2;
 - (void)dictationConnectionSpeechRecognitionDidSucceed:(AFDictationConnection *)arg1;
 - (void)dictationConnectionSpeechRecordingDidBegin:(AFDictationConnection *)arg1;

@@ -9,6 +9,7 @@
 @class CSAudioChunk, CSAudioRecordContext, CSAudioRecordDeviceInfo, CSAudioStartStreamOption, CSAudioStopStreamOption, CSAudioStream, CSAudioStreamHolding, CSAudioStreamRequest, NSDictionary, NSString, NSURL;
 
 @protocol CSAudioStreamProviding <NSObject>
+- (NSString *)UUID;
 - (CSAudioChunk *)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (CSAudioChunk *)audioChunkToEndFrom:(unsigned long long)arg1;
 - (void)audioStreamWithRequest:(CSAudioStreamRequest *)arg1 streamName:(NSString *)arg2 completion:(void (^)(CSAudioStream *, NSError *))arg3;

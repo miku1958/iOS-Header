@@ -29,8 +29,7 @@ __attribute__((visibility("hidden")))
     struct vector<ggl::Batcher, std::__1::allocator<ggl::Batcher>> _strokeRenderItemBatchers;
     Matrix_8746f91e _centroid;
     NSMutableOrderedSet *_attributeSets;
-    vector_b346fa92 _styleQueries;
-    vector_b346fa92 _selectedStyleQueries;
+    struct unordered_map<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>, (anonymous namespace)::StyleQueryOverrideHash, std::__1::equal_to<StyleQueryOverride>, std::__1::allocator<std::__1::pair<const StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>>> _styleQueries;
     shared_ptr_a3c46825 _styleManager;
     struct PolygonRouteAttributes _routeAttributes;
     BOOL _isFixedSize;
@@ -46,9 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isFixedSize; // @synthesize isFixedSize=_isFixedSize;
 @property (readonly, nonatomic) const Matrix_811b2232 *maxPoint;
 @property (readonly, nonatomic) const Matrix_811b2232 *origin;
-@property (readonly, nonatomic) vector_b346fa92 *selectedStyleQueries;
 @property (readonly, nonatomic) Matrix_811b2232 size;
-@property (readonly, nonatomic) vector_b346fa92 *styleQueries;
 @property (readonly, nonatomic) float tileZoom;
 
 - (id).cxx_construct;
@@ -68,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithStyleQuery:(shared_ptr_c5d816ee *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const Matrix_8746f91e *)arg3 contentScale:(float)arg4;
 - (unsigned char)maxAttributeSetsPerGroup;
 - (void)setRouteAttributes:(const struct PolygonRouteAttributes *)arg1;
+- (vector_b346fa92 *)styleQueries:(const struct StyleQueryOverride *)arg1;
 - (void)updateCachedStyles;
 - (void)willAddDataWithAccessor:(struct ResourceAccessor *)arg1;
 

@@ -7,7 +7,7 @@
 #import <NotesShared/ICAttachmentWebModel.h>
 
 @interface ICAttachmentWebModel (PreviewGeneration)
-+ (struct UIImage *)genericBrickThumbnailWithSize:(struct CGSize)arg1 scale:(double)arg2;
++ (id)genericBrickThumbnailWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (BOOL)generateAsynchronousPreviews;
 - (BOOL)generatePreviewsInOperation:(id)arg1;
 - (CDUnknownBlockType)genericBrickLargeThumbnailCreator;

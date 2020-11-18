@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) CDStruct_0f4838e9 clientLocation;
 @property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, nonatomic) double course;
+@property (readonly, nonatomic) double courseAccuracy;
 @property (readonly, copy, nonatomic) CLFloor *floor;
 @property (readonly, nonatomic) double horizontalAccuracy;
 @property (readonly, nonatomic) unsigned int integrity;
@@ -36,9 +37,11 @@
 @property (readonly, nonatomic) int type;
 @property (readonly, nonatomic) double verticalAccuracy;
 
++ (id)deriveLocationFromLocations:(id)arg1;
++ (id)filterOutliers:(id)arg1;
 + (id)locationByReductivelyFilteringLocations:(id)arg1;
 + (BOOL)supportsSecureCoding;
-- (id)_initWithCoordinate:(struct CLLocationCoordinate2D)arg1 altitude:(double)arg2 horizontalAccuracy:(double)arg3 verticalAccuracy:(double)arg4 course:(double)arg5 speed:(double)arg6 timestamp:(id)arg7 floor:(int)arg8;
+- (id)_initWithCoordinate:(struct CLLocationCoordinate2D)arg1 altitude:(double)arg2 horizontalAccuracy:(double)arg3 verticalAccuracy:(double)arg4 course:(double)arg5 courseAccuracy:(double)arg6 speed:(double)arg7 speedAccuracy:(double)arg8 timestamp:(id)arg9 floor:(int)arg10;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -52,6 +55,7 @@
 - (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3;
 - (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 altitude:(double)arg2 horizontalAccuracy:(double)arg3 verticalAccuracy:(double)arg4 course:(double)arg5 courseAccuracy:(double)arg6 speed:(double)arg7 speedAccuracy:(double)arg8 timestamp:(id)arg9;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 altitude:(double)arg2 horizontalAccuracy:(double)arg3 verticalAccuracy:(double)arg4 course:(double)arg5 speed:(double)arg6 timestamp:(id)arg7;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 altitude:(double)arg2 horizontalAccuracy:(double)arg3 verticalAccuracy:(double)arg4 timestamp:(id)arg5;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;

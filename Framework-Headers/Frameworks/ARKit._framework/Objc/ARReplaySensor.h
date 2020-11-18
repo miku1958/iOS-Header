@@ -8,11 +8,12 @@
 
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
 #import <ARKit/ARReplaySensorProtocol-Protocol.h>
+#import <ARKit/ARReplaySensorProtocolInternal-Protocol.h>
 
 @class ARImageCroppingTechnique, AVAssetReader, AVAssetReaderOutputMetadataAdaptor, AVAssetReaderTrackOutput, AVURLAsset, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, NSURL;
 @protocol ARReplaySensorDelegate, ARSensorDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface ARReplaySensor : NSObject <ARInternalSessionObserver, ARReplaySensorProtocol>
+@interface ARReplaySensor : NSObject <ARInternalSessionObserver, ARReplaySensorProtocolInternal, ARReplaySensorProtocol>
 {
     BOOL _manualCommandLineMode;
     AVURLAsset *_asset;
@@ -25,12 +26,10 @@
     NSDictionary *_recordedResultGetters;
     double _originalToReplayTimestampDifference;
     NSObject<OS_dispatch_queue> *_replayQueue;
+    id<ARReplaySensorDelegate> _traceReplaySensorDelegate;
     NSObject<OS_dispatch_source> *_timer;
     double _startTime;
     long long _tick;
-    double _frameRateScale;
-    double _timestampWhenFramerateChanged;
-    double _imageTimestampWhenFramerateChanged;
     int _imageIndexForPreloading;
     int _accelDataIndex;
     int _gyroDataIndex;
@@ -65,8 +64,8 @@
     struct OpaqueVTPixelTransferSession *_synchronizationTransferSession;
     unsigned long long _sensorDataTypes;
     ARImageCroppingTechnique *_croppingTechnique;
+    BOOL synchronousMode;
     BOOL _isReplayingManually;
-    BOOL _synchronousMode;
     float _advanceFramesPerSecondMultiplier;
     int _imageIndex;
     id<ARSensorDelegate> _delegate;
@@ -78,7 +77,7 @@
     double _nominalFrameRate;
     unsigned long long _recordedSensorTypes;
     NSSet *_recordedResultClasses;
-    unsigned long long _forcePlaybackFramesPerSecond;
+    long long _replayMode;
     long long _nextFrameIndex;
     NSSet *_customDataClasses;
     long long _targetFrameIndex;
@@ -93,7 +92,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (readonly, nonatomic) BOOL finishedReplaying;
-@property (nonatomic) unsigned long long forcePlaybackFramesPerSecond; // @synthesize forcePlaybackFramesPerSecond=_forcePlaybackFramesPerSecond;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int imageIndex; // @synthesize imageIndex=_imageIndex;
 @property (readonly, nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
@@ -106,11 +104,13 @@
 @property (readonly, nonatomic) NSArray *recordedResultClassList;
 @property (readonly, nonatomic) NSSet *recordedResultClasses; // @synthesize recordedResultClasses=_recordedResultClasses;
 @property (readonly, nonatomic) unsigned long long recordedSensorTypes; // @synthesize recordedSensorTypes=_recordedSensorTypes;
+@property (readonly, nonatomic) long long replayMode; // @synthesize replayMode=_replayMode;
 @property (weak) id<ARReplaySensorDelegate> replaySensorDelegate; // @synthesize replaySensorDelegate=_replaySensorDelegate;
 @property (readonly, nonatomic) NSURL *sequenceURL; // @synthesize sequenceURL=_sequenceURL;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=isSynchronousMode) BOOL synchronousMode; // @synthesize synchronousMode=_synchronousMode;
+@property (readonly, nonatomic, getter=isSynchronousMode) BOOL synchronousMode; // @synthesize synchronousMode;
 @property long long targetFrameIndex; // @synthesize targetFrameIndex=_targetFrameIndex;
+@property (weak) id<ARReplaySensorDelegate> traceReplaySensorDelegate;
 
 - (void).cxx_destruct;
 - (void)_didOutputSensorData:(id)arg1;
@@ -142,6 +142,7 @@
 - (id)initWithDataFromFile:(id)arg1;
 - (id)initWithSequenceURL:(id)arg1 manualReplay:(BOOL)arg2;
 - (id)initWithSequenceURL:(id)arg1 manualReplay:(BOOL)arg2 synchronousMode:(BOOL)arg3;
+- (id)initWithSequenceURL:(id)arg1 replayMode:(long long)arg2;
 - (void)initializeAssetReaderWithAsset:(id)arg1 buffersOnly:(BOOL)arg2;
 - (void)interrupt;
 - (BOOL)isEqual:(id)arg1;

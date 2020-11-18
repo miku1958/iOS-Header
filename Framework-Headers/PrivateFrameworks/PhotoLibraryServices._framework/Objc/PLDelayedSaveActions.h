@@ -26,6 +26,7 @@
     NSMutableDictionary *_delayedSearchIndexUpdateUUIDs;
     NSMutableSet *_delayedAlbumCountsAndDateRangeUpdates;
     NSMutableDictionary *_delayedWorkerTypesToAnalyzeByAssetUUID;
+    NSMutableSet *_delayedAssetsForDuetDelete;
     PLClientServerTransaction *_clientTransaction;
 }
 
@@ -43,6 +44,7 @@
 - (void)_popDelayedDupeAnalysisNormalInserts:(id *)arg1 cloudInserts:(id *)arg2;
 - (void)_popDelayedMomentInsertsAndUpdates:(id *)arg1 deletes:(id *)arg2 updatedAssetIDsForHighlights:(id *)arg3 updatedMomentIDsForHighlights:(id *)arg4;
 - (void)_popDelayedSearchIndexUpdates:(id *)arg1;
+- (void)_popDuetDeletedAssetsIntoDetail:(id)arg1;
 - (void)_popDupeAnalysisChangesIntoDetail:(id)arg1;
 - (void)_popMomentChangesIntoDetail:(id)arg1;
 - (void)_popSearchIndexChangesIntoDetail:(id)arg1;
@@ -79,6 +81,7 @@
 - (void)recordAssetForAlbumCountsAndDateRangeUpdate:(id)arg1;
 - (void)recordAssetForAnalysis:(id)arg1 workerFlags:(int)arg2 workerType:(short)arg3;
 - (void)recordAssetForCloudFeedUpdate:(id)arg1;
+- (void)recordAssetForDuetDelete:(id)arg1;
 - (void)recordAssetForDupeAnalysis:(id)arg1;
 - (void)recordAssetForFileSystemPersistencyUpdate:(id)arg1;
 - (void)recordAssetForMomentUpdate:(id)arg1;

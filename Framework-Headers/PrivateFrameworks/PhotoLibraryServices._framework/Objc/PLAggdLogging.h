@@ -10,17 +10,16 @@
 {
 }
 
++ (void)_addLibrarySummaryDataToCollectionIfPresent:(id)arg1 fromCPLEventData:(id)arg2 forKey:(id)arg3;
 + (id)_addPrefix:(id)arg1 toKeysInDictionary:(id)arg2;
 + (double)_getDateMedian:(id)arg1 fromStartDate:(id)arg2 forCameraCapture:(BOOL)arg3;
 + (id)_performMedianCalculation:(id)arg1;
 + (void)performAnalysisStateLogging:(id)arg1 library:(id)arg2;
 + (void)performCMMSummaryLogging:(id)arg1 cloudPhotoLibraryEnabled:(BOOL)arg2;
-+ (void)performCTMLibrarySummaryLogging:(id)arg1;
 + (void)performCollectionsStaticsLogging:(id)arg1;
-+ (void)performHyperionLocalResourcesLogging:(CDUnknownBlockType)arg1 inManagedObjectContext:(id)arg2 cloudPhotoLibraryEnabled:(BOOL)arg3;
-+ (void)performHyperionLocalResourcesLoggingForLibrary:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)performHyperionLocalResourcesLoggingForContext:(id)arg1 cloudPhotoLibraryEnabled:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)performLibraryStatisticsLoggingForLibrary:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (void)performLibrarySummaryLogging:(id)arg1 cloudPhotoLibraryEnabled:(BOOL)arg2;
++ (void)performLibrarySummaryLogging:(id)arg1;
 + (void)performMomentsStatisticsLogging:(id)arg1;
 + (void)performPersistentHistorySummaryLogging:(id)arg1;
 + (void)performYearsStaticsLogging:(id)arg1;

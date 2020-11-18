@@ -92,8 +92,8 @@
 - (BOOL)actionMenu:(id)arg1 actionPerformer:(id)arg2 dismissViewController:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)actionMenu:(id)arg1 actionPerformer:(id)arg2 presentViewController:(id)arg3;
 - (void)actionMenu:(id)arg1 assetCollectionActionPerformer:(id)arg2 playMovieForAssetCollection:(id)arg3;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)assetsViewControllerDidTapActionButton:(id)arg1;
 - (void)assetsViewControllerDidTapSendBackActionButton:(id)arg1;
 - (id)completeMyMomentViewController:(id)arg1 performActionForSession:(id)arg2;

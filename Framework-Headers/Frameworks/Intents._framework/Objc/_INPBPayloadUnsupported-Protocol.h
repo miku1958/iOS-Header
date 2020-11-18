@@ -21,6 +21,7 @@
 @property (nonatomic) unsigned int customUnsupportedReason;
 @property (nonatomic) int deleteTasksIntentTaskListUnsupportedReason;
 @property (nonatomic) int deleteTasksIntentTaskUnsupportedReason;
+@property (nonatomic) int findDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property (nonatomic) BOOL hasAddMediaIntentMediaDestinationUnsupportedReason;
 @property (nonatomic) BOOL hasAddMediaIntentMediaItemsUnsupportedReason;
 @property (nonatomic) BOOL hasAddTasksIntentContactEventTriggerUnsupportedReason;
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL hasCustomUnsupportedReason;
 @property (nonatomic) BOOL hasDeleteTasksIntentTaskListUnsupportedReason;
 @property (nonatomic) BOOL hasDeleteTasksIntentTaskUnsupportedReason;
+@property (nonatomic) BOOL hasFindDeviceAndPlaySoundIntentDeviceUnsupportedReason;
 @property (nonatomic) BOOL hasPlayMediaIntentMediaItemsUnsupportedReason;
 @property (nonatomic) BOOL hasPlayMediaIntentPlaybackSpeedUnsupportedReason;
 @property (nonatomic) BOOL hasReason;
@@ -78,6 +80,7 @@
 - (int)StringAsCreateTimerIntentLabelUnsupportedReason:(NSString *)arg1;
 - (int)StringAsDeleteTasksIntentTaskListUnsupportedReason:(NSString *)arg1;
 - (int)StringAsDeleteTasksIntentTaskUnsupportedReason:(NSString *)arg1;
+- (int)StringAsFindDeviceAndPlaySoundIntentDeviceUnsupportedReason:(NSString *)arg1;
 - (int)StringAsPlayMediaIntentMediaItemsUnsupportedReason:(NSString *)arg1;
 - (int)StringAsPlayMediaIntentPlaybackSpeedUnsupportedReason:(NSString *)arg1;
 - (int)StringAsReason:(NSString *)arg1;
@@ -108,6 +111,7 @@
 - (NSString *)createTimerIntentLabelUnsupportedReasonAsString:(int)arg1;
 - (NSString *)deleteTasksIntentTaskListUnsupportedReasonAsString:(int)arg1;
 - (NSString *)deleteTasksIntentTaskUnsupportedReasonAsString:(int)arg1;
+- (NSString *)findDeviceAndPlaySoundIntentDeviceUnsupportedReasonAsString:(int)arg1;
 - (NSString *)playMediaIntentMediaItemsUnsupportedReasonAsString:(int)arg1;
 - (NSString *)playMediaIntentPlaybackSpeedUnsupportedReasonAsString:(int)arg1;
 - (NSString *)reasonAsString:(int)arg1;

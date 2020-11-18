@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface PKPassField : NSObject <NSSecureCoding>
+@interface PKPassField : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_value;
     long long _type;
@@ -43,6 +44,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)asDictionary;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)flushCachedValue;

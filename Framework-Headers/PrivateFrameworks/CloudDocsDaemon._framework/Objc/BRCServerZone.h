@@ -53,6 +53,7 @@
 - (void)_collectTombstoneForRank:(unsigned long long)arg1;
 - (BOOL)_markItemDeadForRecordID:(id)arg1;
 - (BOOL)_markShareIDDead:(id)arg1;
+- (BOOL)_recoverFromCorruptShareOptionsWithItemType:(BOOL)arg1 itemID:(id)arg2 parentID:(id)arg3 sharingOptions:(unsigned long long)arg4;
 - (void)_reportCantSaveProblem:(id)arg1 record:(id)arg2;
 - (BOOL)_saveDeletedRecordIDs:(id)arg1;
 - (BOOL)_saveEditedAliasRecord:(id)arg1 zonesNeedingAllocRanks:(id)arg2 error:(id *)arg3;
@@ -87,7 +88,7 @@
 - (id)descriptionWithContext:(id)arg1;
 - (void)destroyPendingChangesDBOnQueue:(BOOL)arg1;
 - (unsigned long long)didSyncDownRequestID:(unsigned long long)arg1 serverChangeToken:(id)arg2 editedRecords:(id)arg3 deletedRecordIDs:(id)arg4 deletedShareRecordIDs:(id)arg5 movedZoneNames:(id)arg6 allocRankZones:(id *)arg7 syncStatus:(long long)arg8 savedDirectly:(BOOL *)arg9;
-- (struct PQLResultSet *)directDirectoryChildItemIDsOfParentEnumerator:(id)arg1;
+- (id)directDirectoryChildItemIDsOfParentEnumerator:(id)arg1;
 - (BOOL)dumpStatusToContext:(id)arg1 error:(id *)arg2;
 - (BOOL)dumpTablesToContext:(id)arg1 includeAllItems:(BOOL)arg2 error:(id *)arg3;
 - (void)forceMoveToCloudDocs;
@@ -97,7 +98,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)itemByItemID:(id)arg1;
 - (id)itemByItemID:(id)arg1 db:(id)arg2;
-- (struct PQLResultSet *)itemsEnumeratorWithDB:(id)arg1;
+- (id)itemsEnumeratorWithDB:(id)arg1;
 - (id)jobsDescription;
 - (id)matchingJobsWhereSQLClause;
 - (void)removeForegroundClient:(id)arg1;

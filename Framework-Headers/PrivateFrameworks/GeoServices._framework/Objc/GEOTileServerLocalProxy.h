@@ -35,7 +35,7 @@
 - (void)_initiateDataSaverPreloadIfPossible;
 - (void)_registerBuiltInProviders;
 - (void)_updateExpiringTilesets;
-- (void)beginPreloadSessionOfSize:(unsigned long long)arg1 exclusive:(BOOL)arg2;
+- (void)beginPreloadSessionOfSize:(unsigned long long)arg1;
 - (void)calculateFreeableSize;
 - (unsigned long long)calculateFreeableSizeSync;
 - (void)cancel:(const struct _GEOTileKey *)arg1 batchID:(int)arg2;
@@ -56,7 +56,6 @@
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (void)shrinkDiskCacheToSize:(unsigned long long)arg1;
 - (unsigned long long)shrinkDiskCacheToSizeSync:(unsigned long long)arg1;
-- (BOOL)skipNetworkForKeysWhenPreloading:(id)arg1;
 - (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSetDB:(unsigned int)arg4 tileSet:(id)arg5 etag:(id)arg6 forKey:(struct _GEOTileKey)arg7 userInfo:(id)arg8;
 - (void)tileRequester:(id)arg1 receivedError:(id)arg2 forKey:(struct _GEOTileKey)arg3;
 - (void)tileRequesterFinished:(id)arg1;

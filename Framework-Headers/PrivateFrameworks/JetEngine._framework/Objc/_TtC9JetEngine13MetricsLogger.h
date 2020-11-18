@@ -11,7 +11,7 @@
 @interface _TtC9JetEngine13MetricsLogger : _TtCs12_SwiftObject
 {
     MISSING_TYPE *loggerName;
-    MISSING_TYPE *metrics;
+    MISSING_TYPE *recorder;
     MISSING_TYPE *eventTopic;
     MISSING_TYPE *sampling;
 }

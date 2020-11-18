@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CNCache, CNContactStore;
+#import <ContactsUI/CNUICoreParentContainerProvider-Protocol.h>
+
+@class CNCache, CNContactStore, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactViewCache : NSObject
+@interface CNContactViewCache : NSObject <CNUICoreParentContainerProvider>
 {
     CNCache *_cachedContainers;
     CNCache *_cachedPolicies;
@@ -21,6 +23,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CNCache *cachedContainers; // @synthesize cachedContainers=_cachedContainers;
 @property (strong, nonatomic) CNCache *cachedPolicies; // @synthesize cachedPolicies=_cachedPolicies;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)isCandidatePolicy:(id)arg1 ofContactInCandidateContainerWithType:(long long)arg2 preferredOverPolicy:(id)arg3 ofContactInContainerWithType:(long long)arg4;
 + (BOOL)shouldIgnorePolicyOfContactInGuarianRestrictedContainer:(id)arg1;

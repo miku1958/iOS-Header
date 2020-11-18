@@ -20,7 +20,7 @@
     BOOL _simulateResults;
     CNCancelationToken *_fetchRequestToken;
     CNPromise *_fetchRequestPromise;
-    struct NSNumber *_shouldIncludeGroupResults;
+    NSNumber *_shouldIncludeGroupResults;
     CNAutocompleteFetchContext *_fetchContext;
     CNAutocompleteStore *_autocompleteStore;
 }

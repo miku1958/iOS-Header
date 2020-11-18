@@ -34,6 +34,7 @@
 - (id)relativeAppUsageProbabilitiesForCandidateBundleIds:(id)arg1 daysAgo:(long long)arg2;
 - (id)shareExtensionSuggestionsFromContext:(id)arg1;
 - (id)shareSheetInteractionsFromContext:(id)arg1;
+- (id)shareSheetInteractionsFromContext:(id)arg1 maximumNumberOfSuggestions:(long long)arg2;
 - (id)suggestInteractionsFromContext:(id)arg1;
 
 @end

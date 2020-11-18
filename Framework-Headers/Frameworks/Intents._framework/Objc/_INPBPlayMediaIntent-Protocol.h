@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) BOOL hasMediaSearch;
 @property (readonly, nonatomic) BOOL hasMediaUserContext;
 @property (readonly, nonatomic) BOOL hasMusicArtistName;
+@property (nonatomic) BOOL hasParsecCategory;
 @property (nonatomic) BOOL hasPlayShuffled;
 @property (nonatomic) BOOL hasPlaybackQueueLocation;
 @property (nonatomic) BOOL hasPlaybackRepeatMode;
@@ -45,6 +46,7 @@
 @property (strong, nonatomic) _INPBMediaSearch *mediaSearch;
 @property (strong, nonatomic) _INPBString *mediaUserContext;
 @property (strong, nonatomic) _INPBString *musicArtistName;
+@property (nonatomic) int parsecCategory;
 @property (nonatomic) BOOL playShuffled;
 @property (nonatomic) int playbackQueueLocation;
 @property (nonatomic) int playbackRepeatMode;
@@ -60,6 +62,7 @@
 + (Class)bucketType;
 + (Class)hashedRouteUIDsType;
 + (Class)mediaItemsType;
+- (int)StringAsParsecCategory:(NSString *)arg1;
 - (int)StringAsPlaybackQueueLocation:(NSString *)arg1;
 - (int)StringAsPlaybackRepeatMode:(NSString *)arg1;
 - (void)addAlternativeResults:(_INPBMediaItemGroup *)arg1;
@@ -77,6 +80,7 @@
 - (void)clearMediaItems;
 - (_INPBString *)hashedRouteUIDsAtIndex:(unsigned long long)arg1;
 - (_INPBMediaItemValue *)mediaItemsAtIndex:(unsigned long long)arg1;
+- (NSString *)parsecCategoryAsString:(int)arg1;
 - (NSString *)playbackQueueLocationAsString:(int)arg1;
 - (NSString *)playbackRepeatModeAsString:(int)arg1;
 @end

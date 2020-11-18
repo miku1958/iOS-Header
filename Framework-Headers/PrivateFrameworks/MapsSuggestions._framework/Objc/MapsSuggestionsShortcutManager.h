@@ -9,7 +9,7 @@
 #import <MapsSuggestions/MapsSuggestionsMeCardObserver-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsMeCardReader-Protocol.h>
 
-@class MapsSuggestionsContacts, MapsSuggestionsMeCard, MapsSuggestionsObservers, MapsSuggestionsRoutine, NSArray, NSString;
+@class MapsSuggestionsContacts, MapsSuggestionsMeCard, MapsSuggestionsObservers, MapsSuggestionsRoutine, NSArray, NSMutableArray, NSString;
 @protocol MapsSuggestionsShortcutStorage, MapsSuggestionsShortcutSuggestor;
 
 @interface MapsSuggestionsShortcutManager : NSObject <MapsSuggestionsMeCardObserver, MapsSuggestionsMeCardReader>
@@ -19,9 +19,9 @@
     id<MapsSuggestionsShortcutSuggestor> _suggestor;
     MapsSuggestionsRoutine *_routine;
     MapsSuggestionsContacts *_contacts;
-    struct NSMutableArray *_hiddenShortcuts;
+    NSMutableArray *_hiddenShortcuts;
     MapsSuggestionsMeCard *_rawMeCard;
-    struct NSArray *_shortcutsOverlay;
+    NSArray *_shortcutsOverlay;
     MapsSuggestionsObservers *_meCardObservers;
     MapsSuggestionsMeCard *_currCorrectedMeCard;
     NSArray *_rawHomeAddressStrings;
@@ -40,26 +40,26 @@
 - (BOOL)_loadCorrectedMeCardWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_mergeShortcutsToMeCardAndCallHandler:(CDUnknownBlockType)arg1;
 - (void)addMeCardObserver:(id)arg1;
-- (BOOL)addOrUpdateShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)addOrUpdateShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)initWithDefaults;
 - (id)initWithStorage:(id)arg1 suggestor:(id)arg2 contacts:(id)arg3 routine:(id)arg4;
 - (BOOL)loadAllShortcutsWithHandler:(CDUnknownBlockType)arg1;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
 - (BOOL)moveShortcut:(id)arg1 afterShortcut:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)moveShortcut:(id)arg1 beforeShortcut:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (BOOL)moveShortcut:(id)arg1 toIndex:(long long)arg2 withSnapshot:(struct NSArray *)arg3 handler:(CDUnknownBlockType)arg4;
+- (BOOL)moveShortcut:(id)arg1 toIndex:(long long)arg2 withSnapshot:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (BOOL)moveShortcutToBack:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)moveShortcutToFront:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)proposeAdditionalShortcutsOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)readMeCardWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeMeCardObserver:(id)arg1;
-- (BOOL)removeShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)removeShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)routine;
 - (void)setChangeHandler:(CDUnknownBlockType)arg1;
 - (id)storage;
 - (id)suggestor;
-- (struct NSArray *)test_setUpPlaceholdersIfNeeded:(id)arg1 overlays:(struct NSArray *)arg2;
-- (void)test_sortMapsSuggestionsShortcuts:(struct NSMutableArray *)arg1;
+- (id)test_setUpPlaceholdersIfNeeded:(id)arg1 overlays:(id)arg2;
+- (void)test_sortMapsSuggestionsShortcuts:(id)arg1;
 
 @end
 

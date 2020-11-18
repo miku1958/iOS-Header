@@ -40,6 +40,7 @@
     RUISubHeaderElement *_subHeader;
     RUIFooterElement *_footer;
     NSString *_headerTitle;
+    NSString *_subHeaderTitle;
     UIPickerView *_selectPicker;
 }
 
@@ -59,6 +60,7 @@
 @property (strong, nonatomic) UIPickerView *selectPicker; // @synthesize selectPicker=_selectPicker;
 @property (readonly, nonatomic, getter=isShowingPicker) BOOL showingPicker;
 @property (strong, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;
+@property (strong, nonatomic) NSString *subHeaderTitle; // @synthesize subHeaderTitle=_subHeaderTitle;
 @property (readonly) Class superclass;
 
 + (void)_enableTestMode;

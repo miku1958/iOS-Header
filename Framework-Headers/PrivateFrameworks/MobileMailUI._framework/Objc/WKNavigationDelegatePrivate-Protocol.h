@@ -6,7 +6,7 @@
 
 #import <MobileMailUI/WKNavigationDelegate-Protocol.h>
 
-@class NSArray, NSData, NSError, NSString, NSURL, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView, WKWebpagePreferences, _WKContentRuleListAction;
+@class NSArray, NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView, WKWebpagePreferences, _WKContentRuleListAction;
 @protocol NSSecureCoding;
 
 @protocol WKNavigationDelegatePrivate <WKNavigationDelegate>
@@ -14,6 +14,7 @@
 @optional
 - (NSData *)_webCryptoMasterKeyForWebView:(WKWebView *)arg1;
 - (void)_webView:(WKWebView *)arg1 URL:(NSURL *)arg2 contentRuleListIdentifiers:(NSArray *)arg3 notifications:(NSArray *)arg4;
+- (void)_webView:(WKWebView *)arg1 authenticationChallenge:(NSURLAuthenticationChallenge *)arg2 shouldAllowLegacyTLS:(void (^)(BOOL))arg3;
 - (void)_webView:(WKWebView *)arg1 contentRuleListWithIdentifier:(NSString *)arg2 performedAction:(_WKContentRuleListAction *)arg3 forURL:(NSURL *)arg4;
 - (void)_webView:(WKWebView *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 decisionHandler:(void (^)(long long, _WKWebsitePolicies *))arg3;
 - (void)_webView:(WKWebView *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 preferences:(WKWebpagePreferences *)arg3 userInfo:(id<NSSecureCoding>)arg4 decisionHandler:(void (^)(long long, WKWebpagePreferences *))arg5;

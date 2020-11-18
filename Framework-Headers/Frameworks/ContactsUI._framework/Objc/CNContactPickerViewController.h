@@ -21,6 +21,7 @@
     BOOL _ignoresParentalRestrictions;
     BOOL _allowsEditing;
     BOOL _allowsCancel;
+    BOOL _allowsDone;
     BOOL _allowsDeletion;
     BOOL _hidesPromptInLandscape;
     BOOL _defaultViewControllerVisible;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic) UIBarButtonItem *addContactBarButtonItem;
 @property (nonatomic) BOOL allowsCancel; // @synthesize allowsCancel=_allowsCancel;
 @property (nonatomic) BOOL allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
+@property (nonatomic) BOOL allowsDone; // @synthesize allowsDone=_allowsDone;
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property (nonatomic) BOOL autocloses; // @synthesize autocloses=_autocloses;
 @property (copy, nonatomic) NSString *bannerTitle; // @synthesize bannerTitle=_bannerTitle;

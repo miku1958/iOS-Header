@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)appContext:(id)arg1 needsReloadWithUrgency:(unsigned long long)arg2 options:(id)arg3;
 - (void)appContext:(id)arg1 scriptForURL:(id)arg2 cachePolicy:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end

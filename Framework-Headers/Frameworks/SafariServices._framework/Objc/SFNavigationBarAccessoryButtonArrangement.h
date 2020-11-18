@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)containsButtonType:(long long)arg1;
+- (id)description;
 - (void)enumerateButtonTypesFromEdge:(unsigned long long)arg1 withLayoutDirection:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)initWithLeadingButtonTypes:(id)arg1 trailingButtonTypes:(id)arg2;
 

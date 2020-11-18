@@ -42,6 +42,7 @@
     double _presentationCourse;
     double _locationAccuracy;
     CLLocation *_lastLocation;
+    BOOL _hasExplicitCollisionMode;
     BOOL _forcesConeIndicator;
     long long _headingIndicatorStyle;
     double _headingOffset;
@@ -131,11 +132,14 @@
 - (void)_updateShowHeadingLayer:(BOOL)arg1 animatedIfPossible:(BOOL)arg2;
 - (void)_updateShowHeadingLayerAnimatedIfPossible:(BOOL)arg1;
 - (id)_vkNavigationPuckMarker;
+- (long long)collisionMode;
 - (void)didMoveToWindow;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)locationManagerFailedToUpdateLocation;
 - (void)setAnimatingToCoordinate:(BOOL)arg1;
+- (void)setCollisionMode:(long long)arg1;
+- (void)setDisplayPriority:(float)arg1;
 - (void)setLocationAccuracy:(double)arg1 duration:(double)arg2;
 - (void)setPresentationCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (void)setPuckScale:(double)arg1;

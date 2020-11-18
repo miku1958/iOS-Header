@@ -9,6 +9,7 @@
 #import <PassKitUI/CNAvatarViewDelegate-Protocol.h>
 #import <PassKitUI/PKDashboardDelegate-Protocol.h>
 #import <PassKitUI/PKDashboardPassViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKDiscoveryArticleViewControllerPresenter-Protocol.h>
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPassDeleteAnimationControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPassDeleteHandler-Protocol.h>
@@ -23,7 +24,7 @@
 @class NSString, PKAnimatedNavigationBarTitleView, PKDashboardPassFlowLayout, PKDashboardPassGroupItemPresenter, PKDashboardPassViewController, PKDashboardPaymentTransactionItemPresenter, PKGroup, PKNavigationDashboardAnimatedTransitioningHandler, PKPGSVTransitionInterstitialView, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassPresentationContext, PKPassthroughView, PKSecureElement, UIPanGestureRecognizer, UIView, _UIDynamicValueAnimation;
 @protocol PKDashboardPassDataSource, PKDashboardPassViewControllerDelegate, PKPassGroupViewDelegate, PKPassGroupViewReceiver;
 
-@interface PKNavigationDashboardPassViewController : PKNavigationController <PKPassGroupViewDelegate, PKPassFooterViewDelegate, PKSecureElementObserver, UIViewControllerTransitioningDelegate, PKPassDeleteHandler, PKPassDeleteAnimationControllerDelegate, UIGestureRecognizerDelegate, CNAvatarViewDelegate, PKSpendingSummaryViewControllerDelegate, PKDashboardPassViewControllerDelegate, PKDashboardDelegate, PKForegroundActiveArbiterObserver, PKPassGroupViewReceiver>
+@interface PKNavigationDashboardPassViewController : PKNavigationController <PKPassGroupViewDelegate, PKPassFooterViewDelegate, PKSecureElementObserver, UIViewControllerTransitioningDelegate, PKPassDeleteHandler, PKPassDeleteAnimationControllerDelegate, UIGestureRecognizerDelegate, CNAvatarViewDelegate, PKSpendingSummaryViewControllerDelegate, PKDashboardPassViewControllerDelegate, PKDashboardDelegate, PKForegroundActiveArbiterObserver, PKPassGroupViewReceiver, PKDiscoveryArticleViewControllerPresenter>
 {
     PKNavigationDashboardAnimatedTransitioningHandler *_transitioningHandler;
     PKGroup *_group;
@@ -126,6 +127,7 @@
 - (void)dealloc;
 - (void)deleteAnimationController:(id)arg1 didComplete:(BOOL)arg2;
 - (void)deleteAnimationControllerWillBeginDeleteAnimation:(id)arg1;
+- (void)dismissDiscoveryArticleViewController:(id)arg1 afterActionCompleted:(BOOL)arg2 withRelevantPassUniqueIdenitifer:(id)arg3;
 - (void)doneTapped:(id)arg1;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (void)groupView:(id)arg1 deleteButtonPressedForPass:(id)arg2;

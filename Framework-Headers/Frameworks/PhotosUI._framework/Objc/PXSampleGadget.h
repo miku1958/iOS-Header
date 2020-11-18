@@ -34,6 +34,7 @@
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (copy, nonatomic) NSString *gadgetTitle; // @synthesize gadgetTitle=_gadgetTitle;
 @property (readonly, nonatomic) unsigned long long gadgetType;
@@ -45,18 +46,15 @@
 @property (nonatomic) unsigned long long preferredHeight; // @synthesize preferredHeight=_preferredHeight;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
 
 - (void).cxx_destruct;
 - (void)_prepareView:(id)arg1;
 - (id)init;
 - (id)initWithMininumHeight:(double)arg1;
-- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
+- (void)prepareCollectionViewItem:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
+- (void)userDidSelectAccessoryButton:(id)arg1;
 - (struct CGRect)view:(id)arg1 colorFrameForBounds:(struct CGRect)arg2;
 
 @end

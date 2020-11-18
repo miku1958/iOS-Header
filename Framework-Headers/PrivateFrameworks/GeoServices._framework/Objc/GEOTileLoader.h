@@ -11,7 +11,7 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/GEOTileServerProxyDelegate-Protocol.h>
 
-@class GEOTileLoaderConfiguration, GEOTileLoaderInternal, GEOTileLoaderUsage, GEOTileServerProxy, NSMutableArray, NSMutableSet, NSString, geo_isolater;
+@class GEOTileLoaderConfiguration, GEOTileLoaderInternal, GEOTileLoaderUsage, GEOTileServerProxy, NSHashTable, NSMutableArray, NSMutableSet, NSString, geo_isolater;
 @protocol GEOTileLoaderInternalDelegate, OS_dispatch_queue;
 
 @interface GEOTileLoader : NSObject <GEOPListStateCapturing, GEOTileServerProxyDelegate, GEOResourceManifestTileGroupObserver, GEOExperimentConfigurationObserver>
@@ -33,6 +33,8 @@
     unsigned long long _stateCaptureHandle;
     BOOL _coalesceTimerEnabled;
     GEOTileLoaderInternal *_internal;
+    NSHashTable *_observers;
+    geo_isolater *_observersIsolater;
 }
 
 @property (nonatomic, setter=_setCoalesceTimerEnabled:) BOOL _coalesceTimerEnabled; // @synthesize _coalesceTimerEnabled;
@@ -72,12 +74,15 @@
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 info:(id)arg3;
 - (void)_loadedTileForLocalKey:(struct _GEOTileKey)arg1 preliminary:(BOOL)arg2 quickly:(BOOL)arg3 tileDecoder:(id)arg4 data:(id)arg5 disburseTile:(CDUnknownBlockType)arg6;
 - (void)_localeChanged:(id)arg1;
+- (void)_notifyObserversOfFailure:(const struct _GEOTileKey *)arg1 error:(id)arg2 options:(unsigned long long)arg3;
+- (void)_notifyObserversOfSuccess:(const struct _GEOTileKey *)arg1 source:(long long)arg2 options:(unsigned long long)arg3;
 - (void)_performOnServerProxyDelegateQueue:(CDUnknownBlockType)arg1;
 - (void)_requestOnlineTiles;
 - (id)_tileDecoderForTileKey:(const struct _GEOTileKey *)arg1 quickly:(BOOL *)arg2;
 - (void)_tileEditionChanged:(id)arg1;
 - (void)_timerFired;
-- (void)beginPreloadSessionOfSize:(unsigned long long)arg1 forClient:(id)arg2 exclusive:(BOOL)arg3;
+- (void)addObserver:(id)arg1;
+- (void)beginPreloadSessionOfSize:(unsigned long long)arg1 forClient:(id)arg2;
 - (id)cachedTileForKey:(const struct _GEOTileKey *)arg1;
 - (unsigned long long)calculateFreeableSizeSync;
 - (void)calculateFreeableSizeWithCallbackQ:(id)arg1 finished:(CDUnknownBlockType)arg2;
@@ -128,6 +133,7 @@
 - (void)proxyDidDownloadRegionalResources:(id)arg1;
 - (void)registerTileDecoder:(id)arg1;
 - (void)registerTileLoader:(Class)arg1;
+- (void)removeObserver:(id)arg1;
 - (id)renderDataForKey:(struct _GEOTileKey *)arg1 asyncHandler:(CDUnknownBlockType)arg2;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
 - (BOOL)reprioritizeKey:(const struct _GEOTileKey *)arg1 forClient:(id)arg2 newPriority:(unsigned int)arg3;

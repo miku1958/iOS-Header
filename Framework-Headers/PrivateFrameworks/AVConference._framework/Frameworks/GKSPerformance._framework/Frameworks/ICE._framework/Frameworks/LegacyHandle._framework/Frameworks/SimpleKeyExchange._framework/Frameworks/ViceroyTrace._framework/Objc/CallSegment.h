@@ -12,11 +12,14 @@
 @interface CallSegment : NSObject
 {
     VCHistogram *_RTT;
+    VCHistogram *_abnormalRTT;
     VCHistogram *_JBQSize;
     VCHistogram *_JBTarget;
     VCHistogram *_JBUnclippedTarget;
     VCHistogram *_PLR;
     VCHistogram *_VPLR;
+    VCHistogram *_abnormalPLR;
+    VCHistogram *_abnormalBPL;
     VCHistogram *_latency;
     VCHistogram *_TBR;
     VCHistogram *_RBR;
@@ -93,6 +96,10 @@
     unsigned int _videoFrameExpectedCounter;
     unsigned int _encodedVideoFrameCounter;
     unsigned int _captureVideoFrameCounter;
+    unsigned int _overshootSendBitrate;
+    unsigned int _undershootSendBitrate;
+    unsigned int _overUtilizedBandwidth;
+    unsigned int _underUtilizedBandwidth;
     NSString *_relayServer;
     int _relayType;
     NSString *_accessToken;
@@ -140,6 +147,9 @@
 @property (readonly) VCHistogram *SBR; // @synthesize SBR=_SBR;
 @property (readonly) VCHistogram *TBR; // @synthesize TBR=_TBR;
 @property (readonly) VCHistogram *VPLR; // @synthesize VPLR=_VPLR;
+@property (readonly) VCHistogram *abnormalBPL; // @synthesize abnormalBPL=_abnormalBPL;
+@property (readonly) VCHistogram *abnormalPLR; // @synthesize abnormalPLR=_abnormalPLR;
+@property (readonly) VCHistogram *abnormalRTT; // @synthesize abnormalRTT=_abnormalRTT;
 @property (copy) NSString *activeConnectionRegistry; // @synthesize activeConnectionRegistry=_activeConnectionRegistry;
 @property int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
 @property (readonly) VCHistogram *audioErasures; // @synthesize audioErasures=_audioErasures;
@@ -179,6 +189,8 @@
 @property (readonly) VCHistogram *mediaStall; // @synthesize mediaStall=_mediaStall;
 @property unsigned int mediaStallCount; // @synthesize mediaStallCount=_mediaStallCount;
 @property unsigned int minBWE; // @synthesize minBWE=_minBWE;
+@property unsigned int overUtilizedBandwidth; // @synthesize overUtilizedBandwidth=_overUtilizedBandwidth;
+@property unsigned int overshootSendBitrate; // @synthesize overshootSendBitrate=_overshootSendBitrate;
 @property (readonly) VCHistogram *poorConnection; // @synthesize poorConnection=_poorConnection;
 @property unsigned int poorConnectionFrequency; // @synthesize poorConnectionFrequency=_poorConnectionFrequency;
 @property double poorConnectionMaxLength; // @synthesize poorConnectionMaxLength=_poorConnectionMaxLength;
@@ -206,6 +218,8 @@
 @property double totalVideoStallTime; // @synthesize totalVideoStallTime=_totalVideoStallTime;
 @property unsigned long long totalWifiRxDataBytes; // @synthesize totalWifiRxDataBytes=_totalWifiRxDataBytes;
 @property unsigned long long totalWifiTxDataBytes; // @synthesize totalWifiTxDataBytes=_totalWifiTxDataBytes;
+@property unsigned int underUtilizedBandwidth; // @synthesize underUtilizedBandwidth=_underUtilizedBandwidth;
+@property unsigned int undershootSendBitrate; // @synthesize undershootSendBitrate=_undershootSendBitrate;
 @property (readonly) VCHistogram *videoEncodingBitrate; // @synthesize videoEncodingBitrate=_videoEncodingBitrate;
 @property unsigned long long videoFlushPacketCount; // @synthesize videoFlushPacketCount=_videoFlushPacketCount;
 @property unsigned int videoFrameDecodedButSkippedCounter; // @synthesize videoFrameDecodedButSkippedCounter=_videoFrameDecodedButSkippedCounter;

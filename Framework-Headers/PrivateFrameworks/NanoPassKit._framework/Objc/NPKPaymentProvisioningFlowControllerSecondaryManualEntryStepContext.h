@@ -17,8 +17,11 @@
 @property (nonatomic) BOOL allowsAddingDifferentCard; // @synthesize allowsAddingDifferentCard=_allowsAddingDifferentCard;
 @property (strong, nonatomic) PKPaymentCredential *credential; // @synthesize credential=_credential;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRequestContext:(id)arg1;
 
 @end

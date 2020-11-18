@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (struct NSObject *)recentEventForAddress:(id)arg1 kind:(id)arg2 metadata:(id)arg3;
+- (id)recentEventForAddress:(id)arg1 kind:(id)arg2 metadata:(id)arg3;
 
 @end
 

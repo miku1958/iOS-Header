@@ -23,9 +23,11 @@
     double _pTTR;
     NSString *_obfuscationID;
     NSDictionary *_usageVectors;
+    NSString *_addendum;
 }
 
 @property (strong, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
+@property (strong, nonatomic) NSString *addendum; // @synthesize addendum=_addendum;
 @property (strong, nonatomic) ADVector *appVector; // @synthesize appVector=_appVector;
 @property (nonatomic) BOOL hasBeenImpressed; // @synthesize hasBeenImpressed=_hasBeenImpressed;
 @property (nonatomic) BOOL hasBeenTapped; // @synthesize hasBeenTapped=_hasBeenTapped;

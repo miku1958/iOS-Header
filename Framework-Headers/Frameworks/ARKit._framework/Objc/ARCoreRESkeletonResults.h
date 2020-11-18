@@ -15,11 +15,15 @@
 {
     NSArray *_retargetedSkeletons;
     double _timestamp;
+    struct CGSize _imageResolution;
+    CDStruct_8e0628e6 _cameraIntrinsics;
 }
 
+@property (nonatomic) CDStruct_8e0628e6 cameraIntrinsics; // @synthesize cameraIntrinsics=_cameraIntrinsics;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
 @property (copy, nonatomic) NSArray *retargetedSkeletons; // @synthesize retargetedSkeletons=_retargetedSkeletons;
 @property (readonly) Class superclass;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;

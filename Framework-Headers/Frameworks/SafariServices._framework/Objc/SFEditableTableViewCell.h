@@ -6,16 +6,22 @@
 
 #import <UIKit/UITableViewCell.h>
 
+@protocol SFEditableTableViewCellDelegate;
+
 __attribute__((visibility("hidden")))
 @interface SFEditableTableViewCell : UITableViewCell
 {
     BOOL _enabled;
+    id<SFEditableTableViewCellDelegate> _delegate;
 }
 
+@property (weak, nonatomic) id<SFEditableTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 
+- (void).cxx_destruct;
 - (void)_updateTextFieldTextColor;
 - (id)initWithEnabledState:(BOOL)arg1;
+- (void)safari_sharePassword:(id)arg1;
 - (void)tintColorDidChange;
 
 @end

@@ -23,6 +23,7 @@
 - (BOOL)outputsMultipleItems;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 - (id)showPickerKey;
+- (id)targetDataInfo;
 
 @end
 

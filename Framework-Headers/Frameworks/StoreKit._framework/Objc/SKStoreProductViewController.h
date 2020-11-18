@@ -85,7 +85,6 @@
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishImmediately;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)interactionControllerForDismissal:(id)arg1;
 - (void)loadProductWithPageDictionary:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadProductWithParameters:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadProductWithRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

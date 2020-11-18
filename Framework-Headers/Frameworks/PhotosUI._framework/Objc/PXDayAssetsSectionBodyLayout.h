@@ -7,10 +7,11 @@
 #import <PhotosUICore/PXCuratedLibraryAssetsSectionGeneratedLayout.h>
 
 #import <PhotosUICore/PXCuratedLibraryRowBasedLayout-Protocol.h>
+#import <PhotosUICore/PXGItemsGeometry-Protocol.h>
 
 @class PXDayAssetsSectionBodyLayoutSpec;
 
-@interface PXDayAssetsSectionBodyLayout : PXCuratedLibraryAssetsSectionGeneratedLayout <PXCuratedLibraryRowBasedLayout>
+@interface PXDayAssetsSectionBodyLayout : PXCuratedLibraryAssetsSectionGeneratedLayout <PXGItemsGeometry, PXCuratedLibraryRowBasedLayout>
 {
     PXDayAssetsSectionBodyLayoutSpec *_spec;
     long long _style;
@@ -33,6 +34,12 @@
 - (void)enumerateHeroSpritesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateRowsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateVisibleAnchoringSpriteIndexesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)exploreGenerator;
+- (id)init;
+- (long long)itemClosestToItem:(long long)arg1 inDirection:(unsigned long long)arg2;
+- (id)itemsBetweenItem:(long long)arg1 andItem:(long long)arg2;
+- (id)itemsGeometry;
+- (id)itemsInRect:(struct CGRect)arg1 inLayout:(id)arg2;
 - (id)newGenerator;
 - (void)referenceSizeDidChange;
 - (struct CGRect)sectionRect;

@@ -43,8 +43,6 @@
 - (void)pushDisable;
 - (void)pushEnable;
 - (void)refreshConfiguration:(CDUnknownBlockType)arg1;
-- (void)registerForLockStateNotification;
-- (void)runOnFirstUnlock:(CDUnknownBlockType)arg1;
 
 @end
 

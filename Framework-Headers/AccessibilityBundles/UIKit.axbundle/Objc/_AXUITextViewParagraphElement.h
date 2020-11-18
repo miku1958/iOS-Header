@@ -28,6 +28,7 @@
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint:(id)arg1;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityHint;

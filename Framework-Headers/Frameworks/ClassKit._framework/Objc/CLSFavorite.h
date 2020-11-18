@@ -14,6 +14,8 @@
     NSString *_storeIdentifier;
     int _type;
     NSArray *_contextIdentifierPath;
+    NSString *_contextSummary;
+    NSString *_contextCustomTypeName;
     NSURL *_URL;
     long long _contextType;
     NSString *_bundleIdentifier;
@@ -23,7 +25,9 @@
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *contentStoreIdentifier; // @synthesize contentStoreIdentifier=_contentStoreIdentifier;
+@property (strong, nonatomic) NSString *contextCustomTypeName; // @synthesize contextCustomTypeName=_contextCustomTypeName;
 @property (strong, nonatomic) NSArray *contextIdentifierPath; // @synthesize contextIdentifierPath=_contextIdentifierPath;
+@property (strong, nonatomic) NSString *contextSummary; // @synthesize contextSummary=_contextSummary;
 @property (nonatomic) long long contextType; // @synthesize contextType=_contextType;
 @property (copy, nonatomic) NSString *storeIdentifier;
 @property (copy, nonatomic) NSString *title;
@@ -36,7 +40,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 URL:(id)arg2 andBundleIdentifier:(id)arg3;
 - (id)initWithTitle:(id)arg1 context:(id)arg2;
-- (id)initWithTitle:(id)arg1 contextIdentifierPath:(id)arg2 URL:(id)arg3 type:(int)arg4 contextType:(long long)arg5 andBundleIdentifier:(id)arg6 contentStoreIdentifier:(id)arg7;
+- (id)initWithTitle:(id)arg1 contextIdentifierPath:(id)arg2 URL:(id)arg3 type:(int)arg4 contextType:(long long)arg5 andBundleIdentifier:(id)arg6 contentStoreIdentifier:(id)arg7 contextSummary:(id)arg8 contextCustomTypeName:(id)arg9;
 - (BOOL)validateObject:(id *)arg1;
 
 @end

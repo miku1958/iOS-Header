@@ -38,15 +38,18 @@
 @property (readonly, nonatomic) IMDCKSyncState *syncState; // @synthesize syncState=_syncState;
 @property (nonatomic) BOOL useDeprecatedApi; // @synthesize useDeprecatedApi=_useDeprecatedApi;
 
++ (id)_idsAccountController;
++ (id)calculateAliasesForDefaults;
++ (void)calculateAndSaveAliasesToDefaults;
 + (id)im_AKSecurityLevelKey;
 + (id)logHandle;
++ (id)readAliasesFromDefaults;
 + (id)restoreFailuresDirectory;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)CKPartialError:(id)arg1 hasErrorCode:(id)arg2;
 - (BOOL)CKPartialError:(id)arg1 onlyHasErrorCodes:(id)arg2;
 - (BOOL)CKPartialErrorOnlyHasQuotaExceededError:(id)arg1;
-- (BOOL)_accountInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_accountManager;
 - (BOOL)_accountNeedsRepairOverride;
 - (id)_accountStore;
@@ -54,7 +57,6 @@
 - (void)_askToTapToRadarWithString:(id)arg1 internalOnly:(BOOL)arg2;
 - (id)_authenticationController;
 - (BOOL)_checkEligibilityWithAccountInfo:(id)arg1;
-- (void)_checkEligibilityWithLoggedInAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_checkIfEnabledByServerBagOrDefault:(id)arg1;
 - (id)_createAccountError:(id)arg1;
 - (BOOL)_deviceActive;
@@ -68,7 +70,6 @@
 - (BOOL)_isSyncingPausedOverride;
 - (void)_metricForPCSReportManateeStatusWithReason:(id)arg1 linkedFunction:(CDUnknownFunctionPointerType)arg2 timeoutInSec:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (long long)_mininimumServerBagClientValue;
-- (unsigned long long)_mocEnabledStateFromAccountStatus:(long long)arg1;
 - (BOOL)_mocFeatureEnabled;
 - (id)_personIdFromAccount:(id)arg1;
 - (id)_primaryiCloudAccount;
@@ -86,9 +87,7 @@
 - (id)_truthContainer;
 - (id)_truthDatabase;
 - (BOOL)acceptableErrorCodeWhileDeleting:(id)arg1;
-- (id)accountDSID:(id)arg1;
 - (BOOL)accountIsVerifiedForMOCAndSafeForCacheDelete;
-- (id)accountWithDSID:(id)arg1;
 - (void)broadcastCloudKitState;
 - (void)broadcastCloudKitStateAfterClearingErrors;
 - (void)broadcastCloudKitStateAfterFetchingAccountStatus;
@@ -118,13 +117,10 @@
 - (id)exitManager;
 - (id)extractRecordIDsDeletedFromCKPartialError:(id)arg1;
 - (id)extractServerRecordFromCKServerErrorRecordChanged:(id)arg1;
-- (void)fetchCloudKitAccountStatusAndCheckForAccountNeedsRepairWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchAccountStatusAndUpdateMiCSwitchEligibility;
+- (void)fetchAccountStatusAndUpdateMiCSwitchEligibilityIfNeededOnImagentLaunch;
+- (void)fetchCloudKitAccountStatusAndUpdateEligibilityAndNeedsRepairStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchCloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchLocalAccountSecurityLevel:(CDUnknownBlockType)arg1;
-- (void)fetchMOCEnabledStateWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)fetchSecurityLevelAndUpdateMiCSwitchEligibility;
-- (void)fetchSecurityLevelAndUpdateMiCSwitchEligibilityIfNeededOnImagentLaunch;
-- (void)fetchSecurityLevelForAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchiCloudAccountPersonID:(CDUnknownBlockType)arg1;
 - (id)findRootCause:(id)arg1;
 - (BOOL)iCloudAccountMatchesiMessageAccount;
@@ -178,7 +174,7 @@
 - (BOOL)shouldKickOffWriteForSyncType:(long long)arg1;
 - (BOOL)shouldLogDumpOnCloudKitError;
 - (BOOL)shouldPresentTTROnCloudKitError;
-- (BOOL)shouldRepairAccountWithDeviceAccountSecurityLevel:(unsigned long long)arg1 serverAccountStatus:(long long)arg2;
+- (BOOL)shouldRepairAccountWithAccountStatus:(long long)arg1 securityLevel:(unsigned long long)arg2;
 - (BOOL)shouldSyncToSRContainer;
 - (BOOL)shouldUseDevContainer;
 - (BOOL)shouldUseDevNickNameContainer;

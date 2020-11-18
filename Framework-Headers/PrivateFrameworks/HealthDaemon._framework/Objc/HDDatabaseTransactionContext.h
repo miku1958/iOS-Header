@@ -9,7 +9,7 @@
 #import <HealthDaemon/NSCopying-Protocol.h>
 #import <HealthDaemon/NSMutableCopying-Protocol.h>
 
-@class NSMutableSet, NSSet;
+@class HDDatabaseTransactionContextStatistics, NSMutableSet, NSSet;
 
 @interface HDDatabaseTransactionContext : NSObject <NSCopying, NSMutableCopying>
 {
@@ -17,6 +17,7 @@
     long long _cacheScope;
     unsigned long long _options;
     NSMutableSet *_accessibilityAssertions;
+    HDDatabaseTransactionContextStatistics *_statistics;
 }
 
 @property (readonly, copy, nonatomic) NSSet *accessibilityAssertions;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) BOOL requiresProtectedData;
 @property (readonly, nonatomic) BOOL requiresWrite;
 @property (readonly, nonatomic) BOOL skipJournalMerge;
+@property (readonly, nonatomic) HDDatabaseTransactionContextStatistics *statistics; // @synthesize statistics=_statistics;
 
 + (id)_cachedContextForOptions:(unsigned long long)arg1;
 + (id)contextForReading;
@@ -38,7 +40,7 @@
 - (void).cxx_destruct;
 - (void)_applyOptions:(unsigned long long)arg1 enable:(BOOL)arg2;
 - (id)_initWithOptions:(unsigned long long)arg1;
-- (id)_initWithOptions:(unsigned long long)arg1 journalType:(long long)arg2 cacheScope:(long long)arg3 assertions:(id)arg4;
+- (id)_initWithOptions:(unsigned long long)arg1 journalType:(long long)arg2 cacheScope:(long long)arg3 assertions:(id)arg4 statistics:(id)arg5;
 - (BOOL)containsContext:(id)arg1 error:(id *)arg2;
 - (id)copyForReadingProtectedData;
 - (id)copyForWriting;

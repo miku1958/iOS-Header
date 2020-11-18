@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)handleDisplayLink:(id)arg1;
 - (id)initWithMonitor:(struct DisplayRefreshMonitorIOS *)arg1;
 - (void)invalidate;
+- (void)setPreferredFramesPerSecond:(long long)arg1;
 
 @end
 

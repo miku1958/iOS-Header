@@ -12,6 +12,7 @@
 
 @interface PKPeerPaymentQuoteRequest : PKPeerPaymentWebServiceRequest <NSSecureCoding>
 {
+    BOOL _preserveCurrentBalance;
     NSString *_orderIdentifier;
     NSDecimalNumber *_amount;
     NSString *_currency;
@@ -43,6 +44,7 @@
 @property (readonly, copy, nonatomic) NSString *orderIdentifier; // @synthesize orderIdentifier=_orderIdentifier;
 @property (nonatomic) unsigned long long paymentMethodType; // @synthesize paymentMethodType=_paymentMethodType;
 @property (nonatomic) long long paymentNetwork; // @synthesize paymentNetwork=_paymentNetwork;
+@property (nonatomic) BOOL preserveCurrentBalance; // @synthesize preserveCurrentBalance=_preserveCurrentBalance;
 @property (strong, nonatomic) PKPeerPaymentQuoteCertificatesResponse *quoteCertificatesResponse; // @synthesize quoteCertificatesResponse=_quoteCertificatesResponse;
 @property (copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
 @property (strong, nonatomic) PKPeerPaymentRequestToken *requestToken; // @synthesize requestToken=_requestToken;

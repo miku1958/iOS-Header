@@ -39,11 +39,13 @@
 - (id)artistArtworkCatalog;
 - (id)artworkCatalog;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItems:(id)arg1;
 - (id)initWithItemsQuery:(id)arg1;
 - (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (id)itemsQuery;
 - (id)multiverseIdentifier;
 - (BOOL)setValue:(id)arg1 forProperty:(id)arg2;

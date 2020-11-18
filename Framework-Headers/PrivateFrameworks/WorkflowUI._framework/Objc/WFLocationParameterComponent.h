@@ -6,7 +6,7 @@
 
 #import <WorkflowUI/WFParameterComponent.h>
 
-@class WFLocationParameterState, WFParameter;
+@class WFLocationParameterState, WFParameter, WFVariableChooserParameterLayoutComponent;
 @protocol WFComponentNavigationContext, WFVariableProvider;
 
 @interface WFLocationParameterComponent : WFParameterComponent
@@ -17,8 +17,10 @@
     WFLocationParameterState *_state;
     id<WFComponentNavigationContext> _navigationContext;
     id<WFVariableProvider> _variableProvider;
+    WFVariableChooserParameterLayoutComponent *_layoutComponent;
 }
 
+@property (readonly, nonatomic) WFVariableChooserParameterLayoutComponent *layoutComponent; // @synthesize layoutComponent=_layoutComponent;
 @property (readonly, weak, nonatomic) id<WFComponentNavigationContext> navigationContext; // @synthesize navigationContext=_navigationContext;
 @property (nonatomic) BOOL processing; // @synthesize processing=_processing;
 @property (readonly, nonatomic) WFLocationParameterState *state; // @synthesize state=_state;
@@ -27,6 +29,7 @@
 + (id)newWithParameter:(id)arg1 state:(id)arg2 updateBlock:(CDUnknownBlockType)arg3 options:(struct WFParameterComponentOptions)arg4 variableProvider:(id)arg5 variableUIDelegate:(id)arg6 navigationContext:(id)arg7 labelsToAlignTo:(id)arg8;
 - (void).cxx_destruct;
 - (id)parameter;
+- (void)presentTokenChooser:(id)arg1;
 - (CDUnknownBlockType)updateBlock;
 
 @end

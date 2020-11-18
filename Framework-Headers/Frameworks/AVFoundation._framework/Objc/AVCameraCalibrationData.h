@@ -23,12 +23,14 @@
 
 - (id)_distortionLookupTableFromCoefficients:(id)arg1 distortionCenter:(struct CGPoint)arg2 pixelSize:(float)arg3 referenceDimensions:(struct CGSize)arg4 lookupTableLength:(int)arg5;
 - (id)_initEmpty;
+- (id)cameraCalibrationDataDictionary;
 - (id)cameraCalibrationDataWithExifOrientation:(unsigned int)arg1;
 - (struct CGImageMetadata *)copyAuxiliaryMetadata;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;
 - (id)initWithAuxiliaryMetadata:(struct CGImageMetadata *)arg1;
+- (id)initWithCameraCalibrationDataDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithDepthMetadataDictionary:(id)arg1;
 
 @end

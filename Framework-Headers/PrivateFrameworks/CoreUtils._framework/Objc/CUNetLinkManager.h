@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUNetLinkManager : NSObject
 {
-    struct NSMutableSet *_endpoints;
+    NSMutableSet *_endpoints;
     unsigned int _endpointChanges;
     BOOL _hasIPv4Endpoint;
     BOOL _hasIPv6Endpoint;

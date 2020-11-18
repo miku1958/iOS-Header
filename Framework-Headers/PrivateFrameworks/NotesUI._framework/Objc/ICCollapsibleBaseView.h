@@ -14,7 +14,7 @@
     BOOL _setupComplete;
     double _leadingSpace;
     double _trailingSpace;
-    struct UIView *_contentView;
+    UIView *_contentView;
     NSLayoutConstraint *_zeroWidthConstraint;
     NSLayoutConstraint *_leadingConstraint;
     NSLayoutConstraint *_trailingConstraint;
@@ -32,7 +32,7 @@
 - (void).cxx_destruct;
 - (void)awakeFromNib;
 - (void)ic_setNeedsUpdateConstraints;
-- (void)performSetUpWithContentView:(struct UIView *)arg1;
+- (void)performSetUpWithContentView:(id)arg1;
 - (void)performSetup;
 - (void)setUpIfNeeded;
 - (BOOL)wantsLayer;

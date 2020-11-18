@@ -134,6 +134,7 @@
 - (void)onClientEventInterrupted:(id)arg1;
 - (void)onClientEventLocation:(id)arg1 forceMapMatching:(BOOL)arg2 type:(id)arg3;
 - (void)onClientEventLocationUnavailable:(id)arg1;
+- (void)onClientEventNoLocationWatchdog:(id)arg1;
 - (void)onClientEventPeerRanging:(id)arg1;
 - (void)onClientEventPeerRangingError:(id)arg1;
 - (void)onClientEventPeerRangingRequestProcessed:(id)arg1;

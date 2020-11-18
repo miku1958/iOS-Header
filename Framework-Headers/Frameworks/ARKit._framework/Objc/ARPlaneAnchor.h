@@ -29,7 +29,7 @@
 @property (strong, nonatomic) NSString *classificationLabel; // @synthesize classificationLabel=_classificationLabel;
 @property (nonatomic) long long classificationStatus; // @synthesize classificationStatus=_classificationStatus;
 @property (nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
-@property (strong, nonatomic) ARPlaneGeometry *geometry; // @synthesize geometry=_geometry;
+@property (strong) ARPlaneGeometry *geometry; // @synthesize geometry=_geometry;
 @property (strong, nonatomic) ARPatchGrid *gridExtent; // @synthesize gridExtent=_gridExtent;
 @property (copy, nonatomic) NSDictionary *possibleClassifications; // @synthesize possibleClassifications=_possibleClassifications;
 @property (nonatomic) float uncertaintyAlongNormal; // @synthesize uncertaintyAlongNormal=_uncertaintyAlongNormal;

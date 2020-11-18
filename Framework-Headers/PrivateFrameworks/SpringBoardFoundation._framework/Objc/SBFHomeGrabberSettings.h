@@ -34,6 +34,14 @@
     SBFAnimationSettings *_rotationFadeOutAnimationSettings;
     SBFAnimationSettings *_rotationFadeInAnimationSettings;
     SBFFluidBehaviorSettings *_edgeProtectAnimationSettings;
+    double _coverSheetHomeAffordanceCursorTopEdgeInset;
+    double _coverSheetHomeAffordanceCursorBottomEdgeInset;
+    double _coverSheetHomeAffordanceCursorLeftEdgeInset;
+    double _coverSheetHomeAffordanceCursorRightEdgeInset;
+    double _coverSheetSuppressAnimationForPointerTopEdgeInset;
+    double _coverSheetSuppressAnimationForPointerBottomEdgeInset;
+    double _coverSheetSuppressAnimationForPointerLeftEdgeInset;
+    double _coverSheetSuppressAnimationForPointerRightEdgeInset;
 }
 
 @property (nonatomic) long long autoHideOverride; // @synthesize autoHideOverride=_autoHideOverride;
@@ -41,6 +49,14 @@
 @property (nonatomic) double autoHideTimeOnAppRequest; // @synthesize autoHideTimeOnAppRequest=_autoHideTimeOnAppRequest;
 @property (nonatomic) double bounceHitTestOutsetSides; // @synthesize bounceHitTestOutsetSides=_bounceHitTestOutsetSides;
 @property (nonatomic) double bounceHitTestOutsetTop; // @synthesize bounceHitTestOutsetTop=_bounceHitTestOutsetTop;
+@property (nonatomic) double coverSheetHomeAffordanceCursorBottomEdgeInset; // @synthesize coverSheetHomeAffordanceCursorBottomEdgeInset=_coverSheetHomeAffordanceCursorBottomEdgeInset;
+@property (nonatomic) double coverSheetHomeAffordanceCursorLeftEdgeInset; // @synthesize coverSheetHomeAffordanceCursorLeftEdgeInset=_coverSheetHomeAffordanceCursorLeftEdgeInset;
+@property (nonatomic) double coverSheetHomeAffordanceCursorRightEdgeInset; // @synthesize coverSheetHomeAffordanceCursorRightEdgeInset=_coverSheetHomeAffordanceCursorRightEdgeInset;
+@property (nonatomic) double coverSheetHomeAffordanceCursorTopEdgeInset; // @synthesize coverSheetHomeAffordanceCursorTopEdgeInset=_coverSheetHomeAffordanceCursorTopEdgeInset;
+@property (nonatomic) double coverSheetSuppressAnimationForPointerBottomEdgeInset; // @synthesize coverSheetSuppressAnimationForPointerBottomEdgeInset=_coverSheetSuppressAnimationForPointerBottomEdgeInset;
+@property (nonatomic) double coverSheetSuppressAnimationForPointerLeftEdgeInset; // @synthesize coverSheetSuppressAnimationForPointerLeftEdgeInset=_coverSheetSuppressAnimationForPointerLeftEdgeInset;
+@property (nonatomic) double coverSheetSuppressAnimationForPointerRightEdgeInset; // @synthesize coverSheetSuppressAnimationForPointerRightEdgeInset=_coverSheetSuppressAnimationForPointerRightEdgeInset;
+@property (nonatomic) double coverSheetSuppressAnimationForPointerTopEdgeInset; // @synthesize coverSheetSuppressAnimationForPointerTopEdgeInset=_coverSheetSuppressAnimationForPointerTopEdgeInset;
 @property (nonatomic) double delayForUnhideOnAppRequest; // @synthesize delayForUnhideOnAppRequest=_delayForUnhideOnAppRequest;
 @property (nonatomic) double delayForUnhideOnTouch; // @synthesize delayForUnhideOnTouch=_delayForUnhideOnTouch;
 @property (strong, nonatomic) SBFFluidBehaviorSettings *edgeProtectAnimationSettings; // @synthesize edgeProtectAnimationSettings=_edgeProtectAnimationSettings;
@@ -63,6 +79,8 @@
 
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
+- (struct UIEdgeInsets)coverSheetHomeAffordanceCursorEdgeInsets;
+- (struct UIEdgeInsets)coverSheetSuppressAnimationForPointerInsets;
 - (void)setDefaultValues;
 
 @end

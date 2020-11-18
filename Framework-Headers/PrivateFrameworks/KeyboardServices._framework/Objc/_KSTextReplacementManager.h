@@ -15,7 +15,6 @@
 {
     NSObject<OS_dispatch_queue> *_migrationQueue;
     BOOL _didMigrateForCurrentAccount;
-    BOOL _pendingMigration;
     BOOL _deviceDidMigrateOnCloud;
     BOOL _didCheckMigrationOnCloud;
     _KSTextReplacementCKStore *_ckStore;
@@ -35,13 +34,11 @@
 @property (copy, nonatomic) NSString *directoryPath; // @synthesize directoryPath=_directoryPath;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _KSTextReplacementLegacyStore *legacyStore; // @synthesize legacyStore=_legacyStore;
-@property (nonatomic) BOOL pendingMigration; // @synthesize pendingMigration=_pendingMigration;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<_KSTextReplacementSyncProtocol> *textReplacementStore; // @synthesize textReplacementStore=_textReplacementStore;
 
 + (id)textReplacementStoreWithTestDirectory:(id)arg1 withDelegate:(id)arg2 forceMigration:(BOOL)arg3 forceCloudKitSync:(BOOL)arg4;
 - (void).cxx_destruct;
-- (void)_migrateDevice;
 - (void)_migrateEntriesSinceDate:(id)arg1 repeatCount:(unsigned long long)arg2;
 - (void)accountDidChange:(id)arg1;
 - (void)checkForMigration;
@@ -49,18 +46,14 @@
 - (BOOL)deviceDidMigrate;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithDirectoryPath:(id)arg1;
-- (id)initWithDirectoryPath:(id)arg1 ignoreMigrationBatchCheck:(BOOL)arg2 syncMode:(int)arg3;
 - (void)migrateLegacyStore;
-- (void)migrateLocallyCheckCompatibility:(BOOL)arg1;
 - (double)minimumUptimeRemaining;
 - (void)notifyTextReplacementDidChange;
-- (void)pullMigrationSettings;
 - (void)pushAllLocalRecordsOnceIfNeeded;
 - (void)recordSyncStatus;
 - (void)requestSync:(unsigned long long)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)requestSyncWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)resetMigrationState;
-- (void)respondToMigrationCompatibilityChange:(id)arg1;
 - (void)respondToMigrationCompletion;
 
 @end

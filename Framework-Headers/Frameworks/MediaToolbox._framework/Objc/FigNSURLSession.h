@@ -21,9 +21,10 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigCFWeakReferenceHolder *_weakAssertion;
     long long _doomTime;
     BOOL _doomCheckScheduled;
+    int _assertionCount;
 }
 
-@property (readonly, nonatomic) struct FigOpaqueAssertion *assertion;
+@property (nonatomic) int assertionCount; // @synthesize assertionCount=_assertionCount;
 @property (readonly, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property (readonly, nonatomic) id<NSURLSessionDataDelegate> dataDelegate; // @synthesize dataDelegate=_dataDelegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSOperationQueue *opQueue; // @synthesize opQueue=_opQueue;
 @property (readonly, nonatomic) NSURLSession *session; // @synthesize session=_session;
 
+- (struct FigOpaqueAssertion *)acquireAssertion;
 - (void)dealloc;
 - (void)debug;
 - (id)initWithClientBundleIdentifier:(id)arg1 dispatchQueue:(id)arg2;

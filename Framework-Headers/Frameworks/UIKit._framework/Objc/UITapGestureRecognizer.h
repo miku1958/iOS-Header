@@ -19,6 +19,7 @@
 }
 
 @property (nonatomic, setter=_setButtonType:) long long _buttonType; // @synthesize _buttonType;
+@property (nonatomic) long long buttonMaskRequired;
 @property (readonly, nonatomic) struct CGPoint centroid;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,15 +37,18 @@
 - (double)_allowableSeparation;
 - (double)_allowableTouchTimeSeparation;
 - (void)_appendSubclassDescription:(id)arg1;
+- (long long)_buttonMaskRequired;
 - (BOOL)_delaysRecognitionForGreaterTapCounts;
 - (struct CGPoint)_digitizerLocation;
 - (long long)_finalStateForRecognition;
 - (void)_resetGestureRecognizer;
 - (void)_setAllowableSeparation:(double)arg1;
 - (void)_setAllowableTouchTimeSeparation:(double)arg1;
+- (void)_setButtonMaskRequired:(long long)arg1;
 - (void)_setDelaysRecognitionForGreaterTapCounts:(BOOL)arg1;
 - (BOOL)_shouldFailInResponseToPresses:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldReceivePress:(id)arg1;
+- (BOOL)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (double)_touchSloppinessFactor;
 - (double)allowableMovement;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;

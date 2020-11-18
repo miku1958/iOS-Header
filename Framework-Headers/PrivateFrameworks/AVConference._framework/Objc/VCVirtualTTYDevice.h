@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)sendCharacter:(unsigned short)arg1;
-- (void)sendText:(struct NSString *)arg1;
+- (void)sendText:(id)arg1;
 - (void)setCanProcessAudio:(BOOL)arg1;
 - (void)setPause:(BOOL)arg1;
 - (BOOL)setStreamConfig:(id)arg1 withError:(id *)arg2;

@@ -76,6 +76,7 @@
 - (BOOL)_dateIsWithinGracePeriodForNotAutomaticallySubmittingLoginForms:(id)arg1;
 - (id)_domainsWithPreviousDataOnInternalQueue;
 - (void)_fillPhoneNumber:(id)arg1 intoValues:(id)arg2 controls:(id)arg3 formTextSample:(id)arg4 multiRoundAutoFillManager:(id)arg5;
+- (id)_formKeyForMapOfHighLevelDomainToLastAutomaticFormSubmission:(id)arg1 formMetadata:(id)arg2;
 - (unsigned long long)_indexForControlWithUniqueID:(id)arg1 inForm:(id)arg2;
 - (id)_keyToLookUpInAnnotationsForPasswordForFormMetadata:(id)arg1;
 - (id)_knownUsernamesForURL:(id)arg1;
@@ -118,7 +119,7 @@
 - (id)credentialMatchesForForm:(id)arg1 atURL:(id)arg2 potentialMatches:(id *)arg3;
 - (void)credentialMatchesWithCriteria:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (void)didAutomaticallySubmitFormWhenFillingOnURL:(id)arg1;
+- (void)didAutomaticallySubmitFormWhenFillingOnURL:(id)arg1 formMetadata:(id)arg2;
 - (id)domainsWithPreviousData;
 - (void)domainsWithPreviousDataChanged;
 - (id)encryptOrDecryptData:(id)arg1 encrypt:(BOOL)arg2;

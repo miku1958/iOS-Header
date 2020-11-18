@@ -30,7 +30,6 @@
 - (void)_axRemoteElementRegistered:(id)arg1;
 - (void)_axUpdateForRemoteElement:(id)arg1;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
-- (BOOL)_isTransparentFocusRegion;
 - (void)_orderFrontWithoutMakingKey;
 - (void)_setFirstResponder:(id)arg1;
 - (id)accessibilityContainer;

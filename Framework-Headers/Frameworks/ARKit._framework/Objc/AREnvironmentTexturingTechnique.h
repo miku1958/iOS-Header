@@ -20,9 +20,10 @@
 @property (readonly) BOOL wantsHDREnvironmentTextures; // @synthesize wantsHDREnvironmentTextures=_wantsHDREnvironmentTextures;
 
 - (void).cxx_destruct;
+- (id)_fullDescription;
 - (id)initWithOptions:(long long)arg1 wantsHDREnvironmentTextures:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (void)prepare;
+- (void)prepare:(BOOL)arg1;
 - (id)processData:(id)arg1;
 - (BOOL)reconfigurableFrom:(id)arg1;
 - (void)reconfigureFrom:(id)arg1;

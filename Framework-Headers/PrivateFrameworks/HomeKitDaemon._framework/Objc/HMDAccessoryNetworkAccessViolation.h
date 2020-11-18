@@ -22,6 +22,7 @@
 + (id)noViolation;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

@@ -43,7 +43,7 @@
 @property (readonly, nonatomic) time_point_e708cccf timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
-+ (void)initialize;
++ (long long)currentQueryID;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_initWithQueryString:(id)arg1 queryID:(long long)arg2 timestamp:(time_point_e708cccf)arg3 indexInFeedbackArray:(unsigned long long)arg4 triggerEvent:(unsigned long long)arg5;

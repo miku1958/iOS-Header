@@ -20,8 +20,10 @@
     GEOObserverHashTable *_sendingObservers;
     NSMutableArray *_receivedTrips;
     BOOL _sendingAccountAvailable;
+    NSArray *_aliases;
 }
 
+@property (readonly, nonatomic) NSArray *aliases; // @synthesize aliases=_aliases;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasValidSharingAccount;
@@ -33,6 +35,7 @@
 - (void).cxx_destruct;
 - (void)_blockSharedTrip:(id)arg1;
 - (void)_checkin;
+- (void)_fetchAccountAliasesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchActiveHandlesOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
@@ -59,6 +62,7 @@
 - (void)destinationDidUpdateForSharedTrip:(id)arg1;
 - (void)destinationReachedDidUpdateForSharedTrip:(id)arg1;
 - (void)etaDidUpdateForSharedTrip:(id)arg1;
+- (void)fetchAccountAliasesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSendingIdentityWithCompletion:(CDUnknownBlockType)arg1;

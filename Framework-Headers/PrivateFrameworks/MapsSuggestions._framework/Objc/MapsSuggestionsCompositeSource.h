@@ -9,12 +9,12 @@
 #import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSourceDelegate-Protocol.h>
 
-@class MapsSuggestionsSuppressor, NSMutableDictionary, NSObject, NSString;
+@class MapsSuggestionsSuppressor, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol MapsSuggestionsSourceDelegate, OS_dispatch_source;
 
 @interface MapsSuggestionsCompositeSource : MapsSuggestionsBaseSource <MapsSuggestionsSource, MapsSuggestionsSourceDelegate>
 {
-    struct NSMutableSet *_sources;
+    NSMutableSet *_sources;
     NSMutableDictionary *_nextUpdateTimes;
     struct Queue _queue;
     NSObject<OS_dispatch_source> *_updateTimer;
@@ -44,10 +44,10 @@
 - (void)_updateChildSourcesForType:(long long)arg1;
 - (void)_updateChildSourcesForceAll:(BOOL)arg1;
 - (BOOL)addChildSource:(id)arg1;
-- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
+- (unsigned long long)addOrUpdateSuggestionEntries:(id)arg1 source:(id)arg2;
 - (BOOL)attachSource:(id)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
-- (struct NSSet *)children;
+- (id)children;
 - (void)dealloc;
 - (BOOL)detachSource:(id)arg1;
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;

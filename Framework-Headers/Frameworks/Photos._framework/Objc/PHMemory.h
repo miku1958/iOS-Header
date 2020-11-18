@@ -112,6 +112,7 @@
 - (id)movieStateDataForAsset:(id)arg1;
 - (id)predicateForAllAssetsWithLibrary:(id)arg1;
 - (id)predicateForAllMomentsFromRepresentativeAssets;
+- (id)presentationHints;
 - (id)query;
 - (id)queryForCuratedAssetsWithOptions:(id)arg1;
 - (id)queryForExtendedCuratedAssetsWithOptions:(id)arg1;

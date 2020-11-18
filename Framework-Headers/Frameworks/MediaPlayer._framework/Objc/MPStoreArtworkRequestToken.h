@@ -18,6 +18,7 @@
     NSArray *_lookupItemArtworks;
     NSArray *_artworkInfoEntries;
     NSString *_cropStyle;
+    NSString *_format;
     NSString *_sourceEditorialArtworkKind;
 }
 
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSString *cropStyle; // @synthesize cropStyle=_cropStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *format; // @synthesize format=_format;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *lookupItemArtworks; // @synthesize lookupItemArtworks=_lookupItemArtworks;
 @property (nonatomic) BOOL shouldIgnoreImage; // @synthesize shouldIgnoreImage=_shouldIgnoreImage;

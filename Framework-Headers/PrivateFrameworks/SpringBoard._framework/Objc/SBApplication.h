@@ -113,6 +113,7 @@
 + (id)_appStateKeysToPrefetch;
 + (long long)_classicModeForLaunchingSize:(struct CGSize)arg1;
 + (struct CGSize)_defaultLaunchingSizeForDisplayConfiguration:(id)arg1 classicMode:(long long)arg2;
++ (id)_deviceSafeAreaInsets;
 + (void)_markAllManifestsForReingestion;
 + (void)_reingestStaticDefaultImagesForAllApps;
 + (id)restrictedClassicModeDisplayConfigurationForDisplayConfiguration:(id)arg1 classicMode:(long long)arg2;

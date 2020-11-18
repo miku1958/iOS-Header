@@ -8,7 +8,7 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString, NSURL;
+@class NSDictionary, NSString, NSURL;
 
 @interface _WKWebsiteDataStoreConfiguration : NSObject <WKObject>
 {
@@ -24,17 +24,36 @@
 @property (copy, nonatomic, setter=_setWebSQLDatabaseDirectory:) NSURL *_webSQLDatabaseDirectory;
 @property (copy, nonatomic, setter=_setWebStorageDirectory:) NSURL *_webStorageDirectory;
 @property (nonatomic) BOOL allLoadsBlockedByDeviceManagementRestrictionsForTesting;
+@property (nonatomic) BOOL allowsCellularAccess;
+@property (nonatomic) BOOL allowsServerPreconnect;
+@property (copy, nonatomic) NSURL *applicationCacheDirectory;
+@property (copy, nonatomic) NSString *applicationCacheFlatFileSubdirectoryName;
+@property (copy, nonatomic) NSString *boundInterfaceIdentifier;
+@property (copy, nonatomic) NSString *dataConnectionServiceType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSURL *deviceIdHashSaltsStorageDirectory;
 @property (nonatomic) BOOL deviceManagementRestrictionsEnabled;
+@property (nonatomic) BOOL fastServerTrustEvaluationEnabled;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic, setter=setHTTPProxy:) NSURL *httpProxy;
 @property (copy, nonatomic, setter=setHTTPSProxy:) NSURL *httpsProxy;
+@property (nonatomic) BOOL legacyTLSEnabled;
+@property (copy, nonatomic) NSURL *mediaCacheDirectory;
+@property (copy, nonatomic) NSURL *mediaKeysStorageDirectory;
+@property (copy, nonatomic) NSURL *networkCacheDirectory;
+@property (nonatomic) BOOL networkCacheSpeculativeValidationEnabled;
+@property (nonatomic) unsigned long long perOriginStorageQuota;
 @property (readonly, nonatomic, getter=isPersistent) BOOL persistent;
+@property (copy, nonatomic) NSDictionary *proxyConfiguration;
+@property (nonatomic) BOOL serviceWorkerProcessTerminationDelayEnabled;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL suppressesConnectionTerminationOnSystemChange;
+@property (nonatomic) unsigned long long testSpeedMultiplier;
 
+- (void)dealloc;
 - (id)init;
 - (id)initNonPersistentConfiguration;
 

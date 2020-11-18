@@ -19,7 +19,7 @@
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/SBTouchTemplateGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, NSTimer, SBAppSwitcherSettings, SBFHomeGrabberSettings, SBFluidScrunchGestureRecognizer, SBFluidSwitcherGestureWorkspaceTransaction, SBFluidSwitcherPanGestureRecognizer, SBFluidSwitcherViewController, SBGrabberTongue, SBHomeGestureParticipant, SBHomeGestureSettings, SBHomeGrabberView, SBMainDisplaySceneLayoutDragAndDropInteractionManager, SBMainDisplaySceneLayoutViewController, SBPanSystemGestureRecognizer, SBReachabilitySettings, SBSwitcherForcePressSystemGestureRecognizer, UINotificationFeedbackGenerator, UIView;
+@class BSMonotonicReferenceTime, NSString, NSTimer, SBAppSwitcherDefaults, SBAppSwitcherSettings, SBFHomeGrabberSettings, SBFluidScrunchGestureRecognizer, SBFluidSwitcherGestureWorkspaceTransaction, SBFluidSwitcherPanGestureRecognizer, SBFluidSwitcherViewController, SBGrabberTongue, SBHomeGestureParticipant, SBHomeGestureSettings, SBHomeGrabberView, SBIndirectPanGestureRecognizer, SBMainDisplaySceneLayoutDragAndDropInteractionManager, SBMainDisplaySceneLayoutViewController, SBPanSystemGestureRecognizer, SBReachabilitySettings, SBSwitcherForcePressSystemGestureRecognizer, UIHoverGestureRecognizer, UINotificationFeedbackGenerator, UIView;
 @protocol SBFluidSwitcherGestureManagerDelegate;
 
 @interface SBFluidSwitcherGestureManager : NSObject <SBSystemGestureRecognizerDelegate, SBTouchTemplateGestureRecognizerDelegate, BSTransactionObserver, BSDescriptionProviding, PTSettingsKeyObserver, SBGrabberTongueDelegate, SBHomeGrabberDelegate, SBHomeGestureParticipantDelegate, SBPanSystemGestureRecognizerDelegate, SBLayoutStateTransitionObserver, SBMainDisplaySceneLayoutDragAndDropInteractionManagerDelegate, SBFluidSwitcherGestureWorkspaceTransactionDelegate>
@@ -33,12 +33,14 @@
     SBMainDisplaySceneLayoutViewController *_sceneLayoutViewController;
     id<SBFluidSwitcherGestureManagerDelegate> _delegate;
     SBHomeGrabberView *_currentHomeGrabberView;
+    SBAppSwitcherDefaults *_appSwitcherDefaults;
     SBAppSwitcherSettings *_appSwitcherSettings;
     SBHomeGestureSettings *_homeGestureSettings;
     SBFHomeGrabberSettings *_homeGrabberSettings;
     SBReachabilitySettings *_reachabilitySettings;
     SBHomeGestureParticipant *_homeGestureParticipant;
     SBFluidSwitcherPanGestureRecognizer *_deckInSwitcherPanGestureRecognizer;
+    SBIndirectPanGestureRecognizer *_indirectBottomEdgePanGestureRecognizer;
     SBGrabberTongue *_deckGrabberTongue;
     SBFluidSwitcherPanGestureRecognizer *_activateReachabilityGestureRecognizer;
     UINotificationFeedbackGenerator *_edgeProtectFeedbackGenerator;
@@ -46,9 +48,14 @@
     UIView *_exclusionTrapezoidDebugView;
     SBSwitcherForcePressSystemGestureRecognizer *_deckSwitcherForcePressRecognizer;
     SBFluidScrunchGestureRecognizer *_fluidScrunchGestureRecognizer;
+    SBFluidSwitcherPanGestureRecognizer *_clickAndDragHomeGestureRecognizer;
+    BSMonotonicReferenceTime *_lastClickAndDragHomeGestureTimestamp;
+    UIHoverGestureRecognizer *_switcherHoverGestureRecognizer;
     SBGrabberTongue *_floatingAppGrabberTongue;
     SBFluidSwitcherPanGestureRecognizer *_swipeUpFloatingAppGestureRecognizer;
     SBFluidSwitcherPanGestureRecognizer *_moveFloatingApplicationGestureRecognizer;
+    SBIndirectPanGestureRecognizer *_indirectDismissFloatingApplicationGestureRecognizer;
+    SBFluidScrunchGestureRecognizer *_indirectFloatingAppScrunchGestureRecognizer;
     SBPanSystemGestureRecognizer *_pinFloatingApplicationGestureRecognizer;
     SBPanSystemGestureRecognizer *_unpinSplitViewApplicationGestureRecognizer;
     SBMainDisplaySceneLayoutDragAndDropInteractionManager *_dragAndDropInteractionManager;
@@ -57,7 +64,9 @@
 
 @property (strong, nonatomic) SBFluidSwitcherPanGestureRecognizer *activateReachabilityGestureRecognizer; // @synthesize activateReachabilityGestureRecognizer=_activateReachabilityGestureRecognizer;
 @property (strong, nonatomic) SBFluidSwitcherGestureWorkspaceTransaction *activeGestureTransaction; // @synthesize activeGestureTransaction=_activeGestureTransaction;
+@property (strong, nonatomic) SBAppSwitcherDefaults *appSwitcherDefaults; // @synthesize appSwitcherDefaults=_appSwitcherDefaults;
 @property (strong, nonatomic) SBAppSwitcherSettings *appSwitcherSettings; // @synthesize appSwitcherSettings=_appSwitcherSettings;
+@property (strong, nonatomic) SBFluidSwitcherPanGestureRecognizer *clickAndDragHomeGestureRecognizer; // @synthesize clickAndDragHomeGestureRecognizer=_clickAndDragHomeGestureRecognizer;
 @property (weak, nonatomic) SBHomeGrabberView *currentHomeGrabberView; // @synthesize currentHomeGrabberView=_currentHomeGrabberView;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) SBGrabberTongue *deckGrabberTongue; // @synthesize deckGrabberTongue=_deckGrabberTongue;
@@ -76,7 +85,11 @@
 @property (strong, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property (strong, nonatomic) SBHomeGestureSettings *homeGestureSettings; // @synthesize homeGestureSettings=_homeGestureSettings;
 @property (strong, nonatomic) SBFHomeGrabberSettings *homeGrabberSettings; // @synthesize homeGrabberSettings=_homeGrabberSettings;
+@property (strong, nonatomic) SBIndirectPanGestureRecognizer *indirectBottomEdgePanGestureRecognizer; // @synthesize indirectBottomEdgePanGestureRecognizer=_indirectBottomEdgePanGestureRecognizer;
+@property (strong, nonatomic) SBIndirectPanGestureRecognizer *indirectDismissFloatingApplicationGestureRecognizer; // @synthesize indirectDismissFloatingApplicationGestureRecognizer=_indirectDismissFloatingApplicationGestureRecognizer;
+@property (strong, nonatomic) SBFluidScrunchGestureRecognizer *indirectFloatingAppScrunchGestureRecognizer; // @synthesize indirectFloatingAppScrunchGestureRecognizer=_indirectFloatingAppScrunchGestureRecognizer;
 @property (nonatomic) BOOL interactivelyPresentingTongue; // @synthesize interactivelyPresentingTongue=_interactivelyPresentingTongue;
+@property (strong, nonatomic) BSMonotonicReferenceTime *lastClickAndDragHomeGestureTimestamp; // @synthesize lastClickAndDragHomeGestureTimestamp=_lastClickAndDragHomeGestureTimestamp;
 @property (weak, nonatomic) SBFluidSwitcherViewController *mainSwitcherContentController; // @synthesize mainSwitcherContentController=_mainSwitcherContentController;
 @property (strong, nonatomic) SBFluidSwitcherPanGestureRecognizer *moveFloatingApplicationGestureRecognizer; // @synthesize moveFloatingApplicationGestureRecognizer=_moveFloatingApplicationGestureRecognizer;
 @property (strong, nonatomic) SBPanSystemGestureRecognizer *pinFloatingApplicationGestureRecognizer; // @synthesize pinFloatingApplicationGestureRecognizer=_pinFloatingApplicationGestureRecognizer;
@@ -86,6 +99,7 @@
 @property (nonatomic) BOOL shouldRubberbandGrabberViewForReduceMotion; // @synthesize shouldRubberbandGrabberViewForReduceMotion=_shouldRubberbandGrabberViewForReduceMotion;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SBFluidSwitcherPanGestureRecognizer *swipeUpFloatingAppGestureRecognizer; // @synthesize swipeUpFloatingAppGestureRecognizer=_swipeUpFloatingAppGestureRecognizer;
+@property (strong, nonatomic) UIHoverGestureRecognizer *switcherHoverGestureRecognizer; // @synthesize switcherHoverGestureRecognizer=_switcherHoverGestureRecognizer;
 @property (strong, nonatomic) SBPanSystemGestureRecognizer *unpinSplitViewApplicationGestureRecognizer; // @synthesize unpinSplitViewApplicationGestureRecognizer=_unpinSplitViewApplicationGestureRecognizer;
 @property (nonatomic) BOOL usesHomeAffordanceRulesForGrabberTongue; // @synthesize usesHomeAffordanceRulesForGrabberTongue=_usesHomeAffordanceRulesForGrabberTongue;
 
@@ -101,6 +115,7 @@
 - (struct CGRect)_floatingApplicationBounds;
 - (Class)_fluidSwitcherGestureTransactionClassForGestureType:(long long)arg1;
 - (long long)_gestureTypeForGestureRecognizer:(id)arg1;
+- (void)_handleClickAndDragHomeGesture:(id)arg1;
 - (void)_handleDeckSwitcherForcePressGesture:(id)arg1;
 - (void)_handleDeckSwitcherPanGesture:(id)arg1;
 - (void)_handleFloatingAppPresentGesture:(id)arg1;
@@ -119,6 +134,7 @@
 - (BOOL)_shouldAllowDeckBottomEdgeGestureToRecognizeFromEdges:(unsigned long long)arg1;
 - (BOOL)_shouldAllowFloatingApplicationGesture:(id)arg1 failureReason:(id *)arg2;
 - (BOOL)_shouldBeginBottomEdgePanGesture:(id)arg1;
+- (BOOL)_shouldBeginClickAndDragHomeGesture:(id)arg1;
 - (BOOL)_shouldBeginDeckForcePressGesture:(id)arg1;
 - (BOOL)_shouldBeginDeckInSwitcherPanGesture:(id)arg1;
 - (BOOL)_shouldBeginFloatingApplicationMoveGesture:(id)arg1;
@@ -126,12 +142,16 @@
 - (BOOL)_shouldBeginFloatingApplicationPresentGesture:(id)arg1;
 - (BOOL)_shouldBeginFloatingApplicationSwipeUpGesture:(id)arg1;
 - (BOOL)_shouldBeginFluidScrunchGesture:(id)arg1;
+- (BOOL)_shouldBeginIndirectFloatingAppScrunchGesture:(id)arg1;
+- (BOOL)_shouldBeginIndirectHomePanGesture:(id)arg1;
 - (BOOL)_shouldBeginReachabilityGesture:(id)arg1;
 - (BOOL)_shouldBeginSplitViewApplicationUnpinGesture:(id)arg1;
+- (BOOL)_shouldClickAndDragHomeGesture:(id)arg1 receiveTouch:(id)arg2;
 - (BOOL)_shouldDeckInSwitcherPanGesture:(id)arg1 receiveTouch:(id)arg2;
 - (BOOL)_shouldFloatingApplicationMoveGesture:(id)arg1 receiveTouch:(id)arg2;
 - (BOOL)_shouldFloatingApplicationPinGesture:(id)arg1 receiveTouch:(id)arg2;
 - (BOOL)_shouldFloatingApplicationSwipeUpGesture:(id)arg1 receiveTouch:(id)arg2;
+- (BOOL)_shouldIndirectFloatingAppScrunchGesture:(id)arg1 receiveTouch:(id)arg2;
 - (BOOL)_shouldProtectEdgeLocation:(double)arg1;
 - (BOOL)_shouldReachabilityGesture:(id)arg1 receiveTouch:(id)arg2;
 - (BOOL)_shouldSplitViewApplicationUnpinGesture:(id)arg1 receiveTouch:(id)arg2;
@@ -147,6 +167,7 @@
 - (void)_updateSwitcherBottomEdgeGesturePresence;
 - (double)additionalEdgeSpacingForHomeGrabberView:(id)arg1;
 - (void)completeGestureWithTransitionRequest:(id)arg1;
+- (void)configureIndirectBottomEdgePanGestureRecognizer;
 - (id)customGestureRecognizerForGrabberTongue:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -163,20 +184,23 @@
 - (void)fluidSwitcherGestureTransaction:(id)arg1 didEndGesture:(id)arg2;
 - (void)fluidSwitcherGestureTransaction:(id)arg1 didUpdateGesture:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)grabberTongue:(id)arg1 shouldAllowSecondSwipeWithEdgeLocation:(double)arg2;
 - (BOOL)grabberTongue:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)grabberTongue:(id)arg1 shouldShowTongueOnFirstSwipeWithEdgeLocation:(double)arg2;
-- (void)grabberTongueBeganPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
-- (void)grabberTongueCanceledPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
+- (void)grabberTongueBeganPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
+- (void)grabberTongueCanceledPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
 - (void)grabberTongueDidPresentInteractively:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
-- (void)grabberTongueEndedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
-- (BOOL)grabberTongueOrPullEnabled:(id)arg1;
-- (void)grabberTongueUpdatedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
+- (void)grabberTongueEndedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
+- (BOOL)grabberTongueOrPullEnabled:(id)arg1 forGestureRecognizer:(id)arg2;
+- (void)grabberTongueUpdatedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
 - (void)grabberTongueWillDismiss:(id)arg1;
 - (void)grabberTongueWillPresent:(id)arg1;
 - (void)grabberTongueWillPresentInteractively:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
+- (id)indirectPanGestureRecognizerForGrabberTongue:(id)arg1;
+- (unsigned long long)indirectPanSystemGestureTypeForGrabberTongue:(id)arg1;
 - (id)initWithMainSwitcherContentController:(id)arg1 floatingSwitcherContentController:(id)arg2 sceneLayoutViewController:(id)arg3 delegate:(id)arg4;
 - (void)invalidate;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;

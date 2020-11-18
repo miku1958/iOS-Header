@@ -14,7 +14,7 @@
 {
     BOOL _critical;
     NSString *_name;
-    struct NSDictionary *_jsonDictionary;
+    NSDictionary *_jsonDictionary;
 }
 
 @property (readonly, nonatomic, getter=isCritical) BOOL critical; // @synthesize critical=_critical;
@@ -30,8 +30,8 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
-- (id)initWithJSONDictionary:(struct NSDictionary *)arg1 critical:(BOOL)arg2;
-- (id)initWithJSONDictionary:(struct NSDictionary *)arg1 name:(id)arg2 critical:(BOOL)arg3;
+- (id)initWithJSONDictionary:(id)arg1 critical:(BOOL)arg2;
+- (id)initWithJSONDictionary:(id)arg1 name:(id)arg2 critical:(BOOL)arg3;
 
 @end
 

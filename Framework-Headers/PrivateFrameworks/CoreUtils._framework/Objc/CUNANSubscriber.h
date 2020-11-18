@@ -8,7 +8,7 @@
 
 #import <CoreUtils/WiFiAwareSubscriberDelegate-Protocol.h>
 
-@class NSArray, NSString, WiFiAwareSubscriber;
+@class NSArray, NSMutableDictionary, NSString, WiFiAwareSubscriber;
 @protocol OS_dispatch_queue;
 
 @interface CUNANSubscriber : NSObject <WiFiAwareSubscriberDelegate>
@@ -18,7 +18,7 @@
     BOOL _invalidateDone;
     struct _opaque_pthread_mutex_t _mutex;
     struct LogCategory *_ucat;
-    struct NSMutableDictionary *_wfaEndpoints;
+    NSMutableDictionary *_wfaEndpoints;
     WiFiAwareSubscriber *_wfaSubscriber;
     unsigned int _changeFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;

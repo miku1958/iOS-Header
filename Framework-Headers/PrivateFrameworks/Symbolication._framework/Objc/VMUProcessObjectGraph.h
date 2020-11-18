@@ -8,12 +8,13 @@
 
 #import <Symbolication/VMUCommonGraphInterface-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUGraphStackLogReader, VMUNodeToStringMap, VMURangeToStringMap;
+@class NSArray, NSDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUGraphStackLogReader, VMUNodeToStringMap, VMURangeToStringMap, VMUTaskMemoryScanner;
 @protocol VMUStackLogReader;
 
 @interface VMUProcessObjectGraph : VMUObjectGraph <VMUCommonGraphInterface>
 {
     int _pid;
+    VMUTaskMemoryScanner *_scanner;
     unsigned int _kernPageSize;
     unsigned long long _machAbsolute;
     NSArray *_regions;
@@ -36,6 +37,8 @@
     unsigned long long _physicalFootprint;
     unsigned long long _physicalFootprintPeak;
     BOOL _showsPhysFootprint;
+    unsigned int _objectContentLevel;
+    unsigned int _objectContentLevelForNodeLabels;
 }
 
 @property (readonly, nonatomic) NSString *binaryImagesDescription;
@@ -47,6 +50,8 @@
 @property (readonly, nonatomic) BOOL is64bit;
 @property (readonly, nonatomic) unsigned int nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
+@property (nonatomic) unsigned int objectContentLevel; // @synthesize objectContentLevel=_objectContentLevel;
+@property (nonatomic) unsigned int objectContentLevelForNodeLabels; // @synthesize objectContentLevelForNodeLabels=_objectContentLevelForNodeLabels;
 @property (nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
 @property (nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
@@ -54,6 +59,7 @@
 @property (readonly, nonatomic) NSString *processName;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses;
 @property (readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionCount;
+@property (weak, nonatomic) VMUTaskMemoryScanner *scanner; // @synthesize scanner=_scanner;
 @property (nonatomic) BOOL showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
 @property (nonatomic) BOOL showsPhysFootprint; // @synthesize showsPhysFootprint=_showsPhysFootprint;
 @property (nonatomic) unsigned long long snapshotMachTime; // @synthesize snapshotMachTime=_machAbsolute;

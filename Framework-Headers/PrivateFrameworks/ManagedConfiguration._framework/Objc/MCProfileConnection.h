@@ -286,6 +286,8 @@
 - (BOOL)isContentProtectionInEffect;
 - (BOOL)isContinuousPathKeyboardAllowed;
 - (BOOL)isControlCenterAllowedInApps;
+- (BOOL)isDeprecatedWebKitSynchronousXHRLoadsAllowed;
+- (BOOL)isDeprecatedWebKitTLSAllowed;
 - (BOOL)isDeviceNameModificationAllowed;
 - (BOOL)isDeviceSleepAllowed;
 - (BOOL)isDiagnosticSubmissionAllowed;
@@ -315,6 +317,7 @@
 - (BOOL)isInstalledAppNearMeSuggestionsAllowed;
 - (BOOL)isIntersectionSettingLockedDownByRestrictions:(id)arg1;
 - (BOOL)isKeyboardShortcutsAllowed;
+- (BOOL)isLocalStorageAllowed;
 - (BOOL)isLockScreenControlCenterAllowed;
 - (BOOL)isLockScreenNotificationsViewAllowed;
 - (BOOL)isLockScreenTodayViewAllowed;
@@ -324,6 +327,7 @@
 - (BOOL)isMultitaskingAllowed;
 - (BOOL)isMusicArtistActivityAllowed;
 - (BOOL)isMusicServiceAllowed;
+- (BOOL)isMusicVideoViewingAllowed;
 - (BOOL)isNetworkDriveAccessInFilesAllowed;
 - (BOOL)isNewsAllowed;
 - (BOOL)isNewsTodayAllowed;
@@ -356,6 +360,8 @@
 - (BOOL)isScreenRecordingAllowed;
 - (BOOL)isScreenShotAllowed;
 - (BOOL)isSettingLockedDownByRestrictions:(id)arg1;
+- (BOOL)isSharedDeviceAnonymousTemporaryUserAllowed;
+- (BOOL)isSharedDeviceTemporarySessionAllowed;
 - (BOOL)isSiriServerLoggingAllowed;
 - (BOOL)isSmartPunctuationAllowed;
 - (BOOL)isSoftwareUpdateResisted;

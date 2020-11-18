@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSBundle, NSData, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
+@class NSArray, NSData, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface AppleSpell : NSObject
@@ -50,7 +50,6 @@
     NSMutableArray *_retainedSamples;
     NSMutableDictionary *_lastSampleRecorded;
     double _lastSampleRecording;
-    NSBundle *_dataBundle;
     NSMutableArray *_altBundleURLs;
     NSObject<OS_dispatch_queue> *_assetDataBundleSerialQueue;
     NSMutableDictionary *_assetDataBundleURLDictionary;
@@ -179,6 +178,7 @@
 - (id)phraseCorrectionsDictionaryForLanguage:(id)arg1;
 - (id)phraseMatching:(id)arg1 inLexiconForLanguage:(id)arg2;
 - (void)releaseDatabaseConnections;
+- (void)resetDataBundlesForAllLanguages;
 - (void)resetDataBundlesForLanguage:(id)arg1;
 - (void)resetTimer;
 - (id)sentenceCorrectionsDictionaryForLanguage:(id)arg1;
@@ -231,12 +231,14 @@
 - (id)spellServer:(id)arg1 suggestNextLetterDictionariesForPartialWordRange:(struct _NSRange)arg2 inString:(id)arg3 language:(id)arg4 options:(id)arg5;
 - (id)spellServer:(id)arg1 suggestWordWithLengthInRange:(struct _NSRange)arg2 language:(id)arg3;
 - (id)spellServer:(id)arg1 suggestWordWithMinimumLength:(unsigned long long)arg2 maximumLength:(unsigned long long)arg3 language:(id)arg4;
+- (id)stringByRemovingArabicDiacriticsFromString:(id)arg1;
 - (void)timeout:(id)arg1;
 - (void)updateAllLexicons;
 - (void)updateLexiconsForLanguage:(id)arg1;
 - (BOOL)useLanguageModelForLanguage:(id)arg1 tagger:(id)arg2 taggerIndex:(unsigned long long)arg3 appIdentifier:(id)arg4;
 - (BOOL)useUnigramProbabilityForLanguage:(id)arg1;
 - (BOOL)validateAbbreviationOrNumberWordBuffer:(char *)arg1 length:(unsigned long long)arg2 language:(id)arg3 encoding:(unsigned int)arg4 connection:(struct _PR_DB_IO *)arg5 sender:(id)arg6;
+- (BOOL)validateAdditionalWord:(id)arg1 inLexiconForLanguage:(id)arg2;
 - (BOOL)validateNoCapAbbreviation:(id)arg1 inLexiconForLanguage:(id)arg2;
 - (BOOL)validateNoSuggestUntilLearnedWord:(id)arg1 inLexiconForLanguage:(id)arg2;
 - (BOOL)validateUntilLearnedWord:(id)arg1 inLexiconForLanguage:(id)arg2;

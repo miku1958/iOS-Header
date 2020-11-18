@@ -111,7 +111,7 @@
 + (id)_digitizerRepresentation:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
 + (id)_gameControllerEvent:(struct __IOHIDEvent *)arg1;
 + (id)_keyboardButtonEvent:(struct __IOHIDEvent *)arg1;
-+ (id)_pointerControllerEvent:(struct __IOHIDEvent *)arg1;
++ (id)_pointerControllerEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
 + (id)_wheelEvent:(struct __IOHIDEvent *)arg1;
 + (id)accelerometerRepresentation:(id)arg1;
 + (id)buttonRepresentationWithType:(unsigned int)arg1;

@@ -23,8 +23,8 @@
 + (BOOL)_keychainLock_removeItemForService:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 options:(id)arg4 error:(id *)arg5;
 + (void)_keychainLock_updateItem:(id)arg1 existingPassword:(id)arg2 forServiceName:(id)arg3 username:(id)arg4 accessGroup:(id)arg5 accessibility:(id)arg6 options:(id)arg7 error:(id *)arg8;
 + (void)_migrateCredential:(id)arg1 forAccount:(id)arg2 clientID:(id)arg3;
-+ (void)_removeCredentialForAccountWithUsername:(id)arg1 accountQualifiedUsername:(id)arg2 accountIdentifier:(id)arg3 accountTypeIdentifier:(id)arg4 credentialType:(id)arg5 clientID:(id)arg6 options:(id)arg7 error:(id *)arg8;
 + (BOOL)_removeCredentialItemWithKey:(id)arg1 forAccountWithID:(id)arg2 username:(id)arg3 accountTypeID:(id)arg4 clientID:(id)arg5 options:(id)arg6 error:(id *)arg7;
++ (void)_removeCredentialsForAccount:(id)arg1 clientID:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (BOOL)_removeItemForService:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 options:(id)arg4 error:(id *)arg5;
 + (void)_saveCredential:(id)arg1 forAccount:(id)arg2 clientID:(id)arg3 error:(id *)arg4;
 + (BOOL)_setAccountSyncItem:(id)arg1 hostname:(id)arg2 accessGroup:(id)arg3 accessibility:(id)arg4 options:(id)arg5 error:(id *)arg6;

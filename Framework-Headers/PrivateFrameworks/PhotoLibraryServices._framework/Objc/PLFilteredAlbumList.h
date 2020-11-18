@@ -52,7 +52,7 @@
 - (void).cxx_destruct;
 - (void)_backingContextDidChange:(id)arg1;
 - (void)_invalidateFilteredIndexes;
-- (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
+- (BOOL)albumHasFixedOrder:(id)arg1;
 - (BOOL)canEditContainers;
 - (id)containers;
 - (id)containersRelationshipName;
@@ -74,7 +74,7 @@
 - (id)objectInFilteredAlbumsAtIndex:(unsigned long long)arg1;
 - (void)preheatAlbumsAtIndexes:(id)arg1 forProperties:(id)arg2 relationships:(id)arg3;
 - (void)preheatAlbumsForProperties:(id)arg1 relationships:(id)arg2;
-- (void)registerDerivedAlbumList:(struct NSObject *)arg1;
+- (void)registerDerivedAlbumList:(id)arg1;
 - (void)removeFilteredAlbumsAtIndexes:(id)arg1;
 - (void)removeObjectFromFilteredAlbumsAtIndex:(unsigned long long)arg1;
 - (void)replaceFilteredAlbumsAtIndexes:(id)arg1 withFilteredValues:(id)arg2;

@@ -89,7 +89,7 @@
 - (void)_addNoFlagsRequestedComponent:(id)arg1;
 - (void)_addNoFlagsSpokenLanguage:(id)arg1;
 - (id)_initWithTraits:(id)arg1 includeHistoricalLocations:(BOOL)arg2;
-- (id)_initWithTransitScheduleRequestForStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 traits:(id)arg4;
+- (id)_initWithTransitScheduleRequestForStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
 - (void)_readAnalyticMetadata;
 - (void)_readClientMetadata;
 - (void)_readDisplayLanguages;
@@ -158,11 +158,11 @@
 - (id)initWithSearchURLQuery:(id)arg1 identifier:(id)arg2 resultProviderId:(int)arg3 contentProvider:(id)arg4 maxResults:(unsigned int)arg5 traits:(id)arg6;
 - (id)initWithSpatialEventLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)initWithSpatialPlaceLookupParameters:(id)arg1 traits:(id)arg2;
-- (id)initWithTransitDeparturesAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 traits:(id)arg4;
-- (id)initWithTransitScheduleAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 traits:(id)arg4;
-- (id)initWithTransitTripDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 traits:(id)arg4;
+- (id)initWithTransitDeparturesAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
+- (id)initWithTransitScheduleAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
+- (id)initWithTransitTripDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
 - (id)initWithTripIds:(id)arg1 traits:(id)arg2;
-- (id)initWithUpdatedTransitScheduleDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 traits:(id)arg4;
+- (id)initWithUpdatedTransitScheduleDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
 - (id)initWithVendorSpecificPlaceRefinementParameters:(id)arg1 traits:(id)arg2;
 - (BOOL)isBrandLookupRequest;
 - (BOOL)isCanonicalLocationSearchRequest;

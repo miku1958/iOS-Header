@@ -62,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithProfile:(id)arg1 displayDate:(id)arg2;
 - (void)pushControllerForSessionType:(long long)arg1 title:(id)arg2;
 - (id)quantityTypeIdentifierForHeartRateContext:(long long)arg1;
-- (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(struct NSDictionary *)arg2;
+- (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(id)arg2;
 - (void)selectContextItemAtIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)setupHeartChartViewController;
 - (id)titleForDisplayTypeContextResult:(id)arg1;

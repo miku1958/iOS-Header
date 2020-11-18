@@ -24,7 +24,7 @@
 + (BOOL)hasActiveSIMForClient:(id)arg1;
 + (BOOL)isAllowedToMessageSOSContacts;
 + (BOOL)isAutomaticCallCountdownEnabled;
-+ (BOOL)isD2xDevice;
++ (BOOL)isDeviceD2xOrNewer;
 + (BOOL)isIndiaSKU;
 + (BOOL)longPressTriggersEmergencySOS;
 + (BOOL)mustAllowThreeClickTrigger;

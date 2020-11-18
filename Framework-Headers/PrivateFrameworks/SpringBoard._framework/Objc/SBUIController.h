@@ -149,6 +149,7 @@
 - (void)restoreContentWithOptions:(unsigned long long)arg1;
 - (id)scalingView;
 - (void)setAllowIconRotation:(BOOL)arg1 forReason:(id)arg2;
+- (void)setCursorInteractionsEnabled:(BOOL)arg1;
 - (void)setFakeSpringBoardStatusBarVisible:(BOOL)arg1;
 - (void)setHomeScreenAlpha:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenBlurProgress:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;

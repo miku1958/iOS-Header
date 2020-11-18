@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <TSReading/TSDMagicMoveMatching-Protocol.h>
+#import <TSReading/TSDRepTextContaining-Protocol.h>
 
-@class CALayer, NSArray, NSDictionary, TSDCanvas, TSDInteractiveCanvasController, TSDKnobTracker, TSDLayout, TSDLayoutGeometry, TSDTextureContext, TSDTextureSet, TSDTilingBackgroundQueue;
+@class CALayer, NSArray, NSDictionary, NSString, TSDCanvas, TSDInteractiveCanvasController, TSDKnobTracker, TSDLayout, TSDLayoutGeometry, TSDTextureContext, TSDTextureSet, TSDTilingBackgroundQueue;
 @protocol OS_dispatch_queue, TSDContainerRep;
 
-@interface TSDRep : NSObject <TSDMagicMoveMatching>
+@interface TSDRep : NSObject <TSDMagicMoveMatching, TSDRepTextContaining>
 {
     TSDCanvas *mCanvas;
     TSDRep<TSDContainerRep> *mParentRep;
@@ -49,7 +50,10 @@
 
 @property (readonly, nonatomic) TSDCanvas *canvas; // @synthesize canvas=mCanvas;
 @property (nonatomic) TSDKnobTracker *currentKnobTracker; // @synthesize currentKnobTracker=mKnobTracker;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property BOOL forceRasterization; // @synthesize forceRasterization=mForceRasterization;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *hyperlinkRegions;
 @property (readonly, nonatomic) TSDInteractiveCanvasController *interactiveCanvasController;
 @property (readonly, nonatomic) BOOL isEditingPath;
@@ -57,6 +61,7 @@
 @property (readonly, nonatomic) TSDLayout *layout; // @synthesize layout=mLayout;
 @property (nonatomic) TSDRep<TSDContainerRep> *parentRep; // @synthesize parentRep=mParentRep;
 @property (nonatomic) struct CGColor *selectionHighlightColor;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) TSDLayout *temporaryMixingLayout; // @synthesize temporaryMixingLayout=mTemporaryMixingLayout;
 @property (strong, nonatomic) TSDTextureSet *texture; // @synthesize texture=mTexture;
 @property (strong, nonatomic) NSDictionary *textureActionAttributes; // @synthesize textureActionAttributes=mTextureActionAttributes;
@@ -123,7 +128,6 @@
 - (struct CGPoint)convertUnscaledPointToLayerRelative:(struct CGPoint)arg1;
 - (void)dealloc;
 - (id)delegateConformingToProtocol:(id)arg1 forRep:(id)arg2;
-- (id)description;
 - (void)didCreateLayer:(id)arg1;
 - (void)didDrawInLayer:(id)arg1 context:(struct CGContext *)arg2;
 - (void)didEndDrawingTilingLayerInBackground:(id)arg1 withToken:(id)arg2;

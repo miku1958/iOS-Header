@@ -13,17 +13,24 @@
     NSURL *_loadAdditionalContentURL;
     MPModelStoreBrowseResponse *_previousRetrievedNestedResponse;
     long long _domain;
+    long long _additionalContent;
+    unsigned long long _options;
     long long _filteringPolicy;
+    long long _subscriptionStatus;
     MPModelStoreBrowseResponse *_previousResponse;
     long long _requestEndpoint;
 }
 
+@property (nonatomic) long long additionalContent; // @synthesize additionalContent=_additionalContent;
 @property (nonatomic) long long domain; // @synthesize domain=_domain;
 @property (nonatomic) long long filteringPolicy; // @synthesize filteringPolicy=_filteringPolicy;
+@property (nonatomic) BOOL flattenRadioList;
 @property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @synthesize loadAdditionalContentURL=_loadAdditionalContentURL;
+@property (nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (strong, nonatomic) MPModelStoreBrowseResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
 @property (strong, nonatomic) MPModelStoreBrowseResponse *previousRetrievedNestedResponse; // @synthesize previousRetrievedNestedResponse=_previousRetrievedNestedResponse;
 @property (nonatomic) long long requestEndpoint; // @synthesize requestEndpoint=_requestEndpoint;
+@property (nonatomic) long long subscriptionStatus; // @synthesize subscriptionStatus=_subscriptionStatus;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;

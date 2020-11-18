@@ -64,7 +64,7 @@
 - (BOOL)isKeyWindow;
 - (BOOL)isVisible;
 - (BOOL)keepsZoomedOutTiles;
-- (int)keyViewSelectionDirection;
+- (unsigned long long)keyViewSelectionDirection;
 - (void)layoutTiles;
 - (void)layoutTilesNow;
 - (void)layoutTilesNowForRect:(struct CGRect)arg1;

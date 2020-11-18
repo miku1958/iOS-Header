@@ -287,6 +287,7 @@
 - (id)sliderThumbTintColor:(BOOL)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (BOOL)supportsCompactRecordingCard;
+- (BOOL)supportsCursorInteractions;
 - (BOOL)supportsLockScreen;
 - (BOOL)supportsLockScreenRotation;
 - (BOOL)supportsMainViewControllerUndo;

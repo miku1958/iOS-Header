@@ -6,9 +6,7 @@
 
 #import <NewsArticles/_TtC12NewsArticles29ANFDebugLayoutOptionsProvider.h>
 
-#import <NewsArticles/SXDebugLayoutOptionsProviding-Protocol.h>
-
-@interface _TtC12NewsArticles29ANFDebugLayoutOptionsProvider (NewsArticles) <SXDebugLayoutOptionsProviding>
+@interface _TtC12NewsArticles29ANFDebugLayoutOptionsProvider (NewsArticles)
 - (void)addObserver:(id)arg1;
 - (long long)overrideBundleSubscriptionStatus:(long long)arg1;
 - (long long)overrideChannelSubscriptionStatus:(long long)arg1;

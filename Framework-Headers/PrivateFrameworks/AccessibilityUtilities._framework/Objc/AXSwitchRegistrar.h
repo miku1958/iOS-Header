@@ -41,7 +41,7 @@
 - (BOOL)_isKeyboardSwitchWithKeyCode:(unsigned short)arg1 longPress:(BOOL)arg2;
 - (BOOL)_isMFISwitchWithButtonNumber:(unsigned int)arg1 longPress:(BOOL)arg2;
 - (BOOL)_isMIDISwitchWithMidiEvent:(id)arg1;
-- (BOOL)_isSwitchWithSource:(struct NSString *)arg1 keyCode:(unsigned short)arg2 buttonNumber:(unsigned int)arg3 ATVRemoteButtonUsage:(long long)arg4 midiEvent:(id)arg5;
+- (BOOL)_isSwitchWithSource:(id)arg1 keyCode:(unsigned short)arg2 buttonNumber:(unsigned int)arg3 ATVRemoteButtonUsage:(long long)arg4 midiEvent:(id)arg5;
 - (id)_keyboardMatching;
 - (id)_mfiMatching;
 - (void)beginFilteringEvents;

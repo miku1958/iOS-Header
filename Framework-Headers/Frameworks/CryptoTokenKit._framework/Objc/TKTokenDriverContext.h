@@ -8,20 +8,23 @@
 
 #import <CryptoTokenKit/TKTokenDriverProtocol-Protocol.h>
 
-@class NSString, NSXPCConnection, TKTokenDriver;
+@class NSString, TKTokenConfigurationConnection, TKTokenDriver;
+@protocol TKTokenDriverHostProtocol;
 
 __attribute__((visibility("hidden")))
 @interface TKTokenDriverContext : TKTokenBaseContext <TKTokenDriverProtocol>
 {
-    NSXPCConnection *_configurationConnection;
+    TKTokenConfigurationConnection *_configurationConnection;
     id _initialKeepAlive;
     TKTokenDriver *_driver;
 }
 
+@property (readonly, nonatomic) TKTokenConfigurationConnection *configurationConnection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) TKTokenDriver *driver; // @synthesize driver=_driver;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<TKTokenDriverHostProtocol> host;
 @property (readonly, nonatomic) double idleTimeout;
 @property (readonly) Class superclass;
 
@@ -30,9 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)acquireTokenWithSlot:(id)arg1 AID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 success:(BOOL)arg3;
 - (id)configurationForTokenID:(id)arg1;
-- (id)configurationProxy;
 - (void)configureWithReply:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)releaseTokenWithInstanceID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setup;
 - (BOOL)startRequestWithError:(id *)arg1;

@@ -6,24 +6,33 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UIColor;
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+
+@class NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UIScrollViewScrollIndicator : UIView
+@interface _UIScrollViewScrollIndicator : UIView <UIPointerInteractionDelegate>
 {
     BOOL _expandedForDirectManipulation;
+    BOOL _hasPointer;
     unsigned long long _type;
     long long _style;
     UIView *_roundedFillView;
     UIColor *_foregroundColor;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL expandedForDirectManipulation; // @synthesize expandedForDirectManipulation=_expandedForDirectManipulation;
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
+@property (nonatomic) BOOL hasPointer; // @synthesize hasPointer=_hasPointer;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *roundedFillView; // @synthesize roundedFillView=_roundedFillView;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
++ (struct UIEdgeInsets)_cursorHitTestingInsets;
 + (double)_expandedIndicatorDimension;
 + (double)indicatorDimension;
 - (void).cxx_destruct;
@@ -32,6 +41,10 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_offsetFillViewRectForExpandedState:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 
 @end
 

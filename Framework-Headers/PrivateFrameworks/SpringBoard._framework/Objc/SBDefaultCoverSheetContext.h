@@ -12,6 +12,7 @@
 #import <SpringBoard/CSMediaControlling-Protocol.h>
 #import <SpringBoard/CSReachabilityControlling-Protocol.h>
 #import <SpringBoard/CSResetRestoreStatusProviding-Protocol.h>
+#import <SpringBoard/CSSystemCursorInteractionManaging-Protocol.h>
 #import <SpringBoard/CSTelephonyStatusProviding-Protocol.h>
 #import <SpringBoard/CSTodayOverlayProviding-Protocol.h>
 #import <SpringBoard/CSTouchEnvironmentStatusProviding-Protocol.h>
@@ -20,9 +21,9 @@
 #import <SpringBoard/CSWallpaperLogging-Protocol.h>
 
 @class NSArray, NSString, SBDashBoardNotificationPresenter, SBSyncController, SBWallpaperAggdLogger;
-@protocol CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSPowerStatusProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTodayOverlayProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@protocol CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSPowerStatusProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemCursorInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTodayOverlayProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
-@interface SBDefaultCoverSheetContext : NSObject <CSAuthenticationManaging, CSCarPlayStatusProviding, CSMediaControlling, CSReachabilityControlling, CSResetRestoreStatusProviding, CSTelephonyStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSTodayOverlayProviding, CSCoverSheetContextProviding>
+@interface SBDefaultCoverSheetContext : NSObject <CSAuthenticationManaging, CSCarPlayStatusProviding, CSMediaControlling, CSReachabilityControlling, CSResetRestoreStatusProviding, CSTelephonyStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSTodayOverlayProviding, CSSystemCursorInteractionManaging, CSCoverSheetContextProviding>
 {
     SBSyncController *_syncController;
     SBWallpaperAggdLogger *_wallpaperAggdLogger;
@@ -81,6 +82,7 @@
 @property (readonly, nonatomic) id<SBFScreenWakeAnimationControlling> screenWakeAnimationController; // @synthesize screenWakeAnimationController=_screenWakeAnimationController;
 @property (readonly, nonatomic) id<CSStatusBarControlling> statusBarController; // @synthesize statusBarController=_statusBarController;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<CSSystemCursorInteractionManaging> systemCursorInterationManager;
 @property (readonly, nonatomic) id<CSTelephonyStatusProviding> telephonyStatusProvider;
 @property (readonly, nonatomic) id<CSThermalStatusProviding> thermalStatusProvider; // @synthesize thermalStatusProvider=_thermalStatusProvider;
 @property (readonly, nonatomic) id<CSTodayOverlayProviding> todayOverlayProvider;
@@ -101,10 +103,12 @@
 - (BOOL)isEmergencyCallSupported;
 - (void)logout;
 - (id)newTodayOverlayController;
+- (void)registerView:(id)arg1 delegate:(id)arg2;
 - (void)setBiometricAutoUnlockingDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)setPasscodeVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)stopMediaPlaybackForSource:(long long)arg1;
 - (void)unlockWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unregisterView:(id)arg1;
 
 @end
 

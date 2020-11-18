@@ -6,13 +6,14 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSData, NSSet, NSString, PKDisplayProfile, PKMapsTransitRouteInfo, PKPaymentMarket;
+@class NSArray, NSData, NSSet, NSString, NSXPCListenerEndpoint, PKAccessPassProvisioningConfiguration, PKAddSecureElementPassConfiguration, PKDisplayProfile, PKMapsTransitRouteInfo, PKPaymentMarket;
 
 @protocol PDPassLibraryExportedInterface <PDXPCServiceExportedInterface>
 - (void)addPassesWithData:(NSSet *)arg1 handler:(void (^)(unsigned long long))arg2;
 - (void)backupMetadataWithHandler:(void (^)(NSData *))arg1;
 - (void)canAddFelicaPassWithHandler:(void (^)(BOOL))arg1;
 - (void)canAddPassesOfType:(unsigned long long)arg1 handler:(void (^)(BOOL))arg2;
+- (void)canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)checkForTransitNotification;
 - (void)countPassesOfType:(unsigned long long)arg1 handler:(void (^)(unsigned long long))arg2;
 - (void)defaultPaymentPassWithHandler:(void (^)(PKPaymentPass *))arg1;
@@ -34,10 +35,12 @@
 - (void)passWithFPANIdentifier:(NSString *)arg1 handler:(void (^)(PKPaymentPass *))arg2;
 - (void)peerPaymentPassUniqueIDWithHandler:(void (^)(NSString *))arg1;
 - (void)postUpgradedPassNotificationForMarket:(PKPaymentMarket *)arg1 passUniqueID:(NSString *)arg2;
+- (void)presentSubcredentialProvisioningInterfaceForEndpoint:(NSXPCListenerEndpoint *)arg1 withConfiguration:(PKAccessPassProvisioningConfiguration *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)removePassWithUniqueID:(NSString *)arg1 diagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)removePassesWithUniqueIDs:(NSArray *)arg1 diagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)replacePassWithPassData:(NSData *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)setBackupMetadata:(NSData *)arg1 handler:(void (^)(void))arg2;
+- (void)signData:(NSData *)arg1 forPassUniqueID:(NSString *)arg2 completion:(void (^)(NSData *, NSData *, NSError *))arg3;
 - (void)sortedTransitPassesForAppletDataFormat:(NSString *)arg1 handler:(void (^)(NSArray *))arg2;
 - (void)submitVerificationCode:(NSString *)arg1 verificationData:(NSData *)arg2 forPassWithUniqueID:(NSString *)arg3 handler:(void (^)(BOOL, NSError *))arg4;
 - (void)supportedTransitPartnersForDigitalIssuance:(void (^)(NSArray *))arg1;

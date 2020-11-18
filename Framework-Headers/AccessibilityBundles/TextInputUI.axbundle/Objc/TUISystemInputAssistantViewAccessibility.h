@@ -21,6 +21,7 @@
 - (void)_didTapExpandButton:(id)arg1;
 - (BOOL)_isPredictionOrCandidateView:(id)arg1;
 - (void)setShowsExpandableButtonBarItems:(BOOL)arg1;
+- (BOOL)shouldGroupAccessibilityChildren;
 
 @end
 

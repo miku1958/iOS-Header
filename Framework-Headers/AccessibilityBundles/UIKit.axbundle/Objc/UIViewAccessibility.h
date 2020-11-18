@@ -30,6 +30,7 @@
 - (id)_accessibilityChildVendingParent;
 - (id)_accessibilityCirclePathBasedOnBoundsWidth;
 - (BOOL)_accessibilityDidLoadAccessibilityInformation;
+- (BOOL)_accessibilityFKAShouldBeProcessed;
 - (void)_accessibilityFinalize;
 - (struct CGRect)_accessibilityFrameForView:(id)arg1;
 - (BOOL)_accessibilityHasButtonLikeGestureRecognizer;
@@ -39,6 +40,7 @@
 - (id)_accessibilityHitTestSubviews;
 - (long long)_accessibilityHorizontalSizeClass;
 - (id)_accessibilityImageData;
+- (BOOL)_accessibilityInTopLevelTabLoop;
 - (BOOL)_accessibilityIsFKARunningForFocusItem;
 - (BOOL)_accessibilityIsIgnored;
 - (BOOL)_accessibilityIsInCollectionCell;
@@ -46,6 +48,7 @@
 - (BOOL)_accessibilityIsSiblingOfModalizingBlocker;
 - (BOOL)_accessibilityIsUserInteractionEnabled;
 - (BOOL)_accessibilityIsUserInteractionEnabledChain;
+- (id)_accessibilityLastFocusedChild;
 - (double)_accessibilityMaxFuzzyHitTestDistance;
 - (BOOL)_accessibilityModalViewBlocksView:(id)arg1 blockerView:(id *)arg2;
 - (id)_accessibilityObscuredScreenAllowedViews;
@@ -64,13 +67,13 @@
 - (id)_accessibilitySupportGesturesAttributes;
 - (BOOL)_accessibilityUseAccessibilityFrameForHittest;
 - (id)_accessibilityUserTestingChildren;
+- (id)_accessibilityUserTestingSubviewsSorted:(BOOL)arg1;
 - (long long)_accessibilityVerticalSizeClass;
 - (double)_accessibilityViewAlpha;
 - (id)_accessibilityViewController;
 - (BOOL)_accessibilityViewIsActive;
 - (BOOL)_accessibilityViewIsBeingHitTested:(id)arg1;
 - (BOOL)_accessibilityViewIsProbablyDimmingView;
-- (BOOL)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 - (id)_axBackgroundViewForCornerRadius;
 - (BOOL)_axHasNoVisibleAxElements;
 - (BOOL)_axHasSingleFocusableSubview;
@@ -86,6 +89,7 @@
 - (void)_notifyReferenceViewSizeChange;
 - (void)_setAccessibilityDidLoadAccessibilityInformation:(BOOL)arg1;
 - (id)_superAccessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (id)accessibilityContainer;
 - (BOOL)accessibilityElementIsFocused;
 - (BOOL)accessibilityElementsHidden;
@@ -98,6 +102,7 @@
 - (BOOL)canBecomeFocused;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (BOOL)isAccessibilityElement;
+- (id)preferredFocusEnvironments;
 - (void)setAlpha:(double)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setHidden:(BOOL)arg1;

@@ -43,6 +43,7 @@
     long long _nowPlayingAlbumArtMode;
     long long _userInterfaceStyle;
     NSString *_manufacturerIconLabel;
+    NSArray *_manufacturerIcons;
     struct NSEdgeInsets _viewAreaInsets;
     struct NSEdgeInsets _dashboardRoundedCorners;
 }
@@ -54,6 +55,7 @@
 @property (readonly, nonatomic) unsigned long long limitableUserInterfaces; // @synthesize limitableUserInterfaces=_limitableUserInterfaces;
 @property (readonly, copy, nonatomic) NSString *manufacturerIconLabel; // @synthesize manufacturerIconLabel=_manufacturerIconLabel;
 @property (readonly, nonatomic) BOOL manufacturerIconVisible; // @synthesize manufacturerIconVisible=_manufacturerIconVisible;
+@property (readonly, nonatomic) NSArray *manufacturerIcons; // @synthesize manufacturerIcons=_manufacturerIcons;
 @property (readonly, copy, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
 @property (readonly, copy, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;

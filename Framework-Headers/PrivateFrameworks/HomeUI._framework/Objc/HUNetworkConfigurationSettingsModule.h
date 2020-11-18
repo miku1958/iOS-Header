@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (id)_protectionModeOptionSectionFooter;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
+- (id)description;
 - (id)initWithItemUpdater:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 group:(id)arg2;
 - (BOOL)isItemNetworkProtectionModeOptionItem:(id)arg1;

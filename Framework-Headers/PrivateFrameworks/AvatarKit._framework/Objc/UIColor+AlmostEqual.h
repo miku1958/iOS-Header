@@ -11,6 +11,6 @@
 @interface UIColor (AlmostEqual)
 + (id)avt_colorWithColor4: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)avt_colorToColor4;
-- (BOOL)avt_isAlmostEqualToColor:(struct UIColor *)arg1;
+- (BOOL)avt_isAlmostEqualToColor:(id)arg1;
 @end
 

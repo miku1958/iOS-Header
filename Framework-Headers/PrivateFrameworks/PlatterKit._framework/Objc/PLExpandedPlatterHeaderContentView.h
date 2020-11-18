@@ -24,6 +24,7 @@
 - (void)_layoutDateLabelWithScale:(double)arg1;
 - (void)_layoutTitleLabelWithScale:(double)arg1;
 - (void)_layoutUtilityButtonWithScale:(double)arg1;
+- (id)_newIconButton;
 - (double)_titleFirstLineCenterY;
 - (struct CGRect)_titleLabelBoundsForSize:(struct CGSize)arg1;
 - (void)_updateStylingForTitleLabel:(id)arg1;

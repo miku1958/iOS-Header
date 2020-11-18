@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, NWL2Report, PBCodable;
+@class NSUUID, NWDeviceReport, NWL2Report, PBCodable;
 
 @interface NWActivityStatistics : NSObject
 {
@@ -14,6 +14,7 @@
     NSUUID *_externallyVisibleActivityUUID;
     NSUUID *_externallyVisibleParentUUID;
     NWL2Report *_layer2Report;
+    NWDeviceReport *_deviceReport;
     PBCodable *_awdReport;
     NSUUID *_activityUUID;
     NSUUID *_parentUUID;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSUUID *activityUUID; // @synthesize activityUUID=_activityUUID;
 @property (nonatomic) unsigned int awdMetricID; // @synthesize awdMetricID=_awdMetricID;
 @property (strong, nonatomic) PBCodable *awdReport; // @synthesize awdReport=_awdReport;
+@property (strong, nonatomic) NWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property (readonly, nonatomic) unsigned int domain;
 @property (strong, nonatomic) NSUUID *externallyVisibleActivityUUID; // @synthesize externallyVisibleActivityUUID=_externallyVisibleActivityUUID;
 @property (strong, nonatomic) NSUUID *externallyVisibleParentUUID; // @synthesize externallyVisibleParentUUID=_externallyVisibleParentUUID;
@@ -35,6 +37,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithNWActivityReport:(struct nw_activity_report_s *)arg1 length:(unsigned long long)arg2;
+- (id)initWithPBCodableData:(id)arg1;
 
 @end
 

@@ -21,9 +21,9 @@
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
 
-+ (id)descriptorFromPlanId:(struct NSString *)arg1;
-+ (BOOL)isValidPlanId:(struct NSString *)arg1;
-+ (struct NSString *)planIdFromString:(id)arg1;
++ (id)descriptorFromPlanId:(id)arg1;
++ (BOOL)isValidPlanId:(id)arg1;
++ (id)planIdFromString:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

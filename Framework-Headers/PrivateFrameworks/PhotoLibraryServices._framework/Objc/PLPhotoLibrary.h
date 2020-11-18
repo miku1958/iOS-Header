@@ -142,11 +142,11 @@
 - (void)_userDeleteAssets:(id)arg1 withReason:(id)arg2;
 - (void)_withDispatchGroup:(id)arg1 synchronously:(BOOL)arg2 name:(id)arg3 shouldSave:(BOOL)arg4 performTransaction:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)addCompletionHandlerToCurrentTransaction:(CDUnknownBlockType)arg1;
-- (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(struct NSObject *)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(struct NSObject *)arg7 thumbnailImage:(struct NSObject *)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 withUUID:(id)arg13 ignoreEmbeddedMetadata:(BOOL)arg14 isPlaceholder:(BOOL)arg15 placeholderFileURL:(id)arg16;
-- (struct NSObject *)albumFromGroupURL:(id)arg1;
+- (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(id)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(id)arg7 thumbnailImage:(id)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 withUUID:(id)arg13 ignoreEmbeddedMetadata:(BOOL)arg14 isPlaceholder:(BOOL)arg15 placeholderFileURL:(id)arg16;
+- (id)albumFromGroupURL:(id)arg1;
 - (id)albumListForAlbumOfKind:(int)arg1;
 - (id)albumListForContentMode:(int)arg1;
-- (struct NSObject *)albumWithUuid:(id)arg1;
+- (id)albumWithUuid:(id)arg1;
 - (id)allImportedPhotosAlbum;
 - (id)allImportedPhotosAlbumCreateIfNeeded:(BOOL)arg1;
 - (id)assetURLForPhoto:(id)arg1;
@@ -175,8 +175,8 @@
 - (id)duplicatePhotoStreamPhotosForPhotos:(id)arg1;
 - (void)enableOpportunisticTasks;
 - (id)estimatedLibrarySizes;
-- (struct NSObject *)eventAlbumContainingPhoto:(id)arg1;
-- (struct NSObject *)eventWithName:(id)arg1 andImportSessionIdentifier:(id)arg2;
+- (id)eventAlbumContainingPhoto:(id)arg1;
+- (id)eventWithName:(id)arg1 andImportSessionIdentifier:(id)arg2;
 - (BOOL)getPhotoCount:(unsigned long long *)arg1 videoCount:(unsigned long long *)arg2;
 - (BOOL)getPhotoCount:(unsigned long long *)arg1 videoCount:(unsigned long long *)arg2 excludeTrashed:(BOOL)arg3 excludeInvisible:(BOOL)arg4 excludeCloudShared:(BOOL)arg5;
 - (id)globalValueForKey:(id)arg1;
@@ -187,7 +187,7 @@
 - (BOOL)hasITunesSyncedContent;
 - (BOOL)hasPendingAssetsIgnoreiTunes:(BOOL)arg1;
 - (id)iTunesSyncedContentInfo;
-- (struct NSObject *)imageForFormat:(unsigned short)arg1 forAsset:(id)arg2;
+- (id)imageForFormat:(unsigned short)arg1 forAsset:(id)arg2;
 - (id)incompleteRestoreProcesses;
 - (id)init;
 - (id)initWithName:(const char *)arg1 libraryBundle:(id)arg2 options:(id)arg3;
@@ -202,8 +202,8 @@
 - (BOOL)loadDatabase:(id *)arg1;
 - (id)managedObjectContextStoreUUID;
 - (void)modifyDCIMEntryForPhoto:(id)arg1;
-- (struct NSObject *)newImageForPhoto:(id)arg1 format:(unsigned short)arg2;
-- (struct NSObject *)newImageForPhoto:(id)arg1 format:(unsigned short)arg2 allowPlaceholder:(BOOL)arg3 outImageProperties:(const struct __CFDictionary **)arg4 outDeliveredPlaceholder:(BOOL *)arg5;
+- (id)newImageForPhoto:(id)arg1 format:(unsigned short)arg2;
+- (id)newImageForPhoto:(id)arg1 format:(unsigned short)arg2 allowPlaceholder:(BOOL)arg3 outImageProperties:(const struct __CFDictionary **)arg4 outDeliveredPlaceholder:(BOOL *)arg5;
 - (unsigned long long)numberOfCPLSupportedAssetsOfKind:(short)arg1 includingTrashedSinceDate:(id)arg2;
 - (unsigned long long)numberOfUnpushedAssetsOfKind:(short)arg1;
 - (id)objectWithObjectID:(id)arg1;

@@ -17,8 +17,13 @@
 
 + (id)action;
 + (id)actionWithSettingsKeyPath:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)defaultHandler;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

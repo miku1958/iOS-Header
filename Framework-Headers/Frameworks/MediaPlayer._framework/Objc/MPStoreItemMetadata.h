@@ -83,6 +83,7 @@
 @property (readonly, copy, nonatomic) NSNumber *popularity;
 @property (readonly, nonatomic, getter=isPrivatePerson) BOOL privatePerson;
 @property (readonly, nonatomic) long long purchasedAdamID;
+@property (readonly, copy, nonatomic) NSArray *radioStationEvents;
 @property (readonly, copy, nonatomic) NSString *radioStationProviderName;
 @property (readonly, nonatomic) long long radioStationTypeID;
 @property (readonly, copy, nonatomic) NSDate *releaseDate;
@@ -94,6 +95,7 @@
 @property (readonly, nonatomic) BOOL shouldReportPlayEvents;
 @property (readonly, nonatomic) BOOL showComposer;
 @property (readonly, copy, nonatomic) id socialProfileID;
+@property (readonly, nonatomic) MPStoreArtworkRequestToken *stationGlyphRequestToken;
 @property (readonly, copy, nonatomic) id storeID;
 @property (readonly, nonatomic, getter=isStoreRedownloadable) BOOL storeRedownloadable;
 @property (readonly, nonatomic) long long subscriptionAdamID;
@@ -138,6 +140,7 @@
 - (id)metadataWithChildStorePlatformDictionaries:(id)arg1;
 - (id)metadataWithParentMetadata:(id)arg1;
 - (id)movieArtworkRequestToken;
+- (id)stationGlyphRequestTokenForStorePlatformDictionary:(id)arg1;
 - (id)tvEpisodeArtworkRequestToken;
 - (id)tvShowArtworkRequestToken;
 

@@ -224,6 +224,7 @@
 - (void)addCurationScore:(double)arg1 forAsset:(id)arg2;
 - (void)addInteractionScore:(float)arg1 forAsset:(id)arg2;
 - (void)addMeaningToMeaningfulEventNode:(id)arg1 meaningLabel:(id)arg2 meaningIsReliable:(BOOL)arg3;
+- (id)addMomentNodeWithProperties:(id)arg1;
 - (void)addParentMeaningHierarchyForMeaningNode:(id)arg1;
 - (void)addRelationshipEdgesBetweenPersonNode:(id)arg1 andPersonNode:(id)arg2 forRelationship:(unsigned long long)arg3 confidence:(float)arg4 properties:(id)arg5;
 - (void)addRelationshipEdgesBetweenPersonNode:(id)arg1 andSocialGroupNode:(id)arg2 forRelationship:(unsigned long long)arg3 confidence:(float)arg4 properties:(id)arg5;
@@ -242,6 +243,7 @@
 - (id)bestFittingAreaNodeFromAreaNodes:(id)arg1;
 - (id)bestMeaningLabelForMeaningfulEvent:(id)arg1;
 - (id)bestSocialGroupNodes;
+- (id)businessNodes;
 - (void)cacheHighlightNode:(id)arg1 forHighlightUUID:(id)arg2 checkUnicity:(BOOL)arg3;
 - (void)cacheMomentNode:(id)arg1 forMomentUUID:(id)arg2 checkUnicity:(BOOL)arg3;
 - (id)cachedHighlightNodeForHighlightUUID:(id)arg1;
@@ -282,6 +284,7 @@
 - (void)enumerateDateComponentsBetweenLocalStartDate:(id)arg1 andLocalEndDate:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateMeaningfulEventsWithMeaning:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateMeaningsFromMeaningfulEvent:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateMomentNodesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMomentNodesWithMeaning:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateMusicSessionNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumeratePeopleClustersIncludingMeNode:(BOOL)arg1 withBlock:(CDUnknownBlockType)arg2;
@@ -372,11 +375,14 @@
 - (id)meNode;
 - (id)meaningfulEventNodeForUUID:(id)arg1;
 - (id)meaningfulEvents;
+- (id)meaningfulMomentNodesSortedByDate;
 - (id)meaningsFromMeaningfulEvent:(id)arg1;
 - (id)momentForMomentNode:(id)arg1;
 - (id)momentNodeForAsset:(id)arg1;
 - (id)momentNodeForMoment:(id)arg1;
 - (id)momentNodeForMomentUUID:(id)arg1;
+- (id)momentNodeForUUID:(id)arg1;
+- (id)momentNodes;
 - (id)momentNodesConnectedToNode:(id)arg1;
 - (id)momentNodesForDateNode:(id)arg1;
 - (id)momentNodesForLocalDate:(id)arg1;
@@ -385,6 +391,8 @@
 - (id)momentNodesForPersonNodes:(id)arg1;
 - (id)momentNodesIgnoringYearForLocalDate:(id)arg1;
 - (id)momentNodesOverlappingLocalDateInterval:(id)arg1;
+- (id)momentNodesSortedByDate;
+- (id)momentNodesSortedByDateFromMomentNodes:(id)arg1;
 - (id)momentNodesWithMeaning:(unsigned long long)arg1;
 - (id)momentsForMomentNodes:(id)arg1 sortChronologically:(BOOL)arg2;
 - (id)momentsResultForMomentNodes:(id)arg1 sortChronologically:(BOOL)arg2;
@@ -395,6 +403,7 @@
 - (id)nodeLabelForHighlightType:(unsigned short)arg1;
 - (id)nodesForHighlightsInHighlightDayGroup:(id)arg1;
 - (id)nodesForMomentsInHighlight:(id)arg1;
+- (unsigned long long)numberOfMomentNodes;
 - (id)onGoingTripHighlightTypeNode;
 - (id)onGoingTripNodes;
 - (id)parents;

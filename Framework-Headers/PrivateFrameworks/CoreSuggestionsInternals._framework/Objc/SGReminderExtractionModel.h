@@ -27,6 +27,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_init;
+- (struct _NSRange)_whitelistedVerbRangeInContent:(id)arg1;
 - (id)argMaxForLastOutput:(id)arg1;
 - (id)argMaxForOutputIndex:(id)arg1 index:(int)arg2 shape:(id)arg3;
 - (id)argMaxForSequence:(id)arg1;
@@ -37,6 +38,7 @@
 - (id)modelInferences:(id)arg1;
 - (id)reminderOverrides;
 - (void)updateAll;
+- (id)whitelistedVerbInContent:(id)arg1;
 
 @end
 

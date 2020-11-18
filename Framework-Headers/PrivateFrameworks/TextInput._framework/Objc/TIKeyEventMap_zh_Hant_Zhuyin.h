@@ -15,6 +15,7 @@
 - (BOOL)isZhuyinCharacterBeforeInsertionPointOfKeyboardState:(id)arg1;
 - (id)punctuationMap;
 - (id)remapKeyWithString:(id)arg1 stringWithoutModifiers:(id)arg2 modifierFlags:(unsigned long long)arg3 keyboardState:(id)arg4;
+- (BOOL)shouldInsertZhuyinCharacterAfter:(id)arg1;
 
 @end
 

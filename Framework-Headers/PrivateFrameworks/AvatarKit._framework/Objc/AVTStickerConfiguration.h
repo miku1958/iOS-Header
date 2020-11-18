@@ -20,6 +20,7 @@
     NSArray *_props;
     NSArray *_shaderModifiers;
     AVTStickerCamera *_camera;
+    NSString *_stickerPack;
     double _snapshotFrame;
     double _duration;
     NSArray *_morpherOverrides;
@@ -48,8 +49,12 @@
 @property (strong, nonatomic) NSArray *shaderModifiers; // @synthesize shaderModifiers=_shaderModifiers;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) double snapshotFrame; // @synthesize snapshotFrame=_snapshotFrame;
+@property (readonly, nonatomic) NSString *stickerPack; // @synthesize stickerPack=_stickerPack;
 @property (readonly, nonatomic) unsigned long long stickerVersion; // @synthesize stickerVersion=_stickerVersion;
 
++ (id)allStickerPackNames;
++ (id)availableStickerNamesForAnimojiNamed:(id)arg1 inStickerPack:(id)arg2;
++ (id)availableStickerNamesForMemojiInStickerPack:(id)arg1;
 + (id)stickerConfigurationsForAnimojiNamed:(id)arg1;
 + (id)stickerConfigurationsForAnimojiNamed:(id)arg1 inStickerPack:(id)arg2;
 + (id)stickerConfigurationsForMemoji;
@@ -57,8 +62,9 @@
 + (id)stickerConfigurationsForPuppetNamed:(id)arg1;
 + (id)unavailableAnimojiNamesForStickerPack:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithConfigDictionary:(id)arg1 assetsPath:(id)arg2;
+- (id)initWithConfigDictionary:(id)arg1 assetsPath:(id)arg2 forStickerPack:(id)arg3;
 - (id)initWithConfigurationAtPath:(id)arg1;
+- (id)initWithConfigurationAtPath:(id)arg1 forStickerPack:(id)arg2;
 - (id)initWithName:(id)arg1 poseAnimation:(id)arg2 props:(id)arg3 shaders:(id)arg4 camera:(id)arg5 options:(id)arg6;
 - (void)loadIfNeeded;
 - (void)setupOptions:(id)arg1;

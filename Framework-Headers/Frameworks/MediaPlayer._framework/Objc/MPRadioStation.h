@@ -29,6 +29,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithModelStation:(id)arg1;
+- (id)initWithPlayParameters:(id)arg1;
 - (id)initWithStation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

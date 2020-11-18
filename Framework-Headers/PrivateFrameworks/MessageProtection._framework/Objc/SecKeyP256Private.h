@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface SecKeyP256Private : NSObject <P256PrivateKeyProtocol>
 {
+    id _privateKey;
     NSData *_privateKeyBlob;
     SecKeyP256Public *_publicKey;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id privateKey; // @synthesize privateKey=_privateKey;
 @property (readonly, nonatomic) NSData *privateKeyBlob; // @synthesize privateKeyBlob=_privateKeyBlob;
 @property (strong, nonatomic) SecKeyP256Public *publicKey; // @synthesize publicKey=_publicKey;
 @property (readonly) Class superclass;

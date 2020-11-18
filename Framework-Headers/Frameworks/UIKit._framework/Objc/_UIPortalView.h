@@ -6,15 +6,17 @@
 
 #import <UIKitCore/UIView.h>
 
-@class CAPortalLayer;
+@class CAPortalLayer, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _UIPortalView : UIView
 {
     BOOL _forwardsClientHitTestingToSourceView;
+    BOOL __geometryFrozen;
     UIView *_sourceView;
+    NSString *_name;
 }
 
+@property (nonatomic, getter=_isGeometryFrozen, setter=_setGeometryFrozen:) BOOL _geometryFrozen; // @synthesize _geometryFrozen=__geometryFrozen;
 @property (nonatomic) BOOL allowsBackdropGroups; // @dynamic allowsBackdropGroups;
 @property (nonatomic) BOOL allowsHitTesting; // @dynamic allowsHitTesting;
 @property (nonatomic) BOOL forwardsClientHitTestingToSourceView; // @synthesize forwardsClientHitTestingToSourceView=_forwardsClientHitTestingToSourceView;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL matchesAlpha; // @dynamic matchesAlpha;
 @property (nonatomic) BOOL matchesPosition; // @dynamic matchesPosition;
 @property (nonatomic) BOOL matchesTransform; // @dynamic matchesTransform;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) CAPortalLayer *portalLayer; // @dynamic portalLayer;
 @property (weak, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 
@@ -30,7 +33,12 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithSourceView:(id)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setCenter:(struct CGPoint)arg1;
+- (void)setFrame:(struct CGRect)arg1;
+- (void)setHidden:(BOOL)arg1;
 
 @end
 

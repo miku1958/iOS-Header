@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSHashTable, NSMutableSet, NSString, NSTimeZone, _CLKTimeFormatterSubstringRange;
+@class NSDate, NSHashTable, NSMutableSet, NSNumber, NSString, NSTimeZone, _CLKTimeFormatterSubstringRange;
 @protocol CLKTimeFormatterDelegate;
 
 @interface CLKTimeFormatter : NSObject
@@ -31,8 +31,8 @@
     _CLKTimeFormatterSubstringRange *_rangeInTimeSubstringFromSecondsSeparatorText;
     NSHashTable *_observers;
     NSMutableSet *_reasonsToPause;
-    struct NSNumber *_secondsUpdateToken;
-    struct NSNumber *_minutesUpdateToken;
+    NSNumber *_secondsUpdateToken;
+    NSNumber *_minutesUpdateToken;
     BOOL _useNarrowDesignatorTextForGerman;
     BOOL _suppressesDesignatorWhitespace;
     BOOL _includeSeparatorInTimeSubstringFromSeparatorText;

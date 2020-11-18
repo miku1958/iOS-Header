@@ -33,6 +33,7 @@
 - (void)_tapRecognized:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizerContainsPointerEvent:(id)arg1;
 - (id)init;
 - (void)registerGrabber:(id)arg1;
 - (void)unregisterGrabber:(id)arg1;

@@ -60,6 +60,7 @@
 - (BOOL)bindAssetsdService:(id)arg1 error:(id *)arg2;
 - (id)boundAssetsdServicesTable;
 - (void)close;
+- (void)dealloc;
 - (id)description;
 - (id)initWithLibraryURL:(id)arg1 bundleController:(id)arg2;
 - (void)initializeChangeHandling;

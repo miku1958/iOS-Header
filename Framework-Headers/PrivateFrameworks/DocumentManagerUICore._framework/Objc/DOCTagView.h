@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class DOCTag, UIFont, UILabel;
+#import <DocumentManagerUICore/UIContextMenuInteractionDelegate-Protocol.h>
+
+@class DOCTag, NSString, UIFont, UILabel;
 @protocol DOCTagViewDelegate;
 
-@interface DOCTagView : UIView
+@interface DOCTagView : UIView <UIContextMenuInteractionDelegate>
 {
     DOCTag *_tagValue;
     double _maxWidth;
@@ -18,15 +20,20 @@
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<DOCTagViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIFont *font;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *tagNameLabel; // @synthesize tagNameLabel=_tagNameLabel;
 @property (copy, nonatomic) DOCTag *tagValue; // @synthesize tagValue=_tagValue;
 
 - (void).cxx_destruct;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

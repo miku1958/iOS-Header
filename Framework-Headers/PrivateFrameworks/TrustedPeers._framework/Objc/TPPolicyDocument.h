@@ -6,28 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, TPPolicyVersion;
 
 @interface TPPolicyDocument : NSObject
 {
-    unsigned long long _policyVersion;
-    NSString *_policyHash;
-    NSData *_protobuf;
     NSArray *_modelToCategory;
     NSDictionary *_categoriesByView;
     NSDictionary *_introducersByCategory;
     NSDictionary *_redactions;
     NSArray *_keyViewMapping;
+    TPPolicyVersion *_version;
+    NSData *_protobuf;
 }
 
 @property (strong, nonatomic) NSDictionary *categoriesByView; // @synthesize categoriesByView=_categoriesByView;
 @property (strong, nonatomic) NSDictionary *introducersByCategory; // @synthesize introducersByCategory=_introducersByCategory;
 @property (strong, nonatomic) NSArray *keyViewMapping; // @synthesize keyViewMapping=_keyViewMapping;
 @property (strong, nonatomic) NSArray *modelToCategory; // @synthesize modelToCategory=_modelToCategory;
-@property (strong, nonatomic) NSString *policyHash; // @synthesize policyHash=_policyHash;
-@property (nonatomic) unsigned long long policyVersion; // @synthesize policyVersion=_policyVersion;
 @property (strong, nonatomic) NSData *protobuf; // @synthesize protobuf=_protobuf;
 @property (strong, nonatomic) NSDictionary *redactions; // @synthesize redactions=_redactions;
+@property (strong, nonatomic) TPPolicyVersion *version; // @synthesize version=_version;
 
 + (void)addCategoriesByView:(id)arg1 toPB:(id)arg2;
 + (void)addIntroducersByCategory:(id)arg1 toPB:(id)arg2;
@@ -41,10 +39,15 @@
 + (id)modelToCategoryFromPb:(id)arg1;
 + (id)modelToCategoryRulesFromArray:(id)arg1;
 + (id)policyDocWithHash:(id)arg1 data:(id)arg2;
++ (id)policyDocumentWithInternalVersion:(unsigned long long)arg1 modelToCategory:(id)arg2 categoriesByView:(id)arg3 introducersByCategory:(id)arg4 redactions:(id)arg5 keyViewMapping:(id)arg6 hashAlgo:(long long)arg7 error:(id *)arg8;
 + (id)policyDocumentWithVersion:(unsigned long long)arg1 modelToCategory:(id)arg2 categoriesByView:(id)arg3 introducersByCategory:(id)arg4 redactions:(id)arg5 keyViewMapping:(id)arg6 hashAlgo:(long long)arg7 error:(id *)arg8;
 + (id)redactionWithEncrypter:(id)arg1 modelToCategory:(id)arg2 categoriesByView:(id)arg3 introducersByCategory:(id)arg4 keyViewMapping:(id)arg5 error:(id *)arg6;
 + (id)redactionsFromPb:(id)arg1;
 - (void).cxx_destruct;
+- (id)cloneWithVersionNumber:(unsigned long long)arg1;
+- (id)description;
+- (id)encodeProtobuf;
+- (id)encodeProtobufWithVersion:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPolicyDocument:(id)arg1;

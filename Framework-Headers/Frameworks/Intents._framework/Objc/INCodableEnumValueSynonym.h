@@ -40,12 +40,14 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedPronunciationHintForLanguage:(id)arg1;
+- (id)localizedPronunciationHintWithLocalizer:(id)arg1;
 - (id)localizedSynonymForLanguage:(id)arg1;
+- (id)localizedSynonymWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 
 @end

@@ -27,7 +27,7 @@
 - (id)description;
 - (void)ensureTechniqueAndCustomSensorCompatibility;
 - (id)imageSensorSettings;
-- (id)imageSensorSettingsForSuperWide;
+- (id)imageSensorSettingsForUltraWide;
 - (id)init;
 - (id)initPrivate;
 - (BOOL)isEqual:(id)arg1;

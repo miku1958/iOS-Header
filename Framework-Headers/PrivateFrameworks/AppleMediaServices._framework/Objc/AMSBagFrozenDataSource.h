@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
 @class AMSBagKeySet, NSArray, NSDate, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSBagFrozenDataSource : NSObject <AMSBagDataSourceProtocol>
+@interface AMSBagFrozenDataSource : NSObject <AMSBagDataSourceProtocol, NSSecureCoding>
 {
     NSDate *_expirationDate;
     NSString *_profile;
@@ -35,9 +36,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithProfile:(id)arg1 profileVersion:(id)arg2 data:(id)arg3 expirationDate:(id)arg4 bagKeySet:(id)arg5 cookies:(id)arg6;
 - (id)bagKeyInfoForKey:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
 - (id)valueForURLVariable:(id)arg1 account:(id)arg2;
 

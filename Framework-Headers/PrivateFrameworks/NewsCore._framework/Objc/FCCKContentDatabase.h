@@ -32,6 +32,7 @@
 - (id)initWithContextConfiguration:(id)arg1 networkBehaviorMonitor:(id)arg2;
 - (id)permanentURLForRecordID:(id)arg1 field:(long long)arg2;
 - (id)permanentURLForRecordID:(id)arg1 field:(long long)arg2 useSecureConnection:(BOOL)arg3;
+- (void)updateAssetURLHostIfNeededWithComponents:(id)arg1;
 
 @end
 

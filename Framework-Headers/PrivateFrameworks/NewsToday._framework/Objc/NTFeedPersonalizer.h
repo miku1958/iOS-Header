@@ -8,8 +8,8 @@
 
 #import <NewsToday/FCFeedPersonalizing-Protocol.h>
 
-@class FCKeyValueStore, FCPersonalizationTreatment, NSString;
-@protocol FCReadonlyPersonalizationAggregateStore, FCTodayPrivateData, FRRingBufferContainer;
+@class FCPersonalizationTreatment, NSString;
+@protocol FCReadonlyPersonalizationAggregateStore, FCTodayPrivateData;
 
 @interface NTFeedPersonalizer : NSObject <FCFeedPersonalizing>
 {
@@ -20,8 +20,6 @@
     double _articleDiversificationUniquePublisherExpectationSlope;
     double _articleDiversificationUniquePublisherExpectationYIntercept;
     id<FCTodayPrivateData> _todayData;
-    id<FRRingBufferContainer> _globalScoresRingBufferContainer;
-    FCKeyValueStore *_globalScoreRangesValueStore;
 }
 
 @property (nonatomic) double articleDiversificationSimilarityExpectationEnd; // @synthesize articleDiversificationSimilarityExpectationEnd=_articleDiversificationSimilarityExpectationEnd;
@@ -30,8 +28,6 @@
 @property (nonatomic) double articleDiversificationUniquePublisherExpectationYIntercept; // @synthesize articleDiversificationUniquePublisherExpectationYIntercept=_articleDiversificationUniquePublisherExpectationYIntercept;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) FCKeyValueStore *globalScoreRangesValueStore; // @synthesize globalScoreRangesValueStore=_globalScoreRangesValueStore;
-@property (strong, nonatomic) id<FRRingBufferContainer> globalScoresRingBufferContainer; // @synthesize globalScoresRingBufferContainer=_globalScoresRingBufferContainer;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) FCPersonalizationTreatment *personalizationTreatment; // @synthesize personalizationTreatment=_personalizationTreatment;
 @property (strong, nonatomic) id<FCReadonlyPersonalizationAggregateStore> readonlyPersonalizationAggregateStore; // @synthesize readonlyPersonalizationAggregateStore=_readonlyPersonalizationAggregateStore;
@@ -50,7 +46,6 @@
 - (void)prepareFavoritesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)prepareForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)rankTagIDsDescending:(id)arg1;
-- (id)scoreProfilesForItems:(id)arg1 configurationSet:(long long)arg2;
 - (id)scoresForTagIDs:(id)arg1;
 - (id)sortItems:(id)arg1;
 - (id)sortItems:(id)arg1 configurationSet:(long long)arg2;

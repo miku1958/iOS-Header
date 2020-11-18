@@ -27,6 +27,7 @@
 @property (readonly, copy, nonatomic) NSString *profileVersion;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;
 - (id)arrayForKey:(id)arg1;
@@ -34,6 +35,8 @@
 - (void)createSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dictionaryForKey:(id)arg1;
 - (id)doubleForKey:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
 - (id)integerForKey:(id)arg1;
 - (BOOL)isLoaded;

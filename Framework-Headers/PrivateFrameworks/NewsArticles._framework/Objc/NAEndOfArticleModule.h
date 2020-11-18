@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsArticles/NAEndOfArticleModuleType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface NAEndOfArticleModule : NSObject <NAEndOfArticleModuleType>
+@interface NAEndOfArticleModule : NSObject
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;

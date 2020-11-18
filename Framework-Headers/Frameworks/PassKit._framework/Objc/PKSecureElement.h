@@ -51,6 +51,7 @@
 - (void).cxx_destruct;
 - (void)SEPPairingInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateHardwareManagerListener;
+- (void)allAppletsAndCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)allAppletsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)appletWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)connectToServerWithPushTopic:(id)arg1 completion:(CDUnknownBlockType)arg2;

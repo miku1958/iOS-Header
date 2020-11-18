@@ -25,6 +25,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (long long)ax_contentInfoKind;
+- (BOOL)canBecomeFocused;
 - (id)initWithAccessibilityContainer:(id)arg1 pxgView:(id)arg2 contentInfo:(id)arg3;
 - (BOOL)isAccessibilityElement;
 

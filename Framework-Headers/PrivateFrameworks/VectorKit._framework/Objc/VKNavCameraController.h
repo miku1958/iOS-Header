@@ -82,7 +82,6 @@ __attribute__((visibility("hidden")))
     BOOL _frameAllGroupedManeuvers;
     unsigned char _maxManeuversToFrame;
     BOOL _ignorePointsBehind;
-    BOOL _insetsAnimating;
     Coordinate3D_bc242218 _routeFocusCoordinate;
     unsigned long long _lastTargetStyleIdentifier;
     double _desiredZoomScale;
@@ -155,8 +154,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)detailedDescription;
 - (double)distanceToManeuver:(unsigned long long)arg1;
-- (void)edgeInsetsDidEndAnimating;
-- (void)edgeInsetsWillBeginAnimating;
 - (id)init;
 - (id)initWithTaskContext:(shared_ptr_e963992e)arg1 device:(struct Device *)arg2 mapDataAccess:(struct MapDataAccess *)arg3 animationRunner:(struct AnimationRunner *)arg4 runLoopController:(struct RunLoopController *)arg5 cameraDelegate:(id)arg6;
 - (BOOL)isGesturing;
@@ -186,6 +183,7 @@ __attribute__((visibility("hidden")))
 - (void)setCamera:(id)arg1;
 - (void)setCameraFrame:(CameraFrame_406dbd31)arg1;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
+- (void)setEdgeInsetsAnimating:(BOOL)arg1;
 - (void)setNavContext:(id)arg1;
 - (void)startPanningAtPoint:(struct CGPoint)arg1 panAtStartPoint:(BOOL)arg2;
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;

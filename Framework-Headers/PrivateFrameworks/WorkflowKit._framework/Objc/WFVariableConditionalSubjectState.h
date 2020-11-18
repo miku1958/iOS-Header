@@ -25,7 +25,7 @@
 - (Class)contentClassProvidingContentProperty;
 - (long long)contentType;
 - (unsigned long long)displayableTimeUnits;
-- (void)getContentWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getContentWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getEnumerationPossibleStatesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;

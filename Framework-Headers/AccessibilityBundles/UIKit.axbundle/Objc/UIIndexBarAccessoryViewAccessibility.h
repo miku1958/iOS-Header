@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibiityDisplayEntryNearestToContentOffset:(struct CGPoint)arg1;
 - (void)_accessibilityJumpToTableIndex:(id)arg1;
 - (void)_accessibilityMoveToIndexAtPosition:(long long)arg1;
 - (long long)_axCurrentPosition;

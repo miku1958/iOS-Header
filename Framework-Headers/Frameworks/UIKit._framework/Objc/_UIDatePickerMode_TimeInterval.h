@@ -27,9 +27,9 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)rangeForCalendarUnit:(unsigned long long)arg1;
 - (void)resetComponentWidths;
 - (double)rowHeight;
-- (void)takeExtremesFromMinimumDate:(id)arg1 maximumDate:(id)arg2;
 - (long long)titleAlignmentForCalendarUnit:(unsigned long long)arg1;
 - (id)titleForRow:(long long)arg1 inComponent:(long long)arg2;
+- (void)updateDateForNewDateRange;
 - (long long)valueForDate:(id)arg1 dateComponents:(id)arg2 calendarUnit:(unsigned long long)arg3;
 - (double)widthForCalendarUnit:(unsigned long long)arg1 font:(id)arg2 maxWidth:(double)arg3;
 

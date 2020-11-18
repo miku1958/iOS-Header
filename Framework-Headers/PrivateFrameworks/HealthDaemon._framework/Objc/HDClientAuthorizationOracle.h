@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_shouldBypassAuthorization;
+- (id)_unrestrictedAuthorizationForTypes:(id)arg1;
 - (id)additionalAuthorizationPredicateForObjectType:(id)arg1 error:(id *)arg2;
 - (id)filteredObjectsForReadAuthorization:(id)arg1 anchor:(id)arg2 error:(id *)arg3;
 - (id)init;

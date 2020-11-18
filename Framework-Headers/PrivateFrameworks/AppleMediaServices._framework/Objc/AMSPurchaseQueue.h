@@ -13,6 +13,7 @@
 
 @interface AMSPurchaseQueue : NSObject <AMSBagConsumer>
 {
+    AMSURLSession *_session;
     BOOL _isSuspeneded;
     NSOperationQueue *_backgroundQueue;
     AMSPurchaseQueueConfiguration *_config;
@@ -21,7 +22,6 @@
     NSObject<OS_dispatch_queue> *_enqueue;
     NSLock *_lock;
     AMSPurchaseProtocolHandler *_protocolHandler;
-    AMSURLSession *_session;
 }
 
 @property (strong, nonatomic) NSOperationQueue *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;

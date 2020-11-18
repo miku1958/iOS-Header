@@ -132,6 +132,7 @@
 - (id)callProviderFromURLComponents:(id)arg1 video:(BOOL *)arg2;
 - (id)contactIdentifierFromURLComponents:(id)arg1;
 - (id)contactIdentifierURLQueryItem;
+- (id)contactNamesByHandleWithContactsDataSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)destinationIDFromURL:(id)arg1;
 - (id)dialAssistedURLQueryItem;

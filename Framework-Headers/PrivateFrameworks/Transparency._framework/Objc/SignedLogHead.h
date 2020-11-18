@@ -22,7 +22,8 @@
 @property (strong) TransparencySignatureVerifier *verifier;
 
 + (id)descriptor;
-- (id)copyManagedObjectWithError:(id *)arg1;
+- (id)copyManagedObject:(id *)arg1;
+- (id)createManagedObjectWithError:(id *)arg1;
 - (BOOL)verifyWithError:(id *)arg1;
 
 @end

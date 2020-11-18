@@ -64,6 +64,7 @@
 - (void)eagerUploadTransfer:(NSDictionary *)arg1;
 - (void)enrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
 - (void)enrollSelfDeviceForSMSRelay:(NSString *)arg1;
+- (void)fetchAccountStatusAndUpdateMiCSwitchEligibility;
 - (void)fetchCloudKitSyncStateDebuggingInfo:(NSDictionary *)arg1;
 - (void)fetchExitRecord;
 - (void)fetchHandleSharingState;
@@ -72,7 +73,6 @@
 - (void)fetchLatestSalt;
 - (void)fetchNicknames;
 - (void)fetchPersonalNickname;
-- (void)fetchSecurityLevelAndUpdateMiCSwitchEligibility;
 - (void)fetchSyncStateStatistics;
 - (void)fileTransfer:(NSString *)arg1 acceptedWithPath:(NSString *)arg2 autoRename:(BOOL)arg3 overwrite:(BOOL)arg4;
 - (void)fileTransfer:(NSString *)arg1 createdWithProperties:(NSDictionary *)arg2;
@@ -149,7 +149,6 @@
 - (void)requestBuddyPicturesAndPropertiesForAccount:(NSString *)arg1;
 - (void)requestGroupsAccount:(NSString *)arg1;
 - (void)requestLastMessagesForChats;
-- (void)requestMOCEnabledState;
 - (void)requestNetworkDataAvailability;
 - (void)requestOneTimeCodeStatus;
 - (void)requestPendingACInvites;

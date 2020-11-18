@@ -18,11 +18,17 @@ __attribute__((visibility("hidden")))
     _UIStatusBarDisplayItemPlacement *_callForwardingPlacement;
     _UIStatusBarDisplayItemPlacement *_badgePlacement;
     _UIStatusBarDisplayItemPlacement *_rawPlacement;
+    _UIStatusBarDisplayItemPlacement *_dualSignalStrengthPlacement;
+    _UIStatusBarDisplayItemPlacement *_dualNamePlacement;
+    _UIStatusBarDisplayItemPlacement *_dualNameAndTypePlacement;
     NSArray *_placementsAffectedByAirplaneMode;
 }
 
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *badgePlacement; // @synthesize badgePlacement=_badgePlacement;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *callForwardingPlacement; // @synthesize callForwardingPlacement=_callForwardingPlacement;
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *dualNameAndTypePlacement; // @synthesize dualNameAndTypePlacement=_dualNameAndTypePlacement;
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *dualNamePlacement; // @synthesize dualNamePlacement=_dualNamePlacement;
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *dualSignalStrengthPlacement; // @synthesize dualSignalStrengthPlacement=_dualSignalStrengthPlacement;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *namePlacement; // @synthesize namePlacement=_namePlacement;
 @property (strong, nonatomic) NSArray *placementsAffectedByAirplaneMode; // @synthesize placementsAffectedByAirplaneMode=_placementsAffectedByAirplaneMode;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *rawPlacement; // @synthesize rawPlacement=_rawPlacement;

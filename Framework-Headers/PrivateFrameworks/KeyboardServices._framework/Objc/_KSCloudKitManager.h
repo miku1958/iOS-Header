@@ -49,6 +49,7 @@
 - (void)accountStatusDidChange:(id)arg1;
 - (void)addOperation:(id)arg1;
 - (void)addOperation:(id)arg1 priority:(unsigned long long)arg2;
+- (BOOL)changeInUserAccountDetected;
 - (void)copyFieldsFromRecord:(id)arg1 toRecord:(id)arg2;
 - (void)dealloc;
 - (void)fetchPublicRecordsWithNames:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

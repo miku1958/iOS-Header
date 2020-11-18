@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *commonSenseRecommendedAge;
 @property (readonly, nonatomic) unsigned long long contentType;
 @property (readonly, nonatomic) NSNumber *duration;
+@property (readonly, nonatomic) NSNumber *episodeIndexInSeries;
 @property (readonly, nonatomic) NSNumber *episodeNumber;
 @property (readonly, nonatomic) NSString *formattedReleaseDate;
 @property (readonly, nonatomic) NSString *genre;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *previewFrameHeight;
 @property (readonly, nonatomic) NSString *previewFrameURLFormat;
 @property (readonly, nonatomic) NSNumber *previewFrameWidth;
+@property (readonly, nonatomic) NSString *ratingAuxiliaryName;
 @property (readonly, nonatomic) NSString *ratingDomain;
 @property (readonly, nonatomic) NSString *ratingName;
 @property (readonly, nonatomic) NSString *ratingSystem;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *showArtworkHeight;
 @property (readonly, nonatomic) NSString *showArtworkURLFormat;
 @property (readonly, nonatomic) NSNumber *showArtworkWidth;
+@property (readonly, nonatomic) NSString *showCanonicalId;
 @property (readonly, nonatomic) NSString *showTitle;
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) unsigned long long tomatoFreshness;

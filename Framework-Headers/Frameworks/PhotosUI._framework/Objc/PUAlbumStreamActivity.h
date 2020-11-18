@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_presentActivityOnViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_publishAssets:(id)arg1 withSharingInfos:(id)arg2 customExportsInfo:(id)arg3 andTrimmedVideoPathInfo:(id)arg4 toAlbum:(id)arg5 orCreateWithName:(id)arg6 comment:(id)arg7 invitationRecipients:(id)arg8 wantsPublicWebsite:(BOOL)arg9 completion:(CDUnknownBlockType)arg10;
 - (id)_selectedVideo;
-- (BOOL)_sharedAlbumAllowsAdding:(struct NSObject *)arg1;
+- (BOOL)_sharedAlbumAllowsAdding:(id)arg1;
 - (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;

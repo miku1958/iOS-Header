@@ -17,8 +17,11 @@
 @property (nonatomic) BOOL allowsReaderModeEntry; // @synthesize allowsReaderModeEntry=_allowsReaderModeEntry;
 @property (strong, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRequestContext:(id)arg1;
 
 @end

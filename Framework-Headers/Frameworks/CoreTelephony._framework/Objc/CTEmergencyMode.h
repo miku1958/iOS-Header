@@ -27,7 +27,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEnabled:(BOOL)arg1 type:(long long)arg2;
 - (id)initWithEnabled:(BOOL)arg1 type:(long long)arg2 isEmergencyText:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCTEmergencyMode:(id)arg1;

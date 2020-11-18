@@ -76,7 +76,6 @@
 - (BOOL)work_deleteRelationshipsWithIDs:(id)arg1 error:(id *)arg2;
 - (BOOL)work_doesKeyExist:(id)arg1;
 - (BOOL)work_doesNodeExist:(id)arg1;
-- (BOOL)work_doesNodeExistWithTwoMatchingAttributesFirstKey:(long long)arg1 firstValue:(id)arg2 secondKey:(long long)arg3 secondValue:(id)arg4 exists:(BOOL *)arg5 error:(id *)arg6;
 - (BOOL)work_doesRelationshipNameExist:(id)arg1;
 - (BOOL)work_doesValueTypeExist:(id)arg1;
 - (BOOL)work_dropIndicesWithError:(id *)arg1;

@@ -10,7 +10,7 @@
 
 @interface NUListPattern : NUPattern
 {
-    struct NSArray *_list;
+    NSArray *_list;
 }
 
 @property (readonly) NSArray *list; // @synthesize list=_list;

@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class HDCodableMessageVersion, NSData, NSString;
 
 @interface HDCodableFHIRResource : PBCodable <NSCopying>
 {
@@ -20,6 +20,7 @@
     NSString *_accountIdentifier;
     NSString *_fhirVersion;
     NSString *_gatewayExternalID;
+    HDCodableMessageVersion *_messageVersion;
     NSString *_originVersionBuild;
     NSData *_rawContent;
     NSString *_receivedDateTimeZoneName;
@@ -43,6 +44,7 @@
 @property (nonatomic) BOOL hasExtractionHints;
 @property (readonly, nonatomic) BOOL hasFhirVersion;
 @property (readonly, nonatomic) BOOL hasGatewayExternalID;
+@property (readonly, nonatomic) BOOL hasMessageVersion;
 @property (readonly, nonatomic) BOOL hasOriginVersionBuild;
 @property (nonatomic) BOOL hasOriginVersionMajor;
 @property (nonatomic) BOOL hasOriginVersionMinor;
@@ -53,6 +55,7 @@
 @property (readonly, nonatomic) BOOL hasResourceID;
 @property (readonly, nonatomic) BOOL hasResourceType;
 @property (readonly, nonatomic) BOOL hasSourceURL;
+@property (strong, nonatomic) HDCodableMessageVersion *messageVersion; // @synthesize messageVersion=_messageVersion;
 @property (strong, nonatomic) NSString *originVersionBuild; // @synthesize originVersionBuild=_originVersionBuild;
 @property (nonatomic) long long originVersionMajor; // @synthesize originVersionMajor=_originVersionMajor;
 @property (nonatomic) long long originVersionMinor; // @synthesize originVersionMinor=_originVersionMinor;

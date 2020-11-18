@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)createMyNumberSubgroup;
 - (id)createNetworkSelectionSubgroup;
 - (id)createNetworkSettingsSubgroup;
+- (id)createRoamingSpecifiersSubgroup;
 - (id)createSimStatusCache;
 - (id)createSimSubgroup;
 - (id)initWithHostController:(id)arg1 parentSpecifier:(id)arg2 groupSpecifier:(id)arg3 popViewControllerOnPlanRemoval:(BOOL)arg4;

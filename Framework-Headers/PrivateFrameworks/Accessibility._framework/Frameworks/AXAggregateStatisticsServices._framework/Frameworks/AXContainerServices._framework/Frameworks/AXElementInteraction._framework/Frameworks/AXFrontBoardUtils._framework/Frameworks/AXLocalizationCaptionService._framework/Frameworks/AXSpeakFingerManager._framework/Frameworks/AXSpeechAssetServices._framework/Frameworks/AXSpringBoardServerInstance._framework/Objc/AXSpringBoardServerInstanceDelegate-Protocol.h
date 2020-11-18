@@ -15,6 +15,7 @@
 - (BOOL)areSystemGesturesDisabledNativelyWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)armApplePayWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)canSetDockIconActivationModeForServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (BOOL)connectedDevicesRequireAssistiveTouch;
 - (void)dismissAppSwitcherWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)dismissSiriWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSNumber *)focusedAppPIDWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -40,6 +41,7 @@
 - (BOOL)isNotificationCenterVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isNotificationVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isOrientationLockedWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (BOOL)isPIPWindowVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isPasscodeLockVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isPasscodeRequiredOnLockWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isPurpleBuddyAppFrontmostWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -93,7 +95,6 @@
 - (id)serverInstance:(_AXSpringBoardServerInstance *)arg1 splashImageForAppWithBundleIdentifier:(NSString *)arg2;
 - (NSDictionary *)serverInstance:(_AXSpringBoardServerInstance *)arg1 springBoardSystemInfoQuery:(unsigned long long)arg2;
 - (void)setDashBoardSystemGesturesEnabled:(BOOL)arg1 withServerInstance:(_AXSpringBoardServerInstance *)arg2;
-- (void)setLockScreenDimTimerEnabled:(BOOL)arg1 withServerInstance:(_AXSpringBoardServerInstance *)arg2;
 - (void)setReachabilityActive:(BOOL)arg1;
 - (void)simulateEdgePressHaptics:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)toggleDarkModeWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -102,7 +103,6 @@
 - (void)toggleSpotlightWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)unlockDeviceWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)updateFrontMostApplicationWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
-- (void)userEventOccurredWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (double)volumeLevelWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (void)wakeUpDeviceIfNecessaryWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 @end

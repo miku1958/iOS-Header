@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@class HMAccessoryCategory, HMDAccessoryAdvertisement, HMFMessageDispatcher, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDUnassociatedAccessory : HMFObject <HMFLogging, HMFMessageReceiver, NSSecureCoding>
@@ -20,11 +20,13 @@
     HMAccessoryCategory *_category;
     NSString *_identifier;
     long long _associationOptions;
+    HMDAccessoryAdvertisement *_accessoryAdvertisement;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_messageDispatcher;
 }
 
+@property (strong, nonatomic) HMDAccessoryAdvertisement *accessoryAdvertisement; // @synthesize accessoryAdvertisement=_accessoryAdvertisement;
 @property (readonly) long long associationOptions; // @synthesize associationOptions=_associationOptions;
 @property (strong) HMAccessoryCategory *category; // @synthesize category=_category;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
@@ -48,6 +50,7 @@
 - (void).cxx_destruct;
 - (void)_handleIdentify:(id)arg1;
 - (void)_registerForMessages;
+- (void)associateWithAccessoryAdvertisement:(id)arg1;
 - (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1 additionalDescription:(id)arg2;
 - (id)dumpDescription;

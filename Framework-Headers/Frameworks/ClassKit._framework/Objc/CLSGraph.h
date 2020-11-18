@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+@class NSMapTable;
 @protocol CLSGraphVertex><NSObject;
 
 @interface CLSGraph : NSObject
 {
-    struct NSMapTable *_verticesMap;
-    struct NSMapTable *_inEdgesMap;
-    struct NSMapTable *_outEdgesMap;
+    NSMapTable *_verticesMap;
+    NSMapTable *_inEdgesMap;
+    NSMapTable *_outEdgesMap;
     unsigned long long _options;
 }
 
@@ -21,8 +22,8 @@
 @property (readonly, nonatomic) unsigned long long vertexCount;
 
 - (void).cxx_destruct;
-- (unsigned long long)_degreeOfVertex:(id)arg1 inEdgeMap:(struct NSMapTable *)arg2;
-- (void)_enumerateVerticesInEdges:(struct NSHashTable *)arg1 skipingEdges:(struct NSHashTable *)arg2 enumerationBlock:(CDUnknownBlockType)arg3;
+- (unsigned long long)_degreeOfVertex:(id)arg1 inEdgeMap:(id)arg2;
+- (void)_enumerateVerticesInEdges:(id)arg1 skipingEdges:(id)arg2 enumerationBlock:(CDUnknownBlockType)arg3;
 - (void)_removeEdgeFromVertexWithID:(id)arg1 toVertexWithID:(id)arg2;
 - (void)_traverseStartingAtVertex:(id)arg1 previousVertex:(id)arg2 visitedVertices:(id)arg3 enumerationBlock:(CDUnknownBlockType)arg4;
 - (void)addEdgeFromVertex:(id)arg1 toVertex:(id)arg2;

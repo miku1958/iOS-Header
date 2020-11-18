@@ -59,7 +59,6 @@
 - (void)_checkWatchConnected;
 - (void)_checkWatchiCloudAccount;
 - (void)_checkWristDetectEnabledState;
-- (BOOL)_currentlyPairing;
 - (id)_errorForCompanionAccountNeeded;
 - (id)_errorForConnectionIssue;
 - (id)_errorForGenericIssue;

@@ -8,12 +8,13 @@
 
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKQuickLinkItemViewDelegate-Protocol.h>
+#import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
 @class MKMapItem, NSArray, NSString, UIView;
 @protocol MKPlaceQuickLinksViewControllerDelegate, _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceQuickLinksViewController : MKPlaceSectionViewController <MKQuickLinkItemViewDelegate, MKModuleViewControllerProtocol>
+@interface MKPlaceQuickLinksViewController : MKPlaceSectionViewController <MKQuickLinkItemViewDelegate, MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate>
 {
     NSArray *_quickLinks;
     NSArray *_quickLinkViews;
@@ -39,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (void)_captureTapActionWithQuickLink:(id)arg1;
 - (void)createActionViews;
 - (void)createConstraints;
+- (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (void)infoCardThemeChanged;
 - (void)layoutButtons;
 - (unsigned long long)maxButtonsPerRow;

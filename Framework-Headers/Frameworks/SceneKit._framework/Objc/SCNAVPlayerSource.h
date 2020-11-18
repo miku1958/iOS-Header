@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     struct __CVBuffer *_pixelBuffer;
     id<MTLTexture> _mtlTexture;
     unsigned long long _texturePixelFormat;
+    unsigned char _videoSourceFormat;
     unsigned long long _width;
     unsigned long long _height;
 }
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (void)registerPlayer:(id)arg1;
+- (void)setVideoSourceFormat:(unsigned char)arg1;
 - (void)unregisterPlayer:(id)arg1;
 
 @end

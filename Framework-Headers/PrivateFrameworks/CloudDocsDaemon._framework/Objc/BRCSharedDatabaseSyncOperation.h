@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface BRCSharedDatabaseSyncOperation : _BRCOperation <BRCOperationSubclass>
 {
     BRCServerChangeState *_changeState;
+    CDUnknownBlockType _shareDBSyncCompletionBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType shareDBSyncCompletionBlock; // @synthesize shareDBSyncCompletionBlock=_shareDBSyncCompletionBlock;
 @property (readonly) Class superclass;
 
 + (id)queue;

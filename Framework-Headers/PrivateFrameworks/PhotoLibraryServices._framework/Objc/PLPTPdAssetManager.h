@@ -57,8 +57,8 @@
 - (id)adjustmentFilePathForAsset:(id)arg1 requiresTemporaryFileCleanup:(BOOL *)arg2;
 - (id)albumHandles;
 - (id)assetReaderForFormatConvertedPTPAsset:(id)arg1 ofManagedAsset:(id)arg2 path:(id)arg3;
-- (id)assetsInAssociation:(struct NSObject *)arg1;
-- (id)associationsInAlbum:(struct NSObject *)arg1;
+- (id)assetsInAssociation:(id)arg1;
+- (id)associationsInAlbum:(id)arg1;
 - (void)beginSignpostForThumbnailGenerationForAsset:(id)arg1 inputResourceTypeLabel:(id)arg2;
 - (id)dataByJPEGCompressingCGImage:(struct CGImage *)arg1 toLengthLimit:(long long)arg2 initialCompressionQuality:(float)arg3 size:(struct CGSize)arg4 orientation:(long long)arg5;
 - (id)dataForThumbnailFileAtPath:(id)arg1 rotatedToOrientation:(long long)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
@@ -68,8 +68,8 @@
 - (void)enumeratePTPInformationForFilesInDirectory:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)fetchObjectIDsForAssetsExposedToPTPFromObjectIDs:(id)arg1;
 - (void)handlePhotoLibraryAvailableNotification;
-- (id)infoForAlbum:(struct NSObject *)arg1;
-- (id)infoForAsset:(struct NSObject *)arg1;
+- (id)infoForAlbum:(id)arg1;
+- (id)infoForAsset:(id)arg1;
 - (id)init;
 - (BOOL)libraryIsAvailable;
 - (id)managedObjectContext;

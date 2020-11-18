@@ -20,7 +20,7 @@
 - (void)copyKeyStoreStateFromDisk:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)copyLogClientConfiguration:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)forceApplicationConfig:(NSString *)arg1 block:(void (^)(NSError *))arg2;
-- (void)forceApplicationKeysDownload:(NSString *)arg1 block:(void (^)(NSData *, unsigned long long, NSError *))arg2;
+- (void)forceApplicationKeysDownload:(NSString *)arg1 block:(void (^)(NSError *))arg2;
 - (void)forceApplicationKeysFetch:(NSString *)arg1 block:(void (^)(NSData *, NSError *))arg2;
 - (void)forceConfigUpdate:(void (^)(NSError *))arg1;
 - (void)forceValidateUUID:(NSUUID *)arg1 uri:(NSString *)arg2 block:(void (^)(unsigned long long, NSError *))arg3;

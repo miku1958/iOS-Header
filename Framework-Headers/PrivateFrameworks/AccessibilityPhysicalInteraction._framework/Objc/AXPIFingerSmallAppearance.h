@@ -26,12 +26,17 @@
 - (double)fingerInnerCircleInnerRadius;
 - (double)fingerInnerRadius;
 - (double)fingerOuterRadius;
+- (double)innerCircleStrokeOutlineWidth;
 - (id)pressedCircularProgressFillColor;
 - (id)selectedFillColor;
 - (id)selectedStrokeColor;
+- (BOOL)showFingerOutlines;
+- (BOOL)showInnerCircle;
 - (id)strokeOutlineColor;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;
+- (id)systemFilterDarkModeOverride;
+- (BOOL)useSystemFilters;
 
 @end
 

@@ -8,5 +8,6 @@
 
 @interface ISIcon (CUIKIcon)
 - (id)initWithDate:(id)arg1 calendar:(id)arg2 format:(long long)arg3;
+- (id)initWithDateComponents:(id)arg1 calendar:(id)arg2 format:(long long)arg3;
 @end
 

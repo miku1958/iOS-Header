@@ -38,7 +38,6 @@
     BOOL _isEditingWordPrefix;
     TIKeyboardState *_keyboardState;
     TIKeyboardInputManagerConfig *_config;
-    CDUnknownBlockType _candidateGenerationCompletionHandler;
     TIRevisionHistory *_revisionHistory;
     TILRUDictionary *_autocorrectionHistory;
     TILRUDictionary *_recentAutocorrections;
@@ -64,6 +63,7 @@
     TIAutocorrectionList *_lastContinuousPathAutocorrection;
     id<TICandidateHandler> _candidateHandlerForOpenRequest;
     unsigned long long _lastNumCandidatesRequest;
+    CDUnknownBlockType _candidateGenerationCompletionHandler;
     struct _NSRange _candidateRange;
 }
 
@@ -184,6 +184,7 @@
 - (void)dealloc;
 - (void)decrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4;
 - (id)defaultCandidate;
+- (BOOL)delayedCandidateList;
 - (id)deleteFromInput:(unsigned long long *)arg1;
 - (void)deleteFromInputWithContext:(id)arg1;
 - (id)deletedSuffixOfInputContext:(id)arg1 whenDeletingFromInputString:(id)arg2 withInputIndex:(unsigned long long)arg3 deletionCount:(unsigned long long)arg4;
@@ -405,6 +406,7 @@
 - (void)syncInputStringToKeyboardState:(id)arg1 afterContextChange:(BOOL)arg2;
 - (void)syncMarkedTextForKeyboardState:(id)arg1 afterContextChange:(BOOL)arg2;
 - (void)syncToKeyboardState:(id)arg1;
+- (BOOL)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)syncToKeyboardState:(id)arg1 from:(id)arg2 afterContextChange:(BOOL)arg3;
 - (void)syncToLayoutState:(id)arg1;
 - (void)synchronizeConversationHistoryWithInputContextHistory:(id)arg1;
@@ -434,6 +436,7 @@
 - (BOOL)usesAutoDeleteWord;
 - (BOOL)usesCandidateSelection;
 - (BOOL)usesContinuousPath;
+- (BOOL)usesLiveConversion;
 - (BOOL)usesPunctuationKeysForRowNavigation;
 - (BOOL)usesRetrocorrection;
 - (void)willChangeToKeyboardState:(id)arg1 afterContextChange:(BOOL)arg2;

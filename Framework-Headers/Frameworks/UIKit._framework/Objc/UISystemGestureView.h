@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)_canChangeFirstResponder:(id)arg1 toResponder:(id)arg2;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;
+- (struct CGRect)_responderSelectionRectForWindow:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
 

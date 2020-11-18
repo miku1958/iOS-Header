@@ -8,7 +8,7 @@
 
 #import <RenderBox/NSXMLParserDelegate-Protocol.h>
 
-@class NSString, RBDisplayList;
+@class NSError, NSString, RBDisplayList;
 @protocol RBXMLParserDelegate;
 
 @interface RBXMLParser : NSObject <NSXMLParserDelegate>
@@ -19,6 +19,7 @@
     struct objc_ptr<RBDisplayList *> _list;
     struct objc_ptr<RBShape *> _shape;
     struct objc_ptr<RBFill *> _fill;
+    struct objc_ptr<NSError *> _error;
     struct State *_state;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _characters;
     struct cf_ptr<__CFDictionary *> _image_cache;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) RBDisplayList *displayList;
+@property (readonly, nonatomic) NSError *error;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly) Class superclass;

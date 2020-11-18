@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (double)dataRateKB;
 - (id)init;
 - (double)networkDataRateKB;
 

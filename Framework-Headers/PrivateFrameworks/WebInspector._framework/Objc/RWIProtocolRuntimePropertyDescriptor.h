@@ -24,7 +24,7 @@
 @property (nonatomic) BOOL wasThrown;
 @property (nonatomic) BOOL writable;
 
-- (id)initWithName:(id)arg1 configurable:(BOOL)arg2 enumerable:(BOOL)arg3;
+- (id)initWithName:(id)arg1;
 
 @end
 

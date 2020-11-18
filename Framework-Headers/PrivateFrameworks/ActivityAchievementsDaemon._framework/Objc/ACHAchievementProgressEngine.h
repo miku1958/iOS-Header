@@ -28,15 +28,15 @@
 
 - (void).cxx_destruct;
 - (void)_notifyObserversOfProgressUpdate;
-- (struct NSObject *)_queue_providerForTemplate:(id)arg1;
-- (void)addObserver:(struct NSObject *)arg1;
-- (void)deregisterProgressProvider:(struct NSObject *)arg1;
+- (id)_queue_providerForTemplate:(id)arg1;
+- (void)addObserver:(id)arg1;
+- (void)deregisterProgressProvider:(id)arg1;
 - (id)init;
 - (BOOL)populateProgressAndGoalForAchievement:(id)arg1;
 - (unsigned long long)providerCount;
-- (void)registerProgressProvider:(struct NSObject *)arg1;
-- (void)removeObserver:(struct NSObject *)arg1;
-- (void)requestProgressUpdateForProgressProvider:(struct NSObject *)arg1;
+- (void)registerProgressProvider:(id)arg1;
+- (void)removeObserver:(id)arg1;
+- (void)requestProgressUpdateForProgressProvider:(id)arg1;
 - (BOOL)shouldPopulateProgressForAchievement:(id)arg1;
 
 @end

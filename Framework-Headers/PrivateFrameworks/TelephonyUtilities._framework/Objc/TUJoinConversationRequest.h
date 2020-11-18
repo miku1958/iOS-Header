@@ -55,6 +55,7 @@
 - (void).cxx_destruct;
 - (id)bundleIdentifier;
 - (id)callerIDQueryItem;
+- (id)contactNamesByHandleWithContactsDataSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)handles;

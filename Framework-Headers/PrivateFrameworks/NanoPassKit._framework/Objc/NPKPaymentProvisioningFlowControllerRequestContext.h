@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoPassKit/NSSecureCoding-Protocol.h>
+
 @class NPKProtoStandaloneRequestHeader, NSString;
 
-@interface NPKPaymentProvisioningFlowControllerRequestContext : NSObject
+@interface NPKPaymentProvisioningFlowControllerRequestContext : NSObject <NSSecureCoding>
 {
     NPKProtoStandaloneRequestHeader *_requestHeader;
     NSString *_currentStepIdentifier;
@@ -17,7 +19,10 @@
 @property (readonly, nonatomic) NSString *currentStepIdentifier; // @synthesize currentStepIdentifier=_currentStepIdentifier;
 @property (readonly) NPKProtoStandaloneRequestHeader *requestHeader; // @synthesize requestHeader=_requestHeader;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRequestHeader:(id)arg1;
 
 @end

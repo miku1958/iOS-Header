@@ -309,8 +309,8 @@
 - (void)_updateToolbarContentsAnimated:(BOOL)arg1;
 - (BOOL)_updateTransitionWidthOnAppearance;
 - (void)_userDidStartScrolling;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)activitySharingController:(id)arg1 didCompleteWithActivityType:(id)arg2 success:(BOOL)arg3;
 - (void)activitySharingControllerDidCancel:(id)arg1;
 - (unsigned long long)additionalOneUpViewControllerOptions;
@@ -486,6 +486,7 @@
 - (void)scrollViewSpeedometer:(id)arg1 regimeDidChange:(long long)arg2 from:(long long)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillScrollToTop:(id)arg1;
+- (double)sectionedGridLayout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (void)sectionedGridLayout:(id)arg1 didPrepareTransitionIsAppearing:(BOOL)arg2;
 - (id)sectionedGridLayoutAnchorItemForAdjustingContentOffset:(id)arg1;
 - (BOOL)sectionedGridLayoutTransitionAutoAdjustContentOffsetEnabled:(id)arg1;

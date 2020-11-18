@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CURetrier, NSMutableSet, SFBLEData, SFBLEDevice;
+@class CURetrier, NSMutableArray, NSMutableSet, SFBLEData, SFBLEDevice;
 @protocol OS_dispatch_queue;
 
 @interface SFBLEConnection : NSObject
@@ -19,12 +19,13 @@
     double _connectStartTime;
     CURetrier *_connectRetrier;
     SFBLEData *_currentData;
-    struct NSMutableArray *_dataSendQueue;
+    NSMutableArray *_dataSendQueue;
     BOOL _invalidateCalled;
     struct LogCategory *_ucat;
     BOOL _bleEncrypted;
     BOOL _latencyCritical;
     BOOL _lePipeCapable;
+    unsigned int _sessionFlags;
     CDUnknownBlockType _bluetoothBandwidthChangedHandler;
     CDUnknownBlockType _bluetoothStateChangedHandler;
     CDUnknownBlockType _connectionStateChangedHandler;
@@ -46,6 +47,7 @@
 @property (nonatomic) BOOL latencyCritical; // @synthesize latencyCritical=_latencyCritical;
 @property (nonatomic) BOOL lePipeCapable; // @synthesize lePipeCapable=_lePipeCapable;
 @property (strong, nonatomic) SFBLEDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property (nonatomic) unsigned int sessionFlags; // @synthesize sessionFlags=_sessionFlags;
 
 - (void).cxx_destruct;
 - (void)_activate;

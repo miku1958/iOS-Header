@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <ConversationKit/UIInteraction-Protocol.h>
-
 @class MISSING_TYPE, UIView;
 
-@interface _TtC15ConversationKit14TapInteraction : NSObject <UIInteraction>
+@interface _TtC15ConversationKit14TapInteraction : NSObject
 {
     MISSING_TYPE *view;
     MISSING_TYPE *tapGestureRecognizer;

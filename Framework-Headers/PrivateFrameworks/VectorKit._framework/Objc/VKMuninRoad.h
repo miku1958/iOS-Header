@@ -17,7 +17,8 @@
 
 - (void)dealloc;
 - (id)description;
-- (id)initWithMuninRoadEdge:(const struct MuninRoadEdge *)arg1;
+- (id)initWithLocalizedName:(const char *)arg1;
+- (id)initWithMuninRoadEdge:(const struct MuninRoadEdge *)arg1 localize:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

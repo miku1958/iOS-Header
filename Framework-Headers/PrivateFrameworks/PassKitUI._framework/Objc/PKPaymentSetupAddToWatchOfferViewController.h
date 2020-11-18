@@ -4,43 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <PassKitUI/PKAddToWatchOfferViewController.h>
 
-@class PKPaymentPass, PKPaymentSetupAddToWatchOfferView, UIView;
+#import <PassKitUI/PKAddToWatchOfferViewControllerDelegate-Protocol.h>
 
-@interface PKPaymentSetupAddToWatchOfferViewController : UIViewController
+@class NSString, UIView;
+
+@interface PKPaymentSetupAddToWatchOfferViewController : PKAddToWatchOfferViewController <PKAddToWatchOfferViewControllerDelegate>
 {
     UIView *_interactionDisabledView;
-    PKPaymentPass *_pass;
-    long long _context;
     CDUnknownBlockType _dismissalHandler;
-    PKPaymentSetupAddToWatchOfferView *_offerView;
 }
 
-@property (nonatomic) long long context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
-@property (readonly, strong, nonatomic) PKPaymentSetupAddToWatchOfferView *offerView; // @synthesize offerView=_offerView;
-@property (readonly, strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (void)shouldShowAddToWatchOfferForPass:(id)arg1 inContext:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (void)_addLaterTapped:(id)arg1;
-- (void)_clearInteractionDisabledView;
-- (void)_configureNavigationItem;
-- (void)_doneTapped:(id)arg1;
 - (void)_handleBridgeProvisioningError:(id)arg1;
 - (void)_handleDismissal:(BOOL)arg1;
-- (void)_hideSpinner;
-- (void)_openAppTapped:(id)arg1;
-- (void)_setIdleTimerDisabled:(BOOL)arg1;
-- (void)_showSpinner;
-- (void)dealloc;
-- (unsigned long long)edgesForExtendedLayout;
+- (void)addToWatchOfferViewControllerDidNotRequestToAddToWatch:(id)arg1;
+- (void)addToWatchOfferViewControllerDidRequestToAddToWatch:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 context:(long long)arg2 dismissalHandler:(CDUnknownBlockType)arg3;
-- (void)loadView;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

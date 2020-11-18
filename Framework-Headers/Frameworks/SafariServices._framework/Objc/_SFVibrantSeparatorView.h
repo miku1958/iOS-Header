@@ -11,7 +11,6 @@
 }
 
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

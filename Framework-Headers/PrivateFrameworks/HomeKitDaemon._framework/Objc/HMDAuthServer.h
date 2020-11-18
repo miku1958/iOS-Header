@@ -20,7 +20,7 @@
 - (id)initWithDelegate:(id)arg1;
 - (void)sendActivationConfirmation:(id)arg1 uuid:(id)arg2 context:(id)arg3;
 - (void)sendActivationRequest:(id)arg1 uuid:(id)arg2 context:(id)arg3;
-- (void)sendPPIDInfoRequest:(id)arg1 model:(id)arg2 token:(id)arg3 uuid:(id)arg4 context:(id)arg5;
+- (void)sendPPIDInfoRequest:(id)arg1 model:(id)arg2 token:(id)arg3 authFeatures:(unsigned long long)arg4 uuid:(id)arg5 context:(id)arg6;
 
 @end
 

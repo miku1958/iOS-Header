@@ -15,11 +15,13 @@
     PKApplyController *_applyController;
     NSString *_termsIdentifier;
     CLInUseAssertion *_inUseAssertion;
+    BOOL _preflightPDFTerms;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL preflightPDFTerms; // @synthesize preflightPDFTerms=_preflightPDFTerms;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

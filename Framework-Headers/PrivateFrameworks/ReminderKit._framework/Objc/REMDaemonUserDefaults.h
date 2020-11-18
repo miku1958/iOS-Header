@@ -6,13 +6,14 @@
 
 #import <ReminderKit/REMUserDefaults.h>
 
-@class NSData, NSDate, NSDateComponents, NSNumber, NSString, REMObjectID;
+@class NSData, NSDate, NSDateComponents, NSNumber, NSString, NSURL, REMObjectID;
 
 @interface REMDaemonUserDefaults : REMUserDefaults
 {
 }
 
 @property (strong, nonatomic) NSString *acAccountIdentifierToMergeLocalDataIntoSyncData;
+@property (strong, nonatomic) NSString *acAccountIdentifierToMigrateInactivatedCalDavData;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationDelayAfterError;
 @property (nonatomic) BOOL cloudKitMigrationDisableCleanUp;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationMaxNumFailures;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) BOOL newAppShouldTakeoverEKReminderNotifications;
 @property (copy, nonatomic) NSDate *nextScheduledAlarmDate;
 @property (strong, nonatomic) REMObjectID *preferredDefaultListID;
+@property (strong, nonatomic) NSURL *preferredDefaultListObjectIDUrl;
 @property (nonatomic) BOOL showRemindersAsOverdue;
 @property (nonatomic) BOOL simulateMAIDAccount;
 @property (readonly, nonatomic) BOOL siriShouldRouteIntentsToNewRemindersApp;
@@ -42,6 +44,8 @@
 
 + (id)storageNumberForTodayNotificationTime:(id)arg1;
 + (id)todayNotificationFireTimeFromStorageNumber:(id)arg1;
+- (void)_deletePreferredDefaultListObjectIDUrl;
+- (void)deletePreferredDefaultListID;
 - (id)observePreferredDefaultListIDWithBlock:(CDUnknownBlockType)arg1;
 - (id)observeShowRemindersAsOverdueWithBlock:(CDUnknownBlockType)arg1;
 - (id)streamTodayNotificationFireTime:(CDUnknownBlockType)arg1;

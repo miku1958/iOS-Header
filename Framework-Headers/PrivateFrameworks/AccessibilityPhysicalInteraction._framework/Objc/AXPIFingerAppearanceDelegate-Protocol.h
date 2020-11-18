@@ -6,7 +6,7 @@
 
 #import <AccessibilityPhysicalInteraction/NSObject-Protocol.h>
 
-@class UIColor;
+@class NSNumber, UIColor;
 
 @protocol AXPIFingerAppearanceDelegate <NSObject>
 - (UIColor *)circularProgressFillColor;
@@ -16,11 +16,16 @@
 - (double)fingerInnerCircleInnerRadius;
 - (double)fingerInnerRadius;
 - (double)fingerOuterRadius;
+- (double)innerCircleStrokeOutlineWidth;
 - (UIColor *)pressedCircularProgressFillColor;
 - (UIColor *)selectedFillColor;
 - (UIColor *)selectedStrokeColor;
+- (BOOL)showFingerOutlines;
+- (BOOL)showInnerCircle;
 - (UIColor *)strokeOutlineColor;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;
+- (NSNumber *)systemFilterDarkModeOverride;
+- (BOOL)useSystemFilters;
 @end
 

@@ -9,11 +9,10 @@
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSString, PXActionPerformer, PXAssetActionManager, PXBarAppearance, PXCuratedLibraryViewModel, UILabel;
+@class NSString, PXActionPerformer, PXBarAppearance, PXCuratedLibraryViewModel, UILabel;
 
 @interface PXCuratedLibraryBarsController : PXBarsController <PXChangeObserver, PXActionPerformerDelegate>
 {
-    PXAssetActionManager *_assetActionManager;
     UILabel *_selectModeCaptionLabel;
     PXCuratedLibraryViewModel *_viewModel;
     PXActionPerformer *_activeActionPerformer;
@@ -21,7 +20,6 @@
 }
 
 @property (strong, nonatomic) PXActionPerformer *activeActionPerformer; // @synthesize activeActionPerformer=_activeActionPerformer;
-@property (readonly, nonatomic) PXAssetActionManager *assetActionManager; // @synthesize assetActionManager=_assetActionManager;
 @property (readonly, nonatomic) PXBarAppearance *barAppearance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -38,8 +36,8 @@
 - (void)_invalidateToolbarItems;
 - (void)_updateSelectModeCaptionLabel;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (id)barButtonItemForIdentifier:(id)arg1;
 - (id)createAssetActionManagerForAssetReference:(id)arg1;
 - (id)curatedLibraryViewController;

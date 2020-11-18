@@ -32,7 +32,7 @@
 + (id)polylineWithPoints:(const CDStruct_c3b9c2ee *)arg1 count:(unsigned long long)arg2;
 - (void)_calculateBounds;
 - (id)_initWithGeoJSONObject:(id)arg1 error:(id *)arg2;
-- (id)_initWithGeoJSONPoints:(struct NSArray *)arg1 error:(id *)arg2;
+- (id)_initWithGeoJSONPoints:(id)arg1 error:(id *)arg2;
 - (BOOL)intersectsMapRect:(CDStruct_02837cd9)arg1;
 
 @end

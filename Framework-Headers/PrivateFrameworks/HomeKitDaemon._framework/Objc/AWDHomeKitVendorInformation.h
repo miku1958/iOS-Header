@@ -12,6 +12,7 @@
 
 @interface AWDHomeKitVendorInformation : PBCodable <NSCopying>
 {
+    NSString *_category;
     NSString *_firmwareVersion;
     NSString *_manufacturer;
     NSString *_model;
@@ -19,7 +20,9 @@
     NSString *_productData;
 }
 
+@property (strong, nonatomic) NSString *category; // @synthesize category=_category;
 @property (strong, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
+@property (readonly, nonatomic) BOOL hasCategory;
 @property (readonly, nonatomic) BOOL hasFirmwareVersion;
 @property (readonly, nonatomic) BOOL hasManufacturer;
 @property (readonly, nonatomic) BOOL hasModel;

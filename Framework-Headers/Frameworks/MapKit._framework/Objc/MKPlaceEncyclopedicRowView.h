@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_labelConstraints;
 }
 
+@property (readonly, nonatomic, getter=factoidViewsInARow) NSArray *factoidViewsInARow;
 @property (nonatomic) BOOL isStandAlone; // @synthesize isStandAlone=_isStandAlone;
 @property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) NSMutableArray *labelConstraints; // @synthesize labelConstraints=_labelConstraints;

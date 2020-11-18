@@ -66,6 +66,7 @@
 - (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 
 @end
 

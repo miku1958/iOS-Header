@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityCachedChildren;
 - (id)_accessibilityChildren;
 - (void)_accessibilityClearInternalCaches;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -23,6 +24,7 @@
 - (BOOL)_accessibilityIsOutsideParentBounds;
 - (id)_accessibilityParentCollectionView;
 - (id)_accessibilityParentScrollView;
+- (id)_accessibilityUserTestingChildren;
 - (BOOL)_axContentViewHasSingleFocusableSubview;
 - (BOOL)_isEligibleForFocusInteraction;
 - (void)accessibilityClearInternalData;

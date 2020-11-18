@@ -11,6 +11,7 @@
 @interface __NSURLSessionStatistics : NSObject
 {
     void *report;
+    PBCodable *_awdReport;
     NSUUID *_externallyVisibleNwActivity;
     NSArray *_externallyVisibleConnectionUUIDs;
 }
@@ -23,14 +24,15 @@
 @property (readonly, nonatomic) NSUUID *nwActivity;
 @property (readonly, nonatomic) NSUUID *taskUUID;
 
-+ (CDStruct_61067874 *)createCFNetworkTaskMetrics_s:(id)arg1;
-+ (void)fillCFNetworkTransactionMetricStruct:(CDStruct_46ef296f *)arg1 from:(id)arg2;
++ (CDStruct_51b7dc78 *)createCFNetworkTaskMetrics_s:(id)arg1;
++ (void)fillCFNetworkTransactionMetricStruct:(CDStruct_24822730 *)arg1 from:(id)arg2;
 + (int)getNetworkProtocol:(id)arg1;
 + (int)getTaskType:(id)arg1;
 + (void)reportMetricsToSymptoms:(id)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithCFNetworkReport:(void *)arg1 length:(long long)arg2;
+- (id)initWithPBCodableData:(id)arg1;
 
 @end
 

@@ -37,6 +37,7 @@
 - (id)payloadIDForTombstone:(id)arg1;
 - (id)predictedURL;
 - (BOOL)supportsCloudUpload;
+- (void)unregisterWithVolumeManager;
 - (void)willTurnIntoFault;
 
 @end

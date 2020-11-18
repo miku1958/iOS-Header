@@ -13,10 +13,9 @@
 }
 
 - (void).cxx_destruct;
-- (void)atomicSetObject:(id)arg1;
 - (void)atomicallyPerformBlockAndWait:(CDUnknownBlockType)arg1;
-- (id)init;
 - (id)initWithObject:(id)arg1;
+- (void)invalidateWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

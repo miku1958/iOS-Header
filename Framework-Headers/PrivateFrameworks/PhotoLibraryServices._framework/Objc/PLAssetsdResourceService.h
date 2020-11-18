@@ -43,6 +43,7 @@
 - (void)getSandboxExtensionForFileSystemBookmark:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)imageDataForAssetWithObjectURI:(id)arg1 formatID:(unsigned short)arg2 allowPlaceholder:(BOOL)arg3 wantURLOnly:(BOOL)arg4 networkAccessAllowed:(BOOL)arg5 trackCPLDownload:(BOOL)arg6 reply:(CDUnknownBlockType)arg7;
 - (id)initWithLibraryServicesManager:(id)arg1 connectionAuthorization:(id)arg2 resourceDownloader:(id)arg3;
+- (void)projectExtensionDataForProjectUuid:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)saveAssetWithDataAndPorts:(id)arg1 imageSurface:(id)arg2 previewImageSurface:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)translatePersistentURL:(id)arg1 withAdjustments:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateInternalResourcePath:(id)arg1 objectURI:(id)arg2 sandboxExtension:(id)arg3 reply:(CDUnknownBlockType)arg4;

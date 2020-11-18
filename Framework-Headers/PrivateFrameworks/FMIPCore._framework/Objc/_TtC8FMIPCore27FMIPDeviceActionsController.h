@@ -10,7 +10,6 @@
 
 @interface _TtC8FMIPCore27FMIPDeviceActionsController : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *beaconManager;
     MISSING_TYPE *ownerSession;
     MISSING_TYPE *serverInteractionController;
     MISSING_TYPE *mockAuthenticator;

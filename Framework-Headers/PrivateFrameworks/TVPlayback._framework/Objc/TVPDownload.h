@@ -8,16 +8,24 @@
 
 #import <TVPlayback/AVAssetDownloadDelegate-Protocol.h>
 
-@class AVAggregateAssetDownloadTask, NSError, NSMapTable, NSPointerArray, NSProgress, NSString, TVPDownloadSession, TVPMediaItemLoader, TVPReportingSession, TVPStateMachine;
+@class AVAggregateAssetDownloadTask, NSArray, NSDictionary, NSError, NSMapTable, NSNumber, NSPointerArray, NSProgress, NSString, TVPDownloadSession, TVPMediaItemLoader, TVPReportingSession, TVPStateMachine;
 @protocol TVPMediaItem;
 
 @interface TVPDownload : NSObject <AVAssetDownloadDelegate>
 {
     BOOL _performKeyFetchOnly;
+    BOOL _allowCellularUsage;
+    BOOL _allowHDR;
+    BOOL _allowMultichannelAudio;
+    BOOL _includeDefaultAudioOption;
+    BOOL _useLegacyAudioSettings;
     BOOL _downloadIsComplete;
     NSObject<TVPMediaItem> *_mediaItem;
     long long _state;
     NSError *_error;
+    NSNumber *_minimumRequiredMediaBitrate;
+    NSArray *_preferredAudioLanguageCodes;
+    NSDictionary *_userInfo;
     TVPStateMachine *_stateMachine;
     TVPMediaItemLoader *_mediaItemLoader;
     TVPDownloadSession *_downloadSession;
@@ -30,8 +38,12 @@
     TVPReportingSession *_reportingSession;
     unsigned long long _numMediaSelectionsThatWillReceiveDownloadProgress;
     unsigned long long _numMediaSelectionsCompleted;
+    struct CGSize _minimumRequiredPresentationSize;
 }
 
+@property (nonatomic) BOOL allowCellularUsage; // @synthesize allowCellularUsage=_allowCellularUsage;
+@property (nonatomic) BOOL allowHDR; // @synthesize allowHDR=_allowHDR;
+@property (nonatomic) BOOL allowMultichannelAudio; // @synthesize allowMultichannelAudio=_allowMultichannelAudio;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSPointerArray *delegates; // @synthesize delegates=_delegates;
 @property (readonly, copy) NSString *description;
@@ -43,17 +55,23 @@
 @property (nonatomic) unsigned long long downloadTerminationBackgroundTask; // @synthesize downloadTerminationBackgroundTask=_downloadTerminationBackgroundTask;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL includeDefaultAudioOption; // @synthesize includeDefaultAudioOption=_includeDefaultAudioOption;
 @property (strong, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (strong, nonatomic) TVPMediaItemLoader *mediaItemLoader; // @synthesize mediaItemLoader=_mediaItemLoader;
 @property (strong, nonatomic) NSMapTable *mediaSelectionToProgressMap; // @synthesize mediaSelectionToProgressMap=_mediaSelectionToProgressMap;
+@property (strong, nonatomic) NSNumber *minimumRequiredMediaBitrate; // @synthesize minimumRequiredMediaBitrate=_minimumRequiredMediaBitrate;
+@property (nonatomic) struct CGSize minimumRequiredPresentationSize; // @synthesize minimumRequiredPresentationSize=_minimumRequiredPresentationSize;
 @property (nonatomic) unsigned long long numMediaSelectionsCompleted; // @synthesize numMediaSelectionsCompleted=_numMediaSelectionsCompleted;
 @property (nonatomic) unsigned long long numMediaSelectionsThatWillReceiveDownloadProgress; // @synthesize numMediaSelectionsThatWillReceiveDownloadProgress=_numMediaSelectionsThatWillReceiveDownloadProgress;
 @property (nonatomic) BOOL performKeyFetchOnly; // @synthesize performKeyFetchOnly=_performKeyFetchOnly;
+@property (strong, nonatomic) NSArray *preferredAudioLanguageCodes; // @synthesize preferredAudioLanguageCodes=_preferredAudioLanguageCodes;
 @property (readonly, nonatomic) double progress;
 @property (strong, nonatomic) TVPReportingSession *reportingSession; // @synthesize reportingSession=_reportingSession;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useLegacyAudioSettings; // @synthesize useLegacyAudioSettings=_useLegacyAudioSettings;
+@property (strong, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (void)initialize;
 - (void).cxx_destruct;

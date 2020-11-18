@@ -17,6 +17,7 @@
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 
 @end
 

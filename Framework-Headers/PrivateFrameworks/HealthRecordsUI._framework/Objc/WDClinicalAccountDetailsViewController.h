@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)_presentDeleteAccountFromiCloudConfirmation;
 - (void)_presentRemoveAccountConfirmation;
 - (void)_showActivityInProgressUIWithMessage:(id)arg1;
+- (BOOL)_showInternalGatewayDetails;
 - (id)accountOwner;
 - (void)dealloc;
 - (void)dismiss:(id)arg1;

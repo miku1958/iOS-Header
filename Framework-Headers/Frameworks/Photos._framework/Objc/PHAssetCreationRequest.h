@@ -9,7 +9,7 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHMomentSharePropertySet-Protocol.h>
 
-@class NSData, NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableDictionary, NSString, PHAssetCreationAdjustmentBakeInOptions, PHAssetCreationMetadataCopyOptions, PHAssetCreationPhotoStreamPublishingRequest, PHAssetResourceBag, PHMomentShare, PHRelationshipChangeRequestHelper, PLManagedAsset;
+@class NSData, NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableDictionary, NSObject, NSString, PHAssetCreationAdjustmentBakeInOptions, PHAssetCreationMetadataCopyOptions, PHAssetCreationPhotoStreamPublishingRequest, PHAssetResourceBag, PHMomentShare, PHRelationshipChangeRequestHelper, PLManagedAsset;
 
 @interface PHAssetCreationRequest : PHAssetChangeRequest <PHInsertChangeRequest, PHMomentSharePropertySet>
 {
@@ -20,8 +20,8 @@
     BOOL _shouldCreateScreenshot;
     CDUnknownBlockType _concurrentWorkBlock;
     PLManagedAsset *_asset;
-    struct NSObject *_previewImage;
-    struct NSObject *_thumbnailImage;
+    NSObject *_previewImage;
+    NSObject *_thumbnailImage;
     NSData *_originalHash;
     BOOL _shouldPerformConcurrentWork;
     BOOL _duplicateLivePhotoAsStill;

@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)stringForKey:(id)arg1;
 - (BOOL)synchronize;
+- (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -16,6 +16,7 @@
     long long _contextType;
     NSString *_contextTopic;
     NSString *_contextTitle;
+    NSString *_contextAppBundleIdentifier;
     NSString *_contextID;
     CLSAggregatedValue *_time;
     CLSAggregatedValue *_progress;
@@ -25,6 +26,7 @@
 }
 
 @property (copy, nonatomic) NSArray *additionalReportItems; // @synthesize additionalReportItems=_additionalReportItems;
+@property (copy, nonatomic) NSString *contextAppBundleIdentifier; // @synthesize contextAppBundleIdentifier=_contextAppBundleIdentifier;
 @property (copy, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
 @property (copy, nonatomic) NSString *contextStableObjectID; // @synthesize contextStableObjectID=_contextStableObjectID;
 @property (copy, nonatomic) NSString *contextTitle; // @synthesize contextTitle=_contextTitle;

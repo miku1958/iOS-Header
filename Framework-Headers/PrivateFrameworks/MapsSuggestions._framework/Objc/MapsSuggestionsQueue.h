@@ -23,11 +23,11 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-+ (id)serialQueueWithName:(struct NSString *)arg1;
++ (id)serialQueueWithName:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)asyncBlock:(CDUnknownBlockType)arg1;
-- (id)initSerialQueueWithName:(struct NSString *)arg1;
+- (id)initSerialQueueWithName:(id)arg1;
 - (BOOL)syncBOOLReturningBlock:(CDUnknownBlockType)arg1;
 - (void)syncBlock:(CDUnknownBlockType)arg1;
 - (id)syncReturningBlock:(CDUnknownBlockType)arg1;

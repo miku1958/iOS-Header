@@ -10,25 +10,27 @@
 #import <RemoteManagement/RMExtensionConfigurationSubscriberRequestHandling-Protocol.h>
 #import <RemoteManagement/RMExtensionStatusPublisherRequestHandling-Protocol.h>
 
-@class NSString, RMExtensionConfigurationSubscriber;
+@class NSString, RMExtensionConfigurationSubscriber, RMExtensionStatusPublisher;
 
 @interface RMExtensionRequestHandler : NSObject <NSExtensionRequestHandling, RMExtensionConfigurationSubscriberRequestHandling, RMExtensionStatusPublisherRequestHandling>
 {
     RMExtensionConfigurationSubscriber *_configurationSubscriber;
+    RMExtensionStatusPublisher *_statusPublisher;
 }
 
 @property (readonly, nonatomic) RMExtensionConfigurationSubscriber *configurationSubscriber; // @synthesize configurationSubscriber=_configurationSubscriber;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) RMExtensionStatusPublisher *statusPublisher; // @synthesize statusPublisher=_statusPublisher;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)fetchThenApplyConfigurationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithConfigurationSubscriber:(id)arg1;
-- (void)queryStatusesOfTypes:(id)arg1 onBehalfOfAccount:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithConfigurationSubscriber:(id)arg1 statusPublisher:(id)arg2;
+- (void)queryForStatusWithKeyPaths:(id)arg1 onBehalfOfManagementChannel:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

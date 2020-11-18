@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/_UIClickHighlightPlatterView.h>
+#import <UIKitCore/_UIHighlightPlatterView.h>
 
 @class UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIAnchoredClickHighlightPlatterView : _UIClickHighlightPlatterView
+@interface _UIAnchoredClickHighlightPlatterView : _UIHighlightPlatterView
 {
     UIView *_anchorView;
 }

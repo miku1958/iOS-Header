@@ -20,9 +20,9 @@
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 
 - (void).cxx_destruct;
-- (struct UIViewController *)_cachedViewControllerForModule:(int)arg1;
+- (id)_cachedViewControllerForModule:(int)arg1;
 - (void)_createModuleLayout:(id)arg1;
-- (struct UIViewController *)_createViewControllerForModule:(id)arg1;
+- (id)_createViewControllerForModule:(id)arg1;
 - (id)_layoutModuleForMapItem;
 - (BOOL)isLayoutDynamic;
 - (BOOL)isTransitItem;

@@ -22,7 +22,6 @@
 - (id)passwordForAccountWithPersistentUUID:(id)arg1 expectedAccessibility:(int)arg2 shouldSetAccessibility:(BOOL)arg3 passwordExpected:(BOOL)arg4;
 - (void)removeKeychainInformationsForURL:(id)arg1;
 - (BOOL)removePasswordForAccount:(id)arg1 withPersistentUUID:(id)arg2;
-- (void)removePersistentCredentials;
 - (BOOL)saveKeychainInformationsForURL:(id)arg1 andPassword:(id)arg2 withAccessibility:(int)arg3;
 - (BOOL)setPassword:(id)arg1 forAccount:(id)arg2 withPersistentUUID:(id)arg3 withAccessibility:(int)arg4;
 

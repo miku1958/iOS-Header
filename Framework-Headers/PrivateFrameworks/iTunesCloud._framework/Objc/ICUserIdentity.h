@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) BOOL allowsDelegation; // @synthesize allowsDelegation=_allowsDelegation;
 @property (readonly, nonatomic) unsigned long long creationTime; // @synthesize creationTime=_creationTime;
 @property (readonly, copy, nonatomic) NSString *deviceIdentifier;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)activeAccount;
@@ -37,18 +38,20 @@
 + (id)specificAccountWithDSID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_resolveDSIDForEncoding;
+- (void)_ensureResolvedDSIDUsingSpecificIdentityStore:(id)arg1;
+- (BOOL)_isComparableUsingResolvedDSID;
+- (id)_resolvedDSIDUsingSpecificIdentityStore:(id)arg1;
 - (void)_setResolvedDSID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
+- (unsigned long long)hashInStore:(id)arg1;
 - (id)identityAllowingDelegation:(BOOL)arg1;
 - (id)identityAllowingEstablishment:(BOOL)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToIdentity:(id)arg1;
+- (BOOL)isEqualToIdentity:(id)arg1 inStore:(id)arg2;
 
 @end
 

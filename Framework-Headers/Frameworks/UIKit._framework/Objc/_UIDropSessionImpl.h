@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL allowsMoveOperation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=_drivenByPointer) BOOL drivenByPointer;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *items;
 @property (readonly, nonatomic) id<UIDragSession> localDragSession; // @synthesize localDragSession=_localDragSession;

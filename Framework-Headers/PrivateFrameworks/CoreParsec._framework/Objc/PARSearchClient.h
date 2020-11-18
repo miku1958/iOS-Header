@@ -8,7 +8,7 @@
 
 #import <CoreParsec/PARClientXPC-Protocol.h>
 
-@class NSMutableArray, NSString, NSXPCConnection, NSXPCListenerEndpoint, PARImageLoader, PARSessionConfiguration;
+@class NSMutableArray, NSString, NSXPCConnection, PARImageLoader;
 @protocol OS_dispatch_queue, PARDaemonXPC;
 
 @interface PARSearchClient : NSObject <PARClientXPC>
@@ -17,22 +17,17 @@
     NSMutableArray *_sessions;
     NSObject<OS_dispatch_queue> *_queue;
     _Atomic BOOL _configured;
-    PARSessionConfiguration *_configuration;
     NSXPCConnection *_connection;
     PARImageLoader *_imageLoader;
 }
 
-@property (strong) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NSXPCListenerEndpoint *endpoint;
 @property (readonly) unsigned long long hash;
 @property (readonly) PARImageLoader *imageLoader; // @synthesize imageLoader=_imageLoader;
 @property (readonly) Class superclass;
 
-+ (id)_deafListenerEndpoint;
-+ (id)daemonConnection;
 + (id)sharedClient;
 - (void).cxx_destruct;
 - (void)_invalidateConnection;

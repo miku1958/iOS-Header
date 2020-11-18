@@ -9,8 +9,8 @@
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 #import <CloudDocsDaemon/BRNonLocalVersionSending-Protocol.h>
 
-@class BRCAppLibrary, BRCItemID, BRCServerZone, BRCStatInfo, BRCXPCClient, CKRecordID, NSString, NSURL;
-@protocol BRNonLocalVersionReceiving;
+@class BRCAppLibrary, BRCItemID, BRCServerZone, BRCStatInfo, BRCXPCClient, CKRecordID, NSObject, NSString, NSURL;
+@protocol BRNonLocalVersionReceiving, GSAdditionStoring;
 
 __attribute__((visibility("hidden")))
 @interface BRCNonLocalVersionsSender : _BRCOperation <BRNonLocalVersionSending, BRCOperationSubclass>
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     BRCStatInfo *_st;
     NSString *_currentEtag;
     NSString *_storagePathPrefix;
-    struct NSObject *_storage;
+    NSObject<GSAdditionStoring> *_storage;
     BRCXPCClient *_client;
     BRCServerZone *_serverZone;
     BRCAppLibrary *_appLibrary;

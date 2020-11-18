@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) AWDProactiveModelFittingModelInfo *modelInfo; // @synthesize modelInfo=_modelInfo;
 
 + (id)trackerForModelName:(id)arg1 modelVersion:(id)arg2 modelLocale:(id)arg3;
-+ (id)trackerForPlanId:(struct NSString *)arg1;
++ (id)trackerForPlanId:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithModel:(id)arg1;
 - (void)postMetricId:(unsigned int)arg1 message:(id)arg2;

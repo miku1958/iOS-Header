@@ -78,7 +78,7 @@
     int _editorShowTransition;
     int _editorHideTransition;
     id<EKEventViewDelegate> _delegate;
-    struct NSDictionary *_context;
+    NSDictionary *_context;
     struct UIEdgeInsets _layoutMargins;
 }
 
@@ -216,7 +216,7 @@
 - (void)eventStatusButtonsView:(id)arg1 didSelectAction:(long long)arg2 ifCancelled:(CDUnknownBlockType)arg3;
 - (double)eventStatusButtonsViewButtonFontSize:(id)arg1;
 - (id)getCurrentContext;
-- (id)initWithContext:(struct NSDictionary *)arg1;
+- (id)initWithContext:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)invokeAction:(long long)arg1 eventStatusButtonsView:(id)arg2;
 - (id)items;

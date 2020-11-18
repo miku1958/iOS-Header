@@ -14,16 +14,16 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)_accessibilityActivate;
-- (struct WebAccessibilityObjectWrapper *)_accessibilityArticleAncestor;
+- (id)_accessibilityArticleAncestor;
 - (struct CGPoint)_accessibilityConvertPointToViewSpace:(struct CGPoint)arg1;
-- (struct WebAccessibilityObjectWrapper *)_accessibilityFieldsetAncestor;
-- (struct WebAccessibilityObjectWrapper *)_accessibilityFrameAncestor;
+- (id)_accessibilityFieldsetAncestor;
+- (id)_accessibilityFrameAncestor;
 - (BOOL)_accessibilityHasTouchEventListener;
 - (BOOL)_accessibilityIsInTableCell;
 - (BOOL)_accessibilityIsLandmarkRole:(int)arg1;
 - (BOOL)_accessibilityIsStrongPasswordField;
-- (struct WebAccessibilityObjectWrapper *)_accessibilityLandmarkAncestor;
-- (struct WebAccessibilityObjectWrapper *)_accessibilityListAncestor;
+- (id)_accessibilityLandmarkAncestor;
+- (id)_accessibilityListAncestor;
 - (double)_accessibilityMaxValue;
 - (double)_accessibilityMinValue;
 - (id)_accessibilityNextElementsWithCount:(unsigned int)arg1;
@@ -39,10 +39,10 @@ __attribute__((visibility("hidden")))
 - (void)_accessibilitySetFocus:(BOOL)arg1;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
-- (struct WebAccessibilityObjectWrapper *)_accessibilityTableAncestor;
+- (id)_accessibilityTableAncestor;
 - (unsigned long long)_accessibilityTextEntryTraits;
 - (unsigned long long)_accessibilityTraitsFromAncestors;
-- (struct WebAccessibilityObjectWrapper *)_accessibilityTreeAncestor;
+- (id)_accessibilityTreeAncestor;
 - (BOOL)_accessibilityValueIsAutofilled;
 - (id)_accessibilityWebDocumentView;
 - (BOOL)_addAccessibilityObject:(struct AccessibilityObject *)arg1 toTextMarkerArray:(id)arg2;
@@ -147,12 +147,12 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityMathUnderObject;
 - (void)accessibilityModifySelection:(int)arg1 increase:(BOOL)arg2;
 - (void)accessibilityMoveSelectionToMarker:(id)arg1;
-- (struct WebAccessibilityObjectWrapper *)accessibilityObjectForTextMarker:(id)arg1;
+- (id)accessibilityObjectForTextMarker:(id)arg1;
 - (id)accessibilityPlaceholderValue;
 - (id)accessibilityPlatformMathSubscriptKey;
 - (id)accessibilityPlatformMathSuperscriptKey;
 - (id)accessibilityPopupValue;
-- (struct WebAccessibilityObjectWrapper *)accessibilityPostProcessHitTest:(struct CGPoint)arg1;
+- (id)accessibilityPostProcessHitTest:(struct CGPoint)arg1;
 - (BOOL)accessibilityReplaceRange:(struct _NSRange)arg1 withText:(id)arg2;
 - (BOOL)accessibilityRequired;
 - (id)accessibilityRoleDescription;
@@ -179,8 +179,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (void)detach;
-- (struct AccessibilityObject *)detailParentForObject:(struct AccessibilityObject *)arg1;
-- (struct AccessibilityObject *)detailParentForSummaryObject:(struct AccessibilityObject *)arg1;
+- (struct AXCoreObject *)detailParentForObject:(struct AccessibilityObject *)arg1;
+- (struct AXCoreObject *)detailParentForSummaryObject:(struct AXCoreObject *)arg1;
 - (BOOL)determineIsAccessibilityElement;
 - (void)disableAttributeCaching;
 - (struct _NSRange)elementTextRange;
@@ -188,7 +188,7 @@ __attribute__((visibility("hidden")))
 - (void)enableAttributeCaching;
 - (struct CGRect)frameForTextMarkers:(id)arg1;
 - (long long)indexOfAccessibilityElement:(id)arg1;
-- (id)initWithAccessibilityObject:(struct AccessibilityObject *)arg1;
+- (id)initWithAccessibilityObject:(struct AXCoreObject *)arg1;
 - (id)interactiveVideoDescription;
 - (BOOL)isAccessibilityElement;
 - (BOOL)isAttachment;
@@ -215,7 +215,7 @@ __attribute__((visibility("hidden")))
 - (id)previousMarkerForMarker:(id)arg1;
 - (RefPtr_033e7b31)rangeForTextMarkers:(id)arg1;
 - (RefPtr_033e7b31)rangeFromMarkers:(id)arg1 withText:(id)arg2;
-- (id)rectsForSelectionRects:(const Vector_2a2f4e8a *)arg1;
+- (id)rectsForSelectionRects:(const Vector_be121512 *)arg1;
 - (id)selectedTextMarker;
 - (id)selectionRangeString;
 - (id)startOrEndTextMarkerForTextMarkers:(id)arg1 isStart:(BOOL)arg2;
@@ -232,7 +232,7 @@ __attribute__((visibility("hidden")))
 - (id)textMarkerRangeFromMarkers:(id)arg1 withText:(id)arg2;
 - (id)textMarkersForRange:(RefPtr_033e7b31)arg1;
 - (id)textRectsFromMarkers:(id)arg1 withText:(id)arg2;
-- (struct AccessibilityObject *)treeItemParentForObject:(struct AccessibilityObject *)arg1;
+- (struct AXCoreObject *)treeItemParentForObject:(struct AXCoreObject *)arg1;
 
 @end
 

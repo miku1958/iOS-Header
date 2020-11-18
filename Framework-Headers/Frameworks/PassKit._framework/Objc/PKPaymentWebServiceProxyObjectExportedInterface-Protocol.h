@@ -44,6 +44,7 @@
 - (void)paymentSupportedInCurrentRegion:(void (^)(int))arg1;
 - (void)performDeviceCheckInWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)registrationSupportedInCurrentRegionWithCompletion:(void (^)(int))arg1;
 - (void)removePass:(PKPass *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)renewAppleAccountWithCompletionHandler:(void (^)(long long, PKAppleAccountInformation *))arg1;
 - (void)secureElementOwnershipStateForCurrentUserWithCompletion:(void (^)(unsigned long long))arg1;

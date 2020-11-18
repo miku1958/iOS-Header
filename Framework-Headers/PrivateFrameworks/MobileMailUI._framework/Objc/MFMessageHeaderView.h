@@ -19,6 +19,7 @@
     MFMessageDisplayMetrics *_displayMetrics;
     MFMessageHeaderViewBlock *_pinnedBlock;
     MessageHeaderViewModel *_viewModel;
+    struct CGRect _draggableArea;
 }
 
 @property (nonatomic) BOOL bottomSeparatorDrawsFlushWithLeadingEdge; // @synthesize bottomSeparatorDrawsFlushWithLeadingEdge=_bottomSeparatorDrawsFlushWithLeadingEdge;
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) id<MFMessageHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MFMessageDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
+@property (nonatomic) struct CGRect draggableArea; // @synthesize draggableArea=_draggableArea;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *headerBlocks; // @synthesize headerBlocks=_headerBlocks;
 @property (strong, nonatomic) MFMessageHeaderViewBlock *pinnedBlock; // @synthesize pinnedBlock=_pinnedBlock;

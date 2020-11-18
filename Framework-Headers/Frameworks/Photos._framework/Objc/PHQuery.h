@@ -169,12 +169,13 @@
 + (id)queryForPersonsWithFace:(id)arg1 options:(id)arg2;
 + (id)queryForPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForPersonsWithOptions:(id)arg1;
-+ (id)queryForPersonsWithQuestionType:(long long)arg1 options:(id)arg2;
++ (id)queryForPersonsWithQuestionType:(unsigned short)arg1 options:(id)arg2;
 + (id)queryForPersonsWithType:(long long)arg1 options:(id)arg2;
 + (id)queryForPhotosHighlightsContainingMoments:(id)arg1;
 + (id)queryForPhotosHighlightsContainingMomentsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForProjectsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)queryForQuarantinedAssetsWithOptions:(id)arg1;
++ (id)queryForQuestionsWithOptions:(id)arg1;
 + (id)queryForReferencedAssetsWithOptions:(id)arg1;
 + (id)queryForRejectedFacesOnPerson:(id)arg1 options:(id)arg2;
 + (id)queryForRejectedPersonsForFace:(id)arg1 options:(id)arg2;

@@ -16,17 +16,18 @@
     BOOL _isHandleViewVisible;
     BOOL _hasOffState;
     BOOL _shouldShowSupplementaryValue;
-    BOOL _shouldShowGradationMarking;
     unsigned long long _handleViewStyle;
     HFNumberValueConstraints *_primaryValueConstraints;
     HFNumberValueConstraints *_secondaryValueConstraints;
     unsigned long long _style;
     NSArray *_gradationMarkingValues;
+    unsigned long long _gradationMarkingViewStyle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *gradationMarkingValues; // @synthesize gradationMarkingValues=_gradationMarkingValues;
+@property (nonatomic) unsigned long long gradationMarkingViewStyle; // @synthesize gradationMarkingViewStyle=_gradationMarkingViewStyle;
 @property (nonatomic) unsigned long long handleViewStyle; // @synthesize handleViewStyle=_handleViewStyle;
 @property (nonatomic) BOOL hasOffState; // @synthesize hasOffState=_hasOffState;
 @property (nonatomic) BOOL hasSecondaryValue; // @synthesize hasSecondaryValue=_hasSecondaryValue;
@@ -34,7 +35,6 @@
 @property (nonatomic) BOOL isHandleViewVisible; // @synthesize isHandleViewVisible=_isHandleViewVisible;
 @property (strong, nonatomic) HFNumberValueConstraints *primaryValueConstraints; // @synthesize primaryValueConstraints=_primaryValueConstraints;
 @property (strong, nonatomic) HFNumberValueConstraints *secondaryValueConstraints; // @synthesize secondaryValueConstraints=_secondaryValueConstraints;
-@property (nonatomic) BOOL shouldShowGradationMarking; // @synthesize shouldShowGradationMarking=_shouldShowGradationMarking;
 @property (nonatomic) BOOL shouldShowSupplementaryValue; // @synthesize shouldShowSupplementaryValue=_shouldShowSupplementaryValue;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;

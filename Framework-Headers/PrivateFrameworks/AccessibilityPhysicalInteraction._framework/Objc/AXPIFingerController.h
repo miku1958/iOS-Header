@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AccessibilityPhysicalInteraction/AXAssertionCoordinatorDelegate-Protocol.h>
 #import <AccessibilityPhysicalInteraction/AXPIFingerModelDelegate-Protocol.h>
 
-@class AXPIFingerContainerView, AXPIFingerEventSender, NSArray, NSMutableArray, NSMutableDictionary, UIView, UIWindow;
+@class AXAssertionCoordinator, AXPIFingerContainerView, AXPIFingerEventSender, NSArray, NSMutableArray, NSMutableDictionary, NSString, UIView, UIWindow;
 @protocol AXPIFingerAppearanceDelegate;
 
-@interface AXPIFingerController : NSObject <AXPIFingerModelDelegate>
+@interface AXPIFingerController : NSObject <AXPIFingerModelDelegate, AXAssertionCoordinatorDelegate>
 {
     AXPIFingerContainerView *_fingerContainerView;
     NSMutableArray *_fingerModels;
@@ -21,19 +22,24 @@
     NSMutableDictionary *_upInfosByIdentifier;
     BOOL _didMoveFingersDuringUpdate;
     CDUnknownBlockType _gestureCompletion;
+    AXAssertionCoordinator *_suppressVisualsAssertionCoodinator;
     BOOL _isPerformingGesture;
     id<AXPIFingerAppearanceDelegate> _appearanceDelegate;
     UIWindow *_fixedReferenceWindow;
 }
 
 @property (weak, nonatomic) id<AXPIFingerAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIView *fingerContainerView; // @synthesize fingerContainerView=_fingerContainerView;
 @property (readonly, nonatomic) NSArray *fingerModels; // @synthesize fingerModels=_fingerModels;
 @property (strong, nonatomic) UIWindow *fixedReferenceWindow; // @synthesize fixedReferenceWindow=_fixedReferenceWindow;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isPerformingGesture; // @synthesize isPerformingGesture=_isPerformingGesture;
 @property (readonly, nonatomic) BOOL isPinchEnabled;
 @property (readonly, nonatomic) unsigned long long numberOfFingers;
 @property (nonatomic) BOOL shouldAddRealEventFlag;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_endGestureWithSuccess:(BOOL)arg1;
@@ -51,7 +57,9 @@
 - (void)_showFingerModels:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3 shouldShowPinchChain:(BOOL)arg4;
 - (id)_showStartingFingersForGesture:(id)arg1 animated:(BOOL)arg2;
 - (id)_touchInfosByIdentifierForPressedFingers;
+- (id)acquireAssertionToSuppressVisualsWithReason:(id)arg1;
 - (void)animateToTapWithDuration:(double)arg1;
+- (void)assertionCoordinator:(id)arg1 assertionsDidBecomeActive:(BOOL)arg2;
 - (void)beginUpdates;
 - (void)cancelCircularProgressAnimation;
 - (void)cancelGesture;
@@ -69,6 +77,7 @@
 - (id)legacyLiftFingersUp;
 - (id)legacyPressFingersDown;
 - (void)liftFingersUpAnimated:(BOOL)arg1;
+- (void)liftFingersUpAnimated:(BOOL)arg1 sendTouchEvents:(BOOL)arg2;
 - (struct CGPoint)midpointForFingers;
 - (struct CGPoint)midpointOfStartingFingersForGesture:(id)arg1;
 - (BOOL)moveFingersToPoints:(id)arg1;
@@ -80,6 +89,7 @@
 - (void)performUpAtPoint:(struct CGPoint)arg1;
 - (void)performWithoutPreparingGesture:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pressFingersDownAnimated:(BOOL)arg1;
+- (void)pressFingersDownAnimated:(BOOL)arg1 sendTouchEvents:(BOOL)arg2;
 - (struct CGRect)rectForFingersAtPoints:(id)arg1;
 - (void)resetPinchFingers;
 - (void)showFingerModels:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3;

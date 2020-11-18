@@ -26,17 +26,19 @@
 
 + (void)cleanupRetired:(id)arg1;
 + (id)createForSubmission:(id)arg1 metadata:(id)arg2 options:(id)arg3 error:(id *)arg4 writing:(CDUnknownBlockType)arg5;
++ (void)enableLocalLogCreation;
 + (void)iterateLogsWithOptions:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
++ (id)locallyCreateForSubmission:(id)arg1 metadata:(id)arg2 options:(id)arg3 error:(id *)arg4 writing:(CDUnknownBlockType)arg5;
 + (void)markDescriptor:(int)arg1 forKey:(id)arg2 withObj:(id)arg3;
 + (void)markDescriptor:(int)arg1 withPairs:(id)arg2 andOptions:(id)arg3;
 + (void)purgeLogs:(id)arg1;
 + (unsigned int)scanLogs:(id)arg1 from:(id)arg2;
 + (id)scanProxies:(id)arg1;
-+ (void)setBridgeDelegate:(id)arg1;
 - (void).cxx_destruct;
 - (void)closeFileStream;
 - (void)dealloc;
 - (id)description;
+- (id)initWithFilepath:(id)arg1 type:(id)arg2;
 - (id)initWithPath:(id)arg1 forRouting:(id)arg2 options:(id)arg3;
 - (id)initWithPath:(id)arg1 forRouting:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)initWithPath:(id)arg1 forRouting:(id)arg2 usingConfig:(id)arg3 options:(id)arg4 error:(id *)arg5;

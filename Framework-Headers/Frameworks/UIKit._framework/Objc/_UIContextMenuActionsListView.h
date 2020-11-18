@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     UIFont *_labelFont;
     BOOL _surfacesActionRadius;
+    BOOL _showsShadow;
     BOOL _showsTitle;
     BOOL _reversesActionOrder;
     id<_UIContextMenuActionsListViewDelegate> _delegate;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<_UIContextMenuActionsListViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) UIMenu *displayedMenu; // @synthesize displayedMenu=_displayedMenu;
 @property (nonatomic) BOOL reversesActionOrder; // @synthesize reversesActionOrder=_reversesActionOrder;
+@property (nonatomic) BOOL showsShadow; // @synthesize showsShadow=_showsShadow;
 @property (nonatomic) BOOL showsTitle; // @synthesize showsTitle=_showsTitle;
 @property (nonatomic) BOOL surfacesActionRadius; // @synthesize surfacesActionRadius=_surfacesActionRadius;
 

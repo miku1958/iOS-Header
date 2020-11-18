@@ -25,7 +25,6 @@
 + (unsigned long long)expiringTilesetsCount;
 + (CDStruct_e4886f83 *)newExpiringTilesets;
 + (Class)simpleRequesterClass;
-+ (BOOL)skipNetworkForKeysWhenPreloading:(id)arg1;
 + (unsigned char)tileProviderIdentifier;
 - (void).cxx_destruct;
 - (void)_failedToReceiveActiveTileGroup:(id)arg1;

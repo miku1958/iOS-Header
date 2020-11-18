@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelStoreBrowseResponse, NSString, NSURL;
+@class MPModelRadioStation, MPModelStoreBrowseResponse, NSString, NSURL;
 
 @interface MPModelStoreBrowseSection : MPModelObject
 {
@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @dynamic loadAdditionalContentURL;
 @property (nonatomic, getter=isMemberOfChartSet) BOOL memberOfChartSet; // @dynamic memberOfChartSet;
 @property (strong, nonatomic) MPModelStoreBrowseResponse *previouslyRetrievedNestedResponse; // @dynamic previouslyRetrievedNestedResponse;
+@property (strong, nonatomic) MPModelRadioStation *radioStation; // @dynamic radioStation;
 @property (nonatomic) long long sectionType; // @dynamic sectionType;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 @property (nonatomic) long long uniformContentItemType; // @dynamic uniformContentItemType;
@@ -28,6 +29,7 @@
 + (id)__loadAdditionalContentURL_KEY;
 + (id)__memberOfChartSet_KEY;
 + (id)__previouslyRetrievedNestedResponse_KEY;
++ (id)__radioStation_KEY;
 + (id)__sectionType_KEY;
 + (id)__title_KEY;
 + (id)__uniformContentItemType_KEY;

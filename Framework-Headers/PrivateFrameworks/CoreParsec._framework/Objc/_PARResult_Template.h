@@ -16,16 +16,20 @@ __attribute__((visibility("hidden")))
 {
     NSString *_completion;
     NSString *_title;
+    NSData *_completionIcon;
+    NSData *_thumbnail;
     NSData *_cardData;
 }
 
 @property (copy, nonatomic) NSData *cardData; // @synthesize cardData=_cardData;
 @property (copy, nonatomic) NSString *completion; // @synthesize completion=_completion;
+@property (copy, nonatomic) NSData *completionIcon; // @synthesize completionIcon=_completionIcon;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSData *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

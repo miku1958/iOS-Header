@@ -6,9 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-@class UIColor, UIImageView, UILabel, UIView;
+#import <ChatKit/_UICursorInteractionDelegate-Protocol.h>
 
-@interface CKCanvasBackButtonView : UIControl
+@class NSString, UIColor, UIImageView, UILabel, UIView;
+
+@interface CKCanvasBackButtonView : UIControl <_UICursorInteractionDelegate>
 {
     BOOL _shouldShowTitlePaddingView;
     UIImageView *_backButtonView;
@@ -18,7 +20,11 @@
 }
 
 @property (strong, nonatomic) UIImageView *backButtonView; // @synthesize backButtonView=_backButtonView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL shouldShowTitlePaddingView; // @synthesize shouldShowTitlePaddingView=_shouldShowTitlePaddingView;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) UIColor *titleLabelColor; // @synthesize titleLabelColor=_titleLabelColor;
 @property (strong, nonatomic) UIView *titlePaddingView; // @synthesize titlePaddingView=_titlePaddingView;
@@ -26,6 +32,8 @@
 - (void).cxx_destruct;
 - (void)_setVisuallyHighlighted:(BOOL)arg1;
 - (struct CGSize)_titlePaddingViewSizeForTitle;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 showPaddingTitleView:(BOOL)arg2;
 - (void)layoutSubviews;
 - (void)setBackButtonTitle:(id)arg1;

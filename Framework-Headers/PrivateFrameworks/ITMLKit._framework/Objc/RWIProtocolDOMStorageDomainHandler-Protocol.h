@@ -9,6 +9,8 @@
 @class NSString, RWIProtocolDOMStorageStorageId;
 
 @protocol RWIProtocolDOMStorageDomainHandler <NSObject>
+
+@optional
 - (void)disableWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;
 - (void)enableWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;
 - (void)getDOMStorageItemsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 storageId:(RWIProtocolDOMStorageStorageId *)arg3;

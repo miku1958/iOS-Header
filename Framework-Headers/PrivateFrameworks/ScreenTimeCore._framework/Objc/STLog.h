@@ -10,6 +10,7 @@
 {
 }
 
++ (id)accountState;
 + (id)apns;
 + (id)appInfo;
 + (id)appMonitor;

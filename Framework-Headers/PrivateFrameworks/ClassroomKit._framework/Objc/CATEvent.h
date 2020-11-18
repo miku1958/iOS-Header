@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "CATStateMachineEvent.h"
+#import <DeviceManagement/CATStateMachineEvent.h>
 
 @interface CATEvent : CATStateMachineEvent
 {

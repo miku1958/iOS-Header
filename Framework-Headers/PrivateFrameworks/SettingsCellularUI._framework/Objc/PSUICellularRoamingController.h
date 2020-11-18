@@ -22,6 +22,7 @@
 - (void)dealloc;
 - (id)getCDMARoamingStatus:(id)arg1;
 - (id)getDataRoamingStatus:(id)arg1;
+- (id)getDataRoamingStatusForService:(id)arg1 specifier:(id)arg2;
 - (id)getEUInternetStatus:(id)arg1;
 - (id)getVoiceRoamingStatus:(id)arg1;
 - (id)init;
@@ -30,6 +31,7 @@
 - (void)roamingOptionsDidChange;
 - (void)setCDMARoamingEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setDataRoamingEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setDataRoamingEnabledForService:(id)arg1 enabled:(id)arg2 specifier:(id)arg3;
 - (void)setEUInternetEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setVoiceRoamingEnabled:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;

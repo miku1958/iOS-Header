@@ -8,15 +8,17 @@
 
 #import <HealthRecordsUI/HKSampleTypeUpdateControllerObserver-Protocol.h>
 
-@class HRProfile, NSArray, NSHashTable, NSMutableDictionary, NSNumber, NSString;
+@class HKHealthStore, HKSampleTypeUpdateController, NSArray, NSHashTable, NSMutableDictionary, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface WDMedicalRecordCountProvider : NSObject <HKSampleTypeUpdateControllerObserver>
 {
+    BOOL _hasLoaded;
     NSNumber *_allRecordsCount;
+    HKHealthStore *_healthStore;
     CDUnknownBlockType _unitTesting_allObserversReadyCallback;
-    HRProfile *_profile;
+    HKSampleTypeUpdateController *_updateController;
     NSMutableDictionary *_countByCategory;
     NSMutableDictionary *_countBySampleType;
     NSArray *_supportedCategories;
@@ -32,12 +34,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *countingQueue; // @synthesize countingQueue=_countingQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *supportedCategories; // @synthesize supportedCategories=_supportedCategories;
 @property (copy, nonatomic) CDUnknownBlockType unitTesting_allObserversReadyCallback; // @synthesize unitTesting_allObserversReadyCallback=_unitTesting_allObserversReadyCallback;
+@property (strong, nonatomic) HKSampleTypeUpdateController *updateController; // @synthesize updateController=_updateController;
 
 - (void).cxx_destruct;
 - (id)CDASampleCount;
@@ -51,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupSampleUpdateObserver;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
+- (id)initWithHealthStore:(id)arg1 updateController:(id)arg2;
 - (id)initWithProfile:(id)arg1;
 - (void)loadCountOfSamplesForCategories:(id)arg1 additionalSampleTypes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)numberOfRecordsForCategory:(id)arg1;

@@ -14,6 +14,7 @@
 {
     BOOL _isInstalled;
     BOOL _isBuiltInVoice;
+    BOOL _isVoiceReadyToUse;
     NSString *_name;
     NSArray *_languages;
     long long _gender;
@@ -25,6 +26,7 @@
 @property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (nonatomic) BOOL isBuiltInVoice; // @synthesize isBuiltInVoice=_isBuiltInVoice;
 @property (nonatomic) BOOL isInstalled; // @synthesize isInstalled=_isInstalled;
+@property (nonatomic) BOOL isVoiceReadyToUse; // @synthesize isVoiceReadyToUse=_isVoiceReadyToUse;
 @property (copy, nonatomic) NSArray *languages; // @synthesize languages=_languages;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long type; // @synthesize type=_type;

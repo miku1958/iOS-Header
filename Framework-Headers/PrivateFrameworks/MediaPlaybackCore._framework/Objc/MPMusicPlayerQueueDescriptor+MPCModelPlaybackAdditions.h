@@ -8,6 +8,7 @@
 
 @interface MPMusicPlayerQueueDescriptor (MPCModelPlaybackAdditions)
 - (void)_addRequestingBundleIdentifierToPlaybackRequestEnvironment:(id)arg1;
+- (BOOL)matchesStartItem:(id)arg1;
 - (id)playbackContext;
 @end
 

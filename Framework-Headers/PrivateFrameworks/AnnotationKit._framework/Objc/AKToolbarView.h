@@ -82,13 +82,14 @@
 - (void)_annotationSelectionNotification:(id)arg1;
 - (void)_cleanupAfterUndoAlert;
 - (void)_dismissCurrentlyPresentedPopoverAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_forceToolPickerVisible:(BOOL)arg1;
+- (void)_forceToolPickerVisibleForViewStateChange:(BOOL)arg1;
 - (void)_installAttributesPickerButtonInPaletteContextEditingViewIfNeeded;
 - (void)_keyWindowDidBecomeActive:(id)arg1;
 - (void)_presentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_redo:(id)arg1;
 - (struct UIEdgeInsets)_safeAreaInsetsWithCachingIfNeeded;
 - (void)_saveCachedSafeAreaInsets;
+- (id)_selectedToolInk;
 - (void)_setPopoverPresentationSource:(id)arg1 fromSender:(id)arg2;
 - (void)_setPopoverPresentationSource:(id)arg1 fromSender:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (BOOL)_setToolPickerVisible:(BOOL)arg1 forResponder:(id)arg2;

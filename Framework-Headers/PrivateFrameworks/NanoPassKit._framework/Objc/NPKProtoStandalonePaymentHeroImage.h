@@ -15,13 +15,16 @@
     NSString *_identifier;
     NSData *_imageData;
     NSString *_imageHash;
+    NSString *_imageURL;
 }
 
 @property (readonly, nonatomic) BOOL hasImageData;
 @property (readonly, nonatomic) BOOL hasImageHash;
+@property (readonly, nonatomic) BOOL hasImageURL;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property (strong, nonatomic) NSString *imageHash; // @synthesize imageHash=_imageHash;
+@property (strong, nonatomic) NSString *imageURL; // @synthesize imageURL=_imageURL;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

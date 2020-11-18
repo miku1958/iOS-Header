@@ -37,7 +37,7 @@
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (void)didPlayToEndNotification:(id)arg1;
-- (struct UIColor *)foregroundStrokeColor;
+- (id)foregroundStrokeColor;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

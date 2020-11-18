@@ -7,15 +7,16 @@
 #import <CoverSheet/CSPageViewController.h>
 
 #import <SpringBoard/CSApplicationHosting-Protocol.h>
-#import <SpringBoard/SBDashBoardDelegatingScreenEdgePanGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/SBDashBoardHostedAppViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGestureInteractionDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGesturePanGestureRecognizerInterfaceDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class NSSet, NSString, SBDashBoardDelegatingScreenEdgePanGestureRecognizer, SBDashBoardHostedAppViewController, SBFFluidBehaviorSettings, SBHomeGestureParticipant, UIView, UIViewFloatAnimatableProperty;
+@class CSLockScreenSettings, NSSet, NSString, SBDashBoardHostedAppViewController, SBFFluidBehaviorSettings, SBHomeGestureInteraction, SBHomeGestureParticipant, SBLockScreenDefaults, UIView, UIViewFloatAnimatableProperty;
 
-@interface SBDashBoardCameraPageViewController : CSPageViewController <SBDashBoardHostedAppViewControllerDelegate, SBSceneHandleObserver, SBSystemGestureRecognizerDelegate, SBDashBoardDelegatingScreenEdgePanGestureRecognizerDelegate, SBHomeGestureParticipantDelegate, CSApplicationHosting>
+@interface SBDashBoardCameraPageViewController : CSPageViewController <SBDashBoardHostedAppViewControllerDelegate, SBSceneHandleObserver, SBSystemGestureRecognizerDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBHomeGestureParticipantDelegate, SBHomeGestureInteractionDelegate, CSApplicationHosting>
 {
     UIView *_maskView;
     UIView *_tintView;
@@ -25,7 +26,9 @@
     BOOL _hasWarmedCameraForThisPresentation;
     BOOL _cameraPrewarmSucceeded;
     long long _cameraPresentLargestPercent;
-    SBDashBoardDelegatingScreenEdgePanGestureRecognizer *_bottomEdgeRecognizer;
+    CSLockScreenSettings *_prototypeSettings;
+    SBLockScreenDefaults *_lockScreenDefaults;
+    SBHomeGestureInteraction *_homeGestureInteraction;
     UIViewFloatAnimatableProperty *_scaleProperty;
     UIViewFloatAnimatableProperty *_alphaProperty;
     SBFFluidBehaviorSettings *_scaleSettings;
@@ -36,10 +39,10 @@
 @property (strong, nonatomic) NSSet *actionsToDeliver;
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *alphaProperty; // @synthesize alphaProperty=_alphaProperty;
 @property (strong, nonatomic) SBFFluidBehaviorSettings *alphaSettings; // @synthesize alphaSettings=_alphaSettings;
-@property (strong, nonatomic) SBDashBoardDelegatingScreenEdgePanGestureRecognizer *bottomEdgeRecognizer; // @synthesize bottomEdgeRecognizer=_bottomEdgeRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SBHomeGestureInteraction *homeGestureInteraction; // @synthesize homeGestureInteraction=_homeGestureInteraction;
 @property (strong, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *scaleProperty; // @synthesize scaleProperty=_scaleProperty;
 @property (strong, nonatomic) SBFFluidBehaviorSettings *scaleSettings; // @synthesize scaleSettings=_scaleSettings;
@@ -53,20 +56,20 @@
 - (struct CGPoint)_convertTranslationFromContainerOrientationToContentOrientation:(struct CGPoint)arg1;
 - (void)_coolCameraIfNecessary;
 - (void)_createProperties;
-- (void)_handleBottomEdgeGesture:(id)arg1;
-- (void)_handleBottomEdgeGestureBegan:(id)arg1;
-- (void)_handleBottomEdgeGestureChanged:(id)arg1;
-- (void)_handleBottomEdgeGestureEnded:(id)arg1;
 - (void)_makeApplicationStatic;
 - (void)_noteUserLaunchEventTime;
+- (double)_prelaunchThreshold;
 - (void)_prepareForInteractiveGestureToCameraVisible:(BOOL)arg1;
 - (void)_prewarmCamera;
+- (double)_prewarmThreshold;
 - (void)_relinquishHiddenAssertionForHomeGrabber:(id)arg1;
 - (void)_relinquishHomeGestureOwnership;
 - (void)_requestHomeGestureOwnership;
 - (void)_resetAfterInteractiveGestureToCameraVisible:(BOOL)arg1;
 - (void)_setSceneGrabberHidden:(BOOL)arg1;
 - (BOOL)_shouldCancelInteractiveDismissGesture;
+- (BOOL)_shouldPrelaunchOnSwipe;
+- (BOOL)_shouldPrewarmOnSwipe;
 - (void)_takeHiddenAssertionForHomeGrabber:(id)arg1;
 - (void)_transitionAppViewWithProgress:(double)arg1;
 - (void)_updateCameraScale:(double)arg1 dimmingAlpha:(double)arg2;
@@ -77,13 +80,19 @@
 - (void)aggregateAppearance:(id)arg1;
 - (void)aggregateBehavior:(id)arg1;
 - (BOOL)canHostAnApp;
+- (id)customScreenEdgePanGestureRecognizerForHomeGestureInteraction:(id)arg1;
 - (BOOL)dashBoardHostedAppViewController:(id)arg1 shouldTransitionToMode:(long long)arg2;
 - (void)didTransitionToVisible:(BOOL)arg1;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)handleEvent:(id)arg1;
 - (BOOL)handlesRotationIndependentOfCoverSheet;
+- (BOOL)homeGestureInteraction:(id)arg1 shouldBeginGestureRecognizerOfType:(long long)arg2;
+- (BOOL)homeGestureInteraction:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)homeGestureInteraction:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (unsigned long long)homeGestureInteraction:(id)arg1 systemGestureTypeForType:(long long)arg2;
+- (void)homeGestureInteractionBegan:(id)arg1;
+- (void)homeGestureInteractionCancelled:(id)arg1;
+- (void)homeGestureInteractionChanged:(id)arg1;
+- (void)homeGestureInteractionEnded:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (id)hostedAppSceneHandle;
 - (id)hostedAppSceneHandles;
@@ -95,7 +104,7 @@
 - (id)requestedDismissalSettings;
 - (long long)requestedDismissalType;
 - (void)sceneHandle:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
-- (long long)touchGestureInterfaceOrientation;
+- (long long)touchInterfaceOrientationForGestureRecognizer:(id)arg1;
 - (void)updateTransitionToVisible:(BOOL)arg1 progress:(double)arg2 mode:(long long)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

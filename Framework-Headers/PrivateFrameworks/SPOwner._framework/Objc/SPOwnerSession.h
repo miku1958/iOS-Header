@@ -82,6 +82,7 @@
 - (void)executeCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishBeaconFuture:(id)arg1 beaconUUID:(id)arg2;
 - (oneway void)forceDistributeKeysWithCompletion:(CDUnknownBlockType)arg1;
+- (oneway void)forceUpdateKeyMapsForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)locationFetchTimerFired;
 - (void)locationsForBeacons:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -90,7 +91,6 @@
 - (void)removeBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setConnectionExpiryDispatchTimerWithInterval:(double)arg1;
 - (void)setLocationFetchDispatchTimerWithInterval:(double)arg1;
-- (void)shareBeacon:(id)arg1 handles:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startRefreshing;
 - (void)startRefreshingBeacons:(id)arg1;
 - (void)stopRefreshing;

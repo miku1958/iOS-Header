@@ -16,12 +16,14 @@
     long long _rotationOfResultTensor;
     NSArray *_downScalingResults;
     ARImageData *_originalImageData;
+    ARMLImageDownScalingResultData *_latestResizedUltraWideImageData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *downScalingResults; // @synthesize downScalingResults=_downScalingResults;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) ARMLImageDownScalingResultData *latestResizedUltraWideImageData; // @synthesize latestResizedUltraWideImageData=_latestResizedUltraWideImageData;
 @property (readonly, nonatomic) ARImageData *originalImageData; // @synthesize originalImageData=_originalImageData;
 @property (readonly, nonatomic) long long rotationOfResultTensor; // @synthesize rotationOfResultTensor=_rotationOfResultTensor;
 @property (readonly) Class superclass;
@@ -29,6 +31,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithResultDataArray:(id)arg1 timestamp:(double)arg2 rotationOfResultTensor:(long long)arg3 originalImageData:(id)arg4;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

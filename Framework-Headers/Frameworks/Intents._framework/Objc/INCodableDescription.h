@@ -31,6 +31,7 @@
     NSString *_typeName;
     NSDictionary *_attributes;
     NSOrderedSet *_displayOrderedAttributes;
+    NSString *_semanticRoot;
 }
 
 @property (readonly, copy, nonatomic) NSString *_attributeDisplayPriorityKey; // @synthesize _attributeDisplayPriorityKey;
@@ -55,20 +56,25 @@
 @property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, nonatomic) NSArray *referencedCodableEnums;
 @property (weak, nonatomic) INSchema *schema; // @synthesize schema=_schema;
+@property (copy, nonatomic) NSString *semanticRoot; // @synthesize semanticRoot=_semanticRoot;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
 
++ (id)_calculateReferencedCodableDescriptionsFromAttributes:(id)arg1 usingTypes:(id)arg2;
++ (id)_calculateReferencedCodableDescriptionsFromAttributes:(id)arg1 usingTypes:(id)arg2 foundAttributes:(id)arg3;
++ (id)_codableDescriptionForTypedObject:(id)arg1 inDictionary:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryKeyForKeyPath:(id)arg1 object:(id)arg2;
 - (id)_ignoredAttributeTags;
+- (id)_nullable_schema;
 - (void)_updateAttributesByName;
 - (id)attributeByKeyPath:(id)arg1;
 - (id)attributeByName:(id)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)highestAttributeTag;
 - (id)init;

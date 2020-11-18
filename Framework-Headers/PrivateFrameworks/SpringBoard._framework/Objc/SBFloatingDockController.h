@@ -18,7 +18,7 @@
 #import <SpringBoard/SBRootFolderPageStateObserver-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class NSPointerArray, NSSet, NSString, PTToggleTestRecipe, SBApplication, SBDeviceOrientationUpdateDeferralAssertion, SBFAnalyticsClient, SBFailingSystemGestureRecognizer, SBFloatingDockBehaviorAssertion, SBFloatingDockRootViewController, SBFloatingDockViewController, SBFolderController, SBIconController, SBIconListView, SBLayoutStateTransitionCoordinator, SBMainScreenActiveInterfaceOrientationWindow, SBReusableViewMap, UIViewController, _UILegibilitySettings;
+@class NSPointerArray, NSSet, NSString, PTToggleTestRecipe, SBApplication, SBDeviceOrientationUpdateDeferralAssertion, SBFAnalyticsClient, SBFailingSystemGestureRecognizer, SBFloatingDockBehaviorAssertion, SBFloatingDockRootViewController, SBFloatingDockViewController, SBFolderController, SBIconController, SBIconListView, SBIndirectPanGestureRecognizer, SBLayoutStateTransitionCoordinator, SBMainScreenActiveInterfaceOrientationWindow, SBReusableViewMap, UIHoverGestureRecognizer, UIViewController, _UILegibilitySettings;
 @protocol BSInvalidatable, SBFloatingDockControllerDelegate;
 
 @interface SBFloatingDockController : NSObject <SBFloatingDockRootViewControllerDelegate, SBFolderPresentationObserver, SBSystemGestureRecognizerDelegate, SBRootFolderPageStateObserver, SBAssistantObserver, BSDescriptionProviding, SBReusableViewMapDelegate, SBLayoutStateTransitionObserver, SBIconViewQuerying, SBIconLocationPresenting, SBIconViewProviding>
@@ -40,8 +40,11 @@
     SBReusableViewMap *_iconViewMap;
     id<BSInvalidatable> _floatingDockStateDumpHandle;
     PTToggleTestRecipe *_testRecipe;
+    BOOL _wasFloatingDockPresentedByPointer;
     SBMainScreenActiveInterfaceOrientationWindow *_floatingDockWindow;
     id<SBFloatingDockControllerDelegate> _delegate;
+    SBIndirectPanGestureRecognizer *_presentFloatingDockIndirectPanGestureRecognizer;
+    UIHoverGestureRecognizer *_dismissFloatingDockHoverGestureRecognizer;
     SBFailingSystemGestureRecognizer *_dismissFloatingDockSystemGestureRecognizer;
     SBIconController *_iconController;
     SBFloatingDockBehaviorAssertion *_activeAssertion;
@@ -52,6 +55,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBFloatingDockControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIHoverGestureRecognizer *dismissFloatingDockHoverGestureRecognizer; // @synthesize dismissFloatingDockHoverGestureRecognizer=_dismissFloatingDockHoverGestureRecognizer;
 @property (readonly, nonatomic) SBFailingSystemGestureRecognizer *dismissFloatingDockSystemGestureRecognizer; // @synthesize dismissFloatingDockSystemGestureRecognizer=_dismissFloatingDockSystemGestureRecognizer;
 @property (readonly, nonatomic) double effectiveFloatingDockHeight;
 @property (readonly, nonatomic, getter=isFloatingDockFullyPresented) BOOL floatingDockFullyPresented;
@@ -69,6 +73,7 @@
 @property (readonly, nonatomic) double maximumDockContinuousCornerRadius;
 @property (readonly, nonatomic) double maximumFloatingDockHeight;
 @property (readonly, nonatomic) double preferredVerticalMargin;
+@property (readonly, nonatomic) SBIndirectPanGestureRecognizer *presentFloatingDockIndirectPanGestureRecognizer; // @synthesize presentFloatingDockIndirectPanGestureRecognizer=_presentFloatingDockIndirectPanGestureRecognizer;
 @property (readonly, nonatomic) SBFolderController *presentedFolderController;
 @property (readonly, copy, nonatomic) NSSet *presentedIconLocations;
 @property (readonly, nonatomic, getter=isPresentingFolder) BOOL presentingFolder;
@@ -79,6 +84,7 @@
 @property (readonly, nonatomic) double translationFromFullyPresentedFrame;
 @property (readonly, nonatomic) SBIconListView *userIconListView;
 @property (readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
+@property (nonatomic) BOOL wasFloatingDockPresentedByPointer; // @synthesize wasFloatingDockPresentedByPointer=_wasFloatingDockPresentedByPointer;
 
 + (BOOL)isFloatingDockSupported;
 - (void).cxx_destruct;
@@ -90,8 +96,10 @@
 - (void)_configureFloatingDockBehaviorAssertionForOpenFolder:(id)arg1 atLevel:(unsigned long long)arg2;
 - (void)_deriveActiveAssertion:(id *)arg1 dockProgress:(double *)arg2;
 - (void)_dismissFloatingDockIfPresentedAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (double)_dockProgressForHoverTranslation:(double)arg1;
 - (void)_evaluateAssertions:(unsigned long long)arg1 interactive:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_gestureRecognizerFailed:(id)arg1;
+- (void)_handleDismissFloatingDockHoverGesture:(id)arg1;
 - (void)_handleSystemGestureRecognizer:(id)arg1;
 - (void)_handleTransitionForFolder:(id)arg1 atLevel:(unsigned long long)arg2 presenting:(BOOL)arg3 withTransitionCoordinator:(id)arg4;
 - (unsigned long long)_indexOfPointerArray:(id)arg1 ofObject:(void *)arg2;
@@ -123,6 +131,8 @@
 - (void)floatingDockRootViewControllerDidEndPresentationTransition:(id)arg1;
 - (BOOL)floatingDockRootViewControllerShouldHandlePanGestureRecognizer:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (void)handlePresentFloatingDockHoverGesture:(id)arg1;
 - (BOOL)handlePromptingUserToUninstallIcon:(id)arg1 location:(id)arg2;
 - (void)iconManager:(id)arg1 willPerformTransitionWithFolder:(id)arg2 presenting:(BOOL)arg3 withTransitionCoordinator:(id)arg4;
 - (id)iconViewForIcon:(id)arg1 location:(id)arg2;

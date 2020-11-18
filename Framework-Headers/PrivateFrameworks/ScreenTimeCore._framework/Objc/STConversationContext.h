@@ -30,6 +30,8 @@
 @property BOOL shouldBeAllowedDuringGeneralScreenTime; // @synthesize shouldBeAllowedDuringGeneralScreenTime=_shouldBeAllowedDuringGeneralScreenTime;
 
 - (void).cxx_destruct;
+- (id)init;
+- (void)updateForThirdPartyApplicationState:(long long)arg1;
 - (void)updateShouldBeAllowedDuringGeneralScreenTime:(BOOL)arg1 shouldBeAllowedByScreenTimeWhenLimited:(BOOL)arg2 currentApplicationState:(unsigned long long)arg3 emergencyModeEnabled:(BOOL)arg4;
 
 @end

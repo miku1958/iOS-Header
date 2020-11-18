@@ -19,13 +19,15 @@
 @property (strong, nonatomic) WFFileType *preferredFileType; // @synthesize preferredFileType=_preferredFileType;
 
 + (id)contentCategories;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)filterDescription;
 + (BOOL)hasLibrary;
 + (BOOL)isAvailableOnPlatform:(long long)arg1;
 + (id)itemWithAssetIdentifier:(id)arg1;
 + (id)itemWithAssetIdentifier:(id)arg1 assetFile:(id)arg2;
 + (id)itemWithAssetIdentifier:(id)arg1 assetFile:(id)arg2 nameIfKnown:(id)arg3;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3;
++ (id)itemWithAssetIdentifier:(id)arg1 assetFile:(id)arg2 nameIfKnown:(id)arg3 contentSource:(id)arg4;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
 + (id)itemsWithBurstIdentifier:(id)arg1;
 + (id)outputTypes;
 + (id)ownedPasteboardTypes;
@@ -60,6 +62,7 @@
 - (unsigned long long)hash;
 - (id)height;
 - (id)imageManager;
+- (id)intermediaryTypesForCoercionToItemClass:(Class)arg1;
 - (id)isBurst;
 - (BOOL)isEqual:(id)arg1;
 - (id)isFavorite;

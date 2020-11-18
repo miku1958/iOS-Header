@@ -6,14 +6,14 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class MKPlaceActionManager, MKPlaceCardActionsViewController, UIView;
+@class MKPlaceActionManager, MKPlaceCardActionsViewController, UIView, UIViewController;
 
 @protocol MKPlaceCardActionControllerDelegate <NSObject>
 - (void)placeActionManager:(MKPlaceActionManager *)arg1 didSelectShareFromView:(UIView *)arg2;
 - (void)placeCardActionControllerDidSelectReportAProblem:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
 
 @optional
-- (void)placeCardActionControllerDidSelectAddPhoto:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectAddPhoto:(MKPlaceCardActionsViewController *)arg1 presentingViewController:(UIViewController *)arg2;
 - (void)placeCardActionControllerDidSelectAddToCollection:(MKPlaceCardActionsViewController *)arg1 completion:(void (^)(void))arg2;
 - (void)placeCardActionControllerDidSelectAddToContacts:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
 - (void)placeCardActionControllerDidSelectAddToExistingContact:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
@@ -28,7 +28,7 @@
 - (void)placeCardActionControllerDidSelectRemoveMarker:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectSimulateLocation:(MKPlaceCardActionsViewController *)arg1;
-- (void)placeCardActionControllerDidSelectViewAllPhotos:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectViewAllPhotos:(MKPlaceCardActionsViewController *)arg1 presentingViewController:(UIViewController *)arg2;
 - (void)placeCardActionControllerDidSelectionOpenBrandCard:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectionOpenInPinpoint:(MKPlaceCardActionsViewController *)arg1;
 @end

@@ -48,7 +48,7 @@
 + (id)entityName;
 + (id)eventRepresentingUserActivityWithSearchableItem:(id)arg1 bundleIdentifier:(id)arg2;
 + (id)eventStreamFromManagedObject:(id)arg1 forValue:(id)arg2 cache:(id)arg3;
-+ (id)eventValueFromManagedObject:(id)arg1 streamName:(id)arg2 readMetadata:(BOOL)arg3 cache:(id)arg4;
++ (id)eventValueFromManagedObject:(id)arg1 streamName:(id)arg2 readMetadata:(BOOL)arg3 excludedMetadataKeys:(id)arg4 cache:(id)arg5;
 + (id)eventWithInteraction:(id)arg1 bundleIdentifier:(id)arg2 storeKeyImage:(BOOL)arg3;
 + (id)eventWithRelevantShortcut:(id)arg1 bundleID:(id)arg2;
 + (id)eventWithSearchableItem:(id)arg1 bundleIdentifier:(id)arg2;
@@ -71,9 +71,9 @@
 + (id)keyPathForMOKeyPath:(id)arg1;
 + (id)metadataForInteraction:(id)arg1 storeKeyImage:(BOOL)arg2;
 + (id)moKeyPathForKeyPath:(id)arg1;
-+ (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
++ (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 excludedMetadataKeys:(id)arg3 cache:(id)arg4;
 + (BOOL)supportsSecureCoding;
-+ (id)uncachedEventValueFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
++ (id)uncachedEventValueFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 excludedMetadataKeys:(id)arg3 cache:(id)arg4;
 - (void).cxx_destruct;
 - (BOOL)boolValue;
 - (long long)compareValue:(id)arg1;
@@ -89,8 +89,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)metadataFromCustomMetadata:(id)arg1;
 - (id)metadataFromCustomMetadata:(id)arg1 cache:(id)arg2;
-- (id)metadataFromStructuredMetadata:(id)arg1;
-- (id)metadataFromStructuredMetadata:(id)arg1 cache:(id)arg2;
+- (id)metadataFromStructuredMetadata:(id)arg1 excludedMetadataKeys:(id)arg2;
+- (id)metadataFromStructuredMetadata:(id)arg1 excludedMetadataKeys:(id)arg2 cache:(id)arg3;
 - (id)primaryValue;
 - (id)relevantShortcut;
 - (id)stringValue;

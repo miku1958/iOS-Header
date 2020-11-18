@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithUpdateHandler:(CDUnknownBlockType)arg1;
-- (struct GEOMapItemStorage *)mapItemFormShortcutForCNIdentifier:(id)arg1;
+- (id)mapItemFormShortcutForCNIdentifier:(id)arg1;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
 
 @end

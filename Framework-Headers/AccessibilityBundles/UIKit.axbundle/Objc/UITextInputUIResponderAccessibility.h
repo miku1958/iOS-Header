@@ -36,7 +36,9 @@
 - (id)_accessibilityTextRangeFromNSRange:(struct _NSRange)arg1;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (void)_axDrawFocusRingAroundFirstResponderAndMoveFocus:(BOOL)arg1;
 - (void)_axResetFKAFocusToFirstResponder;
+- (BOOL)_axShouldDrawFocusAroundFirstResponder;
 - (id)_moveLeft:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveRight:(BOOL)arg1 withHistory:(id)arg2;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;

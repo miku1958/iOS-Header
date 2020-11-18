@@ -9,7 +9,7 @@
 #import <NewsCore/NSCopying-Protocol.h>
 #import <NewsCore/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface FCSolArticle : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,12 +17,14 @@
     NSString *_identifier;
     NSString *_publisherID;
     double _score;
+    NSSet *_whitelistedTopicIDs;
 }
 
 @property (nonatomic) BOOL accessible; // @synthesize accessible=_accessible;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *publisherID; // @synthesize publisherID=_publisherID;
 @property (nonatomic) double score; // @synthesize score=_score;
+@property (strong, nonatomic) NSSet *whitelistedTopicIDs; // @synthesize whitelistedTopicIDs=_whitelistedTopicIDs;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -32,6 +34,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithID:(id)arg1 publisherID:(id)arg2 score:(double)arg3 accessible:(BOOL)arg4;
+- (id)initWithID:(id)arg1 publisherID:(id)arg2 score:(double)arg3 accessible:(BOOL)arg4 whitelistedTopicIDs:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -18,7 +18,7 @@
 
 + (id)copyIdentifiableItem:(id)arg1;
 + (id)copyItem:(id)arg1 schemaIdentifier:(id)arg2;
-+ (struct NSDictionary *)deserializeContentsFromDictionary:(id)arg1 error:(out id *)arg2;
++ (id)deserializeContentsFromDictionary:(id)arg1 error:(out id *)arg2;
 + (id)deserializeFromDictionary:(id)arg1 error:(out id *)arg2;
 + (id)deserializeIdentifiableItem:(id)arg1 error:(out id *)arg2;
 + (id)deserializeIdentifierFromDictionary:(id)arg1 error:(out id *)arg2;
@@ -41,7 +41,7 @@
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 attributes:(id)arg2;
 - (BOOL)isValid:(out id *)arg1;
-- (struct NSArray *)schemaDependencies;
+- (id)schemaDependencies;
 - (BOOL)serializeIdentifier:(id)arg1 intoDictionary:(id)arg2 error:(out id *)arg3;
 - (BOOL)serializeIntoDictionary:(id)arg1 error:(out id *)arg2;
 - (BOOL)validateIdentifier:(id)arg1 error:(out id *)arg2;

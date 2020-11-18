@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSTouchIconRequest.h>
+#import <SafariSharedUI/WBSTouchIconRequest.h>
 
 @class WebBookmark;
 

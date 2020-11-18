@@ -9,7 +9,7 @@
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPAuthenticatable-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class NSMutableDictionary, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface RPRemoteDisplayServer : NSObject <NSSecureCoding, RPAuthenticatable>
@@ -17,7 +17,7 @@
     BOOL _activateCalled;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
-    struct NSMutableDictionary *_sessions;
+    NSMutableDictionary *_sessions;
     NSXPCConnection *_xpcCnx;
     unsigned int _pairSetupFlags;
     unsigned int _pairVerifyFlags;

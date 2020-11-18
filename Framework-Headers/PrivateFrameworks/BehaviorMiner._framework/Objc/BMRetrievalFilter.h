@@ -12,7 +12,7 @@
 {
     long long _operand;
     long long _inclusionOperator;
-    struct NSSet *_items;
+    NSSet *_items;
     NSSet *_types;
 }
 
@@ -21,7 +21,7 @@
 @property (nonatomic) long long operand; // @synthesize operand=_operand;
 @property (strong, nonatomic) NSSet *types; // @synthesize types=_types;
 
-+ (id)filterWithOperand:(long long)arg1 inclusionOperator:(long long)arg2 items:(struct NSSet *)arg3;
++ (id)filterWithOperand:(long long)arg1 inclusionOperator:(long long)arg2 items:(id)arg3;
 + (id)filterWithOperand:(long long)arg1 inclusionOperator:(long long)arg2 types:(id)arg3;
 - (void).cxx_destruct;
 - (id)rulePredicate;

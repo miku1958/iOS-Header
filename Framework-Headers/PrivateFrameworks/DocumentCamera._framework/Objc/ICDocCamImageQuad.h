@@ -53,11 +53,11 @@
 - (id)initWithCoder:(id)arg1;
 - (id)intersectionOfLineFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2 withLineFrom:(struct CGPoint)arg3 to:(struct CGPoint)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)normalizedQuadByConvertingFromView:(struct UIView *)arg1 toView:(struct UIView *)arg2 toViewSize:(struct CGSize)arg3;
+- (id)normalizedQuadByConvertingFromView:(id)arg1 toView:(id)arg2 toViewSize:(struct CGSize)arg3;
 - (void)orientIfNecessary;
 - (struct CGSize)perspectiveCorrectedSize;
 - (struct CGPoint)pointRotatedClockwiseAroundOrigin:(struct CGPoint)arg1;
-- (id)quadByConvertingFromView:(struct UIView *)arg1 toView:(struct UIView *)arg2 isNormalized:(BOOL)arg3;
+- (id)quadByConvertingFromView:(id)arg1 toView:(id)arg2 isNormalized:(BOOL)arg3;
 - (void)removeOrientation:(long long)arg1 boundingBox:(struct CGRect)arg2;
 - (void)rotatePointsByOrientation:(long long)arg1;
 - (void)rotatePointsClockwise;

@@ -10,7 +10,7 @@
 #import <ControlCenterUIKit/CCUIContentModuleExpandedStateListener-Protocol.h>
 #import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIPanGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer;
+@class NSArray, NSString, UIHoverGestureRecognizer, UIPanGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer;
 
 @interface CCUISteppedSliderView : CCUIBaseSliderView <UIGestureRecognizerDelegate, CCUIContentModuleExpandedStateListener, CCUIContentClipping>
 {
@@ -22,6 +22,9 @@
     BOOL _valueHasBeenAdjustedForSteppedSlider;
     UIPanGestureRecognizer *_valueChangeGestureRecognizer;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    unsigned long long _hoverStep;
+    BOOL _isHoverHighlighting;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
     BOOL _firstStepIsDisabled;
     BOOL _firstStepIsOff;
@@ -47,6 +50,7 @@
 - (void)_createSeparatorViewsForNumberOfSteps:(unsigned long long)arg1;
 - (void)_createStepViewsForNumberOfSteps:(unsigned long long)arg1;
 - (void)_endTrackingWithGestureRecognizer:(id)arg1;
+- (void)_handleHoverGestureRecognizer:(id)arg1;
 - (void)_handleValueChangeGestureRecognizer:(id)arg1;
 - (void)_handleValueTapGestureRecognizer:(id)arg1;
 - (void)_layoutStepViews;

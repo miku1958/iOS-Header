@@ -14,8 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axUserDataConfiguration;
+- (id)_focusGroupDescriptor;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
 
 @end

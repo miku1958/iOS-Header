@@ -33,6 +33,9 @@
     NSObject<OS_dispatch_source> *_locationTimer;
     CDUnknownBlockType _locationCompletion;
     PKPaymentService *_paymentService;
+    unsigned long long _backgroundTaskIdentifier;
+    long long _provisioningStatusCount;
+    BOOL _expressModeSetupOptional;
     NSString *_productIdentifier;
     NSString *_referrerIdentifier;
     PKPaymentWebService *_webService;
@@ -61,6 +64,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PKPaymentEligibilityResponse *eligibilityResponse; // @synthesize eligibilityResponse=_eligibilityResponse;
+@property (readonly, nonatomic, getter=isExpressModeSetupOptional) BOOL expressModeSetupOptional; // @synthesize expressModeSetupOptional=_expressModeSetupOptional;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *localizedProgressDescription; // @synthesize localizedProgressDescription=_localizedProgressDescription;
 @property (readonly, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
@@ -100,8 +104,8 @@
 - (BOOL)_isValidLocation:(id)arg1;
 - (void)_loadMoreInfoItemForMarket:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_mockBrowseBanksResponse;
-- (unsigned long long)_noteProvisioningDidBegin;
-- (void)_noteProvisioningDidEndWithTaskIdentifier:(unsigned long long)arg1;
+- (void)_noteProvisioningDidBegin;
+- (void)_noteProvisioningDidEnd;
 - (void)_passAlreadyProvisioned;
 - (id)_paymentPassWithPaymentMethodType:(unsigned long long)arg1;
 - (void)_provisioningNonceWithCompletion:(CDUnknownBlockType)arg1;
@@ -133,6 +137,8 @@
 - (void)featureApplicationAdded:(id)arg1;
 - (void)featureApplicationChanged:(id)arg1;
 - (void)featureApplicationRemoved:(id)arg1;
+- (void)finishOptionalExpressModeSetupForPass:(id)arg1 withProvisioningTracker:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)handleOptionalExpressModeSetupDidFinishForPass:(id)arg1 withExpressModes:(id)arg2 provisioningTracker:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)hasCreditPaymentPass;
 - (BOOL)hasDebitPaymentPass;
 - (BOOL)hasPaymentPass;
@@ -150,11 +156,13 @@
 - (void)performDeviceCheckInIfNeeded:(CDUnknownBlockType)arg1;
 - (void)preflightPasscodeUpgradeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
+- (id)provisioningTracker;
 - (BOOL)provisioningUserInterfaceIsVisible;
 - (void)registerDevice:(CDUnknownBlockType)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)removeProvisionedPass;
 - (void)requestEligibility:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)requestProvisioning:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)requestProvisioning:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestProvisioningMethodMetadataForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestPurchasesForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -12,8 +12,8 @@
 @protocol FMDAudioAccessory <NSObject>
 
 @property (readonly, nonatomic) NSString *audioRoutingIdentifier;
+@property (readonly, nonatomic) unsigned long long audioSafetyStatus;
 @property (readonly, nonatomic) NSURL *audioURL;
-@property (readonly, nonatomic) unsigned long long inEar;
 @property (readonly, nonatomic) BOOL playingSound;
 
 - (BOOL)updateAudioAsset:(id<FMDAsset>)arg1;

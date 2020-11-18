@@ -37,6 +37,8 @@
 + (id)proxyLockCoordinatingFilePathForDatabaseDirectory:(id)arg1 databaseName:(id)arg2;
 + (id)proxyLockFilePathForDatabasePath:(id)arg1;
 + (id)realPathForPath:(id)arg1 error:(id *)arg2;
++ (id)redactedDescriptionForFileURL:(id)arg1;
++ (id)redactedDescriptionForPath:(id)arg1;
 + (id)relocateLibraryIndicatorFilePath;
 + (BOOL)removeDisconnectedSQLiteDatabaseFileWithPath:(id)arg1 error:(id *)arg2;
 + (BOOL)removeFilesInDirectoryAtURL:(id)arg1 withPrefix:(id)arg2 error:(id *)arg3 progress:(CDUnknownBlockType)arg4;

@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <GameCenterUI/UIScrollViewDelegate-Protocol.h>
 #import <GameCenterUI/UIViewControllerAnimatedTransitioning-Protocol.h>
 #import <GameCenterUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class GKBubbleFlowContainerView, NSMutableDictionary, NSString, OBBoldTrayButton, OBPrivacyLinkController, UILabel, UIView;
+@class GKBubbleFlowContainerView, NSMutableDictionary, NSString, OBBoldTrayButton, OBPrivacyLinkController, UILabel, UIScrollView, UIView, UIVisualEffectView;
 @protocol GKOnboardingFlowDelegate;
 
-@interface GKOnboardingViewController : UIViewController <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
+@interface GKOnboardingViewController : UIViewController <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate, UIScrollViewDelegate>
 {
     BOOL _presenting;
     id<GKOnboardingFlowDelegate> _delegate;
@@ -23,6 +24,9 @@
     UIView *_bubblePlaceholder;
     UIView *_buttonContainer;
     OBBoldTrayButton *_nextButton;
+    UIView *_privacyContentView;
+    UIScrollView *_scrollView;
+    UIVisualEffectView *_visualEffectView;
     GKBubbleFlowContainerView *_bubblesContainerView;
     UIView *_bubblesAnchorView;
     UILabel *_mainTitle;
@@ -46,10 +50,13 @@
 @property (strong, nonatomic) OBBoldTrayButton *nextButton; // @synthesize nextButton=_nextButton;
 @property (nonatomic, getter=isPresenting) BOOL presenting; // @synthesize presenting=_presenting;
 @property (strong, nonatomic) UIView *privacyContainer; // @synthesize privacyContainer=_privacyContainer;
+@property (strong, nonatomic) UIView *privacyContentView; // @synthesize privacyContentView=_privacyContentView;
 @property (strong, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
+@property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) UILabel *subTitle; // @synthesize subTitle=_subTitle;
 @property (readonly) Class superclass;
 @property (nonatomic) double transitionDuration; // @synthesize transitionDuration=_transitionDuration;
+@property (strong, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 
 - (void).cxx_destruct;
 - (void)addPrivacyLink;
@@ -63,6 +70,7 @@
 - (void)nextPressed:(id)arg1;
 - (void)presentPersonalizationScreen;
 - (void)removeConstraintsForView:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)shouldPresentPersonalizationScreen;
 - (void)showSignOutAlert;
 - (void)signOutPressed:(id)arg1;

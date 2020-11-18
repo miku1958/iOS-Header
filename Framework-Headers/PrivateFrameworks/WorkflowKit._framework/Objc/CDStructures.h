@@ -448,7 +448,9 @@ struct __va_list_tag {
 };
 
 struct atomic<unsigned long long> {
-    _Atomic unsigned long long _field1;
+    struct __cxx_atomic_impl<unsigned long long, std::__1::__cxx_atomic_base_impl<unsigned long long>> {
+        _Atomic unsigned long long _field1;
+    } _field1;
 };
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {

@@ -84,6 +84,7 @@
 - (void)completeRequestWithHTTPResponse:(id)arg1 httpBody:(id)arg2;
 - (void)completeRequestWithHTTPResponseHeaders:(id)arg1;
 - (void)completeRequestWithHeaders:(id)arg1;
+- (void)finishRequest;
 - (id)initWithRequest:(id)arg1 extensionData:(id)arg2 settingsManager:(id)arg3;
 - (void)presentAuthorizationViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setUserPrincipalNameAfterAuth:(id)arg1;

@@ -16,17 +16,20 @@
 {
     UIViewController *_extensionViewController;
     id<SOUIAuthorizationViewControllerDelegate> _delegate;
+    CDUnknownBlockType _dismissCompletionHandler;
 }
 
 @property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<SOUIAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancel;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithExtensionViewController:(id)arg1 hints:(id)arg2;
 - (void)loadView;

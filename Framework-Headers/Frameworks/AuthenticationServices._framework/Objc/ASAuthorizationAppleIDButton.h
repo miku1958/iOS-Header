@@ -25,7 +25,7 @@
 - (long long)_ak_buttonStyle;
 - (long long)_ak_buttonType;
 - (void)_createHighlightFilterIfNecessary;
-- (void)_drawRect:(struct CGRect)arg1 inView:(struct UIView *)arg2;
+- (void)_drawRect:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_performAnimationToSetHighlighted:(BOOL)arg1;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

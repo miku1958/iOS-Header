@@ -44,6 +44,7 @@
 - (void)_setSuppressDictationOptInLocal:(BOOL)arg1;
 - (id)activitySummaryReportDate;
 - (id)allSiriLanguageCodesForSystemLanguageCode:(id)arg1 isGoodFit:(BOOL *)arg2;
+- (BOOL)alwaysAllowVoiceActivation;
 - (BOOL)applySASToFirstPartyDomains;
 - (BOOL)assistantIsEnabled;
 - (BOOL)assistantLanguageForceRTL;
@@ -67,6 +68,7 @@
 - (BOOL)debugButtonIsEnabled;
 - (BOOL)designModeIsEnabled;
 - (BOOL)dictationIsEnabled;
+- (id)dictationRequestSamplingRateMap;
 - (id)dictationSLSLanguagesEnabled;
 - (BOOL)disableAssistantWhilePasscodeLocked;
 - (BOOL)dismissWhenDeviceIsLoweredEnabled;
@@ -132,6 +134,7 @@
 - (BOOL)respectsSystemMute;
 - (void)setAVVCLoggingEnabled:(BOOL)arg1;
 - (void)setActivitySummaryReportDateToNow;
+- (void)setAlwaysAllowVoiceActivation:(BOOL)arg1;
 - (void)setApplySASToFirstPartyDomains:(BOOL)arg1;
 - (void)setAssistantIsEnabled:(BOOL)arg1;
 - (void)setAssistantLanguageForceRTL:(BOOL)arg1;
@@ -211,6 +214,7 @@
 - (void)setSpokenNotificationSkipTriggerlessReplyConfirmation:(BOOL)arg1;
 - (void)setSpokenNotificationTemporarilyDisabledForApp:(id)arg1 until:(id)arg2;
 - (void)setSpokenNotificationTemporarilyDisabledUntil:(id)arg1;
+- (void)setSpokenNotificationsEnabledForNano:(BOOL)arg1;
 - (void)setSpokenNotificationsProxCardSeen;
 - (void)setStreamingDictationEnabled:(BOOL)arg1;
 - (void)setSuppressAssistantOptIn:(BOOL)arg1;
@@ -227,6 +231,7 @@
 - (BOOL)siriDebugUIEnabled;
 - (BOOL)siriSpeakerGradingDebugUIEnabled;
 - (BOOL)spokenNotificationSkipTriggerlessReplyConfirmation;
+- (BOOL)spokenNotificationsEnabledForNano;
 - (BOOL)streamingDictationEnabled;
 - (id)supplementalLanguageDictionaryForProduct:(id)arg1;
 - (id)supplementalLanguages;

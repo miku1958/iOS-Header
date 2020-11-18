@@ -127,7 +127,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)tocDepth;
 - (BOOL)useOutline;
 - (id)wrapPointSetForPage:(int)arg1;
-- (const set_3d57cb01 *)wrapPoints;
+- (const set_978dc09f *)wrapPoints;
 
 @end
 

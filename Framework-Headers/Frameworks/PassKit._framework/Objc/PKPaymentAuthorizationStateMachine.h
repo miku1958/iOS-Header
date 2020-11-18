@@ -88,6 +88,7 @@
 - (void)_enqeueDidAuthorizePurchaseWithParam:(id)arg1;
 - (void)_enqueueCallbackOfKind:(long long)arg1 withObject:(id)arg2;
 - (void)_enqueueDidAuthorizeAccountServicePaymentRequestWithApplePayTrustSignature:(id)arg1;
+- (void)_enqueueDidAuthorizeContext;
 - (void)_enqueueDidAuthorizeDisbursementWithVoucher:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithByPassPayment:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithInstallmentAuthorizationToken:(id)arg1;

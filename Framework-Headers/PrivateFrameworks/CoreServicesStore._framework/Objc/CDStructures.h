@@ -111,7 +111,9 @@ struct array<unsigned int, 64> {
 };
 
 struct atomic<long long> {
-    _Atomic long long __a_;
+    struct __cxx_atomic_impl<long long, std::__1::__cxx_atomic_base_impl<long long>> {
+        _Atomic long long __a_value;
+    } __a_;
 };
 
 struct optional<unsigned int> {

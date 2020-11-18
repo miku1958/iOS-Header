@@ -48,6 +48,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
+@property (readonly) BOOL isInitialized;
 @property (readonly) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property (strong) NSMutableSet *mediaContentProfileAccessControlAccessories; // @synthesize mediaContentProfileAccessControlAccessories=_mediaContentProfileAccessControlAccessories;
 @property (readonly, copy) NSArray *mediaContentProfileAccessControlAccessoriesToEncode;
@@ -87,7 +88,6 @@
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 userID:(id)arg3 homeID:(id)arg4 sharedSettingsController:(id)arg5 privateSettingsController:(id)arg6 timerCreator:(id)arg7;
 - (void)initializePrivateZoneController:(id)arg1 userDataModel:(id)arg2;
 - (void)initializeSharedZoneController:(id)arg1 userDataModel:(id)arg2;
-- (BOOL)isInitialized;
 - (id)logIdentifier;
 - (void)mediaContentProfileAccessControlModelRemoved:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mediaContentProfileAccessControlModelUpdated:(id)arg1 previousModel:(id)arg2 completion:(CDUnknownBlockType)arg3;

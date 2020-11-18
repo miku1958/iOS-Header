@@ -38,6 +38,7 @@
 @property (copy, nonatomic) NSString *coreIDVServiceProviderName; // @synthesize coreIDVServiceProviderName=_coreIDVServiceProviderName;
 @property (strong, nonatomic) PKFeatureApplicationDeclineDetails *declineDetails; // @synthesize declineDetails=_declineDetails;
 @property (nonatomic) unsigned long long feature; // @synthesize feature=_feature;
+@property (readonly, nonatomic) BOOL isActive;
 @property (strong, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
 
 + (BOOL)supportsSecureCoding;

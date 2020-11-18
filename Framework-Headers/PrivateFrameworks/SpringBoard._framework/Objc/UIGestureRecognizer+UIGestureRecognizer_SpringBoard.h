@@ -8,7 +8,6 @@
 
 @interface UIGestureRecognizer (UIGestureRecognizer_SpringBoard)
 - (id)sb_briefDescription;
-- (void)sb_setStylusTouchesAllowed:(BOOL)arg1;
 - (id)sb_stringForState;
 @end
 

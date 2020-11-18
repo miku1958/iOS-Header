@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, UIImage;
+@class NSArray, NSDictionary, NSString, UIColor, UIImage;
 
 @interface AVTColorPreset : NSObject
 {
@@ -14,12 +14,12 @@
     long long _category;
     NSDictionary *_derivedColors;
     NSArray *_colors;
-    struct UIColor *_previewColorMin;
-    struct UIColor *_previewColorMid;
-    struct UIColor *_previewColorMax;
-    struct UIColor *_previewAccentColorMin;
-    struct UIColor *_previewAccentColorMid;
-    struct UIColor *_previewAccentColorMax;
+    UIColor *_previewColorMin;
+    UIColor *_previewColorMid;
+    UIColor *_previewColorMax;
+    UIColor *_previewAccentColorMin;
+    UIColor *_previewAccentColorMid;
+    UIColor *_previewAccentColorMax;
     unsigned long long _previewAccentType;
     float _variation;
     NSArray *_materials;
@@ -51,8 +51,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)materialAtIndex:(unsigned long long)arg1;
 - (unsigned long long)materialCount;
-- (struct UIColor *)previewAccentColor;
-- (struct UIColor *)previewColor;
+- (id)previewAccentColor;
+- (id)previewColor;
 - (void)renderColorIntoCALayer:(id)arg1;
 - (void)renderColorIntoCALayer:(id)arg1 withSkinColor:(id)arg2;
 - (void)renderNaturalSkinColorIntoCALayer:(id)arg1 withSkinColor:(id)arg2;

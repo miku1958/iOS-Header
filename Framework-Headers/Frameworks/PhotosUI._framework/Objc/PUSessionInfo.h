@@ -22,7 +22,7 @@
     PUPhotoSelectionManager *_photoSelectionManager;
     PHAssetCollection *_sourceAlbum;
     NSOrderedSet *_transferredAssets;
-    struct NSObject *_targetAlbum;
+    NSObject<PLAlbumProtocol> *_targetAlbum;
     NSString *_targetAlbumName;
     NSString *_localizedPrompt;
     long long _promptLocation;

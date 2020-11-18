@@ -24,7 +24,7 @@
     NSTimer *_afterEventTimer;
     BOOL _paused;
     BOOL _missedUpdateWhilePaused;
-    struct NSString *_token;
+    NSString *_token;
     CLLocation *_location;
 }
 

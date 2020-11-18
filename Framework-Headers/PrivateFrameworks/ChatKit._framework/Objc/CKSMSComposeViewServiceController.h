@@ -15,6 +15,7 @@
 @interface CKSMSComposeViewServiceController : UINavigationController <CKComposeChatControllerDelegate, CKSMSComposeViewServiceProtocol>
 {
     BOOL _canEditRecipients;
+    BOOL _shouldDisableEntryField;
     BOOL _supportsAttachments;
     BOOL _supportsMessageInspection;
     BOOL _forceMMS;
@@ -39,6 +40,7 @@
 @property (copy, nonatomic) CDUnknownBlockType gameCenterPickerBlock; // @synthesize gameCenterPickerBlock=_gameCenterPickerBlock;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKModalTranscriptController *modalTranscriptController; // @synthesize modalTranscriptController=_modalTranscriptController;
+@property (nonatomic) BOOL shouldDisableEntryField; // @dynamic shouldDisableEntryField;
 @property (readonly) Class superclass;
 
 + (id)_exportedInterface;

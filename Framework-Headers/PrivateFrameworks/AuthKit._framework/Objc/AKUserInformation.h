@@ -9,7 +9,7 @@
 #import <AuthKit/NSCopying-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface AKUserInformation : NSObject <NSSecureCoding, NSCopying>
 {
@@ -32,11 +32,13 @@
     unsigned long long _appleIDSecurityLevel;
     unsigned long long _authMode;
     unsigned long long _repairState;
+    NSDictionary *_additionalInfo;
     NSString *_selectedEmail;
 }
 
 @property (copy, nonatomic) NSArray *accountAliases; // @synthesize accountAliases=_accountAliases;
 @property (copy, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
+@property (copy, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo=_additionalInfo;
 @property (copy, nonatomic) NSString *ageOfMajority; // @synthesize ageOfMajority=_ageOfMajority;
 @property (nonatomic) unsigned long long appleIDSecurityLevel; // @synthesize appleIDSecurityLevel=_appleIDSecurityLevel;
 @property (nonatomic) unsigned long long authMode; // @synthesize authMode=_authMode;

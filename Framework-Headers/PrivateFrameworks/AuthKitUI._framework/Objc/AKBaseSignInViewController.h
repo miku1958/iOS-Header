@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-@class AKAppleIDAuthenticationController, AKAppleIDAuthenticationInAppContext;
+#import <AuthKitUI/AKBasicLoginAnimateProtocol-Protocol.h>
+
+@class AKAppleIDAuthenticationController, AKAppleIDAuthenticationInAppContext, NSString;
 @protocol AKSignInViewControllerDelegate;
 
-@interface AKBaseSignInViewController : UIViewController
+@interface AKBaseSignInViewController : UIViewController <AKBasicLoginAnimateProtocol>
 {
     AKAppleIDAuthenticationController *_authenticationController;
     BOOL _usesDarkMode;
@@ -21,14 +23,17 @@
 @property (nonatomic, getter=isAuthInProgress) BOOL authInProgress; // @synthesize authInProgress=_authInProgress;
 @property (readonly) AKAppleIDAuthenticationController *authenticationController;
 @property (strong) AKAppleIDAuthenticationInAppContext *context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak) id<AKSignInViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL usesDarkMode; // @synthesize usesDarkMode=_usesDarkMode;
 
 - (void).cxx_destruct;
 - (void)_authenticateWithContext:(id)arg1;
 - (void)_beginAuthenticationIfPossibleWithOption:(unsigned long long)arg1 withUsername:(id)arg2 password:(id)arg3;
 - (BOOL)_canBeginAuthenticationWithOption:(unsigned long long)arg1;
-- (void)_hidebusyWorkUI;
 - (id)_initWithAuthController:(id)arg1;
 - (id)_initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)_isAccountModificationRestricted;
@@ -36,7 +41,8 @@
 - (void)_provideDelegateWithAuthResults:(id)arg1 error:(id)arg2;
 - (void)_setPasswordFieldHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setPasswordFieldHiddenIfNeeded;
-- (void)_startBusyWorkUI;
+- (void)startAnimating;
+- (void)stopAnimating;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

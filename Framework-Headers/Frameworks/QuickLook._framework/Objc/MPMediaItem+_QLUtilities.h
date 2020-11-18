@@ -9,5 +9,6 @@
 @interface MPMediaItem (_QLUtilities)
 + (id)playingInfoFromAsset:(id)arg1 withDefaultTitle:(id)arg2;
 + (id)playingInfoFromAsset:(id)arg1 withDefaultTitle:(id)arg2 playbackDuration:(double)arg3 elapsedTime:(double)arg4;
++ (id)ql_propertyTitleFromAsset:(id)arg1;
 @end
 

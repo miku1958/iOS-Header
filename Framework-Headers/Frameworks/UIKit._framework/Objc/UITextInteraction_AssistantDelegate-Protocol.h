@@ -7,13 +7,15 @@
 #import <UIKitCore/NSObject-Protocol.h>
 #import <UIKitCore/UITextAutoscrolling-Protocol.h>
 
-@class NSTextAlternatives, UIDragRecognizer, UIGestureRecognizer, UIResponder, UITextRange, UITextSelectionView, UITouch, UIView;
+@class NSTextAlternatives, UIDragRecognizer, UIGestureRecognizer, UIResponder, UITextRange, UITextSelectionView, UITouch, UIView, _UIKeyboardTextSelectionController;
 @protocol UITextInput;
 
 @protocol UITextInteraction_AssistantDelegate <UITextAutoscrolling, NSObject>
 
+@property (readonly, nonatomic) _UIKeyboardTextSelectionController *activeSelectionController;
 @property (nonatomic) BOOL autoscrolled;
 @property (nonatomic) BOOL expectingCommit;
+@property (strong, nonatomic) id grabberSuppressionAssertion;
 @property (nonatomic) struct CGPoint loupeGestureEndPoint;
 @property (nonatomic) BOOL needsGestureUpdate;
 @property (readonly, nonatomic) BOOL willHandoffLoupeMagnifier;
@@ -30,7 +32,8 @@
 - (void)endFloatingCursor;
 - (void)extendSelectionToLoupeOrSetToPoint:(struct CGPoint)arg1;
 - (void)extendSelectionToPoint:(struct CGPoint)arg1;
-- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3;
+- (BOOL)hasActiveSelectionInteraction;
+- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3 forTouchType:(long long)arg4;
 - (void)notifyKeyboardSelectionChanged;
 - (UITextRange *)rangeForTextReplacement:(UITextRange *)arg1;
 - (void)resetWillHandoffLoupeMagnifier;
@@ -39,15 +42,19 @@
 - (void)scrollSelectionToVisible;
 - (void)selectWordWithoutShowingCommands;
 - (UITextSelectionView *)selectionView;
+- (void)setAutomaticSelectionCommandsSuppressedForPointerTouchType:(BOOL)arg1;
 - (void)setFirstResponderIfNecessary;
 - (void)setFirstResponderIfNecessaryActivatingSelection:(BOOL)arg1;
 - (void)setGestureRecognizers;
 - (void)setSelectionWithPoint:(struct CGPoint)arg1;
 - (void)setSuppressSystemUI:(BOOL)arg1;
+- (void)showSelectionCommandsForSecondaryClickAtPoint:(struct CGPoint)arg1;
 - (void)stashCurrentSelection;
+- (BOOL)supportsIndirectInteractions;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void)updateWithMagnifierTerminalPoint:(BOOL)arg1;
 - (BOOL)useGesturesForEditableContent;
+- (BOOL)usesAsynchronousSelectionController;
 - (UIView *)view;
 - (BOOL)viewCouldBecomeEditable:(UIResponder<UITextInput> *)arg1;
 - (void)willBeginFloatingCursor:(BOOL)arg1;

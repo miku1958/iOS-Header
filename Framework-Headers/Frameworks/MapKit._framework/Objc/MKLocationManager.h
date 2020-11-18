@@ -176,7 +176,7 @@
 - (void)stopLocationUpdateWithObserver:(id)arg1;
 - (void)stopVehicleHeadingUpdate;
 - (void)stopVehicleSpeedUpdate;
-- (void)waitForAccurateLocationWithHandler:(CDUnknownBlockType)arg1;
+- (void)waitForAccurateLocationWithTimeout:(double)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end
 

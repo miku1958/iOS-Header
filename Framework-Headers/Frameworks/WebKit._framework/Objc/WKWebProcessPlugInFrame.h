@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSArray *faviconURLs;
 @property (readonly, nonatomic) _WKFrameHandle *handle;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isMainFrame;
 @property (readonly) Class superclass;
 
 + (id)lookUpFrameFromHandle:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
 
-@class MSPFavoritesContainer, MSPHistoryContainer, MapsSuggestionsCanKicker, NSObject, NSString;
+@class MSPFavoritesContainer, MSPHistoryContainer, MapsSuggestionsCanKicker, NSMutableArray, NSObject, NSString;
 @protocol MapsSuggestionsSourceDelegate, OS_dispatch_queue;
 
 @interface MapsSuggestionsMSPSource : MapsSuggestionsBaseSource <MapsSuggestionsSource>
@@ -19,8 +19,8 @@
     MapsSuggestionsCanKicker *_canKickerFavoriteNotification;
     MSPHistoryContainer *_historyContainer;
     MSPFavoritesContainer *_favoritesContainer;
-    struct NSMutableArray *_recentsEntriesToAdd;
-    struct NSMutableArray *_favoritesEntriesToAdd;
+    NSMutableArray *_recentsEntriesToAdd;
+    NSMutableArray *_favoritesEntriesToAdd;
     int _notificationTokenForRecentHistory;
     int _notificationTokenForFavorites;
     BOOL _favoritesEnabled;
@@ -40,8 +40,8 @@
 - (id)_createEntryFromFavoritePlace:(id)arg1;
 - (id)_createEntryFromRecentHistoryPlaceDisplay:(id)arg1;
 - (id)_createEntryFromRecentHistoryRoute:(id)arg1;
-- (id)_extractTitleAndSubtitleFromMapItem:(struct GEOMapItemStorage *)arg1;
-- (struct NSArray *)_mergeRecentsAndFavoritesList;
+- (id)_extractTitleAndSubtitleFromMapItem:(id)arg1;
+- (id)_mergeRecentsAndFavoritesList;
 - (void)_registerNotification;
 - (BOOL)_removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_unregisterNotification;

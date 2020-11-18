@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     char *mUid;
     GQDBezierPath *mWrapPath;
     GQDAffineGeometry *mWrapGeometry;
-    set_3d57cb01 *mInnerWrapPoints;
+    set_978dc09f *mInnerWrapPoints;
     BOOL mHasPagesOrder;
     long long mPagesOrder;
 }
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (const char *)uid;
 - (struct __CFURL *)url;
 - (struct __CFString *)urlString;
-- (const set_3d57cb01 *)wrapPoints;
+- (const set_978dc09f *)wrapPoints;
 
 @end
 

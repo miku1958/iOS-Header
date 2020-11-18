@@ -73,10 +73,10 @@
 - (void)_updateFocusedTilingController;
 - (void)_updateWidgetLoadingIfNeeded;
 - (BOOL)element:(id)arg1 requestViewControllerDismissalAnimated:(BOOL)arg2;
-- (BOOL)element:(id)arg1 transitionToViewController:(struct NSObject *)arg2 withTransitionType:(long long)arg3;
+- (BOOL)element:(id)arg1 transitionToViewController:(id)arg2 withTransitionType:(long long)arg3;
 - (void)elementHasLoadedContentDataDidChange:(id)arg1;
 - (void)elementNeedsLayout:(id)arg1 preferredAnimationOptions:(id)arg2 originatingTilingController:(id)arg3;
-- (struct NSObject *)elementViewController:(id)arg1;
+- (id)elementViewController:(id)arg1;
 - (id)footerTilingControllerForWidget:(id)arg1;
 - (struct CGRect)frameForWidget:(id)arg1;
 - (id)headerTilingControllerForWidget:(id)arg1;

@@ -69,7 +69,9 @@
 - (void).cxx_destruct;
 - (void)_chatRegistryDidReloadNotification:(id)arg1;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
+- (BOOL)_conversationHasReplyEnabled;
 - (void)_deregisterSendProgressDelegate;
+- (BOOL)_deviceIsPasscodeLocked;
 - (void)_didSendCompositionInConversation:(id)arg1;
 - (void)_dismissFullScreenBubbleViewControllerWithSendAnimation:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_displayNameUpdatedNotification:(id)arg1;
@@ -89,6 +91,8 @@
 - (void)_removeExistingCollectionViewController;
 - (void)_setConversationDeferredSetup;
 - (void)_setTitle:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)_shouldAllowReply;
+- (BOOL)_shouldAllowReplyFromLockScreen;
 - (void)_transferFinishedNotification:(id)arg1;
 - (void)_transferRestoredNotification:(id)arg1;
 - (void)_updateForNewPreferredService;

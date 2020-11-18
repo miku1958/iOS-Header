@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setBackgroundColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

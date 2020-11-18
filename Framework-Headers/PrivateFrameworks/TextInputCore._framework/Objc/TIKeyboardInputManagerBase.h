@@ -50,6 +50,7 @@
 - (void)storeLanguageModelDynamicDataIncludingCache;
 - (void)suspend;
 - (void)syncToKeyboardState:(id)arg1;
+- (BOOL)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)textAccepted:(id)arg1 fromPredictiveInputBar:(BOOL)arg2 withInput:(id)arg3;
 
 @end

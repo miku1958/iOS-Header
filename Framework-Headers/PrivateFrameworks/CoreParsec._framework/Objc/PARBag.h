@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) NSNumber *eagerFeedbackSamplingPercentage;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, copy, nonatomic) NSArray *enabledDomains;
+@property (readonly, nonatomic) BOOL exp;
 @property (readonly, nonatomic) BOOL feedbackEnabled;
 @property (readonly, nonatomic) NSNumber *feedbackMaxAgeInDays;
 @property (readonly, nonatomic) NSURL *feedbackURL;

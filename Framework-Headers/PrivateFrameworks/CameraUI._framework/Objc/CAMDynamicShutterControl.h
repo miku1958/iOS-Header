@@ -136,7 +136,7 @@
 @property (nonatomic, getter=isSpinning) BOOL spinning; // @synthesize spinning=_spinning;
 @property (readonly) Class superclass;
 
-+ (struct CAMShutterButtonSpec)shutterButtonSpec;
++ (struct CAMShutterButtonSpec)shutterButtonSpecForLayoutStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (BOOL)_canDragCounter;
 - (BOOL)_canDragStartStop;
@@ -204,6 +204,7 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (long long)incrementCounter;
 - (id)initWithMetalDevice:(id)arg1 commandQueue:(id)arg2;
+- (id)initWithMetalDevice:(id)arg1 commandQueue:(id)arg2 layoutStyle:(long long)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)metalViewDidChangeDrawableSize:(id)arg1;

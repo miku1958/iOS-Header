@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *localAssetName;
 @property (readonly, nonatomic) long long ratingType; // @synthesize ratingType=_ratingType;
 @property (readonly, nonatomic, getter=isServerSupplied) BOOL serverSupplied;
+@property (readonly, nonatomic) BOOL tint;
 @property (readonly, copy, nonatomic) NSString *value; // @synthesize value=_value;
 
 - (void).cxx_destruct;

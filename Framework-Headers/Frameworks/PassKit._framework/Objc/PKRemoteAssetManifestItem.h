@@ -18,14 +18,26 @@
     NSString *_sha1Hex;
     NSNumber *_size;
     NSDictionary *_manifest;
+    NSURL *_encryptedContentsLocalURL;
+    NSString *_ephemeralPublicKey;
+    NSString *_publicKeyHash;
+    NSString *_seid;
+    NSString *_encryptionScheme;
+    long long _encryptionSource;
 }
 
+@property (copy, nonatomic) NSURL *encryptedContentsLocalURL; // @synthesize encryptedContentsLocalURL=_encryptedContentsLocalURL;
+@property (copy, nonatomic) NSString *encryptionScheme; // @synthesize encryptionScheme=_encryptionScheme;
+@property (nonatomic) long long encryptionSource; // @synthesize encryptionSource=_encryptionSource;
+@property (copy, nonatomic) NSString *ephemeralPublicKey; // @synthesize ephemeralPublicKey=_ephemeralPublicKey;
 @property (readonly, nonatomic) unsigned long long itemType;
 @property (copy, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
 @property (copy, nonatomic) NSDictionary *manifest; // @synthesize manifest=_manifest;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
+@property (copy, nonatomic) NSString *publicKeyHash; // @synthesize publicKeyHash=_publicKeyHash;
 @property (readonly, weak, nonatomic) NSString *relativeLocalPath;
 @property (copy, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
+@property (copy, nonatomic) NSString *seid; // @synthesize seid=_seid;
 @property (copy, nonatomic) NSString *sha1Hex; // @synthesize sha1Hex=_sha1Hex;
 @property (copy, nonatomic) NSNumber *size; // @synthesize size=_size;
 

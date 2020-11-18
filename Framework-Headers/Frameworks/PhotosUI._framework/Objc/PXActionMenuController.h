@@ -42,8 +42,8 @@
 - (void).cxx_destruct;
 - (void)_updateActionsIfNeeded;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (id)init;
 - (id)initWithActionManagers:(id)arg1;
 - (void)invalidateActions;

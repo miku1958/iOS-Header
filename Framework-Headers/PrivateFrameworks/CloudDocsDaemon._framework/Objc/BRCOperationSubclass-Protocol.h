@@ -10,6 +10,8 @@
 
 @protocol BRCOperationSubclass <NSObject>
 - (void)main;
+
+@optional
 - (BOOL)shouldRetryForError:(NSError *)arg1;
 @end
 

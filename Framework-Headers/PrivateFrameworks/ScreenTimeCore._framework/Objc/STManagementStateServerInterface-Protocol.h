@@ -14,6 +14,7 @@
 - (void)communicationPoliciesForDSID:(NSNumber *)arg1 withCompletionHandler:(void (^)(long long, long long, NSError *))arg2;
 - (void)communicationPoliciesWithCompletionHandler:(void (^)(long long, long long, NSError *))arg1;
 - (void)contactManagementStateForDSID:(NSNumber *)arg1 completionHandler:(void (^)(long long, NSError *))arg2;
+- (void)contactsEditableWithReplyHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)deleteAllWebApplicationHistory:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteWebHistoryDuringInterval:(NSDateInterval *)arg1 webApplication:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deleteWebHistoryForDomain:(NSString *)arg1 webApplication:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;

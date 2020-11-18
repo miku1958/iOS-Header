@@ -13,7 +13,10 @@
 
 @interface EKPersistentObject : NSObject <EKProtocolObject, EKFrozenMeltedPair>
 {
-    struct _opaque_pthread_mutex_t _lock;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } _lock;
     EKEventStore *_eventStore;
     EKObjectID *_objectID;
     NSMutableSet *_dirtyProperties;
@@ -83,9 +86,9 @@
 - (id)existingMeltedObject;
 - (BOOL)existsInStore;
 - (Class)frozenClass;
-- (struct EKPersistentObject *)frozenObject;
+- (id)frozenObject;
 - (id)init;
-- (id)initWithAlternateUniverseObject:(struct EKPersistentObject *)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
+- (id)initWithAlternateUniverseObject:(id)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 - (id)initWithObject:(id)arg1;
 - (BOOL)isCompletelyEqual:(id)arg1;
 - (BOOL)isDirty;

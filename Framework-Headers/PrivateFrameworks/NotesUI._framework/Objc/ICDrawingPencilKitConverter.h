@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSOperationQueue;
+@class NSArray, NSMapTable, NSMutableArray, NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 @interface ICDrawingPencilKitConverter : NSObject
@@ -15,13 +15,11 @@
     NSOperationQueue *_converterQueue;
     NSMapTable *_lastOperationForAttachmentID;
     NSObject<OS_dispatch_queue> *_convertDispatchQueue;
-    NSMutableDictionary *_accountIDCanBeUpdated;
-    NSMutableDictionary *_accountIDDeviceCheckDate;
+    NSObject<OS_dispatch_queue> *_canAutoUpdateDispatchQueue;
     NSMutableArray *_mutableFailedSketches;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *accountIDCanBeUpdated; // @synthesize accountIDCanBeUpdated=_accountIDCanBeUpdated;
-@property (strong, nonatomic) NSMutableDictionary *accountIDDeviceCheckDate; // @synthesize accountIDDeviceCheckDate=_accountIDDeviceCheckDate;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *canAutoUpdateDispatchQueue; // @synthesize canAutoUpdateDispatchQueue=_canAutoUpdateDispatchQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *convertDispatchQueue; // @synthesize convertDispatchQueue=_convertDispatchQueue;
 @property (strong, nonatomic) NSOperationQueue *converterQueue; // @synthesize converterQueue=_converterQueue;
 @property (readonly, nonatomic) NSArray *failedSketches;
@@ -42,7 +40,7 @@
 - (unsigned long long)convertAllSketchesInNote:(id)arg1;
 - (void)convertAllSketchesWithProgress:(id)arg1;
 - (void)convertAllSketchesWithProgress:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)convertDrawingsInNote:(id)arg1 inWindow:(struct UIWindow *)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)convertDrawingsInNote:(id)arg1 inWindow:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)convertDrawingsInNote:(id)arg1 waitUntilFinished:(BOOL)arg2;
 - (void)convertDrawingsInNoteIfNeeded:(id)arg1;
 - (id)convertSketch:(id)arg1;

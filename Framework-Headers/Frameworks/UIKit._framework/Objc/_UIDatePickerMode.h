@@ -122,11 +122,11 @@ __attribute__((visibility("hidden")))
 - (long long)rowForDate:(id)arg1 dateComponents:(id)arg2 component:(long long)arg3 currentRow:(long long)arg4;
 - (long long)rowForValue:(long long)arg1 forCalendarUnit:(unsigned long long)arg2 currentRow:(long long)arg3;
 - (long long)secondForRow:(long long)arg1;
-- (void)takeExtremesFromMinimumDate:(id)arg1 maximumDate:(id)arg2;
 - (id)timeZone;
 - (long long)titleAlignmentForCalendarUnit:(unsigned long long)arg1;
 - (id)titleForRow:(long long)arg1 inComponent:(long long)arg2;
 - (double)totalComponentWidthWithFont:(id)arg1;
+- (void)updateDateForNewDateRange;
 - (void)updateEnabledStateOfViewForRow:(long long)arg1 inComponent:(long long)arg2;
 - (void)updateSelectedDateComponentsWithNewValueInComponent:(long long)arg1;
 - (long long)validateValue:(long long)arg1 forCalendarUnit:(unsigned long long)arg2;

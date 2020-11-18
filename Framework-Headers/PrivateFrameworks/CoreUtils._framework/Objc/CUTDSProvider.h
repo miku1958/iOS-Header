@@ -65,7 +65,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
 - (void)updateDeviceActivateHash:(const char *)arg1;
-- (BOOL)updateForDevices:(struct NSMutableDictionary *)arg1;
+- (BOOL)updateForDevices:(id)arg1;
 - (void)xpcTDSProviderStateChanged:(unsigned int)arg1;
 - (void)xpcTDSSeekerEndpointFound:(id)arg1;
 - (void)xpcTDSSeekerEndpointLost:(id)arg1;

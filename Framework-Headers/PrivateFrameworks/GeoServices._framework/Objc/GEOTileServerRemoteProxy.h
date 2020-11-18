@@ -25,7 +25,7 @@
 - (void)_sendMessage:(id)arg1;
 - (BOOL)_sendMessage:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (id)_sendMessageWithReplySync:(id)arg1;
-- (void)beginPreloadSessionOfSize:(unsigned long long)arg1 exclusive:(BOOL)arg2;
+- (void)beginPreloadSessionOfSize:(unsigned long long)arg1;
 - (void)calculateFreeableSize;
 - (unsigned long long)calculateFreeableSizeSync;
 - (void)cancel:(const struct _GEOTileKey *)arg1 batchID:(int)arg2;
@@ -42,7 +42,6 @@
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2 batchID:(int)arg3;
 - (void)shrinkDiskCacheToSize:(unsigned long long)arg1;
 - (unsigned long long)shrinkDiskCacheToSizeSync:(unsigned long long)arg1;
-- (BOOL)skipNetworkForKeysWhenPreloading:(id)arg1;
 
 @end
 

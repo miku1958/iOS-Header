@@ -10,8 +10,6 @@
 
 @property (nonatomic) struct CGPoint anchorPoint;
 
-+ (void)sb_animateWithSettings:(id)arg1 interactive:(BOOL)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)sb_animateWithSettings:(id)arg1 mode:(long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)sb_firstDescendantOfViews:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (void)_generateSnapshotOnQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_printLayer:(id)arg1 level:(int)arg2;

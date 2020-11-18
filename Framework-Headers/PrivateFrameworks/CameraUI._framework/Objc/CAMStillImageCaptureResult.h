@@ -13,6 +13,7 @@
     BOOL _shouldPersistAdjustmentSidecar;
     BOOL _expectingPairedVideo;
     AVCapturePhoto *_capturePhoto;
+    NSString *_deferredPhotoIdentifier;
     NSDate *_captureDate;
     NSDictionary *_metadata;
     NSError *_error;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) AVCapturePhoto *capturePhoto; // @synthesize capturePhoto=_capturePhoto;
 @property (readonly, nonatomic) NSDictionary *compactMetadata;
 @property (readonly, nonatomic) CAMCaptureCoordinationInfo *coordinationInfo; // @synthesize coordinationInfo=_coordinationInfo;
+@property (readonly, copy, nonatomic) NSString *deferredPhotoIdentifier; // @synthesize deferredPhotoIdentifier=_deferredPhotoIdentifier;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
 @property (readonly, copy, nonatomic) NSString *imageGroupIdentifier;

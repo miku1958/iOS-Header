@@ -8,11 +8,12 @@
 
 #import <UserNotificationsUIKit/NCClickInteractionPresenterDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/_UICursorInteractionDelegate-Protocol.h>
 
 @class NCClickInteractionPresenter, NCToggleControlPair, NSString, UILabel;
 @protocol NCToggleControlDelegate;
 
-@interface NCToggleControl : PLGlyphControl <NCClickInteractionPresenterDelegate, PLContentSizeCategoryAdjusting>
+@interface NCToggleControl : PLGlyphControl <NCClickInteractionPresenterDelegate, _UICursorInteractionDelegate, PLContentSizeCategoryAdjusting>
 {
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _expanded;
@@ -78,6 +79,8 @@
 - (void)clickInteractionPresenterDidPresent:(id)arg1;
 - (BOOL)clickInteractionPresenterShouldBegin:(id)arg1;
 - (id)containerViewForClickInteractionPresenter:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

@@ -81,7 +81,7 @@
 - (void)actionMenu:(id)arg1 assetCollectionActionPerformer:(id)arg2 playMovieForAssetCollection:(id)arg3;
 - (void)actionMenuButtonItemTapped:(id)arg1;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)cancelBarButtonItemTapped:(id)arg1;
 - (id)createAssetActionManager;

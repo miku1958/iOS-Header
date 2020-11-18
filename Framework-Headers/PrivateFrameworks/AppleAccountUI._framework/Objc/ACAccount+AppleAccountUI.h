@@ -9,6 +9,7 @@
 @interface ACAccount (AppleAccountUI)
 - (id)aaui_compositeName;
 - (long long)aaui_compositeNameFormat;
+- (BOOL)aaui_isRemotelyManaged;
 - (BOOL)aaui_isRestrictedForDataclass:(id)arg1;
 @end
 

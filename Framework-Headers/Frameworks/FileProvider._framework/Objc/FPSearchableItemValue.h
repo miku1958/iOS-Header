@@ -8,7 +8,7 @@
 
 #import <FileProvider/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FPSearchableItemValue : PBCodable <NSCopying>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     double _doubleValue;
     long long _integerValue;
     double _timeIntervalSinceReferenceDateValue;
+    NSData *_nameComponents;
     NSString *_stringValue;
     struct {
         unsigned int doubleValue:1;
@@ -27,9 +28,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property (nonatomic) BOOL hasDoubleValue;
 @property (nonatomic) BOOL hasIntegerValue;
+@property (readonly, nonatomic) BOOL hasNameComponents;
 @property (readonly, nonatomic) BOOL hasStringValue;
 @property (nonatomic) BOOL hasTimeIntervalSinceReferenceDateValue;
 @property (nonatomic) long long integerValue; // @synthesize integerValue=_integerValue;
+@property (strong, nonatomic) NSData *nameComponents; // @synthesize nameComponents=_nameComponents;
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (nonatomic) double timeIntervalSinceReferenceDateValue; // @synthesize timeIntervalSinceReferenceDateValue=_timeIntervalSinceReferenceDateValue;
 

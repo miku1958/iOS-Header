@@ -32,10 +32,12 @@
 - (id)copyWithBlock:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithClientInfo:(id)arg1;
 - (id)initWithClientInfo:(id)arg1 authenticationProvider:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)setAuthenticationProvider:(id)arg1;
 - (void)setClientInfo:(id)arg1;
 - (void)setDeviceInfo:(id)arg1;

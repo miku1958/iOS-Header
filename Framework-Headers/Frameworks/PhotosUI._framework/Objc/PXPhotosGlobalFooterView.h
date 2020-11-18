@@ -67,7 +67,6 @@
 - (void)setHidden:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
-- (void)textViewDidChangeSelection:(id)arg1;
 
 @end
 

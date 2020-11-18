@@ -15,6 +15,7 @@
 
 + (Class)queryClass;
 + (id)requiredEntitlements;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)_queue_start;
 - (BOOL)_queue_surfaceDaySummariesWithError:(id *)arg1;

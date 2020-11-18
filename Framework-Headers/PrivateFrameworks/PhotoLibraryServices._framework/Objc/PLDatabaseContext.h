@@ -20,8 +20,10 @@
 
 - (void).cxx_destruct;
 - (id)cplLibrary;
+- (void)dealloc;
 - (id)highPriorityTransientLibrary;
 - (id)initWithLibraryBundle:(id)arg1;
+- (void)invalidate;
 - (id)lowPriorityTransientLibrary;
 - (id)momentLibrary;
 - (id)newCplLibrary;

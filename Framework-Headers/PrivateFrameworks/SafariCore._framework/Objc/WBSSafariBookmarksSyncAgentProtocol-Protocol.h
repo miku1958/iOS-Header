@@ -16,6 +16,7 @@
 - (void)fetchRemoteMigrationStateWithCompletionHandler:(void (^)(long long, NSString *, NSError *))arg1;
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1;
 - (void)fetchUserIdentityWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
+- (void)getCloudTabContainerManateeStateWithCompletionHandler:(void (^)(BOOL))arg1;
 - (void)getCloudTabDevicesWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)observeRemoteMigrationStateForSecondaryMigration;
 - (void)registerForPushNotificationsIfNeeded;

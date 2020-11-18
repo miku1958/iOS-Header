@@ -110,6 +110,7 @@
 - (BOOL)setAppLayerVPNRuleSettings:(id)arg1 withAppIdentifier:(id)arg2;
 - (BOOL)setAppLayerVPNUUID:(id)arg1 andSafariDomains:(id)arg2;
 - (BOOL)setCalendarDomains:(id)arg1;
+- (BOOL)setCalendarDomains:(id)arg1 accountIdentifiers:(id)arg2;
 - (BOOL)setCertificateContentFilter:(id)arg1;
 - (BOOL)setCertificates:(id)arg1;
 - (BOOL)setCertificatesAOVpn:(id)arg1;
@@ -118,7 +119,9 @@
 - (BOOL)setConfigurationSharedSecret:(id)arg1;
 - (BOOL)setConfigurationVPNPassword:(id)arg1;
 - (BOOL)setContactsDomains:(id)arg1;
+- (BOOL)setContactsDomains:(id)arg1 accountIdentifiers:(id)arg2;
 - (BOOL)setMailDomains:(id)arg1;
+- (BOOL)setMailDomains:(id)arg1 accountIdentifiers:(id)arg2;
 - (BOOL)setPayloadInfoCommon:(id)arg1 payloadOrganization:(id)arg2;
 - (BOOL)setPayloadInfoIdentity:(id)arg1;
 - (BOOL)setPayloadInfoIdentityIPSecSharedSecret:(id)arg1;
@@ -133,6 +136,7 @@
 - (void)syncWithUserKeychain;
 - (BOOL)updateFromSCService:(struct __SCNetworkService *)arg1;
 - (void)updateWithConfiguration:(id)arg1;
+- (BOOL)validateStrings:(id)arg1;
 
 @end
 

@@ -22,6 +22,7 @@
 - (long long)sectionHeaderStyle;
 - (BOOL)shouldPlaceDeleteInCenterToolbarPosition;
 - (BOOL)shouldPlaceSelectAllButtonInRightNavigationBar;
+- (BOOL)shouldUseAspectItems;
 - (unsigned long long)supportedInterfaceOrientations;
 - (unsigned short)thumbnailImageFormat;
 - (BOOL)usesStackPopTransition;

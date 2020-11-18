@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationContext, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRPresented;
+@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRPresented;
 
 @interface SISchemaClientEvent : PBCodable
 {
@@ -28,6 +28,10 @@
     SISchemaUIStateTransition *_uiStateTransition;
     SISchemaClientFlow *_clientFlow;
     SISchemaDialogOutput *_dialogOutput;
+    SISchemaDictationEndPointStop *_dictationEndPointStop;
+    SISchemaDictationEndPointCancel *_dictationEndPointCancel;
+    SISchemaDictationAlternativeSelected *_dictationAlternativeSelected;
+    SISchemaDictationTranscriptionMetadata *_dictationTranscriptionMetadata;
     SISchemaClientEventMetadata *_eventMetadata;
     SISchemaClientTransportEventMetadata *_transportMetadata;
 }
@@ -39,7 +43,11 @@
 @property (strong, nonatomic) SISchemaDeviceDynamicContext *deviceDynamicContext; // @synthesize deviceDynamicContext=_deviceDynamicContext;
 @property (strong, nonatomic) SISchemaDeviceFixedContext *deviceFixedContext; // @synthesize deviceFixedContext=_deviceFixedContext;
 @property (strong, nonatomic) SISchemaDialogOutput *dialogOutput; // @synthesize dialogOutput=_dialogOutput;
+@property (strong, nonatomic) SISchemaDictationAlternativeSelected *dictationAlternativeSelected; // @synthesize dictationAlternativeSelected=_dictationAlternativeSelected;
 @property (strong, nonatomic) SISchemaDictationContext *dictationContext; // @synthesize dictationContext=_dictationContext;
+@property (strong, nonatomic) SISchemaDictationEndPointCancel *dictationEndPointCancel; // @synthesize dictationEndPointCancel=_dictationEndPointCancel;
+@property (strong, nonatomic) SISchemaDictationEndPointStop *dictationEndPointStop; // @synthesize dictationEndPointStop=_dictationEndPointStop;
+@property (strong, nonatomic) SISchemaDictationTranscriptionMetadata *dictationTranscriptionMetadata; // @synthesize dictationTranscriptionMetadata=_dictationTranscriptionMetadata;
 @property (strong, nonatomic) SISchemaClientEventMetadata *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
 @property (strong, nonatomic) SISchemaInvocation *invocation; // @synthesize invocation=_invocation;
 @property (readonly, nonatomic) NSData *jsonData;

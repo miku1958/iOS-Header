@@ -33,6 +33,7 @@
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)routingParameters;
 - (id)staticDepartureDate;
 - (unsigned long long)tripID;
 - (id)windowStartDate;

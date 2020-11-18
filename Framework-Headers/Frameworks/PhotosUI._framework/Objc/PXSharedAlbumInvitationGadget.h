@@ -30,6 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -42,9 +43,6 @@
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
 
 + (void)preloadResources;
@@ -53,7 +51,7 @@
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (struct CGSize)_performLayoutInRect:(struct CGRect)arg1 updateSubviewFrames:(BOOL)arg2;
 - (void)_updateInvitationView;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 - (void)dealloc;
 - (id)init;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;

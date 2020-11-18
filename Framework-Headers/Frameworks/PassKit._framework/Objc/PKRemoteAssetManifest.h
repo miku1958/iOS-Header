@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)deviceSpecificAsset;
 - (id)deviceSpecificAssetForScreenScale:(double)arg1 suffix:(id)arg2;
+- (id)initWithFileURL:(id)arg1 passURL:(id)arg2 deviceSEIDs:(id)arg3 error:(id *)arg4;
 - (id)initWithFileURL:(id)arg1 passURL:(id)arg2 error:(id *)arg3;
 
 @end

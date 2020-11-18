@@ -7,9 +7,12 @@
 #import <objc/NSObject.h>
 
 @class AFAnalyticsTurnBasedInstrumentationContext, NSString;
+@protocol OS_dispatch_queue;
 
 @interface SiriUIInstrumentationManager : NSObject
 {
+    NSString *_lastDismissedIdentifier;
+    NSObject<OS_dispatch_queue> *_instrumenrationManagerQueue;
     int _currentSiriUIState;
     AFAnalyticsTurnBasedInstrumentationContext *_currentInstrumentationTurnContext;
     NSString *_clientGeneratedDialogIdentifier;
@@ -21,6 +24,8 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)_emitInstrumentation:(id)arg1;
+- (BOOL)_hasDismissedForTurnContext:(id)arg1;
 - (void)emitDialogOutputEventWith:(id)arg1 canUseServerTTS:(BOOL)arg2 spokenDialogOutput:(id)arg3 displayedDialogOutput:(id)arg4;
 - (void)emitFinalSpeechTranscriptionEventWith:(id)arg1;
 - (void)emitInstrumentation:(id)arg1;
@@ -30,6 +35,7 @@
 - (void)emitTextToSpeechEndEvent:(id)arg1;
 - (void)emitUIStateTransitionEventWithFromState:(int)arg1 toState:(int)arg2 withPresentationType:(int)arg3;
 - (void)emitUIStateTransitionForSiriDismissal:(int)arg1;
+- (void)emitUIStateTransitionForSiriDismissal:(int)arg1 withDismissalReason:(int)arg2;
 - (void)emitUUFRPresentedEventWith:(id)arg1 snippetClass:(id)arg2 dialogIdentifier:(id)arg3 dialogPhase:(id)arg4;
 - (id)init;
 - (void)storeClientGeneratedDUC:(id)arg1;

@@ -6,9 +6,33 @@
 
 #import <WebCore/__UIKitWebAccessibilityObjectWrapper_super.h>
 
-@interface UIKitWebAccessibilityObjectWrapper : __UIKitWebAccessibilityObjectWrapper_super
+#import <WebCore/UIFocusItem-Protocol.h>
+#import <WebCore/UIFocusItemContainer-Protocol.h>
+#import <WebCore/_UIFocusEnvironmentPrivate-Protocol.h>
+#import <WebCore/_UIFocusRegionContainer-Protocol.h>
+
+@class NSArray, NSString, UIView;
+@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
+
+@interface UIKitWebAccessibilityObjectWrapper : __UIKitWebAccessibilityObjectWrapper_super <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
 {
 }
+
+@property (nonatomic) BOOL areChildrenFocused;
+@property (readonly, nonatomic) BOOL canBecomeFocused;
+@property (readonly, nonatomic) id<UICoordinateSpace> coordinateSpace;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
+@property (readonly, nonatomic) struct CGRect frame; // @dynamic frame;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
+@property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
+@property (readonly, weak, nonatomic) UIView *preferredFocusedView;
+@property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (BOOL)_isSerializableAccessibilityElement;
@@ -36,6 +60,7 @@
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (void)_accessibilityDecreaseSelection:(id)arg1;
 - (long long)_accessibilityExpandedStatus;
+- (BOOL)_accessibilityHandlesArrowKeys;
 - (BOOL)_accessibilityHandwritingAttributeAcceptsContractedBraille;
 - (BOOL)_accessibilityHasOtherAccessibleChildElements:(id)arg1;
 - (BOOL)_accessibilityHasTextOperations;
@@ -61,7 +86,7 @@
 - (void)_accessibilityModifySelection:(id)arg1 increase:(BOOL)arg2;
 - (BOOL)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 toElementMatchingQuery:(id)arg2;
 - (void)_accessibilityMoveSelectionToMarker:(id)arg1;
-- (id)_accessibilityNextElementsWithHeading:(unsigned long long)arg1 queryString:(id)arg2;
+- (id)_accessibilityNextElementsWithHeading:(unsigned long long)arg1 queryString:(id)arg2 startingFrom:(id)arg3;
 - (id)_accessibilityNextMarker:(id)arg1;
 - (id)_accessibilityObjectForTextMarker:(id)arg1;
 - (BOOL)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
@@ -83,6 +108,7 @@
 - (struct _NSRange)_accessibilitySelectedNSRangeForObject;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (struct _NSRange)_accessibilitySelectedTextRangeForHandwritingWithValue:(id)arg1;
+- (BOOL)_accessibilitySetNativeFocus;
 - (BOOL)_accessibilityShouldScrollRemoteParent;
 - (BOOL)_accessibilityShouldSpeakMathEquationTrait;
 - (BOOL)_accessibilitySpeakThisCanBeHighlighted;
@@ -106,12 +132,15 @@
 - (id)_accessibilityWebPageParent;
 - (unsigned long long)_axAdjustableTrait;
 - (id)_axAncestorTypes;
+- (BOOL)_axAreChildrenFocused;
 - (void)_axBuildAXTreeFromElement:(id)arg1 outArray:(id)arg2;
 - (unsigned long long)_axButtonTrait;
 - (unsigned long long)_axContainedByFieldsetTrait;
 - (unsigned long long)_axContainedByLandmarkTrait;
 - (unsigned long long)_axContainedByListTrait;
 - (unsigned long long)_axContainedByTableTrait;
+- (id)_axDefaultFocusGroupDescriptor;
+- (id)_axGetStoredDefaultFocusGroupDescriptor;
 - (BOOL)_axHasMultipleAccessibleChildren:(long long *)arg1;
 - (unsigned long long)_axHasTextCursorTrait;
 - (unsigned long long)_axHeaderTrait;
@@ -127,6 +156,8 @@
 - (unsigned long long)_axSearchFieldTrait;
 - (unsigned long long)_axSecureTextFieldTrait;
 - (unsigned long long)_axSelectedTrait;
+- (void)_axSetAreChildrenFocused:(BOOL)arg1;
+- (void)_axSetStoredDefaultFocusGroupDescriptor:(id)arg1;
 - (void)_axSetWebAreaURL:(id)arg1;
 - (unsigned long long)_axStaticTextTrait;
 - (unsigned long long)_axTabButtonTrait;
@@ -146,15 +177,21 @@
 - (BOOL)_axWebKitSupportsARIAExpanded;
 - (BOOL)_axWebKitSupportsARIAPressed;
 - (id)_axWebKitTrueLinkParent;
+- (void)_destroyFocusLayer;
+- (id)_focusGroupDescriptor;
 - (BOOL)_isCheckBox;
 - (BOOL)_isIBooks;
 - (id)_misspelledWordRotor;
 - (void)_performLiveRegionUpdate;
 - (void)_performPostScrollStatus:(id)arg1;
+- (id)_preferredFocusRegionCoordinateSpace;
 - (BOOL)_prepareAccessibilityCall;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_repostFocusChangeNotification;
 - (void)_repostWebNotificaton:(id)arg1;
 - (void)_repostWebSelectionChange;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
+- (void)_updateFocusLayerFrame;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityArrayOfTextForTextMarkers:(id)arg1;
@@ -206,7 +243,9 @@
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (id)ariaLandmarkRoleDescription;
 - (struct CGRect)bounds;
-- (id)description;
+- (BOOL)conformsToProtocol:(id)arg1;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)focusItemsInRect:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
 - (BOOL)isScreenReaderRunning;
 - (void)postChildrenChangedNotification;
@@ -222,6 +261,9 @@
 - (void)postSelectedTextChangeNotification;
 - (void)postValueChangedNotification;
 - (id)screenReaderVersion;
+- (void)setNeedsFocusUpdate;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (void)updateFocusIfNeeded;
 
 @end
 

@@ -8,7 +8,6 @@
 
 @protocol AMSUserNotificationStrategy;
 
-__attribute__((visibility("hidden")))
 @interface AMSUserNotificationCenter : NSObject
 {
     id<AMSUserNotificationStrategy> _strategy;
@@ -20,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)activeNotificationsWithCenterBundleId:(id)arg1;
 + (id)postNotification:(id)arg1 bag:(id)arg2 centerBundleId:(id)arg3;
 + (id)removeNotification:(id)arg1 centerBundleId:(id)arg2;
-+ (id)removeNotificationWithIdentifier:(id)arg1 centerBundleId:(id)arg2 logKey:(id)arg3;
++ (id)removeNotificationWithIdentifier:(id)arg1 centerBundleId:(id)arg2 logKey:(id)arg3 scheduledOnly:(BOOL)arg4;
 - (void).cxx_destruct;
 
 @end

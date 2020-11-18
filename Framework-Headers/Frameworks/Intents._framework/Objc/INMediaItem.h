@@ -24,11 +24,13 @@
     NSString *_artist;
     NSDictionary *_topics;
     NSDictionary *_namedEntities;
+    NSString *_assetInfo;
 }
 
 @property (readonly) INImage *_keyImage;
 @property (readonly, copy, nonatomic) NSString *artist; // @synthesize artist=_artist;
 @property (copy, nonatomic) INImage *artwork; // @synthesize artwork=_artwork;
+@property (readonly, copy, nonatomic) NSString *assetInfo; // @synthesize assetInfo=_assetInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -55,7 +57,7 @@
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
@@ -64,6 +66,7 @@
 - (id)initWithIdentifier:(id)arg1 title:(id)arg2 type:(long long)arg3 artwork:(id)arg4;
 - (id)initWithIdentifier:(id)arg1 title:(id)arg2 type:(long long)arg3 artwork:(id)arg4 artist:(id)arg5;
 - (id)initWithIdentifier:(id)arg1 title:(id)arg2 type:(long long)arg3 artwork:(id)arg4 artist:(id)arg5 topics:(id)arg6 namedEntities:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 title:(id)arg2 type:(long long)arg3 artwork:(id)arg4 artist:(id)arg5 topics:(id)arg6 namedEntities:(id)arg7 assetInfo:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (id)spokenPhrase;
 

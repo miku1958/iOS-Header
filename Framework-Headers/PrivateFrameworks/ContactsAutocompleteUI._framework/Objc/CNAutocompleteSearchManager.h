@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNAutocompleteStore, NSArray, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
+@class CNAutocompleteStore, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString;
 @protocol CNAutocompleteUIFetchDelegate;
 
 @interface CNAutocompleteSearchManager : NSObject
@@ -20,7 +20,7 @@
     NSArray *_searchAccounts;
     int _contactSearchAccountChangedToken;
     BOOL _registeredForAddressBookChanges;
-    struct NSNumber *_shouldIncludeGroupResultsImpl;
+    NSNumber *_shouldIncludeGroupResultsImpl;
     NSMutableArray *_corecipientSearchTaskIDs;
     NSString *_sendingAddress;
     BOOL _includeUpcomingEventMembers;

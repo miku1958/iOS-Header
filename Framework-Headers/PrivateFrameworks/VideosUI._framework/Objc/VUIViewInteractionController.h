@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)collectionView:(id)arg1 shouldHandleLongPressForItemAtIndexPath:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (void)dismissInteractionView;
 - (id)initWithPresentingViewController:(id)arg1 presentingView:(id)arg2 presentingElement:(id)arg3;

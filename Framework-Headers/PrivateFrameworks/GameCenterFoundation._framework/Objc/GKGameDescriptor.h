@@ -35,7 +35,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
-- (struct NSDictionary *)dictionaryForRequest;
+- (id)dictionaryForRequest;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithPushDictionary:(id)arg1;
 

@@ -40,6 +40,7 @@
 @property (readonly, copy, nonatomic) NSString *text;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
++ (long long)defaultTabOrder;
 - (void).cxx_destruct;
 - (id)_initWithType:(unsigned long long)arg1 value:(id)arg2 policy:(long long)arg3;
 - (id)description;

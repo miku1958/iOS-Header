@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <JetEngine/AMSMescalBagContract-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC9JetEngine17MescalBagContract : NSObject <AMSMescalBagContract>
+@interface _TtC9JetEngine17MescalBagContract : NSObject
 {
     MISSING_TYPE *backing;
 }

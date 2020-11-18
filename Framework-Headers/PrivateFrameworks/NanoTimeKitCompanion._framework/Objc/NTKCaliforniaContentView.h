@@ -18,6 +18,8 @@
     CLKDevice *_device;
     CALayer *_hourTicks;
     CALayer *_minuteTicks;
+    CALayer *_fullscreenTicksMulticolor;
+    CALayer *_circularTicksMulticolor;
     CALayer *_circularHourTicks;
     CALayer *_circularMinuteTicks;
     NSArray *_hourMarkers;
@@ -31,10 +33,12 @@
 @property (strong, nonatomic) CALayer *circularHourTicks; // @synthesize circularHourTicks=_circularHourTicks;
 @property (strong, nonatomic) CALayer *circularMinuteTicks; // @synthesize circularMinuteTicks=_circularMinuteTicks;
 @property (nonatomic) BOOL circularPillMarkersCenterPointsCalculated; // @synthesize circularPillMarkersCenterPointsCalculated=_circularPillMarkersCenterPointsCalculated;
+@property (strong, nonatomic) CALayer *circularTicksMulticolor; // @synthesize circularTicksMulticolor=_circularTicksMulticolor;
 @property (nonatomic) unsigned long long color; // @synthesize color=_color;
 @property (strong, nonatomic) NTKCaliforniaColorPalette *colorPalette; // @synthesize colorPalette=_colorPalette;
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (nonatomic) unsigned long long dial; // @synthesize dial=_dial;
+@property (strong, nonatomic) CALayer *fullscreenTicksMulticolor; // @synthesize fullscreenTicksMulticolor=_fullscreenTicksMulticolor;
 @property (strong, nonatomic) NSArray *hourMarkers; // @synthesize hourMarkers=_hourMarkers;
 @property (strong, nonatomic) CALayer *hourTicks; // @synthesize hourTicks=_hourTicks;
 @property (strong, nonatomic) CALayer *minuteTicks; // @synthesize minuteTicks=_minuteTicks;
@@ -53,8 +57,8 @@
 - (void)_createTemporaryDigitsIfNeededWithStyle:(unsigned long long)arg1 dial:(unsigned long long)arg2;
 - (id)_digitLayersForStyle:(unsigned long long)arg1 dial:(unsigned long long)arg2;
 - (void)_layoutHourMarkersLayers:(id)arg1 style:(unsigned long long)arg2 dialShape:(unsigned long long)arg3;
-- (void)addCircularTicksIfNeeded;
-- (void)addFullscreenTicksIfNeeded;
+- (void)addCircularTicksIfNeeded:(id)arg1;
+- (void)addFullscreenTicksIfNeeded:(id)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromColorPalette:(id)arg2 toColorPalette:(id)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromDial:(unsigned long long)arg2 toDial:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;

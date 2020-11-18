@@ -15,7 +15,7 @@
 #import <UserNotificationsUIKit/PLViewControllerAnimatorDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIDragInteractionDelegate-Protocol.h>
 
-@class NCBannerPresentationTransitionDelegate, NCNotificationLongLookViewController, NSDate, NSString, PLClickPresentationInteractionManager, UIScrollView, UITapGestureRecognizer, UIView, UIViewController;
+@class NCBannerPresentationTransitionDelegate, NCNotificationLongLookViewController, NSDate, NSString, PLClickPresentationInteractionManager, UIHoverGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIView, UIViewController;
 @protocol UIViewControllerContextTransitioning;
 
 @interface NCNotificationShortLookViewController : NCNotificationViewController <NCNotificationViewControllerObserving, PLViewControllerAnimatorDelegate, UIDragInteractionDelegate, PLClickPresentationInteractionManagerDelegate, NCBannerPresentationTransitioningDelegateObserver, PLExpandedPlatterPresentationControllerDelegate, NCLongLookDefaultPresentationControllerDelegate, PLClickPresentationInteractionPresenting>
@@ -25,6 +25,7 @@
     UIView *_contextDefiningContainerView;
     UIViewController *_contextDefiningViewController;
     UITapGestureRecognizer *_tapGesture;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
     NSDate *_tapBeginTime;
     id<UIViewControllerContextTransitioning> _scrollPresentationTransitionContext;
     struct CGRect _finalPresentedFrameOfViewForPreview;
@@ -55,6 +56,7 @@
 - (void)_configureScrollViewIfNecessary;
 - (void)_expandCoalescedNotificationBundle;
 - (struct CGRect)_frameForTransitionViewInScrollView;
+- (void)_handleHoverGestureRecognizerEvent:(id)arg1;
 - (void)_handlePresentedContentDismissalWithTrigger:(long long)arg1;
 - (void)_handleTapOnView:(id)arg1;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(BOOL)arg2;
@@ -76,6 +78,7 @@
 - (id)_requiredContextIDsForDragSessionInView:(id)arg1;
 - (BOOL)_setNotificationRequest:(id)arg1;
 - (BOOL)_shouldPadScrollViewContentSizeHeight;
+- (BOOL)_shouldPerformHoverHighlighting;
 - (BOOL)_shouldUseHapticTouch;
 - (BOOL)_tryDismissingShortLookInScrollView:(id)arg1;
 - (void)_updateScrollViewContentSize;

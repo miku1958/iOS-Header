@@ -16,6 +16,8 @@
 + (unsigned long long)channelForProcessedInput;
 + (int)csAudioProcessingQueuePriority;
 + (float)daysBeforeRemovingLogFiles;
++ (unsigned int)hearstNumberOfBytesPerChunk;
++ (unsigned int)hearstNumberOfSamplesPerChunk;
 + (double)inputRecordingBufferDuration;
 + (unsigned int)inputRecordingBytesPerFrame;
 + (unsigned int)inputRecordingBytesPerPacket;

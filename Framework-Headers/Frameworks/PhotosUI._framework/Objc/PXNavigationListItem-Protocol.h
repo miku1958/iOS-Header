@@ -7,8 +7,8 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSString, PHCollection;
-@protocol PXGridPresentation;
+@class NSObject, NSString, PHCollection;
+@protocol PXAnonymousViewController, PXGridPresentation;
 
 @protocol PXNavigationListItem <NSObject, NSCopying>
 
@@ -30,6 +30,6 @@
 
 @optional
 - (const struct __CFString *)aggregateDictionaryKey;
-- (struct NSObject *)viewControllerForCollectionWithGridPresentation:(id<PXGridPresentation>)arg1;
+- (NSObject<PXAnonymousViewController> *)viewControllerForCollectionWithGridPresentation:(id<PXGridPresentation>)arg1;
 @end
 

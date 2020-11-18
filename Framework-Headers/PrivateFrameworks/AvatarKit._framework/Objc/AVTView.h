@@ -109,8 +109,9 @@
 - (void)setup;
 - (void)setupOrientation;
 - (BOOL)showPerfHUD;
-- (struct UIImage *)snapshotWithSize:(struct CGSize)arg1;
-- (struct UIImage *)snapshotWithSize:(struct CGSize)arg1 scaleFactor:(float)arg2;
+- (id)snapshotWithSize:(struct CGSize)arg1;
+- (id)snapshotWithSize:(struct CGSize)arg1 scaleFactor:(float)arg2;
+- (id)snapshotWithSize:(struct CGSize)arg1 scaleFactor:(float)arg2 options:(id)arg3;
 - (id)transitionTexture;
 - (void)unlockAvatar;
 - (void)updateAtTime:(double)arg1;

@@ -22,6 +22,7 @@
 - (void)getSandboxExtensionForAssetResourcePath:(NSString *)arg1 reply:(void (^)(BOOL, NSString *, NSError *))arg2;
 - (void)getSandboxExtensionForFileSystemBookmark:(NSURL *)arg1 reply:(void (^)(BOOL, NSURL *, NSString *, NSError *))arg2;
 - (void)imageDataForAssetWithObjectURI:(NSURL *)arg1 formatID:(unsigned short)arg2 allowPlaceholder:(BOOL)arg3 wantURLOnly:(BOOL)arg4 networkAccessAllowed:(BOOL)arg5 trackCPLDownload:(BOOL)arg6 reply:(void (^)(PLXPCGenericObject *, NSNumber *, long long, BOOL, NSURL *, NSString *, NSString *, long long, NSString *, NSString *, NSError *))arg7;
+- (void)projectExtensionDataForProjectUuid:(NSString *)arg1 reply:(void (^)(NSData *, NSError *))arg2;
 - (void)updateInternalResourcePath:(NSString *)arg1 objectURI:(NSURL *)arg2 sandboxExtension:(NSData *)arg3 reply:(void (^)(BOOL, NSError *))arg4;
 @end
 

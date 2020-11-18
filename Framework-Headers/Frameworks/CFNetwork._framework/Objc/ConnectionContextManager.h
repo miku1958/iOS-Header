@@ -14,7 +14,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)keyForSession:(id)arg1;
-- (shared_ptr_9ad247fa)registerSession:(id)arg1;
+- (shared_ptr_22b0e4cc)registerSession:(id)arg1;
 - (void)unregisterSession:(id)arg1;
 
 @end

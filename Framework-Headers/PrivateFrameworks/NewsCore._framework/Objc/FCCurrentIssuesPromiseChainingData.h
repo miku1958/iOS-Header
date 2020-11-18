@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class FCCurrentIssuesCheckerResult, NSArray;
+@class FCCurrentIssuesCheckerResult, NSArray, NSSet;
 
 @interface FCCurrentIssuesPromiseChainingData : NSObject
 {
     NSArray *_resultingIssues;
-    NSArray *_followedTagIDs;
+    NSSet *_bundleChannelIDs;
+    NSArray *_followedChannelIDs;
     NSArray *_autoFavoriteTagIDs;
     FCCurrentIssuesCheckerResult *_partialResult;
 }
 
 @property (strong, nonatomic) NSArray *autoFavoriteTagIDs; // @synthesize autoFavoriteTagIDs=_autoFavoriteTagIDs;
-@property (strong, nonatomic) NSArray *followedTagIDs; // @synthesize followedTagIDs=_followedTagIDs;
+@property (strong, nonatomic) NSSet *bundleChannelIDs; // @synthesize bundleChannelIDs=_bundleChannelIDs;
+@property (strong, nonatomic) NSArray *followedChannelIDs; // @synthesize followedChannelIDs=_followedChannelIDs;
 @property (strong, nonatomic) FCCurrentIssuesCheckerResult *partialResult; // @synthesize partialResult=_partialResult;
 @property (strong, nonatomic) NSArray *resultingIssues; // @synthesize resultingIssues=_resultingIssues;
 

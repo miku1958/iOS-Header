@@ -35,7 +35,7 @@
 #import <MapKit/_MKInfoCardAnalyticsDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardController-Protocol.h>
 
-@class CLLocation, CNContact, CNContactNavigationController, CNContactStore, CNContactViewController, GEOAutomobileOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKMuninContainerView, MKMuninView, MKOfficialAppViewController, MKPlaceActionManager, MKPlaceCardActionsRowViewController, MKPlaceCardFooterActionsViewController, MKPlaceCardHeaderViewController, MKPlaceCollectionViewController, MKPlaceHeaderButtonsViewController, MKPlaceInfoViewController, MKPlaceInlineMapViewController, MKPlacePoisInlineMapViewController, NSMapTable, NSMutableArray, NSString, NSTimer, NSUserActivity, RadiosPreferences, _MKPlaceActionButtonController;
+@class CLLocation, CNContact, CNContactNavigationController, CNContactStore, CNContactViewController, GEOAutomobileOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKMuninContainerView, MKMuninView, MKOfficialAppViewController, MKPlaceActionManager, MKPlaceCardActionsRowViewController, MKPlaceCardFooterActionsViewController, MKPlaceCardHeaderViewController, MKPlaceCollectionViewController, MKPlaceEncyclopedicViewController, MKPlaceHeaderButtonsViewController, MKPlaceInfoViewController, MKPlaceInlineMapViewController, MKPlacePoisInlineMapViewController, NSMapTable, NSMutableArray, NSString, NSTimer, NSUserActivity, RadiosPreferences, _MKPlaceActionButtonController;
 @protocol CNContactViewControllerPrivateDelegate, UIScrollViewDelegate, _MKPlaceItem, _MKPlaceViewControllerDelegate, _MKPlaceViewControllerFeedbackDelegate;
 
 @interface _MKPlaceViewController : MKLayoutCardViewController <MKStackingViewControllerDelegate, MKActivityViewControllerDelegate, RadiosPreferencesDelegate, MKPlaceVenueBrowseViewControllerDelegate, MKPlaceParentInfoViewControllerDelegate, MKPlaceRelatedViewControllerDelegate, MKPlaceQuickLinksViewControllerDelegate, MKCollectionViewProvider, CNContactViewControllerDelegate, CNContactViewControllerPrivateDelegate, CNContactPickerDelegate, MKOfficialAppViewControllerDelegate, MKPlaceCardPhotosControllerDelegate, MKPlaceCardReviewsControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKTransitDepaturesViewControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKTransitAttributionViewControllerDelegate, GEOLogContextDelegate, MKWebContentViewControllerDelegate, MKETAProviderDelegate, MKETAProviderObserver, MKPlaceHeaderButtonsViewControllerDelegate, MKPlaceServiceHoursViewControllerProtocol, _MKInfoCardController, _MKInfoCardAnalyticsDelegate, MKPlaceCardActionControllerDelegate, MKMuninViewProvider>
@@ -44,6 +44,7 @@
     MKPlaceCardHeaderViewController *_headerViewController;
     MKPlaceHeaderButtonsViewController *_buttonsHeaderController;
     MKPlaceInfoViewController *_infoViewController;
+    MKPlaceEncyclopedicViewController *_encyclopedicViewController;
     MKPlaceInlineMapViewController *_inlineMapViewController;
     MKPlacePoisInlineMapViewController *_poisInlineMapViewController;
     MKPlaceCardFooterActionsViewController *_placeActionViewController;
@@ -146,7 +147,7 @@
 - (id)_contactStore;
 - (BOOL)_contactStoredMatchingMapItem:(id)arg1;
 - (id)_createTableBookingButtonController;
-- (struct UIViewController *)_createViewControllerForModule:(id)arg1;
+- (id)_createViewControllerForModule:(id)arg1;
 - (void)_createViewControllers:(id)arg1;
 - (void)_createViewControllersForBrand:(id)arg1;
 - (void)_createViewControllersForShortPlacecard:(id)arg1;
@@ -198,6 +199,7 @@
 - (int)currentMapViewTargetForAnalytics;
 - (int)currentUITargetForAnalytics;
 - (void)dealloc;
+- (BOOL)deviceIsLockedAndNeedsPasscode;
 - (id)draggableContent;
 - (id)draggableHeaderView;
 - (id)encyclopedicVC;
@@ -221,6 +223,7 @@
 - (id)initWithMapItem:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithPlaceItem:(id)arg1 options:(unsigned long long)arg2;
 - (id)inlineMapVC;
+- (BOOL)isGuardianRestrictedCNContainer;
 - (BOOL)isLayoutDynamic;
 - (BOOL)isLoading;
 - (BOOL)isWebContentLoading;
@@ -233,11 +236,12 @@
 - (void)networkReachableChanged:(id)arg1;
 - (void)officialAppViewControllerDidFinishLoading:(id)arg1 error:(id)arg2;
 - (id)officialAppsVC;
+- (id)overriddenIfNecessaryAppAdamID:(id)arg1;
 - (id)parentVC;
 - (id)parentVenueVC;
 - (id)photoVC;
 - (void)placeActionManager:(id)arg1 didSelectShareFromView:(id)arg2;
-- (void)placeCardActionControllerDidSelectAddPhoto:(id)arg1;
+- (void)placeCardActionControllerDidSelectAddPhoto:(id)arg1 presentingViewController:(id)arg2;
 - (void)placeCardActionControllerDidSelectAddToCollection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)placeCardActionControllerDidSelectAddToContacts:(id)arg1 fromView:(id)arg2;
 - (void)placeCardActionControllerDidSelectAddToExistingContact:(id)arg1 fromView:(id)arg2;
@@ -250,13 +254,13 @@
 - (void)placeCardActionControllerDidSelectReportAProblem:(id)arg1 fromView:(id)arg2;
 - (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(id)arg1;
 - (void)placeCardActionControllerDidSelectSimulateLocation:(id)arg1;
-- (void)placeCardActionControllerDidSelectViewAllPhotos:(id)arg1;
+- (void)placeCardActionControllerDidSelectViewAllPhotos:(id)arg1 presentingViewController:(id)arg2;
 - (void)placeCardActionControllerDidSelectionOpenBrandCard:(id)arg1;
 - (void)placeCardActionControllerDidSelectionOpenInPinpoint:(id)arg1;
 - (void)placeCardEncyclopedicControllerDidExpandTextBlock:(id)arg1;
 - (void)placeCardEncyclopedicControllerDidSelectShowArticle:(id)arg1;
 - (double)placeCardHeaderViewControllerTrailingConstantForTitle:(id)arg1;
-- (void)placeCardPhotosController:(id)arg1 didSelectViewPhotoWithID:(id)arg2;
+- (void)placeCardPhotosController:(id)arg1 didSelectViewPhotoWithID:(id)arg2 presentingViewController:(id)arg3;
 - (void)placeCardPhotosController:(id)arg1 enterMuninForMapItem:(id)arg2 muninView:(id)arg3;
 - (void)placeCardPhotosControllerDidCloseFullscreenPhotos:(id)arg1;
 - (void)placeCardPhotosControllerDidOpenFullscreenPhotos:(id)arg1;
@@ -273,6 +277,7 @@
 - (void)placeVenueBrowseViewController:(id)arg1 didTapOnSearchCategory:(id)arg2;
 - (id)poisInlineMapVC;
 - (long long)preferredStatusBarStyle;
+- (void)presentStoreProductViewControllerWithAppAdamID:(id)arg1 bundleIdentifier:(id)arg2 presentingViewController:(id)arg3;
 - (id)quickLinksVC;
 - (id)relatedPlaceListVC;
 - (void)removeAdditionalViewController:(id)arg1;
@@ -294,6 +299,7 @@
 - (void)setUseCompactPhotosView:(BOOL)arg1;
 - (BOOL)shouldDisplayVenueBrowseVC;
 - (BOOL)shouldMoveMuninStorefrontViewForPlaceCardPhotosController:(id)arg1;
+- (BOOL)shouldPresentStoreProductViewControllerWithAttribution:(id)arg1;
 - (void)showContentIfLoaded;
 - (BOOL)showFavoriteButtons;
 - (double)stackingViewController:(id)arg1 heightForSeparatorBetweenUpperViewController:(id)arg2 andLowerViewController:(id)arg3;

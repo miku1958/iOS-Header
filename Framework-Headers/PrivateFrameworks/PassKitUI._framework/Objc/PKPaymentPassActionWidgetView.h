@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (id)_createButtonForTitle:(id)arg1 image:(id)arg2;
 - (void)_determineWidgetContentWithAvailableWidgets;
+- (id)_titleForAddMoneyWidgetForActions:(id)arg1;
 - (void)cleanUpExistingWidgets;
 - (id)initWithWidgetViewStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;

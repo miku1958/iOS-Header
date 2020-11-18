@@ -17,6 +17,7 @@
     FCDateRange *_dateRange;
     CDUnknownBlockType _feedItemsChangedHandler;
     NSArray *_feedItems;
+    NSArray *_sortedNonEditorialFeedItems;
     NSMapTable *_nonEditorialScoreProfiles;
     NSDictionary *_feedContextByFeedID;
     NSError *_error;
@@ -39,6 +40,7 @@
 @property (readonly, copy) NSArray *nonEditorialFeedItems;
 @property (strong) NSMapTable *nonEditorialScoreProfiles; // @synthesize nonEditorialScoreProfiles=_nonEditorialScoreProfiles;
 @property (nonatomic) unsigned long long perFeedLimit; // @synthesize perFeedLimit=_perFeedLimit;
+@property (copy) NSArray *sortedNonEditorialFeedItems; // @synthesize sortedNonEditorialFeedItems=_sortedNonEditorialFeedItems;
 @property (nonatomic) BOOL streamFeedItems; // @synthesize streamFeedItems=_streamFeedItems;
 
 - (void).cxx_destruct;

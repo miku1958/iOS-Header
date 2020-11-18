@@ -12,12 +12,10 @@
 {
     REOrderingArray *_relevantElements;
     NSMutableSet *_hiddenElements;
-    NSArray *_comparators;
     long long _maximumRelevantElementsCount;
 }
 
 @property (readonly, nonatomic) NSArray *allElements;
-@property (readonly, copy, nonatomic) NSArray *comparators; // @synthesize comparators=_comparators;
 @property (readonly, nonatomic) long long count;
 @property (nonatomic) long long maximumRelevantElementsCount; // @synthesize maximumRelevantElementsCount=_maximumRelevantElementsCount;
 @property (readonly, nonatomic) long long visibleCount;

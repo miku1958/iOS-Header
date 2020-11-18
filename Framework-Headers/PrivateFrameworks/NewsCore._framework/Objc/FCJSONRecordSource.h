@@ -20,6 +20,7 @@
 @property (copy, nonatomic) FCJSONRecordSourceSchema *schema; // @synthesize schema=_schema;
 
 - (void).cxx_destruct;
+- (id)alwaysLocalizedKeys;
 - (void)fetchRecordsWithIDs:(id)arg1 cachePolicy:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchRecordsWithIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)highThresholdDataSizeLimit;

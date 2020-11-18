@@ -13,9 +13,9 @@
 @interface PXWidgetBarSpec : NSObject <NSCopying>
 {
     BOOL _shouldUseSingleLine;
-    struct UIColor *_textColor;
-    struct UIFont *_primaryFont;
-    struct UIFont *_secondaryFont;
+    UIColor *_textColor;
+    UIFont *_primaryFont;
+    UIFont *_secondaryFont;
     double _distanceBetweenTopAndFirstBaseline;
     double _distanceBetweenLastBaselineAndBottom;
     double _minimumDistanceBetweenTopAndFirstAscender;

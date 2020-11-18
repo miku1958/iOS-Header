@@ -46,8 +46,8 @@
 - (BOOL)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)_intents_indexingRepresentation;
-- (id)_intents_localizedCopyForLanguage:(id)arg1;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_localizedCopyWithLocalizer:(id)arg1;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)resolutionResultDataForIntent:(id)arg1 intentSlotDescription:(id)arg2 error:(id *)arg3;

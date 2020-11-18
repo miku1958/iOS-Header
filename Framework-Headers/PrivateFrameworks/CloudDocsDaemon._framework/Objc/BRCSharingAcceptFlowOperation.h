@@ -10,7 +10,7 @@
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 #import <CloudDocsDaemon/LSOpenResourceOperationDelegate-Protocol.h>
 
-@class BRCAccountSession, BRCAppLibrary, BRCClientZone, BRCItemID, BRCXPCClient, CKRecordID, CKShare, CKShareMetadata, NSArray, NSObject, NSString, NSURL;
+@class BRCAccountSession, BRCAppLibrary, BRCClientZone, BRCItemID, BRCXPCClient, CKRecordID, CKShareMetadata, NSArray, NSObject, NSString, NSURL;
 @protocol BRCUserNotifier, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -23,14 +23,15 @@ __attribute__((visibility("hidden")))
     NSURL *_shareURL;
     CKRecordID *_shareID;
     CKShareMetadata *_shareMetadata;
-    CKShare *_share;
-    BRCItemID *_sharedItemID;
+    BRCItemID *_linkItemID;
+    BRCItemID *_rootItemID;
     NSString *_unsaltedBookmarkData;
     BRCClientZone *_clientZone;
     BRCAppLibrary *_appLibrary;
     BOOL _needsZoneAndAppLibraryActivation;
-    NSURL *_shareDocumentURL;
-    NSString *_documentName;
+    NSURL *_liveFileURL;
+    NSString *_rootFilename;
+    NSString *_linkFilename;
     BRCXPCClient *_xpcClient;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -55,8 +56,11 @@ __attribute__((visibility("hidden")))
 - (void)_endAcceptationFlow;
 - (void)_isAccountRestricted;
 - (void)_isAppInstalled;
+- (BOOL)_isDirectoryLinkInsideFolderShare;
+- (BOOL)_isDocumentLinkInsideFolderShare;
 - (BOOL)_isFolderShare;
 - (void)_isFolderSharingSupported;
+- (BOOL)_isLinkInsideFolderShare;
 - (BOOL)_isOwner;
 - (BOOL)_isOwnerOrShareAlreadyAccepted;
 - (void)_isUserSignedInToiCloudDrive;
@@ -67,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_openDocumentInDocumentsAppIfInstalled:(id)arg1;
 - (void)_openSharedItemIfStillNeeded;
 - (void)_openSharedSideFaultFile;
+- (void)_openSharedSideFaultFileWithAppID:(id)arg1;
 - (void)_openiWorkAppPreemptively;
 - (void)_parseShareMetadata;
 - (void)_performNextStep;

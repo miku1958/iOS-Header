@@ -73,14 +73,14 @@
 
 + (id)friendWithCodableFriend:(id)arg1;
 - (void).cxx_destruct;
-- (struct _HKFitnessFriendActivitySnapshot *)_emptySnapshotWithGoalsCarriedForwardForSnapshotIndex:(long long)arg1;
+- (id)_emptySnapshotWithGoalsCarriedForwardForSnapshotIndex:(long long)arg1;
 - (id)codableFriendIncludingCloudKitFields:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithActivitySnapshots:(id)arg1 friendAchievements:(id)arg2 friendWorkouts:(id)arg3 contact:(id)arg4 competitions:(id)arg5;
 - (BOOL)isActivityDataVisibleToMeForDate:(id)arg1;
 - (BOOL)isHidingActivityDataFromMeForDate:(id)arg1;
-- (struct _HKFitnessFriendActivitySnapshot *)snapshotWithGoalsCarriedForwardForSnapshotIndex:(id)arg1;
+- (id)snapshotWithGoalsCarriedForwardForSnapshotIndex:(id)arg1;
 
 @end
 

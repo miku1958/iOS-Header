@@ -27,7 +27,9 @@
 + (id)systemIDWithDescription:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)additionalIPSMetadata;
+- (void)alignIncident:(id)arg1 at:(double)arg2;
 - (id)appleCareDetails;
+- (double)captureTime;
 - (void)generateLogAtLevel:(BOOL)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)getSyslogForPid:(int)arg1 andOptionalSenders:(id)arg2;
 - (id)incidentID;

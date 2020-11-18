@@ -70,7 +70,7 @@
 - (id)sideCarRecordIDWithZone:(id)arg1;
 - (id)sideCarRecordNameWithZone:(id)arg1;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
-- (id)structureRecordIDForItemType:(BOOL)arg1 zone:(id)arg2;
+- (id)structureRecordIDForItemType:(BOOL)arg1 zone:(id)arg2 aliasTargetZoneIsShared:(BOOL)arg3;
 - (id)validatingDirectoryReferenceInZone:(id)arg1;
 - (id)zoneUniqueItemIDStringWithSession:(id)arg1;
 

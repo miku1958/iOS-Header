@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VUIVideoAdvisoryViewLayout : TVViewLayout
 {
     double _legendMaxWidth;
+    double _legendNameMinWidth;
     UIColor *_legendBackgroundColor;
     double _legendCornerRadius;
     UIColor *_dividerColor;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _portraitDividerSize;
     struct UIEdgeInsets _logoMargin;
     struct UIEdgeInsets _legendsMargin;
+    struct UIEdgeInsets _legendNamePadding;
     struct UIEdgeInsets _dividerMargin;
     struct UIEdgeInsets _portraitMargin;
     struct UIEdgeInsets _portraitLogoMargin;
@@ -42,6 +44,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VUITextLayout *legendDescriptionLayout; // @synthesize legendDescriptionLayout=_legendDescriptionLayout;
 @property (readonly, nonatomic) VUITextLayout *legendLayout; // @synthesize legendLayout=_legendLayout;
 @property (nonatomic) double legendMaxWidth; // @synthesize legendMaxWidth=_legendMaxWidth;
+@property (nonatomic) double legendNameMinWidth; // @synthesize legendNameMinWidth=_legendNameMinWidth;
+@property (nonatomic) struct UIEdgeInsets legendNamePadding; // @synthesize legendNamePadding=_legendNamePadding;
 @property (nonatomic) struct CGSize legendSize; // @synthesize legendSize=_legendSize;
 @property (nonatomic) struct UIEdgeInsets legendsMargin; // @synthesize legendsMargin=_legendsMargin;
 @property (nonatomic) struct UIEdgeInsets logoMargin; // @synthesize logoMargin=_logoMargin;

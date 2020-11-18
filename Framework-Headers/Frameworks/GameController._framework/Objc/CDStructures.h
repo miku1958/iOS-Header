@@ -4,18 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MISSING_TYPE;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct CGPoint {
-    double x;
-    double y;
-};
 
 struct GCExtendedGamepadElementInitInfo {
     BOOL _field1;
@@ -37,10 +30,6 @@ struct GCQuaternion {
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    MISSING_TYPE *vector;
-} CDStruct_0e8a9a91;
 
 typedef struct {
     float _field1[4];

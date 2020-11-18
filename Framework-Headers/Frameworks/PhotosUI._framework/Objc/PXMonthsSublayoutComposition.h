@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)configuredLayoutGenerator;
+- (struct UIEdgeInsets)sublayoutInsetsForStylableType:(long long)arg1;
 - (void)updateSublayoutAttributes;
 
 @end

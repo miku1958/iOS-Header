@@ -8,17 +8,16 @@
 
 #import <AssetsLibraryServices/PLPhotoLibraryPathManager-Protocol.h>
 
-@class NSFileManager, NSString, NSURL, PLFileSystemCapabilities;
+@class NSString, NSURL, PLFileSystemCapabilities;
 
 @interface PLPhotoLibraryPathManagerCore : NSObject <PLPhotoLibraryPathManager>
 {
-    struct os_unfair_lock_s _folderCreationLock;
+    struct os_unfair_lock_s _folderCreationAndCapabilitiesLock;
     unsigned int _photoDirectoriesExists;
     unsigned int _privateSubDirectoriesExists;
     unsigned int _privateCacheSubDirectoriesExists;
     unsigned int _externalDirectoriesExists;
     unsigned int _persistedAlbumDataDirectoryExists;
-    NSFileManager *_fm;
     PLFileSystemCapabilities *_capabilities;
     NSURL *_libraryURL;
     NSString *_baseDirectory;
@@ -89,7 +88,7 @@
 - (id)pathsForClientAccess:(id)arg1;
 - (id)pathsForExternalWriters;
 - (id)pathsForPermissionCheck;
-- (id)pathsGroupedByAssetBasePathFromFilePaths:(id)arg1;
+- (id)pathsGroupedByAssetBasePathFromFilePaths:(id)arg1 populateInvalidAdjustmentPaths:(id)arg2;
 - (id)persistedAlbumDataDirectoryCreateIfNeeded:(BOOL)arg1 error:(id *)arg2;
 - (void)photoDirectoryCreationMaskResetWithType:(unsigned char)arg1;
 - (id)photoDirectoryWithType:(unsigned char)arg1;

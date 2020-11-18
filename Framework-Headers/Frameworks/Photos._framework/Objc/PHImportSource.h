@@ -55,6 +55,7 @@
     NSProgress *_progress;
     long long _assetLoadOrder;
     NSString *_prefix;
+    NSMutableDictionary *_pairedSidecarsByImportIdentifier;
 }
 
 @property (nonatomic) long long assetLoadOrder; // @synthesize assetLoadOrder=_assetLoadOrder;
@@ -96,6 +97,7 @@
 @property (nonatomic) unsigned long long nextItemIndex; // @synthesize nextItemIndex=_nextItemIndex;
 @property (nonatomic) BOOL open; // @synthesize open=_open;
 @property (strong, nonatomic) PHImportOptions *options; // @synthesize options=_options;
+@property (strong, nonatomic) NSMutableDictionary *pairedSidecarsByImportIdentifier; // @synthesize pairedSidecarsByImportIdentifier=_pairedSidecarsByImportIdentifier;
 @property (readonly, nonatomic) NSString *path;
 @property (strong, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
 @property (strong, nonatomic) NSMutableArray *processed; // @synthesize processed=_processed;
@@ -113,6 +115,7 @@
 - (void).cxx_destruct;
 - (void)addImportSourceObserver:(id)arg1;
 - (void)addItems:(id)arg1;
+- (void)addPairedSidecar:(id)arg1;
 - (void)addRepresentationsForAsset:(id)arg1;
 - (void)addSourceFileIdentifiersForRemovedFiles:(id)arg1;
 - (id)additionalQueues;
@@ -139,6 +142,7 @@
 - (void)incrementInFlight;
 - (id)init;
 - (BOOL)isLivePhotoForImportIdentifier:(id)arg1;
+- (BOOL)isPairedSidecar:(id)arg1;
 - (id)loadAssetsForLibrary:(id)arg1 allowDuplicates:(BOOL)arg2 order:(long long)arg3 atEnd:(CDUnknownBlockType)arg4;
 - (id)loadAssetsForLibrary:(id)arg1 allowDuplicates:(BOOL)arg2 order:(long long)arg3 batchInterval:(double)arg4 atEnd:(CDUnknownBlockType)arg5;
 - (id)loadAssetsForLibrary:(id)arg1 allowDuplicates:(BOOL)arg2 order:(long long)arg3 batchSize:(unsigned long long)arg4 atEnd:(CDUnknownBlockType)arg5;

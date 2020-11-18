@@ -55,6 +55,7 @@
 - (void)_updateOffer:(id)arg1 buttonId:(id)arg2 info:(id)arg3 account:(id)arg4 accountStore:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_updateQuotaForAccount:(id)arg1 withServerDictionary:(id)arg2;
 - (BOOL)_useFetchOffersDataDirectly;
+- (void)addCommonHeadersToRequest:(id)arg1;
 - (void)clearFollowupsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)daemonBuddyOfferDictionaryForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)daemonOfferDictionaryForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -66,6 +67,7 @@
 - (void)postOfferType:(id)arg1;
 - (void)processPushNotificationDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reconsiderOffersWithCompletion:(CDUnknownBlockType)arg1;
+- (void)renewCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)soonestOfferOrStubExpirationDate;
 - (void)startDirectingToStorageManagement;
 - (void)stopDirectingToStorageManagement;

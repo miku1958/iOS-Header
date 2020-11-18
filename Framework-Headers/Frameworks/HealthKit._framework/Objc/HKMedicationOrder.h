@@ -31,6 +31,7 @@
 }
 
 @property (readonly) NSUUID *UUID;
+@property (readonly, copy, nonatomic) NSString *country;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSArray *dosages;
@@ -53,16 +54,12 @@
 @property (readonly, copy) HKMedicalDate *writtenDate;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)_newMedicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 medicationCodings:(id)arg11 prescriber:(id)arg12 numberOfFills:(long long)arg13 dosages:(id)arg14 earliestDosageDate:(id)arg15 writtenDate:(id)arg16 endedDate:(id)arg17 statusCoding:(id)arg18 reasonCodings:(id)arg19 reasonEndedCodings:(id)arg20 config:(CDUnknownBlockType)arg21;
++ (id)_newMedicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 prescriber:(id)arg14 numberOfFills:(long long)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 writtenDate:(id)arg18 endedDate:(id)arg19 statusCoding:(id)arg20 reasonCodings:(id)arg21 reasonEndedCodings:(id)arg22 config:(CDUnknownBlockType)arg23;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)defaultDisplayString;
 + (id)indexableConceptKeyPaths;
-+ (id)medicationCodingsPreferredSystems;
-+ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 medicationCodings:(id)arg10 prescriber:(id)arg11 numberOfFills:(long long)arg12 dosages:(id)arg13 earliestDosageDate:(id)arg14 writtenDate:(id)arg15 endedDate:(id)arg16 statusCoding:(id)arg17 reasonCodings:(id)arg18 reasonEndedCodings:(id)arg19;
-+ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 medicationCodings:(id)arg11 prescriber:(id)arg12 numberOfFills:(long long)arg13 dosages:(id)arg14 earliestDosageDate:(id)arg15 writtenDate:(id)arg16 endedDate:(id)arg17 statusCoding:(id)arg18 reasonCodings:(id)arg19 reasonEndedCodings:(id)arg20;
-+ (id)reasonCodingsPreferredSystems;
-+ (id)reasonEndedCodingsPreferredSystems;
-+ (id)statusCodingPreferredSystems;
++ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 medicationCodings:(id)arg12 prescriber:(id)arg13 numberOfFills:(long long)arg14 dosages:(id)arg15 earliestDosageDate:(id)arg16 writtenDate:(id)arg17 endedDate:(id)arg18 statusCoding:(id)arg19 reasonCodings:(id)arg20 reasonEndedCodings:(id)arg21;
++ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 prescriber:(id)arg14 numberOfFills:(long long)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 writtenDate:(id)arg18 endedDate:(id)arg19 statusCoding:(id)arg20 reasonCodings:(id)arg21 reasonEndedCodings:(id)arg22;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -85,24 +82,18 @@
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)indexKeywords;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
-- (id)medicalRecordPreferredSystems;
 - (id)medicationCodingsCollection;
 - (id)medicationCodingsContext;
-- (id)medicationCodingsTasks;
 - (id)reasonCodingsCollection;
 - (id)reasonCodingsContext;
-- (id)reasonCodingsTasks;
 - (id)reasonEndedCodingsCollection;
 - (id)reasonEndedCodingsContext;
-- (id)reasonEndedCodingsTasks;
 - (id)statusCodingCollection;
 - (id)statusCodingContext;
-- (id)statusCodingTasks;
 
 @end
 

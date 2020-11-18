@@ -31,6 +31,7 @@
 - (void)didMoveToBackgroundWithNumberOfOnGoingDownloads:(unsigned long long)arg1;
 - (void)didOpenRecommendationWithMetadata:(id)arg1 withPosition:(long long)arg2;
 - (void)didReceiveInvalidMessageFromWebProcess:(id)arg1;
+- (void)didReceiveWebKitAnalyticsEventWithName:(id)arg1 payload:(id)arg2;
 - (void)didRetrieveNumberOfFavorites:(unsigned long long)arg1;
 - (void)didRetrieveNumberOfFrequentlyVisitedSites:(unsigned long long)arg1;
 - (void)didRetrieveNumberOfRecommendations:(unsigned long long)arg1 numberOfTopics:(unsigned long long)arg2;

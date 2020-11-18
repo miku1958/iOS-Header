@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <webrtc/WK_RTCVideoFrameBuffer-Protocol.h>
+#import <webrtc/RTCVideoFrameBuffer-Protocol.h>
 
-@protocol RTCYUVPlanarBuffer <WK_RTCVideoFrameBuffer>
+@protocol RTCYUVPlanarBuffer <RTCVideoFrameBuffer>
 
 @property (readonly, nonatomic) int chromaHeight;
 @property (readonly, nonatomic) int chromaWidth;

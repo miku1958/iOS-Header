@@ -50,12 +50,12 @@ __attribute__((visibility("hidden")))
 - (void)_handleSessionPlaybackUpdated:(id)arg1;
 - (void)_handleSessionRouteUIDUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
-- (void)_notifyDelegateOfUpdatedMediaState:(id)arg1;
+- (void)_notifyDelegateOfUpdatedMediaState;
 - (void)_notifyDelegateOfUpdatedPlaybackState:(long long)arg1;
 - (void)_notifyDelegateOfUpdatedRouteUID:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (void)_updateMediaState:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3 audioControl:(id)arg4;
+- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3 shuffleState:(long long)arg4 repeatState:(long long)arg5 audioControl:(id)arg6 mediaUniqueIdentifier:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (id)messageDestination;
 - (void)refreshPlaybackStateWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)setRouteUID:(id)arg1;
 - (void)setShuffleState:(long long)arg1;
 - (void)setUuid:(id)arg1;
+- (void)updateMediaState:(id)arg1;
 - (void)updatePlaybackState:(id)arg1;
 
 @end

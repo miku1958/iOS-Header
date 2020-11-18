@@ -36,6 +36,7 @@
 - (id)initWithDevice:(id)arg1 error:(id *)arg2;
 - (BOOL)isBuiltInMicrophoneStereoAudioCaptureEnabled;
 - (BOOL)isBuiltInMicrophoneStereoAudioCaptureSupported;
+- (BOOL)isCameraCalibrationDataDeliveryEnabled;
 - (BOOL)isMaxGainOverrideSupported;
 - (BOOL)isVisionDataDeliveryEnabled;
 - (float)maxGainOverride;
@@ -46,6 +47,7 @@
 - (id)ports;
 - (id)portsWithMediaType:(id)arg1 sourceDeviceType:(id)arg2 sourceDevicePosition:(long long)arg3;
 - (void)setBuiltInMicrophoneStereoAudioCaptureEnabled:(BOOL)arg1;
+- (void)setCameraCalibrationDataDeliveryEnabled:(BOOL)arg1;
 - (void)setMaxGainOverride:(float)arg1;
 - (void)setPortraitLightingEffectStrength:(float)arg1;
 - (void)setSession:(id)arg1;

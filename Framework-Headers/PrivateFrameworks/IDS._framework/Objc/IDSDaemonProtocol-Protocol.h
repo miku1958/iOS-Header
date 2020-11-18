@@ -105,7 +105,7 @@
 - (void)repairAccounts;
 - (void)reportiMessageSpam:(NSArray *)arg1 toURI:(NSString *)arg2;
 - (void)reportiMessageSpamCheckUnknown:(NSString *)arg1 count:(NSNumber *)arg2 requestID:(NSString *)arg3;
-- (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 messageServerTimestamp:(NSNumber *)arg3 toURI:(NSString *)arg4;
+- (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 isBlackholed:(BOOL)arg3 messageServerTimestamp:(NSNumber *)arg4 toURI:(NSString *)arg5;
 - (void)requestActiveParticipantsForGroupSession:(NSString *)arg1;
 - (void)requestCarrierTokenForSubscriptionSource:(NSNumber *)arg1 IMEI:(NSString *)arg2 carrierNonce:(NSString *)arg3 requestUUID:(NSString *)arg4;
 - (void)requestPublicKeysForRealTimeEncryption:(NSString *)arg1 forAccountWithID:(NSString *)arg2;

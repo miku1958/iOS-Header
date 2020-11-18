@@ -17,7 +17,7 @@
 
 @interface WGWidgetDiscoveryController : NSObject <WGWidgetViewControllerDelegate, WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate, LSApplicationWorkspaceObserverProtocol>
 {
-    struct NSMutableDictionary *_archive;
+    NSMutableDictionary *_archive;
     NSObject<OS_dispatch_queue> *_archiveWriteQueue;
     NSMutableSet *_defaultEnabledIDs;
     NSMutableDictionary *_identifiersToDataSources;

@@ -10,13 +10,14 @@
 #import <CoreSpeech/CSAudioProviderDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioRecorderDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioServerCrashMonitorDelegate-Protocol.h>
+#import <CoreSpeech/CSOpportuneSpeakEventMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerAssetHandlerDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerXPCServiceDelegate-Protocol.h>
 
 @class CSAudioRecorder, CSFallbackAudioSessionReleaseProvider, CSOpportuneSpeakListnerTestService, CSSmartSiriVolume, CSSpIdImplicitTraining, NSMutableDictionary, NSString;
 @protocol CSSmartSiriVolumeDelegate, CSSpeechManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface CSSpeechManager : NSObject <CSAudioServerCrashMonitorDelegate, CSVoiceTriggerAssetHandlerDelegate, CSActivationEventNotifierDelegate, CSAudioRecorderDelegate, CSVoiceTriggerXPCServiceDelegate, CSAudioProviderDelegate>
+@interface CSSpeechManager : NSObject <CSAudioServerCrashMonitorDelegate, CSVoiceTriggerAssetHandlerDelegate, CSActivationEventNotifierDelegate, CSAudioRecorderDelegate, CSVoiceTriggerXPCServiceDelegate, CSAudioProviderDelegate, CSOpportuneSpeakEventMonitorDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     CSSmartSiriVolume *_smartSiriVolume;
@@ -68,6 +69,7 @@
 - (void)dealloc;
 - (id)fetchFallbackAudioSessionReleaseProvider;
 - (id)init;
+- (void)opportuneSpeakEventMonitor:(id)arg1 didStreamStateChanged:(BOOL)arg2;
 - (void)registerSiriClientProxy:(id)arg1;
 - (void)registerSpeechController:(id)arg1;
 - (void)registerVolumeController:(id)arg1;

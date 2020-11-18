@@ -42,8 +42,10 @@
 
 + (id)sessionWithInitialMessage:(id)arg1 secretDelegate:(id)arg2 circleDelegate:(id)arg3 dsid:(unsigned long long)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
+- (id)accessSession;
 - (id)copyChallengeMessage:(id *)arg1;
 - (id)createPairingMessageFromJoiningMessage:(id)arg1 error:(id *)arg2;
+- (id)createTLKRequestResponse:(id *)arg1;
 - (id)description;
 - (id)initWithSecretDelegate:(id)arg1 circleDelegate:(id)arg2 dsid:(unsigned long long)arg3 rng:(struct ccrng_state *)arg4 error:(id *)arg5;
 - (BOOL)isDone;

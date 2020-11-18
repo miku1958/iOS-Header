@@ -21,14 +21,14 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)addSyncAnchor:(struct NSData *)arg1 forFeatureVersion:(long long)arg2;
+- (void)addSyncAnchor:(id)arg1 forFeatureVersion:(long long)arg2;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateHistoryWithBlock:(CDUnknownBlockType)arg1;
-- (long long)featureVersionForSyncAnchor:(struct NSData *)arg1;
+- (long long)featureVersionForSyncAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCurrentFeatureVersion:(long long)arg1;
-- (struct NSData *)syncAnchorForFeatureVersion:(long long)arg1;
+- (id)syncAnchorForFeatureVersion:(long long)arg1;
 
 @end
 

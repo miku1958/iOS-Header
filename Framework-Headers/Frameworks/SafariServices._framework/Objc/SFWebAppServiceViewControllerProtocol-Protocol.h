@@ -10,5 +10,7 @@
 
 @protocol SFWebAppServiceViewControllerProtocol <SFServiceViewControllerProtocol>
 - (void)loadWebAppWithIdentifier:(NSString *)arg1;
+- (void)webAppDidBecomeActive;
+- (void)webAppWillResignActive;
 @end
 

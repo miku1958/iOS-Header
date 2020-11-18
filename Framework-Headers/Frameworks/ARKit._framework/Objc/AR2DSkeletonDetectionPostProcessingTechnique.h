@@ -6,15 +6,20 @@
 
 #import <ARKit/ARImageBasedTechnique.h>
 
-@class AR2DSkeletonDetectionPostProcessGPU, AR2DSkeletonRawEspressoResult, NSObject;
+@class AR2DSkeletonDetectionPostProcessGPU, AR2DSkeletonDetectionResult, AR2DSkeletonRawEspressoResult, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface AR2DSkeletonDetectionPostProcessingTechnique : ARImageBasedTechnique
 {
     AR2DSkeletonDetectionPostProcessGPU *_postProcessorGPU;
     struct SkeletonJointFilter<float> _extrapolationFilter2D;
+    double _extrapolationTime;
     struct SkeletonJointFilter<float> _extrapolationFilter2DForLiftingData;
+    AR2DSkeletonDetectionResult *_previous3DSkeleton;
+    BOOL _shouldPush3DSupportSkeleton;
+    BOOL _use3DSupportSkeletonForExtrapolation;
     NSObject<OS_dispatch_queue> *_processingQueue;
+    BOOL _deterministic;
     AR2DSkeletonRawEspressoResult *_previousRawEspressoResult;
 }
 
@@ -23,7 +28,9 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)init;
+- (void)prepare:(BOOL)arg1;
 - (id)processData:(id)arg1;
+- (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (double)requiredTimeInterval;
 
 @end

@@ -12,7 +12,7 @@
 #import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
 @class NCNotificationRequest, NCNotificationViewControllerView, NSPointerArray, NSString, UIPanGestureRecognizer, UIScrollView, UIView;
-@protocol NCAuxiliaryOptionsProviding, NCNotificationCustomContent, NCNotificationCustomContentProviding, NCNotificationStaticContentProviding, NCNotificationViewControllerDelegate, PLContentSizeManaging, UIViewControllerTransitionCoordinator;
+@protocol NCAuxiliaryOptionsProviding, NCNotificationCustomContent, NCNotificationCustomContentProviding, NCNotificationStaticContentProviding, NCNotificationViewControllerDelegate, PLContentSizeManaging, PLPlatter><NCNotificationStaticContentAccepting, UIViewControllerTransitionCoordinator;
 
 @interface NCNotificationViewController : UIViewController <UIScrollViewDelegate, NCNotificationCustomContentDelegate, PLExpandedPlatterPresentationControllerDelegate, PLContentSizeCategoryAdjusting>
 {
@@ -21,7 +21,7 @@
     long long _ncTransitionAnimationState;
     NSPointerArray *_observers;
     UIView<PLContentSizeManaging> *_contentSizeManagingView;
-    struct UIView *_lookView;
+    UIView<PLPlatter><NCNotificationStaticContentAccepting> *_lookView;
     BOOL _revealAdditionalContentOnPresentation;
     BOOL _customContentHomeAffordanceVisible;
     BOOL _notificationContentViewHidden;
@@ -91,9 +91,9 @@
 - (void)_executeDefaultAction:(BOOL)arg1;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(BOOL)arg2;
 - (void)_loadLookView;
-- (struct UIView *)_lookView;
-- (struct UIView *)_lookViewIfLoaded;
-- (struct UIView *)_lookViewLoadingIfNecessary:(BOOL)arg1;
+- (id)_lookView;
+- (id)_lookViewIfLoaded;
+- (id)_lookViewLoadingIfNecessary:(BOOL)arg1;
 - (unsigned long long)_maximumNumberOfPrimaryLargeTextLinesForProvidedStaticContent;
 - (unsigned long long)_maximumNumberOfPrimaryTextLinesForProvidedStaticContent;
 - (unsigned long long)_maximumNumberOfSecondaryLargeTextLinesForProvidedStaticContent;
@@ -108,7 +108,7 @@
 - (void)_setupCustomContentProvider;
 - (void)_setupStaticContentProvider;
 - (BOOL)_shouldPadScrollViewContentSizeHeight;
-- (void)_updateLookView:(struct UIView *)arg1 withTitleFromProvidedStaticContent:(id)arg2;
+- (void)_updateLookView:(id)arg1 withTitleFromProvidedStaticContent:(id)arg2;
 - (void)_updatePreferredContentSize;
 - (void)_updateScrollViewContentSize;
 - (void)_updateWithProvidedAuxiliaryOptionsContent;

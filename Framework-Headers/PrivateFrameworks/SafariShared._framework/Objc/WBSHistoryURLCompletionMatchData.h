@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) BOOL lastVisitWasFailure;
 @property (readonly, nonatomic) double lastVisitedTimeInterval;
 @property (readonly, nonatomic) NSString *originalURLString;
+@property (readonly, nonatomic) BOOL shouldPreload;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long visitCount;
 
@@ -35,7 +36,7 @@
 - (BOOL)matchesAutocompleteTrigger:(id)arg1;
 - (id)pageTitleAtIndex:(unsigned long long)arg1;
 - (id)pageTitleForUserVisibleURLStringAtIndex:(unsigned long long)arg1;
-- (float)topSitesScoreForPageTitleAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
+- (float)topSitesScoreForPageTitleAtTime:(double)arg1;
 - (float)topSitesScoreForURLStringAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
 - (id)userVisibleURLStringAtIndex:(unsigned long long)arg1;
 - (id)userVisibleURLStringForPageTitleAtIndex:(unsigned long long)arg1;

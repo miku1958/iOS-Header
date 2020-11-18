@@ -23,7 +23,7 @@
 - (void).cxx_destruct;
 - (Class)_unsafeObjectClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

@@ -12,13 +12,14 @@
 {
     NSDictionary *_propertyValues;
     MPModelObject *_modelObject;
+    CDUnknownBlockType _fallbackArtworkCatalogBlock;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType fallbackArtworkCatalogBlock; // @synthesize fallbackArtworkCatalogBlock=_fallbackArtworkCatalogBlock;
 @property (readonly, nonatomic) MPModelObject *modelObject; // @synthesize modelObject=_modelObject;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithPropertyValues:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

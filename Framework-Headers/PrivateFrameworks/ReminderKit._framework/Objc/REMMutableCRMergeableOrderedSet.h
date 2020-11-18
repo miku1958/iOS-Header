@@ -16,7 +16,7 @@
 {
     id<REMReplicaManagerProviding> _replicaManagerProvider;
     REMReplicaIDSource *_replicaIDSource;
-    struct CRDocument *_document;
+    CRDocument *_document;
     REMReplicaIDHelper *_replicaIDHelper;
     NSMutableArray *_undos;
     REMMutableCRUndo *_currentUndo;
@@ -36,9 +36,9 @@
 - (void).cxx_destruct;
 - (id)addObject:(id)arg1;
 - (void)addUndoCommandsForObject:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (struct CRDocument *)documentToEdit;
+- (id)documentToEdit;
 - (id)immutableOrderedSet;
-- (id)initWithReplicaIDSource:(id)arg1 immutableDocumentToEdit:(struct CRDocument *)arg2 undos:(id)arg3;
+- (id)initWithReplicaIDSource:(id)arg1 immutableDocumentToEdit:(id)arg2 undos:(id)arg3;
 - (id)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)moveObjectFromIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (id)removeObjectAtIndex:(unsigned long long)arg1;

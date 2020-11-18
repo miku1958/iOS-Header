@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)contentCategories;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)itemWithItemProviderItem:(id)arg1 photoMediaFileRepresentation:(id)arg2 assetIdentifier:(id)arg3;
 + (id)outputTypes;
 + (id)pluralTypeDescription;

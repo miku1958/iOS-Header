@@ -71,6 +71,10 @@
 	// class base protocol
 	// method
  }
+ protocol NewsFeed.FormatTraversalContextType // 1 requirements
+ {
+	// getter
+ }
  protocol NewsFeed.FeedLayoutContextFactoryType // 1 requirements
  {
 	// method
@@ -100,10 +104,8 @@
 	// method
 	// method
  }
- protocol NewsFeed.FormatEquationOperandType // 8 requirements
+ protocol NewsFeed.FormatEquationOperandType // 6 requirements
  {
-	// class base protocol
-	// class base protocol
 	// class base protocol
 	// class base protocol
 	// class base protocol
@@ -183,6 +185,11 @@
  protocol NewsFeed.PaidBundleConfigManagerType // 2 requirements
  {
 	// getter
+	// method
+ }
+ protocol NewsFeed.FormatBindable // 2 requirements
+ {
+	// class base protocol
 	// method
  }
  protocol NewsFeed.FormatLayoutContextType // 2 requirements
@@ -418,6 +425,12 @@
  protocol NewsFeed.FormatBorderRendererType // 0 requirements
  {
  }
+ protocol NewsFeed.FormatTraversable // 3 requirements
+ {
+	// method
+	// method
+	// getter
+ }
  protocol NewsFeed.AutomationDecorationType // 2 requirements
  {
 	// getter
@@ -470,6 +483,13 @@
  protocol NewsFeed.LayeredMediaAssetHandlesProviderType // 1 requirements
  {
 	// method
+ }
+ protocol NewsFeed.FormatCodable // 4 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// class base protocol
+	// class base protocol
  }
  protocol NewsFeed.FormatCornerRadiusRendererType // 0 requirements
  {
@@ -534,8 +554,9 @@
 	// method
 	// method
  }
- protocol NewsFeed.FormatCompilable // 1 requirements
+ protocol NewsFeed.FormatCompilable // 2 requirements
  {
+	// class base protocol
 	// method
  }
  protocol NewsFeed.FormatButtonNodeRendererType // 2 requirements
@@ -615,9 +636,8 @@
 	// getter
 	// getter
  }
- protocol NewsFeed.FormatExpressionType // 3 requirements
+ protocol NewsFeed.FormatExpressionType // 2 requirements
  {
-	// class base protocol
 	// method
 	// method
  }
@@ -661,10 +681,14 @@
  struct __C.UIEdgeInsets {
 
 	// Properties
-	var top : CGFloat
-	var left : CGFloat
-	var bottom : CGFloat
-	var right : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var top : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var left : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bottom : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var right : ;Ã	
  }
 
  enum __C.FCFetchOperationStatus { }
@@ -672,8 +696,10 @@
  struct __C.CGPoint {
 
 	// Properties
-	var x : CGFloat
-	var y : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : ;Ã	
  }
 
  enum __C.UIUserInterfaceStyle { }
@@ -700,12 +726,7 @@
 	var _rawValue : NSString
  }
 
- struct __C.CGSize {
-
-	// Properties
-	var width : CGFloat
-	var height : CGFloat
- }
+ enum __C.FCTagType { }
 
  struct __C.UIRectCorner {
 
@@ -721,12 +742,26 @@
 	var size : CGSize
  }
 
+ struct __C.CGSize {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : ;Ã	
+ }
+
  enum __C.ComparisonResult { }
 
  enum __C.Status { }
 
- class __C.CGImage {
- enum __C.FCTagType { }
+ struct __C._ConditionalAllocationBuffer {
+
+	// Properties
+	var memory : UnsafeMutableRawPointer
+	var capacity : Int
+	var onStack : Bool
+ }
 
  struct __C.NSStringDrawingOptions {
 
@@ -753,7 +788,7 @@
 	let json : String // +0x20 (0x10)
 
 	// Swift methods
-	0x2930  class func LayeredMediaParser.__allocating_init(identifier:json:) // init 
+	0x27e0  class func LayeredMediaParser.__allocating_init(identifier:json:) // init 
  }
 
  enum NewsFeed.Errors {
@@ -768,7 +803,7 @@
 	let layerRenderer : LayeredMediaLayerRenderer // +0x10 (0x8)
 
 	// Swift methods
-	0x4fa0  class func LayeredMediaViewRenderer.__allocating_init(layerRenderer:) // init 
+	0x42a0  class func LayeredMediaViewRenderer.__allocating_init(layerRenderer:) // init 
  }
 
  struct NewsFeed.AlertEnableNotifications {
@@ -779,7 +814,7 @@
 
  class NewsFeed.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xcf60  @objc RendererAssembly.init <stripped>
+	0xb320  @objc RendererAssembly.init <stripped>
  }
 
  enum NewsFeed.FormatTextNodeImage {
@@ -805,7 +840,8 @@
  class NewsFeed.IssueCoverViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueCoverViewRendererType {
 
 	// Properties
-	var rendererEnvironment : RendererEnvironmentType? // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rendererEnvironment : πŒ	 // +0x10 (0x28)
 	let styler : IssueCoverViewStylerType // +0x38 (0x28)
 	let coverImageImageCache : TSImageCacheType // +0x60 (0x8)
 	let layeredCoverViewProvider : LayeredMediaViewProvider // +0x68 (0x8)
@@ -828,6 +864,7 @@
 
 	// Properties
 	case qa  
+	case staging  
  }
 
  struct NewsFeed.FormatSnippet {
@@ -836,9 +873,9 @@
 	let identifier : String // +0x0
 	let name : String? // +0x10
 	let description : String? // +0x20
-	let children : [FormatNode] // +0x30
-	let options : [FormatOption] // +0x38
-	let types : [FormatType] // +0x40
+	let children : FormatNode // +0x30
+	let options : FormatOption // +0x38
+	let types : FormatType // +0x40
  }
 
  enum NewsFeed.CodingKeys {
@@ -863,9 +900,10 @@
  enum NewsFeed.GroupLayoutFactoryError {
 
 	// Properties
-	case videoLayoutsNotSupported : (groupLayout: GroupLayoutFactoryType)
-	case contentSizeCategoryRequirement : (groupLayout: GroupLayoutFactoryType, contentSizeCategory: UIContentSizeCategory)
-	case minViewportHeightRequirement : (viewportHeight: CGFloat, requiredHeight: CGFloat)
+	case videoLayoutsNotSupported : GroupLayoutFactoryType
+	case contentSizeCategoryRequirement : GroupLayoutFactoryType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case minViewportHeightRequirement : #∆	
 	case noThumbnailsRequirement  
  }
 
@@ -1050,8 +1088,10 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let shadowRadius : CGFloat // +0x20
-	let cornerRadius : CGFloat // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shadowRadius : ;Ã	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cornerRadius : ;Ã	 // +0x28
  }
 
  enum NewsFeed.CodingKeys {
@@ -1068,9 +1108,9 @@
 	let label : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x497e0  @objc WebEmbedErrorView.initWithFrame: <stripped>
-	0x49810  @objc WebEmbedErrorView.initWithCoder: <stripped>
-	0x498b0  @objc WebEmbedErrorView..cxx_destruct <stripped>
+	0x42190  @objc WebEmbedErrorView.initWithFrame: <stripped>
+	0x421c0  @objc WebEmbedErrorView.initWithCoder: <stripped>
+	0x42240  @objc WebEmbedErrorView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.FormatButtonNode {
@@ -1078,14 +1118,14 @@
 	// Properties
 	let identifier : String // +0x0
 	let size : FormatSize // +0x10
-	let adjustments : [FormatAdjustment] // +0x18
+	let adjustments : FormatAdjustment // +0x18
 	let zIndex : Int // +0x20
-	let children : [FormatNode] // +0x28
-	let stateMasks : [FormatButtonNodeStateMask] // +0x30
+	let children : FormatNode // +0x28
+	let stateMasks : FormatButtonNodeStateMask // +0x30
 	let action : FormatButtonNodeAction // +0x38
-	let actionName : FormatTextNodeContent? // +0x40
-	let behaviors : [FormatNodeBehavior] // +0x48
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0x50
+	let actionName : FormatTextNodeContent // +0x40
+	let behaviors : FormatNodeBehavior // +0x48
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x50
  }
 
  enum NewsFeed.CodingKeys {
@@ -1109,10 +1149,10 @@
 	let frame : CGRect
 	let identifier : String
 	let layoutIdentifier : String
-	let dataLayoutValues : [FormatDataLayoutValue]
-	let dataAccessibilityValues : [FormatDataAccessibilityValue]
+	let dataLayoutValues : FormatDataLayoutValue
+	let dataAccessibilityValues : FormatDataAccessibilityValue
 	let data : A
-	let accessibilityRole : FormatAccessibilityRole?
+	let accessibilityRole : FormatAccessibilityRole
  }
 
  struct NewsFeed.FormatSelectorExpression {
@@ -1142,21 +1182,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1178,7 +1220,7 @@
 	// Properties
 	let identifier : String // +0x0
 	let feedItemIdentifiers : Set<String> // +0x10
-	let feedProperties : [FeedProperty] // +0x18
+	let feedProperties : FeedProperty // +0x18
  }
 
  struct NewsFeed.FormatSpaceNode {
@@ -1186,7 +1228,7 @@
 	// Properties
 	let identifier : String // +0x0
 	let size : FormatSize // +0x10
-	let adjustments : [FormatAdjustment] // +0x18
+	let adjustments : FormatAdjustment // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1206,9 +1248,9 @@
 	let headline : FCHeadlineProviding // +0x28
 	let metadata : Swift.AnyObject? // +0x30
 	let badge : Badge // +0x38
-	let premiumBadge : FeedItem.PremiumBadge // +0x39
+	let premiumBadge : PremiumBadge // +0x39
 	let style : FeaturedStyle // +0x40
-	let kind : FeedItem.Kind // +0x48
+	let kind : Kind // +0x48
  }
 
  enum NewsFeed.Badge {
@@ -1232,9 +1274,11 @@
  struct NewsFeed.DebugFormatErrorModel {
 
 	// Properties
-	let error : Error // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let error : 5
+ // +0x0
 	let title : String // +0x8
-	let sections : [DebugFormatErrorModel.Section] // +0x18
+	let sections : Section // +0x18
  }
 
  enum NewsFeed.Item {
@@ -1246,16 +1290,22 @@
  enum NewsFeed.DebugFormatError {
 
 	// Properties
-	case network : Error
-	case codingFormat : Error
-	case layout : Error
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case network : 5
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case codingFormat : 5
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case layout : 5
+
  }
 
  struct NewsFeed.Section {
 
 	// Properties
 	let title : String // +0x0
-	let items : [DebugFormatErrorModel.Item] // +0x10
+	let items : Item // +0x10
  }
 
  enum NewsFeed.FormatBindingImageExpressionLogic {
@@ -1299,17 +1349,20 @@
  enum NewsFeed.FormatAuxiliaryView {
 
 	// Properties
-	case shadow : MotionContainerView
-	case shine : ShineView
-	case gradient : GradientView
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case shadow : g∑	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case shine : âª	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case gradient : ¥	
  }
 
  class NewsFeed.DebugNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x86fa0  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x87040  @objc DebugNavigationController.initWithRootViewController: <stripped>
-	0x870a0  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
-	0x87180  @objc DebugNavigationController.initWithCoder: <stripped>
+	0x82c50  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x82ce0  @objc DebugNavigationController.initWithRootViewController: <stripped>
+	0x82d20  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
+	0x82df0  @objc DebugNavigationController.initWithCoder: <stripped>
  }
 
  struct NewsFeed.IssueFontBook {
@@ -1354,21 +1407,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedIssues : [FeedIssue]
+	let feedIssues : FeedIssue
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let coverIssueLayoutAttributes : [CoverIssueViewLayout.Attributes] // +0x20
+	let coverIssueLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let coverIssueLayoutAttributes : LayoutItemList<CoverIssueViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let coverIssueLayoutAttributes : °≠	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1383,6 +1438,20 @@
 	// Properties
 	case frame  
 	case coverIssueLayoutAttributes  
+ }
+
+ enum NewsFeed.FormatPathItem {
+
+	// Properties
+	case property : String
+	case element : Int
+	case unknown  
+ }
+
+ struct NewsFeed.FormatPath {
+
+	// Properties
+	var items : FormatPathItem // +0x0
  }
 
  struct NewsFeed.B12_V12 {
@@ -1399,25 +1468,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1451,21 +1524,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1485,19 +1560,30 @@
  struct NewsFeed.FormatParagraphStyle {
 
 	// Properties
-	let alignment : FormatTextAlignment? // +0x0
-	let firstLineHeadIndent : CGFloat? // +0x8
-	let headIndent : CGFloat? // +0x18
-	let tailIndent : CGFloat? // +0x28
-	let lineBreakMode : FormatTextLineBreakMode? // +0x31
-	let maximumLineHeight : CGFloat? // +0x38
-	let minimumLineHeight : CGFloat? // +0x48
-	let lineSpacing : CGFloat? // +0x58
-	let paragraphSpacing : CGFloat? // +0x68
-	let paragraphSpacingBefore : CGFloat? // +0x78
-	let lineHeightMultiple : CGFloat? // +0x88
-	let defaultTabInterval : CGFloat? // +0x98
-	let hyphenationFactor : CGFloat? // +0xa8
+	let alignment : FormatTextAlignment // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let firstLineHeadIndent : •´	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headIndent : •´	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tailIndent : •´	 // +0x28
+	let lineBreakMode : FormatTextLineBreakMode // +0x31
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maximumLineHeight : •´	 // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumLineHeight : •´	 // +0x48
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lineSpacing : •´	 // +0x58
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paragraphSpacing : •´	 // +0x68
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let paragraphSpacingBefore : •´	 // +0x78
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lineHeightMultiple : •´	 // +0x88
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultTabInterval : •´	 // +0x98
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let hyphenationFactor : •´	 // +0xa8
 	let allowsDefaultTighteningForTruncation : Bool? // +0xb1
  }
 
@@ -1533,21 +1619,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1582,21 +1670,23 @@
 	let stillImageLayer : ImageLayer
 	let playerLayer : AVPlayerLayer
 	var looper : SVLooper?
-	var readyToDisplayObservation : NSKeyValueObservation?
-	var statusObservation : NSKeyValueObservation?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var readyToDisplayObservation : ≥¢	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var statusObservation : ≥¢	
 	let nonAnimatingDelegate : NonAnimatingDelegate
 
 	// ObjC -> Swift bridged methods
-	0xa7580  @objc PlayerLayer.playerLayer <stripped>
-	0xa76d0  @objc PlayerLayer.initWithCoder: <stripped>
-	0xa79b0  @objc PlayerLayer.init <stripped>
-	0xa7b90  @objc PlayerLayer.initWithLayer: <stripped>
-	0xa7d40  @objc PlayerLayer.layoutSublayers <stripped>
-	0xa83a0  @objc PlayerLayer.dealloc <stripped>
-	0xa8430  @objc PlayerLayer.applicationDidEnterBackground <stripped>
-	0xa84b0  @objc PlayerLayer.applicationWillEnterForeground <stripped>
-	0xa85b0  @objc PlayerLayer.reduceMotionStatusDidChange <stripped>
-	0xa83c0  @objc PlayerLayer..cxx_destruct <stripped>
+	0xa5f00  @objc PlayerLayer.playerLayer <stripped>
+	0xa6020  @objc PlayerLayer.initWithCoder: <stripped>
+	0xa6310  @objc PlayerLayer.init <stripped>
+	0xa6500  @objc PlayerLayer.initWithLayer: <stripped>
+	0xa6630  @objc PlayerLayer.layoutSublayers <stripped>
+	0xa6d00  @objc PlayerLayer.dealloc <stripped>
+	0xa6d90  @objc PlayerLayer.applicationDidEnterBackground <stripped>
+	0xa6e10  @objc PlayerLayer.applicationWillEnterForeground <stripped>
+	0xa6f10  @objc PlayerLayer.reduceMotionStatusDidChange <stripped>
+	0xa6d20  @objc PlayerLayer..cxx_destruct <stripped>
  }
 
  enum NewsFeed.PlaybackKind {
@@ -1608,8 +1698,8 @@
 
  class NewsFeed.NonAnimatingDelegate : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xa75a0  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
-	0xa7630  @objc NonAnimatingDelegate.init <stripped>
+	0xa5f20  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
+	0xa5fe0  @objc NonAnimatingDelegate.init <stripped>
 
 	// Swift methods
  }
@@ -1628,25 +1718,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1681,25 +1775,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1734,25 +1832,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1794,18 +1896,22 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : HeadlineViewLayout.Attributes // +0x178
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
 	let spacerFrame : CGRect // +0x2b0
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItem<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Uü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -1830,7 +1936,8 @@
 
 	// Properties
 	var filename : String // +0x0
-	let data : Data // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let data : ù	 // +0x10
 	let contentType : String // +0x20
  }
 
@@ -1855,7 +1962,7 @@
  struct NewsFeed.E18_V5 {
 
 	// Properties
-	let layoutOptionRequirements : [FeedLayoutOptionRequirement] // +0x0
+	let layoutOptionRequirements : FeedLayoutOptionRequirement // +0x0
 	let groupLayoutPriority : GroupLayoutPriority // +0x8
 	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x10
  }
@@ -1867,27 +1974,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -1931,7 +2043,7 @@
  class NewsFeed.FeedItemDebugColors : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var debugColors : [GroupLayoutKey : UIColor] // +0x10 (0x8)
+	var debugColors : GroupLayoutKey // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -1953,21 +2065,25 @@
  enum NewsFeed.DimensionSizeSpec {
 
 	// Properties
-	case columnMultiple : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case columnMultiple : ;Ã	
  }
 
  enum NewsFeed.FeedAction {
 
 	// Properties
-	case command : (Commands, contextProvider: CommandContextProvider)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case command : Ö•	
 	case route : FormatRoute
  }
 
  struct NewsFeed.FormatPoint {
 
 	// Properties
-	let x : CGFloat // +0x0
-	let y : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let x : ;Ã	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let y : ;Ã	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -1991,25 +2107,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2072,25 +2192,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2127,7 +2251,8 @@
  enum NewsFeed.FormatCommandOpenURL {
 
 	// Properties
-	case inline : URL
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case inline : ßë	
 	case option : FormatOptionBinding
  }
 
@@ -2157,27 +2282,30 @@
 	// Properties
 	let titleLabel : UILabel // +0x8 (0x8)
 	let excerptLabel : UILabel // +0x10 (0x8)
-	let thumbnailImageView : ImageView // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let thumbnailImageView : ≠—	 // +0x18 (0x8)
 	let issueCoverView : IssueCoverView // +0x20 (0x8)
-	let publisherLogoImageView : ImageView // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageView : ≠—	 // +0x28 (0x8)
 	let publisherLabel : UILabel // +0x30 (0x8)
 	let dateLabel : UILabel // +0x38 (0x8)
 	let premiumBadgeView : PremiumBadgeView // +0x40 (0x8)
 	let debugButton : DebugButton // +0x48 (0x8)
-	let segmentedColorView : SegmentedColorView // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorView : Où	 // +0x50 (0x8)
 	let cardView : CardView // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xfceb0  @objc FeaturedIssueHeadlineView.initWithFrame: <stripped>
-	0xfcf30  @objc FeaturedIssueHeadlineView.initWithCoder: <stripped>
-	0xfcfa0  @objc FeaturedIssueHeadlineView..cxx_destruct <stripped>
+	0xfb180  @objc FeaturedIssueHeadlineView.initWithFrame: <stripped>
+	0xfb200  @objc FeaturedIssueHeadlineView.initWithCoder: <stripped>
+	0xfb250  @objc FeaturedIssueHeadlineView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.FormatItemCollection {
 
 	// Properties
-	let items : [FormatObject<FormatItem>] // +0x0
-	let itemsByIdentifier : [String : FormatObject<FormatItem>] // +0x8
+	let items : FormatObject // +0x0
+	let itemsByIdentifier : FormatObject // +0x8
  }
 
  enum NewsFeed.FormatEquationOperator {
@@ -2241,19 +2369,21 @@
 	let assetHandles : [String : TSAssetHandleType] // +0x8 (0x8)
 	let thumbnailFrame : CGRect // +0x10 (0x20)
 	let focalFrame : CGRect // +0x30 (0x20)
-	let scale : CGFloat // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x50 (0x8)
 	let roundedCorners : UIRectCorner // +0x58 (0x8)
-	let cornerRadius : CGFloat // +0x60 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cornerRadius : ;Ã	 // +0x60 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x103730  @objc ThumbnailProcessorRequest.assetHandles <stripped>
-	0x103a00  @objc ThumbnailProcessorRequest.initWithThumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius: <stripped>
-	0x103ae0  @objc ThumbnailProcessorRequest.cacheIdentifier <stripped>
-	0x103e50  @objc ThumbnailProcessorRequest.init <stripped>
-	0x103ed0  @objc ThumbnailProcessorRequest..cxx_destruct <stripped>
+	0x1027b0  @objc ThumbnailProcessorRequest.assetHandles <stripped>
+	0x1029f0  @objc ThumbnailProcessorRequest.initWithThumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius: <stripped>
+	0x102ae0  @objc ThumbnailProcessorRequest.cacheIdentifier <stripped>
+	0x102e40  @objc ThumbnailProcessorRequest.init <stripped>
+	0x102ea0  @objc ThumbnailProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1038b0  class func ThumbnailProcessorRequest.__allocating_init(thumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius:) // init 
+	0x102900  class func ThumbnailProcessorRequest.__allocating_init(thumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius:) // init 
  }
 
  class NewsFeed.HeadlineView {
@@ -2261,7 +2391,7 @@
 
 	// Properties
 	let name : String
-	let config : FormatSymbolConfig?
+	let config : FormatSymbolConfig
  }
 
  enum NewsFeed.CodingKeys {
@@ -2274,8 +2404,8 @@
  struct NewsFeed.FormatCompilerOptions {
 
 	// Properties
-	let properties : [FormatCompilerProperty] // +0x0
-	let slots : [FormatCompilerSlotDefinition] // +0x8
+	let properties : FormatCompilerProperty // +0x0
+	let slots : FormatCompilerSlotDefinition // +0x8
 	let newsroom : Newsroom // +0x10
  }
 
@@ -2330,8 +2460,8 @@
  enum NewsFeed.FormatTextNodeBinding {
 
 	// Properties
-	case headline : FormatHeadlineBinding.Text
-	case group : FormatGroupBinding.Text
+	case headline : Text
+	case group : Text
 	case option : FormatOptionBinding
  }
 
@@ -2349,7 +2479,8 @@
 	// Properties
 	let name : String
 	let url : FormatURL
-	let size : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let size : ;Ã	
 	let scaling : FormatFontScaling
  }
 
@@ -2365,8 +2496,10 @@
  enum NewsFeed.FormatFloat {
 
 	// Properties
-	case point : CGFloat
-	case pixel : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case point : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case pixel : ;Ã	
 	case scaled : FormatFloat
 	case macUnscaled : FormatFloat
 	case option : String
@@ -2378,7 +2511,7 @@
 	let identifier : String // +0x0
 	let name : String // +0x10
 	let description : String // +0x20
-	let properties : [FormatCompilerProperty] // +0x30
+	let properties : FormatCompilerProperty // +0x30
 	let count : Int // +0x38
  }
 
@@ -2396,7 +2529,7 @@
 
 	// Properties
 	let groupLayoutPriority : GroupLayoutPriority // +0x0
-	let layoutOptionRequirements : [FeedLayoutOptionRequirement] // +0x8
+	let layoutOptionRequirements : FeedLayoutOptionRequirement // +0x8
 	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x10
  }
 
@@ -2407,25 +2540,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2478,21 +2615,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -2512,12 +2651,12 @@
  struct NewsFeed.FormatDecorationCollection {
 
 	// Properties
-	let decorations : [FormatObject<FormatDecoration>] // +0x0
+	let decorations : FormatObject // +0x0
  }
 
  class NewsFeed.CommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1240b0  @objc CommandAssembly.init <stripped>
+	0x124e10  @objc CommandAssembly.init <stripped>
  }
 
  struct NewsFeed.E6_V2 {
@@ -2534,25 +2673,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2586,21 +2729,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -2622,7 +2767,8 @@
 	// Properties
 	let notificationManager : TSNotificationManagerType? // +0x10 (0x8)
 	let subscriptionController : FCSubscriptionController // +0x18 (0x8)
-	let alertPresenter : OverlayAlertPresenterType // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alertPresenter : «ó	 // +0x20 (0x28)
 
 	// Swift methods
  }
@@ -2644,7 +2790,8 @@
  class NewsFeed.NewsroomService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var $__lazy_storage_$_urlSessionPool : URLSessionPool? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_urlSessionPool : ∑ç	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -2656,20 +2803,29 @@
 	var name : String? // +0x10
 	var filename : String? // +0x20
 	var contentType : String? // +0x30
-	let body : Data // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let body : ù	 // +0x40
  }
 
  enum NewsFeed.NewsroomServiceError {
 
 	// Properties
-	case badHeaders : (headers: [AnyHashable : Any])
-	case badResponse : (response: NSURLResponse?, data: Data?, request: URLRequest)
-	case missingCookies : (headers: [AnyHashable : Any])
-	case missingResponseBody : (request: URLRequest)
-	case unableToCreateURLComponents : (url: URL)
-	case unableToCreateURLFromURLComponents : URLComponents
-	case unknown : (Error, request: URLRequest)
-	case uploadFailed : (statusCode: Int, message: String?, request: URLRequest)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case badHeaders :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case badResponse :  first-element-marker 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case missingCookies :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case missingResponseBody : 5Ö	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case unableToCreateURLComponents : ÖÖ	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case unableToCreateURLFromURLComponents : QÖ	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case unknown : —	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case uploadFailed : message
 	case emptyUsername  
 	case emptyPassword  
 	case emptyFolder  
@@ -2686,7 +2842,7 @@
 	// Properties
 	var id : String // +0x0
 	var name : String? // +0x10
-	var role : NewsroomLayoutRole? // +0x20
+	var role : NewsroomLayoutRole // +0x20
 	var metadataJson : String? // +0x28
 	var packageJsonUrl : String? // +0x38
 	var packageJson : String? // +0x48
@@ -2770,9 +2926,9 @@
 	let offlineLabel : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x141ba0  @objc GapOfflineView.initWithFrame: <stripped>
-	0x141cb0  @objc GapOfflineView.initWithCoder: <stripped>
-	0x141df0  @objc GapOfflineView..cxx_destruct <stripped>
+	0x141520  @objc GapOfflineView.initWithFrame: <stripped>
+	0x1415a0  @objc GapOfflineView.initWithCoder: <stripped>
+	0x1415f0  @objc GapOfflineView..cxx_destruct <stripped>
  }
 
  enum NewsFeed.FormatOptionExpression {
@@ -2867,21 +3023,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -2937,7 +3095,7 @@
 	// Properties
 	let identifier : String // +0x0
 	let size : FormatSize // +0x10
-	let adjustments : [FormatAdjustment] // +0x18
+	let adjustments : FormatAdjustment // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -2958,8 +3116,8 @@
  enum NewsFeed.FormatBindingFont {
 
 	// Properties
-	case headline : FormatHeadlineBinding.Font
-	case group : FormatGroupBinding.Font
+	case headline : Font
+	case group : Font
  }
 
  enum NewsFeed.CodingType {
@@ -3017,10 +3175,10 @@
 	let image : UIImage // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x15f740  @objc PremiumBadgeMask.image <stripped>
-	0x15f780  @objc PremiumBadgeMask.size <stripped>
-	0x15f7f0  @objc PremiumBadgeMask.init <stripped>
-	0x15f8a0  @objc PremiumBadgeMask..cxx_destruct <stripped>
+	0x15bf50  @objc PremiumBadgeMask.image <stripped>
+	0x15bf90  @objc PremiumBadgeMask.size <stripped>
+	0x15c050  @objc PremiumBadgeMask.init <stripped>
+	0x15bfe0  @objc PremiumBadgeMask..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3048,21 +3206,16 @@
 
 	// Properties
 	let group : FormatGroup // +0x0
-	let slotDefinitions : [FormatSlotDefinition] // +0x70
+	let slotDefinitions : FormatSlotDefinition // +0x70
 	let usedProperties : FormatCompilerUsedProperties // +0x78
 	let seenSlotIdentifiers : Set<String> // +0x88
- }
-
- struct NewsFeed.FormatCompilerContext {
-
-	// Properties
-	let inventory : FormatPackageInventory // +0x0
  }
 
  enum NewsFeed.FormatURL {
 
 	// Properties
-	case absolute : URL
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case absolute : ßë	
 	case asset : String
 	case binding : FormatURLBinding
  }
@@ -3083,9 +3236,9 @@
 	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider // +0x60 (0x8)
 
 	// Swift methods
-	0x1671a0  class func FeedLayoutContextFactory.__allocating_init(fontBookFactory:colorPaletteProvider:layoutAttributesFactoryProvider:) // init 
-	0x167270  func <stripped> // method 
-	0x1672c0  func <stripped> // method 
+	0x163410  class func FeedLayoutContextFactory.__allocating_init(fontBookFactory:colorPaletteProvider:layoutAttributesFactoryProvider:) // init 
+	0x1634d0  func <stripped> // method 
+	0x163520  func <stripped> // method 
  }
 
  struct NewsFeed.FormatTextNode {
@@ -3093,12 +3246,12 @@
 	// Properties
 	let identifier : String
 	let size : FormatTextSize
-	let adjustments : [FormatAdjustment]
-	let style : FormatTextNodeStyle?
+	let adjustments : FormatAdjustment
+	let style : FormatTextNodeStyle
 	let content : FormatTextNodeContent
 	let zIndex : Int
-	let accessibility : FormatAccessibility?
-	let accessibilityRole : FormatNodeAccessibilityRole?
+	let accessibility : FormatAccessibility
+	let accessibilityRole : FormatNodeAccessibilityRole
  }
 
  enum NewsFeed.CodingKeys {
@@ -3127,21 +3280,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3164,10 +3319,10 @@
 	let identifier : String // +0x0
 	let layoutIdentifier : String // +0x10
 	let frame : CGRect // +0x20
-	let style : FormatViewNodeStyle? // +0x40
+	let style : FormatViewNodeStyle // +0x40
 	let zIndex : Int // +0x118
 	let contextLayoutOptions : FormatContextLayoutOptions // +0x120
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0x140
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x140
  }
 
  enum NewsFeed.CodingKeys {
@@ -3195,21 +3350,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3238,7 +3395,8 @@
 
 	// Properties
 	let name : String // +0x0
-	let size : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let size : ;Ã	 // +0x10
 	let scaling : FormatFontScaling // +0x18
  }
 
@@ -3263,21 +3421,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3297,7 +3457,8 @@
  class NewsFeed.CoverChannelViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CoverChannelViewStylerType {
 
 	// Properties
-	let cornerRadius : CGFloat // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cornerRadius : ;Ã	 // +0x10 (0x8)
 	let fontBook : CoverIssueFontBook // +0x18 (0x30)
 	let colorPalette : CoverIssueColorPalette // +0x48 (0x48)
 	let colorPaletteProvider : ColorPaletteProviding // +0x90 (0x28)
@@ -3310,15 +3471,17 @@
 	// Properties
 	var reuseIdentifier : String? // +0x8 (0x10)
 	let debugButton : DebugButton // +0x18 (0x8)
-	var embedURL : URL? // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var embedURL : cz	 // +0x0 (0x0)
 	var contentFrame : CGRect // +0x0 (0x20)
 	let webContentViewController : SWContainerViewController // +0x0 (0x8)
 	let configurationManager : SWConfigurationManager // +0x0 (0x8)
 	let errorProvider : SWErrorProvider // +0x0 (0x8)
 	let presentationManager : SWPresentationManager // +0x0 (0x8)
-	let interactionProvider : SWInteractionProvider // +0x6d (0x8)
+	let interactionProvider : SWInteractionProvider // +0x6e (0x8)
 	let configurationProvider : WebEmbedConfigurationProviderType // +0x0 (0x28)
-	let onReuse : Action<()> // +0x3 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let onReuse : wü	 // +0x3 (0x8)
 	var stateMachine : NFStateMachine? // +0x0 (0x8)
 	var errorState : NFStateMachineState? // +0x0 (0x8)
 	let activityIndicator : UIActivityIndicatorView // +0x0 (0x8)
@@ -3326,12 +3489,12 @@
 	let tapGestureRecognizer : UITapGestureRecognizer // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x18be60  @objc WebEmbedViewController.initWithCoder: <stripped>
-	0x18c250  @objc WebEmbedViewController.viewDidLoad <stripped>
-	0x18c4e0  @objc WebEmbedViewController.viewDidLayoutSubviews <stripped>
-	0x18cea0  @objc WebEmbedViewController.handleTapWithRecognizer: <stripped>
-	0x18cf90  @objc WebEmbedViewController.initWithNibName:bundle: <stripped>
-	0x18d000  @objc WebEmbedViewController..cxx_destruct <stripped>
+	0x186990  @objc WebEmbedViewController.initWithCoder: <stripped>
+	0x186d60  @objc WebEmbedViewController.viewDidLoad <stripped>
+	0x186f90  @objc WebEmbedViewController.viewDidLayoutSubviews <stripped>
+	0x187900  @objc WebEmbedViewController.handleTapWithRecognizer: <stripped>
+	0x1879f0  @objc WebEmbedViewController.initWithNibName:bundle: <stripped>
+	0x187a50  @objc WebEmbedViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3340,8 +3503,8 @@
 
 	// Properties
 	let color : FormatShineColor // +0x0
-	let blendMode : FormatBlendMode? // +0x31
-	let alphaProcessor : FormatShineAlphaProcessor? // +0x38
+	let blendMode : FormatBlendMode // +0x31
+	let alphaProcessor : FormatShineAlphaProcessor // +0x38
  }
 
  enum NewsFeed.CodingKeys {
@@ -3365,21 +3528,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3400,13 +3565,20 @@
 
 	// Properties
 	let backgroundColor : UIColor
-	let titleColor : DynamicValue<UIColor>
-	let excerptColor : DynamicValue<UIColor>
-	let accessoryColor : DynamicValue<UIColor>
-	let publisherNameColor : DynamicValue<UIColor>
-	let thumbnailPlaceholderColor : DynamicValue<UIColor>
-	let shadowColor : DynamicValue<CGColorRef>
-	let theme : Theme
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let excerptColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherNameColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let thumbnailPlaceholderColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shadowColor : ˝Ä	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let theme : ÔÄ	
  }
 
  enum NewsFeed.Theme {
@@ -3433,21 +3605,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3475,16 +3649,19 @@
 	let downloadProgressBar : UIProgressView // +0x30 (0x8)
 	let cloudIcon : UIImageView // +0x38 (0x8)
 	let debugButton : DebugButton // +0x40 (0x8)
-	var downloadButtonDataProvider : weak DownloadButtonDataProvider? // +0x48 (0x10)
-	var downloadStateDisposable : Disposable? // +0x58 (0x28)
-	var downloadProgressDisposable : Disposable? // +0x80 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var downloadButtonDataProvider : £É	 // +0x48 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var downloadStateDisposable : |	 // +0x58 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var downloadProgressDisposable : |	 // +0x80 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x19ece0  @objc CoverIssueView.initWithFrame: <stripped>
-	0x19ed60  @objc CoverIssueView.initWithCoder: <stripped>
-	0x19ed80  @objc CoverIssueView.accessibilityValue <stripped>
-	0x19f3d0  @objc CoverIssueView.setAccessibilityValue: <stripped>
-	0x19f720  @objc CoverIssueView..cxx_destruct <stripped>
+	0x199160  @objc CoverIssueView.initWithFrame: <stripped>
+	0x1991e0  @objc CoverIssueView.initWithCoder: <stripped>
+	0x199200  @objc CoverIssueView.accessibilityValue <stripped>
+	0x199760  @objc CoverIssueView.setAccessibilityValue: <stripped>
+	0x1999d0  @objc CoverIssueView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.FormatLocalization {
@@ -3493,7 +3670,7 @@
 	let identifier : String // +0x0
 	let name : String? // +0x10
 	let description : String? // +0x20
-	let strings : [FormatLocalizationString] // +0x30
+	let strings : FormatLocalizationString // +0x30
  }
 
  enum NewsFeed.CodingKeys {
@@ -3511,7 +3688,7 @@
 	// Properties
 	let title : String? // +0x0
 	let footer : String? // +0x10
-	let items : [DebugInspectViewItem] // +0x20
+	let items : DebugInspectViewItem // +0x20
  }
 
  struct NewsFeed.MoreActions { }
@@ -3595,7 +3772,8 @@
 
 	// Properties
 	let issue : FCIssue // +0x0
-	let aspectRatio : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let aspectRatio : ;Ã	 // +0x8
 	let assetHandle : FCAssetHandle // +0x10
  }
 
@@ -3603,7 +3781,8 @@
 
 	// Properties
 	let issue : FCIssue // +0x0
-	let aspectRatio : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let aspectRatio : ;Ã	 // +0x8
 	let json : String // +0x10
  }
 
@@ -3617,7 +3796,7 @@
  struct NewsFeed.FormatBorder {
 
 	// Properties
-	let edges : Set<FormatBorderEdge> // +0x0
+	let edges : FormatBorderEdge // +0x0
 	let color : FormatColor // +0x8
 	let width : FormatFloat // +0x10
 	let lineCap : FormatLineCap // +0x18
@@ -3639,25 +3818,25 @@
  enum NewsFeed.Font {
 
 	// Properties
-	case tag : FormatTagBinding.Font
+	case tag : Font
  }
 
  enum NewsFeed.Image {
 
 	// Properties
-	case tag : FormatTagBinding.Image
+	case tag : Image
  }
 
  enum NewsFeed.Text {
 
 	// Properties
-	case tag : FormatTagBinding.Text
+	case tag : Text
  }
 
  enum NewsFeed.Command {
 
 	// Properties
-	case tag : FormatTagBinding.Command
+	case tag : Command
  }
 
  enum NewsFeed.CodingType {
@@ -3706,12 +3885,18 @@
 	case inset : FormatEdgeInsets
 	case anchor : FormatAnchor
 	case offset : FormatPoint
-	case adjustWidth : CGFloat
-	case adjustHeight : CGFloat
-	case minWidth : CGFloat
-	case maxWidth : CGFloat
-	case minHeight : CGFloat
-	case maxHeight : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case adjustWidth : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case adjustHeight : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case minWidth : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case maxWidth : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case minHeight : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case maxHeight : ;Ã	
 	case minAspectRatio : FormatRatio
 	case resizeAnchor : FormatAnchor
 	case resizeConstraining : FormatResizeConstraint
@@ -3723,7 +3908,7 @@
 	case otherBaselineIntegral : FormatTextAdjustmentOtherBaseline
 	case minTextLines : Int
 	case maxTextLines : Int
-	case switch : FormatAdjustment
+	case switch : FormatSwitchListValue
 	case invert  
 	case resize  
 	case noIntegral  
@@ -3762,7 +3947,7 @@
 
 	// Properties
 	let identifier : String // +0x0
-	let cornerRadius : FormatCornerRadius? // +0x10
+	let cornerRadius : FormatCornerRadius // +0x10
 	let class : String // +0x28
 	let selectors : Selector // +0x38
  }
@@ -3771,7 +3956,7 @@
 
 	// Properties
 	let selector : String // +0x0
-	let cornerRadius : FormatCornerRadius? // +0x10
+	let cornerRadius : FormatCornerRadius // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -3795,7 +3980,7 @@
 	// Properties
 	var nodeBindings : FormatNodeBindings // +0x0
 	var bindingContext : GroupLayoutBindingContext // +0x20
-	let slotOptions : [String : [FormatMerge<FormatOption>]] // +0x78
+	let slotOptions : FormatMerge // +0x78
 	let wildcardSlotFallback : Bool // +0x80
  }
 
@@ -3805,13 +3990,13 @@
 	let identifier : String // +0x0
 	let name : String? // +0x10
 	let description : String? // +0x20
-	let children : [FormatNode] // +0x30
-	let styles : [FormatNodeStyle] // +0x38
+	let children : FormatNode // +0x30
+	let styles : FormatNodeStyle // +0x38
 	let selectors : [String] // +0x40
 	let kind : Kind // +0x48
-	let options : [FormatOption] // +0x50
-	let types : [FormatType] // +0x58
-	let accessibilityRole : FormatAccessibilityRole? // +0x60
+	let options : FormatOption // +0x50
+	let types : FormatType // +0x58
+	let accessibilityRole : FormatAccessibilityRole // +0x60
  }
 
  enum NewsFeed.Kind {
@@ -3876,21 +4061,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3951,14 +4138,16 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : HeadlineViewLayout.Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItem<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Uü	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -3983,7 +4172,8 @@
 	let imageNodeRenderer : FormatImageNodeRendererType
 	let buttonNodeRenderer : FormatButtonNodeRendererType
 	let webEmbedNodeRenderer : FormatWebEmbedNodeRendererType
-	let webEmbedViewControllerReuseManager : ObjectReuseManager<WebEmbedViewControllerFactory>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webEmbedViewControllerReuseManager : ÂŒ	
 	let rendererTool : FeedItemRendererTool
 	var traitCollection : UITraitCollection?
 	let behaviorRenderer : FormatBehaviorRendererType
@@ -3994,14 +4184,14 @@
  class NewsFeed.FormatLayoutViewAXElement : UIAccessibilityElement /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var layoutView : weak FormatLayoutView?
+	var layoutView : FormatLayoutView
 
 	// ObjC -> Swift bridged methods
-	0x1dfec0  @objc FormatLayoutViewAXElement.accessibilityFrame <stripped>
-	0x1dff60  @objc FormatLayoutViewAXElement.setAccessibilityFrame: <stripped>
-	0x1dff70  @objc FormatLayoutViewAXElement.initWithAccessibilityContainer: <stripped>
-	0x1dffc0  @objc FormatLayoutViewAXElement.init <stripped>
-	0x1e0040  @objc FormatLayoutViewAXElement..cxx_destruct <stripped>
+	0x1de4a0  @objc FormatLayoutViewAXElement.accessibilityFrame <stripped>
+	0x1de600  @objc FormatLayoutViewAXElement.setAccessibilityFrame: <stripped>
+	0x1de660  @objc FormatLayoutViewAXElement.initWithAccessibilityContainer: <stripped>
+	0x1de6b0  @objc FormatLayoutViewAXElement.init <stripped>
+	0x1de640  @objc FormatLayoutViewAXElement..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -4020,27 +4210,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -4066,7 +4261,7 @@
  struct NewsFeed.FormatSwitchNodeDefault {
 
 	// Properties
-	let children : [FormatNode] // +0x0
+	let children : FormatNode // +0x0
  }
 
  enum NewsFeed.CodingKeys {
@@ -4100,23 +4295,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [OrderedHeadlineViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let headlineLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<OrderedHeadlineViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : im	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -4158,9 +4356,11 @@
 	let inventory : FormatPackageInventory
 	let config : FormatConfig
 	let assetManager : FCAssetManager
-	let layoutOptions : LayoutOptions
-	let columnOptions : ColumnSystem.Options
-	let options : [FormatMerge<FormatOption>]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutOptions : çl	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let columnOptions : Wl	
+	let options : FormatMerge
  }
 
  struct NewsFeed.E12_V1 {
@@ -4177,27 +4377,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -4267,23 +4472,24 @@
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0x204fa0  @objc StubAssetHandle.dataProvider <stripped>
-	0x2050e0  @objc StubAssetHandle.uniqueKey <stripped>
-	0x205290  @objc StubAssetHandle.init <stripped>
-	0x2053a0  @objc StubAssetHandle..cxx_destruct <stripped>
+	0x201b20  @objc StubAssetHandle.dataProvider <stripped>
+	0x201c20  @objc StubAssetHandle.uniqueKey <stripped>
+	0x201dd0  @objc StubAssetHandle.init <stripped>
+	0x201cd0  @objc StubAssetHandle..cxx_destruct <stripped>
  }
 
  class NewsFeed.StubAssetDataProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let data : Data?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let data : ”f	
 	let filePath : String?
 	let isRawFileConsumable : Bool
 
 	// ObjC -> Swift bridged methods
-	0x204e90  @objc StubAssetDataProvider.data <stripped>
-	0x204ef0  @objc StubAssetDataProvider.filePath <stripped>
-	0x204f40  @objc StubAssetDataProvider.isRawFileConsumable <stripped>
+	0x201a20  @objc StubAssetDataProvider.data <stripped>
+	0x201a80  @objc StubAssetDataProvider.filePath <stripped>
+	0x201ad0  @objc StubAssetDataProvider.isRawFileConsumable <stripped>
 
 	// Swift methods
  }
@@ -4291,8 +4497,8 @@
  enum NewsFeed.FormatDimensionSizingValue {
 
 	// Properties
-	case fixed : FormatEquation<FormatFloat>
-	case scaledFixed : FormatEquation<FormatFloat>
+	case fixed : FormatEquation
+	case scaledFixed : FormatEquation
 	case columns : Int
 	case invert : FormatDimensionSizingValue
 	case fill  
@@ -4322,7 +4528,7 @@
 	// Properties
 	let identifier : String
 	let content : FormatTextNodeContent
-	let style : FormatTextNodeStyle?
+	let style : FormatTextNodeStyle
  }
 
  enum NewsFeed.CodingKeys {
@@ -4343,13 +4549,20 @@
  struct NewsFeed.OrderedHeadlineViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let orderNumberFrame : LayoutItem<CGRect> // +0x8
-	let titleLabelFrame : LayoutItem<CGRect> // +0x10
-	let accessoryLabelFrame : LayoutItem<CGRect> // +0x18
-	let publisherLogoImageViewFrame : LayoutItem<CGRect> // +0x20
-	let roundedCornerRadius : LayoutItem<CGFloat> // +0x28
-	let premiumBadgeViewFrame : LayoutItem<CGRect> // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let orderNumberFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleLabelFrame : }¥	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryLabelFrame : }¥	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageViewFrame : }¥	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let roundedCornerRadius : ó£	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let premiumBadgeViewFrame : }¥	 // +0x30
  }
 
  struct NewsFeed.Attributes {
@@ -4359,7 +4572,8 @@
 	let titleLabelFrame : CGRect // +0x20
 	let orderNumberFrame : CGRect // +0x40
 	let accessoryLabelFrame : CGRect // +0x60
-	let roundedCornerRadius : CGFloat // +0x80
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let roundedCornerRadius : ;Ã	 // +0x80
 	let premiumBadgeViewFrame : CGRect // +0x88
 	let publisherLogoImageViewFrame : CGRect // +0xa8
  }
@@ -4370,11 +4584,11 @@
 	let key : GroupLayoutKey
 	let model : OrderedFeedHeadline
 	let styler : OrderedHeadlineViewStylerType
-	let cachedOrderText : CachedText<NSAttributedString>
-	let cachedTitleText : CachedText<NSAttributedString>
-	let cachedPublisherText : CachedText<NSAttributedString>
-	let cachedPublishedDateText : CachedText<NSAttributedString>
-	let cachedAccessibilityLabelText : CachedText<String?>
+	let cachedOrderText : CachedText
+	let cachedTitleText : CachedText
+	let cachedPublisherText : CachedText
+	let cachedPublishedDateText : CachedText
+	let cachedAccessibilityLabelText : CachedText
  }
 
  struct NewsFeed.Options {
@@ -4464,12 +4678,12 @@
  enum NewsFeed.FormatCompilerScopeContext {
 
 	// Properties
-	case decoration : FormatCompilerScopeContext.Decoration
-	case group : FormatCompilerScopeContext.Group
-	case item : FormatCompilerScopeContext.Item
-	case slot : FormatCompilerScopeContext.Slot
-	case style : FormatCompilerScopeContext.Style
-	case supplementary : FormatCompilerScopeContext.Supplementary
+	case decoration : Decoration
+	case group : Group
+	case item : Item
+	case slot : Slot
+	case style : Style
+	case supplementary : Supplementary
  }
 
  enum NewsFeed.Errors {
@@ -4481,40 +4695,40 @@
  struct NewsFeed.Supplementary {
 
 	// Properties
-	let options : [String : FormatCompilerScopedOption] // +0x0
-	let slotDefinition : FormatSlotDefinition? // +0x8
+	let options : FormatCompilerScopedOption // +0x0
+	let slotDefinition : FormatSlotDefinition // +0x8
  }
 
  struct NewsFeed.Style {
 
 	// Properties
-	let options : [String : FormatCompilerScopedOption] // +0x0
+	let options : FormatCompilerScopedOption // +0x0
  }
 
  struct NewsFeed.Slot {
 
 	// Properties
-	let options : [String : FormatCompilerScopedOption] // +0x0
+	let options : FormatCompilerScopedOption // +0x0
 	let slotDefinition : FormatSlotDefinition // +0x8
  }
 
  struct NewsFeed.Item {
 
 	// Properties
-	let options : [String : FormatCompilerScopedOption] // +0x0
+	let options : FormatCompilerScopedOption // +0x0
 	let slotDefinition : FormatSlotDefinition // +0x8
  }
 
  struct NewsFeed.Group {
 
 	// Properties
-	let options : [String : FormatCompilerScopedOption] // +0x0
+	let options : FormatCompilerScopedOption // +0x0
  }
 
  struct NewsFeed.Decoration {
 
 	// Properties
-	let options : [String : FormatCompilerScopedOption] // +0x0
+	let options : FormatCompilerScopedOption // +0x0
  }
 
  struct NewsFeed.FormatSupplementaryNode {
@@ -4523,10 +4737,10 @@
 	let identifier : String // +0x0
 	let supplementaryIdentifier : String // +0x10
 	let size : FormatSize // +0x20
-	let adjustments : [FormatAdjustment] // +0x28
-	let styles : [FormatNodeStyle] // +0x30
+	let adjustments : FormatAdjustment // +0x28
+	let styles : FormatNodeStyle // +0x30
 	let selectors : [String] // +0x38
-	let options : [FormatOption] // +0x40
+	let options : FormatOption // +0x40
  }
 
  enum NewsFeed.CodingKeys {
@@ -4554,21 +4768,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -4594,7 +4810,8 @@
 	// Properties
 	let nativeScreenSize : CGSize // +0x0
 	let boundingSize : CGSize // +0x10
-	let scale : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x20
  }
 
  struct NewsFeed.GroupLayoutBindingContext {
@@ -4602,9 +4819,9 @@
 	// Properties
 	let group : FeedGroupRepresentable // +0x0
 	let frequency : [String : UInt] // +0x28
-	let groupItemBindings : [String : FeedGroupItemType] // +0x30
-	let slots : [String : FeedSlot] // +0x38
-	var itemBindings : [String : [FeedItemType]] // +0x40
+	let groupItemBindings : FeedGroupItemType // +0x30
+	let slots : FeedSlot // +0x38
+	var itemBindings : FeedItemType // +0x40
 	var orderedItemBindings : OrderedItemBinding // +0x48
 	let wildcardSlotBinding : Bool // +0x50
  }
@@ -4612,8 +4829,8 @@
  enum NewsFeed.Errors {
 
 	// Properties
-	case notEnoughItemsMatching : (type: String, traits: FeedItemTraits, required: Int, slotIdentifier: String?)
-	case orderedUnbindNotMatching : (type: String, firstOrderedType: String?, traits: FeedItemTraits)
+	case notEnoughItemsMatching : FeedItemTraits
+	case orderedUnbindNotMatching : FeedItemTraits
 	case peekCountExceededBindingCount : (peekCount: Int, bindingCount: Int, slotIdentifier: String?)
 	case missingSlotBinding : (slotIdentifier: String)
  }
@@ -4628,8 +4845,10 @@
  struct NewsFeed.GapViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let activityIndicatorViewFrame : LayoutItem<CGRect> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let activityIndicatorViewFrame : }¥	 // +0x8
  }
 
  struct NewsFeed.Attributes {
@@ -4663,7 +4882,8 @@
  struct NewsFeed.WebEmbedViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
  }
 
  struct NewsFeed.Attributes {
@@ -4702,7 +4922,8 @@
  enum NewsFeed.Errors {
 
 	// Properties
-	case invalidDateString : (dateString: String, codingPath: [CodingKey])
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case invalidDateString :  empty-list 
  }
 
  enum NewsFeed.Option {
@@ -4725,25 +4946,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4766,8 +4991,8 @@
 
  class NewsFeed.ThumbnailProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x264520  @objc ThumbnailProcessor.process: <stripped>
-	0x2645c0  @objc ThumbnailProcessor.init <stripped>
+	0x25fa00  @objc ThumbnailProcessor.process: <stripped>
+	0x25fa80  @objc ThumbnailProcessor.init <stripped>
  }
 
  class NewsFeed.Localized : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4777,8 +5002,8 @@
  enum NewsFeed.FormatAccessibilityRole {
 
 	// Properties
-	case container : FormatAccessibilityContainer?
-	case containerElement : FormatAccessibilityContainerElement?
+	case container : FormatAccessibilityContainer
+	case containerElement : FormatAccessibilityContainerElement
 	case element  
  }
 
@@ -4873,7 +5098,7 @@
 	let emptyImage : UIImage // +0x28 (0x8)
 	let naImage : UIImage // +0x30 (0x8)
 	let key : DebugGroupLayoutKey // +0x0 (0x0)
-	var sections : [DebugInspectViewSection] // +0x0 (0x8)
+	var sections : DebugInspectViewSection // +0x0 (0x8)
 	var feedItemImages : [String : UIImage] // +0x0 (0x8)
 	var layoutImages : [String : UIImage] // +0x0 (0x8)
 
@@ -4884,11 +5109,11 @@
 
 	// Properties
 	let layoutAttributes : FormatLayoutAttributes // +0x0
-	let stateMaskLayoutAttributes : [FormatButtonNodeStateMask : FormatButtonNodeStateMaskLayoutAttributes] // +0x78
+	let stateMaskLayoutAttributes : FormatButtonNodeStateMask // +0x78
 	let zIndex : Int // +0x80
 	let contextLayoutOptions : FormatContextLayoutOptions // +0x88
-	let behaviors : [FormatNodeBehavior] // +0xa8
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0xb0
+	let behaviors : FormatNodeBehavior // +0xa8
+	let accessibilityRole : FormatNodeAccessibilityRole // +0xb0
  }
 
  enum NewsFeed.CodingKeys {
@@ -4916,25 +5141,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -4960,15 +5189,16 @@
 	// Properties
 	case image : UIImage
 	case assetHandleProvider : FormatAssetHandleProvider
-	case command : FormatImage
-	case remote : URL
+	case command : FormatCommandActionValue
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case remote : ßë	
  }
 
  struct NewsFeed.FormatAssetHandleProvider {
 
 	// Properties
-	let focalFrame : CGRect? // +0x0
-	let block : (_:_:) // +0x28
+	let focalFrame : CGRect // +0x0
+	let block : RenderingMode // +0x28
  }
 
  struct NewsFeed.FormatColorNotExpression {
@@ -4986,22 +5216,38 @@
  struct NewsFeed.FeaturedHeadlineViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let chinFrame : LayoutItem<CGRect> // +0x8
-	let chinRoundedCorners : LayoutItem<UIRectCorner> // +0x10
-	let titleLabelFrame : LayoutItem<CGRect> // +0x18
-	let accessoryLabelFrame : LayoutItem<CGRect> // +0x20
-	let excerptLabelFrame : LayoutItem<CGRect> // +0x28
-	let publisherLogoImageViewFrame : LayoutItem<CGRect> // +0x30
-	let publisherLabelFrame : LayoutItem<CGRect> // +0x38
-	let mediaViewFrame : LayoutItem<CGRect> // +0x40
-	let mediaViewRoundedCorners : LayoutItem<UIRectCorner> // +0x48
-	let mediaViewRoundedCornerRadius : LayoutItem<CGFloat> // +0x50
-	let accessoryDataStyle : LayoutItem<Accessory> // +0x58
-	let numberOfSegmentedColors : LayoutItem<Int> // +0x60
-	let segmentedColorViewFrame : LayoutItem<CGRect> // +0x68
-	let segmentedColorViewDirection : LayoutItem<SegmentedColorViewDirection> // +0x70
-	let segmentedColorViewCorner : LayoutItem<UIRectCorner> // +0x78
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let chinFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let chinRoundedCorners : π£	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleLabelFrame : }¥	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryLabelFrame : }¥	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let excerptLabelFrame : }¥	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageViewFrame : }¥	 // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLabelFrame : }¥	 // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewFrame : }¥	 // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCorners : π£	 // +0x48
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCornerRadius : ó£	 // +0x50
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryDataStyle : î	 // +0x58
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let numberOfSegmentedColors : â£	 // +0x60
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorViewFrame : }¥	 // +0x68
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorViewDirection : £	 // +0x70
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorViewCorner : π£	 // +0x78
  }
 
  struct NewsFeed.Attributes {
@@ -5017,11 +5263,13 @@
 	let accessoryDataStyle : Accessory // +0xc8
 	let numberOfSegmentedColors : Int // +0xd0
 	let segmentedColorViewFrame : CGRect // +0xd8
-	let segmentedColorViewDirection : SegmentedColorViewDirection // +0xf8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorViewDirection : 7c	 // +0xf8
 	let segmentedColorViewCorner : UIRectCorner // +0x100
 	let mediaViewFrame : CGRect // +0x108
 	let mediaViewRoundedCorners : UIRectCorner // +0x128
-	let mediaViewRoundedCornerRadius : CGFloat // +0x130
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCornerRadius : ;Ã	 // +0x130
 	let publisherLogoImageViewFrame : CGRect // +0x138
  }
 
@@ -5031,20 +5279,21 @@
 	let key : GroupLayoutKey
 	let model : FeedHeadline
 	let styler : FeaturedHeadlineViewStylerType
-	let cachedTitleText : CachedText<NSAttributedString>
-	let cachedExcerptText : CachedText<NSAttributedString>?
-	let cachedPublisherText : CachedText<NSAttributedString>
-	let cachedPublishedDateText : CachedText<NSAttributedString>
-	let cachedAccessoryText : CachedText<NSAttributedString>
-	let cachedAccessibilityLabelText : CachedText<String?>
+	let cachedTitleText : CachedText
+	let cachedExcerptText : CachedText
+	let cachedPublisherText : CachedText
+	let cachedPublishedDateText : CachedText
+	let cachedAccessoryText : CachedText
+	let cachedAccessibilityLabelText : CachedText
  }
 
  struct NewsFeed.Options {
 
 	// Properties
 	let traits : Traits
-	let thumbnailAspectRatio : Ratio.Aspect?
-	let accessory : Accessory.Option
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let thumbnailAspectRatio : SZ	
+	let accessory : Option
 	let maxTitleLines : Int
 	let maxExcerptLines : Int
 	let numberOfSegmentedColors : Int
@@ -5105,9 +5354,9 @@
 	let identifier : String // +0x20
 	let itemIdentifier : String? // +0x30
 	let layoutIdentifier : String // +0x40
-	let layoutValues : [FormatLayoutValue] // +0x50
-	let accessibilityValues : [FormatAccessibilityLayoutValue] // +0x58
-	let accessibilityRole : FormatAccessibilityRole? // +0x60
+	let layoutValues : FormatLayoutValue // +0x50
+	let accessibilityValues : FormatAccessibilityLayoutValue // +0x58
+	let accessibilityRole : FormatAccessibilityRole // +0x60
  }
 
  enum NewsFeed.CodingKeys {
@@ -5125,8 +5374,8 @@
  enum NewsFeed.DebugFormatLayoutOrderingModel {
 
 	// Properties
-	case item : (context: FormatItemNodeLayoutContext, layoutAttributes: FormatItemNodeDataLayoutAttributes)
-	case supplementary : (context: FormatLayoutContext, layoutAttributes: FormatDataLayoutAttributes<FormatSupplementary>)
+	case item : FormatItemNodeLayoutContext
+	case supplementary : FormatLayoutContext
  }
 
  struct NewsFeed.C8_V4 {
@@ -5143,25 +5392,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5196,25 +5449,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5260,7 +5517,7 @@
 
 	// Properties
 	let expression : FormatExpression // +0x0
-	let children : [FormatNode] // +0x8
+	let children : FormatNode // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -5273,15 +5530,15 @@
  enum NewsFeed.HMultiLayoutItem {
 
 	// Properties
-	case issue : CoverIssueViewLayout.Attributes
-	case channel : CoverChannelViewLayout.Attributes
+	case issue : Attributes
+	case channel : Attributes
  }
 
  enum NewsFeed.HGroupLayoutContext {
 
 	// Properties
-	case issue : CoverIssueViewLayout.Context
-	case channel : CoverChannelViewLayout.Context
+	case issue : Context
+	case channel : Context
  }
 
  enum NewsFeed.CodedType {
@@ -5318,10 +5575,10 @@
 
  class NewsFeed.LayeredMediaLayerProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x2aaf30  @objc LayeredMediaLayerProcessor.process: <stripped>
+	0x2aa630  @objc LayeredMediaLayerProcessor.process: <stripped>
 
 	// Swift methods
-	0x2aaea0  class func LayeredMediaLayerProcessor.__allocating_init() // init 
+	0x2aa5f0  class func LayeredMediaLayerProcessor.__allocating_init() // init 
  }
 
  enum NewsFeed.FormatMerge {
@@ -5355,16 +5612,26 @@
  struct NewsFeed.IssueViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let titleLabelFrame : LayoutItem<CGRect> // +0x8
-	let excerptLabelFrame : LayoutItem<CGRect> // +0x10
-	let dateLabelFrame : LayoutItem<CGRect> // +0x18
-	let premiumBadgeViewFrame : LayoutItem<CGRect> // +0x20
-	let issueCoverViewLayoutAttributes : LayoutItem<IssueCoverViewLayoutAttributes> // +0x28
-	let issueCoverViewVideoPlayback : LayoutItem<Bool> // +0x30
-	let publisherLogoImageViewFrame : LayoutItem<CGRect> // +0x38
-	let roundedCornerRadius : LayoutItem<CGFloat> // +0x40
-	let hideCard : LayoutItem<Bool> // +0x48
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleLabelFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let excerptLabelFrame : }¥	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dateLabelFrame : }¥	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let premiumBadgeViewFrame : }¥	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let issueCoverViewLayoutAttributes : ;£	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let issueCoverViewVideoPlayback : P	 // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageViewFrame : }¥	 // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let roundedCornerRadius : ó£	 // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let hideCard : P	 // +0x48
  }
 
  struct NewsFeed.Attributes {
@@ -5377,7 +5644,8 @@
 	let premiumBadgeViewFrame : CGRect // +0x80
 	let issueCoverViewLayoutAttributes : IssueCoverViewLayoutAttributes // +0xa0
 	let issueCoverViewVideoPlayback : Bool // +0xd0
-	let roundedCornerRadius : CGFloat // +0xd8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let roundedCornerRadius : ;Ã	 // +0xd8
 	let hideCard : Bool // +0xe0
 	let publisherLogoImageViewFrame : CGRect // +0xe8
  }
@@ -5388,11 +5656,11 @@
 	let key : GroupLayoutKey
 	let model : FeedIssue
 	let styler : IssueViewStylerType
-	let cachedTitleText : CachedText<NSAttributedString>
-	let cachedExcerptText : CachedText<NSAttributedString>
-	let cachedPublisherText : CachedText<NSAttributedString>
-	let cachedPublishedDateText : CachedText<NSAttributedString>
-	let cachedAccessibilityLabelText : CachedText<String?>
+	let cachedTitleText : CachedText
+	let cachedExcerptText : CachedText
+	let cachedPublisherText : CachedText
+	let cachedPublishedDateText : CachedText
+	let cachedAccessibilityLabelText : CachedText
  }
 
  struct NewsFeed.Options {
@@ -5400,7 +5668,8 @@
 	// Properties
 	let traits : Traits
 	let maxDescriptionLines : Int
-	let thumbnailAspectRatio : Ratio.Aspect?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let thumbnailAspectRatio : SZ	
  }
 
  struct NewsFeed.Traits {
@@ -5460,25 +5729,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5502,22 +5775,38 @@
  struct NewsFeed.FeaturedIssueHeadlineViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let chinFrame : LayoutItem<CGRect> // +0x8
-	let chinRoundedCorners : LayoutItem<UIRectCorner> // +0x10
-	let titleLabelFrame : LayoutItem<CGRect> // +0x18
-	let excerptLabelFrame : LayoutItem<CGRect> // +0x20
-	let publisherLogoImageViewFrame : LayoutItem<CGRect> // +0x28
-	let mediaViewFrame : LayoutItem<CGRect> // +0x30
-	let issueCoverViewLayoutAttributes : LayoutItem<IssueCoverViewLayoutAttributes> // +0x38
-	let dateLabelFrame : LayoutItem<CGRect> // +0x40
-	let premiumBadgeViewFrame : LayoutItem<CGRect> // +0x48
-	let mediaViewRoundedCorners : LayoutItem<UIRectCorner> // +0x50
-	let mediaViewRoundedCornerRadius : LayoutItem<CGFloat> // +0x58
-	let numberOfSegmentedColors : LayoutItem<Int> // +0x60
-	let segmentedColorViewFrame : LayoutItem<CGRect> // +0x68
-	let segmentedColorViewDirection : LayoutItem<SegmentedColorViewDirection> // +0x70
-	let segmentedColorViewCorner : LayoutItem<UIRectCorner> // +0x78
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let chinFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let chinRoundedCorners : π£	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleLabelFrame : }¥	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let excerptLabelFrame : }¥	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageViewFrame : }¥	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewFrame : }¥	 // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let issueCoverViewLayoutAttributes : ;£	 // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dateLabelFrame : }¥	 // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let premiumBadgeViewFrame : }¥	 // +0x48
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCorners : π£	 // +0x50
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCornerRadius : ó£	 // +0x58
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let numberOfSegmentedColors : â£	 // +0x60
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorViewFrame : }¥	 // +0x68
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorViewDirection : £	 // +0x70
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorViewCorner : π£	 // +0x78
  }
 
  struct NewsFeed.Attributes {
@@ -5533,11 +5822,13 @@
 	let issueCoverViewLayoutAttributes : IssueCoverViewLayoutAttributes // +0xc8
 	let numberOfSegmentedColors : Int // +0xf8
 	let segmentedColorViewFrame : CGRect // +0x100
-	let segmentedColorViewDirection : SegmentedColorViewDirection // +0x120
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorViewDirection : 7c	 // +0x120
 	let segmentedColorViewCorner : UIRectCorner // +0x128
 	let mediaViewFrame : CGRect // +0x130
 	let mediaViewRoundedCorners : UIRectCorner // +0x150
-	let mediaViewRoundedCornerRadius : CGFloat // +0x158
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCornerRadius : ;Ã	 // +0x158
 	let publisherLogoImageViewFrame : CGRect // +0x160
  }
 
@@ -5547,18 +5838,19 @@
 	let key : GroupLayoutKey
 	let model : FeedIssueHeadline
 	let styler : FeaturedIssueHeadlineViewStylerType
-	let cachedTitleText : CachedText<NSAttributedString>
-	let cachedExcerptText : CachedText<NSAttributedString>?
-	let cachedPublisherText : CachedText<NSAttributedString>
-	let cachedPublishedDateText : CachedText<NSAttributedString>
-	let cachedAccessibilityLabelText : CachedText<String?>
+	let cachedTitleText : CachedText
+	let cachedExcerptText : CachedText
+	let cachedPublisherText : CachedText
+	let cachedPublishedDateText : CachedText
+	let cachedAccessibilityLabelText : CachedText
  }
 
  struct NewsFeed.Options {
 
 	// Properties
 	let traits : Traits
-	let thumbnailAspectRatio : Ratio.Aspect
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let thumbnailAspectRatio : 3P	
 	let numberOfSegmentedColors : Int
 	let maxExcerptLines : Int
  }
@@ -5636,21 +5928,21 @@
 	// Properties
 	let identifier : String // +0x0
 	let class : String // +0x10
-	let background : FormatBackground? // +0x20
-	let cornerRadius : FormatCornerRadius? // +0x58
-	let shadow : FormatShadow? // +0x70
+	let background : FormatBackground // +0x20
+	let cornerRadius : FormatCornerRadius // +0x58
+	let shadow : FormatShadow // +0x70
 	let selectors : Selector // +0xc8
-	let borders : [FormatBorder]? // +0xd0
+	let borders : FormatBorder // +0xd0
  }
 
  struct NewsFeed.Selector {
 
 	// Properties
 	let selector : String // +0x0
-	let background : FormatBackground? // +0x10
-	let borders : [FormatBorder]? // +0x48
-	let cornerRadius : FormatCornerRadius? // +0x50
-	let shadow : FormatShadow? // +0x68
+	let background : FormatBackground // +0x10
+	let borders : FormatBorder // +0x48
+	let cornerRadius : FormatCornerRadius // +0x50
+	let shadow : FormatShadow // +0x68
  }
 
  enum NewsFeed.CodingKeys {
@@ -5689,25 +5981,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5732,16 +6028,17 @@
 
 	// Properties
 	case key : (String, value: String)
-	case requirement : (String, match: DebugInspectViewItem.RequirementMatch)
+	case requirement : RequirementMatch
 	case feedItem : FeedItemType
-	case layoutFactory : (GroupLayoutFactoryType, match: DebugInspectViewItem.GroupLayoutFactoryMatch)
+	case layoutFactory : GroupLayoutFactoryType
  }
 
  enum NewsFeed.GroupLayoutFactoryMatch {
 
 	// Properties
 	case valid : (description: String)
-	case invalid : (error: Error)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case invalid : î	
 	case unsupported : (description: String)
  }
 
@@ -5766,25 +6063,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5808,9 +6109,9 @@
  struct NewsFeed.FormatPreviewParameters {
 
 	// Properties
-	let backgroundColor : FormatColor? // +0x0
-	let edgeInsets : FormatInsets? // +0x8
-	let cornerRadius : FormatCornerRadius? // +0x30
+	let backgroundColor : FormatColor // +0x0
+	let edgeInsets : FormatInsets // +0x8
+	let cornerRadius : FormatCornerRadius // +0x30
  }
 
  enum NewsFeed.CodingKeys {
@@ -5835,25 +6136,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5873,13 +6178,15 @@
 	case headlineLayoutAttributes  
 	case spacerFrame  
  }
+
+ struct NewsFeed.GroupLayout { }
 
  class NewsFeed.FeaturedHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedHeadlineViewStylerType {
 
 	// Properties
 	let fontBook : HeadlineFontBook // +0x10 (0x28)
 	let colorPalette : FeaturedHeadlineColorPalette // +0x0 (0x0)
-	let style : FeedHeadline.FeaturedStyle // +0x0 (0x8)
+	let style : FeaturedStyle // +0x0 (0x8)
 	let colorPaletteProvider : ColorPaletteProviding // +0x0 (0x28)
 
 	// Swift methods
@@ -5898,21 +6205,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -5943,25 +6252,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -5994,7 +6307,8 @@
 
 	// Properties
 	let newsroomService : NewsroomService // +0x10 (0x8)
-	var $__lazy_storage_$_urlSessionPool : URLSessionPool? // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_urlSessionPool : ∑ç	 // +0x18 (0x8)
 
 	// Swift methods
  }
@@ -6002,11 +6316,13 @@
  enum NewsFeed.DebugFormatUploadServiceError {
 
 	// Properties
-	case unknownError : (Error, filename: String)
-	case codingError : (Error, filename: String)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case unknownError : ≈ç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case codingError : ≈ç	
 	case badURLResponse : (NSURLResponse?, filename: String)
 	case failedUpload : (Int, filename: String)
-	case missingIDForPackage : (filename: String, environment: DebugFormatBackendEnvironment)
+	case missingIDForPackage : DebugFormatBackendEnvironment
  }
 
  class NewsFeed.HeadlineViewRendererPipelineProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6014,7 +6330,8 @@
 	// Properties
 	let thumbnailImageCache : TSImageCacheType // +0x10 (0x8)
 	let publisherLogoImageCache : TSImageCacheType // +0x18 (0x8)
-	let rendererEnvironment : RendererEnvironmentType // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rendererEnvironment : Õœ	 // +0x20 (0x28)
 
 	// Swift methods
  }
@@ -6044,21 +6361,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -6102,21 +6421,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedThumbnailHeadlines : [FeedHeadline]
+	let feedThumbnailHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -6136,8 +6457,8 @@
  struct NewsFeed.FormatTranslate {
 
 	// Properties
-	let x : FormatRange<A>
-	let y : FormatRange<A>
+	let x : FormatRange
+	let y : FormatRange
  }
 
  enum NewsFeed.CodingKeys {
@@ -6160,21 +6481,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -6203,7 +6526,7 @@
  struct NewsFeed.TextLines {
 
 	// Properties
-	let value : FormatEquation<FormatFloat> // +0x0
+	let value : FormatEquation // +0x0
 	let operator : FormatOperator // +0x18
  }
 
@@ -6260,8 +6583,8 @@
 
  class NewsFeed.PremiumBadgeMaskGenerator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x31d7b0  @objc PremiumBadgeMaskGenerator.init <stripped>
-	0x31d850  @objc PremiumBadgeMaskGenerator..cxx_destruct <stripped>
+	0x3226f0  @objc PremiumBadgeMaskGenerator.init <stripped>
+	0x322690  @objc PremiumBadgeMaskGenerator..cxx_destruct <stripped>
  }
 
  enum NewsFeed.FeedItem {
@@ -6315,7 +6638,7 @@
  struct NewsFeed.FormatAccessibilityContainerElement {
 
 	// Properties
-	let container : FormatAccessibilityContainer? // +0x0
+	let container : FormatAccessibilityContainer // +0x0
 	let position : Int? // +0x8
  }
 
@@ -6330,7 +6653,7 @@
 
 	// Properties
 	let selector : String // +0x0
-	let listSelectors : [FormatStringListSelector] // +0x10
+	let listSelectors : FormatStringListSelector // +0x10
  }
 
  struct NewsFeed.FormatStringListSelector {
@@ -6353,21 +6676,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedIssues : [FeedIssue]
+	let feedIssues : FeedIssue
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let coverIssueLayoutAttributes : [CoverIssueViewLayout.Attributes] // +0x20
+	let coverIssueLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let coverIssueLayoutAttributes : LayoutItemList<CoverIssueViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let coverIssueLayoutAttributes : °≠	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -6417,21 +6742,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -6453,7 +6780,7 @@
 	// Properties
 	var context : FormatCompilerScopeContext // +0x0
 	let throws : Bool // +0x49
-	var itemSet : FormatSlotDefinition.ItemSet? // +0x50
+	var itemSet : ItemSet // +0x50
 	var usedProperties : FormatCompilerUsedProperties // +0x68
  }
 
@@ -6488,23 +6815,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedIssues : [FeedIssue]
+	let feedIssues : FeedIssue
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let coverIssueLayoutAttributes : [CoverIssueViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let coverIssueLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let coverIssueLayoutAttributes : LayoutItemList<CoverIssueViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let coverIssueLayoutAttributes : °≠	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -6555,9 +6885,9 @@
 
 	// Properties
 	let identifier : String // +0x0
-	let kinds : Set<FormatItemKind> // +0x10
+	let kinds : FormatItemKind // +0x10
 	let count : Int // +0x18
-	let traits : [FormatItemTrait] // +0x20
+	let traits : FormatItemTrait // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -6572,18 +6902,21 @@
  struct NewsFeed.FormatShadow {
 
 	// Properties
-	let radius : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let radius : ;Ã	 // +0x0
 	let opacity : Float // +0x8
 	let offset : Offset // +0x10
 	let color : FormatColor // +0x20
-	let motion : FormatMotion? // +0x28
+	let motion : FormatMotion // +0x28
  }
 
  struct NewsFeed.Offset {
 
 	// Properties
-	let height : CGFloat // +0x0
-	let width : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let height : ;Ã	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let width : ;Ã	 // +0x8
  }
 
  enum NewsFeed.OffsetKeys {
@@ -6605,8 +6938,8 @@
 
  class NewsFeed.StubImageDownloader : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x343330  @objc StubImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
-	0x3433c0  @objc StubImageDownloader.init <stripped>
+	0x34ae10  @objc StubImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
+	0x34ae50  @objc StubImageDownloader.init <stripped>
  }
 
  enum NewsFeed.FormatCodingKeys {
@@ -6624,20 +6957,21 @@
 	let name : String?
 	let description : String?
 	let role : FormatPackageRole
-	let packages : FormatPackage
-	let groups : FormatFileReferenceCollection<FormatGroup>
-	let items : FormatFileReferenceCollection<FormatItem>
-	let styles : FormatFileReferenceCollection<FormatStyle>
-	let snippets : FormatFileReferenceCollection<FormatSnippet>
-	let supplementaries : FormatFileReferenceCollection<FormatSupplementary>
-	let types : FormatFileReferenceCollection<FormatType>
-	let decorations : FormatFileReferenceCollection<FormatDecoration>
-	let slots : [FormatSlotDefinition]
-	let properties : [FormatPropertyDefinition]
-	let options : [FormatOption]
-	let localizations : FormatFileReferenceCollection<FormatLocalization>
+	let packages : FormatFileReferenceCollection
+	let groups : FormatFileReferenceCollection
+	let items : FormatFileReferenceCollection
+	let styles : FormatFileReferenceCollection
+	let snippets : FormatFileReferenceCollection
+	let supplementaries : FormatFileReferenceCollection
+	let types : FormatFileReferenceCollection
+	let decorations : FormatFileReferenceCollection
+	let slots : FormatSlotDefinition
+	let properties : FormatPropertyDefinition
+	let options : FormatOption
+	let localizations : FormatFileReferenceCollection
 	let compilerOptions : FormatCompilerOptions
-	let formatVersion : Version
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let formatVersion : È;	
  }
 
  enum NewsFeed.CodingKeys {
@@ -6680,8 +7014,9 @@
 	// Properties
 	let fontBook : IssueFontBook // +0x10 (0x20)
 	let colorPalette : IssueColorPalette // +0x0 (0x0)
-	let scaleFactor : CGFloat // +0x0 (0x8)
-	let style : FeedIssue.Style // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scaleFactor : ;Ã	 // +0x0 (0x8)
+	let style : Style // +0x0 (0x8)
 	let colorPaletteProvider : ColorPaletteProviding // +0x0 (0x28)
 
 	// Swift methods
@@ -6691,17 +7026,17 @@
 
 	// Properties
 	case separator : CGRect
-	case supplementaryText : (FeaturedIssueSupplementaryLayout.Context, FeaturedIssueSupplementaryLayout.Attributes)
+	case supplementaryText : Context
 	case spacer : CGRect
-	case formatLayoutView : (FormatLayoutContext, FormatDataLayoutAttributes<FormatSupplementary>)
-	case internalErrorView : (InternalErrorViewLayout.Context, InternalErrorViewLayout.Attributes)
+	case formatLayoutView : FormatLayoutContext
+	case internalErrorView : Context
  }
 
  enum NewsFeed.FormatCommandBinding {
 
 	// Properties
-	case group : FormatGroupBinding.Command
-	case headline : FormatHeadlineBinding.Command
+	case group : Command
+	case headline : Command
  }
 
  enum NewsFeed.CodingType {
@@ -6714,20 +7049,21 @@
  class NewsFeed.IssueCoverViewButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let onTap : Action<()> // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let onTap : wü	 // +0x8 (0x8)
 	let coverView : IssueCoverView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3590d0  @objc IssueCoverViewButton.isHighlighted <stripped>
-	0x3591b0  @objc IssueCoverViewButton.setHighlighted: <stripped>
-	0x359520  @objc IssueCoverViewButton.frame <stripped>
-	0x3595f0  @objc IssueCoverViewButton.setFrame: <stripped>
-	0x359df0  @objc IssueCoverViewButton.initWithCoder: <stripped>
-	0x359f30  @objc IssueCoverViewButton.initWithFrame: <stripped>
-	0x359fb0  @objc IssueCoverViewButton..cxx_destruct <stripped>
+	0x35cca0  @objc IssueCoverViewButton.isHighlighted <stripped>
+	0x35cd00  @objc IssueCoverViewButton.setHighlighted: <stripped>
+	0x35d250  @objc IssueCoverViewButton.frame <stripped>
+	0x35d300  @objc IssueCoverViewButton.setFrame: <stripped>
+	0x35d840  @objc IssueCoverViewButton.initWithCoder: <stripped>
+	0x35da00  @objc IssueCoverViewButton.initWithFrame: <stripped>
+	0x35d920  @objc IssueCoverViewButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0x359be0  class func IssueCoverViewButton.__allocating_init(coverView:) // init 
+	0x35d7d0  class func IssueCoverViewButton.__allocating_init(coverView:) // init 
  }
 
  enum NewsFeed.FormatColorExpression {
@@ -6752,7 +7088,7 @@
 
 	// Properties
 	let groupLayoutPriority : GroupLayoutPriority // +0x0
-	let layoutOptionRequirements : [FeedLayoutOptionRequirement] // +0x8
+	let layoutOptionRequirements : FeedLayoutOptionRequirement // +0x8
 	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x10
  }
 
@@ -6763,25 +7099,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -6829,22 +7169,24 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedThumbnailHeadlines : [FeedHeadline]
-	let feedHeadlines : [FeedHeadline]
+	let feedThumbnailHeadlines : FeedHeadline
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -6864,10 +7206,14 @@
  struct NewsFeed.FormatCommandAction {
 
 	// Properties
-	let executeBlock : (_:_:) // +0x0
-	let evaluateWithObserverBlock : (_:_:) // +0x10
-	let addChangeObserverBlock : (_:_:) // +0x20
-	let evaluateBlock : (_:_:) // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let executeBlock :  empty-list  // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let evaluateWithObserverBlock : ·5	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let addChangeObserverBlock : ¡5	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let evaluateBlock : Bool // +0x30
 	let descriptionBlock : () // +0x40
  }
 
@@ -6884,21 +7230,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -6946,13 +7294,14 @@
 
 	// Properties
 	let contentView : UIScrollView // +0x8 (0x8)
-	let columnDebugView : ColumnDebugView // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let columnDebugView : ı/	 // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x37ae40  @objc DebugGroupLayoutView.initWithCoder: <stripped>
-	0x37b140  @objc DebugGroupLayoutView.layoutSubviews <stripped>
-	0x37b170  @objc DebugGroupLayoutView.initWithFrame: <stripped>
-	0x37b1f0  @objc DebugGroupLayoutView..cxx_destruct <stripped>
+	0x37d580  @objc DebugGroupLayoutView.initWithCoder: <stripped>
+	0x37d780  @objc DebugGroupLayoutView.layoutSubviews <stripped>
+	0x37d820  @objc DebugGroupLayoutView.initWithFrame: <stripped>
+	0x37d7e0  @objc DebugGroupLayoutView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -6964,7 +7313,7 @@
 	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider // +0x18 (0x8)
 
 	// Swift methods
-	0x37b7c0  class func FeedLayoutContext.__allocating_init(stylerFactory:layoutAttributesFactoryProvider:) // init 
+	0x37df60  class func FeedLayoutContext.__allocating_init(stylerFactory:layoutAttributesFactoryProvider:) // init 
  }
 
  struct NewsFeed.FormatItemCompilerScope {
@@ -6988,25 +7337,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7051,18 +7404,18 @@
 
 	// Properties
 	case scale : Double
-	case scaleRange : FormatRange<Double>
-	case scaleTranslate : FormatTranslate<Double>
-	case translate : FormatTranslate<Double>
-	case translateRange : FormatRange<Double>
-	case translateWithScale : (translate: FormatTranslate<Double>, scale: Double)
+	case scaleRange : FormatRange
+	case scaleTranslate : FormatTranslate
+	case translate : FormatTranslate
+	case translateRange : FormatRange
+	case translateWithScale : FormatTranslate
  }
 
  struct NewsFeed.TranslateWithScale {
 
 	// Properties
 	let scale : Double // +0x0
-	let translate : FormatTranslate<Double> // +0x8
+	let translate : FormatTranslate // +0x8
  }
 
  enum NewsFeed.CodingType {
@@ -7103,21 +7456,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7148,22 +7503,22 @@
 
 	// Properties
 	let font : FormatFont
-	let scale : FormatSymbolScale?
+	let scale : FormatSymbolScale
  }
 
  struct NewsFeed.TextStyle {
 
 	// Properties
 	let style : FormatFontScalingStyle // +0x0
-	let scale : FormatSymbolScale? // +0x1
+	let scale : FormatSymbolScale // +0x1
  }
 
  struct NewsFeed.Size {
 
 	// Properties
 	let size : FormatFloat // +0x0
-	let weight : FormatSymbolWeight? // +0x8
-	let scale : FormatSymbolScale? // +0x9
+	let weight : FormatSymbolWeight // +0x8
+	let scale : FormatSymbolScale // +0x9
  }
 
  struct NewsFeed.Weight {
@@ -7230,7 +7585,7 @@
 	let layoutDirection : FeedLayoutDirection // +0x18
 	let title : String // +0x28
 	let description : String // +0x38
-	let kind : FeedItem.Kind // +0x48
+	let kind : Kind // +0x48
  }
 
  struct NewsFeed.F8_V2 {
@@ -7246,23 +7601,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [OrderedHeadlineViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let headlineLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<OrderedHeadlineViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : im	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -7294,21 +7652,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7338,16 +7698,17 @@
 	// Properties
 	let traits : FeedItemTraits
 	let layoutDirection : FeedLayoutDirection
-	let kind : FeedItem.Kind
+	let kind : Kind
 	var identifier : String
-	let URL : URL
-	let headline : FeedHeadline?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let URL : ßë	
+	let headline : FeedHeadline
  }
 
  struct NewsFeed.FormatFrameExpressionLogicTextLines {
 
 	// Properties
-	let value : FormatEquation<FormatFloat>
+	let value : FormatEquation
 	let operator : FormatOperator
 	let style : FormatTextNodeStyle
 	let integral : Bool
@@ -7379,8 +7740,8 @@
  struct NewsFeed.FormatSnippetCollection {
 
 	// Properties
-	let snippets : [FormatObject<FormatSnippet>] // +0x0
-	let snippetsByIdentifier : [String : FormatObject<FormatSnippet>] // +0x8
+	let snippets : FormatObject // +0x0
+	let snippetsByIdentifier : FormatObject // +0x8
  }
 
  enum NewsFeed.FormatPropertyDefinition {
@@ -7414,7 +7775,7 @@
 	let description : String // +0x20
 	let required : Bool // +0x30
 	let default : String? // +0x38
-	let cases : [FormatTypeDefinition.Case] // +0x48
+	let cases : Case // +0x48
  }
 
  enum NewsFeed.CodingKeys {
@@ -7444,7 +7805,7 @@
 	let layerRenderableProvider : LayeredMediaLayerRenderableProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x3b8bd0  class func LayeredMediaViewProvider.__allocating_init(layerRenderableProvider:) // init 
+	0x3b8fc0  class func LayeredMediaViewProvider.__allocating_init(layerRenderableProvider:) // init 
  }
 
  enum NewsFeed.FormatSystemColor {
@@ -7502,25 +7863,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7552,16 +7917,19 @@
  enum NewsFeed.FeedGroupDecoration {
 
 	// Properties
-	case color : ColorSectionDecorationItem
-	case gradient : GradientSectionDecorationItem
-	case pattern : PatternSectionDecorationItem
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case color : ß-	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case gradient : ·.	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case pattern : õ.	
  }
 
  struct NewsFeed.FormatDataAccessibilityValue {
 
 	// Properties
 	let layoutValue : FormatAccessibilityLayoutValue // +0x0
-	let data : FormatAccessibilityData? // +0x18
+	let data : FormatAccessibilityData // +0x18
  }
 
  struct NewsFeed.A12_V10 {
@@ -7584,14 +7952,16 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : HeadlineViewLayout.Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItem<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Uü	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7639,7 +8009,7 @@
  enum NewsFeed.FormatWebEmbedNodeBinding {
 
 	// Properties
-	case webEmbed : FormatWebEmbedBinding.URL
+	case webEmbed : URL
  }
 
  enum NewsFeed.CodingType {
@@ -7651,7 +8021,8 @@
  struct NewsFeed.ImageRequestOptions {
 
 	// Properties
-	let scale : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x0
 	let traitCollection : UITraitCollection? // +0x8
  }
 
@@ -7673,20 +8044,22 @@
  struct NewsFeed.Image {
 
 	// Properties
-	let variants : [LayeredMediaImageVariant] // +0x0
+	let variants : LayeredMediaImageVariant // +0x0
 	let conditions : LayeredMediaConditions // +0x8
 	let effects : LayeredMediaEffects // +0x48
-	let safeArea : CGFloat? // +0x68
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let safeArea : •´	 // +0x68
  }
 
  struct NewsFeed.Video {
 
 	// Properties
-	let videoVariants : [LayeredMediaVideoVariant] // +0x0
-	let stillImageVariants : [LayeredMediaImageVariant] // +0x8
+	let videoVariants : LayeredMediaVideoVariant // +0x0
+	let stillImageVariants : LayeredMediaImageVariant // +0x8
 	let conditions : LayeredMediaConditions // +0x10
 	let effects : LayeredMediaEffects // +0x50
-	let safeArea : CGFloat? // +0x70
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let safeArea : •´	 // +0x70
  }
 
  class NewsFeed.InternalErrorViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, InternalErrorViewRendererType {
@@ -7700,19 +8073,22 @@
  class NewsFeed.ScalingFontBook : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FontBookProviding {
 
 	// Properties
-	let layoutOptions : LayoutOptions // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutOptions : çl	 // +0x0 (0x0)
 	var enabled : Bool? // +0x0 (0x1)
-	var maxScale : CGFloat? // +0x0 (0x9)
-	var breakpoint : CGFloat? // +0x0 (0x9)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var maxScale : •´	 // +0x0 (0x9)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var breakpoint : •´	 // +0x0 (0x9)
 
 	// Swift methods
-	0x3d18f0  func <stripped> // method 
-	0x3d1f20  func <stripped> // method 
-	0x3d2730  func <stripped> // method 
-	0x3d2870  func <stripped> // method 
-	0x3d29b0  func <stripped> // method 
-	0x3d2a30  func <stripped> // method 
-	0x3d32d0  func <stripped> // method 
+	0x3d2040  func <stripped> // method 
+	0x3d25a0  func <stripped> // method 
+	0x3d2c90  func <stripped> // method 
+	0x3d2d90  func <stripped> // method 
+	0x3d2e90  func <stripped> // method 
+	0x3d2f10  func <stripped> // method 
+	0x3d3670  func <stripped> // method 
  }
 
  class NewsFeed.FeatureAvailability : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeatureAvailabilityType {
@@ -7722,33 +8098,35 @@
  class NewsFeed.DebugFormatGroupViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var columnOptions : ColumnSystem.Options // +0x5 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var columnOptions : Wl	 // +0x5 (0x0)
 	var compilerResult : DebugFormatCompilerResult // +0x13 (0x10)
-	var result : Result<FormatFile>? // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var result : ˘$	 // +0x0 (0x0)
 	var layout : FormatPackageInventory // +0x65745f5f (0x108)
 	let tableView : UITableView // +0x0 (0x8)
-	var sections : [DebugFormatGroupSection] // +0x0 (0x8)
+	var sections : DebugFormatGroupSection // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3d45c0  @objc DebugFormatGroupViewController.initWithCoder: <stripped>
-	0x3d48a0  @objc DebugFormatGroupViewController.viewDidLoad <stripped>
-	0x3d48d0  @objc DebugFormatGroupViewController.viewWillLayoutSubviews <stripped>
-	0x3d49d0  @objc DebugFormatGroupViewController.initWithNibName:bundle: <stripped>
-	0x3d4a40  @objc DebugFormatGroupViewController..cxx_destruct <stripped>
+	0x3d59d0  @objc DebugFormatGroupViewController.initWithCoder: <stripped>
+	0x3d5c90  @objc DebugFormatGroupViewController.viewDidLoad <stripped>
+	0x3d5cc0  @objc DebugFormatGroupViewController.viewWillLayoutSubviews <stripped>
+	0x3d6130  @objc DebugFormatGroupViewController.initWithNibName:bundle: <stripped>
+	0x3d5dd0  @objc DebugFormatGroupViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsFeed.DebugFormatSubtitleTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x3d6190  @objc DebugFormatSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x3d61c0  @objc DebugFormatSubtitleTableViewCell.initWithCoder: <stripped>
+	0x3d7b40  @objc DebugFormatSubtitleTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x3d7b50  @objc DebugFormatSubtitleTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.DebugFormatValue1TableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x3d6260  @objc DebugFormatValue1TableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x3d6340  @objc DebugFormatValue1TableViewCell.initWithCoder: <stripped>
+	0x3d7bd0  @objc DebugFormatValue1TableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x3d7c80  @objc DebugFormatValue1TableViewCell.initWithCoder: <stripped>
  }
 
  struct NewsFeed.GapOffline {
@@ -7791,15 +8169,16 @@
 	let alternate : FormatArticle
 
 	// Swift methods
-	0x3e18b0  class func FormatArticle.__allocating_init(from:) // init 
-	0x3e2570  class func FormatArticle.__allocating_init(identifier:overrides:alternate:) // init 
+	0x3e28d0  class func FormatArticle.__allocating_init(from:) // init 
+	0x3e3280  class func FormatArticle.__allocating_init(identifier:overrides:alternate:) // init 
  }
 
  struct NewsFeed.Overrides {
 
 	// Properties
 	let title : String?
-	let displayDate : Date?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let displayDate : ª	
 	let storyType : StoryType
 	let shortExcerpt : String?
  }
@@ -7818,17 +8197,18 @@
 
 	// Properties
 	let title : String?
-	let displayDate : Date?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let displayDate : ª	
 	let storyType : String?
 	let shortExcerpt : String?
 
 	// ObjC -> Swift bridged methods
-	0x3e3800  @objc HeadlineMetadata.title <stripped>
-	0x3e3820  @objc HeadlineMetadata.displayDate <stripped>
-	0x3e38b0  @objc HeadlineMetadata.storyType <stripped>
-	0x3e38d0  @objc HeadlineMetadata.shortExcerpt <stripped>
-	0x3e3950  @objc HeadlineMetadata.init <stripped>
-	0x3e39c0  @objc HeadlineMetadata..cxx_destruct <stripped>
+	0x3e4260  @objc HeadlineMetadata.title <stripped>
+	0x3e4280  @objc HeadlineMetadata.displayDate <stripped>
+	0x3e4310  @objc HeadlineMetadata.storyType <stripped>
+	0x3e4330  @objc HeadlineMetadata.shortExcerpt <stripped>
+	0x3e4440  @objc HeadlineMetadata.init <stripped>
+	0x3e43e0  @objc HeadlineMetadata..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7886,21 +8266,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -7931,25 +8313,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -7982,7 +8368,8 @@
 	// Properties
 	let component : FormatColorComponent // +0x0
 	let operator : FormatOperator // +0x1
-	let value : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let value : ;Ã	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -8007,25 +8394,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8060,25 +8451,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
 	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8104,14 +8499,16 @@
 	// Properties
 	let titleLabel : UILabel // +0x8 (0x8)
 	var borderColor : UIColor? // +0x10 (0x8)
-	let onTap : Action<()> // +0x18 (0x8)
-	var toggleState : ToggleState // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let onTap : wü	 // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var toggleState : W 	 // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x408250  @objc CoverViewFollowSwitch.initWithFrame: <stripped>
-	0x408280  @objc CoverViewFollowSwitch.initWithCoder: <stripped>
-	0x408620  @objc CoverViewFollowSwitch.traitCollectionDidChange: <stripped>
-	0x4086e0  @objc CoverViewFollowSwitch..cxx_destruct <stripped>
+	0x40ac00  @objc CoverViewFollowSwitch.initWithFrame: <stripped>
+	0x40ac30  @objc CoverViewFollowSwitch.initWithCoder: <stripped>
+	0x40af20  @objc CoverViewFollowSwitch.traitCollectionDidChange: <stripped>
+	0x40afa0  @objc CoverViewFollowSwitch..cxx_destruct <stripped>
  }
 
  struct NewsFeed.FormatItemNodeStyle {
@@ -8119,8 +8516,8 @@
 	// Properties
 	let identifier : String // +0x0
 	let class : String // +0x10
-	let previewParameters : FormatPreviewParameters? // +0x20
-	let cellSelection : FormatCellSelection? // +0x68
+	let previewParameters : FormatPreviewParameters // +0x20
+	let cellSelection : FormatCellSelection // +0x68
 	let selectors : Selector // +0xa8
  }
 
@@ -8128,8 +8525,8 @@
 
 	// Properties
 	let selector : String // +0x0
-	let previewParameters : FormatPreviewParameters? // +0x10
-	let cellSelection : FormatCellSelection? // +0x58
+	let previewParameters : FormatPreviewParameters // +0x10
+	let cellSelection : FormatCellSelection // +0x58
  }
 
  enum NewsFeed.CodingKeys {
@@ -8164,25 +8561,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8216,22 +8617,24 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedThumbnailHeadlines : [FeedHeadline]
-	let feedHeadlines : [FeedHeadline]
+	let feedThumbnailHeadlines : FeedHeadline
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -8265,13 +8668,13 @@
 	let identifier : String // +0x0
 	let feedIssue : FeedIssue // +0x10
 	let feedHeadline : FeedHeadline // +0xb0
-	let kind : FeedItem.Kind // +0xf9
+	let kind : Kind // +0xf9
  }
 
  struct NewsFeed.E18_V6 {
 
 	// Properties
-	let layoutOptionRequirements : [FeedLayoutOptionRequirement] // +0x0
+	let layoutOptionRequirements : FeedLayoutOptionRequirement // +0x0
 	let groupLayoutPriority : GroupLayoutPriority // +0x8
 	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x10
  }
@@ -8283,27 +8686,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -8335,18 +8743,18 @@
 	let errorViewController : DebugFormatErrorViewController // +0x80 (0x8)
 	var $__lazy_storage_$_updatedLabel : UILabel? // +0x88 (0x8)
 	let canvasViewController : DebugFormatCanvasViewController // +0x90 (0x8)
-	var canvasUserInterfaceStyle : UIUserInterfaceStyle? // +0x98 (0x9)
+	var canvasUserInterfaceStyle : UIUserInterfaceStyle // +0x98 (0x9)
 
 	// ObjC -> Swift bridged methods
-	0x428a50  @objc DebugFormatEditorViewController.initWithCoder: <stripped>
-	0x42a400  @objc DebugFormatEditorViewController.viewDidLoad <stripped>
-	0x42a430  @objc DebugFormatEditorViewController.viewWillAppear: <stripped>
-	0x42a7f0  @objc DebugFormatEditorViewController.viewWillLayoutSubviews <stripped>
-	0x42b8d0  @objc DebugFormatEditorViewController.viewDidLayoutSubviews <stripped>
-	0x42bab0  @objc DebugFormatEditorViewController.viewLayoutMarginsDidChange <stripped>
-	0x42be90  @objc DebugFormatEditorViewController.overrideTraitCollectionForChildViewController: <stripped>
-	0x42bef0  @objc DebugFormatEditorViewController.initWithNibName:bundle: <stripped>
-	0x42bf70  @objc DebugFormatEditorViewController..cxx_destruct <stripped>
+	0x42dca0  @objc DebugFormatEditorViewController.initWithCoder: <stripped>
+	0x42f480  @objc DebugFormatEditorViewController.viewDidLoad <stripped>
+	0x42f4b0  @objc DebugFormatEditorViewController.viewWillAppear: <stripped>
+	0x42f8c0  @objc DebugFormatEditorViewController.viewWillLayoutSubviews <stripped>
+	0x431eb0  @objc DebugFormatEditorViewController.viewDidLayoutSubviews <stripped>
+	0x432220  @objc DebugFormatEditorViewController.viewLayoutMarginsDidChange <stripped>
+	0x4323a0  @objc DebugFormatEditorViewController.overrideTraitCollectionForChildViewController: <stripped>
+	0x432520  @objc DebugFormatEditorViewController.initWithNibName:bundle: <stripped>
+	0x432430  @objc DebugFormatEditorViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8354,8 +8762,9 @@
  enum NewsFeed.FormatFileReference {
 
 	// Properties
-	case url : (URL, FormatMetadata)
-	case inline : (A, FormatMetadata)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case url : I	
+	case inline : FormatMetadata
  }
 
  enum NewsFeed.CodingType {
@@ -8368,13 +8777,13 @@
  enum NewsFeed.FormatPackageError {
 
 	// Properties
-	case duplicateGroup : (FormatGroup, existing: FormatGroup)
-	case duplicateItem : (FormatItem, existing: FormatItem)
-	case duplicateSnippet : (FormatSnippet, existing: FormatSnippet)
-	case duplicateSupplementary : (FormatSupplementary, existing: FormatSupplementary)
-	case duplicateType : (FormatType, existing: FormatType)
-	case duplicateTypeFromProvider : (FormatType, existing: FormatType, provider: FormatTypeProviderType)
-	case duplicateLocalizedString : (FormatLocalizationString, existing: FormatLocalizationString)
+	case duplicateGroup : FormatGroup
+	case duplicateItem : FormatItem
+	case duplicateSnippet : FormatSnippet
+	case duplicateSupplementary : FormatSupplementary
+	case duplicateType : FormatType
+	case duplicateTypeFromProvider : FormatType
+	case duplicateLocalizedString : FormatLocalizationString
  }
 
  struct NewsFeed.FormatText {
@@ -8397,25 +8806,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
 	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8449,16 +8862,21 @@
 	// Properties
 	let origin : CGPoint // +0x0
 	let sizeConstraint : SizeConstraint // +0x10
-	let shadowRadius : CGFloat // +0x28
-	let cornerRadius : CGFloat // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shadowRadius : ;Ã	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cornerRadius : ;Ã	 // +0x30
  }
 
  enum NewsFeed.SizeConstraint {
 
 	// Properties
-	case width : CGFloat
-	case height : CGFloat
-	case size : (width: CGFloat, height: CGFloat)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case width : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case height : ;Ã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case size : ô	
  }
 
  struct NewsFeed.B12_V6 {
@@ -8475,25 +8893,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8520,8 +8942,8 @@
 	let subscriptionController : FCSubscriptionController // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x446360  @objc BlockingCommandHandler.init <stripped>
-	0x4463e0  @objc BlockingCommandHandler..cxx_destruct <stripped>
+	0x44c970  @objc BlockingCommandHandler.init <stripped>
+	0x44c9d0  @objc BlockingCommandHandler..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -8552,7 +8974,7 @@
  enum NewsFeed.Resolved {
 
 	// Properties
-	case visibility : FormatNodeVisibility.Resolved
+	case visibility : Resolved
  }
 
  enum NewsFeed.CodingType {
@@ -8575,25 +8997,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8656,26 +9082,39 @@
  enum NewsFeed.FeedItemRendererResult {
 
 	// Properties
-	case emptyViewCell : CollectionViewCell<EmptyView>
-	case gapViewCell : CollectionViewCell<GapView>
-	case gapOfflineViewCell : CollectionViewCell<GapOfflineView>
-	case webEmbedViewCell : ViewControllerCollectionViewCell<WebEmbedViewController>
-	case imageHeadlineViewCell : CollectionViewCell<HeadlineView<ImageView>>
-	case videoHeadlineViewCell : CollectionViewCell<HeadlineView<VideoView>>
-	case featuredHeadlineViewCell : CollectionViewCell<FeaturedHeadlineView>
-	case featuredIssueHeadlineViewCell : CollectionViewCell<FeaturedIssueHeadlineView>
-	case orderedHeadlineViewCell : CollectionViewCell<OrderedHeadlineView>
-	case issueViewCell : CollectionViewCell<IssueView>
-	case coverIssueViewCell : CollectionViewCell<CoverIssueView>
-	case coverChannelViewCell : CollectionViewCell<CoverChannelView>
-	case formatLayoutView : CollectionViewCell<FormatLayoutView>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case emptyViewCell : 	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case gapViewCell : q	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case gapOfflineViewCell : c	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case webEmbedViewCell : ’	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case imageHeadlineViewCell : G	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case videoHeadlineViewCell : 3	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case featuredHeadlineViewCell : 	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case featuredIssueHeadlineViewCell : 	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case orderedHeadlineViewCell : 	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case issueViewCell : ı	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case coverIssueViewCell : Á	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case coverChannelViewCell : Ÿ	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case formatLayoutView : À	
  }
 
  struct NewsFeed.FormatSupplementaryCollection {
 
 	// Properties
-	let supplementaries : [FormatObject<FormatSupplementary>] // +0x0
-	let supplementariesByIdentifier : [String : FormatObject<FormatSupplementary>] // +0x8
+	let supplementaries : FormatObject // +0x0
+	let supplementariesByIdentifier : FormatObject // +0x8
  }
 
  class NewsFeed.Assembly : NSObject /usr/lib/libobjc.A.dylib {
@@ -8684,9 +9123,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x456cb0  @objc Assembly.assemblies <stripped>
-	0x456f40  @objc Assembly.init <stripped>
-	0x456fb0  @objc Assembly..cxx_destruct <stripped>
+	0x45d1e0  @objc Assembly.assemblies <stripped>
+	0x45d430  @objc Assembly.init <stripped>
+	0x45d280  @objc Assembly..cxx_destruct <stripped>
  }
 
  class NewsFeed.HeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HeadlineViewStylerType {
@@ -8694,7 +9133,8 @@
 	// Properties
 	let fontBook : HeadlineFontBook // +0x10 (0x28)
 	let colorPalette : HeadlineColorPalette // +0x38 (0x58)
-	let scaleFactor : CGFloat // +0x90 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scaleFactor : ;Ã	 // +0x90 (0x8)
 	let colorPaletteProvider : ColorPaletteProviding // +0x98 (0x28)
 
 	// Swift methods
@@ -8708,25 +9148,27 @@
 	var tree : DebugFormatLayoutTree
 
 	// ObjC -> Swift bridged methods
-	0x459870  @objc DebugFormatLayoutViewController.viewDidLoad <stripped>
-	0x4598a0  @objc DebugFormatLayoutViewController.viewWillLayoutSubviews <stripped>
-	0x459b40  @objc DebugFormatLayoutViewController.initWithNibName:bundle: <stripped>
-	0x459b90  @objc DebugFormatLayoutViewController.initWithCoder: <stripped>
-	0x459bf0  @objc DebugFormatLayoutViewController..cxx_destruct <stripped>
+	0x45fc40  @objc DebugFormatLayoutViewController.viewDidLoad <stripped>
+	0x45fc70  @objc DebugFormatLayoutViewController.viewWillLayoutSubviews <stripped>
+	0x45fee0  @objc DebugFormatLayoutViewController.initWithNibName:bundle: <stripped>
+	0x45ff60  @objc DebugFormatLayoutViewController.initWithCoder: <stripped>
+	0x45fe90  @objc DebugFormatLayoutViewController..cxx_destruct <stripped>
  }
 
  class NewsFeed.DebugFormatLayoutTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x45a3e0  @objc DebugFormatLayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x45a490  @objc DebugFormatLayoutTableViewCell.initWithCoder: <stripped>
+	0x460700  @objc DebugFormatLayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x4607a0  @objc DebugFormatLayoutTableViewCell.initWithCoder: <stripped>
  }
 
  enum NewsFeed.InternalErrorViewModel {
 
 	// Properties
-	case formatError : (Error, key: GroupLayoutKey)
-	case debugFormatError : (Error, key: GroupLayoutKey)
-	case noMatchedLayouts : (group: InternalErrorViewModel.Group, available: [GroupLayoutFactoryType], bindResult: FeedLayoutSolverBindResult)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case formatError : øU	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case debugFormatError : øU	
+	case noMatchedLayouts : Group
  }
 
  struct NewsFeed.Group {
@@ -8750,25 +9192,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
 	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -8826,7 +9272,7 @@
  struct NewsFeed.FormatTagMoreActions {
 
 	// Properties
-	let title : FormatTextNodeContent? // +0x0
+	let title : FormatTextNodeContent // +0x0
 	let actions : Action // +0x8
  }
 
@@ -8889,21 +9335,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -8923,18 +9371,30 @@
  struct NewsFeed.HeadlineViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let titleLabelFrame : LayoutItem<CGRect> // +0x8
-	let accessoryLabelFrame : LayoutItem<CGRect> // +0x10
-	let excerptLabelFrame : LayoutItem<CGRect> // +0x18
-	let publisherLogoImageViewFrame : LayoutItem<CGRect> // +0x20
-	let publisherLabelFrame : LayoutItem<CGRect> // +0x28
-	let mediaViewFrame : LayoutItem<CGRect> // +0x30
-	let mediaViewRoundedCorners : LayoutItem<UIRectCorner> // +0x38
-	let mediaViewRoundedCornerRadius : LayoutItem<CGFloat> // +0x40
-	let accessoryDataStyle : Accessory // +0x48
-	let videoButtonFrame : LayoutItem<CGRect> // +0x50
-	let adButtonFrame : LayoutItem<CGRect> // +0x58
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleLabelFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryLabelFrame : }¥	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let excerptLabelFrame : }¥	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageViewFrame : }¥	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLabelFrame : }¥	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewFrame : }¥	 // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCorners : π£	 // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCornerRadius : ó£	 // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryDataStyle : î	 // +0x48
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let videoButtonFrame : }¥	 // +0x50
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let adButtonFrame : }¥	 // +0x58
  }
 
  struct NewsFeed.Attributes {
@@ -8950,7 +9410,8 @@
 	let adButtonFrame : CGRect // +0xc8
 	let mediaViewFrame : CGRect // +0xe8
 	let mediaViewRoundedCorners : UIRectCorner // +0x108
-	let mediaViewRoundedCornerRadius : CGFloat // +0x110
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViewRoundedCornerRadius : ;Ã	 // +0x110
 	let publisherLogoImageViewFrame : CGRect // +0x118
  }
 
@@ -8960,20 +9421,21 @@
 	let key : GroupLayoutKey
 	let model : FeedHeadline
 	let styler : HeadlineViewStylerType
-	let cachedTitleText : CachedText<NSAttributedString>
-	let cachedExcerptText : CachedText<NSAttributedString>?
-	let cachedPublisherText : CachedText<NSAttributedString>
-	let cachedPublishedDateBadgeText : CachedText<NSAttributedString>
-	let cachedAccessoryText : CachedText<NSAttributedString>
-	let cachedAdBadgeText : CachedText<NSAttributedString>?
-	let cachedAccessibilityLabelText : CachedText<String?>
+	let cachedTitleText : CachedText
+	let cachedExcerptText : CachedText
+	let cachedPublisherText : CachedText
+	let cachedPublishedDateBadgeText : CachedText
+	let cachedAccessoryText : CachedText
+	let cachedAdBadgeText : CachedText
+	let cachedAccessibilityLabelText : CachedText
  }
 
  struct NewsFeed.Options {
 
 	// Properties
 	let traits : Traits
-	let thumbnailAspectRatio : Ratio.Aspect?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let thumbnailAspectRatio : SZ	
 	let accessory : Option
 	let maxTitleLines : Int
  }
@@ -9038,7 +9500,7 @@
 
 	// Properties
 	let layoutAttributes : FormatLayoutAttributes // +0x0
-	let style : FormatItemNodeStyle? // +0x78
+	let style : FormatItemNodeStyle // +0x78
 	let contextLayoutOptions : FormatContextLayoutOptions // +0x128
  }
 
@@ -9056,19 +9518,20 @@
 	let key : DebugGroupLayoutKey // +0x0 (0x0)
 	var reloadState : ReloadState // +0x0 (0x1)
 	let inventoryViewController : DebugFormatInventoryViewController // +0x0 (0x8)
-	let inventoryContainerController : DebugNavigationController // +0x2730 (0x8)
+	let inventoryContainerController : DebugNavigationController // +0x25e0 (0x8)
 	let editorViewController : DebugFormatEditorViewController // +0x0 (0x8)
-	let editorContainerController : CardNavigationController // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let editorContainerController : 	 // +0x0 (0x8)
 	let layoutViewController : DebugFormatLayoutViewController // +0x0 (0x8)
 	let formatManager : DebugFormatManager // +0x0 (0x8)
 	var packages : DebugFormatPackages // +0x0 (0x60)
 
 	// ObjC -> Swift bridged methods
-	0x484c80  @objc DebugFormatMainViewController.initWithCoder: <stripped>
-	0x485080  @objc DebugFormatMainViewController.viewDidLoad <stripped>
-	0x4855a0  @objc DebugFormatMainViewController.viewWillLayoutSubviews <stripped>
-	0x485680  @objc DebugFormatMainViewController.initWithNibName:bundle: <stripped>
-	0x4856f0  @objc DebugFormatMainViewController..cxx_destruct <stripped>
+	0x48aad0  @objc DebugFormatMainViewController.initWithCoder: <stripped>
+	0x48aee0  @objc DebugFormatMainViewController.viewDidLoad <stripped>
+	0x48b320  @objc DebugFormatMainViewController.viewWillLayoutSubviews <stripped>
+	0x48b560  @objc DebugFormatMainViewController.initWithNibName:bundle: <stripped>
+	0x48b420  @objc DebugFormatMainViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -9101,25 +9564,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9177,21 +9644,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -9233,7 +9702,8 @@
  class NewsFeed.CoverIssueViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CoverIssueViewStylerType {
 
 	// Properties
-	let cornerRadius : CGFloat // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cornerRadius : ;Ã	 // +0x10 (0x8)
 	let fontBook : CoverIssueFontBook // +0x18 (0x30)
 	let colorPalette : CoverIssueColorPalette // +0x48 (0x48)
 	let colorPaletteProvider : ColorPaletteProviding // +0x90 (0x28)
@@ -9244,7 +9714,7 @@
  enum NewsFeed.FormatPublisherLogoSizing {
 
 	// Properties
-	case explicit : FormatEquation<FormatFloat>
+	case explicit : FormatEquation
 	case small  
 	case large  
  }
@@ -9261,29 +9731,30 @@
 
 	// Properties
 	var packages : DebugFormatPackages // +0x8 (0x60)
-	var columnOptions : ColumnSystem.Options? // +0xa1358e (0x0)
-	var sections : [DebugFormatRolePackages] // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var columnOptions : %	 // +0xb01770 (0x0)
+	var sections : DebugFormatRolePackages // +0x0 (0x8)
 	let formatCompiler : DebugFormatCompiler // +0x0 (0x8)
 	var compilerResult : DebugFormatCompilerResult // +0x0 (0x10)
 	let compilerQueue : OS_dispatch_queue // +0x0 (0x8)
 	let compilerLabel : UILabel // +0x0 (0x8)
 	let tableView : UITableView // +0x0 (0x8)
-	var groupViewController : weak DebugFormatGroupViewController? // +0x0 (0x8)
+	var groupViewController : DebugFormatGroupViewController // +0x0 (0x8)
 	let versionLabel : UILabel // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x49cdd0  @objc DebugFormatInventoryViewController.viewDidLoad <stripped>
-	0x49ce00  @objc DebugFormatInventoryViewController.viewWillAppear: <stripped>
-	0x49d270  @objc DebugFormatInventoryViewController.viewWillLayoutSubviews <stripped>
-	0x49d920  @objc DebugFormatInventoryViewController.initWithNibName:bundle: <stripped>
-	0x49d970  @objc DebugFormatInventoryViewController.initWithCoder: <stripped>
-	0x49d9f0  @objc DebugFormatInventoryViewController..cxx_destruct <stripped>
+	0x4a4bf0  @objc DebugFormatInventoryViewController.viewDidLoad <stripped>
+	0x4a4c20  @objc DebugFormatInventoryViewController.viewWillAppear: <stripped>
+	0x4a4fa0  @objc DebugFormatInventoryViewController.viewWillLayoutSubviews <stripped>
+	0x4a4fd0  @objc DebugFormatInventoryViewController.initWithNibName:bundle: <stripped>
+	0x4a5050  @objc DebugFormatInventoryViewController.initWithCoder: <stripped>
+	0x4a5090  @objc DebugFormatInventoryViewController..cxx_destruct <stripped>
  }
 
  class NewsFeed.DebugFormatInventoryTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x49ee00  @objc DebugFormatInventoryTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x49eeb0  @objc DebugFormatInventoryTableViewCell.initWithCoder: <stripped>
+	0x4a69d0  @objc DebugFormatInventoryTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x4a6a70  @objc DebugFormatInventoryTableViewCell.initWithCoder: <stripped>
  }
 
  enum NewsFeed.FormatDecorationContent {
@@ -9316,25 +9787,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9370,15 +9845,15 @@
 
 	// Properties
 	case item : FormatItemNodeDataLayoutAttributes
-	case supplementary : FormatDataLayoutAttributes<FormatSupplementary>
+	case supplementary : FormatDataLayoutAttributes
 	case node : FormatDataLayoutValue
-	case buttonStateMask : (FormatButtonNodeStateMask, FormatButtonNodeStateMaskDataLayoutAttributes)
+	case buttonStateMask : FormatButtonNodeStateMask
  }
 
  struct NewsFeed.DebugFormatLayoutModel {
 
 	// Properties
-	let layout : DebugFormatLayoutModel.Layout
+	let layout : Layout
 	let indentationLevel : Int
 	let selectionFrame : CGRect
  }
@@ -9396,23 +9871,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [OrderedHeadlineViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let headlineLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<OrderedHeadlineViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : im	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -9451,14 +9929,16 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : HeadlineViewLayout.Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItem<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Uü	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -9520,10 +10000,14 @@
  struct NewsFeed.FormatRGBAColor {
 
 	// Properties
-	let red : CGFloat // +0x0
-	let green : CGFloat // +0x8
-	let blue : CGFloat // +0x10
-	let alpha : CGFloat? // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let red : ;Ã	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let green : ;Ã	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blue : ;Ã	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alpha : •´	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9544,7 +10028,7 @@
  struct NewsFeed.DebugFormatLayoutTree {
 
 	// Properties
-	let sections : [[DebugFormatLayoutModel]] // +0x0
+	let sections : DebugFormatLayoutModel // +0x0
  }
 
  struct NewsFeed.FormatLayoutAction {
@@ -9558,9 +10042,9 @@
 
 	// Properties
 	let identifier : String // +0x0
-	let children : [FormatNode] // +0x10
+	let children : FormatNode // +0x10
 	let selectors : [String] // +0x18
-	let options : [FormatOption] // +0x20
+	let options : FormatOption // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -9585,21 +10069,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -9619,26 +10105,35 @@
  enum NewsFeed.FormatServiceError {
 
 	// Properties
-	case unknown : (fetchStatus: FCFetchOperationStatus)
-	case codingFailure : (URL, Error)
+	case unknown : FCFetchOperationStatus
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case noData : ÖÖ	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case codingFailure : ?˙
 	case wrongFileType : (expected: String, actual: String)
-	case cacheMiss : (url: URL)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case cacheMiss : ÖÖ	
 	case fontCacheMiss : (fonts: [FCLoadableFont])
 	case fontDownloadFailure : (fonts: [FCLoadableFont])
-	case cancelled : (url: URL)
-	case fetchError : Error?
-	case notWifi : (url: URL)
-	case noData  
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case cancelled : ÖÖ	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case fetchError : üE	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case notWifi : ÖÖ	
  }
 
  struct NewsFeed.GroupLayoutContext {
 
 	// Properties
-	let layoutOptions : LayoutOptions
-	let columnOptions : ColumnSystem.Options
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutOptions : çl	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let columnOptions : Wl	
 	let solverOptions : FeedLayoutSolverOptions
 	let offset : Int
-	let scaleFactor : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scaleFactor : ;Ã	
 	let layoutOrder : FeedLayoutOrder
 	let layoutContext : FeedLayoutContext
  }
@@ -9677,8 +10172,8 @@
 	let name : String
 	let identifier : String
 	let factory : GroupLayoutFactoryType
-	let bindings : GroupLayoutBindingContext?
-	let layoutContext : GroupLayoutContext?
+	let bindings : GroupLayoutBindingContext
+	let layoutContext : GroupLayoutContext
  }
 
  struct NewsFeed.FormatConfig {
@@ -9712,21 +10207,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -9762,13 +10259,13 @@
 	let inventory : FormatPackageInventory
 	let bindings : FormatNodeBindings
 	let namespace : FormatNamespace
-	let selectors : [FormatMerge<String>]
+	let selectors : FormatMerge
 	let slotIdentifier : String?
 	let config : FormatConfig
-	let options : [FormatMerge<FormatOption>]
+	let options : FormatMerge
 	let data : FormatNodeContextData
 	let behaviorData : FormatNodeContextBehaviorData
-	let boundItemStack : [FeedItemType]
+	let boundItemStack : FeedItemType
  }
 
  enum NewsFeed.Errors {
@@ -9790,21 +10287,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -9835,25 +10334,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -9888,13 +10391,19 @@
 	case binding  
  }
 
+ struct NewsFeed.FormatCompilerContext {
+
+	// Properties
+	let inventory : FormatPackageInventory // +0x0
+ }
+
  struct NewsFeed.FormatContentSubgroup {
 
 	// Properties
 	let identifier : String
-	let layouts : FormatLatestCompatibleFileReference<FormatPackage>
-	let properties : [FormatOption]
-	let contents : [FormatContentSlot]
+	let layouts : FormatLatestCompatibleFileReference
+	let properties : FormatOption
+	let contents : FormatContentSlot
  }
 
  struct NewsFeed.Resolved {
@@ -9902,8 +10411,8 @@
 	// Properties
 	let identifier : String // +0x0
 	let layout : FormatPackageInventory // +0x10
-	let properties : [FormatOption] // +0x118
-	let contents : [FormatContentSlot.Resolved] // +0x120
+	let properties : FormatOption // +0x118
+	let contents : Resolved // +0x120
  }
 
  enum NewsFeed.CodingKeys {
@@ -9925,35 +10434,35 @@
 	let tableView : UITableView // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x510740  @objc DebugInspectViewController.initWithCoder: <stripped>
-	0x510800  @objc DebugInspectViewController.initWithNibName:bundle: <stripped>
-	0x510870  @objc DebugInspectViewController..cxx_destruct <stripped>
+	0x524dc0  @objc DebugInspectViewController.initWithCoder: <stripped>
+	0x524e70  @objc DebugInspectViewController.initWithNibName:bundle: <stripped>
+	0x524de0  @objc DebugInspectViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsFeed.KeyValueTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x5152e0  @objc KeyValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x515310  @objc KeyValueTableViewCell.initWithCoder: <stripped>
+	0x529260  @objc KeyValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x529270  @objc KeyValueTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.RequirementTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x5153b0  @objc RequirementTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x5153e0  @objc RequirementTableViewCell.initWithCoder: <stripped>
+	0x529f60  @objc RequirementTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x5292f0  @objc RequirementTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.FeedItemTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x515480  @objc FeedItemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x5154b0  @objc FeedItemTableViewCell.initWithCoder: <stripped>
+	0x529370  @objc FeedItemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x529420  @objc FeedItemTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.LayoutTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x515550  @objc LayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x515630  @objc LayoutTableViewCell.initWithCoder: <stripped>
+	0x529f70  @objc LayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x5294d0  @objc LayoutTableViewCell.initWithCoder: <stripped>
  }
 
  struct NewsFeed.FormatColorAndExpression {
@@ -9973,9 +10482,9 @@
  struct NewsFeed.FormatGroupCollection {
 
 	// Properties
-	let groups : [FormatObject<FormatGroup>] // +0x0
-	let groupsByColumn : [Int : [FormatObject<FormatGroup>]] // +0x8
-	let groupsByIdentifier : [String : FormatObject<FormatGroup>] // +0x10
+	let groups : FormatObject // +0x0
+	let groupsByColumn : FormatObject // +0x8
+	let groupsByIdentifier : FormatObject // +0x10
  }
 
  struct NewsFeed.G_V1 {
@@ -9991,23 +10500,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedIssues : [FeedIssue]
+	let feedIssues : FeedIssue
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let coverIssueLayoutAttributes : [CoverIssueViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let coverIssueLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let coverIssueLayoutAttributes : LayoutItemList<CoverIssueViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let coverIssueLayoutAttributes : °≠	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -10039,21 +10551,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10081,7 +10595,8 @@
 
 	// Properties
 	let component : FormatColorComponent // +0x0
-	let value : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let value : ;Ã	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10166,21 +10681,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedIssues : [FeedIssue]
+	let feedIssues : FeedIssue
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let issueLayoutAttributes : [IssueViewLayout.Attributes] // +0x20
+	let issueLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let issueLayoutAttributes : LayoutItemList<IssueViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let issueLayoutAttributes : ±Û // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10211,25 +10728,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10253,13 +10774,13 @@
  struct NewsFeed.FormatFileReferenceCollection {
 
 	// Properties
-	let references : [FormatFileReference<A>]
+	let references : FormatFileReference
  }
 
  struct NewsFeed.MetadataContainer {
 
 	// Properties
-	let metadata : FormatMetadata?
+	let metadata : FormatMetadata
  }
 
  enum NewsFeed.CodingKeys {
@@ -10281,21 +10802,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10336,23 +10859,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [OrderedHeadlineViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let headlineLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<OrderedHeadlineViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : im	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -10385,25 +10911,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10437,21 +10967,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedIssues : [FeedIssue]
+	let feedIssues : FeedIssue
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let issueLayoutAttributes : [IssueViewLayout.Attributes] // +0x20
+	let issueLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let issueLayoutAttributes : LayoutItemList<IssueViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let issueLayoutAttributes : ±Û // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10486,20 +11018,21 @@
 
 	// Properties
 	let style : PremiumBadgeStyle // +0x8 (0x8)
-	let shineImageRequest : ShineImageRequest // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shineImageRequest : Ø	 // +0x10 (0x8)
 	let mask : PremiumBadgeMask // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x557600  @objc PremiumBadgeRequest.style <stripped>
-	0x557640  @objc PremiumBadgeRequest.shineImageRequest <stripped>
-	0x557680  @objc PremiumBadgeRequest.mask <stripped>
-	0x557eb0  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:traitCollection: <stripped>
-	0x558230  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:offset:traitCollection: <stripped>
-	0x5583d0  @objc PremiumBadgeRequest.init <stripped>
-	0x558450  @objc PremiumBadgeRequest..cxx_destruct <stripped>
+	0x569270  @objc PremiumBadgeRequest.style <stripped>
+	0x5692b0  @objc PremiumBadgeRequest.shineImageRequest <stripped>
+	0x5692f0  @objc PremiumBadgeRequest.mask <stripped>
+	0x569b40  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:traitCollection: <stripped>
+	0x569d00  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:offset:traitCollection: <stripped>
+	0x569e30  @objc PremiumBadgeRequest.init <stripped>
+	0x569e90  @objc PremiumBadgeRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x557530  class func PremiumBadgeRequest.__allocating_init(style:bounds:mask:offset:traitCollection:) // init 
+	0x5691f0  class func PremiumBadgeRequest.__allocating_init(style:bounds:mask:offset:traitCollection:) // init 
  }
 
  enum NewsFeed.Style {
@@ -10524,27 +11057,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -10580,29 +11118,30 @@
 
 	// Properties
 	let resourceIdentifier : String // +0x0
-	let size : LayeredMedia.Size // +0x10
-	let mimeType : LayeredMedia.VideoResource.MIMEType? // +0x20
+	let size : Size // +0x10
+	let mimeType : MIMEType // +0x20
  }
 
  struct NewsFeed.ImageResource {
 
 	// Properties
 	let resourceIdentifier : String
-	let size : LayeredMedia.Size
-	let colorSpace : ColorSpace
+	let size : Size
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let colorSpace : óÔ
  }
 
  enum NewsFeed.Layer {
 
 	// Properties
-	case image : LayeredMedia.Layer.ImageLayer
+	case image : ImageLayer
  }
 
  enum NewsFeed.BaseLayer {
 
 	// Properties
-	case image : LayeredMedia.BaseLayer.ImageLayer
-	case video : LayeredMedia.BaseLayer.VideoLayer
+	case image : ImageLayer
+	case video : VideoLayer
  }
 
  enum NewsFeed.CodingKeys {
@@ -10692,17 +11231,20 @@
  struct NewsFeed.Size {
 
 	// Properties
-	let width : CGFloat // +0x0
-	let height : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let width : ;Ã	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let height : ;Ã	 // +0x8
  }
 
  struct NewsFeed.ImageLayer {
 
 	// Properties
 	let imageIdentifier : String // +0x0
-	let effects : LayeredMediaEffects? // +0x10
-	let conditions : LayeredMediaConditions? // +0x30
-	let safeArea : CGFloat? // +0x70
+	let effects : LayeredMediaEffects // +0x10
+	let conditions : LayeredMediaConditions // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let safeArea : •´	 // +0x70
  }
 
  struct NewsFeed.VideoLayer {
@@ -10710,16 +11252,18 @@
 	// Properties
 	let videoIdentifier : String // +0x0
 	let stillImageIdentifier : String // +0x10
-	let effects : LayeredMediaEffects? // +0x20
-	let safeArea : CGFloat? // +0x40
+	let effects : LayeredMediaEffects // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let safeArea : •´	 // +0x40
  }
 
  struct NewsFeed.ImageLayer {
 
 	// Properties
 	let imageIdentifier : String // +0x0
-	let effects : LayeredMediaEffects? // +0x10
-	let safeArea : CGFloat? // +0x30
+	let effects : LayeredMediaEffects // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let safeArea : •´	 // +0x30
  }
 
  enum NewsFeed.CodingKeys {
@@ -10732,8 +11276,8 @@
  enum NewsFeed.FormatImageNodeBinding {
 
 	// Properties
-	case headline : FormatHeadlineBinding.Image
-	case group : FormatGroupBinding.Image
+	case headline : Image
+	case group : Image
  }
 
  enum NewsFeed.CodingType {
@@ -10757,25 +11301,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10804,8 +11352,8 @@
 	let name : String? // +0x20
 	let description : String? // +0x30
 	let size : FormatSize // +0x40
-	let adjustments : [FormatAdjustment] // +0x48
-	let children : [FormatNode] // +0x50
+	let adjustments : FormatAdjustment // +0x48
+	let children : FormatNode // +0x50
  }
 
  struct NewsFeed.FormatVOverlayNode {
@@ -10816,8 +11364,8 @@
 	let name : String? // +0x20
 	let description : String? // +0x30
 	let size : FormatSize // +0x40
-	let adjustments : [FormatAdjustment] // +0x48
-	let children : [FormatNode] // +0x50
+	let adjustments : FormatAdjustment // +0x48
+	let children : FormatNode // +0x50
  }
 
  enum NewsFeed.CodingKeys {
@@ -10857,21 +11405,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedIssues : [FeedIssue]
+	let feedIssues : FeedIssue
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let coverIssueLayoutAttributes : [CoverIssueViewLayout.Attributes] // +0x20
+	let coverIssueLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let coverIssueLayoutAttributes : LayoutItemList<CoverIssueViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let coverIssueLayoutAttributes : °≠	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -10891,10 +11441,14 @@
  struct NewsFeed.FormatEdgeInsets {
 
 	// Properties
-	let top : CGFloat // +0x0
-	let left : CGFloat // +0x8
-	let bottom : CGFloat // +0x10
-	let right : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let top : ;Ã	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let left : ;Ã	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bottom : ;Ã	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let right : ;Ã	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -10909,14 +11463,17 @@
  enum NewsFeed.FormatCompilerError {
 
 	// Properties
-	case failedToCompileGroup : (group: String, error: Error)
-	case failedToCompileDecoration : (decoration: String, error: Error)
-	case failedToCompileStyle : (style: String, error: Error)
-	case invalidScope : (FormatCompilerScope, message: String)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failedToCompileGroup :  first-element-marker 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failedToCompileDecoration :  first-element-marker 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failedToCompileStyle :  first-element-marker 
+	case invalidScope : FormatCompilerScope
 	case unknownSlotDefinition : (groupIdentifier: String, slotIdentifier: String, allowedSlotIdentifiers: [String])
 	case duplicateSlotDefinition : (groupIdentifier: String, slotIdentifier: String)
 	case unknownOption : (optionIdentifier: String)
-	case mismatchedOptionType : (optionIdentifier: String, definedType: FormatOptionType, validTypesForReference: Set<FormatOptionType>)
+	case mismatchedOptionType : FormatOptionType
 	case unknownSystemImage : (name: String)
 	case unknownBundle : (bundleIdentifier: String)
 	case unknownBundleImage : (bundleIdentifier: String, name: String)
@@ -10926,8 +11483,8 @@
 	case unusedPropertyDefinitions : (propertyIdentifiers: Set<String>)
 	case missingGroupsForColumns : ([Int], requiredColumns: [Int])
 	case unusedSlotDefinitions : (slotIdentifiers: [String])
-	case invalidSlotDefinitionsAcrossGroups : (lhsGroupIdentifier: String, lhsSlotDefinition: FormatSlotDefinition, rhsGroupIdentifier: String, rhsSlotDefinition: FormatSlotDefinition)
-	case invalidSlotDefinitionsAcrossColumnGroups : (lhsSlotDefinition: FormatSlotDefinition, rhsSlotDefinition: FormatSlotDefinition)
+	case invalidSlotDefinitionsAcrossGroups : FormatSlotDefinition
+	case invalidSlotDefinitionsAcrossColumnGroups : FormatSlotDefinition
 	case unableToCreateStringFromJSONData  
 	case cannotLoadMainBundle  
  }
@@ -10939,8 +11496,8 @@
 	let name : String? // +0x10
 	let description : String? // +0x20
 	let size : FormatSize // +0x30
-	let adjustments : [FormatAdjustment] // +0x38
-	let children : [FormatNode] // +0x40
+	let adjustments : FormatAdjustment // +0x38
+	let children : FormatNode // +0x40
  }
 
  struct NewsFeed.FormatVBoxNode {
@@ -10950,8 +11507,8 @@
 	let name : String? // +0x10
 	let description : String? // +0x20
 	let size : FormatSize // +0x30
-	let adjustments : [FormatAdjustment] // +0x38
-	let children : [FormatNode] // +0x40
+	let adjustments : FormatAdjustment // +0x38
+	let children : FormatNode // +0x40
  }
 
  enum NewsFeed.CodingKeys {
@@ -10981,10 +11538,11 @@
 	// Properties
 	let fontBookProvider : FontBookProviding // +0x10 (0x28)
 	let colorPaletteProvider : ColorPaletteProviding // +0x38 (0x28)
-	let scaleFactor : CGFloat // +0x60 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scaleFactor : ;Ã	 // +0x60 (0x8)
 
 	// Swift methods
-	0x581be0  class func FeedLayoutStylerFactory.__allocating_init(fontBookProvider:colorPaletteProvider:scaleFactor:) // init 
+	0x5924f0  class func FeedLayoutStylerFactory.__allocating_init(fontBookProvider:colorPaletteProvider:scaleFactor:) // init 
  }
 
  struct NewsFeed.Options {
@@ -11006,21 +11564,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -11067,11 +11627,11 @@
 	// Properties
 	let identifier : String // +0x0
 	let size : FormatSize // +0x10
-	let adjustments : [FormatAdjustment] // +0x18
-	let style : FormatImageNodeStyle? // +0x20
+	let adjustments : FormatAdjustment // +0x18
+	let style : FormatImageNodeStyle // +0x20
 	let content : FormatImageNodeContent // +0x120
 	let zIndex : Int // +0x128
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0x130
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x130
  }
 
  enum NewsFeed.CodingKeys {
@@ -11090,7 +11650,8 @@
 
 	// Properties
 	let variantFactory : LayeredMediaVariantFactoryType // +0x10 (0x28)
-	let layersCache : Cache<String, [LayeredMediaLayer]> // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layersCache : Î 	 // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -11098,7 +11659,7 @@
  struct NewsFeed.FormatGradient {
 
 	// Properties
-	let colors : [FormatColor] // +0x0
+	let colors : FormatColor // +0x0
 	let locations : [Double]? // +0x8
 	let direction : FormatGradientDirection // +0x10
  }
@@ -11155,16 +11716,16 @@
 
 	// Properties
 	case content : FormatContent
+	case decoration : FormatDecoration
 	case group : FormatGroup
 	case item : FormatItem
+	case localization : FormatLocalization
 	case package : FormatPackage
 	case packageList : FormatPackageList
 	case snippet : FormatSnippet
 	case style : FormatStyle
 	case supplementary : FormatSupplementary
 	case type : FormatType
-	case decoration : FormatDecoration
-	case localization : FormatLocalization
  }
 
  enum NewsFeed.FormatOptionValue {
@@ -11172,11 +11733,14 @@
 	// Properties
 	case boolean : Bool
 	case enum : EnumValue
-	case date : Date
-	case float : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case date : W	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case float : ;Ã	
 	case integer : Int
 	case string : String
-	case url : URL
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case url : ßë	
 	case color : FormatColor
  }
 
@@ -11208,25 +11772,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11250,19 +11818,21 @@
  struct NewsFeed.FormatNodeBinderContext {
 
 	// Properties
-	let namespace : FormatNamespace // +0x0
-	let inventory : FormatPackageInventory // +0x10
+	let inventory : FormatPackageInventory // +0x0
+	let namespace : FormatNamespace // +0x108
 	let slotIdentifier : String? // +0x118
-	let options : [FormatMerge<FormatOption>] // +0x128
+	let config : FormatConfig // +0x128
+	let options : FormatMerge // +0x130
  }
 
  struct NewsFeed.FormatSystemFont {
 
 	// Properties
-	let size : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let size : ;Ã	 // +0x0
 	let scaling : FormatFontScaling // +0x8
 	let weight : FormatFontWeight // +0x12
-	let traits : Set<FormatFontTrait> // +0x18
+	let traits : FormatFontTrait // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11288,25 +11858,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11340,21 +11914,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -11374,15 +11950,16 @@
  struct NewsFeed.DebugFormatCompilerResult {
 
 	// Properties
-	let results : [DebugFormatCompilerResult.CompileResult] // +0x0
-	let packageIdentifierToResults : [String : DebugFormatCompilerResult.CompileResult] // +0x8
+	let results : CompileResult // +0x0
+	let packageIdentifierToResults : CompileResult // +0x8
  }
 
  struct NewsFeed.CompileResult {
 
 	// Properties
 	let package : FormatPackageInventory
-	let result : Result<FormatFile>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let result : áJ	
  }
 
  struct NewsFeed.FormatLayoutExpression {
@@ -11401,8 +11978,8 @@
 
  class NewsFeed.StubIssueCoverImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5bc210  @objc StubIssueCoverImageProcessor.process: <stripped>
-	0x5bc2b0  @objc StubIssueCoverImageProcessor.init <stripped>
+	0x5cfb10  @objc StubIssueCoverImageProcessor.process: <stripped>
+	0x5cfb90  @objc StubIssueCoverImageProcessor.init <stripped>
  }
 
  struct NewsFeed.C12_V8 {
@@ -11419,25 +11996,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11463,8 +12044,9 @@
 	// Properties
 	let fontBook : IssueFontBook // +0x10 (0x20)
 	let colorPalette : IssueColorPalette // +0x0 (0x0)
-	let style : FeedIssue.Style // +0x0 (0x8)
-	let scaleFactor : CGFloat // +0x0 (0x8)
+	let style : Style // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scaleFactor : ;Ã	 // +0x0 (0x8)
 	let onCard : Bool // +0x0 (0x1)
 	let colorPaletteProvider : ColorPaletteProviding // +0x0 (0x28)
 
@@ -11484,23 +12066,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [OrderedHeadlineViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let headlineLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<OrderedHeadlineViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : im	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -11533,25 +12118,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11575,8 +12164,8 @@
  struct NewsFeed.LayeredMediaEffects {
 
 	// Properties
-	let parallax : LayeredMediaEffects.Parallax? // +0x0
-	let motion : LayeredMediaEffects.Motion? // +0x10
+	let parallax : Parallax // +0x0
+	let motion : Motion // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -11626,25 +12215,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11669,12 +12262,13 @@
 
 	// Properties
 	let identifier : String
-	let publishDate : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publishDate : W	
 	let tagID : String
 	let equivalentTopicIDs : [String]
-	let themes : FormatFileReferenceCollection<FormatPackage>
-	let subgroups : [FormatContentSubgroup]
-	let properties : [FormatOption]
+	let themes : FormatFileReferenceCollection
+	let subgroups : FormatContentSubgroup
+	let properties : FormatOption
  }
 
  enum NewsFeed.Errors {
@@ -11687,12 +12281,13 @@
 
 	// Properties
 	let identifier : String
-	let publishDate : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publishDate : W	
 	let tag : FCTagProviding
 	let equivalentTopics : [FCTagProviding]
-	let themes : [FormatPackageInventory]
-	let subgroups : [FormatContentSubgroup.Resolved]
-	let properties : [FormatOption]
+	let themes : FormatPackageInventory
+	let subgroups : Resolved
+	let properties : FormatOption
  }
 
  enum NewsFeed.CodingKeys {
@@ -11742,15 +12337,16 @@
 	let excerptLabel : UILabel // +0x18 (0x8)
 	let issueCoverView : IssueCoverView // +0x20 (0x8)
 	let publisherLabel : UILabel // +0x28 (0x8)
-	let publisherLogoImageView : ImageView // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageView : ≠—	 // +0x30 (0x8)
 	let premiumBadgeView : PremiumBadgeView // +0x38 (0x8)
 	let cardView : CardView // +0x40 (0x8)
 	let debugButton : DebugButton // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5ea190  @objc IssueView.initWithFrame: <stripped>
-	0x5ea210  @objc IssueView.initWithCoder: <stripped>
-	0x5ea280  @objc IssueView..cxx_destruct <stripped>
+	0x6009f0  @objc IssueView.initWithFrame: <stripped>
+	0x600a70  @objc IssueView.initWithCoder: <stripped>
+	0x600ac0  @objc IssueView..cxx_destruct <stripped>
  }
 
  class NewsFeed.FeaturedIssueHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueHeadlineViewStylerType {
@@ -11758,7 +12354,7 @@
 	// Properties
 	let fontBook : HeadlineFontBook // +0x10 (0x28)
 	let colorPalette : FeaturedHeadlineColorPalette // +0x0 (0x0)
-	let style : FeedHeadline.FeaturedStyle // +0x0 (0x8)
+	let style : FeaturedStyle // +0x0 (0x8)
 	let colorPaletteProvider : ColorPaletteProviding // +0x0 (0x28)
 
 	// Swift methods
@@ -11766,14 +12362,14 @@
 
  class NewsFeed.PublisherLogoProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x5ec8c0  @objc PublisherLogoProcessor.process: <stripped>
-	0x5ec960  @objc PublisherLogoProcessor.init <stripped>
+	0x603120  @objc PublisherLogoProcessor.process: <stripped>
+	0x6031a0  @objc PublisherLogoProcessor.init <stripped>
  }
 
  class NewsFeed.FormatNodeContextBehaviorData : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var data : [String : [FormatNodeBehavior.Resolved]] // +0x10 (0x8)
+	var data : Resolved // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -11781,7 +12377,7 @@
  struct NewsFeed.E18_V2 {
 
 	// Properties
-	let layoutOptionRequirements : [FeedLayoutOptionRequirement] // +0x0
+	let layoutOptionRequirements : FeedLayoutOptionRequirement // +0x0
 	let groupLayoutPriority : GroupLayoutPriority // +0x8
 	let groupLayoutContentSizeCategory : GroupLayoutContentSizeCategory // +0x10
  }
@@ -11793,27 +12389,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -11840,7 +12441,7 @@
 
 	// Properties
 	let viewModel : FormatLayoutViewModel // +0x0
-	let view : FormatLayoutViewContainer.View // +0x28
+	let view : View // +0x28
  }
 
  enum NewsFeed.View {
@@ -11848,10 +12449,11 @@
 	// Properties
 	case view : UIView
 	case text : UILabel
-	case image : ImageView
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case image : ≠—	
 	case button : FormatButton
 	case webEmbed : WebEmbedViewController
-	case aux : (FormatLayoutViewContainer.View, [FormatAuxiliaryViewRequirement : FormatAuxiliaryView])
+	case aux : View
  }
 
  struct NewsFeed.B12_V8 {
@@ -11868,25 +12470,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -11920,21 +12526,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -11954,8 +12562,10 @@
  struct NewsFeed.GapOfflineViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let offlineLabelFrame : LayoutItem<CGRect> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let offlineLabelFrame : }¥	 // +0x8
  }
 
  struct NewsFeed.Attributes {
@@ -11970,7 +12580,7 @@
 	// Properties
 	let model : FeedGapOffline // +0x0
 	let styler : GapOfflineViewStylerType // +0x50
-	let cachedOfflineText : CachedText<NSAttributedString> // +0x78
+	let cachedOfflineText : CachedText // +0x78
  }
 
  enum NewsFeed.CodingKeys {
@@ -11993,10 +12603,10 @@
 	let identifier : String // +0x0
 	let itemIdentifier : String // +0x10
 	let size : FormatSize // +0x20
-	let adjustments : [FormatAdjustment] // +0x28
-	let styles : [FormatNodeStyle] // +0x30
+	let adjustments : FormatAdjustment // +0x28
+	let styles : FormatNodeStyle // +0x30
 	let selectors : [String] // +0x38
-	let options : [FormatOption] // +0x40
+	let options : FormatOption // +0x40
  }
 
  enum NewsFeed.CodingKeys {
@@ -12016,22 +12626,24 @@
 	// Properties
 	var assetHandles : [String : TSAssetHandleType] // +0x10 (0x8)
 	let size : CGSize // +0x18 (0x10)
-	let scale : CGFloat // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x28 (0x8)
 	let corners : Corners // +0x30 (0x11)
 
 	// ObjC -> Swift bridged methods
-	0x60f450  @objc IssueCoverImageProcessorRequest.assetHandles <stripped>
-	0x60f520  @objc IssueCoverImageProcessorRequest.setAssetHandles: <stripped>
-	0x60f630  @objc IssueCoverImageProcessorRequest.cacheIdentifier <stripped>
+	0x627ef0  @objc IssueCoverImageProcessorRequest.assetHandles <stripped>
+	0x627f90  @objc IssueCoverImageProcessorRequest.setAssetHandles: <stripped>
+	0x628080  @objc IssueCoverImageProcessorRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x60f280  class func IssueCoverImageProcessorRequest.__allocating_init(assetHandle:size:scale:corners:) // init 
+	0x627ed0  class func IssueCoverImageProcessorRequest.__allocating_init(assetHandle:size:scale:corners:) // init 
  }
 
  enum NewsFeed.Corners {
 
 	// Properties
-	case round : (cornerRadius: CGFloat, roundedCorners: UIRectCorner)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case round : …—
 	case square  
  }
 
@@ -12049,25 +12661,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -12101,21 +12717,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12143,9 +12761,9 @@
  enum NewsFeed.FormatRatio {
 
 	// Properties
-	case width : FormatEquation<FormatFloat>
-	case height : FormatEquation<FormatFloat>
-	case aspect : FormatEquation<FormatFloat>
+	case width : FormatEquation
+	case height : FormatEquation
+	case aspect : FormatEquation
  }
 
  enum NewsFeed.CodingType {
@@ -12247,10 +12865,10 @@
 
  class NewsFeed.IssueCoverImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x633ea0  @objc IssueCoverImageProcessor.process: <stripped>
+	0x64ee50  @objc IssueCoverImageProcessor.process: <stripped>
 
 	// Swift methods
-	0x633e10  class func IssueCoverImageProcessor.__allocating_init() // init 
+	0x64ee10  class func IssueCoverImageProcessor.__allocating_init() // init 
  }
 
  struct NewsFeed.E6_V3 {
@@ -12267,27 +12885,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -12331,19 +12954,23 @@
 	let key : DebugGroupLayoutKey // +0x0 (0x0)
 	let factory : DebugGroupLayoutViewFactoryType // +0x0 (0x28)
 	let fontManager : FeedFontManager // +0x0 (0x8)
-	let columnSystem : ColumnSystem // +0x74735f5f (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let columnSystem :   // +0x74735f5f (0x0)
 	let scrollView : UIScrollView // +0x0 (0x8)
-	var $__lazy_storage_$_columnView : ColumnDebugView? // +0x0 (0x8)
-	let viewportMonitor : BlueprintViewportMonitor // +0x0 (0x8)
-	let fontDownloadPromise : Promise<FeedFontLoadResult> // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_columnView : W  // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewportMonitor : ß” // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fontDownloadPromise : —Õ // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x63e5f0  @objc DebugFormatCanvasViewController.dealloc <stripped>
-	0x63e760  @objc DebugFormatCanvasViewController.initWithCoder: <stripped>
-	0x63eff0  @objc DebugFormatCanvasViewController.viewDidLoad <stripped>
-	0x63f220  @objc DebugFormatCanvasViewController.viewWillLayoutSubviews <stripped>
-	0x640260  @objc DebugFormatCanvasViewController.initWithNibName:bundle: <stripped>
-	0x63e650  @objc DebugFormatCanvasViewController..cxx_destruct <stripped>
+	0x658ff0  @objc DebugFormatCanvasViewController.dealloc <stripped>
+	0x659130  @objc DebugFormatCanvasViewController.initWithCoder: <stripped>
+	0x659930  @objc DebugFormatCanvasViewController.viewDidLoad <stripped>
+	0x659b40  @objc DebugFormatCanvasViewController.viewWillLayoutSubviews <stripped>
+	0x65b290  @objc DebugFormatCanvasViewController.initWithNibName:bundle: <stripped>
+	0x659050  @objc DebugFormatCanvasViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -12370,21 +12997,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12411,10 +13040,11 @@
  class NewsFeed.FeedLayoutCache : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeedLayoutCacheType {
 
 	// Properties
-	var cache : FeedLayoutCacheItem // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cache : ªÀ // +0x10 (0x8)
 
 	// Swift methods
-	0x648350  class func FeedLayoutCache.__allocating_init() // init 
+	0x663830  class func FeedLayoutCache.__allocating_init() // init 
  }
 
  struct NewsFeed.FormatSwitchListValue {
@@ -12465,11 +13095,11 @@
 	let description : String? // +0x20
 	let priority : FormatGroupPriority // +0x30
 	let columns : Set<Int> // +0x38
-	let children : [FormatNode] // +0x40
-	let styles : [FormatNodeStyle] // +0x48
+	let children : FormatNode // +0x40
+	let styles : FormatNodeStyle // +0x48
 	let selectors : [String] // +0x50
-	let options : [FormatOption] // +0x58
-	let types : [FormatType] // +0x60
+	let options : FormatOption // +0x58
+	let types : FormatType // +0x60
 	let contentSizeCategory : FormatContentSizeCategory // +0x68
  }
 
@@ -12492,33 +13122,38 @@
  class NewsFeed.IssueCoverView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let staticContentView : ImageView // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let staticContentView : ≠—	 // +0x8 (0x8)
 	let dynamicContentView : UIView // +0x10 (0x8)
 	var dynamicView : UIView? // +0x18 (0x8)
-	let backgroundLayer : NonAnimatingLayer // +0x20 (0x8)
-	let shadowView : MotionContainerView // +0x28 (0x8)
-	let shadowMotionLayer : MotionLayer<NonAnimatingLayer> // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let backgroundLayer : _Œ // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shadowView : g∑	 // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shadowMotionLayer : •4	 // +0x30 (0x8)
 	var observingMotion : Bool // +0x38 (0x1)
 	var identifier : String? // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x64e750  @objc IssueCoverView.initWithFrame: <stripped>
-	0x64e7d0  @objc IssueCoverView.initWithCoder: <stripped>
-	0x64ea40  @objc IssueCoverView.layoutSubviews <stripped>
-	0x64ec20  @objc IssueCoverView.didMoveToSuperview <stripped>
-	0x64ed20  @objc IssueCoverView.removeFromSuperview <stripped>
-	0x64eda0  @objc IssueCoverView..cxx_destruct <stripped>
+	0x66a750  @objc IssueCoverView.initWithFrame: <stripped>
+	0x66a7d0  @objc IssueCoverView.initWithCoder: <stripped>
+	0x66a980  @objc IssueCoverView.layoutSubviews <stripped>
+	0x66ab20  @objc IssueCoverView.didMoveToSuperview <stripped>
+	0x66ac00  @objc IssueCoverView.removeFromSuperview <stripped>
+	0x66ac60  @objc IssueCoverView..cxx_destruct <stripped>
  }
 
  class NewsFeed.DebugButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let onTap : Action<()> // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let onTap : wü	 // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x650000  @objc DebugButton.initWithFrame: <stripped>
-	0x650100  @objc DebugButton.initWithCoder: <stripped>
-	0x6501e0  @objc DebugButton..cxx_destruct <stripped>
+	0x66bfb0  @objc DebugButton.initWithFrame: <stripped>
+	0x66c0b0  @objc DebugButton.initWithCoder: <stripped>
+	0x66c190  @objc DebugButton..cxx_destruct <stripped>
  }
 
  struct NewsFeed.I18_V1 {
@@ -12534,21 +13169,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12568,8 +13205,8 @@
  struct NewsFeed.FeedPropertyList {
 
 	// Properties
-	let contentProperties : [FeedProperty] // +0x0
-	let contentGroupProperties : [FeedProperty] // +0x8
+	let contentProperties : FeedProperty // +0x0
+	let contentGroupProperties : FeedProperty // +0x8
  }
 
  struct NewsFeed.FormatNotExpression {
@@ -12587,7 +13224,7 @@
  struct NewsFeed.FormatFrameExpressionLogicCompare {
 
 	// Properties
-	let value : FormatEquation<FormatFloat> // +0x0
+	let value : FormatEquation // +0x0
 	let operator : FormatOperator // +0x18
  }
 
@@ -12602,9 +13239,9 @@
 
 	// Properties
 	case other : FormatSize
-	case switch : FormatTextSize
-	case altText : [FormatTextNodeAlternative]
-	case altFlexibleText : [FormatTextNodeAlternative]
+	case switch : FormatSwitchValue
+	case altText : FormatTextNodeAlternative
+	case altFlexibleText : FormatTextNodeAlternative
 	case flexibleText  
 	case text  
 	case singleLine  
@@ -12634,7 +13271,8 @@
  struct NewsFeed.FormatBindingFontSize {
 
 	// Properties
-	let size : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let size : ;Ã	 // +0x0
 	let scaling : FormatFontScaling // +0x8
  }
 
@@ -12659,14 +13297,14 @@
 	let issue : FCIssue // +0x0
 	let identifier : String // +0x8
 	let badge : CoverViewBadge // +0x18
-	let premiumBadge : FeedItem.PremiumBadge // +0x19
+	let premiumBadge : PremiumBadge // +0x19
 	let layoutDirection : FeedLayoutDirection // +0x20
 	let issueCover : IssueCover // +0x30
 	let issueTraits : Traits // +0x58
 	let style : Style // +0x60
 	let issueSubstring : String // +0x68
 	let overrides : Overrides // +0x78
-	let kind : FeedItem.Kind // +0x98
+	let kind : Kind // +0x98
  }
 
  struct NewsFeed.Overrides {
@@ -12702,10 +13340,10 @@
 	var identifier : String? // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x665bf0  @objc ImageLayer.init <stripped>
-	0x665d80  @objc ImageLayer.initWithLayer: <stripped>
-	0x665f20  @objc ImageLayer.initWithCoder: <stripped>
-	0x666000  @objc ImageLayer..cxx_destruct <stripped>
+	0x680df0  @objc ImageLayer.init <stripped>
+	0x680f50  @objc ImageLayer.initWithLayer: <stripped>
+	0x6810c0  @objc ImageLayer.initWithCoder: <stripped>
+	0x681170  @objc ImageLayer..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C8_V2 {
@@ -12722,25 +13360,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -12768,14 +13410,14 @@
 	let name : String? // +0x10
 	let description : String? // +0x20
 	let kind : FormatItemKind // +0x30
-	let traits : [FormatItemTrait] // +0x38
-	let children : [FormatNode] // +0x40
-	let style : FormatItemNodeStyle? // +0x48
-	let styles : [FormatNodeStyle] // +0xf8
+	let traits : FormatItemTrait // +0x38
+	let children : FormatNode // +0x40
+	let style : FormatItemNodeStyle // +0x48
+	let styles : FormatNodeStyle // +0xf8
 	let selectors : [String] // +0x100
-	let options : [FormatOption] // +0x108
-	let types : [FormatType] // +0x110
-	let accessibilityRole : FormatAccessibilityRole? // +0x118
+	let options : FormatOption // +0x108
+	let types : FormatType // +0x110
+	let accessibilityRole : FormatAccessibilityRole // +0x118
  }
 
  enum NewsFeed.CodingKeys {
@@ -12808,21 +13450,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedCatalogItems : [FeedCatalogItem]
+	let feedCatalogItems : FeedCatalogItem
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let attributes : [HMultiLayoutItem] // +0x20
+	let attributes : HMultiLayoutItem // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let attributes : LayoutItemList<HMultiLayoutItem> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let attributes : ç¡ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12847,7 +13491,7 @@
 
 	// Properties
 	let color : FormatColor // +0x0
-	let processors : [FormatColorProcessor] // +0x8
+	let processors : FormatColorProcessor // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12877,14 +13521,16 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : HeadlineViewLayout.Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItem<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Uü	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -12907,14 +13553,15 @@
 	let followButton : CoverViewFollowSwitch // +0x8 (0x8)
 	let moreActionsButton : CoverViewActionButton // +0x10 (0x8)
 	let titleLabel : UILabel // +0x18 (0x8)
-	let coverImage : ImageView // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let coverImage : ≠—	 // +0x20 (0x8)
 	let accessoryLabel : UILabel // +0x28 (0x8)
 	let debugButton : DebugButton // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x67e9f0  @objc CoverChannelView.initWithFrame: <stripped>
-	0x67ea70  @objc CoverChannelView.initWithCoder: <stripped>
-	0x67eae0  @objc CoverChannelView..cxx_destruct <stripped>
+	0x69b780  @objc CoverChannelView.initWithFrame: <stripped>
+	0x69b800  @objc CoverChannelView.initWithCoder: <stripped>
+	0x69b850  @objc CoverChannelView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C18_V5 {
@@ -12931,25 +13578,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -12981,7 +13632,7 @@
 
 	// Properties
 	case remote : FormatRemoteImage
-	case userInterface : FormatPatternContent
+	case userInterface : FormatUserInterfaceValue
  }
 
  enum NewsFeed.CodingType {
@@ -12999,7 +13650,7 @@
 	let name : String? // +0x20
 	let description : String? // +0x30
 	let selectors : [String] // +0x40
-	let options : [FormatOption] // +0x48
+	let options : FormatOption // +0x48
  }
 
  enum NewsFeed.CodingKeys {
@@ -13027,25 +13678,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13075,25 +13730,32 @@
 	case help : FormatAccessibilityContent
 	case hint : FormatAccessibilityContent
 	case language : FormatAccessibilityContent
-	case trait : FormatValue<FormatAccessibilityTrait>
+	case trait : FormatValue
  }
 
  class NewsFeed.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x6972b0  @objc ManagerAssembly.init <stripped>
+	0x6b7b90  @objc ManagerAssembly.init <stripped>
  }
 
  class NewsFeed.FormatBorderLayer : CAShapeLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-	0x6975e0  @objc FormatBorderLayer.init <stripped>
-	0x697630  @objc FormatBorderLayer.initWithLayer: <stripped>
-	0x6976f0  @objc FormatBorderLayer.initWithCoder: <stripped>
+	0x6b7ec0  @objc FormatBorderLayer.init <stripped>
+	0x6b7ef0  @objc FormatBorderLayer.initWithLayer: <stripped>
+	0x6b7f90  @objc FormatBorderLayer.initWithCoder: <stripped>
+ }
+
+ struct NewsFeed.FormatTraversableEntry {
+
+	// Properties
+	let key : FormatPathItem // +0x0
+	let value : FormatTraversable // +0x18
  }
 
  class NewsFeed.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x699d40  @objc Images.init <stripped>
-	0x699de0  @objc Images..cxx_destruct <stripped>
+	0x76c570  @objc Images.init <stripped>
+	0x76c510  @objc Images..cxx_destruct <stripped>
  }
 
  struct NewsFeed.E12_V3 {
@@ -13110,25 +13772,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13163,7 +13829,8 @@
 
 	// Properties
 	case binding : FormatWebEmbedNodeBinding
-	case inline : URL
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case inline : ßë	
  }
 
  enum NewsFeed.CodingType {
@@ -13176,11 +13843,12 @@
  class NewsFeed.DebugFormatManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let lock : UnfairLock // +0x10 (0x8)
-	var cache : [String : DebugFormatCacheFile] // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lock : Ω // +0x10 (0x8)
+	var cache : DebugFormatCacheFile // +0x18 (0x8)
 	let service : DebugFormatService // +0x20 (0x8)
 	let fontManager : FeedFontManager // +0x28 (0x8)
-	var $__lazy_storage_$_environment : NewsEnvironment? // +0x30 (0x1)
+	var $__lazy_storage_$_environment : NewsEnvironment // +0x30 (0x1)
 
 	// Swift methods
  }
@@ -13190,7 +13858,8 @@
 	// Properties
 	case missingFileReference : String
 	case fileReferenceMismatchDataType : (String, expectedType: String)
-	case invalidPackage : (file: String, error: Error)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case invalidPackage :  first-element-marker 
 	case noChanges  
  }
 
@@ -13244,7 +13913,8 @@
  class NewsFeed.WebEmbedConfigurationProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedConfigurationProviderType {
 
 	// Properties
-	let locale : Locale // +0xa15cbe (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let locale : ’≥ // +0xb03d50 (0x0)
 	let storeFront : String? // +0x0 (0x10)
 
 	// Swift methods
@@ -13255,11 +13925,11 @@
 	// Properties
 	let identifier : String // +0x0
 	let namespace : String // +0x10
-	let feedItems : [FeedItem] // +0x20
-	let feedGroupItems : Set<FeedGroupItem> // +0x28
+	let feedItems : FeedItem // +0x20
+	let feedGroupItems : FeedGroupItem // +0x28
 	let feedGroupKind : FeedGroupKind // +0x30
 	let feedGroupContextIdentifier : String // +0x138
-	let feedSlots : [FeedSlot] // +0x148
+	let feedSlots : FeedSlot // +0x148
  }
 
  struct NewsFeed.FormatContentPool {
@@ -13285,45 +13955,50 @@
  struct NewsFeed.FormatButtonNodeDataLayoutAttributes {
 
 	// Properties
-	let layoutAttributes : FormatDataLayoutAttributes<()> // +0x0
-	let stateMaskLayoutAttributes : [FormatButtonNodeStateMask : FormatButtonNodeStateMaskDataLayoutAttributes] // +0x68
+	let layoutAttributes : FormatDataLayoutAttributes // +0x0
+	let stateMaskLayoutAttributes : FormatButtonNodeStateMask // +0x68
 	let zIndex : Int // +0x70
 	let contextLayoutOptions : FormatContextLayoutOptions // +0x78
-	let behaviors : [FormatNodeBehavior.Resolved] // +0x98
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0xa0
+	let behaviors : Resolved // +0x98
+	let accessibilityRole : FormatNodeAccessibilityRole // +0xa0
  }
 
  class NewsFeed.CardView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var cornerRadius : CGFloat // +0x8 (0x8)
-	let shineView : ShineView // +0x10 (0x8)
-	let shadowView : MotionContainerView // +0x18 (0x8)
-	let shadowMotionLayer : MotionLayer<NonAnimatingLayer> // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cornerRadius : ;Ã	 // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shineView : âª	 // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shadowView : g∑	 // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shadowMotionLayer : •4	 // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6d3410  @objc CardView.initWithFrame: <stripped>
-	0x6d3440  @objc CardView.initWithCoder: <stripped>
-	0x6d3720  @objc CardView.layoutSubviews <stripped>
-	0x6d3750  @objc CardView.backgroundColor <stripped>
-	0x6d3800  @objc CardView.setBackgroundColor: <stripped>
-	0x6d3b60  @objc CardView..cxx_destruct <stripped>
+	0x79d390  @objc CardView.initWithFrame: <stripped>
+	0x79d3c0  @objc CardView.initWithCoder: <stripped>
+	0x79d640  @objc CardView.layoutSubviews <stripped>
+	0x79d670  @objc CardView.backgroundColor <stripped>
+	0x79d6f0  @objc CardView.setBackgroundColor: <stripped>
+	0x79d9a0  @objc CardView..cxx_destruct <stripped>
  }
 
  class NewsFeed.CoverViewActionButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let onTap : Action<()> // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let onTap : wü	 // +0x8 (0x8)
 	var touchInsets : UIEdgeInsets // +0x10 (0x20)
 	var tintColorForNormalState : UIColor // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6d4440  @objc CoverViewActionButton.isHighlighted <stripped>
-	0x6d44d0  @objc CoverViewActionButton.setHighlighted: <stripped>
-	0x6d46e0  @objc CoverViewActionButton.initWithFrame: <stripped>
-	0x6d4760  @objc CoverViewActionButton.initWithCoder: <stripped>
-	0x6d4780  @objc CoverViewActionButton.pointInside:withEvent: <stripped>
-	0x6d48f0  @objc CoverViewActionButton..cxx_destruct <stripped>
+	0x79e150  @objc CoverViewActionButton.isHighlighted <stripped>
+	0x79e1b0  @objc CoverViewActionButton.setHighlighted: <stripped>
+	0x79e390  @objc CoverViewActionButton.initWithFrame: <stripped>
+	0x79e410  @objc CoverViewActionButton.initWithCoder: <stripped>
+	0x79e430  @objc CoverViewActionButton.pointInside:withEvent: <stripped>
+	0x79e570  @objc CoverViewActionButton..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -13338,7 +14013,8 @@
  struct NewsFeed.Value {
 
 	// Properties
-	let radius : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let radius : ;Ã	 // +0x0
 	let corners : FormatCorner // +0x8
 	let continuous : Bool // +0x10
  }
@@ -13376,7 +14052,7 @@
 	let description : String? // +0x20
 	let content : FormatDecorationContent // +0x30
 	let columns : Set<Int> // +0x68
-	let options : [FormatOption] // +0x70
+	let options : FormatOption // +0x70
  }
 
  enum NewsFeed.CodingKeys {
@@ -13396,26 +14072,28 @@
 	let identifier : String
 	let class : String
 	let selectors : Selector
-	let font : FormatFont?
-	let fill : FormatFill?
-	let borders : [FormatBorder]?
-	let shadow : FormatShadow?
-	let transforms : [FormatTextNodeTransform]?
-	let paragraphStyle : FormatParagraphStyle?
-	let tracking : CGFloat?
+	let font : FormatFont
+	let fill : FormatFill
+	let borders : FormatBorder
+	let shadow : FormatShadow
+	let transforms : FormatTextNodeTransform
+	let paragraphStyle : FormatParagraphStyle
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracking : •´	
  }
 
  struct NewsFeed.Selector {
 
 	// Properties
 	let selector : String
-	let font : FormatFont?
-	let fill : FormatFill?
-	let borders : [FormatBorder]?
-	let shadow : FormatShadow?
-	let transforms : [FormatTextNodeTransform]?
-	let paragraphStyle : FormatParagraphStyle?
-	let tracking : CGFloat?
+	let font : FormatFont
+	let fill : FormatFill
+	let borders : FormatBorder
+	let shadow : FormatShadow
+	let transforms : FormatTextNodeTransform
+	let paragraphStyle : FormatParagraphStyle
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracking : •´	
  }
 
  enum NewsFeed.CodingKeys {
@@ -13460,25 +14138,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13541,7 +14223,8 @@
 
 	// Properties
 	let component : FormatColorComponent // +0x0
-	let value : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let value : ;Ã	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -13564,21 +14247,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -13619,25 +14304,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13669,7 +14358,7 @@
 
  class NewsFeed.FormatImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x6ff020  @objc FormatImageProcessor.process: <stripped>
+	0x7ca190  @objc FormatImageProcessor.process: <stripped>
 
 	// Swift methods
  }
@@ -13681,21 +14370,22 @@
 	let orderLabel : UILabel // +0x10 (0x8)
 	let accessoryLabel : UILabel // +0x18 (0x8)
 	let publisherLabel : UILabel // +0x20 (0x8)
-	let publisherLogoImageView : ImageView // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageView : ≠—	 // +0x28 (0x8)
 	let premiumBadgeView : PremiumBadgeView // +0x30 (0x8)
 	let debugButton : DebugButton // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6ff6f0  @objc OrderedHeadlineView.initWithFrame: <stripped>
-	0x6ff770  @objc OrderedHeadlineView.initWithCoder: <stripped>
-	0x6ff7e0  @objc OrderedHeadlineView..cxx_destruct <stripped>
+	0x7ca9c0  @objc OrderedHeadlineView.initWithFrame: <stripped>
+	0x7caa40  @objc OrderedHeadlineView.initWithCoder: <stripped>
+	0x7caa90  @objc OrderedHeadlineView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.FormatPrefetchResources {
 
 	// Properties
-	var fonts : [FormatResource] // +0x0
-	var images : [FormatResource] // +0x8
+	var fonts : FormatResource // +0x0
+	var images : FormatResource // +0x8
  }
 
  class NewsFeed.IssueViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueViewRendererType {
@@ -13723,25 +14413,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13776,25 +14470,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -13828,21 +14526,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -13863,9 +14563,9 @@
 
 	// Properties
 	case hex : String
-	case system : (FormatSystemColor, alpha: CGFloat?)
-	case fixed : (FormatFixedColor, alpha: CGFloat?)
-	case userInterface : FormatColor
+	case system : FormatSystemColor
+	case fixed : FormatFixedColor
+	case userInterface : FormatUserInterfaceValue
 	case processed : FormatProcessedColor
 	case grayscale : FormatGrayscaleColor
 	case rgba : FormatRGBAColor
@@ -13876,14 +14576,16 @@
 
 	// Properties
 	let color : FormatSystemColor // +0x0
-	let alpha : CGFloat? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alpha : •´	 // +0x8
  }
 
  struct NewsFeed.FixedColor {
 
 	// Properties
 	let color : FormatFixedColor // +0x0
-	let alpha : CGFloat? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alpha : •´	 // +0x8
  }
 
  enum NewsFeed.CodingType {
@@ -13936,21 +14638,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedCatalogItems : [FeedCatalogItem]
+	let feedCatalogItems : FeedCatalogItem
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let attributes : [HMultiLayoutItem] // +0x20
+	let attributes : HMultiLayoutItem // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let attributes : LayoutItemList<HMultiLayoutItem> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let attributes : ç¡ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -13987,10 +14691,17 @@
 	let assetManager : FCAssetManager // +0x10 (0x8)
 	let resourceManager : FCFlintResourceManager // +0x18 (0x8)
 	let registrationManager : NUFontRegistration // +0x20 (0x8)
-	let lock : UnfairLock // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lock : Ω // +0x28 (0x8)
 	var loadedFonts : LoadedFont // +0x30 (0x8)
 
 	// Swift methods
+ }
+
+ struct NewsFeed.BundledFont {
+
+	// Properties
+	let loadableFont : FCLoadableFont // +0x0
  }
 
  struct NewsFeed.HttpFont {
@@ -14006,17 +14717,12 @@
 	let resourceID : String // +0x8
  }
 
- struct NewsFeed.BundledFont {
-
-	// Properties
-	let loadableFont : FCLoadableFont // +0x0
- }
-
  struct NewsFeed.LocalFont {
 
 	// Properties
 	let loadableFont : FCLoadableFont
-	let fileURL : URL
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fileURL : ßë	
  }
 
  struct NewsFeed.A12_V7 {
@@ -14032,21 +14738,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -14086,10 +14794,10 @@
 	let identifier : String
 	let layoutIdentifier : String
 	let frame : CGRect
-	let style : FormatTextNodeStyle?
+	let style : FormatTextNodeStyle
 	let zIndex : Int
 	let contextLayoutOptions : FormatContextLayoutOptions
-	let accessibilityRole : FormatNodeAccessibilityRole?
+	let accessibilityRole : FormatNodeAccessibilityRole
  }
 
  enum NewsFeed.CodingKeys {
@@ -14108,10 +14816,11 @@
 
 	// Properties
 	let frame : CGRect // +0x10 (0x20)
-	let kind : CollectionViewSupplementaryKind // +0x74735f5f (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let kind : U≤ // +0x74735f5f (0x0)
 
 	// Swift methods
-	0x739d60  class func EmptyViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
+	0x8040d0  class func EmptyViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
  }
 
  enum NewsFeed.FormatLayoutOption {
@@ -14129,8 +14838,8 @@
  struct NewsFeed.FormatNodeStyleCollection {
 
 	// Properties
-	let styles : [FormatObject<FormatStyle>] // +0x0
-	let styleSourcesByClass : [String : [FormatMerge<FormatNodeStyle>]] // +0x8
+	let styles : FormatObject // +0x0
+	let styleSourcesByClass : FormatMerge // +0x8
  }
 
  enum NewsFeed.FeedLayoutDirection {
@@ -14154,25 +14863,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
 	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14200,8 +14913,8 @@
 	let followingManager : FollowingManagerType // +0x10 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x772470  @objc FollowingCommandHandler.init <stripped>
-	0x7724f0  @objc FollowingCommandHandler..cxx_destruct <stripped>
+	0x844950  @objc FollowingCommandHandler.init <stripped>
+	0x8449b0  @objc FollowingCommandHandler..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -14211,10 +14924,10 @@
 	// Properties
 	let identifier : String // +0x0
 	let size : FormatSize // +0x10
-	let adjustments : [FormatAdjustment] // +0x18
-	let style : FormatViewNodeStyle? // +0x20
+	let adjustments : FormatAdjustment // +0x18
+	let style : FormatViewNodeStyle // +0x20
 	let zIndex : Int // +0xf8
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0x100
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x100
  }
 
  enum NewsFeed.CodingKeys {
@@ -14249,23 +14962,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [OrderedHeadlineViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let headlineLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<OrderedHeadlineViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : im	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -14298,9 +15014,11 @@
  struct NewsFeed.FormatContextLayoutOptions {
 
 	// Properties
-	let scale : CGFloat // +0x0
-	let scaleFactor : CGFloat // +0x8
-	let options : [String : FormatOption] // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scaleFactor : ;Ã	 // +0x8
+	let options : FormatOption // +0x10
 	let selectors : [String] // +0x18
  }
 
@@ -14327,25 +15045,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14379,21 +15101,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -14436,7 +15160,7 @@
  struct NewsFeed.DebugFormatFileDirectory {
 
 	// Properties
-	let files : [DebugFormatFile] // +0x0
+	let files : DebugFormatFile // +0x0
  }
 
  struct NewsFeed.DebugFormatFile {
@@ -14466,7 +15190,7 @@
 	case inline : String
 	case formatted : FormatTextNodeFormat
 	case attachment : FormatTextNodeAttachment
-	case switch : FormatTextNodeContent
+	case switch : FormatSwitchValue
  }
 
  enum NewsFeed.CodingType {
@@ -14494,7 +15218,7 @@
 	let styles : FormatNodeStyleCollection // +0x80
 	let types : FormatTypeCollection // +0x90
 	let decorations : FormatDecorationCollection // +0xa0
-	let options : [FormatOption] // +0xa8
+	let options : FormatOption // +0xa8
 	let localizations : FormatLocalizationCollection // +0xb0
 	let compilerOptions : FormatCompilerOptions // +0xc0
 	var additionalAssetHandles : [FCAssetHandle] // +0x100
@@ -14503,7 +15227,8 @@
  class NewsFeed.DebugFormatService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var $__lazy_storage_$_urlSessionPool : URLSessionPool? // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_urlSessionPool : ∑ç	 // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -14518,12 +15243,17 @@
  enum NewsFeed.DebugFormatServiceError {
 
 	// Properties
-	case unknown : Error
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case unknown : 5
+
 	case invalidURLResponse : NSURLResponse?
-	case formatError : DebugFormatServiceError.ServerMessage
-	case codingFailure : (URL, Error)
-	case notAPackage : (URL, FormatFile)
-	case missingPackageList : URL
+	case formatError : ServerMessage
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case codingFailure : ?˙
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case notAPackage : {ö
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case missingPackageList : ßë	
 	case noData  
  }
 
@@ -14548,25 +15278,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14645,25 +15379,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -14691,19 +15429,20 @@
 	// Properties
 	var assetHandles : [String : TSAssetHandleType] // +0x8 (0x8)
 	let publisherLogoImageSize : CGSize // +0x10 (0x10)
-	let scale : CGFloat // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x20 (0x8)
 	let theme : PublisherLogoTheme // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7cb020  @objc PublisherLogoProcessorRequest.assetHandles <stripped>
-	0x7cb100  @objc PublisherLogoProcessorRequest.setAssetHandles: <stripped>
-	0x7cb480  @objc PublisherLogoProcessorRequest.initWithPublisherLogoAssetHandle:publisherLogoImageSize:scale:theme: <stripped>
-	0x7cb4e0  @objc PublisherLogoProcessorRequest.cacheIdentifier <stripped>
-	0x7cb7f0  @objc PublisherLogoProcessorRequest.init <stripped>
-	0x7cb870  @objc PublisherLogoProcessorRequest..cxx_destruct <stripped>
+	0x8a1480  @objc PublisherLogoProcessorRequest.assetHandles <stripped>
+	0x8a1540  @objc PublisherLogoProcessorRequest.setAssetHandles: <stripped>
+	0x8a1700  @objc PublisherLogoProcessorRequest.initWithPublisherLogoAssetHandle:publisherLogoImageSize:scale:theme: <stripped>
+	0x8a1780  @objc PublisherLogoProcessorRequest.cacheIdentifier <stripped>
+	0x8a1a60  @objc PublisherLogoProcessorRequest.init <stripped>
+	0x8a1ac0  @objc PublisherLogoProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7cb240  class func PublisherLogoProcessorRequest.__allocating_init(publisherLogoAssetHandle:publisherLogoImageSize:scale:theme:) // init 
+	0x8a1650  class func PublisherLogoProcessorRequest.__allocating_init(publisherLogoAssetHandle:publisherLogoImageSize:scale:theme:) // init 
  }
 
  struct NewsFeed.FormatNamespace {
@@ -14720,22 +15459,30 @@
 	let messageLabel : UILabel // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7cbfd0  @objc InternalErrorView.initWithFrame: <stripped>
-	0x7cc050  @objc InternalErrorView.initWithCoder: <stripped>
-	0x7cc0c0  @objc InternalErrorView..cxx_destruct <stripped>
+	0x8a2340  @objc InternalErrorView.initWithFrame: <stripped>
+	0x8a23c0  @objc InternalErrorView.initWithCoder: <stripped>
+	0x8a2410  @objc InternalErrorView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.CoverIssueViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let titleLabelFrame : LayoutItem<CGRect> // +0x8
-	let accessoryFrame : LayoutItem<CGRect> // +0x10
-	let moreActionsButtonFrame : LayoutItem<CGRect> // +0x18
-	let followButtonFrame : LayoutItem<CGRect> // +0x20
-	let downloadProgressBarFrame : LayoutItem<CGRect> // +0x28
-	let cloudIconFrame : LayoutItem<CGRect> // +0x30
-	let issueCoverViewLayoutAttributes : LayoutItem<IssueCoverViewLayoutAttributes> // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleLabelFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryFrame : }¥	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let moreActionsButtonFrame : }¥	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let followButtonFrame : }¥	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let downloadProgressBarFrame : }¥	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cloudIconFrame : }¥	 // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let issueCoverViewLayoutAttributes : ;£	 // +0x38
  }
 
  struct NewsFeed.Attributes {
@@ -14757,13 +15504,13 @@
 	let key : GroupLayoutKey
 	let model : FeedIssue
 	let styler : CoverIssueViewStylerType
-	let cachedSingleLineTitleText : CachedText<NSAttributedString>
-	let cachedDoubleLineTitleText : CachedText<NSAttributedString>
-	let cachedCoverDateText : CachedText<NSAttributedString>
-	let cachedBadgeText : CachedText<NSAttributedString>
-	let cachedFollowButtonText : CachedText<NSAttributedString>
-	let cachedUnfollowButtonText : CachedText<NSAttributedString>
-	let cachedAccessibilityLabelText : CachedText<String?>
+	let cachedSingleLineTitleText : CachedText
+	let cachedDoubleLineTitleText : CachedText
+	let cachedCoverDateText : CachedText
+	let cachedBadgeText : CachedText
+	let cachedFollowButtonText : CachedText
+	let cachedUnfollowButtonText : CachedText
+	let cachedAccessibilityLabelText : CachedText
  }
 
  struct NewsFeed.Options {
@@ -14808,17 +15555,17 @@
 
 	// Properties
 	case zero : String
-	case gap : (GapViewLayout.Context, GapViewLayout.Attributes)
-	case gapOffline : (GapOfflineViewLayout.Context, GapOfflineViewLayout.Attributes)
-	case webEmbedView : (WebEmbedViewLayout.Context, WebEmbedViewLayout.Attributes, visualRank: Int)
-	case imageHeadlineView : (HeadlineViewLayout.Context, HeadlineViewLayout.Attributes, visualRank: Int)
-	case featuredHeadlineView : (FeaturedHeadlineViewLayout.Context, FeaturedHeadlineViewLayout.Attributes, visualRank: Int)
-	case featuredIssueHeadlineView : (FeaturedIssueHeadlineViewLayout.Context, FeaturedIssueHeadlineViewLayout.Attributes, visualRank: Int)
-	case orderedHeadlineView : (OrderedHeadlineViewLayout.Context, OrderedHeadlineViewLayout.Attributes, visualRank: Int)
-	case issueView : (IssueViewLayout.Context, IssueViewLayout.Attributes, visualRank: Int)
-	case coverIssueView : (CoverIssueViewLayout.Context, CoverIssueViewLayout.Attributes, visualRank: Int)
-	case coverChannelView : (CoverChannelViewLayout.Context, CoverChannelViewLayout.Attributes, visualRank: Int)
-	case formatLayoutView : (FormatItemNodeLayoutContext, FormatItemNodeDataLayoutAttributes, visualRank: Int)
+	case gap : Context
+	case gapOffline : Context
+	case webEmbedView : Context
+	case imageHeadlineView : Context
+	case featuredHeadlineView : Context
+	case featuredIssueHeadlineView : Context
+	case orderedHeadlineView : Context
+	case issueView : Context
+	case coverIssueView : Context
+	case coverChannelView : Context
+	case formatLayoutView : FormatItemNodeLayoutContext
 	case feedItem : FeedItemLayoutAttributes
  }
 
@@ -14826,31 +15573,31 @@
 
 	// Properties
 	let description : String
-	let tokens : [FormatEquationToken<A>]
+	let tokens : FormatEquationToken
  }
 
  class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
 	// ObjC -> Swift bridged methods
-	0x7deaf0  @objc RandomTag.currentIssueIDs <stripped>
-	0x7debd0  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
-	0x7dec10  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
-	0x7dec40  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
-	0x7dec70  @objc RandomTag.initWithData:context: <stripped>
-	0x7deca0  @objc RandomTag.initWithTagType:identifier:name: <stripped>
-	0x7ded80  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
-	0x7dedb0  @objc RandomTag.init <stripped>
+	0x8b5370  @objc RandomTag.currentIssueIDs <stripped>
+	0x8b5470  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
+	0x8b54a0  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
+	0x8b54d0  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
+	0x8b5500  @objc RandomTag.initWithData:context: <stripped>
+	0x8b5520  @objc RandomTag.initWithTagType:identifier:name: <stripped>
+	0x8b5550  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
+	0x8b5570  @objc RandomTag.init <stripped>
  }
 
  class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
 	// ObjC -> Swift bridged methods
-	0x7deaf0  @objc RandomTag.currentIssueIDs <stripped>
-	0x7dedf0  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
-	0x7df090  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
-	0x7df3a0  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
-	0x7df560  @objc RandomTag.initWithData:context: <stripped>
-	0x7df760  @objc RandomTag.initWithTagType:identifier:name: <stripped>
-	0x7df8f0  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
-	0x7df9d0  @objc RandomTag.init <stripped>
+	0x8b6870  @objc RandomTag.currentIssueIDs <stripped>
+	0x8b55e0  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
+	0x8b5610  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
+	0x8b5810  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
+	0x8b5930  @objc RandomTag.initWithData:context: <stripped>
+	0x8b5a20  @objc RandomTag.initWithTagType:identifier:name: <stripped>
+	0x8b5b00  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
+	0x8b5c10  @objc RandomTag.init <stripped>
  }
 
  struct NewsFeed.FormatShineOptions {
@@ -14861,8 +15608,9 @@
 	let sizer : FormatShineSizer // +0x18
 	let rotateRadians : Double // +0x20
 	let motion : FormatMotion // +0x28
-	let blends : [FormatShineBlend] // +0x58
-	let scale : CGFloat // +0x60
+	let blends : FormatShineBlend // +0x58
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x60
  }
 
  enum NewsFeed.CodingKeys {
@@ -14880,8 +15628,8 @@
  struct NewsFeed.FormatLocalizationCollection {
 
 	// Properties
-	let localizations : [FormatObject<FormatLocalization>] // +0x0
-	let stringsByIdentifier : [String : FormatLocalizationString] // +0x8
+	let localizations : FormatObject // +0x0
+	let stringsByIdentifier : FormatLocalizationString // +0x8
  }
 
  class NewsFeed.LayeredMediaLayerProcessorRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -14889,22 +15637,23 @@
 	// Properties
 	var assetHandles : [String : TSAssetHandleType] // +0x10 (0x8)
 	let size : CGSize // +0x18 (0x10)
-	let scale : CGFloat // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7e4ee0  @objc LayeredMediaLayerProcessorRequest.assetHandles <stripped>
-	0x7e4fb0  @objc LayeredMediaLayerProcessorRequest.setAssetHandles: <stripped>
-	0x7e50c0  @objc LayeredMediaLayerProcessorRequest.cacheIdentifier <stripped>
+	0x8baae0  @objc LayeredMediaLayerProcessorRequest.assetHandles <stripped>
+	0x8bab80  @objc LayeredMediaLayerProcessorRequest.setAssetHandles: <stripped>
+	0x8bac70  @objc LayeredMediaLayerProcessorRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x7e4d20  class func LayeredMediaLayerProcessorRequest.__allocating_init(assetHandle:size:scale:) // init 
+	0x8baac0  class func LayeredMediaLayerProcessorRequest.__allocating_init(assetHandle:size:scale:) // init 
  }
 
  struct NewsFeed.DebugFormatLayoutModelSection {
 
 	// Properties
-	let title : DebugFormatLayoutModelSection.Title // +0x0
-	let items : [DebugFormatLayoutModelSection.Item] // +0x8
+	let title : Title // +0x0
+	let items : Item // +0x8
  }
 
  enum NewsFeed.Item {
@@ -14927,7 +15676,8 @@
  class NewsFeed.LayeredMediaConditionValidator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaConditionValidatorType {
 
 	// Properties
-	let versionProvider : AppVersionProviding // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let versionProvider : —ü // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -14935,10 +15685,14 @@
  struct NewsFeed.InternalErrorViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let titleLabelFrame : LayoutItem<CGRect> // +0x8
-	let subtitleLabelFrame : LayoutItem<CGRect> // +0x10
-	let messageLabelFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleLabelFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let subtitleLabelFrame : }¥	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let messageLabelFrame : }¥	 // +0x18
  }
 
  struct NewsFeed.Attributes {
@@ -14990,21 +15744,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15034,21 +15790,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15079,25 +15837,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -15121,9 +15883,9 @@
  struct NewsFeed.FormatItemNodeDataLayoutAttributes {
 
 	// Properties
-	let style : FormatItemNodeStyle? // +0x0
+	let style : FormatItemNodeStyle // +0x0
 	let contextLayoutOptions : FormatContextLayoutOptions // +0xb0
-	let dataLayoutAttributes : FormatDataLayoutAttributes<FormatItem> // +0xd0
+	let dataLayoutAttributes : FormatDataLayoutAttributes // +0xd0
  }
 
  enum NewsFeed.PremiumBadgeStyle { }
@@ -15131,22 +15893,27 @@
  enum NewsFeed.FormatDataLayoutValue {
 
 	// Properties
-	case image : (FormatImage, FormatImageNodeLayoutAttributes)
-	case text : (FormatText, FormatTextNodeLayoutAttributes)
+	case image : FormatImage
+	case text : FormatText
 	case view : FormatViewNodeLayoutAttributes
-	case button : (FormatLayoutAction, FormatButtonNodeDataLayoutAttributes)
-	case webEmbed : (FormatWebEmbed, FormatWebEmbedNodeLayoutAttributes, FormatFrameNodeLayoutAttributes?)
+	case button : FormatLayoutAction
+	case webEmbed : FormatWebEmbed
  }
 
  struct NewsFeed.IssueColorPalette {
 
 	// Properties
 	let backgroundColor : UIColor
-	let titleColor : DynamicValue<UIColor>
-	let excerptColor : DynamicValue<UIColor>
-	let accessoryColor : DynamicValue<UIColor>
-	let publisherNameColor : DynamicValue<UIColor>
-	let theme : Theme
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let excerptColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherNameColor : Å	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let theme : À;	
  }
 
  enum NewsFeed.Theme {
@@ -15169,21 +15936,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15203,24 +15972,25 @@
  class NewsFeed.DebugFormatErrorViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var errorModel : DebugFormatErrorModel? // +0x8 (0x20)
+	var errorModel : DebugFormatErrorModel // +0x8 (0x20)
 	let tableView : UITableView // +0x28 (0x8)
-	var $__lazy_storage_$_cardViewScrollViewCoordinator : CardViewScrollViewCoordinator? // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_cardViewScrollViewCoordinator : ›ï // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x80dcb0  @objc DebugFormatErrorViewController.viewDidLoad <stripped>
-	0x80dce0  @objc DebugFormatErrorViewController.viewWillLayoutSubviews <stripped>
-	0x80ded0  @objc DebugFormatErrorViewController.didMoveToParentViewController: <stripped>
-	0x80e080  @objc DebugFormatErrorViewController.initWithNibName:bundle: <stripped>
-	0x80e0d0  @objc DebugFormatErrorViewController.initWithCoder: <stripped>
-	0x80e160  @objc DebugFormatErrorViewController..cxx_destruct <stripped>
+	0x8e4900  @objc DebugFormatErrorViewController.viewDidLoad <stripped>
+	0x8e4930  @objc DebugFormatErrorViewController.viewWillLayoutSubviews <stripped>
+	0x8e4ae0  @objc DebugFormatErrorViewController.didMoveToParentViewController: <stripped>
+	0x8e4b30  @objc DebugFormatErrorViewController.initWithNibName:bundle: <stripped>
+	0x8e4bb0  @objc DebugFormatErrorViewController.initWithCoder: <stripped>
+	0x8e4c20  @objc DebugFormatErrorViewController..cxx_destruct <stripped>
  }
 
  struct NewsFeed.FormatPackageList {
 
 	// Properties
 	let identifier : String // +0x0
-	let packages : [FormatPackage] // +0x10
+	let packages : FormatPackage // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -15240,14 +16010,14 @@
 
  class NewsFeed.FontBookFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FontBookFactoryType {
 	// Swift methods
-	0x810000  class func FontBookFactory.__allocating_init() // init 
+	0x8e6c00  class func FontBookFactory.__allocating_init() // init 
  }
 
  enum NewsFeed.FormatAccessibilityContent {
 
 	// Properties
 	case binding : FormatTextNodeBinding
-	case command : FormatAccessibilityContent
+	case command : FormatCommandValue
 	case inline : String
  }
 
@@ -15255,7 +16025,7 @@
 
 	// Properties
 	case string : String
-	case command : FormatAccessibilityData
+	case command : FormatCommandActionValue
  }
 
  enum NewsFeed.CodingType {
@@ -15274,13 +16044,14 @@
 	let contentContext : FCContentContext // +0x40 (0x8)
 
 	// Swift methods
-	0x811cc0  class func HeadlineService.__allocating_init(tagService:coreConfigurationManager:contentContext:) // init 
+	0x8e8690  class func HeadlineService.__allocating_init(tagService:coreConfigurationManager:contentContext:) // init 
  }
 
  enum NewsFeed.Errors {
 
 	// Properties
-	case headlinesFetchOperation : (error: Error)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case headlinesFetchOperation : î	
 	case headlinesServiceError : (message: String)
 	case unknown  
  }
@@ -15289,7 +16060,7 @@
 
 	// Properties
 	let slot : String // +0x0
-	let properties : [FormatOption] // +0x10
+	let properties : FormatOption // +0x10
 	let items : Item // +0x18
  }
 
@@ -15304,7 +16075,7 @@
 
 	// Properties
 	let slot : String // +0x0
-	let properties : [FormatOption] // +0x10
+	let properties : FormatOption // +0x10
 	let items : ResolvedItem // +0x18
  }
 
@@ -15335,7 +16106,8 @@
 	// Properties
 	let assetHandle : FCAssetHandle
 	let size : CGSize
-	let colorSpace : ColorSpace
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let colorSpace : óÔ
  }
 
  struct NewsFeed.FormatSlotDefinition {
@@ -15345,7 +16117,7 @@
 	let name : String // +0x10
 	let description : String // +0x20
 	let items : ItemSet // +0x30
-	let properties : [FormatPropertyDefinition] // +0x38
+	let properties : FormatPropertyDefinition // +0x38
  }
 
  struct NewsFeed.ItemSet {
@@ -15353,7 +16125,7 @@
 	// Properties
 	let min : Int // +0x0
 	let max : Int // +0x8
-	let kinds : Set<FormatItemKind> // +0x10
+	let kinds : FormatItemKind // +0x10
  }
 
  enum NewsFeed.Errors {
@@ -15386,8 +16158,8 @@
  struct NewsFeed.FormatTypeCollection {
 
 	// Properties
-	let types : [FormatObject<FormatType>] // +0x0
-	let typesByName : [String : FormatObject<FormatType>] // +0x8
+	let types : FormatObject // +0x0
+	let typesByName : FormatObject // +0x8
  }
 
  struct NewsFeed.Liking { }
@@ -15419,21 +16191,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15456,9 +16230,9 @@
 	let identifier : String // +0x0
 	let name : String? // +0x10
 	let description : String? // +0x20
-	let styles : [FormatNodeStyle] // +0x30
-	let types : [FormatType] // +0x38
-	let options : [FormatOption] // +0x40
+	let styles : FormatNodeStyle // +0x30
+	let types : FormatType // +0x38
+	let options : FormatOption // +0x40
  }
 
  enum NewsFeed.CodingKeys {
@@ -15491,27 +16265,32 @@
 	// Properties
 	let titleLabel : UILabel // +0x8 (0x8)
 	let excerptLabel : UILabel // +0x10 (0x8)
-	let thumbnailImageView : ImageView // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let thumbnailImageView : ≠—	 // +0x18 (0x8)
 	let publisherLabel : UILabel // +0x20 (0x8)
-	let publisherLogoImageView : ImageView // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageView : ≠—	 // +0x28 (0x8)
 	let accessoryLabel : UILabel // +0x30 (0x8)
-	let segmentedColorView : SegmentedColorView // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let segmentedColorView : Où	 // +0x38 (0x8)
 	let premiumBadgeView : PremiumBadgeView // +0x40 (0x8)
 	let cardView : CardView // +0x48 (0x8)
 	let debugButton : DebugButton // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x832b40  @objc FeaturedHeadlineView.initWithFrame: <stripped>
-	0x832bc0  @objc FeaturedHeadlineView.initWithCoder: <stripped>
-	0x832c30  @objc FeaturedHeadlineView..cxx_destruct <stripped>
+	0x905380  @objc FeaturedHeadlineView.initWithFrame: <stripped>
+	0x905400  @objc FeaturedHeadlineView.initWithCoder: <stripped>
+	0x905450  @objc FeaturedHeadlineView..cxx_destruct <stripped>
  }
 
  enum NewsFeed.DebugFormatGroupSection {
 
 	// Properties
-	case compileError : Error
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case compileError : 5
+
 	case columns : Int
-	case slot : [DebugFormatGroupSlotItem]
+	case slot : DebugFormatGroupSlotItem
  }
 
  enum NewsFeed.DebugFormatGroupSlotItem {
@@ -15520,14 +16299,14 @@
 	case identifier : String
 	case name : String
 	case description : String
-	case itemSet : FormatSlotDefinition.ItemSet
+	case itemSet : ItemSet
  }
 
  enum NewsFeed.DebugInspectViewResult {
 
 	// Properties
-	case success : (bindings: GroupLayoutBindingContext, layoutAttributes: GroupLayoutAttributes)
-	case failed : (bindings: GroupLayoutBindingContext, error: Error)
+	case success : GroupLayoutBindingContext
+	case failed : GroupLayoutBindingContext
  }
 
  struct NewsFeed.FormatGradientDirection {
@@ -15574,7 +16353,7 @@
 
  class NewsFeed.LayoutAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x83f910  @objc LayoutAssembly.init <stripped>
+	0x911630  @objc LayoutAssembly.init <stripped>
  }
 
  class NewsFeed.WebEmbedViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, WebEmbedViewRendererType {
@@ -15591,9 +16370,9 @@
 	case binding : FormatImageNodeBinding
 	case system : FormatSymbolImage
 	case bundle : FormatBundleImage
-	case command : FormatImageNodeContent
+	case command : FormatCommandValue
 	case remote : FormatRemoteImage
-	case switch : FormatImageNodeContent
+	case switch : FormatSwitchValue
  }
 
  enum NewsFeed.CodingType {
@@ -15627,21 +16406,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15665,7 +16446,7 @@
 	let subscriptionController : FCSubscriptionController // +0x18 (0x8)
 
 	// Swift methods
-	0x847ae0  class func TagService.__allocating_init(tagController:subscriptionController:) // init 
+	0x918b40  class func TagService.__allocating_init(tagController:subscriptionController:) // init 
  }
 
  enum NewsFeed.FormatFontScaling {
@@ -15678,7 +16459,8 @@
  struct NewsFeed.FormatFontScalingData {
 
 	// Properties
-	let maxSize : CGFloat? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxSize : •´	 // +0x0
 	let style : FormatFontScalingStyle // +0x9
  }
 
@@ -15726,21 +16508,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15788,10 +16572,14 @@
  struct NewsFeed.FormatInsets {
 
 	// Properties
-	let top : CGFloat // +0x0
-	let left : CGFloat // +0x8
-	let bottom : CGFloat // +0x10
-	let right : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let top : ;Ã	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let left : ;Ã	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bottom : ;Ã	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let right : ;Ã	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -15806,8 +16594,10 @@
  struct NewsFeed.FormatGrayscaleColor {
 
 	// Properties
-	let white : CGFloat // +0x0
-	let alpha : CGFloat? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let white : ;Ã	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alpha : •´	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -15817,10 +16607,25 @@
 	case alpha  
  }
 
+ struct NewsFeed.FormatTraversalErrors {
+
+	// Properties
+	let errors : FormatTraversalError // +0x0
+ }
+
+ struct NewsFeed.FormatTraversalError {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let error : 5
+ // +0x0
+	let path : FormatPath // +0x8
+ }
+
  class NewsFeed.EmptyView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x8557a0  @objc EmptyView.initWithFrame: <stripped>
-	0x8558c0  @objc EmptyView.initWithCoder: <stripped>
+	0x925920  @objc EmptyView.initWithFrame: <stripped>
+	0x925a10  @objc EmptyView.initWithCoder: <stripped>
  }
 
  enum NewsFeed.FormatItemTrait {
@@ -15857,27 +16662,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -15914,27 +16724,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -15963,30 +16778,32 @@
 	let identifier : String // +0x0
 	let class : String // +0x10
 	let selectors : Selector // +0x20
-	let background : FormatBackground? // +0x28
-	let borders : [FormatBorder]? // +0x60
-	let cornerRadius : FormatCornerRadius? // +0x68
-	let shadow : FormatShadow? // +0x80
-	let tintColor : FormatColor? // +0xd8
-	let resize : FormatImageResize? // +0xe0
-	let contentMode : FormatContentMode? // +0xe1
-	let renderingMode : FormatImageRenderingMode? // +0xe8
-	let alpha : CGFloat? // +0xf0
+	let background : FormatBackground // +0x28
+	let borders : FormatBorder // +0x60
+	let cornerRadius : FormatCornerRadius // +0x68
+	let shadow : FormatShadow // +0x80
+	let tintColor : FormatColor // +0xd8
+	let resize : FormatImageResize // +0xe0
+	let contentMode : FormatContentMode // +0xe1
+	let renderingMode : FormatImageRenderingMode // +0xe8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alpha : •´	 // +0xf0
  }
 
  struct NewsFeed.Selector {
 
 	// Properties
 	let selector : String // +0x0
-	let background : FormatBackground? // +0x10
-	let borders : [FormatBorder]? // +0x48
-	let cornerRadius : FormatCornerRadius? // +0x50
-	let shadow : FormatShadow? // +0x68
-	let tintColor : FormatColor? // +0xc0
-	let resize : FormatImageResize? // +0xc8
-	let contentMode : FormatContentMode? // +0xc9
-	let renderingMode : FormatImageRenderingMode? // +0xd0
-	let alpha : CGFloat? // +0xd8
+	let background : FormatBackground // +0x10
+	let borders : FormatBorder // +0x48
+	let cornerRadius : FormatCornerRadius // +0x50
+	let shadow : FormatShadow // +0x68
+	let tintColor : FormatColor // +0xc0
+	let resize : FormatImageResize // +0xc8
+	let contentMode : FormatContentMode // +0xc9
+	let renderingMode : FormatImageRenderingMode // +0xd0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alpha : •´	 // +0xd8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16034,21 +16851,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16068,8 +16887,10 @@
  enum NewsFeed.LayeredMediaLayerRenderable {
 
 	// Properties
-	case image : (MotionLayer<ImageLayer>, imageLayer: ImageLayer, model: LayeredMediaLayer.Image)
-	case video : (MotionLayer<PlayerLayer>, playerLayer: PlayerLayer, model: LayeredMediaLayer.Video)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case image : øÉ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case video : óÉ
  }
 
  struct NewsFeed.Bound {
@@ -16078,13 +16899,14 @@
 	let key : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let builder : Layout<FormatLayout, FormatLayoutAttributes>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let builder : Õ∂	
 	let group : FormatGroup
 	let inventory : FormatPackageInventory
 	let data : FormatNodeContextData
 	let behaviorData : FormatNodeContextBehaviorData
-	let options : Set<FormatGroupLayoutFactoryOption>
-	let boundItems : [FeedItemType]
+	let options : FormatGroupLayoutFactoryOption
+	let boundItems : FeedItemType
  }
 
  struct NewsFeed.FormatGroupLayoutFactory {
@@ -16092,7 +16914,7 @@
 	// Properties
 	let group : FormatGroup // +0x0
 	let inventory : FormatPackageInventory // +0x70
-	let options : Set<FormatGroupLayoutFactoryOption> // +0x178
+	let options : FormatGroupLayoutFactoryOption // +0x178
  }
 
  enum NewsFeed.FormatGroupLayoutFactoryOption {
@@ -16106,7 +16928,7 @@
  enum NewsFeed.FormatImageRenderingMode {
 
 	// Properties
-	case userInterface : FormatImageRenderingMode
+	case userInterface : FormatUserInterfaceValue
 	case original  
 	case template  
 	case automatic  
@@ -16148,21 +16970,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16208,21 +17032,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedCatalogItems : [FeedCatalogItem]
+	let feedCatalogItems : FeedCatalogItem
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let attributes : [HMultiLayoutItem] // +0x20
+	let attributes : HMultiLayoutItem // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let attributes : LayoutItemList<HMultiLayoutItem> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let attributes : ç¡ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16252,7 +17078,7 @@
  enum NewsFeed.Path {
 
 	// Properties
-	case line : (start: CGPoint, end: CGPoint)
+	case line : CGPoint
 	case path : UIBezierPath
  }
 
@@ -16271,7 +17097,8 @@
 	let coverChannelViewRenderer : CoverChannelViewRendererType // +0xb8 (0x10)
 	let formatLayoutViewRenderer : FormatLayoutViewRendererType // +0xc8 (0x10)
 	let webEmbedViewRenderer : WebEmbedViewRendererType // +0xd8 (0x10)
-	let webEmbedViewControllerReuseManager : ObjectReuseManager<WebEmbedViewControllerFactory> // +0xe8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webEmbedViewControllerReuseManager : ÂŒ	 // +0xe8 (0x8)
 	var formatRegistrationIdentifiers : Set<String> // +0xf0 (0x8)
 
 	// Swift methods
@@ -16291,25 +17118,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -16343,21 +17174,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedIssues : [FeedIssue]
+	let feedIssues : FeedIssue
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let coverIssueLayoutAttributes : [CoverIssueViewLayout.Attributes] // +0x20
+	let coverIssueLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let coverIssueLayoutAttributes : LayoutItemList<CoverIssueViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let coverIssueLayoutAttributes : °≠	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16396,25 +17229,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -16440,20 +17277,20 @@
 	// Properties
 	let debugButton : DebugButton // +0x8 (0x8)
 	var token : NSObject? // +0x10 (0x8)
-	var viewContainers : [String : FormatLayoutViewContainer] // +0x18 (0x8)
-	var viewModels : [FormatLayoutViewModel] // +0x20 (0x8)
+	var viewContainers : FormatLayoutViewContainer // +0x18 (0x8)
+	var viewModels : FormatLayoutViewModel // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8dace0  @objc FormatLayoutView.initWithFrame: <stripped>
-	0x8dad80  @objc FormatLayoutView.initWithCoder: <stripped>
-	0x8dae10  @objc FormatLayoutView..cxx_destruct <stripped>
+	0x9bc810  @objc FormatLayoutView.initWithFrame: <stripped>
+	0x9bc8b0  @objc FormatLayoutView.initWithCoder: <stripped>
+	0x9bc920  @objc FormatLayoutView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.FormatLatestCompatibleFileReference {
 
 	// Properties
-	let latestCompatible : FormatFileReference<A>
-	let collection : FormatFileReferenceCollection<A>
+	let latestCompatible : FormatFileReference
+	let collection : FormatFileReferenceCollection
  }
 
  struct NewsFeed.A8_V7 {
@@ -16469,21 +17306,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -16518,7 +17357,7 @@
  enum NewsFeed.Expression {
 
 	// Properties
-	case command : State
+	case command : FormatCommandValue
 	case visible  
  }
 
@@ -16540,7 +17379,7 @@
  enum NewsFeed.Expression {
 
 	// Properties
-	case command : FormatCommandActionValue<FormatNodeVisibility.State>
+	case command : FormatCommandActionValue
 	case visible  
  }
 
@@ -16581,18 +17420,18 @@
 
 	// Properties
 	let colorPaletteProvider : ColorPaletteProviding // +0x10 (0x28)
-	var imageHeadlineViewRenderer : weak HeadlineViewRendererType? // +0x38 (0x10)
-	var featuredHeadlineViewRenderer : weak FeaturedHeadlineViewRendererType? // +0x48 (0x10)
-	var featuredIssueHeadlineViewRenderer : weak FeaturedIssueHeadlineViewRendererType? // +0x58 (0x10)
-	var orderedHeadlineViewRenderer : weak OrderedHeadlineViewRendererType? // +0x68 (0x10)
-	var issueViewRenderer : weak IssueViewRendererType? // +0x78 (0x10)
-	var coverIssueViewRenderer : weak CoverIssueViewRendererType? // +0x88 (0x10)
-	var coverChannelViewRenderer : weak CoverChannelViewRendererType? // +0x98 (0x10)
-	var featuredIssueSupplementaryViewRenderer : weak FeaturedIssueSupplementViewRendererType? // +0xa8 (0x10)
-	var formatLayoutViewRenderer : weak FormatLayoutViewRendererType? // +0xb8 (0x10)
-	var webEmbedViewRenderer : weak WebEmbedViewRendererType? // +0xc8 (0x10)
-	var webEmbedViewControllerFactory : weak WebEmbedViewControllerFactory? // +0xd8 (0x8)
-	var internalErrorViewRenderer : weak InternalErrorViewRendererType? // +0xe0 (0x10)
+	var imageHeadlineViewRenderer : HeadlineViewRendererType // +0x38 (0x10)
+	var featuredHeadlineViewRenderer : FeaturedHeadlineViewRendererType // +0x48 (0x10)
+	var featuredIssueHeadlineViewRenderer : FeaturedIssueHeadlineViewRendererType // +0x58 (0x10)
+	var orderedHeadlineViewRenderer : OrderedHeadlineViewRendererType // +0x68 (0x10)
+	var issueViewRenderer : IssueViewRendererType // +0x78 (0x10)
+	var coverIssueViewRenderer : CoverIssueViewRendererType // +0x88 (0x10)
+	var coverChannelViewRenderer : CoverChannelViewRendererType // +0x98 (0x10)
+	var featuredIssueSupplementaryViewRenderer : FeaturedIssueSupplementViewRendererType // +0xa8 (0x10)
+	var formatLayoutViewRenderer : FormatLayoutViewRendererType // +0xb8 (0x10)
+	var webEmbedViewRenderer : WebEmbedViewRendererType // +0xc8 (0x10)
+	var webEmbedViewControllerFactory : WebEmbedViewControllerFactory // +0xd8 (0x8)
+	var internalErrorViewRenderer : InternalErrorViewRendererType // +0xe0 (0x10)
 
 	// Swift methods
  }
@@ -16672,10 +17511,10 @@
 	let content : FormatWebEmbedNodeContent
 	let contentFrameIdentifier : String?
 	let size : FormatSize
-	let adjustments : [FormatAdjustment]
-	let style : FormatWebEmbedNodeStyle?
+	let adjustments : FormatAdjustment
+	let style : FormatWebEmbedNodeStyle
 	let zIndex : Int
-	let accessibilityRole : FormatNodeAccessibilityRole?
+	let accessibilityRole : FormatNodeAccessibilityRole
  }
 
  enum NewsFeed.CodingKeys {
@@ -16696,7 +17535,8 @@
 	// Properties
 	let fontBook : OrderedHeadlineFontBook // +0x10 (0x20)
 	let colorPalette : OrderedHeadlineColorPalette // +0x30 (0x28)
-	let scaleFactor : CGFloat // +0x58 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scaleFactor : ;Ã	 // +0x58 (0x8)
 	let colorPaletteProvider : ColorPaletteProviding // +0x60 (0x28)
 
 	// Swift methods
@@ -16706,8 +17546,8 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let feedItemLayoutAttributes : [String : FeedItemLayoutAttributes] // +0x20
-	let feedItemSupplementaryAttributes : [FeedItemSupplementaryAttributes] // +0x28
+	let feedItemLayoutAttributes : FeedItemLayoutAttributes // +0x20
+	let feedItemSupplementaryAttributes : FeedItemSupplementaryAttributes // +0x28
  }
 
  struct NewsFeed.C18_V2 {
@@ -16731,18 +17571,22 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : HeadlineViewLayout.Attributes // +0x1a0
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
 	let spacerFrame : CGRect // +0x2d8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItem<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Uü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -16766,7 +17610,8 @@
  enum NewsFeed.FormatShineAlphaProcessor {
 
 	// Properties
-	case fixed : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case fixed : ;Ã	
 	case none  
 	case luminance  
  }
@@ -16799,19 +17644,20 @@
 
 	// Properties
 	let size : CGSize // +0x8 (0x10)
-	let scale : CGFloat // +0x18 (0x8)
-	let style : FormatImageNodeStyle? // +0x20 (0xf9)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ;Ã	 // +0x18 (0x8)
+	let style : FormatImageNodeStyle // +0x20 (0xf9)
 	let inventory : FormatPackageInventory // +0x120 (0x108)
-	let focalFrame : CGRect? // +0x228 (0x21)
-	let renderingMode : UIImageRenderingMode // +0x250 (0x8)
+	let focalFrame : CGRect // +0x228 (0x21)
+	let renderingMode : RenderingMode // +0x250 (0x8)
 	let assetHandles : [String : TSAssetHandleType] // +0x258 (0x8)
 	let assetHandle : TSAssetHandleType // +0x260 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x911f80  @objc FormatImageProcessorRequest.assetHandles <stripped>
-	0x912010  @objc FormatImageProcessorRequest.cacheIdentifier <stripped>
-	0x9125b0  @objc FormatImageProcessorRequest.init <stripped>
-	0x912630  @objc FormatImageProcessorRequest..cxx_destruct <stripped>
+	0x9f2590  @objc FormatImageProcessorRequest.assetHandles <stripped>
+	0x9f25f0  @objc FormatImageProcessorRequest.cacheIdentifier <stripped>
+	0x9f2aa0  @objc FormatImageProcessorRequest.init <stripped>
+	0x9f2b00  @objc FormatImageProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -16842,11 +17688,14 @@
 
 	// Properties
 	case boolean : Bool
-	case date : Date
-	case float : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case date : W	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case float : ;Ã	
 	case integer : Int
 	case string : String
-	case url : URL
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case url : ßë	
 	case color : FormatColor
  }
 
@@ -16867,8 +17716,9 @@
  class NewsFeed.FormatBehaviorVisibilityRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FormatBehaviorVisibilityRendererType {
 
 	// Properties
-	var sessionEvaluatedExpressions : [String : FormatNodeVisibility.State] // +0x10 (0x8)
-	let commandCenter : CommandCenterType // +0x18 (0x28)
+	var sessionEvaluatedExpressions : State // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : ï[	 // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -16876,9 +17726,11 @@
  struct NewsFeed.FormatWebEmbed {
 
 	// Properties
-	let url : URL
-	let actionUrl : URL?
-	let article : FormatArticle?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let url : ßë	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let actionUrl : cz	
+	let article : FormatArticle
  }
 
  enum NewsFeed.CodingKeys {
@@ -16894,9 +17746,12 @@
  struct NewsFeed.FormatMetadata {
 
 	// Properties
-	let minNewsVersion : Version
-	let maxNewsVersion : Version
-	let formatVersion : Version?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minNewsVersion : È;	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxNewsVersion : È;	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let formatVersion : ˝n
  }
 
  enum NewsFeed.CodingKeys {
@@ -16924,21 +17779,22 @@
  class NewsFeed.FormatButton : UIControl /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let onTap : Action<()> // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let onTap : wü	 // +0x8 (0x8)
 	let formatLayoutView : FormatLayoutView // +0x10 (0x8)
-	var stateMaskFormatLayoutViews : [FormatButtonNodeStateMask : FormatLayoutView] // +0x18 (0x8)
+	var stateMaskFormatLayoutViews : FormatButtonNodeStateMask // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x91c650  @objc FormatButton.initWithFrame: <stripped>
-	0x91c680  @objc FormatButton.initWithCoder: <stripped>
-	0x91c870  @objc FormatButton.layoutSubviews <stripped>
-	0x91c960  @objc FormatButton.isSelected <stripped>
-	0x91c9a0  @objc FormatButton.setSelected: <stripped>
-	0x91cdc0  @objc FormatButton.isHighlighted <stripped>
-	0x91ce00  @objc FormatButton.setHighlighted: <stripped>
-	0x91cee0  @objc FormatButton.isEnabled <stripped>
-	0x91cfd0  @objc FormatButton.setEnabled: <stripped>
-	0x91d2d0  @objc FormatButton..cxx_destruct <stripped>
+	0x9fd050  @objc FormatButton.initWithFrame: <stripped>
+	0x9fd080  @objc FormatButton.initWithCoder: <stripped>
+	0x9fd130  @objc FormatButton.layoutSubviews <stripped>
+	0x9fd1e0  @objc FormatButton.isSelected <stripped>
+	0x9fd220  @objc FormatButton.setSelected: <stripped>
+	0x9fd550  @objc FormatButton.isHighlighted <stripped>
+	0x9fd590  @objc FormatButton.setHighlighted: <stripped>
+	0x9fd650  @objc FormatButton.isEnabled <stripped>
+	0x9fd700  @objc FormatButton.setEnabled: <stripped>
+	0x9fd980  @objc FormatButton..cxx_destruct <stripped>
  }
 
  enum NewsFeed.FormatShineColor {
@@ -16968,21 +17824,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedCatalogItems : [FeedCatalogItem]
+	let feedCatalogItems : FeedCatalogItem
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let attributes : [HMultiLayoutItem] // +0x20
+	let attributes : HMultiLayoutItem // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let attributes : LayoutItemList<HMultiLayoutItem> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let attributes : ç¡ // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17005,12 +17863,12 @@
 	let tableView : UITableView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x926420  @objc DebugFormatDeviceViewController.viewDidLoad <stripped>
-	0x926450  @objc DebugFormatDeviceViewController.viewWillLayoutSubviews <stripped>
-	0x926550  @objc DebugFormatDeviceViewController.doDismiss <stripped>
-	0x9266a0  @objc DebugFormatDeviceViewController.initWithNibName:bundle: <stripped>
-	0x9266f0  @objc DebugFormatDeviceViewController.initWithCoder: <stripped>
-	0x926810  @objc DebugFormatDeviceViewController..cxx_destruct <stripped>
+	0xa06630  @objc DebugFormatDeviceViewController.viewDidLoad <stripped>
+	0xa06660  @objc DebugFormatDeviceViewController.viewWillLayoutSubviews <stripped>
+	0xa06740  @objc DebugFormatDeviceViewController.doDismiss <stripped>
+	0xa06760  @objc DebugFormatDeviceViewController.initWithNibName:bundle: <stripped>
+	0xa067e0  @objc DebugFormatDeviceViewController.initWithCoder: <stripped>
+	0xa06850  @objc DebugFormatDeviceViewController..cxx_destruct <stripped>
  }
 
  struct NewsFeed.E12_V2 {
@@ -17027,27 +17885,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -17086,25 +17949,34 @@
 
 	// Properties
 	let sizeConstraint : SizeConstraint // +0x0
-	let shadowRadius : CGFloat // +0x8
-	let cornerRadius : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shadowRadius : ;Ã	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cornerRadius : ;Ã	 // +0x10
  }
 
  class NewsFeed.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x931590  @objc FactoryAssembly.init <stripped>
+	0xa11ee0  @objc FactoryAssembly.init <stripped>
  }
 
  struct NewsFeed.FormatLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let identifier : LayoutItem<String> // +0x8
-	let itemIdentifier : LayoutItem<String?> // +0x10
-	let layoutIdentifier : LayoutItem<String> // +0x18
-	let layoutValues : LayoutItemList<FormatLayoutValue> // +0x20
-	let accessibilityValues : LayoutItemList<FormatAccessibilityLayoutValue> // +0x28
-	let accessibilityRole : LayoutItem<FormatAccessibilityRole> // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let identifier : É≤	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let itemIdentifier : IÕ // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutIdentifier : É≤	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let layoutValues : µ	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessibilityValues : Àä	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessibilityRole : c	 // +0x30
  }
 
  enum NewsFeed.CodingKeys {
@@ -17147,14 +18019,16 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : HeadlineViewLayout.Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItem<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : Uü	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17211,21 +18085,21 @@
 	let identifier : String // +0x0
 	let traits : FeedItemTraits // +0x10
 	let layoutDirection : FeedLayoutDirection // +0x18
-	let kind : FeedItem.Kind // +0x21
+	let kind : Kind // +0x21
  }
 
  struct NewsFeed.FormatLayoutViewModel {
 
 	// Properties
 	let identifier : String // +0x0
-	let viewType : FormatLayoutViewModel.ViewType // +0x10
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0x18
+	let viewType : ViewType // +0x10
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x18
  }
 
  enum NewsFeed.ViewType {
 
 	// Properties
-	case aux : (viewType: FormatLayoutViewModel.ViewType, auxViewRequirements: Set<FormatAuxiliaryViewRequirement>)
+	case aux : ViewType
 	case view  
 	case text  
 	case image  
@@ -17253,18 +18127,18 @@
 	let x1URL : FormatURL
 	let x2URL : FormatURL
 	let x3URL : FormatURL
-	let x1URL_6 : FormatURL?
-	let x2URL_6 : FormatURL?
-	let x3URL_6 : FormatURL?
-	let x1URL_8 : FormatURL?
-	let x2URL_8 : FormatURL?
-	let x3URL_8 : FormatURL?
-	let x1URL_12 : FormatURL?
-	let x2URL_12 : FormatURL?
-	let x3URL_12 : FormatURL?
-	let x1URL_18 : FormatURL?
-	let x2URL_18 : FormatURL?
-	let x3URL_18 : FormatURL?
+	let x1URL_6 : FormatURL
+	let x2URL_6 : FormatURL
+	let x3URL_6 : FormatURL
+	let x1URL_8 : FormatURL
+	let x2URL_8 : FormatURL
+	let x3URL_8 : FormatURL
+	let x1URL_12 : FormatURL
+	let x2URL_12 : FormatURL
+	let x3URL_12 : FormatURL
+	let x1URL_18 : FormatURL
+	let x2URL_18 : FormatURL
+	let x3URL_18 : FormatURL
  }
 
  enum NewsFeed.CodingKeys {
@@ -17290,7 +18164,7 @@
  enum NewsFeed.FormatColorBinding {
 
 	// Properties
-	case headline : FormatHeadlineBinding.Color
+	case headline : Color
 	case option : FormatOptionBinding
  }
 
@@ -17304,22 +18178,25 @@
  class NewsFeed.PremiumBadgeView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var premiumBadgeMask : PremiumBadgeMask? // +0x8 (0x8)
+	var premiumBadgeMask : PremiumBadgeMask // +0x8 (0x8)
 	var isMotionEnabled : Bool // +0x10 (0x1)
-	let shineView : ShineView // +0x18 (0x8)
-	var $__lazy_storage_$_shineMaskLayer : NonAnimatingLayer? // +0x20 (0x8)
-	let context : Shine.Context // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let shineView : âª	 // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_shineMaskLayer : ›l // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : Eq // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x94ca90  @objc PremiumBadgeView.premiumBadgeMask <stripped>
-	0x94cb20  @objc PremiumBadgeView.setPremiumBadgeMask: <stripped>
-	0x94cd80  @objc PremiumBadgeView.isMotionEnabled <stripped>
-	0x94cdf0  @objc PremiumBadgeView.setIsMotionEnabled: <stripped>
-	0x94d060  @objc PremiumBadgeView.shineView <stripped>
-	0x94d3b0  @objc PremiumBadgeView.initWithFrame: <stripped>
-	0x94d3e0  @objc PremiumBadgeView.initWithCoder: <stripped>
-	0x94d6d0  @objc PremiumBadgeView.layoutSubviews <stripped>
-	0x94d740  @objc PremiumBadgeView..cxx_destruct <stripped>
+	0xa347f0  @objc PremiumBadgeView.premiumBadgeMask <stripped>
+	0xa34880  @objc PremiumBadgeView.setPremiumBadgeMask: <stripped>
+	0xa34a90  @objc PremiumBadgeView.isMotionEnabled <stripped>
+	0xa34b00  @objc PremiumBadgeView.setIsMotionEnabled: <stripped>
+	0xa34d60  @objc PremiumBadgeView.shineView <stripped>
+	0xa35160  @objc PremiumBadgeView.initWithFrame: <stripped>
+	0xa35190  @objc PremiumBadgeView.initWithCoder: <stripped>
+	0xa35400  @objc PremiumBadgeView.layoutSubviews <stripped>
+	0xa35460  @objc PremiumBadgeView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.B18_V11 {
@@ -17336,25 +18213,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x178
-	let spacerFrame : CGRect? // +0x180
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x178
+	let spacerFrame : CGRect // +0x180
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : G©	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -17381,10 +18262,10 @@
 	let identifier : String // +0x0
 	let layoutIdentifier : String // +0x10
 	let frame : CGRect // +0x20
-	let style : FormatImageNodeStyle? // +0x40
+	let style : FormatImageNodeStyle // +0x40
 	let zIndex : Int // +0x140
 	let contextLayoutOptions : FormatContextLayoutOptions // +0x148
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0x168
+	let accessibilityRole : FormatNodeAccessibilityRole // +0x168
  }
 
  enum NewsFeed.CodingKeys {
@@ -17413,27 +18294,32 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let issue : FeedIssue
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredCoverIssueLayoutAttributes : IssueViewLayout.Attributes // +0x20
-	let featuredSupplementaryDetailLayoutAttributes : [FeaturedIssueSupplementaryLayout.Attributes] // +0x128
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x130
-	let separatorFrames : [CGRect] // +0x138
+	let featuredCoverIssueLayoutAttributes : Attributes // +0x20
+	let featuredSupplementaryDetailLayoutAttributes : Attributes // +0x128
+	let headlineLayoutAttributes : Attributes // +0x130
+	let separatorFrames : CGRect // +0x138
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredCoverIssueLayoutAttributes : LayoutItem<IssueViewLayout.Attributes> // +0x8
-	let featuredSupplementaryDetailLayoutAttributes : LayoutItemList<FeaturedIssueSupplementaryLayout.Attributes> // +0x10
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x18
-	let separatorFrames : LayoutItemList<CGRect> // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredCoverIssueLayoutAttributes : ªù	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredSupplementaryDetailLayoutAttributes : ≠ü	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x20
  }
 
  enum NewsFeed.CodingKeys {
@@ -17462,7 +18348,7 @@
 	case command : FormatCommand
 	case openURL : FormatCommandOpenURL
 	case route : FormatRoute
-	case switch : FormatButtonNodeAction
+	case switch : FormatSwitchValue
  }
 
  enum NewsFeed.CodingType {
@@ -17525,21 +18411,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17560,8 +18448,8 @@
 
 	// Properties
 	let role : FormatPackageRole // +0x0
-	let packages : [FormatPackageInventory] // +0x8
-	let packageMap : [String : FormatPackageInventory] // +0x10
+	let packages : FormatPackageInventory // +0x8
+	let packageMap : FormatPackageInventory // +0x10
  }
 
  struct NewsFeed.DebugFormatPackages {
@@ -17584,29 +18472,31 @@
  struct NewsFeed.DimContent {
 
 	// Properties
-	let alpha : FormatFloat? // +0x0
+	let alpha : FormatFloat // +0x0
  }
 
  struct NewsFeed.Resolved {
 
 	// Properties
-	let alpha : CGFloat? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alpha : •´	 // +0x0
  }
 
  struct NewsFeed.Background {
 
 	// Properties
-	let color : FormatColor? // +0x0
-	let edgeInsets : FormatEdgeInsets? // +0x8
-	let cornerRadius : FormatFloat? // +0x30
+	let color : FormatColor // +0x0
+	let edgeInsets : FormatEdgeInsets // +0x8
+	let cornerRadius : FormatFloat // +0x30
  }
 
  struct NewsFeed.Resolved {
 
 	// Properties
 	let color : UIColor? // +0x0
-	let edgeInsets : UIEdgeInsets? // +0x8
-	let cornerRadius : CGFloat? // +0x30
+	let edgeInsets : UIEdgeInsets // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cornerRadius : •´	 // +0x30
  }
 
  enum NewsFeed.CodingKeys {
@@ -17634,28 +18524,28 @@
  enum NewsFeed.FormatLayoutError {
 
 	// Properties
-	case missingItem : (itemNode: FormatItemNode)
-	case missingSnippet : (snippetNode: FormatSnippetNode)
+	case missingItem : FormatItemNode
+	case missingSnippet : FormatSnippetNode
 	case missingVariable : (identifier: String, type: String)
-	case missingSupplementary : (supplementaryNode: FormatSupplementaryNode)
+	case missingSupplementary : FormatSupplementaryNode
 	case mismatchedVariable : (identifier: String, type: String, expectedType: String)
 	case cannotCreateSystemImage : (name: String, configuration: UIImageConfiguration?)
 	case cannotCreateBundle : (identifier: String?)
 	case cannotCreateBundleImage : (bundle: NSBundle?, name: String)
-	case switchThrow : (switchNode: FormatSwitchNode)
+	case switchThrow : FormatSwitchNode
 	case notImplemented : String
-	case typeMissingForName : (name: String, referencedInOptionValue: FormatOptionValue)
-	case typeMissingForNameInProperty : (name: String, referencedIn: FormatCompilerProperty)
-	case typeNotEnum : (name: String, referencedIn: FormatCompilerProperty)
-	case typeMismatchComparison : (lhs: FormatType, rhs: FormatType)
-	case typeEnumValueNotValidCase : (value: String, definition: FormatTypeDefinition.Enum)
-	case optionValueMismatchComparison : (lhs: FormatOptionValue, rhs: FormatOptionValue)
+	case typeMissingForName : FormatOptionValue
+	case typeMissingForNameInProperty : FormatCompilerProperty
+	case typeNotEnum : FormatCompilerProperty
+	case typeMismatchComparison : FormatType
+	case typeEnumValueNotValidCase : Enum
+	case optionValueMismatchComparison : FormatOptionValue
 	case invalidSizeValueFormat : String
 	case unknownSizeValue : String
 	case cannotConvertValueToFloat : String
 	case missingOption : (name: String)
 	case missingProperty : (name: String)
-	case incorrectTypeForProperty : (identifier: String, expectedType: FormatOptionType, actualType: FormatOptionType)
+	case incorrectTypeForProperty : FormatOptionType
 	case incorrectTypeForOption : (identifier: String, expectedType: String, actualType: String)
 	case invalidOptionForSizeValue : FormatOption
 	case invalidEquation : (String, failingToken: String)
@@ -17680,8 +18570,8 @@
  enum NewsFeed.FormatBoolBinding {
 
 	// Properties
-	case webEmbed : FormatWebEmbedBinding.Bool
-	case headline : FormatHeadlineBinding.Bool
+	case webEmbed : Bool
+	case headline : Bool
  }
 
  enum NewsFeed.CodingType {
@@ -17703,7 +18593,7 @@
  enum NewsFeed.Tracking {
 
 	// Properties
-	case origin : (offsetLocation: CGPoint, offset: Int)
+	case origin : CGPoint
 	case none  
  }
 
@@ -17716,25 +18606,25 @@
  struct NewsFeed.FeedLayoutSolverBindResult {
 
 	// Properties
-	let successful : [BoundGroupLayoutFactoryType] // +0x0
-	let failed : [(layout: GroupLayoutFactoryType, error: Error)] // +0x8
+	let successful : BoundGroupLayoutFactoryType // +0x0
+	let failed : GroupLayoutFactoryType // +0x8
  }
 
  struct NewsFeed.FormatDecorationProvider {
 
 	// Properties
-	let packages : [FormatPackageInventory] // +0x0
+	let packages : FormatPackageInventory // +0x0
 	let assetManager : FCAssetManager // +0x8
 	let config : FormatConfig // +0x10
-	let properties : [FormatOption] // +0x18
+	let properties : FormatOption // +0x18
  }
 
  struct NewsFeed.FormatSwitchNode {
 
 	// Properties
 	let identifier : String // +0x0
-	let cases : [FormatSwitchNodeCase] // +0x10
-	let default : FormatSwitchNodeDefault? // +0x18
+	let cases : FormatSwitchNodeCase // +0x10
+	let default : FormatSwitchNodeDefault // +0x18
 	let throws : Bool // +0x20
  }
 
@@ -17756,12 +18646,14 @@
  class NewsFeed.FeedItemRendererTool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let rendererEnvironment : RendererEnvironmentType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rendererEnvironment : Õœ	 // +0x10 (0x28)
 	let debugInspectViewLayoutViewFactory : DebugGroupLayoutViewFactoryType // +0x38 (0x28)
 	let fontManager : FeedFontManager // +0x60 (0x8)
 	var debugEnabled : Bool // +0x68 (0x1)
 	var debugColors : FeedItemDebugColors // +0x70 (0x8)
-	var shineImageFactory : ShineImageFactory // +0x78 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var shineImageFactory : 	e // +0x78 (0x8)
 
 	// Swift methods
  }
@@ -17772,11 +18664,11 @@
 	let identifier : String // +0x0
 	let layoutIdentifier : String // +0x10
 	let frame : CGRect // +0x20
-	let style : FormatWebEmbedNodeStyle? // +0x40
+	let style : FormatWebEmbedNodeStyle // +0x40
 	let zIndex : Int // +0x80
 	let contextLayoutOptions : FormatContextLayoutOptions // +0x88
 	let contentFrameIdentifier : String? // +0xa8
-	let accessibilityRole : FormatNodeAccessibilityRole? // +0xb8
+	let accessibilityRole : FormatNodeAccessibilityRole // +0xb8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17796,9 +18688,10 @@
 
 	// Properties
 	let loader : LayeredMediaLoaderType // +0x10 (0x28)
-	let traits : [LayeredMediaTraits] // +0x38 (0x8)
+	let traits : LayeredMediaTraits // +0x38 (0x8)
 	let variantFactory : LayeredMediaVariantFactoryType // +0x40 (0x28)
-	let cache : Cache<String, [LayeredMediaLayer]> // +0x68 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cache : Î 	 // +0x68 (0x8)
 
 	// Swift methods
  }
@@ -17822,21 +18715,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -17856,7 +18751,7 @@
  struct NewsFeed.FormatButtonNodeStateMask {
 
 	// Properties
-	let states : Set<FormatButtonNodeState> // +0x0
+	let states : FormatButtonNodeState // +0x0
  }
 
  struct NewsFeed.FormatButtonNodeStateMaskLayoutAttributes {
@@ -17869,7 +18764,7 @@
  struct NewsFeed.FormatButtonNodeStateMaskDataLayoutAttributes {
 
 	// Properties
-	let layoutAttributes : FormatDataLayoutAttributes<()> // +0x0
+	let layoutAttributes : FormatDataLayoutAttributes // +0x0
 	let contextLayoutOptions : FormatContextLayoutOptions // +0x68
  }
 
@@ -17931,7 +18826,8 @@
  class NewsFeed.WebEmbedViewControllerFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let resolver : ResolverType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : 5] // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -17996,25 +18892,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -18088,21 +18988,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18122,9 +19024,9 @@
  struct NewsFeed.FormatNodeBindings {
 
 	// Properties
-	var itemBindings : [String : FeedItemType] // +0x0
-	let groupItemBindings : [String : FeedGroupItemType] // +0x8
-	let slotOptions : [String : [FormatMerge<FormatOption>]] // +0x10
+	var itemBindings : FeedItemType // +0x0
+	let groupItemBindings : FeedGroupItemType // +0x8
+	let slotOptions : FormatMerge // +0x10
 	var evaluationBindings : [String : Bool] // +0x18
  }
 
@@ -18133,9 +19035,9 @@
 	// Properties
 	case duplicateItemIdentifier : String
 	case missingItem : (forIdentifier: String, availableIdentifiers: [String])
-	case itemTypeMismatch : (forIdentifier: String, boundItem: FeedItemType)
+	case itemTypeMismatch : FeedItemType
 	case missingGroupItem : (forKey: String, availableKeys: [String])
-	case groupItemTypeMismatch : (forKey: String, boundGroupItem: FeedGroupItemType)
+	case groupItemTypeMismatch : FeedGroupItemType
 	case missingSlot : (forIdentifier: String)
  }
 
@@ -18152,8 +19054,10 @@
  struct NewsFeed.LayeredMediaConditions {
 
 	// Properties
-	let minWidth : CGFloat? // +0x0
-	let maxWidth : CGFloat? // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minWidth : •´	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxWidth : •´	 // +0x10
 	let minAppVersion : String? // +0x20
 	let maxAppVersion : String? // +0x30
  }
@@ -18170,12 +19074,18 @@
  struct NewsFeed.CoverChannelViewLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let titleLabelFrame : LayoutItem<CGRect> // +0x8
-	let accessoryFrame : LayoutItem<CGRect> // +0x10
-	let moreActionsButtonFrame : LayoutItem<CGRect> // +0x18
-	let followButtonFrame : LayoutItem<CGRect> // +0x20
-	let coverImageFrame : LayoutItem<CGRect> // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleLabelFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryFrame : }¥	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let moreActionsButtonFrame : }¥	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let followButtonFrame : }¥	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let coverImageFrame : }¥	 // +0x28
  }
 
  struct NewsFeed.Attributes {
@@ -18195,12 +19105,12 @@
 	let key : GroupLayoutKey
 	let model : FeedTag
 	let styler : CoverChannelViewStylerType
-	let cachedTitleText : CachedText<NSAttributedString>
-	let cachedCoverDateText : CachedText<NSAttributedString>
-	let cachedBadgeText : CachedText<NSAttributedString>
-	let cachedFollowButtonText : CachedText<NSAttributedString>
-	let cachedUnfollowButtonText : CachedText<NSAttributedString>
-	let cachedAccessibilityLabelText : CachedText<String?>
+	let cachedTitleText : CachedText
+	let cachedCoverDateText : CachedText
+	let cachedBadgeText : CachedText
+	let cachedFollowButtonText : CachedText
+	let cachedUnfollowButtonText : CachedText
+	let cachedAccessibilityLabelText : CachedText
  }
 
  struct NewsFeed.Options {
@@ -18240,18 +19150,18 @@
  enum NewsFeed.FormatSize {
 
 	// Properties
-	case percent : FormatEquation<FormatFloat>
+	case percent : FormatEquation
 	case dimension : FormatDimensionSizing
-	case width : FormatEquation<FormatFloat>
-	case height : FormatEquation<FormatFloat>
-	case scaledWidth : FormatEquation<FormatFloat>
-	case scaledHeight : FormatEquation<FormatFloat>
+	case width : FormatEquation
+	case height : FormatEquation
+	case scaledWidth : FormatEquation
+	case scaledHeight : FormatEquation
 	case ratio : FormatRatio
 	case columns : Int
-	case columnPercentage : FormatEquation<FormatFloat>
+	case columnPercentage : FormatEquation
 	case columnRowSpan : FormatColumnRowSpan
 	case publisherLogo : FormatPublisherLogoSize
-	case switch : FormatSize
+	case switch : FormatSwitchValue
 	case fill  
 	case sizeToFit  
 	case vSpacing  
@@ -18294,21 +19204,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18356,21 +19268,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18410,25 +19324,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -18461,7 +19379,7 @@
 
  class NewsFeed.ServiceAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x9d6eb0  @objc ServiceAssembly.init <stripped>
+	0xac58e0  @objc ServiceAssembly.init <stripped>
  }
 
  struct NewsFeed.F18_V2 {
@@ -18477,23 +19395,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [OrderedHeadlineViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let headlineLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<OrderedHeadlineViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : im	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -18515,15 +19436,15 @@
  class NewsFeed.DebugFormatLayoutModelViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let sections : [DebugFormatLayoutModelSection] // +0x8 (0x8)
+	let sections : DebugFormatLayoutModelSection // +0x8 (0x8)
 	let tableView : UITableView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9ddc70  @objc DebugFormatLayoutModelViewController.initWithCoder: <stripped>
-	0x9ddf50  @objc DebugFormatLayoutModelViewController.viewDidLoad <stripped>
-	0x9ddf80  @objc DebugFormatLayoutModelViewController.viewWillLayoutSubviews <stripped>
-	0x9de080  @objc DebugFormatLayoutModelViewController.initWithNibName:bundle: <stripped>
-	0x9de100  @objc DebugFormatLayoutModelViewController..cxx_destruct <stripped>
+	0xacbe70  @objc DebugFormatLayoutModelViewController.initWithCoder: <stripped>
+	0xacc0c0  @objc DebugFormatLayoutModelViewController.viewDidLoad <stripped>
+	0xacc0f0  @objc DebugFormatLayoutModelViewController.viewWillLayoutSubviews <stripped>
+	0xacc1d0  @objc DebugFormatLayoutModelViewController.initWithNibName:bundle: <stripped>
+	0xacc230  @objc DebugFormatLayoutModelViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -18533,16 +19454,17 @@
 	// Properties
 	let headlinesHeader : UILabel // +0x8 (0x8)
 	let excerptLabel : UILabel // +0x10 (0x8)
-	let publisherLogoImageView : ImageView // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageView : ≠—	 // +0x18 (0x8)
 	let publisherLabel : UILabel // +0x20 (0x8)
 	let dateLabel : UILabel // +0x28 (0x8)
 	let premiumBadgeView : PremiumBadgeView // +0x30 (0x8)
 	let debugButton : DebugButton // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9decd0  @objc FeaturedIssueSupplementView.initWithFrame: <stripped>
-	0x9ded50  @objc FeaturedIssueSupplementView.initWithCoder: <stripped>
-	0x9dedc0  @objc FeaturedIssueSupplementView..cxx_destruct <stripped>
+	0xacd010  @objc FeaturedIssueSupplementView.initWithFrame: <stripped>
+	0xacd090  @objc FeaturedIssueSupplementView.initWithCoder: <stripped>
+	0xacd0e0  @objc FeaturedIssueSupplementView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.F12_V2 {
@@ -18558,23 +19480,26 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [OrderedHeadlineViewLayout.Attributes] // +0x20
-	let separatorFrames : [CGRect] // +0x28
+	let headlineLayoutAttributes : Attributes // +0x20
+	let separatorFrames : CGRect // +0x28
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<OrderedHeadlineViewLayout.Attributes> // +0x8
-	let separatorFrames : LayoutItemList<CGRect> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : im	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let separatorFrames : üü	 // +0x10
  }
 
  enum NewsFeed.CodingKeys {
@@ -18596,13 +19521,20 @@
  struct NewsFeed.FeaturedIssueSupplementaryLayout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlinesHeaderFrame : LayoutItem<CGRect> // +0x8
-	let excerptLabelFrame : LayoutItem<CGRect> // +0x10
-	let dateLabelFrame : LayoutItem<CGRect> // +0x18
-	let publisherLogoImageViewFrame : LayoutItem<CGRect> // +0x20
-	let premiumBadgeViewFrame : LayoutItem<CGRect> // +0x28
-	let accessoryDataStyle : LayoutItem<Accessory> // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlinesHeaderFrame : }¥	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let excerptLabelFrame : }¥	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dateLabelFrame : }¥	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let publisherLogoImageViewFrame : }¥	 // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let premiumBadgeViewFrame : }¥	 // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let accessoryDataStyle : î	 // +0x30
  }
 
  struct NewsFeed.Attributes {
@@ -18623,11 +19555,11 @@
 	let key : GroupLayoutKey
 	let model : FeedIssue
 	let styler : FeaturedIssueSupplementViewStylerType
-	let cachedHeaderText : CachedText<NSAttributedString>
-	let cachedExcerptText : CachedText<NSAttributedString>
-	let cachedPublisherText : CachedText<NSAttributedString>
-	let cachedCoverDateText : CachedText<NSAttributedString>
-	let cachedAccessibilityLabelText : CachedText<String?>
+	let cachedHeaderText : CachedText
+	let cachedExcerptText : CachedText
+	let cachedPublisherText : CachedText
+	let cachedCoverDateText : CachedText
+	let cachedAccessibilityLabelText : CachedText
  }
 
  struct NewsFeed.Options {
@@ -18635,7 +19567,7 @@
 	// Properties
 	let traits : Traits // +0x0
 	let maxDescriptionLines : Int // +0x8
-	let accessory : Accessory.Option // +0x10
+	let accessory : Option // +0x10
  }
 
  struct NewsFeed.Traits {
@@ -18681,21 +19613,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18718,7 +19652,8 @@
 	let readingHistory : FCReadingHistory // +0x10 (0x8)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x18 (0x8)
 	let paidAccessChecker : FCPaidAccessCheckerType // +0x20 (0x8)
-	let alertPresenter : OverlayAlertPresenterType // +0x28 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let alertPresenter : «ó	 // +0x28 (0x28)
 
 	// Swift methods
  }
@@ -18753,9 +19688,9 @@
 
 	// Properties
 	let frame : CGRect // +0x0
-	let feedItemLayoutAttributes : [FeedItemLayoutAttributes] // +0x20
-	let feedItemSupplementaryAttributes : [FeedItemSupplementaryAttributes] // +0x28
-	let feedGroupDecorations : [FeedGroupDecoration] // +0x30
+	let feedItemLayoutAttributes : FeedItemLayoutAttributes // +0x20
+	let feedItemSupplementaryAttributes : FeedItemSupplementaryAttributes // +0x28
+	let feedGroupDecorations : FeedGroupDecoration // +0x30
  }
 
  class NewsFeed.GapView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -18764,15 +19699,15 @@
 	let activityIndicatorView : UIActivityIndicatorView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9f96c0  @objc GapView.initWithFrame: <stripped>
-	0x9f9850  @objc GapView.initWithCoder: <stripped>
-	0x9f9940  @objc GapView..cxx_destruct <stripped>
+	0xae7740  @objc GapView.initWithFrame: <stripped>
+	0xae7900  @objc GapView.initWithCoder: <stripped>
+	0xae79e0  @objc GapView..cxx_destruct <stripped>
  }
 
  class NewsFeed.StubThumbnailProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x9f9ca0  @objc StubThumbnailProcessor.process: <stripped>
-	0x9f9d40  @objc StubThumbnailProcessor.init <stripped>
+	0xae7d20  @objc StubThumbnailProcessor.process: <stripped>
+	0xae7da0  @objc StubThumbnailProcessor.init <stripped>
  }
 
  struct NewsFeed.A18_V6 {
@@ -18788,21 +19723,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18882,25 +19819,29 @@
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
 	let feedFeaturedHeadline : FeedIssueHeadline
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let featuredHeadlineLayoutAttributes : FeaturedIssueHeadlineViewLayout.Attributes // +0x20
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x1a0
-	let spacerFrame : CGRect? // +0x1a8
+	let featuredHeadlineLayoutAttributes : Attributes // +0x20
+	let headlineLayoutAttributes : Attributes // +0x1a0
+	let spacerFrame : CGRect // +0x1a8
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let featuredHeadlineLayoutAttributes : LayoutItem<FeaturedIssueHeadlineViewLayout.Attributes> // +0x8
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x10
-	let spacerFrame : LayoutItem<CGRect> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let featuredHeadlineLayoutAttributes : ô†	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacerFrame : }¥	 // +0x18
  }
 
  enum NewsFeed.CodingKeys {
@@ -18964,21 +19905,23 @@
 	let groupLayoutKey : GroupLayoutKey
 	let creator : GroupLayoutFactoryType
 	let context : GroupLayoutContext
-	let feedHeadlines : [FeedHeadline]
+	let feedHeadlines : FeedHeadline
  }
 
  struct NewsFeed.Attributes {
 
 	// Properties
 	let frame : CGRect // +0x0
-	let headlineLayoutAttributes : [HeadlineViewLayout.Attributes] // +0x20
+	let headlineLayoutAttributes : Attributes // +0x20
  }
 
  struct NewsFeed.Layout {
 
 	// Properties
-	let frame : LayoutItem<CGRect> // +0x0
-	let headlineLayoutAttributes : LayoutItemList<HeadlineViewLayout.Attributes> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let frame : }¥	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headlineLayoutAttributes : M±	 // +0x8
  }
 
  enum NewsFeed.CodingKeys {
@@ -18997,6 +19940,6 @@
 
  class NewsFeed.StubImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xa15430  @objc StubImageProcessor.process: <stripped>
-	0xa154d0  @objc StubImageProcessor.init <stripped>
+	0xb03530  @objc StubImageProcessor.process: <stripped>
+	0xb035b0  @objc StubImageProcessor.init <stripped>
  }

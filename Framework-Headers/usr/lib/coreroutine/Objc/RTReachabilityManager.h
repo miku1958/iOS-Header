@@ -12,13 +12,13 @@
 {
     BOOL _observingReachabilityChanges;
     NWPathEvaluator *_pathEvaluator;
-    long long _currentReachability;
+    unsigned long long _currentReachability;
 }
 
-@property (nonatomic) long long currentReachability; // @synthesize currentReachability=_currentReachability;
+@property (nonatomic) unsigned long long currentReachability; // @synthesize currentReachability=_currentReachability;
 @property (strong, nonatomic) NWPathEvaluator *pathEvaluator; // @synthesize pathEvaluator=_pathEvaluator;
 
-+ (id)reachabilityToString:(long long)arg1;
++ (id)reachabilityToString:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_fetchCurrentReachability:(CDUnknownBlockType)arg1;
 - (void)_observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -32,7 +32,7 @@
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (long long)reachability;
+- (unsigned long long)reachability;
 
 @end
 

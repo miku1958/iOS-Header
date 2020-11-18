@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_styleSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setImage:(struct UIImage *)arg1 animated:(BOOL)arg2;
+- (void)setImage:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

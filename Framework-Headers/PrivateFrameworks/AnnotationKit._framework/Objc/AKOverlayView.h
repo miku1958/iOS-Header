@@ -41,8 +41,11 @@
 - (void)_willEndLiveMagnify:(id)arg1;
 - (void)_willRemoveFromOldSuperview;
 - (void)_willStartLiveMagnify:(id)arg1;
+- (id)annotationController;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)copy:(id)arg1;
+- (void)cut:(id)arg1;
 - (void)dealloc;
 - (void)delete:(id)arg1;
 - (void)didMoveToSuperview;
@@ -51,8 +54,10 @@
 - (void)editTextAnnotation:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithPageController:(id)arg1;
+- (id)keyCommands;
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)paste:(id)arg1;
 - (void)updateLayers;
 - (void)willMoveToSuperview:(id)arg1;
 

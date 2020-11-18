@@ -35,7 +35,7 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
-- (BOOL)addOrUpdateShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)addOrUpdateShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)container:(id)arg1 didEditWithNewContents:(id)arg2 orderedEdits:(id)arg3 cause:(long long)arg4 context:(id)arg5;
 - (void)containerDidLoadFromPersister:(id)arg1;
 - (id)init;
@@ -47,7 +47,7 @@
 - (BOOL)moveShortcutToFront:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)queryContentsDidChange:(id)arg1 contentsVersion:(unsigned long long)arg2;
 - (void)queryContentsDidLoad:(id)arg1 contentsVersion:(unsigned long long)arg2;
-- (BOOL)removeShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)removeShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)setChangeHandler:(CDUnknownBlockType)arg1;
 
 @end

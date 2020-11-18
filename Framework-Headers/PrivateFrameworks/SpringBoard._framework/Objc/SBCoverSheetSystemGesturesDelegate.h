@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/SBIndirectPanGestureRecognizerOrientationProviding-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
+#import <SpringBoard/SBTouchTemplateGestureRecognizerDelegate-Protocol.h>
 
-@class CSCoverSheetDismissGestureSettings, NSString, UIGestureRecognizer, UIPanGestureRecognizer, UIViewController;
+@class CSCoverSheetDismissGestureSettings, NSString, SBFluidScrunchGestureRecognizer, SBIndirectPanGestureRecognizer, UIGestureRecognizer, UIPanGestureRecognizer, UIViewController;
 @protocol SBCoverSheetSystemGestureDelegatePositionProviding;
 
-@interface SBCoverSheetSystemGesturesDelegate : NSObject <SBSystemGestureRecognizerDelegate>
+@interface SBCoverSheetSystemGesturesDelegate : NSObject <SBSystemGestureRecognizerDelegate, SBTouchTemplateGestureRecognizerDelegate, SBIndirectPanGestureRecognizerOrientationProviding>
 {
     int _syntheticAppearState;
     id<SBCoverSheetSystemGestureDelegatePositionProviding> _positionProvider;
     UIPanGestureRecognizer *_presentGestureRecognizer;
+    SBIndirectPanGestureRecognizer *_indirectPresentGestureRecognizer;
+    SBIndirectPanGestureRecognizer *_indirectDismissGestureRecognizer;
+    SBFluidScrunchGestureRecognizer *_scrunchDismissGestureRecognizer;
     UIViewController *_viewController;
     UIGestureRecognizer *_dismissGestureRecognizer;
     UIGestureRecognizer *_dismissAddendumGestureRecognizer;
@@ -29,26 +34,34 @@
 @property (weak, nonatomic) UIGestureRecognizer *dismissGestureRecognizer; // @synthesize dismissGestureRecognizer=_dismissGestureRecognizer;
 @property (strong, nonatomic) CSCoverSheetDismissGestureSettings *dismissGestureSettings; // @synthesize dismissGestureSettings=_dismissGestureSettings;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SBIndirectPanGestureRecognizer *indirectDismissGestureRecognizer; // @synthesize indirectDismissGestureRecognizer=_indirectDismissGestureRecognizer;
+@property (strong, nonatomic) SBIndirectPanGestureRecognizer *indirectPresentGestureRecognizer; // @synthesize indirectPresentGestureRecognizer=_indirectPresentGestureRecognizer;
 @property (weak, nonatomic) id<SBCoverSheetSystemGestureDelegatePositionProviding> positionProvider; // @synthesize positionProvider=_positionProvider;
 @property (weak, nonatomic) UIGestureRecognizer *preemptingGestureRecognizer; // @synthesize preemptingGestureRecognizer=_preemptingGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *presentGestureRecognizer; // @synthesize presentGestureRecognizer=_presentGestureRecognizer;
+@property (strong, nonatomic) SBFluidScrunchGestureRecognizer *scrunchDismissGestureRecognizer; // @synthesize scrunchDismissGestureRecognizer=_scrunchDismissGestureRecognizer;
 @property (readonly) Class superclass;
 @property (nonatomic) int syntheticAppearState; // @synthesize syntheticAppearState=_syntheticAppearState;
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
+- (BOOL)_areAnyGesturesRecognizedInSet:(id)arg1;
 - (BOOL)_canDismissGestureBegin;
 - (BOOL)_canPresentGestureBegin;
 - (BOOL)_isGestureActivelyRecognized:(id)arg1;
 - (BOOL)_isGestureAllowedByTransientOverlaysOrTopmostApp;
+- (id)dismissGestures;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (long long)indirectPanEffectiveInterfaceOrientation;
 - (id)initWithViewController:(id)arg1 dismissGestureRecognizer:(id)arg2 dismissAddendumGestureRecognizer:(id)arg3 dismissalPreemptingGestureRecognizer:(id)arg4;
 - (BOOL)isAnyGestureActivelyRecognized;
 - (BOOL)isDismissGestureActive;
 - (BOOL)isPresentGestureActive;
+- (id)presentGestures;
+- (void)setPresentGestureFailureRequirements:(id)arg1;
 - (id)viewForSystemGestureRecognizer:(id)arg1;
 
 @end

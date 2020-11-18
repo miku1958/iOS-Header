@@ -39,25 +39,26 @@
     void *_ctServerConnection;
 }
 
-@property (readonly) NSString *WWANInterfaceName;
+@property (readonly, nonatomic) NSString *WWANInterfaceName;
+@property (readonly, nonatomic) BOOL allowBindingToWWAN;
 @property (readonly) BOOL areAllNetworkInterfacesDisabled;
 @property (readonly, nonatomic) NSString *currentLinkQualityString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) BOOL doesWWANInterfaceExist;
-@property (readonly) BOOL hasWWANStatusIndicator; // @synthesize hasWWANStatusIndicator=_hasWWANStatusIndicator;
+@property (readonly, nonatomic) BOOL doesWWANInterfaceExist;
+@property (readonly, nonatomic) BOOL hasWWANStatusIndicator; // @synthesize hasWWANStatusIndicator=_hasWWANStatusIndicator;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isInCall;
-@property (readonly) BOOL isInternetReachable;
-@property (readonly) BOOL isInternetReachableViaWiFi;
+@property (readonly, nonatomic) BOOL isInternetReachable;
+@property (readonly, nonatomic) BOOL isInternetReachableViaWiFi;
 @property (readonly) BOOL isPowerStateDetectionSupported;
-@property (readonly) BOOL isWWANBetterThanWiFi;
-@property (readonly) BOOL isWWANInHomeCountry;
+@property (readonly, nonatomic) BOOL isWWANBetterThanWiFi;
+@property (readonly, nonatomic) BOOL isWWANInHomeCountry;
 @property (readonly) BOOL isWWANInterfaceActivationPermitted;
 @property (readonly) BOOL isWWANInterfaceInProlongedHighPowerState;
-@property (readonly) BOOL isWWANInterfaceSuspended;
-@property (readonly) BOOL isWWANInterfaceUp;
-@property (readonly) BOOL isWakeOnWiFiSupported;
+@property (readonly, nonatomic) BOOL isWWANInterfaceSuspended;
+@property (readonly, nonatomic) BOOL isWWANInterfaceUp;
+@property (readonly, nonatomic) BOOL isWakeOnWiFiSupported;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
@@ -66,7 +67,6 @@
 - (void)_adjustWakeOnWiFiLocked;
 - (void)_adjustWiFiAutoAssociation;
 - (void)_adjustWiFiAutoAssociationLocked;
-- (BOOL)_allowBindingToWWAN;
 - (void)_clearInCallWWANOverrideTimerLocked;
 - (void)_createCTConnection;
 - (void)_ctConnectionAttempt;
@@ -87,8 +87,6 @@
 - (BOOL)_wifiIsPoorLinkQuality;
 - (BOOL)_wwanIsPoorLinkQuality;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
-- (void)bindCFStream:(struct __CFReadStream *)arg1 toWWANInterface:(BOOL)arg2;
-- (void)bindCFStreamToWWANInterface:(struct __CFReadStream *)arg1;
 - (void)cutWiFiManagerDeviceAttached:(id)arg1;
 - (void)dealloc;
 - (void)enableWakeOnWiFi:(BOOL)arg1 forDelegate:(id)arg2;
@@ -98,8 +96,6 @@
 - (void)interfaceLinkQualityChanged:(id)arg1 previousLinkQuality:(int)arg2;
 - (void)interfaceReachabilityChanged:(id)arg1;
 - (void)removeDelegate:(id)arg1;
-- (id)urlConnectionBoundToWWANInterface:(BOOL)arg1 withRequest:(id)arg2 delegate:(id)arg3 usesCache:(BOOL)arg4 maxContentLength:(long long)arg5 startImmediately:(BOOL)arg6 connectionProperties:(id)arg7;
-- (id)urlConnectionBoundToWWANInterfaceWithRequest:(id)arg1 delegate:(id)arg2 usesCache:(BOOL)arg3 maxContentLength:(long long)arg4 startImmediately:(BOOL)arg5 connectionProperties:(id)arg6;
 
 @end
 

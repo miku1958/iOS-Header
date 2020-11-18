@@ -21,7 +21,7 @@
 + (id)fileQueue;
 + (id)folderPathForAttachment:(id)arg1;
 + (id)folderPathForAttachmentIdentifier:(id)arg1 passwordProtected:(BOOL)arg2;
-+ (void)generatePDFsIfNecessaryForGalleryAttachments:(id)arg1 displayWindow:(struct UIWindow *)arg2 presentingViewController:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (void)generatePDFsIfNecessaryForGalleryAttachments:(id)arg1 displayWindow:(id)arg2 presentingViewController:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)pdfURLForAttachment:(id)arg1;
 + (void)performPDFGenerationWithGenerator:(id)arg1 galleryModel:(id)arg2 progress:(id)arg3;
 + (id)rootPDFFolderPath;

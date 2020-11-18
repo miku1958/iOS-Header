@@ -19,8 +19,11 @@
 @property (strong, nonatomic) id<TUICandidateViewStyle> style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
+- (id)cellBackgroundColor;
+- (id)cellBackgroundImage;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (void)updateBackground:(id)arg1 color:(id)arg2;
 - (void)updateColors;
 
 @end

@@ -48,6 +48,7 @@
 - (id)_dragItemsForInteraction:(id)arg1 session:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (id)_hitRepAtPoint:(struct CGPoint)arg1;
 - (id)_hyperLinkFieldAtPoint:(struct CGPoint)arg1;
+- (void)_requestTextItemConstrainedToLineAtPoint:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_resetAndClearInteractions;
 - (void)_resetLinkInteraction;
 - (BOOL)_shouldAllowInteractionAtPoint:(struct CGPoint)arg1;

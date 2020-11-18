@@ -31,6 +31,8 @@
     NSError *_error;
     double _startTime;
     NSData *__TCPConnectionMetadata;
+    unsigned short __TLSMinimumSupportedProtocolVersion;
+    unsigned short __TLSMaximumSupportedProtocolVersion;
     unsigned short _TLSNegotiatedCipherSuite;
     float _priorityHint;
     long long _priorityValue;
@@ -93,6 +95,7 @@
     BOOL _requiresSecureHTTPSProxyConnection;
     BOOL _preventsAppSSO;
     BOOL _appSSOFallback;
+    BOOL _appleIDContextRedirect;
     BOOL _shouldPipelineHTTP;
     BOOL _shouldUsePipelineHeuristics;
     BOOL _shouldSkipPipelineProbe;
@@ -125,6 +128,8 @@
 - (id)_APSRelayTopic;
 - (id)_DuetActivityProperties;
 - (id)_TCPConnectionMetadata;
+- (unsigned short)_TLSMaximumSupportedProtocolVersion;
+- (unsigned short)_TLSMinimumSupportedProtocolVersion;
 - (unsigned short)_TLSNegotiatedCipherSuite;
 - (void)_addAdditionalHeaders:(id)arg1 toRequest:(id)arg2;
 - (void)_adoptEffectiveConfiguration:(id)arg1;
@@ -137,6 +142,7 @@
 - (BOOL)_appSSOFallback;
 - (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
 - (id)_appleIDContext;
+- (BOOL)_appleIDContextRedirect;
 - (BOOL)_authenticatorConfiguredViaTaskProperty;
 - (id)_backgroundPublishingURL;
 - (id)_backgroundTransactionMetrics;
@@ -282,6 +288,8 @@
 - (void)set_APSRelayTopic:(id)arg1;
 - (void)set_DuetActivityProperties:(id)arg1;
 - (void)set_TCPConnectionMetadata:(id)arg1;
+- (void)set_TLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
+- (void)set_TLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_allowedProtocolTypes:(unsigned long long)arg1;
 - (void)set_allowsCellular:(BOOL)arg1;
@@ -290,6 +298,7 @@
 - (void)set_allowsExpensiveOverride:(int)arg1;
 - (void)set_allowsQUIC:(BOOL)arg1;
 - (void)set_appSSOFallback:(BOOL)arg1;
+- (void)set_appleIDContextRedirect:(BOOL)arg1;
 - (void)set_authenticatorConfiguredViaTaskProperty:(BOOL)arg1;
 - (void)set_backgroundPublishingURL:(id)arg1;
 - (void)set_backgroundTransactionMetrics:(id)arg1;

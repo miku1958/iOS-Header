@@ -17,6 +17,7 @@
 - (struct CGRect)palettePopoverSourceRect;
 - (UIView *)palettePopoverSourceView;
 - (BOOL)shouldPalettePresentPopover;
+- (void)updatePalettePopover:(UIViewController *)arg1;
 - (BOOL)wantsCustomPalettePopoverPresentationSource;
 @end
 

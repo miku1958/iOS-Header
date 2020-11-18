@@ -12,10 +12,10 @@
 
 @interface SBNubView : UIView <SBDeviceApplicationSceneHandleObserver>
 {
-    UIView *_nubView;
     UIApplicationSceneClientSettingsDiffInspector *_applicationSceneClientSettingsDiffInspector;
     BOOL _highlighted;
     SBDeviceApplicationSceneHandle *_deviceApplicationSceneHandle;
+    UIView *_nubView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) SBDeviceApplicationSceneHandle *deviceApplicationSceneHandle; // @synthesize deviceApplicationSceneHandle=_deviceApplicationSceneHandle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (readonly, nonatomic) UIView *nubView; // @synthesize nubView=_nubView;
 @property (readonly) Class superclass;
 
 + (double)height;

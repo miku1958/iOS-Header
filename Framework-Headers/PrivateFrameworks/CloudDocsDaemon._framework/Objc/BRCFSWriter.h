@@ -38,7 +38,7 @@
 - (void)_stageCreationOfSymlink:(id)arg1;
 - (void)_writeUnderCoordinationFromURL:(id)arg1 toURL:(id)arg2 canDelete:(BOOL)arg3;
 - (void)applyChangesForServerItem:(id)arg1 localItem:(id)arg2 rank:(long long)arg3 zone:(id)arg4 activity:(id)arg5 hasFinished:(BOOL *)arg6;
-- (BOOL)applyLocalEditIfNecessaryToURL:(id)arg1 forItem:(id)arg2 forDelete:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)applyLocalEditIfNecessaryToURL:(id)arg1 forItem:(id)arg2 serverItem:(id)arg3 forDelete:(BOOL)arg4 error:(id *)arg5;
 - (id)bouncePath:(id)arg1 forItemConflictingWithAnFSRoot:(id)arg2;
 - (BOOL)bouncePathMatch:(const CDStruct_177058d5 *)arg1 toApplyServerItem:(id)arg2 clientZone:(id)arg3;
 - (BOOL)bouncePathMatchesForLookup:(id)arg1 toApplyServerItem:(id)arg2 clientZone:(id)arg3;

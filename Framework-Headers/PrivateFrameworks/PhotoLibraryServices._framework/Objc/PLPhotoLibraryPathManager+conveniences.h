@@ -9,9 +9,7 @@
 @interface PLPhotoLibraryPathManager (conveniences)
 - (id)URLForMetadataWithExtension:(id)arg1 forMediaInMainDirectory:(id)arg2 withFilename:(id)arg3;
 - (BOOL)_createSqliteErrorIndicatorFileWithRebuildReason:(long long)arg1;
-- (id)_rebuidHistoryFilePath;
 - (id)_rebuildDateFormatter;
-- (id)_sqliteErrorIndicatorFilePath;
 - (id)assetPathForMutationsDirectoryWithDirectory:(id)arg1 filename:(id)arg2;
 - (id)cloudSharingArchiveDirectory;
 - (id)cplDataDirectoryCreateIfNeeded:(BOOL)arg1;
@@ -23,6 +21,7 @@
 - (id)disableICloudPhotosFilePath;
 - (id)enableICloudPhotosFilePath;
 - (id)forceSoftResetSyncPath;
+- (long long)lastRebuildReason;
 - (id)pathToiPhotoLibraryMediaDir;
 - (id)pauseICloudPhotosFilePath;
 - (id)photoStreamsDataDirectory;

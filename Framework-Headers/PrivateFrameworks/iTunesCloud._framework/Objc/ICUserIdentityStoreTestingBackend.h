@@ -26,6 +26,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)defaultActiveAccountDSID;
++ (id)defaultActiveLockerAccountDSID;
++ (id)defaultStorefrontIdentifier;
 + (void)setDefaultActiveAccountDSID:(id)arg1;
 + (void)setDefaultActiveLockerAccountDSID:(id)arg1;
 + (void)setDefaultStorefrontIdentifier:(id)arg1;

@@ -11,7 +11,7 @@
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARFaceData, AVDepthData, MISSING_TYPE, NSDate, NSString;
+@class ARFaceData, AVCameraCalibrationData, AVDepthData, MISSING_TYPE, NSDate, NSString;
 
 @interface ARImageData : NSObject <ARDictionaryCoding, ARSensorData, NSCopying, NSSecureCoding>
 {
@@ -34,14 +34,19 @@
     struct __CVBuffer *_visionData;
     long long _cameraPosition;
     NSString *_cameraType;
+    AVCameraCalibrationData *_calibrationData;
     long long _captureFramesPerSecond;
+    ARImageData *_latestUltraWideImage;
+    double _timestampOfSynchronizedWideImageData;
     struct CGSize _imageResolution;
     MISSING_TYPE *_tangentialDistortion;
     MISSING_TYPE *_radialDistortion;
     CDStruct_8e0628e6 _cameraIntrinsics;
+    CDStruct_14d5dc5e _extrinsicsToWideSensor;
 }
 
 @property (nonatomic) float ISO; // @synthesize ISO=_ISO;
+@property (strong, nonatomic) AVCameraCalibrationData *calibrationData; // @synthesize calibrationData=_calibrationData;
 @property (nonatomic) CDStruct_8e0628e6 cameraIntrinsics; // @synthesize cameraIntrinsics=_cameraIntrinsics;
 @property (nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
 @property (strong, nonatomic) NSString *cameraType; // @synthesize cameraType=_cameraType;
@@ -55,9 +60,11 @@
 @property (nonatomic) long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
 @property (nonatomic) double exposureDuration; // @synthesize exposureDuration=_exposureDuration;
 @property (nonatomic) float exposureTargetOffset; // @synthesize exposureTargetOffset=_exposureTargetOffset;
+@property (nonatomic) CDStruct_14d5dc5e extrinsicsToWideSensor; // @synthesize extrinsicsToWideSensor=_extrinsicsToWideSensor;
 @property (strong, nonatomic) ARFaceData *faceData; // @synthesize faceData=_faceData;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
+@property (strong, nonatomic) ARImageData *latestUltraWideImage; // @synthesize latestUltraWideImage=_latestUltraWideImage;
 @property (nonatomic) unsigned long long lensType; // @synthesize lensType=_lensType;
 @property (nonatomic, getter=isMirrored) BOOL mirrored; // @synthesize mirrored=_mirrored;
 @property (readonly, nonatomic) ARImageData *originalImage;
@@ -69,6 +76,7 @@
 @property (nonatomic) MISSING_TYPE *tangentialDistortion; // @synthesize tangentialDistortion=_tangentialDistortion;
 @property (nonatomic) float temperature; // @synthesize temperature=_temperature;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) double timestampOfSynchronizedWideImageData; // @synthesize timestampOfSynchronizedWideImageData=_timestampOfSynchronizedWideImageData;
 @property (nonatomic) struct __CVBuffer *visionData; // @synthesize visionData=_visionData;
 
 + (id)captureDateFromPresentationTimestamp:(CDStruct_1b6d18a9)arg1 session:(id)arg2;

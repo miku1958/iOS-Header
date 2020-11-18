@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUBonjourBrowser, CUNANSubscriber, NSSet, NSString, SFDeviceDiscovery, SFService;
+@class CUBonjourBrowser, CUNANSubscriber, NSMutableDictionary, NSSet, NSString, SFDeviceDiscovery, SFService;
 @protocol OS_dispatch_queue;
 
 @interface CUNetServiceDiscovery : NSObject
@@ -14,14 +14,14 @@
     BOOL _activated;
     unsigned char _bleActionType;
     SFService *_bleAdvertiser;
-    struct NSMutableDictionary *_bleDevices;
+    NSMutableDictionary *_bleDevices;
     SFDeviceDiscovery *_bleDiscovery;
     NSString *_bleServiceIdentifier;
-    struct NSMutableDictionary *_endpoints;
+    NSMutableDictionary *_endpoints;
     CUBonjourBrowser *_infraBonjourBrowser;
-    struct NSMutableDictionary *_infraBonjourDevices;
+    NSMutableDictionary *_infraBonjourDevices;
     unsigned int _infraBonjourBrowserID;
-    struct NSMutableDictionary *_nanEndpoints;
+    NSMutableDictionary *_nanEndpoints;
     CUNANSubscriber *_nanSubscriber;
     unsigned int _nanSubscriberID;
     BOOL _invalidateCalled;

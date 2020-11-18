@@ -16,6 +16,7 @@
     unsigned int _preferredAlternative:16;
     unsigned int _numAlternatives:16;
     long long _encryptedDescendantState;
+    BOOL _isEncrypted;
     NSArray *_signers;
 }
 
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasEncryptedDescendantPart;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isEncrypted; // @synthesize isEncrypted=_isEncrypted;
 @property (readonly, copy, nonatomic) NSString *mimeSubtype;
 @property (readonly, copy, nonatomic) NSString *mimeType;
 @property (strong, nonatomic) NSArray *signers; // @synthesize signers=_signers;

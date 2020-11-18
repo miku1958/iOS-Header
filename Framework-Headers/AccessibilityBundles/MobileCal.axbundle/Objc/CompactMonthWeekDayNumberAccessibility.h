@@ -6,24 +6,65 @@
 
 #import "__CompactMonthWeekDayNumberAccessibility_super.h"
 
-@interface CompactMonthWeekDayNumberAccessibility : __CompactMonthWeekDayNumberAccessibility_super
+#import "UIFocusItem-Protocol.h"
+#import "UIFocusItemContainer-Protocol.h"
+#import "_UIFocusEnvironmentPrivate-Protocol.h"
+#import "_UIFocusRegionContainer-Protocol.h"
+
+@class NSArray, NSString, UIView;
+@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
+
+@interface CompactMonthWeekDayNumberAccessibility : __CompactMonthWeekDayNumberAccessibility_super <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
 {
 }
+
+@property (nonatomic) BOOL areChildrenFocused;
+@property (readonly, nonatomic) BOOL canBecomeFocused;
+@property (readonly, nonatomic) id<UICoordinateSpace> coordinateSpace;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
+@property (readonly, nonatomic) struct CGRect frame; // @dynamic frame;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
+@property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
+@property (readonly, weak, nonatomic) UIView *preferredFocusedView;
+@property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsSpeakThisElement;
+- (BOOL)_axAreChildrenFocused;
 - (id)_axCalendarModel;
+- (id)_axDefaultFocusGroupDescriptor;
 - (id)_axEventStore;
+- (id)_axGetStoredDefaultFocusGroupDescriptor;
+- (void)_axSetAreChildrenFocused:(BOOL)arg1;
+- (void)_axSetStoredDefaultFocusGroupDescriptor:(id)arg1;
 - (id)_axStringForNumberOfEvents:(unsigned long long)arg1;
+- (void)_destroyFocusLayer;
+- (id)_focusGroupDescriptor;
+- (id)_preferredFocusRegionCoordinateSpace;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
+- (void)_updateFocusLayerFrame;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
+- (BOOL)conformsToProtocol:(id)arg1;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)focusItemsInRect:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
+- (void)setNeedsFocusUpdate;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (void)updateFocusIfNeeded;
 
 @end
 

@@ -16,6 +16,7 @@
 - (id)getOptionValue:(id)arg1;
 - (id)getSuperVectorWithEndPoint:(unsigned long long)arg1;
 - (id)initWithConfigPath:(id)arg1 resourcePath:(id)arg2;
+- (unsigned int)numResultsAvailable;
 - (void)reset;
 - (void)resetBest;
 

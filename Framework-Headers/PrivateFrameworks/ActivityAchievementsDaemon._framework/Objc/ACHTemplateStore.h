@@ -37,7 +37,7 @@
 @property (nonatomic) BOOL initialFetchComplete; // @synthesize initialFetchComplete=_initialFetchComplete;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property (strong, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *synchronizationQueue; // @synthesize synchronizationQueue=_synchronizationQueue;
 @property (strong, nonatomic) NSMutableSet *templates; // @synthesize templates=_templates;

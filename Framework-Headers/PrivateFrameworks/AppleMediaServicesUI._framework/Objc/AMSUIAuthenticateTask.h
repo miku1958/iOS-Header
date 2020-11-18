@@ -21,8 +21,8 @@
 - (void).cxx_destruct;
 - (void)_handleDialogForFailedAuthenticationWithError:(id)arg1;
 - (id)_updateAccountWithAuthKit:(id)arg1 error:(id *)arg2;
-- (id)initWithAccount:(id)arg1 presentingViewController:(struct UIViewController *)arg2 options:(id)arg3;
-- (id)initWithRequest:(id)arg1 presentingViewController:(struct UIViewController *)arg2;
+- (id)initWithAccount:(id)arg1 presentingViewController:(id)arg2 options:(id)arg3;
+- (id)initWithRequest:(id)arg1 presentingViewController:(id)arg2;
 - (id)performAuthentication;
 
 @end

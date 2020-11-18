@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebAccessibilityObjectWrapperBase : NSObject
 {
-    struct AccessibilityObject *m_object;
+    struct AXCoreObject *m_object;
     unsigned int _identifier;
 }
 
@@ -19,14 +19,14 @@ __attribute__((visibility("hidden")))
 - (id)_accessibilityWebDocumentView;
 - (id)accessibilityMathPostscriptPairs;
 - (id)accessibilityMathPrescriptPairs;
-- (struct AccessibilityObject *)accessibilityObject;
+- (struct AXCoreObject *)accessibilityObject;
 - (id)accessibilityPlatformMathSubscriptKey;
 - (id)accessibilityPlatformMathSuperscriptKey;
 - (void)accessibilityPostedNotification:(id)arg1;
 - (void)accessibilityPostedNotification:(id)arg1 userInfo:(id)arg2;
 - (id)ariaLandmarkRoleDescription;
 - (id)attachmentView;
-- (struct AccessibilityObjectInterface *)axBackingObject;
+- (struct AXCoreObject *)axBackingObject;
 - (id)baseAccessibilityDescription;
 - (id)baseAccessibilityHelpText;
 - (void)baseAccessibilitySetFocus:(BOOL)arg1;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPath *)convertPathToScreenSpace:(struct Path *)arg1;
 - (struct CGRect)convertRectToSpace:(struct FloatRect *)arg1 space:(int)arg2;
 - (void)detach;
-- (id)initWithAccessibilityObject:(struct AccessibilityObject *)arg1;
+- (id)initWithAccessibilityObject:(struct AXCoreObject *)arg1;
 - (BOOL)updateObjectBackingStore;
 
 @end

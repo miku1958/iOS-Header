@@ -16,13 +16,10 @@
 @interface HMMediaSession : NSObject <_HMMediaSessionDelegate, HMObjectMerge, NSSecureCoding>
 {
     NSUUID *_uuid;
-    long long _playbackState;
     HMAudioControl *_audioControl;
+    NSString *_mediaUniqueIdentifier;
     NSString *_routeUID;
     id<HMMediaSessionDelegate> _delegate;
-    long long _shuffleState;
-    long long _repeatState;
-    NSString *_mediaUniqueIdentifier;
     _HMMediaSession *_mediaSession;
     HMMediaProfile *_mediaProfile;
 }
@@ -35,10 +32,10 @@
 @property (weak) HMMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
 @property (strong, nonatomic) _HMMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
 @property (readonly, copy) NSString *mediaUniqueIdentifier; // @synthesize mediaUniqueIdentifier=_mediaUniqueIdentifier;
-@property (readonly) long long playbackState; // @synthesize playbackState=_playbackState;
-@property (readonly) long long repeatState; // @synthesize repeatState=_repeatState;
+@property (readonly) long long playbackState;
+@property (readonly) long long repeatState;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
-@property (readonly) long long shuffleState; // @synthesize shuffleState=_shuffleState;
+@property (readonly) long long shuffleState;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -49,17 +46,19 @@
 - (void)configure:(id)arg1 messageTargetUUID:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3;
+- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3 shuffleState:(long long)arg4 repeatState:(long long)arg5 mediaUniqueIdentifier:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
-- (void)mediaSession:(id)arg1 didUpdateMediaState:(id)arg2;
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;
 - (void)mediaSession:(id)arg1 didUpdateRouteUID:(id)arg2;
+- (void)mediaSessionDidUpdate:(id)arg1;
 - (id)messageTargetUUID;
 - (void)pauseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)playbackStateDescription;
 - (void)refreshPlaybackStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resumeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateMediaState:(id)arg1;
 - (void)updatePlaybackState:(id)arg1;
+- (void)updatePlaybackState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

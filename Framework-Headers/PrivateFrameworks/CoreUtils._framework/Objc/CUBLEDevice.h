@@ -16,6 +16,7 @@
     unsigned char _objectSetupColorCode;
     unsigned short _objectDiscoveryProductID;
     unsigned short _proximityPairingProductID;
+    unsigned int _changeFlags;
     unsigned int _lgFlags;
     int _nearbyActionType;
     unsigned int _nearbyFlags;
@@ -40,6 +41,7 @@
 
 @property (readonly, copy, nonatomic) NSData *addressData; // @synthesize addressData=_addressData;
 @property (readonly, copy, nonatomic) NSData *appleManufacturerData; // @synthesize appleManufacturerData=_appleManufacturerData;
+@property (nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSData *lgBTAddress; // @synthesize lgBTAddress=_lgBTAddress;
 @property (readonly, copy, nonatomic) NSData *lgDeviceID; // @synthesize lgDeviceID=_lgDeviceID;

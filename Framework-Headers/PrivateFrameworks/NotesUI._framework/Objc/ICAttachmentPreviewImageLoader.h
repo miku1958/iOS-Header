@@ -12,9 +12,9 @@
 {
     BOOL _delayLoadingURLs;
     CDUnknownBlockType _imageDidLoadBlock;
-    struct UIImage *_image;
-    struct UIImage *_originalImage;
-    struct UIImage *_orientedImage;
+    UIImage *_image;
+    UIImage *_originalImage;
+    UIImage *_orientedImage;
     NSData *_data;
     double _scale;
     NSArray *_previewImageURLs;
@@ -31,14 +31,14 @@
 @property (copy, nonatomic) NSArray *previewImageURLs; // @synthesize previewImageURLs=_previewImageURLs;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
-+ (struct UIImage *)orientedImage:(struct UIImage *)arg1 withBackground:(int)arg2;
-+ (struct UIImage *)orientedImage:(struct UIImage *)arg1 withTransform:(struct CGAffineTransform)arg2 background:(int)arg3 backgroundTransform:(struct CGAffineTransform)arg4;
++ (id)orientedImage:(id)arg1 withBackground:(int)arg2;
++ (id)orientedImage:(id)arg1 withTransform:(struct CGAffineTransform)arg2 background:(int)arg3 backgroundTransform:(struct CGAffineTransform)arg4;
 - (void).cxx_destruct;
 - (BOOL)canLoadImage;
-- (id)initWithOriginalImage:(struct UIImage *)arg1 orientedImage:(struct UIImage *)arg2 data:(id)arg3 scale:(double)arg4 previewImageURLs:(id)arg5 delayLoadingURLs:(BOOL)arg6;
+- (id)initWithOriginalImage:(id)arg1 orientedImage:(id)arg2 data:(id)arg3 scale:(double)arg4 previewImageURLs:(id)arg5 delayLoadingURLs:(BOOL)arg6;
 - (void)loadData;
-- (struct UIImage *)loadImage;
-- (struct UIImage *)loadOrientedImage;
+- (id)loadImage;
+- (id)loadOrientedImage;
 
 @end
 

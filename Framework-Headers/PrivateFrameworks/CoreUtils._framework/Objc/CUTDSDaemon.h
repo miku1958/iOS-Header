@@ -8,7 +8,7 @@
 
 #import <CoreUtils/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, NSXPCListener;
+@class NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue;
 
 @interface CUTDSDaemon : NSObject <NSXPCListenerDelegate>
@@ -17,7 +17,7 @@
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
-    struct NSMutableSet *_xpcConnections;
+    NSMutableSet *_xpcConnections;
     NSXPCListener *_xpcListener;
     NSString *_xpcServiceName;
 }

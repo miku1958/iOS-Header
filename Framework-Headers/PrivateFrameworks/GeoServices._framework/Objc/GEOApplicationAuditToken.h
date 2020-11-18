@@ -18,10 +18,12 @@
     NSString *_resolvedNetworkAttributionBundleId;
     geo_isolater *_isolater;
     BOOL _proxiedExternalBundleId;
+    NSString *_secondaryIdentifier;
 }
 
 @property (readonly, nonatomic) NSString *proxiedBundleId; // @synthesize proxiedBundleId=_proxiedBundleId;
 @property (readonly, nonatomic, getter=isProxiedExternalBundleId) BOOL proxiedExternalBundleId; // @synthesize proxiedExternalBundleId=_proxiedExternalBundleId;
+@property (readonly, copy, nonatomic, getter=_secondaryIdentifier) NSString *secondaryIdentifier; // @synthesize secondaryIdentifier=_secondaryIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -37,6 +39,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProxiedApplicationBundleId:(id)arg1;
 - (id)initWithProxiedExternalApplicationBundleId:(id)arg1;
+- (id)initWithSecondaryIdentifier:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)publicLogDescription;

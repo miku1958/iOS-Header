@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UISearchBarTextFieldOrMailReplacement-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableDictionary, NSString, NSValue, UIColor, UIImageView, UISearchBar, UITapGestureRecognizer, UITextRange, _UISearchBarSearchFieldBackgroundView, _UISearchBarTextFieldTokenCounter;
+@class NSArray, NSHashTable, NSMutableDictionary, NSString, NSValue, UIColor, UIHoverGestureRecognizer, UIImageView, UISearchBar, UITapGestureRecognizer, UITextRange, _UISearchBarSearchFieldBackgroundView, _UISearchBarTextFieldTokenCounter;
 
 @interface UISearchTextField : UITextField <_UISearchBarTextFieldOrMailReplacement>
 {
@@ -30,6 +30,7 @@
     NSHashTable *_knownTokenLayoutViews;
     _UISearchBarTextFieldTokenCounter *_tokenCounter;
     UITapGestureRecognizer *_tokenTapGestureRecognizer;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
     BOOL __preventSelectionViewActivation;
     UISearchBar *_searchBar;
     UIColor *_tokenBackgroundColor;
@@ -80,6 +81,8 @@
 - (void)_didRemoveTokenLayoutView:(id)arg1;
 - (void)_didSetFont:(id)arg1;
 - (BOOL)_hasContent;
+- (BOOL)_hasCustomClearButtonImage;
+- (void)_hoverGestureChanged:(id)arg1;
 - (id)_newAttributedStringWithToken:(id)arg1;
 - (id)_offsetValueForIcon:(long long)arg1;
 - (void)_pasteSessionDidFinish:(id)arg1;

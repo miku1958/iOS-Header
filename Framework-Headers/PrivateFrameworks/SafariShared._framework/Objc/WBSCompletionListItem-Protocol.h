@@ -13,7 +13,7 @@
 @property (readonly, nonatomic) unsigned long long engagementDestination;
 @property (readonly, nonatomic) NSString *lastSearchQuery;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
-@property (readonly, nonatomic) long long parsecQueryID;
+@property (nonatomic) long long parsecQueryID;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
 @property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 

@@ -24,10 +24,12 @@
 @property (nonatomic) long long rawIdentifier; // @synthesize rawIdentifier=_rawIdentifier;
 @property (readonly) Class superclass;
 
++ (id)diastolicBloodPressure;
 + (id)identifierWithNumber:(id)arg1;
 + (id)identifierWithRawIdentifier:(long long)arg1;
++ (id)inMemoryConceptIdentifier;
 + (BOOL)supportsSecureCoding;
-+ (id)undefinedIdentifier;
++ (id)systolicBloodPressure;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

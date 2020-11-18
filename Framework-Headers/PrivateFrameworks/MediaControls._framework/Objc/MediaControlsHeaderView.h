@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class MPButton, MPCPlayerPath, MPRouteLabel, MPUMarqueeView, MTMaterialView, MTVisualStylingProvider, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel;
+#import <MediaControls/_UICursorInteractionDelegate-Protocol.h>
+
+@class MPButton, MPCPlayerPath, MPRouteLabel, MPUMarqueeView, MTMaterialView, MTVisualStylingProvider, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel, _UICursorInteraction;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsHeaderView : UIView
+@interface MediaControlsHeaderView : UIView <_UICursorInteractionDelegate>
 {
     BOOL _transitioning;
     BOOL _showPlaceholderString;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
     UIButton *_launchNowPlayingAppButton;
     long long _buttonType;
     MTVisualStylingProvider *_visualStylingProvider;
+    _UICursorInteraction *_cursorInteraction;
     MTMaterialView *_artworkBackground;
     UIView *_shadow;
     MPUMarqueeView *_primaryMarqueeView;
@@ -36,13 +39,19 @@ __attribute__((visibility("hidden")))
     MPUMarqueeView *_secondaryMarqueeView;
     UILabel *_secondaryLabel;
     UILabel *_placeholderLabel;
+    UIView *_artworkContentView;
     struct CGSize _overrideSize;
 }
 
 @property (strong, nonatomic) MTMaterialView *artworkBackground; // @synthesize artworkBackground=_artworkBackground;
+@property (strong, nonatomic) UIView *artworkContentView; // @synthesize artworkContentView=_artworkContentView;
 @property (strong, nonatomic) UIImageView *artworkView; // @synthesize artworkView=_artworkView;
 @property (nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
+@property (strong, nonatomic) _UICursorInteraction *cursorInteraction; // @synthesize cursorInteraction=_cursorInteraction;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MPButton *doneButton; // @synthesize doneButton=_doneButton;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIButton *launchNowPlayingAppButton; // @synthesize launchNowPlayingAppButton=_launchNowPlayingAppButton;
 @property (nonatomic) BOOL marqueeEnabled; // @synthesize marqueeEnabled=_marqueeEnabled;
 @property (nonatomic) struct CGSize overrideSize; // @synthesize overrideSize=_overrideSize;
@@ -63,6 +72,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldUseOverrideSize; // @synthesize shouldUseOverrideSize=_shouldUseOverrideSize;
 @property (nonatomic) BOOL showPlaceholderString; // @synthesize showPlaceholderString=_showPlaceholderString;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 @property (nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
 @property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 
@@ -71,9 +81,12 @@ __attribute__((visibility("hidden")))
 - (void)_updateRTL;
 - (void)_updateStyle;
 - (void)clearOverrideSize;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)launchNowPlayingAppButtonPressed;
 - (void)layoutSubviews;
 - (struct CGSize)layoutTextInAvailableBounds:(struct CGRect)arg1 setFrames:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

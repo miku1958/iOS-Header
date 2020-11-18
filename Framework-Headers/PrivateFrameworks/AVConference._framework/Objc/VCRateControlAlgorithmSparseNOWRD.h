@@ -66,9 +66,11 @@ __attribute__((visibility("hidden")))
     unsigned int _mostBurstLoss;
     unsigned int _roundTripTimeTick;
     double _roundTripTime;
+    double _worstRecentRoundTripTime;
     double _averageRoundTripTime;
     double _packetLossRate;
     double _previousPacketLossRate;
+    unsigned int _worstRecentBurstLoss;
     double _basebandNotificationArrivalTime;
     unsigned int _basebandAverageBitrate;
     unsigned int _basebandTotalQueueDepth;
@@ -98,6 +100,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCongested; // @synthesize isCongested=_isCongested;
 @property (readonly, nonatomic) BOOL isNewRateSentOut; // @synthesize isNewRateSentOut=_isNewRateSentOut;
+@property (readonly, nonatomic) BOOL isSendBitrateLimited; // @synthesize isSendBitrateLimited=_isSendBitrateLimited;
 @property (nonatomic) unsigned int localBandwidthEstimation; // @synthesize localBandwidthEstimation=_localBandwidthEstimation;
 @property (strong, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;
 @property (readonly, nonatomic) unsigned int mostBurstLoss; // @synthesize mostBurstLoss=_mostBurstLoss;
@@ -110,6 +113,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property (readonly, nonatomic) unsigned int totalPacketReceived; // @synthesize totalPacketReceived=_totalPacketReceived;
+@property (readonly, nonatomic) unsigned int worstRecentBurstLoss; // @synthesize worstRecentBurstLoss=_worstRecentBurstLoss;
+@property (readonly, nonatomic) double worstRecentRoundTripTime; // @synthesize worstRecentRoundTripTime=_worstRecentRoundTripTime;
 
 - (void)calculateCongestionMetricsFromOWRD:(double)arg1 time:(double)arg2;
 - (void)checkActualBitrates;

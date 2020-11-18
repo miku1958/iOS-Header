@@ -18,6 +18,7 @@
 
 + (id)contentCategories;
 + (id)countDescription;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)outputTypes;
 + (id)ownedTypes;
 + (id)pluralTypeDescription;

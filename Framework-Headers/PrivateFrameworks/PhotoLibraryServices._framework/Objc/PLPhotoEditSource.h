@@ -11,7 +11,7 @@
     BOOL _isRAWSource;
 }
 
-- (id)initWithURL:(id)arg1 type:(id)arg2 image:(struct NSObject *)arg3 useEmbeddedPreview:(BOOL)arg4;
+- (id)initWithURL:(id)arg1 type:(id)arg2 image:(id)arg3 useEmbeddedPreview:(BOOL)arg4;
 - (BOOL)isRAWSource;
 - (id)newSourceWithURL:(id)arg1 type:(id)arg2 useEmbeddedPreview:(BOOL)arg3;
 

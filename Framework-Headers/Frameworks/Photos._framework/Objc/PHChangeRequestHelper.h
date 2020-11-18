@@ -25,8 +25,9 @@
 }
 
 @property (weak, nonatomic) id<PHChangeRequest> changeRequest; // @synthesize changeRequest=_changeRequest;
+@property (readonly, nonatomic) NSString *clientBundleIdentifier;
+@property (readonly, nonatomic) NSString *clientDisplayName;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
-@property (readonly, nonatomic) NSString *clientName;
 @property (nonatomic, getter=isMutated) BOOL mutated;
 @property (readonly, nonatomic) NSMutableDictionary *mutations; // @synthesize mutations=_mutations;
 @property (nonatomic, getter=isNewRequest) BOOL newRequest;

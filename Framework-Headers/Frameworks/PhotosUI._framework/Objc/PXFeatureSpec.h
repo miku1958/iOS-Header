@@ -69,8 +69,8 @@
 - (long long)_capitalizationStyleFromTextAttributes:(id)arg1 defaultCapitalizationStyle:(long long)arg2;
 - (struct UIEdgeInsets)_fullscreenContentInsetsForWidth:(double)arg1;
 - (id)_textAttributesForFontName:(id)arg1 fontSize:(double)arg2 lineHeight:(double)arg3 tracking:(double)arg4 stroke:(double)arg5;
-- (struct UIColor *)collectionTileImageOverlayColor;
-- (struct UIColor *)collectionTileImageOverlayColorHighlighted;
+- (id)collectionTileImageOverlayColor;
+- (id)collectionTileImageOverlayColorHighlighted;
 - (void)configureViewSpec:(id)arg1;
 - (struct UIEdgeInsets)contentGuideInsetsForScrollAxis:(long long)arg1;
 - (id)createViewSpecWithDescriptor:(struct PXViewSpecDescriptor)arg1;

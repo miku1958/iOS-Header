@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRAVRoutingDiscoverySession : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    struct NSMutableDictionary *_endpointsChangedCallbacks;
-    struct NSMutableDictionary *_outputDevicesChangedCallbacks;
+    NSMutableDictionary *_endpointsChangedCallbacks;
+    NSMutableDictionary *_outputDevicesChangedCallbacks;
     BOOL _alwaysAllowUpdates;
 }
 

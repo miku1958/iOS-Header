@@ -15,6 +15,7 @@
 {
     BOOL _offsetable;
     _UIStatusBarAction *_action;
+    _UIStatusBarAction *_hoverAction;
     NSString *_identifier;
     _UIStatusBar *_statusBar;
     id<_UIStatusBarRegionLayout> _layout;
@@ -35,8 +36,10 @@
     UIView *_frozenView;
     struct UIOffset _offset;
     struct UIEdgeInsets _actionInsets;
+    struct NSDirectionalEdgeInsets extendedHoverInsets;
 }
 
+@property (readonly, nonatomic) struct CGRect absoluteHoverFrame;
 @property (strong, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
 @property (nonatomic) struct UIEdgeInsets actionInsets; // @synthesize actionInsets=_actionInsets;
 @property (nonatomic) double alpha; // @synthesize alpha=_alpha;
@@ -56,10 +59,13 @@
 @property (weak, nonatomic) _UIStatusBarRegion *enabilityRegion; // @synthesize enabilityRegion=_enabilityRegion;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic) NSArray *enabledDisplayItems;
+@property (nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets; // @synthesize extendedHoverInsets;
 @property (nonatomic, getter=isFrozen) BOOL frozen;
 @property (strong, nonatomic) UIView *frozenView; // @synthesize frozenView=_frozenView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
+@property (strong, nonatomic) _UIStatusBarAction *hoverAction; // @synthesize hoverAction=_hoverAction;
+@property (readonly, nonatomic) UIView *hoverView;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) id<_UIStatusBarRegionLayout> layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) UILayoutGuide *layoutGuide; // @synthesize layoutGuide=_layoutGuide;

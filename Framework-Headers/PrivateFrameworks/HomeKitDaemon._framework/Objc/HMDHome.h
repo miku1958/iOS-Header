@@ -116,6 +116,7 @@
     long long _lastSyncedConfigurationVersion;
     long long _expectedConfigurationVersion;
     NSString *_ownerName;
+    NSDate *_creationDate;
     HMDNotificationRegistry *_notificationRegistry;
     NSMutableSet *_heartbeatPingMessagesQueuedWithServer;
     NSMutableSet *_pendingResponsesForRemoteAccessSetup;
@@ -162,6 +163,7 @@
 @property (readonly, nonatomic) NSHashTable *connectionsDiscoveringSymptomsForNearbyDevices; // @synthesize connectionsDiscoveringSymptomsForNearbyDevices=_connectionsDiscoveringSymptomsForNearbyDevices;
 @property (readonly, copy, nonatomic) NSString *contextID;
 @property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
+@property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic, getter=isCurrentDeviceAvailableResident) BOOL currentDeviceAvailableResident;
 @property (readonly, getter=isCurrentDevicePrimaryResident) BOOL currentDevicePrimaryResident;
 @property (nonatomic) BOOL currentRemoteReachabilityRegistration; // @synthesize currentRemoteReachabilityRegistration=_currentRemoteReachabilityRegistration;
@@ -414,7 +416,7 @@
 - (void)_handleOutgoingInvitations:(id)arg1;
 - (void)_handlePendingResponserTimerFired:(BOOL)arg1;
 - (void)_handleQueryUserIsAdmin:(id)arg1;
-- (void)_handleReadMediaProperties:(struct NSDictionary *)arg1 source:(unsigned long long)arg2 message:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_handleReadMediaProperties:(id)arg1 source:(unsigned long long)arg2 message:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleReceivedNonCloudSourcedSharedHomeModel;
 - (void)_handleRemoteGatewayNotificationRegistration:(id)arg1 enable:(BOOL)arg2;
 - (void)_handleRemoteReachabilityDeregistrationTimerFired;
@@ -466,7 +468,7 @@
 - (void)_handleUserConsentForAccessoryReplacement:(id)arg1 consent:(BOOL)arg2 message:(id)arg3;
 - (void)_handleUserConsentResponseForAccessory:(id)arg1;
 - (void)_handleUserInvitations:(id)arg1;
-- (void)_handleWriteMediaProperties:(struct NSDictionary *)arg1 source:(unsigned long long)arg2 requestMessage:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_handleWriteMediaProperties:(id)arg1 source:(unsigned long long)arg2 requestMessage:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_hasPairedReachableBTLEAccessories;
 - (id)_hmdCharacteristicsForUpdatedHAPcharacteristics:(id)arg1 accessoryServer:(id)arg2;
 - (BOOL)_isEventTriggerOnLocalDeviceForAccessory:(id)arg1;
@@ -521,7 +523,7 @@
 - (void)_purgeResidentUsers;
 - (void)_reachabilityChangedForAccessory:(id)arg1 reachable:(BOOL)arg2;
 - (void)_readCharacteristicValues:(id)arg1 requestMessage:(id)arg2 source:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)_readCharacteristicValuesForAccessories:(id)arg1 readRequestMap:(id)arg2 responseTuples:(id)arg3 requestMessage:(id)arg4 viaDevice:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_readCharacteristicValuesForAccessories:(id)arg1 readRequestMap:(id)arg2 responseTuples:(id)arg3 requestMessage:(id)arg4 viaDevice:(id)arg5 logEventSession:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)_readProfileState:(id)arg1 viaDevice:(id)arg2 message:(id)arg3;
 - (void)_redispatchReadForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 responseTuples:(id)arg5 errorResponseTuples:(id)arg6;
 - (void)_redispatchWriteForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 source:(unsigned long long)arg5 responseTuples:(id)arg6;
@@ -610,7 +612,7 @@
 - (id)_vendorModelEntryForManufacturer:(id)arg1 model:(id)arg2 productData:(id)arg3;
 - (BOOL)_verifyUserManagementPermissionForAccessory:(id)arg1 error:(id *)arg2;
 - (void)_writeCharacteristicValues:(id)arg1 requestMessage:(id)arg2 source:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)_writeCharacteristicValuesForAccessories:(id)arg1 writeRequestMap:(id)arg2 responseTuples:(id)arg3 requestMessage:(id)arg4 viaDevice:(id)arg5 source:(unsigned long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_writeCharacteristicValuesForAccessories:(id)arg1 writeRequestMap:(id)arg2 responseTuples:(id)arg3 requestMessage:(id)arg4 viaDevice:(id)arg5 source:(unsigned long long)arg6 logEventSession:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)accessoryBrowser:(id)arg1 accessoryServer:(id)arg2 didDiscoverAccessories:(id)arg3 transaction:(id)arg4 error:(id)arg5;
 - (void)accessoryBrowser:(id)arg1 accessoryServer:(id)arg2 didStopPairingWithError:(id)arg3;
 - (void)accessoryBrowser:(id)arg1 accessoryServer:(id)arg2 didUpdateCategory:(id)arg3;
@@ -695,7 +697,7 @@
 - (void)executeActionSet:(id)arg1;
 - (void)executeActionsFromMessage:(id)arg1;
 - (id)filterBuiltinActionSets:(id)arg1;
-- (struct NSDictionary *)firmwareUpdateBulletinContext;
+- (id)firmwareUpdateBulletinContext;
 - (void)fixupHomeAfterDecoding;
 - (id)getHomeConfigurationForAWD;
 - (id)getReachabilityTupleForAccessoryUUID:(id)arg1;
@@ -769,7 +771,7 @@
 - (long long)reachableAccessories;
 - (unsigned long long)reachableIPAccessories;
 - (long long)reachableMediaAccessories;
-- (void)readCharacteristicValues:(id)arg1 identifier:(id)arg2 isSPIEntitled:(BOOL)arg3 source:(unsigned long long)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)readCharacteristicValues:(id)arg1 identifier:(id)arg2 isSPIEntitled:(BOOL)arg3 source:(unsigned long long)arg4 logEventSession:(id)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
 - (void)readCharacteristicValues:(id)arg1 requestMessage:(id)arg2 source:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)redispatchMediaReadRequests:(id)arg1 viaDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)redispatchMediaWriteRequests:(id)arg1 viaDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -853,7 +855,7 @@
 - (void)updateNetworkConnectivity:(BOOL)arg1 companionReachable:(BOOL)arg2;
 - (void)updateNetworkRouterManagingDeviceSettingsWithModel:(id)arg1 message:(id)arg2;
 - (void)updateNetworkRouterSettingsWithModel:(id)arg1 message:(id)arg2;
-- (id)url;
+- (id)urlString;
 - (void)userAssistantAccessControlDidUpdate:(id)arg1 accessories:(id)arg2;
 - (void)userManagementOperationDidFinish:(id)arg1;
 - (id)userWithPairingIdentity:(id)arg1;
@@ -861,7 +863,7 @@
 - (id)users;
 - (void)validateDuetEventIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)validateName:(id)arg1;
-- (void)writeCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 identifier:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)writeCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 identifier:(id)arg3 logEventSession:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)writeCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 transactionId:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (id)writeRequestTuplesFromMessage:(id)arg1;
 - (id)zoneWithName:(id)arg1;

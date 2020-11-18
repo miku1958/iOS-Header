@@ -8,25 +8,26 @@
 
 #import <SpringBoard/BSTransactionObserver-Protocol.h>
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
-#import <SpringBoard/SBModalUIFluidDismissPanGestureRecognizerDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGestureInteractionDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGesturePanGestureRecognizerInterfaceDelegate-Protocol.h>
 
-@class NSString, SBAssistantController, SBHomeGestureSettings, SBModalUIFluidDismissGestureWorkspaceTransaction, SBModalUIFluidDismissPanGestureRecognizer, SBTransientOverlayPresentationManager;
+@class NSString, SBAssistantController, SBHomeGestureInteraction, SBHomeGestureSettings, SBModalUIFluidDismissGestureWorkspaceTransaction, SBTransientOverlayPresentationManager;
 
-@interface SBModalUIFluidDismissGestureManager : NSObject <SBModalUIFluidDismissPanGestureRecognizerDelegate, BSTransactionObserver, PTSettingsKeyObserver>
+@interface SBModalUIFluidDismissGestureManager : NSObject <SBHomeGesturePanGestureRecognizerInterfaceDelegate, BSTransactionObserver, PTSettingsKeyObserver, SBHomeGestureInteractionDelegate>
 {
     SBTransientOverlayPresentationManager *_transientOverlayPresentationManager;
     SBAssistantController *_assistantController;
     SBHomeGestureSettings *_homeGestureSettings;
-    SBModalUIFluidDismissPanGestureRecognizer *_bottomEdgeRecognizer;
+    SBHomeGestureInteraction *_homeGestureInteraction;
     SBModalUIFluidDismissGestureWorkspaceTransaction *_currentTransaction;
 }
 
 @property (readonly, nonatomic) SBAssistantController *assistantController; // @synthesize assistantController=_assistantController;
-@property (strong, nonatomic) SBModalUIFluidDismissPanGestureRecognizer *bottomEdgeRecognizer; // @synthesize bottomEdgeRecognizer=_bottomEdgeRecognizer;
 @property (strong, nonatomic) SBModalUIFluidDismissGestureWorkspaceTransaction *currentTransaction; // @synthesize currentTransaction=_currentTransaction;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SBHomeGestureInteraction *homeGestureInteraction; // @synthesize homeGestureInteraction=_homeGestureInteraction;
 @property (strong, nonatomic) SBHomeGestureSettings *homeGestureSettings; // @synthesize homeGestureSettings=_homeGestureSettings;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SBTransientOverlayPresentationManager *transientOverlayPresentationManager; // @synthesize transientOverlayPresentationManager=_transientOverlayPresentationManager;
@@ -34,16 +35,16 @@
 - (void).cxx_destruct;
 - (void)_addOrRemoveGestureForCurrentSettings;
 - (long long)_dismissalTypeForCurrentContext;
-- (void)_handleBottomEdgeGesture:(id)arg1;
-- (void)_handleBottomEdgeGestureBegan:(id)arg1;
-- (void)_handleBottomEdgeGestureChanged:(id)arg1;
-- (void)_handleBottomEdgeGestureEnded:(id)arg1;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (id)customScreenEdgePanGestureRecognizerForHomeGestureInteraction:(id)arg1;
+- (BOOL)homeGestureInteraction:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (unsigned long long)homeGestureInteraction:(id)arg1 systemGestureTypeForType:(long long)arg2;
+- (void)homeGestureInteractionBegan:(id)arg1;
+- (void)homeGestureInteractionCancelled:(id)arg1;
+- (void)homeGestureInteractionChanged:(id)arg1;
+- (void)homeGestureInteractionEnded:(id)arg1;
 - (id)initWithTransientOverlayPresentationManager:(id)arg1 assistantController:(id)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
-- (long long)touchInterfaceOrientationForRecognizer:(id)arg1;
+- (long long)touchInterfaceOrientationForGestureRecognizer:(id)arg1;
 - (void)transactionDidComplete:(id)arg1;
 - (id)viewForSystemGestureRecognizer:(id)arg1;
 

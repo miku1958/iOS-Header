@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventDirectionsRequestDetails, GEOLogMsgEventDisplayAnalytic, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventGridDuration, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapKitCounts, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventMarcoLiteUsage, GEOLogMsgEventNetwork, GEOLogMsgEventParkedCar, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventPredExTrainingData, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventThrottle, GEOLogMsgEventTileCacheAnalytic, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventTripDepartureFeedback, GEOLogMsgEventUserAction, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray, PBDataReader;
+@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventDirectionsRequestDetails, GEOLogMsgEventDisplayAnalytic, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventGridDuration, GEOLogMsgEventId, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapKitCounts, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventMarcoLiteUsage, GEOLogMsgEventNetwork, GEOLogMsgEventParkedCar, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventPredExTrainingData, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventThrottle, GEOLogMsgEventTileCacheAnalytic, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventTripDepartureFeedback, GEOLogMsgEventUserAction, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray, PBDataReader;
 
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    GEOLogMsgEventId *_analyticTag;
     GEOLogMsgEventBatchTrafficProbe *_batchTrafficProbeCollection;
     GEOLogMsgEventClientACSuggestions *_clientAcSuggestions;
     GEOLogMsgEventCommuteWindow *_commuteWindow;
@@ -59,6 +60,7 @@
     struct {
         unsigned int has_usageEventTime:1;
         unsigned int has_eventType:1;
+        unsigned int read_analyticTag:1;
         unsigned int read_batchTrafficProbeCollection:1;
         unsigned int read_clientAcSuggestions:1;
         unsigned int read_commuteWindow:1;
@@ -97,6 +99,7 @@
         unsigned int read_tripDepartureFeedback:1;
         unsigned int read_userActionEvent:1;
         unsigned int read_wifiConnectionQualityProbeEvent:1;
+        unsigned int wrote_analyticTag:1;
         unsigned int wrote_batchTrafficProbeCollection:1;
         unsigned int wrote_clientAcSuggestions:1;
         unsigned int wrote_commuteWindow:1;
@@ -140,6 +143,7 @@
     } _flags;
 }
 
+@property (strong, nonatomic) GEOLogMsgEventId *analyticTag;
 @property (strong, nonatomic) GEOLogMsgEventBatchTrafficProbe *batchTrafficProbeCollection;
 @property (strong, nonatomic) GEOLogMsgEventClientACSuggestions *clientAcSuggestions;
 @property (strong, nonatomic) GEOLogMsgEventCommuteWindow *commuteWindow;
@@ -150,6 +154,7 @@
 @property (strong, nonatomic) GEOLogMsgEventFullNavTrace *fullNavTrace;
 @property (strong, nonatomic) GEOLogMsgEventGenericAppError *genericAppErrorEvent;
 @property (strong, nonatomic) GEOLogMsgEventGridDuration *gridDuration;
+@property (readonly, nonatomic) BOOL hasAnalyticTag;
 @property (readonly, nonatomic) BOOL hasBatchTrafficProbeCollection;
 @property (readonly, nonatomic) BOOL hasClientAcSuggestions;
 @property (readonly, nonatomic) BOOL hasCommuteWindow;
@@ -225,6 +230,7 @@
 - (void).cxx_destruct;
 - (int)StringAsEventType:(id)arg1;
 - (void)_addNoFlagsLogMsgState:(id)arg1;
+- (void)_readAnalyticTag;
 - (void)_readBatchTrafficProbeCollection;
 - (void)_readClientAcSuggestions;
 - (void)_readCommuteWindow;

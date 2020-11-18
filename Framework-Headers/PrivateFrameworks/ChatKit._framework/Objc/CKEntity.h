@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, IMAccount, IMHandle, NSString, UIImage;
+@class CNContact, IMAccount, IMChat, IMHandle, NSString, UIImage;
 
 @interface CKEntity : NSObject
 {
@@ -15,12 +15,14 @@
     UIImage *_transcriptDrawerContactImage;
     IMHandle *_handle;
     IMAccount *_chatAccount;
+    IMChat *_chat;
     CNContact *_cnContact;
 }
 
 @property (readonly, copy, nonatomic) NSString *IDSCanonicalAddress;
 @property (readonly, nonatomic) void *abRecord;
 @property (readonly, copy, nonatomic) NSString *abbreviatedDisplayName;
+@property (strong, nonatomic) IMChat *chat; // @synthesize chat=_chat;
 @property (strong, nonatomic) IMAccount *chatAccount; // @synthesize chatAccount=_chatAccount;
 @property (strong, nonatomic) CNContact *cnContact; // @synthesize cnContact=_cnContact;
 @property (readonly, nonatomic) IMHandle *defaultIMHandle;
@@ -43,6 +45,7 @@
 + (id)_copyEntityForAddressString:(id)arg1 onAccount:(id)arg2;
 + (id)copyEntityForAddressString:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_allowedByScreenTime;
 - (id)_croppedImageFromImageData:(id)arg1;
 - (void)_setBusinessInfoForMutableContact:(id)arg1 enlargedImageData:(id)arg2;
 - (id)cnContactWithKeys:(id)arg1;

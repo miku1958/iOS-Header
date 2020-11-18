@@ -6,15 +6,13 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBArchivedObject, _INPBDataString, _INPBIntentMetadata;
+@class _INPBDataString, _INPBIntentMetadata;
 
 @protocol _INPBRunWorkflowIntent <NSObject>
 
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
-@property (readonly, nonatomic) BOOL hasStepIntentResponse;
 @property (readonly, nonatomic) BOOL hasWorkflow;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
-@property (strong, nonatomic) _INPBArchivedObject *stepIntentResponse;
 @property (strong, nonatomic) _INPBDataString *workflow;
 
 @end

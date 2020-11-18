@@ -8,7 +8,7 @@
 
 #import <MapKit/CAAnimationDelegate-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIButton, UIImageView;
+@class NSString, UIActivityIndicatorView, UIImageView, _MKUserTrackingButton;
 @protocol MKUserTrackingButtonTarget, MKUserTrackingView;
 
 __attribute__((visibility("hidden")))
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     id<MKUserTrackingView> _userTrackingView;
     long long _state;
     UIImageView *_imageView;
-    UIButton *_button;
+    _MKUserTrackingButton *_button;
     UIActivityIndicatorView *_activityIndicatorView;
     unsigned long long _buttonBehavior;
 }
@@ -40,11 +40,10 @@ __attribute__((visibility("hidden")))
 - (void)_goToNextMode:(id)arg1;
 - (id)_imageForState:(long long)arg1 controlState:(unsigned long long)arg2;
 - (void)_reloadState;
-- (void)_setupPreferredSymbolConfiguration;
 - (BOOL)_shouldAnimateFromState:(long long)arg1 toState:(long long)arg2;
 - (id)_shrinkAnimation;
-- (id)_symbolConfiguration;
 - (void)_updateLoading;
+- (void)_updatePreferredSymbolConfiguration;
 - (void)_updateState;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;

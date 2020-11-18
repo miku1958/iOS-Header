@@ -8,7 +8,7 @@
 
 #import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
 
-@class CTCellularPlanManager, NSString, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularPlanManagerCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUILowDataModeSubgroup, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
+@class CTCellularPlanManager, NSString, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularDataOptionsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUILowDataModeSubgroup, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
 
 __attribute__((visibility("hidden")))
 @interface PSUISubscriptionContextMenusGroup : NSObject <PSSpecifierGroup>
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     PSUICoreTelephonyDataCache *_dataCache;
     PSUICellularPlanManagerCache *_planManagerCache;
     CTCellularPlanManager *_cellularPlanManager;
+    PSUICellularDataOptionsController *_roamingSpecifiersSubgroup;
 }
 
 @property (strong, nonatomic) PSUICallingSubgroup *callingSubgroup; // @synthesize callingSubgroup=_callingSubgroup;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PSSpecifier *parentSpecifier; // @synthesize parentSpecifier=_parentSpecifier;
 @property (strong, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
 @property (nonatomic) BOOL popViewControllerOnPlanDeletion; // @synthesize popViewControllerOnPlanDeletion=_popViewControllerOnPlanDeletion;
+@property (strong, nonatomic) PSUICellularDataOptionsController *roamingSpecifiersSubgroup; // @synthesize roamingSpecifiersSubgroup=_roamingSpecifiersSubgroup;
 @property (strong, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
 @property (strong, nonatomic) PSUISIMSubgroup *simSubgroup; // @synthesize simSubgroup=_simSubgroup;
 @property (readonly) Class superclass;

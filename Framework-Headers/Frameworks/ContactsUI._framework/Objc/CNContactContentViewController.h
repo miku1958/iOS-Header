@@ -63,7 +63,6 @@
     BOOL _ignoresParentalRestrictions;
     BOOL _editingProposedInformation;
     BOOL _hideCardActions;
-    BOOL _saveWasAuthorized;
     BOOL _outOfProcessSetupComplete;
     BOOL _isPresentingFullscreenForOutOfProcess;
     BOOL _didSetFirstResponder;
@@ -93,13 +92,13 @@
     CNMutableContact *_mutableContact;
     NSMutableArray *_issuedSaveRequestIdentifiers;
     CNMutableContact *_shadowCopyOfReadonlyContact;
-    CNContainer *_containerOfContact;
     CNContactView *_displayContactView;
     CNContactView *_editingContactView;
     CNContactFormatter *_contactFormatter;
     CNContactHeaderDisplayView *_displayHeaderView;
     CNContactHeaderEditView *_editingHeaderView;
     CNUIEditAuthorizationController *_editAuthorizationController;
+    long long _editAuthorizationResult;
     NSMutableArray *_editingGroups;
     NSArray *_nameEditingGroups;
     NSMutableDictionary *_groupsAfterGroup;
@@ -236,7 +235,6 @@
 @property (nonatomic) BOOL contactSupportsTTYCalls; // @synthesize contactSupportsTTYCalls=_contactSupportsTTYCalls;
 @property (readonly, nonatomic) CNContactView *contactView;
 @property (readonly, nonatomic) CNContactViewCache *contactViewCache; // @synthesize contactViewCache=_contactViewCache;
-@property (strong, nonatomic) CNContainer *containerOfContact; // @synthesize containerOfContact=_containerOfContact;
 @property (strong, nonatomic) CNContactCreateNewContactAction *createNewContactAction; // @synthesize createNewContactAction=_createNewContactAction;
 @property (strong, nonatomic) CNContactAction *createReminderAction; // @synthesize createReminderAction=_createReminderAction;
 @property (strong, nonatomic) NSArray *customActions; // @synthesize customActions=_customActions;
@@ -250,6 +248,7 @@
 @property (strong, nonatomic) CNContactHeaderDisplayView *displayHeaderView; // @synthesize displayHeaderView=_displayHeaderView;
 @property (copy, nonatomic) NSArray *displayedProperties; // @synthesize displayedProperties=_displayedProperties;
 @property (strong, nonatomic) CNUIEditAuthorizationController *editAuthorizationController; // @synthesize editAuthorizationController=_editAuthorizationController;
+@property (nonatomic) long long editAuthorizationResult; // @synthesize editAuthorizationResult=_editAuthorizationResult;
 @property (strong, nonatomic) UIKeyCommand *editCommand; // @synthesize editCommand=_editCommand;
 @property (strong, nonatomic) CNContactView *editingContactView; // @synthesize editingContactView=_editingContactView;
 @property (strong, nonatomic) NSMutableArray *editingGroups; // @synthesize editingGroups=_editingGroups;
@@ -313,7 +312,6 @@
 @property (strong, nonatomic) UIKeyCommand *saveCommand; // @synthesize saveCommand=_saveCommand;
 @property (strong, nonatomic) id<CNUIContactSaveExecutor> saveContactExecutor; // @synthesize saveContactExecutor=_saveContactExecutor;
 @property (strong, nonatomic) id<CNUIContactSaveExecutor> saveLinkedContactsExecutor; // @synthesize saveLinkedContactsExecutor=_saveLinkedContactsExecutor;
-@property (nonatomic) BOOL saveWasAuthorized; // @synthesize saveWasAuthorized=_saveWasAuthorized;
 @property (strong, nonatomic) CNPropertyAction *sendMessageAction; // @synthesize sendMessageAction=_sendMessageAction;
 @property (strong, nonatomic) CNMutableContact *shadowCopyOfReadonlyContact; // @synthesize shadowCopyOfReadonlyContact=_shadowCopyOfReadonlyContact;
 @property (strong, nonatomic) CNContactAction *shareContactAction; // @synthesize shareContactAction=_shareContactAction;
@@ -437,7 +435,6 @@
 - (void)adjustPreferredContentSize;
 - (id)alreadyPickedGroups;
 - (id)applyContactStyle;
-- (void)authorizeSave;
 - (void)blockListDidChange:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (void)cancelAsyncLookups;
@@ -469,6 +466,7 @@
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (void)favoritesDidChangeWithNotification:(id)arg1;
 - (void)finishEditing:(id)arg1;
+- (void)focusOnFirstEditingItemIfNeeded;
 - (void)focusOnLastEditingItemInGroup:(id)arg1;
 - (void)geminiDataSourceDidUpdate:(id)arg1;
 - (double)globalHeaderHeightForContentOffset:(double)arg1 contentInset:(struct UIEdgeInsets)arg2;
@@ -532,10 +530,11 @@
 - (void)removeLinkedContact:(id)arg1;
 - (void)requestFavoritesUpdateWithGemini;
 - (struct CGSize)requiredSizeForVisibleTableView;
-- (void)resetAuthorizationState;
+- (void)resetEditAuthorizationState;
 - (BOOL)saveChanges;
 - (id)saveDescriptionForCurrentState;
 - (void)saveModelChangesToContact;
+- (BOOL)saveWasAuthorized;
 - (struct UIEdgeInsets)scrollIndicatorInsetsForContactTableView:(id)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
 - (void)scrollScrollViewAllTheWayUp:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -560,7 +559,6 @@
 - (id)sharedActionsDataSource;
 - (void)sharingStatusDidChange;
 - (BOOL)shouldDisplayAvatarHeaderView;
-- (BOOL)shouldIgnoreGuardianRestrictions;
 - (void)shouldPresentFullscreen:(BOOL)arg1;
 - (BOOL)shouldReallyShowLinkedContactsForEditingState:(BOOL)arg1;
 - (BOOL)shouldShowActionsForAvatarView:(id)arg1;

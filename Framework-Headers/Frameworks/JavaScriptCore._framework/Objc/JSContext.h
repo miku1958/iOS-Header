@@ -12,7 +12,7 @@
 {
     JSVirtualMachine *m_virtualMachine;
     struct OpaqueJSContext *m_context;
-    struct Strong<JSC::JSObject> m_exception;
+    struct Strong<JSC::JSObject, JSC::ShouldStrongDestructorGrabLock::No> m_exception;
     struct WeakObjCPtr<id<JSModuleLoaderDelegate>> m_moduleLoaderDelegate;
     CDUnknownBlockType _exceptionHandler;
 }

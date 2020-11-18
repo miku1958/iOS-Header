@@ -6,7 +6,7 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class NSArray, NSString, SAIntentGroupProtobufMessage, SAIntentGroupSiriKitAppSelectionState, SAIntentGroupSiriKitListPosition, SAIntentGroupSiriKitMetrics, SAIntentGroupSiriKitRemoteExecution;
+@class NSArray, NSString, SAIntentGroupParse, SAIntentGroupSiriKitAppSelectionState, SAIntentGroupSiriKitListPosition, SAIntentGroupSiriKitMetrics, SAIntentGroupSiriKitRemoteExecution;
 
 @interface SAIntentGroupRunSiriKitExecutor : SABaseClientBoundCommand
 {
@@ -15,22 +15,25 @@
 @property (strong, nonatomic) SAIntentGroupSiriKitAppSelectionState *appSelectionState;
 @property (copy, nonatomic) NSString *confirmationState;
 @property (nonatomic) BOOL directAction;
+@property (nonatomic) BOOL eyesFree;
 @property (copy, nonatomic) NSString *goalID;
-@property (copy, nonatomic) NSString *intentAsJSON;
-@property (strong, nonatomic) SAIntentGroupProtobufMessage *intentAsProto;
-@property (copy, nonatomic) NSString *intentTypeName;
+@property (copy, nonatomic) NSString *inputOrigin;
+@property (copy, nonatomic) NSString *interactionType;
+@property (nonatomic) BOOL multiUser;
 @property (copy, nonatomic) NSArray *parameterMetadata;
 @property (copy, nonatomic) NSArray *parameterPrompts;
 @property (copy, nonatomic) NSString *parentGoalID;
+@property (strong, nonatomic) SAIntentGroupParse *parse;
 @property (strong, nonatomic) SAIntentGroupSiriKitListPosition *readingListPosition;
 @property (strong, nonatomic) SAIntentGroupSiriKitRemoteExecution *remoteExecution;
 @property (nonatomic) BOOL requiresConditionalMultiUserGrounding;
+@property (copy, nonatomic) NSString *sessionHandOffContinuityID;
 @property (strong, nonatomic) SAIntentGroupSiriKitMetrics *siriKitMetrics;
+@property (nonatomic) BOOL textToSpeechEnabled;
 @property (copy, nonatomic) NSString *userInitiatedAction;
 @property (copy, nonatomic) NSString *usoVerb;
+@property (nonatomic) BOOL voiceTriggerEnabled;
 
-+ (id)runSiriKitExecutor;
-+ (id)runSiriKitExecutorWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (BOOL)mutatingCommand;

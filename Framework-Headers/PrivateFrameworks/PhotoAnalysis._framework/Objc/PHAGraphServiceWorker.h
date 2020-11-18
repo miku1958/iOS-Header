@@ -50,6 +50,7 @@
 
 + (long long)applicationDataFolderIdentifier;
 + (void)configureXPCConnection:(id)arg1;
++ (id)facesAndScenesProcessingProgressPercentageDataForPhotoLibrary:(id)arg1;
 + (void)initialize;
 + (id)stringFromGraphServiceState:(unsigned long long)arg1;
 + (short)workerType;
@@ -95,7 +96,7 @@
 - (id)currentlyUnavailableError;
 - (id)dataModelEnrichmentJobWithScenario:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)didCompleteRebuildOrDiffSuccessfully;
-- (BOOL)didExceedtimeInterval:(double)arg1 forBackgroundJobUserDefaultsKey:(id)arg2;
+- (BOOL)didExceedTimeInterval:(double)arg1 forBackgroundJobUserDefaultsKey:(id)arg2;
 - (void)enrichDataModelWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)enrichDataModelWithOptions:(id)arg1 isBackgroundEnrichmentJob:(BOOL)arg2 context:(id)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)enrichmentManager:(id)arg1 didCancelProcessor:(id)arg2;
@@ -115,6 +116,7 @@
 - (BOOL)hasAdditionalJobForGraphConsistencyUpdateInScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
 - (BOOL)hasAdditionalJobForGraphRebuildInScenario:(unsigned long long)arg1;
 - (BOOL)hasAdditionalJobForMetricsReportingInScenario:(unsigned long long)arg1;
+- (BOOL)hasAdditionalJobForQuestionGenerationInScenario:(unsigned long long)arg1;
 - (BOOL)hasAdditionalJobsForScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
 - (id)informationDictionaryForAsset:(id)arg1;
 - (id)initWithPhotoAnalysisManager:(id)arg1 dataLoader:(id)arg2;
@@ -129,6 +131,8 @@
 - (void)notifyWhenGraphReadyWithCoalescingIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)pendingRequestReferenceDidDeallocateForAddress:(void *)arg1;
 - (id)pendingRequestReferenceForLabel:(id)arg1;
+- (BOOL)photosChallengeIsEnabled;
+- (id)questionGenerationJobWithScenario:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)rebuildGraphWithOptions:(id)arg1 context:(id)arg2 isRequestedRebuild:(BOOL)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)rebuildGraphWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)reportMetricsWithOptions:(id)arg1 context:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -150,6 +154,8 @@
 - (void)requestDefaultsObjectForKey:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestEnrichmentWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestExportGraphServiceForPurpose:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)requestGenerateQuestionsWithOptions:(id)arg1 context:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)requestGenerateQuestionsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestGraphRebuildFractionCompletedWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestGraphServicePerformsQueryWithContext:(id)arg1 query:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestGraphServiceStatisticsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -162,6 +168,7 @@
 - (void)requestInferredContactIdentifierForPersonLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestInvalidateServicePersistentCachesWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestInvalidateServiceTransientCachesWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)requestLastQuestionGenerationJobDateWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestM5CompatibleMemoriesWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestMemoryDebugInformationForMemoryWithLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestMemoryInfosWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -173,6 +180,7 @@
 - (void)requestRelatedDebugInformationBetweenReferenceAssetCollectionForLocalIdentifier:(id)arg1 andRelatedAssetCollectionForLocalIdentifier:(id)arg2 options:(id)arg3 precision:(unsigned long long)arg4 relatedType:(unsigned long long)arg5 context:(id)arg6 reply:(CDUnknownBlockType)arg7;
 - (void)requestRelatedMomentsForPersonIdentifiers:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestRepresentativeAssetsForAssetCollectionWithLocalIdentifier:(id)arg1 options:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)requestRunPFLWithAttachments:(id)arg1 recipeUserInfo:(id)arg2 context:(id)arg3 resultBlock:(CDUnknownBlockType)arg4;
 - (void)requestSetDefaultsObject:(id)arg1 forKey:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)requestSharingMessageSuggestionDebugInformationForAssetCollectionLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestSharingSuggestionDebugInformationForAssetCollectionLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;

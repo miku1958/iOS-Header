@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, VMUClassInfo, VMUClassInfoMap, VMUNonOverlappingRangeArray, VMUSwiftRuntimeInfo, VMUTaskMemoryScanner;
+@class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, VMUClassInfo, VMUClassInfoMap, VMUNonOverlappingRangeArray, VMURangeArray, VMUSwiftRuntimeInfo, VMUTaskMemoryScanner;
 
 @interface VMUObjectIdentifier : NSObject
 {
@@ -21,6 +21,8 @@
     VMUSwiftRuntimeInfo *_swiftRuntimeInfoStableABI;
     VMUSwiftRuntimeInfo *_swiftRuntimeInfoPreABI;
     BOOL _debugSwiftRemoteMirror;
+    unsigned int _objectContentLevel;
+    VMURangeArray *_readonlyRegionRanges;
     VMUClassInfoMap *_realizedIsaToClassInfo;
     VMUClassInfoMap *_unrealizedClassInfos;
     VMUClassInfoMap *_cfTypeIDToClassInfo;
@@ -56,6 +58,8 @@
 @property (readonly, nonatomic) CDUnknownBlockType memoryReader; // @synthesize memoryReader=_memoryReader;
 @property (readonly) BOOL needToValidateAddressRange; // @synthesize needToValidateAddressRange=_needToValidateAddressRange;
 @property (readonly) unsigned int objcABI; // @synthesize objcABI=_objcABI;
+@property (nonatomic) unsigned int objectContentLevel; // @synthesize objectContentLevel=_objectContentLevel;
+@property (strong, nonatomic) VMURangeArray *readonlyRegionRanges; // @synthesize readonlyRegionRanges=_readonlyRegionRanges;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses; // @synthesize realizedClasses=_realizedIsaToClassInfo;
 @property (readonly, nonatomic) struct libSwiftRemoteMirrorWrapper *swiftMirror; // @synthesize swiftMirror=_swiftMirror;
 @property (readonly, nonatomic) VMUSwiftRuntimeInfo *swiftRuntimeInfoPreABI; // @synthesize swiftRuntimeInfoPreABI=_swiftRuntimeInfoPreABI;
@@ -80,6 +84,7 @@
 - (BOOL)_isValidInstanceLength:(unsigned long long)arg1 expectedLength:(unsigned long long)arg2;
 - (void)_populateSwiftABIVariables;
 - (int)_populateSwiftReflectionInfo:(struct SwiftReflectionInteropContext *)arg1;
+- (BOOL)_remoteAddressIsOKtoRead:(unsigned long long)arg1;
 - (id)_returnFaultedClass:(unsigned long long)arg1 ofType:(unsigned int)arg2;
 - (id)_scanner;
 - (struct _CSTypeRef)_symbolicator;
@@ -88,6 +93,7 @@
 - (id)classInfoForMemory:(void *)arg1 length:(unsigned long long)arg2;
 - (id)classInfoForMemory:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)classInfoForNonobjectMemory:(void *)arg1 length:(unsigned long long)arg2;
+- (id)classInfoForObjCClassStructurePointerType:(unsigned int)arg1;
 - (id)classInfoForObjectWithRange:(struct _VMURange)arg1;
 - (unsigned int)classInfoIndexForObjCClassStructurePointerType:(unsigned int)arg1;
 - (id)classNameForTaggedPointer:(void *)arg1;

@@ -38,6 +38,7 @@
 @property (nonatomic) BOOL requiresLocalMedia;
 @property (copy, nonatomic) NSArray *storeIdentifiers;
 @property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *universalLibraryID;
 
 @end
 

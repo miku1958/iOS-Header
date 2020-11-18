@@ -19,12 +19,14 @@
 - (id)audioInjectionFilePath;
 - (double)audioSessionActivationDelay;
 - (id)baseDir;
+- (BOOL)bypassPersonalizedHeySiri;
 - (BOOL)companionSyncVoiceTriggerUtterancesEnabled;
 - (BOOL)corespeechDaemonEnabled;
 - (BOOL)enableAudioInjection:(BOOL)arg1;
 - (id)fakeHearstModelPath;
 - (BOOL)fileLoggingIsEnabled;
 - (id)fileLoggingLevel;
+- (BOOL)forceVoiceTriggerAPMode;
 - (long long)getJarvisTriggerMode;
 - (id)getStartOfSpeechAudioLogFilePath;
 - (BOOL)iOSBargeInSupportEnabled;
@@ -32,6 +34,7 @@
 - (id)interstitialRelativeDirForLevel:(long long)arg1;
 - (BOOL)isAttentiveSiriAudioLoggingEnabled;
 - (BOOL)isAttentiveSiriEnabled;
+- (BOOL)isMultiPhraseVTEnabled;
 - (BOOL)jarvisAudioLoggingEnabled;
 - (unsigned long long)maxNumLoggingFiles;
 - (BOOL)myriadFileLoggingEnabled;

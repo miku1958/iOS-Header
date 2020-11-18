@@ -11,7 +11,7 @@
 @interface ICCollapsibleThumbnailView : ICCollapsibleBaseView
 {
     BOOL _showAsMovie;
-    struct UIImage *_image;
+    UIImage *_image;
     unsigned long long _imageScaling;
     ICImageAndMovieThumbnailView *_thumbnailView;
 }

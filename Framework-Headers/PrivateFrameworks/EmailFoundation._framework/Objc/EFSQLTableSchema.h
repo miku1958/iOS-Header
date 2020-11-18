@@ -55,6 +55,7 @@
 - (id)initWithName:(id)arg1 rowIDType:(unsigned long long)arg2 columns:(id)arg3;
 - (id)initWithName:(id)arg1 rowIDType:(unsigned long long)arg2 rowIDAlias:(id)arg3 columns:(id)arg4;
 - (id)initWithName:(id)arg1 rowIDType:(unsigned long long)arg2 rowIDAlias:(id)arg3 columns:(id)arg4 primaryKeyColumns:(id)arg5 conflictResolution:(unsigned long long)arg6;
+- (void)removeColumn:(id)arg1;
 
 @end
 

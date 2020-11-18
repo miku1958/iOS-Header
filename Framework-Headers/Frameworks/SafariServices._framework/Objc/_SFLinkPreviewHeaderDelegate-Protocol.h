@@ -12,5 +12,6 @@
 
 @optional
 - (void)linkPreviewHeader:(_SFLinkPreviewHeader *)arg1 didEnableLinkPreview:(BOOL)arg2;
+- (void)linkPreviewHeaderBoundsDidChange:(_SFLinkPreviewHeader *)arg1;
 @end
 

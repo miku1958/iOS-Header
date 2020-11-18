@@ -14,6 +14,8 @@
     BOOL _provideNetworkCredentialsToAccessory;
     BOOL _setupCodeProvided;
     BOOL _needsUserConsent;
+    BOOL _wacAccessory;
+    BOOL _legacyWAC;
     long long _linkType;
     HMFTimer *_pairingInterruptionTimer;
     CDUnknownBlockType _addAccessoryCompletionHandler;
@@ -39,6 +41,7 @@
 @property (nonatomic) BOOL allowAddUnauthenticatedAccessory; // @synthesize allowAddUnauthenticatedAccessory=_allowAddUnauthenticatedAccessory;
 @property (readonly, nonatomic) HAPAccessoryConfiguration *hapAccessoryConfiguration; // @synthesize hapAccessoryConfiguration=_hapAccessoryConfiguration;
 @property (strong, nonatomic) NSString *homeName; // @synthesize homeName=_homeName;
+@property (nonatomic) BOOL legacyWAC; // @synthesize legacyWAC=_legacyWAC;
 @property (nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (nonatomic) BOOL needsUserConsent; // @synthesize needsUserConsent=_needsUserConsent;
 @property (strong, nonatomic) NSData *ownershipToken; // @synthesize ownershipToken=_ownershipToken;
@@ -50,6 +53,7 @@
 @property (nonatomic) BOOL setupCodeProvided; // @synthesize setupCodeProvided=_setupCodeProvided;
 @property (copy, nonatomic) CDUnknownBlockType setupCodeProviderCompletionHandler; // @synthesize setupCodeProviderCompletionHandler=_setupCodeProviderCompletionHandler;
 @property (strong, nonatomic) NSString *setupID; // @synthesize setupID=_setupID;
+@property (nonatomic) BOOL wacAccessory; // @synthesize wacAccessory=_wacAccessory;
 
 - (void).cxx_destruct;
 - (id)description;

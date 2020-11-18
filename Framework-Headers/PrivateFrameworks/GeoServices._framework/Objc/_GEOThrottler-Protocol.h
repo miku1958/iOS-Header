@@ -13,10 +13,10 @@
 @property (readonly, nonatomic) NSString *keyPath;
 @property (readonly, nonatomic) double timeWindow;
 
-+ (BOOL)stateIsExpired:(struct NSDictionary *)arg1;
++ (BOOL)stateIsExpired:(NSDictionary *)arg1;
 - (BOOL)addRequestTimestamp;
-- (struct NSDictionary *)captureState;
-- (id)initWithKeyPath:(NSString *)arg1 requestCount:(unsigned long long)arg2 interval:(double)arg3 savedState:(struct NSDictionary *)arg4;
+- (NSDictionary *)captureState;
+- (id)initWithKeyPath:(NSString *)arg1 requestCount:(unsigned long long)arg2 interval:(double)arg3 savedState:(NSDictionary *)arg4;
 - (BOOL)isExpired;
 - (unsigned int)maxReqCount;
 - (unsigned long long)remainingEntries;

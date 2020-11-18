@@ -58,8 +58,8 @@
 - (id)createGroupForTransportScopeUpdate;
 - (id)deleteTransportScope:(id)arg1 scope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)descriptionForTransportScope:(id)arg1;
-- (id)downloadBatchTaskForSyncAnchor:(struct NSData *)arg1 transportScope:(id)arg2 scope:(id)arg3 currentLibraryInfo:(id)arg4 progressHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (id)fetchScopeListChangesForScopeListSyncAnchor:(struct NSData *)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)downloadBatchTaskForSyncAnchor:(id)arg1 transportScope:(id)arg2 scope:(id)arg3 currentLibraryInfo:(id)arg4 progressHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)fetchScopeListChangesForScopeListSyncAnchor:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)fetchTaskForMomentShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)fetchTransportScopeForScope:(id)arg1 transportScope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)findPersistedInitialSyncSession:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -86,8 +86,8 @@
 - (id)sendFeedbackTaskForMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setShouldOverride:(BOOL)arg1 forSystemBudgets:(unsigned long long)arg2;
 - (id)setupTaskUpdateDisabledFeatures:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)simpleDescriptionForScopeListSyncAnchor:(struct NSData *)arg1;
-- (id)simpleDescriptionForSyncAnchor:(struct NSData *)arg1;
+- (id)simpleDescriptionForScopeListSyncAnchor:(id)arg1;
+- (id)simpleDescriptionForSyncAnchor:(id)arg1;
 - (id)transportScopeForUpgradeFromScopeName:(id)arg1;
 - (id)updateTransportScope:(id)arg1 scope:(id)arg2 libraryInfo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)upgradeFlags:(id)arg1 fromTransportScope:(id)arg2;

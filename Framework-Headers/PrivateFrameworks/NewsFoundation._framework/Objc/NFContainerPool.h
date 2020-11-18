@@ -11,8 +11,8 @@
 @interface NFContainerPool : NSObject
 {
     BOOL _objectGraphDrainingEnabled;
-    struct NSMutableDictionary *_singletons;
-    struct NSMutableDictionary *_graph;
+    NSMutableDictionary *_singletons;
+    NSMutableDictionary *_graph;
     unsigned long long _depth;
     unsigned long long _drainDepth;
     NSMutableArray *_onDrainBlocks;

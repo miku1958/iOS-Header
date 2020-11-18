@@ -30,7 +30,7 @@
 - (id)ic_imageRenderedFromViewHierarchy;
 - (id)ic_imageViewRenderedFromLayer;
 - (id)ic_imageViewRenderedFromViewHierarchy;
-- (void)ic_insertSubview:(struct UIView *)arg1 belowSubview:(struct UIView *)arg2;
+- (void)ic_insertSubview:(id)arg1 belowSubview:(id)arg2;
 - (BOOL)ic_isInSecureWindow;
 - (void)ic_removeAllConstraintsForSubview:(id)arg1;
 - (id)ic_renderImage;

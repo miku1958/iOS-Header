@@ -41,7 +41,6 @@
 - (void)addStoreItemWithAdamID:(long long)arg1 toPlaylistWithPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addStorePlaylistWithGlobalID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)authenticateAndStartInitialImport:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)authenticateAndStartInitialImport:(BOOL)arg1 mergeWithCloudLibrary:(BOOL)arg2 isExplicitUserAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)authenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)becomeActive;
 - (BOOL)canSetItemProperty:(id)arg1;
@@ -53,7 +52,6 @@
 - (long long)cloudAddToPlaylistBehavior;
 - (void)createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 trackList:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
-- (void)deauthenticateAndDisableActiveLockerAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deauthenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deprioritizeAlbumArtistHeroImageForPersistentID:(long long)arg1;
 - (void)deprioritizeArtistHeroImageForPersistentID:(long long)arg1;

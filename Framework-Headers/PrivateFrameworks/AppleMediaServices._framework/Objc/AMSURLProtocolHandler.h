@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSURLHandling-Protocol.h>
 
-@class AMSURLSession, NSString;
+@class AMSSigningSecurityService, AMSURLSession, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AMSURLProtocolHandler : NSObject <AMSURLHandling>
@@ -16,6 +16,7 @@
     AMSURLSession *session;
     NSObject<OS_dispatch_queue> *_responsePingQueue;
     NSObject<OS_dispatch_queue> *_metricsQueue;
+    AMSSigningSecurityService *_signingService;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metricsQueue; // @synthesize metricsQueue=_metricsQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *responsePingQueue; // @synthesize responsePingQueue=_responsePingQueue;
 @property (weak, nonatomic) AMSURLSession *session; // @synthesize session;
+@property (readonly, nonatomic) AMSSigningSecurityService *signingService; // @synthesize signingService=_signingService;
 @property (readonly) Class superclass;
 
 + (double)_randomDouble;

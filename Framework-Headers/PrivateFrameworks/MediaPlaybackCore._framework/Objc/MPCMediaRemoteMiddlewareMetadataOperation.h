@@ -16,7 +16,7 @@
 {
     CDUnknownBlockType _invalidationHandler;
     NSArray *_invalidationObservers;
-    struct NSMapTable *_inputOperations;
+    NSMapTable *_inputOperations;
     MPCMediaRemoteMiddleware *_middleware;
     MPRequest<MPCMediaRemoteMiddlewareMetadataOperationConfiguration> *_request;
     MPCFuture *_playQueueIdentifiersFuture;

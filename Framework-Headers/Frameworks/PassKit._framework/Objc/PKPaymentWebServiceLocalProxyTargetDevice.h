@@ -58,6 +58,7 @@
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
 - (void)noteProvisioningUserInterfaceDidDisappear;
+- (id)osVersion;
 - (int)paymentSupportedInCurrentRegionForWebService:(id)arg1;
 - (void)paymentWebService:(id)arg1 addPaymentPass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 addPaymentPass:(id)arg2 withCompletionHandlerV2:(CDUnknownBlockType)arg3;
@@ -88,6 +89,7 @@
 - (BOOL)paymentWebServiceSupportsAccounts:(id)arg1;
 - (BOOL)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
+- (int)registrationSupportedInCurrentRegionForWebService:(id)arg1;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)secureElementIdentifiers;
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;

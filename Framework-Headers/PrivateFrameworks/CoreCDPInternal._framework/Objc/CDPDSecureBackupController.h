@@ -66,7 +66,6 @@
 - (void)performEscrowRecoveryWithRecoveryContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)performEscrowRecoveryWithRecoveryContext:(id)arg1 error:(id *)arg2;
 - (void)recoverSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)stashedPRK;
 - (BOOL)supportsRecoveryKey;
 - (void)synchronizeKeyValueStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)upgradeICSCRecordsThenEnableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

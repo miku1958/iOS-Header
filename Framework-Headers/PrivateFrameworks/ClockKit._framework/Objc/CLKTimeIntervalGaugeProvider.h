@@ -6,13 +6,13 @@
 
 #import <ClockKit/CLKGaugeProvider.h>
 
-@class NSDate, NSMutableDictionary;
+@class NSDate, NSMutableDictionary, NSNumber;
 
 @interface CLKTimeIntervalGaugeProvider : CLKGaugeProvider
 {
     unsigned long long _nextUpdateToken;
     NSMutableDictionary *_updateHandlersByToken;
-    struct NSNumber *_timerToken;
+    NSNumber *_timerToken;
     BOOL _paused;
     float _startFillFraction;
     float _endFillFraction;
@@ -42,8 +42,8 @@
 - (BOOL)paused;
 - (double)progressFractionForNow:(id)arg1;
 - (void)setPaused:(BOOL)arg1;
-- (struct NSNumber *)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopUpdatesForToken:(struct NSNumber *)arg1;
+- (id)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopUpdatesForToken:(id)arg1;
 - (void)validate;
 
 @end

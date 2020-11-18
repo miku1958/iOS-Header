@@ -8,13 +8,15 @@
 
 #import <ActionKit/WFFileStorageService-Protocol.h>
 
-@class NSString;
+@class NSString, WFContentSource;
 
 @interface WFDropboxStorageService : NSObject <WFFileStorageService>
 {
 }
 
 @property (readonly, nonatomic) Class accessResourceClass;
+@property (readonly, nonatomic) NSString *associatedAppBundleIdentifier;
+@property (readonly, nonatomic) WFContentSource *contentSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPublicURLs;

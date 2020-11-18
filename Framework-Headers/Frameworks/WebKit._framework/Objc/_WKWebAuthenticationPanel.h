@@ -8,13 +8,14 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol _WKWebAuthenticationPanelDelegate;
 
 @interface _WKWebAuthenticationPanel : NSObject <WKObject>
 {
     struct ObjectStorage<API::WebAuthenticationPanel> _panel;
     struct WeakPtr<WebKit::WebAuthenticationPanelClient> _client;
+    struct RetainPtr<NSMutableArray> _transports;
 }
 
 @property (readonly) struct Object *_apiObject;
@@ -24,6 +25,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *relyingPartyID;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSArray *transports;
+@property (readonly, nonatomic) long long type;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

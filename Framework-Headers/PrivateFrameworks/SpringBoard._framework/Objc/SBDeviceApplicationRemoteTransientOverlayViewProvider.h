@@ -36,6 +36,7 @@
 - (unsigned long long)defaultSupportedInterfaceOrientationsForTransientOverlayViewController:(id)arg1;
 - (void)dismissRemoteTransientOverlayViewController:(id)arg1;
 - (id)initWithSceneHandle:(id)arg1 delegate:(id)arg2;
+- (BOOL)isKeyboardVisibleForSpringBoardForTransientOverlayViewController:(id)arg1;
 - (BOOL)isPresentingTransientOverlay:(id)arg1;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredStatusBarStyle;

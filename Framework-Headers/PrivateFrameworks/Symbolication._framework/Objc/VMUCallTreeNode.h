@@ -26,7 +26,6 @@
 - (void).cxx_destruct;
 - (void)_printCallTreeToFile:(struct __sFILE *)arg1 cumulativeOutput:(id)arg2 indentString:(id)arg3 branchPointCount:(unsigned int)arg4 topFunctions:(id)arg5 options:(unsigned long long)arg6;
 - (void)addChild:(id)arg1;
-- (void)addChildCountsIntoNode;
 - (unsigned long long)address;
 - (id)allChildren;
 - (id)browserName;

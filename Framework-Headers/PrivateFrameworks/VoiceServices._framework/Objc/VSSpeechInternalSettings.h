@@ -18,6 +18,7 @@
 @property (nonatomic) float defaultVolume;
 @property (nonatomic) BOOL disableAssetCleaning;
 @property (nonatomic) BOOL disableCache;
+@property (nonatomic) BOOL disableDeviceNeuralTTS;
 @property (nonatomic) BOOL disableDeviceRacing;
 @property (nonatomic) BOOL disableOsprey;
 @property (nonatomic) BOOL disableOspreyStreaming;
@@ -30,8 +31,9 @@
 @property (strong, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property (nonatomic) BOOL isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
 @property (nonatomic) BOOL logSensitiveText;
-@property (strong, nonatomic) NSString *ospreyEndpointURL;
+@property (copy, nonatomic) NSString *ospreyEndpointURL;
 @property (nonatomic) float serverTTSTimeout;
+@property (nonatomic) BOOL simulateNetworkStall;
 @property (nonatomic) float streamBufferDuration;
 @property (nonatomic) BOOL useBetaVoice;
 @property (nonatomic) BOOL whisper;

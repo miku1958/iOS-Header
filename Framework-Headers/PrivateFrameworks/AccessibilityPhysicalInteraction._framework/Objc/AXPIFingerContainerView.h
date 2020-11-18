@@ -15,14 +15,17 @@
     UIView *_viewForAnimatingAlpha;
     AXPIPinchChainView *_pinchChainView;
     BOOL _shouldAnimatePress;
+    BOOL _shouldSuppressFingerVisuals;
     id<AXPIFingerAppearanceDelegate> _appearanceDelegate;
 }
 
 @property (weak, nonatomic) id<AXPIFingerAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
 @property (readonly, nonatomic) BOOL isPinchChainVisible;
 @property (nonatomic) BOOL shouldAnimatePress; // @synthesize shouldAnimatePress=_shouldAnimatePress;
+@property (nonatomic) BOOL shouldSuppressFingerVisuals; // @synthesize shouldSuppressFingerVisuals=_shouldSuppressFingerVisuals;
 
 - (void).cxx_destruct;
+- (void)_setSystemFilters;
 - (void)_updatePinchChainAppearance;
 - (void)animateToTapWithDuration:(double)arg1;
 - (void)cancelCircularProgressAnimation;
@@ -31,7 +34,9 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)performCircularProgressAnimationOnFingersWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGRect)rectForFingersAtPoints:(id)arg1;
+- (void)setPressedState:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showFingerModels:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3 shouldShowPinchChain:(BOOL)arg4;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithFingerModel:(id)arg1 forFingerAtIndex:(unsigned long long)arg2;
 
 @end

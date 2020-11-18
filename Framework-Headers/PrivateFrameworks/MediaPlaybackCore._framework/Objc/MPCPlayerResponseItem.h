@@ -17,6 +17,7 @@
     NSString *_contentItemIdentifier;
     long long _revision;
     NSString *_localizedDurationString;
+    NSString *_explicitBadge;
     NSArray *_languageOptionGroups;
     MPCPlayerResponse *_response;
     NSIndexPath *_indexPath;
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CDStruct_fce57115 duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic) NSString *explicitBadge; // @synthesize explicitBadge=_explicitBadge;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 @property (readonly, nonatomic) NSArray *languageOptionGroups; // @synthesize languageOptionGroups=_languageOptionGroups;

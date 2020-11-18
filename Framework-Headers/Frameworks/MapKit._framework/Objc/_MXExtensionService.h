@@ -18,7 +18,7 @@
     _MXExtension *_extensionProxy;
     unsigned long long _state;
     id<_MXExtensionURLHandling> _URLHandlingDelegate;
-    struct UIViewController *_remoteViewController;
+    UIViewController *_remoteViewController;
 }
 
 @property (weak, nonatomic) id<_MXExtensionURLHandling> URLHandlingDelegate; // @synthesize URLHandlingDelegate=_URLHandlingDelegate;

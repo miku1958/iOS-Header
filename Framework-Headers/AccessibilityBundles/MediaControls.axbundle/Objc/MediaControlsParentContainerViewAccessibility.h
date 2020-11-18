@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
+- (BOOL)shouldGroupAccessibilityChildren;
 
 @end
 

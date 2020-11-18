@@ -38,6 +38,7 @@
     NSTimer *_timeMarkerTimer;
     struct CGPoint _lastPinchDistance;
     struct CGPoint _lastPinchPoint1;
+    double _lastPinchScale;
     BOOL _pinching;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
@@ -172,6 +173,7 @@
 - (void)dayViewContent:(id)arg1 didSelectEvent:(id)arg2;
 - (void)dayViewContent:(id)arg1 didTapInEmptySpaceOnDay:(double)arg2;
 - (void)dayViewContent:(id)arg1 didTapPinnedOccurrence:(id)arg2;
+- (id)dayViewContent:(id)arg1 selectedCopyViewForOccurrenceView:(id)arg2;
 - (void)dayViewContentDidCompleteAsyncLoadAndLayout:(id)arg1;
 - (void)dealloc;
 - (BOOL)eventOccursOnThisDay:(id)arg1;

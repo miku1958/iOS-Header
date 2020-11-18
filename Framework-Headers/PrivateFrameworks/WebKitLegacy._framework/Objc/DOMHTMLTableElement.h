@@ -37,6 +37,7 @@
 - (void)deleteTHead;
 - (id)insertRow:(int)arg1;
 - (int)structuralComplexityContribution;
+- (int)structuralComplexityContribution;
 
 @end
 

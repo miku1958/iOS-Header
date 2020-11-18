@@ -41,12 +41,15 @@
 - (id)endPosition;
 - (void)expand:(id)arg1;
 - (void)extend:(unsigned int)arg1 inDirection:(int)arg2;
+- (void)extend:(unsigned int)arg1 inDirection:(int)arg2;
 - (id)extractContents;
+- (id)firstNode;
 - (id)firstNode;
 - (void)insertNode:(id)arg1;
 - (BOOL)intersectsNode:(id)arg1;
 - (BOOL)isPointInRange:(id)arg1 offset:(int)arg2;
 - (id)lineBoxRects;
+- (void)move:(unsigned int)arg1 inDirection:(int)arg2;
 - (void)move:(unsigned int)arg1 inDirection:(int)arg2;
 - (struct CGImage *)renderedImageForcingBlackText:(BOOL)arg1;
 - (void)selectNode:(id)arg1;

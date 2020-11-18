@@ -45,8 +45,8 @@
 + (id)defaultAllocator;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct NSArray *)batchRepresentation;
-- (struct NSArray *)batchRepresentationWithSubRange:(struct _NSRange)arg1;
+- (id)batchRepresentation;
+- (id)batchRepresentationWithSubRange:(struct _NSRange)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)debugQuickLookObject;

@@ -15,6 +15,7 @@
 @property (nonatomic) int mediaEntityType;
 @property (copy, nonatomic) NSString *persistentID;
 @property (copy, nonatomic) NSString *spotlightIdentifier;
+@property (copy, nonatomic) NSString *universalLibraryID;
 
 @end
 

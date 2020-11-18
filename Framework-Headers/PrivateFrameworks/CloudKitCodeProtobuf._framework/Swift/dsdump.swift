@@ -248,7 +248,8 @@
  struct CloudKitCodeProtobuf.JSONScanner {
 
 	// Properties
-	let source : UnsafeBufferPointer<UInt8> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let source :  empty-list  // +0x0
 	var index : Int // +0x10
 	var numberFormatter : DoubleFormatter // +0x18
 	var recursionLimit : Int // +0x20
@@ -259,26 +260,33 @@
  struct CloudKitCodeProtobuf.BinaryDecoder {
 
 	// Properties
-	var p : UnsafePointer<UInt8> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var p :  empty-list  // +0x0
 	var available : Int // +0x8
-	var fieldStartP : UnsafePointer<UInt8> // +0x10
-	var fieldEndP : UnsafePointer<UInt8>? // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var fieldStartP :  empty-list  // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var fieldEndP :  empty-list  // +0x18
 	var consumed : Bool // +0x20
 	var fieldWireFormat : WireFormat // +0x21
 	var fieldNumber : Int // +0x28
-	var extensions : ExtensionMap? // +0x30
+	var extensions : ExtensionMap // +0x30
 	var groupFieldNumber : Int? // +0x58
 	var options : BinaryDecodingOptions // +0x68
 	var recursionBudget : Int // +0x78
-	var unknownData : Data? // +0x80
-	var unknownOverride : Data? // +0x90
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var unknownData : „ // +0x80
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var unknownOverride : „ // +0x90
  }
 
  struct CloudKitCodeProtobuf.TextFormatEncoder {
 
 	// Properties
-	var data : [UInt8] // +0x0
-	var indentString : [UInt8] // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data :  empty-list  // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var indentString :  empty-list  // +0x8
  }
 
  class CloudKitCodeProtobuf.AnyMessageStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -288,18 +296,20 @@
 	var state : InternalState // +0x20 (0x29)
 
 	// Swift methods
-	0x1aa90  func <stripped> // getter 
-	0x1af60  func <stripped> // method 
-	0x1b040  func <stripped> // method 
-	0x1b510  func <stripped> // method 
+	0x19110  func <stripped> // getter 
+	0x195d0  func <stripped> // method 
+	0x196b0  func <stripped> // method 
+	0x19ae0  func <stripped> // method 
  }
 
  enum CloudKitCodeProtobuf.InternalState {
 
 	// Properties
-	case binary : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case binary : 
 	case message : Message
-	case contentJSON : (Data, JSONDecodingOptions)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case contentJSON : 
  }
 
  class CloudKitCodeProtobuf.MessageExtension {
@@ -312,7 +322,8 @@
  struct CloudKitCodeProtobuf.UnknownStorage {
 
 	// Properties
-	var data : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data :  // +0x0
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_Any {
@@ -329,7 +340,7 @@
 	var work : UnsafeMutableRawBufferPointer // +0x20 (0x10)
 
 	// Swift methods
-	0x22c10  func <stripped> // method 
+	0x208e0  func <stripped> // method 
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_SourceContext {
@@ -408,7 +419,7 @@
 	var requestStreaming : Bool // +0x20
 	var responseTypeURL : String // +0x28
 	var responseStreaming : Bool // +0x38
-	var options : [Google_Protobuf_Option] // +0x40
+	var options : Google_Protobuf_Option // +0x40
 	var syntax : Google_Protobuf_Syntax // +0x48
 	var unknownFields : UnknownStorage // +0x58
  }
@@ -426,9 +437,9 @@
 	// Properties
 	var _name : String // +0x10 (0x10)
 	var _methods : Google_Protobuf_Method // +0x20 (0x8)
-	var _options : [Google_Protobuf_Option] // +0x28 (0x8)
+	var _options : Google_Protobuf_Option // +0x28 (0x8)
 	var _version : String // +0x30 (0x10)
-	var _sourceContext : Google_Protobuf_SourceContext? // +0x40 (0x20)
+	var _sourceContext : Google_Protobuf_SourceContext // +0x40 (0x20)
 	var _mixins : Google_Protobuf_Mixin // +0x60 (0x8)
 	var _syntax : Google_Protobuf_Syntax // +0x68 (0x9)
 
@@ -447,7 +458,8 @@
  struct CloudKitCodeProtobuf.JSONMapEncodingVisitor {
 
 	// Properties
-	var separator : StaticString? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var separator : ≈ // +0x0
 	var encoder : JSONEncoder // +0x18
 	let options : JSONEncodingOptions // +0x30
  }
@@ -529,15 +541,16 @@
 
 	// Properties
 	var encoder : TextFormatEncoder // +0x0
-	var nameMap : _NameMap? // +0x10
-	var nameResolver : [Int : StaticString] // +0x30
-	var extensions : ExtensionFieldValueSet? // +0x38
+	var nameMap : _NameMap // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nameResolver : Int // +0x30
+	var extensions : ExtensionFieldValueSet // +0x38
  }
 
  struct CloudKitCodeProtobuf.ExtensionFieldValueSet {
 
 	// Properties
-	var values : [Int : AnyExtensionField] // +0x0
+	var values : AnyExtensionField // +0x0
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_DoubleValue {
@@ -557,28 +570,32 @@
  struct CloudKitCodeProtobuf.Google_Protobuf_Int64Value {
 
 	// Properties
-	var value : Int64 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : E // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_UInt64Value {
 
 	// Properties
-	var value : UInt64 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : ± // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_Int32Value {
 
 	// Properties
-	var value : Int32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : ı // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_UInt32Value {
 
 	// Properties
-	var value : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : q // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -599,22 +616,26 @@
  struct CloudKitCodeProtobuf.Google_Protobuf_BytesValue {
 
 	// Properties
-	var value : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value :  // +0x0
 	var unknownFields : UnknownStorage // +0x10
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_Duration {
 
 	// Properties
-	var seconds : Int64 // +0x0
-	var nanos : Int32 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seconds : E // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nanos : ı // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
  struct CloudKitCodeProtobuf.BinaryEncoder {
 
 	// Properties
-	var pointer : UnsafeMutablePointer<UInt8> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var pointer :  empty-list  // +0x0
  }
 
  struct CloudKitCodeProtobuf.JSONEncodingVisitor {
@@ -670,8 +691,10 @@
  struct CloudKitCodeProtobuf.Google_Protobuf_Timestamp {
 
 	// Properties
-	var seconds : Int64 // +0x0
-	var nanos : Int32 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seconds : E // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nanos : ı // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -680,46 +703,51 @@
 	// Properties
 	var scanner : TextFormatScanner // +0x0
 	var fieldCount : Int // +0x40
-	var terminator : UInt8? // +0x48
-	var fieldNameMap : _NameMap? // +0x50
-	var messageType : Message.Type? // +0x70
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var terminator : 9 // +0x48
+	var fieldNameMap : _NameMap // +0x50
+	var messageType : Message // +0x70
  }
 
  struct CloudKitCodeProtobuf.JSONEncoder {
 
 	// Properties
-	var data : [UInt8] // +0x0
-	var separator : UInt8? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data :  empty-list  // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var separator : 9 // +0x8
 	let doubleFormatter : DoubleFormatter // +0x10
  }
 
  struct CloudKitCodeProtobuf.TextFormatScanner {
 
 	// Properties
-	var extensions : ExtensionMap? // +0x0
-	var p : UnsafePointer<UInt8> // +0x28
-	var end : UnsafePointer<UInt8> // +0x30
+	var extensions : ExtensionMap // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var p :  empty-list  // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var end :  empty-list  // +0x30
 	var doubleFormatter : DoubleFormatter // +0x38
  }
 
  struct CloudKitCodeProtobuf.OptionalExtensionField: ExtensionField,  AnyExtensionField {
 
 	// Properties
-	var value : A.FieldType.BaseType
+	var value : FieldType
 	var protobufExtension : AnyMessageExtension
  }
 
  struct CloudKitCodeProtobuf.RepeatedExtensionField: ExtensionField,  AnyExtensionField {
 
 	// Properties
-	var value : [A.FieldType.BaseType]
+	var value : FieldType
 	var protobufExtension : AnyMessageExtension
  }
 
  struct CloudKitCodeProtobuf.PackedExtensionField: ExtensionField,  AnyExtensionField {
 
 	// Properties
-	var value : [A.FieldType.BaseType]
+	var value : FieldType
 	var protobufExtension : AnyMessageExtension
  }
 
@@ -775,9 +803,11 @@
  class CloudKitCodeProtobuf.InternPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var interned : [UnsafeBufferPointer<UInt8>] // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var interned :  empty-list  // +0x10 (0x8)
 
 	// Swift methods
+	0x7d8c0  func <stripped> // method 
  }
 
  struct CloudKitCodeProtobuf._NameMap {
@@ -792,31 +822,37 @@
  enum CloudKitCodeProtobuf.NameDescription {
 
 	// Properties
-	case same : (proto: StaticString)
-	case standard : (proto: StaticString)
-	case unique : (proto: StaticString, json: StaticString)
-	case aliased : (proto: StaticString, aliases: [StaticString])
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case same : ¡˛
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case standard : ¡˛
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case unique : ≥˛
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case aliased : ù˛
  }
 
  struct CloudKitCodeProtobuf.Name {
 
 	// Properties
-	var utf8Buffer : UnsafeBufferPointer<UInt8> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var utf8Buffer :  empty-list  // +0x0
 	var nameString : NameString // +0x10
  }
 
  struct CloudKitCodeProtobuf.Names {
 
 	// Properties
-	var json : _NameMap.Name? // +0x0
-	var proto : _NameMap.Name // +0x28
+	var json : Name // +0x0
+	var proto : Name // +0x28
  }
 
  enum CloudKitCodeProtobuf.NameString {
 
 	// Properties
 	case string : String
-	case staticString : StaticString
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case staticString : -˛
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_FieldMask {
@@ -831,7 +867,8 @@
  struct CloudKitCodeProtobuf.HashVisitor {
 
 	// Properties
-	var hasher : Hasher // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var hasher : ’˛ // +0x0
  }
 
  enum CloudKitCodeProtobuf.JSONEncodingError {
@@ -868,7 +905,7 @@
  struct CloudKitCodeProtobuf.SimpleExtensionMap {
 
 	// Properties
-	var fields : [Int : [AnyMessageExtension]] // +0x0
+	var fields : AnyMessageExtension // +0x0
  }
 
  struct CloudKitCodeProtobuf.JSONDecodingOptions {
@@ -898,10 +935,12 @@
 	// Properties
 	var kind : Kind // +0x0
 	var cardinality : Cardinality // +0x10
-	var number : Int32 // +0x1c
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var number : ı // +0x1c
 	var name : String // +0x20
 	var typeURL : String // +0x30
-	var oneofIndex : Int32 // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var oneofIndex : ı // +0x40
 	var packed : Bool // +0x44
 	var options : Google_Protobuf_Option // +0x48
 	var jsonName : String // +0x50
@@ -955,7 +994,8 @@
 
 	// Properties
 	var name : String // +0x0
-	var number : Int32 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var number : ı // +0x10
 	var options : Google_Protobuf_Option // +0x18
 	var unknownFields : UnknownStorage // +0x20
  }
@@ -974,7 +1014,7 @@
 	var _fields : Google_Protobuf_Field
 	var _oneofs : [String]
 	var _options : Google_Protobuf_Option
-	var _sourceContext : Google_Protobuf_SourceContext?
+	var _sourceContext : Google_Protobuf_SourceContext
 	var _syntax : Google_Protobuf_Syntax
 
 	// Swift methods
@@ -986,7 +1026,7 @@
 	var _name : String
 	var _enumvalue : Google_Protobuf_EnumValue
 	var _options : Google_Protobuf_Option
-	var _sourceContext : Google_Protobuf_SourceContext?
+	var _sourceContext : Google_Protobuf_SourceContext
 	var _syntax : Google_Protobuf_Syntax
 
 	// Swift methods
@@ -996,7 +1036,7 @@
 
 	// Properties
 	var _name : String
-	var _value : Google_Protobuf_Any?
+	var _value : Google_Protobuf_Any
 
 	// Swift methods
  }
@@ -1015,5 +1055,13 @@
 	var options : JSONDecodingOptions // +0x38
 	var fieldCount : Int // +0x48
 	var isMapKey : Bool // +0x50
-	var fieldNameMap : _NameMap? // +0x58
+	var fieldNameMap : _NameMap // +0x58
+ }
+
+ struct __C._ConditionalAllocationBuffer {
+
+	// Properties
+	var memory : UnsafeMutableRawPointer
+	var capacity : Int
+	var onStack : Bool
  }

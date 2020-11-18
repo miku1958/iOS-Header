@@ -32,7 +32,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_startRequestingFromWebAuthenticationSession:(BOOL)arg1 inWindow:(id)arg2;
+- (BOOL)_startRequestingFromWebAuthenticationSession:(BOOL)arg1 inWindow:(id)arg2 dryRun:(BOOL)arg3;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -42,7 +42,7 @@
 - (void)safariViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (BOOL)start;
-- (BOOL)startASWebAuthenticationSessionInWindow:(id)arg1;
+- (BOOL)startASWebAuthenticationSessionInWindow:(id)arg1 dryRun:(BOOL)arg2;
 
 @end
 

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (struct CharacterOffset)characterOffset;
 - (id)dataRepresentation;
 - (id)description;
-- (id)initWithData:(id)arg1 accessibilityObject:(struct WebAccessibilityObjectWrapper *)arg2;
+- (id)initWithData:(id)arg1 accessibilityObject:(id)arg2;
 - (id)initWithData:(id)arg1 cache:(struct AXObjectCache *)arg2;
 - (id)initWithTextMarker:(struct TextMarkerData *)arg1 cache:(struct AXObjectCache *)arg2;
 - (BOOL)isIgnored;

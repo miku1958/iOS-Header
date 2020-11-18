@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -39,16 +40,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSLayoutConstraint *separatorCompactWidthConstraint; // @synthesize separatorCompactWidthConstraint=_separatorCompactWidthConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *separatorRegularTrailingConstraint; // @synthesize separatorRegularTrailingConstraint=_separatorRegularTrailingConstraint;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
 
 - (void).cxx_destruct;
 - (void)_reloadData;
 - (void)_updateTableViewLayoutMargins;
 - (struct CGSize)contentSize;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 - (void)dealloc;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -58,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
+- (void)userDidSelectAccessoryButton:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewLayoutMarginsDidChange;
 

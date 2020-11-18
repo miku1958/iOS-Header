@@ -49,7 +49,6 @@
 - (void).cxx_destruct;
 - (BOOL)_adjustAdjacencyMap;
 - (void)_bfsCore:(unsigned int)arg1 colors:(char *)arg2 visitBlock:(CDUnknownBlockType)arg3 examineBlock:(CDUnknownBlockType)arg4;
-- (void *)_deadNodeMap;
 - (void)_dfsCore:(unsigned int)arg1 colors:(char *)arg2 visitBlock:(CDUnknownBlockType)arg3 examineBlock:(CDUnknownBlockType)arg4;
 - (void)_dumpAdjacencyList;
 - (void)_faultDeadNodeMap;
@@ -67,6 +66,7 @@
 - (void)archiveDictionaryRepresentation:(id)arg1 options:(unsigned long long)arg2;
 - (void)breadthFirstSearch:(unsigned int)arg1 nodeVisitBlock:(CDUnknownBlockType)arg2 edgeVisitBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void *)deadNodeMap;
 - (void)dealloc;
 - (id)decapsulateIPSheaderInData:(id)arg1 error:(id *)arg2;
 - (id)decapsulatePlistData:(id)arg1 error:(id *)arg2;

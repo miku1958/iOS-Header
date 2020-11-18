@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CUBonjourAdvertiser, CUNANPublisher, NSDictionary, NSSet, NSString, SFDeviceDiscovery;
+@class CUBonjourAdvertiser, CUNANPublisher, NSDictionary, NSMutableDictionary, NSSet, NSString, SFDeviceDiscovery;
 @protocol OS_dispatch_queue;
 
 @interface CUNetServiceAdvertiser : NSObject
 {
     BOOL _activated;
     CUBonjourAdvertiser *_awdlBonjourAdvertiser;
-    struct NSMutableDictionary *_bleDevices;
+    NSMutableDictionary *_bleDevices;
     SFDeviceDiscovery *_bleDiscovery;
     unsigned long long _bleDiscoveryFlags;
     CUBonjourAdvertiser *_infraBonjourAdvertiser;

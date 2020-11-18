@@ -4,34 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosGraph/PGSurveyQuestion.h>
 
-#import <PhotosGraph/PGQuestion-Protocol.h>
+@class NSDictionary, NSString, PHPerson;
 
-@class NSString, PHPerson;
-
-@interface PGMergeCandidateQuestion : NSObject <PGQuestion>
+@interface PGMergeCandidateQuestion : PGSurveyQuestion
 {
-    PHPerson *_person;
-    long long _type;
+    unsigned short _type;
+    unsigned short _displayType;
+    unsigned short _state;
+    unsigned short _entityType;
+    NSString *_entityIdentifier;
     double _score;
+    PHPerson *_person;
+    NSDictionary *_additionalInfo;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHPerson *person; // @synthesize person=_person;
-@property (readonly, nonatomic) double score; // @synthesize score=_score;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)questionForPerson:(id)arg1;
 - (void).cxx_destruct;
+- (id)additionalInfo;
+- (unsigned short)displayType;
+- (id)entityIdentifier;
+- (unsigned short)entityType;
+- (unsigned long long)hash;
 - (id)initWithPerson:(id)arg1 score:(double)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToQuestion:(id)arg1;
-- (void)persist;
+- (void)persistWithCreationDate:(id)arg1;
 - (void)remove;
+- (double)score;
+- (void)setScore:(double)arg1;
+- (unsigned short)state;
+- (unsigned short)type;
 
 @end
 

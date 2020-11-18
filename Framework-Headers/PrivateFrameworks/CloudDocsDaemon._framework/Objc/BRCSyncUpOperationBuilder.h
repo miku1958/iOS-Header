@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (float)addEditOfSymlink:(id)arg1;
 - (float)addItem:(id)arg1;
 - (BOOL)checkIfSyncAllowedInSharedZoneForItem:(id)arg1;
-- (float)fakeSyncForItem:(id)arg1 inZone:(id)arg2;
+- (float)fakeSyncForItem:(id)arg1 serverItem:(id)arg2 inZone:(id)arg3;
 - (void)handleDeletionOfSharedItem:(id)arg1;
 - (void)handleEditOfSharedItem:(id)arg1;
 - (id)init;

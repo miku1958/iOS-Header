@@ -29,9 +29,9 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_writeClientConfigurationControlRequest:(id)arg1 operationName:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_writeRequestForCharacteristicType:(id)arg1 value:(id)arg2;
 - (void)_writeTLVWithValueInResponse:(id)arg1 characteristicType:(id)arg2 operationName:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_writeValue:(id)arg1 characteristicType:(id)arg2 operationName:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_writeValue:(id)arg1 forCharacteristic:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_writeValueIfDifferent:(id)arg1 characteristicType:(id)arg2 operationName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addClientConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAccessViolationList:(CDUnknownBlockType)arg1;
 - (void)getClientStatusWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -40,8 +40,8 @@
 - (void)readClientConfigurationWithClientIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeClientConfigurationWithClientIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetAccessViolationForClientIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setManagedNetworkEnable:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateClientConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)writeManagedNetworkEnable:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

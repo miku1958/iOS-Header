@@ -69,7 +69,6 @@
 - (void)_shutdown;
 - (void)_storeLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_unregisterNotifications;
-- (void)dealloc;
 - (void)fetchCachedLocationWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCurrentLocationWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchStoredLocationsCountFromDate:(id)arg1 toDate:(id)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;

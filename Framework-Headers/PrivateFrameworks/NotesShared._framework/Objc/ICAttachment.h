@@ -98,6 +98,7 @@
 + (id)attachmentWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)attachmentWithIdentifier:(id)arg1 includeDeleted:(BOOL)arg2 context:(id)arg3;
 + (id)attachmentsMatchingPredicate:(id)arg1 context:(id)arg2;
++ (unsigned long long)countOfAttachmentsMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)defaultTitleForAttachmentType:(short)arg1;
 + (void)deleteAttachment:(id)arg1;
 + (void)ensureFallbackImageDirectoryExistsForAccount:(id)arg1;
@@ -125,6 +126,8 @@
 + (id)predicateForPasswordProtected:(BOOL)arg1;
 + (id)predicateForSearchableAttachments;
 + (id)predicateForVisibleAttachments;
++ (id)predicateForVisibleAttachmentsIncludingTrash;
++ (id)predicateForVisibleAttachmentsIncludingTrash:(BOOL)arg1;
 + (id)predicateForVisibleObjects;
 + (void)purgeAllAttachmentsInContext:(id)arg1;
 + (void)purgeAttachment:(id)arg1;

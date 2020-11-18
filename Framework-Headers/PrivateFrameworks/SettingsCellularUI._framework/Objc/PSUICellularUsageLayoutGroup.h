@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PSUICallTimeGroup *callTimeGroup; // @synthesize callTimeGroup=_callTimeGroup;
 @property (strong, nonatomic) PSUICarrierSpaceManager *carrierSpaceManager; // @synthesize carrierSpaceManager=_carrierSpaceManager;
 @property (strong, nonatomic) NSString *groupSpecifierTitle; // @synthesize groupSpecifierTitle=_groupSpecifierTitle;
-@property (strong, nonatomic) PSListController *hostController; // @synthesize hostController=_hostController;
+@property (weak, nonatomic) PSListController *hostController; // @synthesize hostController=_hostController;
 @property (strong, nonatomic) PSCellularManagementCache *managementCache; // @synthesize managementCache=_managementCache;
 @property (weak, nonatomic) id<PSAppCellularUsageSpecifierDelegate> policySpecifierDelegate; // @synthesize policySpecifierDelegate=_policySpecifierDelegate;
 @property (strong, nonatomic) PSUIResetStatisticsGroup *resetStatisticsGroup; // @synthesize resetStatisticsGroup=_resetStatisticsGroup;

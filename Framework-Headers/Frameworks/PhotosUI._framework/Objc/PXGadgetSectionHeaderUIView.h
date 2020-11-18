@@ -13,20 +13,20 @@
 @interface PXGadgetSectionHeaderUIView : UICollectionReusableView <PXChangeObserver>
 {
     CDStruct_d97c9657 _updateFlags;
-    PXGadgetSectionHeader *_headerModel;
     UILabel *_titleLabel;
     UIButton *_accessoryButton;
     UIView *_divider;
+    PXGadgetSectionHeader *_headerModel;
 }
 
-@property (strong, nonatomic) UIButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
+@property (readonly, nonatomic) UIButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UIView *divider; // @synthesize divider=_divider;
+@property (readonly, nonatomic) UIView *divider; // @synthesize divider=_divider;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PXGadgetSectionHeader *headerModel; // @synthesize headerModel=_headerModel;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 + (id)_accessoryButtonFont;
 + (double)_heightThatFitsFirstToLastBaselineWithText:(id)arg1 width:(double)arg2 font:(id)arg3;
@@ -37,8 +37,10 @@
 + (double)preferredHeightForText:(id)arg1 buttonType:(unsigned long long)arg2 fittingWidth:(double)arg3 style:(unsigned long long)arg4 dividerHidden:(BOOL)arg5;
 - (void).cxx_destruct;
 - (void)_buttonPressed;
-- (void)_updateButton;
+- (void)_updateAccessoryButton;
 - (void)_updateTitle;
+- (void)configureAccessoryButton:(id)arg1;
+- (void)configureTitleLabel:(id)arg1;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

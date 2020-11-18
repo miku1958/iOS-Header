@@ -16,6 +16,7 @@
     BOOL _isAppJustDeepLinkOpened;
     BOOL _isGDPRConsented;
     BOOL _shouldPostAppLaunchData;
+    BOOL _isInDebugMode;
     NSDictionary *_baseFields;
     NSDictionary *_cachedOpenUrlData;
     NSString *_currentTabIdentifier;
@@ -37,6 +38,7 @@
 @property (readonly, copy, nonatomic) NSString *currentTabIdentifier; // @synthesize currentTabIdentifier=_currentTabIdentifier;
 @property (strong, nonatomic) NSString *exitEventDestinationUrl; // @synthesize exitEventDestinationUrl=_exitEventDestinationUrl;
 @property (readonly, copy, nonatomic) NSDictionary *iTunesVPAF;
+@property (nonatomic) BOOL isInDebugMode; // @synthesize isInDebugMode=_isInDebugMode;
 @property (strong, nonatomic) VUIMetricsPageEventData *lastRecordedPageEventData; // @synthesize lastRecordedPageEventData=_lastRecordedPageEventData;
 @property (strong, nonatomic) MTMetricsKit *loggerKit; // @synthesize loggerKit=_loggerKit;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metricsDataDispatchSQ; // @synthesize metricsDataDispatchSQ=_metricsDataDispatchSQ;
@@ -51,7 +53,7 @@
 - (void).cxx_destruct;
 - (id)_createDataAddingBaseAndPageFieldsToEventData:(id)arg1;
 - (id)_createMetricsKitForTopic:(id)arg1;
-- (void)_flushMetricsOnExit;
+- (void)_flushMetrics;
 - (void)_flushUnreportedEvents:(id)arg1;
 - (id)_getLocationAuthorizationStatus;
 - (void)_handleServerConfigChange:(id)arg1;
@@ -60,6 +62,7 @@
 - (void)_handleWLKLocationManagerChange:(id)arg1;
 - (void)_handleWLKSettingsDidChange:(id)arg1;
 - (void)_initializeBaseFields;
+- (void)_invokeOnInactiveMethodInJs;
 - (void)_recordEnter:(id)arg1;
 - (void)_recordEvent:(id)arg1 withEventData:(id)arg2;
 - (void)_recordExit:(id)arg1;
@@ -83,6 +86,7 @@
 - (void)recordMedia:(id)arg1;
 - (void)recordOpenUrlLaunchWithExtURL:(id)arg1 andOptions:(id)arg2;
 - (void)recordPage:(id)arg1;
+- (void)recordRawEvent:(id)arg1;
 - (void)registerForBaseFieldChanges;
 - (void)setupMetricsController;
 - (void)updateGDPRConsentStatus;

@@ -68,7 +68,6 @@
 - (double)_gapBetweenPages;
 - (id)_initWithFrame:(struct CGRect)arg1 enableReachability:(BOOL)arg2;
 - (id)_initWithWebView:(id)arg1;
-- (id)_makeAlertView;
 - (id)_networkInterfaceName;
 - (unsigned long long)_pageCount;
 - (double)_pageLength;
@@ -113,7 +112,6 @@
 - (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2;
 - (void)_webView:(id)arg1 willPresentPreview:(id)arg2;
 - (void)_webViewCommonInitWithWebView:(id)arg1 scalesPageToFit:(BOOL)arg2;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
 - (void)dealloc;

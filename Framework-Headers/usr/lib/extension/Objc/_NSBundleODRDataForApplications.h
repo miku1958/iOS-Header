@@ -6,7 +6,7 @@
 
 #import <Foundation/_NSBundleODRDataCommon.h>
 
-@class NSDictionary, NSMutableSet, NSObject, NSString;
+@class NSDictionary, NSError, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 {
     NSDictionary *_tagToTagState;
     NSMutableSet *_extensionConnections;
+    NSError *_stashedError;
     NSObject<OS_dispatch_group> *_initialStateGroup;
     NSString *_rootSandboxPath;
 }
 
++ (void)_flushCacheForBundle:(id)arg1;
 + (id)dataForBundle:(id)arg1 createIfRequired:(BOOL)arg2;
 - (BOOL)_waitForDaemon;
 - (void)addExtensionEndpoint:(id)arg1;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithBundle:(id)arg1;
 - (double)preservationPriorityForTag:(id)arg1;
 - (void)setPreservationPriority:(double)arg1 forTags:(id)arg2;
+- (id)stashedError;
 
 @end
 

@@ -8,19 +8,27 @@
 
 #import <NanoPassKit/NPKBalanceField-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString, PKPaymentBalance, PKPaymentPassAction;
 
 @interface NPKBalanceField : NSObject <NPKBalanceField>
 {
+    NSDate *_pendingUpdateExpireDate;
     BOOL _isPrimaryBalance;
     NSString *_label;
+    NSString *detailLabel;
     NSString *_formattedValue;
     NSString *_identifier;
+    PKPaymentPassAction *_action;
+    PKPaymentBalance *_balance;
 }
 
+@property (readonly, nonatomic) PKPaymentPassAction *action; // @synthesize action=_action;
+@property (readonly, nonatomic) PKPaymentBalance *balance; // @synthesize balance=_balance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *formattedValue; // @synthesize formattedValue=_formattedValue;
+@property (readonly, nonatomic) NSString *detailLabel; // @synthesize detailLabel;
+@property (readonly, nonatomic) NSString *formattedValue;
+@property (readonly, nonatomic) BOOL hasPendingUpdate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isPrimaryBalance; // @synthesize isPrimaryBalance=_isPrimaryBalance;
@@ -28,8 +36,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithLabel:(id)arg1 formattedValue:(id)arg2 identifier:(id)arg3;
-- (id)initWithLabel:(id)arg1 formattedValue:(id)arg2 identifier:(id)arg3 primaryBalance:(BOOL)arg4;
+- (id)initWithBalance:(id)arg1 label:(id)arg2 formattedValue:(id)arg3 identifier:(id)arg4 primaryBalance:(BOOL)arg5 action:(id)arg6 pendingUpdateExpireDate:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -14,10 +14,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityHandlesRemoteFocusMovement;
+- (BOOL)_accessibilityInTopLevelTabLoop;
 - (int)_accessibilityRemotePid;
 - (void)_accessibilitySetFocusOnElement:(BOOL)arg1;
+- (id)_viewToAddFocusLayer;
 - (BOOL)canBecomeFocused;
-- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 
 @end
 

@@ -10,7 +10,7 @@
 
 @interface _TtCC10RealityKit20__SceneResourceCache5Entry : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *assetBundle;
+    MISSING_TYPE *entryHolder;
 }
 
 @end

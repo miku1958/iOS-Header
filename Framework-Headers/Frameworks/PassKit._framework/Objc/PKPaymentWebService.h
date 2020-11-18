@@ -17,6 +17,7 @@
     PKPaymentDevice *_paymentDevice;
     NSMutableDictionary *_passesByLocalURL;
     int _paymentSupportInRegion;
+    int _registrationSupportInRegion;
     struct os_unfair_lock_s _supportInRegionLock;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_backgroundDownloadQueue;
@@ -44,6 +45,7 @@
 @property (readonly) BOOL needsRegistration;
 @property (readonly) int paymentSetupSupportedInRegion;
 @property (readonly) NSURL *primaryBrokerURL;
+@property (readonly) BOOL registrationSetupSupportedInRegion;
 @property (nonatomic) BOOL sharedService; // @synthesize sharedService=_sharedService;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<PKPaymentWebServiceTargetDeviceProtocol> targetDevice; // @synthesize targetDevice=_targetDevice;
@@ -51,6 +53,7 @@
 + (id)sharedService;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
@@ -83,6 +86,7 @@
 - (void)_handleRetryAfterTSMSyncForPushTopic:(id)arg1 withRequest:(id)arg2 taskIdentifier:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_hasConfiguration;
 - (BOOL)_isSandboxAccount;
+- (BOOL)_isValidResponse:(id)arg1 error:(id)arg2;
 - (id)_movePassToDownloadCache:(id)arg1;
 - (BOOL)_needsRegistrationShouldCheckSecureElementOwnership:(BOOL)arg1;
 - (unsigned long long)_nonceWithRequest:(id)arg1 serviceURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -110,7 +114,6 @@
 - (void)_startBackgroundURLSessionWithIdentifier:(id)arg1 context:(id)arg2 backgroundDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_storePassOwnershipToken:(id)arg1 withIdentifier:(id)arg2;
 - (BOOL)_supportsAccounts;
-- (unsigned long long)_updateContextWithApplePayTrustRegistrationResponse:(id)arg1;
 - (unsigned long long)_updateContextWithRegistrationResponse:(id)arg1;
 - (void)_updateRequestWithCurrentTargetDevice:(id)arg1;
 - (unsigned long long)accountActionWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -144,6 +147,7 @@
 - (void)backgroundDownloadRemotePassAssets:(id)arg1 forSuffixesAndScreenScales:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3;
 - (void)backgroundDownloadWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
 - (void)backgroundPerformDeviceCheckInForRegion:(id)arg1 identifier:(id)arg2;
+- (void)backgroundRegisterCredentialWithRequest:(id)arg1;
 - (unsigned long long)browseableBankAppsWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)canBypassTrustExtendedValidation;
 - (unsigned long long)cancelPaymentWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -154,6 +158,7 @@
 - (unsigned long long)configurePaymentServiceWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)createVirtualCardWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)createWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)credentialAccountAttesationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)customizePhysicalCardWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (unsigned long long)deleteAccountWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -172,7 +177,7 @@
 - (void)getHasBackgroundDownloadTaskPassesForPushTopic:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleResponse:(id)arg1 withError:(id)arg2 data:(id)arg3 task:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 redirectHandler:(CDUnknownBlockType)arg2;
+- (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 originalRequest:(id)arg2 redirectHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)inAppPaymentNonceForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)inAppPaymentNonceWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -184,12 +189,13 @@
 - (id)logFacility;
 - (unsigned long long)moreInfoItemAtURL:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)networkManifestWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)notifyIssuerAppletStateDirtyWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)passActionWithRemoteContentPassAction:(id)arg1 forPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)passAtURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)passUpgradeWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)passWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)passesWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (unsigned long long)paymentProvisioningNonceWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)paymentProvisioningNonceOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)paymentsWithRequest:(id)arg1 account:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)performAction:(id)arg1 onServiceProviderPurchase:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)performApplePayTrustRegistrationWithCompletion:(CDUnknownBlockType)arg1;
@@ -204,8 +210,9 @@
 - (unsigned long long)provisionForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)provisionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)provisioningMethodWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (unsigned long long)registerDeviceAtBrokerURL:(id)arg1 consistencyData:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (unsigned long long)registerDeviceAtBrokerURL:(id)arg1 withConsistencyData:(id)arg2 retries:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (unsigned long long)registerCredentialWithRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (unsigned long long)registerDeviceAtBrokerURL:(id)arg1 consistencyCheckResults:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (unsigned long long)registerDeviceAtBrokerURL:(id)arg1 withConsistencyCheckResults:(id)arg2 retries:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)remotePaymentCredentialsForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)remotePaymentCredentialsUpdateForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -213,6 +220,7 @@
 - (unsigned long long)requestPhysicalCardWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)requestVerificationCodeForPass:(id)arg1 usingChannel:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)requirementsForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)revokeSharedCredentialWithRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (unsigned long long)rewrapInAppPayment:(id)arg1 merchantIdentifier:(id)arg2 hostApplicationIdentifier:(id)arg3 applicationData:(id)arg4 pass:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (unsigned long long)rewrapInAppPayment:(id)arg1 merchantIdentifier:(id)arg2 merchantSession:(id)arg3 hostApplicationIdentifier:(id)arg4 applicationData:(id)arg5 pass:(id)arg6 paymentApplication:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (unsigned long long)rewrapInAppPaymentWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -230,6 +238,8 @@
 - (unsigned long long)submitTermsWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forPass:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)termsDataWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)transactionReceiptAuthorizationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)transactionReceiptWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)unregisterDeviceWithCompanionSerialNumber:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)unregisterDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)updateRegistrationDataAtBrokerURL:(id)arg1 completion:(CDUnknownBlockType)arg2;

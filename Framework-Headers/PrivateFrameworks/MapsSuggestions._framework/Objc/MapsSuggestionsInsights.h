@@ -46,8 +46,8 @@
 - (void)preload;
 - (id)signalPackForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
 - (BOOL)signalPackForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)signalPackForDestinationMapItem:(struct GEOMapItemStorage *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
-- (BOOL)signalPackForDestinationMapItem:(struct GEOMapItemStorage *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)signalPackForDestinationMapItem:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2;
+- (BOOL)signalPackForDestinationMapItem:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)signalPackForHere;
 - (BOOL)signalPackForHereWithHandler:(CDUnknownBlockType)arg1;
 

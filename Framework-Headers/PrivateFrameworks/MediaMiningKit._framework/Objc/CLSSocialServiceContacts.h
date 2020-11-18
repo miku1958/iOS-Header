@@ -8,7 +8,7 @@
 
 #import <MediaMiningKit/PVVisionIntegrating-Protocol.h>
 
-@class CLSContactCache, CLSPerson, CNContact, CNContactStore, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class CLSContactCache, CLSPerson, CNContact, CNContactStore, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol CLSSocialServiceContactsDelegate;
 
 @interface CLSSocialServiceContacts : CLSSocialService <PVVisionIntegrating>
@@ -31,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CLSSocialServiceContactsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSURL *diskCacheURL;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *nonFoundFullNames; // @synthesize nonFoundFullNames=_nonFoundFullNames;
 @property (strong, nonatomic) NSMutableSet *nonFoundHandles; // @synthesize nonFoundHandles=_nonFoundHandles;

@@ -31,7 +31,7 @@
 - (BOOL)_containerIDForContainerIdentifier:(id)arg1;
 - (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_permanentURLForRecordID:(id)arg1 containerIdentifier:(id)arg2;
-- (void)clearConfigCache;
+- (void)clearConfigCacheOnLaunchIfRequested;
 - (void)completeOnQueue:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)containerIdentifier;
 - (void)fetchAppConfigurationIfExpired;

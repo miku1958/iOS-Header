@@ -8,26 +8,30 @@
 
 #import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
 
-@class AMSAuthenticateRequest, AMSFinanceDialogResponse, NSString;
+@class AMSAuthenticateRequest, AMSFinanceDialogResponse, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSFinanceAuthenticateResponse : NSObject <AMSFinancePerformable>
 {
     AMSAuthenticateRequest *_authenticateRequest;
+    NSDictionary *_dialogDictionary;
     AMSFinanceDialogResponse *_dialogResponse;
 }
 
 @property (readonly, nonatomic) AMSAuthenticateRequest *authenticateRequest; // @synthesize authenticateRequest=_authenticateRequest;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSDictionary *dialogDictionary; // @synthesize dialogDictionary=_dialogDictionary;
 @property (readonly, nonatomic) AMSFinanceDialogResponse *dialogResponse; // @synthesize dialogResponse=_dialogResponse;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_createRequestFromDictionary:(id)arg1 dialogRequest:(id)arg2 taskInfo:(id)arg3;
++ (id)_authenticateRequestWithAuthType:(unsigned long long)arg1 taskInfo:(id)arg2 dialogResponse:(id)arg3;
++ (id)_handleAuthenticateResult:(id)arg1 redirectURL:(id)arg2 error:(id)arg3;
++ (id)_performAuthRequest:(id)arg1 redirectURL:(id)arg2 taskInfo:(id)arg3;
++ (id)performAuthForTypesFromResponse:(id)arg1 taskInfo:(id)arg2;
 - (void).cxx_destruct;
-- (id)_findActionableButton;
-- (id)_handleAuthenticateResult:(id)arg1 error:(id)arg2;
+- (id)_locateActionableButtonUsingDialogResponse:(id)arg1;
 - (id)initWithDialogDictionary:(id)arg1 taskInfo:(id)arg2;
 - (id)performWithTaskInfo:(id)arg1;
 

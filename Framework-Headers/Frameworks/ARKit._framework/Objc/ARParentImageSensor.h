@@ -9,11 +9,12 @@
 #import <ARKit/ARSensor-Protocol.h>
 #import <ARKit/AVCaptureAudioDataOutputSampleBufferDelegate-Protocol.h>
 
-@class ARParentImageSensorSettings, AVCaptureAudioDataOutput, AVCaptureConnection, AVCaptureDeviceInput, AVCaptureSession, NSMutableArray, NSString;
+@class ARBufferPopulationMonitor, ARParentImageSensorSettings, AVCaptureAudioDataOutput, AVCaptureConnection, AVCaptureDeviceInput, AVCaptureSession, NSMutableArray, NSString;
 @protocol ARSensorDelegate, OS_dispatch_queue;
 
 @interface ARParentImageSensor : NSObject <AVCaptureAudioDataOutputSampleBufferDelegate, ARSensor>
 {
+    ARBufferPopulationMonitor *_bufferPopulationMonitor;
     NSObject<OS_dispatch_queue> *_captureQueue;
     BOOL _recordingMode;
     BOOL _running;

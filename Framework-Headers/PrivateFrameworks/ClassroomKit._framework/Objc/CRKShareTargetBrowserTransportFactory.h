@@ -10,8 +10,8 @@
 {
 }
 
-- (id)makeInstructordTransportProviderWithStudentDaemonProxy:(id)arg1;
-- (void)makeInstructordTransportUsingStudentdTaskClient:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)makeInstructordTransportProvider;
+- (void)makeInstructordTransportWithCompletion:(CDUnknownBlockType)arg1;
 - (id)makeStudentdTransportProvider;
 - (void)makeStudentdTransportWithCompletion:(CDUnknownBlockType)arg1;
 

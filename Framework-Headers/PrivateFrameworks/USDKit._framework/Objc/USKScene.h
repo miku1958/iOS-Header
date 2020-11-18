@@ -17,17 +17,23 @@
 @property (readonly, nonatomic) USKNode *rootNode;
 
 + (id)newSceneWithURL:(id)arg1;
++ (id)newSceneWithURL:(id)arg1 error:(id *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)addSubLayerWithPath:(id)arg1;
+- (void)addSubLayerWithPath:(id)arg1 offset:(id)arg2;
 - (id)customMetadataWithKey:(id)arg1;
 - (void)dealloc;
 - (id)dictionaryMetadataWithKey:(id)arg1 dictionaryKey:(id)arg2;
 - (void)dumpUSDA;
 - (id)initSceneFromURL:(id)arg1;
+- (id)initSceneFromURL:(id)arg1 error:(id *)arg2;
 - (id)initWithUsdStage:(TfRefPtr_a9ae0d85)arg1 fileURL:(id)arg2;
+- (id)loadedNodeIterator;
 - (id)metadata;
 - (id)metadataWithKey:(id)arg1;
 - (id)newNodeAtPath:(id)arg1 type:(id)arg2;
+- (id)newNodeAtPath:(id)arg1 type:(id)arg2 specifier:(id)arg3;
 - (id)nodeAtPath:(id)arg1;
 - (id)nodeIterator;
 - (id)objectAtPath:(id)arg1;
@@ -38,6 +44,8 @@
 - (BOOL)setCustomMetadata:(id)arg1 value:(id)arg2;
 - (BOOL)setDictionaryMetadataWithKey:(id)arg1 dictionaryKey:(id)arg2 value:(id)arg3;
 - (BOOL)setMetadataWithKey:(id)arg1 value:(id)arg2;
+- (id)subLayerOffsets;
+- (id)subLayerPaths;
 - (TfRefPtr_a9ae0d85)usdStage;
 
 @end

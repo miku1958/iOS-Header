@@ -38,7 +38,7 @@
 - (void)_identityVerificationResquestWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_nextLocalViewController;
 - (void)_resetViewControllers;
-- (id)_verificationErrorViewController;
+- (id)_verificationErrorViewControllerWithError:(id)arg1;
 - (id)init;
 - (id)initWithPeerPaymentWebService:(id)arg1 identityVerificationResponse:(id)arg2 setupDelegate:(id)arg3 context:(long long)arg4;
 - (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;

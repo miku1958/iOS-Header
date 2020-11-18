@@ -112,7 +112,7 @@
 + (id)_singletonManagedAlbumWithKind:(int)arg1 library:(id)arg2;
 + (id)_unpushedParentsOfAlbums:(id)arg1;
 + (void)addSingletonObjectsToContext:(id)arg1;
-+ (struct NSObject *)albumFromGroupURL:(id)arg1 photoLibrary:(id)arg2;
++ (id)albumFromGroupURL:(id)arg1 photoLibrary:(id)arg2;
 + (id)albumWithCloudGUID:(id)arg1 inLibrary:(id)arg2;
 + (id)albumWithKind:(int)arg1 inManagedObjectContext:(id)arg2;
 + (id)albumWithName:(id)arg1 inLibrary:(id)arg2;
@@ -210,7 +210,7 @@
 - (id)payloadID;
 - (id)payloadIDForTombstone:(id)arg1;
 - (void)reducePendingItemsCountBy:(unsigned long long)arg1;
-- (void)registerDerivedAlbum:(struct NSObject *)arg1;
+- (void)registerDerivedAlbum:(id)arg1;
 - (void)registerForChanges;
 - (void)repairUuidAndTitleWithRecoveryReason:(const char *)arg1;
 - (unsigned long long)searchIndexCategory;

@@ -10,20 +10,18 @@
 #import <SettingsCellularUI/RadiosPreferencesDelegate-Protocol.h>
 
 @class CoreTelephonyClient, NSMutableDictionary, NSString, RadiosPreferences;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface PSUICoreTelephonyDataCache : NSObject <CoreTelephonyClientDataDelegate, RadiosPreferencesDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    BOOL _intlDataAccessStatus;
-    BOOL _intlDataAccessStatusInitialized;
     BOOL _cellularDataSetting;
     BOOL _cellularDataSettingInitialized;
     struct __CTServerConnection *_ctConnection;
     CoreTelephonyClient *_client;
     NSMutableDictionary *_dataStatusDict;
-    NSObject<OS_dispatch_group> *_intlDataAccessGroup;
+    NSMutableDictionary *_intlDataAccessStatus;
     RadiosPreferences *_radioPreferences;
 }
 
@@ -35,9 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSObject<OS_dispatch_group> *intlDataAccessGroup; // @synthesize intlDataAccessGroup=_intlDataAccessGroup;
-@property BOOL intlDataAccessStatus; // @synthesize intlDataAccessStatus=_intlDataAccessStatus;
-@property BOOL intlDataAccessStatusInitialized; // @synthesize intlDataAccessStatusInitialized=_intlDataAccessStatusInitialized;
+@property (strong) NSMutableDictionary *intlDataAccessStatus; // @synthesize intlDataAccessStatus=_intlDataAccessStatus;
 @property (strong, nonatomic) RadiosPreferences *radioPreferences; // @synthesize radioPreferences=_radioPreferences;
 @property (readonly) Class superclass;
 
@@ -48,9 +44,10 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)fetchCellularDataEnabled;
 - (void)fetchDataStatus;
-- (void)fetchInternationalDataAccessStatus;
+- (void)fetchInternationalDataAccessStatus:(id)arg1;
 - (id)getDataStatus:(id)arg1;
 - (BOOL)getInternationalDataAccessStatus;
+- (BOOL)getInternationalDataAccessStatus:(id)arg1;
 - (id)init;
 - (id)initPrivate;
 - (BOOL)isAirplaneModeEnabled;
@@ -59,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)setCellularDataEnabled:(BOOL)arg1;
 - (void)setDataFallbackEnabled:(BOOL)arg1;
 - (void)setInternationalDataAccessStatus:(BOOL)arg1;
+- (void)setInternationalDataAccessStatus:(id)arg1 status:(BOOL)arg2;
 - (void)willEnterForeground;
 
 @end

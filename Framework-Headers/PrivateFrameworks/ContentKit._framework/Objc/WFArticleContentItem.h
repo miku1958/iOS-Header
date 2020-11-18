@@ -19,6 +19,7 @@
 + (id)attributedStringWithHTML:(id)arg1 named:(id)arg2;
 + (id)contentCategories;
 + (id)countDescription;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)fileWithHTML:(id)arg1 named:(id)arg2;
 + (id)outputTypes;
 + (id)ownedTypes;

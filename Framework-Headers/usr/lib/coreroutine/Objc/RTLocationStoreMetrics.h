@@ -9,17 +9,19 @@
 @interface RTLocationStoreMetrics : NSObject
 {
     unsigned long long _count;
+    double _distanceTraveled;
     double _maxIntervalBetweenLocations;
     double _spread;
 }
 
 @property (nonatomic) unsigned long long count; // @synthesize count=_count;
+@property (nonatomic) double distanceTraveled; // @synthesize distanceTraveled=_distanceTraveled;
 @property (nonatomic) double maxIntervalBetweenLocations; // @synthesize maxIntervalBetweenLocations=_maxIntervalBetweenLocations;
 @property (nonatomic) double spread; // @synthesize spread=_spread;
 
 - (id)description;
 - (id)init;
-- (id)initWithCount:(unsigned long long)arg1 maxIntervalBetweenLocations:(double)arg2 spread:(double)arg3;
+- (id)initWithCount:(unsigned long long)arg1 maxIntervalBetweenLocations:(double)arg2 spread:(double)arg3 distanceTraveled:(double)arg4;
 
 @end
 

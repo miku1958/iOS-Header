@@ -15,7 +15,7 @@
 #import <AVKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <AVKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AVBehaviorStorage, AVContentOverlayView, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlaybackControlsVisibilityController, AVPlayer, AVPlayerController, AVPlayerControllerVolumeAnimator, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVPresentationContext, AVSecondScreenConnection, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSValue, UIGestureRecognizer, UIPopoverPresentationController, UIView, UIWindow, __AVPlayerLayerView;
+@class AVBehaviorStorage, AVContentOverlayView, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlaybackControlsVisibilityController, AVPlayer, AVPlayerController, AVPlayerControllerVolumeAnimator, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVPresentationContext, AVSecondScreenConnection, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSValue, UIHoverGestureRecognizer, UIPopoverPresentationController, UIView, UIWindow, __AVPlayerLayerView;
 @protocol AVPlayerViewControllerContentTransitioning_NewsOnly, AVPlayerViewControllerDelegate;
 
 @interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, AVPlaybackControlsVisibilityControllerDelegate, AVFullScreenViewControllerDelegate, AVTransitionControllerDelegate, AVPictureInPictureContentSource, AVContentOverlayViewDelegate>
@@ -64,7 +64,7 @@
     AVObservationController *__observationController;
     AVBehaviorStorage *__behaviorStorage;
     long long __numberOfTrackedUserInteractions;
-    UIGestureRecognizer *_hoverGestureRecognizer;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
     NSMutableDictionary *__localizedDiscoverabilityTitleForKeyCommandLocalizationKey;
     unsigned long long _overrideRouteSharingPolicy;
     AVPlayerControllerVolumeAnimator *_volumeAnimator;
@@ -122,7 +122,7 @@
 @property (readonly, nonatomic) BOOL hasCustomPlaybackControls;
 @property (nonatomic) BOOL hasPerformedInitialSetup; // @synthesize hasPerformedInitialSetup=_hasPerformedInitialSetup;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIGestureRecognizer *hoverGestureRecognizer; // @synthesize hoverGestureRecognizer=_hoverGestureRecognizer;
+@property (strong, nonatomic) UIHoverGestureRecognizer *hoverGestureRecognizer; // @synthesize hoverGestureRecognizer=_hoverGestureRecognizer;
 @property (readonly, nonatomic) UIView *iAdPrerollView;
 @property (copy, nonatomic) CDUnknownBlockType interactiveDismissalCompletionHandler; // @synthesize interactiveDismissalCompletionHandler=_interactiveDismissalCompletionHandler;
 @property (strong, nonatomic) NSValue *overrideLayoutMarginsWhenEmbeddedInline;

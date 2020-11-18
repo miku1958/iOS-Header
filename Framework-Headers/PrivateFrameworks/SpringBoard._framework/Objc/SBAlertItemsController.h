@@ -54,6 +54,7 @@
 - (void)_dismissAlertItem:(id)arg1 fromPresenter:(id)arg2 forReason:(int)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_enumeratePresentationsWithType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_enumerateWithDirection:(unsigned long long)arg1 presentationsWithType:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)_hasActivePresentationsThatPresentModally;
 - (BOOL)_hasPresentationForPresenter:(id)arg1;
 - (BOOL)_hasVisibleModalAlertOfType:(unsigned long long)arg1;
 - (id)_initWithUserSessionController:(id)arg1;

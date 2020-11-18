@@ -63,10 +63,10 @@
 - (void)_updateCombinedProgressWithValue:(double)arg1 forRequestIdentifier:(id)arg2 networkAccessAllowed:(BOOL)arg3;
 - (void)cancelDownloadRequest;
 - (void)downloadRequiredResourcesWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchIsDownloadRequiredWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchResourceAvailabilityWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithAsset:(id)arg1 requestType:(long long)arg2;
-- (BOOL)isDownloadingRequiredForOptions:(id)arg1 resourceInfo:(id *)arg2;
+- (long long)resourceAvailabilityForOptions:(id)arg1 resourceInfo:(id *)arg2;
 
 @end
 

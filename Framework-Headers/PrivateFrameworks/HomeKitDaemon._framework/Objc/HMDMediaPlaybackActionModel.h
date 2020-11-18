@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSSet *accessories; // @dynamic accessories;
 @property (strong, nonatomic) MPPlaybackArchive *encodedPlaybackArchive; // @dynamic encodedPlaybackArchive;
 @property (strong, nonatomic) NSSet *profiles; // @dynamic profiles;
+@property (strong, nonatomic) NSSet *services; // @dynamic services;
 @property (strong, nonatomic) NSNumber *state; // @dynamic state;
 @property (strong, nonatomic) NSNumber *volume; // @dynamic volume;
 

@@ -23,7 +23,7 @@
 - (id)initWithPipelineState:(id)arg1 input:(id)arg2;
 - (id)initWithScale:(CDStruct_912cb5d2)arg1 sampleMode:(long long)arg2 input:(id)arg3;
 - (id)initWithTargetScale:(CDStruct_912cb5d2)arg1 effectiveScale:(CDStruct_912cb5d2)arg2 sampleMode:(long long)arg3 input:(id)arg4;
-- (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 
 @end
 

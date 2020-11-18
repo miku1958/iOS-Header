@@ -44,7 +44,6 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTrackingData:(id)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2;
-- (id)initWithTrackingData:(id)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 featurePoints:(id)arg3 bounds:(CDStruct_183601bc)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

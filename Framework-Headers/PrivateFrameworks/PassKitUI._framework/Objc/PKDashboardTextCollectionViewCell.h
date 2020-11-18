@@ -6,16 +6,23 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class NSString, UIImageView, UILabel;
+@class NSString, UIColor, UIImageView, UILabel;
 
 @interface PKDashboardTextCollectionViewCell : PKDashboardCollectionViewCell
 {
     UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
     UIImageView *_disclosureView;
+    BOOL _hideDisclosure;
     NSString *_title;
+    NSString *_subtitle;
+    UIColor *_titleColor;
 }
 
+@property (nonatomic) BOOL hideDisclosure; // @synthesize hideDisclosure=_hideDisclosure;
+@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
 
 - (void).cxx_destruct;
 - (double)_maxWidthForTransactionCellInWidth:(double)arg1;

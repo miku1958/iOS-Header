@@ -6,8 +6,8 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXGadgetNavigationHelper;
-@protocol PXGadget, PXGadgetDelegate, PXGadgetTransition;
+@class NSObject, PXGadgetNavigationHelper;
+@protocol PXAnonymousViewController, PXGadget, PXGadgetDelegate, PXGadgetTransition;
 
 @protocol PXGadgetDelegate <NSObject>
 
@@ -15,13 +15,13 @@
 @property (weak, nonatomic) id<PXGadgetDelegate> nextGadgetResponder;
 @property (readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
 
-- (void)dismissGadgetViewController:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(void (^)(void))arg3;
-- (BOOL)gadget:(id<PXGadget>)arg1 transitionToViewController:(struct NSObject *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
-- (void)presentGadgetViewController:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(void (^)(void))arg3;
+- (void)dismissGadgetViewController:(NSObject<PXAnonymousViewController> *)arg1 animated:(BOOL)arg2 completion:(void (^)(void))arg3;
+- (BOOL)gadget:(id<PXGadget>)arg1 transitionToViewController:(NSObject<PXAnonymousViewController> *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
+- (void)presentGadgetViewController:(NSObject<PXAnonymousViewController> *)arg1 animated:(BOOL)arg2 completion:(void (^)(void))arg3;
 
 @optional
 - (void)gadget:(id<PXGadget>)arg1 animateChanges:(void (^)(void))arg2;
 - (void)gadget:(id<PXGadget>)arg1 didChange:(unsigned long long)arg2;
-- (struct NSObject *)gadgetViewControllerHostingGadget:(id<PXGadget>)arg1;
+- (NSObject<PXAnonymousViewController> *)gadgetViewControllerHostingGadget:(id<PXGadget>)arg1;
 @end
 

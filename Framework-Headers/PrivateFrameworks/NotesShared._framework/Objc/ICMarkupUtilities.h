@@ -14,7 +14,7 @@
 + (void)applyReturnedMarkupURL:(id)arg1 attachment:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)cleanImageMetadataFromData:(id)arg1;
 + (id)createMarkupViewController;
-+ (id)createProcessingMarkupViewControllerOutWindow:(struct UIWindow **)arg1;
++ (id)createProcessingMarkupViewControllerOutWindow:(id *)arg1;
 + (void)embedReturnedMarkupURL:(id)arg1 attachment:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (void)extractReturnedMarkupURL:(id)arg1 attachment:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (BOOL)hasPrivateImageMetadata:(id)arg1;

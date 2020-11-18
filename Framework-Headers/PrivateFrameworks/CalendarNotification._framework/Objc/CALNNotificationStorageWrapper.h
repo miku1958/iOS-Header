@@ -24,8 +24,10 @@
 
 - (void).cxx_destruct;
 - (void)addNotificationRecord:(id)arg1;
+- (void)addNotificationRecords:(id)arg1;
 - (id)initWithWrappedStorage:(id)arg1;
 - (id)notificationRecords;
+- (void)removeAllNotificationRecords;
 - (void)removeNotificationRecordsPassingTest:(CDUnknownBlockType)arg1;
 
 @end

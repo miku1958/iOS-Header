@@ -11,8 +11,8 @@
 @interface HFAccessorySettingDefaultAdapterCollection : NSObject
 {
     HFAccessorySettingManagedConfigurationAdapter *_managedConfigurationAdapter;
-    HFAccessorySettingAdapter *_mobileTimerAdapter;
     HFAccessorySettingSiriLanguageAdapter *_siriLanguageAdapter;
+    HFAccessorySettingAdapter *_mobileTimerAdapter;
 }
 
 @property (readonly, nonatomic) NSSet *allAdapters;

@@ -19,14 +19,14 @@ __attribute__((visibility("hidden")))
 + (Class)meltedClass;
 + (id)uniqueIdentifierForREMObject:(id)arg1;
 - (id)_structuredLocation;
-- (id)initWithAlternateUniverseObject:(EKPersistentObject_556b3b22 *)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
+- (id)initWithAlternateUniverseObject:(id)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 - (double)latitude;
 - (double)longitude;
 - (id)mapKitHandle;
 - (double)radius;
 - (int)referenceFrame;
 - (id)remObjectID;
-- (void)setLatitudeAndLongitudeFromAlternateUniverseObject:(EKPersistentObject_556b3b22 *)arg1 inChangeSet:(id)arg2;
+- (void)setLatitudeAndLongitudeFromAlternateUniverseObject:(id)arg1 inChangeSet:(id)arg2;
 - (id)title;
 - (id)updateParentToCommitSelf:(id)arg1;
 - (id)updatedStructuredLocation;

@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
 {
     HMMediaSession *_mediaSession;
     NSString *_routeUID;
+    unsigned long long _capability;
     id<_HMMediaProfileDelegate> _delegate;
 }
 
+@property (nonatomic) unsigned long long capability; // @synthesize capability=_capability;
 @property (weak) id<_HMMediaProfileDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong) HMMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
 @property (readonly) NSString *routeUID; // @synthesize routeUID=_routeUID;

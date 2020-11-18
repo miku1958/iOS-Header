@@ -28,11 +28,11 @@ __attribute__((visibility("hidden")))
 - (void)_addConstraintsToActivate:(id)arg1 toDeactivate:(id)arg2;
 - (void)_addLayoutViews:(id)arg1;
 - (void)_configure;
-- (BOOL)_isSpace;
-- (id)_item;
+- (id)barButtonItem;
 - (id)description;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (id)initWithLayoutMetrics:(id)arg1 barButtonItem:(id)arg2;
+- (BOOL)isSpaceLayout;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
 - (BOOL)suppressSpacing;
 

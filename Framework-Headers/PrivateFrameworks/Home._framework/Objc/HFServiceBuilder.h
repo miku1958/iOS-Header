@@ -50,6 +50,7 @@
 - (id)_lazilyUpdateName;
 - (id)_lazilyUpdateRoom;
 - (id)_performValidation;
+- (BOOL)_shouldUpdateNilNameWithRoomName;
 - (id)accessories;
 - (id)commitItem;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;

@@ -6,51 +6,59 @@
 
 #import <objc/NSObject.h>
 
+#import <PrototypeTools/PTModuleComponent-Protocol.h>
 #import <PrototypeTools/PTRowObserver-Protocol.h>
 #import <PrototypeTools/PTSettingsKeyPathObserver-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableArray, NSString, PTSettings;
+@class NSArray, NSMutableArray, NSPredicate, NSString, PTSettings;
+@protocol PTComponentObserver;
 
-@interface PTSection : NSObject <PTSettingsKeyPathObserver, PTRowObserver>
+@interface PTSection : NSObject <PTSettingsKeyPathObserver, PTRowObserver, PTModuleComponent>
 {
     NSArray *_rows;
-    NSHashTable *_observers;
-    NSMutableArray *_allRows;
     NSMutableArray *_enabledRows;
-    NSString *_title;
+    BOOL _enabledSection;
     PTSettings *_settings;
-    NSString *_submoduleKeyPath;
-    NSArray *_appearanceConditions;
+    id<PTComponentObserver> _componentObserver;
+    NSPredicate *_appearancePredicate;
+    NSString *_childSettingsKeyPath;
+    NSString *_title;
     CDUnknownBlockType _footerTextGetter;
     CDUnknownBlockType _unregisterBlock;
 }
 
-@property (strong, nonatomic) NSArray *appearanceConditions; // @synthesize appearanceConditions=_appearanceConditions;
+@property (readonly, nonatomic) NSArray *allSections;
+@property (strong, nonatomic) NSPredicate *appearancePredicate; // @synthesize appearancePredicate=_appearancePredicate;
+@property (strong, nonatomic) NSString *childSettingsKeyPath; // @synthesize childSettingsKeyPath=_childSettingsKeyPath;
+@property (weak, nonatomic) id<PTComponentObserver> componentObserver; // @synthesize componentObserver=_componentObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *enabledSections;
 @property (copy, nonatomic) CDUnknownBlockType footerTextGetter; // @synthesize footerTextGetter=_footerTextGetter;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PTSettings *settings; // @synthesize settings=_settings;
-@property (strong, nonatomic) NSString *submoduleKeyPath; // @synthesize submoduleKeyPath=_submoduleKeyPath;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) CDUnknownBlockType unregisterBlock; // @synthesize unregisterBlock=_unregisterBlock;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_recomputeEnabledSection;
 - (void)_reloadEnabledRows;
+- (id)_remoteEditingWhitelistedComponent;
 - (void)_sendInserts:(id)arg1 deletes:(id)arg2;
 - (void)_sendReload;
 - (BOOL)_shouldEnableRow:(id)arg1;
 - (void)_updateEnabledRows;
-- (void)addObserver:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)enumerateAllRowsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateEnabledRowsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)indexOfRow:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRows:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (unsigned long long)numberOfRows;
 - (void)reloadSection;
-- (void)removeObserver:(id)arg1;
 - (id)rowAtIndex:(unsigned long long)arg1;
 - (void)rowDidReload:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;

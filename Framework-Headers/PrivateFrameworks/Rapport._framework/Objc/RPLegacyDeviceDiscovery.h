@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUMobileDeviceDiscovery, CUWiFiScanner, NSData, NSSet, NSString, SFDeviceDiscovery;
+@class CUMobileDeviceDiscovery, CUWiFiScanner, NSData, NSMutableDictionary, NSSet, NSString, SFDeviceDiscovery;
 @protocol OS_dispatch_queue;
 
 @interface RPLegacyDeviceDiscovery : NSObject
@@ -16,7 +16,7 @@
     BOOL _activateCompleted;
     NSData *_blePayloadFilterData;
     NSData *_blePayloadFilterMask;
-    struct NSMutableDictionary *_devices;
+    NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     BOOL _verifyDevices;

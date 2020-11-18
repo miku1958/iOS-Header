@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/ARReplaySensorProtocol-Protocol.h>
+#import <ARKit/ARReplaySensorProtocolInternal-Protocol.h>
 
-@class ARImageCroppingTechnique, ARParentImageSensorSettings, NSArray, NSMutableDictionary, NSSet, NSString, NSURL;
+@class ARImageCroppingTechnique, ARParentImageSensorSettings, ARSession, NSArray, NSMutableDictionary, NSSet, NSString, NSURL;
 @protocol ARReplaySensorDelegate, ARSensorDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface ARReplaySensorPublic : NSObject <ARReplaySensorProtocol>
+@interface ARReplaySensorPublic : NSObject <ARReplaySensorProtocolInternal, ARReplaySensorProtocol>
 {
     BOOL _manualCommandLineMode;
     NSMutableDictionary *_nextWrappedImageDataForStreamIdentifierMap;
@@ -21,9 +22,6 @@
     NSObject<OS_dispatch_source> *_timer;
     double _startTime;
     long long _tick;
-    double _frameRateScale;
-    double _timestampWhenFramerateChanged;
-    NSMutableDictionary *_imageTimestampOfStreamWhenFramerateChanged;
     BOOL _running;
     BOOL _interrupted;
     BOOL _replayStarted;
@@ -37,8 +35,9 @@
     NSSet *_availableVideoStreams;
     NSSet *_availableMetadataStreams;
     NSSet *_videoStreamsToReplay;
-    BOOL _isReplayingManually;
-    BOOL _synchronousMode;
+    id<ARReplaySensorDelegate> _traceReplaySensorDelegate;
+    CDStruct_14d5dc5e _extrinsicsFromUltrawideToWide;
+    BOOL _usingST2Recording;
     BOOL _recordingTimeToReplayTimeOffsetReset;
     float _advanceFramesPerSecondMultiplier;
     int _imageIndex;
@@ -51,11 +50,12 @@
     double _nominalFrameRate;
     unsigned long long _recordedSensorTypes;
     NSSet *_recordedResultClasses;
-    unsigned long long _forcePlaybackFramesPerSecond;
+    long long _replayMode;
     long long _nextFrameIndex;
     NSSet *_customDataClasses;
     ARParentImageSensorSettings *_parentImageSensorSettings;
     NSString *_mainVideoStreamIdentifier;
+    ARSession *_session;
     long long _targetFrameIndex;
     double _recordingTimeToReplayTimeOffset;
     struct CGSize _imageResolution;
@@ -69,12 +69,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (readonly, nonatomic) BOOL finishedReplaying;
-@property (nonatomic) unsigned long long forcePlaybackFramesPerSecond; // @synthesize forcePlaybackFramesPerSecond=_forcePlaybackFramesPerSecond;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int imageIndex; // @synthesize imageIndex=_imageIndex;
 @property (readonly, nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
 @property (readonly, nonatomic) BOOL interrupted; // @synthesize interrupted=_interrupted;
-@property (readonly, nonatomic) BOOL isReplayingManually; // @synthesize isReplayingManually=_isReplayingManually;
+@property (readonly, nonatomic) BOOL isReplayingManually;
 @property (strong, nonatomic) NSString *mainVideoStreamIdentifier; // @synthesize mainVideoStreamIdentifier=_mainVideoStreamIdentifier;
 @property long long nextFrameIndex; // @synthesize nextFrameIndex=_nextFrameIndex;
 @property (readonly, nonatomic) double nominalFrameRate; // @synthesize nominalFrameRate=_nominalFrameRate;
@@ -86,15 +85,22 @@
 @property (readonly, nonatomic) unsigned long long recordedSensorTypes; // @synthesize recordedSensorTypes=_recordedSensorTypes;
 @property (nonatomic) double recordingTimeToReplayTimeOffset; // @synthesize recordingTimeToReplayTimeOffset=_recordingTimeToReplayTimeOffset;
 @property (nonatomic) BOOL recordingTimeToReplayTimeOffsetReset; // @synthesize recordingTimeToReplayTimeOffsetReset=_recordingTimeToReplayTimeOffsetReset;
+@property (readonly, nonatomic) long long replayMode; // @synthesize replayMode=_replayMode;
 @property (weak) id<ARReplaySensorDelegate> replaySensorDelegate; // @synthesize replaySensorDelegate=_replaySensorDelegate;
 @property (readonly, nonatomic) NSURL *sequenceURL; // @synthesize sequenceURL=_sequenceURL;
+@property (weak, nonatomic) ARSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=isSynchronousMode) BOOL synchronousMode; // @synthesize synchronousMode=_synchronousMode;
+@property (readonly, nonatomic, getter=isSynchronousMode) BOOL synchronousMode;
 @property long long targetFrameIndex; // @synthesize targetFrameIndex=_targetFrameIndex;
+@property (weak) id<ARReplaySensorDelegate> traceReplaySensorDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)_allStreamsAreAvailable:(id)arg1;
 - (void)_didOutputSensorData:(id)arg1;
+- (double)_getMinFrameDurationForStream:(id)arg1;
+- (id)_mainVideoStringID:(id)arg1;
 - (void)_replaySensorFinishedReplayingData;
+- (id)_streamIdentifierForCaptureDeviceType:(id)arg1 position:(long long)arg2;
 - (void)advance;
 - (void)advanceFrame;
 - (void)advanceToFrameIndex:(long long)arg1;
@@ -110,11 +116,13 @@
 - (id)getNextWrappedImageDataForReplay;
 - (id)getNextWrappedItemsFromStream:(id)arg1 converter:(CDUnknownBlockType)arg2;
 - (id)getResultDataForClasses:(id)arg1 upToRecordTime:(double)arg2;
+- (id)getWrappedItemsFromPixelBufferStream:(id)arg1 upToMovieTime:(double)arg2 converter:(CDUnknownBlockType)arg3;
 - (id)getWrappedItemsFromStream:(id)arg1 upToMovieTime:(double)arg2 converter:(CDUnknownBlockType)arg3;
 - (id)imageDataToReplayForTimestamp:(double)arg1;
 - (id)initWithDataFromFile:(id)arg1;
 - (id)initWithSequenceURL:(id)arg1 manualReplay:(BOOL)arg2;
 - (id)initWithSequenceURL:(id)arg1 manualReplay:(BOOL)arg2 synchronousMode:(BOOL)arg3;
+- (id)initWithSequenceURL:(id)arg1 replayMode:(long long)arg2;
 - (void)interrupt;
 - (BOOL)isEqual:(id)arg1;
 - (CDUnknownBlockType)keyedArchiveConverter:(Class)arg1;
@@ -126,8 +134,9 @@
 - (void)prepareForReplay;
 - (unsigned long long)providedDataTypes;
 - (void)readFileMetadata;
+- (BOOL)readNextFrameFromStream:(id)arg1 forWrapper:(id)arg2;
 - (id)replayTechniqueForResultDataClasses:(id)arg1;
-- (CDUnknownBlockType)starDataConverter;
+- (double)sourceTimestampForMovieTimestamp:(double)arg1;
 - (void)start;
 - (void)startReplayIfNeeded;
 - (void)stop;

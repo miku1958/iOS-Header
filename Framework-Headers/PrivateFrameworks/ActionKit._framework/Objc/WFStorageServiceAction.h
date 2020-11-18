@@ -27,6 +27,7 @@
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
 - (id)showPickerKey;
 - (BOOL)showsSettingsWhenResourcesUnavailable;
+- (id)targetDataInfo;
 - (void)updatePathPrefix;
 
 @end

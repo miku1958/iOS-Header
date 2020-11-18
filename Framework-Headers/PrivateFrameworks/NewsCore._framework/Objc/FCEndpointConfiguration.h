@@ -14,8 +14,10 @@
     NSString *_notificationsBaseURLString;
     NSString *_staticAssetBaseUrlString;
     NSString *_remoteDataSourceBaseUrlString;
+    NSString *_appAnalyticsBaseURLString;
 }
 
+@property (readonly, nonatomic) NSString *appAnalyticsBaseURLString; // @synthesize appAnalyticsBaseURLString=_appAnalyticsBaseURLString;
 @property (readonly, nonatomic) NSString *clientAPIBaseURLString; // @synthesize clientAPIBaseURLString=_clientAPIBaseURLString;
 @property (readonly, nonatomic) NSString *notificationsBaseURLString; // @synthesize notificationsBaseURLString=_notificationsBaseURLString;
 @property (readonly, nonatomic) NSString *remoteDataSourceBaseUrlString; // @synthesize remoteDataSourceBaseUrlString=_remoteDataSourceBaseUrlString;
@@ -24,6 +26,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)initWithClientAPIBaseURLString:(id)arg1 notificationsBaseURLString:(id)arg2;
+- (id)initWithClientAPIBaseURLString:(id)arg1 notificationsBaseURLString:(id)arg2 staticAssetBaseURLString:(id)arg3 remoteDataSourceBaseURLString:(id)arg4 appAnalyticsBaseURLString:(id)arg5;
 - (id)initWithClientAPIBaseURLString:(id)arg1 notificationsBaseURLString:(id)arg2 staticAssetBaseUrlString:(id)arg3 remoteDataSourceBaseUrl:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 

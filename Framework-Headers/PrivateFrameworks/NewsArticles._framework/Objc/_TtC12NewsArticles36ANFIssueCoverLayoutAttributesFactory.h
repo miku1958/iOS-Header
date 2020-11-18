@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsArticles/SXIssueCoverLayoutAttributesFactory-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles36ANFIssueCoverLayoutAttributesFactory : NSObject <SXIssueCoverLayoutAttributesFactory>
+@interface _TtC12NewsArticles36ANFIssueCoverLayoutAttributesFactory : NSObject
 {
     MISSING_TYPE *issue;
     MISSING_TYPE *headline;

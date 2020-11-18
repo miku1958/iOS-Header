@@ -10,7 +10,7 @@
 #import <SafariServices/_SFActivityDelegate-Protocol.h>
 #import <SafariServices/_SFLinkPreviewHeaderDelegate-Protocol.h>
 
-@class NSDate, NSString, NSTimer, SFBrowserPersonaAnalyticsHelper, SFUserNotification, WKProcessPool, _SFWebViewUsageMonitor;
+@class NSDate, NSString, NSTimer, SFBrowserPersonaAnalyticsHelper, SFSystemAlert, WKProcessPool, _SFWebViewUsageMonitor;
 
 __attribute__((visibility("hidden")))
 @interface SFBrowserServiceViewController : _SFBrowserContentViewController <_SFActivityDelegate, _SFLinkPreviewHeaderDelegate, SFServiceViewControllerProtocol>
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
     NSTimer *_redirectNotificationTimer;
     BOOL _hostApplicationIsForeground;
-    SFUserNotification *_userNotification;
+    SFSystemAlert *_webAuthenticationDataSharingConfirmation;
     NSString *_hostApplicationCallbackURLScheme;
 }
 
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *hostApplicationCallbackURLScheme; // @synthesize hostApplicationCallbackURLScheme=_hostApplicationCallbackURLScheme;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) SFUserNotification *userNotification; // @synthesize userNotification=_userNotification;
+@property (strong, nonatomic) SFSystemAlert *webAuthenticationDataSharingConfirmation; // @synthesize webAuthenticationDataSharingConfirmation=_webAuthenticationDataSharingConfirmation;
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(BOOL)arg2;
 - (void)loadURL:(id)arg1;
 - (void)openCurrentURLInSafari;
+- (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)processPool;
 - (id)processPoolConfiguration;
 - (void)repostNotificationInViewService:(id)arg1;

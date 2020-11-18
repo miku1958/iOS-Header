@@ -89,8 +89,8 @@ __attribute__((visibility("hidden")))
 - (void)_performDelete:(long long)arg1;
 - (BOOL)_performSave:(long long)arg1 animated:(BOOL)arg2;
 - (void)_pinKeyboard:(BOOL)arg1;
-- (void)_presentAttachmentRecurrenceSheetForEvent:(id)arg1;
-- (void)_presentDetachSheetForEvent:(id)arg1 saveAttachments:(BOOL)arg2;
+- (void)_presentAttachmentRecurrenceSheetForEvent:(id)arg1 withContinueBlock:(CDUnknownBlockType)arg2;
+- (void)_presentDetachSheetForEvent:(id)arg1 saveAttachments:(BOOL)arg2 withContinueBlock:(CDUnknownBlockType)arg3;
 - (void)_reallyHandleCellHeightChange;
 - (void)_revertEvent;
 - (void)_setCalendarItemOnEditItems;
@@ -113,12 +113,14 @@ __attribute__((visibility("hidden")))
 - (void)cancelEditingWithDelegateNotification:(BOOL)arg1 forceCancel:(BOOL)arg2;
 - (id)cellWithReuseIdentifier:(id)arg1 forEditItem:(id)arg2;
 - (void)completeAndSave;
+- (void)completeAndSaveWithContinueBlock:(CDUnknownBlockType)arg1;
 - (void)completeWithAction:(long long)arg1 animated:(BOOL)arg2;
 - (void)dealloc;
 - (id)defaultAlertTitle;
 - (id)defaultAlertTitleForEditItem:(id)arg1;
 - (void)deleteClicked:(id)arg1;
 - (void)done:(id)arg1;
+- (void)done:(id)arg1 withContinueBlock:(CDUnknownBlockType)arg2;
 - (void)editItem:(id)arg1 didSaveFromDetailViewController:(BOOL)arg2;
 - (void)editItem:(id)arg1 performActionsOnCellAtSubitem:(unsigned long long)arg2 actions:(CDUnknownBlockType)arg3;
 - (void)editItem:(id)arg1 textViewShouldReturn:(id)arg2;

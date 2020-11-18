@@ -25,6 +25,7 @@
 
 + (id)contextForOfflinePasscodeChange;
 + (id)contextForRecoveryKeyRepair;
++ (id)contextForSettingUpBiometrics;
 + (id)contextForStateRepair;
 + (id)contextWithType:(id)arg1;
 + (BOOL)supportsSecureCoding;

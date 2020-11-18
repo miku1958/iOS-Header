@@ -6,10 +6,19 @@
 
 #import <NanoPassKit/NPKPaymentProvisioningFlowStepContext.h>
 
+@class PKPaymentSetupProduct;
+
 @interface NPKPaymentProvisioningFlowControllerDigitalIssuancePaymentStepContext : NPKPaymentProvisioningFlowStepContext
 {
+    PKPaymentSetupProduct *_product;
 }
 
+@property (strong, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
+
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRequestContext:(id)arg1;
 
 @end

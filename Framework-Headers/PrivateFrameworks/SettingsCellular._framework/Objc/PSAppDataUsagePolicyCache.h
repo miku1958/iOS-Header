@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)fetchUsagePolicyFor:(id)arg1;
+- (void)handlePolicyChangedNotification;
 - (id)init;
 - (id)initPrivate;
 - (BOOL)setCellularUsagePolicy:(id)arg1 forBundle:(id)arg2;

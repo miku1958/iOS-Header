@@ -26,6 +26,7 @@
 - (void)mapLayer:(VKMapView *)arg1 selectedLabelMarkerDidChangeState:(VKLabelMarker *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 selectedLabelMarkerWillDisappear:(VKLabelMarker *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 showingFlyoverDidChange:(BOOL)arg2;
+- (void)mapLayer:(VKMapView *)arg1 venueCreated:(VKVenueFeatureMarker *)arg2 venueCreatedBuilding:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapLayer:(VKMapView *)arg1 venueWithFocusDidChange:(VKVenueFeatureMarker *)arg2 building:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapLayer:(VKMapView *)arg1 willTransitionTo:(long long)arg2;
 - (void)mapLayerARSessionInterruptionEnded:(VKMapView *)arg1;

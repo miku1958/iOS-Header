@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSString *clientEventID;
 @property (readonly, nonatomic) NSDictionary *databaseEventBody;
 @property (strong, nonatomic) NSNumber *databasePID; // @synthesize databasePID=_databasePID;
+@property (strong, nonatomic) NSString *diagnosticsSubmissionBugType;
 @property (readonly, nonatomic) NSDictionary *dictionaryForPosting;
 @property (strong, nonatomic) NSNumber *eventTime;
 @property (strong, nonatomic) NSString *eventType;

@@ -6,7 +6,7 @@
 
 #import <UIKitCore/_UIStatusBarCellularItem.h>
 
-@class _UIStatusBarDualCellularSignalView, _UIStatusBarMultilineStringView;
+@class _UIStatusBarDualCellularSignalView, _UIStatusBarMultilineStringView, _UIStatusBarStringView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarCellularCondensedItem : _UIStatusBarCellularItem
@@ -14,18 +14,28 @@ __attribute__((visibility("hidden")))
     BOOL _reducesFontSize;
     _UIStatusBarDualCellularSignalView *_dualSignalView;
     _UIStatusBarMultilineStringView *_dualNameView;
+    _UIStatusBarStringView *_dualSingleLineNameView;
+    _UIStatusBarStringView *_dualSingleLineNameAndTypeView;
 }
 
 @property (strong, nonatomic) _UIStatusBarMultilineStringView *dualNameView; // @synthesize dualNameView=_dualNameView;
 @property (strong, nonatomic) _UIStatusBarDualCellularSignalView *dualSignalView; // @synthesize dualSignalView=_dualSignalView;
+@property (strong, nonatomic) _UIStatusBarStringView *dualSingleLineNameAndTypeView; // @synthesize dualSingleLineNameAndTypeView=_dualSingleLineNameAndTypeView;
+@property (strong, nonatomic) _UIStatusBarStringView *dualSingleLineNameView; // @synthesize dualSingleLineNameView=_dualSingleLineNameView;
 @property (nonatomic) BOOL reducesFontSize; // @synthesize reducesFontSize=_reducesFontSize;
 
 + (id)dualNameDisplayIdentifier;
 + (id)dualSignalStrengthDisplayIdentifier;
++ (id)dualSingleLineNameAndTypeDisplayIdentifier;
++ (id)dualSingleLineNameDisplayIdentifier;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 typeClass:(Class)arg3 allowDualNetwork:(BOOL)arg4;
 - (void).cxx_destruct;
 - (void)_create_dualNameView;
 - (void)_create_dualSignalView;
+- (void)_create_dualSingleLineNameAndTypeView;
+- (void)_create_dualSingleLineNameView;
 - (id)_fontForEntry:(id)arg1 styleAttributes:(id)arg2 baselineOffset:(double *)arg3;
+- (BOOL)_showCallFowardingForEntry:(id)arg1;
 - (id)_singleCellularEntryMatching:(CDUnknownBlockType)arg1;
 - (id)_stringForCellularType:(long long)arg1;
 - (void)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
@@ -34,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)dependentEntryKeys;
 - (id)entryForDisplayItemWithIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
+- (void)prepareAnimation:(id)arg1 forDisplayItem:(id)arg2;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

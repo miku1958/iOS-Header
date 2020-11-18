@@ -31,7 +31,7 @@
 - (void)force;
 - (void)removeLastStroke;
 - (void)resetRendererState;
-- (UIImage *)snapshot;
+- (UIImage *)snapshotImage;
 - (void)teardown;
 @end
 

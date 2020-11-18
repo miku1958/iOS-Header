@@ -35,6 +35,7 @@
     double _activationEventTime;
     unsigned long long _activationEventMachAbsoluteTime;
     double _expectedActivationEventTime;
+    unsigned long long _stopRecordingHostTime;
     NSNumber *_homeButtonUpFromBeep;
     long long _audioFileType;
     NSFileHandle *_audioFileHandle;
@@ -53,7 +54,7 @@
     NSDictionary *_stopContext;
     AFLanguageDetectionUserContext *_languageDetectionUserContext;
     long long _dictationInputOrigin;
-    struct NSUUID *_turnIdentifier;
+    NSUUID *_turnIdentifier;
 }
 
 @property (nonatomic) BOOL acousticIdEnabled; // @synthesize acousticIdEnabled=_acousticIdEnabled;
@@ -91,6 +92,7 @@
 @property (copy, nonatomic) AFSpeechSynthesisRecord *speechSynthesisRecord; // @synthesize speechSynthesisRecord=_speechSynthesisRecord;
 @property (copy, nonatomic) NSDictionary *startContext; // @synthesize startContext=_startContext;
 @property (copy, nonatomic) NSDictionary *stopContext; // @synthesize stopContext=_stopContext;
+@property (nonatomic) unsigned long long stopRecordingHostTime; // @synthesize stopRecordingHostTime=_stopRecordingHostTime;
 @property (nonatomic) BOOL suppressStartAlert; // @synthesize suppressStartAlert=_suppressStartAlert;
 @property (nonatomic) BOOL suppressStopAlert; // @synthesize suppressStopAlert=_suppressStopAlert;
 @property (copy, nonatomic) NSUUID *turnIdentifier; // @synthesize turnIdentifier=_turnIdentifier;

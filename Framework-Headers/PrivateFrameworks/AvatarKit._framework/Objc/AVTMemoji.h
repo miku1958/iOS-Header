@@ -6,11 +6,11 @@
 
 #import <AvatarKit/AVTAvatar.h>
 
-@class AVTColorPreset, AVTComponent, AVTComponentInstance, AVTCompositor, AVTPreset, MISSING_TYPE, NSDictionary, NSString, SCNMaterial, SCNNode;
+@class AVTColorPreset, AVTComponent, AVTComponentInstance, AVTCompositor, AVTPreset, MISSING_TYPE, NSDictionary, NSString, SCNMaterial, SCNNode, UIColor;
 
 @interface AVTMemoji : AVTAvatar
 {
-    struct UIColor *_backgroundColor;
+    UIColor *_backgroundColor;
     BOOL _needsUpdate;
     SCNNode *_componentContainer;
     long long _componentDirtyMask;
@@ -41,7 +41,7 @@
 + (id)neutralMemoji;
 + (id)neutralMemojiDataRepresentation;
 + (float)rnd;
-+ (struct UIColor *)rndColor;
++ (id)rndColor;
 + (unsigned long long)rndIndex:(unsigned long long)arg1;
 + (float)rndRange:(float)arg1:(float)arg2;
 + (double)skinTextureSize;
@@ -63,7 +63,7 @@
 - (void)applyVariantDependencies;
 - (MISSING_TYPE *)arOffset;
 - (float)arScale;
-- (struct UIColor *)backgroundColor;
+- (id)backgroundColor;
 - (id)colorPresetForCategory:(long long)arg1;
 - (id)colorPresetForCategory:(long long)arg1 colorIndex:(unsigned long long)arg2;
 - (void)commonInit;
@@ -75,13 +75,13 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct CGImage *)createSkinAO;
 - (void)dealloc;
-- (struct UIColor *)eyebrowsColor;
-- (struct UIColor *)facialhairColor;
-- (struct UIColor *)hairColor;
+- (id)eyebrowsColor;
+- (id)facialhairColor;
+- (id)hairColor;
 - (id)init;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
 - (void)invalidate;
-- (struct UIColor *)lipsColor;
+- (id)lipsColor;
 - (void)morphTo:(id)arg1;
 - (void)morphVariantForComponentType:(long long)arg1 facialFeature:(long long)arg2 didChangeWithVariantName:(id)arg3;
 - (id)morphVariantForFacialFeature:(long long)arg1;
@@ -94,14 +94,14 @@
 - (void)removeComponentWithType:(long long)arg1;
 - (void)resetToDefault;
 - (id)secondaryColorPresetForCategory:(long long)arg1;
-- (void)setBackgroundColor:(struct UIColor *)arg1;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setColorPreset:(id)arg1 forCategory:(long long)arg2;
 - (void)setColorPreset:(id)arg1 forCategory:(long long)arg2 colorIndex:(unsigned long long)arg3;
 - (void)setInstance:(id)arg1 forComponentType:(long long)arg2;
 - (void)setMorphVariant:(id)arg1 forFacialFeature:(long long)arg2;
 - (void)setPreset:(id)arg1 forCategory:(long long)arg2;
 - (void)setSecondaryColorPreset:(id)arg1 forCategory:(long long)arg2;
-- (struct UIColor *)skinColor;
+- (id)skinColor;
 - (id)specializationSettings;
 - (id)stickerPhysicsStateIdentifier;
 - (void)update;

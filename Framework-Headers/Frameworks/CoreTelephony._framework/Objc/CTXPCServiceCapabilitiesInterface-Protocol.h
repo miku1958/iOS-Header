@@ -16,5 +16,6 @@
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 setCapability:(NSString *)arg2 enabled:(BOOL)arg3 info:(NSDictionary *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)getPhoneServicesDeviceInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getPhoneServicesDeviceList:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)wifiCallingCTFollowUpComplete:(NSDictionary *)arg1 withCompletion:(void (^)(NSError *))arg2;
 @end
 

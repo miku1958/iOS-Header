@@ -9,25 +9,27 @@
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/CSExternalBehaviorProviding-Protocol.h>
 #import <SpringBoard/CSExternalEventHandling-Protocol.h>
+#import <SpringBoard/SBBarSwipeAffordanceDelegate-Protocol.h>
 #import <SpringBoard/SBBarSwipeAffordanceObserver-Protocol.h>
 #import <SpringBoard/SBFIdleTimerBehaviorProviding-Protocol.h>
 #import <SpringBoard/SBFTodayOverlayControlling-Protocol.h>
 #import <SpringBoard/SBTodayOverlayViewControllerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class FBDisplayLayoutElement, NSHashTable, NSString, SBAppStatusBarDateTimeAssertion, SBBarSwipeAffordanceViewController, SBHomeGesturePanGestureRecognizer, SBMainScreenActiveInterfaceOrientationWindow, SBTodayOverlayViewController;
+@class FBDisplayLayoutElement, NSHashTable, NSString, SBAppStatusBarDateTimeAssertion, SBBarSwipeAffordanceViewController, SBMainScreenActiveInterfaceOrientationWindow, SBTodayOverlayViewController;
 
-@interface SBTodayOverlayController : NSObject <SBBarSwipeAffordanceObserver, SBTodayOverlayViewControllerDelegate, UIGestureRecognizerDelegate, SBFTodayOverlayControlling, SBFIdleTimerBehaviorProviding, CSExternalBehaviorProviding, CSExternalEventHandling, BSDescriptionProviding>
+@interface SBTodayOverlayController : NSObject <SBBarSwipeAffordanceDelegate, SBBarSwipeAffordanceObserver, SBTodayOverlayViewControllerDelegate, UIGestureRecognizerDelegate, SBFTodayOverlayControlling, SBFIdleTimerBehaviorProviding, CSExternalBehaviorProviding, CSExternalEventHandling, BSDescriptionProviding>
 {
     NSHashTable *_observers;
     BOOL _dismissing;
     SBMainScreenActiveInterfaceOrientationWindow *_window;
     SBBarSwipeAffordanceViewController *_homeAffordanceViewController;
     SBTodayOverlayViewController *_overlayViewController;
-    SBHomeGesturePanGestureRecognizer *_dismissHomeGestureRecognizer;
     FBDisplayLayoutElement *_displayLayoutElement;
     SBAppStatusBarDateTimeAssertion *_statusBarContentAssertion;
-    unsigned long long _systemGestureType;
+    unsigned long long _screenEdgeSystemGestureType;
+    unsigned long long _indirectScreenEdgeSystemGestureType;
+    unsigned long long _scrunchSystemGestureType;
 }
 
 @property (readonly, nonatomic) double contentWidth;
@@ -36,7 +38,6 @@
 @property (readonly, nonatomic) double customIdleWarningTimeout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) SBHomeGesturePanGestureRecognizer *dismissHomeGestureRecognizer; // @synthesize dismissHomeGestureRecognizer=_dismissHomeGestureRecognizer;
 @property (nonatomic, getter=isDismissing) BOOL dismissing; // @synthesize dismissing=_dismissing;
 @property (strong, nonatomic) FBDisplayLayoutElement *displayLayoutElement; // @synthesize displayLayoutElement=_displayLayoutElement;
 @property (readonly) unsigned long long hash;
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic) long long idleTimerDuration;
 @property (readonly, nonatomic) long long idleTimerMode;
 @property (readonly, nonatomic) long long idleWarnMode;
+@property (readonly, nonatomic) unsigned long long indirectScreenEdgeSystemGestureType; // @synthesize indirectScreenEdgeSystemGestureType=_indirectScreenEdgeSystemGestureType;
 @property (readonly, nonatomic) long long notificationBehavior;
 @property (readonly, nonatomic) SBTodayOverlayViewController *overlayViewController; // @synthesize overlayViewController=_overlayViewController;
 @property (readonly, nonatomic) long long participantState;
@@ -51,10 +53,11 @@
 @property (readonly, nonatomic, getter=isPresented) BOOL presented;
 @property (readonly, nonatomic) long long proximityDetectionMode;
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
+@property (readonly, nonatomic) unsigned long long screenEdgeSystemGestureType; // @synthesize screenEdgeSystemGestureType=_screenEdgeSystemGestureType;
 @property (readonly, nonatomic) long long scrollingStrategy;
+@property (readonly, nonatomic) unsigned long long scrunchSystemGestureType; // @synthesize scrunchSystemGestureType=_scrunchSystemGestureType;
 @property (strong, nonatomic) SBAppStatusBarDateTimeAssertion *statusBarContentAssertion; // @synthesize statusBarContentAssertion=_statusBarContentAssertion;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long systemGestureType; // @synthesize systemGestureType=_systemGestureType;
 @property (readonly, nonatomic) SBMainScreenActiveInterfaceOrientationWindow *window; // @synthesize window=_window;
 
 - (void).cxx_destruct;
@@ -63,6 +66,7 @@
 - (void)_removeSystemGestureRecognizer;
 - (void)_takeStatusBarContentAssertion;
 - (void)addTodayOverlayObserver:(id)arg1;
+- (unsigned long long)barSwipeAffordanceView:(id)arg1 systemGestureTypeForType:(long long)arg2;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -71,12 +75,10 @@
 - (void)dismissTapGestureUpdated:(id)arg1;
 - (void)enumerateTodayOverlayObserversUsingBlock:(CDUnknownBlockType)arg1;
 - (double)finalPresentationProgressForPresentationProgress:(double)arg1 gestureVelocity:(double)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)handleEvent:(id)arg1;
 - (void)homeGesturePerformedForBarSwipeAffordanceView:(id)arg1;
-- (id)init;
-- (id)initWithWindowLevel:(double)arg1 homeGestureParticipantIdentifier:(long long)arg2 systemGestureType:(unsigned long long)arg3 secure:(BOOL)arg4;
+- (id)initWithWindowLevel:(double)arg1 homeGestureParticipantIdentifier:(long long)arg2 screenEdgeSystemGestureType:(unsigned long long)arg3 indirectScreenEdgeSystemGestureType:(unsigned long long)arg4 scrunchSystemGestureType:(unsigned long long)arg5 secure:(BOOL)arg6;
 - (void)presentAnimated:(BOOL)arg1;
 - (void)removeTodayOverlayObserver:(id)arg1;
 - (void)setDisplayLayoutElementActive:(BOOL)arg1;

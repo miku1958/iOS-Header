@@ -28,7 +28,6 @@
 - (void)_beginGraphOperation:(id)arg1;
 - (void)_endGraphOperation;
 - (id)currentlyUnavailableError;
-- (void)generateQuestionsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)generateSuggestionsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)graphUpdateDidStop;
 - (void)graphUpdateIsConsistent;

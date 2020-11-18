@@ -8,7 +8,7 @@
 
 #import <CoreUtils/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, NSXPCConnection, NSXPCInterface, NSXPCListener, NSXPCListenerEndpoint;
+@class NSMutableSet, NSString, NSXPCConnection, NSXPCInterface, NSXPCListener, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface CUXPCAgent : NSObject <NSXPCListenerDelegate>
@@ -17,7 +17,7 @@
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
     NSXPCConnection *_xpcCnx;
-    struct NSMutableSet *_xpcCnxSet;
+    NSMutableSet *_xpcCnxSet;
     NSXPCListener *_xpcListener;
     CDUnknownBlockType _connectionStartedHandler;
     CDUnknownBlockType _connectionEndedHandler;

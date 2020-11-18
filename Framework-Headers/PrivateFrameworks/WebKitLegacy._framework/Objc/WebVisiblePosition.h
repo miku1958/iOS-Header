@@ -11,7 +11,7 @@
     struct WebObjectInternal *_internal;
 }
 
-@property (nonatomic) int affinity;
+@property (nonatomic) unsigned long long affinity;
 
 + (id)_wrapVisiblePosition:(struct VisiblePosition)arg1;
 + (id)_wrapVisiblePositionIfValid:(struct VisiblePosition)arg1;

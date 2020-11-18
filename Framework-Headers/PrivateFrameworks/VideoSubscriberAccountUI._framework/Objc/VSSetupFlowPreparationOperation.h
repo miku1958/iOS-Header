@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)_loadProviderAppDescriptionWithFlow:(id)arg1;
 - (void)_resolveBundleIDs:(id)arg1 forFlow:(id)arg2;
 - (id)createAppDescriptionFetchOperationForProvider:(id)arg1 withFlow:(id)arg2;
-- (id)createVSImageLoadOperationForProvider:(id)arg1 withFlow:(id)arg2;
 - (void)executionDidBegin;
 - (id)init;
 - (void)prepareSTBSetupForAccount:(id)arg1 forProvider:(id)arg2;

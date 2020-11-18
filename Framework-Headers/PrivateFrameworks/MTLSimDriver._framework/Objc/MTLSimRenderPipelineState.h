@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     MTLSimDevice *_device;
     unsigned int _pipelineRef;
+    unsigned long long _uniqueIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportIndirectCommandBuffers;
 @property (readonly) BOOL threadgroupSizeMatchesTileSize;
-@property (readonly) unsigned long long uniqueIdentifier;
+@property (readonly) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, strong, nonatomic) MTLDebugInstrumentationData *vertexDebugInstrumentationData;
 
 - (void)dealloc;

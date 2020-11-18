@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSString *_eventTypeLabelStr;
     NSString *_subhead1LabelStr;
     NSString *_subhead2LabelStr;
+    NSString *_subhead3LabelStr;
     NSString *_tabName;
     VUILabel *_eventTypeLabel;
     VUITextLayout *_eventTypeLabelLayout;
@@ -21,6 +22,8 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_subhead1LabelLayout;
     VUILabel *_subhead2Label;
     VUITextLayout *_subhead2LabelLayout;
+    VUILabel *_subhead3Label;
+    VUITextLayout *_subhead3LabelLayout;
     VUILabel *_tabNameLabel;
     VUITextLayout *_tabNameLabelLayout;
     UIImageView *_tabImageView;
@@ -37,6 +40,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUILabel *subhead2Label; // @synthesize subhead2Label=_subhead2Label;
 @property (strong, nonatomic) VUITextLayout *subhead2LabelLayout; // @synthesize subhead2LabelLayout=_subhead2LabelLayout;
 @property (copy, nonatomic) NSString *subhead2LabelStr; // @synthesize subhead2LabelStr=_subhead2LabelStr;
+@property (strong, nonatomic) VUILabel *subhead3Label; // @synthesize subhead3Label=_subhead3Label;
+@property (strong, nonatomic) VUITextLayout *subhead3LabelLayout; // @synthesize subhead3LabelLayout=_subhead3LabelLayout;
+@property (copy, nonatomic) NSString *subhead3LabelStr; // @synthesize subhead3LabelStr=_subhead3LabelStr;
 @property (copy, nonatomic) UIImage *tabImage;
 @property (strong, nonatomic) UIImageView *tabImageView; // @synthesize tabImageView=_tabImageView;
 @property (copy, nonatomic) NSString *tabName; // @synthesize tabName=_tabName;
@@ -47,6 +53,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setSubhead1LabelColor:(id)arg1;
+- (void)setSubhead2LabelColor:(id)arg1;
+- (void)setSubhead3LabelColor:(id)arg1;
 
 @end
 

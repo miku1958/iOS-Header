@@ -16,7 +16,7 @@
 - (void)_updateGlyphScaleForAdditiveScaleOrAxisUpdate;
 - (struct CGPoint)glyphCenter;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setAxis:(int)arg1;
+- (void)setAxis:(unsigned long long)arg1;
 - (void)stopGlyphAnimations;
 
 @end

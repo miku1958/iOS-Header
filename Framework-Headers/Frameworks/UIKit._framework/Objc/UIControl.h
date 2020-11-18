@@ -6,9 +6,12 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSMutableArray, NSSet;
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
-@interface UIControl : UIView
+@class NSMutableArray, NSSet, NSString, UIPointerInteraction, _UICursorInteraction;
+
+@interface UIControl : UIView <UIPointerInteractionDelegate, _UICursorInteractionDelegate>
 {
     NSMutableArray *_targetActions;
     struct CGPoint _previousPoint;
@@ -29,34 +32,52 @@
         unsigned int horizontalAlignment:3;
         unsigned int wasLastHighlightSuccessful:1;
         unsigned int touchHasHighlighted:1;
+        unsigned int hasPointerInteraction:1;
+        unsigned int hasProxyPointerInteraction:1;
     } _controlFlags;
+    long long _requiredButtonMask;
 }
 
+@property (readonly, nonatomic) _UICursorInteraction *_cursorInteraction;
+@property (readonly, nonatomic) UIPointerInteraction *_pointerInteraction;
+@property (strong, nonatomic, setter=_setProxyPointerInteraction:) UIPointerInteraction *_proxyPointerInteraction;
+@property (nonatomic, setter=_setRequiredButtonMask:) long long _requiredButtonMask; // @synthesize _requiredButtonMask;
 @property (readonly, nonatomic) unsigned long long allControlEvents;
 @property (readonly, nonatomic) NSSet *allTargets;
 @property (nonatomic) long long contentHorizontalAlignment; // @dynamic contentHorizontalAlignment;
 @property (nonatomic) long long contentVerticalAlignment; // @dynamic contentVerticalAlignment;
+@property (readonly, nonatomic) _UICursorInteraction *cursorInteraction;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long effectiveContentHorizontalAlignment;
+@property (readonly, nonatomic) long long effectiveContentVerticalAlignment;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @dynamic enabled;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @dynamic highlighted;
+@property (readonly, nonatomic) UIPointerInteraction *pointerInteraction;
+@property (nonatomic, getter=isPointerInteractionEnabled) BOOL pointerInteractionEnabled;
 @property (nonatomic, getter=isSelected) BOOL selected; // @dynamic selected;
 @property (readonly, nonatomic) unsigned long long state; // @dynamic state;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTouchInside) BOOL touchInside; // @dynamic touchInside;
 @property (readonly, nonatomic, getter=isTracking) BOOL tracking; // @dynamic tracking;
 
 + (BOOL)_allowActionsToQueue;
++ (BOOL)_cursorInteractionEnabled;
 + (unsigned long long)_primaryStateForState:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)__distributionStatisticsForUserInteractionDuration;
 - (id)__scalarStatisticsForUserTouchUpInsideEvent;
 - (id)__scalarStatisticsForUserValueChangedEvent;
 - (BOOL)_accessibilityShouldActivateOnHUDLift;
+- (id)_allTargetActions;
 - (void)_beginInteractionDurationStatisticMeasurements;
 - (void)_cancelDelayedActions;
 - (struct CGRect)_clippedHighlightBounds;
 - (void)_commitInteractionDurationStatisticMeasurements;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (unsigned long long)_controlEventsForActionTriggered;
+- (id)_createPointerInteraction;
 - (void)_delayActions;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
@@ -65,6 +86,8 @@
 - (BOOL)_hasActionForEventMask:(unsigned long long)arg1;
 - (double)_highlightCornerRadius;
 - (void)_incrementStatisticsForUserActionForEvents:(unsigned long long)arg1;
+- (void)_installCursorInteractionIfNeeded;
+- (void)_invalidatePointerInteraction;
 - (id)_scalarStatisticsForUserTouchUpInsideEvent;
 - (id)_scalarStatisticsForUserValueChangedEvent;
 - (void)_sendActionsForEvents:(unsigned long long)arg1 withEvent:(id)arg2;
@@ -74,6 +97,7 @@
 - (void)_setLastHighlightSuccessful:(BOOL)arg1;
 - (void)_setTouchHasHighlighted:(BOOL)arg1;
 - (unsigned long long)_stateForFocusUpdateContext:(id)arg1;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (BOOL)_touchHasHighlighted;
 - (void)_unhighlight;
 - (BOOL)_wasLastHighlightSuccessful;
@@ -87,8 +111,11 @@
 - (BOOL)cancelTouchTracking;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
 - (void)dealloc;
-- (long long)effectiveContentVerticalAlignment;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)hasOneOrMoreTargets;
@@ -97,6 +124,10 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2 forControlEvents:(unsigned long long)arg3;
 - (void)removeTarget:(id)arg1 forEvents:(int)arg2;
 - (BOOL)requiresDisplayOnTracking;

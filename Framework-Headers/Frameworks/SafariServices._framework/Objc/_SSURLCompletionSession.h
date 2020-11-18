@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSURLCompletionSessionProxy.h>
+#import <SafariSharedUI/WBSURLCompletionSessionProxy.h>
 
 @interface _SSURLCompletionSession : WBSURLCompletionSessionProxy
 {

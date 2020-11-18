@@ -234,7 +234,7 @@
 - (void)_navigateToOneUpBrowserWithOptions:(long long)arg1 animated:(BOOL)arg2 pinchGestureRecognizer:(id)arg3;
 - (void)_navigateToRevealAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_navigateToRevealComment:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_navigateToRevealPhoto:(id)arg1 inAlbum:(struct NSObject *)arg2 animated:(BOOL)arg3;
+- (void)_navigateToRevealPhoto:(id)arg1 inAlbum:(id)arg2 animated:(BOOL)arg3;
 - (void)_navigateToSectionInfo:(id)arg1 atItemIndex:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (long long)_numberOfSectionInfosForCollectionView:(id)arg1;
 - (void)_openiCloudSettings;

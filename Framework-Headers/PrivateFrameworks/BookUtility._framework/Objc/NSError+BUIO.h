@@ -30,10 +30,8 @@
 + (id)bu_fileWriteUnknownErrorWithUserInfo:(id)arg1;
 + (id)bu_userInfoWithErrorType:(long long)arg1 userInfo:(id)arg2;
 - (void)bu_enumerateErrorUsingBlock:(CDUnknownBlockType)arg1;
-- (void)bu_enumerateErrorUsingBlock:(CDUnknownBlockType)arg1;
 - (id)bu_errorPreservingAlertTitle;
 - (id)bu_errorPreservingCancel;
-- (BOOL)bu_isErrorPassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)bu_isErrorPassingTest:(CDUnknownBlockType)arg1;
 - (id)bu_localizedAlertMessage;
 - (id)bu_localizedAlertTitle;

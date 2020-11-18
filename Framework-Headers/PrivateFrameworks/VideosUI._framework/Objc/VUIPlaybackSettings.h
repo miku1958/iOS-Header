@@ -6,31 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VUIPlaybackSettings : NSObject
 {
     int _preferencesNotifyToken;
     BOOL _preferencesNotifyTokenIsValid;
-    BOOL _cellularDataEnabled;
+    BOOL _cellularDataPlaybackEnabled;
+    BOOL _cellularDataDownloadEnabled;
     NSString *_preferredAudioLanguageCode;
     long long _networkStatus;
     long long _preferredWifiPlaybackQuality;
     long long _preferredCellularPlaybackQuality;
+    long long _preferredWifiDownloadQuality;
+    long long _preferredCellularDownloadQuality;
+    NSArray *_preferredAudioDownloadLanguages;
 }
 
-@property (nonatomic) BOOL cellularDataEnabled; // @synthesize cellularDataEnabled=_cellularDataEnabled;
+@property (nonatomic) BOOL cellularDataDownloadEnabled; // @synthesize cellularDataDownloadEnabled=_cellularDataDownloadEnabled;
+@property (nonatomic) BOOL cellularDataPlaybackEnabled; // @synthesize cellularDataPlaybackEnabled=_cellularDataPlaybackEnabled;
 @property (nonatomic) long long networkStatus; // @synthesize networkStatus=_networkStatus;
+@property (strong, nonatomic) NSArray *preferredAudioDownloadLanguages; // @synthesize preferredAudioDownloadLanguages=_preferredAudioDownloadLanguages;
 @property (strong, nonatomic) NSString *preferredAudioLanguageCode; // @synthesize preferredAudioLanguageCode=_preferredAudioLanguageCode;
+@property (nonatomic) long long preferredCellularDownloadQuality; // @synthesize preferredCellularDownloadQuality=_preferredCellularDownloadQuality;
 @property (nonatomic) long long preferredCellularPlaybackQuality; // @synthesize preferredCellularPlaybackQuality=_preferredCellularPlaybackQuality;
+@property (readonly, nonatomic) long long preferredDownloadQualityForCurrentNetworkStatus;
 @property (readonly, nonatomic) long long preferredPlaybackQualityForCurrentNetworkStatus;
+@property (nonatomic) long long preferredWifiDownloadQuality; // @synthesize preferredWifiDownloadQuality=_preferredWifiDownloadQuality;
 @property (nonatomic) long long preferredWifiPlaybackQuality; // @synthesize preferredWifiPlaybackQuality=_preferredWifiPlaybackQuality;
 
 + (id)sharedSettings;
 - (void).cxx_destruct;
+- (void)_applicationWillEnterForeground:(id)arg1;
+- (long long)_downloadQualityForString:(id)arg1;
 - (void)_networkTypeDidChange:(id)arg1;
-- (long long)_playbackQualityForString:(id)arg1;
+- (long long)_playbackQualityForString:(id)arg1 forCellular:(BOOL)arg2;
 - (void)_registerObserverForUserPrefsChange;
 - (void)_updateNetworkStatus;
 - (void)_updatePropertiesFromUserPrefs;

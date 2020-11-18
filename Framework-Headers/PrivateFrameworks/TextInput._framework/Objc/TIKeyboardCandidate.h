@@ -16,6 +16,7 @@
 {
     BOOL _responseKitCandidate;
     BOOL _isSendCurrentLocation;
+    BOOL _asIsCandidate;
     unsigned int _slotID;
     int _confidence;
     NSString *_alternativeText;
@@ -28,6 +29,8 @@
 @property (readonly, nonatomic, getter=isOTAWordListCandidate) BOOL OTAWordListCandidate;
 @property (copy, nonatomic) NSString *alternativeText; // @synthesize alternativeText=_alternativeText;
 @property (copy, nonatomic) NSString *annotationText; // @synthesize annotationText=_annotationText;
+@property (readonly, nonatomic, getter=isAsIsCandidate) BOOL asIsCandidate; // @synthesize asIsCandidate=_asIsCandidate;
+@property (readonly, nonatomic, getter=isBilingualCandidate) BOOL bilingualCandidate;
 @property (readonly, nonatomic) NSString *candidate;
 @property (readonly, nonatomic, getter=isCompletionCandidate) BOOL completionCandidate;
 @property (readonly, nonatomic, getter=confidence) int confidence; // @synthesize confidence=_confidence;
@@ -43,6 +46,7 @@
 @property (readonly, nonatomic, getter=isFullwidthCandidate) BOOL fullwidthCandidate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long indexForMetrics; // @synthesize indexForMetrics=_indexForMetrics;
+@property (readonly, nonatomic, getter=isInlineCandidate) BOOL inlineCandidate;
 @property (readonly, nonatomic, getter=isInlineCompletionCandidate) BOOL inlineCompletionCandidate;
 @property (readonly, nonatomic) NSString *input;
 @property (readonly, nonatomic) BOOL isAddress;
@@ -50,6 +54,7 @@
 @property (readonly, nonatomic) BOOL isForShortcutConversion;
 @property (nonatomic) BOOL isSendCurrentLocation; // @synthesize isSendCurrentLocation=_isSendCurrentLocation;
 @property (copy, nonatomic) NSString *label;
+@property (readonly, nonatomic, getter=isPartialCandidate) BOOL partialCandidate;
 @property (readonly, nonatomic) TIProactiveTrigger *proactiveTrigger;
 @property (readonly, nonatomic, getter=isPunctuationCompletionCandidate) BOOL punctuationCompletionCandidate;
 @property (readonly, nonatomic, getter=isPunctuationKeyCandidate) BOOL punctuationKeyCandidate;
@@ -61,6 +66,7 @@
 @property (readonly, nonatomic) BOOL shouldInsertSpaceAfterSelection;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isTransliterationCandidate) BOOL transliterationCandidate;
 @property (readonly, nonatomic) unsigned int usageTrackingMask;
 @property (readonly, nonatomic) unsigned long long wordOriginFeedbackID;
 

@@ -123,6 +123,7 @@
 - (void)logErrorWhileMigratingBackend:(id)arg1;
 - (void)logExportRequestResult:(BOOL)arg1 error:(id)arg2;
 - (void)logFetchedOrphanedRecentSticker:(id)arg1;
+- (void)logFetchedRecentStickerWithNoStickerConfiguration:(id)arg1;
 - (void)logFetchedRecords:(unsigned long long)arg1 criteria:(long long)arg2;
 - (void)logFileSystemError:(id)arg1;
 - (void)logFoundExistingRecordDuringMigration;

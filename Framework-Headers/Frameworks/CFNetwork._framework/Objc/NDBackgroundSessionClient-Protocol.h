@@ -27,7 +27,7 @@
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(NSURLResponse *)arg2 transactionMetrics:(__CFN_TransactionMetrics *)arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(NSURLResponse *)arg2 transactionMetrics:(__CFN_TransactionMetrics *)arg3 reply:(void (^)(long long))arg4;
 - (void)backgroundTask:(unsigned long long)arg1 didSendBodyData:(long long)arg2 totalBytesSent:(long long)arg3 totalBytesExpectedToSend:(long long)arg4;
-- (void)backgroundTask:(unsigned long long)arg1 getAuthHeadersForResponse:(NSURLResponse *)arg2 reply:(void (^)(BOOL, NSDictionary *))arg3;
+- (void)backgroundTask:(unsigned long long)arg1 getAuthHeadersForResponse:(NSURLResponse *)arg2 reply:(void (^)(BOOL, NSDictionary *, NSURLRequest *))arg3;
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithError:(NSError *)arg2;
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithReason:(long long)arg2;
 - (void)backgroundTask:(unsigned long long)arg1 needNewBodyStream:(BOOL)arg2 withReply:(void (^)(NSFileHandle *))arg3;

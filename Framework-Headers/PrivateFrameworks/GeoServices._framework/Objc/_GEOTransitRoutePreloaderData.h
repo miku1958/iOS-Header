@@ -17,14 +17,12 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_placecardsReceived;
     NSMutableSet *_placecardsMissed;
     NSMutableArray *_preloadBatches;
-    BOOL _isSufficientlyLoaded;
     unsigned long long _currentBatchGeneration;
     _GEOTransitPreloadCamera *_camera;
 }
 
 @property (strong, nonatomic) _GEOTransitPreloadCamera *camera; // @synthesize camera=_camera;
 @property (nonatomic) unsigned long long currentBatchGeneration; // @synthesize currentBatchGeneration=_currentBatchGeneration;
-@property (nonatomic) BOOL isSufficientlyLoaded; // @synthesize isSufficientlyLoaded=_isSufficientlyLoaded;
 @property (strong, nonatomic) NSMutableSet *placecardsMissed; // @synthesize placecardsMissed=_placecardsMissed;
 @property (strong, nonatomic) NSMutableSet *placecardsReceived; // @synthesize placecardsReceived=_placecardsReceived;
 @property (strong, nonatomic) NSMutableArray *preloadBatches; // @synthesize preloadBatches=_preloadBatches;

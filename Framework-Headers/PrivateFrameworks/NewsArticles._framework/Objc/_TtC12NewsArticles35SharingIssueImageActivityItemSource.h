@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsArticles/UIActivityItemSource-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC12NewsArticles35SharingIssueImageActivityItemSource : NSObject <UIActivityItemSource>
+@interface _TtC12NewsArticles35SharingIssueImageActivityItemSource : NSObject
 {
     MISSING_TYPE *issueImage;
 }

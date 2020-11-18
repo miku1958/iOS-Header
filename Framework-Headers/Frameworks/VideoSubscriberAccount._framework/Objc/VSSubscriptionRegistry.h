@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_fetchRequest;
 - (void)_installedAppsDidChange:(id)arg1;
-- (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
+- (void)_performBlock:(CDUnknownBlockType)arg1;
 - (id)_predicateForCurrentConnectionWithRequestKind:(long long)arg1;
 - (id)_predicateForPersistentAttributesOfSubscriptions:(id)arg1 withEntity:(id)arg2 forFiltering:(BOOL)arg3;
 - (BOOL)_saveChangesToContext:(id)arg1;

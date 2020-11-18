@@ -70,10 +70,13 @@
 - (void)showActivityInProgressUIWithMessage:(id)arg1;
 - (id)showAlertViewWithButtons:(id)arg1 title:(id)arg2 message:(id)arg3 destructive:(BOOL)arg4 cancelButtonIndex:(long long)arg5 context:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)showAlertViewWithButtons:(id)arg1 title:(id)arg2 message:(id)arg3 destructive:(BOOL)arg4 context:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)showConfirmationForDeletingAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)showConfirmationViewForDeletingAccount:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)showConfirmationViewWithButtons:(id)arg1 title:(id)arg2 message:(id)arg3 destructive:(BOOL)arg4 cancelButtonIndex:(long long)arg5 context:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)showConfirmationViewWithButtons:(id)arg1 title:(id)arg2 message:(id)arg3 destructive:(BOOL)arg4 cancelButtonIndex:(long long)arg5 context:(id)arg6 forceAlert:(BOOL)arg7 completion:(CDUnknownBlockType)arg8;
 - (id)showConfirmationViewWithButtons:(id)arg1 title:(id)arg2 message:(id)arg3 destructive:(BOOL)arg4 context:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)showConfirmationWithActions:(id)arg1 title:(id)arg2 message:(id)arg3;
+- (void)showConfirmationWithButtons:(id)arg1 title:(id)arg2 message:(id)arg3 destructive:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)specifiers;
 - (void)startValidationWithPrompt:(id)arg1;
 - (void)startValidationWithPrompt:(id)arg1 userInteraction:(BOOL)arg2;

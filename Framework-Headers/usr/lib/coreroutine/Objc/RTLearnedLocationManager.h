@@ -10,7 +10,7 @@
 #import <coreroutine/RTLearnedLocationEngineProtocol-Protocol.h>
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSString, RTAccountManager, RTContactsManager, RTDefaultsManager, RTDiagnostics, RTDistanceCalculator, RTEventManager, RTFingerprintManager, RTLearnedLocationAlgorithmMetricCalculator, RTLearnedLocationEngine, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMapsSupportManager, RTMetricManager, RTMotionActivityManager, RTPersonalizationPortraitManager, RTPlatform, RTVisitManager, RTXPCActivityManager;
+@class NSString, RTAccountManager, RTContactsManager, RTDefaultsManager, RTDiagnostics, RTDistanceCalculator, RTEventManager, RTFingerprintManager, RTLearnedLocationAlgorithmMetricCalculator, RTLearnedLocationEngine, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMapsSupportManager, RTMetricManager, RTMotionActivityManager, RTPersonalizationPortraitManager, RTPlatform, RTSettledStateTransitionStore, RTVisitManager, RTXPCActivityManager;
 
 @interface RTLearnedLocationManager : RTService <RTLearnedLocationEngineProtocol, RTPurgable, RTDiagnosticProvider>
 {
@@ -33,6 +33,7 @@
     RTFingerprintManager *_fingerprintManager;
     RTLearnedLocationEngine *_learnedLocationEngine;
     RTLearnedLocationStore *_learnedLocationStore;
+    RTSettledStateTransitionStore *_settledStateTransitionStore;
     RTDistanceCalculator *_distanceCalculator;
     RTMapServiceManager *_mapServiceManager;
     RTPlatform *_platform;
@@ -61,6 +62,7 @@
 @property (readonly, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
 @property (readonly, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property (readonly, nonatomic) RTPersonalizationPortraitManager *portraitManager; // @synthesize portraitManager=_portraitManager;
+@property (readonly, nonatomic) RTSettledStateTransitionStore *settledStateTransitionStore; // @synthesize settledStateTransitionStore=_settledStateTransitionStore;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) RTVisitManager *visitManager; // @synthesize visitManager=_visitManager;
 @property (readonly, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
@@ -135,7 +137,7 @@
 - (void)fetchVisitIdentifiersIn:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)forceRelabeling:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithQueue:(id)arg1 accountManager:(id)arg2 algorithmMetricCalculator:(id)arg3 contactsManager:(id)arg4 defaultsManager:(id)arg5 diagnostics:(id)arg6 distanceCalculator:(id)arg7 eventManager:(id)arg8 fingerprintManager:(id)arg9 learnedLocationStore:(id)arg10 locationManager:(id)arg11 locationStore:(id)arg12 mapServiceManager:(id)arg13 mapsSupportManager:(id)arg14 metricManager:(id)arg15 motionActivityManager:(id)arg16 platform:(id)arg17 portraitManager:(id)arg18 visitManager:(id)arg19 xpcActivityManager:(id)arg20;
+- (id)initWithQueue:(id)arg1 accountManager:(id)arg2 algorithmMetricCalculator:(id)arg3 contactsManager:(id)arg4 defaultsManager:(id)arg5 diagnostics:(id)arg6 distanceCalculator:(id)arg7 eventManager:(id)arg8 fingerprintManager:(id)arg9 learnedLocationStore:(id)arg10 locationManager:(id)arg11 locationStore:(id)arg12 mapServiceManager:(id)arg13 mapsSupportManager:(id)arg14 metricManager:(id)arg15 motionActivityManager:(id)arg16 platform:(id)arg17 portraitManager:(id)arg18 settledStateTransitionStore:(id)arg19 visitManager:(id)arg20 xpcActivityManager:(id)arg21;
 - (id)initWithQueue:(id)arg1 distanceCalculator:(id)arg2 learnedLocationEngine:(id)arg3 learnedLocationStore:(id)arg4 mapServiceManager:(id)arg5;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;

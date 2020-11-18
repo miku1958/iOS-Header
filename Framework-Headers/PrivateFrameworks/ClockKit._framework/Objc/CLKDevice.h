@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NRDevice, NSUUID;
+@class NRDevice, NSCache, NSUUID;
 
 @interface CLKDevice : NSObject
 {
@@ -28,6 +28,7 @@
     unsigned long long _collectionType;
     unsigned long long _materialType;
     NRDevice *_nrDevice;
+    NSCache *_supportedCapabilitiesCache;
     struct CGRect _screenBounds;
 }
 
@@ -50,6 +51,7 @@
 @property (nonatomic) double screenCornerRadius; // @synthesize screenCornerRadius=_screenCornerRadius;
 @property (nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property (nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
+@property (strong, nonatomic) NSCache *supportedCapabilitiesCache; // @synthesize supportedCapabilitiesCache=_supportedCapabilitiesCache;
 @property (readonly, nonatomic) BOOL supportsTritium; // @synthesize supportsTritium=_supportsTritium;
 @property (nonatomic) BOOL supportsUrsa; // @synthesize supportsUrsa=_supportsUrsa;
 @property (readonly, nonatomic) BOOL unlockedSinceBoot;
@@ -72,6 +74,7 @@
 - (void)dealloc;
 - (id)initWithNRDevice:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)supportsCapability:(id)arg1;
 
 @end
 

@@ -11,8 +11,11 @@
 - (id)pl_endOfDayForDate:(id)arg1;
 - (id)pl_endOfPreviousDayForDate:(id)arg1;
 - (id)pl_endOfWeekForDate:(id)arg1;
+- (BOOL)pl_isDateValid:(id)arg1;
+- (id)pl_startOfDayForDate:(id)arg1;
 - (id)pl_startOfMonthForDate:(id)arg1;
 - (id)pl_startOfNextDayForDate:(id)arg1;
 - (id)pl_startOfWeekForDate:(id)arg1;
+- (id)pl_validDateForDate:(id)arg1;
 @end
 

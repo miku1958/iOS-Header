@@ -14,7 +14,7 @@
 @interface PHLivePhoto : NSObject <NSCopying, NSSecureCoding>
 {
     PHAsset *_asset;
-    struct NSObject *_plImage;
+    NSObject *_plImage;
     float _audioVolume;
     NSString *_uniqueIdentifier;
     NSString *_assetUUID;

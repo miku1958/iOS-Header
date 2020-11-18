@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)addChildCountsIntoNode;
 - (BOOL)isPseudo;
 - (id)largestTopOfStackPath;
 - (id)pseudoNodeTopOfStackChild;

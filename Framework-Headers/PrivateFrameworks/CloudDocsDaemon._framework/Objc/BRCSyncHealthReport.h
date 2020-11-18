@@ -6,30 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncHealthReport : NSObject
 {
     NSMutableDictionary *_syncUpErrorsByZone;
     NSMutableDictionary *_syncDownErrorsByZone;
-    NSMutableDictionary *_uploadFailureCountByError;
-    NSMutableDictionary *_downloadFailureCountByError;
+    NSString *_dsid;
+    NSString *_rampNumber;
+    NSMutableSet *_uploadFailures;
+    NSMutableSet *_downloadFailures;
     unsigned long long _totalZoneCount;
     unsigned long long _blockedZonesCount;
     unsigned long long _totalItemsCount;
 }
 
 @property (readonly, nonatomic) unsigned long long blockedZonesCount; // @synthesize blockedZonesCount=_blockedZonesCount;
-@property (readonly, nonatomic) NSDictionary *downloadFailureCountByError; // @synthesize downloadFailureCountByError=_downloadFailureCountByError;
+@property (readonly, nonatomic) NSSet *downloadFailures; // @synthesize downloadFailures=_downloadFailures;
+@property (readonly, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
+@property (readonly, nonatomic) NSString *rampNumber; // @synthesize rampNumber=_rampNumber;
 @property (readonly, nonatomic) NSDictionary *syncDownErrorsByZone; // @synthesize syncDownErrorsByZone=_syncDownErrorsByZone;
 @property (readonly, nonatomic) NSDictionary *syncUpErrorsByZone; // @synthesize syncUpErrorsByZone=_syncUpErrorsByZone;
 @property (readonly, nonatomic) unsigned long long totalItemsCount; // @synthesize totalItemsCount=_totalItemsCount;
 @property (readonly, nonatomic) unsigned long long totalZoneCount; // @synthesize totalZoneCount=_totalZoneCount;
-@property (readonly, nonatomic) NSDictionary *uploadFailureCountByError; // @synthesize uploadFailureCountByError=_uploadFailureCountByError;
+@property (readonly, nonatomic) NSSet *uploadFailures; // @synthesize uploadFailures=_uploadFailures;
 
 - (void).cxx_destruct;
+- (void)_fillTransferFailure:(id)arg1 withRowID:(unsigned long long)arg2 atDate:(id)arg3 session:(id)arg4;
 - (void)generateReportWithSession:(id)arg1;
+- (id)getRampNumberForDSID:(id)arg1;
 - (id)init;
 - (void)syncErrors:(CDUnknownBlockType)arg1;
 

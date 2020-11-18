@@ -21,6 +21,7 @@
     NSNumber *_allPhotosCaptionsVisible;
     NSNumber *_didShowCurationFooter;
     NSNumber *_didShowCompletedCurationFooterAnimation;
+    NSDate *_surveyQuestionsHideDate;
     id<PXUserDefaultsDataSource> _dataSource;
 }
 
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) double defaultUserInterfaceTimeoutDuration; // @synthesize defaultUserInterfaceTimeoutDuration=_defaultUserInterfaceTimeoutDuration;
 @property (copy, nonatomic) NSNumber *didShowCompletedCurationFooterAnimation; // @synthesize didShowCompletedCurationFooterAnimation=_didShowCompletedCurationFooterAnimation;
 @property (copy, nonatomic) NSNumber *didShowCurationFooter; // @synthesize didShowCurationFooter=_didShowCurationFooter;
+@property (copy, nonatomic) NSDate *surveyQuestionsHideDate; // @synthesize surveyQuestionsHideDate=_surveyQuestionsHideDate;
 
 + (id)standardUserDefaults;
 - (void).cxx_destruct;

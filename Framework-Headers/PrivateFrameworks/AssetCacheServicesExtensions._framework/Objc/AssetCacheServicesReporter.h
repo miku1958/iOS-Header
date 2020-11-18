@@ -32,11 +32,13 @@
 - (id)keyPath:(id)arg1 byAppendingKey:(id)arg2;
 - (id)locateServersWithOptions:(id)arg1;
 - (id)prettyRanges:(id)arg1;
+- (void)reportCachedPublicIPAddressRangesAndFavoredServerRangesWithKeyPath:(id)arg1;
 - (void)reportCachedServersWithKeyPath:(id)arg1;
+- (void)reportFreshPublicIPAddressRangesAndFavoredServerRangesWithKeyPath:(id)arg1;
 - (void)reportFreshServersWithKeyPath:(id)arg1;
 - (void)reportMightHaveWithKeyPath:(id)arg1;
 - (void)reportPublicIPAddress;
-- (void)reportPublicIPAddressRangesAndFavoredServerRangesWithKeyPath:(id)arg1;
+- (void)reportPublicIPAddressRangesWithKeyPath:(id)arg1 andFavoredServerRangesWithKeyPath:(id)arg2 generateOptions:(CDUnknownBlockType)arg3;
 - (void)reportReachability;
 - (void)reportServersWithKeyPath:(id)arg1 generateOptions:(CDUnknownBlockType)arg2;
 - (id)serverSortInfoForHostPort:(id)arg1 rank:(id)arg2;

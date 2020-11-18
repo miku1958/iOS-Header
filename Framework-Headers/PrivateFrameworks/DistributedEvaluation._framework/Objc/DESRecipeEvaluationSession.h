@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class DESRecipe, DESRecordSet, NSArray, NSData, NSDate, NSDictionary, NSError, NSString, NSURL;
+@protocol OS_xpc_object;
 
 @interface DESRecipeEvaluationSession : NSObject
 {
@@ -28,9 +29,11 @@
     NSString *_testingRecipePath;
     NSArray *_testingRecipeAttachments;
     CDUnknownBlockType _testingCompletionHandler;
+    NSObject<OS_xpc_object> *_activity;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *JSONResult; // @synthesize JSONResult=_JSONResult;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property (readonly, copy, nonatomic) NSData *binaryResult; // @synthesize binaryResult=_binaryResult;
 @property (readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) long long evaluationResult; // @synthesize evaluationResult=_evaluationResult;
@@ -48,6 +51,7 @@
 - (void)_postResultsToServerIfNeededWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)completeWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)completeWithJSONResult:(id)arg1 binaryResult:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)completeWithJSONResult:(id)arg1 binaryResult:(id)arg2 secureAggregationFloats:(const float *)arg3 count:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)deferWithDeadline:(id)arg1 error:(id *)arg2;
 - (id)deferralURL;

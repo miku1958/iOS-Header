@@ -10,7 +10,7 @@
 
 @interface ICTintedLayer : CALayer
 {
-    struct UIColor *_tintColor;
+    UIColor *_tintColor;
     id _originalContents;
 }
 

@@ -32,6 +32,7 @@
 - (BOOL)allowsAddingIconCount:(unsigned long long)arg1;
 - (BOOL)automaticallyAdjustsLayoutMetricsToFit;
 - (struct CGRect)boundsForLayout;
+- (struct UIEdgeInsets)cursorHitTestingInsetsForIconSpacing:(struct CGSize)arg1;
 - (void)didAddIconView:(id)arg1;
 - (double)effectiveSpacingForNumberOfIcons:(unsigned long long)arg1;
 - (id)iconAtPoint:(struct CGPoint)arg1 index:(unsigned long long *)arg2 proposedOrder:(long long *)arg3;

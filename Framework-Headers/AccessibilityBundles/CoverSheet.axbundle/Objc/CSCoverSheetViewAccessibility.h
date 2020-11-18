@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAdjustObscuredContent;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (void)layoutSubviews;
 - (BOOL)resetScrollViewToMainPageAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;

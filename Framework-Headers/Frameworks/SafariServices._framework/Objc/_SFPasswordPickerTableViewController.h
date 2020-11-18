@@ -30,6 +30,7 @@
 - (id)_passwordForIndexPath:(id)arg1;
 - (void)_updateMatchingPasswords;
 - (void)_updateSections;
+- (void)handleContextMenuDeleteForIndexPath:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)searchPatternDidUpdate;

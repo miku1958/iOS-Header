@@ -6,15 +6,17 @@
 
 #import <NanoPassKit/NPKPaymentProvisioningFlowStepContext.h>
 
-@class NSURL;
+@class NSURL, PKPaymentSetupProduct;
 
 @interface NPKPaymentProvisioningFlowControllerTermsAndConditionsStepContext : NPKPaymentProvisioningFlowStepContext
 {
     BOOL _allowNonSecureHTTP;
+    PKPaymentSetupProduct *_product;
     NSURL *_termsURL;
 }
 
 @property (nonatomic) BOOL allowNonSecureHTTP; // @synthesize allowNonSecureHTTP=_allowNonSecureHTTP;
+@property (strong, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 @property (strong, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
 
 - (void).cxx_destruct;

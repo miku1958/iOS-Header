@@ -24,6 +24,7 @@
 - (void)addValuesFromCloudRecordArray:(id)arg1;
 - (id)allItems;
 - (id)allRecordNames;
+- (id)allRecordsWithRecordType:(id)arg1;
 - (id)description;
 - (id)descriptionWithItem:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;

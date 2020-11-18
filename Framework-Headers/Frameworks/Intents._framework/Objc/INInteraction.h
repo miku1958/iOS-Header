@@ -31,7 +31,7 @@
 
 @property (copy, nonatomic, setter=_setContextExtensionUUID:) NSUUID *_contextExtensionUUID; // @synthesize _contextExtensionUUID;
 @property (nonatomic, setter=_setDonatedBySiri:) BOOL _donatedBySiri; // @synthesize _donatedBySiri;
-@property (readonly) unsigned long long _indexingHash;
+@property (readonly) long long _indexingHash;
 @property (readonly) INImage *_keyImage;
 @property (readonly, copy) CSSearchableItem *_searchableItem;
 @property (strong, nonatomic, setter=_setSnippet:) SAUISnippet *_snippet; // @synthesize _snippet;

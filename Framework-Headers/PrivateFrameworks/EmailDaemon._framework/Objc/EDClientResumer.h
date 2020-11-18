@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <EmailDaemon/EDProtectedDataReconciliationHookResponder-Protocol.h>
+#import <EmailDaemon/EDResumable-Protocol.h>
 #import <EmailDaemon/EFContentProtectionObserver-Protocol.h>
 
 @class BKSProcessAssertion, EDPersistenceHookRegistry, NSString;
 @protocol EDForegroundReporting, EFScheduler, OS_dispatch_queue;
 
-@interface EDClientResumer : NSObject <EDProtectedDataReconciliationHookResponder, EFContentProtectionObserver>
+@interface EDClientResumer : NSObject <EDProtectedDataReconciliationHookResponder, EFContentProtectionObserver, EDResumable>
 {
     NSString *_bundleID;
     BKSProcessAssertion *_assertion;
@@ -34,6 +35,7 @@
 - (id)initWithClientBundleIdentifier:(id)arg1 hookRegistry:(id)arg2 foregroundReporter:(id)arg3;
 - (void)invalidate;
 - (void)persistenceDidReconcileProtectedData;
+- (void)resumeForUpdates;
 
 @end
 

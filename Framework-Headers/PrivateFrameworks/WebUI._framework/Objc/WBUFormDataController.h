@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariShared/WBSFormDataController.h>
+#import "WBSFormDataController.h"
 
 #import <WebUI/MCProfileConnectionObserver-Protocol.h>
 #import <WebUI/WBSFormAutoFillCorrectionManagerDelegate-Protocol.h>

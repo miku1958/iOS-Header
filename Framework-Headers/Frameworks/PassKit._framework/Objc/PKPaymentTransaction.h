@@ -9,7 +9,7 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSDecimalNumber, NSDictionary, NSNumber, NSOrderedSet, NSSet, NSString, NSTimeZone, NSUUID, PKAccountEvent, PKCurrencyAmount, PKInstallmentPlan, PKInstallmentPlanPayment, PKMerchant, PKPaymentTransactionFees, PKPaymentTransactionForeignExchangeInformation, PKPaymentTransactionRewards;
+@class CLLocation, NSArray, NSData, NSDate, NSDecimalNumber, NSDictionary, NSNumber, NSOrderedSet, NSSet, NSString, NSTimeZone, NSURL, NSUUID, PKAccountEvent, PKCurrencyAmount, PKInstallmentPlan, PKInstallmentPlanPayment, PKMerchant, PKPaymentTransactionFees, PKPaymentTransactionForeignExchangeInformation, PKPaymentTransactionRewards;
 
 @interface PKPaymentTransaction : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
@@ -33,6 +33,7 @@
     NSDecimalNumber *_amount;
     NSDecimalNumber *_subtotalAmount;
     NSString *_currencyCode;
+    NSArray *_amounts;
     NSDate *_transactionDate;
     NSDate *_transactionStatusChangedDate;
     NSDate *_expirationDate;
@@ -100,6 +101,9 @@
     PKInstallmentPlan *_installmentPlan;
     NSDictionary *_metadata;
     NSDate *_lastMerchantReprocessingDate;
+    NSString *_receiptProviderIdentifier;
+    NSString *_receiptIdentifier;
+    NSURL *_receiptProviderURL;
     NSString *_issueReportIdentifier;
     long long _transactionStatus;
     long long _transactionType;
@@ -114,7 +118,9 @@
 @property (nonatomic) long long adjustmentTypeReason; // @synthesize adjustmentTypeReason=_adjustmentTypeReason;
 @property (strong, nonatomic) NSString *administrativeArea; // @synthesize administrativeArea=_administrativeArea;
 @property (copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
+@property (copy, nonatomic) NSArray *amounts; // @synthesize amounts=_amounts;
 @property (readonly, nonatomic) NSSet *answeredQuestionsOnThisDevice;
+@property (readonly, nonatomic) NSString *associatedReceiptUniqueID;
 @property (copy, nonatomic) NSString *authNetworkData; // @synthesize authNetworkData=_authNetworkData;
 @property (strong, nonatomic) NSString *cardIdentifier; // @synthesize cardIdentifier=_cardIdentifier;
 @property (strong, nonatomic) NSString *cardNumberSuffix; // @synthesize cardNumberSuffix=_cardNumberSuffix;
@@ -182,11 +188,15 @@
 @property (nonatomic) BOOL processedForMerchantCleanup; // @synthesize processedForMerchantCleanup=_processedForMerchantCleanup;
 @property (nonatomic) BOOL processedForStations; // @synthesize processedForStations=_processedForStations;
 @property (strong, nonatomic) NSSet *questions; // @synthesize questions=_questions;
+@property (copy, nonatomic) NSString *receiptIdentifier; // @synthesize receiptIdentifier=_receiptIdentifier;
+@property (copy, nonatomic) NSString *receiptProviderIdentifier; // @synthesize receiptProviderIdentifier=_receiptProviderIdentifier;
+@property (strong, nonatomic) NSURL *receiptProviderURL; // @synthesize receiptProviderURL=_receiptProviderURL;
 @property (strong, nonatomic) PKAccountEvent *redemptionEvent; // @synthesize redemptionEvent=_redemptionEvent;
 @property (nonatomic) long long redemptionType; // @synthesize redemptionType=_redemptionType;
 @property (copy, nonatomic) NSString *referenceIdentifier; // @synthesize referenceIdentifier=_referenceIdentifier;
 @property (copy, nonatomic) NSUUID *requestDeviceScoreIdentifier; // @synthesize requestDeviceScoreIdentifier=_requestDeviceScoreIdentifier;
 @property (nonatomic) BOOL requiresMerchantReprocessing; // @synthesize requiresMerchantReprocessing=_requiresMerchantReprocessing;
+@property (readonly, nonatomic) BOOL reviewed;
 @property (strong, nonatomic) PKPaymentTransactionRewards *rewards; // @synthesize rewards=_rewards;
 @property (nonatomic) unsigned long long rewardsEligibilityReason; // @synthesize rewardsEligibilityReason=_rewardsEligibilityReason;
 @property (strong, nonatomic) NSDecimalNumber *rewardsTotalAmount; // @synthesize rewardsTotalAmount=_rewardsTotalAmount;
@@ -230,13 +240,14 @@
 @property (readonly, nonatomic) unsigned long long updateReasons; // @synthesize updateReasons=_updateReasons;
 
 + (id)cloudStoreTransactionDeviceDataRecordTypeRecordNamePrefix;
++ (id)formattedBalanceAdjustmentForAmount:(id)arg1 transactionType:(long long)arg2 adjustmentType:(long long)arg3 peerPaymentType:(long long)arg4;
 + (id)paymentTransactionFromSource:(unsigned long long)arg1;
 + (id)paymentTransactionWithSource:(unsigned long long)arg1;
 + (id)paymentTransactionWithSource:(unsigned long long)arg1 dictionary:(id)arg2 hasNotificationServiceData:(BOOL)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_formatBalanceAdjustmentAmount:(id)arg1;
-- (id)_latestDipusteEvent;
+- (id)_latestDisputeEvent;
 - (id)_transactionSourceString;
 - (id)_transactionTypeString;
 - (id)_transitSubtypeString;
@@ -257,7 +268,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentTransaction:(id)arg1;
 - (unsigned long long)itemType;
-- (id)recordTypesAndNames;
+- (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 - (id)updateReasonsDescription;
 
 @end

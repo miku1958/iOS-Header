@@ -166,7 +166,7 @@
 - (void)updateLastKnownValues;
 - (void)updateMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
 - (void)updatePresenceRequestTimeForDeviceWithDestination:(id)arg1;
-- (id)url;
+- (id)urlString;
 
 @end
 

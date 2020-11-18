@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <CoreSpeech/CSAudioSessionInfoProvidingDelegate-Protocol.h>
+#import <CoreSpeech/CSCoreSpeechDaemonStateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSXPCClientDelegate-Protocol.h>
 
 @class CSXPCClient, NSHashTable, NSString;
 @protocol CSAudioSessionInfoProviding, OS_dispatch_queue;
 
-@interface CSAudioSessionController : NSObject <CSAudioSessionInfoProvidingDelegate, CSXPCClientDelegate>
+@interface CSAudioSessionController : NSObject <CSAudioSessionInfoProvidingDelegate, CSXPCClientDelegate, CSCoreSpeechDaemonStateMonitorDelegate>
 {
     BOOL _shouldKeepConnection;
     NSObject<OS_dispatch_queue> *_queue;
@@ -50,6 +51,7 @@
 - (void)audioSessionInfoProvider:(id)arg1 didReceiveAudioSessionMediaServicesWereLostNotificationWithUserInfo:(id)arg2;
 - (void)audioSessionInfoProvider:(id)arg1 didReceiveAudioSessionMediaServicesWereResetNotificationWithUserInfo:(id)arg2;
 - (void)audioSessionInfoProvider:(id)arg1 didReceiveAudioSessionRouteChangeNotificationWithUserInfo:(id)arg2;
+- (void)coreSpeechDaemonStateMonitor:(id)arg1 didReceiveStateChanged:(unsigned long long)arg2;
 - (void)dealloc;
 - (unsigned int)getAudioSessionID;
 - (void)getAudioSessionIDWithCompletion:(CDUnknownBlockType)arg1;

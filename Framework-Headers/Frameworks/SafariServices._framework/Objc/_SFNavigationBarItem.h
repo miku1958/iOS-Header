@@ -14,8 +14,6 @@
     BOOL _showsSearchIndicator;
     BOOL _showsStopReloadButtons;
     BOOL _stopReloadButtonShowsStop;
-    BOOL _textHasEVCertificateTint;
-    BOOL _lockIconHasEVCertificateTint;
     BOOL _showsPageFormatButton;
     BOOL _readerButtonSelected;
     BOOL _showsReaderButton;
@@ -34,7 +32,6 @@
 
 @property (copy, nonatomic) NSString *customPlaceholderText; // @synthesize customPlaceholderText=_customPlaceholderText;
 @property (nonatomic) BOOL hasFocusedSensitiveFieldOnCurrentPage; // @synthesize hasFocusedSensitiveFieldOnCurrentPage=_hasFocusedSensitiveFieldOnCurrentPage;
-@property (nonatomic) BOOL lockIconHasEVCertificateTint; // @synthesize lockIconHasEVCertificateTint=_lockIconHasEVCertificateTint;
 @property (nonatomic) unsigned long long mediaCaptureDeviceIcon; // @synthesize mediaCaptureDeviceIcon=_mediaCaptureDeviceIcon;
 @property (weak, nonatomic, setter=_setNavigationBar:) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) BOOL overrideBarStyleForSecurityWarning; // @synthesize overrideBarStyleForSecurityWarning=_overrideBarStyleForSecurityWarning;
@@ -50,7 +47,6 @@
 @property (readonly, nonatomic) unsigned long long startIndexOfTextInExpandedText; // @synthesize startIndexOfTextInExpandedText=_startIndexOfTextInExpandedText;
 @property (nonatomic) BOOL stopReloadButtonShowsStop; // @synthesize stopReloadButtonShowsStop=_stopReloadButtonShowsStop;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
-@property (nonatomic) BOOL textHasEVCertificateTint; // @synthesize textHasEVCertificateTint=_textHasEVCertificateTint;
 @property (readonly, nonatomic) NSString *textWhenExpanded; // @synthesize textWhenExpanded=_textWhenExpanded;
 
 - (void).cxx_destruct;

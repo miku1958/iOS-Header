@@ -32,13 +32,13 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *wanRules; // @synthesize wanRules=_wanRules;
 
-+ (BOOL)__decodeFullAccessFromNetworkDeclarations:(struct NSDictionary *)arg1 key:(id)arg2 fullAccess:(BOOL *)arg3;
-+ (BOOL)__decodeNetworkDeclarationsFromJSONDictionary:(struct NSDictionary *)arg1 networkDeclarations:(struct NSDictionary **)arg2;
-+ (id)__decodeRulesFromNetworkDeclarations:(struct NSDictionary *)arg1 key:(id)arg2 class:(Class)arg3 required:(BOOL)arg4;
++ (BOOL)__decodeFullAccessFromNetworkDeclarations:(id)arg1 key:(id)arg2 fullAccess:(BOOL *)arg3;
++ (BOOL)__decodeNetworkDeclarationsFromJSONDictionary:(id)arg1 networkDeclarations:(id *)arg2;
++ (id)__decodeRulesFromNetworkDeclarations:(id)arg1 key:(id)arg2 class:(Class)arg3 required:(BOOL)arg4;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
-- (id)initWithAccessoryIdentifier:(id)arg1 jsonDictionary:(struct NSDictionary *)arg2;
+- (id)initWithAccessoryIdentifier:(id)arg1 jsonDictionary:(id)arg2;
 - (id)initWithAccessoryIdentifier:(id)arg1 lastModifiedTime:(id)arg2 fullAccessLAN:(BOOL)arg3 lanRules:(id)arg4 fullAccessWAN:(BOOL)arg5 wanRules:(id)arg6;
 
 @end

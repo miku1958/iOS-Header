@@ -22,6 +22,7 @@
 @property (readonly, copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 
 + (id)currentUser;
++ (void)currentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)initWithGivenName:(id)arg1 familyName:(id)arg2 userDSID:(id)arg3 userAltDSID:(id)arg4;
 

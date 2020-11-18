@@ -133,7 +133,6 @@
 - (void)_browsingViewModel:(id)arg1 didChange:(id)arg2;
 - (BOOL)_canShowCommentsForCurrentAsset;
 - (void)_executeActionPerformer:(id)arg1;
-- (void)_executeActionPerformer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleAssetViewModelBeginEditingTimer:(id)arg1;
 - (void)_handleSharingPreheat;
 - (void)_handleTapGestureRecognizer:(id)arg1;
@@ -186,6 +185,7 @@
 - (id)barButtonItemCollection:(id)arg1 newBarButtonItemForIdentifier:(long long)arg2;
 - (void)barButtonItemTapped:(id)arg1;
 - (void)dealloc;
+- (void)executeActionPerformer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)infoUpdaterDidUpdate:(id)arg1;
 - (id)init;
 - (void)invalidateViewControllerView;
@@ -199,6 +199,7 @@
 - (long long)preferredBarStyle;
 - (BOOL)prefersStatusBarHidden;
 - (void)prepareForPopoverPresentation:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)requestInfoOfKind:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (BOOL)scrubberView:(id)arg1 shouldIgnoreHitTest:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (void)setViewController:(id)arg1;

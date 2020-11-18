@@ -17,7 +17,7 @@
 @property long long qualityOfService;
 
 - (void).cxx_destruct;
-- (void)_processRunGraph:(struct NSArray *)arg1;
+- (void)_processRunGraph:(id)arg1;
 - (id)init;
 - (void)processGraphForRunNode:(id)arg1;
 

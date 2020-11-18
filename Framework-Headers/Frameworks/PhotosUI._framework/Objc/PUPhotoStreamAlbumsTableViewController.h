@@ -21,14 +21,14 @@
 @property (weak, nonatomic) id<PUPhotoStreamsAlbumsTableViewControllerDelegate> pickerDelegate; // @synthesize pickerDelegate=_pickerDelegate;
 
 + (CDUnknownBlockType)_albumsComparator;
-+ (struct NSObject *)albumListForContentMode:(int)arg1;
++ (id)albumListForContentMode:(int)arg1;
 - (void).cxx_destruct;
 - (void)addSelectedCloudGuid:(id)arg1;
 - (struct CGSize)contentSizeForViewInPopover;
 - (void)didReceiveMemoryWarning;
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)posterImageForAlbum:(struct NSObject *)arg1 imageView:(id)arg2;
+- (id)posterImageForAlbum:(id)arg1 imageView:(id)arg2;
 - (void)reloadActions;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

@@ -18,6 +18,7 @@
 }
 
 @property (readonly) unsigned long long allocatedSize;
+@property (readonly) unsigned long long allocationID;
 @property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;

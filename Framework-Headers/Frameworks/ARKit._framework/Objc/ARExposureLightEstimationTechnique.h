@@ -6,16 +6,24 @@
 
 #import <ARKit/ARTechnique.h>
 
-@class NSObject;
+#import <ARKit/ARTechniqueBusyState-Protocol.h>
+
+@class NSObject, NSString;
 @protocol OS_dispatch_semaphore;
 
-@interface ARExposureLightEstimationTechnique : ARTechnique
+@interface ARExposureLightEstimationTechnique : ARTechnique <ARTechniqueBusyState>
 {
     NSObject<OS_dispatch_semaphore> *_resultSemaphore;
     float _temperature;
     float _lightIntensity;
     struct ExponentialSmoother<float> _smoother;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isBusy;
+@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

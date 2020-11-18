@@ -65,9 +65,9 @@
 - (void)_enumerateAllPhotoKitCollectionsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_fetchAndUpdateCountsForCollection:(id)arg1;
 - (void)_fetchKeyAssetsForCollection:(id)arg1;
-- (struct PXTwoTuple *)_filterFetchResult:(id)arg1;
+- (id)_filterFetchResult:(id)arg1;
 - (unsigned long long)_fixedOrderPriorityForVirtualCollection:(id)arg1;
-- (struct PXTwoTuple *)_getSectionedCollectionListAndFetchResultsFromFetchResult:(id)arg1;
+- (id)_getSectionedCollectionListAndFetchResultsFromFetchResult:(id)arg1;
 - (BOOL)_isEmpty;
 - (BOOL)_isImportsAssetCollection:(id)arg1;
 - (BOOL)_isPlacesAlbumAssetCollection:(id)arg1;

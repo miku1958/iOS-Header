@@ -28,6 +28,7 @@
 + (id)fingerModelForLocation:(struct CGPoint)arg1;
 - (void).cxx_destruct;
 - (id)description;
+- (void)setPressed:(BOOL)arg1 sendDelegateCallback:(BOOL)arg2;
 
 @end
 

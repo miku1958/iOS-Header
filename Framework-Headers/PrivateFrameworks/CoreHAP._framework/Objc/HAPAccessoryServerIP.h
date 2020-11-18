@@ -31,6 +31,7 @@
     BOOL _hasAttributeDatabase;
     BOOL _hasTunnelService;
     BOOL _econnresetRetryInProgress;
+    BOOL _invalidated;
     BOOL _continuingLegacyWACpairing;
     BOOL _wacStarted;
     BOOL _hasStartedPairing;
@@ -47,7 +48,6 @@
     NSArray *_ipServices;
     NSMutableArray *_queuedOperations;
     HAPAccessory *_primaryAccessoryForServer;
-    HAPHTTPClient *_httpClient;
     HAPAuthSession *_authSession;
     HAPAccessoryProtocolInfo *_authenticatedProtocolInfo;
     CDUnknownBlockType _pairVerifyCompletionBlock;
@@ -61,6 +61,7 @@
     HAPWACAccessory *_hapWACAccessory;
     HMFTimer *_bonjourEventTimer;
     HMFNetMonitor *_networkMonitor;
+    HAPHTTPClient *_httpClient;
 }
 
 @property (readonly, nonatomic) HAPAuthSession *authSession; // @synthesize authSession=_authSession;
@@ -84,6 +85,7 @@
 @property (nonatomic) BOOL hasUpdatedBonjour; // @synthesize hasUpdatedBonjour=_hasUpdatedBonjour;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HAPHTTPClient *httpClient; // @synthesize httpClient=_httpClient;
+@property (nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (strong, nonatomic) NSArray *ipServices; // @synthesize ipServices=_ipServices;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) CDUnknownBlockType netServiceResolveCompletionBlock; // @synthesize netServiceResolveCompletionBlock=_netServiceResolveCompletionBlock;
@@ -139,15 +141,15 @@
 - (int)_handlePairSetupCompletionWithData:(id)arg1;
 - (int)_handlePairVerifyCompletionWithData:(id)arg1;
 - (void)_handlePairingsResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 httpError:(id)arg4 removeRequest:(BOOL)arg5 completionQueue:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (void)_handlePrepareWriteResponseObject:(id)arg1 type:(unsigned long long)arg2 prepareIdentifier:(id)arg3 httpStatus:(int)arg4 error:(id)arg5 requestTuples:(id)arg6 timeout:(double)arg7 queue:(id)arg8 completion:(CDUnknownBlockType)arg9;
-- (void)_handleReadECONNRESETError:(id)arg1 readCharacteristics:(id)arg2 responses:(id)arg3 timeout:(double)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)_handleReadResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 error:(id)arg4 characteristics:(id)arg5 queue:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_handlePrepareWriteResponseObject:(id)arg1 type:(unsigned long long)arg2 prepareIdentifier:(id)arg3 httpStatus:(int)arg4 error:(id)arg5 requestTuples:(id)arg6 timeout:(double)arg7 queue:(id)arg8 logEventSession:(id)arg9 completion:(CDUnknownBlockType)arg10;
+- (void)_handleReadECONNRESETError:(id)arg1 readCharacteristics:(id)arg2 responses:(id)arg3 timeout:(double)arg4 queue:(id)arg5 logEventSession:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_handleReadResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 error:(id)arg4 characteristics:(id)arg5 queue:(id)arg6 logEventSession:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)_handleUpdatesForCharacteristics:(id)arg1 stateNumber:(id)arg2;
-- (void)_handleWriteECONNResetError:(id)arg1 writeRequests:(id)arg2 responses:(id)arg3 timeout:(double)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)_handleWriteResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 error:(id)arg4 requestTuples:(id)arg5 queue:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_handleWriteECONNResetError:(id)arg1 writeRequests:(id)arg2 responses:(id)arg3 timeout:(double)arg4 queue:(id)arg5 logEventSession:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_handleWriteResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 error:(id)arg4 requestTuples:(id)arg5 queue:(id)arg6 logEventSession:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (BOOL)_hasBonjourDeviceInfo;
-- (void)_insertReadCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_insertWriteCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)_insertReadCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_insertWriteCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)_invalidateWAC;
 - (void)_invokePairVerifyCompletionBlock:(id)arg1;
 - (void)_isAccessoryPublicKeyPresent:(BOOL *)arg1 registeredWithHomeKit:(BOOL *)arg2;
@@ -165,19 +167,19 @@
 - (BOOL)_parseAndValidateTXTRecord;
 - (void)_parseAttributeDatabase:(id)arg1 transaction:(id)arg2;
 - (BOOL)_parseTXTRecordDictionary:(id)arg1;
-- (void)_performExecuteWriteValues:(id)arg1 prepareIdentifier:(id)arg2 timeout:(double)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_performTimedWriteValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_performWriteValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_performExecuteWriteValues:(id)arg1 prepareIdentifier:(id)arg2 timeout:(double)arg3 queue:(id)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_performTimedWriteValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_performWriteValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_processEvent:(id)arg1 matchedCharacteristic:(id *)arg2;
 - (void)_processQueuedOperationsWithError:(id)arg1;
 - (void)_queueAddPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queueEnableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)_queueListPairingWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_queueReadCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_queueWriteCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (CDUnknownBlockType)_queuedReadOperationBlock:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (CDUnknownBlockType)_queuedWriteOperationBlock:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_readCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_queueReadCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_queueWriteCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (CDUnknownBlockType)_queuedReadOperationBlock:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (CDUnknownBlockType)_queuedWriteOperationBlock:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_readCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_reset;
@@ -190,7 +192,7 @@
 - (void)_updateProtocolVersionFromPrimaryAccessory:(id)arg1;
 - (void)_updateWithBonjourDeviceInfo:(id)arg1;
 - (BOOL)_validateProtocolInfo:(id)arg1;
-- (void)_writeCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_writeCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)authSession:(id)arg1 authComplete:(id)arg2;
 - (void)authSession:(id)arg1 authenticateUUID:(id)arg2 token:(id)arg3;
@@ -227,16 +229,16 @@
 - (void)pairSetupStartSoftAuthWAC;
 - (id)primaryAccessory;
 - (void)provisionToken:(id)arg1;
-- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)reconfirm;
 - (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetPostSoftAuthWAC;
 - (void)resolveLocalHostnameWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)sendGETRequestToURL:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)sendGETRequestToURL:(id)arg1 timeout:(double)arg2 logEventSession:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)sendPOSTRequestToURL:(id)arg1 request:(id)arg2 serializationType:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)sendPUTRequestToURL:(id)arg1 request:(id)arg2 serializationType:(unsigned long long)arg3 timeout:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)sendPUTRequestToURL:(id)arg1 request:(id)arg2 serializationType:(unsigned long long)arg3 timeout:(double)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)services;
 - (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (void)startReprovisioningWiFiConfig:(id)arg1;
@@ -247,7 +249,7 @@
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)updateWithBonjourDeviceInfo:(id)arg1;
 - (void)updateWithHAPWACAccessory:(id)arg1;
-- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

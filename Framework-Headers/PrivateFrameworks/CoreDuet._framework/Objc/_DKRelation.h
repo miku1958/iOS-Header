@@ -20,7 +20,7 @@
 @property (readonly) NSString *verbPhrase; // @synthesize verbPhrase=_verbPhrase;
 
 + (id)entityName;
-+ (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
++ (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 excludedMetadataKeys:(id)arg3 cache:(id)arg4;
 + (id)relationWithSubject:(id)arg1 verbPhrase:(id)arg2 object:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsUI2/TSForYouMagazineFeedManagerType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI225ForYouMagazineFeedManager : _TtCs12_SwiftObject <TSForYouMagazineFeedManagerType>
+@interface _TtC7NewsUI225ForYouMagazineFeedManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *magazineFeedServiceConfigFetcher;
     MISSING_TYPE *magazineFeedService;

@@ -31,7 +31,8 @@
 + (id)allSupportedPropertiesIncludingInternalOnlyProperties:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)initWithRequestedPropertySet:(id)arg1;
-- (id)modelObjectWithTitle:(id)arg1 loadAdditionalContentURL:(id)arg2 uniformContentItemType:(long long)arg3 isMemberOfChartSet:(BOOL)arg4 isBrick:(BOOL)arg5 displaysAsGridCellInCarPlay:(BOOL)arg6 previouslyRetrievedNestedResponse:(id)arg7 onlyContainsEditorialElements:(BOOL)arg8;
+- (id)modelObjectWithTitle:(id)arg1 loadAdditionalContentURL:(id)arg2 uniformContentItemType:(long long)arg3 isMemberOfChartSet:(BOOL)arg4 isBrick:(BOOL)arg5 displaysAsGridCellInCarPlay:(BOOL)arg6 previouslyRetrievedNestedResponse:(id)arg7 onlyContainsEditorialElements:(BOOL)arg8 featuredContentKind:(long long)arg9;
+- (id)modelObjectWithTitle:(id)arg1 loadAdditionalContentURL:(id)arg2 uniformContentItemType:(long long)arg3 isMemberOfChartSet:(BOOL)arg4 isBrick:(BOOL)arg5 displaysAsGridCellInCarPlay:(BOOL)arg6 previouslyRetrievedNestedResponse:(id)arg7 onlyContainsEditorialElements:(BOOL)arg8 featuredContentKind:(long long)arg9 modelObject:(id)arg10;
 - (id)modelObjectWithTitle:(id)arg1 loadAdditionalContentURL:(id)arg2 uniformContentItemType:(long long)arg3 isMemberOfChartSet:(BOOL)arg4 isBrick:(BOOL)arg5 previouslyRetrievedNestedResponse:(id)arg6;
 
 @end

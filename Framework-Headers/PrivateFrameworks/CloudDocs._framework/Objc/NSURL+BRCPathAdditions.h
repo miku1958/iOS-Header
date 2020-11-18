@@ -36,6 +36,7 @@
 - (id)br_containerIDIfIsDesktopOrDocumentsURL;
 - (id)br_containerIDIfIsDocumentsContainerURL;
 - (void)br_containerIDsWithExternalReferencesWithHandler:(CDUnknownBlockType)arg1;
+- (id)br_creatorNameComponentsWithError:(id *)arg1;
 - (id)br_debugDescription;
 - (id)br_documentRecordIDWithError:(id *)arg1;
 - (id)br_externalDocumentPropertiesWithError:(id *)arg1;
@@ -52,12 +53,14 @@
 - (BOOL)br_isInSyncedDocuments;
 - (BOOL)br_isInSyncedLocation;
 - (BOOL)br_isInTrash;
+- (BOOL)br_isModifiedSinceShared;
 - (BOOL)br_isPCSChained;
 - (BOOL)br_isParentOfURL:(id)arg1;
 - (BOOL)br_isParentOfURL:(id)arg1 strictly:(BOOL)arg2;
 - (BOOL)br_isPromiseURL;
 - (BOOL)br_isStrictlyInSyncedLocation;
 - (BOOL)br_isSymLink;
+- (BOOL)br_isTopLevelSharedItem;
 - (id)br_itemID;
 - (id)br_logicalURL;
 - (BOOL)br_mightBeBRAlias;

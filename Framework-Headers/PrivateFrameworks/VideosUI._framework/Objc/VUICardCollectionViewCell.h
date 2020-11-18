@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) VUICardView *cardView; // @synthesize cardView=_cardView;
 @property (strong, nonatomic) VUICardViewLayoutFactory *layoutFactory; // @synthesize layoutFactory=_layoutFactory;
+@property (readonly, nonatomic) double mainImageCornerRadius;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 + (long long)_cardLayoutTypeForElement:(id)arg1;

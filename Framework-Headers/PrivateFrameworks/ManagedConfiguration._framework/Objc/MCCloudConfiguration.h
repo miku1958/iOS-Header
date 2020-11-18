@@ -32,6 +32,7 @@
 - (BOOL)isTeslaEnrolled;
 - (id)language;
 - (id)languageScript;
+- (id)mdmVersionProtocol;
 - (id)provisionalEnrollmentExpirationDate;
 - (void)refreshDetailsFromDisk;
 - (id)region;

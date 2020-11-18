@@ -39,6 +39,8 @@
 - (id)_initWithData:(id)arg1;
 - (BOOL)_renderTextInContext:(struct CGContext *)arg1 frame:(struct CGRect)arg2;
 - (void)_takeValuesFromDataRepresentation:(id)arg1;
+- (void)appendToRecipe:(id)arg1 text:(id)arg2;
+- (void)appendToRecipe:(id)arg1 text:(id)arg2 fontIndex:(unsigned char)arg3;
 - (id)dataRepresentation;
 - (id)dataRepresentationWithVersion:(unsigned char)arg1;
 - (id)description;

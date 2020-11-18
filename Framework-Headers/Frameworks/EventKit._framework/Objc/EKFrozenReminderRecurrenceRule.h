@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)endDate;
 - (int)firstDayOfTheWeek;
 - (int)frequency;
-- (id)initWithAlternateUniverseObject:(EKPersistentObject_556b3b22 *)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
+- (id)initWithAlternateUniverseObject:(id)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 - (id)initWithREMObject:(id)arg1 inStore:(id)arg2;
 - (id)initWithREMObject:(id)arg1 inStore:(id)arg2 withChanges:(id)arg3;
 - (long long)interval;

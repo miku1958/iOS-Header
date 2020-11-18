@@ -26,6 +26,8 @@
 - (id)databaseHealthInformation;
 - (void)enumerateBookmarks:(BOOL)arg1 andReadingListItems:(BOOL)arg2 matchingString:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)initReadonlySafariBookmarkCollection;
+- (unsigned long long)leafChildCountForBookmarksInFolderWithID:(int)arg1;
+- (id)leafChildCountForFoldersInFolderWithID:(int)arg1;
 - (id)readingListBookmarksMatchingString:(id)arg1 maxResults:(unsigned int)arg2 onlyArchivedBookmarks:(BOOL)arg3;
 - (id)readingListWithUnreadOnly:(BOOL)arg1 filteredUsingString:(id)arg2;
 

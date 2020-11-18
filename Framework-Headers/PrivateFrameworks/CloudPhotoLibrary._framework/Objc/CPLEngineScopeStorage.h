@@ -98,7 +98,7 @@
 - (long long)indexForCloudScopeIdentifier:(id)arg1;
 - (long long)indexForLocalScopeIdentifier:(id)arg1;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
-- (struct NSData *)initialSyncAnchorForScope:(id)arg1;
+- (id)initialSyncAnchorForScope:(id)arg1;
 - (id)lastDateOfClearedPushRepositoryForScope:(id)arg1;
 - (id)lastDateOfCompletedPullFromTransportForScope:(id)arg1;
 - (id)libraryInfoForScope:(id)arg1;
@@ -120,7 +120,7 @@
 - (id)scopeChangesNeedingToBePulledByClientWithMaximumCount:(unsigned long long)arg1;
 - (id)scopeIdentifierForCloudScopeIndex:(long long)arg1;
 - (id)scopeIdentifierForLocalScopeIndex:(long long)arg1;
-- (struct NSData *)scopeListSyncAnchor;
+- (id)scopeListSyncAnchor;
 - (unsigned long long)scopeType;
 - (id)scopeWithIdentifier:(id)arg1;
 - (id)scopedIdentifierForCloudScopedIdentifier:(id)arg1;
@@ -131,7 +131,7 @@
 - (BOOL)setDidDropSomeRecordsForScope:(id)arg1 error:(id *)arg2;
 - (BOOL)setDisabledDate:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setHasFetchedInitialSyncAnchor:(BOOL)arg1 forScope:(id)arg2 error:(id *)arg3;
-- (BOOL)setInitialSyncAnchor:(struct NSData *)arg1 forScope:(id)arg2 error:(id *)arg3;
+- (BOOL)setInitialSyncAnchor:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setLibraryInfo:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setLocalScopeIndexOnChange:(id)arg1;
 - (BOOL)setPullFromTransportExpirationInterval:(double)arg1 scope:(id)arg2 error:(id *)arg3;
@@ -144,7 +144,7 @@
 - (BOOL)setScopeNeedsToUpdateTransport:(id)arg1 error:(id *)arg2;
 - (BOOL)setScopeNeedsUpdateFromTransport:(id)arg1 error:(id *)arg2;
 - (BOOL)setScopeType:(long long)arg1 forScope:(id)arg2 error:(id *)arg3;
-- (BOOL)setSyncAnchor:(struct NSData *)arg1 forScope:(id)arg2 error:(id *)arg3;
+- (BOOL)setSyncAnchor:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setTransportScope:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setValue:(BOOL)arg1 forFlag:(long long)arg2 forScope:(id)arg3 error:(id *)arg4;
 - (BOOL)setupAnchorResetTransportGroupForScope:(id)arg1 error:(id *)arg2;
@@ -155,13 +155,13 @@
 - (id)statusDictionaryForScope:(id)arg1;
 - (BOOL)storeEstimatedSize:(unsigned long long)arg1 estimatedAssetCount:(unsigned long long)arg2 forScope:(id)arg3 error:(id *)arg4;
 - (BOOL)storeLastDateOfClearedPushRepository:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
-- (BOOL)storeScopeListSyncAnchor:(struct NSData *)arg1 error:(id *)arg2;
+- (BOOL)storeScopeListSyncAnchor:(id)arg1 error:(id *)arg2;
 - (BOOL)storeSupportedFeatureVersionInLastSync:(unsigned long long)arg1 forScope:(id)arg2 error:(id *)arg3;
-- (BOOL)storeTransientSyncAnchor:(struct NSData *)arg1 forScope:(id)arg2 error:(id *)arg3;
+- (BOOL)storeTransientSyncAnchor:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (unsigned long long)supportedFeatureVersionInLastSyncForScope:(id)arg1;
 - (BOOL)supportedFeatureVersionIsMostRecentForScope:(id)arg1;
-- (struct NSData *)syncAnchorForScope:(id)arg1;
-- (struct NSData *)transientSyncAnchorForScope:(id)arg1;
+- (id)syncAnchorForScope:(id)arg1;
+- (id)transientSyncAnchorForScope:(id)arg1;
 - (id)transportScopeForScope:(id)arg1;
 - (long long)transportUpdateTaskForScope:(id)arg1;
 - (BOOL)updateFlags:(id)arg1 forScope:(id)arg2 error:(id *)arg3;

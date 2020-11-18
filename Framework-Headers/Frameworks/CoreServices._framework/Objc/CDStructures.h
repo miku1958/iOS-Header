@@ -252,14 +252,6 @@ struct LSVersionNumber {
     unsigned char _opaque[32];
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
-};
-
 struct Point {
     short _field1;
     short _field2;
@@ -282,7 +274,9 @@ struct _NSRange {
 };
 
 struct atomic_flag {
-    _Atomic BOOL __a_;
+    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+        _Atomic BOOL __a_value;
+    } __a_;
 };
 
 struct optional<LSBinding> {

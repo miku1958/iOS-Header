@@ -34,7 +34,7 @@
 @property (readonly, nonatomic) BOOL autoRenew; // @synthesize autoRenew=_autoRenew;
 @property (readonly, nonatomic) double billingEndDate; // @synthesize billingEndDate=_billingEndDate;
 @property (readonly, nonatomic) double billingStartDate; // @synthesize billingStartDate=_billingStartDate;
-@property (nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
+@property (strong, nonatomic) NSString *carrierName; // @synthesize carrierName=_carrierName;
 @property (readonly, nonatomic) NSArray *dataUsage; // @synthesize dataUsage=_dataUsage;
 @property (readonly, nonatomic) NSArray *homeCountryList; // @synthesize homeCountryList=_homeCountryList;
 @property (readonly, nonatomic) NSString *iccid; // @synthesize iccid=_iccid;
@@ -45,8 +45,8 @@
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

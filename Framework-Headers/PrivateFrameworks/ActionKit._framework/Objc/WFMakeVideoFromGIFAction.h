@@ -13,6 +13,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType cancelBlock; // @synthesize cancelBlock=_cancelBlock;
 
++ (BOOL)outputIsExemptFromTaintTrackingInheritance;
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)runAsynchronouslyWithInput:(id)arg1;

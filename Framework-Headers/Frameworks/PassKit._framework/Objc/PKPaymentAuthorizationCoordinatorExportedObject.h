@@ -31,6 +31,7 @@
 
 - (void).cxx_destruct;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
+- (void)authorizationDidAuthorizeContext;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;

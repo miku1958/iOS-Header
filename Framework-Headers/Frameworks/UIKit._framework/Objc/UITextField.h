@@ -29,7 +29,7 @@
 #import <UIKitCore/_UITextFieldVisualStyleSubject-Protocol.h>
 #import <UIKitCore/_UITextItemDiscoverable-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSArray, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutConstraint, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIButton, UIColor, UIDragInteraction, UIDropInteraction, UIFieldEditor, UIFont, UIImage, UIImageView, UIInputContextHistory, UILabel, UIPasteConfiguration, UISystemInputViewController, UITapGestureRecognizer, UITextFieldAtomBackgroundView, UITextFieldBackgroundView, UITextFieldBorderView, UITextFieldLabel, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPasteController, UITextPosition, UITextRange, UIView, UIVisualEffectView, _UIBaselineLayoutStrut, _UICascadingTextStorage, _UIDetachedFieldEditorBackgroundView, _UIFieldEditorLayoutManager, _UIFloatingContentView, _UIFullFontSize, _UITextFieldCanvasView, _UITextFieldVisualStyle, _UITextItemDiscoverer;
+@class CUICatalog, CUIStyleEffectConfiguration, NSArray, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutConstraint, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIColor, UIDragInteraction, UIDropInteraction, UIFieldEditor, UIFont, UIImage, UIImageView, UIInputContextHistory, UILabel, UIPasteConfiguration, UISystemInputViewController, UITapGestureRecognizer, UITextFieldAtomBackgroundView, UITextFieldBackgroundView, UITextFieldBorderView, UITextFieldLabel, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPasteController, UITextPosition, UITextRange, UIView, UIVisualEffectView, _UIBaselineLayoutStrut, _UICascadingTextStorage, _UIDetachedFieldEditorBackgroundView, _UIFieldEditorLayoutManager, _UIFloatingContentView, _UIFullFontSize, _UITextFieldCanvasView, _UITextFieldClearButton, _UITextFieldVisualStyle, _UITextItemDiscoverer;
 @protocol UICoordinateSpace, UITextDragDelegate, UITextDragDropSupport, UITextDropDelegate, UITextFieldDelegate, UITextInputDelegate, UITextInputTokenizer, UITextPasteDelegate;
 
 @interface UITextField : UIControl <UIKeyboardInput, _UILayoutBaselineUpdating, _UIFloatingContentViewDelegate, UIGestureRecognizerDelegate, _UITextFieldVisualStyleSubject, UIViewGhostedRangeSupporting, _UIDrawsTextInRect, UITextInputTraits_Private, UIPopoverControllerDelegate, _UITextFieldCanvasViewContext, UIKeyInputPrivate, UITextDragSupporting, UITextDropSupporting, UITextPasteConfigurationSupporting_Internal, UITextFieldContent, _UITextItemDiscoverable, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, NSCoding, UIContentSizeCategoryAdjusting>
@@ -53,7 +53,7 @@
     _UIFullFontSize *_fullFontSize;
     struct UIEdgeInsets _padding;
     float _progress;
-    UIButton *_clearButton;
+    _UITextFieldClearButton *_clearButton;
     struct CGSize _clearButtonOffset;
     struct CGSize _leftViewOffset;
     struct CGSize _rightViewOffset;
@@ -285,6 +285,7 @@
 - (void)_addShortcut:(id)arg1;
 - (void)_addTextContentView;
 - (void)_adjustFontForAccessibilityTraits:(BOOL)arg1;
+- (BOOL)_allowAssistanceInSubtree;
 - (void)_applicationResuming:(id)arg1;
 - (void)_applyHighlightedAnimated:(BOOL)arg1;
 - (void)_applyRoundedRectBackgroundCornerRadiusToBackgroundViewWithWarning:(BOOL)arg1;
@@ -362,6 +363,7 @@
 - (double)_fullFontSize;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (BOOL)_hasContent;
+- (BOOL)_hasCustomClearButtonImage;
 - (BOOL)_hasFloatingFieldEditor;
 - (BOOL)_hasSuffixField;
 - (BOOL)_heightShouldBeMini;
@@ -495,6 +497,7 @@
 - (void)_syncTypingAttributesWithDefaultAttribute:(id)arg1;
 - (id)_systemBackgroundView;
 - (Class)_systemBackgroundViewClass;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (id)_systemInputViewController;
 - (id)_targetForDrawTextInRect;
 - (id)_text;
@@ -591,6 +594,10 @@
 - (void)createPlaceholderIfNecessary;
 - (id)createPlaceholderLabelWithFont:(id)arg1 andTextAlignment:(long long)arg2;
 - (id)createTextLabelWithTextColor:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
 - (id)customOverlayContainer;
 - (void)cut:(id)arg1;
 - (void)dealloc;

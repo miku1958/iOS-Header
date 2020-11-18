@@ -37,6 +37,7 @@
 - (void)_createAppleAccountWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_fetchAKURLBagSynchronously;
 - (id)_languageConfigurationDictionary;
+- (void)_modifyAuthenticationContextIfNeeded:(id)arg1;
 - (void)_runSilentLoginUpgradeWithCompletion:(CDUnknownBlockType)arg1 shortLivedTokenUpgradeCompletion:(CDUnknownBlockType)arg2;
 - (void)_upgradeShortLivedTokenCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;

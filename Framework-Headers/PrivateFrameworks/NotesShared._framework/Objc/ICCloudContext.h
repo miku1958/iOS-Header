@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class ICSelectorDelayer, NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSTimer;
-@protocol ICCloudContextDelegate, OS_dispatch_queue;
+@protocol ICCloudAnalyticsDelegate, ICCloudContextDelegate, OS_dispatch_queue;
 
 @interface ICCloudContext : NSObject
 {
@@ -24,6 +24,7 @@
     BOOL _syncDisabledByServer;
     BOOL _didCheckForLongLivedOperations;
     id<ICCloudContextDelegate> _cloudContextDelegate;
+    id<ICCloudAnalyticsDelegate> _cloudAnalyticsDelegate;
     long long _qualityOfService;
     unsigned long long _discretionaryNetworkBehavior;
     NSOperationQueue *_operationQueue;
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) NSMutableDictionary *accountZoneIDsFetchingChanges; // @synthesize accountZoneIDsFetchingChanges=_accountZoneIDsFetchingChanges;
 @property (strong, nonatomic) NSMutableDictionary *accountZoneIDsNeedingFetchChanges; // @synthesize accountZoneIDsNeedingFetchChanges=_accountZoneIDsNeedingFetchChanges;
 @property (strong, nonatomic) NSMutableDictionary *accountZoneIDsNeedingToBeSaved; // @synthesize accountZoneIDsNeedingToBeSaved=_accountZoneIDsNeedingToBeSaved;
+@property (weak, nonatomic) id<ICCloudAnalyticsDelegate> cloudAnalyticsDelegate; // @synthesize cloudAnalyticsDelegate=_cloudAnalyticsDelegate;
 @property (weak, nonatomic) id<ICCloudContextDelegate> cloudContextDelegate; // @synthesize cloudContextDelegate=_cloudContextDelegate;
 @property (readonly, nonatomic) NSDictionary *cloudObjectClassesByRecordType;
 @property (strong, nonatomic) NSDictionary *containersByAccountID; // @synthesize containersByAccountID=_containersByAccountID;
@@ -164,6 +166,7 @@
 - (BOOL)hasPendingOperations;
 - (void)incrementOrClearRetryCountForOperationType:(id)arg1 error:(id)arg2;
 - (void)incrementRetryCountForOperationType:(id)arg1;
+- (void)informCloudAnalyticsDelegateForOperationDidEnd:(id)arg1 recordsByRecordID:(id)arg2 operationError:(id)arg3;
 - (id)init;
 - (BOOL)isCloudKitAccountAvailable;
 - (BOOL)isFetchingAllRecordZones;

@@ -48,7 +48,7 @@
 - (unsigned long long)itemType;
 - (id)recordName;
 - (id)recordNameForItem:(id)arg1;
-- (id)recordTypesAndNames;
+- (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 - (id)updateReasonsDescription;
 
 @end

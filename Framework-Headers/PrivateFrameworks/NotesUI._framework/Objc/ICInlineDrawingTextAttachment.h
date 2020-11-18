@@ -26,15 +26,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct UIImage *)_image;
+- (id)_image;
 - (id)attachmentAsNSTextAttachment;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
 - (BOOL)canDragWithoutSelecting;
 - (id)contents;
 - (void)detachView;
-- (void)detachView:(struct UIView *)arg1 fromParentView:(struct UIView *)arg2;
+- (void)detachView:(id)arg1 fromParentView:(id)arg2;
 - (void)drawingDataDidChange:(id)arg1 view:(id)arg2;
-- (void)placeView:(struct UIView *)arg1 withFrame:(struct CGRect)arg2 inParentView:(struct UIView *)arg3 characterIndex:(unsigned long long)arg4 layoutManager:(id)arg5;
+- (void)placeView:(id)arg1 withFrame:(struct CGRect)arg2 inParentView:(id)arg3 characterIndex:(unsigned long long)arg4 layoutManager:(id)arg5;
 - (id)printableTextContentForAppearanceType:(unsigned long long)arg1;
 - (void)resetZoom;
 - (void)saveIfNeeded;

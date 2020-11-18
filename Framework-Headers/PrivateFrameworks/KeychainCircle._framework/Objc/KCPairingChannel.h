@@ -18,6 +18,7 @@
     BOOL _sessionSupportsSOS;
     BOOL _sessionSupportsOctagon;
     unsigned int _counter;
+    unsigned int _acceptorInitialSyncCredentialsFlags;
     KCPairingChannelContext *_peerVersionContext;
     NSXPCConnection *_connection;
     OTControl *_otControl;
@@ -27,6 +28,7 @@
     OTJoiningConfiguration *_joiningConfiguration;
 }
 
+@property unsigned int acceptorInitialSyncCredentialsFlags; // @synthesize acceptorInitialSyncCredentialsFlags=_acceptorInitialSyncCredentialsFlags;
 @property BOOL acceptorWillSendInitialSyncCredentials; // @synthesize acceptorWillSendInitialSyncCredentials=_acceptorWillSendInitialSyncCredentials;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong) NSString *contextID; // @synthesize contextID=_contextID;
@@ -45,6 +47,8 @@
 
 + (BOOL)isSupportedPlatform;
 + (id)pairingChannelAcceptor:(id)arg1;
++ (id)pairingChannelCompressData:(id)arg1;
++ (id)pairingChannelDecompressData:(id)arg1;
 + (id)pairingChannelInitiator:(id)arg1;
 - (void).cxx_destruct;
 - (void)acceptorFirstOctagonPacket:(id)arg1 reply:(id)arg2 complete:(CDUnknownBlockType)arg3;
@@ -53,8 +57,6 @@
 - (void)acceptorSecondPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)acceptorThirdPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)attemptSosUpgrade;
-- (id)compressData:(id)arg1;
-- (id)decompressData:(id)arg1;
 - (BOOL)ensureControlChannel;
 - (void)exchangePacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (id)exchangePacket:(id)arg1 complete:(BOOL *)arg2 error:(id *)arg3;

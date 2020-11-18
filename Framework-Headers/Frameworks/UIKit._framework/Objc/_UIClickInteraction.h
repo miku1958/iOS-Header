@@ -7,15 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/UIInteraction-Protocol.h>
+#import <UIKitCore/UIInteraction_Internal-Protocol.h>
 #import <UIKitCore/UIInteraction_Private-Protocol.h>
 #import <UIKitCore/_UIClickInteractionDriverDelegate-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UIView, _UIClickFeedbackGenerator;
+@class NSString, UIView, _UIClickFeedbackGenerator;
 @protocol UIInteractionEffect, _UIClickInteractionDelegate, _UIClickInteractionDriving;
 
-@interface _UIClickInteraction : NSObject <_UIClickInteractionDriverDelegate, UIInteraction_Private, UIInteraction>
+@interface _UIClickInteraction : NSObject <_UIClickInteractionDriverDelegate, UIInteraction_Private, UIInteraction_Internal, UIInteraction>
 {
-    BOOL _delaysOtherPanRecognizers;
     BOOL _hapticsEnabled;
     UIView *_view;
     id<UIInteractionEffect> _interactionEffect;
@@ -28,22 +28,16 @@
 
 @property (nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) BOOL delaysOtherPanRecognizers; // @synthesize delaysOtherPanRecognizers=_delaysOtherPanRecognizers;
 @property (weak, nonatomic) id<_UIClickInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<_UIClickInteractionDriving> driver; // @synthesize driver=_driver;
 @property (nonatomic) BOOL driverCancelsTouchesInView;
-@property (readonly, nonatomic) BOOL driverPrefersCancelsTouchesInView;
-@property (readonly, nonatomic) UIGestureRecognizer *driverPrimaryGestureRecognizer;
 @property (strong, nonatomic) _UIClickFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (nonatomic) BOOL hapticsEnabled; // @synthesize hapticsEnabled=_hapticsEnabled;
-@property (readonly, nonatomic) BOOL hasDriverExceededAllowableMovement;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<UIInteractionEffect> interactionEffect; // @synthesize interactionEffect=_interactionEffect;
-@property (readonly, nonatomic) BOOL isDriverCurrentlyAcceleratedByForce;
 @property (nonatomic, setter=_setOverrideDriverClass:) Class overrideDriverClass; // @synthesize overrideDriverClass=_overrideDriverClass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) double touchDuration;
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
@@ -57,7 +51,6 @@
 - (void)clickDriver:(id)arg1 didPerformEvent:(unsigned long long)arg2;
 - (void)clickDriver:(id)arg1 didUpdateHighlightProgress:(double)arg2;
 - (void)clickDriver:(id)arg1 shouldBegin:(CDUnknownBlockType)arg2;
-- (BOOL)clickDriver:(id)arg1 shouldDelayGestureRecognizer:(id)arg2;
 - (void)didMoveToView:(id)arg1;
 - (id)init;
 - (struct CGPoint)locationInCoordinateSpace:(id)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *appActivationURLHandler;
     MISSING_TYPE *bootstrapper;
+    MISSING_TYPE *pptContext;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *userInfo;

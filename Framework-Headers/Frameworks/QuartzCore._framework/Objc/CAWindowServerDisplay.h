@@ -74,6 +74,7 @@
 - (void)setMaximumRefreshRate:(float)arg1;
 - (void)setMinimumRefreshRate:(float)arg1;
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
+- (struct CATransform3D)transformFromLayerId:(unsigned long long)arg1 inContextId:(unsigned int)arg2;
 - (void)update;
 - (void)willUnblank;
 

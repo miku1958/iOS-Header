@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, GEOPDCategorySearchResultSection, GEOPDRelatedSearchSuggestion, GEOPDSearchClientBehavior, NSMutableArray, PBDataReader, PBUnknownFields;
+@class GEOMapRegion, GEOPDRelatedSearchSuggestion, GEOPDSCategorySearchResultSection, GEOPDSearchClientBehavior, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategorySearchResult : PBCodable <NSCopying>
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_browseCategorys;
-    GEOPDCategorySearchResultSection *_categorySearchResultSection;
+    GEOPDSCategorySearchResultSection *_categorySearchResultSection;
     GEOPDRelatedSearchSuggestion *_defaultRelatedSearchSuggestion;
     GEOMapRegion *_displayMapRegion;
     NSMutableArray *_relatedSearchSuggestions;
@@ -52,7 +52,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSMutableArray *browseCategorys;
-@property (strong, nonatomic) GEOPDCategorySearchResultSection *categorySearchResultSection;
+@property (strong, nonatomic) GEOPDSCategorySearchResultSection *categorySearchResultSection;
 @property (strong, nonatomic) GEOPDRelatedSearchSuggestion *defaultRelatedSearchSuggestion;
 @property (strong, nonatomic) GEOMapRegion *displayMapRegion;
 @property (nonatomic) BOOL enablePartialClientization;

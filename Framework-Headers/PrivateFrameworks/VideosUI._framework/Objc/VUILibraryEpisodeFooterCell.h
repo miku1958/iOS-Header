@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSNumber, NSString, UIButton, VUISeparatorView;
+@class NSNumber, NSString, VUIButton, VUISeparatorView;
 @protocol VUILibraryEpisodeFooterCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,18 +17,17 @@ __attribute__((visibility("hidden")))
     id<VUILibraryEpisodeFooterCellDelegate> _delegate;
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
-    UIButton *_titleButton;
+    VUIButton *_titleButton;
 }
 
 @property (strong, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property (weak, nonatomic) id<VUILibraryEpisodeFooterCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSNumber *storeID; // @synthesize storeID=_storeID;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-@property (strong, nonatomic) UIButton *titleButton; // @synthesize titleButton=_titleButton;
+@property (strong, nonatomic) VUIButton *titleButton; // @synthesize titleButton=_titleButton;
 @property (strong, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 
 - (void).cxx_destruct;
-- (void)_titleButtonPressed:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

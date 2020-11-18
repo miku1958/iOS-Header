@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *locationManager;
     MISSING_TYPE *delegate;
     MISSING_TYPE *locationUpdatingQueue;
+    MISSING_TYPE *currentLocation;
 }
 
 - (void).cxx_destruct;

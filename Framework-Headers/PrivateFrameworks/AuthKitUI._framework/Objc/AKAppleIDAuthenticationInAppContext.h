@@ -7,29 +7,21 @@
 #import <AuthKit/AKAppleIDAuthenticationContext.h>
 
 #import <AuthKitUI/AKAppleIDAuthenticationUIProvider-Protocol.h>
-#import <AuthKitUI/AKBasicLoginAlertControllerDelegate-Protocol.h>
 #import <AuthKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAUICDPStingrayRemoteUIController, AKAppleIDServerUIContextController, AKBasicLoginAlertController, AKNativeAccountRecoveryController, NSHTTPURLResponse, NSString, RUIObjectModel, RemoteUIController, UINavigationController, UIViewController;
-@protocol AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate, CDPStateUIProvider;
+@class AKNativeAccountRecoveryController, NSString, UIViewController;
+@protocol AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate, AKInAppAuthenticationUIProvider, CDPStateUIProvider;
 
-@interface AKAppleIDAuthenticationInAppContext : AKAppleIDAuthenticationContext <AKBasicLoginAlertControllerDelegate, RemoteUIControllerDelegate, AKAppleIDAuthenticationUIProvider>
+@interface AKAppleIDAuthenticationInAppContext : AKAppleIDAuthenticationContext <RemoteUIControllerDelegate, AKAppleIDAuthenticationUIProvider>
 {
-    UIViewController *_topViewControllerOnLoadStart;
-    BOOL _overrideFirstActionSignal;
-    AKBasicLoginAlertController *_basicLoginViewController;
-    UINavigationController *_navController;
-    UINavigationController *_modalRemoteUINavController;
-    RemoteUIController *_remoteUIController;
-    RUIObjectModel *_currentRemoteOM;
-    AKAppleIDServerUIContextController *_serverUIContextController;
-    NSHTTPURLResponse *_deferredResponse;
     AKNativeAccountRecoveryController *_nativeRecoveryController;
-    AAUICDPStingrayRemoteUIController *_stingrayController;
     BOOL _forceInlinePresentation;
     BOOL _presentingServerUI;
+    NSString *_cancelButtonString;
+    NSString *_privacyBundleIdentifier;
     UIViewController *_presentingViewController;
     id<AKAppleIDAuthenticationInAppContextDelegate> _delegate;
+    id<AKInAppAuthenticationUIProvider> _inAppAuthUIProvider;
     id<AKAppleIDAuthenticationInAppContextAlertDelegate> _alertDelegate;
     id<CDPStateUIProvider> _cdpUiProvider;
     id<AKAppleIDAuthenticationInAppContextPasswordDelegate> __passwordDelegate;
@@ -37,39 +29,29 @@
 
 @property (weak, nonatomic, setter=_setPasswordDelegate:) id<AKAppleIDAuthenticationInAppContextPasswordDelegate> _passwordDelegate; // @synthesize _passwordDelegate=__passwordDelegate;
 @property (weak, nonatomic) id<AKAppleIDAuthenticationInAppContextAlertDelegate> alertDelegate; // @synthesize alertDelegate=_alertDelegate;
+@property (strong) NSString *cancelButtonString; // @synthesize cancelButtonString=_cancelButtonString;
 @property (strong, nonatomic, setter=_setCdpUiProvider:) id<CDPStateUIProvider> cdpUiProvider; // @synthesize cdpUiProvider=_cdpUiProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AKAppleIDAuthenticationInAppContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL forceInlinePresentation; // @synthesize forceInlinePresentation=_forceInlinePresentation;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<AKInAppAuthenticationUIProvider> inAppAuthUIProvider; // @synthesize inAppAuthUIProvider=_inAppAuthUIProvider;
 @property (nonatomic, getter=isPresentingServerUI) BOOL presentingServerUI; // @synthesize presentingServerUI=_presentingServerUI;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (copy) NSString *privacyBundleIdentifier; // @synthesize privacyBundleIdentifier=_privacyBundleIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_assertValidPresentingViewController;
 - (void)_cleanUpBasicLoginWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_contextDidDismissLoginAlertController;
 - (void)_contextDidEndPresentingSecondaryUI;
-- (void)_contextDidPresentLoginController;
 - (void)_contextWillBeginPresentingSecondaryUI;
-- (void)_contextWillDismissLoginAlertController;
 - (void)_dismissServerProvidedUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleBackButtonTap:(id)arg1;
-- (BOOL)_isDeferrableFinalResponseHarvested;
-- (BOOL)_isSatisfyingPasswordRequirements;
-- (id)_navController;
-- (void)_presentBasicLoginUIAlertWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_presentIDPProvidedUIWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 waitForInteraction:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_presentServerProvidedUIWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_remoteUIController;
-- (void)basicLoginAlertControllerDidDismiss:(id)arg1;
-- (void)basicLoginAlertControllerDidPresent:(id)arg1;
-- (void)basicLoginAlertControllerWillDismiss:(id)arg1;
+- (id)_remoteUIControllerDelegate;
 - (void)completeWithError:(id)arg1;
-- (void)dealloc;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissKeepUsingUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissNativeRecoveryUIWithCompletion:(CDUnknownBlockType)arg1;

@@ -13,7 +13,7 @@
 
 @interface MPCMediaRemoteMiddlewareControllerOperation : MPAsyncOperation <MPCMediaRemoteMiddlewareControllerProviding, MPMiddlewareAutomaticDependencyOperation>
 {
-    struct NSMapTable *_inputOperations;
+    NSMapTable *_inputOperations;
     CDUnknownBlockType _invalidationHandler;
     NSArray *_invalidationObservers;
     MPCMediaRemoteMiddleware *_middleware;

@@ -4,25 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlaySupport/CPSInheritedBackgroundColorView.h>
+#import <UIKit/UIView.h>
 
-@class UIActivityIndicatorView, UILabel;
+#import <CarPlaySupport/CPSCardPlatterProviding-Protocol.h>
 
-@interface CPSPausedCardView : CPSInheritedBackgroundColorView
+@class CPSCardPlatterView, NSString, UIActivityIndicatorView, UILabel;
+
+@interface CPSPausedCardView : UIView <CPSCardPlatterProviding>
 {
+    CPSCardPlatterView *_cardPlatterView;
     UILabel *_title;
     UIActivityIndicatorView *_spinner;
 }
 
+@property (strong, nonatomic) CPSCardPlatterView *cardPlatterView; // @synthesize cardPlatterView=_cardPlatterView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (id)backgroundColor;
-- (void)backgroundColorDidChange;
-- (id)initWithTitle:(id)arg1 showsSpinner:(BOOL)arg2 backgroundColor:(id)arg3;
+- (id)initWithReason:(unsigned long long)arg1 title:(id)arg2 backgroundColor:(id)arg3;
 - (struct CGSize)intrinsicContentSize;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

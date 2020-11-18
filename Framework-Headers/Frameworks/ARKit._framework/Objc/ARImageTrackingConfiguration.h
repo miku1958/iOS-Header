@@ -24,7 +24,7 @@
 + (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (void)createTechniques:(id)arg1;
 - (id)description;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

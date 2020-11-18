@@ -9,7 +9,7 @@
 #import <TVUIKit/UICollectionViewDataSource-Protocol.h>
 #import <TVUIKit/UICollectionViewDelegate-Protocol.h>
 
-@class CADisplayLink, NSArray, NSDate, NSDictionary, NSIndexPath, NSObject, NSString, UIFocusGuide, _TVCarouselCollectionView;
+@class CADisplayLink, NSArray, NSDate, NSDictionary, NSIndexPath, NSObject, NSString, UIFocusGuide, UIPageControl, _TVCarouselCollectionView;
 @protocol OS_dispatch_source, TVCarouselViewDataSource, TVCarouselViewDelegate;
 
 @interface _TVCarouselView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -30,6 +30,7 @@
         unsigned int delegateDidPlayItemAtIndex:1;
         unsigned int delegateWillDisplayItemAtIndex:1;
         unsigned int delegateDidEndDisplayingItemAtIndex:1;
+        unsigned int delegateDidCenterItemAtIndex:1;
     } _carouselViewFlags;
     NSObject<OS_dispatch_source> *_autoScrollTimer;
     _TVCarouselCollectionView *_collectionView;
@@ -45,6 +46,7 @@
         BOOL firstLayoutPass;
     } _flags;
     BOOL _shouldScaleOnIdleFocus;
+    BOOL _showsPageControl;
     id<TVCarouselViewDataSource> _dataSource;
     id<TVCarouselViewDelegate> _delegate;
     double _interitemSpacing;
@@ -53,12 +55,14 @@
     double _unitScrollDuration;
     UIView *_headerView;
     double _showcaseFactor;
+    double _pageControlMargin;
     NSDictionary *_collectionToDatasourceIndexMap;
     UIFocusGuide *_focusGuide;
     CADisplayLink *_displayLink;
     double _previousDisplayLinkTimestamp;
     double _offsetChangePerSecond;
     NSDate *_firstFocusChangeInInterval;
+    UIPageControl *_pageControl;
     double _focusThrottleTimeInterval;
     struct CGSize _itemSize;
     struct CGPoint _focusDirection;
@@ -81,16 +85,20 @@
 @property (nonatomic) double interitemSpacing; // @synthesize interitemSpacing=_interitemSpacing;
 @property (nonatomic) struct CGSize itemSize; // @synthesize itemSize=_itemSize;
 @property (nonatomic) double offsetChangePerSecond; // @synthesize offsetChangePerSecond=_offsetChangePerSecond;
+@property (strong, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
+@property (nonatomic) double pageControlMargin; // @synthesize pageControlMargin=_pageControlMargin;
 @property (nonatomic) double previousDisplayLinkTimestamp; // @synthesize previousDisplayLinkTimestamp=_previousDisplayLinkTimestamp;
 @property (nonatomic) unsigned long long scrollMode; // @synthesize scrollMode=_scrollMode;
 @property (nonatomic) BOOL shouldScaleOnIdleFocus; // @synthesize shouldScaleOnIdleFocus=_shouldScaleOnIdleFocus;
 @property (nonatomic) double showcaseFactor; // @synthesize showcaseFactor=_showcaseFactor;
+@property (nonatomic) BOOL showsPageControl; // @synthesize showsPageControl=_showsPageControl;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGPoint targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
 @property (nonatomic) double unitScrollDuration; // @synthesize unitScrollDuration=_unitScrollDuration;
 @property (readonly, copy, nonatomic) NSArray *visibleCells;
 
 - (void).cxx_destruct;
+- (void)_accessibilityReducedMotionNotification:(id)arg1;
 - (void)_animatePagedCenteringAnimated:(BOOL)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
@@ -120,7 +128,9 @@
 - (void)_updateContentForNewCenterIndex:(long long)arg1;
 - (void)_updateContentOffsetForFocusedIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)_updateIdleModeLayoutAttributes;
+- (void)_updatePageControl;
 - (void)calculateChangeSetForFocusedIndex:(long long)arg1 newDataSourceMap:(id)arg2 indexesToRemove:(inout id *)arg3 indexesToAdd:(inout id *)arg4 indexesToReload:(inout id *)arg5;
+- (void)centerItemAtPageIndex:(long long)arg1;
 - (BOOL)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;

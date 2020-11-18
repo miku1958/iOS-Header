@@ -48,6 +48,8 @@
 @property (readonly, nonatomic, getter=isDiscoveryModeEligible) BOOL discoveryModeEligible; // @synthesize discoveryModeEligible=_isDiscoveryModeEligible;
 @property (readonly, nonatomic, getter=isEligibleForFreeTrial) BOOL eligibleForFreeTrial; // @synthesize eligibleForFreeTrial=_isEligibleForFreeTrial;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, nonatomic) BOOL hasAddToCloudLibraryCapability;
+@property (readonly, nonatomic) BOOL hasCatalogPlaybackCapability;
 @property (readonly, nonatomic) BOOL hasFamily; // @synthesize hasFamily=_hasFamily;
 @property (readonly, nonatomic) BOOL hasFamilyGreaterThanOneMember; // @synthesize hasFamilyGreaterThanOneMember=_hasFamilyGreaterThanOneMember;
 @property (readonly, nonatomic) BOOL hasOfflineSlots; // @synthesize hasOfflineSlots=_hasOfflineSlots;

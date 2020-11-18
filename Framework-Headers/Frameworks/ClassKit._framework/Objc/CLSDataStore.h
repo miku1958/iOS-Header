@@ -15,7 +15,7 @@
 @interface CLSDataStore : NSObject <CLSFaultProcessorDelegate, NSLocking>
 {
     NSMutableSet *_dataObservers;
-    struct NSMutableDictionary *_deletedObjectsByID;
+    NSMutableDictionary *_deletedObjectsByID;
     NSMutableDictionary *_objectGenerationsByID;
     CLSCurrentUser *_cachedCurrentUser;
     int _accountChangeToken;
@@ -65,10 +65,11 @@
 - (void)_reconnect;
 - (void)_reenableObservers;
 - (void)_refreshMainAppContext;
-- (void)_registerForDarwinNotifications;
+- (void)_registerForAccountChangedDarwinNotification;
 - (void)_save;
 - (void)_saveObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_validateObjects:(id)arg1;
+- (void)addCollection:(id)arg1;
 - (void)addFavorite:(id)arg1;
 - (void)addHandout:(id)arg1;
 - (id)addObject:(id)arg1;
@@ -81,6 +82,8 @@
 - (id)cachedMainAppContext;
 - (void)canSearchRostersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)classesForPersonID:(id)arg1 role:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)collaborationStatesForObjectWithID:(id)arg1 ownerPersonID:(id)arg2;
+- (void)collaborationStatesForObjectWithID:(id)arg1 ownerPersonID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)completeAllAssignedActivitiesMatching:(id)arg1;
 - (void)contextsMatchingIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)contextsMatchingIdentifierPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -92,14 +95,17 @@
 - (id)dataServer:(CDUnknownBlockType)arg1;
 - (void)dataServer:(id)arg1 executeQuery:(id)arg2;
 - (void)dealloc;
+- (void)deleteArchivedCollectionObjects:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)deregisterDataObserver:(id)arg1;
 - (void)developerModeChanged:(id)arg1;
 - (void)enrolledClassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)executeQuery:(id)arg1;
 - (void)faultMainAppContext;
-- (BOOL)faultProcessor:(id)arg1 shouldFaultRelation:(id)arg2 fromObject:(struct NSObject *)arg3;
+- (BOOL)faultProcessor:(id)arg1 shouldFaultRelation:(id)arg2 fromObject:(id)arg3;
 - (void)featureIsEnabled:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAndCompleteAllAssignedActivitiesForContextPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)fetchCollectionItemsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchCollectionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchTransparencyMessageInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handoutAttachmentForDocumentURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -119,11 +125,13 @@
 - (void)objectsMatching:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)personsInClassWithClassID:(id)arg1 role:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)pruneDeletedObjectsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)publishCollaborationStateChanges:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)publishHandout:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)refreshAuthTreeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)refreshMainAppContext;
 - (void)registerDataObserver:(id)arg1;
 - (void)removeClass:(id)arg1;
+- (void)removeCollection:(id)arg1;
 - (void)removeContext:(id)arg1;
 - (void)removeContextWithObjectID:(id)arg1;
 - (void)removeFavorite:(id)arg1;
@@ -139,8 +147,13 @@
 - (void)setShouldSyncTeacherBrowsedContexts:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)shouldPerformSearchAPIOperation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)shouldSyncTeacherBrowsedContextsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)studentActivityForAttachmentsWithIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)syncDataServer:(CDUnknownBlockType)arg1;
+- (void)syncDeleteThumbnailBlobForContext:(id)arg1;
+- (id)syncFetchSettingsForUserNotificationType:(long long)arg1;
+- (id)syncFetchThumbnailBlobForContext:(id)arg1;
 - (void)syncFetchWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)syncSetSettingsForUserNotificationType:(long long)arg1 settings:(id)arg2;
 - (id)syncUtilityServer:(CDUnknownBlockType)arg1;
 - (void)triggerProgressTransparencyMessageIfNeeded;
 - (void)unlock;

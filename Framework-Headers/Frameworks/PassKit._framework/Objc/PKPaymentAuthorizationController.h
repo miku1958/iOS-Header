@@ -38,6 +38,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPaymentRequest:(id)arg1;
+- (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizeContextWithHandler:(CDUnknownBlockType)arg2;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizeDisbursementVoucher:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePeerPaymentQuote:(id)arg2 handler:(CDUnknownBlockType)arg3;

@@ -16,9 +16,9 @@
     MISSING_TYPE *direction;
     MISSING_TYPE *modifiedAt;
     MISSING_TYPE *recencyOrder;
-    MISSING_TYPE *ftsRankings;
-    MISSING_TYPE *requestEntityMatchRates;
-    MISSING_TYPE *intentEntityMatchRates;
+    MISSING_TYPE *ftsRankSum;
+    MISSING_TYPE *requestEntityMatchRate;
+    MISSING_TYPE *intentEntityMatchRate;
     MISSING_TYPE *maxEntityMatchRate;
 }
 

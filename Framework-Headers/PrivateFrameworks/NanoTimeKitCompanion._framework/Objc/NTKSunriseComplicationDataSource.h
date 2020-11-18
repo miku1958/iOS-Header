@@ -14,7 +14,7 @@
 {
     NTKTimelineEntryModelCache *_entryModelCache;
     BOOL _isWaitingForGeocodeRequest;
-    struct NSString *_token;
+    NSString *_token;
     CLLocation *_displayedLocation;
     NSString *_locationName;
     CLLocation *_delayedLocation;

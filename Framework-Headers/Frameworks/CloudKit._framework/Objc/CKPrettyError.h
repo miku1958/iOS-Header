@@ -32,6 +32,7 @@
 + (id)sanitizedError:(id)arg1;
 + (id)secureCodableError:(id)arg1;
 - (id)CKPartialErrorDescription;
+- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 

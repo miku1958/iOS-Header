@@ -33,6 +33,7 @@
 + (id)_connection;
 + (id)_extensionEndpoint;
 + (id)_extensionEndpointForMainBundleOfHostApplication:(id)arg1;
++ (void)_flushCacheForBundle:(id)arg1;
 + (id)_manifestWithBundle:(id)arg1 error:(id *)arg2;
 + (void)_setConnection:(id)arg1;
 - (void)beginAccessingResourcesWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -23,7 +23,6 @@
 
 - (void).cxx_destruct;
 - (id)initWithPID:(int)arg1 auditToken:(CDStruct_4c969caf)arg2;
-- (void)loadLinkPresentationMetdataForMessageWithGUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

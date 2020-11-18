@@ -13,8 +13,8 @@
     BOOL _feedShouldAllowHeaders;
     BOOL _alwaysShowFavoritesBadge;
     BOOL _shouldRemoveHighlightOnScroll;
-    struct UIColor *_feedBackgroundColor;
-    struct UIColor *_selectionHighlightColor;
+    UIColor *_feedBackgroundColor;
+    UIColor *_selectionHighlightColor;
     long long _feedHeroPosition;
     long long _feedAxis;
     unsigned long long _feedMemoriesPerRow;
@@ -25,11 +25,11 @@
     long long _idiom;
     double _feedHeroImageAspectRatio;
     double _feedAdditionalContentThreshold;
-    struct UIFont *_tabTitleFont;
-    struct UIColor *_tabTitleTextColor;
+    UIFont *_tabTitleFont;
+    UIColor *_tabTitleTextColor;
     double _tabTitleBaselineOffset;
     double _tabTopContentPadding;
-    struct UIColor *_borderColor;
+    UIColor *_borderColor;
     double _borderWidth;
     double _orbPreviewSize;
     unsigned long long __style;
@@ -86,7 +86,7 @@
 - (void)_calculateSectionInsetWithExtendedTraitCollection:(id)arg1;
 - (double)_feedInteritemSpacingForReferenceSize:(struct CGSize)arg1;
 - (id)createViewSpecWithDescriptor:(struct PXViewSpecDescriptor)arg1;
-- (struct UIColor *)feedCategoryLabelTextColor;
+- (id)feedCategoryLabelTextColor;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2 style:(unsigned long long)arg3;
 - (id)newLayoutGeneratorWithMetrics:(id)arg1;

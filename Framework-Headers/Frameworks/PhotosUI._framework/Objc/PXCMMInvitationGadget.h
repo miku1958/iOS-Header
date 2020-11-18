@@ -36,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -48,9 +49,6 @@
 @property (strong, nonatomic) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 @property (nonatomic) long long priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
 @property (readonly, nonatomic) id<PXCMMWorkflowPresenting> workflowPresenter; // @synthesize workflowPresenter=_workflowPresenter;
 
@@ -74,12 +72,13 @@
 - (void)invitationViewSizeThatFitsDidChange:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prefetchDuringScrollingForWidth:(double)arg1;
-- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
+- (void)prepareCollectionViewItem:(id)arg1;
 - (void)presentDetailViewAnimated:(BOOL)arg1;
 - (void)presentDetailViewForInvitationView:(id)arg1 animated:(BOOL)arg2;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (BOOL)supportsHighlighting;
+- (id)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)uniqueGadgetIdentifier;
 
 @end

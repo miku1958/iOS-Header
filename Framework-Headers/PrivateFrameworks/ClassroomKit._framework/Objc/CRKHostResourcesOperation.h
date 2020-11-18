@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "CATOperation.h"
+#import <DeviceManagement/CATOperation.h>
 
 #import <ClassroomKit/CATRemoteConnectionDelegate-Protocol.h>
 #import <ClassroomKit/NSNetServiceDelegate-Protocol.h>

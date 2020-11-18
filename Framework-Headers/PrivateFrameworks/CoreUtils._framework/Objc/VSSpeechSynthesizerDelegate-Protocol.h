@@ -13,6 +13,7 @@
 @optional
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didContinueSpeakingRequest:(VSSpeechRequest *)arg2;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishPresynthesizedAudioRequest:(VSPresynthesizedAudioRequest *)arg2 withInstrumentMetrics:(VSInstrumentMetrics *)arg3 error:(NSError *)arg4;
+- (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishPrewarmRequest:(VSSpeechRequest *)arg2 withError:(NSError *)arg3;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishSpeaking:(BOOL)arg2 phonemesSpoken:(NSString *)arg3 withError:(NSError *)arg4;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishSpeaking:(BOOL)arg2 withError:(NSError *)arg3;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didFinishSpeakingRequest:(VSSpeechRequest *)arg2 successfully:(BOOL)arg3 phonemesSpoken:(NSString *)arg4 withError:(NSError *)arg5;

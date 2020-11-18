@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <webrtc/WK_RTCVideoEncoderFactory-Protocol.h>
+#import <webrtc/RTCVideoEncoderFactory-Protocol.h>
 
 @class NSString, WK_RTCVideoCodecInfo;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCDefaultVideoEncoderFactory : NSObject <WK_RTCVideoEncoderFactory>
+@interface WK_RTCDefaultVideoEncoderFactory : NSObject <RTCVideoEncoderFactory>
 {
     WK_RTCVideoCodecInfo *preferredCodec;
 }

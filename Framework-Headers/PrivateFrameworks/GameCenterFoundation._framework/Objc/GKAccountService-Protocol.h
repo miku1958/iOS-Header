@@ -11,6 +11,7 @@
 @protocol GKAccountService <NSObject>
 - (oneway void)authenticatePlayerWithExistingCredentialsWithHandler:(void (^)(GKAuthenticateResponse *, NSError *))arg1;
 - (oneway void)authenticationWasCancelled;
+- (oneway void)fetchItemsForIdentityVerificationSignature:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)generateIdentityVerificationSignatureWithHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getLastPersonalizationVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getLastPrivacyNoticeVersionDisplayedForSignedInPlayerWithHandler:(void (^)(unsigned long long, NSError *))arg1;

@@ -6,12 +6,13 @@
 
 #import <MediaPlayer/MPPlaybackContext.h>
 
+#import <MediaPlaybackCore/MPCModelPlaybackRequestEnvironmentConsuming-Protocol.h>
 #import <MediaPlaybackCore/MPCPlaybackContextPrivateListeningOverridable-Protocol.h>
 #import <MediaPlaybackCore/MPCPlaybackContextUserIdentityConsuming-Protocol.h>
 
 @class ICUserIdentity, MPCModelRadioContentReference, MPCPlaybackRequestEnvironment, MPModelRadioStation, NSString, NSURL;
 
-@interface MPCModelRadioPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable>
+@interface MPCModelRadioPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable, MPCModelPlaybackRequestEnvironmentConsuming>
 {
     ICUserIdentity *_userIdentity;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;

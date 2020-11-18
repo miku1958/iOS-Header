@@ -21,7 +21,6 @@
 @interface PKPaymentAuthorizationServiceViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, PKPaymentAuthorizationFooterViewDelegate, PKAuthenticatorDelegate, PKPaymentAuthorizationStateMachineDelegate, AKAppleIDAuthenticationInAppContextDelegate, PKPaymentAuthorizationServiceProtocol>
 {
     PKPaymentAuthorizationLayout *_layout;
-    long long _authorizationMode;
     UIView *_contentView;
     UITableView *_detailTableView;
     PKPaymentAuthorizationSummaryItemsView *_summaryItemsView;
@@ -33,6 +32,7 @@
     BOOL _needsToAccommodateKeyboard;
     UIBarButtonItem *_cancelBarButtonItem;
     BOOL _cancelButtonDisabled;
+    BOOL _scrollIndicatorShown;
     UIView *_passphraseSeparatorView;
     NSLayoutConstraint *_contentViewRightConstraint;
     PKPaymentPreferencesViewController *_shippingMethodPreferencesController;
@@ -111,6 +111,8 @@
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
+- (BOOL)_passcodeAllowed;
+- (BOOL)_passwordRequired;
 - (void)_payWithPasswordPressed:(id)arg1;
 - (void)_processClientCallback:(id)arg1;
 - (void)_removePassphraseViewFromHierarchyWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -118,8 +120,9 @@
 - (void)_resumeAuthenticationWithPreviousError:(id)arg1 animated:(BOOL)arg2;
 - (void)_selectOptionsForDataItem:(id)arg1;
 - (void)_sendDidEncounterAuthorizationEventIfNecessary:(unsigned long long)arg1;
-- (void)_setAMPBarItem;
 - (void)_setAuthenticating:(BOOL)arg1;
+- (void)_setNavigationItemLeftItemForAMP;
+- (BOOL)_setNavigationItemLeftItemFromNavigationTitle;
 - (void)_setPasscodeViewController:(id)arg1;
 - (void)_setPassphraseViewController:(id)arg1;
 - (void)_setUserIntentRequired:(BOOL)arg1 shouldIgnorePhysicalButton:(BOOL)arg2;
@@ -131,6 +134,9 @@
 - (void)_setupShippingContact;
 - (void)_setupShippingMethods;
 - (void)_setupWithPaymentRequest:(id)arg1 relevantPassUniqueID:(id)arg2 fromAppWithLocalizedName:(id)arg3 applicationIdentifier:(id)arg4 bundleIdentifier:(id)arg5 teamIdentifier:(id)arg6;
+- (BOOL)_shouldShowSeparatorForRowAtIndexPath:(id)arg1;
+- (BOOL)_shouldShowUsePeerPaymentBalanceToggle;
+- (void)_showScrollIndicatorIfNeeded;
 - (void)_showUnservicableAddressAlertForErrors:(id)arg1;
 - (void)_startEvaluation;
 - (void)_startSimulatorHIDListener;
@@ -162,6 +168,7 @@
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeCashDisbursementWithResult:(id)arg1;
+- (void)authorizationDidAuthorizeContextCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;

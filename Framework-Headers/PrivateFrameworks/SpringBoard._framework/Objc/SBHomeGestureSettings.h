@@ -63,6 +63,8 @@
     double _morphTargetUnclipDuration;
     double _secondsToAllowMultipleEdges;
     double _secondsToResetSwitcherListAfterTransition;
+    double _travelDistanceForTranslatingScreenHeight;
+    double _minimumDistanceThresholdToScaleMultiplier;
     SBHomeGestureExclusionTrapezoidSettings *_exclusionTrapezoidSettings;
 }
 
@@ -88,6 +90,7 @@
 @property (nonatomic) double maximumScaleVelocity; // @synthesize maximumScaleVelocity=_maximumScaleVelocity;
 @property (nonatomic) double maximumYDistanceToTriggerArcByDistance; // @synthesize maximumYDistanceToTriggerArcByDistance=_maximumYDistanceToTriggerArcByDistance;
 @property (nonatomic) double maximumYDistanceToTriggerArcByFlick; // @synthesize maximumYDistanceToTriggerArcByFlick=_maximumYDistanceToTriggerArcByFlick;
+@property (nonatomic) double minimumDistanceThresholdToScaleMultiplier; // @synthesize minimumDistanceThresholdToScaleMultiplier=_minimumDistanceThresholdToScaleMultiplier;
 @property (nonatomic) double minimumXDistanceForFirstArcSwipe; // @synthesize minimumXDistanceForFirstArcSwipe=_minimumXDistanceForFirstArcSwipe;
 @property (nonatomic) double minimumXDistanceToTriggerArcByDistanceLandscape; // @synthesize minimumXDistanceToTriggerArcByDistanceLandscape=_minimumXDistanceToTriggerArcByDistanceLandscape;
 @property (nonatomic) double minimumXDistanceToTriggerArcByDistancePortrait; // @synthesize minimumXDistanceToTriggerArcByDistancePortrait=_minimumXDistanceToTriggerArcByDistancePortrait;
@@ -111,6 +114,7 @@
 @property (nonatomic) double secondsToAllowMultipleEdges; // @synthesize secondsToAllowMultipleEdges=_secondsToAllowMultipleEdges;
 @property (nonatomic) double secondsToResetSwitcherListAfterTransition; // @synthesize secondsToResetSwitcherListAfterTransition=_secondsToResetSwitcherListAfterTransition;
 @property (nonatomic) BOOL snapToMaxVelocityThresholdAfterAccelerationDip; // @synthesize snapToMaxVelocityThresholdAfterAccelerationDip=_snapToMaxVelocityThresholdAfterAccelerationDip;
+@property (nonatomic) double travelDistanceForTranslatingScreenHeight; // @synthesize travelDistanceForTranslatingScreenHeight=_travelDistanceForTranslatingScreenHeight;
 @property (nonatomic) double velocitySlopeThresholdForBottomSwipeUpArc; // @synthesize velocitySlopeThresholdForBottomSwipeUpArc=_velocitySlopeThresholdForBottomSwipeUpArc;
 @property (nonatomic) double velocitySlopeThresholdForCurrentLayout; // @synthesize velocitySlopeThresholdForCurrentLayout=_velocitySlopeThresholdForCurrentLayout;
 @property (nonatomic) double velocitySlopeThresholdForScrunchArc; // @synthesize velocitySlopeThresholdForScrunchArc=_velocitySlopeThresholdForScrunchArc;

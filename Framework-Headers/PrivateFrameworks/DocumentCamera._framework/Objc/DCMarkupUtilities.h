@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (void)applyReturnedMarkupURL:(id)arg1 documentInfo:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)cleanImageMetadataFromData:(id)arg1;
 + (id)createMarkupViewController;
-+ (id)createProcessingMarkupViewControllerOutWindow:(struct UIWindow **)arg1;
++ (id)createProcessingMarkupViewControllerOutWindow:(id *)arg1;
 + (id)dataToEditForDocumentInfo:(id)arg1 imageCache:(id)arg2 includeMarkupModelData:(BOOL)arg3;
 + (id)dataToEditForDocumentInfo:(id)arg1 includeMarkupModelData:(BOOL)arg2 imageCache:(id)arg3 embedMarkupModelDataInImage:(BOOL)arg4;
 + (void)extractReturnedMarkupURL:(id)arg1 documentInfo:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

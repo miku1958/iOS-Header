@@ -16,7 +16,9 @@
 - (void)_accessibilityBumpValue:(BOOL)arg1;
 - (id)_accessibilityIndexData;
 - (void)_accessibilityJumpToTableIndex:(id)arg1;
+- (id)_accessibilityKeyCommands;
 - (void)_accessibilityMoveToIndexAtPosition:(long long)arg1;
+- (long long)_accessibilitySortPriority;
 - (long long)_accessibilityTableIndexAdjustment;
 - (id)_accessibilityValueToPost:(id)arg1;
 - (BOOL)_updateSectionForTouch:(id)arg1 withEvent:(id)arg2;

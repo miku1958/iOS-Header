@@ -37,7 +37,7 @@
 - (BOOL)isEquivalentToCatalog:(id)arg1;
 - (BOOL)isNewerThanCatalog:(id)arg1;
 - (unsigned long long)itemType;
-- (id)recordTypesAndNames;
+- (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 - (void)shuffle:(int)arg1;
 - (void)writeToURL:(id)arg1 nonUbiquitousCatalogURL:(id)arg2 atomically:(BOOL)arg3;
 

@@ -24,11 +24,18 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)cleanRemediationURL:(id)arg1 flow:(id)arg2 providerConfiguration:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (BOOL)createDataCompleteReply:(id)arg1 controlSocket:(int)arg2 direction:(long long)arg3 verdict:(id)arg4 context:(id)arg5;
+- (BOOL)createDataReply:(id)arg1 controlSocket:(int)arg2 direction:(long long)arg3 verdict:(id)arg4 context:(id)arg5;
+- (BOOL)createDropReply:(id)arg1 verdict:(id)arg2 context:(id)arg3;
+- (BOOL)createNewFlowReply:(id)arg1 controlSocket:(int)arg2 verdict:(id)arg3 context:(id)arg4;
+- (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURL:(id)arg1 parentURL:(id)arg2 sourceAppIdentifier:(id)arg3;
+- (id)sanitizeRemediationButtonText:(id)arg1;
+- (void)writeCurrentVerdictInReply:(id)arg1 direction:(long long)arg2;
 
 @end
 

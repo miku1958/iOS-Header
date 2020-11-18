@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSSavedPassword.h>
+#import <SafariSharedUI/WBSSavedPassword.h>
 
 @interface WBSSavedPassword (WebUIExtras)
 - (id)_firstSiteMatchingSearchPattern:(id)arg1 withTokenizer:(struct __CFStringTokenizer *)arg2;

@@ -15,17 +15,20 @@
     unsigned long long _inboundPeekOffset;
     unsigned long long _outboundPassOffset;
     unsigned long long _outboundPeekOffset;
+    long long _statisticsReportFrequency;
 }
 
 @property unsigned long long inboundPassOffset; // @synthesize inboundPassOffset=_inboundPassOffset;
 @property unsigned long long inboundPeekOffset; // @synthesize inboundPeekOffset=_inboundPeekOffset;
 @property unsigned long long outboundPassOffset; // @synthesize outboundPassOffset=_outboundPassOffset;
 @property unsigned long long outboundPeekOffset; // @synthesize outboundPeekOffset=_outboundPeekOffset;
+@property long long statisticsReportFrequency; // @synthesize statisticsReportFrequency=_statisticsReportFrequency;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)filterAction;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDrop:(BOOL)arg1 inboundPassOffset:(unsigned long long)arg2 inboundPeekOffset:(unsigned long long)arg3 outboundPassOffset:(unsigned long long)arg4 outboundPeekOffset:(unsigned long long)arg5;
 

@@ -19,8 +19,8 @@
 - (id)_transformWithError:(out id *)arg1;
 - (id)debugQuickLookObject;
 - (id)initWithAffineTransform:(id)arg1 input:(id)arg2;
-- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
-- (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)initWithSettings:(id)arg1 inputs:(id)arg2;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 
 @end
 

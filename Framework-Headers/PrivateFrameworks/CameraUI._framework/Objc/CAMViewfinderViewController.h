@@ -846,6 +846,7 @@
 - (BOOL)_shouldShowIndicatorOfType:(unsigned long long)arg1 forGraphConfiguration:(id)arg2;
 - (BOOL)_shouldShowLowLightControlForGraphConfiguration:(id)arg1;
 - (BOOL)_shouldShowShutterButtonDisabled;
+- (BOOL)_shouldShowViewfinderLegibilityBackgroundsForGraphConfiguration:(id)arg1;
 - (BOOL)_shouldUseBurstForCaptureTimer;
 - (BOOL)_shouldUseFiltersForGraphConfiguration:(id)arg1;
 - (BOOL)_shouldUseZoomButtonForCameraToggleForCurrentModeAndDevice;
@@ -1023,7 +1024,7 @@
 - (void)captureController:(id)arg1 didChangeToGraphConfiguration:(id)arg2 forDesiredConfiguration:(id)arg3 requestID:(int)arg4;
 - (void)captureController:(id)arg1 didOutputCaptureAvailability:(BOOL)arg2;
 - (void)captureController:(id)arg1 didOutputConfigurationAvailability:(BOOL)arg2;
-- (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2;
+- (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2 bodyResults:(id)arg3;
 - (void)captureController:(id)arg1 didOutputFlashActive:(BOOL)arg2;
 - (void)captureController:(id)arg1 didOutputFlashAvailability:(BOOL)arg2;
 - (void)captureController:(id)arg1 didOutputHDRSuggestion:(BOOL)arg2;

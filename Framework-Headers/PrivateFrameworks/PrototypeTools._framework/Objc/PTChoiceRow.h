@@ -24,8 +24,15 @@
 @property (copy, nonatomic) NSArray *possibleTitles; // @synthesize possibleTitles=_possibleTitles;
 @property (copy, nonatomic) NSArray *possibleValues; // @synthesize possibleValues=_possibleValues;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)indexPathForValue:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEncodable;
+- (BOOL)isEqual:(id)arg1;
 - (long long)numberOfRowsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (id)possibleShortTitles:(id)arg1;

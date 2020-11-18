@@ -18,7 +18,7 @@
     NSData *_mediaData;
     NSDictionary *_metadata;
     NSString *_mediaFilenameExtension;
-    struct UIImage *_image;
+    UIImage *_image;
     NSAttributedString *_attributedContentText;
 }
 

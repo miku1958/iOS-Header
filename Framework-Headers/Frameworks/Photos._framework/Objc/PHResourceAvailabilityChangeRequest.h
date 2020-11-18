@@ -7,7 +7,6 @@
 #import <Photos/PHResourceAvailabilityRequest.h>
 
 @class PHResourceAvailabilityDataStoreManager;
-@protocol PHResourceAvailabilityChangeRequestDelegate;
 
 @interface PHResourceAvailabilityChangeRequest : PHResourceAvailabilityRequest
 {
@@ -16,10 +15,8 @@
     BOOL _wantsProgress;
     BOOL _transient;
     BOOL _networkAccessAllowed;
-    id<PHResourceAvailabilityChangeRequestDelegate> _delegate;
 }
 
-@property (weak, nonatomic) id<PHResourceAvailabilityChangeRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (nonatomic, getter=isTransient) BOOL transient; // @synthesize transient=_transient;
 @property (nonatomic) BOOL wantsProgress; // @synthesize wantsProgress=_wantsProgress;

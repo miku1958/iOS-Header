@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKVictoryAnalogBackgroundColorPalette-Protocol.h>
 
-@class NSString, UIColor;
+@class CLKDevice, NSString, UIColor;
 
 @interface NTKVictoryColorPalette : NSObject <NTKVictoryAnalogBackgroundColorPalette>
 {
@@ -27,6 +27,7 @@
     UIColor *_cornerComplicationsAccentColor;
     unsigned long long _bleed;
     UIColor *_backgroundColor;
+    CLKDevice *_device;
 }
 
 @property (readonly, nonatomic) UIColor *analogComplicationsColor; // @synthesize analogComplicationsColor=_analogComplicationsColor;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) UIColor *cornerComplicationsAccentColor; // @synthesize cornerComplicationsAccentColor=_cornerComplicationsAccentColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) UIColor *digitalComplicationsColor; // @synthesize digitalComplicationsColor=_digitalComplicationsColor;
 @property (readonly, nonatomic) UIColor *digitalComplicationsPlatterColor; // @synthesize digitalComplicationsPlatterColor=_digitalComplicationsPlatterColor;
 @property (readonly, nonatomic) UIColor *handInlayColor; // @synthesize handInlayColor=_handInlayColor;
@@ -49,11 +51,14 @@
 @property (readonly, nonatomic) UIColor *secondHandColor; // @synthesize secondHandColor=_secondHandColor;
 @property (readonly) Class superclass;
 
-+ (id)paletteForColor:(unsigned long long)arg1 bleed:(unsigned long long)arg2;
-+ (id)paletteForColor:(unsigned long long)arg1 style:(unsigned long long)arg2;
++ (id)paletteForDevice:(id)arg1 color:(unsigned long long)arg2 bleed:(unsigned long long)arg3;
++ (id)paletteForDevice:(id)arg1 color:(unsigned long long)arg2 style:(unsigned long long)arg3;
 + (id)voltColor;
 - (void).cxx_destruct;
-- (id)initWithColor:(unsigned long long)arg1 bleed:(unsigned long long)arg2;
+- (id)colorForDotVictoryAnalogTimeElement:(unsigned long long)arg1;
+- (id)colorForLogoWithStyle:(unsigned long long)arg1;
+- (id)colorForNumberVictoryAnalogTimeElement:(unsigned long long)arg1;
+- (id)initWithDevice:(id)arg1 color:(unsigned long long)arg2 bleed:(unsigned long long)arg3;
 
 @end
 

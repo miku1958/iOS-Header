@@ -30,6 +30,7 @@
 @property (readonly, copy, nonatomic) NSArray *genreNames;
 @property (readonly, nonatomic) BOOL hasLyrics;
 @property (readonly, nonatomic) BOOL hasTimeSyncedLyrics;
+@property (readonly, nonatomic) BOOL isExplicit;
 @property (readonly, copy, nonatomic) NSString *kind;
 @property (readonly, copy, nonatomic) NSDictionary *metadataDictionary; // @synthesize metadataDictionary=_metadataDictionary;
 @property (readonly, nonatomic) long long movementCount;

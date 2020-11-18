@@ -12,8 +12,8 @@
 {
     BOOL _adjustsFontSizeToFitWidth;
     BOOL _allowTruncation;
-    struct UIColor *_textColor;
-    struct UIFont *_font;
+    UIColor *_textColor;
+    UIFont *_font;
     NSDictionary *_textAttributes;
     NSDictionary *_fallbackTextAttributes;
     long long _textAlignment;

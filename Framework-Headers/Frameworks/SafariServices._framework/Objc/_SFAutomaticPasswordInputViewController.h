@@ -21,6 +21,7 @@
     long long _currentInterfaceOrientation;
     long long _keyboardType;
     BOOL _logGeneratedPasswordAcceptedImplicitly;
+    NSString *_autoFillContextProtocolObjectUUID;
 }
 
 @property (readonly, copy) NSString *debugDescription;

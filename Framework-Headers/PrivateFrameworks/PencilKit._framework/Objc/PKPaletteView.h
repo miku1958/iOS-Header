@@ -11,6 +11,7 @@
 #import <PencilKit/PKPaletteHostViewDelegate-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
 #import <PencilKit/PKPalettePopoverPresenting-Protocol.h>
+#import <PencilKit/PKPalettePopoverUpdating-Protocol.h>
 #import <PencilKit/PKPaletteToolPickerViewDelegate-Protocol.h>
 #import <PencilKit/PKPaletteToolPreviewDelegate-Protocol.h>
 #import <PencilKit/PKPaletteUndoRedoViewDelegate-Protocol.h>
@@ -21,7 +22,7 @@
 @class MTMaterialView, NSLayoutConstraint, NSString, NSUndoManager, PKInk, PKPaletteContainerView, PKPaletteContentView, PKPaletteToolPreview, PKPaletteUndoRedoView, UIPencilInteraction, UIViewController;
 @protocol PKPaletteViewAnnotationDelegate, PKPaletteViewDelegate, PKPaletteViewInternalDelegate;
 
-@interface PKPaletteView : UIView <PKPaletteUndoRedoViewDelegate, PKPaletteToolPickerViewDelegate, PKPaletteColorPickerViewDelegate, PKPaletteAdditionalOptionsViewDelegate, PKPaletteToolPreviewDelegate, PKPalettePopoverPresenting, PKPaletteViewStateObservable, PKPalettePopoverDismissing, PKPaletteViewSizeScaling, PKPaletteHostViewDelegate, UIPencilInteractionDelegate>
+@interface PKPaletteView : UIView <PKPaletteUndoRedoViewDelegate, PKPaletteToolPickerViewDelegate, PKPaletteColorPickerViewDelegate, PKPaletteAdditionalOptionsViewDelegate, PKPaletteToolPreviewDelegate, PKPalettePopoverUpdating, PKPalettePopoverPresenting, PKPaletteViewStateObservable, PKPalettePopoverDismissing, PKPaletteViewSizeScaling, PKPaletteHostViewDelegate, UIPencilInteractionDelegate>
 {
     NSUndoManager *_undoManager;
     BOOL _autoHideEnabled;
@@ -200,6 +201,8 @@
 - (id)undoManager;
 - (void)undoRedoViewDidTapRedo:(id)arg1;
 - (void)undoRedoViewDidTapUndo:(id)arg1;
+- (void)updatePalettePopover:(id)arg1;
+- (void)updatePopoverUI;
 - (void)updateUndoRedo;
 - (BOOL)wantsCustomPalettePopoverPresentationSource;
 - (void)willStartAppearanceAnimation;

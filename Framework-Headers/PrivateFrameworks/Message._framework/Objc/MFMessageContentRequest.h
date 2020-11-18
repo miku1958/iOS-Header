@@ -49,6 +49,7 @@
 - (id)_contentRepresentationForEvent:(id)arg1 contentURL:(id)arg2 relatedItems:(id)arg3 existingRepresentation:(id)arg4 invocable:(id)arg5;
 - (id)_contentRepresentationForLoadingEvent:(id)arg1 existingRepresentation:(id)arg2;
 - (id)_generateRepresentationForLoadingContext:(id)arg1 existingRepresentation:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_includeHeadersIfNeededForRepresentation:(id)arg1 message:(id)arg2 options:(id)arg3;
 - (void)_includeSuggestionItemsIfNeededForRepresentation:(id)arg1 message:(id)arg2;
 - (id)_init;
 - (id)_maildropMetadataFromContext:(id)arg1;

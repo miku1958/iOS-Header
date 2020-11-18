@@ -72,6 +72,7 @@
 @property (copy, nonatomic) NSDateComponents *shinkansenValidityStartDate; // @synthesize shinkansenValidityStartDate=_shinkansenValidityStartDate;
 @property (copy, nonatomic) NSNumber *shinkansenValidityTerm; // @synthesize shinkansenValidityTerm=_shinkansenValidityTerm;
 
++ (Class)equalityClass;
 + (id)passPropertiesForPass:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -80,9 +81,11 @@
 - (id)displayableShinkansenSeat;
 - (id)displayableShinkansenSecondarySeat;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFelicaAppletState:(id)arg1 paymentApplication:(id)arg2;
 - (id)initWithTransitAppletState:(id)arg1 paymentApplication:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isInStation;
 
 @end

@@ -20,6 +20,7 @@
 @property (copy) NSString *vLink;
 
 - (int)structuralComplexityContribution;
+- (int)structuralComplexityContribution;
 
 @end
 

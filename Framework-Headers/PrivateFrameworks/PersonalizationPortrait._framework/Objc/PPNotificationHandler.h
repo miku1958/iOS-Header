@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSMapTable, NSString;
+@protocol OS_dispatch_queue;
 
 @interface PPNotificationHandler : NSObject
 {
     struct atomic_flag _isFiring;
     struct atomic_flag _hasWaiter;
+    NSObject<OS_dispatch_queue> *_waiterQueue;
     double _waitSeconds;
     NSMapTable *_blockMap;
     NSString *_name;

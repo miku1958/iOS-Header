@@ -33,6 +33,7 @@
 - (BOOL)isPersonHomeOrWorkAddress;
 - (id)location;
 - (BOOL)locationIsImproved;
+- (id)momentNodes;
 - (id)stateNode;
 - (id)streetNode;
 

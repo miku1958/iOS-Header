@@ -11,14 +11,14 @@
 @interface NTKZeusAnalogScene : NTKAnalogScene
 {
     NSDate *_overrideDate;
-    SKNode *_fontContainerNodes[2];
-    NSArray *_fontHourNodes[2];
+    SKNode *_fontContainerNodes[3];
+    NSArray *_fontHourNodes[3];
     SKNode *_logoContainerNode;
     SKSpriteNode *_logo1Node;
     SKSpriteNode *_logo2Node;
     SKNode *_multicolorContainerNode;
     SKSpriteNode *_multicolorBackground;
-    SKSpriteNode *_multicolorSplit[5];
+    SKSpriteNode *_multicolorSplit[6];
     double _previousCorrectionTime;
     double _currentTime;
     double _startSplitRotation;
@@ -39,6 +39,8 @@
 @property (nonatomic, getter=isScrubbing) BOOL scrubbing; // @synthesize scrubbing=_scrubbing;
 
 - (void).cxx_destruct;
+- (void)_applyComplicationColor:(id)arg1;
+- (void)_applyDialColor:(id)arg1 withBleed:(unsigned long long)arg2;
 - (void)_applyHourLabelCollectionNode:(id)arg1;
 - (void)_applyTransitionFraction:(double)arg1 fromHourLabelCollectionNode:(id)arg2 toHourLabelCollectionNode:(id)arg3;
 - (void)_configureForEditMode:(long long)arg1;

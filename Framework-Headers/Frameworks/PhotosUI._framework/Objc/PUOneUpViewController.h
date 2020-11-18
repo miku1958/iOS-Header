@@ -12,6 +12,7 @@
 #import <PhotosUI/PUAssetActionPerformerDelegate-Protocol.h>
 #import <PhotosUI/PUAssetDisplayDescriptorNavigator-Protocol.h>
 #import <PhotosUI/PUBarsControllerDelegate-Protocol.h>
+#import <PhotosUI/PUBrowsingSessionKeyCommandDelegate-Protocol.h>
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUDoubleTapZoomControllerDelegate-Protocol.h>
 #import <PhotosUI/PUInteractiveDismissalControllerDelegate-Protocol.h>
@@ -40,11 +41,12 @@
 #import <PhotosUI/PXGestureProviderDelegate-Protocol.h>
 #import <PhotosUI/PXPurgeableController-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
+#import <PhotosUI/PXUIKeyCommandDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
 @class CEKBadgeTextView, NSArray, NSString, NSTimer, NSUserActivity, PUAccessoryVisibilityInteractionController, PUAggregateDictionaryTracer, PUAssetDisplayDescriptorNavigationRequest, PUBrowsingBackgroundTileViewController, PUBrowsingOneUpVisibilityHelper, PUBrowsingSession, PUCPAnalyticsBrowsingViewModelChangeObserver, PUDoubleTapZoomController, PUInteractivePinchDismissalController, PUInteractiveSwipeDismissalController, PULoadingIndicatorController, PUOneUpAccessoryViewControllersManager, PUOneUpBarsController, PUOneUpGestureRecognizerCoordinator, PUOneUpSuggestionsController, PUOneUpViewControllerSpec, PUOverOneUpPresentationSession, PUParallaxComputer, PUPreviewActionController, PUReviewScreenBarsModel, PUReviewScreenControlBarTileViewController, PUReviewScreenScrubberBarTileViewController, PUReviewScreenTopBarTileViewController, PUTilingView, PXUserEventTracker, UIScrollView;
 
-@interface PUOneUpViewController : UIViewController <PUViewControllerSpecChangeObserver, PUBrowsingViewModelChangeObserver, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewScrollDelegate, UIScrollViewDelegate, PUOneUpTilingLayoutDelegate, PUInteractiveDismissalControllerDelegate, PUBarsControllerDelegate, PUOneUpBarsControllerDelegate, PUUserTransformTileViewControllerDelegate, PUPlayButtonTileViewControllerDelegate, PUDoubleTapZoomControllerDelegate, PUAccessoryVisibilityInteractionControllerDelegate, PHAirPlayControllerContentProvider, PUTilingViewTileUseDelegate, PUAccessoryTileViewControllerDelegate, PUOneUpAccessoryViewControllersManagerDelegate, PUOverOneUpPresentationSessionDelegate, PUOverOneUpPresentationSessionViewController, PUOneUpGestureRecognizerCoordinatorDelegate, PUOneUpAssetTransitionViewController, PUAssetDisplayDescriptorNavigator, PXSettingsKeyObserver, PXDiagnosticsEnvironment, PUIrisImageTileViewControllerDelegate, PXPurgeableController, PXContextualNotificationDelegate, PUOneUpSuggestionsControllerDelegate, PUPreviewActionControllerDelegate, PUAssetActionPerformerDelegate, PXForcedDismissableViewController, PXGestureProviderDelegate, PULivePhotoVideoOverlayTileViewControllerDelegate, PUTilingViewControllerTransitionEndPoint>
+@interface PUOneUpViewController : UIViewController <PUViewControllerSpecChangeObserver, PUBrowsingViewModelChangeObserver, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewScrollDelegate, UIScrollViewDelegate, PUOneUpTilingLayoutDelegate, PUInteractiveDismissalControllerDelegate, PUBarsControllerDelegate, PUOneUpBarsControllerDelegate, PUUserTransformTileViewControllerDelegate, PUPlayButtonTileViewControllerDelegate, PUDoubleTapZoomControllerDelegate, PUAccessoryVisibilityInteractionControllerDelegate, PHAirPlayControllerContentProvider, PUTilingViewTileUseDelegate, PUAccessoryTileViewControllerDelegate, PUOneUpAccessoryViewControllersManagerDelegate, PUOverOneUpPresentationSessionDelegate, PUOverOneUpPresentationSessionViewController, PUOneUpGestureRecognizerCoordinatorDelegate, PUOneUpAssetTransitionViewController, PUAssetDisplayDescriptorNavigator, PXSettingsKeyObserver, PXDiagnosticsEnvironment, PUIrisImageTileViewControllerDelegate, PXPurgeableController, PXContextualNotificationDelegate, PUOneUpSuggestionsControllerDelegate, PUPreviewActionControllerDelegate, PUAssetActionPerformerDelegate, PXForcedDismissableViewController, PXGestureProviderDelegate, PULivePhotoVideoOverlayTileViewControllerDelegate, PXUIKeyCommandDelegate, PUBrowsingSessionKeyCommandDelegate, PUTilingViewControllerTransitionEndPoint>
 {
     struct {
         BOOL suggestionController;
@@ -278,6 +280,8 @@
 - (void)barsControllerContentGuideInsetsDidChange:(id)arg1;
 - (id)barsControllerViewController:(id)arg1;
 - (id)barsControllerViewHostingGestureRecognizers:(id)arg1;
+- (void)browsingSession:(id)arg1 didExecuteActionPerformer:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)browsingSessionDidDismissOneUp:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (id)contentScrollView;
 - (id)contentViewControllerForAirPlayController:(id)arg1;
@@ -309,6 +313,7 @@
 - (void)irisImageTileViewControllerDidEndPlaying:(id)arg1;
 - (void)irisImageTileViewControllerDidEndVitality:(id)arg1;
 - (id)irisImageTileViewControllerViewHostingGestureRecognizers:(id)arg1;
+- (void)keyCommandDidRequestToBePerformed:(id)arg1;
 - (id)keyCommands;
 - (struct CGPoint)layout:(id)arg1 accessoryOffsetForItemAtIndexPath:(id)arg2;
 - (double)layout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
@@ -385,6 +390,7 @@
 - (BOOL)previewActionControllerPreventRevealInMomentAction:(id)arg1;
 - (id)pu_debugCurrentAsset;
 - (id)pu_debugCurrentViewModel;
+- (id)pu_debugRows;
 - (long long)pu_preferredBarStyle;
 - (BOOL)pu_wantsNavigationBarVisible;
 - (BOOL)pu_wantsTabBarVisible;

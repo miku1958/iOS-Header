@@ -45,12 +45,15 @@
 - (struct _WKQuad)absoluteQuad;
 - (struct _WKQuad)absoluteQuadAndInsideFixedPosition:(BOOL *)arg1;
 - (id)absoluteQuads;
+- (id)absoluteQuads;
 - (void)addEventListener:(id)arg1:(id)arg2:(BOOL)arg3;
 - (void)addEventListener:(id)arg1 listener:(id)arg2 useCapture:(BOOL)arg3;
 - (id)appendChild:(id)arg1;
 - (id)borderRadii;
+- (id)borderRadii;
 - (struct CGRect)boundingBox;
 - (struct CGRect)boundingBoxUsingTransforms;
+- (id)boundingBoxes;
 - (id)boundingBoxes;
 - (struct CGRect)boundingFrame;
 - (id)cloneNode:(BOOL)arg1;
@@ -58,9 +61,11 @@
 - (float)computedFontSize;
 - (BOOL)contains:(id)arg1;
 - (BOOL)containsOnlyInlineObjects;
+- (BOOL)containsOnlyInlineObjects;
 - (void)dealloc;
 - (BOOL)dispatchEvent:(id)arg1;
 - (id)endPosition;
+- (id)findExplodedTextNodeAtPoint:(struct CGPoint)arg1;
 - (id)findExplodedTextNodeAtPoint:(struct CGPoint)arg1;
 - (void)getPreviewSnapshotImage:(struct CGImage **)arg1 andRects:(id *)arg2;
 - (BOOL)hasAttributes;
@@ -81,6 +86,7 @@
 - (BOOL)isHorizontalWritingMode;
 - (BOOL)isSameNode:(id)arg1;
 - (BOOL)isSelectableBlock;
+- (BOOL)isSelectableBlock;
 - (BOOL)isSupported:(id)arg1:(id)arg2;
 - (BOOL)isSupported:(id)arg1 version:(id)arg2;
 - (id)lineBoxQuads;
@@ -92,6 +98,7 @@
 - (void)normalize;
 - (id)previousFocusNode;
 - (id)rangeOfContainingParagraph;
+- (id)rangeOfContainingParagraph;
 - (id)rangeOfContents;
 - (id)removeChild:(id)arg1;
 - (void)removeEventListener:(id)arg1:(id)arg2:(BOOL)arg3;
@@ -100,6 +107,7 @@
 - (id)replaceChild:(id)arg1 oldChild:(id)arg2;
 - (void)showPlaceholderIfNecessary;
 - (id)startPosition;
+- (double)textHeight;
 - (double)textHeight;
 - (id)textRects;
 - (id)webArchiveByFilteringSubframes:(CDUnknownBlockType)arg1;

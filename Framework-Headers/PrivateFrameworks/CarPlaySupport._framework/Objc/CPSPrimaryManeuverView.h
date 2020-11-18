@@ -4,42 +4,87 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlaySupport/CPSManeuverView.h>
+#import <UIKit/UIView.h>
 
-@class CPManeuver, CPSAbridgableLabel, UIImageView;
+@class CPManeuver, CPSAbridgableLabel, CPSAspectFitImageView, CPSPrimaryManeuverLayoutConfiguration, CPTravelEstimates, NSArray, UIImageView, UILayoutGuide;
 
-@interface CPSPrimaryManeuverView : CPSManeuverView
+@interface CPSPrimaryManeuverView : UIView
 {
-    BOOL _usesWideImage;
-    CPSAbridgableLabel *_distanceLabel;
-    UIImageView *_symbolView;
-    CPManeuver *_maneuver;
+    BOOL _usesCustomBackgroundColor;
+    BOOL _calculationViewIsSizing;
     CPSAbridgableLabel *_titleLabel;
-    CPSAbridgableLabel *_instructionLabel;
-    UIImageView *_junctionImageView;
+    CPSAbridgableLabel *_subtitleLabel;
+    UIImageView *_symbolImageView;
+    CPSAspectFitImageView *_junctionImageView;
+    NSArray *_activeLayoutConstraints;
+    UILayoutGuide *_labelCenteringLayoutGuide;
+    UILayoutGuide *_yCenteringGuide;
+    UILayoutGuide *_centeringLayoutGuide;
+    CPSPrimaryManeuverLayoutConfiguration *_activeLayoutConfiguration;
+    CPManeuver *_maneuver;
+    CPTravelEstimates *_currentTravelEstimates;
+    NSArray *_layoutConfigurations;
+    double _generatedWidth;
+    UIView *_junctionImageBackgroundView;
 }
 
-@property (readonly, nonatomic) CPSAbridgableLabel *distanceLabel; // @synthesize distanceLabel=_distanceLabel;
-@property (strong, nonatomic) CPSAbridgableLabel *instructionLabel; // @synthesize instructionLabel=_instructionLabel;
-@property (strong, nonatomic) UIImageView *junctionImageView; // @synthesize junctionImageView=_junctionImageView;
-@property (strong, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
-@property (strong, nonatomic) UIImageView *symbolView; // @synthesize symbolView=_symbolView;
+@property (strong, nonatomic) CPSPrimaryManeuverLayoutConfiguration *activeLayoutConfiguration; // @synthesize activeLayoutConfiguration=_activeLayoutConfiguration;
+@property (strong, nonatomic) NSArray *activeLayoutConstraints; // @synthesize activeLayoutConstraints=_activeLayoutConstraints;
+@property (nonatomic) BOOL calculationViewIsSizing; // @synthesize calculationViewIsSizing=_calculationViewIsSizing;
+@property (strong, nonatomic) UILayoutGuide *centeringLayoutGuide; // @synthesize centeringLayoutGuide=_centeringLayoutGuide;
+@property (strong, nonatomic) CPTravelEstimates *currentTravelEstimates; // @synthesize currentTravelEstimates=_currentTravelEstimates;
+@property (nonatomic) double generatedWidth; // @synthesize generatedWidth=_generatedWidth;
+@property (strong, nonatomic) UIView *junctionImageBackgroundView; // @synthesize junctionImageBackgroundView=_junctionImageBackgroundView;
+@property (strong, nonatomic) CPSAspectFitImageView *junctionImageView; // @synthesize junctionImageView=_junctionImageView;
+@property (strong, nonatomic) UILayoutGuide *labelCenteringLayoutGuide; // @synthesize labelCenteringLayoutGuide=_labelCenteringLayoutGuide;
+@property (strong, nonatomic) NSArray *layoutConfigurations; // @synthesize layoutConfigurations=_layoutConfigurations;
+@property (readonly, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
+@property (strong, nonatomic) CPSAbridgableLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (strong, nonatomic) UIImageView *symbolImageView; // @synthesize symbolImageView=_symbolImageView;
 @property (strong, nonatomic) CPSAbridgableLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (nonatomic) BOOL usesWideImage; // @synthesize usesWideImage=_usesWideImage;
+@property (nonatomic) BOOL usesCustomBackgroundColor; // @synthesize usesCustomBackgroundColor=_usesCustomBackgroundColor;
+@property (strong, nonatomic) UILayoutGuide *yCenteringGuide; // @synthesize yCenteringGuide=_yCenteringGuide;
 
 - (void).cxx_destruct;
-- (void)_cleanupViews;
+- (void)_activateFullLayoutConstraints;
+- (void)_activateFullLayoutWideImageConstraints;
+- (void)_activateFullNoJunctionViewLayoutConstraints;
+- (void)_activateFullNoJunctionViewWideImageLayoutConstraints;
+- (void)_activateFullSubtitleNextToImageConstraints;
+- (void)_activateJunctionViewNoInstructionConstraints;
+- (void)_activateJunctionViewNoInstructionWideImageConstraints;
+- (void)_activateMinimalLayoutConstraints;
+- (void)_activateMinimalWideImageLayoutConstraints;
+- (long long)_compareInstruction:(id)arg1 toInstruction:(id)arg2;
 - (id)_formattedDistance;
-- (void)_layoutLevelNoInstruction;
-- (void)_layoutMaxSize;
-- (void)_layoutMin;
-- (void)_layoutRemoveJunctionView;
-- (id)_maneuverSymbolImage;
-- (void)backgroundColorDidChange;
-- (id)initWithManeuver:(id)arg1 style:(long long)arg2;
+- (id)_fullLayoutConstraints;
+- (id)_fullLayoutNoJunctionViewConstraints;
+- (id)_fullLayoutNoJunctionViewWideImageConstraints;
+- (id)_fullLayoutWideImageConstraints;
+- (id)_fullSubtitleNextToImageConstraints;
+- (void)_generateLayoutConfigurationsForSizeIfNecessary:(struct CGSize)arg1 force:(BOOL)arg2;
+- (id)_init;
+- (id)_junctionViewNoInstructionConstraints;
+- (id)_junctionViewNoInstructionWideImageConstraints;
+- (id)_minimalLayoutConstraints;
+- (id)_minimalLayoutWideImageConstraints;
+- (id)_subtitleFont;
+- (void)_switchToLayoutConfiguration:(id)arg1;
+- (id)_titleFont;
+- (void)_updateJunctionBackgroundColor;
+- (void)_updateSubtitleTextColor;
+- (BOOL)centersManeuverInView;
+- (BOOL)fitJunctionViewToHeight;
+- (BOOL)hasJunctionImageBackground;
+- (id)initWithManeuver:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)setCurrentTravelEstimates:(id)arg1;
-- (void)setManeuverViewSize:(unsigned long long)arg1;
+- (id)junctionBackgroundColor;
+- (id)layoutConfigurationForSize:(struct CGSize)arg1;
+- (void)layoutSubviews;
+- (id)shortestInstructionlayoutConfigurationForSize:(struct CGSize)arg1;
+- (id)shortestJunctionViewlayoutConfigurationForSize:(struct CGSize)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (double)symbolImageHeight;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

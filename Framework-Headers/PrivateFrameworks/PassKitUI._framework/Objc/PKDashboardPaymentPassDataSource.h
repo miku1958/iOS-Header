@@ -80,12 +80,16 @@
     NSError *_accountUpdateError;
     BOOL _performingAccountUpdate;
     PKAccountServiceAccountResolutionController *_accountResolutionController;
-    struct os_unfair_lock_s _lockDownloads;
+    struct os_unfair_lock_s _lockIcons;
     NSMutableSet *_iconDownloads;
+    NSMutableSet *_iconFailedDownloads;
+    NSMutableDictionary *_icons;
+    BOOL _hasSuccessfulIconDownloads;
     NSString *_scaleKey;
     BOOL _showAMPEnrollmentMessage;
     PKAMPEnrollmentManager *_AMPEnrollmentManager;
     NSMutableDictionary *_messageImagesCache;
+    struct os_unfair_lock_s _lockImages;
     NSArray *_weeks;
     NSArray *_months;
 }
@@ -135,9 +139,10 @@
 - (void)_presentPassWithPassUniqueIdentifier:(id)arg1;
 - (void)_presentPhysicalCardActivation;
 - (BOOL)_shouldPaymentMessageAppear:(id)arg1;
+- (BOOL)_showTiledBalances;
 - (void)_updateBalance;
 - (void)_updateTransactionsTimer;
-- (void)_updateTransitBalance;
+- (void)_updateTransitBalanceProperties:(id)arg1 dynamicBalances:(id)arg2;
 - (void)_updateWithTransactionGroups:(id)arg1;
 - (void)_verificationButtonTapped;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
@@ -156,6 +161,7 @@
 - (void)loadSummariesWithForceReload:(BOOL)arg1;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
+- (long long)numberOfTransitItemsEnabled;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableMessageService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveMessage:(id)arg2;
@@ -177,6 +183,8 @@
 - (void)summaryTypeDidChange;
 - (id)titleForSection:(unsigned long long)arg1;
 - (void)transactionsChanged:(id)arg1;
+- (unsigned long long)transitItemForItemIndex:(long long)arg1;
+- (BOOL)transitItemIsEnabled:(unsigned long long)arg1;
 - (void)updateContentIsLoaded;
 - (void)updateWithTransactions:(id)arg1;
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;

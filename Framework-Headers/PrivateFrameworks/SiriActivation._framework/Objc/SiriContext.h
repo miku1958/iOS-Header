@@ -9,14 +9,16 @@
 #import <SiriActivation/NSCopying-Protocol.h>
 #import <SiriActivation/NSSecureCoding-Protocol.h>
 
-@class SiriContextOverride;
+@class AFSpeechRequestOptions, SiriContextOverride;
 
 @interface SiriContext : NSObject <NSCopying, NSSecureCoding>
 {
+    AFSpeechRequestOptions *_speechRequestOptions;
     SiriContextOverride *_contextOverride;
 }
 
 @property (strong, nonatomic) SiriContextOverride *contextOverride; // @synthesize contextOverride=_contextOverride;
+@property (readonly, nonatomic) AFSpeechRequestOptions *speechRequestOptions; // @synthesize speechRequestOptions=_speechRequestOptions;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -25,6 +27,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContextOverride:(id)arg1;
+- (id)initWithSpeechRequestOptions:(id)arg1;
 
 @end
 

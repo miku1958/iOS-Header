@@ -6,7 +6,7 @@
 
 #import <ARKit/NSObject-Protocol.h>
 
-@class NSSet, NSString, NSURL;
+@class ARAnchor, ARCollaborationData, NSSet, NSString, NSURL;
 @protocol ARRecordingTechniqueDelegate, NSSecureCoding;
 
 @protocol ARRecordingTechniqueProtocol <NSObject>
@@ -24,9 +24,12 @@
 - (void)abortRecording;
 - (void)finishRecording;
 - (id)initWithFileURL:(NSURL *)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(NSSet *)arg3;
-- (id)initWithFileURL:(NSURL *)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(NSSet *)arg3 startImmediately:(BOOL)arg4;
+- (id)initWithFileURL:(NSURL *)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(NSSet *)arg3 startImmediately:(BOOL)arg4 recordCollaborationData:(BOOL)arg5;
 - (id)initWithFileURL:(NSURL *)arg1 sensorDataTypes:(unsigned long long)arg2;
+- (void)recordAddedAnchor:(ARAnchor *)arg1;
+- (void)recordCollaborationData:(ARCollaborationData *)arg1 localSession:(BOOL)arg2;
 - (void)recordCustomData:(id<NSSecureCoding>)arg1 forTimestamp:(double)arg2;
+- (void)recordRemovedAnchor:(ARAnchor *)arg1;
 - (void)startRecording;
 @end
 

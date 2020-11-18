@@ -9,7 +9,7 @@
 #import <CoreUtils/CBScalablePipeManagerDelegate-Protocol.h>
 #import <CoreUtils/CUReadWriteRequestable-Protocol.h>
 
-@class CBScalablePipe, CBScalablePipeManager, CUReadRequest, CUWriteRequest, NSString, NSUUID;
+@class CBScalablePipe, CBScalablePipeManager, CUReadRequest, CUWriteRequest, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUBluetoothScalablePipe : NSObject <CBScalablePipeManagerDelegate, CUReadWriteRequestable>
@@ -32,11 +32,11 @@
     struct channel_ring_desc *_btWriteRing;
     int _channelFD;
     CUReadRequest *_readRequestCurrent;
-    struct NSMutableArray *_readRequests;
+    NSMutableArray *_readRequests;
     NSObject<OS_dispatch_source> *_readSource;
     BOOL _readSuspended;
     CUWriteRequest *_writeRequestCurrent;
-    struct NSMutableArray *_writeRequests;
+    NSMutableArray *_writeRequests;
     NSObject<OS_dispatch_source> *_writeSource;
     BOOL _writeSuspended;
     int _peerHostState;

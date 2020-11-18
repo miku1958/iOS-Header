@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)argumentEncoderSetBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3 encoderRef:(unsigned int)arg4 allocator:(id)arg5;
 - (void)argumentEncoderSetSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2 encoderRef:(unsigned int)arg3 allocator:(id)arg4;
 - (void)argumentEncoderSetTextures:(const id *)arg1 withRange:(struct _NSRange)arg2 encoderRef:(unsigned int)arg3 allocator:(id)arg4;
+- (void)bufferGPUAddress:(id)arg1 allocator:(id)arg2;
 - (unsigned int)computePipelineWithReplyData:(const void *)arg1 replyDataSize:(unsigned long long)arg2 pipelineInfo:(CDStruct_868f45a5 *)arg3 errorMessage:(id *)arg4;
 - (void)copyImageBytesFromSource:(char *)arg1 toDestination:(char *)arg2 dataSize:(unsigned long long)arg3 region:(CDStruct_caaed6bc)arg4 bytesPerRow:(unsigned long long)arg5 bytesPerImage:(unsigned long long)arg6 mipmapLevel:(unsigned long long)arg7 slice:(unsigned long long)arg8 texture:(id)arg9;
 - (void)dealloc;
@@ -131,6 +132,10 @@ __attribute__((visibility("hidden")))
 - (void)replaceRegion:(CDStruct_caaed6bc)arg1 mipmapLevel:(unsigned long long)arg2 slice:(unsigned long long)arg3 withBytes:(const void *)arg4 bytesPerRow:(unsigned long long)arg5 bytesPerImage:(unsigned long long)arg6 texture:(id)arg7 allocator:(id)arg8;
 - (void)setSignaledValue:(unsigned long long)arg1 eventRef:(unsigned int)arg2 allocator:(id)arg3;
 - (void)sizeInfoForHeap:(id)arg1 allocator:(id)arg2;
+- (void)uniqueIdentifierForComputePipelineState:(id)arg1 allocator:(id)arg2;
+- (void)uniqueIdentifierForRenderPipelineState:(id)arg1 allocator:(id)arg2;
+- (void)uniqueIdentifierForSamplerState:(id)arg1 allocator:(id)arg2;
+- (void)uniqueIdentifierForTexture:(id)arg1 allocator:(id)arg2;
 
 @end
 

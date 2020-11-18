@@ -6,19 +6,29 @@
 
 #import <ControlCenterUIKit/CCUICAPackageView.h>
 
+#import <MediaControls/_UICursorInteractionDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface MediaControlsRoutingCornerView : CCUICAPackageView
+@interface MediaControlsRoutingCornerView : CCUICAPackageView <_UICursorInteractionDelegate>
 {
     BOOL _routesAvailable;
     BOOL _routing;
     long long _deviceType;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=routesAreAvailable) BOOL routesAvailable; // @synthesize routesAvailable=_routesAvailable;
 @property (nonatomic, getter=isRouting) BOOL routing; // @synthesize routing=_routing;
+@property (readonly) Class superclass;
 
 - (void)_updateGlyph;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

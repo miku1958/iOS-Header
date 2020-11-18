@@ -19,10 +19,11 @@
 
 + (id)entitiesFromNSData:(id)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (void)_parseComponent:(id)arg1;
+- (void)_parseComponent:(id)arg1 depth:(unsigned long long)arg2 fatalError:(BOOL *)arg3;
 - (BOOL)createPropertyType:(int)arg1 component:(id)arg2 withName:(id)arg3;
 - (id)initWithData:(id)arg1 options:(unsigned long long)arg2;
 - (id)makeComponent:(char *)arg1;
-- (void)parseComponent:(id)arg1;
 - (id)parseData;
 - (void)parseParameter:(id)arg1;
 - (BOOL)parseProperty:(id)arg1;

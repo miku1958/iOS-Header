@@ -20,6 +20,8 @@
 - (id)URLString;
 - (id)URLWithSize:(struct CGSize)arg1;
 - (id)URLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3;
+- (id)URLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3 quality:(unsigned long long)arg4;
+- (unsigned long long)_qualityForFormat:(id)arg1;
 - (struct CGColor *)colorWithKind:(id)arg1;
 - (double)height;
 - (id)initWithDictionary:(id)arg1;

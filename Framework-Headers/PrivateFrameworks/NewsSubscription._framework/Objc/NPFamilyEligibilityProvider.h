@@ -27,7 +27,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct NSDictionary *)accountsForAccountManager:(id)arg1;
+- (id)accountsForAccountManager:(id)arg1;
 - (id)init;
 - (id)requestFamilyEligibility;
 

@@ -8,5 +8,6 @@
 
 @protocol PTUIServer <NSObject>
 - (void)handlePrototypingEvent:(long long)arg1;
+- (void)launchForRemoteEditing;
 @end
 

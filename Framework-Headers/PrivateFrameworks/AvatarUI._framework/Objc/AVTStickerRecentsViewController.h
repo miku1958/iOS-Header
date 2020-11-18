@@ -17,6 +17,7 @@
 @interface AVTStickerRecentsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, AVTStickerBackendDelegate, AVTStickerRecentsOverlayDelegate>
 {
     BOOL _hasFetchedDefaultMemoji;
+    BOOL _showPrereleaseSticker;
     id<AVTStickerRecentsViewControllerDelegate> _delegate;
     AVTStickerRecentsMigrator *_stickerRecentsMigrator;
     AVTStickerRecentsOverlayView *_overlayView;
@@ -64,6 +65,7 @@
 @property (strong, nonatomic) AVTStickerRecentsOverlayView *overlayView; // @synthesize overlayView=_overlayView;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *recentsWorkQueue; // @synthesize recentsWorkQueue=_recentsWorkQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *renderingQueue; // @synthesize renderingQueue=_renderingQueue;
+@property (nonatomic) BOOL showPrereleaseSticker; // @synthesize showPrereleaseSticker=_showPrereleaseSticker;
 @property (readonly, nonatomic) AVTStickerGenerator *stickerGenerator; // @synthesize stickerGenerator=_stickerGenerator;
 @property (strong, nonatomic) NSArray *stickerItems; // @synthesize stickerItems=_stickerItems;
 @property (readonly, nonatomic) AVTStickerRecentsLayout *stickerRecentsLayout; // @synthesize stickerRecentsLayout=_stickerRecentsLayout;

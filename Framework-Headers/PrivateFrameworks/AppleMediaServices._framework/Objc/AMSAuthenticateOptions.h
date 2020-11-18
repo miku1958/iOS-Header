@@ -18,6 +18,7 @@
     BOOL _canMakeAccountActive;
     BOOL _usernameEditable;
     BOOL _allowSecondaryCredentialSource;
+    BOOL _demoAccountSetup;
     BOOL _remoteProxyAuthentication;
     NSString *_appProvidedContext;
     NSDictionary *_appProvidedData;
@@ -48,6 +49,7 @@
 @property (strong, nonatomic) NSDictionary *createAccountQueryParams; // @synthesize createAccountQueryParams=_createAccountQueryParams;
 @property (nonatomic) unsigned long long credentialSource; // @synthesize credentialSource=_credentialSource;
 @property (strong, nonatomic) NSString *defaultButtonString; // @synthesize defaultButtonString=_defaultButtonString;
+@property (nonatomic, getter=isDemoAccountSetup) BOOL demoAccountSetup; // @synthesize demoAccountSetup=_demoAccountSetup;
 @property (strong, nonatomic) NSURL *iconBundleURL; // @synthesize iconBundleURL=_iconBundleURL;
 @property (strong, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property (strong, nonatomic) NSString *promptTitle; // @synthesize promptTitle=_promptTitle;

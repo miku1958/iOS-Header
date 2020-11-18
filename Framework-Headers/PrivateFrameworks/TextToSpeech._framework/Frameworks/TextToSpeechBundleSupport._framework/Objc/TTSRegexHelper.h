@@ -34,6 +34,7 @@
 - (id)_processReplacementStringForSpecialCharacters:(id)arg1;
 - (void)addRules:(id)arg1;
 - (id)applyRulesForText:(id)arg1 rangeAdjustments:(id)arg2;
+- (id)boostRules;
 - (BOOL)hasStoredRules;
 - (id)init;
 - (id)regexRules;

@@ -4,7 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol SASLockStateMonitorDelegate
+#import <SiriActivation/NSObject-Protocol.h>
+
+@protocol SASLockStateMonitorDelegate <NSObject>
+
+@optional
 - (void)didChangeLockState:(unsigned long long)arg1;
+- (void)didChangeLockState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 @end
 

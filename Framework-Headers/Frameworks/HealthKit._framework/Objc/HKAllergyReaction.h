@@ -14,21 +14,21 @@
 
 @interface HKAllergyReaction : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
-    NSArray *_manifestations;
-    NSArray *_manifestionCodings;
-    HKMedicalDate *_onsetDate;
-    HKConcept *_severity;
     HKMedicalCoding *_severityCoding;
+    NSArray *_manifestionCodings;
+    HKConcept *_severity;
+    NSArray *_manifestations;
+    HKMedicalDate *_onsetDate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSArray *manifestations; // @synthesize manifestations=_manifestations;
+@property (readonly, copy, nonatomic) NSArray *manifestations;
 @property (readonly, copy, nonatomic) NSArray *manifestionCodings; // @synthesize manifestionCodings=_manifestionCodings;
 @property (readonly, copy, nonatomic) HKMedicalDate *onsetDate; // @synthesize onsetDate=_onsetDate;
-@property (readonly, copy, nonatomic) HKConcept *severity; // @synthesize severity=_severity;
-@property (readonly, copy, nonatomic) HKMedicalCoding *severityCoding; // @synthesize severityCoding=_severityCoding;
+@property (readonly, copy, nonatomic) HKConcept *severity;
+@property (readonly, copy, nonatomic) HKMedicalCoding *severityCoding;
 @property (readonly) Class superclass;
 
 + (id)allergyReactionWithManifestationCodings:(id)arg1 onsetDate:(id)arg2 severityCoding:(id)arg3;
@@ -37,6 +37,8 @@
 + (id)severityCodingPreferredSystems;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_setManifestationCodings:(id)arg1;
+- (void)_setSeverityCoding:(id)arg1;
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -45,6 +47,11 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithManifestationCodings:(id)arg1 onsetDate:(id)arg2 severityCoding:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)manifestationCodingContexts;
+- (id)manifestationCodings;
+- (id)manifestationCodingsCollection;
+- (id)severityCodingCollection;
+- (id)severityCodingContext;
 
 @end
 

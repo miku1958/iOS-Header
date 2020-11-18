@@ -9,7 +9,7 @@
 #import <Sharing/NSSecureCoding-Protocol.h>
 #import <Sharing/SFXPCInterface-Protocol.h>
 
-@class CUAppleIDClient, NSData, NSDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint;
+@class CUAppleIDClient, NSData, NSDictionary, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface SFService : NSObject <NSSecureCoding, SFXPCInterface>
@@ -19,8 +19,8 @@
     BOOL _activateCompleted;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
-    struct NSMutableDictionary *_requestQueue;
-    struct NSMutableDictionary *_sessions;
+    NSMutableDictionary *_requestQueue;
+    NSMutableDictionary *_sessions;
     struct LogCategory *_ucatCore;
     struct LogCategory *_ucatCrypto;
     NSXPCConnection *_xpcCnx;

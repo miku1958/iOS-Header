@@ -75,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)restartRunning;
 - (void)resumeOperations;
 - (long long)sendDevice:(id)arg1 ptpCommand:(id)arg2 andPayload:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)sendDevice:(id)arg1 ptpCommandImp:(id)arg2;
+- (void)sendDevicePTPCommandImp:(id)arg1;
 - (void)startDeviceWithHandle:(id)arg1;
 - (void)startRunning;
 - (void)stopRunning;

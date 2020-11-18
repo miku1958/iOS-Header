@@ -287,6 +287,7 @@
 - (BOOL)alwaysMonitorsPlayability;
 - (id)asset;
 - (id)audioMix;
+- (BOOL)audioSpatializationAllowedWasSet;
 - (id)audioTimePitchAlgorithm;
 - (id)automaticallyLoadedAssetKeys;
 - (BOOL)automaticallyPreservesTimeOffsetFromLive;

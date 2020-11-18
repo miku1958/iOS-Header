@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class FPItem, FPSandboxingURLWrapper, NSArray, NSString, NSURL;
+@class FPItem, FPSandboxingURLWrapper, NSArray, NSString, NSURL, UIKeyCommand;
 
 @protocol DOCServiceDocumentBrowserViewControllerInterface
 - (void)_clearCurrentOpenInteraction;
 - (void)_dismissAllPresentedViewControllers:(BOOL)arg1 completion:(void (^)(void))arg2;
+- (void)_establishFirstResponderForKeyCommand:(UIKeyCommand *)arg1;
 - (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 mode:(unsigned long long)arg2 toCurrentBrowserLocationWithCompletion:(void (^)(DOCItem *, NSError *))arg3;
 - (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 nextToDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg2 mode:(unsigned long long)arg3 completionHandler:(void (^)(DOCItem *, NSError *))arg4;
 - (void)_renameDocumentAtURL:(FPSandboxingURLWrapper *)arg1 newName:(NSString *)arg2 completion:(void (^)(FPSandboxingURLWrapper *, NSError *))arg3;
@@ -21,7 +22,6 @@
 - (void)_setCreateButtonTitle:(NSString *)arg1;
 - (void)_setCustomActions:(NSArray *)arg1;
 - (void)_setSceneIdentifier:(NSString *)arg1;
-- (void)_wakeUpForKeyCommands;
 - (void)getTransitionControllerForItem:(FPItem *)arg1 completionBlock:(void (^)(id<DOCServiceTransitionProtocol>))arg2;
 - (void)getTransitionControllerForURL:(NSURL *)arg1 completionBlock:(void (^)(id<DOCServiceTransitionProtocol>))arg2;
 @end

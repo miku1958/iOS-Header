@@ -34,7 +34,7 @@
 - (void)_replaceSublayout:(id)arg1 withSublayout:(id)arg2 atIndex:(long long)arg3;
 - (void)_updateSublayoutGeometries;
 - (void)containingScrollViewDidScroll:(struct CGPoint)arg1;
-- (void)didAddSublayout:(id)arg1;
+- (void)didAddSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 - (void)didChangeSublayoutOrigins;
 - (void)referenceSizeDidChange;
 - (void)safeAreaInsetsDidChange;
@@ -46,7 +46,7 @@
 - (void)userInterfaceDirectionDidChange;
 - (void)viewEnvironmentDidChange;
 - (void)visibleRectDidChange;
-- (void)willRemoveSublayout:(id)arg1;
+- (void)willRemoveSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 
 @end
 

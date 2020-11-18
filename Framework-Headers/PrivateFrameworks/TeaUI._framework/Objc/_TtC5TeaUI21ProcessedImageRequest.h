@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <TeaUI/TSProcessedImageRequestType-Protocol.h>
-
 @class MISSING_TYPE, NSDictionary, NSString;
 
-@interface _TtC5TeaUI21ProcessedImageRequest : _TtCs12_SwiftObject <TSProcessedImageRequestType>
+@interface _TtC5TeaUI21ProcessedImageRequest : _TtCs12_SwiftObject
 {
     MISSING_TYPE *assetHandles;
     MISSING_TYPE *cacheIdentifier;

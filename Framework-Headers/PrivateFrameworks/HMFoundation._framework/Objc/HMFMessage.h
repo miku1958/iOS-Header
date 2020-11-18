@@ -10,7 +10,7 @@
 #import <HMFoundation/NSMutableCopying-Protocol.h>
 #import <HMFoundation/NSSecureCoding-Protocol.h>
 
-@class HMFActivity, HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFLogEventSession, HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMessage : HMFObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -22,6 +22,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *headers;
 @property (copy, nonatomic) NSUUID *identifier;
 @property (readonly, nonatomic) HMFMessageInternal *internal; // @synthesize internal=_internal;
+@property (readonly, nonatomic) HMFLogEventSession *logEventSession;
 @property (copy, nonatomic) NSDictionary *messagePayload;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long qualityOfService;
@@ -72,6 +73,7 @@
 - (BOOL)respondWithError:(id)arg1;
 - (BOOL)respondWithPayload:(id)arg1;
 - (BOOL)respondWithPayload:(id)arg1 error:(id)arg2;
+- (void)setLogEventSession:(id)arg1;
 - (id)shortDescription;
 - (id)stringForKey:(id)arg1;
 - (id)timeZoneForKey:(id)arg1;

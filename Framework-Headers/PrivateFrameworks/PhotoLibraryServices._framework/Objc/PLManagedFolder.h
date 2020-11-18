@@ -46,7 +46,7 @@
 + (id)validKindsForPersistence;
 - (void)addChildCollections:(id)arg1;
 - (void)addChildCollectionsObject:(id)arg1;
-- (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
+- (BOOL)albumHasFixedOrder:(id)arg1;
 - (short)albumListType;
 - (id)albums;
 - (unsigned long long)approximateCount;

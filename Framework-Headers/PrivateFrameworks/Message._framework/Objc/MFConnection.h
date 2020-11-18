@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) BOOL hasBytesAvailable;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCellularConnection;
+@property (readonly, nonatomic) BOOL isConstrained;
 @property BOOL isFetching;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) double lastUsedTime;

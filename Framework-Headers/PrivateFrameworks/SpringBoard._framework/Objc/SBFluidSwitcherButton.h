@@ -6,9 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
+#import <SpringBoard/_UICursorInteractionDelegate-Protocol.h>
+
 @class NSString, UIImage, UIImageView, UIView;
 
-@interface SBFluidSwitcherButton : UIControl
+@interface SBFluidSwitcherButton : UIControl <_UICursorInteractionDelegate>
 {
     UIView *_backgroundView;
     UIImageView *_glyphImageView;
@@ -22,8 +24,12 @@
 
 @property (strong, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
 @property (nonatomic) long long buttonStyle; // @synthesize buttonStyle=_buttonStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct UIEdgeInsets extendedEdgeInsets; // @synthesize extendedEdgeInsets=_extendedEdgeInsets;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addHighlightViewIfNecessary;
@@ -33,6 +39,8 @@
 - (void)_configureXPlusDViewIfNecessaryForStyle:(long long)arg1;
 - (void)_invalidateBackgroundView;
 - (void)_invalidateXPlusDView;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)didMoveToSuperview;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

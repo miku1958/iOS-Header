@@ -64,7 +64,7 @@
 - (BOOL)_isHeifUTI:(struct __CFString *)arg1;
 - (BOOL)_isHighPriorityJob:(id)arg1;
 - (void)_linkDiagnosticFileWithSourcePath:(id)arg1 forPhotoDestinationURL:(id)arg2;
-- (id)_pathForFilteredPreviewWithBaseName:(id)arg1 imageData:(id)arg2 orImage:(struct NSObject *)arg3;
+- (id)_pathForFilteredPreviewWithBaseName:(id)arg1 imageData:(id)arg2 orImage:(id)arg3;
 - (id)_pathForNewAssetWithPath:(id)arg1 withExtension:(id)arg2;
 - (void)_photoIrisPairingDidSucceed:(BOOL)arg1 fileIndicatorPath:(id)arg2 photoAsset:(id)arg3 photoLibrary:(id)arg4;
 - (void)_processAutodeleteEmptyAlbumJob:(id)arg1 completion:(CDUnknownBlockType)arg2;

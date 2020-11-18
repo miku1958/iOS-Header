@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/PXGAXResponder-Protocol.h>
 #import <PhotosUICore/PXGViewDiagnosticsSource-Protocol.h>
 
 @class NSString, PHPhotoLibrary, PXAssetReference, PXCuratedLibraryAssetsDataSourceManager, PXCuratedLibraryFooterController, PXCuratedLibraryItemCountsController, PXCuratedLibraryLayout, PXCuratedLibraryVideoPlaybackController, PXCuratedLibraryViewModel, PXExtendedTraitCollection, PXGView, PXSectionedObjectReference, PXUIMediaProvider;
-@protocol PXCuratedLibraryEventLogger;
+@protocol PXCuratedLibraryEventLogger, PXGAXResponder;
 
-@interface PXCuratedLibraryViewProvider : NSObject <PXGViewDiagnosticsSource>
+@interface PXCuratedLibraryViewProvider : NSObject <PXGAXResponder, PXGViewDiagnosticsSource>
 {
+    id<PXGAXResponder> _axNextResponder;
     PHPhotoLibrary *_photoLibrary;
     PXExtendedTraitCollection *_extendedTraitCollection;
     PXGView *_gridView;
@@ -27,6 +29,7 @@
 }
 
 @property (readonly, nonatomic) PXCuratedLibraryAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
+@property (weak, nonatomic) id<PXGAXResponder> axNextResponder; // @synthesize axNextResponder=_axNextResponder;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<PXCuratedLibraryEventLogger> eventLogger; // @synthesize eventLogger=_eventLogger;
@@ -45,10 +48,14 @@
 @property (readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
+- (void)_handleFocusChangeWithUserInfo:(id)arg1;
 - (struct PXSimpleIndexPath)_indexPathClosestToIndexPath:(struct PXSimpleIndexPath)arg1 fromDataSource:(id)arg2 inDirection:(unsigned long long)arg3;
 - (id)_itemsGeometryForDataSource:(id)arg1;
 - (void)_stopLibraryViewScrolling;
 - (id)additionalRectDiagnosticsProvidersForView:(id)arg1;
+- (struct UIEdgeInsets)anchorPaddingForCurrentZoomLevel;
+- (id)axContainingViewForAXGroup:(id)arg1;
+- (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
 - (BOOL)canSelectObjectAtIndexPath:(struct PXSimpleIndexPath)arg1 inDataSource:(id)arg2;
 - (id)hitTestResultControlsForCurrentZoomLevel;
 - (id)indexPathsForItemsInRect:(struct CGRect)arg1 coordinateSpace:(id)arg2;
@@ -58,6 +65,9 @@
 - (void)scrollLibraryViewToAssetReference:(id)arg1 scrollPosition:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)scrollLibraryViewToObjectReference:(id)arg1 scrollPosition:(unsigned long long)arg2 padding:(struct UIEdgeInsets)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (struct PXSimpleIndexPath)selectableIndexPathClosestToIndexPath:(struct PXSimpleIndexPath)arg1 fromDataSource:(id)arg2 inDirection:(unsigned long long)arg3;
+- (struct PXSimpleIndexPath)selectionManager:(id)arg1 indexPathClosestToIndexPath:(struct PXSimpleIndexPath)arg2 inDirection:(unsigned long long)arg3;
+- (id)selectionManager:(id)arg1 indexPathsBetweenIndexPath:(struct PXSimpleIndexPath)arg2 andIndexPath:(struct PXSimpleIndexPath)arg3 inDirection:(unsigned long long)arg4;
+- (void)selectionManager:(id)arg1 revealObjectAtIndexPath:(struct PXSimpleIndexPath)arg2;
 
 @end
 

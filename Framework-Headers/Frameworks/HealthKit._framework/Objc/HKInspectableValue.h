@@ -9,7 +9,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKCodedQuantity, HKCodedValueCollection, HKMedicalDate, HKMedicalDateInterval, HKRatioValue, HKUCUMUnitDisplayConverter, NSArray, NSDateComponents, NSString;
+@class HKCodedQuantity, HKCodedValueCollection, HKConcept, HKMedicalDate, HKMedicalDateInterval, HKRatioValue, HKUCUMUnitDisplayConverter, NSArray, NSDateComponents, NSString;
 @protocol NSObject><NSSecureCoding;
 
 @interface HKInspectableValue : NSObject <NSSecureCoding, NSCopying>
@@ -20,7 +20,9 @@
 
 @property (readonly, copy, nonatomic) HKCodedQuantity *codedQuantityValue;
 @property (readonly, copy, nonatomic) HKCodedValueCollection *codedValueCollection;
+@property (readonly, copy, nonatomic) HKConcept *concept;
 @property (readonly, nonatomic) HKUCUMUnitDisplayConverter *converter;
+@property (readonly, copy, nonatomic) HKConcept *dataAbsentReason;
 @property (readonly, copy, nonatomic) NSArray *dataAbsentReasonCodings;
 @property (readonly, copy, nonatomic) NSDateComponents *dateComponentsValue;
 @property (readonly, copy, nonatomic) NSArray *medicalCodings;

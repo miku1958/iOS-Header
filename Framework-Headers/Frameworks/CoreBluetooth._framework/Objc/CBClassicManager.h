@@ -25,8 +25,8 @@
     CDUnknownBlockType _servicesAdded;
     CDUnknownBlockType _inquiryServicesAdded;
     CDUnknownBlockType _sdpRecordAdded;
-    long long _powerState;
     CDUnknownBlockType _connectRFCOMMCallback;
+    long long _powerState;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType classicPeerDiscovered; // @synthesize classicPeerDiscovered=_classicPeerDiscovered;

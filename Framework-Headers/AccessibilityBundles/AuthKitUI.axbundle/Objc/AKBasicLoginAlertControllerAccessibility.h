@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilitySetAlertIdentifier;
-- (void)_jiggleTheAlert;
+- (void)jiggleAView;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

@@ -11,20 +11,29 @@
 }
 
 + (BOOL)boolForKey:(id)arg1;
++ (void)cacheObject:(id)arg1 forKey:(id)arg2;
++ (id)cachedObjectForKey:(id)arg1;
++ (void)clearUserDefaultsCache;
 + (id)defaultValues;
 + (float)floatForKey:(id)arg1;
 + (long long)integerForKey:(id)arg1;
 + (id)keysWhitelistedForProcessEnvironmentOverride;
++ (id)listForKey:(id)arg1;
 + (id)numberForKey:(id)arg1;
 + (id)objectForKey:(id)arg1;
++ (id)objectForKey:(id)arg1 useCache:(BOOL)arg2;
++ (id)objectForKeySlow:(id)arg1;
 + (void)removeAllKeys;
++ (void)removeCachedObjectForKey:(id)arg1;
 + (void)removeObjectForKey:(id)arg1;
 + (id)resolutionDictionaryForKey:(id)arg1;
 + (void)setBool:(BOOL)arg1 forKey:(id)arg2;
 + (void)setObject:(id)arg1 forKey:(id)arg2;
 + (void)setValue:(id)arg1 forKey:(id)arg2;
++ (BOOL)shouldUseCache;
 + (id)stringForKey:(id)arg1;
 + (void)synchronize;
++ (id)userDefaultsCache;
 + (id)valueForKey:(id)arg1;
 
 @end

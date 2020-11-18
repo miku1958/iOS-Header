@@ -31,10 +31,10 @@
 - (id)coreModelColorsForPaletteSettingKind:(CDStruct_597dd055)arg1;
 - (id)coreModelGroupFromGroupDictionary:(id)arg1;
 - (id)coreModelPresetsForCategory:(long long)arg1;
-- (id)coreModelRowFromRowDictionary:(id)arg1 availableTags:(struct NSDictionary *)arg2 usedTags:(id)arg3;
+- (id)coreModelRowFromRowDictionary:(id)arg1 availableTags:(id)arg2 usedTags:(id)arg3;
 - (id)coreModelRowOptionsFromOptionsDictionary:(id)arg1;
 - (id)decodePropertyListObjects:(id)arg1;
-- (struct NSDictionary *)gatherAllTagsFromPresets:(id)arg1;
+- (id)gatherAllTagsFromPresets:(id)arg1;
 - (id)initWithLogger:(id)arg1;
 - (id)initWithPlistData:(id)arg1 logger:(id)arg2;
 - (id)parseCoreModelFromDefinitions:(id)arg1;

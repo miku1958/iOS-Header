@@ -7,7 +7,7 @@
 #import <NanoTimeKitCompanion/NTKDigitalFaceView.h>
 
 #import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
-#import <NanoTimeKitCompanion/NTKSensitiveUIStateObserver-Protocol.h>
+#import <NanoTimeKitCompanion/CLKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/REElementActionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/REUIElementIntentActionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/REUIRelevanceEngineControllerDelegate-Protocol.h>
@@ -16,7 +16,7 @@
 
 @class NSArray, NSMutableArray, NSMutableSet, NSOrderedSet, NSSet, NSString, NSTimer, NTKDigitalTimeLabelStyle, NTKUpNextCollectionView, NTKUpNextCollectionViewFlowLayout, NTKUtilityComplicationFactory, REUIRelevanceEngineController, REUpNextScheduler, UICollectionViewDiffableDataSource, UIImage, UITapGestureRecognizer, UIView;
 
-@interface NTKUpNextFaceView : NTKDigitalFaceView <REUIRelevanceEngineControllerDelegate, REElementActionDelegate, REUIElementIntentActionDelegate, NTKSensitiveUIStateObserver, CLKMonochromeFilterProvider, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface NTKUpNextFaceView : NTKDigitalFaceView <REUIRelevanceEngineControllerDelegate, REElementActionDelegate, REUIElementIntentActionDelegate, CLKSensitiveUIStateObserver, CLKMonochromeFilterProvider, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 {
     NTKDigitalTimeLabelStyle *_timeLabelDefaultStyle;
     NTKDigitalTimeLabelStyle *_timeLabelSmallInUpperRightCornerStyle;
@@ -40,15 +40,15 @@
     UIView *_timeLabelPlatter;
     UIView *_scalableView;
     BOOL _needsReloadedContent;
+    BOOL _hasDeferredUpdate;
+    BOOL _isApplyingSnapshot;
     BOOL _isInflightScroll;
     BOOL _cancelInflightScroll;
     BOOL _isProgramaticScrollEvent;
     BOOL _crownInverted;
     BOOL _suppressCrownEvents;
-    BOOL _inUpdate;
-    BOOL _inReload;
     BOOL _isBacklightOn;
-    NSMutableSet *_batchReloadIdentifiers;
+    NSMutableSet *_reloadedElements;
     NSOrderedSet *_currentApplicationIdentifiers;
     REUpNextScheduler *_applicationIdentifierUpdateScheduler;
     NSSet *_dwellIndexPathes;
@@ -94,11 +94,11 @@
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterSettingViewMode:(long long)arg1 scroll:(BOOL)arg2 targetOffset:(struct CGPoint)arg3 needsLayout:(BOOL)arg4;
 - (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
-- (id)_configureCellForItemWithIdentifier:(id)arg1 atIndexPath:(id)arg2 inCollectionView:(id)arg3;
+- (id)_configureCellForItemWithElement:(id)arg1 atIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureCollectionViewDataSource;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (id)_configureSupplementaryViewForSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2 inCollectionView:(id)arg3;
+- (id)_configureSupplementaryViewForSupplementaryElementOfKind:(id)arg1 withElement:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureVisibleCell:(id)arg1;
 - (id)_contentAtIndexPath:(id)arg1;
 - (struct CGPoint)_defaultPointForDefaultMode;
@@ -119,7 +119,6 @@
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_layoutTimeLabelForViewMode:(long long)arg1;
 - (void)_layoutTimeLabelPlatterViewMode:(long long)arg1;
-- (void)_loadCollectionViewDataAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadContentViews;
 - (void)_loadEngineController;
 - (void)_loadLayoutRules;
@@ -142,6 +141,7 @@
 - (void)_setSiriBlurColor;
 - (void)_setViewMode:(long long)arg1 scroll:(BOOL)arg2 scrollToPoint:(struct CGPoint)arg3 secondaryPoint:(struct CGPoint)arg4 force:(BOOL)arg5 velocity:(double)arg6 animated:(BOOL)arg7;
 - (void)_setupCell:(id)arg1 withContent:(id)arg2 representedIdentifier:(id)arg3;
+- (BOOL)_shouldDeferUpdate;
 - (BOOL)_shouldUseCanonicalContent;
 - (void)_showSiriUnavailableAlert:(id)arg1;
 - (void)_startPositiveDwellForTopElementsTimerIfNeeded;
@@ -167,6 +167,7 @@
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionViewDeferralStateChanged;
 - (void)dealloc;
 - (void)elementAction:(id)arg1 didFinishTask:(BOOL)arg2;
 - (void)elementAction:(id)arg1 wantsToPerformTapActionForComplicationSlot:(id)arg2;
@@ -175,9 +176,11 @@
 - (void)engineController:(id)arg1 didMoveContent:(id)arg2 fromIndexPath:(id)arg3 toIndexPath:(id)arg4;
 - (void)engineController:(id)arg1 didReloadContent:(id)arg2 atIndexPath:(id)arg3;
 - (void)engineController:(id)arg1 didReloadContent:(id)arg2 withIdentifier:(id)arg3;
+- (void)engineController:(id)arg1 didReloadElement:(id)arg2;
 - (void)engineController:(id)arg1 didRemoveContent:(id)arg2 atIndexPath:(id)arg3;
 - (BOOL)engineController:(id)arg1 isElementAtIndexPathVisible:(id)arg2;
 - (void)engineController:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)engineControllerDidBeginUpdatingRelevance:(id)arg1;
 - (void)engineControllerDidFinishUpdatingRelevance:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
@@ -193,6 +196,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)sensitiveUIStateChanged;
 - (void)setViewMode:(long long)arg1;
+- (void)updateCollectionViewSnapshotAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateTimeLabelBackground;
 
 @end

@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)pauseDownload;
 - (void)preflightPresentingViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resumeDownload;
-- (void)startDownload;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2;
 - (void)stopDownload;
 
 @end

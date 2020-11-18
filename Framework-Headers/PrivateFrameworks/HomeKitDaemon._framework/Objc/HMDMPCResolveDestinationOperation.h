@@ -15,6 +15,7 @@
     MPCAssistantMutableRemoteControlDestination *_resolvedDestination;
     NSArray *_hashedRouteIDs;
     CDUnknownBlockType _resolveDestinationCompletionBlock;
+    long long _mediaApplicationDestination;
 }
 
 @property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSArray *hashedRouteIDs; // @synthesize hashedRouteIDs=_hashedRouteIDs;
+@property (readonly, nonatomic) long long mediaApplicationDestination; // @synthesize mediaApplicationDestination=_mediaApplicationDestination;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (copy) CDUnknownBlockType resolveDestinationCompletionBlock; // @synthesize resolveDestinationCompletionBlock=_resolveDestinationCompletionBlock;
@@ -31,7 +33,7 @@
 
 + (id)shortDescription;
 - (void).cxx_destruct;
-- (id)initWithHashedRouteIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithHashedRouteIDs:(id)arg1 mediaApplicationDestination:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)main;
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 

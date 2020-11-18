@@ -6,17 +6,23 @@
 
 #import <CoreSpeech/CSEventMonitor.h>
 
+@class CSAudioRecordContext;
+
 @interface CSSpeechControllerMonitor : CSEventMonitor
 {
     unsigned long long _recordState;
+    CSAudioRecordContext *_audioRecordContext;
 }
 
+@property (strong, nonatomic) CSAudioRecordContext *audioRecordContext; // @synthesize audioRecordContext=_audioRecordContext;
 @property (nonatomic) unsigned long long recordState; // @synthesize recordState=_recordState;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;
 - (void)notifySpeechControllerRecordStateChange:(unsigned long long)arg1 withEventUUID:(id)arg2;
+- (void)notifySpeechControllerRecordStateChange:(unsigned long long)arg1 withEventUUID:(id)arg2 withContext:(id)arg3;
 
 @end
 

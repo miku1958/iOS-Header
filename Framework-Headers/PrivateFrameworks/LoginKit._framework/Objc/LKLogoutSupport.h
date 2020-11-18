@@ -12,9 +12,11 @@
 
 - (BOOL)_canLogoutToLoginSession;
 - (id)init;
+- (BOOL)isCurrentUserAnonymous;
 - (void)logoutToLoginSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)logoutToLoginUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)logoutToLoginWindowWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)logoutWarningMessage;
 
 @end
 

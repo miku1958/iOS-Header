@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, SISchemaConversationTrace, SISchemaDeviceFixedContext, SISchemaServerEventMetadata, SISchemaSpeechResultSelected, SISchemaTurnInteraction, SISchemaUserSpeechDuration;
+@class NSData, SISchemaConversationTrace, SISchemaDeviceFixedContext, SISchemaServerEventMetadata, SISchemaServerGeneratedDismissal, SISchemaSpeechResultSelected, SISchemaTurnInteraction, SISchemaUserSpeechDuration;
 
 @interface SISchemaServerEvent : PBCodable
 {
@@ -16,6 +16,7 @@
     SISchemaTurnInteraction *_turnInteraction;
     SISchemaSpeechResultSelected *_speechResultSelected;
     SISchemaDeviceFixedContext *_serverDeviceFixedContext;
+    SISchemaServerGeneratedDismissal *_serverGeneratedDismissal;
     SISchemaServerEventMetadata *_eventMetadata;
 }
 
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaConversationTrace *serverConversationTrace; // @synthesize serverConversationTrace=_serverConversationTrace;
 @property (strong, nonatomic) SISchemaDeviceFixedContext *serverDeviceFixedContext; // @synthesize serverDeviceFixedContext=_serverDeviceFixedContext;
+@property (strong, nonatomic) SISchemaServerGeneratedDismissal *serverGeneratedDismissal; // @synthesize serverGeneratedDismissal=_serverGeneratedDismissal;
 @property (strong, nonatomic) SISchemaSpeechResultSelected *speechResultSelected; // @synthesize speechResultSelected=_speechResultSelected;
 @property (strong, nonatomic) SISchemaTurnInteraction *turnInteraction; // @synthesize turnInteraction=_turnInteraction;
 @property (strong, nonatomic) SISchemaUserSpeechDuration *userSpeechDuration; // @synthesize userSpeechDuration=_userSpeechDuration;

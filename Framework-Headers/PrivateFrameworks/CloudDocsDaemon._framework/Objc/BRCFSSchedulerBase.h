@@ -61,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)resetBackoffForJobWithID:(id)arg1;
 - (void)resume;
 - (void)schedule;
-- (void)scheduleWithBatchSize:(int)arg1 whereSQLClause:(struct NSObject *)arg2 columns:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
+- (void)scheduleWithBatchSize:(int)arg1 whereSQLClause:(id)arg2 columns:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)setState:(int)arg1 forJobID:(id)arg2;
 - (BOOL)setState:(int)arg1 forJobsMatching:(id)arg2;
 - (void)signal;

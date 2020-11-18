@@ -7,18 +7,21 @@
 #import <objc/NSObject.h>
 
 @class NEFlowMetaData, NSData;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_nw_interface;
 
 @interface NEAppProxyFlow : NSObject
 {
     NEFlowMetaData *_metaData;
     struct _NEFlow *_flow;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_nw_interface> *__networkInterface;
 }
 
+@property (strong) NSObject<OS_nw_interface> *_networkInterface; // @synthesize _networkInterface=__networkInterface;
 @property (strong) NSData *applicationData;
 @property struct _NEFlow *flow; // @synthesize flow=_flow;
 @property (readonly) NEFlowMetaData *metaData; // @synthesize metaData=_metaData;
+@property (copy) NSObject<OS_nw_interface> *networkInterface;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)copyRemoteEndpointFromFlow:(struct _NEFlow *)arg1;
@@ -33,6 +36,7 @@
 - (unsigned long long)hash;
 - (id)initWithNEFlow:(struct _NEFlow *)arg1 queue:(id)arg2;
 - (void)openWithLocalEndpoint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setMetadata:(id)arg1;
 
 @end
 

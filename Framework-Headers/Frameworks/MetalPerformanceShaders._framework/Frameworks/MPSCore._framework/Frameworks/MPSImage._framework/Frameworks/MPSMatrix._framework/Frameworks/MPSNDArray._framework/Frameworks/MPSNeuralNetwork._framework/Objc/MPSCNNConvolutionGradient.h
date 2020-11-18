@@ -39,7 +39,7 @@
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (id)PeakAtWeightsWithConvolutionGradientState:(id)arg1;
 - (id)PeakAtWeightsWithConvolutionTransposeGradientState:(id)arg1;
-- (unsigned long long)batchEncodingStorageSizeForSourceImage:(struct NSArray *)arg1 sourceStates:(id)arg2 destinationImage:(struct NSArray *)arg3;
+- (unsigned long long)batchEncodingStorageSizeForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)biases;
 - (BOOL)convolutionTranspose;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

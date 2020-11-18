@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <VideosUI/VUIMediaEntitiesDataSource.h>
 
 #import <VideosUI/SSDownloadManagerObserver-Protocol.h>
 #import <VideosUI/VUIDownloadManagerDelegate-Protocol.h>
@@ -14,12 +14,12 @@
 @protocol VUIDownloadDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadDataSource : NSObject <VUIMediaEntitiesFetchControllerDelegate, VUIDownloadManagerDelegate, SSDownloadManagerObserver>
+@interface VUIDownloadDataSource : VUIMediaEntitiesDataSource <VUIMediaEntitiesFetchControllerDelegate, VUIDownloadManagerDelegate, SSDownloadManagerObserver>
 {
     BOOL _hasFetchedAllDownloadEntities;
     BOOL _hasFetchedAllDownloadedEntities;
     BOOL _performingRentalExpirationFetch;
-    id<VUIDownloadDataSourceDelegate> _delegate;
+    id<VUIDownloadDataSourceDelegate> _downloadDelegate;
     NSArray *_downloadEntities;
     VUIMediaLibrary *_mediaLibrary;
     VUIMediaEntitiesFetchController *_downloadedEntitiesFetchController;
@@ -36,8 +36,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *activelyDownloadingAdamIds; // @synthesize activelyDownloadingAdamIds=_activelyDownloadingAdamIds;
 @property (strong, nonatomic) NSArray *activelyDownloadingMediaItems; // @synthesize activelyDownloadingMediaItems=_activelyDownloadingMediaItems;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<VUIDownloadDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<VUIDownloadDataSourceDelegate> downloadDelegate; // @synthesize downloadDelegate=_downloadDelegate;
 @property (strong, nonatomic) NSArray *downloadEntities; // @synthesize downloadEntities=_downloadEntities;
 @property (strong, nonatomic) VUIMediaEntitiesFetchController *downloadedEntitiesFetchController; // @synthesize downloadedEntitiesFetchController=_downloadedEntitiesFetchController;
 @property (strong, nonatomic) NSMutableDictionary *episodesDownloadingForShow; // @synthesize episodesDownloadingForShow=_episodesDownloadingForShow;
@@ -74,8 +74,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)downloadManager:(id)arg1 downloadStatesDidChange:(id)arg2;
 - (void)downloadManagerDownloadsDidChange:(id)arg1;
-- (id)initWithMediaLibrary:(id)arg1;
+- (id)initWithMediaLibrary:(id)arg1 fetchRequest:(id)arg2;
 - (void)loadDownloadData;
+- (void)startFetch;
 
 @end
 

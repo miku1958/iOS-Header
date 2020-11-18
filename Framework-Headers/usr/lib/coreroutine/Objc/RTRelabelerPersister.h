@@ -33,8 +33,8 @@
 
 + (id)locationFromAggregateVisits:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)associateNonPlaceholderRelabeledInferredMapItem:(id)arg1 oldCandidate:(struct RTPair *)arg2 error:(id *)arg3;
-- (BOOL)associatePlaceholderRelabeledInferredMapItem:(id)arg1 oldCandidate:(struct RTPair *)arg2 error:(id *)arg3;
+- (BOOL)associateNonPlaceholderRelabeledInferredMapItem:(id)arg1 oldCandidate:(id)arg2 error:(id *)arg3;
+- (BOOL)associatePlaceholderRelabeledInferredMapItem:(id)arg1 oldCandidate:(id)arg2 error:(id *)arg3;
 - (BOOL)cleanUpCombinedPairs:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (BOOL)cleanUpWithError:(id *)arg1;
 - (BOOL)combineEarlierVisitMO:(id)arg1 withLaterVisitMO:(id)arg2 error:(id *)arg3;
@@ -65,17 +65,17 @@
 - (BOOL)moveVisitMOs:(id)arg1 toLOIMO:(id)arg2 error:(id *)arg3;
 - (BOOL)performBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)resnapVisitsWithError:(id *)arg1;
-- (BOOL)restoreToOldCandidate:(struct RTPair *)arg1 error:(id *)arg2;
-- (BOOL)restoreVisit:(id)arg1 transitions:(id)arg2 toOldCandidate:(struct RTPair *)arg3 error:(id *)arg4;
+- (BOOL)restoreToOldCandidate:(id)arg1 error:(id *)arg2;
+- (BOOL)restoreVisit:(id)arg1 transitions:(id)arg2 toOldCandidate:(id)arg3 error:(id *)arg4;
 - (id)rollLOIIdentifier:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)rollUUIDGivenUUID:(id)arg1;
 - (BOOL)saveWithError:(id *)arg1;
 - (double)scoreLOIMO:(id)arg1;
 - (double)scoreVisitMO:(id)arg1;
-- (BOOL)unassociateOldCandidate:(struct RTPair *)arg1 error:(id *)arg2;
+- (BOOL)unassociateOldCandidate:(id)arg1 error:(id *)arg2;
 - (BOOL)unconcreteLOIMO:(id)arg1;
 - (BOOL)untrustedVisitMO:(id)arg1;
-- (BOOL)useRelabeledInferredMapItem:(id)arg1 oldCandidate:(struct RTPair *)arg2 associate:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)useRelabeledInferredMapItem:(id)arg1 oldCandidate:(id)arg2 associate:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)uuidConflicts:(id)arg1 context:(id)arg2 error:(id *)arg3;
 
 @end

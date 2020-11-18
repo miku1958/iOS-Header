@@ -14,6 +14,7 @@
 + (void)disassociateBOMCopier:(struct _BOMCopier *)arg1;
 + (void)noteBOMCopier:(struct _BOMCopier *)arg1 succeeded:(BOOL)arg2;
 - (void)unzipStream:(id)arg1 toPath:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)unzipStream:(id)arg1 toURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)zippedDataForURL:(id)arg1;
 
 @end

@@ -67,6 +67,7 @@
 
 - (void).cxx_destruct;
 - (id)_alertControllerWithError:(id)arg1;
+- (void)_boldTextStatusChanged:(id)arg1;
 - (void)_darkerSystemColorStatusChanged:(id)arg1;
 - (void)_didHostTemplateViewController:(id)arg1 usedTransitions:(BOOL)arg2;
 - (BOOL)_isFlowcaseStack;

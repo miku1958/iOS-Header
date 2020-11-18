@@ -20,7 +20,7 @@
     id _sender;
     unsigned long long _state;
     id<PXActionPerformerDelegate> _delegate;
-    struct NSObject *_presentedViewController;
+    NSObject<PXAnonymousViewController> *_presentedViewController;
     CDUnknownBlockType _viewControllerPresenter;
     CDUnknownBlockType _viewControllerDismisser;
 }
@@ -54,7 +54,7 @@
 - (void)cancelActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)completeBackgroundTaskWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)completeUserInteractionTaskWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (BOOL)dismissViewController:(struct NSObject *)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)dismissViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithActionType:(id)arg1;
 - (id)localizedTitleForUseCase:(unsigned long long)arg1;
@@ -63,7 +63,7 @@
 - (void)performBackgroundTask;
 - (void)performUserInteractionTask;
 - (BOOL)performerResetsAfterCompletion;
-- (BOOL)presentViewController:(struct NSObject *)arg1;
+- (BOOL)presentViewController:(id)arg1;
 - (BOOL)requiresUnlockedDevice;
 
 @end

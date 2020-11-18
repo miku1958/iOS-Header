@@ -18,6 +18,7 @@
     int _kTCCPhotosAuthorized;
     int _kTCCPhotosAddAuthorized;
     BOOL _libraryUpgradeAuthorized;
+    BOOL _directDatabaseAccessAuthorized;
     BOOL _directDatabaseWriteAuthorized;
     NSDate *_connectionStartDate;
     BKSApplicationStateMonitor *_applicationStateMonitor;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) int clientProcessIdentifier; // @synthesize clientProcessIdentifier=_clientProcessIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL directDatabaseAccessAuthorized;
 @property (readonly, nonatomic) BOOL directDatabaseWriteAuthorized;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL photoKitEntitled; // @synthesize photoKitEntitled=_photoKitEntitled;
@@ -41,7 +43,8 @@
 
 - (void).cxx_destruct;
 - (void)_handleDuetReportIsForground:(BOOL)arg1;
-- (BOOL)_shouldTrackDKEventForBundle:(id)arg1;
+- (BOOL)_shouldTrackEventForBundle:(id)arg1;
+- (void)_trackCAConnectionEvent;
 - (void)_trackDKEventIfNecessary;
 - (void)handleInvalidation;
 - (id)initWithConnection:(id)arg1;

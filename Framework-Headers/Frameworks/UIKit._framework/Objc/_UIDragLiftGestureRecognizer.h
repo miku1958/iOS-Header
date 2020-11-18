@@ -9,7 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface _UIDragLiftGestureRecognizer : UILongPressGestureRecognizer
 {
+    BOOL _isForPointer;
 }
+
+@property (nonatomic, getter=_isForPointer) BOOL isForPointer; // @synthesize isForPointer=_isForPointer;
 
 - (BOOL)shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

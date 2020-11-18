@@ -12,11 +12,13 @@
 {
     BOOL _fromVCard;
     int _propertyID;
+    NSString *_accountIdentifier;
     long long _multivalueIndex;
     WFFileRepresentation *_vCardRepresentation;
     CNContact *_contact;
 }
 
+@property (readonly, copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (readonly, copy, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, copy, nonatomic) NSString *contactIdentifier;
 @property (readonly, nonatomic) BOOL fromVCard; // @synthesize fromVCard=_fromVCard;

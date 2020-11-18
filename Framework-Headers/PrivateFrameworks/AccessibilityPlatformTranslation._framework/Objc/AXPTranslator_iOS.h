@@ -49,6 +49,7 @@
 - (id)_processDirectAttributeRequest:(id)arg1 iosAttribute:(long long)arg2 axpAttribute:(unsigned long long)arg3 parameter:(id)arg4 error:(unsigned long long *)arg5;
 - (id)_processIsEnabledAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processIsSelectedAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processMoveFocusToOpaqueElementAttributeRequest:(id)arg1 parameter:(id)arg2 direction:(long long)arg3 error:(unsigned long long *)arg4;
 - (id)_processNumberOfCharactersAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processOutgoingCustomRotorSearchResult:(id)arg1;
@@ -82,9 +83,11 @@
 - (void)processPlatformNotification:(unsigned long long)arg1 data:(id)arg2 associatedObject:(id)arg3;
 - (id)processSetAttribute:(id)arg1;
 - (id)processSupportedActions:(id)arg1;
+- (id)remoteTranslationDataWithTranslation:(id)arg1 pid:(int)arg2;
 - (void)setAccessibilityEnabled:(BOOL)arg1;
 - (void)simulatePressAtPoint:(struct CGPoint)arg1 withContextId:(unsigned int)arg2 withDelay:(float)arg3 withForce:(double)arg4;
 - (id)translationCache;
+- (id)translationObjectFromData:(id)arg1;
 - (id)translationObjectFromPlatformElement:(struct __AXUIElement *)arg1;
 
 @end

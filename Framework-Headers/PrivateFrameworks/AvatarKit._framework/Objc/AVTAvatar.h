@@ -145,7 +145,7 @@
 - (void)setupMorphInfo;
 - (void)setupMorphInfoForChangeInSubHierarchy;
 - (void)setupPhysicsIfNeeded;
-- (struct UIImage *)snapshotWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
+- (id)snapshotWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (id)stickerPhysicsStateIdentifier;
 - (void)stopTransitionAnimation;
 - (float)thresholdedWeightAtLocation:(id)arg1 sourceWeight:(float)arg2 time:(double)arg3;

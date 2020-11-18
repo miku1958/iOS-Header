@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@protocol WBSFormAutoFillCorrectionsStore;
+
 @interface WBSFormAutoFillParsecCrowdsourcedCorrectionsProcessor : NSObject
 {
+    id<WBSFormAutoFillCorrectionsStore> _correctionsStore;
 }
 
 + (id)_correctionsSchema;
 + (id)_schemaWithExpectedClass:(Class)arg1 errorCode:(long long)arg2 isOptional:(BOOL)arg3;
 + (id)test_correctionsSchema;
-- (id)_correctionsStore;
+- (void).cxx_destruct;
 - (void)getLastCorrectionsRetrievalURLStringWithResultHandler:(CDUnknownBlockType)arg1;
+- (id)initWithCorrectionsStore:(id)arg1;
 - (void)setCorrectionsWithJSONData:(id)arg1 retrievalURLString:(id)arg2;
 
 @end

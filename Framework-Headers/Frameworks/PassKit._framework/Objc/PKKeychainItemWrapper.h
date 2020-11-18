@@ -12,6 +12,7 @@
 {
     NSMutableDictionary *keychainItemData;
     NSMutableDictionary *genericPasswordQuery;
+    BOOL _invisible;
     unsigned long long type;
     NSString *_label;
 }
@@ -26,7 +27,7 @@
 - (void)applySynchronizableValueToDictionary:(id)arg1;
 - (id)dictionaryToSecItemFormat:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3;
-- (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3 type:(unsigned long long)arg4;
+- (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3 type:(unsigned long long)arg4 invisible:(BOOL)arg5;
 - (id)objectForKey:(id)arg1;
 - (void)resetKeychainItem;
 - (void)resetLocalKeychainItem;

@@ -37,11 +37,11 @@ __attribute__((visibility("hidden")))
 - (void)_addLayoutGuides:(id)arg1;
 - (void)_addLayoutViews:(id)arg1;
 - (void)_configure;
-- (id)_item;
 - (BOOL)_shouldBeDirty;
 - (void)_updateCustomView;
 - (void)_updateItemView;
 - (void)_updateItemViewSizing;
+- (id)barButtonItem;
 - (id)description;
 - (void)dirtyLayoutForPlainAppearanceChange:(BOOL)arg1 doneAppearanceChanged:(BOOL)arg2;
 - (id)initWithLayoutMetrics:(id)arg1;

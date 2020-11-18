@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)clearProblemReport;
 - (BOOL)dumpActivityToContext:(id)arg1 includeExpensiveActivity:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)dumpTablesToContext:(id)arg1 includeAllItems:(BOOL)arg2 error:(id *)arg3;
-- (struct BRCDirectoryItem *)fetchZoneRootItemInDB:(id)arg1;
+- (id)fetchZoneRootItemInDB:(id)arg1;
 - (id)initWithMangledID:(id)arg1 dbRowID:(id)arg2 db:(id)arg3 plist:(id)arg4 session:(id)arg5 initialCreation:(BOOL)arg6;
 - (void)notifyClient:(id)arg1 whenFaultingIsDone:(CDUnknownBlockType)arg2;
 - (BOOL)parentIDHasLiveUnchainedChildren:(id)arg1;
@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)signalFaultingWatchersWithError:(id)arg1;
 - (void)syncedDownZoneHealthRequestID:(long long)arg1;
 - (void)syncedDownZoneHealthState:(id)arg1;
-- (struct PQLResultSet *)unchainedItemInfoInServerTruthEnumeratorParentedTo:(id)arg1;
+- (id)unchainedItemInfoInServerTruthEnumeratorParentedTo:(id)arg1;
 - (void)updateWithPlist:(id)arg1;
 - (BOOL)validateItemsLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
 - (BOOL)validateStructureLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;

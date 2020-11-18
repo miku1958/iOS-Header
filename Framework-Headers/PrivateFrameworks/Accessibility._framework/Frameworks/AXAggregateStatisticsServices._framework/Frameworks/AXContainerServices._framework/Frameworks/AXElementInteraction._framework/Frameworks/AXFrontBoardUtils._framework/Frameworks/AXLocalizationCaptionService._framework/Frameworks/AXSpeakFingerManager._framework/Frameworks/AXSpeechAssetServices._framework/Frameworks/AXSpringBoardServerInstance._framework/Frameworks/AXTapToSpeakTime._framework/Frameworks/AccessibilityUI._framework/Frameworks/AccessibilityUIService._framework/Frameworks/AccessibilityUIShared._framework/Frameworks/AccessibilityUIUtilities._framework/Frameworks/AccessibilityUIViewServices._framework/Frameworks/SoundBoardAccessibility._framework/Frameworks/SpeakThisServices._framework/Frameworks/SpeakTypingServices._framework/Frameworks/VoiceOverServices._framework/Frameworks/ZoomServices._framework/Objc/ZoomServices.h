@@ -8,15 +8,17 @@
 
 #import <ZoomServices/AXUIClientDelegate-Protocol.h>
 
-@class AXUIClient, NSMutableArray, NSString;
+@class AXUIClient, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface ZoomServices : NSObject <AXUIClientDelegate>
 {
     NSMutableArray *_zoomListeners;
+    NSMutableDictionary *_zoomAttributeListeners;
     BOOL _showingZoomLens;
     BOOL _springBoardReady;
     BOOL _triedToShowLensBeofreSBReady;
     BOOL _registeredForZoomListener;
+    BOOL _registeredForZoomAttributeListeners;
     BOOL _shouldRegisterForZoomListeners;
     AXUIClient *_zoomWindowClient;
 }
@@ -24,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL registeredForZoomAttributeListeners; // @synthesize registeredForZoomAttributeListeners=_registeredForZoomAttributeListeners;
 @property (nonatomic) BOOL registeredForZoomListener; // @synthesize registeredForZoomListener=_registeredForZoomListener;
 @property (nonatomic) BOOL shouldRegisterForZoomListeners; // @synthesize shouldRegisterForZoomListeners=_shouldRegisterForZoomListeners;
 @property (readonly, nonatomic, getter=isShowingZoomLens) BOOL showingZoomLens;
@@ -51,6 +54,7 @@
 - (void)connectionWithServiceWasInterruptedForUserInterfaceClient:(id)arg1;
 - (void)dealloc;
 - (void)hideZoomLens;
+- (BOOL)inStandbyMode;
 - (id)init;
 - (void)isMagnifierVisibleWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)notifyZoomAppActivationAnimationDidFinish;
@@ -88,9 +92,11 @@
 - (void)panRight;
 - (void)panUp;
 - (double)reachabilityScaleFactor;
+- (id)registerForCoalescedZoomAttributesWithChangedHandler:(CDUnknownBlockType)arg1;
+- (id)registerForZoomAttributes:(id)arg1 updatesImmediatelyWithChangedHandler:(CDUnknownBlockType)arg2;
 - (void)registerInterestInZoomAttributes;
-- (id)registerZoomAttributesChangeHandler:(CDUnknownBlockType)arg1;
-- (void)removeZoomLevelHandler:(id)arg1;
+- (void)removeCoalescedZoomAttributesChangedHandler:(id)arg1;
+- (void)removeZoomAttributesChangedHandler:(id)arg1;
 - (BOOL)shouldSuppressKeyCommandHUD;
 - (void)showMagnifier;
 - (void)showZoomLens;

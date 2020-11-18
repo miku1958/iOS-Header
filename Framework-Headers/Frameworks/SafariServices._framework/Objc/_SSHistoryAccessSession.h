@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSHistoryAccessSessionProxy.h>
+#import <SafariSharedUI/WBSHistoryAccessSessionProxy.h>
 
 @interface _SSHistoryAccessSession : WBSHistoryAccessSessionProxy
 {

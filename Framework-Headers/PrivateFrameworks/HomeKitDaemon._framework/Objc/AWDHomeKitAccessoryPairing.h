@@ -8,11 +8,12 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class AWDHomeKitVendorInformation;
+@class AWDHomeKitVendorInformation, NSString;
 
 @interface AWDHomeKitAccessoryPairing : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    NSString *_appIdentifier;
     int _certified;
     int _credentialType;
     unsigned int _duration;
@@ -43,10 +44,12 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (nonatomic) int certified; // @synthesize certified=_certified;
 @property (nonatomic) int credentialType; // @synthesize credentialType=_credentialType;
 @property (nonatomic) unsigned int duration; // @synthesize duration=_duration;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
+@property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (nonatomic) BOOL hasCertified;
 @property (nonatomic) BOOL hasCredentialType;
 @property (nonatomic) BOOL hasDuration;

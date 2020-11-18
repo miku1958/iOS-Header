@@ -33,8 +33,8 @@
 - (void).cxx_destruct;
 - (void)_addGestureRecognizers;
 - (void)_buttonPressed:(id)arg1;
-- (void)_buttonSelected:(id)arg1 interactionModel:(unsigned long long)arg2;
 - (void)_buttonTapped:(id)arg1;
+- (void)buttonSelected:(id)arg1 interactionModel:(unsigned long long)arg2;
 - (void)didMoveToWindow;
 - (void)traitCollectionDidChange:(id)arg1;
 

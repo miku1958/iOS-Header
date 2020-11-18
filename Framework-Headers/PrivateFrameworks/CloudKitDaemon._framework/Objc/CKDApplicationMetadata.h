@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowUnverifiedAccount;
     BOOL _canSetExplicitCodeOperationURL;
     NSString *_apsEnvironmentString;
-    long long _isApplication;
+    long long _contextType;
     NSString *_entitlementSpecifiedPCSServiceName;
     NSString *_applicationIdentifier;
     NSString *_clientPrefix;
@@ -54,12 +54,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL canSetExplicitCodeOperationURL; // @synthesize canSetExplicitCodeOperationURL=_canSetExplicitCodeOperationURL;
 @property (nonatomic) BOOL canUseNonLegacyShareURL; // @synthesize canUseNonLegacyShareURL=_canUseNonLegacyShareURL;
 @property (strong, nonatomic) NSString *clientPrefix; // @synthesize clientPrefix=_clientPrefix;
+@property (nonatomic) long long contextType; // @synthesize contextType=_contextType;
 @property (nonatomic) BOOL displaysSystemAcceptPrompt; // @synthesize displaysSystemAcceptPrompt=_displaysSystemAcceptPrompt;
 @property (strong, nonatomic) NSString *entitlementSpecifiedPCSServiceName; // @synthesize entitlementSpecifiedPCSServiceName=_entitlementSpecifiedPCSServiceName;
 @property (nonatomic) BOOL hasAccessDuringBuddy; // @synthesize hasAccessDuringBuddy=_hasAccessDuringBuddy;
 @property (nonatomic) BOOL hasLightweightPCS; // @synthesize hasLightweightPCS=_hasLightweightPCS;
 @property (nonatomic) BOOL hasTCCAuthorization; // @synthesize hasTCCAuthorization=_hasTCCAuthorization;
-@property (nonatomic) long long isApplication; // @synthesize isApplication=_isApplication;
 @property (nonatomic) BOOL isCKSystemService; // @synthesize isCKSystemService=_isCKSystemService;
 @property (nonatomic) BOOL isOOPUI; // @synthesize isOOPUI=_isOOPUI;
 @property (strong, nonatomic) NSString *pushBundleID; // @synthesize pushBundleID=_pushBundleID;

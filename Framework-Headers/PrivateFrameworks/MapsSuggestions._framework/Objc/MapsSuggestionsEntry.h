@@ -29,8 +29,8 @@
     NSString *_undecoratedSubtitleWhenLocked;
     double _weight;
     NSDate *_expires;
-    struct GEOMapItemStorage *_geoMapItem;
-    struct NSString *_originatingSourceName;
+    GEOMapItemStorage *_geoMapItem;
+    NSString *_originatingSourceName;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -100,12 +100,12 @@
 - (BOOL)hasStartTime;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1 title:(id)arg2;
-- (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 geoMapItem:(struct GEOMapItemStorage *)arg6 sourceSpecificInfo:(id)arg7;
+- (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 geoMapItem:(id)arg6 sourceSpecificInfo:(id)arg7;
 - (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 sourceSpecificInfo:(id)arg6;
 - (long long)integerForKey:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEntry:(id)arg1;
-- (struct NSData *)mapItemHandleData;
+- (id)mapItemHandleData;
 - (void)mergeFromSuggestionEntry:(id)arg1 behavior:(unsigned long long)arg2;
 - (void)mergeFromSuggestionEntry:(id)arg1 behavior:(unsigned long long)arg2 protectTitles:(BOOL)arg3 protectTitleDecorations:(BOOL)arg4 protectMapItem:(BOOL)arg5 protectWeight:(BOOL)arg6 protectExpiration:(BOOL)arg7 protectIcon:(BOOL)arg8;
 - (void)mergeSpecificsFromSuggestionEntry:(id)arg1 behavior:(unsigned long long)arg2;
@@ -119,17 +119,17 @@
 - (void)setDate:(id)arg1 forKey:(id)arg2;
 - (void)setETA:(id)arg1 forKey:(id)arg2;
 - (void)setInteger:(long long)arg1 forKey:(id)arg2;
-- (void)setMapItemHandleData:(struct NSData *)arg1;
+- (void)setMapItemHandleData:(id)arg1;
 - (void)setNumber:(id)arg1 forKey:(id)arg2;
 - (void)setSourceSpecificInfo:(id)arg1;
 - (void)setString:(id)arg1 forKey:(id)arg2;
-- (void)setStringArray:(struct NSArray *)arg1 forKey:(id)arg2;
+- (void)setStringArray:(id)arg1 forKey:(id)arg2;
 - (void)setURL:(id)arg1 forKey:(id)arg2;
 - (void)setUUID:(id)arg1 forKey:(id)arg2;
 - (id)sourceSpecificInfo;
 - (id)startTime;
 - (BOOL)startsBeforeEntry:(id)arg1;
-- (struct NSArray *)stringArrayForKey:(id)arg1;
+- (id)stringArrayForKey:(id)arg1;
 - (id)stringForKey:(id)arg1;
 - (unsigned long long)uint64ForKey:(id)arg1;
 - (BOOL)updateUndecoratedSubtitle:(id)arg1;

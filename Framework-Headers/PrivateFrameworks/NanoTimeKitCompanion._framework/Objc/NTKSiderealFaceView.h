@@ -10,7 +10,7 @@
 #import <NanoTimeKitCompanion/NTKSiderealDataSourceDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSCalendar, NSDateFormatter, NSString, NSTimer, NTKFaceViewTapControl, NTKSiderealAuxiliaryDialLabels, NTKSiderealDataSource, NTKSiderealDialBackgroundView, NTKSiderealTimeView, NTKWhistlerAnalogFaceViewComplicationFactory, UILabel, UIView;
+@class CALayer, CAShapeLayer, NSCalendar, NSDateFormatter, NSNumber, NSString, NSTimer, NTKFaceViewTapControl, NTKSiderealAuxiliaryDialLabels, NTKSiderealDataSource, NTKSiderealDialBackgroundView, NTKSiderealTimeView, NTKWhistlerAnalogFaceViewComplicationFactory, UILabel, UIView;
 
 @interface NTKSiderealFaceView : NTKFaceView <NTKTimeView, NTKSiderealDataSourceDelegate, CLKMonochromeFilterProvider>
 {
@@ -21,7 +21,7 @@
     NSTimer *_wheelDelayTimer;
     NSTimer *_buttonPressTimer;
     NTKSiderealDataSource *_dataSource;
-    struct NSNumber *_clockTimerToken;
+    NSNumber *_clockTimerToken;
     double _currentSolarDayProgress;
     double _interactionProgress;
     double _lastTestedWaypointProgress;
@@ -48,7 +48,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (long long)uiSensitivity;
 - (void).cxx_destruct;
 - (void)_animateSolarDayFromProgress:(double)arg1 toProgress:(double)arg2 minDuration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -63,7 +62,7 @@
 - (void)_buttonPressTimerFired;
 - (BOOL)_canEnterInteractiveMode;
 - (void)_cleanupAfterEditing;
-- (void)_cleanupAfterSettingViewMode:(unsigned long long)arg1;
+- (void)_cleanupAfterSettingViewMode:(unsigned long long)arg1 previousViewMode:(unsigned long long)arg2;
 - (double)_complicationAlphaForEditMode:(long long)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;

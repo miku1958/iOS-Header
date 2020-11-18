@@ -8,13 +8,14 @@
 
 #import <WebKit/PDFHostViewControllerDelegate-Protocol.h>
 #import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
+#import <WebKit/WKShareSheetDelegate-Protocol.h>
 #import <WebKit/WKWebViewContentProvider-Protocol.h>
 #import <WebKit/_WKWebViewPrintProvider-Protocol.h>
 
 @class NSData, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface WKPDFView : WKApplicationStateTrackingView <_WKWebViewPrintProvider, PDFHostViewControllerDelegate, WKActionSheetAssistantDelegate, WKWebViewContentProvider>
+@interface WKPDFView : WKApplicationStateTrackingView <_WKWebViewPrintProvider, PDFHostViewControllerDelegate, WKActionSheetAssistantDelegate, WKShareSheetDelegate, WKWebViewContentProvider>
 {
     struct RetainPtr<WKActionSheetAssistant> _actionSheetAssistant;
     struct RetainPtr<NSData> _data;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSString> _suggestedFilename;
     struct WeakObjCPtr<WKWebView> _webView;
     struct RetainPtr<WKKeyboardScrollViewAnimator> _keyboardScrollingAnimator;
+    struct RetainPtr<WKShareSheet> _shareSheet;
 }
 
 @property (readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
@@ -83,7 +85,8 @@ __attribute__((visibility("hidden")))
 - (void)pdfHostViewController:(id)arg1 goToURL:(id)arg2;
 - (void)pdfHostViewController:(id)arg1 updatePageCount:(long long)arg2;
 - (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
-- (Optional_d40c49cf)positionInformationForActionSheetAssistant:(id)arg1;
+- (Optional_677bf244)positionInformationForActionSheetAssistant:(id)arg1;
+- (void)shareSheetDidDismiss:(id)arg1;
 - (void)web_beginAnimatedResizeWithUpdates:(CDUnknownBlockType)arg1;
 - (void)web_computedContentInsetDidChange;
 - (void)web_countStringMatches:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;

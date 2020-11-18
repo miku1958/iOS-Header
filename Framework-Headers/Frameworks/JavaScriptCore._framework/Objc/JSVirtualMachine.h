@@ -17,6 +17,8 @@
     NSMapTable *m_externalRememberedSet;
 }
 
+@property (readonly) struct OpaqueJSContextGroup *JSContextGroupRef;
+
 + (void)setCrashOnVMCreation:(BOOL)arg1;
 + (unsigned long long)setNumberOfDFGCompilerThreads:(unsigned long long)arg1;
 + (unsigned long long)setNumberOfFTLCompilerThreads:(unsigned long long)arg1;
@@ -36,7 +38,6 @@
 - (BOOL)isWebThreadAware;
 - (void)removeManagedReference:(id)arg1 withOwner:(id)arg2;
 - (void)shrinkFootprintWhenIdle;
-- (struct VM *)vm;
 
 @end
 

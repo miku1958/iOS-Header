@@ -6,18 +6,14 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class CNAvatarView, UILabel;
+@class PKAvatarHeaderView;
 
 @interface PKTransactionHistoryPeerPaymentHeaderCell : PKDashboardCollectionViewCell
 {
-    CNAvatarView *_avatarView;
-    UILabel *_primaryLabel;
-    UILabel *_secondaryLabel;
-    BOOL _isTemplateLayout;
+    PKAvatarHeaderView *_headerView;
 }
 
 - (void).cxx_destruct;
-- (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (void)configureWithPeerPaymentCounterpartHandle:(id)arg1 contact:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

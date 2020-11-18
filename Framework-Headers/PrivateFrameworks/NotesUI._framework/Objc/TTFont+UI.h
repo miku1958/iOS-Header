@@ -7,9 +7,9 @@
 #import <NotesShared/TTFont.h>
 
 @interface TTFont (UI)
-+ (struct UIFont *)convertFont:(struct UIFont *)arg1 toBold:(BOOL)arg2 toItalic:(BOOL)arg3;
-+ (void)font:(struct UIFont *)arg1 isBold:(BOOL *)arg2 isItalic:(BOOL *)arg3;
-- (struct UIFont *)nativeFontForStyle:(unsigned int)arg1;
-- (struct UIFont *)nativeFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2;
++ (id)convertFont:(id)arg1 toBold:(BOOL)arg2 toItalic:(BOOL)arg3;
++ (void)font:(id)arg1 isBold:(BOOL *)arg2 isItalic:(BOOL *)arg3;
+- (id)nativeFontForStyle:(unsigned int)arg1;
+- (id)nativeFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2;
 @end
 

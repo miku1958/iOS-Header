@@ -9,7 +9,7 @@
 #import <PassKitCore/PKPassLibraryExportedInterface-Protocol.h>
 #import <PassKitCore/PKXPCServiceDelegate-Protocol.h>
 
-@class NSHashTable, NSString, PKXPCService;
+@class NSArray, NSHashTable, NSString, PKXPCService;
 @protocol NSObject, OS_dispatch_queue, PKPassLibraryDelegate;
 
 @interface PKPassLibrary : NSObject <PKXPCServiceDelegate, PKPassLibraryExportedInterface>
@@ -21,6 +21,7 @@
     NSHashTable *_delegates;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_asynchronousImageQueue;
+    BOOL _secureElementPassActivationAvailable;
     id<PKPassLibraryDelegate> _delegate;
 }
 
@@ -28,6 +29,8 @@
 @property (weak, nonatomic) id<PKPassLibraryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSArray *remoteSecureElementPasses;
+@property (readonly, nonatomic, getter=isSecureElementPassActivationAvailable) BOOL secureElementPassActivationAvailable; // @synthesize secureElementPassActivationAvailable=_secureElementPassActivationAvailable;
 @property (readonly) Class superclass;
 
 + (BOOL)contactlessInterfaceCanBePresentedFromSource:(long long)arg1;
@@ -35,12 +38,13 @@
 + (void)endAutomaticPassPresentationSuppressionWithRequestToken:(unsigned long long)arg1;
 + (BOOL)isPassLibraryAvailable;
 + (BOOL)isPaymentPassActivationAvailable;
++ (BOOL)isSecureElementPassActivationAvailable;
 + (BOOL)isSuppressingAutomaticPassPresentation;
 + (unsigned long long)requestAutomaticPassPresentationSuppressionWithResponseHandler:(CDUnknownBlockType)arg1;
 + (id)sharedInstance;
 + (id)sharedInstanceWithRemoteLibrary;
 - (void).cxx_destruct;
-- (void)_activatePaymentPass:(id)arg1 withActivationCode:(id)arg2 activationData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_activateSecureElementPass:(id)arg1 withActivationCode:(id)arg2 activationData:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_applyDataAccessorToObject:(id)arg1;
 - (void)_applyDataAccessorToObjects:(id)arg1;
 - (long long)_currentNotificationCountForIdentifier:(id)arg1;
@@ -73,6 +77,7 @@
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)activatePaymentPass:(id)arg1 withActivationCode:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activatePaymentPass:(id)arg1 withActivationData:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)activateSecureElementPass:(id)arg1 withActivationData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addDelegate:(id)arg1;
 - (void)addPasses:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)addPassesWithData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -81,7 +86,10 @@
 - (BOOL)canAddFelicaPass;
 - (BOOL)canAddPassOfType:(unsigned long long)arg1;
 - (BOOL)canAddPaymentPassWithPrimaryAccountIdentifier:(id)arg1;
+- (BOOL)canAddSecureElementPassWithConfiguration:(id)arg1;
+- (BOOL)canAddSecureElementPassWithPrimaryAccountIdentifier:(id)arg1;
 - (void)canPresentPaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)canProvisionAccessPassWithConfiguration:(id)arg1;
 - (void)catalogChanged:(id)arg1 withNewPasses:(id)arg2;
 - (void)checkForTransitNotification;
 - (void)contactlessInterfaceDidDismissFromSource:(long long)arg1;
@@ -105,7 +113,7 @@
 - (void)fetchImageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)forceImmediateRevocationCheck;
 - (void)getContainmentStatusAndSettingsForPass:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)getPassUniqueIdentifiersForFieldProperties:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getMetadataForFieldWithProperties:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getPassesAndCatalog:(BOOL)arg1 synchronously:(BOOL)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getPassesAndCatalog:(BOOL)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getPassesAndCatalogOfPassTypes:(unsigned long long)arg1 synchronously:(BOOL)arg2 withHandler:(CDUnknownBlockType)arg3;
@@ -157,6 +165,8 @@
 - (void)presentContactlessInterfaceForPassWithUniqueIdentifier:(id)arg1 fromSource:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentPaymentPass:(id)arg1;
 - (void)presentPaymentSetupRequest:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentSecureElementPass:(id)arg1;
+- (void)presentSubcredentialProvisioningInterfaceForEndpoint:(id)arg1 withConfiguration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentWalletWithRelevantPassUniqueID:(id)arg1;
 - (void)recomputeRelevantPassesWithSearchMode:(long long)arg1;
 - (id)remotePaymentPasses;
@@ -174,7 +184,7 @@
 - (void)requestPersonalizationOfPassWithUniqueIdentifier:(id)arg1 contact:(id)arg2 personalizationToken:(id)arg3 requiredPersonalizationFields:(unsigned long long)arg4 personalizationSource:(unsigned long long)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)requestUpdateOfObjectWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)rescheduleCommutePlanRenewalReminderForPassWithUniqueID:(id)arg1;
-- (void)resetApplePayWithDiagnosticReason:(id)arg1;
+- (BOOL)resetApplePayWithDiagnosticReason:(id)arg1;
 - (BOOL)resetSettingsForPass:(id)arg1;
 - (void)sendUserEditedCatalog:(id)arg1;
 - (BOOL)setAutomaticPresentationEnabled:(BOOL)arg1 forPass:(id)arg2;
@@ -185,6 +195,7 @@
 - (BOOL)setSuppressNotificationsEnabled:(BOOL)arg1 forPass:(id)arg2;
 - (BOOL)setSuppressPromotionsEnabled:(BOOL)arg1 forPass:(id)arg2;
 - (void)shuffleGroups:(int)arg1;
+- (void)signData:(id)arg1 withSecureElementPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sortedTransitPassesForAppletDataFormat:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)spotlightReindexAllPassesWithCompletion:(CDUnknownBlockType)arg1;

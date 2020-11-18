@@ -39,7 +39,7 @@
 @property (readonly, nonatomic) NSString *shortDescription;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
-+ (void)_modifyOutputDevices:(id)arg1 inGroup:(id)arg2 queue:(id)arg3 modifyDevices:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_modifyOutputDevices:(id)arg1 inGroup:(id)arg2 analytics:(id)arg3 queue:(id)arg4 modifyDevices:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 + (id)_notificationSerialQueue;
 - (void).cxx_destruct;
 - (void)_callAllCompletionHandlersWithError:(id)arg1;

@@ -16,8 +16,10 @@
     NSMutableArray *_results;
     NSNumber *_impression;
     NSNumber *_tap;
+    NSString *_addendum;
 }
 
+@property (strong, nonatomic) NSString *addendum; // @synthesize addendum=_addendum;
 @property (strong, nonatomic) NSString *appVectorVersion; // @synthesize appVectorVersion=_appVectorVersion;
 @property (strong, nonatomic) NSString *experimentID; // @synthesize experimentID=_experimentID;
 @property (strong, nonatomic) NSNumber *impression; // @synthesize impression=_impression;

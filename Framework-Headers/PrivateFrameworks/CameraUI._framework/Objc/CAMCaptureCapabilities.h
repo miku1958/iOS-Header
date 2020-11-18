@@ -66,6 +66,8 @@
     BOOL _useCTMTransientImageWell;
     BOOL _useCTMModeSelector;
     BOOL _allowControlDrawer;
+    BOOL _sfCameraFontSupported;
+    BOOL _overContentFlipButtonSupported;
     BOOL _backSpatialOverCaptureSupported;
     BOOL _frontSpatialOverCaptureSupported;
     BOOL _backLowLightSupported;
@@ -75,6 +77,8 @@
     BOOL _backTorchPatternSupported;
     BOOL _frontTorchPatternSupported;
     BOOL _pipelinedStillImageProcessingSupported;
+    BOOL _deepFusionSupported;
+    BOOL _deferredProcessingSupported;
     BOOL _hasSystemTelephonyOfAnyKind;
     BOOL _forceTouchSupported;
     BOOL _splitScreenSupported;
@@ -98,6 +102,8 @@
     BOOL _lowEndHardware;
     BOOL _allowHaptics;
     BOOL _allowHapticsOnConfigurationTaps;
+    BOOL __backStageLightPortaitEffectsSupported;
+    BOOL __frontStageLightPortaitEffectsSupported;
     BOOL _topBarInvertedForModernPhone;
     BOOL __forceAllowTripleCamera;
     BOOL _hasFilteringEntitlement;
@@ -111,6 +117,7 @@
     long long _front720pMaxFPS;
     long long _back1080pMaxFPS;
     long long _front1080pMaxFPS;
+    long long _zoomDialStyle;
     long long _hostProcess;
     double __backPhotoModeMaximumZoomFactor;
     double __frontPhotoModeMaximumZoomFactor;
@@ -140,6 +147,7 @@
 @property (readonly, nonatomic) double _backDualPhotoModeMaximumZoomFactor; // @synthesize _backDualPhotoModeMaximumZoomFactor=__backDualPhotoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _backDualVideoModeMaximumZoomFactor; // @synthesize _backDualVideoModeMaximumZoomFactor=__backDualVideoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _backPhotoModeMaximumZoomFactor; // @synthesize _backPhotoModeMaximumZoomFactor=__backPhotoModeMaximumZoomFactor;
+@property (readonly, nonatomic) BOOL _backStageLightPortaitEffectsSupported; // @synthesize _backStageLightPortaitEffectsSupported=__backStageLightPortaitEffectsSupported;
 @property (readonly, nonatomic) double _backTripleCameraPhotoModeMaximumZoomFactor; // @synthesize _backTripleCameraPhotoModeMaximumZoomFactor=__backTripleCameraPhotoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _backTripleCameraVideoModeMaximumZoomFactor; // @synthesize _backTripleCameraVideoModeMaximumZoomFactor=__backTripleCameraVideoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _backVideoModeMaximumZoomFactor; // @synthesize _backVideoModeMaximumZoomFactor=__backVideoModeMaximumZoomFactor;
@@ -151,6 +159,7 @@
 @property (readonly, nonatomic) double _frontDualPhotoModeMaximumZoomFactor; // @synthesize _frontDualPhotoModeMaximumZoomFactor=__frontDualPhotoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _frontDualVideoModeMaximumZoomFactor; // @synthesize _frontDualVideoModeMaximumZoomFactor=__frontDualVideoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _frontPhotoModeMaximumZoomFactor; // @synthesize _frontPhotoModeMaximumZoomFactor=__frontPhotoModeMaximumZoomFactor;
+@property (readonly, nonatomic) BOOL _frontStageLightPortaitEffectsSupported; // @synthesize _frontStageLightPortaitEffectsSupported=__frontStageLightPortaitEffectsSupported;
 @property (readonly, nonatomic) double _frontTripleCameraPhotoModeMaximumZoomFactor; // @synthesize _frontTripleCameraPhotoModeMaximumZoomFactor=__frontTripleCameraPhotoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _frontTripleCameraVideoModeMaximumZoomFactor; // @synthesize _frontTripleCameraVideoModeMaximumZoomFactor=__frontTripleCameraVideoModeMaximumZoomFactor;
 @property (readonly, nonatomic) double _frontVideoModeMaximumZoomFactor; // @synthesize _frontVideoModeMaximumZoomFactor=__frontVideoModeMaximumZoomFactor;
@@ -158,6 +167,7 @@
 @property (readonly, nonatomic) BOOL allowControlDrawer; // @synthesize allowControlDrawer=_allowControlDrawer;
 @property (readonly, nonatomic) BOOL allowHaptics; // @synthesize allowHaptics=_allowHaptics;
 @property (readonly, nonatomic) BOOL allowHapticsOnConfigurationTaps; // @synthesize allowHapticsOnConfigurationTaps=_allowHapticsOnConfigurationTaps;
+@property (readonly, nonatomic, getter=isAspectRatioCropSupported) BOOL aspectRatioCropSupported;
 @property (readonly, nonatomic, getter=isAutoLowLightVideoSupported) BOOL autoLowLightVideoSupported; // @synthesize autoLowLightVideoSupported=_autoLowLightVideoSupported;
 @property (readonly, nonatomic, getter=isBack1080p120Supported) BOOL back1080p120Supported; // @synthesize back1080p120Supported=_back1080p120Supported;
 @property (readonly, nonatomic, getter=isBack1080p240Supported) BOOL back1080p240Supported; // @synthesize back1080p240Supported=_back1080p240Supported;
@@ -193,7 +203,9 @@
 @property (readonly, nonatomic) BOOL captureOnTouchDown; // @synthesize captureOnTouchDown=_captureOnTouchDown;
 @property (readonly, nonatomic, getter=isCTMSupportSupressed) BOOL ctmSupportSuppressed; // @synthesize ctmSupportSuppressed=_ctmSupportSuppressed;
 @property (readonly, nonatomic, getter=isCTMSupported) BOOL ctmSupported; // @synthesize ctmSupported=_ctmSupported;
+@property (readonly, nonatomic, getter=isDeepFusionSupported) BOOL deepFusionSupported; // @synthesize deepFusionSupported=_deepFusionSupported;
 @property (readonly, nonatomic) double defaultPortraitEffectIntensity;
+@property (readonly, nonatomic, getter=isDeferredProcessingSupported) BOOL deferredProcessingSupported; // @synthesize deferredProcessingSupported=_deferredProcessingSupported;
 @property (readonly, nonatomic, getter=isDepthEffectApertureSupported) BOOL depthEffectApertureSupported; // @synthesize depthEffectApertureSupported=_depthEffectApertureSupported;
 @property (readonly, nonatomic) BOOL deviceSupportsCTM; // @synthesize deviceSupportsCTM=_deviceSupportsCTM;
 @property (readonly, nonatomic, getter=isDualSupported) BOOL dualSupported;
@@ -247,11 +259,13 @@
 @property (readonly, nonatomic, getter=isModernHDRSupported) BOOL modernHDRSupported; // @synthesize modernHDRSupported=_modernHDRSupported;
 @property (readonly, nonatomic, getter=isNaturalLightingAppliedToOriginal) BOOL naturalLightingAppliedToOriginal; // @synthesize naturalLightingAppliedToOriginal=_naturalLightingAppliedToOriginal;
 @property (readonly, nonatomic, getter=isNeuralEngineSupported) BOOL neuralEngineSupported; // @synthesize neuralEngineSupported=_neuralEngineSupported;
+@property (readonly, nonatomic) BOOL overContentFlipButtonSupported; // @synthesize overContentFlipButtonSupported=_overContentFlipButtonSupported;
 @property (readonly, nonatomic, getter=isPipelinedStillImageProcessingSupported) BOOL pipelinedStillImageProcessingSupported; // @synthesize pipelinedStillImageProcessingSupported=_pipelinedStillImageProcessingSupported;
 @property (readonly, nonatomic, getter=isPortraitEffectIntensitySupported) BOOL portraitEffectIntensitySupported; // @synthesize portraitEffectIntensitySupported=_portraitEffectIntensitySupported;
 @property (readonly, nonatomic, getter=arePortraitEffectsSupported) BOOL portraitEffectsSupported; // @synthesize portraitEffectsSupported=_portraitEffectsSupported;
 @property (readonly, nonatomic, getter=isPortraitModeSupported) BOOL portraitModeSupported;
 @property (readonly, nonatomic, getter=isPreviewDuringHDRSupported) BOOL previewSupportedDuringHDR; // @synthesize previewSupportedDuringHDR=_previewSupportedDuringHDR;
+@property (readonly, nonatomic) BOOL sfCameraFontSupported; // @synthesize sfCameraFontSupported=_sfCameraFontSupported;
 @property (readonly, nonatomic, getter=isSmartHDRSupported) BOOL smartHDRSupported; // @synthesize smartHDRSupported=_smartHDRSupported;
 @property (readonly, nonatomic, getter=isSpatialOverCaptureSupported) BOOL spatialOverCaptureSupported;
 @property (readonly, nonatomic, getter=isSplitScreenSupported) BOOL splitScreenSupported; // @synthesize splitScreenSupported=_splitScreenSupported;
@@ -267,6 +281,8 @@
 @property (readonly, nonatomic) BOOL useReticleStroke; // @synthesize useReticleStroke=_useReticleStroke;
 @property (readonly, nonatomic, getter=isVideoSupported) BOOL videoSupported; // @synthesize videoSupported=_videoSupported;
 @property (readonly, nonatomic, getter=isWideDualSupported) BOOL wideDualSupported;
+@property (readonly, nonatomic) BOOL zoomControlSupported;
+@property (readonly, nonatomic) long long zoomDialStyle; // @synthesize zoomDialStyle=_zoomDialStyle;
 
 + (id)capabilities;
 - (BOOL)_isSpatialOverCaptureSupportedForMode:(long long)arg1;
@@ -288,6 +304,7 @@
 - (BOOL)isAutoLowLightVideoSupportedForMode:(long long)arg1 videoConfiguration:(long long)arg2;
 - (BOOL)isAutomaticHDRSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isBurstSupportedForMode:(long long)arg1 device:(long long)arg2;
+- (BOOL)isCTMVideoCaptureSupportedForMode:(long long)arg1;
 - (BOOL)isCameraSupportedForDevice:(long long)arg1;
 - (BOOL)isCameraSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isDualSupportedForDevicePosition:(long long)arg1;

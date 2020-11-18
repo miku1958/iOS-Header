@@ -265,6 +265,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (BOOL)sectionHeadersCoverLocation:(struct CGPoint)arg1;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
+- (double)sectionedGridLayout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (id)sectionedGridLayoutAnchorItemForAdjustingContentOffset:(id)arg1;
 - (void)selectAllSelectableItems;

@@ -40,9 +40,12 @@
 + (id)tablesAndForeignKeysToResolve:(id *)arg1 associationsToResolve:(id *)arg2;
 - (void).cxx_destruct;
 - (BOOL)_addLabels:(id)arg1 removeLabels:(id)arg2 forUID:(unsigned int)arg3 connection:(id)arg4;
+- (id)_nextBatchForUIDs:(id)arg1 limit:(unsigned long long)arg2 returnLastEntries:(BOOL)arg3 isContiguous:(BOOL *)arg4;
 - (id)_remoteIDStringForRemoteIDArray:(id)arg1;
 - (id)_serverMessageForRow:(id)arg1 connection:(id)arg2;
 - (id)_serverMessagesWithWhereClause:(id)arg1 limitClause:(id)arg2 returnLastEntries:(BOOL)arg3;
+- (id)_uidExpressionForUIDs:(id)arg1 isContiguous:(BOOL)arg2;
+- (BOOL)_uidsAreContiguous:(id)arg1;
 - (BOOL)addLabels:(id)arg1 removeLabels:(id)arg2 toMessagesWithRemoteIDs:(id)arg3;
 - (BOOL)addServerMessage:(id)arg1 invalidMessage:(BOOL *)arg2 duplicateRemoteID:(BOOL *)arg3;
 - (BOOL)applyFlagChange:(id)arg1 toMessagesWithRemoteIDs:(id)arg2;
@@ -51,8 +54,8 @@
 - (BOOL)deleteServerMessagesWithRemoteIDs:(id)arg1;
 - (id)init;
 - (id)initWithDatabase:(id)arg1 gmailLabelPersistence:(id)arg2 mailboxID:(long long)arg3 useNumericSearch:(BOOL)arg4 supportsLabels:(BOOL)arg5;
+- (id)serverMessagesForIMAPUIDs:(id)arg1 limit:(unsigned long long)arg2 returnLastEntries:(BOOL)arg3;
 - (id)serverMessagesForRemoteIDs:(id)arg1;
-- (id)serverMessagesInIMAPUIDRange:(struct _NSRange)arg1 limit:(unsigned long long)arg2 returnLastEntries:(BOOL)arg3;
 
 @end
 

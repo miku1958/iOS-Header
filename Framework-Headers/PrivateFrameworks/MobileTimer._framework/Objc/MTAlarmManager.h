@@ -11,7 +11,7 @@
 @interface MTAlarmManager : NSObject
 {
     MTAlarmManagerExportedObject *_exportedObject;
-    struct MTXPCConnectionProvider *_connectionProvider;
+    MTXPCConnectionProvider *_connectionProvider;
     MTMetrics *_metrics;
     MTAlarmCache *_cache;
     NSNotificationCenter *_notificationCenter;

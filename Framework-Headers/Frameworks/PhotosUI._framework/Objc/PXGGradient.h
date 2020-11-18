@@ -12,8 +12,8 @@
 
 @interface PXGGradient : NSObject <NSCopying>
 {
-    struct UIColor *_startingColor;
-    struct UIColor *_endingColor;
+    UIColor *_startingColor;
+    UIColor *_endingColor;
     long long _direction;
 }
 
@@ -26,7 +26,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithStartingColor:(struct UIColor *)arg1 endingColor:(struct UIColor *)arg2 direction:(long long)arg3;
+- (id)initWithStartingColor:(id)arg1 endingColor:(id)arg2 direction:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

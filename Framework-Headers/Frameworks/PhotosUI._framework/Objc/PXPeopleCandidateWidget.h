@@ -34,6 +34,7 @@
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) long long contentViewAnchoringType;
 @property (strong, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (strong, nonatomic) PXPeopleSuggestionDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

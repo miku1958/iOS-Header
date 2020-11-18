@@ -8,22 +8,24 @@
 
 #import <ShareSheet/UIPrintInteractionControllerDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, UIPrintInteractionController;
 
 @interface UIPrintActivityWrapperNavigationController : UINavigationController <UIPrintInteractionControllerDelegate>
 {
     CDUnknownBlockType _completionHandler;
     BOOL _presentedPrintInteractionController;
+    UIPrintInteractionController *_printInteractionController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL presentedPrintInteractionController; // @synthesize presentedPrintInteractionController=_presentedPrintInteractionController;
+@property (strong, nonatomic) UIPrintInteractionController *printInteractionController; // @synthesize printInteractionController=_printInteractionController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithCompletion:(CDUnknownBlockType)arg1;
+- (id)initWithPrintInteractionController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

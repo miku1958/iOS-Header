@@ -8,11 +8,12 @@
 
 #import <UIKitCore/UIAccessibilityHUDGestureDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, UIAccessibilityHUDGestureManager, UIColor, UIGestureRecognizer, UIScreen, _UIStatusBarAction, _UIStatusBarData, _UIStatusBarDataAggregator, _UIStatusBarStyleAttributes;
 @protocol _UIStatusBarActionable, _UIStatusBarVisualProvider;
 
-@interface _UIStatusBar : UIView <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate>
+@interface _UIStatusBar : UIView <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate, _UICursorInteractionDelegate>
 {
     id<_UIStatusBarVisualProvider> _visualProvider;
     UIScreen *_targetScreen;
@@ -28,6 +29,7 @@
     CDUnknownBlockType _updateCompletionHandler;
     UIView *_foregroundView;
     id<_UIStatusBarActionable> _targetActionable;
+    id<_UIStatusBarActionable> _hoveredActionable;
     UIAccessibilityHUDGestureManager *_accessibilityHUDGestureManager;
     Class _visualProviderClass;
     NSDictionary *_regions;
@@ -56,6 +58,7 @@
 @property (copy, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (strong, nonatomic) UIView *foregroundView; // @synthesize foregroundView=_foregroundView;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<_UIStatusBarActionable> hoveredActionable; // @synthesize hoveredActionable=_hoveredActionable;
 @property (strong, nonatomic) NSMutableDictionary *items; // @synthesize items=_items;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -81,10 +84,13 @@
 - (BOOL)_accessibilityHUDGestureManager:(id)arg1 shouldTerminateHUDGestureForOtherGestureRecognizer:(id)arg2;
 - (void)_accessibilityHUDGestureManager:(id)arg1 showHUDItem:(id)arg2;
 - (id)_actionablesForPartWithIdentifier:(id)arg1 includeInternalItems:(BOOL)arg2 onlyVisible:(BOOL)arg3;
+- (BOOL)_cursorLocation:(struct CGPoint)arg1 isInsideActionable:(id)arg2;
+- (BOOL)_cursorLocation:(struct CGPoint)arg1 isInsideHoverableActionable:(id)arg2;
 - (void)_delayUpdatesWithKeys:(id)arg1 fromAnimation:(id)arg2;
 - (void)_dismissAccessibilityHUDForGestureManager:(id)arg1;
 - (long long)_effectiveStyleFromStyle:(long long)arg1;
 - (id)_effectiveTargetScreen;
+- (struct CGRect)_extendedHoverFrameForActionable:(id)arg1;
 - (void)_fixupDisplayItemAttributes;
 - (BOOL)_forceLayoutEngineSolutionInRationalEdges;
 - (struct CGRect)_frameForActionable:(id)arg1;
@@ -102,6 +108,7 @@
 - (id)_regionsForPartWithIdentifier:(id)arg1 includeInternalItems:(BOOL)arg2;
 - (id)_statusBarWindowForAccessibilityHUD;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
+- (void)_updateActionGestureRecognizerAllowableTouchTypesIfNeeded;
 - (void)_updateDisplayedItemsWithData:(id)arg1 styleAttributes:(id)arg2 extraAnimations:(id)arg3;
 - (void)_updateRegionItems;
 - (void)_updateStyleAttributes;
@@ -109,6 +116,10 @@
 - (void)_updateWithData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)actionForPartWithIdentifier:(id)arg1;
 - (double)alphaForPartWithIdentifier:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
 - (id)dataEntryKeysForItemsWithIdentifiers:(id)arg1;
 - (id)displayItemIdentifiersInRegionsWithIdentifiers:(id)arg1;
 - (id)displayItemWithIdentifier:(id)arg1;

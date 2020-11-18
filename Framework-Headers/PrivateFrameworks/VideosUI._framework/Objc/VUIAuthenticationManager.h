@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class SSAuthenticateRequest;
+@class NSString, SSAuthenticateRequest;
 
 @interface VUIAuthenticationManager : NSObject
 {
     BOOL __isObservingAccountStoreChange;
     SSAuthenticateRequest *__authRequest;
+    NSString *__accountIdentifier;
 }
 
+@property (strong, nonatomic) NSString *_accountIdentifier; // @synthesize _accountIdentifier=__accountIdentifier;
 @property (strong, nonatomic) SSAuthenticateRequest *_authRequest; // @synthesize _authRequest=__authRequest;
 @property (nonatomic) BOOL _isObservingAccountStoreChange; // @synthesize _isObservingAccountStoreChange=__isObservingAccountStoreChange;
 

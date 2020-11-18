@@ -121,6 +121,7 @@
 - (void)_dismissEditInterface;
 - (void)_displayAirplaneModeAlert;
 - (void)_displayAudioControlsIfAvailable;
+- (void)_displayPlaybackUIWithUpdate:(BOOL)arg1;
 - (void)_handleApplicationDidBecomeActive;
 - (void)_handleApplicationWillResignActive;
 - (BOOL)_homeHasSingleCameraProfile;

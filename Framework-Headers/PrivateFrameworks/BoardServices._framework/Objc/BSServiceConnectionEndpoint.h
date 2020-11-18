@@ -36,7 +36,7 @@
 @property (readonly, copy, nonatomic) NSString *targetDescription;
 
 + (id)_endpointForManager:(id)arg1 domain:(id)arg2 service:(id)arg3 instance:(id)arg4;
-+ (id)_endpointFromEndowmentRepresentation:(struct NSObject *)arg1;
++ (id)_endpointFromEndowmentRepresentation:(id)arg1;
 + (id)defaultShellMachName;
 + (id)endpointForMachName:(id)arg1 service:(id)arg2 instance:(id)arg3;
 + (id)endpointForSystemMachName:(id)arg1 service:(id)arg2 instance:(id)arg3;
@@ -44,7 +44,7 @@
 + (BOOL)supportsBSXPCSecureCoding;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (struct NSObject *)_endowmentRepresentation;
+- (id)_endowmentRepresentation;
 - (id)_initWithEndpoint:(id)arg1 isNonLaunching:(BOOL)arg2 targetDescription:(id)arg3 service:(id)arg4 instance:(id)arg5;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

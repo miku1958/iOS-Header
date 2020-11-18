@@ -16,6 +16,7 @@
     WFContentCollection *_input;
     WFContentCollection *_output;
     id<WFOutOfProcessWorkflowControllerDelegate> _delegate;
+    NSString *_automationType;
     NSString *_debugIdentifier;
     NSData *_workflowData;
     long long _environment;
@@ -28,6 +29,7 @@
     long long _state;
 }
 
+@property (copy, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property (weak, nonatomic) id<WFOutOfProcessWorkflowControllerDelegate> delegate; // @synthesize delegate=_delegate;

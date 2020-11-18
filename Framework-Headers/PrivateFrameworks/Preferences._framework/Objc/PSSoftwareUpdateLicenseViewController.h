@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UITextView *licenseTextView; // @synthesize licenseTextView=_licenseTextView;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)didReceiveMemoryWarning;
 - (id)initWithLicense:(id)arg1;
 - (void)setLicenseText:(id)arg1;

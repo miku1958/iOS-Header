@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPCAssistantContext, MPCAssistantSendCommand;
+@class MPCAssistantContext, MPCAssistantSendCommand, NSDate, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface MPCAssistantCommand : NSObject
@@ -14,10 +14,15 @@
     MPCAssistantSendCommand *_sendCommand;
     MPCAssistantContext *_context;
     NSObject<OS_dispatch_queue> *_sendCommandQueue;
+    NSMutableDictionary *_analytics;
+    NSObject<OS_dispatch_queue> *_analyticsQueue;
+    NSDate *_startDate;
 }
 
 - (void).cxx_destruct;
 - (void)_findOutputDevicesForDestination:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setAnalyticsError:(id)arg1;
+- (void)_setAnalyticsKey:(id)arg1 value:(id)arg2;
 - (id)init;
 - (void)sendCommand:(unsigned int)arg1 toDestination:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendPlaybackArchive:(id)arg1 toDestination:(id)arg2 completion:(CDUnknownBlockType)arg3;

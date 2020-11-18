@@ -10,6 +10,8 @@
 {
 }
 
+@property (nonatomic, setter=axSetIsActuallySelected:) BOOL axIsActuallySelected;
+
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;

@@ -8,13 +8,13 @@
 
 #import <RemoteManagement/RMExtensionConfigurationSubscriberRequestHandling-Protocol.h>
 
-@class NSArray, NSLock, NSString, RMAssetResolver, RMConfigurationRepository, RMPolicyStore;
+@class NSArray, NSConditionLock, NSString, RMAssetResolver, RMConfigurationSubscriberClient, RMPolicyStore;
 @protocol RMExtensionConfigurationApplicator;
 
 @interface RMExtensionConfigurationSubscriber : NSObject <RMExtensionConfigurationSubscriberRequestHandling>
 {
-    NSLock *_configurationRepositoryLock;
-    RMConfigurationRepository *_configurationRepository;
+    NSConditionLock *_configurationSubscriberClientLock;
+    RMConfigurationSubscriberClient *_configurationSubscriberClient;
     RMAssetResolver *_assetResolver;
     RMPolicyStore *_policyStore;
     id<RMExtensionConfigurationApplicator> _applicator;
@@ -23,7 +23,7 @@
 
 @property (readonly, nonatomic) id<RMExtensionConfigurationApplicator> applicator; // @synthesize applicator=_applicator;
 @property (strong, nonatomic) RMAssetResolver *assetResolver; // @synthesize assetResolver=_assetResolver;
-@property (strong, nonatomic) RMConfigurationRepository *configurationRepository; // @synthesize configurationRepository=_configurationRepository;
+@property (strong, nonatomic) RMConfigurationSubscriberClient *configurationSubscriberClient; // @synthesize configurationSubscriberClient=_configurationSubscriberClient;
 @property (readonly, nonatomic) NSArray *configurationTypes; // @synthesize configurationTypes=_configurationTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,7 +35,7 @@
 - (void).cxx_destruct;
 - (void)fetchThenApplyConfigurationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithConfigurationRepository:(id)arg1 assetResolver:(id)arg2 policyStore:(id)arg3 applicator:(id)arg4 configurationTypes:(id)arg5;
+- (id)initWithConfigurationSubscriberClient:(id)arg1 assetResolver:(id)arg2 policyStore:(id)arg3 applicator:(id)arg4 configurationTypes:(id)arg5;
 
 @end
 

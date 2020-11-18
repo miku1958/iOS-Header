@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSString *string; // @synthesize string=_string;
 @property (strong, nonatomic) ICTrackedParagraph *trackedParagraph; // @synthesize trackedParagraph=_trackedParagraph;
 
-+ (id)nodeFromTrackedParagraph:(id)arg1 textView:(struct ICBaseTextView *)arg2;
++ (id)nodeFromTrackedParagraph:(id)arg1 textView:(id)arg2;
 + (id)placeholderNodeWithIndentation:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)addChild:(id)arg1;

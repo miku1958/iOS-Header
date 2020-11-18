@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PeopleSuggester/NSSecureCoding-Protocol.h>
-
 @class _PSEnsembleModel;
 
-@interface _PSSuggesterConfiguration : NSObject <NSSecureCoding>
+@interface _PSSuggesterConfiguration : NSObject
 {
     long long _maximumNumberOfSuggestions;
     _PSEnsembleModel *_suggestionModel;
@@ -20,11 +18,8 @@
 @property (strong, nonatomic) _PSEnsembleModel *suggestionModel; // @synthesize suggestionModel=_suggestionModel;
 
 + (id)defaultConfiguration;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

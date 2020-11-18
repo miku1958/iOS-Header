@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <AVFoundation/AVCaptureAudioDataOutputSampleBufferDelegate-Protocol.h>
+#import <AVFoundation/AVCaptureCameraCalibrationDataOutputDelegate-Protocol.h>
 #import <AVFoundation/AVCaptureDepthDataOutputDelegate-Protocol.h>
 #import <AVFoundation/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
+#import <AVFoundation/AVCapturePointCloudDataOutputDelegate-Protocol.h>
 #import <AVFoundation/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
 #import <AVFoundation/AVCaptureVisionDataOutputDelegate-Protocol.h>
 
 @class AVCaptureDataOutputSynchronizerInternal, NSArray, NSString;
 @protocol AVCaptureDataOutputSynchronizerDelegate, OS_dispatch_queue;
 
-@interface AVCaptureDataOutputSynchronizer : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate, AVCaptureDepthDataOutputDelegate, AVCaptureVisionDataOutputDelegate>
+@interface AVCaptureDataOutputSynchronizer : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate, AVCaptureDepthDataOutputDelegate, AVCaptureVisionDataOutputDelegate, AVCapturePointCloudDataOutputDelegate, AVCaptureCameraCalibrationDataOutputDelegate>
 {
     AVCaptureDataOutputSynchronizerInternal *_internal;
 }
@@ -39,6 +41,8 @@
 - (void)_dispatchSynchronizedDataWithTimestamp:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_earliestSlaveSynchronizedDataQueueTimestamp;
 - (void)_overrideDataOutputDelegatesForDelegateCallbackQueue:(id)arg1;
+- (void)cameraCalibrationDataOutput:(id)arg1 didDropCameraCalibrationDataAtTimestamp:(CDStruct_1b6d18a9)arg2 connection:(id)arg3 reason:(long long)arg4;
+- (void)cameraCalibrationDataOutput:(id)arg1 didOutputCameraCalibrationData:(id)arg2 timestamp:(CDStruct_1b6d18a9)arg3 connection:(id)arg4;
 - (void)captureOutput:(id)arg1 didDropSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
@@ -46,6 +50,8 @@
 - (void)depthDataOutput:(id)arg1 didDropDepthData:(id)arg2 timestamp:(CDStruct_1b6d18a9)arg3 connection:(id)arg4 reason:(long long)arg5;
 - (void)depthDataOutput:(id)arg1 didOutputDepthData:(id)arg2 timestamp:(CDStruct_1b6d18a9)arg3 connection:(id)arg4;
 - (id)initWithDataOutputs:(id)arg1;
+- (void)pointCloudDataOutput:(id)arg1 didDropPointCloudData:(id)arg2 timestamp:(CDStruct_1b6d18a9)arg3 connection:(id)arg4 reason:(long long)arg5;
+- (void)pointCloudDataOutput:(id)arg1 didOutputPointCloudData:(id)arg2 timestamp:(CDStruct_1b6d18a9)arg3 connection:(id)arg4;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)visionDataOutput:(id)arg1 didDropVisionDataPixelBufferForTimestamp:(CDStruct_1b6d18a9)arg2 connection:(id)arg3 reason:(long long)arg4;
 - (void)visionDataOutput:(id)arg1 didOutputVisionDataPixelBuffer:(struct __CVBuffer *)arg2 timestamp:(CDStruct_1b6d18a9)arg3 connection:(id)arg4;

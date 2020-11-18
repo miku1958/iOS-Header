@@ -7,6 +7,9 @@
 #import <UIKit/UITableView.h>
 
 @interface UITableView (SwiftUI)
+
+@property (nonatomic, getter=_sectionContentInset, setter=_setSectionContentInset:) struct UIEdgeInsets sectionContentInset;
+
 - (double)horizontalMargin;
 @end
 

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 
++ (void)configureSeasonPickerCell:(id)arg1 withMedia:(id)arg2 traitCollection:(id)arg3;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

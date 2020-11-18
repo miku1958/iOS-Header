@@ -65,6 +65,7 @@
     AKAnisetteData *_companionDeviceAnisetteData;
     AKAnisetteData *_proxiedDeviceAnisetteData;
     NSString *_appProvidedContext;
+    NSString *_masterKey;
     NSString *_username;
     long long _serviceType;
     NSString *_reason;
@@ -98,6 +99,7 @@
 @property (readonly, nonatomic) NSString *_interpolatedReasonWithBlame;
 @property (nonatomic) BOOL _isPasswordEditable; // @synthesize _isPasswordEditable;
 @property (nonatomic, setter=_setProxyingForApp:) BOOL _isProxyingForApp; // @synthesize _isProxyingForApp;
+@property (copy, nonatomic, setter=_setMasterKey:) NSString *_masterKey; // @synthesize _masterKey;
 @property (copy, nonatomic, setter=_setMessage:) NSString *_message; // @synthesize _message;
 @property (copy, nonatomic, setter=_setPassword:) NSString *_password; // @synthesize _password;
 @property (copy, nonatomic) NSString *_passwordPromptTitle; // @synthesize _passwordPromptTitle;

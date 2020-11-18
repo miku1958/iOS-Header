@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WorkflowUI/QLPreviewControllerDelegate-Protocol.h>
+#import <WorkflowUI/QLPreviewControllerPrivateDelegate-Protocol.h>
 #import <WorkflowUI/UIDropInteractionDelegate-Protocol.h>
 #import <WorkflowUI/UIScrollViewDelegate-Protocol.h>
 #import <WorkflowUI/WFActionParameterInputProvider-Protocol.h>
@@ -21,7 +21,7 @@
 @class NSIndexPath, NSString, WFAction, WFContentCollection, WFDatabase, WFModulesQuickLookView, WFRunWorkflowFooterView, WFRunWorkflowToolbar, WFWorkflow, WFWorkflowController, WFWorkflowRunEvent, WFWorkflowViewController;
 @protocol WFRunWorkflowViewControllerDelegate;
 
-@interface WFRunWorkflowViewController : UIViewController <WFModuleModelProvider, WFWorkflowControllerDelegate, WFParameterInputViewControllerDelegate, WFActionParameterInputProvider, WFModulesSupplementaryViewDataSource, WFModulesQuickLookViewDelegate, QLPreviewControllerDelegate, UIScrollViewDelegate, UIDropInteractionDelegate, WFRunWorkflowFooterViewDelegate, WFRunWorkflowToolbarDelegate>
+@interface WFRunWorkflowViewController : UIViewController <WFModuleModelProvider, WFWorkflowControllerDelegate, WFParameterInputViewControllerDelegate, WFActionParameterInputProvider, WFModulesSupplementaryViewDataSource, WFModulesQuickLookViewDelegate, QLPreviewControllerPrivateDelegate, UIScrollViewDelegate, UIDropInteractionDelegate, WFRunWorkflowFooterViewDelegate, WFRunWorkflowToolbarDelegate>
 {
     BOOL _clearsWorkflowSettings;
     BOOL _indicatesLoadingBeforeRunning;
@@ -98,6 +98,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)parameterInputViewControllerDidCancel:(id)arg1;
 - (void)parameterInputViewControllerDidFinish:(id)arg1 withParameterStates:(id)arg2;
+- (BOOL)previewController:(id)arg1 canShareItem:(id)arg2;
 - (struct CGRect)previewController:(id)arg1 frameForPreviewItem:(id)arg2 inSourceView:(id *)arg3;
 - (void)previewControllerWillDismiss:(id)arg1;
 - (void)quickLookView:(id)arg1 clickedShare:(id)arg2 forContentItem:(id)arg3;

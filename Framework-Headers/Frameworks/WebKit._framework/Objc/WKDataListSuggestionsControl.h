@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface WKDataListSuggestionsControl : NSObject
 {
     struct WebDataListSuggestionsDropdownIOS *_dropdown;
-    Vector_14ac4456 _suggestions;
+    Vector_f69b9135 _suggestions;
     WKContentView *_view;
 }
 

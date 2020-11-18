@@ -12,6 +12,8 @@
 
 @interface VUITextLayout : NSObject <NSCopying>
 {
+    BOOL _shouldUpdateTextColor;
+    BOOL _shouldAllowParagraphHyphenation;
     BOOL _alwaysFocusable;
     unsigned int _fontTraits;
     int _blendMode;
@@ -66,12 +68,14 @@
 @property (nonatomic) unsigned long long numberOfLinesAXSmall; // @synthesize numberOfLinesAXSmall=_numberOfLinesAXSmall;
 @property (strong, nonatomic) UIColor *seeMoreTextColor; // @synthesize seeMoreTextColor=_seeMoreTextColor;
 @property (strong, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
+@property (nonatomic) BOOL shouldAllowParagraphHyphenation; // @synthesize shouldAllowParagraphHyphenation=_shouldAllowParagraphHyphenation;
+@property (nonatomic) BOOL shouldUpdateTextColor; // @synthesize shouldUpdateTextColor=_shouldUpdateTextColor;
 @property (nonatomic) long long textStyle; // @synthesize textStyle=_textStyle;
 @property (nonatomic) long long textTransform; // @synthesize textTransform=_textTransform;
 
 - (void).cxx_destruct;
 - (id)_defaultParagraphStyle;
-- (id)attributedStringWithAttributedString:(id)arg1 view:(id)arg2;
+- (id)attributedStringWithAttributedString:(id)arg1 view:(id)arg2 updateTextColor:(BOOL)arg3;
 - (id)attributedStringWithString:(id)arg1;
 - (id)attributedStringWithString:(id)arg1 view:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

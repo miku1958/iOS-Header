@@ -19,6 +19,7 @@
     int _type;
     NSString *_artist;
     _INPBImageValue *_artwork;
+    NSString *_assetInfo;
     NSString *_identifier;
     NSArray *_namedEntities;
     NSString *_title;
@@ -29,10 +30,12 @@
 @property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *artist; // @synthesize artist=_artist;
 @property (strong, nonatomic) _INPBImageValue *artwork; // @synthesize artwork=_artwork;
+@property (copy, nonatomic) NSString *assetInfo; // @synthesize assetInfo=_assetInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasArtist;
 @property (readonly, nonatomic) BOOL hasArtwork;
+@property (readonly, nonatomic) BOOL hasAssetInfo;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (nonatomic) BOOL hasType;

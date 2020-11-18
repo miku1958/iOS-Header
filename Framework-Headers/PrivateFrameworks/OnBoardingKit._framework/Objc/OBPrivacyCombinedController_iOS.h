@@ -15,6 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface OBPrivacyCombinedController_iOS : OBPrivacyCombinedController <OBNavigationBarTitleTransistor, UITableViewDelegate, UITableViewDataSource>
 {
+    BOOL _isUnifiedAbout;
     NSLayoutConstraint *_tableViewHeightConstraint;
     NSArray *_identifiers;
     NSArray *_privacyFlows;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
+@property BOOL isUnifiedAbout; // @synthesize isUnifiedAbout=_isUnifiedAbout;
 @property (strong) NSArray *privacyFlows; // @synthesize privacyFlows=_privacyFlows;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSLayoutConstraint *tableViewHeightConstraint; // @synthesize tableViewHeightConstraint=_tableViewHeightConstraint;
@@ -38,7 +40,9 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateTableViewFrameToMatchContentSize;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

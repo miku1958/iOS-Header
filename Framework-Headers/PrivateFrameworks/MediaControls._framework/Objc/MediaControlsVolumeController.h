@@ -56,6 +56,7 @@
 - (id)currentBluetoothListeningModeForRouteType:(unsigned long long)arg1;
 - (id)glyphStateForVolumeLevel:(double)arg1 packageName:(id)arg2;
 - (id)init;
+- (void)logFailedSetBluetoothListeningMode:(id)arg1 forRouteType:(unsigned long long)arg2;
 - (id)packageNameForRouteType:(unsigned long long)arg1 isRTL:(BOOL)arg2 isSlider:(BOOL)arg3;
 - (void)removeObserver:(id)arg1;
 - (void)routeDidChangeNotification;

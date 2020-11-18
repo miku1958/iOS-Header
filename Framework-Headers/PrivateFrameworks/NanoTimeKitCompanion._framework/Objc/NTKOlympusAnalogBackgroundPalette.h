@@ -27,6 +27,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)colorForDotVictoryAnalogTimeElement:(unsigned long long)arg1;
+- (id)colorForLogoWithStyle:(unsigned long long)arg1;
+- (id)colorForNumberVictoryAnalogTimeElement:(unsigned long long)arg1;
 - (id)initWithOlympusPalette:(id)arg1;
 - (id)initWithOlympusPalette:(id)arg1 alternatePalette:(id)arg2;
 

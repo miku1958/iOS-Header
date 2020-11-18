@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_altFaxs;
     NSMutableArray *_altTelephones;
     NSMutableArray *_altUrls;
+    NSMutableArray *_alternateSearchableNames;
     unsigned long long _brandMuid;
     NSString *_fax;
     NSMutableArray *_localizedCategorys;
@@ -63,6 +64,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_altFaxs:1;
         unsigned int read_altTelephones:1;
         unsigned int read_altUrls:1;
+        unsigned int read_alternateSearchableNames:1;
         unsigned int read_fax:1;
         unsigned int read_localizedCategorys:1;
         unsigned int read_mapsCategoryId:1;
@@ -79,6 +81,7 @@ __attribute__((visibility("hidden")))
         unsigned int wrote_altFaxs:1;
         unsigned int wrote_altTelephones:1;
         unsigned int wrote_altUrls:1;
+        unsigned int wrote_alternateSearchableNames:1;
         unsigned int wrote_brandMuid:1;
         unsigned int wrote_fax:1;
         unsigned int wrote_localizedCategorys:1;
@@ -109,6 +112,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL altTelephoneAdsOptOut;
 @property (strong, nonatomic) NSMutableArray *altTelephones;
 @property (strong, nonatomic) NSMutableArray *altUrls;
+@property (strong, nonatomic) NSMutableArray *alternateSearchableNames;
 @property (nonatomic) unsigned long long brandMuid;
 @property (nonatomic) int capacity;
 @property (nonatomic) int displayStyle;
@@ -158,6 +162,7 @@ __attribute__((visibility("hidden")))
 + (Class)altFaxType;
 + (Class)altTelephoneType;
 + (Class)altUrlType;
++ (Class)alternateSearchableNameType;
 + (id)entityForPlaceData:(id)arg1;
 + (BOOL)isValid:(id)arg1;
 + (Class)localizedCategoryType;
@@ -172,6 +177,7 @@ __attribute__((visibility("hidden")))
 - (void)_addNoFlagsAltFax:(id)arg1;
 - (void)_addNoFlagsAltTelephone:(id)arg1;
 - (void)_addNoFlagsAltUrl:(id)arg1;
+- (void)_addNoFlagsAlternateSearchableName:(id)arg1;
 - (void)_addNoFlagsLocalizedCategory:(id)arg1;
 - (void)_addNoFlagsName:(id)arg1;
 - (void)_addNoFlagsPlaceLookupCategory:(int)arg1;
@@ -179,6 +185,7 @@ __attribute__((visibility("hidden")))
 - (void)_readAltFaxs;
 - (void)_readAltTelephones;
 - (void)_readAltUrls;
+- (void)_readAlternateSearchableNames;
 - (void)_readFax;
 - (void)_readLocalizedCategorys;
 - (void)_readMapsCategoryId;
@@ -194,6 +201,7 @@ __attribute__((visibility("hidden")))
 - (void)addAltFax:(id)arg1;
 - (void)addAltTelephone:(id)arg1;
 - (void)addAltUrl:(id)arg1;
+- (void)addAlternateSearchableName:(id)arg1;
 - (void)addLocalizedCategory:(id)arg1;
 - (void)addName:(id)arg1;
 - (void)addPlaceLookupCategory:(int)arg1;
@@ -204,10 +212,13 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)altTelephonesCount;
 - (id)altUrlAtIndex:(unsigned long long)arg1;
 - (unsigned long long)altUrlsCount;
+- (id)alternateSearchableNameAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternateSearchableNamesCount;
 - (id)bestLocalizedName;
 - (void)clearAltFaxs;
 - (void)clearAltTelephones;
 - (void)clearAltUrls;
+- (void)clearAlternateSearchableNames;
 - (void)clearLocalizedCategorys;
 - (void)clearNames;
 - (void)clearPlaceLookupCategorys;

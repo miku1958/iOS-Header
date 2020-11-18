@@ -39,14 +39,6 @@ struct AvailabilityState {
     unsigned int isAvailable:1;
 };
 
-struct NSDictionary {
-    Class _field1;
-};
-
-struct NSUUID {
-    Class _field1;
-};
-
 struct atomic_flag {
     _Atomic BOOL _Value;
 };

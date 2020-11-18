@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)_accessibilityQuickSpeakContent;
 - (void)_dismissMenu:(id)arg1;
 - (void)_handleLongPress:(id)arg1;
+- (void)_hover:(id)arg1;
 - (void)_updateBackgroundImageAnimated:(BOOL)arg1;
 - (void)_updateEffectView;
 - (BOOL)canBecomeFirstResponder;

@@ -24,8 +24,8 @@
 + (id)buildWithCode:(id)arg1 description:(id)arg2 details:(id)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)loadPayload:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
-- (id)serializePayloadWithType:(short)arg1;
+- (BOOL)loadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (id)serializeWithType:(short)arg1;
 
 @end
 

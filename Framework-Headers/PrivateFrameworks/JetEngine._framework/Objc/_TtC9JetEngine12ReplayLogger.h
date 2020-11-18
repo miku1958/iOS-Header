@@ -11,7 +11,7 @@
 @interface _TtC9JetEngine12ReplayLogger : _TtCs12_SwiftObject
 {
     MISSING_TYPE *stateLock;
-    MISSING_TYPE *rawMessages;
+    MISSING_TYPE *rawRecords;
 }
 
 @end

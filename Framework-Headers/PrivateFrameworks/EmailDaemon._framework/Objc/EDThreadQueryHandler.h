@@ -12,7 +12,7 @@
 #import <EmailDaemon/EMMessageListItemQueryResultsObserver-Protocol.h>
 
 @class EDMessagePersistence, EDPersistenceHookRegistry, EDThreadPersistence, EDVIPManager, EFLocked, EFQuery, EMObjectID, EMThreadScope, NSString;
-@protocol EDRemoteSearchProvider, EDThreadQueryHandlerDelegate, EMMessageListItemQueryResultsObserver;
+@protocol EDRemoteSearchProvider, EDResumable, EDThreadQueryHandlerDelegate, EMMessageListItemQueryResultsObserver;
 
 @interface EDThreadQueryHandler : NSObject <EDThreadMigratorDelegate, EMMessageListItemQueryResultsObserver, EFLoggable, EDMessageRepositoryQueryHandler>
 {
@@ -29,6 +29,7 @@
     id<EDRemoteSearchProvider> _remoteSearchProvider;
     EFLocked *_underlyingHandler;
     id<EDThreadQueryHandlerDelegate> _delegate;
+    id<EDResumable> _observerResumer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) EDPersistenceHookRegistry *hookRegistry; // @synthesize hookRegistry=_hookRegistry;
 @property (readonly, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property (readonly, nonatomic) EMObjectID *observationIdentifier; // @synthesize observationIdentifier=_observationIdentifier;
+@property (readonly, nonatomic) id<EDResumable> observerResumer; // @synthesize observerResumer=_observerResumer;
 @property (readonly, nonatomic) EFQuery *query; // @synthesize query=_query;
 @property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly, nonatomic) id<EMMessageListItemQueryResultsObserver> resultsObserver; // @synthesize resultsObserver=_resultsObserver;
@@ -53,7 +55,7 @@
 - (void)cancel;
 - (void)checkIfPrecomputedStateIsAvailable;
 - (id)inMemoryMessageObjectIDsForThread:(id)arg1;
-- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 threadPersistence:(id)arg3 hookRegistry:(id)arg4 vipManager:(id)arg5 remoteSearchProvider:(id)arg6 observer:(id)arg7 observationIdentifier:(id)arg8 delegate:(id)arg9;
+- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 threadPersistence:(id)arg3 hookRegistry:(id)arg4 vipManager:(id)arg5 remoteSearchProvider:(id)arg6 observer:(id)arg7 observationIdentifier:(id)arg8 delegate:(id)arg9 observationResumer:(id)arg10;
 - (BOOL)isStarted;
 - (void)observer:(id)arg1 matchedAddedObjectIDs:(id)arg2 after:(id)arg3 extraInfo:(id)arg4;
 - (void)observer:(id)arg1 matchedAddedObjectIDs:(id)arg2 before:(id)arg3 extraInfo:(id)arg4;

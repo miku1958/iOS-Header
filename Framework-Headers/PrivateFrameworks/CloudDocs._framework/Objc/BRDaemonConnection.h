@@ -34,8 +34,8 @@
 - (void)_setupAndResume;
 - (id)initUsingUserLocalDaemon;
 - (id)initUsingUserLocalDaemonTokenService;
-- (struct BRXPCSyncProxy *)newSyncProxy;
-- (struct BRXPCSyncProxy *)newSyncTokenProxy;
+- (id)newSyncProxy;
+- (id)newSyncTokenProxy;
 
 @end
 

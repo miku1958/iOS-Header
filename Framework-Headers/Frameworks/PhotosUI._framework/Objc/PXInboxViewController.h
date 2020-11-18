@@ -49,6 +49,7 @@
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<PXNavigableForYouViewController> forYouNavigationDelegate; // @synthesize forYouNavigationDelegate=_forYouNavigationDelegate;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay; // @synthesize hasContentToDisplay=_hasContentToDisplay;
@@ -60,9 +61,6 @@
 @property (strong, nonatomic) PXPhotoKitUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 @property (nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
@@ -83,7 +81,7 @@
 - (id)_tableViewIndexPathFromDataSourceIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)_updateSeenState;
 - (void)_updateTableViewFrameAndBounds;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 - (void)gadgetControllerHasAppeared;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1;

@@ -30,9 +30,9 @@
 - (Class)attachmentViewControllerClass;
 - (double)availableWidthForTextContainer:(id)arg1;
 - (id)initWithData:(id)arg1 ofType:(id)arg2;
-- (struct UIView *)newlyCreatedView;
-- (struct UIViewController *)newlyCreatedViewControllerForManualRendering:(BOOL)arg1 layoutManager:(id)arg2;
-- (struct UIView *)newlyCreatedViewForManualRendering;
+- (id)newlyCreatedView;
+- (id)newlyCreatedViewControllerForManualRendering:(BOOL)arg1 layoutManager:(id)arg2;
+- (id)newlyCreatedViewForManualRendering;
 - (BOOL)requiresSpaceAfterAttachmentForPrinting;
 - (BOOL)supportsMultipleThumbnailsOnSameLine;
 - (BOOL)supportsThumbnailView;

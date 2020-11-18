@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class ICIAMMessageRule, ICIAMMetricEvent, NSMutableArray, NSString;
+@class ICIAMLocalNotification, ICIAMMessageRule, ICIAMMetricEvent, NSMutableArray, NSString;
 
 @interface ICIAMApplicationMessage : PBCodable <NSCopying>
 {
@@ -19,6 +19,8 @@
     int _globalPresentationPolicyGroup;
     ICIAMMetricEvent *_holdoutEvent;
     NSString *_identifier;
+    ICIAMMetricEvent *_impressionEvent;
+    ICIAMLocalNotification *_localNotification;
     int _maximumDisplays;
     int _messageType;
     int _modalPresentationStyle;
@@ -56,6 +58,8 @@
 @property (nonatomic) BOOL hasHasCloseButton;
 @property (readonly, nonatomic) BOOL hasHoldoutEvent;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (readonly, nonatomic) BOOL hasImpressionEvent;
+@property (readonly, nonatomic) BOOL hasLocalNotification;
 @property (nonatomic) BOOL hasMaximumDisplays;
 @property (nonatomic) BOOL hasMessageType;
 @property (nonatomic) BOOL hasModalPresentationStyle;
@@ -66,6 +70,8 @@
 @property (readonly, nonatomic) BOOL hasWebArchiveURL;
 @property (strong, nonatomic) ICIAMMetricEvent *holdoutEvent; // @synthesize holdoutEvent=_holdoutEvent;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) ICIAMMetricEvent *impressionEvent; // @synthesize impressionEvent=_impressionEvent;
+@property (strong, nonatomic) ICIAMLocalNotification *localNotification; // @synthesize localNotification=_localNotification;
 @property (nonatomic) int maximumDisplays; // @synthesize maximumDisplays=_maximumDisplays;
 @property (nonatomic) int messageType; // @synthesize messageType=_messageType;
 @property (nonatomic) int modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;

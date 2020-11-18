@@ -14,8 +14,10 @@
 {
     NSDictionary *_suggestedValuesDictionary;
     NSDictionary *_typedSuggestedValuesDictionary;
+    NSDictionary *_operatorsDictionary;
 }
 
+@property (strong, nonatomic, setter=_setOperatorsDictionary:) NSDictionary *_operatorsDictionary; // @synthesize _operatorsDictionary;
 @property (strong, nonatomic, setter=_setSuggestedValuesDictionary:) NSDictionary *_suggestedValuesDictionary; // @synthesize _suggestedValuesDictionary;
 @property (strong, nonatomic, setter=_setTypedSuggestedValuesDictionary:) NSDictionary *_typedSuggestedValuesDictionary; // @synthesize _typedSuggestedValuesDictionary;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,6 +31,7 @@
 - (void)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (BOOL)_isEmpty;
+- (void)_updateOperatorsForIntent:(id)arg1 JSONDictionary:(id)arg2;
 - (void)_updateSuggestedValuesForIntent:(id)arg1 decoder:(id)arg2 JSONDictionary:(id)arg3;
 - (id)valueForUndefinedKey:(id)arg1;
 

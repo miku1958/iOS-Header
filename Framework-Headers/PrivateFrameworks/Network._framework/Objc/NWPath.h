@@ -87,7 +87,7 @@
 - (BOOL)isListenerInterfaceSpecific;
 - (id)networkAgentsOfType:(Class)arg1;
 - (BOOL)shouldProbeConnectivity;
-- (BOOL)unsatisfiedVoluntaryAgentMatchesAddress:(id)arg1 triggerImmediately:(char *)arg2;
+- (BOOL)unsatisfiedVoluntaryAgentMatchesAddress:(id)arg1 triggerImmediately:(BOOL *)arg2;
 - (BOOL)usesInterfaceType:(long long)arg1;
 - (BOOL)usesNetworkAgent:(id)arg1;
 - (BOOL)usesNetworkAgentType:(Class)arg1;

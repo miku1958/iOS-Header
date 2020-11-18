@@ -33,8 +33,8 @@
 + (void)preloadPuppetNamed:(id)arg1;
 + (id)puppetNamed:(id)arg1 options:(id)arg2;
 + (id)puppetNames;
-+ (struct UIImage *)thumbnailForAnimojiNamed:(id)arg1 options:(id)arg2;
-+ (struct UIImage *)thumbnailForPuppetNamed:(id)arg1 options:(id)arg2;
++ (id)thumbnailForAnimojiNamed:(id)arg1 options:(id)arg2;
++ (id)thumbnailForPuppetNamed:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_decode:(id)arg1 error:(id *)arg2;
 - (void)_encode:(id)arg1;

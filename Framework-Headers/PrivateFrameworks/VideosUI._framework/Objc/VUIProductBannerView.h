@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     VUILabel *_logoTextView;
     VUILabel *_subTextView;
     VUILabel *_episodeInfoView;
+    _TVImageView *_logoTextGradientView;
     _TVImageView *_coverArtImageView;
     _TVImageView *_decorationImageView;
     _TVImageView *_decorationImageGradientView;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     VUIMediaTagsView *_tagsView;
     VUIMediaTagsView *_infoTagsView;
     VUILabel *_disclaimerTextView;
+    VUILabel *_promoTextView;
     VUILabel *_availabilityTextView;
     _TVImageView *_availabilityImageView;
     CAGradientLayer *_gradientLayer;
@@ -59,8 +61,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUIMediaTagsView *infoTagsView; // @synthesize infoTagsView=_infoTagsView;
 @property (strong, nonatomic) VUIProductBannerLayout *layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) _TVImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
+@property (strong, nonatomic) _TVImageView *logoTextGradientView; // @synthesize logoTextGradientView=_logoTextGradientView;
 @property (strong, nonatomic) VUILabel *logoTextView; // @synthesize logoTextView=_logoTextView;
 @property (nonatomic) BOOL prefersUberLayout; // @synthesize prefersUberLayout=_prefersUberLayout;
+@property (strong, nonatomic) VUILabel *promoTextView; // @synthesize promoTextView=_promoTextView;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
 @property (strong, nonatomic) VUILabel *subTextView; // @synthesize subTextView=_subTextView;
 @property (readonly) Class superclass;

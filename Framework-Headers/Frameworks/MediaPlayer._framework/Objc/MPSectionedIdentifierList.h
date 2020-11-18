@@ -61,8 +61,8 @@
 - (id)_sectionHeadEntryMapWithExclusiveAccessToken:(id)arg1;
 - (id)_startEntriesWithExclusiveAccessToken:(id)arg1;
 - (void)_stitchLastItemEntryToHeadEntry:(id)arg1 branchList:(id)arg2;
-- (void)_stitchPreviousEntry:(id)arg1 toEntry:(id)arg2 cloneIndex:(struct NSMutableDictionary *)arg3;
-- (void)_stitchWithPreviousEntry:(id)arg1 list:(id)arg2 cloneIndex:(struct NSMutableDictionary *)arg3;
+- (void)_stitchPreviousEntry:(id)arg1 toEntry:(id)arg2 cloneIndex:(id)arg3;
+- (void)_stitchWithPreviousEntry:(id)arg1 list:(id)arg2 cloneIndex:(id)arg3;
 - (id)_tailEntryForSectionIdentifier:(id)arg1 withExclusiveAccessToken:(id)arg2;
 - (void)addDataSource:(id)arg1 section:(id)arg2 afterHeadOfSection:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addDataSource:(id)arg1 section:(id)arg2 afterItem:(id)arg3 inSection:(id)arg4 completion:(CDUnknownBlockType)arg5;

@@ -90,6 +90,7 @@
 - (void)prefetchEventsFromUniversalDate:(id)arg1 toUniversalDate:(id)arg2 forAssetCollectionsSortedByStartDate:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (unsigned long long)relationshipHintForPerson:(id)arg1 usingLocales:(id)arg2;
 - (BOOL)routineIsAvailable;
+- (BOOL)shutdownForPhotoLibraryURL:(id)arg1;
 - (id)workCalendarEventsMatchingContactIdentifiers:(id)arg1 fromUniversalDate:(id)arg2 toUniversalDate:(id)arg3;
 
 @end

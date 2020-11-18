@@ -177,13 +177,15 @@
 
 	// Properties
 	var __sig : Int
-	var __opaque : (Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var __opaque : -ü
  }
 
  struct __C.os_unfair_lock_options_t {
 
 	// Properties
-	let rawValue : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : ·ü
  }
 
  enum __C.objc_AssociationPolicy { }
@@ -191,7 +193,8 @@
  struct __C.os_unfair_lock_s {
 
 	// Properties
-	var _os_unfair_lock_opaque : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _os_unfair_lock_opaque : ·ü
  }
 
  struct __C.FileAttributeKey {
@@ -203,11 +206,12 @@
  class TeaFoundation.DebugCacheRegistry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var cacheFileURLs : [URL] // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cacheFileURLs :  empty-list  // +0x10 (0x8)
 	var cacheUserDefaultsEntries : UserDefaultsEntry // +0x18 (0x8)
 
 	// Swift methods
-	0x2440  class func DebugCacheRegistry.__allocating_init() // init 
+	0x1d60  class func DebugCacheRegistry.__allocating_init() // init 
  }
 
  struct TeaFoundation.UserDefaultsEntry {
@@ -226,7 +230,8 @@
  struct TeaFoundation.Signpost {
 
 	// Properties
-	let createdDate : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let createdDate : …ò
 	let comment : String
 	let timeInterval : Double
  }
@@ -256,7 +261,7 @@
 	var objects : [Swift.AnyObject] // +0x18 (0x8)
 
 	// Swift methods
-	0x88d0  class func DisposableBag.__allocating_init(disposeOn:) // init 
+	0x7690  class func DisposableBag.__allocating_init(disposeOn:) // init 
  }
 
  class TeaFoundation.Localized : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -284,12 +289,12 @@
  class TeaFoundation.StartupTaskManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var tasksByGroup : [StartupTaskGroup : [StartupTaskType]] // +0x10 (0x8)
-	var promisesByGroup : [StartupTaskGroup : DeferredPromise<()>] // +0x18 (0x8)
+	var tasksByGroup : StartupTaskGroup // +0x10 (0x8)
+	var promisesByGroup : StartupTaskGroup // +0x18 (0x8)
 	var state : State // +0x20 (0x1)
 
 	// Swift methods
-	0x11810  class func StartupTaskManager.__allocating_init() // init 
+	0xf720  class func StartupTaskManager.__allocating_init() // init 
  }
 
  enum TeaFoundation.State {
@@ -297,6 +302,14 @@
 	// Properties
 	case notStarted  
 	case started  
+ }
+
+ enum TeaFoundation.Ternary {
+
+	// Properties
+	case true  
+	case false  
+	case unknown  
  }
 
  struct TeaFoundation.Safe {
@@ -331,7 +344,7 @@
 	var monitors : DisposableMonitor
 
 	// Swift methods
-	0x1c0f0  class func ApplicationStateManagerIOS.__allocating_init() // init 
+	0x192d0  class func ApplicationStateManagerIOS.__allocating_init() // init 
  }
 
  class TeaFoundation.ApplicationStateManagerMacOS : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ApplicationStateManagerType {
@@ -342,17 +355,17 @@
 	var isBecomingActive : Bool
 
 	// ObjC -> Swift bridged methods
-	0x1f930  @objc ApplicationStateManagerMacOS.windowDidBecomeFrontmostNotification <stripped>
-	0x1f950  @objc ApplicationStateManagerMacOS.windowDidLoseFrontmostNotification <stripped>
+	0x1c6c0  @objc ApplicationStateManagerMacOS.windowDidBecomeFrontmostNotification <stripped>
+	0x1c6e0  @objc ApplicationStateManagerMacOS.windowDidLoseFrontmostNotification <stripped>
 
 	// Swift methods
-	0x1e150  class func ApplicationStateManagerMacOS.__allocating_init() // init 
+	0x1b1b0  class func ApplicationStateManagerMacOS.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableMonitor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var monitor : weak ApplicationStateMonitor?
+	var monitor : ApplicationStateMonitor
 	var keepAliveObject : weak Swift.AnyObject?
 
 	// Swift methods
@@ -379,7 +392,7 @@
 	var whenActiveBlocks : [()]
 
 	// Swift methods
-	0x21290  class func RemoteNotificationManager.__allocating_init() // init 
+	0x1de30  class func RemoteNotificationManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -401,7 +414,8 @@
  class TeaFoundation.DynamicLocale : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LocaleType {
 
 	// Properties
-	var currentLocale : Locale // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var currentLocale : é // +0x0 (0x0)
 	var changeObserver : NSObject? // +0x0 (0x8)
 
 	// Swift methods
@@ -419,7 +433,7 @@
  class TeaFoundation.CallbackStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var store : [Key : [CallbackDefinitionType]] // +0x10 (0x8)
+	var store : Key // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -430,7 +444,7 @@
 
 	// Properties
 	let name : String // +0x0
-	let version : VersionNumber? // +0x10
+	let version : VersionNumber // +0x10
  }
 
  enum TeaFoundation.DeviceStorageDataClass {
@@ -452,19 +466,19 @@
  class TeaFoundation.DeviceStorageManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DeviceStorageManagerType {
 
 	// Properties
-	var observablePurgeUrgency : DeviceStoragePurgeUrgency
+	var observablePurgeUrgency : AsyncObservable
 	var purgeables : DisposablePurgeable
 	let lock : UnfairLock
 
 	// Swift methods
-	0x2ded0  class func DeviceStorageManager.__allocating_init() // init 
+	0x29d00  class func DeviceStorageManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposablePurgeable : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var purgeable : DeviceStoragePurgeable
-	var keepAliveObject : weak Swift.AnyObject?
+	var purgeable : DeviceStoragePurgeable // +0x10 (0x10)
+	var keepAliveObject : weak Swift.AnyObject? // +0x20 (0x8)
 
 	// Swift methods
  }
@@ -481,9 +495,11 @@
 
 	// Properties
 	let object : A?
-	let signposts : [Signpost<A>]
-	let startDate : Date
-	let endDate : Date
+	let signposts : Signpost
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startDate : …ò
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let endDate : …ò
 	let comment : String
  }
 
@@ -506,7 +522,8 @@
 
 	// Properties
 	case success : (value: A)
-	case failed : (error: Error)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failed : ëï
  }
 
  enum TeaFoundation.Errors {
@@ -521,7 +538,8 @@
  enum TeaFoundation.TestDataError {
 
 	// Properties
-	case invalidTestData : (error: Error)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case invalidTestData : ëï
 	case missingTestData  
  }
 
@@ -534,14 +552,15 @@
 
  class TeaFoundation.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3c910  @objc ManagerAssembly.init <stripped>
+	0x376e0  @objc ManagerAssembly.init <stripped>
  }
 
  struct TeaFoundation.SignpostRecorder {
 
 	// Properties
-	let createdDate : Date
-	var signposts : [Signpost<A>]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let createdDate : …ò
+	var signposts : Signpost
  }
 
  struct TeaFoundation.VersionNumber {
@@ -559,7 +578,7 @@
 	let callback : CallbackRegistrationType // +0x28 (0x28)
 
 	// Swift methods
-	0x3f100  class func ProxyContainer.__allocating_init(registry:publicContainer:) // init 
+	0x39d10  class func ProxyContainer.__allocating_init(registry:publicContainer:) // init 
  }
 
  class TeaFoundation.AsyncBlockOperation {
@@ -573,7 +592,8 @@
  enum TeaFoundation.StoreState {
 
 	// Properties
-	case error : Error
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case error : —ü
 	case data : A
 	case uninitialized  
  }
@@ -592,7 +612,8 @@
 
 	// Properties
 	case resolved : A1
-	case rejected : Error
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case rejected : —ü
 	case cancelled  
  }
 
@@ -609,7 +630,7 @@
 	let group : OS_dispatch_group // +0x10 (0x8)
 
 	// Swift methods
-	0x552f0  class func Synchronizer.__allocating_init() // init 
+	0x4e230  class func Synchronizer.__allocating_init() // init 
  }
 
  class TeaFoundation.RegistrationContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -627,7 +648,8 @@
 
 	// Properties
 	let value : A
-	let enteredAt : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let enteredAt : …ò
  }
 
  class TeaFoundation.URLSessionPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -638,14 +660,15 @@
 	let lock : UnfairLock // +0x20 (0x8)
 
 	// Swift methods
-	0x58f20  class func URLSessionPool.__allocating_init(size:configuration:delegate:delegateQueue:) // init 
+	0x51d50  class func URLSessionPool.__allocating_init(size:configuration:delegate:delegateQueue:) // init 
  }
 
  struct TeaFoundation.SignpostReporter {
 
 	// Properties
-	let createdDate : Date
-	var entries : [SignpostEntry<A>]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let createdDate : …ò
+	var entries : SignpostEntry
  }
 
  class TeaFoundation.AsyncObservable {
@@ -663,14 +686,14 @@
 	var workers : DisposableWorker
 
 	// Swift methods
-	0x5be70  class func BackgroundFetchManager.__allocating_init() // init 
+	0x54780  class func BackgroundFetchManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableWorker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var worker : BackgroundFetchWorker
-	var keepAliveObject : weak Swift.AnyObject?
+	var worker : BackgroundFetchWorker // +0x10 (0x10)
+	var keepAliveObject : weak Swift.AnyObject? // +0x20 (0x8)
 
 	// Swift methods
  }
@@ -687,10 +710,10 @@
 	let objc : NFResolver // +0x10 (0x8)
 	let publicResolver : Container // +0x18 (0x8)
 	let privateResolver : Container // +0x20 (0x8)
-	var context : Context? // +0x28 (0x8)
+	var context : Context // +0x28 (0x8)
 
 	// Swift methods
-	0x5f4d0  class func ProxyResolver.__allocating_init(objcResolver:publicResolver:privateResolver:) // init 
+	0x57470  class func ProxyResolver.__allocating_init(objcResolver:publicResolver:privateResolver:) // init 
  }
 
  class TeaFoundation.Accessor {
@@ -743,7 +766,7 @@
 
 	// Properties
 	let callbackStore : CallbackStore // +0x10 (0x8)
-	var objects : [Key : Any] // +0x18 (0x8)
+	var objects : Key // +0x18 (0x8)
 	let publicContainer : Container // +0x20 (0x8)
 	let contextContainer : Container // +0x28 (0x8)
 	var bridgedContext : NFContext // +0x30 (0x8)
@@ -756,7 +779,7 @@
 
 	// Properties
 	let base : VersionNumber // +0x0
-	let qualifier : VersionQualifier? // +0x8
+	let qualifier : VersionQualifier // +0x8
  }
 
  enum TeaFoundation.CollectionChange {
@@ -777,21 +800,24 @@
 
 	// Properties
 	let safe : Bool
-	let container : KeyedDecodingContainer<A>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let container : Õ
  }
 
  struct TeaFoundation.SafeishSingleValueDecodingContainer {
 
 	// Properties
 	let safe : Bool // +0x0
-	let container : SingleValueDecodingContainer // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let container : ¥Õ // +0x8
  }
 
  struct TeaFoundation.SafeishUnkeyedDecodingContainer {
 
 	// Properties
 	let safe : Bool // +0x0
-	var container : UnkeyedDecodingContainer // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var container : 'Õ // +0x8
  }
 
  struct TeaFoundation.Anything { }
@@ -853,11 +879,11 @@
  class TeaFoundation.Container : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var environment : Environment
-	var definitions : Key
-	var pool : Pool
-	var lazyRegistrations : [()]
-	let callbackStore : CallbackStore
+	var environment : Environment // +0x0
+	var definitions : Key // +0x0
+	var pool : Pool // +0x4e50
+	var lazyRegistrations : [()] // +0x0
+	let callbackStore : CallbackStore // +0x3960
 
 	// Swift methods
  }
@@ -906,9 +932,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8cec0  @objc Assembly.assemblies <stripped>
-	0x8d0a0  @objc Assembly.init <stripped>
-	0x8d1f0  @objc Assembly..cxx_destruct <stripped>
+	0x818f0  @objc Assembly.assemblies <stripped>
+	0x81a90  @objc Assembly.init <stripped>
+	0x81990  @objc Assembly..cxx_destruct <stripped>
  }
 
  class TeaFoundation.Node {
@@ -922,8 +948,8 @@
 	let context : Context // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x947b0  @objc ProxyContext.init <stripped>
-	0x94830  @objc ProxyContext..cxx_destruct <stripped>
+	0x88660  @objc ProxyContext.init <stripped>
+	0x886c0  @objc ProxyContext..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -958,11 +984,11 @@
  class TeaFoundation.UnfairLock : _SwiftObject /usr/lib/swift/libswiftCore.dylib, Lock {
 
 	// Properties
-	var unfairLock : UnsafeMutablePointer<os_unfair_lock_s>
-	let options : os_unfair_lock_options_t
+	var unfairLock : os_unfair_lock_s // +0x0
+	let options : os_unfair_lock_options_t // +0x0
 
 	// Swift methods
-	0x97990  class func UnfairLock.__allocating_init(options:) // init 
+	0x8b2f0  class func UnfairLock.__allocating_init(options:) // init 
  }
 
  struct TeaFoundation.Options {
@@ -977,30 +1003,33 @@
 	var mutex : _opaque_pthread_mutex_t
 
 	// Swift methods
-	0x97b30  class func MutexLock.__allocating_init() // init 
+	0x8b400  class func MutexLock.__allocating_init() // init 
  }
 
  class TeaFoundation.JSONDeserializer {
  struct TeaFoundation.DeferredPromise {
 
 	// Properties
-	var promise : Promise<A>?
+	var promise : Promise
 	var resolve : (_:)?
-	var reject : (_:)?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var reject :  empty-list 
  }
 
  struct TeaFoundation.SignpostReport {
 
 	// Properties
-	let startDate : Date
-	let endDate : Date
-	let entries : [SignpostEntry<A>]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let startDate : …ò
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let endDate : …ò
+	let entries : SignpostEntry
  }
 
  class TeaFoundation.SingletonPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var singletons : [Key : Any]
+	var singletons : Key
 
 	// Swift methods
  }
@@ -1009,7 +1038,7 @@
 
 	// Properties
 	var depth : UInt
-	var graph : [Key : Any]
+	var graph : Key
 	var singletonPool : SingletonPool
 	var drainBlocks : [()]
 	var drainCopyPoolGraphBlocks : Pool

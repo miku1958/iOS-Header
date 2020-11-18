@@ -8,7 +8,7 @@
 
 #import <Sharing/VSSpeechSynthesizerDelegate-Protocol.h>
 
-@class NSString, SFSiriRequest, VSSpeechSynthesizer;
+@class NSMutableArray, NSString, SFSiriRequest, VSSpeechSynthesizer;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFSiriClient : NSObject <VSSpeechSynthesizerDelegate>
@@ -18,7 +18,7 @@
     SFSiriRequest *_currentRequest;
     NSObject<OS_dispatch_source> *_currentTimer;
     NSString *_languageCode;
-    struct NSMutableArray *_requests;
+    NSMutableArray *_requests;
     VSSpeechSynthesizer *_speechSynthesizer;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;

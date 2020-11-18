@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) BOOL lastVisitWasFailure;
 @property (readonly, nonatomic) double lastVisitedTimeInterval;
 @property (readonly, nonatomic) NSString *originalURLString;
+@property (readonly, nonatomic) BOOL shouldPreload;
 @property (readonly, nonatomic) long long visitCount;
 
 - (void)enumeratePageTitlesUsingBlock:(void (^)(NSString *, unsigned long long, BOOL *))arg1;
@@ -23,7 +24,7 @@
 - (BOOL)matchesAutocompleteTrigger:(NSString *)arg1;
 - (NSString *)pageTitleAtIndex:(unsigned long long)arg1;
 - (NSString *)pageTitleForUserVisibleURLStringAtIndex:(unsigned long long)arg1;
-- (float)topSitesScoreForPageTitleAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
+- (float)topSitesScoreForPageTitleAtTime:(double)arg1;
 - (float)topSitesScoreForURLStringAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
 - (NSString *)userVisibleURLStringAtIndex:(unsigned long long)arg1;
 - (NSString *)userVisibleURLStringForPageTitleAtIndex:(unsigned long long)arg1;

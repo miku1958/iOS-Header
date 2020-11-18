@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/PKPeerPaymentRegistrationDelegate-Protocol.h>
+
 @class PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKXPCService;
 @protocol OS_dispatch_queue;
 
-@interface PKPeerPaymentService : NSObject
+@interface PKPeerPaymentService : NSObject <PKPeerPaymentRegistrationDelegate>
 {
     PKXPCService *_remoteService;
     PKPeerPaymentAccount *_account;
@@ -45,6 +47,7 @@
 - (void)receivedPeerPaymentMessageData:(id)arg1;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerDeviceWithForceReregister:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)registerDeviceWithRegistrationURL:(id)arg1 pushToken:(id)arg2 forceReregister:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)registrationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resumeAccountChangedNotifications;

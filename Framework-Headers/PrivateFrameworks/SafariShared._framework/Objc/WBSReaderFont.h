@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
 @property (readonly, nonatomic) NSString *familyNameForWebContent;
 @property (readonly, nonatomic, getter=isInstalled) BOOL installed;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)fontWithFamilyName:(id)arg1 displayName:(id)arg2;
 + (id)systemFont;
@@ -34,10 +35,8 @@
 - (id)_localizedName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)fontOfSize:(double)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)isInstalledWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

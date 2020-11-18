@@ -17,6 +17,7 @@
 - (BOOL)_axIsInvisibleButton;
 - (BOOL)accessibilityElementsHidden;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

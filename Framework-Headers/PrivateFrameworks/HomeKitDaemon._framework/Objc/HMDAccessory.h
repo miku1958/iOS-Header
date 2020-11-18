@@ -62,6 +62,7 @@
     NSNumber *_categoryIdentifier;
     NSString *_configuredName;
     unsigned long long _accessoryReprovisionState;
+    double _lastPairingFailureTime;
 }
 
 @property (readonly, copy) NSArray *accessoryProfiles;
@@ -91,6 +92,7 @@
 @property (readonly, nonatomic) NSNumber *initialCategoryIdentifier; // @synthesize initialCategoryIdentifier=_initialCategoryIdentifier;
 @property (readonly, copy, nonatomic) NSString *initialManufacturer; // @synthesize initialManufacturer=_initialManufacturer;
 @property (readonly, copy, nonatomic) NSString *initialModel; // @synthesize initialModel=_initialModel;
+@property (nonatomic) double lastPairingFailureTime; // @synthesize lastPairingFailureTime=_lastPairingFailureTime;
 @property (readonly, copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
@@ -149,6 +151,7 @@
 - (void)_registerForMessages;
 - (void)_relayIdentifyAccessorytoResidentForMessage:(id)arg1;
 - (void)_remoteAccessEnabled:(BOOL)arg1;
+- (void)_renameAccessory:(id)arg1 resetName:(BOOL)arg2 message:(id)arg3;
 - (BOOL)_shouldFilterAccessoryProfile:(id)arg1;
 - (id)_updateCategory:(id)arg1 notifyClients:(BOOL)arg2;
 - (BOOL)_updateRoom:(id)arg1;
@@ -220,7 +223,7 @@
 - (void)updateMediaSession:(id)arg1;
 - (void)updateProvidedName:(id)arg1;
 - (void)updateRoom:(id)arg1;
-- (id)url;
+- (id)urlString;
 - (id)vendorDetailsForAWD;
 
 @end

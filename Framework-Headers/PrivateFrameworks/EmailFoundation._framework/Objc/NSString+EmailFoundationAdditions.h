@@ -46,6 +46,7 @@
 - (id)ef_quotedWordComponentsForLanguages:(id)arg1;
 - (const char *)ef_sqliteAllocatedStringWithHexFromUTF8;
 - (id)ef_stringByAddingPercentEscapesUsingEncoding:(unsigned long long)arg1;
+- (id)ef_stringByApplyingJavaScriptArguments:(id)arg1;
 - (id)ef_stringByEscapingForXML;
 - (id)ef_stringByEscapingSQLLikeSpecialCharactersWithEscapeCharater:(unsigned short)arg1;
 - (id)ef_stringByEscapingSingleQuotes;

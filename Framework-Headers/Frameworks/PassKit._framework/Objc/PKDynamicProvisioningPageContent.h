@@ -44,6 +44,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDictonary:(id)arg1;
+- (BOOL)isEmptyPage;
 
 @end
 

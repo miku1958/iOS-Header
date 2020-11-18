@@ -12,6 +12,7 @@
 @protocol _SFBrowserDocument <NSObject>
 
 @property (readonly, nonatomic) NSURL *URLForPerSitePreferences;
+@property (readonly, nonatomic) _SFWebView *activeWebView;
 @property (readonly, nonatomic) BOOL canHideToolbar;
 @property (readonly, nonatomic) id<SFReaderContext> readerContext;
 @property (readonly, nonatomic) _SFReloadOptionsController *reloadOptionsController;

@@ -15,7 +15,7 @@
 {
     BOOL _handoffRequiresUserInteraction;
     unsigned long long _timestamp;
-    struct NSUUID *_turnIdentifier;
+    NSUUID *_turnIdentifier;
     AFRequestCompletionOptions *_requestCompletionOptions;
     NSUUID *_uuid;
     unsigned long long _options;
@@ -41,6 +41,9 @@
     NSString *_previousUtterance;
     NSString *_sessionId;
     NSString *_utteranceSource;
+    NSString *_expectedSpeakerSharedUserID;
+    unsigned long long _expectedSpeakerConfidenceScore;
+    NSDictionary *_nonspeakerConfidenceScores;
 }
 
 @property (nonatomic) long long activationEvent; // @synthesize activationEvent=_activationEvent;
@@ -49,12 +52,15 @@
 @property (copy, nonatomic) NSString *correctedSpeech; // @synthesize correctedSpeech=_correctedSpeech;
 @property (copy, nonatomic) NSDictionary *correctedSpeechContext; // @synthesize correctedSpeechContext=_correctedSpeechContext;
 @property (copy, nonatomic) NSString *directAction; // @synthesize directAction=_directAction;
+@property (nonatomic) unsigned long long expectedSpeakerConfidenceScore; // @synthesize expectedSpeakerConfidenceScore=_expectedSpeakerConfidenceScore;
+@property (copy, nonatomic) NSString *expectedSpeakerSharedUserID; // @synthesize expectedSpeakerSharedUserID=_expectedSpeakerSharedUserID;
 @property (copy, nonatomic) NSString *handoffNotification; // @synthesize handoffNotification=_handoffNotification;
 @property (copy, nonatomic) NSString *handoffOriginDeviceName; // @synthesize handoffOriginDeviceName=_handoffOriginDeviceName;
 @property (copy, nonatomic) NSData *handoffRequestData; // @synthesize handoffRequestData=_handoffRequestData;
 @property (nonatomic) BOOL handoffRequiresUserInteraction; // @synthesize handoffRequiresUserInteraction=_handoffRequiresUserInteraction;
 @property (copy, nonatomic) NSString *handoffURLString; // @synthesize handoffURLString=_handoffURLString;
 @property (copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
+@property (copy, nonatomic) NSDictionary *nonspeakerConfidenceScores; // @synthesize nonspeakerConfidenceScores=_nonspeakerConfidenceScores;
 @property (copy, nonatomic) NSNumber *notifyState; // @synthesize notifyState=_notifyState;
 @property (copy, nonatomic) NSNumber *onDeviceUtterancesPresent; // @synthesize onDeviceUtterancesPresent=_onDeviceUtterancesPresent;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;

@@ -14,6 +14,7 @@
     struct _NSRange _currentChunk;
     BOOL _predictedByTagger;
     void *_nlTagger;
+    void *_namedEntityTagger;
     BOOL _tagged;
     NSMutableArray *_tags;
     NSMutableOrderedSet *_unpredictedAmbiguousLangMaps;
@@ -36,6 +37,7 @@
 - (BOOL)_addLanguageTagForDateIfNecessary;
 - (void)_addTag;
 - (id)_allLangIDs;
+- (BOOL)_isNamedEntity:(id)arg1;
 - (BOOL)_isStringCombinationOfCommonAndEmoji:(id)arg1;
 - (CDStruct_3a8d9e70 *)_languageHintsEvenlyDistributedWithProbability:(float)arg1 excludingHints:(id)arg2;
 - (void)_manuallyProcessContentWithRange:(struct _NSRange)arg1;

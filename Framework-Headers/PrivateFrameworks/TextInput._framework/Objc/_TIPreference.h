@@ -12,6 +12,7 @@
 {
     NSString *_key;
     NSString *_domain;
+    NSString *_fallbackKey;
     id _defaultValue;
     id _currentValue;
 }
@@ -19,9 +20,11 @@
 @property (strong, nonatomic) id currentValue; // @synthesize currentValue=_currentValue;
 @property (strong, nonatomic) id defaultValue; // @synthesize defaultValue=_defaultValue;
 @property (strong, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property (strong, nonatomic) NSString *fallbackKey; // @synthesize fallbackKey=_fallbackKey;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 
 + (id)preferenceWithKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3;
++ (id)preferenceWithKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3 fallbackKey:(id)arg4;
 - (void).cxx_destruct;
 
 @end

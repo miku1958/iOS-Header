@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, CAMStageLightAnimator, CAMStageLightOverlayCircleView, UIImageView;
+@class CAGradientLayer, CAMStageLightAnimator, CAShapeLayer, UIImageView;
 
 @interface CAMStageLightOverlayView : UIView
 {
@@ -16,7 +16,7 @@
     double _bottomContentInset;
     UIView *__tintView;
     UIImageView *__vignetteView;
-    CAMStageLightOverlayCircleView *__circleView;
+    CAShapeLayer *__circleLayer;
     unsigned long long __activeTimerID;
     CAGradientLayer *__gradientLayer;
     CAMStageLightAnimator *__animator;
@@ -25,7 +25,7 @@
 
 @property (nonatomic, setter=_setActiveTimerID:) unsigned long long _activeTimerID; // @synthesize _activeTimerID=__activeTimerID;
 @property (strong, nonatomic, setter=_setAnimator:) CAMStageLightAnimator *_animator; // @synthesize _animator=__animator;
-@property (readonly, nonatomic) CAMStageLightOverlayCircleView *_circleView; // @synthesize _circleView=__circleView;
+@property (readonly, nonatomic) CAShapeLayer *_circleLayer; // @synthesize _circleLayer=__circleLayer;
 @property (readonly, nonatomic) CAGradientLayer *_gradientLayer; // @synthesize _gradientLayer=__gradientLayer;
 @property (readonly, nonatomic) UIView *_tintView; // @synthesize _tintView=__tintView;
 @property (readonly, nonatomic) UIImageView *_vignetteView; // @synthesize _vignetteView=__vignetteView;

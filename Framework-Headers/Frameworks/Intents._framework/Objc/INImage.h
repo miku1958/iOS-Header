@@ -76,7 +76,7 @@
 - (id)_initWithURLRepresentation:(id)arg1;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (void)_loadImageDataAndSizeWithHelper:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_preferredImageLoader;
 - (void)_requestProxy:(CDUnknownBlockType)arg1;

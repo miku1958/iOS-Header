@@ -24,7 +24,6 @@
 
 @property (readonly, nonatomic) PHLivePhotoRequestOptions *livePhotoOptions; // @synthesize livePhotoOptions=_livePhotoOptions;
 
-+ (long long)type;
 - (void).cxx_destruct;
 - (id)_lazyImageProgress;
 - (id)_lazyVideoProgress;
@@ -39,6 +38,7 @@
 - (id)progresses;
 - (BOOL)representsShareableHighQualityResource;
 - (BOOL)shouldReportProgress;
+- (long long)type;
 
 @end
 

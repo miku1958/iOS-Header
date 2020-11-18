@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSArray *legacyRecentDisplayItems; // @dynamic legacyRecentDisplayItems;
 @property (strong, nonatomic) NSArray *recentsPlistRepresentation; // @dynamic recentsPlistRepresentation;
 @property (readonly, nonatomic, getter=isSpringBoardKillable) BOOL springBoardKillable; // @dynamic springBoardKillable;
+@property (readonly, nonatomic, getter=areTrackpadSwitcherGesturesEnabled) BOOL trackpadSwitcherGesturesEnabled; // @dynamic trackpadSwitcherGesturesEnabled;
 
 - (void)_bindAndRegisterDefaults;
 - (void)clearLegacyDefaults;

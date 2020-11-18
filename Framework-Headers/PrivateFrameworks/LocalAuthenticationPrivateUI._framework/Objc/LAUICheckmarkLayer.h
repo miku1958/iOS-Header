@@ -34,8 +34,8 @@
 - (void)dealloc;
 - (id)init;
 - (void)layoutSublayers;
-- (void)setPrimaryColor:(struct UIColor *)arg1;
-- (void)setPrimaryColor:(struct UIColor *)arg1 animated:(BOOL)arg2;
+- (void)setPrimaryColor:(id)arg1;
+- (void)setPrimaryColor:(id)arg1 animated:(BOOL)arg2;
 - (void)setRevealed:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setRevealed:(BOOL)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 

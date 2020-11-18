@@ -28,6 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType; // @synthesize gadgetType=_gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -39,14 +40,11 @@
 @property (nonatomic) long long priority;
 @property (strong, nonatomic) UIButton *reviewButton; // @synthesize reviewButton=_reviewButton;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) struct CGRect visibleContentRect;
 
 - (void).cxx_destruct;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 - (id)initWithPerson:(id)arg1;
 - (void)reviewButtonTapped:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

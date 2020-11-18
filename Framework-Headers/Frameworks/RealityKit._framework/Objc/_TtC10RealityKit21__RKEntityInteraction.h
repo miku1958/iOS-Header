@@ -14,6 +14,7 @@
     MISSING_TYPE *action;
     MISSING_TYPE *alternateAction;
     MISSING_TYPE *enabled;
+    MISSING_TYPE *accessibilityDescription;
 }
 
 @end

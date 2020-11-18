@@ -123,7 +123,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_dumpItemsToContext:(id)arg1 includeAllItems:(BOOL)arg2 error:(id *)arg3;
 - (void)_dumpRecursivePropertiesOfItemByRowID:(unsigned long long)arg1 context:(id)arg2 depth:(int)arg3;
 - (void)_enumerateFaultsWithBlock:(CDUnknownBlockType)arg1 rowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3;
-- (struct PQLResultSet *)_faultsEnumeratorFromRow:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
+- (id)_faultsEnumeratorFromRow:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
 - (void)_finishedProcessingItemThatMovedToThisZone:(id)arg1;
 - (void)_finishedReset:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fixupMissingCrossMovedItems;
@@ -163,7 +163,7 @@ __attribute__((visibility("hidden")))
 - (void)_t_resumeSyncDown;
 - (void)_t_resumeSyncUp;
 - (void)addSyncDownDependency:(id)arg1;
-- (struct PQLResultSet *)allItems;
+- (id)allItems;
 - (id)asPrivateClientZone;
 - (id)asSharedClientZone;
 - (void)associateWithServerZone:(id)arg1;
@@ -185,7 +185,7 @@ __attribute__((visibility("hidden")))
 - (void)disconnectNSMDQListenerAsync;
 - (id)documentItemByItemID:(id)arg1;
 - (id)documentItemByItemID:(id)arg1 db:(id)arg2;
-- (struct PQLResultSet *)documentsNotIdleEnumeratorWithDB:(id)arg1;
+- (id)documentsNotIdleEnumeratorWithDB:(id)arg1;
 - (BOOL)dumpActivityToContext:(id)arg1 includeExpensiveActivity:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)dumpStatusToContext:(id)arg1 error:(id *)arg2;
 - (BOOL)dumpTablesToContext:(id)arg1 includeAllItems:(BOOL)arg2 error:(id *)arg3;
@@ -228,9 +228,9 @@ __attribute__((visibility("hidden")))
 - (void)itemCrossZoneMoved:(id)arg1 toParentID:(id)arg2;
 - (void)itemMovedIntoShareInThisZone:(id)arg1 associatedItemID:(id)arg2;
 - (BOOL)itemTypeByItemID:(id)arg1 db:(id)arg2;
-- (struct PQLResultSet *)itemsEnumeratorWithDB:(id)arg1;
-- (struct PQLResultSet *)itemsParentedToThisZoneButLivingInAnOtherZone;
-- (struct PQLResultSet *)itemsWithInFlightDiffsEnumerator;
+- (id)itemsEnumeratorWithDB:(id)arg1;
+- (id)itemsParentedToThisZoneButLivingInAnOtherZone;
+- (id)itemsWithInFlightDiffsEnumerator;
 - (void)learnCKInfosFromSavedRecords:(id)arg1 isOutOfBandModifyRecords:(BOOL)arg2;
 - (void)networkReachabilityChanged:(BOOL)arg1;
 - (unsigned long long)nextSyncUpRequestID;

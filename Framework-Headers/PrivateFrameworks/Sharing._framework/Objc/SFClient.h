@@ -49,8 +49,10 @@
 - (void)repairDevice:(id)arg1 flags:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)retriggerProximityPairing:(CDUnknownBlockType)arg1;
 - (void)retriggerProximitySetup:(CDUnknownBlockType)arg1;
+- (void)setAudioRoutingScore:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setupDevice:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showDevicePickerWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)subCredentialPresentCardWithParams:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)testContinuityKeyboardBegin:(BOOL)arg1;
 - (void)triggerHomeKitDeviceDetectedWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)triggerProximityAutoFillDetectedWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;

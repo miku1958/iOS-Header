@@ -368,6 +368,7 @@
 + (BOOL)_shouldAnimateTransitions;
 + (BOOL)_shouldDeferTransitions;
 + (BOOL)_shouldForwardViewWillTransitionToSize;
++ (BOOL)_shouldRememberFocusForDismissal;
 + (BOOL)_shouldSendLegacyMethodsFromViewWillTransitionToSize;
 + (BOOL)_shouldUseLegacyUnwindDestinationSearch;
 + (double)_slimHorizontalContentMargin;

@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)fileQueue;
 + (id)folderPathForDocumentInfoCollection:(id)arg1;
 + (id)folderPathForDocumentInfoCollectionIdentifier:(id)arg1;
-+ (void)generatePDFsIfNecessaryForDocumentInfoCollection:(id)arg1 imageCache:(id)arg2 displayWindow:(struct UIWindow *)arg3 presentingViewController:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
++ (void)generatePDFsIfNecessaryForDocumentInfoCollection:(id)arg1 imageCache:(id)arg2 displayWindow:(id)arg3 presentingViewController:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 + (void)initialize;
 + (id)pdfURLForDocumentInfoCollection:(id)arg1;
 + (void)performPDFGenerationWithGenerator:(id)arg1 docInfoCollection:(id)arg2 imageCache:(id)arg3 progress:(id)arg4;

@@ -6,12 +6,10 @@
 
 #import <SearchFoundation/SFMoreResults.h>
 
-@class NSURL, NSXPCListenerEndpoint, PARSessionConfiguration;
+@class NSURL;
 
 @interface PARAsyncMoreResults : SFMoreResults
 {
-    NSXPCListenerEndpoint *_endpoint;
-    PARSessionConfiguration *_configuration;
     double _scale;
     NSURL *_moreResultsURL;
     unsigned long long _queryId;
@@ -19,8 +17,6 @@
 }
 
 @property (readonly, nonatomic) unsigned long long clientQueryId; // @synthesize clientQueryId=_clientQueryId;
-@property (readonly, nonatomic) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (readonly, nonatomic) NSXPCListenerEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly, copy, nonatomic) NSURL *moreResultsURL; // @synthesize moreResultsURL=_moreResultsURL;
 @property (readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (nonatomic) double scale; // @synthesize scale=_scale;

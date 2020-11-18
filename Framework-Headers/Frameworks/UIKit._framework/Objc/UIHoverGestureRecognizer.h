@@ -12,9 +12,17 @@
 {
     UIHoverEvent *_currentHoverEvent;
     UITouch *_currentTouch;
+    BOOL _pausesWhilePanning;
+    long long _previousTrackpadFingerDownCount;
+    long long _trackpadFingerDownCount;
 }
 
+@property (nonatomic, getter=_pausesWhilePanning, setter=_setPausesWhilePanning:) BOOL pausesWhilePanning; // @synthesize pausesWhilePanning=_pausesWhilePanning;
+@property (readonly, nonatomic, getter=_previousTrackpadFingerDownCount) long long previousTrackpadFingerDownCount; // @synthesize previousTrackpadFingerDownCount=_previousTrackpadFingerDownCount;
+@property (readonly, nonatomic, getter=_trackpadFingerDownCount) long long trackpadFingerDownCount; // @synthesize trackpadFingerDownCount=_trackpadFingerDownCount;
+
 - (void).cxx_destruct;
+- (BOOL)_affectedByGesture:(id)arg1;
 - (void)_hoverCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_hoverEntered:(id)arg1 withEvent:(id)arg2;
 - (void)_hoverExited:(id)arg1 withEvent:(id)arg2;
@@ -28,7 +36,6 @@
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (struct CGPoint)locationInView:(id)arg1;
 - (void)reset;
-- (void)setView:(id)arg1;
 
 @end
 

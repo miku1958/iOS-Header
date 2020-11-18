@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraRecordingGeneralConfiguration, HMDCameraRecordingSelectedConfiguration, HMDCameraRecordingSupportedAudioConfiguration, HMDCameraRecordingSupportedVideoConfiguration, HMDHAPAccessory, HMDService, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSObject, NSString;
+@class HMDCameraRecordingGeneralConfiguration, HMDCameraRecordingSelectedConfiguration, HMDCameraRecordingSupportedAudioConfiguration, HMDCameraRecordingSupportedVideoConfiguration, HMDHAPAccessory, HMDService, NSDate, NSDictionary, NSNumber, NSObject, NSString;
 @protocol HMDCameraRecordingSettingsControlDelegate, OS_dispatch_queue;
 
 @interface HMDCameraRecordingSettingsControl : HMFObject <HMFLogging>
@@ -24,7 +24,7 @@
     HMDCameraRecordingGeneralConfiguration *_supportedRecordingConfiguration;
     HMDCameraRecordingSupportedVideoConfiguration *_supportedVideoConfiguration;
     HMDCameraRecordingSupportedAudioConfiguration *_supportedAudioConfiguration;
-    NSMutableDictionary *_characteristicByType;
+    NSDictionary *_characteristicByType;
     HMDCameraRecordingSelectedConfiguration *_currentSelectedConfiguration;
     NSString *_clientIdentifier;
     NSDate *_configureStartDate;
@@ -33,7 +33,7 @@
 @property (readonly, weak) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, getter=isCameraConfiguredForRecording) BOOL cameraConfiguredForRecording;
 @property BOOL canConfigureCameraForRecording; // @synthesize canConfigureCameraForRecording=_canConfigureCameraForRecording;
-@property (readonly) NSMutableDictionary *characteristicByType; // @synthesize characteristicByType=_characteristicByType;
+@property (copy) NSDictionary *characteristicByType; // @synthesize characteristicByType=_characteristicByType;
 @property (readonly, copy) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property BOOL configureCameraInProgress; // @synthesize configureCameraInProgress=_configureCameraInProgress;
 @property (strong) NSDate *configureStartDate; // @synthesize configureStartDate=_configureStartDate;

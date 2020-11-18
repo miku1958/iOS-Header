@@ -4,33 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/VUILibraryFetchControllerViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <VideosUI/VUILibraryCategoryMenuViewModelDelegate-Protocol.h>
+#import <VideosUI/VUIFamilySharingContentProtocol-Protocol.h>
+#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 #import <VideosUI/VUILibrarySplitViewControllerDelegate-Protocol.h>
 
-@class NSSet, NSString, VUIDownloadViewController, VUILibraryCategoryMenuViewModel, VUILibrarySplitViewController;
+@class NSString, UINavigationController, VUIDownloadViewController, VUIFamilyMember, VUILibraryMenuDataSource, VUILibrarySplitViewController, VUIMediaLibrary, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryIpadMainViewController : VUILibraryFetchControllerViewController <VUILibraryCategoryMenuViewModelDelegate, VUILibrarySplitViewControllerDelegate, UIGestureRecognizerDelegate>
+@interface VUILibraryIpadMainViewController : UIViewController <VUILibraryDataSourceDelegate, VUILibrarySplitViewControllerDelegate, UIGestureRecognizerDelegate, VUIFamilySharingContentProtocol>
 {
     BOOL _areLocalMediaItemsAvailable;
-    VUILibraryCategoryMenuViewModel *_categoryViewModel;
-    NSSet *_validCategories;
+    VUIFamilyMember *_familyMember;
+    VUILibraryMenuDataSource *_menuDataSource;
     VUILibrarySplitViewController *_librarySplitViewController;
     VUIDownloadViewController *_downloadViewController;
+    UINavigationController *_downloadNavigationViewController;
+    VUIViewControllerContentPresenter *_contentPresenter;
+    VUIMediaLibrary *_mediaLibrary;
 }
 
 @property (nonatomic) BOOL areLocalMediaItemsAvailable; // @synthesize areLocalMediaItemsAvailable=_areLocalMediaItemsAvailable;
-@property (strong, nonatomic) VUILibraryCategoryMenuViewModel *categoryViewModel; // @synthesize categoryViewModel=_categoryViewModel;
+@property (strong, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UINavigationController *downloadNavigationViewController; // @synthesize downloadNavigationViewController=_downloadNavigationViewController;
 @property (strong, nonatomic) VUIDownloadViewController *downloadViewController; // @synthesize downloadViewController=_downloadViewController;
+@property (strong, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUILibrarySplitViewController *librarySplitViewController; // @synthesize librarySplitViewController=_librarySplitViewController;
+@property (readonly, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
+@property (strong, nonatomic) VUILibraryMenuDataSource *menuDataSource; // @synthesize menuDataSource=_menuDataSource;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSSet *validCategories; // @synthesize validCategories=_validCategories;
 
 - (void).cxx_destruct;
 - (void)_accountsChanged:(id)arg1;
@@ -38,23 +45,25 @@ __attribute__((visibility("hidden")))
 - (void)_addNotificationObserversWithDeviceLibrary:(id)arg1;
 - (id)_deviceMediaLibrary;
 - (void)_deviceMediaLibraryUpdateStateDidChange:(id)arg1;
+- (BOOL)_gestureRecognizerShouldBegin;
 - (BOOL)_isDeviceMediaLibraryInitialUpdateInProgress;
 - (void)_networkReachabilityDidChange:(id)arg1;
 - (void)_removeMediaLibraryNotificationObservers;
 - (void)_removeNotificationObserversWithDeviceLibrary:(id)arg1;
 - (void)_setupDownloadViewController;
+- (BOOL)_shouldShowSplitViewWithCategories:(id)arg1;
 - (void)_startMonitoringDeviceMediaLibraryInitialUpdate;
 - (void)_stopMonitoringDeviceMediaLibraryInitialUpdate;
 - (void)_updateVisibleViewControllerForCategories:(id)arg1 error:(id)arg2;
-- (void)categoryViewModel:(id)arg1 categoriesDidChange:(id)arg2;
-- (void)categoryViewModel:(id)arg1 fetchDidCompleteWithCategories:(id)arg2 error:(id)arg3;
+- (void)dataSourceDidFinishFetching:(id)arg1;
 - (void)dealloc;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (id)initWithMediaLibrary:(id)arg1;
+- (id)initWithMenuDataSource:(id)arg1;
 - (void)librarySplitViewControllerShouldDismiss:(id)arg1;
 - (void)loadView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 - (BOOL)vui_ppt_isLoading;
 
 @end

@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsUI2/TSPPTRouterType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI29PPTRouter : _TtCs12_SwiftObject <TSPPTRouterType>
+@interface _TtC7NewsUI29PPTRouter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *navigator;
 }

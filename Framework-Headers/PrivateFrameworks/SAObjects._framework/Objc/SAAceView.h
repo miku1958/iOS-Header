@@ -22,6 +22,7 @@
 @property (copy, nonatomic) NSNumber *deferredRendering;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isTransient;
 @property (copy, nonatomic) NSNumber *listenAfterSpeaking;
 @property (copy, nonatomic) NSDictionary *speakableContextInfo;
 @property (copy, nonatomic) NSString *speakableText;

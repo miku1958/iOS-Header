@@ -54,11 +54,9 @@
 - (void).cxx_destruct;
 - (void)_appleIDTextFieldDidChange:(id)arg1;
 - (void)_beginAuthenticationIfPossibleWithOption:(unsigned long long)arg1;
-- (void)_hidebusyWorkUI;
 - (void)_passwordTextFieldDidChange:(id)arg1;
 - (void)_prefillAuthFields;
 - (void)_setPasswordFieldHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_startBusyWorkUI;
 - (void)_updateFonts:(id)arg1;
 - (void)_updatePlaceholderIfNeeded;
 - (void)_updateSignInButtonState;
@@ -76,6 +74,8 @@
 - (void)setTertiaryButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)setUsesDarkMode:(BOOL)arg1;
 - (void)signInButtonWasTapped:(id)arg1;
+- (void)startAnimating;
+- (void)stopAnimating;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

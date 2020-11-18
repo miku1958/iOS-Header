@@ -10,9 +10,9 @@
 
 @interface PXSearchToken : NSObject
 {
-    struct UISearchToken *_searchObject;
+    UISearchToken *_searchObject;
     PXSearchTokenRepresentedObject *_representedObject;
-    struct UIImage *_image;
+    UIImage *_image;
     NSString *_text;
     NSAttributedString *_attributedText;
 }
@@ -24,9 +24,9 @@
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
-- (id)initWithAttributedText:(id)arg1 searchObject:(struct UISearchToken *)arg2 representedObject:(id)arg3;
-- (id)initWithText:(id)arg1 image:(struct UIImage *)arg2 representedObject:(id)arg3;
-- (id)initWithText:(id)arg1 searchObject:(struct UISearchToken *)arg2 representedObject:(id)arg3;
+- (id)initWithAttributedText:(id)arg1 searchObject:(id)arg2 representedObject:(id)arg3;
+- (id)initWithText:(id)arg1 image:(id)arg2 representedObject:(id)arg3;
+- (id)initWithText:(id)arg1 searchObject:(id)arg2 representedObject:(id)arg3;
 - (id)textValue;
 
 @end

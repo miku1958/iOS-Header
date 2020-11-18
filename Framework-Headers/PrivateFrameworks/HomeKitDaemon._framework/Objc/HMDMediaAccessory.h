@@ -25,6 +25,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_createMediaProfile;
 - (void)_registerForMessages;
 - (BOOL)_shouldFilterAccessoryProfile:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
@@ -50,7 +51,7 @@
 - (void)setRemotelyReachable:(BOOL)arg1;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
-- (id)url;
+- (id)urlString;
 
 @end
 

@@ -60,12 +60,6 @@
 	// method
 	// class getter
  }
- protocol SwiftUI.HoverCoordinator // 3 requirements
- {
-	// method
-	// method
-	// method
- }
  protocol SwiftUI.ColorProvider // 2 requirements
  {
 	// class base protocol
@@ -97,6 +91,12 @@
 	// class base protocol
 	// getter
 	// getter
+ }
+ protocol SwiftUI.StepperStyle // 3 requirements
+ {
+	// class associated conformance access function
+	// class associated type access function
+	// method
  }
  protocol SwiftUI.ViewInputPredicate // 1 requirements
  {
@@ -148,6 +148,16 @@
  {
 	// method
 	// method
+ }
+ protocol SwiftUI.TabViewStyle // 2 requirements
+ {
+	// class method
+	// class method
+ }
+ protocol SwiftUI.AnyStyleType // 2 requirements
+ {
+	// class method
+	// class method
  }
  protocol SwiftUI.PrimitiveButtonStyle // 3 requirements
  {
@@ -281,16 +291,6 @@
  {
 	// class base protocol
 	// class base protocol
- }
- protocol SwiftUI.TabViewStyle // 2 requirements
- {
-	// class method
-	// class method
- }
- protocol SwiftUI.AnyStyleType // 2 requirements
- {
-	// class method
-	// class method
  }
  protocol SwiftUI.GestureViewModifier // 9 requirements
  {
@@ -765,9 +765,8 @@
 	// method
 	// class getter
  }
- protocol SwiftUI.PlatformViewEnvironmentProvider // 2 requirements
+ protocol SwiftUI.AnyPlatformViewHost // 1 requirements
  {
-	// getter
 	// getter
  }
  protocol SwiftUI.Gesture // 5 requirements
@@ -837,12 +836,13 @@
 	// getter
 	// getter
  }
- protocol SwiftUI.AlertControllerConvertible // 10 requirements
+ protocol SwiftUI.AlertControllerConvertible // 11 requirements
  {
 	// class associated conformance access function
 	// class associated conformance access function
 	// class associated type access function
 	// class associated type access function
+	// getter
 	// getter
 	// getter
 	// getter
@@ -1020,6 +1020,14 @@
 	// class associated type access function
 	// method
  }
+ protocol SwiftUI.UIHostedFocusItem // 5 requirements
+ {
+	// getter
+	// getter
+	// getter
+	// setter
+	// modify coroutine
+ }
  protocol SwiftUI.EnvironmentalModifier // 4 requirements
  {
 	// class base protocol
@@ -1027,7 +1035,7 @@
 	// class associated type access function
 	// method
  }
- protocol SwiftUI.ViewRendererHost // 21 requirements
+ protocol SwiftUI.ViewRendererHost // 29 requirements
  {
 	// class base protocol
 	// getter
@@ -1044,9 +1052,17 @@
 	// getter
 	// setter
 	// modify coroutine
+	// getter
+	// setter
+	// modify coroutine
 	// method
 	// method
 	// method
+	// method
+	// method
+	// method
+	// method
+	// getter
 	// method
 	// getter
 	// method
@@ -1314,12 +1330,6 @@
  {
 	// class method
  }
- protocol SwiftUI.StepperStyle // 3 requirements
- {
-	// class associated conformance access function
-	// class associated type access function
-	// method
- }
  protocol SwiftUI.EnvironmentKey // 2 requirements
  {
 	// class associated type access function
@@ -1442,6 +1452,8 @@
 	// method
  }
 
+ struct SwiftUI.Head { }
+
  struct SwiftUI.EmptyTuple: TupleProtocol { }
 
  struct SwiftUI.Tuple: TupleProtocol {
@@ -1451,12 +1463,11 @@
 	var tail : B
  }
 
- struct SwiftUI.Head { }
-
  struct SwiftUI.VersionSeed {
 
 	// Properties
-	var value : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : á‚	 // +0x0
  }
 
  struct SwiftUI._ButtonGesture {
@@ -1478,8 +1489,9 @@
  struct SwiftUI.Recognizer {
 
 	// Properties
-	var bounds : CGRect? // +0x0
-	var outsetWidth : CGFloat // +0x28
+	var bounds : CGRect // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var outsetWidth : ˇá // +0x28
  }
 
  struct SwiftUI.Value {
@@ -1496,19 +1508,19 @@
 
  class SwiftUI.RenderBoxView : _UIGraphicsView {
 	// ObjC -> Swift bridged methods
-	0xa4c0  @objc RenderBoxView.init(frame:)
-	0xa550  @objc RenderBoxView.init(coder:)
-	0xa670  @objc RenderBoxView.__deallocating_deinit
-	0xa690  @objc RenderBoxView.isOpaque.getter
-	0xa700  @objc RenderBoxView.isOpaque.setter
-	0xa8a0  @objc RenderBoxView.didMoveToWindow()
-	0xa910  @objc RenderBoxView.setNeedsDisplay()
-	0xa970  @objc RenderBoxView.rbLayerDraw(_:inDisplayList:)
+	0x8a30  @objc RenderBoxView.init(frame:)
+	0x8ae0  @objc RenderBoxView.init(coder:)
+	0x8be0  @objc RenderBoxView.__deallocating_deinit
+	0x8c00  @objc RenderBoxView.isOpaque.getter
+	0x8c70  @objc RenderBoxView.isOpaque.setter
+	0x8e00  @objc RenderBoxView.didMoveToWindow()
+	0x8e70  @objc RenderBoxView.setNeedsDisplay()
+	0x8ed0  @objc RenderBoxView.rbLayerDraw(_:inDisplayList:)
 
 	// Swift methods
-	0xa580  func RenderBoxView.rbInit() // method 
-	0xa940  func RenderBoxView.draw(inDisplayList:) // method 
-	0xa950  func RenderBoxView.rbLayerDraw(_:inDisplayList:) // method 
+	0x8b10  func RenderBoxView.rbInit() // method 
+	0x8ea0  func RenderBoxView.draw(inDisplayList:) // method 
+	0x8eb0  func RenderBoxView.rbLayerDraw(_:inDisplayList:) // method 
  }
 
  struct SwiftUI._DatePickerStyleLabel { }
@@ -1516,7 +1528,7 @@
  struct SwiftUI.ResolvedDatePickerStyle {
 
 	// Properties
-	var configuration : DatePicker<_DatePickerStyleLabel>
+	var configuration : DatePicker
  }
 
  struct SwiftUI.DatePickerStyleModifier {
@@ -1532,7 +1544,7 @@
  struct SwiftUI.RootView {
 
 	// Properties
-	var _state : State<_TestApp.RootView.StateType> // +0x0
+	var _state : State // +0x0
  }
 
  struct SwiftUI.TestingSystemColorDefinition { }
@@ -1549,63 +1561,71 @@
 	// Properties
 	var children : AccessibilityNode // +0x8 (0x8)
 	var parent : AccessibilityNode // +0x10 (0x8)
-	let viewRendererHost : unowned ViewRendererHost? // +0x18 (0x10)
-	var oldAttachmentForNotification : AccessibilityAttachment? // +0x28 (0x11)
-	var skipNotifyForAttachmentChanged : Bool // +0x39 (0x1)
-	var attachmentsStorage : AccessibilityAttachmentStorage // +0x40 (0x8)
-	var cachedCombinedAttachment : AccessibilityAttachment? // +0x48 (0x11)
-	var focusableAncestor : AccessibilityNode // +0x60 (0x8)
+	var viewRendererHost : ViewRendererHost // +0x18 (0x10)
+	var oldAttachmentForNotification : AccessibilityAttachment // +0x28 (0x29)
+	var skipNotifyForAttachmentChanged : Bool // +0x51 (0x1)
+	var attachmentsStorage : AccessibilityAttachmentStorage // +0x58 (0x8)
+	var cachedCombinedAttachment : AccessibilityAttachment // +0x60 (0x29)
+	var focusableAncestor : AccessibilityNode // +0x90 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xda70  @objc AccessibilityNode.__deallocating_deinit
-	0x132c0  @objc AccessibilityNode.init()
-	0xda90  @objc AccessibilityNode.__ivar_destroyer
+	0xb350  @objc AccessibilityNode.__deallocating_deinit
+	0x11d90  @objc AccessibilityNode.init()
+	0xb370  @objc AccessibilityNode.__ivar_destroyer
 
 	// Swift methods
-	0xd770  func AccessibilityNode.children.setter // setter 
-	0xd790  func AccessibilityNode.oldAttachmentForNotification.setter // setter 
-	0xd7b0  func AccessibilityNode.attachmentsStorage.setter // setter 
-	0xd7f0  func AccessibilityNode.cachedCombinedAttachment.setter // setter 
-	0xdb20  func AccessibilityNode.properties.getter // getter 
-	0xdc60  func AccessibilityNode.updatePlatformProperties(includingRelations:) // method 
-	0xde30  func AccessibilityNode.attachment.getter // getter 
-	0xe060  func AccessibilityNode.addAttachment(_:reference:token:) // method 
-	0xe5f0  func AccessibilityNode.removeAttachment(token:) // method 
-	0xe990  func AccessibilityNode.removeAttachments(after:) // method 
-	0xeaa0  func AccessibilityNode.hasAttachment(token:) // method 
-	0xeb50  func AccessibilityNode.updateAttachment(_:reference:token:) // method 
-	0xedf0  func AccessibilityNode.updateSize(_:token:) // method 
-	0xef20  func AccessibilityNode.updateTransform(_:token:) // method 
-	0xf0d0  func AccessibilityNode.updateEnvironment(_:token:) // method 
-	0xf1f0  func AccessibilityNode.updateGlobalFrame() // method 
-	0xf240  func AccessibilityNode.updateGlobalFrame(at:) // method 
-	0x101b0  func AccessibilityNode.sendAction(named:) // method 
-	0x10cf0  func AccessibilityNode.namedActions.getter // getter 
-	0x11480  func AccessibilityNode.sortedChildren.getter // getter 
-	0x11930  func AccessibilityNode.childrenOrNativeViews.getter // getter 
-	0x11b40  func AccessibilityNode.visibility.getter // getter 
-	0x11c40  func AccessibilityNode.environment.getter // getter 
-	0x11ee0  func AccessibilityNode.globalFrame.getter // getter 
-	0x120e0  func AccessibilityNode.outlineFrame.getter // getter 
-	0x12ad0  func AccessibilityNode.activationPoint.getter // getter 
-	0x12f60  func AccessibilityNode.resolvedAttributedValue.getter // getter 
-	0x13040  func AccessibilityNode.resolvedPlainTextValue.getter // getter 
-	0x130c0  func AccessibilityNode.resolvedAttributedHint.getter // getter 
-	0x130e0  func AccessibilityNode.resolvedPlainTextHint.getter // getter 
-	0x13100  func AccessibilityNode.resolvedAttributedLabel.getter // getter 
-	0x13200  func AccessibilityNode.resolvedPlainTextLabel.getter // getter 
+	0xafb0  func AccessibilityNode.children.setter // setter 
+	0xafd0  func AccessibilityNode.oldAttachmentForNotification.setter // setter 
+	0xaff0  func AccessibilityNode.attachmentsStorage.setter // setter 
+	0xb030  func AccessibilityNode.cachedCombinedAttachment.setter // setter 
+	0xb420  func AccessibilityNode.properties.getter // getter 
+	0xb730  func AccessibilityNode.updatePlatformProperties(includingRelations:) // method 
+	0xb900  func AccessibilityNode.attachment.getter // getter 
+	0xbbe0  func AccessibilityNode.addAttachment(_:reference:token:) // method 
+	0xc150  func AccessibilityNode.removeAttachment(token:) // method 
+	0xc6c0  func AccessibilityNode.removeAttachments(after:) // method 
+	0xc780  func AccessibilityNode.hasAttachment(token:) // method 
+	0xc7f0  func AccessibilityNode.updateAttachment(_:reference:token:) // method 
+	0xca00  func AccessibilityNode.hasChangedFromAttachment(_:reference:token:) // method 
+	0xcc20  func AccessibilityNode.updateSize(_:token:) // method 
+	0xccf0  func AccessibilityNode.updateTransform(_:token:) // method 
+	0xce40  func AccessibilityNode.updateEnvironment(_:token:) // method 
+	0xcf30  func AccessibilityNode.updateGlobalFrame() // method 
+	0xcf80  func AccessibilityNode.updateGlobalFrame(at:) // method 
+	0xe510  func AccessibilityNode.sendAction(named:) // method 
+	0xf160  func AccessibilityNode.namedActions.getter // getter 
+	0xfa40  func AccessibilityNode.sortedChildren.getter // getter 
+	0xff50  func AccessibilityNode.childrenOrNativeViews.getter // getter 
+	0x10170  func AccessibilityNode.visibility.getter // getter 
+	0x10250  func AccessibilityNode.environment.getter // getter 
+	0x10480  func AccessibilityNode.globalFrame.getter // getter 
+	0x10600  func AccessibilityNode.outlineFrame.getter // getter 
+	0x11270  func AccessibilityNode.activationPoint.getter // getter 
+	0x11a40  func AccessibilityNode.resolvedAttributedValue.getter // getter 
+	0x11b20  func AccessibilityNode.resolvedPlainTextValue.getter // getter 
+	0x11ba0  func AccessibilityNode.resolvedAttributedHint.getter // getter 
+	0x11bc0  func AccessibilityNode.resolvedPlainTextHint.getter // getter 
+	0x11be0  func AccessibilityNode.resolvedAttributedLabel.getter // getter 
+	0x11cd0  func AccessibilityNode.resolvedPlainTextLabel.getter // getter 
+ }
+
+ struct SwiftUI.AccessibilityNodeList {
+
+	// Properties
+	var nodes : AccessibilityNode // +0x0
+	var version : Version // +0x8
  }
 
  struct SwiftUI.AccessibilityAttachmentStorage {
 
 	// Properties
-	var environment : EnvironmentValues? // +0x0
-	var transform : ViewTransform? // +0x10
-	var size : CGSize? // +0x28
-	var globalFrame : CGRect? // +0x40
+	var environment : EnvironmentValues // +0x0
+	var transform : ViewTransform // +0x10
+	var size : CGSize // +0x28
+	var globalFrame : CGRect // +0x40
 	var attachment : AccessibilityAttachment // +0x68
-	var reference : [AccessibilityNode] // +0x80
-	let token : AGAttribute // +0x88
+	var reference : AccessibilityNode // +0x98
+	let token : AnyAttribute // +0xa0
  }
 
  struct SwiftUI.AccessibilityNodesKey { }
@@ -1634,7 +1654,8 @@
 	let content : AnyView // +0x0
 	let onDismiss : ()? // +0x8
 	let viewID : ViewIdentity // +0x18
-	let itemID : AnyHashable? // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let itemID : /; // +0x20
  }
 
  struct SwiftUI.Key { }
@@ -1663,7 +1684,7 @@
  struct SwiftUI.AnyTrait: AnyViewTrait {
 
 	// Properties
-	var value : A._ViewTraitKey.Value
+	var value : _ViewTraitKey
  }
 
  struct SwiftUI.DefaultPullDownButtonStyle { }
@@ -1674,7 +1695,8 @@
 
 	// Properties
 	var minimumDuration : Double // +0x0
-	var maximumDistance : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var maximumDistance : ˇá // +0x8
  }
 
  struct SwiftUI.AutocorrectionTypeKey { }
@@ -1682,7 +1704,7 @@
  struct SwiftUI._PullDownButton {
 
 	// Properties
-	var _tree : _PullDownButtonContainer
+	var _tree : Tree
  }
 
  struct SwiftUI._PullDownButtonContainer {
@@ -1694,16 +1716,20 @@
  struct SwiftUI.EdgeInsets {
 
 	// Properties
-	var top : CGFloat // +0x0
-	var leading : CGFloat // +0x8
-	var bottom : CGFloat // +0x10
-	var trailing : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var top : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var leading : ˇá // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bottom : ˇá // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var trailing : ˇá // +0x18
  }
 
  struct SwiftUI.GeometryEffectDisplayList {
 
 	// Properties
-	let identity : DisplayList.Identity
+	let identity : Identity
  }
 
  struct SwiftUI.GeometryEffectTransform { }
@@ -1717,11 +1743,11 @@
 	let next : PreferenceNode // +0x20 (0x8)
 
 	// Swift methods
-	0x36dd0  func PreferenceNode.find(from:) // method 
-	0x36e20  func PreferenceNode.combine(from:next:) // method 
-	0x36e70  func PreferenceNode.copy(next:) // method 
-	0x36ec0  class func static PreferenceNode._includesRemovedValues.getter // getter 
-	0x36f10  func PreferenceNode.description.getter // getter 
+	0x303b0  func PreferenceNode.find(from:) // method 
+	0x30400  func PreferenceNode.combine(from:next:) // method 
+	0x30450  func PreferenceNode.copy(next:) // method 
+	0x304a0  class func static PreferenceNode._includesRemovedValues.getter // getter 
+	0x304f0  func PreferenceNode.description.getter // getter 
  }
 
  class SwiftUI._PreferenceNode {
@@ -1743,7 +1769,7 @@
  struct SwiftUI.Toggle {
 
 	// Properties
-	var __isOn : Binding<Bool>
+	var __isOn : Binding
 	var _label : A
  }
 
@@ -1768,21 +1794,7 @@
  struct SwiftUI.EnvironmentReaderView {
 
 	// Properties
-	let content : (_:)
- }
-
- struct SwiftUI._HoverRegionModifier {
-
-	// Properties
-	let callback : (_:) // +0x0
- }
-
- struct SwiftUI.HoverRegionUpdater {
-
-	// Properties
-	var coordinator : HoverCoordinator // +0x0
-	var hoverIdentifier : AnyHashable? // +0x28
-	var resetSeed : UInt32 // +0x50
+	let content : EnvironmentValues
  }
 
  class SwiftUI.TestSubgraph : _ViewList_Subgraph {
@@ -1808,10 +1820,10 @@
 
  class SwiftUI.AnyColorBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x3d6d0  func AnyColorBox.resolve(in:) // method 
-	0x3d710  func AnyColorBox.isEqual(to:) // method 
-	0x3d750  func AnyColorBox.hash(into:) // method 
-	0x3d790  func AnyColorBox.description.getter // getter 
+	0x35390  func AnyColorBox.resolve(in:) // method 
+	0x353d0  func AnyColorBox.isEqual(to:) // method 
+	0x35410  func AnyColorBox.hash(into:) // method 
+	0x35450  func AnyColorBox.description.getter // getter 
  }
 
  class SwiftUI.ColorBox {
@@ -1872,8 +1884,8 @@
 
 	// Properties
 	let type : AnyStyleType // +0x0
-	let value : AGAttribute // +0x10
-	let graph : AGGraphRef // +0x18
+	let value : AnyAttribute // +0x10
+	let graph : Graph // +0x18
  }
 
  struct SwiftUI.StyleType: AnyStyleType { }
@@ -1881,7 +1893,7 @@
  struct SwiftUI.StyleBody {
 
 	// Properties
-	var style : A // +0x6fc874
+	var style : A // +0x621b34
  }
 
  struct SwiftUI.MenuButtonStyleInput { }
@@ -1898,7 +1910,7 @@
  struct SwiftUI.StyledPullDownButton {
 
 	// Properties
-	var base : _PullDownButtonContainer<A>
+	var base : _PullDownButtonContainer
 	var children : _VariadicView_Children
  }
 
@@ -1912,8 +1924,8 @@
 
 	// Properties
 	let type : AnyStyleType // +0x0
-	let value : AGAttribute // +0x10
-	let graph : AGGraphRef // +0x18
+	let value : AnyAttribute // +0x10
+	let graph : Graph // +0x18
  }
 
  struct SwiftUI.StyleType: AnyStyleType { }
@@ -1935,8 +1947,8 @@
 	// Properties
 	let preconvertedEventLocations : Bool
 	let allowsIncompleteEventSequences : Bool
-	let bindings : unowned EventBindingManager
-	var trackingID : EventID?
+	let bindings : EventBindingManager
+	var trackingID : EventID
 	var reset : GestureReset
  }
 
@@ -1945,7 +1957,7 @@
 	// Properties
 	var name : String // +0x0
 	var bundle : NSBundle? // +0x10
-	var label : Text? // +0x18
+	var label : Text // +0x18
 	var decorative : Bool // +0x38
 	var isSystem : Bool // +0x39
  }
@@ -1954,40 +1966,47 @@
 
 	// Properties
 	var glyph : CUINamedVectorGlyph // +0x0
-	var scale : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scale : ˇá // +0x8
 	var bounds : CGRect // +0x10
-	var baselineOffset : CGFloat // +0x30
-	var capHeight : CGFloat // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var baselineOffset : ˇá // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var capHeight : ˇá // +0x38
  }
 
  struct SwiftUI.VectorCacheKey {
 
 	// Properties
 	var name : String // +0x0
-	var scale : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scale : ˇá // +0x10
 	var layoutDirection : LayoutDirection // +0x18
-	var weight : Font.Weight // +0x20
+	var weight : Weight // +0x20
 	var size : _CUIThemeVectorGlyphSize // +0x28
-	var pointSize : CGFloat // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var pointSize : ˇá // +0x30
 	var bundle : NSBundle? // +0x38
  }
 
  struct SwiftUI.NamedImageInfo {
 
 	// Properties
-	var cgImage : CGImageRef // +0x0
-	var scale : CGFloat // +0x8
-	var orientation : Image.Orientation // +0x10
+	var cgImage : CGImage // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scale : ˇá // +0x8
+	var orientation : Orientation // +0x10
 	var unrotatedPixelSize : CGSize // +0x18
-	var renderingMode : Image.TemplateRenderingMode? // +0x28
-	var resizingInfo : Image.ResizingInfo? // +0x30
+	var renderingMode : TemplateRenderingMode // +0x28
+	var resizingInfo : ResizingInfo // +0x30
  }
 
  struct SwiftUI.ImageCacheKey {
 
 	// Properties
 	var name : String // +0x0
-	var scale : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scale : ˇá // +0x10
 	var layoutDirection : LayoutDirection // +0x18
 	var colorScheme : ColorScheme // +0x19
 	var contrast : ColorSchemeContrast // +0x1a
@@ -2002,6 +2021,22 @@
 	var timestamp : Time // +0x8
 	var translation : CGSize // +0x10
 	var globalTranslation : CGSize // +0x20
+ }
+
+ struct SwiftUI.StepperStyleConfiguration {
+
+	// Properties
+	let onIncrement : ()? // +0x0
+	let onDecrement : ()? // +0x10
+	let onEditingChanged : (_:) // +0x20
+ }
+
+ struct SwiftUI.Label { }
+
+ struct SwiftUI.StepperBody {
+
+	// Properties
+	var configuration : StepperStyleConfiguration // +0x0
  }
 
  struct SwiftUI.ViewInputDependency {
@@ -2045,12 +2080,15 @@
  enum SwiftUI.Modifier {
 
 	// Properties
-	case color : Color?
-	case font : Font?
-	case weight : Font.Weight?
-	case kerning : CGFloat
-	case tracking : CGFloat
-	case baseline : CGFloat
+	case color : Color
+	case font : Font
+	case weight : Weight
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case kerning : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case tracking : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case baseline : ˇá
 	case anyTextModifier : AnyTextModifier
 	case italic  
 	case rounded  
@@ -2058,8 +2096,8 @@
 
  class SwiftUI.AnyTextStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x555e0  func AnyTextStorage.resolve(into:in:) // method 
-	0x55630  func AnyTextStorage.isEqual(to:) // method 
+	0x4ca30  func AnyTextStorage.resolve(into:in:) // method 
+	0x4ca80  func AnyTextStorage.isEqual(to:) // method 
  }
 
  class SwiftUI.LocalizedTextStorage : AnyTextStorage {
@@ -2083,14 +2121,14 @@
 
  class SwiftUI.AnyTextModifier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x55f90  func AnyTextModifier.modify(style:) // method 
-	0x55fe0  func AnyTextModifier.isEqual(to:) // method 
+	0x4d520  func AnyTextModifier.modify(style:) // method 
+	0x4d570  func AnyTextModifier.isEqual(to:) // method 
  }
 
  class SwiftUI.StrikethroughTextModifier : AnyTextModifier {
 
 	// Properties
-	let lineStyle : LineStyle?
+	let lineStyle : LineStyle
 
 	// Swift methods
  }
@@ -2098,7 +2136,7 @@
  class SwiftUI.UnderlineTextModifier : AnyTextModifier {
 
 	// Properties
-	let lineStyle : LineStyle?
+	let lineStyle : LineStyle
 
 	// Swift methods
  }
@@ -2106,7 +2144,7 @@
  class SwiftUI.StylisticAlternativeTextModifier : AnyTextModifier {
 
 	// Properties
-	let value : Font._StylisticAlternative
+	let value : _StylisticAlternative
 
 	// Swift methods
  }
@@ -2124,7 +2162,8 @@
  struct SwiftUI.FormatArgument {
 
 	// Properties
-	let value : CVarArg // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let value : ª, // +0x0
 	let formatter : NSFormatter? // +0x28
  }
 
@@ -2142,14 +2181,17 @@
  struct SwiftUI.OnMoveVisitor {
 
 	// Properties
-	var interaction : MoveInteraction?
+	var interaction : MoveInteraction
  }
 
  struct SwiftUI.MoveInteraction {
 
 	// Properties
-	var onMove : (_:_:)?
-	var sourceOffsets : IndexSet
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var onMove :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sourceOffsets : √Ë
+
 	var contentID : Int
  }
 
@@ -2160,7 +2202,8 @@
 	var timestamp : Time // +0x8
 	var globalLocation : CGPoint // +0x10
 	var location : CGPoint // +0x20
-	var radius : CGFloat // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var radius : ˇá // +0x30
  }
 
  struct SwiftUI.Element {
@@ -2173,7 +2216,7 @@
  struct SwiftUI.SortedArrayDictionary {
 
 	// Properties
-	var storage : [SortedArrayDictionary<A, B>.Element]
+	var storage : Element
  }
 
  struct SwiftUI.TouchEvent {
@@ -2183,7 +2226,8 @@
 	var phase : EventPhase // +0x8
 	var location : CGPoint // +0x10
 	var globalLocation : CGPoint // +0x20
-	var radius : CGFloat // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var radius : ˇá // +0x30
 	var force : Double // +0x38
 	var maximumPossibleForce : Double // +0x40
  }
@@ -2200,8 +2244,10 @@
 
 	// Properties
 	var shape : A
-	var startFraction : CGFloat
-	var endFraction : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var startFraction : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var endFraction : ˇá
  }
 
  struct SwiftUI.Font {
@@ -2212,9 +2258,9 @@
 
  class SwiftUI.AnyFontBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x61b50  func AnyFontBox.resolve(in:) // method 
-	0x61ba0  func AnyFontBox.isEqual(to:) // method 
-	0x61bf0  func AnyFontBox.hash(into:) // method 
+	0x57f60  func AnyFontBox.resolve(in:) // method 
+	0x57fb0  func AnyFontBox.isEqual(to:) // method 
+	0x58000  func AnyFontBox.hash(into:) // method 
  }
 
  class SwiftUI.FontBox {
@@ -2223,7 +2269,7 @@
 	// Properties
 	var font : Font // +0x0
 	var sizeCategory : ContentSizeCategory // +0x8
-	var legibilityWeight : LegibilityWeight? // +0x9
+	var legibilityWeight : LegibilityWeight // +0x9
  }
 
  enum SwiftUI.ContentSizeCategory {
@@ -2274,7 +2320,8 @@
  struct SwiftUI.GestureReset {
 
 	// Properties
-	var seed : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0x0
  }
 
  struct SwiftUI._DraggingModifier {
@@ -2286,8 +2333,8 @@
  struct SwiftUI.DraggingItem {
 
 	// Properties
-	let preview : Image? // +0x0
-	let frame : CGRect? // +0x8
+	let preview : Image // +0x0
+	let frame : CGRect // +0x8
 	let data : NSItemProvider // +0x30
  }
 
@@ -2296,7 +2343,7 @@
  struct SwiftUI._Body {
 
 	// Properties
-	var configuration : TextField<_TextFieldStyleLabel> // +0x0
+	var configuration : TextField // +0x0
  }
 
  struct SwiftUI.AccessibilityActionKind {
@@ -2329,40 +2376,90 @@
 	var observers : Observer // +0x0
  }
 
+ struct SwiftUI.TrivialContentResponder: ContentResponder { }
+
  struct SwiftUI.ContentResponderHelper {
 
 	// Properties
 	var size : CGSize // +0x0
 	var data : A? // +0x0
-	var transform : ViewTransform // +0x77c30
+	var transform : ViewTransform // +0x0
 	var observers : ContentPathObservers // +0x0
-	var cache : ViewResponder.ContainsPointsCache // +0x77d50
+	var cache : ContainsPointsCache // +0x200
  }
 
  struct SwiftUI.LeafResponderFilter {
 
 	// Properties
-	let responder : LeafViewResponder<A>
+	let responder : LeafViewResponder
  }
 
  struct SwiftUI.Observer {
 
 	// Properties
-	var value : weak ContentPathObserver? // +0x0
+	var value : ContentPathObserver // +0x0
  }
+
+ struct SwiftUI.Content { }
+
+ struct SwiftUI.ResolvedTabView {
+
+	// Properties
+	var configuration : TabViewStyleConfiguration
+ }
+
+ struct SwiftUI.TabViewStyleConfiguration {
+
+	// Properties
+	var selection : Binding
+	var content : Content
+ }
+
+ struct SwiftUI.Init1 {
+
+	// Properties
+	var style : A
+ }
+
+ struct SwiftUI.TabViewStyleInput { }
+
+ struct SwiftUI._TabViewStyleWriter {
+
+	// Properties
+	var style : A
+ }
+
+ struct SwiftUI.TabViewValue {
+
+	// Properties
+	var style : A
+	var configuration : TabViewStyleConfiguration
+ }
+
+ struct SwiftUI.AnyStyle {
+
+	// Properties
+	let type : AnyStyleType // +0x0
+	let value : AnyAttribute // +0x10
+	let graph : Graph // +0x18
+ }
+
+ struct SwiftUI.StyleType: AnyStyleType { }
+
+ struct SwiftUI.Init2 { }
 
  struct SwiftUI.SafeAreaInsets {
 
 	// Properties
 	var insets : EdgeInsets // +0x0
-	var next : SafeAreaInsets.OptionalSafeAreaInsets // +0x20
+	var next : OptionalSafeAreaInsets // +0x20
  }
 
  struct SwiftUI.SafeAreaInsetsModifier {
 
 	// Properties
 	var insets : EdgeInsets // +0x0
-	var _rawSafeAreaInsets : Environment<LayoutValue<SafeAreaInsets>> // +0x20
+	var _rawSafeAreaInsets : Environment // +0x20
  }
 
  struct SwiftUI.SafeAreaInsetsKey { }
@@ -2370,7 +2467,7 @@
  enum SwiftUI.OptionalSafeAreaInsets {
 
 	// Properties
-	case some : LayoutValue<SafeAreaInsets>
+	case some : LayoutValue
 	case none  
  }
 
@@ -2379,15 +2476,17 @@
 	// Properties
 	var image : Image // +0x0
 	var sourceRect : CGRect // +0x8
-	var scale : CGFloat // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scale : ˇá // +0x28
  }
 
  struct SwiftUI._Paint {
 
 	// Properties
-	var image : Image.Resolved // +0x0
+	var image : Resolved // +0x0
 	var sourceRect : CGRect // +0x90
-	var scale : CGFloat // +0xb0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scale : ˇá // +0xb0
  }
 
  struct SwiftUI.PrimitiveButtonStyleConfiguration {
@@ -2427,21 +2526,27 @@
  struct SwiftUI.ViewValueVisitor {
 
 	// Properties
-	var graph : AGGraphRef
+	var graph : Graph
 	var view : A?
  }
 
  struct SwiftUI.ChildVisitor {
 
 	// Properties
-	var graph : AGGraphRef
-	var statePtr : UnsafeMutablePointer<Binding<B>?>
+	var graph : Graph
+	var statePtr : Binding
+ }
+
+ struct SwiftUI.ViewFieldCache {
+
+	// Properties
+	var cache : MutableBox // +0x0
  }
 
  struct SwiftUI.Field {
 
 	// Properties
-	var type : DynamicProperty.Type // +0x0
+	var type : DynamicProperty // +0x0
 	var offset : Int // +0x10
  }
 
@@ -2449,7 +2554,8 @@
 
 	// Properties
 	var links : _DynamicPropertyBuffer
-	var resetSeed : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : á‚	
  }
 
  struct SwiftUI.ViewBody { }
@@ -2457,14 +2563,8 @@
  struct SwiftUI.ViewStateVisitor {
 
 	// Properties
-	var graph : AGGraphRef
-	var state : Binding<B>?
- }
-
- struct SwiftUI.ViewFieldCache {
-
-	// Properties
-	var cache : MutableBox<[ObjectIdentifier : [ViewFieldCache.Field]]> // +0x0
+	var graph : Graph
+	var state : Binding
  }
 
  class SwiftUI.ListCoreDragAndDropController {
@@ -2473,21 +2573,24 @@
 	// Properties
 	var content : B
 	var publisher : A
-	var action : (_:)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var action : Output
  }
 
  struct SwiftUI.ChildAttribute {
 
 	// Properties
-	var subscriptionLifetime : SubscriptionLifetime<A>
-	var actionBox : MutableBox<(_:)>
+	var subscriptionLifetime : SubscriptionLifetime
+	var actionBox : MutableBox
  }
 
  struct SwiftUI.ActionDispatcherSubscriber {
 
 	// Properties
-	var actionBox : MutableBox<(_:)>
-	var combineIdentifier : CombineIdentifier
+	var actionBox : MutableBox
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var combineIdentifier : C√
+
  }
 
  struct SwiftUI.TestTouchID { }
@@ -2495,30 +2598,37 @@
  class SwiftUI.ItemInfo : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let subgraph : AGSubgraphRef
-	let uniqueId : UInt32
-	let viewCount : Int32
+	let subgraph : Subgraph
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewCount : ˝L
 	let outputs : _ViewOutputs
 	let needsTransitions : Bool
 	var listener : DynamicAnimationListener
 	var zIndex : Double
-	var removalOrder : UInt32
-	var precedingViewCount : Int32
-	var resetSeed : UInt32
-	var phase : TransitionPhase?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var removalOrder : á‚	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var precedingViewCount : ˝L
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : á‚	
+	var phase : TransitionPhase
 
 	// Swift methods
-	0xe3420  func DynamicContainer.ItemInfo.layoutPriority.getter // getter 
-	0xe3470  func DynamicContainer.ItemInfo.destroy() // method 
+	0xd6250  func DynamicContainer.ItemInfo.layoutPriority.getter // getter 
+	0xd62a0  func DynamicContainer.ItemInfo.destroy() // method 
  }
 
  class SwiftUI._ItemInfo {
  class SwiftUI.DynamicAnimationListener : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var viewGraph : weak ViewGraph?
-	let asyncSignal : Attribute<()>
-	var count : Int
+	var viewGraph : ViewGraph // +0x626ff0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let asyncSignal : Uæ
+ // +0x0
+	var count : Int // +0xe1b50
 
 	// Swift methods
  }
@@ -2528,28 +2638,32 @@
  struct SwiftUI.DynamicContainerID {
 
 	// Properties
-	var uniqueId : UInt32 // +0x0
-	var viewIndex : Int32 // +0x4
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uniqueId : á‚	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var viewIndex : ˝L // +0x4
  }
 
  struct SwiftUI.DynamicTransaction {
 
 	// Properties
-	let uniqueId : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	 // +0x0
 	var wasRemoved : Bool // +0x4
  }
 
  struct SwiftUI.DynamicViewPhase {
 
 	// Properties
-	let uniqueId : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	 // +0x0
  }
 
  struct SwiftUI.ConnectCombinerVisitor {
 
 	// Properties
-	let graph : AGGraphRef
-	let combiner : AGAttribute
+	let graph : Graph
+	let combiner : AnyAttribute
 	let id : DynamicContainerID
 	let outputs : _ViewOutputs
  }
@@ -2560,18 +2674,21 @@
 	var adaptor : A
 	let inputs : _ViewInputs
 	let outputs : _ViewOutputs
-	let parentSubgraph : AGSubgraphRef
-	var info : DynamicContainer.Info
-	var lastUniqueId : UInt32
-	var lastRemoved : UInt32
-	var lastResetSeed : UInt32
+	let parentSubgraph : Subgraph
+	var info : Info
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lastUniqueId : á‚	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lastRemoved : á‚	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lastResetSeed : á‚	
 	var needsPhaseUpdate : Bool
  }
 
  struct SwiftUI.AddCombinerVisitor {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
+	let graph : Graph // +0x0
 	var outputs : _ViewOutputs // +0x8
  }
 
@@ -2590,13 +2707,16 @@
  struct SwiftUI.Info {
 
 	// Properties
-	var items : [DynamicContainer.ItemInfo] // +0x0
-	var indexMap : [UInt32 : Int] // +0x8
-	var displayMap : [UInt32]? // +0x10
+	var items : ItemInfo // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var indexMap :  empty-list  // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var displayMap :  empty-list  // +0x10
 	var removedCount : Int // +0x18
 	var unusedCount : Int // +0x20
 	var allUnary : Bool // +0x28
-	var seed : UInt32 // +0x2c
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0x2c
  }
 
  struct SwiftUI.SequenceGesture {
@@ -2609,8 +2729,8 @@
  enum SwiftUI.Value {
 
 	// Properties
-	case first : A.Gesture.Value
-	case second : (A.Gesture.Value, B.Gesture.Value?)
+	case first : Gesture
+	case second : Gesture
  }
 
  struct SwiftUI.SequencePhase {
@@ -2628,8 +2748,11 @@
  struct SwiftUI.LayoutTraitsProxy {
 
 	// Properties
-	var context : AttributeContext<VoidAttribute> // +0x0
-	var layoutComputerIndex : Int32 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var context : ª
+ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var layoutComputerIndex : ˝L // +0x10
 	let explicitLayoutPriority : Double? // +0x18
  }
 
@@ -2637,8 +2760,10 @@
 
 	// Properties
 	var count : Int // +0x0
-	var context : AttributeContext<VoidAttribute> // +0x8
-	var layoutComputerIndices : LayoutTraitsProxyCollection.IntSequence // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var context : ª
+ // +0x8
+	var layoutComputerIndices : IntSequence // +0x18
 	var layoutPriorityAtIndex : (_:) // +0x30
  }
 
@@ -2646,15 +2771,18 @@
 
 	// Properties
 	var base : LayoutTraitsProxy // +0x0
-	var layoutComputerIndex : Int32 // +0x24
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var layoutComputerIndex : ˝L // +0x24
  }
 
  struct SwiftUI.LayoutTraitsProxyCollection {
 
 	// Properties
 	var count : Int // +0x0
-	var context : AttributeContext<VoidAttribute> // +0x8
-	var layoutComputerIndices : LayoutTraitsProxyCollection.IntSequence // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var context : ª
+ // +0x8
+	var layoutComputerIndices : IntSequence // +0x18
 	var layoutPriorityAtIndex : (_:) // +0x30
  }
 
@@ -2662,7 +2790,8 @@
 
 	// Properties
 	case arithmetic : (base: Int)
-	case function : ((_:_:), Int8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case function :  first-element-marker 
  }
 
  struct SwiftUI.OffsetShape {
@@ -2719,16 +2848,14 @@
  class SwiftUI.DisplayLink : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var host : weak AnyUIHostingView? // +0x10 (0x10)
+	var host : AnyUIHostingView // +0x10 (0x10)
 	var link : CADisplayLink? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x108ce0  @objc DisplayLink.displayLinkTimer(_:)
+	0xf81f0  @objc DisplayLink.displayLinkTimer(_:)
 
 	// Swift methods
  }
-
- struct SwiftUI.UIHostingViewCoordinateSpace { }
 
  struct SwiftUI.EmptyModifier: PrimitiveViewModifier,  ViewModifier { }
 
@@ -2749,14 +2876,15 @@
 
 	// Properties
 	var _value : A
-	var _location : AnyLocation<A>?
+	var _location : AnyLocation
  }
 
  struct SwiftUI.StatePropertyBox {
 
 	// Properties
-	let signal : WeakAttribute<()>
-	var location : StoredLocation<A>?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let signal : €Ù
+	var location : StoredLocation
  }
 
  struct SwiftUI.SidebarListStyle { }
@@ -2764,7 +2892,7 @@
  struct SwiftUI.SidebarList {
 
 	// Properties
-	var selection : Binding<A>?
+	var selection : Binding
  }
 
  struct SwiftUI.Body { }
@@ -2772,9 +2900,9 @@
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var _minHeaderHeight : Environment<CGFloat?>
+	var _minHeaderHeight : Environment
 	let children : _VariadicView_Children
-	let selection : Binding<A1>?
+	let selection : Binding
  }
 
  struct SwiftUI.__GridLayout {
@@ -2789,8 +2917,11 @@
  struct SwiftUI.Spacing {
 
 	// Properties
-	var min : CGFloat // +0x0
-	var max : CGFloat? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var min : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var max : Iv
+ // +0x8
  }
 
  enum SwiftUI.FillDirection {
@@ -2813,6 +2944,27 @@
  struct SwiftUI.DefaultSystemColorDefinition { }
 
  class SwiftUI.EventBindingResponder {
+ class SwiftUI.CursorBridge {
+ class SwiftUI.CursorIdentity : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	var base : HoverResponder // +0x8 (0x8)
+	let identifier : ObjectIdentifier // +0x10 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x12b600  @objc CursorIdentity.copy(with:)
+	0x12b6f0  @objc CursorIdentity.isEqual(_:)
+	0x12b780  @objc CursorIdentity.hash.getter
+	0x12b800  @objc CursorIdentity.description.getter
+	0x12bcf0  @objc CursorIdentity.init()
+	0x12bca0  @objc CursorIdentity.__ivar_destroyer
+
+	// Swift methods
+	0x12b5a0  func CursorIdentity.copy(with:) // method 
+	0x12b910  func CursorIdentity.notifyHoveringChanged(isHovering:) // method 
+	0x12b970  func CursorIdentity.cursorStyle(host:) // method 
+ }
+
  struct SwiftUI._ScrollableLayoutView {
 
 	// Properties
@@ -2826,19 +2978,22 @@
 
 	// Properties
 	var items : [(A.Collection.Index, A.Sequence.Element)]
-	var itemsSeed : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var itemsSeed : á‚	
 	var lastContentOffset : CGPoint
  }
 
  struct SwiftUI.Value {
 
 	// Properties
-	var state : B._ScrollableLayout.StateType
-	var stateSeed : UInt32
-	var contentSeed : UInt32
+	var state : _ScrollableLayout
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var stateSeed : á‚	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var contentSeed : á‚	
 	var scrollLayout : _ScrollLayout
 	var identifiers : [A.Collection.Index]
-	var placements : [A.Collection.Index : _Placement]
+	var placements : _Placement
 	var validRect : CGRect
 	var contentSize : CGSize
  }
@@ -2847,11 +3002,12 @@
 
 	// Properties
 	let template : TemplateView
-	var state : B._ScrollableLayout.StateType
-	var stateSeed : UInt32
-	var proxyStorage : _ScrollableLayoutProxy.Storage
+	var state : _ScrollableLayout
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var stateSeed : á‚	
+	var proxyStorage : Storage
 	var identifiers : [A.Collection.Index]
-	var placements : [A.Collection.Index : _Placement]
+	var placements : _Placement
 	var validSize : CGSize
 	var validRect : CGRect
 	var contentSize : CGSize
@@ -2870,7 +3026,7 @@
 	// Properties
 	let id : A
 	let token : B
-	var item : AnyDynamicItem?
+	var item : AnyDynamicItem
  }
 
  struct SwiftUI.ScrollableItemGeometry { }
@@ -2878,15 +3034,19 @@
  struct SwiftUI.ScrollableItemIdentifier {
 
 	// Properties
-	let uniqueId : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	
  }
 
  struct SwiftUI.TemplateView {
 
 	// Properties
-	let view : Attribute<A.Sequence.Element>
-	let subgraph : AGSubgraphRef
-	let delta : Attribute<UInt32>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let view : ãs
+
+	let subgraph : Subgraph
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let delta : €k	
 	let outputs : _ViewOutputs
  }
 
@@ -2922,18 +3082,18 @@
 	let responder : AllowsHitTestingResponder // +0x0
  }
 
+ struct SwiftUI.TransactionalPreferenceModifier {
+
+	// Properties
+	var value : A
+	var transform : PreferenceKey
+ }
+
  struct SwiftUI.IsAnimated {
 
 	// Properties
 	var lastValue : A?
 	var lastTransaction : Transaction
- }
-
- struct SwiftUI.TransactionalPreferenceModifier {
-
-	// Properties
-	var value : A
-	var transform : (_:_:)
  }
 
  struct SwiftUI._AppearanceActionModifier {
@@ -2948,7 +3108,7 @@
 	// Properties
 	var visible : Bool // +0x0
 	var disappear : ()? // +0x8
-	var phase : _GraphInputs.Phase // +0x18
+	var phase : Phase // +0x18
  }
 
  struct SwiftUI.Signpost {
@@ -2970,8 +3130,11 @@
  enum SwiftUI.Style {
 
 	// Properties
-	case kdebug : UInt8
-	case os_log : StaticString
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case kdebug : +M
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case os_log : O¨
+
  }
 
  class SwiftUI.HitTestBindingResponder : DefaultLayoutViewResponder { }
@@ -2991,23 +3154,23 @@
  class SwiftUI.PlatformSwitchCoordinator : PlatformViewCoordinator {
 
 	// Properties
-	var _isOn : Binding<Bool> // +0x8 (0x11)
+	var _isOn : Binding // +0x8 (0x11)
 
 	// ObjC -> Swift bridged methods
-	0x15db80  @objc PlatformSwitchCoordinator.isOnChanged(_:)
-	0x15dc00  @objc PlatformSwitchCoordinator.init()
-	0x15dc80  @objc PlatformSwitchCoordinator.__ivar_destroyer
+	0x13e3b0  @objc PlatformSwitchCoordinator.isOnChanged(_:)
+	0x13e4c0  @objc PlatformSwitchCoordinator.init()
+	0x13e460  @objc PlatformSwitchCoordinator.__ivar_destroyer
 
 	// Swift methods
-	0x15d910  func PlatformSwitchCoordinator._isOn.getter // getter 
-	0x15d960  func PlatformSwitchCoordinator._isOn.setter // setter 
-	0x15da30  func PlatformSwitchCoordinator.isOnChanged(_:) // method 
+	0x13e1f0  func PlatformSwitchCoordinator._isOn.getter // getter 
+	0x13e240  func PlatformSwitchCoordinator._isOn.setter // setter 
+	0x13e2d0  func PlatformSwitchCoordinator.isOnChanged(_:) // method 
  }
 
  struct SwiftUI.Switch {
 
 	// Properties
-	var _isOn : Binding<Bool> // +0x0
+	var _isOn : Binding // +0x0
  }
 
  struct SwiftUI.ResponderChild {
@@ -3019,14 +3182,14 @@
  struct SwiftUI.ResponderViewModifier {
 
 	// Properties
-	var content : (_:)
+	var content : ResponderNode
  }
 
  struct SwiftUI.LayoutEngine {
 
 	// Properties
 	let view : A
-	var cache : Cache3<_ProposedSize, CGSize>
+	var cache : Cache3
  }
 
  struct SwiftUI.LeafLayoutComputerQuery { }
@@ -3034,23 +3197,32 @@
  struct SwiftUI.LeafDisplayList {
 
 	// Properties
-	let identity : DisplayList.Identity
-	let clipIdentity : DisplayList.Identity
-	var contentSeed : DisplayList.Seed
+	let identity : Identity
+	let clipIdentity : Identity
+	var contentSeed : Seed
  }
 
  struct SwiftUI.ProjectionTransform {
 
 	// Properties
-	var m11 : CGFloat // +0x0
-	var m12 : CGFloat // +0x8
-	var m13 : CGFloat // +0x10
-	var m21 : CGFloat // +0x18
-	var m22 : CGFloat // +0x20
-	var m23 : CGFloat // +0x28
-	var m31 : CGFloat // +0x30
-	var m32 : CGFloat // +0x38
-	var m33 : CGFloat // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m11 : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m12 : ˇá // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m13 : ˇá // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m21 : ˇá // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m22 : ˇá // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m23 : ˇá // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m31 : ˇá // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m32 : ˇá // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var m33 : ˇá // +0x40
  }
 
  struct SwiftUI.MenuButton {
@@ -3072,7 +3244,7 @@
  struct SwiftUI.TupleEvents {
 
 	// Properties
-	var trackingID : EventID? // +0x0
+	var trackingID : EventID // +0x0
 	var reset : GestureReset // +0x10
  }
 
@@ -3081,8 +3253,8 @@
  struct SwiftUI.Value {
 
 	// Properties
-	var head : [EventID : EventType] // +0x0
-	var tail : [EventID : EventType] // +0x8
+	var head : EventID // +0x0
+	var tail : EventID // +0x8
  }
 
  struct SwiftUI.EmptyTuplePhase {
@@ -3102,8 +3274,8 @@
  struct SwiftUI.Value {
 
 	// Properties
-	var first : A.Gesture.Value?
-	var second : B.Gesture.Value?
+	var first : Gesture
+	var second : Gesture
  }
 
  struct SwiftUI.SimultaneousPhase { }
@@ -3119,9 +3291,12 @@
  struct SwiftUI.DisplayP3 {
 
 	// Properties
-	let red : CGFloat // +0x0
-	let green : CGFloat // +0x8
-	let blue : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let red : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let green : ˇá // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let blue : ˇá // +0x10
 	let opacity : Float // +0x18
  }
 
@@ -3154,7 +3329,8 @@
 
 	// Properties
 	var center : CGPoint // +0x0
-	var radius : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var radius : ˇá // +0x10
  }
 
  struct SwiftUI.BackgroundInfo {
@@ -3180,7 +3356,7 @@
  struct SwiftUI.ContextMenu {
 
 	// Properties
-	var _tree : _ContextMenuContainer
+	var _tree : Tree
  }
 
  struct SwiftUI._ContextMenuContainer { }
@@ -3199,11 +3375,10 @@
  }
 
  class SwiftUI.UIKitNavigationBridge {
- class SwiftUI.DestinationHostingController {
  struct SwiftUI.EditButton {
 
 	// Properties
-	let editMode : Environment<Binding<EditMode>?> // +0x0
+	let editMode : Environment // +0x0
  }
 
  struct SwiftUI.EditText {
@@ -3212,21 +3387,24 @@
 	var editMode : EditMode // +0x0
  }
 
+ class SwiftUI.ListHostingView {
  struct SwiftUI.CellForRowVisitor {
 
 	// Properties
 	let cellHost : ListCoreCellHost // +0x0
-	let transaction : Transaction? // +0x8
-	let minHeight : CGFloat? // +0x10
-	let horizontalMargin : CGFloat // +0x20
+	let transaction : Transaction // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minHeight : Iv
+ // +0x10
  }
 
  struct SwiftUI.CellModifier {
 
 	// Properties
-	var rowInsets : EdgeInsets? // +0x0
-	var minHeight : CGFloat // +0x28
-	let horizontalMargin : CGFloat // +0x30
+	var rowInsets : EdgeInsets // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minHeight : ˇá // +0x28
+	var _horizontalMargin : Environment // +0x30
  }
 
  struct SwiftUI._SizedShape {
@@ -3249,58 +3427,11 @@
 	var box : DataProviderBox
  }
 
- struct SwiftUI.Content { }
-
- struct SwiftUI.ResolvedTabView {
-
-	// Properties
-	var configuration : TabViewStyleConfiguration<A>
- }
-
- struct SwiftUI.TabViewStyleConfiguration {
-
-	// Properties
-	var selection : Binding<A>?
-	var content : TabViewStyleConfiguration<A>.Content
- }
-
- struct SwiftUI.Init1 {
-
-	// Properties
-	var style : A
- }
-
- struct SwiftUI.TabViewStyleInput { }
-
- struct SwiftUI._TabViewStyleWriter {
-
-	// Properties
-	var style : A
- }
-
- struct SwiftUI.TabViewValue {
-
-	// Properties
-	var style : A
-	var configuration : TabViewStyleConfiguration<B>
- }
-
- struct SwiftUI.AnyStyle {
-
-	// Properties
-	let type : AnyStyleType // +0x0
-	let value : AGAttribute // +0x10
-	let graph : AGGraphRef // +0x18
- }
-
- struct SwiftUI.StyleType: AnyStyleType { }
-
- struct SwiftUI.Init2 { }
-
  struct SwiftUI.GestureMask {
 
 	// Properties
-	let rawValue : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : á‚	 // +0x0
  }
 
  class SwiftUI.AnyGestureResponder : UnaryViewResponder { }
@@ -3358,10 +3489,11 @@
 
 	// Properties
 	let inputs : _GestureInputs // +0x0
-	let parentSubgraph : AGSubgraphRef // +0x88
+	let parentSubgraph : Subgraph // +0x88
 	var oldNode : AnyGestureResponder // +0x90
-	var oldSeed : UInt32 // +0x98
-	var childSubgraph : AGSubgraphRef? // +0xa0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var oldSeed : á‚	 // +0x98
+	var childSubgraph : Subgraph // +0xa0
  }
 
  struct SwiftUI.ContentPhase {
@@ -3384,17 +3516,10 @@
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var configuration : PickerStyleConfiguration<A>
+	var configuration : PickerStyleConfiguration
  }
 
  struct SwiftUI.Body { }
-
- struct SwiftUI.ListPicker {
-
-	// Properties
-	let options : _VariadicView_Children
-	let selection : Binding<A>
- }
 
  struct SwiftUI.NavigationPickerButton {
 
@@ -3402,33 +3527,40 @@
 	let label : A
 	let detailLabel : B
 	let options : _VariadicView_Children
-	let selection : Binding<C>
+	let selection : Binding
  }
+
+ struct SwiftUI.ListPicker {
+
+	// Properties
+	let options : _VariadicView_Children
+	let selection : Binding
+ }
+
+ struct SwiftUI.CheckmarkToggleStyle { }
 
  struct SwiftUI.Body {
 
 	// Properties
 	var configuration : ToggleStyleConfiguration // +0x0
-	var _presentationMode : Environment<Binding<PresentationMode>> // +0x18
+	var _presentationMode : Environment // +0x18
  }
-
- struct SwiftUI.CheckmarkToggleStyle { }
 
  class SwiftUI.UnaryViewResponder : ViewResponder {
 
 	// Properties
-	var _child : ViewResponder? // +0x28 (0x8)
+	var _child : ViewResponder // +0x28 (0x8)
  }
 
  class SwiftUI.FindClass : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x193a50  @objc FindClass.init()
+	0x16ecb0  @objc FindClass.init()
  }
 
  struct SwiftUI._ModifiersGesture {
 
 	// Properties
-	var _body : EventModifiersGesture
+	var _body : ModifierGesture
  }
 
  struct SwiftUI.EventModifiersGesture {
@@ -3457,23 +3589,28 @@
  struct SwiftUI.FlexibilityEstimate {
 
 	// Properties
-	let minLength : CGFloat // +0x0
-	let maxLength : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minLength : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxLength : ˇá // +0x8
  }
 
  struct SwiftUI.InEachAxis {
 
 	// Properties
-	var h : _LayoutTraits.FlexibilityEstimate // +0x0
-	var v : _LayoutTraits.FlexibilityEstimate // +0x10
+	var h : FlexibilityEstimate // +0x0
+	var v : FlexibilityEstimate // +0x10
  }
 
  struct SwiftUI.Dimension {
 
 	// Properties
-	var min : CGFloat // +0x0
-	var ideal : CGFloat // +0x8
-	var max : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var min : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var ideal : ˇá // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var max : ˇá // +0x10
  }
 
  struct SwiftUI.IsLinkedGroupTraitKey { }
@@ -3523,8 +3660,8 @@
 	// Properties
 	var style : A
 	var configuration : PrimitiveButtonStyleConfiguration
-	var _isPressed : State<Bool>
-	var _isEnabled : Environment<Bool>
+	var _isPressed : State
+	var _isEnabled : Environment
  }
 
  struct SwiftUI.CollectionChanges {
@@ -3537,7 +3674,7 @@
  struct SwiftUI.SearchState {
 
 	// Properties
-	var endpoints : LowerTriangularMatrix<(x: A, y: B)>
+	var endpoints : LowerTriangularMatrix
  }
 
  enum SwiftUI.Element {
@@ -3551,8 +3688,8 @@
  struct SwiftUI._AnchorTransformModifier {
 
 	// Properties
-	var anchor : Anchor<A>.Source
-	var transform : (_:_:)
+	var anchor : Source
+	var transform : PreferenceKey
  }
 
  struct SwiftUI.AnchorTransform { }
@@ -3562,7 +3699,7 @@
  struct SwiftUI.DisclosureIndicator_PhoneTV {
 
 	// Properties
-	var _pixelLength : Environment<CGFloat> // +0x0
+	var _pixelLength : Environment // +0x0
  }
 
  struct SwiftUI._BackgroundModifier {
@@ -3608,7 +3745,7 @@
  struct SwiftUI.SecureField {
 
 	// Properties
-	var text : Binding<String>
+	var text : Binding
 	var onCommit : ()
 	var label : A
  }
@@ -3616,8 +3753,12 @@
  struct SwiftUI._ProposedSize {
 
 	// Properties
-	var width : CGFloat? // +0x0
-	var height : CGFloat? // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : Iv
+ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : Iv
+ // +0x10
  }
 
  struct SwiftUI.Init { }
@@ -3625,7 +3766,16 @@
  struct SwiftUI.ViewIdentity {
 
 	// Properties
-	let seed : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let seed : á‚	 // +0x0
+ }
+
+ struct SwiftUI.Tracker {
+
+	// Properties
+	var id : ViewIdentity // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : á‚	 // +0x4
  }
 
  struct SwiftUI.IdentityLink {
@@ -3640,13 +3790,6 @@
 	var id : ViewIdentity // +0x0
  }
 
- struct SwiftUI.Tracker {
-
-	// Properties
-	var id : ViewIdentity // +0x0
-	var resetSeed : UInt32 // +0x4
- }
-
  enum SwiftUI.ContentMode {
 
 	// Properties
@@ -3657,7 +3800,9 @@
  struct SwiftUI._AspectRatioLayout {
 
 	// Properties
-	var aspectRatio : CGFloat? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var aspectRatio : Iv
+ // +0x0
 	var contentMode : ContentMode // +0x9
  }
 
@@ -3668,8 +3813,10 @@
 	let size : CGSize // +0x10
 	let visibleRect : CGRect // +0x20
 	let count : Int // +0x40
-	let identifiers : (_:) // +0x48
-	let sizeThatFits : (_:_:) // +0x58
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let identifiers : çÑ
+ // +0x48
+	let sizeThatFits : CGSize // +0x58
 	var visibleItems : _ScrollableLayoutItem // +0x68
 	var contentSize : CGSize // +0x70
 	var validRect : CGRect // +0x80
@@ -3678,21 +3825,26 @@
  struct SwiftUI._ScrollableLayoutItem {
 
 	// Properties
-	var id : AnyHashable // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var id : „Ñ
+ // +0x0
 	var _placement : _Placement // +0x28
  }
 
  struct SwiftUI.Storage {
 
 	// Properties
-	var contentSeed : UInt32 // +0x0
-	var cache : SizeRecord // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var contentSeed : á‚	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cache :  empty-list  // +0x8
  }
 
  struct SwiftUI.SizeRecord {
 
 	// Properties
-	var contentSeed : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var contentSeed : á‚	 // +0x0
 	var size : CGSize // +0x8
 	var result : CGSize // +0x18
  }
@@ -3704,22 +3856,22 @@
 	var isUpdating : Bool // +0x30 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x1ab460  @objc Coordinator.valueChanged(_:)
-	0x1ab560  @objc Coordinator.editingEnded(_:)
-	0x1ab5e0  @objc Coordinator.init()
-	0x1ab670  @objc Coordinator.__ivar_destroyer
+	0x186060  @objc Coordinator.valueChanged(_:)
+	0x186150  @objc Coordinator.editingEnded(_:)
+	0x186280  @objc Coordinator.init()
+	0x186210  @objc Coordinator.__ivar_destroyer
 
 	// Swift methods
-	0x1ab010  func Coordinator.configuration.getter // getter 
-	0x1ab060  func Coordinator.configuration.setter // setter 
-	0x1ab260  func Coordinator.valueChanged(_:) // method 
-	0x1ab4b0  func Coordinator.editingEnded(_:) // method 
+	0x185cd0  func Coordinator.configuration.getter // getter 
+	0x185d20  func Coordinator.configuration.setter // setter 
+	0x185eb0  func Coordinator.valueChanged(_:) // method 
+	0x1860b0  func Coordinator.editingEnded(_:) // method 
  }
 
  struct SwiftUI.SystemSlider {
 
 	// Properties
-	var value : Binding<Double> // +0x0
+	var value : Binding // +0x0
 	var onEditingChanged : (_:) // +0x18
  }
 
@@ -3755,49 +3907,39 @@
 
 	// Properties
 	var list : ViewList // +0x0
-	var contentSubgraph : AGSubgraphRef // +0x28
- }
-
- struct SwiftUI.ViewRootBody {
-
-	// Properties
-	let contentSubgraph : AGSubgraphRef
+	var contentSubgraph : Subgraph // +0x28
  }
 
  struct SwiftUI.MakeViewRoot: _VariadicView_ImplicitRootVisitor {
 
 	// Properties
-	var graph : AGGraphRef // +0x0
+	var graph : Graph // +0x0
 	var inputs : _ViewInputs // +0x8
-	var body : (_:_:) // +0x70
-	var outputs : _ViewOutputs? // +0x80
+	var body : _ViewListOutputs // +0x70
+	var outputs : _ViewOutputs // +0x80
+ }
+
+ struct SwiftUI.ImplicitRootType { }
+
+ struct SwiftUI.ViewRootBody {
+
+	// Properties
+	let contentSubgraph : Subgraph
  }
 
  struct SwiftUI.MakeModifiedRoot: _VariadicView_ImplicitRootVisitor {
 
 	// Properties
-	var modifier : _GraphValue<A>
+	var modifier : _GraphValue
 	var inputs : _ViewInputs
-	var body : (_:_:)
-	var outputs : _ViewOutputs?
+	var body : _ViewListOutputs
+	var outputs : _ViewOutputs
  }
-
- struct SwiftUI.ImplicitRootType { }
 
  struct SwiftUI.BloomFilter {
 
 	// Properties
 	var value : UInt // +0x0
- }
-
- struct SwiftUI.Stepper {
-
-	// Properties
-	var label : A
-	var onIncrement : ()?
-	var onDecrement : ()?
-	var onEditingChanged : (_:)
-	var stepperStyle : Environment<AnyStepperStyle>
  }
 
  struct SwiftUI.PlainListStyleSectionSpacingKey { }
@@ -3811,16 +3953,21 @@
  struct SwiftUI.SizeLimitLayout {
 
 	// Properties
-	let width : ClosedRange<CGFloat> // +0x0
-	let height : ClosedRange<CGFloat> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let width :  empty-list  // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let height :  empty-list  // +0x10
  }
 
  struct SwiftUI.ViewCache {
 
 	// Properties
-	var map : [UInt32 : DisplayList.ViewUpdater.ViewInfo] // +0x0
-	var reverseMap : [OpaquePointer : UInt32] // +0x8
-	var removed : Set<UInt32> // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var map :  empty-list  // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var reverseMap :  empty-list  // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var removed :  empty-list  // +0x10
  }
 
  enum SwiftUI.ArrayWith3InlineStorage {
@@ -3829,7 +3976,9 @@
 	case one : A
 	case two : (A, A)
 	case three : (A, A, A)
-	case many : ContiguousArray<A>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case many : yv
+
 	case empty  
  }
 
@@ -3838,27 +3987,31 @@
 	// Properties
 	case one : A
 	case two : (A, A)
-	case many : ContiguousArray<A>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case many : yv
+
 	case empty  
  }
 
  struct SwiftUI.ArrayWith2Inline {
 
 	// Properties
-	var storage : ArrayWith2InlineStorage<A>
+	var storage : ArrayWith2InlineStorage
  }
 
  struct SwiftUI.ArrayWith3Inline {
 
 	// Properties
-	var storage : ArrayWith3InlineStorage<A>
+	var storage : ArrayWith3InlineStorage
  }
 
  struct SwiftUI.UnitPoint {
 
 	// Properties
-	var x : CGFloat // +0x0
-	var y : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : ˇá // +0x8
  }
 
  class SwiftUI.UIViewResponder : ViewResponder {
@@ -3866,7 +4019,15 @@
 	// Properties
 	var hostView : weak UIView? // +0x28 (0x8)
 	var representedView : weak UIView? // +0x30 (0x8)
-	var focusAccessibilityNode : weak AccessibilityNode? // +0x38 (0x8)
+	var focusAccessibilityNode : AccessibilityNode // +0x38 (0x8)
+	var helper : ContentResponderHelper // +0x40 (0x50)
+ }
+
+ struct SwiftUI.UIViewNeedsFocusUpdate {
+
+	// Properties
+	var viewGraph : ViewGraph
+	var isFocusable : Bool
  }
 
  struct SwiftUI._PickerValue {
@@ -3879,9 +4040,9 @@
  struct SwiftUI.PickerStyleConfiguration {
 
 	// Properties
-	var selection : Binding<A>
-	var label : PickerStyleConfiguration<A>.Label
-	var content : PickerStyleConfiguration<A>.Content
+	var selection : Binding
+	var label : Label
+	var content : Content
  }
 
  struct SwiftUI.Label { }
@@ -3889,7 +4050,7 @@
  struct SwiftUI.ResolvedPicker {
 
 	// Properties
-	var configuration : PickerStyleConfiguration<A>
+	var configuration : PickerStyleConfiguration
  }
 
  struct SwiftUI.Content { }
@@ -3904,8 +4065,8 @@
 
 	// Properties
 	let type : AnyStyleType // +0x0
-	let value : AGAttribute // +0x10
-	let graph : AGGraphRef // +0x18
+	let value : AnyAttribute // +0x10
+	let graph : Graph // +0x18
  }
 
  struct SwiftUI.StyleType: AnyStyleType { }
@@ -3927,7 +4088,7 @@
  struct SwiftUI.DisclosableListButton {
 
 	// Properties
-	var _isDisclosed : State<Bool>
+	var _isDisclosed : State
 	var label : A
 	var detailLabel : B
 	var content : C
@@ -3936,8 +4097,8 @@
  struct SwiftUI._PaddingLayout {
 
 	// Properties
-	var edges : Edge.Set // +0x0
-	var insets : EdgeInsets? // +0x8
+	var edges : Set // +0x0
+	var insets : EdgeInsets // +0x8
  }
 
  struct SwiftUI.UnaryPositionAwareChildGeometryQuery { }
@@ -3948,7 +4109,7 @@
 	let layout : A
 	let layoutContext : LayoutTraitsContext
 	let child : LayoutProxy
-	var cache : Cache3<_ProposedSize, CGSize>
+	var cache : Cache3
  }
 
  struct SwiftUI.UnaryPositionAwareLayoutComputerQuery { }
@@ -3961,8 +4122,8 @@
 	let layout : A
 	let layoutContext : LayoutTraitsContext
 	let child : LayoutProxy
-	var dimensionsCache : Cache3<_ProposedSize, CGSize>
-	var placementCache : Cache3<CGSize, _Placement>
+	var dimensionsCache : Cache3
+	var placementCache : Cache3
  }
 
  struct SwiftUI.UnaryChildGeometryQuery { }
@@ -4021,7 +4182,7 @@
 	var testRunner : ScrollTestRunner
 
 	// Swift methods
-	0x1e0e30  func ScrollTest.run<A>(in:completion:) // method 
+	0x1bd260  func ScrollTest.run<A>(in:completion:) // method 
  }
 
  class SwiftUI.ScrollProxyScrollTestRunner : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ScrollTestRunner {
@@ -4029,31 +4190,34 @@
 	// Properties
 	var parameters : Parameters
 	var displayLink : CADisplayLink?
-	var proxy : _ScrollViewProxy?
+	var proxy : _ScrollViewProxy
 	var completion : ()
 
 	// ObjC -> Swift bridged methods
-	0x1e1d40  @objc ScrollProxyScrollTestRunner.incrementScrollTest()
+	0x1bdef0  @objc ScrollProxyScrollTestRunner.incrementScrollTest()
 
 	// Swift methods
-	0x1e1740  func ScrollProxyScrollTestRunner.run() // method 
-	0x1e18f0  func ScrollProxyScrollTestRunner.incrementScrollTest() // method 
+	0x1bda00  func ScrollProxyScrollTestRunner.run() // method 
+	0x1bdbb0  func ScrollProxyScrollTestRunner.incrementScrollTest() // method 
  }
 
  struct SwiftUI.Parameters {
 
 	// Properties
-	var startOffset : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var startOffset : ˇá // +0x0
 	var iterations : Int // +0x8
-	var delta : CGFloat // +0x10
-	var length : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var delta : ˇá // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var length : ˇá // +0x18
 	var axis : Axis // +0x20
  }
 
  struct SwiftUI.UIScrollViewTestRunner: ScrollTestRunner {
 
 	// Properties
-	var parameters : ScrollTest.Parameters // +0x0
+	var parameters : Parameters // +0x0
 	var scrollView : UIScrollView // +0x28
 	var completion : () // +0x30
  }
@@ -4062,7 +4226,9 @@
 
 	// Properties
 	let key : AlignmentKey // +0x0
-	let computeValue : (_:) // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let computeValue : _-
+ // +0x8
  }
 
  struct SwiftUI.LayoutEngine {
@@ -4075,24 +4241,27 @@
  struct SwiftUI.AlignmentModifiedLayoutComputerQuery {
 
 	// Properties
-	var oldModifier : _AlignmentWritingModifier? // +0x0
+	var oldModifier : _AlignmentWritingModifier // +0x0
  }
 
  struct SwiftUI.Resolved {
 
 	// Properties
-	var image : _Image? // +0x0
+	var image : _Image // +0x0
 	var label : String? // +0x10
-	var scale : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scale : ˇá // +0x20
 	var unrotatedPixelSize : CGSize // +0x28
-	var resizingInfo : Image.ResizingInfo? // +0x38
-	var maskColor : Color._Resolved? // +0x5c
-	var baselineOffset : CGFloat // +0x70
-	var capHeight : CGFloat // +0x78
+	var resizingInfo : ResizingInfo // +0x38
+	var maskColor : _Resolved // +0x5c
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var baselineOffset : ˇá // +0x70
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var capHeight : ˇá // +0x78
 	var platformItemImage : UIImage? // +0x80
-	var interpolation : Image.Interpolation // +0x88
+	var interpolation : Interpolation // +0x88
 	var decorative : Bool // +0x89
-	var orientation : Image.Orientation // +0x8a
+	var orientation : Orientation // +0x8a
 	var isAntialiased : Bool // +0x8b
  }
 
@@ -4101,7 +4270,7 @@
  enum SwiftUI._Image {
 
 	// Properties
-	case cgImage : CGImageRef
+	case cgImage : CGImage
 	case ioSurface : IOSurfaceRef
 	case vectorGlyph : CUINamedVectorGlyph
  }
@@ -4116,29 +4285,33 @@
 
 	// Properties
 	var preferences : KeyValue // +0x0
-	var debugProperties : _ViewDebug.Properties // +0x8
-	var _layout : OptionalAttribute<LayoutComputer> // +0x10
+	var debugProperties : Properties // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _layout : 7-
+ // +0x10
  }
 
  struct SwiftUI.KeyValue {
 
 	// Properties
-	var key : AnyPreferenceKey.Type // +0x0
-	var value : AGAttribute // +0x10
+	var key : AnyPreferenceKey // +0x0
+	var value : AnyAttribute // +0x10
  }
 
  struct SwiftUI.LayoutValueWritingModifier {
 
 	// Properties
 	var value : A
-	var keyPath : WritableKeyPath<EnvironmentValues, LayoutValue<A>>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyPath : ui
+
  }
 
  struct SwiftUI.LayoutValueEnvironment {
 
 	// Properties
 	let space : UniqueIdentifier
-	var oldModifier : LayoutValueWritingModifier<A>?
+	var oldModifier : LayoutValueWritingModifier
  }
 
  struct SwiftUI.UniqueIdentifier {
@@ -4156,8 +4329,8 @@
  struct SwiftUI.LeafDisplayList {
 
 	// Properties
-	let identity : DisplayList.Identity
-	var contentSeed : DisplayList.Seed
+	let identity : Identity
+	var contentSeed : Seed
  }
 
  struct SwiftUI._PositionLayout {
@@ -4171,74 +4344,123 @@
  class SwiftUI.ViewGraph : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let storage : AGGraphStorageRef
-	let globalSubgraph : AGSubgraphRef
-	var rootSubgraph : AGSubgraphRef
+	let storage : GraphStorage
+	let globalSubgraph : Subgraph
+	var rootSubgraph : Subgraph
 	let rootViewType : Any.Type
-	let makeRootView : (_:_:_:)
+	let makeRootView : _ViewOutputs
 	var delegate : ViewGraphDelegate
 	var centersRootView : Bool
 	var inputs : _ViewInputs
-	let rootView : AGAttribute
-	let time : Attribute<Time>
-	let rootTransform : Attribute<ViewTransform>
-	let zeroPoint : Attribute<ViewOrigin>
-	let emptyViewResponders : Attribute<[ViewResponder]>
-	let proposedSize : Attribute<_ProposedSize>
-	let rootGeometry : Attribute<ViewGeometry>
-	let position : Attribute<ViewOrigin>
-	let dimensions : Attribute<CGSize>
-	let environment : Attribute<EnvironmentValues>
-	let viewPhase : Attribute<_GraphInputs.Phase>
-	let hostPreferenceKeys : Attribute<PreferenceKeys>
-	let transaction : Attribute<Transaction>
-	let updateSeed : Attribute<UInt32>
-	let gestureTime : Attribute<Time>
-	var gestureEvents : Attribute<[EventID : EventType]>
-	let inheritedPhase : Attribute<_GestureInputs.InheritedPhase>
-	let gestureResetSeed : Attribute<UInt32>
-	let failedPhase : Attribute<GesturePhase<()>>
-	var rootPhase : Attribute<GesturePhase<()>>?
-	var eventSubgraph : AGSubgraphRef?
+	let rootView : AnyAttribute
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let time : ä
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rootTransform : 7Ç	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let zeroPoint : ı˘
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let emptyViewResponders : óW
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let proposedSize : 9
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rootGeometry : kt
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let position : ı˘
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dimensions : wã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let environment : MW
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewPhase : OÇ	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let hostPreferenceKeys : ≥£	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let transaction : Àä	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let updateSeed : €k	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let gestureTime : ä
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var gestureEvents : ªÒ
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let inheritedPhase : +
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let gestureResetSeed : €k	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let failedPhase : V
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rootPhase : 
+
+	var eventSubgraph : Subgraph
 	var isInstantiated : Bool
-	let defaultIdealSize : Attribute<CGSize>
-	let defaultLayoutComputer : Attribute<LayoutComputer>
-	let defaultViewListTraits : Attribute<ViewTraitCollection>
-	var rootResponders : Attribute<[ViewResponder]>?
-	var rootAccessibilityNodes : Attribute<[AccessibilityNode]>?
-	var rootLayoutComputer : Attribute<LayoutComputer>?
-	var rootDisplayList : Attribute<(DisplayList, DisplayList.Version)>?
-	var rootPlatformItemList : Attribute<PlatformItemList>?
-	var hostPreferenceValues : Attribute<PreferenceList>?
-	var viewDebugValues : Attribute<[_ViewDebug.Data]>?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultIdealSize : wã	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultLayoutComputer : ·u
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultViewListTraits : 5ˇ
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rootResponders : 	
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rootAccessibilityNodes : ı
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rootLayoutComputer : Â
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rootDisplayList : ’
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rootPlatformItemList : ø
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var hostPreferenceValues : Ø
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var viewDebugValues : ü
+
 	var cachedIdealSize : CGSize
 	var cachedSizeThatFits : CGSize
 	var sizeThatFitsObserver : SizeThatFitsObserver
-	var outputs : Outputs
+	var requestedOutputs : Outputs
 	var disabledOutputs : Outputs
 	var needsFocusUpdate : Bool
 	var pendingTransactions : AsyncTransaction
 	var nextUpdate : NextUpdate
-	var preferenceBridge : weak PreferenceBridge?
+	var preferenceBridge : PreferenceBridge
 	var observedPreferenceKeys : PreferenceKeys
 	var observedPreferenceValues : PreferenceList
 	var observedPreferenceValuesSeed : VersionSeed
 	var observedPreferenceValuesDirty : Bool
 	var inTransaction : Bool
-	var updateDepth : UInt32
-	var continuations : [(_:)]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var updateDepth : á‚	
+	var continuations : Graph
 	var sharedUpdateWrapper : (_:)?
 	var sharedInvalidationCallback : ()?
 
 	// Swift methods
-	0x1fc7f0  class func ViewGraph.__allocating_init<A>(rootViewType:outputs:) // init 
+	0x1d6210  class func ViewGraph.__allocating_init<A>(rootViewType:requestedOutputs:) // init 
  }
 
  class SwiftUI.AsyncTransaction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let transaction : Transaction
-	var mutations : GraphMutation
+	let transaction : Transaction // +0x0
+	var mutations : GraphMutation // +0x0
 
 	// Swift methods
  }
@@ -4252,29 +4474,32 @@
  struct SwiftUI.Outputs {
 
 	// Properties
-	let rawValue : UInt8 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : +M // +0x0
  }
 
  struct SwiftUI.SizeThatFitsObserver {
 
 	// Properties
 	var proposal : _ProposedSize // +0x0
-	var callback : (_:_:) // +0x20
+	var callback : CGSize // +0x20
  }
 
  struct SwiftUI.InvalidatingGraphMutation: GraphMutation {
 
 	// Properties
-	let attribute : AnyWeakAttribute // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let attribute : S
+ // +0x0
  }
+
+ struct SwiftUI.RootGeometry { }
 
  struct SwiftUI.CustomGraphMutation: GraphMutation {
 
 	// Properties
-	let body : (_:) // +0x0
+	let body : Graph // +0x0
  }
-
- struct SwiftUI.RootGeometry { }
 
  struct SwiftUI.EmptyGraphMutation: GraphMutation { }
 
@@ -4283,40 +4508,40 @@
  struct SwiftUI._SafeAreaIgnoringLayout {
 
 	// Properties
-	var edges : Edge.Set // +0x0
+	var edges : Set // +0x0
  }
 
  class SwiftUI.UISegmentedControl : UISegmentedControl /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x211fd0  @objc SystemSegmentedControl.UISegmentedControl.init(items:)
-	0x212090  @objc SystemSegmentedControl.UISegmentedControl.init(frame:)
-	0x212110  @objc SystemSegmentedControl.UISegmentedControl.init(coder:)
+	0x1e4190  @objc SystemSegmentedControl.UISegmentedControl.init(items:)
+	0x1e4250  @objc SystemSegmentedControl.UISegmentedControl.init(frame:)
+	0x1e42d0  @objc SystemSegmentedControl.UISegmentedControl.init(coder:)
  }
 
  class SwiftUI.SegmentedControlCoordinator : PlatformViewCoordinator {
 
 	// Properties
 	var configuration : SystemSegmentedControl
-	var itemChanges : CollectionChanges<Int, Int>
+	var itemChanges : CollectionChanges
 
 	// ObjC -> Swift bridged methods
-	0x212ae0  @objc SegmentedControlCoordinator.selectionChanged(_:)
-	0x212b60  @objc SegmentedControlCoordinator.init()
-	0x212c20  @objc SegmentedControlCoordinator.__ivar_destroyer
+	0x1e4d30  @objc SegmentedControlCoordinator.selectionChanged(_:)
+	0x1e4e90  @objc SegmentedControlCoordinator.init()
+	0x1e4e00  @objc SegmentedControlCoordinator.__ivar_destroyer
 
 	// Swift methods
-	0x212180  func SegmentedControlCoordinator.configuration.getter // getter 
-	0x2121e0  func SegmentedControlCoordinator.configuration.setter // setter 
-	0x212460  func SegmentedControlCoordinator.update(configuration:) // method 
-	0x212570  func SegmentedControlCoordinator.apply(_:to:in:) // method 
-	0x212960  func SegmentedControlCoordinator.selectionChanged(_:) // method 
+	0x1e4320  func SegmentedControlCoordinator.configuration.getter // getter 
+	0x1e4380  func SegmentedControlCoordinator.configuration.setter // setter 
+	0x1e45a0  func SegmentedControlCoordinator.update(configuration:) // method 
+	0x1e46b0  func SegmentedControlCoordinator.apply(_:to:in:) // method 
+	0x1e4bb0  func SegmentedControlCoordinator.selectionChanged(_:) // method 
  }
 
  struct SwiftUI.SystemSegmentedControl {
 
 	// Properties
-	var items : [SystemSegmentItem] // +0x0
-	var selectedIndex : Binding<Int?> // +0x8
+	var items : SystemSegmentItem // +0x0
+	var selectedIndex : Binding // +0x8
  }
 
  struct SwiftUI.SystemSegmentedControlStyle { }
@@ -4330,20 +4555,20 @@
  class SwiftUI.MaskLayer : CAShapeLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 
 	// Properties
-	var clips : [DisplayList.ViewUpdater.Model.Clip] // +0x8 (0x8)
+	var clips : Clip // +0x8 (0x8)
 	var clipTransform : CGAffineTransform // +0x10 (0x30)
 
 	// ObjC -> Swift bridged methods
-	0x214c10  @objc MaskLayer.init()
-	0x214cf0  @objc MaskLayer.init(layer:)
-	0x214de0  @objc MaskLayer.init(coder:)
-	0x214e40  @objc MaskLayer.__ivar_destroyer
+	0x1e6800  @objc MaskLayer.init()
+	0x1e68f0  @objc MaskLayer.init(layer:)
+	0x1e69e0  @objc MaskLayer.init(coder:)
+	0x1e6760  @objc MaskLayer.__ivar_destroyer
  }
 
  struct SwiftUI._DigitalCrownModifier {
 
 	// Properties
-	var binding : Binding<Double> // +0x0
+	var binding : Binding // +0x0
 	var configuration : _DigitalCrownConfiguration // +0x18
 	var updateTargetOffset : (_:_:_:) // +0x60
  }
@@ -4351,7 +4576,7 @@
  struct SwiftUI.SystemSegmentItem {
 
 	// Properties
-	var base : PlatformItemList.Item // +0x0
+	var base : Item // +0x0
  }
 
  struct SwiftUI.RoundedBorderTextFieldStyle { }
@@ -4366,16 +4591,18 @@
 	var columnCount : Int // +0x0
 	var rowCount : Int? // +0x8
 	var openFolderIndex : Int? // +0x18
-	var openFolderScale : CGFloat // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var openFolderScale : ˇá // +0x28
  }
 
  class SwiftUI.TableViewRegistry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var tableViews : WeakTableView // +0x10 (0x8)
+	var tableViews : HashableWeakBox // +0x10 (0x8)
 
 	// Swift methods
-	0x219190  func TableViewRegistry.add(_:) // method 
+	0x1ead90  func TableViewRegistry.add(_:) // method 
+	0x1eb0f0  func TableViewRegistry.remove(_:) // method 
  }
 
  struct SwiftUI._WKStoryboardContent {
@@ -4383,13 +4610,6 @@
 	// Properties
 	let storyboardName : String // +0x0
 	let data : Any? // +0x10
- }
-
- struct SwiftUI.WeakTableView {
-
-	// Properties
-	var view : weak UITableView? // +0x0
-	let pointerValue : UnsafeMutableRawPointer // +0x8
  }
 
  struct SwiftUI.NavigationDestinationContent {
@@ -4406,33 +4626,35 @@
 
 	// Properties
 	var content : NavigationDestinationContent // +0x0
-	var contentHost : BridgedPresentation.ContentHost? // +0x48
+	var contentHost : ContentHost // +0x48
  }
 
  struct SwiftUI.NavigationDestinationsKey { }
 
- struct SwiftUI.TableViewRegistryKey { }
-
  struct SwiftUI.NavigationEnabledKey { }
+
+ struct SwiftUI.TableViewRegistryKey { }
 
  enum SwiftUI.ContentHost {
 
 	// Properties
-	case push : UIHostingController<AnyView>
+	case push : UIHostingController
 	case split : UINavigationController
  }
 
  struct SwiftUI._EnvironmentKeyWritingModifier {
 
 	// Properties
-	var keyPath : WritableKeyPath<EnvironmentValues, A>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyPath : âK
+
 	var value : A
  }
 
  struct SwiftUI.ChildEnvironment {
 
 	// Properties
-	var oldModifier : _EnvironmentKeyWritingModifier<A>?
+	var oldModifier : _EnvironmentKeyWritingModifier
  }
 
  class SwiftUI.ContextMenuBridge {
@@ -4442,14 +4664,14 @@
 	let id : ViewIdentity // +0x8 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x222850  @objc ViewIdentityWrapper.copy(with:)
-	0x222940  @objc ViewIdentityWrapper.isEqual(_:)
-	0x2229e0  @objc ViewIdentityWrapper.hash.getter
-	0x222a60  @objc ViewIdentityWrapper.description.getter
-	0x222ba0  @objc ViewIdentityWrapper.init()
+	0x1f31b0  @objc ViewIdentityWrapper.copy(with:)
+	0x1f32a0  @objc ViewIdentityWrapper.isEqual(_:)
+	0x1f3330  @objc ViewIdentityWrapper.hash.getter
+	0x1f33b0  @objc ViewIdentityWrapper.description.getter
+	0x1f3520  @objc ViewIdentityWrapper.init()
 
 	// Swift methods
-	0x2227e0  func ViewIdentityWrapper.copy(with:) // method 
+	0x1f3140  func ViewIdentityWrapper.copy(with:) // method 
  }
 
  struct SwiftUI.AccessibilityChildBehavior {
@@ -4460,10 +4682,10 @@
 
  class SwiftUI.AnyBehaviorBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x225600  func AnyBehaviorBox.parentProperties(children:environment:) // method 
-	0x225650  func AnyBehaviorBox.shouldCreateNode(for:) // method 
-	0x2256a0  func AnyBehaviorBox.isEqual(to:) // method 
-	0x2256f0  func AnyBehaviorBox.hash(into:) // method 
+	0x1f57e0  func AnyBehaviorBox.parentProperties(children:environment:) // method 
+	0x1f5820  func AnyBehaviorBox.shouldCreateNode(for:) // method 
+	0x1f5860  func AnyBehaviorBox.isEqual(to:) // method 
+	0x1f58a0  func AnyBehaviorBox.hash(into:) // method 
  }
 
  class SwiftUI.BehaviorBox {
@@ -4482,7 +4704,7 @@
 	// Properties
 	var supportedTypes : [String] // +0x0
 	var validatingDataHandler : (_:) // +0x8
-	var isEnabled : Environment<Bool> // +0x18
+	var isEnabled : Environment // +0x18
  }
 
  struct SwiftUI.ModifierGesture {
@@ -4497,7 +4719,7 @@
  struct SwiftUI.FocusableDescendantNodeWrapper {
 
 	// Properties
-	var focusableDescendantNode : weak AccessibilityNode? // +0x0
+	var focusableDescendantNode : AccessibilityNode // +0x0
  }
 
  struct SwiftUI.FocusableDescendantNodeKey { }
@@ -4510,8 +4732,8 @@
 
  class SwiftUI.AnyImageProviderBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x22f200  func AnyImageProviderBox.resolve(in:) // method 
-	0x22f240  func AnyImageProviderBox.isEqual(to:) // method 
+	0x1fead0  func AnyImageProviderBox.resolve(in:) // method 
+	0x1feb10  func AnyImageProviderBox.isEqual(to:) // method 
  }
 
  class SwiftUI.ImageProviderBox {
@@ -4522,7 +4744,7 @@
  struct SwiftUI.DynamicLayoutProxyInfo {
 
 	// Properties
-	let containerInfo : DynamicContainer.Info
+	let containerInfo : Info
 	let layoutComputerIndexMap : DynamicInputIndicesMap
  }
 
@@ -4547,26 +4769,34 @@
  struct SwiftUI.MakeTransition {
 
 	// Properties
-	var context : DynamicLayoutViewAdaptor // +0x0
-	var uniqueId : UInt32 // +0x10
-	var list : Attribute<ViewList> // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var context : ãı	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uniqueId : á‚	 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var list : G
+ // +0x18
 	var id : _ViewList_ID // +0x20
-	var inputs : _ViewInputs // +0x50
-	var makeElt : (_:_:_:) // +0xb8
-	var outputs : _ViewOutputs? // +0xc8
+	var inputs : _ViewInputs // +0x58
+	var makeElt : _ViewOutputs // +0xc0
+	var outputs : _ViewOutputs // +0xd0
  }
 
  struct SwiftUI.DynamicLayoutViewAdaptor {
 
 	// Properties
-	let childGeometries : Attribute<[ViewGeometry]> // +0x0
-	var parentLayoutComputer : Attribute<LayoutComputer>? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let childGeometries : 5ı	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var parentLayoutComputer : Â
+ // +0x8
  }
 
  struct SwiftUI.ViewListTransition {
 
 	// Properties
-	let uniqueId : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	
 	var lastValue : A
 	var lastPhase : TransitionPhase
  }
@@ -4584,7 +4814,8 @@
  struct SwiftUI.DragGesture {
 
 	// Properties
-	var minimumDistance : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minimumDistance : ˇá // +0x0
 	var coordinateSpace : CoordinateSpace // +0x8
 	var allowedDirections : _EventDirections // +0x30
  }
@@ -4592,18 +4823,19 @@
  struct SwiftUI.Value {
 
 	// Properties
-	var time : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var time : #Ò	
 	var location : CGPoint
 	var startLocation : CGPoint
-	var velocity : _Velocity<CGSize>
+	var velocity : _Velocity
  }
 
  struct SwiftUI.StateType {
 
 	// Properties
-	var start : SpatialEvent?
-	var value : DragGesture.Value?
-	var sampler : VelocitySampler<AnimatablePair<CGFloat, CGFloat>>
+	var start : SpatialEvent
+	var value : Value
+	var sampler : VelocitySampler
  }
 
  struct SwiftUI.DefaultToggleStyle { }
@@ -4611,7 +4843,7 @@
  struct SwiftUI.Slider {
 
 	// Properties
-	var _value : Binding<Double>
+	var _value : Binding
 	var onEditingChanged : (_:)
 	let skipDistance : Double
 	let discreteValueCount : Int
@@ -4619,7 +4851,7 @@
 	var _maximumValueLabel : B
 	var hasCustomMinMaxValueLabels : Bool
 	var label : A
-	var _style : Environment<AnySliderStyle>
+	var _style : Environment
  }
 
  struct SwiftUI.Normalizing {
@@ -4641,13 +4873,13 @@
  struct SwiftUI.Spacing {
 
 	// Properties
-	var minima : [Spacing.Key : CGFloat] // +0x0
+	var minima : Key // +0x0
  }
 
  struct SwiftUI.Key {
 
 	// Properties
-	var category : Spacing.Category? // +0x0
+	var category : Category // +0x0
 	var edge : Edge // +0x8
  }
 
@@ -4661,20 +4893,20 @@
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var configuration : TextField<_TextFieldStyleLabel> // +0x0
+	var configuration : TextField // +0x0
  }
 
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var configuration : TextField<_TextFieldStyleLabel> // +0x0
+	var configuration : TextField // +0x0
  }
 
  struct SwiftUI.SystemTextFieldConfiguration {
 
 	// Properties
-	let textField : TextField<A>
-	let style : UITextBorderStyle
+	let textField : TextField
+	let style : BorderStyle
  }
 
  struct SwiftUI._SystemTextField {
@@ -4693,7 +4925,7 @@
  class SwiftUI.PreferenceBridge : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let viewGraph : unowned ViewGraph // +0x10 (0x8)
+	let viewGraph : ViewGraph // +0x10 (0x8)
 	var requestedPreferences : PreferenceKeys // +0x18 (0x8)
 	var bridgedViewInputs : PropertyList // +0x20 (0x8)
 	var bridgedPreferences : BridgedPreference // +0x28 (0x8)
@@ -4701,23 +4933,23 @@
 	var preferencesNeedUpdate : Bool // +0x40 (0x1)
 
 	// Swift methods
-	0x24b9e0  func PreferenceBridge.wrapOutputs(_:inputs:in:) // method 
-	0x24bc90  func PreferenceBridge.addValue(_:in:for:update:) // method 
-	0x24bf00  func PreferenceBridge.invalidatePreferenceValues(transaction:) // method 
+	0x217500  func PreferenceBridge.wrapOutputs(_:inputs:in:) // method 
+	0x2177a0  func PreferenceBridge.addValue(_:in:for:update:) // method 
+	0x2179e0  func PreferenceBridge.invalidatePreferenceValues(transaction:) // method 
  }
 
  struct SwiftUI.BridgedPreference {
 
 	// Properties
-	var key : AnyPreferenceKey.Type // +0x0
-	var combiner : AGAttribute // +0x10
+	var key : AnyPreferenceKey // +0x0
+	var combiner : AnyAttribute // +0x10
  }
 
  struct SwiftUI.MakeCombiner {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
-	var result : AGAttribute? // +0x8
+	let graph : Graph // +0x0
+	var result : AnyAttribute // +0x8
  }
 
  struct SwiftUI._TransformEffect {
@@ -4730,34 +4962,36 @@
 
 	// Properties
 	var title : Text // +0x0
-	var message : Text? // +0x20
-	var buttons : [Alert.Button] // +0x40
+	var message : Text // +0x20
+	var buttons : Button // +0x40
  }
+
+ struct SwiftUI.Key { }
 
  struct SwiftUI.Presentation {
 
 	// Properties
 	let title : Text // +0x0
-	let message : Text? // +0x20
-	let buttons : [Alert.Button] // +0x40
+	let message : Text // +0x20
+	let buttons : Button // +0x40
 	var onDismiss : ()? // +0x48
 	let viewID : ViewIdentity // +0x58
-	let itemID : AnyHashable? // +0x60
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let itemID : /; // +0x60
+	let sourceRect : CGRect // +0x88
  }
-
- struct SwiftUI.Key { }
 
  struct SwiftUI.AccentColorKey { }
 
  struct SwiftUI.AccentColorProvider { }
-
- struct SwiftUI.TintAdjustmentModeKey { }
 
  struct SwiftUI.DesaturatedColor {
 
 	// Properties
 	var base : Color // +0x0
  }
+
+ struct SwiftUI.TintAdjustmentModeKey { }
 
  enum SwiftUI.TintAdjustmentMode {
 
@@ -4771,14 +5005,14 @@
  struct SwiftUI.GroupedListStyle {
 
 	// Properties
-	var sectionInset : EdgeInsets? // +0x0
+	var sectionInset : EdgeInsets // +0x0
  }
 
  struct SwiftUI.GroupList {
 
 	// Properties
-	var sectionInset : EdgeInsets?
-	var selection : Binding<A>?
+	var sectionInset : EdgeInsets
+	var selection : Binding
  }
 
  struct SwiftUI.Body { }
@@ -4786,26 +5020,26 @@
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var _minRowHeight : Environment<CGFloat?>
-	var _minHeaderHeight : Environment<CGFloat?>
-	var _editMode : Environment<Binding<EditMode>?>
-	var _horizontalSizeClass : Environment<UserInterfaceSizeClass?>
-	let sectionInset : EdgeInsets?
+	var _minRowHeight : Environment
+	var _minHeaderHeight : Environment
+	var _editMode : Environment
+	var _horizontalSizeClass : Environment
+	let sectionInset : EdgeInsets
 	let children : _VariadicView_Children
-	let selection : Binding<A1>?
+	let selection : Binding
  }
 
  struct SwiftUI.RenderingModeProvider {
 
 	// Properties
 	var base : Image // +0x0
-	var renderingMode : Image.TemplateRenderingMode? // +0x8
+	var renderingMode : TemplateRenderingMode // +0x8
  }
 
  struct SwiftUI.SystemColorDefinitionType {
 
 	// Properties
-	var base : SystemColorDefinition.Type // +0x0
+	var base : SystemColorDefinition // +0x0
  }
 
  struct SwiftUI.SystemColorDefinitionKey { }
@@ -4836,6 +5070,24 @@
 
  struct SwiftUI.Phase { }
 
+ struct SwiftUI._ScrollViewRoot {
+
+	// Properties
+	var scrollView : Main
+ }
+
+ struct SwiftUI._ScrollOverlayView {
+
+	// Properties
+	var scrollView : _ScrollViewProxy // +0x0
+ }
+
+ struct SwiftUI.ScrollOverlayLayout {
+
+	// Properties
+	var scrollView : _ScrollViewProxy // +0x0
+ }
+
  struct SwiftUI._RotationEffect {
 
 	// Properties
@@ -4856,10 +5108,36 @@
  class SwiftUI.FocusableViewResponder : DefaultLayoutViewResponder {
 
 	// Properties
-	var focusAccessibilityNode : weak AccessibilityNode? // +0xd8 (0x8)
-	var baseItem : FocusItem2.ViewItem? // +0xe0 (0x20)
+	var focusAccessibilityNode : AccessibilityNode // +0xd8 (0x8)
+	var baseItem : ViewItem // +0xe0 (0x20)
 	var transform : ViewTransform // +0x100 (0x18)
 	var size : CGSize // +0x118 (0x10)
+	var _uikitFocusItem : UIFocusableViewResponderItem // +0x128 (0x8)
+ }
+
+ class SwiftUI.UIFocusableViewResponderItem : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	var base : FocusableViewResponder
+	var host : weak UIView?
+
+	// ObjC -> Swift bridged methods
+	0x223d70  @objc UIFocusableViewResponderItem.frame.getter
+	0x223e60  @objc UIFocusableViewResponderItem.canBecomeFocused.getter
+	0x223ed0  @objc UIFocusableViewResponderItem.parentFocusEnvironment.getter
+	0x223f30  @objc UIFocusableViewResponderItem.preferredFocusEnvironments.getter
+	0x223fa0  @objc UIFocusableViewResponderItem.focusItemContainer.getter
+	0x224030  @objc UIFocusableViewResponderItem.setNeedsFocusUpdate()
+	0x2240c0  @objc UIFocusableViewResponderItem.updateFocusIfNeeded()
+	0x224100  @objc UIFocusableViewResponderItem.shouldUpdateFocus(in:)
+	0x2241d0  @objc UIFocusableViewResponderItem.didUpdateFocus(in:with:)
+	0x224290  @objc UIFocusableViewResponderItem._preferredFocusRegionCoordinateSpace()
+	0x224430  @objc UIFocusableViewResponderItem._searchForFocusRegions(in:)
+	0x224570  @objc UIFocusableViewResponderItem._region(forFocusedItem:in:)
+	0x224670  @objc UIFocusableViewResponderItem.init()
+	0x224610  @objc UIFocusableViewResponderItem.__ivar_destroyer
+
+	// Swift methods
  }
 
  struct SwiftUI.FocusableOptions {
@@ -4873,12 +5151,10 @@
  struct SwiftUI.UpdateViewFocusItem {
 
 	// Properties
-	var viewGraph : weak ViewGraph? // +0x0
-	var identityTracker : ViewIdentity.Tracker // +0x8
+	var viewGraph : ViewGraph // +0x0
+	var identityTracker : Tracker // +0x8
 	var isFocused : Bool // +0x10
  }
-
- struct SwiftUI.InFocusedItemKey { }
 
  struct SwiftUI.IsFocusedEnvironmentChild { }
 
@@ -4888,6 +5164,8 @@
 	let responder : FocusableViewResponder // +0x0
  }
 
+ struct SwiftUI.InFocusedItemKey { }
+
  struct SwiftUI._ScaleEffect {
 
 	// Properties
@@ -4895,47 +5173,59 @@
 	var anchor : UnitPoint // +0x10
  }
 
+ struct SwiftUI.SystemTabViewStyle { }
+
+ struct SwiftUI.SystemTabView {
+
+	// Properties
+	var selection : Binding
+ }
+
+ struct SwiftUI.Body { }
+
  class SwiftUI.EventBindingManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var host : weak ViewRendererHost? // +0x10 (0x10)
+	var host : ViewRendererHost // +0x10 (0x10)
 	var delegate : EventBindingManagerDelegate // +0x20 (0x10)
-	var eventBindings : [EventID : EventBinding] // +0x30 (0x8)
-	var eventBindingSeed : UInt32 // +0x38 (0x4)
+	var eventBindings : EventID // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var eventBindingSeed : á‚	 // +0x38 (0x4)
 	var isActive : Bool // +0x3c (0x1)
 	var eventTimer : NSTimer? // +0x40 (0x8)
 
 	// Swift methods
  }
 
+ struct SwiftUI.IdentifiedPreferenceWritingModifier {
+
+	// Properties
+	var transform : PreferenceKey
+ }
+
  struct SwiftUI.IdentifiedPreferenceTransformModifier {
 
 	// Properties
-	var transform : (_:_:)
+	var transform : PreferenceKey
  }
 
  struct SwiftUI.Value {
 
 	// Properties
-	var helper : ViewIdentity.Tracker
+	var helper : Tracker
  }
 
  struct SwiftUI.Transform {
 
 	// Properties
-	var helper : ViewIdentity.Tracker
- }
-
- struct SwiftUI.IdentifiedPreferenceWritingModifier {
-
-	// Properties
-	var transform : (_:)
+	var helper : Tracker
  }
 
  struct SwiftUI._BlurEffect {
 
 	// Properties
-	var radius : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var radius : ˇá // +0x0
 	var isOpaque : Bool // +0x8
  }
 
@@ -4951,36 +5241,6 @@
 	// Properties
 	var amount : Double // +0x0
  }
-
- class SwiftUI.Coordinator : PlatformViewCoordinator {
-
-	// Properties
-	var configuration : StepperWidget // +0x8 (0x30)
-
-	// ObjC -> Swift bridged methods
-	0x25e800  @objc Coordinator.valueChanged(_:)
-	0x25e860  @objc Coordinator.editingBegan(_:)
-	0x25e970  @objc Coordinator.editingEnded(_:)
-	0x25e9f0  @objc Coordinator.init()
-	0x25ea90  @objc Coordinator.__ivar_destroyer
-
-	// Swift methods
-	0x25e400  func Coordinator.configuration.getter // getter 
-	0x25e490  func Coordinator.configuration.setter // setter 
-	0x25e6f0  func Coordinator.valueChanged(_:) // method 
-	0x25e850  func Coordinator.editingBegan(_:) // method 
-	0x25e8b0  func Coordinator.editingEnded(_:) // method 
- }
-
- struct SwiftUI.StepperWidget {
-
-	// Properties
-	var onIncrement : ()? // +0x0
-	var onDecrement : ()? // +0x10
-	var onEditingChanged : (_:) // +0x20
- }
-
- struct SwiftUI.SystemStepperStyle { }
 
  struct SwiftUI._ColorInvertEffect { }
 
@@ -5002,8 +5262,6 @@
 	let bits : UInt // +0x0
  }
 
- enum SwiftUI.Center { }
-
  enum SwiftUI.Leading { }
 
  enum SwiftUI.Center { }
@@ -5011,6 +5269,8 @@
  enum SwiftUI.Trailing { }
 
  enum SwiftUI.Top { }
+
+ enum SwiftUI.Center { }
 
  enum SwiftUI.Bottom { }
 
@@ -5042,7 +5302,7 @@
  struct SwiftUI._Resolved {
 
 	// Properties
-	var color : Color._Resolved // +0x0
+	var color : _Resolved // +0x0
  }
 
  struct SwiftUI._ContrastEffect {
@@ -5067,7 +5327,7 @@
 
  class SwiftUI.PlatformViewCoordinator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x261e50  @objc PlatformViewCoordinator.init()
+	0x22e7e0  @objc PlatformViewCoordinator.init()
  }
 
  struct SwiftUI._HueRotationEffect {
@@ -5100,10 +5360,17 @@
 
  struct SwiftUI.CanTransitionTraitKey { }
 
+ struct SwiftUI.TabView {
+
+	// Properties
+	var selection : Binding
+	var content : B
+ }
+
  struct SwiftUI.RowMajorOrder {
 
 	// Properties
-	var base : LowerTriangularMatrix<A>
+	var base : LowerTriangularMatrix
  }
 
  struct SwiftUI.LowerTriangularMatrix {
@@ -5111,6 +5378,19 @@
 	// Properties
 	var storage : [A]
 	var dimension : Int
+ }
+
+ class SwiftUI.DragViewResponder : DefaultLayoutViewResponder {
+
+	// Properties
+	var itemsForDragHandler : DraggingItem // +0xd8 (0x10)
+	var targetRect : CGRect // +0xe8 (0x21)
+ }
+
+ struct SwiftUI.DragResponderFilter {
+
+	// Properties
+	let responder : DragViewResponder // +0x0
  }
 
  struct SwiftUI._OpacityEffect {
@@ -5136,8 +5416,8 @@
 	// Properties
 	let preconvertedEventLocations : Bool
 	let allowsIncompleteEventSequences : Bool
-	let bindings : unowned EventBindingManager
-	var latestEvents : [EventID : A]
+	let bindings : EventBindingManager
+	var latestEvents : EventID
 	var reset : GestureReset
  }
 
@@ -5148,7 +5428,7 @@
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var configuration : PickerStyleConfiguration<A>
+	var configuration : PickerStyleConfiguration
  }
 
  struct SwiftUI.Body { }
@@ -5159,11 +5439,21 @@
 	var children : _VariadicView_Children // +0x0
  }
 
+ struct SwiftUI._LabeledViewStyleModifier {
+
+	// Properties
+	var style : A // +0x63f640
+ }
+
+ struct SwiftUI._AccessibilityCombineLabelsModifier { }
+
  struct SwiftUI.AccessibilityCombineLabelsInput { }
+
+ struct SwiftUI.LabeledViewLabel { }
 
  struct SwiftUI.LabeledViewContent { }
 
- struct SwiftUI.LabeledViewLabel { }
+ struct SwiftUI._AccessibilitySeparateLabelsModifier { }
 
  struct SwiftUI.ResolvedLabeledView {
 
@@ -5171,33 +5461,24 @@
 	var id : ViewIdentity // +0x0
  }
 
- struct SwiftUI._AccessibilitySeparateLabelsModifier { }
-
- struct SwiftUI._AccessibilityCombineLabelsModifier { }
-
- struct SwiftUI._LabeledViewStyleModifier {
-
-	// Properties
-	var style : A
- }
-
  struct SwiftUI._AnimationModifier {
 
 	// Properties
-	var animation : Animation?
+	var animation : Animation
 	var value : A
  }
 
  struct SwiftUI.ChildTransaction {
 
 	// Properties
-	var oldValue : _AnimationModifier<A>?
+	var oldValue : _AnimationModifier
  }
 
  struct SwiftUI.__Random {
 
 	// Properties
-	var seed : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0x0
  }
 
  struct SwiftUI.TagValueTraitKey { }
@@ -5229,21 +5510,46 @@
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var _minRowHeight : Environment<CGFloat?>
-	var _minHeaderHeight : Environment<CGFloat?>
-	var _editMode : Environment<Binding<EditMode>?>
+	var _minRowHeight : Environment
+	var _minHeaderHeight : Environment
+	var _editMode : Environment
 	let children : _VariadicView_Children
-	let selection : Binding<A1>?
+	let selection : Binding
  }
 
  struct SwiftUI.SystemListDataSource {
 
 	// Properties
 	var sections : Sections
-	let style : UITableViewStyle
+	let style : Style
 	var children : _VariadicView_Children
-	var minRowHeight : CGFloat?
-	var minHeaderHeight : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minRowHeight : Iv
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minHeaderHeight : ˇá
+ }
+
+ struct SwiftUI.HeaderFooterVisitor {
+
+	// Properties
+	let hostWrapper : ListCoreHeaderHost // +0x0
+	let transaction : Transaction // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minHeight : ˇá // +0x10
+	let style : Style // +0x18
+	let isHeader : Bool // +0x20
+ }
+
+ struct SwiftUI.HeaderContent {
+
+	// Properties
+	var _horizontalMargin : Environment // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let verticalInset : ˇá // +0x10
+	var traitInsets : EdgeInsets // +0x18
+	var isHeader : Bool // +0x39
+	var view : _ViewList_View // +0x40
  }
 
  struct SwiftUI._BlendModeEffect {
@@ -5290,8 +5596,8 @@
  struct SwiftUI.DrawingGroupDisplayList {
 
 	// Properties
-	var contentSeed : DisplayList.Seed // +0x0
-	let identity : DisplayList.Identity // +0x4
+	var contentSeed : Seed // +0x0
+	let identity : Identity // +0x4
 	var hasList : Bool // +0x8
  }
 
@@ -5301,7 +5607,7 @@
 	// Properties
 	var text : NSAttributedString? // +0x0
 	var image : UIImage? // +0x8
-	var selectionBehavior : PlatformItemList.Item.SelectionBehavior? // +0x10
+	var selectionBehavior : SelectionBehavior // +0x10
  }
 
  struct SwiftUI.SelectionBehavior {
@@ -5309,14 +5615,14 @@
 	// Properties
 	var isMomentary : Bool // +0x0
 	var isContainerSelection : Bool // +0x1
-	var visualStyle : PlatformItemList.Item.SelectionBehavior.VisualStyle // +0x2
+	var visualStyle : VisualStyle // +0x2
 	var onSelect : ()? // +0x8
  }
 
  struct SwiftUI.PlatformItemList {
 
 	// Properties
-	var items : [PlatformItemList.Item] // +0x0
+	var items : Item // +0x0
  }
 
  struct SwiftUI.MergePlatformItemsModifier { }
@@ -5338,7 +5644,7 @@
 	// Properties
 	var action : () // +0x0
 	var isMomentary : Bool // +0x10
-	var _isEnabled : Environment<Bool> // +0x18
+	var _isEnabled : Environment // +0x18
  }
 
  struct SwiftUI.Transform { }
@@ -5346,7 +5652,7 @@
  struct SwiftUI.SelectionBehaviorVisualStyleModifier {
 
 	// Properties
-	let visualStyle : PlatformItemList.Item.SelectionBehavior.VisualStyle // +0x0
+	let visualStyle : VisualStyle // +0x0
  }
 
  struct SwiftUI.GroupBox {
@@ -5359,13 +5665,13 @@
  struct SwiftUI.TextField {
 
 	// Properties
-	var _text : Binding<String>
+	var _text : Binding
 	var isSecure : Bool
 	var label : A
 	var onEditingChanged : (_:)
 	var onCommit : ()
 	var updatesContinuously : Bool
-	var _uncommittedText : State<String?>
+	var _uncommittedText : State
  }
 
  class SwiftUI.AnyToFormattedString {
@@ -5380,24 +5686,26 @@
  struct SwiftUI.Value {
 
 	// Properties
-	var item : AnyGestureStorageBase<A>
-	var subgraph : AGSubgraphRef
-	var uniqueId : UInt32
+	var item : AnyGestureStorageBase
+	var subgraph : Subgraph
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uniqueId : á‚	
  }
 
  struct SwiftUI.AnyGestureInfo {
 
 	// Properties
 	var inputs : _GestureInputs
-	var outputs : _GestureOutputs<A>
-	let parentSubgraph : AGSubgraphRef
+	var outputs : _GestureOutputs
+	let parentSubgraph : Subgraph
 	var oldInfo : Value
  }
 
  struct SwiftUI.AnyGestureChild {
 
 	// Properties
-	let uniqueId : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	
  }
 
  struct SwiftUI.AnyResetSeed { }
@@ -5416,7 +5724,8 @@
  enum SwiftUI.PreviewLayout {
 
 	// Properties
-	case fixed : (width: CGFloat, height: CGFloat)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case fixed : q‘	
 	case device  
 	case sizeThatFits  
  }
@@ -5436,16 +5745,16 @@
  struct SwiftUI._Preview {
 
 	// Properties
-	let child : _VariadicView_Children.Element // +0x0
-	let id : Int // +0x78
-	let contentType : String // +0x80
+	let child : Element // +0x0
+	let id : Int // +0x80
+	let contentType : String // +0x88
  }
 
  struct SwiftUI.MakePreviews {
 
 	// Properties
 	var content : Any // +0x0
-	var previews : [_Preview] // +0x20
+	var previews : _Preview // +0x20
  }
 
  struct SwiftUI._PlainDividerStyle { }
@@ -5456,7 +5765,7 @@
 
 	// Properties
 	var orientation : Axis // +0x0
-	let pixelLength : Environment<CGFloat> // +0x8
+	let pixelLength : Environment // +0x8
  }
 
  struct SwiftUI.BackgroundEffectView { }
@@ -5464,8 +5773,8 @@
  struct SwiftUI._AnchorWritingModifier {
 
 	// Properties
-	var anchor : Anchor<A>.Source
-	var transform : (_:)
+	var anchor : Source
+	var transform : PreferenceKey
  }
 
  struct SwiftUI.AnchorWriter { }
@@ -5489,7 +5798,9 @@
 
 	// Properties
 	var alignment : HorizontalAlignment // +0x0
-	var spacing : CGFloat? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var spacing : Iv
+ // +0x8
  }
 
  struct SwiftUI.SliderStyleLabel { }
@@ -5500,7 +5811,8 @@
 
 	// Properties
 	var color : Color // +0x0
-	var radius : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var radius : ˇá // +0x8
 	var offset : CGSize // +0x10
  }
 
@@ -5509,16 +5821,6 @@
 	// Properties
 	var style : ResolvedShadowStyle // +0x0
  }
-
- struct SwiftUI.SystemTabViewStyle { }
-
- struct SwiftUI.SystemTabView {
-
-	// Properties
-	var selection : Binding<A>?
- }
-
- struct SwiftUI.Body { }
 
  struct SwiftUI._ScrollLayout {
 
@@ -5548,7 +5850,7 @@
 
 	// Properties
 	case initially : CGPoint
-	case binding : Binding<CGPoint>
+	case binding : Binding
  }
 
  struct SwiftUI._ScrollView {
@@ -5568,8 +5870,8 @@
 
 	// Properties
 	var content : A
-	var horizontal : TextAlignment?
-	var vertical : _VAlignment?
+	var horizontal : TextAlignment
+	var vertical : _VAlignment
 	let stretchChildrenToMaxHeight : Bool
  }
 
@@ -5588,11 +5890,11 @@
 
 	// Properties
 	var content : A
-	var selection : Binding<Bool>
-	var _highlighting : State<Bool>
-	var _rowInset : Environment<CGFloat>
-	var _pixelLength : Environment<CGFloat>
-	var _defaultMinListRowHeight : Environment<CGFloat>
+	var selection : Binding
+	var _highlighting : State
+	var _rowInset : Environment
+	var _pixelLength : Environment
+	var _defaultMinListRowHeight : Environment
  }
 
  struct SwiftUI.PlainListStyle { }
@@ -5600,7 +5902,7 @@
  struct SwiftUI.PlainList {
 
 	// Properties
-	var selection : Binding<A>?
+	var selection : Binding
  }
 
  struct SwiftUI.Body { }
@@ -5611,14 +5913,16 @@
 
 	// Properties
 	var value : A
-	var space : AnyHashable
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var space : „Ñ
+
  }
 
  struct SwiftUI.ToggleStyleConfiguration {
 
 	// Properties
 	let label : Label // +0x0
-	var _isOn : Binding<Bool> // +0x0
+	var _isOn : Binding // +0x0
  }
 
  struct SwiftUI.Label { }
@@ -5639,9 +5943,13 @@
 
 	// Properties
 	var direction : Direction // +0x0
-	var size : CGFloat? // +0x8
-	var margin : CGFloat // +0x18
-	var spacing : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var size : Iv
+ // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var margin : ˇá // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var spacing : ˇá // +0x20
 	var constrainedDeceleration : Bool // +0x28
  }
 
@@ -5656,19 +5964,22 @@
 
 	// Properties
 	var views : A
-	var page : Binding<A.Collection.Index>?
+	var page : Binding
 	var config : _PagingViewConfig
 	var scrollViewConfig : _ScrollViewConfig
-	var _offset : State<CGFloat>
+	var _offset : State
  }
 
  struct SwiftUI.PagingLayout {
 
 	// Properties
-	var size : CGFloat // +0x0
-	var direction : _PagingViewConfig.Direction // +0x8
-	var margin : CGFloat // +0x10
-	var spacing : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var size : ˇá // +0x0
+	var direction : Direction // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var margin : ˇá // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var spacing : ˇá // +0x18
 	var constrainedDeceleration : Bool // +0x20
  }
 
@@ -5677,7 +5988,8 @@
 	// Properties
 	let views : A
 	let config : _PagingViewConfig
-	let itemSize : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let itemSize : ˇá
 	let generation : Int
  }
 
@@ -5751,8 +6063,6 @@
 
  struct SwiftUI.LegibilityWeightKey { }
 
- struct SwiftUI.LocaleKey { }
-
  struct SwiftUI.ColorSchemeContrastKey { }
 
  struct SwiftUI.ImageScaleKey { }
@@ -5761,11 +6071,15 @@
 
  struct SwiftUI.HorizontalUserInterfaceSizeClassKey { }
 
+ struct SwiftUI.LocaleKey { }
+
  struct SwiftUI.ColorSchemeKey { }
 
  struct SwiftUI.DisplayScaleKey { }
 
  struct SwiftUI.FontKey { }
+
+ struct SwiftUI.DefaultRenderingModeKey { }
 
  enum SwiftUI.DisplayGamut {
 
@@ -5774,11 +6088,9 @@
 	case displayP3  
  }
 
- struct SwiftUI.VibrantStylingKey { }
-
  struct SwiftUI.DisplayGamutKey { }
 
- struct SwiftUI.DefaultRenderingModeKey { }
+ struct SwiftUI.VibrantStylingKey { }
 
  struct SwiftUI.DefaultPickerStyle { }
 
@@ -5794,45 +6106,61 @@
  struct SwiftUI.DropCoordinator {
 
 	// Properties
-	var operation : DropCoordinator<A, B>.Operation
+	var operation : Operation
 	var items : [NSItemProvider]
  }
 
  struct SwiftUI._FrameLayout: FrameLayoutCommon {
 
 	// Properties
-	let width : CGFloat? // +0x0
-	let height : CGFloat? // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let width : Iv
+ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let height : Iv
+ // +0x10
 	let alignment : Alignment // +0x20
  }
 
  struct SwiftUI._FlexFrameLayout: FrameLayoutCommon {
 
 	// Properties
-	let minWidth : CGFloat? // +0x0
-	let idealWidth : CGFloat? // +0x10
-	let maxWidth : CGFloat? // +0x20
-	let minHeight : CGFloat? // +0x30
-	let idealHeight : CGFloat? // +0x40
-	let maxHeight : CGFloat? // +0x50
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minWidth : Iv
+ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let idealWidth : Iv
+ // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxWidth : Iv
+ // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minHeight : Iv
+ // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let idealHeight : Iv
+ // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxHeight : Iv
+ // +0x50
 	let alignment : Alignment // +0x60
  }
 
  struct SwiftUI.AccessibilityAttachmentModifier {
 
 	// Properties
-	var attachment : AccessibilityAttachment? // +0x0
-	var onlyApplyToFirstNode : Bool // +0x11
+	var attachment : AccessibilityAttachment // +0x0
+	var onlyApplyToFirstNode : Bool // +0x29
  }
 
  class SwiftUI.DynamicStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x2a6240  func DynamicStorage.contentType.getter // getter 
-	0x2a6290  func DynamicStorage.identifier.getter // getter 
-	0x2a62e0  func DynamicStorage.needsTransitions.getter // getter 
-	0x2a6330  func DynamicStorage.matchesIdentity(of:) // method 
-	0x2a6380  func DynamicStorage.makeView<A>(in:uniqueId:container:inputs:adaptor:) // method 
-	0x2a63d0  func DynamicStorage.visitContent<A>(_:phase:) // method 
+	0x26f2a0  func DynamicStorage.contentType.getter // getter 
+	0x26f2f0  func DynamicStorage.identifier.getter // getter 
+	0x26f340  func DynamicStorage.needsTransitions.getter // getter 
+	0x26f390  func DynamicStorage.matchesIdentity(of:) // method 
+	0x26f3e0  func DynamicStorage.makeView<A>(in:uniqueId:container:inputs:adaptor:) // method 
+	0x26f430  func DynamicStorage.visitContent<A>(_:phase:) // method 
  }
 
  class SwiftUI.IdentifiedItemStorage {
@@ -5840,8 +6168,9 @@
  struct SwiftUI.AnyDynamicChild {
 
 	// Properties
-	let uniqueId : UInt32
-	var item : AnyDynamicItem?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	
+	var item : AnyDynamicItem
  }
 
  struct SwiftUI.MakeStorageVisitor1 {
@@ -5862,7 +6191,8 @@
  struct SwiftUI.UpdateVisitor {
 
 	// Properties
-	var context : AnyDynamicChild
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var context : E»	
  }
 
  struct SwiftUI.DefaultNavigationViewStyle { }
@@ -5873,9 +6203,12 @@
 
 	// Properties
 	var base : LayoutTraitsContext // +0x0
-	var dimensionsIndex : Int32 // +0x14
-	var transformIndex : Int32 // +0x18
-	var positionIndex : Int32 // +0x1c
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dimensionsIndex : ˝L // +0x14
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var transformIndex : ˝L // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var positionIndex : ˝L // +0x1c
  }
 
  struct SwiftUI.LayoutContext: _FinalPlacementContext {
@@ -5895,9 +6228,22 @@
  struct SwiftUI.LayoutTraitsContext {
 
 	// Properties
-	var context : AttributeContext<VoidAttribute> // +0x0
-	var environmentIndex : Int32 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var context : ª
+ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var environmentIndex : ˝L // +0x10
  }
+
+ class SwiftUI.ChildIndexProjection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let children : _VariadicView_Children // +0x10 (0x30)
+
+	// Swift methods
+ }
+
+ struct SwiftUI.TabItemTraitKey { }
 
  enum SwiftUI.Edge {
 
@@ -5911,7 +6257,8 @@
  struct SwiftUI.Set {
 
 	// Properties
-	let rawValue : Int8 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : e* // +0x0
  }
 
  struct SwiftUI.PopUpButtonPickerStyle { }
@@ -5922,6 +6269,10 @@
 
 	// Properties
 	var combine : Bool
+	var lastContentNodes : AccessibilityNode
+	var lastContentAttachment : AccessibilityAttachment
+	var lastLabelNode : AccessibilityNode
+	var lastLabelAttachemnt : AccessibilityAttachment
  }
 
  struct SwiftUI.AccessibilityLabelModifier {
@@ -5934,7 +6285,7 @@
  enum SwiftUI.PopoverAttachmentAnchor {
 
 	// Properties
-	case rect : Anchor<CGRect>.Source
+	case rect : Source
 	case point : UnitPoint
  }
 
@@ -5942,11 +6293,12 @@
 
 	// Properties
 	var content : AnyView // +0x0
-	var arrowEdge : Edge? // +0x8
-	var targetAnchor : Anchor<CGRect?> // +0x10
+	var arrowEdge : Edge // +0x8
+	var targetAnchor : Anchor // +0x10
 	var onDismiss : () // +0x18
-	var viewID : ViewIdentity? // +0x28
-	var itemID : AnyHashable? // +0x30
+	var viewID : ViewIdentity // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var itemID : /; // +0x30
  }
 
  struct SwiftUI.Key { }
@@ -5965,16 +6317,16 @@
  struct SwiftUI.PairwisePreferenceCombinerVisitor {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
-	let outputs : (_ViewOutputs, _ViewOutputs) // +0x8
+	let graph : Graph // +0x0
+	let outputs : _ViewOutputs // +0x8
 	var result : _ViewOutputs // +0x38
  }
 
  struct SwiftUI.MultiPreferenceCombinerVisitor {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
-	let childOutputs : [_ViewOutputs] // +0x8
+	let graph : Graph // +0x0
+	let childOutputs : _ViewOutputs // +0x8
 	var result : _ViewOutputs // +0x10
  }
 
@@ -5983,9 +6335,9 @@
  struct SwiftUI.AccessibilityTransform {
 
 	// Properties
-	let viewRendererHost : unowned ViewRendererHost?
-	var lastNodes : [AccessibilityNode]
-	var parentNode : AccessibilityNode?
+	let viewRendererHost : ViewRendererHost
+	var lastNodes : AccessibilityNode
+	var parentNode : AccessibilityNode
  }
 
  struct SwiftUI._IgnoredByLayoutEffect {
@@ -5994,11 +6346,37 @@
 	var base : A
  }
 
+ struct SwiftUI._HoverRegionModifier {
+
+	// Properties
+	let callback : (_:) // +0x0
+ }
+
  struct SwiftUI.PasteCommandAction {
 
 	// Properties
 	var supportedTypes : [String] // +0x0
 	var validatingDataHandler : (_:) // +0x8
+ }
+
+ struct SwiftUI.HoverEffect {
+
+	// Properties
+	var style : Style // +0x0
+ }
+
+ enum SwiftUI.Style {
+
+	// Properties
+	case automatic  
+	case highlight  
+	case lift  
+ }
+
+ struct SwiftUI.HoverEffectModifier {
+
+	// Properties
+	var style : Style // +0x0
  }
 
  struct SwiftUI.AccessibilityEnabledKey { }
@@ -6021,7 +6399,8 @@
  enum SwiftUI.StateType {
 
 	// Properties
-	case subscribed : Subscription
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case subscribed : ©≈	
 	case unsubscribed  
 	case complete  
  }
@@ -6035,8 +6414,8 @@
  class SwiftUI.PathBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let cgPath : CGMutablePathRef // +0x10 (0x8)
-	var bounds : AtomicLazy<CGRect> // +0x18 (0x28)
+	let cgPath : CGMutablePath // +0x10 (0x8)
+	var bounds : AtomicLazy // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -6056,10 +6435,10 @@
  enum SwiftUI.Element {
 
 	// Properties
-	case move : (to: CGPoint)
-	case line : (to: CGPoint)
-	case quadCurve : (to: CGPoint, control: CGPoint)
-	case curve : (to: CGPoint, control1: CGPoint, control2: CGPoint)
+	case move : CGPoint
+	case line : CGPoint
+	case quadCurve : CGPoint
+	case curve : CGPoint
 	case closeSubpath  
  }
 
@@ -6068,16 +6447,18 @@
 	// Properties
 	let path : Path // +0x0
 	let style : StrokeStyle // +0x28
-	var cachedPath : PathBox // +0x50
+	var cachedPath : MutableBox // +0x50
  }
 
  struct SwiftUI.TrimmedPath {
 
 	// Properties
 	let path : Path // +0x0
-	let start : CGFloat // +0x28
-	let end : CGFloat // +0x30
-	var cachedPath : PathBox // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let start : ˇá // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let end : ˇá // +0x30
+	var cachedPath : MutableBox // +0x38
  }
 
  enum SwiftUI.RoundedCornerStyle {
@@ -6100,9 +6481,9 @@
 	// Properties
 	var label : A
 	var destination : B
-	var _externalIsActive : Binding<Bool>?
-	var __internalIsActive : State<Bool>
-	var _isNavigationEnabled : Environment<Bool>
+	var _externalIsActive : Binding
+	var __internalIsActive : State
+	var _isNavigationEnabled : Environment
 	var isDetailLink : Bool
  }
 
@@ -6114,8 +6495,8 @@
 
 	// Properties
 	var configuration : PrimitiveButtonStyleConfiguration // +0x0
-	var _isEnabled : Environment<Bool> // +0x10
-	var _listRowInsets : Environment<EdgeInsets> // +0x20
+	var _isEnabled : Environment // +0x10
+	var _listRowInsets : Environment // +0x20
  }
 
  struct SwiftUI.DefaultListButtonStyle { }
@@ -6124,7 +6505,7 @@
 
 	// Properties
 	var configuration : PrimitiveButtonStyleConfiguration // +0x0
-	var _isEnabled : Environment<Bool> // +0x10
+	var _isEnabled : Environment // +0x10
  }
 
  struct SwiftUI.Gradient {
@@ -6137,38 +6518,46 @@
 
 	// Properties
 	var color : Color // +0x0
-	var location : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var location : ˇá // +0x8
  }
 
  struct SwiftUI.ResolvedGradient {
 
 	// Properties
-	var stops : [ResolvedGradient.Stop] // +0x0
+	var stops : Stop // +0x0
  }
 
  struct SwiftUI.Stop {
 
 	// Properties
-	var color : Color._Resolved // +0x0
-	var location : CGFloat // +0x10
+	var color : _Resolved // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var location : ˇá // +0x10
  }
 
  struct SwiftUI._ViewInputs {
 
 	// Properties
 	var base : _GraphInputs // +0x0
-	var transform : Attribute<ViewTransform> // +0x38
-	var position : Attribute<ViewOrigin> // +0x40
-	var size : Attribute<CGSize> // +0x48
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var transform : 7Ç	 // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var position : ı˘
+ // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var size : wã	 // +0x48
 	var requestedOutputs : Outputs // +0x50
 	var requestedPreferences : PreferenceKeys // +0x58
-	var hostPreferenceKeys : Attribute<PreferenceKeys> // +0x60
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var hostPreferenceKeys : ≥£	 // +0x60
  }
 
  struct SwiftUI.Outputs {
 
 	// Properties
-	let rawValue : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : á‚	 // +0x0
  }
 
  enum SwiftUI.BlendMode {
@@ -6225,7 +6614,7 @@
 
 	// Properties
 	var base : Image // +0x0
-	var interpolation : Image.Interpolation // +0x8
+	var interpolation : Interpolation // +0x8
  }
 
  struct SwiftUI.CoalescingAdjacentDuplicates {
@@ -6249,12 +6638,16 @@
  struct SwiftUI.StrokeStyle {
 
 	// Properties
-	var lineWidth : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lineWidth : ˇá // +0x0
 	var lineCap : CGLineCap // +0x8
 	var lineJoin : CGLineJoin // +0xc
-	var miterLimit : CGFloat // +0x10
-	var dash : [CGFloat] // +0x18
-	var dashPhase : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var miterLimit : ˇá // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dash :  empty-list  // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dashPhase : ˇá // +0x20
  }
 
  struct SwiftUI.PhysicalButtonEvent {
@@ -6262,7 +6655,7 @@
 	// Properties
 	var phase : EventPhase // +0x0
 	var timestamp : Time // +0x8
-	var type : PhysicalButtonEvent.ButtonType // +0x10
+	var type : ButtonType // +0x10
  }
 
  enum SwiftUI.ButtonType {
@@ -6282,15 +6675,17 @@
  struct SwiftUI.ResolvedShadowStyle {
 
 	// Properties
-	var color : Color._Resolved // +0x0
-	var radius : CGFloat // +0x10
+	var color : _Resolved // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var radius : ˇá // +0x10
 	var offset : CGSize // +0x18
  }
 
  struct SwiftUI.BlurStyle {
 
 	// Properties
-	var radius : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var radius : ˇá // +0x0
 	var isOpaque : Bool // +0x8
  }
 
@@ -6301,7 +6696,7 @@
 	case shadow : ResolvedShadowStyle
 	case projection : ProjectionTransform
 	case colorMatrix : ColorMatrix
-	case colorMultiply : Color._Resolved
+	case colorMultiply : _Resolved
 	case hueRotation : Angle
 	case saturation : Double
 	case brightness : Double
@@ -6311,19 +6706,68 @@
 	case colorInvert  
  }
 
+ class SwiftUI.Coordinator : PlatformViewCoordinator {
+
+	// Properties
+	var selected : Binding // +0x8 (0x18)
+	var needsRebuild : Bool // +0x20 (0x1)
+	var hostingController : UIHostingController // +0x28 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x2a32b0  @objc Coordinator.tabBarController(_:didSelect:)
+	0x2a3400  @objc Coordinator.init()
+	0x2a3390  @objc Coordinator.__ivar_destroyer
+
+	// Swift methods
+	0x2a3130  func Coordinator.selected.getter // getter 
+	0x2a3180  func Coordinator.selected.setter // setter 
+	0x2a31c0  func Coordinator.hostingController.setter // setter 
+	0x2a3240  func Coordinator.tabBarController(_:didSelect:) // method 
+ }
+
+ struct SwiftUI.BodyContent {
+
+	// Properties
+	var _environment : Environment
+	var _childSelection : State
+	let children : _VariadicView_Children
+	let selection : Binding
+ }
+
+ struct SwiftUI.UIKitTabView {
+
+	// Properties
+	var tabs : _ViewList_View // +0x0
+	var selected : Binding // +0x8
+	var colorScheme : ColorScheme // +0x20
+	var barItemColor : Color // +0x28
+	let environment : EnvironmentValues // +0x30
+ }
+
  class SwiftUI.UpdateCoalescingTableView : UITableView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	var visibleCellsUpdate : VisibleCellsUpdate
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var previousHorizontalMargin : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bridgedState : Ø∏	
+	var viewGraph : ViewGraph
 
 	// ObjC -> Swift bridged methods
-	0x2d45b0  @objc UpdateCoalescingTableView.init(frame:style:)
-	0x2d4640  @objc UpdateCoalescingTableView.init(coder:)
-	0x2d4820  @objc UpdateCoalescingTableView.layoutSubviews()
-	0x2d4b00  @objc UpdateCoalescingTableView.performBatchUpdates(_:completion:)
+	0x2a7760  @objc UpdateCoalescingTableView.init(frame:style:)
+	0x2a7820  @objc UpdateCoalescingTableView.init(coder:)
+	0x2a7850  @objc UpdateCoalescingTableView.frame.getter
+	0x2a7920  @objc UpdateCoalescingTableView.frame.setter
+	0x2a7a80  @objc UpdateCoalescingTableView.layoutMarginsDidChange()
+	0x2a7db0  @objc UpdateCoalescingTableView.layoutSubviews()
+	0x2a8060  @objc UpdateCoalescingTableView.performBatchUpdates(_:completion:)
+	0x2a81a0  @objc UpdateCoalescingTableView.__ivar_destroyer
 
 	// Swift methods
-	0x2d4c10  func UpdateCoalescingTableView.scheduleVisibleCellsUpdate() // method 
+	0x2a7650  func UpdateCoalescingTableView.bridgedState.setter // setter 
+	0x2a7ab0  func UpdateCoalescingTableView.recomputeBridgedState() // method 
+	0x2a8140  func UpdateCoalescingTableView.scheduleVisibleCellsUpdate() // method 
  }
 
  class SwiftUI.TableWrapper : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6332,52 +6776,59 @@
 	var base : UpdateCoalescingTableView
 
 	// ObjC -> Swift bridged methods
-	0x2d4e80  @objc TableWrapper.layoutSubviews()
-	0x2d4f40  @objc TableWrapper.init(frame:)
-	0x2d4f70  @objc TableWrapper.init(coder:)
-	0x2d5000  @objc TableWrapper.__ivar_destroyer
+	0x2a83c0  @objc TableWrapper.layoutSubviews()
+	0x2a84f0  @objc TableWrapper.init(frame:)
+	0x2a8520  @objc TableWrapper.init(coder:)
+	0x2a8440  @objc TableWrapper.__ivar_destroyer
 
 	// Swift methods
-	0x2d4c90  func TableWrapper.base.setter // setter 
+	0x2a8200  func TableWrapper.base.setter // setter 
  }
 
  class SwiftUI.ListCoreCoordinator {
  class SwiftUI.ListCoreCellHost : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var host : _UIHostingView<ModifiedContent<ModifiedContent<_ViewList_View, CellForRowVisitor.CellModifier>, DisappearedModifier>>?
-	var selectionBehavior : PlatformItemList.Item.SelectionBehavior?
+	var host : _UIHostingView
+	var selectionBehavior : SelectionBehavior
 	var contextMenuItemsSeed : VersionSeed
 	var contextMenuOptions : PlatformItemList
 
 	// ObjC -> Swift bridged methods
-	0x2db830  @objc ListCoreCellHost.sizeThatFits(_:)
-	0x2db880  @objc ListCoreCellHost._setHidden(forReuse:)
-	0x2dbc30  @objc ListCoreCellHost.init(style:reuseIdentifier:)
-	0x2dbd20  @objc ListCoreCellHost.init(coder:)
-	0x2dbd70  @objc ListCoreCellHost.__ivar_destroyer
+	0x2aebb0  @objc ListCoreCellHost.sizeThatFits(_:)
+	0x2aec30  @objc ListCoreCellHost._setHidden(forReuse:)
+	0x2af070  @objc ListCoreCellHost.init(style:reuseIdentifier:)
+	0x2af160  @objc ListCoreCellHost.init(coder:)
+	0x2aef30  @objc ListCoreCellHost.__ivar_destroyer
 
 	// Swift methods
-	0x2db6e0  func ListCoreCellHost.host.setter // setter 
-	0x2db780  func ListCoreCellHost.selectionBehavior.setter // setter 
-	0x2db8a0  func ListCoreCellHost.contextMenuOptions.setter // setter 
-	0x2db8e0  func ListCoreCellHost.hostingViewDidChangePreferences(_:) // method 
+	0x2aea70  func ListCoreCellHost.host.setter // setter 
+	0x2aeb00  func ListCoreCellHost.selectionBehavior.setter // setter 
+	0x2aec70  func ListCoreCellHost.contextMenuOptions.setter // setter 
+	0x2aecb0  func ListCoreCellHost.hostingViewDidChangePreferences(_:) // method 
  }
 
  class SwiftUI.ListCoreHeaderHost : UITableViewHeaderFooterView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var host : _UIHostingView<ModifiedContent<AnyView, DisappearedModifier>>?
+	var host : _UIHostingView // +0x0
 
 	// ObjC -> Swift bridged methods
-	0x2dbe70  @objc ListCoreHeaderHost.sizeThatFits(_:)
-	0x2dbf00  @objc ListCoreHeaderHost._setHidden(forReuse:)
-	0x2dbff0  @objc ListCoreHeaderHost.init(reuseIdentifier:)
-	0x2dc070  @objc ListCoreHeaderHost.init(coder:)
-	0x2dc0d0  @objc ListCoreHeaderHost.__ivar_destroyer
+	0x2af280  @objc ListCoreHeaderHost.sizeThatFits(_:)
+	0x2af340  @objc ListCoreHeaderHost._setHidden(forReuse:)
+	0x2af440  @objc ListCoreHeaderHost.init(reuseIdentifier:)
+	0x2af4c0  @objc ListCoreHeaderHost.init(coder:)
+	0x2af3a0  @objc ListCoreHeaderHost.__ivar_destroyer
 
 	// Swift methods
-	0x2dbde0  func ListCoreHeaderHost.host.setter // setter 
+	0x2af1b0  func ListCoreHeaderHost.host.setter // setter 
+ }
+
+ struct SwiftUI.BridgedTableViewState {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var horizontalMargin : ˇá // +0x0
  }
 
  struct SwiftUI.VisibleCellsUpdate {
@@ -6398,22 +6849,48 @@
 
 	// Properties
 	var dataSource : A
-	var selection : Binding<B>?
-	var style : UITableViewStyle
-	var sectionInset : EdgeInsets?
-	let registry : Environment<TableViewRegistry?>
-	var editMode : Binding<EditMode>?
+	var selection : Binding
+	var style : Style
+	var sectionInset : EdgeInsets
+	var editMode : Binding
  }
 
- struct SwiftUI._ListCore {
+ struct SwiftUI.EnvironmentTransform { }
+
+ struct SwiftUI.Container {
 
 	// Properties
 	var dataSource : A
-	var selection : Binding<B>?
-	var style : UITableViewStyle
-	var sectionInset : EdgeInsets?
-	var registry : weak TableViewRegistry?
-	var editMode : Binding<EditMode>?
+	var selection : Binding
+	var style : Style
+	var sectionInset : EdgeInsets
+	var editMode : Binding
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bridgedState : ∂	
+	var viewGraph : ViewGraph
+	let registry : Environment
+ }
+
+ struct SwiftUI.Child {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bridgedState : ∂	
+	var viewGraph : ViewGraph
+ }
+
+ struct SwiftUI.ListRepresentable {
+
+	// Properties
+	var dataSource : A
+	var selection : Binding
+	var style : Style
+	var sectionInset : EdgeInsets
+	var registry : TableViewRegistry
+	var editMode : Binding
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bridgedState : ∂	
+	var viewGraph : ViewGraph
  }
 
  struct SwiftUI.AutocapitalizationTypeKey { }
@@ -6424,40 +6901,40 @@
 
 	// Properties
 	let id : ViewIdentity // +0x0
-	let anchor : Anchor<CGRect> // +0x8
+	let anchor : Anchor // +0x8
 	let itemList : PlatformItemList // +0x10
  }
 
  struct SwiftUI.SystemContextMenuContainer {
 
 	// Properties
-	let content : A
-	let contextMenu : _VariadicView.Tree<_ContextMenuContainer, _VariadicView_Children>?
-	var id : IdentityLink
-	let activeMenuID : Environment<ViewIdentity>
+	let content : A // +0x649e18
+	let contextMenu : Tree // +0x0
+	var id : IdentityLink // +0x7ab548
+	let activeMenuID : Environment // +0x0
  }
 
- struct SwiftUI.ActiveContextMenuKey { }
-
  struct SwiftUI.Key { }
+
+ struct SwiftUI.ActiveContextMenuKey { }
 
  struct SwiftUI.CollapsibleWheelDatePickerStyle { }
 
  struct SwiftUI.Body {
 
 	// Properties
-	let locale : Environment<Locale>
-	let calendar : Environment<Calendar>
-	let timeZone : Environment<TimeZone>
-	let configuration : DatePicker<_DatePickerStyleLabel>
+	let locale : Environment
+	let calendar : Environment
+	let timeZone : Environment
+	let configuration : DatePicker
  }
 
  class SwiftUI.DefaultLayoutViewResponder : MultiViewResponder {
 
 	// Properties
 	let inputs : _ViewInputs // +0x50 (0x68)
-	let viewSubgraph : AGSubgraphRef // +0xb8 (0x8)
-	var childSubgraph : AGSubgraphRef? // +0xc0 (0x8)
+	let viewSubgraph : Subgraph // +0xb8 (0x8)
+	var childSubgraph : Subgraph // +0xc0 (0x8)
 	var invalidateChildren : ()? // +0xc8 (0x10)
 
 	// Swift methods
@@ -6472,7 +6949,7 @@
  class SwiftUI.CGGraphicsContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var ctx : CGContextRef // +0x10 (0x8)
+	var ctx : CGContext // +0x10 (0x8)
 	var color : ContextColor // +0x18 (0x61)
 
 	// Swift methods
@@ -6481,36 +6958,39 @@
  enum SwiftUI.ContextColor {
 
 	// Properties
-	case solidColor : Color._Resolved
-	case linearGradient : (ResolvedGradient, startPoint: CGPoint, endPoint: CGPoint)
-	case radialGradient : (ResolvedGradient, center: CGPoint, startRadius: CGFloat, endRadius: CGFloat)
-	case conicGradient : (ResolvedGradient, center: CGPoint, angle: Angle)
-	case image : (_Image, tintColor: Color._Resolved?, orientation: Image.Orientation, interpolation: Image.Interpolation, isAntialiased: Bool, destRect: CGRect, sourceRect: CGRect)
-	case repeatedImage : (_Image, tintColor: Color._Resolved?, orientation: Image.Orientation, interpolation: Image.Interpolation, isAntialiased: Bool, destRect: CGRect, sourceRect: CGRect)
+	case solidColor : _Resolved
+	case linearGradient : ResolvedGradient
+	case radialGradient : ResolvedGradient
+	case conicGradient : ResolvedGradient
+	case image : _Image
+	case repeatedImage : _Image
  }
 
  struct SwiftUI._PreferenceActionModifier {
 
 	// Properties
-	var action : (_:)
+	var action : PreferenceKey
  }
 
  struct SwiftUI.PreferenceBinder {
 
 	// Properties
-	let updateSeed : Attribute<UInt32>
-	var lastValue : A.PreferenceKey.Value?
-	var lastSeed : UInt32
-	var ttl : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let updateSeed : €k	
+	var lastValue : PreferenceKey
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lastSeed : á‚	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var ttl : á‚	
  }
 
  struct SwiftUI.RadioGroupPickerStyle { }
 
  class SwiftUI.AnyOptionButtonCollection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x2ed2c0  func AnyOptionButtonCollection.startIndex.getter // getter 
-	0x2ed310  func AnyOptionButtonCollection.endIndex.getter // getter 
-	0x2ed360  func AnyOptionButtonCollection.subscript.getter // getter 
+	0x2c2370  func AnyOptionButtonCollection.startIndex.getter // getter 
+	0x2c23c0  func AnyOptionButtonCollection.endIndex.getter // getter 
+	0x2c2410  func AnyOptionButtonCollection.subscript.getter // getter 
  }
 
  class SwiftUI.OptionButtonCollection {
@@ -6525,23 +7005,23 @@
  struct SwiftUI.Body {
 
 	// Properties
-	var configuration : PickerStyleConfiguration<A>
-	var _layoutDirection : Environment<LayoutDirection>
+	var configuration : PickerStyleConfiguration
+	var _layoutDirection : Environment
  }
 
  struct SwiftUI.RadioGroupPicker {
 
 	// Properties
-	var selection : Binding<A>
+	var selection : Binding
 	var layoutDirection : LayoutDirection
-	var label : PickerStyleConfiguration<A>.Label
+	var label : Label
  }
 
  struct SwiftUI.ResolvedRadioGroupPicker {
 
 	// Properties
 	var radioContent : AnyOptionButtonCollection // +0x0
-	var moveCommandAction : (_:) // +0x8
+	var moveCommandAction : MoveCommandDirection // +0x8
  }
 
  struct SwiftUI._NavigationViewStyleConfiguration {
@@ -6570,13 +7050,13 @@
  struct SwiftUI.ResolvedList {
 
 	// Properties
-	var configuration : _ListStyleConfiguration<SelectionManagerBox<A>>
+	var configuration : _ListStyleConfiguration
  }
 
  struct SwiftUI._ListStyleConfiguration {
 
 	// Properties
-	var selection : Binding<A>?
+	var selection : Binding
 	var content : ListStyleContent
  }
 
@@ -6594,8 +7074,8 @@
 
 	// Properties
 	let type : AnyStyleType // +0x0
-	let value : AGAttribute // +0x10
-	let graph : AGGraphRef // +0x18
+	let value : AnyAttribute // +0x10
+	let graph : Graph // +0x18
  }
 
  struct SwiftUI.StyleType: AnyStyleType { }
@@ -6620,7 +7100,7 @@
 	var opacity : Double // +0x30 (0x8)
 	var _blendMode : RBBlendMode // +0x38 (0x4)
 	var clipLayer : Bool // +0x3c (0x1)
-	var savedState : [(opacity: Double, blend: RBBlendMode, clipLayer: Bool)] // +0x40 (0x8)
+	var savedState : RBBlendMode // +0x40 (0x8)
 
 	// Swift methods
  }
@@ -6628,21 +7108,21 @@
  struct SwiftUI._SegmentedControl {
 
 	// Properties
-	var _tree : _SegmentedControlContainer
+	var _tree : Tree
  }
 
  struct SwiftUI._SegmentedControlContainer {
 
 	// Properties
-	var selection : Binding<A>
+	var selection : Binding
  }
 
  struct SwiftUI.ResolvedSegmentedControl {
 
 	// Properties
 	var segments : _VariadicView_Children // +0x0
-	var selectedIndex : Binding<Int?> // +0x30
-	var style : Environment<AnySegmentedControlStyle> // +0x50
+	var selectedIndex : Binding // +0x30
+	var style : Environment // +0x50
  }
 
  struct SwiftUI.MakeDefaultBody { }
@@ -6650,9 +7130,9 @@
  struct SwiftUI.AnyStyle {
 
 	// Properties
-	let value : AGAttribute // +0x0
+	let value : AnyAttribute // +0x0
 	let formula : Any.Type // +0x8
-	let graph : AGGraphRef // +0x10
+	let graph : Graph // +0x10
  }
 
  struct SwiftUI.StyleFormula: AnyStyleFormula { }
@@ -6664,7 +7144,7 @@
  struct SwiftUI.List {
 
 	// Properties
-	var selection : Binding<SelectionManagerBox<A>>?
+	var selection : Binding
 	var content : B
  }
 
@@ -6673,7 +7153,7 @@
  struct SwiftUI.PopUpButton {
 
 	// Properties
-	var selection : Binding<A>
+	var selection : Binding
  }
 
  struct SwiftUI.SizeGestureChild { }
@@ -6681,7 +7161,7 @@
  struct SwiftUI.SizeGesture {
 
 	// Properties
-	var content : (_:)
+	var content : CGSize
  }
 
  struct SwiftUI.Section {
@@ -6724,14 +7204,14 @@
  struct SwiftUI.CacheKey {
 
 	// Properties
-	var identity : DisplayList.Identity // +0x0
-	var seed : DisplayList.Seed // +0x4
+	var identity : Identity // +0x0
+	var seed : Seed // +0x4
  }
 
  struct SwiftUI._PreferenceTransformModifier {
 
 	// Properties
-	var transform : (_:)
+	var transform : PreferenceKey
  }
 
  struct SwiftUI.HostPreferencesTransform {
@@ -6739,8 +7219,10 @@
 	// Properties
 	var keyRequested : Bool
 	var wasEmpty : Bool
-	var delta : UInt32
-	let nodeId : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var delta : á‚	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let nodeId : á‚	
  }
 
  struct SwiftUI.PreferenceTransform { }
@@ -6748,7 +7230,8 @@
  struct SwiftUI.MagnificationGesture {
 
 	// Properties
-	var minimumScaleDelta : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minimumScaleDelta : ˇá // +0x0
  }
 
  struct SwiftUI.StateType {
@@ -6761,7 +7244,7 @@
 
 	// Properties
 	var view : _ViewList_View // +0x0
-	var traits : ViewTraitCollection // +0x70
+	var traits : ViewTraitCollection // +0x78
  }
 
  struct SwiftUI._ViewList_View {
@@ -6769,9 +7252,9 @@
 	// Properties
 	var elements : _ViewList_Elements // +0x0
 	var id : _ViewList_ID // +0x28
-	var index : Int // +0x58
-	var count : Int // +0x60
-	var contentSubgraph : AGSubgraphRef // +0x68
+	var index : Int // +0x60
+	var count : Int // +0x68
+	var contentSubgraph : Subgraph // +0x70
  }
 
  struct SwiftUI.Child { }
@@ -6779,8 +7262,10 @@
  struct SwiftUI.PlaceholderViewPhase {
 
 	// Properties
-	let seed : UInt32 // +0x0
-	var resetDelta : UInt32 // +0x4
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let seed : á‚	 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetDelta : á‚	 // +0x4
  }
 
  struct SwiftUI.PlaceholderInfo {
@@ -6788,27 +7273,29 @@
 	// Properties
 	let inputs : _ViewInputs // +0x0
 	let outputs : _ViewOutputs // +0x68
-	let parentSubgraph : AGSubgraphRef // +0x80
-	var lastSubgraph : AGSubgraphRef? // +0x88
+	let parentSubgraph : Subgraph // +0x80
+	var lastSubgraph : Subgraph // +0x88
 	var lastRelease : ()? // +0x90
 	var secondaryRelease : ()? // +0xa0
-	var lastElements : _ViewList_Elements? // +0xb0
-	var lastMap : _ViewList_IndirectMap? // +0xd8
-	var lastPhase : Attribute<_GraphInputs.Phase>? // +0xe0
+	var lastElements : _ViewList_Elements // +0xb0
+	var lastMap : _ViewList_IndirectMap // +0xd8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var lastPhase : 5ü	 // +0xe0
  }
 
  struct SwiftUI.Value {
 
 	// Properties
 	var id : _ViewList_ID // +0x0
-	var seed : UInt32 // +0x30
-	var index : Int // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0x38
+	var index : Int // +0x40
  }
 
  struct SwiftUI.AddCombiner {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
+	let graph : Graph // +0x0
 	var outputs : _ViewOutputs // +0x8
  }
 
@@ -6817,13 +7304,13 @@
  struct SwiftUI.HSplitView {
 
 	// Properties
-	var _tree : _HSplitViewContainer
+	var _tree : Tree
  }
 
  struct SwiftUI.VSplitView {
 
 	// Properties
-	var _tree : _VSplitViewContainer
+	var _tree : Tree
  }
 
  struct SwiftUI._HSplitViewContainer { }
@@ -6839,24 +7326,24 @@
  struct SwiftUI.MakeList {
 
 	// Properties
-	var view : _GraphValue<TupleView<A>>
+	var view : _GraphValue
 	var inputs : _ViewListInputs
 	var offset : Int
-	var outputs : [_ViewListOutputs]
+	var outputs : _ViewListOutputs
  }
 
  struct SwiftUI.MakeUnary {
 
 	// Properties
-	var view : _GraphValue<TupleView<A>>
+	var view : _GraphValue
 	var inputs : _ViewInputs
-	var outputs : _ViewOutputs?
+	var outputs : _ViewOutputs
  }
 
  struct SwiftUI.TupleTypeDescription {
 
 	// Properties
-	let contentTypes : [(Int, ViewConformance)] // +0x0
+	let contentTypes : ViewConformance // +0x0
  }
 
  struct SwiftUI.DefaultDatePickerStyle { }
@@ -6864,41 +7351,52 @@
  struct SwiftUI.Body {
 
 	// Properties
-	var configuration : DatePicker<_DatePickerStyleLabel>
+	var configuration : DatePicker
  }
 
- struct SwiftUI.StepperFieldDatePickerStyle { }
+ struct SwiftUI.StepperFieldDatePickerStyle {
 
- struct SwiftUI.FieldDatePickerStyle { }
+	// Properties
+	var presentsCalendarOverlay : Bool // +0x0
+ }
+
+ struct SwiftUI.FieldDatePickerStyle {
+
+	// Properties
+	var presentsCalendarOverlay : Bool // +0x0
+ }
 
  struct SwiftUI.GraphicalDatePickerStyle { }
 
  struct SwiftUI.Body {
 
 	// Properties
-	var configuration : DatePicker<_DatePickerStyleLabel>
+	var configuration : DatePicker
  }
 
  struct SwiftUI.Body {
 
 	// Properties
-	var configuration : DatePicker<_DatePickerStyleLabel>
+	var configuration : DatePicker
+	let presentsCalendarOverlay : Bool
  }
 
  struct SwiftUI.Body {
 
 	// Properties
-	var configuration : DatePicker<_DatePickerStyleLabel>
+	var configuration : DatePicker
+	let presentsCalendarOverlay : Bool
  }
 
  struct SwiftUI._SystemDatePicker {
 
 	// Properties
-	let locale : Environment<Locale>
-	let calendar : Environment<Calendar>
-	let timeZone : Environment<TimeZone>
-	let configuration : DatePicker<_DatePickerStyleLabel>
+	let locale : Environment
+	let calendar : Environment
+	let timeZone : Environment
+	let configuration : DatePicker
 	let style : Style
+	let presentsCalendarOverlay : Bool
  }
 
  enum SwiftUI.Style {
@@ -6924,44 +7422,49 @@
  struct SwiftUI.FlipForRTLDisplayList {
 
 	// Properties
-	let identity : DisplayList.Identity // +0x0
+	let identity : Identity // +0x0
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
-	var amount : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var amount : ˇá // +0x0
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
 	var base : RoundedRectangle // +0x0
-	var amount : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var amount : ˇá // +0x18
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
-	var amount : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var amount : ˇá // +0x0
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
-	var amount : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var amount : ˇá // +0x0
  }
 
  struct SwiftUI._Inset: InsettableShape {
 
 	// Properties
-	var amount : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var amount : ˇá // +0x0
  }
 
  struct SwiftUI.StateContainerGesture {
 
 	// Properties
-	var body : (_:_:)
+	var body : GesturePhase
  }
 
  struct SwiftUI.StateContainerPhase {
@@ -6973,11 +7476,18 @@
 
  class SwiftUI.AnyResolvedPaint : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x326980  func AnyResolvedPaint.fill(_:style:in:bounds:) // method 
-	0x326990  func AnyResolvedPaint.visit<A>(_:) // method 
+	0x2fcd50  func AnyResolvedPaint.fill(_:style:in:bounds:) // method 
+	0x2fcd60  func AnyResolvedPaint.visit<A>(_:) // method 
  }
 
  class SwiftUI._AnyResolvedPaint {
+ struct SwiftUI.Stepper {
+
+	// Properties
+	var label : A
+	var configuration : StepperStyleConfiguration
+ }
+
  struct SwiftUI.GeometryReader {
 
 	// Properties
@@ -6988,8 +7498,9 @@
 
 	// Properties
 	var base : _PositionAwareLayoutContext // +0x0
-	var seed : UInt32 // +0x20
-	var viewGraph : weak ViewGraph? // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0x20
+	var viewGraph : ViewGraph // +0x28
  }
 
  struct SwiftUI.GeometryReaderLayout { }
@@ -6997,8 +7508,9 @@
  struct SwiftUI.Child {
 
 	// Properties
-	var viewGraph : weak ViewGraph?
-	var seed : UInt32
+	var viewGraph : ViewGraph
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	
  }
 
  struct SwiftUI.TouchBar {
@@ -7030,16 +7542,16 @@
 	let responder : ResponderNode
  }
 
+ struct SwiftUI.Transform {
+
+	// Properties
+	let contentSubgraph : Subgraph
+ }
+
  struct SwiftUI.TouchBarContainer {
 
 	// Properties
 	var id : String? // +0x0
- }
-
- struct SwiftUI.Transform {
-
-	// Properties
-	let contentSubgraph : AGSubgraphRef
  }
 
  struct SwiftUI.TouchBarEnvironment { }
@@ -7049,8 +7561,8 @@
  struct SwiftUI.Value {
 
 	// Properties
-	var focusedBars : [(ViewIdentity, TouchBarContainer, _VariadicView_Children)] // +0x0
-	var unfocusedBars : [(ViewIdentity, TouchBarContainer, _VariadicView_Children)] // +0x8
+	var focusedBars : ViewIdentity // +0x0
+	var unfocusedBars : ViewIdentity // +0x8
  }
 
  struct SwiftUI.FormLabelStyle { }
@@ -7058,7 +7570,7 @@
  struct SwiftUI.Body {
 
 	// Properties
-	var configuration : LabeledView<LabeledViewLabel, LabeledViewContent> // +0x0
+	var configuration : LabeledView // +0x0
  }
 
  struct SwiftUI.TextContentTypeKey { }
@@ -7072,8 +7584,8 @@
  enum SwiftUI.Body {
 
 	// Properties
-	case view : (_:_:)
-	case list : (_:_:)
+	case view : _ViewOutputs
+	case list : _ViewListOutputs
  }
 
  struct SwiftUI.BodyInput { }
@@ -7082,7 +7594,8 @@
 
 	// Properties
 	var links : _DynamicPropertyBuffer
-	var resetSeed : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : á‚	
  }
 
  struct SwiftUI.ModifierBody { }
@@ -7090,29 +7603,31 @@
  class SwiftUI.ViewResponder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var viewRendererHost : weak ViewRendererHost? // +0x10 (0x10)
+	var viewRendererHost : ViewRendererHost // +0x10 (0x10)
 	var parent : ViewResponder // +0x20 (0x8)
 
 	// Swift methods
-	0x33ad20  func ViewResponder.bindEvent(_:) // method 
-	0x33ad30  func ViewResponder.makeGesture(gesture:inputs:) // method 
-	0x33ad60  func ViewResponder.resetGesture() // method 
-	0x33ad70  func ViewResponder.opacity.getter // getter 
-	0x33ad80  func ViewResponder.allowsHitTesting.getter // getter 
-	0x33ada0  func ViewResponder.isRemoved.getter // getter 
-	0x33adb0  func ViewResponder.isEmptyResponder.getter // getter 
-	0x33b0c0  func ViewResponder.containsGlobalPoints(_:cacheKey:) // method 
-	0x33adc0  func ViewResponder.childCount.getter // getter 
-	0x33add0  func ViewResponder.child(at:) // method 
-	0x33ade0  func ViewResponder.description.getter // getter 
-	0x33b080  func ViewResponder.extendPrintTree(string:) // method 
-	0x33aec0  func ViewResponder.printSubtree(depth:) // method 
+	0x3168a0  func ViewResponder.bindEvent(_:) // method 
+	0x3168b0  func ViewResponder.makeGesture(gesture:inputs:) // method 
+	0x3168e0  func ViewResponder.resetGesture() // method 
+	0x3168f0  func ViewResponder.visit(applying:) // method 
+	0x316940  func ViewResponder.opacity.getter // getter 
+	0x316950  func ViewResponder.allowsHitTesting.getter // getter 
+	0x316970  func ViewResponder.isRemoved.getter // getter 
+	0x316980  func ViewResponder.isEmptyResponder.getter // getter 
+	0x316ca0  func ViewResponder.containsGlobalPoints(_:cacheKey:) // method 
+	0x316990  func ViewResponder.childCount.getter // getter 
+	0x3169a0  func ViewResponder.child(at:) // method 
+	0x3169b0  func ViewResponder.description.getter // getter 
+	0x316c60  func ViewResponder.extendPrintTree(string:) // method 
+	0x316ab0  func ViewResponder.printSubtree(depth:) // method 
  }
 
  struct SwiftUI.ContainsPointsCache {
 
 	// Properties
-	var key : UInt32? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var key : ïŒ	 // +0x0
 	var mask : BitVector64 // +0x8
 	var priority : Double // +0x10
  }
@@ -7132,8 +7647,10 @@
 	// Properties
 	var gradient : Gradient // +0x0
 	var center : UnitPoint // +0x8
-	var startRadius : CGFloat // +0x18
-	var endRadius : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var startRadius : ˇá // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var endRadius : ˇá // +0x20
  }
 
  struct SwiftUI.AngularGradient {
@@ -7159,8 +7676,10 @@
 	// Properties
 	var gradient : ResolvedGradient // +0x0
 	var center : UnitPoint // +0x8
-	var startRadius : CGFloat // +0x18
-	var endRadius : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var startRadius : ˇá // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var endRadius : ˇá // +0x20
  }
 
  struct SwiftUI._Paint {
@@ -7175,20 +7694,27 @@
 
 	// Properties
 	var iteration : Int // +0x0
-	var location : CGPoint? // +0x8
+	var location : CGPoint // +0x8
  }
 
  class SwiftUI.PlatformViewHost {
  struct SwiftUI.PlatformViewChild {
 
 	// Properties
-	let host : unowned ViewRendererHost?
+	let host : ViewRendererHost
 	let bridge : PreferenceBridge
 	var links : _DynamicPropertyBuffer
-	var coordinator : A.PlatformViewRepresentable.Coordinator?
-	var platformView : PlatformViewHost<A>?
-	var resetSeed : UInt32
+	var coordinator : PlatformViewRepresentable
+	var platformView : PlatformViewHost
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : á‚	
 	var isRemoved : Bool
+ }
+
+ struct SwiftUI.ViewResponderFilter {
+
+	// Properties
+	var responder : UIViewResponder
  }
 
  struct SwiftUI.PlatformViewIdentifiedViews { }
@@ -7197,15 +7723,15 @@
 
 	// Properties
 	let content : A
-	let context : PlatformViewRepresentableContext<A>
-	var platformView : PlatformViewHost<A>
+	let context : PlatformViewRepresentableContext
+	var platformView : PlatformViewHost
  }
 
  struct SwiftUI.PlatformViewRepresentableContext {
 
 	// Properties
-	let coordinator : A.PlatformViewRepresentable.Coordinator
-	var preferenceBridge : PreferenceBridge?
+	let coordinator : PlatformViewRepresentable
+	var preferenceBridge : PreferenceBridge
 	var transaction : Transaction
 	var environment : EnvironmentValues
  }
@@ -7215,7 +7741,7 @@
  struct SwiftUI._Body {
 
 	// Properties
-	var configuration : LabeledView<LabeledViewLabel, LabeledViewContent> // +0x0
+	var configuration : LabeledView // +0x0
  }
 
  struct SwiftUI.__ScaleToFitView {
@@ -7263,8 +7789,8 @@
  struct SwiftUI.ObservedObjectPropertyBox {
 
 	// Properties
-	let subscriber : AttributeInvalidatingSubscriber<A.ObservableObject.ObjectWillChangePublisher>
-	let lifetime : SubscriptionLifetime<A.ObservableObject.ObjectWillChangePublisher>
+	let subscriber : AttributeInvalidatingSubscriber
+	let lifetime : SubscriptionLifetime
 	var seed : Int
  }
 
@@ -7273,46 +7799,55 @@
  class SwiftUI.Coordinator : PlatformViewCoordinator {
 
 	// Properties
-	var configuration : DatePicker<_DatePickerStyleLabel>
+	var configuration : DatePicker
 
 	// ObjC -> Swift bridged methods
-	0x35daa0  @objc UIKitDatePicker.Coordinator.dateChanged(_:)
-	0x35db20  @objc UIKitDatePicker.Coordinator.init()
-	0x35db90  @objc UIKitDatePicker.Coordinator.__ivar_destroyer
+	0x33f6c0  @objc UIKitDatePicker.Coordinator.dateChanged(_:)
+	0x33f7e0  @objc UIKitDatePicker.Coordinator.init()
+	0x33f760  @objc UIKitDatePicker.Coordinator.__ivar_destroyer
 
 	// Swift methods
-	0x35d690  func UIKitDatePicker.Coordinator.dateChanged(_:) // method 
+	0x33f360  func UIKitDatePicker.Coordinator.dateChanged(_:) // method 
  }
 
  struct SwiftUI.Body {
 
 	// Properties
-	let locale : Environment<Locale>
-	let calendar : Environment<Calendar>
-	let timeZone : Environment<TimeZone>
-	var configuration : DatePicker<_DatePickerStyleLabel>
+	let locale : Environment
+	let calendar : Environment
+	let timeZone : Environment
+	var configuration : DatePicker
  }
 
  struct SwiftUI.UIKitDatePicker {
 
 	// Properties
-	let configuration : DatePicker<_DatePickerStyleLabel>
-	let locale : Locale
-	let calendar : Calendar
-	let timeZone : TimeZone
+	let configuration : DatePicker
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let locale : ‘
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let calendar : ‘
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let timeZone : y‘
+
+	let style : UIDatePickerStyle
  }
 
  struct SwiftUI.VStack {
 
 	// Properties
-	var _tree : _VStackLayout
+	var _tree : Tree
  }
 
  struct SwiftUI._VStackLayout {
 
 	// Properties
 	var alignment : HorizontalAlignment // +0x0
-	var spacing : CGFloat? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var spacing : Iv
+ // +0x8
  }
 
  struct SwiftUI.PlainButtonStyle { }
@@ -7323,16 +7858,21 @@
 
 	// Properties
 	var configuration : ButtonStyleConfiguration // +0x0
-	var _isEnabled : Environment<Bool> // +0x18
+	var _isEnabled : Environment // +0x18
  }
 
  struct SwiftUI._GestureInputs {
 
 	// Properties
 	var viewInputs : _ViewInputs // +0x0
-	var events : Attribute<[EventID : EventType]> // +0x68
-	var resetSeed : Attribute<UInt32> // +0x70
-	var inheritedPhase : InheritedPhase // +0x78
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var events : ªÒ
+ // +0x68
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : €k	 // +0x70
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var inheritedPhase : +
+ // +0x78
 	var preconvertedEventLocations : Bool // +0x80
 	var allowsIncompleteEventSequences : Bool // +0x81
  }
@@ -7340,7 +7880,8 @@
  struct SwiftUI._GestureOutputs {
 
 	// Properties
-	var phase : Attribute<GesturePhase<A>> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var phase : âz	 // +0x0
  }
 
  struct SwiftUI.InheritedPhase {
@@ -7353,15 +7894,15 @@
 
  class SwiftUI._UIGraphicsView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x369e20  @objc _UIGraphicsView.init(frame:)
-	0x369e60  @objc _UIGraphicsView.init(coder:)
+	0x34a650  @objc _UIGraphicsView.init(frame:)
+	0x34a6d0  @objc _UIGraphicsView.init(coder:)
  }
 
  class SwiftUI._UIInheritedView : _UIGraphicsView {
 	// ObjC -> Swift bridged methods
-	0x369f60  @objc _UIInheritedView.hitTest(_:with:)
-	0x36a000  @objc _UIInheritedView.init(frame:)
-	0x36a090  @objc _UIInheritedView.init(coder:)
+	0x34a7c0  @objc _UIInheritedView.hitTest(_:with:)
+	0x34a890  @objc _UIInheritedView.init(frame:)
+	0x34a900  @objc _UIInheritedView.init(coder:)
  }
 
  class SwiftUI._UIShapeHitTestingView : _UIGraphicsView {
@@ -7370,13 +7911,21 @@
 	var path : Path
 
 	// ObjC -> Swift bridged methods
-	0x36a1e0  @objc _UIShapeHitTestingView.hitTest(_:with:)
-	0x36a330  @objc _UIShapeHitTestingView.init(frame:)
-	0x36a3d0  @objc _UIShapeHitTestingView.init(coder:)
-	0x36a450  @objc _UIShapeHitTestingView.__ivar_destroyer
+	0x34a9f0  @objc _UIShapeHitTestingView.hitTest(_:with:)
+	0x34aba0  @objc _UIShapeHitTestingView.init(frame:)
+	0x34ac60  @objc _UIShapeHitTestingView.init(coder:)
+	0x34aac0  @objc _UIShapeHitTestingView.__ivar_destroyer
  }
 
  struct SwiftUI.EmbeddedDynamicPropertyBox: DynamicPropertyBox { }
+
+ struct SwiftUI.CompactDatePickerStyle { }
+
+ struct SwiftUI.Body {
+
+	// Properties
+	var configuration : DatePicker
+ }
 
  struct SwiftUI.Child { }
 
@@ -7394,12 +7943,12 @@
 	let index : Int?
 
 	// Swift methods
-	0x36c0f0  func AnyViewStorageBase.type.getter // getter 
-	0x36c140  func AnyViewStorageBase.matches(_:) // method 
-	0x36c190  func AnyViewStorageBase.makeChild(graph:uniqueId:container:inputs:) // method 
-	0x36c1e0  func AnyViewStorageBase.updateChild<A>(context:) // method 
-	0x36c230  func AnyViewStorageBase.makeViewList(view:inputs:) // method 
-	0x36c280  func AnyViewStorageBase.visitContent<A>(_:) // method 
+	0x34d180  func AnyViewStorageBase.type.getter // getter 
+	0x34d1d0  func AnyViewStorageBase.matches(_:) // method 
+	0x34d220  func AnyViewStorageBase.makeChild(graph:uniqueId:container:inputs:) // method 
+	0x34d270  func AnyViewStorageBase.updateChild<A>(context:) // method 
+	0x34d2c0  func AnyViewStorageBase.makeViewList(view:inputs:) // method 
+	0x34d310  func AnyViewStorageBase.visitContent<A>(_:) // method 
  }
 
  class SwiftUI.AnyViewStorage {
@@ -7407,9 +7956,11 @@
 
 	// Properties
 	let type : Any.Type
-	let list : Attribute<ViewList>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let list : G
+
 	let id : Int
-	let allItems : Item
+	let allItems : MutableBox
 
 	// Swift methods
  }
@@ -7418,8 +7969,8 @@
 
 	// Properties
 	let inputs : _ViewListInputs // +0x0
-	let parentSubgraph : AGSubgraphRef // +0x58
-	let allItems : Item // +0x60
+	let parentSubgraph : Subgraph // +0x58
+	let allItems : MutableBox // +0x60
 	var lastItem : Item // +0x68
  }
 
@@ -7427,14 +7978,15 @@
 
 	// Properties
 	var item : AnyViewStorageBase // +0x0
-	var subgraph : AGSubgraphRef // +0x8
-	var uniqueId : UInt32 // +0x10
+	var subgraph : Subgraph // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uniqueId : á‚	 // +0x10
  }
 
  struct SwiftUI.AddCombinerVisitor {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
+	let graph : Graph // +0x0
 	var outputs : _ViewOutputs // +0x8
  }
 
@@ -7442,20 +7994,21 @@
 
 	// Properties
 	var value : Any // +0x0
-	var view : AnyView? // +0x20
+	var view : AnyView // +0x20
  }
 
  struct SwiftUI.AnyViewPhase {
 
 	// Properties
-	let uniqueId : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	 // +0x0
  }
 
  struct SwiftUI.ConnectCombinerVisitor {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
-	let combiner : AGAttribute // +0x8
+	let graph : Graph // +0x0
+	let combiner : AnyAttribute // +0x8
 	let outputs : _ViewOutputs // +0x10
  }
 
@@ -7464,14 +8017,15 @@
 	// Properties
 	let inputs : _ViewInputs // +0x0
 	let outputs : _ViewOutputs // +0x68
-	let parentSubgraph : AGSubgraphRef // +0x80
+	let parentSubgraph : Subgraph // +0x80
 	var oldInfo : AnyViewInfo // +0x88
  }
 
  struct SwiftUI.AnyViewChild {
 
 	// Properties
-	let uniqueId : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	
  }
 
  struct SwiftUI.AnyViewChildList { }
@@ -7492,14 +8046,19 @@
 
 	// Properties
 	let inputs : _GestureInputs // +0x10 (0x82)
-	var bindings : weak EventBindingManager? // +0x98 (0x8)
-	let parentSubgraph : AGSubgraphRef // +0xa0 (0x8)
-	var phase : Attribute<GesturePhase<()>>? // +0xa8 (0x9)
+	var bindings : EventBindingManager // +0x98 (0x8)
+	let parentSubgraph : Subgraph // +0xa0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var phase : 
+ // +0xa8 (0x9)
 	var children : Child // +0xb8 (0x8)
-	var nextUniqueId : UInt32 // +0xc0 (0x4)
-	var seed : UInt32 // +0xc4 (0x4)
-	var resetSeed : UInt32 // +0xc8 (0x4)
-	var activeEvents : Set<EventID> // +0xd0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nextUniqueId : á‚	 // +0xc0 (0x4)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0xc4 (0x4)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : á‚	 // +0xc8 (0x4)
+	var activeEvents : EventID // +0xd0 (0x8)
 
 	// Swift methods
  }
@@ -7508,25 +8067,31 @@
 
 	// Properties
 	let responder : ViewResponder // +0x0
-	let uniqueId : UInt32 // +0x8
-	var resetDelta : UInt32 // +0xc
-	var events : [EventID : EventType] // +0x10
-	var subgraph : AGSubgraphRef? // +0x18
-	var phase : Attribute<GesturePhase<()>>? // +0x20
-	var resetEvents : Set<EventID> // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetDelta : á‚	 // +0xc
+	var events : EventID // +0x10
+	var subgraph : Subgraph // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var phase : 
+ // +0x20
+	var resetEvents : EventID // +0x30
 	var active : Bool // +0x38
  }
 
  struct SwiftUI.LayoutChildEvents {
 
 	// Properties
-	let uniqueId : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	
  }
 
  struct SwiftUI.LayoutChildSeed {
 
 	// Properties
-	let uniqueId : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	
  }
 
  struct SwiftUI.LayoutChildren {
@@ -7535,11 +8100,22 @@
 	let box : LayoutGestureBox
  }
 
+ struct SwiftUI.LayoutGestureChildPhases {
+
+	// Properties
+	let box : LayoutGestureBox // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : ª
+ // +0x8
+ }
+
  struct SwiftUI.Child {
 
 	// Properties
 	let box : LayoutGestureBox // +0x0
-	let context : AttributeContext<VoidAttribute> // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context : ª
+ // +0x8
 	let index : Int // +0x18
  }
 
@@ -7547,13 +8123,14 @@
 
 	// Properties
 	let box : LayoutGestureBox // +0x0
-	let seed : UInt32 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let seed : á‚	 // +0x8
  }
 
  struct SwiftUI.LayoutPhase {
 
 	// Properties
-	let box : LayoutGestureBox
+	let box : LayoutGestureBox // +0x0
  }
 
  struct SwiftUI.DefaultLayoutGesture: LayoutGesture {
@@ -7572,14 +8149,15 @@
  struct SwiftUI.DurationPhase {
 
 	// Properties
-	var start : Time?
+	var start : Time
 	var reset : GestureReset
  }
 
  struct SwiftUI.PanGesture {
 
 	// Properties
-	var minimumDistance : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minimumDistance : ˇá // +0x0
 	var allowedDirections : _EventDirections // +0x8
  }
 
@@ -7588,7 +8166,7 @@
 	// Properties
 	var timestamp : Time // +0x0
 	var translation : CGSize // +0x8
-	var velocity : _Velocity<CGSize> // +0x18
+	var velocity : _Velocity // +0x18
  }
 
  struct SwiftUI.EventInfo {
@@ -7601,16 +8179,17 @@
  struct SwiftUI.StateType {
 
 	// Properties
-	var eventInfo : EventInfo // +0x0
-	var phase : GesturePhase<()> // +0x8
-	var phaseValue : PanGesture.Value // +0x10
+	var eventInfo : EventID // +0x0
+	var phase : GesturePhase // +0x8
+	var phaseValue : Value // +0x10
 	var globalTranslation : CGSize // +0x38
  }
 
  struct SwiftUI.RawPanGesture {
 
 	// Properties
-	var minimumDistance : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minimumDistance : ˇá // +0x0
 	var allowedDirections : _EventDirections // +0x8
  }
 
@@ -7619,9 +8198,9 @@
  class SwiftUI.Coordinator {
  class SwiftUI.NotificationSendingSplitViewController : UISplitViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x37e390  @objc NotificationSendingSplitViewController.showDetailViewController(_:sender:)
-	0x37e4e0  @objc NotificationSendingSplitViewController.init(nibName:bundle:)
-	0x37e580  @objc NotificationSendingSplitViewController.init(coder:)
+	0x35ed10  @objc NotificationSendingSplitViewController.showDetailViewController(_:sender:)
+	0x35ee80  @objc NotificationSendingSplitViewController.init(nibName:bundle:)
+	0x35ef20  @objc NotificationSendingSplitViewController.init(coder:)
  }
 
  struct SwiftUI.DoubleColumnNavigationView { }
@@ -7644,13 +8223,13 @@
  struct SwiftUI._EndedGesture {
 
 	// Properties
-	var _body : CallbacksGesture
+	var _body : ModifierGesture
  }
 
  struct SwiftUI._ChangedGesture {
 
 	// Properties
-	var _body : CallbacksGesture
+	var _body : ModifierGesture
  }
 
  struct SwiftUI.ChangedCallbacks: GestureCallbacks {
@@ -7680,40 +8259,46 @@
  struct SwiftUI.CallbacksPhase {
 
 	// Properties
-	var state : A.GestureCallbacks.StateType
-	var cancel : (_:)?
+	var state : GestureCallbacks
+	var cancel : GestureCallbacks
 	var reset : GestureReset
  }
 
  struct SwiftUI.Spacer: PrimitiveSpacer {
 
 	// Properties
-	var minLength : CGFloat? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minLength : Iv
+ // +0x0
  }
 
  struct SwiftUI._HSpacer: PrimitiveSpacer {
 
 	// Properties
-	var minWidth : CGFloat? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minWidth : Iv
+ // +0x0
  }
 
  struct SwiftUI._VSpacer: PrimitiveSpacer {
 
 	// Properties
-	var minHeight : CGFloat? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minHeight : Iv
+ // +0x0
  }
 
  struct SwiftUI._LayoutEngine {
 
 	// Properties
 	let spacer : A
-	let orientation : Axis?
+	let orientation : Axis
  }
 
  struct SwiftUI.SpacerLayoutComputerQuery {
 
 	// Properties
-	var orientation : Axis?
+	var orientation : Axis
  }
 
  struct SwiftUI.DependentGesture {
@@ -7736,29 +8321,24 @@
  struct SwiftUI.DistanceGesture {
 
 	// Properties
-	var minimumDistance : CGFloat // +0x0
-	var maximumDistance : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minimumDistance : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var maximumDistance : ˇá // +0x8
  }
 
  struct SwiftUI.StateType {
 
 	// Properties
-	var start : CGPoint? // +0x0
-	var maxDistance : CGFloat // +0x18
+	var start : CGPoint // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var maxDistance : ˇá // +0x18
  }
-
- struct SwiftUI.DropModifier {
-
-	// Properties
-	let draggingDestinationView : EmptyView // +0x0
- }
-
- struct SwiftUI.WrapperAttribute { }
 
  struct SwiftUI.EventFilter {
 
 	// Properties
-	var predicate : (_:)
+	var predicate : EventType
  }
 
  struct SwiftUI.EventFilterPhase { }
@@ -7766,7 +8346,7 @@
  struct SwiftUI.FilteredEvents {
 
 	// Properties
-	var events : [EventID : EventType] // +0x0
+	var events : EventID // +0x0
 	var failed : Bool // +0x8
  }
 
@@ -7775,13 +8355,13 @@
  struct SwiftUI._MapGesture {
 
 	// Properties
-	var _body : MapGesture
+	var _body : ModifierGesture
  }
 
  struct SwiftUI.MapGesture {
 
 	// Properties
-	var body : (_:)
+	var body : GesturePhase
  }
 
  struct SwiftUI.MapPhase {
@@ -7797,19 +8377,19 @@
 	var configuration : ScrollViewConfiguration
  }
 
- struct SwiftUI.ScrollViewBody {
-
-	// Properties
-	var tree : ScrollViewRoot
- }
-
  struct SwiftUI.ScrollViewConfiguration {
 
 	// Properties
-	var axes : Axis.Set // +0x0
+	var axes : Set // +0x0
 	var showsIndicators : Bool // +0x1
 	var contentInsets : EdgeInsets // +0x8
 	var automaticallyAdjustsContentInsets : Bool // +0x28
+ }
+
+ struct SwiftUI.ScrollViewBody {
+
+	// Properties
+	var tree : Tree
  }
 
  struct SwiftUI.ScrollViewRoot {
@@ -7824,14 +8404,14 @@
 
 	// Properties
 	var second : AnyTransition // +0x0
-	var result : AnyTransition? // +0x8
+	var result : AnyTransition // +0x8
  }
 
  struct SwiftUI.SecondVisitor {
 
 	// Properties
 	let first : A
-	var result : AnyTransition?
+	var result : AnyTransition
  }
 
  struct SwiftUI.CombiningTransition {
@@ -7845,7 +8425,7 @@
 
 	// Properties
 	var content : B
-	var body : (_:_:)
+	var body : GesturePhase
  }
 
  struct SwiftUI.Map2Phase {
@@ -7854,11 +8434,18 @@
 	var reset : GestureReset
  }
 
+ struct SwiftUI.FNVHash128 {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var storage : I´	 // +0x0
+ }
+
  class SwiftUI.LayoutGestureResponder {
  struct SwiftUI.LayoutGestureModifier {
 
 	// Properties
-	var transform : (_:)
+	var transform : MultiViewResponder
  }
 
  struct SwiftUI.LayoutGestureChild {
@@ -7883,8 +8470,8 @@
  enum SwiftUI.Value {
 
 	// Properties
-	case first : A.Gesture.Value
-	case second : B.Gesture.Value
+	case first : Gesture
+	case second : Gesture
  }
 
  struct SwiftUI.ExclusivePhase { }
@@ -7898,17 +8485,19 @@
  struct SwiftUI.RepeatPhase {
 
 	// Properties
-	let resetDelta : Attribute<UInt32>
-	var deadline : Time?
-	var index : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resetDelta : €k	
+	var deadline : Time
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var index : á‚	
 	var reset : GestureReset
  }
 
  struct SwiftUI.RepeatGesture {
 
 	// Properties
-	var count : Int
-	var maximumDelay : Double
+	var count : Int // +0x3785a0
+	var maximumDelay : Double // +0x0
  }
 
  class SwiftUI.Storage : LayoutComputer.Delegate { }
@@ -7922,7 +8511,8 @@
 	// Properties
 	var layoutPriority : Double // +0x0
 	var majorAxisRangeCache : MajorAxisRangeCache // +0x8
-	let distanceToPrevious : CGFloat // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let distanceToPrevious : ˇá // +0x28
 	var fittingOrder : Int // +0x30
 	var offer : _ProposedSize // +0x38
 	var geometry : ViewGeometry // +0x58
@@ -7932,17 +8522,20 @@
 
 	// Properties
 	let minorAxisAlignment : AlignmentKey // +0x0
-	let uniformSpacing : CGFloat? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniformSpacing : Iv
+ // +0x8
 	let majorAxis : Axis // +0x11
-	let internalSpacing : CGFloat // +0x18
-	var lastProposedSize : _ProposedSize? // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let internalSpacing : ˇá // +0x18
+	var lastProposedSize : _ProposedSize // +0x20
 	var stackSize : CGSize // +0x40
 	var preferredSpacing : Spacing // +0x50
 	let proxies : LayoutProxyCollection // +0x58
 	let capacity : Int // +0x98
-	let childFinalizer : ViewGeometry.Finalizer // +0xa0
+	let childFinalizer : Finalizer // +0xa0
 	let resizeChildrenWithTrailingOverflow : Bool // +0xb0
-	var dimensionsCache : Cache3<_ProposedSize, CGSize> // +0xb8
+	var dimensionsCache : Cache3 // +0xb8
  }
 
  struct SwiftUI.StackLayout {
@@ -7954,39 +8547,50 @@
  struct SwiftUI.MajorAxisRangeCache {
 
 	// Properties
-	var min : CGFloat? // +0x0
-	var max : CGFloat? // +0x10
- }
-
- struct SwiftUI.TabView {
-
-	// Properties
-	var selection : Binding<A>?
-	var content : B
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var min : Iv
+ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var max : Iv
+ // +0x10
  }
 
  class SwiftUI.StateBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	var isActive : Bool // +0x10 (0x1)
-	var phase : GesturePhase<()> // +0x11 (0x2)
-	var sampler : VelocitySampler<Double> // +0x18 (0x60)
+	var phase : GesturePhase // +0x11 (0x2)
+	var sampler : VelocitySampler // +0x18 (0x60)
 	var sentCompletion : Bool // +0x78 (0x1)
 	var activeCount : Int // +0x80 (0x8)
 	var startFraction : Double // +0x88 (0x8)
 	var fraction : Double // +0x90 (0x8)
 	var reversed : Bool // +0x98 (0x1)
-	var animation : SpringAnimation? // +0xa0 (0x21)
+	var animation : SpringAnimation // +0xa0 (0x21)
 
 	// Swift methods
+ }
+
+ struct SwiftUI.PlatformAccessibilityAttachment {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var externalProperties : _g	 // +0x0
+ }
+
+ struct SwiftUI.AccessibilityPlatformModifier {
+
+	// Properties
+	let platformView : UIView? // +0x0
  }
 
  class SwiftUI.ViewUpdater : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var viewCache : ViewUpdater // +0x10 (0x18)
-	var seed : DisplayList.Seed // +0x28 (0x2)
-	var contentsScale : CGFloat // +0x30 (0x8)
+	var viewCache : ViewCache // +0x10 (0x18)
+	var seed : Seed // +0x28 (0x2)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var contentsScale : ˇá // +0x30 (0x8)
 	var isValid : Bool // +0x38 (0x1)
 	var wasValid : Bool // +0x39 (0x1)
 
@@ -7997,10 +8601,10 @@
 
 	// Properties
 	var view : UIView // +0x0
-	var state : DisplayList.ViewUpdater.Platform.State // +0x8
-	var id : DisplayList.ViewUpdater.ViewInfo.ID // +0x30
-	var parentID : DisplayList.ViewUpdater.ViewInfo.ID // +0x38
-	var seeds : DisplayList.ViewUpdater.ViewInfo.Seeds // +0x40
+	var state : State // +0x8
+	var id : ID // +0x30
+	var parentID : ID // +0x38
+	var seeds : Seeds // +0x40
 	var isRemoved : Bool // +0x50
 	var isInvalid : Bool // +0x51
  }
@@ -8008,14 +8612,14 @@
  struct SwiftUI.Seeds {
 
 	// Properties
-	var item : DisplayList.Seed // +0x0
-	var content : DisplayList.Seed // +0x2
-	var opacity : DisplayList.Seed // +0x4
-	var blend : DisplayList.Seed // +0x6
-	var transform : DisplayList.Seed // +0x8
-	var clips : DisplayList.Seed // +0xa
-	var filters : DisplayList.Seed // +0xc
-	var shadow : DisplayList.Seed // +0xe
+	var item : Seed // +0x0
+	var content : Seed // +0x2
+	var opacity : Seed // +0x4
+	var blend : Seed // +0x6
+	var transform : Seed // +0x8
+	var clips : Seed // +0xa
+	var filters : Seed // +0xc
+	var shadow : Seed // +0xe
  }
 
  struct SwiftUI.ID {
@@ -8027,7 +8631,8 @@
  struct SwiftUI._EventDirections {
 
 	// Properties
-	let rawValue : Int8 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : e* // +0x0
  }
 
  struct SwiftUI.ModifierTransition {
@@ -8056,16 +8661,16 @@
  struct SwiftUI.BarItemStorage {
 
 	// Properties
-	var leadingView : AnyView? // +0x0
-	var trailingView : AnyView? // +0x8
-	var environment : EnvironmentValues? // +0x10
+	var leadingView : AnyView // +0x0
+	var trailingView : AnyView // +0x8
+	var environment : EnvironmentValues // +0x10
  }
 
  struct SwiftUI.TitleStorage {
 
 	// Properties
 	var title : Text // +0x0
-	var displayMode : NavigationBarItem.TitleDisplayMode // +0x20
+	var displayMode : TitleDisplayMode // +0x20
  }
 
  struct SwiftUI.NavigationBarBackButtonHiddenKey { }
@@ -8112,11 +8717,20 @@
 
  class SwiftUI.InteropResponder : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3b2920  @objc InteropResponder.cut(_:)
-	0x3b2920  @objc InteropResponder.cut(_:)
-	0x3b2920  @objc InteropResponder.cut(_:)
-	0x3b2920  @objc InteropResponder.cut(_:)
-	0x3b29c0  @objc InteropResponder.init()
+	0x38f3a0  @objc InteropResponder.cut(_:)
+	0x390f90  @objc InteropResponder.copy(_:)
+	0x390fa0  @objc InteropResponder.paste(_:)
+	0x390fb0  @objc InteropResponder.delete(_:)
+	0x38f470  @objc InteropResponder.init()
+ }
+
+ struct SwiftUI.OnCommandModifier {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var command : Å`	 // +0x0
+	var action : CommandAction // +0x8
+	var _focusedItem : Environment // +0x30
  }
 
  struct SwiftUI.StandardCommandAction: CommandAction {
@@ -8126,14 +8740,6 @@
  }
 
  struct SwiftUI.ResponderCommandsKey { }
-
- struct SwiftUI.OnCommandModifier {
-
-	// Properties
-	var command : Selector // +0x0
-	var action : CommandAction // +0x8
-	var _focusedItem : Environment<FocusItem2?> // +0x30
- }
 
  struct SwiftUI._Placement {
 
@@ -8155,7 +8761,8 @@
 
 	// Properties
 	var maximumDuration : Double // +0x0
-	var maximumDistance : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var maximumDistance : ˇá // +0x8
  }
 
  struct SwiftUI.Phase { }
@@ -8164,36 +8771,37 @@
 
 	// Properties
 	var active : Bool // +0x0
-	var color : Color? // +0x8
+	var color : Color // +0x8
  }
 
  class SwiftUI.EnvironmentWrapper : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 	let environment : EnvironmentValues // +0x8 (0x10)
-	let phase : _GraphInputs.Phase // +0x18 (0x4)
+	let phase : Phase // +0x18 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x3b7b70  @objc EnvironmentWrapper.init(coder:)
-	0x3b7bb0  @objc EnvironmentWrapper.encode(with:)
-	0x3b7c00  @objc EnvironmentWrapper.init()
-	0x3b7c50  @objc EnvironmentWrapper.__ivar_destroyer
+	0x394130  @objc EnvironmentWrapper.init(coder:)
+	0x394170  @objc EnvironmentWrapper.encode(with:)
+	0x394220  @objc EnvironmentWrapper.init()
+	0x3941c0  @objc EnvironmentWrapper.__ivar_destroyer
 
 	// Swift methods
-	0x3b7ba0  func EnvironmentWrapper.encode(with:) // method 
+	0x394160  func EnvironmentWrapper.encode(with:) // method 
  }
 
  struct SwiftUI.ScrollGesture {
 
 	// Properties
-	var minimumDistance : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var minimumDistance : ˇá // +0x0
 	var allowedDirections : _EventDirections // +0x8
  }
 
  enum SwiftUI.Value {
 
 	// Properties
-	case pan : PanGesture.Value
+	case pan : Value
 	case wheel : CGSize
  }
 
@@ -8209,7 +8817,8 @@
  struct SwiftUI.Set {
 
 	// Properties
-	let rawValue : Int8 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : e* // +0x0
  }
 
  struct SwiftUI._LayoutEngine {
@@ -8218,9 +8827,9 @@
 	let layout : A
 	let layoutContext : LayoutTraitsContext
 	let children : LayoutProxyCollection
-	var dimensionsCache : Cache3<_ProposedSize, CGSize>
-	var placementCache : Cache3<CGSize, [_Placement]>
-	var geometryCache : Cache3<CGSize, [ViewGeometry]>
+	var dimensionsCache : Cache3
+	var placementCache : Cache3
+	var geometryCache : Cache3
  }
 
  struct SwiftUI.ResetPositionTransform { }
@@ -8228,21 +8837,21 @@
  struct SwiftUI.RendererEffectDisplayList {
 
 	// Properties
-	let identity : DisplayList.Identity
+	let identity : Identity
  }
 
  struct SwiftUI.FilterVisitor {
 
 	// Properties
-	var filter : (_:_:) // +0x0
-	var result : AnyTransition? // +0x10
+	var filter : Transaction // +0x0
+	var result : AnyTransition // +0x10
  }
 
  struct SwiftUI.FilteredTransition {
 
 	// Properties
 	var transition : A
-	var filter : (_:_:)
+	var filter : Transaction
  }
 
  struct SwiftUI.PressableGestureCallbacks {
@@ -8256,16 +8865,20 @@
  enum SwiftUI.StateType {
 
 	// Properties
-	case requestedSubscription : (to: A, subscriber: AnyCancellable, subscriptionID: Int)
-	case subscribed : (to: A, subscriber: AnyCancellable, subscription: Subscription, subscriptionID: Int)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case requestedSubscription :  first-element-marker 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case subscribed :  first-element-marker 
 	case uninitialized  
  }
 
  struct SwiftUI.Connection {
 
 	// Properties
-	var combineIdentifier : CombineIdentifier
-	var parent : weak SubscriptionLifetime<A>?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var combineIdentifier : C√
+
+	var parent : SubscriptionLifetime
 	let downstream : A1
 	let subscriptionID : Int
  }
@@ -8289,7 +8902,8 @@
  struct SwiftUI.Properties {
 
 	// Properties
-	let rawValue : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : á‚	 // +0x0
  }
 
  struct SwiftUI.Data {
@@ -8302,7 +8916,8 @@
  struct SwiftUI.SerializedProperty {
 
 	// Properties
-	let id : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let id : á‚	 // +0x0
 	let attribute : SerializedAttribute // +0x8
  }
 
@@ -8331,7 +8946,7 @@
  struct SwiftUI.ViewDebugFilter {
 
 	// Properties
-	let properties : _ViewDebug.Properties
+	let properties : Properties
 	let hasChildData : Bool
  }
 
@@ -8376,8 +8991,8 @@
  struct SwiftUI.GestureState {
 
 	// Properties
-	var state : State<A>
-	let reset : (_:)
+	var state : State
+	let reset : Binding
  }
 
  struct SwiftUI.GestureStateGesture {
@@ -8385,7 +9000,7 @@
 	// Properties
 	var base : A
 	var state : GestureState
-	var body : (_:_:_:)
+	var body : Gesture
  }
 
  struct SwiftUI.GestureStatePhase {
@@ -8406,7 +9021,7 @@
  struct SwiftUI.EditModeScopeModifier {
 
 	// Properties
-	var _editMode : State<EditMode> // +0x0
+	var _editMode : State // +0x0
  }
 
  struct SwiftUI.EditModeKey { }
@@ -8421,8 +9036,8 @@
 
 	// Properties
 	let type : AnyBodyType // +0x0
-	let value : AGAttribute // +0x10
-	let graph : AGGraphRef // +0x18
+	let value : AnyAttribute // +0x10
+	let graph : Graph // +0x18
  }
 
  struct SwiftUI.ConfigurableViewBodyInput { }
@@ -8431,13 +9046,13 @@
 
  class SwiftUI.Delegate : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayoutComputerDelegate {
 	// Swift methods
-	0x4b8dd0  func LayoutComputer.Delegate.layoutPriority() // method 
-	0x4b9fd0  func LayoutComputer.Delegate.spacing() // method 
-	0x4b8de0  func LayoutComputer.Delegate.lengthThatFits(_:in:) // method 
-	0x4ba010  func LayoutComputer.Delegate.sizeThatFits(_:) // method 
-	0x4b8e00  func LayoutComputer.Delegate.finalize(_:in:finalizer:) // method 
-	0x4ba050  func LayoutComputer.Delegate.childGeometries(at:) // method 
-	0x4ba0a0  func LayoutComputer.Delegate.explicitAlignment(_:at:) // method 
+	0x41f510  func LayoutComputer.Delegate.layoutPriority() // method 
+	0x41fcc0  func LayoutComputer.Delegate.spacing() // method 
+	0x41f520  func LayoutComputer.Delegate.lengthThatFits(_:in:) // method 
+	0x41fd00  func LayoutComputer.Delegate.sizeThatFits(_:) // method 
+	0x41f570  func LayoutComputer.Delegate.finalize(_:in:finalizer:) // method 
+	0x41fd40  func LayoutComputer.Delegate.childGeometries(at:) // method 
+	0x41fd80  func LayoutComputer.Delegate.explicitAlignment(_:at:) // method 
  }
 
  class SwiftUI.EngineDelegate {
@@ -8447,15 +9062,17 @@
 
 	// Properties
 	var seed : Int // +0x0
-	var delegate : LayoutComputer.Delegate // +0x8
+	var delegate : Delegate // +0x8
  }
 
  class SwiftUI.Chunk : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	var tags : Tag // +0x10 (0x8)
-	var values : [CGFloat] // +0x18 (0x8)
-	var spaces : [AnyHashable] // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var values :  empty-list  // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var spaces :  empty-list  // +0x20 (0x8)
 
 	// Swift methods
  }
@@ -8475,7 +9092,8 @@
  struct SwiftUI.ViewTransform {
 
 	// Properties
-	var chunks : Chunk // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var chunks : ≈€ // +0x0
 	var positionAdjustment : CGSize // +0x8
  }
 
@@ -8490,10 +9108,12 @@
 
 	// Properties
 	case translation : CGSize
-	case affineTransform : (CGAffineTransform, inverse: Bool)
-	case projectionTransform : (ProjectionTransform, inverse: Bool)
-	case coordinateSpace : (name: AnyHashable)
-	case sizedSpace : (name: AnyHashable, size: CGSize)
+	case affineTransform : CGAffineTransform
+	case projectionTransform : ProjectionTransform
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case coordinateSpace : g⁄
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case sizedSpace : Y⁄
  }
 
  struct SwiftUI.AnyTransition {
@@ -8504,38 +9124,26 @@
 
  class SwiftUI.AnyTransitionBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x4d1470  func AnyTransitionBox.visitBase<A>(applying:) // method 
-	0x4d14c0  func AnyTransitionBox.isIdentity.getter // getter 
+	0x43be10  func AnyTransitionBox.visitBase<A>(applying:) // method 
+	0x43be60  func AnyTransitionBox.isIdentity.getter // getter 
  }
 
  class SwiftUI.TransitionBox {
  class SwiftUI.MultiViewResponder : ViewResponder {
 
 	// Properties
-	var _children : [ViewResponder] // +0x28 (0x8)
-	var cache : ViewResponder.ContainsPointsCache // +0x30 (0x18)
+	var _children : ViewResponder // +0x28 (0x8)
+	var cache : ContainsPointsCache // +0x30 (0x18)
 	var observers : ContentPathObservers // +0x48 (0x8)
 
 	// Swift methods
-	0x4d1de0  func MultiViewResponder.childrenDidChange() // method 
+	0x43c900  func MultiViewResponder.childrenDidChange() // method 
  }
 
  struct SwiftUI.SpacingLayout {
 
 	// Properties
 	var spacing : Spacing // +0x0
- }
-
- class SwiftUI.StyleBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
-	0x4d3c30  func StyleBox.body(configuration:) // method 
- }
-
- class SwiftUI.GenericStyleBox {
- struct SwiftUI.AnyStepperStyle {
-
-	// Properties
-	let box : StyleBox // +0x0
  }
 
  enum SwiftUI.ControlSize {
@@ -8555,8 +9163,9 @@
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var _minRowHeight : Environment<CGFloat> // +0x0
-	let children : _VariadicView_Children // +0x10
+	var _minRowHeight : Environment // +0x0
+	var _environment : Environment // +0x10
+	let children : _VariadicView_Children // +0x28
  }
 
  struct SwiftUI.CarouselList { }
@@ -8570,14 +9179,15 @@
  struct SwiftUI.LocationProjectionCache {
 
 	// Properties
-	var cache : Entry // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cache :  empty-list  // +0x0
  }
 
  struct SwiftUI.FunctionalLocation: Location {
 
 	// Properties
 	var getValue : ()
-	var setValue : (_:_:)
+	var setValue : Transaction
  }
 
  struct SwiftUI.ConstantLocation: Location {
@@ -8589,14 +9199,15 @@
  struct SwiftUI.ZipLocation: Location {
 
 	// Properties
-	let locations : (AnyLocation<A>, AnyLocation<B>)
+	let locations : AnyLocation
  }
 
  struct SwiftUI.ObservableObjectLocation: Location {
 
 	// Properties
 	var base : A
-	var keyPath : ReferenceWritableKeyPath<A, B>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyPath : O⁄
  }
 
  struct SwiftUI.ProjectedLocation: Location {
@@ -8609,13 +9220,13 @@
  struct SwiftUI.Entry {
 
 	// Properties
-	var box : weak AnyLocationBase? // +0x0
+	var box : AnyLocationBase // +0x0
  }
 
  struct SwiftUI.BindingReader {
 
 	// Properties
-	var bindingLocation : AnyLocation<A>?
+	var bindingLocation : AnyLocation
 	var bindingState : Any?
  }
 
@@ -8626,18 +9237,20 @@
  struct SwiftUI.EdgesOutsettingByRowInsetsModifier {
 
 	// Properties
-	var edges : Edge.Set // +0x0
-	var listRowInsets : Environment<EdgeInsets> // +0x8
+	var edges : Set // +0x0
+	var listRowInsets : Environment // +0x8
  }
 
  struct SwiftUI._IdentifiedViewProxy {
 
 	// Properties
-	var identifier : AnyHashable // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var identifier : „Ñ
+ // +0x0
 	var size : CGSize // +0x28
 	var position : CGPoint // +0x38
 	var transform : ViewTransform // +0x48
-	var adjustment : (_:)? // +0x60
+	var adjustment : CGRect // +0x60
  }
 
  enum SwiftUI._IdentifiedViewTree {
@@ -8662,17 +9275,39 @@
 
 	// Properties
 	let node : ScrollViewNode // +0x0
-	let seed : UInt32 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let seed : á‚	 // +0x8
  }
 
  struct SwiftUI._ContainedScrollViewKey { }
 
  struct SwiftUI.ScrollViewKey { }
 
+ class SwiftUI.DragAndDropBridge {
+ class SwiftUI.PlatformDragItem : UIDragItem /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var frame : CGRect // +0x8 (0x20)
+
+	// ObjC -> Swift bridged methods
+	0x448c50  @objc PlatformDragItem.init(itemProvider:)
+
+	// Swift methods
+ }
+
+ struct SwiftUI.DropInfoAdaptor {
+
+	// Properties
+	var base : weak UIDropSession? // +0x0
+	var location : CGPoint // +0x8
+ }
+
  struct SwiftUI.CachedEnvironment {
 
 	// Properties
-	var environment : Attribute<EnvironmentValues> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var environment : MW
+ // +0x0
 	var items : Item // +0x8
 	var constants : HashableConstant // +0x10
 	var animatedPosition : Animated // +0x18
@@ -8689,11 +9324,18 @@
  struct SwiftUI.Animated {
 
 	// Properties
-	var input : Attribute<A>
-	var output : Attribute<A>
-	var time : Attribute<Time>
-	var transaction : Attribute<Transaction>
-	var viewPhase : Attribute<_GraphInputs.Phase>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var input : ˜X
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var output : ˜X
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var time : ä
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var transaction : Àä	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var viewPhase : OÇ	
  }
 
  struct SwiftUI.HashableConstant {
@@ -8705,8 +9347,9 @@
  struct SwiftUI.Item {
 
 	// Properties
-	var key : PartialKeyPath<EnvironmentValues> // +0x0
-	var value : AGAttribute // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var key : ÷ // +0x0
+	var value : AnyAttribute // +0x8
  }
 
  struct SwiftUI.LinkButtonStyle { }
@@ -8720,13 +9363,14 @@
  struct SwiftUI.MoveLayout {
 
 	// Properties
-	let edge : Edge? // +0x0
+	let edge : Edge // +0x0
  }
 
  struct SwiftUI.Weight {
 
 	// Properties
-	var value : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : ˇá // +0x0
  }
 
  enum SwiftUI._StylisticAlternative {
@@ -8757,7 +9401,7 @@
  struct SwiftUI.StylisticAlternativeModifier: FontModifier {
 
 	// Properties
-	var alternative : Font._StylisticAlternative // +0x0
+	var alternative : _StylisticAlternative // +0x0
  }
 
  struct SwiftUI.BoldModifier: FontModifier { }
@@ -8773,7 +9417,7 @@
  struct SwiftUI.WeightModifier: FontModifier {
 
 	// Properties
-	var weight : Font.Weight // +0x0
+	var weight : Weight // +0x0
  }
 
  struct SwiftUI.ModifierProvider {
@@ -8800,17 +9444,17 @@
  class SwiftUI.HostingScrollView : UIScrollView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let host : ScrollViewContentContainer // +0x8 (0x8)
+	let host : _UIHostingView // +0x8 (0x8)
 	var configuration : ScrollViewConfiguration // +0x10 (0x29)
 
 	// ObjC -> Swift bridged methods
-	0x4e3e90  @objc HostingScrollView.init(coder:)
-	0x4e3ea0  @objc HostingScrollView.bounds.getter
-	0x4e3ec0  @objc HostingScrollView.bounds.setter
-	0x4e3ee0  @objc HostingScrollView.frame.getter
-	0x4e3fd0  @objc HostingScrollView.frame.setter
-	0x4e4200  @objc HostingScrollView.init(frame:)
-	0x4e4240  @objc HostingScrollView.__ivar_destroyer
+	0x44f870  @objc HostingScrollView.init(coder:)
+	0x44f880  @objc HostingScrollView.bounds.getter
+	0x44f8a0  @objc HostingScrollView.bounds.setter
+	0x44f8c0  @objc HostingScrollView.frame.getter
+	0x44f9b0  @objc HostingScrollView.frame.setter
+	0x44fc30  @objc HostingScrollView.init(frame:)
+	0x44fbe0  @objc HostingScrollView.__ivar_destroyer
 
 	// Swift methods
  }
@@ -8833,7 +9477,7 @@
  struct SwiftUI.EnvironmentReadingChild {
 
 	// Properties
-	let tracker : PropertyList.Tracker
+	let tracker : Tracker
  }
 
  struct SwiftUI.LabeledView {
@@ -8870,6 +9514,24 @@
 	var catalogName : String // +0x0
  }
 
+ class SwiftUI.DropViewResponder : DefaultLayoutViewResponder {
+
+	// Properties
+	var delegate : DropDelegate // +0xd8 (0x28)
+ }
+
+ struct SwiftUI.DropModifier {
+
+	// Properties
+	var delegate : DropDelegate // +0x0
+ }
+
+ struct SwiftUI.DropResponderFilter {
+
+	// Properties
+	let responder : DropViewResponder // +0x0
+ }
+
  struct SwiftUI.AnimatablePair {
 
 	// Properties
@@ -8880,22 +9542,27 @@
  class SwiftUI.ScrollViewNode : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var host : weak ViewRendererHost?
-	let attribute : ScrollViewNode
-	let uniqueId : UInt32
-	var modelOffset : CGPoint
-	var presentationOffset : CGPoint
-	var behavior : ScrollViewBehavior
-	var isInitialized : Bool
-	var resetSeed : UInt32
-	var config : _ScrollViewConfig
-	var contentSize : CGSize
-	var containerSize : CGSize
-	var decelerationTarget : (_:_:_:_:)
-	var container : ScrollViewNode
-	var topScrollIndicatorFollowsContentOffset : Bool
-	var pixelLength : CGFloat
-	var propertySeed : UInt32
+	var host : ViewRendererHost // +0x10 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let attribute : ßà // +0x20 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	 // +0x30 (0x4)
+	var modelOffset : CGPoint // +0x38 (0x10)
+	var presentationOffset : CGPoint // +0x48 (0x10)
+	var behavior : ScrollViewBehavior // +0x58 (0x50)
+	var isInitialized : Bool // +0xa8 (0x1)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : á‚	 // +0xac (0x4)
+	var config : _ScrollViewConfig // +0xb0 (0xa8)
+	var contentSize : CGSize // +0x158 (0x10)
+	var containerSize : CGSize // +0x168 (0x10)
+	var decelerationTarget : CGPoint // +0x178 (0x10)
+	var container : ScrollViewNode // +0x188 (0x8)
+	var topScrollIndicatorFollowsContentOffset : Bool // +0x190 (0x1)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var pixelLength : ˇá // +0x198 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var propertySeed : á‚	 // +0x1a0 (0x4)
 
 	// Swift methods
  }
@@ -8911,7 +9578,7 @@
  class SwiftUI.ScrollViewResponder : DefaultLayoutViewResponder {
 
 	// Properties
-	let node : ScrollViewNode
+	let node : ScrollViewNode // +0x46a300
 
 	// Swift methods
  }
@@ -8921,7 +9588,7 @@
  struct SwiftUI.ScrollViewUpdate {
 
 	// Properties
-	var bindingReader : BindingReader<CGPoint>
+	var bindingReader : BindingReader
 	var bindingWarned : Bool
  }
 
@@ -8939,13 +9606,13 @@
 	let node : ScrollViewNode // +0x0
  }
 
+ struct SwiftUI.ContentOffset { }
+
  struct SwiftUI.ScrollViewChildModifier {
 
 	// Properties
 	let node : ScrollViewNode // +0x0
  }
-
- struct SwiftUI.ContentOffset { }
 
  struct SwiftUI.ScrollViewGesture {
 
@@ -8964,8 +9631,8 @@
  enum SwiftUI.ScrollViewCommitInfo {
 
 	// Properties
-	case contentOffset : (CGPoint, bindingValue: CGPoint)
-	case targetOffset : (CGPoint?, bindingValue: CGPoint, velocity: _Velocity<CGSize>?, completion: (_:)?)
+	case contentOffset : CGPoint
+	case targetOffset : CGPoint
  }
 
  struct SwiftUI.ScrollInfoKey { }
@@ -9003,27 +9670,31 @@
 
 	// Properties
 	var state : DynamicContentState
-	var seed : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	
  }
 
  enum SwiftUI.IDGenerator {
 
 	// Properties
-	case keyPath : KeyPath<A.Sequence.Element, B>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case keyPath : M√
 	case offset  
  }
 
  struct SwiftUI.Init {
 
 	// Properties
-	var seed : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	
  }
 
  struct SwiftUI.Info {
 
 	// Properties
 	var state : DynamicContentState
-	var seed : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	
  }
 
  struct SwiftUI.Init {
@@ -9041,9 +9712,9 @@
  struct SwiftUI.ForEachViewIDCollection {
 
 	// Properties
-	var base : _ViewList_ID.Views
+	var base : Views
 	var data : A
-	var idGenerator : ForEach<A, B, C>.IDGenerator
+	var idGenerator : IDGenerator
 	var isUnary : Bool
 	var baseCount : Int
 	var count : Int
@@ -9061,7 +9732,7 @@
 	var mass : Double // +0x0
 	var stiffness : Double // +0x8
 	var damping : Double // +0x10
-	var initialVelocity : _Velocity<Double> // +0x18
+	var initialVelocity : _Velocity // +0x18
  }
 
  struct SwiftUI.SpringAnimator {
@@ -9082,7 +9753,7 @@
 	// Properties
 	var actions : [()] // +0x0
 	var enabled : Bool // +0x8
-	var state : MenuItemPreferenceKey.Value.ControlState // +0x9
+	var state : ControlState // +0x9
  }
 
  enum SwiftUI.ControlState {
@@ -9104,8 +9775,8 @@
 
 	// Properties
 	let inputs : _ViewListInputs
-	let parentSubgraph : AGSubgraphRef
-	let allItems : Item
+	let parentSubgraph : Subgraph
+	let allItems : MutableBox
 	var lastItem : Item
  }
 
@@ -9113,7 +9784,8 @@
 
 	// Properties
 	var lastID : A?
-	var delta : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var delta : á‚	
  }
 
  struct SwiftUI.IdentifiedView {
@@ -9138,14 +9810,15 @@
  struct SwiftUI.WrappedIDs {
 
 	// Properties
-	let base : _ViewList_ID.Views
+	let base : Views
 	let staticID : Int
  }
 
  struct SwiftUI._PreferenceValue {
 
 	// Properties
-	var attribute : Attribute<A.PreferenceKey.Value>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var attribute : {{
  }
 
  struct SwiftUI._DelayedPreferenceView {
@@ -9157,7 +9830,8 @@
  struct SwiftUI.DelayedPreferenceChild {
 
 	// Properties
-	let value : Attribute<A.PreferenceKey.Value>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let value : {{
  }
 
  struct SwiftUI.PreferenceValueAttribute { }
@@ -9165,7 +9839,8 @@
  enum SwiftUI._CrownHapticsConfiguration {
 
 	// Properties
-	case finiteScrolling : (CGFloat, CGFloat)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case finiteScrolling : …w
 	case platters : Notch
 	case none  
 	case infiniteScrolling  
@@ -9174,8 +9849,10 @@
  struct SwiftUI.Notch {
 
 	// Properties
-	let from : CGFloat // +0x0
-	let to : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let from : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let to : ˇá // +0x8
 	let strength : Strength // +0x10
  }
 
@@ -9199,44 +9876,6 @@
 	// Properties
 	var base : A
 	var delay : Double
- }
-
- class SwiftUI.Coordinator : PlatformViewCoordinator {
-
-	// Properties
-	var selected : Binding<Int> // +0x8 (0x18)
-	var needsRebuild : Bool // +0x20 (0x1)
-	var hostingController : UIHostingController<_ViewList_View>? // +0x28 (0x8)
-
-	// ObjC -> Swift bridged methods
-	0x521210  @objc Coordinator.tabBarController(_:didSelect:)
-	0x5212b0  @objc Coordinator.init()
-	0x521340  @objc Coordinator.__ivar_destroyer
-
-	// Swift methods
-	0x520fe0  func Coordinator.selected.getter // getter 
-	0x521030  func Coordinator.selected.setter // setter 
-	0x5210c0  func Coordinator.hostingController.setter // setter 
-	0x521180  func Coordinator.tabBarController(_:didSelect:) // method 
- }
-
- struct SwiftUI.BodyContent {
-
-	// Properties
-	var _environment : Environment<EnvironmentValues>
-	var _childSelection : State<AnyHashable>
-	let children : _VariadicView_Children
-	let selection : Binding<A1>?
- }
-
- struct SwiftUI.UIKitTabView {
-
-	// Properties
-	var tabs : [(view: _ViewList_View, item: PlatformItemList.Item?)] // +0x0
-	var selected : Binding<Int> // +0x8
-	var colorScheme : ColorScheme // +0x20
-	var barItemColor : Color // +0x28
-	let environment : EnvironmentValues // +0x30
  }
 
  struct SwiftUI.SpeedAnimation {
@@ -9265,14 +9904,19 @@
 
 	// Properties
 	let string : NSAttributedString?
-	let truncationMode : Text.TruncationMode
+	let truncationMode : TruncationMode
 	let lineLimit : Int?
-	let minScaleFactor : CGFloat
-	let lineSpacing : CGFloat
-	let pixelLength : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minScaleFactor : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lineSpacing : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pixelLength : ˇá
 	var cache : MetricsCache
-	var scaleFactorOverride : CGFloat?
-	var $__lazy_storage_$_oversizeCharacterOutsets : EdgeInsets?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scaleFactorOverride : Iv
+
+	var $__lazy_storage_$_pixelMargins : EdgeInsets
 
 	// Swift methods
  }
@@ -9290,16 +9934,18 @@
 	var kitCache : Swift.AnyObject? // +0x0
 	let string : NSAttributedString // +0x8
 	let lineLimit : Int? // +0x10
-	let minScaleFactor : CGFloat // +0x20
-	let pixelLength : CGFloat // +0x28
-	var entries : Metrics // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minScaleFactor : ˇá // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let pixelLength : ˇá // +0x28
+	var entries : ArrayWith3Inline // +0x30
  }
 
  struct SwiftUI.TextChildQuery {
 
 	// Properties
-	let tracker : PropertyList.Tracker // +0x0
-	var text : Text? // +0x8
+	let tracker : Tracker // +0x0
+	var text : Text // +0x8
  }
 
  struct SwiftUI.StyledTextLayoutComputerQuery { }
@@ -9311,11 +9957,11 @@
  struct SwiftUI.SymmetricTextChildQuery {
 
 	// Properties
-	let tracker : PropertyList.Tracker // +0x0
-	var resolvedSource : ResolvedStyledText? // +0x8
-	var resolvedReference : ResolvedStyledText? // +0x10
-	var source : Text? // +0x18
-	var reference : Text? // +0x38
+	let tracker : Tracker // +0x0
+	var resolvedSource : ResolvedStyledText // +0x8
+	var resolvedReference : ResolvedStyledText // +0x10
+	var source : Text // +0x18
+	var reference : Text // +0x38
  }
 
  struct SwiftUI.SymmetricallyScaledTextLayout {
@@ -9341,9 +9987,12 @@
 
 	// Properties
 	var size : CGSize // +0x0
-	let scale : CGFloat // +0x10
-	let firstBaseline : CGFloat // +0x18
-	let lastBaseline : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let scale : ˇá // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let firstBaseline : ˇá // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lastBaseline : ˇá // +0x20
  }
 
  struct SwiftUI.ScalarDeceleration {
@@ -9351,14 +10000,14 @@
 	// Properties
 	var time : Double // +0x0
 	var offset : Double // +0x8
-	var velocity : _Velocity<Double> // +0x10
+	var velocity : _Velocity // +0x10
 	var drag : Double // +0x18
 	var force : Double // +0x20
 	var bounceStiffness : Double // +0x28
 	var bounceDrag : Double // +0x30
 	var springStiffness : Double // +0x38
 	var springTarget : Double // +0x40
-	var stoppedVelocity : _Velocity<Double> // +0x48
+	var stoppedVelocity : _Velocity // +0x48
 	var bounced : Bool // +0x50
  }
 
@@ -9372,7 +10021,14 @@
 
 	// Properties
 	var removal : AnyTransition // +0x0
-	var result : AnyTransition? // +0x8
+	var result : AnyTransition // +0x8
+ }
+
+ struct SwiftUI.RemovalVisitor {
+
+	// Properties
+	let insertion : A
+	var result : AnyTransition
  }
 
  struct SwiftUI.AsymmetricTransition {
@@ -9382,17 +10038,29 @@
 	var removal : B
  }
 
- struct SwiftUI.RemovalVisitor {
+ class SwiftUI.FocusBridge : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let insertion : A
-	var result : AnyTransition?
+	var host : ViewRendererHost // +0x10 (0x10)
+	var _focusedItem : FocusItem // +0x20 (0x38)
+	var needsFocusedItemUpdate : Bool // +0x58 (0x1)
+
+	// Swift methods
+	0x4911d0  func FocusBridge.focusedItem.getter // getter 
+	0x4913b0  func FocusBridge.focusedItem.setter // setter 
+	0x491510  func FocusBridge.focusedResponder.getter // getter 
+	0x491580  func FocusBridge.focusDidChange() // method 
+	0x4915c0  func FocusBridge.updateEnvironment(_:) // method 
+	0x491680  func FocusBridge.focusItems(in:) // method 
+	0x491b10  func FocusBridge.preferredFocusEnvironments.getter // getter 
+	0x491c40  func FocusBridge.didUpdateFocus(in:with:) // method 
+	0x491e00  func FocusBridge.isHostContainedInFocusedItem.getter // getter 
  }
 
  struct SwiftUI.EnvironmentalEffectChild {
 
 	// Properties
-	let tracker : PropertyList.Tracker
+	let tracker : Tracker
  }
 
  enum SwiftUI.TextStyle {
@@ -9420,29 +10088,31 @@
  struct SwiftUI.PlatformFontProvider {
 
 	// Properties
-	var font : CTFontRef // +0x0
+	var font : CTFont // +0x0
  }
 
  struct SwiftUI.TextStyleProvider {
 
 	// Properties
-	var style : Font.TextStyle // +0x0
-	var design : Font.Design // +0x1
+	var style : TextStyle // +0x0
+	var design : Design // +0x1
  }
 
  struct SwiftUI.SystemProvider {
 
 	// Properties
-	var size : CGFloat // +0x0
-	var weight : Font.Weight // +0x8
-	var design : Font.Design // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var size : ˇá // +0x0
+	var weight : Weight // +0x8
+	var design : Design // +0x10
  }
 
  struct SwiftUI.NamedProvider {
 
 	// Properties
 	var name : String // +0x0
-	var size : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var size : ˇá // +0x10
  }
 
  struct SwiftUI.SelectionShapeStyle {
@@ -9456,14 +10126,15 @@
  struct SwiftUI._CircleLayout {
 
 	// Properties
-	let radius : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let radius : ˇá // +0x0
  }
 
  struct SwiftUI.DefaultCombiningAnimator {
 
 	// Properties
 	var firstAnimator : A?
-	let firstInterval : A.Animator.Value
+	let firstInterval : Animator
 	let firstElapsed : Double
 	var secondAnimator : B
  }
@@ -9472,7 +10143,7 @@
 
 	// Properties
 	case properties : AccessibilityProperties
-	case platform : (AccessibilityProperties?, Swift.AnyObject)
+	case platform : AccessibilityProperties
  }
 
  struct SwiftUI.ActivationPointKey { }
@@ -9524,6 +10195,14 @@
 	case hidden  
  }
 
+ struct SwiftUI.ExternalPlatformProperties {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _properties : _g	 // +0x0
+	var value : AccessibilityProperties // +0x10
+ }
+
  struct SwiftUI.AccessibilityProperties {
 
 	// Properties
@@ -9538,27 +10217,27 @@
 
  struct SwiftUI.MenuGroupBody { }
 
- struct SwiftUI.MenuGroup {
-
-	// Properties
-	var content : A
- }
-
- struct SwiftUI.MenuDepthTrait { }
-
  struct SwiftUI.SubmenuMenuButton {
 
 	// Properties
 	var configuration : _MenuButtonStyleConfiguration // +0x0
-	var _controlSize : Environment<ControlSize> // +0x0
+	var _controlSize : Environment // +0x0
  }
+
+ struct SwiftUI.MenuGroup {
+
+	// Properties
+	var content : A // +0xffd36b18
+ }
+
+ struct SwiftUI.MenuDepthTrait { }
 
  struct SwiftUI.DefaultLabeledViewStyle { }
 
  struct SwiftUI._Body {
 
 	// Properties
-	var configuration : LabeledView<LabeledViewLabel, LabeledViewContent> // +0x0
+	var configuration : LabeledView // +0x0
  }
 
  struct SwiftUI.ToAnyHashable { }
@@ -9568,6 +10247,8 @@
  struct SwiftUI.ToOptional { }
 
  struct SwiftUI.ToDouble { }
+
+ enum SwiftUI.BindingOperations { }
 
  struct SwiftUI.NilCoalescing {
 
@@ -9587,13 +10268,13 @@
  struct SwiftUI.ShapeChild {
 
 	// Properties
-	let tracker : PropertyList.Tracker
+	let tracker : Tracker
  }
 
  struct SwiftUI.AnchoredShapeChild {
 
 	// Properties
-	let tracker : PropertyList.Tracker
+	let tracker : Tracker
  }
 
  struct SwiftUI.ResolvedShapeView {
@@ -9633,20 +10314,20 @@
 	let configuration : _ResolvedPopUpButton // +0x0
  }
 
- struct SwiftUI.SystemPopUpButton {
-
-	// Properties
-	var configuration : _ResolvedPopUpButton // +0x0
-	var style : AppKitPopUpButtonStyle // +0x9
-	var showArrows : Bool // +0xa
- }
-
  struct SwiftUI._DefaultPopUpButtonStyle { }
 
  struct SwiftUI.Body {
 
 	// Properties
 	let configuration : _ResolvedPopUpButton // +0x0
+ }
+
+ struct SwiftUI.SystemPopUpButton {
+
+	// Properties
+	var configuration : _ResolvedPopUpButton // +0x0
+	var style : AppKitPopUpButtonStyle // +0x9
+	var showArrows : Bool // +0xa
  }
 
  enum SwiftUI.AppKitPopUpButtonStyle {
@@ -9659,7 +10340,7 @@
 
  class SwiftUI.AnyStyleBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x551750  func AnyStyleBox.body(configuration:) // method 
+	0x4b21c0  func AnyStyleBox.body(configuration:) // method 
  }
 
  class SwiftUI.StyleBox {
@@ -9677,15 +10358,18 @@
 	var needsRootViewUpdate : Bool // +0x20 (0x1)
 	var needsEnvironmentUpdate : Bool // +0x21 (0x1)
 	var isRendering : Bool // +0x22 (0x1)
-	var currentTimestamp : Time // +0x28 (0x8)
+	var externalUpdateCount : Int // +0x28 (0x8)
+	var currentTimestamp : Time // +0x30 (0x8)
 
 	// Swift methods
  }
 
+ struct SwiftUI.HostingViewCoordinateSpace { }
+
  struct SwiftUI.Value {
 
 	// Properties
-	var value : weak PreferenceBridge? // +0x0
+	var value : PreferenceBridge // +0x0
  }
 
  struct SwiftUI.PreferenceBridgeKey { }
@@ -9700,14 +10384,15 @@
  struct SwiftUI._PreferenceReadingView {
 
 	// Properties
-	var value : _PreferenceValue<A>
-	var transform : (_:)
+	var value : _PreferenceValue
+	var transform : PreferenceKey
  }
 
  struct SwiftUI.PreferenceReadingChild {
 
 	// Properties
-	var inputHelper : DynamicInputHelper<A.PreferenceKey.Value>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var inputHelper : Ii
  }
 
  struct SwiftUI.RepeatAnimation {
@@ -9732,20 +10417,20 @@
  struct SwiftUI.SystemTextFieldLabel {
 
 	// Properties
-	var base : PlatformItemList.Item // +0x0
+	var base : Item // +0x0
  }
 
  class SwiftUI.ImageLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 
 	// Properties
-	var lastResolvedImage : Image.Resolved? // +0x8 (0x8c)
-	var lastResolvedSize : CGSize? // +0x98 (0x11)
+	var lastResolvedImage : Resolved // +0x8 (0x8c)
+	var lastResolvedSize : CGSize // +0x98 (0x11)
 
 	// ObjC -> Swift bridged methods
-	0x566540  @objc ImageLayer.init()
-	0x566640  @objc ImageLayer.init(layer:)
-	0x566750  @objc ImageLayer.init(coder:)
-	0x5667b0  @objc ImageLayer.__ivar_destroyer
+	0x4c68a0  @objc ImageLayer.init()
+	0x4c6980  @objc ImageLayer.init(layer:)
+	0x4c6a70  @objc ImageLayer.init(coder:)
+	0x4c67a0  @objc ImageLayer.__ivar_destroyer
  }
 
  class SwiftUI.GradientLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -9757,19 +10442,19 @@
 	var $__lazy_storage_$_gradientLayer : CAGradientLayer? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5674f0  @objc GradientLayer.layoutSublayers()
-	0x5675d0  @objc GradientLayer.init()
-	0x5676d0  @objc GradientLayer.init(layer:)
-	0x5677e0  @objc GradientLayer.init(coder:)
-	0x567840  @objc GradientLayer.__ivar_destroyer
+	0x4c7660  @objc GradientLayer.layoutSublayers()
+	0x4c7790  @objc GradientLayer.init()
+	0x4c78a0  @objc GradientLayer.init(layer:)
+	0x4c79b0  @objc GradientLayer.init(coder:)
+	0x4c76c0  @objc GradientLayer.__ivar_destroyer
  }
 
  enum SwiftUI.Function {
 
 	// Properties
-	case axial : (startPoint: UnitPoint, endPoint: UnitPoint)
-	case radial : (center: UnitPoint, radius: CGFloat)
-	case conic : (center: UnitPoint, angle: Angle)
+	case axial : UnitPoint
+	case radial : UnitPoint
+	case conic : UnitPoint
  }
 
  struct SwiftUI._ViewListInputs {
@@ -9777,8 +10462,9 @@
 	// Properties
 	var base : _GraphInputs // +0x0
 	var options : Options // +0x38
-	var _traits : OptionalAttribute<ViewTraitCollection> // +0x40
-	var traitKeys : ViewTraitKeys? // +0x48
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _traits : g // +0x40
+	var traitKeys : ViewTraitKeys // +0x48
  }
 
  struct SwiftUI._ViewListOutputs {
@@ -9794,10 +10480,10 @@
 	let isDataDependent : Bool
 
 	// Swift methods
-	0x573550  func _ViewList_ID.Views.endIndex.getter // getter 
-	0x5735a0  func _ViewList_ID.Views.subscript.getter // getter 
-	0x5735f0  func _ViewList_ID.Views.isEqual(to:) // method 
-	0x573640  func _ViewList_ID.Views.withDataDependency() // method 
+	0x4d2740  func _ViewList_ID.Views.endIndex.getter // getter 
+	0x4d2790  func _ViewList_ID.Views.subscript.getter // getter 
+	0x4d27e0  func _ViewList_ID.Views.isEqual(to:) // method 
+	0x4d2830  func _ViewList_ID.Views.withDataDependency() // method 
  }
 
  class SwiftUI._Views {
@@ -9813,20 +10499,21 @@
  class SwiftUI._ViewList_Subgraph : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let subgraph : AGSubgraphRef
-	var refcount : UInt32
+	let subgraph : Subgraph
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var refcount : á‚	
 
 	// Swift methods
-	0x569790  func _ViewList_Subgraph.invalidate() // method 
+	0x4c9200  func _ViewList_Subgraph.invalidate() // method 
  }
 
  class SwiftUI._ViewList_IndirectMap : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var map : [AnyGraphValue : AnyGraphValue]
+	var map : AnyGraphValue // +0x0
 
 	// Swift methods
-	0x572300  class func _ViewList_IndirectMap.__allocating_init() // init 
+	0x4d1460  class func _ViewList_IndirectMap.__allocating_init() // init 
  }
 
  struct SwiftUI.Options {
@@ -9838,22 +10525,25 @@
  struct SwiftUI._ViewList_ID {
 
 	// Properties
-	var implicitIDs : Int // +0x0
-	var explicitID : AnyHashable? // +0x8
- }
-
- enum SwiftUI.Views {
-
-	// Properties
-	case staticList : _ViewList_Elements
-	case dynamicList : Attribute<ViewList>
+	var implicitIDs : FNVHash128 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var explicitID : /; // +0x10
  }
 
  struct SwiftUI.Element {
 
 	// Properties
 	var id : _ViewList_ID // +0x0
-	var index : Int // +0x30
+	var index : Int // +0x38
+ }
+
+ enum SwiftUI.Views {
+
+	// Properties
+	case staticList : _ViewList_Elements
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case dynamicList : G
+
  }
 
  struct SwiftUI.EmptyElements: _ViewList_Elements { }
@@ -9861,7 +10551,15 @@
  struct SwiftUI.BodyUnaryViewGenerator: UnaryViewGenerator {
 
 	// Properties
-	let body : (_:_:) // +0x0
+	let body : _ViewOutputs // +0x0
+ }
+
+ struct SwiftUI.UnaryElements: _ViewList_Elements {
+
+	// Properties
+	var body : A
+	var graph : Graph
+	var baseInputs : _GraphInputs
  }
 
  struct SwiftUI.Init {
@@ -9870,30 +10568,30 @@
 	let elements : _ViewList_Elements // +0x0
 	let staticID : Int // +0x28
 	let canTransition : Bool // +0x30
-	let traitKeys : ViewTraitKeys? // +0x38
+	let traitKeys : ViewTraitKeys // +0x38
  }
 
  struct SwiftUI.EmptyViewList: ViewList { }
-
- struct SwiftUI.MergedViewList: ViewList {
-
-	// Properties
-	var lists : [(list: ViewList, attribute: Attribute<ViewList>)] // +0x0
- }
 
  struct SwiftUI.UnaryViewList: ViewList {
 
 	// Properties
 	var elements : _ViewList_Elements // +0x0
 	var staticID : Int // +0x28
-	var traitKeys : ViewTraitKeys? // +0x30
+	var traitKeys : ViewTraitKeys // +0x30
 	var traits : ViewTraitCollection // +0x40
  }
 
  struct SwiftUI.MergedElements: _ViewList_Elements {
 
 	// Properties
-	var outputs : [_ViewListOutputs] // +0x0
+	var outputs : _ViewListOutputs // +0x0
+ }
+
+ struct SwiftUI.MergedViewList: ViewList {
+
+	// Properties
+	var lists : ViewList // +0x0
  }
 
  struct SwiftUI.Init { }
@@ -9908,29 +10606,21 @@
  struct SwiftUI.TypedUnaryViewGenerator: UnaryViewGenerator {
 
 	// Properties
-	let view : _GraphValue<A>
- }
-
- struct SwiftUI.UnaryElements: _ViewList_Elements {
-
-	// Properties
-	var body : A
-	var graph : AGGraphRef
-	var baseInputs : _GraphInputs
+	let view : _GraphValue
  }
 
  struct SwiftUI.ModifiedViewList: ViewList {
 
 	// Properties
 	let base : ViewList
-	let modifier : _GraphValue<A>
+	let modifier : _GraphValue
 	let inputs : _GraphInputs
  }
 
  struct SwiftUI.Init {
 
 	// Properties
-	let modifier : _GraphValue<A>
+	let modifier : _GraphValue
 	let inputs : _GraphInputs
  }
 
@@ -9938,47 +10628,45 @@
 
 	// Properties
 	let base : _ViewList_Elements
-	let modifier : _GraphValue<A>
+	let modifier : _GraphValue
 	let baseInputs : _GraphInputs
+ }
+
+ struct SwiftUI.IndirectAttribute { }
+
+ struct SwiftUI.IdentifiedView {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let id : „Ñ
+
  }
 
  struct SwiftUI.ElementCollection {
 
 	// Properties
 	var id : _ViewList_ID // +0x0
-	var count : Int // +0x30
+	var count : Int // +0x38
  }
-
- struct SwiftUI.IdentifiedView {
-
-	// Properties
-	let id : AnyHashable
- }
-
- struct SwiftUI.IndirectAttribute { }
-
- class SwiftUI.ChildIndexProjection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let children : _VariadicView_Children // +0x10 (0x30)
-
-	// Swift methods
-	0x58f310  func ChildIndexProjection.hashValue.getter // getter 
- }
-
- struct SwiftUI.TabItemTraitKey { }
 
  struct SwiftUI.ListCoreBatchUpdates {
 
 	// Properties
-	var removeSections : IndexSet
-	var insertSections : IndexSet
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var removeSections : √Ë
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var insertSections : √Ë
+
 	var moveSections : [(Int, Int)]
-	var removeRows : [IndexPath]
-	var insertRows : [IndexPath]
-	var moveRows : [(source: IndexPath, destination: IndexPath)]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var removeRows :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var insertRows :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var moveRows :  empty-list 
 	var isEmpty : Bool
-	var base : ListBatchUpdates<A>
+	var base : ListBatchUpdates
  }
 
  struct SwiftUI.CountingIndexListDataSource {
@@ -10001,24 +10689,28 @@
  struct SwiftUI.ListBatchUpdates {
 
 	// Properties
-	var rawUpdates : [ListUpdate<CountingIndex<A.ListCoreDataSource.SectionIDs.Collection.Index>, CountingIndex<A.ListCoreDataSource.RowIDs.Collection.Index>>]
-	var sectionChanges : CollectionChanges<CountingIndex<A.ListCoreDataSource.SectionIDs.Collection.Index>, CountingIndex<A.ListCoreDataSource.SectionIDs.Collection.Index>>
-	var rowChanges : CollectionChanges<CountingIndex<A.ListCoreDataSource.RowIDs.Collection.Index>, CountingIndex<A.ListCoreDataSource.RowIDs.Collection.Index>>
-	var movedSectionCandidates : [AnyHashable : (Int, CountingIndex<A.ListCoreDataSource.SectionIDs.Collection.Index>)]
-	var movedRowCandidates : [AnyHashable : (Int, (CountingIndex<A.ListCoreDataSource.SectionIDs.Collection.Index>, CountingIndex<A.ListCoreDataSource.RowIDs.Collection.Index>))]
+	var rawUpdates : ListUpdate
+	var sectionChanges : CollectionChanges
+	var rowChanges : CollectionChanges
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var movedSectionCandidates :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var movedRowCandidates :  empty-list 
  }
 
  struct SwiftUI.HStack {
 
 	// Properties
-	var _tree : _HStackLayout
+	var _tree : Tree
  }
 
  struct SwiftUI._HStackLayout {
 
 	// Properties
 	var alignment : VerticalAlignment // +0x0
-	var spacing : CGFloat? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var spacing : Iv
+ // +0x8
  }
 
  struct SwiftUI.ResolvedDivider {
@@ -10047,18 +10739,19 @@
 
 	// Properties
 	var listeners : ListenerNode
-	var previousModelData : A.Animatable.AnimatableData?
+	var previousModelData : Animatable
 	var animatorState : AnimatorState
-	var resetSeed : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resetSeed : á‚	
  }
 
  class SwiftUI.UIKitRendererAppDelegate : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x5e9220  @objc UIKitRendererAppDelegate.application(_:didFinishLaunchingWithOptions:)
-	0x5e92f0  @objc UIKitRendererAppDelegate.application(_:configurationForConnecting:options:)
-	0x5e93e0  @objc UIKitRendererAppDelegate.application(_:statusBarTouchesEnded:)
-	0x5e9470  @objc UIKitRendererAppDelegate.init()
-	0x5e94b0  @objc UIKitRendererAppDelegate.__ivar_destroyer
+	0x533fa0  @objc UIKitRendererAppDelegate.application(_:didFinishLaunchingWithOptions:)
+	0x5340d0  @objc UIKitRendererAppDelegate.application(_:configurationForConnecting:options:)
+	0x5341c0  @objc UIKitRendererAppDelegate.application(_:statusBarTouchesEnded:)
+	0x534290  @objc UIKitRendererAppDelegate.init()
+	0x534250  @objc UIKitRendererAppDelegate.__ivar_destroyer
  }
 
  class SwiftUI.UIKitRendererSceneDelegate : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -10067,47 +10760,49 @@
 	var window : UIWindow?
 
 	// ObjC -> Swift bridged methods
-	0x5e9500  @objc UIKitRendererSceneDelegate.window.getter
-	0x5e9570  @objc UIKitRendererSceneDelegate.window.setter
-	0x5e96e0  @objc UIKitRendererSceneDelegate.scene(_:willConnectTo:options:)
-	0x5e97a0  @objc UIKitRendererSceneDelegate.init()
-	0x5e9810  @objc UIKitRendererSceneDelegate.__ivar_destroyer
+	0x5342f0  @objc UIKitRendererSceneDelegate.window.getter
+	0x534360  @objc UIKitRendererSceneDelegate.window.setter
+	0x5344d0  @objc UIKitRendererSceneDelegate.scene(_:willConnectTo:options:)
+	0x5345e0  @objc UIKitRendererSceneDelegate.init()
+	0x534580  @objc UIKitRendererSceneDelegate.__ivar_destroyer
 
 	// Swift methods
-	0x5e9540  func UIKitRendererSceneDelegate.window.getter // getter 
-	0x5e95b0  func UIKitRendererSceneDelegate.window.setter // setter 
-	0x5e95d0  func UIKitRendererSceneDelegate.scene(_:willConnectTo:options:) // method 
+	0x534330  func UIKitRendererSceneDelegate.window.getter // getter 
+	0x5343a0  func UIKitRendererSceneDelegate.window.setter // setter 
+	0x5343c0  func UIKitRendererSceneDelegate.scene(_:willConnectTo:options:) // method 
  }
 
  struct SwiftUI.ScrollViewBehavior {
 
 	// Properties
-	var phase : ScrollViewBehavior.Phase // +0x0
-	var seed : UInt32 // +0x44
+	var phase : Phase // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0x44
 	var containers : ContainerInfo // +0x48
  }
 
  struct SwiftUI.ContainerInfo {
 
 	// Properties
-	var node : unowned ScrollViewNode // +0x0
+	var node : ScrollViewNode // +0x0
 	var offset : CGPoint // +0x8
-	var seed : UInt32 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0x18
  }
 
  enum SwiftUI.Phase {
 
 	// Properties
-	case dragging : ScrollViewBehavior.DragState
-	case decelerating : ScrollViewBehavior.DecelerationState
+	case dragging : DragState
+	case decelerating : DecelerationState
 	case idle  
  }
 
  struct SwiftUI.DecelerationState {
 
 	// Properties
-	var targetOffset : CGPoint? // +0x0
-	var beginTime : Time? // +0x18
+	var targetOffset : CGPoint // +0x0
+	var beginTime : Time // +0x18
 	var completion : (_:)? // +0x28
 	var simulation : Deceleration2D // +0x38
  }
@@ -10118,7 +10813,7 @@
 	var offset : CGPoint // +0x0
 	var beganOffset : CGPoint // +0x10
 	var translation : CGSize // +0x20
-	var velocity : _Velocity<CGSize> // +0x30
+	var velocity : _Velocity // +0x30
 	var scrollingVertically : Bool // +0x40
 	var scrollingHorizontally : Bool // +0x41
 	var ended : Bool // +0x42
@@ -10129,7 +10824,7 @@
  struct SwiftUI.Body {
 
 	// Properties
-	var configuration : LabeledView<LabeledViewLabel, LabeledViewContent> // +0x0
+	var configuration : LabeledView // +0x0
  }
 
  struct SwiftUI.AccessibilityTraits {
@@ -10171,7 +10866,8 @@
  struct SwiftUI.TraitSet {
 
 	// Properties
-	let rawValue : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : á‚	 // +0x0
  }
 
  enum SwiftUI.AccessibilityRelationKind {
@@ -10197,8 +10893,8 @@
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var _environment : Environment<EnvironmentValues> // +0x0
-	var configuration : TextField<_TextFieldStyleLabel> // +0x18
+	var _environment : Environment // +0x0
+	var configuration : TextField // +0x18
  }
 
  class SwiftUI.UIKitPopoverBridge {
@@ -10227,28 +10923,28 @@
  struct SwiftUI.AtomicLazy {
 
 	// Properties
-	var cache : AtomicVariable<A?>
+	var cache : AtomicVariable
  }
 
  class SwiftUI.UIKitGestureRecognizer : UIGestureRecognizer /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var eventBindingManager : weak EventBindingManager? // +0x8 (0x8)
-	var responderWasBoundHandler : (_:)? // +0x10 (0x10)
+	var eventBindingManager : EventBindingManager // +0x8 (0x8)
+	var responderWasBoundHandler : ResponderNode // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x5f5ba0  @objc UIKitGestureRecognizer.init(coder:)
-	0x5f5c00  @objc UIKitGestureRecognizer.reset()
-	0x5f6120  @objc UIKitGestureRecognizer.touchesBegan(_:with:)
-	0x5f6170  @objc UIKitGestureRecognizer.touchesMoved(_:with:)
-	0x5f61c0  @objc UIKitGestureRecognizer.touchesEnded(_:with:)
-	0x5f6210  @objc UIKitGestureRecognizer.touchesCancelled(_:with:)
-	0x5f6820  @objc UIKitGestureRecognizer.pressesBegan(_:with:)
-	0x5f6910  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
-	0x5f6910  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
-	0x5f6910  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
-	0x5f6f00  @objc UIKitGestureRecognizer.init(target:action:)
-	0x5f6f80  @objc UIKitGestureRecognizer.__ivar_destroyer
+	0x540020  @objc UIKitGestureRecognizer.init(coder:)
+	0x540080  @objc UIKitGestureRecognizer.reset()
+	0x540560  @objc UIKitGestureRecognizer.touchesBegan(_:with:)
+	0x5405b0  @objc UIKitGestureRecognizer.touchesMoved(_:with:)
+	0x540600  @objc UIKitGestureRecognizer.touchesEnded(_:with:)
+	0x540650  @objc UIKitGestureRecognizer.touchesCancelled(_:with:)
+	0x540c50  @objc UIKitGestureRecognizer.pressesBegan(_:with:)
+	0x541ef0  @objc UIKitGestureRecognizer.pressesChanged(_:with:)
+	0x540d40  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
+	0x541f00  @objc UIKitGestureRecognizer.pressesCancelled(_:with:)
+	0x541380  @objc UIKitGestureRecognizer.init(target:action:)
+	0x541310  @objc UIKitGestureRecognizer.__ivar_destroyer
 
 	// Swift methods
  }
@@ -10257,10 +10953,13 @@
 
 	// Properties
 	var angle : Angle // +0x0
-	var axis : (x: CGFloat, y: CGFloat, z: CGFloat) // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var axis : 9 // +0x8
 	var anchor : UnitPoint // +0x20
-	var anchorZ : CGFloat // +0x30
-	var perspective : CGFloat // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var anchorZ : ˇá // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var perspective : ˇá // +0x38
  }
 
  struct SwiftUI.Alignment {
@@ -10273,7 +10972,7 @@
  struct SwiftUI.ZStack {
 
 	// Properties
-	var _tree : _ZStackLayout
+	var _tree : Tree
  }
 
  struct SwiftUI._ZStackLayout {
@@ -10297,7 +10996,9 @@
  struct SwiftUI._EnvironmentKeyTransformModifier {
 
 	// Properties
-	var keyPath : WritableKeyPath<EnvironmentValues, A>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyPath : âK
+
 	var transform : (_:)
  }
 
@@ -10305,7 +11006,8 @@
 
 	// Properties
 	var oldValue : A?
-	var oldKeyPath : WritableKeyPath<EnvironmentValues, A>?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var oldKeyPath : wu
  }
 
  struct SwiftUI.FetchedResults {
@@ -10318,9 +11020,9 @@
  struct SwiftUI.FetchRequest {
 
 	// Properties
-	var _controller : Controller
-	var _results : FetchedResults
-	var _managedObjectContext : Environment<NSManagedObjectContext>
+	var _controller : State
+	var _results : State
+	var _managedObjectContext : Environment
 	let transaction : Transaction
 	let fetchRequest : NSFetchRequest<A>
  }
@@ -10328,7 +11030,8 @@
  struct SwiftUI.Seed {
 
 	// Properties
-	var value : UInt16 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : + // +0x0
  }
 
  struct SwiftUI.Version {
@@ -10340,7 +11043,7 @@
  struct SwiftUI.DisplayList {
 
 	// Properties
-	var items : [DisplayList.Item] // +0x0
+	var items : Item // +0x0
 	var isRequired : Bool // +0x8
  }
 
@@ -10350,22 +11053,23 @@
 
 	// Properties
 	var frame : CGRect // +0x0
-	var version : DisplayList.Version // +0x20
-	var value : DisplayList.Item.Value // +0x28
-	var identity : DisplayList.Identity // +0x3c
+	var version : Version // +0x20
+	var value : Value // +0x28
+	var identity : Identity // +0x3c
  }
 
  struct SwiftUI.Identity {
 
 	// Properties
-	var value : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : á‚	 // +0x0
  }
 
  enum SwiftUI.Value {
 
 	// Properties
-	case content : DisplayList.Content
-	case effect : (DisplayList.Effect, DisplayList)
+	case content : Content
+	case effect : Effect
 	case empty  
  }
 
@@ -10374,7 +11078,7 @@
 	// Properties
 	case opacity : Float
 	case blendMode : BlendMode
-	case clip : (Path, FillStyle)
+	case clip : Path
 	case mask : DisplayList
 	case affine : CGAffineTransform
 	case projection : ProjectionTransform
@@ -10387,19 +11091,19 @@
  struct SwiftUI.Content {
 
 	// Properties
-	var value : DisplayList.Content.Value // +0x0
-	var seed : DisplayList.Seed // +0x8
+	var value : Value // +0x0
+	var seed : Seed // +0x8
  }
 
  enum SwiftUI.Value {
 
 	// Properties
-	case color : Color._Resolved
-	case image : Image.Resolved
-	case shape : (Path, AnyResolvedPaint, FillStyle)
+	case color : _Resolved
+	case image : Resolved
+	case shape : Path
 	case platformView : PlatformViewFactory
 	case text : ResolvedStyledText
-	case flattened : (DisplayList, RasterizationOptions)
+	case flattened : DisplayList
 	case backdrop  
  }
 
@@ -10440,7 +11144,8 @@
 
 	// Properties
 	var layoutDirection : LayoutDirection // +0x0
-	var pixelLength : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var pixelLength : ˇá // +0x8
  }
 
  struct SwiftUI.AccessibilityScrollAction { }
@@ -10449,7 +11154,8 @@
 
 	// Properties
 	var responder : ResponderNode // +0x0
-	var seed : UInt32 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seed : á‚	 // +0x10
 	var isFirstEvent : Bool // +0x14
 	var isRedirected : Bool // +0x15
  }
@@ -10461,14 +11167,15 @@
 	// Properties
 	var position : CGPoint // +0x0
 	var size : CGSize // +0x10
-	let kind : DisplayList.ViewUpdater.Platform.ViewKind // +0x20
-	var flags : DisplayList.ViewUpdater.Platform.ViewFlags // +0x21
+	let kind : ViewKind // +0x20
+	var flags : ViewFlags // +0x21
  }
 
  struct SwiftUI.ViewFlags {
 
 	// Properties
-	let rawValue : UInt8 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : +M // +0x0
  }
 
  enum SwiftUI.ViewKind {
@@ -10490,10 +11197,11 @@
  struct SwiftUI.CGImageProvider {
 
 	// Properties
-	var image : CGImageRef // +0x0
-	var scale : CGFloat // +0x8
-	var orientation : Image.Orientation // +0x10
-	var label : Text? // +0x18
+	var image : CGImage // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var scale : ˇá // +0x8
+	var orientation : Orientation // +0x10
+	var label : Text // +0x18
 	var decorative : Bool // +0x38
  }
 
@@ -10523,7 +11231,7 @@
 
 	// Properties
 	var identifier : A
-	var filter : (_:)
+	var filter : AnyAttribute
 	var result : B?
  }
 
@@ -10532,7 +11240,7 @@
 
 	// Properties
 	var dataSource : A
-	var selection : Binding<[A.CustomWheelPickerDataSource.Rows.Collection.Index]>
+	var selection : Binding
  }
 
  struct SwiftUI.LazyPickerRow: CustomWheelPickerRow {
@@ -10555,7 +11263,7 @@
 
 	// Properties
 	let dataSource : A
-	let selection : Binding<[A.CustomWheelPickerDataSource.Rows.Collection.Index]>
+	let selection : Binding
  }
 
  struct SwiftUI.WheelPickerRow: CustomWheelPickerRow {
@@ -10568,7 +11276,7 @@
  struct SwiftUI._PreferenceWritingModifier {
 
 	// Properties
-	var value : A.PreferenceKey.Value
+	var value : PreferenceKey
  }
 
  struct SwiftUI.HostPreferencesWriter {
@@ -10576,14 +11284,16 @@
 	// Properties
 	var keyRequested : Bool
 	var wasEmpty : Bool
-	var delta : UInt32
-	let nodeId : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var delta : á‚	
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let nodeId : á‚	
  }
 
  struct SwiftUI._TransactionModifier {
 
 	// Properties
-	var transform : (_:) // +0x0
+	var transform : Transaction // +0x0
  }
 
  struct SwiftUI._PushPopTransactionModifier {
@@ -10600,7 +11310,7 @@
  struct SwiftUI.SavedTransaction {
 
 	// Properties
-	var transaction : _GraphValue<Transaction> // +0x0
+	var transaction : _GraphValue // +0x0
 	var affectsGeometry : Bool // +0x10
  }
 
@@ -10610,8 +11320,10 @@
 	var timestamp : Time // +0x0
 	var phase : EventPhase // +0x8
 	var globalLocation : CGPoint // +0x10
-	var magnificationDelta : CGFloat // +0x20
-	var previousMagnification : CGFloat // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var magnificationDelta : ˇá // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var previousMagnification : ˇá // +0x28
  }
 
  class SwiftUI.ObjectCache {
@@ -10645,14 +11357,15 @@
 	var isRubberBandingEnabled : Bool // +0x19
 	var shouldShowScrollIndicator : Bool // +0x1a
 	var isScrollIndicatorStyledForTouchInput : Bool // +0x1b
-	var visibleLength : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var visibleLength : ˇá // +0x20
 	var requiresFocus : Bool // +0x28
 	var _isContinuous : Bool // +0x29
-	var _crownHapticsConfiguration : _CrownHapticsConfiguration? // +0x30
+	var _crownHapticsConfiguration : _CrownHapticsConfiguration // +0x30
 	var _isScrollIndicatorAlwaysOnScreen : Bool // +0x41
 	var _onlyUseMinorDetents : Bool // +0x42
 	var _decelerationRate : _DigitalCrownDecelerationRate // +0x43
-	var _hapticsStrength : _CrownHapticsConfiguration.Notch.Strength // +0x44
+	var _hapticsStrength : Strength // +0x44
 	var isHapticFeedbackEnabled : Bool // +0x45
 	var rotationalSensitivity : DigitalCrownRotationalSensitivity // +0x46
  }
@@ -10660,13 +11373,15 @@
  struct SwiftUI.BitVector64 {
 
 	// Properties
-	var rawValue : UInt64 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rawValue : M // +0x0
  }
 
  struct SwiftUI._DetachableProperties {
 
 	// Properties
-	let rawValue : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : á‚	 // +0x0
  }
 
  struct SwiftUI._DetachedView {
@@ -10699,7 +11414,7 @@
  struct SwiftUI.DetachedChild {
 
 	// Properties
-	let placeholder : _DetachedPlaceholder<A>
+	let placeholder : _DetachedPlaceholder
  }
 
  struct SwiftUI.SwitchAttribute { }
@@ -10708,34 +11423,40 @@
 
 	// Properties
 	let inputs : _ViewInputs
-	var outputs : MutableBox<_ViewOutputs>
+	var outputs : MutableBox
  }
 
  struct SwiftUI.UnitRect {
 
 	// Properties
-	var x : CGFloat // +0x0
-	var y : CGFloat // +0x8
-	var width : CGFloat // +0x10
-	var height : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : ˇá // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : ˇá // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : ˇá // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : ˇá // +0x18
  }
 
  struct SwiftUI._DynamicPropertyBuffer {
 
 	// Properties
 	var buf : UnsafeMutableRawPointer // +0x0
-	var size : Int32 // +0x8
-	var _count : Int32 // +0xc
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var size : ˝L // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _count : ˝L // +0xc
  }
 
  class SwiftUI.BoxVTableBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x6311f0  class func static BoxVTableBase.moveInitialize(ptr:from:) // method 
-	0x631240  class func static BoxVTableBase.deinitialize(ptr:) // method 
-	0x631250  class func static BoxVTableBase.reset(ptr:) // method 
-	0x631260  class func static BoxVTableBase.mount<A>(ptr:child:) // method 
-	0x631270  class func static BoxVTableBase.update(ptr:property:context:) // method 
-	0x631280  class func static BoxVTableBase.getState<A>(ptr:type:in:) // method 
+	0x579260  class func static BoxVTableBase.moveInitialize(ptr:from:) // method 
+	0x5792b0  class func static BoxVTableBase.deinitialize(ptr:) // method 
+	0x5792c0  class func static BoxVTableBase.reset(ptr:) // method 
+	0x5792d0  class func static BoxVTableBase.mount<A>(ptr:child:) // method 
+	0x5792e0  class func static BoxVTableBase.update(ptr:property:context:phase:) // method 
+	0x5792f0  class func static BoxVTableBase.getState<A>(ptr:type:in:) // method 
  }
 
  class SwiftUI.BoxVTable {
@@ -10743,8 +11464,29 @@
 
 	// Properties
 	var vtable : BoxVTableBase // +0x0
-	var size : Int32 // +0x8
-	var fieldOffset : Int32 // +0xc
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var size : ˝L // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var fieldOffset : ˝L // +0xc
+ }
+
+ struct SwiftUI.DefaultTabViewStyle { }
+
+ struct SwiftUI.Body { }
+
+ class SwiftUI.PlatformAlertController : UIAlertController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var onDismissAction : ()? // +0x8 (0x10)
+
+	// ObjC -> Swift bridged methods
+	0x57ab00  @objc PlatformAlertController.viewDidDisappear(_:)
+	0x57ac30  @objc PlatformAlertController.init(nibName:bundle:)
+	0x57ace0  @objc PlatformAlertController.init(coder:)
+	0x57ab70  @objc PlatformAlertController.__ivar_destroyer
+
+	// Swift methods
+	0x57aa60  func PlatformAlertController.onDismissAction.setter // setter 
  }
 
  class SwiftUI.AlertBridge {
@@ -10752,18 +11494,22 @@
 
 	// Properties
 	var customInputs : PropertyList // +0x0
-	var time : Attribute<Time> // +0x8
-	var cachedEnvironment : MutableBox<CachedEnvironment> // +0x10
-	var phase : Phase // +0x18
-	var transaction : Attribute<Transaction> // +0x20
-	var changedDebugProperties : _ViewDebug.Properties // +0x28
-	var mergedInputs : Set<AnyGraphValue> // +0x30
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var time : ä // +0x8
+	var cachedEnvironment : MutableBox // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var phase : OÇ	 // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var transaction : Àä	 // +0x20
+	var changedDebugProperties : Properties // +0x28
+	var mergedInputs : AnyGraphValue // +0x30
  }
 
  struct SwiftUI.Phase {
 
 	// Properties
-	var value : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : á‚	 // +0x0
  }
 
  struct SwiftUI.MergedPhase { }
@@ -10803,7 +11549,7 @@
  struct SwiftUI.ResolvedTextFieldStyle {
 
 	// Properties
-	var configuration : TextField<_TextFieldStyleLabel> // +0x0
+	var configuration : TextField // +0x0
  }
 
  struct SwiftUI.TextFieldStyleModifier {
@@ -10812,6 +11558,8 @@
 	var style : A
  }
 
+ class SwiftUI.NavigationBridge_PhoneTV {
+ class SwiftUI.DestinationHostingController {
  struct SwiftUI.PropertyList {
 
 	// Properties
@@ -10821,13 +11569,14 @@
  class SwiftUI.Tracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var usedElements : Element
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var usedElements : kQ
 
 	// Swift methods
-	0x6636d0  func PropertyList.Tracker.reset() // method 
-	0x66b160  func PropertyList.Tracker.value<A>(_:for:) // method 
-	0x66b340  func PropertyList.Tracker.hasDifferentUsedValues(_:) // method 
-	0x649c50  class func PropertyList.Tracker.__allocating_init() // init 
+	0x5a5560  func PropertyList.Tracker.reset() // method 
+	0x5ab6e0  func PropertyList.Tracker.value<A>(_:for:) // method 
+	0x5ab8d0  func PropertyList.Tracker.hasDifferentUsedValues(_:) // method 
+	0x591300  class func PropertyList.Tracker.__allocating_init() // init 
  }
 
  class SwiftUI.Element : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10840,14 +11589,23 @@
 	let keyFilter : BloomFilter
 
 	// Swift methods
-	0x66b4c0  func PropertyList.Element.description.getter // getter 
-	0x66b510  func PropertyList.Element.matches(_:) // method 
-	0x66b560  func PropertyList.Element.hasMatchingValue(in:) // method 
-	0x66b5b0  func PropertyList.Element.copy(before:after:) // method 
+	0x5aba60  func PropertyList.Element.description.getter // getter 
+	0x5abab0  func PropertyList.Element.matches(_:) // method 
+	0x5abb00  func PropertyList.Element.hasMatchingValue(in:) // method 
+	0x5abb50  func PropertyList.Element.copy(before:after:) // method 
  }
 
  class SwiftUI.TypedElement {
  struct SwiftUI.EmptyKey: PropertyKey { }
+
+ struct SwiftUI.Sections {
+
+	// Properties
+	let items : Item // +0x0
+	let hasExplicitSections : Bool // +0x8
+	let sectionsWithFooters : Set<Int>? // +0x10
+	let ids : Views // +0x18
+ }
 
  struct SwiftUI.Item {
 
@@ -10857,27 +11615,22 @@
 	var hasHeader : Bool // +0x9
  }
 
- struct SwiftUI.Sections {
-
-	// Properties
-	let items : [Sections.Item] // +0x0
-	let hasExplicitSections : Bool // +0x8
-	let sectionsWithFooters : Set<Int>? // +0x10
-	let ids : _ViewList_ID.Views // +0x18
- }
-
  class SwiftUI.StoredLocation {
  struct SwiftUI.BeginUpdate {
 
 	// Properties
-	var box : weak StoredLocation<A>?
+	var box : StoredLocation
  }
 
  struct SwiftUI.AttachedAttributes {
 
 	// Properties
-	var src : Attribute<()>
-	var localSrc : Attribute<()>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var src : Uæ
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var localSrc : Uæ
+
  }
 
  struct SwiftUI._ResolvedPopUpButton {
@@ -10907,15 +11660,17 @@
  struct SwiftUI.MaskDisplayList {
 
 	// Properties
-	let identity : DisplayList.Identity // +0x0
-	var contentIndex : Int32? // +0x4
-	var maskIndex : Int32? // +0xc
+	let identity : Identity // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var contentIndex : ©H // +0x4
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var maskIndex : ©H // +0xc
  }
 
  struct SwiftUI.MouseEvent {
 
 	// Properties
-	var button : MouseEvent.Button // +0x0
+	var button : Button // +0x0
 	var timestamp : Time // +0x8
 	var phase : EventPhase // +0x10
 	var location : CGPoint // +0x18
@@ -10929,10 +11684,6 @@
 	let rawValue : Int // +0x0
  }
 
- struct SwiftUI.DefaultTabViewStyle { }
-
- struct SwiftUI.Body { }
-
  struct SwiftUI.Environment {
 
 	// Properties
@@ -10942,15 +11693,19 @@
  enum SwiftUI.Content {
 
 	// Properties
-	case keyPath : KeyPath<EnvironmentValues, A>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case keyPath : MI
 	case value : A
  }
 
  struct SwiftUI.EnvironmentBox {
 
 	// Properties
-	let environment : Attribute<EnvironmentValues>
-	var keyPath : KeyPath<EnvironmentValues, A>?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let environment : MW
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyPath : 9I
 	var value : A?
  }
 
@@ -10958,7 +11713,7 @@
 
 	// Properties
 	var transaction : Transaction
-	var location : AnyLocation<A>
+	var location : AnyLocation
 	var _value : A
  }
 
@@ -10966,23 +11721,23 @@
 
 	// Properties
 	var state : Any?
-	var location : ScopedLocation
+	var location : LocationBox
  }
 
  struct SwiftUI.ScopedLocation {
 
 	// Properties
-	var base : AnyLocation<A>
-	var _wasRead : Bool
+	var base : AnyLocation
+	var wasRead : Bool
  }
 
  struct SwiftUI.VelocitySampler {
 
 	// Properties
-	var sample1 : (A, Time)?
-	var sample2 : (A, Time)?
-	var sample3 : (A, Time)?
-	var lastTime : Time?
+	var sample1 : Time
+	var sample2 : Time
+	var sample3 : Time
+	var lastTime : Time
 	let previousSampleWeight : Double
  }
 
@@ -11002,15 +11757,15 @@
  struct SwiftUI.DynamicInputIndicesMap {
 
 	// Properties
-	var inputIndices : [(id: DynamicContainerID, index: Int)] // +0x0
+	var inputIndices : DynamicContainerID // +0x0
  }
 
  class SwiftUI.AnyAccessibilityActionHandlerBoxBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x681e50  func AnyAccessibilityActionHandlerBoxBase.perform<A>(action:value:) // method 
-	0x681e90  func AnyAccessibilityActionHandlerBoxBase.matches<A>(action:) // method 
-	0x681ed0  func AnyAccessibilityActionHandlerBoxBase.namedAction() // method 
-	0x681f10  func AnyAccessibilityActionHandlerBoxBase.handler<A>(for:) // method 
+	0x5bc250  func AnyAccessibilityActionHandlerBoxBase.perform<A>(action:value:) // method 
+	0x5bc290  func AnyAccessibilityActionHandlerBoxBase.matches<A>(action:) // method 
+	0x5bc2d0  func AnyAccessibilityActionHandlerBoxBase.namedAction() // method 
+	0x5bc310  func AnyAccessibilityActionHandlerBoxBase.handler<A>(for:) // method 
  }
 
  class SwiftUI.AnyAccessibilityActionHandlerBox {
@@ -11029,7 +11784,7 @@
 
  class SwiftUI.AnyStyleBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x682f40  func AnyStyleBox.body(configuration:) // method 
+	0x5bd270  func AnyStyleBox.body(configuration:) // method 
  }
 
  class SwiftUI.StyleBox {
@@ -11044,21 +11799,21 @@
  struct SwiftUI.UniversalList {
 
 	// Properties
-	var selection : Binding<A>?
+	var selection : Binding
  }
 
  struct SwiftUI.BodyContent {
 
 	// Properties
-	var _defaultMinListRowHeight : Environment<CGFloat>
+	var _defaultMinListRowHeight : Environment
 	var children : _VariadicView_Children
-	var selection : Binding<A1>?
+	var selection : Binding
  }
 
  struct SwiftUI.Index {
 
 	// Properties
-	var identifier : _ViewList_ID.Element?
+	var identifier : Element
 	var offset : Int
  }
 
@@ -11066,15 +11821,16 @@
 
 	// Properties
 	let children : _VariadicView_Children
-	let ids : _ViewList_ID.Views
-	let selection : Binding<A>?
-	let rowHeight : CGFloat
+	let ids : Views
+	let selection : Binding
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rowHeight : ˇá
  }
 
  struct SwiftUI.IsSelected {
 
 	// Properties
-	let itemId : A.SelectionManager.SelectionValue
+	let itemId : SelectionManager
  }
 
  struct SwiftUI.__SimpleColumnLayout { }
@@ -11135,17 +11891,17 @@
  struct SwiftUI.Visitor {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
-	let attribute : AGAttribute // +0x8
+	let graph : Graph // +0x0
+	let attribute : AnyAttribute // +0x8
 	var results : _ViewOutputs // +0x10
  }
 
  struct SwiftUI.Visitor {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
+	let graph : Graph // +0x0
 	let childOutputs : _ViewOutputs // +0x8
-	var dst : AGAttribute // +0x20
+	var dst : AnyAttribute // +0x20
  }
 
  struct SwiftUI.UIViewRepresentableContext {
@@ -11154,7 +11910,7 @@
 	let coordinator : UIViewRepresentable
 	var transaction : Transaction
 	var environment : EnvironmentValues
-	var preferenceBridge : PreferenceBridge?
+	var preferenceBridge : PreferenceBridge
  }
 
  struct SwiftUI.PlatformViewRepresentableAdaptor {
@@ -11170,6 +11926,29 @@
 	var action : ()
  }
 
+ class SwiftUI.HoverResponder : DefaultLayoutViewResponder {
+
+	// Properties
+	var callback : (_:)? // +0xd8 (0x10)
+	var style : Style // +0xe8 (0x1)
+	var targetRect : CGRect // +0xf0 (0x21)
+ }
+
+ struct SwiftUI.HoverResponderFilter {
+
+	// Properties
+	let responder : HoverResponder // +0x0
+	let extraArg : ExtraArg // +0x8
+	var identityTracker : Tracker // +0xc
+ }
+
+ enum SwiftUI.ExtraArg {
+
+	// Properties
+	case callback  
+	case style  
+ }
+
  struct SwiftUI.Time {
 
 	// Properties
@@ -11179,15 +11958,15 @@
  class SwiftUI.CGDrawingView : _UIGraphicsView {
 
 	// Properties
-	var renderer : (_:_:)
-	var displayListRenderer : DisplayList.Renderer?
+	var renderer : GraphicsContext
+	var displayListRenderer : Renderer
 	var options : RasterizationOptions
 
 	// ObjC -> Swift bridged methods
-	0x69cf80  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.init(coder:)
-	0x69d050  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.draw(_:)
-	0x69d0d0  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.init(frame:)
-	0x69d120  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.__ivar_destroyer
+	0x5d8620  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.init(coder:)
+	0x5d86e0  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.draw(_:)
+	0x5d8760  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.init(frame:)
+	0x5d87c0  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.__ivar_destroyer
 
 	// Swift methods
  }
@@ -11195,14 +11974,14 @@
  class SwiftUI.RBDrawingView : RenderBoxView {
 
 	// Properties
-	var renderer : (_:_:)
-	var displayListRenderer : DisplayList.Renderer?
+	var renderer : GraphicsContext
+	var displayListRenderer : Renderer
 	var options : RasterizationOptions
 
 	// ObjC -> Swift bridged methods
-	0x69d620  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.init(coder:)
-	0x69d7d0  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.init(frame:)
-	0x69d890  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.__ivar_destroyer
+	0x5d8c70  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.init(coder:)
+	0x5d8df0  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.init(frame:)
+	0x5d8e50  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.__ivar_destroyer
 
 	// Swift methods
  }
@@ -11210,7 +11989,7 @@
  struct SwiftUI.Picker {
 
 	// Properties
-	var selection : Binding<B>
+	var selection : Binding
 	var label : A
 	var content : C
  }
@@ -11219,7 +11998,7 @@
 
 	// Properties
 	var plist : PropertyList // +0x0
-	let tracker : PropertyList.Tracker? // +0x8
+	let tracker : Tracker // +0x8
  }
 
  struct SwiftUI.EnvironmentPropertyKey { }
@@ -11227,7 +12006,7 @@
  struct SwiftUI.PreferenceKeys {
 
 	// Properties
-	var keys : [AnyPreferenceKey.Type] // +0x0
+	var keys : AnyPreferenceKey // +0x0
  }
 
  struct SwiftUI._AnyPreferenceKey: AnyPreferenceKey { }
@@ -11243,11 +12022,11 @@
 	var onFocusChange : (_:) // +0x10
  }
 
- struct SwiftUI.FocusItem2 {
+ struct SwiftUI.FocusItem {
 
 	// Properties
 	var base : Base // +0x0
-	var responder : weak FocusResponder? // +0x28
+	var responder : FocusResponder // +0x28
  }
 
  struct SwiftUI.FocusedItemKey { }
@@ -11255,14 +12034,8 @@
  enum SwiftUI.Base {
 
 	// Properties
-	case view : FocusItem2.ViewItem
-	case platformItem : PlatformFocusItemWeakBox
- }
-
- struct SwiftUI.PlatformFocusItemWeakBox {
-
-	// Properties
-	var base : weak UIFocusItem? // +0x0
+	case view : ViewItem
+	case platformItem : WeakBox
  }
 
  struct SwiftUI.Transaction {
@@ -11288,24 +12061,6 @@
 
  struct SwiftUI.StyleContextTypeBox: AnyStyleContextTypeBox { }
 
- struct SwiftUI._ScrollViewRoot {
-
-	// Properties
-	var scrollView : _ScrollView<A>.Main
- }
-
- struct SwiftUI._ScrollOverlayView {
-
-	// Properties
-	var scrollView : _ScrollViewProxy // +0x0
- }
-
- struct SwiftUI.ScrollOverlayLayout {
-
-	// Properties
-	var scrollView : _ScrollViewProxy // +0x0
- }
-
  struct SwiftUI.PullDownMenuButtonStyle { }
 
  struct SwiftUI.BorderlessPullDownMenuButtonStyle { }
@@ -11313,8 +12068,6 @@
  struct SwiftUI.BorderlessButtonMenuButtonStyle { }
 
  struct SwiftUI._TexturedPullDownMenuButtonStyle { }
-
- struct SwiftUI.StepperStyleKey { }
 
  struct SwiftUI.DropInfo {
 
@@ -11335,6 +12088,14 @@
 
 	// Properties
 	let operation : DropOperation // +0x0
+ }
+
+ struct SwiftUI.FunctionalDropDelegate: DropDelegate {
+
+	// Properties
+	let requestedTypes : [String] // +0x0
+	let isTargeted : Binding // +0x8
+	let performDropAction : CGPoint // +0x20
  }
 
  class SwiftUI.ListenerPair : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AnimationListener {
@@ -11387,6 +12148,32 @@
  class SwiftUI.ArrayAnchorValueBox {
  class SwiftUI.OptionalAnchorBox {
  class SwiftUI.OptionalAnchorValueBox {
+ class SwiftUI.Coordinator : PlatformViewCoordinator {
+
+	// Properties
+	var configuration : StepperStyleConfiguration // +0x8 (0x30)
+
+	// ObjC -> Swift bridged methods
+	0x5e2e90  @objc Coordinator.valueChanged(_:)
+	0x5e2ef0  @objc Coordinator.editingBegan(_:)
+	0x5e2ff0  @objc Coordinator.editingEnded(_:)
+	0x5e3140  @objc Coordinator.init()
+	0x5e30c0  @objc Coordinator.__ivar_destroyer
+
+	// Swift methods
+	0x5e2b60  func Coordinator.configuration.getter // getter 
+	0x5e2bf0  func Coordinator.configuration.setter // setter 
+	0x5e2db0  func Coordinator.valueChanged(_:) // method 
+	0x5e2ee0  func Coordinator.editingBegan(_:) // method 
+	0x5e2f40  func Coordinator.editingEnded(_:) // method 
+ }
+
+ struct SwiftUI.UIKitStepper {
+
+	// Properties
+	var configuration : StepperStyleConfiguration // +0x0
+ }
+
  struct SwiftUI._ProjectionEffect {
 
 	// Properties
@@ -11403,7 +12190,7 @@
 
 	// Properties
 	var value : ValueType // +0x0
-	var description : Text? // +0x10
+	var description : Text // +0x10
  }
 
  enum SwiftUI.ValueType {
@@ -11418,27 +12205,29 @@
  struct SwiftUI._Graph {
 
 	// Properties
-	var value : AGGraphRef // +0x0
+	var value : Graph // +0x0
  }
 
  struct SwiftUI._GraphValue {
 
 	// Properties
-	var graph : AGGraphRef // +0x0
-	var value : Attribute<A> // +0x8
+	var graph : Graph // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : ˜X
+ // +0x8
  }
 
  struct SwiftUI.AnyGraphValue {
 
 	// Properties
-	var graph : AGGraphRef // +0x0
-	var attribute : AGAttribute // +0x8
+	var graph : Graph // +0x0
+	var attribute : AnyAttribute // +0x8
  }
 
  struct SwiftUI.ImportableValue {
 
 	// Properties
-	var value : _GraphValue<A>
+	var value : _GraphValue
  }
 
  struct SwiftUI._ConditionalContent {
@@ -11465,7 +12254,9 @@
  enum SwiftUI.CoordinateSpace {
 
 	// Properties
-	case named : AnyHashable
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case named : „Ñ
+
 	case global  
 	case local  
  }
@@ -11473,7 +12264,8 @@
  struct SwiftUI.__RadialLayout {
 
 	// Properties
-	var radius : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var radius : ˇá // +0x0
 	var size : CGSize // +0x8
  }
 
@@ -11485,9 +12277,9 @@
 
  class SwiftUI.AnimationBoxBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x6c4610  func AnimationBoxBase.makeAnimator<A>(of:) // method 
-	0x6c4660  func AnimationBoxBase.base.getter // getter 
-	0x6c46b0  func AnimationBoxBase.isEqual(to:) // method 
+	0x5ea1d0  func AnimationBoxBase.makeAnimator<A>(of:) // method 
+	0x5ea220  func AnimationBoxBase.base.getter // getter 
+	0x5ea270  func AnimationBoxBase.isEqual(to:) // method 
  }
 
  class SwiftUI.AnimationBox {
@@ -11496,23 +12288,38 @@
  struct SwiftUI.AnyAnimator {
 
 	// Properties
-	var box : AnimatorBoxBase<A>
+	var box : AnimatorBoxBase
  }
 
  class SwiftUI.Box {
  class SwiftUI.MutableBox {
+ struct SwiftUI.HashableWeakBox {
+
+	// Properties
+	var base : weak A?
+	let basePointer : UnsafeMutableRawPointer
+ }
+
  struct SwiftUI.Indirect {
 
 	// Properties
-	var box : MutableBox<A>
+	var box : MutableBox
+ }
+
+ struct SwiftUI.WeakBox {
+
+	// Properties
+	var base : weak A?
  }
 
  struct SwiftUI.DatePicker {
 
 	// Properties
-	let selection : Binding<Date>
-	let minimumDate : Date?
-	let maximumDate : Date?
+	let selection : Binding
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumDate : }ı
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maximumDate : }ı
 	let displayedComponents : DatePickerComponents
 	let label : A
  }
@@ -11536,9 +12343,9 @@
 	var onTrigger : () // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x6ca450  @objc Coordinator.primaryActionTriggered(_:)
-	0x6ca4d0  @objc Coordinator.init()
-	0x6ca540  @objc Coordinator.__ivar_destroyer
+	0x5efd80  @objc Coordinator.primaryActionTriggered(_:)
+	0x5efe70  @objc Coordinator.init()
+	0x5efe20  @objc Coordinator.__ivar_destroyer
 
 	// Swift methods
  }
@@ -11569,10 +12376,13 @@
  struct SwiftUI.StoreBox {
 
 	// Properties
-	let environment : Attribute<EnvironmentValues>
-	let signal : WeakAttribute<()>
-	let subscriber : AttributeInvalidatingSubscriber<A.ObservableObject.ObjectWillChangePublisher>
-	let lifetime : SubscriptionLifetime<A.ObservableObject.ObjectWillChangePublisher>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let environment : MW
+
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let signal : €Ù
+	let subscriber : AttributeInvalidatingSubscriber
+	let lifetime : SubscriptionLifetime
 	var seed : Int
  }
 
@@ -11582,7 +12392,7 @@
 
 	// Properties
 	var title : Text // +0x0
-	var message : Text? // +0x20
+	var message : Text // +0x20
 	var primaryButton : Button // +0x40
 	var secondaryButton : Button // +0x78
 	var isSideBySide : Bool // +0xb0
@@ -11596,6 +12406,8 @@
 	var action : ()? // +0x28
  }
 
+ struct SwiftUI.Key { }
+
  enum SwiftUI.Style {
 
 	// Properties
@@ -11604,39 +12416,53 @@
 	case destructive  
  }
 
+ struct SwiftUI.AlertTransformModifier {
+
+	// Properties
+	var transform : PreferenceKey
+ }
+
  struct SwiftUI.Presentation {
 
 	// Properties
 	let alert : Alert // +0x0
 	let onDismiss : ()? // +0xb8
 	let viewID : ViewIdentity // +0xc8
-	let itemID : AnyHashable? // +0xd0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let itemID : /; // +0xd0
+	let sourceRect : CGRect // +0xf8
  }
 
- struct SwiftUI.Key { }
+ struct SwiftUI.Transform {
+
+	// Properties
+	var helper : Tracker
+ }
 
  struct SwiftUI.Visitor {
 
 	// Properties
-	let graph : AGGraphRef // +0x0
-	let uniqueId : UInt32 // +0x8
-	let attribute : AGAttribute // +0x10
+	let graph : Graph // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uniqueId : á‚	 // +0x8
+	let attribute : AnyAttribute // +0x10
  }
 
  struct SwiftUI.DynamicViewListItem {
 
 	// Properties
 	var id : _ViewList_ID // +0x0
-	var elements : _ViewList_Elements // +0x30
-	var traits : ViewTraitCollection // +0x58
-	var list : Attribute<ViewList>? // +0x60
+	var elements : _ViewList_Elements // +0x38
+	var traits : ViewTraitCollection // +0x60
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var list : !X // +0x68
  }
 
  class SwiftUI.ColorShapeLayer : CAShapeLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-	0x6d4e80  @objc ColorShapeLayer.init()
-	0x6d4ea0  @objc ColorShapeLayer.init(layer:)
-	0x6d4f10  @objc ColorShapeLayer.init(coder:)
+	0x5fa870  @objc ColorShapeLayer.init()
+	0x5fa910  @objc ColorShapeLayer.init(layer:)
+	0x5fa980  @objc ColorShapeLayer.init(coder:)
  }
 
  class SwiftUI.PaintShapeLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -11644,24 +12470,24 @@
 	// Properties
 	var path : Path
 	var origin : CGPoint
-	var paint : AnyResolvedPaint?
+	var paint : AnyResolvedPaint
 	var paintBounds : CGRect
 	var fillStyle : FillStyle
 
 	// ObjC -> Swift bridged methods
-	0x6d5020  @objc PaintShapeLayer.init()
-	0x6d5110  @objc PaintShapeLayer.init(coder:)
-	0x6d5220  @objc PaintShapeLayer.init(layer:)
-	0x6d5430  @objc PaintShapeLayer.draw(in:)
-	0x6d54d0  @objc PaintShapeLayer.__ivar_destroyer
+	0x5faa70  @objc PaintShapeLayer.init()
+	0x5fab90  @objc PaintShapeLayer.init(coder:)
+	0x5facb0  @objc PaintShapeLayer.init(layer:)
+	0x5faee0  @objc PaintShapeLayer.draw(in:)
+	0x5faf30  @objc PaintShapeLayer.__ivar_destroyer
  }
 
  class SwiftUI.ShadowGradientLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-	0x6d55f0  @objc ShadowGradientLayer.init()
-	0x6d5640  @objc ShadowGradientLayer.init(coder:)
-	0x6d56f0  @objc ShadowGradientLayer.init(layer:)
-	0x6d5810  @objc ShadowGradientLayer.layoutSublayers()
+	0x5fb060  @objc ShadowGradientLayer.init()
+	0x5fb0c0  @objc ShadowGradientLayer.init(coder:)
+	0x5fb0f0  @objc ShadowGradientLayer.init(layer:)
+	0x5fb1b0  @objc ShadowGradientLayer.layoutSublayers()
  }
 
  struct SwiftUI.Visitor {
@@ -11682,7 +12508,8 @@
 	var paint : AnyResolvedPaint // +0x48
 	var paintBounds : CGRect // +0x50
 	var style : FillStyle // +0x70
-	var contentsScale : CGFloat // +0x78
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var contentsScale : ˇá // +0x78
 	var hasShadow : Bool // +0x80
  }
 
@@ -11698,9 +12525,11 @@
  enum SwiftUI.ShapeType {
 
 	// Properties
-	case rect : (radius: CGFloat, style: RoundedCornerStyle)
-	case rectBorder : (radius: CGFloat, style: RoundedCornerStyle, lineWidth: CGFloat)
-	case strokedPath : (Path, start: CGFloat, end: CGFloat, style: StrokeStyle)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case rect : ≥Ú
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case rectBorder : ôÚ
+	case strokedPath : Path
 	case empty  
 	case other  
  }
@@ -11717,14 +12546,14 @@
 	// Properties
 	var base : Image // +0x0
 	var capInsets : EdgeInsets // +0x8
-	var resizingMode : Image.ResizingMode // +0x28
+	var resizingMode : ResizingMode // +0x28
  }
 
  struct SwiftUI.ResizingInfo {
 
 	// Properties
 	var capInsets : EdgeInsets // +0x0
-	var mode : Image.ResizingMode // +0x20
+	var mode : ResizingMode // +0x20
  }
 
  struct SwiftUI.ConcatenatedCollection {
@@ -11744,7 +12573,7 @@
  struct SwiftUI.ConcatenatedCollectionIndex {
 
 	// Properties
-	let _position : _ConcatenatedCollectionIndexRepresentation<A.Collection.Index, B.Collection.Index>
+	let _position : _ConcatenatedCollectionIndexRepresentation
  }
 
  struct SwiftUI.UIViewControllerRepresentableContext {
@@ -11753,7 +12582,7 @@
 	let coordinator : UIViewControllerRepresentable
 	var transaction : Transaction
 	var environment : EnvironmentValues
-	var preferenceBridge : PreferenceBridge?
+	var preferenceBridge : PreferenceBridge
  }
 
  class SwiftUI._UIHostingView {
@@ -11761,10 +12590,14 @@
  struct __C.UIEdgeInsets {
 
 	// Properties
-	var top : CGFloat
-	var left : CGFloat
-	var bottom : CGFloat
-	var right : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var top : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var left : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bottom : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var right : ˇá
  }
 
  enum __C.Style { }
@@ -11782,47 +12615,66 @@
 	var id : UInt
  }
 
- struct __C.Graph {
-
-	// Properties
-	var p : UnsafeMutablePointer<AGUnownedGraph>
- }
-
  class __C.GraphStorage {
  struct __C.CGAffineTransform {
 
 	// Properties
-	var a : CGFloat
-	var b : CGFloat
-	var c : CGFloat
-	var d : CGFloat
-	var tx : CGFloat
-	var ty : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var a : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var b : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var c : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var d : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var tx : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var ty : ˇá
  }
 
  class __C.Subgraph {
+ struct __C.Graph {
+
+	// Properties
+	var p : _UnownedGraph
+ }
+
+ struct __C.CGPathElement {
+
+	// Properties
+	var type : CGPathElementType
+	var points : CGPoint
+ }
+
  class __C.CGMutablePath {
  class __C.CGPath {
  struct __C.CGRect {
 
 	// Properties
-	var origin : CGPoint // +0x5c30
-	var size : CGSize // +0x0
+	var origin : CGPoint
+	var size : CGSize
  }
 
  struct __C.CGPoint {
 
 	// Properties
-	var x : CGFloat
-	var y : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : ˇá
  }
 
  struct __C.CGSize {
 
 	// Properties
-	var width : CGFloat
-	var height : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : ˇá
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : ˇá
  }
+
+ enum __C.PressType { }
 
  struct __C.Mode {
 
@@ -11830,14 +12682,7 @@
 	var _rawValue : NSString
  }
 
- enum __C.PressType { }
-
- struct __C.CGPathElement {
-
-	// Properties
-	var type : CGPathElementType
-	var points : UnsafeMutablePointer<CGPoint>
- }
+ enum __C.RowAnimation { }
 
  struct __C.LaunchOptionsKey {
 
@@ -11845,18 +12690,16 @@
 	var _rawValue : NSString
  }
 
- struct __C.Event {
+ struct __C.UIAccessibilityTraits {
 
 	// Properties
-	let rawValue : UInt
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : M
  }
 
- struct __C.Name {
+ enum __C._AXAutomationType { }
 
-	// Properties
-	var _rawValue : NSString
- }
-
+ class __C.CFString {
  struct __C.RBColor {
 
 	// Properties
@@ -11866,41 +12709,65 @@
 	var alpha : Float
  }
 
+ struct __C._NSRange {
+
+	// Properties
+	var location : Int
+	var length : Int
+ }
+
  class __C.CGColor {
  struct __C.HeapObject {
 
 	// Properties
-	var metadata : OpaquePointer?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var metadata : iI
 	var refCounts : InlineRefCountsPlaceholder
  }
 
- class __C.CFString {
+ class __C.CTFontDescriptor {
  struct __C.Key {
 
 	// Properties
-	var _rawValue : NSString
+	var _rawValue : NSString // +0x0
  }
 
- enum __C._AXAutomationType { }
+ struct __C.Metadata {
+
+	// Properties
+	var value : UnsafeRawPointer // +0x0
+ }
 
  struct __C.OSSignpostType {
 
 	// Properties
-	var rawValue : UInt8 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rawValue : +M // +0x0
  }
 
  enum __C.CGPathElementType { }
 
+ struct __C._UnownedGraph { }
+
+ enum __C.UIDatePickerStyle { }
+
  struct __C.os_unfair_lock_s {
 
 	// Properties
-	var _os_unfair_lock_opaque : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _os_unfair_lock_opaque : á‚	
  }
-
- struct __C._UnownedGraph { }
 
  class __C.CGImage {
  class __C.CTFont {
+ struct __C.Event {
+
+	// Properties
+	let rawValue : UInt
+ }
+
+ enum __C._CUIThemeVectorGlyphSize { }
+
  struct __C.InlineRefCountsPlaceholder {
 
 	// Properties
@@ -11908,8 +12775,6 @@
  }
 
  enum __C.BorderStyle { }
-
- enum __C._CUIThemeVectorGlyphSize { }
 
  class __C.IOSurfaceRef {
  enum __C.Style { }

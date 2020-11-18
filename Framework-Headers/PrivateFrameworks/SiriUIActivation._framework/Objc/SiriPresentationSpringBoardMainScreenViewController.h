@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) id<SiriPresentationSpringBoardMainScreenViewControllerDelegate> siriPresentationControllerDelegate; // @dynamic siriPresentationControllerDelegate;
 
+- (BOOL)_canShowWhileLocked;
 - (id)init;
 - (id)initWithIdentifier:(long long)arg1;
 - (id)initWithIdentifier:(long long)arg1 hostedPresentationFrame:(struct CGRect)arg2;

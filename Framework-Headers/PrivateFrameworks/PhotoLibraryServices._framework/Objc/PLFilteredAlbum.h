@@ -23,7 +23,7 @@
     NSMutableOrderedSet *_weak_assets;
     BOOL isObservingContextChanges;
     int filter;
-    struct NSObject *_backingAlbum;
+    NSObject<PLAlbumProtocol> *_backingAlbum;
     NSPredicate *predicate;
     NSArray *_filterParameters;
 }
@@ -117,16 +117,16 @@
 @property (readonly, nonatomic) unsigned long long videosCount;
 
 + (id)descriptionForAlbumFilter:(int)arg1 parameters:(id)arg2;
-+ (struct NSObject *)filteredAlbum:(struct NSObject *)arg1 filter:(int)arg2;
-+ (struct NSObject *)filteredAlbum:(struct NSObject *)arg1 filter:(int)arg2 parameters:(id)arg3;
-+ (struct NSObject *)filteredAlbum:(struct NSObject *)arg1 intersectFilter:(int)arg2;
-+ (struct NSObject *)filteredAlbum:(struct NSObject *)arg1 predicate:(id)arg2;
-+ (id)filteredIndexesInAlbum:(struct NSObject *)arg1 predicate:(id)arg2;
++ (id)filteredAlbum:(id)arg1 filter:(int)arg2;
++ (id)filteredAlbum:(id)arg1 filter:(int)arg2 parameters:(id)arg3;
++ (id)filteredAlbum:(id)arg1 intersectFilter:(int)arg2;
++ (id)filteredAlbum:(id)arg1 predicate:(id)arg2;
++ (id)filteredIndexesInAlbum:(id)arg1 predicate:(id)arg2;
 + (id)predicateForAlbumFilter:(int)arg1 parameters:(id)arg2 photoLibrary:(id)arg3;
-+ (struct NSObject *)unfilteredAlbum:(struct NSObject *)arg1;
++ (id)unfilteredAlbum:(id)arg1;
 - (void).cxx_destruct;
 - (id)_cloudSharedBackingAlbum;
-- (void)_commonInitWithBackingAlbum:(struct NSObject *)arg1 predicate:(id)arg2;
+- (void)_commonInitWithBackingAlbum:(id)arg1 predicate:(id)arg2;
 - (id)_editableBackingAlbum;
 - (void)backingContextDidChange:(id)arg1;
 - (void)batchFetchAssets:(id)arg1;
@@ -140,8 +140,8 @@
 - (id)filteredAssetsAtIndexes:(id)arg1;
 - (void)getUnseenStartMarkerIndex:(unsigned long long *)arg1 count:(unsigned long long *)arg2 showsProgress:(BOOL *)arg3;
 - (unsigned long long)indexInFilteredAssetsOfObject:(id)arg1;
-- (id)initWithBackingAlbum:(struct NSObject *)arg1 filter:(int)arg2 parameters:(id)arg3;
-- (id)initWithBackingAlbum:(struct NSObject *)arg1 predicate:(id)arg2;
+- (id)initWithBackingAlbum:(id)arg1 filter:(int)arg2 parameters:(id)arg3;
+- (id)initWithBackingAlbum:(id)arg1 predicate:(id)arg2;
 - (void)insertFilteredAssets:(id)arg1 atIndexes:(id)arg2;
 - (void)insertInternalUserEditableAssets:(id)arg1 atIndexes:(id)arg2 customExportsInfo:(id)arg3 trimmedVideoPathInfo:(id)arg4 commentText:(id)arg5;
 - (void)insertObject:(id)arg1 inFilteredAssetsAtIndex:(unsigned long long)arg2;

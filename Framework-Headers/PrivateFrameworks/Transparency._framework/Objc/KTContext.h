@@ -30,11 +30,18 @@
 - (BOOL)checkDeferActivity:(id)arg1;
 - (void)clearState:(CDUnknownBlockType)arg1;
 - (id)copyState;
+- (void)downloadConsistencyProof:(id *)arg1;
+- (void)downloadQueryResponse:(id)arg1 uuid:(id)arg2 accountId:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)failExpiredSTHs:(id *)arg1;
 - (void)fetchQueryForKTRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)garbageCollectSTHs:(id *)arg1;
+- (BOOL)handleConsistencyProofDownloadRecord:(id)arg1 error:(id *)arg2;
 - (void)handleGarbageCollection:(id)arg1 error:(id *)arg2;
 - (unsigned long long)handleKTRequest:(id)arg1 queryResponse:(id)arg2 error:(id *)arg3;
 - (void)handlePendingQueryRequests:(id)arg1 error:(id *)arg2;
+- (void)handlePendingSTHs:(id *)arg1;
 - (void)handleSMTsWithUnverifiedSignature:(id *)arg1;
+- (void)handleSTHsWithUnverifiedSignature:(id *)arg1;
 - (void)handleURIsWithPendingSMTs:(id)arg1 error:(id *)arg2;
 - (unsigned long long)handleVerifyInsertResponse:(id)arg1 request:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
 - (unsigned long long)handleVerifyPeerResponse:(id)arg1 request:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
@@ -48,7 +55,7 @@
 - (unsigned long long)validateEnrollment:(id)arg1 queryResponse:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
 - (unsigned long long)validateEnrollment:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validateEnrollmentWithAnalytics:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
-- (void)validateKTSMTsMerged:(id)arg1 uri:(id)arg2 uuid:(id)arg3 accountId:(id)arg4;
+- (void)validateKTSMTsMerged:(id)arg1 request:(id)arg2;
 - (unsigned long long)validatePeer:(id)arg1 queryResponse:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
 - (unsigned long long)validatePeer:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validatePeerWithAnalytics:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;

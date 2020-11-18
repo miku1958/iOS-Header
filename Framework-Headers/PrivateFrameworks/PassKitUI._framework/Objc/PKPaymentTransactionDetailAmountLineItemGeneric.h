@@ -15,13 +15,14 @@
     NSString *_label;
     NSString *_value;
     BOOL _hasTrailingLineSeperator;
+    BOOL _isEmphasized;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasTrailingLineSeperator; // @synthesize hasTrailingLineSeperator=_hasTrailingLineSeperator;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isEmphasized;
+@property (nonatomic) BOOL isEmphasized; // @synthesize isEmphasized=_isEmphasized;
 @property (readonly, nonatomic) NSString *label;
 @property (readonly, nonatomic) unsigned long long lineItemType;
 @property (readonly) Class superclass;

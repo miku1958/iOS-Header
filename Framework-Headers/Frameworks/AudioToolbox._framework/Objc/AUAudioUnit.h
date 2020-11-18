@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AUAudioUnitBusArray, AUAudioUnitPreset, AUParameterTree, NSArray, NSDictionary, NSMutableArray, NSString;
+@class AUAudioUnitBusArray, AUAudioUnitPreset, AUParameterTree, NSArray, NSDictionary, NSMutableArray, NSString, UIViewController;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface AUAudioUnit : NSObject
@@ -14,7 +14,7 @@
     struct OpaqueAudioComponent *_component;
     NSString *_componentName;
     unsigned int _componentVersion;
-    struct UIViewController *_cachedViewController;
+    UIViewController *_cachedViewController;
     unsigned int _maximumFramesToRender;
     long long _MIDIOutputBufferSizeHint;
     struct RealtimeState _realtimeState;
@@ -107,7 +107,7 @@
 - (void).cxx_destruct;
 - (void)addRenderObserver:(CDUnknownFunctionPointerType)arg1 userData:(void *)arg2;
 - (BOOL)allocateRenderResourcesAndReturnError:(id *)arg1;
-- (struct UIViewController *)cachedViewController;
+- (id)cachedViewController;
 - (void)dealloc;
 - (void)deallocateRenderResources;
 - (BOOL)deleteUserPreset:(id)arg1 error:(id *)arg2;
@@ -127,7 +127,7 @@
 - (void)reset;
 - (BOOL)saveUserPreset:(id)arg1 error:(id *)arg2;
 - (void)selectViewConfiguration:(id)arg1;
-- (void)setCachedViewController:(struct UIViewController *)arg1;
+- (void)setCachedViewController:(id)arg1;
 - (void)setRenderResourcesAllocated:(BOOL)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (BOOL)shouldChangeToFormat:(id)arg1 forBus:(id)arg2;

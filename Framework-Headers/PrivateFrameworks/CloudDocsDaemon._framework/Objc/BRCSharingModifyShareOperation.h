@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (oneway void)invalidate;
 - (void)main;
 - (void)performAfterPreparingSharingIdentityIfNecessary:(CDUnknownBlockType)arg1;
-- (BOOL)shouldRetryForError:(id)arg1;
 
 @end
 

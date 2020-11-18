@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)_executeCompletionHandlers;
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
+- (void)authorizationDidAuthorizeContextCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursementWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;

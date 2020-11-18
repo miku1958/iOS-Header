@@ -19,7 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)cubemapTextureFromEquirectangularTexture:(id)arg1 rotation:(CDStruct_8e0628e6)arg2 size:(unsigned long long)arg3;
-- (id)equirectangularTextureFromCubemapTexture:(id)arg1 rotation:(CDStruct_8e0628e6)arg2 size:(unsigned long long)arg3;
+- (id)equirectangularTextureFromCubemapTexture:(id)arg1 rotation:(CDStruct_8e0628e6)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4;
 - (id)init;
 
 @end

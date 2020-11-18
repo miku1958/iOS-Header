@@ -22,7 +22,7 @@
     unsigned long long _maxSessionsLimit;
     unsigned long long _sessionsInBatch;
     BOOL _useOnlyAppleInternalSessions;
-    struct NSString *_planId;
+    NSString *_planId;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -41,7 +41,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(struct NSString *)arg4 positiveLabel:(unsigned long long)arg5 skew:(double)arg6 sessionDescriptor:(id)arg7 maxSessionsLimit:(unsigned long long)arg8 sessionsInBatch:(unsigned long long)arg9 useOnlyAppleInternalSessions:(BOOL)arg10;
+- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(id)arg4 positiveLabel:(unsigned long long)arg5 skew:(double)arg6 sessionDescriptor:(id)arg7 maxSessionsLimit:(unsigned long long)arg8 sessionsInBatch:(unsigned long long)arg9 useOnlyAppleInternalSessions:(BOOL)arg10;
 - (void)loadSessionsWithBlock:(CDUnknownBlockType)arg1;
 - (id)normalizeRegressor:(id)arg1;
 - (void)runUntilDoneForTesting;

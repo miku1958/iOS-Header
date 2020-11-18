@@ -14,11 +14,9 @@
 @interface _SFPBContactImage : PBCodable <_SFPBContactImage, NSSecureCoding>
 {
     BOOL _threeDTouchEnabled;
-    NSString *_contactIdentifier;
     NSArray *_contactIdentifiers;
 }
 
-@property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (copy, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

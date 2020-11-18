@@ -129,12 +129,14 @@
 - (id)passwordProtectedNotes;
 - (void)performBlockInPersonaContextIfNecessary:(CDUnknownBlockType)arg1;
 - (id)predicateForAttachmentsInAccount;
+- (id)predicateForCustomFolders;
 - (id)predicateForFolders;
 - (id)predicateForNotesInAccount;
 - (id)predicateForPinnedNotes;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleAttachments;
+- (id)predicateForVisibleAttachmentsIncludingTrash;
 - (id)predicateForVisibleFolders;
 - (id)predicateForVisibleNotes;
 - (id)predicateForVisibleNotesIncludingTrash;
@@ -161,6 +163,8 @@
 - (void)updateAccountNameForAccountListSorting;
 - (void)updateSubFolderMergeableDataChangeCount;
 - (void)updateTrashFolderHiddenNoteContainerState;
+- (unsigned long long)visibleAttachmentsIncludingTrashCount;
+- (unsigned long long)visibleCustomFoldersCount;
 - (id)visibleFolders;
 - (id)visibleFoldersWithParent:(id)arg1;
 - (id)visibleNoteContainerChildren;

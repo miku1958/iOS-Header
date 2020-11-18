@@ -7,10 +7,11 @@
 #import <PhotosUICore/PXObservable.h>
 
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
+#import <PhotosUICore/PXUIKeyCommandNamespace-Protocol.h>
 
 @class NSString, PXMutableIndexPathSet, PXSectionedDataSource, PXSectionedDataSourceManager, PXSelectionSnapshot;
 
-@interface PXSectionedSelectionManager : PXObservable <PXSectionedDataSourceManagerObserver>
+@interface PXSectionedSelectionManager : PXObservable <PXUIKeyCommandNamespace, PXSectionedDataSourceManagerObserver>
 {
     struct {
         BOOL selectionSnapshot;
@@ -20,39 +21,62 @@
     PXSectionedDataSource *_dataSource;
     PXMutableIndexPathSet *_selectedIndexPaths;
     struct PXSimpleIndexPath _cursorIndexPath;
+    struct PXSimpleIndexPath _pendingIndexPath;
 }
 
 @property (nonatomic, setter=_setCursorIndexPath:) struct PXSimpleIndexPath cursorIndexPath; // @synthesize cursorIndexPath=_cursorIndexPath;
 @property (strong, nonatomic, setter=_setDataSource:) PXSectionedDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) PXSectionedDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *namespaceIdentifier;
+@property (nonatomic, setter=_setPendingIndexPath:) struct PXSimpleIndexPath pendingIndexPath; // @synthesize pendingIndexPath=_pendingIndexPath;
 @property (strong, nonatomic, setter=_setSelectedIndexPaths:) PXMutableIndexPathSet *selectedIndexPaths; // @synthesize selectedIndexPaths=_selectedIndexPaths;
 @property (strong, nonatomic, setter=_setSelectionSnapshot:) PXSelectionSnapshot *selectionSnapshot; // @synthesize selectionSnapshot=_selectionSnapshot;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct PXSimpleIndexPath)_initialItemIndexPathForMoveInDirection:(unsigned long long)arg1;
+- (struct PXSimpleIndexPath)_initialSectionIndexPathForMoveInDirection:(unsigned long long)arg1;
 - (void)_invalidateSelectionSnapshot;
 - (void)_makeSimpleModificationToSelectedIndexPathsUsingBlock:(CDUnknownBlockType)arg1;
+- (struct PXSimpleIndexPath)_moveSelectionFromIndexPath:(struct PXSimpleIndexPath)arg1 inDirection:(unsigned long long)arg2 withDelegate:(id)arg3;
+- (BOOL)_performCommand:(long long)arg1 withDelegate:(id)arg2;
+- (void)_performExtendInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
+- (void)_performSelectAll;
+- (void)_performUnselectAll;
+- (struct PXSimpleIndexPath)_selectInitialItemForMoveInDirection:(unsigned long long)arg1;
+- (struct PXSimpleIndexPath)_selectInitialSectionForMoveInDirection:(unsigned long long)arg1;
 - (void)_setDataSource:(id)arg1 withChangeHistory:(id)arg2;
 - (void)_updateIfNeeded;
 - (void)_updateSelectionSnapshotIfNeeded;
 - (void)deselectAll;
 - (void)didPerformChanges;
+- (struct PXSimpleIndexPath)extendSelectionFromIndexPath:(struct PXSimpleIndexPath)arg1 inDirection:(unsigned long long)arg2 withDelegate:(id)arg3;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1;
+- (struct PXSimpleIndexPath)moveItemSelectionInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
+- (struct PXSimpleIndexPath)moveSectionSelectionInDirection:(unsigned long long)arg1 withDelegate:(id)arg2;
 - (id)mutableChangeObject;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
+- (BOOL)performKeyCommand:(id)arg1 withDelegate:(id)arg2;
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
 - (void)selectAllItems;
 - (void)selectNonCopiedAssetsWithImportStatusManager:(id)arg1;
 - (void)setCursorIndexPath:(struct PXSimpleIndexPath)arg1;
+- (void)setPendingIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)setSelectedIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)setSelectedIndexPaths:(id)arg1;
 - (void)setSelectedState:(BOOL)arg1 forIndexPath:(struct PXSimpleIndexPath)arg2;
 - (void)setSelectedState:(BOOL)arg1 forIndexPathSet:(id)arg2;
+- (struct PXSimpleIndexPath)startingIndexPathForMoveInDirection:(unsigned long long)arg1;
+- (id)uiKeyCommandsWithDelegate:(id)arg1;
 
 @end
 

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) unsigned long long batchCount;
+@property (readonly, nonatomic) unsigned long long chainedRecordsCount;
 @property (readonly, nonatomic) NSDictionary *halfChainedRecordMap; // @synthesize halfChainedRecordMap=_halfChainedRecordMap;
 @property (readonly, nonatomic) NSArray *recordsForFirstPhase;
 @property (readonly, nonatomic) NSArray *recordsForSecondPhase;

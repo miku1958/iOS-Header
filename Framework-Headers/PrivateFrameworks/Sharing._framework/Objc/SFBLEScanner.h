@@ -8,7 +8,7 @@
 
 #import <Sharing/CBCentralManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CURetrier, NSArray, NSData, NSSet, NSString;
+@class CBCentralManager, CURetrier, NSArray, NSData, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFBLEScanner : NSObject <CBCentralManagerDelegate>
@@ -16,8 +16,10 @@
     BOOL _activateCalled;
     BOOL _activated;
     BOOL _activeScan;
+    struct BTSessionImpl *_btSession;
+    BOOL _btStarted;
     CBCentralManager *_centralManager;
-    struct NSMutableDictionary *_devices;
+    NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
     NSObject<OS_dispatch_source> *_lostTimer;
     BOOL _needDups;
@@ -119,6 +121,9 @@
 
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (int)_btSessionEnsureStarted;
+- (void)_btSessionEnsureStopped;
+- (BOOL)_btSessionUsable;
 - (void)_foundDevice:(id)arg1 advertisementData:(id)arg2 rssi:(long long)arg3 fields:(id)arg4;
 - (void)_invalidate;
 - (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;

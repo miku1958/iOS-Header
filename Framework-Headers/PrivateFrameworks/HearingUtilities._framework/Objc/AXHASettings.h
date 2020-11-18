@@ -36,6 +36,7 @@
 @property (nonatomic) BOOL ultronIsRunning;
 @property (nonatomic) BOOL ultronSupportEnabled;
 @property (strong, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;
+@property (nonatomic) unsigned long long usedHearingFeatures;
 
 + (void)initialize;
 + (id)sharedInstance;
@@ -59,6 +60,7 @@
 - (id)init;
 - (BOOL)isDeviceIDOnCloudBlacklist:(id)arg1;
 - (BOOL)isPairedWithFakeHearingAids;
+- (BOOL)isPairedWithRealHearingAids;
 - (BOOL)isiCloudPaired;
 - (void)pushLocalHearingAidsToiCloud;
 - (void)registerUpdateBlock:(CDUnknownBlockType)arg1 forRetrieveSelector:(SEL)arg2 withListener:(id)arg3;

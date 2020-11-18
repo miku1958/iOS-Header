@@ -6,37 +6,44 @@
 
 #import <objc/NSObject.h>
 
+#import <BackBoardServices/BSProtobufSerializable-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSMutableCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
-@class BKSHIDEventDisplay;
+@class BKSHIDEventDisplay, NSString;
 
-@interface BKSHIDEventSenderDescriptor : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface BKSHIDEventSenderDescriptor : NSObject <BSProtobufSerializable, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     long long _hardwareType;
     BKSHIDEventDisplay *_associatedDisplay;
     BOOL _authenticated;
     unsigned int _primaryPage;
     unsigned int _primaryUsage;
+    unsigned long long _senderID;
 }
 
 @property (readonly, nonatomic) BKSHIDEventDisplay *associatedDisplay; // @synthesize associatedDisplay=_associatedDisplay;
 @property (readonly, nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long hardwareType; // @synthesize hardwareType=_hardwareType;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned int primaryPage; // @synthesize primaryPage=_primaryPage;
 @property (readonly, nonatomic) unsigned int primaryUsage; // @synthesize primaryUsage=_primaryUsage;
+@property (readonly, nonatomic) unsigned long long senderID; // @synthesize senderID=_senderID;
+@property (readonly) Class superclass;
 
 + (id)build:(CDUnknownBlockType)arg1;
++ (id)protobufSchema;
 + (BOOL)supportsSecureCoding;
 + (id)wildcard;
 - (void).cxx_destruct;
-- (id)_initWithHardwareType:(long long)arg1 associatedDisplay:(id)arg2 authenticated:(BOOL)arg3 primaryPage:(unsigned int)arg4 primaryUsage:(unsigned int)arg5;
+- (id)_initWithHardwareType:(long long)arg1 associatedDisplay:(id)arg2 authenticated:(BOOL)arg3 primaryPage:(unsigned int)arg4 primaryUsage:(unsigned int)arg5 senderID:(unsigned long long)arg6;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
+- (id)initForProtobufDecoding;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

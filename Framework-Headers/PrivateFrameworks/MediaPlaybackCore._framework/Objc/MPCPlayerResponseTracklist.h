@@ -18,6 +18,7 @@
     long long _upNextItemCount;
     long long _repeatType;
     long long _shuffleType;
+    long long _actionAtQueueEnd;
     MPCPlayerResponse *_response;
     MPSectionedCollection *_items;
     NSIndexPath *_playingItemIndexPath;
@@ -25,6 +26,7 @@
     long long _globalItemCount;
 }
 
+@property (readonly, nonatomic) long long actionAtQueueEnd; // @synthesize actionAtQueueEnd=_actionAtQueueEnd;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long globalItemCount; // @synthesize globalItemCount=_globalItemCount;
@@ -46,6 +48,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)_determineChangeItemSupport;
 - (id)_stateDumpObject;
+- (id)actionAtQueueEndCommand;
 - (id)changeItemCommand;
 - (id)disableModificationsCommand;
 - (id)initWithResponse:(id)arg1;

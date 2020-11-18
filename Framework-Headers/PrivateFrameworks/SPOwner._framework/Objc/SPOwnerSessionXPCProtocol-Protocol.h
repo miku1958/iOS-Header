@@ -13,6 +13,7 @@
 - (oneway void)beaconForUUID:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
 - (oneway void)executeCommand:(SPCommand *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)forceDistributeKeysWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)forceUpdateKeyMapsForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)latestLocationsForIdentifiers:(NSArray *)arg1 fetchLimit:(NSDate *)arg2 sources:(NSSet *)arg3 completion:(void (^)(NSDictionary *))arg4;
 - (oneway void)rawSearchResultsForIdentifier:(NSUUID *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
 - (oneway void)removeBeacon:(SPBeacon *)arg1 completion:(void (^)(NSError *))arg2;

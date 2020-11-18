@@ -6,8 +6,8 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, NSString, PXGadgetSpec, UIViewController;
-@protocol PXGadgetDelegate, UICoordinateSpace;
+@class NSArray, NSObject, NSString, PXGadgetSpec, UICollectionViewCell, UIViewController;
+@protocol PXAnonymousView, PXAnonymousViewController, PXGadgetDelegate, UICoordinateSpace;
 
 @protocol PXGadget <NSObject>
 
@@ -15,15 +15,13 @@
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
 @property (readonly, nonatomic) Class collectionViewItemClass;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (nonatomic) long long priority;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
 
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
@@ -31,8 +29,8 @@
 @optional
 - (void)commitPreviewViewController:(UIViewController *)arg1;
 - (void)contentHasBeenSeen;
-- (struct NSObject *)contentView;
-- (struct NSObject *)contentViewController;
+- (NSObject<PXAnonymousView> *)contentView;
+- (NSObject<PXAnonymousViewController> *)contentViewController;
 - (void)contentViewDidDisappear;
 - (void)contentViewWillAppear;
 - (NSArray *)debugURLsForDiagnostics;
@@ -41,11 +39,11 @@
 - (void)gadgetControllerHasDisappeared;
 - (void)prefetchDuringScrollingForWidth:(double)arg1;
 - (void)preloadResources;
-- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
-- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id<UICoordinateSpace>)arg2;
+- (void)prepareCollectionViewItem:(UICollectionViewCell *)arg1;
+- (NSObject<PXAnonymousViewController> *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(NSObject<PXAnonymousView> *)arg2;
+- (NSObject<PXAnonymousView> *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id<UICoordinateSpace>)arg2;
 - (NSString *)uniqueGadgetIdentifier;
-- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
+- (void)userDidSelectAccessoryButton:(NSObject<PXAnonymousView> *)arg1;
 - (void)userDidSelectGadget;
 @end
 

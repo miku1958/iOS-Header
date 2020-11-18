@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_secondaryTextLayout;
     VUITextLayout *_titleTextLayout;
     VUITextLayout *_subtitleTextLayout;
+    VUITextLayout *_detailsTextLayout;
     TVImageLayout *_appImageLayout;
     VUIButtonLayout *_buttonLayout;
     struct TVCornerRadii _borderRadii;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUIButtonLayout *buttonLayout; // @synthesize buttonLayout=_buttonLayout;
 @property (strong, nonatomic) UIColor *darkBackgroundColor; // @synthesize darkBackgroundColor=_darkBackgroundColor;
 @property (strong, nonatomic) UIColor *darkHighlightColor; // @synthesize darkHighlightColor=_darkHighlightColor;
+@property (strong, nonatomic) VUITextLayout *detailsTextLayout; // @synthesize detailsTextLayout=_detailsTextLayout;
 @property (nonatomic) BOOL hideFloatingBackground; // @synthesize hideFloatingBackground=_hideFloatingBackground;
 @property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;

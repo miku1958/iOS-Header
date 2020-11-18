@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     BOOL _shouldMorphContents;
     BOOL _frozen;
     BOOL _contentSizeDidChange;
-    int _preferredMorphingAxis;
     UITargetedPreview *_collapsedPreview;
     UITargetedPreview *_expandedPreview;
     UIView *_collapsedClippingView;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
     _UIPlatterTransformView *_expandedTransformView;
     _UIPlatterSoftShadowView *_pathShadowView;
     _UIRoundedRectShadowView *_rectangularShadowView;
+    unsigned long long _preferredMorphingAxis;
     UIViewFloatAnimatableProperty *_expansionProgress;
     UIViewFloatAnimatableProperty *_platterWidth;
     UIViewFloatAnimatableProperty *_platterHeight;
@@ -59,7 +59,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIPlatterSoftShadowView *pathShadowView; // @synthesize pathShadowView=_pathShadowView;
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *platterHeight; // @synthesize platterHeight=_platterHeight;
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *platterWidth; // @synthesize platterWidth=_platterWidth;
-@property (nonatomic) int preferredMorphingAxis; // @synthesize preferredMorphingAxis=_preferredMorphingAxis;
+@property (nonatomic) unsigned long long preferredMorphingAxis; // @synthesize preferredMorphingAxis=_preferredMorphingAxis;
 @property (nonatomic) BOOL preventPreviewRasterization; // @synthesize preventPreviewRasterization=_preventPreviewRasterization;
 @property (strong, nonatomic) _UIRoundedRectShadowView *rectangularShadowView; // @synthesize rectangularShadowView=_rectangularShadowView;
 @property (nonatomic) BOOL shouldMorphContents; // @synthesize shouldMorphContents=_shouldMorphContents;

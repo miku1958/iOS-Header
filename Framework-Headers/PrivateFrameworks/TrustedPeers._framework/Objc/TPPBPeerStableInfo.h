@@ -13,34 +13,41 @@
 @interface TPPBPeerStableInfo : PBCodable <NSCopying>
 {
     unsigned long long _clock;
-    unsigned long long _policyVersion;
+    unsigned long long _flexiblePolicyVersion;
+    unsigned long long _frozenPolicyVersion;
     NSString *_deviceName;
+    NSString *_flexiblePolicyHash;
+    NSString *_frozenPolicyHash;
     NSString *_osVersion;
-    NSString *_policyHash;
     NSMutableArray *_policySecrets;
     NSData *_recoveryEncryptionPublicKey;
     NSData *_recoverySigningPublicKey;
     NSString *_serialNumber;
     struct {
         unsigned int clock:1;
-        unsigned int policyVersion:1;
+        unsigned int flexiblePolicyVersion:1;
+        unsigned int frozenPolicyVersion:1;
     } _has;
 }
 
 @property (nonatomic) unsigned long long clock; // @synthesize clock=_clock;
 @property (strong, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
+@property (strong, nonatomic) NSString *flexiblePolicyHash; // @synthesize flexiblePolicyHash=_flexiblePolicyHash;
+@property (nonatomic) unsigned long long flexiblePolicyVersion; // @synthesize flexiblePolicyVersion=_flexiblePolicyVersion;
+@property (strong, nonatomic) NSString *frozenPolicyHash; // @synthesize frozenPolicyHash=_frozenPolicyHash;
+@property (nonatomic) unsigned long long frozenPolicyVersion; // @synthesize frozenPolicyVersion=_frozenPolicyVersion;
 @property (nonatomic) BOOL hasClock;
 @property (readonly, nonatomic) BOOL hasDeviceName;
+@property (readonly, nonatomic) BOOL hasFlexiblePolicyHash;
+@property (nonatomic) BOOL hasFlexiblePolicyVersion;
+@property (readonly, nonatomic) BOOL hasFrozenPolicyHash;
+@property (nonatomic) BOOL hasFrozenPolicyVersion;
 @property (readonly, nonatomic) BOOL hasOsVersion;
-@property (readonly, nonatomic) BOOL hasPolicyHash;
-@property (nonatomic) BOOL hasPolicyVersion;
 @property (readonly, nonatomic) BOOL hasRecoveryEncryptionPublicKey;
 @property (readonly, nonatomic) BOOL hasRecoverySigningPublicKey;
 @property (readonly, nonatomic) BOOL hasSerialNumber;
 @property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
-@property (strong, nonatomic) NSString *policyHash; // @synthesize policyHash=_policyHash;
 @property (strong, nonatomic) NSMutableArray *policySecrets; // @synthesize policySecrets=_policySecrets;
-@property (nonatomic) unsigned long long policyVersion; // @synthesize policyVersion=_policyVersion;
 @property (strong, nonatomic) NSData *recoveryEncryptionPublicKey; // @synthesize recoveryEncryptionPublicKey=_recoveryEncryptionPublicKey;
 @property (strong, nonatomic) NSData *recoverySigningPublicKey; // @synthesize recoverySigningPublicKey=_recoverySigningPublicKey;
 @property (strong, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;

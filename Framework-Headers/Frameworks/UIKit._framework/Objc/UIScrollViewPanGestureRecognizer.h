@@ -21,7 +21,10 @@ __attribute__((visibility("hidden")))
     unsigned int _directionalLockEnabled:1;
     unsigned int _transfersTrackingFromParentScrollView:1;
     unsigned int _movedAfterCaughtDeceleratingScrollViewButBeganNotYetDelivered:1;
+    long long _modifierFlags;
     long long _indirectScrollingState;
+    BOOL _scrollViewCanScrubWithTouch;
+    BOOL _activeEventIsDiscrete;
     double _translationScaleFactor;
     UIScrollViewDirectionalPressGestureRecognizer *_directionalPressGestureRecognizer;
 }
@@ -35,6 +38,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
+- (BOOL)_allowsBounce;
 - (void)_beginScroll;
 - (BOOL)_canTransferTrackingFromParentPagingScrollView;
 - (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2;
@@ -42,9 +46,14 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 toSceneReferenceCoordinatesFromView:(id)arg2;
 - (void)_handleCaughtDeceleratingScrollViewWithEvent:(id)arg1;
 - (double)_hysteresis;
+- (BOOL)_isParentScrollView:(id)arg1 consideringEvent:(id)arg2;
+- (long long)_modifierFlags;
 - (void)_resetGestureRecognizer;
 - (void)_scrollViewDidEndZooming;
+- (void)_scrollingChangedWithEvent:(id)arg1;
 - (BOOL)_shouldContinueToWaitToTransferTrackingFromParentScrollView;
+- (BOOL)_shouldReceiveScrollEvent:(id)arg1;
+- (BOOL)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldTransferTrackingFromParentScrollViewForCurrentOffset;
 - (BOOL)_shouldTryToBeginWithEvent:(id)arg1;
 - (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
@@ -54,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)setAllowedTouchTypes:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setView:(id)arg1;
+- (BOOL)shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

@@ -10,14 +10,13 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBRunWorkflowIntent-Protocol.h>
 
-@class NSString, _INPBArchivedObject, _INPBDataString, _INPBIntentMetadata;
+@class NSString, _INPBDataString, _INPBIntentMetadata;
 
 @interface _INPBRunWorkflowIntent : PBCodable <_INPBRunWorkflowIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
     BOOL __encodeLegacyGloryData;
     _INPBIntentMetadata *_intentMetadata;
-    _INPBArchivedObject *_stepIntentResponse;
     _INPBDataString *_workflow;
 }
 
@@ -25,11 +24,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
-@property (readonly, nonatomic) BOOL hasStepIntentResponse;
 @property (readonly, nonatomic) BOOL hasWorkflow;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (strong, nonatomic) _INPBArchivedObject *stepIntentResponse; // @synthesize stepIntentResponse=_stepIntentResponse;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBDataString *workflow; // @synthesize workflow=_workflow;
 

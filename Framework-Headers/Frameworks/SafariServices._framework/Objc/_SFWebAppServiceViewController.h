@@ -7,10 +7,12 @@
 #import <SafariServices/SFBrowserServiceViewController.h>
 
 #import <SafariServices/SFWebAppServiceViewControllerProtocol-Protocol.h>
+#import <SafariServices/_SFMediaRecordingDocument-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore;
+@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore, _SFApplicationManifestFetcher, _SFInjectedJavaScriptController, _SFWebClipMetadataFetcher;
 
-@interface _SFWebAppServiceViewController : SFBrowserServiceViewController <SFWebAppServiceViewControllerProtocol>
+__attribute__((visibility("hidden")))
+@interface _SFWebAppServiceViewController : SFBrowserServiceViewController <SFWebAppServiceViewControllerProtocol, _SFMediaRecordingDocument>
 {
     UIWebClip *_webClip;
     UIView *_statusBarBackgroundView;
@@ -19,8 +21,15 @@
     NSMutableArray *_fallbackURLs;
     BKSApplicationStateMonitor *_stateMonitor;
     unsigned int _hostState;
+    unsigned long long _captureDeviceIconBeforeSuspension;
+    _SFApplicationManifestFetcher *_applicationManifestFetcher;
+    _SFInjectedJavaScriptController *_activityJSController;
+    _SFWebClipMetadataFetcher *_webClipMetadataFetcher;
 }
 
+@property (readonly, nonatomic) NSString *URLString;
+@property (readonly, nonatomic) BOOL audioOnly;
+@property (readonly, nonatomic) BOOL canOverrideStatusBar;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -30,6 +39,7 @@
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
 - (BOOL)_clientIsWebApp;
+- (void)_fetchApplicationManifestIfNeeded;
 - (void)_handleHostStateUpdate:(id)arg1;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
@@ -43,14 +53,18 @@
 - (BOOL)_usesScrollToTopView;
 - (BOOL)canPrint;
 - (void)dealloc;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadWebAppWithIdentifier:(id)arg1;
+- (void)muteMediaCapture;
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (id)processPool;
+- (void)setMediaCaptureDeviceIcon:(unsigned long long)arg1;
 - (void)setNeedsStatusBarAppearanceUpdate;
 - (void)setWebViewController:(id)arg1;
+- (void)statusBarIndicatorTappedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)viewDidLoad;
+- (void)webAppDidBecomeActive;
+- (void)webAppWillResignActive;
 - (id)webViewConfiguration;
 - (void)webViewController:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webViewController:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;

@@ -64,6 +64,7 @@
 - (void)setPendingAddresses:(id)arg1;
 - (void)setPhotoIDs:(id)arg1;
 - (void)setShareSheetSessionID:(id)arg1;
+- (void)setShouldDisableEntryField:(BOOL)arg1;
 - (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3;
 - (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3 chatGUID:(id)arg4 groupName:(id)arg5;
 - (void)setTextEntryContentsVisible:(BOOL)arg1;

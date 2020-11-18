@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 @property (strong, nonatomic) AMSMediaTokenService *tokenService; // @synthesize tokenService=_tokenService;
 
-+ (id)initializeWithClientIdentifier:(id)arg1;
++ (void)initializeWithAppleTVClientIdentifier;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_createSession;

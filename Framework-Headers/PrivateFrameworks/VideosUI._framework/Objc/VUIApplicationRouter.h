@@ -12,16 +12,19 @@
 
 + (void)_amsBagURLForKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (void)_dismissPresentedViewControllerWithCompletion:(CDUnknownBlockType)arg1;
-+ (void)_handleAccountSettingsPresentationWithViewController:(id)arg1;
-+ (BOOL)_handleDocumentDataSource:(id)arg1 targetResponder:(id)arg2 viewElement:(id)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)_performForType:(long long)arg1 targetResponder:(id)arg2 viewElement:(id)arg3 eventDataSource:(id)arg4;
++ (id)_eventDataSourceForEvent:(id)arg1 routerDataSource:(id)arg2;
++ (void)_handleAccountSettingsPresentationWithViewController:(id)arg1 shouldEmbedInNavController:(BOOL)arg2;
++ (BOOL)_handleDocumentDataSource:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 viewElement:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (BOOL)_handleEvent:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 viewElement:(id)arg4 eventDataSource:(id)arg5 extraInfo:(id *)arg6;
++ (void)_performForType:(long long)arg1 targetResponder:(id)arg2 appContext:(id)arg3 viewElement:(id)arg4 eventDataSource:(id)arg5;
 + (id)_viewControllerWithIdentifier:(id)arg1;
 + (id)currentNavigationController;
 + (void)dismissOrPopLastViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 + (void)dismissOrPopViewControllerWithId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)dismissPresentedViewController;
 + (id)eventDataSourceForEvent:(id)arg1 viewElement:(id)arg2;
-+ (BOOL)handleAccountSettingsEvent:(id)arg1 urlString:(id)arg2 amsBagKey:(id)arg3;
++ (BOOL)handleAccountSettingsEvent:(id)arg1 urlString:(id)arg2 amsBagKey:(id)arg3 useAMSWebView:(BOOL)arg4;
++ (BOOL)handleEvent:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 routerDataSource:(id)arg4 extraInfo:(id *)arg5;
 + (BOOL)handleEvent:(id)arg1 targetResponder:(id)arg2 viewElement:(id)arg3 extraInfo:(id *)arg4;
 + (id)topMostVisibleViewController;
 + (id)topPresentedViewController;

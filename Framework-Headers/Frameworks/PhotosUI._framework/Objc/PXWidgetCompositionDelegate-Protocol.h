@@ -6,18 +6,18 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXWidgetComposition;
-@protocol NSObject, PXWidget;
+@class NSObject, PXWidgetComposition;
+@protocol NSObject, PXAnonymousViewController, PXWidget;
 
 @protocol PXWidgetCompositionDelegate <NSObject>
-- (struct NSObject *)widgetComposition:(PXWidgetComposition *)arg1 viewControllerHostingWidget:(id<PXWidget>)arg2;
+- (NSObject<PXAnonymousViewController> *)widgetComposition:(PXWidgetComposition *)arg1 viewControllerHostingWidget:(id<PXWidget>)arg2;
 
 @optional
 - (void)widgetComposition:(PXWidgetComposition *)arg1 didUpdateCompositionWithDefaultAnimationOptions:(id<NSObject>)arg2;
 - (long long)widgetComposition:(PXWidgetComposition *)arg1 loadingPriorityForWidget:(id<PXWidget>)arg2;
 - (BOOL)widgetComposition:(PXWidgetComposition *)arg1 requestViewControllerDismissalAnimated:(BOOL)arg2;
 - (BOOL)widgetComposition:(PXWidgetComposition *)arg1 shouldUseEdgeToEdgeLayoutForWidget:(id<PXWidget>)arg2;
-- (BOOL)widgetComposition:(PXWidgetComposition *)arg1 widget:(id<PXWidget>)arg2 transitionToViewController:(struct NSObject *)arg3 withTransitionType:(long long)arg4;
+- (BOOL)widgetComposition:(PXWidgetComposition *)arg1 widget:(id<PXWidget>)arg2 transitionToViewController:(NSObject<PXAnonymousViewController> *)arg3 withTransitionType:(long long)arg4;
 - (void)widgetComposition:(PXWidgetComposition *)arg1 widgetHasLoadedContentDataDidChange:(id<PXWidget>)arg2;
 - (BOOL)widgetCompositionHasContentAbove:(PXWidgetComposition *)arg1;
 @end

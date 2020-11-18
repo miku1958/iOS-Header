@@ -32,13 +32,16 @@
 - (void).cxx_destruct;
 - (void)_applyDrawingOffsetForTextIfNeeded:(id)arg1;
 - (void)_layoutOutlineLabelIfNeeded;
+- (BOOL)_shouldHideOutlineLabel;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)outlinedLabelAttributedStringFromAttributedString:(id)arg1;
 - (void)setAttributedText:(id)arg1;
+- (void)setFillColor:(id)arg1;
+- (void)setFillColor:(id)arg1 inRange:(struct _NSRange)arg2;
+- (void)setOutlineColor:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)setText:(id)arg1;
 - (void)setTextAlignment:(long long)arg1;
-- (void)setTextColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;
 

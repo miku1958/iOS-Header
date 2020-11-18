@@ -105,7 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)renderToDryPaintBuffer;
 - (void)renderToWetPaintBufferWithRange:(struct _NSRange)arg1;
 - (void)resetRendererState;
-- (id)snapshot;
+- (id)snapshotImage;
 - (void)teardown;
 - (void)undo;
 - (void)update;

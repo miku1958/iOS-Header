@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKAuthenticator;
+@class PKAuthenticator, UIViewController;
 
 @protocol PKAuthenticatorDelegate <NSObject>
 
@@ -23,9 +23,9 @@
 - (void)authenticatorWillRestartEvaluation:(PKAuthenticator *)arg1;
 - (void)dismissPasscodeViewController;
 - (void)dismissPassphraseViewController;
-- (struct UIViewController *)passcodeViewController;
-- (struct UIViewController *)passphraseViewController;
-- (void)presentPasscodeViewController:(struct UIViewController *)arg1 completionHandler:(void (^)(BOOL))arg2 reply:(void (^)(NSData *))arg3;
-- (void)presentPassphraseViewController:(struct UIViewController *)arg1 completionHandler:(void (^)(BOOL))arg2 reply:(void (^)(NSData *))arg3;
+- (UIViewController *)passcodeViewController;
+- (UIViewController *)passphraseViewController;
+- (void)presentPasscodeViewController:(UIViewController *)arg1 completionHandler:(void (^)(BOOL))arg2 reply:(void (^)(NSData *))arg3;
+- (void)presentPassphraseViewController:(UIViewController *)arg1 completionHandler:(void (^)(BOOL))arg2 reply:(void (^)(NSData *))arg3;
 @end
 

@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly) unsigned long long allocatedSize; // @synthesize allocatedSize;
+@property (readonly) unsigned long long allocationID;
 @property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo; // @synthesize cachedAllocationInfo;
 @property (readonly) unsigned long long cpuCacheMode; // @synthesize cpuCacheMode=_cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;

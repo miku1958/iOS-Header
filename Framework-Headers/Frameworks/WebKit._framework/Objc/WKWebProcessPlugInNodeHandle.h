@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic) BOOL HTMLInputElementIsAutoFilled;
+@property (nonatomic) BOOL HTMLInputElementIsAutoFilledAndViewable;
 @property (readonly, nonatomic) BOOL HTMLInputElementIsUserEdited;
 @property (readonly, nonatomic) WKWebProcessPlugInNodeHandle *HTMLTableCellElementCellAbove;
 @property (readonly, nonatomic) BOOL HTMLTextAreaElementIsUserEdited;

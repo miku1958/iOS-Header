@@ -11,7 +11,7 @@
 @interface NUCompositionSchema : NUSchema
 {
     NSSet *_requiredContents;
-    struct NSDictionary *_contents;
+    NSDictionary *_contents;
 }
 
 @property (readonly, nonatomic) NSDictionary *contents; // @synthesize contents=_contents;
@@ -26,11 +26,11 @@
 - (id)deserializeComposition:(id)arg1 error:(out id *)arg2;
 - (BOOL)deserializeContents:(id)arg1 fromDictionary:(id)arg2 error:(out id *)arg3;
 - (id)initWithIdentifier:(id)arg1 attributes:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 contents:(struct NSDictionary *)arg2 attributes:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 contents:(id)arg2 attributes:(id)arg3;
 - (BOOL)isValid:(out id *)arg1;
 - (id)makeJSValue:(id)arg1 context:(id)arg2 error:(out id *)arg3;
 - (id)modelForProperty:(id)arg1;
-- (struct NSArray *)schemaDependencies;
+- (id)schemaDependencies;
 - (id)serialize:(id)arg1 error:(out id *)arg2;
 - (id)serializeComposition:(id)arg1 error:(out id *)arg2;
 - (BOOL)serializeContents:(id)arg1 intoDictionary:(id)arg2 error:(out id *)arg3;

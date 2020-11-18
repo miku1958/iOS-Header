@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSpecifier:(id)arg1;
-- (id)initWithSpecifier:(id)arg1 domain:(struct NSString *)arg2;
+- (id)initWithSpecifier:(id)arg1 domain:(id)arg2;
 - (void)setKeySpecifier:(id)arg1;
 
 @end

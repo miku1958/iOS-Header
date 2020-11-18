@@ -9,11 +9,12 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSDecimalNumber, NSNumber, NSString;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSString;
 
 @interface PKTransitAppletHistoryRecord : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _transitModifiers;
+    BOOL _appletStateDirty;
     NSNumber *_historySequenceNumber;
     unsigned long long _type;
     unsigned long long _subtype;
@@ -26,11 +27,14 @@
     NSNumber *_cityCode;
     NSData *_startStation;
     NSData *_endStation;
+    NSArray *_amounts;
     NSString *_transitDetail;
     long long _recordType;
 }
 
 @property (copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
+@property (copy, nonatomic) NSArray *amounts; // @synthesize amounts=_amounts;
+@property (nonatomic) BOOL appletStateDirty; // @synthesize appletStateDirty=_appletStateDirty;
 @property (copy, nonatomic) NSDecimalNumber *balance; // @synthesize balance=_balance;
 @property (copy, nonatomic) NSNumber *cityCode; // @synthesize cityCode=_cityCode;
 @property (nonatomic) unsigned long long detail; // @synthesize detail=_detail;
@@ -59,8 +63,12 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)felicaHistoryRecord;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToTransitAppletHistoryRecord:(id)arg1;
+- (id)transactionAmounts;
 
 @end
 

@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class AVTUIEnvironment, NSCache;
+@class AVTUIEnvironment, NSArray, NSCache;
 
 @interface AVTStickerConfigurationProvider : NSObject
 {
     NSCache *_stickerConfigurationCache;
     AVTUIEnvironment *_environment;
+    NSArray *_stickerPacks;
 }
 
 @property (strong, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (strong, nonatomic) NSCache *stickerConfigurationCache; // @synthesize stickerConfigurationCache=_stickerConfigurationCache;
+@property (strong, nonatomic) NSArray *stickerPacks; // @synthesize stickerPacks=_stickerPacks;
 
 - (void).cxx_destruct;
-- (id)initWithEnvironment:(id)arg1;
+- (id)availableStickerNamesForAvatarRecord:(id)arg1;
+- (id)initWithEnvironment:(id)arg1 forStickerPacks:(id)arg2;
 - (id)stickerConfigurationForAvatarRecord:(id)arg1 stickerName:(id)arg2;
 - (id)stickerConfigurationsForAvatarRecord:(id)arg1;
 

@@ -15,11 +15,12 @@
 #import <PhotosUICore/PXWidgetCompositionDelegate-Protocol.h>
 #import <PhotosUICore/PXWidgetUnlockDelegate-Protocol.h>
 #import <PhotosUICore/UIContextMenuInteractionDelegate-Protocol.h>
+#import <PhotosUICore/_UICursorInteractionDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, NSUserActivity, PXBarsController, PXPhotosDetailsContext, PXPhotosDetailsHeaderTileWidget, PXPhotosDetailsSpecManager, PXPhotosDetailsViewModel, PXScrollViewController, PXSwipeSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetComposition, PXWidgetSpec, UIContextMenuInteraction, UIScrollView, UIView;
+@class NSArray, NSMapTable, NSMutableArray, NSString, NSUserActivity, PXBarsController, PXPhotosDetailsContext, PXPhotosDetailsHeaderTileWidget, PXPhotosDetailsSpecManager, PXPhotosDetailsViewModel, PXScrollViewController, PXSwipeSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetComposition, PXWidgetSpec, UIContextMenuInteraction, UIScrollView, UIView, _UICursorInteraction;
 @protocol PXAssetCollectionActionPerformerDelegate, PXDisplayAsset, PXPhotosDetailsUIViewControllerDelegate, PXUIWidget;
 
-@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, PXActionPerformerDelegate, PXWidgetUnlockDelegate, PXForcedDismissableViewController, UIContextMenuInteractionDelegate, PXScrollViewControllerObserver, PXPurgeableController>
+@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, PXActionPerformerDelegate, PXWidgetUnlockDelegate, PXForcedDismissableViewController, _UICursorInteractionDelegate, UIContextMenuInteractionDelegate, PXScrollViewControllerObserver, PXPurgeableController>
 {
     struct {
         BOOL requestDismissal;
@@ -51,6 +52,7 @@
     CDUnknownBlockType __ppt_variationsWidgetLoadingCompleteHandler;
     UIContextMenuInteraction *__contextMenuInteraction;
     UIViewController *__previewViewController;
+    _UICursorInteraction *__cursorInteraction;
     NSUserActivity *_siriActionActivity;
     PXBarsController *_barsController;
     id<PXAssetCollectionActionPerformerDelegate> _actionPerformerDelegate;
@@ -61,6 +63,7 @@
 @property (readonly, nonatomic) Class _barsControllerClass; // @synthesize _barsControllerClass=__barsControllerClass;
 @property (readonly, nonatomic) PXWidgetComposition *_composition; // @synthesize _composition=__composition;
 @property (strong, nonatomic, setter=_setContextMenuInteraction:) UIContextMenuInteraction *_contextMenuInteraction; // @synthesize _contextMenuInteraction=__contextMenuInteraction;
+@property (strong, nonatomic, setter=_setCursorInteraction:) _UICursorInteraction *_cursorInteraction; // @synthesize _cursorInteraction=__cursorInteraction;
 @property (nonatomic, setter=_setHasAppeared:) BOOL _hasAppeared; // @synthesize _hasAppeared=__hasAppeared;
 @property (readonly, nonatomic) PXTilingController *_headerAssetWidgetTilingController; // @synthesize _headerAssetWidgetTilingController=__headerAssetWidgetTilingController;
 @property (strong, nonatomic, setter=_setHeaderTileView:) UIView *_headerTileView; // @synthesize _headerTileView=__headerTileView;
@@ -139,6 +142,8 @@
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
 - (void)contextMenuInteractionDidEnd:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -183,7 +188,7 @@
 - (long long)widgetComposition:(id)arg1 loadingPriorityForWidget:(id)arg2;
 - (BOOL)widgetComposition:(id)arg1 requestViewControllerDismissalAnimated:(BOOL)arg2;
 - (BOOL)widgetComposition:(id)arg1 shouldUseEdgeToEdgeLayoutForWidget:(id)arg2;
-- (struct NSObject *)widgetComposition:(id)arg1 viewControllerHostingWidget:(id)arg2;
+- (id)widgetComposition:(id)arg1 viewControllerHostingWidget:(id)arg2;
 - (BOOL)widgetComposition:(id)arg1 widget:(id)arg2 transitionToViewController:(id)arg3 withTransitionType:(long long)arg4;
 - (void)widgetComposition:(id)arg1 widgetHasLoadedContentDataDidChange:(id)arg2;
 - (BOOL)widgetCompositionHasContentAbove:(id)arg1;

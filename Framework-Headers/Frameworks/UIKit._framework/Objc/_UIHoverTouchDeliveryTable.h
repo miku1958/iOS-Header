@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_beginningGestureRecognizers;
     NSMutableSet *_updatingGestureRecognizers;
     NSMutableSet *_exitingGestureRecognizers;
-    NSMutableSet *_ignoredGestureRecognizers;
     UITouch *_touch;
 }
 
@@ -22,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UITouch *touch; // @synthesize touch=_touch;
 
 - (void).cxx_destruct;
+- (void)_cancelAllGestureRecognizers;
 - (id)initWithTouch:(id)arg1;
 - (void)removeGestureRecognizer:(id)arg1;
 - (void)updateForEvent:(id)arg1 forcingHitTest:(BOOL)arg2;

@@ -25,8 +25,7 @@
 - (void)dealloc;
 - (void)getAssertionDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)processUserRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)processUserRequest:(id)arg1 outError:(id *)arg2;
+- (void)processUserRequest:(id)arg1 encodeResponse:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)pushToken;
 - (void)scheduleTokenUpdate;
 - (void)simulatePush;

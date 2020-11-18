@@ -7,14 +7,16 @@
 #import <PhotosUICore/PXWidget-Protocol.h>
 
 @class NSObject, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIViewControllerTransition, PXZoomAnimationCoordinator, UIFocusUpdateContext, UITraitCollection, UIViewController;
-@protocol PXUIImageViewBasicTile, UICoordinateSpace;
+@protocol PXAnonymousView, PXAnonymousViewController, PXUIImageViewBasicTile, PXUIViewBasicTile, UICoordinateSpace;
 
 @protocol PXUIWidget <PXWidget>
 
+@property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
 
 
 @optional
+- (id<PXUIViewBasicTile>)bestCursorTileForLiftingAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(NSObject<UICoordinateSpace> *)arg2;
 - (void)commitPreviewViewController:(UIViewController *)arg1;
 - (BOOL)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(NSObject<UICoordinateSpace> *)arg2;
 - (void)controllerTraitCollectionDidChangeFrom:(UITraitCollection *)arg1 to:(UITraitCollection *)arg2;
@@ -23,7 +25,7 @@
 - (id<PXUIImageViewBasicTile>)imageViewBasicTileForPreviewingAtPoint:(struct CGPoint)arg1;
 - (void)preloadWithSourceRegionOfInterest:(PXRegionOfInterest *)arg1 forContext:(PXPhotosDetailsContext *)arg2;
 - (void)prepareForInteractiveTransition:(PXUIViewControllerTransition *)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (NSObject<PXAnonymousViewController> *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(NSObject<PXAnonymousView> *)arg2;
 - (PXRegionOfInterest *)regionOfInterestForContext:(PXPhotosDetailsContext *)arg1;
 - (PXZoomAnimationCoordinator *)zoomAnimationCoordinatorForContext:(PXPhotosDetailsContext *)arg1;
 @end

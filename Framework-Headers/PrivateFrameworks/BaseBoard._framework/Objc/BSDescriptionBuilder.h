@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <BaseBoard/BSDescriptionFormatting-Protocol.h>
+
 @class NSMutableString, NSString;
 @protocol NSObject;
 
-@interface BSDescriptionBuilder : NSObject
+@interface BSDescriptionBuilder : NSObject <BSDescriptionFormatting>
 {
     id<NSObject> _object;
     NSMutableString *_proem;
@@ -39,6 +41,7 @@
 - (id)appendBool:(BOOL)arg1 withName:(id)arg2 ifEqualTo:(BOOL)arg3;
 - (id)appendCString:(const char *)arg1 withName:(id)arg2;
 - (id)appendClass:(Class)arg1 withName:(id)arg2;
+- (void)appendCustomFormatWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)appendDictionarySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4;
 - (void)appendDictionarySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4 objectTransformer:(CDUnknownBlockType)arg5;
 - (void)appendDictionarySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3;
@@ -60,6 +63,7 @@
 - (id)appendObjectsAndNames:(id)arg1 args:(struct __va_list_tag [1])arg2;
 - (id)appendPoint:(struct CGPoint)arg1 withName:(id)arg2;
 - (id)appendPointer:(void *)arg1 withName:(id)arg2;
+- (void)appendProem:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)appendQueue:(id)arg1 withName:(id)arg2;
 - (id)appendRect:(struct CGRect)arg1 withName:(id)arg2;
 - (id)appendSelector:(SEL)arg1 withName:(id)arg2;
@@ -70,8 +74,10 @@
 - (id)appendSuper;
 - (id)appendTimeInterval:(double)arg1 withName:(id)arg2 decomposeUnits:(BOOL)arg3;
 - (id)appendUInt64:(unsigned long long)arg1 withName:(id)arg2;
+- (id)appendUInt64:(unsigned long long)arg1 withName:(id)arg2 format:(long long)arg3;
 - (id)appendUnsignedInt:(unsigned int)arg1 withName:(id)arg2;
 - (id)appendUnsignedInteger:(unsigned long long)arg1 withName:(id)arg2;
+- (id)appendUnsignedInteger:(unsigned long long)arg1 withName:(id)arg2 format:(long long)arg3;
 - (id)build;
 - (id)initWithObject:(id)arg1;
 - (id)modifyBody:(CDUnknownBlockType)arg1;

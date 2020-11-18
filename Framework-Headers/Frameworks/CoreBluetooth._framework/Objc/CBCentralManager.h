@@ -28,6 +28,8 @@
         unsigned int didDiscoverMultiplePeripherals:1;
         unsigned int didUpdateANCSAuthorizationForPeripheral:1;
         unsigned int canSendDataToPeripheral:1;
+        unsigned int didFailToStartScanWithError:1;
+        unsigned int didUpdateControllerBTClockForPeripheral:1;
     } _delegateFlags;
     BOOL _isScanning;
     id<CBCentralManagerDelegate> _delegate;
@@ -42,6 +44,7 @@
 
 + (BOOL)supportsFeatures:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)HandleControllerBTClockUpdateMsg:(id)arg1;
 - (void)addAdvancedMatchingRule:(id)arg1;
 - (void)cancelPeripheralConnection:(id)arg1;
 - (void)cancelPeripheralConnection:(id)arg1 force:(BOOL)arg2;
@@ -70,11 +73,13 @@
 - (void)handlePeripheralTrackingUpdated:(id)arg1;
 - (void)handleReadyForUpdates:(id)arg1;
 - (void)handleRestoringState:(id)arg1;
+- (void)handleScanFailedToStartWithError:(id)arg1;
 - (void)handleSupportedFeatures:(id)arg1;
 - (void)handleZoneLost:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 options:(id)arg3;
+- (id)isApplicationConnectedToAnyPeripherals:(id)arg1;
 - (BOOL)isMsgAllowedAlways:(unsigned short)arg1;
 - (BOOL)isMsgAllowedWhenOff:(unsigned short)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -100,11 +105,15 @@
 - (void)scanForPeripheralsWithServices:(id)arg1 options:(id)arg2;
 - (void)sendData:(id)arg1 toPeripheral:(id)arg2;
 - (void)setConnectionEventOptions:(id)arg1;
+- (void)setDataLengthChange:(id)arg1 options:(id)arg2;
 - (void)setDesiredConnectionLatency:(long long)arg1 forPeripheral:(id)arg2;
 - (void)setEnhancedScanEnable:(id)arg1;
 - (void)setEnhancedSetScanParamtersMultiCore:(id)arg1;
+- (void)setLESetPhy:(id)arg1 options:(id)arg2;
 - (void)setMatchActionRules:(id)arg1;
+- (id)startConnectionEventCounterForPeripheral:(id)arg1;
 - (void)startTrackingPeripheral:(id)arg1 options:(id)arg2;
+- (id)stopConnectionEventCounterForPeripheral:(id)arg1;
 - (void)stopScan;
 - (void)stopTrackingPeripheral:(id)arg1 options:(id)arg2;
 - (void)wipeDuplicateFilterList:(id)arg1;

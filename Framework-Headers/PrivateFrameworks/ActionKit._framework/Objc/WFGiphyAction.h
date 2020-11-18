@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)runWithNoUserInterface;
 - (void)runWithUIKitWidgetUserInterface:(id)arg1 input:(id)arg2;
+- (id)targetDataInfo;
 
 @end
 

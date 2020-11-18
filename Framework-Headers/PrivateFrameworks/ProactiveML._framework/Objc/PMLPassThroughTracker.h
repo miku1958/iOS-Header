@@ -13,7 +13,7 @@
 
 @interface PMLPassThroughTracker : NSObject <PMLLogRegTrackerProtocol, PMLEvaluationTrackerProtocol>
 {
-    struct NSString *_planId;
+    NSString *_planId;
     unsigned long long _quantizationNumberOfBuckets;
     NSMutableArray *_results;
     NSLock *_resultsLock;
@@ -25,7 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithPlanId:(struct NSString *)arg1 numberOfBuckets:(unsigned long long)arg2;
+- (id)initWithPlanId:(id)arg1 numberOfBuckets:(unsigned long long)arg2;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;
 - (id)trackEvaluationMetrics:(id)arg1 minibatchStats:(id)arg2;

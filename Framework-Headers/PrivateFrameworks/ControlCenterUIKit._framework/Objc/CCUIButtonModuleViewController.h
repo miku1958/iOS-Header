@@ -35,6 +35,7 @@
 @property (nonatomic, getter=isSelected) BOOL selected;
 @property (strong, nonatomic) UIColor *selectedGlyphColor;
 @property (strong, nonatomic) UIImage *selectedGlyphImage;
+@property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

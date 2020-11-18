@@ -24,10 +24,10 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEODataURLSession *urlSession; // @synthesize urlSession=_urlSession;
 
-+ (void)asynchronousGetURL:(id)arg1 kind:(CDStruct_d1a7ebee)arg2 requestCounterTicket:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
++ (void)asynchronousGetURL:(id)arg1 kind:(CDStruct_d1a7ebee)arg2 auditToken:(id)arg3 requestCounterTicket:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)sharedDataSession;
 - (void).cxx_destruct;
-- (void)asynchronousGetURL:(id)arg1 kind:(CDStruct_d1a7ebee)arg2 requestCounterTicket:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)asynchronousGetURL:(id)arg1 kind:(CDStruct_d1a7ebee)arg2 auditToken:(id)arg3 requestCounterTicket:(id)arg4 queue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)downloadTaskWithRequest:(id)arg1 priority:(float)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (id)init;
 - (id)initWithUrlSession:(id)arg1;

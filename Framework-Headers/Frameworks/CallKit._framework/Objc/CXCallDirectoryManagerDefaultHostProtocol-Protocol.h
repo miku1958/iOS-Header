@@ -12,6 +12,7 @@
 - (oneway void)firstIdentificationEntriesForEnabledExtensionsWithPhoneNumbers:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)getEnabledStatusForExtensionWithIdentifier:(NSString *)arg1 reply:(void (^)(long long, NSError *))arg2;
 - (oneway void)getExtensionsWithReply:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)launchCallDirectorySettingsWithReply:(void (^)(NSError *))arg1;
 - (oneway void)reloadExtensionWithIdentifier:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)setEnabled:(BOOL)arg1 forExtensionWithIdentifier:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (oneway void)setPrioritizedExtensionIdentifiers:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;

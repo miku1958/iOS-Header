@@ -20,7 +20,6 @@
     NSMutableSet *_selectedAssetIdentifiers;
     struct {
         unsigned int delegateRespondsToPickerDidCancel:1;
-        unsigned int delegateRespondsToDidSelectAssetWithIdentifier:1;
         unsigned int delegateRespondsToDidDeselectAssetWithIdentifier:1;
     } _flags;
     id<MFPhotoPickerControllerDelegate> _pickerDelegate;
@@ -47,6 +46,7 @@
 @property (strong, nonatomic) UIImagePickerController *systemImagePicker; // @synthesize systemImagePicker=_systemImagePicker;
 @property (nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
 
++ (id)log;
 - (void).cxx_destruct;
 - (BOOL)_isPresentingInASheet;
 - (id)_visibleCellForIndexPath:(id)arg1 collectionView:(id)arg2;

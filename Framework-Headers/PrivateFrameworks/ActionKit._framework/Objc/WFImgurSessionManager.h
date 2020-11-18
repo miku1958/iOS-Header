@@ -14,8 +14,8 @@
 {
     NSString *_clientID;
     WFOAuth2Credential *_credential;
-    NSURLSession *_session;
     NSURL *_baseURL;
+    NSURLSession *_session;
     NSMapTable *_progressTable;
 }
 

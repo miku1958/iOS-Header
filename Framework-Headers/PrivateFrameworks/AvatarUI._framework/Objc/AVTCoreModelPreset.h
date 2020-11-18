@@ -10,7 +10,7 @@
 
 @interface AVTCoreModelPreset : NSObject
 {
-    struct NSDictionary *_tags;
+    NSDictionary *_tags;
     AVTPreset *_preset;
 }
 
@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) AVTPreset *preset; // @synthesize preset=_preset;
 @property (readonly, copy, nonatomic) NSDictionary *tags; // @synthesize tags=_tags;
 
-+ (struct NSDictionary *)tagSetFromPreset:(id)arg1;
++ (id)tagSetFromPreset:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyForPairedCategory:(long long)arg1;
 - (id)description;

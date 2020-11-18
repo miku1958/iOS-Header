@@ -19,6 +19,7 @@
 + (id)cachedContactGroups;
 + (id)contentCategories;
 + (id)countDescription;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (BOOL)hasLibrary;
 + (id)outputTypes;
 + (id)ownedTypes;

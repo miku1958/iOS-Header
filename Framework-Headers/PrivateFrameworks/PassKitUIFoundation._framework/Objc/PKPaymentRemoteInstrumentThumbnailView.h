@@ -10,8 +10,8 @@
 
 @interface PKPaymentRemoteInstrumentThumbnailView : UIView
 {
-    struct UIImageView *_placeholderImageView;
-    struct UIImageView *_cardImageView;
+    UIImageView *_placeholderImageView;
+    UIImageView *_cardImageView;
 }
 
 @property (strong, nonatomic) UIImageView *cardImageView; // @synthesize cardImageView=_cardImageView;

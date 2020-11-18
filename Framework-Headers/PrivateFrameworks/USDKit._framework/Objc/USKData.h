@@ -71,8 +71,11 @@
 - (id)initWithResourcePathArray:(id)arg1;
 - (id)initWithString:(id)arg1;
 - (id)initWithStringArray:(id)arg1;
+- (id)initWithTimeCode:(id)arg1;
 - (id)initWithToken:(id)arg1;
 - (id)initWithTokenArray:(id)arg1;
+- (id)initWithUInt:(unsigned int)arg1;
+- (id)initWithUIntArray:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (id)initWithURL:(id)arg1;
 - (id)initWithVtValue:(struct VtValue)arg1 typeName:(struct TfToken)arg2;
 - (unsigned long long)intArray:(int *)arg1 maxCount:(unsigned long long)arg2;
@@ -112,14 +115,20 @@
 - (void)setResourcePathArray:(id)arg1;
 - (void)setStringArray:(id)arg1;
 - (void)setStringValue:(id)arg1;
+- (void)setTimeCodeValue:(id)arg1;
 - (void)setTokenArray:(id)arg1;
 - (void)setTokenValue:(id)arg1;
+- (void)setUIntArray:(unsigned int *)arg1 count:(unsigned long long)arg2;
+- (void)setUIntValue:(unsigned int)arg1;
 - (void)setURLValue:(id)arg1;
 - (void)setValue:(struct VtValue)arg1;
 - (id)stringArray;
 - (id)stringValue;
+- (id)timeCodeValue;
 - (id)tokenArray;
 - (id)tokenValue;
+- (unsigned long long)uintArray:(unsigned int *)arg1 maxCount:(unsigned long long)arg2;
+- (unsigned int)uintValue;
 - (id)urlValue;
 - (struct VtValue)value;
 

@@ -33,6 +33,7 @@
 + (id)bestDepthFormatForDeviceFormat:(id)arg1;
 + (id)bestVideoFormatForDevicePosition:(long long)arg1 deviceType:(id)arg2 resolution:(CDStruct_1ef3fb1f)arg3 frameRate:(double)arg4 videoBinned:(BOOL)arg5;
 + (id)supportedVideoFormatsForDevicePosition:(long long)arg1 deviceType:(id)arg2;
++ (id)supportedVideoFormatsForDevicePosition:(long long)arg1 deviceType:(id)arg2 videoBinned:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -14,10 +14,10 @@
 @property (readonly) unsigned long long operationTypes; // @synthesize operationTypes=_operationTypes;
 
 + (id)policyWithOperationTypes:(unsigned long long)arg1;
+- (id)__initWithOperationTypes:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithOperationTypes:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

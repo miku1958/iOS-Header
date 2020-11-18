@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class PXCuratedLibraryFooterViewModel;
+@class NSObject, PXCuratedLibraryFooterViewModel;
+@protocol PXAnonymousViewController;
 
 @protocol PXCuratedLibraryFooterViewModelPresentationDelegate
-- (struct NSObject *)presentingViewControllerForFooterViewModel:(PXCuratedLibraryFooterViewModel *)arg1;
+- (NSObject<PXAnonymousViewController> *)presentingViewControllerForFooterViewModel:(PXCuratedLibraryFooterViewModel *)arg1;
 @end
 

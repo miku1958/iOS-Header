@@ -9,7 +9,7 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class CLKTextProviderCache, NSMutableArray, NSMutableDictionary, NSString, UIColor;
+@class CLKTextProviderCache, NSMutableArray, NSMutableDictionary, NSNumber, NSString, UIColor;
 
 @interface CLKTextProvider : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,9 +18,9 @@
     NSMutableArray *_recentCacheKeys;
     unsigned long long _nextUpdateToken;
     NSMutableDictionary *_updateHandlersByToken;
-    struct NSNumber *_secondTimerToken;
-    struct NSNumber *_minuteTimerToken;
-    struct NSNumber *_30fpsTimerToken;
+    NSNumber *_secondTimerToken;
+    NSNumber *_minuteTimerToken;
+    NSNumber *_30fpsTimerToken;
     BOOL _finalized;
     BOOL _ignoreUppercaseStyle;
     BOOL _paused;
@@ -88,8 +88,8 @@
 - (id)localizedTextProviderWithBundle:(id)arg1 forLocalization:(id)arg2;
 - (struct CGSize)minimumSizeWithStyle:(id)arg1 now:(id)arg2;
 - (id)sessionAttributedTextForIndex:(unsigned long long)arg1 withStyle:(id)arg2;
-- (struct NSNumber *)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopUpdatesForToken:(struct NSNumber *)arg1;
+- (id)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopUpdatesForToken:(id)arg1;
 - (void)validate;
 
 @end

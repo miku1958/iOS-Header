@@ -24,7 +24,7 @@
     BOOL _deferContentOffsetUpdates;
     id<PXTilingScrollControllerUpdateDelegate> _updateDelegate;
     PXTilingScrollInfo *_scrollInfo;
-    struct NSObject *_scrollView;
+    NSObject<PXAnonymousScrollView> *_scrollView;
     NSObject<UICoordinateSpace> *_contentCoordinateSpace;
     NSHashTable *__observers;
     long long _activeScrollAnimations;
@@ -67,8 +67,8 @@
 @property (readonly, nonatomic) struct CGRect visibleRect;
 
 - (void).cxx_destruct;
-- (void)addSubview:(struct NSObject *)arg1;
-- (void)addSubviewToScrollView:(struct NSObject *)arg1;
+- (void)addSubview:(id)arg1;
+- (void)addSubviewToScrollView:(id)arg1;
 - (void)applyScrollInfo:(id)arg1;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;

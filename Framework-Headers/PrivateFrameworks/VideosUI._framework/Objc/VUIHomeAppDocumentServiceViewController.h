@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (BOOL)automaticallyProvidesMediaController;
-- (id)initWithDocumentServiceRequest:(id)arg1 loadImmediately:(BOOL)arg2 documentRef:(id)arg3 viewControllerIdentifier:(id)arg4;
+- (id)initWithDocumentServiceRequest:(id)arg1 loadImmediately:(BOOL)arg2 documentRef:(id)arg3 viewControllerIdentifier:(id)arg4 viewControllerDocumentIdentifier:(id)arg5;
 
 @end
 

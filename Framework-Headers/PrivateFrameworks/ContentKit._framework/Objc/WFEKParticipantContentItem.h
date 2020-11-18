@@ -14,6 +14,7 @@
 
 + (id)contentCategories;
 + (id)countDescription;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)filterDescription;
 + (id)outputTypes;
 + (id)ownedTypes;

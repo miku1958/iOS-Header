@@ -14,11 +14,9 @@
 
 @interface EDRemoteClient : NSObject <EFLoggable, EMDaemonInterfaceXPC>
 {
-    EDClientResumer *_clientResumer;
     struct os_unfair_lock_s _lock;
     EDAccountRepository *_accountRepository;
     EDMailboxRepository *_mailboxRepository;
-    EDMessageRepository *_messageRepository;
     EDOutgoingMessageRepository *_outgoingMessageRepository;
     EDFetchController *_fetchController;
     EDSearchableIndex *_searchableIndex;
@@ -28,11 +26,14 @@
     NSXPCConnection *_clientConnection;
     EDDaemonInterfaceFactory *_daemonInterfaceFactory;
     EDClientState *_clientState;
+    EDMessageRepository *_messageRepository;
+    EDClientResumer *_clientResumer;
 }
 
 @property (readonly, nonatomic) EDAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
 @property (readonly, nonatomic) EDActivityRegistry *activityRegistry; // @synthesize activityRegistry=_activityRegistry;
 @property (readonly, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
+@property (strong, nonatomic) EDClientResumer *clientResumer; // @synthesize clientResumer=_clientResumer;
 @property (readonly, nonatomic) EDClientState *clientState; // @synthesize clientState=_clientState;
 @property (readonly, nonatomic) EDDaemonInterfaceFactory *daemonInterfaceFactory; // @synthesize daemonInterfaceFactory=_daemonInterfaceFactory;
 @property (readonly, copy) NSString *debugDescription;

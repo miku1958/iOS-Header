@@ -151,8 +151,8 @@
 - (void)_updateSelectionIfNeeded;
 - (void)_updateSendBackNotification;
 - (void)_updateStyle;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)addButtonTapped:(id)arg1;
 - (id)assetsScene:(id)arg1 layoutForDataSource:(id)arg2;
 - (id)assetsScene:(id)arg1 transitionAnimationCoordinatorForChange:(id)arg2;

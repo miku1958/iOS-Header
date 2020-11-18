@@ -87,6 +87,7 @@
 - (id)mirroringOptionsForStoreWithType:(unsigned long long)arg1;
 - (void)onAccountChange:(id)arg1;
 - (void)onCloudSyncAuthorizationChange:(id)arg1;
+- (void)onDailyMetricsNotification:(id)arg1;
 - (void)onDataProtectionChange:(id)arg1;
 - (id)optionsForStoreWithType:(unsigned long long)arg1 error:(id *)arg2;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -95,7 +96,6 @@
 - (unsigned long long)persistenceDeviceClassForPlatform;
 - (void)persistenceDriver:(id)arg1 persistenceMigrator:(id)arg2 didFinishMigratingStore:(id)arg3 withModelProvider:(id)arg4;
 - (void)persistenceDriver:(id)arg1 persistenceMigrator:(id)arg2 didStartMigratingStore:(id)arg3 withModelProvider:(id)arg4;
-- (void)persistenceDriver:(id)arg1 persistenceStore:(id)arg2 willBeginMirroringWithOptions:(id)arg3;
 - (void)persistenceManager:(id)arg1 didFinishSetup:(BOOL)arg2;
 - (void)persistenceManagerDidFinishResetSync:(id)arg1 userInfo:(id)arg2;
 - (void)persistenceManagerWillStartResetSync:(id)arg1 userInfo:(id)arg2 context:(id)arg3;
@@ -105,7 +105,6 @@
 - (void)persistenceStore:(id)arg1 didPrepareWithContext:(id)arg2;
 - (void)persistenceStore:(id)arg1 encounteredCriticalError:(id)arg2;
 - (void)persistenceStore:(id)arg1 failedWithError:(id)arg2;
-- (void)persistenceStore:(id)arg1 willBeginMirroringWithOptions:(id)arg2;
 - (void)persistenceStoreFailedWithError:(id)arg1;
 - (void)persistenceStoreResetSyncWithUserInfo:(id)arg1;
 - (id)prepareForDatabaseRekey:(id *)arg1;

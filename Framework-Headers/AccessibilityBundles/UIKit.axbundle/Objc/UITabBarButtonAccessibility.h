@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_axIsSelected:(id)arg1;
+- (long long)_currentItemState;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (struct _NSRange)accessibilityRowRange;

@@ -72,7 +72,7 @@
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 labeledValueIdentifier:(id)arg3 actionType:(id)arg4 bundleIdentifier:(id)arg5 store:(id)arg6;
 - (id)initWithDictionaryRepresentation:(id)arg1 store:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (struct CNPair *)rematch;
+- (id)rematch;
 - (BOOL)rematchWithContacts;
 - (BOOL)rematchWithGeminiManager:(id)arg1;
 - (void)resetContactMatch;

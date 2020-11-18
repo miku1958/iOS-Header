@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsArticles/SXMailPresenter-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12NewsArticles13MailPresenter : NSObject <SXMailPresenter>
+@interface _TtC12NewsArticles13MailPresenter : NSObject
 {
     MISSING_TYPE *host;
     MISSING_TYPE *viewControllerPresenting;

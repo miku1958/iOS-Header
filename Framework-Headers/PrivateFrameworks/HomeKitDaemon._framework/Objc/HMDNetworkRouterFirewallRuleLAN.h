@@ -19,16 +19,16 @@
 @property (readonly, nonatomic) unsigned long long purpose; // @synthesize purpose=_purpose;
 @property (readonly, nonatomic, getter=isRequiredForHAPFunctionality) BOOL requiredForHAPFunctionality; // @synthesize requiredForHAPFunctionality=_requiredForHAPFunctionality;
 
-+ (BOOL)__decodeDirection:(struct NSDictionary *)arg1 direction:(unsigned char *)arg2 error:(id *)arg3;
-+ (BOOL)__decodeFlags:(struct NSDictionary *)arg1 critical:(BOOL *)arg2 allowInterAccessoryConnections:(BOOL *)arg3 requiredForHAPFunctionality:(BOOL *)arg4 error:(id *)arg5;
-+ (BOOL)__decodePurpose:(struct NSDictionary *)arg1 purpose:(unsigned long long *)arg2 error:(id *)arg3;
-+ (BOOL)__decodeTransportProtocolFromJSONDictionary:(struct NSDictionary *)arg1 key:(id)arg2 transportProtocol:(unsigned char *)arg3 error:(id *)arg4;
-+ (BOOL)__decodeType:(struct NSDictionary *)arg1 type:(unsigned char *)arg2 error:(id *)arg3;
-+ (id)createWithJSONDictionary:(struct NSDictionary *)arg1 error:(id *)arg2;
-+ (id)createWithJSONDictionary:(struct NSDictionary *)arg1 name:(id)arg2 critical:(BOOL)arg3 purpose:(unsigned long long)arg4 allowInterAccessoryConnections:(BOOL)arg5 direction:(unsigned char)arg6 requiredForHAPFunctionality:(BOOL)arg7 ruleDictionary:(struct NSDictionary *)arg8 error:(id *)arg9;
++ (BOOL)__decodeDirection:(id)arg1 direction:(unsigned char *)arg2 error:(id *)arg3;
++ (BOOL)__decodeFlags:(id)arg1 critical:(BOOL *)arg2 allowInterAccessoryConnections:(BOOL *)arg3 requiredForHAPFunctionality:(BOOL *)arg4 error:(id *)arg5;
++ (BOOL)__decodePurpose:(id)arg1 purpose:(unsigned long long *)arg2 error:(id *)arg3;
++ (BOOL)__decodeTransportProtocolFromJSONDictionary:(id)arg1 key:(id)arg2 transportProtocol:(unsigned char *)arg3 error:(id *)arg4;
++ (BOOL)__decodeType:(id)arg1 type:(unsigned char *)arg2 error:(id *)arg3;
++ (id)createWithJSONDictionary:(id)arg1 error:(id *)arg2;
++ (id)createWithJSONDictionary:(id)arg1 name:(id)arg2 critical:(BOOL)arg3 purpose:(unsigned long long)arg4 allowInterAccessoryConnections:(BOOL)arg5 direction:(unsigned char)arg6 requiredForHAPFunctionality:(BOOL)arg7 ruleDictionary:(id)arg8 error:(id *)arg9;
 - (id)attributeDescriptions;
-- (id)initWithJSONDictionary:(struct NSDictionary *)arg1 name:(id)arg2 critical:(BOOL)arg3 purpose:(unsigned long long)arg4 allowInterAccessoryConnections:(BOOL)arg5 direction:(unsigned char)arg6 requiredForHAPFunctionality:(BOOL)arg7;
-- (struct NSDictionary *)prettyJSONDictionary;
+- (id)initWithJSONDictionary:(id)arg1 name:(id)arg2 critical:(BOOL)arg3 purpose:(unsigned long long)arg4 allowInterAccessoryConnections:(BOOL)arg5 direction:(unsigned char)arg6 requiredForHAPFunctionality:(BOOL)arg7;
+- (id)prettyJSONDictionary;
 
 @end
 

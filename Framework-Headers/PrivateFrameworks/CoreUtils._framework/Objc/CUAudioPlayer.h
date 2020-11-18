@@ -8,7 +8,7 @@
 
 #import <CoreUtils/AVAudioPlayerDelegate-Protocol.h>
 
-@class AVAudioSession, CUAudioRequest, NSString;
+@class AVAudioSession, CUAudioRequest, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUAudioPlayer : NSObject <AVAudioPlayerDelegate>
@@ -18,8 +18,8 @@
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     unsigned int _invalidateFlags;
-    struct NSMutableArray *_playRequests;
-    struct NSMutableDictionary *_preparedRequests;
+    NSMutableArray *_playRequests;
+    NSMutableDictionary *_preparedRequests;
     CUAudioPlayer *_selfRef;
     struct LogCategory *_ucat;
     unsigned int _flags;

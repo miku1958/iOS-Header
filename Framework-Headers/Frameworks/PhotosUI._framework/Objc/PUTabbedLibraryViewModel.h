@@ -6,19 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, PUTabbedLibrarySettings, PXPreloadScheduler;
+#import <PhotosUI/PXUIKeyCommandNamespace-Protocol.h>
 
-@interface PUTabbedLibraryViewModel : NSObject
+@class NSArray, NSString, PUTabbedLibrarySettings, PXPreloadScheduler;
+
+@interface PUTabbedLibraryViewModel : NSObject <PXUIKeyCommandNamespace>
 {
     NSArray *_tabInfos;
     PUTabbedLibrarySettings *_settings;
     PXPreloadScheduler *_preloadScheduler;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *namespaceIdentifier;
 @property (strong, nonatomic) PXPreloadScheduler *preloadScheduler; // @synthesize preloadScheduler=_preloadScheduler;
 @property (strong, nonatomic) PUTabbedLibrarySettings *settings; // @synthesize settings=_settings;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *tabInfos; // @synthesize tabInfos=_tabInfos;
 
++ (id)supportedNavigationDestinationTypes;
 + (id)viewModelWithDefaultParameters;
 - (void).cxx_destruct;
 - (BOOL)_ppt_shouldShowBlankTab;
@@ -30,10 +38,13 @@
 - (BOOL)_shouldShowPhotosTabForTabbedLibraryViewController:(id)arg1;
 - (BOOL)_shouldShowSearchTabForTabbedLibraryViewController:(id)arg1;
 - (BOOL)_shouldShowSharedTabForTabbedLibraryViewController:(id)arg1;
+- (int)contentModeForNavigationDestinationType:(long long)arg1;
 - (id)initWithSettings:(id)arg1 preloadScheduler:(id)arg2;
+- (void)performKeyCommand:(id)arg1 withRootParticipant:(id)arg2;
 - (id)tabInfoForContentMode:(int)arg1;
 - (BOOL)tabbedLibraryViewController:(id)arg1 shouldShowTabForContentMode:(int)arg2;
 - (id)tabbedLibraryViewController:(id)arg1 tabBarItemForContentMode:(int)arg2;
+- (void)uiKeyCommandsWithDelegate:(id)arg1 addedIntoArray:(id)arg2;
 
 @end
 

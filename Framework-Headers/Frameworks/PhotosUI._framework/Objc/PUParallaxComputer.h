@@ -8,12 +8,12 @@
 
 @interface PUParallaxComputer : NSObject
 {
-    int _axis;
     long long _model;
     double _parallaxFactor;
+    unsigned long long _axis;
 }
 
-@property (nonatomic) int axis; // @synthesize axis=_axis;
+@property (nonatomic) unsigned long long axis; // @synthesize axis=_axis;
 @property (nonatomic) long long model; // @synthesize model=_model;
 @property (nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
 

@@ -9,7 +9,7 @@
 #import <ActionKit/UIDocumentPickerDelegate-Protocol.h>
 #import <ActionKit/WFFileStorageService-Protocol.h>
 
-@class NSMapTable, NSProgress, NSString;
+@class NSMapTable, NSProgress, NSString, WFContentSource;
 
 @interface WFiCloudStorageService : NSObject <UIDocumentPickerDelegate, WFFileStorageService>
 {
@@ -18,6 +18,8 @@
 }
 
 @property (readonly, nonatomic) Class accessResourceClass;
+@property (readonly, nonatomic) NSString *associatedAppBundleIdentifier;
+@property (readonly, nonatomic) WFContentSource *contentSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMapTable *documentPickerCompletionTable; // @synthesize documentPickerCompletionTable=_documentPickerCompletionTable;
@@ -37,7 +39,7 @@
 + (id)serviceName;
 - (void).cxx_destruct;
 - (void)appendText:(id)arg1 toPath:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)completeOperationForDocumentPicker:(id)arg1 withFiles:(id)arg2 error:(id)arg3;
+- (void)completeOperationForDocumentPicker:(id)arg1 withFileItems:(id)arg2 error:(id)arg3;
 - (void)createFolderAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteFiles:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;

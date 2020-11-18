@@ -9,13 +9,13 @@
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPCompanionLinkXPCClientInterface-Protocol.h>
 
-@class NSArray, NSString, NSXPCConnection;
+@class NSArray, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPDiscovery : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface>
 {
     BOOL _activateCalled;
-    struct NSMutableDictionary *_endpointMap;
+    NSMutableDictionary *_endpointMap;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     NSObject<OS_dispatch_source> *_retryTimer;

@@ -10,15 +10,14 @@
 {
 }
 
+@property (readonly, nonatomic) BOOL axShouldDisableAutoHidingControls;
+
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (BOOL)_axDidRegisterForNotifications;
-- (void)_axDidToggleAXSetting:(id)arg1;
-- (void)_axSetDidRegisterForNotifications:(BOOL)arg1;
-- (BOOL)_axShouldDisableAutoHidingControls;
 - (void)_axSpeakUpdateToStatusPill;
+- (void)axUpdateAutoHideControlsTimer;
 - (void)enableWorldModeControl:(BOOL)arg1;
 - (void)startAutoHideControlsTimer;
 - (void)updateStatusPill;

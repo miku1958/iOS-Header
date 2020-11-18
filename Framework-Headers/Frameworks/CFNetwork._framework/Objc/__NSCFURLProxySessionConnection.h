@@ -58,6 +58,8 @@
 - (void)setIsDownload:(BOOL)arg1;
 - (void)setPoolPriority:(long long)arg1;
 - (void)setPriorityHint:(float)arg1;
+- (void)setTLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
+- (void)setTLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)suspend;
 
 @end

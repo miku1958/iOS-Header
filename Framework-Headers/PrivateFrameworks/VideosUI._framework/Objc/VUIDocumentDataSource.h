@@ -28,9 +28,6 @@
 - (id)initWithDataSourceDict:(id)arg1;
 - (id)initWithDocumentRef:(id)arg1;
 - (id)jsonData;
-- (id)viewControllerWithAppContext:(id)arg1;
-- (id)viewControllerWithAppContext:(id)arg1 documentOptions:(id)arg2;
-- (id)viewControllerWithAppContext:(id)arg1 viewElement:(id)arg2 documentOptions:(id)arg3;
 
 @end
 

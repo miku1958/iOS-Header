@@ -23,25 +23,35 @@
     NSString *_unmodifiedInput;
     NSString *_modifiedInput;
     NSString *_shiftModifiedInput;
+    NSString *_backupUnmodifiedInput;
+    NSString *_backupModifiedInput;
+    NSString *_backupShiftModifiedInput;
 }
 
 @property (nonatomic) unsigned short alternativeKeyCode; // @synthesize alternativeKeyCode=_alternativeKeyCode;
+@property (copy, nonatomic) NSString *backupModifiedInput; // @synthesize backupModifiedInput=_backupModifiedInput;
+@property (copy, nonatomic) NSString *backupShiftModifiedInput; // @synthesize backupShiftModifiedInput=_backupShiftModifiedInput;
+@property (copy, nonatomic) NSString *backupUnmodifiedInput; // @synthesize backupUnmodifiedInput=_backupUnmodifiedInput;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int gsModifierState; // @synthesize gsModifierState=_gsModifierState;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned short keyCode; // @synthesize keyCode=_keyCode;
 @property (nonatomic) BOOL keyDown; // @synthesize keyDown=_keyDown;
-@property (strong, nonatomic) NSString *modifiedInput; // @synthesize modifiedInput=_modifiedInput;
+@property (copy, nonatomic) NSString *modifiedInput; // @synthesize modifiedInput=_modifiedInput;
 @property (nonatomic) unsigned int modifierState; // @synthesize modifierState=_modifierState;
-@property (strong, nonatomic) NSString *shiftModifiedInput; // @synthesize shiftModifiedInput=_shiftModifiedInput;
+@property (copy, nonatomic) NSString *shiftModifiedInput; // @synthesize shiftModifiedInput=_shiftModifiedInput;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *unmodifiedInput; // @synthesize unmodifiedInput=_unmodifiedInput;
+@property (copy, nonatomic) NSString *unmodifiedInput; // @synthesize unmodifiedInput=_unmodifiedInput;
 @property (nonatomic) unsigned int usagePage; // @synthesize usagePage=_usagePage;
 
++ (struct __GSKeyboard *)_getUIKitKeyboardRef;
++ (struct __GSKeyboard *)_getUSUIKitKeyboardRef;
++ (void)prepareForKeycodeTranslation;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct __GSKeyboard *)_getUIKitKeyboardRef;
+- (struct __GSKeyboard *)_getUSUIKitKeyboardRef;
 - (id)accessibilityEventRepresentationTabularDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

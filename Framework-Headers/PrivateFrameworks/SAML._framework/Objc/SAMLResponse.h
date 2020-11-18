@@ -29,6 +29,7 @@
 - (id)initWithData:(id)arg1 schema:(id)arg2 error:(id *)arg3;
 - (BOOL)isValid:(id *)arg1;
 - (id)primaryStatusCode;
+- (void)setAuthenticationTTL:(id)arg1;
 - (id)statusCodes;
 - (id)subject;
 - (id)userName;

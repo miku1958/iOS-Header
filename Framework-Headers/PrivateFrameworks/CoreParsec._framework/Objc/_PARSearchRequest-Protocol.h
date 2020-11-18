@@ -14,6 +14,7 @@
 @property (copy, nonatomic) NSString *countryCode;
 @property (copy, nonatomic) NSData *dictionarySignature;
 @property (copy, nonatomic) NSString *effectiveSystemLanguage;
+@property (nonatomic) long long exp;
 @property (nonatomic) int hourFormat;
 @property (nonatomic) BOOL hsEnabled;
 @property (copy, nonatomic) NSString *inputMode;

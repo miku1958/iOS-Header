@@ -32,6 +32,8 @@
 - (void)handleRemoteCommand:(id)arg1 isOneWay:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initClientLiteHelper;
 - (id)initWithServiceHelper:(id)arg1;
+- (BOOL)isDeviceInCarDND;
+- (BOOL)isDeviceInStarkMode;
 - (BOOL)isDeviceLockedWithPasscode;
 - (BOOL)isTimeoutSuspended;
 - (BOOL)openSensitiveURL:(id)arg1;

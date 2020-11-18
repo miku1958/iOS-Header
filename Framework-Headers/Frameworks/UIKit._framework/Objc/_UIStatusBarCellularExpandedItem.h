@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarBadgeView *badgeView; // @synthesize badgeView=_badgeView;
 
 + (id)badgeDisplayIdentifier;
-+ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 typeClass:(Class)arg3;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 typeClass:(Class)arg3 allowDualNetwork:(BOOL)arg4;
 - (void).cxx_destruct;
 - (void)_create_badgeView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;

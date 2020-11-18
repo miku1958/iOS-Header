@@ -17,6 +17,7 @@
     MISSING_TYPE *dislikeButtonRenderer;
     MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *tagController;
+    MISSING_TYPE *privateDataDirectory;
     MISSING_TYPE *debugEnabled;
 }
 

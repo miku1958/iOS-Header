@@ -48,6 +48,7 @@
 - (id)tv_highlightStyle;
 - (id)tv_imageTreatment;
 - (double)tv_imageUpscaleFactor;
+- (long long)tv_indexDisplayMode;
 - (double)tv_interitemSpacing;
 - (id)tv_layerFlipMode;
 - (double)tv_lineSpacing;

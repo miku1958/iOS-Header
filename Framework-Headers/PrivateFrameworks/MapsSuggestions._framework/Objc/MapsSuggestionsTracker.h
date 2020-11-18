@@ -20,8 +20,8 @@
     int _transportType;
     MapsSuggestionsManager *_manager;
     GEOLocationShifter *_locationShifter;
-    struct NSMutableDictionary *_etaTitleFormatters;
-    struct NSMutableDictionary *_distanceTitleFormatters;
+    NSMutableDictionary *_etaTitleFormatters;
+    NSMutableDictionary *_distanceTitleFormatters;
     BOOL _shouldBeRunning;
     MapsSuggestionsETARequester *_etaRequester;
     MapsSuggestionsDonater *_donater;
@@ -55,7 +55,7 @@
 + (BOOL)_isLocationShiftRequiredForLocation:(id)arg1;
 - (void).cxx_destruct;
 - (id)_bestValidOfflineETAForEntry:(id)arg1 destinationKey:(id)arg2;
-- (void)_captureSignalsFromEntries:(struct NSArray *)arg1;
+- (void)_captureSignalsFromEntries:(id)arg1;
 - (void)_decorateETA:(id)arg1 forEntry:(id)arg2;
 - (void)_decorateFlightInfoForEntry:(id)arg1;
 - (id)_distanceTitleFormatterForType:(long long)arg1;
@@ -82,7 +82,7 @@
 - (void)scheduleRefresh;
 - (void)setLocation:(id)arg1;
 - (void)setTitleFormatter:(id)arg1 forType:(long long)arg2;
-- (void)trackSuggestionEntries:(struct NSArray *)arg1 transportType:(int)arg2;
+- (void)trackSuggestionEntries:(id)arg1 transportType:(int)arg2;
 - (void)unschedule;
 
 @end

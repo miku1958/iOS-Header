@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) AMSURLSession *session; // @synthesize session=_session;
 
 - (void).cxx_destruct;
+- (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithSession:(id)arg1 delegate:(id)arg2;
 - (void)invalidate;
+- (id)methodSignatureForSelector:(SEL)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 
 @end

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)normalizedPhoneNumber:(id)arg1;
 + (id)unformatPhoneNumber:(id)arg1;
 + (BOOL)updateTextField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
++ (BOOL)updateTextView:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 
 @end
 

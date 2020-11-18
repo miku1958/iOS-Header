@@ -11,10 +11,12 @@
 }
 
 + (double)relativeOffsetFromTimeString:(id)arg1;
+- (id)currentSelectedCalendar;
 - (id)endDateByCorrectingDate:(id)arg1 withStartDate:(id)arg2;
 - (void)initializeParameters;
 - (void)runWithInput:(id)arg1 error:(id *)arg2;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
+- (id)targetDataInfo;
 - (void)updateCalendars;
 - (void)updateForcesAllDayFlags;
 - (void)wasAddedToWorkflow:(id)arg1;

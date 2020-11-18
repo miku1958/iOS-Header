@@ -12,8 +12,8 @@
 {
     HMHome *_home;
     HFUserNotificationServiceTopic *_topic;
-    struct HFTransformItemProvider *_transformServiceItemProvider;
-    struct HFTransformItemProvider *_transformCameraItemProvider;
+    HFTransformItemProvider *_transformServiceItemProvider;
+    HFTransformItemProvider *_transformCameraItemProvider;
 }
 
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;

@@ -31,6 +31,7 @@
 - (void)getExtensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)maintenanceConnectionRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)openSettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reloadExtensionWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setEnabled:(BOOL)arg1 forExtensionWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setPrioritizedExtensionIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

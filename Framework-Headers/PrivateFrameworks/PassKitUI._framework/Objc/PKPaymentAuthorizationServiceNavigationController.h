@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)_backgroundColorForModalFormSheet;
+- (BOOL)_canShowWhileLocked;
 - (id)init;
 - (id)initWithLayoutStyle:(long long)arg1 paymentRequest:(id)arg2;
 - (id)initWithStyle:(unsigned long long)arg1;

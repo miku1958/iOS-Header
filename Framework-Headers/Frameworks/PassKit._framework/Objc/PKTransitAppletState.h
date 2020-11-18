@@ -15,15 +15,19 @@
 {
     BOOL _blacklisted;
     BOOL _needsStationProcessing;
+    BOOL _appletStateDirty;
     NSNumber *_historySequenceNumber;
     NSDecimalNumber *_balance;
     NSNumber *_loyaltyBalance;
     NSString *_currency;
     NSDate *_expirationDate;
+    NSArray *_balances;
     NSArray *_enrouteTransitTypes;
 }
 
+@property (nonatomic) BOOL appletStateDirty; // @synthesize appletStateDirty=_appletStateDirty;
 @property (copy, nonatomic) NSDecimalNumber *balance; // @synthesize balance=_balance;
+@property (copy, nonatomic) NSArray *balances; // @synthesize balances=_balances;
 @property (nonatomic, getter=isBlacklisted) BOOL blacklisted; // @synthesize blacklisted=_blacklisted;
 @property (copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property (copy, nonatomic) NSArray *enrouteTransitTypes; // @synthesize enrouteTransitTypes=_enrouteTransitTypes;

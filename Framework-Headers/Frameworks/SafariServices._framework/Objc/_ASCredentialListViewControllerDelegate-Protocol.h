@@ -12,5 +12,6 @@
 
 @optional
 - (void)credentialListViewController:(_ASCredentialListViewController *)arg1 didFinishWithCredential:(ASPasswordCredential *)arg2 completion:(void (^)(void))arg3;
+- (void)credentialListViewControllerDidPrepareInterface:(_ASCredentialListViewController *)arg1;
 @end
 

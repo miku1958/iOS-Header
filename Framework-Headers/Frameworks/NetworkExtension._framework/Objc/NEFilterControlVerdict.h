@@ -23,8 +23,9 @@
 + (BOOL)supportsSecureCoding;
 + (id)updateRules;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)filterAction;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

@@ -47,7 +47,7 @@
 - (void)fireEventHandlerWithPayload:(id)arg1;
 - (void)flushOperations;
 - (void)handleTextActionPayload:(id)arg1;
-- (void)handleTextInputData:(struct NSDictionary *)arg1;
+- (void)handleTextInputData:(id)arg1;
 - (void)handleUsername:(id)arg1 password:(id)arg2;
 - (id)init;
 - (void)inputSystemService:(id)arg1 didCreateInputSession:(id)arg2;

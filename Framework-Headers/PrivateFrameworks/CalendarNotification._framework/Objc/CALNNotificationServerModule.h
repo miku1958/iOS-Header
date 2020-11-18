@@ -8,7 +8,7 @@
 
 #import <CalendarNotification/CADModule-Protocol.h>
 
-@class CALNCalendarAppBadgeUpdater, CALNInboxNotificationMonitor, CALNNotificationServer, CALNNotificationSourceRefresher, CALNNotificationStorageWrapper, NSArray, NSString;
+@class CALNCalendarAppBadgeUpdater, CALNInboxNotificationMonitor, CALNNotificationIconUpdater, CALNNotificationServer, CALNNotificationSourceRefresher, CALNNotificationStorageWrapper, NSArray, NSString;
 
 @interface CALNNotificationServerModule : NSObject <CADModule>
 {
@@ -18,6 +18,7 @@
     CALNCalendarAppBadgeUpdater *_calendarAppBadgeUpdater;
     CALNNotificationStorageWrapper *_calendarStorageWrapper;
     CALNNotificationStorageWrapper *_remindersStorageWrapper;
+    CALNNotificationIconUpdater *_iconUpdater;
     NSArray *_modules;
 }
 
@@ -27,13 +28,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) CALNNotificationIconUpdater *iconUpdater; // @synthesize iconUpdater=_iconUpdater;
 @property (readonly, nonatomic) CALNInboxNotificationMonitor *inboxNotificationMonitor; // @synthesize inboxNotificationMonitor=_inboxNotificationMonitor;
 @property (readonly, nonatomic) NSArray *modules; // @synthesize modules=_modules;
 @property (readonly, nonatomic) CALNNotificationSourceRefresher *notificationSourceRefresher; // @synthesize notificationSourceRefresher=_notificationSourceRefresher;
 @property (readonly, nonatomic) CALNNotificationStorageWrapper *remindersStorageWrapper; // @synthesize remindersStorageWrapper=_remindersStorageWrapper;
 @property (readonly) Class superclass;
 
-+ (id)_createCalendarNotificationServerWithUserNotificationCenterFactory:(id)arg1 storage:(id)arg2 eventStoreProvider:(id)arg3 inboxNotificationProvider:(id)arg4 alarmEngineMonitor:(id)arg5 travelEngine:(id)arg6 timeToLeaveRefreshMonitor:(id)arg7 timeToLeaveRefreshStorage:(id)arg8;
++ (id)_createCalendarNotificationServerWithUserNotificationCenterFactory:(id)arg1 storage:(id)arg2 eventStoreProvider:(id)arg3 inboxNotificationProvider:(id)arg4 alarmEngineMonitor:(id)arg5 travelEngine:(id)arg6 timeToLeaveRefreshMonitor:(id)arg7 timeToLeaveRefreshStorage:(id)arg8 iconCache:(id)arg9;
 + (id)_createNotificationServerWithUserNotificationCenter:(id)arg1 storage:(id)arg2 eventStoreProvider:(id)arg3 inboxNotificationProvider:(id)arg4 alarmEngineMonitor:(id)arg5 travelEngine:(id)arg6 timeToLeaveRefreshMonitor:(id)arg7 timeToLeaveRefreshStorage:(id)arg8;
 + (id)_createNotificationSourcesWithNotificationManager:(id)arg1 eventStoreProvider:(id)arg2 inboxNotificationProvider:(id)arg3 alarmEngineMonitor:(id)arg4 travelEngine:(id)arg5 timeToLeaveRefreshMonitor:(id)arg6 timeToLeaveRefreshStorage:(id)arg7;
 + (id)_createNotificationStorageAtPath:(id)arg1;

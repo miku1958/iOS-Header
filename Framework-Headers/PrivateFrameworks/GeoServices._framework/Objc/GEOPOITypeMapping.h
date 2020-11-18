@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithResourceManifestManager:(id)arg1 resourceManager:(id)arg2;
 - (BOOL)isAlwaysVisiblePOIType:(int)arg1;
 - (void)loadPOICategoriesJSON;
-- (BOOL)parseCategoryMappingJSON:(id)arg1 categoryToPOIType:(struct NSDictionary **)arg2 POITypeToCategory:(struct NSDictionary **)arg3;
+- (BOOL)parseCategoryMappingJSON:(id)arg1 categoryToPOIType:(id *)arg2 POITypeToCategory:(id *)arg3;
 - (void)parsePOICategoriesJSON:(id)arg1;
 - (id)parseVisiblePOITypesJSON:(id)arg1;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;

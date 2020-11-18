@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CUAppleIDClient, CUPairedPeer, NSArray, NSData, NSDictionary, NSString;
+@class CUAppleIDClient, CUPairedPeer, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUPairingSession : NSObject
 {
     struct PairingSessionPrivate *_pairingSession;
-    struct NSMutableDictionary *_pairingStreams;
+    NSMutableDictionary *_pairingStreams;
     struct LogCategory *_ucat;
     unsigned int _flags;
     unsigned int _pinType;

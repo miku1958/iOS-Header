@@ -28,7 +28,7 @@
     NSDictionary *_parameterCombinations;
     NSDictionary *_configurableParameterCombinations;
     INParameterContexts *_parameterContexts;
-    unsigned long long _indexingHash;
+    long long _indexingHash;
     INIntentKeyParameter *_keyParameter;
     NSString *_identifier;
     PBCodable *_backingStore;
@@ -52,7 +52,7 @@
 @property (nonatomic, setter=_setExecutionContext:) long long _executionContext;
 @property (readonly, nonatomic) BOOL _hasTitle;
 @property (nonatomic, setter=_setIdiom:) long long _idiom;
-@property (readonly, nonatomic) unsigned long long _indexingHash; // @synthesize _indexingHash;
+@property (readonly, nonatomic) long long _indexingHash; // @synthesize _indexingHash;
 @property (readonly, nonatomic) long long _intentCategory;
 @property (readonly) long long _intents_toggleState;
 @property (strong, nonatomic, setter=_setIsOwnedByCurrentUser:) NSNumber *_isOwnedByCurrentUser;
@@ -150,7 +150,7 @@
 - (BOOL)_isValueValidForKey:(id)arg1 unsupportedReason:(id *)arg2;
 - (id)_keyCodableAttributes;
 - (id)_keyImageWithIntentDescriptionStrategy;
-- (id)_localizedCombinationStringForKey:(id)arg1 value:(id)arg2 localizationTable:(id)arg3 bundleURL:(id)arg4 language:(id)arg5;
+- (id)_localizedCombinationStringForKey:(id)arg1 value:(id)arg2 localizationTable:(id)arg3 bundleURL:(id)arg4 localizer:(id)arg5;
 - (id)_nonNilParameters;
 - (id)_querySchemaWithBlock:(CDUnknownBlockType)arg1 contentOptions:(unsigned long long)arg2;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
@@ -160,10 +160,10 @@
 - (void)_setIntentCategory:(long long)arg1;
 - (id)_spotlightContentType;
 - (id)_subtitleForLanguage:(id)arg1;
-- (id)_subtitleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (id)_subtitleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 - (BOOL)_supportsBackgroundExecutionWithOptions:(unsigned long long)arg1;
 - (id)_titleForLanguage:(id)arg1;
-- (id)_titleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (id)_titleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 - (id)_typedBackingStore;
 - (void)_updateWithJSONDictionary:(id)arg1;
 - (id)_validParameterCombinationsWithSchema:(id)arg1;
@@ -180,7 +180,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGenericIntent;
 - (id)keyImage;
-- (id)localizeValueOfSlotDescription:(id)arg1 forLanguage:(id)arg2;
+- (id)localizeValueOfSlotDescription:(id)arg1 withLocalizer:(id)arg2;
 - (void)setImage:(id)arg1 forParameterNamed:(id)arg2;
 - (BOOL)setValue:(id)arg1 forProperty:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

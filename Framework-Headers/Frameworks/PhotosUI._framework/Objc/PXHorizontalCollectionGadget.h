@@ -52,6 +52,7 @@
 @property (nonatomic) long long defaultColumnSpan; // @synthesize defaultColumnSpan=_defaultColumnSpan;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (nonatomic) unsigned long long gadgetType; // @synthesize gadgetType=_gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -65,9 +66,6 @@
 @property (strong, nonatomic) PXGadgetOrbContext *previewOrbContext; // @synthesize previewOrbContext=_previewOrbContext;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
 @property (nonatomic) BOOL visibleGadgetsLoaded; // @synthesize visibleGadgetsLoaded=_visibleGadgetsLoaded;
 
@@ -80,12 +78,12 @@
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (void)commitPreviewViewController:(id)arg1;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 - (void)contentViewDidDisappear;
 - (void)contentViewWillAppear;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
-- (BOOL)gadget:(id)arg1 transitionToViewController:(struct NSObject *)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)gadget:(id)arg1 transitionToViewController:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)gadgetControllerFinishedUpdatingDataSourceWithChange:(id)arg1;
 - (void)gadgetControllerHasAppeared;
 - (void)gadgetControllerHasDisappeared;
@@ -97,7 +95,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)prefetchDuringScrollingForWidth:(double)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (id)rootNavigationHelper;
 - (void)setCollectionAccessoryButtonTitle:(id)arg1;
 - (void)setCollectionAccessoryButtonType:(unsigned long long)arg1;
@@ -105,9 +103,9 @@
 - (void)setCollectionTitle:(id)arg1;
 - (void)setLayout:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (id)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)updateIfNeeded;
-- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
+- (void)userDidSelectAccessoryButton:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

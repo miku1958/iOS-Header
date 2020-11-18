@@ -38,6 +38,7 @@
 - (void).cxx_destruct;
 - (BOOL)_configurePersistentStoreCoordinator:(id)arg1 overrideCurrentModelVersionInStore:(BOOL)arg2 error:(id *)arg3;
 - (long long)configureSharedPersistentStoreCoordinatorAndMigrateOrRebuildIfNecessaryWithModelMigrator:(id)arg1 migrationPolicy:(unsigned int)arg2 error:(id *)arg3;
+- (void)dealloc;
 - (id)initWithLibraryURL:(id)arg1 lazyAssetsdClient:(id)arg2;
 - (id)newPersistentStoreCoordinatorForMigration:(id *)arg1;
 - (id)newSharedPersistentStoreCoordinator;

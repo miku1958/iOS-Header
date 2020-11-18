@@ -34,6 +34,7 @@
 @property (readonly) Class superclass;
 
 + (id)entityName;
++ (BOOL)isPlayableVideoTypeIdentifierString:(id)arg1;
 + (id)jpegUniformTypeIdentifierInContext:(id)arg1;
 + (id)plistUniformTypeIdentifierInContext:(id)arg1;
 + (id)uniformTypeIdentifierFromString:(id)arg1 createIfMissing:(BOOL)arg2 context:(id)arg3;

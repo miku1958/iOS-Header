@@ -10,14 +10,14 @@
 {
 }
 
-+ (struct CGImage *)CGImageFromImage:(struct UIImage *)arg1;
-+ (struct UIImage *)cropImage:(struct UIImage *)arg1 toRect:(struct CGRect)arg2;
-+ (void)cropImageWhitespace:(struct UIImage *)arg1 upToRect:(struct CGRect)arg2 resultBlock:(CDUnknownBlockType)arg3;
-+ (struct UIImage *)imageFromCGImage:(struct CGImage *)arg1 scale:(double)arg2;
-+ (double)scaleFromImage:(struct UIImage *)arg1;
-+ (struct UIEdgeInsets)transparencyInsetsForImage:(struct UIImage *)arg1 requiringFullOpacity:(BOOL)arg2;
-+ (struct UIImage *)trimmedImageByTrimmingTransparentPixelsFromImage:(struct UIImage *)arg1;
-+ (struct UIImage *)trimmedImageByTrimmingTransparentPixelsFromImage:(struct UIImage *)arg1 requiringFullOpacity:(BOOL)arg2;
++ (struct CGImage *)CGImageFromImage:(id)arg1;
++ (id)cropImage:(id)arg1 toRect:(struct CGRect)arg2;
++ (void)cropImageWhitespace:(id)arg1 upToRect:(struct CGRect)arg2 resultBlock:(CDUnknownBlockType)arg3;
++ (id)imageFromCGImage:(struct CGImage *)arg1 scale:(double)arg2;
++ (double)scaleFromImage:(id)arg1;
++ (struct UIEdgeInsets)transparencyInsetsForImage:(id)arg1 requiringFullOpacity:(BOOL)arg2;
++ (id)trimmedImageByTrimmingTransparentPixelsFromImage:(id)arg1;
++ (id)trimmedImageByTrimmingTransparentPixelsFromImage:(id)arg1 requiringFullOpacity:(BOOL)arg2;
 
 @end
 

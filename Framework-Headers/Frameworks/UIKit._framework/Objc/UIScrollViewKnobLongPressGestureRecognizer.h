@@ -9,7 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface UIScrollViewKnobLongPressGestureRecognizer : UILongPressGestureRecognizer
 {
+    BOOL _forPointer;
 }
+
+@property (nonatomic) BOOL forPointer; // @synthesize forPointer=_forPointer;
+
+- (BOOL)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 
 @end
 

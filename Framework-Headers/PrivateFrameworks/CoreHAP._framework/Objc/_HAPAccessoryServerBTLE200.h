@@ -167,17 +167,17 @@
 - (id)_pendingRequestForCharacteristic:(id)arg1;
 - (id)_pendingResponseForRequest:(id)arg1;
 - (void)_performEnableEvent:(BOOL)arg1 toCharacteristic:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_performTimedWriteExecuteForCharacteristic:(id)arg1 value:(id)arg2 options:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_performTimedWritePrepareWithValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_performTimedWriteValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_performWriteValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_performTimedWriteExecuteForCharacteristic:(id)arg1 value:(id)arg2 options:(long long)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_performTimedWritePrepareWithValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_performTimedWriteValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_performWriteValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_readCharacteristicSignature:(id)arg1;
 - (void)_readCharacteristicSignatures;
 - (void)_readCharacteristicValue:(id)arg1;
-- (void)_readCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_readCharacteristicValues:(id)arg1 queue:(id)arg2 logEventSession:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_readDescriptorValue:(id)arg1;
 - (void)_readServiceSignature:(id)arg1;
-- (void)_readValueForCharacteristic:(id)arg1 options:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_readValueForCharacteristic:(id)arg1 options:(long long)arg2 logEventSession:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_reallySendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_requestResponseForRequest:(id)arg1;
 - (void)_resetWithError:(id)arg1;
@@ -196,7 +196,7 @@
 - (void)_suspendConnectionIdleTimer;
 - (void)_updateConnectionIdleTime:(unsigned char)arg1;
 - (BOOL)_validateProtocolInfo:(id)arg1;
-- (void)_writeValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_writeValue:(id)arg1 toCharacteristic:(id)arg2 authorizationData:(id)arg3 options:(long long)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)authSession:(id)arg1 authComplete:(id)arg2;
 - (void)authSession:(id)arg1 authenticateUUID:(id)arg2 token:(id)arg3;
@@ -247,7 +247,7 @@
 - (void)peripheral:(id)arg1 didWriteValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (id)protocolInfoServiceSignatureCharacteristics;
 - (void)provisionToken:(id)arg1;
-- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;
@@ -266,7 +266,7 @@
 - (void)timerDidFire:(id)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)updateConnectionIdleTime:(unsigned char)arg1;
-- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

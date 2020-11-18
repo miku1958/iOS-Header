@@ -16,7 +16,7 @@
 - (void)getDataForBundleResources:(NSSet *)arg1 objectUniqueIdentifier:(NSString *)arg2 handler:(void (^)(NSDictionary *))arg3;
 - (void)getDiffForPassUpdateUserNotificationWithIdentifier:(NSString *)arg1 handler:(void (^)(PKDiff *))arg2;
 - (void)getImageSetContainerForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 suffix:(NSString *)arg4 handler:(void (^)(PKImageSetXPCContainer *))arg5;
-- (void)getPassUniqueIdentifiersForFieldProperties:(PKFieldProperties *)arg1 handler:(void (^)(NSArray *))arg2;
+- (void)getMetadataForFieldWithProperties:(PKFieldProperties *)arg1 handler:(void (^)(PKFieldMetadata *))arg2;
 - (void)getPassesWithUniqueIdentifiers:(NSArray *)arg1 handler:(void (^)(NSArray *))arg2;
 - (void)getRouteRelevantPassesForLocation:(CLLocation *)arg1 handler:(void (^)(NSArray *, NSDictionary *))arg2;
 - (void)introduceDatabaseIntegrityProblem;
@@ -43,7 +43,7 @@
 - (void)removeAllScheduledActivities;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)rescheduleCommutePlanRenewalReminderForPassWithUniqueID:(NSString *)arg1;
-- (void)resetApplePayWithDiagnosticReason:(NSString *)arg1 handler:(void (^)(void))arg2;
+- (void)resetApplePayWithDiagnosticReason:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)sendUserEditedCatalog:(PKCatalog *)arg1;
 - (void)shuffleGroups:(int)arg1;
 - (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(void (^)(NSError *))arg1;

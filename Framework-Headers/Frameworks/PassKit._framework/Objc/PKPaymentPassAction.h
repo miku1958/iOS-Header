@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, PKEnteredValueActionItem;
+@class NSArray, NSDate, NSDictionary, NSString, PKEnteredValueActionItem, PKTransitCommutePlan;
 
 @interface PKPaymentPassAction : NSObject <NSSecureCoding>
 {
@@ -22,6 +22,9 @@
     NSString *_actionDescription;
     NSString *_confirmationTitle;
     NSString *_relevantPropertyIdentifier;
+    NSString *_associatedEnteredValueIdentifier;
+    NSString *_associatedPlanIdentifier;
+    PKTransitCommutePlan *_associatedPlan;
     NSDate *_availableFrom;
     NSDate *_availableUntil;
     NSString *_unavailableBeforeReason;
@@ -37,6 +40,9 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *actionDescription; // @synthesize actionDescription=_actionDescription;
+@property (copy, nonatomic) NSString *associatedEnteredValueIdentifier; // @synthesize associatedEnteredValueIdentifier=_associatedEnteredValueIdentifier;
+@property (copy, nonatomic) PKTransitCommutePlan *associatedPlan; // @synthesize associatedPlan=_associatedPlan;
+@property (copy, nonatomic) NSString *associatedPlanIdentifier; // @synthesize associatedPlanIdentifier=_associatedPlanIdentifier;
 @property (readonly, copy, nonatomic) NSDate *availableFrom; // @synthesize availableFrom=_availableFrom;
 @property (readonly, copy, nonatomic) NSDate *availableUntil; // @synthesize availableUntil=_availableUntil;
 @property (readonly, copy, nonatomic) NSString *confirmationTitle; // @synthesize confirmationTitle=_confirmationTitle;
@@ -46,6 +52,7 @@
 @property (readonly, nonatomic) BOOL hasRemoteContent; // @synthesize hasRemoteContent=_hasRemoteContent;
 @property (readonly, copy, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isActionAvailable;
 @property (readonly, copy, nonatomic) NSString *relevantPropertyIdentifier; // @synthesize relevantPropertyIdentifier=_relevantPropertyIdentifier;
 @property (readonly, copy, nonatomic) NSArray *selectedActionItems; // @synthesize selectedActionItems=_selectedActionItems;
 @property (readonly, nonatomic) unsigned long long serviceProviderCapabilities; // @synthesize serviceProviderCapabilities=_serviceProviderCapabilities;

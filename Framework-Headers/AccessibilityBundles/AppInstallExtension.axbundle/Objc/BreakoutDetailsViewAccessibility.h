@@ -15,7 +15,10 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityPerformCallToAction:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
+- (id)_axBadgeLabel;
 - (id)_axCallToActionButton;
+- (id)_axDescriptionLabel;
+- (id)_axTitleLabel;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;

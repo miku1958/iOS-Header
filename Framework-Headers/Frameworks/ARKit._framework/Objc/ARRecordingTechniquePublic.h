@@ -8,7 +8,7 @@
 
 #import <ARKit/ARRecordingTechniqueProtocol-Protocol.h>
 
-@class ARParentImageSensorSettings, NSError, NSMutableDictionary, NSObject, NSSet, NSString, NSURL;
+@class ARParentImageSensorSettings, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, NSURL;
 @protocol ARRecordingTechniqueDelegate, OS_dispatch_queue;
 
 @interface ARRecordingTechniquePublic : ARTechnique <ARRecordingTechniqueProtocol>
@@ -20,6 +20,8 @@
     BOOL _writerReady;
     NSMutableDictionary *_lastRecordedTimestamps;
     NSError *_finishedError;
+    BOOL _recordCollaborationData;
+    NSMutableSet *_knownVIOSessionIDs;
     BOOL _expectDepthData;
     BOOL _expectAudioData;
     BOOL _expectCustomData;
@@ -61,12 +63,15 @@
 - (BOOL)finished;
 - (id)init;
 - (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3;
-- (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3 startImmediately:(BOOL)arg4;
+- (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3 startImmediately:(BOOL)arg4 recordCollaborationData:(BOOL)arg5;
 - (id)initWithFileURL:(id)arg1 sensorDataTypes:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)isReadyToRecord;
 - (id)processData:(id)arg1;
+- (void)recordAddedAnchor:(id)arg1;
+- (void)recordCollaborationData:(id)arg1 localSession:(BOOL)arg2;
 - (void)recordCustomData:(id)arg1 forTimestamp:(double)arg2;
+- (void)recordRemovedAnchor:(id)arg1;
 - (void)removeTemporaryVideoFile;
 - (unsigned long long)requiredSensorDataTypes;
 - (void)startRecording;

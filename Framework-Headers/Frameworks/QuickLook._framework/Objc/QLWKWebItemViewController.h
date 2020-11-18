@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
 - (BOOL)automaticallyUpdateScrollViewIndicatorInset;
+- (BOOL)canClickToToggleFullscreen;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canSwipeToDismiss;
 - (unsigned long long)currentPageNumber;

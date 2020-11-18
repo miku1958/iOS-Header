@@ -20,6 +20,7 @@
 @property (readonly, weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
+- (void)_anchorInWindowCoordinatesForAlert:(id)arg1;
 - (BOOL)_canHideToolbar;
 - (BOOL)_canToggleContentBlockers;
 - (id)_contentBlockersToggleAlertItem;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUBonjourBrowser : NSObject
@@ -16,7 +16,7 @@
     struct BonjourBrowser *_bonjourBrowser;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
-    struct NSMutableDictionary *_deviceMap;
+    NSMutableDictionary *_deviceMap;
     struct LogCategory *_ucat;
     BOOL _browseFlagsChanged;
     unsigned int _changeFlags;

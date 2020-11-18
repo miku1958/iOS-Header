@@ -10,13 +10,13 @@
 
 @interface AVTMutableEditingModelColors : AVTEditingModelColors
 {
-    struct NSMutableDictionary *_mutableStorage;
+    NSMutableDictionary *_mutableStorage;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *mutableStorage; // @synthesize mutableStorage=_mutableStorage;
 
 - (void).cxx_destruct;
-- (id)initWithStorage:(struct NSDictionary *)arg1 variationStore:(id)arg2;
+- (id)initWithStorage:(id)arg1 variationStore:(id)arg2;
 - (id)initWithVariationStore:(id)arg1;
 - (void)setColor:(id)arg1 forSettingKind:(CDStruct_597dd055)arg2 identifier:(id)arg3;
 

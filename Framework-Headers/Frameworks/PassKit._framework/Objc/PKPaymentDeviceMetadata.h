@@ -16,6 +16,7 @@
     NSNumber *_primaryJSBLSequenceCounter;
     NSString *_secureElementIdentifier;
     NSString *_uniqueDeviceIdentifier;
+    NSNumber *_uniqueChipIdentifier;
     NSString *_serialNumber;
     NSString *_phoneNumber;
     NSString *_signedPhoneNumber;
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (copy, nonatomic) NSString *signedPhoneNumber; // @synthesize signedPhoneNumber=_signedPhoneNumber;
 @property (copy, nonatomic) NSString *signedPhoneNumberVersion; // @synthesize signedPhoneNumberVersion=_signedPhoneNumberVersion;
+@property (copy, nonatomic) NSNumber *uniqueChipIdentifier; // @synthesize uniqueChipIdentifier=_uniqueChipIdentifier;
 @property (copy, nonatomic) NSString *uniqueDeviceIdentifier; // @synthesize uniqueDeviceIdentifier=_uniqueDeviceIdentifier;
 
 + (BOOL)supportsSecureCoding;

@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDate, NSMutableArray, NSMutableSet, NSSet, NSString, NSURL, WBSHistoryVisit;
+@class NSArray, NSData, NSDate, NSMutableArray, NSSet, NSString, NSURL, WBSHistoryVisit;
 
 @interface WBSHistoryItem : NSObject
 {
     WBSHistoryVisit *_lastVisit;
-    NSMutableSet *_visitsPendingWriteToDataStore;
     long long _databaseID;
-    unsigned long long _visitCount;
-    Vector_3b5d2a9f _dailyVisitCountScores;
-    Vector_3b5d2a9f _weeklyVisitCountScores;
+    int _visitCount;
+    int _visitCountScore;
+    struct unique_ptr<WBSHistoryItemVisitCountScoresStorage, std::__1::default_delete<WBSHistoryItemVisitCountScoresStorage>> _visitCountScores;
     NSMutableArray *_redirectSourceItems;
     NSMutableArray *_autocompleteTriggers;
     NSMutableArray *_visits;
@@ -25,7 +24,6 @@
     NSURL *_url;
     NSString *_userVisibleURLString;
     NSString *_urlString;
-    unsigned long long _visitCountScore;
     double _lastTimeTopSitesScoreWasComputed;
 }
 
@@ -55,8 +53,8 @@
 @property (readonly, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @property (readonly, copy, nonatomic) NSString *userVisibleHostOrFallbackURLString;
 @property (readonly, nonatomic) NSString *userVisibleURLString; // @synthesize userVisibleURLString=_userVisibleURLString;
-@property (readonly, nonatomic) unsigned long long visitCount;
-@property (readonly, nonatomic) unsigned long long visitCountScore; // @synthesize visitCountScore=_visitCountScore;
+@property (readonly, nonatomic) int visitCount;
+@property (readonly, nonatomic) int visitCountScore; // @synthesize visitCountScore=_visitCountScore;
 @property (readonly, nonatomic) NSArray *visits; // @synthesize visits=_visits;
 @property (readonly, nonatomic) NSSet *visitsPendingWriteToDataStoreOnSynchronizationQueue;
 @property (readonly, nonatomic) unsigned long long weeklyVisitCountScoresCountOnSynchronizationQueue;
@@ -68,17 +66,20 @@
 + (double)timeIntervalForDailyAndWeeklyVisitCountScores;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_accessVisitCountScoresStorage:(CDUnknownBlockType)arg1;
 - (BOOL)_addAutocompleteTriggerFromSynchronizationQueue:(id)arg1;
 - (void)_addExistingVisit:(id)arg1;
 - (void)_addVisit:(id)arg1;
+- (void)_addVisitToPendingWriteSet:(id)arg1;
 - (id)_autocompleteTriggersFromSynchronizationQueue;
-- (void)_collapseDailyVisitsToWeekly;
-- (void)_padDailyCountsForNewVisitAtTime:(double)arg1 indexOfNewVisit:(int *)arg2;
+- (BOOL)_visitsPendingWriteSetContains:(id)arg1;
+- (id)_visitsPendingWriteSetCreatingIfNeeded:(BOOL)arg1;
 - (void)_wasVisitedOnSynchronizationQueue:(id)arg1;
 - (BOOL)addAutocompleteTrigger:(id)arg1;
 - (void)addExistingVisit:(id)arg1;
 - (void)addRedirectSourceItemFromSynchronizationQueue:(id)arg1;
 - (void)clearVisitsPendingWriteToDataStoreFromSynchronizationQueue;
+- (void)dealloc;
 - (id)initWithSQLiteRow:(id)arg1;
 - (id)initWithURLString:(id)arg1;
 - (void)mergeDataFromItem:(id)arg1;

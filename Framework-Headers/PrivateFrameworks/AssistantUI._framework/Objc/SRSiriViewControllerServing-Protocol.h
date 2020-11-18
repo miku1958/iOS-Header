@@ -15,10 +15,12 @@
 @protocol SRSiriViewControllerServing <NSObject, AFUISiriSessionDelegate, AFUISpeechSynthesisDelegate, SiriUIPresentationRemoteControlling>
 - (void)didReceiveBugButtonLongPress;
 - (void)didReceiveDismissalAction:(BOOL)arg1 delayForTTS:(BOOL)arg2 completion:(void (^)(void))arg3;
+- (void)didReceiveDismissalAction:(BOOL)arg1 delayForTTS:(BOOL)arg2 withDismissalReason:(unsigned long long)arg3 completion:(void (^)(void))arg4;
 - (void)didReceiveHelpAction;
 - (void)didReceiveReportBugAction;
 - (void)didReceiveShortTapAction;
 - (void)hostApplicationDidBecomeActive;
+- (void)hostApplicationRequestsEmitUIStateTransitionForSiriDismissal:(int)arg1 withDismissalReason:(int)arg2;
 - (void)hostApplicationWillEnterForeground;
 - (void)hostApplicationWillResignActive;
 - (void)preloadPluginBundles;

@@ -9,11 +9,12 @@
 #import <HeartRhythmUI/HRLinkTextViewDelegate-Protocol.h>
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
-@class HKElectrocardiogram, HROnboardingElectrocardiogramResultView, HRStackedButtonView, NSLayoutAnchor, NSLayoutConstraint, UILabel;
+@class HKElectrocardiogram, HKHealthStore, HROnboardingElectrocardiogramResultView, HRStackedButtonView, NSLayoutAnchor, NSLayoutConstraint, UILabel;
 
 @interface HROnboardingElectrocardiogramPossibleResultsViewController : HROnboardingBaseViewController <HRLinkTextViewDelegate, HRStackedButtonViewDelegate>
 {
     HKElectrocardiogram *_electrocardiogram;
+    HKHealthStore *_healthStore;
     UILabel *_titleLabel;
     HROnboardingElectrocardiogramResultView *_sinusRhythmResultReview;
     HROnboardingElectrocardiogramResultView *_atrialFibrillationResultView;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) UILabel *disclaimerLabel; // @synthesize disclaimerLabel=_disclaimerLabel;
 @property (strong, nonatomic) NSLayoutConstraint *disclaimerLabelTopConstraint; // @synthesize disclaimerLabelTopConstraint=_disclaimerLabelTopConstraint;
 @property (strong, nonatomic) HKElectrocardiogram *electrocardiogram; // @synthesize electrocardiogram=_electrocardiogram;
+@property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (strong, nonatomic) HROnboardingElectrocardiogramResultView *highOrLowHeartRateResultView; // @synthesize highOrLowHeartRateResultView=_highOrLowHeartRateResultView;
 @property (strong, nonatomic) HROnboardingElectrocardiogramResultView *inconclusiveResultView; // @synthesize inconclusiveResultView=_inconclusiveResultView;
 @property (strong, nonatomic) HROnboardingElectrocardiogramResultView *onlyResultView; // @synthesize onlyResultView=_onlyResultView;

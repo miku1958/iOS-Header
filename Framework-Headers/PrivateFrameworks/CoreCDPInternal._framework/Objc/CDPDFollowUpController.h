@@ -23,6 +23,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_followUpControllerForContext:(id)arg1;
 - (BOOL)clearFollowUpWithContext:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (BOOL)postFollowUpItemForContext:(id)arg1 error:(id *)arg2;

@@ -15,7 +15,7 @@
 {
     BOOL _hasLoadedContentData;
     PXPhotosDetailsContext *_context;
-    struct NSObject *_contentView;
+    NSObject<PXAnonymousView> *_contentView;
     id<PXWidgetDelegate> _widgetDelegate;
     NSArray *_features;
     NSArray *_featureViews;
@@ -54,10 +54,10 @@
 - (void).cxx_destruct;
 - (struct CGSize)_layoutTokenViewsWithWidth:(double)arg1;
 - (void)_loadContentData;
-- (struct NSObject *)_loadContentView;
+- (id)_loadContentView;
 - (void)_loadFeaturesFromPhotosGraphProperties:(id)arg1;
 - (void)_showReportFeedback;
-- (id)_tokenViewsWithSuperview:(struct NSObject *)arg1;
+- (id)_tokenViewsWithSuperview:(id)arg1;
 - (void)loadContentData;
 - (double)preferredContentHeightForWidth:(double)arg1;
 - (void)unloadContentData;

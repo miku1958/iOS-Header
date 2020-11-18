@@ -7,36 +7,34 @@
 #import <VideosUI/VUIShelfViewController.h>
 
 #import <VideosUI/TVShelfViewLayoutDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
 #import <VideosUI/VUIDialogInteractionControllerDelegate-Protocol.h>
 #import <VideosUI/VUIEpisodeDetailViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUILibraryDownloadPopoverViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUILocalContentProtocol-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, VUIDialogInteractionController, VUIEpisodeDetailViewController, VUILibraryEpisodeListCell;
+@class NSArray, NSIndexPath, NSString, UICollectionViewDiffableDataSource, VUIDialogInteractionController, VUIEpisodeDetailViewController, VUILibraryEpisodeListCell;
 @protocol VUILibraryEpisodeShelfViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryEpisodeShelfViewController : VUIShelfViewController <UICollectionViewDataSource, UICollectionViewDelegate, TVShelfViewLayoutDelegate, VUIEpisodeDetailViewControllerDelegate, VUIDialogInteractionControllerDelegate, VUILibraryDownloadPopoverViewControllerDelegate, VUILocalContentProtocol>
+@interface VUILibraryEpisodeShelfViewController : VUIShelfViewController <UICollectionViewDelegate, TVShelfViewLayoutDelegate, VUIEpisodeDetailViewControllerDelegate, VUIDialogInteractionControllerDelegate, VUILibraryDownloadPopoverViewControllerDelegate>
 {
     VUILibraryEpisodeListCell *_sizingCell;
     VUIDialogInteractionController *_dialogInteractionController;
-    BOOL _onlyShowLocalContent;
     BOOL _shouldIgnoreSelectEvent;
     id<VUILibraryEpisodeShelfViewControllerDelegate> _delegate;
     NSArray *_episodeViewModels;
     VUIEpisodeDetailViewController *_episodeDetailViewController;
     NSIndexPath *_popoverIndexPath;
+    UICollectionViewDiffableDataSource *_diffableDataSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VUILibraryEpisodeShelfViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property (strong, nonatomic) VUIEpisodeDetailViewController *episodeDetailViewController; // @synthesize episodeDetailViewController=_episodeDetailViewController;
 @property (copy, nonatomic) NSArray *episodeViewModels; // @synthesize episodeViewModels=_episodeViewModels;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL onlyShowLocalContent; // @synthesize onlyShowLocalContent=_onlyShowLocalContent;
 @property (strong, nonatomic) NSIndexPath *popoverIndexPath; // @synthesize popoverIndexPath=_popoverIndexPath;
 @property (nonatomic) BOOL shouldIgnoreSelectEvent; // @synthesize shouldIgnoreSelectEvent=_shouldIgnoreSelectEvent;
 @property (readonly) Class superclass;
@@ -44,14 +42,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_canRemoveEpisodeAtIndexPath:(id)arg1;
 - (void)_configureShelfLayout:(id)arg1;
+- (id)_createDiffableDataSourceForCollectionView:(id)arg1;
+- (id)_createDiffableDataSourceSnapshot;
 - (id)_episodeViewModelsWithFetchedEpisodes:(id)arg1;
 - (id)_episodeWithIdentifier:(id)arg1;
+- (id)_getEntityIdentifiersFromViewModels;
 - (void)_updateHeaderView;
-- (void)_updateViewWithFetchedEpisodes:(id)arg1 andChangeSet:(id)arg2;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
-- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)configureWithCollectionView:(id)arg1;
 - (void)dialogInteractionController:(id)arg1 interactionDidBeginForIndexPath:(id)arg2;
@@ -63,7 +61,8 @@ __attribute__((visibility("hidden")))
 - (void)removeDownloadPressed;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateShelfLayout:(id)arg1;
-- (void)updateWithEpisodes:(id)arg1 andChangeSet:(id)arg2;
+- (void)updateWithEpisodes:(id)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

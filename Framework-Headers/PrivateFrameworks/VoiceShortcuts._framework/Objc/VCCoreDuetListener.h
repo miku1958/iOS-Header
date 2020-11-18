@@ -68,6 +68,7 @@
 - (void)registerSunriseSunsetCallbackIfNeeded;
 - (BOOL)registerTrigger:(id)arg1 error:(id *)arg2;
 - (void)registerTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)significantTimeChangeDidOccur;
 - (BOOL)startRunningWorkflow:(id)arg1 forTrigger:(id)arg2 eventInfo:(id)arg3 error:(out id *)arg4;
 - (void)unregisterAllTriggers;
 - (void)unregisterCallbackForIdentifier:(id)arg1;

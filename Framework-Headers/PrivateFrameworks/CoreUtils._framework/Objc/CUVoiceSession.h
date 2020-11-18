@@ -8,7 +8,7 @@
 
 #import <CoreUtils/VSSpeechSynthesizerDelegate-Protocol.h>
 
-@class CUVoiceRequest, NSString, VSSpeechSynthesizer;
+@class CUVoiceRequest, NSMutableArray, NSString, VSSpeechSynthesizer;
 @protocol OS_dispatch_queue;
 
 @interface CUVoiceSession : NSObject <VSSpeechSynthesizerDelegate>
@@ -17,10 +17,10 @@
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     unsigned int _invalidateFlags;
-    struct NSMutableArray *_requests;
+    NSMutableArray *_requests;
     VSSpeechSynthesizer *_speechSynthesizer;
     struct LogCategory *_ucat;
-    struct NSMutableArray *_voiceRequests;
+    NSMutableArray *_voiceRequests;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;

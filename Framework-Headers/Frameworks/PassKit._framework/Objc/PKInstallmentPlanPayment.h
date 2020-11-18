@@ -20,6 +20,7 @@
     NSDecimalNumber *_amountDue;
     NSDecimalNumber *_amountPaid;
     NSDate *_dueDate;
+    NSDate *_statementDate;
     NSArray *_lineItems;
     unsigned long long _paymentNumber;
     unsigned long long _paymentCount;
@@ -38,6 +39,7 @@
 @property (nonatomic) unsigned long long paymentCount; // @synthesize paymentCount=_paymentCount;
 @property (nonatomic) unsigned long long paymentNumber; // @synthesize paymentNumber=_paymentNumber;
 @property (strong, nonatomic) PKCreditAccountStatement *statement; // @synthesize statement=_statement;
+@property (strong, nonatomic) NSDate *statementDate; // @synthesize statementDate=_statementDate;
 @property (copy, nonatomic) NSString *statementIdentifier; // @synthesize statementIdentifier=_statementIdentifier;
 
 + (BOOL)supportsSecureCoding;

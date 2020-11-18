@@ -154,6 +154,7 @@
 - (void)composeEmailWithSubject:(id)arg1 body:(id)arg2;
 - (void)composeReviewWithURL:(id)arg1 itemIdentifier:(id)arg2 type:(id)arg3;
 - (struct OpaqueJSContext *)copyJavaScriptContext;
+- (id)currentAccount;
 - (id)currentAttestationVersion;
 - (void)dealloc;
 - (void)deallocAuthentication;
@@ -195,6 +196,7 @@
 - (BOOL)launchedToTest;
 - (void)log:(id)arg1;
 - (id)machineGUID;
+- (id)makeAMSViewController;
 - (id)makeAccount;
 - (id)makeAccountPageWithURLs:(id)arg1;
 - (id)makeActivity;

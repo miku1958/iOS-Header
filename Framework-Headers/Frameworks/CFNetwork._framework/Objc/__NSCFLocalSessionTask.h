@@ -136,6 +136,8 @@
 - (id)posixError:(int)arg1;
 - (id)resourceTimeoutError;
 - (void)setConnection:(id)arg1;
+- (void)set_TLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
+- (void)set_TLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_timeoutIntervalForResource:(double)arg1;
 - (void)startResourceTimer;
 - (id)startTimeoutError;

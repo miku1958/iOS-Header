@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *language;
+@property (copy, nonatomic) NSString *lastKnownAceHostOfCompanion;
 @property (copy, nonatomic) NSString *linkedAssistantId;
 @property (copy, nonatomic) NSData *linkedSessionValidationData;
 @property (copy, nonatomic) NSString *linkedSpeechId;

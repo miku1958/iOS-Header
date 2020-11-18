@@ -45,6 +45,7 @@
 - (BOOL)mapView:(MKMapView *)arg1 shouldReceiveTouch:(UITouch *)arg2;
 - (BOOL)mapView:(MKMapView *)arg1 shouldSelectLabelMarker:(VKLabelMarker *)arg2;
 - (void)mapView:(MKMapView *)arg1 showingFlyoverDidChange:(BOOL)arg2;
+- (void)mapView:(MKMapView *)arg1 venueCreated:(VKVenueFeatureMarker *)arg2 venueCreatedBuilding:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapView:(MKMapView *)arg1 willSelectLabelMarker:(VKLabelMarker *)arg2;
 - (void)mapView:(MKMapView *)arg1 willStartRespondingToGesture:(long long)arg2 animated:(BOOL)arg3;
 - (void)mapViewARSessionInterruptionEnded:(MKMapView *)arg1;

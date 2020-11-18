@@ -22,8 +22,10 @@
     NSDateComponents *_createdDateComponents;
     NSDateComponents *_modifiedDateComponents;
     NSString *_identifier;
+    NSString *_accountIdentifier;
 }
 
+@property (readonly, copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (copy, nonatomic, setter=_setContents:) NSArray *contents; // @synthesize contents=_contents;
 @property (readonly, copy, nonatomic) NSDateComponents *createdDateComponents; // @synthesize createdDateComponents=_createdDateComponents;
 @property (readonly, copy) NSString *debugDescription;
@@ -46,7 +48,7 @@
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
@@ -54,6 +56,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 contents:(id)arg2 groupName:(id)arg3 createdDateComponents:(id)arg4 modifiedDateComponents:(id)arg5 identifier:(id)arg6;
+- (id)initWithTitle:(id)arg1 contents:(id)arg2 groupName:(id)arg3 createdDateComponents:(id)arg4 modifiedDateComponents:(id)arg5 identifier:(id)arg6 accountIdentifier:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

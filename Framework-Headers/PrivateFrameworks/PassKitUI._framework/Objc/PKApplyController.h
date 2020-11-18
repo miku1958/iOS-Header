@@ -53,6 +53,7 @@
 - (void)_deviceMetadataFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_displayableErrorForError:(id)arg1 showDetailedErrorFlow:(BOOL)arg2;
 - (id)_fieldsViewControllerForPage:(id)arg1;
+- (id)_formatStringSuffixForItemType:(long long)arg1;
 - (void)_handleApplyResponse:(id)arg1 originalFeatureApplication:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleResponseError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_invalidateAssertion;
@@ -73,7 +74,8 @@
 - (void)_queueGenericErrorViewControllerWithPage:(id)arg1;
 - (void)_queueInfoFlowWithNextWithPage:(id)arg1;
 - (void)_queueOfferFlowWithPage:(id)arg1;
-- (void)_queuePassActiviationFlowWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queuePassActivationFlowWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queueProgramConsentFlowWithPage:(id)arg1;
 - (void)_queueStateReasonExplanationFlowWithPage:(id)arg1;
 - (void)_queueTerminalStateFlowWithPage:(id)arg1;
 - (void)_reset;
@@ -91,7 +93,7 @@
 - (void)submitActionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)submitDocumentPage:(id)arg1 selectedDocument:(id)arg2 frontImage:(id)arg3 backImage:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)submitFieldsPage:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)termsAccepted:(BOOL)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)termsAccepted:(BOOL)arg1 termsIdentifier:(id)arg2 secondaryIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)termsDataForFeatureWithIdentifier:(id)arg1 format:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)termsDataForIdentifier:(id)arg1 format:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)termsShownWithIdentifier:(id)arg1;

@@ -79,6 +79,7 @@
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 userModification:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)canSkipItem:(id)arg1;
+- (id)contentItemIDAtIndex:(long long)arg1;
 - (id)contentItemIDWithCurrentItemOffset:(long long)arg1 mode:(long long)arg2 didReachEnd:(BOOL *)arg3;
 - (id)contentItemIDsFromOffset:(long long)arg1 toOffset:(long long)arg2 nowPlayingIndex:(long long *)arg3;
 - (void)dealloc;
@@ -90,7 +91,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)finalizeStateRestorationWithAccountManager:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)firstContentItemIDForItemIntersectingIdentifierSet:(id)arg1;
-- (void)handlePlaybackFailureForItem:(id)arg1;
 - (void)incrementVersionForSegment:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

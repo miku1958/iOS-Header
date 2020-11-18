@@ -25,6 +25,7 @@
     NSString *_voiceAssetKey;
     NSString *_voiceResourceAssetKey;
     NSString *_audioOutputRoute;
+    NSString *_clientBundleIdentifier;
     long long _requestCreatedTimestamp;
     long long _eagerRequestCreatedTimeStampDiffs;
     long long _synthesisBeginTimestamp;
@@ -44,6 +45,7 @@
 @property (copy) NSString *audioOutputRoute; // @synthesize audioOutputRoute=_audioOutputRoute;
 @property long long audioStartTimestampDiffs; // @synthesize audioStartTimestampDiffs=_audioStartTimestampDiffs;
 @property BOOL canUseServerTTS; // @synthesize canUseServerTTS=_canUseServerTTS;
+@property (copy) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property long long eagerRequestCreatedTimeStampDiffs; // @synthesize eagerRequestCreatedTimeStampDiffs=_eagerRequestCreatedTimeStampDiffs;
 @property long long errorCode; // @synthesize errorCode=_errorCode;
 @property BOOL isCacheHitFromDisk; // @synthesize isCacheHitFromDisk=_isCacheHitFromDisk;
@@ -77,6 +79,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isSynthesisCached;
+- (double)realTimeFactor;
 - (double)synthesisLatency;
 - (double)synthesisToSpeechTime;
 - (double)timeToSpeakLatency;

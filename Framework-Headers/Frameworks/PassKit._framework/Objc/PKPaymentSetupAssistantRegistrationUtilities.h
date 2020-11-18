@@ -22,6 +22,7 @@
 + (void)_phonePreflight:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (BOOL)_shouldCheckMacNeedsToRun;
 + (void)preflightPaymentSetupProvisioningController:(id)arg1 forSetupAssistant:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
++ (id)retrieveLocalAppletSubcredentialPassCredentials;
 + (BOOL)setupAssistantNeedsToRun:(unsigned long long)arg1 returningRequirements:(unsigned long long *)arg2;
 
 @end

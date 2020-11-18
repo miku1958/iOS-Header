@@ -64,13 +64,13 @@
 - (id)containedVariables;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)defaultStateForInfo:(const struct WFRowTemplateValueInfo *)arg1;
-- (void)getUserInputRequiredValue:(CDUnknownBlockType)arg1 variableSource:(id)arg2 parameter:(id)arg3;
+- (void)getUserInputRequiredValue:(CDUnknownBlockType)arg1 context:(id)arg2;
 - (id)initWithPropertyName:(id)arg1 contentItemClass:(Class)arg2 comparisonOperator:(long long)arg3 removable:(BOOL)arg4 bounded:(BOOL)arg5 hidden:(BOOL)arg6;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3 contentItemClass:(Class)arg4 variablesDisabled:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValueWithInfoDisplayed:(const struct WFRowTemplateValueInfo *)arg1;
-- (void)processWithVariableSource:(id)arg1 parameter:(id)arg2 userInputRequiredHandler:(CDUnknownBlockType)arg3 valueHandler:(CDUnknownBlockType)arg4;
+- (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (id)serializedRepresentation;
 - (id)stateBySettingAnotherDateValue:(id)arg1;
 - (id)stateBySettingBooleanValue:(id)arg1;

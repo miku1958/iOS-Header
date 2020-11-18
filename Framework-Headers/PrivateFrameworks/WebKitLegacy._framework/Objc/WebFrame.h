@@ -38,7 +38,7 @@
 - (id)_cacheabilityDictionary;
 - (BOOL)_canProvideDocumentSource;
 - (BOOL)_canSaveAsWebArchive;
-- (struct CGRect)_caretRectAtPosition:(const struct Position *)arg1 affinity:(int)arg2;
+- (struct CGRect)_caretRectAtPosition:(const struct Position *)arg1 affinity:(unsigned long long)arg2;
 - (id)_characterRangeAtPoint:(struct CGPoint)arg1;
 - (void)_clearCoreFrame;
 - (void)_clearOpener;
@@ -84,7 +84,7 @@
 - (BOOL)_loadsSynchronously;
 - (id)_markDOMRange;
 - (BOOL)_needsLayout;
-- (id)_nodesFromList:(Vector_1d266cd7 *)arg1;
+- (id)_nodesFromList:(Vector_ac56241c *)arg1;
 - (OptionSet_8e32cbf3)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
 - (unsigned int)_pendingFrameUnloadEventCount;
 - (id)_rectsForRange:(id)arg1;
@@ -130,7 +130,7 @@
 - (void)aggressivelyExpandSelectionToWordContainingCaretSelection;
 - (id)approximateNodeAtViewportLocation:(struct CGPoint *)arg1;
 - (struct CGRect)caretRect;
-- (struct CGRect)caretRectAtNode:(id)arg1 offset:(int)arg2 affinity:(int)arg3;
+- (struct CGRect)caretRectAtNode:(id)arg1 offset:(int)arg2 affinity:(unsigned long long)arg3;
 - (struct CGRect)caretRectForPosition:(id)arg1;
 - (unsigned short)characterAfterCaretSelection;
 - (unsigned short)characterBeforeCaretSelection;
@@ -217,7 +217,7 @@
 - (void)selectWithoutClosingTypingNSRange:(struct _NSRange)arg1;
 - (id)selectedDOMRange;
 - (struct _NSRange)selectedNSRange;
-- (int)selectionAffinity;
+- (unsigned long long)selectionAffinity;
 - (BOOL)selectionAtDocumentStart;
 - (BOOL)selectionAtSentenceStart;
 - (BOOL)selectionAtWordStart;
@@ -244,7 +244,7 @@
 - (void)setRangedSelectionInitialExtentToCurrentSelectionEnd;
 - (void)setRangedSelectionInitialExtentToCurrentSelectionStart;
 - (void)setRangedSelectionWithExtentPoint:(struct CGPoint)arg1;
-- (void)setSelectedDOMRange:(id)arg1 affinity:(int)arg2 closeTyping:(BOOL)arg3;
+- (void)setSelectedDOMRange:(id)arg1 affinity:(unsigned long long)arg2 closeTyping:(BOOL)arg3;
 - (void)setSelectionChangeCallbacksDisabled:(BOOL)arg1;
 - (void)setSelectionGranularity:(int)arg1;
 - (BOOL)setSelectionWithBasePoint:(struct CGPoint)arg1 extentPoint:(struct CGPoint)arg2 baseIsStart:(BOOL)arg3;

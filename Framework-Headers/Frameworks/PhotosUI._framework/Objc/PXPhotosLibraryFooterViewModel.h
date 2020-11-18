@@ -38,7 +38,7 @@
 - (id)init;
 - (id)initWithDataSource:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (struct NSObject *)presentingViewControllerForCloudQuotaController:(id)arg1;
+- (id)presentingViewControllerForCloudQuotaController:(id)arg1;
 - (BOOL)serviceUI:(id)arg1 performAction:(long long)arg2;
 - (void)serviceUI:(id)arg1 progressDidChange:(float)arg2;
 - (void)serviceUI:(id)arg1 statusDidChange:(id)arg2;

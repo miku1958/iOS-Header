@@ -6,63 +6,90 @@
 
 #import <objc/NSObject.h>
 
+#import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CPBannerDelegate-Protocol.h>
+#import <CarPlaySupport/CPDashboardProviding-Protocol.h>
+#import <CarPlaySupport/CPSNavigatorObserving-Protocol.h>
 #import <CarPlaySupport/CPSSafeAreaDelegate-Protocol.h>
 #import <CarPlaySupport/CPSTemplateViewControllerDelegate-Protocol.h>
 #import <CarPlaySupport/CPTemplateProviding-Protocol.h>
 #import <CarPlaySupport/NSXPCListenerDelegate-Protocol.h>
 #import <CarPlaySupport/UINavigationControllerDelegate-Protocol.h>
 
-@class CPSApplicationStateMonitor, CPSBannerSourceProxy, CPSMapTemplateViewController, CPSOverlayViewController, FBScene, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener;
-@protocol CPSTemplateInstanceDelegate, CPTemplateServiceClientInterface;
+@class CPSApplicationStateMonitor, CPSBannerSourceProxy, CPSDashboardEstimatesViewController, CPSDashboardGuidanceViewController, CPSOverlayViewController, FBScene, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, UIWindowScene;
+@protocol CPDashboardClientInterface, CPTemplateServiceClientInterface;
 
-@interface CPSTemplateInstance : NSObject <NSXPCListenerDelegate, CPTemplateProviding, UINavigationControllerDelegate, CPSTemplateViewControllerDelegate, CPSSafeAreaDelegate, CPBannerDelegate>
+@interface CPSTemplateInstance : NSObject <NSXPCListenerDelegate, CPTemplateProviding, UINavigationControllerDelegate, CPSTemplateViewControllerDelegate, CPSSafeAreaDelegate, CPBannerDelegate, CPDashboardProviding, CPSNavigatorObserving, BSInvalidatable>
 {
     NSString *_sceneIdentifier;
     CPSOverlayViewController *_overlayViewController;
-    id<CPSTemplateInstanceDelegate> _delegate;
     FBScene *_scene;
-    NSXPCListener *_listener;
+    UIWindowScene *_windowSceneForTemplateApplicationScene;
+    UIWindowScene *_windowSceneForMapWidgetScene;
+    UIWindowScene *_windowSceneForGuidanceWidgetScene;
+    FBScene *_mapWidgetScene;
+    CPSDashboardGuidanceViewController *_dashboardGuidanceViewController;
+    CPSDashboardEstimatesViewController *_dashboardEstimatesViewController;
+    NSXPCListener *_interfaceControllerListener;
+    NSXPCConnection *_interfaceControllerConnection;
+    id<CPTemplateServiceClientInterface> _interfaceControllerRemoteObjectProxy;
+    NSXPCListener *_dashboardControllerListener;
+    NSXPCConnection *_dashboardControllerConnection;
+    id<CPDashboardClientInterface> _dashboardControllerRemoteObjectProxy;
     NSMutableDictionary *_identifierToViewControllerDictionary;
     CPSBannerSourceProxy *_bannerSourceProxy;
-    CPSMapTemplateViewController *_rootMapController;
-    id<CPTemplateServiceClientInterface> _remoteObjectProxy;
     CPSApplicationStateMonitor *_applicationStateMonitor;
-    NSXPCConnection *_connection;
     NSUUID *_actionSheetIdentifier;
+    struct UIEdgeInsets _currentSafeAreaInsets;
 }
 
 @property (copy, nonatomic) NSUUID *actionSheetIdentifier; // @synthesize actionSheetIdentifier=_actionSheetIdentifier;
 @property (strong, nonatomic) CPSApplicationStateMonitor *applicationStateMonitor; // @synthesize applicationStateMonitor=_applicationStateMonitor;
 @property (strong, nonatomic) CPSBannerSourceProxy *bannerSourceProxy; // @synthesize bannerSourceProxy=_bannerSourceProxy;
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (nonatomic) struct UIEdgeInsets currentSafeAreaInsets; // @synthesize currentSafeAreaInsets=_currentSafeAreaInsets;
+@property (strong, nonatomic) NSXPCConnection *dashboardControllerConnection; // @synthesize dashboardControllerConnection=_dashboardControllerConnection;
+@property (strong, nonatomic) NSXPCListener *dashboardControllerListener; // @synthesize dashboardControllerListener=_dashboardControllerListener;
+@property (strong, nonatomic) id<CPDashboardClientInterface> dashboardControllerRemoteObjectProxy; // @synthesize dashboardControllerRemoteObjectProxy=_dashboardControllerRemoteObjectProxy;
+@property (readonly, nonatomic) CPSDashboardEstimatesViewController *dashboardEstimatesViewController; // @synthesize dashboardEstimatesViewController=_dashboardEstimatesViewController;
+@property (readonly, nonatomic) CPSDashboardGuidanceViewController *dashboardGuidanceViewController; // @synthesize dashboardGuidanceViewController=_dashboardGuidanceViewController;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) id<CPSTemplateInstanceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *identifierToViewControllerDictionary; // @synthesize identifierToViewControllerDictionary=_identifierToViewControllerDictionary;
-@property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
+@property (strong, nonatomic) NSXPCConnection *interfaceControllerConnection; // @synthesize interfaceControllerConnection=_interfaceControllerConnection;
+@property (strong, nonatomic) NSXPCListener *interfaceControllerListener; // @synthesize interfaceControllerListener=_interfaceControllerListener;
+@property (strong, nonatomic) id<CPTemplateServiceClientInterface> interfaceControllerRemoteObjectProxy; // @synthesize interfaceControllerRemoteObjectProxy=_interfaceControllerRemoteObjectProxy;
+@property (weak, nonatomic) FBScene *mapWidgetScene; // @synthesize mapWidgetScene=_mapWidgetScene;
 @property (strong, nonatomic) CPSOverlayViewController *overlayViewController; // @synthesize overlayViewController=_overlayViewController;
-@property (strong, nonatomic) id<CPTemplateServiceClientInterface> remoteObjectProxy; // @synthesize remoteObjectProxy=_remoteObjectProxy;
-@property (strong, nonatomic) CPSMapTemplateViewController *rootMapController; // @synthesize rootMapController=_rootMapController;
 @property (weak, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) UIWindowScene *windowSceneForGuidanceWidgetScene; // @synthesize windowSceneForGuidanceWidgetScene=_windowSceneForGuidanceWidgetScene;
+@property (weak, nonatomic) UIWindowScene *windowSceneForMapWidgetScene; // @synthesize windowSceneForMapWidgetScene=_windowSceneForMapWidgetScene;
+@property (weak, nonatomic) UIWindowScene *windowSceneForTemplateApplicationScene; // @synthesize windowSceneForTemplateApplicationScene=_windowSceneForTemplateApplicationScene;
 
 - (void).cxx_destruct;
+- (void)_appViewConnectionInvalidationHandler;
+- (void)_dashboardConnectionInvalidationHandler;
+- (BOOL)_handleAppViewConnection:(id)arg1;
+- (BOOL)_handleDashboardConnection:(id)arg1;
 - (void)bannerDidAppearWithIdentifier:(id)arg1;
 - (void)bannerDidDisappearWithIdentifier:(id)arg1;
 - (void)bannerTappedWithIdentifier:(id)arg1;
 - (void)containsTemplate:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)dashboardEndpoint;
 - (void)dealloc;
+- (void)didCreateNavigator:(id)arg1;
 - (void)dismissAlertAnimated:(BOOL)arg1;
 - (void)dismissTemplateAnimated:(id)arg1;
 - (id)endpoint;
 - (void)getPresentedTemplateWithReply:(CDUnknownBlockType)arg1;
 - (void)getTemplatesWithReply:(CDUnknownBlockType)arg1;
 - (void)getTopTemplateWithReply:(CDUnknownBlockType)arg1;
-- (id)initWithSceneIdentifier:(id)arg1 delegate:(id)arg2;
+- (void)hostSetShortcutButtons:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)init;
 - (id)initWithWindowScene:(id)arg1;
+- (void)invalidate;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)popTemplateAnimated:(id)arg1;
@@ -81,7 +108,7 @@
 - (void)templateViewControllerDidDismiss:(id)arg1;
 - (void)templateViewControllerDidPop:(id)arg1;
 - (void)updateInterestingInsets:(struct UIEdgeInsets)arg1;
-- (void)updateSafeAreaInsets:(struct UIEdgeInsets)arg1;
+- (void)viewController:(id)arg1 didUpdateSafeAreaInsets:(struct UIEdgeInsets)arg2;
 - (void)whitelistClassesForBaseTemplateProvider:(id)arg1;
 
 @end

@@ -11,27 +11,23 @@
 __attribute__((visibility("hidden")))
 @interface VUIDebugMetricsEvent : NSObject
 {
-    NSDictionary *_elements;
-    NSDictionary *_timingElements;
-    NSDictionary *_commonElements;
-    NSDictionary *_reliableUnderlyingDictionary;
+    NSArray *_eventData;
+    NSDictionary *_rawData;
+    NSArray *_sortedPageKeys;
+    NSArray *_sortedPrimaryKeys;
 }
 
-@property (strong, nonatomic) NSDictionary *commonElements; // @synthesize commonElements=_commonElements;
-@property (strong, nonatomic) NSDictionary *elements; // @synthesize elements=_elements;
+@property (strong, nonatomic) NSArray *eventData; // @synthesize eventData=_eventData;
 @property (readonly, nonatomic) NSDate *eventDate;
-@property (readonly, nonatomic) NSString *eventSubheader;
-@property (readonly, nonatomic) NSString *eventTertiaryInformation;
 @property (readonly, nonatomic) NSString *eventType;
 @property (readonly, nonatomic) NSString *pageContext;
+@property (strong, nonatomic) NSDictionary *rawData; // @synthesize rawData=_rawData;
 @property (readonly, nonatomic) NSDictionary *rawEvent;
-@property (strong, nonatomic) NSDictionary *reliableUnderlyingDictionary; // @synthesize reliableUnderlyingDictionary=_reliableUnderlyingDictionary;
-@property (readonly, nonatomic) NSArray *sortedCommonKeys;
-@property (readonly, nonatomic) NSArray *sortedElementKeys;
-@property (readonly, nonatomic) NSArray *sortedTimingKeys;
-@property (strong, nonatomic) NSDictionary *timingElements; // @synthesize timingElements=_timingElements;
+@property (strong, nonatomic) NSArray *sortedPageKeys; // @synthesize sortedPageKeys=_sortedPageKeys;
+@property (strong, nonatomic) NSArray *sortedPrimaryKeys; // @synthesize sortedPrimaryKeys=_sortedPrimaryKeys;
 
 - (void).cxx_destruct;
+- (id)_sortKeys:(id)arg1;
 - (id)initWithEventDictionary:(id)arg1 termCollater:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
 

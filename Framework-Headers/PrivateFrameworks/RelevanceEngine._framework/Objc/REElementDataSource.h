@@ -60,7 +60,6 @@
 - (void)getElementsDuringDateInterval:(id)arg1 inSection:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getElementsInSection:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (BOOL)isWhitelisted;
 - (void)loadLoggingHeader;
 - (void)pause;
 - (void)resume;

@@ -43,12 +43,14 @@
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)reloadNavigationItems;
 - (void)replaceButtonAtIndex:(unsigned long long)arg1 withButton:(id)arg2 forAlert:(id)arg3;
+- (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
 - (void)setButtons:(id)arg1 forAlert:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)trailingNavigationButtonTapped:(id)arg1;
+- (void)updatePreferredContentSize;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

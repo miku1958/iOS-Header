@@ -8,7 +8,7 @@
 
 #import <CoreSpeech/_EARSpeechRecognitionResultStream-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, _EARSpeechRecognitionAudioBuffer, _EARSpeechRecognizer;
+@class NSArray, NSDictionary, NSMutableArray, NSString, _EARSpeechRecognitionAudioBuffer, _EARSpeechRecognizer;
 @protocol CSKeywordAnalyzerQuasarScoreDelegate, OS_dispatch_queue;
 
 @interface CSKeywordAnalyzerQuasar : NSObject <_EARSpeechRecognitionResultStream>
@@ -19,12 +19,14 @@
     _EARSpeechRecognizer *_recognizer;
     _EARSpeechRecognitionAudioBuffer *_recognizerBuffer;
     BOOL _useKeywordSpotting;
+    NSDictionary *_ctcKwdToPhraseIdMap;
     double _triggerConfidence;
     unsigned long long _activeChannel;
     id<CSKeywordAnalyzerQuasarScoreDelegate> _delegate;
 }
 
 @property (nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
+@property (strong, nonatomic) NSDictionary *ctcKwdToPhraseIdMap; // @synthesize ctcKwdToPhraseIdMap=_ctcKwdToPhraseIdMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CSKeywordAnalyzerQuasarScoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -34,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (double)_getConfidence:(id)arg1;
+- (id)_phraseIdToCtcScoreMap;
 - (void)_recognizeWavData:(const short *)arg1 length:(int)arg2;
 - (void)dealloc;
 - (void)endAudio;

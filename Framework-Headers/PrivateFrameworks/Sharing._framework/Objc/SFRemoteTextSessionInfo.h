@@ -17,7 +17,7 @@
     long long _keyboardType;
     NSString *_prompt;
     long long _returnKeyType;
-    struct NSDictionary *_rtiPayload;
+    NSDictionary *_rtiPayload;
     NSString *_text;
     NSString *_title;
 }

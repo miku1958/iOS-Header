@@ -51,6 +51,7 @@
 @property (readonly) Class superclass;
 
 + (unsigned long long)_nextOffsetForOffset:(unsigned long long)arg1 totalLength:(unsigned long long)arg2 requestedAmount:(unsigned long long)arg3;
++ (id)log;
 - (void).cxx_destruct;
 - (void)_load:(long long)arg1 shouldDownload:(BOOL)arg2;
 - (id)_reallyLoad:(long long)arg1 shouldDownload:(BOOL)arg2;

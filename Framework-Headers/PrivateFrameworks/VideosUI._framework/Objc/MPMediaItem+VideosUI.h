@@ -52,6 +52,7 @@
 + (id)wlk_JStvShowProperties;
 + (id)wlk_mediaItemForPersistentIdentifier:(id)arg1;
 + (id)wlk_mediaItemForStoreIdentifier:(id)arg1;
++ (id)wlk_mediaItemForStoreIdentifierString:(id)arg1;
 - (id)_vui_imageIdentifierWithImageType:(unsigned long long)arg1;
 - (id)vui_artworkCatalogWithImageType:(unsigned long long)arg1;
 - (id)vui_assetTypeIgnoringLocalAsset:(BOOL)arg1;

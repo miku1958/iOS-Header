@@ -33,6 +33,7 @@
 }
 
 @property (readonly, nonatomic) NSString *activeTreatmentID; // @synthesize activeTreatmentID=_activeTreatmentID;
+@property (readonly, nonatomic) NSArray *alwaysLocalizedKeys;
 @property (readonly, nonatomic) FCCacheCoordinator *cacheCoordinator; // @synthesize cacheCoordinator=_cacheCoordinator;
 @property (readonly, nonatomic) FCCKContentDatabase *contentDatabase; // @synthesize contentDatabase=_contentDatabase;
 @property (readonly, nonatomic) NSString *contentDirectory; // @synthesize contentDirectory=_contentDirectory;

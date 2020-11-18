@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSObject;
+@protocol PLIndexMappingCache;
+
 @protocol PLDerivedAlbumOrigin
-- (void)enumerateDerivedAlbums:(void (^)(struct NSObject *))arg1;
-- (void)registerDerivedAlbum:(struct NSObject *)arg1;
+- (void)enumerateDerivedAlbums:(void (^)(NSObject<PLIndexMappingCache> *))arg1;
+- (void)registerDerivedAlbum:(NSObject<PLIndexMappingCache> *)arg1;
 - (void)unregisterAllDerivedAlbums;
 @end
 

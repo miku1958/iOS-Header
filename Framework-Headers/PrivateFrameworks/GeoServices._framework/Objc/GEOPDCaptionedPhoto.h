@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     BOOL _displayFullPhotoInline;
+    BOOL _displayFullScreenPhotoGallery;
     BOOL _highQuality;
     BOOL _isBusinessOwned;
     BOOL _useGallery;
     struct {
         unsigned int has_displayFullPhotoInline:1;
+        unsigned int has_displayFullScreenPhotoGallery:1;
         unsigned int has_highQuality:1;
         unsigned int has_isBusinessOwned:1;
         unsigned int has_useGallery:1;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
         unsigned int wrote_licenseUrl:1;
         unsigned int wrote_photo:1;
         unsigned int wrote_displayFullPhotoInline:1;
+        unsigned int wrote_displayFullScreenPhotoGallery:1;
         unsigned int wrote_highQuality:1;
         unsigned int wrote_isBusinessOwned:1;
         unsigned int wrote_useGallery:1;
@@ -54,9 +57,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *author;
 @property (strong, nonatomic) NSString *caption;
 @property (nonatomic) BOOL displayFullPhotoInline;
+@property (nonatomic) BOOL displayFullScreenPhotoGallery;
 @property (readonly, nonatomic) BOOL hasAuthor;
 @property (readonly, nonatomic) BOOL hasCaption;
 @property (nonatomic) BOOL hasDisplayFullPhotoInline;
+@property (nonatomic) BOOL hasDisplayFullScreenPhotoGallery;
 @property (nonatomic) BOOL hasHighQuality;
 @property (nonatomic) BOOL hasIsBusinessOwned;
 @property (readonly, nonatomic) BOOL hasLicenseDescription;

@@ -10,7 +10,7 @@
 #import <CallKit/NSCopying-Protocol.h>
 #import <CallKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSOrderedSet, NSSet, NSString, NSURL;
+@class CXSandboxExtendedURL, NSArray, NSData, NSOrderedSet, NSSet, NSString;
 
 @interface CXProviderConfiguration : NSObject <NSSecureCoding, CXCopying, NSCopying>
 {
@@ -30,7 +30,7 @@
     NSArray *_emergencyLabeledHandles;
     NSArray *_handoffIdentifiers;
     NSOrderedSet *_prioritizedSenderIdentities;
-    NSURL *_ringtoneSoundURL;
+    CXSandboxExtendedURL *_ringtoneSoundURL;
 }
 
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
@@ -47,7 +47,7 @@
 @property (nonatomic) unsigned long long maximumCallsPerCallGroup; // @synthesize maximumCallsPerCallGroup=_maximumCallsPerCallGroup;
 @property (copy, nonatomic) NSOrderedSet *prioritizedSenderIdentities; // @synthesize prioritizedSenderIdentities=_prioritizedSenderIdentities;
 @property (strong, nonatomic) NSString *ringtoneSound;
-@property (copy, nonatomic) NSURL *ringtoneSoundURL; // @synthesize ringtoneSoundURL=_ringtoneSoundURL;
+@property (copy, nonatomic) CXSandboxExtendedURL *ringtoneSoundURL; // @synthesize ringtoneSoundURL=_ringtoneSoundURL;
 @property (copy, nonatomic) NSSet *senderIdentities;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSSet *supportedHandleTypes; // @synthesize supportedHandleTypes=_supportedHandleTypes;

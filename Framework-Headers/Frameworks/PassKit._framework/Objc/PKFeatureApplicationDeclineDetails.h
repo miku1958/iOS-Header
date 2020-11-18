@@ -14,9 +14,13 @@
 @interface PKFeatureApplicationDeclineDetails : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_declinedTermsIdentifier;
+    NSString *_pathTermsIdentifier;
+    NSString *_pathIdentifier;
 }
 
 @property (copy, nonatomic) NSString *declinedTermsIdentifier; // @synthesize declinedTermsIdentifier=_declinedTermsIdentifier;
+@property (copy, nonatomic) NSString *pathIdentifier; // @synthesize pathIdentifier=_pathIdentifier;
+@property (copy, nonatomic) NSString *pathTermsIdentifier; // @synthesize pathTermsIdentifier=_pathTermsIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

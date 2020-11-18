@@ -19,9 +19,9 @@
 
 - (void).cxx_destruct;
 - (void)addDynamicProperty:(id)arg1 withProvider:(id)arg2;
-- (void)addProperty:(id)arg1 withValue:(struct NSObject *)arg2;
+- (void)addProperty:(id)arg1 withValue:(id)arg2;
 - (id)init;
-- (struct NSObject *)propertyForKey:(id)arg1 forEventName:(id)arg2 withPayload:(id)arg3;
+- (id)propertyForKey:(id)arg1 forEventName:(id)arg2 payloadForSystemPropertyExtraction:(id)arg3;
 
 @end
 

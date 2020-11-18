@@ -22,7 +22,6 @@
 - (void)executeCommand:(SPCommand *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)locationsForBeacons:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)removeBeacon:(SPBeacon *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)shareBeacon:(SPBeacon *)arg1 handles:(NSArray *)arg2 completion:(void (^)(NSDictionary *))arg3;
 - (void)startRefreshing;
 - (void)startRefreshingBeacons:(NSArray *)arg1;
 - (void)stopRefreshing;

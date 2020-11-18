@@ -18,9 +18,15 @@
 
 + (id)rowWithTitle:(id)arg1 childSettingsKeyPath:(id)arg2;
 + (id)rowWithTitleKeyPath:(id)arg1 childSettingsKeyPath:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithChildKeyPath:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)setSettings:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
 - (id)value;

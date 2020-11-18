@@ -27,6 +27,7 @@
     id<CSAudioStreamProvidingDelegate> _audioStreamProvidingDelegate;
     id<CSAudioAlertProvidingDelegate> _audioAlertProvidingDelegate;
     id<CSXPCClientDelegate> _delegate;
+    NSString *_UUID;
     NSObject<OS_xpc_object> *_xpcConnection;
     CSAudioStream *_audioStream;
     NSMutableSet *_activationAssertions;
@@ -34,6 +35,7 @@
     unsigned long long _xpcClientType;
 }
 
+@property (readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property (strong, nonatomic) NSMutableSet *activationAssertions; // @synthesize activationAssertions=_activationAssertions;
 @property (weak, nonatomic) id<CSAudioAlertProvidingDelegate> audioAlertProvidingDelegate; // @synthesize audioAlertProvidingDelegate=_audioAlertProvidingDelegate;
 @property (strong, nonatomic) NSHashTable *audioSessionInfoObservers; // @synthesize audioSessionInfoObservers=_audioSessionInfoObservers;

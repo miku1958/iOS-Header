@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface BRCPCSChainInfo : NSObject
 {
     BOOL _itemType;
+    BOOL _aliasTargetZoneIsShared;
     unsigned int _chainState;
     BRCItemID *_itemID;
     BRCItemID *_parentID;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
     BRFieldCKInfo *_contentCKInfo;
 }
 
+@property (readonly, nonatomic) BOOL aliasTargetZoneIsShared; // @synthesize aliasTargetZoneIsShared=_aliasTargetZoneIsShared;
 @property (readonly, nonatomic) unsigned int chainState; // @synthesize chainState=_chainState;
 @property (readonly, nonatomic) BRFieldCKInfo *contentCKInfo; // @synthesize contentCKInfo=_contentCKInfo;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BRFieldCKInfo *structuralCKInfo; // @synthesize structuralCKInfo=_structuralCKInfo;
 
 - (void).cxx_destruct;
-- (id)initWithItemID:(id)arg1 parentID:(id)arg2 structuralCKInfo:(id)arg3 contentCKInfo:(id)arg4 itemType:(BOOL)arg5 chainState:(unsigned int)arg6;
+- (id)initWithItemID:(id)arg1 parentID:(id)arg2 structuralCKInfo:(id)arg3 contentCKInfo:(id)arg4 itemType:(BOOL)arg5 aliasTargetZoneIsShared:(BOOL)arg6 chainState:(unsigned int)arg7;
 
 @end
 

@@ -20,7 +20,6 @@
 - (id)init;
 - (id)makeDetailViewControllerForRecord:(id)arg1;
 - (id)makeSettingsViewController;
-- (id)makeViewControllerForConcept:(id)arg1 highlightedRecordId:(id)arg2;
 - (id)makeViewControllerForRecord:(id)arg1;
 
 @end

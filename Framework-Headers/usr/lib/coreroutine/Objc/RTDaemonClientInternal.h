@@ -62,6 +62,8 @@
 
 - (void).cxx_destruct;
 - (void)clearAllLocationsOfInterestWithReply:(CDUnknownBlockType)arg1;
+- (void)expireLifetimeOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)extendLifetimeOfVisitsWithIdentifiers:(id)arg1 toExpireOn:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchAllLocationsOfInterestWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchDataVaultPath:(CDUnknownBlockType)arg1;
 - (void)fetchFMCEnabledWithReply:(CDUnknownBlockType)arg1;

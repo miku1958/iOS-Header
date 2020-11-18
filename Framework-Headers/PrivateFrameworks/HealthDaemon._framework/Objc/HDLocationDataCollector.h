@@ -13,17 +13,17 @@
 
 @interface HDLocationDataCollector : NSObject <HDLocationManagerObserver>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     HDProfile *_profile;
-    long long _state;
+    NSUUID *_workoutUUID;
+    unsigned long long _activityType;
     id<HDSampleSaving> _sampleSavingDelegate;
+    NSObject<OS_dispatch_queue> *_queue;
+    long long _state;
     int _lastStatus;
     HKWorkoutRoute *_route;
     BOOL _didSaveLocationData;
     double _lastPausedTime;
     unsigned long long _elevationGain;
-    unsigned long long _activityType;
-    NSUUID *_workoutUUID;
     HDAssertion *_locationUpdatingAssertion;
     unsigned long long _validLocationsCount;
     unsigned long long _skippedLocationsCount;

@@ -16,6 +16,7 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_delegateCallbackQueue;
     NSMutableDictionary *_transitPassBalanceModelsByPassUniqueID;
+    int _pendingAddValueUpdatedNotifyToken;
     id<NPKTransitPassesInfoManagerDelegate> _delegate;
     PKPaymentService *_paymentService;
 }
@@ -35,7 +36,8 @@
 - (void)_loadPassContentIfNeeded:(id)arg1;
 - (void)_notifyDelegateOfUpdatedTransitPassInfoForModel:(id)arg1;
 - (id)_transitPassBalanceModelWithPass:(id)arg1 currentModel:(id)arg2;
-- (void)_updatePassTransitPassesInfoManagerForPassUiniqueID:(id)arg1 updateBlock:(CDUnknownBlockType)arg2;
+- (void)_updateAllPassesItemsFieldsPendingUpdateStatus;
+- (void)_updatePassTransitPassesInfoManagerForPassUniqueID:(id)arg1 updateBlock:(CDUnknownBlockType)arg2;
 - (void)addPass:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
@@ -45,6 +47,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)refreshAllPasses;
 - (void)removePassWithUniqueID:(id)arg1;
+- (void)setPendingAmount:(id)arg1 forBalanceField:(id)arg2 passWithUniqueID:(id)arg3;
 
 @end
 

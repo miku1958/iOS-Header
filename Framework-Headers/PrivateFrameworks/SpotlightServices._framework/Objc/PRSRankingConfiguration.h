@@ -12,6 +12,7 @@
 {
     BOOL _allow_coreduet_influence;
     BOOL _disableResultTruncation;
+    float _numAppsDeduped;
     NSMutableDictionary *_categoryEngagements;
     NSArray *_rankingQueries;
     NSMutableDictionary *_queryDependentCategoryProbabilities;
@@ -28,6 +29,7 @@
 @property (strong) NSMutableDictionary *categoryEngagements; // @synthesize categoryEngagements=_categoryEngagements;
 @property (strong) NSMutableOrderedSet *cepBlacklistSet; // @synthesize cepBlacklistSet=_cepBlacklistSet;
 @property BOOL disableResultTruncation; // @synthesize disableResultTruncation=_disableResultTruncation;
+@property float numAppsDeduped; // @synthesize numAppsDeduped=_numAppsDeduped;
 @property (strong) NSArray *parsecCategoryOrder; // @synthesize parsecCategoryOrder=_parsecCategoryOrder;
 @property (strong) NSMutableDictionary *queryDependentCategoryProbabilities; // @synthesize queryDependentCategoryProbabilities=_queryDependentCategoryProbabilities;
 @property (strong) SSPlistDataReader *queryIndependentCategoryProbabilities; // @synthesize queryIndependentCategoryProbabilities=_queryIndependentCategoryProbabilities;

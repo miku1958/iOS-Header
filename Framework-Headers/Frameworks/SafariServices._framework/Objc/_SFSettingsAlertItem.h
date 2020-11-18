@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSAttributedString, NSString, UIImage, UIView;
+@class NSArray, NSAttributedString, NSString, UIColor, UIImage, UIView;
 @protocol SFSettingsAlertItemView;
 
 @interface _SFSettingsAlertItem : NSObject
@@ -16,8 +16,10 @@
     NSString *_title;
     NSAttributedString *_attributedTitle;
     NSString *_textStyle;
+    UIColor *_tintColor;
     UIImage *_icon;
     CDUnknownBlockType _handler;
+    NSString *_accessibilityIdentifier;
     UIView<SFSettingsAlertItemView> *_view;
     id _controller;
     CDUnknownBlockType _viewConfigurationBlock;
@@ -26,6 +28,7 @@
     _SFSettingsAlertItem *_group;
 }
 
+@property (copy, nonatomic) NSString *accessibilityIdentifier; // @synthesize accessibilityIdentifier=_accessibilityIdentifier;
 @property (copy, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle=_attributedTitle;
 @property (strong, nonatomic) id controller; // @synthesize controller=_controller;
 @property (strong, nonatomic) UIView *customView; // @synthesize customView=_customView;
@@ -35,6 +38,7 @@
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property (copy, nonatomic) NSArray *subItems; // @synthesize subItems=_subItems;
 @property (copy, nonatomic) NSString *textStyle; // @synthesize textStyle=_textStyle;
+@property (copy, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (weak, nonatomic) UIView<SFSettingsAlertItemView> *view; // @synthesize view=_view;

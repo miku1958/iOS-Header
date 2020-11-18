@@ -24,6 +24,7 @@
 - (long long)_accessibilityIndexForPickerString:(id)arg1;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (void)_accessibilityMoveSelection:(long long)arg1;
+- (double)_accessibilityNumberValue;
 - (long long)_accessibilityPickerType;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityUserTestingChildren;
@@ -42,6 +43,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 
 @end
 

@@ -14,5 +14,6 @@
 - (id)safari_dataByDecompressingData;
 - (id)safari_descriptionWithoutSpaces;
 - (unsigned long long)safari_hashMD5;
+- (unsigned int)safari_murmurHash2WithSeed:(int)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIMoveEvent, UIPencilEvent, UIPhysicalKeyboardEvent, UIPressesEvent, UITouchesEvent, UIWheelEvent, _UIGameControllerEvent;
+@class UIHoverEvent, UIMoveEvent, UIPencilEvent, UIPhysicalKeyboardEvent, UIPressesEvent, UIScrollEvent, UITouchesEvent, UITransformEvent, UIWheelEvent, _UIGameControllerEvent;
 
 __attribute__((visibility("hidden")))
 @interface _UISceneEventRegistry : NSObject
@@ -18,23 +18,32 @@ __attribute__((visibility("hidden")))
     _UIGameControllerEvent *_gameControllerEvent;
     UIPhysicalKeyboardEvent *_physicalKeyboardEvent;
     UIPencilEvent *_pencilEvent;
+    UIScrollEvent *_scrollEvent;
+    UIHoverEvent *_hoverEvent;
+    UITransformEvent *_transformEvent;
 }
 
 @property (readonly, nonatomic) _UIGameControllerEvent *gameControllerEvent; // @synthesize gameControllerEvent=_gameControllerEvent;
+@property (readonly, nonatomic) UIHoverEvent *hoverEvent; // @synthesize hoverEvent=_hoverEvent;
 @property (readonly, nonatomic) UIMoveEvent *moveEvent; // @synthesize moveEvent=_moveEvent;
 @property (readonly, nonatomic) UIPencilEvent *pencilEvent; // @synthesize pencilEvent=_pencilEvent;
 @property (readonly, nonatomic) UIPhysicalKeyboardEvent *physicalKeyboardEvent; // @synthesize physicalKeyboardEvent=_physicalKeyboardEvent;
 @property (readonly, nonatomic) UIPressesEvent *pressesEvent; // @synthesize pressesEvent=_pressesEvent;
+@property (readonly, nonatomic) UIScrollEvent *scrollEvent; // @synthesize scrollEvent=_scrollEvent;
 @property (readonly, nonatomic) UITouchesEvent *touchesEvent; // @synthesize touchesEvent=_touchesEvent;
+@property (readonly, nonatomic) UITransformEvent *transformEvent; // @synthesize transformEvent=_transformEvent;
 @property (readonly, nonatomic) UIWheelEvent *wheelEvent; // @synthesize wheelEvent=_wheelEvent;
 
 - (void).cxx_destruct;
 - (void)addGameControllerEvent:(id)arg1;
+- (void)addHoverEvent:(id)arg1;
 - (void)addMoveEvent:(id)arg1;
 - (void)addPencilEvent:(id)arg1;
 - (void)addPhysicalKeyboardEvent:(id)arg1;
 - (void)addPressesEvent:(id)arg1;
+- (void)addScrollEvent:(id)arg1;
 - (void)addTouchesEvent:(id)arg1;
+- (void)addTransformEvent:(id)arg1;
 - (void)addWheelEvent:(id)arg1;
 - (void)invalidate;
 

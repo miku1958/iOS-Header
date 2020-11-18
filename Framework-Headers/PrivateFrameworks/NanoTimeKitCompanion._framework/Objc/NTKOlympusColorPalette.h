@@ -8,13 +8,14 @@
 
 #import <NanoTimeKitCompanion/NTKCircularAnalogDialColorPalette-Protocol.h>
 
-@class NSString, UIColor;
+@class CLKDevice, NSString, UIColor;
 
 @interface NTKOlympusColorPalette : NSObject <NTKCircularAnalogDialColorPalette>
 {
     unsigned long long _color;
     unsigned long long _style;
     unsigned long long _dial;
+    CLKDevice *_device;
     UIColor *_mainColor;
     UIColor *_darkMainColor;
     UIColor *_accentColor;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) UIColor *darkMainColor; // @synthesize darkMainColor=_darkMainColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (nonatomic) unsigned long long dial; // @synthesize dial=_dial;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isBlackBackground;
@@ -63,11 +65,11 @@
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
-+ (id)paletteForColor:(unsigned long long)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3;
++ (id)paletteForDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4;
 - (void).cxx_destruct;
 - (id)circularDialFillColor;
 - (id)circularDialTickColor;
-- (id)initWithColor:(unsigned long long)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3;
+- (id)initWithDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

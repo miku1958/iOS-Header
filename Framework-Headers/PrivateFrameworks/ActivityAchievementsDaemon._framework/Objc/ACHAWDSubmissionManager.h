@@ -24,7 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) ACHEarnedInstanceStore *earnedInstanceStore; // @synthesize earnedInstanceStore=_earnedInstanceStore;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) HDPeriodicActivity *scheduler; // @synthesize scheduler=_scheduler;
 @property (strong, nonatomic) NSMutableDictionary *serverConnectionsByComponentId; // @synthesize serverConnectionsByComponentId=_serverConnectionsByComponentId;

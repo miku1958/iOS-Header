@@ -29,11 +29,11 @@
 @property (readonly) unsigned long long quantizationNumberOfBuckets; // @synthesize quantizationNumberOfBuckets=_quantizationNumberOfBuckets;
 @property (readonly) Class superclass;
 
-+ (id)awdTrackerForPlanId:(struct NSString *)arg1;
++ (id)awdTrackerForPlanId:(id)arg1;
 + (id)messageForGradient:(id)arg1 scaleFactor:(float)arg2 minibatchStats:(id)arg3 evaluationMetrics:(id)arg4 serverIteration:(unsigned long long)arg5 modelInfo:(id)arg6 numberOfBuckets:(unsigned long long)arg7;
 + (id)messageForWeights:(id)arg1 scaleFactor:(float)arg2 minibatchStats:(id)arg3 evaluationMetrics:(id)arg4 modelInfo:(id)arg5 numberOfBuckets:(unsigned long long)arg6;
-+ (id)parsecTrackerForPlanId:(struct NSString *)arg1;
-+ (id)trackerForPlanId:(struct NSString *)arg1;
++ (id)parsecTrackerForPlanId:(id)arg1;
++ (id)trackerForPlanId:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithAdapter:(id)arg1 modelInfo:(id)arg2;

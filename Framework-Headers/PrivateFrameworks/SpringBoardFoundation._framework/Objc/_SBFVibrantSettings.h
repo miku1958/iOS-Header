@@ -14,11 +14,11 @@
     UIColor *_referenceColor;
     _UILegibilitySettings *_legibilitySettings;
     double _referenceContrast;
-    UIColor *_tintColor;
     UIColor *_highlightLimitingColor;
     UIColor *_shimmerColor;
     UIColor *_chevronShimmerColor;
     UIColor *_highlightColor;
+    UIColor *_tintColor;
 }
 
 @property (strong, nonatomic) UIColor *chevronShimmerColor; // @synthesize chevronShimmerColor=_chevronShimmerColor;

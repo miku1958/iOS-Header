@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError;
+@class NSArray, NSError, NSNumber;
 
 @interface MPCAssistantSendCommandResult : NSObject
 {
     NSArray *_returnStatuses;
     NSError *_error;
+    NSNumber *_devicesControlled;
 }
 
+@property (copy, nonatomic) NSNumber *devicesControlled; // @synthesize devicesControlled=_devicesControlled;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSArray *returnStatuses; // @synthesize returnStatuses=_returnStatuses;
 

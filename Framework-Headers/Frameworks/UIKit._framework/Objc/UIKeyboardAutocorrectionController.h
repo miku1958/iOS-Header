@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasAutofillCandidates;
 - (BOOL)hasCaseableAutocorrection;
 - (BOOL)hasContinuousPathConversions;
+- (BOOL)hasProactiveCandidates;
 - (id)init;
 - (void)removeAutocorrectionObserver:(id)arg1;
 - (void)requestAutocorrectionWithExecutionContext:(id)arg1;

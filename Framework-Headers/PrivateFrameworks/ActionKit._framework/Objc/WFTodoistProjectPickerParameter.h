@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL hasLoadedProjects; // @synthesize hasLoadedProjects=_hasLoadedProjects;
 
 - (void).cxx_destruct;
+- (id)accessoryColorForPossibleState:(id)arg1;
 - (void)dealloc;
 - (void)fetchProjectsIfNeeded;
 - (void)loadProjectsFromCache;

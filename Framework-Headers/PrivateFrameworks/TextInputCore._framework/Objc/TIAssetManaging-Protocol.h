@@ -13,7 +13,9 @@
 @property (copy, nonatomic) CDUnknownBlockType enabledInputModeIdentifiersProviderBlock;
 
 - (NSArray *)assetContentItemsWithContentType:(NSString *)arg1 inputMode:(TIInputMode *)arg2;
+- (NSArray *)ddsAssetContentItemsWithContentType:(NSString *)arg1 inputMode:(TIInputMode *)arg2 filteredWithRegion:(BOOL)arg3;
 - (NSArray *)enabledInputModes;
 - (void)requestAssetDownloadForLanguage:(NSString *)arg1 completion:(void (^)(long long))arg2;
+- (NSArray *)topActiveRegions;
 @end
 

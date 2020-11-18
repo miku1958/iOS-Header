@@ -51,8 +51,8 @@
 + (BOOL)packageChangedAtRelativePath:(id)arg1;
 + (id)packageItemForRelpath:(id)arg1;
 + (id)packageItemWithDocumentID:(unsigned int)arg1 relativePath:(id)arg2 session:(id)arg3;
-+ (struct PQLResultSet *)packageItemsForDocumentID:(unsigned int)arg1 order:(unsigned long long)arg2 session:(id)arg3;
-+ (struct PQLResultSet *)packageItemsForItem:(id)arg1 order:(unsigned long long)arg2;
++ (id)packageItemsForDocumentID:(unsigned int)arg1 order:(unsigned long long)arg2 session:(id)arg3;
++ (id)packageItemsForItem:(id)arg1 order:(unsigned long long)arg2;
 + (BOOL)updateSignaturesForFilesInItem:(id)arg1 fromCKPackage:(id)arg2 error:(id *)arg3;
 + (BOOL)updateSnapshotAtPath:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;

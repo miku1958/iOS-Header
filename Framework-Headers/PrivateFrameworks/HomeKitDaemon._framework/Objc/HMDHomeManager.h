@@ -269,6 +269,7 @@
 - (void)_addWatch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_addWatch:(id)arg1 toAssociatedList:(id)arg2;
 - (BOOL)_associateAccessories:(id)arg1 withHomes:(id)arg2;
+- (void)_auditDuplicatePreviouslyAddedAccessory:(id)arg1;
 - (void)_auditKeychainEntries;
 - (void)_cancelAccessoryFinderTimer;
 - (void)_changePrimaryHome:(id)arg1;

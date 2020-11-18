@@ -55,7 +55,9 @@ struct Property_Identity {
 struct __shared_weak_count;
 
 struct atomic<unsigned int> {
-    _Atomic unsigned int _field1;
+    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+        _Atomic unsigned int _field1;
+    } _field1;
 };
 
 struct shared_ptr<Client_Side_IO_Host> {

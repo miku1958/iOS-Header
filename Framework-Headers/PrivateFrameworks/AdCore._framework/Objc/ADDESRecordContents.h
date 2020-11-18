@@ -13,19 +13,19 @@
     BOOL _addImpression;
     BOOL _addTap;
     NSString *_adamID;
-    NSString *_query;
     ADVector *_appVector;
     double _pTTR;
     NSString *_obfuscationID;
+    NSString *_addendum;
 }
 
 @property (strong, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
 @property (nonatomic) BOOL addImpression; // @synthesize addImpression=_addImpression;
 @property (nonatomic) BOOL addTap; // @synthesize addTap=_addTap;
+@property (strong, nonatomic) NSString *addendum; // @synthesize addendum=_addendum;
 @property (strong, nonatomic) ADVector *appVector; // @synthesize appVector=_appVector;
 @property (strong, nonatomic) NSString *obfuscationID; // @synthesize obfuscationID=_obfuscationID;
 @property (nonatomic) double pTTR; // @synthesize pTTR=_pTTR;
-@property (strong, nonatomic) NSString *query; // @synthesize query=_query;
 
 - (void).cxx_destruct;
 - (void)collectODMLResponse:(id)arg1;

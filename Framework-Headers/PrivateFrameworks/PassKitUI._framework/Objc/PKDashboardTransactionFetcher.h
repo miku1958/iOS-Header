@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, PKMerchant, PKPaymentPass;
+@class NSArray, NSDate, NSDictionary, NSString, PKInstallmentPlan, PKMerchant, PKPaymentPass;
 @protocol OS_dispatch_queue, PKDashboardTransactionFetcherDelegate, PKPaymentDataProvider;
 
 @interface PKDashboardTransactionFetcher : NSObject <PKPaymentDataProviderDelegate>
@@ -26,6 +26,7 @@
     NSString *_counterpartHandle;
     long long _merchantCategory;
     long long _transactionType;
+    PKInstallmentPlan *_installmentPlan;
     unsigned long long _limit;
     NSString *_cashbackPassUniqueID;
     PKPaymentPass *_cashbackPass;
@@ -59,6 +60,7 @@
 - (id)cashbackGroupForTransactionWithIdentifier:(id)arg1;
 - (id)cashbackPass;
 - (id)initWithCounterpartHandle:(id)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithInstallmentPlan:(id)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
 - (id)initWithMerchant:(id)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
 - (id)initWithMerchantCategory:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
 - (id)initWithPaymentPass:(id)arg1 paymentDataProvider:(id)arg2;

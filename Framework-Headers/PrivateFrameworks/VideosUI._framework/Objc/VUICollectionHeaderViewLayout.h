@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VUITextLayout *titleTextLayout; // @synthesize titleTextLayout=_titleTextLayout;
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
++ (id)maxImageContentSizeCategory;
 - (void).cxx_destruct;
 - (id)init;
 

@@ -57,12 +57,12 @@
 - (id)customGestureRecognizerForGrabberTongue:(id)arg1;
 - (void)dealloc;
 - (BOOL)grabberTongue:(id)arg1 shouldShowTongueOnFirstSwipeWithEdgeLocation:(double)arg2;
-- (void)grabberTongueBeganPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
-- (void)grabberTongueCanceledPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
+- (void)grabberTongueBeganPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
+- (void)grabberTongueCanceledPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
 - (void)grabberTongueDidDismiss:(id)arg1;
-- (void)grabberTongueEndedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
-- (BOOL)grabberTongueOrPullEnabled:(id)arg1;
-- (void)grabberTongueUpdatedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
+- (void)grabberTongueEndedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
+- (BOOL)grabberTongueOrPullEnabled:(id)arg1 forGestureRecognizer:(id)arg2;
+- (void)grabberTongueUpdatedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
 - (void)grabberTongueWillPresent:(id)arg1;
 - (void)handleReachabilityModeActivated;
 - (void)handleReachabilityModeDeactivated;

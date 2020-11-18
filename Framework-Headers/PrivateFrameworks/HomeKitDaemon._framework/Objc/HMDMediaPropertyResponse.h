@@ -23,12 +23,12 @@
 @property (strong, nonatomic) id value; // @synthesize value=_value;
 @property (readonly, nonatomic) NSDate *valueUpdatedTime; // @synthesize valueUpdatedTime=_valueUpdatedTime;
 
-+ (struct NSArray *)groupedProfileResponses:(id)arg1;
++ (id)groupedProfileResponses:(id)arg1;
 + (id)propertyResponsesFromRequests:(id)arg1 error:(id)arg2;
 + (id)responseWithRequest:(id)arg1 error:(id)arg2;
 + (id)responseWithRequest:(id)arg1 value:(id)arg2 updatedTime:(id)arg3 stateNumber:(id)arg4;
-+ (struct NSArray *)responsesFromSerializedResponse:(struct NSDictionary *)arg1 requests:(id)arg2 home:(id)arg3;
-+ (struct NSDictionary *)serializeResponses:(id)arg1;
++ (id)responsesFromSerializedResponse:(id)arg1 requests:(id)arg2 home:(id)arg3;
++ (id)serializeResponses:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithRequest:(id)arg1 error:(id)arg2;

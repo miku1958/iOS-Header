@@ -28,14 +28,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeWindow; // @synthesize timeWindow=_timeWindow;
 
-+ (BOOL)stateIsExpired:(struct NSDictionary *)arg1;
++ (BOOL)stateIsExpired:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)addRequestTimestamp;
-- (struct NSDictionary *)captureState;
+- (id)captureState;
 - (double)expiresAt;
-- (id)initWithKeyPath:(id)arg1 requestCount:(unsigned long long)arg2 interval:(double)arg3 savedState:(struct NSDictionary *)arg4;
+- (id)initWithKeyPath:(id)arg1 requestCount:(unsigned long long)arg2 interval:(double)arg3 savedState:(id)arg4;
 - (BOOL)isExpired;
-- (void)loadState:(struct NSDictionary *)arg1;
+- (void)loadState:(id)arg1;
 - (unsigned int)maxReqCount;
 - (unsigned long long)remainingEntries;
 - (double)timeUntilReset;

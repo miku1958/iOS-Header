@@ -121,6 +121,7 @@
 - (id)initWithTitle:(id)arg1 address:(id)arg2;
 - (BOOL)isBookmarksBarFolder;
 - (BOOL)isBookmarksMenuFolder;
+- (BOOL)isBuiltinBookmark;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToBookmark:(id)arg1;
 - (BOOL)isFrequentlyVisitedSitesFolder;

@@ -14,7 +14,7 @@
 #import <CoreUtils/HMMediaSystemDelegate-Protocol.h>
 #import <CoreUtils/HMUserDelegatePrivate-Protocol.h>
 
-@class HMAccessory, HMHomeManager, HMMediaSystem, HMMediaSystemRole, HMUser, NSArray, NSDictionary, NSString, NSUUID;
+@class HMAccessory, HMHomeManager, HMMediaSystem, HMMediaSystemRole, HMUser, NSArray, NSDictionary, NSMutableDictionary, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface CUHomeKitManager : NSObject <HMAccessoryDelegatePrivate, HMHomeDelegate, HMHomeDelegatePrivate, HMHomeManagerDelegate, HMHomeManagerDelegatePrivate, HMMediaSystemDelegate, HMUserDelegatePrivate>
@@ -22,8 +22,8 @@
     int _homeKitPrefsNotifyToken;
     HMHomeManager *_homeManager;
     BOOL _homeManagerDidUpdateHomes;
-    struct NSMutableDictionary *_homes;
-    struct NSMutableDictionary *_resolvableAccessoriesMap;
+    NSMutableDictionary *_homes;
+    NSMutableDictionary *_resolvableAccessoriesMap;
     NSDictionary *_selfAccessoryAppData;
     BOOL _selfAccessoryEnabled;
     NSUUID *_selfAccessoryRoomID;
@@ -31,7 +31,7 @@
     BOOL _selfAccessoryMediaSystemEnabled;
     BOOL _selfAccessorySiriAccessEnabled;
     HMUser *_selfAccessoryUser;
-    struct NSMutableDictionary *_users;
+    NSMutableDictionary *_users;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
@@ -109,6 +109,7 @@
 - (void)_updateSelfAccessorySiriAccess;
 - (void)_updateState;
 - (void)_updateUsers;
+- (void)accessory:(id)arg1 didUpdateDevice:(id)arg2;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
 - (void)activate;
 - (void)dealloc;

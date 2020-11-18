@@ -15,7 +15,7 @@
 }
 
 - (BOOL)addFromEntry:(id)arg1;
-- (BOOL)addFromMapItem:(struct GEOMapItemStorage *)arg1;
+- (BOOL)addFromMapItem:(id)arg1;
 - (id)copy;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

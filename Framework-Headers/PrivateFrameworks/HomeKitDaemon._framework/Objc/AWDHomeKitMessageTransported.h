@@ -16,6 +16,7 @@
     unsigned long long _timestamp;
     int _direction;
     NSString *_identifier;
+    NSString *_messageName;
     int _messageType;
     NSString *_transactionID;
     int _transport;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL hasDirection;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasIsSecure;
+@property (readonly, nonatomic) BOOL hasMessageName;
 @property (nonatomic) BOOL hasMessageType;
 @property (nonatomic) BOOL hasPayloadSize;
 @property (nonatomic) BOOL hasTimestamp;
@@ -41,6 +43,7 @@
 @property (nonatomic) BOOL hasTransport;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isSecure; // @synthesize isSecure=_isSecure;
+@property (strong, nonatomic) NSString *messageName; // @synthesize messageName=_messageName;
 @property (nonatomic) int messageType; // @synthesize messageType=_messageType;
 @property (nonatomic) unsigned long long payloadSize; // @synthesize payloadSize=_payloadSize;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;

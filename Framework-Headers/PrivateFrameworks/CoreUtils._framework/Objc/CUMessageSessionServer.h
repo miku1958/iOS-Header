@@ -8,7 +8,7 @@
 
 #import <CoreUtils/NSXPCListenerDelegate-Protocol.h>
 
-@class CUMessageSession, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@class CUMessageSession, NSMutableSet, NSString, NSXPCListener, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface CUMessageSessionServer : NSObject <NSXPCListenerDelegate>
@@ -17,7 +17,7 @@
     CDUnknownBlockType _registerRequestHandler;
     CDUnknownBlockType _deregisterRequestHandler;
     CDUnknownBlockType _sendRequestHandler;
-    struct NSMutableSet *_xpcConnections;
+    NSMutableSet *_xpcConnections;
     NSXPCListenerEndpoint *_xpcEndpoint;
     NSXPCListener *_xpcListener;
     CDUnknownBlockType _invalidationHandler;

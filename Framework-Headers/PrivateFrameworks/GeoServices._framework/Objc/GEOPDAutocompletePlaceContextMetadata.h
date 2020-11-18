@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBDataReader, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompletePlaceContextMetadata : PBCodable <NSCopying>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _clientizationFeatures;
+    NSMutableArray *_alternateSearchableNames;
     NSString *_matchedDisplayNameLanguageCode;
     NSString *_matchedDisplayName;
     unsigned int _readerMarkPos;
@@ -32,10 +33,12 @@ __attribute__((visibility("hidden")))
         unsigned int has_shouldSuppressDirectionsAction:1;
         unsigned int read_unknownFields:1;
         unsigned int read_clientizationFeatures:1;
+        unsigned int read_alternateSearchableNames:1;
         unsigned int read_matchedDisplayNameLanguageCode:1;
         unsigned int read_matchedDisplayName:1;
         unsigned int wrote_unknownFields:1;
         unsigned int wrote_clientizationFeatures:1;
+        unsigned int wrote_alternateSearchableNames:1;
         unsigned int wrote_matchedDisplayNameLanguageCode:1;
         unsigned int wrote_matchedDisplayName:1;
         unsigned int wrote_isDefaultName:1;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
+@property (strong, nonatomic) NSMutableArray *alternateSearchableNames;
 @property (readonly, nonatomic) int *clientizationFeatures;
 @property (readonly, nonatomic) unsigned long long clientizationFeaturesCount;
 @property (nonatomic) BOOL hasIsDefaultName;
@@ -61,14 +65,21 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldSuppressDirectionsAction;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)alternateSearchableNameType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsClientizationFeatures:(id)arg1;
+- (void)_addNoFlagsAlternateSearchableName:(id)arg1;
 - (void)_addNoFlagsClientizationFeature:(int)arg1;
+- (void)_readAlternateSearchableNames;
 - (void)_readClientizationFeatures;
 - (void)_readMatchedDisplayName;
 - (void)_readMatchedDisplayNameLanguageCode;
+- (void)addAlternateSearchableName:(id)arg1;
 - (void)addClientizationFeature:(int)arg1;
+- (id)alternateSearchableNameAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternateSearchableNamesCount;
+- (void)clearAlternateSearchableNames;
 - (void)clearClientizationFeatures;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (int)clientizationFeatureAtIndex:(unsigned long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSRecentWebSearchesController.h>
+#import <SafariSharedUI/WBSRecentWebSearchesController.h>
 
 @class NSString;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AXSSKeyboardCommandMap, AXVoiceOverActivity, NSArray, NSData, NSDate, NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, NSUUID;
+@class AXVoiceOverActivity, NSArray, NSData, NSDate, NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, NSUUID;
 
 @interface AXSettings : NSObject
 {
@@ -76,7 +76,6 @@
 @property (nonatomic) BOOL assistiveTouchMouseAllowAppleBluetoothDevicesPairing;
 @property (nonatomic) BOOL assistiveTouchMouseAlwaysShowSoftwareKeyboardEnabled;
 @property (readonly, nonatomic) NSArray *assistiveTouchMouseCustomizedClickActions;
-@property (nonatomic) BOOL assistiveTouchMouseDragLockEnabled;
 @property (nonatomic) double assistiveTouchMouseDwellControlActivationTimeout;
 @property (strong, nonatomic) NSString *assistiveTouchMouseDwellControlAutorevertAction;
 @property (nonatomic) BOOL assistiveTouchMouseDwellControlAutorevertEnabled;
@@ -89,6 +88,7 @@
 @property (nonatomic) BOOL assistiveTouchMouseKeysEnabled;
 @property (nonatomic) long long assistiveTouchMouseKeysMaxSpeed;
 @property (nonatomic) BOOL assistiveTouchMouseKeysOptionToggleEnabled;
+@property (nonatomic) BOOL assistiveTouchMouseKeysUseMainKeyboardKeys;
 @property (nonatomic) long long assistiveTouchMousePointerColor;
 @property (nonatomic) double assistiveTouchMousePointerSizeMultiplier;
 @property (nonatomic) double assistiveTouchMousePointerTimeout;
@@ -146,9 +146,13 @@
 @property BOOL enhanceTextTrackingEnabled;
 @property (strong, nonatomic) NSArray *extantVoices;
 @property (readonly, nonatomic) BOOL extantVoicesExist;
-@property (strong, nonatomic) AXSSKeyboardCommandMap *fullKeyboardAccessCommandMap;
+@property (strong, nonatomic) NSData *fullKeyboardAccessCommandMapData;
+@property (nonatomic) long long fullKeyboardAccessFocusRingColor;
+@property (nonatomic) BOOL fullKeyboardAccessFocusRingHighContrastEnabled;
 @property (nonatomic) double fullKeyboardAccessFocusRingTimeout;
 @property (nonatomic) BOOL fullKeyboardAccessFocusRingTimeoutEnabled;
+@property (nonatomic) BOOL fullKeyboardAccessLargeFocusRingEnabled;
+@property (nonatomic) BOOL fullKeyboardAccessShouldShowTextEditingModeInstructions;
 @property (copy, nonatomic) NSString *gaxInternalSettingsActiveAppID;
 @property (copy, nonatomic) NSNumber *gaxInternalSettingsActiveAppOrientation;
 @property (copy, nonatomic) NSNumber *gaxInternalSettingsECID;
@@ -188,6 +192,8 @@
 @property (nonatomic) BOOL independentHearingAidSettings;
 @property BOOL inspectorEnabled;
 @property (nonatomic) long long internalLoggingColorTheme;
+@property (readonly, nonatomic) BOOL laserEnabled;
+@property (nonatomic) unsigned long long laserZoomPanningStyle;
 @property (nonatomic) double lastAssistiveTouchTimeResetCount;
 @property (nonatomic) double lastBrailleScreenInputTimeResetCount;
 @property (nonatomic) double lastCharacterVoiceTimeResetCount;

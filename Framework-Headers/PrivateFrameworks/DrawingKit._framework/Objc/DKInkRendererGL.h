@@ -64,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)removeLastStroke;
 - (void)rendererDidFinishAnimatingDrawing:(id)arg1;
 - (void)resetRendererState;
-- (id)snapshot;
+- (id)snapshotImage;
 - (void)teardown;
 - (void)traitCollectionDidChange:(id)arg1;
 

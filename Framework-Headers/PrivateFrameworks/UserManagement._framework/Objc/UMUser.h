@@ -18,6 +18,7 @@
     BOOL _isLoginUser;
     BOOL _isAuditor;
     BOOL _isDisabled;
+    BOOL _isTransientUser;
     BOOL _hasManagedCredentials;
     BOOL _hasDataToSync;
     unsigned int _uid;
@@ -68,6 +69,7 @@
 @property (nonatomic) BOOL isAuditor; // @synthesize isAuditor=_isAuditor;
 @property (nonatomic) BOOL isDisabled; // @synthesize isDisabled=_isDisabled;
 @property (nonatomic) BOOL isLoginUser; // @synthesize isLoginUser=_isLoginUser;
+@property (nonatomic) BOOL isTransientUser; // @synthesize isTransientUser=_isTransientUser;
 @property (copy, nonatomic) NSArray *languages; // @synthesize languages=_languages;
 @property (copy, nonatomic) NSDate *lastCachedLoginEndDate; // @synthesize lastCachedLoginEndDate=_lastCachedLoginEndDate;
 @property (copy, nonatomic) NSDate *lastCachedLoginStartDate; // @synthesize lastCachedLoginStartDate=_lastCachedLoginStartDate;

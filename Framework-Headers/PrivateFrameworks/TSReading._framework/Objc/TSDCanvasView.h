@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) TSDCanvasView *rootCanvasView;
 
 + (Class)layerClass;
+- (void)_requestTextItemConstrainedToLineAtPoint:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)cancelInteractionWithLink;
 - (BOOL)isInteractingWithLink;

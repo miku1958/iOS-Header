@@ -24,6 +24,7 @@
 + (void)sf_animate:(BOOL)arg1 usingDefaultTimingWithOptions:(unsigned long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (double)_sf_convertY:(double)arg1 toCoordinateSpace:(id)arg2;
 - (id)_sf_firstAncestorViewOfClass:(Class)arg1;
+- (void)_sf_setMatchesIntrinsicContentSize;
 - (void)_sf_setOrderedSubviews:(id *)arg1 count:(unsigned long long)arg2;
 - (id)_sf_snapshotImageFromIOSurface;
 - (void)ss_setUntransformedFrame:(struct CGRect)arg1;

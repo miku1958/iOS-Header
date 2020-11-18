@@ -24,8 +24,10 @@
 - (id)_inq_keywordObjectsForKeywords:(id)arg1 managedObjectContext:(id)arg2;
 - (void)_inq_loadKeywordsUsingContextIfNecessaryInManagedObjectContext:(id)arg1;
 - (void)_invalidateKeywordCache;
+- (BOOL)_setKeyword:(id)arg1 forAssets:(id)arg2 managedObjectContext:(id)arg3;
 - (BOOL)_setKeywords:(id)arg1 forAsset:(id)arg2 managedObjectContext:(id)arg3;
 - (id)initWithPathManager:(id)arg1;
+- (BOOL)setKeyword:(id)arg1 forAssets:(id)arg2 managedObjectContext:(id)arg3;
 - (BOOL)setKeywords:(id)arg1 forAsset:(id)arg2;
 - (BOOL)setKeywords:(id)arg1 forAssetUUID:(id)arg2 managedObjectContext:(id)arg3;
 

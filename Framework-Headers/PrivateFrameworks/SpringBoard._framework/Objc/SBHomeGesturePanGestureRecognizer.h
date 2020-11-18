@@ -11,11 +11,13 @@
 #import <SpringBoard/SBGestureRecognizerTouchHistoryProviding-Protocol.h>
 
 @class NSString, SBFluidSwitcherGestureExclusionTrapezoid, SBHomeGestureSettings, SBTouchHistory, UIView;
+@protocol SBHomeGesturePanGestureRecognizerInterfaceDelegate;
 
 @interface SBHomeGesturePanGestureRecognizer : SBScreenEdgePanGestureRecognizer <PTSettingsKeyObserver, SBGestureRecognizerPanGestureProviding, SBGestureRecognizerTouchHistoryProviding>
 {
     BOOL _preventHorizontalSwipesOutsideTrapezoid;
     BOOL _installedAsSystemGesture;
+    id<SBHomeGesturePanGestureRecognizerInterfaceDelegate> _interfaceDelegate;
     SBHomeGestureSettings *_homeGestureSettings;
     SBFluidSwitcherGestureExclusionTrapezoid *_portraitExclusionTrapezoid;
     SBFluidSwitcherGestureExclusionTrapezoid *_landscapeExclusionTrapezoid;
@@ -27,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBHomeGestureSettings *homeGestureSettings; // @synthesize homeGestureSettings=_homeGestureSettings;
 @property (nonatomic) BOOL installedAsSystemGesture; // @synthesize installedAsSystemGesture=_installedAsSystemGesture;
+@property (weak, nonatomic) id<SBHomeGesturePanGestureRecognizerInterfaceDelegate> interfaceDelegate; // @synthesize interfaceDelegate=_interfaceDelegate;
 @property (strong, nonatomic) SBFluidSwitcherGestureExclusionTrapezoid *landscapeExclusionTrapezoid; // @synthesize landscapeExclusionTrapezoid=_landscapeExclusionTrapezoid;
 @property (strong, nonatomic) SBFluidSwitcherGestureExclusionTrapezoid *portraitExclusionTrapezoid; // @synthesize portraitExclusionTrapezoid=_portraitExclusionTrapezoid;
 @property (nonatomic) BOOL preventHorizontalSwipesOutsideTrapezoid; // @synthesize preventHorizontalSwipesOutsideTrapezoid=_preventHorizontalSwipesOutsideTrapezoid;
@@ -42,6 +45,7 @@
 - (void)_setUpExclusionTrapezoids;
 - (BOOL)_shouldBegin;
 - (BOOL)_shouldBlockHomeGestureForKeyboardInputMode:(id)arg1;
+- (long long)_touchInterfaceOrientation;
 - (void)_updateHomeGestureParameters;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;

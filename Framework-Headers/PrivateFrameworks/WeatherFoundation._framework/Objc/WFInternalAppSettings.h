@@ -8,7 +8,7 @@
 
 #import <WeatherFoundation/WFSettings-Protocol.h>
 
-@class NSSet, NSString;
+@class NSSet, NSString, NSURL;
 
 @interface WFInternalAppSettings : NSObject <WFSettings>
 {
@@ -16,14 +16,18 @@
 
 @property (readonly, nonatomic) NSString *apiVersion;
 @property (readonly, nonatomic) NSString *apiVersionFallback;
+@property (readonly, nonatomic) NSURL *appAnalyticsEndpointUrl;
 @property (readonly, nonatomic) NSSet *aqiEnabledCountryCodes;
+@property (readonly, nonatomic) float dataSamplingRate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long locationNumDecimalsOfPrecision;
 @property (readonly, nonatomic) unsigned long long networkFailedAttemptsLimit;
 @property (readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds;
+@property (readonly, nonatomic) double privateUserIdentifierResetTimeInterval;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) double userIdentifierResetTimeInterval;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

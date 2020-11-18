@@ -76,6 +76,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)becomeFirstResponder;
+- (BOOL)canBecomeFocused;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2;
 - (void)dealloc;

@@ -16,15 +16,19 @@ __attribute__((visibility("hidden")))
     MPCPlayerCommandRequest *_touchUpInsideCommandRequest;
     MPCPlayerCommandRequest *_holdBeginCommandRequest;
     MPCPlayerCommandRequest *_holdEndCommandRequest;
+    double _cursorScale;
 }
 
+@property (nonatomic) double cursorScale; // @synthesize cursorScale=_cursorScale;
 @property (strong, nonatomic) MPCPlayerCommandRequest *holdBeginCommandRequest; // @synthesize holdBeginCommandRequest=_holdBeginCommandRequest;
 @property (strong, nonatomic) MPCPlayerCommandRequest *holdEndCommandRequest; // @synthesize holdEndCommandRequest=_holdEndCommandRequest;
 @property (readonly, nonatomic, getter=isPerformingHighlightAnimation) BOOL performingHighlightAnimation; // @synthesize performingHighlightAnimation=_performingHighlightAnimation;
 @property (nonatomic) BOOL shouldPresentActionSheet; // @synthesize shouldPresentActionSheet=_shouldPresentActionSheet;
 @property (strong, nonatomic) MPCPlayerCommandRequest *touchUpInsideCommandRequest; // @synthesize touchUpInsideCommandRequest=_touchUpInsideCommandRequest;
 
++ (BOOL)_cursorInteractionEnabled;
 - (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)setHighlighted:(BOOL)arg1;
 
 @end

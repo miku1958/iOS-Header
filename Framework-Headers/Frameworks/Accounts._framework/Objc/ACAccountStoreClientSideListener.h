@@ -21,6 +21,7 @@
 
 + (id)sharedClientSideListener;
 - (void)accountCredentialsDidChangeForAccountWithIdentifier:(id)arg1;
+- (void)accountDidChange:(id)arg1 forType:(id)arg2;
 
 @end
 

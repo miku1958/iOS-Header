@@ -15,6 +15,7 @@
 @property (copy, nonatomic) BKSHIDEventDisplay *associatedDisplay; // @dynamic associatedDisplay;
 @property (nonatomic, getter=isAuthenticated) BOOL authenticated; // @dynamic authenticated;
 @property (nonatomic) long long hardwareType; // @dynamic hardwareType;
+@property (nonatomic) unsigned long long senderID; // @dynamic senderID;
 
 + (id)new;
 - (id)init;

@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
 @property (nonatomic) long long _textInputSource;
+@property (readonly, nonatomic) long long cursorBehavior;
 @property (readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
 @property (nonatomic) long long selectionGranularity;
 @property (readonly, nonatomic) BOOL supportsImagePaste;

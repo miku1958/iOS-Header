@@ -8,7 +8,7 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class AWDNWL2Report, NSMutableArray, NSString;
+@class AWDNWDeviceReport, AWDNWL2Report, NSMutableArray, NSString;
 
 @interface AWDNWConnectionReport : PBCodable <NSCopying>
 {
@@ -54,6 +54,7 @@
     int _connectedInterfaceType;
     int _connectionMode;
     NSString *_connectionUUID;
+    AWDNWDeviceReport *_deviceReport;
     int _failureReason;
     int _firstAddressFamily;
     AWDNWL2Report *_l2Report;
@@ -174,6 +175,7 @@
 @property (nonatomic) unsigned long long currentRTT; // @synthesize currentRTT=_currentRTT;
 @property (nonatomic) BOOL customProxyConfigured; // @synthesize customProxyConfigured=_customProxyConfigured;
 @property (nonatomic) unsigned long long dataStallCount; // @synthesize dataStallCount=_dataStallCount;
+@property (strong, nonatomic) AWDNWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property (nonatomic) int failureReason; // @synthesize failureReason=_failureReason;
 @property (nonatomic) BOOL fallbackEligible; // @synthesize fallbackEligible=_fallbackEligible;
 @property (nonatomic) int firstAddressFamily; // @synthesize firstAddressFamily=_firstAddressFamily;
@@ -197,6 +199,7 @@
 @property (nonatomic) BOOL hasCurrentRTT;
 @property (nonatomic) BOOL hasCustomProxyConfigured;
 @property (nonatomic) BOOL hasDataStallCount;
+@property (readonly, nonatomic) BOOL hasDeviceReport;
 @property (nonatomic) BOOL hasFailureReason;
 @property (nonatomic) BOOL hasFallbackEligible;
 @property (nonatomic) BOOL hasFirstAddressFamily;

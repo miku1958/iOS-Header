@@ -10,7 +10,7 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
 
-@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
+@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccountCapabilities, REMCRMergeableStringDocument, REMChangedKeysObserver, REMContactRepresentation, REMDisplayDate, REMListChangeItem, REMObjectID, REMReminderAttachmentContextChangeItem, REMReminderFlaggedContextChangeItem, REMReminderStorage, REMReminderSubtaskContextChangeItem, REMResolutionTokenMap, REMSaveRequest, REMUserActivity;
 
 @interface REMReminderChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
 {
@@ -43,6 +43,7 @@
 @property (readonly, nonatomic) REMReminderFlaggedContextChangeItem *flaggedContext;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long icsDisplayOrder; // @dynamic icsDisplayOrder;
+@property (copy, nonatomic) NSURL *icsUrl; // @dynamic icsUrl;
 @property (strong, nonatomic) NSData *importedICSData; // @dynamic importedICSData;
 @property (readonly, nonatomic) BOOL isOverdue; // @dynamic isOverdue;
 @property (readonly, nonatomic) BOOL isRecurrent; // @dynamic isRecurrent;

@@ -9,13 +9,13 @@
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPPeopleXPCClientInterface-Protocol.h>
 
-@class NSArray, NSMutableSet, NSSet, NSXPCConnection;
+@class NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPPeopleDiscovery : NSObject <NSSecureCoding, RPPeopleXPCClientInterface>
 {
     BOOL _activateCalled;
-    struct NSMutableDictionary *_discoveredPeople;
+    NSMutableDictionary *_discoveredPeople;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     NSMutableSet *_rangingPersonIDs;

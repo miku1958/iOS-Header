@@ -13,6 +13,7 @@
     GEOMapItemAttribution *_geoAttribution;
 }
 
+@property (readonly, nonatomic) NSString *appAdamID;
 @property (readonly, nonatomic) NSArray *attributionApps;
 @property (readonly, nonatomic) NSArray *attributionURLs;
 @property (readonly, nonatomic) NSString *providerID;

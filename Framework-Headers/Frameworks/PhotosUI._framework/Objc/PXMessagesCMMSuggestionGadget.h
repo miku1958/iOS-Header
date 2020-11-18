@@ -31,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -40,15 +41,12 @@
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (strong, nonatomic) id<PXCMMSuggestion> suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
 
 - (void).cxx_destruct;
 - (void)_scheduleLayout;
 - (void)_updatePosterHeaderView;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithSuggestion:(id)arg1;

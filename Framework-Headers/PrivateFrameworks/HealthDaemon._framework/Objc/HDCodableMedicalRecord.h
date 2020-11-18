@@ -15,6 +15,8 @@
 {
     long long _extractionVersion;
     double _modifiedDate;
+    long long _state;
+    NSString *_country;
     HDCodableFHIRIdentifier *_fHIRIdentifier;
     NSString *_locale;
     NSString *_note;
@@ -24,15 +26,18 @@
     struct {
         unsigned int extractionVersion:1;
         unsigned int modifiedDate:1;
+        unsigned int state:1;
         unsigned int enteredInError:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *country; // @synthesize country=_country;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enteredInError; // @synthesize enteredInError=_enteredInError;
 @property (nonatomic) long long extractionVersion; // @synthesize extractionVersion=_extractionVersion;
 @property (strong, nonatomic) HDCodableFHIRIdentifier *fHIRIdentifier; // @synthesize fHIRIdentifier=_fHIRIdentifier;
+@property (readonly, nonatomic) BOOL hasCountry;
 @property (nonatomic) BOOL hasEnteredInError;
 @property (nonatomic) BOOL hasExtractionVersion;
 @property (readonly, nonatomic) BOOL hasFHIRIdentifier;
@@ -41,12 +46,14 @@
 @property (readonly, nonatomic) BOOL hasNote;
 @property (readonly, nonatomic) BOOL hasSample;
 @property (readonly, nonatomic) BOOL hasSortDate;
+@property (nonatomic) BOOL hasState;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property (nonatomic) double modifiedDate; // @synthesize modifiedDate=_modifiedDate;
 @property (strong, nonatomic) NSString *note; // @synthesize note=_note;
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
 @property (strong, nonatomic) HDCodableSemanticDate *sortDate; // @synthesize sortDate=_sortDate;
+@property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

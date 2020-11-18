@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (id)_applyDownloadChangeset:(id)arg1;
+- (void)_checkForMessages;
 - (void)_completeRestoreWithMessage:(id)arg1;
 - (id)_copyDownloadIDsForDownloads:(id)arg1;
 - (id)_copyRemovalsFromUnmergedIndexSet:(id)arg1;
@@ -41,6 +42,7 @@
 - (void)_notifyObserversAboutRemovals:(id)arg1;
 - (void)_notifyObserversRestoreTransactionsFailedWithError:(id)arg1;
 - (void)_notifyObserversRestoreTransactionsFinished;
+- (void)_processTransaction:(id)arg1;
 - (void)_processUpdates:(id)arg1 trimUnmatched:(BOOL)arg2 sendUpdatedDownloads:(BOOL)arg3;
 - (void)_refreshPaymentsWithPolicy:(long long)arg1;
 - (void)_removeLocalTransaction:(id)arg1;
@@ -55,6 +57,7 @@
 - (void)_updatePaymentsForMessage:(id)arg1;
 - (void)addPayment:(id)arg1;
 - (void)addTransactionObserver:(id)arg1;
+- (void)askToShowMessageWithReplyBlock:(CDUnknownBlockType)arg1;
 - (void)cancelDownloads:(id)arg1;
 - (void)dealloc;
 - (void)downloadAdded:(id)arg1;
@@ -71,6 +74,7 @@
 - (void)restoreCompletedTransactionsWithApplicationUsername:(id)arg1;
 - (void)resumeDownloads:(id)arg1;
 - (void)shouldContinueTransaction:(id)arg1 withNewStorefront:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
+- (void)showPriceConsentIfNeeded;
 - (void)startDownloads:(id)arg1;
 - (void)storefrontChanged:(id)arg1;
 - (void)updatedTransactions:(id)arg1;

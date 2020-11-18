@@ -29,9 +29,9 @@
 - (long long)_autoplayPolicy;
 - (BOOL)_contentBlockersEnabled;
 - (id)_customHeaderFields;
-- (id)_customJavaScriptUserAgentAsSiteSpecificQuirks;
 - (id)_customNavigatorPlatform;
 - (id)_customUserAgent;
+- (id)_customUserAgentAsSiteSpecificQuirks;
 - (unsigned long long)_deviceOrientationAndMotionAccessPolicy;
 - (unsigned long long)_popUpPolicy;
 - (void)_setAllowSiteSpecificQuirksToOverrideCompatibilityMode:(BOOL)arg1;
@@ -40,9 +40,9 @@
 - (void)_setAutoplayPolicy:(long long)arg1;
 - (void)_setContentBlockersEnabled:(BOOL)arg1;
 - (void)_setCustomHeaderFields:(id)arg1;
-- (void)_setCustomJavaScriptUserAgentAsSiteSpecificQuirks:(id)arg1;
 - (void)_setCustomNavigatorPlatform:(id)arg1;
 - (void)_setCustomUserAgent:(id)arg1;
+- (void)_setCustomUserAgentAsSiteSpecificQuirks:(id)arg1;
 - (void)_setDeviceOrientationAndMotionAccessPolicy:(unsigned long long)arg1;
 - (void)_setPopUpPolicy:(unsigned long long)arg1;
 - (void)_setWebsiteDataStore:(id)arg1;

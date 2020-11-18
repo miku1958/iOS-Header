@@ -28,13 +28,13 @@
 @property (readonly, nonatomic) BOOL requiresNetworkToGeneratePreview;
 @property (readonly) Class superclass;
 
-+ (struct UIImage *)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2;
-+ (struct UIImage *)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2 uti:(id)arg3;
++ (id)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2;
++ (id)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2 uti:(id)arg3;
 - (id)activityItems;
 - (void)classifyImageInOperation:(id)arg1;
 - (void)didCancelPreviewGeneratorOperation;
 - (void)drawPreviewInRect:(struct CGRect)arg1;
-- (struct UIImage *)fileIconWithPreferredSize:(struct CGSize)arg1;
+- (id)fileIconWithPreferredSize:(struct CGSize)arg1;
 - (void)generateOCRInOperation:(id)arg1;
 - (BOOL)generatePreviewsInOperation:(id)arg1;
 @end

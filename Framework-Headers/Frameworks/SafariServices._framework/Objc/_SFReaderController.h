@@ -56,13 +56,15 @@
 - (void)_setUpReaderActivityListener;
 - (void)_updateJavaScriptEnabled;
 - (id)_webView:(id)arg1 actionsForElement:(id)arg2 defaultActions:(id)arg3;
-- (void)_webView:(id)arg1 commitPreviewedViewController:(id)arg2;
+- (void)_webView:(id)arg1 contextMenuConfigurationForElement:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_webView:(id)arg1 contextMenuDidEndForElement:(id)arg2;
+- (void)_webView:(id)arg1 contextMenuForElement:(id)arg2 willCommitWithAnimator:(id)arg3;
+- (void)_webView:(id)arg1 contextMenuWillPresentForElement:(id)arg2;
 - (void)_webView:(id)arg1 dataInteraction:(id)arg2 session:(id)arg3 didEndWithOperation:(unsigned long long)arg4;
 - (void)_webView:(id)arg1 dataInteraction:(id)arg2 sessionWillBegin:(id)arg3;
 - (void)_webView:(id)arg1 dataInteractionOperationWasHandled:(BOOL)arg2 forSession:(id)arg3 itemProviders:(id)arg4;
 - (void)_webView:(id)arg1 getAlternateURLFromImage:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_webView:(id)arg1 performDataInteractionOperationWithItemProviders:(id)arg2;
-- (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2 defaultActions:(id)arg3 elementInfo:(id)arg4;
 - (unsigned long long)_webView:(id)arg1 willUpdateDataInteractionOperationToOperation:(unsigned long long)arg2 forSession:(id)arg3;
 - (void)activateFont:(id)arg1;
 - (void)activateReader;

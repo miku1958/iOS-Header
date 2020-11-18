@@ -13,9 +13,9 @@
 @interface PXViewSpec : NSObject <NSCopying>
 {
     BOOL _hidden;
-    struct UIColor *_backgroundColor;
-    struct UIColor *_selectionHighlightColor;
-    struct UIColor *_borderColor;
+    UIColor *_backgroundColor;
+    UIColor *_selectionHighlightColor;
+    UIColor *_borderColor;
     double _borderWidth;
     double _cornerRadius;
     double _displayScale;

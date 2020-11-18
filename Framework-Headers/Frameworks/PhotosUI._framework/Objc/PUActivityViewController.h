@@ -29,6 +29,7 @@
     BOOL _isDismissed;
     BOOL _shouldUpdateVisibleItemsWhenReady;
     BOOL _isPreparingAssets;
+    BOOL _didSuccessfullyPrepareAssets;
     BOOL _preparedAsCloudLink;
     PUSharingHeaderController *_sharingHeaderController;
     struct CGRect _lastSelectedActivityFrame;
@@ -79,6 +80,7 @@
 + (BOOL)cmmFileSizeThresholdIsMetForAssetItems:(id)arg1;
 + (BOOL)cmmThresholdIsMetForAssetItems:(id)arg1;
 + (id)defaultActivityTypeOrder;
++ (id)descriptionForPreparationErrorType:(unsigned long long)arg1;
 + (BOOL)isOutboundShareActivity:(id)arg1;
 + (BOOL)needsConfidentialityCheckForActivityType:(id)arg1;
 + (id)new;
@@ -92,6 +94,7 @@
 - (void)_cleanUpActivityState;
 - (BOOL)_customizationAvailableForActivityViewController:(id)arg1;
 - (id)_customizationGroupsForActivityViewController:(id)arg1;
+- (id)_generateAnalyticsPayloadForSharingEventsToActivityType:(id)arg1;
 - (void)_handlePostReadyToInteractUpdatesIfNeeded;
 - (void)_handleShareSheetReadyToInteractCompletion;
 - (void)_handleUserCancelWithCompletion:(CDUnknownBlockType)arg1;
@@ -102,6 +105,7 @@
 - (void)_presentCMMSuggestionAlertForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_presentConfidentialityWarningIfNeededForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeRemakerProgressView;
+- (void)_sendCPAnalyticsAssetExportPreparationEventWithActivityType:(id)arg1 didComplete:(BOOL)arg2 error:(id)arg3;
 - (void)_sendCPAnalyticsShareEventWithActivityType:(id)arg1 didComplete:(BOOL)arg2;
 - (void)_sharingManagerDidBeginPublishing:(id)arg1;
 - (void)_sharingStyleDidChangeToExpanded:(id)arg1;
@@ -129,6 +133,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)ppt_cancelActivity;
 - (void)ppt_performActivityOfType:(id)arg1;
+- (unsigned long long)preparationErrorTypeFromError:(id)arg1;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (void)removeAssetItem:(id)arg1;
 - (void)removeProgressUIAnimated:(BOOL)arg1 withDelay:(BOOL)arg2;

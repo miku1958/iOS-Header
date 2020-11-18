@@ -1,7 +1,24 @@
+ protocol JetEngine._AnyCollectionContentReloadTriggerPublisher // 1 requirements
+ {
+	// method
+ }
+ protocol JetEngine.CollectionContentReloadTriggerPublisher // 6 requirements
+ {
+	// class base protocol
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated conformance access function
+	// class associated type access function
+	// getter
+ }
  protocol JetEngine.Injectable // 2 requirements
  {
 	// class associated type access function
 	// class init
+ }
+ protocol JetEngine.JSSourceURLProvider // 1 requirements
+ {
+	// getter
  }
  protocol JetEngine.AsyncObjectGraphBuilder // 2 requirements
  {
@@ -12,10 +29,8 @@
  {
 	// method
  }
- protocol JetEngine.AnyStateful // 2 requirements
+ protocol JetEngine.AnyStateful // 0 requirements
  {
-	// class base protocol
-	// class base protocol
  }
  protocol JetEngine.Stateful // 3 requirements
  {
@@ -23,16 +38,12 @@
 	// class base protocol
 	// class init
  }
- protocol JetEngine.MetricsEventDispatcher // 1 requirements
+ protocol JetEngine.CollectionContentReloadableCell // 1 requirements
  {
-	// method
- }
- protocol JetEngine.ShelvesPresenter // 5 requirements
- {
-	// class base protocol
-	// class associated conformance access function
-	// class associated type access function
 	// getter
+ }
+ protocol JetEngine.MetricsEventLinter // 1 requirements
+ {
 	// method
  }
  protocol JetEngine.AnyPreferenceKey // 1 requirements
@@ -46,6 +57,13 @@
 	// method
 	// method
  }
+ protocol JetEngine.FlowActionFactory // 4 requirements
+ {
+	// class base protocol
+	// class associated conformance access function
+	// class associated type access function
+	// method
+ }
  protocol JetEngine.ExistentialOptimized // 0 requirements
  {
  }
@@ -54,7 +72,30 @@
 	// method
 	// method
  }
+ protocol JetEngine.AnyStateStoreHandle // 3 requirements
+ {
+	// method
+	// method
+	// method
+ }
+ protocol JetEngine.MetricsFieldsProvider // 2 requirements
+ {
+	// getter
+	// method
+ }
+ protocol JetEngine.EventEmitter // 5 requirements
+ {
+	// class associated type access function
+	// class getter
+	// method
+	// method
+	// method
+ }
  protocol JetEngine.TaskScheduler // 1 requirements
+ {
+	// method
+ }
+ protocol JetEngine.JSURLRequestEncoder // 1 requirements
  {
 	// method
  }
@@ -78,6 +119,12 @@
 	// method
 	// method
  }
+ protocol JetEngine.MetricsFieldsBuilder // 3 requirements
+ {
+	// class init
+	// method
+	// getter
+ }
  protocol JetEngine.StateCenterTransaction // 7 requirements
  {
 	// class associated conformance access function
@@ -100,41 +147,44 @@
  {
 	// method
  }
+ protocol JetEngine.Lens // 2 requirements
+ {
+	// class associated type access function
+	// getter
+ }
  protocol JetEngine.FlowActionModel // 3 requirements
  {
 	// class base protocol
 	// class associated type access function
 	// getter
  }
- protocol JetEngine.ViewControllerPresenter // 5 requirements
+ protocol JetEngine.ViewControllerPresenter // 7 requirements
  {
 	// class base protocol
 	// method
 	// method
 	// method
 	// method
+	// method
+	// method
  }
- protocol JetEngine.IndexedPresenterObserver // 5 requirements
+ protocol JetEngine.DiffableDataPresenter // 5 requirements
  {
-	// method
-	// method
-	// method
-	// method
+	// class base protocol
+	// class associated type access function
+	// class associated type access function
+	// getter
 	// method
  }
  protocol JetEngine.JSReference // 1 requirements
  {
 	// getter
  }
- protocol JetEngine.ShelfModel // 9 requirements
+ protocol JetEngine.ShelfModel // 5 requirements
  {
 	// class base protocol
-	// class associated conformance access function
+	// class base protocol
 	// class associated type access function
-	// class associated type access function
-	// class associated type access function
-	// getter
-	// getter
 	// getter
 	// getter
  }
@@ -146,32 +196,60 @@
  {
 	// getter
  }
- protocol JetEngine.ComponentModel // 2 requirements
+ protocol JetEngine.Future // 2 requirements
+ {
+	// class associated type access function
+	// method
+ }
+ protocol JetEngine.ComponentModel // 3 requirements
  {
 	// class base protocol
 	// getter
+	// getter
+ }
+ protocol JetEngine.ActionImplementation // 4 requirements
+ {
+	// class associated conformance access function
+	// class associated type access function
+	// class associated type access function
+	// method
+ }
+ protocol JetEngine.StateStore // 8 requirements
+ {
+	// class associated type access function
+	// getter
+	// getter
+	// method
+	// method
+	// method
+	// method
+	// method
  }
  protocol JetEngine.JSONInitFailureObserver // 1 requirements
  {
 	// method
  }
- protocol JetEngine.ActionModel // 2 requirements
+ protocol JetEngine.ActionModel // 1 requirements
  {
-	// class base protocol
 	// getter
  }
- protocol JetEngine.PageModel // 2 requirements
+ protocol JetEngine.PipelineTask // 2 requirements
  {
-	// class base protocol
+	// class associated type access function
+	// method
+ }
+ protocol JetEngine.PageModel // 1 requirements
+ {
 	// getter
+ }
+ protocol JetEngine.EventObserver // 3 requirements
+ {
+	// class associated type access function
+	// getter
+	// method
  }
  protocol JetEngine.AnyPresenter // 0 requirements
  {
- }
- protocol JetEngine.JSNetworkRequestInterceptor // 2 requirements
- {
-	// method
-	// method
  }
  protocol JetEngine.FrameworkBootstrap // 1 requirements
  {
@@ -192,22 +270,22 @@
  {
 	// method
  }
- protocol JetEngine.ViewModel // 2 requirements
+ protocol JetEngine.ViewModel // 1 requirements
  {
-	// class base protocol
 	// getter
  }
- protocol JetEngine.MetricsEventQueue // 1 requirements
+ protocol JetEngine.MetricsEventRecorder // 2 requirements
  {
+	// method
 	// method
  }
 
- class __C.CFRunLoopTimer {
  class __C.CFRunLoopSource {
  struct __C.SignpostComponent {
 
 	// Properties
-	let rawValue : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : ﬂb
  }
 
  enum __C.AMSBagValueType { }
@@ -218,6 +296,7 @@
  enum __C.PropertyListFormat { }
 
  class __C.CFRunLoop {
+ class __C.CFRunLoopTimer {
  struct __C.AMSBagKey {
 
 	// Properties
@@ -227,18 +306,27 @@
  struct JetEngine.JetEngineBootstrap {
 
 	// Properties
-	var bagProfile : Bag.Profile // +0x0
+	var bagProfile : Profile // +0x0
 	var process : AMSProcessInfo // +0x20
-	var bagSpy : (_:)? // +0x28
+	var bagSpy : Promise // +0x28
+	var protocolHandler : URLProtocolHandler // +0x38
+ }
+
+ enum JetEngine.URLProtocolHandler {
+
+	// Properties
+	case media : (clientIdentifier: String, keychainAccessGroup: String?)
+	case none  
+	case standard  
  }
 
  class JetEngine.LocalPreferences : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let bundleIdentifier : CFStringRef // +0x10 (0x8)
+	let bundleIdentifier : CFString // +0x10 (0x8)
 
 	// Swift methods
-	0x3e90  class func LocalPreferences.__allocating_init(bundleIdentifier:) // init 
+	0x58f0  class func LocalPreferences.__allocating_init(bundleIdentifier:) // init 
  }
 
  enum JetEngine.JSONTimeUnit {
@@ -248,27 +336,36 @@
 	case milliseconds  
  }
 
+ struct JetEngine.MetricsPipeline {
+
+	// Properties
+	let builderType : MetricsFieldsBuilder // +0x0
+	let aggregator : MetricsFieldsAggregator // +0x10
+	let linter : MetricsEventLinter // +0x20
+	let recorder : MetricsEventRecorder // +0x48
+ }
+
  class JetEngine.MockedAMSBag : AMSSnapshotBag /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices {
 
 	// Properties
-	let bagProfile : Bag.Profile // +0x8 (0x20)
-	let stubs : [AMSBagKey : Any] // +0x28 (0x8)
+	let bagProfile : Profile // +0x8 (0x20)
+	let stubs : AMSBagKey // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5910  @objc MockedAMSBag.isExpired <stripped>
-	0x5920  @objc MockedAMSBag.expirationDate <stripped>
-	0x5930  @objc MockedAMSBag.profile <stripped>
-	0x5980  @objc MockedAMSBag.profileVersion <stripped>
-	0x5ee0  @objc MockedAMSBag.arrayForKey: <stripped>
-	0x5f10  @objc MockedAMSBag.boolForKey: <stripped>
-	0x5fd0  @objc MockedAMSBag.doubleForKey: <stripped>
-	0x6010  @objc MockedAMSBag.integerForKey: <stripped>
-	0x6050  @objc MockedAMSBag.stringForKey: <stripped>
-	0x6090  @objc MockedAMSBag.URLForKey: <stripped>
-	0x60d0  @objc MockedAMSBag.dictionaryForKey: <stripped>
-	0x6110  @objc MockedAMSBag.createSnapshotWithCompletion: <stripped>
-	0x6160  @objc MockedAMSBag.init <stripped>
-	0x61e0  @objc MockedAMSBag..cxx_destruct <stripped>
+	0x9fb0  @objc MockedAMSBag.isExpired <stripped>
+	0x9fc0  @objc MockedAMSBag.expirationDate <stripped>
+	0x9fd0  @objc MockedAMSBag.profile <stripped>
+	0xa020  @objc MockedAMSBag.profileVersion <stripped>
+	0xa620  @objc MockedAMSBag.arrayForKey: <stripped>
+	0xa650  @objc MockedAMSBag.boolForKey: <stripped>
+	0xa690  @objc MockedAMSBag.doubleForKey: <stripped>
+	0xa6d0  @objc MockedAMSBag.integerForKey: <stripped>
+	0xa710  @objc MockedAMSBag.stringForKey: <stripped>
+	0xa750  @objc MockedAMSBag.URLForKey: <stripped>
+	0xa790  @objc MockedAMSBag.dictionaryForKey: <stripped>
+	0xa850  @objc MockedAMSBag.createSnapshotWithCompletion: <stripped>
+	0xa910  @objc MockedAMSBag.init <stripped>
+	0xa8d0  @objc MockedAMSBag..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -276,7 +373,7 @@
  struct JetEngine.Stubs {
 
 	// Properties
-	var values : [AMSBagKey : Any] // +0x0
+	var values : AMSBagKey // +0x0
  }
 
  struct JetEngine.LookupRequest {
@@ -285,7 +382,7 @@
 	let profile : String // +0x0
 	let caller : String // +0x10
 	let ids : [String] // +0x20
-	let idType : LookupRequest.IdentifierType // +0x28
+	let idType : IdentifierType // +0x28
 	let version : Int // +0x30
 	let platform : String? // +0x38
  }
@@ -297,11 +394,26 @@
 	case bundleID  
  }
 
+ struct JetEngine.ScalarDictionary {
+
+	// Properties
+	var values : Value // +0x0
+ }
+
+ enum JetEngine.Value {
+
+	// Properties
+	case bool : Bool
+	case double : Double
+	case int : Int
+	case string : String
+ }
+
  struct JetEngine.MetricsSamplingLottery {
 
 	// Properties
-	let isForcedKey : PreferenceKey<Bool> // +0x0
-	let sampleWindowStartKey : PreferenceKey<Double> // +0x10
+	let isForcedKey : PreferenceKey // +0x0
+	let sampleWindowStartKey : PreferenceKey // +0x10
 	let percentage : Double // +0x20
 	let duration : Double // +0x28
  }
@@ -310,32 +422,91 @@
  struct JetEngine.Observer {
 
 	// Properties
+	let valueBlock : (_:)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let errorBlock :  empty-list 
 	let scheduler : TaskScheduler
-	let valueHandler : (_:)
-	let errorHandler : (_:)
  }
 
- enum JetEngine.Resolution {
+ enum JetEngine.State {
 
 	// Properties
-	case value : A
-	case error : Error
-	case pending  
+	case pending : Observer
+	case resolved : A
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case rejected : ≈^
+ }
+
+ class JetEngine.EventObserverBox {
+ class JetEngine.ConcreteEventObserverBox {
+ struct JetEngine.EventSubscription {
+
+	// Properties
+	let base : EventObserverBox
+ }
+
+ class JetEngine.TransientStateStore {
+ class JetEngine.Transaction {
+ enum JetEngine.Change {
+
+	// Properties
+	case updateOne : StatePath
+	case removeOne : StatePath
+	case removeManyWithPrefix : StatePath
+	case removeAll  
+ }
+
+ struct JetEngine.StatefulCodingThunk {
+
+	// Properties
+	let value : AnyStateful // +0x0
+ }
+
+ enum JetEngine.CodingKeys {
+
+	// Properties
+	case isConcurrent  
+	case values  
+ }
+
+ enum JetEngine.CodingKeys {
+
+	// Properties
+	case typeName  
+	case base  
  }
 
  struct JetEngine.MapPreferenceMigrationRule {
 
 	// Properties
-	let oldKey : PreferenceKey<A>
-	let newKey : PreferenceKey<B>
+	let oldKey : PreferenceKey
+	let newKey : PreferenceKey
 	let mapper : (_:)
  }
 
  struct JetEngine.SetPreferenceMigrationRule {
 
 	// Properties
-	let key : PreferenceKey<A>
+	let key : PreferenceKey
 	let value : A
+ }
+
+ class JetEngine.SyncEvent {
+ struct JetEngine.MetricsFieldsAggregator {
+
+	// Properties
+	var optInProviders : MetricsFieldInclusionRequest // +0x0
+	var optOutProviders : MetricsFieldExclusionRequest // +0x8
+ }
+
+ class JetEngine.JSRemoteScriptFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let remoteFetcher : RemoteFetcher // +0x10 (0x30)
+	let isRetryLock : NSLock // +0x40 (0x8)
+	var isRetry : Bool // +0x48 (0x1)
+
+	// Swift methods
  }
 
  enum JetEngine.CryptoAlgorithm {
@@ -352,8 +523,11 @@
  struct JetEngine.ActionMetrics {
 
 	// Properties
-	var events : [MetricsEvent] // +0x0
+	var data : MetricsData // +0x0
+	var custom : ScalarDictionary // +0x8
  }
+
+ struct JetEngine.PageMetricsFieldsProvider { }
 
  enum JetEngine.LogMessageLevel {
 
@@ -364,29 +538,41 @@
 	case debug  
  }
 
- struct JetEngine.ViewMetrics { }
+ struct JetEngine.JSPackageIndex {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let packageURL : ÕF
+	let scriptPath : String
+	let properties : [String : Any]
+ }
 
  struct JetEngine.CompoundError {
 
 	// Properties
-	let errors : [Error] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let errors :  empty-list  // +0x0
  }
 
  struct JetEngine.PageMetrics {
 
 	// Properties
-	var events : InvocationPoint // +0x0
+	var instructions : Instruction // +0x0
+	var pageFields : [String : Any]? // +0x8
+	var custom : ScalarDictionary // +0x10
  }
 
- enum JetEngine.InvocationPoint {
+ struct JetEngine.InvocationPoint {
 
 	// Properties
-	case pageEnter  
-	case pageExit  
-	case appExit  
-	case appEnter  
-	case backButton  
-	case timer  
+	let rawValue : String // +0x0
+ }
+
+ struct JetEngine.Instruction {
+
+	// Properties
+	var data : MetricsData // +0x0
+	var invocationPoints : InvocationPoint // +0x30
  }
 
  struct JetEngine.JSRoute {
@@ -438,6 +624,29 @@
 	let constructorName : String? // +0x40
  }
 
+ class JetEngine.ActionImplementationBox {
+ class JetEngine.ConcreteActionImplementationBox {
+ struct JetEngine.ActionDispatcher {
+
+	// Properties
+	var implementations : OpaqueMetatype
+	var nextStorage : Indirect
+	var targetQueue : OS_dispatch_queue?
+ }
+
+ enum JetEngine.MetricsBehavior {
+
+	// Properties
+	case fromAction : MetricsFieldsContext
+	case notProcessed  
+ }
+
+ enum JetEngine.PerformError {
+
+	// Properties
+	case noMetricsPipelineInObjectGraph  
+ }
+
  struct JetEngine.JSBytecodeSource {
 
 	// Properties
@@ -445,10 +654,16 @@
 	let virtualMachine : JSVirtualMachine // +0x20
  }
 
- struct JetEngine.Device {
+ struct JetEngine.Device { }
+
+ struct JetEngine.MetricsData {
 
 	// Properties
-	let device : UIDevice // +0x0
+	let topic : String? // +0x0
+	let shouldFlush : Bool // +0x10
+	var fields : [String : Any] // +0x18
+	var includingFields : MetricsFieldInclusionRequest // +0x20
+	var excludingFields : MetricsFieldExclusionRequest // +0x28
  }
 
  struct JetEngine.Bag {
@@ -472,22 +687,31 @@
 
  class JetEngine.JSPlistObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x287c0  @objc JSPlistObject.parse: <stripped>
-	0x28bc0  @objc JSPlistObject.stringify:: <stripped>
-	0x28c30  @objc JSPlistObject.init <stripped>
+	0x45490  @objc JSPlistObject.parse: <stripped>
+	0x45900  @objc JSPlistObject.stringify:: <stripped>
+	0x45a50  @objc JSPlistObject.init <stripped>
  }
 
  struct JetEngine.KeySet {
 
 	// Properties
-	var values : [AMSBagKey : AMSBagValueType] // +0x0
+	var values : AMSBagKey // +0x0
+ }
+
+ enum JetEngine.Pipeline { }
+
+ struct JetEngine.PipelinePhase {
+
+	// Properties
+	let body : Promise
  }
 
  struct JetEngine.CoarselyTimed {
 
 	// Properties
 	var contained : A
-	var duration : DateInterval
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var duration : ·@
  }
 
  struct JetEngine.PreferenceKey: AnyPreferenceKey {
@@ -499,7 +723,7 @@
  struct JetEngine.PreferenceMigrator {
 
 	// Properties
-	var rules : [PreferenceMigrationRule] // +0x0
+	var rules : PreferenceMigrationRule // +0x0
  }
 
  class JetEngine.JSStack : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -510,7 +734,7 @@
 	var exceptionObserver : JSStack // +0x20 (0x10)
 
 	// Swift methods
-	0x2df70  class func JSStack.__allocating_init(prerequisites:virtualMachine:) // init 
+	0x4b270  class func JSStack.__allocating_init(prerequisites:virtualMachine:) // init 
  }
 
  enum JetEngine.Prerequisite {
@@ -525,7 +749,12 @@
 
 	// Properties
 	var isProtocolHandlingEnabled : Bool // +0x0
-	var requestInterceptor : JSNetworkRequestInterceptor? // +0x8
+ }
+
+ struct JetEngine.PresenterMultiplexer {
+
+	// Properties
+	var presenters : ViewControllerPresenter // +0x0
  }
 
  struct JetEngine.LookupResponse {
@@ -533,13 +762,28 @@
 	// Properties
 	let items : [String : Any] // +0x0
 	let missing : Set<String> // +0x8
-	let metrics : [JSNetworkPerformanceMetrics] // +0x10
+	let metrics : JSNetworkPerformanceMetrics // +0x10
  }
 
  struct JetEngine.Indirect {
 
 	// Properties
-	var interior : MutableBox<A>
+	var interior : MutableBox
+ }
+
+ struct JetEngine.ClosureAction {
+
+	// Properties
+	var actionMetrics : ActionMetrics // +0x0
+	var body : () // +0x10
+ }
+
+ class JetEngine.AnyStateStoreBox {
+ class JetEngine.ConcreteStateStoreBox {
+ struct JetEngine.AnyStateStore {
+
+	// Properties
+	let base : AnyStateStoreBox
  }
 
  enum JetEngine.Unstable { }
@@ -549,13 +793,14 @@
 	// Properties
 	var isEnabled : Bool // +0x10 (0x1)
 	var delegate : ApplicationStatePresenterDelegate // +0x18 (0x10)
+	let onActiveDidChange : SyncEvent // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x37620  @objc ApplicationStatePresenter.applicationDidBecomeActive <stripped>
-	0x376c0  @objc ApplicationStatePresenter.applicationDidResignActive <stripped>
+	0x550d0  @objc ApplicationStatePresenter.applicationDidBecomeActive <stripped>
+	0x551c0  @objc ApplicationStatePresenter.applicationDidResignActive <stripped>
 
 	// Swift methods
-	0x37030  class func ApplicationStatePresenter.__allocating_init(isEnabled:) // init 
+	0x54ae0  class func ApplicationStatePresenter.__allocating_init(isEnabled:) // init 
  }
 
  class JetEngine.JSWeakReference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -565,10 +810,48 @@
 	let weakValue : UnsafeRawPointer // +0x18 (0x8)
 
 	// Swift methods
-	0x37760  class func JSWeakReference.__allocating_init(_:) // init 
+	0x55230  class func JSWeakReference.__allocating_init(_:) // init 
+ }
+
+ struct JetEngine.StateStoreHandle: AnyStateStoreHandle {
+
+	// Properties
+	let path : StatePath
+	let store : A
+ }
+
+ enum JetEngine.MetricsFieldsProviderCategory {
+
+	// Properties
+	case timeSensitive  
+	case expensive  
+ }
+
+ class JetEngine.ProxyingStateCenter {
+ struct JetEngine.Transaction {
+
+	// Properties
+	var changes : Change
+ }
+
+ enum JetEngine.Change {
+
+	// Properties
+	case changeOne : StatePath
+	case removeOne : StatePath
+	case removeRecursively : StatePath
+	case removeAll  
+ }
+
+ struct JetEngine.StateLens {
+
+	// Properties
+	let handle : AnyStateStoreHandle
  }
 
  struct JetEngine.SyncTaskScheduler: TaskScheduler { }
+
+ struct JetEngine.NoURLRequestEncoder: JSURLRequestEncoder { }
 
  struct JetEngine.JSCallable {
 
@@ -582,11 +865,45 @@
 	let reference : JSReference // +0x0
  }
 
+ class JetEngine.LazyPromise {
+ enum JetEngine.State {
+
+	// Properties
+	case pending : TaskScheduler
+	case started : Promise
+ }
+
+ struct JetEngine.MetricsFieldsContext {
+
+	// Properties
+	var storage : [String : Any] // +0x0
+ }
+
+ struct JetEngine.Property {
+
+	// Properties
+	var key : String
+ }
+
  struct JetEngine.MonotonicTimeReference {
 
 	// Properties
-	let referenceDate : Date
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let referenceDate : Â9
 	let referenceTime : MonotonicTime
+ }
+
+ struct JetEngine.ReadOnlyLens {
+
+	// Properties
+	let value : A
+ }
+
+ struct JetEngine.IndexJSLoader {
+
+	// Properties
+	let indexPipeline : AnyPipelineTask // +0x0
+	let sourcePipeline : AnyPipelineTask // +0x8
  }
 
  struct JetEngine.Dependency {
@@ -599,7 +916,7 @@
  struct JetEngine.DependencyDictionary {
 
 	// Properties
-	var contents : UnsafeCastable // +0x0
+	var contents : OpaqueMetatype // +0x0
  }
 
  enum JetEngine.MergeStrategy {
@@ -620,17 +937,35 @@
 
 	// Properties
 	let requestRoute : JSRoute
-	let requestDuration : DateInterval
-	let body : CoarselyTimed<JSONObject>
-	let incidents : [JSIncident]
-	let networkPerformance : [JSNetworkPerformanceMetrics]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let requestDuration : ·@
+	let body : CoarselyTimed
+	let incidents : JSIncident
+	let networkPerformance : JSNetworkPerformanceMetrics
  }
 
+ struct JetEngine.RemoteFetcher {
+
+	// Properties
+	let urlSession : AMSURLSession // +0x0
+	let urlEncoder : AMSURLRequestEncoder // +0x8
+	let cachingPolicy : CachingPolicy // +0x10
+	let onNetworkMetricsEventsCollected : AsyncEvent // +0x28
+ }
+
+ enum JetEngine.CachingPolicy {
+
+	// Properties
+	case always : CachePolicy
+	case alternativeRetry : CachePolicy
+ }
+
+ class JetEngine.AsyncEvent {
  struct JetEngine.StandaloneObjectGraphBuilder {
 
 	// Properties
 	let partialGraph : BaseObjectGraph // +0x0
-	var producers : [(_:)] // +0x8
+	var producers : Promise // +0x8
  }
 
  class JetEngine.MescalBagContract : NSObject /usr/lib/libobjc.A.dylib {
@@ -639,23 +974,25 @@
 	let backing : AMSBagProtocol // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4b3c0  @objc MescalBagContract.mescalCertificateURL <stripped>
-	0x4b420  @objc MescalBagContract.mescalSetupURL <stripped>
-	0x4b480  @objc MescalBagContract.mescalPrimingURL <stripped>
-	0x4b4e0  @objc MescalBagContract.mescalSignedActions <stripped>
-	0x4b540  @objc MescalBagContract.mescalSignSapRequests <stripped>
-	0x4b5a0  @objc MescalBagContract.mescalSignSapResponses <stripped>
-	0x4b730  @objc MescalBagContract.init <stripped>
-	0x4b7b0  @objc MescalBagContract..cxx_destruct <stripped>
+	0x71d10  @objc MescalBagContract.mescalCertificateURL <stripped>
+	0x71d70  @objc MescalBagContract.mescalSetupURL <stripped>
+	0x71dd0  @objc MescalBagContract.mescalPrimingURL <stripped>
+	0x71e30  @objc MescalBagContract.mescalSignedActions <stripped>
+	0x71e90  @objc MescalBagContract.mescalSignSapRequests <stripped>
+	0x71ef0  @objc MescalBagContract.mescalSignSapResponses <stripped>
+	0x720d0  @objc MescalBagContract.init <stripped>
+	0x72060  @objc MescalBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4b2c0  class func MescalBagContract.__allocating_init(_:) // init 
+	0x71c90  class func MescalBagContract.__allocating_init(_:) // init 
  }
+
+ enum JetEngine.PlatformUI { }
 
  class JetEngine.NestedPreferences : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let key : PreferenceKey<[String : Any]> // +0x10 (0x10)
+	let key : PreferenceKey // +0x10 (0x10)
 	let parent : Preferences // +0x20 (0x10)
 
 	// Swift methods
@@ -685,7 +1022,7 @@
  struct JetEngine.Key {
 
 	// Properties
-	let subsystem : OSLogger.Subsystem // +0x0
+	let subsystem : Subsystem // +0x0
 	let category : String // +0x10
  }
 
@@ -693,18 +1030,27 @@
 
 	// Properties
 	let stateLock : JEUnfairLock // +0x10 (0x8)
-	var rawMessages : Message // +0x18 (0x8)
+	var rawRecords : Record // +0x18 (0x8)
 
 	// Swift methods
-	0x4e4b0  class func ReplayLogger.__allocating_init() // init 
+	0x74ab0  class func ReplayLogger.__allocating_init() // init 
  }
 
- struct JetEngine.Message {
+ struct JetEngine.Record {
 
 	// Properties
-	let fragments : [LogMessageFragment] // +0x0
+	let messages : LogMessage // +0x0
 	let level : LogMessageLevel // +0x8
  }
+
+ struct JetEngine.LintedMetricsEvent {
+
+	// Properties
+	let fields : [String : Any] // +0x0
+	let issues : Issue // +0x8
+ }
+
+ struct JetEngine.Issue { }
 
  enum JetEngine.ModelMergingError {
 
@@ -714,11 +1060,10 @@
 	case missingData  
  }
 
- struct JetEngine.LogMessageFragment {
+ struct JetEngine.LogMessage {
 
 	// Properties
-	var rawValue : Any // +0x0
-	var valueTreatment : ValueTreatment // +0x20
+	var components : Component // +0x0
  }
 
  enum JetEngine.ValueTreatment {
@@ -729,6 +1074,48 @@
 	case traceableSensitive  
  }
 
+ struct JetEngine.StringInterpolation {
+
+	// Properties
+	var components : Component // +0x0
+ }
+
+ struct JetEngine.Component {
+
+	// Properties
+	var value : Any? // +0x0
+	var treatment : ValueTreatment // +0x20
+ }
+
+ class JetEngine.ShelvesPresenter {
+ enum JetEngine.InsertionPoint {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case before : ID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case after : ID
+	case start  
+	case end  
+ }
+
+ enum JetEngine.MergeProblem {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case missingShelf : ID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case mergeFailure : ≈^
+ }
+
+ enum JetEngine.MergeSolution {
+
+	// Properties
+	case insert : InsertionPoint
+	case rollbackAndAbort  
+	case discard  
+ }
+
  class JetEngine.Accounts : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -737,10 +1124,10 @@
 	var unlockedActiveiTunesAccount : ACAccount? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x51330  @objc Accounts.accountStoreDidChange: <stripped>
+	0x7d1b0  @objc Accounts.accountStoreDidChange: <stripped>
 
 	// Swift methods
-	0x50ea0  class func Unstable.Accounts.__allocating_init(_:) // init 
+	0x7cdd0  class func Unstable.Accounts.__allocating_init(_:) // init 
  }
 
  class JetEngine.Atomic {
@@ -750,20 +1137,48 @@
 	let rawValue : Any? // +0x0
  }
 
+ enum JetEngine.DataDecodingError {
+
+	// Properties
+	case decodingFailed  
+ }
+
+ struct JetEngine.ViewWillDisappearReason {
+
+	// Properties
+	let rawValue : String // +0x0
+ }
+
  class JetEngine.JSConditionalReference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let managedValue : JSManagedValue // +0x10 (0x8)
 
 	// Swift methods
-	0x53060  class func JSConditionalReference.__allocating_init(value:ownedBy:) // init 
+	0x800f0  class func JSConditionalReference.__allocating_init(value:ownedBy:) // init 
+ }
+
+ struct JetEngine.ClosureActionImplementation {
+
+	// Properties
+	var scheduler : TaskScheduler
  }
 
  enum JetEngine.Result {
 
 	// Properties
 	case value : A
-	case error : Error
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case error : ≈^
+ }
+
+ struct JetEngine.CompoundActionImplementation { }
+
+ enum JetEngine.PerformError {
+
+	// Properties
+	case unsupportedAction : ActionModel
+	case noActionDispatcherInObjectGraph  
  }
 
  enum JetEngine.JSONDateFormat {
@@ -773,10 +1188,20 @@
 	case iso8601WithMilliseconds  
  }
 
- struct JetEngine.MetricsEvent {
+ class JetEngine.AnyValueBox {
+ class JetEngine.IdentifiableValueBox {
+ class JetEngine.AnyComponentModelValueBox {
+ class JetEngine.ComponentModelValueBox {
+ struct JetEngine.DiffableLens {
 
 	// Properties
-	var fields : [String : Any] // +0x0
+	let base : AnyValueBox
+ }
+
+ struct JetEngine.EmptyAction {
+
+	// Properties
+	var actionMetrics : ActionMetrics // +0x0
  }
 
  struct JetEngine.JSPromise {
@@ -791,16 +1216,16 @@
 	var bag : Bag // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x58570  @objc JSBagObject.registerBagKeys: <stripped>
-	0x58c30  @objc JSBagObject.string: <stripped>
-	0x59270  @objc JSBagObject.double: <stripped>
-	0x598c0  @objc JSBagObject.integer: <stripped>
-	0x59f00  @objc JSBagObject.boolean: <stripped>
-	0x5a570  @objc JSBagObject.array: <stripped>
-	0x5abf0  @objc JSBagObject.dictionary: <stripped>
-	0x5b380  @objc JSBagObject.url: <stripped>
-	0x5b4b0  @objc JSBagObject.init <stripped>
-	0x5b530  @objc JSBagObject..cxx_destruct <stripped>
+	0x86c40  @objc JSBagObject.registerBagKeys: <stripped>
+	0x86f40  @objc JSBagObject.string: <stripped>
+	0x870e0  @objc JSBagObject.double: <stripped>
+	0x87280  @objc JSBagObject.integer: <stripped>
+	0x87420  @objc JSBagObject.boolean: <stripped>
+	0x87630  @objc JSBagObject.array: <stripped>
+	0x87840  @objc JSBagObject.dictionary: <stripped>
+	0x87ae0  @objc JSBagObject.url: <stripped>
+	0x87c10  @objc JSBagObject.init <stripped>
+	0x87c70  @objc JSBagObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -820,8 +1245,8 @@
  struct JetEngine.DependentObjectGraphBuilder {
 
 	// Properties
-	let parent : Promise<A>
-	var producers : [(_:)]
+	let parent : Promise
+	var producers : AsyncObjectGraphBuilder
  }
 
  struct JetEngine.AccountHandle {
@@ -830,16 +1255,39 @@
 	let account : ACAccount // +0x0
  }
 
+ class JetEngine.AMSMetricsEventRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let metrics : AMSMetrics // +0x10 (0x8)
+	let defaultTopic : String // +0x18 (0x10)
+
+	// Swift methods
+	0x89600  class func AMSMetricsEventRecorder.__allocating_init(metrics:defaultTopic:) // init 
+ }
+
  struct JetEngine.ComponentTypes {
 
 	// Properties
 	var types : ComponentModel
  }
 
+ struct JetEngine.AppMetricsFieldProvider {
+
+	// Properties
+	let bundle : NSBundle // +0x0
+ }
+
  struct JetEngine.PreferenceNamespace {
 
 	// Properties
 	let rawValue : String // +0x0
+ }
+
+ enum JetEngine.ActionOutcome {
+
+	// Properties
+	case performed  
+	case unsupported  
  }
 
  struct JetEngine.FetchResponse {
@@ -850,9 +1298,10 @@
 	let redirected : Bool
 	let status : Int
 	let statusText : String
-	let url : URL?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let url : Â'
 	let body : String?
-	let metrics : [JSNetworkPerformanceMetrics]
+	let metrics : JSNetworkPerformanceMetrics
  }
 
  class JetEngine.JSBytesDeallocatorHolder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -873,16 +1322,91 @@
 
  class JetEngine.JSRandomObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x625e0  @objc JSRandomObject.nextBoolean <stripped>
-	0x62640  @objc JSRandomObject.nextNumber <stripped>
-	0x62680  @objc JSRandomObject.nextUUID <stripped>
-	0x62720  @objc JSRandomObject.init <stripped>
+	0x8f000  @objc JSRandomObject.nextBoolean <stripped>
+	0x8f020  @objc JSRandomObject.nextNumber <stripped>
+	0x8f040  @objc JSRandomObject.nextUUID <stripped>
+	0x8f060  @objc JSRandomObject.init <stripped>
+ }
+
+ struct JetEngine.MethodEventObserver {
+
+	// Properties
+	let scheduler : TaskScheduler
+	var target : weak A?
+	let method : (_:)
+ }
+
+ struct JetEngine.LanguagesMetricFieldProvider { }
+
+ struct JetEngine.MetricsFieldExclusionRequest {
+
+	// Properties
+	let rawValue : String // +0x0
  }
 
  struct JetEngine.ActionTypes {
 
 	// Properties
 	var types : ActionModel
+ }
+
+ class JetEngine.TableContent {
+ class JetEngine.DiffableDataStatePresenter {
+ class JetEngine.SingleUseClosureEventObserver {
+ enum JetEngine.State {
+
+	// Properties
+	case waiting : TaskScheduler
+	case invalid  
+ }
+
+ struct JetEngine.ClosureEventObserver {
+
+	// Properties
+	let scheduler : TaskScheduler
+	let body : (_:)
+ }
+
+ struct JetEngine.NSObjectEventObserver {
+
+	// Properties
+	let scheduler : TaskScheduler
+	var target : weak NSObject?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let selector : Å$
+ }
+
+ class JetEngine.CollectionContent {
+ enum JetEngine.SupplementaryViewProvider {
+
+	// Properties
+	case section : DiffableLens
+	case generic : CollectionContent
+ }
+
+ class JetEngine.CompoundMetricsEventRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var recorders : MetricsEventRecorder // +0x10 (0x8)
+	let queue : OS_dispatch_queue // +0x18 (0x8)
+
+	// Swift methods
+	0x98350  class func CompoundMetricsEventRecorder.__allocating_init(recorders:) // init 
+ }
+
+ class JetEngine.PageMetricsPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let appMetrics : AppMetricsPresenter // +0x10 (0x8)
+	let pipeline : MetricsPipeline // +0x18 (0x70)
+	var appStateEventSubscription : EventSubscription // +0x88 (0x8)
+	var isViewAppeared : Bool // +0x90 (0x1)
+	var hasAppExitedWhileAppeared : Bool // +0x91 (0x1)
+	var context : MetricsFieldsContext // +0x98 (0x8)
+	var data : PageMetrics // +0xa0 (0x18)
+
+	// Swift methods
+	0x99a30  class func PageMetricsPresenter.__allocating_init(appMetrics:pipeline:context:data:) // init 
  }
 
  struct JetEngine.MonotonicTime {
@@ -895,9 +1419,24 @@
  struct JetEngine.CompoundLogger {
 
 	// Properties
-	var loggers : [Logger] // +0x0
+	var loggers : Logger // +0x0
  }
 
+ class JetEngine.PipelineTaskBox {
+ class JetEngine.SpecializedPipelineTaskBox {
+ struct JetEngine.AnyPipelineTask: PipelineTask {
+
+	// Properties
+	let base : PipelineTaskBox
+ }
+
+ struct JetEngine.PipelineEntryTask: PipelineTask {
+
+	// Properties
+	let promise : Promise
+ }
+
+ class JetEngine.MapPipelineTask {
  class JetEngine.MapStateCenter {
  struct JetEngine.Transaction {
 
@@ -908,9 +1447,9 @@
  enum JetEngine.Change {
 
 	// Properties
-	case changeOne : (StatePath<A>, AnyStateful)
-	case removeOne : StatePath<A>
-	case removeRecursively : StatePath<A>
+	case changeOne : StatePath
+	case removeOne : StatePath
+	case removeRecursively : StatePath
 	case removeAll  
  }
 
@@ -920,32 +1459,32 @@
 	var storage : [String : Any] // +0x10 (0x8)
 
 	// Swift methods
-	0x66810  class func TransientPreferences.__allocating_init() // init 
+	0x9e930  class func TransientPreferences.__allocating_init() // init 
  }
 
  class JetEngine.OverriddenAMSBag : AMSSnapshotBag /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices {
 
 	// Properties
 	let backing : AMSBagProtocol // +0x8 (0x8)
-	let overrides : [AMSBagKey : AnyAMSBagValue] // +0x10 (0x8)
+	let overrides : AMSBagKey // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x67340  @objc OverriddenAMSBag.dealloc <stripped>
-	0x67510  @objc OverriddenAMSBag.forwardSnapshotBagExpiredValueAccessed: <stripped>
-	0x675b0  @objc OverriddenAMSBag.isExpired <stripped>
-	0x675e0  @objc OverriddenAMSBag.expirationDate <stripped>
-	0x67730  @objc OverriddenAMSBag.profile <stripped>
-	0x67750  @objc OverriddenAMSBag.profileVersion <stripped>
-	0x67810  @objc OverriddenAMSBag.arrayForKey: <stripped>
-	0x67830  @objc OverriddenAMSBag.boolForKey: <stripped>
-	0x678c0  @objc OverriddenAMSBag.doubleForKey: <stripped>
-	0x678e0  @objc OverriddenAMSBag.integerForKey: <stripped>
-	0x67900  @objc OverriddenAMSBag.stringForKey: <stripped>
-	0x67920  @objc OverriddenAMSBag.URLForKey: <stripped>
-	0x679e0  @objc OverriddenAMSBag.dictionaryForKey: <stripped>
-	0x67bd0  @objc OverriddenAMSBag.createSnapshotWithCompletion: <stripped>
-	0x67c40  @objc OverriddenAMSBag.init <stripped>
-	0x673f0  @objc OverriddenAMSBag..cxx_destruct <stripped>
+	0x9f360  @objc OverriddenAMSBag.dealloc <stripped>
+	0x9f510  @objc OverriddenAMSBag.forwardSnapshotBagExpiredValueAccessed: <stripped>
+	0x9f5b0  @objc OverriddenAMSBag.isExpired <stripped>
+	0x9f5d0  @objc OverriddenAMSBag.expirationDate <stripped>
+	0x9f6e0  @objc OverriddenAMSBag.profile <stripped>
+	0x9f700  @objc OverriddenAMSBag.profileVersion <stripped>
+	0x9f7b0  @objc OverriddenAMSBag.arrayForKey: <stripped>
+	0x9f7d0  @objc OverriddenAMSBag.boolForKey: <stripped>
+	0x9f7f0  @objc OverriddenAMSBag.doubleForKey: <stripped>
+	0x9f810  @objc OverriddenAMSBag.integerForKey: <stripped>
+	0x9f830  @objc OverriddenAMSBag.stringForKey: <stripped>
+	0x9f850  @objc OverriddenAMSBag.URLForKey: <stripped>
+	0x9f870  @objc OverriddenAMSBag.dictionaryForKey: <stripped>
+	0x9f9f0  @objc OverriddenAMSBag.createSnapshotWithCompletion: <stripped>
+	0x9fb30  @objc OverriddenAMSBag.init <stripped>
+	0x9f400  @objc OverriddenAMSBag..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -953,12 +1492,15 @@
  enum JetEngine.JSONError {
 
 	// Properties
-	case malformedDocument : (forType: Any.Type, errors: [Error])
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case malformedDocument :  empty-list 
 	case missingProperty : (forKey: String, containedIn: Any.Type)
-	case malformedProperty : (forKey: String, containedIn: Any.Type, errors: [Error])
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case malformedProperty :  empty-list 
 	case unknownType : (named: String, containedIn: Any.Type)
 	case unknownCase : (named: String, containedIn: Any.Type)
-	case invalidDocument : (forType: Any.Type, error: Error)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case invalidDocument :  first-element-marker 
 	case unknownClass : (named: String, containedIn: Any.Type)
 	case filterObject  
  }
@@ -967,14 +1509,13 @@
 
 	// Properties
 	let urlSession : AMSURLSession // +0x8 (0x8)
-	let accounts : Unstable.Accounts // +0x10 (0x8)
-	let requestEncoder : AMSURLRequestEncoder // +0x18 (0x8)
-	let requestInterceptor : JSNetworkRequestInterceptor? // +0x20 (0x28)
+	let accounts : Accounts // +0x10 (0x8)
+	let requestEncoder : JSURLRequestEncoder // +0x18 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x69fb0  @objc JSNetworkObject.fetch: <stripped>
-	0x6a010  @objc JSNetworkObject.init <stripped>
-	0x6a090  @objc JSNetworkObject..cxx_destruct <stripped>
+	0xa1d30  @objc JSNetworkObject.fetch: <stripped>
+	0xa1e40  @objc JSNetworkObject.init <stripped>
+	0xa1ea0  @objc JSNetworkObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -982,10 +1523,11 @@
  struct JetEngine.FetchRequest {
 
 	// Properties
-	let url : URL
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let url : ÕF
 	let method : String
-	let cache : NSURLRequestCachePolicy
-	let signingStyle : FetchRequest.SigningStyle
+	let cache : CachePolicy
+	let signingStyle : SigningStyle
 	let headers : [String : String]
 	let timeout : Double
 	let body : String?
@@ -1019,6 +1561,18 @@
 	let array : NSArray // +0x0
  }
 
+ class JetEngine.InMemoryMetricsEventRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let historySize : Int // +0x10 (0x8)
+	var events : LintedMetricsEvent // +0x18 (0x8)
+	let stateLock : JEUnfairLock // +0x20 (0x8)
+	let onEventRecorded : AsyncEvent // +0x28 (0x8)
+
+	// Swift methods
+	0xaab00  class func InMemoryMetricsEventRecorder.__allocating_init(historySize:) // init 
+ }
+
  class JetEngine.JSPlatformObject : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -1026,9 +1580,9 @@
 	let process : AMSProcessInfo // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x732a0  @objc JSPlatformObject.lookup: <stripped>
-	0x73300  @objc JSPlatformObject.init <stripped>
-	0x73380  @objc JSPlatformObject..cxx_destruct <stripped>
+	0xacfc0  @objc JSPlatformObject.lookup: <stripped>
+	0xad0d0  @objc JSPlatformObject.init <stripped>
+	0xad130  @objc JSPlatformObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1040,21 +1594,21 @@
 	var name : String // +0x18 (0x10)
 
 	// Swift methods
-	0x73f40  class func BaseObjectGraph.__allocating_init(name:dependencies:) // init 
-	0x74130  func BaseObjectGraph.adding(allDependenciesOf:) // method 
-	0x742b0  func BaseObjectGraph.adding<A>(allDependencies:) // method 
-	0x74430  func BaseObjectGraph.adding(dependency:) // method 
-	0x745c0  func BaseObjectGraph.adding(uniqueDependenciesOf:) // method 
-	0x74780  func BaseObjectGraph.subtracting<A>(dependenciesFor:) // method 
-	0x74aa0  func BaseObjectGraph.subtracting(dependencyFor:) // method 
-	0x74c40  func BaseObjectGraph.subtracting<A>(allDependenciesExcept:) // method 
-	0x74f60  func BaseObjectGraph.availableCandidates.getter // getter 
-	0x75410  func BaseObjectGraph.errorDescription<A>(forNoMemberSatisfying:) // method 
-	0x75890  func BaseObjectGraph.noMemberFound<A>(toSatisfy:) // method 
-	0x75940  func BaseObjectGraph.name.getter // getter 
-	0x75980  func BaseObjectGraph.name.setter // setter 
-	0x759c0  func BaseObjectGraph.name.modify // modifyCoroutine 
-	0x75a00  func BaseObjectGraph.description.getter // getter 
+	0xae120  class func BaseObjectGraph.__allocating_init(name:dependencies:) // init 
+	0xae240  func BaseObjectGraph.adding(allDependenciesOf:) // method 
+	0xae3a0  func BaseObjectGraph.adding<A>(allDependencies:) // method 
+	0xae500  func BaseObjectGraph.adding(dependency:) // method 
+	0xae650  func BaseObjectGraph.adding(uniqueDependenciesOf:) // method 
+	0xae7e0  func BaseObjectGraph.subtracting<A>(dependenciesFor:) // method 
+	0xaeaa0  func BaseObjectGraph.subtracting(dependencyFor:) // method 
+	0xaec10  func BaseObjectGraph.subtracting<A>(allDependenciesExcept:) // method 
+	0xaeee0  func BaseObjectGraph.availableCandidates.getter // getter 
+	0xaf330  func BaseObjectGraph.errorDescription<A>(forNoMemberSatisfying:) // method 
+	0xaf700  func BaseObjectGraph.noMemberFound<A>(toSatisfy:) // method 
+	0xaf790  func BaseObjectGraph.name.getter // getter 
+	0xaf7d0  func BaseObjectGraph.name.setter // setter 
+	0xaf810  func BaseObjectGraph.name.modify // modifyCoroutine 
+	0xaf850  func BaseObjectGraph.description.getter // getter 
  }
 
  enum JetEngine.ValueOverride {
@@ -1065,8 +1619,10 @@
 	case double : Double
 	case int : Int
 	case string : String
-	case URL : URL
-	case dictionary : [AnyHashable : Any]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case URL : ÕF
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case dictionary :  empty-list 
  }
 
  struct JetEngine.OpaqueMetatype {
@@ -1130,54 +1686,71 @@
 	let backing : AMSBagProtocol // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7f340  @objc LookupBagContract.unpersonalizedLookupURL <stripped>
-	0x7f4b0  @objc LookupBagContract..cxx_destruct <stripped>
+	0xb88a0  @objc LookupBagContract.unpersonalizedLookupURL <stripped>
+	0xb8a20  @objc LookupBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7f3d0  func LookupBagContract.unpersonalizedLookupURL.getter // getter 
+	0xb8930  func LookupBagContract.unpersonalizedLookupURL.getter // getter 
  }
 
  struct JetEngine.MutableStateRef {
 
 	// Properties
-	let path : StatePath<A.StateCenter.Transaction.StateCenterTransaction.PathComponent>
+	let path : StatePath
 	let center : A
  }
 
  struct JetEngine.AsyncObjectGraphError {
 
 	// Properties
-	let errors : [Error] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let errors :  empty-list  // +0x0
  }
 
  struct JetEngine.ImpulseSignpost {
 
 	// Properties
-	let component : JESignpostComponent // +0x0
-	let event : UInt32 // +0x4
+	let component : SignpostComponent // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let event : ﬂb // +0x4
  }
 
  struct JetEngine.IntervalSignpost {
 
 	// Properties
-	let component : JESignpostComponent // +0x0
-	let beginEvent : UInt32 // +0x4
-	let endEvent : UInt32 // +0x8
+	let component : SignpostComponent // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let beginEvent : ﬂb // +0x4
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let endEvent : ﬂb // +0x8
  }
 
  struct JetEngine.StateRef {
 
 	// Properties
-	let path : StatePath<A.StateCenter.Transaction.StateCenterTransaction.PathComponent>
+	let path : StatePath
 	let center : A
  }
 
  struct JetEngine.RenamePreferenceMigrationRule {
 
 	// Properties
-	let oldKey : PreferenceKey<A>
-	let newKey : PreferenceKey<A>
+	let oldKey : PreferenceKey
+	let newKey : PreferenceKey
  }
+
+ class JetEngine.PropertyEventObserver {
+ class JetEngine.JSRemoteIndexFetcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let remoteFetcher : RemoteFetcher // +0x10 (0x30)
+	let isRetryLock : NSLock // +0x40 (0x8)
+	var isRetry : Bool // +0x48 (0x1)
+
+	// Swift methods
+ }
+
+ struct JetEngine.EmptyActionImplementation { }
 
  class JetEngine.JSBoundReference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
@@ -1186,23 +1759,25 @@
 	let weakOwner : JSWeakReference // +0x20 (0x8)
 
 	// Swift methods
-	0x80f20  class func JSBoundReference.__allocating_init(value:ownedBy:) // init 
+	0xbb320  class func JSBoundReference.__allocating_init(value:ownedBy:) // init 
  }
 
  class JetEngine.JSNotifyObject : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var observersByName : [String : [JSCallable]] // +0x8 (0x8)
+	var observersByName : JSCallable // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x82000  @objc JSNotifyObject.init <stripped>
-	0x82710  @objc JSNotifyObject.register:: <stripped>
-	0x82ac0  @objc JSNotifyObject.unregister:: <stripped>
-	0x82b60  @objc JSNotifyObject.post: <stripped>
-	0x82c00  @objc JSNotifyObject..cxx_destruct <stripped>
+	0xbc220  @objc JSNotifyObject.init <stripped>
+	0xbc710  @objc JSNotifyObject.register:: <stripped>
+	0xbcb70  @objc JSNotifyObject.unregister:: <stripped>
+	0xbcbe0  @objc JSNotifyObject.post: <stripped>
+	0xbcc60  @objc JSNotifyObject..cxx_destruct <stripped>
  }
 
  class JetEngine.DeferredLazy {
+ struct JetEngine.SystemInfoMetricsFieldsProvider { }
+
  struct JetEngine.JSArrayBuffer {
 
 	// Properties
@@ -1217,30 +1792,41 @@
 	let backing : AnyBacking
  }
 
+ struct JetEngine.ImpressionMetrics {
+
+	// Properties
+	var id : ID // +0x0
+	var fields : [String : Any] // +0x28
+	var custom : ScalarDictionary // +0x30
+ }
+
+ struct JetEngine.ID {
+
+	// Properties
+	var parent : String? // +0x0
+	var element : String // +0x10
+	var index : Int // +0x20
+ }
+
+ struct JetEngine.MetricsFieldInclusionRequest {
+
+	// Properties
+	let rawValue : String // +0x0
+ }
+
  class JetEngine.JSCryptoObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x89360  @objc JSCryptoObject.supports: <stripped>
-	0x89630  @objc JSCryptoObject.hash:: <stripped>
-	0x896a0  @objc JSCryptoObject.init <stripped>
+	0xc7200  @objc JSCryptoObject.supports: <stripped>
+	0xc7470  @objc JSCryptoObject.hash:: <stripped>
+	0xc7590  @objc JSCryptoObject.init <stripped>
  }
 
  struct JetEngine.JSSource {
 
 	// Properties
 	var code : String
-	var sourceURL : URL?
- }
-
- class JetEngine.PageMetricsPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let appStatePresenter : ApplicationStatePresenter // +0x10 (0x8)
-	var hasResignedActiveWhileAppeared : Bool // +0x18 (0x1)
-	let eventDispatcher : MetricsEventDispatcher // +0x20 (0x28)
-	var pageMetrics : PageMetrics? // +0x48 (0x8)
-
-	// Swift methods
-	0x8ac80  class func PageMetricsPresenter.__allocating_init(eventDispatcher:pageMetrics:) // init 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sourceURL : Â'
  }
 
  struct JetEngine.JSONDictionary {
@@ -1249,16 +1835,41 @@
 	let dictionary : NSDictionary // +0x0
  }
 
+ struct JetEngine.CompoundAction {
+
+	// Properties
+	var actionMetrics : ActionMetrics // +0x0
+	var subactions : ActionModel // +0x10
+ }
+
+ class JetEngine.AppMetricsPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let pipeline : MetricsPipeline // +0x10 (0x70)
+	var canSendEnter : Bool // +0x80 (0x1)
+	var flushedEvents : AppStateEvent // +0x88 (0x8)
+	let onAppStateEvent : SyncEvent // +0x90 (0x8)
+
+	// Swift methods
+	0xc9ff0  class func AppMetricsPresenter.__allocating_init(pipeline:) // init 
+ }
+
+ struct JetEngine.AppStateEvent {
+
+	// Properties
+	let value : String // +0x0
+ }
+
  class JetEngine.JSHostObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x8d630  @objc JSHostObject.platform <stripped>
-	0x8d660  @objc JSHostObject.osBuild <stripped>
-	0x8d740  @objc JSHostObject.deviceModel <stripped>
-	0x8d760  @objc JSHostObject.deviceLocalizedModel <stripped>
-	0x8d840  @objc JSHostObject.clientIdentifier <stripped>
-	0x8d920  @objc JSHostObject.clientVersion <stripped>
-	0x8d960  @objc JSHostObject.isOSAtLeast::: <stripped>
-	0x8da90  @objc JSHostObject.init <stripped>
+	0xcae60  @objc JSHostObject.platform <stripped>
+	0xcae90  @objc JSHostObject.osBuild <stripped>
+	0xcaeb0  @objc JSHostObject.deviceModel <stripped>
+	0xcaed0  @objc JSHostObject.deviceLocalizedModel <stripped>
+	0xcaf70  @objc JSHostObject.clientIdentifier <stripped>
+	0xcb050  @objc JSHostObject.clientVersion <stripped>
+	0xcb090  @objc JSHostObject.isOSAtLeast::: <stripped>
+	0xcb1b0  @objc JSHostObject.init <stripped>
  }
 
  struct JetEngine.SwiftLogger {
@@ -1273,11 +1884,11 @@
 	let backing : AMSBagProtocol // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8e420  @objc FamilyInfoLookupBagContract.familyInfoURL <stripped>
-	0x8e570  @objc FamilyInfoLookupBagContract..cxx_destruct <stripped>
+	0xcbaa0  @objc FamilyInfoLookupBagContract.familyInfoURL <stripped>
+	0xcbc00  @objc FamilyInfoLookupBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8e4a0  func FamilyInfoLookupBagContract.familyInfoURL.getter // getter 
+	0xcbb20  func FamilyInfoLookupBagContract.familyInfoURL.getter // getter 
  }
 
  struct JetEngine.JSTypedArray {
@@ -1305,50 +1916,60 @@
 	// Properties
 	let name : String // +0x10 (0x10)
 	let stateLock : NSLock // +0x20 (0x8)
-	var runLoopStorage : Atomic<CFRunLoopRef?> // +0x28 (0x8)
-	var source : CFRunLoopSourceRef? // +0x30 (0x8)
+	var runLoopStorage : Atomic // +0x28 (0x8)
+	var source : CFRunLoopSource // +0x30 (0x8)
 	var tasks : [()] // +0x38 (0x8)
 
 	// Swift methods
-	0x90790  class func RunLoopWorkerThread.__allocating_init(name:) // init 
-	0x90aa0  func RunLoopWorkerThread.isRunning.getter // getter 
-	0x90b70  func RunLoopWorkerThread.start() // method 
-	0x90e60  func RunLoopWorkerThread.stop() // method 
-	0x91080  func <stripped> // method 
-	0x917f0  func RunLoopWorkerThread.scheduleAfter(delay:execute:) // method 
-	0x92090  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
-	0x92480  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
-	0x925a0  func RunLoopWorkerThread.schedule(task:) // method 
-	0x927a0  func RunLoopWorkerThread.description.getter // getter 
+	0xcd970  class func RunLoopWorkerThread.__allocating_init(name:) // init 
+	0xcdc20  func RunLoopWorkerThread.isRunning.getter // getter 
+	0xcdce0  func RunLoopWorkerThread.start() // method 
+	0xcdfe0  func RunLoopWorkerThread.stop() // method 
+	0xce1a0  func <stripped> // method 
+	0xce7a0  func RunLoopWorkerThread.scheduleAfter(delay:execute:) // method 
+	0xcef70  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
+	0xcf310  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
+	0xcf430  func RunLoopWorkerThread.schedule(task:) // method 
+	0xcf610  func RunLoopWorkerThread.description.getter // getter 
  }
 
  struct JetEngine.PendingTask {
 
 	// Properties
-	let timer : CFRunLoopTimerRef? // +0x0
+	let timer : CFRunLoopTimer // +0x0
  }
 
  class JetEngine.ImmutableBox {
  class JetEngine.MutableBox {
+ enum JetEngine.DiffableData { }
+
+ struct JetEngine.EventTimeMetricsFieldProvider { }
+
  class JetEngine.MetricsLogger : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let loggerName : String // +0x10 (0x10)
-	let metrics : MetricsEventQueue // +0x20 (0x10)
-	let eventTopic : String // +0x30 (0x10)
-	let sampling : MetricsSamplingLottery // +0x40 (0x30)
+	let recorder : MetricsEventRecorder // +0x20 (0x28)
+	let eventTopic : String // +0x48 (0x10)
+	let sampling : MetricsSamplingLottery // +0x58 (0x30)
 
 	// Swift methods
-	0x93cd0  class func MetricsLogger.__allocating_init(loggerName:configuration:) // init 
+	0xd2df0  class func MetricsLogger.__allocating_init(loggerName:configuration:) // init 
  }
 
  struct JetEngine.Configuration {
 
 	// Properties
-	var metrics : MetricsEventQueue // +0x0
-	var eventTopic : String // +0x10
-	var samplingPercentage : Double // +0x20
-	var samplingDuration : Double // +0x28
+	var recorder : MetricsEventRecorder // +0x0
+	var eventTopic : String // +0x28
+	var samplingPercentage : Double // +0x38
+	var samplingDuration : Double // +0x40
+ }
+
+ struct JetEngine.WritableStateLens {
+
+	// Properties
+	let handle : AnyStateStoreHandle
  }
 
  class JetEngine.URLBagContract : NSObject /usr/lib/libobjc.A.dylib {
@@ -1358,36 +1979,36 @@
 	let mescalContract : AMSMescalBagContract // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x96500  @objc URLBagContract.guidRegexes <stripped>
-	0x96530  @objc URLBagContract.guidSchemes <stripped>
-	0x96560  @objc URLBagContract.storefrontSuffix <stripped>
-	0x96590  @objc URLBagContract.trustedDomains <stripped>
-	0x965c0  @objc URLBagContract.metricsContract <stripped>
-	0x965e0  @objc URLBagContract.mescalContract <stripped>
-	0x96630  @objc URLBagContract.TLSSamplingPercentage <stripped>
-	0x96660  @objc URLBagContract.TLSSamplingSessionDuration <stripped>
-	0x96690  @objc URLBagContract.TFOSamplingPercentage <stripped>
-	0x966c0  @objc URLBagContract.TFOSamplingSessionDuration <stripped>
-	0x966f0  @objc URLBagContract.apsEnabledPatterns <stripped>
-	0x96720  @objc URLBagContract.apsSamplingPercent <stripped>
-	0x96750  @objc URLBagContract.metricsURL <stripped>
-	0x96780  @objc URLBagContract.metricsDictionary <stripped>
-	0x96880  @objc URLBagContract.init <stripped>
-	0x96900  @objc URLBagContract..cxx_destruct <stripped>
+	0xd5760  @objc URLBagContract.guidRegexes <stripped>
+	0xd5790  @objc URLBagContract.guidSchemes <stripped>
+	0xd57c0  @objc URLBagContract.storefrontSuffix <stripped>
+	0xd57f0  @objc URLBagContract.trustedDomains <stripped>
+	0xd5820  @objc URLBagContract.metricsContract <stripped>
+	0xd5840  @objc URLBagContract.mescalContract <stripped>
+	0xd5890  @objc URLBagContract.TLSSamplingPercentage <stripped>
+	0xd58c0  @objc URLBagContract.TLSSamplingSessionDuration <stripped>
+	0xd58f0  @objc URLBagContract.TFOSamplingPercentage <stripped>
+	0xd5920  @objc URLBagContract.TFOSamplingSessionDuration <stripped>
+	0xd5950  @objc URLBagContract.apsEnabledPatterns <stripped>
+	0xd5980  @objc URLBagContract.apsSamplingPercent <stripped>
+	0xd59b0  @objc URLBagContract.metricsURL <stripped>
+	0xd59e0  @objc URLBagContract.metricsDictionary <stripped>
+	0xd5ae0  @objc URLBagContract.init <stripped>
+	0xd5b40  @objc URLBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x96430  class func URLBagContract.__allocating_init(_:) // init 
-	0x96170  func URLBagContract.guidRegexes.getter // getter 
-	0x961a0  func URLBagContract.guidSchemes.getter // getter 
-	0x961d0  func URLBagContract.storefrontSuffix.getter // getter 
-	0x96200  func URLBagContract.trustedDomains.getter // getter 
-	0x96230  func URLBagContract.metricsContract.getter // getter 
-	0x96250  func URLBagContract.tlsSamplingPercentage.getter // getter 
-	0x96280  func URLBagContract.tlsSamplingSessionDuration.getter // getter 
-	0x962b0  func URLBagContract.tfoSamplingPercentage.getter // getter 
-	0x962e0  func URLBagContract.tfoSamplingSessionDuration.getter // getter 
-	0x96310  func URLBagContract.apsEnabledPatterns.getter // getter 
-	0x96340  func URLBagContract.apsSamplingPercent.getter // getter 
-	0x96370  func URLBagContract.metricsURL.getter // getter 
-	0x963a0  func URLBagContract.metricsDictionary.getter // getter 
+	0xd56a0  class func URLBagContract.__allocating_init(_:) // init 
+	0xd53e0  func URLBagContract.guidRegexes.getter // getter 
+	0xd5410  func URLBagContract.guidSchemes.getter // getter 
+	0xd5440  func URLBagContract.storefrontSuffix.getter // getter 
+	0xd5470  func URLBagContract.trustedDomains.getter // getter 
+	0xd54a0  func URLBagContract.metricsContract.getter // getter 
+	0xd54c0  func URLBagContract.tlsSamplingPercentage.getter // getter 
+	0xd54f0  func URLBagContract.tlsSamplingSessionDuration.getter // getter 
+	0xd5520  func URLBagContract.tfoSamplingPercentage.getter // getter 
+	0xd5550  func URLBagContract.tfoSamplingSessionDuration.getter // getter 
+	0xd5580  func URLBagContract.apsEnabledPatterns.getter // getter 
+	0xd55b0  func URLBagContract.apsSamplingPercent.getter // getter 
+	0xd55e0  func URLBagContract.metricsURL.getter // getter 
+	0xd5610  func URLBagContract.metricsDictionary.getter // getter 
  }

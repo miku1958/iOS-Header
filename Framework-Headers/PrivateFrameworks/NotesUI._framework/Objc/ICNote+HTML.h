@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSArray *attachmentActivityItemsForSharing;
 @property (readonly, strong, nonatomic) ICCollaborationColorManager *collaborationColorManager;
 @property (nonatomic, getter=isHandwritingRecognitionEnabled) BOOL handwritingRecognitionEnabled;
+@property (nonatomic) BOOL isDrawingStroke;
 @property (readonly, nonatomic) long long primaryWritingDirection;
 @property (copy, nonatomic) PKInk *selectedInk;
 @property (readonly, nonatomic) TTTextStorage *textStorage;
@@ -25,11 +26,11 @@
 + (void)fixFontsInAttributedString:(id)arg1;
 + (void)fixTextColorsInAttributedString:(id)arg1;
 + (void)fixUnwantedCharactersInAttributedString:(id)arg1;
-+ (id)hexStringForColor:(struct UIColor *)arg1;
++ (id)hexStringForColor:(id)arg1;
 + (id)htmlObjectAttributesForAttachmentWithContentID:(id)arg1;
 + (id)htmlStringByFixingDashedListsInHTMLString:(id)arg1;
 + (id)htmlStringFromAttributedString:(id)arg1 attachmentConversionHandler:(CDUnknownBlockType)arg2;
-+ (BOOL)isDefaultColor:(struct UIColor *)arg1;
++ (BOOL)isDefaultColor:(id)arg1;
 + (id)mutableAttributedStringFromHTMLString:(id)arg1 baseURL:(id)arg2;
 + (id)mutableAttributedStringFromHTMLString:(id)arg1 readerDelegate:(id)arg2;
 + (id)tagDictionariesForAttributes:(id)arg1 attachmentConversionHandler:(CDUnknownBlockType)arg2;
@@ -69,8 +70,8 @@
 - (void)textStorageWillChange:(id)arg1;
 - (void)textStorageWillProcessEditing:(id)arg1;
 - (id)thumbnailImageCacheKeyWithItemSize:(struct CGSize)arg1 appearanceType:(unsigned long long)arg2;
-- (struct UIImage *)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(BOOL)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(BOOL *)arg6 isMovie:(BOOL *)arg7 movieDuration:(CDStruct_1b6d18a9 *)arg8;
-- (struct UIImage *)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(BOOL)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(BOOL *)arg6 isMovie:(BOOL *)arg7 movieDuration:(CDStruct_1b6d18a9 *)arg8 attachment:(id *)arg9;
+- (id)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(BOOL)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(BOOL *)arg6 isMovie:(BOOL *)arg7 movieDuration:(CDStruct_1b6d18a9 *)arg8;
+- (id)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(BOOL)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(BOOL *)arg6 isMovie:(BOOL *)arg7 movieDuration:(CDStruct_1b6d18a9 *)arg8 attachment:(id *)arg9;
 - (id)uiAttributedString;
 - (void)updateModificationDateAndChangeCount;
 - (void)updateModificationDateAndChangeCountAndSaveAfterDelay;

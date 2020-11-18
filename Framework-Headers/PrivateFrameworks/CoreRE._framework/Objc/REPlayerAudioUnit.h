@@ -16,9 +16,7 @@ __attribute__((visibility("hidden")))
     AVAudioEngine *_engine;
     AVAudioMixerNode *_sampleRateConverter;
     AVAudioPlayerNode *_playingNode;
-    struct atomic<bool> _ignoreCompletionCallback;
-    BOOL _didHitStop;
-    struct recursive_mutex _completionMutex;
+    struct atomic<bool> _didHitStop;
     struct atomic<bool> _looping;
     id _resource;
     struct mutex _engineConfigurationMutex;
@@ -28,12 +26,19 @@ __attribute__((visibility("hidden")))
     struct OpaqueAudioComponentInstance *_playingNodeAudioUnit;
     double _startTime;
     double _pauseTime;
-    double _renderSampleTime;
+    struct atomic<double> _renderSampleTime;
+    unsigned long long _currentPlayTimeParamAddress;
+    struct atomic<REAudioPlaybackState> _playbackState;
+    struct atomic<unsigned int> _playedFrames;
+    BOOL _isScheduled;
+    struct atomic<bool> _shouldDispatchCompletion;
     NSObject<OS_dispatch_queue> *_serialWorkQueue;
     CDUnknownBlockType _streamPlaybackDidComplete;
 }
 
+@property (readonly) double assetDuration;
 @property (readonly) BOOL isPrepared;
+@property double playbackPosition;
 @property (strong) NSObject<OS_dispatch_queue> *serialWorkQueue; // @synthesize serialWorkQueue=_serialWorkQueue;
 @property (copy) CDUnknownBlockType streamPlaybackDidComplete; // @synthesize streamPlaybackDidComplete=_streamPlaybackDidComplete;
 
@@ -52,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareToPlayFile:(id)arg1 looping:(BOOL)arg2;
 - (void)resume;
 - (void)scheduleCurrentResourceOnPlayer:(id)arg1;
+- (void)scheduleCurrentResourceOnPlayer:(id)arg1 startingProgress:(double)arg2;
 - (void)stop;
 
 @end

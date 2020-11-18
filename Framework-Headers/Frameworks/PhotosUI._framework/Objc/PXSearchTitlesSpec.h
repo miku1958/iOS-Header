@@ -12,8 +12,8 @@
 
 + (id)searchDefaultTitleAttributes;
 + (id)searchItalicTitleAttributes;
-+ (struct UIFont *)searchItalicTitleLabelFont;
-+ (struct UIFont *)searchTitleLabelFont;
++ (id)searchItalicTitleLabelFont;
++ (id)searchTitleLabelFont;
 
 @end
 

@@ -14,11 +14,17 @@
 {
     long long _alternativeSelectionCount;
     long long _characterModificationCount;
+    long long _characterInsertionCount;
+    long long _characterSubstitutionCount;
+    long long _characterDeletionCount;
     NSString *_correctedText;
 }
 
 @property (nonatomic) long long alternativeSelectionCount; // @synthesize alternativeSelectionCount=_alternativeSelectionCount;
+@property (nonatomic) long long characterDeletionCount; // @synthesize characterDeletionCount=_characterDeletionCount;
+@property (nonatomic) long long characterInsertionCount; // @synthesize characterInsertionCount=_characterInsertionCount;
 @property (nonatomic) long long characterModificationCount; // @synthesize characterModificationCount=_characterModificationCount;
+@property (nonatomic) long long characterSubstitutionCount; // @synthesize characterSubstitutionCount=_characterSubstitutionCount;
 @property (copy, nonatomic) NSString *correctedText; // @synthesize correctedText=_correctedText;
 
 + (BOOL)supportsSecureCoding;

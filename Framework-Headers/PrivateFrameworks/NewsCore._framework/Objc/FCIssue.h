@@ -34,7 +34,6 @@
     NSString *_notificationDescription;
     NSString *_issueDescription;
     NSArray *_allArticleIDs;
-    NSArray *_bundleFeaturedArticleIDs;
     NSString *_coverArticleID;
     NSArray *_allowedStorefrontIDs;
     NSArray *_blockedStorefrontIDs;
@@ -49,7 +48,6 @@
 @property (readonly, nonatomic, getter=isANF) BOOL anf;
 @property (readonly, copy, nonatomic) NSArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property (readonly, nonatomic) long long bodyTextLength;
-@property (readonly, copy, nonatomic) NSArray *bundleFeaturedArticleIDs; // @synthesize bundleFeaturedArticleIDs=_bundleFeaturedArticleIDs;
 @property (readonly, nonatomic, getter=isBundlePaid) BOOL bundlePaid;
 @property (readonly, nonatomic, getter=isBundlePaid) BOOL bundlePaid;
 @property (readonly, copy, nonatomic) NSString *coverArticleID; // @synthesize coverArticleID=_coverArticleID;
@@ -102,8 +100,7 @@
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3;
-- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageAspectRatio:(double)arg8 coverImagePrimaryColor:(id)arg9 layeredCoverJSON:(id)arg10 layeredCoverAspectRatio:(double)arg11 layeredCoverPrimaryColor:(id)arg12 isCurrent:(BOOL)arg13 isDraft:(BOOL)arg14 isPaid:(BOOL)arg15 minimumNewsVersion:(long long)arg16 allArticleIDs:(id)arg17 bundleFeaturedArticleIDs:(id)arg18 coverArticleID:(id)arg19 allowedStorefrontIDs:(id)arg20 blockedStorefrontIDs:(id)arg21 topicTagIDs:(id)arg22 sourceChannel:(id)arg23 notificationDescription:(id)arg24 issueDescription:(id)arg25;
-- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageHQAssetHandle:(id)arg8 coverImageLQAssetHandle:(id)arg9 coverImageAspectRatio:(double)arg10 coverImagePrimaryColor:(id)arg11 layeredCoverJSON:(id)arg12 layeredCoverAspectRatio:(double)arg13 layeredCoverPrimaryColor:(id)arg14 isCurrent:(BOOL)arg15 isDraft:(BOOL)arg16 isPaid:(BOOL)arg17 minimumNewsVersion:(long long)arg18 allArticleIDs:(id)arg19 bundleFeaturedArticleIDs:(id)arg20 coverArticleID:(id)arg21 allowedStorefrontIDs:(id)arg22 blockedStorefrontIDs:(id)arg23 PDFResourceIDs:(id)arg24 topicTagIDs:(id)arg25 sourceChannel:(id)arg26 notificationDescription:(id)arg27 issueDescription:(id)arg28;
+- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageAspectRatio:(double)arg8 coverImagePrimaryColor:(id)arg9 layeredCoverJSON:(id)arg10 layeredCoverAspectRatio:(double)arg11 layeredCoverPrimaryColor:(id)arg12 isCurrent:(BOOL)arg13 isDraft:(BOOL)arg14 isPaid:(BOOL)arg15 minimumNewsVersion:(long long)arg16 allArticleIDs:(id)arg17 coverArticleID:(id)arg18 allowedStorefrontIDs:(id)arg19 blockedStorefrontIDs:(id)arg20 topicTagIDs:(id)arg21 sourceChannel:(id)arg22 notificationDescription:(id)arg23 issueDescription:(id)arg24;
 - (id)initWithIssueRecord:(id)arg1 assetManager:(id)arg2 interestToken:(id)arg3 sourceChannel:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 

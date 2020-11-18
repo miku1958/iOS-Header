@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, MPPlaybackArchive, NSMutableSet, NSNumber, NSSet, NSString;
+@class HMDHome, MPPlaybackArchive, NSArray, NSMutableSet, NSNumber, NSSet, NSString;
 
 @interface HMDMediaPlaybackAction : HMDAction <NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
@@ -22,6 +22,7 @@
     NSMutableSet *_profileUUIDs;
 }
 
+@property (readonly, nonatomic) NSArray *characteristicWriteRequests;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL encodePlaybackArchiveForExecution; // @synthesize encodePlaybackArchiveForExecution=_encodePlaybackArchiveForExecution;

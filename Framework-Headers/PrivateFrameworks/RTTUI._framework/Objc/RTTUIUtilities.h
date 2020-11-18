@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSNumber;
 @protocol OS_dispatch_queue;
 
 @interface RTTUIUtilities : NSObject
 {
     BOOL _inUnitTestMode;
     BOOL _headphoneJackSupportsTTY;
+    NSNumber *_overrideLTR;
     NSObject<OS_dispatch_queue> *_callCenterQueue;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callCenterQueue; // @synthesize callCenterQueue=_callCenterQueue;
 @property (nonatomic) BOOL headphoneJackSupportsTTY; // @synthesize headphoneJackSupportsTTY=_headphoneJackSupportsTTY;
 @property (nonatomic) BOOL inUnitTestMode; // @synthesize inUnitTestMode=_inUnitTestMode;
+@property (strong, nonatomic) NSNumber *overrideLTR; // @synthesize overrideLTR=_overrideLTR;
 
 + (id)ASCIINumericStringFromString:(struct __CFString *)arg1;
 + (void)cancelCallPromptDisplay;

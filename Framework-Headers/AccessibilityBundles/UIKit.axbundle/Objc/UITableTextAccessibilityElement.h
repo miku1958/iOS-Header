@@ -57,6 +57,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 - (id)description;
 
 @end

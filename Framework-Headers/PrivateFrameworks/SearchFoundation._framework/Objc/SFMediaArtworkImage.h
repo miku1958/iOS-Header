@@ -20,6 +20,7 @@
     int _mediaEntityType;
     NSString *_persistentID;
     NSString *_spotlightIdentifier;
+    NSString *_universalLibraryID;
 }
 
 @property (copy, nonatomic) NSString *contentType;
@@ -41,6 +42,7 @@
 @property (nonatomic) int source;
 @property (copy, nonatomic) NSString *spotlightIdentifier; // @synthesize spotlightIdentifier=_spotlightIdentifier;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *universalLibraryID; // @synthesize universalLibraryID=_universalLibraryID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

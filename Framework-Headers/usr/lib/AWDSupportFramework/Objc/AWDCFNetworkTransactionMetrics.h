@@ -17,6 +17,8 @@
     unsigned long long _responseEnd;
     unsigned long long _responseStart;
     unsigned long long _timestamp;
+    unsigned long long _totalBytesExpectedToRead;
+    unsigned long long _totalBytesExpectedToWrite;
     unsigned long long _totalBytesRead;
     unsigned long long _totalBytesWritten;
     NSString *_connectionUUID;
@@ -32,6 +34,8 @@
         unsigned int responseEnd:1;
         unsigned int responseStart:1;
         unsigned int timestamp:1;
+        unsigned int totalBytesExpectedToRead:1;
+        unsigned int totalBytesExpectedToWrite:1;
         unsigned int totalBytesRead:1;
         unsigned int totalBytesWritten:1;
         unsigned int networkLoadType:1;
@@ -58,6 +62,8 @@
 @property (nonatomic) BOOL hasResponseStart;
 @property (nonatomic) BOOL hasReusedConnection;
 @property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) BOOL hasTotalBytesExpectedToRead;
+@property (nonatomic) BOOL hasTotalBytesExpectedToWrite;
 @property (nonatomic) BOOL hasTotalBytesRead;
 @property (nonatomic) BOOL hasTotalBytesWritten;
 @property (nonatomic) BOOL isRedirected; // @synthesize isRedirected=_isRedirected;
@@ -69,6 +75,8 @@
 @property (nonatomic) unsigned long long responseStart; // @synthesize responseStart=_responseStart;
 @property (nonatomic) BOOL reusedConnection; // @synthesize reusedConnection=_reusedConnection;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long totalBytesExpectedToRead; // @synthesize totalBytesExpectedToRead=_totalBytesExpectedToRead;
+@property (nonatomic) unsigned long long totalBytesExpectedToWrite; // @synthesize totalBytesExpectedToWrite=_totalBytesExpectedToWrite;
 @property (nonatomic) unsigned long long totalBytesRead; // @synthesize totalBytesRead=_totalBytesRead;
 @property (nonatomic) unsigned long long totalBytesWritten; // @synthesize totalBytesWritten=_totalBytesWritten;
 

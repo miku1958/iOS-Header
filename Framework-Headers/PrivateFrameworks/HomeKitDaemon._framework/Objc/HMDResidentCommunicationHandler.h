@@ -14,6 +14,7 @@
 
 @interface HMDResidentCommunicationHandler : HMFObject <HMFLogging, HMFTimerDelegate>
 {
+    BOOL _ownerUser;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMapTable *_deviceMapping;
     NSMutableArray *_pendingReadRequests;
@@ -30,6 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
 @property (strong, nonatomic) HMFTimer *multiReadCoalesceTimer; // @synthesize multiReadCoalesceTimer=_multiReadCoalesceTimer;
+@property (readonly, nonatomic, getter=isOwnerUser) BOOL ownerUser; // @synthesize ownerUser=_ownerUser;
 @property (readonly, nonatomic) NSMutableArray *pendingReadRequests; // @synthesize pendingReadRequests=_pendingReadRequests;
 @property (readonly, nonatomic) HMDDevice *preferredDevice;
 @property (readonly, weak, nonatomic) HMDMessageDispatcher *remoteDispatcher; // @synthesize remoteDispatcher=_remoteDispatcher;
@@ -48,7 +50,7 @@
 - (BOOL)containsDevice:(id)arg1;
 - (void)dealloc;
 - (id)deviceForType:(long long)arg1;
-- (id)initWithHomeUUID:(id)arg1 remoteDispatcher:(id)arg2;
+- (id)initWithHome:(id)arg1 remoteDispatcher:(id)arg2;
 - (long long)preferredDeviceType;
 - (void)redispatchMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3;
 - (void)removeDeviceForType:(long long)arg1;

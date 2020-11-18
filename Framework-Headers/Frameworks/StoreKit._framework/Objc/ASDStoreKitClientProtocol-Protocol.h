@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <StoreKit/NSObject-Protocol.h>
+#import <StoreKit/ASDNotificationCenterDialogObserver-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 
-@protocol ASDStoreKitClientProtocol <NSObject>
+@protocol ASDStoreKitClientProtocol <ASDNotificationCenterDialogObserver>
+- (void)askToShowMessageWithReplyBlock:(void (^)(BOOL))arg1;
 - (void)downloadAdded:(NSDictionary *)arg1;
 - (void)downloadRemoved:(NSDictionary *)arg1;
 - (void)downloadStatusChanged:(NSDictionary *)arg1;

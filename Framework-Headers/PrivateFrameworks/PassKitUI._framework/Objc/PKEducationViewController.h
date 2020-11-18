@@ -7,10 +7,11 @@
 #import <PassKitUI/PKExplanationViewController.h>
 
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
+#import <PassKitUI/PKFieldDetectSuppressor-Protocol.h>
 
 @class AVPlayer, AVPlayerItem, AVPlayerLayer, NSString, PKMobileAssetManager, PKPaymentHeroImageController, PKPaymentPass, PKPaymentSetupHeroView, PKPaymentSetupInitialCardEducationIconsView, UIImageView, UILabel, UIView;
 
-@interface PKEducationViewController : PKExplanationViewController <PKExplanationViewDelegate>
+@interface PKEducationViewController : PKExplanationViewController <PKExplanationViewDelegate, PKFieldDetectSuppressor>
 {
     UIImageView *_heroPhone;
     UIView *_heroPhoneBackground;
@@ -44,6 +45,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL offerAddToWatch; // @synthesize offerAddToWatch=_offerAddToWatch;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL suppressFieldDetect;
 @property (copy, nonatomic) NSString *titleOverride; // @synthesize titleOverride=_titleOverride;
 
 + (id)assetBackgroundColor;

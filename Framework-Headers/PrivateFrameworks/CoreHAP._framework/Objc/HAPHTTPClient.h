@@ -51,6 +51,7 @@
 - (int)_initializeCoreUtilsHTTPClientWithPort:(long long)arg1 withEventsEnabled:(BOOL)arg2;
 - (void)_sendHTTPRequestToURL:(id)arg1 withMethod:(int)arg2 requestObject:(id)arg3 serializationType:(unsigned long long)arg4 timeout:(double)arg5 activity:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)_serializeUAPJSONObject:(id)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (BOOL)enableUAPSessionSecurityWithReadKey:(unsigned char [32])arg1 writeKey:(unsigned char [32])arg2 error:(id *)arg3;
 - (void)httpClient:(id)arg1 didReceiveHTTPMessageWithHeaders:(id)arg2 body:(id)arg3;
 - (void)httpClient:(id)arg1 willSendHTTPMessageWithHeaders:(id)arg2 body:(id)arg3;

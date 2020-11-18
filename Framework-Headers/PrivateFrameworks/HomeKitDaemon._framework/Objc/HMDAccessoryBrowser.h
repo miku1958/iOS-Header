@@ -125,6 +125,8 @@
 - (void)__resetBrowsingConnections;
 - (void)_addReconfirmTimer:(id)arg1 accessoryServer:(id)arg2;
 - (void)_addUnpairedAccessoryForServer:(id)arg1;
+- (void)_associate:(BOOL)arg1 hapAccessoryWithAdvertisement:(id)arg2;
+- (void)_associateMediaAccessoryForServer:(id)arg1;
 - (void)_btleAccessoryReachabilityProbeTimer:(BOOL)arg1;
 - (void)_callProgressOrErrorOut:(id)arg1 pairingInfo:(id)arg2 accessoryInfo:(id)arg3 unpairedAccessory:(id)arg4 progress:(long long)arg5 certStatus:(unsigned long long)arg6;
 - (void)_cancelCurrentlyPairingAccessories:(id)arg1;
@@ -280,6 +282,7 @@
 - (id)initWithMessageDispatcher:(id)arg1 workQueue:(id)arg2 injectedSettings:(id)arg3;
 - (BOOL)isBrowsingAllowed;
 - (BOOL)isDemoAccessoryIdentifier:(id)arg1;
+- (BOOL)isMediaAccessory:(id)arg1;
 - (id)mediaAccessoryControlConnections;
 - (id)messageDestination;
 - (void)notifyDelegatesOfReachability:(BOOL)arg1 forAccessoryWithIdentifier:(id)arg2;

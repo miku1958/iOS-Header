@@ -73,8 +73,8 @@
 - (void)_sendRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)_sendUserRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)_serverCompletePrepareRequest:(id)arg1;
-- (int)_serverHandleCommitRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
-- (int)_serverHandleDecryptedRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (int)_serverHandleCommitRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (int)_serverHandleDecryptedRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)_serverHandleEncryptedRequest:(id)arg1 options:(id)arg2;
 - (int)_serverHandlePrepareRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_serverPairVerifyExchange:(id)arg1 options:(id)arg2;

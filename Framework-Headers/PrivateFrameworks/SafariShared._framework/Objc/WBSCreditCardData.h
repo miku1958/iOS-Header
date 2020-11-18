@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, PKVirtualCard, UIImage;
+@class NSDate, NSString, PKVirtualCard;
 
 @interface WBSCreditCardData : NSObject
 {
@@ -26,7 +26,6 @@
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (strong, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
 @property (readonly, nonatomic) PKVirtualCard *virtualCard; // @synthesize virtualCard=_virtualCard;
-@property (readonly, nonatomic) UIImage *virtualCardIcon;
 
 - (void).cxx_destruct;
 - (id)_expirationDateFromPKVirtualCard:(id)arg1;

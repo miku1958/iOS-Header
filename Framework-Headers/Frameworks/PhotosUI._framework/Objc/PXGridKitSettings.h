@@ -9,6 +9,9 @@
 @interface PXGridKitSettings : PXSettings
 {
     BOOL _pauseWhenIdle;
+    BOOL _enableXcodeCustomDebugHierarchy;
+    BOOL _sortSpritesInXcodeCustomDebugHierarchy;
+    BOOL _includeLayoutsLocalSpritesInDebugHierarchy;
     BOOL _enableMetalRenderer;
     BOOL _enableViewRenderer;
     BOOL _enableAccessibilityRenderer;
@@ -33,6 +36,8 @@
     BOOL _wantsRectDiagnosticsDebugHUD;
     BOOL _enableAnchoringRectDiagnostics;
     BOOL _enableAssetsRectDiagnostics;
+    BOOL _enableFocusRectDiagnostics;
+    BOOL _enableCurrentFocusRectDiagnostics;
     BOOL _enableRectDiagnosticsForUndefinedSprites;
     BOOL _enableRectDiagnosticsForNamedImageSprites;
     BOOL _enableRectDiagnosticsForDisplayAssetSprites;
@@ -78,6 +83,8 @@
 @property (nonatomic) BOOL enableAnchoringRectDiagnostics; // @synthesize enableAnchoringRectDiagnostics=_enableAnchoringRectDiagnostics;
 @property (nonatomic) BOOL enableAssetsRectDiagnostics; // @synthesize enableAssetsRectDiagnostics=_enableAssetsRectDiagnostics;
 @property (nonatomic) BOOL enableColorMatching; // @synthesize enableColorMatching=_enableColorMatching;
+@property (nonatomic) BOOL enableCurrentFocusRectDiagnostics; // @synthesize enableCurrentFocusRectDiagnostics=_enableCurrentFocusRectDiagnostics;
+@property (nonatomic) BOOL enableFocusRectDiagnostics; // @synthesize enableFocusRectDiagnostics=_enableFocusRectDiagnostics;
 @property (nonatomic) BOOL enableMetalRenderer; // @synthesize enableMetalRenderer=_enableMetalRenderer;
 @property (nonatomic) BOOL enableRectDiagnosticsForDecorationSprites; // @synthesize enableRectDiagnosticsForDecorationSprites=_enableRectDiagnosticsForDecorationSprites;
 @property (nonatomic) BOOL enableRectDiagnosticsForDisplayAssetSprites; // @synthesize enableRectDiagnosticsForDisplayAssetSprites=_enableRectDiagnosticsForDisplayAssetSprites;
@@ -91,6 +98,8 @@
 @property (nonatomic) BOOL enableRectDiagnosticsForViewSprites; // @synthesize enableRectDiagnosticsForViewSprites=_enableRectDiagnosticsForViewSprites;
 @property (nonatomic) BOOL enableRoundedCorners; // @synthesize enableRoundedCorners=_enableRoundedCorners;
 @property (nonatomic) BOOL enableViewRenderer; // @synthesize enableViewRenderer=_enableViewRenderer;
+@property (nonatomic) BOOL enableXcodeCustomDebugHierarchy; // @synthesize enableXcodeCustomDebugHierarchy=_enableXcodeCustomDebugHierarchy;
+@property (nonatomic) BOOL includeLayoutsLocalSpritesInDebugHierarchy; // @synthesize includeLayoutsLocalSpritesInDebugHierarchy=_includeLayoutsLocalSpritesInDebugHierarchy;
 @property (nonatomic) BOOL loadThumbnailsAsync; // @synthesize loadThumbnailsAsync=_loadThumbnailsAsync;
 @property (nonatomic) BOOL lowLatency; // @synthesize lowLatency=_lowLatency;
 @property (nonatomic) long long lowSpecProcessorCountLimit; // @synthesize lowSpecProcessorCountLimit=_lowSpecProcessorCountLimit;
@@ -105,6 +114,7 @@
 @property (nonatomic) BOOL shouldShowBoundariesOfTextTextures; // @synthesize shouldShowBoundariesOfTextTextures=_shouldShowBoundariesOfTextTextures;
 @property (nonatomic) BOOL simulateSomeAssetsInCloud; // @synthesize simulateSomeAssetsInCloud=_simulateSomeAssetsInCloud;
 @property (nonatomic) double slowAnimationsSpeed; // @synthesize slowAnimationsSpeed=_slowAnimationsSpeed;
+@property (nonatomic) BOOL sortSpritesInXcodeCustomDebugHierarchy; // @synthesize sortSpritesInXcodeCustomDebugHierarchy=_sortSpritesInXcodeCustomDebugHierarchy;
 @property (nonatomic) long long thumbnailCacheSize; // @synthesize thumbnailCacheSize=_thumbnailCacheSize;
 @property (nonatomic) long long videoAllowedAtOrBelowSpeed; // @synthesize videoAllowedAtOrBelowSpeed=_videoAllowedAtOrBelowSpeed;
 @property (nonatomic) long long videoAllowedAtOrBelowSpeedForLowSpec; // @synthesize videoAllowedAtOrBelowSpeedForLowSpec=_videoAllowedAtOrBelowSpeedForLowSpec;

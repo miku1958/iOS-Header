@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol PKPaletteViewStateObservable
+#import <PencilKit/NSObject-Protocol.h>
+
+@protocol PKPaletteViewStateObservable <NSObject>
 
 @property (readonly, nonatomic, getter=isAnnotationSupportEnabled) BOOL annotationSupportEnabled;
 

@@ -11,11 +11,12 @@
 #import <PlatterKit/PLTitled-Protocol.h>
 #import <PlatterKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <PlatterKit/UIScrollViewDelegate-Protocol.h>
+#import <PlatterKit/_UICursorInteractionDelegate-Protocol.h>
 
 @class MTMaterialView, NSArray, NSDate, NSString, NSTimeZone, PLInterfaceActionGroupView, PLPlatterHeaderContentView, UIButton, UIControl, UIScrollView;
 @protocol PLExpandedPlatterViewDelegate;
 
-@interface PLExpandedPlatterView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate, PLExpandedPlatter, PLTitled, PLContentSizeCategoryAdjusting>
+@interface PLExpandedPlatterView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate, _UICursorInteractionDelegate, PLExpandedPlatter, PLTitled, PLContentSizeCategoryAdjusting>
 {
     UIView *_headerBackgroundView;
     UIView *_headerKeyLineView;
@@ -107,6 +108,8 @@
 - (BOOL)adjustForContentSizeCategoryChange;
 - (struct CGSize)contentSizeExcludingActions;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (struct CGRect)frameForPlatterFrame:(struct CGRect)arg1;

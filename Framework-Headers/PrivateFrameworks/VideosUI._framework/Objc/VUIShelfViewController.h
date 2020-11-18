@@ -7,13 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <VideosUI/TVShelfViewLayoutDelegate-Protocol.h>
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionView, UIView, VUIShelfView;
 
 __attribute__((visibility("hidden")))
-@interface VUIShelfViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, TVShelfViewLayoutDelegate>
+@interface VUIShelfViewController : UIViewController <UICollectionViewDelegate, TVShelfViewLayoutDelegate>
 {
     BOOL _shouldUpdateBeforeLayout;
     UICollectionView *_collectionView;
@@ -38,8 +37,6 @@ __attribute__((visibility("hidden")))
 - (id)_findSnappingItemFromContentOffset:(inout struct CGPoint *)arg1 withVelocity:(struct CGPoint)arg2;
 - (void)_snapTargetContentOffset:(inout struct CGPoint *)arg1 toItemIndexPath:(id)arg2 atItemOffset:(struct CGPoint)arg3;
 - (void)_updateCollectionViewLayout:(BOOL)arg1;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (id)initWithGridStyle:(long long)arg1;

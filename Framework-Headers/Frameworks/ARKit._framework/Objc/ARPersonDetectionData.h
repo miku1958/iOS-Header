@@ -24,6 +24,7 @@
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 - (void).cxx_destruct;
+- (id)mergeOverlappingDetectionsWithThreshold:(float)arg1;
 - (id)transformToCVPixelBuffer:(struct __CVBuffer *)arg1 depthBuffer:(struct __CVBuffer *)arg2;
 
 @end

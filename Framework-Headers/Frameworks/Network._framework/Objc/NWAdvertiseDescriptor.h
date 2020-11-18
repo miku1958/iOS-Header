@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSData, NSString;
 @protocol OS_nw_advertise_descriptor;
 
 @interface NWAdvertiseDescriptor : NSObject
@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSString *bonjourServiceName;
 @property (readonly, nonatomic) NSString *bonjourServiceType;
 @property (strong, nonatomic) NSObject<OS_nw_advertise_descriptor> *internalDescriptor; // @synthesize internalDescriptor=_internalDescriptor;
+@property (strong, nonatomic) NSData *txtRecord;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

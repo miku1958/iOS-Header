@@ -24,7 +24,6 @@
     NSDecimalNumber *_remainingMinimumPayment;
     NSDecimalNumber *_remainingMinimumPaymentExcludedFromInterestCalculation;
     NSDecimalNumber *_installmentBalance;
-    NSDate *_paymentDueDate;
     NSDate *_lastPaymentDate;
     long long _cyclesPastDue;
     unsigned long long _balanceStatus;
@@ -35,6 +34,7 @@
     NSDecimalNumber *_pastDueAmount;
     PKCreditAccountStatement *_currentStatement;
     NSDecimalNumber *_adjustedBalance;
+    NSDate *_paymentDueDate;
 }
 
 @property (copy, nonatomic) NSDecimalNumber *adjustedBalance; // @synthesize adjustedBalance=_adjustedBalance;

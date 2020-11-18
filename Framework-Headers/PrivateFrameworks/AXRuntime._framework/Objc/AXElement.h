@@ -71,6 +71,7 @@
 @property (readonly, nonatomic) BOOL isAccessibilityOpaqueElementProvider;
 @property (readonly, nonatomic) BOOL isAccessibleElement;
 @property (readonly, nonatomic) BOOL isAutoscrolling;
+@property (readonly, nonatomic) BOOL isComboBox;
 @property (readonly, nonatomic) BOOL isKeyboardKey;
 @property (readonly, nonatomic) BOOL isMathEquation;
 @property (readonly, nonatomic) BOOL isScannerElement;
@@ -147,6 +148,7 @@
 - (id)_objectForRange:(struct _NSRange)arg1 withParameterizedAttribute:(long long)arg2;
 - (BOOL)_performActivate;
 - (id)_remoteParentForContextID;
+- (BOOL)_showContextMenuWithTargetPointValue:(id)arg1;
 - (id)_textOperationsOperator;
 - (id)_uiElementForTextInsertionAndDeletion;
 - (void)_updateLabel;
@@ -179,6 +181,7 @@
 - (double)distanceToPoint:(struct CGPoint)arg1;
 - (id)elementForAttribute:(long long)arg1;
 - (id)elementForAttribute:(long long)arg1 parameter:(id)arg2;
+- (id)elementForAttribute:(long long)arg1 shouldFetchAttributes:(BOOL)arg2;
 - (id)elementsForAttribute:(long long)arg1;
 - (id)elementsForAttribute:(long long)arg1 parameter:(id)arg2;
 - (id)elementsMatchingText:(id)arg1;

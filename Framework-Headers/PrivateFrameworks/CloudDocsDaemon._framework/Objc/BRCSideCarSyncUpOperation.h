@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct PQLResultSet *)_itemsNeedingSyncUpEnumerator;
+- (id)_itemsNeedingSyncUpEnumerator;
 - (void)_markItemsFailedSync;
 - (void)_syncUpRecordBatchWithModifiedRecords:(id)arg1 deletedRecordIDs:(id)arg2 recordIDToZoneMap:(id)arg3 requestID:(unsigned long long)arg4;
 - (id)createActivity;

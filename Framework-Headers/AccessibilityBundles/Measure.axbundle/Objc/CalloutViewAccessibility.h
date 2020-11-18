@@ -6,15 +6,18 @@
 
 #import "__CalloutViewAccessibility_super.h"
 
+@class NSString;
+
 @interface CalloutViewAccessibility : __CalloutViewAccessibility_super
 {
 }
+
+@property (readonly, nonatomic) NSString *axCalloutText;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_axCalloutText;
 - (BOOL)_axInternalIsActuallyVisible;
 - (BOOL)_axIsActuallyVisible;
 - (void)_axSetInternalIsActuallyVisible:(BOOL)arg1;
@@ -23,9 +26,9 @@
 - (void)_axUpdateIsVisible;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
+- (void)axDidUpdateFromPreviousCalloutText:(id)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)setAlpha:(double)arg1;
-- (void)updateText:(long long)arg1;
 
 @end
 

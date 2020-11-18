@@ -33,6 +33,7 @@
 - (id)_recordType;
 - (BOOL)_shouldDownloadIfPhoneNumberAndNoSIM:(id)arg1;
 - (BOOL)_usingStingRay;
+- (BOOL)callerIDShouldBeCheckedForRegistration:(id)arg1;
 - (id)compressedProtobufDataForGroupActionItem;
 - (id)compressedProtobufDataForGroupTitleChangeItem;
 - (id)compressedProtobufDataForLocationShareStatusChangeItem;

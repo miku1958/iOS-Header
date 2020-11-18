@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     AVPlayer *_player;
     AVPlayerLayer *_playerLayer;
     BOOL _showHud;
+    BOOL _spatialDiagnostics;
     int _colorId;
     double _opacity;
     int _fontSizeInt;

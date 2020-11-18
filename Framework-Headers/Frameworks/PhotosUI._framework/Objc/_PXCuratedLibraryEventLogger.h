@@ -9,11 +9,12 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryEventLogger-Protocol.h>
 
-@class NSString, NSTimer, PXCuratedLibraryLayout, PXCuratedLibraryViewModel, PXUpdater;
+@class NSObject, NSString, NSTimer, PXCuratedLibraryLayout, PXCuratedLibraryViewModel, PXUpdater;
+@protocol PXAnonymousViewController;
 
 @interface _PXCuratedLibraryEventLogger : PXObservable <PXCuratedLibraryEventLogger, PXChangeObserver>
 {
-    struct NSObject *_sender;
+    NSObject<PXAnonymousViewController> *_sender;
     BOOL _loggedFirstTimeExperience;
     NSTimer *_slowScrollRegimeTimer;
     double _lastUserInteractionTime;
@@ -45,8 +46,8 @@
 - (void).cxx_destruct;
 - (void)_configureTimerForSlowScrollRegimeUpdatesIfNeeded;
 - (void)_eventSenderDidChange;
-- (void)_eventSenderDidDisappear:(struct NSObject *)arg1;
-- (void)_eventSenderWillAppear:(struct NSObject *)arg1;
+- (void)_eventSenderDidDisappear:(id)arg1;
+- (void)_eventSenderWillAppear:(id)arg1;
 - (void)_invalidateDominantModelObject;
 - (void)_invalidateFirstTimeExperienceReadinessLogging;
 - (void)_invalidateUserEventSource;
@@ -63,8 +64,8 @@
 - (id)initWithViewModel:(id)arg1 layout:(id)arg2;
 - (void)logAnalysisProgress:(float)arg1;
 - (void)logLibraryItemsCount:(long long)arg1;
-- (void)logViewControllerDidDisappear:(struct NSObject *)arg1;
-- (void)logViewControllerWillAppear:(struct NSObject *)arg1;
+- (void)logViewControllerDidDisappear:(id)arg1;
+- (void)logViewControllerWillAppear:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)userEventTracker;
 

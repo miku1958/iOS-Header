@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "DMFApplication.h"
+#import <DeviceManagement/DMFApplication.h>
 
 @interface DMFApplication (CRKAdditions)
 + (id)crk_applicationWithBundleIdentifier:(id)arg1 localizedName:(id)arg2 shortVersionString:(id)arg3 iconData:(id)arg4;

@@ -54,6 +54,7 @@
 - (void)dealloc;
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithFetcher:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 featuredTransaction:(id)arg4 selectedTransactions:(id)arg5 transactionHistory:(id)arg6;
+- (id)initWithInstallmentPlan:(id)arg1 paymentPass:(id)arg2 account:(id)arg3;
 - (id)initWithTransactionGroup:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 transactionHistory:(id)arg4;
 - (CDStruct_8f3a66c8)pkui_navigationStatusBarStyleDescriptor;
 - (id)presentingViewControllerForAvatarView:(id)arg1;

@@ -6,12 +6,20 @@
 
 #import <UIKit/UIView.h>
 
+#import <WebKit/WKContentControlled-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface WKCompositingView : UIView
+@interface WKCompositingView : UIView <WKContentControlled>
 {
 }
 
-- (id)description;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end

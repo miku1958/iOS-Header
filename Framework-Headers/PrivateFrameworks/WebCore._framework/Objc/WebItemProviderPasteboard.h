@@ -14,8 +14,8 @@
 {
     struct RetainPtr<NSArray> _itemProviders;
     struct RetainPtr<NSArray> _supportedTypeIdentifiers;
-    struct RetainPtr<WebItemProviderRegistrationInfoList> _stagedRegistrationInfoList;
-    struct Vector<WTF::RetainPtr<WebItemProviderLoadResult>, 0, WTF::CrashOnOverflow, 16> _loadResults;
+    struct RetainPtr<NSArray<WebItemProviderRegistrationInfoList *>> _stagedRegistrationInfoLists;
+    struct Vector<WTF::RetainPtr<WebItemProviderLoadResult>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _loadResults;
     long long _numberOfItems;
     long long _changeCount;
     long long _pendingOperationCount;
@@ -37,6 +37,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_preLoadedDataConformingToType:(id)arg1 forItemProviderAtIndex:(unsigned long long)arg2;
+- (void)clearRegistrationLists;
 - (id)dataForPasteboardType:(id)arg1;
 - (id)dataForPasteboardType:(id)arg1 inItemSet:(id)arg2;
 - (void)decrementPendingOperationCount;
@@ -48,8 +49,8 @@
 - (id)init;
 - (id)itemProviderAtIndex:(unsigned long long)arg1;
 - (id)pasteboardTypes;
-- (void)stageRegistrationList:(id)arg1;
-- (id)takeRegistrationList;
+- (void)stageRegistrationLists:(id)arg1;
+- (id)takeRegistrationLists;
 - (id)typeIdentifiersToLoad:(id)arg1;
 - (void)updateSupportedTypeIdentifiers:(id)arg1;
 - (id)valuesForPasteboardType:(id)arg1 inItemSet:(id)arg2;

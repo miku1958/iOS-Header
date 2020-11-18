@@ -23,13 +23,13 @@
 + (double)bigImageSize;
 + (unsigned long long)maxBigImageCount;
 - (void).cxx_destruct;
-- (struct UIImage *)imageForKey:(id)arg1;
+- (id)imageForKey:(id)arg1;
 - (id)init;
 - (void)receivedMemoryWarning;
 - (void)registerForMemoryWarnings;
 - (void)removeAllImages;
 - (void)removeImageForKey:(id)arg1;
-- (void)setImage:(struct UIImage *)arg1 forKey:(id)arg2;
+- (void)setImage:(id)arg1 forKey:(id)arg2;
 - (void)unregisterForMemoryWarnings;
 
 @end

@@ -7,7 +7,7 @@
 #import <NewsFeed/NFCopying-Protocol.h>
 #import <NewsFeed/NSObject-Protocol.h>
 
-@class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NTPBTodayConfig;
+@class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NSURL, NTPBTodayConfig;
 
 @protocol FCCoreConfiguration <NSObject, NFCopying>
 
@@ -87,6 +87,7 @@
 - (NTPBTodayConfig *)todayConfigWithQueueConfigs:(NSArray *)arg1 maxSlotCount:(unsigned long long)arg2;
 
 @optional
+- (NSURL *)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
 - (FCPersonalizationTreatment *)personalizationTreatment;
 @end
 

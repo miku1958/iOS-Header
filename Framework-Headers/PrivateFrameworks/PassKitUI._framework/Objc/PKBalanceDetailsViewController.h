@@ -34,9 +34,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (unsigned long long)_balanceDetailsRowTypeForRowIndex:(long long)arg1;
 - (void)_handleActionSelected;
 - (void)_handleReminderAmountChanged:(id)arg1;
 - (void)_initializeReminderAmounts:(id)arg1;
+- (long long)_numberOfBalanceDetailsRowsEnabled;
+- (long long)_numberOfBalanceDetailsRowsEnabledForRowType:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithBalance:(id)arg1 forPass:(id)arg2 balanceReminder:(id)arg3 associatedAction:(id)arg4 paymentDataProvider:(id)arg5 webService:(id)arg6 style:(long long)arg7;
 - (id)initWithBalance:(id)arg1 forPass:(id)arg2 balanceReminder:(id)arg3 balanceName:(id)arg4 currencyCode:(id)arg5 associatedAction:(id)arg6 paymentDataProvider:(id)arg7 webService:(id)arg8 style:(long long)arg9;

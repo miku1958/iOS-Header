@@ -10,12 +10,13 @@
 #import <UserManagement/UMUserPersonaAttributesList-Protocol.h>
 #import <UserManagement/UMUserPersonaLoginSessionManagement-Protocol.h>
 #import <UserManagement/UMUserPersonaManagement-Protocol.h>
+#import <UserManagement/UMUserSessionProvisioning-Protocol.h>
 #import <UserManagement/UMUserSwitchManagement-Protocol.h>
 
 @class NSArray, NSString, UMUser, UMUserPersona;
 @protocol UMUserListUpdateObserver, UMUserPersonaUpdateObserver;
 
-@interface UMUserManager : NSObject <UMUserManagement, UMUserSwitchManagement, UMUserPersonaManagement, UMUserPersonaAttributesList, UMUserPersonaLoginSessionManagement>
+@interface UMUserManager : NSObject <UMUserManagement, UMUserSwitchManagement, UMUserPersonaManagement, UMUserPersonaAttributesList, UMUserPersonaLoginSessionManagement, UMUserSessionProvisioning>
 {
     NSArray *_allUsers;
     BOOL _switchIsOccurring;
@@ -36,6 +37,7 @@
 @property (nonatomic) BOOL switchIsOccurring; // @synthesize switchIsOccurring=_switchIsOccurring;
 @property (weak, nonatomic) id<UMUserListUpdateObserver> userListUpdateObserver; // @synthesize userListUpdateObserver=_userListUpdateObserver;
 @property (weak, nonatomic) id<UMUserPersonaUpdateObserver> userPersonaUpdateObserver; // @synthesize userPersonaUpdateObserver=_userPersonaUpdateObserver;
+@property (readonly, nonatomic) unsigned long long userQuotaSize;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
@@ -86,6 +88,7 @@
 - (void)setBundlesIdentifiers:(id)arg1 forUniquePersonaType:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setBundlesIdentifiers:(id)arg1 forUniquePersonaWithIDString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setMultiPersonaBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setupUMUserSessionProvisioning:(id)arg1 WithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)suspendQuotasWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)switchToLoginUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)switchToLoginUserWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

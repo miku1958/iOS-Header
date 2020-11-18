@@ -14,25 +14,24 @@
 @class CPInterfaceController, CPWindow, NSString, UIScreen, UITraitCollection, _UIContextBinder;
 @protocol CPTemplateApplicationSceneDelegate, NSObject, UICoordinateSpace;
 
-@interface CPTemplateApplicationScene : UIScene <_UIContextBinderContextCreationPolicyHolding, CPWindowProviding, _UISceneUIWindowHosting, UICoordinateSpace>
+@interface CPTemplateApplicationScene : UIScene <_UISceneUIWindowHosting, _UIContextBinderContextCreationPolicyHolding, UICoordinateSpace, CPWindowProviding>
 {
+    id<NSObject> _sceneWillConnectObserver;
+    id<NSObject> _didFinishLaunchingObserver;
+    BOOL _sceneWillConnect;
     _UIContextBinder *_contextBinder;
     UIScreen *_screen;
     UITraitCollection *_traitCollection;
     long long _screenRequestedOverscanCompensation;
-    id<NSObject> _sceneWillConnectObserver;
-    id<NSObject> _didFinishLaunchingObserver;
-    BOOL _sceneWillConnect;
     CPWindow *_carWindow;
     CPInterfaceController *_interfaceController;
-    struct CGRect _bounds;
 }
 
 @property (readonly, nonatomic) id<UICoordinateSpace> _coordinateSpace;
 @property (readonly, nonatomic) long long _interfaceOrientation;
 @property (readonly, nonatomic) UIScreen *_screen;
 @property (readonly, nonatomic) UITraitCollection *_traitCollection;
-@property (readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property (readonly, nonatomic) struct CGRect bounds;
 @property (strong, nonatomic) CPWindow *carWindow; // @synthesize carWindow=_carWindow;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<CPTemplateApplicationSceneDelegate> delegate; // @dynamic delegate;
@@ -55,6 +54,7 @@
 - (BOOL)_permitContextCreationForBindingDescription:(CDStruct_a002d41c)arg1;
 - (void)_readySceneForConnection;
 - (struct UIEdgeInsets)_safeAreaInsetsForInterfaceOrientation:(long long)arg1;
+- (BOOL)_sceneWillConnect;
 - (void)_updateVisibleWindowOrderWithTest:(CDUnknownBlockType)arg1;
 - (void)_windowUpdatedProperties:(id)arg1;
 - (void)_windowUpdatedVisibility:(id)arg1;

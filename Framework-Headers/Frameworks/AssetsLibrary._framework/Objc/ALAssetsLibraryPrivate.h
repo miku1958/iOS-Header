@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithAssetsLibrary:(id)arg1;
 - (void)photoLibraryDidChange:(id)arg1;
-- (void)registerAlbum:(struct NSObject *)arg1 assetGroupPrivate:(id)arg2;
+- (void)registerAlbum:(id)arg1 assetGroupPrivate:(id)arg2;
 
 @end
 

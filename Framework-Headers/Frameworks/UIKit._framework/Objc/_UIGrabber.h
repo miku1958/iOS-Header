@@ -8,9 +8,19 @@
 
 @interface _UIGrabber : UIControl
 {
+    struct CGPoint _initialLocation;
 }
 
++ (BOOL)_cursorInteractionEnabled;
+- (unsigned long long)_controlEventsForActionTriggered;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (void)_toggleCursorInteraction;
+- (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)cancelTrackingWithEvent:(id)arg1;
+- (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

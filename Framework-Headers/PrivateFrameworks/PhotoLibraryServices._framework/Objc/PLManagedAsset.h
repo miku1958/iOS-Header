@@ -43,9 +43,9 @@
     NSURL *cachedNonPersistedVideoPlaybackURL;
     NSDate *cachedNonPersistedVideoPlaybackURLExpiration;
     NSError *cachedNonPersistedVideoPlaybackURLError;
-    struct NSObject *inflightImageInMemory;
+    NSObject *inflightImageInMemory;
     NSString *inflightImagePath;
-    struct NSObject *inflightIndexSheetImage;
+    NSObject *inflightIndexSheetImage;
     NSDictionary *inflightMetadata;
 }
 
@@ -420,10 +420,11 @@
 + (void)computePreCropThumbnailSize:(struct CGSize *)arg1 andPostCropSize:(struct CGSize *)arg2 forOrientedOriginalSize:(struct CGSize)arg3 andCroppedSize:(struct CGSize)arg4 isLargeThumbnail:(BOOL)arg5;
 + (unsigned long long)countForAssetsWithUUIDs:(id)arg1 includePendingChanges:(BOOL)arg2 inManagedObjectContext:(id)arg3 error:(id *)arg4;
 + (void)countOfAssetsWithRequiredResourcesNotLocallyAvailableInLibrary:(id)arg1 outCount:(unsigned long long *)arg2 photoCount:(unsigned long long *)arg3 videoCount:(unsigned long long *)arg4;
++ (unsigned long long)countOfNotUploadedAssetsInPhotoLibrary:(id)arg1 forAssetType:(short)arg2 error:(id *)arg3;
 + (unsigned long long)countUsedAssetsWithKind:(short)arg1 excludeTrashed:(BOOL)arg2 excludeInvisible:(BOOL)arg3 excludeCloudShared:(BOOL)arg4 excludePhotoStream:(BOOL)arg5 inManagedObjectContext:(id)arg6;
 + (id)createCloudPhotoLibraryAssetWithAssetRecord:(id)arg1 withCloudMaster:(id)arg2 inLibrary:(id)arg3;
 + (void)createMastersInLibrary:(id)arg1;
-+ (void)createThumbnailImage:(struct NSObject **)arg1 previewImage:(struct NSObject **)arg2 withToBeReleasedImageSource:(struct CGImageSource *)arg3;
++ (void)createThumbnailImage:(id *)arg1 previewImage:(id *)arg2 withToBeReleasedImageSource:(struct CGImageSource *)arg3;
 + (short)customRenderedValueFromHighDynamicRangeType:(short)arg1 isValid:(BOOL *)arg2;
 + (id)debugDescriptionForHintData:(id)arg1 assetWidth:(long long)arg2 assetHeight:(long long)arg3 assetID:(id)arg4;
 + (unsigned short)defaultPlaybackStyleFromAssetType:(short)arg1;
@@ -638,7 +639,7 @@
 - (void)_updateAssetSubtypeFromCPLAssetSubtype:(unsigned long long)arg1;
 - (void)_updateBurstFlagsForCPLAssetChange:(id)arg1 photoLibrary:(id)arg2;
 - (id)_updateChangeDictionaryForWorkerType:(short)arg1;
-- (void)_updateDerivativesAndThumbnails:(BOOL)arg1 withPreviewImage:(struct NSObject *)arg2 thumbnailImage:(struct NSObject *)arg3 didRevertToOriginal:(BOOL)arg4 updateInternalResources:(BOOL)arg5 isSubstandardRender:(BOOL)arg6 isDeferred:(BOOL)arg7;
+- (void)_updateDerivativesAndThumbnails:(BOOL)arg1 withPreviewImage:(id)arg2 thumbnailImage:(id)arg3 didRevertToOriginal:(BOOL)arg4 updateInternalResources:(BOOL)arg5 isSubstandardRender:(BOOL)arg6 isDeferred:(BOOL)arg7;
 - (void)_updateOriginalResourceChoice;
 - (void)_updatePhotoIrisTemporalMetadataFromVideoComplementAVAsset:(id)arg1;
 - (void)_updatePhotoIrisVisibilityStateFromVideoComplementAVAsset:(id)arg1;
@@ -709,7 +710,7 @@
 - (id)createPlaceNamesSortedByCategoryAllowFallbackToCompoundNameInfo:(BOOL)arg1;
 - (id)createResourcesForAssetInPhotoLibrary:(id)arg1 shouldGenerateDerivatives:(BOOL)arg2;
 - (id)createResourcesForMaster:(id)arg1 shouldGenerateDerivatives:(BOOL)arg2 inPhotoLibrary:(id)arg3;
-- (void)createTHMFileWithPreviewImage:(struct NSObject *)arg1 thumbnailImage:(struct NSObject *)arg2;
+- (void)createTHMFileWithPreviewImage:(id)arg1 thumbnailImage:(id)arg2;
 - (id)dateCreatedData;
 - (void)deDupCMMAssetInLibrary:(id)arg1;
 - (void)dealloc;
@@ -752,15 +753,15 @@
 - (id)fileURLForNonAdjustedLargeThumbnailFile;
 - (id)fileURLForNonAdjustedMediumThumbnailFile;
 - (id)filterSnowplowResourcesFromPlaceholderCloudResources:(id)arg1;
-- (struct NSObject *)filteredImage:(struct NSObject *)arg1 withCIContext:(id)arg2;
+- (id)filteredImage:(id)arg1 withCIContext:(id)arg2;
 - (id)firstPersistedResourceMatching:(CDUnknownBlockType)arg1;
 - (void)fixupPersonsWithMissingKeyAsset;
 - (void)fixupPlaceholderAssetWithSavedAssetType:(short)arg1;
-- (void)generateAndUpdateThumbnailsWithPreviewImage:(struct NSObject *)arg1 thumbnailImage:(struct NSObject *)arg2 fromImageSource:(struct CGImageSource *)arg3 imageData:(id)arg4 updateExistingLargePreview:(BOOL)arg5 forceSRGBConversion:(BOOL)arg6;
-- (void)generateAndUpdateThumbnailsWithPreviewImage:(struct NSObject *)arg1 thumbnailImage:(struct NSObject *)arg2 fromImageSource:(struct CGImageSource *)arg3 imageData:(id)arg4 updateExistingLargePreview:(BOOL)arg5 forceSRGBConversion:(BOOL)arg6 saveCameraPreviewWellImage:(BOOL)arg7;
+- (void)generateAndUpdateThumbnailsWithPreviewImage:(id)arg1 thumbnailImage:(id)arg2 fromImageSource:(struct CGImageSource *)arg3 imageData:(id)arg4 updateExistingLargePreview:(BOOL)arg5 forceSRGBConversion:(BOOL)arg6;
+- (void)generateAndUpdateThumbnailsWithPreviewImage:(id)arg1 thumbnailImage:(id)arg2 fromImageSource:(struct CGImageSource *)arg3 imageData:(id)arg4 updateExistingLargePreview:(BOOL)arg5 forceSRGBConversion:(BOOL)arg6 saveCameraPreviewWellImage:(BOOL)arg7;
 - (void)generateDeferredAdjustmentWithImageConversionClient:(id)arg1 videoConversionClient:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)generateLargeThumbnailFileIfNecessary;
-- (void)generateThumbnailsWithImageSource:(struct CGImageSource *)arg1 imageData:(id)arg2 updateExistingLargePreview:(BOOL)arg3 allowMediumPreview:(BOOL)arg4 forceSRGBConversion:(BOOL)arg5 outSmallThumbnail:(struct NSObject **)arg6 outLargeThumbnail:(struct NSObject **)arg7;
+- (void)generateThumbnailsWithImageSource:(struct CGImageSource *)arg1 imageData:(id)arg2 updateExistingLargePreview:(BOOL)arg3 allowMediumPreview:(BOOL)arg4 forceSRGBConversion:(BOOL)arg5 outSmallThumbnail:(id *)arg6 outLargeThumbnail:(id *)arg7;
 - (void)getFileURL:(id *)arg1 originalFilename:(id *)arg2 uti:(id *)arg3 fileSize:(unsigned long long *)arg4 forSidecarMatchingUTI:(id)arg5 requireExactMatch:(BOOL)arg6;
 - (void)getSearchIndexContents:(id)arg1 graphData:(id)arg2 dateFormatter:(id)arg3 keywords:(id)arg4 synonymsDictionaries:(id)arg5 sceneTaxonomyProxy:(id)arg6 filename:(id)arg7;
 - (id)globalUUID;
@@ -779,10 +780,10 @@
 - (void)hideNonPrimaryAssetsInAssetGroup;
 - (id)imageDataForThumbGenerationAndIfNeededRAWUTI:(id *)arg1;
 - (id)imageProperties;
-- (struct NSObject *)imageWithFormat:(unsigned short)arg1;
-- (struct NSObject *)imageWithFormat:(unsigned short)arg1 outImageProperties:(const struct __CFDictionary **)arg2;
+- (id)imageWithFormat:(unsigned short)arg1;
+- (id)imageWithFormat:(unsigned short)arg1 outImageProperties:(const struct __CFDictionary **)arg2;
 - (void)incrementUploadAttempts;
-- (struct NSObject *)indexSheetImage;
+- (id)indexSheetImage;
 - (BOOL)isCloudPlaceholder;
 - (BOOL)isDeletableFromAssetsLibrary;
 - (BOOL)isEditable;
@@ -839,9 +840,9 @@
 - (id)mutableAlbumsBeingSecondaryKeyAssetFor;
 - (id)mutableAlbumsBeingTertiaryKeyAssetFor;
 - (id)mutableDetectedFaces;
-- (struct NSObject *)newFullScreenImage:(const struct __CFDictionary **)arg1;
-- (struct NSObject *)newFullSizeImage;
-- (struct NSObject *)newLowResolutionFullScreenImage;
+- (id)newFullScreenImage:(const struct __CFDictionary **)arg1;
+- (id)newFullSizeImage;
+- (id)newLowResolutionFullScreenImage;
 - (id)nonAdjustedPathForCPLResourceType:(unsigned long long)arg1;
 - (id)nonDynamicOriginalUTI;
 - (id)nonPersistedResources;

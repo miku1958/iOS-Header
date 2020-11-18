@@ -38,5 +38,6 @@
 - (void)setEntryViewHidden:(BOOL)arg1;
 - (void)startEditingPayload:(CKBrowserItemPayload *)arg1 dismiss:(BOOL)arg2 forPlugin:(NSString *)arg3;
 - (void)startEditingPayload:(CKBrowserItemPayload *)arg1 dismiss:(BOOL)arg2 forPlugin:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)startEditingPayloadBypassingValidation:(CKBrowserItemPayload *)arg1 forPlugin:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

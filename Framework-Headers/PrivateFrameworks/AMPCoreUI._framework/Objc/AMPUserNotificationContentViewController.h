@@ -6,27 +6,33 @@
 
 #import <UIKit/UIViewController.h>
 
-@class AMSUserNotification, AVPlayerViewController, NSString, UIImageView, UILabel;
+@class AMSMetrics, AMSUserNotification, AVPlayerViewController, NSString, UIImageView, UILabel;
 @protocol AMPUserNotificationContentDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AMPUserNotificationContentViewController : UIViewController
 {
+    BOOL _hasAppeared;
+    BOOL _hasPlayedVideo;
     AMSUserNotification *_userNotification;
     id<AMPUserNotificationContentDelegate> _delegate;
-    UILabel *_titleLabel;
-    UILabel *_textLabel;
-    UIImageView *_imageView;
-    AVPlayerViewController *_videoPlayerController;
     NSString *_audioSessionCategory;
     unsigned long long _audioSessionCategoryOptions;
+    UIImageView *_imageView;
+    AMSMetrics *_metrics;
+    UILabel *_textLabel;
+    UILabel *_titleLabel;
+    AVPlayerViewController *_videoPlayerController;
 }
 
 @property (strong, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
 @property (nonatomic) unsigned long long audioSessionCategoryOptions; // @synthesize audioSessionCategoryOptions=_audioSessionCategoryOptions;
 @property (weak, nonatomic) id<AMPUserNotificationContentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) struct CGSize expectedContentSize;
+@property (nonatomic) BOOL hasAppeared; // @synthesize hasAppeared=_hasAppeared;
+@property (nonatomic) BOOL hasPlayedVideo; // @synthesize hasPlayedVideo=_hasPlayedVideo;
 @property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) AMSMetrics *metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (readonly, nonatomic) AMSUserNotification *userNotification; // @synthesize userNotification=_userNotification;
@@ -39,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)mediaPause;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

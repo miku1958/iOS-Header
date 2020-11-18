@@ -39,9 +39,9 @@
 
 + (id)__createProcessingOptionsWithLabel:(id)arg1;
 + (id)__createProcessingOptionsWithLabel:(id)arg1 qualityOfService:(long long)arg2;
-+ (id)__jsonFromDeclarations:(struct NSDictionary *)arg1 rawOutput:(BOOL)arg2 error:(id *)arg3;
++ (id)__jsonFromDeclarations:(id)arg1 rawOutput:(BOOL)arg2 error:(id *)arg3;
 + (id)__jsonFromRecords:(id)arg1 rawOutput:(BOOL)arg2 error:(id *)arg3;
-+ (id)__jsonStringFromDictionary:(struct NSDictionary *)arg1 rawOutput:(BOOL)arg2 error:(id *)arg3;
++ (id)__jsonStringFromDictionary:(id)arg1 rawOutput:(BOOL)arg2 error:(id *)arg3;
 + (id)__jsonValueForCKRecordValue:(id)arg1;
 + (long long)ckContainerEnvironment;
 + (id)ckContainerIdentifier;
@@ -55,8 +55,8 @@
 - (void)__startupWithMirroredLocalZone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)__stopCloudFetchScheduler;
 - (void)_dumpCloudRecordsForProductGroup:(id)arg1 productNumber:(id)arg2 rawOutput:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (struct NSDictionary *)_fetchAllNetworkDeclarationDataForProductGroup:(id)arg1 productNumber:(id)arg2 options:(id)arg3 error:(id *)arg4;
-- (struct NSDictionary *)_fetchAllOverridesForProductGroup:(id)arg1 productNumber:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (id)_fetchAllNetworkDeclarationDataForProductGroup:(id)arg1 productNumber:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (id)_fetchAllOverridesForProductGroup:(id)arg1 productNumber:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (void)_fetchCloudChangesWithQualityOfService:(long long)arg1 ignoreLastFetchedAccessories:(BOOL)arg2 forceChangeNotifications:(BOOL)arg3 xpcActivity:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_fetchNetworkDeclarationsForAccessories:(id)arg1 options:(id)arg2 ignoreOverrides:(BOOL)arg3 error:(id *)arg4;
 - (void)_listCloudRecordsForProductGroup:(id)arg1 rawOutput:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

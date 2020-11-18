@@ -7,8 +7,8 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (ICTableAdditions)
-- (id)ic_attributedStringByHighlightingRegex:(id)arg1 withHighlightColor:(struct UIColor *)arg2;
-- (id)ic_attributesByHighlightingAttributes:(id)arg1 withHighlightColor:(struct UIColor *)arg2;
+- (id)ic_attributedStringByHighlightingRegex:(id)arg1 withHighlightColor:(id)arg2;
+- (id)ic_attributesByHighlightingAttributes:(id)arg1 withHighlightColor:(id)arg2;
 - (id)ic_itemProviderDataForUTI:(id)arg1;
 - (id)ic_nextTableStringFromIndex:(unsigned long long)arg1 tableRange:(struct _NSRange *)arg2;
 - (unsigned long long)ic_numRowsForTextTable:(id)arg1 outNumColumns:(out unsigned long long *)arg2;

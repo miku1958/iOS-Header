@@ -8,18 +8,18 @@
 
 #import <RemoteManagementModel/RMModelRegisteredTypeProtocol-Protocol.h>
 
-@class NSArray, NSString, RMModelPredicateBase;
+@class NSArray, NSString;
 
 @interface RMModelActivationSimpleDeclaration : RMModelActivationBase <RMModelRegisteredTypeProtocol>
 {
     NSArray *_payloadStandardConfigurations;
-    RMModelPredicateBase *_payloadPredicate;
+    NSString *_payloadPredicate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) RMModelPredicateBase *payloadPredicate; // @synthesize payloadPredicate=_payloadPredicate;
+@property (copy, nonatomic) NSString *payloadPredicate; // @synthesize payloadPredicate=_payloadPredicate;
 @property (copy, nonatomic) NSArray *payloadStandardConfigurations; // @synthesize payloadStandardConfigurations=_payloadStandardConfigurations;
 @property (readonly) Class superclass;
 
@@ -30,7 +30,7 @@
 + (id)registeredIdentifier;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)loadPayload:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (BOOL)loadPayloadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
 - (id)serializePayloadWithType:(short)arg1;
 
 @end

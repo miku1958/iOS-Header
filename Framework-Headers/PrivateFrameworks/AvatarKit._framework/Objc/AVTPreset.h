@@ -51,7 +51,7 @@
 - (BOOL)hasDependency;
 - (id)init;
 - (float)intensity;
-- (struct UIImage *)maskImage;
+- (id)maskImage;
 - (void)rebuildSpecializationSettings;
 
 @end

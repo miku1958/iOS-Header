@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_populateAttachmentData;
 - (id)_previewItem;
-- (struct NSString *)attachmentClass;
+- (id)attachmentClass;
 - (void)deleteModelObjectAndUnderlyingData:(id)arg1;
 - (void)didSelectModelObjectAtIndex:(unsigned long long)arg1;
 - (id)modelObjectAtIndex:(unsigned long long)arg1;

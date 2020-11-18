@@ -21,6 +21,7 @@
     MISSING_TYPE *physicsLinearCoefficient;
     MISSING_TYPE *animationStyle;
     MISSING_TYPE *buildOutAnimationType;
+    MISSING_TYPE *finishedSubscription;
     MISSING_TYPE *updateSubscription;
     MISSING_TYPE *fadeSubscription;
     MISSING_TYPE *deadline;

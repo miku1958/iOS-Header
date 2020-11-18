@@ -8,27 +8,28 @@
 
 #import <CryptoTokenKit/TKProtocolTokenWatcherHost-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSXPCConnection, NSXPCListenerEndpoint;
+@class NSArray, NSMutableDictionary, NSXPCConnection, NSXPCListenerEndpoint, TKClientToken;
 
 @interface TKTokenWatcher : NSObject <TKProtocolTokenWatcherHost>
 {
     int _notifyToken;
-    NSXPCListenerEndpoint *_endpoint;
     NSXPCConnection *_connection;
     NSMutableDictionary *_tokenInfos;
     NSMutableDictionary *_removalHandlers;
     CDUnknownBlockType _insertionHandler;
+    TKClientToken *_client;
 }
 
+@property (readonly, nonatomic) TKClientToken *client; // @synthesize client=_client;
 @property (readonly) NSXPCListenerEndpoint *endpoint;
 @property (readonly) NSArray *tokenIDs;
 
 - (void).cxx_destruct;
 - (void)addRemovalHandler:(CDUnknownBlockType)arg1 forTokenID:(id)arg2;
-- (void)connectToWatcherServer;
 - (void)dealloc;
 - (id)getReaderAndDriverNameFor:(id)arg1;
 - (id)init;
+- (id)initWithClient:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
 - (id)initWithInsertionHandler:(CDUnknownBlockType)arg1;
 - (void)insertedToken:(id)arg1;

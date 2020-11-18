@@ -21,11 +21,11 @@
 
 @property (strong, nonatomic) FMDAccessoryIdentifier *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
 @property (strong, nonatomic) NSString *audioRoutingIdentifier; // @synthesize audioRoutingIdentifier=_audioRoutingIdentifier;
+@property (readonly, nonatomic) unsigned long long audioSafetyStatus;
 @property (strong, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned long long inEar;
 @property (readonly, nonatomic) BOOL playingSound;
 @property (readonly) Class superclass;
 

@@ -11,13 +11,13 @@
 #import <QuickLook/QLPreviewCollectionProtocol-Protocol.h>
 #import <QuickLook/QLPreviewItemViewControllerDelegate-Protocol.h>
 #import <QuickLook/QLTransitionControllerProtocol-Protocol.h>
-#import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
+#import <QuickLook/UIGestureRecognizerDelegatePrivate-Protocol.h>
 
 @class NSString, QLAppearance, QLItemViewController, QLPageViewController, QLPinchRotationTracker, QLPreviewItemStore, QLSwipeDownTracker, QLTransitionContext, QLTransitionDriver, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer, UIView;
 @protocol QLPreviewControllerStateProtocol, QLTransitionControllerProtocol;
 
 __attribute__((visibility("hidden")))
-@interface QLPreviewCollection : UIViewController <QLTransitionControllerProtocol, QLPageViewControllerDataSource, QLPageViewControllerDelegate, QLPreviewItemViewControllerDelegate, UIGestureRecognizerDelegate, QLPreviewCollectionProtocol>
+@interface QLPreviewCollection : UIViewController <QLTransitionControllerProtocol, QLPageViewControllerDataSource, QLPageViewControllerDelegate, QLPreviewItemViewControllerDelegate, UIGestureRecognizerDelegatePrivate, QLPreviewCollectionProtocol>
 {
     struct _NSRange _previewItemRange;
     long long _currentItemIndex;

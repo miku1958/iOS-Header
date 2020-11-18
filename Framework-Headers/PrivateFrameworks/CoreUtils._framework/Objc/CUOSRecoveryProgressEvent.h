@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSError *_error;
 }
 
-@property (nonatomic) NSString *authenticationText; // @synthesize authenticationText=_authenticationText;
+@property (copy, nonatomic) NSString *authenticationText; // @synthesize authenticationText=_authenticationText;
 @property (readonly, copy, nonatomic) NSDictionary *configInfo; // @synthesize configInfo=_configInfo;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) int type; // @synthesize type=_type;

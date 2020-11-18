@@ -144,7 +144,7 @@
 + (id)_classesForClientState;
 + (BOOL)_openConnection:(id)arg1 databaseName:(id)arg2 baseURL:(id)arg3 readonly:(BOOL)arg4 error:(id *)arg5;
 + (BOOL)_openConnection:(id)arg1 serverTruth:(BOOL)arg2 databaseName:(id)arg3 baseURL:(id)arg4 initialVersion:(unsigned int *)arg5 lastCurrentVersion:(unsigned int *)arg6 error:(id *)arg7;
-+ (void)_registerLastBootIfNeeded:(id)arg1 table:(struct NSObject *)arg2;
++ (void)_registerLastBootIfNeeded:(id)arg1 table:(id)arg2;
 + (BOOL)_registerStaticDBFunctions:(id)arg1 error:(id *)arg2;
 + (BOOL)_validateDatabase:(id)arg1 baseURL:(id)arg2 session:(id)arg3 serverTruth:(BOOL)arg4 initialVersion:(unsigned int)arg5 lastCurrentVersion:(unsigned int)arg6 error:(id *)arg7;
 + (id)nameComponentsForKey:(id)arg1 db:(id)arg2;
@@ -161,7 +161,7 @@
 - (id)__getOrCreateClientZone:(id)arg1 withServerZone:(id)arg2 alreadyExists:(BOOL *)arg3;
 - (id)__getOrCreateServerZone:(id)arg1;
 - (void)__registerServerZone:(id)arg1 clientZone:(id)arg2 appLibrary:(id)arg3 isShared:(BOOL)arg4;
-- (struct PQLResultSet *)_appLibrariesEnumerator:(id)arg1;
+- (id)_appLibrariesEnumerator:(id)arg1;
 - (id)_appLibrariesMatchingSearchString:(id)arg1;
 - (void)_clearNeedsUpgradeErrors:(id)arg1 brVersion:(id)arg2;
 - (id)_clientZonesMatchingSearchString:(id)arg1;
@@ -190,9 +190,9 @@
 - (void)_pcsChainAllItemsWithActivity:(id)arg1;
 - (id)_privateClientZoneByID:(id)arg1 db:(id)arg2;
 - (id)_privateClientZoneByName:(id)arg1 db:(id)arg2;
-- (struct PQLResultSet *)_privateClientZonesEnumerator:(id)arg1;
+- (id)_privateClientZonesEnumerator:(id)arg1;
 - (id)_privateServerZoneByName:(id)arg1 db:(id)arg2;
-- (struct PQLResultSet *)_privateServerZonesEnumerator:(id)arg1;
+- (id)_privateServerZonesEnumerator:(id)arg1;
 - (void)_recreateSymlinkIfNecessaryForDocumentsPath:(id)arg1 folderName:(id)arg2 destinationPath:(id)arg3;
 - (BOOL)_recursivelyPrepareFolderForLogOutAtURL:(id)arg1 pruneEmptyFolders:(BOOL)arg2 pruneEmptyTopLevelFolder:(BOOL)arg3 maxDepth:(unsigned long long)arg4;
 - (void)_registerBackgroundXPCActivities;
@@ -205,9 +205,9 @@
 - (BOOL)_setupConnection:(id)arg1 readonly:(BOOL)arg2 error:(id *)arg3;
 - (void)_setupSharedPackageExtensionsPlist;
 - (void)_setupThrottles;
-- (struct PQLResultSet *)_sharedClientZonesEnumerator:(id)arg1;
+- (id)_sharedClientZonesEnumerator:(id)arg1;
 - (id)_sharedServerZoneByName:(id)arg1 ownerName:(id)arg2 db:(id)arg3;
-- (struct PQLResultSet *)_sharedServerZonesEnumerator:(id)arg1;
+- (id)_sharedServerZonesEnumerator:(id)arg1;
 - (BOOL)_shouldPrivateAppLibraryBeCZMMoved:(id)arg1;
 - (void)_startWatcher;
 - (BOOL)_stepBackupDetector:(struct backup_detector)arg1 newState:(struct backup_detector *)arg2 error:(id *)arg3;
@@ -230,7 +230,7 @@
 - (unsigned long long)availableDiskSpaceUsingCache:(BOOL)arg1;
 - (unsigned long long)availableDiskSpaceUsingCache:(BOOL)arg1 schedulingPendingDiskItemsIfNeeded:(BOOL)arg2;
 - (BOOL)backupDatabaseToURL:(id)arg1 error:(id *)arg2;
-- (struct PQLResultSet *)bouncedItemsEnumerator;
+- (id)bouncedItemsEnumerator;
 - (id)clientZoneByMangledID:(id)arg1;
 - (id)clientZones;
 - (id)clientZonesMatchingSearchString:(id)arg1 error:(id *)arg2;
@@ -240,7 +240,7 @@
 - (void)closeXPCClientsSync;
 - (void)cloudDocsAppsListDidChange:(id)arg1;
 - (id)cloudDocsClientZone;
-- (void)computeDocumentEvictableSizesForLowTime:(unsigned long long)arg1 medTime:(unsigned long long)arg2 highTime:(unsigned long long)arg3 lowSize:(unsigned long long)arg4 medSize:(unsigned long long)arg5 highSize:(unsigned long long)arg6 minRowID:(unsigned long long)arg7 minSize:(unsigned long long)arg8 batchSize:(unsigned long long)arg9 injection:(struct NSObject *)arg10 db:(id)arg11 reply:(CDUnknownBlockType)arg12;
+- (void)computeDocumentEvictableSizesForLowTime:(unsigned long long)arg1 medTime:(unsigned long long)arg2 highTime:(unsigned long long)arg3 lowSize:(unsigned long long)arg4 medSize:(unsigned long long)arg5 highSize:(unsigned long long)arg6 minRowID:(unsigned long long)arg7 minSize:(unsigned long long)arg8 batchSize:(unsigned long long)arg9 injection:(id)arg10 db:(id)arg11 reply:(CDUnknownBlockType)arg12;
 - (void)computeTotalEvictableSizeWithAccessLowTimeDelta:(double)arg1 medTimeDelta:(double)arg2 highTimeDelta:(double)arg3 db:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (unsigned long long)computeTotalLiveDocumentSizeWithDb:(id)arg1;
 - (BOOL)createAppLibrariesIfNeededWithError:(id *)arg1;
@@ -284,7 +284,7 @@
 - (id)fallbackAppLibraryForClientZone:(id)arg1 extension:(id)arg2;
 - (id)fetchAccountWaitOperationWithAccountReady:(BOOL *)arg1;
 - (void)fetchUserRecordIDWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (struct PQLResultSet *)foldersNeedingTransmogrifyEnumerator;
+- (id)foldersNeedingTransmogrifyEnumerator;
 - (id)fsEventsMonitorForAppLibraryID:(id)arg1;
 - (id)fsEventsMonitorForSyncedFolderType:(unsigned long long)arg1;
 - (id)fsEventsMonitors;
@@ -308,8 +308,8 @@
 - (id)itemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemIDByRowID:(unsigned long long)arg1;
 - (id)itemIDByRowID:(unsigned long long)arg1 db:(id)arg2;
-- (struct PQLResultSet *)itemsNeedingIndexingEnumeratorFromNotifRank:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
-- (struct PQLResultSet *)itemsWithSideCarInFlightDiffsEnumerator;
+- (id)itemsNeedingIndexingEnumeratorFromNotifRank:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
+- (id)itemsWithSideCarInFlightDiffsEnumerator;
 - (void)learnOwnerIdentityForShare:(id)arg1 forceUpdate:(BOOL)arg2;
 - (id)localAliasForSharedItem:(id)arg1 inZone:(id)arg2;
 - (void)markAccountMigrationComplete;
@@ -369,7 +369,7 @@
 - (id)sideCarSyncContext;
 - (id)singleAppLibraryMatchingSearchString:(id)arg1 error:(id *)arg2;
 - (id)singleClientZoneMatchingSearchString:(id)arg1 error:(id *)arg2;
-- (struct PQLResultSet *)stagedItemsEnumerator;
+- (id)stagedItemsEnumerator;
 - (void)startDownloadsForGreediness;
 - (void)stopDBWatcher;
 - (id)syncContextForMangledID:(id)arg1;

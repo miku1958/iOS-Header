@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSOperationQueue *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property (strong, nonatomic) NSOperationQueue *listenerQueue; // @synthesize listenerQueue=_listenerQueue;
 
++ (id)findLeastRecentlyUsedCleanUser;
++ (BOOL)hasCleanUser;
 + (BOOL)isNewUserAbleToLogin;
 - (void).cxx_destruct;
 - (id)_errorForNotificationType:(unsigned long long)arg1;

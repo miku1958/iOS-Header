@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_performLoadHandlerIfNeeded;
 - (void)_performSetUpWithRemoteViewController:(id)arg1 extension:(id)arg2 request:(id)arg3 hostContext:(id)arg4;
 - (void)_registerLoadingHandler:(CDUnknownBlockType)arg1;
+- (BOOL)canClickToToggleFullscreen;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canShowNavBar;

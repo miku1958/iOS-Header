@@ -28,7 +28,7 @@
 + (id)_equivalentCommunicationBundleIdentifiersForCommunicationBundleIdentifier:(id)arg1;
 + (id)_transformEffectivePoliciesIntoCommunicationPolicies:(id)arg1;
 + (id)communicationBundleIdentifiers;
-+ (unsigned long long)communicationPolicyForApplicationPolicy:(id)arg1 downtimeEnforced:(BOOL)arg2 communicationLimitsEnabled:(BOOL)arg3;
++ (unsigned long long)communicationPolicyForApplicationPolicy:(id)arg1 downtimeEnforced:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)_updatePoliciesByBundleIdentifier;
 - (void)_updateWithPoliciesByBundleIdentifier:(id)arg1 categoryEffectivePolicy:(id)arg2;

@@ -9,10 +9,12 @@
 #import <PassKitCore/PKPeerPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
 @class NSString, PKPeerPaymentService;
+@protocol PKPeerPaymentRegistrationDelegate;
 
 @interface PKPeerPaymentWebServiceTargetDevice : NSObject <PKPeerPaymentWebServiceTargetDeviceProtocol>
 {
     PKPeerPaymentService *_peerPaymentService;
+    id<PKPeerPaymentRegistrationDelegate> _registrationDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,7 +22,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)localTargetDevice;
 - (void).cxx_destruct;
 - (void)_handleAccountChangedNotification:(id)arg1;
 - (id)account;
@@ -31,7 +32,7 @@
 - (void)dealloc;
 - (id)deviceRegion;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-- (id)init;
+- (id)initWithRegistrationDelegate:(id)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
 - (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 peerPaymentWebService:(id)arg3 completion:(CDUnknownBlockType)arg4;

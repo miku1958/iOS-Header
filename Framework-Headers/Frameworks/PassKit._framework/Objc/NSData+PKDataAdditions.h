@@ -10,6 +10,7 @@
 + (id)dataWithCGImage:(struct CGImage *)arg1;
 - (id)SHA1Hash;
 - (id)SHA256Hash;
+- (id)URLBase64EncodedString;
 - (id)fileSafeBase64Encoding;
 - (BOOL)hasPDFMIMEType;
 - (id)hexEncoding;

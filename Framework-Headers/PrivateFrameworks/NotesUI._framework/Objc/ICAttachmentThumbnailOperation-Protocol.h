@@ -7,7 +7,7 @@
 @class ICThumbnailDataCache, NSString;
 
 @protocol ICAttachmentThumbnailOperation
-- (void)addCompletionBlock:(void (^)(struct UIImage *, unsigned long long, BOOL, BOOL))arg1;
+- (void)addCompletionBlock:(void (^)(UIImage *, unsigned long long, BOOL, BOOL))arg1;
 - (BOOL)isMatchingOperationForCacheKey:(NSString *)arg1 cache:(ICThumbnailDataCache *)arg2;
 @end
 

@@ -16,6 +16,7 @@
     BOOL _parallelExecution;
     NSObject<OS_dispatch_queue> *_queue;
     ARTechniqueParallelGatherContext *_previousContext;
+    struct os_unfair_lock_s _previousContext_lock;
     NSArray *__internalTechniques;
 }
 
@@ -23,24 +24,28 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL isParallel;
 @property (readonly) Class superclass;
 @property (copy) NSArray *techniques;
 
++ (id)parentTechniqueOfClass:(Class)arg1 inArray:(id)arg2;
 + (id)techinqueInArray:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (id)techniquesByForceReplacingTechniques:(id)arg1 withMatchingClassTechniques:(id)arg2;
 + (id)techniquesByReplacingOriginalTechniques:(id)arg1 withReplacementTechniques:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)_fullDescription;
 - (void)_submitResultsForTimestamp:(double)arg1 context:(id)arg2;
 - (id)initWithParallelTechniques:(id)arg1;
 - (id)initWithTechniques:(id)arg1;
 - (id)initWithTechniques:(id)arg1 delegate:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)predictedResultDataAtTimestamp:(double)arg1 context:(id)arg2;
-- (void)prepare;
+- (void)prepare:(BOOL)arg1;
 - (id)processData:(id)arg1;
 - (id)processResultData:(id)arg1 timestamp:(double)arg2 context:(id)arg3;
 - (BOOL)reconfigurableFrom:(id)arg1;
 - (void)reconfigureFrom:(id)arg1;
+- (id)recursiveChildTechniques;
 - (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (unsigned long long)requiredSensorDataTypes;
 - (double)requiredTimeInterval;
@@ -51,6 +56,7 @@
 - (void)siblingTechniquesDidChange:(id)arg1;
 - (void)technique:(id)arg1 didFailWithError:(id)arg2;
 - (void)technique:(id)arg1 didOutputResultData:(id)arg2 timestamp:(double)arg3 context:(id)arg4;
+- (id)techniqueMatchingPredicate:(id)arg1;
 - (id)techniqueOfClass:(Class)arg1;
 
 @end

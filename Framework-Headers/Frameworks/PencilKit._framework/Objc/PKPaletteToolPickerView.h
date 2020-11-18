@@ -8,6 +8,7 @@
 
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
+#import <PencilKit/PKPalettePopoverUpdating-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 #import <PencilKit/PKPaletteViewStateObserving-Protocol.h>
 #import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @class NSArray, NSLayoutConstraint, NSMutableArray, NSString, PKInk, PKPaletteToolPickerOverlayView, PKPaletteToolView, UIScrollView, UIStackView, UIViewController;
 @protocol PKPalettePopoverPresenting><PKPaletteToolPickerViewDelegate, PKPaletteViewStateObservable;
 
-@interface PKPaletteToolPickerView : UIView <UIPopoverPresentationControllerDelegate, PKEdgeLocatable, PKPalettePopoverDismissing, PKPaletteViewSizeScaling, PKPaletteViewStateObserving>
+@interface PKPaletteToolPickerView : UIView <UIPopoverPresentationControllerDelegate, PKEdgeLocatable, PKPalettePopoverDismissing, PKPalettePopoverUpdating, PKPaletteViewStateObserving, PKPaletteViewSizeScaling>
 {
     BOOL _isRulerActive;
     BOOL _usingShortestToolSpacing;
@@ -93,6 +94,7 @@
 - (id)toolsFromToolIdentifiers:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
+- (void)updatePopoverUI;
 
 @end
 

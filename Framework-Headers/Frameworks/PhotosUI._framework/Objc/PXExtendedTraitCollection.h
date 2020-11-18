@@ -28,7 +28,7 @@
         BOOL userInterfaceLevel;
     } _needsUpdateFlags;
     BOOL _enabled;
-    struct NSObject *_traitCollection;
+    NSObject<PXAnonymousTraitCollection> *_traitCollection;
     long long _layoutSizeClass;
     long long _layoutSizeSubclass;
     long long _layoutOrientation;
@@ -39,7 +39,7 @@
     double _displayScale;
     long long _userInterfaceStyle;
     long long _userInterfaceLevel;
-    struct NSObject *_viewController;
+    NSObject<PXAnonymousViewController> *_viewController;
     struct CGSize _layoutReferenceSize;
     struct CGSize __viewSize;
     struct CGSize __pendingViewTransitionSize;
@@ -95,10 +95,10 @@
 - (void)_updateUserInterfaceStyleIfNeeded;
 - (void)_updateViewSizeIfNeeded;
 - (void)_viewWillLayoutSubviews;
-- (struct NSObject *)createTraitCollection;
+- (id)createTraitCollection;
 - (void)dealloc;
 - (void)didPerformChanges;
-- (double)displayScaleFromTraitCollection:(struct NSObject *)arg1;
+- (double)displayScaleFromTraitCollection:(id)arg1;
 - (void)getContentSizeCategory:(out long long *)arg1;
 - (void)getLayoutDirection:(out long long *)arg1;
 - (void)getSizeClass:(out long long *)arg1 sizeSubclass:(out long long *)arg2;
@@ -106,7 +106,7 @@
 - (void)getUserInterfaceLevel:(out long long *)arg1;
 - (void)getUserInterfaceStyle:(out long long *)arg1;
 - (id)init;
-- (id)initWithViewController:(struct NSObject *)arg1;
+- (id)initWithViewController:(id)arg1;
 - (void)invalidateDisplayScale;
 - (void)invalidateLayoutMargins;
 - (void)invalidateSafeAreaInsets;
@@ -114,8 +114,8 @@
 - (id)mutableChangeObject;
 - (void)registerObservations;
 - (void)unregisterObservations;
-- (long long)userInterfaceFeatureForViewController:(struct NSObject *)arg1;
-- (void)viewControllerDidMoveToParentViewController:(struct NSObject *)arg1;
+- (long long)userInterfaceFeatureForViewController:(id)arg1;
+- (void)viewControllerDidMoveToParentViewController:(id)arg1;
 - (void)viewControllerLayoutOrientationDidChange;
 - (void)viewControllerTraitCollectionDidChange;
 - (void)viewControllerViewDidAppear;

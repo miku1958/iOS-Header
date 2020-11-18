@@ -8,10 +8,13 @@
 
 @interface WBSTopHitCompletionMatch : WBSBookmarkAndHistoryCompletionMatch
 {
+    BOOL _shouldPreload;
 }
 
+- (id)initWithBookmarkAndHistoryCompletionMatch:(Ref_a2762e75 *)arg1 userInput:(id)arg2 forQueryID:(long long)arg3 shouldPreload:(BOOL)arg4;
 - (BOOL)isTopHit;
 - (id)parsecDomainIdentifier;
+- (BOOL)shouldPreload;
 
 @end
 

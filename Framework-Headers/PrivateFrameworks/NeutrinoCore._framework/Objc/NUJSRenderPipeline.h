@@ -15,7 +15,7 @@
 }
 
 + (id)extractFilterParams:(id)arg1 withPipelineState:(id)arg2 error:(out id *)arg3;
-+ (struct NSDictionary *)extractTransforms:(id)arg1 inputImages:(id)arg2 error:(out id *)arg3;
++ (id)extractTransforms:(id)arg1 inputImages:(id)arg2 error:(out id *)arg3;
 + (id)renderPipelineWithJavaScript:(id)arg1;
 - (void).cxx_destruct;
 - (id)_pipelineFunctionInContext:(id)arg1 error:(out id *)arg2;

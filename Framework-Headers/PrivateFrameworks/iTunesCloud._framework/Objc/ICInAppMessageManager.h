@@ -10,7 +10,7 @@
 #import <iTunesCloud/ICInAppMessageManagerProtocol-Protocol.h>
 #import <iTunesCloud/NSXPCListenerDelegate-Protocol.h>
 
-@class ICInAppMessageStore, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, NSXPCListener;
+@class AMSPushHandler, BKSApplicationStateMonitor, ICInAppMessageStore, ICUserIdentityStore, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, NSXPCListener;
 @protocol OS_dispatch_queue;
 
 @interface ICInAppMessageManager : NSObject <NSXPCListenerDelegate, ICInAppMessageManagerProtocol, ICEnvironmentMonitorObserver>
@@ -20,12 +20,17 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     ICInAppMessageStore *_messageStore;
+    ICUserIdentityStore *_identityStore;
     BOOL _isSystemService;
+    AMSPushHandler *_amsPushHandler;
+    BKSApplicationStateMonitor *_applicationStateMonitor;
+    NSString *_foregroundApplicationIdentifier;
     NSXPCListener *_xpcServiceListener;
     NSMutableSet *_xpcConnections;
     NSXPCConnection *_xpcClientConnection;
 }
 
+@property (readonly, nonatomic) ICInAppMessageStore *_unsafeMessageStore; // @synthesize _unsafeMessageStore=_messageStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -34,6 +39,8 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_addConnection:(id)arg1;
+- (void)_addMessageEntry:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_amsPushHandler;
 - (void)_checkForMessageResourcesNeedingDownload;
 - (void)_downloadResourcesForMessageWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handleICInAppMessagesDidChangeDistributedNotification:(id)arg1;
@@ -43,6 +50,7 @@
 - (void)_performCacheConsistencyCheck;
 - (void)_performSyncRetryIfPending;
 - (void)_performSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_privacyAcknowledgementRequired;
 - (void)_processSyncResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeAllMessageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeConnection:(id)arg1;
@@ -62,9 +70,10 @@
 - (void)getGlobalPropertyForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPropertyForKey:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithMessageStore:(id)arg1;
+- (id)initWithMessageStore:(id)arg1 identityStore:(id)arg2;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)messageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)messageEntryWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAllMessageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeMessageEntryWithIdentifier:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;

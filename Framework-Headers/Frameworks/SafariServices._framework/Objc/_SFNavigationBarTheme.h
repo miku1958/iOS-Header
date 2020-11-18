@@ -51,6 +51,7 @@
 @property (readonly, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (readonly, nonatomic) UIColor *warningTextColor; // @synthesize warningTextColor=_warningTextColor;
 
++ (id)textColorForBackgroundColor:(id)arg1;
 - (void).cxx_destruct;
 - (id)URLAccessoryButtonTintColorForInputMode:(unsigned long long)arg1;
 - (id)_colorForPlatterTextColor:(id)arg1 regularColor:(id)arg2 withPlatterAlpha:(double)arg3;

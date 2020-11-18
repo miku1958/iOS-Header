@@ -35,7 +35,6 @@
 - (BOOL)_accessibilityIsInMasterSplitViewController;
 - (BOOL)_accessibilityIsScannerGroup;
 - (BOOL)_accessibilityIsSearchTableVisible;
-- (id)_accessibilityKeyCommands;
 - (BOOL)_accessibilityKeyCommandsShouldOverrideKeyCommands;
 - (id)_accessibilityLastFocusedChild;
 - (BOOL)_accessibilityNativeFocusPreferredElementIsValid;
@@ -52,6 +51,7 @@
 - (BOOL)_accessibilitySearchTableViewVisible;
 - (void)_accessibilitySetUseOpaqueElements:(id)arg1;
 - (BOOL)_accessibilityShouldDisableCellReuse;
+- (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (BOOL)_accessibilityShouldVerifyTableViewCellsAreVisibleByHitTesting;
 - (BOOL)_accessibilitySkipItemsInSectionList:(id)arg1 view:(id)arg2;
 - (id)_accessibilitySortedElementsWithin;
@@ -69,18 +69,20 @@
 - (id)_accessibilityUserTestingVisibleSections;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
 - (id)_accessibilityVisibleHeaderSections;
-- (BOOL)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 - (BOOL)_automationPrefersRealElements;
 - (id)_axAttemptCreationOfViewType:(int)arg1 identifier:(id)arg2;
 - (id)_axAttemptStoryboard:(id)arg1 viewType:(int)arg2;
 - (id)_axFirstLastOpaqueHeaderElementFromSection:(long long)arg1 options:(id)arg2 direction:(long long)arg3;
 - (id)_axFirstLastOpaqueHeaderElementInDirection:(long long)arg1 options:(id)arg2;
+- (id)_axGetIndexGuide;
 - (id)_axNextSelectableIndexPathForIndexPath:(id)arg1;
 - (long long)_axNumberOfSections;
 - (id)_axOffScreenOpaqueHeaderElementInDirection:(long long)arg1 options:(id)arg2 childElement:(id)arg3;
 - (id)_axOpaqueHeaderElementInDirection:(long long)arg1 withinElements:(id)arg2 startIndex:(unsigned long long)arg3;
 - (void)_axPostLayoutChange;
 - (id)_axPreviousSelectableIndexPathForIndexPath:(id)arg1;
+- (void)_axSetIndexGuide:(id)arg1;
+- (void)_axSetupIndexGuide;
 - (BOOL)_axTableViewMightBeSidebar;
 - (id)_axVisibleHeadersAndFootersAfterLastVisibleCellSection:(long long)arg1;
 - (id)_axVisibleHeadersAndFootersPriorToFirstVisibleCellSection:(long long)arg1;
@@ -89,8 +91,6 @@
 - (id)_delegateViewForHeaderInSection:(long long)arg1;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_endReorderingForCell:(id)arg1 wasCancelled:(BOOL)arg2 animated:(BOOL)arg3;
-- (void)_fkaScrollToNextRow;
-- (void)_fkaScrollToPreviousRow;
 - (void)_reorderPositionChangedForCell:(id)arg1;
 - (void)_reuseTableViewSubview:(id)arg1 viewType:(int)arg2;
 - (void)_setAccessibilitySearchControllerDimmingViewHidden;

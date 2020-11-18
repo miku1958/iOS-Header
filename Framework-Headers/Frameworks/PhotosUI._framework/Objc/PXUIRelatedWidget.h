@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property (readonly, nonatomic) long long contentViewAnchoringType;
 @property (strong, nonatomic) PXPhotosDetailsContext *context;
+@property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;
@@ -86,7 +87,7 @@
 - (void)installGestureRecognizers;
 - (void)loadContentData;
 - (void)prepareForInteractiveTransition:(id)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)regionOfInterestForContext:(id)arg1;
 - (void)reusableObjectPool:(id)arg1 didCreateReusableObject:(id)arg2;

@@ -28,10 +28,12 @@
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
 - (void).cxx_destruct;
+- (BOOL)_matchURL:(id)arg1 toPatterns:(id)arg2;
 - (id)bagContract;
 - (id)initWithBag:(id)arg1;
 - (id)initWithBagContract:(id)arg1;
 - (id)isCommerceUIURL:(id)arg1;
+- (id)typeForCommerceUIURL:(id)arg1;
 
 @end
 

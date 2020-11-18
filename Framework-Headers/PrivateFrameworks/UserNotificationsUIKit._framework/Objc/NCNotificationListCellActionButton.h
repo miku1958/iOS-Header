@@ -42,6 +42,7 @@
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureTitleLabelEffects;
 - (void)_configureTitleLabelIfNecessary;
+- (void)_handleHoverGestureRecognizerEvent:(id)arg1;
 - (void)_highlightButton:(id)arg1;
 - (void)_layoutBackgroundView;
 - (void)_layoutTitleLabel;

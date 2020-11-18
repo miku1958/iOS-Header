@@ -80,6 +80,7 @@
 - (void)_addIdentifierToPendingClipIdentifiers:(id)arg1;
 - (void)_addSubmissionKeyToUploadService:(id)arg1;
 - (id)_appendDateStringToString:(id)arg1;
+- (id)_base64EncodeDataAsString:(id)arg1;
 - (void)_beginNextSubmissionProcessForIdentifier:(id)arg1;
 - (void)_cacheFeedbackService;
 - (id)_cameraClipKeyFromSubmissionKey:(id)arg1;
@@ -88,7 +89,7 @@
 - (BOOL)_canChallengeBypassCertificatePinning:(id)arg1;
 - (void)_cleanUpCurrentCameraProfileIfNeeded;
 - (void)_cleanUpLocalFilesForIdentifier:(id)arg1;
-- (id)_encryptRecording:(id)arg1 usingKey:(id)arg2;
+- (id)_encryptRecording:(id)arg1 usingKey:(id)arg2 forPayload:(id)arg3;
 - (void)_failAttemptToUploadCurrentIdentifier;
 - (void)_finalizeHandlingOfIdentifier:(id)arg1;
 - (id)_identifierFromString:(id)arg1;

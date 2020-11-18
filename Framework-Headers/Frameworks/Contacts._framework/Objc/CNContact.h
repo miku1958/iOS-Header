@@ -221,6 +221,7 @@
 + (id)descriptorForKeyDescriptors:(id)arg1 description:(id)arg2;
 + (id)descriptorForRequiredKeysForSearchableItem;
 + (id)descriptorWithKeyDescriptors:(id)arg1 description:(id)arg2;
++ (id)emptyContact;
 + (void)freezeIfInstancetypeIsImmutable:(id)arg1;
 + (id)identifierProvider;
 + (id)localizedStringForKey:(id)arg1;

@@ -23,7 +23,6 @@
 {
     NSUndoManager *_undoManager;
     id<WFVariableUIDelegate> _variableUIDelegate;
-    double _bottomContentInset;
     NSAttributedString *_emptyStateInstructionText;
     NSHashTable *_currentDragControllers;
     NSHashTable *_moduleDragControllers;
@@ -48,7 +47,6 @@
 @property (nonatomic) struct CGPoint actionRevealInitialOffset; // @synthesize actionRevealInitialOffset=_actionRevealInitialOffset;
 @property (strong, nonatomic) NSIndexPath *actionRevealToIndexPath; // @synthesize actionRevealToIndexPath=_actionRevealToIndexPath;
 @property (readonly, weak, nonatomic) UIView *borderView; // @synthesize borderView=_borderView;
-@property (nonatomic) double bottomContentInset; // @synthesize bottomContentInset=_bottomContentInset;
 @property (readonly, nonatomic) NSHashTable *currentDragControllers; // @synthesize currentDragControllers=_currentDragControllers;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFEditWorkflowViewControllerDelegate> delegate; // @dynamic delegate;

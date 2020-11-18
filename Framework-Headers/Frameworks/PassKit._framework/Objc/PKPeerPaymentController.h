@@ -63,6 +63,7 @@
 - (void)_setPerformQuoteSuccess:(BOOL)arg1;
 - (void)_setState:(unsigned long long)arg1 notify:(BOOL)arg2;
 - (void)_updateLastUsedAlternateFundingSource;
+- (void)_updatePreservePeerPaymentBalanceSetting:(BOOL)arg1;
 - (void)aggDAuthorizedQuoteWithSuccess:(BOOL)arg1 authorizedQuote:(id)arg2;
 - (id)contactForHandle:(id)arg1;
 - (void)dealloc;

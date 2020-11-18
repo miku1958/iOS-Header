@@ -36,12 +36,12 @@
 - (void)serviceOpenURL:(NSURL *)arg1 delaySessionEndForTTS:(BOOL)arg2 replyHandler:(void (^)(BOOL))arg3;
 - (void)servicePresentationDidChangePeekMode:(unsigned long long)arg1;
 - (void)serviceRequestsActivationSourceWithReplyHandler:(void (^)(long long))arg1;
-- (void)serviceRequestsDismissalWithDelayForTTS:(BOOL)arg1 userInfo:(NSDictionary *)arg2;
+- (void)serviceRequestsDismissalWithDelayForTTS:(BOOL)arg1 userInfo:(NSDictionary *)arg2 withDismissalReason:(unsigned long long)arg3;
 - (void)serviceStartGuidedAccess;
 - (void)serviceStartRequestWithOptions:(SASRequestOptions *)arg1;
 - (void)serviceUserRelevantEventDidOccur;
 - (void)serviceViewControllerRequestKeyboardForTapToEditWithCompletion:(void (^)(BOOL))arg1;
-- (void)serviceViewControllerRequestsDismissal:(void (^)(BOOL))arg1;
+- (void)serviceViewControllerRequestsDismissalWithDismissalReason:(unsigned long long)arg1 completion:(void (^)(BOOL))arg2;
 - (void)serviceViewControllerRequestsPresentation:(void (^)(BOOL))arg1;
 - (void)serviceWillBeginTapToEdit;
 - (void)serviceWillDismissViewControllerWithStatusBarStyle:(long long)arg1;

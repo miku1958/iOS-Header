@@ -29,7 +29,7 @@
 @property (readonly) Class superclass;
 
 + (id)__decodeRuleConfigurationWithVersionString:(id)arg1 ruleConfigurationValue:(id)arg2 baseAccessoryIdentifier:(id)arg3;
-+ (id)__decodeRuleConfigurationsFromJSONDictionary:(struct NSDictionary *)arg1 baseAccessoryIdentifier:(id)arg2 allowUnzippedData:(BOOL)arg3;
++ (id)__decodeRuleConfigurationsFromJSONDictionary:(id)arg1 baseAccessoryIdentifier:(id)arg2 allowUnzippedData:(BOOL)arg3;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (id)attributeDescriptions;

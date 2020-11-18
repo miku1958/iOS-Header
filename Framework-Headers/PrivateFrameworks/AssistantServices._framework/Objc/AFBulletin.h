@@ -20,6 +20,7 @@
     BOOL _previewRestricted;
     NSString *_displayName;
     BBBulletin *_bbBulletin;
+    unsigned long long _feed;
     NSString *_bulletinID;
     NSString *_recordID;
     NSDate *_date;
@@ -45,6 +46,7 @@
 @property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, nonatomic) unsigned long long feed; // @synthesize feed=_feed;
 @property (readonly, copy, nonatomic) NSArray *intentIDs; // @synthesize intentIDs=_intentIDs;
 @property (readonly, copy, nonatomic) NSString *internalID; // @synthesize internalID=_internalID;
 @property (readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
@@ -70,7 +72,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setBulletin:(id)arg1;
+- (void)setBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
 - (void)setNotification:(id)arg1 fromSourceApp:(id)arg2;
+- (void)wasRemovedFromFeed:(unsigned long long)arg1;
 
 @end
 

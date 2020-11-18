@@ -9,12 +9,11 @@
 #import <CoreCDP/NSCopying-Protocol.h>
 #import <CoreCDP/NSSecureCoding-Protocol.h>
 
-@class AKCircleRequestContext, CUMessageSession, KCAESGCMDuplexSession, NSDictionary, NSMutableArray, NSNumber, NSString;
+@class AKCircleRequestContext, CUMessageSession, KCAESGCMDuplexSession, NSDictionary, NSNumber, NSString;
 @protocol CDPAuthProviderInternal;
 
 @interface CDPContext : NSObject <NSSecureCoding, NSCopying>
 {
-    NSMutableArray *_signInMetricsStack;
     BOOL _isHSA2Account;
     BOOL _isFederatedAccount;
     BOOL _didUseSMSVerification;
@@ -68,7 +67,6 @@
 @property BOOL supportsSkipSignIn; // @synthesize supportsSkipSignIn=_supportsSkipSignIn;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)_metricsQueue;
 + (id)preflightContext:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -77,14 +75,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)desiresAllRecords;
 - (void)encodeWithCoder:(id)arg1;
-- (struct __CFData *)encodedTopLevelMetric;
 - (id)init;
 - (id)initWithAuthenticationResults:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)purgeResumeData;
-- (id)startMetricForEventName:(id)arg1;
-- (void)stopMetric:(id)arg1 withAttributes:(id)arg2;
-- (id)topLevelMetric;
 - (void)updateWithAuthenticationResults:(id)arg1;
 
 @end

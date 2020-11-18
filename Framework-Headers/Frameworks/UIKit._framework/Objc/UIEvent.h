@@ -12,24 +12,34 @@
 {
     struct __GSEvent *_gsEvent;
     struct __IOHIDEvent *_hidEvent;
+    long long _mzModifierFlags;
+    unsigned long long _mzClickCount;
+    long long _buttonMask;
     UIScreen *_cachedScreen;
     NSMutableSet *_eventObservers;
+    BOOL _hasValidModifiers;
     double _timestamp;
     UIEventEnvironment *_eventEnvironment;
+    long long _trackpadFingerDownCount;
     double __initialTouchTimestamp;
 }
 
 @property (readonly, nonatomic) double _initialTouchTimestamp; // @synthesize _initialTouchTimestamp=__initialTouchTimestamp;
 @property (readonly, nonatomic) NSSet *allTouches;
+@property (readonly, nonatomic) long long buttonMask;
 @property (weak, nonatomic) UIEventEnvironment *eventEnvironment; // @synthesize eventEnvironment=_eventEnvironment;
+@property (readonly, nonatomic) long long modifierFlags;
 @property (readonly, nonatomic) long long subtype;
 @property (nonatomic, setter=_setTimestamp:) double timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic, getter=_trackpadFingerDownCount) long long trackpadFingerDownCount; // @synthesize trackpadFingerDownCount=_trackpadFingerDownCount;
 @property (readonly, nonatomic) long long type;
 
 - (void).cxx_destruct;
 - (void)_addEventObserver:(id)arg1;
+- (long long)_buttonMask;
 - (void)_cleanupAfterDispatch;
 - (unsigned long long)_clickCount;
+- (id)_cloneEvent;
 - (struct CGPoint)_digitizerLocation;
 - (id)_eventObservers;
 - (unsigned long long)_focusHeading;
@@ -41,7 +51,9 @@
 - (id)_initWithEnvironment:(id)arg1;
 - (id)_initWithEvent:(struct __GSEvent *)arg1 touches:(id)arg2;
 - (BOOL)_isKeyDown;
+- (BOOL)_isPhysicalKeyEvent;
 - (BOOL)_isTouchRoutingPolicyBased;
+- (long long)_keyModifierFlags;
 - (id)_modifiedInput;
 - (long long)_modifierFlags;
 - (long long)_moveDirection;

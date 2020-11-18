@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
 
-@class NSString, PKContinuousButton, PKPaymentPass, PKPaymentPassAction, PKPaymentTransaction, PKPeerPaymentContactResolver, PKStackedTextItemGroup, PKStackedTextItemGroupView, PKTransitBalanceModel, UIImageView;
+@class NSArray, NSString, PKContinuousButton, PKPaymentPass, PKPaymentPassAction, PKPaymentTransaction, PKPeerPaymentContactResolver, PKStackedTextItemGroup, PKStackedTextItemGroupView, PKTransitBalanceModel, UIImageView;
 
 @interface PKFooterTransactionView : UIView <PKPeerPaymentContactResolverDelegate>
 {
@@ -30,6 +30,7 @@
     PKPaymentPass *_pass;
     PKPaymentTransaction *_transaction;
     PKTransitBalanceModel *_transitBalanceModel;
+    NSArray *_transitCommutePlans;
     PKPeerPaymentContactResolver *_peerPaymentContactResolver;
     NSString *_requiredActionPropertyIdentifier;
     CDUnknownBlockType _actionHandler;
@@ -49,6 +50,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 @property (copy, nonatomic) PKTransitBalanceModel *transitBalanceModel; // @synthesize transitBalanceModel=_transitBalanceModel;
+@property (readonly, copy, nonatomic) NSArray *transitCommutePlans; // @synthesize transitCommutePlans=_transitCommutePlans;
 
 - (void).cxx_destruct;
 - (void)_actionButtonTapped:(id)arg1;
@@ -71,6 +73,7 @@
 - (void)setPass:(id)arg1 animated:(BOOL)arg2;
 - (void)setTransaction:(id)arg1 animated:(BOOL)arg2;
 - (void)setTransitBalanceModel:(id)arg1 animated:(BOOL)arg2;
+- (void)setTransitCommutePlans:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

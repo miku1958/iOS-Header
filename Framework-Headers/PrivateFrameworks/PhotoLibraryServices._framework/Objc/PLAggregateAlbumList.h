@@ -31,10 +31,10 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
 
-+ (struct NSObject *)albumListWithFilter:(int)arg1 inPhotoLibrary:(id)arg2;
++ (id)albumListWithFilter:(int)arg1 inPhotoLibrary:(id)arg2;
 - (void).cxx_destruct;
 - (void)_invalidateAllAlbums;
-- (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
+- (BOOL)albumHasFixedOrder:(id)arg1;
 - (short)albumListType;
 - (id)albums;
 - (void)assetContainerListDidChange:(id)arg1;

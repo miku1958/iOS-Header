@@ -27,7 +27,7 @@
 - (id)_attributesKeyPrefix;
 - (id)_ignoredAttributeTags;
 - (id)attributes;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)intentResponseCodeWithCode:(long long)arg1;

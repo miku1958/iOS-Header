@@ -16,6 +16,7 @@
 - (struct CGSize)_accessibilityContentSize;
 - (id)_accessibilityScrollStatus;
 - (double)_accessibilityScrollWidthDistance;
+- (BOOL)_isEligibleForFocusInteraction;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)canBecomeFocused;
 

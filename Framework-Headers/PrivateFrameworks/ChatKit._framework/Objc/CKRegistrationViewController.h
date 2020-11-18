@@ -8,12 +8,13 @@
 
 #import <ChatKit/AKTapToSignInViewControllerDelegate-Protocol.h>
 
-@class AKTapToSignInViewController, NSString;
+@class AKTapToSignInViewController, NSString, OBPrivacyLinkController;
 
 @interface CKRegistrationViewController : UIViewController <AKTapToSignInViewControllerDelegate>
 {
     CDUnknownBlockType _completionBlock;
     AKTapToSignInViewController *_akSignInVC;
+    OBPrivacyLinkController *_privacyLinkController;
 }
 
 @property (strong, nonatomic) AKTapToSignInViewController *akSignInVC; // @synthesize akSignInVC=_akSignInVC;
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 @property (readonly) Class superclass;
 
 + (id)_inProgressRegisteringNonPhoneAccount;

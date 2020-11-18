@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
 @property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
+@property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

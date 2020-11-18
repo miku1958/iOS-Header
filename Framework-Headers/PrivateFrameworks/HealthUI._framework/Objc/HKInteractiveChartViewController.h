@@ -237,7 +237,7 @@
 - (void)replaceCurrentDisplayTypesWithTypes:(id)arg1 stackOffset:(long long)arg2 resetDateRange:(BOOL)arg3;
 - (id)replaceRangeClause:(id)arg1;
 - (void)reportStartupTime:(CDUnknownBlockType)arg1;
-- (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(struct NSDictionary *)arg2;
+- (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(id)arg2;
 - (void)scrollToMostRecentData;
 - (void)selectTimeScope:(long long)arg1;
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;

@@ -35,6 +35,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_defaultVoice;
 - (id)defaultFootprintString;
 - (id)defaultTypeString;
 - (id)defaultVoice;

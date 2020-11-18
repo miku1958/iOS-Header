@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLKUIAlmanacTransitInfo, CLLocation, NSArray, NSCalendar, NSDate, NSOrderedSet;
+@class CLKUIAlmanacTransitInfo, CLLocation, NSArray, NSCalendar, NSDate, NSOrderedSet, NSString;
 @protocol NTKSiderealDataSourceDelegate;
 
 @interface NTKSiderealDataSource : NSObject
@@ -15,7 +15,7 @@
     NSDate *_startOfDayForReferenceDate;
     NSDate *_endOfDayForReferenceDate;
     NSOrderedSet *_daytimeEvents;
-    struct NSString *_locationManagerToken;
+    NSString *_locationManagerToken;
     NSCalendar *_currentCalendar;
     NSDate *_cachedDate;
     NSDate *_cachedStartOfDay;

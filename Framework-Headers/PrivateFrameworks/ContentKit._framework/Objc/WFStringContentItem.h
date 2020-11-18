@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) NSString *string;
 
 + (id)contentCategories;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
 + (id)outputTypes;
 + (id)ownedTypes;
 + (id)pluralTypeDescription;

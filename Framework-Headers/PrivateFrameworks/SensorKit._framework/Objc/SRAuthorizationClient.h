@@ -22,7 +22,6 @@
 @property (copy) NSSet *actualAuthorizedServices; // @synthesize actualAuthorizedServices=_actualAuthorizedServices;
 @property (readonly, copy) NSSet *authorizedServices;
 @property (readonly, copy) NSDictionary *bundleIdentifiersPendingAuthorization;
-@property (readonly, copy) NSDictionary *bundlePathMap;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (nonatomic) BOOL dataCollectionEnabled;
 @property (readonly, nonatomic) NSArray *legacyResearchStudyBundleIDs;
@@ -42,7 +41,6 @@
 - (void)addBundle:(id)arg1 toPendingAuthorizations:(id)arg2;
 - (void)addListener:(id)arg1;
 - (void)addListener:(id)arg1 forBundleId:(id)arg2;
-- (void)addToBundlePathMap:(id)arg1;
 - (void)authorizedServicesDidChange:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)dealloc;
 - (id)init;
@@ -51,7 +49,6 @@
 - (void)notifyAuthorizationChangeForBundleIdentifier:(id)arg1;
 - (void)registerForPrerequisitesUpdated;
 - (void)removeBundle:(id)arg1 fromPendingAuthorizations:(id)arg2;
-- (void)removeFromBundlePathMap:(id)arg1;
 - (void)removeListener:(id)arg1;
 - (id)serviceStartTimeForService:(id)arg1;
 - (void)setServiceStartTimeForService:(id)arg1;

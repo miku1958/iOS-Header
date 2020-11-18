@@ -46,7 +46,6 @@
 + (id)moreResultsRequestWithURL:(id)arg1;
 + (id)moreResultsRequestWithURL:(id)arg1 queryId:(unsigned long long)arg2;
 + (id)searchRequestWithEngagedSuggestion:(id)arg1 queryId:(unsigned long long)arg2;
-+ (id)searchRequestWithString:(id)arg1;
 + (id)searchRequestWithString:(id)arg1 triggerEvent:(unsigned long long)arg2;
 + (id)searchRequestWithString:(id)arg1 triggerEvent:(unsigned long long)arg2 queryId:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;

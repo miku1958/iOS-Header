@@ -6,22 +6,44 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, NSString;
+@class NSArray, NSData, NSString, SISchemaLocaleIdentifier;
 
 @interface SISchemaDictationContext : PBCodable
 {
     NSString *_keyboardLanguage;
+    SISchemaLocaleIdentifier *_keyboardLocale;
+    SISchemaLocaleIdentifier *_dictationLocale;
+    SISchemaLocaleIdentifier *_userSelectedLocale;
+    SISchemaLocaleIdentifier *_siriSelectedLocale;
+    NSArray *_keyboardLocalesEnableds;
+    NSArray *_dictationLocalesEnableds;
+    NSString *_bundleId;
 }
 
+@property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property (strong, nonatomic) SISchemaLocaleIdentifier *dictationLocale; // @synthesize dictationLocale=_dictationLocale;
+@property (copy, nonatomic) NSArray *dictationLocalesEnableds; // @synthesize dictationLocalesEnableds=_dictationLocalesEnableds;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
+@property (strong, nonatomic) SISchemaLocaleIdentifier *keyboardLocale; // @synthesize keyboardLocale=_keyboardLocale;
+@property (copy, nonatomic) NSArray *keyboardLocalesEnableds; // @synthesize keyboardLocalesEnableds=_keyboardLocalesEnableds;
+@property (strong, nonatomic) SISchemaLocaleIdentifier *siriSelectedLocale; // @synthesize siriSelectedLocale=_siriSelectedLocale;
+@property (strong, nonatomic) SISchemaLocaleIdentifier *userSelectedLocale; // @synthesize userSelectedLocale=_userSelectedLocale;
 
 - (void).cxx_destruct;
+- (void)addDictationLocalesEnabled:(id)arg1;
+- (void)addKeyboardLocalesEnabled:(id)arg1;
+- (void)clearDictationLocalesEnabled;
+- (void)clearKeyboardLocalesEnabled;
+- (id)dictationLocalesEnabledAtIndex:(unsigned long long)arg1;
+- (unsigned long long)dictationLocalesEnabledCount;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)keyboardLocalesEnabledAtIndex:(unsigned long long)arg1;
+- (unsigned long long)keyboardLocalesEnabledCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

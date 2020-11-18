@@ -12,7 +12,9 @@
 
 + (void)addBundleIdentifierAccessingExternalMediaDevices:(id)arg1;
 + (id)bundleIdentifiersAccessingExternalMediaDevices;
++ (id)bundleIdentifiersAccessingExternalMediaDevicesWithStatus;
 + (void)revokeBundleIdentifierAccessingExternalMediaDevices:(id)arg1;
++ (void)updateBundleIdentifierAccessingExternalMediaDevices:(id)arg1 withStatus:(BOOL)arg2;
 + (BOOL)validateBundleIdentifierAccessingExternalMediaDevices:(id)arg1;
 
 @end

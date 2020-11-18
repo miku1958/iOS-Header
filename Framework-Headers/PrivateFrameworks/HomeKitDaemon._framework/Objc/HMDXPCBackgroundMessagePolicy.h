@@ -13,10 +13,13 @@
 
 @property (readonly) BOOL requiresEntitlement; // @synthesize requiresEntitlement=_requiresEntitlement;
 
++ (id)defaultPolicy;
 + (id)policyWithEntitlementRequirement:(BOOL)arg1;
+- (id)__initWithEntitlementRequirement:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (id)init;
-- (id)initWithEntitlementRequirement:(BOOL)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

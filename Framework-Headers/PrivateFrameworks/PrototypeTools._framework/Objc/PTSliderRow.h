@@ -15,7 +15,13 @@
 @property (nonatomic) double maxValue; // @synthesize maxValue=_maxValue;
 @property (nonatomic) double minValue; // @synthesize minValue=_minValue;
 
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)minValue:(double)arg1 maxValue:(double)arg2;
 
 @end

@@ -7,27 +7,31 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol OS_dispatch_queue;
 
 @interface ICPrivacyInfo : NSObject
 {
     NSMutableDictionary *_cache;
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSMutableDictionary *_observers;
+    struct os_unfair_lock_s _lock;
 }
 
-@property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForApplications;
-@property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForBooks;
 @property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForMedia;
 @property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForMusic;
-@property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForPodcasts;
-@property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForVideos;
 
++ (id)_onboardingKitPrivacyIdentifierForPrivacyIdentifier:(id)arg1;
++ (BOOL)_queryPrivacyAcknowledgementRequiredForIdentifier:(id)arg1;
 + (id)sharedPrivacyInfo;
 - (void).cxx_destruct;
 - (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
 - (BOOL)_privacyAcknowledgementRequiredForIdentifier:(id)arg1;
+- (BOOL)_privacyAcknowledgementRequiredForVideos;
+- (void)_updateForPrivacyAcknowledgementChanged;
+- (void)acknowledgePrivacyPolicyForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)beginObservingPrivacyAcknowledgementForIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)endObservingPrivacyAcknowledgementForIdentifier:(id)arg1 withToken:(id)arg2;
 - (id)init;
-- (BOOL)privacyAcknowledgementRequiredForSystemApplicationType:(long long)arg1;
+- (BOOL)privacyAcknowledgementRequiredForBundleIdentifier:(id)arg1;
+- (BOOL)privacyAcknowledgementRequiredForIdentifier:(id)arg1;
 
 @end
 

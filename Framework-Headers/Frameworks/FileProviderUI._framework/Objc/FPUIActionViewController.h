@@ -49,6 +49,7 @@
 + (id)actionControllerForActionIdentifier:(id)arg1 actionTitle:(id)arg2 items:(id)arg3 providerIdentifier:(id)arg4 domainIdentifier:(id)arg5;
 + (id)actionControllerForAuthenticationUsingURL:(id)arg1 providerIdentifier:(id)arg2;
 + (id)actionControllerForConnectingToServerURL:(id)arg1 actionTitle:(id)arg2 providerIdentifier:(id)arg3;
++ (id)actionControllerForError:(id)arg1 extensionIdentifier:(id)arg2 providerDomainIdentifier:(id)arg3;
 + (id)actionControllerForError:(id)arg1 providerIdentifier:(id)arg2;
 + (id)actionControllerForInlineError:(id)arg1 providerIdentifier:(id)arg2;
 - (void).cxx_destruct;

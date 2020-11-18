@@ -14,6 +14,7 @@
 @interface PHMediaResourceRequest : PHMediaRequest <PHAssetResourceRequestDelegate>
 {
     BOOL _networkAccessAllowed;
+    BOOL _synchronous;
     PHAssetResourceRequest *_internalRequest;
     NSMutableData *_compositeData;
     PHMediaResourceResult *_dataResult;
@@ -41,7 +42,7 @@
 - (void)assetResourceRequestDidFinish:(id)arg1;
 - (void)cancel;
 - (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
-- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 assetResource:(id)arg6 networkAccessAllowed:(BOOL)arg7 wantsURLOnly:(BOOL)arg8 delegate:(id)arg9;
+- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 assetResource:(id)arg6 networkAccessAllowed:(BOOL)arg7 wantsURLOnly:(BOOL)arg8 synchronous:(BOOL)arg9 delegate:(id)arg10;
 - (BOOL)isSynchronous;
 - (void)startRequest;
 

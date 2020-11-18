@@ -36,8 +36,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
 - (BOOL)automaticallyUpdateScrollViewIndicatorInset;
+- (BOOL)canClickToToggleFullscreen;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canSwipeToDismiss;
+- (BOOL)canToggleFullScreen;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)numberOfPagesWithSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

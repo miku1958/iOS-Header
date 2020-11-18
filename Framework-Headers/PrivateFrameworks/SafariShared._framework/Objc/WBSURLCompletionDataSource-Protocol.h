@@ -11,6 +11,6 @@
 
 @protocol WBSURLCompletionDataSource <NSObject>
 - (void)enumerateMatchDataForTypedStringHint:(WBSURLCompletionUserTypedString *)arg1 withBlock:(void (^)(NSString *, NSString *, id<WBSURLCompletionMatchData> (^)(void)))arg2;
-- (id<WBSURLCompletionMatchData>)fakeBookmarkMatchDataWithURLString:(NSString *)arg1 title:(NSString *)arg2;
+- (id<WBSURLCompletionMatchData>)fakeBookmarkMatchDataWithURLString:(NSString *)arg1 title:(NSString *)arg2 shouldPreload:(BOOL)arg3;
 @end
 

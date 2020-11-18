@@ -20,6 +20,7 @@
     UIApplicationSceneDeactivationAssertion *_systemModalAlertsActiveSceneDeactivationAssertion;
     NSMutableSet *_hideApplicationModalAlertAssertions;
     id<BSInvalidatable> _hideApplicationModalAlertsAssertionWhileSBModalAlertsActive;
+    id<BSInvalidatable> _sysdiagnoseStateHandler;
 }
 
 @property (readonly, nonatomic, getter=canShowApplicationModalAlerts) BOOL canShowApplicationModalAlerts; // @dynamic canShowApplicationModalAlerts;

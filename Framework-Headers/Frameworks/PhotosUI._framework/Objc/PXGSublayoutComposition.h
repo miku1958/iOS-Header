@@ -34,6 +34,7 @@
 - (void)invalidateSublayoutContentSizes;
 - (void)referenceSizeDidChange;
 - (void)setReferenceSize:(struct CGSize)arg1;
+- (struct UIEdgeInsets)sublayoutInsetsForStylableType:(long long)arg1;
 - (void)updateEstimate;
 - (void)updateEstimatedSublayoutGeometries;
 - (void)updateSublayoutAttributes;

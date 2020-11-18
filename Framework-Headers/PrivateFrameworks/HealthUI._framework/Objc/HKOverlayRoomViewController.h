@@ -70,7 +70,7 @@
 - (void)_setupInterface;
 - (void)_setupOverlayContextItems;
 - (void)_setupPrimaryDisplayType;
-- (BOOL)_shouldUpdateContextItemsForChanges:(struct NSDictionary *)arg1;
+- (BOOL)_shouldUpdateContextItemsForChanges:(id)arg1;
 - (void)_showAllFilters:(id)arg1;
 - (void)_updateChartForOverlaySelection:(id)arg1 previousSelection:(id)arg2;
 - (void)_updateContextTiles;
@@ -90,7 +90,7 @@
 - (void)newDataArrivedWithValueRange:(id)arg1;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
 - (void)reloadOverlayContextItems;
-- (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(struct NSDictionary *)arg2;
+- (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(id)arg2;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
 - (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
 - (void)viewDidLoad;

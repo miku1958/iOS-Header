@@ -37,8 +37,10 @@
 + (id)_moduleC2AnimationParametersForTransitionState:(id)arg1 layoutRect:(struct CCUILayoutRect)arg2;
 - (void).cxx_destruct;
 - (void)_addBackgroundViewWeightingAnimationToBatch:(id)arg1 transitionState:(id)arg2;
-- (void)_addHeaderContentAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addHeaderChevronAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addHeaderContentTransformAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addHeaderStatusBarAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addHeaderStatusBarTranslationAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addModuleTransformAnimationsToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addScrollViewContentOffsetAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (struct UIEdgeInsets)_edgeInsetsForContentSize:(struct CGSize)arg1 withinBounds:(struct CGRect)arg2 contentEdgeInsets:(struct UIEdgeInsets)arg3 orientation:(long long)arg4;

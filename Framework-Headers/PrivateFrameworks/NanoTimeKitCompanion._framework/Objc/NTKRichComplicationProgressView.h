@@ -9,13 +9,13 @@
 #import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 #import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 
-@class CLKDevice, CLKGaugeProvider, NSArray, NSString, NTKRichComplicationShapeView;
+@class CLKDevice, CLKGaugeProvider, NSArray, NSNumber, NSString, NTKRichComplicationShapeView;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKRichComplicationProgressView : UIView <CLKMonochromeFilterProvider, CLKMonochromeComplicationView>
 {
     CLKDevice *_device;
-    struct NSNumber *_updateToken;
+    NSNumber *_updateToken;
     float _currentBackgroundViewAlphaPercentage;
     BOOL _enabled;
     id<CLKMonochromeFilterProvider> _filterProvider;

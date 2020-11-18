@@ -30,6 +30,7 @@
     GEOTileKeyMap *_tileLoaderCreateTimes;
     unsigned int _highestRunningOperationPriority;
     geo_isolater *_highestRunningOperationPriorityIsolation;
+    GEOTileKeyMap *_priorities;
     BOOL _includeReasonHeader;
     BOOL _allowTLSSessionTicketUse;
     BOOL _allowTCPFastOpen;

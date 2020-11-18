@@ -31,7 +31,7 @@
 - (unsigned long long)minute;
 - (id)startOfDay;
 - (id)stringFromDate;
-- (long long)weekday;
+- (unsigned long long)weekday;
 - (id)weekdayStringFromDate;
 @end
 

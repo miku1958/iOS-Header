@@ -31,6 +31,7 @@
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 
 @end
 

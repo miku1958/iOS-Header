@@ -30,8 +30,6 @@
 - (id)_allMediaProperties;
 - (id)_allStandardProperties;
 - (id)_buildCoreAnalyticsEventPayloadWithProperties:(id)arg1 forEvent:(id)arg2 withRawPayload:(id)arg3 intoTargetEventPayload:(id)arg4;
-- (id)_buildMediaPropertiesPayloadForEvent:(id)arg1 fromRawPayload:(id)arg2 intoTargetEventPayload:(id)arg3;
-- (id)_buildStandardUserPropertiesPayloadForEvent:(id)arg1 fromRawPayload:(id)arg2 intoTargetEventPayload:(id)arg3;
 - (id)_computeSessionData:(id)arg1;
 - (void)_initNewSession:(id)arg1;
 - (void)_initializeCounters:(id)arg1;

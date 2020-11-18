@@ -43,6 +43,7 @@
 @property (readonly, nonatomic) double cacheDeleteRecomputeInterval;
 @property (readonly, nonatomic) BOOL canSaveRecordsDirectlyForDeltaSync;
 @property (readonly, nonatomic) NSArray *carryPartitions;
+@property (readonly, nonatomic) BOOL changeItemIDOnUnknownItem;
 @property (readonly, nonatomic) unsigned long long computeEvictableBatchSize;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *configurationUpdateXPCActivity;
 @property (readonly, nonatomic) unsigned long long copyShareIDsBatchSize;
@@ -55,6 +56,7 @@
 @property (readonly, nonatomic) BOOL dbTraced;
 @property (readonly, nonatomic) double defaultOnDiskAccessTimeDefaultForEviction;
 @property (readonly, nonatomic) double defaultTimeDeltaForEviction;
+@property (readonly, nonatomic) long long delayForStuckThrottle;
 @property (readonly, nonatomic) unsigned long long deleteShareIDBatchCount;
 @property (readonly, nonatomic) BOOL destroyiWorkShares;
 @property (readonly, nonatomic) double diskSpaceCheckInterval;
@@ -74,6 +76,7 @@
 @property (readonly, nonatomic) NSString *fakeEtagForFailIfOutdated;
 @property (readonly, nonatomic) unsigned long long fieldsToMoveOutOfTrashMask;
 @property (readonly, nonatomic) BOOL forceBatchFailureWhenReceivingAssetTokenExpiration;
+@property (readonly, nonatomic) BOOL forceFailIfExistOnRevival;
 @property (readonly, nonatomic) double forceForegroundGracePeriod;
 @property (readonly, nonatomic) BOOL forceSyncOverride;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *forcedSyncXPCActivity;
@@ -91,6 +94,8 @@
 @property (readonly, nonatomic) unsigned int logoutTimeout;
 @property (readonly, nonatomic) NSDictionary *lostItemThrottleParams;
 @property (readonly, nonatomic) unsigned long long lostScanDeepScanFirstThreshold;
+@property (readonly, nonatomic) double markChildLostBackoff;
+@property (readonly, nonatomic) unsigned long long maxBackoffToRetryUserInitiated;
 @property (readonly, nonatomic) unsigned long long maxFolderEnumerationCount;
 @property (readonly, nonatomic) unsigned long long maxFolderEnumerationDepth;
 @property (readonly, nonatomic) unsigned long long maxNumberOfFilesInAFolder;
@@ -134,6 +139,7 @@
 @property (readonly, nonatomic) BOOL optimisticallyPCSChain;
 @property (readonly, nonatomic) double packageExtensionPlistWriteInterval;
 @property (readonly, nonatomic) NSSet *packageExtensions;
+@property (readonly, nonatomic) BOOL pcsChainShareAliases;
 @property (readonly, nonatomic) unsigned long long pcsChainingBatchSize;
 @property (readonly, nonatomic) unsigned long long pcsChainingMaxPathDepth;
 @property (readonly, nonatomic) NSDictionary *perItemSyncUpThrottleParams;
@@ -166,6 +172,7 @@
 @property (readonly, nonatomic) BOOL shouldFetchAllChanges;
 @property (readonly, nonatomic) BOOL shouldFixupBundleBitOnPackages;
 @property (readonly, nonatomic) BOOL shouldFixupTargetCZMAliases;
+@property (readonly, nonatomic) BOOL shouldMigrateFetchShareAliases;
 @property (readonly, nonatomic) BOOL shouldPreparePCSMigration;
 @property (readonly, nonatomic) BOOL shouldReportAllPerItemFailures;
 @property (readonly, nonatomic) BOOL shouldSessionBeGreedy;
@@ -222,6 +229,7 @@
 @property (readonly, nonatomic) unsigned long long uploadRetryCountForFailure;
 @property (readonly, nonatomic) NSDictionary *uploadThrottleParams;
 @property (readonly, nonatomic) BOOL useFailIfOutdatedForResets;
+@property (readonly, nonatomic) BOOL useShareReferenceOnSideCar;
 @property (readonly, nonatomic) unsigned long long utiCacheSize;
 @property (readonly, nonatomic) int writerApplyBatchSize;
 @property (readonly, nonatomic) double writerIOsCancelDelay;
@@ -235,6 +243,7 @@
 + (id)defaultsForSharedZone;
 + (id)defaultsForSideCar;
 + (void)loadCachedServerConfigFromDB:(id)arg1;
++ (int)rampNumber;
 + (void)reset;
 + (void)saveServerConfigToDB:(id)arg1;
 + (void)setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;
@@ -246,28 +255,17 @@
 - (id)_extensionSetForKey:(id)arg1 startingWithExtensions:(id)arg2;
 - (id)_loadObjectForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 validateWithBlock:(CDUnknownBlockType)arg3;
 - (id)_serverDefaultForKey:(id)arg1;
+- (BOOL)_shouldRampForKey:(id)arg1;
 - (unsigned short)_umaskForKey:(id)arg1;
-- (int)aggressiveChainCarryRampPercentage;
-- (int)aggressiveChainInternalCarryRampPercentage;
-- (int)aggressiveChainInternalRampPercentage;
-- (int)aggressiveChainRampPercentage;
 - (BOOL)boolForKey:(id)arg1 byDefault:(BOOL)arg2;
 - (BOOL)boolForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 byDefault:(BOOL)arg3;
 - (double)doubleForKey:(id)arg1 min:(double)arg2 max:(double)arg3 byDefault:(double)arg4;
 - (float)floatForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 min:(float)arg3 max:(float)arg4 byDefault:(float)arg5;
 - (float)floatForKey:(id)arg1 min:(float)arg2 max:(float)arg3 byDefault:(float)arg4;
-- (int)folderSharingCarryRampPercentage;
-- (int)folderSharingInternalCarryRampPercentage;
-- (int)folderSharingInternalRampPercentage;
-- (int)folderSharingRampPercentage;
 - (id)initAsGlobalWithServerConfiguration:(id)arg1;
 - (id)initWithServerConfiguration:(id)arg1 globalUserDefaults:(id)arg2 clientZoneIdentifier:(id)arg3;
 - (int)intForKey:(id)arg1 min:(int)arg2 max:(int)arg3 byDefault:(int)arg4;
 - (id)objectForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 validateWithBlock:(CDUnknownBlockType)arg3;
-- (int)optimisticChainCarryRampPercentage;
-- (int)optimisticChainInternalCarryRampPercentage;
-- (int)optimisticChainInternalRampPercentage;
-- (int)optimisticChainRampPercentage;
 - (id)stringForKey:(id)arg1 byDefault:(id)arg2;
 - (id)stringForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 byDefault:(id)arg3;
 - (unsigned int)unsignedIntForKey:(id)arg1 min:(unsigned int)arg2 max:(unsigned int)arg3 byDefault:(unsigned int)arg4;

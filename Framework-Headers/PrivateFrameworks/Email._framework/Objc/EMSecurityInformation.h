@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Email/EFPubliclyDescribable-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSError;
+@class NSArray, NSError, NSString;
 
-@interface EMSecurityInformation : NSObject <NSSecureCoding>
+@interface EMSecurityInformation : NSObject <NSSecureCoding, EFPubliclyDescribable>
 {
     BOOL _isEncrypted;
     BOOL _hasEncryptedDescendantPart;
@@ -18,11 +19,16 @@
     NSError *_smimeError;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property (readonly, nonatomic) BOOL hasEncryptedDescendantPart; // @synthesize hasEncryptedDescendantPart=_hasEncryptedDescendantPart;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isEncrypted; // @synthesize isEncrypted=_isEncrypted;
 @property (readonly, nonatomic) BOOL isSigned;
 @property (readonly, nonatomic) NSArray *signers; // @synthesize signers=_signers;
 @property (readonly, nonatomic) NSError *smimeError; // @synthesize smimeError=_smimeError;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

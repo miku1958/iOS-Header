@@ -8,14 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBDataReader, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchPlaceContextMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_alternateSearchableNames;
     NSString *_interpretedCategory;
+    NSString *_matchedDisplayNameLanguageCode;
     NSString *_matchedDisplayName;
     NSString *_normalizedQuery;
     unsigned int _readerMarkPos;
@@ -25,32 +27,47 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_isDefaultName:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_alternateSearchableNames:1;
         unsigned int read_interpretedCategory:1;
+        unsigned int read_matchedDisplayNameLanguageCode:1;
         unsigned int read_matchedDisplayName:1;
         unsigned int read_normalizedQuery:1;
         unsigned int wrote_unknownFields:1;
+        unsigned int wrote_alternateSearchableNames:1;
         unsigned int wrote_interpretedCategory:1;
+        unsigned int wrote_matchedDisplayNameLanguageCode:1;
         unsigned int wrote_matchedDisplayName:1;
         unsigned int wrote_normalizedQuery:1;
         unsigned int wrote_isDefaultName:1;
     } _flags;
 }
 
+@property (strong, nonatomic) NSMutableArray *alternateSearchableNames;
 @property (readonly, nonatomic) BOOL hasInterpretedCategory;
 @property (nonatomic) BOOL hasIsDefaultName;
 @property (readonly, nonatomic) BOOL hasMatchedDisplayName;
+@property (readonly, nonatomic) BOOL hasMatchedDisplayNameLanguageCode;
 @property (readonly, nonatomic) BOOL hasNormalizedQuery;
 @property (strong, nonatomic) NSString *interpretedCategory;
 @property (nonatomic) BOOL isDefaultName;
 @property (strong, nonatomic) NSString *matchedDisplayName;
+@property (strong, nonatomic) NSString *matchedDisplayNameLanguageCode;
 @property (strong, nonatomic) NSString *normalizedQuery;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)alternateSearchableNameType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAlternateSearchableName:(id)arg1;
+- (void)_readAlternateSearchableNames;
 - (void)_readInterpretedCategory;
 - (void)_readMatchedDisplayName;
+- (void)_readMatchedDisplayNameLanguageCode;
 - (void)_readNormalizedQuery;
+- (void)addAlternateSearchableName:(id)arg1;
+- (id)alternateSearchableNameAtIndex:(unsigned long long)arg1;
+- (unsigned long long)alternateSearchableNamesCount;
+- (void)clearAlternateSearchableNames;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

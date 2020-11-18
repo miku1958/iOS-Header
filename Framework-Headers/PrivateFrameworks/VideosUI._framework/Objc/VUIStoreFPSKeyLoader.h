@@ -12,7 +12,6 @@
 @interface VUIStoreFPSKeyLoader : NSObject
 {
     BOOL _didSkipRentalCheckout;
-    BOOL _hasLoadedAnyStreamingKeyRequests;
     BOOL _usesKeyIdentifierPenaltyBox;
     NSURL *_secureInvalidationNonceURL;
     NSNumber *_secureInvalidationDSID;
@@ -24,7 +23,7 @@
     long long _state;
     NSData *_certificateData;
     NSMutableArray *_requestsAwaitingCertFetch;
-    TVPContentKeyRequest *_savedRequestToUseForStopping;
+    TVPContentKeyRequest *_savedStreamingKeyRequestToUseForStopping;
     NSDate *_keyExpirationDate;
     NSDate *_rentalPlaybackStartDate;
     TVPContentKeySession *_contentKeySession;
@@ -37,14 +36,13 @@
 @property (weak, nonatomic) NSObject<VUIStoreFPSKeyLoaderDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL didSkipRentalCheckout; // @synthesize didSkipRentalCheckout=_didSkipRentalCheckout;
 @property (strong, nonatomic) TVPPlaybackReportingEventCollection *eventCollection; // @synthesize eventCollection=_eventCollection;
-@property (nonatomic) BOOL hasLoadedAnyStreamingKeyRequests; // @synthesize hasLoadedAnyStreamingKeyRequests=_hasLoadedAnyStreamingKeyRequests;
 @property (strong, nonatomic) NSDate *keyExpirationDate; // @synthesize keyExpirationDate=_keyExpirationDate;
 @property (strong, nonatomic) NSMutableDictionary *keyIdentifierPenaltyBox; // @synthesize keyIdentifierPenaltyBox=_keyIdentifierPenaltyBox;
 @property (copy, nonatomic) NSURL *keyServerURL; // @synthesize keyServerURL=_keyServerURL;
 @property (strong, nonatomic) NSNumber *rentalID; // @synthesize rentalID=_rentalID;
 @property (strong, nonatomic) NSDate *rentalPlaybackStartDate; // @synthesize rentalPlaybackStartDate=_rentalPlaybackStartDate;
 @property (strong, nonatomic) NSMutableArray *requestsAwaitingCertFetch; // @synthesize requestsAwaitingCertFetch=_requestsAwaitingCertFetch;
-@property (strong, nonatomic) TVPContentKeyRequest *savedRequestToUseForStopping; // @synthesize savedRequestToUseForStopping=_savedRequestToUseForStopping;
+@property (strong, nonatomic) TVPContentKeyRequest *savedStreamingKeyRequestToUseForStopping; // @synthesize savedStreamingKeyRequestToUseForStopping=_savedStreamingKeyRequestToUseForStopping;
 @property (strong, nonatomic) NSNumber *secureInvalidationDSID; // @synthesize secureInvalidationDSID=_secureInvalidationDSID;
 @property (strong, nonatomic) NSURL *secureInvalidationNonceURL; // @synthesize secureInvalidationNonceURL=_secureInvalidationNonceURL;
 @property (nonatomic) long long state; // @synthesize state=_state;
@@ -75,7 +73,7 @@
 - (void)invalidateKeysWithRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeAllEntriesFromKeyIdentifierPenaltyBox;
-- (void)sendStopRequest;
+- (void)sendStreamingStopRequestIfNecessary;
 
 @end
 

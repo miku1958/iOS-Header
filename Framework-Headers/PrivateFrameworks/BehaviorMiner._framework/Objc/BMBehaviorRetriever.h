@@ -11,8 +11,10 @@
 @interface BMBehaviorRetriever : NSObject
 {
     BMBehaviorStorage *_storage;
+    unsigned long long _fetchLimit;
 }
 
+@property (nonatomic) unsigned long long fetchLimit; // @synthesize fetchLimit=_fetchLimit;
 @property (strong, nonatomic) BMBehaviorStorage *storage; // @synthesize storage=_storage;
 
 - (void).cxx_destruct;

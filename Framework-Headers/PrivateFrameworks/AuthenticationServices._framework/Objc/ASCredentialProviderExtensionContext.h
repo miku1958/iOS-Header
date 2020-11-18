@@ -24,9 +24,9 @@
 - (void)cancelRequestWithError:(id)arg1;
 - (void)completeExtensionConfigurationRequest;
 - (void)completeRequestWithSelectedCredential:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)prepareCredentialListForServiceIdentifiers:(id)arg1;
+- (void)prepareCredentialListForServiceIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)prepareInterfaceForExtensionConfiguration;
-- (void)prepareInterfaceToProvideCredentialForIdentity:(id)arg1;
+- (void)prepareInterfaceToProvideCredentialForIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)provideCredentialWithoutUserInteractionForIdentity:(id)arg1;
 
 @end

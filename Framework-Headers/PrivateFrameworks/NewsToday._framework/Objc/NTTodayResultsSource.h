@@ -19,6 +19,7 @@
     id<FCContentContext> _contentContext;
     CDUnknownBlockType _sessionProvider;
     FCAsyncSerialQueue *_serialQueue;
+    NSObject *_latestResultRecordsHoldToken;
 }
 
 @property (readonly, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
@@ -27,6 +28,7 @@
 @property (readonly, copy, nonatomic) id<NTTodayResultsFetchDescriptor> fetchDescriptor; // @synthesize fetchDescriptor=_fetchDescriptor;
 @property (nonatomic, getter=hasFlushingBeenEnabled) BOOL flushingHasBeenEnabled; // @synthesize flushingHasBeenEnabled=_flushingHasBeenEnabled;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject *latestResultRecordsHoldToken; // @synthesize latestResultRecordsHoldToken=_latestResultRecordsHoldToken;
 @property (readonly, nonatomic) id<NTReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
 @property (readonly, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly, copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;

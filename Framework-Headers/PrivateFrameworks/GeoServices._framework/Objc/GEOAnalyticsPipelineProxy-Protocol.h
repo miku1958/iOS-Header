@@ -13,7 +13,7 @@
 - (void)flushEvalData;
 - (GEOAnalyticsPipelineEvalStatus *)getEvalStatus;
 - (void)initiateUploadOfType:(int)arg1;
-- (void)reportLogMsgType:(int)arg1 eventType:(int)arg2 logMsg:(NSData *)arg3 completion:(void (^)(void))arg4 completionQueue:(NSObject<OS_dispatch_queue> *)arg5;
+- (void)reportLogMsgType:(int)arg1 handlingPolicyId:(int)arg2 logMsg:(NSData *)arg3 completion:(void (^)(void))arg4 completionQueue:(NSObject<OS_dispatch_queue> *)arg5;
 - (void)reportMapKitCountType:(int)arg1 appId:(NSString *)arg2 completion:(void (^)(void))arg3 completionQueue:(NSObject<OS_dispatch_queue> *)arg4;
 - (void)setEvalMode:(BOOL)arg1;
 - (void)setShortSessionValues:(GEOUserSessionEntity *)arg1 withCompletion:(void (^)(void))arg2;

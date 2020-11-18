@@ -14,7 +14,7 @@
 - (id)_evaluateVideo:(out id *)arg1;
 - (id)initWithInput:(id)arg1;
 - (BOOL)requiresAudioMix;
-- (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (BOOL)shouldCacheNodeForPipelineState:(id)arg1;
 
 @end

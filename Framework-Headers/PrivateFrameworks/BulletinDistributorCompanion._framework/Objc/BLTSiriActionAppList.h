@@ -30,7 +30,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_handleAppListInstalled:(struct NSDictionary *)arg1 removed:(id)arg2;
+- (BOOL)_handleAppListInstalled:(id)arg1 removed:(id)arg2;
 - (id)_siriActionAppListStoreURL;
 - (void)applicationIconDidChange:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;

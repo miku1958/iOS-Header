@@ -6,12 +6,15 @@
 
 #import <UIKit/UIView.h>
 
+#import <MobileMailUI/_UICursorInteractionDelegate-Protocol.h>
+
 @class EMCachingContactStore, MFMessageDisplayMetrics, NSString, UIButton, UIVisualEffectView;
 @protocol MFMessageFooterViewDelegate;
 
-@interface MFConversationItemFooterView : UIView
+@interface MFConversationItemFooterView : UIView <_UICursorInteractionDelegate>
 {
     BOOL _shouldArchiveByDefault;
+    BOOL _allowsCursorSnapping;
     UIVisualEffectView *_backgroundView;
     UIButton *_seeMoreButton;
     UIButton *_revealActionsButton;
@@ -23,27 +26,39 @@
     double _defaultSeeMoreButtonOriginY;
     UIButton *_trashButton;
     EMCachingContactStore *_contactStore;
+    double _currentYOffset;
 }
 
+@property (nonatomic) BOOL allowsCursorSnapping; // @synthesize allowsCursorSnapping=_allowsCursorSnapping;
 @property (strong, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) EMCachingContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (nonatomic) double currentYOffset; // @synthesize currentYOffset=_currentYOffset;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double defaultRevealActionButtonOriginY; // @synthesize defaultRevealActionButtonOriginY=_defaultRevealActionButtonOriginY;
 @property (nonatomic) double defaultSeeMoreButtonOriginY; // @synthesize defaultSeeMoreButtonOriginY=_defaultSeeMoreButtonOriginY;
 @property (nonatomic) double defaultTrashButtonOriginY; // @synthesize defaultTrashButtonOriginY=_defaultTrashButtonOriginY;
 @property (weak, nonatomic) id<MFMessageFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MFMessageDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIButton *revealActionsButton; // @synthesize revealActionsButton=_revealActionsButton;
 @property (strong, nonatomic) UIButton *seeMoreButton; // @synthesize seeMoreButton=_seeMoreButton;
 @property (copy, nonatomic) NSString *senderName; // @synthesize senderName=_senderName;
 @property (nonatomic) BOOL shouldArchiveByDefault; // @synthesize shouldArchiveByDefault=_shouldArchiveByDefault;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIButton *trashButton; // @synthesize trashButton=_trashButton;
 
 + (id)nameFont;
 + (id)prefixFont;
 - (void).cxx_destruct;
 - (void)_fontMetricCacheDidInvalidate:(id)arg1;
+- (BOOL)_shouldHideStickyFooter;
+- (void)_updateBackgroundView;
 - (void)_updateButtonsForTraitCollection:(id)arg1;
+- (void)_updateSeeMoreButton;
 - (void)addTarget:(id)arg1 action:(SEL)arg2 toButton:(long long)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)hideAttribution;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutActionButtonWithBounds:(struct CGRect)arg1;

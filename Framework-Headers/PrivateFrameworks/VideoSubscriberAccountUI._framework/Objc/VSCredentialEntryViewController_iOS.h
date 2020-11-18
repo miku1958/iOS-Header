@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)_textFieldForSpecifier:(id)arg1;
 - (id)_textForSpecifier:(id)arg1;
 - (void)_updateLinkButtonLayout;
+- (void)buildButtonsIfNeeded;
 - (void)cancelButtonTapped:(id)arg1;
 - (void)dealloc;
 - (void)doneButtonPressed:(id)arg1;
@@ -89,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

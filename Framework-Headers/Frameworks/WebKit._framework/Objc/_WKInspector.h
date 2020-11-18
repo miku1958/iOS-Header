@@ -27,17 +27,18 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) WKWebView *webView;
 
+- (void)_setDiagnosticLoggingDelegate:(id)arg1;
 - (void)attach;
 - (void)close;
 - (void)connect;
 - (void)detach;
 - (void)hide;
+- (id)inspectorWebView;
 - (void)printErrorToConsole:(id)arg1;
 - (void)show;
 - (void)showConsole;
 - (void)showMainResourceForFrame:(id)arg1;
 - (void)showResources;
-- (void)showTimelines;
 - (void)toggleElementSelection;
 - (void)togglePageProfiling;
 

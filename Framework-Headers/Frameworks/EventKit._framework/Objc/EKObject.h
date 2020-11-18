@@ -94,7 +94,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_resetCommon;
 - (BOOL)_resetIfBackingObjectIsOfClass:(Class)arg1 fetchResetFrozenObjectBlock:(CDUnknownBlockType)arg2;
 - (void)_resetMeltedCache;
-- (void)_resetWithFrozenObject:(EKPersistentObject_556b3b22 *)arg1;
+- (void)_resetWithFrozenObject:(id)arg1;
 - (void)_rollbackCommon;
 - (void)_sharedInit;
 - (id)_singleRelationshipKeysToCheckForChanges;
@@ -108,7 +108,7 @@ __attribute__((visibility("hidden")))
 - (void)addMultiChangedObjectValue:(id)arg1 forKey:(id)arg2;
 - (void)addMultiChangedObjectValues:(id)arg1 forKey:(id)arg2;
 - (void)applyChanges:(id)arg1;
-- (EKPersistentObject_556b3b22 *)backingObjectOfChildObject:(id)arg1 withRelationshipKey:(id)arg2;
+- (id)backingObjectOfChildObject:(id)arg1 withRelationshipKey:(id)arg2;
 - (id)cachedMeltedChildIdentifierToParentMap;
 - (id)cachedMeltedObjectForSingleValueKey:(id)arg1;
 - (id)cachedMeltedObjectsForMultiValueKey:(id)arg1;
@@ -128,7 +128,7 @@ __attribute__((visibility("hidden")))
 - (id)existingMeltedObject;
 - (BOOL)existsInStore;
 - (Class)frozenClass;
-- (EKPersistentObject_556b3b22 *)frozenObject;
+- (id)frozenObject;
 - (id)frozenOrMeltedCachedSingleRelationObjectForKey:(id)arg1;
 - (BOOL)hasUnsavedChanges;
 - (BOOL)hasUnsavedChangesIgnoreKeys:(id)arg1;

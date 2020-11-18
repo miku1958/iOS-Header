@@ -9,45 +9,51 @@
 #import <RelevanceEngineUI/NSCopying-Protocol.h>
 #import <RelevanceEngineUI/NSSecureCoding-Protocol.h>
 
-@class INIntent, INInteraction, INRelevantShortcut, NSString, NSUserActivity, REDonatedAction, UIImage;
+@class INIntent, INInteraction, INRelevantShortcut, NSString, NSUserActivity, UIImage;
 
 @interface REUIDonatedElementProperties : NSObject <NSSecureCoding, NSCopying>
 {
     UIImage *_bodyImage;
     BOOL _isUsingPlaceholderArtwork;
+    BOOL _localDonation;
     BOOL _displayAppName;
-    REDonatedAction *_action;
+    NSString *_bundleIdentifier;
+    NSString *_remoteBundleIdentifier;
+    NSString *_localBundleIdentifier;
+    unsigned long long _donationType;
+    unsigned long long _actionIdentifier;
     NSString *_appName;
     UIImage *_appIcon;
     UIImage *_fullsizeAppIcon;
     NSString *_title;
     NSString *_subtitle;
     UIImage *_monochromeBodyImage;
+    INInteraction *_interaction;
     NSUserActivity *_userActivity;
     INIntent *_intent;
     INRelevantShortcut *_relevantShortcut;
 }
 
-@property (readonly, nonatomic) REDonatedAction *action; // @synthesize action=_action;
+@property (readonly, nonatomic) unsigned long long actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property (readonly, nonatomic) UIImage *appIcon; // @synthesize appIcon=_appIcon;
 @property (readonly, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (readonly, nonatomic) UIImage *bodyImage;
 @property (readonly, nonatomic) NSString *bodyImageCompositingFilter;
-@property (readonly, nonatomic) NSString *bundleIdentifier;
+@property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) BOOL displayAppName; // @synthesize displayAppName=_displayAppName;
-@property (readonly, nonatomic) unsigned long long donationType;
+@property (readonly, nonatomic) unsigned long long donationType; // @synthesize donationType=_donationType;
 @property (readonly, nonatomic) UIImage *fullsizeAppIcon; // @synthesize fullsizeAppIcon=_fullsizeAppIcon;
 @property (readonly, nonatomic) INIntent *intent; // @synthesize intent=_intent;
-@property (readonly, nonatomic) INInteraction *interaction;
+@property (readonly, nonatomic) INInteraction *interaction; // @synthesize interaction=_interaction;
 @property (readonly, nonatomic) BOOL isBeginWorkoutDonation;
 @property (readonly, nonatomic) BOOL isEndWorkoutDonation;
 @property (readonly, nonatomic) BOOL isMediaDonation;
 @property (readonly, nonatomic) BOOL isWorkoutDonation;
-@property (readonly, nonatomic) NSString *localBundleIdentifier;
-@property (readonly, nonatomic, getter=isLocalDonation) BOOL localDonation;
+@property (readonly, nonatomic) NSString *localBundleIdentifier; // @synthesize localBundleIdentifier=_localBundleIdentifier;
+@property (readonly, nonatomic, getter=isLocalDonation) BOOL localDonation; // @synthesize localDonation=_localDonation;
 @property (readonly, nonatomic) UIImage *monochromeBodyImage; // @synthesize monochromeBodyImage=_monochromeBodyImage;
 @property (readonly, nonatomic) INRelevantShortcut *relevantShortcut; // @synthesize relevantShortcut=_relevantShortcut;
-@property (readonly, nonatomic) NSString *remoteBundleIdentifier;
+@property (readonly, nonatomic) NSString *remoteBundleIdentifier; // @synthesize remoteBundleIdentifier=_remoteBundleIdentifier;
 @property (readonly, nonatomic) BOOL requiresRemoteExecution;
 @property (readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly, nonatomic) BOOL supportsBackgroundExecution;
@@ -71,8 +77,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDonatedAction:(id)arg1;
-- (void)loadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)loadForAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

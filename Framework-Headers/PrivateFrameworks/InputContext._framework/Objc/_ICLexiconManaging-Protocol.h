@@ -7,11 +7,11 @@
 @class NSArray;
 
 @protocol _ICLexiconManaging
-- (void (^)(struct NSDictionary *))addContactObserver:(void (^)(struct NSDictionary *))arg1;
+- (void (^)(NSDictionary *))addContactObserver:(void (^)(NSDictionary *))arg1;
 - (void)hibernate;
 - (NSArray *)loadLexicons:(NSString * (^)(NSString *))arg1;
 - (NSArray *)loadLexiconsUsingFilter:(NSString * (^)(NSString *))arg1;
-- (void)removeContactObserver:(void (^)(struct NSDictionary *))arg1;
+- (void)removeContactObserver:(void (^)(NSDictionary *))arg1;
 - (void)unloadLexicons;
 - (void)warmUp;
 @end

@@ -8,13 +8,13 @@
 
 #import <MapsSuggestions/MapsSuggestionsShortcutStorage-Protocol.h>
 
-@class NSError, NSString;
+@class NSArray, NSError, NSString;
 
 @interface MapsSuggestionsFakeShortcutStorage : NSObject <MapsSuggestionsShortcutStorage>
 {
     struct ReadWriteQueue _rwQueue;
-    struct NSArray *_fakeResults;
-    struct NSArray *_passedInput;
+    NSArray *_fakeResults;
+    NSArray *_passedInput;
     NSError *_fakeError;
     unsigned long long _calledLoad;
     unsigned long long _calledAddOrUpdate;
@@ -30,13 +30,13 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)addOrUpdateShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)addOrUpdateShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (unsigned long long)calledAddOrUpdate;
 - (unsigned long long)calledMove;
 - (unsigned long long)calledRemove;
 - (unsigned long long)calledRequestLoad;
 - (void)configureError:(id)arg1;
-- (void)configureResults:(struct NSArray *)arg1;
+- (void)configureResults:(id)arg1;
 - (id)init;
 - (BOOL)loadAllShortcutsWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)moveShortcut:(id)arg1 afterShortcut:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -44,8 +44,8 @@
 - (BOOL)moveShortcut:(id)arg1 toIndex:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)moveShortcutToBack:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)moveShortcutToFront:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (struct NSArray *)passedInput;
-- (BOOL)removeShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)passedInput;
+- (BOOL)removeShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)reset;
 - (void)setChangeHandler:(CDUnknownBlockType)arg1;
 

@@ -90,7 +90,7 @@
 - (void)renderSpritesWithTextures:(id)arg1 dataStore:(id)arg2 presentationDataStore:(id)arg3 presentationMetadataStore:(id)arg4 layout:(id)arg5;
 - (void)setNeedsRender;
 - (void)updateWithChangeDetails:(id)arg1;
-- (struct NSObject *)view;
+- (id)view;
 
 @end
 

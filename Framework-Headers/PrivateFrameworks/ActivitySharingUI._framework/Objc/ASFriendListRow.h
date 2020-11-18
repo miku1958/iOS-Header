@@ -11,7 +11,7 @@
 @interface ASFriendListRow : NSObject
 {
     ASFriend *_friend;
-    struct _HKFitnessFriendActivitySnapshot *_snapshot;
+    _HKFitnessFriendActivitySnapshot *_snapshot;
 }
 
 @property (strong, nonatomic) ASFriend *friend; // @synthesize friend=_friend;

@@ -8,7 +8,7 @@
 
 @protocol TUBarCompressionAnimating
 
-@property (readonly, nonatomic) BOOL shouldCompressAtTop;
+@property (nonatomic, readonly) BOOL shouldCompressAtTop;
 @property (nonatomic) double topOffset;
 
 - (BOOL)animationShouldBeginForScrollView:(UIScrollView *)arg1 currentlyFullyCompressed:(BOOL)arg2;

@@ -11,6 +11,7 @@
 @interface PHPerson : PHObject
 {
     BOOL _inPersonNamingModel;
+    unsigned short _questionType;
     unsigned short _ageType;
     unsigned short _genderType;
     NSString *_name;
@@ -21,7 +22,6 @@
     long long _faceCount;
     NSDictionary *_contactMatchingDictionary;
     long long _verifiedType;
-    long long _questionType;
 }
 
 @property (readonly, nonatomic) unsigned short ageType; // @synthesize ageType=_ageType;
@@ -33,7 +33,7 @@
 @property (readonly, nonatomic) unsigned long long manualOrder; // @synthesize manualOrder=_manualOrder;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *personUri; // @synthesize personUri=_personUri;
-@property (readonly, nonatomic) long long questionType; // @synthesize questionType=_questionType;
+@property (readonly, nonatomic) unsigned short questionType; // @synthesize questionType=_questionType;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic, getter=isVerified) BOOL verified;
 @property (readonly, nonatomic) long long verifiedType; // @synthesize verifiedType=_verifiedType;
@@ -66,7 +66,7 @@
 + (id)fetchPersonsInAsset:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsWithOptions:(id)arg1;
-+ (id)fetchPersonsWithQuestionType:(long long)arg1 options:(id)arg2;
++ (id)fetchPersonsWithQuestionType:(unsigned short)arg1 options:(id)arg2;
 + (id)fetchPersonsWithType:(long long)arg1 options:(id)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchRejectedPersonsForFace:(id)arg1 options:(id)arg2;

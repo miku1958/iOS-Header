@@ -17,6 +17,7 @@
     SFLinkPreviewHeaderContentView *_contentView;
     UIView *_hairline;
     BOOL _isMinimumPreviewUI;
+    struct CGRect _lastLayoutBounds;
     id<_SFLinkPreviewHeaderDelegate> _delegate;
     NSString *_domain;
     _SFFluidProgressView *_progressView;
@@ -36,6 +37,7 @@
 - (void)fluidProgressViewDidShowProgress:(id)arg1;
 - (void)fluidProgressViewWillShowProgress:(id)arg1;
 - (id)initWithMinimumPreviewUI:(BOOL)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (BOOL)linkPreviewEnabled;
 - (void)linkPreviewHeaderContentView:(id)arg1 didEnableLinkPreview:(BOOL)arg2;

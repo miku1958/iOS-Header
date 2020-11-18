@@ -42,6 +42,7 @@
 + (id)taskFromDictionaryRepresentation:(id)arg1;
 + (void)updateLoginSessionType;
 + (id)userFromAttributes:(id)arg1;
++ (unsigned long long)userQuotaSize;
 + (unsigned long long)userType;
 + (BOOL)writeAttributesToDiskForUser:(id)arg1 outError:(id *)arg2;
 

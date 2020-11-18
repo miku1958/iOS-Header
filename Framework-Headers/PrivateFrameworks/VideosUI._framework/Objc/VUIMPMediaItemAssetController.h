@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_onProcessingQueue_invalidate;
 - (void)_onProcessingQueue_invalidateAndSetState;
 - (void)_onProcessingQueue_setDownloadController:(id)arg1;
-- (void)_onProcessingQueue_startDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_onProcessingQueue_startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_onProcessingQueue_startMonitoringDownload;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 downloadProgress:(double)arg2 bytesDownloaded:(unsigned long long)arg3 bytesToDownload:(unsigned long long)arg4 supportsPausing:(BOOL)arg5 supportsCancellation:(BOOL)arg6 notify:(BOOL)arg7;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 notify:(BOOL)arg2;
@@ -69,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)mediaItemDownloadController:(id)arg1 stateDidChange:(id)arg2;
 - (void)pauseDownload;
 - (void)resumeDownload;
-- (void)startDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

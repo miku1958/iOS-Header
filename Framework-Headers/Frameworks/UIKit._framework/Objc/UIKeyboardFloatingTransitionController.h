@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)beginTransitionAtPoint:(struct CGPoint)arg1 withScale:(double)arg2;
 - (void)beginTransitionFromPanGestureRecognizer:(id)arg1;
 - (void)captureStateForStart:(BOOL)arg1;
+- (void)constrainAccessoryViewToBottom;
 - (void)endPanGesture:(id)arg1;
 - (void)endPinchGesture:(id)arg1;
 - (void)endTransitionAtPoint:(struct CGPoint)arg1 withScale:(double)arg2;
@@ -82,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)initializeContextAtPoint:(struct CGPoint)arg1;
 - (void)inputViewSnapshot:(id *)arg1 withPlatterInsets:(struct UIEdgeInsets *)arg2;
 - (void)removeGestureRecognizers;
+- (void)restoreAccessoryViewConstraints;
 - (void)updateAnimationAtScale:(double)arg1;
 - (void)updateHysteresisForCurrentFloatingState;
 - (void)updatePanGesture:(id)arg1;

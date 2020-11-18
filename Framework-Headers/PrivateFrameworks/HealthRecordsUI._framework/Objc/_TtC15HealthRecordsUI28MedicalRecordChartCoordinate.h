@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthRecordsUI/HKGraphSeriesBlockCoordinate-Protocol.h>
-
 @class MISSING_TYPE;
 @protocol HKGraphSeriesBlockCoordinateInfo;
 
-@interface _TtC15HealthRecordsUI28MedicalRecordChartCoordinate : NSObject <HKGraphSeriesBlockCoordinate>
+@interface _TtC15HealthRecordsUI28MedicalRecordChartCoordinate : NSObject
 {
     MISSING_TYPE *pointValuesAscending;
     MISSING_TYPE *blockCoordinateInfo;

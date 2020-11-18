@@ -51,7 +51,7 @@
 - (id)pathsForClientAccess:(id)arg1;
 - (id)pathsForExternalWriters;
 - (id)pathsForPermissionCheck;
-- (id)pathsGroupedByAssetBasePathFromFilePaths:(id)arg1;
+- (id)pathsGroupedByAssetBasePathFromFilePaths:(id)arg1 populateInvalidAdjustmentPaths:(id)arg2;
 - (id)persistedAlbumDataDirectoryCreateIfNeeded:(BOOL)arg1 error:(id *)arg2;
 - (id)photoDirectoryWithType:(unsigned char)arg1 leafType:(unsigned char)arg2 additionalPathComponents:(id)arg3;
 - (id)photoMetadataDirectory;

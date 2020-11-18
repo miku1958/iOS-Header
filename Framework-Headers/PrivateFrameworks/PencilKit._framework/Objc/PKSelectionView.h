@@ -89,8 +89,10 @@
 - (void)hideStrokeSelectionImageView:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 strokeSelection:(id)arg2 selectionController:(id)arg3;
+- (id)keyCommands;
 - (BOOL)lassoContainsPoint:(struct CGPoint)arg1;
 - (void)makeViewAliveAtLocation:(struct CGPoint)arg1;
+- (void)paste:(id)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (vector_e1abc270)pointsOfInterestForStrokes:(id)arg1;
 - (void)rotateSelection:(id)arg1;

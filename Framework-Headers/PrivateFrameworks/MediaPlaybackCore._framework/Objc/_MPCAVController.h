@@ -13,10 +13,12 @@
     BOOL _playedSuccessfully;
     BOOL _allowsNewPlaybackErrorItem;
     MPCPlaybackEngine *_playbackEngine;
+    long long _actionAtQueueEnd;
     MPAVItem *_firstPlaybackErrorItem;
     NSMutableSet *_failedItemsIdentifiers;
 }
 
+@property (nonatomic) long long actionAtQueueEnd; // @synthesize actionAtQueueEnd=_actionAtQueueEnd;
 @property (nonatomic) BOOL allowsNewPlaybackErrorItem; // @synthesize allowsNewPlaybackErrorItem=_allowsNewPlaybackErrorItem;
 @property (strong, nonatomic) NSMutableSet *failedItemsIdentifiers; // @synthesize failedItemsIdentifiers=_failedItemsIdentifiers;
 @property (weak, nonatomic) MPAVItem *firstPlaybackErrorItem; // @synthesize firstPlaybackErrorItem=_firstPlaybackErrorItem;
@@ -30,12 +32,15 @@
 - (void)_contentsChanged;
 - (id)_expectedAssetTypesForPlaybackMode:(long long)arg1;
 - (void)_itemDidChange:(id)arg1;
+- (void)_itemDidSignificantlyChangeElapsedTime:(double)arg1 rate:(float)arg2;
+- (void)_itemPlaybackDidEndNotification:(id)arg1;
 - (void)_itemWillChange:(id)arg1;
 - (void)_networkPolicyItemCellularRestrictedNotification:(id)arg1;
 - (void)_playbackUserDefaultsEQPresetDidChangeNotification:(id)arg1;
 - (void)_queueDidEndWithReason:(id)arg1 lastItem:(id)arg2;
-- (void)_queueDidEndWithReason:(id)arg1 skipCL:(BOOL)arg2 lastItem:(id)arg3;
 - (void)_setState:(long long)arg1;
+- (void)_streamBufferFull:(id)arg1;
+- (void)_streamLikelyToKeepUp:(id)arg1;
 - (void)_updateStateForPlaybackPrevention;
 - (void)endPlayback;
 - (void)handlePlaybackErrorWithUserInfo:(id)arg1;

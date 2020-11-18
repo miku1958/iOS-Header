@@ -64,7 +64,7 @@
 - (id)_pairedDeviceTextForRoute:(id)arg1;
 - (BOOL)_shouldShowSeparateBatteryPercentagesForBatteryLevel:(id)arg1;
 - (void)_updateAccessory;
-- (void)_updateSpinnerStyle;
+- (void)_updateSpinnerColor;
 - (void)_updateSubtitleTextLabelForRouteItem:(id)arg1;
 - (void)dealloc;
 - (id)iconView;

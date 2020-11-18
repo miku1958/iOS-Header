@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue;
+@class NSOperationQueue, VSRemoteNotifier;
 
 @interface VSDevice : NSObject
 {
     CDUnknownFunctionPointerType _copyAnswer;
     NSOperationQueue *_privateQueue;
+    VSRemoteNotifier *_setTopBoxStateRemoteNotifier;
 }
 
 @property (nonatomic) CDUnknownFunctionPointerType copyAnswer; // @synthesize copyAnswer=_copyAnswer;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (readonly, nonatomic, getter=isRunningACustomerBuild) BOOL runningACustomerBuild;
 @property (readonly, nonatomic, getter=isRunningAnInternalBuild) BOOL runningAnInternalBuild;
+@property (strong, nonatomic) VSRemoteNotifier *setTopBoxStateRemoteNotifier; // @synthesize setTopBoxStateRemoteNotifier=_setTopBoxStateRemoteNotifier;
 
 + (unsigned long long)_deviceTypeWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (BOOL)_getMobileGestaltBoolean:(struct __CFString *)arg1 withCopyAnswer:(CDUnknownFunctionPointerType)arg2;
@@ -31,6 +33,7 @@
 - (void)fetchDeviceManagedSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (BOOL)setIgnoreSetTopBoxProfile:(BOOL)arg1;
 
 @end
 

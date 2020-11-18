@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_titleTextLayout;
     VUITextLayout *_subtitleTextLayout;
     VUITextLayout *_textLayout;
-    VUITextLayout *_focusedTextLayout;
+    VUITextLayout *_belowCardTextLayout;
     TVImageLayout *_badgeLayout;
     VUIMediaTagsViewLayout *_tagsLayout;
     VUIButtonLayout *_versionsButtonLayout;
@@ -30,11 +30,11 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) TVImageLayout *appIconLayout; // @synthesize appIconLayout=_appIconLayout;
 @property (strong, nonatomic) TVImageLayout *badgeLayout; // @synthesize badgeLayout=_badgeLayout;
+@property (strong, nonatomic) VUITextLayout *belowCardTextLayout; // @synthesize belowCardTextLayout=_belowCardTextLayout;
 @property (strong, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 @property (nonatomic) struct TVCornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
 @property (nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property (strong, nonatomic) VUITextLayout *channelNameTextLayout; // @synthesize channelNameTextLayout=_channelNameTextLayout;
-@property (strong, nonatomic) VUITextLayout *focusedTextLayout; // @synthesize focusedTextLayout=_focusedTextLayout;
 @property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property (strong, nonatomic) TVImageLayout *logoLayout; // @synthesize logoLayout=_logoLayout;
 @property (strong, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;

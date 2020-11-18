@@ -17,6 +17,7 @@
 - (void)fetchMomentShareWithURL:(NSURL *)arg1 reply:(void (^)(BOOL, NSString *, NSError *))arg2;
 - (void)forceSyncMomentShareWithUUID:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)getCurrentTransferProgress:(void (^)(unsigned long long, unsigned long long, unsigned long long, unsigned long long))arg1;
+- (void)getNotUploadedCount:(void (^)(unsigned long long, unsigned long long, unsigned long long, NSError *))arg1;
 - (void)getResetSyncStatusWithReply:(void (^)(unsigned long long))arg1;
 - (void)getSystemBudgetsWithReply:(void (^)(BOOL, BOOL, NSError *))arg1;
 - (void)isReadyForCloudPhotoLibraryWithReply:(void (^)(BOOL))arg1;

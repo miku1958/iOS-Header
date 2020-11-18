@@ -6,18 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <NanoTimeKitCompanion/CLKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKClockHardwareInput-Protocol.h>
 #import <NanoTimeKitCompanion/NTKClockIconZoomAnimator-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationPickerViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceEditViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceViewDelegate-Protocol.h>
-#import <NanoTimeKitCompanion/NTKSensitiveUIStateObserver-Protocol.h>
 
 @class NSCache, NSDate, NSMutableDictionary, NSObject, NSString, NTKComplicationController, NTKComplicationDisplayWrapperView, NTKDelayedBlock, NTKFace, NTKFaceEditView, NTKFaceView, UIView;
 @protocol NTKClockStatusBarViewController, NTKFaceViewControllerDelegate, OS_dispatch_source;
 
-@interface NTKFaceViewController : UIViewController <NTKFaceEditViewDelegate, NTKComplicationPickerViewDataSource, NTKSensitiveUIStateObserver, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
+@interface NTKFaceViewController : UIViewController <NTKFaceEditViewDelegate, NTKComplicationPickerViewDataSource, CLKSensitiveUIStateObserver, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
 {
     NTKFaceView *_faceView;
     struct os_unfair_lock_s _normalComplicationControllersLock;

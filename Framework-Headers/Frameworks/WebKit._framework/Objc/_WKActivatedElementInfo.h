@@ -34,10 +34,10 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSDictionary *userInfo;
 
-+ (id)activatedElementInfoWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition *)arg1;
++ (id)activatedElementInfoWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition *)arg1 userInfo:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_initWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition *)arg1;
+- (id)_initWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition *)arg1 userInfo:(id)arg2;
 - (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint *)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect)arg7 image:(struct ShareableBitmap *)arg8;
 - (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint *)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect)arg7 image:(struct ShareableBitmap *)arg8 userInfo:(id)arg9;
 

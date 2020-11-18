@@ -28,7 +28,6 @@
 @property (strong, nonatomic) NSString *topLevelOrigin; // @synthesize topLevelOrigin=_topLevelOrigin;
 
 - (void).cxx_destruct;
-- (unsigned long long)_defaultUserMediaPermission;
 - (BOOL)_isValidUserMediaPermission:(unsigned long long)arg1;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1;

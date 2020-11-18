@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseDownload;
 - (void)resumeDownload;
-- (void)startDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

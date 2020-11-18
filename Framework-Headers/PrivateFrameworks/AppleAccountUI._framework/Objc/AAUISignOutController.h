@@ -29,7 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct NSDictionary *)_actionableDataclassOptions;
+- (id)_actionableDataclassOptions;
 - (id)_appendToSignoutMessage:(id)arg1 appendedString:(id)arg2;
 - (id)_dataclassViewController;
 - (void)_delegate_signOutControllerDidCancel;
@@ -38,13 +38,13 @@
 - (BOOL)_hasPaymentPasses;
 - (BOOL)_hasiCloudDriveData;
 - (BOOL)_hasiCloudPhotosData;
-- (void)_mainQueue_continueSignOutWithDataclassActions:(struct NSDictionary *)arg1;
-- (void)_mainQueue_presentSpinnerPageWithDataclassActions:(struct NSDictionary *)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_mainQueue_continueSignOutWithDataclassActions:(id)arg1;
+- (void)_mainQueue_presentSpinnerPageWithDataclassActions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_mainQueue_promptForConfirmationInViewController:(id)arg1 simplified:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)_signOutMessageSimplified:(BOOL)arg1 withConfirmation:(BOOL)arg2;
-- (id)_spinnerViewControllerForActions:(struct NSDictionary *)arg1;
+- (id)_spinnerViewControllerForActions:(id)arg1;
 - (void)_updateStyleIfNeeded;
-- (void)dataclassPickerViewController:(id)arg1 didCompleteWithDataclassActions:(struct NSDictionary *)arg2;
+- (void)dataclassPickerViewController:(id)arg1 didCompleteWithDataclassActions:(id)arg2;
 - (void)dataclassPickerViewControllerDidCancel:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)footerTextForDataclassPickerViewController:(id)arg1;

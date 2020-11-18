@@ -17,30 +17,30 @@ __attribute__((visibility("hidden")))
 {
     BOOL _layoutRTL;
     BOOL _shouldAdjustContentSizeForPartialLastGroupSolution;
-    int _layoutAxis;
-    int _containerLayoutAxis;
     NSCollectionLayoutSection *_layoutSection;
     id<NSCollectionLayoutContainer> _container;
     UITraitCollection *_traitCollection;
+    unsigned long long _layoutAxis;
     long long _frameCount;
     id<_UICollectionPreferredSizes> _preferredSizes;
     _UICollectionLayoutAuxillaryItemSolver *_sectionSupplementarySolution;
     _UICollectionLayoutSupplementaryRegistrar *_sectionSupplementaryRegistrar;
     id<NSCollectionLayoutContainer> _memoizedSupplementaryHostContainer;
     _UICollectionLayoutSolutionState *_solutionState;
+    unsigned long long _containerLayoutAxis;
     struct CGPoint _orthogonalOffset;
     struct CGVector _orthogonalScrollingPrefetchingUnitVector;
 }
 
 @property (readonly, nonatomic) id<NSCollectionLayoutContainer> container; // @synthesize container=_container;
-@property (nonatomic) int containerLayoutAxis; // @synthesize containerLayoutAxis=_containerLayoutAxis;
+@property (nonatomic) unsigned long long containerLayoutAxis; // @synthesize containerLayoutAxis=_containerLayoutAxis;
 @property (readonly, nonatomic) struct CGSize contentSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGRect effectiveContentFrame;
 @property (readonly, nonatomic) long long frameCount; // @synthesize frameCount=_frameCount;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) int layoutAxis; // @synthesize layoutAxis=_layoutAxis;
+@property (readonly, nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property (readonly, nonatomic) BOOL layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property (readonly, nonatomic) NSCollectionLayoutSection *layoutSection; // @synthesize layoutSection=_layoutSection;
 @property (strong, nonatomic) id<NSCollectionLayoutContainer> memoizedSupplementaryHostContainer; // @synthesize memoizedSupplementaryHostContainer=_memoizedSupplementaryHostContainer;
@@ -58,9 +58,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGRect)_adjustContentFrameForLastPartialSolutionIfNeededForContentFrame:(struct CGRect)arg1 bookmarks:(id)arg2;
 - (void)_configureInitialOrthogonalPrefetchingUnitVector;
-- (double)_dimensionForRootGroupAlongAxis:(int)arg1;
+- (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
 - (id)_indexesOfBookmarksAffectedByResolveItems:(id)arg1;
-- (struct CGRect)_rectWithContentInsetTrailingLayoutDimensionAddedToToRect:(struct CGRect)arg1 insets:(struct NSDirectionalEdgeInsets)arg2 layoutAxis:(int)arg3;
+- (struct CGRect)_rectWithContentInsetTrailingLayoutDimensionAddedToToRect:(struct CGRect)arg1 insets:(struct NSDirectionalEdgeInsets)arg2 layoutAxis:(unsigned long long)arg3;
 - (id)_sectionContainer;
 - (void)_setOrthogonalOffset:(struct CGPoint)arg1;
 - (id)_solveWithParameters:(id)arg1;
@@ -70,7 +70,7 @@ __attribute__((visibility("hidden")))
 - (long long)auxillaryHostAuxillaryKind;
 - (id)auxillaryHostContainer;
 - (struct CGSize)auxillaryHostContentSize;
-- (int)auxillaryHostLayoutAxis;
+- (unsigned long long)auxillaryHostLayoutAxis;
 - (struct CGSize)auxillaryHostPinningContentSize;
 - (id)auxillaryHostPreferredSizes;
 - (BOOL)auxillaryHostShouldLayoutRTL;
@@ -83,9 +83,9 @@ __attribute__((visibility("hidden")))
 - (id)sectionSupplementaryFrameForIndex:(long long)arg1;
 - (id)sectionSupplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(id)arg1;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(BOOL)arg6;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(BOOL)arg6;
 - (id)supplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (id)supplementaryKeysAssociatedWithItemAtIndex:(long long)arg1;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;

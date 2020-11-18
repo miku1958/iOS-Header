@@ -26,12 +26,14 @@
 - (id)_initWithServiceBroker:(id)arg1;
 - (id)adopt:(id)arg1;
 - (id)adoptableBundleIdentifiers;
+- (void)adoptionStatus:(BOOL)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (void)checkAutomaticDownloadQueue;
 - (void)checkPendingQueue;
 - (void)checkPreflightForItemIdentifier:(id)arg1 atURL:(id)arg2 withReplyHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)processPurchase:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (void)startPurchase:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
+- (void)unadoptWithReplyHandler:(CDUnknownBlockType)arg1;
 
 @end
 

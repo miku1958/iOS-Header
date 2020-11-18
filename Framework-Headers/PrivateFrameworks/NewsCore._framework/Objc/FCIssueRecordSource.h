@@ -12,6 +12,7 @@
 
 + (id)_URLStringForCoverImageKey:(id)arg1 inRecord:(id)arg2;
 + (BOOL)_useTaggedImages;
+- (id)alwaysLocalizedKeys;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (id)localizableKeys;
 - (unsigned long long)lowThresholdDataSizeLimit;

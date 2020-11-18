@@ -15,7 +15,7 @@
 
 @interface RBSInheritance : NSObject <BSXPCSecureCoding, BSDescriptionProviding, NSCopying>
 {
-    struct NSString *_endowmentNamespace;
+    NSString *_endowmentNamespace;
     NSString *_environment;
     NSObject<OS_xpc_object> *_encodedEndowment;
     RBSAssertionIdentifier *_originatingIdentifier;
@@ -40,7 +40,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;
-- (struct NSObject *)endowment;
+- (id)endowment;
 - (id)init;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

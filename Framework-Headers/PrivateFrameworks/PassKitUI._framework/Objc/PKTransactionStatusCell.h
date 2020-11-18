@@ -30,7 +30,6 @@
 @property (copy, nonatomic) NSString *secondaryValue; // @synthesize secondaryValue=_secondaryValue;
 
 - (void).cxx_destruct;
-- (struct UIEdgeInsets)_effectiveLayoutMargins;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (void)_updateTextColors;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

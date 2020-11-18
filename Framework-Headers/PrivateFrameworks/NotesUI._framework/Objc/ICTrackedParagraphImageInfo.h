@@ -13,8 +13,8 @@
     BOOL _estimated;
     ICTrackedParagraph *_trackedParagraph;
     NSString *_uuid;
-    struct UIImage *_image;
-    struct UIImageView *_imageViewIfExists;
+    UIImage *_image;
+    UIImageView *_imageViewIfExists;
     struct CGRect _boundingRect;
     struct CGRect _rect;
 }

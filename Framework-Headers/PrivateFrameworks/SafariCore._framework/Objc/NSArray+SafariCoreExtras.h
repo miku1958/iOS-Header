@@ -28,6 +28,7 @@
 - (id)safari_minimumUsingComparator:(CDUnknownBlockType)arg1;
 - (id)safari_numberAtIndex:(unsigned long long)arg1;
 - (id)safari_orderedSetByApplyingBlock:(CDUnknownBlockType)arg1;
+- (id)safari_prefixWithMaxLength:(unsigned long long)arg1;
 - (id)safari_reduceObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_reduceObjectsWithInitialValue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)safari_setByApplyingBlock:(CDUnknownBlockType)arg1;

@@ -26,7 +26,7 @@
 
 @property (strong) NSSet *allowedAppsForSiriSuggestions; // @synthesize allowedAppsForSiriSuggestions=_allowedAppsForSiriSuggestions;
 @property (strong) PARBag *bag;
-@property (strong, nonatomic) PARSearchClient *client; // @synthesize client=_client;
+@property (readonly, nonatomic) PARSearchClient *client; // @synthesize client=_client;
 @property (strong) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) NSXPCConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
@@ -42,7 +42,6 @@
 - (void).cxx_destruct;
 - (void)_flushUsingConnectionToFBF:(id)arg1;
 - (void)_scheduleEagerFlush;
-- (id)awaitBag;
 - (void)cardViewDidAppear:(id)arg1;
 - (void)cardViewDidDisappear:(id)arg1;
 - (void)didAppendLateSections:(id)arg1;

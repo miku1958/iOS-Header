@@ -12,6 +12,7 @@
 
 + (void)compileANEModel:(id)arg1;
 + (BOOL)isANEModelCompiled:(id)arg1;
++ (BOOL)isNeuralVoiceReady:(id)arg1;
 
 @end
 

@@ -8,31 +8,31 @@
 
 #import <VideosUI/VUIDebugMetricsTermCollector-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString;
+@class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VUIDebugMetricsTermCollector : NSObject <VUIDebugMetricsTermCollector>
 {
-    NSMutableSet *_mutableCommonTerms;
-    NSMutableSet *_mutableTimingTerms;
 }
 
-@property (readonly, nonatomic) NSSet *baseTerms;
-@property (readonly, nonatomic) NSSet *blacklistedTerms;
-@property (readonly, nonatomic) NSSet *commonTerms;
+@property (readonly, nonatomic) NSArray *baseTerms;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *filteredTerms;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableSet *mutableCommonTerms; // @synthesize mutableCommonTerms=_mutableCommonTerms;
-@property (strong, nonatomic) NSMutableSet *mutableTimingTerms; // @synthesize mutableTimingTerms=_mutableTimingTerms;
+@property (readonly, nonatomic) NSArray *metricsKitTerms;
+@property (readonly, nonatomic) NSDictionary *primaryTerms;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSSet *timingTerms;
-@property (readonly, nonatomic) NSSet *whitelistedTerms;
 
-- (void).cxx_destruct;
-- (void)collectTermsFrom:(id)arg1;
-- (id)init;
-- (void)populateCommonTermsFrom:(id)arg1;
+- (id)accountTerms;
+- (id)clickTerms;
+- (id)dialogTerms;
+- (id)enterTerms;
+- (id)exitTerms;
+- (id)impressionsTerms;
+- (id)pageRenderTerms;
+- (id)pageTerms;
+- (id)searchTerms;
 
 @end
 

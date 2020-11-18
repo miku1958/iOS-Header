@@ -12,7 +12,7 @@
 {
     BOOL _vibrant;
     BOOL _disableVibrancy;
-    struct UIColor *_defaultTextColor;
+    UIColor *_defaultTextColor;
 }
 
 @property (strong, nonatomic) UIColor *defaultTextColor; // @synthesize defaultTextColor=_defaultTextColor;

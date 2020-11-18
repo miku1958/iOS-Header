@@ -391,11 +391,17 @@
  struct __C.NSDirectionalEdgeInsets {
 
 	// Properties
-	var top : CGFloat
-	var leading : CGFloat
-	var bottom : CGFloat
-	var trailing : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var top : Y
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var leading : Y
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bottom : Y
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var trailing : Y
  }
+
+ enum __C.HKDisplayCategoryIdentifier { }
 
  struct __C.TextStyle {
 
@@ -403,24 +409,30 @@
 	var _rawValue : NSString
  }
 
- enum __C.HKDisplayCategoryIdentifier { }
-
  struct __C.Mode {
 
 	// Properties
 	var _rawValue : NSString
  }
 
+ struct __C.State {
+
+	// Properties
+	let rawValue : UInt
+ }
+
  struct __C.SymbolicTraits {
 
 	// Properties
-	let rawValue : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : 5
  }
 
  struct __C.UIAccessibilityTraits {
 
 	// Properties
-	let rawValue : UInt64
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : Y
  }
 
  struct __C.TraitKey {
@@ -438,7 +450,8 @@
  struct __C.Weight {
 
 	// Properties
-	let rawValue : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : Y
  }
 
  class __C.CGColor {
@@ -466,11 +479,11 @@
 
  class HealthExperienceUI.NavigationCollectionViewCell : CollectionViewListDisclosureCell {
 	// ObjC -> Swift bridged methods
-	0x2c80  @objc NavigationCollectionViewCell.initWithFrame: <stripped>
-	0x2da0  @objc NavigationCollectionViewCell.initWithCoder: <stripped>
+	0x2560  @objc NavigationCollectionViewCell.initWithFrame: <stripped>
+	0x2660  @objc NavigationCollectionViewCell.initWithCoder: <stripped>
 
 	// Swift methods
-	0x2b50  func NavigationCollectionViewCell.itemDidChange(_:) // method 
+	0x23f0  func NavigationCollectionViewCell.itemDidChange(_:) // method 
  }
 
  struct HealthExperienceUI.EmptyHeaderItem {
@@ -482,70 +495,72 @@
  class HealthExperienceUI.HostViewCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var hostView : HostView?
+	var hostView : HostView
 	var recreateViewControllerOnHostedFeedItemChange : Bool
-	var item : SectionedDataSourceItem?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥
 
 	// ObjC -> Swift bridged methods
-	0x7e10  @objc HostViewCell.initWithFrame: <stripped>
-	0x7ee0  @objc HostViewCell.initWithCoder: <stripped>
-	0x8120  @objc HostViewCell.systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: <stripped>
-	0x8190  @objc HostViewCell.isHighlighted <stripped>
-	0x81d0  @objc HostViewCell.setHighlighted: <stripped>
-	0x8210  @objc HostViewCell.isSelected <stripped>
-	0x8300  @objc HostViewCell.setSelected: <stripped>
-	0x8c70  @objc HostViewCell..cxx_destruct <stripped>
+	0x6bf0  @objc HostViewCell.initWithFrame: <stripped>
+	0x6cc0  @objc HostViewCell.initWithCoder: <stripped>
+	0x6ec0  @objc HostViewCell.systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: <stripped>
+	0x6f30  @objc HostViewCell.isHighlighted <stripped>
+	0x6f70  @objc HostViewCell.setHighlighted: <stripped>
+	0x6fb0  @objc HostViewCell.isSelected <stripped>
+	0x7060  @objc HostViewCell.setSelected: <stripped>
+	0x78a0  @objc HostViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x78e0  func HostViewCell.hostView.getter // getter 
-	0x7900  func HostViewCell.hostView.setter // setter 
-	0x7920  func HostViewCell.hostView.modify // modifyCoroutine 
-	0x7970  func HostViewCell.recreateViewControllerOnHostedFeedItemChange.getter // getter 
-	0x7990  func HostViewCell.recreateViewControllerOnHostedFeedItemChange.setter // setter 
-	0x79b0  func HostViewCell.recreateViewControllerOnHostedFeedItemChange.modify // modifyCoroutine 
-	0x79f0  func HostViewCell.item.getter // getter 
-	0x7a10  func HostViewCell.item.setter // setter 
-	0x7a80  func HostViewCell.item.modify // modifyCoroutine 
-	0x7e40  func <stripped> // method 
-	0x7ec0  func <stripped> // method 
-	0x7f00  func HostViewCell.parentViewController.getter // getter 
-	0x7f20  func HostViewCell.parentViewController.setter // setter 
-	0x7f40  func HostViewCell.parentViewController.modify // modifyCoroutine 
-	0x8080  func <stripped> // method 
-	0x8470  func <stripped> // method 
-	0x8980  func HostViewCell.didSelectCell(_:in:) // method 
-	0x8af0  func HostViewCell.selectionStyle.getter // getter 
+	0x6720  func HostViewCell.hostView.getter // getter 
+	0x6740  func HostViewCell.hostView.setter // setter 
+	0x6760  func HostViewCell.hostView.modify // modifyCoroutine 
+	0x67b0  func HostViewCell.recreateViewControllerOnHostedFeedItemChange.getter // getter 
+	0x67d0  func HostViewCell.recreateViewControllerOnHostedFeedItemChange.setter // setter 
+	0x67f0  func HostViewCell.recreateViewControllerOnHostedFeedItemChange.modify // modifyCoroutine 
+	0x6830  func HostViewCell.item.getter // getter 
+	0x68b0  func HostViewCell.item.setter // setter 
+	0x6920  func HostViewCell.item.modify // modifyCoroutine 
+	0x6c20  func <stripped> // method 
+	0x6ca0  func <stripped> // method 
+	0x6ce0  func HostViewCell.parentViewController.getter // getter 
+	0x6d00  func HostViewCell.parentViewController.setter // setter 
+	0x6d20  func HostViewCell.parentViewController.modify // modifyCoroutine 
+	0x6e20  func <stripped> // method 
+	0x7180  func <stripped> // method 
+	0x7610  func HostViewCell.didSelectCell(_:in:) // method 
+	0x7750  func HostViewCell.selectionStyle.getter // getter 
  }
 
  class HealthExperienceUI.HostViewTableCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var hostView : HostView?
+	var hostView : HostView
 	var recreateViewControllerOnHostedFeedItemChange : Bool
-	var item : SectionedDataSourceItem?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥
 
 	// ObjC -> Swift bridged methods
-	0x92f0  @objc HostViewTableCell.initWithStyle:reuseIdentifier: <stripped>
-	0x93c0  @objc HostViewTableCell.initWithCoder: <stripped>
-	0x9d90  @objc HostViewTableCell.systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: <stripped>
-	0x9e60  @objc HostViewTableCell..cxx_destruct <stripped>
+	0x7f50  @objc HostViewTableCell.initWithStyle:reuseIdentifier: <stripped>
+	0x8020  @objc HostViewTableCell.initWithCoder: <stripped>
+	0x8960  @objc HostViewTableCell.systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: <stripped>
+	0x8a20  @objc HostViewTableCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8e10  func HostViewTableCell.hostView.getter // getter 
-	0x8e70  func HostViewTableCell.hostView.setter // setter 
-	0x8ed0  func HostViewTableCell.hostView.modify // modifyCoroutine 
-	0x8f10  func HostViewTableCell.recreateViewControllerOnHostedFeedItemChange.getter // getter 
-	0x8f60  func HostViewTableCell.recreateViewControllerOnHostedFeedItemChange.setter // setter 
-	0x8fc0  func HostViewTableCell.recreateViewControllerOnHostedFeedItemChange.modify // modifyCoroutine 
-	0x9000  func HostViewTableCell.item.getter // getter 
-	0x9060  func HostViewTableCell.item.setter // setter 
-	0x90e0  func HostViewTableCell.item.modify // modifyCoroutine 
-	0xa8b0  func HostViewTableCell.makeHostView() // method 
-	0x9400  func HostViewTableCell.addHostViewConstraints() // method 
-	0x97d0  func HostViewTableCell.parentViewController.getter // getter 
-	0x9850  func HostViewTableCell.parentViewController.setter // setter 
-	0x98d0  func HostViewTableCell.parentViewController.modify // modifyCoroutine 
-	0x9950  func HostViewTableCell.updateItem() // method 
+	0x7a80  func HostViewTableCell.hostView.getter // getter 
+	0x7ae0  func HostViewTableCell.hostView.setter // setter 
+	0x7b40  func HostViewTableCell.hostView.modify // modifyCoroutine 
+	0x7b80  func HostViewTableCell.recreateViewControllerOnHostedFeedItemChange.getter // getter 
+	0x7bd0  func HostViewTableCell.recreateViewControllerOnHostedFeedItemChange.setter // setter 
+	0x7c30  func HostViewTableCell.recreateViewControllerOnHostedFeedItemChange.modify // modifyCoroutine 
+	0x7c70  func HostViewTableCell.item.getter // getter 
+	0x7cd0  func HostViewTableCell.item.setter // setter 
+	0x7d50  func HostViewTableCell.item.modify // modifyCoroutine 
+	0x95b0  func HostViewTableCell.makeHostView() // method 
+	0x8060  func HostViewTableCell.addHostViewConstraints() // method 
+	0x83e0  func HostViewTableCell.parentViewController.getter // getter 
+	0x8460  func HostViewTableCell.parentViewController.setter // setter 
+	0x84e0  func HostViewTableCell.parentViewController.modify // modifyCoroutine 
+	0x8560  func HostViewTableCell.updateItem() // method 
  }
 
  struct HealthExperienceUI.EmptyStateTableViewCellItem {
@@ -559,17 +574,18 @@
  class HealthExperienceUI.EmptyStateTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var $__lazy_storage_$_emptyStateCellView : EmptyStateCellView? // +0x8 (0x8)
-	var item : SectionedDataSourceItem? // +0x10 (0x28)
+	var $__lazy_storage_$_emptyStateCellView : EmptyStateCellView // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x10 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xb360  @objc EmptyStateTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0xb3c0  @objc EmptyStateTableViewCell.initWithCoder: <stripped>
-	0xb6c0  @objc EmptyStateTableViewCell..cxx_destruct <stripped>
+	0x9fd0  @objc EmptyStateTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0xa030  @objc EmptyStateTableViewCell.initWithCoder: <stripped>
+	0xa310  @objc EmptyStateTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xb1e0  func <stripped> // modifyCoroutine 
-	0xb400  func <stripped> // method 
+	0x9ea0  func <stripped> // modifyCoroutine 
+	0xa070  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDescriptionDataSource : DataTypeMutableDataSource {
@@ -579,28 +595,28 @@
 	let titleText : String // +0x60 (0x10)
 
 	// Swift methods
-	0xba10  func <stripped> // method 
+	0xa620  func <stripped> // method 
  }
 
  class HealthExperienceUI.DynamicFontLabel : UILabel /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var textStyle : UIFontTextStyle // +0x8 (0x8)
-	var symbolicTraits : UIFontDescriptorSymbolicTraits // +0x10 (0x4)
+	var textStyle : TextStyle // +0x8 (0x8)
+	var symbolicTraits : SymbolicTraits // +0x10 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0xd950  @objc DynamicFontLabel.initWithFrame: <stripped>
-	0xda80  @objc DynamicFontLabel.initWithCoder: <stripped>
-	0xdd20  @objc DynamicFontLabel..cxx_destruct <stripped>
+	0xbe30  @objc DynamicFontLabel.initWithFrame: <stripped>
+	0xbf50  @objc DynamicFontLabel.initWithCoder: <stripped>
+	0xc100  @objc DynamicFontLabel..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcfb0  func DynamicFontLabel.textStyle.getter // getter 
-	0xcff0  func DynamicFontLabel.textStyle.setter // setter 
-	0xd010  func DynamicFontLabel.textStyle.modify // modifyCoroutine 
-	0xd330  func DynamicFontLabel.symbolicTraits.getter // getter 
-	0xd360  func DynamicFontLabel.symbolicTraits.setter // setter 
-	0xd490  func DynamicFontLabel.symbolicTraits.modify // modifyCoroutine 
-	0xdb60  func DynamicFontLabel.configureStyle() // method 
+	0xb960  func DynamicFontLabel.textStyle.getter // getter 
+	0xb9a0  func DynamicFontLabel.textStyle.setter // setter 
+	0xba20  func DynamicFontLabel.textStyle.modify // modifyCoroutine 
+	0xbae0  func DynamicFontLabel.symbolicTraits.getter // getter 
+	0xbb10  func DynamicFontLabel.symbolicTraits.setter // setter 
+	0xbb60  func DynamicFontLabel.symbolicTraits.modify // modifyCoroutine 
+	0xc010  func DynamicFontLabel.configureStyle() // method 
  }
 
  enum HealthExperienceUI.Symbol {
@@ -632,41 +648,45 @@
  struct HealthExperienceUI.BasicFeedItemViewControllerContext: FeedItemViewControllerContext {
 
 	// Properties
-	var userData : Data?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var userData : I
 	var healthStore : HKHealthStore
 	let presentation : Presentation
 	var uniqueIdentifier : String
-	var contentKind : ContentKind
-	var relevantDateInterval : RelevantDateInterval?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var contentKind : M
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var relevantDateInterval : 
  }
 
  class HealthExperienceUI.FeedItemSuggestedActionViewController : UICollectionViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var dataSourceAdaptor : DiffableCollectionViewAdaptor? // +0x8 (0x8)
-	let suggestedAction : SuggestedAction // +0x10 (0x10)
-	var suggestedActionDelegate : weak SuggestedActionDelegate? // +0x20 (0x10)
-	var $__lazy_storage_$_dataSource : FeedItemSuggestedActionDataSource? // +0x30 (0x8)
+	var dataSourceAdaptor : DiffableCollectionViewAdaptor // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let suggestedAction : } // +0x10 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var suggestedActionDelegate :  // +0x20 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_dataSource : k // +0x30 (0x8)
 	var $__lazy_storage_$_layout : UICollectionViewLayout? // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x10e20  @objc FeedItemSuggestedActionViewController.initWithCoder: <stripped>
-	0x10e90  @objc FeedItemSuggestedActionViewController.viewDidLoad <stripped>
-	0x11000  @objc FeedItemSuggestedActionViewController.viewWillLayoutSubviews <stripped>
-	0x111b0  @objc FeedItemSuggestedActionViewController.traitCollectionDidChange: <stripped>
-	0x11450  @objc FeedItemSuggestedActionViewController.collectionView:willDisplayCell:forItemAtIndexPath: <stripped>
-	0x11590  @objc FeedItemSuggestedActionViewController.initWithCollectionViewLayout: <stripped>
-	0x11660  @objc FeedItemSuggestedActionViewController.initWithNibName:bundle: <stripped>
-	0x116e0  @objc FeedItemSuggestedActionViewController..cxx_destruct <stripped>
+	0xecb0  @objc FeedItemSuggestedActionViewController.initWithCoder: <stripped>
+	0xed00  @objc FeedItemSuggestedActionViewController.viewDidLoad <stripped>
+	0xee30  @objc FeedItemSuggestedActionViewController.viewWillLayoutSubviews <stripped>
+	0xef60  @objc FeedItemSuggestedActionViewController.traitCollectionDidChange: <stripped>
+	0xf2f0  @objc FeedItemSuggestedActionViewController.collectionView:willDisplayCell:forItemAtIndexPath: <stripped>
+	0xf4d0  @objc FeedItemSuggestedActionViewController.initWithCollectionViewLayout: <stripped>
+	0xf5a0  @objc FeedItemSuggestedActionViewController.initWithNibName:bundle: <stripped>
+	0xf3f0  @objc FeedItemSuggestedActionViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x106e0  func FeedItemSuggestedActionViewController.suggestedActionDelegate.getter // getter 
-	0x10720  func FeedItemSuggestedActionViewController.suggestedActionDelegate.setter // setter 
-	0x107a0  func FeedItemSuggestedActionViewController.suggestedActionDelegate.modify // modifyCoroutine 
-	0x10890  func <stripped> // getter 
-	0x10a50  func <stripped> // getter 
-	0x10b50  class func FeedItemSuggestedActionViewController.__allocating_init(_:) // init 
-	0x11200  func <stripped> // method 
+	0xe880  func FeedItemSuggestedActionViewController.suggestedActionDelegate.getter // getter 
+	0xe8c0  func FeedItemSuggestedActionViewController.suggestedActionDelegate.setter // setter 
+	0xe940  func FeedItemSuggestedActionViewController.suggestedActionDelegate.modify // modifyCoroutine 
+	0xea30  class func FeedItemSuggestedActionViewController.__allocating_init(_:) // init 
+	0xefb0  func <stripped> // method 
  }
 
  class HealthExperienceUI.MessageTileViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -678,34 +698,34 @@
 	var actionButton : weak UIButton? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x11b50  @objc MessageTileViewController.titleLabel <stripped>
-	0x11bd0  @objc MessageTileViewController.setTitleLabel: <stripped>
-	0x11d40  @objc MessageTileViewController.bodyLabel <stripped>
-	0x11d60  @objc MessageTileViewController.setBodyLabel: <stripped>
-	0x11d80  @objc MessageTileViewController.actionButton <stripped>
-	0x11da0  @objc MessageTileViewController.setActionButton: <stripped>
-	0x11f00  @objc MessageTileViewController.loadView <stripped>
-	0x126d0  @objc MessageTileViewController.viewDidLoad <stripped>
-	0x12aa0  @objc MessageTileViewController.didTapAction: <stripped>
-	0x12c90  @objc MessageTileViewController.initWithNibName:bundle: <stripped>
-	0x12d50  @objc MessageTileViewController.initWithCoder: <stripped>
-	0x12de0  @objc MessageTileViewController..cxx_destruct <stripped>
+	0xfbb0  @objc MessageTileViewController.titleLabel <stripped>
+	0xfc30  @objc MessageTileViewController.setTitleLabel: <stripped>
+	0xfda0  @objc MessageTileViewController.bodyLabel <stripped>
+	0xfdc0  @objc MessageTileViewController.setBodyLabel: <stripped>
+	0xfde0  @objc MessageTileViewController.actionButton <stripped>
+	0xfe00  @objc MessageTileViewController.setActionButton: <stripped>
+	0xff40  @objc MessageTileViewController.loadView <stripped>
+	0x10610  @objc MessageTileViewController.viewDidLoad <stripped>
+	0x10910  @objc MessageTileViewController.didTapAction: <stripped>
+	0x10aa0  @objc MessageTileViewController.initWithNibName:bundle: <stripped>
+	0x10b90  @objc MessageTileViewController.initWithCoder: <stripped>
+	0x109a0  @objc MessageTileViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x11b90  func MessageTileViewController.titleLabel.getter // getter 
-	0x11c10  func MessageTileViewController.titleLabel.setter // setter 
-	0x11c60  func MessageTileViewController.titleLabel.modify // modifyCoroutine 
-	0x12700  func MessageTileViewController.configure(with:body:actionTitle:) // method 
-	0x12a90  func MessageTileViewController.didTapAction(_:) // method 
+	0xfbf0  func MessageTileViewController.titleLabel.getter // getter 
+	0xfc70  func MessageTileViewController.titleLabel.setter // setter 
+	0xfcc0  func MessageTileViewController.titleLabel.modify // modifyCoroutine 
+	0x10640  func MessageTileViewController.configure(with:body:actionTitle:) // method 
+	0x10900  func MessageTileViewController.didTapAction(_:) // method 
  }
 
  class HealthExperienceUI.ChromeHostViewCellWithPersonalizedTraining : ChromeHostViewCell {
 	// ObjC -> Swift bridged methods
-	0x133f0  @objc ChromeHostViewCellWithPersonalizedTraining.initWithFrame: <stripped>
-	0x13470  @objc ChromeHostViewCellWithPersonalizedTraining.initWithCoder: <stripped>
+	0x11230  @objc ChromeHostViewCellWithPersonalizedTraining.initWithFrame: <stripped>
+	0x112a0  @objc ChromeHostViewCellWithPersonalizedTraining.initWithCoder: <stripped>
 
 	// Swift methods
-	0x13140  func <stripped> // method 
+	0x10f80  func <stripped> // method 
  }
 
  class HealthExperienceUI.ShowOtherActivitySummariesDataSource : type metadata for MutableArrayDataSource /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
@@ -723,26 +743,27 @@
 
 	// Properties
 	var dataSourceProvider : CompoundDataSourceViewControllerDataSourceProvider // +0x8 (0x10)
-	var $__lazy_storage_$_adaptor : SectionedTableViewAdaptor? // +0x18 (0x8)
-	var $__lazy_storage_$_dataSource : CompoundSectionedDataSource? // +0x20 (0x8)
+	var $__lazy_storage_$_adaptor : SectionedTableViewAdaptor // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_dataSource : { // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x17bb0  @objc CompoundDataSourceViewController.viewDidLoad <stripped>
-	0x17cb0  @objc CompoundDataSourceViewController.initWithStyle: <stripped>
-	0x17ed0  @objc CompoundDataSourceViewController.initWithNibName:bundle: <stripped>
-	0x17f90  @objc CompoundDataSourceViewController.initWithCoder: <stripped>
-	0x18020  @objc CompoundDataSourceViewController..cxx_destruct <stripped>
+	0x156f0  @objc CompoundDataSourceViewController.viewDidLoad <stripped>
+	0x15850  @objc CompoundDataSourceViewController.initWithStyle: <stripped>
+	0x15980  @objc CompoundDataSourceViewController.initWithNibName:bundle: <stripped>
+	0x15a70  @objc CompoundDataSourceViewController.initWithCoder: <stripped>
+	0x15750  @objc CompoundDataSourceViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x16c00  func CompoundDataSourceViewController.dataSourceProvider.getter // getter 
-	0x16c70  func CompoundDataSourceViewController.dataSourceProvider.setter // setter 
-	0x16cf0  func CompoundDataSourceViewController.dataSourceProvider.modify // modifyCoroutine 
-	0x16d40  func CompoundDataSourceViewController.adaptor.getter // getter 
-	0x16e30  func CompoundDataSourceViewController.adaptor.setter // setter 
-	0x16e50  func CompoundDataSourceViewController.adaptor.modify // modifyCoroutine 
-	0x16f90  func CompoundDataSourceViewController.dataSource.getter // getter 
-	0x17120  func CompoundDataSourceViewController.dataSource.setter // setter 
-	0x17140  func CompoundDataSourceViewController.dataSource.modify // modifyCoroutine 
+	0x147c0  func CompoundDataSourceViewController.dataSourceProvider.getter // getter 
+	0x14830  func CompoundDataSourceViewController.dataSourceProvider.setter // setter 
+	0x148b0  func CompoundDataSourceViewController.dataSourceProvider.modify // modifyCoroutine 
+	0x14900  func CompoundDataSourceViewController.adaptor.getter // getter 
+	0x149f0  func CompoundDataSourceViewController.adaptor.setter // setter 
+	0x14a10  func CompoundDataSourceViewController.adaptor.modify // modifyCoroutine 
+	0x14b50  func CompoundDataSourceViewController.dataSource.getter // getter 
+	0x14ce0  func CompoundDataSourceViewController.dataSource.setter // setter 
+	0x14d00  func CompoundDataSourceViewController.dataSource.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.FeedItemViewControllerCache : NSObject /usr/lib/libobjc.A.dylib {
@@ -750,85 +771,90 @@
 	// Properties
 	let healthStore : HKHealthStore // +0x8 (0x8)
 	let presentation : Presentation // +0x10 (0x1)
-	var originalEventHandler : SectionedDataSourceEventHandler? // +0x18 (0x10)
-	var dataSource : SectionedDataSource // +0x28 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var originalEventHandler : ; // +0x18 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataSource : ñ // +0x28 (0x28)
 	let cache : NSCache<NSString, UIViewController> // +0x50 (0x8)
 	var viewController : weak UIViewController? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x197c0  @objc FeedItemViewControllerCache.cacheNextViewController <stripped>
-	0x1ad60  @objc FeedItemViewControllerCache.init <stripped>
-	0x1ade0  @objc FeedItemViewControllerCache..cxx_destruct <stripped>
+	0x16f20  @objc FeedItemViewControllerCache.cacheNextViewController <stripped>
+	0x18270  @objc FeedItemViewControllerCache.init <stripped>
+	0x181b0  @objc FeedItemViewControllerCache..cxx_destruct <stripped>
 
 	// Swift methods
-	0x18730  class func FeedItemViewControllerCache.__allocating_init(dataSource:healthStore:presentation:viewController:) // init 
-	0x18930  func FeedItemViewControllerCache.beginListeningToDataSource() // method 
-	0x18f50  func FeedItemViewControllerCache.apply(changeset:dataSource:) // method 
-	0x19200  func <stripped> // method 
-	0x197f0  func <stripped> // method 
-	0x19d50  func <stripped> // method 
+	0x16180  class func FeedItemViewControllerCache.__allocating_init(dataSource:healthStore:presentation:viewController:) // init 
+	0x16300  func FeedItemViewControllerCache.beginListeningToDataSource() // method 
+	0x167d0  func FeedItemViewControllerCache.apply(changeset:dataSource:) // method 
+	0x169f0  func <stripped> // method 
+	0x16f50  func <stripped> // method 
+	0x17950  func <stripped> // method 
+	0x17c40  func <stripped> // method 
  }
 
  class HealthExperienceUI.ScaledLabelConstraint : NSLayoutConstraint /System/Library/Frameworks/Foundation.framework/Foundation {
 
 	// Properties
-	var rawConstant : CGFloat // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rawConstant : Y // +0x8 (0x8)
 	var referenceLabel : weak UILabel? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1c200  @objc ScaledLabelConstraint.referenceLabel <stripped>
-	0x1c280  @objc ScaledLabelConstraint.setReferenceLabel: <stripped>
-	0x1c4f0  @objc ScaledLabelConstraint.awakeFromNib <stripped>
-	0x1c840  @objc ScaledLabelConstraint.textSizeChanged <stripped>
-	0x1c930  @objc ScaledLabelConstraint.init <stripped>
-	0x1ca20  @objc ScaledLabelConstraint..cxx_destruct <stripped>
+	0x18960  @objc ScaledLabelConstraint.referenceLabel <stripped>
+	0x189e0  @objc ScaledLabelConstraint.setReferenceLabel: <stripped>
+	0x18c30  @objc ScaledLabelConstraint.awakeFromNib <stripped>
+	0x18f00  @objc ScaledLabelConstraint.textSizeChanged <stripped>
+	0x19020  @objc ScaledLabelConstraint.init <stripped>
+	0x18f60  @objc ScaledLabelConstraint..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1bf50  func ScaledLabelConstraint.rawConstant.getter // getter 
-	0x1bf80  func ScaledLabelConstraint.rawConstant.setter // setter 
-	0x1c070  func ScaledLabelConstraint.rawConstant.modify // modifyCoroutine 
-	0x1c240  func ScaledLabelConstraint.referenceLabel.getter // getter 
-	0x1c2c0  func ScaledLabelConstraint.referenceLabel.setter // setter 
-	0x1c310  func ScaledLabelConstraint.referenceLabel.modify // modifyCoroutine 
-	0x1c5d0  func <stripped> // method 
-	0x1c760  func <stripped> // method 
+	0x186e0  func ScaledLabelConstraint.rawConstant.getter // getter 
+	0x18710  func ScaledLabelConstraint.rawConstant.setter // setter 
+	0x187f0  func ScaledLabelConstraint.rawConstant.modify // modifyCoroutine 
+	0x189a0  func ScaledLabelConstraint.referenceLabel.getter // getter 
+	0x18a20  func ScaledLabelConstraint.referenceLabel.setter // setter 
+	0x18a70  func ScaledLabelConstraint.referenceLabel.modify // modifyCoroutine 
+	0x18d00  func <stripped> // method 
+	0x18e40  func <stripped> // method 
  }
 
  class HealthExperienceUI.HighlightsCategoryCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1e720  @objc HighlightsCategoryCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1e850  @objc HighlightsCategoryCell.initWithCoder: <stripped>
-	0x1f010  @objc HighlightsCategoryCell..cxx_destruct <stripped>
+	0x1a760  @objc HighlightsCategoryCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1a890  @objc HighlightsCategoryCell.initWithCoder: <stripped>
+	0x1aef0  @objc HighlightsCategoryCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1e8f0  func HighlightsCategoryCell.item.getter // getter 
-	0x1e930  func HighlightsCategoryCell.item.setter // setter 
-	0x1e990  func HighlightsCategoryCell.item.modify // modifyCoroutine 
-	0x1ead0  func HighlightsCategoryCell.itemUpdated() // method 
+	0x1a930  func HighlightsCategoryCell.item.getter // getter 
+	0x1a970  func HighlightsCategoryCell.item.setter // setter 
+	0x1a9d0  func HighlightsCategoryCell.item.modify // modifyCoroutine 
+	0x1ab00  func HighlightsCategoryCell.itemUpdated() // method 
  }
 
  class HealthExperienceUI.ChromeHostViewCell : HostViewCell {
 	// ObjC -> Swift bridged methods
-	0x1f520  @objc ChromeHostViewCell.systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: <stripped>
-	0x1f6c0  @objc ChromeHostViewCell.initWithFrame: <stripped>
-	0x1f740  @objc ChromeHostViewCell.initWithCoder: <stripped>
+	0x1b590  @objc ChromeHostViewCell.systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: <stripped>
+	0x1b700  @objc ChromeHostViewCell.initWithFrame: <stripped>
+	0x1b770  @objc ChromeHostViewCell.initWithCoder: <stripped>
 
 	// Swift methods
-	0x1f4e0  func ChromeHostViewCell.chromeHostView.getter // getter 
+	0x1b530  func ChromeHostViewCell.chromeHostView.getter // getter 
  }
 
  class HealthExperienceUI.ChromeHostViewTableCell : HostViewTableCell {
 	// ObjC -> Swift bridged methods
-	0x1f890  @objc ChromeHostViewTableCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1f9e0  @objc ChromeHostViewTableCell.initWithCoder: <stripped>
-	0x1fb20  @objc ChromeHostViewTableCell.systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: <stripped>
+	0x1b8a0  @objc ChromeHostViewTableCell.initWithStyle:reuseIdentifier: <stripped>
+	0x1b9c0  @objc ChromeHostViewTableCell.initWithCoder: <stripped>
+	0x1bd50  @objc ChromeHostViewTableCell.systemLayoutSizeFittingSize:withHorizontalFittingPriority:verticalFittingPriority: <stripped>
 
 	// Swift methods
-	0x1fa80  func ChromeHostViewTableCell.chromeHostView.getter // getter 
+	0x1ba40  func ChromeHostViewTableCell.chromeHostView.getter // getter 
  }
 
  struct HealthExperienceUI.EditFavoritesItem {
@@ -852,11 +878,11 @@
 	var queryCompletedSuccessfully : Bool
 
 	// Swift methods
-	0x20c10  func EditFavoritesDataSource.mode.getter // getter 
-	0x20c40  func EditFavoritesDataSource.mode.setter // setter 
-	0x21000  func EditFavoritesDataSource.mode.modify // modifyCoroutine 
-	0x21060  class func EditFavoritesDataSource.__allocating_init(mode:favoritesController:healthStore:) // init 
-	0x21620  func EditFavoritesDataSource.refresh() // method 
+	0x1cba0  func EditFavoritesDataSource.mode.getter // getter 
+	0x1cbd0  func EditFavoritesDataSource.mode.setter // setter 
+	0x1cf30  func EditFavoritesDataSource.mode.modify // modifyCoroutine 
+	0x1cf90  class func EditFavoritesDataSource.__allocating_init(mode:favoritesController:healthStore:) // init 
+	0x1d040  func EditFavoritesDataSource.refresh() // method 
  }
 
  enum HealthExperienceUI.Mode {
@@ -873,7 +899,8 @@
  struct HealthExperienceUI.CycleTrackingSummaryObjectType: FavoriteStateProviding {
 
 	// Properties
-	var location : FavoritesChangeLocation // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var location : ;ý // +0x0
  }
 
  class HealthExperienceUI.GradientView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -883,15 +910,15 @@
 	var gradientColors : (firstColor: UIColor, secondColor: UIColor)? // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x28d90  @objc GradientView.traitCollectionDidChange: <stripped>
-	0x29180  @objc GradientView.initWithFrame: <stripped>
-	0x292e0  @objc GradientView.initWithCoder: <stripped>
-	0x293c0  @objc GradientView..cxx_destruct <stripped>
+	0x246a0  @objc GradientView.traitCollectionDidChange: <stripped>
+	0x24a50  @objc GradientView.initWithFrame: <stripped>
+	0x24b90  @objc GradientView.initWithCoder: <stripped>
+	0x248f0  @objc GradientView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x28b40  func GradientView.setGradientColors(topColor:bottomColor:) // method 
-	0x28b80  func GradientView.setGradientColors(leftColor:rightColor:) // method 
-	0x28de0  func GradientView.setupGradientColors() // method 
+	0x24400  func GradientView.setGradientColors(topColor:bottomColor:) // method 
+	0x24440  func GradientView.setGradientColors(leftColor:rightColor:) // method 
+	0x246f0  func GradientView.setupGradientColors() // method 
  }
 
  class HealthExperienceUI.DataTypeMutableDataSource : type metadata for MutableArrayDataSource /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
@@ -900,30 +927,32 @@
 	var layout : NSCollectionLayoutSection // +0x50 (0x8)
 
 	// Swift methods
-	0x298e0  func DataTypeMutableDataSource.layout.getter // getter 
-	0x29910  func DataTypeMutableDataSource.layout.setter // setter 
-	0x29950  func DataTypeMutableDataSource.layout.modify // modifyCoroutine 
-	0x29990  func DataTypeMutableDataSource.layout(for:environment:) // method 
+	0x24fb0  func DataTypeMutableDataSource.layout.getter // getter 
+	0x24fe0  func DataTypeMutableDataSource.layout.setter // setter 
+	0x25020  func DataTypeMutableDataSource.layout.modify // modifyCoroutine 
+	0x25060  func DataTypeMutableDataSource.layout(for:environment:) // method 
  }
 
  class HealthExperienceUI.ChartContext : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let date : Date? // +0x68 (0x0)
-	let dateInterval : DateInterval? // +0x6100085 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let date : Ñù // +0x68 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dateInterval : Ñø // +0x6100085 (0x0)
 	let secondaryIdentifier : String? // +0x19 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2a170  @objc ChartContext.encodeWithCoder: <stripped>
-	0x2a250  @objc ChartContext.initWithCoder: <stripped>
-	0x2a2e0  @objc ChartContext.init <stripped>
-	0x2a350  @objc ChartContext..cxx_destruct <stripped>
+	0x25670  @objc ChartContext.encodeWithCoder: <stripped>
+	0x25730  @objc ChartContext.initWithCoder: <stripped>
+	0x25840  @objc ChartContext.init <stripped>
+	0x257a0  @objc ChartContext..cxx_destruct <stripped>
 
 	// Swift methods
-	0x29f20  func ChartContext.encode(with:) // method 
-	0x2a1c0  class func ChartContext.__allocating_init(coder:) // init 
-	0x2a590  class func ChartContext.__allocating_init(from:) // init 
-	0x2a9a0  func ChartContext.encode(to:) // method 
+	0x25420  func ChartContext.encode(with:) // method 
+	0x256c0  class func ChartContext.__allocating_init(coder:) // init 
+	0x25a00  class func ChartContext.__allocating_init(from:) // init 
+	0x25d70  func ChartContext.encode(to:) // method 
  }
 
  enum HealthExperienceUI.CodingKeys {
@@ -937,19 +966,21 @@
  class HealthExperienceUI.DiffableCollectionViewAdaptor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var backingDataSource : SectionedDataSource & SupplementaryItemDataSource // +0x10 (0x30)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var backingDataSource : Uû // +0x10 (0x30)
 	let collectionView : UICollectionView // +0x40 (0x8)
-	var diffableDataSource : ItemWrapper // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var diffableDataSource : ¡ // +0x48 (0x8)
 	var loaded : Bool // +0x50 (0x1)
 
 	// Swift methods
-	0x2b620  class func DiffableCollectionViewAdaptor.__allocating_init(collectionView:backingDataSource:) // init 
-	0x2c980  func <stripped> // method 
-	0x2ca90  func <stripped> // method 
-	0x2d8d0  func DiffableCollectionViewAdaptor.reloadData(animatingDifferences:) // method 
-	0x2da70  func DiffableCollectionViewAdaptor.loadIfNeeded() // method 
-	0x2dab0  func DiffableCollectionViewAdaptor.reapplyExistingSnapshot(animatingDifferences:) // method 
-	0x2dbd0  func DiffableCollectionViewAdaptor.reapplyExistingSnapshotForTraitCollectionChange(animatingDifferences:) // method 
+	0x26bb0  class func DiffableCollectionViewAdaptor.__allocating_init(collectionView:backingDataSource:) // init 
+	0x27cc0  func <stripped> // method 
+	0x27d50  func <stripped> // method 
+	0x28920  func DiffableCollectionViewAdaptor.reloadData(animatingDifferences:) // method 
+	0x28a50  func DiffableCollectionViewAdaptor.loadIfNeeded() // method 
+	0x28a70  func DiffableCollectionViewAdaptor.reapplyExistingSnapshot(animatingDifferences:) // method 
+	0x28b20  func DiffableCollectionViewAdaptor.reapplyExistingSnapshotForTraitCollectionChange(animatingDifferences:) // method 
  }
 
  struct HealthExperienceUI.ItemWrapper {
@@ -972,11 +1003,11 @@
 	var $__lazy_storage_$_mostRecentSamplesQuery : HKSampleQuery? // +0x80 (0x8)
 
 	// Swift methods
-	0x300a0  func <stripped> // getter 
-	0x30270  func <stripped> // getter 
-	0x30a60  func <stripped> // method 
-	0x30bb0  func <stripped> // method 
-	0x31500  func <stripped> // method 
+	0x2b1c0  func <stripped> // getter 
+	0x2b3b0  func <stripped> // getter 
+	0x2b550  func <stripped> // method 
+	0x2b640  func <stripped> // method 
+	0x2bd50  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailDescriptionCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -985,25 +1016,25 @@
 	var detailTextLabel : weak UILabel? // +0x8 (0x8)
 	var attributionTextView : weak UITextView? // +0x10 (0x8)
 	var labelSpacingConstraint : weak NSLayoutConstraint? // +0x18 (0x8)
-	var item : SectionedDataSourceItem? // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x20 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x35cf0  @objc DataTypeDetailDescriptionCell.detailTextLabel <stripped>
-	0x35d10  @objc DataTypeDetailDescriptionCell.setDetailTextLabel: <stripped>
-	0x35d30  @objc DataTypeDetailDescriptionCell.attributionTextView <stripped>
-	0x35d50  @objc DataTypeDetailDescriptionCell.setAttributionTextView: <stripped>
-	0x35d70  @objc DataTypeDetailDescriptionCell.labelSpacingConstraint <stripped>
-	0x35d90  @objc DataTypeDetailDescriptionCell.setLabelSpacingConstraint: <stripped>
-	0x35ef0  @objc DataTypeDetailDescriptionCell.awakeFromNib <stripped>
-	0x36bd0  @objc DataTypeDetailDescriptionCell.initWithFrame: <stripped>
-	0x36c00  @objc DataTypeDetailDescriptionCell.initWithCoder: <stripped>
-	0x36c90  @objc DataTypeDetailDescriptionCell..cxx_destruct <stripped>
+	0x30210  @objc DataTypeDetailDescriptionCell.detailTextLabel <stripped>
+	0x30230  @objc DataTypeDetailDescriptionCell.setDetailTextLabel: <stripped>
+	0x30250  @objc DataTypeDetailDescriptionCell.attributionTextView <stripped>
+	0x30270  @objc DataTypeDetailDescriptionCell.setAttributionTextView: <stripped>
+	0x30290  @objc DataTypeDetailDescriptionCell.labelSpacingConstraint <stripped>
+	0x302b0  @objc DataTypeDetailDescriptionCell.setLabelSpacingConstraint: <stripped>
+	0x302d0  @objc DataTypeDetailDescriptionCell.awakeFromNib <stripped>
+	0x30ea0  @objc DataTypeDetailDescriptionCell.initWithFrame: <stripped>
+	0x30ed0  @objc DataTypeDetailDescriptionCell.initWithCoder: <stripped>
+	0x30d60  @objc DataTypeDetailDescriptionCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x35db0  func <stripped> // modifyCoroutine 
-	0x35fc0  func <stripped> // method 
-	0x36150  func <stripped> // method 
-	0x36880  func <stripped> // method 
+	0x30390  func <stripped> // method 
+	0x30520  func <stripped> // method 
+	0x30b20  func <stripped> // method 
  }
 
  class HealthExperienceUI.ActivityIndicatorViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1013,15 +1044,15 @@
 	var $__lazy_storage_$_cancelBarButtonItem : UIBarButtonItem? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x37f40  @objc ActivityIndicatorViewController.viewDidLoad <stripped>
-	0x382e0  @objc ActivityIndicatorViewController.didTapCancel: <stripped>
-	0x38430  @objc ActivityIndicatorViewController.initWithNibName:bundle: <stripped>
-	0x38480  @objc ActivityIndicatorViewController.initWithCoder: <stripped>
-	0x38570  @objc ActivityIndicatorViewController..cxx_destruct <stripped>
+	0x320a0  @objc ActivityIndicatorViewController.viewDidLoad <stripped>
+	0x323f0  @objc ActivityIndicatorViewController.didTapCancel: <stripped>
+	0x324d0  @objc ActivityIndicatorViewController.initWithNibName:bundle: <stripped>
+	0x32550  @objc ActivityIndicatorViewController.initWithCoder: <stripped>
+	0x32490  @objc ActivityIndicatorViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x37c00  func <stripped> // getter 
-	0x37f70  func <stripped> // method 
+	0x31d90  func <stripped> // getter 
+	0x320d0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.EmbeddedViewDataSourceItem {
@@ -1042,96 +1073,100 @@
  class HealthExperienceUI.EmbeddedViewTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
 	var embeddedView : UIView? // +0x30 (0x8)
 	var embeddedViewController : UIViewController? // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x39310  @objc EmbeddedViewTableViewCell.prepareForReuse <stripped>
-	0x393f0  @objc EmbeddedViewTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x394c0  @objc EmbeddedViewTableViewCell.initWithCoder: <stripped>
-	0x39550  @objc EmbeddedViewTableViewCell..cxx_destruct <stripped>
+	0x332f0  @objc EmbeddedViewTableViewCell.prepareForReuse <stripped>
+	0x33450  @objc EmbeddedViewTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x33520  @objc EmbeddedViewTableViewCell.initWithCoder: <stripped>
+	0x33350  @objc EmbeddedViewTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x38fd0  func EmbeddedViewTableViewCell.item.getter // getter 
-	0x39010  func EmbeddedViewTableViewCell.item.setter // setter 
-	0x390a0  func EmbeddedViewTableViewCell.item.modify // modifyCoroutine 
+	0x33020  func EmbeddedViewTableViewCell.item.getter // getter 
+	0x33060  func EmbeddedViewTableViewCell.item.setter // setter 
+	0x330f0  func EmbeddedViewTableViewCell.item.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.CompoundDataSourceCollectionViewController : UICollectionViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	var dataSourceProvider : DataSourceProvider // +0x8 (0x28)
-	var $__lazy_storage_$_dataSource : CompoundSectionedDataSource? // +0x30 (0x8)
-	var dataSourceAdaptor : DiffableCollectionViewAdaptor? // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_dataSource : { // +0x30 (0x8)
+	var dataSourceAdaptor : DiffableCollectionViewAdaptor // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3aad0  @objc CompoundDataSourceCollectionViewController.viewDidLoad <stripped>
-	0x3acc0  @objc CompoundDataSourceCollectionViewController.viewWillLayoutSubviews <stripped>
-	0x3ae90  @objc CompoundDataSourceCollectionViewController.traitCollectionDidChange: <stripped>
-	0x3b080  @objc CompoundDataSourceCollectionViewController.initWithCollectionViewLayout: <stripped>
-	0x3b270  @objc CompoundDataSourceCollectionViewController.initWithNibName:bundle: <stripped>
-	0x3b330  @objc CompoundDataSourceCollectionViewController.initWithCoder: <stripped>
-	0x3b3c0  @objc CompoundDataSourceCollectionViewController..cxx_destruct <stripped>
+	0x346f0  @objc CompoundDataSourceCollectionViewController.viewDidLoad <stripped>
+	0x34960  @objc CompoundDataSourceCollectionViewController.viewWillLayoutSubviews <stripped>
+	0x34aa0  @objc CompoundDataSourceCollectionViewController.traitCollectionDidChange: <stripped>
+	0x34cf0  @objc CompoundDataSourceCollectionViewController.initWithCollectionViewLayout: <stripped>
+	0x34de0  @objc CompoundDataSourceCollectionViewController.initWithNibName:bundle: <stripped>
+	0x34ed0  @objc CompoundDataSourceCollectionViewController.initWithCoder: <stripped>
+	0x34c40  @objc CompoundDataSourceCollectionViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3a250  func CompoundDataSourceCollectionViewController.dataSourceProvider.getter // getter 
-	0x3a2f0  func CompoundDataSourceCollectionViewController.dataSourceProvider.setter // setter 
-	0x3a340  func CompoundDataSourceCollectionViewController.dataSourceProvider.modify // modifyCoroutine 
-	0x3a380  func CompoundDataSourceCollectionViewController.dataSource.getter // getter 
-	0x3a470  func CompoundDataSourceCollectionViewController.dataSource.setter // setter 
-	0x3a490  func CompoundDataSourceCollectionViewController.dataSource.modify // modifyCoroutine 
-	0x3a5c0  func CompoundDataSourceCollectionViewController.dataSourceAdaptor.getter // getter 
-	0x3a600  func CompoundDataSourceCollectionViewController.dataSourceAdaptor.setter // setter 
-	0x3a650  func CompoundDataSourceCollectionViewController.dataSourceAdaptor.modify // modifyCoroutine 
-	0x3ab00  func CompoundDataSourceCollectionViewController.createDiffableAdaptor() // method 
-	0x3aee0  func CompoundDataSourceCollectionViewController.registerReusableCollectionViewTypes() // method 
+	0x34130  func CompoundDataSourceCollectionViewController.dataSourceProvider.getter // getter 
+	0x341d0  func CompoundDataSourceCollectionViewController.dataSourceProvider.setter // setter 
+	0x34220  func CompoundDataSourceCollectionViewController.dataSourceProvider.modify // modifyCoroutine 
+	0x34260  func CompoundDataSourceCollectionViewController.dataSource.getter // getter 
+	0x34350  func CompoundDataSourceCollectionViewController.dataSource.setter // setter 
+	0x34370  func CompoundDataSourceCollectionViewController.dataSource.modify // modifyCoroutine 
+	0x344a0  func CompoundDataSourceCollectionViewController.dataSourceAdaptor.getter // getter 
+	0x344e0  func CompoundDataSourceCollectionViewController.dataSourceAdaptor.setter // setter 
+	0x34530  func CompoundDataSourceCollectionViewController.dataSourceAdaptor.modify // modifyCoroutine 
+	0x34720  func CompoundDataSourceCollectionViewController.createDiffableAdaptor() // method 
+	0x34af0  func CompoundDataSourceCollectionViewController.registerReusableCollectionViewTypes() // method 
  }
 
  class HealthExperienceUI.EmptyHeaderCollectionReusableView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x3bc30  @objc EmptyHeaderCollectionReusableView.initWithFrame: <stripped>
-	0x3bd20  @objc EmptyHeaderCollectionReusableView.initWithCoder: <stripped>
-	0x3be30  @objc EmptyHeaderCollectionReusableView..cxx_destruct <stripped>
+	0x35780  @objc EmptyHeaderCollectionReusableView.initWithFrame: <stripped>
+	0x35850  @objc EmptyHeaderCollectionReusableView.initWithCoder: <stripped>
+	0x35920  @objc EmptyHeaderCollectionReusableView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3b9c0  func EmptyHeaderCollectionReusableView.item.getter // getter 
-	0x3ba00  func EmptyHeaderCollectionReusableView.item.setter // setter 
-	0x3ba50  func EmptyHeaderCollectionReusableView.item.modify // modifyCoroutine 
+	0x35520  func EmptyHeaderCollectionReusableView.item.getter // getter 
+	0x35560  func EmptyHeaderCollectionReusableView.item.setter // setter 
+	0x355b0  func EmptyHeaderCollectionReusableView.item.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.DataTypeDetailFavoritesCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var platterView : weak PlatterView? // +0x8 (0x8)
+	var platterView : PlatterView // +0x8 (0x8)
 	var titleLabel : weak UILabel? // +0x10 (0x8)
 	var favoriteButton : weak UIButton? // +0x18 (0x8)
 	var favoritesController : WDFavoriteDisplayTypesController? // +0x20 (0x8)
 	var parentViewController : weak UIViewController? // +0x28 (0x8)
-	var item : SectionedDataSourceItem? // +0x30 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x30 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x3bf90  @objc DataTypeDetailFavoritesCell.platterView <stripped>
-	0x3bfb0  @objc DataTypeDetailFavoritesCell.setPlatterView: <stripped>
-	0x3bfd0  @objc DataTypeDetailFavoritesCell.titleLabel <stripped>
-	0x3bff0  @objc DataTypeDetailFavoritesCell.setTitleLabel: <stripped>
-	0x3c010  @objc DataTypeDetailFavoritesCell.favoriteButton <stripped>
-	0x3c030  @objc DataTypeDetailFavoritesCell.setFavoriteButton: <stripped>
-	0x3c510  @objc DataTypeDetailFavoritesCell.awakeFromNib <stripped>
-	0x3ce50  @objc DataTypeDetailFavoritesCell.isHighlighted <stripped>
-	0x3ceb0  @objc DataTypeDetailFavoritesCell.setHighlighted: <stripped>
-	0x3d0f0  @objc DataTypeDetailFavoritesCell.initWithFrame: <stripped>
-	0x3d120  @objc DataTypeDetailFavoritesCell.initWithCoder: <stripped>
-	0x3d1b0  @objc DataTypeDetailFavoritesCell..cxx_destruct <stripped>
+	0x35a80  @objc DataTypeDetailFavoritesCell.platterView <stripped>
+	0x35aa0  @objc DataTypeDetailFavoritesCell.setPlatterView: <stripped>
+	0x35ac0  @objc DataTypeDetailFavoritesCell.titleLabel <stripped>
+	0x35ae0  @objc DataTypeDetailFavoritesCell.setTitleLabel: <stripped>
+	0x35b00  @objc DataTypeDetailFavoritesCell.favoriteButton <stripped>
+	0x35b20  @objc DataTypeDetailFavoritesCell.setFavoriteButton: <stripped>
+	0x35fb0  @objc DataTypeDetailFavoritesCell.awakeFromNib <stripped>
+	0x36800  @objc DataTypeDetailFavoritesCell.isHighlighted <stripped>
+	0x36830  @objc DataTypeDetailFavoritesCell.setHighlighted: <stripped>
+	0x36aa0  @objc DataTypeDetailFavoritesCell.initWithFrame: <stripped>
+	0x36ad0  @objc DataTypeDetailFavoritesCell.initWithCoder: <stripped>
+	0x36920  @objc DataTypeDetailFavoritesCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3c540  func <stripped> // modifyCoroutine 
-	0x3c610  func <stripped> // getter 
-	0x3ccd0  func <stripped> // modifyCoroutine 
+	0x35fe0  func <stripped> // modifyCoroutine 
+	0x36070  func <stripped> // getter 
+	0x366d0  func <stripped> // modifyCoroutine 
  }
 
  struct HealthExperienceUI.EmptyStateCollectionViewCellItem {
@@ -1145,30 +1180,32 @@
  class HealthExperienceUI.EmptyStateCollectionViewCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var $__lazy_storage_$_emptyStateCellView : EmptyStateCellView? // +0x8 (0x8)
-	var item : SectionedDataSourceItem? // +0x10 (0x28)
+	var $__lazy_storage_$_emptyStateCellView : EmptyStateCellView // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x10 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x3e790  @objc EmptyStateCollectionViewCell.initWithFrame: <stripped>
-	0x3e7c0  @objc EmptyStateCollectionViewCell.initWithCoder: <stripped>
-	0x3eaf0  @objc EmptyStateCollectionViewCell..cxx_destruct <stripped>
+	0x37f10  @objc EmptyStateCollectionViewCell.initWithFrame: <stripped>
+	0x37f40  @objc EmptyStateCollectionViewCell.initWithCoder: <stripped>
+	0x38250  @objc EmptyStateCollectionViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3e310  func EmptyStateCollectionViewCell.item.getter // getter 
-	0x3e350  func EmptyStateCollectionViewCell.item.setter // setter 
-	0x3e3e0  func EmptyStateCollectionViewCell.item.modify // modifyCoroutine 
-	0x3e800  func <stripped> // method 
+	0x37af0  func EmptyStateCollectionViewCell.item.getter // getter 
+	0x37b30  func EmptyStateCollectionViewCell.item.setter // setter 
+	0x37bc0  func EmptyStateCollectionViewCell.item.modify // modifyCoroutine 
+	0x37f80  func <stripped> // method 
  }
 
  class HealthExperienceUI.AllFeedItemsListDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var store : HealthExperienceStore // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var store : ö // +0x10 (0x28)
 
 	// Swift methods
-	0x3f360  class func AllFeedItemsListDataSourceProvider.__allocating_init(for:) // init 
-	0x3f410  func AllFeedItemsListDataSourceProvider.selectedDataSources(for:) // method 
-	0x3f4a0  func AllFeedItemsListDataSourceProvider.makeMatchingFeedItemsListDataSource() // method 
+	0x38ab0  class func AllFeedItemsListDataSourceProvider.__allocating_init(for:) // init 
+	0x38b10  func AllFeedItemsListDataSourceProvider.selectedDataSources(for:) // method 
+	0x38b60  func AllFeedItemsListDataSourceProvider.makeMatchingFeedItemsListDataSource() // method 
  }
 
  class HealthExperienceUI.DataTypeDetailDisclosureItemsDataSource : type metadata for MutableArrayDataSource /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
@@ -1190,16 +1227,16 @@
 
  class HealthExperienceUI.FakeCollectionViewCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x43480  @objc FakeCollectionViewCell.initWithFrame: <stripped>
-	0x434a0  @objc FakeCollectionViewCell.initWithCoder: <stripped>
-	0x43510  @objc FakeCollectionViewCell..cxx_destruct <stripped>
+	0x3c810  @objc FakeCollectionViewCell.initWithFrame: <stripped>
+	0x3c830  @objc FakeCollectionViewCell.initWithCoder: <stripped>
+	0x3c8a0  @objc FakeCollectionViewCell..cxx_destruct <stripped>
  }
 
  class HealthExperienceUI.FakeCollectionViewHeader : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x437f0  @objc FakeCollectionViewHeader.initWithFrame: <stripped>
-	0x43840  @objc FakeCollectionViewHeader.initWithCoder: <stripped>
-	0x438f0  @objc FakeCollectionViewHeader..cxx_destruct <stripped>
+	0x3cb50  @objc FakeCollectionViewHeader.initWithFrame: <stripped>
+	0x3cba0  @objc FakeCollectionViewHeader.initWithCoder: <stripped>
+	0x3cc40  @objc FakeCollectionViewHeader..cxx_destruct <stripped>
  }
 
  class HealthExperienceUI.RestorationDefaultStoreProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1211,11 +1248,11 @@
 	var resolvedHealthToolbox : RestoringHealthToolbox
 
 	// Swift methods
-	0x43bd0  func RestorationDefaultStoreProvider.resolvingHealthStore.getter // getter 
-	0x43c10  func RestorationDefaultStoreProvider.resolvingExperienceStore.getter // getter 
-	0x43c60  func RestorationDefaultStoreProvider.resolvingHealthToolbox.getter // getter 
-	0x43ca0  func RestorationDefaultStoreProvider.startDecoding() // method 
-	0x43eb0  func RestorationDefaultStoreProvider.endDecoding() // method 
+	0x3ce00  func RestorationDefaultStoreProvider.resolvingHealthStore.getter // getter 
+	0x3ce40  func RestorationDefaultStoreProvider.resolvingExperienceStore.getter // getter 
+	0x3ce90  func RestorationDefaultStoreProvider.resolvingHealthToolbox.getter // getter 
+	0x3ced0  func RestorationDefaultStoreProvider.startDecoding() // method 
+	0x3d090  func RestorationDefaultStoreProvider.endDecoding() // method 
  }
 
  class HealthExperienceUI.RestoringHealthStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1231,7 +1268,8 @@
 
 	// Properties
 	var isRestoring : Bool
-	let healthExperienceStore : HealthExperienceStore
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let healthExperienceStore : ö
 
 	// Swift methods
  }
@@ -1249,59 +1287,71 @@
 
 	// Properties
 	var hkTypes : [HKObjectType]? // +0x50 (0x8)
-	var contentKinds : [ContentKind] // +0x58 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var contentKinds :  empty-list  // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x446c0  @objc FeedItemListViewController.viewDidLoad <stripped>
-	0x447f0  @objc FeedItemListViewController.initWithCoder: <stripped>
-	0x449c0  @objc FeedItemListViewController.initWithCollectionViewLayout: <stripped>
-	0x44c00  @objc FeedItemListViewController.initWithNibName:bundle: <stripped>
-	0x44cd0  @objc FeedItemListViewController..cxx_destruct <stripped>
+	0x3d890  @objc FeedItemListViewController.viewDidLoad <stripped>
+	0x3da40  @objc FeedItemListViewController.initWithCoder: <stripped>
+	0x3dbe0  @objc FeedItemListViewController.initWithCollectionViewLayout: <stripped>
+	0x3dd30  @objc FeedItemListViewController.initWithNibName:bundle: <stripped>
+	0x3d920  @objc FeedItemListViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x44240  func FeedItemListViewController.hkTypes.getter // getter 
-	0x44280  func FeedItemListViewController.hkTypes.setter // setter 
-	0x442d0  func FeedItemListViewController.hkTypes.modify // modifyCoroutine 
-	0x44310  func FeedItemListViewController.contentKinds.getter // getter 
-	0x44350  func FeedItemListViewController.contentKinds.setter // setter 
-	0x443a0  func FeedItemListViewController.contentKinds.modify // modifyCoroutine 
+	0x3d490  func FeedItemListViewController.hkTypes.getter // getter 
+	0x3d4d0  func FeedItemListViewController.hkTypes.setter // setter 
+	0x3d520  func FeedItemListViewController.hkTypes.modify // modifyCoroutine 
+	0x3d560  func FeedItemListViewController.contentKinds.getter // getter 
+	0x3d5a0  func FeedItemListViewController.contentKinds.setter // setter 
+	0x3d5f0  func FeedItemListViewController.contentKinds.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.BrowseTileViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var context : FeedItemViewControllerContext? // +0x8 (0x28)
+	var context : FeedItemViewControllerContext // +0x8 (0x28)
 	var contentProvider : BrowseTileContentProvider // +0x30 (0x28)
 	var categoryIconImageView : UIImageView? // +0x58 (0x8)
 	var categoryLabel : UILabel? // +0x60 (0x8)
 	var disclosureImageView : UIImageView? // +0x68 (0x8)
-	let topAndBottomDistance : CGFloat // +0x70 (0x8)
-	let margin : CGFloat // +0x78 (0x8)
-	let maxIconWidth : CGFloat // +0x80 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let topAndBottomDistance : Y // +0x70 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let margin : Y // +0x78 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxIconWidth : Y // +0x80 (0x8)
 	var labelLeadingConstraint : NSLayoutConstraint? // +0x88 (0x8)
 	var iconAspectConstraint : NSLayoutConstraint? // +0x90 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x45910  @objc BrowseTileViewController.viewDidLoad <stripped>
-	0x47390  @objc BrowseTileViewController.initWithNibName:bundle: <stripped>
-	0x47450  @objc BrowseTileViewController.initWithCoder: <stripped>
-	0x474e0  @objc BrowseTileViewController..cxx_destruct <stripped>
+	0x3ec00  @objc BrowseTileViewController.viewDidLoad <stripped>
+	0x401f0  @objc BrowseTileViewController.traitCollectionDidChange: <stripped>
+	0x40420  @objc BrowseTileViewController.initWithNibName:bundle: <stripped>
+	0x40510  @objc BrowseTileViewController.initWithCoder: <stripped>
+	0x402f0  @objc BrowseTileViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x44d40  func BrowseTileViewController.context.getter // getter 
-	0x44d60  func BrowseTileViewController.context.setter // setter 
-	0x44df0  func BrowseTileViewController.context.modify // modifyCoroutine 
-	0x453f0  func BrowseTileViewController.contentProvider.getter // getter 
-	0x45450  func BrowseTileViewController.contentProvider.setter // setter 
-	0x454e0  func BrowseTileViewController.contentProvider.modify // modifyCoroutine 
-	0x45660  func BrowseTileViewController.categoryIconImageView.getter // getter 
-	0x456a0  func BrowseTileViewController.categoryIconImageView.setter // setter 
-	0x456f0  func BrowseTileViewController.categoryIconImageView.modify // modifyCoroutine 
-	0x45940  func BrowseTileViewController.addCategoryLabel() // method 
-	0x45dc0  func BrowseTileViewController.addCategoryIconView() // method 
-	0x463f0  func BrowseTileViewController.addDisclosureImageView() // method 
-	0x46ad0  func BrowseTileViewController.updateContraintsIfNeeded(hasIcon:) // method 
-	0x46eb0  func BrowseTileViewController.updateWithContextData() // method 
+	0x3dec0  func BrowseTileViewController.context.getter // getter 
+	0x3dee0  func BrowseTileViewController.context.setter // setter 
+	0x3df60  func BrowseTileViewController.context.modify // modifyCoroutine 
+	0x3e4f0  func BrowseTileViewController.contentProvider.getter // getter 
+	0x3e5b0  func BrowseTileViewController.contentProvider.setter // setter 
+	0x3e6b0  func BrowseTileViewController.contentProvider.modify // modifyCoroutine 
+	0x3e810  func BrowseTileViewController.categoryIconImageView.getter // getter 
+	0x3e830  func BrowseTileViewController.categoryIconImageView.setter // setter 
+	0x3e850  func BrowseTileViewController.categoryIconImageView.modify // modifyCoroutine 
+	0x3e890  func BrowseTileViewController.categoryLabel.getter // getter 
+	0x3e8b0  func BrowseTileViewController.categoryLabel.setter // setter 
+	0x3e8d0  func BrowseTileViewController.categoryLabel.modify // modifyCoroutine 
+	0x3e910  func BrowseTileViewController.disclosureImageView.getter // getter 
+	0x3e970  func BrowseTileViewController.disclosureImageView.setter // setter 
+	0x3e9d0  func BrowseTileViewController.disclosureImageView.modify // modifyCoroutine 
+	0x3ec30  func BrowseTileViewController.addCategoryLabel() // method 
+	0x3efa0  func BrowseTileViewController.addCategoryIconView() // method 
+	0x3f570  func BrowseTileViewController.addDisclosureImageView() // method 
+	0x3fbf0  func BrowseTileViewController.reloadFonts() // method 
+	0x3fca0  func BrowseTileViewController.updateContraintsIfNeeded(hasIcon:) // method 
+	0x40060  func BrowseTileViewController.updateWithContextData() // method 
  }
 
  class HealthExperienceUI.UIPluginBundleProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1314,7 +1364,7 @@
 	var $__lazy_storage_$_storyboard : UIStoryboard??
 
 	// Swift methods
-	0x47ab0  func UIPluginInfo.storyboard.getter // getter 
+	0x40c20  func UIPluginInfo.storyboard.getter // getter 
  }
 
  class HealthExperienceUI.SegmentedContentView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1323,29 +1373,29 @@
 	var control : UISegmentedControl // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x48090  @objc SegmentedContentView.initWithCoder: <stripped>
-	0x48300  @objc SegmentedContentView.layoutSubviews <stripped>
-	0x48330  @objc SegmentedContentView.sizeThatFits: <stripped>
-	0x483f0  @objc SegmentedContentView.initWithFrame: <stripped>
-	0x48470  @objc SegmentedContentView..cxx_destruct <stripped>
+	0x41220  @objc SegmentedContentView.initWithCoder: <stripped>
+	0x41480  @objc SegmentedContentView.layoutSubviews <stripped>
+	0x414b0  @objc SegmentedContentView.sizeThatFits: <stripped>
+	0x415d0  @objc SegmentedContentView.initWithFrame: <stripped>
+	0x415b0  @objc SegmentedContentView..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class HealthExperienceUI.AppNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x48490  @objc AppNavigationController.supportedInterfaceOrientations <stripped>
-	0x486e0  @objc AppNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x48820  @objc AppNavigationController.initWithRootViewController: <stripped>
-	0x489b0  @objc AppNavigationController.initWithNibName:bundle: <stripped>
-	0x48b30  @objc AppNavigationController.initWithCoder: <stripped>
+	0x41600  @objc AppNavigationController.supportedInterfaceOrientations <stripped>
+	0x41880  @objc AppNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x41990  @objc AppNavigationController.initWithRootViewController: <stripped>
+	0x41ad0  @objc AppNavigationController.initWithNibName:bundle: <stripped>
+	0x41c20  @objc AppNavigationController.initWithCoder: <stripped>
  }
 
  class HealthExperienceUI.HealthExperienceStoreIncrementalCoreSpotlightDelegate : type metadata for HealthExperienceStoreCoreSpotlightDelegate /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
 	// ObjC -> Swift bridged methods
-	0x48cd0  @objc HealthExperienceStoreIncrementalCoreSpotlightDelegate.appWillEnterForeground: <stripped>
-	0x48cf0  @objc HealthExperienceStoreIncrementalCoreSpotlightDelegate.appDidEnterBackground: <stripped>
-	0x48f00  @objc HealthExperienceStoreIncrementalCoreSpotlightDelegate.initForStoreWithDescription:model: <stripped>
+	0x41d40  @objc HealthExperienceStoreIncrementalCoreSpotlightDelegate.appWillEnterForeground: <stripped>
+	0x41d60  @objc HealthExperienceStoreIncrementalCoreSpotlightDelegate.appDidEnterBackground: <stripped>
+	0x41f80  @objc HealthExperienceStoreIncrementalCoreSpotlightDelegate.initForStoreWithDescription:model: <stripped>
 
 	// Swift methods
  }
@@ -1357,7 +1407,7 @@
 	let title : String // +0x10
 	let buttonText : String? // +0x20
 	var shouldShowButton : Bool // +0x30
-	let buttonWasTapped : (_:)? // +0x38
+	let buttonWasTapped : DefaultHeaderCollectionReusableView // +0x38
  }
 
  class HealthExperienceUI.HighlightsFetchedResultsController {
@@ -1365,21 +1415,22 @@
 
 	// Properties
 	let categoryPredicate : NSPredicate // +0x10 (0x8)
-	var store : HealthExperienceStore // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var store : ö // +0x18 (0x28)
 	var chrOnly : Bool // +0x40 (0x1)
 
 	// Swift methods
-	0x4b4f0  func CategoryViewDataSourceProvider.store.getter // getter 
-	0x4b530  func CategoryViewDataSourceProvider.store.setter // setter 
-	0x4b580  func CategoryViewDataSourceProvider.store.modify // modifyCoroutine 
-	0x4b5b0  func CategoryViewDataSourceProvider.chrOnly.getter // getter 
-	0x4b5e0  func CategoryViewDataSourceProvider.chrOnly.setter // setter 
-	0x4b610  func CategoryViewDataSourceProvider.chrOnly.modify // modifyCoroutine 
-	0x4b730  class func CategoryViewDataSourceProvider.__allocating_init(categoryPredicate:store:chrOnly:) // init 
-	0x4b870  func CategoryViewDataSourceProvider.selectedDataSources(for:) // method 
-	0x4b880  func <stripped> // method 
-	0x4bd30  func CategoryViewDataSourceProvider.makeNoDataAvailableDataSource() // method 
-	0x4c380  func CategoryViewDataSourceProvider.makePromotionDataSource() // method 
+	0x443c0  func CategoryViewDataSourceProvider.store.getter // getter 
+	0x44400  func CategoryViewDataSourceProvider.store.setter // setter 
+	0x44450  func CategoryViewDataSourceProvider.store.modify // modifyCoroutine 
+	0x44480  func CategoryViewDataSourceProvider.chrOnly.getter // getter 
+	0x444b0  func CategoryViewDataSourceProvider.chrOnly.setter // setter 
+	0x444e0  func CategoryViewDataSourceProvider.chrOnly.modify // modifyCoroutine 
+	0x44600  class func CategoryViewDataSourceProvider.__allocating_init(categoryPredicate:store:chrOnly:) // init 
+	0x446f0  func CategoryViewDataSourceProvider.selectedDataSources(for:) // method 
+	0x44700  func <stripped> // method 
+	0x44af0  func CategoryViewDataSourceProvider.makeNoDataAvailableDataSource() // method 
+	0x45000  func CategoryViewDataSourceProvider.makePromotionDataSource() // method 
  }
 
  class HealthExperienceUI.DataTypeDetailNoDataDisclosureCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1387,28 +1438,29 @@
 	// Properties
 	var mainTextLabel : weak UILabel? // +0x8 (0x8)
 	var disclosure : weak UIImageView? // +0x10 (0x8)
-	var item : SectionedDataSourceItem? // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x18 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x4c980  @objc DataTypeDetailNoDataDisclosureCell.mainTextLabel <stripped>
-	0x4c9a0  @objc DataTypeDetailNoDataDisclosureCell.setMainTextLabel: <stripped>
-	0x4c9c0  @objc DataTypeDetailNoDataDisclosureCell.disclosure <stripped>
-	0x4c9e0  @objc DataTypeDetailNoDataDisclosureCell.setDisclosure: <stripped>
-	0x4ce60  @objc DataTypeDetailNoDataDisclosureCell.awakeFromNib <stripped>
-	0x4d2c0  @objc DataTypeDetailNoDataDisclosureCell.isHighlighted <stripped>
-	0x4d300  @objc DataTypeDetailNoDataDisclosureCell.setHighlighted: <stripped>
-	0x4d340  @objc DataTypeDetailNoDataDisclosureCell.isSelected <stripped>
-	0x4d430  @objc DataTypeDetailNoDataDisclosureCell.setSelected: <stripped>
-	0x4d8f0  @objc DataTypeDetailNoDataDisclosureCell.initWithFrame: <stripped>
-	0x4d990  @objc DataTypeDetailNoDataDisclosureCell.initWithCoder: <stripped>
-	0x4da20  @objc DataTypeDetailNoDataDisclosureCell..cxx_destruct <stripped>
+	0x45570  @objc DataTypeDetailNoDataDisclosureCell.mainTextLabel <stripped>
+	0x45590  @objc DataTypeDetailNoDataDisclosureCell.setMainTextLabel: <stripped>
+	0x455b0  @objc DataTypeDetailNoDataDisclosureCell.disclosure <stripped>
+	0x455d0  @objc DataTypeDetailNoDataDisclosureCell.setDisclosure: <stripped>
+	0x459d0  @objc DataTypeDetailNoDataDisclosureCell.awakeFromNib <stripped>
+	0x45e00  @objc DataTypeDetailNoDataDisclosureCell.isHighlighted <stripped>
+	0x45e40  @objc DataTypeDetailNoDataDisclosureCell.setHighlighted: <stripped>
+	0x45e80  @objc DataTypeDetailNoDataDisclosureCell.isSelected <stripped>
+	0x45f30  @objc DataTypeDetailNoDataDisclosureCell.setSelected: <stripped>
+	0x463c0  @objc DataTypeDetailNoDataDisclosureCell.initWithFrame: <stripped>
+	0x46460  @objc DataTypeDetailNoDataDisclosureCell.initWithCoder: <stripped>
+	0x46220  @objc DataTypeDetailNoDataDisclosureCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4ce90  func DataTypeDetailNoDataDisclosureCell.item.getter // getter 
-	0x4ced0  func DataTypeDetailNoDataDisclosureCell.item.setter // setter 
-	0x4cf30  func DataTypeDetailNoDataDisclosureCell.item.modify // modifyCoroutine 
-	0x4d070  func <stripped> // method 
-	0x4d5a0  func <stripped> // method 
+	0x45a00  func DataTypeDetailNoDataDisclosureCell.item.getter // getter 
+	0x45a40  func DataTypeDetailNoDataDisclosureCell.item.setter // setter 
+	0x45aa0  func DataTypeDetailNoDataDisclosureCell.item.modify // modifyCoroutine 
+	0x45bd0  func <stripped> // method 
+	0x46050  func <stripped> // method 
  }
 
  enum HealthExperienceUI.CellSelectionHandlingStyle {
@@ -1421,24 +1473,24 @@
  class HealthExperienceUI.AllHighlightsViewController : DataTypeDetailViewController {
 
 	// Properties
-	var hkType : HKObjectType // +0x50 (0x8)
-	var hideShowAllButton : Bool // +0x58 (0x1)
+	var hkType : HKObjectType
+	var hideShowAllButton : Bool
 
 	// ObjC -> Swift bridged methods
-	0x4ea70  @objc AllHighlightsViewController.initWithCoder: <stripped>
-	0x4eff0  @objc AllHighlightsViewController.viewDidLoad <stripped>
-	0x4f160  @objc AllHighlightsViewController.initWithCollectionViewLayout: <stripped>
-	0x4f1b0  @objc AllHighlightsViewController.initWithNibName:bundle: <stripped>
-	0x4f210  @objc AllHighlightsViewController..cxx_destruct <stripped>
+	0x47150  @objc AllHighlightsViewController.initWithCoder: <stripped>
+	0x47600  @objc AllHighlightsViewController.viewDidLoad <stripped>
+	0x47740  @objc AllHighlightsViewController.initWithCollectionViewLayout: <stripped>
+	0x47790  @objc AllHighlightsViewController.initWithNibName:bundle: <stripped>
+	0x477f0  @objc AllHighlightsViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4e570  func AllHighlightsViewController.hkType.getter // getter 
-	0x4e5b0  func AllHighlightsViewController.hkType.setter // setter 
-	0x4e600  func AllHighlightsViewController.hkType.modify // modifyCoroutine 
-	0x4e640  func AllHighlightsViewController.hideShowAllButton.getter // getter 
-	0x4e670  func AllHighlightsViewController.hideShowAllButton.setter // setter 
-	0x4e6b0  func AllHighlightsViewController.hideShowAllButton.modify // modifyCoroutine 
-	0x4e420  class func AllHighlightsViewController.__allocating_init(_:collectionViewLayout:) // init 
+	0x46f00  func AllHighlightsViewController.hkType.getter // getter 
+	0x46f40  func AllHighlightsViewController.hkType.setter // setter 
+	0x46f90  func AllHighlightsViewController.hkType.modify // modifyCoroutine 
+	0x46fd0  func AllHighlightsViewController.hideShowAllButton.getter // getter 
+	0x47000  func AllHighlightsViewController.hideShowAllButton.setter // setter 
+	0x47040  func AllHighlightsViewController.hideShowAllButton.modify // modifyCoroutine 
+	0x46dc0  class func AllHighlightsViewController.__allocating_init(_:collectionViewLayout:) // init 
  }
 
  class HealthExperienceUI.AllHighlightsExperienceViewController : DataTypeDetailViewController {
@@ -1447,112 +1499,118 @@
 	let keyword : String
 
 	// ObjC -> Swift bridged methods
-	0x4f2c0  @objc AllHighlightsExperienceViewController.initWithCoder: <stripped>
-	0x4f600  @objc AllHighlightsExperienceViewController.viewDidLoad <stripped>
-	0x4f6c0  @objc AllHighlightsExperienceViewController.initWithCollectionViewLayout: <stripped>
-	0x4f7c0  @objc AllHighlightsExperienceViewController.initWithNibName:bundle: <stripped>
-	0x4f860  @objc AllHighlightsExperienceViewController..cxx_destruct <stripped>
+	0x478a0  @objc AllHighlightsExperienceViewController.initWithCoder: <stripped>
+	0x47bb0  @objc AllHighlightsExperienceViewController.viewDidLoad <stripped>
+	0x47d00  @objc AllHighlightsExperienceViewController.initWithCollectionViewLayout: <stripped>
+	0x47e00  @objc AllHighlightsExperienceViewController.initWithNibName:bundle: <stripped>
+	0x47c70  @objc AllHighlightsExperienceViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4f310  class func AllHighlightsExperienceViewController.__allocating_init(_:title:) // init 
+	0x478f0  class func AllHighlightsExperienceViewController.__allocating_init(_:title:) // init 
  }
 
  class HealthExperienceUI.AllHighlightCategoriesButton : NavigationCollectionViewCell {
 	// ObjC -> Swift bridged methods
-	0x4fe60  @objc AllHighlightCategoriesButton.initWithFrame: <stripped>
-	0x4ff40  @objc AllHighlightCategoriesButton.initWithCoder: <stripped>
+	0x483a0  @objc AllHighlightCategoriesButton.initWithFrame: <stripped>
+	0x48460  @objc AllHighlightCategoriesButton.initWithCoder: <stripped>
  }
 
  class HealthExperienceUI.SearchHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	var resultToken : Int // +0x10 (0x8)
-	let healthExperienceStore : HealthExperienceStore // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let healthExperienceStore : ö // +0x18 (0x28)
 	let searchDataSource : SearchDataSource // +0x40 (0x8)
-	let spotlightSearch : SearchResult // +0x48 (0x8)
+	let spotlightSearch : SpotlightSearch // +0x48 (0x8)
 	let behaviours : Behaviours // +0x50 (0x28)
 
 	// Swift methods
-	0x505b0  func <stripped> // method 
-	0x52c40  func <stripped> // method 
-	0x52f50  func <stripped> // method 
+	0x49770  func <stripped> // method 
+	0x4b5b0  func <stripped> // method 
+	0x4b7a0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.SearchResult {
 
 	// Properties
 	let managedObjectID : NSManagedObjectID // +0x0
-	let dataTypeCode : _HKDataTypeCode? // +0x8
+	let dataTypeCode : _HKDataTypeCode // +0x8
  }
 
  class HealthExperienceUI.SearchDataSource {
  class HealthExperienceUI.SearchArrayDataSource : type metadata for ArrayDataSource /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
 	// Swift methods
-	0x57550  func SearchArrayDataSource.supplementaryItem(ofKind:at:) // method 
+	0x4eba0  func SearchArrayDataSource.supplementaryItem(ofKind:at:) // method 
  }
 
  class HealthExperienceUI.HKTypeGroupListDataSource : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var eventHandler : weak SectionedDataSourceEventHandler? // +0x10 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var eventHandler : Õò // +0x10 (0x10)
 	var numberOfSections : Int // +0x20 (0x8)
-	var $__lazy_storage_$_allGroupsMinusMe : [SectionedDataSourceItem]? // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_allGroupsMinusMe :  empty-list  // +0x28 (0x8)
 
 	// Swift methods
-	0x57cc0  func HKTypeGroupListDataSource.eventHandler.getter // getter 
-	0x57cf0  func HKTypeGroupListDataSource.eventHandler.setter // setter 
-	0x57d40  func HKTypeGroupListDataSource.eventHandler.modify // modifyCoroutine 
-	0x57e20  func HKTypeGroupListDataSource.numberOfSections.getter // getter 
-	0x57e50  func HKTypeGroupListDataSource.numberOfSections.setter // setter 
-	0x57e80  func HKTypeGroupListDataSource.numberOfSections.modify // modifyCoroutine 
-	0x57ec0  func <stripped> // getter 
-	0x580e0  class func HKTypeGroupListDataSource.__allocating_init() // init 
-	0x58220  func HKTypeGroupListDataSource.titleForHeader(in:) // method 
-	0x58230  func HKTypeGroupListDataSource.numberOfItems(in:) // method 
-	0x58260  func HKTypeGroupListDataSource.item(at:) // method 
-	0x582c0  func HKTypeGroupListDataSource.identifier.getter // getter 
-	0x583b0  func HKTypeGroupListDataSource.sectionIdentifiers.getter // getter 
-	0x58400  func HKTypeGroupListDataSource.item(for:) // method 
-	0x58450  func HKTypeGroupListDataSource.reuseIdentifierForItem(with:) // method 
-	0x584a0  func HKTypeGroupListDataSource.itemIdentifiers(in:) // method 
+	0x4f1b0  func HKTypeGroupListDataSource.eventHandler.getter // getter 
+	0x4f1e0  func HKTypeGroupListDataSource.eventHandler.setter // setter 
+	0x4f230  func HKTypeGroupListDataSource.eventHandler.modify // modifyCoroutine 
+	0x4f310  func HKTypeGroupListDataSource.numberOfSections.getter // getter 
+	0x4f340  func HKTypeGroupListDataSource.numberOfSections.setter // setter 
+	0x4f370  func HKTypeGroupListDataSource.numberOfSections.modify // modifyCoroutine 
+	0x4f3b0  func <stripped> // getter 
+	0x4f590  class func HKTypeGroupListDataSource.__allocating_init() // init 
+	0x4f680  func HKTypeGroupListDataSource.titleForHeader(in:) // method 
+	0x4f690  func HKTypeGroupListDataSource.numberOfItems(in:) // method 
+	0x4f6c0  func HKTypeGroupListDataSource.item(at:) // method 
+	0x4f720  func HKTypeGroupListDataSource.identifier.getter // getter 
+	0x4f840  func HKTypeGroupListDataSource.sectionIdentifiers.getter // getter 
+	0x4f890  func HKTypeGroupListDataSource.item(for:) // method 
+	0x4f8e0  func HKTypeGroupListDataSource.reuseIdentifierForItem(with:) // method 
+	0x4f930  func HKTypeGroupListDataSource.itemIdentifiers(in:) // method 
  }
 
  class HealthExperienceUI.CollectionViewListDisclosureCell : _UICollectionViewListCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
-	var $__lazy_storage_$_textLabel : DynamicFontLabel? // +0x30 (0x8)
-	var $__lazy_storage_$_detailTextLabel : DynamicFontLabel? // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
+	var $__lazy_storage_$_textLabel : DynamicFontLabel // +0x30 (0x8)
+	var $__lazy_storage_$_detailTextLabel : DynamicFontLabel // +0x38 (0x8)
 	var showDisclosureIndicator : Bool // +0x40 (0x1)
 	var currentLayoutConstraints : [NSLayoutConstraint] // +0x48 (0x8)
-	var detailTextObservation : NSKeyValueObservation? // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var detailTextObservation : ï // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5d8c0  @objc CollectionViewListDisclosureCell.initWithFrame: <stripped>
-	0x5d960  @objc CollectionViewListDisclosureCell.initWithCoder: <stripped>
-	0x5da40  @objc CollectionViewListDisclosureCell.dealloc <stripped>
-	0x5de00  @objc CollectionViewListDisclosureCell.prepareForReuse <stripped>
-	0x5e0f0  @objc CollectionViewListDisclosureCell.traitCollectionDidChange: <stripped>
-	0x5e140  @objc CollectionViewListDisclosureCell.description <stripped>
-	0x5ede0  @objc CollectionViewListDisclosureCell.didMoveToSuperview <stripped>
-	0x5da60  @objc CollectionViewListDisclosureCell..cxx_destruct <stripped>
+	0x54480  @objc CollectionViewListDisclosureCell.initWithFrame: <stripped>
+	0x54520  @objc CollectionViewListDisclosureCell.initWithCoder: <stripped>
+	0x545e0  @objc CollectionViewListDisclosureCell.dealloc <stripped>
+	0x54930  @objc CollectionViewListDisclosureCell.prepareForReuse <stripped>
+	0x54aa0  @objc CollectionViewListDisclosureCell.traitCollectionDidChange: <stripped>
+	0x54af0  @objc CollectionViewListDisclosureCell.description <stripped>
+	0x55520  @objc CollectionViewListDisclosureCell.didMoveToSuperview <stripped>
+	0x54600  @objc CollectionViewListDisclosureCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x58d30  func CollectionViewListDisclosureCell.item.getter // getter 
-	0x58d70  func CollectionViewListDisclosureCell.item.setter // setter 
-	0x58e40  func CollectionViewListDisclosureCell.item.modify // modifyCoroutine 
-	0x590b0  func CollectionViewListDisclosureCell.textLabel.getter // getter 
-	0x590d0  func CollectionViewListDisclosureCell.detailTextLabel.getter // getter 
-	0x59200  func CollectionViewListDisclosureCell.showDisclosureIndicator.getter // getter 
-	0x59230  func CollectionViewListDisclosureCell.showDisclosureIndicator.setter // setter 
-	0x59360  func CollectionViewListDisclosureCell.showDisclosureIndicator.modify // modifyCoroutine 
-	0x5e660  func CollectionViewListDisclosureCell.itemUpdated() // method 
-	0x59500  func CollectionViewListDisclosureCell.setUpSubviews() // method 
-	0x59ac0  func CollectionViewListDisclosureCell.setUpConstraints() // method 
-	0x59b50  func CollectionViewListDisclosureCell.didSelectCell(_:in:) // method 
-	0x59ce0  func CollectionViewListDisclosureCell.setUpHorizontalLayoutConstraints() // method 
-	0x5b180  func CollectionViewListDisclosureCell.setUpVerticalLayoutConstraints() // method 
-	0x5cc30  func CollectionViewListDisclosureCell.verticalLabelLayout.getter // getter 
+	0x501b0  func CollectionViewListDisclosureCell.item.getter // getter 
+	0x501f0  func CollectionViewListDisclosureCell.item.setter // setter 
+	0x50260  func CollectionViewListDisclosureCell.item.modify // modifyCoroutine 
+	0x50390  func CollectionViewListDisclosureCell.textLabel.getter // getter 
+	0x503b0  func CollectionViewListDisclosureCell.detailTextLabel.getter // getter 
+	0x504b0  func CollectionViewListDisclosureCell.showDisclosureIndicator.getter // getter 
+	0x504e0  func CollectionViewListDisclosureCell.showDisclosureIndicator.setter // setter 
+	0x50550  func CollectionViewListDisclosureCell.showDisclosureIndicator.modify // modifyCoroutine 
+	0x54f90  func CollectionViewListDisclosureCell.itemUpdated() // method 
+	0x505f0  func CollectionViewListDisclosureCell.setUpSubviews() // method 
+	0x50b00  func CollectionViewListDisclosureCell.setUpConstraints() // method 
+	0x50b90  func CollectionViewListDisclosureCell.didSelectCell(_:in:) // method 
+	0x50c80  func CollectionViewListDisclosureCell.observeDetailTextChanges() // method 
+	0x50f50  func CollectionViewListDisclosureCell.setUpHorizontalLayoutConstraints() // method 
+	0x52490  func CollectionViewListDisclosureCell.setUpVerticalLayoutConstraints() // method 
+	0x53ea0  func CollectionViewListDisclosureCell.verticalLabelLayout.getter // getter 
  }
 
  struct HealthExperienceUI.CloudSyncAlert {
@@ -1578,30 +1636,32 @@
  class HealthExperienceUI.SearchViewController : CompoundDataSourceCollectionViewController {
 
 	// Properties
-	var $__lazy_storage_$_mainStore : HealthExperienceStore? // +0x40 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_mainStore : ð // +0x40 (0x28)
 	let layoutManager : SearchLayoutManager // +0x68 (0x8)
-	var $__lazy_storage_$_dataSources : SearchDataSourceProvider? // +0x70 (0x8)
-	var $__lazy_storage_$_spotlightSearch : SpotlightSearch<SearchResult>? // +0x78 (0x8)
-	var $__lazy_storage_$_searchHandler : SearchHandler? // +0x80 (0x8)
+	var $__lazy_storage_$_dataSources : SearchDataSourceProvider // +0x70 (0x8)
+	var $__lazy_storage_$_spotlightSearch : SpotlightSearch // +0x78 (0x8)
+	var $__lazy_storage_$_searchHandler : SearchHandler // +0x80 (0x8)
 	var $__lazy_storage_$_searchResultsCompletionHandler : ()? // +0x88 (0x10)
 	var $__lazy_storage_$_searchController : UISearchController? // +0x98 (0x8)
 	var searchState : State // +0xa0 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x64150  @objc SearchViewController.viewDidLoad <stripped>
-	0x64760  @objc SearchViewController.initWithCollectionViewLayout: <stripped>
-	0x649a0  @objc SearchViewController.initWithNibName:bundle: <stripped>
-	0x64a60  @objc SearchViewController.initWithCoder: <stripped>
-	0x64b70  @objc SearchViewController..cxx_destruct <stripped>
+	0x598e0  @objc SearchViewController.viewDidLoad <stripped>
+	0x59fb0  @objc SearchViewController.initWithCollectionViewLayout: <stripped>
+	0x5a0a0  @objc SearchViewController.initWithNibName:bundle: <stripped>
+	0x5a190  @objc SearchViewController.initWithCoder: <stripped>
+	0x59eb0  @objc SearchViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x62e10  func SearchViewController.dataSources.getter // getter 
-	0x63010  func SearchViewController.spotlightSearch.getter // getter 
-	0x631e0  func SearchViewController.searchHandler.getter // getter 
-	0x63550  func SearchViewController.searchController.getter // getter 
-	0x635f0  func SearchViewController.searchController.setter // setter 
-	0x63610  func SearchViewController.searchController.modify // modifyCoroutine 
-	0x636f0  func SearchViewController.isUserSearching.getter // getter 
+	0x58840  func SearchViewController.mainStore.getter // getter 
+	0x58a00  func SearchViewController.dataSources.getter // getter 
+	0x58ad0  func SearchViewController.spotlightSearch.getter // getter 
+	0x58c60  func SearchViewController.searchHandler.getter // getter 
+	0x58e00  func SearchViewController.searchController.getter // getter 
+	0x58ea0  func SearchViewController.searchController.setter // setter 
+	0x58ec0  func SearchViewController.searchController.modify // modifyCoroutine 
+	0x58fa0  func SearchViewController.isUserSearching.getter // getter 
  }
 
  enum HealthExperienceUI.State {
@@ -1614,56 +1674,62 @@
  class HealthExperienceUI.InteractiveFeedItemGeneratorManager : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var availablePlugins : [String : FeedItemGenerationPluginInfo]? // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var availablePlugins : String // +0x8 (0x8)
 	var storageContext : NSManagedObjectContext? // +0x10 (0x8)
 	var healthStore : HKHealthStore? // +0x18 (0x8)
-	var favoritesProvider : FavoritesProvider? // +0x20 (0x8)
-	var dataSource : SectionedDataSource? // +0x28 (0x28)
-	var dateRange : DateInterval? // +0x0 (0x0)
-	var eventHandler : weak SectionedDataSourceEventHandler? // +0x736f5f5f (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var favoritesProvider : ßï // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataSource : {ü // +0x28 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dateRange : Ñø // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var eventHandler : Õò // +0x63675f5f (0x10)
 	var $__lazy_storage_$_identifier : String? // +0x0 (0x10)
-	var runningPrefetchOperations : [IndexPath : NSOperation] // +0x6e697274 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var runningPrefetchOperations :  empty-list  // +0x74706563 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6a670  @objc InteractiveFeedItemGeneratorManager.init <stripped>
-	0x6a6d0  @objc InteractiveFeedItemGeneratorManager..cxx_destruct <stripped>
+	0x5f3d0  @objc InteractiveFeedItemGeneratorManager.init <stripped>
+	0x5f0d0  @objc InteractiveFeedItemGeneratorManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x681d0  func InteractiveFeedItemGeneratorManager.availablePlugins.getter // getter 
-	0x68210  func InteractiveFeedItemGeneratorManager.availablePlugins.setter // setter 
-	0x68260  func InteractiveFeedItemGeneratorManager.availablePlugins.modify // modifyCoroutine 
-	0x682a0  func InteractiveFeedItemGeneratorManager.storageContext.getter // getter 
-	0x682c0  func InteractiveFeedItemGeneratorManager.storageContext.setter // setter 
-	0x682e0  func InteractiveFeedItemGeneratorManager.storageContext.modify // modifyCoroutine 
-	0x68320  func InteractiveFeedItemGeneratorManager.healthStore.getter // getter 
-	0x68340  func InteractiveFeedItemGeneratorManager.healthStore.setter // setter 
-	0x68360  func InteractiveFeedItemGeneratorManager.healthStore.modify // modifyCoroutine 
-	0x683a0  func InteractiveFeedItemGeneratorManager.favoritesProvider.getter // getter 
-	0x68400  func InteractiveFeedItemGeneratorManager.favoritesProvider.setter // setter 
-	0x68460  func InteractiveFeedItemGeneratorManager.favoritesProvider.modify // modifyCoroutine 
-	0x684a0  func InteractiveFeedItemGeneratorManager.dataSource.getter // getter 
-	0x684c0  func InteractiveFeedItemGeneratorManager.dataSource.setter // setter 
-	0x68510  func InteractiveFeedItemGeneratorManager.dataSource.modify // modifyCoroutine 
-	0x68560  func InteractiveFeedItemGeneratorManager.dateRange.getter // getter 
-	0x685c0  func InteractiveFeedItemGeneratorManager.dateRange.setter // setter 
-	0x686d0  func InteractiveFeedItemGeneratorManager.dateRange.modify // modifyCoroutine 
-	0x68710  func InteractiveFeedItemGeneratorManager.eventHandler.getter // getter 
-	0x68750  func InteractiveFeedItemGeneratorManager.eventHandler.setter // setter 
-	0x687b0  func InteractiveFeedItemGeneratorManager.eventHandler.modify // modifyCoroutine 
-	0x688a0  func InteractiveFeedItemGeneratorManager.identifier.getter // getter 
-	0x68a60  func InteractiveFeedItemGeneratorManager.identifier.setter // setter 
-	0x68a90  func InteractiveFeedItemGeneratorManager.identifier.modify // modifyCoroutine 
-	0x68c40  func InteractiveFeedItemGeneratorManager.setup(availablePlugins:storageContext:healthStore:dataSource:dateRange:) // method 
-	0x68e40  func <stripped> // method 
-	0x69470  func <stripped> // method 
-	0x69aa0  func <stripped> // method 
+	0x5d240  func InteractiveFeedItemGeneratorManager.availablePlugins.getter // getter 
+	0x5d280  func InteractiveFeedItemGeneratorManager.availablePlugins.setter // setter 
+	0x5d2d0  func InteractiveFeedItemGeneratorManager.availablePlugins.modify // modifyCoroutine 
+	0x5d310  func InteractiveFeedItemGeneratorManager.storageContext.getter // getter 
+	0x5d330  func InteractiveFeedItemGeneratorManager.storageContext.setter // setter 
+	0x5d350  func InteractiveFeedItemGeneratorManager.storageContext.modify // modifyCoroutine 
+	0x5d390  func InteractiveFeedItemGeneratorManager.healthStore.getter // getter 
+	0x5d3b0  func InteractiveFeedItemGeneratorManager.healthStore.setter // setter 
+	0x5d3d0  func InteractiveFeedItemGeneratorManager.healthStore.modify // modifyCoroutine 
+	0x5d410  func InteractiveFeedItemGeneratorManager.favoritesProvider.getter // getter 
+	0x5d470  func InteractiveFeedItemGeneratorManager.favoritesProvider.setter // setter 
+	0x5d4d0  func InteractiveFeedItemGeneratorManager.favoritesProvider.modify // modifyCoroutine 
+	0x5d510  func InteractiveFeedItemGeneratorManager.dataSource.getter // getter 
+	0x5d530  func InteractiveFeedItemGeneratorManager.dataSource.setter // setter 
+	0x5d580  func InteractiveFeedItemGeneratorManager.dataSource.modify // modifyCoroutine 
+	0x5d5d0  func InteractiveFeedItemGeneratorManager.dateRange.getter // getter 
+	0x5d630  func InteractiveFeedItemGeneratorManager.dateRange.setter // setter 
+	0x5d740  func InteractiveFeedItemGeneratorManager.dateRange.modify // modifyCoroutine 
+	0x5d780  func InteractiveFeedItemGeneratorManager.eventHandler.getter // getter 
+	0x5d7c0  func InteractiveFeedItemGeneratorManager.eventHandler.setter // setter 
+	0x5d820  func InteractiveFeedItemGeneratorManager.eventHandler.modify // modifyCoroutine 
+	0x5d910  func InteractiveFeedItemGeneratorManager.identifier.getter // getter 
+	0x5dad0  func InteractiveFeedItemGeneratorManager.identifier.setter // setter 
+	0x5db00  func InteractiveFeedItemGeneratorManager.identifier.modify // modifyCoroutine 
+	0x5dc70  func InteractiveFeedItemGeneratorManager.setup(availablePlugins:storageContext:healthStore:dataSource:dateRange:) // method 
+	0x5de70  func <stripped> // method 
+	0x5e390  func <stripped> // method 
+	0x5e850  func <stripped> // method 
  }
 
  class HealthExperienceUI.AlertVerticalSeparator : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x6bdd0  @objc AlertVerticalSeparator.drawRect: <stripped>
-	0x6bdf0  @objc AlertVerticalSeparator.initWithFrame: <stripped>
-	0x6be70  @objc AlertVerticalSeparator.initWithCoder: <stripped>
+	0x60a10  @objc AlertVerticalSeparator.drawRect: <stripped>
+	0x60a60  @objc AlertVerticalSeparator.initWithFrame: <stripped>
+	0x60ad0  @objc AlertVerticalSeparator.initWithCoder: <stripped>
  }
 
  class HealthExperienceUI.ColorVendor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1681,7 +1747,7 @@
 	let sectionIdentifer : String
 
 	// Swift methods
-	0x6cfe0  func <stripped> // method 
+	0x61d40  func <stripped> // method 
  }
 
  class HealthExperienceUI.AllHighlightCategoriesButtonDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1691,21 +1757,22 @@
 	var title : String?
 
 	// Swift methods
-	0x6d200  func AllHighlightCategoriesButtonDataSourceItem.reuseIdentifier.getter // getter 
-	0x6d240  func AllHighlightCategoriesButtonDataSourceItem.reuseIdentifier.setter // setter 
-	0x6d280  func AllHighlightCategoriesButtonDataSourceItem.reuseIdentifier.modify // modifyCoroutine 
-	0x6d2b0  func AllHighlightCategoriesButtonDataSourceItem.title.getter // getter 
-	0x6d2f0  func AllHighlightCategoriesButtonDataSourceItem.title.setter // setter 
-	0x6d340  func AllHighlightCategoriesButtonDataSourceItem.title.modify // modifyCoroutine 
-	0x6d370  class func AllHighlightCategoriesButtonDataSourceItem.__allocating_init(title:) // init 
-	0x6d4d0  func AllHighlightCategoriesButtonDataSourceItem.hash(into:) // method 
-	0x6d5d0  func AllHighlightCategoriesButtonDataSourceItem.hashValue.getter // getter 
+	0x61ef0  func AllHighlightCategoriesButtonDataSourceItem.reuseIdentifier.getter // getter 
+	0x61f30  func AllHighlightCategoriesButtonDataSourceItem.reuseIdentifier.setter // setter 
+	0x61f70  func AllHighlightCategoriesButtonDataSourceItem.reuseIdentifier.modify // modifyCoroutine 
+	0x61fa0  func AllHighlightCategoriesButtonDataSourceItem.title.getter // getter 
+	0x61fe0  func AllHighlightCategoriesButtonDataSourceItem.title.setter // setter 
+	0x62050  func AllHighlightCategoriesButtonDataSourceItem.title.modify // modifyCoroutine 
+	0x62080  class func AllHighlightCategoriesButtonDataSourceItem.__allocating_init(title:) // init 
+	0x621c0  func AllHighlightCategoriesButtonDataSourceItem.hash(into:) // method 
+	0x622c0  func AllHighlightCategoriesButtonDataSourceItem.hashValue.getter // getter 
  }
 
  class HealthExperienceUI.AllHighlightsExperienceDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let store : HealthExperienceStore
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let store : ö
 	let keyword : String
 
 	// Swift methods
@@ -1714,25 +1781,26 @@
  class HealthExperienceUI.AllHighlightsDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var store : HealthExperienceStore // +0x10 (0x28)
-	var hkType : HKObjectType // +0x38 (0x8)
-	var hideShowAll : Bool // +0x40 (0x1)
-	var collectionView : weak UICollectionView? // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var store : ö
+	var hkType : HKObjectType
+	var hideShowAll : Bool
+	var collectionView : weak UICollectionView?
 
 	// Swift methods
-	0x6d9a0  func AllHighlightsDataSourceProvider.store.getter // getter 
-	0x6d9e0  func AllHighlightsDataSourceProvider.store.setter // setter 
-	0x6da30  func AllHighlightsDataSourceProvider.store.modify // modifyCoroutine 
-	0x6da60  func AllHighlightsDataSourceProvider.hkType.getter // getter 
-	0x6da90  func AllHighlightsDataSourceProvider.hkType.setter // setter 
-	0x6dad0  func AllHighlightsDataSourceProvider.hkType.modify // modifyCoroutine 
-	0x6db00  func AllHighlightsDataSourceProvider.hideShowAll.getter // getter 
-	0x6db30  func AllHighlightsDataSourceProvider.hideShowAll.setter // setter 
-	0x6db60  func AllHighlightsDataSourceProvider.hideShowAll.modify // modifyCoroutine 
-	0x6c8b0  class func AllHighlightsDataSourceProvider.__allocating_init(for:hideShowAll:store:collectionView:) // init 
-	0x6dda0  func AllHighlightsDataSourceProvider.selectedDataSources(for:) // method 
-	0x6ddb0  func <stripped> // method 
-	0x6e3d0  func <stripped> // method 
+	0x62980  func AllHighlightsDataSourceProvider.store.getter // getter 
+	0x629c0  func AllHighlightsDataSourceProvider.store.setter // setter 
+	0x62a10  func AllHighlightsDataSourceProvider.store.modify // modifyCoroutine 
+	0x62a40  func AllHighlightsDataSourceProvider.hkType.getter // getter 
+	0x62a70  func AllHighlightsDataSourceProvider.hkType.setter // setter 
+	0x62ab0  func AllHighlightsDataSourceProvider.hkType.modify // modifyCoroutine 
+	0x62ae0  func AllHighlightsDataSourceProvider.hideShowAll.getter // getter 
+	0x62b10  func AllHighlightsDataSourceProvider.hideShowAll.setter // setter 
+	0x62b40  func AllHighlightsDataSourceProvider.hideShowAll.modify // modifyCoroutine 
+	0x61750  class func AllHighlightsDataSourceProvider.__allocating_init(for:hideShowAll:store:collectionView:) // init 
+	0x62d60  func AllHighlightsDataSourceProvider.selectedDataSources(for:) // method 
+	0x62d70  func <stripped> // method 
+	0x63250  func <stripped> // method 
  }
 
  class HealthExperienceUI.AllHighlightsExperienceDataSource {
@@ -1740,18 +1808,19 @@
  class HealthExperienceUI.ChromeHostView : HostView {
 
 	// Properties
-	var header : TileHeader? // +0x60 (0x10)
+	var header : TileHeader // +0x60 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x716d0  @objc ChromeHostView.initWithFrame: <stripped>
-	0x71910  @objc ChromeHostView.initWithCoder: <stripped>
-	0x721f0  @objc ChromeHostView.traitCollectionDidChange: <stripped>
-	0x722b0  @objc ChromeHostView..cxx_destruct <stripped>
+	0x65ac0  @objc ChromeHostView.initWithFrame: <stripped>
+	0x65c60  @objc ChromeHostView.initWithCoder: <stripped>
+	0x66620  @objc ChromeHostView.traitCollectionDidChange: <stripped>
+	0x666c0  @objc ChromeHostView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x713d0  func ChromeHostView.header.getter // getter 
-	0x71ac0  func <stripped> // method 
-	0x71d10  func <stripped> // method 
+	0x658f0  func ChromeHostView.header.getter // getter 
+	0x65d10  func <stripped> // method 
+	0x65fa0  func <stripped> // method 
+	0x661c0  func <stripped> // method 
  }
 
  class HealthExperienceUI.PlatterView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1760,9 +1829,9 @@
 	var isHighlighted : Bool // +0x8 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x72df0  @objc PlatterView.awakeFromNib <stripped>
-	0x72e20  @objc PlatterView.initWithFrame: <stripped>
-	0x72eb0  @objc PlatterView.initWithCoder: <stripped>
+	0x67120  @objc PlatterView.awakeFromNib <stripped>
+	0x67180  @objc PlatterView.initWithFrame: <stripped>
+	0x671f0  @objc PlatterView.initWithCoder: <stripped>
 
 	// Swift methods
  }
@@ -1771,92 +1840,100 @@
  class HealthExperienceUI.EditFavoritesCellView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
 	let label : DynamicFontLabel // +0x30 (0x8)
 	let imageView : UIImageView // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x75120  @objc EditFavoritesCellView.initWithFrame: <stripped>
-	0x75150  @objc EditFavoritesCellView.initWithCoder: <stripped>
-	0x75d30  @objc EditFavoritesCellView..cxx_destruct <stripped>
+	0x69040  @objc EditFavoritesCellView.initWithFrame: <stripped>
+	0x69070  @objc EditFavoritesCellView.initWithCoder: <stripped>
+	0x69a20  @objc EditFavoritesCellView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x74a00  func EditFavoritesCellView.item.getter // getter 
-	0x74a40  func EditFavoritesCellView.item.setter // setter 
-	0x74aa0  func EditFavoritesCellView.item.modify // modifyCoroutine 
-	0x74be0  func <stripped> // getter 
-	0x75190  func <stripped> // method 
-	0x75ab0  func <stripped> // method 
+	0x68950  func EditFavoritesCellView.item.getter // getter 
+	0x68990  func EditFavoritesCellView.item.setter // setter 
+	0x689f0  func EditFavoritesCellView.item.modify // modifyCoroutine 
+	0x68b20  func <stripped> // getter 
+	0x690b0  func <stripped> // method 
+	0x697f0  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeTileHeaderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var chromeHostView : weak ChromeHostView? // +0x8 (0x8)
+	var chromeHostView : ChromeHostView // +0x8 (0x8)
 	var heightConstraint : NSLayoutConstraint? // +0x10 (0x8)
-	var currentTileHeaderDetailKind : TileHeaderDetailKind? // +0x0 (0x0)
-	var dataSource : TileHeaderDataSource? // +0x45545f5f (0x28)
-	var titleLabel : DynamicFontLabel? // +0x0 (0x8)
-	var detailLabel : DynamicFontLabel? // +0xf0bb0 (0x8)
-	var accessoryLabel : DynamicFontLabel? // +0x8c (0x8)
-	var detailContainerView : UIView? // +0xf0bb0 (0x8)
+	var currentTileHeaderDetailKind : TileHeaderDetailKind // +0x0 (0x0)
+	var dataSource : TileHeaderDataSource // +0x45545f5f (0x28)
+	var titleLabel : DynamicFontLabel // +0x0 (0x8)
+	var detailLabel : DynamicFontLabel // +0xe7928 (0x8)
+	var accessoryLabel : DynamicFontLabel // +0x20 (0x8)
+	var detailContainerView : UIView? // +0xe7928 (0x8)
 	var $__lazy_storage_$_accessoryImage : UIImage?? // +0x0 (0x8)
-	let minimumViewHeight : CGFloat // +0x0 (0x8)
-	let titleToTop : CGFloat // +0x2 (0x8)
-	let titleToBottom : CGFloat // +0x0 (0x8)
-	let titleToAccessory : CGFloat // +0x6f635f5f (0x8)
-	let titleToDetail : CGFloat // +0x0 (0x8)
-	let detailToAccessory : CGFloat // +0x45545f5f (0x8)
-	var glyphBaselineOffset : CGFloat // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumViewHeight : Y // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleToTop : Y // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleToBottom : Y // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleToAccessory : Y // +0x736f5f5f (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleToDetail : Y // +0x6e697274 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let detailToAccessory : Y // +0x45545f5f (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var glyphBaselineOffset : Y // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x76c50  @objc DataTypeTileHeaderView.initWithFrame: <stripped>
-	0x76c80  @objc DataTypeTileHeaderView.initWithCoder: <stripped>
-	0x774a0  @objc DataTypeTileHeaderView.didReceiveSignificantTimeChangeNotification: <stripped>
-	0x7a9e0  @objc DataTypeTileHeaderView.traitCollectionDidChange: <stripped>
-	0x7b930  @objc DataTypeTileHeaderView.updateTitleText <stripped>
-	0x7c8d0  @objc DataTypeTileHeaderView..cxx_destruct <stripped>
+	0x6a960  @objc DataTypeTileHeaderView.initWithFrame: <stripped>
+	0x6a990  @objc DataTypeTileHeaderView.initWithCoder: <stripped>
+	0x6b100  @objc DataTypeTileHeaderView.didReceiveSignificantTimeChangeNotification: <stripped>
+	0x6eb20  @objc DataTypeTileHeaderView.traitCollectionDidChange: <stripped>
+	0x6f900  @objc DataTypeTileHeaderView.updateTitleText <stripped>
+	0x70750  @objc DataTypeTileHeaderView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x76510  func DataTypeTileHeaderView.chromeHostView.getter // getter 
-	0x76550  func DataTypeTileHeaderView.chromeHostView.setter // setter 
-	0x765a0  func DataTypeTileHeaderView.chromeHostView.modify // modifyCoroutine 
-	0x76680  func DataTypeTileHeaderView.dataSource.getter // getter 
-	0x766c0  func DataTypeTileHeaderView.dataSource.setter // setter 
-	0x76760  func DataTypeTileHeaderView.dataSource.modify // modifyCoroutine 
-	0x76cc0  func DataTypeTileHeaderView.setDataSource(_:) // method 
-	0x77020  func <stripped> // method 
-	0x77170  func <stripped> // method 
-	0x77540  func DataTypeTileHeaderView.updateDataSource(_:) // method 
-	0x77740  func <stripped> // method 
-	0x77970  func DataTypeTileHeaderView.titleLabel.getter // getter 
-	0x77990  func DataTypeTileHeaderView.titleLabel.setter // setter 
-	0x779b0  func DataTypeTileHeaderView.titleLabel.modify // modifyCoroutine 
-	0x779f0  func DataTypeTileHeaderView.detailLabel.getter // getter 
-	0x77a10  func DataTypeTileHeaderView.detailLabel.setter // setter 
-	0x77a30  func DataTypeTileHeaderView.detailLabel.modify // modifyCoroutine 
-	0x77a70  func DataTypeTileHeaderView.accessoryLabel.getter // getter 
-	0x77a90  func DataTypeTileHeaderView.accessoryLabel.setter // setter 
-	0x77ab0  func DataTypeTileHeaderView.accessoryLabel.modify // modifyCoroutine 
-	0x77af0  func DataTypeTileHeaderView.detailContainerView.getter // getter 
-	0x77b50  func DataTypeTileHeaderView.detailContainerView.setter // setter 
-	0x77bb0  func DataTypeTileHeaderView.detailContainerView.modify // modifyCoroutine 
-	0x77c00  func DataTypeTileHeaderView.configure(_:) // method 
-	0x78b40  func <stripped> // method 
-	0x79260  func <stripped> // method 
-	0x79c30  func <stripped> // method 
-	0x7aa30  func <stripped> // method 
-	0x7ab80  func <stripped> // method 
-	0x7aca0  func <stripped> // method 
-	0x7b020  func <stripped> // method 
-	0x7b270  func <stripped> // method 
-	0x7b430  func <stripped> // method 
-	0x7b960  func DataTypeTileHeaderView.detailText.getter // getter 
-	0x7bd30  func <stripped> // getter 
-	0x7bef0  func <stripped> // getter 
-	0x7c090  func <stripped> // getter 
-	0x7c290  func <stripped> // method 
-	0x7c630  func <stripped> // method 
+	0x6a220  func DataTypeTileHeaderView.chromeHostView.getter // getter 
+	0x6a260  func DataTypeTileHeaderView.chromeHostView.setter // setter 
+	0x6a2b0  func DataTypeTileHeaderView.chromeHostView.modify // modifyCoroutine 
+	0x6a390  func DataTypeTileHeaderView.dataSource.getter // getter 
+	0x6a3d0  func DataTypeTileHeaderView.dataSource.setter // setter 
+	0x6a470  func DataTypeTileHeaderView.dataSource.modify // modifyCoroutine 
+	0x6a9d0  func DataTypeTileHeaderView.setDataSource(_:) // method 
+	0x6ad30  func <stripped> // method 
+	0x6ae80  func <stripped> // method 
+	0x6b1a0  func DataTypeTileHeaderView.updateDataSource(_:) // method 
+	0x6b390  func <stripped> // method 
+	0x6b550  func DataTypeTileHeaderView.titleLabel.getter // getter 
+	0x6b570  func DataTypeTileHeaderView.titleLabel.setter // setter 
+	0x6b590  func DataTypeTileHeaderView.titleLabel.modify // modifyCoroutine 
+	0x6b5d0  func DataTypeTileHeaderView.detailLabel.getter // getter 
+	0x6b5f0  func DataTypeTileHeaderView.detailLabel.setter // setter 
+	0x6b610  func DataTypeTileHeaderView.detailLabel.modify // modifyCoroutine 
+	0x6b650  func DataTypeTileHeaderView.accessoryLabel.getter // getter 
+	0x6b670  func DataTypeTileHeaderView.accessoryLabel.setter // setter 
+	0x6b690  func DataTypeTileHeaderView.accessoryLabel.modify // modifyCoroutine 
+	0x6b6d0  func DataTypeTileHeaderView.detailContainerView.getter // getter 
+	0x6b730  func DataTypeTileHeaderView.detailContainerView.setter // setter 
+	0x6b790  func DataTypeTileHeaderView.detailContainerView.modify // modifyCoroutine 
+	0x6b7e0  func DataTypeTileHeaderView.configure(_:) // method 
+	0x6c880  func <stripped> // method 
+	0x6d080  func <stripped> // method 
+	0x6dc00  func <stripped> // method 
+	0x6eb70  func <stripped> // method 
+	0x6ec90  func <stripped> // method 
+	0x6edb0  func <stripped> // method 
+	0x6f0a0  func <stripped> // method 
+	0x6f2d0  func <stripped> // method 
+	0x6f480  func <stripped> // method 
+	0x6f930  func DataTypeTileHeaderView.detailText.getter // getter 
+	0x6fcd0  func <stripped> // getter 
+	0x6fe50  func <stripped> // getter 
+	0x6ffb0  func <stripped> // getter 
+	0x70170  func <stripped> // method 
+	0x704f0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.DefaultBehaviours: Behaviours {
@@ -1877,19 +1954,19 @@
 	var $__lazy_storage_$_queue : NSOperationQueue? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7f500  @objc InteractiveGenerationListener.dealloc <stripped>
-	0x80330  @objc InteractiveGenerationListener.didBecomeActiveWithNote: <stripped>
-	0x80450  @objc InteractiveGenerationListener.willResignActiveWithNote: <stripped>
-	0x80c40  @objc InteractiveGenerationListener.majorInteractionNotificationReceivedWithNote: <stripped>
-	0x80d60  @objc InteractiveGenerationListener.init <stripped>
-	0x7f5b0  @objc InteractiveGenerationListener..cxx_destruct <stripped>
+	0x730b0  @objc InteractiveGenerationListener.dealloc <stripped>
+	0x73b90  @objc InteractiveGenerationListener.didBecomeActiveWithNote: <stripped>
+	0x73cb0  @objc InteractiveGenerationListener.willResignActiveWithNote: <stripped>
+	0x74310  @objc InteractiveGenerationListener.majorInteractionNotificationReceivedWithNote: <stripped>
+	0x74410  @objc InteractiveGenerationListener.init <stripped>
+	0x73140  @objc InteractiveGenerationListener..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7f5d0  func InteractiveGenerationListener.start() // method 
-	0x7f750  func <stripped> // method 
-	0x7f980  func <stripped> // method 
-	0x800d0  func InteractiveGenerationListener.cancelOperations() // method 
-	0x80570  func <stripped> // method 
+	0x73160  func InteractiveGenerationListener.start() // method 
+	0x73280  func <stripped> // method 
+	0x73430  func <stripped> // method 
+	0x739c0  func InteractiveGenerationListener.cancelOperations() // method 
+	0x73dd0  func <stripped> // method 
  }
 
  class HealthExperienceUI.HostView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1897,36 +1974,39 @@
 	// Properties
 	var recreateViewControllerOnHostedFeedItemChange : Bool // +0x8 (0x1)
 	var recreateViewControllerOnNextChange : Bool // +0x9 (0x1)
-	var userDataObserver : NSKeyValueObservation? // +0x10 (0x8)
-	var currentUserInterface : UserInterface? // +0x18 (0x11)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var userDataObserver : ï // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var currentUserInterface : 7í // +0x18 (0x11)
 	var currentFeedItemUniqueIdentifier : String? // +0x30 (0x10)
 	var parentViewController : weak UIViewController? // +0x40 (0x8)
-	var hostedFeedItem : FeedItem? // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var hostedFeedItem : ½î // +0x48 (0x8)
 	var hostedViewController : UIViewController? // +0x50 (0x8)
 	var hostedView : UIView? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x83660  @objc HostView.initWithFrame: <stripped>
-	0x83700  @objc HostView.initWithCoder: <stripped>
-	0x83790  @objc HostView..cxx_destruct <stripped>
+	0x765d0  @objc HostView.initWithFrame: <stripped>
+	0x76670  @objc HostView.initWithCoder: <stripped>
+	0x766e0  @objc HostView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x80ef0  func HostView.parentViewController.getter // getter 
-	0x80f30  func HostView.parentViewController.setter // setter 
-	0x80f50  func HostView.parentViewController.modify // modifyCoroutine 
-	0x81000  func HostView.pluginInfo.getter // getter 
-	0x80ed0  func HostView.hostedViewTopAnchor.getter // getter 
-	0x81060  func HostView.hostedViewBottomAnchor.getter // getter 
-	0x81080  func HostView.hostedFeedItem.getter // getter 
-	0x810a0  func HostView.hostedFeedItem.setter // setter 
-	0x810c0  func HostView.hostedFeedItem.modify // modifyCoroutine 
-	0x81140  func HostView.hostedViewController.getter // getter 
-	0x811a0  func HostView.hostedViewController.setter // setter 
-	0x81230  func HostView.hostedViewController.modify // modifyCoroutine 
-	0x81340  func HostView.makeViewController(for:) // method 
-	0x81cf0  func <stripped> // method 
-	0x834c0  func HostView.didAddHostedViewAsSubview() // method 
-	0x834d0  func HostView.hostedViewControllerContextDidChange(for:) // method 
+	0x74780  func HostView.parentViewController.getter // getter 
+	0x747c0  func HostView.parentViewController.setter // setter 
+	0x747e0  func HostView.parentViewController.modify // modifyCoroutine 
+	0x74860  func HostView.pluginInfo.getter // getter 
+	0x74760  func HostView.hostedViewTopAnchor.getter // getter 
+	0x748c0  func HostView.hostedViewBottomAnchor.getter // getter 
+	0x748e0  func HostView.hostedFeedItem.getter // getter 
+	0x74900  func HostView.hostedFeedItem.setter // setter 
+	0x74920  func HostView.hostedFeedItem.modify // modifyCoroutine 
+	0x749a0  func HostView.hostedViewController.getter // getter 
+	0x74a00  func HostView.hostedViewController.setter // setter 
+	0x74a90  func HostView.hostedViewController.modify // modifyCoroutine 
+	0x74b60  func HostView.makeViewController(for:) // method 
+	0x75170  func <stripped> // method 
+	0x76450  func HostView.didAddHostedViewAsSubview() // method 
+	0x76460  func HostView.hostedViewControllerContextDidChange(for:) // method 
  }
 
  enum HealthExperienceUI.PluginContextCreationError {
@@ -1945,9 +2025,9 @@
 	var $__lazy_storage_$_favoritesObserver : FavoritesObserver
 
 	// Swift methods
-	0x875c0  func <stripped> // method 
-	0x877b0  func <stripped> // method 
-	0x878d0  func <stripped> // method 
+	0x798a0  func <stripped> // method 
+	0x79a20  func <stripped> // method 
+	0x79b40  func <stripped> // method 
  }
 
  class HealthExperienceUI.FavoritesObserver : NSObject /usr/lib/libobjc.A.dylib {
@@ -1956,9 +2036,9 @@
 	var updateHandler : (_:)
 
 	// ObjC -> Swift bridged methods
-	0x88190  @objc FavoritesObserver.favoriteDisplayTypesControllerDidUpdate: <stripped>
-	0x88210  @objc FavoritesObserver.init <stripped>
-	0x88290  @objc FavoritesObserver..cxx_destruct <stripped>
+	0x7a490  @objc FavoritesObserver.favoriteDisplayTypesControllerDidUpdate: <stripped>
+	0x7a510  @objc FavoritesObserver.init <stripped>
+	0x7a570  @objc FavoritesObserver..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1974,32 +2054,32 @@
 	var labelBottomConstraint : NSLayoutConstraint? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x89db0  @objc MultilineButton.initWithFrame: <stripped>
-	0x89ee0  @objc MultilineButton.initWithCoder: <stripped>
-	0x8a5e0  @objc MultilineButton.updateConstraints <stripped>
-	0x8a660  @objc MultilineButton..cxx_destruct <stripped>
+	0x7c1b0  @objc MultilineButton.initWithFrame: <stripped>
+	0x7c2e0  @objc MultilineButton.initWithCoder: <stripped>
+	0x7ca10  @objc MultilineButton.updateConstraints <stripped>
+	0x7ca70  @objc MultilineButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0x89f20  func MultilineButton.setUpLabel() // method 
+	0x7c320  func MultilineButton.setUpLabel() // method 
  }
 
  class HealthExperienceUI.CategoryViewController : DataTypeDetailViewController {
 
 	// Properties
-	var typeGroup : HKTypeGroup? // +0x50 (0x30)
+	var typeGroup : HKTypeGroup // +0x50 (0x30)
 
 	// ObjC -> Swift bridged methods
-	0x8aa40  @objc CategoryViewController.init <stripped>
-	0x8ac20  @objc CategoryViewController.initWithCoder: <stripped>
-	0x8b2b0  @objc CategoryViewController.viewDidLoad <stripped>
-	0x8b660  @objc CategoryViewController.initWithCollectionViewLayout: <stripped>
-	0x8b730  @objc CategoryViewController.initWithNibName:bundle: <stripped>
-	0x8b7e0  @objc CategoryViewController..cxx_destruct <stripped>
+	0x7ce30  @objc CategoryViewController.init <stripped>
+	0x7cfd0  @objc CategoryViewController.initWithCoder: <stripped>
+	0x7d5d0  @objc CategoryViewController.viewDidLoad <stripped>
+	0x7d940  @objc CategoryViewController.initWithCollectionViewLayout: <stripped>
+	0x7da10  @objc CategoryViewController.initWithNibName:bundle: <stripped>
+	0x7daa0  @objc CategoryViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8a770  func CategoryViewController.typeGroup.getter // getter 
-	0x8a840  func CategoryViewController.typeGroup.setter // setter 
-	0x8a8e0  func CategoryViewController.typeGroup.modify // modifyCoroutine 
+	0x7cb70  func CategoryViewController.typeGroup.getter // getter 
+	0x7cc40  func CategoryViewController.typeGroup.setter // setter 
+	0x7cce0  func CategoryViewController.typeGroup.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.CloudSyncFlow : NSObject /usr/lib/libobjc.A.dylib {
@@ -2008,15 +2088,15 @@
 	var delegate : CloudSyncFlowDelegate // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x8cb70  @objc CloudSyncFlow.init <stripped>
-	0x8cc50  @objc CloudSyncFlow..cxx_destruct <stripped>
+	0x7ed70  @objc CloudSyncFlow.init <stripped>
+	0x7ecc0  @objc CloudSyncFlow..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8c2c0  func CloudSyncFlow.delegate.getter // getter 
-	0x8c300  func CloudSyncFlow.delegate.setter // setter 
-	0x8c380  func CloudSyncFlow.delegate.modify // modifyCoroutine 
-	0x8c470  func CloudSyncFlow.executeFlow(for:on:) // method 
-	0x8c940  func <stripped> // method 
+	0x7e4c0  func CloudSyncFlow.delegate.getter // getter 
+	0x7e500  func CloudSyncFlow.delegate.setter // setter 
+	0x7e580  func CloudSyncFlow.delegate.modify // modifyCoroutine 
+	0x7e670  func CloudSyncFlow.executeFlow(for:on:) // method 
+	0x7eb00  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailUnitCell : CollectionViewListDisclosureCell {
@@ -2025,48 +2105,49 @@
 	var parentViewController : UIViewController? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8e000  @objc DataTypeDetailUnitCell.itemUpdated <stripped>
-	0x8e230  @objc DataTypeDetailUnitCell.initWithFrame: <stripped>
-	0x8e2e0  @objc DataTypeDetailUnitCell.initWithCoder: <stripped>
-	0x8e3f0  @objc DataTypeDetailUnitCell..cxx_destruct <stripped>
+	0x7fe10  @objc DataTypeDetailUnitCell.itemUpdated <stripped>
+	0x80040  @objc DataTypeDetailUnitCell.initWithFrame: <stripped>
+	0x800d0  @objc DataTypeDetailUnitCell.initWithCoder: <stripped>
+	0x80020  @objc DataTypeDetailUnitCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8e030  func <stripped> // method 
+	0x7fe40  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailViewController : CompoundDataSourceCollectionViewController {
 
 	// Properties
-	var chartContext : ChartContext? // +0x40 (0x8)
-	var $__lazy_storage_$_personalizedFeedTrainer : PersonalizedFeedTrainer? // +0x48 (0x8)
+	var chartContext : ChartContext // +0x40 (0x8)
+	var $__lazy_storage_$_personalizedFeedTrainer : PersonalizedFeedTrainer // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8f3c0  @objc DataTypeDetailViewController.initWithCoder: <stripped>
-	0x8f500  @objc DataTypeDetailViewController.initWithCollectionViewLayout: <stripped>
-	0x8f760  @objc DataTypeDetailViewController.initWithNibName:bundle: <stripped>
-	0x8ff40  @objc DataTypeDetailViewController.viewDidLoad <stripped>
-	0x90080  @objc DataTypeDetailViewController.viewWillAppear: <stripped>
-	0x902b0  @objc DataTypeDetailViewController.viewDidDisappear: <stripped>
-	0x90320  @objc DataTypeDetailViewController.scrollViewDidScroll: <stripped>
-	0x90590  @objc DataTypeDetailViewController.encodeRestorableStateWithCoder: <stripped>
-	0x90ad0  @objc DataTypeDetailViewController.decodeRestorableStateWithCoder: <stripped>
-	0x90ba0  @objc DataTypeDetailViewController..cxx_destruct <stripped>
+	0x80fd0  @objc DataTypeDetailViewController.initWithCoder: <stripped>
+	0x810f0  @objc DataTypeDetailViewController.initWithCollectionViewLayout: <stripped>
+	0x81250  @objc DataTypeDetailViewController.initWithNibName:bundle: <stripped>
+	0x81930  @objc DataTypeDetailViewController.viewDidLoad <stripped>
+	0x81a50  @objc DataTypeDetailViewController.viewWillAppear: <stripped>
+	0x81c10  @objc DataTypeDetailViewController.viewDidDisappear: <stripped>
+	0x81c60  @objc DataTypeDetailViewController.scrollViewDidScroll: <stripped>
+	0x81e70  @objc DataTypeDetailViewController.encodeRestorableStateWithCoder: <stripped>
+	0x82340  @objc DataTypeDetailViewController.decodeRestorableStateWithCoder: <stripped>
+	0x823f0  @objc DataTypeDetailViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8ea10  func DataTypeDetailViewController.providedPresentation.getter // getter 
-	0x8ea20  func DataTypeDetailViewController.chartContext.getter // getter 
-	0x8ea60  func DataTypeDetailViewController.chartContext.setter // setter 
-	0x8eab0  func DataTypeDetailViewController.chartContext.modify // modifyCoroutine 
-	0x8eb00  func DataTypeDetailViewController.personalizedFeedTrainer.getter // getter 
-	0x8ebc0  func DataTypeDetailViewController.personalizedFeedTrainer.setter // setter 
-	0x8ebe0  func DataTypeDetailViewController.personalizedFeedTrainer.modify // modifyCoroutine 
-	0x8ece0  func DataTypeDetailViewController.startUserActivity() // method 
+	0x80810  func DataTypeDetailViewController.providedPresentation.getter // getter 
+	0x80820  func DataTypeDetailViewController.chartContext.getter // getter 
+	0x80860  func DataTypeDetailViewController.chartContext.setter // setter 
+	0x808b0  func DataTypeDetailViewController.chartContext.modify // modifyCoroutine 
+	0x80900  func DataTypeDetailViewController.personalizedFeedTrainer.getter // getter 
+	0x809b0  func DataTypeDetailViewController.personalizedFeedTrainer.setter // setter 
+	0x809d0  func DataTypeDetailViewController.personalizedFeedTrainer.modify // modifyCoroutine 
+	0x80ac0  func DataTypeDetailViewController.startUserActivity() // method 
  }
 
  struct HealthExperienceUI.LayoutConfiguration {
 
 	// Properties
-	var interItemInset : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var interItemInset : Y // +0x0
 	var itemHeight : NSCollectionLayoutDimension // +0x8
 	var itemWidth : NSCollectionLayoutDimension // +0x10
 	var headerWidth : NSCollectionLayoutDimension? // +0x18
@@ -2083,8 +2164,9 @@
 	var headerHeight : NSCollectionLayoutDimension? // +0x8
 	var edgeInsets : NSDirectionalEdgeInsets // +0x10
 	var additionalContentInsets : NSDirectionalEdgeInsets // +0x30
-	var estimatedRowHeight : CGFloat // +0x50
-	var separatorInsets : NSDirectionalEdgeInsets? // +0x58
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var estimatedRowHeight : Y // +0x50
+	var separatorInsets : NSDirectionalEdgeInsets // +0x58
 	var respectsLayoutMargins : Bool // +0x79
  }
 
@@ -2095,10 +2177,10 @@
 	var reuseIdentifier : String // +0x48 (0x10)
 
 	// Swift methods
-	0x95be0  func HighlightsCategoryItem.reuseIdentifier.getter // getter 
-	0x95c20  func HighlightsCategoryItem.reuseIdentifier.setter // setter 
-	0x95c60  func HighlightsCategoryItem.reuseIdentifier.modify // modifyCoroutine 
-	0x95ca0  class func HighlightsCategoryItem.__allocating_init(type:) // init 
+	0x86f30  func HighlightsCategoryItem.reuseIdentifier.getter // getter 
+	0x86f70  func HighlightsCategoryItem.reuseIdentifier.setter // setter 
+	0x86fb0  func HighlightsCategoryItem.reuseIdentifier.modify // modifyCoroutine 
+	0x86ff0  class func HighlightsCategoryItem.__allocating_init(type:) // init 
  }
 
  enum HealthExperienceUI.ItemType {
@@ -2114,50 +2196,51 @@
 	let shouldAnimateDiffableCollectionViewAdaptorKey : String // +0x58 (0x10)
 
 	// Swift methods
-	0x96ea0  func <stripped> // method 
+	0x88310  func <stripped> // method 
  }
 
  class HealthExperienceUI.DefaultHeaderCollectionReusableView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 	var $__lazy_storage_$_detailButton : UIButton? // +0x8 (0x8)
-	var $__lazy_storage_$_titleLabel : DynamicFontLabel? // +0x10 (0x8)
+	var $__lazy_storage_$_titleLabel : DynamicFontLabel // +0x10 (0x8)
 	var customConstraints : [NSLayoutConstraint] // +0x18 (0x8)
 	var $__lazy_storage_$_detailButtonHeightConstraint : NSLayoutConstraint? // +0x20 (0x8)
-	var item : SectionedDataSourceItem? // +0x28 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x28 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x98160  @objc DefaultHeaderCollectionReusableView.initWithFrame: <stripped>
-	0x98190  @objc DefaultHeaderCollectionReusableView.initWithCoder: <stripped>
-	0x984d0  @objc DefaultHeaderCollectionReusableView.traitCollectionDidChange: <stripped>
-	0x99950  @objc DefaultHeaderCollectionReusableView.detailButtonTapped: <stripped>
-	0x99a00  @objc DefaultHeaderCollectionReusableView..cxx_destruct <stripped>
+	0x89380  @objc DefaultHeaderCollectionReusableView.initWithFrame: <stripped>
+	0x893b0  @objc DefaultHeaderCollectionReusableView.initWithCoder: <stripped>
+	0x896c0  @objc DefaultHeaderCollectionReusableView.traitCollectionDidChange: <stripped>
+	0x8aac0  @objc DefaultHeaderCollectionReusableView.detailButtonTapped: <stripped>
+	0x8ab50  @objc DefaultHeaderCollectionReusableView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x974b0  func DefaultHeaderCollectionReusableView.headerItem.getter // getter 
-	0x97d20  func DefaultHeaderCollectionReusableView.item.getter // getter 
-	0x97d60  func DefaultHeaderCollectionReusableView.item.setter // setter 
-	0x97df0  func DefaultHeaderCollectionReusableView.item.modify // modifyCoroutine 
-	0x981b0  func DefaultHeaderCollectionReusableView.commonInit() // method 
-	0x98520  func DefaultHeaderCollectionReusableView.updateFonts() // method 
-	0x98660  func DefaultHeaderCollectionReusableView.setUpConstraints() // method 
-	0x987d0  func <stripped> // method 
-	0x99080  func <stripped> // method 
-	0x99880  func <stripped> // method 
+	0x887a0  func DefaultHeaderCollectionReusableView.headerItem.getter // getter 
+	0x88f90  func DefaultHeaderCollectionReusableView.item.getter // getter 
+	0x88fd0  func DefaultHeaderCollectionReusableView.item.setter // setter 
+	0x89060  func DefaultHeaderCollectionReusableView.item.modify // modifyCoroutine 
+	0x893d0  func DefaultHeaderCollectionReusableView.commonInit() // method 
+	0x89710  func DefaultHeaderCollectionReusableView.updateFonts() // method 
+	0x89850  func DefaultHeaderCollectionReusableView.setUpConstraints() // method 
+	0x899b0  func <stripped> // method 
+	0x8a240  func <stripped> // method 
+	0x8a9e0  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailActivityChartCell : DataTypeDetailChartCell {
 	// ObjC -> Swift bridged methods
-	0x9a670  @objc DataTypeDetailActivityChartCell.initWithFrame: <stripped>
-	0x9a6f0  @objc DataTypeDetailActivityChartCell.initWithCoder: <stripped>
+	0x8b4a0  @objc DataTypeDetailActivityChartCell.initWithFrame: <stripped>
+	0x8b510  @objc DataTypeDetailActivityChartCell.initWithCoder: <stripped>
 
 	// Swift methods
  }
 
  class HealthExperienceUI.AllHighlightCategoriesTableViewAdaptor : SectionedTableViewAdaptor {
 	// ObjC -> Swift bridged methods
-	0x9ac10  @objc AllHighlightCategoriesTableViewAdaptor.respondsToSelector: <stripped>
-	0x9acc0  @objc AllHighlightCategoriesTableViewAdaptor.init <stripped>
+	0x8b930  @objc AllHighlightCategoriesTableViewAdaptor.respondsToSelector: <stripped>
+	0x8b9e0  @objc AllHighlightCategoriesTableViewAdaptor.init <stripped>
  }
 
  class HealthExperienceUI.AllHighlightCategoriesViewController : CompoundDataSourceViewController {
@@ -2166,18 +2249,18 @@
 	let allHighlightsAdaptor : AllHighlightCategoriesTableViewAdaptor
 
 	// ObjC -> Swift bridged methods
-	0x9b3e0  @objc AllHighlightCategoriesViewController.viewDidLoad <stripped>
-	0x9b420  @objc AllHighlightCategoriesViewController.tableView:viewForHeaderInSection: <stripped>
-	0x9b500  @objc AllHighlightCategoriesViewController.tableView:heightForHeaderInSection: <stripped>
-	0x9b5b0  @objc AllHighlightCategoriesViewController.tableView:viewForFooterInSection: <stripped>
-	0x9b620  @objc AllHighlightCategoriesViewController.tableView:heightForFooterInSection: <stripped>
-	0x9b730  @objc AllHighlightCategoriesViewController.initWithStyle: <stripped>
-	0x9b950  @objc AllHighlightCategoriesViewController.initWithNibName:bundle: <stripped>
-	0x9ba90  @objc AllHighlightCategoriesViewController.initWithCoder: <stripped>
-	0x9bbd0  @objc AllHighlightCategoriesViewController..cxx_destruct <stripped>
+	0x8c040  @objc AllHighlightCategoriesViewController.viewDidLoad <stripped>
+	0x8c080  @objc AllHighlightCategoriesViewController.tableView:viewForHeaderInSection: <stripped>
+	0x8c140  @objc AllHighlightCategoriesViewController.tableView:heightForHeaderInSection: <stripped>
+	0x8c1e0  @objc AllHighlightCategoriesViewController.tableView:viewForFooterInSection: <stripped>
+	0x8c230  @objc AllHighlightCategoriesViewController.tableView:heightForFooterInSection: <stripped>
+	0x8c340  @objc AllHighlightCategoriesViewController.initWithStyle: <stripped>
+	0x8c480  @objc AllHighlightCategoriesViewController.initWithNibName:bundle: <stripped>
+	0x8c5e0  @objc AllHighlightCategoriesViewController.initWithCoder: <stripped>
+	0x8c700  @objc AllHighlightCategoriesViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x9ad30  func AllHighlightCategoriesViewController.adaptor(for:) // method 
+	0x8ba10  func AllHighlightCategoriesViewController.adaptor(for:) // method 
  }
 
  struct HealthExperienceUI.UnitDataSourceItem {
@@ -2190,93 +2273,102 @@
  class HealthExperienceUI.UnitCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
 	var titleLabel : weak UILabel? // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9c6b0  @objc UnitCell.titleLabel <stripped>
-	0x9c6d0  @objc UnitCell.setTitleLabel: <stripped>
-	0x9c7a0  @objc UnitCell.initWithStyle:reuseIdentifier: <stripped>
-	0x9c870  @objc UnitCell.initWithCoder: <stripped>
-	0x9c900  @objc UnitCell..cxx_destruct <stripped>
+	0x8d210  @objc UnitCell.titleLabel <stripped>
+	0x8d230  @objc UnitCell.setTitleLabel: <stripped>
+	0x8d360  @objc UnitCell.initWithStyle:reuseIdentifier: <stripped>
+	0x8d430  @objc UnitCell.initWithCoder: <stripped>
+	0x8d280  @objc UnitCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0x9c460  func UnitCell.item.getter // getter 
-	0x9c4a0  func UnitCell.item.setter // setter 
-	0x9c530  func UnitCell.item.modify // modifyCoroutine 
+	0x8d010  func UnitCell.item.getter // getter 
+	0x8d050  func UnitCell.item.setter // setter 
+	0x8d0e0  func UnitCell.item.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.ShadowView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x9cef0  @objc ShadowView.initWithFrame: <stripped>
-	0x9cf90  @objc ShadowView.initWithCoder: <stripped>
-	0x9d280  @objc ShadowView.layoutSubviews <stripped>
+	0x8d980  @objc ShadowView.initWithFrame: <stripped>
+	0x8da10  @objc ShadowView.initWithCoder: <stripped>
+	0x8dce0  @objc ShadowView.layoutSubviews <stripped>
 
 	// Swift methods
-	0x9d020  func <stripped> // method 
+	0x8daa0  func <stripped> // method 
  }
 
  class HealthExperienceUI.FeedItemListDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let hkTypes : [HKObjectType]? // +0x10 (0x8)
-	let contentKinds : [ContentKind] // +0x18 (0x8)
-	var store : HealthExperienceStore // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let contentKinds :  empty-list  // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var store : ö // +0x20 (0x28)
 
 	// Swift methods
-	0x9ec50  class func FeedItemListDataSourceProvider.__allocating_init(for:contentKinds:store:) // init 
-	0x9ed20  func FeedItemListDataSourceProvider.selectedDataSources(for:) // method 
-	0x9edb0  func FeedItemListDataSourceProvider.makeMatchingFeedItemsListDataSource() // method 
+	0x8f720  class func FeedItemListDataSourceProvider.__allocating_init(for:contentKinds:store:) // init 
+	0x8f7a0  func FeedItemListDataSourceProvider.selectedDataSources(for:) // method 
+	0x8f7f0  func FeedItemListDataSourceProvider.makeMatchingFeedItemsListDataSource() // method 
  }
 
  class HealthExperienceUI.SearchLayoutManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa0dc0  func SearchLayoutManager.layoutSectionFor(_:section:layoutEnvironment:) // method 
+	0x915a0  func SearchLayoutManager.layoutSectionFor(_:section:layoutEnvironment:) // method 
  }
 
  class HealthExperienceUI.SearchDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var $__lazy_storage_$_categoriesDataSource : HideableDataSource<SearchDataSource>? // +0x10 (0x8)
-	var $__lazy_storage_$_searchResultsDataSource : HideableDataSource<SearchDataSource>? // +0x18 (0x8)
-	let mainStore : HealthExperienceStore // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_categoriesDataSource : ­è // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_searchResultsDataSource : ­è // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mainStore : ö // +0x20 (0x28)
 	let behaviours : Behaviours // +0x48 (0x28)
-	var $__lazy_storage_$_searchResultsController : NSFetchedResultsController<FeedItem>? // +0x70 (0x8)
-	var $__lazy_storage_$_categoriesController : NSFetchedResultsController<FeedItem>? // +0x78 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_searchResultsController :  empty-list  // +0x70 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_categoriesController :  empty-list  // +0x78 (0x8)
 
 	// Swift methods
-	0xa3560  func <stripped> // getter 
-	0xa37b0  func <stripped> // getter 
+	0x93850  func <stripped> // getter 
+	0x93a60  func <stripped> // getter 
  }
 
  class HealthExperienceUI.EditFavoritesTableViewController : CompoundDataSourceViewController {
 
 	// Properties
-	var editFavoritesDataSource : PrimarySecondaryDataSource<EditFavoritesDataSource, EditFavoritesEmptyStateDataSource>? // +0x28 (0x8)
-	var favoritesController : WDFavoriteDisplayTypesController? // +0x30 (0x8)
-	var $__lazy_storage_$_segmentedControl : UISegmentedControl? // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var editFavoritesDataSource : Íè
+	var favoritesController : WDFavoriteDisplayTypesController?
+	var $__lazy_storage_$_segmentedControl : UISegmentedControl?
 
 	// ObjC -> Swift bridged methods
-	0xa3de0  @objc EditFavoritesTableViewController.init <stripped>
-	0xa3e60  @objc EditFavoritesTableViewController.initWithCoder: <stripped>
-	0xa4520  @objc EditFavoritesTableViewController.viewDidLoad <stripped>
-	0xa4bc0  @objc EditFavoritesTableViewController.doneButtonTapped <stripped>
-	0xa5120  @objc EditFavoritesTableViewController.segmentedControlChanged <stripped>
-	0xa5150  @objc EditFavoritesTableViewController.tableView:didSelectRowAtIndexPath: <stripped>
-	0xa5200  @objc EditFavoritesTableViewController.tableView:viewForHeaderInSection: <stripped>
-	0xa5270  @objc EditFavoritesTableViewController.initWithStyle: <stripped>
-	0xa52a0  @objc EditFavoritesTableViewController.initWithNibName:bundle: <stripped>
-	0xa5340  @objc EditFavoritesTableViewController..cxx_destruct <stripped>
+	0x93f80  @objc EditFavoritesTableViewController.init <stripped>
+	0x93ff0  @objc EditFavoritesTableViewController.initWithCoder: <stripped>
+	0x94620  @objc EditFavoritesTableViewController.viewDidLoad <stripped>
+	0x94cb0  @objc EditFavoritesTableViewController.doneButtonTapped <stripped>
+	0x95100  @objc EditFavoritesTableViewController.segmentedControlChanged <stripped>
+	0x95130  @objc EditFavoritesTableViewController.tableView:didSelectRowAtIndexPath: <stripped>
+	0x951e0  @objc EditFavoritesTableViewController.tableView:viewForHeaderInSection: <stripped>
+	0x95250  @objc EditFavoritesTableViewController.initWithStyle: <stripped>
+	0x95280  @objc EditFavoritesTableViewController.initWithNibName:bundle: <stripped>
+	0x95320  @objc EditFavoritesTableViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa4550  func <stripped> // method 
-	0xa4be0  func <stripped> // method 
+	0x94650  func <stripped> // method 
+	0x94cd0  func <stripped> // method 
  }
 
  class HealthExperienceUI.EditFavoritesTableViewAdaptor : SectionedTableViewAdaptor {
 	// ObjC -> Swift bridged methods
-	0xa5510  @objc EditFavoritesTableViewAdaptor.respondsToSelector: <stripped>
-	0xa55c0  @objc EditFavoritesTableViewAdaptor.init <stripped>
+	0x95440  @objc EditFavoritesTableViewAdaptor.respondsToSelector: <stripped>
+	0x95520  @objc EditFavoritesTableViewAdaptor.init <stripped>
  }
 
  class HealthExperienceUI.HealthExperienceStoreIncrementalCoreSpotlightOperation : type metadata for HealthExperienceStoreCoreSpotlightOperation /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience { }
@@ -2293,7 +2385,8 @@
 
 	// Properties
 	case error : CloudSyncError
-	case backedUp : (lastBackedUpDate: Date)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case backedUp : ÿå
 	case disabled  
 	case notBackedUp  
  }
@@ -2340,14 +2433,6 @@
 	case activityChartActiveEnergy  
  }
 
- struct HealthExperienceUI.Component: DataTypeDetailViewControllerCoreComponent {
-
-	// Properties
-	let kind : DataTypeDetailViewController.StaticKind // +0x0
-	let hkType : HKObjectType // +0x8
-	var titleOverride : String? // +0x10
- }
-
  struct HealthExperienceUI.DescriptionComponent: DataTypeDetailViewControllerCoreComponent {
 
 	// Properties
@@ -2355,6 +2440,14 @@
 	var summaryText : String // +0x10
 	var attributionText : NSAttributedString? // +0x20
 	var hasAttributionLink : Bool? // +0x28
+ }
+
+ struct HealthExperienceUI.Component: DataTypeDetailViewControllerCoreComponent {
+
+	// Properties
+	let kind : StaticKind // +0x0
+	let hkType : HKObjectType // +0x8
+	var titleOverride : String? // +0x10
  }
 
  struct HealthExperienceUI.DefaultCloudSyncStateStore: CloudSyncStateStore {
@@ -2366,56 +2459,60 @@
  class HealthExperienceUI.CloudSyncStateObserver : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var _cachedFirstRestoreState : Atomic<CloudSyncRestoreState?> // +0x8 (0x8)
-	var firstRestoreStateChangeHandler : (_:)? // +0x10 (0x10)
-	var stateChangeHandler : (_:)? // +0x20 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _cachedFirstRestoreState : ó	 // +0x8 (0x8)
+	var firstRestoreStateChangeHandler : CloudSyncRestoreState // +0x10 (0x10)
+	var stateChangeHandler : CloudSyncState // +0x20 (0x10)
 	var cloudSyncObserver : HKCloudSyncObserver? // +0x30 (0x8)
 	var store : CloudSyncStateStore // +0x38 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xafcd0  @objc CloudSyncStateObserver.init <stripped>
-	0xafd50  @objc CloudSyncStateObserver..cxx_destruct <stripped>
+	0x9e950  @objc CloudSyncStateObserver.init <stripped>
+	0x9e890  @objc CloudSyncStateObserver..cxx_destruct <stripped>
 
 	// Swift methods
-	0xaf2d0  func CloudSyncStateObserver.cachedFirstRestoreState.getter // getter 
-	0xaf310  func CloudSyncStateObserver.firstRestoreStateChangeHandler.getter // getter 
-	0xaf330  func CloudSyncStateObserver.firstRestoreStateChangeHandler.setter // setter 
-	0xaf350  func CloudSyncStateObserver.firstRestoreStateChangeHandler.modify // modifyCoroutine 
-	0xaf3a0  func CloudSyncStateObserver.stateChangeHandler.getter // getter 
-	0xaf430  func CloudSyncStateObserver.stateChangeHandler.setter // setter 
-	0xaf4c0  func CloudSyncStateObserver.stateChangeHandler.modify // modifyCoroutine 
-	0xaf500  func <stripped> // modifyCoroutine 
-	0xaf540  func CloudSyncStateObserver.lastBackedUpDate.getter // getter 
-	0xaf650  class func CloudSyncStateObserver.__allocating_init(healthStore:store:) // init 
-	0xafa80  func CloudSyncStateObserver.startObservingStateChanges() // method 
-	0xafab0  func CloudSyncStateObserver.startFirstRestoreIfNeeded() // method 
+	0x9e2e0  func CloudSyncStateObserver.cachedFirstRestoreState.getter // getter 
+	0x9e320  func CloudSyncStateObserver.firstRestoreStateChangeHandler.getter // getter 
+	0x9e340  func CloudSyncStateObserver.firstRestoreStateChangeHandler.setter // setter 
+	0x9e360  func CloudSyncStateObserver.firstRestoreStateChangeHandler.modify // modifyCoroutine 
+	0x9e3b0  func CloudSyncStateObserver.stateChangeHandler.getter // getter 
+	0x9e440  func CloudSyncStateObserver.stateChangeHandler.setter // setter 
+	0x9e4d0  func CloudSyncStateObserver.stateChangeHandler.modify // modifyCoroutine 
+	0x9e510  func <stripped> // modifyCoroutine 
+	0x9e550  func CloudSyncStateObserver.lastBackedUpDate.getter // getter 
+	0x9e660  class func CloudSyncStateObserver.__allocating_init(healthStore:store:) // init 
+	0x9e6d0  func CloudSyncStateObserver.startObservingStateChanges() // method 
+	0x9e700  func CloudSyncStateObserver.startFirstRestoreIfNeeded() // method 
  }
 
  class HealthExperienceUI.PersonalizedFeedTrainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var feedItemDisplayBegan : [FeedItem : Date] // +0x10 (0x8)
-	var feedItemDurations : [FeedItem : Double] // +0x18 (0x8)
-	var tapEvents : [ModelTrainingEvent] // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var feedItemDisplayBegan :  empty-list  // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var feedItemDurations :  empty-list  // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var tapEvents :  empty-list  // +0x20 (0x8)
 	var sessionWasBackgrounded : Bool // +0x28 (0x1)
 	var delegate : PersonalizedFeedTrainerDelegate // +0x30 (0x10)
 	let dwellPolicy : DwellPolicy // +0x40 (0x18)
 
 	// ObjC -> Swift bridged methods
-	0xb7240  @objc PersonalizedFeedTrainer.appDidEnterBackground <stripped>
-	0xb7320  @objc PersonalizedFeedTrainer.appDidBecomeActive <stripped>
+	0xa5940  @objc PersonalizedFeedTrainer.appDidEnterBackground <stripped>
+	0xa5a20  @objc PersonalizedFeedTrainer.appDidBecomeActive <stripped>
 
 	// Swift methods
-	0xb44a0  class func PersonalizedFeedTrainer.__allocating_init(delegate:dwellPolicy:) // init 
-	0xb4bb0  func PersonalizedFeedTrainer.feedDidBeginDisplay() // method 
-	0xb4e20  func PersonalizedFeedTrainer.feedDidEndDisplay() // method 
-	0xb4f70  func PersonalizedFeedTrainer.visibleFeedItemsDidChange() // method 
-	0xb5020  func PersonalizedFeedTrainer.feedItemWasTapped(_:) // method 
-	0xb54f0  func <stripped> // method 
-	0xb5d00  func <stripped> // method 
-	0xb6910  func <stripped> // method 
-	0xb70d0  func <stripped> // method 
-	0xb7260  func <stripped> // method 
+	0xa2fe0  class func PersonalizedFeedTrainer.__allocating_init(delegate:dwellPolicy:) // init 
+	0xa35c0  func PersonalizedFeedTrainer.feedDidBeginDisplay() // method 
+	0xa37b0  func PersonalizedFeedTrainer.feedDidEndDisplay() // method 
+	0xa3870  func PersonalizedFeedTrainer.visibleFeedItemsDidChange() // method 
+	0xa3920  func PersonalizedFeedTrainer.feedItemWasTapped(_:) // method 
+	0xa3d10  func <stripped> // method 
+	0xa4660  func <stripped> // method 
+	0xa5190  func <stripped> // method 
+	0xa5860  func <stripped> // method 
+	0xa5960  func <stripped> // method 
  }
 
  struct HealthExperienceUI.DwellPolicy {
@@ -2430,21 +2527,22 @@
 
 	// Properties
 	var tableView : UITableView? // +0x8 (0x8)
-	var dataProvider : SectionedDataSource? // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataProvider : {ü // +0x10 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xc2d80  @objc SectionedTableViewAdaptor.tableView <stripped>
-	0xc2dd0  @objc SectionedTableViewAdaptor.setTableView: <stripped>
-	0xc2f10  @objc SectionedTableViewAdaptor.init <stripped>
-	0xc3010  @objc SectionedTableViewAdaptor..cxx_destruct <stripped>
+	0xb08b0  @objc SectionedTableViewAdaptor.tableView <stripped>
+	0xb0900  @objc SectionedTableViewAdaptor.setTableView: <stripped>
+	0xb0a20  @objc SectionedTableViewAdaptor.init <stripped>
+	0xb0af0  @objc SectionedTableViewAdaptor..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc2bd0  func SectionedTableViewAdaptor.tableView.getter // getter 
-	0xc2c10  func SectionedTableViewAdaptor.tableView.setter // setter 
-	0xc2c60  func SectionedTableViewAdaptor.tableView.modify // modifyCoroutine 
-	0xc2cb0  func SectionedTableViewAdaptor.dataProvider.getter // getter 
-	0xc2cf0  func SectionedTableViewAdaptor.dataProvider.setter // setter 
-	0xc2d40  func SectionedTableViewAdaptor.dataProvider.modify // modifyCoroutine 
+	0xb0700  func SectionedTableViewAdaptor.tableView.getter // getter 
+	0xb0740  func SectionedTableViewAdaptor.tableView.setter // setter 
+	0xb0790  func SectionedTableViewAdaptor.tableView.modify // modifyCoroutine 
+	0xb07e0  func SectionedTableViewAdaptor.dataProvider.getter // getter 
+	0xb0820  func SectionedTableViewAdaptor.dataProvider.setter // setter 
+	0xb0870  func SectionedTableViewAdaptor.dataProvider.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.DataTypeDetailFavoritesDescriptionCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2453,25 +2551,26 @@
 	var descriptionLabel : weak UILabel? // +0x8 (0x8)
 	var favoritesController : WDFavoriteDisplayTypesController? // +0x10 (0x8)
 	var parentViewController : weak UIViewController? // +0x18 (0x8)
-	var item : SectionedDataSourceItem? // +0x20 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x20 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xc4ea0  @objc DataTypeDetailFavoritesDescriptionCell.descriptionLabel <stripped>
-	0xc4ec0  @objc DataTypeDetailFavoritesDescriptionCell.setDescriptionLabel: <stripped>
-	0xc4fd0  @objc DataTypeDetailFavoritesDescriptionCell.awakeFromNib <stripped>
-	0xc5d60  @objc DataTypeDetailFavoritesDescriptionCell.initWithFrame: <stripped>
-	0xc5e00  @objc DataTypeDetailFavoritesDescriptionCell.initWithCoder: <stripped>
-	0xc5e90  @objc DataTypeDetailFavoritesDescriptionCell..cxx_destruct <stripped>
+	0xb2580  @objc DataTypeDetailFavoritesDescriptionCell.descriptionLabel <stripped>
+	0xb25a0  @objc DataTypeDetailFavoritesDescriptionCell.setDescriptionLabel: <stripped>
+	0xb2690  @objc DataTypeDetailFavoritesDescriptionCell.awakeFromNib <stripped>
+	0xb3340  @objc DataTypeDetailFavoritesDescriptionCell.initWithFrame: <stripped>
+	0xb33e0  @objc DataTypeDetailFavoritesDescriptionCell.initWithCoder: <stripped>
+	0xb3160  @objc DataTypeDetailFavoritesDescriptionCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc50a0  func <stripped> // getter 
-	0xc5420  func DataTypeDetailFavoritesDescriptionCell.parentViewController.getter // getter 
-	0xc5460  func DataTypeDetailFavoritesDescriptionCell.parentViewController.setter // setter 
-	0xc5480  func DataTypeDetailFavoritesDescriptionCell.parentViewController.modify // modifyCoroutine 
-	0xc5660  func DataTypeDetailFavoritesDescriptionCell.item.getter // getter 
-	0xc56a0  func DataTypeDetailFavoritesDescriptionCell.item.setter // setter 
-	0xc5790  func DataTypeDetailFavoritesDescriptionCell.item.modify // modifyCoroutine 
-	0xc5850  func <stripped> // method 
+	0xb2750  func <stripped> // getter 
+	0xb2aa0  func DataTypeDetailFavoritesDescriptionCell.parentViewController.getter // getter 
+	0xb2ae0  func DataTypeDetailFavoritesDescriptionCell.parentViewController.setter // setter 
+	0xb2b00  func DataTypeDetailFavoritesDescriptionCell.parentViewController.modify // modifyCoroutine 
+	0xb2c90  func DataTypeDetailFavoritesDescriptionCell.item.getter // getter 
+	0xb2cd0  func DataTypeDetailFavoritesDescriptionCell.item.setter // setter 
+	0xb2dc0  func DataTypeDetailFavoritesDescriptionCell.item.modify // modifyCoroutine 
+	0xb2e70  func <stripped> // method 
  }
 
  struct HealthExperienceUI.HeaderWithIconItem {
@@ -2486,7 +2585,7 @@
  enum HealthExperienceUI.ImageKind {
 
 	// Properties
-	case symbol : UIImage.Symbol
+	case symbol : Symbol
 	case custom : UIImage
  }
 
@@ -2495,43 +2594,44 @@
 	// Properties
 	var title : weak UILabel? // +0x8 (0x8)
 	var iconImageView : weak UIImageView? // +0x10 (0x8)
-	var iconImageViewWidthConstraint : weak ScaledLabelConstraint? // +0x18 (0x8)
-	var iconImageViewHeightConstraint : weak ScaledLabelConstraint? // +0x20 (0x8)
+	var iconImageViewWidthConstraint : ScaledLabelConstraint // +0x18 (0x8)
+	var iconImageViewHeightConstraint : ScaledLabelConstraint // +0x20 (0x8)
 	var iconImageViewBaselineConstraint : weak NSLayoutConstraint? // +0x28 (0x8)
 	var iconImageViewCenterYConstraint : weak NSLayoutConstraint? // +0x30 (0x8)
-	var item : SectionedDataSourceItem? // +0x38 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x38 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xc63a0  @objc TableHeaderWithIconView.title <stripped>
-	0xc63e0  @objc TableHeaderWithIconView.setTitle: <stripped>
-	0xc6490  @objc TableHeaderWithIconView.iconImageView <stripped>
-	0xc6540  @objc TableHeaderWithIconView.setIconImageView: <stripped>
-	0xc66f0  @objc TableHeaderWithIconView.iconImageViewWidthConstraint <stripped>
-	0xc6710  @objc TableHeaderWithIconView.setIconImageViewWidthConstraint: <stripped>
-	0xc6730  @objc TableHeaderWithIconView.iconImageViewHeightConstraint <stripped>
-	0xc6750  @objc TableHeaderWithIconView.setIconImageViewHeightConstraint: <stripped>
-	0xc6770  @objc TableHeaderWithIconView.iconImageViewBaselineConstraint <stripped>
-	0xc6790  @objc TableHeaderWithIconView.setIconImageViewBaselineConstraint: <stripped>
-	0xc67b0  @objc TableHeaderWithIconView.iconImageViewCenterYConstraint <stripped>
-	0xc67d0  @objc TableHeaderWithIconView.setIconImageViewCenterYConstraint: <stripped>
-	0xc6e20  @objc TableHeaderWithIconView.awakeFromNib <stripped>
-	0xc77b0  @objc TableHeaderWithIconView.initWithReuseIdentifier: <stripped>
-	0xc7870  @objc TableHeaderWithIconView.initWithCoder: <stripped>
-	0xc7900  @objc TableHeaderWithIconView..cxx_destruct <stripped>
+	0xb38a0  @objc TableHeaderWithIconView.title <stripped>
+	0xb38e0  @objc TableHeaderWithIconView.setTitle: <stripped>
+	0xb3990  @objc TableHeaderWithIconView.iconImageView <stripped>
+	0xb3a40  @objc TableHeaderWithIconView.setIconImageView: <stripped>
+	0xb3bf0  @objc TableHeaderWithIconView.iconImageViewWidthConstraint <stripped>
+	0xb3c10  @objc TableHeaderWithIconView.setIconImageViewWidthConstraint: <stripped>
+	0xb3c30  @objc TableHeaderWithIconView.iconImageViewHeightConstraint <stripped>
+	0xb3c50  @objc TableHeaderWithIconView.setIconImageViewHeightConstraint: <stripped>
+	0xb3c70  @objc TableHeaderWithIconView.iconImageViewBaselineConstraint <stripped>
+	0xb3c90  @objc TableHeaderWithIconView.setIconImageViewBaselineConstraint: <stripped>
+	0xb3cb0  @objc TableHeaderWithIconView.iconImageViewCenterYConstraint <stripped>
+	0xb3cd0  @objc TableHeaderWithIconView.setIconImageViewCenterYConstraint: <stripped>
+	0xb42a0  @objc TableHeaderWithIconView.awakeFromNib <stripped>
+	0xb4bc0  @objc TableHeaderWithIconView.initWithReuseIdentifier: <stripped>
+	0xb4c80  @objc TableHeaderWithIconView.initWithCoder: <stripped>
+	0xb4a90  @objc TableHeaderWithIconView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc63c0  func TableHeaderWithIconView.title.getter // getter 
-	0xc6400  func TableHeaderWithIconView.title.setter // setter 
-	0xc6420  func TableHeaderWithIconView.title.modify // modifyCoroutine 
-	0xc64f0  func TableHeaderWithIconView.iconImageView.getter // getter 
-	0xc65a0  func TableHeaderWithIconView.iconImageView.setter // setter 
-	0xc6610  func TableHeaderWithIconView.iconImageView.modify // modifyCoroutine 
-	0xc6860  func TableHeaderWithIconView.item.getter // getter 
-	0xc68a0  func TableHeaderWithIconView.item.setter // setter 
-	0xc6900  func TableHeaderWithIconView.item.modify // modifyCoroutine 
-	0xc6a40  func <stripped> // getter 
-	0xc6e50  func <stripped> // method 
-	0xc7570  func TableHeaderWithIconView.setSymbolImage(glyphName:) // method 
+	0xb38c0  func TableHeaderWithIconView.title.getter // getter 
+	0xb3900  func TableHeaderWithIconView.title.setter // setter 
+	0xb3920  func TableHeaderWithIconView.title.modify // modifyCoroutine 
+	0xb39f0  func TableHeaderWithIconView.iconImageView.getter // getter 
+	0xb3aa0  func TableHeaderWithIconView.iconImageView.setter // setter 
+	0xb3b10  func TableHeaderWithIconView.iconImageView.modify // modifyCoroutine 
+	0xb3d60  func TableHeaderWithIconView.item.getter // getter 
+	0xb3da0  func TableHeaderWithIconView.item.setter // setter 
+	0xb3e00  func TableHeaderWithIconView.item.modify // modifyCoroutine 
+	0xb3f30  func <stripped> // getter 
+	0xb42d0  func <stripped> // method 
+	0xb48d0  func TableHeaderWithIconView.setSymbolImage(glyphName:) // method 
  }
 
  class HealthExperienceUI.DataTypeDetailHeartbeatSeriesDisclosureItemsDataSource : type metadata for MutableArrayDataSource /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
@@ -2543,17 +2643,18 @@
  class HealthExperienceUI.AllHighlightCategoriesDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var store : HealthExperienceStore // +0x10 (0x28)
-	let typeGroups : [HKTypeGroup] // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var store : ö // +0x10 (0x28)
+	let typeGroups : HKTypeGroup // +0x38 (0x8)
 
 	// Swift methods
-	0xc9f00  func AllHighlightCategoriesDataSourceProvider.store.getter // getter 
-	0xc9f40  func AllHighlightCategoriesDataSourceProvider.store.setter // setter 
-	0xc9f90  func AllHighlightCategoriesDataSourceProvider.store.modify // modifyCoroutine 
-	0xca0b0  class func AllHighlightCategoriesDataSourceProvider.__allocating_init(typeGroups:store:) // init 
-	0xca1b0  func AllHighlightCategoriesDataSourceProvider.selectedDataSources(for:) // method 
-	0xca1c0  func <stripped> // method 
-	0xca680  func <stripped> // method 
+	0xb7480  func AllHighlightCategoriesDataSourceProvider.store.getter // getter 
+	0xb74c0  func AllHighlightCategoriesDataSourceProvider.store.setter // setter 
+	0xb7510  func AllHighlightCategoriesDataSourceProvider.store.modify // modifyCoroutine 
+	0xb7630  class func AllHighlightCategoriesDataSourceProvider.__allocating_init(typeGroups:store:) // init 
+	0xb7710  func AllHighlightCategoriesDataSourceProvider.selectedDataSources(for:) // method 
+	0xb7720  func <stripped> // method 
+	0xb7ab0  func <stripped> // method 
  }
 
  enum HealthExperienceUI.RestorationActivityType {
@@ -2593,23 +2694,25 @@
 
 	// Properties
 	var reuseIdentifier : String // +0x0
-	var hkType : HKType.Type? // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var hkType : ã // +0x10
  }
 
  class HealthExperienceUI.HealthTypeDescriptionCell : WDDisplayTypeDescriptionTableViewCell /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xcf3d0  @objc HealthTypeDescriptionCell.initWithDisplayType:showAttributionText:reuseIdentifier: <stripped>
-	0xcf540  @objc HealthTypeDescriptionCell.initWithCoder: <stripped>
-	0xcf650  @objc HealthTypeDescriptionCell..cxx_destruct <stripped>
+	0xbc2f0  @objc HealthTypeDescriptionCell.initWithDisplayType:showAttributionText:reuseIdentifier: <stripped>
+	0xbc440  @objc HealthTypeDescriptionCell.initWithCoder: <stripped>
+	0xbc200  @objc HealthTypeDescriptionCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcefc0  func HealthTypeDescriptionCell.item.getter // getter 
-	0xcf000  func HealthTypeDescriptionCell.item.setter // setter 
-	0xcf090  func HealthTypeDescriptionCell.item.modify // modifyCoroutine 
+	0xbbfd0  func HealthTypeDescriptionCell.item.getter // getter 
+	0xbc010  func HealthTypeDescriptionCell.item.setter // setter 
+	0xbc0a0  func HealthTypeDescriptionCell.item.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.SuggestedActionTileViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2631,76 +2734,78 @@
 	var actionButton : weak UIButton? // +0x70 (0x8)
 	var actionButtonTopSpacingConstraint : NSLayoutConstraint? // +0x78 (0x8)
 	var actionButtonHeightConstraint : NSLayoutConstraint? // +0x80 (0x8)
-	var suggestedActionDelegate : weak SuggestedActionDelegate? // +0x88 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var suggestedActionDelegate :  // +0x88 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xcfa20  @objc SuggestedActionTileViewController.containerView <stripped>
-	0xcfa60  @objc SuggestedActionTileViewController.setContainerView: <stripped>
-	0xcfb10  @objc SuggestedActionTileViewController.imageView <stripped>
-	0xcfb50  @objc SuggestedActionTileViewController.setImageView: <stripped>
-	0xcfc00  @objc SuggestedActionTileViewController.imageBackgroundView <stripped>
-	0xcfc40  @objc SuggestedActionTileViewController.setImageBackgroundView: <stripped>
-	0xcfd60  @objc SuggestedActionTileViewController.containerViewTopConstraint <stripped>
-	0xcfd90  @objc SuggestedActionTileViewController.setContainerViewTopConstraint: <stripped>
-	0xcfdb0  @objc SuggestedActionTileViewController.containerViewBottomConstraint <stripped>
-	0xcfde0  @objc SuggestedActionTileViewController.setContainerViewBottomConstraint: <stripped>
-	0xcfe00  @objc SuggestedActionTileViewController.imageBackgroundViewContainerViewTopConstraint <stripped>
-	0xcfe30  @objc SuggestedActionTileViewController.setImageBackgroundViewContainerViewTopConstraint: <stripped>
-	0xcfe50  @objc SuggestedActionTileViewController.imageBackgroundViewContainerViewBottomConstraint <stripped>
-	0xcfe80  @objc SuggestedActionTileViewController.setImageBackgroundViewContainerViewBottomConstraint: <stripped>
-	0xcfea0  @objc SuggestedActionTileViewController.titleLabel <stripped>
-	0xcfee0  @objc SuggestedActionTileViewController.setTitleLabel: <stripped>
-	0xcff90  @objc SuggestedActionTileViewController.bodyLabel <stripped>
-	0xcffd0  @objc SuggestedActionTileViewController.setBodyLabel: <stripped>
-	0xd0160  @objc SuggestedActionTileViewController.actionButton <stripped>
-	0xd0210  @objc SuggestedActionTileViewController.setActionButton: <stripped>
-	0xd0350  @objc SuggestedActionTileViewController.actionButtonHeightConstraint <stripped>
-	0xd0380  @objc SuggestedActionTileViewController.setActionButtonHeightConstraint: <stripped>
-	0xd06a0  @objc SuggestedActionTileViewController.loadView <stripped>
-	0xd1660  @objc SuggestedActionTileViewController.viewDidLoad <stripped>
-	0xd18b0  @objc SuggestedActionTileViewController.traitCollectionDidChange: <stripped>
-	0xd2680  @objc SuggestedActionTileViewController.viewDidLayoutSubviews <stripped>
-	0xd26c0  @objc SuggestedActionTileViewController.didTapAction: <stripped>
-	0xd26c0  @objc SuggestedActionTileViewController.didTapLink: <stripped>
-	0xd2ca0  @objc SuggestedActionTileViewController.initWithNibName:bundle: <stripped>
-	0xd2d60  @objc SuggestedActionTileViewController.initWithCoder: <stripped>
-	0xd2df0  @objc SuggestedActionTileViewController..cxx_destruct <stripped>
+	0xbc970  @objc SuggestedActionTileViewController.containerView <stripped>
+	0xbc9b0  @objc SuggestedActionTileViewController.setContainerView: <stripped>
+	0xbca60  @objc SuggestedActionTileViewController.imageView <stripped>
+	0xbcaa0  @objc SuggestedActionTileViewController.setImageView: <stripped>
+	0xbcb50  @objc SuggestedActionTileViewController.imageBackgroundView <stripped>
+	0xbcb90  @objc SuggestedActionTileViewController.setImageBackgroundView: <stripped>
+	0xbccb0  @objc SuggestedActionTileViewController.containerViewTopConstraint <stripped>
+	0xbcce0  @objc SuggestedActionTileViewController.setContainerViewTopConstraint: <stripped>
+	0xbcd00  @objc SuggestedActionTileViewController.containerViewBottomConstraint <stripped>
+	0xbcd30  @objc SuggestedActionTileViewController.setContainerViewBottomConstraint: <stripped>
+	0xbcd50  @objc SuggestedActionTileViewController.imageBackgroundViewContainerViewTopConstraint <stripped>
+	0xbcd80  @objc SuggestedActionTileViewController.setImageBackgroundViewContainerViewTopConstraint: <stripped>
+	0xbcda0  @objc SuggestedActionTileViewController.imageBackgroundViewContainerViewBottomConstraint <stripped>
+	0xbcdd0  @objc SuggestedActionTileViewController.setImageBackgroundViewContainerViewBottomConstraint: <stripped>
+	0xbcdf0  @objc SuggestedActionTileViewController.titleLabel <stripped>
+	0xbce30  @objc SuggestedActionTileViewController.setTitleLabel: <stripped>
+	0xbcee0  @objc SuggestedActionTileViewController.bodyLabel <stripped>
+	0xbcf20  @objc SuggestedActionTileViewController.setBodyLabel: <stripped>
+	0xbd0b0  @objc SuggestedActionTileViewController.actionButton <stripped>
+	0xbd160  @objc SuggestedActionTileViewController.setActionButton: <stripped>
+	0xbd2a0  @objc SuggestedActionTileViewController.actionButtonHeightConstraint <stripped>
+	0xbd2d0  @objc SuggestedActionTileViewController.setActionButtonHeightConstraint: <stripped>
+	0xbd5e0  @objc SuggestedActionTileViewController.loadView <stripped>
+	0xbe560  @objc SuggestedActionTileViewController.viewDidLoad <stripped>
+	0xbe770  @objc SuggestedActionTileViewController.traitCollectionDidChange: <stripped>
+	0xbfa80  @objc SuggestedActionTileViewController.viewDidLayoutSubviews <stripped>
+	0xbfac0  @objc SuggestedActionTileViewController.didTapAction: <stripped>
+	0xc0710  @objc SuggestedActionTileViewController.didTapLink: <stripped>
+	0xbff60  @objc SuggestedActionTileViewController.initWithNibName:bundle: <stripped>
+	0xc0050  @objc SuggestedActionTileViewController.initWithCoder: <stripped>
+	0xbfda0  @objc SuggestedActionTileViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcfa40  func SuggestedActionTileViewController.containerView.getter // getter 
-	0xcfa80  func SuggestedActionTileViewController.containerView.setter // setter 
-	0xcfaa0  func SuggestedActionTileViewController.containerView.modify // modifyCoroutine 
-	0xcfb30  func SuggestedActionTileViewController.imageView.getter // getter 
-	0xcfb70  func SuggestedActionTileViewController.imageView.setter // setter 
-	0xcfb90  func SuggestedActionTileViewController.imageView.modify // modifyCoroutine 
-	0xcfc20  func SuggestedActionTileViewController.imageBackgroundView.getter // getter 
-	0xcfc60  func SuggestedActionTileViewController.imageBackgroundView.setter // setter 
-	0xcfc80  func SuggestedActionTileViewController.imageBackgroundView.modify // modifyCoroutine 
-	0xcfec0  func SuggestedActionTileViewController.titleLabel.getter // getter 
-	0xcff00  func SuggestedActionTileViewController.titleLabel.setter // setter 
-	0xcff20  func SuggestedActionTileViewController.titleLabel.modify // modifyCoroutine 
-	0xcffb0  func SuggestedActionTileViewController.bodyLabel.getter // getter 
-	0xcfff0  func SuggestedActionTileViewController.bodyLabel.setter // setter 
-	0xd0010  func SuggestedActionTileViewController.bodyLabel.modify // modifyCoroutine 
-	0xd0080  func SuggestedActionTileViewController.linkButton.getter // getter 
-	0xd00c0  func SuggestedActionTileViewController.linkButton.setter // setter 
-	0xd0110  func SuggestedActionTileViewController.linkButton.modify // modifyCoroutine 
-	0xd01c0  func SuggestedActionTileViewController.actionButton.getter // getter 
-	0xd0270  func SuggestedActionTileViewController.actionButton.setter // setter 
-	0xd02e0  func SuggestedActionTileViewController.actionButton.modify // modifyCoroutine 
-	0xd03d0  func SuggestedActionTileViewController.suggestedActionDelegate.getter // getter 
-	0xd0410  func SuggestedActionTileViewController.suggestedActionDelegate.setter // setter 
-	0xd0470  func SuggestedActionTileViewController.suggestedActionDelegate.modify // modifyCoroutine 
-	0xd1900  func SuggestedActionTileViewController.updateButtonFonts() // method 
-	0xd1bb0  func SuggestedActionTileViewController.configure(image:title:body:linkTitle:actionTitle:) // method 
-	0xd1c50  func SuggestedActionTileViewController.configure(hero:title:body:linkTitle:actionTitle:topSpace:bottomSpace:) // method 
-	0xd1e90  func SuggestedActionTileViewController.adjustVerticalSpacingIfNecessary(topSpace:bottomSpace:) // method 
-	0xd2050  func SuggestedActionTileViewController.configure(image:imageHeight:title:body:linkTitle:actionTitle:topSpace:bottomSpace:) // method 
-	0xd26b0  func SuggestedActionTileViewController.didTapAction(_:) // method 
-	0xd2720  func SuggestedActionTileViewController.didTapLink(_:) // method 
-	0xd2730  func SuggestedActionTileViewController.buttonIsEnabled.getter // getter 
-	0xd27a0  func SuggestedActionTileViewController.buttonIsEnabled.setter // setter 
-	0xd2850  func SuggestedActionTileViewController.buttonIsEnabled.modify // modifyCoroutine 
+	0xbc990  func SuggestedActionTileViewController.containerView.getter // getter 
+	0xbc9d0  func SuggestedActionTileViewController.containerView.setter // setter 
+	0xbc9f0  func SuggestedActionTileViewController.containerView.modify // modifyCoroutine 
+	0xbca80  func SuggestedActionTileViewController.imageView.getter // getter 
+	0xbcac0  func SuggestedActionTileViewController.imageView.setter // setter 
+	0xbcae0  func SuggestedActionTileViewController.imageView.modify // modifyCoroutine 
+	0xbcb70  func SuggestedActionTileViewController.imageBackgroundView.getter // getter 
+	0xbcbb0  func SuggestedActionTileViewController.imageBackgroundView.setter // setter 
+	0xbcbd0  func SuggestedActionTileViewController.imageBackgroundView.modify // modifyCoroutine 
+	0xbce10  func SuggestedActionTileViewController.titleLabel.getter // getter 
+	0xbce50  func SuggestedActionTileViewController.titleLabel.setter // setter 
+	0xbce70  func SuggestedActionTileViewController.titleLabel.modify // modifyCoroutine 
+	0xbcf00  func SuggestedActionTileViewController.bodyLabel.getter // getter 
+	0xbcf40  func SuggestedActionTileViewController.bodyLabel.setter // setter 
+	0xbcf60  func SuggestedActionTileViewController.bodyLabel.modify // modifyCoroutine 
+	0xbcfd0  func SuggestedActionTileViewController.linkButton.getter // getter 
+	0xbd010  func SuggestedActionTileViewController.linkButton.setter // setter 
+	0xbd060  func SuggestedActionTileViewController.linkButton.modify // modifyCoroutine 
+	0xbd110  func SuggestedActionTileViewController.actionButton.getter // getter 
+	0xbd1c0  func SuggestedActionTileViewController.actionButton.setter // setter 
+	0xbd230  func SuggestedActionTileViewController.actionButton.modify // modifyCoroutine 
+	0xbd320  func SuggestedActionTileViewController.suggestedActionDelegate.getter // getter 
+	0xbd360  func SuggestedActionTileViewController.suggestedActionDelegate.setter // setter 
+	0xbd3c0  func SuggestedActionTileViewController.suggestedActionDelegate.modify // modifyCoroutine 
+	0xbe7c0  func SuggestedActionTileViewController.updateButtonFonts() // method 
+	0xbea40  func SuggestedActionTileViewController.configure(image:title:body:linkTitle:actionTitle:) // method 
+	0xbeae0  func SuggestedActionTileViewController.configure(hero:title:body:linkTitle:actionTitle:topSpace:bottomSpace:) // method 
+	0xbed20  func SuggestedActionTileViewController.setUpWith(title:body:linkTitle:actionTitle:) // method 
+	0xbf310  func SuggestedActionTileViewController.adjustVerticalSpacingIfNecessary(topSpace:bottomSpace:) // method 
+	0xbf4b0  func SuggestedActionTileViewController.configure(image:imageHeight:title:body:linkTitle:actionTitle:topSpace:bottomSpace:) // method 
+	0xbfab0  func SuggestedActionTileViewController.didTapAction(_:) // method 
+	0xbfb20  func SuggestedActionTileViewController.didTapLink(_:) // method 
+	0xbfb30  func SuggestedActionTileViewController.buttonIsEnabled.getter // getter 
+	0xbfba0  func SuggestedActionTileViewController.buttonIsEnabled.setter // setter 
+	0xbfc50  func SuggestedActionTileViewController.buttonIsEnabled.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.DataTypeDetailChartCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2708,107 +2813,120 @@
 	// Properties
 	var parentViewController : weak UIViewController? // +0x8 (0x8)
 	var chartViewController : UIViewController? // +0x10 (0x8)
-	var item : SectionedDataSourceItem? // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x18 (0x28)
 	var separatorView : UIView? // +0x40 (0x8)
 	var separatorViewHeightConstraint : NSLayoutConstraint? // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd4be0  @objc DataTypeDetailChartCell.awakeFromNib <stripped>
-	0xd5ab0  @objc DataTypeDetailChartCell.initWithFrame: <stripped>
-	0xd5b50  @objc DataTypeDetailChartCell.initWithCoder: <stripped>
-	0xd5be0  @objc DataTypeDetailChartCell..cxx_destruct <stripped>
+	0xc1900  @objc DataTypeDetailChartCell.awakeFromNib <stripped>
+	0xc2650  @objc DataTypeDetailChartCell.initWithFrame: <stripped>
+	0xc26f0  @objc DataTypeDetailChartCell.initWithCoder: <stripped>
+	0xc2760  @objc DataTypeDetailChartCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xd3950  func DataTypeDetailChartCell.parentViewController.getter // getter 
-	0xd3990  func DataTypeDetailChartCell.parentViewController.setter // setter 
-	0xd39e0  func DataTypeDetailChartCell.parentViewController.modify // modifyCoroutine 
-	0xd3ac0  func DataTypeDetailChartCell.chartViewController.getter // getter 
-	0xd3b00  func DataTypeDetailChartCell.chartViewController.setter // setter 
-	0xd3b50  func DataTypeDetailChartCell.chartViewController.modify // modifyCoroutine 
-	0xd3ba0  func DataTypeDetailChartCell.item.getter // getter 
-	0xd3be0  func DataTypeDetailChartCell.item.setter // setter 
-	0xd3c70  func DataTypeDetailChartCell.item.modify // modifyCoroutine 
-	0xd3df0  func DataTypeDetailChartCell.chartContext.getter // getter 
-	0xd4c10  func <stripped> // method 
-	0xd3f10  func <stripped> // method 
+	0xc0750  func DataTypeDetailChartCell.parentViewController.getter // getter 
+	0xc0790  func DataTypeDetailChartCell.parentViewController.setter // setter 
+	0xc07e0  func DataTypeDetailChartCell.parentViewController.modify // modifyCoroutine 
+	0xc08c0  func DataTypeDetailChartCell.chartViewController.getter // getter 
+	0xc0900  func DataTypeDetailChartCell.chartViewController.setter // setter 
+	0xc0950  func DataTypeDetailChartCell.chartViewController.modify // modifyCoroutine 
+	0xc09a0  func DataTypeDetailChartCell.item.getter // getter 
+	0xc09e0  func DataTypeDetailChartCell.item.setter // setter 
+	0xc0a70  func DataTypeDetailChartCell.item.modify // modifyCoroutine 
+	0xc0ba0  func DataTypeDetailChartCell.chartContext.getter // getter 
+	0xc1930  func <stripped> // method 
+	0xc0c80  func <stripped> // method 
  }
 
  class HealthExperienceUI.DismissibleTileHeaderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var chromeHostView : weak ChromeHostView? // +0x8 (0x8)
+	var chromeHostView : ChromeHostView // +0x8 (0x8)
 	var heightConstraint : NSLayoutConstraint? // +0x10 (0x8)
-	var dataSource : TileHeaderDataSource? // +0x18 (0x28)
-	var detailLabel : DynamicFontLabel? // +0x40 (0x8)
-	var titleLabel : DynamicFontLabel? // +0x48 (0x8)
-	var accessoryLabel : DynamicFontLabel? // +0x50 (0x8)
+	var dataSource : TileHeaderDataSource // +0x18 (0x28)
+	var detailLabel : DynamicFontLabel // +0x40 (0x8)
+	var titleLabel : DynamicFontLabel // +0x48 (0x8)
+	var accessoryLabel : DynamicFontLabel // +0x50 (0x8)
 	var detailContainerView : UIView? // +0x58 (0x8)
 	var accessorySeparator : UIView? // +0x60 (0x8)
 	var $__lazy_storage_$_accessoryImage : UIImage?? // +0x68 (0x8)
 	var title : String? // +0x70 (0x10)
-	let minimumViewHeight : CGFloat // +0x80 (0x8)
-	let titleToTop : CGFloat // +0x88 (0x8)
-	let titleToBottom : CGFloat // +0x90 (0x8)
-	let titleToDismiss : CGFloat // +0x98 (0x8)
-	let detailToTitle : CGFloat // +0xa0 (0x8)
-	let detailToSeparator : CGFloat // +0xa8 (0x8)
-	let dismissToSeparator : CGFloat // +0xb0 (0x8)
-	let dismissToTop : CGFloat // +0xb8 (0x8)
-	let dismissToBottom : CGFloat // +0xc0 (0x8)
-	let dismissToTrailing : CGFloat // +0xc8 (0x8)
-	let minimumTappableDismissWidth : CGFloat // +0xd0 (0x8)
-	let minimumTappableDismissHeight : CGFloat // +0xd8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumViewHeight : Y // +0x80 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleToTop : Y // +0x88 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleToBottom : Y // +0x90 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleToDismiss : Y // +0x98 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let detailToTitle : Y // +0xa0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let detailToSeparator : Y // +0xa8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dismissToSeparator : Y // +0xb0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dismissToTop : Y // +0xb8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dismissToBottom : Y // +0xc0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dismissToTrailing : Y // +0xc8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumTappableDismissWidth : Y // +0xd0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumTappableDismissHeight : Y // +0xd8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd68f0  @objc DismissibleTileHeaderView.didReceiveSignificantTimeChangeNotification: <stripped>
-	0xda520  @objc DismissibleTileHeaderView.traitCollectionDidChange: <stripped>
-	0xdcbb0  @objc DismissibleTileHeaderView.touchesBegan:withEvent: <stripped>
-	0xdd450  @objc DismissibleTileHeaderView.touchesEnded:withEvent: <stripped>
-	0xdd6f0  @objc DismissibleTileHeaderView.touchesCancelled:withEvent: <stripped>
-	0xddda0  @objc DismissibleTileHeaderView.initWithFrame: <stripped>
-	0xdde40  @objc DismissibleTileHeaderView.initWithCoder: <stripped>
-	0xdded0  @objc DismissibleTileHeaderView..cxx_destruct <stripped>
+	0xc33b0  @objc DismissibleTileHeaderView.didReceiveSignificantTimeChangeNotification: <stripped>
+	0xc75c0  @objc DismissibleTileHeaderView.traitCollectionDidChange: <stripped>
+	0xc97e0  @objc DismissibleTileHeaderView.touchesBegan:withEvent: <stripped>
+	0xc9ff0  @objc DismissibleTileHeaderView.touchesEnded:withEvent: <stripped>
+	0xca220  @objc DismissibleTileHeaderView.touchesCancelled:withEvent: <stripped>
+	0xca860  @objc DismissibleTileHeaderView.initWithFrame: <stripped>
+	0xca900  @objc DismissibleTileHeaderView.initWithCoder: <stripped>
+	0xca970  @objc DismissibleTileHeaderView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xd60b0  func DismissibleTileHeaderView.chromeHostView.getter // getter 
-	0xd60f0  func DismissibleTileHeaderView.chromeHostView.setter // setter 
-	0xd6140  func DismissibleTileHeaderView.chromeHostView.modify // modifyCoroutine 
-	0xd6220  func DismissibleTileHeaderView.dataSource.getter // getter 
-	0xd62c0  func DismissibleTileHeaderView.dataSource.setter // setter 
-	0xd6310  func DismissibleTileHeaderView.dataSource.modify // modifyCoroutine 
-	0xd6350  func DismissibleTileHeaderView.setDataSource(_:) // method 
-	0xd6480  func DismissibleTileHeaderView.setUpObservers(for:) // method 
-	0xd65d0  func DismissibleTileHeaderView.didReceiveSignificantTimeChangeNotification(_:) // method 
-	0xd6990  func DismissibleTileHeaderView.updateDataSource(_:) // method 
-	0xd69b0  func DismissibleTileHeaderView.cleanupSubviewsAndConstraints() // method 
-	0xd6c00  func DismissibleTileHeaderView.detailLabel.getter // getter 
-	0xd6c20  func DismissibleTileHeaderView.detailLabel.setter // setter 
-	0xd6c40  func DismissibleTileHeaderView.detailLabel.modify // modifyCoroutine 
-	0xd6c80  func DismissibleTileHeaderView.titleLabel.getter // getter 
-	0xd6ca0  func DismissibleTileHeaderView.titleLabel.setter // setter 
-	0xd6cc0  func DismissibleTileHeaderView.titleLabel.modify // modifyCoroutine 
-	0xd6d00  func DismissibleTileHeaderView.accessoryLabel.getter // getter 
-	0xd6d20  func DismissibleTileHeaderView.accessoryLabel.setter // setter 
-	0xd6d40  func DismissibleTileHeaderView.accessoryLabel.modify // modifyCoroutine 
-	0xd6d80  func DismissibleTileHeaderView.detailContainerView.getter // getter 
-	0xd6de0  func DismissibleTileHeaderView.detailContainerView.setter // setter 
-	0xd6e40  func DismissibleTileHeaderView.detailContainerView.modify // modifyCoroutine 
-	0xd6e90  func DismissibleTileHeaderView.configure(_:) // method 
-	0xd7d80  func DismissibleTileHeaderView.configureDetailContainer() // method 
-	0xd8440  func DismissibleTileHeaderView.configureDetailLabel() // method 
-	0xd8e10  func DismissibleTileHeaderView.configureAccessorySeperator() // method 
-	0xd9460  func DismissibleTileHeaderView.configureAccessoryLabel() // method 
-	0xda570  func DismissibleTileHeaderView.setupTitleLabel() // method 
-	0xda850  func DismissibleTileHeaderView.setTitleText() // method 
-	0xdad30  func DismissibleTileHeaderView.setupDetailContainerView() // method 
-	0xdae50  func DismissibleTileHeaderView.setupDetailLabel() // method 
-	0xdb1d0  func DismissibleTileHeaderView.setupAccessorySeparator() // method 
-	0xdb3a0  func DismissibleTileHeaderView.setupAccessoryLabel() // method 
-	0xdb7e0  func DismissibleTileHeaderView.updateAccessoryLabelImage() // method 
-	0xdb9a0  func DismissibleTileHeaderView.configureBottomSeparator() // method 
-	0xdbe00  func DismissibleTileHeaderView.configureColors() // method 
-	0xdc300  func DismissibleTileHeaderView.isTouchOnAccessoryView(_:) // method 
-	0xdd810  func DismissibleTileHeaderView.makeXMark() // method 
+	0xc2c30  func DismissibleTileHeaderView.chromeHostView.getter // getter 
+	0xc2c70  func DismissibleTileHeaderView.chromeHostView.setter // setter 
+	0xc2cc0  func DismissibleTileHeaderView.chromeHostView.modify // modifyCoroutine 
+	0xc2da0  func DismissibleTileHeaderView.dataSource.getter // getter 
+	0xc2e40  func DismissibleTileHeaderView.dataSource.setter // setter 
+	0xc2e90  func DismissibleTileHeaderView.dataSource.modify // modifyCoroutine 
+	0xc2ed0  func DismissibleTileHeaderView.setDataSource(_:) // method 
+	0xc3000  func DismissibleTileHeaderView.setUpObservers(for:) // method 
+	0xc3150  func DismissibleTileHeaderView.didReceiveSignificantTimeChangeNotification(_:) // method 
+	0xc3450  func DismissibleTileHeaderView.updateDataSource(_:) // method 
+	0xc3470  func DismissibleTileHeaderView.cleanupSubviewsAndConstraints() // method 
+	0xc3660  func DismissibleTileHeaderView.detailLabel.getter // getter 
+	0xc3680  func DismissibleTileHeaderView.detailLabel.setter // setter 
+	0xc36a0  func DismissibleTileHeaderView.detailLabel.modify // modifyCoroutine 
+	0xc36e0  func DismissibleTileHeaderView.titleLabel.getter // getter 
+	0xc3700  func DismissibleTileHeaderView.titleLabel.setter // setter 
+	0xc3720  func DismissibleTileHeaderView.titleLabel.modify // modifyCoroutine 
+	0xc3760  func DismissibleTileHeaderView.accessoryLabel.getter // getter 
+	0xc3780  func DismissibleTileHeaderView.accessoryLabel.setter // setter 
+	0xc37a0  func DismissibleTileHeaderView.accessoryLabel.modify // modifyCoroutine 
+	0xc37e0  func DismissibleTileHeaderView.detailContainerView.getter // getter 
+	0xc3840  func DismissibleTileHeaderView.detailContainerView.setter // setter 
+	0xc38a0  func DismissibleTileHeaderView.detailContainerView.modify // modifyCoroutine 
+	0xc38f0  func DismissibleTileHeaderView.configure(_:) // method 
+	0xc4900  func DismissibleTileHeaderView.configureDetailContainer() // method 
+	0xc5130  func DismissibleTileHeaderView.configureDetailLabel() // method 
+	0xc5cb0  func DismissibleTileHeaderView.configureAccessorySeperator() // method 
+	0xc6370  func DismissibleTileHeaderView.configureAccessoryLabel() // method 
+	0xc7610  func DismissibleTileHeaderView.setupTitleLabel() // method 
+	0xc78a0  func DismissibleTileHeaderView.setTitleText() // method 
+	0xc7d40  func DismissibleTileHeaderView.setupDetailContainerView() // method 
+	0xc7e60  func DismissibleTileHeaderView.setupDetailLabel() // method 
+	0xc8170  func DismissibleTileHeaderView.setupAccessorySeparator() // method 
+	0xc8310  func DismissibleTileHeaderView.setupAccessoryLabel() // method 
+	0xc85b0  func DismissibleTileHeaderView.updateAccessoryLabelImage() // method 
+	0xc8760  func DismissibleTileHeaderView.configureBottomSeparator() // method 
+	0xc8b20  func DismissibleTileHeaderView.configureColors() // method 
+	0xc8fe0  func DismissibleTileHeaderView.isTouchOnAccessoryView(_:) // method 
+	0xca310  func DismissibleTileHeaderView.makeXMark() // method 
  }
 
  class HealthExperienceUI.SectionedDataSourceItemAdaptor : NSObject /usr/lib/libobjc.A.dylib {
@@ -2822,83 +2940,86 @@
 	var shortDateLabel : weak UILabel? // +0x30 (0x8)
 	var unitLabel : weak UILabel? // +0x38 (0x8)
 	var valueLabelFormatter : NSNumberFormatter? // +0x40 (0x8)
-	var dataSource : SectionedDataSource? // +0x48 (0x28)
-	var item : SectionedDataSourceItem? // +0x70 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataSource : {ü // +0x48 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x70 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xdf010  @objc SectionedDataSourceItemAdaptor.valueLabel <stripped>
-	0xdf050  @objc SectionedDataSourceItemAdaptor.setValueLabel: <stripped>
-	0xdf170  @objc SectionedDataSourceItemAdaptor.longDescriptionLabel <stripped>
-	0xdf1b0  @objc SectionedDataSourceItemAdaptor.setLongDescriptionLabel: <stripped>
-	0xdf260  @objc SectionedDataSourceItemAdaptor.shortDescriptionLabel <stripped>
-	0xdf2a0  @objc SectionedDataSourceItemAdaptor.setShortDescriptionLabel: <stripped>
-	0xdf350  @objc SectionedDataSourceItemAdaptor.relativeStartDateLabel <stripped>
-	0xdf390  @objc SectionedDataSourceItemAdaptor.setRelativeStartDateLabel: <stripped>
-	0xdf440  @objc SectionedDataSourceItemAdaptor.relativeEndDateLabel <stripped>
-	0xdf480  @objc SectionedDataSourceItemAdaptor.setRelativeEndDateLabel: <stripped>
-	0xdf530  @objc SectionedDataSourceItemAdaptor.shortDateLabel <stripped>
-	0xdf570  @objc SectionedDataSourceItemAdaptor.setShortDateLabel: <stripped>
-	0xdf620  @objc SectionedDataSourceItemAdaptor.unitLabel <stripped>
-	0xdf6d0  @objc SectionedDataSourceItemAdaptor.setUnitLabel: <stripped>
-	0xdfec0  @objc SectionedDataSourceItemAdaptor.init <stripped>
-	0xdff30  @objc SectionedDataSourceItemAdaptor..cxx_destruct <stripped>
+	0xcb950  @objc SectionedDataSourceItemAdaptor.valueLabel <stripped>
+	0xcb990  @objc SectionedDataSourceItemAdaptor.setValueLabel: <stripped>
+	0xcbab0  @objc SectionedDataSourceItemAdaptor.longDescriptionLabel <stripped>
+	0xcbaf0  @objc SectionedDataSourceItemAdaptor.setLongDescriptionLabel: <stripped>
+	0xcbba0  @objc SectionedDataSourceItemAdaptor.shortDescriptionLabel <stripped>
+	0xcbbe0  @objc SectionedDataSourceItemAdaptor.setShortDescriptionLabel: <stripped>
+	0xcbc90  @objc SectionedDataSourceItemAdaptor.relativeStartDateLabel <stripped>
+	0xcbcd0  @objc SectionedDataSourceItemAdaptor.setRelativeStartDateLabel: <stripped>
+	0xcbd80  @objc SectionedDataSourceItemAdaptor.relativeEndDateLabel <stripped>
+	0xcbdc0  @objc SectionedDataSourceItemAdaptor.setRelativeEndDateLabel: <stripped>
+	0xcbe70  @objc SectionedDataSourceItemAdaptor.shortDateLabel <stripped>
+	0xcbeb0  @objc SectionedDataSourceItemAdaptor.setShortDateLabel: <stripped>
+	0xcbf60  @objc SectionedDataSourceItemAdaptor.unitLabel <stripped>
+	0xcc010  @objc SectionedDataSourceItemAdaptor.setUnitLabel: <stripped>
+	0xcc890  @objc SectionedDataSourceItemAdaptor.init <stripped>
+	0xcc5c0  @objc SectionedDataSourceItemAdaptor..cxx_destruct <stripped>
 
 	// Swift methods
-	0xdf030  func SectionedDataSourceItemAdaptor.valueLabel.getter // getter 
-	0xdf070  func SectionedDataSourceItemAdaptor.valueLabel.setter // setter 
-	0xdf090  func SectionedDataSourceItemAdaptor.valueLabel.modify // modifyCoroutine 
-	0xdf190  func SectionedDataSourceItemAdaptor.longDescriptionLabel.getter // getter 
-	0xdf1d0  func SectionedDataSourceItemAdaptor.longDescriptionLabel.setter // setter 
-	0xdf1f0  func SectionedDataSourceItemAdaptor.longDescriptionLabel.modify // modifyCoroutine 
-	0xdf280  func SectionedDataSourceItemAdaptor.shortDescriptionLabel.getter // getter 
-	0xdf2c0  func SectionedDataSourceItemAdaptor.shortDescriptionLabel.setter // setter 
-	0xdf2e0  func SectionedDataSourceItemAdaptor.shortDescriptionLabel.modify // modifyCoroutine 
-	0xdf370  func SectionedDataSourceItemAdaptor.relativeStartDateLabel.getter // getter 
-	0xdf3b0  func SectionedDataSourceItemAdaptor.relativeStartDateLabel.setter // setter 
-	0xdf3d0  func SectionedDataSourceItemAdaptor.relativeStartDateLabel.modify // modifyCoroutine 
-	0xdf460  func SectionedDataSourceItemAdaptor.relativeEndDateLabel.getter // getter 
-	0xdf4a0  func SectionedDataSourceItemAdaptor.relativeEndDateLabel.setter // setter 
-	0xdf4c0  func SectionedDataSourceItemAdaptor.relativeEndDateLabel.modify // modifyCoroutine 
-	0xdf550  func SectionedDataSourceItemAdaptor.shortDateLabel.getter // getter 
-	0xdf590  func SectionedDataSourceItemAdaptor.shortDateLabel.setter // setter 
-	0xdf5b0  func SectionedDataSourceItemAdaptor.shortDateLabel.modify // modifyCoroutine 
-	0xdf680  func SectionedDataSourceItemAdaptor.unitLabel.getter // getter 
-	0xdf730  func SectionedDataSourceItemAdaptor.unitLabel.setter // setter 
-	0xdf7a0  func SectionedDataSourceItemAdaptor.unitLabel.modify // modifyCoroutine 
-	0xdf810  func SectionedDataSourceItemAdaptor.valueLabelFormatter.getter // getter 
-	0xdf850  func SectionedDataSourceItemAdaptor.valueLabelFormatter.setter // setter 
-	0xdf8a0  func SectionedDataSourceItemAdaptor.valueLabelFormatter.modify // modifyCoroutine 
-	0xdf8e0  func SectionedDataSourceItemAdaptor.dataSource.getter // getter 
-	0xdf900  func SectionedDataSourceItemAdaptor.dataSource.setter // setter 
-	0xdf950  func SectionedDataSourceItemAdaptor.dataSource.modify // modifyCoroutine 
-	0xdf9a0  func SectionedDataSourceItemAdaptor.item.getter // getter 
-	0xdfa00  func SectionedDataSourceItemAdaptor.item.setter // setter 
-	0xdfa90  func SectionedDataSourceItemAdaptor.item.modify // modifyCoroutine 
+	0xcb970  func SectionedDataSourceItemAdaptor.valueLabel.getter // getter 
+	0xcb9b0  func SectionedDataSourceItemAdaptor.valueLabel.setter // setter 
+	0xcb9d0  func SectionedDataSourceItemAdaptor.valueLabel.modify // modifyCoroutine 
+	0xcbad0  func SectionedDataSourceItemAdaptor.longDescriptionLabel.getter // getter 
+	0xcbb10  func SectionedDataSourceItemAdaptor.longDescriptionLabel.setter // setter 
+	0xcbb30  func SectionedDataSourceItemAdaptor.longDescriptionLabel.modify // modifyCoroutine 
+	0xcbbc0  func SectionedDataSourceItemAdaptor.shortDescriptionLabel.getter // getter 
+	0xcbc00  func SectionedDataSourceItemAdaptor.shortDescriptionLabel.setter // setter 
+	0xcbc20  func SectionedDataSourceItemAdaptor.shortDescriptionLabel.modify // modifyCoroutine 
+	0xcbcb0  func SectionedDataSourceItemAdaptor.relativeStartDateLabel.getter // getter 
+	0xcbcf0  func SectionedDataSourceItemAdaptor.relativeStartDateLabel.setter // setter 
+	0xcbd10  func SectionedDataSourceItemAdaptor.relativeStartDateLabel.modify // modifyCoroutine 
+	0xcbda0  func SectionedDataSourceItemAdaptor.relativeEndDateLabel.getter // getter 
+	0xcbde0  func SectionedDataSourceItemAdaptor.relativeEndDateLabel.setter // setter 
+	0xcbe00  func SectionedDataSourceItemAdaptor.relativeEndDateLabel.modify // modifyCoroutine 
+	0xcbe90  func SectionedDataSourceItemAdaptor.shortDateLabel.getter // getter 
+	0xcbed0  func SectionedDataSourceItemAdaptor.shortDateLabel.setter // setter 
+	0xcbef0  func SectionedDataSourceItemAdaptor.shortDateLabel.modify // modifyCoroutine 
+	0xcbfc0  func SectionedDataSourceItemAdaptor.unitLabel.getter // getter 
+	0xcc070  func SectionedDataSourceItemAdaptor.unitLabel.setter // setter 
+	0xcc0e0  func SectionedDataSourceItemAdaptor.unitLabel.modify // modifyCoroutine 
+	0xcc150  func SectionedDataSourceItemAdaptor.valueLabelFormatter.getter // getter 
+	0xcc190  func SectionedDataSourceItemAdaptor.valueLabelFormatter.setter // setter 
+	0xcc1e0  func SectionedDataSourceItemAdaptor.valueLabelFormatter.modify // modifyCoroutine 
+	0xcc220  func SectionedDataSourceItemAdaptor.dataSource.getter // getter 
+	0xcc240  func SectionedDataSourceItemAdaptor.dataSource.setter // setter 
+	0xcc290  func SectionedDataSourceItemAdaptor.dataSource.modify // modifyCoroutine 
+	0xcc2e0  func SectionedDataSourceItemAdaptor.item.getter // getter 
+	0xcc340  func SectionedDataSourceItemAdaptor.item.setter // setter 
+	0xcc3d0  func SectionedDataSourceItemAdaptor.item.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.EmptyStateCellView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
 	var $__lazy_storage_$_label : UILabel? // +0x30 (0x8)
 	var $__lazy_storage_$_spinner : UIActivityIndicatorView? // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xe11c0  @objc EmptyStateCellView.initWithFrame: <stripped>
-	0xe11f0  @objc EmptyStateCellView.initWithCoder: <stripped>
-	0xe1af0  @objc EmptyStateCellView..cxx_destruct <stripped>
+	0xcd920  @objc EmptyStateCellView.initWithFrame: <stripped>
+	0xcd950  @objc EmptyStateCellView.initWithCoder: <stripped>
+	0xce1d0  @objc EmptyStateCellView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xe0980  func EmptyStateCellView.item.getter // getter 
-	0xe09c0  func EmptyStateCellView.item.setter // setter 
-	0xe0a50  func EmptyStateCellView.item.modify // modifyCoroutine 
-	0xe0bd0  func EmptyStateCellView.title.getter // getter 
-	0xe0c90  func EmptyStateCellView.title.setter // setter 
-	0xe0cc0  func EmptyStateCellView.title.modify // modifyCoroutine 
-	0xe0f30  func EmptyStateCellView.spinner.getter // getter 
-	0xe0fc0  func EmptyStateCellView.spinner.setter // setter 
-	0xe0fe0  func EmptyStateCellView.spinner.modify // modifyCoroutine 
-	0xe1230  func <stripped> // method 
+	0xcd150  func EmptyStateCellView.item.getter // getter 
+	0xcd190  func EmptyStateCellView.item.setter // setter 
+	0xcd220  func EmptyStateCellView.item.modify // modifyCoroutine 
+	0xcd350  func EmptyStateCellView.title.getter // getter 
+	0xcd410  func EmptyStateCellView.title.setter // setter 
+	0xcd4e0  func EmptyStateCellView.title.modify // modifyCoroutine 
+	0xcd690  func EmptyStateCellView.spinner.getter // getter 
+	0xcd720  func EmptyStateCellView.spinner.setter // setter 
+	0xcd740  func EmptyStateCellView.spinner.modify // modifyCoroutine 
+	0xcd990  func <stripped> // method 
  }
 
  class HealthExperienceUI.DisplayTypeUI : type metadata for DisplayType /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
@@ -2912,19 +3033,20 @@
  class HealthExperienceUI.EditFavoritesTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var item : SectionedDataSourceItem? // +0x8 (0x28)
-	var $__lazy_storage_$_editFavoritesCellView : EditFavoritesCellView? // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x8 (0x28)
+	var $__lazy_storage_$_editFavoritesCellView : EditFavoritesCellView // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xe2430  @objc EditFavoritesTableViewCell.axItemIsFavorited <stripped>
-	0xe25c0  @objc EditFavoritesTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0xe2620  @objc EditFavoritesTableViewCell.initWithCoder: <stripped>
-	0xe2920  @objc EditFavoritesTableViewCell..cxx_destruct <stripped>
+	0xce9a0  @objc EditFavoritesTableViewCell.axItemIsFavorited <stripped>
+	0xceb20  @objc EditFavoritesTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0xceb80  @objc EditFavoritesTableViewCell.initWithCoder: <stripped>
+	0xcee60  @objc EditFavoritesTableViewCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xe22b0  func <stripped> // modifyCoroutine 
-	0xe2470  func <stripped> // getter 
-	0xe2660  func <stripped> // method 
+	0xce870  func <stripped> // modifyCoroutine 
+	0xce9e0  func <stripped> // getter 
+	0xcebc0  func <stripped> // method 
  }
 
  class HealthExperienceUI.SnippetView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2937,30 +3059,30 @@
 	var supplementaryLabelBottomConstraint : NSLayoutConstraint? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xe3630  @objc SnippetView.initWithFrame: <stripped>
-	0xe3760  @objc SnippetView.initWithCoder: <stripped>
-	0xe4990  @objc SnippetView.traitCollectionDidChange: <stripped>
-	0xe4a30  @objc SnippetView..cxx_destruct <stripped>
+	0xcfaf0  @objc SnippetView.initWithFrame: <stripped>
+	0xcfc00  @objc SnippetView.initWithCoder: <stripped>
+	0xd0bd0  @objc SnippetView.traitCollectionDidChange: <stripped>
+	0xd0c50  @objc SnippetView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xe2e30  func SnippetView.valueLabel.getter // getter 
-	0xe2e50  func SnippetView.valueLabel.setter // setter 
-	0xe2e70  func SnippetView.valueLabel.modify // modifyCoroutine 
-	0xe2ec0  func SnippetView.supplementaryValueLabel.getter // getter 
-	0xe2f10  func SnippetView.supplementaryValueLabel.setter // setter 
-	0xe2f70  func SnippetView.supplementaryValueLabel.modify // modifyCoroutine 
-	0xe2fb0  func SnippetView.valueLabelTopConstraint.getter // getter 
-	0xe2ff0  func SnippetView.valueLabelTopConstraint.setter // setter 
-	0xe3040  func SnippetView.valueLabelTopConstraint.modify // modifyCoroutine 
-	0xe3080  func SnippetView.valueLabelTopConstant.getter // getter 
-	0xe3120  func SnippetView.supplementaryLabelBottomConstant.getter // getter 
-	0xe31c0  func SnippetView.valueLabelNumberOfLines.getter // getter 
-	0xe32e0  func SnippetView.supplementaryValueLabelNumberOfLines.getter // getter 
-	0xe3660  class func SnippetView.__allocating_init(trailingView:) // init 
-	0xe37a0  func <stripped> // method 
-	0xe3e20  func <stripped> // method 
-	0xe4340  func <stripped> // method 
-	0xe4650  func SnippetView.updateLabelLinesIfNeeded() // method 
+	0xcf340  func SnippetView.valueLabel.getter // getter 
+	0xcf360  func SnippetView.valueLabel.setter // setter 
+	0xcf380  func SnippetView.valueLabel.modify // modifyCoroutine 
+	0xcf3d0  func SnippetView.supplementaryValueLabel.getter // getter 
+	0xcf420  func SnippetView.supplementaryValueLabel.setter // setter 
+	0xcf480  func SnippetView.supplementaryValueLabel.modify // modifyCoroutine 
+	0xcf4c0  func SnippetView.valueLabelTopConstraint.getter // getter 
+	0xcf500  func SnippetView.valueLabelTopConstraint.setter // setter 
+	0xcf550  func SnippetView.valueLabelTopConstraint.modify // modifyCoroutine 
+	0xcf590  func SnippetView.valueLabelTopConstant.getter // getter 
+	0xcf620  func SnippetView.supplementaryLabelBottomConstant.getter // getter 
+	0xcf6b0  func SnippetView.valueLabelNumberOfLines.getter // getter 
+	0xcf7a0  func SnippetView.supplementaryValueLabelNumberOfLines.getter // getter 
+	0xcfb20  class func SnippetView.__allocating_init(trailingView:) // init 
+	0xcfc40  func <stripped> // method 
+	0xd01f0  func <stripped> // method 
+	0xd0650  func <stripped> // method 
+	0xd0900  func SnippetView.updateLabelLinesIfNeeded() // method 
  }
 
  class HealthExperienceUI.SectionedDataSourceItemLabelAdaptorCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2974,72 +3096,75 @@
 	var shortDateLabel : weak UILabel? // +0x30 (0x8)
 	var unitLabel : weak UILabel? // +0x38 (0x8)
 	var valueLabelFormatter : NSNumberFormatter? // +0x40 (0x8)
-	var dataSource : SectionedDataSource? // +0x48 (0x28)
-	var item : SectionedDataSourceItem? // +0x70 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataSource : {ü // +0x48 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x70 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xe4e80  @objc SectionedDataSourceItemLabelAdaptorCell.valueLabel <stripped>
-	0xe4ec0  @objc SectionedDataSourceItemLabelAdaptorCell.setValueLabel: <stripped>
-	0xe4f70  @objc SectionedDataSourceItemLabelAdaptorCell.longDescriptionLabel <stripped>
-	0xe4fb0  @objc SectionedDataSourceItemLabelAdaptorCell.setLongDescriptionLabel: <stripped>
-	0xe50d0  @objc SectionedDataSourceItemLabelAdaptorCell.shortDescriptionLabel <stripped>
-	0xe5110  @objc SectionedDataSourceItemLabelAdaptorCell.setShortDescriptionLabel: <stripped>
-	0xe51c0  @objc SectionedDataSourceItemLabelAdaptorCell.relativeStartDateLabel <stripped>
-	0xe5200  @objc SectionedDataSourceItemLabelAdaptorCell.setRelativeStartDateLabel: <stripped>
-	0xe52b0  @objc SectionedDataSourceItemLabelAdaptorCell.relativeEndDateLabel <stripped>
-	0xe52f0  @objc SectionedDataSourceItemLabelAdaptorCell.setRelativeEndDateLabel: <stripped>
-	0xe53a0  @objc SectionedDataSourceItemLabelAdaptorCell.shortDateLabel <stripped>
-	0xe53e0  @objc SectionedDataSourceItemLabelAdaptorCell.setShortDateLabel: <stripped>
-	0xe5490  @objc SectionedDataSourceItemLabelAdaptorCell.unitLabel <stripped>
-	0xe5540  @objc SectionedDataSourceItemLabelAdaptorCell.setUnitLabel: <stripped>
-	0xe5b70  @objc SectionedDataSourceItemLabelAdaptorCell.initWithStyle:reuseIdentifier: <stripped>
-	0xe5c40  @objc SectionedDataSourceItemLabelAdaptorCell.initWithCoder: <stripped>
-	0xe5cd0  @objc SectionedDataSourceItemLabelAdaptorCell..cxx_destruct <stripped>
+	0xd1100  @objc SectionedDataSourceItemLabelAdaptorCell.valueLabel <stripped>
+	0xd1140  @objc SectionedDataSourceItemLabelAdaptorCell.setValueLabel: <stripped>
+	0xd11f0  @objc SectionedDataSourceItemLabelAdaptorCell.longDescriptionLabel <stripped>
+	0xd1230  @objc SectionedDataSourceItemLabelAdaptorCell.setLongDescriptionLabel: <stripped>
+	0xd1350  @objc SectionedDataSourceItemLabelAdaptorCell.shortDescriptionLabel <stripped>
+	0xd1390  @objc SectionedDataSourceItemLabelAdaptorCell.setShortDescriptionLabel: <stripped>
+	0xd1440  @objc SectionedDataSourceItemLabelAdaptorCell.relativeStartDateLabel <stripped>
+	0xd1480  @objc SectionedDataSourceItemLabelAdaptorCell.setRelativeStartDateLabel: <stripped>
+	0xd1530  @objc SectionedDataSourceItemLabelAdaptorCell.relativeEndDateLabel <stripped>
+	0xd1570  @objc SectionedDataSourceItemLabelAdaptorCell.setRelativeEndDateLabel: <stripped>
+	0xd1620  @objc SectionedDataSourceItemLabelAdaptorCell.shortDateLabel <stripped>
+	0xd1660  @objc SectionedDataSourceItemLabelAdaptorCell.setShortDateLabel: <stripped>
+	0xd1710  @objc SectionedDataSourceItemLabelAdaptorCell.unitLabel <stripped>
+	0xd17c0  @objc SectionedDataSourceItemLabelAdaptorCell.setUnitLabel: <stripped>
+	0xd1ed0  @objc SectionedDataSourceItemLabelAdaptorCell.initWithStyle:reuseIdentifier: <stripped>
+	0xd1fa0  @objc SectionedDataSourceItemLabelAdaptorCell.initWithCoder: <stripped>
+	0xd1d70  @objc SectionedDataSourceItemLabelAdaptorCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xe4ea0  func SectionedDataSourceItemLabelAdaptorCell.valueLabel.getter // getter 
-	0xe4ee0  func SectionedDataSourceItemLabelAdaptorCell.valueLabel.setter // setter 
-	0xe4f00  func SectionedDataSourceItemLabelAdaptorCell.valueLabel.modify // modifyCoroutine 
-	0xe4f90  func SectionedDataSourceItemLabelAdaptorCell.longDescriptionLabel.getter // getter 
-	0xe4fd0  func SectionedDataSourceItemLabelAdaptorCell.longDescriptionLabel.setter // setter 
-	0xe4ff0  func SectionedDataSourceItemLabelAdaptorCell.longDescriptionLabel.modify // modifyCoroutine 
-	0xe50f0  func SectionedDataSourceItemLabelAdaptorCell.shortDescriptionLabel.getter // getter 
-	0xe5130  func SectionedDataSourceItemLabelAdaptorCell.shortDescriptionLabel.setter // setter 
-	0xe5150  func SectionedDataSourceItemLabelAdaptorCell.shortDescriptionLabel.modify // modifyCoroutine 
-	0xe51e0  func SectionedDataSourceItemLabelAdaptorCell.relativeStartDateLabel.getter // getter 
-	0xe5220  func SectionedDataSourceItemLabelAdaptorCell.relativeStartDateLabel.setter // setter 
-	0xe5240  func SectionedDataSourceItemLabelAdaptorCell.relativeStartDateLabel.modify // modifyCoroutine 
-	0xe52d0  func SectionedDataSourceItemLabelAdaptorCell.relativeEndDateLabel.getter // getter 
-	0xe5310  func SectionedDataSourceItemLabelAdaptorCell.relativeEndDateLabel.setter // setter 
-	0xe5330  func SectionedDataSourceItemLabelAdaptorCell.relativeEndDateLabel.modify // modifyCoroutine 
-	0xe53c0  func SectionedDataSourceItemLabelAdaptorCell.shortDateLabel.getter // getter 
-	0xe5400  func SectionedDataSourceItemLabelAdaptorCell.shortDateLabel.setter // setter 
-	0xe5420  func SectionedDataSourceItemLabelAdaptorCell.shortDateLabel.modify // modifyCoroutine 
-	0xe54f0  func SectionedDataSourceItemLabelAdaptorCell.unitLabel.getter // getter 
-	0xe55a0  func SectionedDataSourceItemLabelAdaptorCell.unitLabel.setter // setter 
-	0xe5610  func SectionedDataSourceItemLabelAdaptorCell.unitLabel.modify // modifyCoroutine 
-	0xe5680  func SectionedDataSourceItemLabelAdaptorCell.valueLabelFormatter.getter // getter 
-	0xe56c0  func SectionedDataSourceItemLabelAdaptorCell.valueLabelFormatter.setter // setter 
-	0xe5710  func SectionedDataSourceItemLabelAdaptorCell.valueLabelFormatter.modify // modifyCoroutine 
-	0xe5750  func SectionedDataSourceItemLabelAdaptorCell.dataSource.getter // getter 
-	0xe5770  func SectionedDataSourceItemLabelAdaptorCell.dataSource.setter // setter 
-	0xe57c0  func SectionedDataSourceItemLabelAdaptorCell.dataSource.modify // modifyCoroutine 
-	0xe5810  func SectionedDataSourceItemLabelAdaptorCell.item.getter // getter 
-	0xe5870  func SectionedDataSourceItemLabelAdaptorCell.item.setter // setter 
-	0xe5900  func SectionedDataSourceItemLabelAdaptorCell.item.modify // modifyCoroutine 
+	0xd1120  func SectionedDataSourceItemLabelAdaptorCell.valueLabel.getter // getter 
+	0xd1160  func SectionedDataSourceItemLabelAdaptorCell.valueLabel.setter // setter 
+	0xd1180  func SectionedDataSourceItemLabelAdaptorCell.valueLabel.modify // modifyCoroutine 
+	0xd1210  func SectionedDataSourceItemLabelAdaptorCell.longDescriptionLabel.getter // getter 
+	0xd1250  func SectionedDataSourceItemLabelAdaptorCell.longDescriptionLabel.setter // setter 
+	0xd1270  func SectionedDataSourceItemLabelAdaptorCell.longDescriptionLabel.modify // modifyCoroutine 
+	0xd1370  func SectionedDataSourceItemLabelAdaptorCell.shortDescriptionLabel.getter // getter 
+	0xd13b0  func SectionedDataSourceItemLabelAdaptorCell.shortDescriptionLabel.setter // setter 
+	0xd13d0  func SectionedDataSourceItemLabelAdaptorCell.shortDescriptionLabel.modify // modifyCoroutine 
+	0xd1460  func SectionedDataSourceItemLabelAdaptorCell.relativeStartDateLabel.getter // getter 
+	0xd14a0  func SectionedDataSourceItemLabelAdaptorCell.relativeStartDateLabel.setter // setter 
+	0xd14c0  func SectionedDataSourceItemLabelAdaptorCell.relativeStartDateLabel.modify // modifyCoroutine 
+	0xd1550  func SectionedDataSourceItemLabelAdaptorCell.relativeEndDateLabel.getter // getter 
+	0xd1590  func SectionedDataSourceItemLabelAdaptorCell.relativeEndDateLabel.setter // setter 
+	0xd15b0  func SectionedDataSourceItemLabelAdaptorCell.relativeEndDateLabel.modify // modifyCoroutine 
+	0xd1640  func SectionedDataSourceItemLabelAdaptorCell.shortDateLabel.getter // getter 
+	0xd1680  func SectionedDataSourceItemLabelAdaptorCell.shortDateLabel.setter // setter 
+	0xd16a0  func SectionedDataSourceItemLabelAdaptorCell.shortDateLabel.modify // modifyCoroutine 
+	0xd1770  func SectionedDataSourceItemLabelAdaptorCell.unitLabel.getter // getter 
+	0xd1820  func SectionedDataSourceItemLabelAdaptorCell.unitLabel.setter // setter 
+	0xd1890  func SectionedDataSourceItemLabelAdaptorCell.unitLabel.modify // modifyCoroutine 
+	0xd1900  func SectionedDataSourceItemLabelAdaptorCell.valueLabelFormatter.getter // getter 
+	0xd1940  func SectionedDataSourceItemLabelAdaptorCell.valueLabelFormatter.setter // setter 
+	0xd1990  func SectionedDataSourceItemLabelAdaptorCell.valueLabelFormatter.modify // modifyCoroutine 
+	0xd19d0  func SectionedDataSourceItemLabelAdaptorCell.dataSource.getter // getter 
+	0xd19f0  func SectionedDataSourceItemLabelAdaptorCell.dataSource.setter // setter 
+	0xd1a40  func SectionedDataSourceItemLabelAdaptorCell.dataSource.modify // modifyCoroutine 
+	0xd1a90  func SectionedDataSourceItemLabelAdaptorCell.item.getter // getter 
+	0xd1af0  func SectionedDataSourceItemLabelAdaptorCell.item.setter // setter 
+	0xd1b80  func SectionedDataSourceItemLabelAdaptorCell.item.modify // modifyCoroutine 
  }
 
  class HealthExperienceUI.HKTypeGroupTypesDataSource : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var eventHandler : weak SectionedDataSourceEventHandler? // +0x10 (0x10)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var eventHandler : Õò // +0x10 (0x10)
 	let group : HKTypeGroup // +0x20 (0x30)
 
 	// Swift methods
-	0xe6640  func HKTypeGroupTypesDataSource.eventHandler.getter // getter 
-	0xe6670  func HKTypeGroupTypesDataSource.eventHandler.setter // setter 
-	0xe66c0  func HKTypeGroupTypesDataSource.eventHandler.modify // modifyCoroutine 
-	0xe67a0  class func HKTypeGroupTypesDataSource.__allocating_init(group:) // init 
+	0xd2840  func HKTypeGroupTypesDataSource.eventHandler.getter // getter 
+	0xd2870  func HKTypeGroupTypesDataSource.eventHandler.setter // setter 
+	0xd28c0  func HKTypeGroupTypesDataSource.eventHandler.modify // modifyCoroutine 
+	0xd29a0  class func HKTypeGroupTypesDataSource.__allocating_init(group:) // init 
  }
 
  enum HealthExperienceUI.TileHeaderType {
@@ -3054,7 +3179,8 @@
 
 	// Properties
 	case text : String
-	case date : DateFormat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case date : éÜ
 	case none  
  }
 
@@ -3068,8 +3194,8 @@
  class HealthExperienceUI.SpotlightSearch {
  class HealthExperienceUI.DataTypeDetailDisclosureCell : CollectionViewListDisclosureCell {
 	// ObjC -> Swift bridged methods
-	0xeb6e0  @objc DataTypeDetailDisclosureCell.initWithFrame: <stripped>
-	0xeb800  @objc DataTypeDetailDisclosureCell.initWithCoder: <stripped>
+	0xd74a0  @objc DataTypeDetailDisclosureCell.initWithFrame: <stripped>
+	0xd75a0  @objc DataTypeDetailDisclosureCell.initWithCoder: <stripped>
  }
 
  class HealthExperienceUI.AppRecommendationsFetchedResultsController {
@@ -3077,19 +3203,19 @@
 
 	// Properties
 	var addDataButton : weak UIButton? // +0x8 (0x8)
-	var item : SectionedDataSourceItem? // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : ¥ // +0x10 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xecc90  @objc DataTypeDetailAddDataCell.addDataButton <stripped>
-	0xeccb0  @objc DataTypeDetailAddDataCell.setAddDataButton: <stripped>
-	0xece10  @objc DataTypeDetailAddDataCell.addDataButtonPressed: <stripped>
-	0xed210  @objc DataTypeDetailAddDataCell.initWithFrame: <stripped>
-	0xed2f0  @objc DataTypeDetailAddDataCell.initWithCoder: <stripped>
-	0xed380  @objc DataTypeDetailAddDataCell..cxx_destruct <stripped>
+	0xd8680  @objc DataTypeDetailAddDataCell.addDataButton <stripped>
+	0xd86a0  @objc DataTypeDetailAddDataCell.setAddDataButton: <stripped>
+	0xd86c0  @objc DataTypeDetailAddDataCell.addDataButtonPressed: <stripped>
+	0xd8ad0  @objc DataTypeDetailAddDataCell.initWithFrame: <stripped>
+	0xd8b90  @objc DataTypeDetailAddDataCell.initWithCoder: <stripped>
+	0xd8aa0  @objc DataTypeDetailAddDataCell..cxx_destruct <stripped>
 
 	// Swift methods
-	0xeccd0  func <stripped> // modifyCoroutine 
-	0xece60  func <stripped> // method 
+	0xd8710  func <stripped> // method 
  }
 
  class HealthExperienceUI.GetMoreFromHealthResultsController {
@@ -3099,8 +3225,8 @@
 	let presentingViewController : UIViewController? // +0x10 (0x8)
 
 	// Swift methods
-	0xee130  class func PluginRestorationHandler.__allocating_init(viewController:) // init 
-	0xee1c0  func PluginRestorationHandler.launchPluginFromURL(_:pluginType:) // method 
-	0xee3b0  func PluginRestorationHandler.launchPluginFromNSUA(activity:) // method 
-	0xee6d0  func PluginRestorationHandler.launchPluginFromWebBrowsingActivity(activity:pluginType:) // method 
+	0xd9830  class func PluginRestorationHandler.__allocating_init(viewController:) // init 
+	0xd9870  func PluginRestorationHandler.launchPluginFromURL(_:pluginType:) // method 
+	0xd9a00  func PluginRestorationHandler.launchPluginFromNSUA(activity:) // method 
+	0xd9cb0  func PluginRestorationHandler.launchPluginFromWebBrowsingActivity(activity:pluginType:) // method 
  }

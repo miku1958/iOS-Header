@@ -5,10 +5,11 @@
 //
 
 #import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/UICoordinateSpace-Protocol.h>
 
 @class UIBarButtonItem, UIColor, UIImage, _UIBarButtonItemAppearanceStorage;
 
-@protocol _UIButtonBarAppearanceDelegate <NSObject>
+@protocol _UIButtonBarAppearanceDelegate <NSObject, UICoordinateSpace>
 
 @property (readonly, nonatomic) _UIBarButtonItemAppearanceStorage *appearanceStorage;
 @property (readonly, nonatomic) double backButtonMargin;

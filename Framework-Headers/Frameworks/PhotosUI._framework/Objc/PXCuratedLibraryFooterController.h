@@ -96,7 +96,7 @@
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
 - (void)photosGlobalFooterViewDidChangeHeight:(id)arg1;
-- (struct NSObject *)presentingViewControllerForFooterViewModel:(id)arg1;
+- (id)presentingViewControllerForFooterViewModel:(id)arg1;
 - (void)scrollViewControllerContentBoundsDidChange:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;

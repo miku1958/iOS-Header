@@ -21,6 +21,7 @@
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)selectedAppDidChange;
 - (BOOL)skipsProcessingHiddenParameters;
+- (id)targetDataInfo;
 
 @end
 

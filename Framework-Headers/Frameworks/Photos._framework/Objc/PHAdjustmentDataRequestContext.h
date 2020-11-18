@@ -15,12 +15,12 @@
 
 @property (readonly, nonatomic) PHImageRequestOptions *options; // @synthesize options=_options;
 
-+ (long long)type;
 - (void).cxx_destruct;
 - (id)initWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (id)initialRequests;
 - (BOOL)isNetworkAccessAllowed;
 - (void)processMediaResult:(id)arg1 forRequest:(id)arg2;
+- (long long)type;
 
 @end
 

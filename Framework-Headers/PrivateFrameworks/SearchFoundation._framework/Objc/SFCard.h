@@ -80,7 +80,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)loadCardSectionsWithCompletionAndErrorHandler:(CDUnknownBlockType)arg1;
 - (void)loadCardSectionsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)recursiveSetQueryId:(unsigned long long)arg1;
 
 @end
 

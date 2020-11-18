@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)heartbeat;
 - (id)initWithConfiguration:(struct _VCTextTransmitterConfiguration *)arg1;
 - (void)sendCharacter:(unsigned short)arg1;
-- (void)sendText:(struct NSString *)arg1;
+- (void)sendText:(id)arg1;
 - (void)sendTextFrameWithRedundancy:(id)arg1 marker:(int)arg2;
 - (BOOL)start;
 - (BOOL)startHeartbeat;

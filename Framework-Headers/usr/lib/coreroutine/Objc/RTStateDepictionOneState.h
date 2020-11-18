@@ -15,7 +15,7 @@
 {
     RTStateModelLocation *_location;
     long long _type;
-    long long _typeSource;
+    unsigned long long _typeSource;
     RTMapItem *_mapItem;
     long long _mapItemSource;
     NSDate *_geocodeDate;
@@ -32,7 +32,7 @@
 @property (strong, nonatomic) RTMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (nonatomic) long long mapItemSource; // @synthesize mapItemSource=_mapItemSource;
 @property (nonatomic) long long type; // @synthesize type=_type;
-@property (nonatomic) long long typeSource; // @synthesize typeSource=_typeSource;
+@property (nonatomic) unsigned long long typeSource; // @synthesize typeSource=_typeSource;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -40,7 +40,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLocation:(id)arg1 type:(long long)arg2 typeSource:(long long)arg3 customLabel:(id)arg4 mapItem:(id)arg5;
+- (id)initWithLocation:(id)arg1 type:(long long)arg2 typeSource:(unsigned long long)arg3 customLabel:(id)arg4 mapItem:(id)arg5;
 
 @end
 

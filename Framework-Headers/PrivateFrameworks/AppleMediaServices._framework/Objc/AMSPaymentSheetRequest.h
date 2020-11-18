@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     long long _payee;
     NSString *_paymentSession;
     NSString *_paymentSummary;
+    NSArray *_preSheetDialog;
     NSNumber *_price;
     NSArray *_priceSectionItems;
     NSString *_ratingHeader;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long payee; // @synthesize payee=_payee;
 @property (copy, nonatomic) NSString *paymentSession; // @synthesize paymentSession=_paymentSession;
 @property (copy, nonatomic) NSString *paymentSummary; // @synthesize paymentSummary=_paymentSummary;
+@property (copy, nonatomic) NSArray *preSheetDialog; // @synthesize preSheetDialog=_preSheetDialog;
 @property (copy, nonatomic) NSNumber *price; // @synthesize price=_price;
 @property (copy, nonatomic) NSArray *priceSectionItems; // @synthesize priceSectionItems=_priceSectionItems;
 @property (copy, nonatomic) NSString *ratingHeader; // @synthesize ratingHeader=_ratingHeader;
@@ -73,6 +75,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long titleType; // @synthesize titleType=_titleType;
 
 - (void).cxx_destruct;
+- (id)_contentItemsForFlexibleList:(id)arg1 cache:(id)arg2 bag:(id)arg3;
 - (unsigned long long)_countImagePlaceholderTags:(id)arg1;
 - (struct CGPath *)_createBorderPathForAdornmentStyle:(long long)arg1 iconWidth:(double)arg2 iconHeight:(double)arg3;
 - (struct CGImage *)_createDefaultImageWithImageRef:(struct CGImage *)arg1 size:(struct CGSize)arg2 borderPath:(struct CGPath *)arg3;
@@ -86,11 +89,12 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)_createResizedImageWithOriginalImage:(struct CGImage *)arg1 targetHeight:(double)arg2;
 - (long long)_imageTypeForURL:(id)arg1;
 - (id)_removeAllImagePlaceholderTags:(id)arg1;
-- (id)_replaceImagePlaceholderTagWithImageData:(id)arg1 tag:(id)arg2 data:(id)arg3 scale:(float)arg4;
+- (id)_replaceImagePlaceholderTagWithImageData:(id)arg1 tag:(id)arg2 data:(id)arg3 scale:(float)arg4 tint:(BOOL)arg5;
 - (id)ams_createContentItemForAccount;
 - (id)ams_createContentItemForRating;
 - (id)ams_createContentItemForSalableInfoWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createContentItemsForFlexibleListWithCache:(id)arg1 bag:(id)arg2;
+- (id)ams_createContentItemsForPreScreenDialogWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createSummaryItems;
 
 @end

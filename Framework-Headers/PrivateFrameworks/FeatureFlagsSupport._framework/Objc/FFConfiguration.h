@@ -40,8 +40,8 @@
 - (void)loadAllLevelsForDomain:(id)arg1;
 - (void)loadCombinedDataForLevel:(long long)arg1;
 - (void)loadDomain:(id)arg1 level:(long long)arg2;
-- (struct NSMutableDictionary *)makeFeatureDictionaryFrom:(id)arg1 forDomain:(id)arg2;
-- (void)populateDictionary:(id)arg1 withFeatures:(struct NSMutableDictionary *)arg2;
+- (id)makeFeatureDictionaryFrom:(id)arg1 forDomain:(id)arg2;
+- (void)populateDictionary:(id)arg1 withFeatures:(id)arg2;
 - (id)resolvedStateForFeature:(id)arg1 domain:(id)arg2;
 - (void)setValue:(long long)arg1 feature:(id)arg2 domain:(id)arg3 level:(long long)arg4;
 - (id)stateForFeature:(id)arg1 domain:(id)arg2;

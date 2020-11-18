@@ -82,6 +82,7 @@
 - (BOOL)_bouncePathMatchIfNecessaryWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5;
 - (BOOL)_canUpdatePathMatch:(const CDStruct_177058d5 *)arg1 hasAdditionsToApply:(BOOL)arg2;
 - (void)_clearNamespace:(unsigned char)arg1;
+- (int)_computeURLMatchWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5 urlMatch:(CDStruct_177058d5 *)arg6;
 - (void)_fetchFaultedMatch;
 - (void)_fetchIDMatch;
 - (void)_fetchPathMatch;
@@ -90,6 +91,7 @@
 - (void)_moveMissingItemAsideInNamespace:(unsigned char)arg1;
 - (CDStruct_177058d5)_pathMatchInNamespace:(unsigned char)arg1;
 - (BOOL)_removeDirectory:(id)arg1 atPath:(id)arg2 error:(id *)arg3;
+- (BOOL)_shouldBounceSourceItemWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5 urlMatch:(CDStruct_177058d5 *)arg6;
 - (void)clearByIDItem;
 - (void)clearByPathItem;
 - (void)clearFaultedItem;

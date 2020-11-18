@@ -75,6 +75,8 @@
 - (id)_stopError;
 - (BOOL)_stopFigCaptureSession;
 - (void)_teardownFigCaptureSession;
+- (void)_updateCameraCalibrationDataDeliveryEnabledForAllConnectedSourceDevices;
+- (void)_updateCameraCalibrationDataDeliveryEnabledForSourceDevice:(id)arg1;
 - (void)_updateDepthDataDeliveryEnabledForAllConnectedSourceDevices;
 - (void)_updateDepthDataDeliveryEnabledForSourceDevice:(id)arg1;
 - (void)_updateDeviceActiveFormatsAndActiveConnections;

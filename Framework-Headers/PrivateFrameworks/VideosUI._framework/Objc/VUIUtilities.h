@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
 + (long long)interfaceStyleFromTheme:(id)arg1 defaultInterfaceStyle:(long long)arg2;
 + (BOOL)isAXLargeEnabled:(id)arg1;
 + (BOOL)isAXSmallEnabled:(id)arg1;
++ (BOOL)isInFullscreenOrPipPlayback;
 + (BOOL)isIpadLayout;
++ (BOOL)isTVApp;
 + (double)libraryCategoryListWidth;
 + (double)libraryListMarginToGrid;
 + (unsigned long long)minimumNumberOfItemsToEnableSeeAllButton;

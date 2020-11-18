@@ -15,15 +15,17 @@
 {
     LAClient *_client;
     id<LAPrearmContextXPC> _prearmContext;
+    unsigned int _instanceId;
     NSNumber *_maxBiometryFailures;
     NSData *_evaluatedPolicyDomainState;
-    long long _biometryType;
     NSData *_externalizedContext;
+    long long _biometryType;
 }
 
 @property (nonatomic) long long biometryType; // @synthesize biometryType=_biometryType;
 @property (strong, nonatomic) NSData *evaluatedPolicyDomainState; // @synthesize evaluatedPolicyDomainState=_evaluatedPolicyDomainState;
 @property (strong, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
+@property (readonly, nonatomic) unsigned int instanceId; // @synthesize instanceId=_instanceId;
 @property (nonatomic) BOOL interactionNotAllowed;
 @property (copy, nonatomic) NSString *localizedCancelTitle;
 @property (copy, nonatomic) NSString *localizedFallbackTitle;
@@ -33,18 +35,27 @@
 @property (strong, nonatomic) NSNumber *touchIDAuthenticationRetryLimit;
 @property (weak, nonatomic) id<LAUIDelegate> uiDelegate;
 
++ (unsigned int)newCommandId;
++ (unsigned int)newInstanceId;
 + (void)notifyEvent:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(id)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(id)arg2 options:(id)arg3 log:(long long)arg4 cid:(unsigned int)arg5 reply:(CDUnknownBlockType)arg6;
+- (id)_evaluatePolicy:(long long)arg1 options:(id)arg2 log:(long long)arg3 cid:(unsigned int)arg4 error:(id *)arg5;
+- (void)_evaluatePolicy:(long long)arg1 options:(id)arg2 log:(long long)arg3 cid:(unsigned int)arg4 reply:(CDUnknownBlockType)arg5;
 - (id)_evaluationMechanismsFromReturnedError:(id)arg1 error:(id *)arg2;
 - (id)_hashWithBundleIdentifier:(id)arg1;
 - (id)_publicErrorFromInternalError:(id)arg1 options:(id)arg2;
 - (id)_serverPropertyValueForOption:(long long)arg1;
+- (id)_serverPropertyValueForOption:(long long)arg1 log:(long long)arg2;
+- (BOOL)_setCredential:(id)arg1 type:(long long)arg2 log:(long long)arg3 cid:(unsigned long long)arg4 error:(id *)arg5;
+- (void)_setCredential:(id)arg1 type:(long long)arg2 log:(long long)arg3 cid:(unsigned int)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)_setServerPropertyForOption:(long long)arg1 value:(id)arg2;
+- (void)_setServerPropertyForOption:(long long)arg1 value:(id)arg2 log:(long long)arg3;
 - (void)authMethodWithReply:(CDUnknownBlockType)arg1;
 - (BOOL)canEvaluatePolicy:(long long)arg1 error:(id *)arg2;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)evaluateAccessControl:(struct __SecAccessControl *)arg1 aksOperation:(void *)arg2 options:(id)arg3 error:(id *)arg4;
 - (void)evaluateAccessControl:(struct __SecAccessControl *)arg1 aksOperation:(void *)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;

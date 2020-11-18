@@ -35,6 +35,7 @@
     BOOL _requiresAuthorization;
     BOOL _parentGroupContainsDiscoverableLeader;
     BOOL _volumeControlAvailable;
+    BOOL _supportsHAP;
     unsigned int _deviceType;
     unsigned int _deviceSubtype;
     float _batteryLevel;
@@ -103,6 +104,7 @@
 @property (readonly, nonatomic) BOOL supportsBluetoothSharing; // @synthesize supportsBluetoothSharing=_supportsBluetoothSharing;
 @property (readonly, nonatomic) BOOL supportsBufferedAirPlay; // @synthesize supportsBufferedAirPlay=_supportsBufferedAirPlay;
 @property (readonly, nonatomic) BOOL supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
+@property (readonly, nonatomic) BOOL supportsHAP; // @synthesize supportsHAP=_supportsHAP;
 @property (readonly, nonatomic) BOOL supportsRapport; // @synthesize supportsRapport=_supportsRapport;
 @property (readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
 @property (nonatomic) float volume; // @synthesize volume=_volume;

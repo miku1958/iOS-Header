@@ -20,7 +20,7 @@
     IMFullScreenEffect *_fullScreenEffect;
     id<IMFullScreenEffectSoundPlayer> _soundPlayer;
     IMMessagePartChatItem *_messagePartChatItem;
-    struct UIImage *_messageImage;
+    UIImage *_messageImage;
     double _startTime;
     double _endTime;
     NSString *_languageCode;

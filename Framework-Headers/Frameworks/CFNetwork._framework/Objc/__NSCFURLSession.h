@@ -17,7 +17,7 @@
     NSUUID *_uuid_ivar;
     NSString *_tlsSessionCachePrefix;
     ConnectionContextManager *_nwContextManager;
-    shared_ptr_9ad247fa _nwContext;
+    shared_ptr_22b0e4cc _nwContext;
     NSMutableDictionary *_altSvc;
     NSMutableSet *_h2BlacklistedHosts;
     NSMutableDictionary *_coalescing;
@@ -38,7 +38,7 @@
 - (id)_coalescing;
 - (id)_h2BlacklistedHosts;
 - (id)_metrics;
-- (shared_ptr_9ad247fa)_nwContext;
+- (shared_ptr_22b0e4cc)_nwContext;
 - (id)_tlsSessionCachePrefix;
 - (void)_useTLSSessionCacheFromSession:(id)arg1;
 - (id)_uuid;

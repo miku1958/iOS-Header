@@ -6,19 +6,29 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface OSASymbolInfo : NSObject
 {
     unsigned char _uuid[16];
+    NSString *legacy_name;
+    NSString *legacy_arch;
+    BOOL _isAppleCode;
     unsigned long long _start;
     unsigned long long _size;
+    NSString *_path;
 }
 
+@property BOOL isAppleCode; // @synthesize isAppleCode=_isAppleCode;
+@property (readonly) NSString *path; // @synthesize path=_path;
 @property unsigned long long size; // @synthesize size=_size;
 @property unsigned long long start; // @synthesize start=_start;
 
+- (void).cxx_destruct;
 - (id)get_uuid;
 - (id)initWithAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 for:(unsigned char [16])arg3;
 - (id)initWithSharedCache:(unsigned char [16])arg1 atBaseAddress:(unsigned long long)arg2;
+- (void)setPath:(id)arg1;
 
 @end
 

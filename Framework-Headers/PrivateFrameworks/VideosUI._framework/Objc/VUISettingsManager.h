@@ -15,6 +15,7 @@
     NSString *_preferredVideoFormat;
 }
 
+@property (readonly, nonatomic, getter=isAppInstallationAllowed) BOOL appInstallationAllowed;
 @property (copy, nonatomic) NSNumber *maxMovieRank; // @synthesize maxMovieRank=_maxMovieRank;
 @property (copy, nonatomic) NSNumber *maxTVShowRank; // @synthesize maxTVShowRank=_maxTVShowRank;
 @property (copy, nonatomic) NSString *preferredVideoFormat; // @synthesize preferredVideoFormat=_preferredVideoFormat;

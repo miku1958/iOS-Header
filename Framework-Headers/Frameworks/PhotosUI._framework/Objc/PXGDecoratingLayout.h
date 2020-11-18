@@ -7,7 +7,7 @@
 #import <PhotosUICore/PXGLayout.h>
 
 @class NSMutableIndexSet;
-@protocol PXGAssetBadgeDecorationSource, PXGCaptionDecorationSource, PXGDebugDecorationSource, PXGDragDecorationSource, PXGHighlightDecorationSource, PXGLayoutContentSource, PXGSelectionDecorationSource;
+@protocol PXGAssetBadgeDecorationSource, PXGCaptionDecorationSource, PXGDebugDecorationSource, PXGDragDecorationSource, PXGHighlightDecorationSource, PXGLayoutContentSource, PXGSelectionDecorationSource, PXGShadowSource;
 
 @interface PXGDecoratingLayout : PXGLayout
 {
@@ -16,6 +16,8 @@
     NSMutableIndexSet *_invalidatedDecoratedSpriteIndexes;
     BOOL _wantsCaptionDecorations;
     long long _selectionDecorationStyle;
+    unsigned long long _selectionDecorationAdditions;
+    id<PXGShadowSource> _shadowSource;
     unsigned int _numberOfDecoratingSpritesPerDecoratedSprite;
     PXGLayout *_decoratedLayout;
     id<PXGLayoutContentSource> _decorationSource;
@@ -57,6 +59,7 @@
 - (void)referenceSizeDidChange;
 - (void)safeAreaInsetsDidChange;
 - (void)screenScaleDidChange;
+- (void)setContentSource:(id)arg1;
 - (void)setLastBaseline:(double)arg1;
 - (void)sublayout:(id)arg1 didApplySpriteChangeDetails:(id)arg2;
 - (struct CGRect)sublayout:(id)arg1 visibleRectForRequestedVisibleRect:(struct CGRect)arg2;

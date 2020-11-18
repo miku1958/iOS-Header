@@ -8,28 +8,38 @@
 
 #import <AdCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSData, NSString;
 
 @interface ADVector : NSObject <NSSecureCoding>
 {
-    NSArray *_vector;
+    float *_dataPtr;
+    unsigned int _length;
     NSString *_version;
 }
 
-@property (strong, nonatomic) NSArray *vector; // @synthesize vector=_vector;
+@property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) unsigned int length; // @synthesize length=_length;
 @property (strong, nonatomic) NSString *version; // @synthesize version=_version;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (float *)_createDataPtrFromArray:(id)arg1;
+- (id)_initWithVersion:(id)arg1 length:(unsigned int)arg2 rawMallocedFloats:(float *)arg3;
+- (id)arrayOfNumbers;
 - (id)cosineSimilarity:(id)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (float)dotProduct:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithVersion:(id)arg1 andArray:(id)arg2;
+- (id)initWithVersion:(id)arg1 data:(id)arg2;
+- (id)initWithVersion:(id)arg1 length:(unsigned int)arg2 floats:(float *)arg3;
 - (float)magnitude;
 - (id)scalarMultiply:(float)arg1;
+- (void)setArrayOfNumber:(id)arg1;
+- (void)setDataPtr:(float *)arg1;
 - (id)vectorAdd:(id)arg1;
 - (id)vectorSubtract:(id)arg1;
 

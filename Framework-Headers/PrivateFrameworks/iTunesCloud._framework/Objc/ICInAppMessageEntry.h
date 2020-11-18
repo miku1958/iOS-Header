@@ -19,11 +19,13 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMutableDictionary *_resourceCache;
     BOOL _shouldDownloadResources;
+    BOOL _didCacheRequiredResources;
     ICIAMApplicationMessage *_applicationMessage;
 }
 
 @property (readonly, nonatomic) ICIAMApplicationMessage *applicationMessage; // @synthesize applicationMessage=_applicationMessage;
 @property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (nonatomic) BOOL didCacheRequiredResources; // @synthesize didCacheRequiredResources=_didCacheRequiredResources;
 @property (readonly, nonatomic) NSDictionary *metadata;
 @property (nonatomic) BOOL shouldDownloadResources; // @synthesize shouldDownloadResources=_shouldDownloadResources;
 

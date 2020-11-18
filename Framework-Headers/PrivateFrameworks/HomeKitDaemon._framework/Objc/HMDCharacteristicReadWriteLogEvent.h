@@ -16,14 +16,21 @@
     BOOL _isTimedWrite;
     BOOL _isLocal;
     BOOL _isCached;
+    BOOL _isResidentAvailable;
+    BOOL _isRemoteAccessAllowed;
+    BOOL _isRemotelyReachable;
     NSArray *_characteristicsToRead;
     HAPAccessory *_hapAccessory;
     HMDAccessory *_hmdAccessory;
     NSUUID *_transactionId;
     unsigned long long _triggerSource;
+    NSString *_primaryServiceType;
+    unsigned long long _consecutiveFailureCount;
+    double _timeIntervalSinceFirstFailure;
 }
 
 @property (readonly, nonatomic) NSArray *characteristicsToRead; // @synthesize characteristicsToRead=_characteristicsToRead;
+@property (nonatomic) unsigned long long consecutiveFailureCount; // @synthesize consecutiveFailureCount=_consecutiveFailureCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) HAPAccessory *hapAccessory; // @synthesize hapAccessory=_hapAccessory;
@@ -31,9 +38,14 @@
 @property (readonly, weak, nonatomic) HMDAccessory *hmdAccessory; // @synthesize hmdAccessory=_hmdAccessory;
 @property (readonly, nonatomic) BOOL isCached; // @synthesize isCached=_isCached;
 @property (nonatomic) BOOL isLocal; // @synthesize isLocal=_isLocal;
+@property (readonly, nonatomic) BOOL isRemoteAccessAllowed; // @synthesize isRemoteAccessAllowed=_isRemoteAccessAllowed;
+@property (readonly, nonatomic) BOOL isRemotelyReachable; // @synthesize isRemotelyReachable=_isRemotelyReachable;
+@property (readonly, nonatomic) BOOL isResidentAvailable; // @synthesize isResidentAvailable=_isResidentAvailable;
 @property (readonly, nonatomic) BOOL isTimedWrite; // @synthesize isTimedWrite=_isTimedWrite;
 @property (readonly, nonatomic) BOOL isWriteOperation; // @synthesize isWriteOperation=_isWriteOperation;
+@property (readonly, nonatomic) NSString *primaryServiceType; // @synthesize primaryServiceType=_primaryServiceType;
 @property (readonly) Class superclass;
+@property (nonatomic) double timeIntervalSinceFirstFailure; // @synthesize timeIntervalSinceFirstFailure=_timeIntervalSinceFirstFailure;
 @property (readonly, nonatomic) NSUUID *transactionId; // @synthesize transactionId=_transactionId;
 @property (readonly, nonatomic) unsigned long long triggerSource; // @synthesize triggerSource=_triggerSource;
 
@@ -45,6 +57,7 @@
 - (id)initReadWriteLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isWriteOperation:(BOOL)arg5 isTimedWrite:(BOOL)arg6 isLocal:(BOOL)arg7 transactionId:(id)arg8 isCached:(BOOL)arg9;
 - (id)metricForAWD;
 - (void)setLocal:(BOOL)arg1;
+- (void)submitAtDate:(id)arg1 error:(id)arg2;
 
 @end
 

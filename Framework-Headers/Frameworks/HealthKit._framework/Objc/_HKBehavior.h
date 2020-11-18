@@ -41,6 +41,7 @@
     BOOL _hasOntologyFeaturesEnabled;
     BOOL _isTestingDevice;
     BOOL _healthAppHidden;
+    NSString *_unitTest_deviceRegionCode;
 }
 
 @property (nonatomic) BOOL collectsCalorimetry; // @synthesize collectsCalorimetry=_collectsCalorimetry;
@@ -90,6 +91,7 @@
 @property (nonatomic) BOOL supportsSwimmingWorkoutSessions;
 @property (nonatomic) BOOL supportsWorkouts; // @synthesize supportsWorkouts=_supportsWorkouts;
 @property (readonly, nonatomic) unsigned long long totalDiskCapacity;
+@property (copy, nonatomic) NSString *unitTest_deviceRegionCode; // @synthesize unitTest_deviceRegionCode=_unitTest_deviceRegionCode;
 @property (nonatomic) BOOL unitTest_useEmbeddedOntology; // @synthesize unitTest_useEmbeddedOntology=_unitTest_useEmbeddedOntology;
 @property (nonatomic) BOOL unitTest_useEmbeddedOntologyAsset; // @synthesize unitTest_useEmbeddedOntologyAsset=_unitTest_useEmbeddedOntologyAsset;
 

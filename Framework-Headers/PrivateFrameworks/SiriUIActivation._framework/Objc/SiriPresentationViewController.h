@@ -18,6 +18,7 @@
 
 @interface SiriPresentationViewController : UIViewController <SASStateChangeListener, AFUISiriLanguageDelegate, AFUISiriViewControllerDelegate, AFUISiriViewControllerDataSource, AFUISiriSetupViewControllerDelegate, SiriPresentation>
 {
+    struct InstrumentationDismissalState _instrumentationDismissalState;
     long long _identifier;
     BOOL _delaySessionEndForTTS;
     NSDate *_lastGuideCheck;
@@ -29,6 +30,9 @@
     CDUnknownBlockType _buttonTrigger;
     BOOL _receivedIncomingPhoneCall;
     NSObject<OS_dispatch_queue> *_watchdogQueue;
+    struct os_unfair_lock_s _dismissalProcessingLock;
+    BOOL _isDismissing;
+    CDUnknownBlockType _dismissalCompletion;
     BOOL _springBoardIdleTimerDisabled;
     BOOL _waitingForTelephonyToStart;
     BOOL _startGuidedAccessOnDismissal;
@@ -111,12 +115,14 @@
 - (void)_checkForGuideUpdatesIfNecessary;
 - (void)_cleanupUnownedConnection;
 - (void)_clearAllTestingInputs;
-- (void)_clearSiriViewController;
+- (void)_clearSiriViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_createSiriViewControllerWithRequestOptions:(id)arg1;
 - (id)_dequeueTestingInput;
 - (void)_dismissDueToUnexpectedError:(id)arg1;
 - (void)_dismissSiriSetup;
 - (void)_dismissTest:(id)arg1 afterTimeoutWithTestOptions:(id)arg2 finishTest:(BOOL)arg3;
+- (unsigned long long)_dismissalReasonForDismissalWithOptions:(id)arg1;
+- (void)_emitInstrumentationDismissalStateForViewMode:(long long)arg1 withDismissalReason:(unsigned long long)arg2;
 - (void)_enableAudioInjection:(BOOL)arg1 audioFiles:(id)arg2;
 - (void)_enableSpringBoardIdleTimer;
 - (void)_endDelayingSessionEndForTTS;
@@ -129,12 +135,14 @@
 - (BOOL)_handleTapButtonBehavior:(long long)arg1;
 - (BOOL)_handleTapDismissal:(long long)arg1;
 - (BOOL)_hasTestingInput;
+- (unsigned long long)_impliedDismissalReasonFromState;
 - (void)_invalidateCarSiriButtonHoldToTalkTimer;
 - (BOOL)_isDelayingSessionEnd;
 - (BOOL)_isDeviceButton:(long long)arg1;
 - (void)_openURL:(id)arg1 bundleId:(id)arg2 delaySessionEndForTTS:(BOOL)arg3 punchoutStyle:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_prepareSiriViewControllerWithRequestOptions:(id)arg1;
 - (void)_presentSiriViewControllerWithPresentationOptions:(id)arg1 requestOptions:(id)arg2;
+- (void)_presentationDismissalRequestedWithOptions:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_presentationRequestedHandlerWithRequestOptions:(id)arg1;
 - (void)_presentationRequestedWithPresentationOptions:(id)arg1 requestOptions:(id)arg2;
 - (void)_processConnectionHouseKeeping;
@@ -144,6 +152,8 @@
 - (void)_removePreviousInjectAudioSettings;
 - (void)_removeSetupViewControllerIfNecessary;
 - (void)_requestDismissal;
+- (void)_requestDismissalWithOptions:(id)arg1;
+- (void)_resetStateForInstrumentation;
 - (void)_runSiriBringupCarPlayButtonToSpeechRecordingWithoutPrewarmTestWithTestName:(id)arg1 testOptions:(id)arg2;
 - (void)_runSiriBringupInjectAudioTestWithTestName:(id)arg1 testOptions:(id)arg2 dismissUIAfterTimeout:(BOOL)arg3 finishTestAfterTimeout:(BOOL)arg4;
 - (void)_runSiriBringupListeningStateTestWithTestName:(id)arg1 testOptions:(id)arg2;
@@ -167,7 +177,7 @@
 - (void)_updateHostedPresentationFrame;
 - (void)_updateLanguageCode;
 - (id)_updateTestStartedTimeInTestOptions:(id)arg1 toTime:(id)arg2;
-- (void)_wasDismissed;
+- (void)_wasDismissedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_watchdogQueue_startActivationWatchdogTimer;
 - (void)_watchdogQueue_stopActivationWatchdogTimerIfNeededThen:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)activateWithRequestOptions:(id)arg1;
@@ -187,7 +197,7 @@
 - (void)disableSiriActivationRequestedBySiriSetupViewController:(id)arg1;
 - (void)dismiss;
 - (void)dismissSiriSetupViewController:(id)arg1;
-- (void)dismissSiriViewController:(id)arg1 delayForTTS:(BOOL)arg2;
+- (void)dismissSiriViewController:(id)arg1 delayForTTS:(BOOL)arg2 withDismissalReason:(unsigned long long)arg3;
 - (void)dismissWithOptions:(id)arg1;
 - (void)extendCurrentTTSRequested;
 - (oneway void)handleButtonDownFromButtonIdentifier:(id)arg1 timestamp:(id)arg2;
@@ -229,7 +239,7 @@
 - (BOOL)siriViewController:(id)arg1 openURL:(id)arg2 appBundleID:(id)arg3 allowSiriDismissal:(BOOL)arg4;
 - (void)siriViewController:(id)arg1 openURL:(id)arg2 delaySessionEndForTTS:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)siriViewController:(id)arg1 presentedIntentWithBundleId:(id)arg2;
-- (void)siriViewController:(id)arg1 requestsDismissal:(CDUnknownBlockType)arg2;
+- (void)siriViewController:(id)arg1 requestsDismissalWithReason:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)siriViewController:(id)arg1 requestsPresentation:(CDUnknownBlockType)arg2;
 - (void)siriViewController:(id)arg1 siriIdleAndQuietStatusDidChange:(BOOL)arg2;
 - (id)siriViewController:(id)arg1 willStartRequestWithOptions:(id)arg2;

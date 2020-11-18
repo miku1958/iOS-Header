@@ -43,6 +43,8 @@
 - (void)_configureDomain:(id)arg1 notification:(id)arg2;
 - (void)_configureDomains;
 - (void)_configureKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3;
+- (void)_configureKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3 fallbackKey:(id)arg4;
+- (void)_configureKey:(id)arg1 domain:(id)arg2 fallbackKey:(id)arg3;
 - (void)_configurePreferences;
 - (BOOL)_isOneTimeAction:(id)arg1;
 - (void)_pushValue:(id)arg1 toPreference:(id)arg2 domain:(id)arg3;

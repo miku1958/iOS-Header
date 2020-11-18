@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) NSArray *supportedFamilies; // @synthesize supportedFamilies=_supportedFamilies;
 
-+ (id)_stocksComplication;
++ (id)_stocksComplication:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithRemoteApplication:(id)arg1 supportedFamilies:(id)arg2;
 

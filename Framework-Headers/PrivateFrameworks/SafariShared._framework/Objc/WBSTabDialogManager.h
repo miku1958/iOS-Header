@@ -16,13 +16,13 @@
 }
 
 - (void).cxx_destruct;
-- (void)_cancelDialogsInQueue:(struct NSMutableArray *)arg1 tabID:(unsigned long long)arg2 context:(id)arg3;
+- (void)_cancelDialogsInQueue:(id)arg1 tabID:(unsigned long long)arg2 context:(id)arg3;
 - (id)_dialogBlockingSlot:(CDStruct_497cfc99)arg1;
 - (id)_dialogBlockingWebProcessID:(int)arg1;
 - (void)_dismissDialog:(id)arg1 withResponse:(id)arg2;
 - (long long)_enqueueDialog:(id)arg1;
-- (struct NSMutableArray *)_queueForTabID:(unsigned long long)arg1 createIfNeeded:(BOOL)arg2;
-- (struct NSMutableSet *)_setForWebProcessID:(int)arg1 createIfNeeded:(BOOL)arg2;
+- (id)_queueForTabID:(unsigned long long)arg1 createIfNeeded:(BOOL)arg2;
+- (id)_setForWebProcessID:(int)arg1 createIfNeeded:(BOOL)arg2;
 - (void)cancelAllDialogsBlockingSlot:(CDStruct_497cfc99)arg1;
 - (void)cancelAllDialogsBlockingWebProcessID:(int)arg1;
 - (void)cancelAllDialogsForTabID:(unsigned long long)arg1;

@@ -21,7 +21,7 @@
     NSMutableSet *_pendingMessageIDs;
     BOOL _rejectedNewSessionFromSamePeer;
     BOOL _sessionStarted;
-    struct NSMutableDictionary *_stateResponders;
+    NSMutableDictionary *_stateResponders;
     struct os_unfair_lock_s _setDelegateLock;
     BOOL _isSending;
     long long _priority;

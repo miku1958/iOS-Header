@@ -26,7 +26,7 @@
 - (id)_defaultUnitWithNames:(id)arg1;
 - (Class)_unitClass;
 - (id)_unitWithUnitName:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;

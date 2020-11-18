@@ -17,18 +17,20 @@
     BOOL _relocalizationEnabled;
     BOOL _mlModelEnabled;
     BOOL _deliverRawSceneUnderstandingResults;
-    BOOL _skeletonDetectionEnabled;
-    BOOL _shouldUseSuperWideIfAvailable;
+    BOOL _shouldUseUltraWideIfAvailable;
+    BOOL _alwaysUsePrimaryCameraForTracking;
     long long _environmentTexturing;
     unsigned long long _planeDetection;
     ARWorldMap *_initialWorldMap;
     NSSet *_detectionImages;
     long long _maximumNumberOfTrackedImages;
     NSSet *_detectionObjects;
+    unsigned long long _sceneReconstruction;
     NSString *_slamConfiguration;
     double _minVergenceAngle;
 }
 
+@property (nonatomic) BOOL alwaysUsePrimaryCameraForTracking; // @synthesize alwaysUsePrimaryCameraForTracking=_alwaysUsePrimaryCameraForTracking;
 @property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @dynamic autoFocusEnabled;
 @property (nonatomic) BOOL automaticImageScaleEstimationEnabled; // @synthesize automaticImageScaleEstimationEnabled=_automaticImageScaleEstimationEnabled;
 @property (nonatomic, getter=isCollaborationEnabled) BOOL collaborationEnabled; // @synthesize collaborationEnabled=_collaborationEnabled;
@@ -36,15 +38,15 @@
 @property (copy, nonatomic) NSSet *detectionImages; // @synthesize detectionImages=_detectionImages;
 @property (copy, nonatomic) NSSet *detectionObjects; // @synthesize detectionObjects=_detectionObjects;
 @property (nonatomic) long long environmentTexturing; // @synthesize environmentTexturing=_environmentTexturing;
-@property (readonly, nonatomic) ARImageSensorSettings *imageSensorSettingsForSuperWide;
+@property (readonly, nonatomic) ARImageSensorSettings *imageSensorSettingsForUltraWide;
 @property (strong, nonatomic) ARWorldMap *initialWorldMap; // @synthesize initialWorldMap=_initialWorldMap;
 @property (nonatomic) long long maximumNumberOfTrackedImages; // @synthesize maximumNumberOfTrackedImages=_maximumNumberOfTrackedImages;
 @property (nonatomic) double minVergenceAngle; // @synthesize minVergenceAngle=_minVergenceAngle;
 @property (nonatomic, getter=isMLModelEnabled) BOOL mlModelEnabled; // @synthesize mlModelEnabled=_mlModelEnabled;
 @property (nonatomic) unsigned long long planeDetection; // @synthesize planeDetection=_planeDetection;
 @property (nonatomic) BOOL relocalizationEnabled; // @synthesize relocalizationEnabled=_relocalizationEnabled;
-@property (nonatomic) BOOL shouldUseSuperWideIfAvailable; // @synthesize shouldUseSuperWideIfAvailable=_shouldUseSuperWideIfAvailable;
-@property (nonatomic, getter=isSkeletonDetectionEnabled) BOOL skeletonDetectionEnabled; // @synthesize skeletonDetectionEnabled=_skeletonDetectionEnabled;
+@property (nonatomic) unsigned long long sceneReconstruction; // @synthesize sceneReconstruction=_sceneReconstruction;
+@property (nonatomic) BOOL shouldUseUltraWideIfAvailable; // @synthesize shouldUseUltraWideIfAvailable=_shouldUseUltraWideIfAvailable;
 @property (copy, nonatomic) NSString *slamConfiguration; // @synthesize slamConfiguration=_slamConfiguration;
 @property (nonatomic, getter=userFaceTrackingEnabled) BOOL userFaceTrackingEnabled; // @synthesize userFaceTrackingEnabled=_userFaceTrackingEnabled;
 @property (nonatomic) BOOL wantsHDREnvironmentTextures; // @synthesize wantsHDREnvironmentTextures=_wantsHDREnvironmentTextures;
@@ -52,15 +54,16 @@
 + (BOOL)isSupported;
 + (id)new;
 + (id)supportedVideoFormats;
-+ (id)supportedVideoFormatsForSuperWide;
++ (id)supportedVideoFormatsForUltraWide;
 + (id)supportedVideoFormatsForUserFaceTracking;
 + (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 + (BOOL)supportsFrontCameraFaceAnchors;
++ (BOOL)supportsSceneReconstruction:(unsigned long long)arg1;
 + (BOOL)supportsUserFaceTracking;
 - (void).cxx_destruct;
 - (id)_trackingOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (void)createTechniques:(id)arg1;
 - (id)description;
 - (id)imageSensorSettings;
 - (id)imageSensorSettingsForUserFaceTracking;
@@ -69,8 +72,9 @@
 - (id)parentImageSensorSettings;
 - (id)secondaryTechniques;
 - (void)setFrontCameraFaceAnchorsEnabled:(BOOL)arg1;
+- (BOOL)shouldEnableCalibrationDataForImageSensorSettings:(id)arg1;
 - (BOOL)shouldEnableVisionDataForImageSensorSettings:(id)arg1;
-- (BOOL)shouldUseSuperWide;
+- (BOOL)shouldUseUltraWide;
 
 @end
 

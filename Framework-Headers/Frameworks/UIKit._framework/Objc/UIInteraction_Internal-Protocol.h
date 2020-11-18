@@ -6,12 +6,13 @@
 
 #import <UIKitCore/UIInteraction-Protocol.h>
 
-@class NSArray, UIDragEvent, UIWindow;
+@class NSArray, UIDragEvent, UITraitCollection, UIWindow;
 
 @protocol UIInteraction_Internal <UIInteraction>
 
 @optional
 - (void)_didMoveFromWindow:(UIWindow *)arg1 toWindow:(UIWindow *)arg2;
 - (NSArray *)_dynamicGestureRecognizersForEvent:(UIDragEvent *)arg1;
+- (void)_viewTraitCollectionDidChange:(UITraitCollection *)arg1;
 @end
 

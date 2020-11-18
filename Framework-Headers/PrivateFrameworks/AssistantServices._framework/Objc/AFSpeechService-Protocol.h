@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, NSURL;
+@class AFSpeechCorrectionInfo, NSArray, NSData, NSDictionary, NSString, NSURL;
 
 @protocol AFSpeechService <NSObject>
 - (oneway void)addAudioPacket:(NSData *)arg1;
@@ -20,8 +20,9 @@
 - (oneway void)purgeInstalledAssetsWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (oneway void)readProfileAndUserDataWithLanguage:(NSString *)arg1 allowOverride:(BOOL)arg2 completion:(void (^)(NSData *, NSString *))arg3;
 - (oneway void)runAdaptationRecipeEvaluation:(NSDictionary *)arg1 recordData:(NSData *)arg2 attachments:(NSArray *)arg3 completion:(void (^)(NSDictionary *, NSData *, NSError *))arg4;
+- (oneway void)sendSpeechCorrectionInfo:(AFSpeechCorrectionInfo *)arg1 interactionIdentifier:(NSString *)arg2;
 - (oneway void)startRequestActivityWithCompletion:(void (^)(void))arg1;
-- (oneway void)startSpeechRecognitionWithLanguage:(NSString *)arg1 task:(NSString *)arg2 context:(NSArray *)arg3 profile:(NSData *)arg4 narrowband:(BOOL)arg5 detectUtterances:(BOOL)arg6 censorSpeech:(BOOL)arg7 maximumRecognitionDuration:(double)arg8 farField:(BOOL)arg9 overrides:(NSDictionary *)arg10 modelOverrideURL:(NSURL *)arg11 secureOfflineOnly:(BOOL)arg12 originalAudioFileURL:(NSURL *)arg13 didStartHandler:(void (^)(NSString *, NSError *))arg14;
+- (oneway void)startSpeechRecognitionWithLanguage:(NSString *)arg1 interactionIdentifier:(NSString *)arg2 task:(NSString *)arg3 context:(NSArray *)arg4 profile:(NSData *)arg5 narrowband:(BOOL)arg6 detectUtterances:(BOOL)arg7 censorSpeech:(BOOL)arg8 maximumRecognitionDuration:(double)arg9 farField:(BOOL)arg10 overrides:(NSDictionary *)arg11 modelOverrideURL:(NSURL *)arg12 secureOfflineOnly:(BOOL)arg13 originalAudioFileURL:(NSURL *)arg14 didStartHandler:(void (^)(NSString *, NSError *))arg15;
 - (oneway void)updateSpeechProfileWithLanguage:(NSString *)arg1 existingProfile:(NSData *)arg2 existingAssetPath:(NSString *)arg3 completion:(void (^)(NSData *, NSString *, NSError *))arg4;
 - (oneway void)writeDESRecord;
 @end

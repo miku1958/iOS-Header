@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSTimer;
+@class NSMutableSet, NSTimer, PSPointerClientController;
 
 @interface TITypingAssertion : NSObject
 {
     BOOL _active;
     NSMutableSet *_restingPathIndices;
     NSTimer *_timer;
+    PSPointerClientController *_pointerClientController;
 }
 
 @property (nonatomic, getter=isActive) BOOL active;
+@property (strong, nonatomic) PSPointerClientController *pointerClientController; // @synthesize pointerClientController=_pointerClientController;
 @property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 
 + (id)sharedTypingAssertion;
@@ -28,8 +30,8 @@
 - (void)restTouchEndWithPathIndex:(long long)arg1;
 - (void)restTouchStartWithPathIndex:(long long)arg1;
 - (void)timerFired:(id)arg1;
-- (void)touch;
-- (void)touchWithDuration:(double)arg1;
+- (void)touchWithDuration:(double)arg1 reason:(long long)arg2;
+- (void)touchWithReason:(long long)arg1;
 
 @end
 

@@ -7,6 +7,17 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (HealthRecordsServices)
++ (id)hrs_accumulatedErrorWithUnsatisfiedConditions:(id)arg1 authorizationFailures:(id)arg2 resourceFetchFailures:(id)arg3 otherErrors:(id)arg4;
++ (id)hrs_authorizationOrResourceFetchErrorFromError:(id)arg1;
++ (id)hrs_errorWithAccumulatedErrors:(id)arg1;
+- (id)_hrs_accumulatedErrorsForUserInfoKey:(id)arg1;
+- (id)hrs_accumulatedAuthorizationFailures;
+- (id)hrs_accumulatedOtherErrors;
+- (id)hrs_accumulatedResourceFetchFailures;
+- (id)hrs_accumulatedUnsatisfiedConditions;
+- (BOOL)hrs_hasAuthorizationFailure;
+- (BOOL)hrs_hasResourceFetchFailure;
+- (BOOL)hrs_hasUnsatisfiedCondition;
 - (BOOL)hrs_isReloginRequiredError;
 @end
 

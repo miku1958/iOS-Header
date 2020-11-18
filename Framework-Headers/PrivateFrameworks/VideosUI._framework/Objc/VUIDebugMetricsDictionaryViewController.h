@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 
 - (void).cxx_destruct;
+- (id)initWithDictionary:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)sortedKeys;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

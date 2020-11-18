@@ -15,8 +15,8 @@
 
 @interface EMObjectID : NSObject <EFCacheable, NSSecureCoding, NSCopying>
 {
-    struct os_unfair_lock_s _lock;
     unsigned long long _hash;
+    struct os_unfair_lock_s _lock;
     BOOL _ephemeral;
     id<NSObject><NSSecureCoding><NSCopying> _representedObjectID;
     EFStringHash *_stringHash;

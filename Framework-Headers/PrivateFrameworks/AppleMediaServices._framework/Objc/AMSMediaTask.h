@@ -13,6 +13,7 @@
 
 @interface AMSMediaTask : AMSTask <AMSBagConsumer>
 {
+    BOOL _charts;
     BOOL _URLKnownToBeTrusted;
     ACAccount *_account;
     NSArray *_additionalPlatforms;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSArray *additionalPlatforms; // @synthesize additionalPlatforms=_additionalPlatforms;
 @property (readonly, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
+@property (nonatomic) BOOL charts; // @synthesize charts=_charts;
 @property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (readonly, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;

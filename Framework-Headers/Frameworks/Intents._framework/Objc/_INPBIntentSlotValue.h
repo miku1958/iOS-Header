@@ -44,6 +44,7 @@
     CDStruct_95bda58d _payloadMessageEffects;
     CDStruct_95bda58d _payloadMessageTypes;
     CDStruct_95bda58d _payloadNotebookItemTypes;
+    CDStruct_95bda58d _payloadParsecCategories;
     CDStruct_95bda58d _payloadPaymentStatus;
     CDStruct_95bda58d _payloadPersonalPlaceTypes;
     CDStruct_95bda58d _payloadPhotoAttributes;
@@ -84,6 +85,7 @@
     NSArray *_payloadDateTimeRangeLists;
     NSArray *_payloadDateTimeRangeValues;
     NSArray *_payloadDateTimeValues;
+    NSArray *_payloadDeviceDetails;
     NSArray *_payloadDialingContacts;
     NSArray *_payloadDistanceLists;
     NSArray *_payloadDistanceValues;
@@ -213,6 +215,8 @@
 @property (readonly, nonatomic) unsigned long long payloadDateTimeRangeValuesCount;
 @property (copy, nonatomic) NSArray *payloadDateTimeValues; // @synthesize payloadDateTimeValues=_payloadDateTimeValues;
 @property (readonly, nonatomic) unsigned long long payloadDateTimeValuesCount;
+@property (copy, nonatomic) NSArray *payloadDeviceDetails; // @synthesize payloadDeviceDetails=_payloadDeviceDetails;
+@property (readonly, nonatomic) unsigned long long payloadDeviceDetailsCount;
 @property (readonly, nonatomic) int *payloadDeviceTypes;
 @property (readonly, nonatomic) unsigned long long payloadDeviceTypesCount;
 @property (copy, nonatomic) NSArray *payloadDialingContacts; // @synthesize payloadDialingContacts=_payloadDialingContacts;
@@ -317,6 +321,8 @@
 @property (readonly, nonatomic) unsigned long long payloadNotebookItemTypesCount;
 @property (copy, nonatomic) NSArray *payloadNotes; // @synthesize payloadNotes=_payloadNotes;
 @property (readonly, nonatomic) unsigned long long payloadNotesCount;
+@property (readonly, nonatomic) int *payloadParsecCategories;
+@property (readonly, nonatomic) unsigned long long payloadParsecCategoriesCount;
 @property (copy, nonatomic) NSArray *payloadPaymentAmountValues; // @synthesize payloadPaymentAmountValues=_payloadPaymentAmountValues;
 @property (readonly, nonatomic) unsigned long long payloadPaymentAmountValuesCount;
 @property (copy, nonatomic) NSArray *payloadPaymentMethodLists; // @synthesize payloadPaymentMethodLists=_payloadPaymentMethodLists;
@@ -436,6 +442,7 @@
 + (Class)payloadDateTimeRangeListType;
 + (Class)payloadDateTimeRangeValueType;
 + (Class)payloadDateTimeValueType;
++ (Class)payloadDeviceDetailType;
 + (Class)payloadDialingContactType;
 + (Class)payloadDistanceListType;
 + (Class)payloadDistanceValueType;
@@ -526,6 +533,7 @@
 - (int)StringAsPayloadMessageEffects:(id)arg1;
 - (int)StringAsPayloadMessageTypes:(id)arg1;
 - (int)StringAsPayloadNotebookItemTypes:(id)arg1;
+- (int)StringAsPayloadParsecCategories:(id)arg1;
 - (int)StringAsPayloadPaymentStatus:(id)arg1;
 - (int)StringAsPayloadPersonalPlaceTypes:(id)arg1;
 - (int)StringAsPayloadPhotoAttributes:(id)arg1;
@@ -577,6 +585,7 @@
 - (void)addPayloadDateTimeRangeList:(id)arg1;
 - (void)addPayloadDateTimeRangeValue:(id)arg1;
 - (void)addPayloadDateTimeValue:(id)arg1;
+- (void)addPayloadDeviceDetail:(id)arg1;
 - (void)addPayloadDeviceType:(int)arg1;
 - (void)addPayloadDialingContact:(id)arg1;
 - (void)addPayloadDistanceList:(id)arg1;
@@ -629,6 +638,7 @@
 - (void)addPayloadNote:(id)arg1;
 - (void)addPayloadNoteContent:(id)arg1;
 - (void)addPayloadNotebookItemType:(int)arg1;
+- (void)addPayloadParsecCategory:(int)arg1;
 - (void)addPayloadPaymentAmountValue:(id)arg1;
 - (void)addPayloadPaymentMethodList:(id)arg1;
 - (void)addPayloadPaymentMethodValue:(id)arg1;
@@ -708,6 +718,7 @@
 - (void)clearPayloadDateTimeRangeLists;
 - (void)clearPayloadDateTimeRangeValues;
 - (void)clearPayloadDateTimeValues;
+- (void)clearPayloadDeviceDetails;
 - (void)clearPayloadDeviceTypes;
 - (void)clearPayloadDialingContacts;
 - (void)clearPayloadDistanceLists;
@@ -760,6 +771,7 @@
 - (void)clearPayloadNoteContents;
 - (void)clearPayloadNotebookItemTypes;
 - (void)clearPayloadNotes;
+- (void)clearPayloadParsecCategories;
 - (void)clearPayloadPaymentAmountValues;
 - (void)clearPayloadPaymentMethodLists;
 - (void)clearPayloadPaymentMethodValues;
@@ -858,6 +870,7 @@
 - (id)payloadDateTimeRangeListAtIndex:(unsigned long long)arg1;
 - (id)payloadDateTimeRangeValueAtIndex:(unsigned long long)arg1;
 - (id)payloadDateTimeValueAtIndex:(unsigned long long)arg1;
+- (id)payloadDeviceDetailAtIndex:(unsigned long long)arg1;
 - (int)payloadDeviceTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadDeviceTypesAsString:(int)arg1;
 - (id)payloadDialingContactAtIndex:(unsigned long long)arg1;
@@ -927,6 +940,8 @@
 - (id)payloadNoteContentAtIndex:(unsigned long long)arg1;
 - (int)payloadNotebookItemTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadNotebookItemTypesAsString:(int)arg1;
+- (id)payloadParsecCategoriesAsString:(int)arg1;
+- (int)payloadParsecCategoryAtIndex:(unsigned long long)arg1;
 - (id)payloadPaymentAmountValueAtIndex:(unsigned long long)arg1;
 - (id)payloadPaymentMethodListAtIndex:(unsigned long long)arg1;
 - (id)payloadPaymentMethodValueAtIndex:(unsigned long long)arg1;
@@ -1029,6 +1044,7 @@
 - (void)setPayloadMessageEffects:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadMessageTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadNotebookItemTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setPayloadParsecCategories:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadPaymentStatus:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadPersonalPlaceTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadPhotoAttributes:(int *)arg1 count:(unsigned long long)arg2;

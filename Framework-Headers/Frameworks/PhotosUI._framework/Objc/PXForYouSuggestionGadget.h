@@ -43,6 +43,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXForYouSuggestionGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -57,9 +58,6 @@
 @property (strong, nonatomic) id<PXDisplaySuggestion> suggestion; // @synthesize suggestion=_suggestion;
 @property (nonatomic) unsigned short suggestionType; // @synthesize suggestionType=_suggestionType;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
 
@@ -68,7 +66,6 @@
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (id)_contentViewIfLoaded;
-- (void)_handleContentViewTap:(id)arg1;
 - (void)_handleDismiss;
 - (void)_markSuggestionAsActive;
 - (void)_markSuggestionAsDeclined;
@@ -86,11 +83,12 @@
 - (void)gadgetControllerHasAppeared;
 - (id)init;
 - (id)initWithSuggestion:(id)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (id)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)uniqueGadgetIdentifier;
+- (void)userDidSelectGadget;
 
 @end
 

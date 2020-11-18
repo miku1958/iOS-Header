@@ -53,6 +53,7 @@
 - (float)hardwareCost;
 - (CDStruct_1b6d18a9)highestSupportedVideoFrameDuration;
 - (id)initWithFigCaptureSourceFormat:(id)arg1;
+- (BOOL)isCameraCalibrationDataDeliverySupported;
 - (BOOL)isDeepFusionSupported;
 - (BOOL)isDefaultActiveFormat;
 - (BOOL)isDeferredPhotoProcessingSupported;
@@ -106,6 +107,8 @@
 - (BOOL)supportsRedEyeReduction;
 - (int)variableSensorPowerConsumption;
 - (long long)videoHDRFlavor;
+- (double)videoMaxZoomFactorForCameraCalibrationDataDelivery;
+- (double)videoMinZoomFactorForCameraCalibrationDataDelivery;
 - (id)videoZoomSupportedDownscaleStages;
 - (id)videoZoomSupportedUpscaleStages;
 - (id)vtScalingMode;

@@ -17,7 +17,6 @@
 @property (weak, nonatomic) id<ARSensorDelegate> delegate;
 @property (readonly, nonatomic) NSString *deviceModel;
 @property (readonly, nonatomic) BOOL finishedReplaying;
-@property (nonatomic) unsigned long long forcePlaybackFramesPerSecond;
 @property (readonly, nonatomic) struct CGSize imageResolution;
 @property (readonly, nonatomic) BOOL interrupted;
 @property (readonly, nonatomic) BOOL isReplayingManually;
@@ -27,6 +26,7 @@
 @property (readonly, nonatomic) NSArray *recordedResultClassList;
 @property (readonly, nonatomic) NSSet *recordedResultClasses;
 @property (readonly, nonatomic) unsigned long long recordedSensorTypes;
+@property (readonly, nonatomic) long long replayMode;
 @property (weak) id<ARReplaySensorDelegate> replaySensorDelegate;
 @property (readonly, nonatomic) NSURL *sequenceURL;
 @property (readonly, nonatomic, getter=isSynchronousMode) BOOL synchronousMode;
@@ -38,6 +38,7 @@
 - (id)initWithDataFromFile:(NSString *)arg1;
 - (id)initWithSequenceURL:(NSURL *)arg1 manualReplay:(BOOL)arg2;
 - (id)initWithSequenceURL:(NSURL *)arg1 manualReplay:(BOOL)arg2 synchronousMode:(BOOL)arg3;
+- (id)initWithSequenceURL:(NSURL *)arg1 replayMode:(long long)arg2;
 - (void)interrupt;
 - (ARTechnique *)replayTechniqueForResultDataClasses:(NSSet *)arg1;
 - (void)start;

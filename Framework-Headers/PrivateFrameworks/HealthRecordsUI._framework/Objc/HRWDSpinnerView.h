@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class UIActivityIndicatorView, UILabel;
+@class NSLayoutConstraint, UIActivityIndicatorView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface HRWDSpinnerView : UIView
 {
     UIActivityIndicatorView *_spinner;
     UILabel *_label;
+    NSLayoutConstraint *_spinnerTopConstraint;
 }
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
@@ -20,9 +21,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_setupSubviews;
 - (id)init;
+- (void)setMessageFont:(id)arg1;
 - (void)setMessageWhileSpinning:(id)arg1;
 - (void)startSpinner;
 - (void)stopSpinner;
+- (void)updateConstraints;
 
 @end
 

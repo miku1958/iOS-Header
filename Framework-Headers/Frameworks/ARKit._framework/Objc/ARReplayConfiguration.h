@@ -8,12 +8,13 @@
 
 #import <ARKit/ARReplaySensorDelegate-Protocol.h>
 
-@class NSString, NSURL;
+@class NSNumber, NSString, NSURL;
 @protocol ARReplayConfigurationDelegate, ARReplaySensorProtocol;
 
 @interface ARReplayConfiguration : ARCustomTechniquesConfiguration <ARReplaySensorDelegate>
 {
     id<ARReplaySensorProtocol> _replaySensor;
+    NSNumber *_vioSessionID;
     NSURL *_fileURL;
     id<ARReplayConfigurationDelegate> _delegate;
 }
@@ -28,11 +29,12 @@
 + (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)ensureTechniqueAndCustomSensorCompatibility;
 - (id)imageSensorSettings;
-- (id)imageSensorSettingsForSuperWide;
+- (id)imageSensorSettingsForUltraWide;
 - (id)initPrivate;
 - (id)initWithBaseConfiguration:(id)arg1 fileURL:(id)arg2 outError:(id *)arg3;
-- (id)initWithBaseConfiguration:(id)arg1 fileURL:(id)arg2 outError:(id *)arg3 manualMode:(BOOL)arg4 synchronousMode:(BOOL)arg5;
+- (id)initWithBaseConfiguration:(id)arg1 fileURL:(id)arg2 replayMode:(long long)arg3 outError:(id *)arg4;
 - (id)initWithBaseConfiguration:(id)arg1 replaySensor:(id)arg2 replayingResultDataClasses:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)parentImageSensorSettings;

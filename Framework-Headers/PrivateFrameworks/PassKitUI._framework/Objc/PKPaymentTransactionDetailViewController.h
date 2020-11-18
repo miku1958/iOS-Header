@@ -13,7 +13,7 @@
 #import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
 #import <PassKitUI/PKTransactionDetailQuestionCellDelegate-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSString, NSTimeZone, PKAccountServiceAccountResolutionController, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentTransactionDetailHeaderView, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentStatusResponse, UIImage;
+@class NSArray, NSDateFormatter, NSString, NSTimeZone, PKAccountServiceAccountResolutionController, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentTransactionDetailHeaderView, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentStatusResponse, PKTransactionReceipt, UIImage;
 @protocol PKPaymentDataProvider;
 
 @interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <PKPeerPaymentContactResolverDelegate, PKPaymentDataProviderDelegate, CNContactViewControllerDelegate, PKTransactionDetailQuestionCellDelegate, PKPaymentTransactionReportFraudConfirmationViewControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate>
@@ -25,6 +25,8 @@
     PKPaymentTransaction *_associatedRefund;
     PKPaymentTransaction *_associatedAdjustment;
     NSArray *_associatedInstallmentPlans;
+    PKTransactionReceipt *_associatedReceipt;
+    BOOL _suppressReceiptImages;
     PKPaymentTransactionCellController *_transactionCellController;
     PKAccountServiceAccountResolutionController *_accountResolutionController;
     BOOL _allowTransactionLinks;
@@ -103,7 +105,7 @@
 - (id)_subtitleCellWithTitle:(id)arg1 subtitle:(id)arg2;
 - (id)_tableView:(id)arg1 actionButtonCellForSection:(unsigned long long)arg2;
 - (id)_tableView:(id)arg1 cellForActionAtIndex:(long long)arg2;
-- (id)_tableView:(id)arg1 cellForAmountDetailLineItemAtIndex:(long long)arg2;
+- (id)_tableView:(id)arg1 cellForAmountDetailLineItemAtIndex:(long long)arg2 atIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 didSelectActionAtIndexPath:(id)arg2;
 - (void)_tableView:(id)arg1 didSelectMechantAddressAtIndexPath:(id)arg2;
 - (void)_tableView:(id)arg1 didSelectPeerPaymentAction:(id)arg2 atIndexPath:(id)arg3;
@@ -114,6 +116,7 @@
 - (void)_updateAccountResolutionControllerIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updatePeerPaymentTransactionStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateTableHeaderHeight;
+- (void)_updateWithTransactionReceipt:(id)arg1;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (BOOL)contactViewController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
@@ -140,6 +143,7 @@
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)transactionWithIdentifier:(id)arg1 didDownloadTransactionReceipt:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

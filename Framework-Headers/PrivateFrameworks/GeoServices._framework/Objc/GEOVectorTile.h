@@ -84,6 +84,7 @@
         char *_field3;
     } *_labelPoolLanguages;
     unsigned long long _labelPoolLanguagesLength;
+    NSData *_localizedLabelLanguagePool;
     NSData *_localizedLabelPool;
     NSString *_preferredLocalizedLabelLanguage;
     char *_localizedLabelsLanguage;

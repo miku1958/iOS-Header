@@ -17,6 +17,7 @@
     int _collectionType;
     CLPContext *_context;
     CLPLocation *_location;
+    NSMutableArray *_locations;
     CLPMeta *_meta;
     NSMutableArray *_pressures;
     NSMutableArray *_wifiScans;
@@ -36,18 +37,22 @@
 @property (nonatomic) BOOL hasStartTimestamp;
 @property (nonatomic) BOOL hasStopTimestamp;
 @property (strong, nonatomic) CLPLocation *location; // @synthesize location=_location;
+@property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
 @property (strong, nonatomic) CLPMeta *meta; // @synthesize meta=_meta;
 @property (strong, nonatomic) NSMutableArray *pressures; // @synthesize pressures=_pressures;
 @property (nonatomic) double startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 @property (nonatomic) double stopTimestamp; // @synthesize stopTimestamp=_stopTimestamp;
 @property (strong, nonatomic) NSMutableArray *wifiScans; // @synthesize wifiScans=_wifiScans;
 
++ (Class)locationsType;
 + (Class)pressureType;
 + (Class)wifiScanType;
 - (void).cxx_destruct;
 - (int)StringAsCollectionType:(id)arg1;
+- (void)addLocations:(id)arg1;
 - (void)addPressure:(id)arg1;
 - (void)addWifiScan:(id)arg1;
+- (void)clearLocations;
 - (void)clearPressures;
 - (void)clearWifiScans;
 - (id)collectionTypeAsString:(int)arg1;
@@ -57,6 +62,8 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)locationsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)locationsCount;
 - (void)mergeFrom:(id)arg1;
 - (id)pressureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)pressuresCount;

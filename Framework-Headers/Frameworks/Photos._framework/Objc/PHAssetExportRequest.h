@@ -40,7 +40,7 @@
 - (id)initWithAsset:(id)arg1 variants:(id)arg2;
 - (id)outputDirectory;
 - (void)performCompletionWithFileURLs:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)preflightExportWithOptions:(id)arg1 isDownloadingRequired:(BOOL *)arg2 isProcessingRequired:(BOOL *)arg3 fileURLs:(id *)arg4 info:(id *)arg5;
+- (void)preflightExportWithOptions:(id)arg1 assetAvailability:(long long *)arg2 isProcessingRequired:(BOOL *)arg3 fileURLs:(id *)arg4 info:(id *)arg5;
 - (void)setState:(unsigned long long)arg1;
 
 @end

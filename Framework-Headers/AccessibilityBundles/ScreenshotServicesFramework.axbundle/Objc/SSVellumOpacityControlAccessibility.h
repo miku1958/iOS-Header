@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)canBecomeFocused;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

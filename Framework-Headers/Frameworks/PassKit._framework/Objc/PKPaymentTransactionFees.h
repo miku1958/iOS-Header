@@ -35,7 +35,7 @@
 - (unsigned long long)itemType;
 - (id)jsonArrayRepresentation;
 - (id)jsonString;
-- (id)recordTypesAndNames;
+- (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 
 @end
 

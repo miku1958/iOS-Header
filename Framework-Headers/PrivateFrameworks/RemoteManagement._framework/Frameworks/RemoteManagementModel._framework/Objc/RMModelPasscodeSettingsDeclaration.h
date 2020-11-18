@@ -12,48 +12,36 @@
 
 @interface RMModelPasscodeSettingsDeclaration : RMModelConfigurationBase <RMModelRegisteredTypeProtocol>
 {
-    NSNumber *_payloadAllowSimple;
-    NSNumber *_payloadForcePIN;
-    NSNumber *_payloadMaxFailedAttempts;
-    NSNumber *_payloadMaxInactivity;
-    NSNumber *_payloadMaxPINAgeInDays;
-    NSNumber *_payloadMinComplexChars;
-    NSNumber *_payloadMinLength;
-    NSNumber *_payloadRequireAlphanumeric;
-    NSNumber *_payloadPinHistory;
-    NSNumber *_payloadMaxGracePeriod;
-    NSNumber *_payloadAllowFingerprintForUnlock;
-    NSNumber *_payloadAllowFingerprintModification;
-    NSNumber *_payloadAllowPasscodeModification;
+    NSNumber *_payloadRequirePasscode;
+    NSNumber *_payloadRequireComplexPasscode;
+    NSNumber *_payloadMinimumLength;
+    NSNumber *_payloadMaximumFailedAttempts;
+    NSNumber *_payloadMaximumGracePeriodInMinutes;
+    NSNumber *_payloadMaximumInactivityInMinutes;
+    NSNumber *_payloadPasscodeReuseLimit;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSNumber *payloadAllowFingerprintForUnlock; // @synthesize payloadAllowFingerprintForUnlock=_payloadAllowFingerprintForUnlock;
-@property (copy, nonatomic) NSNumber *payloadAllowFingerprintModification; // @synthesize payloadAllowFingerprintModification=_payloadAllowFingerprintModification;
-@property (copy, nonatomic) NSNumber *payloadAllowPasscodeModification; // @synthesize payloadAllowPasscodeModification=_payloadAllowPasscodeModification;
-@property (copy, nonatomic) NSNumber *payloadAllowSimple; // @synthesize payloadAllowSimple=_payloadAllowSimple;
-@property (copy, nonatomic) NSNumber *payloadForcePIN; // @synthesize payloadForcePIN=_payloadForcePIN;
-@property (copy, nonatomic) NSNumber *payloadMaxFailedAttempts; // @synthesize payloadMaxFailedAttempts=_payloadMaxFailedAttempts;
-@property (copy, nonatomic) NSNumber *payloadMaxGracePeriod; // @synthesize payloadMaxGracePeriod=_payloadMaxGracePeriod;
-@property (copy, nonatomic) NSNumber *payloadMaxInactivity; // @synthesize payloadMaxInactivity=_payloadMaxInactivity;
-@property (copy, nonatomic) NSNumber *payloadMaxPINAgeInDays; // @synthesize payloadMaxPINAgeInDays=_payloadMaxPINAgeInDays;
-@property (copy, nonatomic) NSNumber *payloadMinComplexChars; // @synthesize payloadMinComplexChars=_payloadMinComplexChars;
-@property (copy, nonatomic) NSNumber *payloadMinLength; // @synthesize payloadMinLength=_payloadMinLength;
-@property (copy, nonatomic) NSNumber *payloadPinHistory; // @synthesize payloadPinHistory=_payloadPinHistory;
-@property (copy, nonatomic) NSNumber *payloadRequireAlphanumeric; // @synthesize payloadRequireAlphanumeric=_payloadRequireAlphanumeric;
+@property (copy, nonatomic) NSNumber *payloadMaximumFailedAttempts; // @synthesize payloadMaximumFailedAttempts=_payloadMaximumFailedAttempts;
+@property (copy, nonatomic) NSNumber *payloadMaximumGracePeriodInMinutes; // @synthesize payloadMaximumGracePeriodInMinutes=_payloadMaximumGracePeriodInMinutes;
+@property (copy, nonatomic) NSNumber *payloadMaximumInactivityInMinutes; // @synthesize payloadMaximumInactivityInMinutes=_payloadMaximumInactivityInMinutes;
+@property (copy, nonatomic) NSNumber *payloadMinimumLength; // @synthesize payloadMinimumLength=_payloadMinimumLength;
+@property (copy, nonatomic) NSNumber *payloadPasscodeReuseLimit; // @synthesize payloadPasscodeReuseLimit=_payloadPasscodeReuseLimit;
+@property (copy, nonatomic) NSNumber *payloadRequireComplexPasscode; // @synthesize payloadRequireComplexPasscode=_payloadRequireComplexPasscode;
+@property (copy, nonatomic) NSNumber *payloadRequirePasscode; // @synthesize payloadRequirePasscode=_payloadRequirePasscode;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 allowSimple:(id)arg2 forcePIN:(id)arg3 maxFailedAttempts:(id)arg4 maxInactivity:(id)arg5 maxPINAgeInDays:(id)arg6 minComplexChars:(id)arg7 minLength:(id)arg8 requireAlphanumeric:(id)arg9 pinHistory:(id)arg10 maxGracePeriod:(id)arg11 allowFingerprintForUnlock:(id)arg12 allowFingerprintModification:(id)arg13 allowPasscodeModification:(id)arg14;
++ (id)buildWithIdentifier:(id)arg1 requirePasscode:(id)arg2 requireComplexPasscode:(id)arg3 minimumLength:(id)arg4 maximumFailedAttempts:(id)arg5 maximumGracePeriodInMinutes:(id)arg6 maximumInactivityInMinutes:(id)arg7 passcodeReuseLimit:(id)arg8;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;
 - (id)assetReferences;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)loadPayload:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (BOOL)loadPayloadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
 - (id)serializePayloadWithType:(short)arg1;
 
 @end

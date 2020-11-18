@@ -8,16 +8,23 @@
 
 #import <ClassKit/CLSRelationable-Protocol.h>
 
-@class NSObject, NSString, NSURL;
-@protocol OS_dispatch_queue;
+@class NSError, NSMetadataQuery, NSMutableArray, NSString, NSURL;
 
 @interface CLSAsset : CLSObject <CLSRelationable>
 {
     NSURL *_url;
     BOOL _uploaded;
-    NSObject<OS_dispatch_queue> *_shareQueue;
+    unsigned long long _uploadState;
+    BOOL _observingUploadProgress;
+    NSMutableArray *_uploadObservers;
+    long long _totalUnitCount;
+    long long _completedUnitCount;
+    NSError *_sharingError;
+    NSMetadataQuery *_query;
     BOOL _original;
     NSString *_ownerPersonID;
+    double _fractionUploaded;
+    NSError *_uploadError;
     NSString *_brItemID;
     NSString *_brOwnerName;
     NSString *_brZoneName;
@@ -33,24 +40,27 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSURL *fileURL;
+@property (readonly, nonatomic) double fractionUploaded; // @synthesize fractionUploaded=_fractionUploaded;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isOriginal) BOOL original; // @synthesize original=_original;
 @property (strong, nonatomic) NSString *ownerPersonID; // @synthesize ownerPersonID=_ownerPersonID;
 @property (strong, nonatomic) NSString *relativePathWithinContainer; // @synthesize relativePathWithinContainer=_relativePathWithinContainer;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *ubiquitousContainerName; // @synthesize ubiquitousContainerName=_ubiquitousContainerName;
+@property (readonly, nonatomic) NSError *uploadError; // @synthesize uploadError=_uploadError;
 @property (nonatomic, getter=isUploaded) BOOL uploaded;
 @property (strong, nonatomic) NSURL *url;
 
 + (id)relations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_createShareIfNeeded:(CDUnknownBlockType)arg1;
-- (BOOL)_deleteFileAtURL:(id)arg1 error:(id *)arg2;
 - (id)_init;
 - (id)_initWithFileURL:(id)arg1;
+- (void)addUploadObserver:(id)arg1;
 - (void)createShareIfNeeded:(CDUnknownBlockType)arg1;
+- (void)createShareIfNeeded_Imp:(CDUnknownBlockType)arg1;
 - (BOOL)deleteFile:(id *)arg1;
+- (BOOL)deleteFileAtURL:(id)arg1 error:(id *)arg2;
 - (void)deleteFileWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchUsersAndAddToShare:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -59,7 +69,17 @@
 - (id)initWithFileURL:(id)arg1 withOwnerPersonID:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (void)mergeWithObject:(id)arg1;
+- (void)processItems:(id)arg1;
+- (void)queryGatheredData:(id)arg1;
+- (void)queryUpdated:(id)arg1;
+- (void)queued_notifyUploadCompletion;
+- (void)queued_notifyUploadProgress;
+- (void)queued_startObservingUploadProgress;
+- (void)queued_stopObservingUploadProgress;
+- (void)removeUploadObserver:(id)arg1;
 - (id)uploadFileIfNeeded:(id *)arg1;
+- (id)uploadObservers;
+- (void)uploadStateChanged:(unsigned long long)arg1;
 - (void)urlSuitableForOpeningWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)validateObject:(id *)arg1;
 - (void)willSaveObject;

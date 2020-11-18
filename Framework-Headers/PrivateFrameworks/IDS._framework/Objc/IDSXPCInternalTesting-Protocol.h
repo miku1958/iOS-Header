@@ -12,6 +12,7 @@
 - (void)autoBugCaptureWithCompletion:(void (^)(NSError *))arg1;
 - (void)checkServerStorageForService:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
 - (void)currentECVersionWithBlock:(void (^)(unsigned int))arg1;
+- (void)deviceChangedForDeviceID:(NSString *)arg1 isNearby:(BOOL)arg2 isConnected:(BOOL)arg3 isCloudConnected:(BOOL)arg4 completionHandler:(void (^)(NSError *))arg5;
 - (void)fetchCloudKitTransparencyStateWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchEndpointCacheStateForServiceIdentifier:(NSString *)arg1 localURI:(IDSURI *)arg2 remoteURI:(IDSURI *)arg3 completion:(void (^)(IDSQueryKeyTransparencyContext *, NSArray *, NSError *))arg4;
 - (void)fetchStoredUserDescriptions:(void (^)(NSString *))arg1;

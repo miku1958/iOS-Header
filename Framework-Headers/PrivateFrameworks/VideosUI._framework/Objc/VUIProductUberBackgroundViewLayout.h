@@ -12,19 +12,21 @@ __attribute__((visibility("hidden")))
 @interface VUIProductUberBackgroundViewLayout : TVViewLayout
 {
     long long _sizeClass;
-    BOOL _isSport;
     TVImageLayout *_imageLayout;
+    unsigned long long _type;
 }
 
 @property (readonly, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
+@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
-+ (id)layoutWithLayout:(id)arg1 element:(id)arg2 sizeClass:(long long)arg3 isSport:(BOOL)arg4;
++ (id)layoutWithLayout:(id)arg1 element:(id)arg2 sizeClass:(long long)arg3 type:(unsigned long long)arg4;
 + (double)uberImageAspectRatioForWindowWidth:(double)arg1;
 + (BOOL)uberImageShouldUsePhoneImageForSizeClass:(long long)arg1;
 + (BOOL)uberImageShouldUseVerticalLayoutForWindowWidth:(double)arg1;
 - (void).cxx_destruct;
-- (id)initWithSizeClass:(long long)arg1 isSport:(BOOL)arg2;
-- (void)updateWithSizeClass:(long long)arg1 isSport:(BOOL)arg2;
+- (void)_updateWithSizeClass:(long long)arg1 type:(unsigned long long)arg2;
+- (id)initWithSizeClass:(long long)arg1 type:(unsigned long long)arg2;
+- (void)updateWithSizeClass:(long long)arg1;
 
 @end
 

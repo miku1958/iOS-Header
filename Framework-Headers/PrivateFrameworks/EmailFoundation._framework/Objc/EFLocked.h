@@ -19,6 +19,7 @@
 - (id)description;
 - (id)initWithObject:(id)arg1;
 - (void)performWhileLocked:(CDUnknownBlockType)arg1;
+- (void)setObject:(id)arg1;
 
 @end
 

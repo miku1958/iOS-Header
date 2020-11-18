@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (id)remoteInterface;
 + (id)sharedMonitor;
 - (void).cxx_destruct;
 - (void)dealloc;

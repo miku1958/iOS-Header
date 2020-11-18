@@ -17,12 +17,13 @@
 @property (readonly) BOOL npkSupportsHidingAccessory;
 @property (readonly) PKBarcode *npkWatchBarcode;
 
-+ (void)npkClearTransitValuePendingStateIfNecessaryForPassWithID:(id)arg1 withBalance:(id)arg2;
-+ (void)npkHandleTransitValuePendingAmount:(id)arg1 withBalance:(id)arg2 forPassWithID:(id)arg3;
++ (void)npkClearTransitValuePendingStateIfNecessaryForPassWithID:(id)arg1 withBalanceFields:(id)arg2;
++ (void)npkHandleTransitValuePendingAmount:(id)arg1 forBalanceField:(id)arg2 passWithUniqueID:(id)arg3;
 - (long long)npkAccessoryType;
 - (id)npkArchiveData;
 - (id)npkCompleteHashForWatchOSVersion:(unsigned long long)arg1;
 - (BOOL)npkIsAddValuePending;
-- (id)npkLastAddValueAmount;
+- (id)npkLastAddValueAmountForBalanceFieldWithIdentifier:(id)arg1;
+- (id)npkPendingAddValueStateExpireDateForBalanceFieldWithIdentifier:(id)arg1 currentBalance:(id)arg2;
 @end
 

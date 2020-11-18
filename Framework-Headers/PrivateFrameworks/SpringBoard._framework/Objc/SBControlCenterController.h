@@ -17,13 +17,15 @@
 #import <SpringBoard/SBFIdleTimerBehaviorProviding-Protocol.h>
 #import <SpringBoard/SBGrabberTongueDelegate-Protocol.h>
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
+#import <SpringBoard/SBIndirectPanGestureRecognizerOrientationProviding-Protocol.h>
 #import <SpringBoard/SBReachabilityObserver-Protocol.h>
+#import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BSSimpleAssertion, CCUIModularControlCenterOverlayViewController, CCUIStatusBarStyleSnapshot, FBDisplayLayoutElement, NSArray, NSHashTable, NSMutableArray, NSSet, NSString, PTSingleTestRecipe, SBAppStatusBarSettingsAssertion, SBAsynchronousRenderingAssertion, SBBarSwipeAffordanceViewController, SBControlCenterSystemAgent, SBControlCenterWindow, SBGrabberTongue, UIApplicationSceneDeactivationAssertion, UIColor, UIPanGestureRecognizer, _UILegibilitySettings;
+@class BSSimpleAssertion, CCUIModularControlCenterOverlayViewController, CCUIStatusBarStyleSnapshot, FBDisplayLayoutElement, NSArray, NSHashTable, NSMutableArray, NSSet, NSString, PTSingleTestRecipe, SBAppStatusBarSettingsAssertion, SBAsynchronousRenderingAssertion, SBBarSwipeAffordanceViewController, SBControlCenterSystemAgent, SBControlCenterWindow, SBGrabberTongue, SBIndirectPanGestureRecognizer, UIApplicationSceneDeactivationAssertion, UIColor, UIPanGestureRecognizer, _UILegibilitySettings;
 @protocol BSInvalidatable, SBIdleTimerCoordinating, UICoordinateSpace;
 
-@interface SBControlCenterController : NSObject <CCUIModularControlCenterOverlayViewControllerDelegate, SBGrabberTongueDelegate, CSExternalBehaviorProviding, CSExternalPresentationProviding, CSExternalAppearanceProviding, UIGestureRecognizerDelegate, SBBarSwipeAffordanceObserver, SBBarSwipeAffordanceDelegate, SBFIdleTimerBehaviorProviding, CCUIHostStatusBarStyleProvider, SBReachabilityObserver, SBIdleTimerProviding, CSCoverSheetOverlaying>
+@interface SBControlCenterController : NSObject <CCUIModularControlCenterOverlayViewControllerDelegate, SBGrabberTongueDelegate, CSExternalBehaviorProviding, CSExternalPresentationProviding, CSExternalAppearanceProviding, UIGestureRecognizerDelegate, SBSystemGestureRecognizerDelegate, SBBarSwipeAffordanceObserver, SBBarSwipeAffordanceDelegate, SBFIdleTimerBehaviorProviding, CCUIHostStatusBarStyleProvider, SBReachabilityObserver, SBIndirectPanGestureRecognizerOrientationProviding, SBIdleTimerProviding, CSCoverSheetOverlaying>
 {
     id<SBIdleTimerCoordinating> _idleTimerCoordinator;
     SBControlCenterWindow *_window;
@@ -35,6 +37,7 @@
     SBAsynchronousRenderingAssertion *_asynchronousRenderingAssertion;
     SBGrabberTongue *_grabberTongue;
     UIPanGestureRecognizer *_statusBarPullGestureRecognizer;
+    SBIndirectPanGestureRecognizer *_indirectStatusBarPullGestureRecognizer;
     UIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
     FBDisplayLayoutElement *_displayLayoutElement;
     NSHashTable *_observers;
@@ -68,6 +71,7 @@
 @property (readonly, nonatomic) long long idleTimerDuration;
 @property (readonly, nonatomic) long long idleTimerMode;
 @property (readonly, nonatomic) long long idleWarnMode;
+@property (strong, nonatomic) SBIndirectPanGestureRecognizer *indirectStatusBarPullGestureRecognizer; // @synthesize indirectStatusBarPullGestureRecognizer=_indirectStatusBarPullGestureRecognizer;
 @property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property (readonly, nonatomic) long long notificationBehavior;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
@@ -116,6 +120,7 @@
 - (void)_setStatusBarHidden:(BOOL)arg1;
 - (BOOL)_shouldAllowControlCenterGesture;
 - (BOOL)_shouldShowGrabberOnFirstSwipe;
+- (double)_trailingStatusBarRegionWidth;
 - (void)_uiRelockedNotification:(id)arg1;
 - (void)_updateWindowLevel;
 - (void)_updateWindowOrientation;
@@ -127,6 +132,7 @@
 - (void)addObserver:(id)arg1;
 - (BOOL)allowShowTransition;
 - (BOOL)allowShowTransitionSystemGesture;
+- (unsigned long long)barSwipeAffordanceView:(id)arg1 systemGestureTypeForType:(long long)arg2;
 - (void)controlCenterViewController:(id)arg1 didChangePresentationState:(unsigned long long)arg2;
 - (void)controlCenterViewController:(id)arg1 didUpdateHomeGestureDismissalAllowed:(BOOL)arg2;
 - (void)controlCenterViewController:(id)arg1 significantPresentationProgressChange:(double)arg2;
@@ -138,25 +144,28 @@
 - (void)dismissAnimated:(BOOL)arg1;
 - (void)dismissAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissOverlayForDashBoardAnimated:(BOOL)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)grabberTongue:(id)arg1 shouldAllowSecondSwipeWithEdgeLocation:(double)arg2;
 - (BOOL)grabberTongue:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)grabberTongue:(id)arg1 shouldShowTongueOnFirstSwipeWithEdgeLocation:(double)arg2;
-- (void)grabberTongueBeganPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
-- (void)grabberTongueCanceledPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
+- (void)grabberTongueBeganPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
+- (void)grabberTongueCanceledPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
 - (void)grabberTongueDidDismiss:(id)arg1;
-- (void)grabberTongueEndedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
+- (void)grabberTongueEndedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
 - (BOOL)grabberTongueHonorsAmbiguousActivationMargin:(id)arg1;
-- (BOOL)grabberTongueOrPullEnabled:(id)arg1;
-- (void)grabberTongueUpdatedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3;
+- (BOOL)grabberTongueOrPullEnabled:(id)arg1 forGestureRecognizer:(id)arg2;
+- (void)grabberTongueUpdatedPulling:(id)arg1 withDistance:(double)arg2 andVelocity:(double)arg3 andGesture:(id)arg4;
 - (void)grabberTongueWillPresent:(id)arg1;
+- (BOOL)handleIndirectStatusBarAction;
 - (BOOL)handleMenuButtonTap;
 - (void)handleReachabilityModeActivated;
 - (void)handleReachabilityModeDeactivated;
 - (void)handleReachabilityYOffsetDidChange;
 - (id)hideAnimationSettingsForBarSwipeAffordanceView:(id)arg1;
 - (void)homeGesturePerformedForBarSwipeAffordanceView:(id)arg1;
+- (long long)indirectPanEffectiveInterfaceOrientation;
 - (id)init;
 - (BOOL)isDismissedOrDismissing;
 - (BOOL)isPresentedOrDismissing;
@@ -166,6 +175,7 @@
 - (id)reachabilitySpringAnimationBehaviorForControlCenterViewController:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (id)unhideAnimationSettingsForBarSwipeAffordanceView:(id)arg1;
+- (id)viewForSystemGestureRecognizer:(id)arg1;
 - (void)willOpenExpandedModuleForControlCenterViewController:(id)arg1;
 
 @end

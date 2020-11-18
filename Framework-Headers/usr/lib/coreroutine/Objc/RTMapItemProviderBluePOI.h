@@ -59,7 +59,7 @@
 - (id)poiHarvestForFingerprint:(id)arg1 mapItem:(id)arg2 referenceLocation:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
 - (id)sortQueryResults:(id)arg1 error:(id *)arg2;
 - (id)sortedAveragedQueryResults:(id)arg1 baseDuration:(double)arg2 error:(id *)arg3;
-- (BOOL)sortedQueryResult:(struct RTPair *)arg1 correspondsToAoi:(id)arg2 poi:(id)arg3;
+- (BOOL)sortedQueryResult:(id)arg1 correspondsToAoi:(id)arg2 poi:(id)arg3;
 - (BOOL)submitHarvest:(id)arg1 error:(id *)arg2;
 
 @end

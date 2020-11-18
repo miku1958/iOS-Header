@@ -34,6 +34,7 @@
     NSData *_iconTemplateImageData;
     unsigned long long _maximumCallGroups;
     unsigned long long _maximumCallsPerCallGroup;
+    long long _sandboxExtensionHandle;
 }
 
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
@@ -52,6 +53,7 @@
 @property (copy, nonatomic) NSOrderedSet *prioritizedSenderIdentities; // @synthesize prioritizedSenderIdentities=_prioritizedSenderIdentities;
 @property (strong, nonatomic) NSURL *ringtoneSoundURL;
 @property (strong, nonatomic) TUSandboxExtendedURL *sandboxExtendedRingtoneSoundURL; // @synthesize sandboxExtendedRingtoneSoundURL=_sandboxExtendedRingtoneSoundURL;
+@property (nonatomic) long long sandboxExtensionHandle; // @synthesize sandboxExtensionHandle=_sandboxExtensionHandle;
 @property (copy, nonatomic) NSSet *supportedHandleTypes; // @synthesize supportedHandleTypes=_supportedHandleTypes;
 @property (nonatomic) BOOL supportsAudioAndVideo; // @synthesize supportsAudioAndVideo=_supportsAudioAndVideo;
 @property (nonatomic) BOOL supportsAudioOnly; // @synthesize supportsAudioOnly=_supportsAudioOnly;

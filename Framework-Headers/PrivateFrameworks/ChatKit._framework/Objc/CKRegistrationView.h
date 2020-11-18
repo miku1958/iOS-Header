@@ -17,11 +17,13 @@
     UIActivityIndicatorView *_signingInSpinner;
     UIButton *_learnMoreButton;
     UIView *_authKitSignInView;
+    UIView *_privacyLinkView;
 }
 
 @property (strong, nonatomic) UIView *authKitSignInView; // @synthesize authKitSignInView=_authKitSignInView;
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (strong, nonatomic) UIButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
+@property (strong, nonatomic) UIView *privacyLinkView; // @synthesize privacyLinkView=_privacyLinkView;
 @property (strong, nonatomic) UILabel *signingInLabel; // @synthesize signingInLabel=_signingInLabel;
 @property (strong, nonatomic) UIActivityIndicatorView *signingInSpinner; // @synthesize signingInSpinner=_signingInSpinner;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;

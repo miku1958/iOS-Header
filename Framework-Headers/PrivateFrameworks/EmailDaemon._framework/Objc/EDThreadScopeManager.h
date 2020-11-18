@@ -30,7 +30,7 @@
 + (id)log;
 + (id)mailboxTypesToPrecompute;
 - (void).cxx_destruct;
-- (void)_evictAtLeast:(unsigned long long)arg1 upTo:(unsigned long long)arg2 threadScopesFrom:(id)arg3;
+- (void)_evictAtLeast:(unsigned long long)arg1 upTo:(unsigned long long)arg2 fromThreadScopesWithDatabaseIDs:(id)arg3;
 - (double)_evictionScoreForCount:(unsigned long long)arg1 timeInterval:(double)arg2;
 - (void)_initializeThreadScopesIfNeeded;
 - (unsigned long long)_numberOfThreadScopesToEvictFrom:(id)arg1 upTo:(unsigned long long *)arg2;

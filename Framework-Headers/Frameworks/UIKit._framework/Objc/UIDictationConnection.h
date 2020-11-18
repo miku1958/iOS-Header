@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)beginAvailabilityMonitoring;
 - (void)cancelAvailabilityMonitoring;
 - (void)cancelSpeech;
+- (void)dictationConnection:(id)arg1 didBeginLocalRecognitionWithModelInfo:(id)arg2;
 - (void)dictationConnection:(id)arg1 didDetectLanguage:(id)arg2 confidenceScores:(id)arg3 isConfident:(BOOL)arg4;
 - (void)dictationConnection:(id)arg1 didReceiveSearchResults:(id)arg2 recognizedText:(id)arg3 stable:(BOOL)arg4 final:(BOOL)arg5;
 - (void)dictationConnection:(id)arg1 didRecognizeMultilingualSpeech:(id)arg2;
@@ -75,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnection:(id)arg1 didRecognizeTokens:(id)arg2 languageModel:(id)arg3;
 - (void)dictationConnection:(id)arg1 languageDetectorFailedWithError:(id)arg2;
 - (void)dictationConnection:(id)arg1 speechRecognitionDidFail:(id)arg2;
+- (void)dictationConnection:(id)arg1 speechRecordingDidBeginWithOptions:(id)arg2;
 - (void)dictationConnection:(id)arg1 speechRecordingDidFail:(id)arg2;
 - (void)dictationConnectionSpeechRecognitionDidSucceed:(id)arg1;
 - (void)dictationConnectionSpeechRecordingDidBegin:(id)arg1;
@@ -86,12 +88,13 @@ __attribute__((visibility("hidden")))
 - (void)endSession;
 - (id)languageDetectionUserContext;
 - (void)logDidAcceptDictationResult:(id)arg1 reason:(id)arg2 result:(id)arg3 correctionIdentifier:(id)arg4;
-- (void)logDidAcceptReplacement:(id)arg1 replacementLanguageCode:(id)arg2 originalText:(id)arg3 correctionIdentifier:(id)arg4;
-- (void)logDidSelectAlternative:(id)arg1 correctionIdentifier:(id)arg2;
-- (void)logDidShowAlternatives:(id)arg1 correctionIdentifier:(id)arg2;
+- (void)logDidAcceptReplacement:(id)arg1 replacementLanguageCode:(id)arg2 originalText:(id)arg3 correctionIdentifier:(id)arg4 interactionIdentifier:(id)arg5;
+- (void)logDidSelectAlternative:(id)arg1 correctionIdentifier:(id)arg2 interactionIdentifier:(id)arg3;
+- (void)logDidShowAlternatives:(id)arg1 correctionIdentifier:(id)arg2 interactionIdentifier:(id)arg3;
 - (void)preheat;
 - (void)restartDictation;
 - (void)sendSpeechCorrection:(id)arg1 forIdentifier:(id)arg2;
+- (void)sendSpeechCorrection:(id)arg1 interactionIdentifier:(id)arg2;
 - (long long)speechEventTypeForDictationActivationType:(unsigned long long)arg1;
 - (void)start;
 - (void)startForFileAtURL:(id)arg1 forLanguage:(id)arg2;

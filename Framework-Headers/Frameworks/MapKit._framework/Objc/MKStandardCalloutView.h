@@ -83,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)showAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)subtitle;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateConstraints;
 
 @end
 

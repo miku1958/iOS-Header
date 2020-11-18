@@ -9,8 +9,8 @@
 #import <PassKitUI/PKDashboardDataSource-Protocol.h>
 #import <PassKitUI/PKDashboardTransactionFetcherDelegate-Protocol.h>
 
-@class CNContact, NSArray, NSCalendar, NSDateFormatter, NSString, PKAccount, PKCurrencyAmount, PKDashboardTransactionFetcher, PKInstallmentPlan, PKMerchant, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionGroup, PKPeerPaymentContactResolver;
-@protocol PKDashboardDataSourceDelegate;
+@class CNContact, NSArray, NSCalendar, NSDateFormatter, NSString, PKAccount, PKAccountServiceAccountResolutionController, PKCurrencyAmount, PKDashboardTransactionFetcher, PKInstallmentPlan, PKMerchant, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionGroup, PKPeerPaymentContactResolver, PKTransactionReceipt;
+@protocol PKDashboardDataSourceDelegate, PKPaymentDataProvider;
 
 @interface PKTransactionHistoryDataSource : NSObject <PKDashboardTransactionFetcherDelegate, PKDashboardDataSource>
 {
@@ -21,10 +21,15 @@
     PKPaymentTransaction *_featuredTransaction;
     PKPaymentTransactionGroup *_selectedTransactions;
     PKInstallmentPlan *_associatedInstallmentPlan;
+    PKTransactionReceipt *_associatedReceipt;
+    NSArray *_featuredTransactionActions;
     NSArray *_actionItems;
+    PKAccountServiceAccountResolutionController *_resolutionController;
+    id<PKPaymentDataProvider> _dataProvider;
     BOOL _contentIsLoaded;
     BOOL _contactLoaded;
     BOOL _transactionHistoryLoaded;
+    BOOL _associatedReceiptLoaded;
     NSArray *_transactionHistory;
     NSDateFormatter *_formatterTitle;
     NSDateFormatter *_formatterMonth;
@@ -53,17 +58,22 @@
 
 - (void).cxx_destruct;
 - (id)_contactKeysToFetch;
+- (void)_handleAccountsChangedNotification:(id)arg1;
 - (void)_handleTransactionHistoryUpdated:(id)arg1;
 - (id)_headerItem;
 - (void)_loadContact;
+- (void)_loadTransactionReceipt;
 - (void)_notifyContentLoadedIfNecessary;
 - (void)_reloadTransactions;
 - (id)_totalPaymentsFromTransactions:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)_totalRewardsFromTransactions:(id)arg1;
 - (id)_totalSpendingFromTransactions:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)_transactionItemForTransaction:(id)arg1;
+- (void)_updateInstallmentPlan;
+- (void)dealloc;
 - (id)footerTextForSection:(unsigned long long)arg1;
 - (id)initWithFetcher:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 featuredTransaction:(id)arg4 selectedTransactions:(id)arg5 transactionHistory:(id)arg6 type:(unsigned long long)arg7;
+- (id)initWithInstallmentPlan:(id)arg1 payemntPass:(id)arg2 account:(id)arg3;
 - (id)initWithTransactionGroup:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 transactionHistory:(id)arg4;
 - (id)itemAtIndexPath:(id)arg1;
 - (id)navigationBarTitle;

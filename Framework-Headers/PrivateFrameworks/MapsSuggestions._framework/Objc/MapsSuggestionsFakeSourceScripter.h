@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)_sendStep:(id)arg1;
-- (void)addEntriesToAdd:(struct NSArray *)arg1;
+- (void)addEntriesToAdd:(id)arg1;
 - (id)initWithFakeSource:(id)arg1;
 - (void)resendSameAfterSeconds:(double)arg1;
 - (void)resendSameNow;

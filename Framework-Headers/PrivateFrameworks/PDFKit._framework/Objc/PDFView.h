@@ -158,6 +158,7 @@
 - (BOOL)focusOnColumnAtPoint:(struct CGPoint)arg1;
 - (void)forceTileRefresh;
 - (void)gestureInit;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)goBack:(id)arg1;
@@ -178,7 +179,7 @@
 - (double)greekingThreshold;
 - (double)gutterWidth;
 - (BOOL)handleBackTabInTextWidget:(id)arg1;
-- (void)handleGesture:(unsigned long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4;
+- (void)handleGesture:(unsigned long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4 isIndirectTouch:(BOOL)arg5;
 - (BOOL)handleTabInTextWidget:(id)arg1;
 - (void)highlight:(id)arg1;
 - (void)hintScrollDirectionHorizontal:(unsigned long long)arg1 andVertical:(unsigned long long)arg2;
@@ -190,6 +191,7 @@
 - (BOOL)isDrawingAccessibilityNodeType:(int)arg1;
 - (BOOL)isOverLinkAnnotation:(struct CGPoint)arg1;
 - (BOOL)isRectVisible:(struct CGRect)arg1 onPage:(id)arg2;
+- (BOOL)isUpdatingSelectionMarkups;
 - (unsigned long long)lastPageIndex;
 - (void)layoutDocumentView;
 - (void)layoutSubviews;
@@ -210,6 +212,7 @@
 - (void)performAction:(id)arg1;
 - (void)performBeep;
 - (void)performOverlayAdaptorPageVisibilityTrueUpAfterSettingDocument;
+- (id)pointerRegionForLocation:(struct CGPoint)arg1;
 - (void)positionInternalViews:(id)arg1;
 - (id)previousPage;
 - (void)pushDestination:(id)arg1;

@@ -16,9 +16,11 @@
     NSObject<OS_dispatch_queue> *_queue;
     VOSCommandProfile *_activeProfile;
     NSString *_siriShortCutToken;
+    BOOL _activeProfileIsUserProfile;
 }
 
 @property (readonly, nonatomic) VOSCommandProfile *activeProfile; // @synthesize activeProfile=_activeProfile;
+@property (nonatomic) BOOL activeProfileIsUserProfile; // @synthesize activeProfileIsUserProfile=_activeProfileIsUserProfile;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,6 +29,7 @@
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (void)_loadSystemProfile;
+- (BOOL)_validateUserProfileDiscrepancies:(id)arg1;
 - (BOOL)addGesture:(id)arg1 toCommand:(id)arg2 withResolver:(id)arg3;
 - (BOOL)addKeyChord:(id)arg1 toCommand:(id)arg2 withResolver:(id)arg3;
 - (id)allCommandsWithResolver:(id)arg1;
@@ -51,6 +54,7 @@
 - (void)restoreDefaultProfile;
 - (void)saveAsUserProfile;
 - (id)shortcutBindingsForCommand:(id)arg1 withResolver:(id)arg2;
+- (id)systemProfile;
 - (id)userPresentableAllShortcutBindingsWithResolver:(id)arg1;
 - (id)validateCanAddGesture:(id)arg1 toCommand:(id)arg2 withResolver:(id)arg3;
 - (id)validateCanAddKeyChord:(id)arg1 toCommand:(id)arg2 withResolver:(id)arg3;

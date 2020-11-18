@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString, NSURL, VUIContentMetadata, VUIExtrasInfo;
+@class NSDate, NSDictionary, NSNumber, NSString, NSURL, VUIContentMetadata, VUIExtrasInfo, VUIRouterDataSource;
 
 __attribute__((visibility("hidden")))
 @interface VUIVideosPlayable : NSObject
@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDictionary *tokenServerParams;
 @property (readonly, nonatomic) NSURL *tokenServerURL;
 @property (readonly, nonatomic) NSURL *tvAppDeeplinkURL;
+@property (readonly, nonatomic) VUIRouterDataSource *upsellRouterDataSource;
 @property (readonly, nonatomic) NSDictionary *vpafMetrics;
 
 + (id)videosPlayablesFromDictionaries:(id)arg1 andMetadataDictionary:(id)arg2;

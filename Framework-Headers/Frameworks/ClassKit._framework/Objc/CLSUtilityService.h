@@ -24,15 +24,19 @@
 - (void)authorizationStatusForContextAtPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)databasePathWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getDevModeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getUserDefaultForDefaultNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithEndpoint:(id)arg1;
+- (void)recreateDatabase:(BOOL)arg1 andTerminateDaemonWithCompletion:(CDUnknownBlockType)arg2;
 - (void)recreateDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)recreateDevelopmentDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDevMode:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setUserDefaultValue:(id)arg1 forDefaultNamed:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)statusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncFetchWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncPushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncStatsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)userDefaultsConfigurationDictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)utilityServer:(CDUnknownBlockType)arg1;
 
 @end

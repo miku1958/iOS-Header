@@ -10,7 +10,7 @@
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <MapKit/_MKUserInteractionGestureRecognizerTouchObserver-Protocol.h>
 
-@class MKBasicMapView, MKCompassView, MKRotationFilter, MKScaleView, MKTiltGestureRecognizer, MKVariableDelayTapRecognizer, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UITraitCollection, VKCompoundAnimation, VKDynamicAnimation, VKTimedAnimation, _MKDirectionalArrowRecognizer, _MKOneHandedZoomGestureRecognizer, _MKUserInteractionGestureRecognizer;
+@class MKBasicMapView, MKCompassView, MKRotationFilter, MKScaleView, MKTiltGestureRecognizer, MKVariableDelayTapRecognizer, NSString, UIGestureRecognizer, UIHoverGestureRecognizer, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UITraitCollection, VKCompoundAnimation, VKDynamicAnimation, VKTimedAnimation, _MKConditionalPanRotationGestureRecognizer, _MKConditionalPanTiltGestureRecognizer, _MKConditionalPanZoomGestureRecognizer, _MKDirectionalArrowRecognizer, _MKOneHandedZoomGestureRecognizer, _MKUserInteractionGestureRecognizer, _MKZoomingGestureControlConfiguration;
 @protocol MKMapGestureControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,8 +27,18 @@ __attribute__((visibility("hidden")))
     UILongPressGestureRecognizer *_twoFingerLongPressGestureRecognizer;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
     UIPanGestureRecognizer *_panGestureRecognizer;
-    UIPanGestureRecognizer *_verticalPanGestureRecognizer;
     _MKOneHandedZoomGestureRecognizer *_oneHandedZoomGestureRecognizer;
+    _MKZoomingGestureControlConfiguration *_zoomConfiguration;
+    _MKConditionalPanRotationGestureRecognizer *_conditionalDragRotationGestureRecognizer;
+    struct CGPoint _panRotateStartPoint;
+    _MKConditionalPanZoomGestureRecognizer *_conditionalDragZoomGestureRecognizer;
+    struct CGPoint _panZoomStartPoint;
+    _MKConditionalPanTiltGestureRecognizer *_conditionalDragTiltGestureRecognizer;
+    UIPanGestureRecognizer *_scaleDragGestureRecognizer;
+    _MKConditionalPanRotationGestureRecognizer *_conditionalPanRotationGestureRecognizer;
+    _MKConditionalPanZoomGestureRecognizer *_conditionalPanZoomGestureRecognizer;
+    _MKConditionalPanTiltGestureRecognizer *_conditionalPanTiltGestureRecognizer;
+    UIHoverGestureRecognizer *_hoverGestureReconizer;
     _MKDirectionalArrowRecognizer *_arrowZoomGestureRecognizer;
     VKTimedAnimation *_currentArrowAnimation;
     double _arrowZoomSpeed;
@@ -49,6 +59,7 @@ __attribute__((visibility("hidden")))
     BOOL _isPanning;
     BOOL _isPinching;
     UITraitCollection *_traitCollection;
+    double _lastZoomPanTranslation;
 }
 
 @property (strong, nonatomic) MKCompassView *compassView; // @synthesize compassView=_compassView;
@@ -71,12 +82,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isTiltEnabled) BOOL tiltEnabled;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *twoFingerLongPressGestureRecognizer; // @synthesize twoFingerLongPressGestureRecognizer=_twoFingerLongPressGestureRecognizer;
 @property (readonly, nonatomic) UITapGestureRecognizer *twoFingerTapGestureRecognizer; // @synthesize twoFingerTapGestureRecognizer=_twoFingerTapGestureRecognizer;
-@property (readonly, nonatomic) UIPanGestureRecognizer *verticalPanGestureRecognizer; // @synthesize verticalPanGestureRecognizer=_verticalPanGestureRecognizer;
 @property (nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
 
 - (void).cxx_destruct;
 - (void)_clearGesture:(id)arg1;
+- (void)_handleHover:(id)arg1;
+- (void)_handleRotationPan:(id)arg1;
 - (void)_handleStandardTilt:(id)arg1;
+- (void)_handleZoomPan:(id)arg1;
 - (void)_setOneHandedZoomGestureConfiguration:(id)arg1;
 - (void)_setTraitCollection:(id)arg1;
 - (struct CGPoint)_snapPointToDevicePixels:(struct CGPoint)arg1;
@@ -108,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)startUserInteractionFromExternalGesture;
 - (void)stopDynamicAnimations;
 - (void)stopUserInteractionFromExternalGesture;
+- (BOOL)tiltGestureRecognizerShouldBegin:(id)arg1;
 - (double)variableDelayTapRecognizer:(id)arg1 shouldWaitForNextTapForDuration:(double)arg2 afterTouch:(id)arg3;
 
 @end

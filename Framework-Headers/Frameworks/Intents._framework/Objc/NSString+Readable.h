@@ -29,8 +29,8 @@
 - (id)_intents_decodeFromProto;
 - (id)_intents_encodeForProto;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (id)_intents_localizedCopyForLanguage:(id)arg1;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_localizedCopyWithLocalizer:(id)arg1;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)localizeForLanguage:(id)arg1;
 @end
 

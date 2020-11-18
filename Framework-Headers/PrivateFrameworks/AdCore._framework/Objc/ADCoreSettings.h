@@ -78,7 +78,6 @@
 - (void)clearAdvertisingIdentifier;
 - (id)deviceDescription;
 - (int)deviceRunStateForBundleIdentifier:(id)arg1;
-- (BOOL)deviceUnlockedOnce;
 - (void)expire;
 - (void)gatherTelephonyData;
 - (id)init;

@@ -20,9 +20,9 @@ __attribute__((visibility("hidden")))
     BOOL _shouldPerformPhysicalRTLTransforms;
     BOOL _roundsToScreenScale;
     BOOL _layoutRTL;
-    int _layoutAxis;
     id<NSCollectionLayoutContainer> _container;
     UITraitCollection *_traitCollection;
+    unsigned long long _layoutAxis;
     _UIDataSourceSnapshotter *_dataSourceSnapshot;
     double _interSectionSpacing;
     NSIndexSet *_orthogonalScrollingSectionIndexes;
@@ -73,7 +73,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (strong, nonatomic) Class layoutAttributeClass; // @synthesize layoutAttributeClass=_layoutAttributeClass;
 @property (readonly, nonatomic) NSArray *layoutAttributesForPinnedSupplementaryItems;
-@property (nonatomic) int layoutAxis; // @synthesize layoutAxis=_layoutAxis;
+@property (nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property (nonatomic) BOOL layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property (nonatomic) double memoizedScreenScale; // @synthesize memoizedScreenScale=_memoizedScreenScale;
 @property (nonatomic) long long numberOfSectionsWithTransformVisibleItemsHandler; // @synthesize numberOfSectionsWithTransformVisibleItemsHandler=_numberOfSectionsWithTransformVisibleItemsHandler;
@@ -99,7 +99,7 @@ __attribute__((visibility("hidden")))
 - (id)_cachedDecorationAttributesForElementKind:(id)arg1 indexPath:(id)arg2;
 - (id)_cachedSupplementaryAttributesForElementKind:(id)arg1 indexPath:(id)arg2;
 - (BOOL)_canResolveWithoutQueryingSectionDefintionsForContainerChange;
-- (struct CGSize)_clampedSolutionSizeForSolution:(id)arg1 layoutAxis:(int)arg2 scrollsOrthogonally:(BOOL)arg3;
+- (struct CGSize)_clampedSolutionSizeForSolution:(id)arg1 layoutAxis:(unsigned long long)arg2 scrollsOrthogonally:(BOOL)arg3;
 - (void)_computeDeletedItemsAffectingSupplementariesForUpdate:(id)arg1 resolveResult:(id)arg2;
 - (id)_computeInitialSupplementaryKeysSectionDictForUpdate:(id)arg1;
 - (void)_configureLayoutForSections:(id)arg1;
@@ -136,7 +136,7 @@ __attribute__((visibility("hidden")))
 - (long long)auxillaryHostAuxillaryKind;
 - (id)auxillaryHostContainer;
 - (struct CGSize)auxillaryHostContentSize;
-- (int)auxillaryHostLayoutAxis;
+- (unsigned long long)auxillaryHostLayoutAxis;
 - (struct CGSize)auxillaryHostPinningContentSize;
 - (id)auxillaryHostPreferredSizes;
 - (BOOL)auxillaryHostShouldLayoutRTL;
@@ -146,7 +146,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)effectiveContentSizeForSection:(long long)arg1;
 - (BOOL)elementShouldAppearAbove:(id)arg1;
 - (id)extendedAttributesQueryIncludingOrthogonalScrollingRegions:(struct CGRect)arg1;
-- (id)initWithContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 dataSourceSnapshot:(id)arg4 options:(id)arg5 sectionProvider:(CDUnknownBlockType)arg6;
+- (id)initWithContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 dataSourceSnapshot:(id)arg4 options:(id)arg5 sectionProvider:(CDUnknownBlockType)arg6;
 - (void)invalidateCachedDecorationAttributes;
 - (void)invalidateCachedDecorationAttributesForElementKind:(id)arg1 atIndexPaths:(id)arg2;
 - (void)invalidateCachedItemsAttributes;

@@ -108,11 +108,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSelectingSwipeAction;
 - (void)lockIntoYAxis;
 - (struct CGPoint)menuCenter;
-- (struct CGVector)modifiedOffsetForPosition:(struct CGPoint)arg1 offset:(struct CGVector)arg2 touchPosition:(struct CGPoint)arg3 axisLock:(int)arg4;
+- (struct CGVector)modifiedOffsetForPosition:(struct CGPoint)arg1 offset:(struct CGVector)arg2 touchPosition:(struct CGPoint)arg3 axisLock:(unsigned long long)arg4;
 - (void)panningTransformer:(id)arg1 didBeginPanToTransformedPosition:(struct CGPoint)arg2;
 - (void)panningTransformer:(id)arg1 didEndPanToTransformedPosition:(struct CGPoint)arg2 offsetFromPrevious:(struct CGVector)arg3 velocity:(struct CGVector)arg4;
 - (void)panningTransformer:(id)arg1 didEnterTransitionNotchForTransformedPosition:(struct CGPoint)arg2;
-- (void)panningTransformer:(id)arg1 didPanToTransformedPosition:(struct CGPoint)arg2 offsetFromPrevious:(struct CGVector)arg3 touchPosition:(struct CGPoint)arg4 velocity:(struct CGVector)arg5 didChangeAxis:(BOOL)arg6 axisLock:(int)arg7;
+- (void)panningTransformer:(id)arg1 didPanToTransformedPosition:(struct CGPoint)arg2 offsetFromPrevious:(struct CGVector)arg3 touchPosition:(struct CGPoint)arg4 velocity:(struct CGVector)arg5 didChangeAxis:(BOOL)arg6 axisLock:(unsigned long long)arg7;
 - (void)performActionsAndEnterState:(long long)arg1;
 - (void)performActionsAndEnterState:(long long)arg1 velocity:(struct CGVector)arg2 underDirectManipulation:(BOOL)arg3;
 - (struct CGPoint)platterCenter;

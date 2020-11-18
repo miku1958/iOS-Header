@@ -30,6 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, getter=isReady) BOOL isReady;
 @property (strong, nonatomic) CUBLEAdvertiser *leAdvertiser; // @synthesize leAdvertiser;
 @property (strong, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property (strong, nonatomic) HMDAccessoryQueues *powerOnQueues; // @synthesize powerOnQueues;

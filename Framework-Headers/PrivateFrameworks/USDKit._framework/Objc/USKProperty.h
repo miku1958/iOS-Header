@@ -23,6 +23,7 @@
 - (unsigned long long)arraySize;
 - (unsigned long long)arraySizeAtTime:(double)arg1;
 - (BOOL)boolValue;
+- (void)clearConnections;
 - (id)connectedPropertyPath;
 - (id)connectedPropertyPaths;
 - (id)customMetadataWithKey:(id)arg1;
@@ -146,18 +147,28 @@
 - (void)setStringArray:(id)arg1;
 - (void)setStringArray:(id)arg1 atTime:(double)arg2;
 - (void)setStringValue:(id)arg1;
+- (void)setTimeCodeValue:(id)arg1;
 - (void)setTokenArray:(id)arg1;
 - (void)setTokenArray:(id)arg1 atTime:(double)arg2;
 - (void)setTokenValue:(id)arg1;
+- (void)setUIntArray:(unsigned int *)arg1 count:(unsigned long long)arg2;
+- (void)setUIntArray:(unsigned int *)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
+- (void)setUIntValue:(unsigned int)arg1;
+- (void)setUIntValue:(unsigned int)arg1 atTime:(double)arg2;
 - (void)setURL:(id)arg1;
 - (id)stringArray;
 - (id)stringArrayAtTime:(double)arg1;
 - (id)stringValue;
 - (id)targetObject;
+- (id)timeCodeValue;
 - (id)timeSamples;
 - (id)tokenArray;
 - (id)tokenArrayAtTime:(double)arg1;
 - (id)tokenValue;
+- (unsigned long long)uintArray:(unsigned int *)arg1 maxCount:(unsigned long long)arg2;
+- (unsigned long long)uintArray:(unsigned int *)arg1 maxCount:(unsigned long long)arg2 atTime:(double)arg3;
+- (unsigned int)uintValue;
+- (unsigned int)uintValueAtTime:(double)arg1;
 - (id)urlValue;
 - (struct UsdProperty)usdProperty;
 

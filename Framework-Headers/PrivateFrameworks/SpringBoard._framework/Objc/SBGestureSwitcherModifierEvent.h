@@ -13,11 +13,14 @@
 
 @interface SBGestureSwitcherModifierEvent : SBSwitcherModifierEvent <SBGestureRecognizerTouchHistoryProviding>
 {
+    BOOL _pointerTouch;
+    BOOL _mouseEvent;
     BOOL _canceled;
     NSUUID *_gestureID;
     SBAppLayout *_selectedAppLayout;
     long long _gestureType;
     unsigned long long _phase;
+    long long _touchType;
     double _lastTouchTimestamp;
     double _hysteresis;
     id<SBGestureRecognizerTouchHistoryProviding> _touchHistoryProvider;
@@ -35,10 +38,13 @@
 @property (nonatomic) double hysteresis; // @synthesize hysteresis=_hysteresis;
 @property (nonatomic) double lastTouchTimestamp; // @synthesize lastTouchTimestamp=_lastTouchTimestamp;
 @property (nonatomic) struct CGPoint locationInContainerView; // @synthesize locationInContainerView=_locationInContainerView;
+@property (nonatomic, getter=isMouseEvent) BOOL mouseEvent; // @synthesize mouseEvent=_mouseEvent;
 @property (nonatomic) unsigned long long phase; // @synthesize phase=_phase;
+@property (nonatomic, getter=isPointerTouch) BOOL pointerTouch; // @synthesize pointerTouch=_pointerTouch;
 @property (readonly, nonatomic) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<SBGestureRecognizerTouchHistoryProviding> touchHistoryProvider; // @synthesize touchHistoryProvider=_touchHistoryProvider;
+@property (nonatomic) long long touchType; // @synthesize touchType=_touchType;
 @property (nonatomic) struct CGPoint translationInContainerView; // @synthesize translationInContainerView=_translationInContainerView;
 @property (nonatomic) struct CGPoint velocityInContainerView; // @synthesize velocityInContainerView=_velocityInContainerView;
 

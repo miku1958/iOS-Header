@@ -26,8 +26,8 @@
     PXHorizontalCollectionGadgetProvider *_recentInterestSuggestionsHorizontalGadgetProvider;
     PXForYouRecentInterestSuggestionsGadgetProvider *_recentInterestsSuggestionsGadgetProvider;
     PXForYouMemoryGadgetProvider *_memoryGadgetProvider;
-    PXPeopleQuestionsGadgetProvider *_questionsGadgetProvider;
-    PXHorizontalCollectionGadgetProvider *_questionsHorizontalGadgetProvider;
+    PXPeopleQuestionsGadgetProvider *_peopleQuestionsGadgetProvider;
+    PXHorizontalCollectionGadgetProvider *_peopleQuestionsHorizontalGadgetProvider;
     PXForYouFooterGadgetProvider *_footerGadgetProvider;
     PXSampleSuggestionProvider *_sampleSuggestionGadgetsProvider;
     PXSampleGadgetProvider *_sampleGadgetsProvider;
@@ -48,9 +48,9 @@
 @property (readonly, nonatomic) BOOL isLaunchedToTest; // @synthesize isLaunchedToTest=_isLaunchedToTest;
 @property (strong, nonatomic) PXForYouMemoryGadgetProvider *memoryGadgetProvider; // @synthesize memoryGadgetProvider=_memoryGadgetProvider;
 @property (weak, nonatomic) id<PXGadgetDelegate> nextGadgetResponder;
+@property (strong, nonatomic) PXPeopleQuestionsGadgetProvider *peopleQuestionsGadgetProvider; // @synthesize peopleQuestionsGadgetProvider=_peopleQuestionsGadgetProvider;
+@property (strong, nonatomic) PXHorizontalCollectionGadgetProvider *peopleQuestionsHorizontalGadgetProvider; // @synthesize peopleQuestionsHorizontalGadgetProvider=_peopleQuestionsHorizontalGadgetProvider;
 @property (readonly, nonatomic) PXForYouGadgetPriorityManager *priorityManager; // @synthesize priorityManager=_priorityManager;
-@property (strong, nonatomic) PXPeopleQuestionsGadgetProvider *questionsGadgetProvider; // @synthesize questionsGadgetProvider=_questionsGadgetProvider;
-@property (strong, nonatomic) PXHorizontalCollectionGadgetProvider *questionsHorizontalGadgetProvider; // @synthesize questionsHorizontalGadgetProvider=_questionsHorizontalGadgetProvider;
 @property (strong, nonatomic) PXHorizontalCollectionGadgetProvider *recentInterestSuggestionsHorizontalGadgetProvider; // @synthesize recentInterestSuggestionsHorizontalGadgetProvider=_recentInterestSuggestionsHorizontalGadgetProvider;
 @property (strong, nonatomic) PXForYouRecentInterestSuggestionsGadgetProvider *recentInterestsSuggestionsGadgetProvider; // @synthesize recentInterestsSuggestionsGadgetProvider=_recentInterestsSuggestionsGadgetProvider;
 @property (readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
@@ -63,6 +63,7 @@
 - (long long)_adjustComparasionForInbox:(long long)arg1 gadgetType1:(unsigned long long)arg2 gadgeType2:(unsigned long long)arg3;
 - (unsigned long long)_adjustGadgetTypeForRanking:(unsigned long long)arg1;
 - (void)_calendarDayChanged;
+- (BOOL)_canShowSurveyQuestionsGadget;
 - (long long)_compareRank1:(long long)arg1 rank2:(long long)arg2;
 - (BOOL)_resetSortingRanksIfNecessary;
 - (void)didLoadDataForPriorities;

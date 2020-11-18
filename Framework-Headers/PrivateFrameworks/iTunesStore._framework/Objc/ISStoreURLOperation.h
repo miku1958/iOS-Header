@@ -31,6 +31,7 @@
     BOOL _shouldCancelBiometricTokenUpdate;
     BOOL _shouldSuppressUserInfo;
     BOOL _shouldSendAKClientInfoHeaders;
+    BOOL _shouldSendAKPRKRequestHeader;
     BOOL _shouldSendDSIDHeader;
     SSBiometricAuthenticationContext *_biometricAuthenticationContext;
     id<ISBiometricSessionDelegate> _biometricSessionDelegate;
@@ -59,6 +60,7 @@
 @property (nonatomic) BOOL shouldAppendStorefrontToURL; // @synthesize shouldAppendStorefrontToURL=_shouldAppendStorefrontToURL;
 @property BOOL shouldCancelBiometricTokenUpdate; // @synthesize shouldCancelBiometricTokenUpdate=_shouldCancelBiometricTokenUpdate;
 @property BOOL shouldSendAKClientInfoHeaders; // @synthesize shouldSendAKClientInfoHeaders=_shouldSendAKClientInfoHeaders;
+@property BOOL shouldSendAKPRKRequestHeader; // @synthesize shouldSendAKPRKRequestHeader=_shouldSendAKPRKRequestHeader;
 @property BOOL shouldSendDSIDHeader; // @synthesize shouldSendDSIDHeader=_shouldSendDSIDHeader;
 @property BOOL shouldSendXTokenHeader;
 @property BOOL shouldSuppressUserInfo; // @synthesize shouldSuppressUserInfo=_shouldSuppressUserInfo;

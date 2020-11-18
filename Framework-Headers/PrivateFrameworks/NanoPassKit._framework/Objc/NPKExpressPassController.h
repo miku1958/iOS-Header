@@ -52,10 +52,11 @@
 - (void)_handleExpressTransactionTimeOutNotification:(id)arg1;
 - (void)_handlePassesLibraryChangedNotification:(id)arg1;
 - (BOOL)_hasNoTransactionStartOrEndNotificationForTechnologyType:(long long)arg1;
-- (void)_onqueue_transactionEndedWithApplicationIdentifier:(id)arg1;
-- (void)_onqueue_transactionFailedWithApplicationIdentifier:(id)arg1;
-- (void)_onqueue_transactionStartedWithApplicationIdentifier:(id)arg1;
-- (id)_queue_expressPassForTransactionApplicationIdentifier:(id)arg1;
+- (void)_onqueue_transactionEndedWithApplicationIdentifier:(id)arg1 applicationKeyIdentifier:(id)arg2;
+- (void)_onqueue_transactionFailedWithApplicationIdentifier:(id)arg1 applicationKeyIdentifier:(id)arg2;
+- (void)_onqueue_transactionStartedWithApplicationIdentifier:(id)arg1 applicationKeyIdentifier:(id)arg2;
+- (void)_parseExpressNotificationObject:(id)arg1 outApplicationIdentifier:(id *)arg2 outApplicationKeyIdentifier:(id *)arg3;
+- (id)_queue_expressPassForTransactionApplicationIdentifier:(id)arg1 transactionApplicationKeyIdentifier:(id)arg2;
 - (id)_queue_paymentService;
 - (void)_queue_updateExpressPasses;
 - (void)_startFieldDetector;

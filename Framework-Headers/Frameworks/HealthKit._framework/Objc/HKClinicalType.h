@@ -18,7 +18,7 @@
 + (id)medicationRecordType;
 + (id)procedureRecordType;
 + (id)vitalSignRecordType;
-- (BOOL)_isClinicalType;
+- (BOOL)isClinicalType;
 
 @end
 

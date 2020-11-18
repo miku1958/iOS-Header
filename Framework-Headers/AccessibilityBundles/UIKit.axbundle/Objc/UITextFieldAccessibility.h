@@ -46,6 +46,7 @@
 - (id)accessibilityPlaceholderValue;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (BOOL)areChildrenFocused;
 - (void)dealloc;
 - (BOOL)fieldEditor:(id)arg1 shouldInsertText:(id)arg2 replacingRange:(struct _NSRange)arg3;
 - (BOOL)isAccessibilityElement;

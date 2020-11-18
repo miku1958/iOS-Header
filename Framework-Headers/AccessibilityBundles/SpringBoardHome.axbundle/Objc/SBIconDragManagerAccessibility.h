@@ -22,6 +22,7 @@
 - (void)_axSetRowColScheduledRow:(unsigned long long)arg1;
 - (void)iconDropSessionDidEnd:(id)arg1 identifier:(id)arg2 draggedIconIdentifiers:(id)arg3;
 - (id)iconDropSessionDidUpdate:(id)arg1 inIconListView:(id)arg2;
+- (void)iconViewWillBeginDrag:(id)arg1 session:(id)arg2;
 
 @end
 

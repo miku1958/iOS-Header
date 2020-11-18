@@ -14,7 +14,7 @@
 #import <PhotosUI/UIActivityItemImageDataProvider-Protocol.h>
 #import <PhotosUI/UIActivityItemSource-Protocol.h>
 
-@class NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSProgress, NSString, NSURL, PHAsset, PHAssetExportRequest, PUActivityItemSourceAnchorOperation, PUActivityItemSourceConfiguration, PUActivityItemSourceOperation;
+@class NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSProgress, NSString, NSURL, PHAsset, PHAssetExportRequest, PUActivityItemSourceAnchorOperation, PUActivityItemSourceConfiguration, PUActivityItemSourceOperation;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PUActivityItemSource : PXObservable <PHAssetExportRequestDelegate, PUActivityItemSourceOperationDelegate, PUMutableActivityItemSource, UIActivityItemDeferredSource, UIActivityItemApplicationExtensionSource, UIActivityItemImageDataProvider, UIActivityItemSource>
@@ -42,6 +42,10 @@
     CDUnknownBlockType __exportProgressHandler;
     NSDictionary *__pasteboardRepresentation;
     NSURL *__assetsLibraryURL;
+    unsigned long long _signpostId;
+    NSMutableDictionary *_preparationStepTimingInfo;
+    NSDate *_preparationStepSignpostIntervalStartTime;
+    long long _prepareItemEventCPAnalyticsSignpostId;
     NSObject<OS_dispatch_queue> *_externalIsolation;
 }
 
@@ -59,11 +63,15 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSError *lastPreparationError; // @synthesize lastPreparationError=_lastPreparationError;
 @property (copy) CDUnknownBlockType postCompletionHandler; // @synthesize postCompletionHandler=_postCompletionHandler;
+@property (strong, nonatomic) NSDate *preparationStepSignpostIntervalStartTime; // @synthesize preparationStepSignpostIntervalStartTime=_preparationStepSignpostIntervalStartTime;
+@property (readonly, nonatomic) NSMutableDictionary *preparationStepTimingInfo; // @synthesize preparationStepTimingInfo=_preparationStepTimingInfo;
+@property (readonly, nonatomic) long long prepareItemEventCPAnalyticsSignpostId; // @synthesize prepareItemEventCPAnalyticsSignpostId=_prepareItemEventCPAnalyticsSignpostId;
 @property (copy) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (readonly, nonatomic) CDStruct_2a4d9400 sharingPreferences; // @synthesize sharingPreferences=_sharingPreferences;
 @property (readonly, nonatomic) NSString *sharingUUID;
 @property (nonatomic) BOOL shouldAnchorPreparation; // @synthesize shouldAnchorPreparation=_shouldAnchorPreparation;
 @property (nonatomic) BOOL shouldSkipPreparation; // @synthesize shouldSkipPreparation=_shouldSkipPreparation;
+@property (readonly, nonatomic) unsigned long long signpostId; // @synthesize signpostId=_signpostId;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
@@ -90,6 +98,7 @@
 - (void)_fetchLivePhotoWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchSharingVariants;
 - (void)_fetchVideoWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_generateAnalyticsPayload;
 - (id)_generateURLForType:(long long)arg1 withPathExtension:(id)arg2 preferredFilename:(id)arg3;
 - (id)_itemForActivityType:(id)arg1;
 - (id)_newOperationForActivityType:(id)arg1;
@@ -115,13 +124,16 @@
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (void)assetExportRequest:(id)arg1 didChangeToState:(unsigned long long)arg2 fromState:(unsigned long long)arg3;
 - (void)cancel;
+- (void)commitTimingInfoForPreparationStep:(id)arg1 fromStartTime:(id)arg2;
 - (void)dealloc;
 - (id)initWithAsset:(id)arg1 sharingPreferences:(CDStruct_2a4d9400)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)runWithActivityType:(id)arg1;
+- (void)sendPreparationCompletedEventForActivityType:(id)arg1 withError:(id)arg2 didCancel:(BOOL)arg3;
 - (void)setSharingPreferences:(CDStruct_2a4d9400)arg1;
 - (void)setState:(unsigned long long)arg1;
 - (void)signalAnchorCompletion;
+- (void)updateTotalPreparationDurationTimingInfo;
 
 @end
 

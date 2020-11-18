@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityAutomationType;
 - (struct CGRect)_accessibilityBoundsOfCellsToLoad;
+- (id)_accessibilityCollectionViewSupplementaryViews;
 - (BOOL)_accessibilityDescendantElementAtIndexPathIsValid:(id)arg1;
 - (BOOL)_accessibilityDrawsFocusRingWhenChildrenFocused;
 - (void)_accessibilityEnsureViewsAroundAreLoaded;

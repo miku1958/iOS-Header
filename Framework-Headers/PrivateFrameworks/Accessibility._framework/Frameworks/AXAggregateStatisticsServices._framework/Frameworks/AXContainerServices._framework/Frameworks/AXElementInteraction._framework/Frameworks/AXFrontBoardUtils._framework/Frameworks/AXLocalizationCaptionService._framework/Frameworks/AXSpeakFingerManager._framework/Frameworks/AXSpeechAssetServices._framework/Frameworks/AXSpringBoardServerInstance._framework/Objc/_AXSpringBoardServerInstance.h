@@ -43,6 +43,7 @@
 - (id)_assertionClientForPort:(unsigned int)arg1;
 - (id)_canSetDockIconActivationMode:(id)arg1;
 - (id)_cancelGestureActivation:(id)arg1;
+- (id)_connectedDevicesRequireAssistiveTouch:(id)arg1;
 - (id)_copyStringToPasteboard:(id)arg1;
 - (id)_dismissAppSwitcher:(id)arg1;
 - (id)_dismissSiri:(id)arg1;
@@ -69,11 +70,9 @@
 - (id)_handleReactivateInCallService:(id)arg1;
 - (id)_handleRelinquishAssertion:(id)arg1;
 - (id)_handleRevealSpotlight:(id)arg1;
-- (id)_handleSetLockScreenDimTimerEnabled:(id)arg1;
 - (id)_handleSpringBoardInfoQuery:(id)arg1;
 - (id)_handleToggleIncomingCall:(id)arg1;
 - (id)_handleToggleSpotlight:(id)arg1;
-- (id)_handleUserEventOccurred:(id)arg1;
 - (BOOL)_hasActionHandlerForClientPort:(unsigned int)arg1;
 - (id)_hasActiveCall:(id)arg1;
 - (id)_hasActiveEndpointCall:(id)arg1;
@@ -93,6 +92,7 @@
 - (id)_isMediaPlaying:(id)arg1;
 - (id)_isNotificationCenterVisible:(id)arg1;
 - (id)_isOrientationLocked:(id)arg1;
+- (id)_isPIPWindowVisible:(id)arg1;
 - (id)_isPasscodeLockVisible:(id)arg1;
 - (id)_isPointInAXInspector:(id)arg1;
 - (id)_isRingerMuted:(id)arg1;

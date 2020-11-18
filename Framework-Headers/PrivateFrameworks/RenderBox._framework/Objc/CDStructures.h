@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSObject, NSURL, NSXMLParser, RBDevice, RBDisplayList, RBFill, RBShape;
+@class NSError, NSObject, NSURL, NSXMLParser, RBDevice, RBDisplayList, RBFill, RBShape;
 
 #pragma mark Function Pointers
 
@@ -251,7 +251,9 @@ struct __list_node_base<RB::refcounted_ptr<RB::Texture>, void *> {
 };
 
 struct atomic<unsigned int> {
-    _Atomic unsigned int __a_;
+    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+        _Atomic unsigned int __a_value;
+    } __a_;
 };
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
@@ -329,6 +331,10 @@ struct list<RB::refcounted_ptr<RB::Texture>, std::__1::allocator<RB::refcounted_
     struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<RB::refcounted_ptr<RB::Texture>, void *>>> {
         unsigned long long _field1;
     } _field2;
+};
+
+struct objc_ptr<NSError *> {
+    NSError *_p;
 };
 
 struct objc_ptr<NSObject<OS_dispatch_queue>*> {

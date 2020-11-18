@@ -8,10 +8,10 @@
 
 @protocol NSObject
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly) NSString *debugDescription;
+@property (nonatomic, readonly) NSString *description;
+@property (nonatomic, readonly) long long hash;
+@property (nonatomic, readonly) Class superclass;
 
 - (id)autorelease;
 - (Class)class;
@@ -20,15 +20,15 @@
 - (BOOL)isKindOfClass:(Class)arg1;
 - (BOOL)isMemberOfClass:(Class)arg1;
 - (BOOL)isProxy;
-- (id)performSelector:(SEL)arg1;
-- (id)performSelector:(SEL)arg1 withObject:(id)arg2;
-- (id)performSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
-- (oneway void)release;
+- (id *)performSelector:(SEL)arg1;
+- (id *)performSelector:(SEL)arg1 withObject:(id)arg2;
+- (id *)performSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
+- (void)release;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (id)retain;
-- (unsigned long long)retainCount;
+- (long long)retainCount;
 - (id)self;
-- (struct _NSZone *)zone;
+- (void *)zone;
 
 @optional
 @end

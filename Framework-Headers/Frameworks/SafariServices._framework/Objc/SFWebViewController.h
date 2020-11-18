@@ -16,7 +16,7 @@
 #import <SafariServices/_WKInputDelegate-Protocol.h>
 #import <SafariServices/_WKWebAuthenticationPanelDelegate-Protocol.h>
 
-@class NSString, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialog, _SFDialogController, _SFFormAutoFillController;
+@class NSString, NSUUID, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialog, _SFDialogController, _SFFormAutoFillController;
 @protocol SFWebViewControllerDelegate, _SFAuthenticatorDialog;
 
 __attribute__((visibility("hidden")))
@@ -35,8 +35,10 @@ __attribute__((visibility("hidden")))
     id<SFWebViewControllerDelegate> _delegate;
     WKWebViewConfiguration *_webViewConfiguration;
     _SFDialogController *_dialogController;
+    NSUUID *_UUID;
 }
 
+@property (copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (readonly, nonatomic) _SFAuthenticationContext *autoFillAuthenticationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SFWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -52,15 +54,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) WKWebViewConfiguration *webViewConfiguration; // @synthesize webViewConfiguration=_webViewConfiguration;
 
 - (void).cxx_destruct;
-- (id)_actionsForElement:(id)arg1 defaultActions:(id)arg2 isPreviewing:(BOOL)arg3;
 - (int)_analyticsClient;
 - (void)_automaticPasswordInputViewNotification:(id)arg1;
 - (id)_presentingViewControllerForWebView:(id)arg1;
-- (void)_userDeclinedAutomaticStrongPasswordForCurrentDomain;
+- (void)_userDeclinedAutomaticStrongPasswordForCurrentDomainOnTabWithUUID:(id)arg1;
 - (void)_webView:(id)arg1 accessoryViewCustomButtonTappedInFormInputSession:(id)arg2;
-- (id)_webView:(id)arg1 actionsForElement:(id)arg2 defaultActions:(id)arg3;
 - (void)_webView:(id)arg1 checkUserMediaPermissionForURL:(id)arg2 mainFrameURL:(id)arg3 frameIdentifier:(unsigned long long)arg4 decisionHandler:(CDUnknownBlockType)arg5;
-- (void)_webView:(id)arg1 commitPreviewedViewController:(id)arg2;
+- (void)_webView:(id)arg1 contextMenuConfigurationForElement:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_webView:(id)arg1 contextMenuDidEndForElement:(id)arg2;
+- (void)_webView:(id)arg1 contextMenuForElement:(id)arg2 willCommitWithAnimator:(id)arg3;
+- (void)_webView:(id)arg1 contextMenuWillPresentForElement:(id)arg2;
 - (void)_webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (long long)_webView:(id)arg1 dataOwnerForDragSession:(id)arg2;
 - (long long)_webView:(id)arg1 dataOwnerForDropSession:(id)arg2;
@@ -68,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(long long)arg2 forExtension:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_webView:(id)arg1 didChangeSafeAreaShouldAffectObscuredInsets:(BOOL)arg2;
 - (void)_webView:(id)arg1 didFinishLoadForQuickLookDocumentInMainFrame:(id)arg2;
+- (void)_webView:(id)arg1 didPresentFocusedElementViewController:(id)arg2;
 - (void)_webView:(id)arg1 didResignInputElementStrongPasswordAppearanceWithUserInfo:(id)arg2;
 - (void)_webView:(id)arg1 didStartInputSession:(id)arg2;
 - (void)_webView:(id)arg1 didStartLoadForQuickLookDocumentInMainFrameWithFileName:(id)arg2 uti:(id)arg3;
@@ -76,7 +80,6 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 mediaCaptureStateDidChange:(unsigned long long)arg2;
 - (void)_webView:(id)arg1 navigation:(id)arg2 didSameDocumentNavigation:(long long)arg3;
 - (void)_webView:(id)arg1 navigationDidFinishDocumentLoad:(id)arg2;
-- (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2 defaultActions:(id)arg3 elementInfo:(id)arg4;
 - (void)_webView:(id)arg1 printFrame:(id)arg2;
 - (void)_webView:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)_webView:(id)arg1 requestGeolocationAuthorizationForURL:(id)arg2 frame:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
@@ -87,11 +90,13 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 willPerformClientRedirectToURL:(id)arg2 delay:(double)arg3;
 - (void)_webView:(id)arg1 willStartInputSession:(id)arg2;
 - (void)_webView:(id)arg1 willSubmitFormValues:(id)arg2 userObject:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
+- (id)_webViewAdditionalContextForStrongPasswordAssistance:(id)arg1;
 - (void)_webViewDidCancelClientRedirect:(id)arg1;
 - (void)_webViewDidEndNavigationGesture:(id)arg1 withNavigationToBackForwardListItem:(id)arg2;
 - (void)_webViewDidEnterFullscreen:(id)arg1;
 - (void)_webViewDidExitFullscreen:(id)arg1;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
+- (void)_webViewWillEndNavigationGesture:(id)arg1 withNavigationToBackForwardListItem:(id)arg2;
 - (void)dealloc;
 - (void)dialogController:(id)arg1 dismissViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 - (void)dialogController:(id)arg1 presentViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;

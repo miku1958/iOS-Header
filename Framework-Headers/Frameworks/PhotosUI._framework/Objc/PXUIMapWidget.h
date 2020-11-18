@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, PHAsset, PXImageUIView, PXOneUpPresentation, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UIFont, UIView;
+@class NSMutableArray, NSMutableDictionary, NSString, PHAsset, PXImageUIView, PXOneUpPresentation, PXPhotosDetailsContext, PXPlacesMapFetchResultViewController, PXPlacesMapViewPort, PXPlacesSnapshotFactory, PXSectionedSelectionManager, PXTilingController, PXUIWidgetContainerView, PXWidgetSpec, UIButton, UIFont, UIView;
 @protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
 @interface PXUIMapWidget : NSObject <PXPhotosDataSourceChangeObserver, PXUIWidget>
@@ -27,7 +27,7 @@
     id<PXWidgetUnlockDelegate> _widgetUnlockDelegate;
     PXPhotosDetailsContext *_context;
     PXWidgetSpec *_spec;
-    UIView *__containerView;
+    PXUIWidgetContainerView *__containerView;
     UIView *__contentView;
     PXImageUIView *__imageView;
     PXPlacesMapFetchResultViewController *__mapViewController;
@@ -44,7 +44,7 @@
 
 @property (strong, nonatomic) NSString *_cachedDisclosureTitle; // @synthesize _cachedDisclosureTitle=__cachedDisclosureTitle;
 @property (strong, nonatomic) NSString *_cachedLocalizedTitle; // @synthesize _cachedLocalizedTitle=__cachedLocalizedTitle;
-@property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
+@property (readonly, nonatomic) PXUIWidgetContainerView *_containerView; // @synthesize _containerView=__containerView;
 @property (readonly, nonatomic) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property (strong, nonatomic) PXPlacesSnapshotFactory *_factory; // @synthesize _factory=__factory;
 @property (readonly, nonatomic) PXImageUIView *_imageView; // @synthesize _imageView=__imageView;
@@ -58,6 +58,7 @@
 @property (readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property (readonly, nonatomic) long long contentViewAnchoringType;
 @property (strong, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;

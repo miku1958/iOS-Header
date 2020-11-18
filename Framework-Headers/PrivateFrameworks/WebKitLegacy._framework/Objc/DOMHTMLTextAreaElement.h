@@ -50,6 +50,7 @@
 - (void)setWrap:(id)arg1;
 - (id)startPosition;
 - (int)structuralComplexityContribution;
+- (int)structuralComplexityContribution;
 - (unsigned int)textLength;
 - (id)wrap;
 

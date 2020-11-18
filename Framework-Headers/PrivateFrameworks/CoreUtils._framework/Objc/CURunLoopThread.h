@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CURunLoopThread : NSObject
@@ -15,7 +15,7 @@
     BOOL _invalidateCalled;
     struct __CFRunLoop *_runLoop;
     BOOL _runLoopValid;
-    struct NSMutableArray *_startBlocks;
+    NSMutableArray *_startBlocks;
     BOOL _threadRunning;
     struct LogCategory *_ucat;
     NSObject<OS_dispatch_queue> *_dispatchQueue;

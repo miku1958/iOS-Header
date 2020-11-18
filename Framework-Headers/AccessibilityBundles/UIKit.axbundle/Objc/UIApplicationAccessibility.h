@@ -48,7 +48,6 @@
 - (id)_accessibilityFirstElementForFocus;
 - (id)_accessibilityFirstElementsForSpeakThis;
 - (unsigned int)_accessibilityGetLastMediaRemoteCommand;
-- (BOOL)_accessibilityHandleDefaultActionForNativeFocusedElement;
 - (BOOL)_accessibilityHandleFullKeyboardAccessAction:(int)arg1 value:(id)arg2;
 - (BOOL)_accessibilityHardwareKeyboardActive;
 - (void)_accessibilityInitialize;
@@ -74,6 +73,7 @@
 - (BOOL)_accessibilityMediaSkipDuration:(id)arg1;
 - (BOOL)_accessibilityMediaStop;
 - (BOOL)_accessibilityMoveAppFocusForElementMatchingQuery:(id)arg1 heading:(unsigned long long)arg2;
+- (BOOL)_accessibilityMoveFocusToTopLevel;
 - (BOOL)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1;
 - (BOOL)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 toElementMatchingQuery:(id)arg2;
 - (BOOL)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 withEvaluator:(CDUnknownBlockType)arg2;
@@ -81,6 +81,7 @@
 - (id)_accessibilityNativeFocusPreferredElement;
 - (id)_accessibilityNativeFocusableElements:(id)arg1;
 - (id)_accessibilityNativeFocusableElements:(id)arg1 matchingBlock:(CDUnknownBlockType)arg2;
+- (id)_accessibilityNativeFocusableElements:(id)arg1 matchingBlock:(CDUnknownBlockType)arg2 forExistenceCheckOnly:(BOOL)arg3;
 - (id)_accessibilityNativeFocusableElements:(id)arg1 withQueryString:(id)arg2;
 - (BOOL)_accessibilityOverrideStartStopExtraExtras;
 - (id)_accessibilityPreviewWindow;

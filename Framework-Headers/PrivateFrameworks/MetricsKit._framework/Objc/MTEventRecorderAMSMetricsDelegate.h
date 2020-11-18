@@ -53,6 +53,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) AMSBagValue *trustedDomains;
 
++ (id)amsMetricsObjectCache;
 + (id)bundleIdentifier;
 - (void).cxx_destruct;
 - (id)activeItunesAccount;

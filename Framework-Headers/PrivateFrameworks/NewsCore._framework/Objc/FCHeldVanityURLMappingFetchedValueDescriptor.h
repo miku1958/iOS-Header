@@ -26,7 +26,7 @@
 - (id)init;
 - (id)initWithContentContext:(id)arg1 resourceConfigurationManager:(id)arg2;
 - (id)inputManagers;
-- (BOOL)isValue:(struct FCShallowCopyPair *)arg1 equalToValue:(struct FCShallowCopyPair *)arg2;
+- (BOOL)isValue:(id)arg1 equalToValue:(id)arg2;
 
 @end
 

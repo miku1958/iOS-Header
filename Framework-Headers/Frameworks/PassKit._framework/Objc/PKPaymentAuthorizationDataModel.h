@@ -26,6 +26,8 @@
     NSString *_paymentApplicationIdentifierForErrors;
     NSArray *_clientErrors;
     BOOL _shippingEditable;
+    BOOL _supportsPreservePeerPaymentBalance;
+    BOOL _usePeerPaymentBalance;
     PKPaymentPass *_pass;
     PKRemoteDevice *_remoteDevice;
     long long _mode;
@@ -125,10 +127,12 @@
 @property (strong, nonatomic) CNContact *shippingPhone; // @synthesize shippingPhone=_shippingPhone;
 @property (strong, nonatomic) NSString *shippingType; // @synthesize shippingType=_shippingType;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsPreservePeerPaymentBalance; // @synthesize supportsPreservePeerPaymentBalance=_supportsPreservePeerPaymentBalance;
 @property (strong, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property (readonly, nonatomic) NSDecimalNumber *transactionAmount;
 @property (readonly, nonatomic) NSArray *unavailablePasses;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
+@property (nonatomic) BOOL usePeerPaymentBalance; // @synthesize usePeerPaymentBalance=_usePeerPaymentBalance;
 @property (readonly, nonatomic) BOOL wantsInstructions;
 
 - (void).cxx_destruct;
@@ -173,9 +177,11 @@
 - (void)setStatus:(long long)arg1 forItemWithType:(long long)arg2;
 - (void)setStatus:(long long)arg1 forItemWithType:(long long)arg2 notify:(BOOL)arg3;
 - (BOOL)shouldUpdateContactDataItem;
+- (void)showPeerPaymentCardDataItem:(BOOL)arg1 withCardDataItem:(BOOL)arg2;
 - (id)unavailablePaymentApplicationsForPass:(id)arg1;
 - (id)unavailablePaymentApplicationsForRemoteInstrument:(id)arg1;
 - (void)updateBillingErrors;
+- (void)updatePeerPaymentPromotionForPeerPaymentQuote:(BOOL)arg1;
 - (void)updateRemoteDevices:(id)arg1;
 - (void)updateRemoteDevices:(id)arg1 ignoreProximity:(BOOL)arg2;
 

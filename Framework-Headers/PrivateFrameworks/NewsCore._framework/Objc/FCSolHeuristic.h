@@ -18,6 +18,8 @@
     long long _maxUnpaidArticles;
     long long _heuristicSampleSize;
     CDUnknownBlockType _utilityBlock;
+    double _topicDiversityThreshold;
+    long long _topicDiversityWindowSize;
 }
 
 @property (readonly, nonatomic) BOOL alternate; // @synthesize alternate=_alternate;
@@ -27,12 +29,14 @@
 @property (readonly, nonatomic) long long iterations; // @synthesize iterations=_iterations;
 @property (readonly, nonatomic) long long maxPublisherOccurrences; // @synthesize maxPublisherOccurrences=_maxPublisherOccurrences;
 @property (readonly, nonatomic) long long maxUnpaidArticles; // @synthesize maxUnpaidArticles=_maxUnpaidArticles;
+@property (readonly, nonatomic) double topicDiversityThreshold; // @synthesize topicDiversityThreshold=_topicDiversityThreshold;
+@property (readonly, nonatomic) long long topicDiversityWindowSize; // @synthesize topicDiversityWindowSize=_topicDiversityWindowSize;
 @property (readonly, copy, nonatomic) CDUnknownBlockType utilityBlock; // @synthesize utilityBlock=_utilityBlock;
 
 - (void).cxx_destruct;
 - (double)computeScoreWithSelectedGroup:(id)arg1 remainingArticles:(id)arg2 remainingTags:(id)arg3 articlesByTag:(id)arg4;
 - (id)fillGroupsWithSelectedGroup:(id)arg1 remainingArticles:(id)arg2 remainingTags:(id)arg3 articlesByTag:(id)arg4;
-- (id)initWithOption:(long long)arg1 minClusterSize:(long long)arg2 maxClusterSize:(long long)arg3 minIdealClusterSize:(long long)arg4 maxIdealClusterSize:(long long)arg5 maxPublisherOccurrences:(long long)arg6 enforcePublisherCap:(BOOL)arg7 maxUnpaidArticles:(long long)arg8 heuristicSampleSize:(long long)arg9 utilityBlock:(CDUnknownBlockType)arg10;
+- (id)initWithOption:(long long)arg1 minClusterSize:(long long)arg2 maxClusterSize:(long long)arg3 minIdealClusterSize:(long long)arg4 maxIdealClusterSize:(long long)arg5 maxPublisherOccurrences:(long long)arg6 enforcePublisherCap:(BOOL)arg7 maxUnpaidArticles:(long long)arg8 heuristicSampleSize:(long long)arg9 utilityBlock:(CDUnknownBlockType)arg10 topicDiversityThreshold:(double)arg11 topicDiversityWindowSize:(long long)arg12;
 
 @end
 

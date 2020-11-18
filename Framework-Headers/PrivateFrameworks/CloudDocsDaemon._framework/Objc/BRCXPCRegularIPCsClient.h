@@ -102,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)getContainerURLForID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getContainersByID:(CDUnknownBlockType)arg1;
 - (void)getContainersNeedingUpload:(CDUnknownBlockType)arg1;
+- (void)getCreatorNameComponentsForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getEvictableSpaceWithReply:(CDUnknownBlockType)arg1;
 - (void)getIsContainerWithIDOverQuota:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getItemUpdateSenderWithReceiver:(id)arg1 reply:(CDUnknownBlockType)arg2;

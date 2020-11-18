@@ -6,17 +6,23 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CPSPreferredFocusManaging-Protocol.h>
 
+@class NSString;
 @protocol UIFocusItem;
 
-@interface CPSOverlayViewController : UINavigationController <CPSPreferredFocusManaging>
+@interface CPSOverlayViewController : UINavigationController <CPSPreferredFocusManaging, BSInvalidatable>
 {
     BOOL usePreferredItemOnNextUpdate;
     id<UIFocusItem> preferredFocusItem;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<UIFocusItem> preferredFocusItem; // @synthesize preferredFocusItem;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL usePreferredItemOnNextUpdate; // @synthesize usePreferredItemOnNextUpdate;
 
 - (void).cxx_destruct;
@@ -25,6 +31,7 @@
 - (void)dismissTemplateAnimated:(BOOL)arg1;
 - (unsigned long long)indexOfTemplate:(id)arg1;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
+- (void)invalidate;
 - (void)popToRootTemplateAnimated:(BOOL)arg1;
 - (id)popToRootViewControllerAnimated:(BOOL)arg1;
 - (void)popToTemplate:(id)arg1 animated:(BOOL)arg2;

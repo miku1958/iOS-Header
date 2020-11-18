@@ -18,6 +18,7 @@
 - (void)selectedStorageServiceChanged;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
 - (id)showPickerKey;
+- (id)targetDataInfo;
 - (void)updateVisibleParameters;
 
 @end

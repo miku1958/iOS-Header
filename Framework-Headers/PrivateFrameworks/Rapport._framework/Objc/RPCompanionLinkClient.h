@@ -11,19 +11,19 @@
 #import <Rapport/RPCompanionLinkXPCClientInterface-Protocol.h>
 #import <Rapport/RPMessageable-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableOrderedSet, NSString, NSXPCConnection, RPCompanionLinkDevice;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, NSXPCConnection, RPCompanionLinkDevice;
 @protocol OS_dispatch_queue;
 
 @interface RPCompanionLinkClient : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface, RPAuthenticatable, RPMessageable>
 {
     BOOL _activateCalled;
-    struct NSMutableSet *_assertions;
-    struct NSMutableDictionary *_deviceDictionary;
-    struct NSMutableDictionary *_eventRegistrations;
+    NSMutableSet *_assertions;
+    NSMutableDictionary *_deviceDictionary;
+    NSMutableDictionary *_eventRegistrations;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     NSMutableOrderedSet *_registeredProfileIDs;
-    struct NSMutableDictionary *_requestRegistrations;
+    NSMutableDictionary *_requestRegistrations;
     NSXPCConnection *_xpcCnx;
     unsigned int _pairSetupFlags;
     unsigned int _pairVerifyFlags;

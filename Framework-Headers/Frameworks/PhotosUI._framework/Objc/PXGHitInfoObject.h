@@ -6,18 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE;
-
 @interface PXGHitInfoObject : NSObject
 {
     struct {
         unsigned int spriteIndex;
         double paddedDistance;
         double unpaddedDistance;
-        struct {
-            CDStruct_719d24f9 center;
-            MISSING_TYPE *size;
-        } geometry;
+        CDStruct_dfa1459f geometry;
     } _hitInfo;
 }
 

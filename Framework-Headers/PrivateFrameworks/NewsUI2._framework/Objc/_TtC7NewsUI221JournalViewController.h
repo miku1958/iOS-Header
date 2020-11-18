@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *tagController;
     MISSING_TYPE *journalGroup;
+    MISSING_TYPE *privateDataDirectory;
 }
 
 - (void).cxx_destruct;

@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSMutableArray *exportSessions; // @synthesize exportSessions=_exportSessions;
 
++ (BOOL)outputIsExemptFromTaintTrackingInheritance;
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)encodeItems:(id)arg1 metadata:(id)arg2;

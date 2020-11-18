@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)_handleTapForActivateGateway:(id)arg1;
 - (id)_initWithProfile:(id)arg1;
 - (id)_orderGatewaysForDisplay:(id)arg1;
-- (void)_postAWDMetricForStartingSafariSession;
 - (void)_presentError:(id)arg1;
 - (void)_presentUnavailableAlertForGatewayTitle:(id)arg1;
 - (void)applyChangeActivity:(id)arg1;

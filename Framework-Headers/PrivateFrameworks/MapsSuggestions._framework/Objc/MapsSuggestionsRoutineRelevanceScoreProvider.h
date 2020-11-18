@@ -8,14 +8,14 @@
 
 #import <MapsSuggestions/MapsSuggestionsRelevanceScoreProvider-Protocol.h>
 
-@class MapsSuggestionsRoutine, NSDate, NSString;
+@class MapsSuggestionsRoutine, NSArray, NSDate, NSString;
 
 @interface MapsSuggestionsRoutineRelevanceScoreProvider : NSObject <MapsSuggestionsRelevanceScoreProvider>
 {
     NSDate *_fetchEntriesFromDate;
     struct Queue _queue;
     MapsSuggestionsRoutine *_routine;
-    struct NSArray *_routineLocations;
+    NSArray *_routineLocations;
 }
 
 @property (readonly, copy) NSString *debugDescription;

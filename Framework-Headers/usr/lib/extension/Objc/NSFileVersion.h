@@ -50,9 +50,9 @@
 + (id)_addVersionOfItemAtURL:(id)arg1 withContentsOfURL:(id)arg2 options:(unsigned long long)arg3 userInfo:(id)arg4 temporaryStorageIdentifier:(id *)arg5 error:(id *)arg6;
 + (id)_autosaveDirectoryURLCreateIfNecessary:(BOOL)arg1;
 + (BOOL)_conflictsExistForItemAtURL:(id)arg1;
-+ (struct NSObject *)_existingLibraryForURL:(id)arg1 temporaryStorageIdentifier:(id)arg2;
++ (id)_existingLibraryForURL:(id)arg1 temporaryStorageIdentifier:(id)arg2;
 + (BOOL)_isTemporaryStorageRequiredForGSError:(id)arg1 andURL:(id)arg2;
-+ (struct NSObject *)_libraryForURL:(id)arg1 temporaryStorageIdentifier:(id *)arg2;
++ (id)_libraryForURL:(id)arg1 temporaryStorageIdentifier:(id *)arg2;
 + (id)_makePermanentStorageLibraryForURL:(id)arg1 temporaryStorageRequired:(BOOL *)arg2 error:(id *)arg3;
 + (id)_makeTemporaryStorageIdentifier;
 + (void)_markConflicts:(id)arg1 asHandledForItemAtURL:(id)arg2;

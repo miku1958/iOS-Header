@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _UIFocusDisplayLinkScrollAnimator *scrollAnimator; // @synthesize scrollAnimator=_scrollAnimator;
 
 - (void).cxx_destruct;
+- (struct CGPoint)_contentOffsetForNonPagingContainer:(id)arg1 toShowFocusItemWithInfo:(id)arg2 itemFrame:(struct CGRect)arg3 targetOffset:(struct CGPoint)arg4 targetBounds:(struct CGRect)arg5;
+- (struct CGPoint)_contentOffsetForPagingContainer:(id)arg1 itemFrame:(struct CGRect)arg2 targetOffset:(struct CGPoint)arg3;
 - (struct CGPoint)_contentOffsetForScrollableContainer:(id)arg1 toShowFocusItemWithInfo:(id)arg2;
 - (struct CGPoint)_contentOffsetForScrollableContainer:(id)arg1 toShowFocusItemWithInfo:(id)arg2 itemFrame:(struct CGRect)arg3 targetOffset:(struct CGPoint)arg4 targetBounds:(struct CGRect)arg5;
 - (void)_ensureFocusItemIsOnscreen:(id)arg1 inScrollableContainer:(id)arg2;

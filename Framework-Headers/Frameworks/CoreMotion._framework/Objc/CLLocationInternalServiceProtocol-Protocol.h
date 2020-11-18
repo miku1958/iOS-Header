@@ -18,6 +18,7 @@
 - (void)getAuthorizationPromptMapDisplayEnabledWithReplyBlock:(void (^)(NSError *, BOOL))arg1;
 - (void)getAuthorizationStatusForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, int))arg3;
 - (void)getGestureServiceEnabledWithReplyBlock:(void (^)(NSError *, BOOL))arg1;
+- (void)getGnssBandsInUseWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
 - (void)getLocationDefaultForKey:(NSString *)arg1 replyBlock:(void (^)(NSError *, NSData *))arg2;
 - (void)getLocationForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 dynamicAccuracyReductionEnabled:(BOOL)arg3 allowsAlteredAccessoryLocations:(BOOL)arg4 replyBlock:(void (^)(NSError *, struct))arg5;
 - (void)getLocationServicesEnabledWithReplyBlock:(void (^)(NSError *, int))arg1;

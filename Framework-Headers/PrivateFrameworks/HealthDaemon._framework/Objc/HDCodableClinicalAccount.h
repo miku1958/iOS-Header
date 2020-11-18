@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class HDCodableMessageVersion, NSData, NSString;
 
 @interface HDCodableClinicalAccount : PBCodable <NSCopying>
 {
@@ -18,6 +18,7 @@
     double _modificationDate;
     NSString *_accountIdentifier;
     NSString *_gatewayExternalID;
+    HDCodableMessageVersion *_messageVersion;
     NSString *_patientHash;
     NSData *_syncIdentifier;
     BOOL _userEnabled;
@@ -38,12 +39,14 @@
 @property (readonly, nonatomic) BOOL hasGatewayExternalID;
 @property (nonatomic) BOOL hasLastFetchDate;
 @property (nonatomic) BOOL hasLastFullFetchDate;
+@property (readonly, nonatomic) BOOL hasMessageVersion;
 @property (nonatomic) BOOL hasModificationDate;
 @property (readonly, nonatomic) BOOL hasPatientHash;
 @property (readonly, nonatomic) BOOL hasSyncIdentifier;
 @property (nonatomic) BOOL hasUserEnabled;
 @property (nonatomic) double lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
 @property (nonatomic) double lastFullFetchDate; // @synthesize lastFullFetchDate=_lastFullFetchDate;
+@property (strong, nonatomic) HDCodableMessageVersion *messageVersion; // @synthesize messageVersion=_messageVersion;
 @property (nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (strong, nonatomic) NSString *patientHash; // @synthesize patientHash=_patientHash;
 @property (strong, nonatomic) NSData *syncIdentifier; // @synthesize syncIdentifier=_syncIdentifier;

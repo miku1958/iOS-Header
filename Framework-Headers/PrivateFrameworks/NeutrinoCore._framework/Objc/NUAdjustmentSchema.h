@@ -10,7 +10,7 @@
 
 @interface NUAdjustmentSchema : NUSchema
 {
-    struct NSDictionary *_settings;
+    NSDictionary *_settings;
 }
 
 @property (readonly, nonatomic) NSDictionary *settings; // @synthesize settings=_settings;
@@ -24,11 +24,11 @@
 - (BOOL)deserializeSettings:(id)arg1 fromDictionary:(id)arg2 error:(out id *)arg3;
 - (void)enumerateProperties:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1 attributes:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 settings:(struct NSDictionary *)arg2 attributes:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 settings:(id)arg2 attributes:(id)arg3;
 - (BOOL)isValid:(out id *)arg1;
 - (id)makeJSValue:(id)arg1 context:(id)arg2 error:(out id *)arg3;
 - (id)modelForProperty:(id)arg1;
-- (struct NSArray *)schemaDependencies;
+- (id)schemaDependencies;
 - (id)serialize:(id)arg1 error:(out id *)arg2;
 - (id)serializeAdjustment:(id)arg1 error:(out id *)arg2;
 - (BOOL)serializeIntoDictionary:(id)arg1 error:(out id *)arg2;

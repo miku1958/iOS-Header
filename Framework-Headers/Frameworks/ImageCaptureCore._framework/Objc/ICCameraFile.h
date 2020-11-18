@@ -153,6 +153,7 @@
 - (void)requestMetadataDictionaryWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestMetadataWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestReadDataAtOffset:(long long)arg1 length:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)requestReadFullDataAtOffset:(long long)arg1 length:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestThumbnail;
 - (void)requestThumbnailDataWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestThumbnailWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;

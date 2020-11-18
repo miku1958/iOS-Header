@@ -24,13 +24,15 @@
 - (void)checkInWithCurrentEnvironment:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)chooseUserWithIdentifier:(id)arg1 inClassWithID:(id)arg2 password:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
+- (void)interruptLocalUserSwitchTest;
 - (void)isReadyToLoginWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)isReadyToLogoutWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)loginAppleID:(id)arg1 password:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)loginAppleID:(id)arg1 password:(id)arg2 localLoginOnly:(BOOL)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)logoutWithLogoutType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)proxy;
 - (id)recentUsers;
 - (void)saveClassConfiguration:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)triggerLocalUserSwitchTestForType:(unsigned long long)arg1 count:(long long)arg2 username:(id)arg3 password:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)updateGlobalDefaultsValue:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

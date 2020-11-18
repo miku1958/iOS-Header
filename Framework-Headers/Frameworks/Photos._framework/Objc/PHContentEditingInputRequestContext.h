@@ -30,14 +30,12 @@
 
 @property (readonly, nonatomic) PHContentEditingInputRequestOptions *options; // @synthesize options=_options;
 
-+ (long long)type;
 - (void).cxx_destruct;
 - (long long)_adjustmentBaseVersionFromResult:(id)arg1 request:(id)arg2 canHandleAdjustmentData:(BOOL *)arg3;
 - (id)_assetResourceForType:(long long)arg1;
 - (long long)_assetResourceTypeForImageWithBaseVersion:(long long)arg1;
 - (id)_assetResources;
 - (id)_baseMediaRequestsForBaseVersion:(long long)arg1 error:(id *)arg2;
-- (BOOL)_canRenderMediaForResult:(id)arg1;
 - (id)_errorFromAssetMediaResult:(id)arg1;
 - (void)_finishIfAllCompleteWithRequest:(id)arg1;
 - (BOOL)_hasAnyPenultimateResource;
@@ -63,6 +61,7 @@
 - (id)produceChildRequestsForRequest:(id)arg1 reportingIsLocallyAvailable:(BOOL)arg2 isDegraded:(BOOL)arg3 result:(id)arg4;
 - (CDUnknownBlockType)progressHandler;
 - (id)progresses;
+- (long long)type;
 
 @end
 

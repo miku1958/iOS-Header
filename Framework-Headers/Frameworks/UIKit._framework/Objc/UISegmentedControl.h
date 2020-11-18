@@ -6,20 +6,23 @@
 
 #import <UIKitCore/UIControl.h>
 
+#import <UIKitCore/CAAnimationDelegate-Protocol.h>
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
 #import <UIKitCore/_UIHostedFocusSystemDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIColor, UIImageView, UILongPressGestureRecognizer, UISegment, UIView, _UIHostedFocusSystem;
+@class NSMutableArray, NSString, UIColor, UIImageView, UILongPressGestureRecognizer, UISegment, UIVibrancyEffect, UIView, _UIHostedFocusSystem;
 
-@interface UISegmentedControl : UIControl <_UIBasicAnimationFactory, UIPopoverPresentationControllerDelegate, _UIHostedFocusSystemDelegate, NSCoding>
+@interface UISegmentedControl : UIControl <_UIBasicAnimationFactory, UIPopoverPresentationControllerDelegate, _UIHostedFocusSystemDelegate, CAAnimationDelegate, NSCoding>
 {
+    UIView *_selectionIndicatorView;
     UIImageView *_selectionImageView;
     NSMutableArray *_segments;
     long long _selectedSegment;
     long long _highlightedSegment;
     long long _selectionIndicatorSegment;
+    long long _hoveredSegment;
     UIView *_removedSegment;
     UISegment *_focusedSegment;
     long long _barStyle;
@@ -27,6 +30,8 @@
     double _enabledAlpha;
     UIColor *_selectedSegmentTintColor;
     UIColor *_backgroundTintColor;
+    UIVibrancyEffect *_selectedSegmentVibrancyEffect;
+    double _innerSegmentSpacing;
     struct {
         unsigned int size:2;
         unsigned int delegateAlwaysNotifiesDelegateOfSegmentClicks:1;
@@ -40,11 +45,17 @@
         unsigned int translucentBackground:1;
         unsigned int appearanceNeedsUpdate:1;
         unsigned int selectionIndicatorDragged:1;
+        unsigned int useInnerSegmentSpacing:1;
+        unsigned int useDynamicShadow:1;
+        unsigned int animatingOutDynamicShadow:1;
+        unsigned int animatingSeleciton:1;
+        unsigned int animatingHoverOut:1;
     } _segmentedControlFlags;
     _UIHostedFocusSystem *_internalFocusSystem;
     UILongPressGestureRecognizer *_axLongPressGestureRecognizer;
 }
 
+@property (getter=_animatingOutDynamicShadow, setter=_setAnimatingOutDynamicShdaow:) BOOL animatingOutDynamicShadow;
 @property (nonatomic) BOOL apportionsSegmentWidthsByContent;
 @property (strong, nonatomic) UILongPressGestureRecognizer *axLongPressGestureRecognizer; // @synthesize axLongPressGestureRecognizer=_axLongPressGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
@@ -58,20 +69,24 @@
 @property (nonatomic) long long selectedSegmentIndex;
 @property (strong, nonatomic) UIColor *selectedSegmentTintColor;
 @property (readonly) Class superclass;
+@property (readonly, getter=_useDynamicShadow) BOOL useDynamicShadow;
 
 + (struct CGColor *)_backgroundPrimaryColorSelected:(BOOL)arg1 highlighted:(BOOL)arg2 traitCollection:(id)arg3 tintColor:(id)arg4;
 + (double)_cornerRadiusForTraitCollection:(id)arg1 size:(int)arg2;
++ (BOOL)_cursorInteractionEnabled;
 + (struct CGColor *)_dividerPrimaryColorBackground:(BOOL)arg1 traitCollection:(id)arg2 tintColor:(id)arg3;
 + (double)_dividerWidthForTraitCollection:(id)arg1 size:(int)arg2;
 + (id)_fontForTraitCollection:(id)arg1 size:(int)arg2 selected:(BOOL)arg3;
 + (struct CATransform3D)_hiddenSelectionTransform;
 + (struct CATransform3D)_highlightSelectionTransform;
 + (double)_lineWidthForTraitCollection:(id)arg1 size:(int)arg2;
-+ (id)_modernBackgroundSelected:(BOOL)arg1 disableShadow:(BOOL)arg2 highlighted:(BOOL)arg3 traitCollection:(id)arg4 tintColor:(id)arg5 size:(int)arg6;
++ (id)_modernBackgroundSelected:(BOOL)arg1 disableShadow:(BOOL)arg2 maximumSize:(struct CGSize)arg3 highlighted:(BOOL)arg4 traitCollection:(id)arg5 tintColor:(id)arg6 size:(int)arg7;
 + (id)_modernDividerImageBackground:(BOOL)arg1 traitCollection:(id)arg2 tintColor:(id)arg3 size:(int)arg4;
 + (double)_sectionIndicatorInsetForTraitCollection:(id)arg1 size:(int)arg2;
 + (double)_sectionIndicatorOverflowForTraitCollection:(id)arg1 size:(int)arg2;
++ (BOOL)_selectFocusedSegmentAfterFocusUpdate;
 + (struct CGRect)_selectionFrameForBounds:(struct CGRect)arg1 size:(int)arg2 traitCollection:(id)arg3 accessibilityView:(BOOL)arg4;
++ (double)_selectionOffsetAdjustmentForSegment:(id)arg1;
 + (id)_selectionOpacityAnimationFromValue:(float)arg1 toValue:(float)arg2;
 + (id)_selectionPopAnimationForKey:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 + (id)_tvDefaultTextColorDisabledSelected;
@@ -81,6 +96,8 @@
 + (id)_tvDefaultTextColorNormalUserInterfaceStyleDark;
 + (id)_tvDefaultTextColorNormalUserInterfaceStyleLight;
 + (id)_tvDefaultTextColorSelected;
++ (BOOL)_updateDynamicShadowView:(id)arg1 withAnimationDelegate:(id)arg2 useDynamicShadow:(BOOL)arg3 animated:(BOOL)arg4;
++ (BOOL)_useShadowForSelectedTintColor:(id)arg1 traitCollection:(id)arg2;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (double)defaultHeight;
 + (double)defaultHeightForStyle:(long long)arg1;
@@ -111,6 +128,7 @@
 - (BOOL)_focusSystem:(id)arg1 containsChildOfHostEnvironment:(id)arg2;
 - (void)_focusSystem:(id)arg1 didFinishUpdatingFocusInContext:(id)arg2;
 - (BOOL)_hasEnabledSegment;
+- (double)_innerSegmentSpacing;
 - (void)_insertSegment:(int)arg1 withInfo:(id)arg2 animated:(BOOL)arg3;
 - (void)_insertSegmentWithAttributedTitle:(id)arg1 atIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)_insertSelectionViewForSegment:(id)arg1;
@@ -120,6 +138,7 @@
 - (id)_segmentAtIndex:(int)arg1;
 - (long long)_segmentIndexToHighlight:(BOOL *)arg1;
 - (void)_selectFocusedSegment;
+- (id)_selectedSegmentVibrancyEffect;
 - (void)_sendDelayedFocusActionIfNecessary;
 - (void)_setAppearanceIsTiled:(BOOL)arg1 leftCapWidth:(unsigned long long)arg2 rightCapWidth:(unsigned long long)arg3;
 - (void)_setAttributedTitle:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
@@ -132,6 +151,8 @@
 - (void)_setDividerImage:(id)arg1 forLeftSegmentState:(unsigned long long)arg2 rightSegmentState:(unsigned long long)arg3 barMetrics:(long long)arg4;
 - (void)_setEnabled:(BOOL)arg1 forcePropagateToSegments:(BOOL)arg2;
 - (void)_setHighlightedSegmentHighlighted:(BOOL)arg1;
+- (void)_setHoverOnSegment:(long long)arg1 hovered:(BOOL)arg2;
+- (void)_setInterSegmentSpacing:(double)arg1;
 - (void)_setNeedsAppearanceUpdate;
 - (void)_setNeedsBackgroundAndContentViewUpdate;
 - (void)_setSegmentedControlAppearance:(CDStruct_41b0f204 *)arg1;
@@ -139,6 +160,7 @@
 - (void)_setSelected:(BOOL)arg1 highlighted:(BOOL)arg2 forSegmentAtIndex:(int)arg3 forceInfoDisplay:(BOOL)arg4;
 - (void)_setSelectedSegmentIndex:(long long)arg1 notify:(BOOL)arg2;
 - (void)_setSelectedSegmentIndex:(long long)arg1 notify:(BOOL)arg2 animate:(BOOL)arg3;
+- (void)_setSelectedSegmentVibrancyEffect:(id)arg1;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setUsesNewAnimations:(BOOL)arg1;
 - (BOOL)_shouldConsumeEventWithPresses:(id)arg1;
@@ -149,6 +171,7 @@
 - (id)_uiktest_segmentAtIndex:(unsigned long long)arg1;
 - (void)_updateAxLongPressGestureRecognizer;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned long long)arg1;
+- (void)_updateDynamicShadow:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_updateSelectionIndicator;
 - (void)_updateSelectionToSegment:(id)arg1 highlight:(BOOL)arg2 shouldAnimate:(BOOL)arg3 sameSegment:(BOOL)arg4;
 - (BOOL)_usesNewAnimations;
@@ -157,6 +180,7 @@
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addSegmentWithTitle:(id)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (id)backgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;
 - (long long)barStyle;
 - (struct CGRect)bounds;
@@ -165,6 +189,10 @@
 - (struct CGSize)contentOffsetForSegmentAtIndex:(unsigned long long)arg1;
 - (struct UIOffset)contentPositionAdjustmentForSegmentType:(long long)arg1 barMetrics:(long long)arg2;
 - (int)controlSize;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
 - (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)dividerImageForLeftSegmentState:(unsigned long long)arg1 rightSegmentState:(unsigned long long)arg2 barMetrics:(long long)arg3;
@@ -172,6 +200,8 @@
 - (struct CGRect)frame;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)highlightSegment:(int)arg1;
+- (void)hoverOffSegment:(long long)arg1;
+- (void)hoverOnSegment:(long long)arg1;
 - (id)imageForSegment:(unsigned long long)arg1;
 - (id)imageForSegmentAtIndex:(unsigned long long)arg1;
 - (id)infoViewForSegment:(long long)arg1;

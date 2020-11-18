@@ -10,10 +10,13 @@
 
 @interface _TtC9JetEngine20PageMetricsPresenter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *appStatePresenter;
-    MISSING_TYPE *hasResignedActiveWhileAppeared;
-    MISSING_TYPE *eventDispatcher;
-    MISSING_TYPE *pageMetrics;
+    MISSING_TYPE *appMetrics;
+    MISSING_TYPE *pipeline;
+    MISSING_TYPE *appStateEventSubscription;
+    MISSING_TYPE *isViewAppeared;
+    MISSING_TYPE *hasAppExitedWhileAppeared;
+    MISSING_TYPE *context;
+    MISSING_TYPE *data;
 }
 
 @end

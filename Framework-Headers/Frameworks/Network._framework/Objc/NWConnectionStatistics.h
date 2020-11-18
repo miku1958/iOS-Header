@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSUUID, NWL2Report, PBCodable;
+@class NSArray, NSString, NSUUID, NWDeviceReport, NWL2Report, PBCodable;
 
 @interface NWConnectionStatistics : NSObject
 {
@@ -16,6 +16,7 @@
     NSUUID *_externallyVisibleConnectionUUID;
     NSArray *_externallyVisibleActivityUUIDs;
     NWL2Report *_layer2Report;
+    NWDeviceReport *_deviceReport;
     PBCodable *_awdReport;
     NSArray *_activities;
     struct netcore_stats_tcp_report _report;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) unsigned int connectionEstablishmentTimeMsecs;
 @property (readonly, nonatomic) NSUUID *connectionUUID;
 @property (readonly, nonatomic) BOOL delegated;
+@property (strong, nonatomic) NWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property (readonly, nonatomic) BOOL dnsAnswersCached;
 @property (readonly, nonatomic) unsigned int dnsResolvedTimeMsecs;
 @property (strong, nonatomic) NSArray *externallyVisibleActivityUUIDs; // @synthesize externallyVisibleActivityUUIDs=_externallyVisibleActivityUUIDs;
@@ -75,6 +77,7 @@
 @property (readonly, nonatomic) unsigned int trafficClass;
 
 - (void).cxx_destruct;
+- (id)initWithPBCodableData:(id)arg1;
 - (id)initWithTCPReport:(struct netcore_stats_tcp_report *)arg1 length:(unsigned long long)arg2 clientIdentifier:(id)arg3 sourceIdentifier:(id)arg4;
 - (BOOL)tlsHandshakeTimedOut;
 

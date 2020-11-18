@@ -25,6 +25,7 @@
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PXPhotosGlobalFooterView *footerView; // @synthesize footerView=_footerView;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -33,13 +34,10 @@
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (nonatomic) long long priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
 
 - (void).cxx_destruct;
-- (struct NSObject *)contentView;
+- (id)contentView;
 - (id)initWithViewModel:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

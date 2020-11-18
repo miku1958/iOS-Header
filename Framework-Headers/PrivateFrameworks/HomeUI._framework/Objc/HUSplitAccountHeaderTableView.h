@@ -32,14 +32,14 @@
 - (double)_buttonTitleTextHeight;
 - (id)_descriptionFont;
 - (double)_descriptionHeight;
-- (double)_maxTitleAndDescriptionCellHeight;
+- (double)_maxTitleAndDescriptionCellHeightForWidth:(double)arg1;
 - (id)_titleFont;
 - (double)_titleHeight;
 - (id)initWithFrame:(struct CGRect)arg1 mediaAccount:(id)arg2 home:(id)arg3 delegate:(id)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (double)tableViewHeight;
+- (double)tableViewHeightForWidth:(double)arg1;
 
 @end
 

@@ -23,6 +23,7 @@
 @property (readonly, copy, nonatomic) NSString *summaryString;
 @property (strong, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
++ (void)setCachedHomes:(id)arg1;
 - (void).cxx_destruct;
 - (id)actionSetsFromTriggerActionSetsBuilders:(id)arg1;
 - (id)debugDescription;

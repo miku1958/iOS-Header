@@ -16,11 +16,11 @@
     NSDictionary *_URLAppendStringMap;
 }
 
-@property (copy) NSDictionary *URLAppendStringMap;
+@property (copy) NSDictionary *URLAppendStringMap; // @synthesize URLAppendStringMap=_URLAppendStringMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy) NSDictionary *remediationMap;
+@property (copy) NSDictionary *remediationMap; // @synthesize remediationMap=_remediationMap;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

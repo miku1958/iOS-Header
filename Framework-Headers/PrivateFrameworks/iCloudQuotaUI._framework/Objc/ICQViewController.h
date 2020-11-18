@@ -15,14 +15,14 @@
 {
     _ICQPageSpecification *_pageSpecification;
     UIColor *_buttonTintColor;
-    id<ICQPageDelegate> _delegate;
+    id<ICQPageDelegate> _pageDelegate;
 }
 
 @property (copy, nonatomic) UIColor *buttonTintColor; // @synthesize buttonTintColor=_buttonTintColor;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<ICQPageDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<ICQPageDelegate> pageDelegate; // @synthesize pageDelegate=_pageDelegate;
 @property (readonly, nonatomic) _ICQPageSpecification *pageSpecification; // @synthesize pageSpecification=_pageSpecification;
 @property (readonly) Class superclass;
 

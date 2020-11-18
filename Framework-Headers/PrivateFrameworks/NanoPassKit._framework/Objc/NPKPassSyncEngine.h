@@ -13,6 +13,7 @@
 
 @interface NPKPassSyncEngine : NSObject <NSSecureCoding>
 {
+    BOOL _requireAppleAccountForPaymentPasses;
     NPKPassSyncState *_libraryState;
     NPKPassSyncState *_backupState;
     NPKPassSyncState *_reconciledState;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NPKPassSyncState *libraryState; // @synthesize libraryState=_libraryState;
 @property (strong, nonatomic) NPKPassSyncChange *processingChange; // @synthesize processingChange=_processingChange;
 @property (strong, nonatomic) NPKPassSyncState *reconciledState; // @synthesize reconciledState=_reconciledState;
+@property (nonatomic) BOOL requireAppleAccountForPaymentPasses; // @synthesize requireAppleAccountForPaymentPasses=_requireAppleAccountForPaymentPasses;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

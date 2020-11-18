@@ -34,6 +34,7 @@
     NSObject<OS_dispatch_queue> *_internalDelegateQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     unsigned long long _stateNumber;
+    unsigned long long _compatibilityFeatures;
     id<HAPKeyStore> _keyStore;
     unsigned long long _pairSetupType;
 }
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic, getter=isBLELinkConnected) BOOL bleLinkConnected; // @synthesize bleLinkConnected=_bleLinkConnected;
 @property (copy, nonatomic) NSNumber *category; // @synthesize category=_category;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (nonatomic) unsigned long long compatibilityFeatures; // @synthesize compatibilityFeatures=_compatibilityFeatures;
 @property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
 @property (readonly, weak) id<HAPAccessoryServerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
@@ -82,7 +84,7 @@
 - (BOOL)matchesSetupID:(id)arg1;
 - (BOOL)matchesSetupID:(id)arg1 serverIdentifier:(id)arg2;
 - (id)productData;
-- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)reconfirm;
 - (void)removeInternalDelegate:(id)arg1;
 - (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -93,7 +95,7 @@
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (void)tearDownAndRestablishSession;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
-- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 
 @end
 

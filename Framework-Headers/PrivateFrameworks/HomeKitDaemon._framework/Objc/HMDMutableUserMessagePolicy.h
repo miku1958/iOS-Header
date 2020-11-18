@@ -14,6 +14,8 @@
 @property BOOL requiresRemoteAccess; // @dynamic requiresRemoteAccess;
 @property unsigned long long userPrivilege; // @dynamic userPrivilege;
 
++ (id)userMessagePolicyWithHome:(id)arg1 userPrivilege:(unsigned long long)arg2 remoteAccessRequired:(BOOL)arg3;
++ (id)userMessagePolicyWithHome:(id)arg1 userPrivilege:(unsigned long long)arg2 remoteAccessRequired:(BOOL)arg3 requiresCameraStreamingAccess:(BOOL)arg4;
 
 @end
 

@@ -14,10 +14,12 @@
     double _dayViewHourScale;
     double _weekViewHourScale;
     long long _weekViewFirstVisibleSecond;
+    long long _lastUsedNonYearView;
 }
 
 @property (nonatomic) int dayViewFirstVisibleSecond; // @synthesize dayViewFirstVisibleSecond=_dayViewFirstVisibleSecond;
 @property (nonatomic) double dayViewHourScale; // @synthesize dayViewHourScale=_dayViewHourScale;
+@property (nonatomic) long long lastUsedNonYearView; // @synthesize lastUsedNonYearView=_lastUsedNonYearView;
 @property (nonatomic) BOOL showDayAsList; // @synthesize showDayAsList=_showDayAsList;
 @property (nonatomic) BOOL showMonthAsDivided; // @synthesize showMonthAsDivided=_showMonthAsDivided;
 @property (nonatomic) long long weekViewFirstVisibleSecond; // @synthesize weekViewFirstVisibleSecond=_weekViewFirstVisibleSecond;

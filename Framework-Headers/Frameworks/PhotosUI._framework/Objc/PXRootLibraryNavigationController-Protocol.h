@@ -7,18 +7,19 @@
 #import <PhotosUI/NSObject-Protocol.h>
 #import <PhotosUI/PLCloudFeedNavigating-Protocol.h>
 
-@class NSString, NSURL, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAsset;
+@class NSObject, NSString, NSURL, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAsset;
+@protocol PLAlbumProtocol;
 
 @protocol PXRootLibraryNavigationController <NSObject, PLCloudFeedNavigating>
-- (BOOL)albumIsAvailableForNavigation:(struct NSObject *)arg1;
-- (BOOL)assetIsAvailableForNavigation:(PLManagedAsset *)arg1 inAlbum:(struct NSObject *)arg2;
+- (BOOL)albumIsAvailableForNavigation:(NSObject<PLAlbumProtocol> *)arg1;
+- (BOOL)assetIsAvailableForNavigation:(PLManagedAsset *)arg1 inAlbum:(NSObject<PLAlbumProtocol> *)arg2;
 - (BOOL)assetIsAvailableForNavigationInMoments:(PLManagedAsset *)arg1;
 - (BOOL)assetIsAvailableForNavigationInMoments:(PLManagedAsset *)arg1 refetchSectionsIfNeeded:(BOOL)arg2;
 - (BOOL)cloudFeedIsAvailableForNavigation;
 - (BOOL)commentIsAvailableForNavigation:(PLCloudSharedComment *)arg1 inAsset:(PLManagedAsset *)arg2;
 - (BOOL)contentModeIsAvailableForNavigation:(int)arg1;
-- (void)navigateToAlbum:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(void (^)(UIViewController *))arg3;
-- (void)navigateToAsset:(PLManagedAsset *)arg1 inAlbum:(struct NSObject *)arg2 animated:(BOOL)arg3;
+- (void)navigateToAlbum:(NSObject<PLAlbumProtocol> *)arg1 animated:(BOOL)arg2 completion:(void (^)(UIViewController *))arg3;
+- (void)navigateToAsset:(PLManagedAsset *)arg1 inAlbum:(NSObject<PLAlbumProtocol> *)arg2 animated:(BOOL)arg3;
 - (void)navigateToAsset:(PLManagedAsset *)arg1 openOneUp:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)navigateToCloudFeedAsset:(PLManagedAsset *)arg1 completion:(void (^)(UIViewController *))arg2;
 - (void)navigateToCloudFeedComment:(PLCloudSharedComment *)arg1 completion:(void (^)(UIViewController *))arg2;
@@ -31,8 +32,8 @@
 - (void)navigateToOneYearAgoSearch;
 - (void)navigateToPeopleAlbumAnimated:(BOOL)arg1 revealPersonWithLocalIdentifier:(NSString *)arg2 completion:(void (^)(UIViewController *))arg3;
 - (void)navigateToPhotosContentBottomAnimated:(BOOL)arg1;
-- (void)navigateToRevealAlbum:(struct NSObject *)arg1 initiallyHidden:(BOOL)arg2 animated:(BOOL)arg3;
-- (void)navigateToRevealAsset:(PLManagedAsset *)arg1 inAlbum:(struct NSObject *)arg2 animated:(BOOL)arg3;
+- (void)navigateToRevealAlbum:(NSObject<PLAlbumProtocol> *)arg1 initiallyHidden:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)navigateToRevealAsset:(PLManagedAsset *)arg1 inAlbum:(NSObject<PLAlbumProtocol> *)arg2 animated:(BOOL)arg3;
 - (void)navigateToRevealCloudFeedAsset:(PLManagedAsset *)arg1 completion:(void (^)(UIViewController *))arg2;
 - (void)navigateToRevealCloudFeedComment:(PLCloudSharedComment *)arg1 completion:(void (^)(UIViewController *))arg2;
 - (void)navigateToRevealCloudFeedInvitationForAlbum:(PLCloudSharedAlbum *)arg1 completion:(void (^)(UIViewController *))arg2;

@@ -19,7 +19,7 @@
 + (id)new;
 + (id)supportedVideoFormats;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (void)createTechniques:(id)arg1;
 - (id)imageSensorSettings;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

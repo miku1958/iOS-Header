@@ -6,12 +6,14 @@
 
 #import <ActionKit/NSObject-Protocol.h>
 
-@class NSProgress, NSString, WFContentCollection;
+@class NSProgress, NSString, WFContentCollection, WFContentSource;
 @protocol WFFileStorageServiceOperation, WFUserInterface;
 
 @protocol WFFileStorageService <NSObject>
 
 @property (readonly, nonatomic) Class accessResourceClass;
+@property (readonly, nonatomic) NSString *associatedAppBundleIdentifier;
+@property (readonly, nonatomic) WFContentSource *contentSource;
 @property (readonly, nonatomic) BOOL hasPublicURLs;
 @property (readonly, nonatomic) Class objectRepresentationClass;
 @property (readonly, nonatomic) NSString *storageLocationPrefix;

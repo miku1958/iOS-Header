@@ -14,9 +14,9 @@
 - (id)currentLocation;
 - (id)init;
 - (id)previousLocation;
-- (struct NSString *)startLocationUpdatesWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (struct NSString *)startLocationUpdatesWithIdentifier:(id)arg1 wantsGroundElevation:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)stopLocationUpdatesForToken:(struct NSString *)arg1;
+- (id)startLocationUpdatesWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)startLocationUpdatesWithIdentifier:(id)arg1 wantsGroundElevation:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)stopLocationUpdatesForToken:(id)arg1;
 
 @end
 

@@ -76,7 +76,6 @@
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)recursiveSetQueryId:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

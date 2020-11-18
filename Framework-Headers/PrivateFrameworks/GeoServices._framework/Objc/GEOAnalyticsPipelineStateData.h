@@ -22,6 +22,8 @@
     double _lookaroundSessionEndTime;
     double _lookaroundSessionStartTime;
     double _lookaroundZoom;
+    NSString *_mapLaunchLaunchuri;
+    NSString *_mapLaunchSourceappid;
     double _mapViewLocationTouristTimestamp;
     GEOMapRegion *_mapViewMapRegion;
     double _mapViewZoomLevel;
@@ -160,6 +162,8 @@
         unsigned int read_deviceInputLocale:1;
         unsigned int read_deviceOutputLocale:1;
         unsigned int read_lookaroundLocation:1;
+        unsigned int read_mapLaunchLaunchuri:1;
+        unsigned int read_mapLaunchSourceappid:1;
         unsigned int read_mapViewMapRegion:1;
         unsigned int read_mapsServerMetadataSuggestionEntryDisplayeds:1;
         unsigned int read_mapsServerMetadataSuggestionEntryTappedOn:1;
@@ -186,6 +190,8 @@
         unsigned int wrote_lookaroundSessionEndTime:1;
         unsigned int wrote_lookaroundSessionStartTime:1;
         unsigned int wrote_lookaroundZoom:1;
+        unsigned int wrote_mapLaunchLaunchuri:1;
+        unsigned int wrote_mapLaunchSourceappid:1;
         unsigned int wrote_mapViewLocationTouristTimestamp:1;
         unsigned int wrote_mapViewMapRegion:1;
         unsigned int wrote_mapViewZoomLevel:1;
@@ -282,6 +288,8 @@
 @property (nonatomic) BOOL hasLookaroundSessionHadZoomAction;
 @property (nonatomic) BOOL hasLookaroundSessionStartTime;
 @property (nonatomic) BOOL hasLookaroundZoom;
+@property (readonly, nonatomic) BOOL hasMapLaunchLaunchuri;
+@property (readonly, nonatomic) BOOL hasMapLaunchSourceappid;
 @property (nonatomic) BOOL hasMapSettingsAvoidHighways;
 @property (nonatomic) BOOL hasMapSettingsAvoidTolls;
 @property (nonatomic) BOOL hasMapSettingsFindMyCarEnabled;
@@ -354,6 +362,8 @@
 @property (nonatomic) BOOL lookaroundSessionHadZoomAction;
 @property (nonatomic) double lookaroundSessionStartTime;
 @property (nonatomic) double lookaroundZoom;
+@property (strong, nonatomic) NSString *mapLaunchLaunchuri;
+@property (strong, nonatomic) NSString *mapLaunchSourceappid;
 @property (nonatomic) BOOL mapSettingsAvoidHighways;
 @property (nonatomic) BOOL mapSettingsAvoidTolls;
 @property (nonatomic) BOOL mapSettingsFindMyCarEnabled;
@@ -442,6 +452,8 @@
 - (void)_readDeviceInputLocale;
 - (void)_readDeviceOutputLocale;
 - (void)_readLookaroundLocation;
+- (void)_readMapLaunchLaunchuri;
+- (void)_readMapLaunchSourceappid;
 - (void)_readMapViewMapRegion;
 - (void)_readMapsServerMetadata;
 - (void)_readMapsServerMetadataSuggestionEntryDisplayeds;

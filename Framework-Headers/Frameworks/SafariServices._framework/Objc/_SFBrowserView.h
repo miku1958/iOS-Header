@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class WKWebView, _SFBrowserToolbar, _SFCrashBanner, _SFLinkPreviewHeader, _SFNavigationBar;
+@class SFNanoDomainContainerView, WKWebView, _SFCrashBanner, _SFLinkPreviewHeader, _SFNavigationBar, _SFToolbar;
 @protocol SFBrowserViewDelegate;
 
 @interface _SFBrowserView : UIView
@@ -15,7 +15,7 @@
     BOOL _shouldUseScrollToTopView;
     BOOL _hasReceivedTouchEvents;
     UIView *_contentContainerView;
-    _SFBrowserToolbar *_toolbar;
+    _SFToolbar *_toolbar;
     _SFNavigationBar *_navigationBar;
     double _bottomBarOffset;
     double _topBarHeight;
@@ -29,6 +29,7 @@
     UIView *_quickLookDocumentView;
     double _minimalUITopOffset;
     id<SFBrowserViewDelegate> _delegate;
+    SFNanoDomainContainerView *_nanoDomainContainerView;
 }
 
 @property (nonatomic) double bottomBarOffset; // @synthesize bottomBarOffset=_bottomBarOffset;
@@ -38,7 +39,9 @@
 @property (readonly, weak, nonatomic) WKWebView *currentWebView; // @synthesize currentWebView=_currentWebView;
 @property (weak, nonatomic) id<SFBrowserViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL hasReceivedTouchEvents; // @synthesize hasReceivedTouchEvents=_hasReceivedTouchEvents;
+@property (readonly, nonatomic) BOOL isContentReadyForDisplay; // @synthesize isContentReadyForDisplay=_contentReadyForDisplay;
 @property (nonatomic) double minimalUITopOffset; // @synthesize minimalUITopOffset=_minimalUITopOffset;
+@property (strong, nonatomic) SFNanoDomainContainerView *nanoDomainContainerView; // @synthesize nanoDomainContainerView=_nanoDomainContainerView;
 @property (strong, nonatomic) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) unsigned long long navigationBarBehavior; // @synthesize navigationBarBehavior=_navigationBarBehavior;
 @property (strong, nonatomic) _SFLinkPreviewHeader *previewHeader; // @synthesize previewHeader=_previewHeader;
@@ -46,7 +49,7 @@
 @property (readonly, nonatomic) UIView *scrollToTopView; // @synthesize scrollToTopView=_scrollToTopView;
 @property (nonatomic) BOOL shouldUseScrollToTopView; // @synthesize shouldUseScrollToTopView=_shouldUseScrollToTopView;
 @property (strong, nonatomic) UIView *statusBarBackgroundView; // @synthesize statusBarBackgroundView=_statusBarBackgroundView;
-@property (strong, nonatomic) _SFBrowserToolbar *toolbar; // @synthesize toolbar=_toolbar;
+@property (strong, nonatomic) _SFToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (nonatomic) double topBarHeight; // @synthesize topBarHeight=_topBarHeight;
 
 - (void).cxx_destruct;

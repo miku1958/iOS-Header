@@ -55,6 +55,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)systemWithSystemDefinition:(CDStruct_b04166ad)arg1;
 + (id)textSystem;
++ (id)unknownSystem;
 - (void).cxx_destruct;
 - (long long)codingSystemOntologyIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;

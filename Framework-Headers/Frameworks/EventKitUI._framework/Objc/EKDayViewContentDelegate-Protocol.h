@@ -6,7 +6,7 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKDayViewContent, EKEvent, NSArray;
+@class EKDayOccurrenceView, EKDayViewContent, EKEvent, NSArray, UIView;
 
 @protocol EKDayViewContentDelegate <NSObject>
 - (void)dayViewContent:(EKDayViewContent *)arg1 didTapInEmptySpaceOnDay:(double)arg2;
@@ -15,6 +15,7 @@
 @optional
 - (void)dayViewContent:(EKDayViewContent *)arg1 didCreateOccurrenceViews:(NSArray *)arg2;
 - (void)dayViewContent:(EKDayViewContent *)arg1 didSelectEvent:(EKEvent *)arg2;
+- (UIView *)dayViewContent:(EKDayViewContent *)arg1 selectedCopyViewForOccurrenceView:(EKDayOccurrenceView *)arg2;
 - (void)dayViewContentDidLayout:(EKDayViewContent *)arg1;
 - (void)occurrencePressed:(EKEvent *)arg1 onDay:(double)arg2;
 @end

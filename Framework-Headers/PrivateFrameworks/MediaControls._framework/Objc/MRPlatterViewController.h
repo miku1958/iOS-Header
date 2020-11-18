@@ -14,12 +14,13 @@
 #import <MediaControls/MediaControlsEndpointControllerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsMasterVolumeSliderDelegate-Protocol.h>
 #import <MediaControls/MediaControlsPanelViewControllerDelegate-Protocol.h>
+#import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 #import <MediaControls/_MCStateDumpPropertyListTransformable-Protocol.h>
 
 @class FBSDisplayLayoutMonitor, MPAVEndpointRoute, MPAVRoutingViewController, MPArtworkCatalog, MPMediaControls, MPVolumeGroupSliderCoordinator, MRMediaControlsVideoPickerFooterView, MRMediaControlsVideoPickerHeaderView, MSVTimer, MTVisualStylingProvider, MediaControlsEndpointController, MediaControlsHeaderView, MediaControlsLanguageOptionsViewController, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsTransitioningDelegate, MediaControlsVolumeContainerView, NSArray, NSMutableArray, NSString, SFShareAudioViewController, UIView;
 @protocol MRPlatterViewControllerDelegate;
 
-@interface MRPlatterViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsActionsDelegate, MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate, MediaControlsMasterVolumeSliderDelegate, MediaControlsPanelViewControllerDelegate, MTVisualStylingRequiring, _MCStateDumpPropertyListTransformable, MediaControlsCollectionItemViewController>
+@interface MRPlatterViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsActionsDelegate, MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate, MediaControlsMasterVolumeSliderDelegate, MediaControlsPanelViewControllerDelegate, MTVisualStylingRequiring, _MCStateDumpPropertyListTransformable, UIGestureRecognizerDelegate, MediaControlsCollectionItemViewController>
 {
     unsigned long long _stateHandle;
     MTVisualStylingProvider *_visualStylingProvider;
@@ -138,7 +139,6 @@
 - (id)_tvMediaRemoteIdentifier;
 - (void)_updateConfiguration;
 - (void)_updateControlCenterMetadata:(id)arg1 sectionMetadata:(id)arg2;
-- (void)_updateExplicitTreatmentString;
 - (void)_updateHardwareVolumeButtons;
 - (void)_updateHeaderUI;
 - (void)_updateOnScreenForStyle:(long long)arg1;
@@ -156,6 +156,7 @@
 - (void)endpointControllerDidUpdateRoutingAvailability:(id)arg1;
 - (void)endpointControllerRouteDidUpdate:(id)arg1;
 - (void)footerViewButtonPressed:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)headerViewButtonPressed:(id)arg1;
 - (void)headerViewLaunchNowPlayingAppButtonPressed:(id)arg1;
 - (id)initWithActiveRouteType:(long long)arg1;

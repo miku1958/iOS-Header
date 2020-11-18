@@ -6,39 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class KTLogClient, KTPublicKeyStore, NSMutableDictionary, TransparencyManagedDataStore;
+@class KTPublicKeyStore, NSMutableDictionary, TransparencyManagedDataStore;
 
 @interface KTContextStore : NSObject
 {
     NSMutableDictionary *_contexts;
     TransparencyManagedDataStore *_dataStore;
     KTPublicKeyStore *_keyStore;
-    KTLogClient *_configClient;
 }
 
-@property (strong) KTLogClient *configClient; // @synthesize configClient=_configClient;
 @property (strong) NSMutableDictionary *contexts; // @synthesize contexts=_contexts;
 @property (strong) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (strong) KTPublicKeyStore *keyStore; // @synthesize keyStore=_keyStore;
 
 - (void).cxx_destruct;
 - (void)clearApplicationState:(id)arg1 logClient:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)configure:(CDUnknownBlockType)arg1;
 - (void)configureWithClient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)configureWithClient:(id)arg1 force:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)contextForApplication:(id)arg1 logClient:(id)arg2 fetchState:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createContextForApplication:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)createContextForTLT:(id)arg1 logClient:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)forcedConfigure:(BOOL)arg1 logClient:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithDataStore:(id)arg1 keyStore:(id)arg2 configClient:(id)arg3;
+- (id)initWithDataStore:(id)arg1 keyStore:(id)arg2;
 - (BOOL)logSharedMetrics;
-- (void)runDutyCycleConfigurationStepForActivity:(id)arg1 logClient:(id)arg2 resumptionWorkloop:(id)arg3;
-- (BOOL)runDutyCycleForActivity:(id)arg1 logClient:(id)arg2 resumptionWorkloop:(id)arg3;
+- (void)runDutyCycleConfigurationStepForActivity:(id)arg1 logClient:(id)arg2;
+- (BOOL)runDutyCycleForActivity:(id)arg1 logClient:(id)arg2;
 - (void)runDutyCycleProcessingStepForActivity:(id)arg1 context:(id)arg2 logClient:(id)arg3;
 - (id)serializeTranscripts;
+- (void)storeContext:(id)arg1 application:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryRequest:(id)arg4 queryResponse:(id)arg5 error:(id *)arg6;
 - (void)validateEnrollment:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)validatePeer:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)validateSelf:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)verifyTLTConsistencyAndGarbageCollectSTHs:(id)arg1;
 
 @end
 

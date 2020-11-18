@@ -20,6 +20,7 @@
 
 + (id)contentCategories;
 + (id)countDescription;
++ (id)itemWithObject:(id)arg1 sourceAppBundleIdentifier:(id)arg2;
 + (id)outputTypes;
 + (id)ownedTypes;
 + (id)pluralTypeDescription;

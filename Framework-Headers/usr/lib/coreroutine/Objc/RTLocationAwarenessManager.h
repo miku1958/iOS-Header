@@ -29,8 +29,8 @@
     NSDate *_scheduledHeartbeatFiringTime;
     NSDate *_scheduledRestTimerFiringTime;
     RTLocationAwarenessManagerConfig *_config;
-    struct NSMapTable *_requesterToHeartbeatBucket;
-    struct NSMapTable *_heartbeatBucketToRequesters;
+    NSMapTable *_requesterToHeartbeatBucket;
+    NSMapTable *_heartbeatBucketToRequesters;
     RTLocationManager *_locationManager;
     NSObject<OS_dispatch_source> *_heartbeatTimer;
     NSObject<OS_dispatch_source> *_restTimer;

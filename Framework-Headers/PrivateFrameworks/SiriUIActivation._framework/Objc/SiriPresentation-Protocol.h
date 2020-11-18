@@ -16,6 +16,7 @@
 
 - (void)dismiss;
 - (void)dismissWithOptions:(SiriDismissalOptions *)arg1;
+- (void)invalidate;
 - (BOOL)isEnabled;
 @end
 

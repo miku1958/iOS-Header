@@ -72,8 +72,8 @@
 - (BOOL)_prepareForPerformWithActivityType:(id)arg1 error:(id *)arg2;
 - (void)_prepareIndividualItemSourcesForActivity:(id)arg1;
 - (void)_prepareMomentShareLinkFromIndividualItemSourcesForActivity:(id)arg1;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (id)activityItemSourceForAsset:(id)arg1;
 - (void)addAssetItem:(id)arg1;
 - (void)cancel;

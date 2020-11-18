@@ -6,19 +6,17 @@
 
 #import <AdCore/ADVector.h>
 
-@class NSString;
-
 @interface ADAppVector : ADVector
 {
-    NSString *_adamID;
+    unsigned int _adamID;
 }
 
-@property (strong, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
+@property (readonly, nonatomic) unsigned int adamID; // @synthesize adamID=_adamID;
 
-- (void).cxx_destruct;
+- (id)data;
 - (id)description;
-- (id)initWith:(id)arg1 version:(id)arg2;
-- (void)parseDataString:(id)arg1;
+- (id)initWithString:(id)arg1 version:(id)arg2;
+- (id)initWithVersion:(id)arg1 header:(struct ADAppVectorHeader *)arg2 floats:(float *)arg3;
 
 @end
 

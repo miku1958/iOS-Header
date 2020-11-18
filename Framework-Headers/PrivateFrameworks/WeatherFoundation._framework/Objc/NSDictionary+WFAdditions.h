@@ -7,8 +7,11 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (WFAdditions)
++ (double)doubleValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(double)arg3;
++ (float)floatValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(float)arg3;
 + (long long)integerValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(long long)arg3;
 + (id)stringValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(id)arg3;
++ (double)timeIntervalValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(double)arg3;
 - (id)arrayForKey:(id)arg1;
 - (id)dictionaryForKey:(id)arg1;
 - (id)numberForKey:(id)arg1;

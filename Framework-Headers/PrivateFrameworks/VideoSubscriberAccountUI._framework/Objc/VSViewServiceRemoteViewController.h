@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
++ (BOOL)shouldPropagateAppearanceCustomizations;
 - (void).cxx_destruct;
 - (void)_didCancelRequest:(id)arg1;
 - (void)_didChooseAdditionalProvidersForRequest:(id)arg1;

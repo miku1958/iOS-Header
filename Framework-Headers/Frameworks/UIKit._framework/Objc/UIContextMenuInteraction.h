@@ -24,6 +24,7 @@
         BOOL willEndForConfiguration;
         BOOL styleForMenuWithConfiguration;
         BOOL accessoriesForMenuWithConfiguration;
+        BOOL failedToBeginForSecondaryClickAtLocation;
         BOOL asyncConfigurationForMenuAtLocation;
         BOOL overrideSuggestedActions;
         BOOL shouldAllowDragAfterDismiss;
@@ -43,6 +44,7 @@
     _UIContextMenuAnimator *_pendingCommitAnimator;
 }
 
+@property (readonly, nonatomic) unsigned long long _inputPrecision;
 @property (nonatomic) BOOL allowSimultaneousRecognition;
 @property (strong, nonatomic) NSMutableDictionary *configurationsByIdentifier; // @synthesize configurationsByIdentifier=_configurationsByIdentifier;
 @property (readonly, copy) NSString *debugDescription;
@@ -70,16 +72,19 @@
 - (void)_clickPresentationInteractionEnded:(id)arg1 forPresentation:(id)arg2 reason:(unsigned long long)arg3;
 - (BOOL)_clickPresentationInteractionShouldAllowDragAfterDismiss:(id)arg1;
 - (BOOL)_clickPresentationInteractionShouldAllowRapidRestart:(id)arg1;
+- (unsigned long long)_currentActivationMode;
 - (id)_delegate_configurationForMenuAtLocation:(struct CGPoint)arg1;
 - (id)_delegate_contextMenuInteractionWillDisplayForConfiguration:(id)arg1;
 - (id)_delegate_contextMenuInteractionWillEndForConfiguration:(id)arg1 presentation:(id)arg2;
+- (BOOL)_delegate_failedToBeginForSecondaryClickAtLocation:(struct CGPoint)arg1;
 - (id)_delegate_previewForDismissingForConfiguration:(id)arg1;
 - (id)_delegate_previewForHighlightingForConfiguration:(id)arg1;
 - (void)_delegate_tappedPreviewForConfiguration:(id)arg1 withAnimator:(id)arg2;
 - (void)_dragMorphDidCompleteForConfiguration:(id)arg1;
-- (id)_fulfilledConfigurationForConfiguration:(id)arg1;
+- (id)_fulfilledConfigurationForConfiguration:(id)arg1 activationMode:(unsigned long long)arg2;
 - (void)_interactionShouldBeginAtLocation:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_liveDragPreviewForConfiguration:(id)arg1 dragItem:(id)arg2;
+- (id)_overrideTargetedPreviewForCompactStyle:(id)arg1;
 - (void)_performCleanupForConfigurationWithIdentifier:(id)arg1;
 - (void)_presentMenuAtLocation:(struct CGPoint)arg1;
 - (void)_previewPlatterPresentationController:(id)arg1 beginDragWithTouch:(id)arg2;

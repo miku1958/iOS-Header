@@ -8,23 +8,33 @@
 
 #import <ARKit/ARResultData-Protocol.h>
 
-@class NSString;
+@class ARImageData, NSString;
 
 @interface ARSegmentationData : NSObject <ARResultData>
 {
     double _timestamp;
     struct __CVBuffer *_segmentationBuffer;
+    struct __CVBuffer *_confidenceBuffer;
+    long long _source;
+    struct __CVBuffer *_normalsBuffer;
+    ARImageData *_sourceImageData;
 }
 
+@property (readonly, nonatomic) struct __CVBuffer *confidenceBuffer; // @synthesize confidenceBuffer=_confidenceBuffer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct __CVBuffer *normalsBuffer; // @synthesize normalsBuffer=_normalsBuffer;
 @property (readonly, nonatomic) struct __CVBuffer *segmentationBuffer; // @synthesize segmentationBuffer=_segmentationBuffer;
+@property (readonly, nonatomic) long long source; // @synthesize source=_source;
+@property (strong, nonatomic) ARImageData *sourceImageData; // @synthesize sourceImageData=_sourceImageData;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithTimestamp:(double)arg1 segmentationBuffer:(struct __CVBuffer *)arg2;
+- (id)initWithTimestamp:(double)arg1 segmentationBuffer:(struct __CVBuffer *)arg2 confidenceBuffer:(struct __CVBuffer *)arg3 source:(long long)arg4;
 
 @end
 

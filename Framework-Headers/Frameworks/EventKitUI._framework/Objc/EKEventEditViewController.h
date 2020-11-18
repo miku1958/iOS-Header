@@ -17,6 +17,7 @@
     EKEvent *_event;
     NSString *_eventId;
     BOOL _completedWithAction;
+    BOOL _ignoreUnsavedChanges;
     int _transitionForModalViewPresentation;
     id<EKEventEditViewDelegate> _editViewDelegate;
     EKEventEditor *_editor;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) EKEvent *event;
 @property (strong, nonatomic) EKEventStore *eventStore;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreUnsavedChanges; // @synthesize ignoreUnsavedChanges=_ignoreUnsavedChanges;
 @property (nonatomic) BOOL scrollToNotes;
 @property (nonatomic) BOOL showAttachments;
 @property (strong, nonatomic) EKEventEditViewController *strongSelf; // @synthesize strongSelf=_strongSelf;
@@ -54,6 +56,7 @@
 - (void)cancelEditing;
 - (void)cancelEditingWithDelegateNotification:(BOOL)arg1 forceCancel:(BOOL)arg2;
 - (void)completeAndSave;
+- (void)completeAndSaveWithContinueBlock:(CDUnknownBlockType)arg1;
 - (id)confirmDismissAlertController;
 - (void)dealloc;
 - (void)editor:(id)arg1 didCompleteWithAction:(long long)arg2;
@@ -73,8 +76,8 @@
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 - (BOOL)willPresentDialogOnSave;
 
 @end

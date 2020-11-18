@@ -6,12 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectID, NSString, NSXPCConnection, PLPhotoLibrary;
+#import <Photos/PLTrackableRequest-Protocol.h>
 
-@interface PHAvailabilityRequest : NSObject
+@class NSManagedObjectID, NSString, NSXPCConnection, PLPhotoLibrary;
+@protocol PLTrackableRequestDelegate;
+
+@interface PHAvailabilityRequest : NSObject <PLTrackableRequest>
 {
     _Atomic BOOL _isCancelled;
     PLPhotoLibrary *_photoLibrary;
+    id<PLTrackableRequestDelegate> _delegate;
     NSManagedObjectID *_assetObjectID;
     NSString *_taskIdentifier;
     unsigned long long _signpostID;
@@ -20,6 +24,7 @@
 
 @property (readonly, nonatomic) NSManagedObjectID *assetObjectID; // @synthesize assetObjectID=_assetObjectID;
 @property (strong, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
+@property (weak) id<PLTrackableRequestDelegate> delegate;
 @property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property (readonly, copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;

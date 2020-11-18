@@ -15,6 +15,7 @@
     NSNumber *_payloadAllowMusicService;
     NSNumber *_payloadAllowRadioService;
     NSNumber *_payloadAllowMusicArtistActivity;
+    NSNumber *_payloadAllowMusicVideos;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,12 +23,14 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *payloadAllowMusicArtistActivity; // @synthesize payloadAllowMusicArtistActivity=_payloadAllowMusicArtistActivity;
 @property (copy, nonatomic) NSNumber *payloadAllowMusicService; // @synthesize payloadAllowMusicService=_payloadAllowMusicService;
+@property (copy, nonatomic) NSNumber *payloadAllowMusicVideos; // @synthesize payloadAllowMusicVideos=_payloadAllowMusicVideos;
 @property (copy, nonatomic) NSNumber *payloadAllowRadioService; // @synthesize payloadAllowRadioService=_payloadAllowRadioService;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
 + (id)buildWithIdentifier:(id)arg1 withAllowMusicService:(id)arg2 withAllowRadioService:(id)arg3 withAllowMusicArtistActivity:(id)arg4;
++ (id)buildWithIdentifier:(id)arg1 withAllowMusicService:(id)arg2 withAllowRadioService:(id)arg3 withAllowMusicArtistActivity:(id)arg4 withAllowMusicVideos:(id)arg5;
 + (id)profileType;
 + (id)registeredClassName;
 + (id)registeredIdentifier;

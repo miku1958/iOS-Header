@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface SFNavigationBarMetrics : NSObject
 {
+    BOOL _usesNavigationBarHeightForSheetPresentation;
     UITraitCollection *_traitCollectionForFontMetrics;
     double _minimumBarHeight;
     UIFont *_defaultLabelFont;
@@ -55,12 +56,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_contentSizeCategoryWithPreferredCategory:(id)arg1;
+- (BOOL)_updateForContentSizeCategory:(id)arg1;
+- (BOOL)_updateForPresentationSemanticContext:(long long)arg1;
 - (void)_updateMetrics;
 - (double)barHeightWithBarMetricsCategory:(long long)arg1;
 - (id)init;
 - (double)squishHeightQuantizationOffsetWithBarMetricsCategory:(long long)arg1;
-- (BOOL)updateForContentSizeCategory:(id)arg1;
 - (BOOL)updateForStatusBarHeight:(double)arg1;
+- (BOOL)updateForTraitCollection:(id)arg1;
 
 @end
 

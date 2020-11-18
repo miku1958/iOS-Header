@@ -6,7 +6,7 @@
 
 #import <AssetsLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSString;
 
 @protocol PLPhotoLibraryPathManagerDCIM <NSObject>
 - (NSString *)assetBaseFilenameForAdjustmentFilePath:(NSString *)arg1;
@@ -21,7 +21,7 @@
 - (NSString *)iTunesSyncedFaceDataDirectory;
 - (NSString *)legacyMemoriesRelatedSnapshotDirectory;
 - (NSString *)legacyModelInterestDatabasePath;
-- (NSDictionary *)pathsGroupedByAssetBasePathFromFilePaths:(NSArray *)arg1;
+- (NSDictionary *)pathsGroupedByAssetBasePathFromFilePaths:(NSArray *)arg1 populateInvalidAdjustmentPaths:(NSMutableArray *)arg2;
 - (NSString *)persistedAlbumDataDirectoryCreateIfNeeded:(BOOL)arg1 error:(id *)arg2;
 - (NSString *)photoMetadataDirectoryForMediaInMainDirectory:(NSString *)arg1;
 @end

@@ -19,6 +19,7 @@
     NSArray *_linkActions;
     _WKActivatedElementInfo *_activatedElementInfo;
     NSURL *_URL;
+    struct CGSize _preferredDocumentContentSize;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
@@ -29,6 +30,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *linkActions; // @synthesize linkActions=_linkActions;
+@property (nonatomic) struct CGSize preferredDocumentContentSize; // @synthesize preferredDocumentContentSize=_preferredDocumentContentSize;
+@property (readonly, nonatomic) BOOL showingLinkPreview;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -37,13 +40,13 @@
 - (void)_removeViewController:(id)arg1;
 - (void)_setUpLinkPreviewViewControllerIfNeeded;
 - (void)_setUpTextPreviewViewControllerIfNeeded;
+- (void)_updatePreferredContentSize;
 - (id)initWithURL:(id)arg1;
 - (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(BOOL)arg2;
-- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
-- (id)previewActionItems;
+- (void)linkPreviewHeaderBoundsDidChange:(id)arg1;
 - (void)setLinkPreviewEnabled:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

@@ -15,7 +15,8 @@
     BOOL _showCMMInvitations;
     BOOL _showEditSuggestions;
     BOOL _showRecentInterestSuggestions;
-    BOOL _showQuestions;
+    BOOL _showPeopleQuestions;
+    BOOL _showSurveyQuestions;
     BOOL _showFooter;
     BOOL _showSampleSuggestionGadgets;
     BOOL _showVerticalSampleGadgets;
@@ -25,7 +26,6 @@
     BOOL _allowGIFPlayback;
     BOOL _useMockData;
     BOOL _forceDisplayReportJunk;
-    BOOL _navigateToActivityPost;
     BOOL _forcePortraitBias;
     BOOL _useSquareSharedAlbumActivity;
     BOOL _disableSharedAlbumTopMargin;
@@ -50,7 +50,6 @@
 @property (nonatomic) unsigned long long maxMemoriesToFetch; // @synthesize maxMemoriesToFetch=_maxMemoriesToFetch;
 @property (nonatomic) unsigned long long maxSimultaneousVideoCount; // @synthesize maxSimultaneousVideoCount=_maxSimultaneousVideoCount;
 @property (nonatomic) double minimumVisibilityForVideoPlayback; // @synthesize minimumVisibilityForVideoPlayback=_minimumVisibilityForVideoPlayback;
-@property (nonatomic) BOOL navigateToActivityPost; // @synthesize navigateToActivityPost=_navigateToActivityPost;
 @property (nonatomic) BOOL showCMMInvitations; // @synthesize showCMMInvitations=_showCMMInvitations;
 @property (nonatomic) BOOL showCMMSuggestions; // @synthesize showCMMSuggestions=_showCMMSuggestions;
 @property (nonatomic) BOOL showEditSuggestions; // @synthesize showEditSuggestions=_showEditSuggestions;
@@ -59,10 +58,11 @@
 @property (nonatomic) BOOL showForYouSettingsAtTopLevel; // @synthesize showForYouSettingsAtTopLevel=_showForYouSettingsAtTopLevel;
 @property (nonatomic) BOOL showHorizontalGadget; // @synthesize showHorizontalGadget=_showHorizontalGadget;
 @property (nonatomic) BOOL showMemories; // @synthesize showMemories=_showMemories;
-@property (nonatomic) BOOL showQuestions; // @synthesize showQuestions=_showQuestions;
+@property (nonatomic) BOOL showPeopleQuestions; // @synthesize showPeopleQuestions=_showPeopleQuestions;
 @property (nonatomic) BOOL showRecentInterestSuggestions; // @synthesize showRecentInterestSuggestions=_showRecentInterestSuggestions;
 @property (nonatomic) BOOL showSampleSuggestionGadgets; // @synthesize showSampleSuggestionGadgets=_showSampleSuggestionGadgets;
 @property (nonatomic) BOOL showSharedAlbumActivity; // @synthesize showSharedAlbumActivity=_showSharedAlbumActivity;
+@property (nonatomic) BOOL showSurveyQuestions; // @synthesize showSurveyQuestions=_showSurveyQuestions;
 @property (nonatomic) BOOL showVerticalSampleGadgets; // @synthesize showVerticalSampleGadgets=_showVerticalSampleGadgets;
 @property (nonatomic) long long sortingAlgorithm; // @synthesize sortingAlgorithm=_sortingAlgorithm;
 @property (nonatomic) BOOL useCachedEditRenders; // @synthesize useCachedEditRenders=_useCachedEditRenders;

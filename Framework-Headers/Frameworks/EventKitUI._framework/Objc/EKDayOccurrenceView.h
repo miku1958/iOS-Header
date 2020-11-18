@@ -8,11 +8,12 @@
 
 #import <EventKitUI/EKDayOccurrenceTravelTimeViewMetricsDelegate-Protocol.h>
 #import <EventKitUI/NSCopying-Protocol.h>
+#import <EventKitUI/_UICursorInteractionDelegate-Protocol.h>
 
-@class EKDayOccurrenceState, EKDayOccurrenceTravelTimeView, EKEvent, NSObject, NSString, UIColor, UIImageView;
+@class EKDayOccurrenceState, EKDayOccurrenceTravelTimeView, EKEvent, NSObject, NSString, UIColor, UIImageView, _UICursorInteraction;
 @protocol EKDayOccurrenceViewDelegate;
 
-@interface EKDayOccurrenceView : UIView <NSCopying, EKDayOccurrenceTravelTimeViewMetricsDelegate>
+@interface EKDayOccurrenceView : UIView <_UICursorInteractionDelegate, NSCopying, EKDayOccurrenceTravelTimeViewMetricsDelegate>
 {
     double _visibleHeight;
     UIImageView *_eventBackgroundView;
@@ -35,6 +36,7 @@
     EKDayOccurrenceState *_currentImageState;
     unsigned long long _invalidatedRequestOptions;
     UIColor *_stagedBackgroundColor;
+    _UICursorInteraction *_cursorInteraction;
     BOOL _isVibrant;
     BOOL _visibleHeightLocked;
     BOOL _selected;
@@ -54,6 +56,7 @@
     BOOL _birthday;
     BOOL _showsTravelTime;
     BOOL _reduceLayoutProcessingForAnimation;
+    BOOL _pointerInteractionDisabled;
     BOOL _touchesAreBeingTracked;
     NSObject<EKDayOccurrenceViewDelegate> *_delegate;
     EKDayOccurrenceView *_selectedCopy;
@@ -94,6 +97,7 @@
 @property (strong, nonatomic) EKEvent *occurrence; // @synthesize occurrence=_occurrence;
 @property (nonatomic) long long occurrenceBackgroundStyle; // @synthesize occurrenceBackgroundStyle=_occurrenceBackgroundStyle;
 @property (nonatomic) struct UIEdgeInsets padding;
+@property (nonatomic) BOOL pointerInteractionDisabled; // @synthesize pointerInteractionDisabled=_pointerInteractionDisabled;
 @property (nonatomic) BOOL reduceLayoutProcessingForAnimation; // @synthesize reduceLayoutProcessingForAnimation=_reduceLayoutProcessingForAnimation;
 @property (nonatomic) long long routingMode;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
@@ -152,6 +156,7 @@
 - (id)_newResizeHandleView;
 - (void)_removeTravelTimeSubviews;
 - (void)_resetContentViewPosition;
+- (void)_setUpInteraction;
 - (void)_updateColors;
 - (void)_updateContentImageViewIfNeeded;
 - (void)_updateContentWithPayload:(id)arg1;
@@ -162,6 +167,8 @@
 - (void)bringResizeHandlesToFront;
 - (long long)compareOccurrenceViewForTabOrdering:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)cursorInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)dealloc;
 - (void)didMoveToSuperview;
 - (int)dragTypeFromPoint:(struct CGPoint)arg1;

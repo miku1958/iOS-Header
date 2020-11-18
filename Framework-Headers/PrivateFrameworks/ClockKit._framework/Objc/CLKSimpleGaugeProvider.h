@@ -25,8 +25,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)needsTimerUpdates;
 - (double)progressFractionForNow:(id)arg1;
-- (struct NSNumber *)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopUpdatesForToken:(struct NSNumber *)arg1;
+- (id)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopUpdatesForToken:(id)arg1;
 - (void)validate;
 
 @end

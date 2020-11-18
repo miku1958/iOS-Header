@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
-- (id)initWithFont:(struct UIFont *)arg1;
+- (id)initWithFont:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -55,6 +55,8 @@
 + (id)canvasSelectionWithInfos:(id)arg1 andContainer:(id)arg2;
 + (BOOL)physicalKeyboardIsSender:(id)arg1;
 + (CDUnknownBlockType)spatialInfoComparator;
+- (BOOL)allowAutomaticTextEditingToBeginWithDifferentEditor;
+- (void)beginAutomaticTextEditingIfNeededForPoint:(struct CGPoint)arg1;
 - (BOOL)canAddOrShowComment;
 - (BOOL)canCopyStyle;
 - (BOOL)canDeleteComment;

@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
 @property (readonly, nonatomic) CALayer *punchOutRootLayer;
 @property (readonly, nonatomic) NSArray *punchOutRootLayers;
+@property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *volumeAudioCategory;
 @property (strong, nonatomic) MediaControlsVolumeController *volumeController; // @synthesize volumeController=_volumeController;
@@ -59,6 +60,7 @@
 - (void)mediaControlsVolumeController:(id)arg1 didUpdateSplitRoute:(BOOL)arg2;
 - (struct CGRect)primaryFrame;
 - (struct CGRect)secondaryFrame;
+- (BOOL)shouldExpandModuleOnTouch:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -17,7 +17,6 @@
 
 + (Class)_contentViewClass;
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
 
 @end

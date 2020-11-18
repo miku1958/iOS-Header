@@ -14,7 +14,7 @@
 + (id)crAddressKindPhoneNumberString;
 + (Class)crRecentContactsLibraryClass;
 + (id)crRecentsDomainCalendarString;
-+ (struct NSObject *)recentForContactWithAddress:(id)arg1 name:(id)arg2 kind:(id)arg3;
++ (id)recentForContactWithAddress:(id)arg1 name:(id)arg2 kind:(id)arg3;
 + (BOOL)recordRecentForContactWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3;
 + (void)recordRecentWithAddress:(id)arg1 name:(id)arg2 kind:(id)arg3;
 

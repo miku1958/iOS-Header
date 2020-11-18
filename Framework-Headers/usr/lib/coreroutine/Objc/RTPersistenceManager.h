@@ -72,7 +72,7 @@
 - (void)persistenceContext:(id)arg1 encounteredError:(id)arg2;
 - (BOOL)persistenceContextPerformedSave:(id)arg1 error:(id *)arg2;
 - (BOOL)persistenceContextShouldExecute:(id)arg1;
-- (id)persistenceContextWithOptions:(long long)arg1;
+- (id)persistenceContextWithOptions:(unsigned long long)arg1;
 - (id)persistenceStoreConfigurations;
 - (id)persistenceStoreForType:(unsigned long long)arg1;
 - (void)setContainer:(id)arg1;

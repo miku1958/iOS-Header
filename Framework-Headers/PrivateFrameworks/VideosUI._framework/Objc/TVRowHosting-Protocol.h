@@ -10,7 +10,7 @@
 
 @protocol TVRowHosting <NSObject>
 
-@property (readonly, nonatomic) BOOL shouldBindRowsTogether;
+@property (nonatomic, readonly) BOOL shouldBindRowsTogether;
 
 - (NSArray *)rowMetricsForExpectedWidth:(double)arg1 firstItemRowIndex:(long long *)arg2;
 

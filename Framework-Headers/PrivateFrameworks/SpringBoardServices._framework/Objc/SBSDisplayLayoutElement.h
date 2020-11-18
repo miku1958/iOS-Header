@@ -18,6 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutRole;
+@property (nonatomic, getter=sb_isTransitioning, setter=sb_setTransitioning:) BOOL sb_transitioning;
 @property (readonly, nonatomic, getter=isSpringBoardElement) BOOL springBoardElement;
 @property (readonly) Class superclass;
 

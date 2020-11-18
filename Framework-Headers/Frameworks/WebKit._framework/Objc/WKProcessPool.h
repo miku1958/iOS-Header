@@ -9,7 +9,7 @@
 #import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString, WKGeolocationProviderIOS, _WKProcessPoolConfiguration;
+@class NSString, NSURL, WKGeolocationProviderIOS, _WKProcessPoolConfiguration;
 @protocol _WKAutomationDelegate, _WKDownloadDelegate, _WKGeolocationCoreLocationProvider;
 
 @interface WKProcessPool : NSObject <WKObject, NSSecureCoding>
@@ -29,6 +29,7 @@
 @property (nonatomic, setter=_setCoreLocationProvider:) id<_WKGeolocationCoreLocationProvider> _coreLocationProvider;
 @property (weak, nonatomic, setter=_setDownloadDelegate:) id<_WKDownloadDelegate> _downloadDelegate;
 @property (readonly) WKGeolocationProviderIOS *_geolocationProvider;
+@property (copy, nonatomic, setter=_setJavaScriptConfigurationDirectory:) NSURL *_javaScriptConfigurationDirectory;
 @property (nonatomic, getter=_isStorageAccessAPIEnabled, setter=_setStorageAccessAPIEnabled:) BOOL _storageAccessAPIEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -44,11 +45,13 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_addSupportedPlugin:(id)arg1 named:(id)arg2 withMimeTypes:(id)arg3 withExtensions:(id)arg4;
+- (void)_allowAnyTLSCertificateForWebSocketTesting;
 - (void)_automationCapabilitiesDidChange;
-- (void)_clearPermanentCredentialsForProtectionSpace:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_clearPermanentCredentialsForProtectionSpace:(id)arg1;
 - (void)_clearSupportedPlugins;
-- (void)_disableServiceWorkerProcessTerminationDelay;
+- (void)_clearWebProcessCache;
 - (id)_downloadURLRequest:(id)arg1 originatingWebView:(id)arg2;
+- (id)_downloadURLRequest:(id)arg1 websiteDataStore:(id)arg2 originatingWebView:(id)arg3;
 - (void)_getActivePagesOriginsInWebProcessForTesting:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_hasPrewarmedWebProcess;
 - (id)_initWithConfiguration:(id)arg1;
@@ -64,8 +67,9 @@
 - (unsigned long long)_processCacheCapacity;
 - (unsigned long long)_processCacheSize;
 - (void)_registerURLSchemeAsCanDisplayOnlyIfCanRequest:(id)arg1;
-- (void)_registerURLSchemeServiceWorkersCanHandle:(id)arg1;
 - (id)_resumeDownloadFromData:(id)arg1 path:(id)arg2 originatingWebView:(id)arg3;
+- (id)_resumeDownloadFromData:(id)arg1 websiteDataStore:(id)arg2 path:(id)arg3 originatingWebView:(id)arg4;
+- (void)_seedResourceLoadStatisticsForTestingWithFirstParty:(id)arg1 thirdParty:(id)arg2 shouldScheduleNotification:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_sendNetworkProcessDidResume;
 - (void)_sendNetworkProcessWillSuspendImminently;
 - (unsigned long long)_serviceWorkerProcessCount;
@@ -76,10 +80,11 @@
 - (void)_setCookieAcceptPolicy:(unsigned long long)arg1;
 - (void)_setObject:(id)arg1 forBundleParameter:(id)arg2;
 - (void)_setObjectsForBundleParametersWithDictionary:(id)arg1;
+- (void)_setUseSeparateServiceWorkerProcess:(BOOL)arg1;
 - (void)_syncNetworkProcessCookies;
 - (void)_synthesizeAppIsBackground:(BOOL)arg1;
 - (void)_terminateNetworkProcess;
-- (void)_terminateServiceWorkerProcesses;
+- (void)_terminateServiceWorkers;
 - (void)_warmInitialProcess;
 - (unsigned long long)_webPageContentProcessCount;
 - (unsigned long long)_webProcessCount;

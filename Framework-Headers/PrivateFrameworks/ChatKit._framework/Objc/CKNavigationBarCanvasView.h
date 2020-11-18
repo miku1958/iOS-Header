@@ -69,6 +69,7 @@
 + (double)preferredLandscapeHeightForCompactWidth;
 + (double)preferredLandscapeHeightForRegularWidth;
 - (void).cxx_destruct;
+- (void)_addLaserEffectToButton:(id)arg1;
 - (struct CGRect)_calculateFrameForButtonPositionType:(long long)arg1 shouldOffset:(BOOL)arg2;
 - (BOOL)_canShowAvatarView;
 - (void)_setupButtonContainer;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgStateApplicationIdentifier, GEOLogMsgStateCarPlay, GEOLogMsgStateDetailLookAroundLog, GEOLogMsgStateDeviceBase, GEOLogMsgStateDeviceConnection, GEOLogMsgStateDeviceIdentifier, GEOLogMsgStateDeviceLocale, GEOLogMsgStateDeviceSettings, GEOLogMsgStateExperiments, GEOLogMsgStateExtension, GEOLogMsgStateLookAroundView, GEOLogMsgStateMapRestore, GEOLogMsgStateMapSettings, GEOLogMsgStateMapUI, GEOLogMsgStateMapUIShown, GEOLogMsgStateMapView, GEOLogMsgStateMapViewLocation, GEOLogMsgStateMapsServer, GEOLogMsgStateMuninResource, GEOLogMsgStateNavigation, GEOLogMsgStatePairedDevice, GEOLogMsgStatePlaceCard, GEOLogMsgStatePlaceRequest, GEOLogMsgStateRealtimeTrafficProbe, GEOLogMsgStateRoute, GEOLogMsgStateSuggestions, GEOLogMsgStateSummaryLookAroundLog, GEOLogMsgStateTileSet, GEOLogMsgStateTransit, GEOLogMsgStateUserSession, NSString, PBDataReader;
+@class GEOLogMsgStateApplicationIdentifier, GEOLogMsgStateCarPlay, GEOLogMsgStateDetailLookAroundLog, GEOLogMsgStateDeviceBase, GEOLogMsgStateDeviceConnection, GEOLogMsgStateDeviceIdentifier, GEOLogMsgStateDeviceLocale, GEOLogMsgStateDeviceSettings, GEOLogMsgStateExperiments, GEOLogMsgStateExtension, GEOLogMsgStateLookAroundView, GEOLogMsgStateMapLaunch, GEOLogMsgStateMapRestore, GEOLogMsgStateMapSettings, GEOLogMsgStateMapUI, GEOLogMsgStateMapUIShown, GEOLogMsgStateMapView, GEOLogMsgStateMapViewLocation, GEOLogMsgStateMapsServer, GEOLogMsgStateMuninResource, GEOLogMsgStateNavigation, GEOLogMsgStatePairedDevice, GEOLogMsgStatePlaceCard, GEOLogMsgStatePlaceRequest, GEOLogMsgStateRealtimeTrafficProbe, GEOLogMsgStateRoute, GEOLogMsgStateSuggestions, GEOLogMsgStateSummaryLookAroundLog, GEOLogMsgStateTileSet, GEOLogMsgStateTransit, GEOLogMsgStateUserSession, NSString, PBDataReader;
 
 @interface GEOLogMsgState : PBCodable <NSCopying>
 {
@@ -24,6 +24,7 @@
     GEOLogMsgStateExperiments *_experiments;
     GEOLogMsgStateExtension *_extension;
     GEOLogMsgStateLookAroundView *_lookAroundView;
+    GEOLogMsgStateMapLaunch *_mapLaunch;
     GEOLogMsgStateMapRestore *_mapRestore;
     GEOLogMsgStateMapSettings *_mapSettings;
     GEOLogMsgStateMapUIShown *_mapUiShown;
@@ -61,6 +62,7 @@
         unsigned int read_experiments:1;
         unsigned int read_extension:1;
         unsigned int read_lookAroundView:1;
+        unsigned int read_mapLaunch:1;
         unsigned int read_mapRestore:1;
         unsigned int read_mapSettings:1;
         unsigned int read_mapUiShown:1;
@@ -92,6 +94,7 @@
         unsigned int wrote_experiments:1;
         unsigned int wrote_extension:1;
         unsigned int wrote_lookAroundView:1;
+        unsigned int wrote_mapLaunch:1;
         unsigned int wrote_mapRestore:1;
         unsigned int wrote_mapSettings:1;
         unsigned int wrote_mapUiShown:1;
@@ -137,6 +140,7 @@
 @property (readonly, nonatomic) BOOL hasExperiments;
 @property (readonly, nonatomic) BOOL hasExtension;
 @property (readonly, nonatomic) BOOL hasLookAroundView;
+@property (readonly, nonatomic) BOOL hasMapLaunch;
 @property (readonly, nonatomic) BOOL hasMapRestore;
 @property (readonly, nonatomic) BOOL hasMapSettings;
 @property (readonly, nonatomic) BOOL hasMapUi;
@@ -159,6 +163,7 @@
 @property (readonly, nonatomic) BOOL hasTransit;
 @property (readonly, nonatomic) BOOL hasUserSession;
 @property (strong, nonatomic) GEOLogMsgStateLookAroundView *lookAroundView;
+@property (strong, nonatomic) GEOLogMsgStateMapLaunch *mapLaunch;
 @property (strong, nonatomic) GEOLogMsgStateMapRestore *mapRestore;
 @property (strong, nonatomic) GEOLogMsgStateMapSettings *mapSettings;
 @property (strong, nonatomic) GEOLogMsgStateMapUI *mapUi;
@@ -195,6 +200,7 @@
 - (void)_readExperiments;
 - (void)_readExtension;
 - (void)_readLookAroundView;
+- (void)_readMapLaunch;
 - (void)_readMapRestore;
 - (void)_readMapSettings;
 - (void)_readMapUi;

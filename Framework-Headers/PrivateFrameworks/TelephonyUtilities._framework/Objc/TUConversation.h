@@ -60,10 +60,12 @@
 + (id)numberFormatter;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)bundleIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
+- (id)handles;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 groupUUID:(id)arg2;

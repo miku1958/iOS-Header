@@ -8,10 +8,11 @@
 
 #import <HomeKitDaemon/NSMutableCopying-Protocol.h>
 
-@class HMDHome;
+@class HMDHome, NSUUID;
 
 @interface HMDUserMessagePolicy : HMFMessagePolicy <NSMutableCopying>
 {
+    NSUUID *_homeUUID;
     unsigned long long _userPrivilege;
     BOOL _requiresRemoteAccess;
     BOOL _requiresCameraStreamingAccess;
@@ -23,12 +24,13 @@
 @property (readonly) BOOL requiresRemoteAccess; // @synthesize requiresRemoteAccess=_requiresRemoteAccess;
 @property (readonly) unsigned long long userPrivilege; // @synthesize userPrivilege=_userPrivilege;
 
++ (id)userMessagePolicyWithHome:(id)arg1 userPrivilege:(unsigned long long)arg2 remoteAccessRequired:(BOOL)arg3;
++ (id)userMessagePolicyWithHome:(id)arg1 userPrivilege:(unsigned long long)arg2 remoteAccessRequired:(BOOL)arg3 requiresCameraStreamingAccess:(BOOL)arg4;
 - (void).cxx_destruct;
+- (id)__initWithHome:(id)arg1 userPrivilege:(unsigned long long)arg2 remoteAccessRequired:(BOOL)arg3 requiresCameraStreamingAccess:(BOOL)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithHome:(id)arg1 userPrivilege:(unsigned long long)arg2 remoteAccessRequired:(BOOL)arg3;
-- (id)initWithHome:(id)arg1 userPrivilege:(unsigned long long)arg2 remoteAccessRequired:(BOOL)arg3 requiresCameraStreamingAccess:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

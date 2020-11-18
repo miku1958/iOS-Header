@@ -6,37 +6,23 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <HealthRecordsUI/HKConceptStoreObserver-Protocol.h>
-#import <HealthRecordsUI/HKHealthRecordsStoreIngestionStateListener-Protocol.h>
-#import <HealthRecordsUI/WDMedicalRecordCountProviderObserver-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC15HealthRecordsUI27InternalStateViewController : UITableViewController <HKHealthRecordsStoreIngestionStateListener, HKConceptStoreObserver, WDMedicalRecordCountProviderObserver>
+@interface _TtC15HealthRecordsUI27InternalStateViewController : UITableViewController
 {
-    MISSING_TYPE *supportedCategories;
-    MISSING_TYPE *currentIngestionState;
-    MISSING_TYPE *currentIndexingState;
+    MISSING_TYPE *dataProvider;
+    MISSING_TYPE *sections;
 }
 
 - (void).cxx_destruct;
-- (void)conceptStore:(id)arg1 indexManagerDidChangeState:(unsigned long long)arg2;
 - (void)dealloc;
-- (void)healthRecordsStore:(id)arg1 ingestionStateDidUpdateTo:(long long)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
-- (void)medicalRecordCountProvider:(id)arg1 didUpdateCountForCategories:(id)arg2;
-- (void)medicalRecordCountProvider:(id)arg1 didUpdateCountForSampleTypes:(id)arg2;
-- (void)medicalRecordCountProviderDidUpdateAllRecordsCount:(id)arg1;
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

@@ -25,6 +25,7 @@
 @property (weak, nonatomic) id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
 @property (nonatomic) unsigned int contextId; // @synthesize contextId=_contextId;
 @property (nonatomic) BOOL deniesDirectAppConnection; // @synthesize deniesDirectAppConnection=_deniesDirectAppConnection;
+@property (readonly, nonatomic) unsigned int localHostingWindowContextId;
 @property (nonatomic) unsigned int machPort; // @synthesize machPort=_machPort;
 @property (nonatomic) BOOL onClientSide; // @synthesize onClientSide=_onClientSide;
 @property (weak, nonatomic) id<AXRemoteElementChildrenDelegate> remoteChildrenDelegate; // @synthesize remoteChildrenDelegate=_remoteChildrenDelegate;
@@ -47,6 +48,8 @@
 - (BOOL)_accessibilityIsGroupedParent;
 - (id)_accessibilityLastElement;
 - (id)_accessibilityResponderElement;
+- (void)_accessibilitySetFocusOnElement:(BOOL)arg1;
+- (BOOL)_accessibilitySetNativeFocus;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;

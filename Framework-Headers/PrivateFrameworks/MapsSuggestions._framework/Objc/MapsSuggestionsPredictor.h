@@ -31,16 +31,17 @@
 - (void)_closeConnection;
 - (void)_initCloseTimerIfNecessary;
 - (BOOL)_openConnectionIfNecessary;
+- (void)_overrideTempPredictedTransportModeForCarPlay:(id)arg1;
 - (void)_scheduleCloseConnection;
 - (void)_unscheduleCloseConnection;
 - (void)cancelCapturingAnalytics;
-- (void)captureActualTransportationMode:(int)arg1 originMapItem:(struct GEOMapItemStorage *)arg2 destinationMapItem:(struct GEOMapItemStorage *)arg3;
+- (void)captureActualTransportationMode:(int)arg1 originMapItem:(id)arg2 destinationMapItem:(id)arg3;
 - (void)capturePredictedTransportationMode:(int)arg1;
 - (void)dealloc;
 - (id)init;
 - (BOOL)predictedTransportModeForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
-- (BOOL)predictedTransportModeForDestinationMapItem:(struct GEOMapItemStorage *)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)storeSignalPack:(id)arg1 forMapItem:(struct GEOMapItemStorage *)arg2;
+- (BOOL)predictedTransportModeForDestinationMapItem:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)storeSignalPack:(id)arg1 forMapItem:(id)arg2 andEntry:(id)arg3;
 
 @end
 

@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassroomKit/CRKCloudStoringSubItem-Protocol.h>
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
 @class NSData, NSDate, NSString;
 
-@interface CRKPrivateIdentity : NSObject <CRKCloudStoringSubItem, NSSecureCoding>
+@interface CRKPrivateIdentity : NSObject <NSSecureCoding>
 {
     NSData *_identityPersistentId;
     NSData *_stagedIdentityPersistentId;
@@ -21,36 +20,24 @@
 }
 
 @property (copy, nonatomic) NSString *commonNamePrefix; // @synthesize commonNamePrefix=_commonNamePrefix;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *identityExpirationDate; // @synthesize identityExpirationDate=_identityExpirationDate;
 @property (strong, nonatomic) NSData *identityPersistentId; // @synthesize identityPersistentId=_identityPersistentId;
 @property (strong, nonatomic) NSDate *stagedIdentityExpirationDate; // @synthesize stagedIdentityExpirationDate=_stagedIdentityExpirationDate;
 @property (strong, nonatomic) NSData *stagedIdentityPersistentId; // @synthesize stagedIdentityPersistentId=_stagedIdentityPersistentId;
-@property (readonly) Class superclass;
 
-+ (id)addIdentityToKeychainFromCertificateData:(id)arg1 privateKeyData:(id)arg2;
 + (id)commonNameWithPrefix:(id)arg1;
 + (id)freshPrivateIdentityWithCommonNamePrefix:(id)arg1;
-+ (id)instanceWithParentObject:(id)arg1 keyValue:(id)arg2;
-+ (id)instanceWithRecord:(id)arg1;
 + (id)keychainGroup;
 + (id)makeIdentityWithCommonName:(id)arg1;
-+ (id)recordType;
-+ (id)skeletonInstance;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)applyFieldsToRecord:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryValue;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithIdentityPersistentId:(id)arg1 stagedIdentityPersistentId:(id)arg2 commonNamePrefix:(id)arg3;
-- (BOOL)isChangedFrom:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)recordName;
 - (BOOL)refreshIdentities;
 
 @end

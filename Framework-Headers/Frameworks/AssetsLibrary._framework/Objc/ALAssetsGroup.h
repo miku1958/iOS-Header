@@ -25,7 +25,7 @@
 - (void)enumerateAssetsAtIndexes:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateAssetsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateAssetsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)initWithPhotoAlbum:(struct NSObject *)arg1 library:(id)arg2 type:(unsigned long long)arg3;
+- (id)initWithPhotoAlbum:(id)arg1 library:(id)arg2 type:(unsigned long long)arg3;
 - (BOOL)isValid;
 - (long long)numberOfAssets;
 - (struct CGImage *)posterImage;

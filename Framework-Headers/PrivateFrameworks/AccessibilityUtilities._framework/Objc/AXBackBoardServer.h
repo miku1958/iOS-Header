@@ -29,6 +29,7 @@
 - (id)_springboardParametersForGuidedAccessAvailability;
 - (void)_willClearServer;
 - (int)accessibilityAssistiveTouchPID;
+- (int)accessibilityFullKeyboardAccessDaemonPID;
 - (id)accessibilityPreferenceAsMobile:(id)arg1;
 - (int)accessibilityUIServicePID;
 - (BOOL)adaptationEnabled;
@@ -42,6 +43,8 @@
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 toContextId:(unsigned int)arg3;
 - (struct CGRect)convertFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
+- (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
 - (unsigned long long)currentGuidedAccessModeAndSessionApp:(id *)arg1;
 - (void)dealloc;
 - (void)disableBrightnessFilters;
@@ -49,12 +52,14 @@
 - (id)guidedAccessEffectiveAppBundleIdentifier;
 - (void)guidedAccessEffectiveAppBundleIdentifier:(CDUnknownBlockType)arg1;
 - (id)guidedAccessIgnoredRegions;
+- (int)hearingAidServerPID;
 - (void)homeClickSwallowedForGuidedAccess;
 - (id)init;
 - (BOOL)isGuidedAccessActive;
 - (BOOL)isGuidedAccessInWorkspace;
 - (BOOL)isGuidedAccessSelfLockedToApp:(id)arg1;
 - (BOOL)isGuidedAccessUnmanagedSelfLocked;
+- (BOOL)isRestrictedForAAC;
 - (void)jetsamThirdPartyApps;
 - (BOOL)loadGAXBundleForUnmanagedASAM;
 - (id)performGuidedAccessAutomationCommand:(id)arg1 error:(id *)arg2;
@@ -62,7 +67,9 @@
 - (void)postEvent:(id)arg1 systemEvent:(BOOL)arg2;
 - (void)registerAccessibilityUIServicePID:(int)arg1;
 - (void)registerAssistiveTouchPID:(int)arg1;
+- (void)registerFullKeyboardAccessDaemonPID:(int)arg1;
 - (void)registerGestureConflictWithZoom:(id)arg1;
+- (void)registerHearingAidServerPID:(int)arg1;
 - (void)registerSiriViewServicePID:(int)arg1;
 - (void)requestGuidedAccessSessionEndWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestGuidedAccessSessionStartWithConfigurationDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;

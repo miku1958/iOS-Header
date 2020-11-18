@@ -29,6 +29,7 @@
 - (BOOL)notificationViewControllerShouldAllowLongPressGesture:(NCNotificationViewController *)arg1;
 - (BOOL)notificationViewControllerShouldInterpretTapAsDefaultAction:(NCNotificationViewController *)arg1;
 - (BOOL)notificationViewControllerShouldPan:(NCNotificationViewController *)arg1;
+- (BOOL)notificationViewControllerShouldPerformHoverHighlighting:(NCNotificationViewController *)arg1;
 - (BOOL)notificationViewControllerShouldSupportClickPresentationInteraction:(NCNotificationViewController *)arg1;
 - (void)notificationViewControllerWillDismissForCancelAction:(NCNotificationViewController *)arg1;
 - (id<UIViewSpringAnimationBehaviorDescribing>)settleHomeAffordanceAnimationBehaviorDescriptionForNotificationViewController:(NCNotificationViewController *)arg1;

@@ -76,6 +76,7 @@
 - (void)_stopInputAudioPowerUpdates;
 - (void)_tellSpeechDelegateAudioFileFinished:(id)arg1 error:(id)arg2;
 - (void)_tellSpeechDelegateAvailabilityChanged;
+- (void)_tellSpeechDelegateDidBeginLocalRecognitionWithModelInfo:(id)arg1;
 - (void)_tellSpeechDelegateDidProcessAudioDuration:(double)arg1;
 - (void)_tellSpeechDelegateDidRecognizePackage:(id)arg1;
 - (void)_tellSpeechDelegateDidRecognizePartialResult:(id)arg1;
@@ -86,7 +87,7 @@
 - (void)_tellSpeechDelegateLanguageDetectorDidFail:(id)arg1;
 - (void)_tellSpeechDelegateMultilingualSpeechRecognized:(id)arg1;
 - (void)_tellSpeechDelegateRecognitionDidFail:(id)arg1;
-- (void)_tellSpeechDelegateRecordingDidBegin;
+- (void)_tellSpeechDelegateRecordingDidBeginWithOptions:(id)arg1;
 - (void)_tellSpeechDelegateRecordingDidCancel;
 - (void)_tellSpeechDelegateRecordingDidEnd;
 - (void)_tellSpeechDelegateRecordingDidFail:(id)arg1;
@@ -117,6 +118,7 @@
 - (void)requestOfflineDictationSupportForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendEngagementFeedback:(long long)arg1 voiceQueryIdentifier:(id)arg2;
 - (void)sendSpeechCorrection:(id)arg1 forIdentifier:(id)arg2;
+- (void)sendSpeechCorrection:(id)arg1 interactionIdentifier:(id)arg2;
 - (void)sendUserSelectedAlternativeDictationLanguageCode:(id)arg1;
 - (void)startDictationWithLanguageCode:(id)arg1 options:(id)arg2;
 - (void)startDictationWithLanguageCode:(id)arg1 options:(id)arg2 speechOptions:(id)arg3;

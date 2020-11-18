@@ -12,12 +12,14 @@
 {
     BOOL _cachedShouldRequestMoreTime;
     BOOL _cachedIsRestrictionsPasscodeSet;
+    BOOL _contactsEditable;
     NSXPCConnection *_connection;
 }
 
 @property BOOL cachedIsRestrictionsPasscodeSet; // @synthesize cachedIsRestrictionsPasscodeSet=_cachedIsRestrictionsPasscodeSet;
 @property BOOL cachedShouldRequestMoreTime; // @synthesize cachedShouldRequestMoreTime=_cachedShouldRequestMoreTime;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly) BOOL contactsEditable; // @synthesize contactsEditable=_contactsEditable;
 @property (readonly, nonatomic) BOOL isRestrictionsPasscodeSet;
 @property (readonly) BOOL needsToSetRestrictionsPasscode;
 @property (readonly, nonatomic) BOOL shouldRequestMoreTime;

@@ -28,7 +28,7 @@
     unsigned long long _currentStyle;
     unsigned long long _currentDial;
     unsigned long long _currentColor;
-    struct NSNumber *_clockTimerToken;
+    NSNumber *_clockTimerToken;
 }
 
 @property (strong, nonatomic) NTKVictoryAnalogBackgroundView *analogBackgroundView; // @synthesize analogBackgroundView=_analogBackgroundView;
@@ -53,7 +53,6 @@
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
-+ (long long)uiSensitivity;
 - (void).cxx_destruct;
 - (id)_additionalPrelaunchApplicationIdentifiers;
 - (id)_additonalViewsToApplyDesaturationDuringComplicationEditing;

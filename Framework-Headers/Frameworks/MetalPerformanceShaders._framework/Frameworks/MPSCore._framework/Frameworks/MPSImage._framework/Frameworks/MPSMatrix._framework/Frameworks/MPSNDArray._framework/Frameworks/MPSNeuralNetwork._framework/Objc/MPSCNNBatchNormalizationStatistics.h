@@ -12,7 +12,7 @@
 
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (BOOL)appendBatchBarrier;
-- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 batchNormalizationState:(id)arg3;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 batchNormalizationState:(id)arg3;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (BOOL)isResultStateReusedAcrossBatch;

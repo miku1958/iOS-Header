@@ -104,6 +104,7 @@
 - (void)logErrorWhileMigratingBackend:(NSString *)arg1;
 - (void)logExportRequestResult:(BOOL)arg1 error:(NSString *)arg2;
 - (void)logFetchedOrphanedRecentSticker:(NSString *)arg1;
+- (void)logFetchedRecentStickerWithNoStickerConfiguration:(NSString *)arg1;
 - (void)logFetchedRecords:(unsigned long long)arg1 criteria:(long long)arg2;
 - (void)logFileSystemError:(NSString *)arg1;
 - (void)logFoundExistingRecordDuringMigration;

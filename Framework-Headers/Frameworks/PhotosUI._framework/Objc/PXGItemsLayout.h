@@ -11,8 +11,14 @@
 @interface PXGItemsLayout : PXGLayout
 {
     BOOL _loadedItemsNeedUpdate;
+    CDStruct_d97c9657 _updateFlags;
     unsigned long long _delegateRespondsTo;
     long long _applyingItemChangesCount;
+    long long *_currentStylableItems;
+    long long *_pendingStylableItems;
+    BOOL *_pendingAnimations;
+    long long *_styleableAnimations;
+    double *_stylablePaddings;
     BOOL _lazy;
     id<PXGItemsLayoutDelegate> _delegate;
     id<PXGItemsGeometry> _itemsGeometry;
@@ -29,12 +35,22 @@
 @property (nonatomic) long long numberOfItems;
 
 - (void).cxx_destruct;
+- (void)_handleFocusChangeWithUserInfo:(id)arg1;
+- (void)_updateFocusedItemIfNeeded;
+- (void)_updateHoveredItemIfNeeded;
 - (void)_updateLoadedItems;
+- (void)_updateStylableType:(long long)arg1;
+- (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
+- (unsigned int)axSpriteIndexClosestToSpriteIndex:(unsigned int)arg1 inDirection:(unsigned long long)arg2;
+- (id)axSpriteIndexes;
+- (id)axSpriteIndexesInRect:(struct CGRect)arg1;
+- (id)axVisibleSpriteIndexes;
 - (void)beginApplyingItemChanges;
 - (BOOL)delegateRespondsTo:(unsigned long long)arg1;
 - (void)endApplyingItemChanges;
 - (id)init;
 - (void)invalidateLoadedItems;
+- (void)invalidateStylableType:(long long)arg1;
 - (long long)itemForObjectReference:(id)arg1;
 - (long long)itemForSpriteIndex:(unsigned int)arg1;
 - (id)itemsForSpriteIndexes:(id)arg1;
@@ -43,9 +59,12 @@
 - (id)layoutForItemChanges;
 - (void)loadedItemsDidChange;
 - (id)loadedItemsForItems:(id)arg1;
+- (void)setAnimationParameters:(CDStruct_7f320dbc)arg1 forStylableType:(long long)arg2;
+- (void)setItem:(long long)arg1 forStylableType:(long long)arg2 animated:(BOOL)arg3;
 - (void)setNumberOfItems:(long long)arg1 withChangeDetails:(id)arg2;
 - (void)setNumberOfItems:(long long)arg1 withChangeDetails:(id)arg2 changeMediaVersionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)shouldInvalidateDecorationForModifiedSprites;
+- (struct CGSize)sizeForItem:(long long)arg1;
 - (unsigned int)spriteIndexForItem:(long long)arg1;
 - (id)spriteIndexesForItems:(id)arg1;
 - (void)update;

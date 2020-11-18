@@ -12,7 +12,9 @@
 
 @property (copy, nonatomic) NSData *cardData;
 @property (copy, nonatomic) NSString *completion;
+@property (copy, nonatomic) NSData *completionIcon;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSData *thumbnail;
 @property (copy, nonatomic) NSString *title;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

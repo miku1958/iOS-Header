@@ -4,34 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ClassKit/CLSObject.h>
+#import <ClassKit/CLSAbstractHandout.h>
 
 #import <ClassKit/CLSRelationable-Protocol.h>
 
 @class CLSClass, NSArray, NSDate, NSError, NSString;
 
-@interface CLSHandout : CLSObject <CLSRelationable>
+@interface CLSHandout : CLSAbstractHandout <CLSRelationable>
 {
     NSString *_title;
     NSString *_instructions;
     NSDate *_dueDate;
     BOOL _reviewed;
-    NSDate *_dateOfPublication;
+    unsigned long long _flags;
+    NSDate *_dateLastReviewed;
     long long _state;
     long long _publishingState;
     NSError *_publishError;
-    NSDate *_dateLastReviewed;
 }
 
+@property (readonly, nonatomic) NSArray *attachmentCollaborationStates;
 @property (readonly, nonatomic) NSArray *attachments;
+@property (readonly, nonatomic) NSArray *collaborationStates;
 @property (strong, nonatomic) NSDate *dateLastReviewed; // @synthesize dateLastReviewed=_dateLastReviewed;
-@property (strong, nonatomic) NSDate *dateOfPublication; // @synthesize dateOfPublication=_dateOfPublication;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSDate *dueDate;
 @property (readonly, nonatomic) CLSClass *effectiveClass;
+@property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *instructions;
 @property (strong, nonatomic) NSDate *lastReviewedDate;
 @property (strong, nonatomic) NSError *publishError; // @synthesize publishError=_publishError;
 @property (nonatomic) long long publishingState; // @synthesize publishingState=_publishingState;
@@ -39,7 +39,6 @@
 @property (nonatomic, getter=isReviewed) BOOL reviewed;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *title;
 
 + (id)relations;
 + (BOOL)supportsSecureCoding;

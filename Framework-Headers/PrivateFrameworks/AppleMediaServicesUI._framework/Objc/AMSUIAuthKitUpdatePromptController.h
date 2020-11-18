@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSUIAuthKitUpdatePromptController : NSObject <AKAppleIDAuthenticationDelegate, AMSAuthKitUpdateController>
 {
-    struct UIViewController *_presentingViewController;
+    UIViewController *_presentingViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -8,15 +8,18 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NSString;
+@class NPKProtoStandalonePaymentSetupProduct, NSString;
 
 @interface NPKProtoStandalonePaymentProvisioningFlowProvisioningProgressStepContext : PBCodable <NSCopying>
 {
     NSString *_localizedProgressDescription;
+    NPKProtoStandalonePaymentSetupProduct *_product;
 }
 
 @property (readonly, nonatomic) BOOL hasLocalizedProgressDescription;
+@property (readonly, nonatomic) BOOL hasProduct;
 @property (strong, nonatomic) NSString *localizedProgressDescription; // @synthesize localizedProgressDescription=_localizedProgressDescription;
+@property (strong, nonatomic) NPKProtoStandalonePaymentSetupProduct *product; // @synthesize product=_product;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

@@ -17,7 +17,7 @@
 - (BOOL)isControlCenterVisible;
 - (BOOL)isDockVisible;
 - (BOOL)isMediaPlaying;
-- (BOOL)isNonExclusiveSystemUIFocusable;
+- (BOOL)isNonExclusiveSystemUIFocusableIncludingPIPWindow:(BOOL)arg1;
 - (BOOL)isNotificationCenterVisible;
 - (BOOL)isNotificationVisible;
 - (BOOL)isNowPlayingUIVisible;

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)downloadExpirationDate;
 - (id)duration;
+- (id)episodeIndexInSeries;
 - (id)episodeNumber;
 - (id)genreTitle;
 - (id)imageLoadParamsWithImageType:(unsigned long long)arg1;

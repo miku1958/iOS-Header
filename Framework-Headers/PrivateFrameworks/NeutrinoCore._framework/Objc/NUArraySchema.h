@@ -31,11 +31,11 @@
 - (id)deserialize:(id)arg1 error:(out id *)arg2;
 - (id)deserializeArray:(id)arg1 error:(out id *)arg2;
 - (id)initWithIdentifier:(id)arg1 attributes:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 contentType:(long long)arg2 contents:(struct NSDictionary *)arg3 pattern:(id)arg4 attributes:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 contentType:(long long)arg2 contents:(id)arg3 pattern:(id)arg4 attributes:(id)arg5;
 - (BOOL)isValid:(out id *)arg1;
 - (id)makeJSValue:(id)arg1 context:(id)arg2 error:(out id *)arg3;
 - (id)makeJSValueFromArray:(id)arg1 context:(id)arg2 error:(out id *)arg3;
-- (struct NSArray *)schemaDependencies;
+- (id)schemaDependencies;
 - (id)serialize:(id)arg1 error:(out id *)arg2;
 - (id)serializeArray:(id)arg1 error:(out id *)arg2;
 - (BOOL)serializeIntoDictionary:(id)arg1 error:(out id *)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSNumber, NSString, NSXPCConnection;
+@class ACDAccountStoreFilter, NSMutableDictionary, NSNumber, NSString, NSXPCConnection;
 
 @interface ACDClient : NSObject
 {
@@ -18,12 +18,14 @@
     NSString *_localizedAppName;
     NSString *_name;
     NSMutableDictionary *_entitlementChecks;
+    ACDAccountStoreFilter *_filter;
 }
 
 @property (readonly, nonatomic) NSString *adamOrDisplayID;
 @property (readonly, nonatomic) struct __CFBundle *bundle;
 @property (strong, nonatomic) NSString *bundleID;
 @property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) ACDAccountStoreFilter *filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) NSString *localizedAppName;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSNumber *pid;

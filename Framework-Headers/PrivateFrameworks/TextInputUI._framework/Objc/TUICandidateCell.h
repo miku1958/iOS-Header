@@ -6,7 +6,7 @@
 
 #import <TextInputUI/TUICandidateBaseCell.h>
 
-@class TIKeyboardCandidate, UILabel;
+@class TIKeyboardCandidate, TUICandidateLabel, UILabel;
 
 @interface TUICandidateCell : TUICandidateBaseCell
 {
@@ -16,34 +16,38 @@
     unsigned long long _candidateNumber;
     long long _alignment;
     double _minimumTextLabelHeight;
-    UILabel *_textLabel;
-    UILabel *_alternativeTextLabel;
+    TUICandidateLabel *_textLabel;
+    TUICandidateLabel *_alternativeTextLabel;
     UILabel *_candidateNumberLabel;
-    UILabel *_annotationTextLabel;
+    TUICandidateLabel *_annotationTextLabel;
 }
 
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
-@property (strong, nonatomic) UILabel *alternativeTextLabel; // @synthesize alternativeTextLabel=_alternativeTextLabel;
-@property (strong, nonatomic) UILabel *annotationTextLabel; // @synthesize annotationTextLabel=_annotationTextLabel;
+@property (strong, nonatomic) TUICandidateLabel *alternativeTextLabel; // @synthesize alternativeTextLabel=_alternativeTextLabel;
+@property (strong, nonatomic) TUICandidateLabel *annotationTextLabel; // @synthesize annotationTextLabel=_annotationTextLabel;
 @property (strong, nonatomic) TIKeyboardCandidate *candidate; // @synthesize candidate=_candidate;
 @property (nonatomic) unsigned long long candidateNumber; // @synthesize candidateNumber=_candidateNumber;
 @property (strong, nonatomic) UILabel *candidateNumberLabel; // @synthesize candidateNumberLabel=_candidateNumberLabel;
 @property (nonatomic) double minimumTextLabelHeight; // @synthesize minimumTextLabelHeight=_minimumTextLabelHeight;
 @property (nonatomic) BOOL rowSelected; // @synthesize rowSelected=_rowSelected;
 @property (nonatomic) BOOL shouldShowCandidateNumber; // @synthesize shouldShowCandidateNumber=_shouldShowCandidateNumber;
-@property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
+@property (strong, nonatomic) TUICandidateLabel *textLabel; // @synthesize textLabel=_textLabel;
 
 + (id)reuseIdentifier;
 + (double)widthForCandidate:(id)arg1 showCandidateNumber:(BOOL)arg2 style:(id)arg3;
++ (double)widthForText:(id)arg1 font:(id)arg2 layoutOrientation:(long long)arg3;
 - (void).cxx_destruct;
 - (BOOL)_canFocusProgrammatically;
 - (void)applyLayoutAttributes:(id)arg1;
+- (id)cellBackgroundColor;
+- (id)cellBackgroundImage;
 - (void)commonInit;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isFocused;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)rotateBy90DegreesForFrame:(struct CGRect *)arg1;
 - (void)setStyle:(id)arg1;
 - (void)updateColors;
 - (void)updateLabels;

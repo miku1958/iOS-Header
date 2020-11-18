@@ -15,7 +15,7 @@
 {
     NSMutableDictionary *_elementIDToContentID;
     NSMutableDictionary *_elementIDToWKAttachmentID;
-    NSMutableDictionary *_contentIDToDownloadFutures;
+    NSMutableDictionary *_contentIDToTask;
     NSMutableSet *_inlinedImageContentIDs;
     BOOL _didComputeMailDropProperties;
     long long _totalUnstartedMailDropDownloadSize;
@@ -45,9 +45,9 @@
 + (id)log;
 - (void).cxx_destruct;
 - (void)_computeMailDropProperties;
-- (id)_futureForContentItem:(id)arg1;
-- (id)_futureForContentItem:(id)arg1 networkUsage:(long long)arg2 progress:(id *)arg3;
+- (id)_futureForContentItem:(id)arg1 networkUsage:(long long)arg2 invokerID:(id)arg3 previouslyInvoked:(BOOL *)arg4 progress:(id *)arg5;
 - (void)_injectAttachmentViewForElementWithSourceAttributeValue:(id)arg1 forContentItem:(id)arg2;
+- (id)_representationTypeForContentItem:(id)arg1;
 - (void)_updateProgressFraction:(id)arg1 forContentItem:(id)arg2;
 - (void)associateElementID:(id)arg1 withContentID:(id)arg2;
 - (void)associateElementID:(id)arg1 withWKAttachmentID:(id)arg2;

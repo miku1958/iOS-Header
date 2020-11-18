@@ -20,6 +20,8 @@
     BOOL _hasCompletedFirstCACommitSinceTransactionBeganForPPT;
     id<BSInvalidatable> _deferOrientationUpdatesAssertion;
     long long _numberOfAppLayoutsTraveledWithArcSwipe;
+    BOOL _isPointerTouch;
+    double _digitizerSurfaceHeightForLastGestureEvent;
     BOOL _shouldCancelGestureUponInterruption;
     BOOL _hasCompletedAtLeastOneGesture;
     SBFluidSwitcherViewController *_switcherViewController;
@@ -79,6 +81,7 @@
 - (void)_switcherGestureDidUpdate:(id)arg1;
 - (id)_transitionRequestForApplicationTransitionContext:(id)arg1 eventLabel:(id)arg2;
 - (id)_transitionRequestForSwitcherTransitionRequest:(id)arg1 eventLabel:(id)arg2;
+- (void)_updateDigitizerSurfaceDimensions;
 - (void)_updatePPTsForAnimationEndedWithFinalLayoutState:(id)arg1;
 - (void)_updatePPTsForGestureEnded;
 - (void)_updatePPTsForGestureTransactionBegan;

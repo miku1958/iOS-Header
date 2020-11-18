@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue, RPMessageable;
 
 @interface RPStreamServer : NSObject
@@ -14,7 +15,7 @@
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     id _selfRef;
-    struct NSMutableDictionary *_streamSessions;
+    NSMutableDictionary *_streamSessions;
     unsigned int _streamFlags;
     CDUnknownBlockType _invalidationHandler;
     id<RPMessageable> _messenger;

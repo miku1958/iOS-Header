@@ -44,6 +44,7 @@
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSpringLoadItemAtIndexPath:(id)arg2 withContext:(id)arg3;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
+- (unsigned long long)gadgetCapabilities;
 - (unsigned long long)gadgetType;
 - (id)init;
 - (id)initWithAlbumsGadgetProvider:(id)arg1;

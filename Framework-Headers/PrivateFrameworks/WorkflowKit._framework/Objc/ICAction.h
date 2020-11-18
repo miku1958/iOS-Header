@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) NSDictionary *definition; // @synthesize definition=_definition;
 @property (readonly, nonatomic) NSDictionary *descriptionDictionary;
 @property (readonly, nonatomic, getter=isDiscontinued) BOOL discontinued;
+@property (readonly, nonatomic, getter=isDiscoverable) BOOL discoverable;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSArray *inputContentClasses; // @synthesize inputContentClasses=_inputContentClasses;
 @property (readonly, nonatomic) NSArray *inputMapping; // @synthesize inputMapping=_inputMapping;

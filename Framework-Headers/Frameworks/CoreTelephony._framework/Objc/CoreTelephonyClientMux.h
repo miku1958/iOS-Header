@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface CoreTelephonyClientMux : NSObject <MuxNotificationSinkDelegate>
 {
-    struct map<__weak id, (anonymous namespace)::DelegateContext, std::__1::less<__weak id>, std::__1::allocator<std::__1::pair<const __weak id, (anonymous namespace)::DelegateContext>>> _delegates;
+    struct map<__unsafe_unretained id, (anonymous namespace)::DelegateContext, std::__1::less<__unsafe_unretained id>, std::__1::allocator<std::__1::pair<const __unsafe_unretained id, (anonymous namespace)::DelegateContext>>> _delegates;
     NSSet *_currentSelectorSet;
     NSXPCConnection *_connection;
     struct queue _xpcQueue;

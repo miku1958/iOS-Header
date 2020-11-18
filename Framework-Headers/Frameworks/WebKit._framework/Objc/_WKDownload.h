@@ -9,7 +9,7 @@
 #import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSArray, NSData, NSString, NSURLRequest, WKWebView;
+@class NSArray, NSData, NSString, NSURLRequest, WKFrameInfo, WKWebView;
 
 @interface _WKDownload : NSObject <WKObject, NSCopying>
 {
@@ -20,6 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) WKFrameInfo *originatingFrame;
 @property (readonly, weak, nonatomic) WKWebView *originatingWebView;
 @property (readonly, copy, nonatomic) NSArray *redirectChain;
 @property (readonly, nonatomic) NSURLRequest *request;

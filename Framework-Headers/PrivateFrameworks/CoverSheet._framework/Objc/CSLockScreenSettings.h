@@ -21,6 +21,10 @@
     BOOL _showRegionsDebugView;
     BOOL _alwaysPutPluginsBelowScrollView;
     BOOL _killsInsecureDrawingApps;
+    BOOL _prewarmsCameraHardwareOnSwipe;
+    BOOL _prewarmsCameraHardwareOnTap;
+    BOOL _prelaunchesCameraAppOnSwipe;
+    BOOL _prelaunchesCameraAppOnTap;
     PTOutlet *_addNotificationOutlet;
     CSBounceSettings *_verticalBounceSettings;
     CSBounceSettings *_horizontalBounceSettings;
@@ -53,12 +57,16 @@
     double _lockJiggleHapticDelay;
     double _lockJiggleAnimationDelay;
     double _unlockSwipeWallpaperAlpha;
+    double _cameraPrewarmThresholdOnSwipe;
+    double _cameraPrelaunchThresholdOnSwipe;
 }
 
 @property (strong) PTOutlet *addNotificationOutlet; // @synthesize addNotificationOutlet=_addNotificationOutlet;
 @property BOOL alwaysPutPluginsBelowScrollView; // @synthesize alwaysPutPluginsBelowScrollView=_alwaysPutPluginsBelowScrollView;
 @property double appGrabberSlideUpVelocityThreshold; // @synthesize appGrabberSlideUpVelocityThreshold=_appGrabberSlideUpVelocityThreshold;
 @property BOOL autoDismissUnlockedLockScreen; // @synthesize autoDismissUnlockedLockScreen=_autoDismissUnlockedLockScreen;
+@property double cameraPrelaunchThresholdOnSwipe; // @synthesize cameraPrelaunchThresholdOnSwipe=_cameraPrelaunchThresholdOnSwipe;
+@property double cameraPrewarmThresholdOnSwipe; // @synthesize cameraPrewarmThresholdOnSwipe=_cameraPrewarmThresholdOnSwipe;
 @property (strong) CSCoverSheetDismissGestureSettings *coverSheetDismissGestureSettings; // @synthesize coverSheetDismissGestureSettings=_coverSheetDismissGestureSettings;
 @property (strong) CSCoverSheetTransitionsSettings *coverSheetTransitionsSettings; // @synthesize coverSheetTransitionsSettings=_coverSheetTransitionsSettings;
 @property (strong) CSDashBoardNotificationVersusPagingScrollSettings *dashBoardNotificationScrollSettings; // @synthesize dashBoardNotificationScrollSettings=_dashBoardNotificationScrollSettings;
@@ -77,6 +85,10 @@
 @property double nowPlayingHeight; // @synthesize nowPlayingHeight=_nowPlayingHeight;
 @property (strong) CSLockScreenPasscodeSettings *passcodeSettings; // @synthesize passcodeSettings=_passcodeSettings;
 @property (strong) CSLockScreenPearlSettings *pearlSettings; // @synthesize pearlSettings=_pearlSettings;
+@property BOOL prelaunchesCameraAppOnSwipe; // @synthesize prelaunchesCameraAppOnSwipe=_prelaunchesCameraAppOnSwipe;
+@property BOOL prelaunchesCameraAppOnTap; // @synthesize prelaunchesCameraAppOnTap=_prelaunchesCameraAppOnTap;
+@property BOOL prewarmsCameraHardwareOnSwipe; // @synthesize prewarmsCameraHardwareOnSwipe=_prewarmsCameraHardwareOnSwipe;
+@property BOOL prewarmsCameraHardwareOnTap; // @synthesize prewarmsCameraHardwareOnTap=_prewarmsCameraHardwareOnTap;
 @property BOOL showBlockedUI; // @synthesize showBlockedUI=_showBlockedUI;
 @property BOOL showEmergencyDialer; // @synthesize showEmergencyDialer=_showEmergencyDialer;
 @property BOOL showLogoutButton; // @synthesize showLogoutButton=_showLogoutButton;

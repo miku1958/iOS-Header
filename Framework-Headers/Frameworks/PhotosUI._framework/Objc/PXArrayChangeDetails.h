@@ -44,6 +44,7 @@
 + (unsigned long long)indexAfterApplyingChanges:(id)arg1 toIndex:(unsigned long long)arg2 objectChanged:(out BOOL *)arg3;
 + (unsigned long long)indexAfterRevertingChanges:(id)arg1 fromIndex:(unsigned long long)arg2 objectChanged:(out BOOL *)arg3;
 - (void).cxx_destruct;
+- (void)applyToDictionary:(id)arg1 removalHandler:(CDUnknownBlockType)arg2 moveHandler:(CDUnknownBlockType)arg3;
 - (void)applyToIndexSet:(id)arg1;
 - (BOOL)canPreserveIncrementalChangesWhenAddingChangeDetails:(id)arg1;
 - (id)changeDetailsByAddingChangeDetails:(id)arg1;

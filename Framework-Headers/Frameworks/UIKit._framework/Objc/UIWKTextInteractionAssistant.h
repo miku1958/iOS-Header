@@ -44,13 +44,13 @@
 - (BOOL)containerIsAtom;
 - (BOOL)containerIsBrowserView;
 - (BOOL)containerIsPlainStyleAtom;
+- (long long)currentCursorBehavior;
 - (void)dealloc;
 - (void)didEndScrollingOverflow;
 - (void)hideTextStyleOptions;
 - (id)initWithView:(id)arg1;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)lookup:(id)arg1 withRange:(struct _NSRange)arg2 fromRect:(struct CGRect)arg3;
-- (Class)loupeInteractionClass;
 - (BOOL)overrideGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)overrideGestureRecognizerShouldBegin:(id)arg1;
 - (void)rangeSelectionCanceled;
@@ -62,7 +62,7 @@
 - (void)scheduleReplacementsForText:(id)arg1;
 - (void)scheduleReplacementsForText:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleReplacementsWithOptions:(unsigned long long)arg1;
-- (void)scrollSelectionToVisible;
+- (void)scrollSelectionToVisible:(BOOL)arg1;
 - (void)selectAll:(id)arg1;
 - (void)selectTextForReplacement:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)selectWord;
@@ -81,7 +81,9 @@
 - (void)updateActivatingSelectionView;
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 - (void)updateWithMagnifierTerminalPoint:(BOOL)arg1;
+- (BOOL)usesAsynchronousSelectionController;
 - (BOOL)wantsLinkInteraction;
+- (void)willChangeSelection;
 - (void)willStartScrollingOverflow;
 
 @end

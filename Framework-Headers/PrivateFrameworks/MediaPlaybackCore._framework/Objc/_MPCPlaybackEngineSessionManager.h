@@ -9,7 +9,7 @@
 #import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 #import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSource-Protocol.h>
 
-@class MPCPlaybackEngine, MPCPlayerPath, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSMutableArray, NSMutableDictionary, NSString, _MPCPlaybackSessionArchive;
+@class MPCPlaybackEngine, MPCPlayerPath, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _MPCPlaybackEngineSessionManager : NSObject <MPCPlaybackEngineEventObserving, MPNowPlayingPlaybackQueueDataSource>
@@ -20,7 +20,6 @@
     MPRemoteCommandCenter *_commandCenter;
     NSMutableArray *_sessionArchives;
     NSMutableDictionary *_sessionIdentifierArchiveMap;
-    _MPCPlaybackSessionArchive *_stagedArchive;
 }
 
 @property (readonly, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
@@ -33,7 +32,6 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly, nonatomic) NSMutableArray *sessionArchives; // @synthesize sessionArchives=_sessionArchives;
 @property (readonly, nonatomic) NSMutableDictionary *sessionIdentifierArchiveMap; // @synthesize sessionIdentifierArchiveMap=_sessionIdentifierArchiveMap;
-@property (strong, nonatomic) _MPCPlaybackSessionArchive *stagedArchive; // @synthesize stagedArchive=_stagedArchive;
 @property (readonly, nonatomic) NSString *stateRestorationSessionIdentifier;
 @property (readonly) Class superclass;
 
@@ -48,7 +46,7 @@
 - (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
-- (void)nowPlayingInfoCenter:(id)arg1 getTransportablePlaybackSessionRepresentationWithCompletion:(CDUnknownBlockType)arg2;
+- (void)publishIfNeeded;
 - (void)saveSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setStateRestorationSessionIdentifier:(id)arg1;
 

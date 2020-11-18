@@ -11,16 +11,16 @@
 #import <Rapport/RPMessageable-Protocol.h>
 #import <Rapport/RPRemoteDisplayXPCClientInterface-Protocol.h>
 
-@class CUBonjourDevice, NSNumber, NSString, NSXPCConnection, RPRemoteDisplayDevice, RPRemoteDisplayServer;
+@class CUBonjourDevice, NSMutableDictionary, NSNumber, NSString, NSXPCConnection, RPRemoteDisplayDevice, RPRemoteDisplayServer;
 @protocol OS_dispatch_queue;
 
 @interface RPRemoteDisplaySession : NSObject <NSSecureCoding, RPRemoteDisplayXPCClientInterface, RPAuthenticatable, RPMessageable>
 {
     BOOL _activateCalled;
-    struct NSMutableDictionary *_eventRegistrations;
+    NSMutableDictionary *_eventRegistrations;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
-    struct NSMutableDictionary *_requestRegistrations;
+    NSMutableDictionary *_requestRegistrations;
     BOOL _needsAWDL;
     unsigned int _pairSetupFlags;
     unsigned int _pairVerifyFlags;

@@ -25,6 +25,7 @@
             unsigned int synthesizedByAcceptingCandidate:1;
             unsigned int doubleSpace:1;
             unsigned int rapidDelete:1;
+            unsigned int shiftDown:1;
         } fields;
     } _flags;
     BOOL _backspace;
@@ -33,6 +34,7 @@
     TIKeyboardTouchEvent *_touchEvent;
     TIKeyboardCandidate *_acceptedCandidate;
     NSString *_inputManagerHint;
+    long long _transliterationType;
     double _timestamp;
 }
 
@@ -47,10 +49,12 @@
 @property (copy, nonatomic) id<NSCopying><NSObject><NSSecureCoding> object; // @synthesize object=_object;
 @property (nonatomic, getter=isPopupVariant) BOOL popupVariant;
 @property (nonatomic, getter=isRapidDelete) BOOL rapidDelete;
+@property (nonatomic, getter=isShiftDown) BOOL shiftDown;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;
 @property (nonatomic, getter=isSynthesizedByAcceptingCandidate) BOOL synthesizedByAcceptingCandidate;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) TIKeyboardTouchEvent *touchEvent; // @synthesize touchEvent=_touchEvent;
+@property (nonatomic) long long transliterationType; // @synthesize transliterationType=_transliterationType;
 @property (nonatomic, getter=isUppercase) BOOL uppercase;
 
 + (BOOL)supportsSecureCoding;

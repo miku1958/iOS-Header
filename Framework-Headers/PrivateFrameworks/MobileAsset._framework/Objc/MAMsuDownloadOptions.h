@@ -12,12 +12,20 @@
 {
     BOOL _supervised;
     BOOL _allowSameVersion;
+    BOOL _prerequisiteReleaseTypeIsOverridden;
     NSString *_requestedProductVersion;
     long long _delayPeriod;
+    NSString *_prerequisiteBuildVersion;
+    NSString *_prerequisiteProductVersion;
+    NSString *_prerequisiteReleaseType;
 }
 
 @property (nonatomic) BOOL allowSameVersion; // @synthesize allowSameVersion=_allowSameVersion;
 @property (nonatomic) long long delayPeriod; // @synthesize delayPeriod=_delayPeriod;
+@property (strong, nonatomic) NSString *prerequisiteBuildVersion; // @synthesize prerequisiteBuildVersion=_prerequisiteBuildVersion;
+@property (strong, nonatomic) NSString *prerequisiteProductVersion; // @synthesize prerequisiteProductVersion=_prerequisiteProductVersion;
+@property (strong, nonatomic) NSString *prerequisiteReleaseType; // @synthesize prerequisiteReleaseType=_prerequisiteReleaseType;
+@property (nonatomic) BOOL prerequisiteReleaseTypeIsOverridden; // @synthesize prerequisiteReleaseTypeIsOverridden=_prerequisiteReleaseTypeIsOverridden;
 @property (strong, nonatomic) NSString *requestedProductVersion; // @synthesize requestedProductVersion=_requestedProductVersion;
 @property (nonatomic) BOOL supervised; // @synthesize supervised=_supervised;
 

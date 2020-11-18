@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)connection;
 - (id)daemonWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (id)init;
 - (void)invalidateConnection;
 - (id)remoteObjectInterface;

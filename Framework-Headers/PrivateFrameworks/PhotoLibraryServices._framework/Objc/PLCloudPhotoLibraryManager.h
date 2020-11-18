@@ -118,6 +118,7 @@
 - (BOOL)_hasAvalancheIncomingWork;
 - (BOOL)_hasIncomingWorkFileMarker;
 - (BOOL)_hasItemToDownload;
+- (id)_identifierForResource:(id)arg1;
 - (void)_initializeMasterAndSizeCalculation;
 - (unsigned long long)_inq_numberOfOtherItemsToDownload;
 - (unsigned long long)_inq_numberOfOtherItemsToUpload;

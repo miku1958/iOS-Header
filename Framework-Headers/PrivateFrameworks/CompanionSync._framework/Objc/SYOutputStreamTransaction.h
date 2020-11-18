@@ -9,12 +9,13 @@
 #import <CompanionSync/SYStreamTransaction-Protocol.h>
 
 @class NSDictionary, NSOutputStream, NSProgress, NSString, NSURL;
+@protocol SYStreamEventHandlerBlocks><SYStreamThroughputCounter;
 
 @interface SYOutputStreamTransaction : NSObject <SYStreamTransaction>
 {
     NSDictionary *_metadata;
     NSURL *_fileURL;
-    struct NSOutputStream *_stream;
+    NSOutputStream<SYStreamEventHandlerBlocks><SYStreamThroughputCounter> *_stream;
     NSProgress *_progress;
 }
 

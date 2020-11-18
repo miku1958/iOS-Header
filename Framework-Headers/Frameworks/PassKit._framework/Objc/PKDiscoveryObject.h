@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, PKDiscoveryRelevantDateRange, PKOSVersionRequirementRange;
+@class NSArray, NSString, PKDiscoveryRelevantDateRange, PKHardwareVersionRange, PKOSVersionRequirementRange;
 
 @interface PKDiscoveryObject : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,12 +18,14 @@
     NSString *_ruleIdentifier;
     NSArray *_triggers;
     PKOSVersionRequirementRange *_osVersionRange;
+    PKHardwareVersionRange *_hardwareVersionRange;
     PKDiscoveryRelevantDateRange *_relevantDateRange;
     long long _maxViewCount;
     long long _status;
     long long _viewCount;
 }
 
+@property (strong, nonatomic) PKHardwareVersionRange *hardwareVersionRange; // @synthesize hardwareVersionRange=_hardwareVersionRange;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long maxViewCount; // @synthesize maxViewCount=_maxViewCount;
 @property (strong, nonatomic) PKOSVersionRequirementRange *osVersionRange; // @synthesize osVersionRange=_osVersionRange;

@@ -31,11 +31,13 @@ __attribute__((visibility("hidden")))
 + (id)standardTitleLayoutWithStyle:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_configureBarButtonItem;
+- (void)_configureFooterCellButton;
 - (void)_configureImageButton;
 - (void)_configurePrimaryButton;
 - (void)_configureProductSecondaryButton;
 - (void)_configureRoundButton;
 - (void)_configureTextualButton;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithType:(unsigned long long)arg1;
 - (id)initWithType:(unsigned long long)arg1 titleStyle:(unsigned long long)arg2;
 

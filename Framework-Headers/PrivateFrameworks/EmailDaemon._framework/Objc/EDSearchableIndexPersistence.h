@@ -22,6 +22,7 @@
     id<EDSearchableIndexHookResponder> _hookResponder;
 }
 
+@property (readonly, nonatomic) NSString *additionalFilterClause;
 @property (readonly, nonatomic) EDPersistenceDatabase *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,7 +30,6 @@
 @property (readonly, weak, nonatomic) id<EDSearchableIndexHookResponder> hookResponder; // @synthesize hookResponder=_hookResponder;
 @property long long lastProcessedAttachmentID; // @synthesize lastProcessedAttachmentID=_lastProcessedAttachmentID;
 @property (nonatomic) struct os_unfair_lock_s lastProcessedAttachmentIDLock; // @synthesize lastProcessedAttachmentIDLock=_lastProcessedAttachmentIDLock;
-@property (readonly, nonatomic) NSString *messagesRowIDWhereSubClause;
 @property (readonly) unsigned long long signpostID;
 @property (readonly) Class superclass;
 

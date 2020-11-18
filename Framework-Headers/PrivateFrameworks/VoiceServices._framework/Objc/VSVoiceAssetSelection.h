@@ -26,6 +26,7 @@
 - (BOOL)isDownloading;
 - (BOOL)isInstalled;
 - (id)key;
+- (double)preferenceScore;
 - (unsigned long long)size;
 
 @end

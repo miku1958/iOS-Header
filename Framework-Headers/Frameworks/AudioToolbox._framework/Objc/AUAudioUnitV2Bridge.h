@@ -54,6 +54,7 @@
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)reset;
+- (void)setCurrentPreset:(id)arg1;
 - (void)setFullState:(id)arg1;
 - (void)setFullStateForDocument:(id)arg1;
 - (void)setMIDIOutputEventBlock:(CDUnknownBlockType)arg1;

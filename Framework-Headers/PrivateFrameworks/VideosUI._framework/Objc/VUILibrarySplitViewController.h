@@ -7,76 +7,75 @@
 #import <UIKit/UISplitViewController.h>
 
 #import <VideosUI/UISplitViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUICategoryMenuViewControllerDelegate-Protocol.h>
+#import <VideosUI/VUIFamilyMembersViewControllerDelegate-Protocol.h>
+#import <VideosUI/VUIFamilySharingContentProtocol-Protocol.h>
 #import <VideosUI/VUIHomeShareViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUILibraryCategoryMenuViewModelDelegate-Protocol.h>
 #import <VideosUI/VUILibraryGridCollectionViewControllerDelegate-Protocol.h>
+#import <VideosUI/VUIMenuCollectionViewControllerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, UINavigationController, VUICategoryMenuViewController, VUILibraryAlertView, VUILibraryCategoryMenuViewModel, VUILibraryGridCollectionViewController, VUIMediaLibrary;
+@class NSMutableDictionary, NSString, UINavigationController, UIViewController, VUIFamilyMember, VUILibraryAlertView, VUILibraryMenuDataSource, VUIMediaLibrary, VUIMenuCollectionViewController;
 @protocol VUILibrarySplitViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUILibrarySplitViewController : UISplitViewController <VUILibraryCategoryMenuViewModelDelegate, VUICategoryMenuViewControllerDelegate, VUILibraryGridCollectionViewControllerDelegate, VUIHomeShareViewControllerDelegate, UISplitViewControllerDelegate>
+@interface VUILibrarySplitViewController : UISplitViewController <VUIMenuCollectionViewControllerDelegate, VUILibraryGridCollectionViewControllerDelegate, VUIHomeShareViewControllerDelegate, UISplitViewControllerDelegate, VUIFamilyMembersViewControllerDelegate, VUIFamilySharingContentProtocol>
 {
-    BOOL _shouldShowBackButton;
     BOOL _hasLoaded;
+    VUIFamilyMember *_familyMember;
     id<VUILibrarySplitViewControllerDelegate> _librarySplitViewControllerDelegate;
-    VUICategoryMenuViewController *_menuViewController;
+    VUIMenuCollectionViewController *_menuViewController;
     VUIMediaLibrary *_mediaLibrary;
     UINavigationController *_masterNavigationController;
     UINavigationController *_detailNavigationController;
-    VUILibraryCategoryMenuViewModel *_categoryViewModel;
-    VUILibraryGridCollectionViewController *_currentGridCollectionViewController;
-    NSIndexPath *_currentlySelectedIndexPath;
+    VUILibraryMenuDataSource *_menuDataSource;
+    UIViewController *_detailViewController;
     VUILibraryAlertView *_alertView;
     VUIMediaLibrary *_currentHomeShareMediaLibrary;
+    NSMutableDictionary *_entitiesDataSourceForMenuItem;
 }
 
 @property (strong, nonatomic) VUILibraryAlertView *alertView; // @synthesize alertView=_alertView;
-@property (strong, nonatomic) VUILibraryCategoryMenuViewModel *categoryViewModel; // @synthesize categoryViewModel=_categoryViewModel;
-@property (strong, nonatomic) VUILibraryGridCollectionViewController *currentGridCollectionViewController; // @synthesize currentGridCollectionViewController=_currentGridCollectionViewController;
 @property (strong, nonatomic) VUIMediaLibrary *currentHomeShareMediaLibrary; // @synthesize currentHomeShareMediaLibrary=_currentHomeShareMediaLibrary;
-@property (strong, nonatomic) NSIndexPath *currentlySelectedIndexPath; // @synthesize currentlySelectedIndexPath=_currentlySelectedIndexPath;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UINavigationController *detailNavigationController; // @synthesize detailNavigationController=_detailNavigationController;
+@property (strong, nonatomic) UIViewController *detailViewController; // @synthesize detailViewController=_detailViewController;
+@property (strong, nonatomic) NSMutableDictionary *entitiesDataSourceForMenuItem; // @synthesize entitiesDataSourceForMenuItem=_entitiesDataSourceForMenuItem;
+@property (strong, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property (nonatomic) BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<VUILibrarySplitViewControllerDelegate> librarySplitViewControllerDelegate; // @synthesize librarySplitViewControllerDelegate=_librarySplitViewControllerDelegate;
 @property (strong, nonatomic) UINavigationController *masterNavigationController; // @synthesize masterNavigationController=_masterNavigationController;
 @property (strong, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
-@property (strong, nonatomic) VUICategoryMenuViewController *menuViewController; // @synthesize menuViewController=_menuViewController;
-@property (nonatomic) BOOL shouldShowBackButton; // @synthesize shouldShowBackButton=_shouldShowBackButton;
+@property (strong, nonatomic) VUILibraryMenuDataSource *menuDataSource; // @synthesize menuDataSource=_menuDataSource;
+@property (strong, nonatomic) VUIMenuCollectionViewController *menuViewController; // @synthesize menuViewController=_menuViewController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addMediaLibraryNotificationObservers;
 - (void)_addNotificationObserversWithDeviceLibrary:(id)arg1;
-- (void)_addRentalsUpdateNotificationObserver;
-- (id)_createDetailNavigationViewControllerWithRootViewController:(id)arg1;
 - (id)_deviceMediaLibrary;
-- (id)_getMediaEntitiesForIndexPath:(id)arg1;
+- (id)_entitiesDataSourceForCategoryType:(long long)arg1;
+- (id)_entitiesDataSourceForGenre:(id)arg1;
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
+- (BOOL)_menuDataSourceHasContent;
 - (void)_removeMediaLibraryNotificationObservers;
 - (void)_removeNotificationObserversWithDeviceLibrary:(id)arg1;
-- (void)_removeRentalsUpdateNotificationObserver;
 - (void)_setDisplayModeForLayoutType:(long long)arg1;
-- (void)_showOrHideNoContentView;
-- (void)_updateRentals;
+- (BOOL)_shouldShowBackButton;
 - (id)_viewControllerForIndexPath:(id)arg1;
-- (void)categoryMenuViewController:(id)arg1 didSelectMenuItemAtIndexPath:(id)arg2;
 - (void)categoryMenuViewControllerShouldDismiss:(id)arg1;
 - (void)dealloc;
-- (void)fetchDidCompleteForViewModel:(id)arg1;
+- (void)didSelectMenuItemAtIndexPath:(id)arg1;
+- (void)familyMemberViewController:(id)arg1 didSelectFamilyMember:(id)arg2;
+- (void)fetchDidCompleteForDataSource:(id)arg1;
 - (void)gridCollectionViewController:(id)arg1 didSelectMediaEntity:(id)arg2;
 - (void)homeShareViewController:(id)arg1 didSelectHomeShare:(id)arg2;
-- (id)initWithMediaLibrary:(id)arg1;
-- (void)loadView;
+- (id)initWithMenuDataSource:(id)arg1;
+- (void)menuCollectionViewControllerDidFinishLoading;
 - (void)setPageMetricsForCategory:(id)arg1 onLibraryGridCollectionViewController:(id)arg2;
 - (void)showDetailViewController:(id)arg1 sender:(id)arg2;
 - (BOOL)splitViewController:(id)arg1 collapseSecondaryViewController:(id)arg2 ontoPrimaryViewController:(id)arg3;
 - (id)splitViewController:(id)arg1 separateSecondaryViewControllerFromPrimaryViewController:(id)arg2;
-- (void)updateForViewModel:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

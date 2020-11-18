@@ -15,14 +15,14 @@
 
 @interface AMSURLSession : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 {
-    BOOL _invalidated;
-    id<AMSURLHandling> _protocolHandler;
     NSURLSessionConfiguration *_configuration;
+    AMSURLDelegateProxy *_delegateProxy;
     NSOperationQueue *_delegateQueue;
-    id<AMSRequestEncoding> _requestEncoder;
+    id<AMSURLHandling> _protocolHandler;
     id<AMSResponseDecoding> _responseDecoder;
     NSURLSession *_session;
-    AMSURLDelegateProxy *_delegateProxy;
+    BOOL _invalidated;
+    id<AMSRequestEncoding> _requestEncoder;
     AMSURLSecurityPolicy *_securityPolicy;
 }
 

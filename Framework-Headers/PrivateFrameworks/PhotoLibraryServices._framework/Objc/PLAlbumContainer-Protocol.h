@@ -6,7 +6,8 @@
 
 #import <PhotoLibraryServices/PLAssetContainerList-Protocol.h>
 
-@class NSArray, NSIndexSet, NSMutableOrderedSet, NSNumber, NSString;
+@class NSArray, NSIndexSet, NSMutableOrderedSet, NSNumber, NSObject, NSString;
+@protocol PLAlbumProtocol;
 
 @protocol PLAlbumContainer <PLAssetContainerList>
 
@@ -18,7 +19,7 @@
 @property (readonly, nonatomic) BOOL isFolder;
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
 
-- (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
+- (BOOL)albumHasFixedOrder:(NSObject<PLAlbumProtocol> *)arg1;
 - (short)albumListType;
 - (NSMutableOrderedSet *)albums;
 - (BOOL)canEditAlbums;

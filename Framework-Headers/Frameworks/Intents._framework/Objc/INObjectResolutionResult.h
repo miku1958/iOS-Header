@@ -15,6 +15,7 @@
 + (id)successWithResolvedObject:(id)arg1;
 - (id)_intentSlotValueForObject:(id)arg1 slotDescription:(id)arg2;
 - (id)_vocabularyValueForObject:(id)arg1 slotDescription:(id)arg2;
+- (void)transformResolutionResultForIntent:(id)arg1 intentSlotDescription:(id)arg2 withOptionsProvider:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

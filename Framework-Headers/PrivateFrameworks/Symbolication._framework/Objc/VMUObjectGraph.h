@@ -52,6 +52,8 @@
 - (id)initWithNodeCount:(unsigned int)arg1 nodeProvider:(CDUnknownBlockType)arg2;
 - (id)initWithNodesNoCopy:(struct _VMUBlockNode *)arg1 nodeCount:(unsigned int)arg2;
 - (void)internalizeNodes;
+- (BOOL)isGroupNode:(unsigned int)arg1;
+- (BOOL)isRootNode:(unsigned int)arg1;
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
 - (unsigned int)nodeForAddress:(unsigned long long)arg1;
 - (unsigned int)nodeReferencedFromSourceNode:(unsigned int)arg1 byIvarWithName:(id)arg2;

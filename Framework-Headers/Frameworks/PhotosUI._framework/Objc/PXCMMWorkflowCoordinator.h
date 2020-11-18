@@ -51,15 +51,15 @@
 - (void)_presentSendBackFlowWithContext:(id)arg1;
 - (id)_presentingViewControllerForViewController:(id)arg1;
 - (void)_session:(id)arg1 finishedAccepting:(BOOL)arg2 withError:(id)arg3;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)cancelWorkflow;
 - (id)completeMyMomentViewController:(id)arg1 performActionForSession:(id)arg2;
 - (id)completeMyMomentViewController:(id)arg1 performSendBackActionForSession:(id)arg2;
 - (void)completeMyMomentViewController:(id)arg1 showPhotoPickerForSession:(id)arg2;
 - (void)didCancelCompleteMyMomentViewController:(id)arg1;
 - (void)startPreloadingTasksForCompleteMyMomentViewController:(id)arg1;
-- (struct NSObject *)workflowViewControllerWithContext:(id)arg1;
+- (id)workflowViewControllerWithContext:(id)arg1;
 - (id)workflowViewControllerWithContext:(id)arg1 embedInNavigationControllerOfClass:(Class)arg2;
 
 @end

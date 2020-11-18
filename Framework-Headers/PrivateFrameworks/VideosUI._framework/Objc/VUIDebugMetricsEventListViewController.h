@@ -11,12 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface VUIDebugMetricsEventListViewController : UITableViewController
 {
-    NSArray *_events;
+    NSArray *_visibleEvents;
+    NSArray *_allEvents;
+    NSArray *_buttonsInHeader;
+    NSArray *_buttonsInHeaderSelected;
 }
 
-@property (strong, nonatomic) NSArray *events; // @synthesize events=_events;
+@property (strong, nonatomic) NSArray *allEvents; // @synthesize allEvents=_allEvents;
+@property (strong, nonatomic) NSArray *buttonsInHeader; // @synthesize buttonsInHeader=_buttonsInHeader;
+@property (strong, nonatomic) NSArray *buttonsInHeaderSelected; // @synthesize buttonsInHeaderSelected=_buttonsInHeaderSelected;
+@property (strong, nonatomic) NSArray *visibleEvents; // @synthesize visibleEvents=_visibleEvents;
 
 - (void).cxx_destruct;
+- (void)_buttonClicked:(id)arg1;
+- (id)_formatKeyAndValue:(id)arg1 fromEvent:(id)arg2;
 - (id)_imageFromPageContext:(id)arg1;
 - (void)finishValidation;
 - (id)initWithEvents:(id)arg1;
@@ -25,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)toggleValidationMode;
 - (void)viewDidLoad;
 

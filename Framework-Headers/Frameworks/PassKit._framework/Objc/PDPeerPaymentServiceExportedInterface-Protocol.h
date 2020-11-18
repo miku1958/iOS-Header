@@ -24,6 +24,7 @@
 - (void)receivedPeerPaymentMessageData:(NSData *)arg1 handler:(void (^)(void))arg2;
 - (void)registerDeviceWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)registerDeviceWithForceReregister:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)registerDeviceWithRegistrationURL:(NSURL *)arg1 pushToken:(NSString *)arg2 forceReregister:(BOOL)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)registrationStatusWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)setLastUsedAlternateFundingSourcePassUniqueIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;

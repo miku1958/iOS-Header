@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
+@property (readonly, nonatomic) struct CGRect _contentRect;
 @property (readonly, nonatomic, getter=isDefaultTVLayout) BOOL _defaultTVLayout;
 @property (readonly, nonatomic) UIColor *_defaultUnselectedLabelTintColor;
 @property (nonatomic, getter=_isSelected, setter=_setSelected:) BOOL _selected;

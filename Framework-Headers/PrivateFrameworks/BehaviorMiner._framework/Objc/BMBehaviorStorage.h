@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)deleteAllWithError:(id *)arg1;
 - (id)fetchRulesWithSupport:(double)arg1 confidence:(double)arg2 filters:(id)arg3 error:(id *)arg4;
+- (id)fetchRulesWithSupport:(double)arg1 confidence:(double)arg2 filters:(id)arg3 limit:(unsigned long long)arg4 error:(id *)arg5;
 - (id)init;
 - (id)initWithURL:(id)arg1 readOnly:(BOOL)arg2;
 - (void)saveRules:(id)arg1 error:(id *)arg2;

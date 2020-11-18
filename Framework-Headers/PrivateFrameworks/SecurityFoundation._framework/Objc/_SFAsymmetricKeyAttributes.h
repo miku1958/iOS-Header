@@ -13,7 +13,7 @@
 @interface _SFAsymmetricKeyAttributes : NSObject <_SFKeyAttributes>
 {
     _SFKeySpecifier *_asymmetricKeySpecifier;
-    struct NSString *_asymmetricKeyDomain;
+    NSString *_asymmetricKeyDomain;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSpecifier:(id)arg1;
-- (id)initWithSpecifier:(id)arg1 domain:(struct NSString *)arg2;
+- (id)initWithSpecifier:(id)arg1 domain:(id)arg2;
 
 @end
 

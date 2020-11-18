@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "DMFControlGroupIdentifier.h"
+#import <DeviceManagement/DMFControlGroupIdentifier.h>
 
 @interface DMFControlGroupIdentifier (CRKAdditions)
 + (id)crk_adHocXPCGroupIdentifier;

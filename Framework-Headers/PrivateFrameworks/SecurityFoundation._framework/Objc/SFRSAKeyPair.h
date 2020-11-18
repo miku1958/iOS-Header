@@ -13,7 +13,7 @@
 
 - (void).cxx_destruct;
 - (id)initRandomKeyPairWithSpecifier:(id)arg1;
-- (id)initRandomKeyPairWithSpecifier:(id)arg1 privateKeyDomain:(struct NSString *)arg2;
+- (id)initRandomKeyPairWithSpecifier:(id)arg1 privateKeyDomain:(id)arg2;
 
 @end
 

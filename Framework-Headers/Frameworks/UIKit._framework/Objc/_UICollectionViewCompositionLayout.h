@@ -26,7 +26,7 @@
 - (void)addSublayout:(id)arg1 forSections:(id)arg2 offset:(struct CGPoint)arg3 relativeToEdges:(unsigned long long)arg4 fromSiblingLayout:(id)arg5;
 - (struct CGSize)collectionViewContentSize;
 - (id)init;
-- (void)invalidateLayoutWithContext:(struct _UICollectionViewCompositionLayoutInvalidationContext *)arg1;
+- (void)invalidateLayoutWithContext:(id)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;

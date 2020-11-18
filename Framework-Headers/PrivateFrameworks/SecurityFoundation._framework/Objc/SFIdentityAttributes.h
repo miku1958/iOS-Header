@@ -14,7 +14,7 @@
 {
     id _identityAttributesInternal;
     NSString *persistentIdentifier;
-    struct NSString *_privateKeyDomain;
+    NSString *_privateKeyDomain;
 }
 
 @property (readonly, copy) NSString *debugDescription;

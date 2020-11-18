@@ -25,6 +25,9 @@
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (BOOL)_accessibilityUsesFrameInContainerSpace;
 - (BOOL)_accessibilityViewHierarchyHasNativeFocus;
+- (id)_axGetStoredDefaultFocusGroupDescriptor;
+- (void)_axSetStoredDefaultFocusGroupDescriptor:(id)arg1;
+- (id)_focusGroupDescriptor;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;

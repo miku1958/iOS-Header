@@ -15,6 +15,7 @@
     MISSING_TYPE *needsRootViewUpdate;
     MISSING_TYPE *needsEnvironmentUpdate;
     MISSING_TYPE *isRendering;
+    MISSING_TYPE *externalUpdateCount;
     MISSING_TYPE *currentTimestamp;
 }
 

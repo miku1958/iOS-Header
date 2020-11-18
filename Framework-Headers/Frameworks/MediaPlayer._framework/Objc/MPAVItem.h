@@ -79,6 +79,7 @@
     long long _storeItemInt64ID;
     long long _storeSubscriptionAdamID;
     MPMediaItem *_mediaItem;
+    NSString *_explicitBadge;
     MPModelGenericObject *_modelGenericObject;
     NSString *_aggregateDictionaryItemIdentifier;
     NSString *_storeFrontIdentifier;
@@ -142,6 +143,7 @@
 @property (readonly, nonatomic) double durationFromExternalMetadata;
 @property (readonly, nonatomic) double durationIfAvailable;
 @property (readonly, nonatomic) BOOL durationIsValid;
+@property (copy, nonatomic) NSString *explicitBadge; // @synthesize explicitBadge=_explicitBadge;
 @property (readonly, nonatomic, getter=isExplicitTrack) BOOL explicitTrack;
 @property (readonly, copy, nonatomic) NSString *externalContentIdentifier; // @synthesize externalContentIdentifier=_externalContentIdentifier;
 @property (nonatomic, getter=hasExternalDisplay) BOOL externalDisplay; // @synthesize externalDisplay=_externalDisplay;
@@ -198,6 +200,7 @@
 @property (readonly, copy, nonatomic) NSString *stationHash;
 @property (readonly, nonatomic) long long stationID;
 @property (readonly, copy, nonatomic) NSString *stationName;
+@property (readonly, nonatomic) long long stationProviderID;
 @property (readonly, copy, nonatomic) NSString *stationStringID;
 @property (readonly, nonatomic) long long status;
 @property (readonly, nonatomic) NSNumber *storeAccountID; // @synthesize storeAccountID=_storeAccountID;

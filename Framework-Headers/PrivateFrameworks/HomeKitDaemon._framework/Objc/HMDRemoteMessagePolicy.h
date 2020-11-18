@@ -23,7 +23,10 @@
 @property (readonly) unsigned long long roles; // @synthesize roles=_roles;
 @property (readonly) unsigned long long transportRestriction; // @synthesize transportRestriction=_transportRestriction;
 
++ (id)defaultPolicy;
 + (id)defaultSecurePolicy;
++ (id)remoteMessagePolicyWithRequiresSecureMessage:(BOOL)arg1 allowsAnonymousMessage:(BOOL)arg2 requiresAccountMessage:(BOOL)arg3 transportRestriction:(unsigned long long)arg4 roles:(unsigned long long)arg5;
+- (id)__initWithRequiresSecureMessage:(BOOL)arg1 allowsAnonymousMessage:(BOOL)arg2 requiresAccountMessage:(BOOL)arg3 transportRestriction:(unsigned long long)arg4 roles:(unsigned long long)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)init;

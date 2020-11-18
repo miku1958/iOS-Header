@@ -16,7 +16,7 @@
 - (void)_pu_incrementForPageSwipeTest:(id)arg1 dt:(double)arg2 stop:(BOOL *)arg3;
 - (BOOL)_pu_isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (id)_pu_pptScrollHelper;
-- (int)_pu_scrollableAxis;
+- (unsigned long long)_pu_scrollableAxis;
 - (void)_pu_setPPTScrollHelper:(id)arg1;
 - (void)pu_cancelScrollAnimation;
 - (void)pu_cancelScrollGesture;
@@ -25,7 +25,7 @@
 - (BOOL)pu_isScrolledAtEdge:(unsigned int)arg1;
 - (BOOL)pu_isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (BOOL)pu_isScrolledBeyondEdge:(unsigned int)arg1;
-- (void)pu_ppt_performPageSwipeTest:(id)arg1 iterations:(long long)arg2 numberOfPages:(long long)arg3 scrollAxis:(int)arg4;
+- (void)pu_ppt_performPageSwipeTest:(id)arg1 iterations:(long long)arg2 numberOfPages:(long long)arg3 scrollAxis:(unsigned long long)arg4;
 - (void)pu_ppt_scrollToContentOffset:(struct CGPoint)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)pu_scrollToContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)pu_scrollToEdge:(unsigned int)arg1 animated:(BOOL)arg2;

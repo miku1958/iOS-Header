@@ -8,13 +8,18 @@
 
 @interface CAMFullscreenViewfinderLayout : NSObject
 {
+    double _screenScale;
     struct CGSize _shutterIntrinsicSize;
     struct CGRect _referenceBounds;
+    struct UIEdgeInsets __safeAreaInsets;
 }
 
+@property (readonly, nonatomic) struct UIEdgeInsets _safeAreaInsets; // @synthesize _safeAreaInsets=__safeAreaInsets;
 @property (nonatomic) struct CGRect referenceBounds; // @synthesize referenceBounds=_referenceBounds;
+@property (nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property (nonatomic) struct CGSize shutterIntrinsicSize; // @synthesize shutterIntrinsicSize=_shutterIntrinsicSize;
 
+- (void)_updateSafeAreaInsets;
 - (struct CGRect)alignmentRectForShutterControl;
 - (struct CGRect)frameForBottomControl:(id)arg1 betweenShutterAndLeftControl:(id)arg2;
 - (struct CGRect)frameForBottomControl:(id)arg1 betweenShutterAndRightControl:(id)arg2;
@@ -23,7 +28,6 @@
 - (struct CGRect)frameForControlStatusBar;
 - (struct CGRect)frameForShutterControl:(id)arg1;
 - (CDStruct_d54ccef3)geometryForElapsedTimeView:(id)arg1 viewportFrame:(struct CGRect)arg2 orientation:(long long)arg3;
-- (double)heightForExpandedAccessoryArea;
 - (id)initWithReferenceBounds:(struct CGRect)arg1 shutterIntrinsicSize:(struct CGSize)arg2;
 - (struct CGRect)viewportFrameForAspectRatio:(long long)arg1 accessoryAreaExpanded:(BOOL)arg2;
 - (struct CGRect)viewportFrameForAspectRatio:(long long)arg1 usingAppDrawer:(BOOL)arg2 accessoryAreaExpanded:(BOOL)arg3;

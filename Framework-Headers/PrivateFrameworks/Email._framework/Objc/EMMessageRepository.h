@@ -52,7 +52,9 @@
 - (void)_notifyRecoverableObservers;
 - (id)_predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_undoActionForConversationAction:(id)arg1;
-- (void)_updateObserversForChangeAction:(id)arg1;
+- (void)_updateObserversForAction:(id)arg1;
+- (void)_updateObserversForDeletedObjectIDs:(id)arg1;
+- (void)_updateObserversForFlagChangeAction:(id)arg1;
 - (void)_vipsDidChange:(id)arg1;
 - (id)cachedMetadataJSONForKey:(id)arg1 messageID:(id)arg2;
 - (void)didFinishBlockingMainThreadForFuture:(id)arg1;

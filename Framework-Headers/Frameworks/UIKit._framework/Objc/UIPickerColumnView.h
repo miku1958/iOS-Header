@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_scrollRowAtIndexPathToSelectionBar:(id)arg1 animated:(BOOL)arg2;
 - (void)_sendCheckedRow:(long long)arg1 inTableView:(id)arg2 checked:(BOOL)arg3;
 - (BOOL)_soundsEnabled;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (struct CGRect)_tableFrame;
 - (struct CATransform3D)_transformForTableWithPerspectiveTranslationX:(double)arg1;
 - (struct CATransform3D)_transformForTableWithTranslationX:(double)arg1;

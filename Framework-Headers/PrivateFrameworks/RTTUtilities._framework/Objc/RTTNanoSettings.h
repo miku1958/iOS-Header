@@ -23,7 +23,7 @@
 - (id)currentLocale;
 - (id)init;
 - (id)uuidFromContext:(id)arg1;
-- (id)valueForPreferenceKey:(id)arg1;
+- (id)valueForPreferenceKey:(id)arg1 andContext:(id)arg2;
 
 @end
 

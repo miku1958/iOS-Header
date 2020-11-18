@@ -79,13 +79,13 @@
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (id)initWithPBData:(id)arg1 treatment:(id)arg2;
 - (void)loadLocalCachesFromStore;
-- (id)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5 impressionBias:(double)arg6;
+- (id)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5 impressionBias:(double)arg6 groupBias:(double)arg7;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)prepareAggregatesForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)syncWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 individually:(BOOL)arg5 configurableValues:(id)arg6 featuresUpdatedBlock:(CDUnknownBlockType)arg7;
+- (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 groupType:(long long)arg5 individually:(BOOL)arg6 configurableValues:(id)arg7 featuresUpdatedBlock:(CDUnknownBlockType)arg8;
 
 @end
 

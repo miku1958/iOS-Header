@@ -19,6 +19,7 @@
 - (void)_handleAuthenticationFeedback:(id)arg1;
 - (void)_setUILocked:(BOOL)arg1;
 - (BOOL)biometricAuthenticationCoordinator:(id)arg1 requestsUnlockWithIntent:(int)arg2;
+- (BOOL)handleKeyHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)lockUIFromSource:(int)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

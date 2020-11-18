@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import <GameCenterUI/CNAvatarViewControllerDelegate-Protocol.h>
+
 @class CNAvatarViewController, GKPlayer, NSObject, UIImageView;
 @protocol GKPlayerAvatarViewDelegate;
 
-@interface GKDashboardPlayerPhotoView : UIView
+@interface GKDashboardPlayerPhotoView : UIView <CNAvatarViewControllerDelegate>
 {
     BOOL _useDarkerPlaceholder;
     BOOL _usingPlaceholder;
@@ -33,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (void)commonInit;
+- (void)didUpdateContentForAvatarViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidatePhoto;

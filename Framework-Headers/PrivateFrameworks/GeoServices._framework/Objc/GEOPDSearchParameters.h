@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, GEOPDRecentRouteInfo, GEOPDRetainedSearchMetadata, GEOPDSearchFilter, GEOPDSearchLocationParameters, GEOPDSearchStructureIntentRequestType, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDAutocompleteEntry, GEOPDRecentRouteInfo, GEOPDRetainedSearchMetadata, GEOPDSSearchFilter, GEOPDSSearchLocationParameters, GEOPDSSearchStructureIntentRequestType, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchParameters : PBCodable <NSCopying>
@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     GEOPDRecentRouteInfo *_recentRouteInfo;
     GEOPDRetainedSearchMetadata *_retainedSearch;
-    GEOPDSearchFilter *_searchFilter;
-    GEOPDSearchLocationParameters *_searchLocationParameters;
+    GEOPDSSearchFilter *_searchFilter;
+    GEOPDSSearchLocationParameters *_searchLocationParameters;
     NSString *_searchString;
-    GEOPDSearchStructureIntentRequestType *_searchStructureIntentType;
+    GEOPDSSearchStructureIntentRequestType *_searchStructureIntentType;
     NSData *_suggestionEntryMetadata;
     GEOPDAutocompleteEntry *_suggestionEntry;
     NSData *_suggestionMetadata;
@@ -95,10 +95,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int maxResults;
 @property (strong, nonatomic) GEOPDRecentRouteInfo *recentRouteInfo;
 @property (strong, nonatomic) GEOPDRetainedSearchMetadata *retainedSearch;
-@property (strong, nonatomic) GEOPDSearchFilter *searchFilter;
-@property (strong, nonatomic) GEOPDSearchLocationParameters *searchLocationParameters;
+@property (strong, nonatomic) GEOPDSSearchFilter *searchFilter;
+@property (strong, nonatomic) GEOPDSSearchLocationParameters *searchLocationParameters;
 @property (strong, nonatomic) NSString *searchString;
-@property (strong, nonatomic) GEOPDSearchStructureIntentRequestType *searchStructureIntentType;
+@property (strong, nonatomic) GEOPDSSearchStructureIntentRequestType *searchStructureIntentType;
 @property (nonatomic) int searchType;
 @property (nonatomic) int sortOrder;
 @property (strong, nonatomic) GEOPDAutocompleteEntry *suggestionEntry;

@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassroomKit/CRKCloudStoringSubItem-Protocol.h>
 #import <ClassroomKit/NSCopying-Protocol.h>
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
 @class CRKImage, NSData, NSPersonNameComponents, NSString;
 
-@interface CRKUser : NSObject <NSSecureCoding, NSCopying, CRKCloudStoringSubItem>
+@interface CRKUser : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _useMeCardIfAvailable;
     NSString *_userIdentifier;
@@ -29,12 +28,9 @@
     CRKImage *_userImage;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
 @property (copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
-@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
 @property (copy, nonatomic) NSString *imageURL; // @synthesize imageURL=_imageURL;
 @property (readonly, nonatomic) BOOL isMeCardUser;
@@ -43,7 +39,6 @@
 @property (copy, nonatomic) NSString *phoneticFamilyName; // @synthesize phoneticFamilyName=_phoneticFamilyName;
 @property (copy, nonatomic) NSString *phoneticGivenName; // @synthesize phoneticGivenName=_phoneticGivenName;
 @property (nonatomic) long long role; // @synthesize role=_role;
-@property (readonly) Class superclass;
 @property (nonatomic, getter=shouldUseMeCardIfAvailable) BOOL useMeCardIfAvailable; // @synthesize useMeCardIfAvailable=_useMeCardIfAvailable;
 @property (copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property (copy, nonatomic) CRKImage *userImage; // @synthesize userImage=_userImage;
@@ -51,25 +46,19 @@
 @property (copy, nonatomic) NSString *userSource; // @synthesize userSource=_userSource;
 
 + (id)customUserFromMeCardUser:(id)arg1;
-+ (id)instanceWithKeyValue:(id)arg1;
-+ (id)instanceWithParentObject:(id)arg1 keyValue:(id)arg2;
-+ (id)instanceWithRecord:(id)arg1;
 + (id)meCardUser;
-+ (id)recordType;
-+ (id)skeletonInstance;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)applyFieldsToRecord:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)dictionaryValue;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
-- (BOOL)isChangedFrom:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToUser:(id)arg1;
-- (id)recordName;
 - (void)updateUserImage;
 
 @end

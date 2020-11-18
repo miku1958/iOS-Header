@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (id)initWithDictationConnection:(id)arg1;
 - (oneway void)languageDetectorFailedWithError:(id)arg1;
+- (oneway void)speechDidBeginLocalRecognitionWithModelInfo:(id)arg1;
 - (oneway void)speechDidDetectLanguage:(id)arg1 confidenceScores:(id)arg2 isConfident:(BOOL)arg3;
 - (oneway void)speechDidFinishWritingAudioFile:(id)arg1 error:(id)arg2;
 - (oneway void)speechDidProcessAudioDuration:(double)arg1;
@@ -34,7 +35,7 @@
 - (oneway void)speechDidRecognizeTokens:(id)arg1 usingSpeechModel:(id)arg2;
 - (oneway void)speechDidRecognizeTranscriptionObjects:(id)arg1 usingSpeechModel:(id)arg2;
 - (oneway void)speechRecognitionDidFinishWithError:(id)arg1;
-- (oneway void)speechRecordingDidBegin;
+- (oneway void)speechRecordingDidBeginWithOptions:(id)arg1;
 - (oneway void)speechRecordingDidCancel;
 - (oneway void)speechRecordingDidEnd;
 - (oneway void)speechRecordingDidFail:(id)arg1;

@@ -52,6 +52,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isFirstParty;
 @property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, nonatomic) long long state;
 @property (readonly, copy, nonatomic) NSDate *stopDate; // @synthesize stopDate=_stopDate;

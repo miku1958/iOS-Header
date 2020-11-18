@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_performAgeGateVerificationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performRestrictionsCheckWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_preflightDownloadWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_preflightWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_preflightWithOptions:(long long)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_ratingDomain;
 - (id)_ratingValue;
 - (long long)_requiredAgeForPlayback;

@@ -37,7 +37,7 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)_adjustCutoffLocation:(unsigned long long)arg1 forLineStartingAtIndex:(unsigned long long)arg2;
-- (BOOL)_allowTextOverlapForFont:(struct UIFont *)arg1;
+- (BOOL)_allowTextOverlapForFont:(id)arg1;
 - (void)_setLines:(id)arg1;
 - (void)_updateLines;
 - (void)didPerformChanges;
@@ -45,7 +45,7 @@
 - (id)initWithContext:(struct CGContext *)arg1;
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
-- (void)shiftLinesVerticallyToAvoidOverlap:(id)arg1 referenceFont:(struct UIFont *)arg2;
+- (void)shiftLinesVerticallyToAvoidOverlap:(id)arg1 referenceFont:(id)arg2;
 
 @end
 

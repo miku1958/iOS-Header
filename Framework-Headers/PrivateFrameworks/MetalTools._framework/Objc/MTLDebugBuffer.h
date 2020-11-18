@@ -51,6 +51,7 @@
 - (BOOL)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (BOOL)doesAliasAnyResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (BOOL)doesAliasResource:(id)arg1;
+- (unsigned long long)gpuAddress;
 - (id)heap;
 - (id)initWithBuffer:(id)arg1 device:(id)arg2 bytes:(const void *)arg3 options:(unsigned long long)arg4;
 - (id)initWithBuffer:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3;

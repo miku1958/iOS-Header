@@ -32,7 +32,7 @@
 + (id)ppFeedbackItemToPPPBFeedbackItem:(id)arg1;
 + (id)recordsForTopics:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3;
 + (float)resolvedPerRecordDecayRateForRecord:(id)arg1 perRecordDecayRate:(float)arg2;
-+ (struct PPScoredItem *)scoreTopics:(id)arg1 scoringDate:(id)arg2 decayRate:(double)arg3 strictFiltering:(BOOL)arg4 sourceStats:(id)arg5 scoreInterpreter:(id)arg6;
++ (id)scoreTopics:(id)arg1 scoringDate:(id)arg2 decayRate:(double)arg3 strictFiltering:(BOOL)arg4 sourceStats:(id)arg5 scoreInterpreter:(id)arg6;
 + (void)sortAndTruncate:(id)arg1 queryLimit:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)_coalesceScoredTopics:(id)arg1;
@@ -64,7 +64,7 @@
 - (id)initWithStorage:(id)arg1;
 - (BOOL)iterScoresForTopicMapping:(id)arg1 query:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
 - (BOOL)iterTopicRecordsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
-- (void)logDonationErrorForReason:(struct PPMTopicDonationErrorReason_)arg1;
+- (void)logDonationErrorForReason:(long long)arg1;
 - (void)processFeedback:(id)arg1;
 - (id)rankedTopicsWithQuery:(id)arg1 error:(id *)arg2;
 - (id)rankedTopicsWithQuery:(id)arg1 error:(id *)arg2 clientProcessName:(id)arg3;

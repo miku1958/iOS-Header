@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)enclosingScrollViewIsScrolling;
 - (void)endOneFingerSelectWithExecutionContext:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)oneFingerForcePan:(id)arg1;
 - (void)oneFingerForcePress:(id)arg1;
 - (id)owner;

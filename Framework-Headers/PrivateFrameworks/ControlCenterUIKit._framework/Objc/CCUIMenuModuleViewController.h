@@ -61,6 +61,7 @@
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
 @property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
+@property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 @property (nonatomic) BOOL shouldProvideOwnPlatter; // @synthesize shouldProvideOwnPlatter=_shouldProvideOwnPlatter;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @dynamic title;

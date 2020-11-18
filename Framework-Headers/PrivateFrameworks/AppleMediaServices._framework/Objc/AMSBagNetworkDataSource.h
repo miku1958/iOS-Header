@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
 
-@class AMSProcessInfo, AMSURLSession, AMSUniqueExecutionQueue, NSDate, NSDictionary, NSString;
+@class AMSBagNetworkTask, AMSBagNetworkTaskResult, AMSProcessInfo, NSDate, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,28 +18,26 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _dataSourceDataInvalidatedHandler;
     NSString *_profile;
     NSString *_profileVersion;
-    NSDictionary *_cachedData;
+    AMSBagNetworkTaskResult *_cachedResult;
     NSObject<OS_dispatch_queue> *_cachedDataAccessQueue;
     NSString *_cachedStorefront;
     NSObject<OS_dispatch_queue> *_cachedStorefrontAccessQueue;
-    AMSUniqueExecutionQueue *_loadDataQueue;
+    AMSBagNetworkTask *_currentLoadTask;
     NSObject<OS_dispatch_queue> *_processAccountStoreDidChangeNotificationQueue;
     AMSProcessInfo *_processInfo;
-    AMSURLSession *_URLSession;
 }
 
-@property (strong, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
-@property (strong, nonatomic) NSDictionary *cachedData; // @synthesize cachedData=_cachedData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cachedDataAccessQueue; // @synthesize cachedDataAccessQueue=_cachedDataAccessQueue;
+@property (strong, nonatomic) AMSBagNetworkTaskResult *cachedResult; // @synthesize cachedResult=_cachedResult;
 @property (strong, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cachedStorefrontAccessQueue; // @synthesize cachedStorefrontAccessQueue=_cachedStorefrontAccessQueue;
+@property (strong, nonatomic) AMSBagNetworkTask *currentLoadTask; // @synthesize currentLoadTask=_currentLoadTask;
 @property (copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler; // @synthesize dataSourceChangedHandler=_dataSourceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType dataSourceDataInvalidatedHandler; // @synthesize dataSourceDataInvalidatedHandler=_dataSourceDataInvalidatedHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) AMSUniqueExecutionQueue *loadDataQueue; // @synthesize loadDataQueue=_loadDataQueue;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processAccountStoreDidChangeNotificationQueue; // @synthesize processAccountStoreDidChangeNotificationQueue=_processAccountStoreDidChangeNotificationQueue;
 @property (strong, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
@@ -47,30 +45,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property (readonly) Class superclass;
 
-+ (id)_OSBuildTypeString;
-+ (id)_URLCookieNamesForProfile:(id)arg1;
-+ (id)_accountForAccountMediaType:(id)arg1;
-+ (id)_currentStorefrontForAccountMediaType:(id)arg1;
-+ (id)_defaultURLCookieNames;
-+ (id)_deviceString;
 + (BOOL)_isDataDictionary:(id)arg1 equalToDataDictionary:(id)arg2;
-+ (id)_requestStorefrontFromURLResponse:(id)arg1;
-+ (id)_setStorefrontFromURLResponse:(id)arg1 bagData:(id)arg2;
-+ (void)_setURLCookieNames:(id)arg1 forProfile:(id)arg2;
 + (BOOL)_shouldProcessAccountStoreDidChangeNotification:(id)arg1 withMediaType:(id)arg2;
-+ (BOOL)_shouldReloadDataForOriginalCookies:(id)arg1 newCookies:(id)arg2;
-+ (BOOL)_shouldReloadDataForSetStorefront:(id)arg1 bagData:(id)arg2;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange:(id)arg1;
-- (id)_baseURLString;
-- (id)_cookiesForNames:(id)arg1;
-- (id)_createRequestWithCookieNames:(id)arg1 storefront:(id)arg2;
-- (id)_createURLWithCookieNames:(id)arg1 storefront:(id)arg2;
+- (id)_fetchBag;
 - (void)_invalidateCacheNotification:(id)arg1;
-- (id)_loadDataWithAttempt:(unsigned long long)arg1 error:(id *)arg2;
-- (id)_processLoadDataResult:(id)arg1;
-- (void)_updateCachedData:(id)arg1;
-- (void)_updateStorefrontSuffixIfNecessaryWithBagData:(id)arg1;
+- (void)_updateCachedResult:(id)arg1;
 - (id)bagKeyInfoForKey:(id)arg1;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3;

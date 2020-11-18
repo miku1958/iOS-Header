@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseGetNextAssignableColorWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetSequenceNumber:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetUUID:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseImportICSData:(id)arg1 intoCalendarsWithIDs:(id)arg2 optionsMask:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)CADDatabaseImportEvents:(id)arg1 fromICSData:(id)arg2 intoCalendarsWithIDs:(id)arg3 optionsMask:(unsigned long long)arg4 batchSize:(int)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseMarkIndividualChangesConsumed:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_CADDatabaseCanModifyCalendarDatabase;
 - (struct __CFArray *)_copyToIntCFArrayRef:(id)arg1;
 - (struct __CFSet *)_copyToIntCFSetRef:(id)arg1;
-- (id)_importData:(id)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 outError:(int *)arg4;
+- (id)_importEvents:(id)arg1 data:(id)arg2 intoCalendarWithID:(int)arg3 optionsMask:(unsigned long long)arg4 batchSize:(int)arg5 outError:(int *)arg6;
 
 @end
 

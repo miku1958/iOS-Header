@@ -135,6 +135,7 @@
 - (void)prepareForReuseIsReload:(BOOL)arg1;
 - (void)rectBecameVisible:(struct CGRect)arg1;
 - (void)saveTemporaryViews;
+- (id)selectedCopyViewForDayOccurrenceView:(id)arg1;
 - (void)setHoursToPadTop:(double)arg1;
 - (void)setNeedsLayout;
 - (void)setOccurrences:(id)arg1;

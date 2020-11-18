@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *urlSession;
     MISSING_TYPE *accounts;
     MISSING_TYPE *requestEncoder;
-    MISSING_TYPE *requestInterceptor;
 }
 
 - (void).cxx_destruct;

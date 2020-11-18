@@ -8,6 +8,7 @@
 
 @interface ICInAppMessageMetadataEntry (Utilities)
 
+@property (nonatomic) BOOL didCancelUserNotification;
 @property (nonatomic) unsigned long long numberOfDisplays;
 
 @end

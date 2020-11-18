@@ -13,10 +13,12 @@
 
 @property (nonatomic) unsigned long long templateType; // @synthesize templateType=_templateType;
 
++ (struct CGSize)preferredContentSize;
 - (void)_applyChromelessToBar:(long long)arg1 navigationItem:(id)arg2;
 - (void)_presentationStyleValidationCheck;
 - (double)autoScrollEdgeTransitionDistance;
 - (struct NSDirectionalEdgeInsets)directionalLayoutMargins;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (struct NSDirectionalEdgeInsets)insetsForTemplateType:(unsigned long long)arg1;
 - (void)loadView;
 - (long long)navigationBarScrollToEdgeBehavior;

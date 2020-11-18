@@ -13,7 +13,7 @@
 
 @interface MLBackgroundRunner : NSObject <_DASExtensionRunner>
 {
-    struct NSString *_activity;
+    NSString *_activity;
     MLBackgroundTask *_task;
     id<NSObject> _dataSource;
 }

@@ -10,7 +10,7 @@
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravelState-Protocol.h>
 
-@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSParagraphStyle, NSString, UIColor, UIFont, UIView, _NTKColorManager;
+@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSNumber, NSParagraphStyle, NSString, UIColor, UIFont, UIView, _NTKColorManager;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKColoringLabel : NTKLegibilityLabel <NTKColoringView, CLKUILabel, NTKTimeTravelState>
@@ -18,7 +18,7 @@
     CLKDevice *_device;
     unsigned long long _options;
     _NTKColorManager *_colorManager;
-    struct NSNumber *_updateToken;
+    NSNumber *_updateToken;
     BOOL _updatedAfterTimeTravelStateChange;
     CLKFont *_preTimeTravelFont;
     BOOL _monochromeSnapshot;

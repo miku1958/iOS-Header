@@ -13,7 +13,6 @@
 
 @class IKCollectionElement, IKViewElement, NSString, TVCarouselLayout, _TVCarouselView;
 
-__attribute__((visibility("hidden")))
 @interface _TVCarouselViewController : UIViewController <TVCarouselViewDataSource, TVCarouselViewDelegate, TVCollectionViewLockupCellDelegate, TVAppTemplateImpressionable>
 {
     TVCarouselLayout *_carouselLayout;
@@ -55,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)carouselView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndex:(unsigned long long)arg3;
 - (void)carouselView:(id)arg1 willDisplayItemAtIndex:(unsigned long long)arg2;
 - (void)carouselViewDidScroll:(id)arg1;
+- (void)centerItemAtPageIndex:(long long)arg1;
 - (void)collectionViewCellDidSelect:(id)arg1;
 - (void)dealloc;
 - (id)impressionableElementsContainedInDocument:(id)arg1;

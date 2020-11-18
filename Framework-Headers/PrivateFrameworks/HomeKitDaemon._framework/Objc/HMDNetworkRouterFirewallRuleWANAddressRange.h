@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
 - (id)initWithAddressStart:(id)arg1 addressEnd:(id)arg2;
-- (struct NSDictionary *)prettyJSONDictionary;
+- (id)prettyJSONDictionary;
 
 @end
 

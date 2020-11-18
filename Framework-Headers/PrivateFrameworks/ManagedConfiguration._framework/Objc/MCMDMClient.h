@@ -23,8 +23,8 @@
 - (void)_destroyXPCConnectionAndInvalidate:(BOOL)arg1;
 - (void)_queue_createAndStartMDMXPCConnection;
 - (int)accessRights;
-- (BOOL)authenticateWithCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 topic:(id)arg3 useDevelopmentAPNS:(BOOL)arg4 signMessage:(BOOL)arg5 isUserEnrollment:(BOOL)arg6 enrollmentID:(id)arg7 outError:(id *)arg8;
-- (BOOL)checkOutCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 topic:(id)arg3 signMessage:(BOOL)arg4 isUserEnrollment:(BOOL)arg5 enrollmentID:(id)arg6 outError:(id *)arg7;
+- (BOOL)authenticateWithCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 pinnedSecCertificateRefs:(id)arg3 pinningRevocationCheckRequired:(BOOL)arg4 topic:(id)arg5 useDevelopmentAPNS:(BOOL)arg6 signMessage:(BOOL)arg7 isUserEnrollment:(BOOL)arg8 enrollmentID:(id)arg9 outError:(id *)arg10;
+- (BOOL)checkOutCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 pinnedSecCertificateRefs:(id)arg3 pinningRevocationCheckRequired:(BOOL)arg4 topic:(id)arg5 signMessage:(BOOL)arg6 isUserEnrollment:(BOOL)arg7 enrollmentID:(id)arg8 outError:(id *)arg9;
 - (void)dealloc;
 - (id)deviceEnrollmentAuthenticationDict;
 - (void)getAssertionDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
@@ -33,8 +33,7 @@
 - (BOOL)isManagedByMDM;
 - (void)migrateMDMWithContext:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notifyNewConfiguration;
-- (void)processDeviceRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)processDeviceRequest:(id)arg1 outError:(id *)arg2;
+- (void)processDeviceRequest:(id)arg1 encodeResponse:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)retryNotNowResponse;
 - (void)scheduleTokenUpdate;
 - (void)scheduleTokenUpdateIfNecessary;

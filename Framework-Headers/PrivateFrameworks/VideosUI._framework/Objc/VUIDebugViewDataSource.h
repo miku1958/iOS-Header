@@ -11,13 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface VUIDebugViewDataSource : NSObject
 {
+    NSArray *_metricsDataSource;
     NSArray *_defaultsDataSource;
 }
 
 @property (strong, nonatomic) NSArray *defaultsDataSource; // @synthesize defaultsDataSource=_defaultsDataSource;
+@property (strong, nonatomic) NSArray *metricsDataSource; // @synthesize metricsDataSource=_metricsDataSource;
 
 - (void).cxx_destruct;
 - (id)_createDefaultsDataSource;
+- (id)_createMetricsDataSource;
 - (id)init;
 
 @end

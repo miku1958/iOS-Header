@@ -26,8 +26,8 @@
     NSObject<OS_dispatch_source> *_heartbeatTimer;
     NSUUID *_peer;
     NSString *_peerAppleID;
-    struct NSMutableDictionary *_requestHandlers;
-    struct NSMutableDictionary *_requestMap;
+    NSMutableDictionary *_requestHandlers;
+    NSMutableDictionary *_requestMap;
     unsigned char _serviceType;
     unsigned int _sessionFlags;
     unsigned int _sessionID;
@@ -57,7 +57,7 @@
     BOOL _pairVerifyEnded;
     unsigned int _pairVerifyFlags;
     struct PairingSessionPrivate *_pairVerifySession;
-    struct NSMutableDictionary *_requestQueue;
+    NSMutableDictionary *_requestQueue;
     BOOL _timeoutFired;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     NSXPCConnection *_xpcCnx;

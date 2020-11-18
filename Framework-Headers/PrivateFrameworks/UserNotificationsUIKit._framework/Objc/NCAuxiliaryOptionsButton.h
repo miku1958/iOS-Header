@@ -15,8 +15,12 @@
 
 - (void).cxx_destruct;
 - (void)_configureBackgroundViewIfNecessary;
+- (void)_handleHoverGestureRecognizerEvent:(id)arg1;
 - (void)_setCornerRadius:(double)arg1;
+- (void)_updateBackgroundVisualStyling;
+- (id)init;
 - (void)layoutSubviews;
+- (void)setHighlighted:(BOOL)arg1;
 
 @end
 

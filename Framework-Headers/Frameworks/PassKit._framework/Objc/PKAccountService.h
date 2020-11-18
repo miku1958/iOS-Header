@@ -51,6 +51,7 @@
 - (void)deleteAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteEventWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteEventsWithAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deleteEventsWithAccountIdentifier:(id)arg1 excludingTypes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deleteLocalAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (CDUnknownBlockType)errorHandlerForMethod:(SEL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)eventsForAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

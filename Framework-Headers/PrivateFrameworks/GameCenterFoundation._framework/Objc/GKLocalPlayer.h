@@ -98,6 +98,7 @@
 - (id)displayNameWithOptions:(unsigned char)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchCustomTournamentInvite;
+- (void)fetchItemsForIdentityVerificationSignature:(CDUnknownBlockType)arg1;
 - (void)fetchMultiplayerGameInvite;
 - (void)fetchSavedGamesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchTurnBasedEvent;

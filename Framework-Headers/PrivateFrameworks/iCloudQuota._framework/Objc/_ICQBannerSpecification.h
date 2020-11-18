@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @interface _ICQBannerSpecification : NSObject
 {
     NSDictionary *_serverDict;
     NSString *_messageFormat;
     NSArray *_messageLinks;
+    NSURL *_remoteUIURL;
 }
 
 @property (strong, nonatomic) NSString *messageFormat; // @synthesize messageFormat=_messageFormat;
 @property (strong, nonatomic) NSArray *messageLinks; // @synthesize messageLinks=_messageLinks;
+@property (strong, nonatomic) NSURL *remoteUIURL; // @synthesize remoteUIURL=_remoteUIURL;
 @property (strong, nonatomic) NSDictionary *serverDict;
 
 + (id)bannerSpecificationSampleForLevel:(long long)arg1;

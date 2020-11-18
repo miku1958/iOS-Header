@@ -8,7 +8,7 @@
 
 #import <MapsSupport/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, MSPSharedTripGroupSession, MSPSharedTripStorageController, NSMutableDictionary, NSString;
+@class IDSService, MSPSharedTripGroupSession, MSPSharedTripStorageController, NSArray, NSMutableDictionary, NSString;
 @protocol MSPSharedTripAvailabiltyDelegate, MSPSharedTripRelayDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,10 +25,12 @@ __attribute__((visibility("hidden")))
     id<MSPSharedTripAvailabiltyDelegate> _availabilityDelegate;
 }
 
+@property (readonly, nonatomic) NSArray *accountAliases;
 @property (weak, nonatomic) id<MSPSharedTripAvailabiltyDelegate> availabilityDelegate; // @synthesize availabilityDelegate=_availabilityDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MSPSharedTripRelayDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasValidIDSAccount;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *sharingHandle;
 @property (readonly, nonatomic) NSString *sharingName;
@@ -40,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)_handleChunk:(id)arg1 fromID:(id)arg2 receivingHandle:(id)arg3 receivingAccountIdentifier:(id)arg4;
 - (void)_handleCommand:(id)arg1 fromID:(id)arg2;
 - (void)_handleIncomingMessage:(id)arg1 info:(id)arg2 fromID:(id)arg3 receivingHandle:(id)arg4 receivingAccountIdentifier:(id)arg5;
-- (BOOL)_hasValidIDSAccount;
 - (void)_removeFinishedSession:(id)arg1;
 - (void)_startService;
 - (void)dealloc;

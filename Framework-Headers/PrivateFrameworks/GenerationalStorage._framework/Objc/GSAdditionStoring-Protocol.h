@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class GSAddition, NSArray, NSDictionary, NSString, NSURL;
-@protocol NSCopying><NSSecureCoding;
+@class GSAddition, NSArray, NSDictionary, NSEnumerator, NSString, NSURL;
+@protocol GSAdditionEnumerating, NSCopying><NSSecureCoding;
 
 @protocol GSAdditionStoring
 
@@ -17,7 +17,7 @@
 - (NSArray *)additionsWithNames:(NSArray *)arg1 inNameSpace:(NSString *)arg2 error:(id *)arg3;
 - (void)cleanupStagingURL:(NSURL *)arg1;
 - (void)createAdditionStagedAtURL:(NSURL *)arg1 creationInfo:(NSDictionary *)arg2 completionHandler:(void (^)(GSAddition *, NSError *))arg3;
-- (struct NSEnumerator *)enumeratorForAdditionsInNameSpace:(NSString *)arg1 withOptions:(unsigned long long)arg2 withoutOptions:(unsigned long long)arg3 ordering:(int)arg4;
+- (NSEnumerator<GSAdditionEnumerating> *)enumeratorForAdditionsInNameSpace:(NSString *)arg1 withOptions:(unsigned long long)arg2 withoutOptions:(unsigned long long)arg3 ordering:(int)arg4;
 - (NSURL *)prepareAdditionCreationWithItemAtURL:(NSURL *)arg1 byMoving:(BOOL)arg2 creationInfo:(NSDictionary *)arg3 error:(id *)arg4;
 - (void)removeAdditions:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)removeAllAdditionsForNamespaces:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;

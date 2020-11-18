@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowsEditing;
     BOOL _allowsCancel;
     BOOL _allowsDeletion;
+    BOOL _allowsDone;
     BOOL _hidesPromptInLandscape;
     id<CNContactPickerContentDelegate> _delegate;
     CNContactNavigationController *_contactNavigationController;
@@ -47,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIBarButtonItem *addContactBarButtonItem;
 @property (nonatomic) BOOL allowsCancel; // @synthesize allowsCancel=_allowsCancel;
 @property (nonatomic) BOOL allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
+@property (nonatomic) BOOL allowsDone; // @synthesize allowsDone=_allowsDone;
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property (copy, nonatomic) NSString *bannerTitle; // @synthesize bannerTitle=_bannerTitle;
 @property (copy, nonatomic) NSString *bannerValue; // @synthesize bannerValue=_bannerValue;

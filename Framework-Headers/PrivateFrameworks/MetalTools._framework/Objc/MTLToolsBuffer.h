@@ -38,6 +38,7 @@
 - (void)dealloc;
 - (void)didModifyRange:(struct _NSRange)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (unsigned long long)gpuAddress;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (struct __IOSurface *)iosurface;
 - (id)newLinearTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4;

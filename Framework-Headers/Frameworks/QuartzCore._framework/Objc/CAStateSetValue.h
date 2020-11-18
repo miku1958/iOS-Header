@@ -19,6 +19,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (id)CAMLTypeForKey:(id)arg1;
+- (BOOL)CAMLTypeSupportedForKey:(id)arg1;
 - (void)apply:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

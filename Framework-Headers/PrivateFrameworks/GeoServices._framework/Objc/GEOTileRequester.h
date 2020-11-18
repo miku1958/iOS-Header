@@ -30,7 +30,6 @@
 
 + (unsigned long long)expiringTilesetsCount;
 + (CDStruct_e4886f83 *)newExpiringTilesets;
-+ (BOOL)skipNetworkForKeysWhenPreloading:(id)arg1;
 + (unsigned char)tileProviderIdentifier;
 - (void).cxx_destruct;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;

@@ -16,6 +16,7 @@
     BOOL _isCancelled;
     BOOL _isCJK;
     BOOL _hasPolicyPhraseMatch;
+    BOOL _hasParsecPolicyPhraseMatch;
     BOOL _exact;
     float _lastIsSpaceFeature;
     NSString *_keyboardLanguage;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL exact; // @synthesize exact=_exact;
 @property (nonatomic) double experimentalWeight1; // @synthesize experimentalWeight1=_experimentalWeight1;
 @property (nonatomic) double experimentalWeight2; // @synthesize experimentalWeight2=_experimentalWeight2;
+@property (nonatomic) BOOL hasParsecPolicyPhraseMatch; // @synthesize hasParsecPolicyPhraseMatch=_hasParsecPolicyPhraseMatch;
 @property (nonatomic) BOOL hasPolicyPhraseMatch; // @synthesize hasPolicyPhraseMatch=_hasPolicyPhraseMatch;
 @property BOOL isCJK; // @synthesize isCJK=_isCJK;
 @property BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
@@ -48,6 +50,7 @@
 
 + (void)clearState;
 + (id)importantAttributesForBundle:(id)arg1;
++ (id)importantAttributesForParsecBundle:(id)arg1;
 + (BOOL)isCJK;
 + (id)phoneFavoritesCopy;
 + (void)setDockApps:(id)arg1;
@@ -72,6 +75,7 @@
 - (void)populateMailContactFeaturesWithMailItems:(id)arg1 contactItems:(id)arg2;
 - (void)populateRankResultSetBundleFeaturesWithBundleItems:(id)arg1 withUniqueBundleMaxScores:(id)arg2;
 - (void)prepareItems:(id)arg1 inBundle:(id)arg2;
+- (void)prepareParsecResults:(id)arg1 inBundle:(id)arg2;
 - (id)rankingConfiguration;
 - (id)rankingConfigurationWithMeContact:(id)arg1 emailAddresses:(id)arg2 phoneFavorites:(id)arg3 vipList:(id)arg4 clientBundle:(id)arg5 isScopedSearch:(BOOL)arg6 spotlightQuery:(id)arg7;
 - (id)rankingConfigurationWithMeContact:(id)arg1 emailAddresses:(id)arg2 phoneFavorites:(id)arg3 vipList:(id)arg4 clientBundle:(id)arg5 isScopedSearch:(BOOL)arg6 spotlightQuery:(id)arg7 userQuery:(id)arg8 whyQuery:(unsigned long long)arg9 isPeopleSearch:(BOOL)arg10;

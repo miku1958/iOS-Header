@@ -7,20 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <VideoSubscriberAccount/VSDeveloperServiceProtocol-Protocol.h>
+#import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 
 @class NSString, VSPersistentContainer, VSRemoteNotifier;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VSDeveloperModeStore : NSObject <VSDeveloperServiceProtocol>
+@interface VSDeveloperModeStore : NSObject <VSRemoteNotifierDelegate, VSDeveloperServiceProtocol>
 {
     VSPersistentContainer *_persistentContainer;
     NSObject<OS_dispatch_queue> *_settingsQueue;
     VSRemoteNotifier *_serviceChangeRemoteNotifier;
     VSRemoteNotifier *_settingsChangeRemoteNotifier;
     VSRemoteNotifier *_providersChangeRemoteNotifier;
+    VSRemoteNotifier *_accountStoreChangeRemoteNotifier;
 }
 
+@property (strong, nonatomic) VSRemoteNotifier *accountStoreChangeRemoteNotifier; // @synthesize accountStoreChangeRemoteNotifier=_accountStoreChangeRemoteNotifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

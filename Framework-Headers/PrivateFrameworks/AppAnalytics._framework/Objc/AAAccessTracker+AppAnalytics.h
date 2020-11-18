@@ -8,8 +8,12 @@
 
 @interface AAAccessTracker (AppAnalytics)
 - (void)timeEventType:(Class)arg1;
+- (void)timeEventType:(Class)arg1 startTime:(id)arg2;
 - (void)timeEventType:(Class)arg1 submitAndRestartWithSession:(BOOL)arg2;
+- (void)timeEventType:(Class)arg1 submitAndRestartWithSession:(BOOL)arg2 startTime:(id)arg3;
 - (void)timeRawEvent:(id)arg1;
+- (void)timeRawEvent:(id)arg1 startTime:(id)arg2;
 - (void)timeRawEvent:(id)arg1 submitAndRestartWithSession:(BOOL)arg2;
+- (void)timeRawEvent:(id)arg1 submitAndRestartWithSession:(BOOL)arg2 startTime:(id)arg3;
 @end
 

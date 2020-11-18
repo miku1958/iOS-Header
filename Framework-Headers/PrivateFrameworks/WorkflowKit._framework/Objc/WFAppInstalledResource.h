@@ -14,9 +14,9 @@
 @interface WFAppInstalledResource : WFResource <ICAppInstallStatusObserver>
 {
     BOOL _skipLookup;
-    NSString *_appName;
     WFiTunesSessionManager *_currentAppNameLookupSessionManager;
     NSObject<OS_dispatch_queue> *_stateQueue;
+    NSString *_appName;
 }
 
 @property (readonly, nonatomic) ICApp *app;

@@ -9,7 +9,7 @@
 #import <CoreUtils/CUMessageSessionXPCClientInterface-Protocol.h>
 #import <CoreUtils/NSSecureCoding-Protocol.h>
 
-@class NSString, NSXPCConnection, NSXPCListenerEndpoint;
+@class NSMutableDictionary, NSString, NSXPCConnection, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface CUMessageSession : NSObject <CUMessageSessionXPCClientInterface, NSSecureCoding>
@@ -25,7 +25,7 @@
     BOOL _activateCalled;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
-    struct NSMutableDictionary *_requestMap;
+    NSMutableDictionary *_requestMap;
     NSXPCConnection *_xpcCnx;
     NSString *_label;
 }

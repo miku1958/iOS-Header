@@ -9,12 +9,11 @@
 #import <PassKitUI/PKPassPaymentPayStateViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSDate, NSMutableDictionary, NSObject, NSString, PKExpressTransactionState, PKFooterTransactionView, PKPassPaymentPayStateView, PKPaymentService, PKTransitBalanceModel;
-@protocol OS_dispatch_source;
+@class NSDate, NSMutableDictionary, NSObject, NSString, PKExpressTransactionState, PKPassPaymentPayStateView, PKPaymentService, PKTransitBalanceModel, UIView;
+@protocol OS_dispatch_source, PKPaymentDashboardCellActionHandleable;
 
 @interface PKPassPaymentConfirmationView : PKPassFooterContentView <PKPassPaymentPayStateViewDelegate, PKPaymentServiceDelegate>
 {
-    PKFooterTransactionView *_transactionView;
     PKPassPaymentPayStateView *_payStateView;
     BOOL _animated;
     PKExpressTransactionState *_expressState;
@@ -31,6 +30,10 @@
     NSMutableDictionary *_registeredExpressObservers;
     PKPaymentService *_paymentService;
     PKTransitBalanceModel *_transitBalanceModel;
+    UIView<PKPaymentDashboardCellActionHandleable> *_singleValueCellPrimary;
+    UIView<PKPaymentDashboardCellActionHandleable> *_singleValueCellSecondary;
+    UIView<PKPaymentDashboardCellActionHandleable> *_dualValueCellPrimary;
+    UIView<PKPaymentDashboardCellActionHandleable> *_displayedCellPrimary;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -42,6 +45,9 @@
 - (void)_beginResolution;
 - (void)_disableActivityTimer;
 - (id)_expressNotificationNames;
+- (id)_findOrCreatePrimaryAdjustableSingleCellView;
+- (id)_findOrCreatePrimaryFusedDoubleCellView;
+- (id)_findOrCreateSecondaryView;
 - (void)_handleExpressNotification:(id)arg1;
 - (BOOL)_isExpressOutstanding;
 - (BOOL)_isRegisteredForAllExpressTransactionNotifications;
@@ -51,9 +57,10 @@
 - (void)_registerObserverForNotificationName:(id)arg1 center:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_resolveActivityIfNecessary;
 - (void)_resolveActivityIfNecessaryWithDelay;
-- (void)_updateContentViewsWithTransaction:(id)arg1;
-- (void)_updateContentViewsWithTransaction:(id)arg1 transitBalanceModel:(id)arg2;
-- (void)_updateContentViewsWithTransitBalanceModel:(id)arg1;
+- (BOOL)_shouldDisplayPrimaryView;
+- (BOOL)_shouldDisplaySecondaryView;
+- (void)_updateContentPrimaryView;
+- (void)_updateContentSecondaryView;
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;

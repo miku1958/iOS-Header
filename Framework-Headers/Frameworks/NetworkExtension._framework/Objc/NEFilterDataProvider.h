@@ -28,6 +28,7 @@
 - (id)handleRemediationForFlow:(id)arg1;
 - (void)handleRulesChanged;
 - (void)resumeFlow:(id)arg1 withVerdict:(id)arg2;
+- (void)updateFlow:(id)arg1 usingVerdict:(id)arg2 forDirection:(long long)arg3;
 
 @end
 

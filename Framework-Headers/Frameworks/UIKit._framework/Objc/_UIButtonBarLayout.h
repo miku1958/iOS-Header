@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray, UIBarButtonItem;
 @protocol _UIButtonBarLayoutMetricsData;
 
 __attribute__((visibility("hidden")))
@@ -15,16 +16,17 @@ __attribute__((visibility("hidden")))
     BOOL _dirty;
 }
 
-@property (nonatomic) BOOL dirty; // @synthesize dirty=_dirty;
+@property (readonly, nonatomic) UIBarButtonItem *barButtonItem;
+@property (nonatomic, getter=isDirty) BOOL dirty; // @synthesize dirty=_dirty;
+@property (readonly, nonatomic) BOOL isGroupLayout;
+@property (readonly, nonatomic) BOOL isSpaceLayout;
+@property (readonly, nonatomic) NSArray *subLayouts;
 
 - (void).cxx_destruct;
 - (void)_addConstraintsToActivate:(id)arg1 toDeactivate:(id)arg2;
 - (void)_addLayoutGuides:(id)arg1;
 - (void)_addLayoutViews:(id)arg1;
 - (void)_configure;
-- (BOOL)_isGroup;
-- (BOOL)_isSpace;
-- (id)_item;
 - (id)_metricsData;
 - (BOOL)_shouldBeDirty;
 - (void)addConstraintsToActivate:(id)arg1 toDeactivate:(id)arg2;

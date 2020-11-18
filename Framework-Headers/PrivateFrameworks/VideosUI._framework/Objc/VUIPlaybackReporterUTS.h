@@ -6,13 +6,15 @@
 
 #import <VideosUI/VUIPlaybackReporter.h>
 
-@class WLKPlaybackReporter;
+@class VUIPostPlayConfig, WLKPlaybackReporter;
 
 @interface VUIPlaybackReporterUTS : VUIPlaybackReporter
 {
     WLKPlaybackReporter *_reporter;
+    VUIPostPlayConfig *_postPlayConfig;
 }
 
+@property (strong, nonatomic) VUIPostPlayConfig *postPlayConfig; // @synthesize postPlayConfig=_postPlayConfig;
 @property (strong, nonatomic) WLKPlaybackReporter *reporter; // @synthesize reporter=_reporter;
 
 + (id)sharedInstance;
@@ -26,6 +28,7 @@
 - (void)_reportLinearForPlayer:(id)arg1 playerState:(id)arg2 completionState:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_reportSummary:(id)arg1 sessionID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_reportVODForPlayer:(id)arg1 playerState:(id)arg2 completionState:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (BOOL)_watchedTimeEnabled;
 - (id)_wlkPlaybackRateForState:(id)arg1 player:(id)arg2;
 - (long long)_wlkPlaybackStateForState:(id)arg1;
 - (BOOL)enforceSinglePlaybackSession;

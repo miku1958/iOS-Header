@@ -29,8 +29,8 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_initWithBKSInterface:(id)arg1 displayLayoutMonitor:(id)arg2;
-- (struct NSMutableSet *)_queue_calculateHitTestRegionsFromSceneRects:(struct NSMutableSet *)arg1;
-- (struct NSMutableSet *)_queue_calculateTouchRegionsFromSceneRects:(struct NSMutableSet *)arg1;
+- (id)_queue_calculateHitTestRegionsFromSceneRects:(id)arg1;
+- (id)_queue_calculateTouchRegionsFromSceneRects:(id)arg1;
 - (void)_queue_displayLayoutDidUpdate:(id)arg1;
 - (id)_queue_floatingHitTestRegionForLayoutRect:(struct CGRect)arg1;
 - (void)dealloc;

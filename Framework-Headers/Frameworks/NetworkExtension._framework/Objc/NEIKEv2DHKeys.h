@@ -18,7 +18,7 @@
     NSData *_curveA;
     NSData *_curveB;
     NSData *_order;
-    struct NSMutableData *_publicKey;
+    NSMutableData *_publicKey;
     unsigned long long _publicKeySize;
     struct OpaqueSecDHContext *_context;
 }
@@ -37,7 +37,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)checkDHPublic;
-- (struct NSMutableData *)createSharedSecretForECPKey:(struct ccec_full_ctx *)arg1 curveKey:(unsigned char (*)[32])arg2 remotePublicKey:(id)arg3 publicKeySize:(unsigned long long)arg4 dhContext:(struct OpaqueSecDHContext *)arg5;
+- (id)createSharedSecretForECPKey:(struct ccec_full_ctx *)arg1 curveKey:(unsigned char (*)[32])arg2 remotePublicKey:(id)arg3 publicKeySize:(unsigned long long)arg4 dhContext:(struct OpaqueSecDHContext *)arg5;
 - (void)dealloc;
 - (BOOL)generatePublicKeyWithECPKey:(struct ccec_full_ctx *)arg1 curveKey:(unsigned char (*)[32])arg2;
 - (BOOL)getECCP:(const struct ccec_cp **)arg1;

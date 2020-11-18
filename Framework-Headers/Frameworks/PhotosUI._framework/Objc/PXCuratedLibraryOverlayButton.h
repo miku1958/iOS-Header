@@ -42,10 +42,10 @@
 @property (copy, nonatomic) PXCuratedLibraryOverlayButtonConfiguration *userData; // @synthesize userData=_userData;
 
 + (void)_getSize:(out struct CGSize *)arg1 titleFrame:(out struct CGRect *)arg2 captionFrame:(out struct CGRect *)arg3 iconFrame:(out struct CGRect *)arg4 forConfiguration:(id)arg5 title:(id)arg6;
-+ (struct CGSize)_sizeOfTitle:(id)arg1 withFont:(struct UIFont *)arg2;
++ (struct CGSize)_sizeOfTitle:(id)arg1 withFont:(id)arg2;
 + (id)buttonSizeCache;
 + (id)defaultTitleColor;
-+ (struct UIFont *)defaultTitleFont;
++ (id)defaultTitleFont;
 + (id)roundedCornerMaskImage:(CDStruct_2bd92d94)arg1 size:(struct CGSize)arg2;
 + (struct CGSize)sizeWithConfiguration:(id)arg1;
 + (id)titleSizeCache;
@@ -58,6 +58,7 @@
 - (void)_updateEffectView;
 - (void)_updateEffectViewBackgroundStyle;
 - (void)becomeReusable;
+- (BOOL)canBecomeFocused;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

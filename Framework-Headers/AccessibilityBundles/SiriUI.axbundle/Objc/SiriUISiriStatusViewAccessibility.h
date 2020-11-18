@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (void)accessibilityElementDidLoseFocus;
 - (struct CGRect)accessibilityFrame;
 - (BOOL)accessibilityPerformMagicTap;

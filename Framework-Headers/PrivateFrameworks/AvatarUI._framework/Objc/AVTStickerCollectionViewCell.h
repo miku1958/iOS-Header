@@ -8,16 +8,18 @@
 
 #import <AvatarUI/AVTMSStickerViewDelegate-Protocol.h>
 
-@class AVTMSStickerView, NSUUID, UIImageView;
+@class AVTMSStickerView, NSUUID, UIImageView, UILabel;
 @protocol AVTStickerCollectionViewCellDelegate, AVTStickerDisclosureValidationDelegate;
 
 @interface AVTStickerCollectionViewCell : UICollectionViewCell <AVTMSStickerViewDelegate>
 {
+    BOOL _showPrereleaseSticker;
     BOOL _stickerViewIsAnimating;
     NSUUID *_displaySessionUUID;
     id<AVTStickerCollectionViewCellDelegate> _delegate;
     UIImageView *_imageView;
     AVTMSStickerView *_stickerView;
+    UILabel *_prereleaseLabel;
     struct CGSize _fullImageSize;
     struct CGRect _clippingRect;
 }
@@ -29,6 +31,8 @@
 @property (strong, nonatomic) NSUUID *displaySessionUUID; // @synthesize displaySessionUUID=_displaySessionUUID;
 @property (nonatomic) struct CGSize fullImageSize; // @synthesize fullImageSize=_fullImageSize;
 @property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (readonly, nonatomic) UILabel *prereleaseLabel; // @synthesize prereleaseLabel=_prereleaseLabel;
+@property (nonatomic) BOOL showPrereleaseSticker; // @synthesize showPrereleaseSticker=_showPrereleaseSticker;
 @property (readonly, nonatomic) AVTMSStickerView *stickerView; // @synthesize stickerView=_stickerView;
 @property (nonatomic) BOOL stickerViewIsAnimating; // @synthesize stickerViewIsAnimating=_stickerViewIsAnimating;
 
@@ -39,6 +43,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setupPrereleaseLabelIfNeeded;
 - (void)stickerViewDidBeginPeel:(id)arg1;
 - (struct CGRect)stickerViewFrameForImageSize:(struct CGSize)arg1 clippingRect:(struct CGRect)arg2;
 - (void)stickerViewWasTapped:(id)arg1;

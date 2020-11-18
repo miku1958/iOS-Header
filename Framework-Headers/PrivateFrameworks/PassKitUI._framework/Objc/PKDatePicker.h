@@ -7,11 +7,11 @@
 #import <UIKit/UIView.h>
 
 @class NSCalendar, NSDate, NSLocale;
-@protocol PKDatePickerDelegate;
+@protocol PKDatePickerDelegate, PKDatePickerInternalImplementationProtocol;
 
 @interface PKDatePicker : UIView
 {
-    struct UIView *_internalPicker;
+    UIView<PKDatePickerInternalImplementationProtocol> *_internalPicker;
     BOOL _showsDay;
     BOOL _showsMonth;
     BOOL _showsYear;
@@ -36,7 +36,7 @@
 + (BOOL)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
 - (Class)_classForDay:(BOOL)arg1 month:(BOOL)arg2 year:(BOOL)arg3 style:(unsigned long long)arg4;
-- (void)_dateValueChanged:(struct UIView *)arg1;
+- (void)_dateValueChanged:(id)arg1;
 - (void)_forceReloadInternalPicker;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

@@ -19,6 +19,8 @@
 - (void)_fkaMoveToPreviousColumn;
 - (void)_fkaScrollToNextRow;
 - (void)_fkaScrollToPreviousRow;
+- (id)_viewToAddFocusLayer;
+- (id)accessibilityPath;
 
 @end
 

@@ -15,7 +15,7 @@
 #import <HealthRecordsUI/UISearchResultsUpdating-Protocol.h>
 #import <HealthRecordsUI/_TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_-Protocol.h>
 
-@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSHashTable, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider;
+@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSArray, NSHashTable, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider, WDMedicalRecordStandaloneCell;
 @protocol HRRecordViewControllerFactory;
 
 __attribute__((visibility("hidden")))
@@ -40,11 +40,13 @@ __attribute__((visibility("hidden")))
     NSSet *_accounts;
     HKConcept *_concept;
     NSUUID *_highlightedRecordId;
+    NSArray *_preloadedRecords;
     id _medicalRecordSearchController;
     UISearchController *_navigationSearchController;
     NSTimer *_searchThrottleTimer;
     HROverlayRoomViewController *_chartViewController;
     HKViewTableViewCell *_chartCell;
+    WDMedicalRecordStandaloneCell *_removedRecordsCell;
     UIButton *_filterButton;
     HRContentStatusView *_contentStatusView;
     HRContentStatusCell *_contentStatusCell;
@@ -82,8 +84,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL loadingNextPage; // @synthesize loadingNextPage=_loadingNextPage;
 @property (strong, nonatomic) id medicalRecordSearchController; // @synthesize medicalRecordSearchController=_medicalRecordSearchController;
 @property (strong, nonatomic) UISearchController *navigationSearchController; // @synthesize navigationSearchController=_navigationSearchController;
+@property (copy, nonatomic) NSArray *preloadedRecords; // @synthesize preloadedRecords=_preloadedRecords;
 @property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) BOOL queryReturned; // @synthesize queryReturned=_queryReturned;
+@property (strong, nonatomic) WDMedicalRecordStandaloneCell *removedRecordsCell; // @synthesize removedRecordsCell=_removedRecordsCell;
 @property (strong, nonatomic) NSPredicate *searchPredicate; // @synthesize searchPredicate=_searchPredicate;
 @property (strong, nonatomic) NSTimer *searchThrottleTimer; // @synthesize searchThrottleTimer=_searchThrottleTimer;
 @property (nonatomic) BOOL showSearchBar; // @synthesize showSearchBar=_showSearchBar;
@@ -105,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (id)_indexPathForReconnectCell;
 - (BOOL)_indexPathIsReconnectCell:(id)arg1;
 - (void)_installSearchController;
+- (BOOL)_isRemovedRecordsTimeline;
 - (void)_performActionForCellsSharingRecordsInTableView:(id)arg1 atIndexPath:(id)arg2 action:(CDUnknownBlockType)arg3;
 - (void)_postAWDMetricForCategoryType:(int)arg1;
 - (void)_postAWDMetricForDetailCategory;
@@ -124,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupSystemStatusObservers;
 - (BOOL)_shouldShowInlineSystemStatusSection;
 - (BOOL)_shouldShowReconnectCell;
+- (BOOL)_shouldShowRemovedRecords;
 - (void)_startCollectingData;
 - (id)_systemStatusDisplay;
 - (id)_tableView:(id)arg1 sourceCellForRow:(long long)arg2;
@@ -148,7 +154,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 account:(id)arg3 showInitialSearchBar:(BOOL)arg4 enableReconnect:(BOOL)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 accountId:(id)arg3 showInitialSearchBar:(BOOL)arg4 enableReconnect:(BOOL)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 category:(id)arg3 showInitialSearchBar:(BOOL)arg4;
-- (id)initWithProfile:(id)arg1 factory:(id)arg2 concept:(id)arg3 highlightedRecordId:(id)arg4;
+- (id)initWithProfile:(id)arg1 factory:(id)arg2 concept:(id)arg3 category:(id)arg4 highlightedRecordId:(id)arg5;
+- (id)initWithProfile:(id)arg1 factory:(id)arg2 preloadedRecords:(id)arg3;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 showInitialSearchBar:(BOOL)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

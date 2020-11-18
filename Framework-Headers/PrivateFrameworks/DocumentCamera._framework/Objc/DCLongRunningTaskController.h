@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
     BOOL _progressViewControllerDidFinishPresenting;
     BOOL _shouldDismissProgressViewController;
     NSString *_progressFormatString;
-    struct UIViewController *_viewControllerToPresentFrom;
-    struct UIWindow *_window;
+    UIViewController *_viewControllerToPresentFrom;
+    UIWindow *_window;
     double _intervalBeforeOpeningProgressDialog;
     id _keepAlive;
     CDUnknownBlockType _completionBlock;
@@ -48,12 +48,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIViewController *viewControllerToPresentFrom; // @synthesize viewControllerToPresentFrom=_viewControllerToPresentFrom;
 @property (strong, nonatomic) UIWindow *window; // @synthesize window=_window;
 
-+ (void)setMainWindow:(struct UIWindow *)arg1;
++ (void)setMainWindow:(id)arg1;
 - (void).cxx_destruct;
 - (void)closeProgressDialog;
 - (void)completeTaskIfNecessary;
 - (id)init;
-- (id)initWithWindow:(struct UIWindow *)arg1 intervalBeforeOpeningProgressDialog:(double)arg2;
+- (id)initWithWindow:(id)arg1 intervalBeforeOpeningProgressDialog:(double)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)openProgressDialog;
 - (void)startTask:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;

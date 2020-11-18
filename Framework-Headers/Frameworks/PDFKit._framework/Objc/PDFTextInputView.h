@@ -66,10 +66,11 @@ __attribute__((visibility("hidden")))
 - (long long)comparePosition:(id)arg1 toPosition:(id)arg2;
 - (void)deleteBackward;
 - (struct CGRect)firstRectForRange:(id)arg1;
-- (void)handleGesture:(unsigned long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4;
+- (void)handleGesture:(unsigned long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4 isIndirectTouch:(BOOL)arg5;
 - (id)initWithDelegate:(id)arg1;
 - (void)insertText:(id)arg1;
 - (BOOL)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (id)linkRegionsConstrainedToLineAtPoint:(struct CGPoint)arg1;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;

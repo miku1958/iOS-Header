@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *version; // @synthesize version=_version;
 
-+ (id)modelInfoFromPlanId:(struct NSString *)arg1;
++ (id)modelInfoFromPlanId:(id)arg1;
 + (id)modelInfoFromSessionDescriptor:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

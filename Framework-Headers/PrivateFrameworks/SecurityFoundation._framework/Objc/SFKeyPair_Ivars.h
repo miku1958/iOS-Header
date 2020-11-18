@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface SFKeyPair_Ivars : NSObject
 {
     struct __SecKey *secKey;
-    struct NSString *privateKeyDomain;
+    NSString *privateKeyDomain;
 }
 
 - (void).cxx_destruct;

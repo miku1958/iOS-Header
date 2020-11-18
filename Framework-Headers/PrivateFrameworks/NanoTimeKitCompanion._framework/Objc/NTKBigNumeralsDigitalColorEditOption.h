@@ -18,6 +18,7 @@
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionWithColor:(unsigned long long)arg1 forDevice:(id)arg2;
 - (id)_valueToFaceBundleStringDict;
+- (BOOL)optionExistsInDevice:(id)arg1;
 
 @end
 

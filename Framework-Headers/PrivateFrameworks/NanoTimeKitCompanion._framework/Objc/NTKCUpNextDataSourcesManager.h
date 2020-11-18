@@ -39,6 +39,7 @@
 - (void)_dedupeAndSortThirdPartyDataSourcesFromIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchThirdPartyBundleIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_firstPartyDataSourceEntries;
+- (BOOL)_isNanoWeatherAppID:(id)arg1;
 - (void)_phoneDedupeFromIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_preGraceThirdPartyBundleIdentifiers;
 - (void)dealloc;

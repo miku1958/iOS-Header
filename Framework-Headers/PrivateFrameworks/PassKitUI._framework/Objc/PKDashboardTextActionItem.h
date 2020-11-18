@@ -12,7 +12,9 @@
 
 @interface PKDashboardTextActionItem : NSObject <PKDashboardItem>
 {
+    long long _style;
     NSString *_title;
+    NSString *_subtitle;
     CDUnknownBlockType _action;
 }
 
@@ -20,6 +22,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long style; // @synthesize style=_style;
+@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 

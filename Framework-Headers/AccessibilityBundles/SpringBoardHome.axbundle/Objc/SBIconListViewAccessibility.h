@@ -21,7 +21,6 @@
 - (BOOL)_accessibilityProvidesScannerGroupElements;
 - (id)_accessibilityScannerGroupElements;
 - (id)_accessibilityUserTestingChildren;
-- (BOOL)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;

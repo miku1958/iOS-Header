@@ -10,12 +10,13 @@
 
 @interface SBSeparatorView : UIView
 {
-    SBSeparatorNubView *_nubView;
     unsigned long long _nubStyle;
+    SBSeparatorNubView *_nubView;
 }
 
 @property (readonly, nonatomic) struct CGRect nubRect;
 @property (nonatomic) unsigned long long nubStyle; // @synthesize nubStyle=_nubStyle;
+@property (strong, nonatomic) SBSeparatorNubView *nubView; // @synthesize nubView=_nubView;
 
 - (void).cxx_destruct;
 - (void)_updateNubViewFrame;

@@ -46,6 +46,7 @@
 - (void).cxx_destruct;
 - (void)_decorateOutcomeWithAccessorySpecificKeys:(id)arg1;
 - (void)_decorateServiceLikeItemKeys:(id)arg1;
+- (void)_decorateSettingsSyncKeys:(id)arg1;
 - (void)_decorateWithMediaSessionKeys:(id)arg1;
 - (void)_decorateWithMediaSystemSpecificKeys:(id)arg1;
 - (void)_decorateWithSoftwareUpdateStateKeys:(id)arg1;
@@ -65,7 +66,9 @@
 - (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2;
 - (BOOL)isAirPort;
 - (BOOL)isAppleTV;
+- (BOOL)isAudioReceiver;
 - (BOOL)isContainedWithinMediaSystem;
+- (BOOL)isHAPCapableSpeaker;
 - (BOOL)isHomePod;
 - (BOOL)isHomePodAndIsInMediaSystem;
 - (BOOL)isHomePodMediaSystem;

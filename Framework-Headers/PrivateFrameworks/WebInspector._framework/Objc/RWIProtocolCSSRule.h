@@ -12,7 +12,7 @@
 {
 }
 
-@property (copy, nonatomic) NSArray *media;
+@property (copy, nonatomic) NSArray *groupings;
 @property (nonatomic) long long origin;
 @property (strong, nonatomic) RWIProtocolCSSRuleId *ruleId;
 @property (strong, nonatomic) RWIProtocolCSSSelectorList *selectorList;

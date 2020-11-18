@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSURLSessionDataTask, NSURLSessionDownloadTask, RMAsset;
+@class NSDictionary, NSURLSessionDataTask, NSURLSessionDownloadTask, RMAsset, RMConfigurationStatusUpdater;
 
 @protocol RMAssetResolver
-- (NSURLSessionDataTask *)dataTaskWithAsset:(RMAsset *)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
-- (NSURLSessionDownloadTask *)downloadTaskWithAsset:(RMAsset *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
+- (NSURLSessionDataTask *)dataTaskWithAsset:(RMAsset *)arg1 queryParameters:(NSDictionary *)arg2 statusUpdater:(RMConfigurationStatusUpdater *)arg3 completionHandler:(void (^)(NSData *, NSError *))arg4;
+- (NSURLSessionDownloadTask *)downloadTaskWithAsset:(RMAsset *)arg1 queryParameters:(NSDictionary *)arg2 statusUpdater:(RMConfigurationStatusUpdater *)arg3 completionHandler:(void (^)(NSURL *, NSError *))arg4;
 @end
 

@@ -67,7 +67,9 @@
 - (void)ak_addShortLivedTokenHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addShowWarranty;
 - (void)ak_addTimeZoneHeaders;
+- (void)ak_addURLSwitchingHeaderWithURLKey:(id)arg1 altDSID:(id)arg2;
 - (void)ak_setBodyWithParameters:(id)arg1;
 - (void)ak_setJSONBodyWithParameters:(id)arg1;
+- (id)ak_valueForEncodedHeaderWithKey:(id)arg1;
 @end
 

@@ -8,13 +8,15 @@
 
 #import <AuthenticationServices/SOAuthorizationDelegate-Protocol.h>
 
-@class NSArray, NSString, NSURL, SOAuthorization;
+@class NSArray, NSString, NSURL, SOAuthorization, UIViewController, UIWindow;
 @protocol ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding;
 
 @interface ASAuthorizationController : NSObject <SOAuthorizationDelegate>
 {
     SOAuthorization *_appSSOAuthorization;
     NSURL *_appSSORequestURL;
+    UIWindow *_appSSOPresentationAnchor;
+    UIViewController *_appSSOViewController;
     NSArray *_authorizationRequests;
     id<ASAuthorizationControllerDelegate> _delegate;
     id<ASAuthorizationControllerPresentationContextProviding> _presentationContextProvider;
@@ -36,6 +38,7 @@
 - (void)authorization:(id)arg1 didCompleteWithError:(id)arg2;
 - (void)authorization:(id)arg1 didCompleteWithHTTPAuthorizationHeaders:(id)arg2;
 - (void)authorization:(id)arg1 didCompleteWithHTTPResponse:(id)arg2 httpBody:(id)arg3;
+- (void)authorization:(id)arg1 presentViewController:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)authorizationDidCancel:(id)arg1;
 - (void)authorizationDidComplete:(id)arg1;
 - (void)authorizationDidNotHandle:(id)arg1;

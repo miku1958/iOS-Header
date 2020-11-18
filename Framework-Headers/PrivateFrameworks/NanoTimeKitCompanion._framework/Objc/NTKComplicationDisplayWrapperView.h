@@ -6,15 +6,15 @@
 
 #import <UIKit/UIControl.h>
 
+#import <NanoTimeKitCompanion/CLKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationDisplayObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKControl-Protocol.h>
-#import <NanoTimeKitCompanion/NTKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
 
 @class CLKComplicationTemplate, NSDate, NSString, UIView;
 @protocol CLKMonochromeFilterProvider, NTKComplicationDisplay, NTKComplicationDisplayWrapperViewAnimationDelegate;
 
-@interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, NTKSensitiveUIStateObserver, NTKControl, NTKTimeTravel>
+@interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, CLKSensitiveUIStateObserver, NTKControl, NTKTimeTravel>
 {
     UIView<NTKComplicationDisplay> *_currentComplicationView;
     UIView<NTKComplicationDisplay> *_nextComplicationView;

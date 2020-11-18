@@ -9,11 +9,12 @@
 #import "UIFocusItem-Protocol.h"
 #import "UIFocusItemContainer-Protocol.h"
 #import "_UIFocusEnvironmentPrivate-Protocol.h"
+#import "_UIFocusRegionContainer-Protocol.h"
 
 @class NSArray, NSString, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
-@interface AccessibilityNodeAccessibility : __AccessibilityNodeAccessibility_super <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate>
+@interface AccessibilityNodeAccessibility : __AccessibilityNodeAccessibility_super <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
 {
 }
 
@@ -24,7 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
-@property (readonly, nonatomic) struct CGRect frame;
+@property (readonly, nonatomic) struct CGRect frame; // @dynamic frame;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
@@ -34,13 +35,22 @@
 @property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_axAreChildrenFocused;
+- (id)_axDefaultFocusGroupDescriptor;
+- (id)_axGetStoredDefaultFocusGroupDescriptor;
 - (void)_axSetAreChildrenFocused:(BOOL)arg1;
+- (void)_axSetStoredDefaultFocusGroupDescriptor:(id)arg1;
 - (void)_destroyFocusLayer;
+- (id)_focusGroupDescriptor;
+- (id)_preferredFocusRegionCoordinateSpace;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
 - (void)_updateFocusLayerFrame;
 - (BOOL)conformsToProtocol:(id)arg1;
+- (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)focusItemsInRect:(struct CGRect)arg1;
 - (void)setNeedsFocusUpdate;

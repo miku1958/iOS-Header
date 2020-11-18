@@ -35,6 +35,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_sanitizedCopy;
 - (id)altDSID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

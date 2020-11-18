@@ -89,6 +89,7 @@
 - (id)elementIdentifierAtIndexPath:(id)arg1;
 - (BOOL)elementIsAvailable:(id)arg1;
 - (id)elementsOrdered:(unsigned long long)arg1 relativeToElement:(id)arg2;
+- (id)generateDiffableSnapshot;
 - (id)identifierForElementAtIndexPath:(id)arg1;
 - (id)indexPathForElementWithIdentifier:(id)arg1;
 - (id)initWithRelevanceEngine:(id)arg1;

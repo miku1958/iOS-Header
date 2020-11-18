@@ -9,12 +9,12 @@
 #import <CarPlayServices/BSServiceConnectionListenerDelegate-Protocol.h>
 #import <CarPlayServices/CRSInCallClientToServerInterface-Protocol.h>
 
-@class BSServiceConnectionListener, NSHashTable, NSMutableDictionary, NSString;
+@class BSServiceConnectionListener, CARObserverHashTable, NSHashTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CRSInCallAssertionService : NSObject <BSServiceConnectionListenerDelegate, CRSInCallClientToServerInterface>
 {
-    NSHashTable *_observers;
+    CARObserverHashTable *_observers;
     BSServiceConnectionListener *_listener;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSMutableDictionary *_connections;
@@ -30,7 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BSServiceConnectionListener *listener; // @synthesize listener=_listener;
-@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) CARObserverHashTable *observers; // @synthesize observers=_observers;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;

@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_setValue:(id)arg1 forKey:(id)arg2;
 - (void)_setValue:(id)arg1 forProperty:(id)arg2;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
+- (void)addParameterTreeObserver;
 - (BOOL)allocateRenderResourcesAndReturnError:(id *)arg1;
 - (void)dealloc;
 - (void)deallocateRenderResources;
@@ -70,10 +71,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)providesUserInterface;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
+- (void)removeParameterTreeObserver;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reset;
 - (BOOL)saveUserPreset:(id)arg1 error:(id *)arg2;
 - (void)selectViewConfiguration:(id)arg1;
+- (void)setCurrentPreset:(id)arg1;
 - (void)setFullState:(id)arg1;
 - (void)setFullStateForDocument:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

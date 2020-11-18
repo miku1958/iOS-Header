@@ -6,24 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <PrototypeTools/PTSectionObserver-Protocol.h>
+#import <PrototypeTools/PTComponentObserver-Protocol.h>
+#import <PrototypeTools/PTModuleComponent-Protocol.h>
 #import <PrototypeTools/PTSettingsKeyPathObserver-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSString, PTSettings;
+@class NSArray, NSHashTable, NSPredicate, NSString, PTSettings;
+@protocol PTComponentObserver;
 
-@interface PTModule : NSObject <PTSettingsKeyPathObserver, PTSectionObserver>
+@interface PTModule : NSObject <PTSettingsKeyPathObserver, PTComponentObserver, PTModuleComponent>
 {
     NSHashTable *_observers;
-    NSMutableArray *_allSections;
-    NSMutableArray *_enabledSections;
+    NSArray *_components;
+    id<PTComponentObserver> _componentObserver;
     PTSettings *_settings;
+    NSArray *_allSections;
+    NSArray *_enabledSections;
+    NSPredicate *_appearancePredicate;
+    NSString *_childSettingsKeyPath;
     NSString *_title;
 }
 
-@property (strong, nonatomic) NSMutableArray *allSections; // @synthesize allSections=_allSections;
+@property (readonly, nonatomic) NSArray *allSections; // @synthesize allSections=_allSections;
+@property (strong, nonatomic) NSPredicate *appearancePredicate; // @synthesize appearancePredicate=_appearancePredicate;
+@property (strong, nonatomic) NSString *childSettingsKeyPath; // @synthesize childSettingsKeyPath=_childSettingsKeyPath;
+@property (weak, nonatomic) id<PTComponentObserver> componentObserver; // @synthesize componentObserver=_componentObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableArray *enabledSections; // @synthesize enabledSections=_enabledSections;
+@property (readonly, nonatomic) NSArray *enabledSections; // @synthesize enabledSections=_enabledSections;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PTSettings *settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
@@ -35,20 +44,26 @@
 + (id)sectionWithRows:(id)arg1 title:(id)arg2;
 + (id)sectionWithRows:(id)arg1 title:(id)arg2 condition:(id)arg3;
 + (id)sectionWithRows:(id)arg1 title:(id)arg2 conditionFormat:(id)arg3;
++ (id)submoduleWithModule:(id)arg1;
 + (id)submoduleWithModule:(id)arg1 childSettingsKeyPath:(id)arg2;
 + (id)submoduleWithModule:(id)arg1 childSettingsKeyPath:(id)arg2 condition:(id)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_addSection:(id)arg1;
-- (void)_addSubmodule:(id)arg1;
-- (id)_settingsForSection:(id)arg1;
-- (BOOL)_shouldEnableSection:(id)arg1;
+- (id)_computeEnabledSections;
+- (id)_remoteEditingWhitelistedComponent;
+- (id)_remoteEditingWhitelistedModule;
+- (void)_reportSectionInsertsAndDeletesRelativeTo:(id)arg1;
+- (id)_settingsForComponent:(id)arg1;
 - (void)_updateEnabledSections;
 - (void)addObserver:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)enumerateAllRowsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateEnabledRowsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enabledSectionsDidChange:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)indexPathForRow:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithContents:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (unsigned long long)numberOfSections;
 - (void)removeObserver:(id)arg1;
 - (id)rowAtIndexPath:(id)arg1;

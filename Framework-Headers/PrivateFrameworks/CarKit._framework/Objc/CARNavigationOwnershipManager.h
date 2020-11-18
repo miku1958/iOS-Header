@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CarKit/BSInvalidatable-Protocol.h>
 #import <CarKit/CRCarPlayNavigationOwnerClient-Protocol.h>
 
 @class NSString, NSXPCConnection;
 @protocol CARNavigationOwnershipManagerDelegate;
 
-@interface CARNavigationOwnershipManager : NSObject <CRCarPlayNavigationOwnerClient>
+@interface CARNavigationOwnershipManager : NSObject <CRCarPlayNavigationOwnerClient, BSInvalidatable>
 {
     BOOL _ownershipRequested;
     NSXPCConnection *_connection;
@@ -33,8 +34,8 @@
 - (void).cxx_destruct;
 - (void)_handleConnectionReset;
 - (void)_setupConnection;
-- (void)dealloc;
 - (id)initWithIdentifier:(id)arg1 delegate:(id)arg2;
+- (void)invalidate;
 - (void)navigationOwnershipChangedTo:(unsigned long long)arg1;
 - (void)releaseNavigationOwnership;
 - (void)requestNavigationOwnership;

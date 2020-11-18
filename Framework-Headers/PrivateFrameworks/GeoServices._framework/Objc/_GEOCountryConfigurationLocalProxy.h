@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_determineCurrentCountryCode:(CDUnknownBlockType)arg1;
+- (void)_determineGeoIPCountryCode:(CDUnknownBlockType)arg1;
 - (void)_reachabilityChanged:(id)arg1;
 - (void)_scheduleUpdate;
 - (void)_updateCountryCodeWithCallbackQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;

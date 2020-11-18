@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <PrototypeTools/NSCopying-Protocol.h>
+#import <PrototypeTools/NSSecureCoding-Protocol.h>
 #import <PrototypeTools/PTSettingsKeyPathObserver-Protocol.h>
 
 @class NSHashTable, NSPredicate, NSString, PTRowAction, PTSection, PTSettings, UIImage;
 
-@interface PTRow : NSObject <PTSettingsKeyPathObserver>
+@interface PTRow : NSObject <PTSettingsKeyPathObserver, NSCopying, NSSecureCoding>
 {
     NSHashTable *_observers;
+    BOOL _isEncodable;
     NSString *_valueKeyPath;
     NSString *_staticTitle;
     NSString *_titleKeyPath;
@@ -37,6 +40,7 @@
 @property (copy, nonatomic) CDUnknownBlockType externalCondition; // @synthesize externalCondition=_externalCondition;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *imageKeyPath; // @synthesize imageKeyPath=_imageKeyPath;
+@property (nonatomic) BOOL isEncodable; // @synthesize isEncodable=_isEncodable;
 @property (weak, nonatomic) PTSection *section; // @synthesize section=_section;
 @property (strong, nonatomic) PTSettings *settings; // @synthesize settings=_settings;
 @property (strong, nonatomic) UIImage *staticImage; // @synthesize staticImage=_staticImage;
@@ -54,21 +58,27 @@
 + (id)row;
 + (id)rowWithTitle:(id)arg1 valueGetter:(CDUnknownBlockType)arg2 valueSetter:(CDUnknownBlockType)arg3;
 + (id)rowWithTitle:(id)arg1 valueKeyPath:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_defaultAction;
 - (void)_sendImageChanged;
 - (void)_sendRowDidReload;
 - (void)_sendTitleChanged;
 - (void)_sendValueChanged;
+- (id)_validatedValue:(id)arg1;
 - (id)action:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)childSettingsForKeyPath:(id)arg1;
 - (id)condition:(id)arg1;
 - (id)conditionFormat:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)image;
 - (id)imageKeyPath:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)reloadRow;
 - (void)removeObserver:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;

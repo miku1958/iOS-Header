@@ -10,6 +10,7 @@
 - (id)_vui_lookupValueForKey:(id)arg1 expectedClass:(Class)arg2;
 - (id)vui_URLForKey:(id)arg1;
 - (id)vui_arrayForKey:(id)arg1;
+- (id)vui_attrStringForKey:(id)arg1;
 - (BOOL)vui_boolForKey:(id)arg1 defaultValue:(BOOL)arg2;
 - (id)vui_dataForKey:(id)arg1;
 - (id)vui_dateForKey:(id)arg1;

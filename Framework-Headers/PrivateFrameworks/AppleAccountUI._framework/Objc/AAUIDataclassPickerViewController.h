@@ -54,7 +54,7 @@
 - (double)heightForFooterInTableView:(id)arg1;
 - (double)heightForHeaderInTableView:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDataclassOptions:(struct NSDictionary *)arg1;
+- (id)initWithDataclassOptions:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;

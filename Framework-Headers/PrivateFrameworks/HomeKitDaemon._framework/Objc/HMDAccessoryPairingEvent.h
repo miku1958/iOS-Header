@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
-@class HMDAccessory, NSString;
+@class HMDAccessory, HMDHome, NSString, NSUUID;
 
 @interface HMDAccessoryPairingEvent : HMDLogEvent <HMDAWDLogEvent>
 {
@@ -24,15 +24,25 @@
     long long _certificationStatus;
     unsigned long long _authMethod;
     NSString *_identifier;
+    HMDHome *_home;
+    NSUUID *_accessoryUUID;
+    NSString *_appIdentifier;
+    NSString *_accessoryModel;
+    NSString *_accessoryCategory;
 }
 
+@property (copy, nonatomic) NSString *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
+@property (copy, nonatomic) NSString *accessoryModel; // @synthesize accessoryModel=_accessoryModel;
+@property (copy, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
 @property (readonly, nonatomic, getter=isAddOperation) BOOL addOperation; // @synthesize addOperation=_addOperation;
 @property (nonatomic, getter=isAddViaWAC) BOOL addViaWAC; // @synthesize addViaWAC=_addViaWAC;
+@property (copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
 @property (nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (nonatomic, getter=isNetworkRouterAdd) BOOL networkRouterAdd; // @synthesize networkRouterAdd=_networkRouterAdd;
@@ -54,9 +64,10 @@
 - (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 home:(id)arg4 isAddOperation:(BOOL)arg5;
 - (id)metricForAWD;
 - (void)pairedAccessory:(id)arg1;
-- (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2;
+- (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2 addedViaWAC:(BOOL)arg3 legacyWAC:(BOOL)arg4;
 - (void)setAddedViaWAC:(BOOL)arg1;
 - (void)setAuthenticationMethod:(unsigned long long)arg1;
+- (id)vendorDetails;
 
 @end
 

@@ -27,7 +27,7 @@
 @property (readonly) id<PLXPCProxyCreating> proxyFactory; // @synthesize proxyFactory=_proxyFactory;
 @property (readonly) Class superclass;
 
-+ (id)clientToServiceBookmarkForURL:(id)arg1;
++ (id)clientToServiceSandboxExtensionForURL:(id)arg1;
 + (unsigned long long)maxBindAttemptCount;
 - (void).cxx_destruct;
 - (id)_attemptBindToPhotoLibrary;

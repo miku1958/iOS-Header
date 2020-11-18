@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariServices/SFPrintPageRendererDelegate-Protocol.h>
 #import <SafariServices/UIPrintInteractionControllerDelegate-Protocol.h>
-#import <SafariServices/WBUPrintPageRendererDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, SFPrintQueueItem, UIPrintInfo, UIPrintInteractionController, WBUPrintPageRenderer, WKWebView, _SFReaderController;
+@class NSMutableArray, NSString, SFPrintPageRenderer, SFPrintQueueItem, UIPrintInfo, UIPrintInteractionController, WKWebView, _SFReaderController;
 @protocol _SFDialogPresenting, _SFPrintControllerDelegate;
 
-@interface _SFPrintController : NSObject <UIPrintInteractionControllerDelegate, WBUPrintPageRendererDelegate>
+@interface _SFPrintController : NSObject <UIPrintInteractionControllerDelegate, SFPrintPageRendererDelegate>
 {
     UIPrintInfo *_cachedPrintInfo;
-    WBUPrintPageRenderer *_cachedPrintPageRenderer;
+    SFPrintPageRenderer *_cachedPrintPageRenderer;
     UIPrintInteractionController *_printInteractionController;
     NSString *_urlString;
     NSString *_pageTitle;
@@ -36,7 +36,7 @@
 @property (weak, nonatomic) id<_SFDialogPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIPrintInfo *printInfo;
-@property (readonly, nonatomic) WBUPrintPageRenderer *printRenderer;
+@property (readonly, nonatomic) SFPrintPageRenderer *printRenderer;
 @property (weak, nonatomic) _SFReaderController *readerController; // @synthesize readerController=_readerController;
 @property (readonly, nonatomic) NSString *suggestedPDFFileName;
 @property (readonly) Class superclass;

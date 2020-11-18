@@ -60,10 +60,11 @@
 @property (readonly) NSString *receiptType; // @synthesize receiptType=_receiptType;
 @property (readonly) NSDate *renewalDate; // @synthesize renewalDate=_renewalDate;
 
++ (id)_receiptURLForBundleURL:(id)arg1;
 + (id)receiptFromBundleAtPath:(id)arg1;
 + (id)receiptFromBundleAtURL:(id)arg1;
-+ (id)receiptPathForBundleAtPath:(id)arg1;
 + (id)receiptWithContentsOfFile:(id)arg1;
++ (id)receiptWithData:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_anchorTrust:(struct __SecTrust *)arg1 toRootCertificateIn:(struct __CFArray *)arg2;
 - (BOOL)_checkArray:(struct __CFArray *)arg1 containsCertificateWithOID:(struct __CFString *)arg2;
@@ -82,6 +83,7 @@
 - (BOOL)_setPoliciesForTrust:(struct __SecTrust *)arg1;
 - (long long)_verifySignatureForSignedData:(struct SecCmsSignedDataStr *)arg1 onDate:(id)arg2;
 - (id)initWithContentsOfFile:(id)arg1;
+- (id)initWithData:(id)arg1;
 
 @end
 

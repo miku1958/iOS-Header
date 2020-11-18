@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GCExtendedGamepad, GCGamepad, GCMicroGamepad, GCMotion, GCStereoAR, NSMutableArray, NSString;
+@class GCExtendedGamepad, GCGamepad, GCMicroGamepad, GCMotion, NSMutableArray, NSString;
 @protocol GCNamedProfile, OS_dispatch_queue;
 
 @interface GCController : NSObject
@@ -51,7 +51,6 @@
 @property (getter=isPublished) BOOL published; // @synthesize published=_published;
 @property (nonatomic) unsigned int service; // @synthesize service=_service;
 @property (readonly, getter=isSnapshot) BOOL snapshot; // @synthesize snapshot=_snapshot;
-@property (readonly, strong, nonatomic) GCStereoAR *stereoAR;
 @property (copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 
 + (void)__daemon__addController:(id)arg1;
@@ -69,7 +68,6 @@
 + (void)_startWirelessControllerDiscoveryWithCompanions:(BOOL)arg1 btClassic:(BOOL)arg2 btle:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)controllerWithExtendedGamepad;
 + (id)controllerWithMicroGamepad;
-+ (id)controllerWithStereoAR;
 + (id)controllers;
 + (void)startWirelessControllerDiscoveryWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)stopWirelessControllerDiscovery;

@@ -88,6 +88,7 @@
 - (void)_layoutTitleLabelWithScale:(double)arg1;
 - (void)_layoutUtilityButtonWithScale:(double)arg1;
 - (id)_lazyTitleLabel;
+- (id)_newIconButton;
 - (id)_newTitleLabel;
 - (void)_recycleDateLabel;
 - (void)_reduceTransparencyStatusDidChange:(id)arg1;

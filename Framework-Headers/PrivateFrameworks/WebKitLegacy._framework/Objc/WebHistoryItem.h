@@ -26,7 +26,7 @@
 - (id)RSSFeedReferrer;
 - (id)URL;
 - (BOOL)_hasCachedPageExpired;
-- (BOOL)_isInPageCache;
+- (BOOL)_isInBackForwardCache;
 - (id)_redirectURLs;
 - (float)_scale;
 - (BOOL)_scaleIsInitial;

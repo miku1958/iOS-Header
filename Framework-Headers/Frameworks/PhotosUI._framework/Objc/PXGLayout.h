@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/PXGAXGroupSource-Protocol.h>
+#import <PhotosUICore/PXGAXInfoSource-Protocol.h>
+#import <PhotosUICore/PXGAXResponder-Protocol.h>
 #import <PhotosUICore/PXGDataSourceDrivenLayout-Protocol.h>
 #import <PhotosUICore/PXGDiagnosticsProvider-Protocol.h>
 #import <PhotosUICore/PXGSpriteIndexReferencing-Protocol.h>
 
-@class NSArray, NSIndexSet, NSMutableArray, NSString, PXGAnchor, PXGItemsLayout, PXGReusableAccessibilityContentInfo, PXGSpriteDataStore, PXGSpriteMetadataStore, PXGSublayoutDataStore, PXGViewEnvironment;
-@protocol PXGDisplayAssetSource, PXGLayoutContentSource, PXGLayoutUpdateDelegate, PXGLayoutVisibleRectDelegate;
+@class NSArray, NSIndexSet, NSMutableArray, NSString, PXGAnchor, PXGBasicAXGroup, PXGItemsLayout, PXGReusableAccessibilityContentInfo, PXGSpriteDataStore, PXGSpriteMetadataStore, PXGSublayoutDataStore, PXGViewEnvironment;
+@protocol PXGAXResponder, PXGDisplayAssetSource, PXGLayoutContentSource, PXGLayoutUpdateDelegate, PXGLayoutVisibleRectDelegate;
 
-@interface PXGLayout : NSObject <PXGDataSourceDrivenLayout, PXGSpriteIndexReferencing, PXGDiagnosticsProvider>
+@interface PXGLayout : NSObject <PXGDataSourceDrivenLayout, PXGAXGroupSource, PXGAXInfoSource, PXGAXResponder, PXGSpriteIndexReferencing, PXGDiagnosticsProvider>
 {
     CDStruct_d97c9657 _updateFlags;
     NSMutableArray *_changeDetails;
@@ -26,6 +29,7 @@
     BOOL _isUpdatingSpriteStyling;
     BOOL _isLastVisibleAreaAnchoringInformationInvalidated;
     BOOL _isPerformingWithLocalUpdate;
+    PXGBasicAXGroup *_reusableAXGroup;
     BOOL _needsUpdate;
     unsigned short _referenceOptions;
     unsigned int _numberOfSprites;
@@ -49,6 +53,7 @@
     PXGAnchor *_lastVisibleAreaAnchor;
     PXGReusableAccessibilityContentInfo *_accessibilityGroupElement;
     long long _numberOfDescendantAnchors;
+    id<PXGAXResponder> _axNextResponder;
     struct CGSize _referenceSize;
     struct CGPoint _lastScrollDirection;
     struct CGSize _contentSize;
@@ -65,6 +70,14 @@
 @property (readonly, nonatomic) unsigned long long anchoredContentEdges;
 @property (readonly, nonatomic) long long anchoredSublayoutIndex;
 @property (readonly, copy, nonatomic) NSArray *animations;
+@property (readonly, nonatomic) struct CGRect axFrame;
+@property (readonly, nonatomic) PXGBasicAXGroup *axGroup;
+@property (weak, nonatomic) id<PXGAXResponder> axNextResponder;
+@property (weak, nonatomic) id<PXGAXResponder> axNextResponder; // @synthesize axNextResponder=_axNextResponder;
+@property (readonly, nonatomic) NSIndexSet *axSelectedSpriteIndexes;
+@property (readonly, nonatomic) NSIndexSet *axSpriteIndexes;
+@property (readonly, nonatomic) struct CGRect axVisibleRect;
+@property (readonly, nonatomic) NSIndexSet *axVisibleSpriteIndexes;
 @property (readonly, nonatomic) BOOL canCreateAccessibilityGroupElement;
 @property (readonly, nonatomic) BOOL canHandleVisibleRectRejection;
 @property (readonly, nonatomic) BOOL canSelectAccessibilityGroupElements;
@@ -75,6 +88,8 @@
 @property (weak, nonatomic) id<PXGLayoutContentSource> contentSource; // @synthesize contentSource=_contentSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *diagnosticDescription;
@@ -84,6 +99,7 @@
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) unsigned long long fullyVisibleEdgesWithDefaultTolerance;
 @property (readonly, nonatomic) BOOL hasBodyContent;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSIndexSet *hiddenSpriteIndexes;
@@ -114,6 +130,7 @@
 @property (readonly, nonatomic) PXGSpriteDataStore *spriteDataStore; // @synthesize spriteDataStore=_spriteDataStore;
 @property (readonly, nonatomic) PXGSpriteMetadataStore *spriteMetadataStore; // @synthesize spriteMetadataStore=_spriteMetadataStore;
 @property (readonly, nonatomic) PXGSublayoutDataStore *sublayoutDataStore; // @synthesize sublayoutDataStore=_sublayoutDataStore;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) PXGLayout *superlayout; // @synthesize superlayout=_superlayout;
@@ -168,6 +185,17 @@
 - (void)applySectionedChangedDetailsForSingleSection:(id)arg1 dataSourceAfterChanges:(id)arg2 changeMediaVersionHandler:(CDUnknownBlockType)arg3;
 - (void)applySpriteChangeDetails:(id)arg1 countAfterChanges:(unsigned int)arg2 initialState:(CDUnknownBlockType)arg3 modifyState:(CDUnknownBlockType)arg4;
 - (void)applySublayoutChangeDetails:(id)arg1 countAfterChanges:(long long)arg2 sublayoutProvider:(id)arg3;
+- (void)axAddSubgroupForSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
+- (id)axContainingViewForAXGroup:(id)arg1;
+- (id)axContentInfoAtSpriteIndex:(unsigned int)arg1;
+- (struct CGPoint)axConvertPoint:(struct CGPoint)arg1 fromDescendantGroup:(id)arg2;
+- (struct CGPoint)axConvertPoint:(struct CGPoint)arg1 toDescendantGroup:(id)arg2;
+- (struct CGRect)axConvertRect:(struct CGRect)arg1 fromDescendantGroup:(id)arg2;
+- (struct CGRect)axConvertRect:(struct CGRect)arg1 toDescendantGroup:(id)arg2;
+- (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
+- (void)axRemoveSubgroupForSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
+- (unsigned int)axSpriteIndexClosestToSpriteIndex:(unsigned int)arg1 inDirection:(unsigned long long)arg2;
+- (id)axSpriteIndexesInRect:(struct CGRect)arg1;
 - (BOOL)changeVisibleRectToProposedVisibleRect:(struct CGRect)arg1;
 - (void)clearLastVisibleAreaAnchoringInformation;
 - (id)commonAncestorWithLayout:(id)arg1;
@@ -183,6 +211,7 @@
 - (unsigned int)convertSpriteIndex:(unsigned int)arg1 fromLayout:(id)arg2;
 - (unsigned int)convertSpriteIndex:(unsigned int)arg1 toDescendantLayout:(id)arg2;
 - (struct _PXGSpriteIndexRange)convertSpriteIndexRange:(struct _PXGSpriteIndexRange)arg1 fromDescendantLayout:(id)arg2;
+- (id)convertSpriteIndexes:(id)arg1 fromDescendantLayout:(id)arg2;
 - (void)copyLayoutForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 applySpriteTransforms:(BOOL)arg2 geometries:(CDStruct_3ab912e1 *)arg3 styles:(CDStruct_506f5052 *)arg4 infos:(CDStruct_9d1ebe49 *)arg5;
 - (void)copyLayoutForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 applySpriteTransforms:(BOOL)arg2 parentTransform:(CDStruct_3fe57b01)arg3 parentSublayoutOrigin:(struct CGPoint)arg4 geometries:(CDStruct_3ab912e1 *)arg5 styles:(CDStruct_506f5052 *)arg6 infos:(CDStruct_9d1ebe49 *)arg7;
 - (void)copyLayoutForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_3ab912e1 *)arg2 styles:(CDStruct_506f5052 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4;
@@ -209,10 +238,11 @@
 - (id)createFenceWithType:(unsigned long long)arg1;
 - (id)createTransitionWithAnimations:(id)arg1;
 - (void)dealloc;
-- (void)didAddSublayout:(id)arg1;
+- (void)didAddSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 - (void)didApplySpriteChangeDetails:(id)arg1;
+- (void)didApplySublayoutChangeDetails:(id)arg1 axAdjustedSubgroupChangeDetails:(id)arg2 countAfterChanges:(long long)arg3;
 - (void)didChangeSublayoutOrigins;
-- (void)didFaultInSublayout:(id)arg1 fromEstimatedContentSize:(struct CGSize)arg2;
+- (void)didFaultInSublayout:(id)arg1 atIndex:(long long)arg2 fromEstimatedContentSize:(struct CGSize)arg3;
 - (id)dynamicSpriteReferenceForObjectReference:(id)arg1;
 - (void)enumerateDescendantsLayoutsBreadthFirstReverseUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateDescendantsLayoutsUsingBlock:(CDUnknownBlockType)arg1;
@@ -287,8 +317,8 @@
 - (void)userInterfaceDirectionDidChange;
 - (void)viewEnvironmentDidChange;
 - (void)visibleRectDidChange;
-- (void)willFaultOutSublayout:(id)arg1;
-- (void)willRemoveSublayout:(id)arg1;
+- (void)willFaultOutSublayout:(id)arg1 atIndex:(long long)arg2;
+- (void)willRemoveSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 
 @end
 

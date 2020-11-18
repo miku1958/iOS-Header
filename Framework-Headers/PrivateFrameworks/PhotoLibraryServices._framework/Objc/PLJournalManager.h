@@ -35,7 +35,7 @@
 - (BOOL)_needFullSnapshot;
 - (BOOL)_needPartialSnapshot:(id)arg1;
 - (BOOL)_needSnapshot;
-- (void)_recreateAssetsInManagedObjectContext:(id)arg1 progress:(id)arg2;
+- (void)_recreateAssetsInManagedObjectContext:(id)arg1 options:(unsigned char)arg2 progress:(id)arg3;
 - (void)_recreateNonAssetsInManagedObjectContext:(id)arg1 progress:(id)arg2;
 - (unsigned int)_registerToChangeHubNotification;
 - (void)_removeLegacyPersistedMetadataIfNecessary;
@@ -51,8 +51,8 @@
 - (id)initWithPhotoLibrary:(id)arg1;
 - (void)notifyDidImportFileSystemAssets;
 - (void)notifyWillImportFileSystemAssets;
-- (void)recreateAllObjectsInManagedObjectContext:(id)arg1;
-- (void)recreateAssetsInManagedObjectContext:(id)arg1 progress:(id)arg2;
+- (void)recreateAllObjectsInManagedObjectContext:(id)arg1 options:(unsigned char)arg2;
+- (void)recreateAssetsInManagedObjectContext:(id)arg1 options:(unsigned char)arg2 progress:(id)arg3;
 - (void)recreateNonAssetsInManagedObjectContext:(id)arg1 progress:(id)arg2;
 - (void)snapshotJournalsForPayloadClassIDs:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)start;

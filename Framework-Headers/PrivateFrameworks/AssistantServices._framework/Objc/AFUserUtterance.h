@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (void)_updatePhraseswithSwapIndices:(id)arg1;
 - (void)_updateUtteranceswithAlternativeUtteranceAtIndex:(unsigned long long)arg1 swapIndices:(id)arg2;
-- (struct NSDictionary *)allRecognitionStringsAndScores;
+- (id)allRecognitionStringsAndScores;
 - (id)bestTextInterpretation;
 - (id)description;
 - (id)initWithPhrases:(id)arg1 correctionIdentifier:(id)arg2;

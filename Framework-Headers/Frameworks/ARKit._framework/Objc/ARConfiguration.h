@@ -17,6 +17,7 @@
     BOOL _providesAudioData;
     BOOL _autoFocusEnabled;
     BOOL _allowCameraInMultipleForegroundAppLayout;
+    BOOL _disableOcclusionForPersonSegmentation;
     BOOL _mirroredFrameOutput;
     long long _worldAlignment;
     unsigned long long _frameSemantics;
@@ -31,6 +32,7 @@
 @property (nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
 @property (strong, nonatomic) NSArray *customSensors; // @synthesize customSensors=_customSensors;
 @property (readonly, nonatomic) NSString *deviceModel;
+@property (nonatomic) BOOL disableOcclusionForPersonSegmentation; // @synthesize disableOcclusionForPersonSegmentation=_disableOcclusionForPersonSegmentation;
 @property (nonatomic) unsigned long long frameDebugOptions; // @synthesize frameDebugOptions=_frameDebugOptions;
 @property (nonatomic) unsigned long long frameSemantics; // @synthesize frameSemantics=_frameSemantics;
 @property (readonly, nonatomic) ARImageSensorSettings *imageSensorSettings;
@@ -51,7 +53,7 @@
 + (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (void)createTechniques:(id)arg1;
 - (id)description;
 - (id)descriptionWithoutBrackets;
 - (unsigned long long)hash;

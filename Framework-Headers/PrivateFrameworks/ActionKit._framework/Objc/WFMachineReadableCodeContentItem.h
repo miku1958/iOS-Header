@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ContentKit/WFContentItem.h>
+#import <ContentKit/WFGenericFileContentItem.h>
 
 #import <ActionKit/WFContentItemClass-Protocol.h>
 
 @class NSString, WFMachineReadableCode;
 
-@interface WFMachineReadableCodeContentItem : WFContentItem <WFContentItemClass>
+@interface WFMachineReadableCodeContentItem : WFGenericFileContentItem <WFContentItemClass>
 {
     BOOL _prefersImage;
     NSString *_errorCorrectionLevel;

@@ -25,11 +25,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_allowSystemGestureRecognizer:(id)arg1 withSystemGestureType:(unsigned long long)arg2 toReceiveTouch:(id)arg3;
+- (BOOL)_allowSystemGestureRecognizer:(id)arg1 withSystemGestureType:(unsigned long long)arg2 toReceiveTouchAtLocation:(struct CGPoint)arg3;
 - (void)_createResizePanSystemGestureRecognizerWorkspaceTransactionForPanSystemGestureRecognizer:(id)arg1;
 - (void)_handleResizePanSystemGestureRecognizer:(id)arg1;
 - (BOOL)_hasActiveModalFloatingApplication;
 - (BOOL)_hasActiveSystemGestureRecognizerWorkspaceTransaction;
+- (BOOL)canBeginAppResizeGestureRecognizerAtLocation:(struct CGPoint)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)init;
 - (id)initWithSceneLayoutViewController:(id)arg1;

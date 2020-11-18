@@ -17,11 +17,13 @@
 @property (readonly, nonatomic) NSArray *commands; // @synthesize commands=_commands;
 @property (readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 
++ (id)_basicCommandsFromAvailableCommands:(id)arg1;
 + (id)_categoryWithCommandIdentifiers:(id)arg1 availableCommands:(id)arg2 localizedName:(id)arg3;
 + (id)_categoryWithCommands:(id)arg1 availableCommands:(id)arg2 localizedName:(id)arg3;
 + (id)_deviceCommandsFromAvailableCommands:(id)arg1;
 + (id)_gesturesCommandsFromAvailableCommands:(id)arg1;
-+ (id)_navigationCommandsFromAvailableCommands:(id)arg1;
++ (id)_interactionCommandsFromAvailableCommands:(id)arg1;
++ (id)_movementCommandsFromAvailableCommands:(id)arg1;
 + (id)allCategoriesForAvailableCommands:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithCommands:(id)arg1 localizedName:(id)arg2;

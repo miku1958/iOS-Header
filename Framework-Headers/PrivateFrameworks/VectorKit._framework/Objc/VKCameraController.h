@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _regionChangeCount;
     BOOL _inProgressRegionChangeIsAnimated;
     struct VKEdgeInsets _edgeInsets;
+    BOOL _edgeInsetsAnimating;
     struct MapDataAccess *_mapDataAccess;
     struct AnimationRunner *_animationRunner;
     struct RunLoopController *_runLoopController;
@@ -73,8 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)detailedDescription;
 - (struct VKEdgeInsets)edgeInsets;
-- (void)edgeInsetsDidEndAnimating;
-- (void)edgeInsetsWillBeginAnimating;
+- (BOOL)edgeInsetsAnimating;
 - (void)endRegionChange;
 - (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 - (BOOL)isAnimating;
@@ -91,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)setCameraDelegate:(id)arg1;
 - (void)setCanvas:(id)arg1;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
+- (void)setEdgeInsetsAnimating:(BOOL)arg1;
 - (void)setGesturing:(BOOL)arg1;
 - (void)stylesheetDidChange;
 - (void)stylesheetDidReload;

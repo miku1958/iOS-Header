@@ -19,6 +19,7 @@
 + (BOOL)canLowercaseTypeDescription;
 + (id)contentCategories;
 + (id)countDescription;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)outputTypes;
 + (id)ownedPasteboardTypes;
 + (id)ownedTypes;

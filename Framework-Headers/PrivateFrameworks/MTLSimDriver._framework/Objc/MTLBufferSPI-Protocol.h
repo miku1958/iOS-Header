@@ -11,6 +11,7 @@
 
 @protocol MTLBufferSPI <MTLBuffer>
 
+@property (readonly, nonatomic) unsigned long long gpuAddress;
 @property (readonly) struct __IOSurface *iosurface;
 @property (nonatomic) unsigned long long resourceIndex;
 

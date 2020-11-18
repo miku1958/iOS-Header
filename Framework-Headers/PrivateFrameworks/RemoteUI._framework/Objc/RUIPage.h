@@ -8,7 +8,7 @@
 
 #import <RemoteUI/UIWebViewDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, RUIBarButtonItem, RUIElement, RUIObjectModel, RUIPageElement, RUIPasscodeView, RUISpinnerView, RUIStyle, RUITableView, RUIWebView, UIBarButtonItem, UILabel, UIToolbar, UIView;
+@class NSArray, NSDictionary, NSMutableArray, NSString, RUIBarButtonItem, RUIElement, RUIMultiChoiceElement, RUIObjectModel, RUIPageElement, RUIPasscodeView, RUISpinnerView, RUIStyle, RUITableView, RUIWebView, UIBarButtonItem, UILabel, UIToolbar, UIView;
 @protocol RUITopLevelPageElement;
 
 @interface RUIPage : UIViewController <UIWebViewDelegate>
@@ -21,6 +21,7 @@
     RUISpinnerView *_spinnerViewOM;
     NSString *_validationFunction;
     NSString *_navTitle;
+    NSString *_navSubTitle;
     BOOL _hidesBackButton;
     UIToolbar *_toolbar;
     UIBarButtonItem *_leftToolbarItem;
@@ -31,10 +32,12 @@
     NSMutableArray *_childPages;
     NSMutableArray *_didAppearCallbacks;
     BOOL _showsTitlesAsHeaderViews;
+    BOOL _useModernHeaderView;
     BOOL _loading;
     NSDictionary *_attributes;
     RUIPageElement *_pageElement;
     RUIElement<RUITopLevelPageElement> *_primaryElement;
+    RUIMultiChoiceElement *_multiChoiceElement;
     RUIStyle *_style;
     NSString *_backButtonTitle;
     RUIBarButtonItem *_rightNavigationBarButtonItem;
@@ -72,6 +75,8 @@
 @property (strong, nonatomic) NSDictionary *middleToolbarButton;
 @property (strong, nonatomic) RUIBarButtonItem *middleToolbarButtonItem; // @synthesize middleToolbarButtonItem=_middleToolbarButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *middleToolbarItem; // @synthesize middleToolbarItem=_middleToolbarItem;
+@property (strong, nonatomic) RUIMultiChoiceElement *multiChoiceElement; // @synthesize multiChoiceElement=_multiChoiceElement;
+@property (copy, nonatomic) NSString *navSubTitle; // @synthesize navSubTitle=_navSubTitle;
 @property (copy, nonatomic) NSString *navTitle; // @synthesize navTitle=_navTitle;
 @property (weak, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
 @property (strong, nonatomic) RUIPageElement *pageElement; // @synthesize pageElement=_pageElement;
@@ -92,6 +97,7 @@
 @property (readonly, nonatomic) UILabel *titleLabel;
 @property (nonatomic) struct UIEdgeInsets titleLabelPadding;
 @property (readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
+@property (nonatomic) BOOL useModernHeaderView; // @synthesize useModernHeaderView=_useModernHeaderView;
 @property (copy, nonatomic) NSString *validationFunction; // @synthesize validationFunction=_validationFunction;
 @property (readonly, nonatomic) RUIWebView *webViewOM;
 
@@ -106,8 +112,10 @@
 - (void)_reloadTitleLabel;
 - (void)_rightNavigationBarButtonPressed:(id)arg1;
 - (void)_rightToolbarButtonPressed:(id)arg1;
+- (void)_setCompressedHeightForView:(id)arg1;
 - (void)_setContentInset:(double)arg1;
 - (void)_setParentPage:(id)arg1;
+- (BOOL)_shouldShowMultiChoiceElement;
 - (void)_updateLoadingUI;
 - (void)_updateParentPage;
 - (void)_updateToolbar;

@@ -25,6 +25,7 @@
     unsigned long long _representationTypes;
     FPSandboxingURLWrapper *_quicklookSandboxWrapper;
     FPSandboxingURLWrapper *_genericSandboxWrapper;
+    FPSandboxingURLWrapper *_parentDirectorySandboxWrapper;
     NSURL *_fileURL;
     FPItem *_item;
     NSUUID *_uuid;
@@ -68,6 +69,7 @@
 @property (strong, nonatomic) QLThumbnailRepresentation *mostRepresentativeThumbnail; // @synthesize mostRepresentativeThumbnail=_mostRepresentativeThumbnail;
 @property (readonly, nonatomic) long long mostRepresentativeTypeForWhichUpdateBlockHasBeenCalled;
 @property (strong, nonatomic) NSString *overriddenContentType; // @synthesize overriddenContentType=_overriddenContentType;
+@property (strong, nonatomic) FPSandboxingURLWrapper *parentDirectorySandboxWrapper; // @synthesize parentDirectorySandboxWrapper=_parentDirectorySandboxWrapper;
 @property (strong, nonatomic) FPSandboxingURLWrapper *quicklookSandboxWrapper; // @synthesize quicklookSandboxWrapper=_quicklookSandboxWrapper;
 @property (nonatomic) unsigned long long representationTypes; // @synthesize representationTypes=_representationTypes;
 @property (strong, nonatomic) NSError *requestIsInvalidError; // @synthesize requestIsInvalidError=_requestIsInvalidError;

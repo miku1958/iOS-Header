@@ -272,7 +272,7 @@
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)didEnterBackground:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
-- (id)fallbackURLForLinkPresentation;
+- (id)fallbackURLsForLinkPresentation;
 - (id)init;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
 - (id)initWithAssetIdentifiers:(id)arg1 activityItems:(id)arg2 applicationActivities:(id)arg3;

@@ -26,7 +26,6 @@
 
 - (void).cxx_destruct;
 - (void)_applyLabelStyles;
-- (struct UIEdgeInsets)_effectiveLayoutMargins;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

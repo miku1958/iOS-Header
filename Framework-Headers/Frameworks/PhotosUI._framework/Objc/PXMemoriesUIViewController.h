@@ -92,6 +92,7 @@
 - (id)_memoryTileViewForLocation:(struct CGPoint)arg1;
 - (BOOL)_needsUpdate;
 - (id)_photosDetailsContextForIndexPath:(struct PXSimpleIndexPath)arg1;
+- (void)_presentMemoryAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)_previewActionMenusForIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)_reconfigureTargetLayout;
 - (void)_saveAnchor;
@@ -101,8 +102,8 @@
 - (void)_updateLayoutEngineIfNeeded;
 - (void)_updateLayoutIfNeeded;
 - (void)_updateScrollViewControllerContentInset;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
@@ -119,6 +120,7 @@
 - (id)preferredFocusEnvironments;
 - (void)prepareForInteractiveTransition:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;

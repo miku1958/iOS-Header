@@ -47,7 +47,7 @@
     PUPhotoMarkupViewController *__photoMarkupViewController;
     PUFunEffectsViewController *__funEffectsViewController;
     PUAssetReference *__stashedAssetReference;
-    struct NSHashTable *__presentedViewControllers;
+    NSHashTable *__presentedViewControllers;
     PUActivitySharingController *_activitySharingController;
 }
 

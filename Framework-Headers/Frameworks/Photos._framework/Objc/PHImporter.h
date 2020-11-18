@@ -16,6 +16,8 @@
     NSObject<OS_dispatch_queue> *_importQueue;
     unsigned char _importState;
     PLImportFileManager *_importFileManager;
+    NSMutableDictionary *_downloadFolderUrlByImportIdentifier;
+    NSMutableArray *_additionalDcimImportFolders;
     NSMutableDictionary *_parentFolderMapping;
     NSMutableArray *_downloadedRecords;
     BOOL _isCanceled;
@@ -55,16 +57,18 @@
 - (void)cancellationHandler;
 - (id)createAlbumForPath:(id)arg1 inFolder:(id)arg2 error:(id *)arg3;
 - (id)createFolderForPath:(id)arg1 inFolder:(id)arg2 error:(id *)arg3;
-- (void)downloadNextAssetInRecord:(id)arg1 recordEnumerator:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)downloadNextAssetInRecord:(id)arg1 toURL:(id)arg2 subRecordEnumerator:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)ensureContainersExistForAlbumPath:(id)arg1 forAsset:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)finishImport;
 - (id)folderChangeRequestForFolder:(id)arg1;
+- (id)getDestinationUrlForImportAsset:(id)arg1;
 - (BOOL)handleErrorsForRecord:(id)arg1 batch:(id)arg2 file:(char *)arg3 line:(int)arg4;
 - (void)importNextAsset:(id)arg1;
 - (void)importRecords:(id)arg1;
 - (void)importRecords:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importedBurstAsset:(id)arg1;
 - (id)initWithLibrary:(id)arg1 options:(id)arg2 source:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)makeDownloadUrlForParentFolderPath:(id)arg1;
 - (id)relativePathComponentsForAlbumPath:(id)arg1 fromRootPath:(id)arg2;
 - (id)removeImportDirectoryForLibrary:(id)arg1;
 - (BOOL)shouldImportRecordAsReference:(id)arg1;

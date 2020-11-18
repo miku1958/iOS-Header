@@ -6,20 +6,35 @@
 
 #import <NetworkExtension/NEVPNManager.h>
 
+@class NSArray;
+
 @interface NETunnelProviderManager : NEVPNManager
 {
+    NSArray *_safariDomains;
+    NSArray *_mailDomains;
+    NSArray *_calendarDomains;
+    NSArray *_contactsDomains;
+    NSArray *_appRules;
 }
 
+@property (copy) NSArray *appRules; // @synthesize appRules=_appRules;
+@property (copy) NSArray *calendarDomains; // @synthesize calendarDomains=_calendarDomains;
+@property (copy) NSArray *contactsDomains; // @synthesize contactsDomains=_contactsDomains;
+@property (copy) NSArray *mailDomains; // @synthesize mailDomains=_mailDomains;
 @property (readonly) long long routingMethod;
+@property (copy) NSArray *safariDomains; // @synthesize safariDomains=_safariDomains;
 
 + (id)copyDesignatedRequirementForProvider:(id *)arg1 extensionPoint:(id)arg2;
++ (id)forPerAppVPN;
 + (void)loadAllFromPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (void)additionalSetup;
 - (id)copyAppRules;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithSessionType:(int)arg1 tunnelType:(long long)arg2;
 - (BOOL)isProtocolTypeValid:(long long)arg1;
+- (void)loadAppRules;
 - (void)loadFromPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

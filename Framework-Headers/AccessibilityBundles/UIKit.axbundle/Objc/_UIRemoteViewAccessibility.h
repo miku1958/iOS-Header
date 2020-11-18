@@ -19,6 +19,7 @@
 - (id)_accessibilityRemoteElementCommunicationQueue;
 - (id)_accessibilityResponderElement;
 - (BOOL)_accessibilityServesAsFirstResponder;
+- (void)_accessibilitySetFocusOnElement:(BOOL)arg1;
 - (void)_accessibilitySetRemoteElementArray:(id)arg1;
 - (void)_accessibilitySetRemoteElementIfNecessary;
 - (void)_accessibilitySetRetainedValue:(id)arg1 forKey:(id)arg2;

@@ -24,10 +24,11 @@
 @property (readonly, nonatomic) NSXPCConnection *serverConnection;
 @property (readonly, nonatomic) NSXPCConnection *tokenConnection; // @synthesize tokenConnection=_tokenConnection;
 @property (readonly, nonatomic) NSString *tokenID; // @synthesize tokenID=_tokenID;
+@property (readonly, nonatomic) NSXPCListenerEndpoint *watcherEndpoint;
 
 - (void).cxx_destruct;
-- (BOOL)connectWithError:(id *)arg1;
 - (void)dealloc;
+- (BOOL)ensureConnectionWithError:(id *)arg1;
 - (id)initWithTokenID:(id)arg1;
 - (id)initWithTokenID:(id)arg1 serverEndpoint:(id)arg2 targetUID:(id)arg3;
 - (id)sessionWithLAContext:(id)arg1 error:(id *)arg2;

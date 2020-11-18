@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsArticles/NAInterstitialAdvertisementHistoryRecorder-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC12NewsArticles40InterstitialAdvertisementHistoryRecorder : _TtCs12_SwiftObject <NAInterstitialAdvertisementHistoryRecorder>
+@interface _TtC12NewsArticles40InterstitialAdvertisementHistoryRecorder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *articlesViewedCount;
 }

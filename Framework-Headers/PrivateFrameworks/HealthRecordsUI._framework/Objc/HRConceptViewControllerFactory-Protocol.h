@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HKConcept, NSUUID, UIViewController;
+@class HKConcept, NSUUID, UIViewController, WDMedicalRecordCategory;
 
 @protocol HRConceptViewControllerFactory
-- (UIViewController *)makeViewControllerForConcept:(HKConcept *)arg1 highlightedRecordId:(NSUUID *)arg2;
+- (UIViewController *)makeViewControllerForConcept:(HKConcept *)arg1 fromCategory:(WDMedicalRecordCategory *)arg2 highlightedRecordId:(NSUUID *)arg3;
 @end
 

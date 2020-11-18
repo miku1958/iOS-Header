@@ -16,7 +16,7 @@
 {
     NSUUID *_uuid;
     HMDMediaSystem *_mediaSystem;
-    struct NSDictionary *_currentSymptoms;
+    NSDictionary *_currentSymptoms;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
 }
@@ -36,12 +36,12 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleNewDiscoveredSymptoms:(id)arg1 forAccessory:(id)arg2;
-- (struct NSDictionary *)_initializePlaceholderSymptomsDict:(id)arg1;
+- (id)_initializePlaceholderSymptomsDict:(id)arg1;
 - (void)_refreshCurrentDeviceSymptoms;
-- (void)_updateBackingStoreModelWithNewSymptoms:(struct NSDictionary *)arg1;
+- (void)_updateBackingStoreModelWithNewSymptoms:(id)arg1;
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleMediaSystemSymptoms:(struct NSDictionary *)arg1 message:(id)arg2;
+- (void)handleMediaSystemSymptoms:(id)arg1 message:(id)arg2;
 - (void)handleNewDiscoveredSymptoms:(id)arg1 forAccessory:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaSystem:(id)arg1 symptoms:(id)arg2;

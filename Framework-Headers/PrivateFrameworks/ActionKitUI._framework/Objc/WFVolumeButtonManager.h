@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithView:(id)arg1 pressHandler:(CDUnknownBlockType)arg2;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)initWithPressHandler:(CDUnknownBlockType)arg1;
+- (void)volumeButtonPressed;
 
 @end
 

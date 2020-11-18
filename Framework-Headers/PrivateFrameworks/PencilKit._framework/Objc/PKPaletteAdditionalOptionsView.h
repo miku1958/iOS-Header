@@ -9,13 +9,14 @@
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPaletteMoreOptionsViewControllerDelegate-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
+#import <PencilKit/PKPalettePopoverUpdating-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 #import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKPaletteButton, PKPaletteMoreOptionsViewController, UIStackView, UIViewController;
 @protocol PKPalettePopoverPresenting><PKPaletteAdditionalOptionsViewDelegate;
 
-@interface PKPaletteAdditionalOptionsView : UIView <PKPaletteMoreOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PKEdgeLocatable, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
+@interface PKPaletteAdditionalOptionsView : UIView <PKPaletteMoreOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PKEdgeLocatable, PKPalettePopoverUpdating, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
 {
     BOOL _supportsAnnotationEditing;
     BOOL _autoHideOn;
@@ -65,6 +66,7 @@
 - (void)moreOptionsViewControllerDidToggleAutoHide:(id)arg1;
 - (struct CGRect)plusButtonFrame;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updatePopoverUI;
 
 @end
 

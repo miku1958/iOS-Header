@@ -20,6 +20,8 @@
 @property (nonatomic) long long timeStyle; // @synthesize timeStyle=_timeStyle;
 
 + (BOOL)supportsSecureCoding;
+- (id)asDictionary;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)value;

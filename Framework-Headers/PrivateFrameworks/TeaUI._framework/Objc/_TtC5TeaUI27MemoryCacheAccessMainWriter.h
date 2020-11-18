@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaUI/TSMemoryCacheAccessorType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC5TeaUI27MemoryCacheAccessMainWriter : NSObject <TSMemoryCacheAccessorType>
+@interface _TtC5TeaUI27MemoryCacheAccessMainWriter : NSObject
 {
     MISSING_TYPE *lock;
 }

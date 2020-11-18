@@ -17,6 +17,7 @@
     MISSING_TYPE *key;
     MISSING_TYPE *__entityLookupTable;
     MISSING_TYPE *__simulationSceneCoordinator;
+    MISSING_TYPE *__runtimeSceneCoordinator;
     MISSING_TYPE *__interactions;
 }
 

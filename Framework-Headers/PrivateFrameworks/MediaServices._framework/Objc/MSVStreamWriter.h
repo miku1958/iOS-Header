@@ -45,8 +45,8 @@
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 - (void).cxx_destruct;
-- (id)_decompressData:(id)arg1;
 - (void)_onQueue_stop;
+- (BOOL)_processInput:(id)arg1 generatingDecompressedData:(id *)arg2;
 - (void)_writeAvailablePendingData;
 - (id)init;
 - (id)initWithOutputStream:(id)arg1 queue:(id)arg2;

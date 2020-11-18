@@ -10,6 +10,7 @@
 
 @interface CoreTelephonyClient : NSObject
 {
+    id fDelegateAddr;
     id _delegate;
     struct queue _userQueue;
     CoreTelephonyClientMux *_mux;
@@ -53,6 +54,8 @@
 - (id)context:(id)arg1 getEncryptedIdentity:(id)arg2 error:(id *)arg3;
 - (id)context:(id)arg1 getPhoneNumberSignature:(id *)arg2;
 - (void)context:(id)arg1 getPhoneNumberSignatureWithCompletion:(CDUnknownBlockType)arg2;
+- (void)context:(id)arg1 getPseudoIdentityFor:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)context:(id)arg1 getPseudoIdentityFor:(id)arg2 error:(id *)arg3;
 - (id)context:(id)arg1 getSystemCapabilities:(id *)arg2;
 - (void)context:(id)arg1 getSystemCapabilitiesWithCompletion:(CDUnknownBlockType)arg2;
 - (void)context:(id)arg1 isProtectedIdentitySupported:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -64,6 +67,8 @@
 - (void)context:(id)arg1 removePhoneServicesDevice:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)context:(id)arg1 setCapability:(id)arg2 enabled:(BOOL)arg3 with:(id)arg4;
 - (void)context:(id)arg1 setCapability:(id)arg2 enabled:(BOOL)arg3 with:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)context:(id)arg1 supportedIdentityProtectionFor:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (long long)context:(id)arg1 supportedIdentityProtectionFor:(id)arg2 error:(id *)arg3;
 - (void)copyAbbreviatedOperatorName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)copyBandInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)copyBundleIdentifier:(id)arg1 bundleType:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -143,6 +148,7 @@
 - (void)copyWirelessTechnology:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)createEncryptedIdentity:(id)arg1 identity:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dataUsageForLastPeriods:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dataUsageForLastPeriodsOnActivePairedDevice:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)deletePersonalWallet:(id)arg1;
 - (void)deletePersonalWallet:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -200,8 +206,10 @@
 - (void)getEnhancedVoiceLinkQualityMetric:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getIMSRegistrationStatus:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getIMSRegistrationStatus:(id)arg1 error:(id *)arg2;
+- (void)getInternationalDataAccess:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getInternationalDataAccessStatus:(CDUnknownBlockType)arg1;
 - (BOOL)getInternationalDataAccessStatusSync:(id *)arg1;
+- (BOOL)getInternationalDataAccessSync:(id)arg1 error:(id *)arg2;
 - (void)getInternetConnectionAvailability:(CDUnknownBlockType)arg1;
 - (id)getInternetConnectionAvailabilitySync:(id *)arg1;
 - (void)getInternetConnectionState:(CDUnknownBlockType)arg1;
@@ -257,6 +265,7 @@
 - (id)getShortLabel:(id)arg1 error:(id *)arg2;
 - (void)getSignalStrengthInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getSignalStrengthInfo:(id)arg1 error:(id *)arg2;
+- (void)getSignalStrengthMeasurements:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getSignalStrengthMeasurements:(id)arg1 error:(id *)arg2;
 - (void)getSimLabel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getSimLabel:(id)arg1 error:(id *)arg2;
@@ -332,6 +341,7 @@
 - (void)refreshSweetgumPlans:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)refreshSweetgumUsage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)refreshUserAuthToken:(id)arg1 error:(id *)arg2;
+- (CDStruct_3d581f42)reliableNetworkFallback:(id)arg1 error:(id *)arg2;
 - (id)renamePersonalWallet:(id)arg1 to:(id)arg2;
 - (id)resetAPNSettings;
 - (void)resetAPNSettings:(CDUnknownBlockType)arg1;
@@ -355,8 +365,10 @@
 - (void)setBandInfo:(id)arg1 bands:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultVoice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDefaultVoice:(id)arg1 error:(id *)arg2;
+- (void)setInternationalDataAccess:(id)arg1 status:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)setInternationalDataAccessStatus:(BOOL)arg1;
 - (void)setInternationalDataAccessStatus:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)setInternationalDataAccessSync:(id)arg1 status:(BOOL)arg2;
 - (id)setInternetActive:(BOOL)arg1;
 - (void)setInternetActive:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setLabel:(id)arg1 label:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -366,6 +378,7 @@
 - (id)setPacketContextActiveByServiceType:(id)arg1 connectionType:(int)arg2 active:(BOOL)arg3;
 - (void)setPacketContextActiveByServiceType:(id)arg1 connectionType:(int)arg2 active:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setRatSelection:(id)arg1 selection:(id)arg2 preferred:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)setReliableNetworkFallback:(id)arg1 enable:(BOOL)arg2;
 - (id)setSaveDataMode:(id)arg1 enable:(BOOL)arg2;
 - (id)setSupportDynamicDataSimSwitch:(BOOL)arg1;
 - (void)setSupportDynamicDataSimSwitch:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -401,6 +414,7 @@
 - (id)userEnteredMonthlyBudget:(id)arg1 error:(id *)arg2;
 - (void)userEnteredMonthlyRoamingBudget:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)userEnteredMonthlyRoamingBudget:(id)arg1 error:(id *)arg2;
+- (id)wifiCallingCTFollowUpComplete:(id)arg1;
 
 @end
 

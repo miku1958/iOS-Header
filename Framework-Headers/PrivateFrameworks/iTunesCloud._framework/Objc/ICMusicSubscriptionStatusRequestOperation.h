@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 - (void)_cacheAccountEligibilityWithStatus:(id)arg1 requestContext:(id)arg2;
 - (BOOL)_carrierBundleStatusIsValidForCachedSubscriptionStatus:(id)arg1;
-- (void)_performSubscriptionStatusURLRequestWithRequestContext:(id)arg1 subscriptionStatusURL:(id)arg2 allowsAuthentication:(BOOL)arg3 maximumRetryCount:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_performSubscriptionStatusURLRequestWithRequestContext:(id)arg1 subscriptionStatusURL:(id)arg2 allowsAuthentication:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)execute;
 - (id)initWithRequest:(id)arg1;
 

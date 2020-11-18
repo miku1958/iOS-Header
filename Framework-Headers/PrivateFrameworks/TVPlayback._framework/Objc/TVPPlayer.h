@@ -24,6 +24,8 @@
     BOOL _updatesMediaRemoteInfoAutomatically;
     BOOL _isLive;
     BOOL _limitsBandwidthForCellularAccess;
+    BOOL _allowsCellularUsage;
+    BOOL _allowsConstrainedNetworkUsage;
     BOOL _invalidated;
     BOOL _handleRemoteCommandsWithoutUpdatingMediaRemote;
     BOOL _pausesOnRouteChange;
@@ -120,6 +122,8 @@
 @property (strong, nonatomic) AVQueuePlayer *AVQueuePlayer; // @synthesize AVQueuePlayer=_AVQueuePlayer;
 @property (strong, nonatomic) NSTimer *HDCPStatusPollTimer; // @synthesize HDCPStatusPollTimer=_HDCPStatusPollTimer;
 @property (strong, nonatomic) NSTimer *HDCPUnprotectedTooLongTimer; // @synthesize HDCPUnprotectedTooLongTimer=_HDCPUnprotectedTooLongTimer;
+@property (nonatomic) BOOL allowsCellularUsage; // @synthesize allowsCellularUsage=_allowsCellularUsage;
+@property (nonatomic) BOOL allowsConstrainedNetworkUsage; // @synthesize allowsConstrainedNetworkUsage=_allowsConstrainedNetworkUsage;
 @property (weak, nonatomic) id<TVPASyncPlaybackDelegate> asyncDelegate; // @synthesize asyncDelegate=_asyncDelegate;
 @property (nonatomic) BOOL asyncDelegateInProgress; // @synthesize asyncDelegateInProgress=_asyncDelegateInProgress;
 @property (strong, nonatomic) NSMutableArray *asyncDelegateOperations; // @synthesize asyncDelegateOperations=_asyncDelegateOperations;
@@ -249,6 +253,7 @@
 + (void)setSavedPreferredAudioLanguageCode:(id)arg1;
 + (void)setShouldDeactivateAVAudioSession:(BOOL)arg1;
 + (BOOL)shouldDeactivateAVAudioSession;
++ (long long)tvpVideoRangeForVideoDynamicRange:(int)arg1;
 - (void).cxx_destruct;
 - (id)AVQueuePlayerCreateIfNecessary:(BOOL)arg1;
 - (void)_HDCPStatusPollTimerFired:(id)arg1;
@@ -344,7 +349,6 @@
 - (id)_statesThatReturnStartTime;
 - (void)_subtitleSettingsDidChange;
 - (void)_timeControlStatusDidChangeTo:(long long)arg1;
-- (long long)_tvpVideoRangeForVideoDynamicRange:(int)arg1;
 - (void)_updateAVPlayerActionAtItemEnd;
 - (void)_updateAudioSelectionCriteriaForMediaItemLoader:(id)arg1;
 - (void)_updateIsLiveForElapsedTime:(CDStruct_1b6d18a9)arg1;
@@ -408,7 +412,7 @@
 - (void)stopWithVolumeRampDuration:(double)arg1;
 - (id)timedMetadata;
 - (void)togglePlayPause;
-- (id)tvp_PlaybackErrorFromError:(id)arg1;
+- (id)tvp_PlaybackErrorFromError:(id)arg1 forMediaItem:(id)arg2;
 - (void)updateSubtitleOptions;
 - (void)updateSubtitleOptionsAndSelection;
 

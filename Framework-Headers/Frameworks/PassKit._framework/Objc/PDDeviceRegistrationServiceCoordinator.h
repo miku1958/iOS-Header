@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PassKitCore/PDScheduledActivityClient-Protocol.h>
-
-@class NSMutableArray, NSString, PDPaymentWebServiceCoordinator, PDPeerPaymentWebServiceCoordinator;
+@class NSMutableArray, PDPaymentWebServiceCoordinator, PDPeerPaymentWebServiceCoordinator;
 @protocol OS_dispatch_queue;
 
-@interface PDDeviceRegistrationServiceCoordinator : NSObject <PDScheduledActivityClient>
+@interface PDDeviceRegistrationServiceCoordinator : NSObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableArray *_registrationTasks;
@@ -19,26 +17,22 @@
     PDPeerPaymentWebServiceCoordinator *_peerPaymentWebServiceCoordinator;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PDPaymentWebServiceCoordinator *paymentWebServiceCoordinator; // @synthesize paymentWebServiceCoordinator=_paymentWebServiceCoordinator;
 @property (readonly, nonatomic) PDPeerPaymentWebServiceCoordinator *peerPaymentWebServiceCoordinator; // @synthesize peerPaymentWebServiceCoordinator=_peerPaymentWebServiceCoordinator;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_canAutomaticallyRegisterWithWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleDeviceRegistrationCompletedWithResult:(unsigned long long)arg1;
 - (void)_handlePaymentWebServiceContextChanged:(id)arg1;
-- (void)_peerPaymentRegisterWithURL:(id)arg1 paymentWebService:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_performDeviceRegistrationWithReason:(id)arg1 forceRegister:(BOOL)arg2;
-- (void)_performDeviceRegistrationWithReason:(id)arg1 forceRegister:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_peerPaymentRegisterWithURL:(id)arg1 paymentWebService:(id)arg2 forceRegister:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_performDeviceRegistrationWithReason:(id)arg1 forceApplePayRegister:(BOOL)arg2 forcePeerPaymentRegister:(BOOL)arg3;
+- (void)_performDeviceRegistrationWithReason:(id)arg1 forceApplePayRegister:(BOOL)arg2 forcePeerPaymentRegister:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_shouldAttemptBackgroundPeerPaymentRegistration;
 - (void)dealloc;
 - (id)init;
 - (id)initWithPaymentWebServiceCoordinator:(id)arg1 peerPaymentWebServiceCoordinator:(id)arg2;
 - (void)notePasscodeChanged;
-- (void)performDeviceRegistrationForReason:(id)arg1 action:(long long)arg2 forceRegister:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performDeviceRegistrationForReason:(id)arg1 action:(long long)arg2 forceApplePayRegister:(BOOL)arg3 forcePeerPaymentRegister:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

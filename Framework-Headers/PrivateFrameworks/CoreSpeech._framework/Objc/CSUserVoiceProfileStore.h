@@ -21,6 +21,7 @@
 - (BOOL)checkIfVoiceProfile:(id)arg1 needsUpdatedWith:(id)arg2 withCategory:(unsigned long long)arg3;
 - (id)cleanupInvalidCloudOnBoardedProfilesWithDryRun:(BOOL)arg1;
 - (id)deleteUserVoiceProfile:(id)arg1;
+- (void)logVoiceProfileConfusionWithCleanup:(BOOL)arg1;
 - (void)resyncVoiceProfilesOnboardedThroughCloud;
 - (void)retrainVoiceProfilesForLanguage:(id)arg1 withForceRetrain:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)userVoiceProfileForSharedSiriDebugID:(id)arg1;

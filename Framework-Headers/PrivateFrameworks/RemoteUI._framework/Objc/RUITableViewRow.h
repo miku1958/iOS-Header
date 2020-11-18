@@ -78,6 +78,7 @@
 + (void)initialize;
 + (void)resetLocale;
 - (void).cxx_destruct;
+- (id)_checkmarkAccessoryViewWithSelected:(BOOL)arg1;
 - (void)_datePickerChanged:(id)arg1;
 - (id)_datePickerFormatter;
 - (void)_switchFlipped:(id)arg1;

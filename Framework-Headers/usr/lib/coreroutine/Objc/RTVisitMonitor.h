@@ -56,17 +56,18 @@
 
 + (double)LocationHeartbeatWhileAwake;
 + (id)bucketLocations:(id)arg1 interval:(double)arg2;
-+ (id)hyperParameterForPipelineType:(id)arg1;
++ (id)hyperParameterForPipelineType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_batchProcess:(id)arg1 fromDate:(id)arg2 toDate:(id)arg3 handler:(CDUnknownBlockType)arg4;
-- (id)_configurationForPipelineType:(id)arg1;
-- (id)_createPipelineWithType:(id)arg1 name:(id)arg2 lastVisit:(id)arg3;
-- (id)_moduleWithName:(id)arg1 pipelineType:(id)arg2 hyperParameter:(id)arg3;
-- (id)_modulesForPipelineType:(id)arg1 hyperParameter:(id)arg2;
+- (void)_bootstrapPipeline:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_configurationForPipelineType:(unsigned long long)arg1;
+- (id)_createPipelineWithType:(unsigned long long)arg1 name:(id)arg2 lastVisit:(id)arg3;
+- (id)_moduleWithName:(id)arg1 pipelineType:(unsigned long long)arg2 hyperParameter:(id)arg3;
+- (id)_modulesForPipelineType:(unsigned long long)arg1 hyperParameter:(id)arg2;
 - (void)_processLeechedLocations:(id)arg1;
 - (void)_processMatureLocations;
-- (void)_processRealtimeVisits:(id)arg1 withPipeline:(id)arg2 withType:(id)arg3;
-- (void)_setupRealtimePipelineWithType:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_processRealtimeVisits:(id)arg1 pipeline:(id)arg2;
+- (void)_setupRealtimePipelineWithType:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_startFeedBuffer;
 - (void)_startFeedBufferTimer;
 - (void)_stopFeedBuffer;

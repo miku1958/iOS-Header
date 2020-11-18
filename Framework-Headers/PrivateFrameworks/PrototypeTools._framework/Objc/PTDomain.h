@@ -20,6 +20,7 @@
     PTTestRecipe *_activeTestRecipe;
     BOOL _registrationRequested;
     BOOL _registrationCompleted;
+    BOOL _haveSentProxyDefinition;
     double _delayBeforeRegisteringAfterInterruption;
     BOOL _archiveIsApplied;
 }
@@ -48,6 +49,7 @@
 - (void)_registerWithServerIfNecessary;
 - (void)_restoreDefaultSettings;
 - (id)_rootSettings;
+- (void)_sendProxyDefinitionIfNecessary;
 - (void)_tearDownConnection;
 - (void)_updateActiveTestRecipe;
 - (void)_updateServerConnectionStatusIfNecessary;

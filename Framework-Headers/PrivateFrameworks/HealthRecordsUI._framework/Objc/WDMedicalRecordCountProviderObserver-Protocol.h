@@ -12,5 +12,8 @@
 - (void)medicalRecordCountProvider:(WDMedicalRecordCountProvider *)arg1 didUpdateCountForCategories:(NSArray *)arg2;
 - (void)medicalRecordCountProvider:(WDMedicalRecordCountProvider *)arg1 didUpdateCountForSampleTypes:(NSArray *)arg2;
 - (void)medicalRecordCountProviderDidUpdateAllRecordsCount:(WDMedicalRecordCountProvider *)arg1;
+
+@optional
+- (void)medicalRecordCountProviderDidLoadInitialCounts:(WDMedicalRecordCountProvider *)arg1;
 @end
 

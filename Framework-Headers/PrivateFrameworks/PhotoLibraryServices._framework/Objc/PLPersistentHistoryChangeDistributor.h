@@ -27,6 +27,7 @@
 - (id)fetchTransactionsSinceLastToken;
 - (void)forceUserInterfaceReload;
 - (id)initWithPersistentStoreCoordinator:(id)arg1 changeMerger:(id)arg2;
+- (void)invalidate;
 - (id)localEventFromTransactions:(id)arg1;
 - (id)makeManagedObjectContext;
 - (void)startObservingRemoteNotifications;

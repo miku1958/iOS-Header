@@ -74,8 +74,6 @@
 - (void)setPreferredTransform:(struct CGAffineTransform)arg1;
 - (void)setPreferredVolume:(float)arg1;
 - (void)setWritesSinglePassUsingPredeterminedFileSize:(long long)arg1 mediaDataSize:(long long)arg2;
-- (long long)singlePassFileSize;
-- (long long)singlePassMediaDataSize;
 - (void)startSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;
 - (BOOL)startWriting;
 

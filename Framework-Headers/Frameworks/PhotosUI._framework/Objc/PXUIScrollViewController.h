@@ -8,17 +8,21 @@
 
 #import <PhotosUICore/PXUIScrollViewDelegate-Protocol.h>
 #import <PhotosUICore/UIScrollViewDelegate-Protocol.h>
+#import <PhotosUICore/_PXUIScrollViewFocusItemProvider-Protocol.h>
 
 @class NSString, UIScrollView, _PXUIScrollView;
+@protocol PXUIScrollViewControllerFocusItemProvider;
 
-@interface PXUIScrollViewController : PXScrollViewController <PXUIScrollViewDelegate, UIScrollViewDelegate>
+@interface PXUIScrollViewController : PXScrollViewController <PXUIScrollViewDelegate, _PXUIScrollViewFocusItemProvider, UIScrollViewDelegate>
 {
     _PXUIScrollView *_scrollView;
     BOOL _isScrollingToTop;
+    id<PXUIScrollViewControllerFocusItemProvider> _focusItemProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<PXUIScrollViewControllerFocusItemProvider> focusItemProvider; // @synthesize focusItemProvider=_focusItemProvider;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, setter=setScrollingToTop:) BOOL isScrollingToTop; // @synthesize isScrollingToTop=_isScrollingToTop;
 @property (readonly, nonatomic) UIScrollView *scrollView;
@@ -27,10 +31,11 @@
 - (void).cxx_destruct;
 - (void)addGestureRecognizer:(id)arg1;
 - (void)addSubview:(id)arg1;
-- (void)addSubviewToScrollView:(struct NSObject *)arg1;
+- (void)addSubviewToScrollView:(id)arg1;
 - (void)applyScrollInfo:(id)arg1;
 - (id)contentCoordinateSpace;
 - (BOOL)deferContentOffsetUpdates;
+- (id)focusItemsForScrollView:(id)arg1 inRect:(struct CGRect)arg2;
 - (BOOL)hasWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isDecelerating;

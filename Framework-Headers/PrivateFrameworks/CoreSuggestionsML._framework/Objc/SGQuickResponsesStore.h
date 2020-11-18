@@ -14,6 +14,7 @@
 }
 
 + (id)instanceInMemory;
++ (BOOL)isProfane:(id)arg1 inLocales:(id)arg2;
 + (id)keyWithLanguage:(id)arg1 andResponse:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -25,7 +26,7 @@
 - (void)decayAllCustomResponsesWithDecayFactor:(double)arg1 filteringBatchSize:(int)arg2;
 - (void)designateFilteringBatch:(unsigned long long)arg1;
 - (void)destroyInstanceInMemory;
-- (id)embeddingForPrompt:(id)arg1 inLanguage:(id)arg2 withEmbedder:(CDUnknownBlockType)arg3;
+- (id)embeddingForPrompt:(id)arg1 language:(id)arg2 embedder:(CDUnknownBlockType)arg3;
 - (void)filterBatchWithMinimumDistinctRecipients:(unsigned long long)arg1 minimumReplyOccurences:(unsigned long long)arg2;
 - (BOOL)frailReadTransaction:(CDUnknownBlockType)arg1;
 - (BOOL)frailWriteTransaction:(CDUnknownBlockType)arg1;
@@ -35,7 +36,7 @@
 - (id)initInDirectory:(id)arg1 inMemory:(BOOL)arg2 withMigration:(BOOL)arg3;
 - (id)initInDirectory:(id)arg1 inMemory:(BOOL)arg2 withMigration:(BOOL)arg3 forTools:(BOOL)arg4;
 - (void)markFilteringBatchCompleted;
-- (id)nearestCustomResponsesToPromptEmbedding:(id)arg1 withLimit:(unsigned long long)arg2 withinRadius:(float)arg3 responseCountExponent:(float)arg4 minimumDecayedCount:(float)arg5 compatibilityVersion:(unsigned long long)arg6 inLanguage:(id)arg7 inLocale:(id)arg8 allowProfanity:(BOOL)arg9 minimumTimeInterval:(double)arg10;
+- (id)nearestCustomResponsesToPromptEmbedding:(id)arg1 limit:(unsigned long long)arg2 withinRadius:(float)arg3 responseCountExponent:(float)arg4 minimumDecayedCount:(float)arg5 compatibilityVersion:(unsigned long long)arg6 language:(id)arg7 locale:(id)arg8 allowProfanity:(BOOL)arg9 minimumTimeInterval:(double)arg10;
 - (void)recordKnownCustomResponsesInBatchWithEmbedder:(CDUnknownBlockType)arg1 compatibilityVersion:(unsigned long long)arg2;
 - (void)recordMessagesInBatchAsCustomResponsesWithEmbedder:(CDUnknownBlockType)arg1 compatibilityVersion:(unsigned long long)arg2;
 - (id)recordsForResponses:(id)arg1 language:(id)arg2;

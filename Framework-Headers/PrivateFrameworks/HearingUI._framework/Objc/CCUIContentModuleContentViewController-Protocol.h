@@ -6,7 +6,7 @@
 
 #import <HearingUI/NSObject-Protocol.h>
 
-@class UIViewPropertyAnimator;
+@class UITouch, UIViewPropertyAnimator;
 
 @protocol CCUIContentModuleContentViewController <NSObject>
 
@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
 @property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
+@property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 
 
 @optional
@@ -25,6 +26,7 @@
 - (void)dismissPresentedContentAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (void)displayWillTurnOff;
 - (BOOL)shouldBeginTransitionToExpandedContentModule;
+- (BOOL)shouldExpandModuleOnTouch:(UITouch *)arg1;
 - (BOOL)shouldFinishTransitionToExpandedContentModule;
 - (void)willBecomeActive;
 - (void)willResignActive;

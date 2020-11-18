@@ -8,17 +8,20 @@
 
 @interface ARDepthBasedPersonDetectionResult : ARPersonDetectionResult
 {
-    double _sumDepthValues;
+    float _sumDepthValues;
     long long _numberDepthPixels;
+    double _initialBoundingBoxAvg;
 }
 
-@property (nonatomic) long long numberDepthPixels; // @synthesize numberDepthPixels=_numberDepthPixels;
-@property (nonatomic) double sumDepthValues; // @synthesize sumDepthValues=_sumDepthValues;
+@property (nonatomic) double initialBoundingBoxAvg; // @synthesize initialBoundingBoxAvg=_initialBoundingBoxAvg;
+@property (readonly, nonatomic) unsigned long long numberOfSamples;
 
+- (void)addSampleValue:(float)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBoundingBox:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
+- (float)meanValue;
 
 @end
 

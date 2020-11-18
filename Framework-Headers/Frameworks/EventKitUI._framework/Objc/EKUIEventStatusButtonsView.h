@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSLayoutConstraint, UIButton, UIFont;
+#import <EventKitUI/_UICursorInteractionDelegate-Protocol.h>
+
+@class NSArray, NSLayoutConstraint, NSString, UIButton, UIFont;
 @protocol EKUIEventStatusButtonsViewDelegate;
 
-@interface EKUIEventStatusButtonsView : UIView
+@interface EKUIEventStatusButtonsView : UIView <_UICursorInteractionDelegate>
 {
     NSArray *_buttons;
     NSArray *_actions;
@@ -31,11 +33,15 @@
 @property (strong, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (nonatomic) struct UIEdgeInsets buttonsTouchInsets; // @synthesize buttonsTouchInsets=_buttonsTouchInsets;
 @property (readonly, nonatomic) UIButton *centerButton;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<EKUIEventStatusButtonsViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableButtonHighlights; // @synthesize disableButtonHighlights=_disableButtonHighlights;
 @property (readonly, nonatomic) UIFont *font;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long selectedAction; // @synthesize selectedAction=_selectedAction;
 @property (nonatomic) BOOL shouldUseVerticalLayout; // @synthesize shouldUseVerticalLayout=_shouldUseVerticalLayout;
+@property (readonly) Class superclass;
 @property (nonatomic) long long textSizeMode; // @synthesize textSizeMode=_textSizeMode;
 
 + (id)buttonTitleForAction:(long long)arg1 orb:(BOOL)arg2;
@@ -58,6 +64,9 @@
 - (double)baselineFromBoundsTop;
 - (id)buttonForAction:(long long)arg1;
 - (void)buttonTapped:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)findCursorInteractionWithButton:(id)arg1 actions:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3 centerSingleButton:(BOOL)arg4;
 - (void)layoutSubviews;

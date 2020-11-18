@@ -27,7 +27,6 @@
 @property (copy) CDUnknownBlockType stopCompletionHandler; // @synthesize stopCompletionHandler=_stopCompletionHandler;
 
 - (void).cxx_destruct;
-- (void)flowDivertMatchAppRulesWithFlow:(unsigned int)arg1 auditToken:(struct __CFData *)arg2 signingIdentifier:(struct __CFString *)arg3;
 - (void)flowDivertNewFlow:(struct _NEFlow *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)flowDivertOpenControlSocket;
 - (void)handleAppMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

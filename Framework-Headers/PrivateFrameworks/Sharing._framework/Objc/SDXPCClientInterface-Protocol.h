@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString, NSURL, NSUUID, SFClientGetDeviceAssetsParams, SFContactInfo, SFDevice, SFPeopleSuggesterParams;
+@class NSDictionary, NSString, NSURL, NSUUID, SFClientGetDeviceAssetsParams, SFClientSubCredentialParams, SFContactInfo, SFDevice, SFPeopleSuggesterParams;
 
 @protocol SDXPCClientInterface
 - (void)activateAssertionWithIdentifier:(NSString *)arg1;
@@ -24,8 +24,10 @@
 - (void)repairDevice:(SFDevice *)arg1 flags:(unsigned int)arg2 completion:(void (^)(NSError *))arg3;
 - (void)retriggerProximityPairing:(void (^)(NSError *))arg1;
 - (void)retriggerProximitySetup:(void (^)(NSError *))arg1;
+- (void)setAudioRoutingScore:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setupDevice:(SFDevice *)arg1 homeIdentifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)showDevicePickerWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)subCredentialPresentCardWithParams:(SFClientSubCredentialParams *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)testContinuityKeyboardBegin:(BOOL)arg1;
 - (void)triggerHomeKitDeviceDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)triggerProximityAutoFillDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;

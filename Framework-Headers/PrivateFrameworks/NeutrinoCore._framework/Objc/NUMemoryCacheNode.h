@@ -19,7 +19,7 @@
 - (id)newRenderRequestWithOriginalRequest:(id)arg1 error:(out id *)arg2;
 - (id)nodeByReplayingAgainstCache:(id)arg1 pipelineState:(id)arg2 error:(out id *)arg3;
 - (id)persistentURL;
-- (void)resolveSourceWithResponse:(struct NUResponse *)arg1;
+- (void)resolveSourceWithResponse:(id)arg1;
 - (BOOL)tryLoadPersistentURL:(id)arg1 error:(out id *)arg2;
 
 @end

@@ -6,13 +6,21 @@
 
 #import <PassKitCore/PDCloudStoreContainer.h>
 
+#import <PassKitCore/PDCloudStoreZoneManagerDataSource-Protocol.h>
+
+@class NSString;
 @protocol PDCloudStorePassManager;
 
-@interface PDPassCloudStoreContainer : PDCloudStoreContainer
+@interface PDPassCloudStoreContainer : PDCloudStoreContainer <PDCloudStoreZoneManagerDataSource>
 {
     id<PDCloudStorePassManager> _passManager;
     BOOL _canInitializeContainer;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canInitializeContainer;
@@ -21,17 +29,21 @@
 - (BOOL)_isPassItemFromRecordType:(id)arg1;
 - (BOOL)_isRemoteAssetItemFromRecordType:(id)arg1;
 - (id)_ubiquitousCatalogOfRecord;
+- (id)allPossibleSubscriptionIdentifiers;
+- (id)allPossibleZoneNames;
 - (BOOL)canInitializeContainer;
 - (void)cloudStoreAccountChanged:(id)arg1;
+- (id)cloudStoreZonesForCloudStoreItem:(id)arg1;
+- (id)cloudStoreZonesForCloudStoreItemType:(unsigned long long)arg1;
+- (id)cloudStoreZonesForCloudStoreItemType:(unsigned long long)arg1 recordName:(id)arg2;
+- (id)containerName;
 - (id)initWithDataSource:(id)arg1 passManager:(id)arg2;
-- (void)invalidateServerChangeTokens;
 - (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 request:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)readCachedContainerValues;
-- (id)recordTypeForRecordID:(id)arg1;
-- (void)saveCachedContainerValues;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)shouldFetchAndStoreCloudDataAtStartupWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 groupName:(id)arg3 groupNameSuffix:(id)arg4 qualityOfService:(long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)subscriptionIdentifierForZoneName:(id)arg1;
+- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 includeServerData:(BOOL)arg3 groupName:(id)arg4 groupNameSuffix:(id)arg5 qualityOfService:(long long)arg6 completion:(CDUnknownBlockType)arg7;
+- (id)zoneNameForSubscriptionIdentifier:(id)arg1;
 
 @end
 

@@ -93,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)purgeSubviews;
 - (void)removeFromSuperview;
 - (void)removeKeyFromDelayedDeactivationSet:(id)arg1;
+- (void)retestForTouchUpSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)scheduleDelayedDeactivation;
 - (void)setContentScaleFactor:(double)arg1;

@@ -18,10 +18,10 @@
 }
 
 @property (copy, nonatomic) HDDatabaseTransactionContext *databaseContext; // @synthesize databaseContext=_databaseContext;
-@property (strong, nonatomic) NSCalendar *gregorianCalendar; // @synthesize gregorianCalendar=_gregorianCalendar;
+@property (copy, nonatomic) NSCalendar *gregorianCalendar; // @synthesize gregorianCalendar=_gregorianCalendar;
 @property (strong, nonatomic) HDKeyValueDomain *keyValueDomain; // @synthesize keyValueDomain=_keyValueDomain;
 @property (nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
-@property (strong, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 
 - (void).cxx_destruct;
 - (id)allCachedTemplatesWithError:(id *)arg1;

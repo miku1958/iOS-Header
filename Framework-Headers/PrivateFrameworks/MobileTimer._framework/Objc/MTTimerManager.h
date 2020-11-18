@@ -16,7 +16,7 @@
 @interface MTTimerManager : NSObject <MTTimerManagerIntentSupport, MTTimerManagerProviding, MTUserDefaultNotificationObserver>
 {
     MTTimerManagerExportedObject *_exportedObject;
-    struct MTXPCConnectionProvider *_connectionProvider;
+    MTXPCConnectionProvider *_connectionProvider;
     MTMetrics *_metrics;
     MTTimerCache *_cache;
     NSNotificationCenter *_notificationCenter;

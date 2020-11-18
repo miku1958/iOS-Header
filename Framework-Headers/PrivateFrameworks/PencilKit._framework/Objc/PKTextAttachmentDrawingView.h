@@ -9,10 +9,11 @@
 #import <PencilKit/PKTextAttachmentView-Protocol.h>
 #import <PencilKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <PencilKit/UIScrollViewDelegate-Protocol.h>
+#import <PencilKit/_UICursorInteractionDelegate-Protocol.h>
 
 @class CALayer, NSString, NSTextAttachment, PKSelectDrawingGestureRecognizer, PKTextAttachmentDrawingResizeView, PKTextAttachmentDrawingViewTouchRecognizer, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIView;
 
-@interface PKTextAttachmentDrawingView : _UITextAttachmentDrawingView <PKTextAttachmentView, UIGestureRecognizerDelegate, UIScrollViewDelegate>
+@interface PKTextAttachmentDrawingView : _UITextAttachmentDrawingView <PKTextAttachmentView, UIGestureRecognizerDelegate, _UICursorInteractionDelegate, UIScrollViewDelegate>
 {
     UIScrollView *_tileMaskView;
     BOOL _resizeUpper;
@@ -87,6 +88,7 @@
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
 - (void)copyStrokeSelection:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (void)cut:(id)arg1;
 - (void)cutStrokeSelection:(id)arg1;
 - (id)dataForTextAttachment:(id)arg1;

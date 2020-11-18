@@ -57,7 +57,7 @@
 - (void)_updateScreenTracking:(id)arg1;
 - (void)_updateTabTracking:(id)arg1;
 - (id)currentScreenViewName;
-- (struct NSObject *)getDynamicProperty:(id)arg1 forEventName:(id)arg2 withPayload:(id)arg3;
+- (id)getDynamicProperty:(id)arg1 forEventName:(id)arg2 payloadForSystemPropertyExtraction:(id)arg3;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 - (id)lastScreenName;
 - (void)processEvent:(id)arg1;

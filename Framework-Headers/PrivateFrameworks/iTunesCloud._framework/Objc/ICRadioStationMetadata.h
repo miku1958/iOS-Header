@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICStoreArtworkInfo, NSDictionary, NSString;
+@class ICRadioStationProviderResource, ICStoreArtworkInfo, NSDictionary, NSString;
 
 @interface ICRadioStationMetadata : NSObject
 {
@@ -20,6 +20,7 @@
 @property (readonly, copy, nonatomic) NSString *coreSeedName;
 @property (readonly, copy, nonatomic) NSString *descriptionText;
 @property (readonly, copy, nonatomic) NSString *name;
+@property (readonly, copy, nonatomic) ICRadioStationProviderResource *providerResource;
 @property (readonly, copy, nonatomic) NSString *stationHash;
 @property (readonly, nonatomic) long long stationID;
 @property (readonly, copy, nonatomic) NSString *stationStringID;

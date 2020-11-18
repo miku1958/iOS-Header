@@ -29,7 +29,7 @@
 + (id)entityName;
 + (id)fromPBCodable:(id)arg1;
 + (id)identifierWithString:(id)arg1 type:(id)arg2;
-+ (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
++ (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 excludedMetadataKeys:(id)arg3 cache:(id)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)compareValue:(id)arg1;

@@ -47,11 +47,12 @@ struct AudioManager_AVAudioEngine {
     struct unordered_map<unsigned long long, re::AVAEAudioScene, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AVAEAudioScene>>> _field7;
     id _field8;
     id _field9;
-    double _field10;
-    unsigned int _field11;
-    struct atomic<bool> _field12;
-    struct atomic<int> _field13;
-    struct AudioUnitPool _field14;
+    struct vector<AVAudioUnitEffect *, std::__1::allocator<AVAudioUnitEffect *>> _field10;
+    double _field11;
+    unsigned int _field12;
+    struct atomic<bool> _field13;
+    struct atomic<int> _field14;
+    struct AudioUnitPool _field15;
 };
 
 struct AudioUnitPool {
@@ -168,12 +169,12 @@ struct DynamicArray<re::IDSInvite *> {
     struct IDSInvite **m_data;
 };
 
-struct DynamicArray<re::SharedPtr<MCProtocolHandle>> {
+struct DynamicArray<re::SharedPtr<(anonymous namespace)::MCProtocolHandle>> {
     struct Allocator *m_allocator;
     unsigned long long m_capacity;
     unsigned long long m_size;
     unsigned int m_version;
-    struct SharedPtr<MCProtocolHandle> *m_data;
+    struct SharedPtr<(anonymous namespace)::MCProtocolHandle> *m_data;
 };
 
 struct DynamicArray<re::SharedPtr<re::DiscoveryIdentity>> {
@@ -283,7 +284,7 @@ struct ProtocolLayerListener;
 
 struct ServiceLocator;
 
-struct SharedPtr<MCProtocolHandle>;
+struct SharedPtr<(anonymous namespace)::MCProtocolHandle>;
 
 struct SharedPtr<re::DiscoveryIdentity>;
 
@@ -344,25 +345,46 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsign
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unordered_map<unsigned long long, re::AudioMixGroupState, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, re::AudioMixGroupState>>>>, void *>*> *_field1;
 };
 
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
+struct atomic<REAudioPlaybackState> {
+    struct __cxx_atomic_impl<REAudioPlaybackState, std::__1::__cxx_atomic_base_impl<REAudioPlaybackState>> {
+        _Atomic unsigned long long __a_value;
+    } __a_;
 };
 
 struct atomic<bool> {
-    _Atomic BOOL __a_;
+    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+        _Atomic BOOL __a_value;
+    } __a_;
+};
+
+struct atomic<double> {
+    struct __cxx_atomic_impl<double, std::__1::__cxx_atomic_base_impl<double>> {
+        _Atomic double __a_value;
+    } __a_;
 };
 
 struct atomic<float> {
-    _Atomic float __a_;
+    struct __cxx_atomic_impl<float, std::__1::__cxx_atomic_base_impl<float>> {
+        _Atomic float __a_value;
+    } __a_;
 };
 
 struct atomic<int> {
-    _Atomic int __a_;
+    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+        _Atomic int __a_value;
+    } __a_;
 };
 
 struct atomic<re::Packet *> {
-    _Atomic struct Packet *_field1;
+    struct __cxx_atomic_impl<re::Packet *, std::__1::__cxx_atomic_base_impl<re::Packet *>> {
+        _Atomic struct Packet *_field1;
+    } _field1;
+};
+
+struct atomic<unsigned int> {
+    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+        _Atomic unsigned int __a_value;
+    } __a_;
 };
 
 struct condition_variable {
@@ -373,14 +395,13 @@ struct condition_variable {
 };
 
 struct mutex {
-    struct _opaque_pthread_mutex_t __m_;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } __m_;
 };
 
 struct queue<GainRampCommand>;
-
-struct recursive_mutex {
-    struct _opaque_pthread_mutex_t __m_;
-};
 
 struct shared_ptr<AudioStreamRecordingManager::StreamWriter> {
     struct StreamWriter *__ptr_;
@@ -523,6 +544,14 @@ struct unordered_map<unsigned long long, std::__1::unordered_map<unsigned long l
     } _field1;
 };
 
+struct vector<AVAudioUnitEffect *, std::__1::allocator<AVAudioUnitEffect *>> {
+    id *_field1;
+    id *_field2;
+    struct __compressed_pair<AVAudioUnitEffect *__strong *, std::__1::allocator<AVAudioUnitEffect *>> {
+        id *_field1;
+    } _field3;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -533,13 +562,13 @@ typedef struct {
 } CDStruct_70511ce9;
 
 // Template types
-typedef struct DynamicArray<re::SharedPtr<MCProtocolHandle>> {
+typedef struct DynamicArray<re::SharedPtr<(anonymous namespace)::MCProtocolHandle>> {
     struct Allocator *m_allocator;
     unsigned long long m_capacity;
     unsigned long long m_size;
     unsigned int m_version;
-    struct SharedPtr<MCProtocolHandle> *m_data;
-} DynamicArray_959538b5;
+    struct SharedPtr<(anonymous namespace)::MCProtocolHandle> *m_data;
+} DynamicArray_0711906c;
 
 typedef struct DynamicArray<unsigned char> {
     struct Allocator *m_allocator;

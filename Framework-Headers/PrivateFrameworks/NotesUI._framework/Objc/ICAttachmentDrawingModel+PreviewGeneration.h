@@ -19,7 +19,7 @@
 - (id)dataForTypeIdentifier:(id)arg1;
 - (void)drawPreviewInRect:(struct CGRect)arg1;
 - (id)fileURLForTypeIdentifier:(id)arg1;
-- (struct UIImage *)generateImageUsingFullscreenRenderer;
+- (id)generateImageUsingFullscreenRenderer;
 - (BOOL)generatePreviewsDuringCloudActivity;
 - (BOOL)generatePreviewsInOperation:(id)arg1;
 - (CDUnknownBlockType)genericBrickThumbnailCreator;
@@ -27,6 +27,6 @@
 - (BOOL)needToGeneratePreviews;
 - (id)providerDataTypes;
 - (id)providerFileTypes;
-- (void)saveDrawing:(id)arg1 withImage:(struct UIImage *)arg2 forImageDrawing:(id)arg3;
+- (void)saveDrawing:(id)arg1 withImage:(id)arg2 forImageDrawing:(id)arg3;
 @end
 

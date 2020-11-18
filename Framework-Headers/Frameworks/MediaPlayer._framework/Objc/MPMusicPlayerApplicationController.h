@@ -6,41 +6,23 @@
 
 #import <MediaPlayer/MPMusicPlayerController.h>
 
-@class MPCPlayerPath, MPCRemotePlaybackEngine, NSObject, _MPMusicPlayerQueueTransaction;
-@protocol OS_dispatch_queue;
+@class NSXPCConnection;
 
 @interface MPMusicPlayerApplicationController : MPMusicPlayerController
 {
-    _MPMusicPlayerQueueTransaction *_queueTransaction;
-    MPCPlayerPath *_playerPath;
-    MPCRemotePlaybackEngine *_playbackEngine;
-    long long _notificationsCount;
-    NSObject<OS_dispatch_queue> *_queueTransactionQueue;
+    NSXPCConnection *_serviceConnection;
 }
 
-@property (nonatomic) long long notificationsCount; // @synthesize notificationsCount=_notificationsCount;
-@property (readonly, nonatomic) MPCRemotePlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-@property (readonly, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
-@property (strong, nonatomic) _MPMusicPlayerQueueTransaction *queueTransaction; // @synthesize queueTransaction=_queueTransaction;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queueTransactionQueue; // @synthesize queueTransactionQueue=_queueTransactionQueue;
+@property (readonly, nonatomic) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
 
-+ (BOOL)_isPlayerInstalled;
 - (void).cxx_destruct;
-- (id)_initWithClientIdentifier:(id)arg1;
-- (id)_mutableQueueFromTracklist:(id)arg1 mediaToResponseItemMap:(id *)arg2;
-- (id)_onAccessQueue_beginQueueTransactionWithCompletionHandler:(CDUnknownBlockType)arg1 usingSemaphore:(id)arg2;
-- (void)_onAccessQueue_endQueueTransactionWithTracklist:(id)arg1 forReason:(long long)arg2 error:(id)arg3;
-- (BOOL)_onAccessQueue_isPerformingQueueTransactionWithID:(id)arg1;
-- (void)_onAccessQueue_transitionQueueTransactionToState:(long long)arg1;
-- (void)_playbackEngineDidDisconnect:(id)arg1;
-- (void)_playerPathDidChange:(id)arg1;
-- (void)_queueDidChangeWithResponse:(id)arg1;
-- (id)_queueFromTracklist:(id)arg1;
-- (id)_queueModificationRequestsFromTracklist:(id)arg1 withMutatedQueue:(id)arg2 mediaToResponseItemMap:(id)arg3;
+- (id)_applicationAsyncServer;
+- (void)_clearConnection;
+- (void)_establishConnectionIfNeeded;
 - (void)beginGeneratingPlaybackNotifications;
+- (void)dealloc;
 - (void)endGeneratingPlaybackNotifications;
 - (void)performQueueTransaction:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)prepareToPlay;
 
 @end
 

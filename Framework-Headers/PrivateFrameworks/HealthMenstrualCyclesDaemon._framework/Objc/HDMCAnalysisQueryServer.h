@@ -23,6 +23,7 @@
 
 + (Class)queryClass;
 + (id)requiredEntitlements;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_analysisQueryClientProxy;
 - (void)_handleAnalysis:(id)arg1;

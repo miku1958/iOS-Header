@@ -8,21 +8,23 @@
 
 #import <RemoteManagement/RMUnresolvedAsset-Protocol.h>
 
-@class NSString, NSURL, RMAsset;
+@class NSDictionary, NSString, NSURL, RMAsset;
 
 @interface RMUnresolvedFileAsset : NSObject <RMUnresolvedAsset>
 {
     RMAsset *_asset;
+    NSDictionary *_queryParameters;
     NSURL *_downloadToFileURL;
 }
 
 @property (strong, nonatomic) RMAsset *asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) NSURL *downloadToFileURL; // @synthesize downloadToFileURL=_downloadToFileURL;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (copy, nonatomic) NSDictionary *queryParameters; // @synthesize queryParameters=_queryParameters;
 
 - (void).cxx_destruct;
-- (id)initWithAsset:(id)arg1 downloadToFileURL:(id)arg2;
-- (void)resolveWithAssetResolver:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithAsset:(id)arg1 queryParameters:(id)arg2 downloadToFileURL:(id)arg3;
+- (void)resolveWithAssetResolver:(id)arg1 statusUpdater:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

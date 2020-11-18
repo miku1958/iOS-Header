@@ -36,6 +36,7 @@
 + (id)chartableCodedQuantityWithCodings:(id)arg1 originalCodedQuantity:(id)arg2 originalRangeLowCodedQuantity:(id)arg3 originalRangeHighCodedQuantity:(id)arg4 error:(id *)arg5;
 + (id)converter;
 - (void).cxx_destruct;
+- (id)chartableCodedQuantityInUnit:(id)arg1 adoptUnitIfNullUnit:(BOOL)arg2 error:(id *)arg3;
 - (id)chartableCodedQuantityInUnit:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -14,6 +14,7 @@
 + (id)dataTypeWithTfToken:(struct TfToken)arg1;
 + (id)nodeTypeWithTfToken:(struct TfToken)arg1;
 + (id)roleTypeWithTfToken:(struct TfToken)arg1;
++ (id)schemaTypeWithTfToken:(struct TfToken)arg1;
 + (id)tokenWithDataType:(id)arg1;
 + (id)tokenWithNodeType:(id)arg1;
 + (id)tokenWithRoleType:(id)arg1;

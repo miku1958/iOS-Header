@@ -53,6 +53,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
+- (BOOL)CAMLTypeSupportedForKey:(id)arg1;
 - (struct Object *)CA_copyRenderValue;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
 - (BOOL)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;

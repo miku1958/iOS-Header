@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (void)addWeakObject:(id)arg1;
 - (id)init;
-- (id)initWithEntries:(struct NSArray *)arg1;
+- (id)initWithEntries:(id)arg1;
 - (id)weakObjectAtIndex:(unsigned long long)arg1;
 
 @end

@@ -29,7 +29,7 @@
 @property (strong, nonatomic) FCSolTagID *tagId; // @synthesize tagId=_tagId;
 @property (readonly, nonatomic) NSMutableSet *topArticles; // @synthesize topArticles=_topArticles;
 
-+ (id)formGroup:(id)arg1 withMinClusterSize:(long long)arg2 maxClusterSize:(long long)arg3 maxPublisherOccurrences:(long long)arg4 maxUnpaidArticles:(long long)arg5 enforcePublisherCap:(BOOL)arg6;
++ (id)formGroup:(id)arg1 withMinClusterSize:(long long)arg2 maxClusterSize:(long long)arg3 maxPublisherOccurrences:(long long)arg4 maxUnpaidArticles:(long long)arg5 enforcePublisherCap:(BOOL)arg6 topicDiversityThreshold:(double)arg7 topicDiversityWindowSize:(long long)arg8;
 + (id)predictBestGroup:(id)arg1 ungroupedArticles:(id)arg2 ungroupedTags:(id)arg3 articlesByTag:(id)arg4 heuristic:(id)arg5 autoFavoriteHeuristic:(id)arg6;
 - (void).cxx_destruct;
 - (void)computeTopArticlesAndScore;

@@ -19,6 +19,7 @@
 - (void)getMetadataForMessageIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(ICInAppMessageMetadataEntry *, NSError *))arg3;
 - (void)getPropertyForKey:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(id, NSError *))arg3;
 - (void)messageEntriesForBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)messageEntryWithIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(ICInAppMessageEntry *, NSError *))arg3;
 - (void)removeAllMessageEntriesForBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeMessageEntryWithIdentifier:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeMetadataForMessageIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

@@ -36,6 +36,7 @@
 - (BOOL)_isTouchingLollipopAtLocationOfFirstTouch:(struct CGPoint)arg1;
 - (struct UIEdgeInsets)_pdfViewInsets;
 - (struct UIEdgeInsets)_pdfViewSafeAreaInsets;
+- (void)_pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_resetPDFHostViewControllerViews;
 - (void)_setMaximumZoomScale:(double)arg1;
 - (void)_setMinimumZoomScale:(double)arg1;
@@ -46,6 +47,7 @@
 - (void)cancelFindString;
 - (void)cancelFindStringWithHighlightsCleared:(BOOL)arg1;
 - (void)clearSearchHighlights;
+- (void)completePointerInteractionRegionForRequest:(id)arg1;
 - (void)copy:(id)arg1;
 - (long long)currentPageIndex;
 - (void)dealloc;
@@ -59,6 +61,7 @@
 - (void)findString:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)findStringUpdate:(unsigned long long)arg1 done:(BOOL)arg2;
 - (void)focusOnSearchResultAtIndex:(unsigned long long)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)goToDestination:(long long)arg1 point:(struct CGPoint)arg2;
@@ -73,6 +76,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (long long)pageCount;
 - (id)pageNumberIndicator;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)recievedSnapshotViewRect:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)setDelegate:(id)arg1;

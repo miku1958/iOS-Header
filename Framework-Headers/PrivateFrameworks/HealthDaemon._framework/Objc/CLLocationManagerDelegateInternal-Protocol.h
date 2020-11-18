@@ -15,6 +15,7 @@
 - (void)locationManager:(CLLocationManager *)arg1 didChangeStatusForTechnology:(int)arg2 active:(BOOL)arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didFailFindingPlacemarkForLocation:(CLLocation *)arg2 withError:(NSError *)arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didFindPlacemark:(NSDictionary *)arg2 forLocation:(CLLocation *)arg3;
+- (void)locationManager:(CLLocationManager *)arg1 didNotReceiveLocationUpdatesForRegionMonitoringInInterval:(double)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didRangePeers:(NSArray *)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didReceiveApproval:(BOOL)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didRecordHistoricLocation:(CLLocation *)arg2 forInterval:(double)arg3;

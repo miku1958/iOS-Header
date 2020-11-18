@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 - (BOOL)_openURL:(id)arg1 bundleInfo:(id)arg2;
 - (id)_performOpen;
-- (BOOL)_shouldAttemptUsingInfo:(id)arg1;
+- (BOOL)_shouldOpenURL:(id)arg1;
 - (id)initWithURL:(id)arg1 clientInfo:(id)arg2 bag:(id)arg3;
 
 @end

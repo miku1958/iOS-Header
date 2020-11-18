@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class PLAssetsdClientXPCConnection, PLAssetsdCloudClient, PLAssetsdCloudInternalClient, PLAssetsdDebugClient, PLAssetsdDemoClient, PLAssetsdDiagnosticsClient, PLAssetsdLibraryClient, PLAssetsdLibraryInternalClient, PLAssetsdLibraryManagementClient, PLAssetsdMigrationClient, PLAssetsdNotificationClient, PLAssetsdPhotoKitClient, PLAssetsdResourceClient, PLAssetsdResourceInternalClient, PLAssetsdResourceWriteOnlyClient, PLAssetsdSyncClient, PLAssetsdSystemLibraryURLReadOnlyClient, PLAutoBindingProxyFactory;
+@class PLAssetsdClientSandboxExtensions, PLAssetsdClientXPCConnection, PLAssetsdCloudClient, PLAssetsdCloudInternalClient, PLAssetsdDebugClient, PLAssetsdDemoClient, PLAssetsdDiagnosticsClient, PLAssetsdLibraryClient, PLAssetsdLibraryInternalClient, PLAssetsdLibraryManagementClient, PLAssetsdMigrationClient, PLAssetsdNotificationClient, PLAssetsdPhotoKitClient, PLAssetsdResourceClient, PLAssetsdResourceInternalClient, PLAssetsdResourceWriteOnlyClient, PLAssetsdSyncClient, PLAssetsdSystemLibraryURLReadOnlyClient, PLAutoBindingProxyFactory;
 @protocol OS_dispatch_queue;
 
 @interface PLAssetsdClient : NSObject
 {
     NSObject<OS_dispatch_queue> *_isolationQueue;
-    PLAssetsdClientXPCConnection *_nonBindingProxyFactory;
+    PLAssetsdClientXPCConnection *_connection;
     PLAutoBindingProxyFactory *_autoBindingProxyFactory;
+    PLAssetsdClientSandboxExtensions *_sandboxExtensions;
     PLAssetsdLibraryClient *_libraryClient;
     PLAssetsdSystemLibraryURLReadOnlyClient *_systemLibraryURLReadOnlyClient;
     PLAssetsdLibraryManagementClient *_libraryManagementClient;
@@ -49,11 +50,10 @@
 
 + (id)sharedSystemLibraryAssetsdClient;
 - (void).cxx_destruct;
-- (id)_setupClientClass:(Class)arg1 proxyGetter:(SEL)arg2 autoBinding:(BOOL)arg3;
+- (id)_setupClientClass:(Class)arg1 proxyGetter:(SEL)arg2 options:(long long)arg3;
 - (void)_updateLibraryStateConnectionInterrupted:(id)arg1;
 - (void)addPhotoLibraryUnavailabilityHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithNonBindingProxyFactory:(id)arg1 autoBindingProxyFactory:(id)arg2;
 - (id)initWithPhotoLibraryURL:(id)arg1;
 - (void)prepareToShutdown;
 - (id)resourceWriteOnlyClient;

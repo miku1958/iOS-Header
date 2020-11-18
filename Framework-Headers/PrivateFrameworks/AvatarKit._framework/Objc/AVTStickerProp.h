@@ -17,12 +17,14 @@
     SCNNode *_node;
     NSArray *_palettesDescriptions;
     NSArray *_shaderModifiers;
+    NSArray *_adjustments;
     struct SCNVector3 _position;
     struct SCNVector3 _rotation;
     struct SCNVector3 _scale;
     struct CGSize _size;
 }
 
+@property (readonly, nonatomic) NSArray *adjustments; // @synthesize adjustments=_adjustments;
 @property (strong, nonatomic) SCNNode *node; // @synthesize node=_node;
 @property (readonly, nonatomic) BOOL orientToCamera; // @synthesize orientToCamera=_orientToCamera;
 @property (readonly, nonatomic) NSArray *palettesDescriptions; // @synthesize palettesDescriptions=_palettesDescriptions;
@@ -33,6 +35,7 @@
 @property (copy, nonatomic) NSArray *shaderModifiers; // @synthesize shaderModifiers=_shaderModifiers;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 
++ (id)adjustmentFromDictionary:(id)arg1 presetCategory:(id)arg2;
 + (void)applyPalettesForAvatar:(id)arg1 toNode:(id)arg2 palettesDescriptions:(id)arg3;
 + (id)cacheKeyForSize:(struct CGSize)arg1 position:(struct SCNVector3)arg2 rotation:(struct SCNVector3)arg3 scale:(struct SCNVector3)arg4 palettesDescriptions:(id)arg5 filePath:(id)arg6;
 + (BOOL)getOrientToCameraInDictionary:(id)arg1;
@@ -48,7 +51,7 @@
 - (void)buildNodeForAvatar:(id)arg1 withCamera:(id)arg2 forExport:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)cloneWithShaderModifiers:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithSize:(struct CGSize)arg1 scale:(struct SCNVector3)arg2 position:(struct SCNVector3)arg3 renderLast:(BOOL)arg4 orientToCamera:(BOOL)arg5 rotation:(struct SCNVector3)arg6 palettesDescriptions:(id)arg7 shaderModifiers:(id)arg8;
+- (id)initWithSize:(struct CGSize)arg1 scale:(struct SCNVector3)arg2 position:(struct SCNVector3)arg3 renderLast:(BOOL)arg4 orientToCamera:(BOOL)arg5 rotation:(struct SCNVector3)arg6 palettesDescriptions:(id)arg7 shaderModifiers:(id)arg8 adjustments:(id)arg9;
 - (id)nodeName;
 - (void)stickerGenerationDidEnd;
 - (void)stickerGenerationWillBegin;

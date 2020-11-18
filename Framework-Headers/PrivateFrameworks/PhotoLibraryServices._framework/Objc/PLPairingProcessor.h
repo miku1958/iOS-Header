@@ -20,11 +20,12 @@
 - (BOOL)_copyResourceOfType:(unsigned int)arg1 onAsset:(id)arg2 toType:(unsigned int)arg3 onAsset:(id)arg4 error:(id *)arg5;
 - (void)_deleteResourceOfType:(unsigned int)arg1 forAsset:(id)arg2 verifyInserted:(BOOL)arg3 deleteFile:(BOOL)arg4;
 - (id)combinePairs:(id)arg1 error:(id *)arg2;
+- (id)fetchRequestForLibrary;
 - (id)fetchRequestForSortedGroupIDs:(id)arg1;
 - (id)firstGroupFromAssets:(id)arg1;
 - (id)groupIDForAsset:(id)arg1;
 - (id)init;
-- (id)processPairingForGroupIDs:(id)arg1 duplicateDetection:(BOOL)arg2 inContext:(id)arg3 error:(id *)arg4;
+- (BOOL)processPairingForFetchRequest:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (BOOL)updatePrimaryAsset:(id)arg1 andRemoveAssetIfPossible:(id)arg2;
 
 @end

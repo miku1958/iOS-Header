@@ -87,6 +87,7 @@
 - (BOOL)didMatchRankingDescriptor:(id)arg1;
 - (id)displayName;
 - (void)inferDateBinsFromDates:(id)arg1 intoBins:(int *)arg2;
+- (id)initForParsecResultWithBundleID:(id)arg1;
 -     // Error parsing type: @24@0:8^{?=q[2Q]TT[0^v]}16, name: initWithAttrs:
 - (id)interestingDate;
 - (id)likelyDisplayTitle;
@@ -96,10 +97,24 @@
 - (void)populateContactFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2;
 - (void)populateCrossAttributeDerivedFeaturesWithContext:(struct prs_feature_population_ctx_t *)arg1 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg2;
 - (void)populateFeaturesWithEvaluator:(id)arg1 updatingBundleFeatures:(float *)arg2 withContext:(struct prs_feature_population_ctx_t *)arg3 keyboardLanguage:(id)arg4 isCJK:(BOOL)arg5 currentTime:(double)arg6;
+- (void)populateFeaturesWithEvaluator:(id)arg1 withContext:(struct prs_feature_population_ctx_t *)arg2 keyboardLanguage:(id)arg3 isCJK:(BOOL)arg4 currentTime:(double)arg5 forParsecResult:(id)arg6;
 - (void)populateMailFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
 - (void)populateOtherFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
+- (void)populateParsecAlbumFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecAnyFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecAppFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecBundleSpecificFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecEPubBookFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecMovieFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecPodcastFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecProfileFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecRoundTripFeatures:(id)arg1 forParsecResult:(id)arg2;
+- (void)populateParsecSongFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecTvShowFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
+- (void)populateParsecWebVideoFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2 forParsecResult:(id)arg3;
 - (void)populateSMSFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
 - (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(float (*)[0])arg2 propertyIndex:(unsigned long long)arg3 withEvaluator:(id)arg4 withContext:(struct prs_feature_population_ctx_t *)arg5 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg6 propertyCanFuzzyMatch:(BOOL)arg7 keyboardLanguage:(id)arg8 isCJK:(BOOL)arg9;
+- (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(float (*)[0])arg2 propertyIndex:(unsigned long long)arg3 withEvaluator:(id)arg4 withContext:(struct prs_feature_population_ctx_t *)arg5 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg6 propertyCanFuzzyMatch:(BOOL)arg7 keyboardLanguage:(id)arg8 isCJK:(BOOL)arg9 featureList:(const unsigned short *)arg10;
 - (long long)recencyTestForVisibilityWithCurrentTime:(double)arg1;
 - (BOOL)serializeToJSON:(void *)arg1 valuesOnly:(BOOL)arg2;
 - (void)updateAccumulatedBundleFeatures:(float *)arg1 values:(float *)arg2 feature:(unsigned long long)arg3;

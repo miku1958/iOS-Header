@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)clearPlayHistory;
 + (id)entitlements;
 + (id)favorites;
++ (id)iamMessageReceived;
 + (id)locationAuthorizationChanged;
 + (id)locationRetrieved;
 + (id)playActivity;

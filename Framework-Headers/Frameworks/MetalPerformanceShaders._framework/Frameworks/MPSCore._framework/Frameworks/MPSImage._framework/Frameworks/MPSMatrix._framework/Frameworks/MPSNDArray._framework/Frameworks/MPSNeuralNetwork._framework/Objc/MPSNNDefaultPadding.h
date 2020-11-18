@@ -25,6 +25,7 @@
 + (id)paddingForTensorflowAveragePoolingValidOnly;
 + (id)paddingWithMethod:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)zeroPaddingWithTopAmount:(unsigned long long)arg1 bottomAmount:(unsigned long long)arg2 leftAmount:(unsigned long long)arg3 rightAmount:(unsigned long long)arg4;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

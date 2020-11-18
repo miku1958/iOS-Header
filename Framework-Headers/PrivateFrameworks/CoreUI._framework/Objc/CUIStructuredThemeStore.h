@@ -63,6 +63,7 @@
 - (id)initWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)initWithPath:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (const struct _renditionkeyattributeindex *)keyAttributeIndex;
 - (const struct _renditionkeyfmt *)keyFormat;
 - (id)keySignatureForKey:(const struct _renditionkeytoken *)arg1;
 - (unsigned short)localizationIdentifierForName:(id)arg1;

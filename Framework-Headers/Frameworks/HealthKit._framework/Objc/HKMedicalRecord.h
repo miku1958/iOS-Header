@@ -16,6 +16,7 @@
 
 @interface HKMedicalRecord : HKSample <HKMedicalRecordCodings, HKConceptIndexable, HKCodedSample, NSSecureCoding, NSCopying>
 {
+    HKConcept *_primaryConcept;
     BOOL _enteredInError;
     NSString *_note;
     NSDate *_modifiedDate;
@@ -23,11 +24,14 @@
     NSLocale *_locale;
     long long _extractionVersion;
     HKSemanticDate *_sortDate;
-    HKConcept *_primaryConcept;
+    NSString *_country;
+    unsigned long long _state;
 }
 
 @property (readonly, copy, nonatomic) HKFHIRIdentifier *FHIRIdentifier; // @synthesize FHIRIdentifier=_FHIRIdentifier;
 @property (readonly) NSUUID *UUID;
+@property (readonly, copy, nonatomic) NSString *country;
+@property (strong, nonatomic) NSString *country; // @synthesize country=_country;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,22 +44,21 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *indexKeywords;
 @property (readonly, copy, nonatomic) NSLocale *locale;
 @property (readonly, copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly, nonatomic) NSArray *medicalRecordCodings;
-@property (readonly, nonatomic) NSArray *medicalRecordPreferredSystems;
 @property (readonly, copy, nonatomic) NSDate *modifiedDate; // @synthesize modifiedDate=_modifiedDate;
 @property (readonly, copy, nonatomic) NSString *note; // @synthesize note=_note;
-@property (readonly, nonatomic) HKConcept *primaryConcept; // @synthesize primaryConcept=_primaryConcept;
+@property (readonly, nonatomic) HKConcept *primaryConcept;
 @property (readonly, copy, nonatomic) HKSemanticDate *sortDate; // @synthesize sortDate=_sortDate;
 @property (readonly) NSDate *startDate; // @dynamic startDate;
+@property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)_newMedicalRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 config:(CDUnknownBlockType)arg11;
++ (id)_newMedicalRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 config:(CDUnknownBlockType)arg13;
 + (id)_sortDateIntervalFromStartDateComponents:(id)arg1 endDateComponents:(id)arg2 error:(out id *)arg3;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)defaultDisplayString;
@@ -65,6 +68,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;
+- (void)_setCountry:(id)arg1;
 - (void)_setEnteredInError:(BOOL)arg1;
 - (void)_setExtractionVersion:(long long)arg1;
 - (void)_setFHIRIdentifier:(id)arg1;
@@ -73,6 +77,7 @@
 - (void)_setNote:(id)arg1;
 - (void)_setPrimaryConcept:(id)arg1;
 - (void)_setSortDate:(id)arg1;
+- (void)_setState:(unsigned long long)arg1;
 - (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
@@ -82,7 +87,6 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
-- (id)primaryCodingContext;
 
 @end
 

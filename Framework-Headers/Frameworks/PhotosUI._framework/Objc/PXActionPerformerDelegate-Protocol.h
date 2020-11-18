@@ -6,13 +6,14 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXActionPerformer;
+@class NSObject, PXActionPerformer;
+@protocol PXAnonymousViewController;
 
 @protocol PXActionPerformerDelegate <NSObject>
 
 @optional
 - (void)actionPerformer:(PXActionPerformer *)arg1 didChangeState:(unsigned long long)arg2;
-- (BOOL)actionPerformer:(PXActionPerformer *)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(void (^)(void))arg3;
-- (BOOL)actionPerformer:(PXActionPerformer *)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(PXActionPerformer *)arg1 dismissViewController:(NSObject<PXAnonymousViewController> *)arg2 completionHandler:(void (^)(void))arg3;
+- (BOOL)actionPerformer:(PXActionPerformer *)arg1 presentViewController:(NSObject<PXAnonymousViewController> *)arg2;
 @end
 

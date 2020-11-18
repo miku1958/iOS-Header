@@ -11,6 +11,7 @@
 }
 
 + (id)_orderedValuesForDevice:(id)arg1;
+- (BOOL)optionExistsInDevice:(id)arg1;
 
 @end
 

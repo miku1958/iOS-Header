@@ -47,8 +47,8 @@
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)clearNanoRegistryApplications;
 - (void)dealloc;
-- (id)localApplicationForRemoteApplication:(struct NSString *)arg1;
-- (id)remoteApplicationForLocalApplication:(struct NSString *)arg1;
+- (id)localApplicationForRemoteApplication:(id)arg1;
+- (id)remoteApplicationForLocalApplication:(id)arg1;
 - (unsigned long long)typeForApplication:(id)arg1;
 - (id)watchKitExtensionForApplication:(id)arg1;
 

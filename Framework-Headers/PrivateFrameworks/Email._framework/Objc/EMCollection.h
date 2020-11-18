@@ -9,12 +9,13 @@
 #import <Email/EFLoggable-Protocol.h>
 #import <Email/EFSignpostable-Protocol.h>
 
-@class EFFuture, EFPromise, EFQuery, NSMutableOrderedSet, NSOrderedSet, NSString;
+@class EFFuture, EFPromise, EFQuery, NSMutableOrderedSet, NSMutableSet, NSOrderedSet, NSString;
 @protocol EFCancelable, EFScheduler, EMCollectionChangeObserver;
 
 @interface EMCollection : EMRepositoryObject <EFLoggable, EFSignpostable>
 {
     NSMutableOrderedSet *_itemIDs;
+    NSMutableSet *_itemIDsAnticipatingDelete;
     NSOrderedSet *_recoveringItemIDs;
     EFPromise *_allItemIDsPromise;
     struct os_unfair_lock_s _itemIDsLock;
@@ -22,7 +23,6 @@
     EFQuery *_query;
     id<EFCancelable> _cancelationToken;
     id<EMCollectionChangeObserver> _changeObserver;
-    id<EFScheduler> _queryScheduler;
     id<EFScheduler> _observerScheduler;
 }
 
@@ -34,7 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<EFScheduler> observerScheduler; // @synthesize observerScheduler=_observerScheduler;
 @property (readonly, nonatomic) EFQuery *query; // @synthesize query=_query;
-@property (readonly, nonatomic) id<EFScheduler> queryScheduler; // @synthesize queryScheduler=_queryScheduler;
+@property (readonly, nonatomic) id<EFScheduler> queryScheduler;
 @property (readonly) unsigned long long signpostID;
 @property (readonly) Class superclass;
 
@@ -46,7 +46,9 @@
 - (void)_cancelQueryIfNeeded;
 - (void)_commonInitWithQuery:(id)arg1;
 - (void)_filterAndTransformObjectIDs:(id)arg1 before:(BOOL)arg2 existingObjectID:(id)arg3 batchBlock:(CDUnknownBlockType)arg4;
+- (id)_firstExistingItemIDForItemID:(id)arg1 inReverse:(BOOL)arg2;
 - (id)_itemIDsForObjectIDs:(id)arg1;
+- (id)_iterateItemIDsStartingAtItemID:(id)arg1 inReverse:(BOOL)arg2 includeStartingItem:(BOOL)arg3 withBlock:(CDUnknownBlockType)arg4;
 - (void)_performQuery;
 - (void)_performQueryIfNeeded;
 - (void)beginObserving:(id)arg1;
@@ -54,6 +56,8 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)finishRecovery;
+- (id)firstExistingItemIDAfterItemID:(id)arg1;
+- (id)firstExistingItemIDBeforeItemID:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjectID:(id)arg1 query:(id)arg2;
 - (id)initWithQuery:(id)arg1 repository:(id)arg2;
@@ -68,6 +72,7 @@
 - (BOOL)objectIDBelongsToCollection:(id)arg1;
 - (id)objectIDForItemID:(id)arg1;
 - (BOOL)observerContainsObjectID:(id)arg1;
+- (void)queryAnticipatesDeletedObjectIDs:(id)arg1;
 - (void)queryDidFinishInitialLoad;
 - (void)queryDidFinishRemoteSearch;
 - (void)queryDidStartRecovery;
@@ -78,7 +83,7 @@
 - (void)queryMatchedMovedObjectIDs:(id)arg1 after:(id)arg2;
 - (void)queryMatchedMovedObjectIDs:(id)arg1 before:(id)arg2;
 - (void)queryReplacedObjectID:(id)arg1 withNewObjectID:(id)arg2;
-- (void)removeItemIDs:(id)arg1;
+- (id)removeItemIDs:(id)arg1;
 - (void)stopObserving:(id)arg1;
 
 @end

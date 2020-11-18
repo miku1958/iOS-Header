@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSURL *_websiteURL;
     DMFWebsitePolicyMonitor *_websitePolicyMonitor;
     id<STLockoutPolicyControllerDelegate> _delegate;
+    BOOL _contactsEditable;
     NSString *_categoryIdentifier;
     NSString *_bundleIdentifier;
     CNContactStore *_contactStore;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (readonly) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (readonly) BOOL contactsEditable; // @synthesize contactsEditable=_contactsEditable;
 @property (copy) NSArray *contactsHandles; // @synthesize contactsHandles=_contactsHandles;
 @property (strong) STConversation *conversation; // @synthesize conversation=_conversation;
 @property (strong) STConversationContext *conversationContext; // @synthesize conversationContext=_conversationContext;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_actionOneMoreMinuteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_actionRemindMeInMinutesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_actionRemindMeInOneHourWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_allowedByContactsHandleDidChange:(id)arg1 conversationContext:(id)arg2;
 - (void)_allowedByScreenTimeDidChange:(BOOL)arg1 conversationContext:(id)arg2;
 - (void)_applicationCurrentlyLimitedDidChange:(BOOL)arg1 conversationContext:(id)arg2;
 - (void)_askForTimeResponseWithState:(long long)arg1 respondingParent:(id)arg2 amountGranted:(id)arg3 error:(id)arg4;
@@ -68,7 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupWebsitePolicyMonitorForURL:(id)arg1;
 - (BOOL)_shouldRequestMoreTime;
 - (double)_timeIntervalToEndOfDay;
-- (void)_updateAllowedByScreenTime:(BOOL)arg1 applicationCurrentlyLimited:(BOOL)arg2;
+- (void)_updateAllowedByScreenTime:(BOOL)arg1 applicationCurrentlyLimited:(BOOL)arg2 allowedByContactsHandle:(id)arg3;
 - (void)dealloc;
 - (BOOL)handleAction:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;

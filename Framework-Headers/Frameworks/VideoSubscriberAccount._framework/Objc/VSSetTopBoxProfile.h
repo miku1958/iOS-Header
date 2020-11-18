@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *userToken; // @synthesize userToken=_userToken;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithProviderID:(id)arg1 userToken:(id)arg2 isDeveloper:(BOOL)arg3;
 
 @end

@@ -40,6 +40,7 @@
     NSDate *_lastRequestedClipPlaybackDate;
     unsigned long long _scrubbingInProgressCount;
     NSObject<OS_dispatch_queue> *_clipQueue;
+    long long _lastPlayerTimeControlStatus;
     id<HFCameraClipPlaying> _clipPlayer;
     unsigned long long _timelineState;
 }
@@ -56,6 +57,7 @@
 @property (nonatomic) unsigned long long engineMode; // @synthesize engineMode=_engineMode;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (nonatomic) long long lastPlayerTimeControlStatus; // @synthesize lastPlayerTimeControlStatus=_lastPlayerTimeControlStatus;
 @property (copy, nonatomic) NSDate *lastRequestedClipPlaybackDate; // @synthesize lastRequestedClipPlaybackDate=_lastRequestedClipPlaybackDate;
 @property (strong, nonatomic) HMCameraSource *liveCameraSource; // @synthesize liveCameraSource=_liveCameraSource;
 @property (readonly, nonatomic) id<HFCameraLiveStreamControlling> liveStreamController; // @synthesize liveStreamController=_liveStreamController;

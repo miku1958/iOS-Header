@@ -10,15 +10,15 @@
 {
 }
 
-+ (struct NoteAccountObject *)accountForAccountIdentifier:(id)arg1 context:(struct NoteContext *)arg2;
-+ (id)accountIdentifierForAccount:(struct NoteAccountObject *)arg1;
-+ (BOOL)didChooseToMigrateAccount:(struct NoteAccountObject *)arg1 context:(struct NoteContext *)arg2;
-+ (BOOL)didChooseToMigrateAccountsForContext:(struct NoteContext *)arg1 forAccountPassingTest:(CDUnknownBlockType)arg2;
++ (id)accountForAccountIdentifier:(id)arg1 context:(id)arg2;
++ (id)accountIdentifierForAccount:(id)arg1;
++ (BOOL)didChooseToMigrateAccount:(id)arg1 context:(id)arg2;
++ (BOOL)didChooseToMigrateAccountsForContext:(id)arg1 forAccountPassingTest:(CDUnknownBlockType)arg2;
 + (BOOL)didChooseToMigrateLegacyAccountType:(long long)arg1;
-+ (BOOL)isLegacyLocalAccount:(struct NoteAccountObject *)arg1;
-+ (struct NoteAccountObject *)legacyAccountForLegacyAccountType:(long long)arg1 context:(struct NoteContext *)arg2;
-+ (struct NoteAccountObject *)legacyAccountForLocalAccountWithContext:(struct NoteContext *)arg1;
-+ (struct NoteAccountObject *)legacyAccountForPrimaryICloudAccountWithContext:(struct NoteContext *)arg1;
++ (BOOL)isLegacyLocalAccount:(id)arg1;
++ (id)legacyAccountForLegacyAccountType:(long long)arg1 context:(id)arg2;
++ (id)legacyAccountForLocalAccountWithContext:(id)arg1;
++ (id)legacyAccountForPrimaryICloudAccountWithContext:(id)arg1;
 
 @end
 

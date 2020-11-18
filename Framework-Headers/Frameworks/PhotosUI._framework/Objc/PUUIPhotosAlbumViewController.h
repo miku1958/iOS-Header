@@ -59,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canDragIn;
 - (BOOL)canDragOut;
 - (BOOL)canNavigateToPhotoInteractively:(BOOL)arg1;
-- (id)filterPredicateForAlbum:(struct NSObject *)arg1;
+- (id)filterPredicateForAlbum:(id)arg1;
 - (void)getTitle:(out id *)arg1 prompt:(out id *)arg2 shouldHideBackButton:(out BOOL *)arg3 leftBarButtonItems:(out id *)arg4 rightBarButtonItems:(out id *)arg5;
 - (void)handleNavigateToAsset:(id)arg1 inContainer:(id)arg2;
 - (void)handleToggleSelectionOfItemAtIndexPath:(id)arg1;

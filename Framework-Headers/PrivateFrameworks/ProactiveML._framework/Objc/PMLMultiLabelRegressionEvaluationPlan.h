@@ -25,7 +25,7 @@
     NSArray *_evaluationPoints;
     id<PMLMultiLabelEvaluationTrackerProtocol> _tracker;
     unsigned long long _evaluationLevel;
-    struct NSString *_planId;
+    NSString *_planId;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -50,7 +50,7 @@
 - (id)_precisionAtEvaluationPointsForSessions:(id)arg1;
 - (id)_rankedLabelsForSession:(id)arg1;
 - (id)init;
-- (id)initWithPlanId:(struct NSString *)arg1 store:(id)arg2 sessionDescriptor:(id)arg3 maxSessionsLimit:(unsigned long long)arg4 sessionsInBatch:(unsigned long long)arg5 supportPerLabel:(unsigned long long)arg6 labelAndWeights:(id)arg7 modelClassName:(id)arg8 intercept:(BOOL)arg9 evaluationPoints:(id)arg10 tracker:(id)arg11 evaluationLevel:(unsigned long long)arg12;
+- (id)initWithPlanId:(id)arg1 store:(id)arg2 sessionDescriptor:(id)arg3 maxSessionsLimit:(unsigned long long)arg4 sessionsInBatch:(unsigned long long)arg5 supportPerLabel:(unsigned long long)arg6 labelAndWeights:(id)arg7 modelClassName:(id)arg8 intercept:(BOOL)arg9 evaluationPoints:(id)arg10 tracker:(id)arg11 evaluationLevel:(unsigned long long)arg12;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)run;
 - (id)runWhile:(CDUnknownBlockType)arg1 didFinish:(BOOL *)arg2;

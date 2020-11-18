@@ -30,7 +30,6 @@
     unsigned short _type;
     NSError *_unavailabilityReason;
     NSObject<OS_dispatch_queue> *_queue;
-    NSString *_libraryID;
     PLPhotoLibrary *_transactionPhotoLibrary;
     NSObject<OS_dispatch_queue> *_transactionQueue;
     PHPerformChangesRequest *_request;
@@ -78,7 +77,6 @@
 @property (readonly, nonatomic) BOOL isReadOnlyCloudPhotoLibrary;
 @property (readonly, nonatomic) BOOL isSystemPhotoLibrary;
 @property (nonatomic) double lastChangeProcessingStarted; // @synthesize lastChangeProcessingStarted=_lastChangeProcessingStarted;
-@property (strong, nonatomic) NSString *libraryID; // @synthesize libraryID=_libraryID;
 @property (readonly, nonatomic) PLPhotoLibrary *mainQueueConcurrencyPhotoLibrary;
 @property (readonly) PLPhotoLibrary *mainQueuePhotoLibrary;
 @property (readonly, nonatomic) PLPhotoAnalysisServiceClient *photoAnalysisClient;
@@ -169,6 +167,7 @@
 - (id)allowedEntities;
 - (id)analysisProgressCountsForWorkerType:(short)arg1;
 - (double)analysisProgressForHighlight:(id)arg1 workerType:(short)arg2 error:(id *)arg3;
+- (void)appPrivateDataWriteFailedWithError:(id)arg1;
 - (void)assertTransaction;
 - (id)assetIdentifiersForPersonIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)assetUUIDsAllowedForCurationFromAssets:(id)arg1;
@@ -179,6 +178,7 @@
 - (void)cancelOperationsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)changeRequestForUUID:(id)arg1;
 - (void)close;
+- (void)closeWithReason:(id)arg1;
 - (id)cloudIdentifiersForLocalIdentifiers:(id)arg1;
 - (unsigned long long)countOfDirtyFaceGroups;
 - (void)countOfReferencedMediaWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -225,6 +225,7 @@
 - (BOOL)isFaceProcessingFinished;
 - (BOOL)isNamingFlowEnabled:(CDUnknownBlockType)arg1;
 - (BOOL)isPHPhotoLibraryForCMM;
+- (id)libraryID;
 - (id)librarySpecificFetchOptions;
 - (void)loadGraph;
 - (id)localIdentifiersForCloudIdentifiers:(id)arg1;
@@ -263,6 +264,7 @@
 - (id)requestAssetSearchKeywordsForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 withOptions:(id)arg3 error:(id *)arg4;
 - (void)requestCountOfAnalysisRecordsForDeletedAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requestEnrichmentWithOptions:(id)arg1 error:(id *)arg2;
+- (void)requestGenerateQuestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestGraphReadyNotificationWithCoalescingIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestGraphRebuildProgressWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestGraphRebuildWithOptions:(id)arg1 progress:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -282,6 +284,7 @@
 - (void)requestTotalProgressCountsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)requestZeroKeywordsWithOptions:(id)arg1 error:(id *)arg2;
 - (BOOL)resetPendingAnalysisStatesWithError:(id *)arg1;
+- (void)runPFLWithAttachments:(id)arg1 recipeUserInfo:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (double)sceneAnalysisProgressForHighlight:(id)arg1 usingSceneVersion:(unsigned long long)arg2;
 - (id)sceneInformationFromStartDate:(id)arg1 toEndDate:(id)arg2;
 - (void)setChangeRequest:(id)arg1 forUUID:(id)arg2;

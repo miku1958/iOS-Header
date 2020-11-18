@@ -22,6 +22,7 @@
 - (void)_accessibilityUpdateCaptionPanelVisibility;
 - (void)_accessibilityUpdateCaptionPanelVisiblityForPresence:(long long)arg1;
 - (void)_updatePresence:(long long)arg1 style:(long long)arg2 withAnimationSettings:(id)arg3;
+- (unsigned long long)accessibilityTraits;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)willMoveToWindow:(id)arg1;

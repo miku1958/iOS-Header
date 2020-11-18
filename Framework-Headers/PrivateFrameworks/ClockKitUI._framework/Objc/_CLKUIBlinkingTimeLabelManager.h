@@ -9,14 +9,14 @@
 #import <ClockKitUI/CLKTimeFormatterObserver-Protocol.h>
 #import <ClockKitUI/_CLKUITimeLabelManager-Protocol.h>
 
-@class CLKTimeFormatter, NSString, UIColor, _CLKUIBasicTimeLabelManager;
+@class CLKTimeFormatter, NSNumber, NSString, UIColor, _CLKUIBasicTimeLabelManager;
 
 @interface _CLKUIBlinkingTimeLabelManager : UIView <_CLKUITimeLabelManager, CLKTimeFormatterObserver>
 {
     CLKTimeFormatter *_timeFormatter;
     _CLKUIBasicTimeLabelManager *_numbersLabelManager;
     _CLKUIBasicTimeLabelManager *_blinkerLabelManager;
-    struct NSNumber *_blinkTimerToken;
+    NSNumber *_blinkTimerToken;
     BOOL _animationsPaused;
     BOOL _showSeconds;
 }

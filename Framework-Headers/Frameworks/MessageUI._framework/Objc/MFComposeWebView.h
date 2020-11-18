@@ -11,8 +11,8 @@
 #import <MessageUI/WKUIDelegatePrivate-Protocol.h>
 #import <MessageUI/_WKInputDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UIBarButtonItemGroup, _WKRemoteObjectInterface;
-@protocol MFComposeBodyFieldController, MFComposeWebViewDelegate, MFMailComposeViewDelegate, MFMailSignatureController, _WKFormInputSession;
+@class NSArray, NSMutableDictionary, NSString, UIBarButtonItemGroup, UIView, _WKRemoteObjectInterface;
+@protocol MFComposeBodyFieldController, MFComposeWebViewDelegate, MFMailComposeViewDelegate, MFMailSignatureController;
 
 @interface MFComposeWebView : WKWebView <MFComposeBodyFieldObserver, WKNavigationDelegate, _WKInputDelegate, WKUIDelegatePrivate>
 {
@@ -37,7 +37,7 @@
     BOOL _originalAttachmentsWereRestored;
     BOOL _attachmentDataMissingAlertDisplayed;
     id<MFComposeWebViewDelegate> _composeWebViewDelegate;
-    id<_WKFormInputSession> _inputSession;
+    UIView *_inputViewForPreservingFocus;
 }
 
 @property (strong, nonatomic, setter=_setLeadingInputAssistantItemGroup:) UIBarButtonItemGroup *_leadingInputAssistantItemGroup;
@@ -51,12 +51,13 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDirty) BOOL dirty;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<_WKFormInputSession> inputSession; // @synthesize inputSession=_inputSession;
+@property (strong, nonatomic) UIView *inputViewForPreservingFocus; // @synthesize inputViewForPreservingFocus=_inputViewForPreservingFocus;
 @property (weak, nonatomic) id<MFMailComposeViewDelegate> mailComposeViewDelegate;
 @property (readonly, nonatomic) id<MFMailSignatureController> signatureControllerProxy;
 @property (readonly) Class superclass;
 
 + (id)_webViewConfiguration;
++ (id)log;
 - (void).cxx_destruct;
 - (void)_addAdditionalItemsToCalloutBar;
 - (void)_addAttachment:(id)arg1;
@@ -117,6 +118,7 @@
 - (void)getHTMLStringsAttachmentsAndPlainTextAlternativeRemovingSignature:(BOOL)arg1 removeQuotes:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)htmlString;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)inputView;
 - (void)insertDocumentWithData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
 - (void)insertDocumentWithURL:(id)arg1 isDrawingFile:(BOOL)arg2;
 - (void)insertPhotoOrVideoWithAssetIdentifier:(id)arg1 infoDictionary:(id)arg2;

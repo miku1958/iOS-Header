@@ -13,6 +13,7 @@
     BOOL _loadSuccessful;
     BOOL _httpNonGet;
     BOOL _synthesized;
+    int _score;
     long long _databaseID;
     long long _redirectSourceDatabaseID;
     long long _redirectDestinationDatabaseID;
@@ -21,7 +22,6 @@
     long long _origin;
     double _visitTime;
     NSString *_title;
-    unsigned long long _score;
     unsigned long long _attributes;
     WBSHistoryVisit *_redirectSource;
     WBSHistoryVisit *_redirectDestination;
@@ -40,14 +40,14 @@
 @property (strong, nonatomic) WBSHistoryVisit *redirectSource; // @synthesize redirectSource=_redirectSource;
 @property (readonly, nonatomic) unsigned long long redirectSourceChainLength;
 @property (nonatomic) long long redirectSourceDatabaseID; // @synthesize redirectSourceDatabaseID=_redirectSourceDatabaseID;
-@property (nonatomic) unsigned long long score; // @synthesize score=_score;
+@property (nonatomic) int score; // @synthesize score=_score;
 @property (readonly, nonatomic, getter=isSynthesized) BOOL synthesized; // @synthesize synthesized=_synthesized;
 @property (copy) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) double visitTime; // @synthesize visitTime=_visitTime;
 
-+ (unsigned long long)scoreForWeightedVisitCount:(float)arg1;
++ (int)scoreForWeightedVisitCount:(float)arg1;
 + (id)synthesizedVisitWithHistoryItem:(id)arg1 visitTime:(double)arg2;
-+ (float)weightedVisitCountFromScore:(unsigned long long)arg1;
++ (float)weightedVisitCountFromScore:(int)arg1;
 - (void).cxx_destruct;
 - (double)_weight;
 - (BOOL)hasAttributes:(unsigned long long)arg1;

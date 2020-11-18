@@ -8,13 +8,14 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class NSData, PBUnknownFields;
 
 @interface GEOPBTransitScheduleLookupParameters : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     unsigned long long _lineId;
     unsigned long long _referenceTripId;
+    NSData *_routingParameters;
     unsigned long long _transitId;
     struct {
         unsigned int has_lineId:1;
@@ -25,9 +26,11 @@
 
 @property (nonatomic) BOOL hasLineId;
 @property (nonatomic) BOOL hasReferenceTripId;
+@property (readonly, nonatomic) BOOL hasRoutingParameters;
 @property (nonatomic) BOOL hasTransitId;
 @property (nonatomic) unsigned long long lineId;
 @property (nonatomic) unsigned long long referenceTripId;
+@property (strong, nonatomic) NSData *routingParameters;
 @property (nonatomic) unsigned long long transitId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 

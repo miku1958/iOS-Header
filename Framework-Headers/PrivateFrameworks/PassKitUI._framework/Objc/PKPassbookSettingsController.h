@@ -11,12 +11,13 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentVerificationControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
+#import <PassKitUI/PKSubcredentialProvisioningFlowControllerDelegate-Protocol.h>
 #import <PassKitUI/PKSwitchSpinnerTableCellDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PKAccountService, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
+@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, PKAccountService, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
 @protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDelegate, PKPassbookSettingsDataSource, PKPassbookSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol;
 
-@interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKPaymentVerificationControllerDelegate, PKPaymentPassTableCellDelegate>
+@interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKSubcredentialProvisioningFlowControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentPassTableCellDelegate>
 {
     id<PKPassbookSettingsDataSource> _dataSource;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
@@ -64,6 +65,9 @@
     NSMutableDictionary *_latestTransitBalanceModel;
     id<PKPaymentDataProvider> _companionPaymentDataProvider;
     int _notifyToken;
+    NSSet *_credentialInvitations;
+    NSDictionary *_credentialInvitationForPass;
+    NSSet *_passesThatMayRequestCredentialInvitations;
     id<PKPassbookSettingsDelegate> _delegate;
 }
 
@@ -114,12 +118,15 @@
 - (id)_peerPaymentSwitchSpecifier;
 - (void)_peerPaymentWebServiceDidChangeNotification:(id)arg1;
 - (void)_performPhoneToWatchProvisioningForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_presentCredentialSetupViewControllerForPaymentPass:(id)arg1 invitation:(id)arg2 shouldRequestInvitation:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_presentFeatureNotEnabledForDemoForSpecifier:(id)arg1;
 - (void)_presentPaymentSetupViewController:(id)arg1 paymentPass:(id)arg2;
 - (void)_presentPeerPaymentReOpenCardFlowForSpecifier:(id)arg1;
 - (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1;
 - (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentPeerPaymentSetupFlowWithAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_refreshCompanionGroupSpecififiers;
+- (void)_refreshCredentialInvitationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_refreshPasses;
 - (void)_regionConfigurationDidChangeNotification;
 - (void)_registerForPeerPaymentWithSpecifier:(id)arg1;
@@ -145,6 +152,7 @@
 - (void)_updateCardsGroupSpecifier;
 - (void)_updateCompanionGroupSpecifier;
 - (void)_updateCompanionPassesAddButton;
+- (void)_updateCredentialInvitaionMapping;
 - (void)_updateDefaultCardsPreferences;
 - (void)_updateTransitExpressPassIdentifiersWithReload:(BOOL)arg1;
 - (BOOL)_useAlternateExpressTitle;
@@ -170,7 +178,9 @@
 - (void)removeFooterForSpecifier:(id)arg1;
 - (id)rendererStateForPaymentPass:(id)arg1;
 - (id)specifiers;
+- (void)subcredentialProvisioningFlowController:(id)arg1 didFinishWithPass:(id)arg2 error:(id)arg3;
 - (void)switchSpinnerCell:(id)arg1 hasToggledSwitch:(BOOL)arg2;
+- (void)userCanceledPairingWithSubcredentialProvisioningFlowController:(id)arg1;
 - (void)verifyButtonPressedForPaymentPass:(id)arg1;
 
 @end

@@ -14,8 +14,8 @@
     MISSING_TYPE *imageProvider;
     MISSING_TYPE *layoutAttributesProvider;
     MISSING_TYPE *imageCache;
-    MISSING_TYPE *model;
-    MISSING_TYPE *blueprintLayoutOptions;
+    MISSING_TYPE *magazineFeedPaywallConfig;
+    MISSING_TYPE *blueprintLayoutOptionsProvider;
 }
 
 @end

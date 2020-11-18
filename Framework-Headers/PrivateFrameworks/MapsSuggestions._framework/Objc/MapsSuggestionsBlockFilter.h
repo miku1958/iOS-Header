@@ -26,7 +26,7 @@
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithBlock:(CDUnknownBlockType)arg1 name:(struct NSString *)arg2;
+- (id)initWithBlock:(CDUnknownBlockType)arg1 name:(id)arg2;
 - (BOOL)shouldKeepEntry:(id)arg1;
 
 @end

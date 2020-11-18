@@ -35,10 +35,9 @@
 + (struct CGSize)px_videoOverlayButtonSize;
 + (id)px_videoOverlayButtonWithStyle:(long long)arg1;
 + (id)px_videoOverlayButtonWithStyle:(long long)arg1 allowBackdropStatisticsSupression:(BOOL)arg2;
-- (id)px_allGridKitViews;
 - (void)px_animateAlpha:(BOOL)arg1 transformType:(long long)arg2 withZoomTransitionContext:(id)arg3;
 - (void)px_animateWithZoomTransitionContext:(id)arg1;
-- (void)px_enumerateDescendantSubviewsWithBlock:(CDUnknownBlockType)arg1;
+- (void)px_enumerateDescendantSubviewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)px_transferToSuperview:(id)arg1 forZoomTransitionWithContex:(id)arg2;
 - (void)pxg_addToScrollViewController:(id)arg1;
 - (void)pxg_becomeReusable;

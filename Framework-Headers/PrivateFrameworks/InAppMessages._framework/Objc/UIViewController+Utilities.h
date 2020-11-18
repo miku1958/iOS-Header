@@ -7,12 +7,8 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (Utilities)
-+ (void)_replaceMethodImplementation:(Class)arg1 originalSelector:(SEL)arg2 swizzledSelector:(SEL)arg3;
 + (void)presentViewControllerOnTopmostViewController:(id)arg1 fromViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)replaceViewMethodsImplementation;
 + (id)topmostViewControllerForViewController:(id)arg1;
 - (void)dismissAnimated;
-- (void)iam_viewDidAppear:(BOOL)arg1;
-- (void)iam_viewWillDisappear:(BOOL)arg1;
 @end
 

@@ -72,6 +72,14 @@
     double _vibrantColorMatrixM43;
     double _vibrantColorMatrixM44;
     double _vibrantColorMatrixM45;
+    double _medusaSeparatorCursorTopEdgeInset;
+    double _medusaSeparatorCursorBottomEdgeInset;
+    double _medusaSeparatorCursorLeftEdgeInset;
+    double _medusaSeparatorCursorRightEdgeInset;
+    double _medusaWindowDraggingCursorTopEdgeInset;
+    double _medusaWindowDraggingCursorBottomEdgeInset;
+    double _medusaWindowDraggingCursorLeftEdgeInset;
+    double _medusaWindowDraggingCursorRightEdgeInset;
 }
 
 @property (nonatomic) double blurFadeAnimationDuration; // @synthesize blurFadeAnimationDuration=_blurFadeAnimationDuration;
@@ -98,6 +106,14 @@
 @property (strong, nonatomic) PTOutlet *killSpringBoardOutlet; // @synthesize killSpringBoardOutlet=_killSpringBoardOutlet;
 @property (strong, nonatomic) SBMedusa1oSettings *medusa1oSettings; // @synthesize medusa1oSettings=_medusa1oSettings;
 @property (strong, nonatomic) SBFFluidBehaviorSettings *medusaAnimationSettings; // @synthesize medusaAnimationSettings=_medusaAnimationSettings;
+@property (nonatomic) double medusaSeparatorCursorBottomEdgeInset; // @synthesize medusaSeparatorCursorBottomEdgeInset=_medusaSeparatorCursorBottomEdgeInset;
+@property (nonatomic) double medusaSeparatorCursorLeftEdgeInset; // @synthesize medusaSeparatorCursorLeftEdgeInset=_medusaSeparatorCursorLeftEdgeInset;
+@property (nonatomic) double medusaSeparatorCursorRightEdgeInset; // @synthesize medusaSeparatorCursorRightEdgeInset=_medusaSeparatorCursorRightEdgeInset;
+@property (nonatomic) double medusaSeparatorCursorTopEdgeInset; // @synthesize medusaSeparatorCursorTopEdgeInset=_medusaSeparatorCursorTopEdgeInset;
+@property (nonatomic) double medusaWindowDraggingCursorBottomEdgeInset; // @synthesize medusaWindowDraggingCursorBottomEdgeInset=_medusaWindowDraggingCursorBottomEdgeInset;
+@property (nonatomic) double medusaWindowDraggingCursorLeftEdgeInset; // @synthesize medusaWindowDraggingCursorLeftEdgeInset=_medusaWindowDraggingCursorLeftEdgeInset;
+@property (nonatomic) double medusaWindowDraggingCursorRightEdgeInset; // @synthesize medusaWindowDraggingCursorRightEdgeInset=_medusaWindowDraggingCursorRightEdgeInset;
+@property (nonatomic) double medusaWindowDraggingCursorTopEdgeInset; // @synthesize medusaWindowDraggingCursorTopEdgeInset=_medusaWindowDraggingCursorTopEdgeInset;
 @property (nonatomic) double movePanGestureNegativeVelocityThreshold; // @synthesize movePanGestureNegativeVelocityThreshold=_movePanGestureNegativeVelocityThreshold;
 @property (nonatomic) double movePanGesturePositiveVelocityThreshold; // @synthesize movePanGesturePositiveVelocityThreshold=_movePanGesturePositiveVelocityThreshold;
 @property (nonatomic) double movePanGestureThresholdPercentage; // @synthesize movePanGestureThresholdPercentage=_movePanGestureThresholdPercentage;
@@ -141,6 +157,8 @@
 - (void).cxx_destruct;
 - (struct CAColorMatrix)coronaVibrantColorMatrixInput;
 - (double)effectiveBlurFadeAnimationDuration;
+- (struct UIEdgeInsets)medusaSeparatorCursorEdgeInsets;
+- (struct UIEdgeInsets)medusaWindowDraggingCursorEdgeInsets;
 - (void)setDefaultValues;
 
 @end

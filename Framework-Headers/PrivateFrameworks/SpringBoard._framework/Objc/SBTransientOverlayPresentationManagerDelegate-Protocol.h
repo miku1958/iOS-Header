@@ -16,6 +16,7 @@
 - (long long)defaultPreferredInterfaceOrientationForPresentationForTransientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1;
 - (BOOL)defaultShouldAutorotateForTransientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1;
 - (unsigned long long)defaultSupportedInterfaceOrientationsForTransientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1;
+- (BOOL)isKeyboardVisibleForSpringBoardForTransientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1;
 - (SBPresentationObservationToken *)siriPresentationObservationTokenForTransientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireBannerLongLookWindowLevelAssertionWithReason:(NSString *)arg2 windowLevel:(double)arg3;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireControlCenterWindowLevelAssertionWithReason:(NSString *)arg2 windowLevel:(double)arg3;

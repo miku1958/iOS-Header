@@ -25,28 +25,31 @@
     BOOL _allowsSimultaneousRecognitionDuringLift;
     BOOL _cancellationTimerEnabled;
     BOOL _competingLongPressOnLift;
-    BOOL _acceleratedDragGestureEnabled;
+    BOOL _allowsPointerDragBeforeLiftDelay;
     BOOL _automaticallyAddsFailureRelationships;
     BOOL _allowsMultipleSessions;
     BOOL _additionalTouchesCancelLift;
     id<UIDragInteractionDelegate> _delegate;
     UIView *_view;
     id<_UIDragInteractionDriving> _initiationDriver;
+    id<_UIDragInteractionDriving> _pointerInitiationDriver;
     id<_UIDragInteractionPresentationDelegate> _presentationDelegate;
     id<UIDragInteractionEffect> _interactionEffect;
     double _liftDelay;
+    double _pointerLiftDelay;
     double _cancellationDelay;
     double _competingLongPressDelay;
     double _liftMoveHysteresis;
+    double _pointerLiftMoveHysteresis;
     long long _addItemsGestureConfiguration;
     NSArray *_allowedTouchTypes;
 }
 
-@property (nonatomic, getter=_isAcceleratedDragGestureEnabled, setter=_setAcceleratedDragGestureEnabled:) BOOL acceleratedDragGestureEnabled; // @synthesize acceleratedDragGestureEnabled=_acceleratedDragGestureEnabled;
 @property (nonatomic, getter=_addItemsGestureConfiguration, setter=_setAddItemsGestureConfiguration:) long long addItemsGestureConfiguration; // @synthesize addItemsGestureConfiguration=_addItemsGestureConfiguration;
 @property (nonatomic, getter=_additionalTouchesCancelLift, setter=_setAdditionalTouchesCancelLift:) BOOL additionalTouchesCancelLift; // @synthesize additionalTouchesCancelLift=_additionalTouchesCancelLift;
 @property (copy, nonatomic, getter=_allowedTouchTypes, setter=_setAllowedTouchTypes:) NSArray *allowedTouchTypes; // @synthesize allowedTouchTypes=_allowedTouchTypes;
 @property (nonatomic, getter=_allowsMultipleSessions, setter=_setAllowsMultipleSessions:) BOOL allowsMultipleSessions; // @synthesize allowsMultipleSessions=_allowsMultipleSessions;
+@property (nonatomic, getter=_allowsPointerDragBeforeLiftDelay, setter=_setAllowsPointerDragBeforeLiftDelay:) BOOL allowsPointerDragBeforeLiftDelay; // @synthesize allowsPointerDragBeforeLiftDelay=_allowsPointerDragBeforeLiftDelay;
 @property (nonatomic) BOOL allowsSimultaneousRecognitionDuringLift; // @synthesize allowsSimultaneousRecognitionDuringLift=_allowsSimultaneousRecognitionDuringLift;
 @property (nonatomic, getter=_automaticallyAddsFailureRelationships, setter=_setAutomaticallyAddsFailureRelationships:) BOOL automaticallyAddsFailureRelationships; // @synthesize automaticallyAddsFailureRelationships=_automaticallyAddsFailureRelationships;
 @property (nonatomic, getter=_cancellationDelay, setter=_setCancellationDelay:) double cancellationDelay; // @synthesize cancellationDelay=_cancellationDelay;
@@ -62,6 +65,9 @@
 @property (strong, nonatomic) id<UIDragInteractionEffect> interactionEffect; // @synthesize interactionEffect=_interactionEffect;
 @property (nonatomic, getter=_liftDelay, setter=_setLiftDelay:) double liftDelay; // @synthesize liftDelay=_liftDelay;
 @property (nonatomic, getter=_liftMoveHysteresis, setter=_setLiftMoveHysteresis:) double liftMoveHysteresis; // @synthesize liftMoveHysteresis=_liftMoveHysteresis;
+@property (strong, nonatomic, getter=_pointerInitiationDriver, setter=_setPointerInitiationDriver:) id<_UIDragInteractionDriving> pointerInitiationDriver; // @synthesize pointerInitiationDriver=_pointerInitiationDriver;
+@property (nonatomic, getter=_pointerLiftDelay, setter=_setPointerLiftDelay:) double pointerLiftDelay; // @synthesize pointerLiftDelay=_pointerLiftDelay;
+@property (nonatomic, getter=_pointerLiftMoveHysteresis, setter=_setPointerLiftMoveHysteresis:) double pointerLiftMoveHysteresis; // @synthesize pointerLiftMoveHysteresis=_pointerLiftMoveHysteresis;
 @property (weak, nonatomic, getter=_presentationDelegate, setter=_setPresentationDelegate:) id<_UIDragInteractionPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;

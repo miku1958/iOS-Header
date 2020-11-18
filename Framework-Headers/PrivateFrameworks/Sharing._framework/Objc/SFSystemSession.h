@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, SFDevice, SFSession, SFSessionRequestInfo;
+@class NSError, NSMutableArray, SFDevice, SFSession, SFSessionRequestInfo;
 @protocol OS_dispatch_queue;
 
 @interface SFSystemSession : NSObject
@@ -14,7 +14,7 @@
     SFSessionRequestInfo *_currentRequest;
     BOOL _invalidateCalled;
     BOOL _pairVerifyDone;
-    struct NSMutableArray *_requests;
+    NSMutableArray *_requests;
     SFSession *_sfSession;
     int _state;
     BOOL _stateDone;

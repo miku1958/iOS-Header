@@ -10,7 +10,7 @@
 #import <Email/EFPubliclyDescribable-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class CSSearchableItem, EFInvocationToken, EFSandboxedURLWrapper, EMListUnsubscribeCommand, EMMessage, EMSecurityInformation, NSArray, NSString, NSURL;
+@class CSSearchableItem, EFInvocationToken, EFSandboxedURLWrapper, EMListUnsubscribeCommand, EMMessage, EMMessageHeaders, EMSecurityInformation, NSArray, NSString, NSURL;
 @protocol EMContentItem, _EMDistantContentRepresentation;
 
 @interface EMContentRepresentation : NSObject <NSSecureCoding, EFLoggable, EFPubliclyDescribable>
@@ -28,6 +28,7 @@
     EMListUnsubscribeCommand *_unsubscribeCommand;
     long long _remainingByteCount;
     long long _transportType;
+    EMMessageHeaders *_requestedHeaders;
     EFSandboxedURLWrapper *_urlWrapper;
     id<_EMDistantContentRepresentation> _distantContentRepresentation;
     CDUnknownBlockType _requestMoreContentBlock;
@@ -47,6 +48,7 @@
 @property (nonatomic) long long remainingByteCount; // @synthesize remainingByteCount=_remainingByteCount;
 @property (copy, nonatomic) NSArray *replyToList; // @synthesize replyToList=_replyToList;
 @property (copy, nonatomic) CDUnknownBlockType requestMoreContentBlock; // @synthesize requestMoreContentBlock=_requestMoreContentBlock;
+@property (strong, nonatomic) EMMessageHeaders *requestedHeaders; // @synthesize requestedHeaders=_requestedHeaders;
 @property (strong, nonatomic) CSSearchableItem *searchableItem; // @synthesize searchableItem=_searchableItem;
 @property (strong, nonatomic) EMSecurityInformation *securityInformation; // @synthesize securityInformation=_securityInformation;
 @property (readonly) Class superclass;

@@ -6,7 +6,7 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSError;
+@class NSArray, NSData, NSDictionary, NSError, NSString;
 @protocol VCMediaStreamProtocol;
 
 @protocol VCMediaStreamDelegate <NSObject>
@@ -20,7 +20,7 @@
 - (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 didReceiveFirstVideoFrameWithTime:(CDStruct_1b6d18a9)arg2;
 - (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 didReceiveRTCPPackets:(NSArray *)arg2;
 - (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 didReceiveTTYCharacter:(unsigned short)arg2;
-- (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 didReceiveText:(struct NSString *)arg2;
+- (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 didReceiveText:(NSString *)arg2;
 - (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 didSwitchFromStreamID:(unsigned short)arg2 toStreamID:(unsigned short)arg3;
 - (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 didSwitchToAudioStreamWithID:(unsigned short)arg2;
 - (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 didUpdateVideoConfiguration:(BOOL)arg2 error:(NSError *)arg3 dictionary:(NSDictionary *)arg4;

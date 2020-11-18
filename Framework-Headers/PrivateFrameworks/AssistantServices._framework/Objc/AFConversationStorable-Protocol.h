@@ -14,6 +14,7 @@
 - (AFDataStore *)associatedDataStore;
 - (AFDialogPhase *)dialogPhase;
 - (NSUUID *)identifier;
+- (BOOL)isTransient;
 - (BOOL)isVirgin;
 - (long long)presentationState;
 - (NSUUID *)revisionIdentifier;

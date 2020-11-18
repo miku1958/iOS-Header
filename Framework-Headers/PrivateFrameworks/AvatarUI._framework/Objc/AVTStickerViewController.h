@@ -53,6 +53,7 @@
 @property (readonly, nonatomic) UIView *view;
 
 + (double)headerHeightForWidth:(double)arg1 interitemSpacing:(double)arg2;
++ (id)inUseStickerPack;
 + (unsigned long long)minimumNumberOfVisibleItemForWidth:(double)arg1;
 + (id)stickerViewControllerForStore:(id)arg1 allowEditing:(BOOL)arg2 allowPeel:(BOOL)arg3;
 + (id)stickersAvatarsFetchRequest;

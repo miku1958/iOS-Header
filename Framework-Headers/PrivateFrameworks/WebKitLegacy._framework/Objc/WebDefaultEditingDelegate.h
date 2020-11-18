@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)webView:(id)arg1 doCommandBySelector:(SEL)arg2;
 - (BOOL)webView:(id)arg1 shouldApplyStyle:(id)arg2 toElementsInDOMRange:(id)arg3;
 - (BOOL)webView:(id)arg1 shouldBeginEditingInDOMRange:(id)arg2;
-- (BOOL)webView:(id)arg1 shouldChangeSelectedDOMRange:(id)arg2 toDOMRange:(id)arg3 affinity:(int)arg4 stillSelecting:(BOOL)arg5;
+- (BOOL)webView:(id)arg1 shouldChangeSelectedDOMRange:(id)arg2 toDOMRange:(id)arg3 affinity:(unsigned long long)arg4 stillSelecting:(BOOL)arg5;
 - (BOOL)webView:(id)arg1 shouldChangeTypingStyle:(id)arg2 toStyle:(id)arg3;
 - (BOOL)webView:(id)arg1 shouldDeleteDOMRange:(id)arg2;
 - (BOOL)webView:(id)arg1 shouldEndEditingInDOMRange:(id)arg2;

@@ -39,6 +39,7 @@
 - (BOOL)ams_addCookiesForResponse:(id)arg1 request:(id)arg2 account:(id)arg3 error:(id *)arg4;
 - (BOOL)ams_addCookiesForResult:(id)arg1 account:(id)arg2 error:(id *)arg3;
 - (id)ams_cookiesForURL:(id)arg1;
+- (id)ams_demoAccount;
 - (id)ams_fetchGrandSlamTokenForAccount:(id)arg1 withIdentifier:(id)arg2 error:(id *)arg3;
 - (id)ams_iCloudAccountForAccount:(id)arg1;
 - (id)ams_iTunesAccountForAccount:(id)arg1;

@@ -14,6 +14,7 @@
 {
     BOOL _isResidentCapable;
     BOOL _isResidentEnabled;
+    BOOL _isDemoHomeConfigured;
     unsigned int _databaseSize;
     unsigned int _metadataVersion;
     NSMutableArray *_homeConfigurations;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableArray *homeConfigurations; // @synthesize homeConfigurations=_homeConfigurations;
+@property BOOL isDemoHomeConfigured; // @synthesize isDemoHomeConfigured=_isDemoHomeConfigured;
 @property BOOL isResidentCapable; // @synthesize isResidentCapable=_isResidentCapable;
 @property BOOL isResidentEnabled; // @synthesize isResidentEnabled=_isResidentEnabled;
 @property unsigned int metadataVersion; // @synthesize metadataVersion=_metadataVersion;

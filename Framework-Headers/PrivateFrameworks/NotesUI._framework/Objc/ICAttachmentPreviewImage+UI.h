@@ -14,22 +14,22 @@
 @property (readonly, nonatomic) UIImage *orientedImage;
 
 + (id)imageCache;
-+ (struct UIImage *)orientedImage:(struct UIImage *)arg1 withTransform:(struct CGAffineTransform)arg2 background:(int)arg3 backgroundTransform:(struct CGAffineTransform)arg4;
++ (id)orientedImage:(id)arg1 withTransform:(struct CGAffineTransform)arg2 background:(int)arg3 backgroundTransform:(struct CGAffineTransform)arg4;
 - (CDUnknownBlockType)asyncImage:(CDUnknownBlockType)arg1 aboutToLoadHandler:(CDUnknownBlockType)arg2;
-- (struct UIImage *)cachedImage;
-- (struct UIImage *)cachedOrientedImage;
+- (id)cachedImage;
+- (id)cachedOrientedImage;
 - (void)clearCachedImage;
 - (void)clearCachedOrientedImage;
 - (BOOL)hasCachedImage;
-- (struct UIImage *)imageWithBackground:(int)arg1;
+- (id)imageWithBackground:(int)arg1;
 - (id)newImageLoaderForUpdatingImageOnCompletion:(BOOL)arg1;
 - (id)newImageLoaderForUpdatingImageOnCompletion:(BOOL)arg1 asyncDataLoading:(BOOL)arg2;
 - (id)orientedImageID;
 - (struct CGAffineTransform)orientedImageTransform;
-- (struct UIImage *)orientedImageWithBackground:(int)arg1;
+- (id)orientedImageWithBackground:(int)arg1;
 - (long long)previewImageOrientation;
-- (void)setCachedImage:(struct UIImage *)arg1;
-- (void)setCachedOrientedImage:(struct UIImage *)arg1;
+- (void)setCachedImage:(id)arg1;
+- (void)setCachedOrientedImage:(id)arg1;
 - (void)writeOrientedPreviewToDisk;
 @end
 

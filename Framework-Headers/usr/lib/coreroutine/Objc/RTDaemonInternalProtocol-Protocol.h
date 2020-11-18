@@ -6,10 +6,12 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID, RTFetchFingerprintsOptions, RTFingerprint, RTLocation, RTLocationOfInterest, RTLocationOfInterestVisit, RTPlaceInferenceOptions, RTScenarioTrigger, RTSignalGeneratorOptions, RTVisit;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, RTFetchFingerprintsOptions, RTFingerprint, RTLocation, RTLocationOfInterest, RTLocationOfInterestVisit, RTPlaceInferenceOptions, RTScenarioTrigger, RTSignalGeneratorOptions, RTVisit;
 
 @protocol RTDaemonInternalProtocol <NSObject>
 - (void)clearAllLocationsOfInterestWithReply:(void (^)(NSError *))arg1;
+- (void)expireLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 expirationDate:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)extendLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 toExpireOn:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)fetchAllLocationsOfInterestWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)fetchDataVaultPath:(void (^)(NSString *, NSError *))arg1;
 - (void)fetchFMCEnabledWithReply:(void (^)(BOOL, NSError *))arg1;

@@ -70,6 +70,7 @@
 + (id)searchDatabaseLog;
 - (void).cxx_destruct;
 - (void)_executeQuery:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
+- (void)_finalizeEverything;
 - (void)_inSearchQueueAsync:(CDUnknownBlockType)arg1;
 - (void)_ingRebuildPrefixTableIfNeeded;
 - (void)_inqAddToLookupTableWithGroupId:(unsigned long long)arg1 text:(id)arg2 category:(short)arg3;

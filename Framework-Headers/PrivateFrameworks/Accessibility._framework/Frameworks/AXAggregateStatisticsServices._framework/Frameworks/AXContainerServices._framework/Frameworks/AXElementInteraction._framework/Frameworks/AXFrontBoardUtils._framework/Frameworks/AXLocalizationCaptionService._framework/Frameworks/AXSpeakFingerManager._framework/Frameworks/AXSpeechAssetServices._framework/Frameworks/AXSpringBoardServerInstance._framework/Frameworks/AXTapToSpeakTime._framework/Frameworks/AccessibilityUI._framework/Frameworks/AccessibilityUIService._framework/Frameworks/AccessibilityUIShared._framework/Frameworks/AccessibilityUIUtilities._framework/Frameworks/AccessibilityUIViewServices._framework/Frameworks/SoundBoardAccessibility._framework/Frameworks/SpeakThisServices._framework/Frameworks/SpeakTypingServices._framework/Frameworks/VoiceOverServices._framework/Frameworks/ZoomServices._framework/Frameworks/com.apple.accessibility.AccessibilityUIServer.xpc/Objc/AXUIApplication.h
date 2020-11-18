@@ -21,6 +21,7 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (void)dealloc;
+- (void)sendEvent:(id)arg1;
 
 @end
 

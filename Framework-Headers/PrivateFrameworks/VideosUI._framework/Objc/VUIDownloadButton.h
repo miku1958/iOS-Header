@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_imageSizeThatFits:(struct CGSize)arg1;
 - (void)_insertProgressIndicatorWithFrame:(struct CGRect)arg1;
 - (void)_layoutProgressIndicator;
+- (id)_localize:(id)arg1 token:(id)arg2 value:(id)arg3;
 - (id)_notDownloadedImage;
 - (id)_pausedImage;
 - (void)_setImage:(id)arg1;

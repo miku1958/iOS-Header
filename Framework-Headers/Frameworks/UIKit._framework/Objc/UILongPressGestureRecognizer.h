@@ -78,6 +78,7 @@
 - (double)_allowableSeparation;
 - (double)_allowableTouchTimeSeparation;
 - (BOOL)_allowsDynamicTouchesList;
+- (void)_appendSubclassDescription:(id)arg1;
 - (struct CGPoint)_centroidInView:(id)arg1;
 - (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2 physicalTouch:(id)arg3;
 - (void)_changeTouchesListTo:(id)arg1;
@@ -107,6 +108,7 @@
 - (BOOL)_touchesMayBeRecognizedByForcePreviewingRevealGestureRecognizerWhichShouldDelayTimer:(id)arg1;
 - (struct CGPoint)_translationInView:(id)arg1;
 - (BOOL)activeTouchesExceedAllowableSeparation;
+- (long long)buttonMaskRequired;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
 - (void)clearTimer;
 - (void)encodeWithCoder:(id)arg1;
@@ -121,6 +123,7 @@
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)setButtonMaskRequired:(long long)arg1;
 - (void)setView:(id)arg1;
 - (void)startTimer;
 - (BOOL)tapIsPossibleForTapRecognizer:(id)arg1;

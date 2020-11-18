@@ -21,7 +21,6 @@
 + (id)createWithManagedObject:(id)arg1;
 + (id)createWithMapItemMO:(id)arg1;
 - (void)_distanceBetweenShiftedLocation:(id)arg1 unshiftedLocation:(id)arg2 locationShifter:(id)arg3 handler:(CDUnknownBlockType)arg4;
-- (double)distanceFromLocation:(id)arg1;
 - (double)distanceFromLocation:(id)arg1 locationShifter:(id)arg2 error:(id *)arg3;
 - (void)distanceFromLocation:(id)arg1 locationShifter:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)initWithCLLocation:(id)arg1;

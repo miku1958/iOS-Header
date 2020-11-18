@@ -14,7 +14,7 @@
 
 - (id)initWithDuration:(double)arg1;
 - (long long)requirements;
-- (void)updateWithFrame:(id)arg1;
+- (void)updateWithFrame:(id)arg1 cache:(id)arg2;
 
 @end
 

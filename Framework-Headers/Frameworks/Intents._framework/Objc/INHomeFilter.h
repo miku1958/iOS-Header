@@ -25,11 +25,13 @@
     INSpeakableString *_zone;
     INSpeakableString *_group;
     INSpeakableString *_room;
+    INSpeakableString *_accessory;
+    long long _subServiceType;
 }
 
+@property (readonly, copy, nonatomic) INSpeakableString *accessory; // @synthesize accessory=_accessory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) long long deviceProfileType;
 @property (readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property (readonly, copy, nonatomic) NSArray *entityIdentifiers; // @synthesize entityIdentifiers=_entityIdentifiers;
 @property (readonly, copy, nonatomic) INSpeakableString *entityName; // @synthesize entityName=_entityName;
@@ -44,6 +46,7 @@
 @property (readonly, copy, nonatomic) INSpeakableString *scene;
 @property (readonly, copy, nonatomic) INSpeakableString *service;
 @property (readonly, nonatomic) long long serviceType;
+@property (readonly, nonatomic) long long subServiceType; // @synthesize subServiceType=_subServiceType;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) INSpeakableString *zone; // @synthesize zone=_zone;
 
@@ -52,9 +55,10 @@
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
+- (long long)deviceProfileType;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEntityIdentifiers:(id)arg1 entityName:(id)arg2 entityType:(long long)arg3 deviceProfileType:(long long)arg4 capabilityName:(id)arg5 capabilityProfileType:(long long)arg6 home:(id)arg7 zone:(id)arg8 group:(id)arg9 room:(id)arg10 isExcludeFilter:(BOOL)arg11;

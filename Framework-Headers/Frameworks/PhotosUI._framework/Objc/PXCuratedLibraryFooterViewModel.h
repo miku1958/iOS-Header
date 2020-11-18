@@ -57,7 +57,7 @@
 - (id)init;
 - (id)initWithItemCountsController:(id)arg1 cplServiceUI:(id)arg2 analysisStatus:(id)arg3 mode:(long long)arg4;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (struct NSObject *)presentingViewControllerForCloudQuotaController:(id)arg1;
+- (id)presentingViewControllerForCloudQuotaController:(id)arg1;
 - (void)setHasImportantInformation:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 

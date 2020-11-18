@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) BOOL isMultiUser;
 @property (readonly, copy, nonatomic) UMUser *loginUser;
 @property (readonly, nonatomic) unsigned long long maxNumberOfUsers;
+@property (readonly, nonatomic) unsigned long long userQuotaSize;
 
 - (BOOL)canAccessUserProperties;
 - (void)createUser:(UMUser *)arg1 passcodeData:(NSData *)arg2 completionHandler:(void (^)(NSError *))arg3;

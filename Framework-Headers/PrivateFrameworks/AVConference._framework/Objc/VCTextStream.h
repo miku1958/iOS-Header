@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (void)didReceiveCharacter:(unsigned short)arg1;
-- (void)didReceiveText:(struct NSString *)arg1;
+- (void)didReceiveText:(id)arg1;
 - (id)init;
 - (void)onCallIDChanged;
 - (BOOL)onConfigureStreamWithConfiguration:(id)arg1 error:(id *)arg2;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)onStopWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (double)rtcpHeartbeatLeeway;
 - (void)sendCharacter:(unsigned short)arg1;
-- (void)sendText:(struct NSString *)arg1;
+- (void)sendText:(id)arg1;
 - (BOOL)setupTextReceiverWithError:(id *)arg1;
 - (void)setupTextTransmitter;
 - (id)supportedPayloads;

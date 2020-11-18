@@ -12,6 +12,7 @@
 
 @interface ASDAppUsageStats : NSObject <NSCopying>
 {
+    BOOL _isExtensionUsage;
     NSString *_bundleID;
     NSString *_bundleVersion;
     NSDate *_endDate;
@@ -31,6 +32,7 @@
 @property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (nonatomic) long long eventTime; // @synthesize eventTime=_eventTime;
 @property (copy, nonatomic) NSNumber *evid; // @synthesize evid=_evid;
+@property (nonatomic) BOOL isExtensionUsage; // @synthesize isExtensionUsage=_isExtensionUsage;
 @property (copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
 @property (copy, nonatomic) NSDate *lastEventEndDate; // @synthesize lastEventEndDate=_lastEventEndDate;

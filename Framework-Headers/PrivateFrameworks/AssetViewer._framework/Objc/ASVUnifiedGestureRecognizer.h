@@ -69,9 +69,11 @@
 - (void)gesture:(id)arg1 rotatedAssetByDeltaYaw:(float)arg2;
 - (void)gesture:(id)arg1 scaledAssetToScale:(float)arg2;
 - (void)gesture:(id)arg1 singleTappedAtScreenPoint:(BOOL)arg2 onAsset: /* Error: Ran out of types for this method. */;
+- (void)gestureBeganRotation:(id)arg1;
 - (void)gestureBeganScaling:(id)arg1;
 - (void)gestureDidSnapAwayFromScale:(id)arg1;
 - (void)gestureDidSnapToScale:(id)arg1;
+- (void)gestureEndedRotation:(id)arg1;
 - (void)gestureEndedScaling:(id)arg1;
 - (void)gestureStartScaleAnimationFrom:(float)arg1 to:(float)arg2;
 - (void)gestureStopScaleAnimation;

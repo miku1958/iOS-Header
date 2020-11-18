@@ -38,6 +38,7 @@
 - (void)loadView;
 - (id)onPresentationRemoveViewControllersAfterMarker;
 - (void)updateUIWithState:(long long)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

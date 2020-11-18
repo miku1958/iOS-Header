@@ -31,6 +31,7 @@
 + (id)databasePath;
 + (id)defaultAnalyticsDatabasePath:(id)arg1;
 + (long long)fuzzyDaysSinceDate:(id)arg1;
++ (id)hwModelID;
 + (id)logger;
 - (void).cxx_destruct;
 - (id)AddMultiSamplerForName:(id)arg1 withTimeInterval:(double)arg2 block:(CDUnknownBlockType)arg3;

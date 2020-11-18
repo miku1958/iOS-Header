@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsUI2/TSTodayBridgedBlueprintManagerType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI228TodayBridgedBlueprintManager : _TtCs12_SwiftObject <TSTodayBridgedBlueprintManagerType>
+@interface _TtC7NewsUI228TodayBridgedBlueprintManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *providersByID;
     MISSING_TYPE *lock;

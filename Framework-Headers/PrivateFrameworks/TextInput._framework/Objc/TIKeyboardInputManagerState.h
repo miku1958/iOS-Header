@@ -38,6 +38,8 @@
             unsigned int usesPunctuationKeysForRowNavigation:1;
             unsigned int insertsSpaceAfterPredictiveInput:1;
             unsigned int shouldFixupIncompleteRomaji:1;
+            unsigned int usesLiveConversion:1;
+            unsigned int delayedCandidateList:1;
         } fields;
     } _mask;
     BOOL _shouldAddModifierSymbolsToWordCharacters;
@@ -103,12 +105,16 @@
 - (void).cxx_destruct;
 - (BOOL)acceptInputString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)delayedCandidateList;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)inputStringAcceptsCurrentCandidateIfSelected:(id)arg1;
+- (void)setDelayedCandidateList:(BOOL)arg1;
+- (void)setUsesLiveConversion:(BOOL)arg1;
 - (BOOL)shouldDeleteAutospaceBeforeTerminator:(id)arg1;
 - (BOOL)shouldSuppressAutocorrectionWithTerminator:(id)arg1;
 - (BOOL)stringEndsWord:(id)arg1;
+- (BOOL)usesLiveConversion;
 
 @end
 

@@ -8,13 +8,13 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CAReplicatorLayer, CLKDevice, CLKFont, NSArray, NSCalendar, NSDate, NSString, NTKAnalogHandsView, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle;
+@class CALayer, CAReplicatorLayer, CLKDevice, CLKFont, NSArray, NSCalendar, NSDate, NSNumber, NSString, NTKAnalogHandsView, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle;
 
 @interface NTKDualTimeView : UIView <NTKTimeView>
 {
     NSDate *_overrideDate;
     NSCalendar *_calendar;
-    struct NSNumber *_clockTimerToken;
+    NSNumber *_clockTimerToken;
     CAReplicatorLayer *_hourTickReplicatorLayer;
     CAReplicatorLayer *_minuteTickReplicatorLayer;
     UIView *_digitalContainerView;

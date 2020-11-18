@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) struct CGSize contentSize;
 @property (readonly, nonatomic) struct CGRect effectiveContentFrame;
 @property (readonly, nonatomic) long long frameCount;
-@property (readonly, nonatomic) int layoutAxis;
+@property (readonly, nonatomic) unsigned long long layoutAxis;
 @property (readonly, nonatomic) BOOL layoutRTL;
 @property (readonly, nonatomic) NSCollectionLayoutSection *layoutSection;
 @property (nonatomic) struct CGPoint orthogonalOffset;
@@ -25,7 +25,7 @@
 @property (nonatomic) BOOL shouldAdjustContentSizeForPartialLastGroupSolution;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
 
-- (double)_dimensionForRootGroupAlongAxis:(int)arg1;
+- (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
 - (void)_setOrthogonalOffset:(struct CGPoint)arg1;
 - (NSSet *)allSupplementaryKeys;
 - (id<_UICollectionLayoutFramesQueryResult>)frameForIndex:(long long)arg1;
@@ -35,9 +35,9 @@
 - (id<_UICollectionLayoutFramesQueryResult>)sectionSupplementaryFrameForIndex:(long long)arg1;
 - (id<_UICollectionLayoutFramesQueryResult>)sectionSupplementaryFrameWithKind:(NSString *)arg1 index:(long long)arg2;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(NSUUID *)arg1;
-- (void)solveForContainer:(id<NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4;
-- (void)solveForContainer:(id<NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4 preferredSizes:(id<_UICollectionPreferredSizes>)arg5;
-- (void)solveForContainer:(id<NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4 preferredSizes:(id<_UICollectionPreferredSizes>)arg5 layoutRTL:(BOOL)arg6;
+- (void)solveForContainer:(id<NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
+- (void)solveForContainer:(id<NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id<_UICollectionPreferredSizes>)arg5;
+- (void)solveForContainer:(id<NSCollectionLayoutContainer>)arg1 traitCollection:(UITraitCollection *)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id<_UICollectionPreferredSizes>)arg5 layoutRTL:(BOOL)arg6;
 - (id<_UICollectionLayoutFramesQueryResult>)supplementaryFrameWithKind:(NSString *)arg1 index:(long long)arg2;
 - (NSSet *)supplementaryKeysAssociatedWithItemAtIndex:(long long)arg1;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;

@@ -38,7 +38,7 @@
     NSMutableSet *__tilesInUse;
     double __viewHeight;
     PXWidgetBarLayout *__layout;
-    struct NSObject *_view;
+    NSObject<PXAnonymousView> *_view;
 }
 
 @property (readonly, nonatomic) PXWidgetBarLayout *_layout; // @synthesize _layout=__layout;
@@ -74,7 +74,7 @@
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
 - (id)checkOutTileWithKind:(long long)arg1;
 - (id)createTileAnimator;
-- (struct NSObject *)createView;
+- (id)createView;
 - (void)didSelectDisclosureAffordance;
 - (void)didSelectSubtitle;
 - (id)init;

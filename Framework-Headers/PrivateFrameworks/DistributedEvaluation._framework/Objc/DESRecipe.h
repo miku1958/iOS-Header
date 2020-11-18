@@ -24,6 +24,8 @@
 @property (copy, nonatomic) NSString *recipeId; // @synthesize recipeId=_recipeId;
 @property (copy, nonatomic) NSString *recipeType; // @synthesize recipeType=_recipeType;
 @property (readonly, copy, nonatomic) NSDictionary *recipeUserInfo; // @synthesize recipeUserInfo=_recipeUserInfo;
+@property (readonly, copy, nonatomic) NSDictionary *secureAggregationRecipeInfo;
+@property (readonly, nonatomic) BOOL supportsSecureAggregation;
 
 + (void)initialize;
 - (void).cxx_destruct;

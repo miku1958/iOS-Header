@@ -58,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)removeLastStroke;
 - (void)resetRendererState;
-- (id)snapshot;
+- (id)snapshotImage;
 - (void)teardown;
 
 @end

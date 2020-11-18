@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _requestAllowsPrivacyUI;
     BOOL _requestRequiresPrivacyUI;
     BOOL _shouldInferFeaturedProviders;
+    BOOL _shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront;
     BOOL _accountModificationAllowed;
     int _hostProcessIdentifier;
     VSAuditToken *_auditToken;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL requestRequiresPrivacyUI; // @synthesize requestRequiresPrivacyUI=_requestRequiresPrivacyUI;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 @property (nonatomic) BOOL shouldInferFeaturedProviders; // @synthesize shouldInferFeaturedProviders=_shouldInferFeaturedProviders;
+@property (nonatomic) BOOL shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront; // @synthesize shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront=_shouldReturnErrorOnTVProviderFeatureUnsupportedByStorefront;
 @property (copy, nonatomic) NSArray *supportedIdentityProviderIdentifiers; // @synthesize supportedIdentityProviderIdentifiers=_supportedIdentityProviderIdentifiers;
 
 - (void).cxx_destruct;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)_checkEntitlement;
 - (void)_checkPrivacy;
 - (void)_checkSupportedProviders;
+- (void)_continueCheckPrivacyWithAccessStatus:(unsigned long long)arg1;
 - (void)_determineProviderDisplayNameWithUI:(BOOL)arg1;
 - (void)_finishWithError:(id)arg1;
 - (void)_finishWithSupportedProviders:(id)arg1;

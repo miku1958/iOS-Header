@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSDictionary *_entriesByKey;
     NSMutableSet *_unresolvedKeys;
-    struct NSDictionary *_keyValues;
+    NSDictionary *_keyValues;
     NSSet *_dataBoundKeys;
 }
 

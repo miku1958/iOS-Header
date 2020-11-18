@@ -9,14 +9,15 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class CNContact, NSString, PKDisbursementVoucher, PKPaymentPass, PKRemotePaymentInstrument;
+@class CNContact, NSString, PKDisbursementVoucher, PKPaymentPass, PKRemotePaymentInstrument, PKSecureElementPass;
 
 @interface PKPaymentMethod : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _usePeerPaymentBalance;
     NSString *_displayName;
     NSString *_network;
     unsigned long long _type;
-    PKPaymentPass *_paymentPass;
+    PKSecureElementPass *_secureElementPass;
     CNContact *_billingAddress;
     PKRemotePaymentInstrument *_remoteInstrument;
     NSString *_peerPaymentQuoteIdentifier;
@@ -29,10 +30,12 @@
 @property (strong, nonatomic) PKDisbursementVoucher *disbursementVoucher; // @synthesize disbursementVoucher=_disbursementVoucher;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *network; // @synthesize network=_network;
-@property (copy, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
+@property (copy, nonatomic) PKPaymentPass *paymentPass;
 @property (copy, nonatomic) NSString *peerPaymentQuoteIdentifier; // @synthesize peerPaymentQuoteIdentifier=_peerPaymentQuoteIdentifier;
 @property (strong, nonatomic) PKRemotePaymentInstrument *remoteInstrument; // @synthesize remoteInstrument=_remoteInstrument;
+@property (copy, nonatomic) PKSecureElementPass *secureElementPass; // @synthesize secureElementPass=_secureElementPass;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (nonatomic) BOOL usePeerPaymentBalance; // @synthesize usePeerPaymentBalance=_usePeerPaymentBalance;
 
 + (id)paymentMethodWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;

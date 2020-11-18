@@ -16,6 +16,7 @@
     long long _fileExtensionHandle;
     NSURL *_url;
     FPSandboxingURLWrapper *_urlWrapperForExtension;
+    FPSandboxingURLWrapper *_urlWrapperForParentDirectory;
     NSData *_data;
     NSString *_overriddenContentType;
     NSString *_computedContentType;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) NSString *overriddenContentType; // @synthesize overriddenContentType=_overriddenContentType;
 @property (readonly) NSURL *url; // @synthesize url=_url;
 @property (readonly) FPSandboxingURLWrapper *urlWrapperForExtension; // @synthesize urlWrapperForExtension=_urlWrapperForExtension;
+@property (readonly) FPSandboxingURLWrapper *urlWrapperForParentDirectory; // @synthesize urlWrapperForParentDirectory=_urlWrapperForParentDirectory;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -40,6 +42,7 @@
 - (id)initWithData:(id)arg1 contentType:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 URLWrapperForExtension:(id)arg2;
+- (id)initWithURL:(id)arg1 URLWrapperForExtension:(id)arg2 URLWrapperForParentDirectory:(id)arg3;
 - (void)issueFileExtension;
 - (BOOL)needsDownload;
 

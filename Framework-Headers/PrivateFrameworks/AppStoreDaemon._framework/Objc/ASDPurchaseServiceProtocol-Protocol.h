@@ -9,10 +9,12 @@
 @protocol ASDPurchaseServiceProtocol
 - (void)adopt:(NSArray *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
 - (void)adoptableBundleIdentifiersWithReplyHandler:(void (^)(NSArray *))arg1;
+- (void)adoptionStatus:(BOOL)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)checkStoreQueue:(long long)arg1;
 - (void)notifyAutenticationDialogCompleteForPurchaseID:(NSNumber *)arg1 result:(long long)arg2 checkboxChecked:(BOOL)arg3 withResultHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)notifyDialogCompleteForPurchaseID:(NSNumber *)arg1 result:(BOOL)arg2 selectedButton:(long long)arg3 withResultHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)processPurchase:(ASDPurchase *)arg1 withReplyHandler:(void (^)(ASDPurchaseResponse *, NSError *))arg2;
 - (void)startPurchase:(ASDPurchase *)arg1 withReplyHandler:(void (^)(ASDPurchaseResult *, NSError *))arg2;
+- (void)unadoptWithReplyHandler:(void (^)(NSDictionary *, NSError *))arg1;
 @end
 

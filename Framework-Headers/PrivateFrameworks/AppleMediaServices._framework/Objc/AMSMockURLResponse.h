@@ -8,7 +8,6 @@
 
 @class NSData, NSDictionary, NSMutableArray, NSURLRequest, NSURLSessionTask;
 
-__attribute__((visibility("hidden")))
 @interface AMSMockURLResponse : NSObject
 {
     BOOL _performActualRequest;

@@ -11,7 +11,7 @@
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSString, NSTimer, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
+@class CLInUseAssertion, NSString, NSTimer, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentProvisioningTracker, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
 
 @interface PKPaymentSetupProvisioningFieldsViewController : PKPaymentSetupFieldsViewController <UITextFieldDelegate, RemoteUIControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
@@ -25,6 +25,7 @@
     CDUnknownBlockType _waitForActivationCompletionHandler;
     NSTimer *_waitForActivationTimer;
     NSString *_activatingPaymentPassUniqueID;
+    PKPaymentProvisioningTracker *_provisioningTracker;
     PKPasscodeUpgradeFlowController *_passcodeUpgradeFlowController;
     BOOL _hideSetupLaterButton;
     PKPaymentProvisioningController *_paymentProvisioningController;

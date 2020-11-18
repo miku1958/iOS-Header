@@ -30,9 +30,11 @@
     BOOL _gestureHasEnded;
     unsigned long long _numberOfTouchSamples;
     SBHomeGestureDockSwitcherModifier *_dockModifier;
+    long long _startingEnvironmentMode;
     BOOL _scrunchInitiated;
-    BOOL _startingInAppSwitcher;
     BOOL _continuingGesture;
+    long long _touchType;
+    BOOL _isMouseEvent;
     id<SBHomeGestureFinalDestinationSwitcherModifierDelegate> _finalDestinationDelegate;
     BOOL _hasSeenAccelerationDipForAppSwitcher;
     NSString *_finalDestinationReason;
@@ -59,7 +61,7 @@
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleHomeGestureSettingsChangedEvent:(id)arg1;
 - (id)handleSwitcherSettingsChangedEvent:(id)arg1;
-- (id)initWithDelegate:(id)arg1 initialTranslationAdjustment:(struct CGPoint)arg2 startingInAppSwitcher:(BOOL)arg3 continuingGesture:(BOOL)arg4;
+- (id)initWithDelegate:(id)arg1 initialTranslationAdjustment:(struct CGPoint)arg2 startingEnvironmentMode:(long long)arg3 continuingGesture:(BOOL)arg4;
 - (id)studyLogData;
 
 @end

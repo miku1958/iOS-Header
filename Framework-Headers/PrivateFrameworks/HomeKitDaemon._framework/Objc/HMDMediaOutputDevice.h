@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSString *modelID;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) void *outputDevice; // @synthesize outputDevice=_outputDevice;
+@property (readonly, nonatomic) BOOL supportsHAP;
 @property (readonly, nonatomic) BOOL supportsWHA;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 

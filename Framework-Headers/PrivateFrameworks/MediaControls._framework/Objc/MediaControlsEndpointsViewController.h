@@ -54,6 +54,7 @@
 @property (copy, nonatomic) CDUnknownBlockType routingCornerViewTappedBlock; // @synthesize routingCornerViewTappedBlock=_routingCornerViewTappedBlock;
 @property (strong, nonatomic) MPAVRoutingViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
 @property (strong, nonatomic) MPAVEndpointRoute *selectedRoute; // @synthesize selectedRoute=_selectedRoute;
+@property (readonly, nonatomic) BOOL shouldPerformHoverInteraction;
 @property (nonatomic) BOOL shouldPresentUsingViewService; // @synthesize shouldPresentUsingViewService=_shouldPresentUsingViewService;
 @property (readonly) Class superclass;
 
@@ -103,6 +104,7 @@
 - (double)preferredItemHeightGivenWidth:(double)arg1;
 - (void)reloadData;
 - (void)setDisplayMode:(long long)arg1;
+- (BOOL)shouldExpandModuleOnTouch:(id)arg1;
 - (BOOL)shouldPresentUsingViewServicePlatterViewController:(id)arg1;
 - (void)startPrewarming;
 - (void)stopPrewarming;

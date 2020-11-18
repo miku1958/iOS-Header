@@ -11,10 +11,14 @@ __attribute__((visibility("hidden")))
 {
     BOOL _shouldShowIcons;
     BOOL _shouldShowSearchBar;
+    BOOL _supportsDelete;
+    BOOL _supportsShare;
 }
 
 @property (nonatomic) BOOL shouldShowIcons; // @synthesize shouldShowIcons=_shouldShowIcons;
 @property (nonatomic) BOOL shouldShowSearchBar; // @synthesize shouldShowSearchBar=_shouldShowSearchBar;
+@property (nonatomic) BOOL supportsDelete; // @synthesize supportsDelete=_supportsDelete;
+@property (nonatomic) BOOL supportsShare; // @synthesize supportsShare=_supportsShare;
 
 
 @end

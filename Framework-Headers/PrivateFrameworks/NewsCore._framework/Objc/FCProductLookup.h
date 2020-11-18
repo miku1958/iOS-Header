@@ -9,13 +9,14 @@
 #import <NewsCore/FCProductLookup-Protocol.h>
 #import <NewsCore/SKProductsRequestDelegate-Protocol.h>
 
-@class NSString, SKProduct;
+@class NSString, SKProduct, SKProductsRequest;
 @protocol OS_dispatch_group;
 
 @interface FCProductLookup : NSObject <SKProductsRequestDelegate, FCProductLookup>
 {
     NSObject<OS_dispatch_group> *_productRequestGroup;
     SKProduct *_product;
+    SKProductsRequest *_request;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SKProduct *product; // @synthesize product=_product;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *productRequestGroup; // @synthesize productRequestGroup=_productRequestGroup;
+@property (strong, nonatomic) SKProductsRequest *request; // @synthesize request=_request;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -15,18 +15,20 @@
     NSString *_imageName;
     UIColor *_tintColor;
     NSString *_title;
+    NSString *_shortTitle;
     CDUnknownBlockType _handler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (nonatomic) BOOL handlerEnabled; // @synthesize handlerEnabled=_handlerEnabled;
 @property (strong, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
+@property (copy, nonatomic) NSString *shortTitle; // @synthesize shortTitle=_shortTitle;
 @property (nonatomic) BOOL shouldDismissCardBeforeExecuteHandler; // @synthesize shouldDismissCardBeforeExecuteHandler=_shouldDismissCardBeforeExecuteHandler;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (id)cardActionWithTitle:(id)arg1 imageName:(id)arg2 tintColor:(id)arg3 handler:(CDUnknownBlockType)arg4;
-+ (id)cardActionWithTitle:(id)arg1 imageName:(id)arg2 tintColor:(id)arg3 handlerEnabled:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
++ (id)cardActionWithTitle:(id)arg1 shortTitle:(id)arg2 imageName:(id)arg3 tintColor:(id)arg4 handler:(CDUnknownBlockType)arg5;
++ (id)cardActionWithTitle:(id)arg1 shortTitle:(id)arg2 imageName:(id)arg3 tintColor:(id)arg4 handlerEnabled:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
 - (void)executeHandler;
 - (void)executeHandlerIfEnabled;

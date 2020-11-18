@@ -22,8 +22,8 @@
 
 - (void).cxx_destruct;
 - (id)addSubImageViewForImage:(id)arg1;
-- (struct UIColor *)backgroundNormalColor;
-- (struct UIColor *)backgroundPressedColor;
+- (id)backgroundNormalColor;
+- (id)backgroundPressedColor;
 - (void)createBackgroundLayer;
 - (void)createPlayPauseViews;
 - (void)createProgressLayers;

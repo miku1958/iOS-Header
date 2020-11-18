@@ -32,7 +32,7 @@
 - (id)attributesForDomain:(id)arg1 andName:(id)arg2 targetProperties:(id)arg3 withError:(id *)arg4;
 - (id)captureState;
 - (BOOL)containsAttributeWithDomain:(id)arg1 andName:(id)arg2;
-- (struct NSString *)endowmentNamespaceForDomain:(id)arg1 andName:(id)arg2;
+- (id)endowmentNamespaceForDomain:(id)arg1 andName:(id)arg2;
 - (id)initWithDataProvider:(id)arg1;
 - (id)originatorEntitlementsForDomain:(id)arg1 andName:(id)arg2;
 

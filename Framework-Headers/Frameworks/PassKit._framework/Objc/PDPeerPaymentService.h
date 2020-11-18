@@ -44,6 +44,7 @@
 - (void)receivedPeerPaymentMessageData:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerDeviceWithForceReregister:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)registerDeviceWithRegistrationURL:(id)arg1 pushToken:(id)arg2 forceReregister:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)registrationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setLastUsedAlternateFundingSourcePassUniqueIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;

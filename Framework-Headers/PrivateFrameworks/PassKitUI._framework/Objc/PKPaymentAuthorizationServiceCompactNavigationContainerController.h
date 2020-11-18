@@ -24,6 +24,7 @@
 @property (nonatomic) BOOL showPhysicalButtonIndicator; // @synthesize showPhysicalButtonIndicator=_showPhysicalButtonIndicator;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_createFaceIDViewsIfNecessary;
 - (BOOL)_effectiveShowCameraIndicator;
 - (BOOL)_effectiveShowPhysicalButtonIndicator;

@@ -12,16 +12,18 @@
 #import <PhotosUICore/PXGDisplayAssetRequestObserver-Protocol.h>
 #import <PhotosUICore/PXGDragDecorationSource-Protocol.h>
 #import <PhotosUICore/PXGSelectionDecorationSource-Protocol.h>
+#import <PhotosUICore/PXGShadowSource-Protocol.h>
 
-@class NSIndexSet, NSMutableSet, NSSet, NSString, PXAssetBadgeManager, PXAssetsDataSource, PXGLayout, PXSelectionSnapshot;
+@class NSIndexSet, NSMutableSet, NSSet, NSString, PXAssetBadgeManager, PXAssetsDataSource, PXGItemsLayout, PXGLayout, PXSelectionSnapshot;
 
-@interface PXCuratedLibraryAssetDecorationSource : NSObject <PXGAssetBadgeDecorationSource, PXGCaptionDecorationSource, PXGSelectionDecorationSource, PXGDragDecorationSource, PXGDebugDecorationSource, PXGDisplayAssetRequestObserver>
+@interface PXCuratedLibraryAssetDecorationSource : NSObject <PXGShadowSource, PXGAssetBadgeDecorationSource, PXGCaptionDecorationSource, PXGSelectionDecorationSource, PXGDragDecorationSource, PXGDebugDecorationSource, PXGDisplayAssetRequestObserver>
 {
     CDStruct_d97c9657 _updateFlags;
     NSIndexSet *_draggedItems;
     NSMutableSet *_assetUUIDsInCloud;
     PXAssetBadgeManager *_badgeManager;
     BOOL _forceBadgesOnAllAssets;
+    BOOL _isInSelectMode;
     BOOL _durationAlwaysHidden;
     BOOL _enableDebugDecoration;
     PXGLayout *_decoratedLayout;
@@ -35,6 +37,7 @@
 
 @property (readonly, nonatomic) PXAssetsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) PXGItemsLayout *decoratedItemsLayout;
 @property (weak, nonatomic) PXGLayout *decoratedLayout; // @synthesize decoratedLayout=_decoratedLayout;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSSet *draggedAssetReferences; // @synthesize draggedAssetReferences=_draggedAssetReferences;
@@ -42,6 +45,7 @@
 @property (nonatomic) BOOL enableDebugDecoration; // @synthesize enableDebugDecoration=_enableDebugDecoration;
 @property (nonatomic) unsigned long long forbiddenBadges; // @synthesize forbiddenBadges=_forbiddenBadges;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isInSelectMode; // @synthesize isInSelectMode=_isInSelectMode;
 @property (copy, nonatomic) NSIndexSet *itemsWithCoveredBottomTrailingCorner; // @synthesize itemsWithCoveredBottomTrailingCorner=_itemsWithCoveredBottomTrailingCorner;
 @property (readonly, nonatomic) long long section; // @synthesize section=_section;
 @property (strong, nonatomic) PXSelectionSnapshot *selectionSnapshot; // @synthesize selectionSnapshot=_selectionSnapshot;
@@ -52,13 +56,16 @@
 - (id)_spriteIndexesForItems:(id)arg1 inLayout:(id)arg2;
 - (void)_updateDragDecoration;
 - (struct PXAssetBadgeInfo)assetBadgeInfoForAsset:(id)arg1 atSpriteIndex:(unsigned int)arg2 inLayout:(id)arg3;
+- (double)cornerRadiusForShadowSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)debugDecorationAtSpriteIndex:(unsigned int)arg1 asset:(id)arg2 inLayout:(id)arg3;
 - (id)draggingSpriteIndexesInLayout:(id)arg1;
 - (id)init;
 - (void)observeIsInCloud:(BOOL)arg1 forDisplayAsset:(id)arg2;
 - (id)selectedSpriteIndexesInLayout:(id)arg1;
+- (unsigned long long)selectionDecorationAdditionsInLayout:(id)arg1;
 - (long long)selectionDecorationStyleInLayout:(id)arg1;
 - (void)setDataSource:(id)arg1 section:(long long)arg2;
+- (id)shadowForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (void)update;
 - (BOOL)wantsAssetBadgeDecorationsInLayout:(id)arg1;
 - (BOOL)wantsCaptionDecorationsInLayout:(id)arg1;

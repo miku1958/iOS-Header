@@ -9,7 +9,7 @@
 #import <AccessibilityUIService/UICollisionBehaviorDelegate-Protocol.h>
 #import <AccessibilityUIService/UIDynamicAnimatorDelegate-Protocol.h>
 
-@class AXUIAlertStyleProvider, AXUIServiceManager, NSMutableDictionary, NSString;
+@class AXUIAlertStyleProvider, AXUIServiceManager, NSMutableDictionary, NSString, SBSAccessibilityWindowHostingController;
 
 @interface AXUIDisplayManager : NSObject <UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate>
 {
@@ -28,6 +28,7 @@
     NSMutableDictionary *_nubbitContexts;
     NSString *_reachabilityHandlerIdentifier;
     double _reachabilityOffset;
+    SBSAccessibilityWindowHostingController *_windowHostingController;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *activeContentViewControllers; // @synthesize activeContentViewControllers=_activeContentViewControllers;
@@ -49,6 +50,7 @@
 @property (copy, nonatomic) NSString *systemServerActionHandlerIdentifier; // @synthesize systemServerActionHandlerIdentifier=_systemServerActionHandlerIdentifier;
 @property (nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property (strong, nonatomic) NSMutableDictionary *visibleAlertContexts; // @synthesize visibleAlertContexts=_visibleAlertContexts;
+@property (strong, nonatomic) SBSAccessibilityWindowHostingController *windowHostingController; // @synthesize windowHostingController=_windowHostingController;
 
 + (id)sharedDisplayManager;
 - (void).cxx_destruct;
@@ -87,8 +89,12 @@
 - (id)_transactionIdentifierForDisplayingContentViewController:(id)arg1 service:(id)arg2;
 - (void)_undoFadeForNubbitContext:(id)arg1;
 - (id)_windowWithUserInteractionEnabled:(BOOL)arg1 windowLevel:(double)arg2 createIfNeeded:(BOOL)arg3 purposeIdentifier:(id)arg4;
+- (id)_windowWithUserInteractionEnabled:(BOOL)arg1 windowLevel:(double)arg2 createIfNeeded:(BOOL)arg3 purposeIdentifier:(id)arg4 userInterfaceStyle:(long long)arg5 allowSystemAppHosting:(BOOL)arg6;
 - (void)addContentViewController:(id)arg1 withUserInteractionEnabled:(BOOL)arg2 forService:(id)arg3;
+- (void)addContentViewController:(id)arg1 withUserInteractionEnabled:(BOOL)arg2 forService:(id)arg3 allowSystemAppHosting:(BOOL)arg4;
 - (void)addContentViewController:(id)arg1 withUserInteractionEnabled:(BOOL)arg2 forService:(id)arg3 context:(void *)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)addContentViewController:(id)arg1 withUserInteractionEnabled:(BOOL)arg2 forService:(id)arg3 context:(void *)arg4 userInterfaceStyle:(long long)arg5 allowSystemAppHosting:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)addContentViewController:(id)arg1 withUserInteractionEnabled:(BOOL)arg2 forService:(id)arg3 context:(void *)arg4 userInterfaceStyle:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)cancelNubbitFade:(id)arg1;
 - (void)collisionBehavior:(id)arg1 beganContactForItem:(id)arg2 withBoundaryIdentifier:(id)arg3 atPoint:(struct CGPoint)arg4;
 - (id)contentViewControllersWithUserInteractionEnabled:(BOOL)arg1 forService:(id)arg2;

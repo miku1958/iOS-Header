@@ -26,7 +26,7 @@
 - (void)exportWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)exportWithOptions:(id)arg1 networkAccessAllowed:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithAsset:(id)arg1 variants:(id)arg2;
-- (void)preflightExportWithOptions:(id)arg1 isDownloadingRequired:(BOOL *)arg2 isProcessingRequired:(BOOL *)arg3 fileURLs:(id *)arg4 info:(id *)arg5;
+- (void)preflightExportWithOptions:(id)arg1 assetAvailability:(long long *)arg2 isProcessingRequired:(BOOL *)arg3 fileURLs:(id *)arg4 info:(id *)arg5;
 
 @end
 

@@ -21,9 +21,10 @@
 - (void)fetchAuthModeWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
 - (void)fetchDeviceMapWithContext:(AKDeviceListRequestContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchPrimaryBundleIDForServiceWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
-- (void)fetchURLBagFromCache:(BOOL)arg1 withCompletion:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)fetchURLBagWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)fetchURLBagForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)fetchURLBagFromCache:(BOOL)arg1 altDSID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchUserInformationForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)forceURLBagUpdateForAltDSID:(NSString *)arg1 urlSwitchData:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)generateLoginCodeWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getServerUILoadDelegateForAltDSID:(NSString *)arg1 completion:(void (^)(AKAppleIDServerResourceLoadDelegate *, NSError *))arg2;
 - (void)getServerUILoadDelegateWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(AKAppleIDServerResourceLoadDelegate *, NSError *))arg2;

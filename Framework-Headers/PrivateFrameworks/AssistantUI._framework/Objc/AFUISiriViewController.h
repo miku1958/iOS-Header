@@ -173,8 +173,9 @@
 - (void)dealloc;
 - (void)defrost;
 - (void)didMoveToParentViewController:(id)arg1;
-- (void)dismissSiriRemoteViewController:(id)arg1 delayForTTS:(BOOL)arg2 userInfo:(id)arg3;
+- (void)dismissSiriRemoteViewController:(id)arg1 delayForTTS:(BOOL)arg2 userInfo:(id)arg3 withDismissalReason:(unsigned long long)arg4;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)emitUIStateTransitionForSiriDismissal:(int)arg1 withDismissalReason:(int)arg2;
 - (void)endSession;
 - (void)enterUITrackingMode;
 - (void)exitUITrackingMode;
@@ -186,6 +187,7 @@
 - (void)hasQueuedTTS:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1 configuration:(id)arg2;
 - (id)initWithConnection:(id)arg1 configuration:(id)arg2 requestSource:(long long)arg3;
+- (void)invalidate;
 - (BOOL)isInitialBringUp;
 - (BOOL)isListening;
 - (BOOL)isPreventingActivationGesture;
@@ -240,7 +242,7 @@
 - (void)siriRemoteViewController:(id)arg1 openURL:(id)arg2 delaySessionEndForTTS:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)siriRemoteViewController:(id)arg1 presentedIntentWithBundleId:(id)arg2;
 - (void)siriRemoteViewController:(id)arg1 requestKeyboardForTapToEditWithCompletion:(CDUnknownBlockType)arg2;
-- (void)siriRemoteViewController:(id)arg1 requestsDismissal:(CDUnknownBlockType)arg2;
+- (void)siriRemoteViewController:(id)arg1 requestsDismissalWithReason:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)siriRemoteViewController:(id)arg1 requestsPresentation:(CDUnknownBlockType)arg2;
 - (void)siriRemoteViewController:(id)arg1 setBugReportingAvailable:(BOOL)arg2;
 - (void)siriRemoteViewController:(id)arg1 setCarDisplaySnippetMode:(long long)arg2;
@@ -314,6 +316,7 @@
 - (void)userRelevantEventDidOccurInSiriRemoteViewController:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (long long)viewMode;
 - (void)viewSafeAreaInsetsDidChange;
 - (id)viewServiceApplicationInfo;
 - (void)viewWillAppear:(BOOL)arg1;

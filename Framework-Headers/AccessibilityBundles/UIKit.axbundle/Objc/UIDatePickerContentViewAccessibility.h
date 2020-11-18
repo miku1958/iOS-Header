@@ -15,6 +15,7 @@
 - (unsigned long long)_accessibilityDatePickerComponentType;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
 
 @end

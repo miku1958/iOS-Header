@@ -8,11 +8,10 @@
 
 #import <VideosUI/TVApplicationControllerDelegate-Protocol.h>
 #import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <VideosUI/_TVInterfaceCreatingPrivate-Protocol.h>
 
 @class NSString, TVApplicationController, UINavigationController, VUIBootURLController;
 
-@interface VUIApplicationViewController : UIViewController <_TVInterfaceCreatingPrivate, TVApplicationControllerDelegate, UIGestureRecognizerDelegate>
+@interface VUIApplicationViewController : UIViewController <TVApplicationControllerDelegate, UIGestureRecognizerDelegate>
 {
     TVApplicationController *_applicationController;
     VUIBootURLController *_bootURLController;
@@ -28,23 +27,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)URLForResource:(id)arg1;
 - (Class)_applicationControllerClass;
-- (Class)_collectionViewCellClassForIKElement:(id)arg1;
 - (void)_exposeObjectsInJSContext:(id)arg1;
-- (id)_imageProxyForIKElement:(id)arg1 withLayout:(id)arg2;
 - (id)_initialViewControllerWithAppContext:(id)arg1;
 - (id)_launchOptions;
-- (void)_parseAppConfigurationForIKElement:(id)arg1;
 - (void)_startApplicationControllerWithBootURL:(id)arg1;
-- (id)_styleSheetURLForTemplate:(id)arg1;
-- (id)_viewControllerForIKElement:(id)arg1 existingViewController:(id)arg2;
-- (id)_viewForIKElement:(id)arg1 existingView:(id)arg2;
 - (void)appController:(id)arg1 didFailWithError:(id)arg2;
 - (void)appController:(id)arg1 didFinishLaunchingWithOptions:(id)arg2;
 - (void)appController:(id)arg1 evaluateAppJavaScriptInContext:(id)arg2;
 - (void)dealloc;
-- (id)imageForResource:(id)arg1;
 - (id)preferredFocusEnvironments;
 - (void)viewDidLoad;
 

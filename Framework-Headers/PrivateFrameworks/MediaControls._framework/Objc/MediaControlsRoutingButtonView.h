@@ -22,10 +22,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CCUICAPackageView *packageView; // @synthesize packageView=_packageView;
 @property (nonatomic, getter=isUserInterfaceStyleSwitchingEnabled) BOOL userInterfaceStyleSwitchingEnabled; // @synthesize userInterfaceStyleSwitchingEnabled=_userInterfaceStyleSwitchingEnabled;
 
++ (BOOL)_cursorInteractionEnabled;
 - (void).cxx_destruct;
 - (id)_glyphResource;
 - (void)_updateGlyphPackage;
 - (void)_updateGlyphState;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setAlpha:(double)arg1;

@@ -6,7 +6,7 @@
 
 #import <AVFoundation/AVCaptureDevice.h>
 
-@class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -104,6 +104,7 @@ __attribute__((visibility("hidden")))
     double _minAvailableVideoZoomFactor;
     double _maxAvailableVideoZoomFactor;
     BOOL _depthDataDeliveryEnabled;
+    BOOL _cameraCalibrationDataDeliveryEnabled;
     long long _shallowDepthOfFieldEffectStatus;
     NSString *_bravoCameraSelectionBehavior;
     AVWeakReference *_weakReference;
@@ -128,6 +129,8 @@ __attribute__((visibility("hidden")))
     long long _nonDestructiveCropAspectRatio;
     BOOL _geometricDistortionCorrectionEnabled;
     BOOL _globalToneMappingEnabled;
+    long long _timeOfFlightProjectorMode;
+    NSData *_cameraPoseMatrix;
 }
 
 + (BOOL)_cameraAccessIsEnabled;
@@ -178,6 +181,7 @@ __attribute__((visibility("hidden")))
 - (void)_setAdjustingFocus:(BOOL)arg1;
 - (void)_setAdjustingWhiteBalance:(BOOL)arg1;
 - (void)_setBravoCameraSelectionBehavior:(id)arg1;
+- (void)_setCameraCalibrationDataDeliveryEnabled:(BOOL)arg1;
 - (void)_setDepthDataDeliveryEnabled:(BOOL)arg1;
 - (void)_setDigitalFlashModeInternal:(long long)arg1;
 - (void)_setDigitalFlashSceneForPhotoOutput:(id)arg1;
@@ -321,6 +325,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSpatialOverCaptureEnabled;
 - (BOOL)isStillImageStabilizationScene;
 - (BOOL)isSubjectAreaChangeMonitoringEnabled;
+- (BOOL)isTimeOfFlightProjectorModeSupported:(long long)arg1;
 - (BOOL)isTorchActive;
 - (BOOL)isTorchAvailable;
 - (BOOL)isTorchModeSupported:(long long)arg1;
@@ -388,6 +393,7 @@ __attribute__((visibility("hidden")))
 - (void)setSmoothAutoFocusEnabled:(BOOL)arg1;
 - (void)setSpatialOverCaptureEnabled:(BOOL)arg1;
 - (void)setSubjectAreaChangeMonitoringEnabled:(BOOL)arg1;
+- (void)setTimeOfFlightProjectorMode:(long long)arg1;
 - (void)setTorchMode:(long long)arg1;
 - (BOOL)setTorchModeOnWithLevel:(float)arg1 error:(id *)arg2;
 - (void)setVideoHDREnabled:(BOOL)arg1;
@@ -407,6 +413,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsMultiCamCaptureWithDevice:(id)arg1;
 - (id)systemPressureState;
 - (CDStruct_b2fbf00d)temperatureAndTintValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1;
+- (long long)timeOfFlightBankCount;
+- (long long)timeOfFlightProjectorMode;
 - (float)torchLevel;
 - (long long)torchMode;
 - (id)uniqueID;

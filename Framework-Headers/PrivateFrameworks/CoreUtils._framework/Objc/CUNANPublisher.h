@@ -8,7 +8,7 @@
 
 #import <CoreUtils/WiFiAwarePublisherDelegate-Protocol.h>
 
-@class NSDictionary, NSString, WiFiAwarePublisher;
+@class NSDictionary, NSMutableDictionary, NSString, WiFiAwarePublisher;
 @protocol OS_dispatch_queue;
 
 @interface CUNANPublisher : NSObject <WiFiAwarePublisherDelegate>
@@ -16,11 +16,12 @@
     CDUnknownBlockType _activateCompletion;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
-    struct NSMutableDictionary *_sessions;
+    NSMutableDictionary *_sessions;
     struct LogCategory *_ucat;
     WiFiAwarePublisher *_wfaPublisher;
     BOOL _dataPathEnabled;
     int _port;
+    unsigned int _trafficFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_label;
     NSString *_name;
@@ -47,6 +48,7 @@
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *textInfo; // @synthesize textInfo=_textInfo;
+@property (nonatomic) unsigned int trafficFlags; // @synthesize trafficFlags=_trafficFlags;
 
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;

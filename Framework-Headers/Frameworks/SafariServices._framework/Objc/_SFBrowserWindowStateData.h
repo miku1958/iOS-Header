@@ -15,11 +15,11 @@
     BOOL _needsQuickUpdate;
     long long _databaseID;
     NSString *_UUIDString;
+    NSString *_sceneID;
     long long _type;
     long long _activeDocumentIndex;
     long long _activePrivateDocumentIndex;
     long long _legacyPlistFileVersion;
-    NSString *_sceneID;
 }
 
 @property (strong, nonatomic) NSUUID *UUID;

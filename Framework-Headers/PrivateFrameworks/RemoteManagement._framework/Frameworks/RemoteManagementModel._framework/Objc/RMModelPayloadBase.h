@@ -36,8 +36,8 @@
 - (BOOL)loadDateFromDictionary:(id)arg1 usingKey:(id)arg2 forKeyPath:(id)arg3 isRequired:(BOOL)arg4 defaultValue:(id)arg5 serializationType:(short)arg6 error:(id *)arg7;
 - (BOOL)loadDictionaryFromDictionary:(id)arg1 usingKey:(id)arg2 forKeyPath:(id)arg3 classType:(Class)arg4 isRequired:(BOOL)arg5 defaultValue:(id)arg6 serializationType:(short)arg7 error:(id *)arg8;
 - (BOOL)loadFloatFromDictionary:(id)arg1 usingKey:(id)arg2 forKeyPath:(id)arg3 isRequired:(BOOL)arg4 defaultValue:(id)arg5 error:(id *)arg6;
+- (BOOL)loadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
 - (BOOL)loadIntegerFromDictionary:(id)arg1 usingKey:(id)arg2 forKeyPath:(id)arg3 isRequired:(BOOL)arg4 defaultValue:(id)arg5 error:(id *)arg6;
-- (BOOL)loadPayload:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
 - (BOOL)loadStringFromDictionary:(id)arg1 usingKey:(id)arg2 forKeyPath:(id)arg3 isRequired:(BOOL)arg4 defaultValue:(id)arg5 error:(id *)arg6;
 - (void)mergeUnknownKeysFrom:(id)arg1 parentKey:(id)arg2;
 - (void)serializeArrayIntoDictionary:(id)arg1 usingKey:(id)arg2 value:(id)arg3 itemSerializer:(CDUnknownBlockType)arg4 isRequired:(BOOL)arg5 defaultValue:(id)arg6;
@@ -48,7 +48,6 @@
 - (void)serializeDictionaryIntoDictionary:(id)arg1 usingKey:(id)arg2 value:(id)arg3 dictSerializer:(CDUnknownBlockType)arg4 isRequired:(BOOL)arg5 defaultValue:(id)arg6;
 - (void)serializeFloatIntoDictionary:(id)arg1 usingKey:(id)arg2 value:(id)arg3 isRequired:(BOOL)arg4 defaultValue:(id)arg5;
 - (void)serializeIntegerIntoDictionary:(id)arg1 usingKey:(id)arg2 value:(id)arg3 isRequired:(BOOL)arg4 defaultValue:(id)arg5;
-- (id)serializePayloadWithType:(short)arg1;
 - (void)serializeStringIntoDictionary:(id)arg1 usingKey:(id)arg2 value:(id)arg3 isRequired:(BOOL)arg4 defaultValue:(id)arg5;
 - (id)serializeWithType:(short)arg1;
 

@@ -35,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (id)_deviceOrientationPoseDataFromDeviceOrientation:(id)arg1;
+- (id)_fullDescription;
 - (void)_handleTrackingStateChanges:(id)arg1 initialized:(BOOL *)arg2 relocalized:(BOOL *)arg3;
 - (void)_referenceDeviceOrientation:(id)arg1;
 - (id)_referenceTrackingAlignmentWithPoseData:(id)arg1 deviceOrientation:(id)arg2;
@@ -42,6 +43,7 @@
 - (id)_updateHeadingAlignmentWithPoseData:(id)arg1 deviceOrientation:(id)arg2 timestamp:(double)arg3;
 - (id)initWithAlignment:(long long)arg1;
 - (id)initWithAlignment:(long long)arg1 cameraPosition:(long long)arg2;
+- (BOOL)isBusy;
 - (BOOL)isEqual:(id)arg1;
 - (id)predictedResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (id)processData:(id)arg1;

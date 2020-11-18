@@ -12,13 +12,13 @@ __attribute__((visibility("hidden")))
 @interface WKShareSheet : NSObject
 {
     struct WeakObjCPtr<WKWebView> _webView;
+    struct WeakObjCPtr<id<WKShareSheetDelegate>> _delegate;
     CompletionHandler_e3f3fa93 _completionHandler;
     struct RetainPtr<UIActivityViewController> _shareSheetViewController;
     struct RetainPtr<UIViewController> _presentationViewController;
-    id<WKShareSheetDelegate> _delegate;
 }
 
-@property (weak, nonatomic) id<WKShareSheetDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<WKShareSheetDelegate> delegate;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

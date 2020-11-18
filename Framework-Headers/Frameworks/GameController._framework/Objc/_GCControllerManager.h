@@ -88,8 +88,6 @@
 - (void)replyConnectedHosts:(id)arg1;
 - (void)requestConnectedHostsWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)shouldStoreController:(id)arg1;
-- (void)starSessionDidEnd;
-- (void)starSessionWillBegin;
 - (void)startHIDDeviceMonitor;
 - (void)startHIDEventMonitor;
 - (void)startIdleWatchTimer;

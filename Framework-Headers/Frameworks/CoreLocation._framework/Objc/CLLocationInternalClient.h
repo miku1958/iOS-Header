@@ -19,6 +19,7 @@
 - (unsigned char)clearLocationAuthorizations;
 - (const struct __CFArray *)copyActivityAlarms;
 - (const struct __CFDictionary *)copyAppsUsingLocation;
+- (const struct __CFArray *)copyGnssBandsInUse;
 - (unsigned char)copyLastLog;
 - (const struct __CFDictionary *)copyMonitoredRegionsForBundleIdentifier:(const struct __CFString *)arg1 orBundlePath:(const struct __CFString *)arg2;
 - (const struct __CFArray *)copyTechnologiesInUse;

@@ -32,8 +32,8 @@
 @property (readonly, nonatomic) unsigned short thumbnailImageFormat; // @synthesize thumbnailImageFormat=_thumbnailImageFormat;
 @property (strong, nonatomic) NSMutableDictionary *thumbnailRequestsByID; // @synthesize thumbnailRequestsByID=_thumbnailRequestsByID;
 
-+ (void)registerPXImportMediaProviderNotificationsReceiver:(struct NSObject *)arg1;
-+ (void)unregisterPXImportMediaProviderNotificationsReceiver:(struct NSObject *)arg1;
++ (void)registerPXImportMediaProviderNotificationsReceiver:(id)arg1;
++ (void)unregisterPXImportMediaProviderNotificationsReceiver:(id)arg1;
 - (void).cxx_destruct;
 - (id)_newPlaceholderImageForItemWithExtension:(id)arg1 size:(struct CGSize)arg2;
 - (id)_placeholderExtensionForItem:(id)arg1;

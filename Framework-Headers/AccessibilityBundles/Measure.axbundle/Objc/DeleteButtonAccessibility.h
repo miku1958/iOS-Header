@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateActualButton;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)tapDeleteFrom:(id)arg1;
 
 @end
 

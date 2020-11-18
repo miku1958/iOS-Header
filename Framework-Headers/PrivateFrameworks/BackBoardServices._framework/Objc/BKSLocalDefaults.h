@@ -6,7 +6,7 @@
 
 #import <BaseBoard/BSAbstractDefaultDomain.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @interface BKSLocalDefaults : BSAbstractDefaultDomain
 {
@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL disableCAScaling; // @dynamic disableCAScaling;
 @property (nonatomic) BOOL disableCAYUV; // @dynamic disableCAYUV;
 @property (nonatomic) BOOL disableCloneMirroring; // @dynamic disableCloneMirroring;
+@property (nonatomic) BOOL disableMousePointer; // @dynamic disableMousePointer;
 @property (nonatomic) BOOL disableStudyLogALSLogging; // @synthesize disableStudyLogALSLogging=_disableStudyLogALSLogging;
 @property (nonatomic) BOOL disableStudyLogAccelerometerLogging; // @synthesize disableStudyLogAccelerometerLogging=_disableStudyLogAccelerometerLogging;
 @property (nonatomic) BOOL disableStudyLogBTKeyboardEventLogging; // @dynamic disableStudyLogBTKeyboardEventLogging;
@@ -41,18 +42,23 @@
 @property (nonatomic) float fenceArbiterTimeoutInterval; // @dynamic fenceArbiterTimeoutInterval;
 @property (nonatomic) BOOL forceCloneMirroring; // @dynamic forceCloneMirroring;
 @property (weak, nonatomic) NSString *forceMirroredOrientation; // @dynamic forceMirroredOrientation;
+@property (strong, nonatomic) NSData *globalMouseDevicePreferences; // @dynamic globalMouseDevicePreferences;
 @property (nonatomic) BOOL hideAppleLogoOnLaunch; // @dynamic hideAppleLogoOnLaunch;
 @property (nonatomic) BOOL ignoreAccelerometerAndOrientationEvents; // @dynamic ignoreAccelerometerAndOrientationEvents;
 @property (nonatomic) BOOL ignoreTetheringPreferences; // @dynamic ignoreTetheringPreferences;
 @property (weak, nonatomic) NSArray *loggingTypesEnabled; // @dynamic loggingTypesEnabled;
+@property (nonatomic) NSArray *mouseInterpolation; // @dynamic mouseInterpolation;
 @property (nonatomic) BOOL showBuildNumber; // @dynamic showBuildNumber;
 @property (nonatomic) BOOL simulatePhoneButton; // @dynamic simulatePhoneButton;
 @property (nonatomic, getter=isSteveNoteOverscanEnabled) BOOL steveNoteOverscanEnabled; // @dynamic steveNoteOverscanEnabled;
 @property (nonatomic, getter=isSteveNoteRotationEnabled) BOOL steveNoteRotationEnabled; // @dynamic steveNoteRotationEnabled;
+@property (nonatomic) BOOL visualizeMousePointer; // @dynamic visualizeMousePointer;
 
 - (void)_bindAndRegisterDefaults;
 - (id)init;
 - (void)migrateDefaultsIfNecessary;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+- (id)valueForKey:(id)arg1 defaultValueProvider:(CDUnknownBlockType)arg2;
 
 @end
 

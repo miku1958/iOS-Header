@@ -29,6 +29,7 @@
 - (id)createPOSTRequestForURL:(id)arg1 timeout:(double)arg2 contents:(id)arg3 error:(id *)arg4;
 - (id)initGETWithURL:(id)arg1;
 - (id)initPOSTWithURL:(id)arg1 data:(id)arg2;
+- (id)initWithRequest:(id)arg1;
 - (id)initWithURL:(id)arg1 data:(id)arg2 timeout:(double)arg3 isGET:(BOOL)arg4;
 
 @end

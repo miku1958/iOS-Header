@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString *reading; // @synthesize reading=_reading;
 @property (strong, nonatomic) NSString *surface; // @synthesize surface=_surface;
 
-+ (void)splitSegmests:(id)arg1 at:(int)arg2 forPrefix:(id *)arg3 forSuffix:(id *)arg4;
++ (void)splitSegments:(id)arg1 at:(int)arg2 forPrefix:(id *)arg3 forSuffix:(id *)arg4;
 - (void).cxx_destruct;
 
 @end

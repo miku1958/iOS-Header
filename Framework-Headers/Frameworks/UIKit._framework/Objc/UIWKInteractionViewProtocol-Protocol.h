@@ -53,6 +53,7 @@
 - (void)selectWordBackward;
 - (BOOL)shouldAllowHidingSelectionCommands;
 - (BOOL)shouldSuppressUpdateCandidateView;
+- (BOOL)supportsTextSelectionWithCharacterGranularity;
 - (struct CGRect)unobscuredContentRect;
 - (UIView *)unscaledView;
 - (void)willFinishIgnoringCalloutBarFadeAfterPerformingAction;

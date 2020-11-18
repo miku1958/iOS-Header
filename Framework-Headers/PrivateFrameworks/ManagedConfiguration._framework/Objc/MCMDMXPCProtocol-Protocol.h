@@ -12,7 +12,7 @@
 @protocol MCMDMXPCProtocol <NSObject, MCMDMClientProtocol>
 - (void)migrateMDMWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyNewConfigurationWithCompletion:(void (^)(NSError *))arg1;
-- (void)processDeviceRequest:(NSDictionary *)arg1 completion:(void (^)(NSError *, NSDictionary *))arg2;
+- (void)processDeviceRequest:(NSDictionary *)arg1 encodeResponse:(BOOL)arg2 completion:(void (^)(NSError *, NSDictionary *, NSData *))arg3;
 - (void)retryNotNowWithCompletion:(void (^)(NSError *))arg1;
 - (void)scheduleTokenUpdateIfNecessaryWithCompletion:(void (^)(NSError *))arg1;
 - (void)scheduleTokenUpdateWithCompletion:(void (^)(NSError *))arg1;

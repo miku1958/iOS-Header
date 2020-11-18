@@ -25,6 +25,7 @@
 @property (readonly, copy, nonatomic) INMediaItem *mediaContainer;
 @property (readonly, copy, nonatomic) NSArray *mediaItems;
 @property (readonly, copy, nonatomic) INMediaSearch *mediaSearch;
+@property (nonatomic) long long parsecCategory;
 @property (readonly, copy, nonatomic) NSNumber *playShuffled;
 @property (readonly, nonatomic) long long playbackQueueLocation;
 @property (readonly, nonatomic) long long playbackRepeatMode;
@@ -44,7 +45,7 @@
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (void)_setMetadata:(id)arg1;
 - (id)_spotlightContentType;
-- (id)_titleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (id)_titleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 - (id)_typedBackingStore;
 - (id)_validParameterCombinationsWithSchema:(id)arg1;
 - (id)domain;

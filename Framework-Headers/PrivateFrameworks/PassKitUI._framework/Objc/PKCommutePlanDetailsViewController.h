@@ -6,12 +6,13 @@
 
 #import <PassKitUI/PKSectionTableViewController.h>
 
+#import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 #import <PassKitUI/PKPerformActionViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSDateComponentsFormatter, NSString, PKPaymentPass, PKPaymentPassAction, PKPaymentWebService;
+@class NSArray, NSDateComponentsFormatter, NSString, PKPaymentPass, PKPaymentPassAction, PKPaymentWebService, PKTransitBalanceModel, PKTransitCommutePlan;
 @protocol PKPaymentDataProvider;
 
-@interface PKCommutePlanDetailsViewController : PKSectionTableViewController <PKPerformActionViewControllerDelegate>
+@interface PKCommutePlanDetailsViewController : PKSectionTableViewController <PKPerformActionViewControllerDelegate, PKPaymentDataProviderDelegate>
 {
     long long _style;
     NSArray *_fields;
@@ -24,6 +25,8 @@
     PKPaymentPassAction *_action;
     NSDateComponentsFormatter *_timeIntervalFormatter;
     BOOL _canShowReminders;
+    PKTransitBalanceModel *_balanceModel;
+    PKTransitCommutePlan *_commutePlan;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,10 +35,19 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_commutePlanBalanceIdentifier;
+- (unsigned long long)_commutePlanDetailsRowTypeForRowIndex:(long long)arg1;
 - (void)_handleActionSelected;
 - (void)_handleReminderIntervalChanged:(long long)arg1;
-- (void)_updateSelectedReminderIntervalsIndexWithInterval:(double)arg1;
-- (id)initWithSuicaFields:(id)arg1 forPass:(id)arg2 associatedAction:(id)arg3 paymentDataProvider:(id)arg4 webService:(id)arg5 style:(long long)arg6;
+- (long long)_numberOfCommutePlanDetailsRowsEnabled;
+- (long long)_numberOfCommutePlanDetailsRowsEnabledForRowType:(unsigned long long)arg1;
+- (void)_reloadBalance;
+- (void)_reloadChangedIndexPathsWithOldIndex:(unsigned long long)arg1 newIndex:(unsigned long long)arg2 inSection:(unsigned long long)arg3;
+- (void)_updateSelectedBalanceReminderWithBalanceReminder:(id)arg1;
+- (void)_updateSelectedReminderIntervalsIndexWithReminder:(id)arg1;
+- (id)initWithCommutePlan:(id)arg1 associatedAction:(id)arg2 forPass:(id)arg3 paymentDataProvider:(id)arg4 webService:(id)arg5 style:(long long)arg6;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)performActionViewControllerDidCancel:(id)arg1;
 - (void)performActionViewControllerDidPerformAction:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

@@ -197,6 +197,7 @@
 - (void)_loadWidgetConfiguration;
 - (void)_loadiAdConfiguration;
 - (id)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;
+- (id)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 languageConfigDictionary:(id)arg3;

@@ -28,9 +28,11 @@ __attribute__((visibility("hidden")))
     NSArray *_titleContent;
     NSMutableDictionary *_titleLookup;
     NSLayoutConstraint *_backButtonTitleMaxWidthConstraint;
+    long long _systemItem;
     struct {
         unsigned int imageHasBaseline:1;
         unsigned int style:3;
+        unsigned int isSystemItem:1;
     } _flags;
 }
 
@@ -79,9 +81,16 @@ __attribute__((visibility("hidden")))
 - (BOOL)buttonSelectionState:(id)arg1 forRequestedState:(BOOL)arg2;
 - (void)configureButton:(id)arg1 fromBarButtonItem:(id)arg2;
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
+- (id)contentCursorInContainer:(id)arg1;
 - (id)contentView;
 - (id)imageButton;
+- (id)matchingPointerShapeForView:(id)arg1 rect:(struct CGRect)arg2 inContainer:(id)arg3;
+- (id)pointerPreviewParameters;
+- (id)pointerShapeInContainer:(id)arg1;
+- (void)pointerWillEnter:(id)arg1;
+- (void)pointerWillExit:(id)arg1;
 - (void)resetButtonHasHighlighted;
+- (BOOL)shouldLift;
 - (BOOL)supportsBackButtons;
 - (id)symbolConfigurationCompact:(BOOL)arg1;
 - (id)textButton;
@@ -92,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)updateButton:(id)arg1 forEnabledState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forHighlightedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forSelectedState:(BOOL)arg2;
+- (BOOL)useLocalPointerInteraction;
 
 @end
 

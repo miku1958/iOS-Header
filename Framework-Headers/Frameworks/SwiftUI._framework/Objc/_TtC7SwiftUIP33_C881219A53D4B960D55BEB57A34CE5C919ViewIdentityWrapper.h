@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <SwiftUI/NSCopying-Protocol.h>
-
 @class MISSING_TYPE, NSString;
 
-@interface _TtC7SwiftUIP33_C881219A53D4B960D55BEB57A34CE5C919ViewIdentityWrapper : NSObject <NSCopying>
+@interface _TtC7SwiftUIP33_C881219A53D4B960D55BEB57A34CE5C919ViewIdentityWrapper : NSObject
 {
     MISSING_TYPE *id;
 }

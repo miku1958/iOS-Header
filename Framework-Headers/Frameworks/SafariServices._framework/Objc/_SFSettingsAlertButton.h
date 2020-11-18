@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_arrangedSubviews;
+- (void)_hover:(id)arg1;
 - (void)_updateTintColor;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

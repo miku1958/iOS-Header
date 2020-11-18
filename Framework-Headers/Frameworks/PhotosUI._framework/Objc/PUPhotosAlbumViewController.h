@@ -22,7 +22,7 @@
     BOOL __isCountingAssetTypes;
     BOOL __hasAccurateCounts;
     PHAssetCollection *_assetCollection;
-    struct NSObject *_album;
+    NSObject<PLAlbumProtocol> *_album;
     PUPhotosAlbumViewControllerSpec *__albumSpec;
     PXEditableNavigationTitleView *_editableTitleView;
 }
@@ -69,7 +69,7 @@
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (id)editableNavigationTitleView:(id)arg1 validateNewText:(id)arg2;
 - (void)editableNavigationTitleViewDidEndEditing:(id)arg1;
-- (id)filterPredicateForAlbum:(struct NSObject *)arg1;
+- (id)filterPredicateForAlbum:(id)arg1;
 - (double)globalHeaderHeight;
 - (void)handleAddFromAction;
 - (void)handleAddToAlbum:(id)arg1 pickedAssets:(id)arg2;
@@ -85,10 +85,9 @@
 - (void)photosDataSource:(id)arg1 didReceivePhotoLibraryChange:(id)arg2;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
-- (double)sectionedGridLayout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (id)sessionInfoForTransferredAssets:(id)arg1;
-- (void)setAlbum:(struct NSObject *)arg1 existingFetchResult:(id)arg2;
+- (void)setAlbum:(id)arg1 existingFetchResult:(id)arg2;
 - (void)setAssetCollection:(id)arg1;
 - (void)setAssetCollection:(id)arg1 fetchResultContainingAssetCollection:(id)arg2 filterPredicate:(id)arg3;
 - (void)setAssetCollection:(id)arg1 fetchResultContainingAssetCollection:(id)arg2 filterPredicate:(id)arg3 existingFetchResults:(id)arg4;

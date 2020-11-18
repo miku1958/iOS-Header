@@ -19,11 +19,11 @@
     BOOL _gestureStartedInside;
     UIPanGestureRecognizer *_valueChangeGestureRecognizer;
     _UIEdgeFeedbackGenerator *_edgeFeedbackGenerator;
-    int _axis;
     double _continuousSliderCornerRadius;
+    unsigned long long _axis;
 }
 
-@property (nonatomic) int axis; // @synthesize axis=_axis;
+@property (nonatomic) unsigned long long axis; // @synthesize axis=_axis;
 @property (nonatomic) double continuousSliderCornerRadius; // @synthesize continuousSliderCornerRadius=_continuousSliderCornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

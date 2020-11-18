@@ -16,6 +16,7 @@
     UIAlertController *_alertController;
     id _target;
     SEL _action;
+    BOOL _useCustomView;
     BOOL _forceToNavBar;
     BOOL _selected;
     BOOL _enabled;
@@ -44,6 +45,7 @@
 @property (copy, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 @property long long systemItem; // @synthesize systemItem=_systemItem;
 @property (copy) NSString *title; // @synthesize title=_title;
+@property BOOL useCustomView; // @synthesize useCustomView=_useCustomView;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

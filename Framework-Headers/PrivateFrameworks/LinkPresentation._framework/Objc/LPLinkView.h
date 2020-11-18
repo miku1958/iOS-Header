@@ -111,6 +111,7 @@
 - (void)_cancelActiveHighlight;
 - (void)_commonInitWithURL:(id)arg1;
 - (void)_computePresentationPropertiesFromMetadataIfNeeded;
+- (void)_configureWithoutLoadingMetadataFromURLs:(id)arg1;
 - (id)_createCaptionBar;
 - (id)_createComponents;
 - (id)_createMediaBottomCaptionBarView;
@@ -121,7 +122,7 @@
 - (void)_didScroll;
 - (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
 - (void)_fetchMetadata;
-- (id)_fetchMetadataForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_fetchMetadataForURL:(id)arg1 withSubresources:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_highlightRecognized:(id)arg1;
 - (id)_initWithMetadataLoadedFromURLs:(id)arg1;
 - (id)_initWithMultipleMetadata:(id)arg1;

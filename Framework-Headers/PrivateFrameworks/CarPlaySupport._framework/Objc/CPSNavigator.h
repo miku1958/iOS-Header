@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CARNavigationOwnershipManagerDelegate-Protocol.h>
 #import <CarPlaySupport/CPNavigationSessionManaging-Protocol.h>
 
 @class CARNavigationOwnershipManager, CPTrip, NSHashTable, NSString;
 @protocol CARNavigationOwnershipManagerDelegate;
 
-@interface CPSNavigator : NSObject <CARNavigationOwnershipManagerDelegate, CPNavigationSessionManaging>
+@interface CPSNavigator : NSObject <CARNavigationOwnershipManagerDelegate, CPNavigationSessionManaging, BSInvalidatable>
 {
     BOOL _completed;
     CPTrip *_trip;
@@ -29,7 +30,7 @@
 @property (weak, nonatomic) id<CARNavigationOwnershipManagerDelegate> navigationOwnershipDelegate; // @synthesize navigationOwnershipDelegate=_navigationOwnershipDelegate;
 @property (strong, nonatomic) CARNavigationOwnershipManager *navigationOwnershipManager; // @synthesize navigationOwnershipManager=_navigationOwnershipManager;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) CPTrip *trip; // @synthesize trip=_trip;
+@property (strong, nonatomic) CPTrip *trip; // @synthesize trip=_trip;
 
 - (void).cxx_destruct;
 - (void)addDisplayDelegate:(id)arg1;
@@ -37,11 +38,13 @@
 - (void)dealloc;
 - (void)finishTrip;
 - (id)initWithIdentifier:(id)arg1;
+- (void)invalidate;
 - (void)navigationOwnershipChangedToOwner:(unsigned long long)arg1;
 - (void)pauseTripForReason:(unsigned long long)arg1 description:(id)arg2;
 - (void)removeDisplayDelegate:(id)arg1;
 - (void)showManeuvers:(id)arg1 usingDisplayStyles:(id)arg2;
 - (void)updateTravelEstimates:(id)arg1 forManeuver:(id)arg2;
+- (void)updateTripTravelEstimates:(id)arg1;
 
 @end
 

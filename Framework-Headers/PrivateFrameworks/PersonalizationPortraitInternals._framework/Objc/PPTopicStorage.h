@@ -29,7 +29,7 @@
 - (void)_importDKEventsWithLimit:(unsigned int)arg1 remoteEventsOnly:(BOOL)arg2 isComplete:(BOOL *)arg3;
 - (struct _PASDBIterAction_)_populateEvents:(id)arg1 statement:(id)arg2 txnWitness:(id)arg3;
 - (struct _PASDBIterAction_)_populateUpdates:(id)arg1 statement:(id)arg2 source:(id)arg3 weightMultiplier:(double)arg4 topicToScoredTopic:(id)arg5;
-- (void)_prepareDonationStatement:(id)arg1 scoredTopic:(struct PPScoredItem *)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 decayRate:(double)arg5 sentimentScore:(double)arg6 occurrencesInSource:(unsigned short)arg7 algorithmResultPosition:(unsigned short)arg8 algorithmResultCount:(unsigned short)arg9 weightMultiplier:(double)arg10 sourceRowId:(long long)arg11;
+- (void)_prepareDonationStatement:(id)arg1 scoredTopic:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 decayRate:(double)arg5 sentimentScore:(double)arg6 occurrencesInSource:(unsigned short)arg7 algorithmResultPosition:(unsigned short)arg8 algorithmResultCount:(unsigned short)arg9 weightMultiplier:(double)arg10 sourceRowId:(long long)arg11;
 - (BOOL)_shouldSuppressRepeatedImpressions:(id)arg1;
 - (void)_truncateRecordsByDroppingOldestMakingRoomForCount:(unsigned int)arg1 txnWitness:(id)arg2;
 - (id)_updatePreexistingTopicsMatchingTopics:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 txnWitness:(id)arg4;

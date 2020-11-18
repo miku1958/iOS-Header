@@ -52,6 +52,7 @@
 - (BOOL)_prepareToRunDaemonJob:(id)arg1 error:(id *)arg2;
 - (id)_waitForLibraryServicesForDaemonJob;
 - (void)bindToPhotoLibraryURL:(id)arg1 bookmark:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)bindToPhotoLibraryURL:(id)arg1 sandboxExtension:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (id)clientDebugDescription;
 - (void)getCloudInternalServiceWithReply:(CDUnknownBlockType)arg1;
 - (void)getCloudServiceWithReply:(CDUnknownBlockType)arg1;

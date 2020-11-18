@@ -10,7 +10,9 @@
 
 @protocol CALNNotificationStorage <NSObject>
 - (void)addNotificationRecord:(CALNNotificationRecord *)arg1;
+- (void)addNotificationRecords:(NSArray *)arg1;
 - (NSArray *)notificationRecords;
+- (void)removeAllNotificationRecords;
 - (void)removeNotificationRecordsPassingTest:(BOOL (^)(CALNNotificationRecord *))arg1;
 @end
 

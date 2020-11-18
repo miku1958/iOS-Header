@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUWiFiScanner : NSObject
 {
     BOOL _activateCalled;
-    struct NSMutableDictionary *_devices;
+    NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     BOOL _scanning;

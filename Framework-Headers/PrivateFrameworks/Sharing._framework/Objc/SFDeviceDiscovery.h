@@ -9,7 +9,7 @@
 #import <Sharing/NSSecureCoding-Protocol.h>
 #import <Sharing/SFXPCInterface-Protocol.h>
 
-@class NSSet, NSString, NSXPCConnection;
+@class NSMutableDictionary, NSSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceDiscovery : NSObject <NSSecureCoding, SFXPCInterface>
@@ -17,7 +17,7 @@
     BOOL _activateCalled;
     unsigned long long _activateTicks;
     NSObject<OS_dispatch_source> *_consoleUserTimer;
-    struct NSMutableDictionary *_devices;
+    NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     BOOL _legacy;

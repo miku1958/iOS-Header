@@ -24,7 +24,7 @@
 - (id)newClientResumerWithForegroundReporter:(id)arg1;
 - (id)newFetchController;
 - (id)newMailboxRepository;
-- (id)newMessageRepository;
+- (id)newMessageRepositoryWithResumable:(id)arg1;
 - (id)newOutgoingMessageRepository;
 - (id)newSearchableIndex;
 - (id)newVIPManagerInterface;

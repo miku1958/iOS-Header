@@ -17,6 +17,7 @@
 
 + (Class)layerClass;
 - (void)didMoveToSuperview;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleSingleTapWithRecognizer:(id)arg1;
 - (void)layoutSubviews;

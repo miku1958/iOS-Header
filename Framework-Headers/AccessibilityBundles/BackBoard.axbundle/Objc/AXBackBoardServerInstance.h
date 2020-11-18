@@ -8,7 +8,7 @@
 
 #import "AXBackBoardServerInstance-Protocol.h"
 
-@class AXIPCServer, NSMutableArray, NSString;
+@class AXIPCServer, BSProcessDeathWatcher, NSMutableArray, NSString;
 @protocol AXBackBoardServerInstanceDelegate;
 
 @interface AXBackBoardServerInstance : NSObject <AXBackBoardServerInstance>
@@ -18,6 +18,7 @@
     NSMutableArray *_zoomListeners;
     struct CGRect _initialZoomFocusRect;
     NSMutableArray *_eventTapClients;
+    BSProcessDeathWatcher *_heardDeathWatcher;
     id<AXBackBoardServerInstanceDelegate> _delegate;
 }
 
@@ -42,9 +43,12 @@
 - (id)_handleConvertFrameFromContextId:(id)arg1;
 - (id)_handleConvertFrameFromContextIdToContextId:(id)arg1;
 - (id)_handleConvertFrameToContextId:(id)arg1;
+- (id)_handleConvertPointFromContextId:(id)arg1;
+- (id)_handleConvertPointToContextId:(id)arg1;
 - (id)_handleDisableBrightnessFilters:(id)arg1;
 - (id)_handleEnableEventTap:(id)arg1;
 - (id)_handleEventListenerRegistration:(id)arg1;
+- (id)_handleFullKeyboardAccessDaemonPID:(id)arg1;
 - (id)_handleGetGuidedAccessAvailability:(id)arg1;
 - (id)_handleGetLastSetColorFilter:(id)arg1;
 - (id)_handleGetZoomInitialFocusRect:(id)arg1;
@@ -52,6 +56,7 @@
 - (id)_handleGuidedAccessCurrentModeAndSessionApp:(id)arg1;
 - (id)_handleGuidedAccessEffectiveAppBundleIdentifier:(id)arg1;
 - (id)_handleGuidedAccessIgnoredRegions:(id)arg1;
+- (id)_handleHearingAidServerPID:(id)arg1;
 - (id)_handleHomeClickSwallowedForGuidedAccess:(id)arg1;
 - (id)_handleInCheckerBoardMode:(id)arg1;
 - (id)_handleInPreBoardMode:(id)arg1;
@@ -60,11 +65,14 @@
 - (id)_handleIsGuidedAccessInWorkspace:(id)arg1;
 - (id)_handleIsGuidedAccessSelfLockedToRequestingApp:(id)arg1;
 - (id)_handleIsGuidedAccessUnmanagedSelfLocked:(id)arg1;
+- (id)_handleIsRestrictedForAAC:(id)arg1;
 - (id)_handleLoadGAXBundleForUnmanagedASAM:(id)arg1;
 - (id)_handleLockScreenDimTimerEnabled:(id)arg1;
 - (id)_handlePostEvent:(id)arg1;
 - (id)_handleRegisterAccessibilityUIServerPID:(id)arg1;
 - (id)_handleRegisterAssistiveTouchPID:(id)arg1;
+- (id)_handleRegisterFullKeyboardAccessDaemonPID:(id)arg1;
+- (id)_handleRegisterHearingAidServerPID:(id)arg1;
 - (id)_handleRegisterSiriViewServicePID:(id)arg1;
 - (id)_handleRegisterZoomConflict:(id)arg1;
 - (id)_handleResetAccessibilityFeatures:(id)arg1;

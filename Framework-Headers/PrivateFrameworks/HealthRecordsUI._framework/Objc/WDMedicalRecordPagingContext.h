@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_computingDaySummaries;
     NSMutableArray *_unprocessedRecords;
     NSMutableArray *_contextDependentBlockQueue;
+    NSMutableArray *_removedRecords;
 }
 
 @property (strong, nonatomic) NSMutableSet *computingDaySummaries; // @synthesize computingDaySummaries=_computingDaySummaries;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL fetchingCurrentPage; // @synthesize fetchingCurrentPage=_fetchingCurrentPage;
 @property (nonatomic) BOOL hasMoreData; // @synthesize hasMoreData=_hasMoreData;
 @property (nonatomic) BOOL pagingContextReady; // @synthesize pagingContextReady=_pagingContextReady;
+@property (strong, nonatomic) NSMutableArray *removedRecords; // @synthesize removedRecords=_removedRecords;
 @property (nonatomic) BOOL shouldClearDisplayItemGroups; // @synthesize shouldClearDisplayItemGroups=_shouldClearDisplayItemGroups;
 @property (strong, nonatomic) NSMutableArray *unprocessedRecords; // @synthesize unprocessedRecords=_unprocessedRecords;
 

@@ -27,6 +27,7 @@
 - (void)fetchMomentShareWithURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)forceSyncMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getCurrentTransferProgress:(CDUnknownBlockType)arg1;
+- (void)getNotUploadedCount:(CDUnknownBlockType)arg1;
 - (void)getResetSyncStatusWithReply:(CDUnknownBlockType)arg1;
 - (void)getSystemBudgetsWithReply:(CDUnknownBlockType)arg1;
 - (void)isReadyForCloudPhotoLibraryWithReply:(CDUnknownBlockType)arg1;

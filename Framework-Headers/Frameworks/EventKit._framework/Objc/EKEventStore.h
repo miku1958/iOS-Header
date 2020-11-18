@@ -146,7 +146,7 @@
 - (id)_fetchConstraintsForSourceWithObjectID:(id)arg1;
 - (id)_fetchPersistentNotificationCollectionForSourceWithObjectID:(id)arg1;
 - (void)_forgetRegisteredObjects;
-- (id)_importICSData:(id)arg1 intoCalendarsWithIDs:(id)arg2 options:(unsigned long long)arg3;
+- (id)_importEventsWithExternalIDs:(id)arg1 fromICSData:(id)arg2 intoCalendarsWithIDs:(id)arg3 options:(unsigned long long)arg4 batchSize:(int)arg5;
 - (void)_insertObject:(id)arg1;
 - (BOOL)_isUnitTesting;
 - (void)_loadCalendarsIfNeeded;
@@ -249,6 +249,7 @@
 - (id)getSubscribedCalendarsSourceCreateIfNeededWithError:(id *)arg1;
 - (BOOL)hasImmediatelyEligibleTravelEvents;
 - (BOOL)hideCalendarsFromNotificationCenter:(id)arg1 error:(id *)arg2;
+- (id)importEventsWithExternalIDs:(id)arg1 fromICSData:(id)arg2 intoCalendars:(id)arg3 options:(unsigned long long)arg4 batchSize:(int)arg5;
 - (id)importICS:(id)arg1 intoCalendar:(id)arg2 options:(unsigned long long)arg3;
 - (id)importICSData:(id)arg1 intoCalendar:(id)arg2 options:(unsigned long long)arg3;
 - (id)importICSData:(id)arg1 intoCalendars:(id)arg2 options:(unsigned long long)arg3;
@@ -350,7 +351,6 @@
 - (id)remindersMatchingPredicate:(id)arg1;
 - (id)remindersWithContactIdentifier:(id)arg1;
 - (id)remindersWithExternalIdentifier:(id)arg1 inCalendars:(id)arg2;
-- (BOOL)removeAllItemsInCalendar:(id)arg1 error:(id *)arg2;
 - (BOOL)removeCalendar:(id)arg1 commit:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)removeCalendar:(id)arg1 error:(id *)arg2;
 - (void)removeContactIdentifier:(id)arg1 forCalendarItem:(id)arg2;

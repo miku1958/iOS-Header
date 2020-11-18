@@ -34,6 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMotionActivity:(struct CLMotionActivity)arg1;
+- (struct CLMotionActivity *)motionActivity;
 
 @end
 

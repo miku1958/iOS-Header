@@ -10,5 +10,6 @@
 
 @protocol VUIAppDocumentUpdateEventMonitorObserving <NSObject>
 - (void)appDocumentDidReceiveEvent:(VUIAppDocumentUpdateEvent *)arg1;
+- (void)appDocumentHasBecomeActive;
 @end
 

@@ -41,6 +41,7 @@
 
 + (id)_filteredPaymentSetupProducts:(id)arg1 localCredential:(id)arg2 setupContext:(long long)arg3 webService:(id)arg4 mobileCarrierRegion:(id)arg5;
 + (BOOL)_localCredentials:(id)arg1 containProduct:(id)arg2;
++ (id)filteredPaymentSetupProductsForProvisioningController:(id)arg1 setupContext:(long long)arg2;
 + (id)paymentSetupFlowPickerWithSetupDelegate:(id)arg1 context:(long long)arg2 provisioningController:(id)arg3;
 - (void).cxx_destruct;
 - (void)_didSelectProducts:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

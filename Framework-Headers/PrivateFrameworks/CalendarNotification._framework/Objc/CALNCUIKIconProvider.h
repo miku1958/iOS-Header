@@ -21,7 +21,7 @@
 @property (readonly) Class superclass;
 
 + (id)_identifierEncodingAllowedCharacters;
-+ (BOOL)_parseIconIdentifier:(id)arg1 intoDate:(id *)arg2 calendar:(id *)arg3 type:(long long *)arg4;
++ (BOOL)_parseIconIdentifier:(id)arg1 intoDateComponents:(id *)arg2 calendar:(id *)arg3 type:(long long *)arg4;
 + (id)sharedInstance;
 - (id)identifierForIconWithDate:(id)arg1 inCalendar:(id)arg2;
 - (id)pngDataForIconWithIdentifier:(id)arg1;

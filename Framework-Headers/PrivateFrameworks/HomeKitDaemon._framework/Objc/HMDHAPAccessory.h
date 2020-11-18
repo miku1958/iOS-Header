@@ -14,7 +14,7 @@
 #import <HomeKitDaemon/HMDTimeInformationMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAccessorySymptomHandler, HMDCameraProfileSettingsManager, HMDCharacteristic, HMDDataStreamController, HMDNetworkRouterController, HMDNetworkRouterProfile, HMDNetworkRouterSatelliteProfile, HMDPendingCharacteristic, HMDService, HMDTargetControllerManager, HMFConnectivityInfo, HMFPairingIdentity, HMFTimer, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSNumber, NSSet, NSString;
+@class AWDHomeKitHAPService, HMDAccessoryAdvertisement, HMDAccessorySymptomHandler, HMDCameraProfileSettingsManager, HMDCharacteristic, HMDDataStreamController, HMDMediaProfile, HMDNetworkRouterController, HMDNetworkRouterProfile, HMDNetworkRouterSatelliteProfile, HMDPendingCharacteristic, HMDService, HMDTargetControllerManager, HMFConnectivityInfo, HMFPairingIdentity, HMFTimer, NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSNumber, NSSet, NSString;
 
 @interface HMDHAPAccessory : HMDAccessory <HMDAccessoryMinimumUserPrivilegeCapable, HMDServiceOwner, HAPRelayAccessoryDelegate, HMDTimeInformationMonitorDelegate, HMFTimerDelegate, HMDAccessoryIdentify, HMDAccessoryUserManagement>
 {
@@ -48,6 +48,7 @@
     HMFConnectivityInfo *_connectivityInfo;
     NSMutableArray *_powerOnCompletionRoutines;
     HMDCameraProfileSettingsManager *_cameraProfileSettingsManager;
+    HMDAccessoryAdvertisement *_accessoryAdvertisement;
     NSString *_uniqueIdentifier;
     long long _certificationStatus;
     unsigned long long _activationAttempts;
@@ -68,10 +69,13 @@
     NSMutableArray *_pendingReads;
 }
 
+@property (strong, nonatomic) HMDAccessoryAdvertisement *accessoryAdvertisement; // @synthesize accessoryAdvertisement=_accessoryAdvertisement;
 @property (strong, nonatomic) HMFTimer *accessoryDiscoveryBackoffTimer; // @synthesize accessoryDiscoveryBackoffTimer=_accessoryDiscoveryBackoffTimer;
 @property (copy, nonatomic) NSNumber *accessoryFlags; // @synthesize accessoryFlags=_accessoryFlags;
 @property (strong, nonatomic) HMFTimer *accessoryKeyRefreshTimer; // @synthesize accessoryKeyRefreshTimer=_accessoryKeyRefreshTimer;
 @property (nonatomic) unsigned long long activationAttempts; // @synthesize activationAttempts=_activationAttempts;
+@property (readonly, copy, nonatomic) NSArray *awdHAPServicesList;
+@property (readonly, copy, nonatomic) AWDHomeKitHAPService *awdPrimaryHAPService;
 @property (copy, nonatomic) NSNumber *backedOffStateNumber; // @synthesize backedOffStateNumber=_backedOffStateNumber;
 @property (weak, nonatomic) HMDHAPAccessory *bridge; // @synthesize bridge=_bridge;
 @property (copy, nonatomic) NSData *broadcastKey; // @synthesize broadcastKey=_broadcastKey;
@@ -90,6 +94,7 @@
 @property (strong, nonatomic) NSMutableArray *discoveredServices; // @synthesize discoveredServices=_discoveredServices;
 @property (readonly, copy, nonatomic) NSNumber *hapInstanceId;
 @property (nonatomic) BOOL hardwareSupport; // @synthesize hardwareSupport=_hardwareSupport;
+@property (readonly) BOOL hasSmartSpeakerService;
 @property (readonly) BOOL hasTelevisionService;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSSet *identifiersForBridgedAccessories; // @synthesize identifiersForBridgedAccessories=_identifiersForBridgedAccessories;
@@ -97,6 +102,7 @@
 @property unsigned char keyGenerationType; // @synthesize keyGenerationType=_keyGenerationType;
 @property (copy, nonatomic) NSNumber *keyUpdatedStateNumber; // @synthesize keyUpdatedStateNumber=_keyUpdatedStateNumber;
 @property (copy, nonatomic) NSDate *keyUpdatedTime; // @synthesize keyUpdatedTime=_keyUpdatedTime;
+@property (readonly) HMDMediaProfile *mediaProfile;
 @property (readonly, nonatomic) HMDNetworkRouterController *networkRouterController;
 @property (strong, nonatomic) HMDNetworkRouterController *networkRouterController; // @synthesize networkRouterController=_networkRouterController;
 @property (readonly, nonatomic) HMDNetworkRouterProfile *networkRouterProfile;
@@ -158,7 +164,7 @@
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
 - (void)_enableNotification:(BOOL)arg1 matchingHAPAccessory:(id)arg2 ignoreDeviceUnlockRequirement:(BOOL)arg3 clientIdentifier:(id)arg4 forCharacteristics:(id)arg5;
 - (BOOL)_enableNotificationOnResident:(BOOL)arg1 characteristic:(id)arg2 clientIdentifier:(id)arg3 ignoreDeviceUnlockRequirement:(BOOL)arg4;
-- (void)_evaluateLocalOperation:(long long)arg1 state:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_evaluateLocalOperation:(long long)arg1 state:(id)arg2 logEventSession:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_getResponseTuple:(id)arg1 error:(id)arg2 source:(unsigned long long)arg3 suspended:(BOOL)arg4;
 - (id)_getSymptomHandler;
 - (void)_handleAddServiceTransaction:(id)arg1 message:(id)arg2;
@@ -179,6 +185,7 @@
 - (void)_handleUpdatedName:(id)arg1;
 - (BOOL)_handleUpdatedServicesForCameraProfiles:(id)arg1;
 - (void)_handleUpdatedServicesForDataStreamController:(id)arg1;
+- (BOOL)_handleUpdatedServicesForMediaProfile:(id)arg1;
 - (BOOL)_handleUpdatedServicesForNetworkRouterProfileAndController:(id)arg1;
 - (void)_handleUpdatedServicesForProfilesAndControllers:(id)arg1;
 - (void)_handleWiFiReconfiguration:(id)arg1;
@@ -189,11 +196,13 @@
 - (void)_notifyClientsOfTargetControlSupportUpdate;
 - (void)_notifyNotificationChangesForCharacteristics:(id)arg1 errors:(id)arg2 enableNotification:(BOOL)arg3 message:(id)arg4;
 - (void)_parseResponseFromRemotePeer:(id)arg1 message:(id)arg2 forCharacteristic:(id)arg3;
-- (void)_performOperation:(long long)arg1 linkType:(long long)arg2 operationBlock:(CDUnknownBlockType)arg3 errorBlock:(CDUnknownBlockType)arg4;
+- (void)_performOperation:(long long)arg1 linkType:(long long)arg2 logEventSession:(id)arg3 operationBlock:(CDUnknownBlockType)arg4 errorBlock:(CDUnknownBlockType)arg5;
 - (id)_prepareMessagePayloadForCharacteristicRemoteWrite:(id)arg1;
 - (void)_readAndWriteTimeInformationCharacteristic:(id)arg1;
 - (void)_readCharacteristicValues:(id)arg1 hapAccessory:(id)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_readCharacteristicValues:(id)arg1 hapAccessory:(id)arg2 source:(unsigned long long)arg3 queue:(id)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_readCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 errorBlock:(CDUnknownBlockType)arg6;
+- (void)_readCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 queue:(id)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 errorBlock:(CDUnknownBlockType)arg7;
 - (void)_readValueForCharacteristic:(id)arg1 hapAccessory:(id)arg2 requestMessage:(id)arg3;
 - (void)_readandWriteToCurrentTime:(id)arg1 errorBlock:(CDUnknownBlockType)arg2;
 - (void)_reconcileAccessControlSetting;
@@ -205,11 +214,14 @@
 - (void)_removeBackedoffAccessoryForStateNumber:(id)arg1;
 - (void)_removeHAPAccessoryWithServerIdentifier:(id)arg1 linkType:(long long)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
 - (void)_removeService:(id)arg1;
+- (void)_renameAccessory:(id)arg1 resetName:(BOOL)arg2 message:(id)arg3;
+- (void)_renameService:(id)arg1 name:(id)arg2 message:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_resolveAudioAbility:(id)arg1;
 - (BOOL)_resolveSupportedSiriInputType:(id)arg1;
 - (void)_retrieveStateForTrackedAccessory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_saveHardwareSupport:(BOOL)arg1;
 - (void)_saveTargetUUIDs:(id)arg1;
+- (BOOL)_serviceSupportsMinimumUserPrivilege:(id)arg1;
 - (void)_setCurrentRelayAccessoryState:(unsigned long long)arg1;
 - (void)_setCurrentTimeCharacteristic:(id)arg1;
 - (void)_setDayOfTheWeekCharacteristic:(id)arg1;
@@ -240,7 +252,9 @@
 - (void)_updateStateForTrackedAccessory:(id)arg1 stateNumber:(id)arg2;
 - (void)_wirelessPowerOn:(CDUnknownBlockType)arg1;
 - (void)_writeCharacteristicValues:(id)arg1 hapAccessory:(id)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_writeCharacteristicValues:(id)arg1 hapAccessory:(id)arg2 source:(unsigned long long)arg3 queue:(id)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_writeCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 errorBlock:(CDUnknownBlockType)arg6;
+- (void)_writeCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 queue:(id)arg4 logEventSession:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 errorBlock:(CDUnknownBlockType)arg7;
 - (void)_writeTimeInformationCharacteristicsForAccessory;
 - (void)_writeValue:(id)arg1 forCharacteristic:(id)arg2 hapAccessory:(id)arg3 authorizationData:(id)arg4 message:(id)arg5;
 - (void)accessory:(id)arg1 didActivateRelayWithError:(id)arg2;
@@ -252,6 +266,7 @@
 - (void)accessoryDidBecomeReachable:(id)arg1;
 - (void)accessoryDidBecomeUnreachable:(id)arg1;
 - (void)acknowledgeTargetControlService:(id)arg1 active:(BOOL)arg2;
+- (void)addAdvertisement:(id)arg1;
 - (void)addBridgedAccessory:(id)arg1;
 - (void)addDataStreamBulkSendListener:(id)arg1 fileType:(id)arg2;
 - (void)addRelayUser:(id)arg1 accessToken:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -261,6 +276,7 @@
 - (void)addUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)anyIPServer;
 - (id)assistantObject;
+- (void)associateWithAccessoryAdvertisement:(id)arg1;
 - (void)autoConfigureTargetController;
 - (void)autoUpdateCachedCountDownCharacteristics:(id)arg1;
 - (void)backOffAccessoryForStateNumber:(id)arg1;
@@ -295,6 +311,7 @@
 - (id)findService:(id)arg1;
 - (id)findServiceWithServiceType:(id)arg1;
 - (id)getBluetoothAddress;
+- (id)getConfiguredName;
 - (id)getFullError:(id)arg1 source:(unsigned long long)arg2 suspended:(BOOL)arg3;
 - (id)getOrCreateServiceUpdateTransactionForKey:(id)arg1 fromDictionary:(id)arg2;
 - (id)getPrimaryHAPAccessories;
@@ -343,6 +360,7 @@
 - (id)messageReceiverChildren;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
+- (id)name;
 - (id)namesOfServicesShowingTilesInHomeApp;
 - (void)notifyClientsOfTargetControlSupportUpdate;
 - (void)notifyValue:(id)arg1 previousValue:(id)arg2 error:(id)arg3 forCharacteristic:(id)arg4 requestMessage:(id)arg5;
@@ -359,10 +377,12 @@
 - (void)reachabilityDidChange:(id)arg1;
 - (long long)reachableTransports;
 - (void)readCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)readCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)readInitialRequiredCharacteristicsForBTLEAccessory:(CDUnknownBlockType)arg1;
 - (void)registerForActiveIdentifierNotifications;
 - (void)registerForTimeMonitor;
 - (id)relayAccessory;
+- (void)removeAdvertisement:(id)arg1;
 - (void)removeBridgedAccessory:(id)arg1;
 - (void)removeDataStreamBulkSendListener:(id)arg1;
 - (void)removeHAPAccessoryWithServerIdentifier:(id)arg1 linkType:(long long)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
@@ -423,11 +443,12 @@
 - (BOOL)updateTimeInformationCharacteristicsForAccessory:(id)arg1;
 - (void)updateTrackedAccessoryStateNumber:(id)arg1;
 - (BOOL)updateTransportInformation:(id)arg1;
-- (id)url;
+- (id)urlString;
 - (void)verifyPairingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)wirelessPowerOn:(CDUnknownBlockType)arg1;
 - (void)wirelessResumeInit;
 - (void)writeCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 queue:(id)arg3 logEventSession:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)writeTimeInformationCharacteristicsForAccessory:(id)arg1;
 - (void)writeValue:(id)arg1 toCharacteristic:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 

@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <VisualVoicemail/VVMSharedNetworkObserverDelegate-Protocol.h>
+
 @class NSArray, NSDictionary, NSError, NSMutableDictionary, NSRecursiveLock, NSString, VMCarrierStateRequestController, VMTranscriptionService, VVVerifier;
 @protocol OS_dispatch_queue, VMTelephonySubscription;
 
-@interface VVService : NSObject
+@interface VVService : NSObject <VVMSharedNetworkObserverDelegate>
 {
     NSRecursiveLock *_lock;
     int _mailboxUsage;
@@ -39,6 +41,7 @@
     BOOL _mailboxUsageUpdated;
     struct os_unfair_lock_s _accessorLock;
     NSString *_isoCountryCode;
+    NSString *_smscAddress;
     NSMutableDictionary *_stateRequestAttemptCount;
     unsigned long long _trashedCount;
     unsigned long long _unreadCount;
@@ -61,6 +64,9 @@
 @property (readonly, nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
 @property (strong, nonatomic) NSDictionary *accountDictionary; // @synthesize accountDictionary=_accountDictionary;
 @property (nonatomic, getter=isCellularNetworkAvailable) BOOL cellularNetworkAvailable; // @synthesize cellularNetworkAvailable=_cellularNetworkAvailable;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property (nonatomic) struct __CFString *lastConnectionTypeUsed; // @synthesize lastConnectionTypeUsed=_lastConnectionTypeUsed;
 @property (nonatomic, getter=isMailboxUsageUpdated) BOOL mailboxUsageUpdated; // @synthesize mailboxUsageUpdated=_mailboxUsageUpdated;
@@ -68,9 +74,11 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 @property (copy, nonatomic) NSString *serviceDestinationID; // @synthesize serviceDestinationID=_serviceDestinationID;
 @property (copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (copy, nonatomic) NSString *smscAddress; // @synthesize smscAddress=_smscAddress;
 @property (readonly, nonatomic) NSMutableDictionary *stateRequestAttemptCount; // @synthesize stateRequestAttemptCount=_stateRequestAttemptCount;
 @property (readonly, nonatomic) VMCarrierStateRequestController *stateRequestController; // @synthesize stateRequestController=_stateRequestController;
 @property (readonly, nonatomic) id<VMTelephonySubscription> subscription; // @synthesize subscription=_subscription;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) VMTranscriptionService *transcriptionService; // @synthesize transcriptionService=_transcriptionService;
 @property (nonatomic) unsigned long long trashedCount; // @synthesize trashedCount=_trashedCount;
 @property (nonatomic) unsigned long long unreadCount; // @synthesize unreadCount=_unreadCount;
@@ -98,7 +106,6 @@
 - (void)_dataRoamingStatusChanged;
 - (void)_deliverFallbackNotification;
 - (void)_enterFallbackMode;
-- (void)_handleSMSCAvailable;
 - (BOOL)_isOfflineDueToRoamingWithDataStatusDict:(struct __CFDictionary *)arg1;
 - (void)_reactToIndicator;
 - (void)_scheduleAutomatedTrashCompaction;
@@ -125,7 +132,6 @@
 - (BOOL)doesClientManageTrashCompaction;
 - (BOOL)greetingAvailable;
 - (BOOL)greetingFetchExistsProgressiveLoadInProgress:(BOOL *)arg1;
-- (void)handleCPNetworkObserverNetworkReachableNotification:(id)arg1;
 - (void)handleDataContextDeactivated;
 - (void)handleNotification:(id)arg1 isMWI:(BOOL)arg2;
 - (void)handlePasswordRequestCancellation;
@@ -154,6 +160,7 @@
 - (void)movePendingMessagesToTrashTask:(id)arg1;
 - (void)moveRecordsWithIdentifiersToInbox:(id)arg1;
 - (void)moveRecordsWithIdentifiersToTrash:(id)arg1;
+- (void)networkReachabilityChangedSync:(BOOL)arg1;
 - (Class)notificationInterpreterClass;
 - (id)parametersFilePathForUUIDString:(id)arg1;
 - (id)password;

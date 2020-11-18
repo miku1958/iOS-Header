@@ -73,7 +73,7 @@
 + (id)scenesAlbumListInPhotoLibrary:(id)arg1;
 - (void).cxx_destruct;
 - (id)_albumsCountFetchRequest;
-- (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
+- (BOOL)albumHasFixedOrder:(id)arg1;
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 - (BOOL)canEditContainers;
@@ -92,7 +92,7 @@
 - (id)payloadIDForTombstone:(id)arg1;
 - (void)preheatAlbumsAtIndexes:(id)arg1 forProperties:(id)arg2 relationships:(id)arg3;
 - (void)preheatAlbumsForProperties:(id)arg1 relationships:(id)arg2;
-- (void)registerDerivedAlbumList:(struct NSObject *)arg1;
+- (void)registerDerivedAlbumList:(id)arg1;
 - (void)registerForChanges;
 - (void)setNeedsReordering;
 - (void)unregisterAllDerivedAlbums;

@@ -46,6 +46,7 @@
 - (id)initWithInMemoryDatabase;
 - (void)loadSessionStateDataAndRemoveRecentlyClosedTab:(id)arg1;
 - (id)readSavedSessionStateDataForTabWithUUID:(id)arg1;
+- (void)regenerateTabUUIDsForDeviceRestoration;
 - (void)removeRecentlyClosedTabWithStateData:(id)arg1;
 - (void)removeTabStateWithTabData:(id)arg1;
 - (void)removeTabsStateForBrowserControllerWithUUID:(id)arg1 andRemoveWindow:(BOOL)arg2;

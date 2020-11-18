@@ -46,11 +46,13 @@
 - (void)insertFileURL:(id)arg1 filename:(id)arg2 transcoderUserInfo:(id)arg3 fullyRealizedPreview:(id)arg4 rawPreview:(id)arg5 appendedVideoURL:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)insertMessage:(id)arg1 appProxy:(id)arg2;
 - (void)insertRichLinkWithURL:(id)arg1 data:(id)arg2;
+- (BOOL)messageEntryViewShouldBeginEditing:(id)arg1;
 - (void)registerForNotifications;
 - (void)sendComposition:(id)arg1;
 - (void)setCanEditRecipients:(BOOL)arg1;
 - (void)setComposition:(id)arg1;
 - (void)setPendingAddresses:(id)arg1;
+- (void)setShouldDisableEntryField:(BOOL)arg1;
 - (void)setTextEntryContentsVisible:(BOOL)arg1;
 - (BOOL)shouldDismissAfterSend;
 - (void)viewWillAppear:(BOOL)arg1;

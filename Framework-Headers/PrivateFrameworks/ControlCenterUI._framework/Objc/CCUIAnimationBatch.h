@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSUUID;
 
 @interface CCUIAnimationBatch : NSObject
 {
     NSMutableDictionary *_animationsByParameters;
+    NSUUID *_UUID;
 }
+
+@property (readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 
 - (void).cxx_destruct;
 - (void)addAnimation:(id)arg1;

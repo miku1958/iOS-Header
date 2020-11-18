@@ -13,9 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axAnnotateActualButton;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (BOOL)isAccessibilityElement;
+- (void)undoFrom:(id)arg1;
 
 @end
 

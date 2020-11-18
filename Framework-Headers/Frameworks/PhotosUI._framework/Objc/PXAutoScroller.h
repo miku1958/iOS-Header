@@ -14,7 +14,7 @@
         BOOL didAutoscrollWithTimestamp;
     } _delegateRespondsTo;
     BOOL __repeating;
-    struct NSObject *_scrollView;
+    NSObject<PXAnonymousScrollView> *_scrollView;
     id<PXAutoScrollerDelegate> _delegate;
     double __margin;
     double __maximumSpeed;
@@ -33,13 +33,13 @@
 - (void).cxx_destruct;
 - (BOOL)autoscrollWithOffset:(struct CGPoint)arg1;
 - (id)init;
-- (id)initWithTargetScrollView:(struct NSObject *)arg1;
+- (id)initWithTargetScrollView:(id)arg1;
 - (void)startRepeating;
 - (void)stop;
 - (void)stopRepeating;
 - (void)updateWithTimestamp:(double)arg1;
 - (void)updateWithUserInteractionLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
-- (struct CGRect)visibleRectForScrollView:(struct NSObject *)arg1;
+- (struct CGRect)visibleRectForScrollView:(id)arg1;
 
 @end
 

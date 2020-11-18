@@ -26,9 +26,11 @@
 - (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_intents_indexingRepresentation;
 - (BOOL)_intents_isValidKey:(id)arg1;
-- (id)_intents_localizedCopyForLanguage:(id)arg1;
+- (id)_intents_localizedCopyWithLocalizer:(id)arg1;
 - (id)_intents_readableDescriptionForLanguage:(id)arg1;
 - (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1;
+- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (SEL)_intents_setterForPropertyWithName:(id)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 @end

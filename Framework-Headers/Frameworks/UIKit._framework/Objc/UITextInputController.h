@@ -84,6 +84,7 @@
 @property (nonatomic) BOOL contentsIsSingleValue;
 @property (nonatomic) BOOL continuousSpellCheckingEnabled; // @synthesize continuousSpellCheckingEnabled=_continuousSpellCheckingEnabled;
 @property (nonatomic) int currentUndoGroupType; // @synthesize currentUndoGroupType=_currentUndoGroupType;
+@property (readonly, nonatomic) long long cursorBehavior;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (weak, nonatomic) id<UITextInputControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -166,14 +167,13 @@
 @property (nonatomic) struct _NSRange validTextRange;
 
 + (BOOL)_pasteboardHasStrings;
-+ (id)whitelistedDictationDictionaryFromMetadata:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addShortcut:(id)arg1;
 - (void)_addToTypingAttributes:(id)arg1 value:(id)arg2;
 - (id)_attributedStringForInsertionOfAttributedString:(id)arg1;
+- (id)_attributesForInsertionOfText:(struct _NSRange)arg1;
 - (id)_attributesForReplacementInRange:(struct _NSRange)arg1;
 - (BOOL)_canHandleResponderAction:(SEL)arg1;
-- (void)_cancelDictationIfNecessaryForChangeInRange:(struct _NSRange)arg1;
 - (struct CGRect)_caretRectForOffset:(unsigned long long)arg1;
 - (void)_changeTextAlignment:(long long)arg1 undoString:(id)arg2;
 - (unsigned int)_characterAfterCaretSelection;
@@ -265,6 +265,7 @@
 - (void)_promptForReplace:(id)arg1;
 - (BOOL)_range:(id)arg1 containsRange:(id)arg2;
 - (BOOL)_range:(id)arg1 intersectsRange:(id)arg2;
+- (struct _NSRange)_rangeAfterCancelDictationIfNecessaryForChangeInRange:(struct _NSRange)arg1;
 - (struct _NSRange)_rangeForBackwardsDelete;
 - (id)_rangeFromCurrentRangeWithDelta:(struct _NSRange)arg1;
 - (id)_rangeOfEnclosingWord:(id)arg1;
@@ -303,7 +304,7 @@
 - (void)_sendDelegateWillChangeNotificationsForText:(BOOL)arg1 selection:(BOOL)arg2;
 - (id)_senderForDelegateNotifications;
 - (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
-- (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 fromKeyboard:(BOOL)arg3;
+- (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 fromKeyboard:(BOOL)arg3 useTextStyle:(BOOL)arg4;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (void)_setGestureRecognizers;
 - (id)_setHistory:(id)arg1 withExtending:(BOOL)arg2 withAnchor:(int)arg3 withAffinityDownstream:(BOOL)arg4;
@@ -350,6 +351,7 @@
 - (void)alignRight:(id)arg1;
 - (void)appendUndoOperation:(id)arg1 newGroup:(BOOL)arg2;
 - (int)atomStyle;
+- (id)attributedSubstringForMarkedRange;
 - (id)attributedTextInRange:(id)arg1;
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;
 - (void)beginSelectionChange;

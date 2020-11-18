@@ -14,6 +14,7 @@
 
 @interface HMDXPCClientConnection : HMFMessageTransport <HMDaemonConnection, HMFLogging>
 {
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _activated;
     BOOL _entitledForAPIAccess;
     BOOL _entitledForBackgroundMode;
@@ -24,7 +25,6 @@
     unsigned long long _entitlements;
     NSString *_clientName;
     HMDXPCRequestTracker *_requestTracker;
-    NSObject<OS_dispatch_queue> *_workQueue;
     HMDApplicationRegistry *_appRegistry;
 }
 
@@ -57,7 +57,6 @@
 @property (readonly, nonatomic) HMDXPCRequestTracker *requestTracker; // @synthesize requestTracker=_requestTracker;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *teamIdentifier;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (weak, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 + (unsigned long long)entitlementsForConnection:(id)arg1;
@@ -74,7 +73,7 @@
 - (id)extractTeamIdentifier;
 - (void)handleMessage:(id)arg1;
 - (void)handleMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
-- (id)initWithConnection:(id)arg1 queue:(id)arg2 activeMessageTracker:(id)arg3 appRegistry:(id)arg4;
+- (id)initWithConnection:(id)arg1 appRegistry:(id)arg2;
 - (id)logIdentifier;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)shouldSendResponseForMessageIdentifier:(id)arg1;

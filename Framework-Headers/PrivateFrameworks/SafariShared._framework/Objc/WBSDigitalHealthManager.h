@@ -21,7 +21,7 @@
 
 + (void)_updateWebpageUsage:(id)arg1 withDigitalHealthManagerUsageState:(unsigned long long)arg2;
 + (void)deleteAllUsageHistory;
-+ (void)deleteUsageHistoryForURL:(id)arg1;
++ (void)deleteUsageHistoryForURLs:(id)arg1;
 + (void)deleteUsageHistoryFromDate:(id)arg1 toDate:(id)arg2;
 - (void).cxx_destruct;
 - (void)_historyItemsWereRemoved:(id)arg1;
@@ -34,7 +34,7 @@
 - (void)startObserving;
 - (void)stopObserving;
 - (void)stopUsageTrackingForURL:(id)arg1;
-- (void)updateUsageTrackingForURL:(id)arg1 toState:(unsigned long long)arg2;
+- (void)updateUsageTrackingForURL:(id)arg1 withBundleIdentifier:(id)arg2 toState:(unsigned long long)arg3;
 
 @end
 

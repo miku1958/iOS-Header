@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_onProcessingQueue_pauseDownload;
 - (void)_onProcessingQueue_resumeDownload;
 - (void)_onProcessingQueue_setState:(id)arg1 andNotifyDelegate:(BOOL)arg2;
-- (void)_onProcessingQueue_startDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_onProcessingQueue_startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_onProcessingQueue_updateStateAndNotifyDelegate:(BOOL)arg1;
 - (void)cancelAndRemoveDownload;
 - (void)dealloc;
@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)mediaEntityAssetController:(id)arg1 stateDidChange:(id)arg2;
 - (void)pauseDownload;
 - (void)resumeDownload;
-- (void)startDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

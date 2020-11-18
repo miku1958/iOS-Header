@@ -35,6 +35,8 @@
 + (id)_qaModeLockout;
 + (BOOL)confirmedSafe;
 + (id)contentSize;
++ (id)fakeNeatlineDashboardSupport;
++ (id)flipDashboardLayout;
 + (id)interfaceStyle;
 + (id)nowPlayingAlbumArt;
 + (id)prefWithDomain:(id)arg1 key:(id)arg2 title:(id)arg3 defaultValue:(id)arg4 valueChangedBlock:(CDUnknownBlockType)arg5;

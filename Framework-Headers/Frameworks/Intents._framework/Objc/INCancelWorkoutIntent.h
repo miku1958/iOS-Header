@@ -27,7 +27,7 @@
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithWorkoutName:(id)arg1;
-- (id)localizeValueOfSlotDescription:(id)arg1 forLanguage:(id)arg2;
+- (id)localizeValueOfSlotDescription:(id)arg1 withLocalizer:(id)arg2;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;

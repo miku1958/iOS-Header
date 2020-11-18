@@ -94,7 +94,6 @@
 @property (readonly, nonatomic) BOOL viewControllerWillRequestExit;
 @property (nonatomic) unsigned long long visibleParts; // @synthesize visibleParts=_visibleParts;
 
-+ (long long)_activityIndicatorViewStyle;
 + (struct CGRect)calculateArtworkImageViewFrameInRect:(struct CGRect)arg1;
 + (BOOL)supportsFullscreenDisplay;
 - (void).cxx_destruct;

@@ -16,7 +16,7 @@
     struct _opaque_pthread_mutex_t _helperLock;
 }
 
-+ (BOOL)contactExistsInArray:(id)arg1 withName:(id)arg2;
++ (BOOL)contactExistsInArray:(id)arg1 withName:(id)arg2 andHandle:(id)arg3;
 + (id)findContactsForDetailType:(unsigned long long)arg1 andValue:(id)arg2;
 + (id)findContactsForPerson:(id)arg1 fetchingKeys:(id)arg2;
 + (id)normalizedDigits:(id)arg1;

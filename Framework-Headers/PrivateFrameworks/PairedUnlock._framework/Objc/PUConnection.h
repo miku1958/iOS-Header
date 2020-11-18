@@ -22,6 +22,8 @@
 @property (weak) id<PUConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) CDUnknownBlockType remoteDeviceRemoveLockoutHandler; // @synthesize remoteDeviceRemoveLockoutHandler=_remoteDeviceRemoveLockoutHandler;
 
++ (id)clientInterface;
++ (id)serverInterface;
 + (void)syncPasscodeState;
 - (void).cxx_destruct;
 - (void)dealloc;

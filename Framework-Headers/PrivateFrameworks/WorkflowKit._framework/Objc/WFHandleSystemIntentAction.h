@@ -39,6 +39,7 @@
 - (id)intentDescription;
 - (id)possibleStatesForEnumeration:(id)arg1;
 - (void)selectedAppDidChange;
+- (id)selectedHandlerBundleIdentifier;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
 - (id)slots;
 - (id)supportedAppIdentifiers;

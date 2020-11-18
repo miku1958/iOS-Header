@@ -101,6 +101,9 @@
 - (id)_performSetMaximumResidentUsers:(id)arg1;
 - (id)_performSetOrganizationInfo:(id)arg1;
 - (id)_performSetPersonalHotspot:(id)arg1;
+- (id)_performSetResidentUserQuotaSize:(id)arg1;
+- (id)_performSetResidentUsers:(id)arg1;
+- (id)_performSetSharedDeviceConfiguration:(id)arg1;
 - (id)_performSetVoiceRoaming:(id)arg1;
 - (id)_performSetWallpaper:(id)arg1;
 - (id)_performSetting:(id)arg1 outAdditionalResponseKeys:(id *)arg2 outRestartAppleTVApp:(BOOL *)arg3;
@@ -130,6 +133,7 @@
 - (id)_securityInfo:(id)arg1;
 - (id)_serviceSubscriptionPropertiesWithDMFKeysMappedToMCKeys:(id)arg1;
 - (id)_serviceSubscriptionsWithDMFKeysMappedToMCKeys:(id)arg1;
+- (id)_setResidentUsersNumber:(id)arg1;
 - (id)_settings:(id)arg1 accessRights:(int)arg2;
 - (id)_shutDownDevice:(id)arg1;
 - (id)_softwareUpdatesNotPermittedWithLoggedInUserError;

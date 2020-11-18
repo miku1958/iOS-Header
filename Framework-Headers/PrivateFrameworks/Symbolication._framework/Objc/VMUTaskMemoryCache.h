@@ -18,8 +18,10 @@
 + (id)taskMemoryCacheForTask:(unsigned int)arg1;
 - (BOOL)copyRange:(struct _VMURange)arg1 to:(void *)arg2;
 - (void)dealloc;
+- (void)enumerateMemoryCache:(CDUnknownBlockType)arg1;
 - (void)flushMemoryCache;
 - (id)initWithTask:(unsigned int)arg1;
+- (int)mapAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
 - (int)mapAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 returnedAddress:(unsigned long long *)arg3 returnedSize:(unsigned long long *)arg4;
 - (int)peekAtAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 returnsBuf:(void **)arg3;
 - (int)readPointerAt:(unsigned long long)arg1 value:(unsigned long long *)arg2;

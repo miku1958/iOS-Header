@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (int)entityType;
 - (id)existingMeltedObject;
 - (BOOL)existsInStore;
-- (EKPersistentObject_556b3b22 *)frozenObject;
+- (id)frozenObject;
 - (unsigned long long)hash;
 - (id)initWithObject:(id)arg1;
 - (id)initWithREMObject:(id)arg1 inStore:(id)arg2;

@@ -18,7 +18,8 @@
 - (void).cxx_destruct;
 - (id)_defaultDismissButton;
 - (void)_dismiss;
-- (void)_reloadRootModule;
+- (id)_initWithRootModule:(id)arg1;
+- (void)_reloadWithRootModule:(id)arg1;
 - (id)initWithRootModuleController:(id)arg1;
 - (id)initWithRootSettings:(id)arg1;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;

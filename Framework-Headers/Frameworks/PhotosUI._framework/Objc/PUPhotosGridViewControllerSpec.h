@@ -51,6 +51,7 @@
 - (void).cxx_destruct;
 - (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (id)init;
+- (BOOL)shouldUseAspectItems;
 - (unsigned long long)supportedInterfaceOrientations;
 
 @end

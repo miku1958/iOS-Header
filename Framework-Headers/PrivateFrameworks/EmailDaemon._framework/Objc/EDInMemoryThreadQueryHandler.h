@@ -11,7 +11,7 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 
-@class EDMessageQueryHelper, EDThreadReloadSummaryHelper, EDUpdateThrottler, EDVIPManager, EMCollectionItemIDStateCapturer, EMMailboxScope, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
+@class EDMessageQueryHelper, EDThreadReloadSummaryHelper, EDUpdateThrottler, EDVIPManager, EFProcessTransaction, EMCollectionItemIDStateCapturer, EMMailboxScope, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
 @protocol EDRemoteSearchProvider, EFScheduler, EMMessageListItemQueryResultsObserver, OS_dispatch_queue;
 
 @interface EDInMemoryThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver, EMCollectionItemIDStateCapturerDelegate>
@@ -20,6 +20,7 @@
     NSMutableDictionary *_threadsByConversationID;
     NSMutableDictionary *_changesWhilePaused;
     NSMutableDictionary *_oldestThreadsByMailboxObjectIDs;
+    EFProcessTransaction *_processTransaction;
     struct os_unfair_lock_s _threadsLock;
     BOOL _didCancel;
     BOOL _isInitialized;
@@ -92,7 +93,7 @@
 - (void)cancel;
 - (void)contentProtectionStateChanged:(int)arg1 previousState:(int)arg2;
 - (void)dealloc;
-- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7;
+- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7 observationResumer:(id)arg8;
 - (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
 - (id)labelForStateCapture;
 - (id)messagesForThread:(id)arg1;

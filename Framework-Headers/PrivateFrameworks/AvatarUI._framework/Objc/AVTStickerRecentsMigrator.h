@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class AVTUILogger;
+@class AVTStickerConfigurationProvider, AVTUILogger;
 @protocol AVTAvatarStoreInternal;
 
 @interface AVTStickerRecentsMigrator : NSObject
 {
     BOOL _migrationHasBeenPerformed;
     id<AVTAvatarStoreInternal> _store;
+    AVTStickerConfigurationProvider *_stickerConfigurationProvider;
     AVTUILogger *_logger;
 }
 
 @property (nonatomic) AVTUILogger *logger; // @synthesize logger=_logger;
 @property (nonatomic) BOOL migrationHasBeenPerformed; // @synthesize migrationHasBeenPerformed=_migrationHasBeenPerformed;
+@property (strong, nonatomic) AVTStickerConfigurationProvider *stickerConfigurationProvider; // @synthesize stickerConfigurationProvider=_stickerConfigurationProvider;
 @property (strong, nonatomic) id<AVTAvatarStoreInternal> store; // @synthesize store=_store;
 
 - (void).cxx_destruct;
-- (id)initWithStore:(id)arg1 environment:(id)arg2;
+- (id)initWithStore:(id)arg1 stickerConfigurationProvider:(id)arg2 environment:(id)arg3;
 - (void)performMigrationIfNeeded;
 - (void)setNeedsMigrationOnNextLaunch;
 

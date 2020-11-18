@@ -13,7 +13,7 @@
 
 @interface REMResolutionTokenMap : NSObject <NSSecureCoding, NSCopying>
 {
-    struct NSMutableDictionary *_map;
+    NSMutableDictionary *_map;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *map; // @synthesize map=_map;
@@ -32,7 +32,7 @@
 - (id)init;
 - (void)initTokenWithDefaultValueIfNecessaryForKey:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMap:(struct NSMutableDictionary *)arg1;
+- (id)initWithMap:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)mergeWithMap:(id)arg1 forKey:(id)arg2;
 - (void)setToken:(id)arg1 forKey:(id)arg2;

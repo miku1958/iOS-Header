@@ -79,7 +79,7 @@
 - (id)modificationDate;
 - (void)noteShared;
 - (void)reloadDisplayProfileOfType:(long long)arg1;
-- (BOOL)remoteAssetsDownloaded;
+- (BOOL)remoteAssetsDownloadedForSEIDs:(id)arg1;
 - (void)requestUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)revocationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)serializedFileWrapper;

@@ -22,6 +22,7 @@
 
 + (id)defaultBroker;
 - (void).cxx_destruct;
+- (void)askToShowMessageWithReplyBlock:(CDUnknownBlockType)arg1;
 - (void)downloadAdded:(id)arg1;
 - (void)downloadRemoved:(id)arg1;
 - (void)downloadStatusChanged:(id)arg1;

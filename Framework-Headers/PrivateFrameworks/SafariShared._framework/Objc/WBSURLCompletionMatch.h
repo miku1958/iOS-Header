@@ -26,8 +26,9 @@
 @property (readonly, nonatomic) long long matchLocation; // @synthesize matchLocation=_matchLocation;
 @property (readonly, nonatomic) BOOL matchLocationIsInURL;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
-@property (readonly, nonatomic) long long parsecQueryID; // @synthesize parsecQueryID=_parsecQueryID;
+@property (nonatomic) long long parsecQueryID; // @synthesize parsecQueryID=_parsecQueryID;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
+@property (readonly, nonatomic) BOOL shouldPreload;
 @property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTopHit) BOOL topHit;

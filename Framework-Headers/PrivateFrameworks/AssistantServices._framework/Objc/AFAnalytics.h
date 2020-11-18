@@ -39,11 +39,12 @@
 - (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 contextResolver:(CDUnknownBlockType)arg3;
 - (void)logEvents:(id)arg1;
 - (void)logInstrumentation:(id)arg1 machAbsoluteTime:(unsigned long long)arg2 turnContext:(id)arg3;
-- (void)logInstrumentation:(id)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(struct NSUUID *)arg3;
+- (void)logInstrumentation:(id)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(id)arg3;
 - (void)logInstrumentation:(id)arg1 turnContext:(id)arg2;
 - (void)logInstrumentationOfType:(Class)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(id)arg3;
 - (void)logInstrumentationOfType:(Class)arg1 turnIdentifier:(id)arg2;
 - (id)newTurnBasedInstrumentationContext;
+- (void)sampleDictationRequestIfNeeded:(id)arg1 sessionId:(id)arg2 forLanguageCode:(id)arg3;
 - (void)setService:(id)arg1;
 
 @end

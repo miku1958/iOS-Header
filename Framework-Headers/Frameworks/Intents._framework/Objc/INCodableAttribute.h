@@ -28,6 +28,7 @@
     INCodableAttributeRelationship *_relationship;
     NSArray *_promptDialogs;
     NSArray *_unsupportedReasons;
+    NSString *_entityKeypath;
     NSNumber *_displayPriorityRank;
     Class __relationshipValueTransformerClass;
 }
@@ -43,6 +44,7 @@
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *displayNameID; // @synthesize displayNameID=_displayNameID;
 @property (copy, nonatomic) NSNumber *displayPriorityRank; // @synthesize displayPriorityRank=_displayPriorityRank;
+@property (copy, nonatomic) NSString *entityKeypath; // @synthesize entityKeypath=_entityKeypath;
 @property (readonly, nonatomic) SEL getter;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *keyPrefix;
@@ -67,11 +69,12 @@
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)indexForUnsupportedReason:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)localizedDisplayNameForLanguage:(id)arg1;
+- (id)localizedDisplayNameWithLocalizer:(id)arg1;
 - (id)promptDialogWithType:(unsigned long long)arg1;
 - (id)unsupportedReasonWithIndex:(unsigned long long)arg1;
 - (void)updateWithDictionary:(id)arg1;

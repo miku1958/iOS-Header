@@ -19,8 +19,11 @@
 - (void)_accessibilityLoadAccessibilityInformation:(BOOL)arg1;
 - (id)_accessibilityResponderElement;
 - (void)_awakeWithConnectionInfo:(id)arg1;
+- (BOOL)_axGetWasFocusEnabled;
 - (void)_axRemoteViewLoadRequest:(id)arg1;
+- (void)_axSetWasFocusEnabled:(BOOL)arg1;
 - (BOOL)_axShouldTakeBackFocus;
+- (void)_axTakeBakeFocusWithHeading:(unsigned long long)arg1;
 - (id)disconnect;
 
 @end

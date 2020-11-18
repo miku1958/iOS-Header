@@ -86,6 +86,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
+- (BOOL)CAMLTypeSupportedForKey:(id)arg1;
 - (struct Object *)CA_copyRenderValue;
 - (void)CA_prepareRenderValue;
 - (id)copyWithZone:(struct _NSZone *)arg1;

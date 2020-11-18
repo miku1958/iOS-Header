@@ -8,7 +8,7 @@
 
 #import <SafariServices/SFPasswordDetailViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, WBSAutoFillQuirksManager, WBSSavedPasswordAuditor, WBSSavedPasswordStore;
+@class NSArray, NSString, WBSAutoFillQuirksManager, WBSPasswordEvaluator, WBSSavedPasswordAuditor, WBSSavedPasswordStore;
 @protocol _SFPasswordAuditingViewControllerDelegate;
 
 @interface _SFPasswordAuditingViewController : _SFPasswordTableViewController <SFPasswordDetailViewControllerDelegate>
@@ -16,7 +16,8 @@
     WBSAutoFillQuirksManager *_autoFillQuirksManager;
     WBSSavedPasswordAuditor *_savedPasswordAuditor;
     WBSSavedPasswordStore *_savedPasswordStore;
-    NSArray *_reusedPasswords;
+    NSArray *_flaggedPasswordCellData;
+    WBSPasswordEvaluator *_passwordEvaluator;
     id<_SFPasswordAuditingViewControllerDelegate> _delegate;
 }
 
@@ -28,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (void)_reloadSavedPasswords;
+- (id)_warningStringForPasswordCellData:(id)arg1;
 - (id)initWithSiteMetadataManager:(id)arg1 autoFillQuirksManager:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)passwordDetailViewControllerDidUpdate:(id)arg1;

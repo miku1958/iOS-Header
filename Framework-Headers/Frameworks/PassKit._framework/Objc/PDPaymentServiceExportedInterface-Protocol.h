@@ -6,15 +6,23 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSCalendar, NSData, NSDate, NSSet, NSString, PKApplyWebServiceApplicationDeleteRequest, PKApplyWebServiceApplyRequest, PKApplyWebServiceDocumentSubmissionRequest, PKApplyWebServiceTermsRequest, PKExpressPassInformation, PKMerchant, PKPaymentApplication, PKPaymentProductsActionRequest, PKPaymentTransaction, PKPaymentWebServiceContext;
+@class NSArray, NSCalendar, NSData, NSDate, NSError, NSSet, NSString, NSUUID, PKAppletSubcredential, PKAppletSubcredentialSharingInvitationRequest, PKApplyWebServiceApplicationDeleteRequest, PKApplyWebServiceApplyRequest, PKApplyWebServiceDocumentSubmissionRequest, PKApplyWebServiceTermsRequest, PKExpressPassInformation, PKMerchant, PKPaymentApplication, PKPaymentProductsActionRequest, PKPaymentTransaction, PKPaymentWebServiceContext, PKPlaceholderPassConfiguration;
 
 @protocol PDPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)accountAttestationAnonymizationSaltWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)addPlaceholderPassWithConfiguration:(PKPlaceholderPassConfiguration *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
+- (void)addSharingInvitationReceipts:(NSArray *)arg1 onCredentialWithIdentifier:(NSString *)arg2 withCompletion:(void (^)(BOOL))arg3;
+- (void)addSubcredential:(PKAppletSubcredential *)arg1 fromSharingInvitationWithIdentifier:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)approvedTransactionsForPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 limit:(long long)arg6 completion:(void (^)(NSSet *))arg7;
 - (void)cashbackByPeriodFromPassUniqueIdentifier:(NSString *)arg1 withStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3 calendar:(NSCalendar *)arg4 calendarUnit:(unsigned long long)arg5 type:(long long)arg6 completion:(void (^)(NSArray *))arg7;
 - (void)categoryVisualizationMagnitudesForPassUniqueID:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)conflictingExpressPassIdentifiersForPassInformation:(PKExpressPassInformation *)arg1 withCompletion:(void (^)(NSSet *))arg2;
 - (void)conflictingExpressPassIdentifiersForPassInformation:(PKExpressPassInformation *)arg1 withReferenceExpressState:(NSSet *)arg2 completion:(void (^)(NSSet *))arg3;
+- (void)credentialWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAppletSubcredential *))arg2;
 - (void)defaultPaymentPassUniqueIdentifier:(void (^)(NSString *))arg1;
+- (void)deleteTransactionReceiptWithUniqueID:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
+- (void)didReceiveSharingInvitationRequest:(PKAppletSubcredentialSharingInvitationRequest *)arg1 withCompletion:(void (^)(BOOL))arg2;
+- (void)didReceiveSharingInvitationWithIdentifier:(NSString *)arg1 fromOriginatorIDSHandle:(NSString *)arg2 sharingSessionIdentifier:(NSUUID *)arg3 metadata:(NSData *)arg4 completion:(void (^)(BOOL))arg5;
 - (void)disbursementVoucherWithDisbursementSource:(unsigned long long)arg1 disbursementTarget:(unsigned long long)arg2 bundleIdentifier:(NSString *)arg3 teamIdentifier:(NSString *)arg4 completion:(void (^)(PKDisbursementVoucher *))arg5;
 - (void)downloadAllPaymentPassesWithHandler:(void (^)(void))arg1;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -26,6 +34,7 @@
 - (void)featureApplicationWithIdentifier:(NSString *)arg1 completion:(void (^)(PKFeatureApplication *))arg2;
 - (void)featureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)featureApplicationsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)finishedKeyExchangeForCredential:(PKAppletSubcredential *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)initializeSecureElement:(void (^)(BOOL))arg1;
 - (void)initializeSecureElementIfNecessaryWithHandler:(void (^)(BOOL, NSData *, NSData *))arg1;
 - (void)insertOrUpdatePaymentTransaction:(PKPaymentTransaction *)arg1 forPassUniqueIdentifier:(NSString *)arg2 paymentApplication:(PKPaymentApplication *)arg3 handler:(void (^)(PKPaymentTransaction *))arg4;
@@ -45,19 +54,28 @@
 - (void)removeExpressPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSSet *))arg2;
 - (void)removeExpressPassesWithCardType:(long long)arg1 completion:(void (^)(BOOL, NSSet *))arg2;
 - (void)removeMapsDataForTransactionWithIdentifier:(NSString *)arg1 forPassUniqueIdentifier:(NSString *)arg2 issueReportIdentifier:(NSString *)arg3 completion:(void (^)(PKPaymentTransaction *))arg4;
+- (void)removeSharingInvitationReceiptWithIdentifier:(NSString *)arg1 onCredential:(NSString *)arg2 withCompletion:(void (^)(BOOL))arg3;
+- (void)removeSharingInvitationWithIdentifier:(NSString *)arg1 withCompletion:(void (^)(BOOL))arg2;
+- (void)requestBackgroundRegistrationForCredentialWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)requiresUpgradedPasscodeWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)setAccountAttestationAnonymizationSalt:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)setDefaultPaymentPassUniqueIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;
 - (void)setDeviceCheckInContextBuildVersion:(NSString *)arg1 outstandingAction:(long long)arg2 forRegion:(NSString *)arg3;
 - (void)setExpressWithPassInformation:(PKExpressPassInformation *)arg1 credential:(NSData *)arg2 completion:(void (^)(BOOL, NSSet *))arg3;
 - (void)setSharedPaymentWebServiceContext:(PKPaymentWebServiceContext *)arg1 handler:(void (^)(void))arg2;
 - (void)sharedPaymentWebServiceContextWithHandler:(void (^)(PKPaymentWebServiceContext *))arg1;
+- (void)sharingInvitationWasInvalidated:(NSString *)arg1 withCredentialIdentifier:(NSString *)arg2 error:(NSError *)arg3 completion:(void (^)(BOOL))arg4;
 - (void)storePassOwnershipToken:(NSString *)arg1 withIdentifier:(NSString *)arg2;
+- (void)storeTransactionReceiptData:(NSData *)arg1 completion:(void (^)(PKTransactionReceipt *))arg2;
+- (void)subcredentialInvitationsWithCompletion:(void (^)(NSSet *))arg1;
 - (void)submitApplyRequest:(PKApplyWebServiceApplyRequest *)arg1 completion:(void (^)(PKApplyWebServiceApplyResponse *, NSError *))arg2;
 - (void)submitDeleteRequest:(PKApplyWebServiceApplicationDeleteRequest *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)submitDocumentRequest:(PKApplyWebServiceDocumentSubmissionRequest *)arg1 completion:(void (^)(PKApplyWebServiceApplyResponse *, NSError *))arg2;
 - (void)submitTermsRequest:(PKApplyWebServiceTermsRequest *)arg1 completion:(void (^)(PKApplyWebServiceApplyResponse *, NSError *))arg2;
 - (void)submitTransactionAnswerForTransaction:(NSString *)arg1 questionType:(unsigned long long)arg2 answer:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)transactionCountByPeriodForPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 calendar:(NSCalendar *)arg4 unit:(unsigned long long)arg5 includePurchaseTotal:(BOOL)arg6 completion:(void (^)(NSArray *))arg7;
+- (void)transactionReceiptForTransactionWithIdentifier:(NSString *)arg1 updateIfNecessary:(BOOL)arg2 completion:(void (^)(PKTransactionReceipt *))arg3;
+- (void)transactionReceiptWithUniqueID:(NSString *)arg1 completion:(void (^)(PKTransactionReceipt *))arg2;
 - (void)transactionWithReferenceIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentTransaction *))arg2;
 - (void)transactionWithServiceIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentTransaction *))arg2;
 - (void)transactionWithTransactionIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentTransaction *))arg2;
@@ -71,6 +89,7 @@
 - (void)transactionsForPaymentPassWithuniqueIdentifier:(NSString *)arg1 withMerchantCategory:(long long)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 startDate:(NSDate *)arg5 endDate:(NSDate *)arg6 limit:(long long)arg7 completion:(void (^)(NSSet *))arg8;
 - (void)transactionsRequiringReviewForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)transactionsWithTransactionSource:(unsigned long long)arg1 withBackingData:(unsigned long long)arg2 limit:(long long)arg3 completion:(void (^)(NSSet *))arg4;
+- (void)updateMetadataOnPassWithIdentifier:(NSString *)arg1 credential:(PKAppletSubcredential *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

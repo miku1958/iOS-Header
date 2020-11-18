@@ -12,7 +12,7 @@
 {
 }
 
-+ (id)_messagesTableSchemaAndAssociationsToResolve:(id *)arg1;
++ (id)_messagesTableSchemaAndForeignKeysToResolve:(id *)arg1 associationsToResolve:(id *)arg2;
 + (id)accountsTableSchema;
 + (id)additionalSchemaProviders;
 + (id)mailboxesTableSchema;

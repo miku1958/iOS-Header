@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     HMAccessorySettings *_accessorySettings;
 }
 
-@property (strong, nonatomic) HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;
+@property (weak, nonatomic) HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<_HMAccesorySettingGroupDelegate> delegate; // @synthesize delegate=_delegate;

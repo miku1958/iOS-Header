@@ -26,6 +26,8 @@
     BOOL __doesSZExtractorConsumeExtractedData;
     BOOL _startedUserInitiated;
     BOOL _initializedWithAVAsset;
+    unsigned short __TLSMinimumSupportedProtocolVersion;
+    unsigned short __TLSMaximumSupportedProtocolVersion;
     unsigned int _qos;
     unsigned long long _identifier;
     unsigned long long _taskKind;
@@ -81,6 +83,8 @@
 @property (copy) NSURL *AVAssetURL; // @synthesize AVAssetURL=_AVAssetURL;
 @property (strong) AVURLAsset *AVURLAsset; // @synthesize AVURLAsset=_AVURLAsset;
 @property (copy) NSURL *URL; // @synthesize URL=_URL;
+@property unsigned short _TLSMaximumSupportedProtocolVersion; // @synthesize _TLSMaximumSupportedProtocolVersion=__TLSMaximumSupportedProtocolVersion;
+@property unsigned short _TLSMinimumSupportedProtocolVersion; // @synthesize _TLSMinimumSupportedProtocolVersion=__TLSMinimumSupportedProtocolVersion;
 @property (strong) NSDictionary *_backgroundTrailers; // @synthesize _backgroundTrailers=__backgroundTrailers;
 @property (nonatomic) BOOL _doesSZExtractorConsumeExtractedData; // @synthesize _doesSZExtractorConsumeExtractedData=__doesSZExtractorConsumeExtractedData;
 @property (strong, nonatomic) id<SZExtractor> _extractor; // @synthesize _extractor=__extractor;

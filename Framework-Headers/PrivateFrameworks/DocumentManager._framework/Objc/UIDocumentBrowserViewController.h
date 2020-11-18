@@ -94,6 +94,7 @@
 + (id)placeholderURLForDownloadsFolder;
 - (void).cxx_destruct;
 - (void)__commonInit;
+- (void)_awakingNoOpKeyCommandWasPerformed:(id)arg1;
 - (void)_clearShownViewControllers;
 - (void)_commitDocumentURLPreview:(id)arg1;
 - (BOOL)_delegateRespondsToSelector:(SEL)arg1;
@@ -106,6 +107,7 @@
 - (void)_displayRemoteControllerIfNeeded;
 - (void)_embedDocumentBrowserViewController;
 - (void)_embedViewController:(id)arg1;
+- (void)_establishFirstResponderOnServiceSideForKeyCommand:(id)arg1;
 - (void)_failedToImportDocumentAtURL:(id)arg1 error:(id)arg2;
 - (void)_importDocumentAtURL:(id)arg1 neighbourURL:(id)arg2 mode:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_presentActivityViewControllerForItems:(id)arg1 withPopoverTracker:(id)arg2 isContentManaged:(BOOL)arg3 additionalActivities:(id)arg4 activityProxy:(id)arg5;
@@ -117,10 +119,12 @@
 - (id)_symbolicDownloadsURLWrapper;
 - (void)_updateRemoteBarButtonFrames:(id)arg1 forUUID:(id)arg2;
 - (void)addOperationToServiceQueue:(CDUnknownBlockType)arg1;
+- (void)applicationDidBecomeActive:(id)arg1;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)clearCurrentOpenInteraction;
+- (void)dealloc;
 - (void)didTapTryAgainInErrorViewController:(id)arg1;
 - (void)dismissAllPresentedViewControllers:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissingKeyCommandWasPerformed:(id)arg1;

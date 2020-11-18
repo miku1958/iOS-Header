@@ -16,6 +16,8 @@
     BOOL _forceModernEncoding;
     long long _cardType;
     NSString *_passUniqueIdentifier;
+    NSDictionary *_subcredentialCredentialIdentifiers;
+    NSDictionary *_subcredentialEndpointIdentifiers;
     NSString *_paymentApplicationIdentifier;
     NSString *_expressMode;
     long long _expressPassType;
@@ -27,12 +29,14 @@
 @property (nonatomic) BOOL forceModernEncoding; // @synthesize forceModernEncoding=_forceModernEncoding;
 @property (readonly, nonatomic) NSString *passUniqueIdentifier; // @synthesize passUniqueIdentifier=_passUniqueIdentifier;
 @property (readonly, nonatomic) NSString *paymentApplicationIdentifier; // @synthesize paymentApplicationIdentifier=_paymentApplicationIdentifier;
+@property (readonly, nonatomic) NSDictionary *subcredentialCredentialIdentifiers; // @synthesize subcredentialCredentialIdentifiers=_subcredentialCredentialIdentifiers;
+@property (readonly, nonatomic) NSDictionary *subcredentialEndpointIdentifiers; // @synthesize subcredentialEndpointIdentifiers=_subcredentialEndpointIdentifiers;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_createLegacyPropertiesIfNecessary;
 - (void)_createModernPropertiesIfNecessary;
-- (id)_initForPaymentPass:(id)arg1 configuration:(id)arg2;
+- (id)_initForPaymentPass:(id)arg1 configuration:(id)arg2 subcredentialCredentialIdentifiers:(id)arg3;
 - (id)criteriaForPaymentApplicationIdentifier:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

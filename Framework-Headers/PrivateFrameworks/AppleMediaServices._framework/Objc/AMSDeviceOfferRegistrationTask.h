@@ -35,6 +35,11 @@
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
 - (void).cxx_destruct;
+- (id)_bucketedOffers:(id)arg1;
+- (id)_deviceOffersURL;
+- (id)_latestOffersWithFetchedDeviceOffers:(id)arg1 offersStore:(id)arg2;
+- (id)_requestParameters;
+- (void)_updateWithDeviceOffers:(id)arg1;
 - (id)initWithAccount:(id)arg1 bag:(id)arg2;
 - (id)perform;
 

@@ -47,6 +47,7 @@
 - (id)outputsForSynchronizer;
 - (id)prepareToStart;
 - (unsigned long long)providedDataTypes;
+- (void)reconfigure:(id)arg1;
 - (void)stop;
 
 @end

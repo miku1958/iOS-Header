@@ -12,7 +12,6 @@
 @interface NTKWorkoutComplicationDataSource : NTKComplicationDataSource
 {
     NSObject<OS_dispatch_queue> *_healthQueue;
-    int _lockStateNotifyToken;
     BOOL _deviceIsLocked;
     int _workoutStateNotifyToken;
     NSArray *_animationImages;

@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)executionDidBegin;
-- (id)generateTempFilePath;
+- (id)generateFilePathForURL:(id)arg1;
 - (id)init;
 - (id)initWithBootURL:(id)arg1 isDeveloper:(BOOL)arg2;
 - (BOOL)verifyExtendedValidationWithTrust:(struct __SecTrust *)arg1;

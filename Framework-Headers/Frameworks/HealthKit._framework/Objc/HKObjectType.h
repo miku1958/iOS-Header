@@ -17,7 +17,6 @@
     HKObjectType *_parentType;
 }
 
-@property (readonly, nonatomic, getter=_isClinicalType) BOOL _clinicalType;
 @property (readonly, nonatomic) long long code;
 @property (readonly, nonatomic) Class dataObjectClass;
 @property (readonly, nonatomic, getter=_definition) CDStruct_0970132e *definition;

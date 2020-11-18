@@ -77,6 +77,7 @@
 - (BOOL)supportsBluetoothSharing;
 - (BOOL)supportsBufferedAirPlay;
 - (BOOL)supportsExternalScreen;
+- (BOOL)supportsHAP;
 - (BOOL)supportsRapport;
 - (id)uid;
 - (float)volume;

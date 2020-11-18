@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class TKTokenConfigurationProxy;
+@class TKTokenConfigurationConnection;
 
 @interface TKTokenConfigurationTransaction : NSObject
 {
-    TKTokenConfigurationProxy *_proxy;
+    TKTokenConfigurationConnection *_configurationConnection;
 }
 
 - (void).cxx_destruct;
 - (void)commit;
 - (void)dealloc;
-- (id)initWithProxy:(id)arg1;
+- (id)initWithConfigurationConnection:(id)arg1;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @protocol VUIProductUberBackgroundInterface <NSObject>
 
+@property (readonly, nonatomic) BOOL disableGradientBelowNavBar;
 @property (readonly, nonatomic) BOOL isUberLayoutActive;
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly, nonatomic) double topThreshold;

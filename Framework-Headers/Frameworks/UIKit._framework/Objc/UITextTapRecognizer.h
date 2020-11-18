@@ -11,12 +11,15 @@
 @interface UITextTapRecognizer : UITapGestureRecognizer
 {
     NSArray *_touchesForTap;
+    double _touchBasedAllowableMovement;
 }
 
+@property (nonatomic) double touchBasedAllowableMovement; // @synthesize touchBasedAllowableMovement=_touchBasedAllowableMovement;
 @property (strong, nonatomic) NSArray *touchesForTap; // @synthesize touchesForTap=_touchesForTap;
 
 - (void).cxx_destruct;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 
 @end

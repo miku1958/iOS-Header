@@ -25,7 +25,7 @@
 + (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 + (BOOL)supportsWorldTracking;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (void)createTechniques:(id)arg1;
 - (id)imageSensorSettings;
 - (id)imageSensorSettingsForLowPower;
 - (id)imageSensorSettingsForWorldTracking;

@@ -15,10 +15,17 @@
 
 @property (copy, nonatomic) NSString *outletKeyPath; // @synthesize outletKeyPath=_outletKeyPath;
 
++ (id)restoreDefaultSettingsButton;
 + (id)rowWithTitle:(id)arg1 action:(id)arg2;
 + (id)rowWithTitle:(id)arg1 outletKeyPath:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_defaultAction;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)outletKeyPath:(id)arg1;
 
 @end

@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUIButtonLayout *subscribeButtonLayout; // @synthesize subscribeButtonLayout=_subscribeButtonLayout;
 @property (strong, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 
++ (void)_updateTextColorForDescriptionLayout:(id)arg1 hasBgImage:(BOOL)arg2;
++ (void)_updateTextColorForDisclaimerLayout:(id)arg1 hasBgImage:(BOOL)arg2;
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
 - (void).cxx_destruct;
 - (id)init;

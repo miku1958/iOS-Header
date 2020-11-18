@@ -26,7 +26,7 @@
 + (id)supportedVideoFormats;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (void)createTechniques:(id)arg1;
 - (id)description;
 - (id)imageSensorSettings;
 - (id)init;

@@ -179,10 +179,6 @@ struct Info {
     struct __CFString *_field8;
 };
 
-struct NSObject {
-    Class _field1;
-};
-
 struct ObjcSharedPtr<NSString> {
     id _field1;
 };
@@ -852,7 +848,9 @@ struct array<unsigned char, 20> {
 };
 
 struct atomic<int> {
-    _Atomic int __a_;
+    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+        _Atomic int __a_value;
+    } __a_;
 };
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {

@@ -30,10 +30,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_shake;
 - (void)didCompleteWithResponse:(id)arg1;
-- (id)initWithRelyingPartyID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithPanel:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)newDialogViewRepresentation;
 - (long long)presentationStyle;
-- (void)transitionToState:(int)arg1;
+- (void)transitionToState:(int)arg1 forPanel:(id)arg2;
 
 @end
 

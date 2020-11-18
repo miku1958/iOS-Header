@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)outputIsExemptFromTaintTrackingInheritance;
 - (id)allPossibleDescriptionResults;
 - (id)descriptionResult;
 - (id)descriptionSummary;

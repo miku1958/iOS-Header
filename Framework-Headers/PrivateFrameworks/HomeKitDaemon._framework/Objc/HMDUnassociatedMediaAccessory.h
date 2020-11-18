@@ -30,6 +30,7 @@
 - (id)initWithAdvertisement:(id)arg1 messageDispatcher:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isHAPAirPlay2Accessory;
 - (id)logIdentifier;
 - (void)updateAdvertisementData:(id)arg1;
 

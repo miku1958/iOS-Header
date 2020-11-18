@@ -30,11 +30,11 @@
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
-- (void)_renameDuplicateMeCardTypes:(struct NSArray *)arg1;
-- (void)_treatShortcuts:(struct NSArray *)arg1 error:(id)arg2;
+- (void)_renameDuplicateMeCardTypes:(id)arg1;
+- (void)_treatShortcuts:(id)arg1 error:(id)arg2;
 - (void)_updateSuggestionEntries;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
-- (id)initWithDelegate:(id)arg1 name:(struct NSString *)arg2;
+- (id)initWithDelegate:(id)arg1 name:(id)arg2;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;

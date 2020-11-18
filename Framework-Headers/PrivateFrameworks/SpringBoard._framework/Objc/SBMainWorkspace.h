@@ -151,6 +151,7 @@
 - (id)idleTimerProvider:(id)arg1 didProposeBehavior:(id)arg2 forReason:(id)arg3;
 - (id)init;
 - (id)initWithEventQueue:(id)arg1;
+- (BOOL)isKeyboardVisibleForSpringBoardForTransientOverlayPresentationManager:(id)arg1;
 - (void)powerDownViewControllerDidDisappear:(id)arg1;
 - (void)powerDownViewControllerRequestsDismissal:(id)arg1;
 - (void)powerDownViewControllerRequestsPowerDown:(id)arg1;

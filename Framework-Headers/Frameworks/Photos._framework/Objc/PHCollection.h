@@ -7,6 +7,7 @@
 #import <Photos/PHObject.h>
 
 @class NSArray, NSDate, NSManagedObjectID, NSSortDescriptor, NSString;
+@protocol PHCollectionPresentationHints;
 
 @interface PHCollection : PHObject
 {
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) NSManagedObjectID *parentFolderID;
+@property (readonly, copy, nonatomic) id<PHCollectionPresentationHints> presentationHints;
 @property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
 
 + (id)entityKeyMap;

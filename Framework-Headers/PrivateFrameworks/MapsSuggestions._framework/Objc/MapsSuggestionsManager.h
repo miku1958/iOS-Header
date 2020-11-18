@@ -10,20 +10,20 @@
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSourceDelegate-Protocol.h>
 
-@class GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsFakePullSource, MapsSuggestionsTracker, NSDate, NSHashTable, NSString;
+@class GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsFakePullSource, MapsSuggestionsTracker, NSArray, NSDate, NSHashTable, NSMutableDictionary, NSMutableSet, NSString;
 @protocol MapsSuggestionsLocationUpdater, MapsSuggestionsStrategy, OS_dispatch_queue;
 
 @interface MapsSuggestionsManager : NSObject <MapsSuggestionsObject, MapsSuggestionsSourceDelegate, MapsSuggestionsLocationUpdaterDelegate>
 {
     id<MapsSuggestionsStrategy> _strategy;
-    struct NSMutableDictionary *_additionalFiltersPerSink;
+    NSMutableDictionary *_additionalFiltersPerSink;
     unsigned long long _countToRequest;
     MapsSuggestionsTracker *_tracker;
     NSDate *_etaValidUntil;
-    struct NSMutableSet *_sources;
+    NSMutableSet *_sources;
     NSHashTable *_sinks;
-    struct NSMutableDictionary *_storage;
-    struct NSArray *_latestResults;
+    NSMutableDictionary *_storage;
+    NSArray *_latestResults;
     NSObject<OS_dispatch_queue> *_gatheringQueue;
     NSObject<OS_dispatch_queue> *_storageQueue;
     BOOL _dirtyFlag;
@@ -51,18 +51,18 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
-- (unsigned long long)_addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
-- (unsigned long long)_deleteEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
-- (struct NSArray *)_filteredEntries:(struct NSArray *)arg1 forSink:(struct NSString *)arg2 limit:(unsigned long long)arg3;
+- (unsigned long long)_addOrUpdateSuggestionEntries:(id)arg1 source:(id)arg2;
+- (unsigned long long)_deleteEntries:(id)arg1 source:(id)arg2;
+- (id)_filteredEntries:(id)arg1 forSink:(id)arg2 limit:(unsigned long long)arg3;
 - (BOOL)_loadStorageFromFile:(id)arg1;
-- (struct NSArray *)_pruneExpiredFromEntries:(struct NSArray *)arg1;
+- (id)_pruneExpiredFromEntries:(id)arg1;
 - (void)_pruneExpiredSourceEntries;
 - (BOOL)_removeEntry:(id)arg1;
-- (BOOL)_removeEntry:(id)arg1 sourceName:(struct NSString *)arg2;
+- (BOOL)_removeEntry:(id)arg1 sourceName:(id)arg2;
 - (void)_restartLocationUpdaterIfNeeded;
-- (void)_scheduleInvalidateSinksOnFirstExpiredOfEntries:(struct NSArray *)arg1;
+- (void)_scheduleInvalidateSinksOnFirstExpiredOfEntries:(id)arg1;
 - (void)_sendInvalidateToAllSinks;
-- (BOOL)_sink:(struct NSString *)arg1 allowsEntry:(id)arg2;
+- (BOOL)_sink:(id)arg1 allowsEntry:(id)arg2;
 - (void)_startAllSources;
 - (void)_startLocationUpdater;
 - (void)_startSource:(id)arg1;
@@ -74,16 +74,16 @@
 - (void)_updateSource:(id)arg1 forType:(long long)arg2 repeat:(BOOL)arg3;
 - (void)_updateSource:(id)arg1 repeat:(BOOL)arg2;
 - (void)_wipeStaleETAs;
-- (void)addAdditionalFilter:(id)arg1 forSink:(struct NSString *)arg2;
-- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
+- (void)addAdditionalFilter:(id)arg1 forSink:(id)arg2;
+- (unsigned long long)addOrUpdateSuggestionEntries:(id)arg1 source:(id)arg2;
 - (void)attachSink:(id)arg1;
 - (BOOL)attachSource:(id)arg1;
 - (void)awaitGatheringQueue;
 - (void)awaitStorageQueue;
-- (unsigned long long)clearAllEntriesFromSource:(struct NSString *)arg1;
+- (unsigned long long)clearAllEntriesFromSource:(id)arg1;
 - (void)clearResults;
 - (void)dealloc;
-- (unsigned long long)deleteEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
+- (unsigned long long)deleteEntries:(id)arg1 source:(id)arg2;
 - (BOOL)detachSink:(id)arg1;
 - (BOOL)detachSource:(id)arg1;
 - (id)dumpStorage;
@@ -94,16 +94,16 @@
 - (id)initWithStrategy:(id)arg1 locationUpdater:(id)arg2 ETARequirements:(id)arg3;
 - (BOOL)loadStorageFromFile:(id)arg1;
 - (BOOL)loadStorageFromFile:(id)arg1 callback:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
-- (void)removeAdditionalFilter:(id)arg1 forSink:(struct NSString *)arg2;
+- (void)removeAdditionalFilter:(id)arg1 forSink:(id)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)saveStorageToFile:(id)arg1;
 - (void)scheduleUpdateAllSourcesOnce;
 - (void)sendInvalidateToAllSinks;
 - (void)setTitleFormatter:(id)arg1 forType:(long long)arg2;
-- (struct NSSet *)sinks;
-- (struct NSSet *)sources;
-- (struct NSDictionary *)storage;
-- (struct NSArray *)storageForSource:(id)arg1;
+- (id)sinks;
+- (id)sources;
+- (id)storage;
+- (id)storageForSource:(id)arg1;
 - (BOOL)topSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 transportType:(int)arg3 callback:(CDUnknownBlockType)arg4 onQueue:(id)arg5;
 - (void)trackerRefreshedETAsUntil:(id)arg1;
 - (void)updateLocation:(id)arg1;

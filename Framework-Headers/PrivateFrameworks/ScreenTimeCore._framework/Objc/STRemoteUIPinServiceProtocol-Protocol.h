@@ -4,8 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSString;
+
 @protocol STRemoteUIPinServiceProtocol
+- (void)authenticateRestrictionsPasscode:(NSString *)arg1 replyHandler:(void (^)(NSError *))arg2;
 - (void)isRestrictionsPasscodeSetWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)presentRemotePINControllerWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)restrictionsPasscodeEntryAttemptCountWithReplyHandler:(void (^)(NSNumber *, NSError *))arg1;
 @end
 

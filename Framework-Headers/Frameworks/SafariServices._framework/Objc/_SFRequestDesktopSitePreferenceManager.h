@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSPerSitePreferenceManager.h>
+#import <SafariSharedUI/WBSPerSitePreferenceManager.h>
 
 #import <SafariServices/WBSPerSitePreferenceBinaryToggleItemManager-Protocol.h>
 #import <SafariServices/WBSPerSitePreferenceManagerDefaultsDelegate-Protocol.h>

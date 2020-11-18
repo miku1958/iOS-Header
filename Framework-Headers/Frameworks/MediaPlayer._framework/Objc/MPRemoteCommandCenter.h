@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPRemoteCommandDelegate_Internal-Protocol.h>
 
-@class MPAdvanceRepeatModeCommand, MPAdvanceShuffleModeCommand, MPChangePlaybackPositionCommand, MPChangePlaybackProgressCommand, MPChangePlaybackRateCommand, MPChangeRepeatModeCommand, MPChangeShuffleModeCommand, MPFeedbackCommand, MPInsertIntoPlaybackQueueCommand, MPMRNowPlayingPlayerPathWrapper, MPRatingCommand, MPRemoteCommand, MPReorderQueueCommand, MPSetPlaybackQueueCommand, MPSetPlaybackSessionCommand, MPSkipIntervalCommand, NSMutableArray, NSString;
+@class MPAdvanceRepeatModeCommand, MPAdvanceShuffleModeCommand, MPChangePlaybackPositionCommand, MPChangePlaybackRateCommand, MPChangeQueueEndActionCommand, MPChangeRepeatModeCommand, MPChangeShuffleModeCommand, MPFeedbackCommand, MPInsertIntoPlaybackQueueCommand, MPMRNowPlayingPlayerPathWrapper, MPRatingCommand, MPRemoteCommand, MPReorderQueueCommand, MPSetPlaybackQueueCommand, MPSetPlaybackSessionCommand, MPSkipIntervalCommand, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPRemoteCommandCenter : NSObject <MPRemoteCommandDelegate_Internal>
@@ -54,9 +54,9 @@
     MPRemoteCommand *_playItemInQueueCommand;
     MPFeedbackCommand *_addNowPlayingItemToLibraryCommand;
     MPFeedbackCommand *_addItemToLibraryCommand;
-    MPChangePlaybackProgressCommand *_changePlaybackProgressCommand;
     MPSetPlaybackSessionCommand *_setPlaybackSessionCommand;
     MPRemoteCommand *_reshuffleCommand;
+    MPChangeQueueEndActionCommand *_changeQueueEndActionCommand;
     NSString *_playerID;
 }
 
@@ -66,8 +66,8 @@
 @property (readonly, nonatomic) MPAdvanceShuffleModeCommand *advanceShuffleModeCommand; // @synthesize advanceShuffleModeCommand=_advanceShuffleModeCommand;
 @property (readonly, nonatomic) MPFeedbackCommand *bookmarkCommand; // @synthesize bookmarkCommand=_bookmarkCommand;
 @property (readonly, nonatomic) MPChangePlaybackPositionCommand *changePlaybackPositionCommand; // @synthesize changePlaybackPositionCommand=_changePlaybackPositionCommand;
-@property (readonly, nonatomic) MPChangePlaybackProgressCommand *changePlaybackProgressCommand; // @synthesize changePlaybackProgressCommand=_changePlaybackProgressCommand;
 @property (readonly, nonatomic) MPChangePlaybackRateCommand *changePlaybackRateCommand; // @synthesize changePlaybackRateCommand=_changePlaybackRateCommand;
+@property (readonly, nonatomic) MPChangeQueueEndActionCommand *changeQueueEndActionCommand; // @synthesize changeQueueEndActionCommand=_changeQueueEndActionCommand;
 @property (readonly, nonatomic) MPChangeRepeatModeCommand *changeRepeatModeCommand; // @synthesize changeRepeatModeCommand=_changeRepeatModeCommand;
 @property (readonly, nonatomic) MPChangeShuffleModeCommand *changeShuffleModeCommand; // @synthesize changeShuffleModeCommand=_changeShuffleModeCommand;
 @property (readonly, nonatomic) MPRemoteCommand *createRadioStationCommand; // @synthesize createRadioStationCommand=_createRadioStationCommand;

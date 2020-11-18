@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (id)containedVariables;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)getProcessedPair:(CDUnknownBlockType)arg1 variableSource:(id)arg2 parameter:(id)arg3 userInputRequiredHandler:(CDUnknownBlockType)arg4;
+- (void)getProcessedPair:(CDUnknownBlockType)arg1 context:(id)arg2 userInputRequiredHandler:(CDUnknownBlockType)arg3;
 - (id)initWithKey:(id)arg1 value:(id)arg2;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

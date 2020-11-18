@@ -39,6 +39,7 @@
     NSString *_messageIdentifier;
     _SFPBURL *_messageURL;
     NSString *_persistentID;
+    NSString *_universalLibraryID;
 }
 
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
@@ -72,6 +73,7 @@
 @property (copy, nonatomic) NSArray *storeIdentifiers; // @synthesize storeIdentifiers=_storeIdentifiers;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property (copy, nonatomic) NSString *universalLibraryID; // @synthesize universalLibraryID=_universalLibraryID;
 
 - (void).cxx_destruct;
 - (void)addStoreIdentifiers:(id)arg1;

@@ -18,6 +18,7 @@
 + (BOOL)currentProcessInSystemSession;
 + (BOOL)currentProcessIsSandboxed;
 + (id)currentProcessName;
++ (BOOL)isAppSSOServiceAvailable;
 + (BOOL)isInternalBuild;
 + (id)mapArray:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (int)mmapFile:(id)arg1 mode:(long long)arg2 mmapData:(id *)arg3;

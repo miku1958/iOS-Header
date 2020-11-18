@@ -23,10 +23,11 @@
 
 - (void).cxx_destruct;
 - (void)_disableCloudServicesInPhotoLibraryBundle:(id)arg1 withReason:(id)arg2;
+- (void)closeAndDeletePhotoLibraryAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getActivePhotoLibrariesWithReply:(CDUnknownBlockType)arg1;
 - (void)getPhotoLibraryURLsWithReply:(CDUnknownBlockType)arg1;
 - (id)initWithConnectionAuthorization:(id)arg1 bundleController:(id)arg2;
-- (void)setSystemPhotoLibraryURL:(id)arg1 bookmark:(id)arg2 options:(unsigned short)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)setSystemPhotoLibraryURL:(id)arg1 sandboxExtension:(id)arg2 options:(unsigned short)arg3 reply:(CDUnknownBlockType)arg4;
 
 @end
 

@@ -138,6 +138,8 @@ struct CGSize {
     double height;
 };
 
+struct Cache<unsigned char, std::__1::shared_ptr<geo::Polygon2<double>>, std::__1::hash<unsigned char>, LRUPolicy>;
+
 struct Cache<unsigned char, std::__1::shared_ptr<std::__1::vector<geo::Mercator2<double>, std::__1::allocator<geo::Mercator2<double>>>>, std::__1::hash<unsigned char>, LRUPolicy>;
 
 struct Camera {
@@ -573,7 +575,7 @@ struct GlobeMainViewNode;
 
 struct GlobeOverlayContainer {
     struct GlobeView *_field1;
-    struct NSMutableArray *_field2;
+    id _field2;
     struct mutex _field3;
     double _field4;
 };
@@ -597,7 +599,7 @@ struct GlobeView {
     BOOL _field14;
     unsigned int _field15;
     unsigned int _field16;
-    struct VKClassicGlobeCanvas *_field17;
+    id _field17;
     BOOL _field18;
     BOOL _field19;
     struct AnimationManager {
@@ -1259,7 +1261,7 @@ struct MuninNavigation;
 struct MuninRoadEdge {
     CDStruct_183601bc *_field1;
     float _field2;
-    basic_string_23d93216 _field3;
+    struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, mdm::Allocator>> _field3;
     Box_3d7e3c2c _field4;
     unsigned long long _field5;
     unsigned long long _field6;
@@ -1299,8 +1301,8 @@ struct MuninSceneLogic {
 };
 
 struct MuninSettings {
-    double _field1;
-    double _field2;
+    struct MuninTransportationSettings _field1;
+    struct MuninTransportationSettings _field2;
     double _field3;
     double _field4;
     double _field5;
@@ -1310,32 +1312,38 @@ struct MuninSettings {
     double _field9;
     double _field10;
     double _field11;
-    double _field12;
-    double _field13;
-    double _field14;
+    unsigned char _field12;
+    unsigned short _field13;
+    int _field14;
     unsigned char _field15;
-    unsigned short _field16;
-    int _field17;
-    unsigned char _field18;
-    unsigned char _field19;
+    unsigned char _field16;
+    Unit_3d259e8a _field17;
+    Unit_3d259e8a _field18;
+    Unit_3d259e8a _field19;
     Unit_3d259e8a _field20;
     Unit_3d259e8a _field21;
     Unit_3d259e8a _field22;
     Unit_3d259e8a _field23;
-    Unit_3d259e8a _field24;
-    Unit_3d259e8a _field25;
-    Unit_3d259e8a _field26;
+    double _field24;
+    double _field25;
+    double _field26;
+    double _field27;
+};
+
+struct MuninTransportationSettings {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
 };
 
 struct Mutex {
     void *mMutex;
 };
-
-struct NSDictionary {
-    Class _field1;
-};
-
-struct NSMutableArray;
 
 struct NavContext {
     CDUnknownFunctionPointerType *_field1;
@@ -2030,6 +2038,11 @@ struct StrokeBufferSizing {
 
 struct Style;
 
+struct StyleQueryOverride {
+    unsigned char _field1;
+    unsigned char _field2;
+};
+
 struct StylesheetManager<gss::PropertyID>;
 
 struct StylesheetManager<gss::ScenePropertyID>;
@@ -2185,8 +2198,6 @@ struct VKCameraState {
     Unit_3d259e8a _field3;
     double _field4;
 };
-
-struct VKClassicGlobeCanvas;
 
 struct VKEdgeInsets {
     float top;
@@ -2441,6 +2452,10 @@ struct __hash_node_base<std::__1::__hash_node<md::Anchor *, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<md::Anchor *, void *>*> *_field1;
 };
 
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*> *__next_;
+};
+
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>, void *>*> *__next_;
 };
@@ -2583,15 +2598,21 @@ struct array<std::__1::unordered_set<geo::_retain_ptr<VKAnimation *, geo::_retai
 };
 
 struct atomic<altitude::TextureMap *> {
-    _Atomic struct TextureMap *_field1;
+    struct __cxx_atomic_impl<altitude::TextureMap *, std::__1::__cxx_atomic_base_impl<altitude::TextureMap *>> {
+        _Atomic struct TextureMap *_field1;
+    } _field1;
 };
 
 struct atomic<bool> {
-    _Atomic BOOL __a_;
+    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+        _Atomic BOOL __a_value;
+    } __a_;
 };
 
 struct atomic<ggl::Texture2D *> {
-    _Atomic struct Texture2D *_field1;
+    struct __cxx_atomic_impl<ggl::Texture2D *, std::__1::__cxx_atomic_base_impl<ggl::Texture2D *>> {
+        _Atomic struct Texture2D *_field1;
+    } _field1;
 };
 
 struct basic_ostream<char, std::__1::char_traits<char>> {
@@ -3579,6 +3600,12 @@ struct unique_ptr<altitude::AnimationTimer, std::__1::default_delete<altitude::A
     } _field1;
 };
 
+struct unique_ptr<geo::Cache<unsigned char, std::__1::shared_ptr<geo::Polygon2<double>>, std::__1::hash<unsigned char>, LRUPolicy>, std::__1::default_delete<geo::Cache<unsigned char, std::__1::shared_ptr<geo::Polygon2<double>>, std::__1::hash<unsigned char>, LRUPolicy>>> {
+    struct __compressed_pair<geo::Cache<unsigned char, std::__1::shared_ptr<geo::Polygon2<double>>, std::__1::hash<unsigned char>, LRUPolicy>*, std::__1::default_delete<geo::Cache<unsigned char, std::__1::shared_ptr<geo::Polygon2<double>>, std::__1::hash<unsigned char>, LRUPolicy>>> {
+        struct Cache<unsigned char, std::__1::shared_ptr<geo::Polygon2<double>>, std::__1::hash<unsigned char>, LRUPolicy> *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<geo::Cache<unsigned char, std::__1::shared_ptr<std::__1::vector<geo::Mercator2<double>, std::__1::allocator<geo::Mercator2<double>>>>, std::__1::hash<unsigned char>, LRUPolicy>, std::__1::default_delete<geo::Cache<unsigned char, std::__1::shared_ptr<std::__1::vector<geo::Mercator2<double>, std::__1::allocator<geo::Mercator2<double>>>>, std::__1::hash<unsigned char>, LRUPolicy>>> {
     struct __compressed_pair<geo::Cache<unsigned char, std::__1::shared_ptr<std::__1::vector<geo::Mercator2<double>, std::__1::allocator<geo::Mercator2<double>>>>, std::__1::hash<unsigned char>, LRUPolicy>*, std::__1::default_delete<geo::Cache<unsigned char, std::__1::shared_ptr<std::__1::vector<geo::Mercator2<double>, std::__1::allocator<geo::Mercator2<double>>>>, std::__1::hash<unsigned char>, LRUPolicy>>> {
         struct Cache<unsigned char, std::__1::shared_ptr<std::__1::vector<geo::Mercator2<double>, std::__1::allocator<geo::Mercator2<double>>>>, std::__1::hash<unsigned char>, LRUPolicy> *__value_;
@@ -3980,6 +4007,17 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<md::Anchor *,
     } _field1;
 };
 
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>, void *>*>*>>> {
         struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>, void *>*> **__value_;
@@ -4099,6 +4137,21 @@ struct unique_ptr<unsigned char [], std::__1::default_delete<unsigned char []>> 
     struct __compressed_pair<unsigned char *, std::__1::default_delete<unsigned char []>> {
         char *_field1;
     } _field1;
+};
+
+struct unordered_map<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>, (anonymous namespace)::StyleQueryOverrideHash, std::__1::equal_to<StyleQueryOverride>, std::__1::allocator<std::__1::pair<const StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>>> {
+    struct __hash_table<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, std::__1::__unordered_map_hasher<StyleQueryOverride, std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, (anonymous namespace)::StyleQueryOverrideHash, true>, std::__1::__unordered_map_equal<StyleQueryOverride, std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, std::__1::equal_to<StyleQueryOverride>, true>, std::__1::allocator<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<StyleQueryOverride, std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, (anonymous namespace)::StyleQueryOverrideHash, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<StyleQueryOverride, std::__1::__hash_value_type<StyleQueryOverride, std::__1::vector<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>, std::__1::allocator<std::__1::shared_ptr<gss::StylesheetQuery<gss::PropertyID>>>>>, std::__1::equal_to<StyleQueryOverride>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
 };
 
 struct unordered_map<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>, GEOTileKeyHashFunc, GEOTileKeyEqualsFunc, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>>>> {
@@ -5059,7 +5112,7 @@ typedef struct {
     struct mutex _field4;
     struct array<std::__1::unordered_set<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::hash<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::equal_to<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::allocator<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>>, 2> _field5;
     struct atomic<bool> _field6;
-} AnimationManager_f91b81c2;
+} AnimationManager_7db22f23;
 
 #endif
 

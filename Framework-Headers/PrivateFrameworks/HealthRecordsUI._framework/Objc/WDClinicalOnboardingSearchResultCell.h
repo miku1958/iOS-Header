@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateForContentSizeCategory:(id)arg1;
 - (void)_updateLabelVisibility;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)prepareForReuse;
 - (void)setSearchResult:(id)arg1 dataProvider:(id)arg2 searchTerms:(id)arg3;
 
 @end

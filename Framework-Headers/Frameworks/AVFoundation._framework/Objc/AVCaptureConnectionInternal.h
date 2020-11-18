@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     AVCaptureInputPort *metadataItemInputPort;
     AVCaptureInputPort *depthDataInputPort;
     AVCaptureInputPort *visionDataInputPort;
+    AVCaptureInputPort *pointCloudDataInputPort;
+    AVCaptureInputPort *cameraCalibrationDataInputPort;
     BOOL videoMirroringSupported;
     BOOL automaticallyAdjustsVideoMirroring;
     BOOL videoMirrored;

@@ -11,7 +11,7 @@
 #import <UIKitCore/_UINavigationBarTitleViewDataSource-Protocol.h>
 #import <UIKitCore/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, UIBarButtonItem, UIColor, UIImage, UIView, _UIBarButtonItemData, _UINavigationBarContentViewLayout, _UINavigationBarTransitionContext;
+@class NSArray, NSDictionary, NSMutableArray, NSString, UIBarButtonItem, UIColor, UIImage, UIView, _UIBarButtonItemData, _UINavigationBarContentViewLayout, _UINavigationBarTransitionContext, _UIPointerInteractionAssistant;
 @protocol _UINavigationBarContentViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     BOOL _needsBackButtonUpdate;
     double _backButtonMargin;
     double _backButtonMaximumWidth;
-    BOOL _hitTestingExtensionsAreValid;
     BOOL _isHidingBackButton;
     BOOL _isShowingBackButton;
     BOOL _isHidingLeadingBar;
@@ -43,6 +42,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_titleAttributes;
     UIColor *_textColor;
     double _overrideSize;
+    _UIPointerInteractionAssistant *_assistant;
     long long _requestedContentSize;
     long long _barMetrics;
     _UINavigationBarContentViewLayout *_layout;
@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) UIView *accessibilityBackButtonView;
 @property (readonly, nonatomic) UIView *accessibilityTitleView;
+@property (strong, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
 @property (copy, nonatomic) _UIBarButtonItemData *backButtonAppearance;
 @property (nonatomic) BOOL backButtonHidden; // @synthesize backButtonHidden=_backButtonHidden;
 @property (strong, nonatomic) UIBarButtonItem *backButtonItem; // @synthesize backButtonItem=_backButtonItem;
@@ -89,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)_appearanceChanged;
 - (void)_applyTitleAttributesToLabel:(id)arg1 withString:(id)arg2;
 - (void)_clearAllAnimations;
+- (void)_clearAssistants;
 - (long long)_currentContentSize;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (double)_intrinsicHeight;
@@ -104,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (id)_newLayout;
 - (struct CGRect)_overlayRectForView:(id)arg1 inTargetView:(id)arg2;
 - (void)_runAllScheduledAnimations:(BOOL)arg1;
+- (void)_setAssistants;
 - (void)_setDirectionalLayoutMargins:(struct NSDirectionalEdgeInsets)arg1;
 - (void)_setupBackButtonAnimated:(BOOL)arg1;
 - (void)_setupLeadingButtonBarAnimated:(BOOL)arg1;
@@ -121,11 +124,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)edgesPaddingBarButtonItem:(id)arg1;
 - (void)ensureBackButtonTruncationOccursWithContext:(id)arg1;
 - (void)finalizeStateFromTransition:(id)arg1;
-- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isRTL;
 - (void)layoutMarginsDidChange;
+- (void)layoutSubviews;
 - (void)prepareToRecordToState:(id)arg1;
 - (void)recordFromStateForTransition:(id)arg1;
 - (void)recordToStateForTransition:(id)arg1;

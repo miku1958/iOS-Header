@@ -19,7 +19,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (BOOL)shouldUseXPCStoreForDatabasePath:(id)arg1;
+- (BOOL)hasSandboxAccessForPath:(id)arg1;
+- (BOOL)shouldUseXPCStoreForDatabasePath:(id)arg1 auditToken:(CDStruct_4c969caf)arg2;
 
 @end
 

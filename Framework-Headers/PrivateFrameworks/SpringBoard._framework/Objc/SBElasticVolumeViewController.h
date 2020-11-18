@@ -77,14 +77,14 @@
     SBUIViewFloatSpringProperty *_minMaxScaleYSpring;
     BOOL _volumeUpButtonIsDown;
     BOOL _volumeDownButtonIsDown;
-    int _axis;
+    unsigned long long _axis;
     id<SBElasticAudioDataSource> _dataSource;
     id<SBElasticAudioVolumeViewControllerDelegate> _delegate;
     SBVolumeHUDSettings *_settings;
     SBElasticSliderView *_sliderView;
 }
 
-@property (readonly, nonatomic) int axis; // @synthesize axis=_axis;
+@property (readonly, nonatomic) unsigned long long axis; // @synthesize axis=_axis;
 @property (weak, nonatomic) id<SBElasticAudioDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBElasticAudioVolumeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -147,9 +147,9 @@
 - (void)_updateDebugUIPositions;
 - (void)_updateDimmingVisible:(BOOL)arg1;
 - (void)_updateEdgeFeedbackParametersForMaxVolume:(BOOL)arg1;
-- (void)_updateForAxisChange:(int)arg1;
+- (void)_updateForAxisChange:(unsigned long long)arg1;
 - (void)_updateGlyphStateIfNecessaryForVolumeLevel:(float *)arg1;
-- (void)_updateLabelsForAxis:(int)arg1 containerViewSize:(struct CGSize)arg2 state:(long long)arg3 animated:(BOOL)arg4;
+- (void)_updateLabelsForAxis:(unsigned long long)arg1 containerViewSize:(struct CGSize)arg2 state:(long long)arg3 animated:(BOOL)arg4;
 - (void)_updateSliderTracking;
 - (void)_updateSliderViewMetricsForState:(long long)arg1 bounds:(struct CGRect)arg2 integralized:(BOOL)arg3 useSizeSpringData:(BOOL)arg4 useCenterSpringData:(BOOL)arg5;
 - (void)_updateSliderViewMetricsForState:(long long)arg1 bounds:(struct CGRect)arg2 integralized:(BOOL)arg3 useSpringData:(BOOL)arg4;

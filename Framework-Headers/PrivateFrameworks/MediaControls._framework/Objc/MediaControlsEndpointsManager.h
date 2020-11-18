@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
     NSString *_pendingActiveSystemRouteUID;
 }
 
-@property (strong, nonatomic) MPAVEndpointRoute *activeSystemRoute;
+@property (readonly, nonatomic) MPAVEndpointRoute *activeSystemRoute;
 @property (readonly, copy, nonatomic) NSString *activeSystemRouteUID; // @synthesize activeSystemRouteUID=_activeSystemRouteUID;
 @property (readonly, copy, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_homeHasRoute:(id)arg1;
 - (long long)_indexOfRouteWithUID:(id)arg1;
 - (void)_setRoutes:(id)arg1 withChangeDetails:(id)arg2;
-- (void)_updateActiveRoute;
+- (void)_updateActiveRouteWithReason:(id)arg1;
 - (void)_updateWithRoutes:(id)arg1;
 - (void)dealloc;
 - (id)endpointControllerForRoute:(id)arg1;
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)homeObserverDidUpdateKnownUIDs:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
+- (void)setActiveSystemRoute:(id)arg1 reason:(id)arg2;
 
 @end
 

@@ -62,6 +62,7 @@
 - (void).cxx_destruct;
 - (void)_applePaySheetPresented;
 - (void)_continuePendingSpeechRequest;
+- (void)_discardConnectionForReason:(long long)arg1;
 - (void)_discardCurrentSpeechGroup;
 - (void)_handleRequestUpdateViewsCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleUnlockDeviceCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -24,7 +24,7 @@
 + (BOOL)supportsSecureCoding;
 + (BOOL)taskIsScheduledWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (struct NSString *)activityForScheduling;
+- (id)activityForScheduling;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

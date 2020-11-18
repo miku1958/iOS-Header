@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (id)initWithModuleIdentifier:(id)arg1 options:(unsigned long long)arg2;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -24,7 +24,7 @@
 + (id)fitnessFriendActivitySnapshotWithCodableSnapshot:(id)arg1;
 + (id)fitnessFriendActivitySnapshotWithCodableSnapshot:(id)arg1 friendUUID:(id)arg2;
 + (id)fitnessFriendActivitySnapshotWithCodableSnapshot:(id)arg1 friendUUID:(id)arg2 uploadedDate:(id)arg3;
-+ (struct _HKFitnessFriendActivitySnapshot *)fitnessFriendActivitySnapshotWithRecord:(id)arg1 friendUUID:(id)arg2;
++ (id)fitnessFriendActivitySnapshotWithRecord:(id)arg1 friendUUID:(id)arg2;
 - (BOOL)isAmm;
 - (double)mmPercent;
 - (id)recordWithZoneID:(id)arg1;

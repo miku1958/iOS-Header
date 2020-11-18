@@ -12,6 +12,7 @@
 - (long long)defaultPreferredInterfaceOrientationForPresentationForTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
 - (BOOL)defaultShouldAutorotateForTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
 - (unsigned long long)defaultSupportedInterfaceOrientationsForTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
+- (BOOL)isKeyboardVisibleForSpringBoardForTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
 - (void)transientOverlayViewControllerDidEndRotation:(SBTransientOverlayViewController *)arg1;
 - (void)transientOverlayViewControllerNeedsContentOpaqueUpdate:(SBTransientOverlayViewController *)arg1;
 - (void)transientOverlayViewControllerNeedsFeaturePolicyUpdate:(SBTransientOverlayViewController *)arg1;

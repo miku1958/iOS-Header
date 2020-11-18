@@ -13,6 +13,7 @@
 @interface SPPairingSession : NSObject <NSSecureCoding>
 {
     BOOL _ackSuccess;
+    BOOL _pairingUsingTool;
     NSUUID *_identifier;
     NSData *_nonce;
     NSUUID *_beaconId;
@@ -60,6 +61,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSData *nonce; // @synthesize nonce=_nonce;
 @property (copy, nonatomic) CLLocation *pairingLocation; // @synthesize pairingLocation=_pairingLocation;
+@property (nonatomic) BOOL pairingUsingTool; // @synthesize pairingUsingTool=_pairingUsingTool;
 @property (copy, nonatomic) NSData *payloadSignature; // @synthesize payloadSignature=_payloadSignature;
 @property (nonatomic) long long productId; // @synthesize productId=_productId;
 @property (copy, nonatomic) NSData *refKeyPublicKey; // @synthesize refKeyPublicKey=_refKeyPublicKey;
@@ -83,6 +85,7 @@
 - (void)updateBeaconId:(id)arg1;
 - (void)updateName:(id)arg1 roleId:(long long)arg2;
 - (void)updatePairingLocation:(id)arg1;
+- (void)updateToPairingUsingTool;
 - (void)updateWithPayloadSignature:(id)arg1 attestation:(id)arg2 collaborativeKey:(id)arg3 systemVersion:(id)arg4 vendorId:(long long)arg5 productId:(long long)arg6 ecid:(id)arg7 chipId:(id)arg8 serialNumber:(id)arg9;
 - (void)updateWithSeed:(id)arg1 collaborativeKeyC2:(id)arg2 serverSignature:(id)arg3 serverPublicKey:(id)arg4 maskedAppleID:(id)arg5 userMessage:(id)arg6 baaIntermediateCert:(id)arg7 baaLeafCert:(id)arg8;
 

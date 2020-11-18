@@ -91,7 +91,6 @@
     unsigned long long _originalResourceChoice;
     PHContentEditingOutput *_contentEditingOutput;
     NSString *_editorBundleID;
-    NSString *_clientBundleID;
     NSIndexSet *_supportedEditOperations;
     NSURL *_videoURLForUpdate;
     NSString *_pairingIdentifier;
@@ -117,7 +116,6 @@
 @property (nonatomic) float behavioralScore;
 @property (nonatomic) CDStruct_e83c9415 bestVideoTimeRange; // @synthesize bestVideoTimeRange=_bestVideoTimeRange;
 @property (nonatomic) float blurrinessScore; // @synthesize blurrinessScore=_blurrinessScore;
-@property (readonly, copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
 @property (strong, nonatomic) PHContentEditingOutput *contentEditingOutput; // @synthesize contentEditingOutput=_contentEditingOutput;

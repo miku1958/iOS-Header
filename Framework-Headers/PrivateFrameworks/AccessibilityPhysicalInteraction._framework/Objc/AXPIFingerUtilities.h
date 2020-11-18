@@ -16,7 +16,10 @@
 + (id)defaultPinchLocationsAroundPoint:(struct CGPoint)arg1 withinBounds:(struct CGRect)arg2;
 + (id)fingerModelsForPointStrings:(id)arg1;
 + (unsigned long long)fingerShapeForCorner:(unsigned long long)arg1;
++ (BOOL)laserEnabled;
 + (id)pointStringsForFingerModels:(id)arg1;
++ (id)pointerAnimationSettings;
++ (id)pointerFiltersForDarkModeActive:(BOOL)arg1;
 + (void)updateFirstLocation:(struct CGPoint *)arg1 secondLocation:(struct CGPoint *)arg2 forPinchWithRadiusDelta:(double)arg3 angleDelta:(double)arg4;
 
 @end

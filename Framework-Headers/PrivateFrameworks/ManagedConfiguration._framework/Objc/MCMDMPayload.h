@@ -11,6 +11,7 @@
 @interface MCMDMPayload : MCPayload
 {
     BOOL _useDevelopmentAPNS;
+    BOOL _pinningRevocationCheckRequired;
     BOOL _signMessage;
     BOOL _checkOutWhenRemoved;
     int _accessRights;
@@ -18,7 +19,11 @@
     NSData *_identityPersistentID;
     NSString *_topic;
     NSString *_serverURLString;
+    NSArray *_serverPinningUUIDs;
+    NSArray *_serverPinningPersistentRefs;
     NSString *_checkInURLString;
+    NSArray *_checkInPinningUUIDs;
+    NSArray *_checkInPinningPersistentRefs;
     NSArray *_serverCapabilities;
     NSString *_managedAppleID;
     NSString *_personaID;
@@ -31,6 +36,8 @@
 }
 
 @property (readonly, nonatomic) int accessRights; // @synthesize accessRights=_accessRights;
+@property (strong, nonatomic) NSArray *checkInPinningPersistentRefs; // @synthesize checkInPinningPersistentRefs=_checkInPinningPersistentRefs;
+@property (readonly, strong, nonatomic) NSArray *checkInPinningUUIDs; // @synthesize checkInPinningUUIDs=_checkInPinningUUIDs;
 @property (readonly, strong, nonatomic) NSString *checkInURLString; // @synthesize checkInURLString=_checkInURLString;
 @property (readonly, nonatomic) BOOL checkOutWhenRemoved; // @synthesize checkOutWhenRemoved=_checkOutWhenRemoved;
 @property (readonly, nonatomic) NSNumber *checkOutWhenRemovedNum; // @synthesize checkOutWhenRemovedNum=_checkOutWhenRemovedNum;
@@ -44,7 +51,10 @@
 @property (readonly, strong, nonatomic) NSString *managedAppleID; // @synthesize managedAppleID=_managedAppleID;
 @property (readonly, strong, nonatomic) NSString *managedAppleIDName;
 @property (strong, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
+@property (readonly, nonatomic) BOOL pinningRevocationCheckRequired; // @synthesize pinningRevocationCheckRequired=_pinningRevocationCheckRequired;
 @property (readonly, nonatomic) NSArray *serverCapabilities; // @synthesize serverCapabilities=_serverCapabilities;
+@property (strong, nonatomic) NSArray *serverPinningPersistentRefs; // @synthesize serverPinningPersistentRefs=_serverPinningPersistentRefs;
+@property (readonly, strong, nonatomic) NSArray *serverPinningUUIDs; // @synthesize serverPinningUUIDs=_serverPinningUUIDs;
 @property (readonly, strong, nonatomic) NSString *serverURLString; // @synthesize serverURLString=_serverURLString;
 @property (readonly, nonatomic) BOOL signMessage; // @synthesize signMessage=_signMessage;
 @property (readonly, nonatomic) NSNumber *signMessageNum; // @synthesize signMessageNum=_signMessageNum;
@@ -62,6 +72,7 @@
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)installationWarnings;
+- (id)kvsForCertUUIDs:(id)arg1 persistentRefs:(id)arg2 labelKey:(id)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
 - (id)subtitle1Description;

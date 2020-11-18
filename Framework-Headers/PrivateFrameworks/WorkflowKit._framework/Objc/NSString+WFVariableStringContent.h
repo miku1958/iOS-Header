@@ -15,7 +15,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)wf_getContentItemsWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)wf_getContentItemsWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)wf_isEmpty;
 - (unsigned long long)wf_lengthInVariableString;
 - (id)wf_trimmedString;

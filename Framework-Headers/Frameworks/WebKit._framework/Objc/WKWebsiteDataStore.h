@@ -9,13 +9,13 @@
 #import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, WKHTTPCookieStore;
+@class NSDictionary, NSString, NSURL, WKHTTPCookieStore, _WKWebsiteDataStoreConfiguration;
 @protocol _WKWebsiteDataStoreDelegate;
 
 @interface WKWebsiteDataStore : NSObject <WKObject, NSSecureCoding>
 {
-    struct ObjectStorage<API::WebsiteDataStore> _websiteDataStore;
-    struct RetainPtr<id<_WKWebsiteDataStoreDelegate>> _delegate;
+    struct ObjectStorage<WebKit::WebsiteDataStore> _websiteDataStore;
+    struct WeakObjCPtr<id<_WKWebsiteDataStoreDelegate>> _delegate;
 }
 
 @property (nonatomic, setter=_setAllowsCellularAccess:) BOOL _allowsCellularAccess;
@@ -23,6 +23,7 @@
 @property (readonly) struct Object *_apiObject;
 @property (nonatomic, setter=_setBoundInterfaceIdentifier:) NSString *_boundInterfaceIdentifier;
 @property (nonatomic, setter=_setCacheStorageDirectory:) NSString *_cacheStorageDirectory;
+@property (readonly, copy, nonatomic) _WKWebsiteDataStoreConfiguration *_configuration;
 @property (weak, nonatomic) id<_WKWebsiteDataStoreDelegate> _delegate;
 @property (readonly, nonatomic) NSURL *_indexedDBDatabaseDirectory;
 @property (nonatomic, setter=_setPerOriginStorageQuota:) unsigned long long _perOriginStorageQuota;
@@ -50,16 +51,20 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_clearPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_clearResourceLoadStatistics:(CDUnknownBlockType)arg1;
 - (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_getAllStorageAccessEntriesFor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_getIsPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_getResourceLoadStatisticsDataSummary:(CDUnknownBlockType)arg1;
 - (BOOL)_hasRegisteredServiceWorker;
 - (id)_initWithConfiguration:(id)arg1;
+- (void)_isRegisteredAsSubresourceUnderFirstParty:(id)arg1 thirdParty:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_logUserInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_processStatisticsAndDataRecords:(CDUnknownBlockType)arg1;
-- (void)_resourceLoadStatisticsSetShouldSubmitTelemetry:(BOOL)arg1;
 - (void)_scheduleCookieBlockingUpdate:(CDUnknownBlockType)arg1;
 - (void)_setPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setResourceLoadStatisticsTestingCallback:(CDUnknownBlockType)arg1;
+- (void)_setUseITPDatabase:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchDataRecordsOfTypes:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

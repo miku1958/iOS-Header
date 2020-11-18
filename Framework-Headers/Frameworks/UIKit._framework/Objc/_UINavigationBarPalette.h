@@ -6,11 +6,12 @@
 
 #import <UIKitCore/UIView.h>
 
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UINavigationPalette-Protocol.h>
 
-@class NSString, UINavigationController, UINavigationItem;
+@class NSString, UINavigationController, UINavigationItem, _UIPointerInteractionAssistant;
 
-@interface _UINavigationBarPalette : UIView <_UINavigationPalette>
+@interface _UINavigationBarPalette : UIView <_UINavigationPalette, UIPointerInteractionDelegate>
 {
     BOOL _didSetMinimumHeight;
     BOOL _transitioning;
@@ -20,6 +21,8 @@
     double _preferredHeight;
     double _minimumHeight;
     UIView *_temporaryBackgroundView;
+    NSString *_assistantIdentifier;
+    _UIPointerInteractionAssistant *_assistant;
     UINavigationItem *_owningNavigationItem;
     unsigned long long __contentViewMarginType;
     long long __layoutPriority;
@@ -30,6 +33,8 @@
 @property (nonatomic, setter=_setDisplaysWhenSearchActive:) BOOL _displaysWhenSearchActive; // @synthesize _displaysWhenSearchActive=__displaysWhenSearchActive;
 @property (nonatomic, setter=_setLayoutPriority:) long long _layoutPriority; // @synthesize _layoutPriority=__layoutPriority;
 @property (nonatomic, setter=_setPaletteOverridesPinningBar:) BOOL _paletteOverridesPinningBar;
+@property (strong, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
+@property (copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property (readonly, nonatomic) unsigned long long boundaryEdge;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
@@ -53,12 +58,14 @@
 + (id)defaultContentViewWithFrame:(struct CGRect)arg1;
 - (void).cxx_destruct;
 - (id)_attachedPinningTopBar;
+- (void)_clearAssistants;
 - (void)_configureConstraintsForBackground:(id)arg1;
 - (void)_configurePaletteConstraintsForBoundary;
 - (void)_disableConstraints;
 - (void)_enableConstraints;
 - (void)_resetConstraintConstants:(double)arg1;
 - (void)_resetHeightConstraintConstant;
+- (void)_setAssistants;
 - (void)_setAttached:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)_setLeftConstraintConstant:(double)arg1;
 - (void)_setSize:(struct CGSize)arg1;
@@ -72,6 +79,10 @@
 - (BOOL)isAttached;
 - (void)layoutSubviews;
 - (BOOL)paletteIsHidden;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)resetBackgroundConstraints;
 - (void)setFrame:(struct CGRect)arg1 isAnimating:(BOOL)arg2;
 

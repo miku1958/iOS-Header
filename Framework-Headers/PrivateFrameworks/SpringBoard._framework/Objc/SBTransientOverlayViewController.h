@@ -113,6 +113,7 @@
 - (struct CGRect)_currentStatusBarFrameForStyle:(long long)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (void)_invalidateKeyboardHomeAffordanceAssertion;
+- (BOOL)_isKeyboardVisibleForSpringBoard;
 - (void)_keyboardWillHideNotification:(id)arg1;
 - (void)_keyboardWillShowNotification:(id)arg1;
 - (id)_newHomeGrabberViewWithFrame:(struct CGRect)arg1;

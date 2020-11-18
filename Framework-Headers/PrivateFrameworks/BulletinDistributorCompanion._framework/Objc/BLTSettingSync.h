@@ -43,7 +43,7 @@
 - (void)_logNotificationSettings;
 - (id)_overriddenSectionInfoForSectionID:(id)arg1;
 - (void)_sendSectionSubtypeParameterIcons:(id)arg1 sectionID:(id)arg2 waitForAcknowledgement:(BOOL)arg3 spoolToFile:(BOOL)arg4 andCompletion:(CDUnknownBlockType)arg5;
-- (void)_sendSiriAppListWithInstalled:(struct NSDictionary *)arg1 removed:(id)arg2;
+- (void)_sendSiriAppListWithInstalled:(id)arg1 removed:(id)arg2;
 - (void)_sendSpooledSyncWithCompletion:(CDUnknownBlockType)arg1 withProgress:(CDUnknownBlockType)arg2;
 - (void)_setupSectionInfoListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_spoolInitialSync;

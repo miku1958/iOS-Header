@@ -10,13 +10,18 @@
 
 @interface NPKPaymentProvisioningFlowControllerWelcomeStepContext : NPKPaymentProvisioningFlowStepContext
 {
+    BOOL _defaultImagesUsed;
     NSArray *_heroImages;
 }
 
+@property (nonatomic) BOOL defaultImagesUsed; // @synthesize defaultImagesUsed=_defaultImagesUsed;
 @property (strong, nonatomic) NSArray *heroImages; // @synthesize heroImages=_heroImages;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRequestContext:(id)arg1;
 
 @end

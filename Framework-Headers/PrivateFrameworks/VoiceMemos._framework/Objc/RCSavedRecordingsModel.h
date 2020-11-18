@@ -96,7 +96,7 @@
 - (void)eraseRecordingsDeletedBeforeDate:(id)arg1;
 - (BOOL)exportToCloud:(CDUnknownBlockType)arg1;
 - (BOOL)fetchExportProgress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)fetchObjectsFromCloud:(id)arg1 entityToAttributesToFetch:(struct NSDictionary *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)fetchObjectsFromCloud:(id)arg1 entityToAttributesToFetch:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)finishSaveByUpdatingSearchableIndexWithChangeContext:(id)arg1;
 - (BOOL)hasExistingRecordingForAudioFile:(id)arg1;
 - (BOOL)importFromCloud:(CDUnknownBlockType)arg1;

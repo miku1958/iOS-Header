@@ -9,13 +9,13 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary, UIColor;
+@class NSMutableDictionary, NSNumber, UIColor;
 
 @interface CLKProgressProvider : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _nextUpdateToken;
     NSMutableDictionary *_updateHandlersByToken;
-    struct NSNumber *_timerToken;
+    NSNumber *_timerToken;
     BOOL _finalized;
     BOOL _paused;
     UIColor *_tintColor;
@@ -44,8 +44,8 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (double)progressFractionForNow:(id)arg1;
-- (struct NSNumber *)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopUpdatesForToken:(struct NSNumber *)arg1;
+- (id)startUpdatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopUpdatesForToken:(id)arg1;
 - (long long)timeTravelUpdateFrequency;
 - (void)validate;
 

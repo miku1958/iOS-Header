@@ -8,31 +8,32 @@
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFMessageTransportDelegate-Protocol.h>
-#import <HMFoundation/HMFTimerDelegate-Protocol.h>
 
-@class HMFMessageTransport, HMFTimer, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSSet, NSString;
+@class HMFMessageTransport, HMFTimer, NSBackgroundActivityScheduler, NSDictionary, NSMutableOrderedSet, NSObject, NSSet, NSString;
 @protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMFMessageDispatcher : HMFObject <HMFLogging, HMFTimerDelegate, HMFMessageTransportDelegate>
+@interface HMFMessageDispatcher : HMFObject <HMFLogging, HMFMessageTransportDelegate>
 {
     id<HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableOrderedSet *_handlers;
     HMFTimer *_indexWatchdog;
-    NSMutableArray *_indexOperations;
+    NSBackgroundActivityScheduler *_indexScheduler;
+    NSDictionary *_destinationHandlerIndexes;
+    NSDictionary *_nameHandlerIndexes;
+    BOOL _indexed;
+    BOOL _shouldAutomaticallyIndex;
     NSSet *_filterClasses;
     HMFMessageTransport *_transport;
-    NSMutableDictionary *_destinationHandlerIndexes;
-    NSMutableDictionary *_nameHandlerIndexes;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) NSMutableDictionary *destinationHandlerIndexes; // @synthesize destinationHandlerIndexes=_destinationHandlerIndexes;
 @property (copy) NSSet *filterClasses; // @synthesize filterClasses=_filterClasses;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSMutableDictionary *nameHandlerIndexes; // @synthesize nameHandlerIndexes=_nameHandlerIndexes;
+@property (readonly, getter=isIndexed) BOOL indexed; // @synthesize indexed=_indexed;
+@property (nonatomic) BOOL shouldAutomaticallyIndex; // @synthesize shouldAutomaticallyIndex=_shouldAutomaticallyIndex;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HMFMessageTransport *transport; // @synthesize transport=_transport;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
@@ -44,6 +45,7 @@
 - (void)dispatchMessage:(id)arg1;
 - (void)dispatchMessage:(id)arg1 target:(id)arg2;
 - (id)handlersForMessage:(id)arg1;
+- (void)index;
 - (id)init;
 - (id)initWithTransport:(id)arg1;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
@@ -57,7 +59,6 @@
 - (void)sendMessage:(id)arg1 target:(id)arg2 andInvokeCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)timerDidFire:(id)arg1;
 
 @end
 

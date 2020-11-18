@@ -12,14 +12,23 @@
 
 @interface ARRawSceneUnderstandingData : NSObject <ARResultData>
 {
+    void *_resultsRef;
     double _timestamp;
     void *_sceneUnderstandingResultRef;
+    struct __CVBuffer *_semanticSegmentationBuffer;
+    struct __CVBuffer *_semanticSegmentationConfidenceBuffer;
+    struct __CVBuffer *_normalsBuffer;
+    struct __CVBuffer *_depthBuffer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) struct __CVBuffer *depthBuffer; // @synthesize depthBuffer=_depthBuffer;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct __CVBuffer *normalsBuffer; // @synthesize normalsBuffer=_normalsBuffer;
 @property (readonly, nonatomic) void *sceneUnderstandingResultRef; // @synthesize sceneUnderstandingResultRef=_sceneUnderstandingResultRef;
+@property (nonatomic) struct __CVBuffer *semanticSegmentationBuffer; // @synthesize semanticSegmentationBuffer=_semanticSegmentationBuffer;
+@property (nonatomic) struct __CVBuffer *semanticSegmentationConfidenceBuffer; // @synthesize semanticSegmentationConfidenceBuffer=_semanticSegmentationConfidenceBuffer;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 

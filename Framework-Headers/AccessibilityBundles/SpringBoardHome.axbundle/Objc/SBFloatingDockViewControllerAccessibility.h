@@ -16,6 +16,7 @@
 - (BOOL)_axIsClosingFolder;
 - (void)_axSetIsClosingFolder:(BOOL)arg1;
 - (void)dismissPresentedFolderAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dockViewDidResignVisible;
 
 @end
 

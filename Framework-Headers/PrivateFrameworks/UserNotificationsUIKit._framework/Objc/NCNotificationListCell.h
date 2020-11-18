@@ -19,6 +19,7 @@
 {
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _configured;
+    BOOL _sideSwipedWithoutTouch;
     BOOL _executingDefaultAction;
     BOOL _performingSwipeHinting;
     BOOL _performingOrbHinting;
@@ -60,6 +61,7 @@
 @property (strong, nonatomic) UIView *rightActionButtonsClippingRevealView; // @synthesize rightActionButtonsClippingRevealView=_rightActionButtonsClippingRevealView;
 @property (strong, nonatomic) NCNotificationListCellActionButtonsView *rightActionButtonsView; // @synthesize rightActionButtonsView=_rightActionButtonsView;
 @property (copy, nonatomic) CDUnknownBlockType sideSwipeHintingHideAnimationBlock; // @synthesize sideSwipeHintingHideAnimationBlock=_sideSwipeHintingHideAnimationBlock;
+@property (nonatomic, getter=isSideSwipedWithoutTouch) BOOL sideSwipedWithoutTouch; // @synthesize sideSwipedWithoutTouch=_sideSwipedWithoutTouch;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *targetPositionAnimatableProperty; // @synthesize targetPositionAnimatableProperty=_targetPositionAnimatableProperty;
 

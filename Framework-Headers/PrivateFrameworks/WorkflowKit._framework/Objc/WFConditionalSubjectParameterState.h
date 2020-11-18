@@ -50,14 +50,14 @@
 - (void).cxx_destruct;
 - (id)containedVariables;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)getContentWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getContentWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getEnumerationPossibleStatesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithHomeIdentifier:(id)arg1;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
 - (id)initWithVariable:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedLabelForEnumerationPossibleState:(id)arg1;
-- (void)processWithVariableSource:(id)arg1 parameter:(id)arg2 userInputRequiredHandler:(CDUnknownBlockType)arg3 valueHandler:(CDUnknownBlockType)arg4;
+- (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (id)serializedRepresentation;
 - (id)supportedComparisonOperators;
 

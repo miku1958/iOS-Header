@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType refreshHandler; // @synthesize refreshHandler=_refreshHandler;
 @property (readonly) Class superclass;
 
-+ (id)messageWithName:(id)arg1 identifier:(id)arg2 target:(id)arg3 payload:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
 - (void)handleMessage:(id)arg1;
 - (void)handleMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;

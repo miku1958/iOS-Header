@@ -50,6 +50,7 @@
 - (void)didReceiveReportBugAction;
 - (void)didReceiveShortTapAction;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)emitUIStateTransitionForSiriDismissal:(int)arg1 withDismissalReason:(int)arg2;
 - (void)extendCurrentTTSRequested;
 - (void)getScreenshotWithReplyHandler:(CDUnknownBlockType)arg1;
 - (void)handlePasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
@@ -84,14 +85,14 @@
 - (void)servicePresentationDidChangePeekMode:(unsigned long long)arg1;
 - (void)servicePresentedIntentWithBundleId:(id)arg1;
 - (void)serviceRequestsActivationSourceWithReplyHandler:(CDUnknownBlockType)arg1;
-- (void)serviceRequestsDismissalWithDelayForTTS:(BOOL)arg1 userInfo:(id)arg2;
+- (void)serviceRequestsDismissalWithDelayForTTS:(BOOL)arg1 userInfo:(id)arg2 withDismissalReason:(unsigned long long)arg3;
 - (void)serviceStartGuidedAccess;
 - (void)serviceStartRequestWithOptions:(id)arg1;
 - (void)serviceUserRelevantEventDidOccur;
 - (id)serviceViewControllerProxy;
 - (id)serviceViewControllerProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)serviceViewControllerRequestKeyboardForTapToEditWithCompletion:(CDUnknownBlockType)arg1;
-- (void)serviceViewControllerRequestsDismissal:(CDUnknownBlockType)arg1;
+- (void)serviceViewControllerRequestsDismissalWithDismissalReason:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)serviceViewControllerRequestsPresentation:(CDUnknownBlockType)arg1;
 - (void)serviceWillBeginTapToEdit;
 - (void)serviceWillDismissViewControllerWithStatusBarStyle:(long long)arg1;

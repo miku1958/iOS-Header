@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)outputIsExemptFromTaintTrackingInheritance;
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)fileUploadDidProgress:(double)arg1 connectionIdentifier:(id)arg2 userInfo:(id)arg3;

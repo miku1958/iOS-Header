@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/TSMagazineFeedModuleType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface TSMagazineFeedModule : NSObject <TSMagazineFeedModuleType>
+@interface TSMagazineFeedModule : NSObject
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;

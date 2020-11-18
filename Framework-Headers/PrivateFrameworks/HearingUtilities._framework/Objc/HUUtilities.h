@@ -12,6 +12,9 @@
 
 + (id)XDCObjectFromObject:(id)arg1;
 + (id)objectFromXDCObject:(id)arg1;
++ (id)sharedUtilities;
+- (void)addHearingFeatureUsage:(unsigned long long)arg1;
+- (void)updateHearingFeatureUsage;
 
 @end
 

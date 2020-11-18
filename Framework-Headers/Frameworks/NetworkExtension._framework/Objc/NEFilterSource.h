@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableData, NSString, NSURL, NSURLRequest, NSURLResponse, NSUUID, NWPathEvaluator;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface NEFilterSource : NSObject
 {
@@ -39,6 +39,7 @@
     struct ne_filter_globals *_globals;
     unsigned long long _byteInboundCount;
     unsigned long long _byteOutboundCount;
+    NSObject<OS_dispatch_group> *_sendDataGroup;
 }
 
 @property unsigned long long byteInboundCount; // @synthesize byteInboundCount=_byteInboundCount;
@@ -63,6 +64,7 @@
 @property BOOL registered; // @synthesize registered=_registered;
 @property (strong) NSString *remediationButtonText; // @synthesize remediationButtonText=_remediationButtonText;
 @property (strong) NSString *remediationURL; // @synthesize remediationURL=_remediationURL;
+@property (strong) NSObject<OS_dispatch_group> *sendDataGroup; // @synthesize sendDataGroup=_sendDataGroup;
 @property (readonly) unsigned long long socketIdentifier; // @synthesize socketIdentifier=_socketIdentifier;
 @property (copy) NSString *sourceAppIdentifier; // @synthesize sourceAppIdentifier=_sourceAppIdentifier;
 @property int sourceAppPid; // @synthesize sourceAppPid=_sourceAppPid;
@@ -78,6 +80,7 @@
 - (id)filterOptions;
 - (void)finishedLoadingWithDecisionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)generateCryptoSignature:(unsigned char [32])arg1 length:(unsigned int *)arg2;
+- (void)handleFinishedLoadingWithDecisionHandler:(CDUnknownBlockType)arg1;
 - (void)initGlobals;
 - (id)initWithDecisionQueue:(id)arg1;
 - (id)initWithParentURL:(id)arg1 decisionQueue:(id)arg2;

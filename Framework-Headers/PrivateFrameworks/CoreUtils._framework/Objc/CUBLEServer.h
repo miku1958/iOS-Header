@@ -8,13 +8,13 @@
 
 #import <CoreUtils/CBPeripheralManagerDelegate-Protocol.h>
 
-@class CBPeripheralManager, NSString;
+@class CBPeripheralManager, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUBLEServer : NSObject <CBPeripheralManagerDelegate>
 {
     CDUnknownBlockType _activateCompletion;
-    struct NSMutableSet *_connections;
+    NSMutableSet *_connections;
     BOOL _invalidateCalled;
     CBPeripheralManager *_peripheralManager;
     struct LogCategory *_ucat;

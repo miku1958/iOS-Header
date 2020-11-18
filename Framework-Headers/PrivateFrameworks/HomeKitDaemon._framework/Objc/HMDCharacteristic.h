@@ -16,9 +16,10 @@
 @interface HMDCharacteristic : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
 {
     id<HMFLocking> _lock;
-    BOOL _broadcastNotificationEnabled;
     BOOL _notificationRegisteredWithRemoteGateway;
+    BOOL _broadcastNotificationEnabled;
     NSSet *_hapCharacteristicTuples;
+    HMDCharacteristicMetadata *_metadata;
     HMDHAPAccessory *_accessory;
     HMDService *_service;
     NSNumber *_stateNumber;
@@ -28,7 +29,6 @@
     NSDate *_lastKnownValueUpdateTime;
     NSNumber *_characteristicInstanceID;
     long long _characteristicProperties;
-    HMDCharacteristicMetadata *_characteristicMetadata;
     NSMutableSet *_notificationRegistrations;
     NSDate *_notificationEnabledTime;
 }
@@ -38,7 +38,6 @@
 @property (nonatomic) BOOL broadcastNotificationEnabled; // @synthesize broadcastNotificationEnabled=_broadcastNotificationEnabled;
 @property (readonly, nonatomic) NSDictionary *bulletinContext;
 @property (strong, nonatomic) NSNumber *characteristicInstanceID; // @synthesize characteristicInstanceID=_characteristicInstanceID;
-@property (strong, nonatomic) HMDCharacteristicMetadata *characteristicMetadata; // @synthesize characteristicMetadata=_characteristicMetadata;
 @property (nonatomic) long long characteristicProperties; // @synthesize characteristicProperties=_characteristicProperties;
 @property (strong, nonatomic) NSString *characteristicType; // @synthesize characteristicType=_characteristicType;
 @property (readonly, copy, nonatomic) NSString *contextID;
@@ -50,7 +49,7 @@
 @property (readonly, copy, nonatomic) NSNumber *instanceID;
 @property (strong, nonatomic) id lastKnownValue; // @synthesize lastKnownValue=_lastKnownValue;
 @property (strong, nonatomic) NSDate *lastKnownValueUpdateTime; // @synthesize lastKnownValueUpdateTime=_lastKnownValueUpdateTime;
-@property (readonly, nonatomic) HMDCharacteristicMetadata *metadata;
+@property (readonly, nonatomic) HMDCharacteristicMetadata *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) NSDate *notificationEnabledTime; // @synthesize notificationEnabledTime=_notificationEnabledTime;
 @property (nonatomic) BOOL notificationRegisteredWithRemoteGateway; // @synthesize notificationRegisteredWithRemoteGateway=_notificationRegisteredWithRemoteGateway;
 @property (strong, nonatomic) NSMutableSet *notificationRegistrations; // @synthesize notificationRegistrations=_notificationRegistrations;

@@ -45,12 +45,13 @@
 - (void).cxx_destruct;
 - (void)clearState:(id *)arg1;
 - (id)copyKeyStoreState;
-- (id)copyVRFKeyFromConfigProof:(id)arg1 error:(id *)arg2;
+- (id)copyVRFKeyFromConfigProof:(id)arg1 saveTreeHeads:(BOOL)arg2 error:(id *)arg3;
+- (id)createTLTApplicationPublicKeyStore;
 - (BOOL)detectEpochChangeAndResetData:(unsigned long long)arg1 patLogBeginningMs:(unsigned long long)arg2 error:(id *)arg3;
 - (id)initWithApplication:(id)arg1 dataStore:(id)arg2 diskState:(id)arg3 error:(id *)arg4;
 - (id)initWithApplication:(id)arg1 dataStore:(id)arg2 response:(id)arg3 error:(id *)arg4;
 - (BOOL)processDiskState:(id)arg1 error:(id *)arg2;
-- (BOOL)processKeyData:(id)arg1 tltLeafs:(id)arg2 intermediates:(id)arg3 patConfigProof:(id)arg4 error:(id *)arg5;
+- (BOOL)processKeyData:(id)arg1 tltLeafs:(id)arg2 intermediates:(id)arg3 patConfigProof:(id)arg4 saveTreeHeads:(BOOL)arg5 error:(id *)arg6;
 - (BOOL)processPublicKeysResponse:(id)arg1 error:(id *)arg2;
 - (void)startLogBeginTimesSampler;
 - (BOOL)verifyCertificates:(id)arg1 intermediates:(id)arg2 application:(id)arg3 error:(id *)arg4;

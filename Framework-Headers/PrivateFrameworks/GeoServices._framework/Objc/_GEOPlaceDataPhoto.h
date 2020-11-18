@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) NSString *caption;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL displayFullPhotoInline;
+@property (readonly, nonatomic) BOOL displayFullScreenPhotoGallery;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL highQuality;
 @property (readonly, nonatomic) NSString *licenseDescription;

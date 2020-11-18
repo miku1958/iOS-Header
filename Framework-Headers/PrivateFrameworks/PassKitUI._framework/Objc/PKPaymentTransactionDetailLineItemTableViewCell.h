@@ -32,7 +32,6 @@
 @property (strong, nonatomic) NSString *valueText; // @synthesize valueText=_valueText;
 
 - (void).cxx_destruct;
-- (struct UIEdgeInsets)_effectiveLayoutMargins;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -44,6 +44,7 @@
 @property (readonly, copy) HKConcept *condition;
 @property (readonly, copy) NSArray *conditionCodings;
 @property (readonly, copy) HKConditionRecordType *conditionRecordType;
+@property (readonly, copy, nonatomic) NSString *country;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -57,20 +58,14 @@
 @property (readonly, copy) HKMedicalCoding *verificationStatusCoding;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)_newConditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 conditionCodings:(id)arg11 categoryCodings:(id)arg12 asserter:(id)arg13 abatement:(id)arg14 onset:(id)arg15 recordedDate:(id)arg16 clinicalStatusCoding:(id)arg17 verificationStatusCoding:(id)arg18 severityCodings:(id)arg19 bodySitesCodings:(id)arg20 config:(CDUnknownBlockType)arg21;
-+ (id)bodySitesCodingsPreferredSystems;
++ (id)_newConditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 conditionCodings:(id)arg13 categoryCodings:(id)arg14 asserter:(id)arg15 abatement:(id)arg16 onset:(id)arg17 recordedDate:(id)arg18 clinicalStatusCoding:(id)arg19 verificationStatusCoding:(id)arg20 severityCodings:(id)arg21 bodySitesCodings:(id)arg22 config:(CDUnknownBlockType)arg23;
 + (id)cachedConceptRelationshipKeyPaths;
-+ (id)categoryCodingsPreferredSystems;
-+ (id)clinicalStatusCodingPreferredSystems;
-+ (id)conditionCodingsPreferredSystems;
-+ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 conditionCodings:(id)arg10 categoryCodings:(id)arg11 asserter:(id)arg12 abatement:(id)arg13 onset:(id)arg14 recordedDate:(id)arg15 clinicalStatusCoding:(id)arg16 verificationStatusCoding:(id)arg17 severityCodings:(id)arg18 bodySitesCodings:(id)arg19;
-+ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 conditionCodings:(id)arg11 categoryCodings:(id)arg12 asserter:(id)arg13 abatement:(id)arg14 onset:(id)arg15 recordedDate:(id)arg16 clinicalStatusCoding:(id)arg17 verificationStatusCoding:(id)arg18 severityCodings:(id)arg19 bodySitesCodings:(id)arg20;
++ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 conditionCodings:(id)arg12 categoryCodings:(id)arg13 asserter:(id)arg14 abatement:(id)arg15 onset:(id)arg16 recordedDate:(id)arg17 clinicalStatusCoding:(id)arg18 verificationStatusCoding:(id)arg19 severityCodings:(id)arg20 bodySitesCodings:(id)arg21;
++ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 conditionCodings:(id)arg13 categoryCodings:(id)arg14 asserter:(id)arg15 abatement:(id)arg16 onset:(id)arg17 recordedDate:(id)arg18 clinicalStatusCoding:(id)arg19 verificationStatusCoding:(id)arg20 severityCodings:(id)arg21 bodySitesCodings:(id)arg22;
 + (id)defaultDisplayString;
 + (id)indexableConceptKeyPaths;
-+ (id)severityCodingsPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
-+ (id)verificationStatusCodingPreferredSystems;
 - (void).cxx_destruct;
 - (void)_setAbatement:(id)arg1;
 - (void)_setAsserter:(id)arg1;
@@ -92,31 +87,23 @@
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)bodySitesCodingsCollection;
 - (id)bodySitesCodingsContexts;
-- (id)bodySitesCodingsTasks;
 - (id)categoryCodingsCollection;
 - (id)categoryCodingsContext;
-- (id)categoryCodingsTasks;
 - (id)clinicalStatusCodingCollection;
 - (id)clinicalStatusCodingContext;
-- (id)clinicalStatusCodingTasks;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)conditionCodingsCollection;
 - (id)conditionCodingsContext;
-- (id)conditionCodingsTasks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)indexKeywords;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
-- (id)medicalRecordPreferredSystems;
 - (id)severityCodingsCollection;
 - (id)severityCodingsContext;
-- (id)severityCodingsTasks;
 - (id)verificationStatusCodingCollection;
 - (id)verificationStatusCodingContext;
-- (id)verificationStatusCodingTasks;
 
 @end
 

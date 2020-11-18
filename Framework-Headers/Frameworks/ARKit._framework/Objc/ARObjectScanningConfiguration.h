@@ -23,11 +23,12 @@
 + (id)supportedVideoFormats;
 + (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (void)createTechniques:(id)arg1;
 - (id)description;
 - (id)imageSensorSettings;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)shouldEnableCalibrationDataForImageSensorSettings:(id)arg1;
 
 @end
 

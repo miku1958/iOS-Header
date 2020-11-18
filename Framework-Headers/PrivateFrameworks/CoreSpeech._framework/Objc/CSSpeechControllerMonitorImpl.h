@@ -17,11 +17,12 @@
 
 - (void).cxx_destruct;
 - (void)_notifyObserver:(id)arg1 withSpeechControllerRecordState:(unsigned long long)arg2;
-- (void)_notifyObserver:(id)arg1 withSpeechControllerRecordState:(unsigned long long)arg2 withEventUUID:(id)arg3;
+- (void)_notifyObserver:(id)arg1 withSpeechControllerRecordState:(unsigned long long)arg2 withEventUUID:(id)arg3 withContext:(id)arg4;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;
 - (id)init;
 - (void)notifySpeechControllerRecordStateChange:(unsigned long long)arg1 withEventUUID:(id)arg2;
+- (void)notifySpeechControllerRecordStateChange:(unsigned long long)arg1 withEventUUID:(id)arg2 withContext:(id)arg3;
 - (void)setRecordState:(unsigned long long)arg1;
 
 @end

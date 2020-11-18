@@ -9,6 +9,8 @@
 @class NSArray, NSString, RWIProtocolDOMHighlightConfig;
 
 @protocol RWIProtocolDOMDomainHandler <NSObject>
+
+@optional
 - (void)discardSearchResultsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 searchId:(NSString *)arg3;
 - (void)focusWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3;
 - (void)getAccessibilityPropertiesForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolDOMAccessibilityProperties *))arg2 nodeId:(int)arg3;
@@ -41,6 +43,7 @@
 - (void)requestChildNodesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 depth:(int *)arg4;
 - (void)requestNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 objectId:(NSString *)arg3;
 - (void)resolveNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolRuntimeRemoteObject *))arg2 nodeId:(int)arg3 objectGroup:(id *)arg4;
+- (void)setAllowEditingUserAgentShadowTreesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 allow:(BOOL)arg3;
 - (void)setAttributeValueWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 name:(NSString *)arg4 value:(NSString *)arg5;
 - (void)setAttributesAsTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 text:(NSString *)arg4 name:(id *)arg5;
 - (void)setBreakpointForEventListenerWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3;

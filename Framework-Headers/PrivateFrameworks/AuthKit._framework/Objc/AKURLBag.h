@@ -11,6 +11,7 @@
 
 @interface AKURLBag : NSObject
 {
+    NSString *_altDSID;
     id<AKURLBagDictionaryProvider> _bagProvider;
 }
 
@@ -19,6 +20,7 @@
 @property (readonly, nonatomic) NSURL *absintheCertURL;
 @property (readonly, nonatomic) NSURL *absintheSessionURL;
 @property (readonly, nonatomic) NSURL *acsURL;
+@property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (readonly, nonatomic) NSSet *appleIDAuthorizationURLs;
 @property (readonly, nonatomic) NSURL *appleIDAuthorizeHTMLResponseURL;
 @property (readonly, nonatomic) NSSet *appleOwnedDomains;
@@ -60,7 +62,9 @@
 
 + (unsigned long long)IDMSEnvironmentFromBag:(id)arg1;
 + (unsigned long long)_IDMSEnvironmentFromString:(id)arg1;
++ (id)_currentBags;
 + (id)_requestEnvironmentsWithBag:(id)arg1;
++ (id)bagForAltDSID:(id)arg1;
 + (id)keyForEscapeHatchURL;
 + (BOOL)looksLikeiForgotURLKey:(id)arg1;
 + (id)sharedBag;
@@ -73,6 +77,8 @@
 - (id)_urlBagFromCache:(BOOL)arg1 withError:(id *)arg2;
 - (id)configurationAtKey:(id)arg1;
 - (id)configurationAtKey:(id)arg1 fromCache:(BOOL)arg2;
+- (void)forceUpdateBagWithUrlSwitchData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithAltDSID:(id)arg1;
 - (void)requestNewURLBagIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requestNewURLBagIfNecessaryWithError:(id *)arg1;
 - (id)urlAtKey:(id)arg1;

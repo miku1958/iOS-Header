@@ -142,6 +142,7 @@
 - (void)_updateSelectAllButtonPosition;
 - (void)_updateShowAllButtonPosition;
 - (id)accessibilityLabel;
+- (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
 - (BOOL)canCreateAccessibilityGroupElement;
 - (BOOL)canSelectAccessibilityGroupElements;
 - (BOOL)canSelectAccessibilityGroupElementsChildren;
@@ -149,7 +150,6 @@
 - (double)cornerRadiusForShadowSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (CDUnknownBlockType)dateIntervalFutureForContentInRect:(struct CGRect)arg1;
 - (unsigned long long)desiredPlaceholderStyleInLayout:(id)arg1;
-- (id)diagnosticDescription;
 - (id)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
 - (id)displayAssetRequestObserverForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
 - (void)enumerateRowsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;

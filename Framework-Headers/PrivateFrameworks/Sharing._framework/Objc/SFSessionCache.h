@@ -8,15 +8,15 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSMutableDictionary, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface SFSessionCache : NSObject <NSSecureCoding>
 {
     BOOL _activated;
     BOOL _invalidated;
-    struct NSMutableDictionary *_sessions;
-    struct NSMutableDictionary *_timestamps;
+    NSMutableDictionary *_sessions;
+    NSMutableDictionary *_timestamps;
     unsigned long long _capacity;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;

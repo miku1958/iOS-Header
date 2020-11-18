@@ -25,7 +25,7 @@
     ICQUpgradeFlowOptions *_flowOptions;
     _ICQTextView *_textView;
     NSArray *_activeConstraints;
-    ICQUpgradeFlowManager *_upgradeFlowManager;
+    ICQUpgradeFlowManager *_localFlowManager;
     struct NSDirectionalEdgeInsets _textMargins;
 }
 
@@ -38,6 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) UIColor *linkTextColor; // @synthesize linkTextColor=_linkTextColor;
 @property (copy, nonatomic) UIFont *linkTextFont; // @synthesize linkTextFont=_linkTextFont;
+@property (strong, nonatomic) ICQUpgradeFlowManager *localFlowManager; // @synthesize localFlowManager=_localFlowManager;
 @property (strong, nonatomic) ICQOffer *offer;
 @property (readonly) Class superclass;
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
@@ -45,7 +46,6 @@
 @property (nonatomic) double textLineSpacing; // @synthesize textLineSpacing=_textLineSpacing;
 @property (nonatomic) struct NSDirectionalEdgeInsets textMargins; // @synthesize textMargins=_textMargins;
 @property (readonly, nonatomic) _ICQTextView *textView; // @synthesize textView=_textView;
-@property (strong, nonatomic) ICQUpgradeFlowManager *upgradeFlowManager; // @synthesize upgradeFlowManager=_upgradeFlowManager;
 
 + (BOOL)shouldShowForOffer:(id)arg1;
 - (void).cxx_destruct;

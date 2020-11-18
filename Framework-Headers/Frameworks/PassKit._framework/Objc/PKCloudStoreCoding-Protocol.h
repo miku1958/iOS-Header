@@ -12,7 +12,7 @@
 - (void)encodeWithCloudStoreCoder:(PKCloudStoreRecord *)arg1;
 - (id)initWithCloudStoreCoder:(PKCloudStoreRecord *)arg1;
 - (unsigned long long)itemType;
-- (NSArray *)recordTypesAndNames;
+- (NSArray *)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 
 @optional
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(PKCloudStoreRecord *)arg1;

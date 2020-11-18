@@ -14,18 +14,17 @@
 @interface RERelevanceValue : NSObject <NSCopying, REAutomaticExportedInterface>
 {
     unsigned long long _hash;
-    BOOL _isHistoric;
+    BOOL _historic;
     RETaggedFeatureValueArray *_values;
 }
 
-@property (readonly, nonatomic) BOOL isHistoric; // @synthesize isHistoric=_isHistoric;
+@property (readonly, nonatomic, getter=isHistoric) BOOL historic; // @synthesize historic=_historic;
 @property (readonly, nonatomic) RETaggedFeatureValueArray *values; // @synthesize values=_values;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithValues:(id)arg1;
 - (id)initWithValues:(id)arg1 isHistoric:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 

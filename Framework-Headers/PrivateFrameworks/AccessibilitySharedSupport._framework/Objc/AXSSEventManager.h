@@ -11,6 +11,8 @@
 
 @interface AXSSEventManager : NSObject
 {
+    BOOL _shouldSuppressCommands;
+    BOOL _passthroughModeEnabled;
     BOOL __tabKeyPressed;
     BOOL __performedActionWhileTabComboPressed;
     AXSSActionManager *_actionManager;
@@ -30,7 +32,9 @@
 @property (strong, nonatomic) AXSSActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property (strong, nonatomic) AXSSKeyboardCommandMap *commandMap; // @synthesize commandMap=_commandMap;
 @property (weak, nonatomic) id<AXSSKeyFilterDelegate> filterDelegate; // @synthesize filterDelegate=_filterDelegate;
+@property (nonatomic, getter=isPassthroughModeEnabled) BOOL passthroughModeEnabled; // @synthesize passthroughModeEnabled=_passthroughModeEnabled;
 @property (nonatomic) unsigned long long searchType; // @synthesize searchType=_searchType;
+@property (nonatomic) BOOL shouldSuppressCommands; // @synthesize shouldSuppressCommands=_shouldSuppressCommands;
 
 - (void).cxx_destruct;
 - (BOOL)_handleCommand:(id)arg1 event:(id)arg2;
@@ -38,13 +42,12 @@
 - (void)_handleTabComboEvent:(id)arg1;
 - (void)_handleTabEvent:(id)arg1;
 - (void)_handleTabRepeatOrUpWithCommand:(id)arg1;
-- (void)_performDownActionForInfo:(id)arg1;
-- (BOOL)_shouldCaptureCommand:(id)arg1;
+- (void)_performDownActionForCommand:(id)arg1 info:(id)arg2;
+- (id)_tabbedKeyChordForKeyChord:(id)arg1;
 - (void)handleFKAEvent:(id)arg1;
 - (id)initWithActionManager:(id)arg1;
 - (id)initWithActionManager:(id)arg1 commandMap:(id)arg2;
 - (BOOL)processKeyboardEvent:(id)arg1;
-- (BOOL)processKeyboardEvent:(id)arg1 forCaptureOnly:(BOOL)arg2;
 - (BOOL)shouldCaptureEvent:(id)arg1;
 
 @end

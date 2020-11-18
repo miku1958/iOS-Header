@@ -100,6 +100,7 @@ __attribute__((visibility("hidden")))
     BOOL _alwaysOnAudioRedundancyEnabled;
     BOOL _cellularAllowRedLowBitratesEnabled;
     BOOL _wifiAllowRedLowBitratesEnabled;
+    struct tagVCMemoryPool *_audioBundlePool;
 }
 
 @property (readonly, nonatomic) int actualAudioSendingBitrate; // @synthesize actualAudioSendingBitrate=_actualAudioSendingBitrate;

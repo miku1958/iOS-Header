@@ -52,7 +52,7 @@
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (copy, nonatomic) NSString *personUri;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedPerson;
-@property (nonatomic) long long questionType;
+@property (nonatomic) unsigned short questionType;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *rejectedFacesHelper; // @synthesize rejectedFacesHelper=_rejectedFacesHelper;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PHPerson *targetPerson; // @synthesize targetPerson=_targetPerson;

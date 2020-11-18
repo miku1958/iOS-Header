@@ -44,8 +44,8 @@
 - (void)enumerateClientsWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)stopWaitingForClientWithIdentifier:(id)arg1 forToken:(struct NSNumber *)arg2;
-- (struct NSNumber *)waitForClientWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)stopWaitingForClientWithIdentifier:(id)arg1 forToken:(id)arg2;
+- (id)waitForClientWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end
 

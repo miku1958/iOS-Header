@@ -17,6 +17,7 @@
     id<NEExtensionProviderHostProtocol> _hostContext;
     NSString *_description;
     BOOL _isDisposed;
+    BOOL _started;
     NEConfiguration *_configuration;
     CDUnknownBlockType _stopCompletionHandler;
     NSXPCConnection *_hostConnection;
@@ -32,6 +33,7 @@
 @property (readonly) NSXPCConnection *hostConnection; // @synthesize hostConnection=_hostConnection;
 @property (nonatomic) BOOL isDisposed; // @synthesize isDisposed=_isDisposed;
 @property (readonly, nonatomic) NEProvider *provider; // @synthesize provider=_provider;
+@property (nonatomic) BOOL started; // @synthesize started=_started;
 @property (copy) CDUnknownBlockType stopCompletionHandler; // @synthesize stopCompletionHandler=_stopCompletionHandler;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;

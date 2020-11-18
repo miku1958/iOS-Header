@@ -31,6 +31,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStandardCommandIdentifier:(id)arg1;
+- (id)initWithType:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCommand:(id)arg1;
 

@@ -32,6 +32,8 @@
 - (void)navigateToGadgetForCMMInvitationWithIdentifier:(id)arg1;
 - (void)navigateToGadgetForCMMSuggestions;
 - (BOOL)navigateToGadgetWithIdDeferIfNeeded:(id)arg1 animated:(BOOL)arg2 nestedNavigationBlock:(CDUnknownBlockType)arg3;
+- (void)navigateToGadgetWithTypeSurveyCongratulations;
+- (void)navigateToGadgetWithTypeSurveyQuestion:(id)arg1 animated:(BOOL)arg2;
 - (void)navigateToInvitationCMMWithUUID:(id)arg1 animated:(BOOL)arg2;
 - (void)navigateToRevealTheMostRecentMemoryAnimated:(BOOL)arg1;
 - (void)navigateToSharedAlbumInviteWithUUID:(id)arg1 animated:(BOOL)arg2;

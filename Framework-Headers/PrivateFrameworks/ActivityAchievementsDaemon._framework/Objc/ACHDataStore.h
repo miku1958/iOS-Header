@@ -41,7 +41,7 @@
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic) BOOL populatesValuesFromDatabase; // @synthesize populatesValuesFromDatabase=_populatesValuesFromDatabase;
 @property (copy, nonatomic) CDUnknownBlockType populationCompleteBlock; // @synthesize populationCompleteBlock=_populationCompleteBlock;
-@property (strong, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSHashTable *propertyProviders; // @synthesize propertyProviders=_propertyProviders;
 @property (readonly) Class superclass;
 

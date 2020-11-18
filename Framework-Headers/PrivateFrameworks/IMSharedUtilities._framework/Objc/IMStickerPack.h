@@ -11,7 +11,7 @@
 @interface IMStickerPack : NSObject
 {
     NSMutableSet *_stickers;
-    struct NSString *_GUID;
+    NSString *_GUID;
     NSString *_name;
     NSURL *_displayAssetURL;
     NSURL *_fileURL;
@@ -33,7 +33,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithGUID:(struct NSString *)arg1 name:(id)arg2 displayAssetURL:(id)arg3 fileURL:(id)arg4 appBundleIdentifier:(id)arg5 appVersion:(id)arg6;
+- (id)initWithGUID:(id)arg1 name:(id)arg2 displayAssetURL:(id)arg3 fileURL:(id)arg4 appBundleIdentifier:(id)arg5 appVersion:(id)arg6;
 - (id)initWithStickerPackProperties:(id)arg1 stickerPackBundleURL:(id)arg2 appBundleIdentifier:(id)arg3 appVersion:(id)arg4;
 
 @end

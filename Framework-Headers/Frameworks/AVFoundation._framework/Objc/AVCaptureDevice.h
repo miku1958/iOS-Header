@@ -60,6 +60,7 @@
 - (BOOL)_isHighDynamicRangeScene;
 - (void)_setActiveVideoMaxFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)_setActiveVideoMinFrameDuration:(CDStruct_1b6d18a9)arg1;
+- (void)_setCameraCalibrationDataDeliveryEnabled:(BOOL)arg1;
 - (void)_setDepthDataDeliveryEnabled:(BOOL)arg1;
 - (void)_setPhotoSettingsForSceneMonitoring:(id)arg1;
 - (void)_setStillImageStabilizationAutomaticallyEnabled:(BOOL)arg1;
@@ -170,6 +171,7 @@
 - (BOOL)isSmoothAutoFocusSupported;
 - (BOOL)isSpatialOverCaptureEnabled;
 - (BOOL)isSubjectAreaChangeMonitoringEnabled;
+- (BOOL)isTimeOfFlightProjectorModeSupported:(long long)arg1;
 - (BOOL)isTorchActive;
 - (BOOL)isTorchAvailable;
 - (BOOL)isTorchModeSupported:(long long)arg1;
@@ -233,6 +235,7 @@
 - (void)setSmoothAutoFocusEnabled:(BOOL)arg1;
 - (void)setSpatialOverCaptureEnabled:(BOOL)arg1;
 - (void)setSubjectAreaChangeMonitoringEnabled:(BOOL)arg1;
+- (void)setTimeOfFlightProjectorMode:(long long)arg1;
 - (void)setTorchMode:(long long)arg1;
 - (BOOL)setTorchModeOnWithLevel:(float)arg1 error:(id *)arg2;
 - (void)setVideoHDREnabled:(BOOL)arg1;
@@ -250,6 +253,8 @@
 - (BOOL)supportsMultiCamCaptureWithDevice:(id)arg1;
 - (id)systemPressureState;
 - (CDStruct_b2fbf00d)temperatureAndTintValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1;
+- (long long)timeOfFlightBankCount;
+- (long long)timeOfFlightProjectorMode;
 - (float)torchLevel;
 - (long long)torchMode;
 - (void)unlockForConfiguration;

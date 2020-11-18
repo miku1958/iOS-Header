@@ -6,7 +6,7 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKDayView, EKEvent, NSArray, UIScrollView;
+@class EKDayOccurrenceView, EKDayView, EKEvent, NSArray, UIScrollView, UIView;
 
 @protocol EKDayViewDelegate <NSObject>
 
@@ -18,6 +18,7 @@
 - (void)dayView:(EKDayView *)arg1 firstVisibleSecondChanged:(unsigned long long)arg2;
 - (void)dayView:(EKDayView *)arg1 isPinchingDayViewWithScale:(double)arg2;
 - (void)dayView:(EKDayView *)arg1 scrollViewWillBeginDragging:(UIScrollView *)arg2;
+- (UIView *)dayView:(EKDayView *)arg1 selectedCopyViewForOccurrence:(EKDayOccurrenceView *)arg2;
 - (void)dayViewDidCompleteAsyncLoadAndLayout:(EKDayView *)arg1;
 - (void)dayViewDidFinishScrollingToOccurrence:(EKDayView *)arg1;
 - (void)dayViewDidTapEmptySpace:(EKDayView *)arg1;

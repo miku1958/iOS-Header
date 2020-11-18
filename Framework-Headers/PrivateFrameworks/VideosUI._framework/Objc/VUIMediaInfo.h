@@ -6,7 +6,7 @@
 
 #import <TVMLKit/TVMediaInfo.h>
 
-@class IKAppContext, TVPPlaylist;
+@class IKAppContext, TVImageProxy, TVPPlaylist;
 
 __attribute__((visibility("hidden")))
 @interface VUIMediaInfo : TVMediaInfo
@@ -25,9 +25,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _playbackContext;
     IKAppContext *_appContext;
     double _playbackDelayInterval;
+    TVImageProxy *_alphaImageProxy;
 }
 
 @property (nonatomic) BOOL allowsPictureInPicture; // @synthesize allowsPictureInPicture=_allowsPictureInPicture;
+@property (strong, nonatomic) TVImageProxy *alphaImageProxy; // @synthesize alphaImageProxy=_alphaImageProxy;
 @property (strong, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (nonatomic, getter=isAutomaticPlaybackStart) BOOL automaticPlaybackStart; // @synthesize automaticPlaybackStart=_automaticPlaybackStart;
 @property (nonatomic, getter=isAutomaticPlaybackStop) BOOL automaticPlaybackStop; // @synthesize automaticPlaybackStop=_automaticPlaybackStop;
@@ -51,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_populateMediaItem:(id)arg1 withMetadataFromVideosPlayable:(id)arg2;
 - (void)_populateMediaItem:(id)arg1 withMetadataOverrides:(id)arg2;
 - (id)_storeMediaItemFromMPMediaItem:(id)arg1;
-- (id)_storeMediaItemsFromVideosPlayable:(id)arg1 andStoreDictionary:(id)arg2;
+- (id)_storeMediaItemFromVideosPlayable:(id)arg1 andStoreDictionary:(id)arg2;
 - (id)_tvpMediaTypeFromPlayableType:(id)arg1 isRental:(BOOL)arg2;
 - (id)_tvpRatingDomainFromUTSRatingDomain:(id)arg1;
 - (void)_updatePlaybackStartReason;

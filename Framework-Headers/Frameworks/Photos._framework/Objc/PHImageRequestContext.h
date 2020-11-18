@@ -23,7 +23,6 @@
 
 @property (readonly, nonatomic) PHImageRequestOptions *imageOptions; // @synthesize imageOptions=_imageOptions;
 
-+ (long long)type;
 - (void).cxx_destruct;
 - (id)_initialBehavior;
 - (id)_lazyProgress;
@@ -39,6 +38,7 @@
 - (id)progresses;
 - (BOOL)representsShareableHighQualityResource;
 - (BOOL)shouldReportProgress;
+- (long long)type;
 
 @end
 

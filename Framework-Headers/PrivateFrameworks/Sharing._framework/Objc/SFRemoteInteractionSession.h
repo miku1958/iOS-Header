@@ -48,7 +48,7 @@
 - (void)_invalidate;
 - (void)_invalidated;
 - (void)_sessionHandleEvent:(id)arg1;
-- (void)_sessionSendPayload:(struct NSDictionary *)arg1;
+- (void)_sessionSendPayload:(id)arg1;
 - (void)_sessionStart;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)description;
@@ -60,7 +60,7 @@
 - (void)remoteInteractionSessionTextSessionDidBegin:(id)arg1;
 - (void)remoteInteractionSessionTextSessionDidChange:(id)arg1;
 - (void)remoteInteractionSessionTextSessionDidEnd:(id)arg1;
-- (void)sendPayload:(struct NSDictionary *)arg1;
+- (void)sendPayload:(id)arg1;
 
 @end
 

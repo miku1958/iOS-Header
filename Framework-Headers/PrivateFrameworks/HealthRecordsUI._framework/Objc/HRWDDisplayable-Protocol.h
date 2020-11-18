@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSArray *conceptNameItems;
 @property (readonly, nonatomic) BOOL isDateLess;
 @property (readonly, nonatomic) BOOL isDisplayable;
+@property (readonly, nonatomic) BOOL isRemovedFromRemote;
 @property (readonly, nonatomic) NSDate *meaningfulDate;
 @property (readonly, nonatomic) NSString *meaningfulDateString;
 @property (readonly, nonatomic) NSString *meaningfulDateTitle;

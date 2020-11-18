@@ -15,6 +15,8 @@
 @interface NEFilterDataExtensionProviderContext : NEFilterExtensionProviderContext <NEFilterDataExtensionProviderProtocol, NEFilterDataExtensionProviderHostProtocol>
 {
     BOOL _controlProviderExists;
+    NSDictionary *_remediationMap;
+    NSDictionary *_URLAppendStringMap;
     NSObject<OS_xpc_object> *_clientListener;
     NSXPCListenerEndpoint *_listenerEndpoint;
     NSMutableDictionary *_browserFlows;
@@ -22,25 +24,23 @@
     NSMutableDictionary *_channelFlows;
     NSMutableArray *_socketExceptions;
     NSObject<OS_dispatch_source> *_source;
-    NSDictionary *_remediationMap;
-    NSDictionary *_URLAppendStringMap;
     NSMutableArray *_pendingConnections;
 }
 
-@property (strong) NSDictionary *URLAppendStringMap; // @synthesize URLAppendStringMap=_URLAppendStringMap;
-@property (strong) NSMutableDictionary *browserFlows; // @synthesize browserFlows=_browserFlows;
-@property (strong) NSMutableDictionary *channelFlows; // @synthesize channelFlows=_channelFlows;
-@property (strong) NSObject<OS_xpc_object> *clientListener; // @synthesize clientListener=_clientListener;
-@property BOOL controlProviderExists; // @synthesize controlProviderExists=_controlProviderExists;
+@property (strong, nonatomic) NSDictionary *URLAppendStringMap; // @synthesize URLAppendStringMap=_URLAppendStringMap;
+@property (strong, nonatomic) NSMutableDictionary *browserFlows; // @synthesize browserFlows=_browserFlows;
+@property (strong, nonatomic) NSMutableDictionary *channelFlows; // @synthesize channelFlows=_channelFlows;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *clientListener; // @synthesize clientListener=_clientListener;
+@property (nonatomic) BOOL controlProviderExists; // @synthesize controlProviderExists=_controlProviderExists;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSXPCListenerEndpoint *listenerEndpoint; // @synthesize listenerEndpoint=_listenerEndpoint;
-@property (strong) NSMutableArray *pendingConnections; // @synthesize pendingConnections=_pendingConnections;
-@property (strong) NSDictionary *remediationMap; // @synthesize remediationMap=_remediationMap;
+@property (strong, nonatomic) NSXPCListenerEndpoint *listenerEndpoint; // @synthesize listenerEndpoint=_listenerEndpoint;
+@property (strong, nonatomic) NSMutableArray *pendingConnections; // @synthesize pendingConnections=_pendingConnections;
+@property (strong, nonatomic) NSDictionary *remediationMap; // @synthesize remediationMap=_remediationMap;
 @property (strong, nonatomic) NSMutableArray *socketExceptions; // @synthesize socketExceptions=_socketExceptions;
-@property (strong) NSMutableDictionary *socketFlows; // @synthesize socketFlows=_socketFlows;
-@property (strong) NSObject<OS_dispatch_source> *source; // @synthesize source=_source;
+@property (strong, nonatomic) NSMutableDictionary *socketFlows; // @synthesize socketFlows=_socketFlows;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 
 + (id)_extensionAuxiliaryHostProtocol;
@@ -50,30 +50,28 @@
 - (id)adjustDataToFilter:(id)arg1 startOffset:(unsigned long long *)arg2 flow:(id)arg3 direction:(long long)arg4;
 - (void)applySettings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)blessClient:(id)arg1;
-- (void)channelContentFilterWriteMessageForFlowUUID:(id)arg1 xpc_object_t:(id)arg2 drop:(BOOL)arg3 inboundPassOffset:(unsigned long long)arg4 inboundPeekOffset:(unsigned long long)arg5 outboundPassOffset:(unsigned long long)arg6 outboundPeekOffset:(unsigned long long)arg7;
-- (id)cleanRemediationURL:(id)arg1 flow:(id)arg2 providerConfiguration:(id)arg3;
-- (void)closeBrowserFilterFlow:(id)arg1 forUUID:(id)arg2;
-- (void)closeChannelFlow:(id)arg1 flowUUID:(id)arg2;
+- (void)closeBrowserFilterFlow:(id)arg1;
+- (void)closeChannelFlow:(id)arg1;
+- (void)closeFlow:(id)arg1;
 - (void)closePendingConnections;
 - (void)closeSocketFlow:(id)arg1 socketID:(unsigned long long)arg2;
-- (void)dispose;
 - (id)extensionPoint;
 - (void)fetchCurrentRulesForFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchProviderConnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)getDataVerdictWithControlVerdict:(id)arg1 flow:(id)arg2 data:(id)arg3 startOffset:(unsigned long long)arg4 direction:(long long)arg5;
 - (void)getSourceAppInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleAddDataMessage:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleChannelMessageFlowFinish:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleChannelMessageMoreData:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)handleChannelSourceEventAttachComplete:(id)arg1 flowUUID:(id)arg2 sendNewFlowReply:(CDUnknownBlockType)arg3;
+- (void)handleChannelMessageStatsReport:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleClientMessage:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)handleData:(id)arg1 offset:(unsigned long long)arg2 forFlow:(id)arg3 direction:(long long)arg4 reply:(id)arg5 controlSocket:(int)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)handleDataCompleteForFlow:(id)arg1 direction:(long long)arg2 reply:(id)arg3 controlSocket:(int)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)handleDataCompleteMessage:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleNewChannelFlowMessage:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)handleNewFlow:(id)arg1 reply:(id)arg2 controlSocket:(int)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleNewFlowMessage:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)handleNewFlowMessageComplete:(id)arg1 flow:(id)arg2 flowUUID:(const char *)arg3 direction:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)handleRemediationMessage:(id)arg1 filloutReply:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleRulesChanged;
-- (void)handleSocketSourceEventAttachComplete:(id)arg1 socketID:(unsigned long long)arg2 sendNewFlowReply:(CDUnknownBlockType)arg3;
 - (void)handleSocketSourceEventWithSocket:(int)arg1;
 - (void)provideRemediationMap:(id)arg1;
 - (void)provideURLAppendStringMap:(id)arg1;
@@ -83,16 +81,17 @@
 - (void)reportFlow:(id)arg1 forVerdict:(id)arg2 absoluteVerdict:(id)arg3;
 - (void)reportFlow:(id)arg1 forVerdict:(id)arg2 event:(long long)arg3;
 - (void)reportFlowClosed:(id)arg1;
+- (void)reportFlowStats:(id)arg1;
 - (void)resumeFlow:(id)arg1 withVerdict:(id)arg2;
-- (id)sanitizeRemediationButtonText:(id)arg1;
 - (void)sendBrowserContentFilterServerRequest;
 - (void)sendSocketContentFilterRequest;
 - (void)setupSocketContentFilterWithControlSocket:(int)arg1;
 - (void)setupSocketSourceWithControlSocket:(int)arg1;
-- (BOOL)socketContentFilterWriteMessageWithControlSocket:(int)arg1 socketID:(unsigned long long)arg2 drop:(BOOL)arg3 inboundPassOffset:(unsigned long long)arg4 inboundPeekOffset:(unsigned long long)arg5 outboundPassOffset:(unsigned long long)arg6 outboundPeekOffset:(unsigned long long)arg7;
 - (void)startFilterWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)stopWithReason:(int)arg1;
+- (void)tearDownConnection:(id)arg1;
 - (void)teardownSocketSource;
-- (id)trimURLFromFlow:(id)arg1;
+- (void)updateFlow:(id)arg1 withVerdict:(id)arg2 forDirection:(long long)arg3;
 
 @end
 

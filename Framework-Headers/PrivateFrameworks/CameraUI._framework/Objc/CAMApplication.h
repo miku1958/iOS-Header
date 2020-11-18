@@ -29,8 +29,8 @@
 - (BOOL)runSwitchToPortraitFrontWithTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)runTakePictureFrontPortraitTest:(id)arg1 options:(id)arg2 prototype:(id)arg3;
 - (BOOL)runTakePicturePortraitTest:(id)arg1 options:(id)arg2 prototype:(id)arg3;
-- (BOOL)runTakePictureTestWithFrontCamera:(id)arg1 options:(id)arg2 prototype:(id)arg3;
-- (BOOL)runTakePictureTestWithTestName:(id)arg1 options:(id)arg2 prototype:(id)arg3;
+- (BOOL)runTakePictureTestWithFrontCamera:(id)arg1 options:(id)arg2 prototype:(id)arg3 forCaptureMode:(long long)arg4;
+- (BOOL)runTakePictureTestWithTestName:(id)arg1 options:(id)arg2 prototype:(id)arg3 forCaptureMode:(long long)arg4;
 - (BOOL)runTest:(id)arg1 options:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientationsForWindow:(id)arg1;
 - (void)willCloseViewfinderForReason:(long long)arg1;

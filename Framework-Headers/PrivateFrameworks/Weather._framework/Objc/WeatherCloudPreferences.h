@@ -14,12 +14,12 @@
 __attribute__((visibility("hidden")))
 @interface WeatherCloudPreferences : NSObject <WeatherCloudPersistenceDelegate>
 {
-    id<SynchronizedDefaultsDelegate> _syncDelegate;
     id<WeatherPreferencesPersistence> _cloudStore;
+    id<SynchronizedDefaultsDelegate> _syncDelegate;
     WeatherPreferences *_localPreferences;
 }
 
-@property (strong) id<WeatherPreferencesPersistence> cloudStore; // @synthesize cloudStore=_cloudStore;
+@property (strong, nonatomic) id<WeatherPreferencesPersistence> cloudStore; // @synthesize cloudStore=_cloudStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

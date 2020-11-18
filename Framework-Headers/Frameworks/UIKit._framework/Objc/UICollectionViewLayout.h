@@ -34,7 +34,7 @@
     NSIndexSet *_sections;
     NSIndexSet *_items;
     NSArray *_elementKinds;
-    struct _UICollectionViewCompositionLayout *_compositionLayout;
+    _UICollectionViewCompositionLayout *_compositionLayout;
     UICollectionViewLayout *_siblingLayout;
     struct CGPoint _layoutOffset;
     unsigned long long _layoutOffsetEdges;
@@ -97,12 +97,12 @@
 - (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
 - (id)_layoutAttributesForElementsInProjectedRect:(struct CGRect)arg1 withProjectionVector:(struct CGVector)arg2 projectionDistance:(double)arg3;
 - (id)_layoutAttributesForReorderedItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
-- (int)_layoutAxis;
+- (unsigned long long)_layoutAxis;
 - (BOOL)_needsRecomputeOfPreferredAttributesForVisibleEstimatedItemsDuringUpdate;
 - (struct CGPoint)_offsetForOrthogonalScrollingSection:(long long)arg1;
-- (struct CGPoint)_offsetInTopParentLayout:(struct _UICollectionViewCompositionLayout **)arg1;
+- (struct CGPoint)_offsetInTopParentLayout:(id *)arg1;
 - (struct CGRect)_orthogonalFrameWithOffsetElidedForItemWithLayoutAttributes:(id)arg1 frame:(struct CGRect)arg2;
-- (int)_orthogonalScrollingAxis;
+- (unsigned long long)_orthogonalScrollingAxis;
 - (struct NSDirectionalEdgeInsets)_orthogonalScrollingContentInsetsForSection:(long long)arg1;
 - (struct CGRect)_orthogonalScrollingContentRectForSection:(long long)arg1;
 - (double)_orthogonalScrollingDecelerationRateForSection:(long long)arg1;

@@ -7,72 +7,99 @@
 #import <objc/NSObject.h>
 
 #import <InAppMessages/IAMEventReceiver-Protocol.h>
-#import <InAppMessages/IAMWebMessagePresentationCoordinatorDelegate-Protocol.h>
+#import <InAppMessages/IAMImpressionManagerDelegate-Protocol.h>
 
-@class IAMWebMessagePresentationCoordinator, ICInAppMessageManager, NSArray, NSDictionary, NSMutableDictionary, NSMutableOrderedSet, NSString;
-@protocol IAMApplicationContextProvider, IAMMessageMetricsDelegate, IAMMessageReceiver, OS_dispatch_queue;
+@class IAMImpressionManager, IAMModalTarget, ICInAppMessageManager, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@protocol IAMApplicationContextProvider, IAMMessageMetricsDelegate, OS_dispatch_queue;
 
-@interface IAMMessageCoordinator : NSObject <IAMWebMessagePresentationCoordinatorDelegate, IAMEventReceiver>
+@interface IAMMessageCoordinator : NSObject <IAMImpressionManagerDelegate, IAMEventReceiver>
 {
     ICInAppMessageManager *_iTunesCloudIAMManager;
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSArray *_registeredMessageEntries;
-    NSMutableDictionary *_registeredMetadataEntries;
+    NSDictionary *_messageEntriesByIdentifier;
+    NSMutableDictionary *_metadataEntriesByIdentifier;
     id<IAMApplicationContextProvider> _applicationContext;
     NSDictionary *_messageEntriesByMonitoredKeys;
-    IAMWebMessagePresentationCoordinator *_webMessagePresentationCoordinator;
-    NSMutableOrderedSet *_visibleViewControllers;
-    id<IAMMessageReceiver> _targetFallback;
+    NSDictionary *_messageEntriesByTargetIdentifier;
+    NSMutableDictionary *_messageTargetsByTargetIdentifier;
+    NSMutableDictionary *_priorityMessageEntryByTargetIdentifier;
+    NSMutableDictionary *_lastDisplayTimeByGlobalPresentationPolicyGroupString;
+    IAMImpressionManager *_impressionManager;
+    NSMutableArray *_pendingEvents;
+    NSString *_modalTargetIdentifier;
+    IAMModalTarget *_modalTarget;
+    BOOL _haveMessagesBeenFetchedAndIndexed;
+    BOOL _havePresentationPolicyDisplayTimesBeenFetched;
     BOOL _registeredAsObserverForICNotifications;
-    BOOL _modalIsPresented;
     id<IAMMessageMetricsDelegate> _metricsDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSDictionary *messageEntriesByIdentifier; // @synthesize messageEntriesByIdentifier=_messageEntriesByIdentifier;
 @property (strong, nonatomic) NSDictionary *messageEntriesByMonitoredKeys; // @synthesize messageEntriesByMonitoredKeys=_messageEntriesByMonitoredKeys;
 @property (weak, nonatomic) id<IAMMessageMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
-@property (strong, nonatomic) NSArray *registeredMessageEntries; // @synthesize registeredMessageEntries=_registeredMessageEntries;
+@property (strong, nonatomic) NSMutableDictionary *priorityMessageEntryByTargetIdentifier; // @synthesize priorityMessageEntryByTargetIdentifier=_priorityMessageEntryByTargetIdentifier;
 @property (readonly) Class superclass;
 
-+ (void)addVisibleViewController:(id)arg1;
 + (void)initialize;
-+ (BOOL)isModalPresentedByAnyCoordinator;
-+ (void)removeVisibleViewController:(id)arg1;
++ (id)propertyNameForGlobalPresentationPolicyGroupLastDisplayTime:(int)arg1;
 - (void).cxx_destruct;
 - (void)_calculateMessagesProximityAndDownloadResourcesIfNeeded:(id)arg1;
-- (void)_incrementNumberOfDisplayForMessageEntry:(id)arg1;
-- (void)_reevaluateMessages:(id)arg1;
+- (BOOL)_canMessagesBeEvaluated;
+- (id)_createMessageFromMessageEntry:(id)arg1 replacingResourcePathsWithCachedResourceLocations:(BOOL)arg2;
+- (id)_dequeuePendingEvents;
+- (void)_didReceiveMessagesDidChangeNotification;
+- (void)_enqueuePendingEvent:(id)arg1;
+- (void)_evaluateMessagesIfReady;
+- (void)_fetchLastDisplayTimeForGlobalPresentationPolicyGroup:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_filterActiveTargetIdentifiers:(id)arg1;
+- (void)_incrementNumberOfDisplaysForMessageEntry:(id)arg1;
+- (id)_messageEntriesCorrespondingToContextProperties:(id)arg1 shouldExcludeMessagesRequiringTriggerEvent:(BOOL)arg2;
+- (void)_notifyMessageTargets:(id)arg1 withTargetIdentifier:(id)arg2 didUpdatePriorityMessageFromEntry:(id)arg3;
+- (void)_reevaluateMessageEntries:(id)arg1 forTargetIdentifier:(id)arg2 shouldNotifyTargetsIfPriorityMessageNonNil:(BOOL)arg3;
+- (void)_reevaluateTargetsWithIdentifiers:(id)arg1 forEvent:(id)arg2 shouldNotifyTargetsIfPriorityMessageNonNil:(BOOL)arg3;
+- (void)_removeUserNotificationRemovalForMessageWithIdentifier:(id)arg1;
 - (void)_reportDisplayToITunesCloudManagerWithEventIdentifier:(id)arg1;
-- (void)_reportMetricsEvent:(id)arg1;
-- (void)_updateLastDisplayTime;
-- (void)_updateMessagesByMonitoredKeys;
-- (void)addVisibleViewController:(id)arg1;
+- (void)_reportMessageAction:(id)arg1 wasPerformedInMessageEntry:(id)arg2 fromTargetWithIdentifier:(id)arg3;
+- (id)_targetIdentifiersCorrespondingToMessageEntries:(id)arg1;
+- (void)_updateMessageIndexes;
+- (void)_updatePriorityMessageEntry:(id)arg1 forTargetIdentifier:(id)arg2 shouldNotifyTargetsIfNonNil:(BOOL)arg3;
 - (id)allMessageEntriesWithoutDuplicates:(id)arg1;
+- (BOOL)applicationAllowsModalPresentation;
+- (id)applicationViewControllerForModalPresentation;
+- (void)cacheLastDisplayTime:(id)arg1 forGlobalPresentationPolicyGroup:(int)arg2;
 - (void)dealloc;
-- (void)displayMessageFromMessageEntry:(id)arg1;
+- (void)fetchGlobalPresentationPolicyGroupDisplayTimesFromiTunesCloud;
 - (void)fetchMessagesFromiTunesCloud;
+- (void)impressionManager:(id)arg1 impressionDidEndForMessageEntry:(id)arg2;
+- (void)impressionManager:(id)arg1 shouldReportImpressionEventWithDictionary:(id)arg2;
 - (id)init;
+- (id)lastDisplayTimeForGlobalPresentationPolicyGroup:(int)arg1;
 - (id)messageEntriesByRealKeyCorrespondingToEvent:(id)arg1;
-- (id)messagesToReevaluate:(id)arg1 forEvent:(id)arg2;
+- (id)messageEntryForIdentifier:(id)arg1;
+- (id)metadataEntriesByIdentifier;
+- (id)metadataEntryForIdentifier:(id)arg1;
+- (void)performApplicationAction:(id)arg1;
 - (void)receiveEvent:(id)arg1;
-- (id)registeredMetadataEntries;
-- (id)registeredMetadataEntryForKey:(id)arg1;
-- (void)removeVisibleViewController:(id)arg1;
-- (void)reportDisplayForMessageEntry:(id)arg1;
-- (void)setRegisteredMetadataEntries:(id)arg1;
-- (void)setRegisteredMetadataEntry:(id)arg1 forKey:(id)arg2;
+- (void)registerMessageTarget:(id)arg1;
+- (void)reportApplicationContextPropertiesDidChange:(id)arg1;
+- (void)reportHoldoutMessageWouldAppear:(id)arg1;
+- (void)reportMessageDidAppearWithIdentifier:(id)arg1;
+- (void)reportMessageDidAppearWithIdentifier:(id)arg1 fromTargetWithIdentifier:(id)arg2;
+- (void)reportMessageDidDisappearWithIdentifier:(id)arg1;
+- (void)reportMessageDidDisappearWithIdentifier:(id)arg1 fromTargetWithIdentifier:(id)arg2;
+- (void)reportMessageWithIdentifier:(id)arg1 actionWasPerformedWithIdentifier:(id)arg2;
+- (void)reportMessageWithIdentifier:(id)arg1 actionWasPerformedWithIdentifier:(id)arg2 fromTargetWithIdentifier:(id)arg3;
+- (void)reportMetricsEvent:(id)arg1;
+- (void)setLastDisplayTime:(id)arg1 forGlobalPresentationPolicyGroup:(int)arg2;
+- (void)setMetadataEntriesByIdentifier:(id)arg1;
+- (void)setMetadataEntry:(id)arg1 forIdentifier:(id)arg2;
 - (void)start;
 - (void)startWithApplicationContext:(id)arg1;
-- (void)startWithApplicationContext:(id)arg1 andTargetFallback:(id)arg2;
+- (void)unregisterMessageTarget:(id)arg1;
 - (void)updateMetadataOfMessageEntriesByRealKey:(id)arg1 forReceivedEvent:(id)arg2;
-- (id)viewControllerForModalPresentationUsingCoordinator:(id)arg1;
-- (void)webMessagePresentationCoordinatorWebMessageDidFail:(id)arg1;
-- (void)webMessagePresentationCoordinatorWebMessageDidFinishPresentation:(id)arg1;
-- (void)webMessagePresentationCoordinatorWebMessageDidLoad:(id)arg1;
-- (void)webMessagePresentationCoordinatorWebMessageDidReportEvent:(id)arg1 event:(id)arg2;
-- (void)webMessagePresentationCoordinatorWebMessageDidRequestAction:(id)arg1 actionConfiguration:(id)arg2;
 
 @end
 

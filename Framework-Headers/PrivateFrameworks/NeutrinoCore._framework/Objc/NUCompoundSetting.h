@@ -10,7 +10,7 @@
 
 @interface NUCompoundSetting : NUSetting
 {
-    struct NSDictionary *_properties;
+    NSDictionary *_properties;
 }
 
 @property (readonly) NSDictionary *properties; // @synthesize properties=_properties;
@@ -24,7 +24,7 @@
 - (void)enumerateProperties:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithAttributes:(id)arg1;
-- (id)initWithProperties:(struct NSDictionary *)arg1 attributes:(id)arg2;
+- (id)initWithProperties:(id)arg1 attributes:(id)arg2;
 - (BOOL)isValid:(out id *)arg1;
 - (id)makeJSValue:(id)arg1 context:(id)arg2 error:(out id *)arg3;
 - (id)modelForProperty:(id)arg1;

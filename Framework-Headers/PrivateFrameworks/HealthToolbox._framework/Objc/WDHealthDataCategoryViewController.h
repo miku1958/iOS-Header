@@ -139,7 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)productViewControllerDidFinish:(id)arg1;
-- (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(struct NSDictionary *)arg2;
+- (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;

@@ -61,6 +61,7 @@
 @property (copy, nonatomic) NSString *sublabel; // @synthesize sublabel=_sublabel;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *universalLibraryID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

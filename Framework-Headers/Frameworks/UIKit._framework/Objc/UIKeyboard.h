@@ -75,6 +75,7 @@
 - (id)_baseKeyForRepresentedString:(id)arg1;
 - (void)_changeToKeyplane:(id)arg1;
 - (void)_deactivateForBackgrounding;
+- (void)_didChangeCandidateList;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (BOOL)_disableTouchInput;
 - (struct CGRect)_floatingKeyboardDraggableRect;

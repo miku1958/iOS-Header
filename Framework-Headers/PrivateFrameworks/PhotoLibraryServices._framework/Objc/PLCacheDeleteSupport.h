@@ -20,6 +20,7 @@
 + (id)_purgeableResourceDirectoriesForPathManager:(id)arg1;
 + (BOOL)clearPurgeableFlagsForAllResourcesInPhotoLibraryURL:(id)arg1;
 + (BOOL)isPurgeableFile:(id)arg1 outIsPhotoType:(BOOL *)arg2 outUrgencyLevel:(long long *)arg3;
++ (BOOL)markPurgeableForFileAtURL:(id)arg1 withUrgency:(long long)arg2 outInode:(unsigned long long *)arg3;
 + (id)purgeableStateDescriptionForFile:(id)arg1;
 + (void)registerNullHandler;
 - (void).cxx_destruct;
@@ -30,7 +31,9 @@
 - (void)_rescanResourcesFromFileSystem;
 - (BOOL)clearPurgeableFlagForResource:(id)arg1;
 - (BOOL)clearPurgeableFlagsForAllResources;
+- (void)dealloc;
 - (id)initWithPhotoLibrary:(id)arg1 cplStatus:(id)arg2;
+- (void)invalidate;
 - (BOOL)markResourceAsPurgeable:(id)arg1 withUrgency:(long long)arg2;
 
 @end

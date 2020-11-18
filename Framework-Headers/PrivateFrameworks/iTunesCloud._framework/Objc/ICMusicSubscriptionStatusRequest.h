@@ -9,7 +9,7 @@
 #import <iTunesCloud/NSCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICStoreRequestContext;
+@class ICStoreRequestContext, NSUUID;
 
 @interface ICMusicSubscriptionStatusRequest : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,15 +19,15 @@
     BOOL _shouldReturnLastKnownStatusOnly;
     ICStoreRequestContext *_storeRequestContext;
     long long _reason;
-    long long _maximumRetryCount;
     long long _carrierBundleProvisioningStyle;
+    NSUUID *_requestIdentifier;
 }
 
 @property (nonatomic) BOOL allowsFallbackToExpiredStatus; // @synthesize allowsFallbackToExpiredStatus=_allowsFallbackToExpiredStatus;
 @property (nonatomic) BOOL allowsFallbackToStatusNeedingReload; // @synthesize allowsFallbackToStatusNeedingReload=_allowsFallbackToStatusNeedingReload;
 @property (nonatomic) long long carrierBundleProvisioningStyle; // @synthesize carrierBundleProvisioningStyle=_carrierBundleProvisioningStyle;
-@property (nonatomic) long long maximumRetryCount; // @synthesize maximumRetryCount=_maximumRetryCount;
 @property (nonatomic) long long reason; // @synthesize reason=_reason;
+@property (readonly, nonatomic) NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property (nonatomic) BOOL shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
 @property (nonatomic) BOOL shouldReturnLastKnownStatusOnly; // @synthesize shouldReturnLastKnownStatusOnly=_shouldReturnLastKnownStatusOnly;
 @property (copy, nonatomic) ICStoreRequestContext *storeRequestContext; // @synthesize storeRequestContext=_storeRequestContext;
@@ -35,9 +35,12 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStoreRequestContext:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

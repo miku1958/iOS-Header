@@ -6,50 +6,54 @@
 
 #import <objc/NSObject.h>
 
-@class ARFrame, MISSING_TYPE, NSDate;
-@protocol ARSessionMetricsReporting, OS_dispatch_queue;
+@class ARConfiguration, ARFrame, MISSING_TYPE, NSDate;
+@protocol ARSessionMetricsReporting;
 
 @interface ARSessionMetrics : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
     id<ARSessionMetricsReporting> _reporter;
+    BOOL _isAutoFocusEnabled;
+    BOOL _sessionWasThrottled;
+    float _timeUntilThrottling;
+    float _badFramePercentage10;
+    float _badFramePercentage60;
+    float _badFramePercentageMoreThan60;
     Class _configClass;
-    id _currentConfiguration;
+    ARConfiguration *_currentConfiguration;
     NSDate *_startDate;
     NSDate *_frameStartDate;
     double _sessionTimeForLastBadFrameRecording;
     BOOL _initializingVIO;
     unsigned long long _frameCount;
     unsigned long long _badFrameCount;
+    double _vioInitializationTime;
     BOOL _positionInitialized;
     MISSING_TYPE *_minPos;
     MISSING_TYPE *_maxPos;
     ARFrame *_lastUpdatedFrame;
+    unsigned long long _currentVIOMapSize;
+    unsigned long long _numberOfCameraSwitches;
+    unsigned long long _numberOfReinitializationAttempts;
     BOOL _hasInitialWorldMap;
     BOOL _relocalizingToInitialWorldMap;
     unsigned long long _raycastCount;
-    BOOL _didRunPlaneDetection;
-    long long _highestThermalState;
-    BOOL _didSwitchToWornMode;
 }
 
++ (id)getRenderEngineString:(id)arg1;
++ (void)recordHitTest:(unsigned long long)arg1;
++ (void)setRenderType:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)_baseKey;
-- (int)_checkRenderEngine:(id)arg1 withConfiguration:(id)arg2;
 - (void)_recordBadFramePercentageFinal:(BOOL)arg1;
-- (void)_recordBadFramePercentageWithBucket:(id)arg1;
 - (void)_recordSessionEnd;
-- (id)arkitBasedKey:(id)arg1;
-- (id)configBasedKey:(id)arg1;
 - (id)init;
 - (id)initWithReporter:(id)arg1;
 - (id)queue;
 - (void)recordRaycast:(id)arg1 tracked:(BOOL)arg2;
-- (void)saveMapWithFrame:(id)arg1;
+- (void)recordSaveMap:(long long)arg1 numberOfFeaturePoints:(unsigned long long)arg2;
+- (void)reportSessionFailure:(id)arg1;
 - (void)sessionDidUpdateFrame:(id)arg1;
 - (void)sessionStarted:(id)arg1 withConfiguration:(id)arg2;
 - (void)sessionStopped;
-- (void)sessionSwitchedPresentationMode:(long long)arg1;
 - (void)sessionUpdateThermalState:(long long)arg1;
 
 @end

@@ -35,14 +35,14 @@
 + (struct CGSize)posterImageSizeThatFits:(struct CGSize)arg1 scale:(double)arg2;
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 viewModel:(id)arg2;
 + (id)subtitle1Color;
-+ (struct UIFont *)subtitle1Font;
++ (id)subtitle1Font;
 + (long long)subtitle1TextStyle;
 + (id)subtitle2Color;
-+ (struct UIFont *)subtitle2Font;
++ (id)subtitle2Font;
 + (long long)subtitle2TextStyle;
 + (id)titleBulletColor;
-+ (struct UIFont *)titleEmphasizedFont;
-+ (struct UIFont *)titleFont;
++ (id)titleEmphasizedFont;
++ (id)titleFont;
 + (long long)titleTextStyle;
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange:(id)arg1;

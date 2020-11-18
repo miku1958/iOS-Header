@@ -34,7 +34,7 @@
 @property (readonly, copy, nonatomic) INSpeakableString *group; // @synthesize group=_group;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) INSpeakableString *home; // @synthesize home=_home;
-@property (readonly, nonatomic) NSString *name;
+@property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) INSpeakableString *room; // @synthesize room=_room;
 @property (readonly, nonatomic) long long sceneType; // @synthesize sceneType=_sceneType;
 @property (readonly) Class superclass;

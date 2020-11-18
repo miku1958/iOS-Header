@@ -12,9 +12,11 @@
 {
     long long _version;
     NSArray *_engagementMessages;
+    NSArray *_notifications;
 }
 
 @property (readonly, nonatomic) NSArray *engagementMessages; // @synthesize engagementMessages=_engagementMessages;
+@property (readonly, nonatomic) NSArray *notifications; // @synthesize notifications=_notifications;
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
 - (void).cxx_destruct;

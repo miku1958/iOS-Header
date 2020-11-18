@@ -1341,7 +1341,9 @@ struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
 };
 
 struct atomic<int> {
-    _Atomic int __a_;
+    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+        _Atomic int __a_value;
+    } __a_;
 };
 
 struct btActionInterface;

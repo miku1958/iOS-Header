@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsSubscription/NPHardPaywallModuleType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface NPHardPaywallModule : NSObject <NPHardPaywallModuleType>
+@interface NPHardPaywallModule : NSObject
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;

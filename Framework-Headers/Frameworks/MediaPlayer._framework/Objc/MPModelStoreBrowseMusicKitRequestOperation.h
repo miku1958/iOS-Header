@@ -4,21 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayer/MPStoreModelRequestOperation.h>
+#import <MediaPlayer/MPModelStoreGroupingsMusicKitRequestOperation.h>
 
-@class NSIndexSet;
-
-@interface MPModelStoreBrowseMusicKitRequestOperation : MPStoreModelRequestOperation
+@interface MPModelStoreBrowseMusicKitRequestOperation : MPModelStoreGroupingsMusicKitRequestOperation
 {
-    NSIndexSet *_carPlayWhitelistedFCKinds;
 }
 
-- (void).cxx_destruct;
-- (id)_produceResponseWithParser:(id)arg1 results:(id)arg2 error:(id *)arg3;
-- (id)browseURLWithStoreBagDictionary:(id)arg1;
-- (id)configurationForLoadingModelDataWithStoreBagDictionary:(id)arg1 error:(id *)arg2;
-- (void)produceResponseWithLoadedOutput:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)radioGenresURLWithStoreBagDictionary:(id)arg1;
+- (id)groupingNameBagKey;
 
 @end
 

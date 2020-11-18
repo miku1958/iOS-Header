@@ -13,8 +13,8 @@
 
 @interface AVTSerialTaskScheduler : NSObject <AVTTaskScheduler>
 {
-    struct NSMutableArray *_priorityTasks;
-    struct NSMutableArray *_backlogTasks;
+    NSMutableArray *_priorityTasks;
+    NSMutableArray *_backlogTasks;
     NSObject<OS_dispatch_queue> *_stateLock;
     long long _order;
 }
@@ -30,7 +30,7 @@
 
 + (id)fifoSchedulerWithEnvironment:(id)arg1;
 + (id)lifoSchedulerWithEnvironment:(id)arg1;
-+ (CDUnknownBlockType)nextTaskToRunForPriorityTasks:(struct NSMutableArray *)arg1 backlogTasks:(struct NSMutableArray *)arg2 order:(long long)arg3;
++ (CDUnknownBlockType)nextTaskToRunForPriorityTasks:(id)arg1 backlogTasks:(id)arg2 order:(long long)arg3;
 - (void).cxx_destruct;
 - (void)cancelAllTasks;
 - (void)cancelTask:(CDUnknownBlockType)arg1;

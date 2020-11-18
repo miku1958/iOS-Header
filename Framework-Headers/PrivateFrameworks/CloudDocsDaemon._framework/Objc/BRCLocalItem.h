@@ -198,7 +198,7 @@
 - (id)itemParentGlobalID;
 - (id)itemResolutionString;
 - (id)jobsDescription;
-- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 sharingOptions:(unsigned long long)arg3 path:(id)arg4 markLost:(BOOL)arg5;
+- (void)learnItemID:(id)arg1 serverItem:(id)arg2 path:(id)arg3 markLost:(BOOL)arg4;
 - (BOOL)learnStagedInfoFromDownloadStageID:(id)arg1 error:(id *)arg2;
 - (void)markBounceFailed;
 - (void)markBounceFinished;
@@ -221,7 +221,7 @@
 - (void)markNeedsOSUpgradeToSyncUpWithName:(id)arg1;
 - (void)markNeedsUploadOrSyncingUp;
 - (void)markRemovedFromFilesystemForServerEdit:(BOOL)arg1;
-- (void)markRenamedUsingServerItem:(id)arg1 toRelpath:(id)arg2 logicalName:(id)arg3 filename:(id)arg4 forContentApplyOnly:(BOOL)arg5;
+- (void)markRenamedUsingServerItem:(id)arg1 toRelpath:(id)arg2 logicalName:(id)arg3 filename:(id)arg4 origLogicalNameBeforeBounce:(id)arg5 forContentApplyOnly:(BOOL)arg6;
 - (void)markReserved;
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2;
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2 documentID:(unsigned int)arg3;

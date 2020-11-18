@@ -9,6 +9,7 @@
 #import <PencilKit/PKColorPickerDelegate-Protocol.h>
 #import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
+#import <PencilKit/PKPalettePopoverUpdating-Protocol.h>
 #import <PencilKit/PKPaletteQuickColorPicking-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 #import <PencilKit/UICollectionViewDataSource-Protocol.h>
@@ -20,7 +21,7 @@
 @class NSArray, NSString, PKColorPicker, UICollectionView, UIColor, UILongPressGestureRecognizer;
 @protocol PKPalettePopoverPresenting><PKPaletteColorPickerViewDelegate;
 
-@interface PKPaletteColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, PKColorPickerDelegate, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PKEdgeLocatable, PKPaletteQuickColorPicking, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
+@interface PKPaletteColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, PKColorPickerDelegate, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PKEdgeLocatable, PKPaletteQuickColorPicking, PKPalettePopoverUpdating, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
 {
     unsigned long long _edgeLocation;
     double _scalingFactor;
@@ -86,6 +87,7 @@
 - (void)toggleColorSelectionPopover;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)traitCollectionWithCurrentInterfaceStyle;
+- (void)updatePopoverUI;
 
 @end
 

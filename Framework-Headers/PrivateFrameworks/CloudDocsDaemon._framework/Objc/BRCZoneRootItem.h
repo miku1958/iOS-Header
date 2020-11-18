@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct BRCDirectoryItem *)asFSRoot;
+- (id)asFSRoot;
 - (id)fileID;
 - (id)initWithZoneRootItemID:(id)arg1 session:(id)arg2;
 - (BOOL)isFSRoot;

@@ -11,17 +11,17 @@
 @interface BFFCapabilities : NSObject
 {
     NSObject<OS_dispatch_queue> *_fetchQueue;
-    BOOL _regionSupportsPaymentRegistrationInitialized;
-    BOOL _regionSupportsPaymentRegistration;
+    BOOL _shouldShowWalletInitialized;
+    BOOL _shouldShowWallet;
 }
 
 + (id)sharedCapabilities;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)getRegionSupportsPaymentRegistrationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)isAppleTV;
 - (void)localeChanged:(id)arg1;
+- (void)shouldShowWallet:(CDUnknownBlockType)arg1;
 - (BOOL)supportsApplePay;
 
 @end

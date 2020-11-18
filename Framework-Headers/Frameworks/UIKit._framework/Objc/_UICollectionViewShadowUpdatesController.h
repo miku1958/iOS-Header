@@ -35,6 +35,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)_collectionView:(id)arg1 canEditItemAtIndexPath:(id)arg2;
 - (BOOL)_collectionView:(id)arg1 canHandleDropSesson:(id)arg2;
 - (BOOL)_collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
+- (id)_collectionView:(id)arg1 cursorRegionForItemAtIndexPath:(id)arg2 defaultRegion:(id)arg3;
+- (id)_collectionView:(id)arg1 cursorStyleForModifiers:(long long)arg2 atIndexPath:(id)arg3;
+- (void)_collectionView:(id)arg1 cursorWillEnterItemAtIndexPath:(id)arg2;
+- (void)_collectionView:(id)arg1 cursorWillExitItemAtIndexPath:(id)arg2;
 - (long long)_collectionView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (long long)_collectionView:(id)arg1 dataOwnerForDropSession:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (id)_collectionView:(id)arg1 dragDestinationTargetIndexPathForProposedIndexPath:(id)arg2 currentIndexPath:(id)arg3 dropSession:(id)arg4;

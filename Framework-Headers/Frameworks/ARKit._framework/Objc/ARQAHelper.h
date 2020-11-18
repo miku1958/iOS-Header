@@ -12,7 +12,7 @@
 {
 }
 
-+ (float)_meanDepthValueFromFrame:(id)arg1;
++ (float)_meanDepthValueOfDepthBuffer:(struct __CVBuffer *)arg1 consideringSegmentation:(BOOL)arg2 ofSegmentationBuffer:(struct __CVBuffer *)arg3;
 + (id)arrayFromRaycastResults:(id)arg1;
 + (id)arrayOf2dPoints:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2;
 + (id)arrayOf3dPoints:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2;
@@ -30,6 +30,7 @@
 + (id)headerInformationWithSize:(struct CGSize)arg1 frameLabelRect:(struct CGRect)arg2 configuration:(id)arg3 technique:(id)arg4;
 + (void)techniquesArray:(id)arg1 array:(id)arg2;
 + (id)traceFrameData:(id)arg1 withFrameIndex:(unsigned long long)arg2;
++ (id)traceFrameData:(id)arg1 withFrameIndex:(unsigned long long)arg2 writeOBJ:(BOOL)arg3;
 
 @end
 

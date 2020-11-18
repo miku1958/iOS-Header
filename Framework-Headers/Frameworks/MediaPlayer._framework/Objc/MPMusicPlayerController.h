@@ -6,91 +6,106 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/MPArtworkDataSource-Protocol.h>
 #import <MediaPlayer/MPMediaPlayback-Protocol.h>
-#import <MediaPlayer/MPRequestResponseControllerDelegate-Protocol.h>
-#import <MediaPlayer/MPSystemMusicPlayerController-Protocol.h>
+#import <MediaPlayer/MPMusicPlayerControllerClient-Protocol.h>
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 
-@class MPArtworkCatalog, MPMediaItem, MPMusicPlayerQueueDescriptor, MPRequestResponseController, MPVolumeController, NSMutableDictionary, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@class MPMediaItem, MPMusicPlayerControllerNowPlaying, MPMusicPlayerControllerNowPlayingTimeSnapshot, MPMusicPlayerQueueDescriptor, MPVolumeController, NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
-@interface MPMusicPlayerController : NSObject <MPVolumeControllerDelegate, MPSystemMusicPlayerController, MPRequestResponseControllerDelegate, MPMediaPlayback>
+@interface MPMusicPlayerController : NSObject <MPArtworkDataSource, MPVolumeControllerDelegate, MPMusicPlayerControllerClient, MPMediaPlayback>
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSObject<OS_dispatch_group> *_pendingRequestGroup;
-    MPMusicPlayerQueueDescriptor *_pendingQueueDescriptor;
-    BOOL _hasTracklistUIDChangedWhilePreparingToPlay;
-    CDUnknownBlockType _pendingPrepareCompletion;
-    NSMutableDictionary *_responseValidators;
-    MPArtworkCatalog *_previousArtworkCatalog;
-    BOOL _hasPreparedToPlay;
-    MPMediaItem *_pendingNowPlayingItem;
-    NSObject<OS_dispatch_queue> *_pendingPrepareCalloutQueue;
-    BOOL _legacyClient;
+    NSXPCConnection *_connection;
+    struct os_unfair_lock_s _lock;
+    BOOL _isPreparedToPlay;
     NSString *_clientIdentifier;
-    MPMusicPlayerQueueDescriptor *_queueDescriptor;
+    MPMusicPlayerControllerNowPlaying *_serverNowPlaying;
+    MPMusicPlayerControllerNowPlayingTimeSnapshot *_serverTimeSnapshot;
+    MPMusicPlayerQueueDescriptor *_serverQueueDescriptor;
+    MPMusicPlayerControllerNowPlayingTimeSnapshot *_lastServerTimeSnapshot;
+    MPMusicPlayerControllerNowPlaying *_lastServerNowPlaying;
+    MPMusicPlayerQueueDescriptor *_targetQueueDescriptor;
+    long long _notificationsCounter;
     MPVolumeController *_volumeController;
-    MPRequestResponseController *_requestController;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (nonatomic) unsigned long long currentChapterIndex;
 @property (nonatomic) float currentPlaybackRate;
 @property (nonatomic) double currentPlaybackTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long indexOfNowPlayingItem;
-@property (readonly, nonatomic) BOOL isPreparedToPlay;
-@property (readonly, nonatomic, getter=isLegacyClient) BOOL legacyClient; // @synthesize legacyClient=_legacyClient;
+@property (readonly, nonatomic) BOOL isNowPlayingItemFromGeniusMix;
+@property (readonly, nonatomic) BOOL isPreparedToPlay; // @synthesize isPreparedToPlay=_isPreparedToPlay;
+@property (readonly, nonatomic) MPMusicPlayerControllerNowPlaying *lastServerNowPlaying; // @synthesize lastServerNowPlaying=_lastServerNowPlaying;
+@property (readonly, nonatomic) MPMusicPlayerControllerNowPlayingTimeSnapshot *lastServerTimeSnapshot; // @synthesize lastServerTimeSnapshot=_lastServerTimeSnapshot;
+@property (readonly, nonatomic) long long notificationsCounter; // @synthesize notificationsCounter=_notificationsCounter;
 @property (copy, nonatomic) MPMediaItem *nowPlayingItem;
+@property (nonatomic) long long playbackSpeed;
 @property (readonly, nonatomic) long long playbackState;
-@property (strong, nonatomic) MPMusicPlayerQueueDescriptor *queueDescriptor; // @synthesize queueDescriptor=_queueDescriptor;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) long long repeatMode;
-@property (strong, nonatomic) MPRequestResponseController *requestController; // @synthesize requestController=_requestController;
+@property (readonly, nonatomic) MPMusicPlayerControllerNowPlaying *serverNowPlaying; // @synthesize serverNowPlaying=_serverNowPlaying;
+@property (readonly, nonatomic) MPMusicPlayerQueueDescriptor *serverQueueDescriptor; // @synthesize serverQueueDescriptor=_serverQueueDescriptor;
+@property (readonly, nonatomic) MPMusicPlayerControllerNowPlayingTimeSnapshot *serverTimeSnapshot; // @synthesize serverTimeSnapshot=_serverTimeSnapshot;
 @property (nonatomic) long long shuffleMode;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) MPMusicPlayerQueueDescriptor *targetQueueDescriptor; // @synthesize targetQueueDescriptor=_targetQueueDescriptor;
 @property (nonatomic) float volume;
-@property (strong, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
+@property (readonly, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 
-+ (BOOL)_isPlayerInstalled;
++ (id)alloc;
 + (id)applicationMusicPlayer;
 + (id)applicationQueuePlayer;
 + (id)iPodMusicPlayer;
 + (void)setRunLoopForNotifications:(id)arg1;
-+ (id)supportedProperties;
 + (id)systemMusicPlayer;
 - (void).cxx_destruct;
-- (id)_initWithClientIdentifier:(id)arg1;
-- (void)_preflightRequestIfNeeded;
-- (void)_queueDidChangeWithResponse:(id)arg1;
+- (id)_asyncServer;
+- (void)_clearConnection;
+- (void)_establishConnectionIfNeeded;
+- (id)_mediaItemFromNowPlaying:(id)arg1;
+- (id)_nowPlaying;
+- (id)_queueDescriptor;
+- (id)_server;
+- (id)_snapshot;
 - (void)adjustLoadedQueueRangeToReverseCount:(long long)arg1 forwardCount:(long long)arg2;
 - (void)appendQueueDescriptor:(id)arg1;
+- (BOOL)areRepresentationsAvailableForCatalog:(id)arg1;
 - (void)beginGeneratingPlaybackNotifications;
 - (void)beginSeekingBackward;
 - (void)beginSeekingForward;
-- (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
-- (unsigned long long)currentChapterIndex;
-- (void)didFinishLoadingRequestForController:(id)arg1;
+- (void)cancelLoadingRepresentationForArtworkCatalog:(id)arg1;
+- (void)dealloc;
 - (void)endGeneratingPlaybackNotifications;
 - (void)endSeeking;
+- (id)existingRepresentationForArtworkCatalog:(id)arg1;
 - (id)initWithClientIdentifier:(id)arg1;
+- (id)initWithClientIdentifier:(id)arg1 queue:(id)arg2;
 - (BOOL)isGeniusAvailable;
 - (BOOL)isGeniusAvailableForSeedItems:(id)arg1;
-- (BOOL)isNowPlayingItemFromGeniusMix;
+- (BOOL)isRepresentation:(id)arg1 bestRepresentationForArtworkCatalog:(id)arg2;
+- (void)loadRepresentationForArtworkCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)nowPlayingAtIndex:(long long)arg1;
 - (id)nowPlayingItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfItems;
-- (void)openToPlayQueueDescriptor:(id)arg1;
 - (void)pause;
 - (void)pauseWithFadeoutDuration:(double)arg1;
 - (void)play;
-- (long long)playbackSpeed;
 - (void)prepareQueueForPlayback;
 - (void)prepareToPlay;
 - (void)prepareToPlayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)prependQueueDescriptor:(id)arg1;
 - (id)queueAsQuery;
 - (id)queueAsRadioStation;
-- (void)setPlaybackSpeed:(long long)arg1;
+- (void)serverItemDidEnd;
+- (void)serverPlaybackModeDidChange;
+- (void)serverQueueDidEnd;
 - (void)setQueueWithDescriptor:(id)arg1;
 - (void)setQueueWithGeniusMixPlaylist:(id)arg1;
 - (void)setQueueWithItemCollection:(id)arg1;
@@ -99,6 +114,9 @@
 - (void)setQueueWithRadioStation:(id)arg1;
 - (BOOL)setQueueWithSeedItems:(id)arg1;
 - (void)setQueueWithStoreIDs:(id)arg1;
+- (void)setServerNowPlaying:(id)arg1;
+- (void)setServerQueueDescriptor:(id)arg1;
+- (void)setServerTimeSnapshot:(id)arg1;
 - (void)setUserQueueModificationsDisabled:(BOOL)arg1;
 - (void)setVolumePrivate:(float)arg1;
 - (void)shuffle;
@@ -108,8 +126,9 @@
 - (void)skipToPreviousItem;
 - (void)stop;
 - (BOOL)userQueueModificationsDisabled;
+- (id)visualIdenticalityIdentifierForCatalog:(id)arg1;
+- (void)volumeController:(id)arg1 mutedStateDidChange:(BOOL)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
-- (void)willBeginLoadingRequestForController:(id)arg1;
 
 @end
 

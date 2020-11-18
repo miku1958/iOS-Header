@@ -6,20 +6,30 @@
 
 #import <ContactsAutocompleteUI/CNComposeRecipientTextView.h>
 
-@class MFComposeDisplayMetrics;
+#import <MessageUI/_UICursorInteractionDelegate-Protocol.h>
+
+@class MFComposeDisplayMetrics, NSString;
 @protocol MFMailComposeRecipientTextViewDelegate;
 
-@interface MFMailComposeRecipientTextView : CNComposeRecipientTextView
+@interface MFMailComposeRecipientTextView : CNComposeRecipientTextView <_UICursorInteractionDelegate>
 {
     MFComposeDisplayMetrics *_displayMetrics;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MFMailComposeRecipientTextViewDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MFComposeDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_displayMetricsDidChange;
 - (void)_textInputDidChange:(id)arg1;
+- (double)beamHeight;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (struct CGRect)cursorRectForLineContainingGlyphIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutMarginsDidChange;

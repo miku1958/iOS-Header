@@ -31,6 +31,7 @@
     MPMediaPickerController *_mediaPickerController;
     NSMutableArray *_mediaItems;
     MPMusicPlayerController *_musicPlayer;
+    NSNumber *_playingMediaItemIdentifier;
     TKToneClassicsTableViewController *_toneClassicsTableViewController;
     TKVibrationPickerViewController *_vibrationPickerViewController;
     BOOL _isHandlingSwitchControlValueChanged;
@@ -74,6 +75,7 @@
 - (BOOL)_canShowWhileLocked;
 - (void)_configureTextColorOfLabelInCell:(id)arg1 shouldTintText:(BOOL)arg2 checked:(BOOL)arg3;
 - (id)_customHeaderViewForHeaderInSection:(long long)arg1;
+- (void)_didFinishPreparingToPlayMediaItemWithIdentifier:(id)arg1 error:(id)arg2;
 - (void)_didSelectMediaItemWithIdentifier:(id)arg1;
 - (void)_didSelectToneWithIdentifier:(id)arg1;
 - (void)_handleMediaLibraryDidChangeNotification;

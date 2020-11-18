@@ -4,51 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/VUILibraryFetchControllerViewController.h>
+#import <UIKit/UIViewController.h>
 
-#import <VideosUI/UICollectionViewDataSource-Protocol.h>
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
 #import <VideosUI/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
+#import <VideosUI/VUIFamilySharingContentProtocol-Protocol.h>
+#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSObject, NSString, VUISeasonPickerCollectionViewCell, _VUISeasonPickerView;
-@protocol VUIMediaEntityIdentifier;
+@class NSString, UICollectionViewDiffableDataSource, VUIFamilyMember, VUIMediaEntitiesDataSource, VUISeasonPickerCollectionViewCell, VUIViewControllerContentPresenter, _VUISeasonPickerView;
 
 __attribute__((visibility("hidden")))
-@interface VUISeasonPickerViewController : VUILibraryFetchControllerViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, VUIMediaEntitiesFetchControllerDelegate>
+@interface VUISeasonPickerViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, VUILibraryDataSourceDelegate, VUIFamilySharingContentProtocol>
 {
     VUISeasonPickerCollectionViewCell *_sizingCell;
     BOOL _lastViewedSeasonWasManuallyDeleted;
-    NSString *_pickerTitle;
+    VUIFamilyMember *_familyMember;
     _VUISeasonPickerView *_seasonPickerView;
-    NSArray *_seasons;
-    NSObject<VUIMediaEntityIdentifier> *_collectionIdentifier;
-    VUILibraryFetchControllerViewController *_currentSeasonViewController;
+    UIViewController *_currentSeasonViewController;
+    VUIViewControllerContentPresenter *_contentPresenter;
+    VUIMediaEntitiesDataSource *_dataSource;
+    UICollectionViewDiffableDataSource *_diffableDataSource;
 }
 
-@property (strong, nonatomic) NSObject<VUIMediaEntityIdentifier> *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
-@property (strong, nonatomic) VUILibraryFetchControllerViewController *currentSeasonViewController; // @synthesize currentSeasonViewController=_currentSeasonViewController;
+@property (strong, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
+@property (strong, nonatomic) UIViewController *currentSeasonViewController; // @synthesize currentSeasonViewController=_currentSeasonViewController;
+@property (strong, nonatomic) VUIMediaEntitiesDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
+@property (strong, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL lastViewedSeasonWasManuallyDeleted; // @synthesize lastViewedSeasonWasManuallyDeleted=_lastViewedSeasonWasManuallyDeleted;
-@property (strong, nonatomic) NSString *pickerTitle; // @synthesize pickerTitle=_pickerTitle;
 @property (strong, nonatomic) _VUISeasonPickerView *seasonPickerView; // @synthesize seasonPickerView=_seasonPickerView;
-@property (strong, nonatomic) NSArray *seasons; // @synthesize seasons=_seasons;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (id)_createDiffableDataSource;
+- (id)_createDiffableDataSourceSnapshot;
+- (id)_getSeasonIdentifiersFromSeasons;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
-- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
-- (id)initWithMediaLibrary:(id)arg1 title:(id)arg2 collectionIdentifier:(id)arg3;
+- (void)dataSourceDidFinishFetching:(id)arg1;
+- (id)initWithDataSource:(id)arg1;
+- (void)loadView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

@@ -6,23 +6,23 @@
 
 #import <UIKitCore/UIControl.h>
 
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
 @class NSLayoutConstraint, NSString, _UIBarButtonItemData, _UIButtonBarButtonVisualProvider;
 
-@interface _UIButtonBarButton : UIControl <UISpringLoadedInteractionSupporting>
+@interface _UIButtonBarButton : UIControl <UIPointerInteractionDelegate, UISpringLoadedInteractionSupporting>
 {
     _UIButtonBarButtonVisualProvider *_visualProvider;
     NSLayoutConstraint *_widthMinimizingConstraint;
     NSLayoutConstraint *_heightMinimizingConstraint;
-    struct CGRect _hitRect;
     BOOL _backButton;
     _UIBarButtonItemData *_appearanceData;
 }
 
+@property (readonly, nonatomic) struct CGRect _buttonBarHitRect;
 @property (strong, nonatomic) _UIBarButtonItemData *appearanceData; // @synthesize appearanceData=_appearanceData;
 @property (readonly, nonatomic, getter=isBackButton) BOOL backButton; // @synthesize backButton=_backButton;
-@property (nonatomic, getter=_buttonBarHitRect, setter=_setButtonBarHitRect:) struct CGRect buttonBarHitRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -41,6 +41,10 @@
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)configureBackButtonFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
 - (void)configureFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
 - (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
@@ -51,8 +55,11 @@
 - (id)initWithVisualProvider:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setNeedsAppearanceUpdate;

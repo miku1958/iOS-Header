@@ -49,11 +49,13 @@ __attribute__((visibility("hidden")))
     BOOL _isDrawable;
     unsigned long long rotation;
     unsigned long long iosurfacePlane;
+    unsigned long long _uniqueIdentifier;
     unsigned long long parentRelativeSlice;
     id<MTLResource> rootResource;
 }
 
 @property (readonly) unsigned long long allocatedSize;
+@property (readonly) unsigned long long allocationID;
 @property (readonly) BOOL allowGPUOptimizedContents; // @synthesize allowGPUOptimizedContents=_allowGPUOptimizedContents;
 @property (readonly) unsigned long long arrayLength;
 @property (readonly) id<MTLBuffer> backingBuffer;
@@ -106,7 +108,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int textureRef;
 @property (readonly) unsigned long long textureType;
 @property (readonly) unsigned long long unfilteredResourceOptions;
-@property (readonly) unsigned long long uniqueIdentifier;
+@property (readonly) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly) unsigned long long usage; // @synthesize usage=_usage;
 @property (readonly) unsigned long long width;
 

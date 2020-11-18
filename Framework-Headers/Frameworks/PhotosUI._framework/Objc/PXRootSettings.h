@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXSettings.h>
 
-@class PXAlbumsDebugUISettings, PXApplicationSettings, PXAssetVariationsSettings, PXAssetsSceneSettings, PXCompleteMyMomentSettings, PXCuratedLibrarySettings, PXDiagnosticsSettings, PXDragAndDropSettings, PXFooterSettings, PXForYouSettings, PXGPPTSettings, PXGridKitSettings, PXGridSettings, PXImageModulationSettings, PXImportSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXPeopleDetailSettings, PXPeopleUISettings, PXPhotoPickerSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXRelatedSettings, PXSearchSettings, PXSharingSettings, PXSnapBackSettings, PXTilingSettings, PXViewControllerTransitionSettings;
+@class PXAlbumsDebugUISettings, PXApplicationSettings, PXAssetVariationsSettings, PXAssetsSceneSettings, PXCompleteMyMomentSettings, PXCuratedLibrarySettings, PXCursorInteractionSettings, PXDiagnosticsSettings, PXDragAndDropSettings, PXFooterSettings, PXForYouSettings, PXGPPTSettings, PXGridKitSettings, PXGridSettings, PXImageModulationSettings, PXImportSettings, PXKeyboardSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXPeopleDetailSettings, PXPeopleUISettings, PXPhotoPickerSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXRelatedSettings, PXSearchSettings, PXSharingSettings, PXSnapBackSettings, PXTilingSettings, PXViewControllerTransitionSettings;
 
 @interface PXRootSettings : PXSettings
 {
@@ -16,6 +16,7 @@
     PXImageModulationSettings *_imageModulationSettings;
     PXCuratedLibrarySettings *_curatedLibrarySettings;
     PXPhotoPickerSettings *_photoPickerSettings;
+    PXKeyboardSettings *_keyboardSettings;
     PXPhotosDetailsSettings *_photosDetails;
     PXPhotosDetailsHeaderTileSettings *_photosDetailsHeaderTile;
     PXRelatedSettings *_related;
@@ -33,6 +34,7 @@
     PXPeopleDetailSettings *_peopleDetail;
     PXPeopleUISettings *_peopleUISettings;
     PXDragAndDropSettings *_dragAndDrop;
+    PXCursorInteractionSettings *_cursorInteractionSettings;
     PXSharingSettings *_sharingSettings;
     PXAssetVariationsSettings *_variationsSettings;
     PXCompleteMyMomentSettings *_completeMyMoment;
@@ -50,6 +52,7 @@
 @property (strong, nonatomic) PXAssetsSceneSettings *assetsScene; // @synthesize assetsScene=_assetsScene;
 @property (strong, nonatomic) PXCompleteMyMomentSettings *completeMyMoment; // @synthesize completeMyMoment=_completeMyMoment;
 @property (strong, nonatomic) PXCuratedLibrarySettings *curatedLibrarySettings; // @synthesize curatedLibrarySettings=_curatedLibrarySettings;
+@property (strong, nonatomic) PXCursorInteractionSettings *cursorInteractionSettings; // @synthesize cursorInteractionSettings=_cursorInteractionSettings;
 @property (strong, nonatomic) PXDiagnosticsSettings *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property (strong, nonatomic) PXDragAndDropSettings *dragAndDrop; // @synthesize dragAndDrop=_dragAndDrop;
 @property (strong, nonatomic) PXFooterSettings *footerSettings; // @synthesize footerSettings=_footerSettings;
@@ -60,6 +63,7 @@
 @property (nonatomic) BOOL hideWIPAlerts;
 @property (strong, nonatomic) PXImageModulationSettings *imageModulationSettings; // @synthesize imageModulationSettings=_imageModulationSettings;
 @property (strong, nonatomic) PXImportSettings *importSettings; // @synthesize importSettings=_importSettings;
+@property (strong, nonatomic) PXKeyboardSettings *keyboardSettings; // @synthesize keyboardSettings=_keyboardSettings;
 @property (strong, nonatomic) PXKitSettings *kit; // @synthesize kit=_kit;
 @property (strong, nonatomic) PXMemoriesRelatedSettings *memoriesRelated; // @synthesize memoriesRelated=_memoriesRelated;
 @property (strong, nonatomic) PXMemoriesFeedSettings *memoryFeed; // @synthesize memoryFeed=_memoryFeed;

@@ -22,7 +22,6 @@
 - (void)_sceneDidEnterBackground:(id)arg1;
 - (void)_setUpServiceProxyIfNeeded;
 - (void)authenticateToPresentInPopover:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)init;
 - (void)remoteViewController:(id)arg1 selectedCredential:(id)arg2;
 - (void)setAuthenticationGracePeriod:(double)arg1;
 - (void)setExternallyVerifiedAndApprovedSharedWebCredentialsDomains:(id)arg1;

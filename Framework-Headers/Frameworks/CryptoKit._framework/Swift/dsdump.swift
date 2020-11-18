@@ -161,7 +161,7 @@
  struct __C.ccdigest_ctx {
 
 	// Properties
-	var state : ccdigest_ctx.__Unnamed_union_state
+	var state : __Unnamed_union_state
  }
 
  struct __C.ccdigest_info {
@@ -171,10 +171,11 @@
 	var state_size : Int
 	var block_size : Int
 	var oid_size : Int
-	var oid : UnsafePointer<UInt8>?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var oid :  empty-list 
 	var initial_state : UnsafeRawPointer?
-	var compress : @convention(c) (_:_:_:)?
-	var final : @convention(c) (_:_:_:)?
+	var compress : ccdigest_state
+	var final : ccdigest_info
  }
 
  struct __C.ccchacha20poly1305_ctx {
@@ -182,82 +183,121 @@
 	// Properties
 	var chacha20_ctx : ccchacha20_ctx
 	var poly1305_ctx : ccpoly1305_ctx
-	var aad_nbytes : UInt64
-	var text_nbytes : UInt64
-	var state : UInt8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var aad_nbytes : =W
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var text_nbytes : =W
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var state : W
  }
 
  struct __C.ccmode_gcm {
 
 	// Properties
 	var size : Int
-	var encdec : Int32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var encdec : èW
 	var block_size : Int
-	var init : @convention(c) (_:_:_:_:)?
-	var set_iv : @convention(c) (_:_:_:)?
-	var gmac : @convention(c) (_:_:_:)?
-	var gcm : @convention(c) (_:_:_:_:)?
-	var finalize : @convention(c) (_:_:_:)?
-	var reset : @convention(c) (_:)?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var init : âW
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var set_iv : aW
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var gmac : aW
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var gcm : CW
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var finalize : !W
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var reset : W
 	var custom : UnsafeRawPointer?
  }
 
  struct __C.ccgcm_ctx {
 
 	// Properties
-	var b : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var b : ıW
  }
 
  struct __C.ccec_pub_ctx {
 
 	// Properties
-	var cp : UnsafePointer<ccec_cp>?
-	var pad : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+	var cp : ccec_cp
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var pad : uV
  }
 
  struct __C.ccec_full_ctx {
 
 	// Properties
-	var cp : UnsafePointer<ccec_cp>? // +0x0
-	var pad : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8) // +0x0
+	var cp : ccec_cp
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var pad : uV
  }
 
  class __C.CFString {
+ struct __C._ConditionalAllocationBuffer {
+
+	// Properties
+	var memory : UnsafeMutableRawPointer // +0x0
+	var capacity : Int // +0x0
+	var onStack : Bool // +0x0
+ }
+
  struct __C.__Unnamed_union_state { }
 
  struct __C.ccdigest_state {
 
 	// Properties
-	var state : ccdigest_state.__Unnamed_union_state
+	var state : __Unnamed_union_state
  }
 
  struct __C.ccpoly1305_ctx {
 
 	// Properties
-	var r0 : UInt32
-	var r1 : UInt32
-	var r2 : UInt32
-	var r3 : UInt32
-	var r4 : UInt32
-	var s1 : UInt32
-	var s2 : UInt32
-	var s3 : UInt32
-	var s4 : UInt32
-	var h0 : UInt32
-	var h1 : UInt32
-	var h2 : UInt32
-	var h3 : UInt32
-	var h4 : UInt32
-	var buf : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var r0 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var r1 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var r2 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var r3 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var r4 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var s1 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var s2 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var s3 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var s4 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var h0 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var h1 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var h2 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var h3 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var h4 : ©V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var buf : ıW
 	var buf_used : Int
-	var key : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var key : ıW
  }
 
  struct __C.ccchacha20_ctx {
 
 	// Properties
-	var state : (UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32)
-	var buffer : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var state : ¡V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var buffer : •V
 	var leftover : Int
  }
 
@@ -265,8 +305,10 @@
 
 	// Properties
 	var n : Int
-	var options : UInt64
-	var funcs : OpaquePointer?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var options : =W
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var funcs : _U
  }
 
  struct __C.__Unnamed_union_state { }
@@ -274,13 +316,13 @@
  class CryptoKit.Context : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var ctx : UnsafeMutablePointer<ccgcm_ctx> // +0x10 (0x8)
-	let mode : UnsafePointer<ccmode_gcm> // +0x18 (0x8)
+	var ctx : ccgcm_ctx // +0x10 (0x8)
+	let mode : ccmode_gcm // +0x18 (0x8)
 
 	// Swift methods
-	0x28b0  func CoreCryptoGCMImpl.Context.authenticate<A>(data:) // method 
-	0x2e30  func CoreCryptoGCMImpl.Context.processBlock<A>(data:) // method 
-	0x3420  func CoreCryptoGCMImpl.Context.isValidTag(tag:) // method 
+	0x2ae0  func CoreCryptoGCMImpl.Context.authenticate<A>(data:) // method 
+	0x2f20  func CoreCryptoGCMImpl.Context.processBlock<A>(data:) // method 
+	0x34d0  func CoreCryptoGCMImpl.Context.isValidTag(tag:) // method 
  }
 
  struct CryptoKit.CoreCryptoGCMImpl {
@@ -296,13 +338,13 @@
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P256.CurveDetails> // +0x0
+	var impl : CoreCryptoNISTCurvePublicKeyImpl // +0x0
  }
 
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P256.CurveDetails> // +0x0
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl // +0x0
  }
 
  enum CryptoKit.KeyAgreement { }
@@ -310,13 +352,13 @@
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P256.CurveDetails> // +0x0
+	var impl : CoreCryptoNISTCurvePublicKeyImpl // +0x0
  }
 
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P256.CurveDetails> // +0x0
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl // +0x0
  }
 
  enum CryptoKit.Signing { }
@@ -324,13 +366,13 @@
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P384.CurveDetails> // +0x0
+	var impl : CoreCryptoNISTCurvePublicKeyImpl // +0x0
  }
 
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P384.CurveDetails> // +0x0
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl // +0x0
  }
 
  enum CryptoKit.KeyAgreement { }
@@ -338,13 +380,13 @@
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P384.CurveDetails> // +0x0
+	var impl : CoreCryptoNISTCurvePublicKeyImpl // +0x0
  }
 
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P384.CurveDetails> // +0x0
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl // +0x0
  }
 
  enum CryptoKit.Signing { }
@@ -352,13 +394,13 @@
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P521.CurveDetails> // +0x0
+	var impl : CoreCryptoNISTCurvePublicKeyImpl // +0x0
  }
 
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P521.CurveDetails> // +0x0
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl // +0x0
  }
 
  enum CryptoKit.KeyAgreement { }
@@ -366,13 +408,13 @@
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var impl : CoreCryptoNISTCurvePublicKeyImpl<P521.CurveDetails> // +0x0
+	var impl : CoreCryptoNISTCurvePublicKeyImpl // +0x0
  }
 
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P521.CurveDetails> // +0x0
+	let impl : CoreCryptoNISTCurvePrivateKeyImpl // +0x0
  }
 
  enum CryptoKit.CryptoTokenKitError {
@@ -395,7 +437,7 @@
  struct CryptoKit.HashedAuthenticationCode {
 
 	// Properties
-	let digest : A.HashFunction.Digest
+	let digest : HashFunction
  }
 
  class CryptoKit.Backing {
@@ -409,7 +451,7 @@
  struct CryptoKit.SecureBytes {
 
 	// Properties
-	var backing : SecureBytes.Backing? // +0x0
+	var backing : Backing // +0x0
  }
 
  struct CryptoKit.Index {
@@ -421,13 +463,14 @@
  struct CryptoKit.CoreCryptoNISTCurvePrivateKeyImpl {
 
 	// Properties
-	let key : SecureBytes
+	let key : SecureBytes // +0x0
  }
 
  struct CryptoKit.CoreCryptoNISTCurvePublicKeyImpl {
 
 	// Properties
-	var keyBytes : [UInt8] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyBytes :  empty-list  // +0x0
  }
 
  struct CryptoKit.CurveDetails: CorecryptoSupportedNISTCurve { }
@@ -445,31 +488,36 @@
  struct CryptoKit.SHA256Digest {
 
 	// Properties
-	let bytes : (UInt64, UInt64, UInt64, UInt64) // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bytes : Q // +0x0
  }
 
  struct CryptoKit.SHA384Digest {
 
 	// Properties
-	let bytes : (UInt64, UInt64, UInt64, UInt64, UInt64, UInt64) // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bytes : 	Q // +0x0
  }
 
  struct CryptoKit.SHA512Digest {
 
 	// Properties
-	let bytes : (UInt64, UInt64, UInt64, UInt64, UInt64, UInt64, UInt64, UInt64) // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bytes : ˝P // +0x0
  }
 
  struct CryptoKit.SHA1Digest {
 
 	// Properties
-	let bytes : (UInt64, UInt64, UInt64) // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bytes : ÒP // +0x0
  }
 
  struct CryptoKit.MD5Digest {
 
 	// Properties
-	let bytes : (UInt64, UInt64) // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bytes : ÂP // +0x0
  }
 
  enum CryptoKit.SecureEnclave { }
@@ -481,8 +529,9 @@
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	let publicKey : P256.Signing.PublicKey // +0x0
-	let dataRepresentation : Data // +0x8
+	let publicKey : PublicKey // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dataRepresentation : ∑N // +0x8
 	let tokenObject : TKClientTokenObject // +0x18
  }
 
@@ -491,40 +540,43 @@
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	let publicKey : P256.KeyAgreement.PublicKey // +0x0
-	let dataRepresentation : Data // +0x8
+	let publicKey : PublicKey // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dataRepresentation : ∑N // +0x8
 	let tokenObject : TKClientTokenObject // +0x18
  }
 
  struct CryptoKit._CMAC {
 
 	// Properties
-	var cmacCtx : [UInt8] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cmacCtx :  empty-list  // +0x0
 	let outputSize : Int // +0x8
  }
 
  struct CryptoKit.MAC {
 
 	// Properties
-	let underlyingData : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let underlyingData : ∑N // +0x0
  }
 
  struct CryptoKit.SHA256 {
 
 	// Properties
-	var impl : SHA256 // +0x0
+	var impl : CoreCryptoDigestImpl // +0x0
  }
 
  struct CryptoKit.SHA384 {
 
 	// Properties
-	var impl : SHA384 // +0x0
+	var impl : CoreCryptoDigestImpl // +0x0
  }
 
  struct CryptoKit.SHA512 {
 
 	// Properties
-	var impl : SHA512 // +0x0
+	var impl : CoreCryptoDigestImpl // +0x0
  }
 
  enum CryptoKit.Insecure { }
@@ -534,18 +586,19 @@
  struct CryptoKit.SealedBox {
 
 	// Properties
-	let combined : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let combined : ∑N // +0x0
  }
 
  class CryptoKit.Context : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let ctx : UnsafeMutablePointer<ccchacha20poly1305_ctx> // +0x10 (0x8)
+	let ctx : ccchacha20poly1305_ctx // +0x10 (0x8)
 
 	// Swift methods
-	0x1e6d0  func CoreCryptoChaChaPolyImpl.Context.authenticate<A>(data:) // method 
-	0x1ec50  func CoreCryptoChaChaPolyImpl.Context.encryptBlockAndAuthenticate<A>(data:) // method 
-	0x1f3b0  func CoreCryptoChaChaPolyImpl.Context.isValidTag(tag:) // method 
+	0x1bce0  func CoreCryptoChaChaPolyImpl.Context.authenticate<A>(data:) // method 
+	0x1c160  func CoreCryptoChaChaPolyImpl.Context.encryptBlockAndAuthenticate<A>(data:) // method 
+	0x1c6e0  func CoreCryptoChaChaPolyImpl.Context.isValidTag(tag:) // method 
  }
 
  struct CryptoKit.CoreCryptoChaChaPolyImpl {
@@ -557,13 +610,15 @@
  struct CryptoKit.Nonce {
 
 	// Properties
-	let bytes : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bytes : ∑N // +0x0
  }
 
  struct CryptoKit.Nonce {
 
 	// Properties
-	let bytes : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let bytes : ∑N // +0x0
  }
 
  enum CryptoKit.AES { }
@@ -585,26 +640,30 @@
  struct CryptoKit.SealedBox {
 
 	// Properties
-	let combinedRepresentation : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let combinedRepresentation : ∑N // +0x0
 	let nonceByteCount : Int // +0x10
  }
 
  struct CryptoKit.ECDSASignature: NISTECDSASignature {
 
 	// Properties
-	var rawRepresentation : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rawRepresentation : ∑N // +0x0
  }
 
  struct CryptoKit.ECDSASignature: NISTECDSASignature {
 
 	// Properties
-	var rawRepresentation : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rawRepresentation : ∑N // +0x0
  }
 
  struct CryptoKit.ECDSASignature: NISTECDSASignature {
 
 	// Properties
-	var rawRepresentation : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var rawRepresentation : ∑N // +0x0
  }
 
  struct CryptoKit.SharedSecret {
@@ -616,13 +675,13 @@
  struct CryptoKit.SHA1 {
 
 	// Properties
-	var impl : SHA1 // +0x0
+	var impl : CoreCryptoDigestImpl // +0x0
  }
 
  struct CryptoKit.MD5 {
 
 	// Properties
-	var impl : MD5 // +0x0
+	var impl : CoreCryptoDigestImpl // +0x0
  }
 
  class CryptoKit.CoreCryptoDigestBuffer {
@@ -635,7 +694,8 @@
  enum CryptoKit.CryptoKitError {
 
 	// Properties
-	case underlyingCoreCryptoError : (error: Int32)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case underlyingCoreCryptoError : K
 	case incorrectKeySize  
 	case incorrectParameterSize  
 	case authenticationFailure  
@@ -646,13 +706,13 @@
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var baseKey : KeyAgreement // +0x0
+	var baseKey : CoreCryptoCurve25519PublicKeyImpl // +0x0
  }
 
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	var baseKey : KeyAgreement // +0x0
+	var baseKey : CoreCryptoCurve25519PrivateKeyImpl // +0x0
  }
 
  enum CryptoKit.Signing { }
@@ -660,19 +720,20 @@
  struct CryptoKit.PrivateKey {
 
 	// Properties
-	var baseKey : Signing // +0x0
+	var baseKey : CoreCryptoCurve25519PrivateKeyImpl // +0x0
  }
 
  struct CryptoKit.PublicKey {
 
 	// Properties
-	var baseKey : Signing // +0x0
+	var baseKey : CoreCryptoCurve25519PublicKeyImpl // +0x0
  }
 
  struct CryptoKit.CoreCryptoCurve25519PublicKeyImpl {
 
 	// Properties
-	var keyBytes : [UInt8] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyBytes :  empty-list  // +0x0
  }
 
  struct CryptoKit.CoreCryptoCurve25519PrivateKeyImpl {
@@ -690,5 +751,6 @@
  struct CryptoKit.CoreCryptoCurve25519PublicKeyImpl {
 
 	// Properties
-	var keyBytes : [UInt8] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyBytes :  empty-list  // +0x0
  }

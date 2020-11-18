@@ -9,7 +9,7 @@
 #import <LocalAuthentication/LAContextCallbackXPC-Protocol.h>
 #import <LocalAuthentication/LAContextXPC-Protocol.h>
 
-@class LACachedExternalizedContext, NSData, NSError, NSMutableArray, NSNumber, NSString, NSUUID, NSXPCConnection;
+@class LACachedExternalizedContext, LAContext, NSData, NSError, NSMutableArray, NSNumber, NSString, NSUUID, NSXPCConnection;
 @protocol LAContextXPC, LAUIDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _synchronous;
     id<LAUIDelegate> _uiDelegate;
     NSUUID *_uuid;
+    LAContext *_context;
     NSXPCConnection *_serverConnection;
     NSObject<LAContextXPC> *_remoteContext;
     NSObject<LAContextXPC> *_synchronousRemoteContext;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong) LACachedExternalizedContext *cachedExternalizedContext; // @synthesize cachedExternalizedContext=_cachedExternalizedContext;
+@property (weak, nonatomic) LAContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSData *existingContext; // @synthesize existingContext=_existingContext;

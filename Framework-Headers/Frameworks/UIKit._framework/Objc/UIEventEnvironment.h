@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_dragEventsByContextAndSessionIDPair;
     BOOL _isSystemApplication;
     double _commitTimeForTouchEvents;
+    double _beginTimeForTouchEvents;
+    double _deadlineTimeForTouchEvents;
     NSMutableSet *_windowsWithActiveTouchMaps;
     BOOL _hasSeenAnyPencilEvents;
     UIPressesEvent *_fallbackPressesEvent;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)_findTouchesEventWindowSceneForKeyboardWindowSceneIfNeeded:(id)arg1;
 - (id)_gameControllerEventForHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_gameControllerEventForWindow:(id)arg1;
+- (id)_hoverEventForHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_hoverEventForWindow:(id)arg1;
 - (BOOL)_isTouchCoalescingDisabled;
 - (BOOL)_isTrackingAnyTouch;
@@ -74,6 +77,8 @@ __attribute__((visibility("hidden")))
 - (void)_registerEstimatedTouches:(id)arg1 event:(id)arg2 forTouchable:(id)arg3;
 - (void)_removeDragEvent:(id)arg1;
 - (void)_removeEstimatedTouchRecord:(id)arg1;
+- (id)_scrollEventForHIDEvent:(struct __IOHIDEvent *)arg1;
+- (id)_scrollEventForWindow:(id)arg1;
 - (void)_sendMotionBegan:(long long)arg1;
 - (void)_sendMotionCancelled:(long long)arg1;
 - (void)_sendMotionEnded:(long long)arg1;
@@ -84,11 +89,14 @@ __attribute__((visibility("hidden")))
 - (void)_setTouchMap:(struct __CFDictionary *)arg1 forWindow:(id)arg2;
 - (id)_touchesEventForHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_touchesEventForWindow:(id)arg1;
+- (id)_transformEventForHIDEvent:(struct __IOHIDEvent *)arg1;
+- (id)_transformEventForWindow:(id)arg1;
 - (id)_wheelEventForHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_wheelEventForWindow:(id)arg1;
 - (void)dealloc;
 - (BOOL)eventWantsLowLatency:(id)arg1;
 - (id)initWithApplication:(id)arg1;
+- (id)pencilEventForHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)sceneDidActivate:(id)arg1;
 - (void)sceneDidDisconnect:(id)arg1;
 

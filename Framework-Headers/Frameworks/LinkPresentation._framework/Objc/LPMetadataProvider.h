@@ -9,8 +9,8 @@
 #import <LinkPresentation/LPMetadataProviderSpecializationDelegate-Protocol.h>
 #import <LinkPresentation/WKNavigationDelegate-Protocol.h>
 
-@class LPAnimatedImageTranscoder, LPFetcherGroup, LPLinkMetadata, LPMetadataProviderSpecialization, NSMutableArray, NSString, NSTimer, NSURL, WKWebView;
-@protocol OS_dispatch_group, OS_dispatch_semaphore;
+@class BKSProcessAssertion, LPAnimatedImageTranscoder, LPFetcherGroup, LPLinkMetadata, LPMetadataProviderSpecialization, NSMutableArray, NSString, NSTimer, NSURL, WKWebView;
+@protocol OS_dispatch_group;
 
 @interface LPMetadataProvider : NSObject <WKNavigationDelegate, LPMetadataProviderSpecializationDelegate>
 {
@@ -19,7 +19,7 @@
     NSURL *_URL;
     NSURL *_originalURL;
     NSTimer *_watchdog;
-    NSObject<OS_dispatch_semaphore> *_completionSemaphore;
+    BKSProcessAssertion *_processAssertion;
     LPLinkMetadata *_metadata;
     BOOL _complete;
     BOOL _fetchingFromExistingWebView;

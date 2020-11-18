@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 - (id)_initWithDomain:(id)arg1 appID:(id)arg2 service:(long long)arg3 isApproved:(BOOL)arg4;
 - (id)description;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithServiceDetails:(id)arg1;
 
 @end
 

@@ -12,12 +12,18 @@
 {
     BOOL _suppressJitter;
     BOOL _closeBoxesEverywhere;
+    BOOL _alwaysHitTestNearestIcon;
+    double _iconHitboxPaddingX;
+    double _iconHitboxPaddingY;
     SBFParallaxSettings *_iconParallaxSettings;
     SBFParallaxSettings *_badgeParallaxSettings;
 }
 
+@property (nonatomic) BOOL alwaysHitTestNearestIcon; // @synthesize alwaysHitTestNearestIcon=_alwaysHitTestNearestIcon;
 @property (strong, nonatomic) SBFParallaxSettings *badgeParallaxSettings; // @synthesize badgeParallaxSettings=_badgeParallaxSettings;
 @property (nonatomic) BOOL closeBoxesEverywhere; // @synthesize closeBoxesEverywhere=_closeBoxesEverywhere;
+@property (nonatomic) double iconHitboxPaddingX; // @synthesize iconHitboxPaddingX=_iconHitboxPaddingX;
+@property (nonatomic) double iconHitboxPaddingY; // @synthesize iconHitboxPaddingY=_iconHitboxPaddingY;
 @property (strong, nonatomic) SBFParallaxSettings *iconParallaxSettings; // @synthesize iconParallaxSettings=_iconParallaxSettings;
 @property (nonatomic) BOOL suppressJitter; // @synthesize suppressJitter=_suppressJitter;
 

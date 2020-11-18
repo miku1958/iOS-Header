@@ -140,9 +140,11 @@
 - (id)_repsForStorage:(id)arg1 selection:(id)arg2;
 - (void)abandonMarkedText;
 - (void)addAllDictationInterpretationRangesInRange:(struct _NSRange)arg1 toRanges:(struct TSWPRangeVector *)arg2;
+- (BOOL)allowAutomaticTextEditingToBeginWithDifferentEditor;
 - (BOOL)allowTrackerManipulatorToTakeControl:(id)arg1;
 - (void)asyncProcessChanges:(id)arg1 forChangeSource:(id)arg2;
 - (void)autoscrollWillNotStart;
+- (void)beginAutomaticTextEditingIfNeededForPoint:(struct CGPoint)arg1;
 - (id)calculateVisualRunsFromSelection:(id)arg1 updateControllerSelection:(BOOL)arg2;
 - (BOOL)canAcceptOrRejectChange;
 - (BOOL)canAddOrShowComment;

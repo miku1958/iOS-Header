@@ -18,6 +18,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)_fullDescription;
 - (BOOL)context:(id)arg1 matchesFrameReference:(id)arg2;
 - (id)init;
 - (void)prepareResultData:(id)arg1 forContext:(id)arg2;

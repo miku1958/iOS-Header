@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *isEnabled;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *onActiveDidChange;
 }
 
 - (void)applicationDidBecomeActive;

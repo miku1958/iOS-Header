@@ -18,6 +18,7 @@
 @property (readonly, strong, nonatomic) MKMapView *_mapKit_mapView;
 @property (readonly, strong, nonatomic) CALayer *_mapkit_currentLayer;
 @property (readonly, nonatomic) struct CGRect _mapkit_doubleFrame;
+@property (readonly, nonatomic) BOOL _mapkit_hasCursorInteraction;
 @property (readonly, nonatomic) BOOL _mapkit_isDarkModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -41,10 +42,13 @@
 - (double)_mapkit_YCoordinateAtDistance:(double)arg1 inDirection:(long long)arg2 fromEdge:(long long)arg3;
 - (double)_mapkit_YCoordinateAtDistance:(double)arg1 inDirection:(long long)arg2 fromYCoordinate:(double)arg3;
 - (id)_mapkit_accessoryControlToExtendWithCallout;
+- (void)_mapkit_addCursorInteraction;
+- (void)_mapkit_addCursorInteractionWithDelegate:(id)arg1;
 - (id)_mapkit_constraintsPinningSubviewToBounds:(id)arg1;
 - (float)_mapkit_contentCompressionResistancePriorityForAxis:(long long)arg1;
 - (float)_mapkit_contentHuggingPriorityForAxis:(long long)arg1;
 - (unsigned long long)_mapkit_countOfSet:(id)arg1 minusSubset:(id)arg2;
+- (id)_mapkit_currentCursorInteraction;
 - (struct CGSize)_mapkit_fittingSize;
 - (void)_mapkit_insertSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)_mapkit_insertSubviewAboveAllOtherSubviews:(id)arg1;
@@ -55,6 +59,7 @@
 - (void)_mapkit_layoutIfNeeded;
 - (double)_mapkit_leadingMargin;
 - (struct CGRect)_mapkit_rectWithSize:(struct CGSize)arg1 XCoordinate:(double)arg2 atDistance:(double)arg3 inDirection:(long long)arg4 fromEdge:(long long)arg5;
+- (void)_mapkit_removeCursorInteraction;
 - (void)_mapkit_setBackgroundColor:(id)arg1;
 - (void)_mapkit_setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
 - (void)_mapkit_setContentHuggingPriority:(float)arg1 forAxis:(long long)arg2;

@@ -19,6 +19,7 @@
 @property (copy, nonatomic) INMediaItem *mediaContainer;
 @property (copy, nonatomic) NSArray *mediaItems;
 @property (copy, nonatomic) INMediaSearch *mediaSearch;
+@property (nonatomic) long long parsecCategory;
 @property (copy, nonatomic) NSNumber *playShuffled;
 @property (nonatomic) long long playbackQueueLocation;
 @property (nonatomic) long long playbackRepeatMode;

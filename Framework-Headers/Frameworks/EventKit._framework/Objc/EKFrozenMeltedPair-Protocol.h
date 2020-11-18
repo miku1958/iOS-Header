@@ -6,7 +6,7 @@
 
 #import <EventKit/NSObject-Protocol.h>
 
-@class EKChangeSet, EKEventStore, EKObject, NSSet, NSString;
+@class EKChangeSet, EKEventStore, EKObject, EKPersistentObject, NSSet, NSString;
 @protocol EKFrozenMeltedPair, EKProtocolObject;
 
 @protocol EKFrozenMeltedPair <NSObject>
@@ -21,7 +21,7 @@
 - (EKChangeSet *)changeSet;
 - (EKObject *)existingMeltedObject;
 - (Class)frozenClass;
-- (EKPersistentObject_556b3b22 *)frozenObject;
+- (EKPersistentObject *)frozenObject;
 - (id)initWithObject:(id<EKProtocolObject>)arg1;
 - (BOOL)isCompletelyEqual:(id<EKFrozenMeltedPair>)arg1;
 - (BOOL)isEqual:(id<EKFrozenMeltedPair>)arg1 ignoringProperties:(NSSet *)arg2;

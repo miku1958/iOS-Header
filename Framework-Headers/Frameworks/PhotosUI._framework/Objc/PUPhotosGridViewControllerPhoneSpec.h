@@ -20,6 +20,7 @@
 - (struct UIEdgeInsets)gridContentInsets;
 - (id)photosPickerViewControllerSpec;
 - (BOOL)shouldPlaceSelectAllButtonInRightNavigationBar;
+- (BOOL)shouldUseAspectItems;
 - (unsigned long long)supportedInterfaceOrientations;
 - (unsigned short)thumbnailImageFormat;
 

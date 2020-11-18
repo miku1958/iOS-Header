@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL didMBLRampDown;
 @property (readonly, nonatomic) BOOL isCongested;
 @property (readonly, nonatomic) BOOL isNewRateSentOut;
+@property (readonly, nonatomic) BOOL isSendBitrateLimited;
 @property (nonatomic) unsigned int localBandwidthEstimation;
 @property (strong, nonatomic) VCRateControlMediaController *mediaController;
 @property (readonly, nonatomic) unsigned int mostBurstLoss;
@@ -25,6 +26,8 @@
 @property (readonly, nonatomic) double roundTripTime;
 @property (readonly, nonatomic) unsigned int targetBitrate;
 @property (readonly, nonatomic) unsigned int totalPacketReceived;
+@property (readonly, nonatomic) unsigned int worstRecentBurstLoss;
+@property (readonly, nonatomic) double worstRecentRoundTripTime;
 
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
 - (BOOL)doRateControlWithStatistics:(CDStruct_b21f1e06)arg1;

@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
     NSString *_privateInput;
     long long _privateModifierFlags;
     NSString *_hint;
+    long long __keyCode;
+    unsigned long long _source;
 }
 
 @property (strong, nonatomic) NSString *_commandModifiedInput; // @synthesize _commandModifiedInput;
@@ -31,10 +33,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *_hint; // @synthesize _hint;
 @property (nonatomic) int _inputFlags; // @synthesize _inputFlags;
 @property (readonly, nonatomic) BOOL _isARepeat;
+@property (readonly, nonatomic) BOOL _isEjectKey;
 @property (readonly, nonatomic) BOOL _isGlobeKey;
 @property (readonly, nonatomic) BOOL _isKeyDown;
 @property (readonly, nonatomic) BOOL _isModifierKey;
-@property (readonly, nonatomic) long long _keyCode;
+@property (nonatomic) long long _keyCode; // @synthesize _keyCode=__keyCode;
 @property (strong, nonatomic) NSString *_markedInput; // @synthesize _markedInput;
 @property (strong, nonatomic) NSString *_modifiedInput; // @synthesize _modifiedInput;
 @property (nonatomic) long long _modifierFlags; // @synthesize _modifierFlags;
@@ -42,14 +45,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long _privateModifierFlags; // @synthesize _privateModifierFlags;
 @property (strong, nonatomic) NSString *_shiftModifiedInput; // @synthesize _shiftModifiedInput;
 @property (strong, nonatomic) NSString *_unmodifiedInput; // @synthesize _unmodifiedInput;
+@property (nonatomic) unsigned long long source; // @synthesize source=_source;
 
 + (id)_eventWithInput:(id)arg1 inputFlags:(int)arg2;
 - (void).cxx_destruct;
 - (id)_cloneEvent;
+- (BOOL)_isPhysicalKeyEvent;
 - (BOOL)_matchesKeyCommand:(id)arg1;
 - (void)_privatize;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1 keyboard:(struct __GSKeyboard *)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (long long)modifierFlags;
 - (long long)type;
 
 @end

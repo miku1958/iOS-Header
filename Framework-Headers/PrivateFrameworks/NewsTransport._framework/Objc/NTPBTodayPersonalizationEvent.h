@@ -13,6 +13,7 @@
 @interface NTPBTodayPersonalizationEvent : PBCodable <NSCopying>
 {
     double _createdAt;
+    long long _groupType;
     long long _orderInGroup;
     long long _overallOrder;
     long long _sectionOrder;
@@ -23,6 +24,7 @@
     NSString *_personalizationSectionFeatureId;
     struct {
         unsigned int createdAt:1;
+        unsigned int groupType:1;
         unsigned int orderInGroup:1;
         unsigned int overallOrder:1;
         unsigned int sectionOrder:1;
@@ -33,9 +35,11 @@
 @property (nonatomic) int action; // @synthesize action=_action;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (nonatomic) double createdAt; // @synthesize createdAt=_createdAt;
+@property (nonatomic) long long groupType; // @synthesize groupType=_groupType;
 @property (nonatomic) BOOL hasAction;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasCreatedAt;
+@property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasHeadlinePublisher;
 @property (nonatomic) BOOL hasOrderInGroup;
 @property (nonatomic) BOOL hasOverallOrder;

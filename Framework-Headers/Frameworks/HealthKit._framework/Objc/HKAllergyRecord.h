@@ -32,6 +32,7 @@
 @property (readonly, copy) NSArray *allergyCodings;
 @property (readonly, copy) HKAllergyRecordType *allergyRecordType;
 @property (readonly, copy) NSString *asserter;
+@property (readonly, copy, nonatomic) NSString *country;
 @property (readonly, copy) HKConcept *criticality;
 @property (readonly, copy) HKMedicalCoding *criticalityCoding;
 @property (readonly, copy) NSString *debugDescription;
@@ -47,15 +48,12 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)_newAllergyRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 allergyCodings:(id)arg11 onsetDate:(id)arg12 asserter:(id)arg13 reactions:(id)arg14 criticalityCoding:(id)arg15 lastOccurenceDate:(id)arg16 recordedDate:(id)arg17 statusCoding:(id)arg18 config:(CDUnknownBlockType)arg19;
-+ (id)allergyCodingsPreferredSystems;
-+ (id)allergyRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 allergyCodings:(id)arg10 onsetDate:(id)arg11 asserter:(id)arg12 reactions:(id)arg13 criticalityCoding:(id)arg14 lastOccurenceDate:(id)arg15 recordedDate:(id)arg16 statusCoding:(id)arg17;
-+ (id)allergyRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 allergyCodings:(id)arg11 onsetDate:(id)arg12 asserter:(id)arg13 reactions:(id)arg14 criticalityCoding:(id)arg15 lastOccurenceDate:(id)arg16 recordedDate:(id)arg17 statusCoding:(id)arg18;
++ (id)_newAllergyRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 allergyCodings:(id)arg13 onsetDate:(id)arg14 asserter:(id)arg15 reactions:(id)arg16 criticalityCoding:(id)arg17 lastOccurenceDate:(id)arg18 recordedDate:(id)arg19 statusCoding:(id)arg20 config:(CDUnknownBlockType)arg21;
++ (id)allergyRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 allergyCodings:(id)arg12 onsetDate:(id)arg13 asserter:(id)arg14 reactions:(id)arg15 criticalityCoding:(id)arg16 lastOccurenceDate:(id)arg17 recordedDate:(id)arg18 statusCoding:(id)arg19;
++ (id)allergyRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 allergyCodings:(id)arg13 onsetDate:(id)arg14 asserter:(id)arg15 reactions:(id)arg16 criticalityCoding:(id)arg17 lastOccurenceDate:(id)arg18 recordedDate:(id)arg19 statusCoding:(id)arg20;
 + (id)cachedConceptRelationshipKeyPaths;
-+ (id)criticalityCodingPreferredSystems;
 + (id)defaultDisplayString;
 + (id)indexableConceptKeyPaths;
-+ (id)statusCodingPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -73,23 +71,18 @@
 - (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)allergyCodingsCollection;
 - (id)allergyCodingsContext;
-- (id)allergyCodingsTasks;
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)criticalityCodingCollection;
 - (id)criticalityCodingContext;
-- (id)criticalityCodingTasks;
 - (void)encodeWithCoder:(id)arg1;
-- (id)indexKeywords;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
-- (id)medicalRecordPreferredSystems;
 - (id)statusCodingCollection;
 - (id)statusCodingContext;
-- (id)statusCodingTasks;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @interface CLLocation (MNExtras)
 
-@property (readonly, nonatomic, getter=_navigation_courseAccuracy) double courseAccuracy;
 @property (readonly, nonatomic, getter=_navigation_detailedMatchInfo) GEONavigationMatchInfo *detailedMatchInfo;
 @property (nonatomic, getter=_navigation_gtLog, setter=_navigation_setGtLog:) BOOL gtLog;
 @property (readonly, nonatomic, getter=_navigation_hasMatch) BOOL hasMatch;

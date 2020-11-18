@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL barIsBlack; // @synthesize barIsBlack=_barIsBlack;
 @property (readonly, nonatomic) long long barType;
 @property (nonatomic) BOOL barWantsLetterpress; // @synthesize barWantsLetterpress=_barWantsLetterpress;
+@property (readonly, nonatomic) struct CGRect bounds;
 @property (nonatomic) BOOL centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
 @property (readonly, nonatomic) BOOL compactMetrics;
 @property (readonly, copy) NSString *debugDescription;

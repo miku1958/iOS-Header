@@ -8,33 +8,54 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString, _MRContentItemProtobuf, _MRPlaybackSessionMigrateRequestProtobuf, _MRPlaybackSessionRequestProtobuf;
+@class NSError, NSString, _MRContentItemProtobuf, _MRPlaybackSessionMigrateRequestProtobuf, _MRPlaybackSessionRequestProtobuf;
 
 @interface MRPlaybackSessionMigrateRequest : NSObject <NSCopying>
 {
     _MRPlaybackSessionMigrateRequestProtobuf *_descriptor;
+    NSError *_migrateError;
+    NSError *_fallbackError;
+    unsigned int _originatorType;
+    unsigned int _destinationTypes;
+    NSString *_appBundleIdentifier;
+    NSString *_initiator;
+    unsigned long long _requestType;
+    unsigned long long _fallbackReason;
+    long long _playbackSessionSize;
 }
 
+@property (strong, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (strong, nonatomic) _MRContentItemProtobuf *contentItem;
 @property (readonly, nonatomic) _MRPlaybackSessionMigrateRequestProtobuf *descriptor;
+@property (nonatomic) unsigned int destinationTypes; // @synthesize destinationTypes=_destinationTypes;
 @property (readonly, nonatomic) double duration;
 @property (nonatomic) long long endpointOptions;
+@property (nonatomic) unsigned long long fallbackReason; // @synthesize fallbackReason=_fallbackReason;
+@property (strong, nonatomic) NSString *initiator; // @synthesize initiator=_initiator;
+@property (nonatomic) unsigned int originatorType; // @synthesize originatorType=_originatorType;
 @property (nonatomic) double playbackPosition;
 @property (nonatomic) double playbackRate;
 @property (strong, nonatomic) _MRPlaybackSessionRequestProtobuf *playbackSessionRequest;
+@property (nonatomic) long long playbackSessionSize; // @synthesize playbackSessionSize=_playbackSessionSize;
 @property (nonatomic) unsigned int playbackState;
 @property (nonatomic) long long playerOptions;
 @property (readonly, nonatomic) NSString *report;
 @property (strong, nonatomic) NSString *requestID;
+@property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 
 - (void).cxx_destruct;
+- (void)addDestinationType:(unsigned int)arg1;
+- (void)addDestinationTypesFromDevices:(id)arg1;
+- (id)analyticsPayload;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)endEvent:(id)arg1;
 - (void)endEvent:(id)arg1 withError:(id)arg2;
+- (void)finalize;
 - (id)init;
 - (id)initWithDescriptor:(id)arg1;
 - (void)merge:(id)arg1;
+- (void)setOriginatorTypeFromDevice:(id)arg1;
 - (void)startEvent:(id)arg1;
 
 @end

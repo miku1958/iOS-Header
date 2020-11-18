@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithHitTestResult:(id)arg1 imagePoint:assetPosition:cameraPosition: /* Error: Ran out of types for this method. */;
+- (id)initWithRaycastResult:(id)arg1 imagePoint:assetPosition:cameraPosition: /* Error: Ran out of types for this method. */;
 - (id)initWithType:(long long)arg1 worldPosition:(CDStruct_14d5dc5e)arg2 worldTransform:(id)arg3 localPosition:(long long)arg4 imagePoint:assetPosition:cameraPosition:planeIdentifier:planeAlignment: /* Error: Ran out of types for this method. */;
 
 @end

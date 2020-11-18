@@ -13,6 +13,8 @@
 @interface PTUIModuleController : UITableViewController <PTModuleObserver>
 {
     PTModule *_module;
+    NSString *_title;
+    NSString *_rowTitle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,7 +24,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_reloadModule;
+- (id)_initWithModule:(id)arg1 presentingRow:(id)arg2;
+- (void)_reloadWithModule:(id)arg1;
+- (void)_updateTitle;
 - (id)initWithSettings:(id)arg1;
 - (id)initWithSettings:(id)arg1 presentingRow:(id)arg2;
 - (void)module:(id)arg1 didInsertRows:(id)arg2 deleteRows:(id)arg3;
@@ -36,8 +40,9 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 
 @end
 

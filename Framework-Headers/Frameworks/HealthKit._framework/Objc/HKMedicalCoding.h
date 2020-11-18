@@ -24,10 +24,11 @@
 @property (readonly, copy, nonatomic) NSString *codingVersion; // @synthesize codingVersion=_codingVersion;
 @property (readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 
-+ (id)_ucumUnitWithCode:(id)arg1 displayString:(id)arg2;
 + (id)medicalCodingWithSystem:(id)arg1 codingVersion:(id)arg2 code:(id)arg3 displayString:(id)arg4;
 + (BOOL)supportsSecureCoding;
++ (id)text_codingWithDisplayString:(id)arg1;
 + (id)ucum_centimeterUnitCoding;
++ (id)ucum_codingWithCode:(id)arg1 displayString:(id)arg2;
 + (id)ucum_meterUnitCoding;
 - (void).cxx_destruct;
 - (id)_validateConfiguration;

@@ -13,6 +13,7 @@
     MISSING_TYPE *$__lazy_storage_$_profileNameSection;
     MISSING_TYPE *$__lazy_storage_$_medicalDetailSection;
     MISSING_TYPE *researchStudiesItem;
+    MISSING_TYPE *appSourcesItem;
 }
 
 @end

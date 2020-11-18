@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 
-@class ACAccountStore, NSArray, NSString, PKPaymentHeroImageController, PKPaymentProvisioningController, PKPaymentSetupHeroView, PKPaymentWebService;
+@class ACAccountStore, NSArray, NSString, PKPaymentHeroImageController, PKPaymentProvisioningController, PKPaymentSetupHeroView, PKPaymentWebService, UIViewController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentSetupHeroViewController : PKExplanationViewController <PKExplanationViewDelegate>
@@ -25,10 +25,12 @@
     id<PKPaymentSetupViewControllerDelegate> _delegate;
     PKPaymentHeroImageController *_heroImageController;
     long long _paymentSetupMode;
+    UIViewController *_deferredNextViewController;
 }
 
 @property (nonatomic) BOOL allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) UIViewController *deferredNextViewController; // @synthesize deferredNextViewController=_deferredNextViewController;
 @property (nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

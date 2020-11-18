@@ -67,7 +67,7 @@
 - (void)dealloc;
 - (void)done:(id)arg1;
 - (id)initWithChildFamilyMember:(id)arg1 allFamilyMembers:(id)arg2 contactStore:(id)arg3;
-- (id)initWithChildFamilyMember:(id)arg1 allFamilyMembers:(id)arg2 contactStore:(id)arg3 editingStrategy:(id)arg4;
+- (id)initWithChildFamilyMember:(id)arg1 allFamilyMembers:(id)arg2 contactStore:(id)arg3 editingStrategy:(id)arg4 showingFamilyMemberContacts:(BOOL)arg5;
 - (void)keyboardWillChange:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)presentationControllerDidDismiss:(id)arg1;

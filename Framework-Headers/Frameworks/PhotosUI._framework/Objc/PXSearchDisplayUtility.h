@@ -10,17 +10,17 @@
 {
 }
 
-+ (struct UIImage *)_px_PhotosImageNamed:(id)arg1;
-+ (BOOL)attributedStringFontNeedsUpdate:(id)arg1 currentFont:(struct UIFont *)arg2;
++ (id)_px_PhotosImageNamed:(id)arg1;
++ (BOOL)attributedStringFontNeedsUpdate:(id)arg1 currentFont:(id)arg2;
 + (double)automaticRowHeight;
 + (id)defaultStringAttributes;
 + (id)displayStringFromResultCount:(unsigned long long)arg1;
-+ (id)highlightedAttributedStringForString:(id)arg1 highlightedSubstring:(id)arg2 matchedColor:(struct UIColor *)arg3 remainingColor:(struct UIColor *)arg4;
-+ (struct UIImage *)imageForImageName:(id)arg1;
++ (id)highlightedAttributedStringForString:(id)arg1 highlightedSubstring:(id)arg2 matchedColor:(id)arg3 remainingColor:(id)arg4;
++ (id)imageForImageName:(id)arg1;
 + (BOOL)layoutDirectionIsRTL;
 + (BOOL)shouldUseAccessibilityLayout;
-+ (struct UIColor *)wordEmbeddingPathColor;
-+ (struct UIColor *)wordEmbeddingTextColor;
++ (id)wordEmbeddingPathColor;
++ (id)wordEmbeddingTextColor;
 
 @end
 

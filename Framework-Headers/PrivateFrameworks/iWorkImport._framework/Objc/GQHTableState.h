@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     int mPrevRowIndex;
     int mPrevColumnIndex;
     GQDTTable *mTable;
-    vector_8d85e9cb *mCellCountInColumns;
+    vector_195fe69b *mCellCountInColumns;
     int mGroupLevel;
     BOOL mSplitTable;
     double mCurrentTablePosition;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)addRowHeight:(float)arg1;
-- (vector_8d85e9cb *)cellCountInColumns;
+- (vector_195fe69b *)cellCountInColumns;
 - (double)currentTablePosition;
 - (void)dealloc;
 - (int)groupLevel;

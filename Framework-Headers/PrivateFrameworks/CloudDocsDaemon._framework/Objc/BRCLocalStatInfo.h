@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *lostStamp;
 @property (readonly, nonatomic) NSString *physicalName; // @synthesize physicalName=_physicalName;
 @property (readonly, nonatomic) NSNumber *processingStamp; // @synthesize processingStamp=_processingStamp;
-@property (readonly, nonatomic) NSString *rawBouncedLogicalName; // @synthesize rawBouncedLogicalName=_bouncedLogicalName;
+@property (strong, nonatomic) NSString *rawBouncedLogicalName; // @synthesize rawBouncedLogicalName=_bouncedLogicalName;
 @property (readonly, nonatomic) NSNumber *stagedFileID; // @synthesize stagedFileID=_stagedFileID;
 @property (readonly, nonatomic) NSNumber *stagedFileIDForDB;
 @property (readonly, nonatomic) unsigned int stagedGenerationID; // @synthesize stagedGenerationID=_stagedGenerationID;
@@ -77,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithRelativePath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3;
 - (id)logicalName;
 - (void)setFilename:(id)arg1;
-- (void)setFilename:(id)arg1 forcePhysicalName:(id)arg2 serverName:(id)arg3;
+- (void)setFilename:(id)arg1 forcePhysicalName:(id)arg2 forceBouncedLogicalName:(id)arg3 serverName:(id)arg4;
 - (void)updateAsAppLibraryRoot:(id)arg1;
 - (void)updateFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4 readonlyShareChild:(BOOL)arg5;
 - (void)updateLocationAndMetaFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4 readonlyShareChild:(BOOL)arg5;

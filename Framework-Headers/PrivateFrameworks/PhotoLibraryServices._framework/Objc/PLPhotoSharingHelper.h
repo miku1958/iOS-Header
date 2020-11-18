@@ -13,6 +13,7 @@
 + (BOOL)_derivativeExistsForAsset:(id)arg1 cloudPlaceholderKind:(short)arg2;
 + (id)_downloadRequestQueue;
 + (id)_localizationKeyForAssets:(id)arg1;
++ (void)_markStreamVideosAsPurgeable;
 + (id)_pathToServerConfigurationCache;
 + (id)_phoneInvitationFailureFile;
 + (id)_processPhoneFailuresQueue;
@@ -85,7 +86,7 @@
 + (void)pollForAlbumListUpdates;
 + (id)prefixForBreadcrumbState:(int)arg1;
 + (void)prioritizeDownloadsForAlbumGUID:(id)arg1;
-+ (void)pruneNonRecentlyViewedCloudSharingAssetsInLibrary:(id)arg1;
++ (void)pruneCloudSharingContentIfNecessaryInLibrary:(id)arg1;
 + (void)publishCloudSharedAlbumToServer:(id)arg1;
 + (void)publishCloudSharedCommentToServer:(id)arg1;
 + (unsigned long long)purgeSpace:(unsigned long long)arg1;

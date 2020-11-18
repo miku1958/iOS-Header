@@ -74,18 +74,18 @@
 @property (nonatomic) unsigned long long secondaryStrideInPixelsY; // @synthesize secondaryStrideInPixelsY=_secondaryStrideInPixelsY;
 
 - (BOOL)appendBatchBarrier;
-- (unsigned long long)batchEncodingStorageSizeForPrimaryImage:(struct NSArray *)arg1 secondaryImage:(struct NSArray *)arg2 sourceStates:(id)arg3 destinationImage:(struct NSArray *)arg4;
+- (unsigned long long)batchEncodingStorageSizeForPrimaryImage:(id)arg1 secondaryImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (void)copyToBinaryGradientState:(id)arg1 primaryImage:(id)arg2 secondaryImage:(id)arg3 sourceStates:(id)arg4 destinationImage:(id)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2;
 - (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 primaryOffset:(CDStruct_d6af7fc0 *)arg4 secondaryOffset:(CDStruct_d6af7fc0 *)arg5 kernelOffset:(CDStruct_d6af7fc0 *)arg6;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(struct NSArray *)arg2 secondaryImages:(struct NSArray *)arg3;
-- (void)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(struct NSArray *)arg2 secondaryImages:(struct NSArray *)arg3 destinationImages:(struct NSArray *)arg4;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(struct NSArray *)arg2 secondaryImages:(struct NSArray *)arg3 destinationStates:(struct NSArray **)arg4 destinationStateIsTemporary:(BOOL)arg5;
-- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(struct NSArray *)arg2 secondaryImages:(struct NSArray *)arg3 inStates:(struct NSArray *)arg4;
-- (void)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(struct NSArray *)arg2 secondaryImages:(struct NSArray *)arg3 inStates:(struct NSArray *)arg4 destinationImages:(struct NSArray *)arg5;
+- (id)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(id)arg2 secondaryImages:(id)arg3;
+- (void)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(id)arg2 secondaryImages:(id)arg3 destinationImages:(id)arg4;
+- (id)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(id)arg2 secondaryImages:(id)arg3 destinationStates:(id *)arg4 destinationStateIsTemporary:(BOOL)arg5;
+- (id)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(id)arg2 secondaryImages:(id)arg3 inStates:(id)arg4;
+- (void)encodeBatchToCommandBuffer:(id)arg1 primaryImages:(id)arg2 secondaryImages:(id)arg3 inStates:(id)arg4 destinationImages:(id)arg5;
 - (id)encodeToCommandBuffer:(id)arg1 primaryImage:(id)arg2 secondaryImage:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 primaryImage:(id)arg2 secondaryImage:(id)arg3 destinationImage:(id)arg4;
 - (id)encodeToCommandBuffer:(id)arg1 primaryImage:(id)arg2 secondaryImage:(id)arg3 destinationState:(id *)arg4 destinationStateIsTemporary:(BOOL)arg5;
@@ -102,11 +102,11 @@
 - (unsigned long long)maxBatchSize;
 - (id)plugin;
 - (struct MPSRegion)primarySourceRegionForDestinationSize:(CDStruct_14f26992)arg1;
-- (struct NSArray *)resultStateBatchForPrimaryImage:(struct NSArray *)arg1 secondaryImage:(struct NSArray *)arg2 sourceStates:(id)arg3 destinationImage:(struct NSArray *)arg4;
+- (id)resultStateBatchForPrimaryImage:(id)arg1 secondaryImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)resultStateForPrimaryImage:(id)arg1 secondaryImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (struct MPSRegion)secondarySourceRegionForDestinationSize:(CDStruct_14f26992)arg1;
 - (BOOL)setPlugin:(id)arg1;
-- (struct NSArray *)temporaryResultStateBatchForCommandBuffer:(id)arg1 primaryImage:(struct NSArray *)arg2 secondaryImage:(struct NSArray *)arg3 sourceStates:(id)arg4 destinationImage:(struct NSArray *)arg5;
+- (id)temporaryResultStateBatchForCommandBuffer:(id)arg1 primaryImage:(id)arg2 secondaryImage:(id)arg3 sourceStates:(id)arg4 destinationImage:(id)arg5;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 primaryImage:(id)arg2 secondaryImage:(id)arg3 sourceStates:(id)arg4 destinationImage:(id)arg5;
 
 @end

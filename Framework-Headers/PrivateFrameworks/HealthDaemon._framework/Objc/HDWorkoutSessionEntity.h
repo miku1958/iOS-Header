@@ -17,7 +17,7 @@
 + (id)lookupSessionWithIdentifier:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)privateSubEntities;
 + (long long)protectionClass;
-+ (id)sessionIdentifierForRecoveryInProfile:(id)arg1 error:(id *)arg2;
++ (id)sessionIdentifierForRecoveryInProfile:(id)arg1 expirationInterval:(double)arg2 error:(id *)arg3;
 + (id)sessionsExcludingIdentifiers:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)sessionsForSource:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)associatedBuilderWithTransaction:(id)arg1 error:(id *)arg2;

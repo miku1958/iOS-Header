@@ -17,7 +17,6 @@
 @interface HMHomeManager : NSObject <HMFLogging, HMFMessageReceiver, HMMutableApplicationData, HMApplicationData>
 {
     HMFUnfairLock *_lock;
-    HMAccessory *_currentAccessory;
     NSOperationQueue *_syncOperationQueue;
     BOOL _frameworkMergeComplete;
     BOOL _thisDeviceResidentCapable;
@@ -60,7 +59,7 @@
 @property (readonly) unsigned long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (readonly) HMHomeManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
-@property (readonly, weak) HMAccessory *currentAccessory;
+@property (readonly) HMAccessory *currentAccessory;
 @property (readonly, nonatomic) HMHome *currentHome; // @synthesize currentHome=_currentHome;
 @property (strong, nonatomic) HMMutableArray *currentHomes; // @synthesize currentHomes=_currentHomes;
 @property (readonly, nonatomic, getter=isDataSyncInProgress) BOOL dataSyncInProgress;
@@ -204,7 +203,6 @@
 - (void)resetConfiguration:(BOOL)arg1 withoutPopup:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setAccessAllowedWhenLocked:(BOOL)arg1;
 - (void)setApplicationData:(id)arg1;
-- (void)setCurrentAccessory:(id)arg1;
 - (void)setCurrentHome:(id)arg1;
 - (void)setDataSyncState:(unsigned long long)arg1;
 - (void)setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

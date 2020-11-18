@@ -48,6 +48,7 @@
 - (BOOL)_amIMentionedInMessage:(id)arg1;
 - (id)_chatDictionaryForMessageRecord:(struct _IMDMessageRecordStruct *)arg1;
 - (BOOL)_chatHasDNDSet:(id)arg1;
+- (BOOL)_chatHasDNDSetBasedOnChatGUID:(id)arg1 chatIdentifier:(id)arg2 groupID:(id)arg3 handles:(id)arg4 lastAddressedHandleString:(id)arg5 style:(long long)arg6;
 - (BOOL)_chatHasDNDSetBasedOnDNDIdentifier:(id)arg1;
 - (BOOL)_deviceIsElgibileToBeForcedIntoFilteringUnknownSenders;
 - (id)_displayNameForBusinessChatAddress:(id)arg1;
@@ -131,6 +132,7 @@
 - (void)repostNotificationsFromFirstUnlock;
 - (void)retractNotificationsForReadMessages:(id)arg1;
 - (unsigned long long)screenTimeNotificationOptionsForChatDictionary:(id)arg1;
+- (unsigned long long)screenTimeNotificationOptionsForContext:(id)arg1;
 
 @end
 

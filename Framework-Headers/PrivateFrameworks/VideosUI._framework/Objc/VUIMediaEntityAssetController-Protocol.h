@@ -22,6 +22,6 @@
 - (void)invalidate;
 - (void)pauseDownload;
 - (void)resumeDownload;
-- (void)startDownloadWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

@@ -11,6 +11,7 @@
 
 @protocol MTLResourceSPI <MTLResource>
 
+@property (readonly) unsigned long long allocationID;
 @property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
 @property (readonly) unsigned long long protectionOptions;
 @property int responsibleProcess;

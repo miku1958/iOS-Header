@@ -18,22 +18,26 @@
 #import <WebKit/UIWebFormAccessoryDelegate-Protocol.h>
 #import <WebKit/UIWebTouchEventsGestureRecognizerDelegate-Protocol.h>
 #import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
+#import <WebKit/WKDeferringGestureRecognizerDelegate-Protocol.h>
 #import <WebKit/WKFileUploadPanelDelegate-Protocol.h>
 #import <WebKit/WKKeyboardScrollViewAnimatorDelegate-Protocol.h>
 #import <WebKit/WKShareSheetDelegate-Protocol.h>
 #import <WebKit/WKTouchActionGestureRecognizerDelegate-Protocol.h>
+#import <WebKit/_UICursorInteractionDelegate-Protocol.h>
 #import <WebKit/_WKWebViewPrintProvider-Protocol.h>
 
-@class NSArray, NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UITextInputAssistantItem, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFormAccessory, WKBrowsingContextController, WKFormInputControl, WKWebView;
+@class NSArray, NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UITextInputAssistantItem, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFormAccessory, WKBrowsingContextController, WKFormInputControl;
 @protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer, WKFormControl;
 
 __attribute__((visibility("hidden")))
-@interface WKContentView : WKApplicationStateTrackingView <_WKWebViewPrintProvider, UIGestureRecognizerDelegate, UITextAutoscrolling, UITextInputMultiDocument, UITextInputPrivate, UIWebFormAccessoryDelegate, UIWebTouchEventsGestureRecognizerDelegate, UIWKInteractionViewProtocol, WKActionSheetAssistantDelegate, WKFileUploadPanelDelegate, WKKeyboardScrollViewAnimatorDelegate, WKShareSheetDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, WKTouchActionGestureRecognizerDelegate, UIContextMenuInteractionDelegate, UIPreviewItemDelegate>
+@interface WKContentView : WKApplicationStateTrackingView <_UICursorInteractionDelegate, _WKWebViewPrintProvider, UIGestureRecognizerDelegate, UITextAutoscrolling, UITextInputMultiDocument, UITextInputPrivate, UIWebFormAccessoryDelegate, UIWebTouchEventsGestureRecognizerDelegate, UIWKInteractionViewProtocol, WKActionSheetAssistantDelegate, WKFileUploadPanelDelegate, WKKeyboardScrollViewAnimatorDelegate, WKDeferringGestureRecognizerDelegate, WKShareSheetDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, WKTouchActionGestureRecognizerDelegate, UIContextMenuInteractionDelegate, UIPreviewItemDelegate>
 {
     RefPtr_a805eeb8 _page;
-    WKWebView *_webView;
+    struct WeakObjCPtr<WKWebView> _webView;
+    struct RetainPtr<WKDeferringGestureRecognizer> _deferringGestureRecognizerForImmediatelyResettableGestures;
+    struct RetainPtr<WKDeferringGestureRecognizer> _deferringGestureRecognizerForDelayedResettableGestures;
     struct RetainPtr<UIWebTouchEventsGestureRecognizer> _touchEventGestureRecognizer;
-    BOOL _canSendTouchEventsAsynchronously;
+    BOOL _touchEventsCanPreventNativeGestures;
     BOOL _preventsPanningInXAxis;
     BOOL _preventsPanningInYAxis;
     struct RetainPtr<WKSyntheticTapGestureRecognizer> _singleTapGestureRecognizer;
@@ -51,7 +55,8 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UISwipeGestureRecognizer> _touchActionRightSwipeGestureRecognizer;
     struct RetainPtr<UISwipeGestureRecognizer> _touchActionUpSwipeGestureRecognizer;
     struct RetainPtr<UISwipeGestureRecognizer> _touchActionDownSwipeGestureRecognizer;
-    struct RetainPtr<UIWKTextInteractionAssistant> _textSelectionAssistant;
+    struct RetainPtr<WKMouseGestureRecognizer> _mouseGestureRecognizer;
+    struct RetainPtr<UIWKTextInteractionAssistant> _textInteractionAssistant;
     struct OptionSet<WebKit::SuppressSelectionAssistantReason> _suppressSelectionAssistantReasons;
     struct RetainPtr<UITextInputTraits> _traits;
     struct RetainPtr<UIWebFormAccessory> _formAccessoryView;
@@ -66,7 +71,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<WKShareSheet> _shareSheet;
     struct RetainPtr<UIGestureRecognizer> _previewGestureRecognizer;
     struct RetainPtr<UIGestureRecognizer> _previewSecondaryGestureRecognizer;
-    struct Vector<bool, 0, WTF::CrashOnOverflow, 16> _focusStateStack;
+    struct Vector<bool, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _focusStateStack;
     struct RetainPtr<UIContextMenuInteraction> _contextMenuInteraction;
     struct RetainPtr<WKContextMenuElementInfo> _contextMenuElementInfo;
     BOOL _showLinkPreviews;
@@ -86,11 +91,11 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSObject<WKFormPeripheral>> _inputPeripheral;
     struct BlockPtr<void (WebEvent *, bool)> _keyWebEventHandler;
     struct CGPoint _lastInteractionLocation;
-    unsigned long long _layerTreeTransactionIdAtLastTouchStart;
+    struct MonotonicObjectIdentifier<WebKit::TransactionIDType> _layerTreeTransactionIdAtLastTouchStart;
     struct WKSelectionDrawingInfo _lastSelectionDrawingInfo;
     struct Optional<WebKit::InteractionInformationRequest> _outstandingPositionInformationRequest;
     unsigned long long _positionInformationCallbackDepth;
-    struct Vector<WTF::Optional<std::__1::pair<WebKit::InteractionInformationRequest, WTF::BlockPtr<void (WebKit::InteractionInformationAtPosition)>>>, 0, WTF::CrashOnOverflow, 16> _pendingPositionInformationHandlers;
+    struct Vector<WTF::Optional<std::__1::pair<WebKit::InteractionInformationRequest, WTF::BlockPtr<void (WebKit::InteractionInformationAtPosition)>>>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _pendingPositionInformationHandlers;
     struct unique_ptr<WebKit::InputViewUpdateDeferrer, std::__1::default_delete<WebKit::InputViewUpdateDeferrer>> _inputViewUpdateDeferrer;
     struct RetainPtr<WKKeyboardScrollViewAnimator> _keyboardScrollingAnimator;
     struct RetainPtr<UIView<WKFormControl>> _dataListTextSuggestionsInputView;
@@ -127,9 +132,9 @@ __attribute__((visibility("hidden")))
     BOOL _hasSetUpInteractions;
     unsigned long long _ignoreSelectionCommandFadeCount;
     long long _suppressNonEditableSingleTapTextInteractionCount;
-    long long _processingChangeSelectionWithGestureCount;
     CompletionHandler_2aa2525f _domPasteRequestHandler;
     struct BlockPtr<void (UIWKAutocorrectionContext *)> _pendingAutocorrectionContextHandler;
+    struct RetainPtr<NSDictionary> _additionalContextForStrongPasswordAssistance;
     struct DragDropInteractionState _dragDropInteractionState;
     struct RetainPtr<UIDragInteraction> _dragInteraction;
     struct RetainPtr<UIDropInteraction> _dropInteraction;
@@ -138,6 +143,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIView> _unselectedContentSnapshot;
     struct RetainPtr<_UITextDragCaretView> _editDropCaretView;
     struct BlockPtr<void ()> _actionToPerformAfterReceivingEditDragSnapshot;
+    struct Vector<WTF::BlockPtr<void ()>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _actionsToPerformAfterResettingSingleTapGestureRecognizer;
     struct unique_ptr<WebKit::PageClientImpl, std::__1::default_delete<WebKit::PageClientImpl>> _pageClient;
     struct RetainPtr<WKBrowsingContextController> _browsingContextController;
     struct RetainPtr<UIView> _rootContentView;
@@ -174,12 +180,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) WKBrowsingContextController *browsingContextController;
 @property (nonatomic) BOOL contentsIsSingleValue;
 @property (readonly, nonatomic) struct InteractionInformationAtPosition currentPositionInformation;
+@property (readonly, nonatomic) long long cursorBehavior;
 @property (strong, nonatomic) NSArray *dataListTextSuggestions;
 @property (strong, nonatomic) UIView<WKFormControl> *dataListTextSuggestionsInputView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
@@ -204,6 +213,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *formInputLabel;
 @property (nonatomic) BOOL hasDefaultContents;
 @property (readonly, nonatomic) BOOL hasText;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -260,6 +270,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsImagePaste;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (copy, nonatomic) NSString *textContentType;
@@ -301,6 +312,7 @@ __attribute__((visibility("hidden")))
 - (void)_alignRight:(id)arg1;
 - (void)_alignRightForWebView:(id)arg1;
 - (BOOL)_allowAnimatedUpdateSelectionRectViews;
+- (BOOL)_allowGestureRecognizer:(id)arg1 toReceiveTouch:(id)arg2;
 - (int)_allowedDragSourceActions;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationWillResignActive:(id)arg1;
@@ -330,6 +342,7 @@ __attribute__((visibility("hidden")))
 - (id)_createTargetedPreviewIfPossible;
 - (BOOL)_currentPositionInformationIsApproximatelyValidForRequest:(const struct InteractionInformationRequest *)arg1 radiusForApproximation:(int)arg2;
 - (BOOL)_currentPositionInformationIsValidForRequest:(const struct InteractionInformationRequest *)arg1;
+- (void)_cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_dataDetectionResults;
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint)arg2 type:(long long *)arg3;
 - (void)_decreaseListLevel:(id)arg1;
@@ -341,7 +354,7 @@ __attribute__((visibility("hidden")))
 - (void)_deleteToEndOfLine;
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
-- (void)_deliverDelayedDropPreviewIfPossible:(Optional_bb099823)arg1;
+- (void)_deliverDelayedDropPreviewIfPossible:(Optional_16809ed4)arg1;
 - (void)_didChangeDragCaretRect:(struct CGRect)arg1 currentRect:(struct CGRect)arg2;
 - (void)_didChangeDragInteractionPolicy;
 - (void)_didChangeLinkPreviewAvailability;
@@ -351,7 +364,7 @@ __attribute__((visibility("hidden")))
 - (void)_didCompleteSyntheticClick;
 - (void)_didEndScrollingOrZooming;
 - (void)_didExitStableState;
-- (void)_didGetTapHighlightForRequest:(unsigned long long)arg1 color:(const struct Color *)arg2 quads:(const Vector_c1077595 *)arg3 topLeftRadius:(const struct IntSize *)arg4 topRightRadius:(const struct IntSize *)arg5 bottomLeftRadius:(const struct IntSize *)arg6 bottomRightRadius:(const struct IntSize *)arg7 nodeHasBuiltInClickHandling:(BOOL)arg8;
+- (void)_didGetTapHighlightForRequest:(unsigned long long)arg1 color:(const struct Color *)arg2 quads:(const Vector_cd3cf0bf *)arg3 topLeftRadius:(const struct IntSize *)arg4 topRightRadius:(const struct IntSize *)arg5 bottomLeftRadius:(const struct IntSize *)arg6 bottomRightRadius:(const struct IntSize *)arg7 nodeHasBuiltInClickHandling:(BOOL)arg8;
 - (void)_didHandleAdditionalDragItemsRequest:(BOOL)arg1;
 - (void)_didHandleDragStartRequest:(BOOL)arg1;
 - (void)_didHandleKeyEvent:(id)arg1 eventWasHandled:(BOOL)arg2;
@@ -359,7 +372,7 @@ __attribute__((visibility("hidden")))
 - (void)_didNotHandleTapAsClick:(const struct IntPoint *)arg1;
 - (void)_didPerformAction:(SEL)arg1 sender:(id)arg2;
 - (void)_didPerformDragOperation:(BOOL)arg1;
-- (void)_didReceiveEditDragSnapshot:(Optional_bb099823)arg1;
+- (void)_didReceiveEditDragSnapshot:(Optional_16809ed4)arg1;
 - (void)_didReceiveEditorStateUpdateAfterFocus;
 - (void)_didRelaunchProcess;
 - (void)_didScroll;
@@ -369,6 +382,8 @@ __attribute__((visibility("hidden")))
 - (void)_disableDoubleTapGesturesDuringTapIfNecessary:(unsigned long long)arg1;
 - (void)_disableInspectorNodeSearch;
 - (void)_doAfterReceivingEditDragSnapshotForTesting:(CDUnknownBlockType)arg1;
+- (void)_doAfterResettingSingleTapGesture:(CDUnknownBlockType)arg1;
+- (void)_doneDeferringNativeGestures:(BOOL)arg1;
 - (void)_doubleTapDidFail:(id)arg1;
 - (void)_doubleTapRecognized:(id)arg1;
 - (void)_doubleTapRecognizedForDoubleClick:(id)arg1;
@@ -420,7 +435,7 @@ __attribute__((visibility("hidden")))
 - (void)_invokeAndRemovePendingHandlersValidForCurrentPositionInformation;
 - (void)_invokePendingAutocorrectionContextHandler:(id)arg1;
 - (BOOL)_isInteractingWithFocusedElement;
-- (id)_itemsForBeginningOrAddingToSessionWithRegistrationList:(id)arg1 stagedDragSource:(const struct DragSourceState *)arg2;
+- (id)_itemsForBeginningOrAddingToSessionWithRegistrationLists:(id)arg1 stagedDragSource:(const struct DragSourceState *)arg2;
 - (void)_keyboardDidRequestDismissal:(id)arg1;
 - (void)_layerTreeCommitComplete;
 - (void)_longPressRecognized:(id)arg1;
@@ -428,6 +443,7 @@ __attribute__((visibility("hidden")))
 - (void)_lookupForWebView:(id)arg1;
 - (struct _NSRange)_markedTextNSRange;
 - (BOOL)_mayDisableDoubleTapGesturesDuringSingleTap;
+- (void)_mouseGestureRecognizerChanged:(id)arg1;
 - (id)_moveDown:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveLeft:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveRight:(BOOL)arg1 withHistory:(id)arg2;
@@ -450,6 +466,7 @@ __attribute__((visibility("hidden")))
 - (void)_pasteAndMatchStyleForWebView:(id)arg1;
 - (void)_pasteAsQuotation:(id)arg1;
 - (void)_pasteAsQuotationForWebView:(id)arg1;
+- (void)_performAdditionalSetupDragAndDropInteractions;
 - (void)_positionInformationDidChange:(const struct InteractionInformationAtPosition *)arg1;
 - (void)_prepareToDragPromisedAttachment:(const struct PromisedAttachmentInfo *)arg1;
 - (struct CGRect)_presentationRectForPreviewItemController:(id)arg1;
@@ -491,6 +508,7 @@ __attribute__((visibility("hidden")))
 - (void)_setDoubleTapGesturesEnabled:(BOOL)arg1;
 - (void)_setFontForWebView:(id)arg1 sender:(id)arg2;
 - (void)_setFontSizeForWebView:(double)arg1 sender:(id)arg2;
+- (void)_setMarkedText:(id)arg1 highlights:(const Vector_600e55de *)arg2 selectedRange:(struct _NSRange)arg3;
 - (void)_setTextColorForWebView:(id)arg1 sender:(id)arg2;
 - (void)_setupVisibilityPropagationView;
 - (void)_share:(id)arg1;
@@ -539,6 +557,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateInputContextAfterBlurringAndRefocusingElement;
 - (void)_updateInteractionTintColor;
 - (void)_updateLongPressAndHighlightLongPressGestures;
+- (void)_updateRemoteAccessibilityRegistration:(BOOL)arg1;
 - (void)_updateSelectionAssistantSuppressionState;
 - (void)_updateTapHighlight;
 - (BOOL)_waitForDrawToPDFCallback;
@@ -591,6 +610,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (BOOL)canPerformActionForWebView:(SEL)arg1 withSender:(id)arg2;
 - (BOOL)canShowNonEmptySelectionView;
+- (void)cancelActiveTextInteractionGestures;
 - (void)cancelAutoscroll;
 - (void)cancelPointersForGestureRecognizer:(id)arg1;
 - (struct CGRect)caretRectForPosition:(id)arg1;
@@ -602,6 +622,8 @@ __attribute__((visibility("hidden")))
 - (id)characterRangeAtPoint:(struct CGPoint)arg1;
 - (id)characterRangeByExtendingPosition:(id)arg1 inDirection:(long long)arg2;
 - (void)cleanUpDragSourceSessionState;
+- (void)cleanupAdditionalInteractions;
+- (void)cleanupCursorInteraction;
 - (void)cleanupInteraction;
 - (void)clearSelection;
 - (id)closestPositionToPoint:(struct CGPoint)arg1;
@@ -620,6 +642,9 @@ __attribute__((visibility("hidden")))
 - (void)copy:(id)arg1;
 - (void)copyForWebView:(id)arg1;
 - (id)currentDragOrDropSession;
+- (id)cursorInteraction;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)cursorRegionForPositionInformation:(struct InteractionInformationAtPosition *)arg1 point:(struct CGPoint)arg2;
 - (void)cut:(id)arg1;
 - (void)cutForWebView:(id)arg1;
 - (id)dataDetectionContextForActionSheetAssistant:(id)arg1;
@@ -627,6 +652,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)decreaseSize:(id)arg1;
 - (void)decreaseSizeForWebView:(id)arg1;
+- (BOOL)deferringGestureRecognizer:(id)arg1 shouldDeferGesturesAfterBeginningTouchesWithEvent:(id)arg2;
+- (BOOL)deferringGestureRecognizer:(id)arg1 shouldDeferGesturesAfterEndingTouchesWithEvent:(id)arg2;
+- (BOOL)deferringGestureRecognizer:(id)arg1 shouldDeferOtherGestureRecognizer:(id)arg2;
 - (void)deleteBackward;
 - (void)didFinishScrolling;
 - (void)didInterruptScrolling;
@@ -660,11 +688,13 @@ __attribute__((visibility("hidden")))
 - (void)executeEditCommandWithCallback:(id)arg1;
 - (void)fileUploadPanelDidDismiss:(id)arg1;
 - (struct CGRect)firstRectForRange:(id)arg1;
-- (Vector_116a0919 *)focusedSelectElementOptions;
+- (Vector_1085dc5e *)focusedSelectElementOptions;
 - (id)fontForCaretSelection;
 - (void)generateSyntheticEditingCommand:(unsigned char)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 canBePreventedByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 canPreventGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 isInterruptingMomentumScrollingWithEvent:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldIgnoreWebTouchWithEvent:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -730,7 +760,7 @@ __attribute__((visibility("hidden")))
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;
 - (id)positionFromPosition:(id)arg1 toBoundary:(long long)arg2 inDirection:(long long)arg3;
-- (Optional_d40c49cf)positionInformationForActionSheetAssistant:(id)arg1;
+- (Optional_677bf244)positionInformationForActionSheetAssistant:(id)arg1;
 - (id)positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;
 - (id)previousUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (id)rangeEnclosingPosition:(id)arg1 withGranularity:(long long)arg2 inDirection:(long long)arg3;
@@ -773,25 +803,30 @@ __attribute__((visibility("hidden")))
 - (id)selectionInteractionAssistant;
 - (struct _NSRange)selectionRange;
 - (id)selectionRectsForRange:(id)arg1;
+- (void)setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (void)setBottomBufferHeight:(double)arg1;
+- (void)setContinuousSpellCheckingEnabled:(BOOL)arg1;
+- (void)setCursorInteraction:(id)arg1;
 - (BOOL)setIsEditable:(BOOL)arg1;
 - (void)setMarkedText:(id)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)setSelectedDOMRange:(id)arg1 affinityDownstream:(BOOL)arg2;
 - (void)setTimePickerValueToHour:(long long)arg1 minute:(long long)arg2;
 - (void)setUpTextSelectionAssistant;
+- (void)setupAdditionalInteractions;
+- (void)setupCursorInteraction;
 - (void)setupDragAndDropInteractions;
 - (void)setupInteraction;
 - (void)shareSheetDidDismiss:(id)arg1;
 - (BOOL)shouldAllowHidingSelectionCommands;
-- (BOOL)shouldIgnoreWebTouch;
 - (BOOL)shouldShowAutomaticKeyboardUI;
 - (BOOL)shouldSuppressUpdateCandidateView;
 - (BOOL)shouldSynthesizeKeyEvents;
 - (void)showGlobalMenuControllerInRect:(struct CGRect)arg1;
 - (void)startAutoscroll:(struct CGPoint)arg1;
 - (id)supportedPasteboardTypesForCurrentSelection;
+- (BOOL)supportsTextSelectionWithCharacterGranularity;
 - (void)takeTraitsFrom:(id)arg1;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (id)targetForActionForWebView:(SEL)arg1 withSender:(id)arg2;
@@ -826,7 +861,8 @@ __attribute__((visibility("hidden")))
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 withBoundary:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateTextSuggestionsForInputDelegate;
 - (id)webSelectionRects;
-- (id)webSelectionRectsForSelectionRects:(const Vector_029b09a9 *)arg1;
+- (id)webSelectionRectsForSelectionRects:(const Vector_84f55927 *)arg1;
+- (id)webView;
 - (id)webViewUIDelegate;
 - (void)willFinishIgnoringCalloutBarFadeAfterPerformingAction;
 - (void)willMoveToWindow:(id)arg1;

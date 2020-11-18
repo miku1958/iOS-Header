@@ -32,6 +32,7 @@
 - (void)fetchEgoPeerID:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchEscrowContents:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchTrustStatus:(id)arg1 context:(id)arg2 configuration:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)getCDPStatus:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)getConnection:(CDUnknownBlockType)arg1;
 - (void)handleIdentityChangeForSigningKey:(id)arg1 ForEncryptionKey:(id)arg2 ForPeerID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)healthCheck:(id)arg1 context:(id)arg2 skipRateLimitingCheck:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
@@ -47,16 +48,18 @@
 - (void)peerDeviceNamesByPeerID:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)postCDPFollowupResult:(BOOL)arg1 type:(id)arg2 error:(id)arg3 containerName:(id)arg4 contextName:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)preflightBottledPeer:(id)arg1 dsid:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)refetchCKKSPolicy:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)removeFriendsInClique:(id)arg1 context:(id)arg2 peerIDs:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)reset:(CDUnknownBlockType)arg1;
 - (void)resetAndEstablish:(id)arg1 context:(id)arg2 altDSID:(id)arg3 resetReason:(long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)restore:(id)arg1 contextID:(id)arg2 bottleSalt:(id)arg3 entropy:(id)arg4 bottleID:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)restore:(id)arg1 dsid:(id)arg2 secret:(id)arg3 escrowRecordID:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)rpcEpochWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)rpcJoinWithConfiguration:(id)arg1 vouchData:(id)arg2 vouchSig:(id)arg3 preapprovedKeys:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)rpcJoinWithConfiguration:(id)arg1 vouchData:(id)arg2 vouchSig:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)rpcPrepareIdentityAsApplicantWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcVoucherWithConfiguration:(id)arg1 peerID:(id)arg2 permanentInfo:(id)arg3 permanentInfoSig:(id)arg4 stableInfo:(id)arg5 stableInfoSig:(id)arg6 reply:(CDUnknownBlockType)arg7;
 - (void)scrubBottledPeer:(id)arg1 bottleID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setCDPEnabled:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)signIn:(id)arg1 container:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)signOut:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)signingKey:(CDUnknownBlockType)arg1;

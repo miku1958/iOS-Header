@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityInTopLevelTabLoop;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityHint;

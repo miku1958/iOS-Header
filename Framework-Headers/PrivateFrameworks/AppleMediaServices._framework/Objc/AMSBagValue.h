@@ -25,10 +25,12 @@
 
 + (BOOL)_value:(id)arg1 isKindOfValueType:(unsigned long long)arg2;
 + (id)_valueFromDictionary:(id)arg1 forBagKey:(id)arg2;
++ (id)bagValueWithKey:(id)arg1 valueType:(unsigned long long)arg2 valuePromise:(id)arg3;
 + (id)failingBagValueWithKey:(id)arg1 valueType:(unsigned long long)arg2 error:(id)arg3;
 + (id)frozenBagValueWithKey:(id)arg1 value:(id)arg2 valueType:(unsigned long long)arg3;
 + (id)globalBagValueStorage;
 - (void).cxx_destruct;
+- (id)_processedDefaultValue:(id)arg1;
 - (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned long long)arg3;
 - (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned long long)arg3 account:(id)arg4;
 - (id)valuePromise;

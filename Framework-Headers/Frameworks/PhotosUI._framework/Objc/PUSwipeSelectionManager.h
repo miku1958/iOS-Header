@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexPath, PUPhotoSelectionManager, PXUIAutoScroller;
+@class NSIndexPath, NSMutableDictionary, PUPhotoSelectionManager, PXUIAutoScroller;
 @protocol PUSwipeSelectionManagerDataSource, PUSwipeSelectionManagerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUSwipeSelectionManager : NSObject
 {
-    struct NSMutableDictionary *_oldIndexesPaths;
+    NSMutableDictionary *_oldIndexesPaths;
     id<PUSwipeSelectionManagerDelegate> _delegate;
     id<PUSwipeSelectionManagerDataSource> _datasource;
     PXUIAutoScroller *_selectionAutoScroller;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PXUIAutoScroller *selectionAutoScroller; // @synthesize selectionAutoScroller=_selectionAutoScroller;
 
 - (void).cxx_destruct;
-- (struct NSMutableDictionary *)_indexesPathsRangeForIndexPath:(id)arg1;
+- (id)_indexesPathsRangeForIndexPath:(id)arg1;
 - (long long)_selectionModeForRestoringStateOfIndexPath:(id)arg1;
 - (void)beginSelectionFromIndexPath:(id)arg1;
 - (void)dealloc;

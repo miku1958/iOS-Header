@@ -36,8 +36,10 @@ __attribute__((visibility("hidden")))
 - (void)_insertDrawable:(id)arg1 forOverlay:(id)arg2 atIndex:(long long)arg3 level:(long long)arg4;
 - (long long)_levelForOverlay:(id)arg1 exists:(BOOL *)arg2;
 - (CDStruct_02837cd9)_mapRectWithFractionOfVisible:(double)arg1;
+- (BOOL)_overlaySpansGlobeAndReplacesMapContent;
 - (void)_removeDrawable:(id)arg1 forOverlay:(id)arg2 level:(long long)arg3;
 - (void)_updateContentScale:(id)arg1;
+- (void)_updateShowsAppleLogoIfNeeded;
 - (id)_viewContainerForLevel:(long long)arg1;
 - (void)addAndRemoveOverlayViews;
 - (void)addOverlay:(id)arg1;

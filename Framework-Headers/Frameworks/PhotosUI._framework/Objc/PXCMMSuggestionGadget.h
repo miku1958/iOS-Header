@@ -34,6 +34,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -43,9 +44,6 @@
 @property (nonatomic) long long priority;
 @property (strong, nonatomic) id<PXCMMSuggestion> suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
 @property (readonly, nonatomic) id<PXCMMWorkflowPresenting> workflowPresenter; // @synthesize workflowPresenter=_workflowPresenter;
 
@@ -65,14 +63,15 @@
 - (id)initWithWorkflowPresenter:(id)arg1;
 - (void)ppt_presentComposeRecipientViewAfterDelay:(double)arg1;
 - (void)prefetchDuringScrollingForWidth:(double)arg1;
-- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
+- (void)prepareCollectionViewItem:(id)arg1;
 - (void)presentDetailViewAnimated:(BOOL)arg1;
 - (void)presentDetailViewForSuggestionView:(id)arg1 animated:(BOOL)arg2;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)suggestionViewSizeThatFitsDidChange:(id)arg1;
-- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (BOOL)supportsHighlighting;
+- (id)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)uniqueGadgetIdentifier;
 
 @end

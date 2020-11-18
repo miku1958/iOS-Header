@@ -44,6 +44,7 @@
 - (id)createListViewController:(id)arg1;
 - (id)createProfileViewController;
 - (id)createResearchStudySourcesViewControllerUsingInsetStyling:(BOOL)arg1 restorationStudyBundleIdentifier:(id)arg2;
+- (id)createSingleAppAuthorizationViewControllerUsingInsetStyling:(BOOL)arg1 restorationApplicationBundleIdentifier:(id)arg2;
 - (id)createSourcesViewControllerUsingInsetStyling:(BOOL)arg1;
 - (id)createUnitPreferencesController:(id)arg1;
 - (void)fetchUserDefaultForKey:(id)arg1 withCallback:(CDUnknownBlockType)arg2;

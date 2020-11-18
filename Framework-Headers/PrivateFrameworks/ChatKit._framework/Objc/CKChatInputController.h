@@ -9,7 +9,6 @@
 #import <ChatKit/CKBrowserAppManagerViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKBrowserSwitcherViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKBrowserTransitionCoordinatorDelegate-Protocol.h>
-#import <ChatKit/CKBrowserViewControllerSendDelegate-Protocol.h>
 #import <ChatKit/CKBrowserViewControllerStoreSendDelegate-Protocol.h>
 #import <ChatKit/CKDeviceOrientationManagerDelegate-Protocol.h>
 #import <ChatKit/CKFullScreenAppViewControllerDelegate-Protocol.h>
@@ -23,7 +22,7 @@
 @class CKBrowserSwitcherViewController, CKChatEagerUploadController, CKDeviceOrientationManager, CKHandwritingPresentationController, CKKeyboardContentViewController, CKMessageEntryView, CKScheduledUpdater, IMBalloonPlugin, IMBalloonPluginDataSource, IMScheduledUpdater, NSDate, NSString, UINavigationController, UITextInputPayloadController, UIViewController;
 @protocol CKBrowserViewControllerProtocol, CKChatInputControllerDelegate;
 
-@interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKBrowserViewControllerSendDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate>
+@interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate>
 {
     BOOL _isDismissingAppModal;
     BOOL _shouldSuppressStatusBarForHandwriting;

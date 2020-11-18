@@ -17,8 +17,12 @@
 - (id)_followUpForOfflineSecretChangeWithContext:(id)arg1;
 - (id)_followUpForRecoveryKeyRepairWithContext:(id)arg1;
 - (id)_followUpForRepairWithContext:(id)arg1;
+- (id)_followUpForSettingUpBiometricsWithContext:(id)arg1;
+- (BOOL)_isBiometricAuthEnrolled;
+- (BOOL)_isBiometricCapable;
 - (id)_localizedStringForKey:(id)arg1;
 - (id)_offlineSecretChangeFollowUpAction;
+- (BOOL)_supportsFaceID;
 - (id)followUpItemWithContext:(id)arg1;
 - (id)identifierForContext:(id)arg1;
 - (unsigned long long)secretType;

@@ -49,7 +49,6 @@
 - (id)conceptsWithRelationship:(id)arg1 toNode:(id)arg2;
 - (void)connectionInvalidated;
 - (long long)countOfConceptsAssociatedToUserRecordsWithError:(id *)arg1;
-- (id)displayNameForCodingSystemWithID:(long long)arg1 value:(id)arg2;
 - (id)exportedInterface;
 - (id)init;
 - (id)initWithHealthStore:(id)arg1;
@@ -59,8 +58,6 @@
 - (void)registerAsConceptObserver:(id)arg1 onQueue:(id)arg2;
 - (id)remoteInterface;
 - (void)resetOntologyUsingAssetAtLocation:(id)arg1 rememberLocation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)resolveConceptForContext:(id)arg1;
-- (id)resolveDisplayNamesForCodingContexts:(id)arg1;
 - (void)unregisterAsConceptObserver:(id)arg1 onQueue:(id)arg2;
 
 @end

@@ -12,5 +12,6 @@
 
 @property (readonly, copy, nonatomic) NSString *sf_bundleIdentifierForContainingApp;
 
+- (void)_sf_addHandlerForRequestIdentifier:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 @end
 

@@ -13,7 +13,7 @@
     struct {
         BOOL parsedGrouping;
     } _flags;
-    struct NSArray *_grouping;
+    NSArray *_grouping;
     NSString *_type;
     NSString *_selector;
     _IKDOMPrototypeDerivationRules *_rules;
@@ -24,7 +24,7 @@
 @property (readonly, copy, nonatomic) NSString *selector; // @synthesize selector=_selector;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
-+ (struct NSArray *)_groupingForDOMElement:(id)arg1;
++ (id)_groupingForDOMElement:(id)arg1;
 + (id)prototypeWithDOMElement:(id)arg1;
 - (void).cxx_destruct;
 - (id)_derivativeWithDataItem:(id)arg1;

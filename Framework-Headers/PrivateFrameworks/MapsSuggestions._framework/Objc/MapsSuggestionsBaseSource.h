@@ -14,7 +14,7 @@
 @interface MapsSuggestionsBaseSource : NSObject <MapsSuggestionsSource>
 {
     id<MapsSuggestionsSourceDelegate> _delegate;
-    struct NSString *_uniqueName;
+    NSString *_uniqueName;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,13 +27,13 @@
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
-- (unsigned long long)addOrUpdateMySuggestionEntries:(struct NSArray *)arg1;
+- (unsigned long long)addOrUpdateMySuggestionEntries:(id)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
-- (id)initWithDelegate:(id)arg1 name:(struct NSString *)arg2;
+- (id)initWithDelegate:(id)arg1 name:(id)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;

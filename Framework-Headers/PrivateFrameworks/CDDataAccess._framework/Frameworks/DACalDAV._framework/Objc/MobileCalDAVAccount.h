@@ -86,7 +86,7 @@
 - (void)_reallyCancelSearchQuery:(id)arg1;
 - (void)_reallyPerformSearchQuery:(id)arg1;
 - (BOOL)_reallySearchQueriesRunning;
-- (void)_rem_updateAccount:(BOOL)arg1;
+- (void)_rem_createAccountStore_whichReallyShouldNotHappen;
 - (BOOL)_rem_updateAccountProperties;
 - (BOOL)_saveModifiedPrincipalsOnBackingAccount;
 - (BOOL)_saveModifiedSubscribedCalendarsOnBackingAccount;

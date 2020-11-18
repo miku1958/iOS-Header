@@ -6,28 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/NSMutableCopying-Protocol.h>
-#import <MediaPlayer/NSSecureCoding-Protocol.h>
+@class NSArray;
 
-@class NSArray, NSMutableArray, NSUUID;
-
-@interface MPMusicPlayerControllerQueue : NSObject <NSSecureCoding, NSMutableCopying>
+@interface MPMusicPlayerControllerQueue : NSObject
 {
-    NSMutableArray *_items;
-    NSUUID *_uuid;
+    NSArray *_items;
 }
 
 @property (readonly, copy, nonatomic) NSArray *items;
-@property (readonly, nonatomic) NSMutableArray *mutableItems;
-@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithMediaItems:(id)arg1 uuid:(id)arg2;
-- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (void)fault;
+- (id)initWithController:(id)arg1;
 
 @end
 

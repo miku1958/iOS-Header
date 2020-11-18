@@ -8,13 +8,14 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCompanionDriveStep, GEOCompanionFerryStep, GEOCompanionWalkStep, NSData, NSMutableArray, NSString, PBDataReader;
+@class GEOCompanionDriveStep, GEOCompanionFerryStep, GEOCompanionGenericStep, GEOCompanionWalkStep, NSData, NSMutableArray, NSString, PBDataReader;
 
 @interface GEOCompanionStep : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     GEOCompanionDriveStep *_driveStep;
     GEOCompanionFerryStep *_ferryStep;
+    GEOCompanionGenericStep *_genericStep;
     NSMutableArray *_guidanceEvents;
     NSMutableArray *_instructionWithAlternatives;
     NSString *_listInstruction;
@@ -39,6 +40,7 @@
         unsigned int has_time:1;
         unsigned int read_driveStep:1;
         unsigned int read_ferryStep:1;
+        unsigned int read_genericStep:1;
         unsigned int read_guidanceEvents:1;
         unsigned int read_instructionWithAlternatives:1;
         unsigned int read_listInstruction:1;
@@ -47,6 +49,7 @@
         unsigned int read_walkStep:1;
         unsigned int wrote_driveStep:1;
         unsigned int wrote_ferryStep:1;
+        unsigned int wrote_genericStep:1;
         unsigned int wrote_guidanceEvents:1;
         unsigned int wrote_instructionWithAlternatives:1;
         unsigned int wrote_listInstruction:1;
@@ -66,11 +69,13 @@
 @property (strong, nonatomic) GEOCompanionDriveStep *driveStep;
 @property (nonatomic) unsigned int endCoordinateIndex;
 @property (strong, nonatomic) GEOCompanionFerryStep *ferryStep;
+@property (strong, nonatomic) GEOCompanionGenericStep *genericStep;
 @property (strong, nonatomic) NSMutableArray *guidanceEvents;
 @property (nonatomic) BOOL hasDistance;
 @property (readonly, nonatomic) BOOL hasDriveStep;
 @property (nonatomic) BOOL hasEndCoordinateIndex;
 @property (readonly, nonatomic) BOOL hasFerryStep;
+@property (readonly, nonatomic) BOOL hasGenericStep;
 @property (readonly, nonatomic) BOOL hasListInstruction;
 @property (nonatomic) BOOL hasManeuverStartCoordinateIndex;
 @property (readonly, nonatomic) BOOL hasRoadName;
@@ -97,6 +102,7 @@
 - (void)_addNoFlagsInstructionWithAlternatives:(id)arg1;
 - (void)_readDriveStep;
 - (void)_readFerryStep;
+- (void)_readGenericStep;
 - (void)_readGuidanceEvents;
 - (void)_readInstructionWithAlternatives;
 - (void)_readListInstruction;

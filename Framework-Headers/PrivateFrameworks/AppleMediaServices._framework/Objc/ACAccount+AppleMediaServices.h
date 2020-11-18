@@ -100,6 +100,7 @@
 - (void)ams_setBiometricsState:(long long)arg1;
 - (void)ams_setCreditsString:(id)arg1;
 - (void)ams_setDSID:(id)arg1;
+- (void)ams_setDemoAccount:(BOOL)arg1;
 - (void)ams_setFirstName:(id)arg1;
 - (void)ams_setHomeID:(id)arg1;
 - (void)ams_setHomeIdentifier:(id)arg1;

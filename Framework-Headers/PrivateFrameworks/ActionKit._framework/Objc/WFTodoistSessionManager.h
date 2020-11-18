@@ -21,7 +21,6 @@
 @property (readonly, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (copy, nonatomic) NSString *syncToken; // @synthesize syncToken=_syncToken;
 
-+ (id)dateFormatter;
 - (void).cxx_destruct;
 - (void)createFileOnItemWithId:(long long)arg1 withFile:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)createItemInProject:(id)arg1 content:(id)arg2 dueDateString:(id)arg3 reminderDateString:(id)arg4 reminderService:(long long)arg5 priority:(long long)arg6 note:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;

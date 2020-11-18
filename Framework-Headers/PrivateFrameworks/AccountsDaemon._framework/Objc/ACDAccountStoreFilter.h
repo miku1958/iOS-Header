@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithBackingAccountStore:(id)arg1;
 - (void)insertAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)insertCredentialItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)isClientEntitledToAccessAccountTypeWithIdentifier:(id)arg1;
 - (void)isPerformingDataclassActionsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isPushSupportedForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isTetheredSyncingEnabledForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -89,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)renewCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)reportTelemetryForLandmarkEvent:(CDUnknownBlockType)arg1;
 - (void)requestAccessForAccountTypeWithIdentifier:(id)arg1 options:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)resetDatabaseToVersion:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)saveAccount:(id)arg1 toPairedDeviceWithOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)saveAccount:(id)arg1 verify:(BOOL)arg2 dataclassActions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)saveAccount:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

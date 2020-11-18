@@ -22,6 +22,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRadioStation:(id)arg1;
+- (BOOL)isEmpty;
 - (BOOL)isEqual:(id)arg1;
 
 @end

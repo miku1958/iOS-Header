@@ -29,8 +29,10 @@
 - (id)_notificationRecords;
 - (void)_removeNotificationRecordsPassingTest:(CDUnknownBlockType)arg1;
 - (void)addNotificationRecord:(id)arg1;
+- (void)addNotificationRecords:(id)arg1;
 - (id)init;
 - (id)notificationRecords;
+- (void)removeAllNotificationRecords;
 - (void)removeNotificationRecordsPassingTest:(CDUnknownBlockType)arg1;
 
 @end

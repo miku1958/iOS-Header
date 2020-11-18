@@ -23,6 +23,7 @@
 - (void)_accessibilityHandleOrientationChange;
 - (void)_accessibilityHandleSpeakScreenGesture:(id)arg1;
 - (BOOL)_accessibilityHitTestsStatusBar;
+- (BOOL)_accessibilityIsAlarmRinging;
 - (BOOL)_accessibilityIsAppReadyToBeProbed;
 - (BOOL)_accessibilityIsAppSwitcherVisible;
 - (BOOL)_accessibilityIsBatteryLow;
@@ -50,14 +51,12 @@
 - (id)_accessibilityStatusBar;
 - (id)_accessibilityStatusBarElements;
 - (void)_accessibilityStatusChanged:(id)arg1;
-- (void)_accessibilitySwitchNativeFocusedApplicationInDirection:(long long)arg1;
 - (void)_accessibilitySwitchNativeFocusedApplicationWithPID:(int)arg1;
 - (BOOL)_accessibilitySystemAppServerIsReady;
 - (BOOL)_accessibilitySystemWideGestureInProgress;
 - (void)_accessibilityUpdateSpeakScreenGestureRecognizer;
 - (id)_axKeyboardFocusController;
 - (void)_axPerformDidFocusOnApplicationActionWithPid:(int)arg1;
-- (id)_axProcessesForNativeFocus;
 - (id)_firstStatusBarElement;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (BOOL)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;

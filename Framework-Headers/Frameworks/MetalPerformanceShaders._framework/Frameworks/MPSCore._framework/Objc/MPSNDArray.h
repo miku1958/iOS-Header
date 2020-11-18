@@ -39,7 +39,7 @@
 - (void).cxx_destruct;
 - (id)arrayViewWithCommandBuffer:(id)arg1 descriptor:(id)arg2 aliasing:(unsigned long long)arg3;
 - (id)buffer;
-- (void)copyDataWithCommandBuffer:(id)arg1 images:(struct NSArray *)arg2 offset:(struct MPSImageCoordinate)arg3 imageToArray:(BOOL)arg4;
+- (void)copyDataWithCommandBuffer:(id)arg1 images:(id)arg2 offset:(struct MPSImageCoordinate)arg3 imageToArray:(BOOL)arg4;
 - (id)dataWithCommandBuffer:(id)arg1;
 - (void)dealloc;
 - (id)descriptor;
@@ -48,9 +48,9 @@
 - (void)encodeReshapedMatrixWithCommandBuffer:(id)arg1 toBuffer:(id)arg2 destinationDataType:(unsigned int)arg3 destinationOffsetBytes:(unsigned long long)arg4 destinationRowBytes:(unsigned long long)arg5 destinationColumns:(unsigned long long)arg6 destinationRows:(unsigned long long)arg7;
 - (void)exportDataWithCommandBuffer:(id)arg1 toBuffer:(id)arg2 destinationDataType:(unsigned int)arg3 offset:(unsigned long long)arg4 rowStrides:(long long *)arg5;
 - (void)exportDataWithCommandBuffer:(id)arg1 toBuffer:(id)arg2 destinationDataType:(unsigned int)arg3 offset:(unsigned long long)arg4 rowStrides:(long long *)arg5 lengths:(unsigned long long *)arg6 numLengths:(unsigned long long)arg7 flatteningLevel:(unsigned long long)arg8;
-- (void)exportDataWithCommandBuffer:(id)arg1 toImages:(struct NSArray *)arg2 offset:(struct MPSImageCoordinate)arg3;
+- (void)exportDataWithCommandBuffer:(id)arg1 toImages:(id)arg2 offset:(struct MPSImageCoordinate)arg3;
 - (void)importDataWithCommandBuffer:(id)arg1 fromBuffer:(id)arg2 sourceDataType:(unsigned int)arg3 offset:(unsigned long long)arg4 rowStrides:(long long *)arg5;
-- (void)importDataWithCommandBuffer:(id)arg1 fromImages:(struct NSArray *)arg2 offset:(struct MPSImageCoordinate)arg3;
+- (void)importDataWithCommandBuffer:(id)arg1 fromImages:(id)arg2 offset:(struct MPSImageCoordinate)arg3;
 - (id)init;
 - (id)initWithBuffer:(id)arg1 descriptor:(id)arg2;
 - (id)initWithDevice:(id)arg1 descriptor:(id)arg2;

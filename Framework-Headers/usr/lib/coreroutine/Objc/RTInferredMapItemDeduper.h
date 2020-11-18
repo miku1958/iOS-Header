@@ -19,7 +19,7 @@
 - (id)dedupeInferredMapItems:(id)arg1 error:(id *)arg2;
 - (id)dedupeInferredMapItems:(id)arg1 state:(id)arg2 error:(id *)arg3;
 - (BOOL)inferredMapItem:(id)arg1 dedupesToInferredMapItem:(id)arg2 error:(id *)arg3;
-- (struct RTPair *)ingestInferredMapItem:(id)arg1 state:(id)arg2 error:(id *)arg3;
+- (id)ingestInferredMapItem:(id)arg1 state:(id)arg2 error:(id *)arg3;
 - (id)ingestInferredMapItems:(id)arg1 state:(id)arg2 error:(id *)arg3;
 - (id)init;
 - (id)initWithDeduperFunction:(CDUnknownBlockType)arg1;

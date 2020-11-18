@@ -20,8 +20,8 @@
 + (id)buildRequiredOnlyWithEcho:(id)arg1;
 + (id)buildWithEcho:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)loadPayload:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
-- (id)serializePayloadWithType:(short)arg1;
+- (BOOL)loadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (id)serializeWithType:(short)arg1;
 
 @end
 

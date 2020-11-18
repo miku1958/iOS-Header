@@ -19,6 +19,7 @@
 - (BOOL)_accessibilityUIViewCanPerformEscapeAction;
 - (void)_axAddCustomActionWithName:(id)arg1 gesture:(unsigned long long)arg2 toArray:(id)arg3;
 - (BOOL)_axPerformGestureForAction:(id)arg1;
+- (double)_axScaleTransformForFocusLayerLineWidth;
 - (BOOL)_isTransparentFocusRegion;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;

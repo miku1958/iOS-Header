@@ -28,7 +28,7 @@
 - (id)initWithNavigationHelper:(id)arg1;
 - (long long)shareOriginForSession:(id)arg1 workflowCoordinator:(id)arg2;
 - (void)workflowCoordinator:(id)arg1 workflowViewController:(id)arg2 didFinishSession:(id)arg3 withActivityState:(unsigned long long)arg4;
-- (struct NSObject *)workflowViewControllerWithContext:(id)arg1;
+- (id)workflowViewControllerWithContext:(id)arg1;
 
 @end
 

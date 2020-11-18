@@ -72,6 +72,8 @@
 
 + (id)metadataIdentifierForARRecordableResultsClass:(Class)arg1;
 - (void).cxx_destruct;
+- (id)_fullDescription;
+- (void)abortRecording;
 - (struct CGAffineTransform)computeVideoTransformForDeviceOrientationWithCameraPosition:(long long)arg1;
 - (void)copyVideoToPhotoLibrary;
 - (void)createAssetWriter;
@@ -83,14 +85,17 @@
 - (id)init;
 - (void)initAssetWriterIfRequiredWithImageData:(id)arg1;
 - (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3;
-- (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3 startImmediately:(BOOL)arg4;
+- (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3 startImmediately:(BOOL)arg4 recordCollaborationData:(BOOL)arg5;
 - (id)initWithFileURL:(id)arg1 sensorDataTypes:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidJSONObject:(id)arg1 path:(id)arg2;
 - (id)makeMetaDataDictionaryItems:(id)arg1 withIdentifier:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)processData:(id)arg1;
+- (void)recordAddedAnchor:(id)arg1;
+- (void)recordCollaborationData:(id)arg1 localSession:(BOOL)arg2;
 - (void)recordCustomData:(id)arg1 forTimestamp:(double)arg2;
+- (void)recordRemovedAnchor:(id)arg1;
 - (void)removeTemporaryVideoFile;
 - (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (unsigned long long)requiredSensorDataTypes;

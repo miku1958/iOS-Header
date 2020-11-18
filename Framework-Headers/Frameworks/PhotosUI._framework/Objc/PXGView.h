@@ -6,6 +6,7 @@
 
 #import <UIKit/UIView.h>
 
+#import <PhotosUICore/PXDebugHierarchyProvider-Protocol.h>
 #import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
 #import <PhotosUICore/PXGAccessibilityRendererDelegate-Protocol.h>
 #import <PhotosUICore/PXGDiagnosticsProvider-Protocol.h>
@@ -13,10 +14,10 @@
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MTKView, NSDictionary, NSString, PXGAnchor, PXGDebugHUDLayer, PXGEngine, PXGLayout, PXGRectDiagnosticsLayer, PXScrollViewController, PXScrollViewSpeedometer, UIColor;
+@class MTKView, NSArray, NSDictionary, NSString, PXGAnchor, PXGDebugHUDLayer, PXGEngine, PXGLayout, PXGRectDiagnosticsLayer, PXScrollViewController, PXScrollViewSpeedometer, UIColor;
 @protocol PXGViewAccessibilityDelegate, PXGViewDiagnosticsSource;
 
-@interface PXGView : UIView <PXDiagnosticsEnvironment, PXScrollViewControllerObserver, PXGEngineDelegate, PXGAccessibilityRendererDelegate, UIGestureRecognizerDelegate, PXGDiagnosticsProvider>
+@interface PXGView : UIView <PXDiagnosticsEnvironment, PXScrollViewControllerObserver, PXGEngineDelegate, PXGAccessibilityRendererDelegate, UIGestureRecognizerDelegate, PXGDiagnosticsProvider, PXDebugHierarchyProvider>
 {
     PXGDebugHUDLayer *_debugHUDLayer;
     PXGRectDiagnosticsLayer *_rectDiagnosticsLayer;
@@ -27,7 +28,7 @@
     BOOL _isAnimatingScroll;
     BOOL _showDebugHUD;
     BOOL _showPerspectiveDebug;
-    BOOL _ignoreBoundsChanges;
+    BOOL _shouldWorkaround18475431;
     PXGLayout *accessibilityRootLayout;
     id<PXGViewAccessibilityDelegate> _accessibilityDelegate;
     PXScrollViewController *_scrollViewController;
@@ -47,6 +48,7 @@
 @property (readonly, nonatomic) BOOL canSelectAccessibilityGroupElementsChildren; // @synthesize canSelectAccessibilityGroupElementsChildren;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) NSArray *debugHierarchyIdentifiers;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *diagnosticDescription;
@@ -56,23 +58,28 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct UIEdgeInsets hitTestPadding; // @synthesize hitTestPadding=_hitTestPadding;
-@property (nonatomic) BOOL ignoreBoundsChanges; // @synthesize ignoreBoundsChanges=_ignoreBoundsChanges;
 @property (nonatomic) BOOL isAnimatingScroll; // @synthesize isAnimatingScroll=_isAnimatingScroll;
 @property (nonatomic) BOOL isScrolling; // @synthesize isScrolling=_isScrolling;
 @property (readonly, nonatomic) MTKView *metalView; // @synthesize metalView=_metalView;
 @property (copy, nonatomic) CDUnknownBlockType nextDidLayoutHandler; // @synthesize nextDidLayoutHandler=_nextDidLayoutHandler;
 @property (copy, nonatomic, setter=ppt_setCurrentTestOptions:) NSDictionary *ppt_currentTestOptions; // @synthesize ppt_currentTestOptions=_ppt_currentTestOptions;
 @property (readonly, nonatomic) NSDictionary *ppt_extraResults;
+@property (readonly, nonatomic) NSString *preferredFileNameForExportingDebugHierarchy;
 @property (strong, nonatomic) PXGLayout *rootLayout;
 @property (readonly, nonatomic) PXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (strong, nonatomic) PXGAnchor *scrollingAnimationAnchor; // @synthesize scrollingAnimationAnchor=_scrollingAnimationAnchor;
 @property (readonly, nonatomic) PXScrollViewSpeedometer *scrollingSpeedometer; // @synthesize scrollingSpeedometer=_scrollingSpeedometer;
+@property (nonatomic) BOOL shouldWorkaround18475431; // @synthesize shouldWorkaround18475431=_shouldWorkaround18475431;
 @property (nonatomic) BOOL showDebugHUD; // @synthesize showDebugHUD=_showDebugHUD;
 @property (nonatomic) BOOL showPerspectiveDebug; // @synthesize showPerspectiveDebug=_showPerspectiveDebug;
 @property (nonatomic) BOOL slowAnimationsEnabled;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
++ (id)allDescriptions;
++ (id)debugHierarchyChildGroupingID;
++ (id)debugHierarchyObjectsInGroupWithID:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3;
++ (void)enumerateAllViewsUsingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)forceAccessibilityEnabled;
 + (BOOL)isAvailable;
 + (long long)screenPixelCount;
@@ -85,6 +92,8 @@
 - (void)_forceAccessibilityEnabledChanged:(id)arg1;
 - (void)_installNextDidLayoutHandler:(CDUnknownBlockType)arg1;
 - (void)_updateAccessibilityStatus;
+- (void)_updateDebugHUD;
+- (void)_updateFocusItemProvider;
 - (void)_updateIsVisible;
 - (void)_updateLayoutScreenScale;
 - (void)_updateLayoutViewEnvironment;
@@ -95,7 +104,7 @@
 - (id)accessibilityViewForSpriteIndex:(unsigned int)arg1;
 - (id)assetClosestToAsset:(id)arg1 inDirection:(unsigned long long)arg2;
 - (void)axScrollToAsset:(id)arg1;
-- (struct UIColor *)backgroundColor;
+- (id)backgroundColor;
 - (id)curatedLibraryHitTestResultsInRect:(struct CGRect)arg1 withControl:(long long)arg2;
 - (void)didMoveToWindow;
 - (void)disablePreheating;
@@ -104,6 +113,8 @@
 - (void)enumerateCuratedLibraryHitTestResultsAtPoint:(struct CGPoint)arg1 withControls:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateCuratedLibraryHitTestResultsInDirection:(unsigned long long)arg1 fromSpriteReference:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateCuratedLibraryHitTestResultsInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateDebugHierarchyWithIdentifier:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)exportDebugHierarchyToURL:(id)arg1 error:(id *)arg2;
 - (id)firstCuratedLibraryHitTestResultsAtPoint:(struct CGPoint)arg1 withControl:(long long)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handlePan:(id)arg1;
@@ -141,7 +152,7 @@
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;
 - (void)scrollViewControllerWillBeginScrollingAnimation:(id)arg1 towardsContentEdges:(unsigned long long)arg2;
 - (void)selectAssets:(id)arg1;
-- (void)setBackgroundColor:(struct UIColor *)arg1;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;

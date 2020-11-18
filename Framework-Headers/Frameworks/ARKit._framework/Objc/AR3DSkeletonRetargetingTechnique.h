@@ -8,11 +8,7 @@
 
 @interface AR3DSkeletonRetargetingTechnique : ARTechnique
 {
-    BOOL _automaticSkeletonScaleEstimationEnabled;
 }
-
-@property (nonatomic) BOOL automaticSkeletonScaleEstimationEnabled; // @synthesize automaticSkeletonScaleEstimationEnabled=_automaticSkeletonScaleEstimationEnabled;
-
 
 @end
 

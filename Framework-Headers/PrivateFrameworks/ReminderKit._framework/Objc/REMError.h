@@ -16,6 +16,7 @@
 + (id)babySatErrorWithOperationName:(id)arg1;
 + (id)cancelledError;
 + (id)constraintConflictWithIdentifier:(id)arg1 constraint:(id)arg2;
++ (id)errorFromErrors:(id)arg1;
 + (id)errorSanitizedForXPCFromError:(id)arg1;
 + (id)internalErrorWithDebugDescription:(id)arg1;
 + (id)invalidParameterErrorWithDescription:(id)arg1;
@@ -24,6 +25,7 @@
 + (id)noSuchObjectErrorWithDACalendarItemUniqueIdentifier:(id)arg1;
 + (id)noSuchObjectErrorWithExternalIdentifier:(id)arg1;
 + (id)noSuchObjectErrorWithObjectID:(id)arg1;
++ (id)retryLaterErrorWithInterval:(double)arg1;
 + (id)saveErrorWithCoreDataError:(id)arg1;
 + (id)throttledErrorWithRemainingTimeInterval:(double)arg1;
 + (id)unauthorizedErrorWithMissingEntitlement:(id)arg1;

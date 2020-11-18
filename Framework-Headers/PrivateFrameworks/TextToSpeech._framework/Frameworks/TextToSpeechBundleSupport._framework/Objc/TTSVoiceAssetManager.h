@@ -28,6 +28,7 @@
 - (id)convertVSVoiceAssetSelectionsToTTSVoiceAssets:(id)arg1 language:(id)arg2;
 - (void)getCustomVoiceAssetsLocalOnly:(BOOL)arg1 language:(id)arg2 voiceType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)getPreinstalledGryphonAssetsForLanguage:(id)arg1;
+- (id)getPreinstalledNeuralAssetsForLanguage:(id)arg1;
 - (id)resourcePathForLanguage:(id)arg1 gender:(long long)arg2 footprint:(long long)arg3 voiceName:(id)arg4 voiceType:(long long)arg5 outAsset:(id *)arg6;
 
 @end

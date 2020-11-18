@@ -121,8 +121,9 @@
 - (void)_setShouldSpeak:(BOOL)arg1;
 - (void)_speechRecordingDidFailWithError:(id)arg1;
 - (BOOL)_startInputAudioPowerUpdatesWithXPCWrapper:(id)arg1;
-- (void)_startRequestWithAceCommand:(id)arg1 turnIdentifier:(struct NSUUID *)arg2 suppressAlert:(BOOL)arg3;
+- (void)_startRequestWithAceCommand:(id)arg1 turnIdentifier:(id)arg2 suppressAlert:(BOOL)arg3;
 - (void)_startRequestWithInfo:(id)arg1;
+- (void)_startUIRequestWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_stopInputAudioPowerUpdates;
 - (void)_tellDelegateAudioPlaybackRequestDidStart:(id)arg1;
@@ -217,7 +218,7 @@
 - (void)sendFeedbackToAppPreferencesPredictorForMetricsContext:(id)arg1 selectedBundleId:(id)arg2;
 - (void)sendGenericAceCommand:(id)arg1;
 - (void)sendGenericAceCommand:(id)arg1 conflictHandler:(CDUnknownBlockType)arg2;
-- (void)sendGenericAceCommand:(id)arg1 turnIdentifier:(struct NSUUID *)arg2 conflictHandler:(CDUnknownBlockType)arg3;
+- (void)sendGenericAceCommand:(id)arg1 turnIdentifier:(id)arg2 conflictHandler:(CDUnknownBlockType)arg3;
 - (void)sendReplyCommand:(id)arg1;
 - (void)setAccessibilityState:(id)arg1;
 - (void)setAlertContextWithBulletins:(id)arg1;

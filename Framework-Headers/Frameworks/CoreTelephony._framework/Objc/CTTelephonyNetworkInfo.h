@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreTelephony/CoreTelephonyClientDataDelegate-Protocol.h>
-#import <CoreTelephony/CoreTelephonyClientRegistrationDelegate-Protocol.h>
+#import <CoreTelephony/CoreTelephonyClientDataDelegateInternal-Protocol.h>
+#import <CoreTelephony/CoreTelephonyClientRegistrationDelegateInternal-Protocol.h>
 
 @class CTCarrier, CTServiceDescriptorContainer, CoreTelephonyClient, NSDictionary, NSMutableDictionary, NSString;
 @protocol CTTelephonyNetworkInfoDelegate;
 
-@interface CTTelephonyNetworkInfo : NSObject <CoreTelephonyClientDataDelegate, CoreTelephonyClientRegistrationDelegate>
+@interface CTTelephonyNetworkInfo : NSObject <CoreTelephonyClientDataDelegateInternal, CoreTelephonyClientRegistrationDelegateInternal>
 {
     CoreTelephonyClient *_client;
     CDUnknownBlockType _serviceSubscriberCellularProvidersDidUpdateNotifier;

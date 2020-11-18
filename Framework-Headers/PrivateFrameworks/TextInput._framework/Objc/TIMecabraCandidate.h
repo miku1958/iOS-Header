@@ -17,7 +17,10 @@
     BOOL _OTAWordListCandidate;
     BOOL _regionalCandidate;
     BOOL _responseKitCandidate;
+    BOOL _bilingualCandidate;
+    BOOL _asIsCandidate;
     BOOL _continuousPathConversion;
+    BOOL _partialCandidate;
     NSString *_candidate;
     NSString *_input;
     NSNumber *_mecabraCandidatePointerValue;
@@ -45,13 +48,16 @@
 - (id)initWithResponseKitString:(id)arg1 responseKitCategory:(id)arg2 mecabraCandidatePointerValue:(id)arg3;
 - (id)initWithSurface:(id)arg1 input:(id)arg2 mecabraCandidatePointerValue:(id)arg3;
 - (id)input;
+- (BOOL)isAsIsCandidate;
 - (BOOL)isAutocorrection;
+- (BOOL)isBilingualCandidate;
 - (BOOL)isEmojiCandidate;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isExtensionCandidate;
 - (BOOL)isForShortcutConversion;
 - (BOOL)isFullwidthCandidate;
 - (BOOL)isOTAWordListCandidate;
+- (BOOL)isPartialCandidate;
 - (BOOL)isRegionalCandidate;
 - (BOOL)isResponseKitCandidate;
 - (id)label;

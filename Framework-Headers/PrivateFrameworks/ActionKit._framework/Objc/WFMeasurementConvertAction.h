@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)outputIsExemptFromTaintTrackingInheritance;
 - (id)currentUnitType;
 - (void)initializeParameters;
 - (id)outputMeasurementUnitType;

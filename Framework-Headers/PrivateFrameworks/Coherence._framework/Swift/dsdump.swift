@@ -533,7 +533,7 @@
 	var requestStreaming : Bool // +0x20
 	var responseTypeURL : String // +0x28
 	var responseStreaming : Bool // +0x38
-	var options : [Google_Protobuf_Option] // +0x40
+	var options : Google_Protobuf_Option // +0x40
 	var syntax : Google_Protobuf_Syntax // +0x48
 	var unknownFields : UnknownStorage // +0x58
  }
@@ -551,9 +551,9 @@
 	// Properties
 	var _name : String // +0x10 (0x10)
 	var _methods : Google_Protobuf_Method // +0x20 (0x8)
-	var _options : [Google_Protobuf_Option] // +0x28 (0x8)
+	var _options : Google_Protobuf_Option // +0x28 (0x8)
 	var _version : String // +0x30 (0x10)
-	var _sourceContext : Google_Protobuf_SourceContext? // +0x40 (0x20)
+	var _sourceContext : Google_Protobuf_SourceContext // +0x40 (0x20)
 	var _mixins : Google_Protobuf_Mixin // +0x60 (0x8)
 	var _syntax : Google_Protobuf_Syntax // +0x68 (0x9)
 
@@ -567,18 +567,20 @@
 	var state : InternalState // +0x20 (0x29)
 
 	// Swift methods
-	0x2d930  func <stripped> // getter 
-	0x2ddd0  func <stripped> // method 
-	0x2deb0  func <stripped> // method 
-	0x2e320  func <stripped> // method 
+	0x2aae0  func <stripped> // getter 
+	0x2af90  func <stripped> // method 
+	0x2b070  func <stripped> // method 
+	0x2b450  func <stripped> // method 
  }
 
  enum Coherence.InternalState {
 
 	// Properties
-	case binary : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case binary : Ér
 	case message : Message
-	case contentJSON : (Data, JSONDecodingOptions)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case contentJSON : ur
  }
 
  class Coherence.CRContext : NSObject /usr/lib/libobjc.A.dylib {
@@ -589,8 +591,8 @@
 	var temporaryIDs : Renames // +0x18 (0x18)
 
 	// ObjC -> Swift bridged methods
-	0x3e680  @objc CRContext.init <stripped>
-	0x3e700  @objc CRContext..cxx_destruct <stripped>
+	0x3a8e0  @objc CRContext.init <stripped>
+	0x3a840  @objc CRContext..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -615,23 +617,27 @@
  struct Coherence.Delta {
 
 	// Properties
-	let contents : [Int : A.CRType.Delta]
-	let removed : IndexSet
+	let contents : CRType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let removed : „p
 	let moved : Move
-	let added : IndexSet
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let added : „p
  }
 
  struct Coherence.MutatingAction {
 
 	// Properties
 	let undoCommand : TTMergeableStringUndoEditCommand?
-	let contentsActions : [UUID : CRRegister<A>.MutatingAction]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let contentsActions :  empty-list 
  }
 
  struct Coherence.CRArrayIterator {
 
 	// Properties
-	var arrayIterator : IndexingIterator<[CRIdentifiedRegister<A>]>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var arrayIterator : ;{
  }
 
  enum Coherence.CRAffinity {
@@ -655,8 +661,8 @@
 	let sqlStore : CRSQLStore
 
 	// Swift methods
-	0x565f0  func <stripped> // method 
-	0x56af0  func <stripped> // method 
+	0x50cb0  func <stripped> // method 
+	0x51160  func <stripped> // method 
  }
 
  class Coherence.CRDataStorePartialDecodeContext : CRDataStoreDecodeContext {
@@ -674,28 +680,37 @@
 	var work : UnsafeMutableRawBufferPointer // +0x20 (0x10)
 
 	// Swift methods
-	0x577c0  func <stripped> // method 
+	0x51fe0  func <stripped> // method 
  }
 
  class Coherence._CRSQLStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let path : String
-	let dbPointer : OpaquePointer?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let dbPointer : !y
 	let SQLITE_STATIC : @convention(c) (_:)
 	let SQLITE_TRANSIENT : @convention(c) (_:)
 
 	// Swift methods
-	0x57c70  func <stripped> // method 
+	0x524f0  func <stripped> // method 
+	0x525e0  func <stripped> // method 
+	0x52630  func <stripped> // method 
+	0x52680  func <stripped> // method 
+	0x526d0  func <stripped> // method 
  }
 
  class Coherence.CRSQLStore : _CRSQLStore {
 
 	// Properties
-	var dataQueryStatement : OpaquePointer?
-	var versionQueryStatement : OpaquePointer?
-	var dataInsertStatement : OpaquePointer?
-	var dataDeleteStatement : OpaquePointer?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataQueryStatement : !y
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var versionQueryStatement : !y
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataInsertStatement : !y
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var dataDeleteStatement : !y
  }
 
  enum Coherence.SQLiteError {
@@ -711,29 +726,30 @@
 
 	// Properties
 	var encoder : TextFormatEncoder // +0x0
-	var nameMap : _NameMap? // +0x10
-	var nameResolver : [Int : StaticString] // +0x30
-	var extensions : ExtensionFieldValueSet? // +0x38
+	var nameMap : _NameMap // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nameResolver : Int // +0x30
+	var extensions : ExtensionFieldValueSet // +0x38
  }
 
  struct Coherence.OptionalExtensionField: ExtensionField,  AnyExtensionField {
 
 	// Properties
-	var value : A.FieldType.BaseType
+	var value : FieldType
 	var protobufExtension : AnyMessageExtension
  }
 
  struct Coherence.RepeatedExtensionField: ExtensionField,  AnyExtensionField {
 
 	// Properties
-	var value : [A.FieldType.BaseType]
+	var value : FieldType
 	var protobufExtension : AnyMessageExtension
  }
 
  struct Coherence.PackedExtensionField: ExtensionField,  AnyExtensionField {
 
 	// Properties
-	var value : [A.FieldType.BaseType]
+	var value : FieldType
 	var protobufExtension : AnyMessageExtension
  }
 
@@ -797,14 +813,14 @@
  class Coherence.CRStringDelegate : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var edits : [(actions: NSTextStorageEditActions, range: _NSRange, changeInLength: Int)]
+	var edits : EditActions // +0x0
 
 	// ObjC -> Swift bridged methods
-	0x6c440  @objc CRStringDelegate.beginEditing <stripped>
-	0x6c440  @objc CRStringDelegate.endEditing <stripped>
-	0x6c450  @objc CRStringDelegate.edited:range:changeInLength: <stripped>
-	0x6c530  @objc CRStringDelegate.init <stripped>
-	0x6c600  @objc CRStringDelegate..cxx_destruct <stripped>
+	0x671b0  @objc CRStringDelegate.beginEditing <stripped>
+	0x671c0  @objc CRStringDelegate.endEditing <stripped>
+	0x671d0  @objc CRStringDelegate.edited:range:changeInLength: <stripped>
+	0x67300  @objc CRStringDelegate.init <stripped>
+	0x672e0  @objc CRStringDelegate..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -824,7 +840,7 @@
  struct Coherence.Edit {
 
 	// Properties
-	let actions : NSTextStorageEditActions // +0x0
+	let actions : EditActions // +0x0
 	let range : _NSRange // +0x8
 	let changeInLength : Int // +0x18
  }
@@ -849,10 +865,10 @@
 
  class Coherence.CRAnyKeyPathComponent : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x70030  func <stripped> // method 
-	0x70080  func <stripped> // method 
-	0x70090  func <stripped> // getter 
-	0x700b0  func <stripped> // method 
+	0x6a010  func <stripped> // method 
+	0x6a060  func <stripped> // method 
+	0x6a070  func <stripped> // getter 
+	0x6a090  func <stripped> // method 
  }
 
  class Coherence.CRKeyPathComponent {
@@ -870,9 +886,11 @@
  class Coherence.InternPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var interned : [UnsafeBufferPointer<UInt8>] // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var interned :  empty-list  // +0x10 (0x8)
 
 	// Swift methods
+	0x6bb90  func <stripped> // method 
  }
 
  struct Coherence._NameMap {
@@ -887,31 +905,37 @@
  enum Coherence.NameDescription {
 
 	// Properties
-	case same : (proto: StaticString)
-	case standard : (proto: StaticString)
-	case unique : (proto: StaticString, json: StaticString)
-	case aliased : (proto: StaticString, aliases: [StaticString])
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case same : yu
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case standard : yu
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case unique : ku
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case aliased : Uu
  }
 
  struct Coherence.Name {
 
 	// Properties
-	var utf8Buffer : UnsafeBufferPointer<UInt8> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var utf8Buffer :  empty-list  // +0x0
 	var nameString : NameString // +0x10
  }
 
  struct Coherence.Names {
 
 	// Properties
-	var json : _NameMap.Name? // +0x0
-	var proto : _NameMap.Name // +0x28
+	var json : Name // +0x0
+	var proto : Name // +0x28
  }
 
  enum Coherence.NameString {
 
 	// Properties
 	case string : String
-	case staticString : StaticString
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case staticString : ˚t
  }
 
  enum Coherence.Google_Protobuf_Syntax {
@@ -934,10 +958,12 @@
 	// Properties
 	var kind : Kind // +0x0
 	var cardinality : Cardinality // +0x10
-	var number : Int32 // +0x1c
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var number : gÅ // +0x1c
 	var name : String // +0x20
 	var typeURL : String // +0x30
-	var oneofIndex : Int32 // +0x40
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var oneofIndex : gÅ // +0x40
 	var packed : Bool // +0x44
 	var options : Google_Protobuf_Option // +0x48
 	var jsonName : String // +0x50
@@ -991,7 +1017,8 @@
 
 	// Properties
 	var name : String // +0x0
-	var number : Int32 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var number : gÅ // +0x10
 	var options : Google_Protobuf_Option // +0x18
 	var unknownFields : UnknownStorage // +0x20
  }
@@ -1010,7 +1037,7 @@
 	var _fields : Google_Protobuf_Field
 	var _oneofs : [String]
 	var _options : Google_Protobuf_Option
-	var _sourceContext : Google_Protobuf_SourceContext?
+	var _sourceContext : Google_Protobuf_SourceContext
 	var _syntax : Google_Protobuf_Syntax
 
 	// Swift methods
@@ -1022,7 +1049,7 @@
 	var _name : String
 	var _enumvalue : Google_Protobuf_EnumValue
 	var _options : Google_Protobuf_Option
-	var _sourceContext : Google_Protobuf_SourceContext?
+	var _sourceContext : Google_Protobuf_SourceContext
 	var _syntax : Google_Protobuf_Syntax
 
 	// Swift methods
@@ -1032,7 +1059,7 @@
 
 	// Properties
 	var _name : String
-	var _value : Google_Protobuf_Any?
+	var _value : Google_Protobuf_Any
 
 	// Swift methods
  }
@@ -1040,36 +1067,43 @@
  struct Coherence.BinaryPBDecoder {
 
 	// Properties
-	var p : UnsafePointer<UInt8> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var p :  empty-list  // +0x0
 	var available : Int // +0x8
-	var fieldStartP : UnsafePointer<UInt8> // +0x10
-	var fieldEndP : UnsafePointer<UInt8>? // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var fieldStartP :  empty-list  // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var fieldEndP :  empty-list  // +0x18
 	var consumed : Bool // +0x20
 	var fieldWireFormat : WireFormat // +0x21
 	var fieldNumber : Int // +0x28
-	var extensions : ExtensionMap? // +0x30
+	var extensions : ExtensionMap // +0x30
 	var groupFieldNumber : Int? // +0x58
 	var options : BinaryDecodingOptions // +0x68
 	var recursionBudget : Int // +0x78
-	var unknownData : Data? // +0x80
-	var unknownOverride : Data? // +0x90
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var unknownData : 	n // +0x80
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var unknownOverride : 	n // +0x90
  }
 
  class Coherence.CRDecodeContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var references : [UUID : CRReferenceBase]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var references :  empty-list 
 	var context : CRContext
 
 	// Swift methods
-	0x94710  func <stripped> // method 
-	0x94ac0  func <stripped> // method 
+	0x88fe0  func <stripped> // method 
+	0x89260  func <stripped> // method 
  }
 
  class Coherence.CRProtoDecodeContext : CRDecodeContext {
 
 	// Properties
-	var containers : [UUID : (version: Proto_Version, crdt: Proto_CRDT)]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var containers :  empty-list 
 
 	// Swift methods
  }
@@ -1144,16 +1178,19 @@
  struct Coherence.TextFormatScanner {
 
 	// Properties
-	var extensions : ExtensionMap? // +0x0
-	var p : UnsafePointer<UInt8> // +0x28
-	var end : UnsafePointer<UInt8> // +0x30
+	var extensions : ExtensionMap // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var p :  empty-list  // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var end :  empty-list  // +0x30
 	var doubleFormatter : DoubleFormatter // +0x38
  }
 
  struct Coherence.BinaryEncoder {
 
 	// Properties
-	var pointer : UnsafeMutablePointer<UInt8> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var pointer :  empty-list  // +0x0
  }
 
  struct Coherence.Google_Protobuf_FieldMask {
@@ -1174,9 +1211,10 @@
 	// Properties
 	var scanner : TextFormatScanner // +0x0
 	var fieldCount : Int // +0x40
-	var terminator : UInt8? // +0x48
-	var fieldNameMap : _NameMap? // +0x50
-	var messageType : Message.Type? // +0x70
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var terminator : ìt // +0x48
+	var fieldNameMap : _NameMap // +0x50
+	var messageType : Message // +0x70
  }
 
  struct Coherence.JSONPBDecoder {
@@ -1186,7 +1224,7 @@
 	var options : JSONDecodingOptions // +0x30
 	var fieldCount : Int // +0x38
 	var isMapKey : Bool // +0x40
-	var fieldNameMap : _NameMap? // +0x48
+	var fieldNameMap : _NameMap // +0x48
  }
 
  struct Coherence.Google_Protobuf_DoubleValue {
@@ -1206,28 +1244,32 @@
  struct Coherence.Google_Protobuf_Int64Value {
 
 	// Properties
-	var value : Int64 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : ﬂÅ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
  struct Coherence.Google_Protobuf_UInt64Value {
 
 	// Properties
-	var value : UInt64 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : SÇ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
  struct Coherence.Google_Protobuf_Int32Value {
 
 	// Properties
-	var value : Int32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : gÅ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
  struct Coherence.Google_Protobuf_UInt32Value {
 
 	// Properties
-	var value : UInt32 // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : ÎÅ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1248,7 +1290,8 @@
  struct Coherence.Google_Protobuf_BytesValue {
 
 	// Properties
-	var value : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value : Ér // +0x0
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1278,7 +1321,8 @@
 
 	// Properties
 	var rootUndoAction : CRDT
-	var refUndoActions : [UUID : Any]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var refUndoActions :  empty-list 
  }
 
  enum Coherence.JSONEncodingError {
@@ -1302,46 +1346,49 @@
  struct Coherence.RLE {
 
 	// Properties
-	var ranges : [Run<A>]
+	var ranges : Run
  }
 
  struct Coherence.Google_Protobuf_Duration {
 
 	// Properties
-	var seconds : Int64 // +0x0
-	var nanos : Int32 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seconds : ﬂÅ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nanos : gÅ // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
  struct Coherence.CRVersion {
 
 	// Properties
-	var seen : [Replica : IndexSet] // +0x0
+	var seen : Replica // +0x0
  }
 
  class Coherence.ObjCReplica : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var uuid : UUID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uuid : ’b
 	var index : Int
 
 	// ObjC -> Swift bridged methods
-	0xefd60  @objc ObjCReplica.uuid <stripped>
-	0xefe30  @objc ObjCReplica.setUuid: <stripped>
-	0xeffa0  @objc ObjCReplica.index <stripped>
-	0xf0010  @objc ObjCReplica.setIndex: <stripped>
-	0xf0180  @objc ObjCReplica.initWithUuid:index: <stripped>
-	0xf02d0  @objc ObjCReplica.init <stripped>
-	0xf0320  @objc ObjCReplica..cxx_destruct <stripped>
+	0xd8ba0  @objc ObjCReplica.uuid <stripped>
+	0xd8c70  @objc ObjCReplica.setUuid: <stripped>
+	0xd8de0  @objc ObjCReplica.index <stripped>
+	0xd8e50  @objc ObjCReplica.setIndex: <stripped>
+	0xd8fd0  @objc ObjCReplica.initWithUuid:index: <stripped>
+	0xd90f0  @objc ObjCReplica.init <stripped>
+	0xd9140  @objc ObjCReplica..cxx_destruct <stripped>
 
 	// Swift methods
-	0xefde0  func ObjCReplica.uuid.getter // getter 
-	0xefef0  func ObjCReplica.uuid.setter // setter 
-	0xeff50  func ObjCReplica.uuid.modify // modifyCoroutine 
-	0xeffe0  func ObjCReplica.index.getter // getter 
-	0xf0050  func ObjCReplica.index.setter // setter 
-	0xf0090  func ObjCReplica.index.modify // modifyCoroutine 
-	0xef9e0  class func ObjCReplica.__allocating_init(uuid:index:) // init 
+	0xd8c20  func ObjCReplica.uuid.getter // getter 
+	0xd8d30  func ObjCReplica.uuid.setter // setter 
+	0xd8d90  func ObjCReplica.uuid.modify // modifyCoroutine 
+	0xd8e20  func ObjCReplica.index.getter // getter 
+	0xd8e90  func ObjCReplica.index.setter // setter 
+	0xd8ed0  func ObjCReplica.index.modify // modifyCoroutine 
+	0xd88a0  class func ObjCReplica.__allocating_init(uuid:index:) // init 
  }
 
  class Coherence.ObjCTimestamp : NSObject /usr/lib/libobjc.A.dylib {
@@ -1350,17 +1397,17 @@
 	var timestamp : Timestamp
 
 	// ObjC -> Swift bridged methods
-	0xf0350  @objc ObjCTimestamp.replica <stripped>
-	0xf0530  @objc ObjCTimestamp.counter <stripped>
-	0xf0850  @objc ObjCTimestamp.initWithReplica:counter: <stripped>
-	0xf08a0  @objc ObjCTimestamp.description <stripped>
-	0xf0b30  @objc ObjCTimestamp.init <stripped>
-	0xf0bc0  @objc ObjCTimestamp..cxx_destruct <stripped>
+	0xd9170  @objc ObjCTimestamp.replica <stripped>
+	0xd9370  @objc ObjCTimestamp.counter <stripped>
+	0xd9640  @objc ObjCTimestamp.initWithReplica:counter: <stripped>
+	0xd9690  @objc ObjCTimestamp.description <stripped>
+	0xd9950  @objc ObjCTimestamp.init <stripped>
+	0xd9900  @objc ObjCTimestamp..cxx_destruct <stripped>
 
 	// Swift methods
-	0xf0390  func ObjCTimestamp.replica.getter // getter 
-	0xf05c0  func ObjCTimestamp.counter.getter // getter 
-	0xf0630  class func ObjCTimestamp.__allocating_init(replica:counter:) // init 
+	0xd91b0  func ObjCTimestamp.replica.getter // getter 
+	0xd93d0  func ObjCTimestamp.counter.getter // getter 
+	0xd9430  class func ObjCTimestamp.__allocating_init(replica:counter:) // init 
  }
 
  struct Coherence.Timestamp {
@@ -1373,7 +1420,8 @@
  struct Coherence.JSONScanner {
 
 	// Properties
-	let source : UnsafeBufferPointer<UInt8> // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let source :  empty-list  // +0x0
 	var index : Int // +0x10
 	var numberFormatter : DoubleFormatter // +0x18
 	var recursionLimit : Int // +0x20
@@ -1401,14 +1449,16 @@
  struct Coherence.ExtensionFieldValueSet {
 
 	// Properties
-	var values : [Int : AnyExtensionField] // +0x0
+	var values : AnyExtensionField // +0x0
  }
 
  struct Coherence.TextFormatEncoder {
 
 	// Properties
-	var data : [UInt8] // +0x0
-	var indentString : [UInt8] // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data :  empty-list  // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var indentString :  empty-list  // +0x8
  }
 
  class Coherence.CRReferenceBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1418,15 +1468,15 @@
 	var replicaState : ReplicaState // +0x18 (0x8)
 
 	// Swift methods
-	0x108cd0  func <stripped> // method 
-	0x108d10  func <stripped> // method 
-	0x108d50  func <stripped> // method 
-	0x108d90  func <stripped> // method 
-	0x108dd0  func <stripped> // method 
-	0x108e10  func <stripped> // method 
-	0x108e50  func <stripped> // method 
-	0x108e90  func <stripped> // method 
-	0x108ed0  func <stripped> // getter 
+	0xf0f90  func <stripped> // method 
+	0xf0fd0  func <stripped> // method 
+	0xf1010  func <stripped> // method 
+	0xf1050  func <stripped> // method 
+	0xf1090  func <stripped> // method 
+	0xf10d0  func <stripped> // method 
+	0xf1110  func <stripped> // method 
+	0xf1150  func <stripped> // method 
+	0xf1190  func <stripped> // getter 
  }
 
  class Coherence.CRReferenceRef {
@@ -1453,32 +1503,32 @@
 	var decodeContext : CRDecodeContext
 
 	// ObjC -> Swift bridged methods
-	0x112a60  @objc CRStringDecoder.storageWithError: <stripped>
-	0x112ad0  @objc CRStringDecoder.context <stripped>
-	0x112d60  @objc CRStringDecoder.versionWithError: <stripped>
-	0x112ff0  @objc CRStringDecoder.addedByVersionWithError: <stripped>
-	0x113090  @objc CRStringDecoder.substringCount <stripped>
-	0x113170  @objc CRStringDecoder.decodeSubstring: <stripped>
-	0x113370  @objc CRStringDecoder.substringCharReplica <stripped>
-	0x1134f0  @objc CRStringDecoder.substringCharClock <stripped>
-	0x113530  @objc CRStringDecoder.substringAddedByCount <stripped>
-	0x1135d0  @objc CRStringDecoder.substringAddedByReplica: <stripped>
-	0x113670  @objc CRStringDecoder.substringAddedByCounter: <stripped>
-	0x1136b0  @objc CRStringDecoder.substringLength <stripped>
-	0x1136e0  @objc CRStringDecoder.substringChildCount <stripped>
-	0x113720  @objc CRStringDecoder.substringChild: <stripped>
-	0x113770  @objc CRStringDecoder.init <stripped>
-	0x1137c0  @objc CRStringDecoder..cxx_destruct <stripped>
+	0xf94b0  @objc CRStringDecoder.storageWithError: <stripped>
+	0xf9520  @objc CRStringDecoder.context <stripped>
+	0xf97d0  @objc CRStringDecoder.versionWithError: <stripped>
+	0xf9a90  @objc CRStringDecoder.addedByVersionWithError: <stripped>
+	0xf9b30  @objc CRStringDecoder.substringCount <stripped>
+	0xf9c10  @objc CRStringDecoder.decodeSubstring: <stripped>
+	0xf9e00  @objc CRStringDecoder.substringCharReplica <stripped>
+	0xf9f80  @objc CRStringDecoder.substringCharClock <stripped>
+	0xf9fc0  @objc CRStringDecoder.substringAddedByCount <stripped>
+	0xfa060  @objc CRStringDecoder.substringAddedByReplica: <stripped>
+	0xfa100  @objc CRStringDecoder.substringAddedByCounter: <stripped>
+	0xfa140  @objc CRStringDecoder.substringLength <stripped>
+	0xfa170  @objc CRStringDecoder.substringChildCount <stripped>
+	0xfa1b0  @objc CRStringDecoder.substringChild: <stripped>
+	0xfa200  @objc CRStringDecoder.init <stripped>
+	0xfa250  @objc CRStringDecoder..cxx_destruct <stripped>
 
 	// Swift methods
-	0x112940  func <stripped> // method 
-	0x112b00  func <stripped> // method 
-	0x112d80  func <stripped> // method 
-	0x1130d0  func <stripped> // method 
-	0x1131b0  func <stripped> // method 
-	0x1133b0  func <stripped> // method 
-	0x113570  func <stripped> // method 
-	0x113610  func <stripped> // method 
+	0xf93b0  func <stripped> // method 
+	0xf9550  func <stripped> // method 
+	0xf97f0  func <stripped> // method 
+	0xf9b70  func <stripped> // method 
+	0xf9c50  func <stripped> // method 
+	0xf9e40  func <stripped> // method 
+	0xfa000  func <stripped> // method 
+	0xfa0a0  func <stripped> // method 
  }
 
  class Coherence.CRStringEncoder : NSObject /usr/lib/libobjc.A.dylib {
@@ -1488,35 +1538,35 @@
 	var subsequence : Proto_Subsequence
 
 	// ObjC -> Swift bridged methods
-	0x113b90  @objc CRStringEncoder.setCharWithId:clock: <stripped>
-	0x113e00  @objc CRStringEncoder.addAddedById:clock: <stripped>
-	0x113e40  @objc CRStringEncoder.setWithLength: <stripped>
-	0x1140a0  @objc CRStringEncoder.addChildWithId: <stripped>
-	0x114390  @objc CRStringEncoder.finishSubstring <stripped>
-	0x114570  @objc CRStringEncoder.setStorage: <stripped>
-	0x1146c0  @objc CRStringEncoder.setWithVersion: <stripped>
-	0x114840  @objc CRStringEncoder.setWithAddedByVersion: <stripped>
-	0x114a30  @objc CRStringEncoder.init <stripped>
-	0x114a70  @objc CRStringEncoder..cxx_destruct <stripped>
+	0xfa630  @objc CRStringEncoder.setCharWithId:clock: <stripped>
+	0xfa880  @objc CRStringEncoder.addAddedById:clock: <stripped>
+	0xfa8c0  @objc CRStringEncoder.setWithLength: <stripped>
+	0xfab20  @objc CRStringEncoder.addChildWithId: <stripped>
+	0xfae30  @objc CRStringEncoder.finishSubstring <stripped>
+	0xfb000  @objc CRStringEncoder.setStorage: <stripped>
+	0xfb150  @objc CRStringEncoder.setWithVersion: <stripped>
+	0xfb2d0  @objc CRStringEncoder.setWithAddedByVersion: <stripped>
+	0xfb510  @objc CRStringEncoder.init <stripped>
+	0xfb580  @objc CRStringEncoder..cxx_destruct <stripped>
 
 	// Swift methods
-	0x113850  func <stripped> // method 
-	0x113bd0  func <stripped> // method 
-	0x113f20  func <stripped> // method 
-	0x1140e0  func <stripped> // method 
-	0x1143c0  func <stripped> // method 
-	0x114590  func <stripped> // method 
-	0x114710  func <stripped> // method 
+	0xfa2e0  func <stripped> // method 
+	0xfa670  func <stripped> // method 
+	0xfa9a0  func <stripped> // method 
+	0xfab60  func <stripped> // method 
+	0xfae60  func <stripped> // method 
+	0xfb020  func <stripped> // method 
+	0xfb1a0  func <stripped> // method 
  }
 
  class Coherence.CRArrayDecoder : CRStringDecoder {
 
 	// Properties
-	var getStorage : (_:)
+	var getStorage : Proto_CRDT
 
 	// ObjC -> Swift bridged methods
-	0x114bc0  @objc CRArrayDecoder.storageWithError: <stripped>
-	0x114cb0  @objc CRArrayDecoder..cxx_destruct <stripped>
+	0xfb6d0  @objc CRArrayDecoder.storageWithError: <stripped>
+	0xfb7c0  @objc CRArrayDecoder..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1524,12 +1574,12 @@
  class Coherence.CRArrayEncoder : CRStringEncoder {
 
 	// Properties
-	var getElements : (_:)
+	var getElements : Proto_CRDT
 
 	// ObjC -> Swift bridged methods
-	0x114e10  @objc CRArrayEncoder.setStorage: <stripped>
-	0x114ea0  @objc CRArrayEncoder.init <stripped>
-	0x114f50  @objc CRArrayEncoder..cxx_destruct <stripped>
+	0xfb900  @objc CRArrayEncoder.setStorage: <stripped>
+	0xfb990  @objc CRArrayEncoder.init <stripped>
+	0xfba00  @objc CRArrayEncoder..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1537,8 +1587,10 @@
  struct Coherence.JSONEncoder {
 
 	// Properties
-	var data : [UInt8] // +0x0
-	var separator : UInt8? // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data :  empty-list  // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var separator : ìt // +0x8
 	let doubleFormatter : DoubleFormatter // +0x10
  }
 
@@ -1547,34 +1599,36 @@
  struct Coherence.CRDictionary {
 
 	// Properties
-	var contents : CRDictionaryElement
+	var contents : CRSetRef
  }
 
  struct Coherence.Delta {
 
 	// Properties
-	let contents : TempDelta
-	let contents2 : [A.CRValue.Identity : B.CRType.Delta]
-	let addedKeys : Set<A.CRValue.Identity>
-	let removedKeys : Set<A.CRValue.Identity>
+	let contents : CRValue
+	let contents2 : CRValue
+	let addedKeys : CRValue
+	let removedKeys : CRValue
  }
 
  struct Coherence.TempDelta {
 
 	// Properties
-	let delta : B.CRType.Delta?
+	let delta : CRType
  }
 
  struct Coherence.CRDictionaryIterator {
 
 	// Properties
-	var setIterator : CRDictionaryElement
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var setIterator : Sg
  }
 
  struct Coherence.Index {
 
 	// Properties
-	let setIndex : CRDictionaryElement
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let setIndex : 1g
  }
 
  enum Coherence.CRExtensible {
@@ -1587,8 +1641,8 @@
  struct Coherence.Anonymous {
 
 	// Properties
-	var refPath : CRKeyPath?
-	var ref : CRReferenceRef<A>
+	var refPath : CRKeyPath
+	var ref : CRReferenceRef
  }
 
  class Coherence.CRRegisterRef {
@@ -1639,50 +1693,53 @@
 
 	// Properties
 	var deltas : CRReferencePair
-	var resolvedReferences : CopiedReference
-	var references : CRCountedReference
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var resolvedReferences :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var references :  empty-list 
 	var weakReferences : CRCountedReference
-	var seenUniqueReferencePathUUIDs : Set<CRReferenceBase>
+	var seenUniqueReferencePathUUIDs : CRReferenceBase
 	var uniqueReferencePathUUIDs : UniquePathReference
-	var resolvedAnonymousReferences : CopiedReference
+	var resolvedAnonymousReferences : CRKeyPath
 	var seenNilWeakReference : Bool
 
 	// Swift methods
-	0x12d7f0  func <stripped> // method 
-	0x12daf0  func <stripped> // method 
-	0x12dcf0  func <stripped> // method 
-	0x12e870  func <stripped> // method 
-	0x130ae0  func <stripped> // method 
-	0x1315b0  func <stripped> // method 
-	0x131ac0  func <stripped> // method 
+	0x112f10  func <stripped> // method 
+	0x1131e0  func <stripped> // method 
+	0x113e00  func <stripped> // method 
+	0x115cb0  func <stripped> // method 
+	0x1165c0  func <stripped> // method 
+	0x116a50  func <stripped> // method 
  }
 
  struct Coherence.UniquePathReference {
 
 	// Properties
 	let keypath : CRKeyPath
-	let uuid : UUID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uuid : ’b
  }
 
  struct Coherence.UnknownStruct: CRStruct_Base,  CRStruct_0 {
 
 	// Properties
-	var additionalFields : [String : AnyCRDT] // +0x0
+	var additionalFields : AnyCRDT // +0x0
 	var context : CRContext // +0x8
  }
 
  struct Coherence.CRWeakReference {
 
 	// Properties
-	var identity : UUID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var identity : ’b
 	let context : CRContext
-	var ref : CRReferenceRef<A>?
+	var ref : CRReferenceRef
  }
 
  enum Coherence.Delta {
 
 	// Properties
-	case contents : CRReference<A>.DeltaContents
+	case contents : DeltaContents
 	case identity  
 	case wasNil  
 	case nowNil  
@@ -1714,7 +1771,7 @@
  struct Coherence.SimpleExtensionMap {
 
 	// Properties
-	var fields : [Int : [AnyMessageExtension]] // +0x0
+	var fields : AnyMessageExtension // +0x0
  }
 
  class Coherence.CRCounterRef : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1728,14 +1785,15 @@
 	var renameGeneration : Int // +0x38 (0x8)
 
 	// Swift methods
-	0x1c7800  func <stripped> // method 
-	0x1c7a30  func <stripped> // method 
-	0x1c7ed0  func <stripped> // method 
-	0x1c8360  func <stripped> // method 
-	0x1c8dd0  func <stripped> // method 
-	0x1c90c0  func <stripped> // method 
-	0x1c9350  func <stripped> // method 
-	0x1c94f0  func <stripped> // method 
+	0x1948c0  func <stripped> // method 
+	0x194ad0  func <stripped> // method 
+	0x194f20  func <stripped> // method 
+	0x195000  func <stripped> // method 
+	0x195220  func <stripped> // method 
+	0x195b20  func <stripped> // method 
+	0x195d50  func <stripped> // method 
+	0x195f60  func <stripped> // method 
+	0x196110  func <stripped> // method 
  }
 
  struct Coherence.CRCounter {
@@ -1783,22 +1841,31 @@
  class Coherence.CRReplicaDatabase : _CRSQLStore {
 
 	// Properties
-	var countersQueryStatement : OpaquePointer? // +0x38 (0x8)
-	var counterSetStatement : OpaquePointer? // +0x40 (0x8)
-	var replicaQueryStatement : OpaquePointer? // +0x48 (0x8)
-	var replicaSetStatement : OpaquePointer? // +0x50 (0x8)
-	var counters : [UUID : Int64] // +0x58 (0x8)
-	var updatedCounters : Set<UUID> // +0x60 (0x8)
-	var replica : Replica // +0x299b64 (0x0)
-	var replicaUpdated : Bool // +0x6078 (0x1)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var countersQueryStatement : !y // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var counterSetStatement : !y // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var replicaQueryStatement : !y // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var replicaSetStatement : !y // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var counters :  empty-list  // +0x58 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var updatedCounters :  empty-list  // +0x60 (0x8)
+	var replica : Replica // +0x2505d8 (0x0)
+	var replicaUpdated : Bool // +0x6af8 (0x1)
  }
 
  struct Coherence.Replica {
 
 	// Properties
-	let uuid : UUID
-	var maxTimestampCounter : Int64
-	var uniqueTimestampCounter : Int64
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uuid : ’b
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var maxTimestampCounter : ﬂÅ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uniqueTimestampCounter : ﬂÅ
  }
 
  enum Coherence.BinaryEncodingError {
@@ -1820,9 +1887,9 @@
  struct Coherence.Delta {
 
 	// Properties
-	let added : Set<A.CRValue.Identity>
-	let removed : Set<A.CRValue.Identity>
-	let contents : [A.CRValue.Identity : A.CRType.Delta]
+	let added : CRValue
+	let removed : CRValue
+	let contents : CRValue
  }
 
  struct Coherence.MutatingAction {
@@ -1835,20 +1902,23 @@
  struct Coherence.CRSetIterator {
 
 	// Properties
-	var setIterator : CRSetElement
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var setIterator : ?]
  }
 
  struct Coherence.Index {
 
 	// Properties
-	let setIndex : CRSetElement
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let setIndex : ]
  }
 
  struct Coherence.CRIdentifiedRegister {
 
 	// Properties
-	var register : CRRegister<A>
-	var uuid : UUID
+	var register : CRRegister
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uuid : ’b
  }
 
  struct Coherence.BinaryDecodingOptions {
@@ -1873,14 +1943,16 @@
  struct Coherence.JSONMapEncodingVisitor {
 
 	// Properties
-	var separator : StaticString? // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var separator : £^ // +0x0
 	var encoder : JSONEncoder // +0x18
  }
 
  struct Coherence.Replica {
 
 	// Properties
-	let uuid : UUID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let uuid : ’b
 	let index : Int
  }
 
@@ -1901,10 +1973,12 @@
  enum Coherence.OneOf_TaggedOneOf {
 
 	// Properties
-	case int : Int64
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case int : ﬂÅ
 	case double : Double
 	case string : String
-	case data : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case data : Ér
 	case date : Google_Protobuf_Timestamp
 	case reference : Proto_Reference
 	case optional : Proto_Optional
@@ -1943,16 +2017,20 @@
  struct Coherence.Proto_Timestamp {
 
 	// Properties
-	var uuid : Data // +0x0
-	var counter : Int64 // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uuid : Ér // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var counter : ﬂÅ // +0x10
 	var unknownFields : UnknownStorage // +0x18
  }
 
  struct Coherence.Proto_IndexedTimestamp {
 
 	// Properties
-	var uuidIndex : Int64 // +0x0
-	var counter : Int64 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uuidIndex : ﬂÅ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var counter : ﬂÅ // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1966,8 +2044,10 @@
  struct Coherence.Seen {
 
 	// Properties
-	var uuid : Data // +0x0
-	var runs : [Int64] // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uuid : Ér // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var runs :  empty-list  // +0x10
 	var unknownFields : UnknownStorage // +0x18
  }
 
@@ -2079,7 +2159,8 @@
  struct Coherence.Proto_Selection {
 
 	// Properties
-	var replicaUuid : [Data] // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var replicaUuid :  empty-list  // +0x0
 	var range : Range // +0x8
 	var affinity : Affinity // +0x10
 	var unknownFields : UnknownStorage // +0x20
@@ -2128,7 +2209,8 @@
  class Coherence._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _uuid : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _uuid : Ér
 	var _timestamp : Proto_Timestamp
 	var _value : Proto_Value
 
@@ -2138,7 +2220,8 @@
  class Coherence._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _uuid : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _uuid : Ér
 	var _positive : Proto_Version
 	var _negative : Proto_Version
 
@@ -2148,9 +2231,10 @@
  class Coherence._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _uuid : Data
-	var _version : Proto_Version
-	var _insertions : Element
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _uuid : Ér // +0x10 (0x10)
+	var _version : Proto_Version // +0x20 (0x18)
+	var _insertions : Element // +0x38 (0x8)
 
 	// Swift methods
  }
@@ -2177,7 +2261,8 @@
  class Coherence._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _uuid : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _uuid : Ér
 	var _version : Proto_Version
 	var _crdt : Proto_CRDT
 	var _keyPath : Proto_KeyPath
@@ -2196,7 +2281,8 @@
  class Coherence._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _tag : Int64
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _tag : ﬂÅ
 	var _wrapped : Proto_CRDT
 
 	// Swift methods
@@ -2205,7 +2291,8 @@
  class Coherence._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _tag : Int64
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _tag : ﬂÅ
 	var _wrapped : Proto_Value
 
 	// Swift methods
@@ -2215,7 +2302,8 @@
 
 	// Properties
 	var _version : Proto_Version
-	var _data : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _data : Ér
 
 	// Swift methods
  }
@@ -2236,9 +2324,11 @@
 
 	// Properties
 	var _sequenceStartID : Proto_IndexedTimestamp
-	var _length : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _length : ÎÅ
 	var _addedBy : Proto_IndexedTimestamp
-	var _child : [UInt32]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _child :  empty-list 
 
 	// Swift methods
  }
@@ -2246,8 +2336,8 @@
  class Coherence._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var _fromChar : Proto_IndexedTimestamp
-	var _toChar : Proto_IndexedTimestamp
+	var _fromChar : Proto_IndexedTimestamp // +0x10 (0x20)
+	var _toChar : Proto_IndexedTimestamp // +0x30 (0x20)
 
 	// Swift methods
  }
@@ -2255,31 +2345,33 @@
  struct Coherence.UnknownStorage {
 
 	// Properties
-	var data : Data // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var data : Ér // +0x0
  }
 
  class Coherence.ReplicaState : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var identity : UUID // +0x0 (0x0)
-	var localCounter : Int // +0x2b8000 (0x8)
-	var _replica : Replica? // +0x6e8 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var identity : ’b // +0x0 (0x0)
+	var localCounter : Int // +0x272000 (0x8)
+	var _replica : Replica // +0x6e8 (0x0)
 
 	// Swift methods
  }
 
  class Coherence.CRDTBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x24bd50  func <stripped> // getter 
-	0x24bda0  func <stripped> // method 
-	0x24bdf0  func <stripped> // method 
-	0x24be40  func <stripped> // method 
-	0x24be90  func <stripped> // method 
-	0x24bee0  func <stripped> // method 
-	0x24bf30  func <stripped> // method 
-	0x24bf80  func <stripped> // method 
-	0x24bfd0  func <stripped> // method 
-	0x24c020  func <stripped> // method 
+	0x2086c0  func <stripped> // getter 
+	0x208710  func <stripped> // method 
+	0x208760  func <stripped> // method 
+	0x2087b0  func <stripped> // method 
+	0x208800  func <stripped> // method 
+	0x208850  func <stripped> // method 
+	0x2088a0  func <stripped> // method 
+	0x2088f0  func <stripped> // method 
+	0x208940  func <stripped> // method 
+	0x208990  func <stripped> // method 
  }
 
  class Coherence.CRDTBoxHelper {
@@ -2291,16 +2383,16 @@
 
  class Coherence.CRValueBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x24cff0  func <stripped> // getter 
-	0x24d040  func <stripped> // method 
-	0x24d090  func <stripped> // method 
-	0x24d0e0  func <stripped> // method 
-	0x24d130  func <stripped> // method 
-	0x24d180  func <stripped> // method 
-	0x24d1d0  func <stripped> // method 
-	0x24d220  func <stripped> // method 
-	0x24d270  func <stripped> // method 
-	0x24d2c0  func <stripped> // method 
+	0x209550  func <stripped> // getter 
+	0x2095a0  func <stripped> // method 
+	0x2095f0  func <stripped> // method 
+	0x209640  func <stripped> // method 
+	0x209690  func <stripped> // method 
+	0x2096e0  func <stripped> // method 
+	0x209730  func <stripped> // method 
+	0x209780  func <stripped> // method 
+	0x2097d0  func <stripped> // method 
+	0x209820  func <stripped> // method 
  }
 
  class Coherence.CRValueBoxHelper {
@@ -2326,26 +2418,26 @@
 
 	// Properties
 	var crString : CRString // +0x8 (0x8)
-	var stringAttributes : [NSAttributedStringKey : Any] // +0x10 (0x8)
+	var stringAttributes : Key // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2570d0  @objc CRTextStorage.initWithCoder: <stripped>
-	0x2570f0  @objc CRTextStorage.string <stripped>
-	0x257240  @objc CRTextStorage.attributesAtIndex:effectiveRange: <stripped>
-	0x257300  @objc CRTextStorage.replaceCharactersInRange:withString: <stripped>
-	0x2573c0  @objc CRTextStorage.setAttributes:range: <stripped>
-	0x2574e0  @objc CRTextStorage.init <stripped>
-	0x2575a0  @objc CRTextStorage.initWithString: <stripped>
-	0x2576c0  @objc CRTextStorage.initWithString:attributes: <stripped>
-	0x257760  @objc CRTextStorage.initWithAttributedString: <stripped>
-	0x257960  @objc CRTextStorage.initWithURL:options:documentAttributes:error: <stripped>
-	0x257b10  @objc CRTextStorage.initWithData:options:documentAttributes:error: <stripped>
-	0x257cd0  @objc CRTextStorage.initWithFileURL:options:documentAttributes:error: <stripped>
-	0x257dc0  @objc CRTextStorage..cxx_destruct <stripped>
+	0x211a70  @objc CRTextStorage.initWithCoder: <stripped>
+	0x211a90  @objc CRTextStorage.string <stripped>
+	0x211be0  @objc CRTextStorage.attributesAtIndex:effectiveRange: <stripped>
+	0x211d90  @objc CRTextStorage.replaceCharactersInRange:withString: <stripped>
+	0x211e50  @objc CRTextStorage.setAttributes:range: <stripped>
+	0x211fc0  @objc CRTextStorage.init <stripped>
+	0x212150  @objc CRTextStorage.initWithFileURL:options:documentAttributes:error: <stripped>
+	0x2122f0  @objc CRTextStorage.initWithURL:options:documentAttributes:error: <stripped>
+	0x212520  @objc CRTextStorage.initWithData:options:documentAttributes:error: <stripped>
+	0x212600  @objc CRTextStorage.initWithString: <stripped>
+	0x212710  @objc CRTextStorage.initWithString:attributes: <stripped>
+	0x2127b0  @objc CRTextStorage.initWithAttributedString: <stripped>
+	0x211f40  @objc CRTextStorage..cxx_destruct <stripped>
 
 	// Swift methods
-	0x256bc0  class func CRTextStorage.__allocating_init(_:) // init 
-	0x256ff0  class func CRTextStorage.__allocating_init(_:) // init 
+	0x211670  class func CRTextStorage.__allocating_init(_:) // init 
+	0x2119b0  class func CRTextStorage.__allocating_init(_:) // init 
  }
 
  enum Coherence.Google_Protobuf_NullValue {
@@ -2398,21 +2490,22 @@
  class Coherence.CRFileSyncPresenter : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let fileURL : URL // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let fileURL : N // +0x0 (0x0)
 	let queue : NSOperationQueue // +0x626f5f5f (0x8)
 	var manager : CRFileSyncPresenterManager // +0x72657075 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x261460  @objc CRFileSyncPresenter.presentedItemURL <stripped>
-	0x2614f0  @objc CRFileSyncPresenter.presentedItemOperationQueue <stripped>
-	0x261730  @objc CRFileSyncPresenter.presentedItemDidChange <stripped>
-	0x261900  @objc CRFileSyncPresenter.presentedItemDidGainVersion: <stripped>
-	0x261950  @objc CRFileSyncPresenter.init <stripped>
-	0x2619c0  @objc CRFileSyncPresenter..cxx_destruct <stripped>
+	0x21aff0  @objc CRFileSyncPresenter.presentedItemURL <stripped>
+	0x21b080  @objc CRFileSyncPresenter.presentedItemOperationQueue <stripped>
+	0x21b2a0  @objc CRFileSyncPresenter.presentedItemDidChange <stripped>
+	0x21b430  @objc CRFileSyncPresenter.presentedItemDidGainVersion: <stripped>
+	0x21b500  @objc CRFileSyncPresenter.init <stripped>
+	0x21b4b0  @objc CRFileSyncPresenter..cxx_destruct <stripped>
 
 	// Swift methods
-	0x261510  func <stripped> // method 
-	0x261760  func <stripped> // method 
+	0x21b0a0  func <stripped> // method 
+	0x21b2d0  func <stripped> // method 
  }
 
  class Coherence._CRFileSyncManager {
@@ -2420,15 +2513,17 @@
  struct Coherence.Copied: PathReference {
 
 	// Properties
-	var refPath : CRKeyPath?
-	var ref : CRReferenceRef<A>
+	var refPath : CRKeyPath
+	var ref : CRReferenceRef
  }
 
  struct Coherence.Google_Protobuf_Timestamp {
 
 	// Properties
-	var seconds : Int64 // +0x0
-	var nanos : Int32 // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var seconds : ﬂÅ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var nanos : gÅ // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -2438,27 +2533,27 @@
 	var renames : Renames
 
 	// ObjC -> Swift bridged methods
-	0x26d500  @objc ObjCRenames.generation <stripped>
-	0x26d570  @objc ObjCRenames.count <stripped>
-	0x26d5f0  @objc ObjCRenames.hasLocalRenames <stripped>
-	0x26d710  @objc ObjCRenames.init <stripped>
-	0x26dc80  @objc ObjCRenames.renamedWithReplica: <stripped>
-	0x26e3f0  @objc ObjCRenames.renamed:replica: <stripped>
-	0x26ed70  @objc ObjCRenames.renamedWithRange:replica: <stripped>
-	0x26f390  @objc ObjCRenames.addMappingWithReplica:from: <stripped>
-	0x26f400  @objc ObjCRenames.addMappingWithReplica:fromRange: <stripped>
-	0x26f470  @objc ObjCRenames.description <stripped>
-	0x26f590  @objc ObjCRenames..cxx_destruct <stripped>
+	0x225fe0  @objc ObjCRenames.generation <stripped>
+	0x226050  @objc ObjCRenames.count <stripped>
+	0x2260d0  @objc ObjCRenames.hasLocalRenames <stripped>
+	0x2261d0  @objc ObjCRenames.init <stripped>
+	0x226580  @objc ObjCRenames.renamedWithReplica: <stripped>
+	0x226a70  @objc ObjCRenames.renamed:replica: <stripped>
+	0x2271d0  @objc ObjCRenames.renamedWithRange:replica: <stripped>
+	0x2277e0  @objc ObjCRenames.addMappingWithReplica:from: <stripped>
+	0x227cf0  @objc ObjCRenames.addMappingWithReplica:fromRange: <stripped>
+	0x227d60  @objc ObjCRenames.description <stripped>
+	0x227e80  @objc ObjCRenames..cxx_destruct <stripped>
 
 	// Swift methods
-	0x26d540  func ObjCRenames.generation.getter // getter 
-	0x26d5b0  func ObjCRenames.count.getter // getter 
-	0x26d630  func ObjCRenames.hasLocalRenames.getter // getter 
-	0x26d7a0  func ObjCRenames.renamed(replica:) // method 
-	0x26dce0  func ObjCRenames.renamed(_:replica:) // method 
-	0x26e460  func ObjCRenames.renamed(range:replica:) // method 
-	0x26ede0  func ObjCRenames.addMapping(replica:from:) // method 
-	0x26f3f0  func ObjCRenames.addMapping(replica:fromRange:) // method 
+	0x226020  func ObjCRenames.generation.getter // getter 
+	0x226090  func ObjCRenames.count.getter // getter 
+	0x226110  func ObjCRenames.hasLocalRenames.getter // getter 
+	0x226250  func ObjCRenames.renamed(replica:) // method 
+	0x2265e0  func ObjCRenames.renamed(_:replica:) // method 
+	0x226ae0  func ObjCRenames.renamed(range:replica:) // method 
+	0x227240  func ObjCRenames.addMapping(replica:from:) // method 
+	0x227840  func ObjCRenames.addMapping(replica:fromRange:) // method 
  }
 
  class Coherence.ObjCRLE : NSObject /usr/lib/libobjc.A.dylib {
@@ -2467,39 +2562,39 @@
 	var rle : RLEMapping
 
 	// ObjC -> Swift bridged methods
-	0x26f720  @objc ObjCRLE.init <stripped>
-	0x26f740  @objc ObjCRLE.rangeCount <stripped>
-	0x26fb80  @objc ObjCRLE.enumerateRangesIn:: <stripped>
-	0x26feb0  @objc ObjCRLE.addMappingFrom:to: <stripped>
-	0x26ff80  @objc ObjCRLE.description <stripped>
-	0x270200  @objc ObjCRLE..cxx_destruct <stripped>
+	0x228000  @objc ObjCRLE.init <stripped>
+	0x228020  @objc ObjCRLE.rangeCount <stripped>
+	0x2284a0  @objc ObjCRLE.enumerateRangesIn:: <stripped>
+	0x2287d0  @objc ObjCRLE.addMappingFrom:to: <stripped>
+	0x2288a0  @objc ObjCRLE.description <stripped>
+	0x228af0  @objc ObjCRLE..cxx_destruct <stripped>
 
 	// Swift methods
-	0x26f7f0  func ObjCRLE.rangeCount.getter // getter 
-	0x26f880  func ObjCRLE.enumerateRanges(in:_:) // method 
-	0x26fbf0  func ObjCRLE.addMapping(from:to:) // method 
+	0x2280d0  func ObjCRLE.rangeCount.getter // getter 
+	0x228160  func ObjCRLE.enumerateRanges(in:_:) // method 
+	0x228510  func ObjCRLE.addMapping(from:to:) // method 
  }
 
  class Coherence.ObjCRenameSequence : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var renameSequence : [(key: Replica, value: IndexSet)]
-	var renameAddedBySequence : [(key: Replica, value: IndexSet)]
+	var renameSequence : Replica
+	var renameAddedBySequence : Replica
 
 	// ObjC -> Swift bridged methods
-	0x270220  @objc ObjCRenameSequence.isEmpty <stripped>
-	0x270330  @objc ObjCRenameSequence.addWithReplica:range: <stripped>
-	0x270680  @objc ObjCRenameSequence.addAddedByReplica:range: <stripped>
-	0x270db0  @objc ObjCRenameSequence.addAddedByVersion: <stripped>
-	0x270e00  @objc ObjCRenameSequence.description <stripped>
-	0x271100  @objc ObjCRenameSequence.init <stripped>
-	0x2711d0  @objc ObjCRenameSequence..cxx_destruct <stripped>
+	0x228b10  @objc ObjCRenameSequence.isEmpty <stripped>
+	0x228c10  @objc ObjCRenameSequence.addWithReplica:range: <stripped>
+	0x228f60  @objc ObjCRenameSequence.addAddedByReplica:range: <stripped>
+	0x229650  @objc ObjCRenameSequence.addAddedByVersion: <stripped>
+	0x2296a0  @objc ObjCRenameSequence.description <stripped>
+	0x2299a0  @objc ObjCRenameSequence.init <stripped>
+	0x2298e0  @objc ObjCRenameSequence..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2702a0  func ObjCRenameSequence.isEmpty.getter // getter 
-	0x270310  func ObjCRenameSequence.add(replica:range:) // method 
-	0x2703a0  func ObjCRenameSequence.addAddedBy(replica:range:) // method 
-	0x2706f0  func ObjCRenameSequence.addAddedByVersion(_:) // method 
+	0x228b80  func ObjCRenameSequence.isEmpty.getter // getter 
+	0x228bf0  func ObjCRenameSequence.add(replica:range:) // method 
+	0x228c80  func ObjCRenameSequence.addAddedBy(replica:range:) // method 
+	0x228fd0  func ObjCRenameSequence.addAddedByVersion(_:) // method 
  }
 
  class Coherence.ObjCVersion : NSObject /usr/lib/libobjc.A.dylib {
@@ -2508,43 +2603,43 @@
 	var version : CRVersion
 
 	// ObjC -> Swift bridged methods
-	0x271280  @objc ObjCVersion.init <stripped>
-	0x271300  @objc ObjCVersion.isEmpty <stripped>
-	0x271390  @objc ObjCVersion.maxCounter <stripped>
-	0x271530  @objc ObjCVersion.hasTemporaryComponents <stripped>
-	0x2717e0  @objc ObjCVersion.temporaryComponentsWithExcluding: <stripped>
-	0x271840  @objc ObjCVersion.sortedUUIDs <stripped>
-	0x271eb0  @objc ObjCVersion.hasDeltaTo: <stripped>
-	0x272080  @objc ObjCVersion.isEqual: <stripped>
-	0x2721e0  @objc ObjCVersion.copy <stripped>
-	0x2727a0  @objc ObjCVersion.contains: <stripped>
-	0x272950  @objc ObjCVersion.insertWithRange:replica: <stripped>
-	0x272b70  @objc ObjCVersion.subtractWithRange:replica: <stripped>
-	0x272c00  @objc ObjCVersion.subtract: <stripped>
-	0x272cc0  @objc ObjCVersion.shallowMerge: <stripped>
-	0x272e10  @objc ObjCVersion.apply: <stripped>
-	0x272ec0  @objc ObjCVersion.description <stripped>
-	0x273100  @objc ObjCVersion..cxx_destruct <stripped>
+	0x229aa0  @objc ObjCVersion.init <stripped>
+	0x229b10  @objc ObjCVersion.isEmpty <stripped>
+	0x229b90  @objc ObjCVersion.maxCounter <stripped>
+	0x229d30  @objc ObjCVersion.hasTemporaryComponents <stripped>
+	0x229fc0  @objc ObjCVersion.temporaryComponentsWithExcluding: <stripped>
+	0x22a020  @objc ObjCVersion.sortedUUIDs <stripped>
+	0x22a5e0  @objc ObjCVersion.hasDeltaTo: <stripped>
+	0x22a780  @objc ObjCVersion.isEqual: <stripped>
+	0x22a8b0  @objc ObjCVersion.copy <stripped>
+	0x22ab90  @objc ObjCVersion.contains: <stripped>
+	0x22ad40  @objc ObjCVersion.insertWithRange:replica: <stripped>
+	0x22af60  @objc ObjCVersion.subtractWithRange:replica: <stripped>
+	0x22aff0  @objc ObjCVersion.subtract: <stripped>
+	0x22b0b0  @objc ObjCVersion.shallowMerge: <stripped>
+	0x22b210  @objc ObjCVersion.apply: <stripped>
+	0x22b2d0  @objc ObjCVersion.description <stripped>
+	0x22b4d0  @objc ObjCVersion..cxx_destruct <stripped>
 
 	// Swift methods
-	0x271350  func ObjCVersion.isEmpty.getter // getter 
-	0x271470  func ObjCVersion.maxCounter.getter // getter 
-	0x2715a0  func ObjCVersion.hasTemporaryComponents.getter // getter 
-	0x2715f0  func ObjCVersion.temporaryComponents(excluding:) // method 
-	0x2718a0  func ObjCVersion.sortedUUIDs.getter // getter 
-	0x271e20  func ObjCVersion.hasDeltaTo(_:) // method 
-	0x272290  func ObjCVersion.contains(_:) // method 
-	0x272800  func ObjCVersion.insert(range:replica:) // method 
-	0x2729c0  func ObjCVersion.subtract(range:replica:) // method 
-	0x272be0  func ObjCVersion.subtract(_:) // method 
-	0x272c20  func ObjCVersion.shallowMerge(_:) // method 
-	0x272d90  func ObjCVersion.apply(_:) // method 
+	0x229b50  func ObjCVersion.isEmpty.getter // getter 
+	0x229c70  func ObjCVersion.maxCounter.getter // getter 
+	0x229da0  func ObjCVersion.hasTemporaryComponents.getter // getter 
+	0x229df0  func ObjCVersion.temporaryComponents(excluding:) // method 
+	0x22a080  func ObjCVersion.sortedUUIDs.getter // getter 
+	0x22a550  func ObjCVersion.hasDeltaTo(_:) // method 
+	0x22a940  func ObjCVersion.contains(_:) // method 
+	0x22abf0  func ObjCVersion.insert(range:replica:) // method 
+	0x22adb0  func ObjCVersion.subtract(range:replica:) // method 
+	0x22afd0  func ObjCVersion.subtract(_:) // method 
+	0x22b010  func ObjCVersion.shallowMerge(_:) // method 
+	0x22b180  func ObjCVersion.apply(_:) // method 
  }
 
  struct Coherence.RLEMapping {
 
 	// Properties
-	var mapping : RLE<RetainedMapRun>
+	var mapping : RLE
 	var newReplica : Replica
  }
 
@@ -2553,7 +2648,7 @@
 	// Properties
 	var generation : Int // +0x0
 	var hasLocalRenames : Bool // +0x8
-	var mapping : [Replica : RLEMapping] // +0x10
+	var mapping : Replica // +0x10
  }
 
  struct Coherence.RetainedMapRun {
@@ -2589,6 +2684,14 @@
  }
 
  enum __C.TTSelectionAffinity { }
+
+ struct __C._ConditionalAllocationBuffer {
+
+	// Properties
+	var memory : UnsafeMutableRawPointer
+	var capacity : Int
+	var onStack : Bool
+ }
 
  struct __C.FileAttributeKey {
 

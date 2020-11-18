@@ -20,7 +20,6 @@
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)_axButtonTypeIsModernCircle;
 - (id)_contentForState:(unsigned long long)arg1;
-- (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
 - (BOOL)accessibilityPerformEscape;

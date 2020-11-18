@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSSiteMetadataManager.h>
+#import <SafariSharedUI/WBSSiteMetadataManager.h>
 
 @class WBSLeadImageCache, _SFFaviconProvider, _SFLinkPresentationIconCache, _SFPasswordTouchIconCache, _SFTouchIconCache;
 

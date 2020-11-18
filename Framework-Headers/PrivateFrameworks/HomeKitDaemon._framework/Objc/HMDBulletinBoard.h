@@ -40,7 +40,7 @@
 - (void).cxx_destruct;
 - (BOOL)_hasDuplicateBulletinForCharacteristic:(id)arg1;
 - (id)_insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2;
-- (id)_insertRequestWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 requestIdentifier:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
+- (id)_insertRequestWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 requestIdentifier:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(id)arg7 actionContext:(id)arg8;
 - (id)_lookupRequestForCharacteristic:(id)arg1;
 - (void)_migrateBulletins:(id)arg1 requests:(id)arg2;
 - (void)_removeBulletinsUsingPredicate:(id)arg1;

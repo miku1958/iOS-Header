@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
+
 @class AMSAuthenticateResult, AMSDialogResult, NSDictionary, NSError, NSString, NSURL;
 
-@interface AMSURLAction : NSObject
+@interface AMSURLAction : NSObject <NSSecureCoding>
 {
     long long _actionType;
     NSError *_error;
@@ -31,9 +33,13 @@
 + (id)proceedAction;
 + (id)redirectActionWithURL:(id)arg1;
 + (id)retryAction;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1;
+- (id)initWithType:(long long)arg1 error:(id)arg2 reason:(id)arg3 redirectURL:(id)arg4;
 
 @end
 

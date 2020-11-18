@@ -40,14 +40,13 @@
 + (BOOL)isInDevelopmentEnvironment;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_envokeOnInteruptCallback;
 - (void)_registerForDarwinNotifications;
 - (void)_updateBundleIdentifier:(id)arg1 forConnection:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)accountChanged;
 - (void)addBarrierBlock:(CDUnknownBlockType)arg1;
 - (void)connect;
-- (void)connectionBorked;
-- (void)connectionInterupted;
+- (void)connectionBorked:(id)arg1;
+- (void)connectionInterrupted:(id)arg1;
 - (id)dataServer:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)deleteAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

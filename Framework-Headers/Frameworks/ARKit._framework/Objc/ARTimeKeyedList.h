@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)appendObject:(id)arg1 forTime:(double)arg2;
 - (void)clear;
+- (id)description;
 - (id)init;
 - (id)initWithMaxSize:(unsigned long long)arg1;
 - (unsigned long long)insertionIndexForTime:(id)arg1;

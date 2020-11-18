@@ -48,8 +48,8 @@
 + (id)anyReverseAliasWithUnsaltedBookmarkData:(id)arg1 inAppLibrary:(id)arg2;
 + (BOOL)isDocumentAutomaticallyEvictableWithExtension:(id)arg1;
 + (BOOL)isDocumentAutomaticallyEvictableWithName:(id)arg1;
-+ (struct PQLResultSet *)reverseAliasEnumeratorWithRelativePath:(id)arg1;
-+ (struct PQLResultSet *)reverseAliasEnumeratorWithUnsaltedBookmarkData:(id)arg1 session:(id)arg2;
++ (id)reverseAliasEnumeratorWithRelativePath:(id)arg1;
++ (id)reverseAliasEnumeratorWithUnsaltedBookmarkData:(id)arg1 session:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_deleteFromDB:(id)arg1 keepAliases:(BOOL)arg2;
@@ -94,7 +94,7 @@
 - (BOOL)isFault;
 - (BOOL)isPackage;
 - (BOOL)isShareableItem;
-- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 sharingOptions:(unsigned long long)arg3 path:(id)arg4 markLost:(BOOL)arg5;
+- (void)learnItemID:(id)arg1 serverItem:(id)arg2 path:(id)arg3 markLost:(BOOL)arg4;
 - (void)learnThumbnailSignatureFromLiveVersion:(id)arg1;
 - (void)markDead;
 - (void)markForceNeedsSyncUp;
@@ -108,7 +108,7 @@
 - (void)markOverQuotaWithError:(id)arg1;
 - (void)markUploadedWithRecord:(id)arg1;
 - (void)removeLiveConflictLoserEtag:(id)arg1;
-- (struct PQLResultSet *)reverseAliasEnumerator;
+- (id)reverseAliasEnumerator;
 - (id)setOfAppLibraryIDsWithReverseAliases;
 - (void)stageFaultForCreation:(BOOL)arg1 name:(id)arg2 size:(id)arg3 isPackage:(BOOL)arg4;
 - (void)stageFaultForCreation:(BOOL)arg1 serverItem:(id)arg2;

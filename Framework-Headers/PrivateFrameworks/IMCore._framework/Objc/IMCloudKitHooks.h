@@ -17,7 +17,6 @@
 - (void)_didAttemptToDisableAllDevicesResult:(BOOL)arg1;
 - (void)_didAttemptToSetEnabledTo:(BOOL)arg1 result:(BOOL)arg2;
 - (void)_didPerformAdditionalStorageRequiredCheckWithSuccess:(BOOL)arg1 additionalStorageRequired:(unsigned long long)arg2 forAccountId:(id)arg3 error:(id)arg4;
-- (void)_requestMOCEnabledReturned:(unsigned long long)arg1;
 - (void)_updateCloudKitState;
 - (void)_updateCloudKitStateWithDictionary:(id)arg1;
 - (void)broadcastCloudKitState;
@@ -38,11 +37,11 @@
 - (void)downloadAttachmentAssets;
 - (BOOL)eligibleForTruthZone;
 - (id)exitDate;
+- (void)fetchAccountStatusAndUpdateMiCSwitchEligibility;
 - (void)fetchCloudKitSyncStateDebuggingInfo:(id)arg1;
 - (void)fetchExitRecord;
 - (void)fetchLatestRampState;
 - (void)fetchLatestSalt;
-- (void)fetchSecurityLevelAndUpdateMiCSwitchEligibility;
 - (void)fetchSyncStateStatistics;
 - (id)init;
 - (void)initiatePeriodicSync;
@@ -70,7 +69,6 @@
 - (void)reportMetricToCK:(id)arg1;
 - (void)reportMetricToCK:(id)arg1 withDict:(id)arg2;
 - (void)reportMetricToCK:(id)arg1 withSuccess:(BOOL)arg2;
-- (void)requestMOCEnabledState;
 - (void)sendRestoreFailuresLogDumps;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setShouldOptimizeAttachmentStorage:(BOOL)arg1;

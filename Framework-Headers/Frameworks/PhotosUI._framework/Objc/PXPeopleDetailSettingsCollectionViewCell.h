@@ -41,7 +41,7 @@
 
 + (double)preferredHeightForWidth:(double)arg1 forAvatarPercentage:(double)arg2 withSizeClass:(long long)arg3 isFavorite:(BOOL)arg4;
 - (void).cxx_destruct;
-- (struct UIColor *)_placeHolderColor;
+- (id)_placeHolderColor;
 - (long long)_preferredSizeClass;
 - (void)_updateType;
 - (double)avatarCenterYOffset;

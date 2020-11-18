@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSURL;
+@class NSMutableDictionary, NSString, NSURL;
 @protocol _CDAsyncLocalContext, _DKKnowledgeSaving;
 
 @interface USWebpageUsage : NSObject
 {
     NSMutableDictionary *_contextUsageRecord;
     NSURL *_URL;
+    NSString *_bundleIdentifier;
     id<_CDAsyncLocalContext> _context;
     id<_DKKnowledgeSaving> _eventStorage;
 }
 
 @property (readonly, copy) NSURL *URL; // @synthesize URL=_URL;
+@property (readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly) id<_CDAsyncLocalContext> context; // @synthesize context=_context;
 @property (readonly) id<_DKKnowledgeSaving> eventStorage; // @synthesize eventStorage=_eventStorage;
 
@@ -26,7 +28,8 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithURL:(id)arg1;
-- (id)initWithURL:(id)arg1 context:(id)arg2 eventStorage:(id)arg3;
+- (id)initWithURL:(id)arg1 bundleIdentifier:(id)arg2;
+- (id)initWithURL:(id)arg1 context:(id)arg2 eventStorage:(id)arg3 bundleIdentifier:(id)arg4;
 
 @end
 

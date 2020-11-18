@@ -50,6 +50,8 @@
 - (void)_resetIfNeeded;
 - (void)_unregisterForAccessorySettingsUpdates;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
+- (BOOL)checkSoftwareVersionForAccessories:(id)arg1 neededSoftwareVersion:(id)arg2;
+- (id)getAllHomePodFromItem:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 home:(id)arg2 sourceItem:(id)arg3;
 - (id)initWithItemUpdater:(id)arg1 home:(id)arg2 sourceItem:(id)arg3 usageOptions:(id)arg4;
 - (id)initWithItemUpdater:(id)arg1 homeKitSettingsVendor:(id)arg2 usageOptions:(id)arg3;

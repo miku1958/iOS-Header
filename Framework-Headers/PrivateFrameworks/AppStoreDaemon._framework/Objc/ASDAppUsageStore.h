@@ -26,14 +26,15 @@
 @property (nonatomic) BOOL verbose; // @synthesize verbose=_verbose;
 
 - (void).cxx_destruct;
-- (id)_calcluateUsageFromDate:(id)arg1 endDate:(id)arg2 bundleIDs:(id)arg3;
+- (id)_calcluateUsageFromDate:(id)arg1 endDate:(id)arg2 bundleIDs:(id)arg3 includeExtensionUsage:(BOOL)arg4;
 - (id)_calculateRawUsageFromDate:(id)arg1 endDate:(id)arg2 stats:(id)arg3;
-- (void)_calculateUsageForDurationInDays:(double)arg1 bundleIDs:(id)arg2;
-- (id)_calculateUsageFromDate:(id)arg1 endDate:(id)arg2 stats:(id)arg3;
+- (void)_calculateUsageForDurationInDays:(double)arg1 bundleIDs:(id)arg2 includeExtensionUsage:(BOOL)arg3;
+- (id)_calculateUsageFromDate:(id)arg1 endDate:(id)arg2 stats:(id)arg3 includeExtensionUsage:(BOOL)arg4;
 - (id)_sortDescriptors;
 - (id)calcluateUsageFromDate:(id)arg1 endDate:(id)arg2 appMetadata:(id)arg3;
 - (id)calcluateUsageFromDate:(id)arg1 endDate:(id)arg2 bundleIDs:(id)arg3;
 - (id)initWithDurationInDays:(double)arg1 bundleIDs:(id)arg2;
+- (id)initWithDurationInDays:(double)arg1 bundleIDs:(id)arg2 includeExtensionUsage:(BOOL)arg3;
 
 @end
 

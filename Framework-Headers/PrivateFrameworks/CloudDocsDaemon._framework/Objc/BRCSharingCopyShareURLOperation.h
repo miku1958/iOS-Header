@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)createActivity;
 - (id)initWithShare:(id)arg1 zone:(id)arg2 appName:(id)arg3;
 - (void)main;
-- (BOOL)shouldRetryForError:(id)arg1;
 
 @end
 

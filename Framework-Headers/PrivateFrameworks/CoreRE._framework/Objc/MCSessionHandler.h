@@ -20,13 +20,13 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_pendingData;
     NSLock *_handlesLock;
     id<MCSessionPrivateDelegate> _nextDelegate;
-    DynamicArray_959538b5 _handles;
+    DynamicArray_0711906c _handles;
     DynamicArray_8f05e591 _tempBuf;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) DynamicArray_959538b5 *handles; // @synthesize handles=_handles;
+@property (nonatomic) DynamicArray_0711906c *handles; // @synthesize handles=_handles;
 @property (strong, nonatomic) NSLock *handlesLock; // @synthesize handlesLock=_handlesLock;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<MCSessionPrivateDelegate> nextDelegate; // @synthesize nextDelegate=_nextDelegate;

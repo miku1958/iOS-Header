@@ -8,11 +8,12 @@
 
 #import <VideosUI/VUIProductUberBackgroundInterface-Protocol.h>
 
-@class IKViewElement, NSString, VUIChannelBannerView;
+@class IKViewElement, NSString, VUIChannelBannerView, VUIProductUberBackgroundView;
 
 __attribute__((visibility("hidden")))
 @interface VUIChannelBannerViewController : UIViewController <VUIProductUberBackgroundInterface>
 {
+    VUIProductUberBackgroundView *_uberBackgroundView;
     IKViewElement *_viewElement;
     VUIChannelBannerView *_bannerView;
 }
@@ -20,17 +21,23 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VUIChannelBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL disableGradientBelowNavBar;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isUberLayoutActive;
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double topThreshold;
+@property (readonly, nonatomic) VUIProductUberBackgroundView *uberBackgroundView; // @synthesize uberBackgroundView=_uberBackgroundView;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 - (void).cxx_destruct;
+- (void)_configureSubviews;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)loadView;
 - (void)setBannerOpacity:(double)arg1;
 - (void)setUberImageOffset:(double)arg1;
+- (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 
 @end
 

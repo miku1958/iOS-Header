@@ -6,11 +6,11 @@
 
 #import <ActionKit/WFQuickLookAction.h>
 
-#import <ActionKitUI/QLPreviewControllerDelegate-Protocol.h>
+#import <ActionKitUI/QLPreviewControllerPrivateDelegate-Protocol.h>
 
 @class NSString, QLPreviewController, WFContentCollection;
 
-@interface WFQuickLookAction (UIKit) <QLPreviewControllerDelegate>
+@interface WFQuickLookAction (UIKit) <QLPreviewControllerPrivateDelegate>
 
 @property (strong, nonatomic) WFContentCollection *dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -19,6 +19,7 @@
 @property (strong, nonatomic) QLPreviewController *previewController;
 @property (readonly) Class superclass;
 
+- (BOOL)previewController:(id)arg1 canShareItem:(id)arg2;
 - (void)previewControllerDidDismiss:(id)arg1;
 - (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
 @end

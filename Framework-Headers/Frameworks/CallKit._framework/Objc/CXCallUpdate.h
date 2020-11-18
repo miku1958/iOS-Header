@@ -14,37 +14,37 @@
 
 @interface CXCallUpdate : NSObject <CXCopying, NSSecureCoding, NSCopying>
 {
-    BOOL _supportsHolding;
-    BOOL _supportsGrouping;
-    BOOL _supportsUngrouping;
-    BOOL _supportsDTMF;
-    BOOL _hasVideo;
     BOOL _emergency;
     BOOL _usingBaseband;
     BOOL _blocked;
     BOOL _mayRequireBreakBeforeMake;
-    BOOL _supportsTTYWithVoice;
+    BOOL _hasVideo;
     BOOL _requiresInCallSounds;
-    BOOL _prefersExclusiveAccessToCellularNetwork;
-    BOOL _remoteUplinkMuted;
-    BOOL _shouldSuppressInCallUI;
-    BOOL _mutuallyExclusiveCall;
+    BOOL _supportsHolding;
+    BOOL _supportsGrouping;
+    BOOL _supportsUngrouping;
+    BOOL _supportsDTMF;
     BOOL _supportsUnambiguousMultiPartyState;
     BOOL _supportsAddCall;
     BOOL _supportsSendingToVoicemail;
+    BOOL _prefersExclusiveAccessToCellularNetwork;
+    BOOL _supportsTTYWithVoice;
+    BOOL _remoteUplinkMuted;
+    BOOL _shouldSuppressInCallUI;
     BOOL _requiresAuthentication;
+    BOOL _mutuallyExclusiveCall;
+    struct os_unfair_lock_s _accessorLock;
     CXHandle *_remoteHandle;
     NSString *_localizedCallerName;
-    struct CXCallUpdateHasSet _hasSet;
-    NSUUID *_UUID;
     long long _ttyType;
-    long long _inCallSoundRegion;
     NSString *_audioCategory;
     NSString *_audioMode;
     long long _audioInterruptionProvider;
     long long _audioInterruptionOperationMode;
     long long _verificationStatus;
     long long _priority;
+    long long _inCallSoundRegion;
+    long long _videoStreamToken;
     NSString *_crossDeviceIdentifier;
     NSString *_ISOCountryCode;
     NSUUID *_localSenderIdentityUUID;
@@ -53,11 +53,13 @@
     NSSet *_activeRemoteParticipantHandles;
     CXHandoffContext *_handoffContext;
     NSDictionary *_context;
-    long long _videoStreamToken;
+    struct CXCallUpdateHasSet _hasSet;
+    NSUUID *_UUID;
 }
 
 @property (copy, nonatomic) NSString *ISOCountryCode; // @synthesize ISOCountryCode=_ISOCountryCode;
 @property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (readonly, nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
 @property (copy, nonatomic) NSSet *activeRemoteParticipantHandles; // @synthesize activeRemoteParticipantHandles=_activeRemoteParticipantHandles;
 @property (copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
 @property (nonatomic) long long audioInterruptionOperationMode; // @synthesize audioInterruptionOperationMode=_audioInterruptionOperationMode;
@@ -104,15 +106,20 @@
 + (id)callUpdateWithDefaultValuesSet;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)blocked;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)emergency;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)mutuallyExclusiveCall;
+- (BOOL)remoteUplinkMuted;
 - (id)sanitizedCopy;
 - (id)sanitizedCopyWithZone:(struct _NSZone *)arg1;
 - (void)updateCopy:(id)arg1 withZone:(struct _NSZone *)arg2;
 - (void)updateSanitizedCopy:(id)arg1 withZone:(struct _NSZone *)arg2;
 - (void)updateWithUpdate:(id)arg1;
+- (BOOL)usingBaseband;
 
 @end
 

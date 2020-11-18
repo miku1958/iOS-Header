@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/FCForYouBridgedFeedGroup-Protocol.h>
-
 @class MISSING_TYPE, NSArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI223ForYouMagazineFeedGroup : NSObject <FCForYouBridgedFeedGroup>
+@interface _TtC7NewsUI223ForYouMagazineFeedGroup : NSObject
 {
     MISSING_TYPE *group;
     MISSING_TYPE *identifier;

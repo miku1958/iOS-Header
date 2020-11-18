@@ -11,6 +11,6 @@
 - (id)brc_applicationContainerID;
 - (id)brc_applicationName;
 - (id)brc_attributesValues:(id)arg1 lookup:(id)arg2;
-- (id)brc_iWorkPathExtension;
+- (id)brc_iWorkPathExtensions;
 @end
 

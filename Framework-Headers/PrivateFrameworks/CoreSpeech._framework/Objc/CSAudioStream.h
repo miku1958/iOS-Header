@@ -15,13 +15,13 @@
 {
     BOOL _scheduledFutureSample;
     BOOL _streaming;
+    id<CSAudioStreamProviding> _streamProvider;
     id<CSAudioStreamProvidingDelegate> _delegate;
     unsigned long long _lastForwardedSampleCount;
     NSString *_name;
     CSAudioStreamRequest *_streamRequest;
     NSString *_UUID;
     CSAudioStartStreamOption *_startStreamOption;
-    id<CSAudioStreamProviding> _streamProvider;
     NSUUID *_streamingUUID;
 }
 

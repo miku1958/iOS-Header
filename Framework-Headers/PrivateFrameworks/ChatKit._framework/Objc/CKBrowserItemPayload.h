@@ -6,7 +6,7 @@
 
 #import <IMCore/IMPluginPayload.h>
 
-@class CKMediaObject, NSDictionary, NSURL, UIViewController;
+@class CKMediaObject, NSDictionary, NSString, NSURL, UIViewController;
 @protocol CKPluginEntryViewController;
 
 @interface CKBrowserItemPayload : IMPluginPayload
@@ -16,12 +16,14 @@
     NSURL *_videoComplementFileURL;
     UIViewController<CKPluginEntryViewController> *_photoShelfViewController;
     NSURL *_fileURL;
+    NSString *_filename;
     NSDictionary *_attributionInfo;
     CKMediaObject *_mediaObject;
 }
 
 @property (strong, nonatomic) NSDictionary *attributionInfo; // @synthesize attributionInfo=_attributionInfo;
 @property (strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (strong, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (strong, nonatomic) CKMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
 @property (strong, nonatomic) UIViewController<CKPluginEntryViewController> *photoShelfViewController; // @synthesize photoShelfViewController=_photoShelfViewController;
 @property (nonatomic) BOOL requiresValidation; // @synthesize requiresValidation=_requiresValidation;

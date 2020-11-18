@@ -41,7 +41,7 @@
 - (BOOL)_addRecentsFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
 - (BOOL)_addResumeRouteFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
 - (long long)_convertType:(long long)arg1 source:(id)arg2;
-- (void)_resolveMapItemsAndAddEntries:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_resolveMapItemsAndAddEntries:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_setFrequentLocationsAreAvailable:(BOOL)arg1;
 - (id)_suggestionEntryForPLOI:(id)arg1;
 - (void)_treatLOIs:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -50,7 +50,7 @@
 - (unsigned long long)countHomeLOIs;
 - (unsigned long long)countWorkLOIs;
 - (double)distanceToNearest:(long long)arg1;
-- (BOOL)fetchEntriesForLocation:(id)arg1 period:(struct NSDateInterval *)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)fetchEntriesForLocation:(id)arg1 period:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)fetchLocationsSinceDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)fetchSuggestedShortcutsForType:(long long)arg1 minVisits:(unsigned long long)arg2 maxAge:(double)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)init;

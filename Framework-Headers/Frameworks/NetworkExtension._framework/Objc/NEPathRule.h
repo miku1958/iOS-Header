@@ -48,7 +48,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAggregateRule;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)signingIdentifierAllowed:(id)arg1 domainsRequired:(out BOOL *)arg2;
+- (BOOL)signingIdentifierAllowed:(id)arg1 domainsOrAccountsRequired:(out BOOL *)arg2;
 - (BOOL)supportsCellularBehavior:(long long)arg1;
 - (BOOL)supportsWiFiBehavior:(long long)arg1;
 

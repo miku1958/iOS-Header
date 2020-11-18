@@ -7,10 +7,13 @@
 #import <SpringBoard/SBSystemGestureManager.h>
 
 @class SBGestureDefaults, SBHomeGestureParticipant;
+@protocol BSInvalidatable;
 
 @interface SBMainDisplaySystemGestureManager : SBSystemGestureManager
 {
     SBGestureDefaults *_gestureDefaults;
+    id<BSInvalidatable> _systemGestureEventDeferringRule;
+    id<BSInvalidatable> _pointerEventRoutingAssertion;
     BOOL _multitaskingGesturesEnabled;
     SBHomeGestureParticipant *_accessibilityHomeGestureParticipant;
 }
@@ -24,8 +27,10 @@
 - (id)_initWithDisplayIdentity:(id)arg1;
 - (BOOL)_isGestureWithTypeAllowed:(unsigned long long)arg1;
 - (BOOL)_isTouchGestureWithType:(unsigned long long)arg1;
+- (void)_setupSystemGestureEventDeferringIfNeeded;
 - (BOOL)_shouldEnableSystemGestureWithType:(unsigned long long)arg1;
 - (void)_updateUserPreferences;
+- (void)addGestureRecognizer:(id)arg1 withType:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (void)setSystemGesturesDisabledForAccessibility:(BOOL)arg1;

@@ -13,9 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityEnumerateContentsWithBlock:(CDUnknownBlockType)arg1;
+- (id)_accessibilityLocalizedPlaceholderNameForSlot:(id)arg1;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
-- (void)enumerateContentsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)isAccessibilityElement;
 
 @end

@@ -9,24 +9,29 @@
 #import <SafariServices/WKUIDelegate-Protocol.h>
 
 @class NSString, WKWebView, _SFBrowserContentViewController;
+@protocol SFReaderViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SFReaderViewController : UIViewController <WKUIDelegate>
 {
     WKWebView *_originalWebView;
     _SFBrowserContentViewController *_containerViewController;
+    id<SFReaderViewControllerDelegate> _delegate;
 }
 
 @property (weak, nonatomic) _SFBrowserContentViewController *containerViewController; // @synthesize containerViewController=_containerViewController;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<SFReaderViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) WKWebView *readerWebView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_webView:(id)arg1 commitPreviewedViewController:(id)arg2;
-- (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2 defaultActions:(id)arg3 elementInfo:(id)arg4;
+- (void)_webView:(id)arg1 contextMenuConfigurationForElement:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_webView:(id)arg1 contextMenuDidEndForElement:(id)arg2;
+- (void)_webView:(id)arg1 contextMenuForElement:(id)arg2 willCommitWithAnimator:(id)arg3;
+- (void)_webView:(id)arg1 contextMenuWillPresentForElement:(id)arg2;
 - (id)initWithOriginalWebView:(id)arg1;
 - (void)loadView;
 

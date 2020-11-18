@@ -9,13 +9,13 @@
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPRemoteDisplayXPCClientInterface-Protocol.h>
 
-@class NSArray, NSXPCConnection;
+@class NSArray, NSMutableDictionary, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface RPRemoteDisplayDiscovery : NSObject <NSSecureCoding, RPRemoteDisplayXPCClientInterface>
 {
     BOOL _activateCalled;
-    struct NSMutableDictionary *_discoveredDevices;
+    NSMutableDictionary *_discoveredDevices;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     NSXPCConnection *_xpcCnx;

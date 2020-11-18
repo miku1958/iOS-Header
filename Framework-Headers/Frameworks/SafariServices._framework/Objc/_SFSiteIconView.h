@@ -28,7 +28,7 @@
 }
 
 @property (strong, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
-@property (readonly, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIImage *leadingImage; // @synthesize leadingImage=_leadingImage;
 @property (nonatomic) BOOL shouldShowDropShadow; // @synthesize shouldShowDropShadow=_shouldShowDropShadow;
 @property (nonatomic) BOOL shouldUseModernStyling; // @synthesize shouldUseModernStyling=_shouldUseModernStyling;

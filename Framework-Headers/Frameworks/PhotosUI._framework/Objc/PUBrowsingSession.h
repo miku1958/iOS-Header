@@ -47,7 +47,14 @@
 @property (strong, nonatomic) PUTileAnimator *tileAnimator; // @synthesize tileAnimator=_tileAnimator;
 @property (strong, nonatomic) PUBrowsingViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
++ (id)uiKeyCommandAdditionalActions;
++ (id)uiKeyCommandAvailableActions;
 - (void).cxx_destruct;
+- (void)_performActionForActionType:(unsigned long long)arg1 withDelegate:(id)arg2;
+- (void)_performAdditionalKeyCommand:(long long)arg1 withDelegate:(id)arg2;
+- (void)_setVideoToDesiredPlayState:(long long)arg1;
+- (void)_toggleDetails;
+- (void)addKeyCommandsIntoArray:(id)arg1 withDelegate:(id)arg2;
 - (id)assetActionManagerCurrentAssetsDataSource:(id)arg1;
 - (void)assetEditOperationManager:(id)arg1 didChangeEditOperationStatusForAsset:(id)arg2 context:(void *)arg3;
 - (void)assetEditOperationManager:(id)arg1 didChangeEditOperationsPerformedOnAsset:(id)arg2 context:(void *)arg3;
@@ -59,6 +66,7 @@
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4 gestureProvider:(id)arg5 importStatusManager:(id)arg6;
 - (void)loadingStatusManager:(id)arg1 didUpdateLoadingStatus:(id)arg2 forItem:(id)arg3;
+- (void)performKeyCommand:(id)arg1 withDelegate:(id)arg2;
 
 @end
 

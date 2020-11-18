@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface _LSDeviceIdentifierCache : NSObject
 {
-    struct NSDictionary *_identifiers;
+    NSDictionary *_identifiers;
     NSUUID *_advertiserIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
     int _saveFlag;
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedCache;
 - (void).cxx_destruct;
-- (struct NSDictionary *)allIdentifiersNotDispatched;
+- (id)allIdentifiersNotDispatched;
 - (id)applyPerUserEntropyNotDispatched:(id)arg1 type:(long long)arg2;
 - (void)clearAllIdentifiersOfType:(long long)arg1;
 - (void)clearIdentifiersForUninstallationWithVendorName:(id)arg1 bundleIdentifier:(id)arg2;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)generatePerUserEntropyIfNeededNotDispatched;
 - (id)generateSomePerUserEntropyNotDispatched;
 - (void)getIdentifierOfType:(long long)arg1 vendorName:(id)arg2 bundleIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (struct NSMutableDictionary *)identifiersOfTypeNotDispatched:(long long)arg1;
+- (id)identifiersOfTypeNotDispatched:(long long)arg1;
 - (id)init;
 - (void)save;
 

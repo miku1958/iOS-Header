@@ -101,10 +101,12 @@
 - (id)_originatingBundleIdentifier;
 - (id)_payloadResponseMessageData;
 - (id)_propertiesByNameForLanguage:(id)arg1;
+- (id)_propertiesByNameWithLocalizer:(id)arg1;
 - (id)_querySchemaWithBlock:(CDUnknownBlockType)arg1;
 - (id)_renderedResponseForLanguage:(id)arg1 requiresSiriCompatibility:(BOOL)arg2;
 - (id)_responseTemplateForLanguage:(id)arg1;
 - (id)_responseTemplateForLanguage:(id)arg1 requiresSiriCompatibility:(BOOL)arg2;
+- (id)_responseTemplateWithLocalizer:(id)arg1 requiresSiriCompatibility:(BOOL)arg2;
 - (void)_setCode:(long long)arg1;
 - (void)_setPayloadResponseMessageData:(id)arg1;
 - (long long)_stageWithName:(id)arg1;
@@ -118,7 +120,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPropertiesByName:(id)arg1;
 - (id)intentSlotDescriptions;
-- (id)localizeValueOfSlotDescription:(id)arg1 forLanguage:(id)arg2;
+- (id)localizeValueOfSlotDescription:(id)arg1 withLocalizer:(id)arg2;
 - (BOOL)setValue:(id)arg1 forProperty:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)valueForKey:(id)arg1;

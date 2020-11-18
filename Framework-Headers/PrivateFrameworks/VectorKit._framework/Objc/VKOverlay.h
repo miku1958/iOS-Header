@@ -29,7 +29,7 @@
 
 @property (readonly) BOOL canProvideVectorData; // @synthesize canProvideVectorData=_canProvideVectorData;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<VKOverlayDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<VKOverlayDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) weak_ptr_96fca551 flyoverContainer;
 @property (readonly) unsigned long long hash;

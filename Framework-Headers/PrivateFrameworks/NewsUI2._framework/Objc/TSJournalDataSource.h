@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *tagController;
-    MISSING_TYPE *headlines;
+    MISSING_TYPE *privateDataDirectory;
     MISSING_TYPE *headlineModels;
     MISSING_TYPE *configModels;
     MISSING_TYPE *groupTitle;
@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithFeedPersonalizer:(id)arg1 tagController:(id)arg2 group:(id)arg3;
+- (id)initWithFeedPersonalizer:(id)arg1 tagController:(id)arg2 privateDataDirectory:(id)arg3 group:(id)arg4;
 
 @end
 

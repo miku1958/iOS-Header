@@ -31,7 +31,7 @@
 + (id)entityName;
 + (id)fetchObjectWithUUID:(id)arg1 context:(id)arg2;
 + (id)fromPBCodable:(id)arg1;
-+ (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 cache:(id)arg3;
++ (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 excludedMetadataKeys:(id)arg3 cache:(id)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)boolValue;

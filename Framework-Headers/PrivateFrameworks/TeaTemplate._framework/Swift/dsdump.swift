@@ -80,8 +80,32 @@
  struct __C.CGPoint {
 
 	// Properties
-	var x : CGFloat
-	var y : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : =ü
+ }
+
+ struct __C.CGSize {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : =ü
+ }
+
+ struct __C.UIEdgeInsets {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var top : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var left : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bottom : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var right : =ü
  }
 
  struct __C.CGRect {
@@ -89,22 +113,6 @@
 	// Properties
 	var origin : CGPoint
 	var size : CGSize
- }
-
- struct __C.CGSize {
-
-	// Properties
-	var width : CGFloat
-	var height : CGFloat
- }
-
- struct __C.UIEdgeInsets {
-
-	// Properties
-	var top : CGFloat
-	var left : CGFloat
-	var bottom : CGFloat
-	var right : CGFloat
  }
 
  enum __C.UIUserInterfaceSizeClass { }
@@ -136,7 +144,8 @@
  enum TeaTemplate.DimensionSizerTrait {
 
 	// Properties
-	case offset : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case offset : =ü
 	case flexibleArea  
 	case anchored  
  }
@@ -145,16 +154,17 @@
  struct TeaTemplate.IfSizer {
 
 	// Properties
-	let conditional : Conditional<A>
-	let thenSizing : Sizing<A>
-	let elseSizing : Sizing<A>
+	let conditional : Conditional
+	let thenSizing : Sizing
+	let elseSizing : Sizing
  }
 
  enum TeaTemplate.LayoutError {
 
 	// Properties
 	case ambiguousSizing : String
-	case missingSpecFor : (UITraitCollection, viewportWidth: CGFloat)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case missingSpecFor :  first-element-marker 
 	case unknownTraitCollection : UITraitCollection
 	case missingConstrainingFrame : (forName: String)
 	case overlayMissingFrame : (forName: String)
@@ -208,8 +218,10 @@
  enum TeaTemplate.DimensionSizing {
 
 	// Properties
-	case fixed : CGFloat
-	case scaledFixed : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case fixed : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaledFixed : =ü
 	case columns : ColumnSize
 	case invert : DimensionSizing
 	case sizer : DimensionSizerType
@@ -227,7 +239,7 @@
 
 	// Properties
 	let columns : Int // +0x0
-	let aspect : Ratio.Aspect // +0x8
+	let aspect : Aspect // +0x8
  }
 
  struct TeaTemplate.EmbedFactoryCursor {
@@ -235,7 +247,7 @@
 	// Properties
 	let origin : CGPoint // +0x0
 	let boundingSize : CGSize // +0x10
-	let adjustFrameBlock : (_:) // +0x20
+	let adjustFrameBlock : CGRect // +0x20
  }
 
  class TeaTemplate.EmbedFactory {
@@ -251,7 +263,7 @@
  struct TeaTemplate.State {
 
 	// Properties
-	let cursor : Cursor<A>
+	let cursor : Cursor
 	let template : A
 	let context : LayoutContext
  }
@@ -259,7 +271,7 @@
  enum TeaTemplate.ColumnSystem {
 
 	// Properties
-	case custom : (insets: UIEdgeInsets)
+	case custom : UIEdgeInsets
 	case default  
  }
 
@@ -268,8 +280,10 @@
 	// Properties
 	let column : Column // +0x0
 	var traits : Traits // +0x8
-	let hSpacing : CGFloat // +0x10
-	let vSpacing : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let hSpacing : =ü // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let vSpacing : =ü // +0x18
 	let bounds : CGRect // +0x20
 	let layoutMargins : UIEdgeInsets // +0x40
  }
@@ -285,7 +299,7 @@
 	// Properties
 	let sizer : SizerType
 	let font : UIFont
-	let align : FontSizer<A>.Align
+	let align : Align
 	let integral : Bool
  }
 
@@ -323,8 +337,8 @@
 
 	// Properties
 	let name : String? // +0x0
-	var frames : [String : CGRect] // +0x10
-	var metadata : [String : [SizerResultMetadataKey : Any]] // +0x18
+	var frames : CGRect // +0x10
+	var metadata : SizerResultMetadataKey // +0x18
  }
 
  struct TeaTemplate.ColumnSpecSizer {
@@ -378,8 +392,8 @@
 	let isResizing : Bool
 	let bounds : CGRect
 	let layoutOptions : LayoutOptions
-	let canvasOptions : Canvas.Options
-	var filledBounds : CGRect?
+	let canvasOptions : Options
+	var filledBounds : CGRect
 	var position : CGPoint
 	var filledArea : CGSize
 	let initialPosition : CursorInitialPosition
@@ -397,7 +411,7 @@
  enum TeaTemplate.Pass {
 
 	// Properties
-	case second : Pass.DynamicOptions
+	case second : DynamicOptions
 	case first  
  }
 
@@ -417,8 +431,10 @@
  enum TeaTemplate.SizeConstraint {
 
 	// Properties
-	case min : CGFloat
-	case max : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case min : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case max : =ü
  }
 
  struct TeaTemplate.SizeToFitDimensionSizer { }
@@ -427,16 +443,20 @@
 
 	// Properties
 	let adjustedAttributedText : NSAttributedString // +0x0
-	let altTexts : [AltText] // +0x8
+	let altTexts : AltText // +0x8
  }
 
  enum TeaTemplate.CGRectTransform {
 
 	// Properties
-	case setWidth : CGFloat
-	case setHeight : CGFloat
-	case setMinX : CGFloat
-	case setMinY : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case setWidth : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case setHeight : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case setMinX : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case setMinY : =ü
 	case setBounds : CGRect
 	case identity  
  }
@@ -445,8 +465,10 @@
  struct TeaTemplate.RectDimension {
 
 	// Properties
-	let origin : CGFloat // +0x0
-	let size : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let origin : =ü // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let size : =ü // +0x8
  }
 
  class TeaTemplate.LayoutBuilder {
@@ -467,7 +489,8 @@
  struct TeaTemplate.FlexibleSizer {
 
 	// Properties
-	let percentage : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let percentage : =ü // +0x0
  }
 
  struct TeaTemplate.BoolCondition {
@@ -486,7 +509,7 @@
 
 	// Properties
 	let direction : Direction
-	let cursor : Cursor<A>
+	let cursor : Cursor
  }
 
  class TeaTemplate.Overlay {
@@ -494,7 +517,7 @@
 
 	// Properties
 	let sizer : SizerType // +0x0
-	let lines : TextLinesSizer.Lines // +0x28
+	let lines : Lines // +0x28
  }
 
  enum TeaTemplate.Lines {
@@ -507,7 +530,7 @@
  struct TeaTemplate.DynamicSizer {
 
 	// Properties
-	let block : (_:)
+	let block : SizerType
  }
 
  struct TeaTemplate.OffsetSizer {
@@ -526,7 +549,7 @@
  enum TeaTemplate.SizerResult {
 
 	// Properties
-	case frame : (CGRect, SizingBehavior)
+	case frame : CGRect
 	case ambiguous : SizerType
 	case resizing : SizerResult
 	case constraining : SizerResult
@@ -539,8 +562,8 @@
  enum TeaTemplate.ProcessResult {
 
 	// Properties
-	case adjustFrame : (to: CGRect)
-	case replaceFrame : (with: CGRect)
+	case adjustFrame : CGRect
+	case replaceFrame : CGRect
 	case noChange  
  }
 
@@ -549,7 +572,7 @@
 
 	// Properties
 	let adjustedAttributedText : NSAttributedString // +0x0
-	let altTexts : [AltText] // +0x8
+	let altTexts : AltText // +0x8
  }
 
  struct TeaTemplate.FlexibleMaxSizer {
@@ -563,7 +586,7 @@
  struct TeaTemplate.State {
 
 	// Properties
-	let cursor : Cursor<A>
+	let cursor : Cursor
 	let template : A
 	let context : LayoutContext
  }
@@ -572,22 +595,27 @@
 
 	// Properties
 	case size : CGSize
-	case width : CGFloat
-	case height : CGFloat
-	case scaledWidth : CGFloat
-	case scaledHeight : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case width : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case height : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaledWidth : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaledHeight : =ü
  }
 
  struct TeaTemplate.FixedSizer {
 
 	// Properties
-	let fixed : FixedSizer.Fixed // +0x0
+	let fixed : Fixed // +0x0
  }
 
  struct TeaTemplate.FixedDimensionSizer {
 
 	// Properties
-	let size : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let size : =ü // +0x0
 	let scaled : Bool // +0x8
  }
 
@@ -614,7 +642,7 @@
  enum TeaTemplate.DimensionSizerResult {
 
 	// Properties
-	case value : (RectDimension, DimensionSizingBehavior)
+	case value : RectDimension
 	case ambiguous : DimensionSizerType
 	case constraining : DimensionSizerResult
 	case nonIntegral : DimensionSizerResult
@@ -626,8 +654,8 @@
  enum TeaTemplate.ProcessResult {
 
 	// Properties
-	case adjustValue : (to: RectDimension)
-	case replaceValue : (with: RectDimension)
+	case adjustValue : RectDimension
+	case replaceValue : RectDimension
 	case noChange  
  }
 
@@ -635,20 +663,21 @@
 
 	// Properties
 	case fixed : Int
-	case percentage : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case percentage : =ü
  }
 
  struct TeaTemplate.ColumnSizer {
 
 	// Properties
-	let column : ColumnSizer.Column // +0x0
+	let column : Column // +0x0
  }
 
  struct TeaTemplate.AnchorSizer {
 
 	// Properties
 	let sizer : SizerType
-	let anchor : Positioning<A>.Anchor
+	let anchor : Anchor
 	let resizing : Bool
  }
 
@@ -656,7 +685,8 @@
  enum TeaTemplate.AltTextLogic {
 
 	// Properties
-	case textLines : Operator
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case textLines : 9ì
 	case alt : AltTextLogic
 	case and : AltTextLogic
 	case or : AltTextLogic
@@ -697,13 +727,13 @@
 	let rightMarginView : UIView // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3b3e0  @objc ColumnDebugView.initWithCoder: <stripped>
-	0x3be70  @objc ColumnDebugView.layoutSubviews <stripped>
-	0x3bf50  @objc ColumnDebugView.initWithFrame: <stripped>
-	0x3bfd0  @objc ColumnDebugView..cxx_destruct <stripped>
+	0x472c0  @objc ColumnDebugView.initWithCoder: <stripped>
+	0x47b20  @objc ColumnDebugView.layoutSubviews <stripped>
+	0x47c80  @objc ColumnDebugView.initWithFrame: <stripped>
+	0x47b80  @objc ColumnDebugView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3ac30  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
+	0x46a10  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
  }
 
  class TeaTemplate.Layout {
@@ -738,16 +768,20 @@
 
 	// Properties
 	let sizer : SizerType // +0x0
-	let adjust : MinMaxSizer.Adjust // +0x28
+	let adjust : Adjust // +0x28
  }
 
  enum TeaTemplate.Adjust {
 
 	// Properties
-	case minWidth : CGFloat
-	case maxWidth : CGFloat
-	case minHeight : CGFloat
-	case maxHeight : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case minWidth : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case maxWidth : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case minHeight : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case maxHeight : =ü
  }
 
  struct TeaTemplate.InsetSizer {
@@ -760,7 +794,8 @@
  struct TeaTemplate.PercentageSizer {
 
 	// Properties
-	let percentage : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let percentage : =ü // +0x0
  }
 
  struct TeaTemplate.ZeroSizer { }
@@ -776,28 +811,37 @@
  enum TeaTemplate.Sizing {
 
 	// Properties
-	case percentage : CGFloat
-	case size : (width: DimensionSizing, height: DimensionSizing)
-	case width : CGFloat
-	case height : CGFloat
-	case scaledWidth : CGFloat
-	case scaledHeight : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case percentage : =ü
+	case size : DimensionSizing
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case width : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case height : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaledWidth : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaledHeight : =ü
 	case ratio : Ratio
-	case flexiblePercentage : CGFloat
-	case flexibleMaxHeight : CGFloat
-	case flexibleMaxWidth : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case flexiblePercentage : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case flexibleMaxHeight : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case flexibleMaxWidth : =ü
 	case flexibleText : (String?, font: UIFont)
 	case flexibleAttributedText : NSAttributedString?
-	case altFlexibleAttributedText : (NSAttributedString?, alts: [AltText])
+	case altFlexibleAttributedText : AltText
 	case columns : Int
-	case columnPercentage : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case columnPercentage : =ü
 	case columnSpec : ColumnSpec
-	case columnRowSpan : (Int, Ratio.Aspect)
+	case columnRowSpan : Aspect
 	case text : (String?, font: UIFont)
 	case attributedText : NSAttributedString?
-	case altAttributedText : (NSAttributedString?, alts: [AltText])
+	case altAttributedText : AltText
 	case sizer : SizerType
-	case if : Sizing
+	case if : Conditional
 	case dynamic : Sizing
 	case fill  
 	case sizeToFit  
@@ -816,15 +860,18 @@
  enum TeaTemplate.Ratio {
 
 	// Properties
-	case width : CGFloat
-	case height : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case width : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case height : =ü
 	case aspect : Aspect
  }
 
  enum TeaTemplate.Aspect {
 
 	// Properties
-	case custom : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case custom : =ü
 	case x1x1  
 	case x4x3  
 	case x3x4  
@@ -839,10 +886,12 @@
 	case size : CGSize
 	case int : Int
 	case uint : UInt
-	case float : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case float : =ü
 	case double : Double
 	case bool : Bool
-	case data : Data
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case data : œç
 	case string : String
 	case nil  
  }
@@ -856,14 +905,22 @@
 	case scaleOffset : CGPoint
 	case adjustWidth : PositioningAdjustment
 	case adjustHeight : PositioningAdjustment
-	case minWidth : CGFloat
-	case maxWidth : CGFloat
-	case minHeight : CGFloat
-	case maxHeight : CGFloat
-	case scaleHeight : CGFloat
-	case scaleWidth : CGFloat
-	case scaleHeightWithOrigin : CGFloat
-	case scaleWidthWithOrigin : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case minWidth : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case maxWidth : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case minHeight : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case maxHeight : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaleHeight : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaleWidth : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaleHeightWithOrigin : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case scaleWidthWithOrigin : =ü
 	case minAspectRatio : Ratio
 	case firstBaseline : UIFont
 	case baseline : UIFont
@@ -874,7 +931,7 @@
 	case minTextLines : Int
 	case maxTextLines : Int
 	case resizeAnchor : Anchor
-	case resizeConstraining : (ResizeConstraint, to: String)
+	case resizeConstraining : ResizeConstraint
 	case dynamic : Positioning
 	case invert  
 	case resize  
@@ -903,7 +960,8 @@
  enum TeaTemplate.PositioningAmount {
 
 	// Properties
-	case fixed : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case fixed : =ü
 	case vSpacing  
 	case hSpacing  
  }
@@ -918,7 +976,7 @@
 
 	// Properties
 	let sizer : SizerType // +0x0
-	let adjust : SizeAdjustSizer.Adjust // +0x28
+	let adjust : Adjust // +0x28
  }
 
  enum TeaTemplate.Adjust {
@@ -932,15 +990,17 @@
 
 	// Properties
 	let sizer : SizerType // +0x0
-	let scale : SizeScaleSizer.Scale // +0x28
+	let scale : Scale // +0x28
 	let adjustOrigin : Bool // +0x31
  }
 
  enum TeaTemplate.Scale {
 
 	// Properties
-	case width : CGFloat
-	case height : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case width : =ü
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case height : =ü
  }
 
  struct TeaTemplate.OffsetScaleSizer {
@@ -953,7 +1013,7 @@
  struct TeaTemplate.FlexibleCondition {
 
 	// Properties
-	let directionOption : FlexibleCondition.DirectionOption // +0x0
+	let directionOption : DirectionOption // +0x0
  }
 
  enum TeaTemplate.DirectionOption {
@@ -967,14 +1027,14 @@
  enum TeaTemplate.Canvas {
 
 	// Properties
-	case column : (system: ColumnSystem)
+	case column : ColumnSystem
 	case default  
  }
 
  enum TeaTemplate.Options {
 
 	// Properties
-	case column : ColumnSystem.Options
+	case column : Options
 	case none  
  }
 

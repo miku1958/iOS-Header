@@ -27,7 +27,7 @@
     BOOL _awaitingSuccessOrFailureEvent;
     BOOL _showHeaderChevron;
     BOOL _provisional;
-    struct NSUUID *_instrumentationTurnIdentifier;
+    NSUUID *_instrumentationTurnIdentifier;
     UIColor *_titleTextColor;
     UIColor *_titleBackgroundColor;
     NSAttributedString *_attributedSubtitle;

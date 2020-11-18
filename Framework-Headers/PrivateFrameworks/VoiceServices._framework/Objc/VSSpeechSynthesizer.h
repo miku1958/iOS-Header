@@ -95,6 +95,7 @@
 - (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
 - (id)cachePresynthesizedAudioRequest:(id)arg1;
 - (void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
+- (void)connection:(id)arg1 invalidatedWithError:(id)arg2;
 - (void)connection:(id)arg1 presynthesizedAudioRequest:(id)arg2 didStopAtEnd:(BOOL)arg3 error:(id)arg4;
 - (void)connection:(id)arg1 presynthesizedAudioRequest:(id)arg2 successWithInstrumentMetrics:(id)arg3 error:(id)arg4;
 - (void)connection:(id)arg1 presynthesizedAudioRequestDidStart:(id)arg2;

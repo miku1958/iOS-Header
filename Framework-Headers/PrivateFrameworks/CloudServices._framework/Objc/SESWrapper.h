@@ -10,12 +10,14 @@
 
 @interface SESWrapper : NSObject
 {
+    BOOL _useCKVR;
     BOOL _recoveryPassphraseMutable;
     NSString *_decodedLabel;
     NSDate *_escrowDate;
     NSData *_recoveryBlob;
     struct ccses_crypto_t *_ccses;
     struct ccsrp_ctx *_srp;
+    struct ckvr_srp_context *_ckvr;
     NSString *_dsid;
     NSString *_recoveryPassphrase;
     NSString *_label;
@@ -25,6 +27,7 @@
 }
 
 @property (readonly, nonatomic) struct ccses_crypto_t *ccses; // @synthesize ccses=_ccses;
+@property (readonly, nonatomic) struct ckvr_srp_context *ckvr; // @synthesize ckvr=_ckvr;
 @property (copy, nonatomic) NSString *decodedLabel; // @synthesize decodedLabel=_decodedLabel;
 @property (copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 @property (strong, nonatomic) NSData *escrowBlob; // @synthesize escrowBlob=_escrowBlob;
@@ -36,18 +39,23 @@
 @property (copy, nonatomic) NSString *recoveryPassphrase; // @synthesize recoveryPassphrase=_recoveryPassphrase;
 @property (nonatomic) BOOL recoveryPassphraseMutable; // @synthesize recoveryPassphraseMutable=_recoveryPassphraseMutable;
 @property (readonly, nonatomic) struct ccsrp_ctx *srp; // @synthesize srp=_srp;
+@property (readonly, nonatomic) BOOL useCKVR; // @synthesize useCKVR=_useCKVR;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)decodedEscrowRecordFromData:(id)arg1;
 - (id)encodedEscrowRecordWithPublicKey:(struct __SecKey *)arg1 error:(id *)arg2;
 - (id)initWithDSID:(id)arg1 escrowRecordContents:(id)arg2 recoveryPassphrase:(id)arg3 recordID:(id)arg4 recordLabel:(id)arg5;
+- (id)initWithDSID:(id)arg1 escrowRecordContents:(id)arg2 recoveryPassphrase:(id)arg3 recordID:(id)arg4 recordLabel:(id)arg5 ckvrFlag:(BOOL)arg6;
 - (id)initWithRequest:(id)arg1;
+- (id)initWithRequest:(id)arg1 ckvrFlag:(BOOL)arg2;
 - (id)recoveryResponseForBlob:(id)arg1;
 - (id)srpInitBlob;
+- (unsigned long long)srpKeySize;
+- (unsigned long long)srpPublicKeySize;
 - (id)srpRecoveryBlobFromData:(id)arg1 error:(id *)arg2;
 - (void)srpRecoveryUpdateDSID:(id)arg1 recoveryPassphrase:(id)arg2;
-- (id)srpResponseForEscrowBlob:(id)arg1 withKey:(struct __SecKey *)arg2;
+- (id)srpResponseForEscrowBlob:(id)arg1 withKey:(struct __SecKey *)arg2 withFullCCKey:(struct ccrsa_full_ctx *)arg3;
 
 @end
 

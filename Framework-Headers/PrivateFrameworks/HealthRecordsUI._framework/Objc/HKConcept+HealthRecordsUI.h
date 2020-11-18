@@ -8,9 +8,7 @@
 
 @interface HKConcept (HealthRecordsUI)
 
-@property (nonatomic, readonly) BOOL chartsBloodPressure;
-@property (nonatomic, readonly) BOOL isDisplayable;
+@property (nonatomic, readonly) BOOL isQualifiedForConceptRoom;
 
-- (id)preferredDisplayNameWithContext:(long long)arg1;
 @end
 

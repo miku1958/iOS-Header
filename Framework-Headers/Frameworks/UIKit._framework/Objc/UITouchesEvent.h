@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) double _initialTouchTimestamp;
+@property (readonly, nonatomic, getter=_containsHIDPointerEvent) BOOL containsHIDPointerEvent;
 @property (nonatomic) long long singleAllowableExternalTouchPathIndex; // @synthesize singleAllowableExternalTouchPathIndex=_singleAllowableExternalTouchPathIndex;
 
 - (void).cxx_destruct;
@@ -49,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (double)_initialTouchTimestampForWindow:(id)arg1;
 - (void)_invalidateGestureRecognizerForWindowCache;
 - (id)_lastPendingCoalescedTouchForIndex:(long long)arg1 hidEvent:(struct __IOHIDEvent *)arg2;
-- (long long)_modifierFlags;
 - (void)_moveCoalescedTouchesFromHidEvent:(struct __IOHIDEvent *)arg1 toHidEvent:(struct __IOHIDEvent *)arg2;
 - (void)_moveTouchesFromView:(id)arg1 toView:(id)arg2;
 - (id)_rawCoalescedTouchesForTouch:(id)arg1;

@@ -28,6 +28,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2;
+- (BOOL)isExpiredForDate:(id)arg1;
 - (BOOL)isValidForTime:(id)arg1;
 
 @end

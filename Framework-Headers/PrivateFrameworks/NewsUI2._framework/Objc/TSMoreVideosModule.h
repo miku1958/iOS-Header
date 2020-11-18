@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/TSMoreVideosModuleType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface TSMoreVideosModule : NSObject <TSMoreVideosModuleType>
+@interface TSMoreVideosModule : NSObject
 {
     MISSING_TYPE *resolver;
 }

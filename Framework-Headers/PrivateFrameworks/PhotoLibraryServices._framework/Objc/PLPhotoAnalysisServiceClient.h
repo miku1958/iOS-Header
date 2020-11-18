@@ -37,7 +37,6 @@
 - (void)faceProcessingStatusForUserInterface:(CDUnknownBlockType)arg1;
 - (void)generateMemoriesRelatedDiagnosticsLogsWithReply:(CDUnknownBlockType)arg1;
 - (void)generateMemoriesWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)generateQuestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)generateSuggestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithLibraryURL:(id)arg1;
@@ -79,6 +78,7 @@
 - (id)requestDefaultsObjectForKey:(id)arg1 withError:(id *)arg2;
 - (BOOL)requestEnrichmentWithOptions:(id)arg1 error:(id *)arg2;
 - (id)requestExportGraphForPurpose:(id)arg1 error:(id *)arg2;
+- (void)requestGenerateQuestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)requestGraphPerformQuery:(id)arg1 error:(id *)arg2;
 - (void)requestGraphRebuildFractionCompletedWithReply:(CDUnknownBlockType)arg1;
 - (id)requestGraphSearchMetadataWithOptions:(id)arg1 error:(id *)arg2;
@@ -92,6 +92,7 @@
 - (id)requestInferredContactIdentifierForPersonLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)requestInvalidatePersistentCaches:(id *)arg1;
 - (BOOL)requestInvalidateTransientCaches:(id *)arg1;
+- (id)requestLastQuestionGenerationJobDateWithError:(id *)arg1;
 - (id)requestLocalizedSceneAncestryInformationWithError:(id *)arg1;
 - (id)requestM5CompatibleMemoriesReturningError:(id *)arg1;
 - (id)requestMemoryDebugInformationForMemoryWithLocalIdentifier:(id)arg1 error:(id *)arg2;
@@ -105,6 +106,7 @@
 - (id)requestRelatedDebugInformationBetweenReferenceAssetCollectionForLocalIdentifier:(id)arg1 andRelatedAssetCollectionForLocalIdentifier:(id)arg2 options:(id)arg3 precision:(unsigned long long)arg4 relatedType:(unsigned long long)arg5 error:(id *)arg6;
 - (id)requestRelatedMomentsForPersonIdentifiers:(id)arg1 withError:(id *)arg2;
 - (id)requestRepresentativeAssetsForAssetCollectionWithLocalIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (void)requestRunPFLWithAttachments:(id)arg1 recipeUserInfo:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (id)requestSearchIndexKeywordsForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 withOptions:(id)arg3 error:(id *)arg4;
 - (id)requestSearchableAssetUUIDsBySocialGroupForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 isFullAnalysis:(BOOL)arg3 withOptions:(id)arg4 error:(id *)arg5;
 - (BOOL)requestSetDefaultsObject:(id)arg1 forKey:(id)arg2 withError:(id *)arg3;

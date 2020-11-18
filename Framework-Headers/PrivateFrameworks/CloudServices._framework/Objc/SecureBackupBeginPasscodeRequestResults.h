@@ -30,7 +30,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithiCloudEnvironment:(id)arg1 escrowFederation:(id)arg2 escrowResponse:(id)arg3 uuid:(id)arg4;
+- (id)initWithStoredCertificate:(id)arg1 uuid:(id)arg2;
 
 @end
 

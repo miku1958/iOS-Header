@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)webView:(id)arg1 didScrollDocumentInFrameView:(id)arg2;
 - (unsigned long long)webView:(id)arg1 dragDestinationActionMaskForSession:(id)arg2;
 - (void)webView:(id)arg1 exceededApplicationCacheOriginQuotaForSecurityOrigin:(id)arg2 totalSpaceNeeded:(unsigned long long)arg3;
-- (id)webView:(id)arg1 generateReplacementFile:(id)arg2;
 - (void)webView:(id)arg1 makeFirstResponder:(id)arg2;
 - (void)webView:(id)arg1 mouseDidMoveOverElement:(id)arg2 modifierFlags:(unsigned long long)arg3;
 - (void)webView:(id)arg1 printFrameView:(id)arg2;
@@ -40,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)webView:(id)arg1 setStatusBarVisible:(BOOL)arg2;
 - (void)webView:(id)arg1 setStatusText:(id)arg2;
 - (void)webView:(id)arg1 setToolbarsVisible:(BOOL)arg2;
-- (BOOL)webView:(id)arg1 shouldReplaceUploadFile:(id)arg2 usingGeneratedFilename:(id *)arg3;
 - (BOOL)webViewAreToolbarsVisible:(id)arg1;
 - (void)webViewClose:(id)arg1;
 - (id)webViewFirstResponder:(id)arg1;

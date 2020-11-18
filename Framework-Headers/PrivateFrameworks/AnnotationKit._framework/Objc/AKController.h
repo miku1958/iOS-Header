@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPeripheralAvailabilityManager_iOS, AKSidecarController, AKSignatureModelController, AKSparseMutableControllerArray, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSMapTable, NSString, UIView;
+@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPeripheralAvailabilityManager_iOS, AKSidecarController, AKSignatureModelController, AKSparseMutableControllerArray, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSArray, NSMapTable, NSString, UIView;
 @protocol AKControllerDelegateProtocol, PKRulerHostingDelegate;
 
 @interface AKController : NSObject
@@ -51,6 +51,7 @@
     long long _lastPasteboardChangeCount;
     unsigned long long _creationCascadingMultiplier;
     AKPageController *_lastCreationCascadingPageController;
+    NSArray *_cachedKeyCommands;
     double _akModelToCanvasFixedPixelScaleOfFirstEncounteredPage;
     double _screenPixelsToCanvasPixelsDownscale;
     AKToolbarView *_modernToolbarView;
@@ -63,6 +64,7 @@
 @property (nonatomic) BOOL annotationEditingEnabled; // @synthesize annotationEditingEnabled=_annotationEditingEnabled;
 @property (strong) AKAttributeController *attributeController; // @synthesize attributeController=_attributeController;
 @property (copy) NSString *author; // @synthesize author=_author;
+@property (readonly, nonatomic) NSArray *cachedKeyCommands; // @synthesize cachedKeyCommands=_cachedKeyCommands;
 @property unsigned long long creationCascadingMultiplier; // @synthesize creationCascadingMultiplier=_creationCascadingMultiplier;
 @property unsigned long long currentPageIndex; // @synthesize currentPageIndex=_currentPageIndex;
 @property (weak) id<AKControllerDelegateProtocol> delegate; // @synthesize delegate=_delegate;
@@ -126,6 +128,7 @@
 - (void)applyCurrentCrop;
 - (void)beginLogging:(id)arg1 documentType:(id)arg2;
 - (BOOL)canBeginEditingTextAnnotation:(id)arg1;
+- (BOOL)canPerformKeyCommandAction:(SEL)arg1 withSender:(id)arg2 handled:(BOOL *)arg3;
 - (void)clearUndoStack;
 - (void)commitEditing;
 - (struct CGRect)contentAlignedRectForRect:(struct CGRect)arg1 onPageAtIndex:(unsigned long long)arg2;
@@ -152,6 +155,7 @@
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isOverlayViewLoadedAtIndex:(unsigned long long)arg1;
 - (BOOL)isPresentingPopover;
+- (id)keyCommandsForAnnotations;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)overlayViewAtIndex:(unsigned long long)arg1;
 - (id)pageControllerForAnnotation:(id)arg1;

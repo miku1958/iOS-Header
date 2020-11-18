@@ -10,13 +10,14 @@
 #import <AppleMediaServices/AMSBagConsumer_Project-Protocol.h>
 #import <AppleMediaServices/AMSRequestEncoding-Protocol.h>
 
-@class ACAccount, AMSKeychainOptions, AMSProcessInfo, NSDictionary, NSString, NSURLSessionTask;
+@class ACAccount, AMSKeychainOptions, AMSProcessInfo, AMSSigningSecurityService, NSDictionary, NSString, NSURLSessionTask;
 @protocol AMSBagProtocol, AMSResponseDecoding, AMSURLBagContract, OS_dispatch_queue;
 
 @interface AMSURLRequestEncoder : NSObject <AMSBagConsumer_Project, AMSBagConsumer, AMSRequestEncoding>
 {
     BOOL _compressRequestBody;
     BOOL _disableResponseDecoding;
+    BOOL _enableRemoteSecuritySigning;
     BOOL _includeClientVersions;
     BOOL _shouldSetCookiesFromResponse;
     BOOL _shouldSetStorefrontFromResponse;
@@ -35,6 +36,7 @@
     id<AMSURLBagContract> _bagContract;
     NSObject<OS_dispatch_queue> *_internalQueue;
     long long _encodeCount;
+    AMSSigningSecurityService *_signingService;
     NSURLSessionTask *_parentTask;
 }
 
@@ -50,6 +52,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long dialogOptions; // @synthesize dialogOptions=_dialogOptions;
 @property (nonatomic) BOOL disableResponseDecoding; // @synthesize disableResponseDecoding=_disableResponseDecoding;
+@property (nonatomic) BOOL enableRemoteSecuritySigning; // @synthesize enableRemoteSecuritySigning=_enableRemoteSecuritySigning;
 @property (nonatomic) long long encodeCount; // @synthesize encodeCount=_encodeCount;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeClientVersions; // @synthesize includeClientVersions=_includeClientVersions;
@@ -62,6 +65,7 @@
 @property (strong, nonatomic) id<AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
 @property (nonatomic) BOOL shouldSetCookiesFromResponse; // @synthesize shouldSetCookiesFromResponse=_shouldSetCookiesFromResponse;
 @property (nonatomic) BOOL shouldSetStorefrontFromResponse; // @synthesize shouldSetStorefrontFromResponse=_shouldSetStorefrontFromResponse;
+@property (readonly, nonatomic) AMSSigningSecurityService *signingService; // @synthesize signingService=_signingService;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;
 
@@ -70,6 +74,7 @@
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
 - (void).cxx_destruct;
+- (void)_addSecuritySigningHeadersToRequest:(id)arg1 buyParams:(id)arg2 bag:(id)arg3;
 - (id)_methodStringFromMethod:(long long)arg1;
 - (id)init;
 - (id)initWithBag:(id)arg1;

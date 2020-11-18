@@ -14,6 +14,7 @@
 {
     double _obfuscatedpTTR;
     ADAdVector *_adVector;
+    NSString *_addendum;
     NSString *_obfuscationID;
     struct {
         unsigned int obfuscatedpTTR:1;
@@ -21,7 +22,9 @@
 }
 
 @property (strong, nonatomic) ADAdVector *adVector; // @synthesize adVector=_adVector;
+@property (strong, nonatomic) NSString *addendum; // @synthesize addendum=_addendum;
 @property (readonly, nonatomic) BOOL hasAdVector;
+@property (readonly, nonatomic) BOOL hasAddendum;
 @property (nonatomic) BOOL hasObfuscatedpTTR;
 @property (readonly, nonatomic) BOOL hasObfuscationID;
 @property (nonatomic) double obfuscatedpTTR; // @synthesize obfuscatedpTTR=_obfuscatedpTTR;

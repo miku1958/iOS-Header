@@ -44,11 +44,11 @@
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)localizedSubtitleFormatStringForLanguage:(id)arg1;
-- (id)localizedTitleFormatStringForLanguage:(id)arg1;
+- (id)localizedSubtitleFormatStringWithLocalizer:(id)arg1;
+- (id)localizedTitleFormatStringWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 
 @end

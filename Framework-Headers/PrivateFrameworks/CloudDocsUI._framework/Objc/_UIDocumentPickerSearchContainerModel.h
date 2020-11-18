@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 
 - (void).cxx_destruct;
-- (struct _UIArrayController *)_createObserver;
+- (id)_createObserver;
 - (void)_updateObserverForQuery;
 - (void)arrayController:(id)arg1 modelChanged:(id)arg2 differences:(id)arg3;
 - (id)displayTitle;

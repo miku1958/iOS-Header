@@ -46,6 +46,7 @@
 - (id)_relevaneProviderWithType:(id)arg1 withOptions:(id)arg2;
 - (void)_removeRelevanceValueForProvider:(id)arg1;
 - (void)_scaleRelevanceProviderValues:(id)arg1 values:(id)arg2;
+- (void)_setupRelevanceProviderManagers;
 - (void)accessHistogramForFeature:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)addRelevanceProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)containsRelevanceProvider:(id)arg1;

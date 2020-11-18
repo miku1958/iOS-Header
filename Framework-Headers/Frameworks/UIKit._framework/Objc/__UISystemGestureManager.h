@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     UIGestureRecognizer *_exclusiveTouchGesture;
     UIGestureRecognizer *_pendingSwipeGesture;
     UIGestureRecognizer *_catchEdgeSwipeFailureGesture;
+    UIGestureRecognizer *_directTouchGesture;
     BKSTouchStream *_touchStream;
 }
 
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didProcessPendingSwipeBegan; // @synthesize didProcessPendingSwipeBegan=_didProcessPendingSwipeBegan;
 @property (nonatomic) BOOL didSeeExclusiveTouchBegan; // @synthesize didSeeExclusiveTouchBegan=_didSeeExclusiveTouchBegan;
+@property (strong, nonatomic) UIGestureRecognizer *directTouchGesture; // @synthesize directTouchGesture=_directTouchGesture;
 @property (strong, nonatomic) UIGestureRecognizer *exclusiveTouchGesture; // @synthesize exclusiveTouchGesture=_exclusiveTouchGesture;
 @property (readonly, copy, nonatomic) NSSet *gestureRecognizers;
 @property (readonly) unsigned long long hash;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_addInternalGesturesToView:(id)arg1;
 - (void)_catchSwipeFailureGestureChanged:(id)arg1;
+- (void)_directTouchDown:(id)arg1;
 - (unsigned char)_dispatchModeForExternalGestureCompletion;
 - (void)_exclusiveTouchGestureChanged:(id)arg1;
 - (void)_exclusiveTouchGestureDidTerminate:(id)arg1;

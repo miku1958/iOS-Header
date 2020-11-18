@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaUI/TSAppMonitorType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface TSAppMonitor : NSObject <TSAppMonitorType>
+@interface TSAppMonitor : NSObject
 {
     MISSING_TYPE *isActive;
     MISSING_TYPE *onWindowDidBecomeBackgroundBlock;

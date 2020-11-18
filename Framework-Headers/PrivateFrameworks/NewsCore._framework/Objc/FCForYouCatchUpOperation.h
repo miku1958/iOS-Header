@@ -44,10 +44,11 @@
 - (void)_addConditionWaiter:(id)arg1;
 - (void)_serviceConditionWaiters;
 - (id)allFeedItemsAfterTransformation:(id)arg1;
-- (id)allNonEditorialFeedItemsAfterTransformation:(id)arg1;
 - (id)catchUpErrorForContentTypes:(long long)arg1;
 - (void)enumerateEditorialSectionsByRecencyAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)initWithContext:(id)arg1 configuration:(id)arg2 dateRange:(id)arg3 contentTypes:(long long)arg4 background:(BOOL)arg5;
+- (BOOL)isWaitingForContentTypes:(long long)arg1;
+- (id)nonEditorialFeedItemsAfterTransformation:(id)arg1;
 - (void)operationDidFinishWithError:(id)arg1;
 - (id)orphanedEditorialHeadlinesAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2;
 - (void)performOperation;

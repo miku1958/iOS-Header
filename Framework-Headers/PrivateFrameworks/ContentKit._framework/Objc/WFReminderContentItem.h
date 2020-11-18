@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) EKReminder *reminder;
 
 + (id)countDescription;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (BOOL)hasLibrary;
 + (id)itemWithEKReminder:(id)arg1 fromEventStore:(id)arg2;
 + (id)ownedTypes;

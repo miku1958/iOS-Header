@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlaySupport/CPSInheritedBackgroundColorView.h>
+#import <UIKit/UIView.h>
 
 #import <CarPlaySupport/CPSNavigationDisplaying-Protocol.h>
 
-@class CPSHairlineView, NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class CPSCardPlatterView, CPSHairlineView, NSArray, NSMutableArray, NSMutableDictionary, NSString;
 
-@interface CPSUpcomingManeuversCardView : CPSInheritedBackgroundColorView <CPSNavigationDisplaying>
+@interface CPSUpcomingManeuversCardView : UIView <CPSNavigationDisplaying>
 {
+    BOOL _usesDefaultBackgroundColor;
     BOOL _saveManeuversToDisk;
+    CPSCardPlatterView *_platterView;
     NSArray *_maneuvers;
     NSMutableDictionary *_currentTravelEstimatesForManeuverIdentifiers;
     NSArray *_maneuverStyles;
@@ -29,20 +31,22 @@
 @property (readonly, nonatomic) NSArray *maneuverStyles; // @synthesize maneuverStyles=_maneuverStyles;
 @property (readonly, nonatomic) NSMutableArray *maneuverViewStack; // @synthesize maneuverViewStack=_maneuverViewStack;
 @property (readonly, nonatomic) NSArray *maneuvers; // @synthesize maneuvers=_maneuvers;
+@property (strong, nonatomic) CPSCardPlatterView *platterView; // @synthesize platterView=_platterView;
 @property (nonatomic) BOOL saveManeuversToDisk; // @synthesize saveManeuversToDisk=_saveManeuversToDisk;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL usesDefaultBackgroundColor; // @synthesize usesDefaultBackgroundColor=_usesDefaultBackgroundColor;
 @property (readonly, nonatomic) NSMutableArray *verticalConstraints; // @synthesize verticalConstraints=_verticalConstraints;
 
 - (void).cxx_destruct;
-- (void)_clearManeuvers;
 - (id)_maneuverViews;
-- (void)_resetToFull;
+- (id)_secondaryManeuverViewIfExists;
+- (void)_updateHairlineViewBackgroundColor;
+- (void)_updateSecondaryManeuverBackgroundColor;
 - (void)_updateVerticalConstraints;
-- (void)backgroundColorDidChange;
-- (id)init;
+- (id)initWithFrame:(struct CGRect)arg1 backgroundColor:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
 - (void)showManeuvers:(id)arg1 usingDisplayStyles:(id)arg2;
+- (void)sizeToFitSize:(struct CGSize)arg1;
 - (void)updateEstimates:(id)arg1 forManeuver:(id)arg2;
 
 @end

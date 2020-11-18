@@ -14,6 +14,7 @@
 + (struct __SecCertificate *)copyCertificateWithPersistentID:(id)arg1;
 + (struct __SecCertificate *)copyCertificateWithPersistentID:(id)arg1 useSystemKeychain:(BOOL)arg2;
 + (struct __SecCertificate *)copyCertificateWithPersistentID:(id)arg1 useSystemKeychain:(BOOL)arg2 enforcePersonalPersona:(BOOL)arg3;
++ (id)copyCertificatesWithPersistentIDs:(id)arg1 useSystemKeychain:(BOOL)arg2;
 + (struct __SecIdentity *)copyIdentityWithPersistentID:(id)arg1;
 + (struct __SecIdentity *)copyIdentityWithPersistentID:(id)arg1 useSystemKeychain:(BOOL)arg2;
 + (struct __SecIdentity *)copyIdentityWithPersistentID:(id)arg1 useSystemKeychain:(BOOL)arg2 enforcePersonalPersona:(BOOL)arg3;

@@ -34,7 +34,7 @@
 + (id)ppFeedbackItemToPPPBFeedbackItem:(id)arg1;
 + (id)recordsForNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3;
 + (float)resolvedPerRecordDecayRateForRecord:(id)arg1 perRecordDecayRate:(float)arg2;
-+ (struct PPScoredItem *)scoredEntityFromRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4 sourceStats:(id)arg5 scoreInterpreter:(id)arg6;
++ (id)scoredEntityFromRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4 sourceStats:(id)arg5 scoreInterpreter:(id)arg6;
 + (void)sortAndTruncate:(id)arg1 queryLimit:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)_coalesceScoredNamedEntities:(id)arg1;

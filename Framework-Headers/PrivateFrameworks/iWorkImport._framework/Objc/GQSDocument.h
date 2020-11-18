@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
     BOOL mGeneratingThumbnail;
     BOOL mThumbnailGenerationDone;
     unsigned int mTextScale;
-    set_3d57cb01 *mWrapPoints;
+    set_978dc09f *mWrapPoints;
     struct __CFDictionary *mBundleResourceUriMap;
     GQDSStylesheet *mStylesheet;
     BOOL mIsReadingStorageAttachments;
@@ -92,7 +92,7 @@ __attribute__((visibility("hidden")))
 - (id)tableState;
 - (id)topObjectOfClass:(Class)arg1;
 - (struct __CFString *)uriForBundleResource:(struct __CFString *)arg1 ofType:(struct __CFString *)arg2;
-- (const set_3d57cb01 *)wrapPoints;
+- (const set_978dc09f *)wrapPoints;
 
 @end
 

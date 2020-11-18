@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, SSLookupItem, SSLookupItemOffer, WLKBasicContentMetadata, WLKChannelDetails, WLKComingSoonInfo, WLKLocale, WLKPlayEvent, WLKStoreOffer;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, SSLookupItem, SSLookupItemOffer, WLKBasicContentMetadata, WLKChannelDetails, WLKComingSoonInfo, WLKLocale, WLKOfferListing, WLKPlayEvent, WLKStoreOffer;
 
 @interface WLKPlayable : NSObject
 {
@@ -42,8 +42,8 @@
     NSDictionary *_punchoutUrls;
     WLKComingSoonInfo *_comingSoonInfo;
     NSArray *_movieClips;
-    NSArray *_storeOffers;
     NSArray *_subscriptionOffers;
+    WLKOfferListing *_offerListing;
     NSDictionary *_itsData;
     SSLookupItem *_lookupItem;
     NSArray *_offers;
@@ -80,13 +80,14 @@
 @property (readonly, nonatomic, getter=isiTunes) BOOL itunes; // @synthesize itunes=_itunes;
 @property (readonly, copy, nonatomic) SSLookupItem *lookupItem; // @synthesize lookupItem=_lookupItem;
 @property (readonly, copy, nonatomic) NSArray *movieClips; // @synthesize movieClips=_movieClips;
+@property (readonly, copy, nonatomic) WLKOfferListing *offerListing; // @synthesize offerListing=_offerListing;
 @property (readonly, copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property (readonly, nonatomic) WLKPlayEvent *playEvent; // @synthesize playEvent=_playEvent;
 @property (readonly, copy, nonatomic) NSString *playableID; // @synthesize playableID=_playableID;
 @property (readonly, copy, nonatomic) WLKLocale *primaryLocale; // @synthesize primaryLocale=_primaryLocale;
 @property (readonly, copy, nonatomic) NSDictionary *punchoutUrls; // @synthesize punchoutUrls=_punchoutUrls;
 @property (readonly, copy, nonatomic) NSDate *startAirTime; // @synthesize startAirTime=_startAirTime;
-@property (readonly, copy, nonatomic) NSArray *storeOffers; // @synthesize storeOffers=_storeOffers;
+@property (readonly, copy, nonatomic) NSArray *storeOffers;
 @property (readonly, copy, nonatomic) NSArray *subscriptionOffers; // @synthesize subscriptionOffers=_subscriptionOffers;
 @property (readonly, nonatomic, getter=isSubtitled) BOOL subtitled; // @synthesize subtitled=_subtitled;
 @property (readonly, copy, nonatomic) NSArray *subtitledLocales; // @synthesize subtitledLocales=_subtitledLocales;
@@ -96,9 +97,7 @@
 
 + (id)playablesWithDictionaries:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
-- (id)_filteredStoreContentSource:(id)arg1;
 - (id)_localesArrayForDictionary:(id)arg1 andKey:(id)arg2;
-- (BOOL)_supportsHD;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

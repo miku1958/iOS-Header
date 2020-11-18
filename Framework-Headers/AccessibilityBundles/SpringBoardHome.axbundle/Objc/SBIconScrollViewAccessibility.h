@@ -16,6 +16,7 @@
 - (void)_accessibilityActivateSpotlight;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (id)_accessibilityCurrentFolderIconForPage:(long long)arg1;
+- (BOOL)_accessibilityRemembersLastFocusedChild;
 - (BOOL)_accessibilitySBScrollToNextPage;
 - (BOOL)_accessibilitySBScrollToPreviousPage;
 - (id)_accessibilityScrollDescriptionForCurrentPage:(long long)arg1;

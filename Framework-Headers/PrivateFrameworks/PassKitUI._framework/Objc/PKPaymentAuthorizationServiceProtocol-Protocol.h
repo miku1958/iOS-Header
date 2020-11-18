@@ -10,6 +10,7 @@
 
 @protocol PKPaymentAuthorizationServiceProtocol <NSObject>
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
+- (void)authorizationDidAuthorizeContextCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizeDisbursementWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;

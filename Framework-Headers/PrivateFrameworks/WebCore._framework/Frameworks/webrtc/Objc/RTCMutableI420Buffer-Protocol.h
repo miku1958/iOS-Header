@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <webrtc/RTCI420Buffer-Protocol.h>
 #import <webrtc/RTCMutableYUVPlanarBuffer-Protocol.h>
-#import <webrtc/WK_RTCI420Buffer-Protocol.h>
 
-@protocol RTCMutableI420Buffer <WK_RTCI420Buffer, RTCMutableYUVPlanarBuffer>
+@protocol RTCMutableI420Buffer <RTCI420Buffer, RTCMutableYUVPlanarBuffer>
 @end
 

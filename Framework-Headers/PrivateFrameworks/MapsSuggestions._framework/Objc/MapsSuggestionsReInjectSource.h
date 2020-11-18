@@ -24,8 +24,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-+ (struct NSArray *)_entriesFromFileAtPath:(id)arg1;
-+ (struct NSArray *)_entriesFromMultilineString:(id)arg1;
++ (id)_entriesFromFileAtPath:(id)arg1;
++ (id)_entriesFromMultilineString:(id)arg1;
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
 - (void).cxx_destruct;

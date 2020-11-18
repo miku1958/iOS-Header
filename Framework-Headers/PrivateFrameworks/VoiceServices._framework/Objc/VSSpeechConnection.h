@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_connectionInvalidated;
 - (id)_remoteObject;
+- (id)_remoteObjectSync;
 - (id)_remoteObjectWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
 - (id)availableVoicesForLanguageCode:(id)arg1;
@@ -54,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSystemSpeakingOnBehalfOfCurrentConnection;
 - (void)killDaemon;
 - (void)pauseCurrentSpeechRequestAtMark:(long long)arg1;
-- (void)prewarmIfNeededWithRequest:(id)arg1;
+- (void)prewarmIfNeededWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)queryPhaticCapabilityWithRequest:(id)arg1;
 - (void)setAutoDownloadedVoiceAssets:(id)arg1 withClientID:(id)arg2;
 - (void)setLogToFile:(BOOL)arg1;

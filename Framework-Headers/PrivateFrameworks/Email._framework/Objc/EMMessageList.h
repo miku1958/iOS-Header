@@ -12,7 +12,7 @@
 #import <Email/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 #import <Email/EMMessageListQueryResultsObserver-Protocol.h>
 
-@class EFLazyCache, EMCollectionItemIDStateCapturer, EMMailboxScope, EMMessageListChangeObserverHelper, EMMessageRepository, EMObjectID, EMThreadScope, NSMapTable, NSMutableDictionary, NSObject, NSSet, NSString;
+@class EFLazyCache, EMCollectionItemIDStateCapturer, EMMailboxScope, EMMessageRepository, EMObjectID, EMThreadScope, NSMapTable, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol EFScheduler, OS_dispatch_queue;
 
 @interface EMMessageList : EMCollection <EFContentProtectionObserver, EFLoggable, EMCollectionChangeObserver, EMCollectionItemIDStateCapturerDelegate, EMMessageListQueryResultsObserver>
@@ -26,13 +26,11 @@
     id<EFScheduler> _observerScheduler;
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     EMMessageList *_unfilteredMessageList;
-    EMMessageListChangeObserverHelper *_changeObserverHelper;
     NSSet *_recentlyCollapsedItemIDs;
     EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
 @property (readonly, nonatomic) EFLazyCache *cache; // @synthesize cache=_cache;
-@property (strong, nonatomic) EMMessageListChangeObserverHelper *changeObserverHelper; // @synthesize changeObserverHelper=_changeObserverHelper;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *contentProtectionQueue; // @synthesize contentProtectionQueue=_contentProtectionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -103,7 +101,7 @@
 - (void)queryMatchedMovedObjectIDs:(id)arg1 before:(id)arg2;
 - (void)queryMatchedOldestItemsUpdatedForMailboxesObjectIDs:(id)arg1;
 - (BOOL)recentlyCollapsedThreadContainsItemID:(id)arg1;
-- (void)removeItemIDs:(id)arg1;
+- (id)removeItemIDs:(id)arg1;
 - (void)setRepository:(id)arg1;
 - (void)stopObserving:(id)arg1;
 

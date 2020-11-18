@@ -115,7 +115,7 @@
 - (void)associateAsset:(id)arg1 withTile:(void *)arg2;
 - (void)checkInTile:(void *)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
-- (BOOL)confirmAsset:(id)arg1 matchesView:(id)arg2 alertOnInternal:(BOOL)arg3;
+- (BOOL)confirmAsset:(id)arg1 matchesView:(id)arg2;
 - (id)contentAssetReferenceAtPoint:(struct CGPoint)arg1 outContentFrame:(out struct CGRect *)arg2;
 - (void)dealloc;
 - (void)dismissPresentedViewController:(id)arg1;

@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/ARResultData-Protocol.h>
+#import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARVideoFormat, ARWorldTrackingState, NSDictionary, NSString;
+@class ARLineCloud, ARVideoFormat, ARWorldTrackingState, NSDictionary, NSString;
 
-@interface ARWorldTrackingPoseData : NSObject <ARResultData, NSSecureCoding>
+@interface ARWorldTrackingPoseData : NSObject <ARResultData, NSSecureCoding, NSCopying>
 {
     double _timestamp;
     ARWorldTrackingState *_worldTrackingState;
     NSDictionary *_vioStateDetails;
+    ARLineCloud *_lineCloud;
     ARVideoFormat *_currentlyActiveVideoFormat;
     long long _worldMappingStatus;
     CDStruct_14d5dc5e _visionCameraTransform;
@@ -27,6 +29,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) ARLineCloud *lineCloud; // @synthesize lineCloud=_lineCloud;
 @property (readonly) Class superclass;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (copy, nonatomic) NSDictionary *vioStateDetails; // @synthesize vioStateDetails=_vioStateDetails;
@@ -36,6 +39,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTimestamp:(double)arg1;

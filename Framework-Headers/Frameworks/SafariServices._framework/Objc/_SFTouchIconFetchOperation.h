@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSTouchIconFetchOperation.h>
+#import <SafariSharedUI/WBSTouchIconFetchOperation.h>
 
 @interface _SFTouchIconFetchOperation : WBSTouchIconFetchOperation
 {

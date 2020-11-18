@@ -18,6 +18,7 @@
     long long _shuffleState;
     long long _repeatState;
     NSNumber *_volume;
+    NSNumber *_muted;
     NSString *_mediaUniqueIdentifier;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *mediaUniqueIdentifier; // @synthesize mediaUniqueIdentifier=_mediaUniqueIdentifier;
+@property (copy) NSNumber *muted; // @synthesize muted=_muted;
 @property (nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
 @property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic) long long repeatState; // @synthesize repeatState=_repeatState;

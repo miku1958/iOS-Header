@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/TSForYouTodayModuleType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface TSForYouTodayModule : NSObject <TSForYouTodayModuleType>
+@interface TSForYouTodayModule : NSObject
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;

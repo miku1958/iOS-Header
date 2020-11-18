@@ -48,7 +48,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_applyColor:(struct UIColor *)arg1 toShapeLayers:(id)arg2 animated:(BOOL)arg3;
+- (void)_applyColor:(id)arg1 toShapeLayers:(id)arg2 animated:(BOOL)arg3;
 - (void)_applyPrimaryColorAnimated:(BOOL)arg1;
 - (void)_applySecondaryColorAnimated:(BOOL)arg1;
 - (void)_continueHoldingStateForPathAtIndex:(unsigned long long)arg1 withTransitionIndex:(unsigned long long)arg2;
@@ -78,10 +78,10 @@
 - (double)pointScaleToMatchBoundsSize:(struct CGSize)arg1;
 - (void)setContentLayerOpacity:(double)arg1 withDuration:(double)arg2;
 - (void)setPathState:(id)arg1 forLayer:(id)arg2;
-- (void)setPrimaryColor:(struct UIColor *)arg1 animated:(BOOL)arg2;
+- (void)setPrimaryColor:(id)arg1 animated:(BOOL)arg2;
 - (void)setProgress:(double)arg1 withDuration:(double)arg2;
 - (void)setRecognizedIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setSecondaryColor:(struct UIColor *)arg1 animated:(BOOL)arg2;
+- (void)setSecondaryColor:(id)arg1 animated:(BOOL)arg2;
 - (void)setState:(long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

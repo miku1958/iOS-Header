@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_properNameForString:(id)arg1;
++ (void)attributedString:(id)arg1 withIdentifiersBlock:(CDUnknownBlockType)arg2;
 + (id)attributedStringForDictationResult:(id)arg1 andCorrectionIdentifier:(id)arg2;
 + (id)bestInterpretationForDictationResult:(id)arg1;
 + (id)bestInterpretationForPhrases:(id)arg1;
@@ -23,6 +24,9 @@ __attribute__((visibility("hidden")))
 + (id)interpretationFromAFInterpretation:(id)arg1;
 + (id)interpretationFromAFTokens:(id)arg1;
 + (void)logSpeechAlternativeReplacement:(id)arg1 originalText:(id)arg2 replacementText:(id)arg3 index:(unsigned long long)arg4;
++ (unsigned long long)maxLoggableLengthOfInsertionBySubstitution:(id)arg1;
++ (unsigned long long)maxLoggableLengthOfInsertionWithDeletion:(id)arg1;
++ (unsigned long long)maxLoggableLengthOfInsertionWithoutDeletion:(id)arg1;
 + (id)metadataDictionaryForCorrectionIdentifier:(id)arg1;
 + (BOOL)needsLeadingSpaceForPhrases:(id)arg1 secureInput:(BOOL)arg2;
 + (BOOL)needsTrailingSpaceForPhrases:(id)arg1 secureInput:(BOOL)arg2;

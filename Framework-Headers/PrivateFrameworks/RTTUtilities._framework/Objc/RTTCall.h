@@ -36,13 +36,13 @@
 @property (strong, nonatomic) AVCVirtualTTYDevice *ttyDevice; // @synthesize ttyDevice=_ttyDevice;
 
 - (void).cxx_destruct;
-- (BOOL)_handleInitialGarbageTextFromTTY:(struct NSString *)arg1 device:(id)arg2;
-- (struct NSString *)_processText:(struct NSString *)arg1 withDevice:(id)arg2;
+- (BOOL)_handleInitialGarbageTextFromTTY:(id)arg1 device:(id)arg2;
+- (id)_processText:(id)arg1 withDevice:(id)arg2;
 - (void)audioSessionWasInterrupted:(id)arg1;
 - (void)callDidReceiveText:(id)arg1 forUtterance:(id)arg2;
 - (void)dealloc;
 - (void)device:(id)arg1 didReceiveCharacter:(unsigned short)arg2;
-- (void)device:(id)arg1 didReceiveText:(struct NSString *)arg2;
+- (void)device:(id)arg1 didReceiveText:(id)arg2;
 - (void)device:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
 - (void)deviceDidStop:(id)arg1;
 - (id)initWithCall:(id)arg1;

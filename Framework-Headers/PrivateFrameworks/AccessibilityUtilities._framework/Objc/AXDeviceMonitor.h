@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSRunLoop;
+@class NSMutableSet, NSRunLoop;
 @protocol AXDeviceMonitorDelegate;
 
 @interface AXDeviceMonitor : NSObject
@@ -14,6 +14,7 @@
     NSRunLoop *_targetRunLoop;
     struct __IOHIDManager *_hidManager;
     unsigned long long _state;
+    NSMutableSet *_devices;
     id<AXDeviceMonitorDelegate> _delegate;
 }
 
@@ -22,9 +23,12 @@
 + (id)bluetoothKeyboardDevices;
 - (void).cxx_destruct;
 - (void)_commonInitWithRunLoop:(id)arg1;
+- (id)_existingDevicesForDevice:(struct __IOHIDDevice *)arg1;
 - (void)begin;
 - (id)copyDevices;
 - (void)dealloc;
+- (void)didAddDevice:(struct __IOHIDDevice *)arg1;
+- (void)didRemoveDevice:(struct __IOHIDDevice *)arg1;
 - (void)informDelegate;
 - (id)initWithMatchingDictionary:(id)arg1 callbackRunLoop:(id)arg2;
 - (id)initWithMatchingMultiple:(id)arg1 callbackRunLoop:(id)arg2;

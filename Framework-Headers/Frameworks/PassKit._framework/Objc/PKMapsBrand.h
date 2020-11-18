@@ -41,6 +41,7 @@
 @property (copy, nonatomic, setter=setURL:) NSURL *url; // @synthesize url=_url;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
++ (void)deleteFromCloudStoreRecord:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
@@ -56,7 +57,7 @@
 - (BOOL)isEqualToMapsBrand:(id)arg1;
 - (unsigned long long)itemType;
 - (id)jsonRepresentation;
-- (id)recordTypesAndNames;
+- (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 
 @end
 

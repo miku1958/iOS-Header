@@ -14,12 +14,13 @@
 #import <SpringBoardHome/UIContextMenuInteractionDelegate-Protocol.h>
 #import <SpringBoardHome/UIDragInteractionDelegate-Protocol.h>
 #import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
+#import <SpringBoardHome/_UICursorInteractionDelegate-Protocol.h>
 #import <SpringBoardHome/_UISettingsKeyObserver-Protocol.h>
 
-@class NSArray, NSCountedSet, NSDate, NSHashTable, NSMapTable, NSString, NSURL, SBCloseBoxView, SBFParallaxSettings, SBFolderIcon, SBFolderIconImageCache, SBHIconImageCache, SBHRecentsDocumentExtensionProvider, SBIcon, SBIconImageCrossfadeView, SBIconImageView, UIColor, UIContextMenuConfiguration, UIContextMenuInteraction, UIDragInteraction, UIFont, UIImage, UILongPressGestureRecognizer, UITapGestureRecognizer, UIViewPropertyAnimator, _UILegibilitySettings, _UIStatesFeedbackGenerator;
+@class NSArray, NSCountedSet, NSDate, NSHashTable, NSMapTable, NSString, NSURL, SBCloseBoxView, SBFParallaxSettings, SBFolderIcon, SBFolderIconImageCache, SBHIconImageCache, SBHRecentsDocumentExtensionProvider, SBIcon, SBIconImageCrossfadeView, SBIconImageView, UIColor, UIContextMenuConfiguration, UIContextMenuInteraction, UIDragInteraction, UIFont, UIImage, UILongPressGestureRecognizer, UITapGestureRecognizer, UIViewPropertyAnimator, _UICursorInteraction, _UILegibilitySettings, _UIStatesFeedbackGenerator;
 @protocol BSInvalidatable, SBIconAccessoryView, SBIconContinuityInfo, SBIconLabelAccessoryView, SBIconLabelView, SBIconListLayout, SBIconListLayoutProvider, SBIconViewDelegate;
 
-@interface SBIconView : UIView <_UISettingsKeyObserver, UIGestureRecognizerDelegate, UIDragInteractionDelegate, SBCloseBoxViewDelegate, UIContextMenuInteractionDelegate, SBSHardwareButtonEventConsuming, SBIconObserver, SBReusableView, SBIconAccessoryInfoProvider>
+@interface SBIconView : UIView <_UISettingsKeyObserver, UIGestureRecognizerDelegate, UIDragInteractionDelegate, SBCloseBoxViewDelegate, UIContextMenuInteractionDelegate, SBSHardwareButtonEventConsuming, _UICursorInteractionDelegate, SBIconObserver, SBReusableView, SBIconAccessoryInfoProvider>
 {
     SBIcon *_icon;
     NSString *_iconLocation;
@@ -64,15 +65,18 @@
     unsigned int _contextMenuInteractionActive:1;
     unsigned int _disallowsBlockedForScreenTimeExpiration:1;
     unsigned int _imageLoadingBehavior:2;
+    unsigned int _disallowCursorInteraction:1;
     double _iconContentScale;
     UIView *_scalingContainer;
     struct CGRect _visibleImageRect;
+    struct UIEdgeInsets _cursorHitTestPadding;
     NSHashTable *_observers;
     NSCountedSet *_forbidEditingModeReasons;
     struct SBIconImageInfo _iconImageInfo;
     UIFont *_labelFont;
     SBHRecentsDocumentExtensionProvider *_recentsDocumentExtensionProvider;
     _UIStatesFeedbackGenerator *_feedbackGenerator;
+    BOOL _allIconElementsButLabelHidden;
     BOOL _enabled;
     BOOL _paused;
     id<SBIconViewDelegate> _delegate;
@@ -99,14 +103,15 @@
     UIContextMenuConfiguration *_activeContextMenuConfiguration;
     NSString *_presentedWidgetBundleIdentifier;
     id<BSInvalidatable> _homeButtonPressConsumingAssertion;
-    SBIconView *_activePreviewIcon;
     NSMapTable *_pendingAnimatorCompletionsTable;
+    _UICursorInteraction *_iconViewCursorInteraction;
+    _UICursorInteraction *_closeBoxCursorInteraction;
 }
 
 @property (strong, nonatomic) UIColor *accessibilityTintColor; // @synthesize accessibilityTintColor=_accessibilityTintColor;
 @property (strong, nonatomic) UIViewPropertyAnimator *accessoryViewAnimator; // @synthesize accessoryViewAnimator=_accessoryViewAnimator;
 @property (strong, nonatomic) UIContextMenuConfiguration *activeContextMenuConfiguration; // @synthesize activeContextMenuConfiguration=_activeContextMenuConfiguration;
-@property (weak, nonatomic) SBIconView *activePreviewIcon; // @synthesize activePreviewIcon=_activePreviewIcon;
+@property (nonatomic) BOOL allIconElementsButLabelHidden; // @synthesize allIconElementsButLabelHidden=_allIconElementsButLabelHidden;
 @property (nonatomic) BOOL allowsBlockedForScreenTimeExpiration;
 @property (nonatomic) BOOL allowsCloseBox;
 @property (nonatomic) BOOL allowsEditingAnimation;
@@ -123,6 +128,7 @@
 @property (readonly, nonatomic) BOOL canBeginDrags;
 @property (readonly, nonatomic) BOOL canShowCloseBox;
 @property (readonly, nonatomic) unsigned long long centerVisibleMiniIconIndex;
+@property (readonly, nonatomic) _UICursorInteraction *closeBoxCursorInteraction; // @synthesize closeBoxCursorInteraction=_closeBoxCursorInteraction;
 @property (nonatomic) unsigned long long configurationOptions;
 @property (readonly, nonatomic) UIView *contentContainerView;
 @property (readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
@@ -134,6 +140,7 @@
 @property (readonly, getter=isCrossfadingImageWithView) BOOL crossfadingImageWithView;
 @property (readonly, nonatomic) long long currentAccessoryType;
 @property (readonly, nonatomic) long long currentLabelAccessoryType;
+@property (nonatomic) struct UIEdgeInsets cursorHitTestPadding; // @synthesize cursorHitTestPadding=_cursorHitTestPadding;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBIconViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -169,6 +176,7 @@
 @property (readonly, nonatomic) UIImage *iconImageSnapshot;
 @property (readonly, nonatomic) struct CGSize iconImageVisibleSize;
 @property (nonatomic) double iconLabelAlpha; // @synthesize iconLabelAlpha=_iconLabelAlpha;
+@property (readonly, nonatomic) _UICursorInteraction *iconViewCursorInteraction; // @synthesize iconViewCursorInteraction=_iconViewCursorInteraction;
 @property (readonly, nonatomic) struct CGSize iconViewSize;
 @property (nonatomic) unsigned long long imageLoadingBehavior;
 @property (nonatomic, getter=isInDock) BOOL inDock;
@@ -237,6 +245,7 @@
 + (id)labelConfigurationForListLayout:(id)arg1 contentSizeCategory:(id)arg2 options:(unsigned long long)arg3;
 + (struct CGSize)maxLabelSizeForIconImageSize:(struct CGSize)arg1;
 + (struct CGSize)maxLabelSizeForListLayout:(id)arg1 contentSizeCategory:(id)arg2 options:(unsigned long long)arg3;
++ (BOOL)supportsCursorInteraction;
 + (BOOL)supportsDragInteraction;
 + (BOOL)supportsPreviewInteraction;
 + (BOOL)supportsTapGesture;
@@ -284,8 +293,10 @@
 - (struct CGRect)_frameForLabelAccessoryViewWithLabelFrame:(struct CGRect)arg1 labelImage:(id)arg2 labelImageParameters:(id)arg3 imageFrame:(struct CGRect)arg4;
 - (struct CGRect)_frameForVisibleImage;
 - (void)_handleAddWidgetRequest:(id)arg1;
+- (void)_handleTap;
 - (id)_iconImageView;
 - (void)_invalidateHomeButtonPressConsumingAssertion;
+- (BOOL)_isCursorInteractionEnabled;
 - (BOOL)_isShowingAccessoryView;
 - (BOOL)_isShowingCloseBox;
 - (double)_labelBaselineOffsetFromImage;
@@ -311,6 +322,7 @@
 - (void)_updateBrightness;
 - (void)_updateCloseBoxAnimated:(BOOL)arg1;
 - (void)_updateConfigurationForIconImageView:(id)arg1;
+- (void)_updateCursorInteractionsEnabled;
 - (void)_updateDragInteractionLiftDelay;
 - (void)_updateFrameToIconViewSize;
 - (void)_updateIconImageViewAnimated:(BOOL)arg1;
@@ -343,11 +355,15 @@
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)currentImageView;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didMoveToWindow;
+- (BOOL)disallowCursorInteraction;
 - (void)dismissContextMenuWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayedLabelFont;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
@@ -379,7 +395,6 @@
 - (struct CGRect)frameForMiniIconAtIndex:(unsigned long long)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)hideActivatingOrDismissingPreview;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)iconAccessoriesDidUpdate:(id)arg1;
 - (double)iconImageCornerRadius;
@@ -419,11 +434,11 @@
 - (void)scrollToGapOrTopIfFullOfPage:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)scrollToTopOfFirstPageAnimated:(BOOL)arg1;
 - (void)scrollToTopOfPage:(unsigned long long)arg1 animated:(BOOL)arg2;
-- (void)setAllIconElementsButLabelToHidden:(BOOL)arg1;
 - (void)setBackgroundAndIconGridImageAlpha:(double)arg1;
 - (void)setContinuityInfo:(id)arg1 animated:(BOOL)arg2;
 - (void)setCrossfadeCornerRadius:(double)arg1;
 - (void)setCrossfadeFraction:(double)arg1;
+- (void)setDisallowCursorInteraction:(BOOL)arg1;
 - (void)setDragging:(BOOL)arg1;
 - (void)setDragging:(BOOL)arg1 updateImmediately:(BOOL)arg2;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;

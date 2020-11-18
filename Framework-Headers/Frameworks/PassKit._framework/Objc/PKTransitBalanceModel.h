@@ -6,27 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, PKTransitPassProperties;
+@class NSArray, NSDictionary, NSMutableArray, NSString, PKPaymentPass, PKTransitPassProperties;
 
 @interface PKTransitBalanceModel : NSObject
 {
     NSDictionary *_balancesByID;
-    NSArray *_balanceFields;
+    NSMutableArray *_commutePlanBalanceFields;
     PKTransitPassProperties *_transitProperties;
+    PKPaymentPass *_pass;
     NSArray *_displayableBalances;
+    NSArray *_displayableCommutePlanBalances;
+    NSArray *_transitCommutePlans;
+    NSArray *_displayableCommutePlans;
+    NSMutableArray *_balanceFields;
 }
 
+@property (strong, nonatomic) NSMutableArray *balanceFields; // @synthesize balanceFields=_balanceFields;
 @property (readonly, nonatomic) NSArray *displayableBalances; // @synthesize displayableBalances=_displayableBalances;
-@property (readonly, nonatomic) BOOL hasContent;
+@property (readonly, nonatomic) NSArray *displayableCommutePlanBalances; // @synthesize displayableCommutePlanBalances=_displayableCommutePlanBalances;
+@property (readonly, nonatomic) NSArray *displayableCommutePlans; // @synthesize displayableCommutePlans=_displayableCommutePlans;
+@property (readonly, nonatomic) BOOL hasBalanceContent;
+@property (readonly, nonatomic) BOOL hasCommutePlanContent;
 @property (readonly, nonatomic) NSString *primaryDisplayableBalance; // @dynamic primaryDisplayableBalance;
+@property (readonly, nonatomic) NSArray *transitCommutePlans; // @synthesize transitCommutePlans=_transitCommutePlans;
 
 - (void).cxx_destruct;
-- (void)_updatePrimaryDisplayableBalance;
+- (void)_addCommutePlanBalanceFieldsToCommutePlanBalanceFields;
+- (void)_updateBalancesAndPlans;
+- (id)balanceForIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPass:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)setServerBalances:(id)arg1;
-- (void)setServerBalancesByID:(id)arg1;
+- (void)setDynamicBalances:(id)arg1;
+- (void)setDynamicBalancesByID:(id)arg1;
 - (void)setTransitProperties:(id)arg1;
 
 @end

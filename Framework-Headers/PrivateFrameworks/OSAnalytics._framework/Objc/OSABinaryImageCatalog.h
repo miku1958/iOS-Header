@@ -21,13 +21,15 @@
     NSMutableArray *_notes;
 }
 
++ (BOOL)isApplePath:(id)arg1 orBundle:(id)arg2;
 - (void).cxx_destruct;
 - (void)appendNotesTo:(id)arg1;
 - (id)init;
 - (BOOL)isAddressInTargetedCache:(unsigned long long)arg1;
 - (unsigned long long)markImageAsUsed:(id)arg1 from:(int)arg2;
 - (id)reportUsedImages;
-- (id)searchFrame:(unsigned long long)arg1 in:(id)arg2 result:(BOOL *)arg3;
+- (id)reportUsedImagesLegacyInfo;
+- (id)searchFrame:(unsigned long long)arg1 in:(id)arg2 result:(id *)arg3;
 - (void)setKernelCache:(unsigned char [16])arg1 address:(unsigned long long)arg2 size:(unsigned long long)arg3;
 - (void)setKernelImages:(id)arg1;
 - (void)setRootedCacheLibs:(struct dyld_uuid_info_64 *)arg1 count:(unsigned int)arg2;

@@ -30,6 +30,7 @@
 - (void)_endMLCreateResultSignpostWithTimestamp:(double)arg1;
 - (void)_endMLProcessingSignpostWithTimestamp:(double)arg1;
 - (void)_endMLRunNetworkSignpostWithTimestamp:(double)arg1;
+- (id)_fullDescription;
 - (void)_startLoadingMLModelSignpost;
 - (void)_startMLCreateResultSignpostWithTimestamp:(double)arg1 orientation:(long long)arg2 outputSize:(struct CGSize)arg3;
 - (void)_startMLProcessingSignpostWithTimestamp:(double)arg1;

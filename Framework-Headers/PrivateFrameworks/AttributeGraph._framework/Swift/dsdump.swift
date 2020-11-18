@@ -127,7 +127,8 @@
  struct __C.EdgeOptions {
 
 	// Properties
-	let rawValue : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : V
  }
 
  struct __C.Metadata {
@@ -136,29 +137,29 @@
 	var value : UnsafeRawPointer
  }
 
- struct __C.Graph {
-
-	// Properties
-	var p : UnsafeMutablePointer<AGUnownedGraph>
- }
-
  struct __C.AnyAttribute {
 
 	// Properties
 	var id : UInt
  }
 
+ struct __C.Graph {
+
+	// Properties
+	var p : _UnownedGraph
+ }
+
  struct __C._AttributeVTable {
 
 	// Properties
 	var version : UInt
-	var self_destroy : @convention(c) (_:_:)?
-	var self_description : @convention(c) (_:_:)?
-	var value_description : @convention(c) (_:_:)?
-	var update_default : @convention(c) (_:_:_:_:)?
-	var input_was_added : @convention(c) (_:_:_:_:)?
-	var input_was_removed : @convention(c) (_:_:_:)?
-	var invalidated : @convention(c) (_:_:)?
+	var self_destroy : _AttributeType
+	var self_description : _AttributeType
+	var value_description : _AttributeType
+	var update_default : _AttributeType
+	var input_was_added : _AttributeType
+	var input_was_removed : _AttributeType
+	var invalidated : _AttributeType
  }
 
  struct __C._UnownedGraph { }
@@ -166,20 +167,24 @@
  struct __C._AttributeType {
 
 	// Properties
-	var self_id : AGTypeID
-	var value_id : AGTypeID
+	var self_id : Metadata
+	var value_id : Metadata
 	var update : _AGClosureStorage
-	var vtable : UnsafePointer<_AGAttributeVTable>
-	var flags : AGAttributeTypeFlags
-	var internal_id : UInt32
-	var value_offset : UInt32
-	var value_layout : UnsafePointer<UInt8>?
+	var vtable : _AttributeVTable
+	var flags : _AttributeTypeFlags
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var internal_id : V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value_offset : V
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var value_layout :  empty-list 
  }
 
  struct __C._AttributeTypeFlags {
 
 	// Properties
-	let rawValue : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let rawValue : V
  }
 
  struct __C._AGClosureStorage {
@@ -192,15 +197,15 @@
  struct AttributeGraph.WeakAttribute {
 
 	// Properties
-	let _subgraph : AGSubgraphRef // +0x0
-	let _attribute : Attribute<A> // +0x8
+	let _subgraph : Subgraph // +0x0
+	let _attribute : Attribute // +0x8
  }
 
  struct AttributeGraph.AnyWeakAttribute {
 
 	// Properties
-	let _subgraph : AGSubgraphRef // +0x0
-	let _attribute : AGAttribute // +0x8
+	let _subgraph : Subgraph // +0x0
+	let _attribute : AnyAttribute // +0x8
  }
 
  struct AttributeGraph.Formulas { }
@@ -215,20 +220,21 @@
 
 	// Properties
 	var root : A
-	var keyPath : Formula
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var keyPath : •S
  }
 
  struct AttributeGraph.Offset: PointerFormula,  Formula {
 
 	// Properties
 	var root : A
-	var offset : Formula
+	var offset : PointerOffset
  }
 
  struct AttributeGraph.Reference: PointerFormula,  Formula {
 
 	// Properties
-	var callback : (_:)
+	var callback : Attribute
  }
 
  struct AttributeGraph.Computed: PointerFormula,  Formula {
@@ -241,7 +247,7 @@
  struct AttributeGraph.Attribute {
 
 	// Properties
-	var identifier : AGAttribute
+	var identifier : AnyAttribute
  }
 
  enum AttributeGraph.CacheBehavior {
@@ -255,30 +261,30 @@
  struct AttributeGraph.AttributeType {
 
 	// Properties
-	var graphType : _AGAttributeType // +0x0
-	var type : UntypedAttribute.Type // +0x40
+	var graphType : _AttributeType // +0x0
+	var type : UntypedAttribute // +0x40
  }
 
  struct AttributeGraph.DynamicInputHelper {
 
 	// Properties
-	var oldAttribute : OptionalAttribute<A>
+	var oldAttribute : OptionalAttribute
  }
 
  struct AttributeGraph.SearchVisitor {
 
 	// Properties
-	let visitorType : BFSVisitor.Type // +0x0
+	let visitorType : BFSVisitor // +0x0
 	let visitor : UnsafeMutableRawPointer // +0x10
-	var ident : AGAttribute // +0x18
+	var ident : AnyAttribute // +0x18
 	var matches : Bool // +0x20
  }
 
  struct AttributeGraph.AttributeContext {
 
 	// Properties
-	var graph : AGGraphRef
-	var attribute : Attribute<A.TypedAttribute.Value>
+	var graph : Graph
+	var attribute : Attribute
  }
 
  struct AttributeGraph.External { }
@@ -286,7 +292,8 @@
  struct AttributeGraph.Focus {
 
 	// Properties
-	let keyPath : KeyPath<A, B>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let keyPath : áP
  }
 
  struct AttributeGraph.Map {
@@ -332,13 +339,13 @@
  struct AttributeGraph.AnyOptionalAttribute {
 
 	// Properties
-	var identifier : AGAttribute // +0x0
+	var identifier : AnyAttribute // +0x0
  }
 
  struct AttributeGraph.OptionalAttribute {
 
 	// Properties
-	var identifier : AGAttribute
+	var identifier : AnyAttribute
  }
 
  struct AttributeGraph.InputIndex {

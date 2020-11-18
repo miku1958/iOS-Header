@@ -14,6 +14,7 @@
 + (id)_systemUIServiceClientSettings;
 + (id)_systemUIServiceIdentifier;
 + (double)preferredWindowLevel;
+- (long long)_frontMostAppOrientation;
 
 @end
 

@@ -37,6 +37,10 @@
 @property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property (readonly) Class superclass;
 
++ (id)predicateForCollaborationStateForObjectWithID:(id)arg1 ownerPersonID:(id)arg2 domain:(long long)arg3;
++ (id)predicateForCollaborationStatesForObjectWithID:(id)arg1;
++ (id)predicateForCollaborationStatesForObjectWithID:(id)arg1 domain:(long long)arg2;
++ (id)predicateForCollaborationStatesForObjectWithID:(id)arg1 ownerPersonID:(id)arg2;
 + (id)predicateForObjectWithObjectID:(id)arg1;
 + (id)predicateForObjectsWithIdentifier:(id)arg1;
 + (id)predicateForObjectsWithObjectIDs:(id)arg1;

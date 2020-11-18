@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSMutableArray, NSMutableDictionary, NSProgress, NSString, NSURL, PLAssetsdCrashRecoverySupport, PLBackgroundJobService, PLChangeHandlingContainer, PLClientServerTransaction, PLCloudPhotoLibraryManager, PLDatabaseContext, PLDupeManager, PLImageWriter, PLJournalManager, PLKeywordManager, PLLazyObject, PLLibraryServicesCPLReadiness, PLLibraryServicesStateNode, PLModelMigrator, PLMomentGenerationDataManager, PLPairing, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryPathManager, PLQuickActionManager, PLReframeService, PLRelationshipOrderKeyManager, PLSearchIndexManager;
+@class NSError, NSMutableArray, NSMutableDictionary, NSProgress, NSString, NSURL, PLAssetsdCrashRecoverySupport, PLBackgroundJobService, PLChangeHandlingContainer, PLClientServerTransaction, PLCloudPhotoLibraryManager, PLDatabaseContext, PLDupeManager, PLImageWriter, PLJournalManager, PLKeywordManager, PLLazyObject, PLLibraryServicesCPLReadiness, PLLibraryServicesStateNode, PLModelMigrator, PLMomentGenerationDataManager, PLPairing, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryPathManager, PLQuickActionManager, PLReframeService, PLRelationshipOrderKeyManager, PLSearchIndexManager, PLTrackableRequestManager;
 @protocol OS_dispatch_queue, PLLibraryServicesDelegate, PLMigrationServiceProtocol;
 
 @interface PLLibraryServicesManager : NSObject
@@ -26,6 +26,7 @@
     PLLazyObject *_lazyKeywordManager;
     PLLazyObject *_lazyAlbumCountCoalescer;
     PLLazyObject *_lazyCloudPhotoLibraryManager;
+    PLLazyObject *_lazyTrackableRequestManager;
     PLLazyObject *_lazyCrashRecoverySupport;
     PLLazyObject *_lazyPairingManager;
     PLLazyObject *_lazyReframeService;
@@ -87,6 +88,7 @@
 @property (readonly) PLSearchIndexManager *searchIndexManager;
 @property (readonly) long long state;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateSerializationQueue; // @synthesize stateSerializationQueue=_stateSerializationQueue;
+@property (readonly) PLTrackableRequestManager *trackableRequestManager;
 @property (copy) NSString *upgradeClient; // @synthesize upgradeClient=_upgradeClient;
 
 + (long long)_finalState;
@@ -129,6 +131,7 @@
 - (void)_invalidateRelationshipOrderKeyManager;
 - (void)_invalidateSearchIndexManager;
 - (void)_invalidateSystemPhotoLibrarySpecificServices;
+- (void)_invalidateTrackableRequestManager;
 - (BOOL)_isSystemPhotoLibrary;
 - (id)_libraryServicesStateNodeWithState:(long long)arg1;
 - (void)_resetStateQueueQoS;
@@ -144,6 +147,8 @@
 - (BOOL)awaitLibraryState:(long long)arg1 error:(id *)arg2;
 - (void)currentLocaleDidChangeNotification:(id)arg1;
 - (void)deactivateWithInvalidationError:(id)arg1;
+- (void)dealloc;
+- (id)description;
 - (void)didBecomeNonSystemPhotoLibrary;
 - (BOOL)enqueueOperation:(id)arg1 error:(id *)arg2;
 - (BOOL)finalize:(id *)arg1;

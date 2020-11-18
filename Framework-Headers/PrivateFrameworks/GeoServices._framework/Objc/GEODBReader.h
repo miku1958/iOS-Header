@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_editionUpdateEnd:(id)arg1;
 - (void)_openDB;
 - (id)dataForKey:(struct _GEOTileKey *)arg1 isCurrent:(BOOL *)arg2 eTag:(id *)arg3;
-- (void)dataForKeys:(struct GEOTileKeyList *)arg1 callbackQueue:(id)arg2 asyncHandler:(CDUnknownBlockType)arg3;
+- (void)dataForKeys:(id)arg1 callbackQueue:(id)arg2 asyncHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (id)initWithPath:(id)arg1 pragmaOverrides:(id)arg2;

@@ -14,7 +14,7 @@
 + (id)_localizedTitleForAssetCollection:(id)arg1 titleCategory:(long long *)arg2 dateRangeFormatter:(id)arg3;
 + (id)_macOSImageNameForSearchUserCategory:(unsigned long long)arg1 useSearchFieldStyle:(BOOL)arg2;
 + (id)fetchResultFromTopAssetsSearchResult:(id)arg1;
-+ (struct UIImage *)imageForSearchUserCategory:(unsigned long long)arg1 useSearchFieldStyle:(BOOL)arg2;
++ (id)imageForSearchUserCategory:(unsigned long long)arg1 useSearchFieldStyle:(BOOL)arg2;
 + (id)photosDetailsContextForPhotosUUIDs:(id)arg1 title:(id)arg2;
 + (id)photosDetailsContextFromCollectionUUID:(id)arg1 collectionClass:(Class)arg2 dateRangeFormatter:(id)arg3;
 + (id)photosDetailsContextFromMemoryUUID:(id)arg1;
@@ -29,7 +29,7 @@
 + (id)sortedWordEmbeddingsForCurrentQueryFromSubstitutions:(id)arg1;
 + (id)stringWithStartDate:(id)arg1 endDate:(id)arg2 calendar:(id)arg3 dateComponents:(id)arg4 dateIntervalFormatter:(id)arg5;
 + (id)subtitleForSearchResult:(id)arg1;
-+ (void)suggestionsDisplayDataFromToken:(id)arg1 searchText:(id)arg2 matchedColor:(struct UIColor *)arg3 remainingColor:(struct UIColor *)arg4 isTextCompletion:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)suggestionsDisplayDataFromToken:(id)arg1 searchText:(id)arg2 matchedColor:(id)arg3 remainingColor:(id)arg4 isTextCompletion:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 + (id)titleForSearchResult:(id)arg1;
 + (id)wordEmbeddingSubstitutionsForSearchText:(id)arg1 wantsSubstitutedString:(BOOL)arg2 sceneAncestoryInformation:(id)arg3 substitutions:(id)arg4;
 

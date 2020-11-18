@@ -102,6 +102,7 @@
 - (id)closestColumnForPoint:(struct CGPoint)arg1;
 - (id)columnForCharIndex:(unsigned long long)arg1;
 - (struct CGRect)columnRectForRange:(struct _NSRange)arg1;
+- (BOOL)containsText;
 - (void)dealloc;
 - (id)decoratorOverlayLayers;
 - (void)didDrawInLayer:(id)arg1 context:(struct CGContext *)arg2;
@@ -130,6 +131,7 @@
 - (BOOL)handlesEditMenu;
 - (id)hyperlinkContainerRep;
 - (id)hyperlinkRegions;
+- (id)hyperlinkRegionsConstrainedToLineAtPoint:(struct CGPoint)arg1;
 - (void)i_setNeedsDisplayForSelectionChange;
 - (void)i_setNeedsErasableDisplayInRange:(struct _NSRange)arg1;
 - (id)imageForSearchReference:(id)arg1 forPath:(struct CGPath *)arg2 shouldPulsate:(BOOL)arg3;

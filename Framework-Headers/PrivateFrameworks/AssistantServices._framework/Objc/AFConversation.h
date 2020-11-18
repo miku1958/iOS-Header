@@ -30,6 +30,8 @@
 
 - (void).cxx_destruct;
 - (void)_addItemsForAceObjects:(id)arg1 type:(long long)arg2 aceCommandIdentifier:(id)arg3 dialogPhase:(id)arg4 asChildrenOfItemWithIdentifier:(id)arg5;
+- (void)_addItemsForAceViews:(id)arg1 withDialogPhase:(id)arg2 fromCommandWithIdentifier:(id)arg3 asChildrenOfItemWithIdentifier:(id)arg4;
+- (void)_addItemsForAceViews:(id)arg1 withDialogPhase:(id)arg2 fromCommandWithIdentifier:(id)arg3 atIndexPaths:(id)arg4;
 - (void)_changePresentationStateForNodes:(id)arg1;
 - (id)_childOfNode:(id)arg1 withItemWhichCanBeUpdatedWithAceObject:(id)arg2 inDialogPhase:(id)arg3;
 - (void)_didChangePresentationStateForItemAtIndexPaths:(id)arg1;
@@ -78,6 +80,7 @@
 - (void)removeItemsAtIndexPaths:(id)arg1;
 - (void)removeItemsFollowingItemAtIndexPath:(id)arg1;
 - (void)removeItemsWithIdentifiers:(id)arg1;
+- (void)removeTransientItems;
 - (long long)typeForItemAtIndexPath:(id)arg1;
 - (void)updateWithUpdateViewsCommand:(id)arg1;
 - (id)updatedUserUtteranceForRefId:(id)arg1;

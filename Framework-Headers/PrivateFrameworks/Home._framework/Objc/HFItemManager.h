@@ -321,6 +321,7 @@
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
+- (id)matchingItemForHomeKitObject:(id)arg1;
 - (void)mediaObject:(id)arg1 didUpdateMediaSession:(id)arg2;
 - (void)mediaObject:(id)arg1 didUpdateSettings:(id)arg2;
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;

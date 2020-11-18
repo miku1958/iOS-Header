@@ -7,11 +7,12 @@
 #import <CoverSheet/CSCoverSheetViewControllerBase.h>
 
 #import <CoverSheet/CAAnimationDelegate-Protocol.h>
+#import <CoverSheet/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CSHomeAffordanceViewController, CSTeachableMomentsContainerView, NSMutableDictionary, NSString, NSTimer;
+@class CSHomeAffordanceViewController, CSTeachableMomentsContainerView, NSMutableDictionary, NSString, NSTimer, UITapGestureRecognizer;
 @protocol SBDashBoardHomeAffordanceAnimationViewProviding, SBUIBiometricResource;
 
-@interface CSTeachableMomentsContainerViewController : CSCoverSheetViewControllerBase <CAAnimationDelegate>
+@interface CSTeachableMomentsContainerViewController : CSCoverSheetViewControllerBase <CAAnimationDelegate, UIGestureRecognizerDelegate>
 {
     BOOL _authenticated;
     BOOL _updateTextLabelOnNextAnimation;
@@ -22,6 +23,7 @@
     id<SBUIBiometricResource> _biometricResource;
     NSTimer *_fireOffAnimationTimer;
     NSMutableDictionary *_cachedLegibilityLabels;
+    UITapGestureRecognizer *_homeAffordanceClickGestureRecognizer;
 }
 
 @property (nonatomic) unsigned long long animationState; // @synthesize animationState=_animationState;
@@ -33,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSTimer *fireOffAnimationTimer; // @synthesize fireOffAnimationTimer=_fireOffAnimationTimer;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UITapGestureRecognizer *homeAffordanceClickGestureRecognizer; // @synthesize homeAffordanceClickGestureRecognizer=_homeAffordanceClickGestureRecognizer;
 @property (readonly, nonatomic) CSHomeAffordanceViewController *homeAffordanceViewController; // @synthesize homeAffordanceViewController=_homeAffordanceViewController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CSTeachableMomentsContainerView *teachableMomentsContainerView;
@@ -56,6 +59,7 @@
 - (id)_controlCenterGlyphAlphaAnimationWithDuration:(double)arg1 beginTime:(double)arg2;
 - (id)_controlCenterGrabberAlphaAnimationWithDuration:(double)arg1 beginTime:(double)arg2;
 - (id)_controlCenterGrabberPositionAnimationWithDuration:(double)arg1 beginTime:(double)arg2;
+- (void)_homeAffordanceClickRecognized:(id)arg1;
 - (id)_homeAffordancePositionAnimationWithDuration:(double)arg1 beginTime:(double)arg2;
 - (void)_moveUpTimerForFiringAfterDelay:(double)arg1;
 - (void)_removeNormalAnimationsForKeyPath:(id)arg1 onLayer:(id)arg2;
@@ -70,9 +74,11 @@
 - (void)_updateText:(id)arg1;
 - (void)_updateTextLabel;
 - (void)_updateTextLabelIfNeeded;
+- (void)aggregateAppearance:(id)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (unsigned long long)currentState;
 - (void)dealloc;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)handleEvent:(id)arg1;
 - (id)init;
 - (void)loadView;

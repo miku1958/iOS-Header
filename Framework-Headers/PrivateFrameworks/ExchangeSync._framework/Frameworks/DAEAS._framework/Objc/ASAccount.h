@@ -119,6 +119,7 @@
 - (BOOL)isEqualToAccount:(id)arg1;
 - (BOOL)isGoogleAccount;
 - (BOOL)isHotmailAccount;
+- (BOOL)isUnicodeGeneralCategoryLetterOther:(unsigned short)arg1;
 - (void)itemOperationsTask:(id)arg1 completedWithStatus:(long long)arg2 error:(id)arg3 responses:(id)arg4;
 - (BOOL)itemOperationsTask:(id)arg1 handleStreamOperation:(int)arg2 forCodePage:(int)arg3 tag:(int)arg4 withParentItem:(id)arg5 withData:(char *)arg6 dataLength:(int)arg7;
 - (BOOL)itemOperationsTask:(id)arg1 hasPartialResponses:(id)arg2;

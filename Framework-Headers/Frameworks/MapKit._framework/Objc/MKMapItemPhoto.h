@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     id<GEOMapItemPhoto> _geoMapItemPhoto;
 }
 
-@property (readonly, nonatomic) BOOL displayFullPhotoInline;
+@property (readonly, nonatomic) BOOL displayFullScreenPhotoGallery;
 @property (readonly, nonatomic) long long format;
 @property (strong, nonatomic) id<GEOMapItemPhoto> geoMapItemPhoto; // @synthesize geoMapItemPhoto=_geoMapItemPhoto;
 @property (readonly, nonatomic) NSURL *largestPhotoURL;

@@ -12,6 +12,7 @@
 
 @interface AVTStickerRecentsStickerItem : NSObject <AVTStickerRecentsItem>
 {
+    BOOL _prereleaseSticker;
     UIImage *_image;
     NSString *_localizedDescription;
     CDUnknownBlockType _provider;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
+@property (nonatomic, getter=isPrereleaseSticker) BOOL prereleaseSticker; // @synthesize prereleaseSticker=_prereleaseSticker;
 @property (readonly, copy, nonatomic) CDUnknownBlockType provider; // @synthesize provider=_provider;
 @property (readonly, copy, nonatomic) NSString *stickerName; // @synthesize stickerName=_stickerName;
 @property (readonly) Class superclass;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)helperForHandler:(CDUnknownBlockType)arg1 identifiers:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
+- (void)failAllRemainingRequests;
 - (BOOL)finishedIdentifier:(id)arg1 withResult:(id)arg2 error:(id)arg3;
 
 @end

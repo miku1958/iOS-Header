@@ -20,7 +20,7 @@
 + (id)copyPersistentDataForCertificate:(struct __SecCertificate *)arg1;
 + (id)copyPersistentDataForIdentity:(struct __SecIdentity *)arg1;
 + (id)copyPersistentIdentityDataForCommonName:(id)arg1;
-+ (struct __SecIdentity *)copySecIdentity:(struct NSMutableData *)arg1;
++ (struct __SecIdentity *)copySecIdentity:(id)arg1;
 + (id)copySignHashDataForSet:(id)arg1;
 + (id)copySignHashDataForSet:(id)arg1 authentication:(id)arg2;
 + (struct __SecKey *)copyTrustedKeyForCertificate:(id)arg1 remoteCAArray:(id)arg2 policyRef:(void *)arg3 enableRevocationCheck:(BOOL)arg4 strictRevocationCheck:(BOOL)arg5;
@@ -28,14 +28,14 @@
 + (id)createCertificateAuthorityPublicKeyHash:(struct __SecCertificate *)arg1;
 + (id)createDecryptedData:(id)arg1 algorithm:(id)arg2 key:(id)arg3 iv:(id)arg4 aad:(id)arg5 padDataToKeyLength:(BOOL)arg6;
 + (id)createEncryptedData:(id)arg1 algorithm:(id)arg2 key:(id)arg3 iv:(id)arg4 encryptionContext:(id)arg5 aad:(id)arg6 padDataToKeyLength:(BOOL)arg7;
-+ (struct NSMutableData *)createHMACFromData:(id)arg1 key:(id)arg2 integrityAlgorithm:(unsigned long long)arg3;
-+ (struct NSMutableData *)createHMACFromData:(id)arg1 key:(id)arg2 prfAlgorithm:(unsigned long long)arg3;
++ (id)createHMACFromData:(id)arg1 key:(id)arg2 integrityAlgorithm:(unsigned long long)arg3;
++ (id)createHMACFromData:(id)arg1 key:(id)arg2 prfAlgorithm:(unsigned long long)arg3;
 + (id)createHashFromData:(id)arg1;
 + (id)createHashFromData:(id)arg1 algorithm:(unsigned long long)arg2;
 + (id)createHashFromData:(id)arg1 hashAlgorithm:(unsigned long long)arg2;
 + (id)createIVForEncryptionAlgorithm:(id)arg1 encryptContext:(id)arg2;
 + (id)createNATDetectionHashForInitiatorSPI:(id)arg1 responderSPI:(id)arg2 address:(id)arg3;
-+ (struct NSMutableData *)createPRFPlusFromData:(id)arg1 key:(id)arg2 prfAlgorithm:(unsigned long long)arg3 outputLength:(unsigned int)arg4;
++ (id)createPRFPlusFromData:(id)arg1 key:(id)arg2 prfAlgorithm:(unsigned long long)arg3 outputLength:(unsigned int)arg4;
 + (struct __SecPolicy *)createPolicyWithHostname:(id)arg1;
 + (id)createRandomWithSize:(unsigned int)arg1;
 + (id)createSignHashProtocolForAuth:(id)arg1;

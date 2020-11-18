@@ -20,7 +20,7 @@
     unsigned long long _pickerMode;
     NSURL *_url;
     NSString *_displayTitle;
-    struct _UIArrayController *_observer;
+    _UIArrayController<_UIDocumentPickerDirectoryObserver> *_observer;
     id _urlObserver;
 }
 
@@ -41,7 +41,7 @@
 + (id)allTags;
 + (id)tagColorsByTag;
 - (void).cxx_destruct;
-- (struct _UIArrayController *)_createObserver;
+- (id)_createObserver;
 - (BOOL)afterInitialUpdate;
 - (void)arrayController:(id)arg1 modelChanged:(id)arg2 differences:(id)arg3;
 - (void)callUpdateHandlerWithNewItems:(id)arg1 diff:(id)arg2;

@@ -15,9 +15,9 @@
     long long _evaluatedForMode;
     unsigned long long _hashValue;
     BOOL _isGeometryNode;
-    struct NSDictionary *_inputs;
+    NSDictionary *_inputs;
     NSDictionary *_settings;
-    struct NSDictionary *_xforms;
+    NSDictionary *_xforms;
     CIImage *_cached_outputImage;
     NSMutableDictionary *_cached_auxiliaryImages;
     AVComposition *_cached_outputVideo;
@@ -79,7 +79,7 @@
 - (unsigned long long)hash;
 - (id)imageProperties:(out id *)arg1;
 - (id)init;
-- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
+- (id)initWithSettings:(id)arg1 inputs:(id)arg2;
 - (id)inputForKey:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRenderNode:(id)arg1;
@@ -94,11 +94,11 @@
 - (id)outputImageGeometry:(out id *)arg1;
 - (id)outputVideo:(out id *)arg1;
 - (id)outputVideoComposition:(out id *)arg1;
-- (id)placeholderNodeWithCachedInputs:(struct NSDictionary *)arg1;
+- (id)placeholderNodeWithCachedInputs:(id)arg1;
 - (BOOL)requiresAudioMix;
 - (BOOL)requiresVideoComposition;
 - (void)resetInput:(id)arg1 forKey:(id)arg2;
-- (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (unsigned long long)settingsAndInputsHash;
 - (BOOL)shouldCacheNodeForPipelineState:(id)arg1;
 - (id)uniqueInputNode;

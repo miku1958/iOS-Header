@@ -4,35 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMFTimer, NSString, NSUUID;
 
-@interface HMDUserPresenceFeedRetryTimer : NSObject <HMFLogging>
+@interface HMDUserPresenceFeedRetryTimer : HMFObject <HMFLogging>
 {
-    NSUUID *_timerID;
     HMFTimer *_retryTimer;
     unsigned long long _retryCount;
+    NSUUID *_timerID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
-@property (readonly, nonatomic) double retryTimeInterval;
-@property (strong, nonatomic) HMFTimer *retryTimer; // @synthesize retryTimer=_retryTimer;
+@property unsigned long long retryCount; // @synthesize retryCount=_retryCount;
+@property (readonly) double retryTimeInterval;
+@property (strong) HMFTimer *retryTimer; // @synthesize retryTimer=_retryTimer;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSUUID *timerID; // @synthesize timerID=_timerID;
+@property (readonly, copy) NSUUID *timerID; // @synthesize timerID=_timerID;
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (void)cancel;
 - (id)init;
 - (id)logIdentifier;
 - (BOOL)shouldRetryImmediately:(double)arg1;
-- (void)startWithDelegate:(id)arg1 responseTime:(double)arg2;
+- (void)startWithDelegate:(id)arg1 delegateQueue:(id)arg2 responseTime:(double)arg3;
 
 @end
 

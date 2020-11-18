@@ -9,12 +9,14 @@
 #import <CoverSheet/CSQuickActionsDelegate-Protocol.h>
 #import <CoverSheet/SBUIFlashlightObserver-Protocol.h>
 
-@class CSCoverSheetViewController, NSString, SBUIFlashlightController;
+@class CSCoverSheetViewController, CSLockScreenSettings, NSString, SBLockScreenDefaults, SBUIFlashlightController;
 @protocol CSCameraPrewarming, SBFLockOutStatusProvider;
 
 @interface CSQuickActionsViewController : CSCoverSheetViewControllerBase <CSQuickActionsDelegate, SBUIFlashlightObserver>
 {
     SBUIFlashlightController *_flashlight;
+    CSLockScreenSettings *_prototypeSettings;
+    SBLockScreenDefaults *_lockScreenDefaults;
     BOOL _suppressingVisibleChanges;
     BOOL _animatingToCamera;
     CSCoverSheetViewController *_coverSheetViewController;
@@ -42,6 +44,8 @@
 - (void)_launchCamera;
 - (void)_resetIdleTimer;
 - (void)_setupFlashlight;
+- (BOOL)_shouldPrelaunchOnTouch;
+- (BOOL)_shouldPrewarmOnTouch;
 - (BOOL)_supportsCamera;
 - (void)_tearDownFlashlight;
 - (void)_tearDownFlashlightIfOff;

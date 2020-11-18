@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _fakingRequiresHighResolution;
     BOOL _supportsMultiwindow;
     BOOL _supportedOnLockScreen;
+    BOOL _supportsIndirectInputEvents;
     int _ignoredOverrides;
     long long _requestedStatusBarStyle;
     long long _interfaceOrientation;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;
 @property (readonly, nonatomic) BOOL supportedOnLockScreen; // @synthesize supportedOnLockScreen=_supportedOnLockScreen;
 @property (readonly, nonatomic) long long supportedUserInterfaceStyle; // @synthesize supportedUserInterfaceStyle=_supportedUserInterfaceStyle;
+@property (readonly, nonatomic) BOOL supportsIndirectInputEvents; // @synthesize supportsIndirectInputEvents=_supportsIndirectInputEvents;
 @property (readonly, nonatomic) BOOL supportsMultiwindow; // @synthesize supportsMultiwindow=_supportsMultiwindow;
 @property (readonly, nonatomic) BOOL systemWindowsSecure; // @synthesize systemWindowsSecure=_systemWindowsSecure;
 @property (readonly, nonatomic) unsigned long long viewControllerBasedStatusBarAppearance; // @synthesize viewControllerBasedStatusBarAppearance=_viewControllerBasedStatusBarAppearance;

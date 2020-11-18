@@ -42,6 +42,7 @@
 - (void)_purgeAsset:(id)arg1;
 - (id)activeVoiceAssets;
 - (void)amendVoiceWithDefaultSettings:(id)arg1;
+- (id)builtInVoices;
 - (void)cancelDownload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cleanOldVoiceResources;
 - (id)cleanUnusedVoiceAssets;

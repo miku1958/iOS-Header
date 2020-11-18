@@ -13,7 +13,7 @@
 @interface MRTransactionPacket : NSObject <NSCopying>
 {
     NSMutableData *_data;
-    struct _MRTransactionKeyProtobuf *_key;
+    _MRTransactionKeyProtobuf *_key;
     unsigned long long _writeLength;
     unsigned long long _writePosition;
     NSString *_identifier;
@@ -36,7 +36,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithData:(id)arg1 forKey:(struct _MRTransactionKeyProtobuf *)arg2;
+- (id)initWithData:(id)arg1 forKey:(id)arg2;
 - (id)initWithPackets:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 - (BOOL)isComplete;

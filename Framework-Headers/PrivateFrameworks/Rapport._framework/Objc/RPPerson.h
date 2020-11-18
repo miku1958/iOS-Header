@@ -20,7 +20,7 @@
     NSString *_identifier;
     NSString *_name;
     CURangingMeasurement *_relativeLocation;
-    struct NSMutableDictionary *_deviceDict;
+    NSMutableDictionary *_deviceDict;
 }
 
 @property (readonly, nonatomic) int activityLevel; // @synthesize activityLevel=_activityLevel;

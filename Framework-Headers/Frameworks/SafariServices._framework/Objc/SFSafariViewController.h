@@ -10,16 +10,18 @@
 #import <SafariServices/SFInteractiveDismissControllerDelegate-Protocol.h>
 #import <SafariServices/SFQueueingServiceViewControllerProxyDelegate-Protocol.h>
 #import <SafariServices/_SFLinkPreviewHeaderDelegate-Protocol.h>
+#import <SafariServices/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, NSURL, SFBrowserRemoteViewController, SFInteractiveDismissController, SFQueueingServiceViewControllerProxy, SFSafariLaunchPlaceholderView, SFSafariViewControllerConfiguration, UIColor, UIView, _SFURLTextPreviewViewController, _UIAsyncInvocation, _WKActivatedElementInfo;
+@class NSArray, NSMutableDictionary, NSString, NSURL, SFBrowserRemoteViewController, SFInteractiveDismissController, SFQueueingServiceViewControllerProxy, SFSafariLaunchPlaceholderView, SFSafariViewControllerConfiguration, UIColor, UIView, _SFURLTextPreviewViewController, _UIAsyncInvocation, _UIRemoteViewController, _WKActivatedElementInfo;
 @protocol SFSafariViewControllerDelegate, SFServiceViewControllerProtocol;
 
-@interface SFSafariViewController : UIViewController <SFBrowserRemoteViewControllerDelegate, SFInteractiveDismissControllerDelegate, SFQueueingServiceViewControllerProxyDelegate, _SFLinkPreviewHeaderDelegate>
+@interface SFSafariViewController : UIViewController <SFBrowserRemoteViewControllerDelegate, SFInteractiveDismissControllerDelegate, SFQueueingServiceViewControllerProxyDelegate, _SFLinkPreviewHeaderDelegate, _UIRemoteViewControllerContaining>
 {
     SFBrowserRemoteViewController *_remoteViewController;
     _UIAsyncInvocation *_cancelViewServiceRequest;
     BOOL _hasBeenDisplayedAtLeastOnce;
     BOOL _remoteViewControllerHasBeenAdded;
+    UIView *_nanoHeaderView;
     NSArray *_previewActions;
     _WKActivatedElementInfo *_activatedElementInfo;
     NSArray *_customActivities;
@@ -45,6 +47,7 @@
 }
 
 @property (strong, nonatomic, setter=_setActivatedElementInfo:) _WKActivatedElementInfo *_activatedElementInfo;
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (strong, nonatomic, setter=_setPreviewActions:) NSArray *_previewActions;
 @property (nonatomic, setter=_setShowingLinkPreview:) BOOL _showingLinkPreview;
 @property (nonatomic, setter=_setShowingLinkPreviewWithMinimalUI:) BOOL _showingLinkPreviewWithMinimalUI;
@@ -62,6 +65,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addLaunchPlaceholderView;
 - (void)_addRemoteView;
 - (void)_addRemoteViewControllerIfNeeded;
 - (BOOL)_allowsUserInteractionWhenPreviewedInContextMenu;
@@ -71,6 +75,7 @@
 - (id)_fetchCustomActivitiesForURL:(id)arg1 title:(id)arg2;
 - (id)_fetchExcludedActivityTypesForURL:(id)arg1 title:(id)arg2;
 - (void)_forwardNotificationToViewService:(id)arg1;
+- (void)_removeLaunchPlaceholderView;
 - (void)_removeRemoteViewController;
 - (void)_restartServiceViewController;
 - (void)_setEdgeSwipeDismissalEnabled:(BOOL)arg1;

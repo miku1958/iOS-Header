@@ -32,7 +32,7 @@
 - (id)allAccentKeyStrings;
 - (BOOL)allowsAutocorrectionOfValidWords;
 - (BOOL)canHandleKeyHitTest;
-- (struct NSDictionary *)compositionMapForLayout:(id)arg1 reverse:(BOOL)arg2;
+- (id)compositionMapForLayout:(id)arg1 reverse:(BOOL)arg2;
 - (struct USet *)createAcceptableCharacterSet;
 - (struct TIInputManager *)createInputManager;
 - (void)dealloc;

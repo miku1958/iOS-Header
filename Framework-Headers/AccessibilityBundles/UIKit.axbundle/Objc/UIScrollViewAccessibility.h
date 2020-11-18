@@ -32,6 +32,7 @@
 - (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2 forVerticalDirection:(BOOL)arg3;
 - (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2 type:(int)arg3;
 - (id)_accessibilityDelegateScrollStatus;
+- (BOOL)_accessibilityDrawsFocusRingWhenChildrenFocused;
 - (id)_accessibilityFindRefreshControl;
 - (id)_accessibilityFirstLastOpaqueElement:(BOOL)arg1;
 - (id)_accessibilityFirstOpaqueElement;
@@ -44,6 +45,7 @@
 - (struct UIEdgeInsets)_accessibilityNavigationControllerInset;
 - (long long)_accessibilityPageCount;
 - (long long)_accessibilityPageIndex;
+- (BOOL)_accessibilityRemembersLastFocusedChild;
 - (id)_accessibilityRetrieveDelegate;
 - (double)_accessibilityScrollAnimationDurationDelay;
 - (double)_accessibilityScrollHeightDistance;
@@ -59,11 +61,14 @@
 - (void)_accessibilitySendScrollStatus;
 - (void)_accessibilitySetNavigationControllerInset:(struct UIEdgeInsets)arg1;
 - (void)_accessibilitySetScrollStatus:(id)arg1;
+- (void)_accessibilitySetShouldUseFallbackForVisibleContentInset:(BOOL)arg1;
+- (void)_accessibilitySetStoredShouldUseFallbackForVisibleContentInset:(id)arg1;
 - (void)_accessibilitySetStoredVisibleContentInset:(id)arg1;
 - (void)_accessibilitySetVisibleContentInset:(struct UIEdgeInsets)arg1;
 - (BOOL)_accessibilityShouldAnimateScroll;
 - (BOOL)_accessibilityShouldAnimateScrollToVisible;
 - (BOOL)_accessibilityShouldUseFallbackForVisibleContentInset;
+- (id)_accessibilityStoredShouldUseFallbackForVisibleContentInset;
 - (id)_accessibilityStoredVisibleContentInset;
 - (id)_accessibilitySubviews;
 - (struct CGRect)_accessibilityUIViewAccessibilityFrame;
@@ -93,6 +98,7 @@
 - (BOOL)_axShowsVerticalScrollBar;
 - (id)_axVerticalScrollBar;
 - (id)_axVerticalScrollIndicator;
+- (struct CGRect)_defaultFocusRegionFrame;
 - (void)_didEndDirectManipulationWithScrubbingDirection:(long long)arg1;
 - (void)_handleScrollViewPullDown;
 - (void)_hideScrollIndicators;
@@ -126,8 +132,6 @@
 - (struct CGPoint)accessibilityValidateScrollContentOffset:(struct CGPoint)arg1;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
-- (BOOL)canBecomeFocused;
-- (id)preferredFocusEnvironments;
 
 @end
 

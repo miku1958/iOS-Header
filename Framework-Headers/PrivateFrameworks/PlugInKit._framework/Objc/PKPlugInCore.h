@@ -85,20 +85,20 @@
 - (id)infoKey:(id)arg1;
 - (id)init;
 - (id)initWithForm:(id)arg1;
-- (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(struct NSMutableDictionary *)arg6;
+- (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (void)localizedInfoDictionaryForKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)mergeSDKDictionary:(id)arg1 intoExtensionDictionary:(id)arg2;
 - (id)mergeSharedResources:(id)arg1 into:(id)arg2;
 - (id)normalizeInfoDictionary:(id)arg1;
 - (id)pluginKey:(id)arg1;
-- (id)resolveSDKWithInfoPlist:(id)arg1 extensionPointCache:(struct NSMutableDictionary *)arg2;
-- (id)sdkDictionaryWithInfoPlist:(id)arg1 extensionPointCache:(struct NSMutableDictionary *)arg2;
-- (struct NSSet *)sdkOnlyKeyPaths;
+- (id)resolveSDKWithInfoPlist:(id)arg1 extensionPointCache:(id)arg2;
+- (id)sdkDictionaryWithInfoPlist:(id)arg1 extensionPointCache:(id)arg2;
+- (id)sdkOnlyKeyPaths;
 - (void)setAnnotation:(id)arg1 value:(id)arg2;
 - (BOOL)setDictionaries:(id)arg1;
 - (BOOL)setupWithForm:(id)arg1;
-- (BOOL)setupWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(struct NSMutableDictionary *)arg6;
+- (BOOL)setupWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(id)arg6;
 - (void)updateFromForm:(id)arg1;
 - (BOOL)useBundle:(id)arg1 error:(id *)arg2;
 

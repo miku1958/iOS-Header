@@ -6,13 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaPlayer/MPClientMediaPickerController-Protocol.h>
 #import <MediaPlayer/MPMusicMediaPickerClientController-Protocol.h>
 
 @class MPMediaPickerConfiguration, NSString;
 @protocol MPMediaPickerControllerDelegate, MPMediaPickerRemoteViewLoader;
 
-@interface MPMediaPickerController : UIViewController <MPClientMediaPickerController, MPMusicMediaPickerClientController>
+@interface MPMediaPickerController : UIViewController <MPMusicMediaPickerClientController>
 {
     MPMediaPickerConfiguration *_configuration;
     id<MPMediaPickerControllerDelegate> _delegate;
@@ -33,7 +32,6 @@
 
 + (void)load;
 + (void)preheatMediaPicker;
-+ (BOOL)useNewPicker;
 - (void).cxx_destruct;
 - (void)_addRemoteView;
 - (BOOL)_canShowWhileLocked;

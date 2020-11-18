@@ -12,6 +12,8 @@
 - (NSString *)assistantLocalizedStringForKey:(NSString *)arg1 table:(NSString *)arg2 bundle:(NSBundle *)arg3;
 - (void)dismissAssistant;
 - (void)handleCommand:(SABaseCommand *)arg1 completion:(void (^)(SABaseCommand *, NSError *))arg2;
+- (BOOL)isDeviceInCarDND;
+- (BOOL)isDeviceInStarkMode;
 - (BOOL)isDeviceLockedWithPasscode;
 - (BOOL)isTimeoutSuspended;
 - (BOOL)openSensitiveURL:(NSURL *)arg1;

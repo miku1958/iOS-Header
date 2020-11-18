@@ -29,6 +29,7 @@
 + (CDUnknownFunctionPointerType)CA_setterForProperty:(const struct _CAPropertyInfo *)arg1;
 - (id)CAMLType;
 - (id)CAMLTypeForKey:(id)arg1;
+- (BOOL)CAMLTypeSupportedForKey:(id)arg1;
 - (id)CA_addValue:(id)arg1 multipliedBy:(int)arg2;
 - (id)CA_archivingValueForKey:(id)arg1;
 - (unsigned long long)CA_copyNumericValue:(double [20])arg1;

@@ -18,6 +18,7 @@
 @property (readonly, nonatomic, getter=_additionalPlaceInfos) NSArray *additionalPlaceInfos;
 @property (readonly, nonatomic) NSDictionary *addressDictionary;
 @property (readonly, nonatomic, getter=_addressGeocodeAccuracy) int addressGeocodeAccuracy;
+@property (readonly, nonatomic, getter=_alternateSearchableNames) NSArray *alternateSearchableNames;
 @property (readonly, nonatomic, getter=_amenities) NSArray *amenities;
 @property (readonly, nonatomic, getter=_annotatedItemList) id<GEOAnnotatedItemList> annotatedItemList;
 @property (readonly, nonatomic, getter=_areaInMeters) double areaInMeters;

@@ -36,6 +36,7 @@
 @property (readonly, copy) NSString *asserter;
 @property (readonly, copy) HKMedicalDate *assertionDate;
 @property (readonly) long long assertionType;
+@property (readonly, copy, nonatomic) NSString *country;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSArray *dosages;
@@ -57,16 +58,12 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)_newMedicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 medicationCodings:(id)arg11 assertionType:(long long)arg12 asserter:(id)arg13 assertionDate:(id)arg14 statusCoding:(id)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 reasonForUseCodings:(id)arg18 notTaken:(BOOL)arg19 reasonsNotTakenCodings:(id)arg20 effectiveStartDate:(id)arg21 effectiveEndDate:(id)arg22 config:(CDUnknownBlockType)arg23;
++ (id)_newMedicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 assertionType:(long long)arg14 asserter:(id)arg15 assertionDate:(id)arg16 statusCoding:(id)arg17 dosages:(id)arg18 earliestDosageDate:(id)arg19 reasonForUseCodings:(id)arg20 notTaken:(BOOL)arg21 reasonsNotTakenCodings:(id)arg22 effectiveStartDate:(id)arg23 effectiveEndDate:(id)arg24 config:(CDUnknownBlockType)arg25;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)defaultDisplayString;
 + (id)indexableConceptKeyPaths;
-+ (id)medicationCodingsPreferredSystems;
-+ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 medicationCodings:(id)arg10 assertionType:(long long)arg11 asserter:(id)arg12 assertionDate:(id)arg13 statusCoding:(id)arg14 dosages:(id)arg15 earliestDosageDate:(id)arg16 reasonForUseCodings:(id)arg17 notTaken:(BOOL)arg18 reasonsNotTakenCodings:(id)arg19 effectiveStartDate:(id)arg20 effectiveEndDate:(id)arg21;
-+ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 medicationCodings:(id)arg11 assertionType:(long long)arg12 asserter:(id)arg13 assertionDate:(id)arg14 statusCoding:(id)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 reasonForUseCodings:(id)arg18 notTaken:(BOOL)arg19 reasonsNotTakenCodings:(id)arg20 effectiveStartDate:(id)arg21 effectiveEndDate:(id)arg22;
-+ (id)reasonForUseCodingsPreferredSystems;
-+ (id)reasonsNotTakenCodingsPreferredSystems;
-+ (id)statusCodingPreferredSystems;
++ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 medicationCodings:(id)arg12 assertionType:(long long)arg13 asserter:(id)arg14 assertionDate:(id)arg15 statusCoding:(id)arg16 dosages:(id)arg17 earliestDosageDate:(id)arg18 reasonForUseCodings:(id)arg19 notTaken:(BOOL)arg20 reasonsNotTakenCodings:(id)arg21 effectiveStartDate:(id)arg22 effectiveEndDate:(id)arg23;
++ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 assertionType:(long long)arg14 asserter:(id)arg15 assertionDate:(id)arg16 statusCoding:(id)arg17 dosages:(id)arg18 earliestDosageDate:(id)arg19 reasonForUseCodings:(id)arg20 notTaken:(BOOL)arg21 reasonsNotTakenCodings:(id)arg22 effectiveStartDate:(id)arg23 effectiveEndDate:(id)arg24;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -91,24 +88,18 @@
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)indexKeywords;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
-- (id)medicalRecordPreferredSystems;
 - (id)medicationCodingsCollection;
 - (id)medicationCodingsContext;
-- (id)medicationCodingsTasks;
 - (id)reasonForUseCodingsCollection;
 - (id)reasonForUseCodingsContext;
-- (id)reasonForUseCodingsTasks;
 - (id)reasonsNotTakenCodingsCollection;
 - (id)reasonsNotTakenCodingsContexts;
-- (id)reasonsNotTakenCodingsTasks;
 - (id)statusCodingCollection;
 - (id)statusCodingContext;
-- (id)statusCodingTasks;
 
 @end
 

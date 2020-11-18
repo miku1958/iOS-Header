@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)createActivity;
 - (id)initWithItem:(id)arg1;
 - (void)main;
-- (BOOL)shouldRetryForError:(id)arg1;
 
 @end
 

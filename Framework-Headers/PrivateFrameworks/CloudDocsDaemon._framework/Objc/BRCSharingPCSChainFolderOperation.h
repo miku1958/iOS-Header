@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     BRCServerItem *_serverItem;
     BRCAppLibrary *_appLibrary;
+    unsigned long long _chainedRecordsCount;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)createActivity;
 - (id)initWithItem:(id)arg1;
 - (void)main;
-- (BOOL)shouldRetryForError:(id)arg1;
 
 @end
 

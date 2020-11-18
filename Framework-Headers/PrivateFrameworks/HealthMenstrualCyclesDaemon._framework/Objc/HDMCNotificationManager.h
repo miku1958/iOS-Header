@@ -30,6 +30,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_isAlgorithmsVersionSameOnPairedDevice;
 - (void)_queue_alarm:(id)arg1 didReceiveDueEvents:(id)arg2;
 - (void)_queue_removeAllScheduledNotifications;
 - (void)_queue_rescheduleNotificationsForAnalysis:(id)arg1;

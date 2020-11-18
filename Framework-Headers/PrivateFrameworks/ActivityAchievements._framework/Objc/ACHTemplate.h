@@ -23,6 +23,7 @@
     unsigned char _duplicateRemovalStrategy;
     unsigned char _earnDateStrategy;
     BOOL _displaysEarnedInstanceCount;
+    BOOL _availableOnPairedDevice;
     unsigned long long _key;
     NSString *_uniqueName;
     unsigned long long _version;
@@ -47,6 +48,7 @@
     HKUnit *_canonicalUnit;
     unsigned long long _displayOrder;
     NSArray *_availableSuffixes;
+    unsigned long long _mobileAssetVersion;
 }
 
 @property (strong, nonatomic) NSSet *alertDates; // @synthesize alertDates=_alertDates;
@@ -55,6 +57,7 @@
 @property (strong, nonatomic) NSString *availabilityPredicate; // @synthesize availabilityPredicate=_availabilityPredicate;
 @property (strong, nonatomic) NSDateComponents *availabilityStart;
 @property (strong, nonatomic) NSArray *availableCountryCodes; // @synthesize availableCountryCodes=_availableCountryCodes;
+@property (nonatomic) BOOL availableOnPairedDevice; // @synthesize availableOnPairedDevice=_availableOnPairedDevice;
 @property (strong, nonatomic) NSArray *availableSuffixes; // @synthesize availableSuffixes=_availableSuffixes;
 @property (strong, nonatomic) HKUnit *canonicalUnit; // @synthesize canonicalUnit=_canonicalUnit;
 @property (strong, nonatomic) NSDate *createdDate; // @synthesize createdDate=_createdDate;
@@ -73,6 +76,7 @@
 @property (strong, nonatomic) NSString *graceVisibilityPredicate; // @synthesize graceVisibilityPredicate=_graceVisibilityPredicate;
 @property (nonatomic) unsigned long long key; // @synthesize key=_key;
 @property (nonatomic) unsigned char minimumEngineVersion; // @synthesize minimumEngineVersion=_minimumEngineVersion;
+@property (nonatomic) unsigned long long mobileAssetVersion; // @synthesize mobileAssetVersion=_mobileAssetVersion;
 @property (strong, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
 @property (strong, nonatomic) NSString *progressExpression; // @synthesize progressExpression=_progressExpression;
 @property (strong, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;

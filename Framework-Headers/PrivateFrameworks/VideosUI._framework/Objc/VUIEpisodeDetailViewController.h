@@ -4,24 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/VUILibraryFetchControllerViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <VideosUI/VUIEpisodeDetailViewDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
 
-@class NSString, UITapGestureRecognizer, VUIEpisodeDetailView, VUIMediaItem;
+@class NSString, UITapGestureRecognizer, VUIEpisodeDetailView, VUIMediaItem, VUIViewControllerContentPresenter;
 @protocol VUIEpisodeDetailViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIEpisodeDetailViewController : VUILibraryFetchControllerViewController <UIGestureRecognizerDelegate, VUIEpisodeDetailViewDelegate, VUIMediaEntitiesFetchControllerDelegate>
+@interface VUIEpisodeDetailViewController : UIViewController <UIGestureRecognizerDelegate, VUIEpisodeDetailViewDelegate>
 {
     VUIMediaItem *_mediaItem;
+    VUIViewControllerContentPresenter *_contentPresenter;
     id<VUIEpisodeDetailViewControllerDelegate> _delegate;
     VUIEpisodeDetailView *_detailView;
     UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
+@property (strong, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VUIEpisodeDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -33,19 +34,18 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_configureNavigationBar;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
 - (void)didTapPlay;
 - (void)dismissPopover;
 - (void)dismissTapped:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithMediaItem:(id)arg1;
-- (id)initWithMediaLibrary:(id)arg1;
+- (void)loadView;
 - (void)reportMetricsPageEvent;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

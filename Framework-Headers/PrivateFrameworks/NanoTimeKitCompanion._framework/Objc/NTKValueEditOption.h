@@ -17,6 +17,7 @@
 + (id)_optionWithValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (BOOL)_valueIsValid:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)localizedNameForValidValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)JSONObjectRepresentation;
 - (id)_faceBundleStringToValueDict;

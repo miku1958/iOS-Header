@@ -14,12 +14,15 @@
 __attribute__((visibility("hidden")))
 @interface WDMedicalRecordDisplayItemProvider : NSObject <WDMedicalRecordDaySummaryDelegate>
 {
+    BOOL _shouldCancelDataCollection;
     long long _displayItemOptions;
     NSDictionary *_additionalPredicates;
     NSPredicate *_filter;
     CDUnknownBlockType _errorHandler;
+    long long _numOfRemovedRecords;
     HRProfile *_profile;
     HKConcept *_concept;
+    NSArray *_preloadedRecords;
     NSMutableArray *_medicalRecordGroups;
     NSMutableArray *_dateLessGroups;
     NSArray *_pendingMedicalRecordGroups;
@@ -44,11 +47,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSPredicate *filter; // @synthesize filter=_filter;
 @property (strong, nonatomic) HKMultiTypeSampleIterator *iterator; // @synthesize iterator=_iterator;
 @property (strong, nonatomic) NSMutableArray *medicalRecordGroups; // @synthesize medicalRecordGroups=_medicalRecordGroups;
+@property (nonatomic) long long numOfRemovedRecords; // @synthesize numOfRemovedRecords=_numOfRemovedRecords;
 @property (strong, nonatomic) WDMedicalRecordPagingContext *pagingContext; // @synthesize pagingContext=_pagingContext;
 @property (strong, nonatomic) NSArray *pendingDateLessGroups; // @synthesize pendingDateLessGroups=_pendingDateLessGroups;
 @property (strong, nonatomic) NSArray *pendingMedicalRecordGroups; // @synthesize pendingMedicalRecordGroups=_pendingMedicalRecordGroups;
+@property (copy, nonatomic) NSArray *preloadedRecords; // @synthesize preloadedRecords=_preloadedRecords;
 @property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property (copy, nonatomic) NSArray *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
+@property (nonatomic) BOOL shouldCancelDataCollection; // @synthesize shouldCancelDataCollection=_shouldCancelDataCollection;
 @property (strong, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property (copy, nonatomic) NSUUID *targetUUID; // @synthesize targetUUID=_targetUUID;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
@@ -61,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_commitPendingGroupsAndCallUpdateHandlerBypassGroupChangeDetermination:(BOOL)arg1;
 - (id)_displayItemGroupAtIndex:(long long)arg1;
-- (void)_displayItemGroupsForSummaryOfRecords:(id)arg1 style:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_displayItemGroupsForSummaryOfRecords:(id)arg1 displayRemovedRecords:(BOOL)arg2 style:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_processAccumulatedRecordsForPage:(id)arg1;
 - (void)_queue_queryForNextBatchOfData;
 - (void)_queue_resetPagingInformation;
@@ -71,11 +77,12 @@ __attribute__((visibility("hidden")))
 - (void)daySummaryHasDisplayItemUpdate:(id)arg1;
 - (id)displayItemForIndexPath:(id)arg1;
 - (id)indexPathForRecordId:(id)arg1;
-- (id)initWithProfile:(id)arg1 concept:(id)arg2 displayItemOptions:(long long)arg3 sampleTypes:(id)arg4 filter:(id)arg5 additionalPredicates:(id)arg6 sortDescriptors:(id)arg7;
+- (id)initWithProfile:(id)arg1 concept:(id)arg2 preloadedRecords:(id)arg3 displayItemOptions:(long long)arg4 sampleTypes:(id)arg5 filter:(id)arg6 additionalPredicates:(id)arg7 sortDescriptors:(id)arg8;
 - (id)initWithProfile:(id)arg1 displayItemOptions:(long long)arg2 sampleTypes:(id)arg3 filter:(id)arg4 additionalPredicates:(id)arg5 sortDescriptors:(id)arg6;
 - (long long)numberOfDisplayItemsForGroupAtIndex:(long long)arg1;
 - (long long)numberOfGroups;
 - (void)reload;
+- (id)removedRecords;
 - (void)requestDataOfNextPage;
 - (void)setSampleTypes:(id)arg1 predicatesPerType:(id)arg2 accountsPredicate:(id)arg3;
 - (void)startCollectingDataUntilRecordWithUUID:(id)arg1 withUpdateHandler:(CDUnknownBlockType)arg2;

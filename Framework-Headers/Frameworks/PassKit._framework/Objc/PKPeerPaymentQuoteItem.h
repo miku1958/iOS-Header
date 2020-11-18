@@ -12,6 +12,7 @@
 
 @interface PKPeerPaymentQuoteItem : NSObject <NSSecureCoding>
 {
+    BOOL _preservesCurrentBalance;
     unsigned long long _type;
     NSDecimalNumber *_exchangeRate;
     NSDecimalNumber *_sendAmount;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) unsigned long long merchantCapabilities; // @synthesize merchantCapabilities=_merchantCapabilities;
 @property (readonly, copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property (readonly, copy, nonatomic) NSData *nonce; // @synthesize nonce=_nonce;
+@property (readonly, nonatomic) BOOL preservesCurrentBalance; // @synthesize preservesCurrentBalance=_preservesCurrentBalance;
 @property (readonly, copy, nonatomic) NSDecimalNumber *receiveAmount; // @synthesize receiveAmount=_receiveAmount;
 @property (readonly, copy, nonatomic) NSString *receiveAmountCurrency; // @synthesize receiveAmountCurrency=_receiveAmountCurrency;
 @property (readonly, copy, nonatomic) NSDecimalNumber *sendAmount; // @synthesize sendAmount=_sendAmount;

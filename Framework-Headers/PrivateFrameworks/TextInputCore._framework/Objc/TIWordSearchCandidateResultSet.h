@@ -8,7 +8,7 @@
 
 #import <TextInputCore/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, TIKeyboardCandidate;
 
 @interface TIWordSearchCandidateResultSet : NSObject <NSCopying>
 {
@@ -17,6 +17,7 @@
     NSMutableDictionary *_mutableCandidateRefsDictionary;
     NSArray *_disambiguationCandidates;
     unsigned long long _selectedDisambiguationCandidateIndex;
+    TIKeyboardCandidate *_candidateAfterSegmentBreak;
     NSArray *_proactiveCandidates;
     NSArray *_autoconvertedCandidates;
     NSString *_autoconvertedCandidateString;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) NSString *autoconvertedCandidateString; // @synthesize autoconvertedCandidateString=_autoconvertedCandidateString;
 @property (copy, nonatomic) NSArray *autoconvertedCandidates; // @synthesize autoconvertedCandidates=_autoconvertedCandidates;
 @property (strong, nonatomic) NSString *autoconvertedInputString; // @synthesize autoconvertedInputString=_autoconvertedInputString;
+@property (copy, nonatomic) TIKeyboardCandidate *candidateAfterSegmentBreak; // @synthesize candidateAfterSegmentBreak=_candidateAfterSegmentBreak;
 @property (readonly, nonatomic) NSDictionary *candidateRefsDictionary;
 @property (readonly, nonatomic) NSArray *candidates;
 @property (copy, nonatomic) NSArray *disambiguationCandidates; // @synthesize disambiguationCandidates=_disambiguationCandidates;

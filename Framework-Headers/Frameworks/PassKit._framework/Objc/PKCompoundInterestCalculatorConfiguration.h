@@ -50,6 +50,7 @@
 
 + (id)configurationWithCreditAccount:(id)arg1;
 - (void).cxx_destruct;
+- (long long)_daysInYearForDate:(id)arg1 withTimeZone:(id)arg2;
 - (id)description;
 - (id)init;
 - (void)updateWithCreditAccount:(id)arg1;

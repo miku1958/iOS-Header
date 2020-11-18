@@ -52,13 +52,14 @@
 - (void)downloadVoice:(id)arg1 gender:(long long)arg2;
 - (BOOL)hasNonWWANNetworkConnection;
 - (id)inProgressOutputVoice;
-- (BOOL)isVocalizerVoiceDownloading:(id)arg1;
+- (id)installedVocalizerVoicesForLanguage:(id)arg1;
+- (id)installedVoicesForLanguage:(id)arg1 gender:(long long)arg2;
 - (BOOL)isVocalizerVoiceInstalled:(id)arg1;
-- (BOOL)isVoiceDownloading:(id)arg1 gender:(long long)arg2;
 - (BOOL)isVoiceInstalled:(id)arg1 gender:(long long)arg2;
 - (void)languageCodeDidChange:(id)arg1;
 - (id)outputVoice;
 - (void)outputVoiceDidChange:(id)arg1;
+- (void)presentVoiceDownloadDisabledNoWifiAlert;
 - (void)setAssistantInProgressVoice:(id)arg1;
 - (void)setAssistantOutputVoice:(id)arg1;
 - (void)setInProgressVoicePreference:(id)arg1;
@@ -72,8 +73,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (id)viewModelWithInProgressVoice:(id)arg1 currentVoice:(id)arg2;
-- (id)vocalizerVoicesForLanguage:(id)arg1;
-- (id)voicesForLanguage:(id)arg1 gender:(long long)arg2;
+- (id)voiceSettingsForLanguageCode:(id)arg1 gender:(long long)arg2;
 
 @end
 

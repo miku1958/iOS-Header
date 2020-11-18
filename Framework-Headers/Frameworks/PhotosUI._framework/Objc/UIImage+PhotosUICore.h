@@ -23,6 +23,7 @@
 - (id)px_debugImageWithStrokeRect:(struct CGRect)arg1 color:(id)arg2 text:(id)arg3;
 - (void)px_drawInRect:(struct CGRect)arg1 withContentMode:(long long)arg2;
 - (id)px_extractPlayOverlayBackgroundImageFromLocation:(struct CGPoint)arg1 inViewportWithSize:(struct CGSize)arg2 contentMode:(long long)arg3 contentsRect:(struct CGRect)arg4 asynchronously:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
+- (id)px_imageByApplyingAlpha:(double)arg1;
 - (id)px_imageByCroppingEdgeInsets:(struct UIEdgeInsets)arg1;
 - (id)px_imageByCroppingRect:(struct CGRect)arg1;
 - (id)px_imageByCroppingRect:(struct CGRect)arg1 pixelTargetSize:(struct CGSize)arg2 cornerRadius:(double)arg3;

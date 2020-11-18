@@ -22,6 +22,7 @@
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)selectedApp;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
+- (id)targetDataInfo;
 - (void)updateContentClasses;
 
 @end

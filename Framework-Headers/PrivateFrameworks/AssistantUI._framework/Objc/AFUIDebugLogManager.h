@@ -31,7 +31,6 @@
 - (id)_uniqueTemporaryFileURL;
 - (void)captureCardLogsSinceTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)capturePreviousConversationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)captureSiriRemembersLogWithCompletion:(CDUnknownBlockType)arg1;
 - (void)captureSiriSpeechLogsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)captureSiriTTSAudioWithCompletion:(CDUnknownBlockType)arg1;
 - (void)captureSiriVoiceTriggerLogsWithCompletion:(CDUnknownBlockType)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUSystemMonitor, NSArray, NSData, NSString, NSURL, SFDeviceDiscovery, SFService, SFSession;
+@class CUSystemMonitor, NSArray, NSData, NSMutableDictionary, NSString, NSURL, SFDeviceDiscovery, SFService, SFSession;
 @protocol OS_dispatch_queue;
 
 @interface SFRemoteAutoFillService : NSObject
@@ -15,7 +15,7 @@
     CDUnknownBlockType _activateCompletion;
     SFDeviceDiscovery *_discovery;
     int _discoveryState;
-    struct NSMutableDictionary *_devices;
+    NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
     NSString *_receivedPassword;
     NSString *_receivedUsername;

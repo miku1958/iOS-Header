@@ -22,10 +22,12 @@
 + (id)compassButtonWithMapView:(id)arg1;
 - (void).cxx_destruct;
 - (void)_updateVisibility;
+- (void)addInteraction:(id)arg1;
 - (void)didTapCompassGesture:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 mapView:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)mapViewDidUpdateYawNotification:(id)arg1;
+- (void)removeInteraction:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 

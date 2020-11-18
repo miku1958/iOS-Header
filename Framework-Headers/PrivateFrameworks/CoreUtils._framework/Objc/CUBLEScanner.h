@@ -8,7 +8,7 @@
 
 #import <CoreUtils/CBCentralManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CUSystemMonitor, NSDictionary, NSString;
+@class CBCentralManager, CUSystemMonitor, NSDictionary, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUBLEScanner : NSObject <CBCentralManagerDelegate>
@@ -16,7 +16,7 @@
     BOOL _activateCalled;
     CBCentralManager *_centralManager;
     BOOL _changesPending;
-    struct NSMutableDictionary *_devices;
+    NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     int _rssiThreshold;

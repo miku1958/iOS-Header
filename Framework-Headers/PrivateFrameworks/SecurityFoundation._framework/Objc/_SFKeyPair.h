@@ -21,7 +21,7 @@
 + (id)_secKeyCreationAttributesForSpecifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)initRandomKeyPairWithSpecifier:(id)arg1;
-- (id)initRandomKeyPairWithSpecifier:(id)arg1 privateKeyDomain:(struct NSString *)arg2;
+- (id)initRandomKeyPairWithSpecifier:(id)arg1 privateKeyDomain:(id)arg2;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithData:(id)arg1 specifier:(id)arg2 error:(id *)arg3;
 - (id)initWithSecKey:(struct __SecKey *)arg1;

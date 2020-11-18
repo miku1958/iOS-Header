@@ -6,23 +6,28 @@
 
 #import <objc/NSObject.h>
 
+#import <ActivityAchievementsDaemon/ACHRemoteTemplateAvailabilityListenerDelegate-Protocol.h>
 #import <ActivityAchievementsDaemon/ACHTemplateSource-Protocol.h>
 
-@class ACHBackCompatRemoteAchievementAvailabilityKeyWriting, ACHMobileAssetProvider, NSDictionary, NSString;
+@class ACHBackCompatRemoteAchievementAvailabilityKeyWriter, ACHMobileAssetProvider, ACHRemoteTemplateAvailabilityKeyProvider, ACHRemoteTemplateAvailabilityListener, NSDictionary, NSString;
 @protocol ACHTemplateSourceDelegate, OS_dispatch_queue;
 
-@interface ACHRemoteTemplateSource : NSObject <ACHTemplateSource>
+@interface ACHRemoteTemplateSource : NSObject <ACHRemoteTemplateAvailabilityListenerDelegate, ACHTemplateSource>
 {
     NSString *_buildVersionOverride;
     NSObject<ACHTemplateSourceDelegate> *delegate;
     ACHMobileAssetProvider *_mobileAssetProvider;
-    ACHBackCompatRemoteAchievementAvailabilityKeyWriting *_backCompatAvailabilityKeyWriter;
+    ACHBackCompatRemoteAchievementAvailabilityKeyWriter *_backCompatAvailabilityKeyWriter;
+    ACHRemoteTemplateAvailabilityKeyProvider *_remoteTemplateAvailabilityKeyProvider;
+    ACHRemoteTemplateAvailabilityListener *_remoteTemplateAvailabilityListener;
     NSDictionary *_resourceAssetURLsByUniqueName;
     NSDictionary *_stickerAssetURLsByUniqueName;
+    NSDictionary *_assetVersionsByUniqueName;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (strong, nonatomic) ACHBackCompatRemoteAchievementAvailabilityKeyWriting *backCompatAvailabilityKeyWriter; // @synthesize backCompatAvailabilityKeyWriter=_backCompatAvailabilityKeyWriter;
+@property (strong, nonatomic) NSDictionary *assetVersionsByUniqueName; // @synthesize assetVersionsByUniqueName=_assetVersionsByUniqueName;
+@property (strong, nonatomic) ACHBackCompatRemoteAchievementAvailabilityKeyWriter *backCompatAvailabilityKeyWriter; // @synthesize backCompatAvailabilityKeyWriter=_backCompatAvailabilityKeyWriter;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) NSObject<ACHTemplateSourceDelegate> *delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
@@ -30,19 +35,24 @@
 @property (readonly, nonatomic) NSString *identifier;
 @property (strong, nonatomic) ACHMobileAssetProvider *mobileAssetProvider; // @synthesize mobileAssetProvider=_mobileAssetProvider;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) ACHRemoteTemplateAvailabilityKeyProvider *remoteTemplateAvailabilityKeyProvider; // @synthesize remoteTemplateAvailabilityKeyProvider=_remoteTemplateAvailabilityKeyProvider;
+@property (strong, nonatomic) ACHRemoteTemplateAvailabilityListener *remoteTemplateAvailabilityListener; // @synthesize remoteTemplateAvailabilityListener=_remoteTemplateAvailabilityListener;
 @property (strong, nonatomic) NSDictionary *resourceAssetURLsByUniqueName; // @synthesize resourceAssetURLsByUniqueName=_resourceAssetURLsByUniqueName;
 @property (readonly, nonatomic) long long runCadence;
 @property (strong, nonatomic) NSDictionary *stickerAssetURLsByUniqueName; // @synthesize stickerAssetURLsByUniqueName=_stickerAssetURLsByUniqueName;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addAssetVersionsByUniqueNameToDictionary:(id)arg1 fromAsset:(id)arg2;
 - (void)_addURLsByUniqueNameToDictionary:(id)arg1 fromAsset:(id)arg2;
 - (void)_removeURLsByUniqueNameFromDictionary:(id)arg1 fromAsset:(id)arg2;
 - (id)_resourceAssetURLForTemplate:(id)arg1;
 - (id)buildVersion;
-- (id)initWithMobileAssetProvider:(id)arg1 backCompatWriter:(id)arg2;
+- (id)initWithMobileAssetProvider:(id)arg1 backCompatWriter:(id)arg2 remoteTemplateAvailabilityKeyProvider:(id)arg3 remoteTemplateAvailabilityListener:(id)arg4;
 - (id)localizationBundleURLForTemplate:(id)arg1;
+- (long long)mobileAssetVersionForTemplate:(id)arg1;
 - (id)propertyListBundleURLForTemplate:(id)arg1;
+- (void)remoteTemplateAvailabilityUpdated;
 - (id)resourceBundleURLForTemplate:(id)arg1;
 - (void)setBuildVersionOverride:(id)arg1;
 - (BOOL)sourceShouldRunForDate:(id)arg1;

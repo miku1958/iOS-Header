@@ -6,19 +6,23 @@
 
 #import <PassKitUI/PKSectionTableViewController.h>
 
-#import <PassKitUI/PKExpressPassCategoryViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentPreferenceCardCellAccessoryViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PKExpressPassController, PKPassSnapshotter;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString, PKExpressPassController, PKPassSnapshotter;
 @protocol PKPaymentDataProvider;
 
-@interface PKExpressPassesViewController : PKSectionTableViewController <PKExpressPassCategoryViewControllerDelegate>
+@interface PKExpressPassesViewController : PKSectionTableViewController <PKPaymentDataProviderDelegate, PKPaymentPreferenceCardCellAccessoryViewDelegate>
 {
-    NSMutableArray *_transitPassCategories;
+    NSMutableArray *_transitPasses;
+    NSMutableArray *_selectedTransitPassIndices;
     PKExpressPassController *_expressPassController;
     NSMutableArray *_paymentPasses;
     NSArray *_allPasses;
     id<PKPaymentDataProvider> _paymentDataProvider;
     long long _style;
+    NSMutableDictionary *_passUniqueIDToCell;
+    NSMutableDictionary *_passUniqueIDToTransitBalanceModels;
     long long _selectedPaymentPassIndex;
     BOOL _selectedPaymentPassIsInPendingState;
     BOOL _isUserInteractionsEnabled;
@@ -34,34 +38,40 @@
 
 - (void).cxx_destruct;
 - (void)_acquireUserAuthForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_addSpinnerToCell:(id)arg1;
-- (id)_categoryForIndex:(long long)arg1;
-- (id)_categoryForTransitPass:(id)arg1;
-- (id)_categoryIdentifierForPass:(id)arg1;
-- (long long)_categoryIndexForPass:(id)arg1;
-- (id)_conflictingPassesForUseCaseWithPasses:(id)arg1;
-- (id)_createCategoryForPass:(id)arg1;
+- (id)_conflictingPassesForPass:(id)arg1 useCaseWithPasses:(id)arg2;
 - (void)_disableExpressModeForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_enableExpressModeForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_fetchBalancesAndTransitPassPropertiesForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (double)_heightForRowAtIndexPath:(id)arg1;
 - (void)_invalidateUserAuth;
+- (BOOL)_isTransitExpressRowEnabledForIndex:(unsigned long long)arg1;
 - (id)_passWithUniqueIdentifier:(id)arg1;
-- (id)_paymentPassForIndex:(long long)arg1;
+- (id)_paymentCardCellForRow:(long long)arg1;
+- (id)_paymentPassForIndex:(unsigned long long)arg1;
+- (id)_preferenceCardCellForIdentifier:(id)arg1;
 - (void)_promptUserAboutConflicts:(id)arg1 forPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (long long)_sectionForPass:(id)arg1;
 - (void)_sendExpressPassDidChangeNotification;
 - (void)_setUserInteractionsEnabled:(BOOL)arg1;
 - (id)_transformState:(id)arg1;
-- (void)_updateCardImageForCell:(id)arg1 withPass:(id)arg2 inCategory:(id)arg3;
+- (id)_transitCardCellForRow:(long long)arg1;
+- (id)_transitPassForIndex:(unsigned long long)arg1;
+- (void)_transitUpdateWithState:(id)arg1;
+- (void)_updateBalancesWithServerBalances:(id)arg1 transitPassProperties:(id)arg2 forPass:(id)arg3;
+- (void)_updateBalancesWithServerBalances:(id)arg1 transitPassProperties:(id)arg2 forPassWithUniqueIdentifier:(id)arg3;
 - (void)_updateExpressState:(id)arg1;
 - (void)_updatePasses:(id)arg1;
 - (void)_updatePaymentCardCellWithIndex:(long long)arg1 statusString:(id)arg2;
 - (void)_updateUIWithExpressState;
 - (void)_upgradeExpressModeForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)additionalViewControllersForPassUniqueIdentifier:(id)arg1;
+- (void)_userChangedExpressSettingForPaymentPassAtIndexPath:(id)arg1;
+- (void)_userChangedExpressTransitToNone;
+- (void)_userSetExpressTransitToEnabled:(BOOL)arg1 cell:(id)arg2;
 - (void)dealloc;
-- (void)expressPassCategoryViewController:(id)arg1 didUpdateExpressState:(id)arg2;
-- (double)heightForRowAtIndexPath:(id)arg1;
 - (id)initWithPasses:(id)arg1 paymentDataProvider:(id)arg2 controller:(id)arg3 style:(long long)arg4;
-- (id)paymentCardCellForRow:(long long)arg1;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
+- (void)paymentPreferenceCardCell:(id)arg1 didChangeSwitchState:(BOOL)arg2;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -71,8 +81,6 @@
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (id)transitCardCategoryCellForRow:(long long)arg1;
-- (void)userChangedExpressSettingForPaymentPassAtIndexPath:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

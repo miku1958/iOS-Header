@@ -90,7 +90,7 @@
 - (void)registerForMessages;
 - (void)removeCloudData;
 - (void)setUp;
-- (id)url;
+- (id)urlString;
 
 @end
 

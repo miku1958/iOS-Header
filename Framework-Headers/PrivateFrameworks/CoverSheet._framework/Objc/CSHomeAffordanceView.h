@@ -6,19 +6,25 @@
 
 #import <UIKit/UIView.h>
 
+#import <CoverSheet/SBSystemCursorInteractionDelegate-Protocol.h>
 #import <CoverSheet/SBUIOptionalLegibility-Protocol.h>
 
-@class MTLumaDodgePillView, MTStaticColorPillView, NSString, UIColor, _UILegibilitySettings;
+@class MTLumaDodgePillView, MTStaticColorPillView, NSString, SBFHomeGrabberSettings, UIColor, _UILegibilitySettings;
+@protocol CSCoverSheetContextProviding;
 
-@interface CSHomeAffordanceView : UIView <SBUIOptionalLegibility>
+@interface CSHomeAffordanceView : UIView <SBSystemCursorInteractionDelegate, SBUIOptionalLegibility>
 {
+    SBFHomeGrabberSettings *_settings;
+    BOOL _systemCursorInteractionEnabled;
     _UILegibilitySettings *_legibilitySettings;
     unsigned long long _style;
     UIColor *_overrideColor;
+    id<CSCoverSheetContextProviding> _coverSheetContext;
     MTStaticColorPillView *_staticHomeAffordance;
     MTLumaDodgePillView *_dynamicHomeAffordance;
 }
 
+@property (strong, nonatomic) id<CSCoverSheetContextProviding> coverSheetContext; // @synthesize coverSheetContext=_coverSheetContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) MTLumaDodgePillView *dynamicHomeAffordance; // @synthesize dynamicHomeAffordance=_dynamicHomeAffordance;
@@ -28,6 +34,7 @@
 @property (weak, nonatomic) MTStaticColorPillView *staticHomeAffordance; // @synthesize staticHomeAffordance=_staticHomeAffordance;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isSystemCursorInteractionEnabled) BOOL systemCursorInteractionEnabled; // @synthesize systemCursorInteractionEnabled=_systemCursorInteractionEnabled;
 
 - (void).cxx_destruct;
 - (void)_createDynamicHomeAffordance;
@@ -35,8 +42,12 @@
 - (void)_transitionToStyle:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)_updateForLegibility;
 - (id)_viewForStyle:(unsigned long long)arg1;
+- (struct UIEdgeInsets)cursorInteractionHitTestInsetsForView:(id)arg1;
 - (id)init;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)shouldBeginCursorInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
+- (id)styleForRegion:(id)arg1 forView:(id)arg2;
 - (double)suggestedEdgeSpacing;
 - (struct CGSize)suggestedSizeForContentWidth:(double)arg1;
 

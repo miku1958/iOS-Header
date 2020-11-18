@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (id)initWithActionType:(unsigned long long)arg1 assets:(id)arg2 orAssetsByAssetCollection:(id)arg3;
 - (id)initWithUnderlyingActionPerformer:(id)arg1;
 - (void)performWithCompletionHandler:(CDUnknownBlockType)arg1;

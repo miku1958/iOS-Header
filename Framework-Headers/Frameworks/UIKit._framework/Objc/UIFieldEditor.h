@@ -73,6 +73,7 @@
 @property (nonatomic) struct CGPoint autoscrollContentOffset; // @synthesize autoscrollContentOffset=_autoscrollContentOffset;
 @property (readonly, nonatomic) UITextPosition *beginningOfDocument;
 @property (nonatomic) BOOL contentsIsSingleValue;
+@property (readonly, nonatomic) long long cursorBehavior;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
@@ -205,6 +206,7 @@
 - (void)activateEditor;
 - (void)addTextAlternativesDisplayStyle:(long long)arg1 toRange:(struct _NSRange)arg2;
 - (int)atomStyle;
+- (id)attributedSubstringForMarkedRange;
 - (id)attributedText;
 - (id)attributedTextInRange:(id)arg1;
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;

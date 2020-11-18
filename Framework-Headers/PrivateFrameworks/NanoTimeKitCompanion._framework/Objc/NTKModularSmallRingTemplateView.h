@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NTKModularTemplateView.h>
 
-@class CLKProgressProvider, NTKColoringImageView, NTKColoringLabel, UIView;
+@class CLKProgressProvider, NSNumber, NTKColoringImageView, NTKColoringLabel, UIView;
 @protocol NTKComplicationImageView;
 
 @interface NTKModularSmallRingTemplateView : NTKModularTemplateView
@@ -14,7 +14,7 @@
     UIView<NTKComplicationImageView> *_imageView;
     float _level;
     CLKProgressProvider *_progressProvider;
-    struct NSNumber *_progressUpdateToken;
+    NSNumber *_progressUpdateToken;
     NTKColoringImageView *_stateRing;
     NTKColoringLabel *_label;
 }

@@ -49,6 +49,7 @@
 - (void)_handleiCDPStatusCheckError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_isICloudKeychainDisabledByManagementProfile;
 - (void)_performInteractivelyAuthenticatedRepair:(CDUnknownBlockType)arg1;
+- (void)_performSilentlyAuthenticatedRepair:(CDUnknownBlockType)arg1;
 - (void)_postRecoveryEnableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_predicateForRecordUpgradeCheck;
 - (id)_predicateForRecordUpgradeCheckIgnoringBottled;

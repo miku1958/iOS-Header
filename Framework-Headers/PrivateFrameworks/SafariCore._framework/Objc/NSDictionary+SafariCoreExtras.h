@@ -18,7 +18,9 @@
 - (BOOL)safari_boolForKey:(id)arg1;
 - (id)safari_dataForKey:(id)arg1;
 - (id)safari_dateForKey:(id)arg1;
+- (id)safari_dictionaryByMergingWithDictionary:(id)arg1;
 - (id)safari_dictionaryForKey:(id)arg1;
+- (id)safari_dictionaryWithLowercaseKeys;
 - (id)safari_diffWithDictionary:(id)arg1;
 - (id)safari_mapAndFilterKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_mapTableForKey:(id)arg1;

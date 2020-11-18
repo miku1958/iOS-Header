@@ -9,6 +9,7 @@
 @protocol SBSDisplayLayoutElement <NSObject>
 
 @property (readonly, nonatomic) long long layoutRole;
+@property (readonly, nonatomic, getter=sb_isTransitioning) BOOL sb_transitioning;
 @property (readonly, nonatomic, getter=isSpringBoardElement) BOOL springBoardElement;
 
 @end

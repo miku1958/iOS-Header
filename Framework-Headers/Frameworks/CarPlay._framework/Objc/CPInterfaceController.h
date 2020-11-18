@@ -48,7 +48,6 @@
 + (void)_whitelistClassesForBaseTemplateProvider:(id)arg1;
 - (void).cxx_destruct;
 - (id)_activeMapTemplate;
-- (BOOL)_applicationHasMapsEntitlement;
 - (void)_connectToListenerEndpoint:(id)arg1;
 - (void)_connectionInterrupted;
 - (void)_connectionInvalidated;

@@ -25,6 +25,9 @@
 + (id)_followUpItemWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 bag:(id)arg4;
 + (id)_notificationIdFromFollowUpId:(id)arg1 account:(id)arg2;
 + (void)_performAuth;
++ (void)_setDeviceEligibilityKeepingExistingDeviceOffers:(id)arg1 offersStore:(id)arg2;
++ (BOOL)_setRawDeviceOffers:(id)arg1 offersStore:(id)arg2;
++ (BOOL)_shouldPostOffersUpdatedNotification:(id)arg1 oldOffers:(id)arg2;
 + (id)_systemVersionDictionary;
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
 + (id)bagKeySet;
@@ -64,9 +67,11 @@
 + (id)productType;
 + (id)productVersion;
 + (void)registerCompanionWithSerialNumber:(id)arg1;
++ (void)registerCompanionWithSerialNumber:(id)arg1 bag:(id)arg2;
 + (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 logKey:(id)arg4;
 + (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2 bagContract:(id)arg3 logKey:(id)arg4;
 + (void)saveDeviceOfferEligibility:(id)arg1;
++ (void)saveDeviceOffers:(id)arg1;
 + (BOOL)saveDeviceOffersForAccount:(id)arg1 response:(id)arg2 logKey:(id)arg3;
 + (id)screenScale;
 + (id)serialNumber;

@@ -32,12 +32,14 @@
 - (void).cxx_destruct;
 - (id)copyWithBlock:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentity:(id)arg1;
 - (id)initWithIdentity:(id)arg1 clientInfo:(id)arg2;
 - (id)initWithIdentity:(id)arg1 identityStore:(id)arg2 clientInfo:(id)arg3;
 - (id)initWithIdentity:(id)arg1 identityStore:(id)arg2 clientInfo:(id)arg3 authenticationProvider:(id)arg4;
+- (BOOL)isEqual:(id)arg1;
 - (void)setAllowsExpiredBags:(BOOL)arg1;
 - (void)setDelegatedIdentity:(id)arg1;
 - (void)setIdentity:(id)arg1;

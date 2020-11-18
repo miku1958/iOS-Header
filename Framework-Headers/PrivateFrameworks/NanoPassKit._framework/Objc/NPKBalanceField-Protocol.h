@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoPassKit/NSObject-Protocol.h>
+#import <NanoPassKit/NPKTransitItemField-Protocol.h>
 
-@class NSString;
+@class NSString, PKPaymentBalance;
 
-@protocol NPKBalanceField <NSObject>
+@protocol NPKBalanceField <NPKTransitItemField>
 
+@property (readonly, nonatomic) PKPaymentBalance *balance;
 @property (readonly, nonatomic) NSString *formattedValue;
-@property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isPrimaryBalance;
-@property (readonly, nonatomic) NSString *label;
 
 @end
 

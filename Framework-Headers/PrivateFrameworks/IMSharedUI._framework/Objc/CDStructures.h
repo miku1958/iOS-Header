@@ -40,11 +40,3 @@ struct IMTextLayoutResults {
     BOOL _field2;
 };
 
-struct UIColor {
-    Class _field1;
-};
-
-struct UIImage {
-    Class _field1;
-};
-

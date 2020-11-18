@@ -113,7 +113,7 @@
 - (void)unconfigureMediaSystemComponents;
 - (void)unconfigureMediaSystemComponents:(id)arg1;
 - (void)updateMediaSystemSettingsGroup;
-- (id)url;
+- (id)urlString;
 
 @end
 

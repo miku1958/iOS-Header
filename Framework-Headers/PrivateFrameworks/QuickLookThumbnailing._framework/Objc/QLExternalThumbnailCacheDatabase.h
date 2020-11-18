@@ -34,7 +34,7 @@
 - (BOOL)removeAllThumbnails:(id *)arg1;
 - (unsigned long long)totalThumbnailCount;
 - (unsigned long long)totalThumbnailsSize;
-- (struct NSObject *)whereClauseForItem:(id)arg1;
+- (id)whereClauseForItem:(id)arg1;
 
 @end
 

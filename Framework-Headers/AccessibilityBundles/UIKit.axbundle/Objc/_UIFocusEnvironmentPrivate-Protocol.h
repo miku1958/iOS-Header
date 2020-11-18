@@ -6,7 +6,7 @@
 
 #import <UIKit/UIFocusEnvironment-Protocol.h>
 
-@class NSArray;
+@class NSArray, _UIFocusGroupDescriptor;
 
 @protocol _UIFocusEnvironmentPrivate <UIFocusEnvironment>
 
@@ -18,6 +18,7 @@
 
 @optional
 - (BOOL)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
+- (_UIFocusGroupDescriptor *)_focusGroupDescriptor;
 - (BOOL)_reversesLinearFocusWrapping;
 - (void)_setNeedsNonDeferredFocusUpdate;
 @end

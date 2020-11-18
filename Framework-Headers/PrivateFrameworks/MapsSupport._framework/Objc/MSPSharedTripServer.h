@@ -46,6 +46,7 @@
 - (void)etaController:(id)arg1 sharedTripDidBecomeAvailable:(id)arg2;
 - (void)etaController:(id)arg1 sharedTripDidBecomeUnavailable:(id)arg2;
 - (void)etaController:(id)arg1 sharedTripDidClose:(id)arg2;
+- (void)fetchAccountAliasesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAccountValidWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchActiveHandlesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSendingIdentityWithCompletion:(CDUnknownBlockType)arg1;

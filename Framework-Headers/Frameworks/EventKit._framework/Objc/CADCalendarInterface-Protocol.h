@@ -9,7 +9,6 @@
 @protocol CADCalendarInterface
 - (void)CADCalendar:(CADObjectID *)arg1 hasEvents:(void (^)(int, BOOL))arg2;
 - (void)CADCalendar:(CADObjectID *)arg1 hasReminders:(void (^)(int, BOOL))arg2;
-- (void)CADCalendar:(CADObjectID *)arg1 removeAllCalendarItems:(void (^)(int))arg2;
 - (void)CADDatabaseGetCalendarsWithFaultedProperties:(NSArray *)arg1 reply:(void (^)(int, NSArray *, NSArray *))arg2;
 @end
 

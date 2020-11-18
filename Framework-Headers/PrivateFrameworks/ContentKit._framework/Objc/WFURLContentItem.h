@@ -18,9 +18,10 @@
 
 + (id)URLCoercions;
 + (id)contentCategories;
++ (id)contentSourceContentOfURL:(id)arg1;
 + (id)countDescription;
 + (id)filterRepresentationsForAllowedContent:(id)arg1;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
 + (id)mutableURLCoercions;
 + (id)outputTypes;
 + (id)ownedPasteboardTypes;

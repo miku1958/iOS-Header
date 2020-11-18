@@ -17,6 +17,7 @@
     struct OpaqueFigEndpoint *_figEndpoint;
 }
 
+@property (readonly, nonatomic) long long HAPConformance;
 @property (readonly, copy, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSDictionary *airPlayProperties;
 @property (readonly, nonatomic) BOOL automaticallyAllowsConnectionsFromPeersInHomeGroup;

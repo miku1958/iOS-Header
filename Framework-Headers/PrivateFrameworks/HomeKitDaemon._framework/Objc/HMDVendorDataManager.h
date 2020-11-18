@@ -47,8 +47,8 @@
 - (BOOL)_loadDatabaseFromFileURL:(id)arg1 fileDescription:(id)arg2;
 - (void)_loadDatabaseFromLocalFiles;
 - (id)_modelsStringForManufacturer:(id)arg1 model:(id)arg2 dictionary:(id)arg3 key:(id)arg4;
-- (BOOL)_parseDatabaseFromDictionary:(id)arg1 dataVersion:(long long *)arg2 collectionsByManufacturer:(struct NSDictionary **)arg3 entriesByProductData:(struct NSDictionary **)arg4;
-- (BOOL)_parseManufacturersList:(id)arg1 collectionsByManufacturer:(struct NSDictionary **)arg2 entriesByProductData:(struct NSDictionary **)arg3;
+- (BOOL)_parseDatabaseFromDictionary:(id)arg1 dataVersion:(long long *)arg2 collectionsByManufacturer:(id *)arg3 entriesByProductData:(id *)arg4;
+- (BOOL)_parseManufacturersList:(id)arg1 collectionsByManufacturer:(id *)arg2 entriesByProductData:(id *)arg3;
 - (id)_parseVendorModelEntryForManufacturer:(id)arg1 model:(id)arg2 dictionary:(id)arg3;
 - (void)_start;
 - (id)init;

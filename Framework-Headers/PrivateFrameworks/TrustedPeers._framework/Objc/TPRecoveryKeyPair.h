@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithSigningSPKI:(id)arg1 encryptionSPKI:(id)arg2;
+- (id)initWithStableInfo:(id)arg1;
 
 @end
 

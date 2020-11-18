@@ -18,11 +18,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_axIsShowingPlatter;
-- (id)_axLabelElementForMeasureID:(id)arg1;
-- (id)accessibilityElements;
-- (struct CGRect)accessibilityFrame;
-- (BOOL)accessibilityViewIsModal;
+- (id)_accessibilityLabelElementsWithAccessibilityContainer:(id)arg1;
+- (id)_axLabelElementForMeasureID:(id)arg1 accessibilityContainer:(id)arg2;
 
 @end
 

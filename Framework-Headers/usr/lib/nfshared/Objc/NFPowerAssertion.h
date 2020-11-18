@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue, OS_os_transaction;
 
 @interface NFPowerAssertion : NSObject
@@ -15,13 +15,14 @@
     struct IONotificationPort *_powerNotificationPort;
     unsigned int _powerNotificationNotifier;
     unsigned int _assertionID;
-    NSMutableArray *_assertionHolders;
+    NSMutableDictionary *_assertionHolders;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_os_transaction> *_powerAssertTransaction;
 }
 
 + (id)sharedPowerAssertion;
 - (void)dealloc;
+- (id)dumpState;
 - (void)holdPowerAssertion:(id)arg1;
 - (id)init;
 - (void)releasePowerAssertion:(id)arg1;

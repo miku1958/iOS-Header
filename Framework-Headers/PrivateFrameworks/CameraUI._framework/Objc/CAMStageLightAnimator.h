@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CAGradientLayer, CALayer;
+@class CAGradientLayer, CAShapeLayer;
 
 @interface CAMStageLightAnimator : NSObject
 {
     CAGradientLayer *_gradientLayer;
-    CALayer *_circleLayer;
+    CAShapeLayer *_circleLayer;
     unsigned long long _state;
     unsigned long long __appearingAnimationCount;
     struct CGRect _circleBaseFrame;
@@ -20,13 +20,14 @@
 @property (readonly, nonatomic, getter=_isAppearing) BOOL _appearing;
 @property (nonatomic, setter=_setAppearingAnimationCount:) unsigned long long _appearingAnimationCount; // @synthesize _appearingAnimationCount=__appearingAnimationCount;
 @property (nonatomic) struct CGRect circleBaseFrame; // @synthesize circleBaseFrame=_circleBaseFrame;
-@property (readonly, nonatomic) CALayer *circleLayer; // @synthesize circleLayer=_circleLayer;
+@property (readonly, nonatomic) CAShapeLayer *circleLayer; // @synthesize circleLayer=_circleLayer;
 @property (readonly, nonatomic) CAGradientLayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
 - (void)_animateAppearing;
 - (void)_animateBounceIfNeeded;
+- (void)_animateCircleColorWithDuration:(double)arg1 timing:(id)arg2;
 - (void)_animateCircleFromGeometry:(CDStruct_f31c9284)arg1 toGeometry:(CDStruct_f31c9284)arg2 duration:(double)arg3 timing:(id)arg4 repeats:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_animateCircleGeometry:(CDStruct_f31c9284 *)arg1 count:(unsigned long long)arg2 duration:(double)arg3 timing:(id)arg4 repeats:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_animateCircleToGeometry:(CDStruct_f31c9284)arg1 duration:(double)arg2 timing:(id)arg3 completion:(CDUnknownBlockType)arg4;

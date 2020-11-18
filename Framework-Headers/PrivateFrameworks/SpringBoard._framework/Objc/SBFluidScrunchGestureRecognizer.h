@@ -9,12 +9,12 @@
 #import <SpringBoard/SBGestureRecognizerPanGestureProviding-Protocol.h>
 #import <SpringBoard/SBGestureRecognizerTouchHistoryProviding-Protocol.h>
 
-@class NSString, SBFluidSwitcherViewController, SBTouchHistory;
+@class NSString, SBTouchHistory;
 
 @interface SBFluidScrunchGestureRecognizer : SBTouchTemplateGestureRecognizer <SBGestureRecognizerTouchHistoryProviding, SBGestureRecognizerPanGestureProviding>
 {
-    SBFluidSwitcherViewController *_switcherViewController;
     double _absoluteScale;
+    long long _recognizedTouchType;
     double _lastPerimeter;
     SBTouchHistory *_touchHistory;
     struct CGPoint _initialCentroid;
@@ -31,19 +31,22 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint initialCentroid; // @synthesize initialCentroid=_initialCentroid;
 @property (nonatomic) double lastPerimeter; // @synthesize lastPerimeter=_lastPerimeter;
+@property (readonly, nonatomic) long long recognizedTouchType; // @synthesize recognizedTouchType=_recognizedTouchType;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) SBFluidSwitcherViewController *switcherViewController; // @synthesize switcherViewController=_switcherViewController;
 @property (strong, nonatomic) SBTouchHistory *touchHistory; // @synthesize touchHistory=_touchHistory;
 
++ (id)_panTemplatesForTouchType:(long long)arg1;
++ (id)_scrunchTemplatesForTouchType:(long long)arg1;
 - (void).cxx_destruct;
-- (struct CGPoint)_centroidInSwitcherViewForPolygon:(id)arg1;
+- (struct CGPoint)_centroidInGestureViewForPolygon:(id)arg1;
 - (void)_computeGestureMotionWithTouches:(id)arg1 polygon:(id)arg2;
+- (id)_gestureView;
 - (double)_hysteresis;
 - (void)_installTemplates;
 - (BOOL)_isMatchedTemplateScrunchTemplate;
 - (void)_setMatchedPolygon:(id)arg1;
 - (BOOL)_shouldAddNewTouchesAfterGestureRecognition;
-- (id)_switcherView;
+- (void)_updateRecognizedTouchTypeIfNecessaryWithTouches:(id)arg1;
 - (double)animationDistance;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
 - (struct CGPoint)averageTouchVelocityOverTimeDuration:(double)arg1;
@@ -53,8 +56,10 @@
 - (id)logCategory;
 - (double)peakSpeed;
 - (void)reset;
+- (void)setAllowedTouchTypes:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (struct CGPoint)translationInView:(id)arg1;

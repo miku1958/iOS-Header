@@ -6,15 +6,17 @@
 
 #import <UIKit/UIButton.h>
 
-@class PKPaymentPassAction;
+@class NSArray;
 
 @interface PKPaymentPassActionWidgetButton : UIButton
 {
     BOOL _usesAccessibilityLayout;
-    PKPaymentPassAction *_action;
+    NSArray *_actions;
+    unsigned long long _passActionType;
 }
 
-@property (strong, nonatomic) PKPaymentPassAction *action; // @synthesize action=_action;
+@property (strong, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (nonatomic) unsigned long long passActionType; // @synthesize passActionType=_passActionType;
 @property (nonatomic) BOOL usesAccessibilityLayout; // @synthesize usesAccessibilityLayout=_usesAccessibilityLayout;
 
 + (double)glyphImageHeight;

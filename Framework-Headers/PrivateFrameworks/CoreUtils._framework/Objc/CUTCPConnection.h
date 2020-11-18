@@ -8,7 +8,7 @@
 
 #import <CoreUtils/CUReadWriteRequestable-Protocol.h>
 
-@class CUBonjourDevice, CUNANDataSession, CUNetLinkEndpoint, CUNetLinkManager, CUReadRequest, CUWiFiManager, CUWriteRequest, NSString;
+@class CUBonjourDevice, CUNANDataSession, CUNetLinkEndpoint, CUNetLinkManager, CUReadRequest, CUWiFiManager, CUWriteRequest, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUTCPConnection : NSObject <CUReadWriteRequestable>
@@ -17,11 +17,11 @@
     NSObject<OS_dispatch_source> *_readSource;
     unsigned char _readSuspended;
     CUReadRequest *_readRequestCurrent;
-    struct NSMutableArray *_readRequests;
+    NSMutableArray *_readRequests;
     NSObject<OS_dispatch_source> *_writeSource;
     unsigned char _writeSuspended;
     CUWriteRequest *_writeRequestCurrent;
-    struct NSMutableArray *_writeRequests;
+    NSMutableArray *_writeRequests;
     BOOL _activateCalled;
     CDUnknownBlockType _activateCompletion;
     BOOL _invalidateCalled;

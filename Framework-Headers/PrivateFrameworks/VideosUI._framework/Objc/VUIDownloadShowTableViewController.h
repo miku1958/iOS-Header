@@ -4,24 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/VUILibraryFetchControllerViewController.h>
+#import <UIKit/UITableViewController.h>
 
-#import <VideosUI/UITableViewDataSource-Protocol.h>
-#import <VideosUI/UITableViewDelegate-Protocol.h>
 #import <VideosUI/VUIDownloadEntityTableViewCellDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
+#import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIBarButtonItem, UITableView, VUIDownloadShowTableHeaderView, VUIMediaEntitiesFetchController, VUIMediaEntity;
+@class NSMutableArray, NSString, UIBarButtonItem, VUIDownloadShowDataSource, VUIDownloadShowTableHeaderView;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadShowTableViewController : VUILibraryFetchControllerViewController <UITableViewDataSource, UITableViewDelegate, VUIMediaEntitiesFetchControllerDelegate, VUIDownloadEntityTableViewCellDelegate>
+@interface VUIDownloadShowTableViewController : UITableViewController <VUILibraryDataSourceDelegate, VUIDownloadEntityTableViewCellDelegate>
 {
-    VUIMediaEntity *_showEntity;
-    UITableView *_downloadEntitiesTableView;
-    VUIMediaEntitiesFetchController *_fetchController;
-    NSArray *_episodesGroupedBySeason;
+    VUIDownloadShowDataSource *_downloadDataSource;
     VUIDownloadShowTableHeaderView *_sizingHeader;
-    NSMutableArray *_episodesBySeason;
+    NSMutableArray *_groupings;
     UIBarButtonItem *_rightBarButtonItem;
     UIBarButtonItem *_leftBarButtonItem;
     UIBarButtonItem *_backBarButtonItem;
@@ -32,14 +27,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIBarButtonItem *backBarButtonItem; // @synthesize backBarButtonItem=_backBarButtonItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UITableView *downloadEntitiesTableView; // @synthesize downloadEntitiesTableView=_downloadEntitiesTableView;
-@property (strong, nonatomic) NSMutableArray *episodesBySeason; // @synthesize episodesBySeason=_episodesBySeason;
-@property (strong, nonatomic) NSArray *episodesGroupedBySeason; // @synthesize episodesGroupedBySeason=_episodesGroupedBySeason;
-@property (strong, nonatomic) VUIMediaEntitiesFetchController *fetchController; // @synthesize fetchController=_fetchController;
+@property (strong, nonatomic) VUIDownloadShowDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
+@property (strong, nonatomic) NSMutableArray *groupings; // @synthesize groupings=_groupings;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIBarButtonItem *leftBarButtonItem; // @synthesize leftBarButtonItem=_leftBarButtonItem;
 @property (strong, nonatomic) UIBarButtonItem *rightBarButtonItem; // @synthesize rightBarButtonItem=_rightBarButtonItem;
-@property (strong, nonatomic) VUIMediaEntity *showEntity; // @synthesize showEntity=_showEntity;
 @property (strong, nonatomic) VUIDownloadShowTableHeaderView *sizingHeader; // @synthesize sizingHeader=_sizingHeader;
 @property (readonly) Class superclass;
 
@@ -48,13 +40,10 @@ __attribute__((visibility("hidden")))
 - (id)_configureAlertControllerForIndexPath:(id)arg1;
 - (void)_editToggled;
 - (void)_exitEditingMode;
-- (void)_loadDownloadedShows;
 - (void)_popIfNeeded;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
-- (void)dealloc;
+- (void)dataSourceDidFinishFetching:(id)arg1;
 - (void)downloadCellDidRequestCancelDownload:(id)arg1;
-- (id)initWithMediaEntity:(id)arg1;
+- (id)initWithDataSource:(id)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

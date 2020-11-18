@@ -64,7 +64,7 @@
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
-- (id)initWithResource:(id)arg1 asset:(id)arg2;
+- (id)initWithResource:(id)arg1 asset:(id)arg2 hasAdjustments:(BOOL)arg3;
 - (id)initWithType:(long long)arg1 livePhoto:(id)arg2;
 
 @end

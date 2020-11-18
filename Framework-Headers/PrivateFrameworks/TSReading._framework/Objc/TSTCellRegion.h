@@ -68,7 +68,7 @@
 - (BOOL)intersectsColumn:(unsigned char)arg1;
 - (BOOL)intersectsRow:(unsigned short)arg1;
 - (BOOL)isValid;
-- (struct NSObject *)iterator;
+- (id)iterator;
 - (void)p_calculateAncillaryInformation;
 - (void)p_calculateIntersectingColumns;
 - (void)p_calculateIntersectingRows;
@@ -89,10 +89,10 @@
 - (id)regionBySubtractingRegion:(id)arg1;
 - (id)regionByUnioningEveryRangeInRegionWithRange:(CDStruct_5f1f7aa9)arg1;
 - (id)regionOffsetBy:(CDStruct_79c71658)arg1;
-- (struct NSObject *)rightToLeftIterator;
+- (id)rightToLeftIterator;
 - (CDStruct_0441cfb5)suitableAnchor;
 - (CDStruct_0441cfb5)suitableCursor;
-- (struct NSObject *)topToBottomIterator;
+- (id)topToBottomIterator;
 
 @end
 

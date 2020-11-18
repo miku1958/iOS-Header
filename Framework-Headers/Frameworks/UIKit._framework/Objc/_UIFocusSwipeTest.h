@@ -19,11 +19,11 @@
         double _field5;
         double _field6;
     } *_events;
-    int _swipeAxis;
     UIWindow *_window;
+    unsigned long long _swipeAxis;
 }
 
-@property (nonatomic) int swipeAxis; // @synthesize swipeAxis=_swipeAxis;
+@property (nonatomic) unsigned long long swipeAxis; // @synthesize swipeAxis=_swipeAxis;
 @property (weak, nonatomic) UIWindow *window; // @synthesize window=_window;
 
 - (void).cxx_destruct;

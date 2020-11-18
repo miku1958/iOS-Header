@@ -35,7 +35,6 @@
     NSString *_uti;
     NSString *_mimeType;
     NSURLResponse *_response;
-    _SFQuickLookDocument *_quickLookDocument;
     NSUUID *_identifier;
     long long _bytesExpected;
     unsigned long long _bytesLoaded;
@@ -45,6 +44,7 @@
     WBSFluidProgressController *_fluidProgressController;
     id<_SFDownloadDelegate> _delegate;
     id<_SFDownloadPlaceholderImporter> _placeholderImporter;
+    _SFQuickLookDocument *_quickLookDocument;
 }
 
 @property (readonly, nonatomic) long long bytesExpected; // @synthesize bytesExpected=_bytesExpected;
@@ -52,6 +52,7 @@
 @property (readonly, nonatomic) BOOL canResume;
 @property (readonly, nonatomic) BOOL canReveal;
 @property (readonly, nonatomic) NSURL *completedFileURL;
+@property (readonly, nonatomic) long long dataOwner;
 @property (readonly, nonatomic) NSDate *dateAdded; // @synthesize dateAdded=_dateAdded;
 @property (readonly, nonatomic) NSDate *dateFinished; // @synthesize dateFinished=_dateFinished;
 @property (readonly, copy) NSString *debugDescription;

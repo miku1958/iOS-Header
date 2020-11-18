@@ -21,8 +21,10 @@
     BOOL _dirty;
     BOOL _candidateNumberEnabled;
     BOOL _fillGridWithLines;
+    BOOL _showsIndex;
     long long _rowType;
     long long _transitionState;
+    long long _layoutOrientation;
     NSIndexPath *_oldFirstVisibleIndexPath;
     double _oldFirstVisibleOffset;
     double _customHeaderHeight;
@@ -40,9 +42,11 @@
 @property (nonatomic) struct CGPoint gridLineOffset; // @synthesize gridLineOffset=_gridLineOffset;
 @property (nonatomic) struct UIEdgeInsets gridLinePadding; // @synthesize gridLinePadding=_gridLinePadding;
 @property (nonatomic) struct UIEdgeInsets gridPadding; // @synthesize gridPadding=_gridPadding;
+@property (nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property (strong, nonatomic) NSIndexPath *oldFirstVisibleIndexPath; // @synthesize oldFirstVisibleIndexPath=_oldFirstVisibleIndexPath;
 @property (nonatomic) double oldFirstVisibleOffset; // @synthesize oldFirstVisibleOffset=_oldFirstVisibleOffset;
 @property (nonatomic) long long rowType; // @synthesize rowType=_rowType;
+@property (nonatomic) BOOL showsIndex; // @synthesize showsIndex=_showsIndex;
 @property (nonatomic) double singleSlottedCellMargin; // @synthesize singleSlottedCellMargin=_singleSlottedCellMargin;
 @property (nonatomic) long long transitionState; // @synthesize transitionState=_transitionState;
 
@@ -61,6 +65,7 @@
 - (void)prepareLayout;
 - (void)prepareLayoutForMultiRow;
 - (void)prepareLayoutForSingleRow;
+- (void)rotateAttributesBy90Degrees;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 
 @end

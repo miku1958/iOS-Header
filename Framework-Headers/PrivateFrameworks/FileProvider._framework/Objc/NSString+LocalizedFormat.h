@@ -19,6 +19,7 @@
 + (void)setFp_defaultProviderDomainID:(id)arg1;
 - (id)_fp_escapedStringForSearchQuery;
 - (id)fp_alwaysObfuscatedFilename;
+- (id)fp_alwaysObfuscatedPath;
 - (id)fp_bouncedNameWithIndex:(long long)arg1;
 - (id)fp_displayNameFromFilenameWithHiddenPathExtension:(BOOL)arg1 isFolder:(BOOL)arg2;
 - (void)fp_enumerateTokensInRange:(struct _NSRange)arg1 tokenizer:(struct __CFStringTokenizer *)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -30,6 +31,7 @@
 - (id)fp_libnotifyPerUserNotificationName;
 - (id)fp_localizedFormatWithKeys:(id)arg1 fromDictionary:(id)arg2 error:(id *)arg3;
 - (id)fp_obfuscatedFilename;
+- (id)fp_obfuscatedPath;
 - (id)fp_pathExtension;
 - (id)fp_prettyPath;
 - (id)fp_prettyPathWithObfuscation:(BOOL)arg1;

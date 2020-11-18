@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     BRCServerItem *_rootItem;
     BOOL _completed;
     unsigned long long _batchSize;
+    int _tryCount;
+    unsigned long long _chainedRecordsCount;
     BOOL _shouldFillBatch;
     CDUnknownBlockType _pcsChainCompletionBlock;
 }

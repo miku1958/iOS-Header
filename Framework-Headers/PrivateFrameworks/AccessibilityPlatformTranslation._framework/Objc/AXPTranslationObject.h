@@ -17,9 +17,10 @@
     BOOL _didPopuldateAppInfo;
     int _pid;
     unsigned long long _objectID;
-    NSString *_remoteDebugDescription;
     NSString *_bridgeDelegateToken;
     NSData *_rawElementData;
+    CDUnknownBlockType _remoteDescriptionBlock;
+    NSString *_remoteDebugDescription;
 }
 
 @property (copy, nonatomic) NSString *bridgeDelegateToken; // @synthesize bridgeDelegateToken=_bridgeDelegateToken;
@@ -29,6 +30,7 @@
 @property (nonatomic) int pid; // @synthesize pid=_pid;
 @property (copy, nonatomic) NSData *rawElementData; // @synthesize rawElementData=_rawElementData;
 @property (copy, nonatomic) NSString *remoteDebugDescription; // @synthesize remoteDebugDescription=_remoteDebugDescription;
+@property (copy, nonatomic) CDUnknownBlockType remoteDescriptionBlock; // @synthesize remoteDescriptionBlock=_remoteDescriptionBlock;
 
 + (id)allowedDecodableClasses;
 + (void)initialize;

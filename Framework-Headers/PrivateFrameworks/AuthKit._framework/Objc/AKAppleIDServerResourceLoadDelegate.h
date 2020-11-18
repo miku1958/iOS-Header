@@ -29,6 +29,7 @@
     NSString *_continuationToken;
     NSString *_heartbeatToken;
     NSString *_identityToken;
+    NSString *_initialURLRequestKey;
     NSString *_proxyAppName;
     NSString *_clientAppName;
     NSString *_appProvidedContext;
@@ -52,6 +53,7 @@
 @property (strong, nonatomic) NSNumber *hasEmptyPasswordOverride; // @synthesize hasEmptyPasswordOverride=_hasEmptyPasswordOverride;
 @property (copy, nonatomic) NSString *heartbeatToken; // @synthesize heartbeatToken=_heartbeatToken;
 @property (copy, nonatomic) NSString *identityToken; // @synthesize identityToken=_identityToken;
+@property (copy, nonatomic) NSString *initialURLRequestKey; // @synthesize initialURLRequestKey=_initialURLRequestKey;
 @property (copy, nonatomic) NSArray *loggedInServices; // @synthesize loggedInServices=_loggedInServices;
 @property (copy, nonatomic) NSString *passwordResetToken; // @synthesize passwordResetToken=_passwordResetToken;
 @property (copy, nonatomic) NSArray *phoneInformation; // @synthesize phoneInformation=_phoneInformation;

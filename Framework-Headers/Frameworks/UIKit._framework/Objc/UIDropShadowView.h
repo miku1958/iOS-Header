@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     BOOL _supportsShadowAndGrabber;
     UIView *_contentView;
     UIView *_overlayView;
+    _UIGrabber *_grabber;
     long long _independentCorners;
     UIView *_firstCornerClippingDescendant;
     NSArray *_cornerClippingDescendants;
-    _UIGrabber *_grabber;
     _UICutoutShadowView *_magicShadowView;
     struct UIRectCornerRadii _environmentMatchingCornerRadii;
 }

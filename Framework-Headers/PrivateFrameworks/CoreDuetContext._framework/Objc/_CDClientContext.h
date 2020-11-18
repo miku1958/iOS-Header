@@ -104,10 +104,10 @@
 - (BOOL)setObject:(id)arg1 lastModifiedDate:(id)arg2 forContextualKeyPath:(id)arg3;
 - (void)subscribeToEventStreams;
 - (void)unprotectedSetUpXPCConnectionWithEndpoint:(id)arg1;
-- (struct NSDictionary *)valuesForKeyPaths:(id)arg1;
+- (id)valuesForKeyPaths:(id)arg1;
 - (id)valuesForKeyPaths:(id)arg1 inContextsMatchingPredicate:(id)arg2;
 - (void)valuesForKeyPaths:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (struct NSDictionary *)valuesForKeyPaths:(id)arg1 synchronous:(BOOL)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (id)valuesForKeyPaths:(id)arg1 synchronous:(BOOL)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 
 @end
 

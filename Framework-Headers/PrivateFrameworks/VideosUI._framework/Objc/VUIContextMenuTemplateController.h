@@ -13,20 +13,26 @@
 __attribute__((visibility("hidden")))
 @interface VUIContextMenuTemplateController : _TVBgImageLoadingViewController <VUIContextMenuTemplateControllerInterface>
 {
+    BOOL _canPerformAction;
     VUIContextMenuCardView *_cardView;
     IKViewElement *_viewElement;
+    IKViewElement *_selectedElement;
 }
 
+@property (nonatomic) BOOL canPerformAction; // @synthesize canPerformAction=_canPerformAction;
 @property (strong, nonatomic) VUIContextMenuCardView *cardView; // @synthesize cardView=_cardView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) IKViewElement *selectedElement; // @synthesize selectedElement=_selectedElement;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 - (void).cxx_destruct;
+- (void)_performAction;
 - (id)_shareActionSheetFromViewElement:(id)arg1;
 - (void)_updateInteractionMenuItems:(id)arg1;
+- (void)didDismissTemplateController;
 - (void)didSelectPreviewTemplateController;
 - (id)init;
 - (void)updateWithViewElement:(id)arg1;

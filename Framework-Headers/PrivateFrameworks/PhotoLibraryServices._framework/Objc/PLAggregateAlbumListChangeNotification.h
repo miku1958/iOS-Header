@@ -18,7 +18,7 @@
 + (id)notificationForAggregateAlbumList:(id)arg1 fromAlbumListChangeNotification:(id)arg2 indexOffset:(unsigned long long)arg3;
 - (void).cxx_destruct;
 - (BOOL)_getOldSet:(id *)arg1 newSet:(id *)arg2;
-- (struct NSObject *)albumList;
+- (id)albumList;
 - (id)changedIndexes;
 - (id)changedIndexesRelativeToSnapshot;
 - (id)changedObjects;

@@ -12,13 +12,13 @@
 
 @interface AFAnalyticsTurnBasedInstrumentationContext : NSObject <NSSecureCoding>
 {
-    struct NSUUID *_turnIdentifier;
+    NSUUID *_turnIdentifier;
     SISchemaClientTurnContext *_turnContext;
 }
 
 @property (readonly, nonatomic) NSUUID *turnIdentifier;
 
-+ (id)newTurnBasedContextWithPreviousTurnID:(struct NSUUID *)arg1;
++ (id)newTurnBasedContextWithPreviousTurnID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)emitInstrumentation:(id)arg1;
@@ -26,7 +26,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTurnIdentifier:(struct NSUUID *)arg1;
+- (id)initWithTurnIdentifier:(id)arg1;
 - (id)nextTurnBasedContext;
 
 @end

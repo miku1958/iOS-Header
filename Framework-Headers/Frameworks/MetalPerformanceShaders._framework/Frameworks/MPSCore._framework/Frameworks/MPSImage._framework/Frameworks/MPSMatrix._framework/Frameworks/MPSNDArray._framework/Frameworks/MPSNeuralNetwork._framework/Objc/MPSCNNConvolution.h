@@ -56,7 +56,7 @@
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (BOOL)PrepareAndLoadData:(id)arg1 dataType:(unsigned int)arg2 weightsLayout:(unsigned int)arg3 weights:(const void *)arg4 biases:(const float *)arg5 quantizationType:(int)arg6 ranges:(const MISSING_TYPE **)arg7 lookUpTable:(const float *)arg8;
 - (BOOL)appendBatchBarrier;
-- (unsigned long long)batchEncodingStorageSizeForSourceImage:(struct NSArray *)arg1 sourceStates:(id)arg2 destinationImage:(struct NSArray *)arg3;
+- (unsigned long long)batchEncodingStorageSizeForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)biases;
 - (BOOL)convolutionTranspose;
 - (void)copyToGradientState:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
@@ -88,10 +88,10 @@
 - (void)reloadWeightsAndBiasesFromDataSource;
 - (void)reloadWeightsAndBiasesWithCommandBuffer:(id)arg1 state:(id)arg2;
 - (void)reloadWeightsAndBiasesWithDataSource:(id)arg1;
-- (id)resourceListForSourceImages:(struct NSArray *)arg1 destinationImages:(struct NSArray *)arg2;
-- (struct NSArray *)resultStateBatchForSourceImage:(struct NSArray *)arg1 sourceStates:(id)arg2 destinationImage:(struct NSArray *)arg3;
+- (id)resourceListForSourceImages:(id)arg1 destinationImages:(id)arg2;
+- (id)resultStateBatchForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
-- (struct NSArray *)temporaryResultStateBatchForCommandBuffer:(id)arg1 sourceImage:(struct NSArray *)arg2 sourceStates:(id)arg3 destinationImage:(struct NSArray *)arg4;
+- (id)temporaryResultStateBatchForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (id)weights;
 - (unsigned int)weightsLayout;

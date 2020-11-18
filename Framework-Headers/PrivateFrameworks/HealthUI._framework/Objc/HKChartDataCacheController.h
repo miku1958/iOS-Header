@@ -13,7 +13,7 @@
 @interface HKChartDataCacheController : NSObject <HKSampleTypeUpdateControllerObserver>
 {
     NSArray *_chartCachesByTimeScopeAndDisplayTypeIdentifier;
-    struct NSMutableDictionary *_chartCachesByDisplayTypeIdentifier;
+    NSMutableDictionary *_chartCachesByDisplayTypeIdentifier;
     NSMutableArray *_chartCachesByCustomDisplayType;
     NSMutableDictionary *_currentValueDataProvidersByDisplayType;
     NSMutableDictionary *_alternateCurrentValueDataProvidersByDisplayType;
@@ -33,7 +33,7 @@
 @property (strong, nonatomic) HKSampleTypeUpdateController *updateController; // @synthesize updateController=_updateController;
 
 - (void).cxx_destruct;
-- (id)_chartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2 chartCachesByDisplayTypeIdentifier:(struct NSMutableDictionary *)arg3;
+- (id)_chartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2 chartCachesByDisplayTypeIdentifier:(id)arg3;
 - (id)_chartCacheIdentifiersFromSamples:(id)arg1;
 - (id)_chartCacheIdentifiersFromStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_createAlternateCurrentValueDataProviderForDisplayType:(id)arg1 healthStore:(id)arg2 updateController:(id)arg3 dateCache:(id)arg4;

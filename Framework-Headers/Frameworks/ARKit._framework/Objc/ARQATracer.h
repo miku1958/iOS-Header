@@ -9,7 +9,7 @@
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
 #import <ARKit/ARReplaySensorDelegate-Protocol.h>
 
-@class ARPresentationStats, ARScreenRecording, NSArray, NSDictionary, NSMutableData, NSMutableDictionary, NSOutputStream, NSString, UILabel;
+@class ARScreenRecording, NSArray, NSDictionary, NSMutableData, NSMutableDictionary, NSOutputStream, NSString, UILabel;
 @protocol ARQATracerDelegate, OS_dispatch_queue;
 
 @interface ARQATracer : NSObject <ARInternalSessionObserver, ARReplaySensorDelegate>
@@ -22,23 +22,24 @@
     NSObject<OS_dispatch_queue> *_processingQueue;
     NSDictionary *_raycastQueryData;
     NSArray *_raycastResultData;
+    struct os_unfair_lock_s _additionalResultsLock;
     BOOL _forceQuitApp;
     BOOL _recordScreen;
     id<ARQATracerDelegate> _delegate;
     NSString *_traceOutputFilePath;
     UILabel *_replayFrameLabel;
     ARScreenRecording *_screenRecorder;
-    ARPresentationStats *_presentationStats;
+    NSMutableDictionary *_additionalResults;
     struct CGPoint _offset;
 }
 
+@property (strong) NSMutableDictionary *additionalResults; // @synthesize additionalResults=_additionalResults;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ARQATracerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL forceQuitApp; // @synthesize forceQuitApp=_forceQuitApp;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
-@property (strong, nonatomic) ARPresentationStats *presentationStats; // @synthesize presentationStats=_presentationStats;
 @property (nonatomic) BOOL recordScreen; // @synthesize recordScreen=_recordScreen;
 @property (strong, nonatomic) UILabel *replayFrameLabel; // @synthesize replayFrameLabel=_replayFrameLabel;
 @property (strong, nonatomic) ARScreenRecording *screenRecorder; // @synthesize screenRecorder=_screenRecorder;
@@ -46,9 +47,9 @@
 @property (strong, nonatomic) NSString *traceOutputFilePath; // @synthesize traceOutputFilePath=_traceOutputFilePath;
 
 + (BOOL)isEnabled;
++ (id)traceOutputDirectory;
 - (void).cxx_destruct;
 - (void)addFrameLabel:(id)arg1;
-- (id)createTraceOutputDirectory;
 - (void)dealloc;
 - (void)flushDataBufferToFile;
 - (id)init;
@@ -58,6 +59,7 @@
 - (void)session:(id)arg1 didUpdateFrame:(id)arg2;
 - (void)start:(id)arg1;
 - (void)stop;
+- (void)trace:(id)arg1 forKey:(id)arg2;
 - (void)traceRaycastQuery:(id)arg1;
 - (void)traceRaycastResults:(id)arg1;
 - (void)update:(id)arg1 session:(id)arg2;

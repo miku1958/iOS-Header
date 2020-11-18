@@ -62,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (void)_performRequestInternal:(id)arg1 withID:(id)arg2 identityProviders:(id)arg3 accounts:(id)arg4;
 - (void)_performRequestWithIdentityProvider:(id)arg1 account:(id)arg2;
 - (void)_presentInHostIfNecessary;
-- (void)_presentWelcomeMessageForIdentityProvider:(id)arg1 withLogoCacheURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_request:(id)arg1 didFailWithError:(id)arg2;
 - (void)_requestDidFailWithError:(id)arg1;
 - (void)_showIdentityProviderPickerViewControllerWithIdentityProviders:(id)arg1;

@@ -42,10 +42,6 @@ struct MTLTargetDeviceArch {
     char *_field3;
 };
 
-struct NSObject {
-    Class _field1;
-};
-
 struct StorageEntry {
     unsigned long long _field1;
     void *_field2;
@@ -67,7 +63,9 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsign
 };
 
 struct atomic<unsigned int> {
-    _Atomic unsigned int __a_;
+    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+        _Atomic unsigned int __a_value;
+    } __a_;
 };
 
 struct deque<unsigned int, std::__1::allocator<unsigned int>> {

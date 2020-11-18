@@ -9,7 +9,7 @@
 @class AFUISiriRemoteSceneViewController, NSArray, NSDictionary, NSString, NSURL, SASRequestOptions;
 
 @protocol AFUISiriRemoteSceneViewControllerDelegate <NSObject>
-- (void)dismissSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 delayForTTS:(BOOL)arg2 userInfo:(NSDictionary *)arg3;
+- (void)dismissSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 delayForTTS:(BOOL)arg2 userInfo:(NSDictionary *)arg3 withDismissalReason:(unsigned long long)arg4;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didChangePresentationPeekMode:(unsigned long long)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didDismissViewControllerWithStatusBarStyle:(long long)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didFinishTest:(NSString *)arg2;
@@ -26,7 +26,7 @@
 - (BOOL)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 openURL:(NSURL *)arg2 appBundleID:(NSString *)arg3 allowSiriDismissal:(BOOL)arg4;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 openURL:(NSURL *)arg2 delaySessionEndForTTS:(BOOL)arg3 completion:(void (^)(BOOL))arg4;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestKeyboardForTapToEditWithCompletion:(void (^)(BOOL))arg2;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsDismissal:(void (^)(BOOL))arg2;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsDismissalWithReason:(unsigned long long)arg2 withCompletion:(void (^)(BOOL))arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsPresentation:(void (^)(BOOL))arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setBugReportingAvailable:(BOOL)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setCarDisplaySnippetMode:(long long)arg2;

@@ -43,7 +43,7 @@
 - (id)initWithContext:(long long)arg1;
 - (id)instructionSet;
 - (id)instructionSetsForInstructionType:(long long)arg1;
-- (struct NSDictionary *)overridenInstructionsMapping;
+- (id)overridenInstructionsMapping;
 - (void)refreshInstructionStrings;
 
 @end

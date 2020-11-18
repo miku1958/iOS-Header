@@ -12,8 +12,10 @@
 
 @property (copy, nonatomic) NSString *artist;
 @property (strong, nonatomic) _INPBImageValue *artwork;
+@property (copy, nonatomic) NSString *assetInfo;
 @property (readonly, nonatomic) BOOL hasArtist;
 @property (readonly, nonatomic) BOOL hasArtwork;
+@property (readonly, nonatomic) BOOL hasAssetInfo;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (nonatomic) BOOL hasType;

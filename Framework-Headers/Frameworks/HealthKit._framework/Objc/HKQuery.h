@@ -70,6 +70,7 @@
 + (id)predicateForClinicalRecordsWithFHIRResourceType:(id)arg1;
 + (id)predicateForCreationDateWithTodayViewRange:(id)arg1;
 + (id)predicateForDiagnosticTestResultCategory:(id)arg1;
++ (id)predicateForMedicalRecordWithState:(unsigned long long)arg1;
 + (id)predicateForObjectWithUUID:(id)arg1;
 + (id)predicateForObjectsFromDevices:(id)arg1;
 + (id)predicateForObjectsFromSource:(id)arg1;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     struct ResourceHandle *m_handle;
     struct BinarySemaphore m_semaphore;
-    MessageQueue_969405d4 *m_messageQueue;
+    RefPtr_99a3c709 m_messageQueue;
     struct RetainPtr<NSURLRequest> m_requestResult;
     struct Lock m_mutex;
     struct RetainPtr<NSCachedURLResponse> m_cachedResponseResult;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)connectionDidFinishLoading:(id)arg1;
 - (void)dealloc;
 - (void)detachHandle;
-- (id)initWithHandle:(struct ResourceHandle *)arg1 messageQueue:(MessageQueue_969405d4 *)arg2;
+- (id)initWithHandle:(struct ResourceHandle *)arg1 messageQueue:(RefPtr_99a3c709 *)arg2;
 
 @end
 

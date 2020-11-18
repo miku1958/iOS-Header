@@ -6,7 +6,7 @@
 
 #import <RelevanceEngine/RERelevanceEngineConfiguration.h>
 
-@class NSObject, NSString, NSURL, REDataSourceLoader, REFeatureSet, RELocationManager, RERelevanceProviderManagerLoader;
+@class NSArray, NSObject, NSString, NSURL, REDataSourceLoader, REFeatureSet, RELocationManager, RERelevanceProviderManagerLoader;
 @protocol OS_dispatch_queue, RERelevanceEngineMetricsRecorder;
 
 @interface REMutableRelevanceEngineConfiguration : RERelevanceEngineConfiguration
@@ -33,6 +33,7 @@
 @property (nonatomic) unsigned long long trainingBehavior; // @dynamic trainingBehavior;
 @property (nonatomic) BOOL wantsBackup; // @dynamic wantsBackup;
 @property (nonatomic) BOOL wantsImmutableContent; // @dynamic wantsImmutableContent;
+@property (strong, nonatomic) NSArray *whitelistedDataSourceClassNames; // @dynamic whitelistedDataSourceClassNames;
 
 + (id)defaultConfiguration;
 + (id)defaultUpNextConfiguration;

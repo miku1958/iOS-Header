@@ -68,7 +68,7 @@
 - (id)clientForConnection:(id)arg1;
 - (id)createClientForConnection:(id)arg1;
 - (id)createDatabaseConnection;
-- (void)credentialsDidChangeForAccountWithIdentifier:(id)arg1;
+- (void)credentialsDidChangeForAccount:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithAccountStoreListener:(id)arg1 oauthSignerListener:(id)arg2 authenticationDialogListener:(id)arg3;

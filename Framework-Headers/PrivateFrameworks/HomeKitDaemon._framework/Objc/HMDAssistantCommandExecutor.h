@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAssistantCommand, HMFMessageDispatcher, HMFTimer, NSMutableArray, NSMutableDictionary, NSString;
+@class HMDAssistantCommand, HMFLogEventSession, HMFMessageDispatcher, HMFTimer, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDAssistantCommandExecutor : NSObject <HMFTimerDelegate>
@@ -21,6 +21,7 @@
     NSString *_clientValidity;
     HMFTimer *_executionTimer;
     CDUnknownBlockType _completionHandler;
+    HMFLogEventSession *_logEventSession;
 }
 
 @property (strong, nonatomic) NSMutableArray *actionResults; // @synthesize actionResults=_actionResults;
@@ -31,12 +32,14 @@
 @property (strong, nonatomic) HMFTimer *executionTimer; // @synthesize executionTimer=_executionTimer;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDAssistantCommand *initialCommand; // @synthesize initialCommand=_initialCommand;
+@property (strong, nonatomic) HMFLogEventSession *logEventSession; // @synthesize logEventSession=_logEventSession;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSMutableDictionary *pendingCommands; // @synthesize pendingCommands=_pendingCommands;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)executorWithCommand:(id)arg1 workQueue:(id)arg2 messageDispatcher:(id)arg3;
++ (id)executorWithCommand:(id)arg1 workQueue:(id)arg2 messageDispatcher:(id)arg3 logEventSession:(id)arg4;
 - (void).cxx_destruct;
 - (void)_accumulateActionResultsFromResponse:(id)arg1 command:(id)arg2;
 - (id)_command;
@@ -47,7 +50,7 @@
 - (void)_reportResults:(id)arg1;
 - (void)_sendResponse:(id)arg1;
 - (void)_startExecutionTimer;
-- (id)initWithCommand:(id)arg1 workQueue:(id)arg2 messageDispatcher:(id)arg3;
+- (id)initWithCommand:(id)arg1 workQueue:(id)arg2 messageDispatcher:(id)arg3 logEventSession:(id)arg4;
 - (void)performWithCompletion:(CDUnknownBlockType)arg1;
 - (void)timerDidFire:(id)arg1;
 

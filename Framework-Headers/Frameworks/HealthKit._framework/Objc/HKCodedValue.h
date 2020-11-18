@@ -9,22 +9,25 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKInspectableValue, NSArray;
+@class HKConcept, HKInspectableValue, NSArray;
 
 @interface HKCodedValue : NSObject <NSSecureCoding, NSCopying>
 {
+    HKConcept *_concept;
     NSArray *_codings;
     HKInspectableValue *_value;
     NSArray *_referenceRanges;
 }
 
 @property (readonly, copy, nonatomic) NSArray *codings; // @synthesize codings=_codings;
+@property (readonly, copy, nonatomic) HKConcept *concept;
 @property (readonly, copy, nonatomic) NSArray *referenceRanges; // @synthesize referenceRanges=_referenceRanges;
 @property (readonly, copy, nonatomic) HKInspectableValue *value; // @synthesize value=_value;
 
 + (id)codedValueWithCodings:(id)arg1 value:(id)arg2 referenceRanges:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_setConcept:(id)arg1;
 - (id)chartableCodedQuantitySetWithDate:(id)arg1 error:(id *)arg2;
 - (id)chartableCodedQuantityWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

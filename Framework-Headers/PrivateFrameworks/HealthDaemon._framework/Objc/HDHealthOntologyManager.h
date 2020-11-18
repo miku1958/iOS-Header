@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HDSimpleGraphDatabase, HKObserverSet, NSArray, NSCache, NSDictionary, NSURL, NSUUID;
+@class HDProfile, HDSimpleGraphDatabase, HKObserverSet, NSCache, NSDictionary, NSURL, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HDHealthOntologyManager : NSObject
 {
     NSDictionary *_codingSystemPriorityInfo;
-    NSArray *_privateCodeCreationCodingSortDescriptors;
     NSUUID *_assetAvailabilityRegistrationToken;
     struct os_unfair_lock_s _ivarLock;
     _Atomic BOOL _invalidated;
@@ -25,8 +24,8 @@
     BOOL _unitTest_useEmbeddedOntologyAsset;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
-    NSURL *_ontologyURL;
     HDSimpleGraphDatabase *_graphDatabase;
+    NSURL *_ontologyURL;
 }
 
 @property (nonatomic, getter=isEnabled) BOOL enabled;
@@ -39,17 +38,10 @@
 @property (readonly, nonatomic) BOOL unitTest_useEmbeddedOntology; // @synthesize unitTest_useEmbeddedOntology=_unitTest_useEmbeddedOntology;
 @property (readonly, nonatomic) BOOL unitTest_useEmbeddedOntologyAsset; // @synthesize unitTest_useEmbeddedOntologyAsset=_unitTest_useEmbeddedOntologyAsset;
 
-+ (id)_bestDisplayNameForCodings:(id)arg1 prioritizedCodingSystems:(id)arg2;
-+ (id)_bestDisplayableCodingInCodings:(id)arg1 prioritizedCodingSystems:(id)arg2;
 + (id)_ontologyURLForProfile:(id)arg1;
-+ (id)_primaryCodingKeyPathForSampleTypeIdentifier:(id)arg1;
-+ (id)_unknownConceptName;
 + (BOOL)graphDatabase:(id)arg1 setVersion:(id)arg2 error:(id *)arg3;
 + (void)obliterateWithProfile:(id)arg1 reason:(id)arg2;
-+ (id)supportedLocales;
 - (void).cxx_destruct;
-- (id)_adHocConceptCodingFromCodings:(id)arg1;
-- (id)_codingSystemPriorityArrayForSampleType:(id)arg1 property:(id)arg2;
 - (id)_conceptWithGraphDatabaseCall:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)_conceptsWithGraphDatabaseCall:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)_conceptsWithRelationship:(id)arg1 toNodeWithID:(id)arg2 reversed:(BOOL)arg3 error:(id *)arg4;
@@ -57,13 +49,11 @@
 - (id)_graphDatabaseUserVersionImplementation:(id)arg1 error:(id *)arg2;
 - (long long)_graphDatabaseVersionImplementation:(id)arg1 error:(id *)arg2;
 - (void)_handleOntologyAssetAvailabilityUpdate:(long long)arg1;
-- (BOOL)_isNebulousCoding:(id)arg1;
 - (void)_notifyObserversReferenceOntologyCreated;
 - (void)_notifyObserversReferenceOntologyDidUpdateWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_notifyObserversReferenceOntologyWillUpdate;
 - (id)_ontologyAssetManager;
-- (id)_primaryCodingFromCodings:(id)arg1 usingPrioritizedCodingSystems:(id)arg2;
-- (id)_privateCodeCreationCodingSortDescriptors;
+- (id)_ontologyConfigurationForCountryCode:(id)arg1;
 - (void)_queue_clearCache;
 - (void)_queue_clearCachedConceptWithIdentifier:(id)arg1;
 - (void)_queue_closeDatabase;
@@ -79,12 +69,15 @@
 - (BOOL)_queue_insertTwoItemRawOntologyValueIntoDatabase:(id)arg1 table:(id)arg2 valueString:(id)arg3;
 - (id)_referenceOntologyFileURL;
 - (id)_work_conceptFromGraphNode:(id)arg1 preloadRelationships:(BOOL)arg2;
-- (id)_work_graphDatabase:(id)arg1 findConceptForCoding:(id)arg2;
-- (id)_work_graphDatabase:(id)arg1 synthesizeConceptWithPrimaryCoding:(id)arg2 displayName:(id)arg3;
+- (id)_work_graphDatabase:(id)arg1 findConceptForCoding:(id)arg2 error:(id *)arg3;
+- (id)_work_graphDatabase:(id)arg1 findConceptsForCodings:(id)arg2 error:(id *)arg3;
+- (BOOL)_work_graphDatabase:(id)arg1 insertConcept:(id)arg2 error:(id *)arg3;
+- (id)_work_graphDatabase:(id)arg1 newConceptIdentifierWithName:(id)arg2 error:(id *)arg3;
+- (id)_work_graphDatabase:(id)arg1 resolveMercuryConceptForCodings:(id)arg2 country:(id)arg3 error:(id *)arg4;
 - (BOOL)_work_node:(id)arg1 addAttributeWithCoding:(id)arg2 error:(id *)arg3;
 - (id)allAssociatedConceptsWithError:(id *)arg1;
 - (BOOL)breakAssociationFromSampleUUID:(id)arg1 toConcept:(id)arg2 error:(id *)arg3;
-- (id)conceptForContext:(id)arg1 locale:(id)arg2;
+- (id)conceptForContext:(id)arg1;
 - (id)conceptForIdentifier:(id)arg1 error:(id *)arg2;
 - (id)conceptForName:(id)arg1 error:(id *)arg2;
 - (id)conceptsAssociatedWithSample:(id)arg1 error:(id *)arg2;
@@ -114,7 +107,6 @@
 - (id)relationshipsForConceptWithIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)removeAllAssociationsToSampleUUID:(id)arg1 error:(id *)arg2;
 - (id)sampleUUIDsAssociatedWithConcept:(id)arg1 error:(id *)arg2;
-- (BOOL)supportsLocale:(id)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (BOOL)useEmbeddedOntology;
 - (BOOL)useEmbeddedOntologyAsset;

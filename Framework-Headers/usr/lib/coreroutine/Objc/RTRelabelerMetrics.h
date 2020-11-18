@@ -30,7 +30,7 @@
 + (id)unsignedIntegerKeys;
 - (void).cxx_destruct;
 - (double)calculateEntropyOfProbVector:(id)arg1;
-- (id)getUUIDForPotentialRelabelingItemUsingInputCandidate:(struct RTPair *)arg1 relabeledProbVector:(id)arg2;
+- (id)getUUIDForPotentialRelabelingItemUsingInputCandidate:(id)arg1 relabeledProbVector:(id)arg2;
 - (id)initWithLoggingEnabled:(BOOL)arg1;
 - (id)initWithRelabeler:(id)arg1;
 - (double)logMax2ConfidenceRatioOfRelabeledProbVector:(id)arg1;
@@ -40,8 +40,8 @@
 - (void)setFilteredInputMetricsUsingContextCandidates:(id)arg1;
 - (void)setNonRevGeoCandidates:(id)arg1 revGeoCandidates:(id)arg2;
 - (void)setNumberOfUniqueMapItems:(id)arg1;
-- (void)setOutputMetricsUsingInputCandidate:(struct RTPair *)arg1 priorVector:(id)arg2 observationVector:(id)arg3 posteriorVector:(id)arg4 relabeledProbVector:(id)arg5 relabeledInferredMapItem:(id)arg6;
-- (void)setPreprocessedMetricsUsingInputCandidate:(struct RTPair *)arg1 contextCandidates:(id)arg2;
+- (void)setOutputMetricsUsingInputCandidate:(id)arg1 priorVector:(id)arg2 observationVector:(id)arg3 posteriorVector:(id)arg4 relabeledProbVector:(id)arg5 relabeledInferredMapItem:(id)arg6;
+- (void)setPreprocessedMetricsUsingInputCandidate:(id)arg1 contextCandidates:(id)arg2;
 - (BOOL)submitMetricsWithError:(id *)arg1;
 
 @end

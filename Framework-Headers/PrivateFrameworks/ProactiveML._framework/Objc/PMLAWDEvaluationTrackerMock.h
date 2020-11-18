@@ -16,7 +16,7 @@
 @property (readonly) NSArray *trackedEvaluations; // @dynamic trackedEvaluations;
 
 + (id)mockTracker;
-+ (id)mockTrackerForPlanId:(struct NSString *)arg1;
++ (id)mockTrackerForPlanId:(id)arg1;
 - (void).cxx_destruct;
 - (void)clearTrackedMessages;
 - (id)initWithAdapter:(id)arg1 modelInfo:(id)arg2;

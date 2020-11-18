@@ -32,7 +32,7 @@
 + (id)testingListenerWithIdentityStore:(id)arg1;
 - (void).cxx_destruct;
 - (id)_identityStore;
-- (id)_initWithXPCListener:(id)arg1;
+- (id)_initWithXPCListener:(id)arg1 testingIdentityStore:(id)arg2;
 - (void)_userIdentityStoreDelegateAccountStoreDidChangeNotification:(id)arg1;
 - (void)addDelegationUUIDs:(id)arg1 forUserIdentity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)invalidate;

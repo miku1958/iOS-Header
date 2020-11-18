@@ -100,8 +100,8 @@
 + (id)importFilesAtURLs:(id)arg1 photoLibrary:(id)arg2 collection:(id)arg3 checkDuplicates:(BOOL)arg4 referenced:(BOOL)arg5 delegate:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (id)importOperationQueue;
 + (id)itemsConstrainedByAvailableDiskSpaceFromItems:(id)arg1 additionalBytesRequired:(inout long long *)arg2;
-+ (void)registerPXImportControllerNotificationsReceiver:(struct NSObject *)arg1;
-+ (void)unregisterPXImportControllerNotificationsReceiver:(struct NSObject *)arg1;
++ (void)registerPXImportControllerNotificationsReceiver:(id)arg1;
++ (void)unregisterPXImportControllerNotificationsReceiver:(id)arg1;
 - (void).cxx_destruct;
 - (void)assetLoadingPowerAssertionTimerFired;
 - (void)capabilitiesDidChangeForImportSource:(id)arg1;

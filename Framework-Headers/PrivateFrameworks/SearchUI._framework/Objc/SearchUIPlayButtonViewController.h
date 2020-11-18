@@ -19,6 +19,7 @@
     NSArray *_storeIdentifiers;
     NSTimer *_timer;
     MPMediaEntity *_mediaEntity;
+    NSString *_universalLibraryID;
     long long _mediaEntityType;
     unsigned long long _persistentID;
 }
@@ -36,11 +37,15 @@
 @property (strong, nonatomic) NSArray *storeIdentifiers; // @synthesize storeIdentifiers=_storeIdentifiers;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
+@property (strong, nonatomic) NSString *universalLibraryID; // @synthesize universalLibraryID=_universalLibraryID;
 
++ (id)_mediaEntityForPersistentID:(id)arg1 forType:(int)arg2;
++ (id)_mediaEntityForUniversalLibraryID:(id)arg1 forType:(int)arg2;
 + (id)font;
 + (void)initialize;
 + (id)mediaEntityForAction:(id)arg1;
 + (BOOL)mediaItem:(id)arg1 matchesPersistentID:(unsigned long long)arg2 forType:(long long)arg3;
++ (BOOL)mediaItem:(id)arg1 matchesUniversalLibraryID:(id)arg2 forType:(long long)arg3;
 + (BOOL)supportsRowModel:(id)arg1;
 - (void).cxx_destruct;
 - (void)buttonPressed;
@@ -52,6 +57,7 @@
 - (void)invalidateTimerIfNeeded;
 - (BOOL)matchesNowPlayingAudioItem;
 - (void)nowPlayingItemDidChange;
+- (void)play;
 - (void)playbackStateDidChange;
 - (void)sendEngagementDidPunchout:(BOOL)arg1;
 - (id)setupView;

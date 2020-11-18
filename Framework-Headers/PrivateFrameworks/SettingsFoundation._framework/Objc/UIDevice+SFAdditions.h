@@ -26,6 +26,7 @@
 - (id)sf_regulatoryDeviceVariant;
 - (id)sf_screenClassString;
 - (id)sf_serialNumber;
+- (id)sf_serialNumberQRImage;
 - (id)sf_udidString;
 - (unsigned long long)sf_weekOfManufacture;
 - (unsigned long long)sf_yearOfManufacture;

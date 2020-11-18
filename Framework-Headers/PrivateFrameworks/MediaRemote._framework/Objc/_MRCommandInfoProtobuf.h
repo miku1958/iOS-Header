@@ -15,6 +15,7 @@
     CDStruct_82f37d05 _preferredIntervals;
     CDStruct_95bda58d _supportedInsertionPositions;
     CDStruct_95bda58d _supportedPlaybackQueueTypes;
+    CDStruct_95bda58d _supportedQueueEndActions;
     struct {
         float *list;
         unsigned long long count;
@@ -23,6 +24,7 @@
     int _canScrub;
     int _command;
     NSMutableArray *_currentPlaybackSessionTypes;
+    int _currentQueueEndAction;
     NSString *_localizedShortTitle;
     NSString *_localizedTitle;
     float _maximumRating;
@@ -44,6 +46,7 @@
     struct {
         unsigned int canScrub:1;
         unsigned int command:1;
+        unsigned int currentQueueEndAction:1;
         unsigned int maximumRating:1;
         unsigned int minimumRating:1;
         unsigned int numAvailableSkips:1;
@@ -64,10 +67,12 @@
 @property (nonatomic) int canScrub; // @synthesize canScrub=_canScrub;
 @property (nonatomic) int command; // @synthesize command=_command;
 @property (strong, nonatomic) NSMutableArray *currentPlaybackSessionTypes; // @synthesize currentPlaybackSessionTypes=_currentPlaybackSessionTypes;
+@property (nonatomic) int currentQueueEndAction; // @synthesize currentQueueEndAction=_currentQueueEndAction;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL hasActive;
 @property (nonatomic) BOOL hasCanScrub;
 @property (nonatomic) BOOL hasCommand;
+@property (nonatomic) BOOL hasCurrentQueueEndAction;
 @property (nonatomic) BOOL hasEnabled;
 @property (readonly, nonatomic) BOOL hasLocalizedShortTitle;
 @property (readonly, nonatomic) BOOL hasLocalizedTitle;
@@ -103,6 +108,8 @@
 @property (readonly, nonatomic) int *supportedPlaybackQueueTypes;
 @property (readonly, nonatomic) unsigned long long supportedPlaybackQueueTypesCount;
 @property (strong, nonatomic) NSMutableArray *supportedPlaybackSessionTypes; // @synthesize supportedPlaybackSessionTypes=_supportedPlaybackSessionTypes;
+@property (readonly, nonatomic) int *supportedQueueEndActions;
+@property (readonly, nonatomic) unsigned long long supportedQueueEndActionsCount;
 @property (readonly, nonatomic) float *supportedRates;
 @property (readonly, nonatomic) unsigned long long supportedRatesCount;
 @property (nonatomic) BOOL supportsSharedQueue; // @synthesize supportsSharedQueue=_supportsSharedQueue;
@@ -121,6 +128,7 @@
 - (void)addSupportedInsertionPositions:(int)arg1;
 - (void)addSupportedPlaybackQueueTypes:(int)arg1;
 - (void)addSupportedPlaybackSessionTypes:(id)arg1;
+- (void)addSupportedQueueEndActions:(int)arg1;
 - (void)addSupportedRate:(float)arg1;
 - (void)clearCurrentPlaybackSessionTypes;
 - (void)clearPreferredIntervals;
@@ -128,6 +136,7 @@
 - (void)clearSupportedInsertionPositions;
 - (void)clearSupportedPlaybackQueueTypes;
 - (void)clearSupportedPlaybackSessionTypes;
+- (void)clearSupportedQueueEndActions;
 - (void)clearSupportedRates;
 - (id)commandAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -146,6 +155,7 @@
 - (void)setPreferredIntervals:(double *)arg1 count:(unsigned long long)arg2;
 - (void)setSupportedInsertionPositions:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setSupportedPlaybackQueueTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setSupportedQueueEndActions:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setSupportedRates:(float *)arg1 count:(unsigned long long)arg2;
 - (id)shuffleModeAsString:(int)arg1;
 - (id)supportedCustomQueueIdentifierAtIndex:(unsigned long long)arg1;
@@ -154,6 +164,7 @@
 - (int)supportedPlaybackQueueTypesAtIndex:(unsigned long long)arg1;
 - (id)supportedPlaybackSessionTypesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)supportedPlaybackSessionTypesCount;
+- (int)supportedQueueEndActionsAtIndex:(unsigned long long)arg1;
 - (float)supportedRateAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 

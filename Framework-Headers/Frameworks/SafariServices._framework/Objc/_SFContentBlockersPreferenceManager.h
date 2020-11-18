@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSContentBlockersPreferenceManager.h>
+#import <SafariSharedUI/WBSContentBlockersPreferenceManager.h>
 
 #import <SafariServices/SFContentBlockerManagerObserver-Protocol.h>
 
@@ -24,7 +24,6 @@
 - (void)_checkForContentBlockers;
 - (void)contentBlockerManagerExtensionListDidChange:(id)arg1;
 - (void)dealloc;
-- (void)didUpdatePreference:(id)arg1 toValue:(id)arg2 forDomain:(id)arg3;
 - (id)initWithPerSitePreferencesStore:(id)arg1;
 
 @end

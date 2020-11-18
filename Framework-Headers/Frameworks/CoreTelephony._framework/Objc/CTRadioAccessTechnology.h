@@ -15,7 +15,7 @@
 
 @property (readonly) NSString *radioAccessTechnology;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithCTTelephonyNetworkInfo:(id)arg1;
 

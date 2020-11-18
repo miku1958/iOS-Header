@@ -19,6 +19,7 @@
 @property (readonly, copy, nonatomic) VUIMediaItemCredits *credits;
 @property (readonly, copy, nonatomic) NSDate *downloadExpirationDate;
 @property (readonly, copy, nonatomic) NSNumber *duration;
+@property (readonly, copy, nonatomic) NSNumber *episodeIndexInSeries;
 @property (readonly, copy, nonatomic) NSNumber *episodeNumber;
 @property (readonly, copy, nonatomic) NSURL *extrasURL;
 @property (copy, nonatomic) NSNumber *hasBeenPlayed;

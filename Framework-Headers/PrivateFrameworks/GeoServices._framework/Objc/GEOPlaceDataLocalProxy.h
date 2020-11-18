@@ -9,6 +9,7 @@
 #import <GeoServices/GEOPlaceDataProxy-Protocol.h>
 
 @class GEOPDPlaceCache, NSMapTable, NSMutableOrderedSet, NSString, _GEOPlaceDataPendingRequestManager, geo_reentrant_isolater;
+@protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface GEOPlaceDataLocalProxy : NSObject <GEOPlaceDataProxy>
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableOrderedSet *_recentlySeenPlaceHashes;
     _GEOPlaceDataPendingRequestManager *_pendingRequestManager;
     GEOPDPlaceCache *_pdPlaceCache;
+    NSObject<OS_dispatch_source> *_requestTimeoutTimer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,8 +29,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_callHistoryRecentsClearedObserver:(id)arg1;
+- (void)_cleanupPendingRequestMananger;
 - (void)_privacyAndLocationSettingsResetObserver:(id)arg1;
 - (void)_requestIdentifiersFromNetwork:(id)arg1 resultProviderID:(int)arg2 traits:(id)arg3 auditToken:(id)arg4 throttleToken:(id)arg5 finished:(CDUnknownBlockType)arg6 error:(CDUnknownBlockType)arg7;
+- (void)_resetRequestTimeout;
 - (unsigned long long)calculateFreeableSpaceSync;
 - (void)calculateFreeableSpaceWithHandler:(CDUnknownBlockType)arg1;
 - (void)cancelRequest:(id)arg1;

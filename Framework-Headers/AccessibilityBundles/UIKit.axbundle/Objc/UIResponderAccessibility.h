@@ -14,6 +14,7 @@
 + (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityFKAArrowKeysHandled;
 - (id)_keyCommands;
 - (void)dealloc;
 

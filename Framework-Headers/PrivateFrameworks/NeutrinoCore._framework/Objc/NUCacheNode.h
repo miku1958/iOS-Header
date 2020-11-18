@@ -43,7 +43,7 @@
 - (id)evaluateRenderDependenciesWithRequest:(id)arg1 error:(out id *)arg2;
 - (id)initWithInput:(id)arg1 settings:(id)arg2;
 - (id)initWithInput:(id)arg1 settings:(id)arg2 subsampleFactor:(long long)arg3;
-- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
+- (id)initWithSettings:(id)arg1 inputs:(id)arg2;
 - (BOOL)installTemporaryURL:(id)arg1 intoPersistentURL:(id)arg2 error:(out id *)arg3;
 - (BOOL)isEqualToRenderNode:(id)arg1;
 - (BOOL)isResolved;
@@ -54,7 +54,7 @@
 - (id)persistentURLPrefix;
 - (BOOL)requiresAudioMix;
 - (BOOL)requiresVideoComposition;
-- (void)resolveSourceWithResponse:(struct NUResponse *)arg1;
+- (void)resolveSourceWithResponse:(id)arg1;
 - (void)resolveWithSourceNode:(id)arg1 error:(id)arg2;
 - (id)resolvedSourceNode:(out id *)arg1;
 - (long long)sampleMode;

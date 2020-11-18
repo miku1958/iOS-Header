@@ -10,7 +10,7 @@
 
 @interface NUChoicePattern : NUPattern
 {
-    struct NSArray *_choices;
+    NSArray *_choices;
 }
 
 @property (readonly) NSArray *choices; // @synthesize choices=_choices;

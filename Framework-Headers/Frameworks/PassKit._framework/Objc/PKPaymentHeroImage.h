@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) PKOSVersionRequirementRange *versionRequirement; // @synthesize versionRequirement=_versionRequirement;
 
 - (void).cxx_destruct;
+- (id)URLForImageWithScale:(double)arg1;
 - (void)downloadImageForPreferredLanguages:(id)arg1 scale:(double)arg2 fileDownloader:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadImageWithScale:(double)arg1 fileDownloader:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)hasCachedImageWithScale:(double)arg1;

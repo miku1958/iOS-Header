@@ -65,6 +65,7 @@
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly, nonatomic) BOOL hasPhotoColorAdjustments;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isHidden) BOOL hidden;
 @property (readonly, nonatomic, getter=isHighFramerateVideo) BOOL highFramerateVideo;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSDictionary *imageProperties;

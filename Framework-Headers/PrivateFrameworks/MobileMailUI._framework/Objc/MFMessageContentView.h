@@ -201,6 +201,7 @@
 - (void)_seeMoreButtonTapped;
 - (void)_setNeedsPaddingConstantsUpdate;
 - (void)_setupWebProcessLocalizedStrings;
+- (BOOL)_shouldHideStickyFooter;
 - (void)_showModalViewController:(id)arg1 presentationSource:(id)arg2;
 - (void)_stopObservingContentHeight;
 - (id)_styleSheetWithPadding:(struct UIEdgeInsets)arg1 useWideLayout:(BOOL)arg2;

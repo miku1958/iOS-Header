@@ -43,7 +43,7 @@
 - (void)_initialCloudDatabaseSetupForContainer:(id)arg1 operationGroupNameSuffix:(id)arg2 shouldScheduleBackgroundActivity:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (double)_nextTimeIntervalForBackgroundInterval:(unsigned long long)arg1;
 - (void)_performCloudStoreContainerInitalizationBackgroundActivityWithCurrentInterval:(unsigned long long)arg1 nextBackgroundInterval:(unsigned long long)arg2;
-- (void)_processCloudStorePushNotificationForContainer:(id)arg1;
+- (void)_processCloudStorePushNotificationForContainer:(id)arg1 zoneName:(id)arg2;
 - (void)_recordAggdCloudStoreBackgroundContainerSetupResult:(BOOL)arg1 forCurrentBackgroundInterval:(unsigned long long)arg2;
 - (void)_registerForPushNotifications;
 - (void)_scheduleCloudStoreContainerSetupBackgroundActivityWithNextInterval:(unsigned long long)arg1;
@@ -55,15 +55,16 @@
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applyPushNotificationToken:(id)arg1;
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
-- (void)cloudStoreContainer:(id)arg1 createdZoneWithName:(id)arg2;
+- (void)cloudStoreContainer:(id)arg1 createdZoneWithName:(id)arg2 forContainerName:(id)arg3;
 - (void)cloudStoreContainer:(id)arg1 didChangeContainerState:(unsigned long long)arg2;
 - (void)cloudStoreContainerShouldUnscheduleAllBackgroundActivities:(id)arg1;
 - (id)cloudStoreSpecificKeysForItem:(id)arg1;
 - (void)cloudStoreStatusForContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)copyDataFromZoneName:(id)arg1 toZoneName:(id)arg2 inContainerName:(id)arg3 passUniqueID:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)deleteZone:(id)arg1 containerName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handlePushNotificationForTopic:(id)arg1 userInfo:(id)arg2;
 - (id)initWithPushNotificationManager:(id)arg1;
-- (void)invalidateServerChangeTokens;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)noteAccountDeleted;
 - (void)noteCloudSyncPassesSwitchChanged;
@@ -72,13 +73,14 @@
 - (void)recreateZone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerObserver:(id)arg1;
 - (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeRecordWithRecordName:(id)arg1 zoneName:(id)arg2 containerName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)scheduleTransactionDeviceDataSyncBackgroundActivity;
 - (void)setupCloudDatabaseForContainerName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)simulateCloudStorePushForContainerIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)unregisterObserver:(id)arg1;
-- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 includeServerData:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

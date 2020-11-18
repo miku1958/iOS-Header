@@ -17,7 +17,6 @@
     NSObject<OS_dispatch_queue> *_syncQueue;
     NSObject<OS_dispatch_queue> *_dataQueue;
     BOOL _ckMigrationStatusOnCloud;
-    BOOL _didRequestFirstPullForAccount;
     _KSCloudKitManager *_cloudKitManager;
     _KSTextReplacementCoreDataStore *_coreDataStore;
     unsigned long long _numPullRequests;
@@ -28,7 +27,6 @@
 @property (strong, nonatomic) _KSTextReplacementCoreDataStore *coreDataStore; // @synthesize coreDataStore=_coreDataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didRequestFirstPullForAccount; // @synthesize didRequestFirstPullForAccount=_didRequestFirstPullForAccount;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long numPullRequests; // @synthesize numPullRequests=_numPullRequests;
 @property (readonly) Class superclass;

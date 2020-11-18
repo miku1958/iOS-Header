@@ -29,7 +29,7 @@
     _HMContext *_context;
 }
 
-@property (strong, nonatomic) HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;
+@property (weak, nonatomic) HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;
 @property (readonly, copy) NSArray *constraints;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;

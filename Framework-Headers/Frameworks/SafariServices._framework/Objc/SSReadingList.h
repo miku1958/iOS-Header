@@ -7,24 +7,19 @@
 #import <objc/NSObject.h>
 
 @class WebBookmarksXPCConnection;
-@protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface SSReadingList : NSObject
 {
     WebBookmarksXPCConnection *_connection;
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    NSObject<OS_xpc_object> *_batchedReadingListItems;
-    BOOL _batchScheduled;
 }
 
 + (id)defaultReadingList;
 + (BOOL)supportsURL:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addReadingListItemWithURL:(id)arg1 title:(id)arg2 previewText:(id)arg3;
+- (BOOL)_addReadingListItemWithURL:(id)arg1 title:(id)arg2 previewText:(id)arg3;
 - (id)_init;
-- (void)_sendBatchedReadingListItems;
+- (void)_setUpConnectionIfNeeded;
 - (BOOL)addReadingListItemWithURL:(id)arg1 title:(id)arg2 previewText:(id)arg3 error:(id *)arg4;
-- (void)dealloc;
 - (id)init;
 
 @end

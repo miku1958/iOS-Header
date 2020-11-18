@@ -37,7 +37,6 @@
     UILabel *_primaryLabel;
     UIView *_labelsBackgroundView;
     UILongPressGestureRecognizer *_longPressPanGestureRecognizer;
-    UIView *_overlappingSupplementaryValueMarkingView;
     UIView *_supplementaryValueMarkingView;
     NSMutableArray *_gradationMarkingViews;
     NSMutableDictionary *_markingValuesAndViewsDictionary;
@@ -67,7 +66,6 @@
 @property (strong, nonatomic) NSMutableDictionary *markingValuesAndViewsDictionary; // @synthesize markingValuesAndViewsDictionary=_markingValuesAndViewsDictionary;
 @property (nonatomic) CDStruct_c3b9c2ee modelRangeValue; // @synthesize modelRangeValue=_modelRangeValue;
 @property (nonatomic) double outerRadius; // @synthesize outerRadius=_outerRadius;
-@property (strong, nonatomic) UIView *overlappingSupplementaryValueMarkingView; // @synthesize overlappingSupplementaryValueMarkingView=_overlappingSupplementaryValueMarkingView;
 @property (nonatomic) double prevSliderValue; // @synthesize prevSliderValue=_prevSliderValue;
 @property (nonatomic) unsigned long long prevSlidingDirection; // @synthesize prevSlidingDirection=_prevSlidingDirection;
 @property (nonatomic) unsigned long long prevTouchArea; // @synthesize prevTouchArea=_prevTouchArea;
@@ -135,8 +133,8 @@
 - (void)_updateRingViewAndHandleViews;
 - (void)_updateSecondaryHandleViewPositionToSliderValue;
 - (void)_updateSelectedRangeImageView;
-- (void)_updateSupplementaryValueLineView;
-- (void)_updateSupplementaryValueLineViewColor;
+- (void)_updateSupplementaryValueMarkingView;
+- (void)_updateSupplementaryValueMarkingViewColor;
 - (void)_updateTransform;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 - (void)_updateUIForThresholdModeForPrimaryHandleViewWithTouchPoint:(struct CGPoint)arg1 didTouchBegin:(BOOL)arg2;

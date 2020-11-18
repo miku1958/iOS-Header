@@ -11,6 +11,7 @@
 }
 
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (id)targetDataInfo;
 - (void)uploadInput:(id)arg1 withAccount:(id)arg2;
 
 @end

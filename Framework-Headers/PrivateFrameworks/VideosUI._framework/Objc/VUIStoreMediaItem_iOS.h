@@ -30,11 +30,9 @@ __attribute__((visibility("hidden")))
     NSURL *_playbackURL;
     VUIStoreDownloadMonitor *_downloadMonitor;
     NSObject *_parentReportingToken;
-    NSString *_alternateAssetURLString;
     NSError *_fpsKeyError;
 }
 
-@property (strong, nonatomic) NSString *alternateAssetURLString; // @synthesize alternateAssetURLString=_alternateAssetURLString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSURL *downloadDestinationURL; // @synthesize downloadDestinationURL=_downloadDestinationURL;
@@ -54,13 +52,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *sinfsDict; // @synthesize sinfsDict=_sinfsDict;
 @property (nonatomic) NSNumber *startTime; // @synthesize startTime=_startTime;
 @property (strong, nonatomic) VUIStoreFPSKeyLoader *storeFPSKeyLoader; // @synthesize storeFPSKeyLoader=_storeFPSKeyLoader;
-@property (readonly, nonatomic, getter=isStreamingHLS) BOOL streamingHLS;
 @property (readonly) Class superclass;
 
 + (void)initialize;
 - (void).cxx_destruct;
 - (id)_adamIDString;
-- (BOOL)_allowedToPlayWhileOnCellularNetwork;
 - (void)_checkInRental;
 - (void)_checkoutRentalWithCheckoutType:(unsigned long long)arg1 startPlaybackClock:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_configureForLocalPlaybackWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -80,7 +76,6 @@ __attribute__((visibility("hidden")))
 - (id)_rentalPlaybackEndDate;
 - (void)_setDownloadKeyCookieWithURL:(id)arg1 downloadKey:(id)arg2;
 - (void)_updateRentalPlaybackStartDate:(id)arg1;
-- (void)_userPlaybackSettingsDidChange:(id)arg1;
 - (id)_videoPlaybackTypeDescription;
 - (void)cleanUpMediaItem;
 - (void)dealloc;

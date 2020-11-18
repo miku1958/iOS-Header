@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface NWL2Report : NSObject
 {
     unsigned char _cellularPowerCostDownload;
@@ -15,20 +17,39 @@
     BOOL _wifiKnownGood;
     unsigned char _wifiRadioTechnology;
     int _cellularLQM;
+    int _cellularMNC;
+    int _cellularMCC;
+    int _cellularUARFCN;
+    int _cellularPID;
+    int _cellularBandInfo;
+    int _cellularBandwidth;
+    int _cellularTAC;
+    int _cellularBars;
     int _wifiLQM;
     int _wifiRSSI;
+    NSString *_cellularCellType;
 }
 
+@property (nonatomic) int cellularBandInfo; // @synthesize cellularBandInfo=_cellularBandInfo;
+@property (nonatomic) int cellularBandwidth; // @synthesize cellularBandwidth=_cellularBandwidth;
+@property (nonatomic) int cellularBars; // @synthesize cellularBars=_cellularBars;
+@property (strong, nonatomic) NSString *cellularCellType; // @synthesize cellularCellType=_cellularCellType;
 @property (nonatomic) BOOL cellularKnownGood; // @synthesize cellularKnownGood=_cellularKnownGood;
 @property (nonatomic) int cellularLQM; // @synthesize cellularLQM=_cellularLQM;
+@property (nonatomic) int cellularMCC; // @synthesize cellularMCC=_cellularMCC;
+@property (nonatomic) int cellularMNC; // @synthesize cellularMNC=_cellularMNC;
+@property (nonatomic) int cellularPID; // @synthesize cellularPID=_cellularPID;
 @property (nonatomic) unsigned char cellularPowerCostDownload; // @synthesize cellularPowerCostDownload=_cellularPowerCostDownload;
 @property (nonatomic) unsigned char cellularPowerCostUpload; // @synthesize cellularPowerCostUpload=_cellularPowerCostUpload;
 @property (nonatomic) unsigned char cellularRadioTechnology; // @synthesize cellularRadioTechnology=_cellularRadioTechnology;
+@property (nonatomic) int cellularTAC; // @synthesize cellularTAC=_cellularTAC;
+@property (nonatomic) int cellularUARFCN; // @synthesize cellularUARFCN=_cellularUARFCN;
 @property (nonatomic) BOOL wifiKnownGood; // @synthesize wifiKnownGood=_wifiKnownGood;
 @property (nonatomic) int wifiLQM; // @synthesize wifiLQM=_wifiLQM;
 @property (nonatomic) int wifiRSSI; // @synthesize wifiRSSI=_wifiRSSI;
 @property (nonatomic) unsigned char wifiRadioTechnology; // @synthesize wifiRadioTechnology=_wifiRadioTechnology;
 
+- (void).cxx_destruct;
 - (id)description;
 
 @end

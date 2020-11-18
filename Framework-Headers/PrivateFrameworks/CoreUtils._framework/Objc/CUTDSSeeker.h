@@ -30,7 +30,7 @@
     NSString *_label;
     NSString *_serviceType;
     NSString *_xpcServiceName;
-    struct NSMutableSet *_endpoints;
+    NSMutableSet *_endpoints;
     unsigned long long _tdsHashProvide;
     unsigned long long _tdsHashSeek;
 }
@@ -64,7 +64,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
-- (void)updateEndpointsForDevices:(struct NSMutableDictionary *)arg1;
+- (void)updateEndpointsForDevices:(id)arg1;
 - (void)xpcTDSProviderStateChanged:(unsigned int)arg1;
 - (void)xpcTDSSeekerEndpointFound:(id)arg1;
 - (void)xpcTDSSeekerEndpointLost:(id)arg1;

@@ -38,12 +38,14 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_layoutSubviewsForSize:(struct CGSize)arg1 computationOnly:(BOOL)arg2;
 - (id)_newImageViewAsSubview;
 - (id)_newLabelAsSubview:(id)arg1;
+- (id)_newLabelAsSubview:(id)arg1 withAttributedString:(id)arg2;
 - (id)_newRentalExpirationlabel:(id)arg1 exisitingLabel:(id)arg2;
 - (void)_removeGenreLabelAndSeparator;
 - (void)_removeSeparatorsFromGroupsIfNeeded:(BOOL)arg1;
 - (BOOL)_shouldPutTextOnSeparateLines;
 - (double)_totalSubviewsWidth;
-- (void)_updateAppearance;
+- (void)_updateAppearanceWithUserInterfaceStyle:(long long)arg1;
+- (void)_updateImageAppearanceWithUserInterfaceStyle:(long long)arg1;
 - (double)bottomMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 layout:(id)arg2;

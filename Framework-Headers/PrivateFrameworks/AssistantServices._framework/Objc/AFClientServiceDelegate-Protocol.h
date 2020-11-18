@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAudioPlaybackRequest, AFSpeechInterpretation, AFXPCWrapper, AceObject, INImage, INIntent, NSArray, NSDictionary, NSError, NSString, NSURL, SASSpeechPartialResult, SASSpeechRecognized;
+@class AFAudioPlaybackRequest, AFRequestInfo, AFSpeechInterpretation, AFXPCWrapper, AceObject, INImage, INIntent, NSArray, NSDictionary, NSError, NSString, NSURL, SASSpeechPartialResult, SASSpeechRecognized;
 @protocol SAAceCommand;
 
 @protocol AFClientServiceDelegate <NSObject>
@@ -50,6 +50,7 @@
 - (oneway void)speechRecordingWillBeginRecognitionUpdateForTask:(NSString *)arg1;
 - (oneway void)speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(AFXPCWrapper *)arg1 reply:(void (^)(void))arg2;
 - (oneway void)startPlaybackDidFail:(long long)arg1;
+- (oneway void)startUIRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(BOOL))arg2;
 - (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (oneway void)willProcessStartPlayback:(long long)arg1 intent:(INIntent *)arg2 completion:(void (^)(BOOL, BOOL))arg3;
 @end

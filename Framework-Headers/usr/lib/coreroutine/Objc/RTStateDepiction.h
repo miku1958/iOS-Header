@@ -26,7 +26,7 @@
 @property (nonatomic) long long mapItemSource;
 @property (nonatomic) long long numOfDataPts; // @synthesize numOfDataPts=_numOfDataPts;
 @property (nonatomic) long long type;
-@property (nonatomic) long long typeSource;
+@property (nonatomic) unsigned long long typeSource;
 
 + (long long)maximumNumberOfDataPoints;
 + (double)quantizeTimeIntervalSinceReferenceDate:(double)arg1;
@@ -56,7 +56,7 @@
 - (void)incrementNumOfDataPtsByInteger:(long long)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLocation:(id)arg1 type:(long long)arg2 typeSource:(long long)arg3 customLabel:(id)arg4 mapItem:(id)arg5;
+- (id)initWithLocation:(id)arg1 type:(long long)arg2 typeSource:(unsigned long long)arg3 customLabel:(id)arg4 mapItem:(id)arg5;
 - (id)lastEntyExit;
 - (void)removeAllVisitsExceptMostRecent;
 - (void)removeEntry:(double)arg1 exit:(double)arg2;

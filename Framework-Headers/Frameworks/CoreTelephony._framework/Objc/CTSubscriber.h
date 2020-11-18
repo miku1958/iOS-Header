@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreTelephony/CoreTelephonyClientSubscriberDelegate-Protocol.h>
+#import <CoreTelephony/CoreTelephonyClientSubscriberDelegateInternal-Protocol.h>
 
 @class CTServiceDescriptor, CoreTelephonyClient, NSData, NSString;
 @protocol CTSubscriberDelegate;
 
-@interface CTSubscriber : NSObject <CoreTelephonyClientSubscriberDelegate>
+@interface CTSubscriber : NSObject <CoreTelephonyClientSubscriberDelegateInternal>
 {
     struct queue _queue;
     CoreTelephonyClient *_client;

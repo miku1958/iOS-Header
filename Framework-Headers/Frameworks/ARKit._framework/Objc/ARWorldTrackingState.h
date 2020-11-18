@@ -9,6 +9,8 @@
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
+@class NSArray;
+
 @interface ARWorldTrackingState : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _majorRelocalization;
@@ -19,18 +21,33 @@
     long long _vioTrackingState;
     double _lastMajorRelocalizationTimestamp;
     double _originTimestamp;
+    double _poseTimestamp;
+    unsigned long long _currentVIOMapSize;
+    unsigned long long _numberOfCameraSwitches;
+    unsigned long long _reinitializationAttempts;
+    NSArray *_mergedSessionIdentifiers;
+    NSArray *_collaborationStats;
+    CDStruct_14d5dc5e _majorRelocalizationCameraTransform;
 }
 
+@property (strong, nonatomic) NSArray *collaborationStats; // @synthesize collaborationStats=_collaborationStats;
+@property (nonatomic) unsigned long long currentVIOMapSize; // @synthesize currentVIOMapSize=_currentVIOMapSize;
 @property (nonatomic) double lastMajorRelocalizationTimestamp; // @synthesize lastMajorRelocalizationTimestamp=_lastMajorRelocalizationTimestamp;
 @property (nonatomic) BOOL majorRelocalization; // @synthesize majorRelocalization=_majorRelocalization;
+@property (nonatomic) CDStruct_14d5dc5e majorRelocalizationCameraTransform; // @synthesize majorRelocalizationCameraTransform=_majorRelocalizationCameraTransform;
+@property (strong, nonatomic) NSArray *mergedSessionIdentifiers; // @synthesize mergedSessionIdentifiers=_mergedSessionIdentifiers;
 @property (nonatomic) BOOL minorRelocalization; // @synthesize minorRelocalization=_minorRelocalization;
+@property (nonatomic) unsigned long long numberOfCameraSwitches; // @synthesize numberOfCameraSwitches=_numberOfCameraSwitches;
 @property (nonatomic) double originTimestamp; // @synthesize originTimestamp=_originTimestamp;
 @property (nonatomic) BOOL poseGraphUpdated; // @synthesize poseGraphUpdated=_poseGraphUpdated;
+@property (nonatomic) double poseTimestamp; // @synthesize poseTimestamp=_poseTimestamp;
 @property (nonatomic) long long reason; // @synthesize reason=_reason;
+@property (nonatomic) unsigned long long reinitializationAttempts; // @synthesize reinitializationAttempts=_reinitializationAttempts;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (nonatomic) long long vioTrackingState; // @synthesize vioTrackingState=_vioTrackingState;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -54,6 +54,7 @@
 - (BOOL)saveIngestedConfiguration;
 - (id)setAsideConfigurationName:(id)arg1 unsetAside:(BOOL)arg2;
 - (void)unlockConfigurations;
+- (BOOL)updateAccountIdentifiers:(id)arg1;
 - (BOOL)updateAppLayerVPNMappingRules:(id)arg1;
 - (BOOL)updateDefaultAfterAddingConfiguration;
 - (BOOL)updateDefaultAfterDeletingConfiguration;

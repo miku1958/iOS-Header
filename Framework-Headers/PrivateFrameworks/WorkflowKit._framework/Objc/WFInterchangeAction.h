@@ -34,6 +34,7 @@
 - (BOOL)inputRequired;
 - (BOOL)inputsMultipleItems;
 - (BOOL)isDiscontinued;
+- (BOOL)isDiscoverable;
 - (id)keywords;
 - (id)lastModifiedDate;
 - (BOOL)mappedValueIsTrue:(id)arg1 forContentMapping:(id)arg2;

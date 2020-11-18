@@ -84,6 +84,7 @@
 - (void)setAccountProperty:(id)arg1 withSpecifier:(id)arg2;
 - (void)setHostString:(id)arg1;
 - (void)setNeedsSaveAndValidation:(BOOL)arg1;
+- (void)showAlertWithButtons:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)showIdenticalAccountFailureView;
 - (void)showSSLFailureView;
 - (id)specifiers;

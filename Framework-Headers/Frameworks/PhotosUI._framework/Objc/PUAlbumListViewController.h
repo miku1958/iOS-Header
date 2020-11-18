@@ -216,7 +216,7 @@
 - (void)_postDidAppearActions;
 - (void)_prepareStackView:(id)arg1 forCollection:(id)arg2 withStackCount:(long long)arg3 withCustomEmptyPlaceHolderImage:(id)arg4;
 - (id)_preparedAlbumListCellContentViewAtIndexPath:(id)arg1;
-- (struct PUAlbumListCellContentView *)_preparedPlaceholderListCellContentViewAtIndexPath:(id)arg1;
+- (id)_preparedPlaceholderListCellContentViewAtIndexPath:(id)arg1;
 - (id)_preparedStackViewAtIndexPath:(id)arg1;
 - (id)_preparedStackViewForCollection:(id)arg1;
 - (void)_recursivelyCollectCollectionsIn:(id)arg1 fetchResult:(id)arg2;
@@ -256,7 +256,7 @@
 - (void)albumListCellContentView:(id)arg1 performDeleteAction:(id)arg2;
 - (BOOL)albumListCellContentViewShouldBeginRetitling:(id)arg1;
 - (void)albumListTableViewCell:(id)arg1 willChangeState:(unsigned long long)arg2;
-- (void)albumStreamActivity:(id)arg1 didCreateAlbum:(struct NSObject *)arg2;
+- (void)albumStreamActivity:(id)arg1 didCreateAlbum:(id)arg2;
 - (void)albumStreamActivity:(id)arg1 didFinishSuccessfully:(BOOL)arg2;
 - (id)assetsFilterPredicate;
 - (id)backgroundColorForTableView;
@@ -374,7 +374,7 @@
 - (BOOL)showAddNewAlbumPlaceholder;
 - (void)showPlacesCount:(long long)arg1;
 - (void)showPlacesCount:(long long)arg1 atIndexPath:(id)arg2;
-- (void)showPlacesPlaceholderImageInStackView:(id)arg1 andContentView:(struct PUAlbumListCellContentView *)arg2;
+- (void)showPlacesPlaceholderImageInStackView:(id)arg1 andContentView:(id)arg2;
 - (BOOL)showsEmptyPlaceholderWhenEmpty;
 - (BOOL)showsSeparatorBelowTopPlaceholdersSection;
 - (BOOL)showsTopPlaceholdersSection;
@@ -404,7 +404,7 @@
 - (void)updateInterfaceLayoutIfNecessary;
 - (void)updateListCellForItemAtIndexPath:(id)arg1 animated:(BOOL)arg2;
 - (void)updateNavigationBarAnimated:(BOOL)arg1;
-- (void)updatePlaceholderListCellContentView:(struct PUAlbumListCellContentView *)arg1 forItemAtIndexPath:(id)arg2 animated:(BOOL)arg3;
+- (void)updatePlaceholderListCellContentView:(id)arg1 forItemAtIndexPath:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)updateSpec;
 - (void)updateSyncProgress;
 - (void)viewDidAppear:(BOOL)arg1;

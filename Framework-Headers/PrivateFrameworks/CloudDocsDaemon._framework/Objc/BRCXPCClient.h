@@ -65,7 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)_sharingOperationItemFromLookup:(id)arg1 url:(id)arg2 allowDirectory:(BOOL)arg3 error:(id *)arg4;
 - (void)_startDownloadItemsAtURLs:(id)arg1 pos:(unsigned long long)arg2 options:(unsigned long long)arg3 error:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)_startMonitoringProcessIfNeeded;
-- (void)_startSharingOperationAfterAcceptation:(struct _BRCFrameworkOperation *)arg1 client:(id)arg2 item:(id)arg3;
+- (void)_startSharingOperationAfterAcceptation:(id)arg1 client:(id)arg2 item:(id)arg3;
 - (void)_stopMonitoringProcess;
 - (void)_t_resetAllZones:(id)arg1 waitUntilIdle:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)accessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2 dbAccessKind:(long long)arg3 asynchronously:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;

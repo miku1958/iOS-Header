@@ -43,7 +43,6 @@
 - (id)_bodyText;
 - (id)_buttonTitle;
 - (void)_createViews;
-- (void)_hidebusyWorkUI;
 - (BOOL)_isSignInAllowed;
 - (void)_passwordFieldDidChange:(id)arg1;
 - (void)_passwordRecoveryButtonWasTapped:(id)arg1;
@@ -51,7 +50,6 @@
 - (void)_setupViews;
 - (BOOL)_shouldShowForgotGlyph;
 - (void)_signInButtonTapped:(id)arg1;
-- (void)_startBusyWorkUI;
 - (void)_updateViewConstraints;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
@@ -59,6 +57,8 @@
 - (void)displayAlertForContext:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (BOOL)resignFirstResponder;
+- (void)startAnimating;
+- (void)stopAnimating;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

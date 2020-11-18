@@ -58,8 +58,8 @@
 @property (strong, nonatomic) NSAttributedString *titleAttributedString; // @synthesize titleAttributedString=_titleAttributedString;
 @property (nonatomic) struct CGRect titleAttributedStringInsideFrame; // @synthesize titleAttributedStringInsideFrame=_titleAttributedStringInsideFrame;
 
-+ (id)attributedStringWithMatchHighlighted:(id)arg1 textCheckingResult:(id)arg2 usingAttributes:(id)arg3 highlightColor:(struct UIColor *)arg4 insideFrame:(struct CGRect)arg5 centered:(BOOL)arg6;
-+ (id)attributesByHighlightingAttributes:(id)arg1 withHighlightColor:(struct UIColor *)arg2;
++ (id)attributedStringWithMatchHighlighted:(id)arg1 textCheckingResult:(id)arg2 usingAttributes:(id)arg3 highlightColor:(id)arg4 insideFrame:(struct CGRect)arg5 centered:(BOOL)arg6;
++ (id)attributesByHighlightingAttributes:(id)arg1 withHighlightColor:(id)arg2;
 + (id)authorNameToHighlightForNote:(id)arg1 fromSearchResult:(id)arg2 textCheckingResult:(id *)arg3;
 + (struct CGRect)boundingRectForAttributedString:(id)arg1 fittingSize:(struct CGSize)arg2;
 + (BOOL)canFitAttributedString:(id)arg1 ellipses:(id)arg2 shouldPrefixWithEllipses:(BOOL)arg3 insideFrame:(struct CGRect)arg4 centered:(BOOL)arg5;
@@ -68,7 +68,7 @@
 + (id)regularExpressionMatchOfString:(id)arg1 inContent:(id)arg2 matchWordBoundaries:(BOOL)arg3;
 + (id)tokensInString:(id)arg1;
 - (void).cxx_destruct;
-- (id)attributedTitleWithBaseAttributes:(id)arg1 highlightColor:(struct UIColor *)arg2 insideFrame:(struct CGRect)arg3;
+- (id)attributedTitleWithBaseAttributes:(id)arg1 highlightColor:(id)arg2 insideFrame:(struct CGRect)arg3;
 - (long long)compareByModificationDate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -83,7 +83,7 @@
 - (void)refetchObjectFromContext:(id)arg1;
 - (void)refreshDisplaySnippet;
 - (void)refreshDisplayTitle;
-- (id)snippetWithBaseAttributes:(id)arg1 highlightColor:(struct UIColor *)arg2 insideFrame:(struct CGRect)arg3;
+- (id)snippetWithBaseAttributes:(id)arg1 highlightColor:(id)arg2 insideFrame:(struct CGRect)arg3;
 
 @end
 

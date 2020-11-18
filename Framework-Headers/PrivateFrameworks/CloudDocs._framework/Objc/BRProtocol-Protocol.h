@@ -81,6 +81,7 @@
 - (void)getContainerURLForID:(NSString *)arg1 reply:(void (^)(NSURL *, NSData *, NSString *, NSError *))arg2;
 - (void)getContainersByID:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getContainersNeedingUpload:(void (^)(NSSet *, NSError *))arg1;
+- (void)getCreatorNameComponentsForURL:(NSURL *)arg1 reply:(void (^)(NSPersonNameComponents *, NSError *))arg2;
 - (void)getEvictableSpaceWithReply:(void (^)(unsigned long long, NSError *))arg1;
 - (void)getIsContainerWithIDOverQuota:(NSString *)arg1 reply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)getItemUpdateSenderWithReceiver:(id<BRItemNotificationReceiving>)arg1 reply:(void (^)(id<BRItemNotificationSending>, NSDictionary *, NSError *))arg2;

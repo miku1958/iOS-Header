@@ -13,7 +13,7 @@
 
 @interface MPCStoreFrontLocalEquivalencyMiddlewareOperation : MPAsyncOperation <MPCStoreFrontLocalEquivalencyMiddlewarePlayingItemProviding, MPMiddlewareAutomaticDependencyOperation>
 {
-    struct NSMapTable *_inputOperations;
+    NSMapTable *_inputOperations;
     CDUnknownBlockType _invalidationHandler;
     NSArray *_invalidationObservers;
     MPCStoreFrontLocalEquivalencyMiddleware *_middleware;

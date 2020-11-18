@@ -13,8 +13,8 @@
 @interface ARRecordingConfiguration : ARCustomTechniquesConfiguration <ARRecordingTechniqueDelegate>
 {
     NSURL *_fileURL;
-    unsigned long long _state;
     ARRecordingTechniquePublic *_recordingTechnique;
+    unsigned long long _state;
     CDUnknownBlockType _finishBlock;
 }
 

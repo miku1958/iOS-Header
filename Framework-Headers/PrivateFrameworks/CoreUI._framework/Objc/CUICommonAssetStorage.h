@@ -24,12 +24,15 @@
     NSData *_globals;
     unsigned int _swap:1;
     unsigned int _isMemoryMapped:1;
-    unsigned int _reserved:30;
+    unsigned int _hasAppearanceKey:1;
+    unsigned int _hasLocalizationKey:1;
+    unsigned int _reserved:28;
     NSSet *_externalTags;
     unsigned short _renditionInfoCacheLookup[20];
     id _renditionInfoCache[20];
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _renditionInfoCacheLock;
+    struct _renditionkeyattributeindex _keyfmtindex;
     NSDictionary *_appearances;
 }
 
@@ -91,6 +94,7 @@
 - (id)initWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)initWithPath:(id)arg1;
 - (id)initWithPath:(id)arg1 forWriting:(BOOL)arg2;
+- (const struct _renditionkeyattributeindex *)keyAttributeIndex;
 - (const struct _renditionkeyfmt *)keyFormat;
 - (id)keyFormatData;
 - (int)keySemantics;
@@ -118,6 +122,7 @@
 - (BOOL)usesCUISystemThemeRenditionKey;
 - (id)uuid;
 - (int)validateBitmapInfo;
+- (int)validateFile;
 - (int)validatekeyformat;
 - (const char *)versionString;
 

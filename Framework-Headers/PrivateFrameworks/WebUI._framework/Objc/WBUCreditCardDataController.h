@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariShared/WBSCreditCardDataController.h>
+#import "WBSCreditCardDataController.h"
 
 @interface WBUCreditCardDataController : WBSCreditCardDataController
 {

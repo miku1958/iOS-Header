@@ -29,7 +29,7 @@
 + (struct CGImage *)_thumbnailForAssetURL:(id)arg1;
 + (long long)authorizationStatus;
 + (void)disableSharedPhotoStreamsSupport;
-- (void)_addGroupForAlbum:(struct NSObject *)arg1 ofType:(unsigned long long)arg2 toArray:(id)arg3;
+- (void)_addGroupForAlbum:(id)arg1 ofType:(unsigned long long)arg2 toArray:(id)arg3;
 - (void)_addGroupListForContainerList:(id)arg1 ofType:(unsigned long long)arg2 toArray:(id)arg3;
 - (id)_copyGroupForURL:(id)arg1;
 - (void)_performBlock:(CDUnknownBlockType)arg1;
@@ -46,7 +46,7 @@
 - (BOOL)isValid;
 - (id)publicErrorForPrivateDomain:(id)arg1 withPrivateCode:(long long)arg2;
 - (id)publicErrorFromPrivateError:(id)arg1;
-- (void)registerAlbum:(struct NSObject *)arg1 assetGroupPrivate:(id)arg2;
+- (void)registerAlbum:(id)arg1 assetGroupPrivate:(id)arg2;
 - (BOOL)videoAtPathIsCompatibleWithSavedPhotosAlbum:(id)arg1;
 - (void)writeImageDataToSavedPhotosAlbum:(id)arg1 metadata:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)writeImageToSavedPhotosAlbum:(struct CGImage *)arg1 metadata:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

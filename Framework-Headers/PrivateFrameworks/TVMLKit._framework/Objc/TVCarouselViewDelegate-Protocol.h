@@ -11,6 +11,7 @@
 @protocol TVCarouselViewDelegate <NSObject>
 
 @optional
+- (void)carouselView:(_TVCarouselView *)arg1 didCenterItemAtIndex:(unsigned long long)arg2;
 - (void)carouselView:(_TVCarouselView *)arg1 didDeselectItemAtIndex:(unsigned long long)arg2;
 - (void)carouselView:(_TVCarouselView *)arg1 didEndDisplayingCell:(UICollectionViewCell *)arg2 forItemAtIndex:(unsigned long long)arg3;
 - (void)carouselView:(_TVCarouselView *)arg1 didEndDisplayingItemAtIndex:(unsigned long long)arg2;

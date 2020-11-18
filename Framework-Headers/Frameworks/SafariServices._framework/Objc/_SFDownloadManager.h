@@ -45,9 +45,11 @@
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (id)_busyDownloads;
 - (double)_calculateTotalProgress;
+- (BOOL)_canExpireDownloadOnCompletion:(id)arg1;
 - (id)_containerDirectoryForDownload:(id)arg1;
 - (id)_dataForPersistingToHistory;
 - (void)_loadDownloadHistory;
+- (void)_loadDownloadHistoryAsynchronous:(BOOL)arg1;
 - (void)_noteDownloadsChanged;
 - (void)_removeDeletedDownloads;
 - (void)_removeOldDownloadsAndUpdateTimerIfNeeded;
@@ -69,10 +71,12 @@
 - (void)getDownloadsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initAsReadonly:(BOOL)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)reloadDownloadsSynchronously;
 - (void)removeDownloads:(id)arg1;
 - (void)removeDownloadsStartedAfterDate:(id)arg1;
 - (void)savePendingChangesBeforeTermination;
 - (BOOL)shouldExcludeDownloadFromFileSystem:(id)arg1;
+- (BOOL)shouldExcludeDownloadFromList:(id)arg1;
 
 @end
 

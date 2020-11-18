@@ -38,6 +38,7 @@
 + (id)descriptorWithInput:(id)arg1 modifierFlags:(long long)arg2;
 + (id)descriptorWithKeyCode:(long long)arg1 modifierFlags:(long long)arg2;
 + (id)keyCommandForEvent:(struct __IOHIDEvent *)arg1 gsKeyboard:(struct __GSKeyboard *)arg2;
++ (id)keyCommandForEvent:(struct __IOHIDEvent *)arg1 gsKeyboard:(struct __GSKeyboard *)arg2 activeModifiers:(long long *)arg3;
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2;
 + (id)keyCommandWithKeyCode:(long long)arg1 modifierFlags:(long long)arg2;
 + (BOOL)supportsSecureCoding;

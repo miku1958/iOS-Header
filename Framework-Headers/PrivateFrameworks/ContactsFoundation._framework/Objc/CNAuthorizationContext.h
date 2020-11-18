@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) BOOL isValidatingFirstPartyClient;
 
 - (void).cxx_destruct;
-- (struct NSNumber *)_isFirstParty;
+- (id)_isFirstParty;
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1;
 - (id)initWithEntitlementVerifier:(Class)arg1 isFirstParty:(BOOL)arg2;
 

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
++ (double)_iOSLockupWidthWithWindowWidth:(double)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2 showsPageControl:(BOOL)arg3;
 + (id)featuredCellWithElement:(id)arg1 existingCell:(id)arg2;
 + (struct CGSize)lockupSizeForElement:(id)arg1;
 - (void).cxx_destruct;

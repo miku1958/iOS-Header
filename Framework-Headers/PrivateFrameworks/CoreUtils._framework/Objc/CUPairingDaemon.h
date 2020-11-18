@@ -8,7 +8,7 @@
 
 #import <CoreUtils/NSXPCListenerDelegate-Protocol.h>
 
-@class CUHomeKitManager, NSData, NSString, NSXPCListener, NSXPCListenerEndpoint;
+@class CUHomeKitManager, NSData, NSMutableSet, NSString, NSXPCListener, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface CUPairingDaemon : NSObject <NSXPCListenerDelegate>
@@ -17,7 +17,7 @@
     int _rpIdentityNotifier;
     NSData *_rpSelfIRK;
     unsigned long long _stateHandle;
-    struct NSMutableSet *_xpcConnections;
+    NSMutableSet *_xpcConnections;
     NSXPCListener *_xpcListener;
     BOOL _testMode;
     NSObject<OS_dispatch_queue> *_dispatchQueue;

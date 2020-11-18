@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <AXSpeakFingerManager/AXOratorDelegate-Protocol.h>
+#import <AXSpeakFingerManager/AXUIClientDelegate-Protocol.h>
 #import <AXSpeakFingerManager/AXUIService-Protocol.h>
 
-@class AXElement, AXOrator, NSArray, NSMutableArray, NSString, UIImpactFeedbackGenerator;
+@class AXElement, AXOrator, AXUIClient, NSArray, NSMutableArray, NSString, UIImpactFeedbackGenerator;
 
-@interface AXSpeakFingerManager : NSObject <AXOratorDelegate, AXUIService>
+@interface AXSpeakFingerManager : NSObject <AXOratorDelegate, AXUIClientDelegate, AXUIService>
 {
+    AXUIClient *_voiceOverDisplayManagerClient;
     BOOL _unitTestSpeaking;
     BOOL _inUnitTestMode;
     unsigned long long _speakFingerState;
@@ -42,7 +44,9 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_removeFocusRingForElement:(id)arg1;
 - (void)_speakFingerStateChanged;
+- (void)_updateFocusRingForWebElement:(id)arg1 remove:(BOOL)arg2;
 - (void)dealloc;
 - (double)desiredWindowLevelForContentViewController:(id)arg1 userInteractionEnabled:(BOOL)arg2;
 - (void)fingerWasLiftedInSpeakUnderFingerMode;
@@ -50,6 +54,7 @@
 - (void)oratorDidFinishSpeaking:(id)arg1;
 - (id)processMessage:(id)arg1 withIdentifier:(unsigned long long)arg2 fromClientWithIdentifier:(id)arg3 error:(id *)arg4;
 - (void)registerBlockForStateChange:(CDUnknownBlockType)arg1;
+- (void)setCursorFrame:(struct CGRect)arg1 withPath:(struct CGPath *)arg2 withContextId:(unsigned int)arg3 element:(id)arg4 forceRefresh:(BOOL)arg5 animated:(BOOL)arg6;
 - (void)speakElementAtLocation:(struct CGPoint)arg1;
 - (void)speakUnderFingerModeFinishedTalking;
 - (void)speakUnderFingerModeStarted;

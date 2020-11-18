@@ -17,9 +17,9 @@
 @property (nonatomic) long long autoplayPolicy;
 @property (nonatomic) BOOL contentBlockersEnabled;
 @property (copy, nonatomic) NSDictionary *customHeaderFields;
-@property (copy, nonatomic) NSString *customJavaScriptUserAgentAsSiteSpecificQuirks;
 @property (copy, nonatomic) NSString *customNavigatorPlatform;
 @property (copy, nonatomic) NSString *customUserAgent;
+@property (copy, nonatomic) NSString *customUserAgentAsSiteSpecificQuirks;
 @property (nonatomic) unsigned long long deviceOrientationAndMotionAccessPolicy;
 @property (nonatomic) unsigned long long popUpPolicy;
 @property (readonly, nonatomic) WKWebpagePreferences *webpagePreferences;

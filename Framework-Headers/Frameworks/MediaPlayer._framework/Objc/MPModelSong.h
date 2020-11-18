@@ -41,8 +41,10 @@
 @property (copy, nonatomic) NSDate *libraryAddedDate; // @dynamic libraryAddedDate;
 @property (strong, nonatomic) MPModelFileAsset *localFileAsset; // @dynamic localFileAsset;
 @property (strong, nonatomic) MPModelLyrics *lyrics; // @dynamic lyrics;
+@property (nonatomic) long long playCount; // @dynamic playCount;
 @property (strong, nonatomic) MPModelPlaybackPosition *playbackPosition; // @dynamic playbackPosition;
 @property (nonatomic) BOOL shouldShowComposer; // @dynamic shouldShowComposer;
+@property (nonatomic) long long skipCount; // @dynamic skipCount;
 @property (strong, nonatomic) MPModelStoreAsset *storeAsset; // @dynamic storeAsset;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 @property (nonatomic) long long trackCount; // @dynamic trackCount;
@@ -81,8 +83,10 @@
 + (id)__libraryAdded_KEY;
 + (id)__localFileAsset_KEY;
 + (id)__lyrics_KEY;
++ (id)__playCount_KEY;
 + (id)__playbackPosition_KEY;
 + (id)__shouldShowComposer_KEY;
++ (id)__skipCount_KEY;
 + (id)__storeAsset_KEY;
 + (id)__title_KEY;
 + (id)__trackCount_KEY;

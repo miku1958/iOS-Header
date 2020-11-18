@@ -40,11 +40,11 @@
     struct CGRect _collisionFrame;
     NSString *_clusteringIdentifier;
     UIImage *_image;
+    long long _collisionMode;
     MKCalloutView *_calloutView;
     UIView *_leftCalloutAccessoryView;
     UIView *_rightCalloutAccessoryView;
     UIView *_detailCalloutAccessoryView;
-    long long _collisionMode;
     NSString *_reuseIdentifier;
     MKAnnotationView *_clusterAnnotationView;
     unsigned long long _mapType;

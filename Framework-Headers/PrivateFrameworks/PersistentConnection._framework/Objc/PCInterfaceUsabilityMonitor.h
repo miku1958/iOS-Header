@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_unscheduleLinkQualityMonitor;
 - (void)_unschedulePathEvaluator;
 - (void)_updateOffTransitionsForLinkQualityChange;
+- (void)_updatePathParameters;
 - (id)currentInterfaceName;
 - (void)dealloc;
 - (id)init;

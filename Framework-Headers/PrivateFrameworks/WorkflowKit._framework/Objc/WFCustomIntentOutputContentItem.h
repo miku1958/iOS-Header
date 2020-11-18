@@ -21,7 +21,9 @@
 + (id)ownedTypes;
 + (id)pluralTypeDescription;
 + (id)propertyBuilders;
++ (BOOL)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (id)typeDescription;
+- (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (id)generateObjectRepresentationsForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 
 @end

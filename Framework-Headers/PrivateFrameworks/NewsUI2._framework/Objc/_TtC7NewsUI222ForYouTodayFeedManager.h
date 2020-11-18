@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsUI2/FCForYouPluginGroupManaging-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI222ForYouTodayFeedManager : _TtCs12_SwiftObject <FCForYouPluginGroupManaging>
+@interface _TtC7NewsUI222ForYouTodayFeedManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *feedGroupEmitterFactory;

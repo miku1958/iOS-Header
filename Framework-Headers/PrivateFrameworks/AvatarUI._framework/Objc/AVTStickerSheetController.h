@@ -20,6 +20,7 @@
 {
     BOOL _allowsPeel;
     BOOL _isPageVisible;
+    BOOL _showPrereleaseSticker;
     id<AVTPresenterDelegate> presenterDelegate;
     id<AVTStickerSheetControllerDelegate> _delegate;
     id<AVTStickerDisclosureValidationDelegate> _disclosureValidationDelegate;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (weak, nonatomic) id<AVTPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate;
 @property (nonatomic) struct UIEdgeInsets sectionInsets; // @synthesize sectionInsets=_sectionInsets;
+@property (nonatomic) BOOL showPrereleaseSticker; // @synthesize showPrereleaseSticker=_showPrereleaseSticker;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 

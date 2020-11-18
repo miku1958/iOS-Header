@@ -98,6 +98,7 @@
     BOOL _allowRestrictedAccounts;
     BOOL _encryptionOverrideSetting;
     BOOL _initializedRecipients;
+    BOOL _originalMessageWasEncrypted;
     unsigned long long _selectedContentVariationIndex;
     UIKeyCommand *_sendKeyCommand;
     UIKeyCommand *_escapeKeyCommand;
@@ -309,7 +310,7 @@
 - (void)_setRecipients:(id)arg1 forField:(int)arg2;
 - (BOOL)_setSendingEmailAddress:(id)arg1;
 - (void)_setTitleBarSubtitleText:(id)arg1 style:(unsigned long long)arg2;
-- (void)_setUpDeliveryObject:(CDUnknownBlockType)arg1;
+- (void)_setUpDeliveryObject:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setUpForSaveAsDraft;
 - (void)_setupForAutosavedMessage:(id)arg1;
 - (void)_setupForDraft:(id)arg1;
@@ -400,7 +401,6 @@
 - (void)composeRecipientViewRequestAddRecipient:(id)arg1;
 - (void)composeRecipientViewReturnPressed:(id)arg1;
 - (BOOL)composeRecipientViewShowingSearchResults:(id)arg1;
-- (void)composeShortcutInvoked:(id)arg1;
 - (void)composeStyleSelector:(id)arg1 didChangeFont:(id)arg2;
 - (void)composeStyleSelector:(id)arg1 didChangeFontSize:(double)arg2;
 - (void)composeStyleSelector:(id)arg1 didChangeTextColor:(id)arg2;
@@ -518,7 +518,7 @@
 - (void)selectNextSearchResultForComposeRecipientView:(id)arg1;
 - (void)selectPreviousSearchResultForComposeRecipientView:(id)arg1;
 - (void)send:(id)arg1;
-- (void)sendMessage;
+- (void)sendMessage:(unsigned long long)arg1;
 - (BOOL)sendingAccountIsExchange;
 - (id)sendingAccountProxy;
 - (id)sendingEmailAddress;
@@ -535,6 +535,7 @@
 - (void)setHeadersForDraft;
 - (void)setHosted:(BOOL)arg1;
 - (void)setInitialTitle:(id)arg1;
+- (void)setOriginalMessageWasEncrypted:(BOOL)arg1;
 - (void)setProgressUIVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setRecipientsKeyboardType:(long long)arg1;
 - (void)setSavedHeaders:(id)arg1;

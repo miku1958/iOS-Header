@@ -33,11 +33,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_initWithSpec:(id)arg1 targetAlbum:(struct NSObject *)arg2 orTargetAlbumName:(id)arg3 options:(id)arg4;
+- (id)_initWithSpec:(id)arg1 targetAlbum:(id)arg2 orTargetAlbumName:(id)arg3 options:(id)arg4;
 - (void)assetContainerListDidChange:(id)arg1;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
-- (id)initWithSpec:(id)arg1 targetAlbum:(struct NSObject *)arg2;
+- (id)initWithSpec:(id)arg1 targetAlbum:(id)arg2;
 - (id)initWithSpec:(id)arg1 targetAlbumName:(id)arg2;
 - (id)initWithSpec:(id)arg1 targetAlbumName:(id)arg2 options:(id)arg3;
 - (void)loadView;

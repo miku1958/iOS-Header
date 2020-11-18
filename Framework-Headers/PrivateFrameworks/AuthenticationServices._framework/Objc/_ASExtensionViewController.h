@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)_beginNonUIRequest:(BOOL)arg1 connectionHandler:(CDUnknownBlockType)arg2;
 - (void)_beginRequestWithConnectionHandler:(CDUnknownBlockType)arg1;
+- (void)_extensionRequestDidFinish:(BOOL)arg1;
 - (void)_invalidateNonUIRequestTimerIfNeeded;
 - (void)_nonUIRequestDidRequireUserInteraction;
 - (void)_nonUIRequestTimedOut;

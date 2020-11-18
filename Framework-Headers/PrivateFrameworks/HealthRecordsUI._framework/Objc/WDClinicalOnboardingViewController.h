@@ -12,20 +12,21 @@
 #import <HealthRecordsUI/UISearchResultsUpdating-Protocol.h>
 #import <HealthRecordsUI/WDUserActivityResponder-Protocol.h>
 
-@class CLLocation, CLLocationManager, HRProfile, HRWDSpinnerView, NSIndexPath, NSMutableDictionary, NSMutableOrderedSet, NSString, NSTimer, UISearchController, WDClinicalOnboardingNoGeoView, WDClinicalSampleAccountsLoader, _UIContentUnavailableView;
+@class CLLocation, CLLocationManager, HRProfile, HRWDSpinnerView, NSIndexPath, NSMutableDictionary, NSMutableOrderedSet, NSString, NSTimer, UISearchController, UIView, UIViewController, WDClinicalGatewayProxy, WDClinicalOnboardingNoGeoView, WDClinicalSampleAccountsLoader, _UIContentUnavailableView;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalOnboardingViewController : HKTableViewController <CLLocationManagerDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, WDUserActivityResponder>
 {
-    HRProfile *_profile;
     long long _searchesInFlight;
     NSTimer *_searchTimer;
     UISearchController *_searchController;
     CLLocationManager *_locationManager;
     CLLocation *_location;
+    BOOL _showProviderNotFound;
     BOOL _searchInFlight;
     BOOL _hasCompletedAtLeastOneFetch;
     BOOL _locationEnabled;
+    HRProfile *_profile;
     NSMutableOrderedSet *_supportedSearchResults;
     NSMutableOrderedSet *_unsupportedSearchResults;
     NSString *_searchQuery;
@@ -33,14 +34,18 @@ __attribute__((visibility("hidden")))
     long long _nextFrom;
     _UIContentUnavailableView *_noContentView;
     WDClinicalOnboardingNoGeoView *_noGeoView;
+    UIView *_providerNotFoundView;
+    UIViewController *_dismissalViewController;
     NSIndexPath *_spinnerIndexPath;
     HRWDSpinnerView *_spinnerView;
     WDClinicalSampleAccountsLoader *_sampleAccountsLoader;
+    WDClinicalGatewayProxy *_pendingGatewayProxy;
 }
 
 @property (readonly, nonatomic) BOOL couldFetchAdditionalResults;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) UIViewController *dismissalViewController; // @synthesize dismissalViewController=_dismissalViewController;
 @property (readonly, nonatomic) BOOL hasBothSupportedAndUnsupported;
 @property (nonatomic) BOOL hasCompletedAtLeastOneFetch; // @synthesize hasCompletedAtLeastOneFetch=_hasCompletedAtLeastOneFetch;
 @property (readonly, nonatomic) BOOL hasNeitherSupportedNorUnsupported;
@@ -51,10 +56,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long nextFrom; // @synthesize nextFrom=_nextFrom;
 @property (strong, nonatomic) _UIContentUnavailableView *noContentView; // @synthesize noContentView=_noContentView;
 @property (strong, nonatomic) WDClinicalOnboardingNoGeoView *noGeoView; // @synthesize noGeoView=_noGeoView;
+@property (strong, nonatomic) WDClinicalGatewayProxy *pendingGatewayProxy; // @synthesize pendingGatewayProxy=_pendingGatewayProxy;
+@property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
+@property (strong, nonatomic) UIView *providerNotFoundView; // @synthesize providerNotFoundView=_providerNotFoundView;
 @property (readonly, nonatomic) NSMutableDictionary *resultsCache; // @synthesize resultsCache=_resultsCache;
 @property (strong, nonatomic) WDClinicalSampleAccountsLoader *sampleAccountsLoader; // @synthesize sampleAccountsLoader=_sampleAccountsLoader;
 @property (nonatomic) BOOL searchInFlight; // @synthesize searchInFlight=_searchInFlight;
 @property (copy, nonatomic) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
+@property (nonatomic) BOOL showProviderNotFound; // @synthesize showProviderNotFound=_showProviderNotFound;
 @property (readonly, nonatomic) BOOL showingMainSpinner;
 @property (readonly, nonatomic) BOOL showingNoGeoView;
 @property (readonly, nonatomic) BOOL showingNoLocations;
@@ -69,8 +78,10 @@ __attribute__((visibility("hidden")))
 - (void)_cacheFeaturedBrandLogos;
 - (id)_cacheKeyForSearchQuery:(id)arg1;
 - (void)_cancelSearch;
+- (void)_configureLeftNavigationItemAsCancel;
 - (void)_configureLocationServices;
 - (void)_configureNavigationItems;
+- (void)_configureProviderNotFoundView;
 - (void)_configureSearchController;
 - (void)_configureTableViewCells;
 - (void)_didFetchResultsForQuery:(id)arg1 searchResultsPage:(id)arg2 error:(id)arg3;
@@ -78,8 +89,8 @@ __attribute__((visibility("hidden")))
 - (void)_displayNoContentViewIfNeeded;
 - (id)_emptyMutableOrderedSet;
 - (BOOL)_isSimulator;
+- (void)_loadGatewayProxyForDeeplinking:(id)arg1;
 - (id)_mutableOrderedSetWithSampleAccountsForQuery:(id)arg1;
-- (void)_postAWDMetricForTappingIntoGatewayLocationDetail;
 - (void)_postAWDMetricForUsingSearch;
 - (void)_postAWDOnboardingMetricForType:(int)arg1;
 - (void)_presentError:(id)arg1;
@@ -89,16 +100,19 @@ __attribute__((visibility("hidden")))
 - (void)_suggestNewProviders;
 - (id)_supportedProvidersFromResults:(id)arg1;
 - (id)_unsupportedProvidersFromResults:(id)arg1;
+- (void)_updateTableHeaderViewHeight;
 - (void)applyChangeActivity:(id)arg1;
 - (id)applyTransitionActivity:(id)arg1;
+- (void)configureLeftNavigationItemAsCancelAndDismissFromViewController:(id)arg1;
 - (BOOL)definesPresentationContext;
 - (void)didDismissSearchController:(id)arg1;
 - (void)didPresentSearchController:(id)arg1;
 - (void)didReceiveMemoryWarning;
-- (void)dismiss;
+- (void)dismiss:(id)arg1;
 - (BOOL)hasOnlySupportedLocations;
 - (BOOL)hasOnlyUnsupportedLocations;
 - (id)initWithProfile:(id)arg1;
+- (id)initWithProfile:(id)arg1 gatewayProxy:(id)arg2;
 - (void)loadView;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
@@ -114,6 +128,8 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)updateSearchResultsForSearchController:(id)arg1;
+- (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 - (void)willDismissSearchController:(id)arg1;
 
 @end

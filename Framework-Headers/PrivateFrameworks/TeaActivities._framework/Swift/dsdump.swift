@@ -60,15 +60,18 @@
  struct TeaActivities.AnyNavigator {
 
 	// Properties
-	let navigateBlock : (_:_:_:_:)
-	let previewBlock : (_:_:_:_:)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let navigateBlock :  empty-list 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let previewBlock :  empty-list 
  }
 
  struct TeaActivities.Route {
 
 	// Properties
 	let activity : A
-	let context : (_:)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let context :  empty-list 
 	let setup : (_:)
 	let metadata : Any?
  }

@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PKBarcode, PKImage, PKLiveRenderedShaderSet, PKNFCPayload, PKPassDisplayProfile, PKPassLiveRenderedImageSet, PKPassPersonalization, PKPaymentPass, UIImage;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PKBarcode, PKImage, PKLiveRenderedShaderSet, PKNFCPayload, PKPassDisplayProfile, PKPassLiveRenderedImageSet, PKPassPersonalization, PKPaymentPass, PKSecureElementPass, UIImage;
 
 @interface PKPass : PKObject <NSCopying, NSSecureCoding>
 {
@@ -105,6 +105,7 @@
 @property (copy, nonatomic) NSDate *relevantDate; // @synthesize relevantDate=_relevantDate;
 @property (nonatomic, getter=isRemotePass) BOOL remotePass; // @synthesize remotePass=_remotePass;
 @property (nonatomic, getter=isRevoked) BOOL revoked; // @synthesize revoked=_revoked;
+@property (readonly, nonatomic) PKSecureElementPass *secureElementPass;
 @property (copy, nonatomic) NSNumber *sequenceCounter; // @synthesize sequenceCounter=_sequenceCounter;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (nonatomic) long long sharingMethod; // @synthesize sharingMethod=_sharingMethod;
@@ -166,7 +167,7 @@
 - (id)numberForSemanticKey:(id)arg1;
 - (id)personNameComponentsForSemanticKey:(id)arg1;
 - (id)primaryFields;
-- (id)recordTypesAndNames;
+- (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 - (id)semantics;
 - (id)stringForSemanticKey:(id)arg1;
 - (id)stringsForSemanticKey:(id)arg1;

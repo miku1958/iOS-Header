@@ -6,72 +6,64 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
-#import <GeoServices/GEORoutePreloadSession-Protocol.h>
+#import <GeoServices/GEOTileLoaderObserver-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOComposedRoute, NSMutableDictionary, NSString;
-@protocol GEORoutePreloadSessionDelegate, OS_os_log;
+@class GEOApplicationAuditToken, GEOComposedRoute, NSArray, NSDate, NSString, geo_isolater;
+@protocol OS_dispatch_queue;
 
-@interface GEORoutePreloader : NSObject <GEOResourceManifestTileGroupObserver, GEORoutePreloadSession>
+@interface GEORoutePreloader : NSObject <GEOTileLoaderObserver>
 {
+    NSObject<OS_dispatch_queue> *_workQueue;
+    NSArray *_strategies;
     GEOComposedRoute *_route;
-    NSMutableDictionary *_tileSetStyles;
-    BOOL _loggingEnabled;
-    BOOL _minimalDebuggingEnabled;
-    BOOL _fullDebuggingEnabled;
-    BOOL _enabled;
-    BOOL _paused;
-    double _currentRoutePosition;
-    int _downloadState;
-    CDUnknownBlockType _batteryHandler;
+    BOOL _running;
     unsigned long long _networkQuality;
-    id<GEORoutePreloadSessionDelegate> _delegate;
-    CDUnknownBlockType _tileKeyIsDownloadedPredicate;
-    double _stepSizeInMeters;
     struct GEOOnce_s _didTearDown;
     GEOApplicationAuditToken *_auditToken;
+    geo_isolater *_deviceQualitiesIsolation;
+    int _batteryNotificationToken;
+    BOOL _pluggedIn;
+    geo_isolater *_statisticsIsolation;
+    unsigned long long _statisticsCounts[5];
+    unsigned long long _tilesUsed;
+    unsigned long long _nonPreloadedTilesLoadedFromNetwork;
+    unsigned long long _nonPreloadedTilesFailed;
+    NSDate *_statisticsStartDate;
 }
 
 @property (readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
-@property (copy, nonatomic) CDUnknownBlockType batteryHandler; // @synthesize batteryHandler=_batteryHandler;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<GEORoutePreloadSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long networkQuality; // @synthesize networkQuality=_networkQuality;
-@property (readonly, nonatomic) NSObject<OS_os_log> *preloaderLog;
+@property (readonly, nonatomic) unsigned long long networkQuality;
 @property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) CDUnknownBlockType tileKeyIsDownloadedPredicate; // @synthesize tileKeyIsDownloadedPredicate=_tileKeyIsDownloadedPredicate;
 
-+ (id)preloaderForRoute:(id)arg1;
-+ (id)preloaderForRoute:(id)arg1 auditToken:(id)arg2;
 - (void).cxx_destruct;
-- (void)_cancelPreloadTasks;
-- (void)_retryFailuresWithErrorsReset:(BOOL)arg1;
+- (void)_finalizeStatistics;
+- (void)_networkReachabilityChanged:(id)arg1;
+- (void)_performTearDown;
+- (void)_registerForBatteryStatusChanges;
+- (void)_registerForNetworkQualityObservation;
 - (void)_start;
-- (void)addTileSetStyle:(int)arg1 betweenZoom:(unsigned int)arg2 andZoom:(unsigned int)arg3;
-- (void)beginLoading;
+- (void)_stop;
+- (void)_unregisterForBatteryStatusChanges;
+- (void)_unregisterForNetworkQualityObservation;
+- (void)_updateBatteryState;
+- (void)_updateObservedNetworkPerformanceForDownload:(unsigned long long)arg1 duration:(double)arg2;
 - (void)dealloc;
-- (BOOL)fullDebuggingEnabled;
-- (void)getPreloadSetCoordinates:(CDStruct_c3b9c2ee *)arg1 maxLength:(unsigned long long)arg2 actualLength:(unsigned long long *)arg3;
+- (void)incrementTileLoadStatistic:(long long)arg1 amount:(unsigned long long)arg2;
 - (id)init;
-- (id)initWithRoute:(id)arg1 auditToken:(id)arg2 loggingEnabled:(BOOL)arg3 minimalDebugging:(BOOL)arg4 fullDebugging:(BOOL)arg5 batteryHandler:(CDUnknownBlockType)arg6;
-- (id)initWithRoute:(id)arg1 loggingEnabled:(BOOL)arg2 minimalDebugging:(BOOL)arg3 fullDebugging:(BOOL)arg4 batteryHandler:(CDUnknownBlockType)arg5;
-- (BOOL)isSufficientlyLoaded;
-- (BOOL)loggingEnabled;
-- (BOOL)minimalDebuggingEnabled;
-- (void)performTearDown;
-- (int)preloadStateForTile:(const struct _GEOTileKey *)arg1;
-- (void)reachabilityChanged:(id)arg1;
-- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
-- (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
-- (void)setTraits:(id)arg1;
+- (id)initWithRoute:(id)arg1 strategies:(id)arg2;
+- (id)initWithRoute:(id)arg1 strategies:(id)arg2 auditToken:(id)arg3;
+- (BOOL)isPluggedIn;
 - (void)start;
 - (void)stop;
-- (void)stopLoading;
 - (void)tearDown;
-- (void)tilesChanged;
+- (void)tileLoader:(id)arg1 failedTileKey:(const struct _GEOTileKey *)arg2 error:(id)arg3 withOptions:(unsigned long long)arg4;
+- (void)tileLoader:(id)arg1 loadedTileKey:(const struct _GEOTileKey *)arg2 fromSource:(long long)arg3 withOptions:(unsigned long long)arg4;
+- (void)updateObservedNetworkPerformanceForDownload:(unsigned long long)arg1 duration:(double)arg2;
+- (void)updateObservedNetworkPerformanceWithServerError;
 - (void)updateWithRouteMatch:(id)arg1;
 
 @end

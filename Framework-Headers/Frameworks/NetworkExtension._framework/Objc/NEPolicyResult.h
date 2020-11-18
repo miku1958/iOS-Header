@@ -13,6 +13,7 @@
 @interface NEPolicyResult : NSObject <NEPrettyDescription>
 {
     unsigned int _skipOrder;
+    unsigned int _passFlags;
     unsigned int _controlUnit;
     unsigned int _serviceData;
     long long _resultType;
@@ -26,6 +27,7 @@
 @property (copy) NSUUID *agentUUID; // @synthesize agentUUID=_agentUUID;
 @property unsigned int controlUnit; // @synthesize controlUnit=_controlUnit;
 @property (copy) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
+@property unsigned int passFlags; // @synthesize passFlags=_passFlags;
 @property long long resultType; // @synthesize resultType=_resultType;
 @property (copy) NSArray *routeRules; // @synthesize routeRules=_routeRules;
 @property long long secondaryResultType; // @synthesize secondaryResultType=_secondaryResultType;
@@ -39,6 +41,7 @@
 + (id)filterWithControlUnit:(unsigned int)arg1;
 + (id)netAgentUUID:(id)arg1;
 + (id)pass;
++ (id)passWithFlags:(unsigned int)arg1;
 + (id)prohibitFilters;
 + (id)routeRules:(id)arg1;
 + (id)scopeSocketToInterfaceName:(id)arg1;

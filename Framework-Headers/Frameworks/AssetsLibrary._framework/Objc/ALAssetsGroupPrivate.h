@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _isValid;
     BOOL _isCloudSharedGroup;
     BOOL _applyHyperionFilter;
-    struct NSObject *_album;
+    NSObject<PLAlbumProtocol> *_album;
     ALAssetsFilter *_assetsFilter;
     unsigned long long _groupType;
     NSMutableDictionary *_propertyValues;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
 - (int)albumFilter;
 - (void)dealloc;
-- (id)initWithAlbum:(struct NSObject *)arg1 library:(id)arg2;
+- (id)initWithAlbum:(id)arg1 library:(id)arg2;
 - (void)libraryDidChange;
 - (void)populateAssets;
 - (void)resetAssets;

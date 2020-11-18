@@ -27,7 +27,7 @@
 - (id)initWithDeviceMaskImage:(id)arg1;
 - (id)initWithDeviceMaskImage:(id)arg1 solidColor:(id)arg2;
 - (void)setLayerParent:(id)arg1;
-- (void)update:(double)arg1 visible:(double)arg2 layer:(id)arg3 renderParams:(CDStruct_d6f6a055)arg4;
+- (void)update:(double)arg1 visibility:(double)arg2 layer:(id)arg3 renderParams:(CDStruct_d6f6a055)arg4;
 
 @end
 

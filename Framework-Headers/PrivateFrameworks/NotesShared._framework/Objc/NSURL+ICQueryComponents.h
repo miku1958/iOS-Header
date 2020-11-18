@@ -26,6 +26,7 @@
 
 + (id)ic_urlFromWeblocFileAtURL:(id)arg1;
 - (id)ic_dedupedURLWithProhibitedNames:(id)arg1;
+- (BOOL)ic_isSafeFileURLForAttachment;
 - (void)ic_updateFlagToExcludeFromCloudBackup:(BOOL)arg1;
 - (id)queryComponents;
 @end

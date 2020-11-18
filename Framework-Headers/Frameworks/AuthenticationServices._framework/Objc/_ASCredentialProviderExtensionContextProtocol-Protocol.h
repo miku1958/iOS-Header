@@ -9,9 +9,9 @@
 @class ASPasswordCredentialIdentity, NSArray;
 
 @protocol _ASCredentialProviderExtensionContextProtocol <NSObject>
-- (void)prepareCredentialListForServiceIdentifiers:(NSArray *)arg1;
+- (void)prepareCredentialListForServiceIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)prepareInterfaceForExtensionConfiguration;
-- (void)prepareInterfaceToProvideCredentialForIdentity:(ASPasswordCredentialIdentity *)arg1;
+- (void)prepareInterfaceToProvideCredentialForIdentity:(ASPasswordCredentialIdentity *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)provideCredentialWithoutUserInteractionForIdentity:(ASPasswordCredentialIdentity *)arg1;
 @end
 

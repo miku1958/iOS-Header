@@ -13,8 +13,9 @@
 @interface ARPersonDetectionTechnique : ARMLImageProcessingTechnique <ARTechniqueBusyState>
 {
     double _lastTimestamp;
-    struct CGSize _imageNetworkSize;
     struct __CVPixelBufferPool *_depthPixelBufferPool;
+    struct CGSize _imageNetworkSize;
+    BOOL _mergeLargelyOverlappingBoxes;
     ARPersonDetectionData *_latestResult;
 }
 
@@ -34,14 +35,12 @@
 - (void)_startMLCreateResultSignpostWithTimestamp:(double)arg1 orientation:(long long)arg2 outputSize:(struct CGSize)arg3;
 - (void)_startMLProcessingSignpostWithTimestamp:(double)arg1;
 - (void)_startMLRunNetworkSignpostWithTimestamp:(double)arg1;
-- (void)changeEspressoConfig:(id)arg1;
 - (id)createResultDataFromTensors:(CDStruct_cf098810 *)arg1 numberOfOutputTensors:(unsigned long long)arg2 imageDataForNeuralNetwork:(id)arg3 inputImageData:(id)arg4 rotationNeeded:(long long)arg5 regionOfInterest:(struct CGSize)arg6;
 - (void)dealloc;
 - (id)init;
 - (BOOL)isLoadedModelVersionCorrect:(id)arg1;
 - (double)requiredTimeInterval;
 - (id)resultDataClasses;
-- (float)sigmoid:(float)arg1;
 
 @end
 

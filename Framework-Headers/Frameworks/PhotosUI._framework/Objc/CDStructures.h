@@ -41,18 +41,6 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
-struct NSArray {
-    Class _field1;
-};
-
-struct NSObject {
-    Class _field1;
-};
-
-struct NSString {
-    Class _field1;
-};
-
 struct PHAssetResourceTableDataSpecification {
     int width;
     int height;
@@ -115,10 +103,6 @@ struct PXGImageRequest {
     unsigned int _field1;
     int _field2;
     void *_field3;
-};
-
-struct PXGItemsLayout {
-    Class _field1;
 };
 
 struct PXGThumbnailRequest {
@@ -243,22 +227,10 @@ struct PXTileState {
     unsigned long long _field14;
 };
 
-struct PXTwoTuple {
-    Class _field1;
-};
-
 struct PXViewSpecDescriptor {
     long long _field1;
     unsigned long long _field2;
     struct CGSize _field3;
-};
-
-struct UICollectionViewCell {
-    Class _field1;
-};
-
-struct UIColor {
-    Class _field1;
 };
 
 struct UIEdgeInsets {
@@ -266,18 +238,6 @@ struct UIEdgeInsets {
     double left;
     double bottom;
     double right;
-};
-
-struct UIFont {
-    Class _field1;
-};
-
-struct UIImage {
-    Class _field1;
-};
-
-struct UISearchToken {
-    Class _field1;
 };
 
 struct _LayoutContext {
@@ -591,6 +551,11 @@ typedef struct {
 
 typedef struct {
     long long _field1;
+    double _field2;
+} CDStruct_7f320dbc;
+
+typedef struct {
+    long long _field1;
     float _field2;
 } CDStruct_fd7332cd;
 
@@ -613,6 +578,13 @@ typedef struct {
     long long _field3;
     double _field4;
 } CDStruct_68723fc0;
+
+typedef struct {
+    long long contentSizeCategory;
+    long long layoutDirection;
+    long long layoutSizeClass;
+    long long layoutOrientation;
+} CDStruct_e6148bb0;
 
 typedef struct {
     long long zoomLevel;
@@ -659,6 +631,11 @@ typedef struct {
     CDStruct_14d5dc5e billboardMatrix;
     float renderOrigin__screenScale;
 } CDStruct_b1513b2e;
+
+typedef struct {
+    CDStruct_719d24f9 center;
+    MISSING_TYPE *size;
+} CDStruct_dfa1459f;
 
 typedef struct {
     CDStruct_719d24f9 _field1;
@@ -760,12 +737,7 @@ typedef struct {
 typedef struct {
     struct CGRect layoutRect;
     BOOL onlyCalculateSize;
-    struct {
-        long long contentSizeCategory;
-        long long layoutDirection;
-        long long layoutSizeClass;
-        long long layoutOrientation;
-    } layoutAttributes;
+    CDStruct_e6148bb0 layoutAttributes;
 } CDStruct_392cfed4;
 
 typedef struct {

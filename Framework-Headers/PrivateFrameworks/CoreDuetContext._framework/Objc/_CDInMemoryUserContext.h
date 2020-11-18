@@ -68,7 +68,7 @@
 - (id)unsafe_remoteDevicesByDeviceIDForRemoteUserContextProxySourceDeviceUUID:(id)arg1;
 - (id)unsafe_remoteDevicesForRemoteUserContextProxySourceDeviceUUID:(id)arg1;
 - (id)unsafe_remoteUserContextProxySourceDeviceUUIDs;
-- (struct NSDictionary *)valuesForKeyPaths:(id)arg1;
+- (id)valuesForKeyPaths:(id)arg1;
 - (id)valuesForKeyPaths:(id)arg1 inContextsMatchingPredicate:(id)arg2;
 
 @end

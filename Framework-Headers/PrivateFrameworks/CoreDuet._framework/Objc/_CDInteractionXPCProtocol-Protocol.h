@@ -29,7 +29,7 @@
 - (void)rankedNameSuggestionsFromContext:(_PSPredictionContext *)arg1 name:(NSString *)arg2 reply:(void (^)(NSArray *))arg3;
 - (void)recordInteractions:(NSArray *)arg1 enforceDataLimits:(BOOL)arg2 enforcePrivacy:(BOOL)arg3 reply:(void (^)(BOOL))arg4;
 - (void)shareExtensionSuggestionsFromContext:(_PSPredictionContext *)arg1 reply:(void (^)(NSArray *))arg2;
-- (void)suggestInteractionsFromContext:(_PSPredictionContext *)arg1 reply:(void (^)(NSArray *, _PSPredictionContext *))arg2;
+- (void)suggestInteractionsFromContext:(_PSPredictionContext *)arg1 maxSuggestions:(NSNumber *)arg2 reply:(void (^)(NSArray *, _PSPredictionContext *))arg3;
 - (void)tuneSocialAdvisorUsingSettings:(_CDInteractionAdvisorSettings *)arg1 heartBeatHandler:(id<_CDInteractionXPCHeartBeatProtocol>)arg2 reply:(void (^)(void))arg3;
 @end
 

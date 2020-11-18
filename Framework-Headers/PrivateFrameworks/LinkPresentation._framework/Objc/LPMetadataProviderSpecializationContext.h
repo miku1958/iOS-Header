@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface LPMetadataProviderSpecializationContext : NSObject
 {
     BOOL _hasLoadedResource;
+    BOOL _shouldFetchSubresources;
     NSURL *_URL;
     NSString *_MIMEType;
     WKWebView *_webView;
@@ -22,10 +23,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) unsigned long long allowedSpecializations; // @synthesize allowedSpecializations=_allowedSpecializations;
 @property (readonly, nonatomic) BOOL hasLoadedResource; // @synthesize hasLoadedResource=_hasLoadedResource;
+@property (readonly, nonatomic) BOOL shouldFetchSubresources; // @synthesize shouldFetchSubresources=_shouldFetchSubresources;
 @property (readonly, strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
-- (id)initWithURL:(id)arg1 MIMEType:(id)arg2 webView:(id)arg3 hasLoadedResource:(BOOL)arg4 allowedSpecializations:(unsigned long long)arg5;
+- (id)initWithURL:(id)arg1 MIMEType:(id)arg2 webView:(id)arg3 hasLoadedResource:(BOOL)arg4 shouldFetchSubresources:(BOOL)arg5 allowedSpecializations:(unsigned long long)arg6;
 
 @end
 

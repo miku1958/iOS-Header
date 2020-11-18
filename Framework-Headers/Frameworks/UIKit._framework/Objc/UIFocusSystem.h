@@ -9,7 +9,7 @@
 #import <UIKitCore/_UIFocusEnvironmentInternal-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
 
-@class NSArray, NSString, UIFocusAnimationCoordinator, UIResponder, UIView, _UIFocusAnimationCoordinatorManager, _UIFocusSoundGenerator, _UIFocusUpdateRequest;
+@class NSArray, NSString, UIFocusAnimationCoordinator, UIResponder, UIView, _UIFocusAnimationCoordinatorManager, _UIFocusGroupHistory, _UIFocusSoundGenerator, _UIFocusUpdateRequest;
 @protocol UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIFocusHapticFeedbackGenerator, _UIFocusRegionContainer, _UIFocusSystemDelegate;
 
 @interface UIFocusSystem : NSObject <_UIFocusEnvironmentInternal, _UIFocusEnvironmentPrivate>
@@ -27,6 +27,7 @@
     } _flags;
     BOOL _enabled;
     id<UIFocusItem> _focusedItem;
+    _UIFocusGroupHistory *_focusGroupHistory;
     _UIFocusAnimationCoordinatorManager *_focusAnimationCoordinatorManager;
     id<_UIFocusSystemDelegate> _delegate;
     id<UIFocusItem> _previousFocusedItem;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (nonatomic, getter=_isEnabled, setter=_setEnabled:) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic, getter=_focusAnimationCoordinatorManager, setter=_setFocusAnimationCoordinatorManager:) _UIFocusAnimationCoordinatorManager *focusAnimationCoordinatorManager; // @synthesize focusAnimationCoordinatorManager=_focusAnimationCoordinatorManager;
+@property (readonly, nonatomic, getter=_focusGroupHistory) _UIFocusGroupHistory *focusGroupHistory; // @synthesize focusGroupHistory=_focusGroupHistory;
 @property (strong, nonatomic, getter=_focusHapticFeedbackGenerator, setter=_setFocusHapticFeedbackGenerator:) id<_UIFocusHapticFeedbackGenerator> focusHapticFeedbackGenerator; // @synthesize focusHapticFeedbackGenerator=_focusHapticFeedbackGenerator;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, weak, nonatomic, getter=_focusMapContainer) id<_UIFocusRegionContainer> focusMapContainer;
@@ -87,8 +89,10 @@
 - (void)_setNeedsFocusRestoration;
 - (BOOL)_shouldRestoreFocusInContext:(id)arg1;
 - (id)_simulatedProgrammaticFocusUpdateToEnvironment:(id)arg1;
+- (void)_uiktest_disableFocusDeferral;
 - (void)_uiktest_setPreviousFocusedItem:(id)arg1;
 - (BOOL)_uiktest_updateFocusToItem:(id)arg1;
+- (BOOL)_updateFocusImmediatelyToEnvironment:(id)arg1;
 - (BOOL)_updateFocusImmediatelyWithContext:(id)arg1;
 - (BOOL)_updateFocusWithContext:(id)arg1 report:(id)arg2;
 - (id)_validatedPendingFocusUpdateRequest;

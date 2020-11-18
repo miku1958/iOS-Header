@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 + (id)sharedSafariDelegate;
 - (void).cxx_destruct;
 - (id)_init;
-- (void)_postAWDMetricForSafariCancellation:(id)arg1;
 - (id)init;
 - (id)safariViewController:(id)arg1 excludedActivityTypesForURL:(id)arg2 title:(id)arg3;
 - (void)safariViewControllerDidFinish:(id)arg1;

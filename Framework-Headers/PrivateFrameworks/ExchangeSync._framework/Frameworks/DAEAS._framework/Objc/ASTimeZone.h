@@ -21,7 +21,6 @@
 + (id)_curTZDataVersion;
 + (BOOL)_dateIsValidTransitionDate:(id)arg1 inYear:(int)arg2 withTimeZone:(id)arg3;
 + (void)_fillOutCurrentTimeZoneInfo;
-+ (BOOL)_loadDataFromDisk;
 + (id)_tzCachePathCreateIfMissing:(BOOL)arg1;
 + (BOOL)acceptsTopLevelLeaves;
 + (BOOL)expectsContent;
@@ -31,7 +30,7 @@
 + (BOOL)parsingLeafNode;
 + (BOOL)parsingWithSubItems;
 - (void).cxx_destruct;
-- (id)_bestGuessAtOlsonTimeZoneForOffsetInMinutes:(int)arg1 firstTransitionDate:(struct _SYSTEMTIME *)arg2 secondTransitionDate:(struct _SYSTEMTIME *)arg3;
+- (id)_bestGuessAtOlsonTimeZoneForOffsetInMinutes:(int)arg1 daylightBiasInMinutes:(int)arg2 standardTransitionDate:(struct _SYSTEMTIME *)arg3 daylightTransitionDate:(struct _SYSTEMTIME *)arg4;
 - (BOOL)_dateIsValidTransitionDate:(id)arg1 inYear:(long long)arg2 outDaylightBias:(long long *)arg3;
 - (struct _SYSTEMTIME)_ruleForDate:(id)arg1;
 - (id)abbreviationForDate:(id)arg1;

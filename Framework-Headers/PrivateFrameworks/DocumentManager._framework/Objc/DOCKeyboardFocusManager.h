@@ -17,6 +17,8 @@
 
 @property (strong) NSPointerArray *allKeyboardFocusable; // @synthesize allKeyboardFocusable=_allKeyboardFocusable;
 
++ (id)directionalKeyCommandsWithAction:(SEL)arg1;
++ (BOOL)isCustomKeyboardFocusEnabled;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (BOOL)_isRegistered:(id)arg1;

@@ -9,6 +9,7 @@
 @class UIInputViewSetPlacement, UIView;
 
 @protocol UIInputViewAnimationHost <NSObject>
+- (UIView *)inputViewSnapshotOfView:(UIView *)arg1 afterScreenUpdates:(BOOL)arg2;
 - (void)setInputViewsHidden:(BOOL)arg1;
 - (void)syncToExistingAnimations;
 - (struct CGRect)transitioningFrame;

@@ -12,7 +12,7 @@
 - (void)addCompletion:(NSString *)arg1 forInput:(NSString *)arg2;
 - (void)bag:(PARSessionConfiguration *)arg1 reply:(void (^)(PARBag *, NSError *))arg2;
 - (void)clearEngagedCompletionsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2;
-- (void)configure:(PARSessionConfiguration *)arg1 reply:(void (^)(NSXPCListenerEndpoint *))arg2;
+- (void)configure:(PARSessionConfiguration *)arg1 reply:(void (^)(void))arg2;
 - (void)fileHandleAndAttributesForResource:(NSString *)arg1 completion:(void (^)(NSFileHandle *, NSDictionary *, NSError *))arg2;
 - (void)fileHandleForWritingFeedbackType:(unsigned long long)arg1 reply:(void (^)(NSFileHandle *, NSError *))arg2;
 - (void)forceFetchBag:(PARSessionConfiguration *)arg1 reply:(void (^)(PARBag *, NSError *))arg2;

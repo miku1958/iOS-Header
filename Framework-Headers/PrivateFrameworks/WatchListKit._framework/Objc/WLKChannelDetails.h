@@ -20,10 +20,6 @@
     BOOL _apSubscription;
     BOOL _shouldTrackPlayActivity;
     BOOL _appInstalled;
-    BOOL _requiresAccountLevelConsent;
-    BOOL _requiresSubscriptionForConsent;
-    BOOL _shouldPromptForConsentOnSubscriptionChange;
-    BOOL _shouldIncludeInConsent;
     NSString *_channelID;
     NSString *_name;
     NSArray *_appAdamIDs;
@@ -59,10 +55,6 @@
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSDictionary *rateLimit; // @synthesize rateLimit=_rateLimit;
-@property (readonly, nonatomic) BOOL requiresAccountLevelConsent; // @synthesize requiresAccountLevelConsent=_requiresAccountLevelConsent;
-@property (readonly, nonatomic) BOOL requiresSubscriptionForConsent; // @synthesize requiresSubscriptionForConsent=_requiresSubscriptionForConsent;
-@property (readonly, nonatomic) BOOL shouldIncludeInConsent; // @synthesize shouldIncludeInConsent=_shouldIncludeInConsent;
-@property (readonly, nonatomic) BOOL shouldPromptForConsentOnSubscriptionChange; // @synthesize shouldPromptForConsentOnSubscriptionChange=_shouldPromptForConsentOnSubscriptionChange;
 @property (readonly, nonatomic) BOOL shouldTrackPlayActivity; // @synthesize shouldTrackPlayActivity=_shouldTrackPlayActivity;
 @property (readonly, nonatomic, getter=isSubscribed) BOOL subscribed; // @synthesize subscribed=_subscribed;
 @property (readonly) Class superclass;

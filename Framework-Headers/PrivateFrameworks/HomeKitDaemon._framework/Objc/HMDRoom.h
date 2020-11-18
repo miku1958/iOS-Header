@@ -60,7 +60,7 @@
 - (id)messageDestination;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
-- (id)url;
+- (id)urlString;
 
 @end
 

@@ -21,7 +21,6 @@
 - (void)publishRemoteChangeEvent:(PLXPCDictionary *)arg1 delayedSaveActionsDetail:(PLDelayedSaveActionsDetail *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)recoverFromCrashIfNeeded;
 - (void)repairSingletonObjectsWithReply:(void (^)(void))arg1;
-- (void)shutdownPhotoLibraryDatabaseWithReply:(void (^)(NSError *))arg1;
 - (void)updateThumbnailsForPhotos:(NSArray *)arg1 assignNewIndex:(BOOL)arg2 forceRefresh:(BOOL)arg3 reply:(void (^)(void))arg4;
 - (NSProgress *)upgradePhotoLibraryDatabaseWithOptions:(unsigned long long)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 @end

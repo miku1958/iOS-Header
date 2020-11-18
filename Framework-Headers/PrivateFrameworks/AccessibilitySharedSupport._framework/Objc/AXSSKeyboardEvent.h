@@ -27,8 +27,11 @@
     BOOL _isFnDown;
     unsigned long long _keyCode;
     NSString *_unicodeCharacter;
+    NSString *_backupUnicodeCharacter;
 }
 
+@property (readonly, nonatomic) AXSSKeyChord *backupKeyChord;
+@property (copy, nonatomic) NSString *backupUnicodeCharacter; // @synthesize backupUnicodeCharacter=_backupUnicodeCharacter;
 @property (nonatomic) BOOL isCapsLockDown; // @synthesize isCapsLockDown=_isCapsLockDown;
 @property (readonly, nonatomic) BOOL isCommandDown;
 @property (readonly, nonatomic) BOOL isControlDown;
@@ -52,6 +55,7 @@
 @property (copy, nonatomic) NSString *unicodeCharacter; // @synthesize unicodeCharacter=_unicodeCharacter;
 
 - (void).cxx_destruct;
+- (id)_keyChordForUnicodeCharacter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 

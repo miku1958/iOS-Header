@@ -59,6 +59,7 @@
 - (void)_userEventOccurred;
 - (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGRect)accessibilityConvertHostedViewFrame:(struct CGRect)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
+- (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
 - (id)allJobLabels;
 - (void)disableAccessibility;

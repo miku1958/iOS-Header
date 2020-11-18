@@ -13,6 +13,11 @@
 	// modify coroutine
 	// method
  }
+ protocol SPShared.DataRepresentable // 2 requirements
+ {
+	// getter
+	// class init
+ }
  protocol SPShared.Cancellable // 1 requirements
  {
 	// method
@@ -39,11 +44,11 @@
  class SPShared.NetworkReachability : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var reachability : SCNetworkReachabilityRef? // +0x10 (0x8)
+	var reachability : SCNetworkReachability // +0x10 (0x8)
 
 	// Swift methods
-	0x51d0  func NetworkReachability.status.getter // getter 
-	0x5410  class func NetworkReachability.__allocating_init() // init 
+	0x4a40  func NetworkReachability.status.getter // getter 
+	0x4c00  class func NetworkReachability.__allocating_init() // init 
  }
 
  class SPShared.UserDefaultsObserver : NSObject /usr/lib/libobjc.A.dylib {
@@ -54,15 +59,15 @@
 	var notify : (_:) // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x7e70  @objc UserDefaultsObserver.dealloc <stripped>
-	0x8150  @objc UserDefaultsObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
-	0x8350  @objc UserDefaultsObserver.init <stripped>
-	0x7ed0  @objc UserDefaultsObserver..cxx_destruct <stripped>
+	0x75c0  @objc UserDefaultsObserver.dealloc <stripped>
+	0x7890  @objc UserDefaultsObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
+	0x7a60  @objc UserDefaultsObserver.init <stripped>
+	0x7610  @objc UserDefaultsObserver..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7b90  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
-	0x7f20  func UserDefaultsObserver.start() // method 
-	0x8000  func UserDefaultsObserver.stop() // method 
+	0x73d0  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
+	0x7660  func UserDefaultsObserver.start() // method 
+	0x7740  func UserDefaultsObserver.stop() // method 
  }
 
  enum SPShared.FutureError {
@@ -85,28 +90,30 @@
 	let block : () // +0x40 (0x10)
 
 	// Swift methods
-	0xbe00  func DispatchTimer.isCancelled.getter // getter 
-	0xbe40  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
-	0xc070  func DispatchTimer.resume() // method 
-	0xc0a0  func DispatchTimer.cancel() // method 
+	0xafc0  func DispatchTimer.isCancelled.getter // getter 
+	0xaff0  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
+	0xb0b0  func DispatchTimer.resume() // method 
+	0xb0e0  func DispatchTimer.cancel() // method 
  }
 
  class SPShared.DarwinNotificationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var helpers : [DarwinNotificationHelper] // +0x10 (0x8)
+	var helpers : DarwinNotificationHelper // +0x10 (0x8)
 
 	// Swift methods
-	0xc8a0  func DarwinNotificationManager.registerHelper(helper:) // method 
-	0xc990  func DarwinNotificationManager.unregisterHelper(helper:) // method 
-	0xcbd0  func DarwinNotificationManager.setUp() // method 
+	0xb9e0  func DarwinNotificationManager.registerHelper(helper:) // method 
+	0xbaa0  func DarwinNotificationManager.unregisterHelper(helper:) // method 
+	0xbc80  func DarwinNotificationManager.setUp() // method 
  }
 
  enum SPShared.Relativity {
 
 	// Properties
-	case rightRelative : (now: Date)
-	case leftRelative : (now: Date)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case rightRelative : CB
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case leftRelative : CB
 	case absolute  
  }
 
@@ -126,7 +133,7 @@
 
 	// Properties
 	let machServiceName : MachServiceName // +0x0
-	let options : NSXPCConnectionOptions // +0x10
+	let options : Options // +0x10
 	let exportedObject : NSObject? // +0x18
 	let exportedInterface : NSXPCInterface? // +0x20
 	let remoteObjectInterface : NSXPCInterface? // +0x28
@@ -174,7 +181,8 @@
 
 	// Properties
 	let subscriber : A
-	let identifier : UUID
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let identifier : C
 	let unsubscribeBlock : Subscription
  }
 
@@ -222,9 +230,12 @@
  struct SPShared.EncryptedData {
 
 	// Properties
-	let initializationVector : Data // +0x0
-	let tag : Data // +0x10
-	let cipherText : Data // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let initializationVector : ‹@ // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tag : ‹@ // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cipherText : ‹@ // +0x20
  }
 
  class SPShared.XPCSession {
@@ -238,8 +249,8 @@
 	let accessQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x24b30  func <stripped> // method 
-	0x24d00  func <stripped> // getter 
+	0x216d0  func <stripped> // method 
+	0x21890  func <stripped> // getter 
  }
 
  class SPShared._ImmediateScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -248,8 +259,8 @@
 
  class SPShared._MainThreadScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
 	// Swift methods
-	0x253c0  func <stripped> // method 
-	0x255c0  func <stripped> // method 
+	0x21c70  func <stripped> // method 
+	0x21e30  func <stripped> // method 
  }
 
  class SPShared._QueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -258,9 +269,9 @@
 	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x25cc0  func <stripped> // method 
-	0x25f10  func <stripped> // method 
-	0x26270  func <stripped> // method 
+	0x224d0  func <stripped> // method 
+	0x226a0  func <stripped> // method 
+	0x228b0  func <stripped> // method 
  }
 
  class SPShared._OperationQueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -269,25 +280,26 @@
 	let queue : NSOperationQueue
 
 	// Swift methods
-	0x26650  func <stripped> // method 
-	0x267c0  func <stripped> // method 
+	0x22bb0  func <stripped> // method 
+	0x22cf0  func <stripped> // method 
  }
 
  enum SPShared.LegacyResult {
 
 	// Properties
 	case success : A
-	case failure : Error
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case failure : ¿J
  }
 
  class SPShared.DarwinNotificationHelper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var notificationHandlers : [CFStringRef : ()] // +0x10 (0x8)
+	var notificationHandlers : CFString // +0x10 (0x8)
 
 	// Swift methods
-	0x27d40  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
-	0x28870  func DarwinNotificationHelper.onNotification(notificationName:) // method 
+	0x242d0  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
+	0x24a60  func DarwinNotificationHelper.onNotification(notificationName:) // method 
  }
 
  enum SPShared.DispatchUtilities { }
@@ -296,13 +308,14 @@
 
 	// Properties
 	let flag : String // +0x10 (0x10)
-	let start : Date // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let start : ·> // +0x0 (0x0)
 	var duration : Double // +0x0 (0x8)
 
 	// Swift methods
-	0x2a9d0  func PerformanceCapture.duration.getter // getter 
-	0x2aa00  class func PerformanceCapture.__allocating_init(flag:) // init 
-	0x2aba0  func PerformanceCapture.finished() // method 
+	0x26eb0  func PerformanceCapture.duration.getter // getter 
+	0x26ee0  class func PerformanceCapture.__allocating_init(flag:) // init 
+	0x27030  func PerformanceCapture.finished() // method 
  }
 
  class SPShared.XPCSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -311,11 +324,11 @@
 	let name : String
 	let serialQueue : OS_dispatch_queue
 	var $__lazy_storage_$_listenerTrampoline : _XPCListenerDelegateTrampoline
-	var listeners : ListenerRecord
+	var listeners : MachServiceName
 
 	// Swift methods
-	0x2b250  class func XPCSessionManager.__allocating_init(name:) // init 
-	0x2b310  func XPCSessionManager.register(service:) // method 
+	0x27660  class func XPCSessionManager.__allocating_init(name:) // init 
+	0x276e0  func XPCSessionManager.register(service:) // method 
  }
 
  class SPShared._XPCListenerDelegateTrampoline : NSObject /usr/lib/libobjc.A.dylib {
@@ -324,9 +337,9 @@
 	var sessionManager : XPCSessionManager
 
 	// ObjC -> Swift bridged methods
-	0x2bf50  @objc _XPCListenerDelegateTrampoline.listener:shouldAcceptNewConnection: <stripped>
-	0x2bff0  @objc _XPCListenerDelegateTrampoline.init <stripped>
-	0x2c070  @objc _XPCListenerDelegateTrampoline..cxx_destruct <stripped>
+	0x280d0  @objc _XPCListenerDelegateTrampoline.listener:shouldAcceptNewConnection: <stripped>
+	0x28160  @objc _XPCListenerDelegateTrampoline.init <stripped>
+	0x281c0  @objc _XPCListenerDelegateTrampoline..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -355,19 +368,26 @@
  struct __C.sockaddr {
 
 	// Properties
-	var sa_len : UInt8
-	var sa_family : UInt8
-	var sa_data : (Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sa_len : ±J
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sa_family : ±J
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sa_data : EJ
  }
 
  struct __C.sockaddr_in {
 
 	// Properties
-	var sin_len : UInt8
-	var sin_family : UInt8
-	var sin_port : UInt16
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sin_len : ±J
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sin_family : ±J
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sin_port : ÃJ
 	var sin_addr : in_addr
-	var sin_zero : (Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sin_zero : WJ
  }
 
  struct __C.DirectoryEnumerationOptions {
@@ -385,5 +405,6 @@
  struct __C.in_addr {
 
 	// Properties
-	var s_addr : UInt32
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var s_addr : ×I
  }

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-
 @interface NSMethodSignature : NSObject
 {
-    CDStruct_b48d777a _frameDescriptor;
-    NSString *_typeString;
+    struct NSMethodFrameDescriptor *_frameDescriptor;
+    char *_typeString;
     unsigned long long _flags;
 }
 
@@ -22,8 +20,10 @@
 
 + (id)signatureWithObjCTypes:(const char *)arg1;
 - (struct NSMethodFrameArgInfo *)_argInfo:(long long)arg1;
+- (const char *)_cTypeString;
 - (Class)_classForObjectAtArgumentIndex:(long long)arg1;
-- (CDStruct_b48d777a *)_frameDescriptor;
+- (unsigned long long)_flags;
+- (struct NSMethodFrameDescriptor *)_frameDescriptor;
 - (BOOL)_isAllObjects;
 - (BOOL)_isHiddenStructRet;
 - (id)_protocolsForObjectAtArgumentIndex:(long long)arg1;

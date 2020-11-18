@@ -226,6 +226,7 @@
 - (void)_updateFloatingDockWindowLevelAssertion;
 - (void)_updateHeaderItemsLabelColor;
 - (void)_updateHomeScreenContentRequirement;
+- (void)_updateHomeScreenCursorInteractions;
 - (void)_updateKeyboardSuppressionAssertion;
 - (void)_updateLayoutForInterfaceOrientation:(long long)arg1;
 - (void)_updateLayoutWithBehaviorMode:(long long)arg1 completion:(CDUnknownBlockType)arg2;

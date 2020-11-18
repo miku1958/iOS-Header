@@ -67,6 +67,7 @@
 + (double)hostTimeToTimeInterval:(unsigned long long)arg1;
 + (BOOL)isCurrentDeviceCompatibleWithNewerVoiceProfileAt:(id)arg1;
 + (BOOL)isCurrentDeviceCompatibleWithVoiceProfileAt:(id)arg1;
++ (BOOL)isIOSDeviceSupportingBargeIn;
 + (BOOL)isRecordContextAutoPrompt:(id)arg1;
 + (BOOL)isRecordContextHearstDoubleTap:(id)arg1;
 + (BOOL)isRecordContextHearstVoiceTrigger:(id)arg1;
@@ -149,7 +150,6 @@
 + (BOOL)supportContinuousVoiceTrigger;
 + (BOOL)supportHearstVoiceTrigger;
 + (BOOL)supportHybridEndpointer;
-+ (BOOL)supportIOSBargeIn;
 + (BOOL)supportJarvisVoiceTrigger;
 + (BOOL)supportKeywordDetector;
 + (BOOL)supportLanguageDetector;

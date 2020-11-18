@@ -12,7 +12,7 @@
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
 #import <ReminderKit/_REMDAChangeTrackableModel-Protocol.h>
 
-@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, REMAccount, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMList, REMObjectID, REMReminderAttachmentContext, REMReminderFlaggedContext, REMReminderStorage, REMReminderSubtaskContext, REMResolutionTokenMap, REMStore, REMUserActivity;
+@class NSArray, NSAttributedString, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMAccount, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMList, REMObjectID, REMReminderAttachmentContext, REMReminderFlaggedContext, REMReminderStorage, REMReminderSubtaskContext, REMResolutionTokenMap, REMStore, REMUserActivity;
 
 @interface REMReminder : NSObject <REMDAChangeTrackableFetchableModel, REMDAChangedModelObjectResult, _REMDAChangeTrackableModel, REMObjectIDProviding, REMExternalSyncMetadataProviding>
 {
@@ -51,6 +51,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long icsDisplayOrder; // @dynamic icsDisplayOrder;
+@property (readonly, nonatomic) NSURL *icsUrl; // @dynamic icsUrl;
 @property (readonly, nonatomic) NSData *importedICSData; // @dynamic importedICSData;
 @property (readonly, nonatomic) BOOL isOverdue; // @dynamic isOverdue;
 @property (readonly, nonatomic) BOOL isRecurrent; // @dynamic isRecurrent;

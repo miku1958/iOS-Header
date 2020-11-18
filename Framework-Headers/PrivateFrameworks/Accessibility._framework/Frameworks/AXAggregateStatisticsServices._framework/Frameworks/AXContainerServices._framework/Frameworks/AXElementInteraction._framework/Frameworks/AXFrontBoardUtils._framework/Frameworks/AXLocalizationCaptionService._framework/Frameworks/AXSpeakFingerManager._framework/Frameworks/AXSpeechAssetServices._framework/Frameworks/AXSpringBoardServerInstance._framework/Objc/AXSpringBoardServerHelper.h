@@ -21,17 +21,17 @@
     NSMutableArray *_notificationObservers;
     AXSpringBoardServerAlertManager *_alertManager;
     UIWindow *_presentationWindow;
-    id<BSInvalidatable> _dimTimerAssertion;
+    id<BSInvalidatable> _presentationWindowFocusAssertion;
     AXAssertion *_disableSystemGesturesAssertionForAlert;
 }
 
 @property (strong, nonatomic) AXSpringBoardServerAlertManager *alertManager; // @synthesize alertManager=_alertManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) id<BSInvalidatable> dimTimerAssertion; // @synthesize dimTimerAssertion=_dimTimerAssertion;
 @property (strong, nonatomic) AXAssertion *disableSystemGesturesAssertionForAlert; // @synthesize disableSystemGesturesAssertionForAlert=_disableSystemGesturesAssertionForAlert;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIWindow *presentationWindow; // @synthesize presentationWindow=_presentationWindow;
+@property (strong, nonatomic) id<BSInvalidatable> presentationWindowFocusAssertion; // @synthesize presentationWindowFocusAssertion=_presentationWindowFocusAssertion;
 @property (readonly, nonatomic) AXSpringBoardServerSideAppManager *sideAppManager;
 @property (readonly) Class superclass;
 
@@ -71,6 +71,7 @@
 - (void)_handleASTMenuFullForInstance:(id)arg1;
 - (void)_handleAlertActionPress:(id)arg1;
 - (void)_handleConfirmRebootDevice;
+- (void)_handleConnectedDevicesRequireAssistiveTouchAlert;
 - (void)_handleDisableBrightnessFiltersAlert:(id)arg1;
 - (void)_handleDisableFKAConfirmation;
 - (void)_handleDisableSwitchControlConfirmation;
@@ -107,6 +108,7 @@
 - (BOOL)canLaunchAsFloatingApplicationForIconView:(id)arg1;
 - (BOOL)canLaunchAsPinnedApplicationForIconView:(id)arg1;
 - (BOOL)canSetDockIconActivationModeForServerInstance:(id)arg1;
+- (BOOL)connectedDevicesRequireAssistiveTouch;
 - (id)coverSheetViewController;
 - (void)dealloc;
 - (void)didFailToFloatAppForSideAppManager:(id)arg1;
@@ -142,6 +144,7 @@
 - (BOOL)isNotificationCenterVisibleWithServerInstance:(id)arg1;
 - (BOOL)isNotificationVisibleWithServerInstance:(id)arg1;
 - (BOOL)isOrientationLockedWithServerInstance:(id)arg1;
+- (BOOL)isPIPWindowVisibleWithServerInstance:(id)arg1;
 - (BOOL)isPasscodeLockVisible;
 - (BOOL)isPasscodeLockVisibleWithServerInstance:(id)arg1;
 - (BOOL)isPasscodeRequiredOnLockWithServerInstance:(id)arg1;
@@ -206,7 +209,6 @@
 - (id)serverInstance:(id)arg1 splashImageForAppWithBundleIdentifier:(id)arg2;
 - (id)serverInstance:(id)arg1 springBoardSystemInfoQuery:(unsigned long long)arg2;
 - (void)setDashBoardSystemGesturesEnabled:(BOOL)arg1 withServerInstance:(id)arg2;
-- (void)setLockScreenDimTimerEnabled:(BOOL)arg1 withServerInstance:(id)arg2;
 - (void)setReachabilityActive:(BOOL)arg1;
 - (void)shortLookViewControllerDidDismiss:(id)arg1;
 - (BOOL)shouldOverrideInterfaceOrientation;
@@ -217,7 +219,6 @@
 - (void)toggleSpotlightWithServerInstance:(id)arg1;
 - (void)unlockDeviceWithServerInstance:(id)arg1;
 - (void)updateFrontMostApplicationWithServerInstance:(id)arg1;
-- (void)userEventOccurredWithServerInstance:(id)arg1;
 - (double)volumeLevelWithServerInstance:(id)arg1;
 - (void)wakeUpDeviceIfNecessaryWithServerInstance:(id)arg1;
 

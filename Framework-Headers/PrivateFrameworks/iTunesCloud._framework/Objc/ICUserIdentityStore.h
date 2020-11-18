@@ -27,21 +27,24 @@
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
-@property (readonly, nonatomic) id<ICUserIdentityStoreBackend> _unsafeBackend; // @synthesize _unsafeBackend=_backend;
+@property (readonly, nonatomic) id<ICUserIdentityStoreBackend> _unsafeBackend;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long identityStoreStyle;
 @property (readonly, nonatomic) ICLocalStoreAccountProperties *localStoreAccountProperties;
 @property (readonly) Class superclass;
 
 + (void)_claimSingleWriterStatus;
 + (id)defaultIdentityStore;
++ (id)nullIdentityStore;
 + (BOOL)supportsSecureCoding;
 + (id)testingIdentityStoreWithDatabasePath:(id)arg1;
 + (id)testingIdentityStoreWithSingleWriterService:(id)arg1;
 - (void).cxx_destruct;
 - (id)DSIDForUserIdentity:(id)arg1 outError:(id *)arg2;
 - (BOOL)_allowsDelegationForUserIdentity:(id)arg1;
+- (void)_assertNonNullIdentityStoreForSelector:(SEL)arg1;
 - (void)_delegateAccountStoreDidChangeNotification:(id)arg1;
 - (void)_dispatchDidChangeNotification:(BOOL)arg1 didDelegateAccountStoreChange:(BOOL)arg2;
 - (id)_dsidForTimestamp:(unsigned long long)arg1 history:(id)arg2;
@@ -78,6 +81,7 @@
 - (void)insertPropertiesForUserIdentity:(id)arg1 andPostAccountChangeNotification:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)insertPropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)insertPropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (void)removeAllDelegateTokensWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeDelegateTokenForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeDelegateTokensExpiringBeforeDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -4,24 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIRootWindow.h>
+#import <UIKit/UIWindow.h>
 
-@interface AXUIWindow : _UIRootWindow
+#import <AccessibilityUIService/AXUIWindowProtocol-Protocol.h>
+
+@interface AXUIWindow : UIWindow <AXUIWindowProtocol>
 {
     BOOL _isHandlingFullScreenPresentation;
+    BOOL _shouldRespondToDarkModeChanges;
 }
 
 @property (nonatomic) BOOL isHandlingFullScreenPresentation; // @synthesize isHandlingFullScreenPresentation=_isHandlingFullScreenPresentation;
+@property (nonatomic) BOOL shouldRespondToDarkModeChanges; // @synthesize shouldRespondToDarkModeChanges=_shouldRespondToDarkModeChanges;
 
 + (BOOL)_isSecure;
 - (id)_accessibilityElementCommunityIdentifier;
 - (BOOL)_accessibilityIsIsolatedWindow;
 - (long long)_interfaceOrientationForSceneSafeAreaInsetsIncludingStatusBar:(BOOL)arg1;
+- (BOOL)_isWindowServerHostingManaged;
 - (id)_layerForCoordinateSpaceConversion;
 - (struct UIEdgeInsets)_normalizedSafeAreaInsets;
 - (BOOL)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (BOOL)_wantsSceneAssociation;
 - (id)accessibilityLabel;
 - (id)description;
+- (BOOL)keepContextInBackground;
 
 @end
 

@@ -6,12 +6,12 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, SFWebViewController, UIViewController, WKBackForwardListItem, WKNavigation, WKNavigationAction, WKNavigationResponse, WKWebView, WKWebViewConfiguration, _SFDialog, _SFDownload, _WKActivatedElementInfo, _WKDownload, _WKFrameHandle;
+@class NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, SFWebViewController, UIViewController, WKBackForwardListItem, WKContextMenuElementInfo, WKNavigation, WKNavigationAction, WKNavigationResponse, WKWebView, WKWebViewConfiguration, _SFDialog, _SFDownload, _WKDownload, _WKFrameHandle;
+@protocol UIContextMenuInteractionCommitAnimating;
 
 @protocol SFWebViewControllerDelegate <NSObject>
 - (unsigned long long)browserPersonaForWebViewController:(SFWebViewController *)arg1;
 - (UIViewController *)presentingViewControllerForWebViewController:(SFWebViewController *)arg1;
-- (void)webViewController:(SFWebViewController *)arg1 commitPreviewedViewController:(UIViewController *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 createWebViewWithConfiguration:(WKWebViewConfiguration *)arg2 forNavigationAction:(WKNavigationAction *)arg3 completionHandler:(void (^)(WKWebView *))arg4;
 - (void)webViewController:(SFWebViewController *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 decisionHandler:(void (^)(long long, WKWebpagePreferences *))arg3;
 - (void)webViewController:(SFWebViewController *)arg1 decidePolicyForNavigationResponse:(WKNavigationResponse *)arg2 decisionHandler:(void (^)(long long))arg3;
@@ -31,9 +31,9 @@
 - (void)webViewController:(SFWebViewController *)arg1 didStartProvisionalNavigation:(WKNavigation *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 mediaCaptureStateDidChange:(unsigned long long)arg2;
 - (long long)webViewController:(SFWebViewController *)arg1 presentationPolicyForDialog:(_SFDialog *)arg2;
-- (UIViewController *)webViewController:(SFWebViewController *)arg1 previewViewControllerForURL:(NSURL *)arg2 defaultActions:(NSArray *)arg3 elementInfo:(_WKActivatedElementInfo *)arg4;
 - (void)webViewController:(SFWebViewController *)arg1 printFrame:(_WKFrameHandle *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 webViewDidClose:(WKWebView *)arg2;
+- (void)webViewController:(SFWebViewController *)arg1 willEndNavigationGestureToBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 willPerformClientRedirectToURL:(NSURL *)arg2 withDelay:(double)arg3;
 - (void)webViewControllerDidCancelClientRedirect:(SFWebViewController *)arg1;
 - (void)webViewControllerDidChangeEstimatedProgress:(SFWebViewController *)arg1;
@@ -50,6 +50,10 @@
 - (void)webViewControllerWillPresentJavaScriptDialog:(SFWebViewController *)arg1;
 
 @optional
+- (void)webViewController:(SFWebViewController *)arg1 contextMenuConfigurationForElement:(WKContextMenuElementInfo *)arg2 completionHandler:(void (^)(UIContextMenuConfiguration *))arg3;
+- (void)webViewController:(SFWebViewController *)arg1 contextMenuDidEndForElement:(WKContextMenuElementInfo *)arg2;
+- (void)webViewController:(SFWebViewController *)arg1 contextMenuForElement:(WKContextMenuElementInfo *)arg2 willCommitWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg3;
+- (void)webViewController:(SFWebViewController *)arg1 contextMenuWillPresentForElement:(WKContextMenuElementInfo *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(long long)arg2 forExtension:(NSString *)arg3 completionHandler:(void (^)(long long))arg4;
 - (void)webViewControllerDidShowSafeBrowsingWarning:(SFWebViewController *)arg1;
 @end

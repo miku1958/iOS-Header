@@ -12,7 +12,7 @@
 #import <EmailDaemon/EMMessageRepositoryInterface-Protocol.h>
 
 @class EDConversationPersistence, EDFetchController, EDMailboxPersistence, EDMailboxPredictionController, EDMessageChangeManager, EDMessagePersistence, EDPersistenceHookRegistry, EDThreadPersistence, EDVIPManager, NSConditionLock, NSHashTable, NSMutableDictionary, NSString;
-@protocol EDRemoteSearchProvider, EMUserProfileProvider, OS_dispatch_queue;
+@protocol EDRemoteSearchProvider, EDResumable, EMUserProfileProvider, OS_dispatch_queue;
 
 @interface EDMessageRepository : NSObject <EDAccountChangeHookResponder, EDThreadQueryHandlerDelegate, EMMessageRepositoryInterface, EFLoggable>
 {
@@ -34,6 +34,7 @@
     EDVIPManager *_vipManager;
     id<EDRemoteSearchProvider> _remoteSearchProvider;
     EDFetchController *_fetchController;
+    id<EDResumable> _observerResumer;
 }
 
 @property (readonly, nonatomic) EDConversationPersistence *conversationPersistence; // @synthesize conversationPersistence=_conversationPersistence;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic) EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
 @property (strong, nonatomic) EDMessageChangeManager *messageChangeManager; // @synthesize messageChangeManager=_messageChangeManager;
 @property (strong, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
+@property (readonly, nonatomic) id<EDResumable> observerResumer; // @synthesize observerResumer=_observerResumer;
 @property (readonly, nonatomic) NSConditionLock *performQueryOnSerializationQueue; // @synthesize performQueryOnSerializationQueue=_performQueryOnSerializationQueue;
 @property (strong, nonatomic) NSMutableDictionary *queryHandlers; // @synthesize queryHandlers=_queryHandlers;
 @property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
@@ -84,7 +86,7 @@
 - (void)cancelAllHandlers;
 - (void)dealloc;
 - (void)getCachedMetadataJSONForKey:(id)arg1 messageID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithMessagePersistence:(id)arg1 conversationPersistence:(id)arg2 threadPersistence:(id)arg3 messageChangeManager:(id)arg4 hookRegistry:(id)arg5 mailboxPersistence:(id)arg6 remoteSearchProvider:(id)arg7 userProfileProvider:(id)arg8 vipManager:(id)arg9 fetchController:(id)arg10;
+- (id)initWithMessagePersistence:(id)arg1 conversationPersistence:(id)arg2 threadPersistence:(id)arg3 messageChangeManager:(id)arg4 hookRegistry:(id)arg5 mailboxPersistence:(id)arg6 remoteSearchProvider:(id)arg7 userProfileProvider:(id)arg8 vipManager:(id)arg9 fetchController:(id)arg10 observerResumer:(id)arg11;
 - (void)loadOlderMessagesForMailboxes:(id)arg1;
 - (id)mailboxPredictionController;
 - (void)messageListItemsForObjectIDs:(id)arg1 requestID:(unsigned long long)arg2 observationIdentifier:(id)arg3 loadSummaryForAdditionalObjectIDs:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

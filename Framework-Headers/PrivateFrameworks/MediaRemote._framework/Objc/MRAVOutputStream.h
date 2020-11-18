@@ -31,7 +31,7 @@
 - (id)initToBuffer:(char *)arg1 capacity:(unsigned long long)arg2;
 - (id)initToMemory;
 - (id)initWithCommunicationChannel:(id)arg1;
-- (id)initWithOutputContext:(id)arg1 connectionType:(long long)arg2;
+- (id)initWithOutputContext:(id)arg1 connectionType:(long long)arg2 error:(id *)arg3;
 - (id)initWithURL:(id)arg1 append:(BOOL)arg2;
 - (long long)write:(const char *)arg1 maxLength:(unsigned long long)arg2;
 

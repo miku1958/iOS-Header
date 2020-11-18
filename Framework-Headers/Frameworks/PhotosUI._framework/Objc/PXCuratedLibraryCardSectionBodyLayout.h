@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXGGradientSource-Protocol.h>
 #import <PhotosUICore/PXGSolidColorSource-Protocol.h>
 
-@class NSString, PXAssetsDataSource, PXCuratedLibraryCardSectionBodyLayoutSpec, PXCuratedLibrarySectionGeometryDescriptor, PXGLayoutGuide;
+@class NSIndexSet, NSString, PXAssetsDataSource, PXCuratedLibraryCardSectionBodyLayoutSpec, PXCuratedLibrarySectionGeometryDescriptor, PXGLayoutGuide;
 @protocol PXDisplayAsset, PXDisplayAssetFetchResult;
 
 @interface PXCuratedLibraryCardSectionBodyLayout : PXGLayout <PXGGradientSource, PXGDisplayAssetSource, PXGSolidColorSource>
@@ -20,6 +20,7 @@
     CDStruct_d97c9657 _updateFlags;
     struct _PXGSpriteIndexRange _assetSpriteIndexRange;
     struct _PXGSpriteIndexRange _skimmingHintSpriteIndexRange;
+    NSIndexSet *_axSpriteIndexes;
     BOOL _isSkimming;
     long long _section;
     PXAssetsDataSource *_dataSource;
@@ -54,7 +55,9 @@
 - (void)_updateSkimmingHintWithAssetFrame:(struct CGRect)arg1;
 - (void)_updateSprites;
 - (void)applySpriteChangeDetails:(id)arg1 countAfterChanges:(unsigned int)arg2 initialState:(CDUnknownBlockType)arg3 modifyState:(CDUnknownBlockType)arg4;
-- (struct UIColor *)colorAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
+- (id)axSpriteIndexes;
+- (id)axSpriteIndexesInRect:(struct CGRect)arg1;
+- (id)colorAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (unsigned long long)desiredPlaceholderStyleInLayout:(id)arg1;
 - (id)displayAssetFetchResultForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;
 - (id)displayAssetRequestObserverForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 inLayout:(id)arg2;

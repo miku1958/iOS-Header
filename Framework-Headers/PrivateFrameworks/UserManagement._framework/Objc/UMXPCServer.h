@@ -32,6 +32,8 @@ __attribute__((visibility("hidden")))
     NSData *_contextData;
     NSDictionary *_preferencesDict;
     NSDictionary *_personaProfileDict;
+    NSDictionary *_provisionDict;
+    CDUnknownBlockType _provisionCompletionHandler;
     CDUnknownBlockType _registrationCompletionHandler;
     CDUnknownBlockType _switchCompletionHandler;
     CDUnknownBlockType _suspendQuotasCompletionHandler;
@@ -74,6 +76,8 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id personaStakeholder; // @synthesize personaStakeholder=_personaStakeholder;
 @property (weak, nonatomic) id personaUpdateCallbackStakeholder; // @synthesize personaUpdateCallbackStakeholder=_personaUpdateCallbackStakeholder;
 @property (strong, nonatomic) NSDictionary *preferencesDict; // @synthesize preferencesDict=_preferencesDict;
+@property (copy, nonatomic) CDUnknownBlockType provisionCompletionHandler; // @synthesize provisionCompletionHandler=_provisionCompletionHandler;
+@property (strong, nonatomic) NSDictionary *provisionDict; // @synthesize provisionDict=_provisionDict;
 @property (copy, nonatomic) CDUnknownBlockType registrationCompletionHandler; // @synthesize registrationCompletionHandler=_registrationCompletionHandler;
 @property (weak, nonatomic) id stakeholder; // @synthesize stakeholder=_stakeholder;
 @property (nonatomic) unsigned long long stakeholderType; // @synthesize stakeholderType=_stakeholderType;
@@ -147,6 +151,7 @@ __attribute__((visibility("hidden")))
 - (void)resumeSync;
 - (void)setBundlesIdentifiers:(id)arg1 forUniquePersona:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setMultiPersonaBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setupUMUserSessionProvisioning:(id)arg1 WithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)suspendQuotasWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)switchToLoginUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)switchToLoginUserWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -49,12 +49,10 @@
 + (unsigned long long)_electrocardiogramSupportedStateForDeviceRegion:(id)arg1;
 + (BOOL)_isAtrialFibrillationDetectionDisabledWithDataSource:(id)arg1;
 + (BOOL)_isAtrialFibrillationDetectionSupportedOnPhone:(id)arg1;
-+ (BOOL)_isDeviceRunningSeed:(id)arg1;
 + (BOOL)_isElectrocardiogramDisabledWithDataSource:(id)arg1;
 + (BOOL)_isElectrocardiogramSupportedOnPhone:(id)arg1;
 + (BOOL)_isElectrocardiogramSupportedOnPhone:(id)arg1 geolocatedCountryCode:(id)arg2;
 + (BOOL)_isElectrocardiogramSupportedOniOSDevice:(id)arg1 geolocatedCountryCode:(id)arg2;
-+ (BOOL)_isRunningSeed;
 + (id)activePairedDevice;
 + (BOOL)atrialFibrillationDetectionSupportedForDevice:(id)arg1;
 + (unsigned long long)atrialFibrillationDetectionSupportedState;
@@ -63,7 +61,8 @@
 + (long long)currentAtrialFibrillationDetectionOnboardingVersion;
 + (id)currentDeviceRegionCode;
 + (long long)currentElectrocardiogramOnboardingVersion;
-+ (id)electrocardiogramAppBundleID;
++ (Class)deviceRegionFeatureSupportedStateProviderForCompanionDevice:(id)arg1;
++ (Class)deviceRegionFeatureSupportedStateProviderForCurrentWatchOSDevice;
 + (BOOL)electrocardiogramSupportedForDevice:(id)arg1;
 + (unsigned long long)electrocardiogramSupportedState;
 + (unsigned long long)electrocardiogramSupportedStateForActiveWatch;
@@ -77,8 +76,11 @@
 + (BOOL)isAtrialFibrillationDetectionStateSupportedOrNeedsGeolocationOnAnyWatch;
 + (BOOL)isAtrialFibrillationDetectionStateSupportedOrNeedsGeolocationOnWatch:(id)arg1;
 + (BOOL)isAtrialFibrillationDetectionSupportedOnPairedPhone;
-+ (BOOL)isDeviceSeries3OrOlder:(id)arg1;
-+ (BOOL)isDeviceSeries4:(id)arg1;
++ (BOOL)isAtrialFibrillationDetectionSupportedOrNeedsGeolocation;
++ (BOOL)isAtrialFibrillationSupportedForOnboardingCountryCodeAndWatchOSVersion:(id)arg1;
++ (BOOL)isCompanionRegionCheckEnabledForActiveWatch;
++ (BOOL)isCompanionRegionCheckEnabledForDevice:(id)arg1;
++ (BOOL)isCompanionRegionCheckEnabledOnPairedPhone;
 + (BOOL)isElectrocardiogramAppDeletableForActiveWatch;
 + (BOOL)isElectrocardiogramSupportedOnActiveWatch;
 + (BOOL)isElectrocardiogramSupportedOnAllWatches;
@@ -117,6 +119,11 @@
 - (void)isAtrialFibrillationDetectionOnboardingAvailableInCurrentLocation:(CDUnknownBlockType)arg1;
 - (void)isAtrialFibrillationDetectionOnboardingAvailableInCurrentLocationForActiveWatch:(CDUnknownBlockType)arg1;
 - (void)isAtrialFibrillationDetectionOnboardingAvailableInCurrentLocationForWatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)isAtrialFibrillationDetectionStateSupportedForOnboardingCountryCode:(id)arg1 onWatch:(id)arg2;
+- (BOOL)isAtrialFibrillationDetectionStateSupportedOnActiveWatchForOnboardingCountryCode:(id)arg1;
+- (BOOL)isAtrialFibrillationDetectionStateSupportedOnAnyWatchForOnboardingCountry:(id)arg1;
+- (BOOL)isElectrocardiogramAvailableForOnboardingCountryCode:(id)arg1;
+- (BOOL)isElectrocardiogramAvailableOnWatch:(id)arg1 countryCode:(id)arg2;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocation:(CDUnknownBlockType)arg1;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocationForActiveWatch:(CDUnknownBlockType)arg1;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocationForWatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -127,6 +134,7 @@
 - (void)removeHeartRhythmAvailabilityObserver:(id)arg1;
 - (void)resetAtrialFibrillationDetectionOnboarding;
 - (void)resetElectrocardiogramOnboarding;
+- (void)setAllowInstallingElectrocardiogramWatchApp:(BOOL)arg1;
 - (void)setAtrialFibrillationDetectionOnboardingCompletedForCountryCode:(id)arg1;
 - (void)setElectrocardiogramFirstOnboardingCompletedDate:(id)arg1;
 - (void)setElectrocardiogramOnboardingCompleted;

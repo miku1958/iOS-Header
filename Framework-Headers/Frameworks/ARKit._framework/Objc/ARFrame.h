@@ -9,26 +9,26 @@
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARBody2D, ARCamera, ARFaceData, ARFrameTimingData, ARLightEstimate, ARPointCloud, ARRawSceneUnderstandingData, ARVideoFormat, ARWorldTrackingErrorData, ARWorldTrackingState, AVDepthData, MISSING_TYPE, NSArray, NSDate, NSDictionary;
+@class ARBody2D, ARCamera, ARFaceData, ARFrameTimingData, ARLightEstimate, ARLineCloud, ARPointCloud, ARRawSceneUnderstandingData, ARVideoFormat, ARWorldTrackingErrorData, ARWorldTrackingState, AVDepthData, MISSING_TYPE, NSArray, NSDate;
 @protocol MTLTexture;
 
 @interface ARFrame : NSObject <NSSecureCoding, NSCopying>
 {
     unsigned long long _transformFlags;
-    BOOL _predicted;
     BOOL _shouldRestrictFrameRate;
     float _cameraGrainIntensity;
     float _imageNoiseIntensity;
     struct __CVBuffer *_segmentationBuffer;
-    struct __CVBuffer *_estimatedDepthData;
     struct __CVBuffer *_capturedImage;
     id<MTLTexture> _cameraGrainTexture;
     double _timestamp;
+    AVDepthData *_capturedDepthData;
     double _capturedDepthDataTimestamp;
     ARCamera *_camera;
     NSArray *_anchors;
     ARLightEstimate *_lightEstimate;
     long long _worldMappingStatus;
+    struct __CVBuffer *_estimatedDepthData;
     double _currentCaptureTimestamp;
     ARPointCloud *_featurePoints;
     ARPointCloud *_referenceFeaturePoints;
@@ -36,17 +36,18 @@
     long long _worldAlignment;
     ARFrameTimingData *_timingData;
     ARWorldTrackingErrorData *_worldTrackingErrorData;
-    NSDictionary *_worldTrackingStateDetails;
+    ARLineCloud *_worldTrackingLineCloud;
     ARWorldTrackingState *_worldTrackingState;
     long long _renderFramesPerSecond;
     NSDate *_captureDate;
     ARRawSceneUnderstandingData *_rawSceneUnderstandingData;
     double _estimatedLuminance;
+    NSArray *_resultDatas;
+    long long _deviceOrientation;
     struct __CVBuffer *_downSampledMattingPixelBuffer;
     struct __CVBuffer *_mattingScaleImagePixelBuffer;
     NSArray *_detectedBodies;
     ARFaceData *_faceData;
-    AVDepthData *_capturedDepthData;
     ARVideoFormat *_currentlyActiveVideoFormat;
     id<MTLTexture> _imageNoiseTexture;
     CDStruct_14d5dc5e _referenceOriginTransform;
@@ -68,6 +69,7 @@
 @property (strong, nonatomic) ARVideoFormat *currentlyActiveVideoFormat; // @synthesize currentlyActiveVideoFormat=_currentlyActiveVideoFormat;
 @property (copy, nonatomic) NSArray *detectedBodies; // @synthesize detectedBodies=_detectedBodies;
 @property (readonly, nonatomic) ARBody2D *detectedBody;
+@property (nonatomic) long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
 @property (nonatomic) struct __CVBuffer *downSampledMattingPixelBuffer; // @synthesize downSampledMattingPixelBuffer=_downSampledMattingPixelBuffer;
 @property (nonatomic) struct __CVBuffer *estimatedDepthData; // @synthesize estimatedDepthData=_estimatedDepthData;
 @property (nonatomic) double estimatedLuminance; // @synthesize estimatedLuminance=_estimatedLuminance;
@@ -77,13 +79,13 @@
 @property (strong, nonatomic) id<MTLTexture> imageNoiseTexture; // @synthesize imageNoiseTexture=_imageNoiseTexture;
 @property (strong, nonatomic) ARLightEstimate *lightEstimate; // @synthesize lightEstimate=_lightEstimate;
 @property (nonatomic) struct __CVBuffer *mattingScaleImagePixelBuffer; // @synthesize mattingScaleImagePixelBuffer=_mattingScaleImagePixelBuffer;
-@property (readonly, nonatomic, getter=isPredicted) BOOL predicted; // @synthesize predicted=_predicted;
 @property (readonly, nonatomic) ARPointCloud *rawFeaturePoints;
 @property (strong, nonatomic) ARRawSceneUnderstandingData *rawSceneUnderstandingData; // @synthesize rawSceneUnderstandingData=_rawSceneUnderstandingData;
 @property (strong, nonatomic) ARPointCloud *referenceFeaturePoints; // @synthesize referenceFeaturePoints=_referenceFeaturePoints;
 @property (nonatomic) CDStruct_14d5dc5e referenceOriginDelta; // @synthesize referenceOriginDelta=_referenceOriginDelta;
 @property (nonatomic) CDStruct_14d5dc5e referenceOriginTransform; // @synthesize referenceOriginTransform=_referenceOriginTransform;
 @property (nonatomic) long long renderFramesPerSecond; // @synthesize renderFramesPerSecond=_renderFramesPerSecond;
+@property (copy, nonatomic) NSArray *resultDatas; // @synthesize resultDatas=_resultDatas;
 @property (nonatomic) struct __CVBuffer *segmentationBuffer; // @synthesize segmentationBuffer=_segmentationBuffer;
 @property (nonatomic) CDStruct_14d5dc5e sessionOriginTransform; // @synthesize sessionOriginTransform=_sessionOriginTransform;
 @property (nonatomic) BOOL shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
@@ -93,8 +95,8 @@
 @property (nonatomic) CDStruct_14d5dc5e worldAlignmentTransform; // @synthesize worldAlignmentTransform=_worldAlignmentTransform;
 @property (nonatomic) long long worldMappingStatus; // @synthesize worldMappingStatus=_worldMappingStatus;
 @property (strong, nonatomic) ARWorldTrackingErrorData *worldTrackingErrorData; // @synthesize worldTrackingErrorData=_worldTrackingErrorData;
+@property (strong, nonatomic) ARLineCloud *worldTrackingLineCloud; // @synthesize worldTrackingLineCloud=_worldTrackingLineCloud;
 @property (strong, nonatomic) ARWorldTrackingState *worldTrackingState; // @synthesize worldTrackingState=_worldTrackingState;
-@property (copy, nonatomic) NSDictionary *worldTrackingStateDetails; // @synthesize worldTrackingStateDetails=_worldTrackingStateDetails;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -125,6 +127,7 @@
 - (void)setReferenceOriginChanged:(BOOL)arg1;
 - (void)setReferenceOriginTransformUpdated:(BOOL)arg1;
 - (MISSING_TYPE *)transformPointToNDCSpace:(struct CGPoint)arg1;
+- (BOOL)useHittestRaycasting;
 - (BOOL)worldAlignmentTransformAvailable;
 
 @end

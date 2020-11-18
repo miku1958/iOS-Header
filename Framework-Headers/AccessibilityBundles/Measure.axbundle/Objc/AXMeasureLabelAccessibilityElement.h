@@ -18,7 +18,7 @@
 @property (weak, nonatomic) id labelRender; // @synthesize labelRender=_labelRender;
 
 - (void).cxx_destruct;
-- (struct CGRect)accessibilityFrame;
+- (struct CGRect)accessibilityFrameInContainerSpace;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

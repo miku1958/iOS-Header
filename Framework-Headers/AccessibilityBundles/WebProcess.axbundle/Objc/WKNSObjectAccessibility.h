@@ -13,6 +13,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFirstElementForFocusForRemoteElement;
+- (BOOL)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1;
 - (BOOL)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 toElementMatchingQuery:(id)arg2;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (BOOL)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;

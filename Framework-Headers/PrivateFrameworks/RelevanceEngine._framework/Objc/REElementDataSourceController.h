@@ -72,6 +72,7 @@
 - (void)_handleDeviceLockStateChange:(id)arg1;
 - (void)_handleSignifiantTimeChange:(id)arg1;
 - (id)_initWithRelevanceEngine:(id)arg1 dataSourceClass:(Class)arg2 dataSource:(id)arg3;
+- (BOOL)_isWhitelisted;
 - (void)_loadLoggingHeader;
 - (void)_namespaceElementIdentifier:(id)arg1 section:(id)arg2;
 - (void)_performOrEnqueueUpdateBlock:(CDUnknownBlockType)arg1;

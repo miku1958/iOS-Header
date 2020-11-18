@@ -21,6 +21,7 @@
     BOOL _hasLoadedAllMessages;
     BOOL _isReportedAsSpam;
     BOOL _wasKnownSender;
+    BOOL _hasSetWasKnownSender;
     BOOL _holdWasKnownSenderUpdates;
     int _wasDetectedAsSMSSpam;
     int _wasDetectedAsiMessageSpam;
@@ -50,6 +51,7 @@
 @property (readonly, nonatomic) NSArray *handles; // @dynamic handles;
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (nonatomic) BOOL hasLoadedAllMessages; // @synthesize hasLoadedAllMessages=_hasLoadedAllMessages;
+@property (nonatomic) BOOL hasSetWasKnownSender; // @synthesize hasSetWasKnownSender=_hasSetWasKnownSender;
 @property (readonly, nonatomic) BOOL hasUnreadMessages; // @dynamic hasUnreadMessages;
 @property (nonatomic) BOOL holdWasKnownSenderUpdates; // @synthesize holdWasKnownSenderUpdates=_holdWasKnownSenderUpdates;
 @property (nonatomic, getter=isIgnoringTypingUpdates) BOOL ignoringTypingUpdates; // @dynamic ignoringTypingUpdates;
@@ -135,6 +137,7 @@
 - (BOOL)_sms_canSendToRecipients:(id)arg1 alertIfUnable:(BOOL)arg2;
 - (BOOL)_sms_supportsCharacterCountForAddresses:(id)arg1;
 - (BOOL)_sms_willSendMMSByDefaultForAddresses:(id)arg1;
+- (BOOL)_unknownFilteringEnabled;
 - (void)acceptTransfer:(id)arg1;
 - (void)addRecipientHandles:(id)arg1;
 - (BOOL)canAcceptMediaObjectType:(int)arg1 givenMediaObjects:(id)arg2;
@@ -143,6 +146,7 @@
 - (BOOL)canSendToRecipients:(id)arg1 alertIfUnable:(BOOL)arg2;
 - (void)clearConversationLoadFromSpotlight;
 - (long long)compareBySequenceNumberAndDateDescending:(id)arg1;
+- (id)contactNameByHandle;
 - (BOOL)containsHandleWithUID:(id)arg1;
 - (id)copyForPendingConversation;
 - (id)date;

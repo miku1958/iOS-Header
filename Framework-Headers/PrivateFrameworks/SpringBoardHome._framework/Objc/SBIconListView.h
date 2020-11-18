@@ -7,12 +7,13 @@
 #import <UIKit/UIView.h>
 
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
+#import <SpringBoardHome/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoardHome/SBIconListModelObserver-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, SBFolderIconImageCache, SBHIconImageCache, SBIconListModel, SBIconListViewDraggingDestinationDelegate, SBIconListViewIconLocationTransitionHandler, _UILegibilitySettings;
+@class NSArray, NSMapTable, NSMutableArray, NSString, SBFolderIconImageCache, SBHIconImageCache, SBHIconSettings, SBIconListModel, SBIconListViewDraggingDestinationDelegate, SBIconListViewIconLocationTransitionHandler, _UILegibilitySettings;
 @protocol SBIconListLayout, SBIconListLayoutDelegate, SBIconListLayoutProvider, SBIconListViewDragDelegate, SBIconViewProviding;
 
-@interface SBIconListView : UIView <SBIconListModelObserver, BSDescriptionProviding>
+@interface SBIconListView : UIView <PTSettingsKeyObserver, SBIconListModelObserver, BSDescriptionProviding>
 {
     NSMutableArray *_removedIcons;
     BOOL _needsLayout;
@@ -26,6 +27,10 @@
     SBIconListViewDraggingDestinationDelegate *_draggingDelegate;
     struct __CFRunLoopObserver *_layoutRunLoopObserver;
     unsigned long long _predictedIconViewCount;
+    double _desiredLaserPaddingX;
+    double _desiredLaserPaddingY;
+    BOOL _laserPadUsesAllAvailableSpace;
+    SBHIconSettings *_iconSettings;
     BOOL _editing;
     BOOL _layoutReversed;
     BOOL _pausesIconsForScrolling;
@@ -108,6 +113,7 @@
 + (long long)rotationAnchor;
 - (void).cxx_destruct;
 - (BOOL)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
+- (void)_applyIconPaddingSettings;
 - (BOOL)_iconIsGapAdjacentAtIndex:(unsigned long long)arg1;
 - (void)_setupLayoutRunLoopObserver;
 - (void)_teardownLayoutRunloopObserverIfNeeded;
@@ -129,6 +135,7 @@
 - (struct SBIconCoordinate)coordinateAtPoint:(struct CGPoint)arg1;
 - (struct SBIconCoordinate)coordinateForIcon:(id)arg1;
 - (struct SBIconCoordinate)coordinateForIconAtIndex:(unsigned long long)arg1;
+- (struct UIEdgeInsets)cursorHitTestingInsetsForIconSpacing:(struct CGSize)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -191,6 +198,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setIconsLabelAlpha:(double)arg1;
 - (void)setIconsNeedLayout;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (BOOL)shouldReparentView:(id)arg1;
 - (void)showAllIcons;
 - (id)succinctDescription;

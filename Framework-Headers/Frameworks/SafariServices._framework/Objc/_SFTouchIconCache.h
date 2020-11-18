@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSTouchIconCache.h>
+#import <SafariSharedUI/WBSTouchIconCache.h>
 
 __attribute__((visibility("hidden")))
 @interface _SFTouchIconCache : WBSTouchIconCache

@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityBannerIsSticky;
+- (BOOL)_accessibilityIsBannerNotificationElement;
+- (BOOL)_accessibilityResetBannerTimer;
 - (BOOL)_axDismiss;
 - (BOOL)_axDismissAction:(id)arg1;
 - (BOOL)_axIsGrouped;

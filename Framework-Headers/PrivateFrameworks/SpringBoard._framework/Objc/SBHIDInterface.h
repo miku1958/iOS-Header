@@ -37,6 +37,7 @@
 - (void)reevaluateHIDLockAssertionsForSource:(long long)arg1;
 - (void)removeHIDLockAssertion:(id)arg1 source:(long long)arg2;
 - (void)resetProximityCalibration;
+- (id)suspendMultitouchForSource:(long long)arg1 reason:(id)arg2;
 - (id)suspendProximityDetectionAndMultitouchForSource:(long long)arg1 disableTapToWake:(BOOL)arg2 reason:(id)arg3;
 - (id)suspendProximityDetectionForSource:(long long)arg1 reason:(id)arg2;
 

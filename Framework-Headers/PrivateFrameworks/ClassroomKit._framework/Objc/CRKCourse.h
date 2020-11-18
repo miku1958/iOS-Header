@@ -29,6 +29,7 @@
     NSSet *_validTrustedCertificatePersistentIds;
 }
 
+@property (readonly, nonatomic) BOOL allowsUnenroll;
 @property (strong, nonatomic) NSDate *automaticRemovalDate; // @synthesize automaticRemovalDate=_automaticRemovalDate;
 @property (nonatomic) unsigned long long courseColorType; // @synthesize courseColorType=_courseColorType;
 @property (copy, nonatomic) NSString *courseDescription; // @synthesize courseDescription=_courseDescription;

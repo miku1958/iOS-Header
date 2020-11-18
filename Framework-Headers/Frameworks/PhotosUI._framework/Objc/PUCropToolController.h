@@ -14,7 +14,7 @@
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class CEKBadgeTextView, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PFCoalescer, PFSerialQueue, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUCropVideoScrubberView, PUEditActionActivity, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
+@class CEKBadgeTextView, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PFCoalescer, PFSerialQueue, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUCropVideoScrubberView, PUEditActionActivity, PXUIButton, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -49,11 +49,11 @@ __attribute__((visibility("hidden")))
     PUAdjustmentsViewController *_adjustmentsViewController;
     UIView *_containerView;
     UIView *_adjustmentPickerView;
-    UIButton *__autoButton;
+    PXUIButton *__autoButton;
     long long _autoButtonMode;
-    UIButton *__rotateButton;
-    UIButton *__flipButton;
-    UIButton *__aspectButton;
+    PXUIButton *__rotateButton;
+    PXUIButton *__flipButton;
+    PXUIButton *__aspectButton;
     UIButton *__perspectiveButton;
     PUEditActionActivity *_overcaptureSourceToggleActivity;
     PUCropPerspectiveView *__cropView;
@@ -107,8 +107,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=_isActiveTool, setter=_setActiveTool:) BOOL _activeTool; // @synthesize _activeTool=__activeTool;
 @property (strong, nonatomic, setter=_setAnimationTargetsByKeyPath:) NSMutableDictionary *_animationTargetsByKeyPath; // @synthesize _animationTargetsByKeyPath=__animationTargetsByKeyPath;
 @property (strong, nonatomic, setter=_setAnimationsByKeyPath:) NSMutableDictionary *_animationsByKeyPath; // @synthesize _animationsByKeyPath=__animationsByKeyPath;
-@property (strong, nonatomic, setter=_setAspectButton:) UIButton *_aspectButton; // @synthesize _aspectButton=__aspectButton;
-@property (strong, nonatomic, setter=_setAutoButton:) UIButton *_autoButton; // @synthesize _autoButton=__autoButton;
+@property (strong, nonatomic, setter=_setAspectButton:) PXUIButton *_aspectButton; // @synthesize _aspectButton=__aspectButton;
+@property (strong, nonatomic, setter=_setAutoButton:) PXUIButton *_autoButton; // @synthesize _autoButton=__autoButton;
 @property (nonatomic, setter=_setContentViewsHidden:) BOOL _contentViewsHidden; // @synthesize _contentViewsHidden=__contentViewsHidden;
 @property (nonatomic, setter=_setContentViewsHiddenAnimationCount:) unsigned long long _contentViewsHiddenAnimationCount; // @synthesize _contentViewsHiddenAnimationCount=__contentViewsHiddenAnimationCount;
 @property (strong, nonatomic, setter=_setCropAspect:) PUCropAspect *_cropAspect; // @synthesize _cropAspect=__cropAspect;
@@ -119,7 +119,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setCropView:) PUCropPerspectiveView *_cropView; // @synthesize _cropView=__cropView;
 @property (nonatomic, setter=_setCropViewFrameForLastModelLoad:) struct CGRect _cropViewFrameForLastModelLoad; // @synthesize _cropViewFrameForLastModelLoad=__cropViewFrameForLastModelLoad;
 @property (strong, nonatomic, setter=_setFileSystemQueue:) NSObject<OS_dispatch_queue> *_fileSystemQueue; // @synthesize _fileSystemQueue=__fileSystemQueue;
-@property (strong, nonatomic, setter=_setFlipButton:) UIButton *_flipButton; // @synthesize _flipButton=__flipButton;
+@property (strong, nonatomic, setter=_setFlipButton:) PXUIButton *_flipButton; // @synthesize _flipButton=__flipButton;
 @property (strong, nonatomic, setter=_setGeometry:) PLImageGeometry *_geometry; // @synthesize _geometry=__geometry;
 @property (nonatomic, setter=_setGridVisible:) BOOL _gridVisible; // @synthesize _gridVisible=__gridVisible;
 @property (nonatomic, setter=_setHasAppliedCropSuggestion:) BOOL _hasAppliedCropSuggestion; // @synthesize _hasAppliedCropSuggestion=__hasAppliedCropSuggestion;
@@ -142,7 +142,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setPitchAngle:) double _pitchAngle; // @synthesize _pitchAngle=__pitchAngle;
 @property (nonatomic, setter=_setPreviewViewInsets:) struct UIEdgeInsets _previewViewInsets; // @synthesize _previewViewInsets=__previewViewInsets;
 @property (strong, nonatomic, setter=_setRenderer:) PLPhotoEditRenderer *_renderer; // @synthesize _renderer=__renderer;
-@property (strong, nonatomic, setter=_setRotateButton:) UIButton *_rotateButton; // @synthesize _rotateButton=__rotateButton;
+@property (strong, nonatomic, setter=_setRotateButton:) PXUIButton *_rotateButton; // @synthesize _rotateButton=__rotateButton;
 @property (strong, nonatomic, setter=_setRotateSnapshotView:) UIView *_rotateSnapshotView; // @synthesize _rotateSnapshotView=__rotateSnapshotView;
 @property (nonatomic, setter=_setRotatingAnimationCount:) unsigned long long _rotatingAnimationCount; // @synthesize _rotatingAnimationCount=__rotatingAnimationCount;
 @property (strong, nonatomic, setter=_setSelectedCropHandleView:) PUCropHandleView *_selectedCropHandleView; // @synthesize _selectedCropHandleView=__selectedCropHandleView;

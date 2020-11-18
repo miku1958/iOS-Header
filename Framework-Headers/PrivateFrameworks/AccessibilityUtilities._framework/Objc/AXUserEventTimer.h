@@ -6,12 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSHashTable;
+@protocol OS_dispatch_queue;
+
 @interface AXUserEventTimer : NSObject
 {
+    NSObject<OS_dispatch_queue> *_assertionQueue;
+    NSHashTable *_assertions;
 }
 
 + (id)sharedInstance;
-- (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
+- (void).cxx_destruct;
+- (void)_startTrackingPoorMansAssertion:(id)arg1;
+- (void)_stopTrackingPoorMansAssertion:(id)arg1;
+- (id)acquireAssertionToDisableIdleTimerWithReason:(id)arg1;
+- (id)init;
 - (void)userEventOccurred;
 
 @end

@@ -51,6 +51,7 @@
 - (id)expectedFastCachedTagForID:(id)arg1;
 - (id)fastCachedTagForID:(id)arg1;
 - (id)fastCachedTagsForIDs:(id)arg1;
+- (id)fetchOperationForTagsIncludingChildrenWithIDs:(id)arg1 softMaxAge:(double)arg2;
 - (id)fetchOperationForTagsWithIDs:(id)arg1;
 - (id)fetchOperationForTagsWithIDs:(id)arg1 includeChildren:(BOOL)arg2;
 - (id)fetchOperationForTagsWithIDs:(id)arg1 includeParents:(BOOL)arg2;

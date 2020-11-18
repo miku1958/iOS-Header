@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoPassKit/NSSecureCoding-Protocol.h>
+
 @class NPKPaymentProvisioningFlowControllerRequestContext, NSString;
 
-@interface NPKPaymentProvisioningFlowStepContext : NSObject
+@interface NPKPaymentProvisioningFlowStepContext : NSObject <NSSecureCoding>
 {
     BOOL _allowsAddLater;
     NPKPaymentProvisioningFlowControllerRequestContext *_requestContext;
@@ -21,6 +23,7 @@
 @property (readonly) NPKPaymentProvisioningFlowControllerRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property (strong, nonatomic) NSString *stepIdentifier; // @synthesize stepIdentifier=_stepIdentifier;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_baseFlowStepDescription;
 - (id)chooseCredentialsStepContext;
@@ -28,12 +31,15 @@
 - (id)chooseProductStepContext;
 - (id)digitalIssuanceAmountStepContext;
 - (id)digitalIssuancePaymentStepContext;
+- (void)encodeWithCoder:(id)arg1;
 - (id)getIssuerApplicationAddRequestStepContext;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRequestContext:(id)arg1;
 - (id)localDeviceManualEntryProgressStepContext;
 - (id)localDeviceManualEntryStepContext;
 - (id)manualEntryStepContext;
 - (id)moreInformationStepContext;
+- (id)passcodeUpgradeStepContext;
 - (id)productDisambiguationStepContext;
 - (id)provisioningProgressStepContext;
 - (id)provisioningResultStepContext;

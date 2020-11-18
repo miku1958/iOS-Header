@@ -7,7 +7,7 @@
 #import <MPSNeuralNetwork/NSCopying-Protocol.h>
 #import <MPSNeuralNetwork/NSObject-Protocol.h>
 
-@class MPSCNNNormalizationGammaAndBetaState, NSCoder, NSString;
+@class MPSCNNNormalizationGammaAndBetaState, NSArray, NSCoder, NSString;
 @protocol MTLCommandBuffer, MTLDevice;
 
 @protocol MPSCNNInstanceNormalizationDataSource <NSObject, NSCopying>
@@ -26,7 +26,7 @@
 - (id)initWithCoder:(NSCoder *)arg1;
 - (BOOL)load;
 - (void)purge;
-- (MPSCNNNormalizationGammaAndBetaState *)updateGammaAndBetaWithCommandBuffer:(id<MTLCommandBuffer>)arg1 instanceNormalizationStateBatch:(struct NSArray *)arg2;
-- (BOOL)updateGammaAndBetaWithInstanceNormalizationStateBatch:(struct NSArray *)arg1;
+- (MPSCNNNormalizationGammaAndBetaState *)updateGammaAndBetaWithCommandBuffer:(id<MTLCommandBuffer>)arg1 instanceNormalizationStateBatch:(NSArray *)arg2;
+- (BOOL)updateGammaAndBetaWithInstanceNormalizationStateBatch:(NSArray *)arg1;
 @end
 

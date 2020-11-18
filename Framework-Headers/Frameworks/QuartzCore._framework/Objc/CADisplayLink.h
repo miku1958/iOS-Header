@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) long long minimumFrameDuration;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (nonatomic) long long preferredFramesPerSecond;
+@property (nonatomic) long long priority;
 @property (readonly, nonatomic) double targetTimestamp;
 @property (readonly, nonatomic) double timestamp;
 @property (strong, nonatomic) id userInfo;

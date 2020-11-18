@@ -25,7 +25,6 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) MISSING_TYPE *decelerationTranslationDelta;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) MISSING_TYPE *lastTranslationLocation; // @synthesize lastTranslationLocation=_lastTranslationLocation;
@@ -50,11 +49,14 @@
 - (void)gestureEndedLevitation:(id)arg1;
 - (void)gestureEndedTranslation:(id)arg1;
 - (id)initWithWorldDelegate:(id)arg1 feedbackGenerator:(id)arg2;
+- (BOOL)isActive;
 - (BOOL)isDecelerating;
 - (void)setEnabledGestureTypes:(unsigned long long)arg1;
 - (id)singleFingerGestureForTouch:(id)arg1 dataSource:(id)arg2 enabledGestureTypes:(unsigned long long)arg3;
 - (void)startTranslationDecelerationWithInitialVelocity: /* Error: Ran out of types for this method. */;
 - (id)twoFingerGestureForFirstTouch:(id)arg1 secondTouch:(id)arg2 dataSource:(id)arg3;
+- (void)update;
+- (void)updateDecelerationTranslation;
 
 @end
 

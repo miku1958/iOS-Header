@@ -6,7 +6,9 @@
 
 #import <TestFlightCore/NSObject-Protocol.h>
 
+@class UIImage;
+
 @protocol TFImageView <NSObject>
-- (void)setImage:(struct UIImage *)arg1 animated:(BOOL)arg2;
+- (void)setImage:(UIImage *)arg1 animated:(BOOL)arg2;
 @end
 

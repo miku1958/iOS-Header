@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <iTunesStoreUI/SSDownloadManagerObserver-Protocol.h>
+#import <iTunesStoreUI/SSEventMonitorDelegate-Protocol.h>
 #import <iTunesStoreUI/SSPurchaseRequestDelegate-Protocol.h>
 #import <iTunesStoreUI/SSPurchaseRequestDelegatePrivate-Protocol.h>
 #import <iTunesStoreUI/SUContinuationDelegate-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString, SUQueueSessionManager;
+@class NSDictionary, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString, SSEventMonitor, SUQueueSessionManager;
 @protocol SUPurchaseManagerDelegate;
 
-@interface SUPurchaseManager : NSObject <SSPurchaseRequestDelegatePrivate, SUContinuationDelegate, SSDownloadManagerObserver, SSPurchaseRequestDelegate>
+@interface SUPurchaseManager : NSObject <SSPurchaseRequestDelegatePrivate, SSEventMonitorDelegate, SUContinuationDelegate, SSDownloadManagerObserver, SSPurchaseRequestDelegate>
 {
     id<SUPurchaseManagerDelegate> _delegate;
+    SSEventMonitor *_eventMonitor;
     NSMutableSet *_futurePurchases;
     NSMutableSet *_inflightContinuations;
     NSMutableArray *_observedDownloadManagers;
@@ -82,6 +84,7 @@
 - (void)dealloc;
 - (void)endUpdates;
 - (void)enqueueScriptPurchases:(id)arg1;
+- (void)eventMonitor:(id)arg1 receivedEventWithName:(id)arg2 userInfo:(id)arg3;
 - (id)init;
 - (BOOL)itemIdentifierIsPurchased:(unsigned long long)arg1;
 - (BOOL)itemIdentifierIsPurchasing:(unsigned long long)arg1;

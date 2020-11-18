@@ -15,10 +15,12 @@
     int _comparisonType;
     int _dataType;
     NSString *_identifier;
+    int _triggerConditionType;
     NSString *_triggerValue;
     struct {
         unsigned int comparisonType:1;
         unsigned int dataType:1;
+        unsigned int triggerConditionType:1;
     } _has;
 }
 
@@ -27,13 +29,16 @@
 @property (nonatomic) BOOL hasComparisonType;
 @property (nonatomic) BOOL hasDataType;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (nonatomic) BOOL hasTriggerConditionType;
 @property (readonly, nonatomic) BOOL hasTriggerValue;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) int triggerConditionType; // @synthesize triggerConditionType=_triggerConditionType;
 @property (strong, nonatomic) NSString *triggerValue; // @synthesize triggerValue=_triggerValue;
 
 - (void).cxx_destruct;
 - (int)StringAsComparisonType:(id)arg1;
 - (int)StringAsDataType:(id)arg1;
+- (int)StringAsTriggerConditionType:(id)arg1;
 - (id)comparisonTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -44,6 +49,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)triggerConditionTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

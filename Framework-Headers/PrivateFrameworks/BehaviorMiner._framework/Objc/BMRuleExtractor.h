@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 - (void)extractRulesWithMinSupport:(unsigned long long)arg1 minConfidence:(double)arg2 targetTypes:(id)arg3 batchSize:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)initWithPatterns:(id)arg1 items:(id)arg2 basketCount:(unsigned long long)arg3;
-- (struct NSSet *)itemSetForItemIndexSet:(id)arg1;
+- (id)itemSetForItemIndexSet:(id)arg1;
 - (id)subsetsOfItemset:(id)arg1;
 - (id)supportOfItemSet:(id)arg1;
 

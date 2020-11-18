@@ -16,7 +16,6 @@
 - (id)_accessibilityBundleIdentifier;
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (BOOL)_accessibilityElementVisibilityAffectsLayout;
-- (BOOL)_accessibilityFrameShouldIncludeExtraSpaceBelow;
 - (BOOL)_accessibilityIsNotFirstElement;
 - (id)_accessibilityPreferredScrollActions;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
@@ -25,8 +24,10 @@
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (struct CGRect)_accessibilityVisibleFrame;
 - (id)_scroller;
-- (struct CGRect)accessibilityFrame;
+- (id)_viewToAddFocusLayer;
+- (id)accessibilityPath;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
 
 @end

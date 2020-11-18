@@ -53,7 +53,7 @@
 - (void)getBusses:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getParameter:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getParameterTree:(CDUnknownBlockType)arg1;
-- (struct UIViewController *)iOSViewController;
+- (id)iOSViewController;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
 - (void)initialize2:(int)arg1 formats:(id)arg2 maxFrames:(unsigned long long)arg3 buffer:(id)arg4 bufferSize:(unsigned int)arg5 beginSem:(id)arg6 endSem:(id)arg7 reply:(CDUnknownBlockType)arg8;
 - (void)initialize:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;

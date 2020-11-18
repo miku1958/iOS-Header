@@ -34,15 +34,15 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_localizedDialogTokensForLanguage:(id)arg1;
+- (id)_localizedDialogTokensWithLocalizer:(id)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 codableAttribute:(id)arg2;
-- (id)localizedPlaceholderForLanguage:(id)arg1;
+- (id)localizedPlaceholderWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 
 @end

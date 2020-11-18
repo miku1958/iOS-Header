@@ -18,7 +18,7 @@
     BOOL _shouldHideSeparateTileItem;
     BOOL _showRoomsList;
     BOOL _showAssociatedServiceTypeList;
-    BOOL _homePodsActiveInStereoSetUp;
+    BOOL _groupedAccessoryReachableOverRapport;
     HFItem<HFItemBuilderItem> *_builderItem;
     HFItemBuilder<HFServiceLikeBuilder> *_serviceLikeBuilder;
     HFItemProvider *_existingRoomItemProvider;
@@ -109,10 +109,10 @@
 @property (strong, nonatomic) HFItemProvider *existingRoomItemProvider; // @synthesize existingRoomItemProvider=_existingRoomItemProvider;
 @property (strong, nonatomic) HFItem *favoriteItem; // @synthesize favoriteItem=_favoriteItem;
 @property (strong, nonatomic) HUFirmwareUpdateItemProvider *firmwareUpdateItemProvider; // @synthesize firmwareUpdateItemProvider=_firmwareUpdateItemProvider;
+@property (nonatomic) BOOL groupedAccessoryReachableOverRapport; // @synthesize groupedAccessoryReachableOverRapport=_groupedAccessoryReachableOverRapport;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem<HFItemBuilderItem> *headerItem; // @synthesize headerItem=_headerItem;
 @property (strong, nonatomic) ACAccount *homeMediaAccount; // @synthesize homeMediaAccount=_homeMediaAccount;
-@property (nonatomic) BOOL homePodsActiveInStereoSetUp; // @synthesize homePodsActiveInStereoSetUp=_homePodsActiveInStereoSetUp;
 @property (strong, nonatomic) NSArray *inputSourceEditorSections; // @synthesize inputSourceEditorSections=_inputSourceEditorSections;
 @property (strong, nonatomic) HUInputSourceItemModule *inputSourceItemModule; // @synthesize inputSourceItemModule=_inputSourceItemModule;
 @property (strong, nonatomic) HFItem *internalDebuggingItem; // @synthesize internalDebuggingItem=_internalDebuggingItem;
@@ -175,7 +175,7 @@
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
 - (BOOL)_hasDismissedHomePodHasNonMemberMediaAccountWarning;
 - (id)_homeFuture;
-- (BOOL)_isGroupedHomePod:(id)arg1;
+- (BOOL)_isGroupedHomePod;
 - (BOOL)_isRestartSupportedForGroupedHomePod:(id)arg1;
 - (id)_itemsToHideInSet:(id)arg1;
 - (void)_registerForExternalUpdates;
@@ -187,6 +187,7 @@
 - (BOOL)_shouldShowLinkedApplicationSection;
 - (BOOL)_shouldShowSplitAccountUI;
 - (void)_unregisterForExternalUpdates;
+- (void)accessoryReachableOverRapport:(BOOL)arg1;
 - (void)cameraRecordingSettingsModule:(id)arg1 didUpdateItem:(id)arg2;
 - (BOOL)canToggleAccessoryInfoItem:(id)arg1;
 - (id)controlAndCharacteristicStateItemModule:(id)arg1 childItemsForItem:(id)arg2;
@@ -194,7 +195,6 @@
 - (id)controlAndCharacteristicStateItemModule:(id)arg1 sectionTitleForControlPanelItem:(id)arg2 forServiceItem:(id)arg3;
 - (BOOL)controlAndCharacteristicStateItemModule:(id)arg1 shouldShowControlPanelItem:(id)arg2;
 - (BOOL)controlAndCharacteristicStateItemModule:(id)arg1 shouldShowSectionTitleForControlPanelItem:(id)arg2;
-- (void)currentAccessoryReachableOverRapportUpdated:(BOOL)arg1;
 - (id)hf_MediaAccessoryItem;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithServiceItem:(id)arg1 delegate:(id)arg2;
@@ -207,6 +207,8 @@
 - (void)restartAccessory;
 - (id)selectAssociatedServiceType:(id)arg1;
 - (id)selectRoom:(id)arg1;
+- (void)settings:(id)arg1 didUpdateSetting:(id)arg2;
+- (void)settingsDidUpdate:(id)arg1;
 - (BOOL)shouldShowDeviceOptionsForAccessoryItem:(id)arg1;
 - (BOOL)sourceItemIsHomePodConfiguredForMultiUser;
 - (BOOL)sourceItemIsService;

@@ -53,12 +53,15 @@
 
 + (id)_sharedInstanceUsingBag:(id)arg1;
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (BOOL)appAnalyticsAllowed;
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (BOOL)diagnosticsSubmissionAllowed;
 + (BOOL)disableBackgroundMetrics;
 + (BOOL)flushDelayEnabled;
 + (BOOL)flushTimerEnabled;
++ (BOOL)recordAppAnalyticsForEvent:(id)arg1 bugType:(id)arg2;
 + (id)serverTimeFromDate:(id)arg1;
 + (id)serverTimeFromTimeInterval:(double)arg1;
 + (void)setDisableBackgroundMetrics:(BOOL)arg1;

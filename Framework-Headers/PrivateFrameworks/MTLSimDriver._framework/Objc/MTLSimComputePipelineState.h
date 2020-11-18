@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned long long maxTotalThreadsPerThreadgroup;
     unsigned long long threadExecutionWidth;
     unsigned long long staticThreadgroupMemoryLength;
+    unsigned long long _uniqueIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithDevice:(id)arg1 pipelineRef:(unsigned int)arg2 descriptor:(id)arg3;
 - (unsigned int)pipelineRef;
+- (unsigned long long)uniqueIdentifier;
 
 @end
 

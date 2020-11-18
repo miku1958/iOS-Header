@@ -20,6 +20,7 @@
     unsigned char _newVoiceInstalled;
     unsigned char _speechThreadPriorityIsHigh;
     unsigned char _shouldTerminateThread;
+    unsigned char _didTerminateThread;
     unsigned long long _synthesizerId;
     TTSTimer *_wordCallbackTimer;
     TTSSpeechServer *_speechService;
@@ -64,7 +65,7 @@
 - (id)init;
 - (struct __CFArray *)loadedVoiceResources;
 - (oneway void)pauseSpeechRequest:(id)arg1 atMark:(long long)arg2;
-- (void)processMarker:(long long)arg1 withByteOffset:(unsigned int)arg2 markerPosition:(unsigned int)arg3 markerLength:(unsigned int)arg4 context:(CDStruct_e7d21709 *)arg5 currentTime:(unsigned long long)arg6;
+- (void)processMarker:(long long)arg1 withByteOffset:(unsigned int)arg2 markerPosition:(unsigned int)arg3 markerLength:(unsigned int)arg4 context:(CDStruct_e7d21709 *)arg5 currentTime:(unsigned long long)arg6 secondPass:(BOOL)arg7;
 - (oneway void)startSpeechRequest:(id)arg1;
 - (oneway void)stopSpeechRequest:(id)arg1 atMark:(long long)arg2;
 

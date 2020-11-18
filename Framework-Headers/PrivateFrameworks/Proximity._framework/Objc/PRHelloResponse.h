@@ -24,12 +24,14 @@
     NSNumber *_calDataVersion;
     NSNumber *_moduleID;
     NSNumber *_modemInitVersion;
+    NSString *_extraBytes;
 }
 
 @property (copy) NSNumber *addlInfoSize; // @synthesize addlInfoSize=_addlInfoSize;
 @property (copy) NSNumber *apFirmwareVersion; // @synthesize apFirmwareVersion=_apFirmwareVersion;
 @property (copy) NSNumber *calDataVersion; // @synthesize calDataVersion=_calDataVersion;
 @property (copy) NSNumber *dspFirmwareVersion; // @synthesize dspFirmwareVersion=_dspFirmwareVersion;
+@property (copy) NSString *extraBytes; // @synthesize extraBytes=_extraBytes;
 @property (readonly, nonatomic) unsigned long long hardwareVersion; // @synthesize hardwareVersion=_hardwareVersion;
 @property (readonly, nonatomic) unsigned char hsiVersionMajor; // @synthesize hsiVersionMajor=_hsiVersionMajor;
 @property (readonly, nonatomic) unsigned char hsiVersionMinor; // @synthesize hsiVersionMinor=_hsiVersionMinor;

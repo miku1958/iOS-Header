@@ -26,6 +26,7 @@
     struct __CFDictionary *_atsStateCache;
     BOOL _preventsAppSSO;
     BOOL _appSSOFallback;
+    BOOL _appleIDContextRedirect;
     __CFN_TaskMetrics *_metrics;
 }
 
@@ -34,6 +35,8 @@
 - (id)_APSRelayTopic;
 - (const struct __CFDictionary **)_DuetActivityProperties;
 - (const struct __CFData **)_TCPConnectionMetadata;
+- (unsigned short)_TLSMaximumSupportedProtocolVersion;
+- (unsigned short)_TLSMinimumSupportedProtocolVersion;
 - (unsigned short)_TLSNegotiatedCipherSuite;
 - (void)_adoptEffectiveConfiguration:(id)arg1;
 - (unsigned long long)_allowedProtocolTypes;
@@ -44,6 +47,7 @@
 - (BOOL)_allowsQUIC;
 - (BOOL)_appSSOFallback;
 - (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
+- (BOOL)_appleIDContextRedirect;
 - (id)_backgroundTransactionMetrics;
 - (id)_boundInterfaceIdentifier;
 - (long long)_bytesPerSecondLimit;
@@ -127,6 +131,8 @@
 - (float)priority;
 - (id)session;
 - (void)set_TCPConnectionMetadata:(id)arg1;
+- (void)set_TLSMaximumSupportedProtocolVersion:(unsigned short)arg1;
+- (void)set_TLSMinimumSupportedProtocolVersion:(unsigned short)arg1;
 - (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_allowsQUIC:(BOOL)arg1;
 - (void)set_appSSOFallback:(BOOL)arg1;

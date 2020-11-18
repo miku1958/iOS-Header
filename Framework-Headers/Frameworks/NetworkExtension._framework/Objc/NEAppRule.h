@@ -22,6 +22,7 @@
     NSString *_matchDesignatedRequirement;
     NSString *_matchPath;
     NSArray *_matchDomains;
+    NSArray *_matchTools;
     NSArray *_additionalExecutables;
     NSArray *_matchAccountIdentifiers;
 }
@@ -32,6 +33,7 @@
 @property (copy) NSArray *matchDomains; // @synthesize matchDomains=_matchDomains;
 @property (copy) NSString *matchPath; // @synthesize matchPath=_matchPath;
 @property (readonly) NSString *matchSigningIdentifier; // @synthesize matchSigningIdentifier=_matchSigningIdentifier;
+@property (copy) NSArray *matchTools; // @synthesize matchTools=_matchTools;
 @property BOOL noDivertDNS; // @synthesize noDivertDNS=_noDivertDNS;
 @property BOOL noRestriction; // @synthesize noRestriction=_noRestriction;
 
@@ -48,7 +50,7 @@
 - (id)initWithSigningIdentifier:(id)arg1;
 - (BOOL)matchesProcessWithAuditToken:(id)arg1;
 - (BOOL)overlapsWithRule:(id)arg1;
-- (BOOL)signingIdentifierAllowed:(id)arg1 domainsRequired:(out BOOL *)arg2;
+- (BOOL)signingIdentifierAllowed:(id)arg1 domainsOrAccountsRequired:(out BOOL *)arg2;
 
 @end
 

@@ -40,7 +40,9 @@
 
 - (void).cxx_destruct;
 - (id)_annotationView;
+- (BOOL)_areBoundsValid;
 - (void)_callCompletionHandler;
+- (void)_callCompletionHandlerWithInvalidBoundsError;
 - (CDStruct_c3b9c2ee)_clampCoordinateSpan:(CDStruct_c3b9c2ee)arg1;
 - (id)_customAnnotation;
 - (id)_deriveSnapshotOptions:(BOOL)arg1;

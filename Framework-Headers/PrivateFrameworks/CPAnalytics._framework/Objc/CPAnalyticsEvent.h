@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 - (id)copyRawPayload;
 - (id)initWithName:(id)arg1 payload:(id)arg2 systemProperties:(id)arg3;
-- (struct NSObject *)propertyForKey:(id)arg1;
+- (id)propertyForKey:(id)arg1;
 
 @end
 

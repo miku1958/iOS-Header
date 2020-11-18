@@ -8,27 +8,26 @@
 
 #import <ActivityAchievementsDaemon/ACHTemplateSourceDelegate-Protocol.h>
 
-@class ACHVisibilityEvaluator, NSMutableDictionary;
+@class ACHRemoteTemplateAvailabilityKeyProvider, NSMutableDictionary;
 @protocol ACHTemplateAssetRegistryDelegate, OS_dispatch_queue;
 
 @interface ACHTemplateAssetRegistry : NSObject <ACHTemplateSourceDelegate>
 {
     NSObject<ACHTemplateAssetRegistryDelegate> *_delegate;
-    ACHVisibilityEvaluator *_visibilityEvaluator;
+    ACHRemoteTemplateAvailabilityKeyProvider *_remoteTemplateAvailabilityKeyProvider;
     NSMutableDictionary *_templateSourcesByIdentifier;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 @property (weak, nonatomic) NSObject<ACHTemplateAssetRegistryDelegate> *delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) ACHRemoteTemplateAvailabilityKeyProvider *remoteTemplateAvailabilityKeyProvider; // @synthesize remoteTemplateAvailabilityKeyProvider=_remoteTemplateAvailabilityKeyProvider;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (strong, nonatomic) NSMutableDictionary *templateSourcesByIdentifier; // @synthesize templateSourcesByIdentifier=_templateSourcesByIdentifier;
-@property (strong, nonatomic) ACHVisibilityEvaluator *visibilityEvaluator; // @synthesize visibilityEvaluator=_visibilityEvaluator;
 
 - (void).cxx_destruct;
-- (void)_setBundleURLsForAchievemnt:(id)arg1;
+- (void)_setBundleURLsForAchievement:(id)arg1;
 - (void)deregisterTemplateSource:(id)arg1;
-- (id)init;
-- (id)initWithVisibilityEvaluator:(id)arg1;
+- (id)initWithRemoteTemplateAvailabilityKeyProvider:(id)arg1;
 - (void)populateResourcePropertiesForAchievement:(id)arg1;
 - (void)registerTemplateSource:(id)arg1;
 - (void)templateSourceDidUpdateAssets:(id)arg1;

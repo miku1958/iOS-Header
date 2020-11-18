@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _showingTouch;
     BOOL _backgroundContainer;
+    BOOL _showingCursor;
     long long _barStyle;
     unsigned long long _searchBarStyle;
 }
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL backgroundContainer; // @synthesize backgroundContainer=_backgroundContainer;
 @property (nonatomic) long long barStyle; // @synthesize barStyle=_barStyle;
 @property (nonatomic) unsigned long long searchBarStyle; // @synthesize searchBarStyle=_searchBarStyle;
+@property (nonatomic) BOOL showingCursor; // @synthesize showingCursor=_showingCursor;
 @property (nonatomic) BOOL showingTouch; // @synthesize showingTouch=_showingTouch;
 
 - (id)_automaticFillColorForActive:(BOOL)arg1;

@@ -20,13 +20,15 @@
 @property (copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 @property (readonly, nonatomic) DMFPolicyRegistration *registration; // @synthesize registration=_registration;
 
++ (void)_fetchCategoriesForBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)_fetchCategoriesForBundleIdentifiers:(id)arg1 withError:(id *)arg2;
 + (void)createPolicyMonitorWithPolicyChangeHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-- (void)_fetchCategoriesIfNeededForBundleIdentifiers:(id)arg1 response:(CDUnknownBlockType)arg2;
 - (id)_initWithPolicyChangeHandler:(CDUnknownBlockType)arg1 addingRegistration:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithPolicyChangeHandler:(CDUnknownBlockType)arg1;
 - (void)requestPoliciesForBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)requestPoliciesForBundleIdentifiers:(id)arg1 withError:(id *)arg2;
 
 @end
 

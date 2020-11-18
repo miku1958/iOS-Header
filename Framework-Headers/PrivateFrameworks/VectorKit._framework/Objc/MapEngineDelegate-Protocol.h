@@ -18,11 +18,12 @@
 - (void)labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)nearestVenueDidChange:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
 - (void)selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg1;
+- (void)venueCreated:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
 - (BOOL)wantsTimerTick;
 - (void)willBecomeFullyDrawn;
 - (void)willLayoutWithTimestamp:(double)arg1;
 
 @optional
-- (void)muninJunctionDidChange:(const struct MuninJunction *)arg1 currentRoad:(const struct MuninRoadEdge *)arg2;
+- (void)muninJunctionDidChange:(const struct MuninJunction *)arg1 currentRoad:(const struct MuninRoadEdge *)arg2 localize:(BOOL)arg3;
 @end
 

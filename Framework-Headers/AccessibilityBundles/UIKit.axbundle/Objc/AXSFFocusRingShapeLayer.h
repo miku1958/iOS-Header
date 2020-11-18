@@ -15,14 +15,10 @@
 @property (strong, nonatomic) CAShapeLayer *innerBorder; // @synthesize innerBorder=_innerBorder;
 @property (strong, nonatomic) CAShapeLayer *outerBorder; // @synthesize outerBorder=_outerBorder;
 
-+ (id)focusLayer;
 + (id)focusLayerForUserInterfaceStyle:(long long)arg1;
 + (id)layer;
-+ (id)parentLayer;
 + (id)parentLayerForUserInterfaceStyle:(long long)arg1;
-+ (id)selectedLayer;
 + (id)selectedLayerForUserInterfaceStyle:(long long)arg1;
-+ (id)selectedParentLayer;
 + (id)selectedParentLayerForUserInterfaceStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (void)setPath:(struct CGPath *)arg1;

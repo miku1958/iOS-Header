@@ -58,7 +58,7 @@
 - (id)_dataTaskWithTaskForClass:(id)arg1;
 - (id)_downloadTaskWithRequest:(id)arg1 downloadFilePath:(id)arg2;
 - (id)_downloadTaskWithTaskForClass:(id)arg1;
-- (shared_ptr_9ad247fa)_nwContext;
+- (shared_ptr_22b0e4cc)_nwContext;
 - (id)_update_local_configuration:(CDUnknownBlockType)arg1;
 - (id)_uploadTaskWithTaskForClass:(id)arg1;
 - (void)_useTLSSessionCacheFromSession:(id)arg1;

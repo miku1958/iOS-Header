@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
     NSString *_lookupAppBundleId;
     NSString *_lookupHintDomain;
     NSString *_siriLocale;
+    long long _exp;
 }
 
 @property (copy, nonatomic) NSString *calendar; // @synthesize calendar=_calendar;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSData *dictionarySignature; // @synthesize dictionarySignature=_dictionarySignature;
 @property (copy, nonatomic) NSString *effectiveSystemLanguage; // @synthesize effectiveSystemLanguage=_effectiveSystemLanguage;
+@property (nonatomic) long long exp; // @synthesize exp=_exp;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int hourFormat; // @synthesize hourFormat=_hourFormat;
 @property (nonatomic) BOOL hsEnabled; // @synthesize hsEnabled=_hsEnabled;

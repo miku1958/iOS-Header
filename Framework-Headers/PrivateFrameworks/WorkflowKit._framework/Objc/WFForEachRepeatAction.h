@@ -11,6 +11,7 @@
     unsigned long long _numberOfLoops;
 }
 
+- (id)inheritedOutputContentClassesInWorkflow:(id)arg1 context:(id)arg2;
 - (id)itemVariableName;
 - (id)itemVariableNameWithScopeLevel:(unsigned long long)arg1;
 - (unsigned long long)numberOfLoops;

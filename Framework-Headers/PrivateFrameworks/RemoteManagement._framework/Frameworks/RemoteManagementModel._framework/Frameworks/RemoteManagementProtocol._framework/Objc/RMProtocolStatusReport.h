@@ -6,25 +6,22 @@
 
 #import <RemoteManagementModel/RMModelPayloadBase.h>
 
-@class NSArray;
+@class NSArray, RMModelAnyPayload;
 
 @interface RMProtocolStatusReport : RMModelPayloadBase
 {
-    NSArray *_requestItems;
+    RMModelAnyPayload *_reportStatusItems;
+    NSArray *_reportErrors;
 }
 
-@property (copy, nonatomic) NSArray *requestItems; // @synthesize requestItems=_requestItems;
+@property (copy, nonatomic) NSArray *reportErrors; // @synthesize reportErrors=_reportErrors;
+@property (copy, nonatomic) RMModelAnyPayload *reportStatusItems; // @synthesize reportStatusItems=_reportStatusItems;
 
-+ (id)loadArray:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
-+ (id)loadData:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
-+ (id)requestWithItems:(id)arg1;
++ (id)requestWithStatusItems:(id)arg1 errors:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)loadItems:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
-- (BOOL)loadPayload:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
-- (id)serializeAsDataWithType:(short)arg1 error:(id *)arg2;
-- (id)serializeItemsWithType:(short)arg1;
-- (id)serializePayloadWithType:(short)arg1;
+- (BOOL)loadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (id)serializeWithType:(short)arg1;
 
 @end
 

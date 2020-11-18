@@ -210,7 +210,7 @@
 - (double)_virtualSliderPositionForExposureBias:(double)arg1;
 - (void)_willChangeGraphConfiguration;
 - (void)captureController:(id)arg1 didOutputExposureResult:(id)arg2;
-- (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2;
+- (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2 bodyResults:(id)arg3;
 - (void)captureController:(id)arg1 didOutputFocusResult:(id)arg2;
 - (BOOL)captureController:(id)arg1 shouldResetFocusAndExposureForReason:(long long)arg2;
 - (double)captureControllerDelayBeforeResettingFocusAndExposureAfterCapture:(id)arg1;

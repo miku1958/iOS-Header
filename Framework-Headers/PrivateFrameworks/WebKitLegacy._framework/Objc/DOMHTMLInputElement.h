@@ -6,11 +6,9 @@
 
 #import <WebKitLegacy/DOMHTMLElement.h>
 
-#import <WebKitLegacy/UITextInputTraits-Protocol.h>
+@class DOMFileList, DOMHTMLFormElement, NSString, NSURL;
 
-@class DOMFileList, DOMHTMLFormElement, NSString, NSURL, UITextInputPasswordRules;
-
-@interface DOMHTMLInputElement : DOMHTMLElement <UITextInputTraits>
+@interface DOMHTMLInputElement : DOMHTMLElement
 {
 }
 
@@ -20,39 +18,22 @@
 @property (copy) NSString *align;
 @property (copy) NSString *alt;
 @property (readonly, copy) NSString *altDisplayString;
-@property (nonatomic) long long autocapitalizationType;
-@property (nonatomic) long long autocorrectionType;
 @property BOOL autofocus;
 @property BOOL checked;
-@property (readonly, copy) NSString *debugDescription;
 @property BOOL defaultChecked;
 @property (copy) NSString *defaultValue;
-@property (readonly, copy) NSString *description;
 @property BOOL disabled;
-@property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (strong) DOMFileList *files;
 @property (readonly) DOMHTMLFormElement *form;
-@property (readonly) unsigned long long hash;
 @property BOOL indeterminate;
-@property (nonatomic) long long keyboardAppearance;
-@property (nonatomic) long long keyboardType;
 @property int maxLength;
 @property BOOL multiple;
 @property (copy) NSString *name;
-@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property BOOL readOnly;
-@property (nonatomic) long long returnKeyType;
-@property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property int selectionEnd;
 @property int selectionStart;
 @property (copy) NSString *size;
-@property (nonatomic) long long smartDashesType;
-@property (nonatomic) long long smartInsertDeleteType;
-@property (nonatomic) long long smartQuotesType;
-@property (nonatomic) long long spellCheckingType;
 @property (copy) NSString *src;
-@property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *textContentType;
 @property (copy) NSString *type;
 @property (copy) NSString *useMap;
 @property (copy) NSString *value;
@@ -60,9 +41,11 @@
 
 - (int)_autocapitalizeType;
 - (id)_autofillContext;
+- (BOOL)_isAutoFilledAndViewable;
 - (BOOL)_isAutofilled;
 - (BOOL)_isEdited;
 - (BOOL)_isTextField;
+- (void)_setAutoFilledAndViewable:(BOOL)arg1;
 - (void)_setAutofilled:(BOOL)arg1;
 - (id)autocomplete;
 - (BOOL)capture;
@@ -118,6 +101,7 @@
 - (id)step;
 - (void)stepDown:(int)arg1;
 - (void)stepUp:(int)arg1;
+- (int)structuralComplexityContribution;
 - (int)structuralComplexityContribution;
 - (id)validationMessage;
 - (double)valueAsDate;

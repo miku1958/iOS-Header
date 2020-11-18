@@ -33,7 +33,7 @@
 - (void)_handleCreateChildAccount:(CDUnknownBlockType)arg1;
 - (id)_presentationContext;
 - (void)_tearDownChildAccountCreateController:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
-- (struct NSDictionary *)accountsForAccountManager:(id)arg1;
+- (id)accountsForAccountManager:(id)arg1;
 - (void)childAccountCreationController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)childAccountCreationController:(id)arg1 didLoadRemoteUIWithSuccess:(BOOL)arg2;
 - (id)navigationItemToShowInitialLoadingForChildAccountCreationController:(id)arg1;

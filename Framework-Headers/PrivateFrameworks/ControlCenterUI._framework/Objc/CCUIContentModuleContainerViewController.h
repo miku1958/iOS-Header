@@ -10,11 +10,12 @@
 #import <ControlCenterUI/CCUISafeAppearancePropagationProvider-Protocol.h>
 #import <ControlCenterUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <ControlCenterUI/_UIClickPresentationInteractionDelegate-Protocol.h>
+#import <ControlCenterUI/_UICursorInteractionDelegate-Protocol.h>
 
 @class CCUIContentModuleBackgroundView, CCUIContentModuleContainerPresentationController, CCUIContentModuleContentContainerView, NSArray, NSString, UITapGestureRecognizer, UIView, _UIClickPresentationInteraction;
 @protocol CCUIContentModule, CCUIContentModuleBackgroundViewController, CCUIContentModuleContainerViewControllerDelegate, CCUIContentModuleContentViewController;
 
-@interface CCUIContentModuleContainerViewController : UIViewController <_UIClickPresentationInteractionDelegate, UIGestureRecognizerDelegate, CCUIContentModuleContainer, CCUISafeAppearancePropagationProvider>
+@interface CCUIContentModuleContainerViewController : UIViewController <_UIClickPresentationInteractionDelegate, UIGestureRecognizerDelegate, CCUIContentModuleContainer, CCUISafeAppearancePropagationProvider, _UICursorInteractionDelegate>
 {
     BOOL _expanded;
     BOOL _contentModuleProvidesOwnPlatter;
@@ -34,6 +35,7 @@
     UIView *_maskView;
     UITapGestureRecognizer *_tapRecognizer;
     _UIClickPresentationInteraction *_clickPresentationInteraction;
+    UITapGestureRecognizer *_expandModuleOnTouchTapRecognizer;
     struct UIEdgeInsets _expandedContentEdgeInsets;
 }
 
@@ -49,6 +51,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CCUIContentModuleContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UITapGestureRecognizer *expandModuleOnTouchTapRecognizer; // @synthesize expandModuleOnTouchTapRecognizer=_expandModuleOnTouchTapRecognizer;
 @property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
 @property (nonatomic) struct UIEdgeInsets expandedContentEdgeInsets; // @synthesize expandedContentEdgeInsets=_expandedContentEdgeInsets;
 @property (readonly) unsigned long long hash;
@@ -80,6 +83,7 @@
 - (double)_continuousCornerRadiusForExpandedState;
 - (void)_didEndTransitionWithContentModuleContainerTransition:(id)arg1 completed:(BOOL)arg2;
 - (void)_findTopLevelGestureRecognizersForView:(id)arg1 installOnView:(id)arg2;
+- (void)_handleExpandModuleForTapGestureRecognizer:(id)arg1;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (BOOL)_isForceTouchAvailable;
 - (void)_loadBackgroundViewController:(id)arg1;
@@ -92,6 +96,8 @@
 - (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(BOOL)arg2;
 - (BOOL)clickPresentationInteractionShouldBegin:(id)arg1;
 - (BOOL)clickPresentationInteractionShouldPresent:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (BOOL)definesContentModuleContainer;
 - (void)dismissExpandedModuleAnimated:(BOOL)arg1;
 - (void)dismissModulePresentedContentAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -99,6 +105,7 @@
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)displayWillTurnOff;
 - (void)expandModule;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModuleIdentifier:(id)arg1 contentModule:(id)arg2 presentationContext:(id)arg3;
@@ -107,6 +114,7 @@
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)transitionToExpandedMode:(BOOL)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)willBecomeActive;

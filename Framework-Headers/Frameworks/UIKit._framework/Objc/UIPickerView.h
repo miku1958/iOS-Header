@@ -126,6 +126,7 @@
 - (void)_setUsesCheckedSelection:(BOOL)arg1;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1;
 - (BOOL)_soundsEnabled;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (double)_tableRowHeight;
 - (void)_updateSelectedRows;
 - (void)_updateWithOldSize:(struct CGSize)arg1 newSize:(struct CGSize)arg2;

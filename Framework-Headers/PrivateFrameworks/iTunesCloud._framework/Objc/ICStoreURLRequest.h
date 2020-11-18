@@ -13,6 +13,7 @@
     BOOL _shouldUseMescalSigning;
     BOOL _shouldParseBodyData;
     BOOL _shouldRequireURLBag;
+    BOOL _shouldApplyAuthKitHeaders;
     long long _anisetteVersion;
     NSString *_machineDataSyncState;
     NSDictionary *_additionalHTTPCookies;
@@ -23,6 +24,7 @@
 @property (copy, nonatomic) NSDictionary *additionalHTTPCookies; // @synthesize additionalHTTPCookies=_additionalHTTPCookies;
 @property (nonatomic) long long anisetteVersion; // @synthesize anisetteVersion=_anisetteVersion;
 @property (copy, nonatomic) NSString *machineDataSyncState; // @synthesize machineDataSyncState=_machineDataSyncState;
+@property (nonatomic) BOOL shouldApplyAuthKitHeaders; // @synthesize shouldApplyAuthKitHeaders=_shouldApplyAuthKitHeaders;
 @property (nonatomic) BOOL shouldParseBodyData; // @synthesize shouldParseBodyData=_shouldParseBodyData;
 @property (nonatomic) BOOL shouldRequireURLBag; // @synthesize shouldRequireURLBag=_shouldRequireURLBag;
 @property (nonatomic) BOOL shouldUseMescalSigning; // @synthesize shouldUseMescalSigning=_shouldUseMescalSigning;

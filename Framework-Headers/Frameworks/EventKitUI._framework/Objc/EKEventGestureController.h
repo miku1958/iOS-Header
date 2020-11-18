@@ -201,6 +201,7 @@
 - (void)icsPreviewControllerWantsDismissal:(id)arg1;
 - (id)initWithView:(id)arg1;
 - (void)invalidate;
+- (void)liftUpOccurrenceForEditingEvent:(id)arg1;
 - (unsigned long long)numberOfDragSourcesForView:(id)arg1;
 - (id)originalStartDateForEvent:(id)arg1 includingTravel:(BOOL)arg2;
 - (void)promptUserForProposeNewTime:(id)arg1 forEvent:(id)arg2 whenFinished:(CDUnknownBlockType)arg3;

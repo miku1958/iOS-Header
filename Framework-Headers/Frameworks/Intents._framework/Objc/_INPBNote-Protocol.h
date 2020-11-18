@@ -10,10 +10,12 @@
 
 @protocol _INPBNote <NSObject>
 
+@property (copy, nonatomic) NSString *accountIdentifier;
 @property (copy, nonatomic) NSArray *contents;
 @property (readonly, nonatomic) unsigned long long contentsCount;
 @property (strong, nonatomic) _INPBDateTime *createdDateTime;
 @property (strong, nonatomic) _INPBDataString *groupName;
+@property (readonly, nonatomic) BOOL hasAccountIdentifier;
 @property (readonly, nonatomic) BOOL hasCreatedDateTime;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIdentifier;

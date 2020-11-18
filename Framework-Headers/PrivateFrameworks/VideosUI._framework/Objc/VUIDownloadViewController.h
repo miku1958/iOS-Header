@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/VUILibraryFetchControllerViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <VideosUI/UITableViewDataSource-Protocol.h>
 #import <VideosUI/UITableViewDelegate-Protocol.h>
 #import <VideosUI/VUIDownloadDataSourceDelegate-Protocol.h>
 #import <VideosUI/VUIDownloadEntityTableViewCellDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIBarButtonItem, UITableView, VUIDownloadDataSource, VUIDownloadEntityTableViewCell;
+@class NSMutableArray, NSString, UIAlertController, UIBarButtonItem, UITableView, VUIDownloadDataSource, VUIDownloadEntityTableViewCell, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadViewController : VUILibraryFetchControllerViewController <UITableViewDataSource, UITableViewDelegate, VUIDownloadDataSourceDelegate, VUIDownloadEntityTableViewCellDelegate>
+@interface VUIDownloadViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, VUIDownloadDataSourceDelegate, VUIDownloadEntityTableViewCellDelegate>
 {
     UITableView *_downloadEntitiesTableView;
     VUIDownloadDataSource *_downloadManager;
@@ -23,11 +23,15 @@ __attribute__((visibility("hidden")))
     UIBarButtonItem *_rightBarButtonItem;
     UIBarButtonItem *_leftBarButtonItem;
     UIBarButtonItem *_backBarButtonItem;
+    UIAlertController *_alertController;
     NSMutableArray *_assetControllersToRemove;
+    VUIViewControllerContentPresenter *_contentPresenter;
 }
 
+@property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property (strong, nonatomic) NSMutableArray *assetControllersToRemove; // @synthesize assetControllersToRemove=_assetControllersToRemove;
 @property (strong, nonatomic) UIBarButtonItem *backBarButtonItem; // @synthesize backBarButtonItem=_backBarButtonItem;
+@property (strong, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *downloadEntities; // @synthesize downloadEntities=_downloadEntities;
@@ -48,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)downloadCellDidRequestCancelDownload:(id)arg1;
 - (void)downloadManager:(id)arg1 downloadedFetchDidFinishWithEntities:(id)arg2;
 - (void)downloadManager:(id)arg1 downloadsDidChange:(id)arg2;
-- (id)initWithMediaLibrary:(id)arg1;
+- (id)initWithDataSource:(id)arg1;
 - (void)loadView;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
@@ -61,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

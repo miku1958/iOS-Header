@@ -8,6 +8,7 @@
 
 @interface NSString (PKStringAdditions)
 - (id)decodeHexadecimal;
+- (id)decodeURLBase64;
 - (id)pk_capitalizedStringForPreferredLocale;
 - (id)pk_lowercaseStringForPreferredLocale;
 - (double)pk_normalizedLevenshteinDistanceFromString:(id)arg1 decimalPlaces:(unsigned long long)arg2;

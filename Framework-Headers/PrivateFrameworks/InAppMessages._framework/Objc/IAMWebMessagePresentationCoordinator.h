@@ -39,7 +39,7 @@
 - (id)presentingViewController;
 - (void)viewController:(id)arg1 didReportDismissalAction:(long long)arg2;
 - (void)webMessageControllerWebViewDidReportEvent:(id)arg1 event:(id)arg2;
-- (void)webMessageControllerWebViewDidRequestAction:(id)arg1 actionConfiguration:(id)arg2;
+- (void)webMessageControllerWebViewDidRequestAction:(id)arg1 actionConfiguration:(id)arg2 options:(id)arg3;
 - (void)webMessageControllerWebViewDidRequestClose:(id)arg1;
 - (void)webMessageControllerWebViewDidRequestOpenURL:(id)arg1 url:(id)arg2 options:(id)arg3;
 

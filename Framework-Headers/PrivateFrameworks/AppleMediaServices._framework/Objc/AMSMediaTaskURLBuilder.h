@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSMediaTaskURLBuilder : NSObject
 {
+    BOOL _charts;
     NSArray *_additionalPlatforms;
     id<AMSBagProtocol> _bag;
     NSArray *_bundleIdentifiers;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *additionalPlatforms; // @synthesize additionalPlatforms=_additionalPlatforms;
 @property (readonly, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
+@property (nonatomic) BOOL charts; // @synthesize charts=_charts;
 @property (readonly, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property (readonly, nonatomic) AMSMediaTaskTypeConfig *config; // @synthesize config=_config;
 @property (strong, nonatomic) NSDictionary *filters; // @synthesize filters=_filters;
@@ -37,8 +39,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_addBundleIdentifiers:(id)arg1;
+- (void)_addCharts:(id)arg1;
 - (void)_addItemIdentifiers:(id)arg1;
-- (void)_addSearchIdentifiers:(id)arg1;
+- (void)_addSearchTerm:(id)arg1;
 - (id)_devicePlatform;
 - (id)_hostPromise;
 - (id)_pathPromise;

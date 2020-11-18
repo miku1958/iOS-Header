@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSArray, NSObject, NSString, OBPrivacyLinkController, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentWebService, PKTableHeaderView, RemoteUIController;
+@class CLInUseAssertion, NSArray, NSObject, NSString, OBPrivacyLinkController, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentProvisioningTracker, PKPaymentWebService, PKTableHeaderView, RemoteUIController;
 @protocol NSObject, OS_dispatch_source, PKAddPaymentPassRequestViewControllerDelegate, PKPaymentSetupViewControllerDelegate;
 
 @interface PKAddPaymentPassRequestViewController : UITableViewController <PKPaymentSetupViewControllerDelegate>
@@ -32,6 +32,7 @@
     PKTableHeaderView *_headerView;
     OBPrivacyLinkController *_privacyController;
     RemoteUIController *_termsController;
+    PKPaymentProvisioningTracker *_provisioningTracker;
     BOOL _hidePrivacy;
     BOOL _singleTarget;
     id<PKAddPaymentPassRequestViewControllerDelegate> _delegate;
@@ -57,6 +58,7 @@
 - (void)_fetchAddRequestWithCertificatesResponse:(id)arg1;
 - (void)_fetchCertificates;
 - (void)_handleAdd:(id)arg1;
+- (void)_handleRawResponseData:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performEligibility;
 - (void)_performMoreInfoItemPush;
 - (void)_performNextProvisioningStep;
@@ -66,6 +68,7 @@
 - (void)_performTerms:(id)arg1;
 - (void)_presentDisplayableError:(id)arg1;
 - (void)_presentDisplayableError:(id)arg1 allowEarlyExit:(BOOL)arg2;
+- (void)_promptHSA2Required;
 - (void)_provisioningLocalizedProgressDescriptionDidChange:(id)arg1;
 - (void)_setHeaderState:(long long)arg1;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;

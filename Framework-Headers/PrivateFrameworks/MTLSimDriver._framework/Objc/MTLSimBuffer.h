@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _deallocator;
     unsigned long long _length;
     struct __IOSurface *_iosurface;
+    unsigned long long _gpuAddress;
 }
 
 @property (readonly) unsigned long long allocatedSize;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
+@property (readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hazardTrackingMode;
 @property (readonly) id<MTLHeap> heap;

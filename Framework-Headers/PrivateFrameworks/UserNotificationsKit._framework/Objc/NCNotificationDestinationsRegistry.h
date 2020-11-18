@@ -10,9 +10,9 @@
 
 @interface NCNotificationDestinationsRegistry : NSObject
 {
-    struct NSMutableDictionary *_destinations;
-    struct NSMutableDictionary *_activeDestinations;
-    struct NSMutableDictionary *_readyDestinations;
+    NSMutableDictionary *_destinations;
+    NSMutableDictionary *_activeDestinations;
+    NSMutableDictionary *_readyDestinations;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *activeDestinations; // @synthesize activeDestinations=_activeDestinations;
@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) NSArray *registeredDestinations;
 
 - (void).cxx_destruct;
-- (id)_destinationsForRequestDestinations:(id)arg1 inDestinationDict:(struct NSMutableDictionary *)arg2;
+- (id)_destinationsForRequestDestinations:(id)arg1 inDestinationDict:(id)arg2;
 - (id)destinationIdentifiersForRequestDestinations:(id)arg1;
 - (id)destinationsForRequestDestinations:(id)arg1;
 - (BOOL)hasActiveDestinationsForRequest:(id)arg1;

@@ -17,6 +17,7 @@
 + (BOOL)searchableItemIsEligibleForDeferredHarvesting:(id)arg1;
 + (BOOL)searchableItemIsEligibleForDissectorPipeline:(id)arg1;
 + (BOOL)searchableItemIsEligibleForHarvesting:(id)arg1 eligibleExceptForAge:(BOOL *)arg2;
++ (BOOL)searchableItemIsStoredEncrypted:(id)arg1 bundleIdentifier:(id)arg2;
 
 @end
 

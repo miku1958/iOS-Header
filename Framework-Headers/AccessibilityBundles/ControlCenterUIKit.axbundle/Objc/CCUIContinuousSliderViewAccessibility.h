@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityAdjustSliderValueInForwardDirection:(BOOL)arg1;
+- (BOOL)_accessibilityIsVerticalAdjustableElement;
 - (void)_continueTrackingWithGestureRecognizer:(id)arg1;
 - (void)_endTrackingWithGestureRecognizer:(id)arg1;
 - (void)accessibilityDecrement;

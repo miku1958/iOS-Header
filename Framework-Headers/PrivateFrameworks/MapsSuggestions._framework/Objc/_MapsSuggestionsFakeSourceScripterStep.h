@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _MapsSuggestionsFakeSourceScripterStep : NSObject
 {
-    struct NSArray *_entries;
+    NSArray *_entries;
     unsigned long long _type;
 }
 
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithEntries:(struct NSArray *)arg1 type:(unsigned long long)arg2;
+- (id)initWithEntries:(id)arg1 type:(unsigned long long)arg2;
 
 @end
 

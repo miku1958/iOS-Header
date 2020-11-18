@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BMBehaviorRetriever, _CDInteractionStore;
+@class BMBehaviorRetriever, NSUserDefaults, _CDInteractionStore;
 @protocol _DKKnowledgeQuerying;
 
 @interface _PSRuleOverlapFeedback : NSObject
@@ -14,16 +14,20 @@
     BMBehaviorRetriever *_behaviorRetriever;
     _CDInteractionStore *_interactionStore;
     id<_DKKnowledgeQuerying> _knowledgeStore;
+    NSUserDefaults *_ruleOverlapFeedbackDefaults;
 }
 
 @property (readonly, nonatomic) BMBehaviorRetriever *behaviorRetriever; // @synthesize behaviorRetriever=_behaviorRetriever;
 @property (strong, nonatomic) _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
 @property (strong, nonatomic) id<_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
+@property (strong, nonatomic) NSUserDefaults *ruleOverlapFeedbackDefaults; // @synthesize ruleOverlapFeedbackDefaults=_ruleOverlapFeedbackDefaults;
 
 - (void).cxx_destruct;
 - (int)bucketedValue:(int)arg1;
 - (id)constantFeaturesFromContextItems:(id)arg1;
+- (id)constantPETFeaturesFromContextItems:(id)arg1;
 - (id)contextItemsFromEvent:(id)arg1;
+- (id)feedbackPETPayloadForRule:(id)arg1 ForInteraction:(id)arg2 ForContextItems:(id)arg3 WithConstantFeatures:(id)arg4;
 - (id)feedbackPayloadForRule:(id)arg1 ForInteraction:(id)arg2 ForContextItems:(id)arg3 WithConstantFeatures:(id)arg4;
 - (id)init;
 - (id)interactionStoreEventsSinceDate:(id)arg1;
@@ -32,7 +36,6 @@
 - (BOOL)recipientPredictedCorrectlyByRule:(id)arg1 interaction:(id)arg2 bundleId:(id)arg3;
 - (void)reviewLastDayOfShares;
 - (id)sharesheetFeedbackEventsSinceDate:(id)arg1;
-- (id)subsetOfLoiItems:(id)arg1;
 - (BOOL)targetAppPredictedCorrectlyByRule:(id)arg1 bundleId:(id)arg2;
 
 @end

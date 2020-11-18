@@ -6,10 +6,12 @@
 
 #import <HMFoundation/HMFMessageTransport.h>
 
-@class NSXPCConnection;
+#import <HomeKit/HMFMessageTransportDelegate-Protocol.h>
+
+@class NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface HMXPCClient : HMFMessageTransport
+@interface HMXPCClient : HMFMessageTransport <HMFMessageTransportDelegate>
 {
     BOOL _connectionValid;
     BOOL _requiresCheckin;
@@ -21,14 +23,19 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (nonatomic) BOOL connectionValid; // @synthesize connectionValid=_connectionValid;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) int notifyRegisterToken; // @synthesize notifyRegisterToken=_notifyRegisterToken;
 @property (nonatomic) BOOL notifyRegistered; // @synthesize notifyRegistered=_notifyRegistered;
 @property (copy, nonatomic) CDUnknownBlockType reconnectionHandler; // @synthesize reconnectionHandler=_reconnectionHandler;
 @property (nonatomic) BOOL requiresCheckin; // @synthesize requiresCheckin=_requiresCheckin;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)registerReconnectionHandler:(CDUnknownBlockType)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

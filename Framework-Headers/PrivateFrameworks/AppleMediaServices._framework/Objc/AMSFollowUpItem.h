@@ -17,6 +17,7 @@
     BOOL _shouldPostNotification;
     NSArray *_actions;
     long long _displayStyle;
+    NSString *_footer;
     NSString *_informativeText;
     AMSMetricsEvent *_metricsEvent;
     NSString *_title;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) BOOL active;
 @property (readonly, nonatomic) NSString *backingIdentifier;
 @property (nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
+@property (strong, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property (readonly, nonatomic) NSString *groupIdentifier;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *informativeText; // @synthesize informativeText=_informativeText;

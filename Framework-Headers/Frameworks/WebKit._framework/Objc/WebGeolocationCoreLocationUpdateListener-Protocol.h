@@ -10,7 +10,7 @@
 - (void)errorOccurred:(NSString *)arg1;
 - (void)geolocationAuthorizationDenied;
 - (void)geolocationAuthorizationGranted;
-- (void)positionChanged:(struct GeolocationPosition *)arg1;
+- (void)positionChanged:(struct GeolocationPositionData *)arg1;
 - (void)resetGeolocation;
 @end
 

@@ -21,10 +21,12 @@
     NSString *_subtitle;
     NSString *_location;
     HKClinicalBrand *_brand;
+    NSString *_countryCode;
 }
 
 @property (readonly, copy, nonatomic) NSString *batchID; // @synthesize batchID=_batchID;
 @property (readonly, copy, nonatomic) HKClinicalBrand *brand; // @synthesize brand=_brand;
+@property (readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
@@ -41,7 +43,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)informationURL;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithExternalID:(id)arg1 batchID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 location:(id)arg5 supported:(BOOL)arg6 brand:(id)arg7;
+- (id)initWithExternalID:(id)arg1 batchID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 location:(id)arg5 supported:(BOOL)arg6 countryCode:(id)arg7 brand:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFMessage.h>
 
-@class HMFActivity, HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFLogEventSession, HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMutableMessage : HMFMessage
 {
@@ -16,6 +16,7 @@
 @property (strong, nonatomic) HMFMessageDestination *destination; // @dynamic destination;
 @property (copy, nonatomic) NSDictionary *headers; // @dynamic headers;
 @property (copy, nonatomic) NSUUID *identifier; // @dynamic identifier;
+@property (strong, nonatomic) HMFLogEventSession *logEventSession; // @dynamic logEventSession;
 @property (copy, nonatomic) NSDictionary *messagePayload; // @dynamic messagePayload;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
 @property (nonatomic) long long qualityOfService; // @dynamic qualityOfService;

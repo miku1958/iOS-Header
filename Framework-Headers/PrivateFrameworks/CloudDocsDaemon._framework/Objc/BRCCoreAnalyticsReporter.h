@@ -12,9 +12,10 @@
 
 + (id)dictionaryForErrorsByZone:(id)arg1 wantPrivateZone:(BOOL)arg2;
 + (void)sendTelemetryReport:(id)arg1;
-+ (id)telemetryDictionaryToUploadForError:(id)arg1 count:(id)arg2 syncType:(id)arg3 totalItemsCount:(id)arg4 zoneType:(id)arg5 zoneCountsOnly:(BOOL)arg6 isFolderSharingEnabled:(BOOL)arg7;
-+ (BOOL)uploadErrorsAsIndividualEvents:(id)arg1 syncType:(id)arg2 totalItemsCount:(unsigned long long)arg3 zoneType:(id)arg4 zoneCountsOnly:(BOOL)arg5 isFolderSharingEnabled:(BOOL)arg6;
++ (id)telemetryDictionaryToUploadForError:(id)arg1 errorMessage:(id)arg2 count:(id)arg3 syncType:(id)arg4 totalItemsCount:(id)arg5 zoneType:(id)arg6 zoneCountsOnly:(BOOL)arg7 isFolderSharingEnabled:(BOOL)arg8 dsid:(id)arg9 rampNumber:(id)arg10 lastFailureDate:(id)arg11 pcsState:(id)arg12;
++ (BOOL)uploadLoadErrorsAsIndividualEvents:(id)arg1 syncType:(id)arg2 totalItemsCount:(unsigned long long)arg3 zoneCountsOnly:(BOOL)arg4 isFolderSharingEnabled:(BOOL)arg5 dsid:(id)arg6 rampNumber:(id)arg7;
 + (void)uploadMetricsReport:(id)arg1;
++ (BOOL)uploadSyncErrorsAsIndividualEvents:(id)arg1 syncType:(id)arg2 totalItemsCount:(unsigned long long)arg3 zoneType:(id)arg4 zoneCountsOnly:(BOOL)arg5 isFolderSharingEnabled:(BOOL)arg6 dsid:(id)arg7 rampNumber:(id)arg8;
 
 @end
 

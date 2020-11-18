@@ -31,7 +31,7 @@
 
 + (void)logDeviceList:(id)arg1;
 - (void).cxx_destruct;
-- (id)attributedStringWithAttributes:(id)arg1 asteriskColor:(struct UIColor *)arg2;
+- (id)attributedStringWithAttributes:(id)arg1 asteriskColor:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithName:(id)arg1;

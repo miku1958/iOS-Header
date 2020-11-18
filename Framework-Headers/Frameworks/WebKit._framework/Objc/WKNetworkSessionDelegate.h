@@ -14,7 +14,8 @@
 __attribute__((visibility("hidden")))
 @interface WKNetworkSessionDelegate : NSObject <NSURLSessionDataDelegate, NSURLSessionWebSocketDelegate>
 {
-    struct RefPtr<WebKit::NetworkSessionCocoa, WTF::DumbPtrTraits<WebKit::NetworkSessionCocoa>> _session;
+    struct WeakPtr<WebKit::NetworkSessionCocoa> _session;
+    struct WeakPtr<WebKit::SessionWrapper> _sessionWrapper;
     BOOL _withCredentials;
 }
 
@@ -28,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didBecomeDownloadTask:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 willCacheResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didResumeAtOffset:(long long)arg3 expectedTotalBytes:(long long)arg4;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 webSocketTask:(id)arg2 didOpenWithProtocol:(id)arg3;
 - (struct NetworkDataTaskCocoa *)existingTask:(id)arg1;
 - (struct WebSocketTask *)existingWebSocketTask:(id)arg1;
-- (id)initWithNetworkSession:(struct NetworkSessionCocoa *)arg1 withCredentials:(BOOL)arg2;
+- (id)initWithNetworkSession:(struct NetworkSessionCocoa *)arg1 wrapper:(struct SessionWrapper *)arg2 withCredentials:(BOOL)arg3;
 - (void)sessionInvalidated;
 
 @end

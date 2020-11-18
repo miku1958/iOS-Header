@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSSet, NSString, NSURL, PKAccountAdditionalPushTopics, PKAccountDetails, PKCreditAccountDetails;
+@class NSArray, NSDate, NSSet, NSString, NSURL, PKAccountAdditionalPushTopics, PKAccountDetails, PKCreditAccountDetails;
 
 @interface PKAccount : NSObject <NSSecureCoding, NSCopying>
 {
@@ -26,6 +26,7 @@
     NSSet *_supportedFeatures;
     PKAccountAdditionalPushTopics *_additionalPushTopics;
     NSDate *_lastUpdated;
+    NSArray *_cloudStoreZoneNames;
 }
 
 @property (nonatomic) unsigned long long accessLevel; // @synthesize accessLevel=_accessLevel;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL accountStateDirty; // @synthesize accountStateDirty=_accountStateDirty;
 @property (strong, nonatomic) PKAccountAdditionalPushTopics *additionalPushTopics; // @synthesize additionalPushTopics=_additionalPushTopics;
 @property (nonatomic) BOOL blockNotifications; // @synthesize blockNotifications=_blockNotifications;
+@property (copy, nonatomic) NSArray *cloudStoreZoneNames; // @synthesize cloudStoreZoneNames=_cloudStoreZoneNames;
 @property (readonly, nonatomic) PKCreditAccountDetails *creditDetails;
 @property (strong, nonatomic) PKAccountDetails *details; // @synthesize details=_details;
 @property (nonatomic) unsigned long long feature; // @synthesize feature=_feature;

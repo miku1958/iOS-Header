@@ -28,10 +28,12 @@
     NSDictionary *_searchIndexUpdates;
     NSSet *_albumCountsAndDateRangeUpdates;
     NSDictionary *_assetsForAnalysis;
+    NSSet *_assetsForDuetDelete;
 }
 
 @property (copy, nonatomic) NSSet *albumCountsAndDateRangeUpdates; // @synthesize albumCountsAndDateRangeUpdates=_albumCountsAndDateRangeUpdates;
 @property (copy, nonatomic) NSDictionary *assetsForAnalysis; // @synthesize assetsForAnalysis=_assetsForAnalysis;
+@property (copy, nonatomic) NSSet *assetsForDuetDelete; // @synthesize assetsForDuetDelete=_assetsForDuetDelete;
 @property (copy, nonatomic) NSArray *assetsForFilesystemPersistency; // @synthesize assetsForFilesystemPersistency=_assetsForFilesystemPersistency;
 @property (copy, nonatomic) NSArray *cloudFeedAlbumUpdates; // @synthesize cloudFeedAlbumUpdates=_cloudFeedAlbumUpdates;
 @property (copy, nonatomic) NSArray *cloudFeedAssetInserts; // @synthesize cloudFeedAssetInserts=_cloudFeedAssetInserts;

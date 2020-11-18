@@ -6,24 +6,29 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class HKClinicalProvider, HRProfile, SFSafariViewController;
+@class HKClinicalProvider, HRProfile, SFSafariViewController, WDClinicalGatewayProxy;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalOnboardingOAuthNavigationViewController : UINavigationController
 {
+    BOOL _showProviderNotFound;
+    BOOL _onboardingSourceIsDeepLink;
     HRProfile *_profile;
     SFSafariViewController *_safariViewController;
     HKClinicalProvider *_providerToPresent;
+    WDClinicalGatewayProxy *_gatewayProxyToTry;
 }
 
+@property (strong, nonatomic) WDClinicalGatewayProxy *gatewayProxyToTry; // @synthesize gatewayProxyToTry=_gatewayProxyToTry;
+@property (nonatomic) BOOL onboardingSourceIsDeepLink; // @synthesize onboardingSourceIsDeepLink=_onboardingSourceIsDeepLink;
 @property (readonly, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) HKClinicalProvider *providerToPresent; // @synthesize providerToPresent=_providerToPresent;
-@property (strong, nonatomic) SFSafariViewController *safariViewController; // @synthesize safariViewController=_safariViewController;
+@property (readonly, nonatomic) SFSafariViewController *safariViewController; // @synthesize safariViewController=_safariViewController;
+@property (nonatomic) BOOL showProviderNotFound; // @synthesize showProviderNotFound=_showProviderNotFound;
 
 + (id)clinicalOnboardingOauthViewControllerWithProfile:(id)arg1;
 - (void).cxx_destruct;
 - (id)_onboardingViewController;
-- (void)_postAWDOnboardingMetric;
 - (void)beginListeningToNotification;
 - (void)completionNotificationHandler:(id)arg1;
 - (void)createRootViewController;
@@ -31,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithProfile:(id)arg1;
 - (void)presentSafariViewController;
+- (void)presentSafariViewController:(id)arg1 withGatewayUrl:(id)arg2;
 - (void)showClinicalAccountEducationViewControllerWithAccount:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;

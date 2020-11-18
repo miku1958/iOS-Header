@@ -39,6 +39,7 @@
 - (id)initWithPBItem:(id)arg1;
 - (void)instantiateObjectOfClass:(Class)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)instantiateObjectOfClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)loadObjectOfClass:(Class)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerDataRepresentationForTypeIdentifier:(id)arg1 loadHandler:(CDUnknownBlockType)arg2;
 - (void)registerDataRepresentationForTypeIdentifier:(id)arg1 options:(id)arg2 loadHandler:(CDUnknownBlockType)arg3;
 - (void)registerFileRepresentationForTypeIdentifier:(id)arg1 fileOptions:(long long)arg2 loadHandler:(CDUnknownBlockType)arg3;

@@ -8,13 +8,14 @@
 
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class BSMonotonicReferenceTime, NSString, UIImageView, UIPanGestureRecognizer, UIView, _UIBackdropView;
+@class BSMonotonicReferenceTime, NSString, SBIndirectPanGestureRecognizer, UIImageView, UIPanGestureRecognizer, UIView, _UIBackdropView;
 @protocol BSInvalidatable, SBGrabberTongueDelegate;
 
 @interface SBGrabberTongue : NSObject <SBSystemGestureRecognizerDelegate>
 {
     BOOL _invalidated;
     UIPanGestureRecognizer *_edgePullGestureRecognizer;
+    SBIndirectPanGestureRecognizer *_indirectEdgePullGestureRecognizer;
     UIView *_tongueContainer;
     _UIBackdropView *_tongueBackdropView;
     UIImageView *_tongueChevron;
@@ -66,7 +67,7 @@
 - (BOOL)_shouldAllowSecondSwipeWithRecognizer:(id)arg1;
 - (BOOL)_shouldReceiveTouch:(id)arg1;
 - (BOOL)_shouldShowTongueOnFirstSwipeWithRecognizer:(id)arg1;
-- (BOOL)_tongueOrPullEnabled;
+- (BOOL)_tongueOrPullEnabledForGestureRecognizer:(id)arg1;
 - (struct CGAffineTransform)_transformForTongueContainer;
 - (void)_updateCancelsTouchesWithRecognizer:(id)arg1;
 - (void)_willDismiss;
@@ -80,6 +81,7 @@
 - (id)edgePullGestureRecognizer;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (id)indirectEdgePullGestureRecognizer;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 edge:(unsigned long long)arg2 type:(unsigned long long)arg3;
 - (void)installInView:(id)arg1 withColorStyle:(long long)arg2;

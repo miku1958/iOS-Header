@@ -28,8 +28,8 @@
 + (id)buildWithDataURL:(id)arg1 contentType:(id)arg2 size:(id)arg3 hashSHA256:(id)arg4 certificatePinningIdentifiers:(id)arg5;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)loadPayload:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
-- (id)serializePayloadWithType:(short)arg1;
+- (BOOL)loadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (id)serializeWithType:(short)arg1;
 
 @end
 

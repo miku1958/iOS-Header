@@ -35,7 +35,6 @@
     UITapGestureRecognizer *_collectionViewDismissalTapGesture;
     UIPanGestureRecognizer *_collectionViewScrollPanGesture;
     NSHashTable *_blockingGestureRecognizers;
-    NSUUID *_currentTransitionUUID;
     CCUIOverlayTransitionState *_previousTransitionState;
     CCUIStatusBarStyleSnapshot *_hostStatusBarStyleSnapshot;
     FBSDisplayLayoutMonitor *_layoutMonitor;
@@ -43,8 +42,10 @@
     unsigned long long _presentationState;
     unsigned long long _transitionState;
     id<CCUIHostStatusBarStyleProvider> _hostStatusBarStyleProvider;
+    NSUUID *_currentTransitionUUID;
 }
 
+@property (copy, nonatomic) NSUUID *currentTransitionUUID; // @synthesize currentTransitionUUID=_currentTransitionUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CCUIModularControlCenterOverlayViewControllerDelegate> delegate; // @dynamic delegate;
@@ -69,7 +70,7 @@
 @property (nonatomic, getter=isReachabilityActive) BOOL reachabilityActive; // @synthesize reachabilityActive=_reachabilityActive;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long transitionState; // @synthesize transitionState=_transitionState;
+@property (nonatomic) unsigned long long transitionState; // @synthesize transitionState=_transitionState;
 
 + (void)_addBlockForSignpost:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 + (id)_blocksBySignpost;
@@ -94,8 +95,8 @@
 - (void)_dismissalPanGestureRecognizerFailed:(id)arg1;
 - (BOOL)_dismissalPanGestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)_dismissalTapGestureRecognizerShouldBegin:(id)arg1;
-- (void)_endDismissalWithUUID:(id)arg1 animated:(BOOL)arg2 success:(BOOL)arg3;
-- (void)_endPresentationWithUUID:(id)arg1 success:(BOOL)arg2;
+- (void)_endDismissalWithUUID:(id)arg1 animated:(BOOL)arg2;
+- (void)_endPresentationWithUUID:(id)arg1;
 - (BOOL)_gestureRecognizerIsActive:(id)arg1;
 - (void)_handleDismissalFlickGestureRecognizer:(id)arg1;
 - (void)_handleDismissalPanGestureRecognizer:(id)arg1;

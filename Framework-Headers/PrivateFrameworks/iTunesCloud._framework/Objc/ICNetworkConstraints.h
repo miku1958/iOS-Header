@@ -25,8 +25,10 @@
 - (void).cxx_destruct;
 - (id)_copyWithClass:(Class)arg1 zone:(struct _NSZone *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (BOOL)shouldAllowDataForCellularNetworkTypes;
 - (BOOL)shouldAllowDataForNetworkType:(long long)arg1;

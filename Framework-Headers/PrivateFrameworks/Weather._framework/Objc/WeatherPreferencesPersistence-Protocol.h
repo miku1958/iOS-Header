@@ -18,5 +18,6 @@
 - (void)setObject:(id)arg1 forKey:(NSString *)arg2;
 - (NSString *)stringForKey:(NSString *)arg1;
 - (BOOL)synchronize;
+- (void)synchronizeWithCompletionHandler:(void (^)(NSError *))arg1;
 @end
 

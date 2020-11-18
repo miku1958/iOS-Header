@@ -19,7 +19,7 @@
     CDUnknownBlockType _completionHandler;
     NSDictionary *_headerFields;
     SFSession *_session;
-    struct NSSet *_deviceIDs;
+    NSSet *_deviceIDs;
 }
 
 @property (copy, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;

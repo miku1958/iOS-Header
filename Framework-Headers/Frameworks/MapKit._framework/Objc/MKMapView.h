@@ -401,7 +401,7 @@
 - (void)_exit3DMode;
 - (void)_exitARMode;
 - (void)_fixUserLocationFromPresentationValue;
-- (id)_flattenedAnnotationsForAnnotationViews:(id)arg1 maxdisplayPriority:(float *)arg2;
+- (id)_flattenedAnnotationsForAnnotationViews:(id)arg1 maxDisplayPriority:(float *)arg2;
 - (void)_forceFrame;
 - (void)_forceManifestUpdateIfNecessary;
 - (double)_goToCenterCoordinate:(struct CLLocationCoordinate2D)arg1 zoomLevel:(double)arg2 animated:(BOOL)arg3;
@@ -490,6 +490,7 @@
 - (void)_setRouteContextForRoute:(id)arg1;
 - (void)_setRouteContextForRoutes:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)_setRouteContextInspectedLegIndex:(unsigned long long)arg1 inspectedStepIndex:(unsigned long long)arg2;
+- (void)_setShowsAppleLogo:(BOOL)arg1 force:(BOOL)arg2;
 - (void)_setTracePlaybackSpeedMultiplier:(double)arg1;
 - (void)_setUseVehicleHeading:(BOOL)arg1;
 - (void)_setUserTrackingMode:(long long)arg1 animated:(BOOL)arg2 fromTrackingButton:(BOOL)arg3;
@@ -709,6 +710,7 @@
 - (void)mapLayer:(id)arg1 selectedLabelMarkerDidChangeState:(id)arg2;
 - (void)mapLayer:(id)arg1 selectedLabelMarkerWillDisappear:(id)arg2;
 - (void)mapLayer:(id)arg1 showingFlyoverDidChange:(BOOL)arg2;
+- (void)mapLayer:(id)arg1 venueCreated:(id)arg2 venueCreatedBuilding:(id)arg3;
 - (void)mapLayer:(id)arg1 venueWithFocusDidChange:(id)arg2 building:(id)arg3;
 - (void)mapLayer:(id)arg1 willTransitionTo:(long long)arg2;
 - (void)mapLayerARSessionInterruptionEnded:(id)arg1;

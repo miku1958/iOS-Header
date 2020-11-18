@@ -11,8 +11,8 @@
 @interface _TtC8FMIPCore30FMIPBeaconRefreshingController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *beaconManager;
     MISSING_TYPE *beacons;
+    MISSING_TYPE *unknownBeacons;
     MISSING_TYPE *ownerSession;
     MISSING_TYPE *refreshQueue;
     MISSING_TYPE *callbackInterval;

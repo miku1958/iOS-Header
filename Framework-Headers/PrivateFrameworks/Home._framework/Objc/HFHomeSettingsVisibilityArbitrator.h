@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (void)_queryHomeAppInstallStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadVisibilityStateIncludingInstallState:(BOOL)arg1;
+- (void)_startListeningForManagedConfigurationChanges;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)dealloc;

@@ -19,6 +19,7 @@
 - (BOOL)alwaysShowsButton;
 - (id)initWithDefinition:(id)arg1;
 - (id)localizedLabelForPossibleState:(id)arg1;
+- (BOOL)parameterStateIsValid:(id)arg1;
 - (void)possibleStatesDidChange;
 
 @end

@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (id)_matchSnapshotForCompletionMatch:(id)arg1;
 - (void)enumerateMatchDataForTypedStringHint:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)fakeBookmarkMatchDataWithURLString:(id)arg1 title:(id)arg2;
+- (id)fakeBookmarkMatchDataWithURLString:(id)arg1 title:(id)arg2 shouldPreload:(BOOL)arg3;
 - (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithItems:(unique_ptr_91c700ae)arg1;

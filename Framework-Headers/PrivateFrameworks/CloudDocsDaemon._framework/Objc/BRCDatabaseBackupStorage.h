@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)addRecord:(id)arg1;
 - (BOOL)attachDatabase:(id)arg1 error:(id *)arg2;
-- (struct PQLResultSet *)backupManifestEnumerator:(id)arg1;
+- (id)backupManifestEnumerator:(id)arg1;
 - (BOOL)clearStagedIDs:(id)arg1;
 - (void)dealloc;
 - (id)docIDForURL:(id)arg1;

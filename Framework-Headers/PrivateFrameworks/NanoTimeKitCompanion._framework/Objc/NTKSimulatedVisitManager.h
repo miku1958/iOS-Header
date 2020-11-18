@@ -13,8 +13,8 @@
 - (id)currentVisit;
 - (id)init;
 - (id)previousVisit;
-- (struct NSString *)startVisitUpdatesWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)stopVisitUpdatesForToken:(struct NSString *)arg1;
+- (id)startVisitUpdatesWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)stopVisitUpdatesForToken:(id)arg1;
 
 @end
 

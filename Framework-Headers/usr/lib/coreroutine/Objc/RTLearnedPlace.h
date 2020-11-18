@@ -41,7 +41,7 @@
 + (BOOL)learnedPlaceTypeIsValid:(unsigned long long)arg1;
 + (unsigned long long)placeTypeFromLocationOfInterestType:(long long)arg1;
 + (unsigned long long)placeTypeFromType:(long long)arg1;
-+ (unsigned long long)placeTypeSourceFromTypeSource:(long long)arg1;
++ (unsigned long long)placeTypeSourceFromTypeSource:(unsigned long long)arg1;
 + (id)placeTypeSourceToString:(unsigned long long)arg1;
 + (id)placeTypeToString:(unsigned long long)arg1;
 - (void).cxx_destruct;

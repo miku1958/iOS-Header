@@ -224,6 +224,7 @@
 - (void)switcherContentController:(id)arg1 setCacheAsynchronousRenderingSurfaces:(BOOL)arg2;
 - (void)switcherContentController:(id)arg1 setContainerStatusBarHidden:(BOOL)arg2 animationDuration:(double)arg3;
 - (void)switcherContentController:(id)arg1 setContentOrientation:(long long)arg2;
+- (void)switcherContentController:(id)arg1 setCursorInteractionsEnabled:(BOOL)arg2;
 - (void)switcherContentController:(id)arg1 setDimmingAlpha:(double)arg2 withAnimationMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)switcherContentController:(id)arg1 setHomeScreenAlpha:(double)arg2 withAnimationMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)switcherContentController:(id)arg1 setHomeScreenScale:(double)arg2 withAnimationMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;

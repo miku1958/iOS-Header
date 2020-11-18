@@ -12,7 +12,7 @@
 #import <HomeKitDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class HMDApplicationRegistry, NSArray, NSMutableSet, NSObject, NSString, NSXPCListener;
-@protocol HMFLocking, OS_dispatch_group, OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDXPCMessageTransport : HMFMessageTransport <NSXPCListenerDelegate, HMDApplicationMonitorDelegate, HMFLogging, HMFMessageTransportDelegate>
 {
@@ -21,10 +21,8 @@
     NSMutableSet *_connections;
     HMDApplicationRegistry *_applicationRegistry;
     NSXPCListener *_listener;
-    NSObject<OS_dispatch_group> *_activeMessageTracker;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_group> *activeMessageTracker; // @synthesize activeMessageTracker=_activeMessageTracker;
 @property (readonly) HMDApplicationRegistry *applicationRegistry; // @synthesize applicationRegistry=_applicationRegistry;
 @property (readonly, copy) NSArray *connections;
 @property (readonly, copy) NSString *debugDescription;

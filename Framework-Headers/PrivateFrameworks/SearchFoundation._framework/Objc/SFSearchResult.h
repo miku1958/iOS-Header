@@ -71,10 +71,7 @@
     unsigned long long _minimumRankOfTopHitToSuppressResult;
     NSString *_mediaType;
     double _serverScore;
-    NSDictionary *_topicDistribution;
-    NSDictionary *_featureScaling;
     double _personalizationScore;
-    unsigned long long _origRank;
     SFCustom *_customProperties;
     NSString *_resultType;
     NSString *_resultTemplate;
@@ -86,6 +83,7 @@
     NSString *_resultBundleId;
     SFImage *_icon;
     NSDictionary *_localFeatures;
+    NSDictionary *_serverFeatures;
     NSString *_intendedQuery;
     NSString *_correctedQuery;
     NSString *_completedQuery;
@@ -131,7 +129,6 @@
 @property (strong, nonatomic) NSNumber *engagementScore; // @synthesize engagementScore=_engagementScore;
 @property (strong, nonatomic) NSData *entityData; // @synthesize entityData=_entityData;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
-@property (copy, nonatomic) NSDictionary *featureScaling; // @synthesize featureScaling=_featureScaling;
 @property (copy, nonatomic) NSString *fileProviderDomainIdentifier; // @synthesize fileProviderDomainIdentifier=_fileProviderDomainIdentifier;
 @property (copy, nonatomic) NSString *fileProviderIdentifier; // @synthesize fileProviderIdentifier=_fileProviderIdentifier;
 @property (copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
@@ -162,7 +159,6 @@
 @property (strong, nonatomic) SFMoreResults *moreResults; // @synthesize moreResults=_moreResults;
 @property (strong, nonatomic) SFPunchout *moreResultsPunchout; // @synthesize moreResultsPunchout=_moreResultsPunchout;
 @property (copy, nonatomic) NSString *nearbyBusinessesString; // @synthesize nearbyBusinessesString=_nearbyBusinessesString;
-@property (nonatomic) unsigned long long origRank; // @synthesize origRank=_origRank;
 @property (nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
 @property (nonatomic) int placement; // @synthesize placement=_placement;
 @property (nonatomic) BOOL preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
@@ -182,6 +178,7 @@
 @property (copy, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
 @property (copy, nonatomic) NSString *sectionHeaderMore; // @synthesize sectionHeaderMore=_sectionHeaderMore;
 @property (copy, nonatomic) NSURL *sectionHeaderMoreURL; // @synthesize sectionHeaderMoreURL=_sectionHeaderMoreURL;
+@property (copy, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (nonatomic) double serverScore; // @synthesize serverScore=_serverScore;
 @property (copy, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;
 @property (copy, nonatomic) NSString *srf; // @synthesize srf=_srf;
@@ -192,7 +189,6 @@
 @property (copy, nonatomic) NSString *titleNote; // @synthesize titleNote=_titleNote;
 @property (strong, nonatomic) NSNumber *titleNoteSize; // @synthesize titleNoteSize=_titleNoteSize;
 @property (nonatomic) int topHit; // @synthesize topHit=_topHit;
-@property (copy, nonatomic) NSDictionary *topicDistribution; // @synthesize topicDistribution=_topicDistribution;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (copy, nonatomic) NSString *userActivityRequiredString; // @synthesize userActivityRequiredString=_userActivityRequiredString;

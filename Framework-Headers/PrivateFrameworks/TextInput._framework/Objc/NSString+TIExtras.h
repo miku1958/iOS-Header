@@ -9,6 +9,7 @@
 @interface NSString (TIExtras)
 + (struct USet *)_bopomofoSet;
 + (struct USet *)_bopomofoToneSet;
++ (struct USet *)_bopomofoWithoutToneSet;
 + (struct USet *)_characterSetWithPattern:(id)arg1;
 + (struct USet *)_fullwidthLettersAndNumbersSet;
 + (struct USet *)_fullwidthLettersAndSymbolsSet;
@@ -27,6 +28,7 @@
 - (unsigned long long)_UTF8SizeOfRange:(struct _NSRange)arg1;
 - (BOOL)_containsBopomofoOnly;
 - (BOOL)_containsBopomofoToneOnly;
+- (BOOL)_containsBopomofoWithoutToneOnly;
 - (BOOL)_containsCJKScriptsOnly;
 - (BOOL)_containsCJKSymbolsAndPunctuation;
 - (BOOL)_containsCJScripts;

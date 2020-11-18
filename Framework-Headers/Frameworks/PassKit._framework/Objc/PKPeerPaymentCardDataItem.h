@@ -19,6 +19,7 @@
 + (long long)dataType;
 - (void).cxx_destruct;
 - (BOOL)isValidWithError:(id *)arg1;
+- (BOOL)shouldShowDisclosure;
 
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AppAnalytics/AADataEventType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface AARawDataEvent : NSObject <AADataEventType>
+@interface AARawDataEvent : NSObject
 {
     MISSING_TYPE *name;
     MISSING_TYPE *dictionary;

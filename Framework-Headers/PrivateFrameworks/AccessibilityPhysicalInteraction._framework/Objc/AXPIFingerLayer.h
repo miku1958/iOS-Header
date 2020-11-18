@@ -13,26 +13,17 @@
     BOOL _isSelected;
     BOOL _pressed;
     unsigned long long _shape;
-    CAShapeLayer *_outerStrokeTrackLayer;
-    CAShapeLayer *_outerStrokeLayer;
-    CAShapeLayer *_innerStrokeLayer;
     id<AXPIFingerAppearanceDelegate> _appearanceDelegate;
     struct CGRect _outerFrame;
 }
 
 @property (weak, nonatomic) id<AXPIFingerAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
-@property (strong, nonatomic) CAShapeLayer *innerStrokeLayer; // @synthesize innerStrokeLayer=_innerStrokeLayer;
 @property (readonly, nonatomic) struct CGRect outerFrame; // @synthesize outerFrame=_outerFrame;
-@property (strong, nonatomic) CAShapeLayer *outerStrokeLayer; // @synthesize outerStrokeLayer=_outerStrokeLayer;
-@property (strong, nonatomic) CAShapeLayer *outerStrokeTrackLayer; // @synthesize outerStrokeTrackLayer=_outerStrokeTrackLayer;
 @property (nonatomic, getter=isPressed) BOOL pressed; // @synthesize pressed=_pressed;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_isSelected;
 @property (nonatomic) unsigned long long shape; // @synthesize shape=_shape;
 
 - (void).cxx_destruct;
-- (void)_setPathForCurrentShape;
-- (void)animateToTapWithDuration:(double)arg1;
-- (void)dealloc;
 - (id)initWithAppearanceDelegate:(id)arg1;
 
 @end

@@ -64,7 +64,8 @@
 - (void)_addKeyPathsForDisplayMessageChangeToKeyPaths:(id)arg1;
 - (void)_addOrderByToThreadSelect:(id)arg1 forSortDescriptors:(id)arg2;
 - (void)_addPersistedMessages:(id)arg1 journaled:(BOOL)arg2 generationWindow:(id)arg3;
-- (BOOL)_addThreadScopeToDatabase:(id)arg1 withMailboxDatabaseID:(long long)arg2 needsUpdate:(BOOL)arg3 connection:(id)arg4;
+- (BOOL)_addThreadScopeToDatabase:(id)arg1 needsUpdate:(BOOL)arg2 lastViewedDate:(id)arg3 updateThreadScopeManager:(BOOL)arg4;
+- (BOOL)_addThreadScopeToDatabase:(id)arg1 withMailboxDatabaseID:(long long)arg2 needsUpdate:(BOOL)arg3 lastViewedDate:(id)arg4 updateThreadScopeManager:(BOOL)arg5 connection:(id)arg6;
 - (BOOL)_addThreadScopeToDatabaseWithMailboxType:(id)arg1 needsUpdate:(BOOL)arg2 lastViewedDate:(id)arg3 connection:(id)arg4;
 - (id)_addedMailboxObjectIDsForActivatedAccount:(id)arg1;
 - (id)_addressesFromMessageAddressesStatement:(id)arg1;
@@ -133,6 +134,7 @@
 - (id)_upsertForThreadsWithThreadScopeDatabaseID:(long long)arg1 conversation:(long long)arg2;
 - (id)_wrappedMessageForPersistedMessages:(id)arg1 threadScope:(id)arg2;
 - (id)_wrappedMessagesByThreadScopeForPersistedMessages:(id)arg1;
+- (BOOL)addThreadScopeToDatabase:(id)arg1 needsUpdate:(BOOL)arg2 lastViewedDate:(id)arg3;
 - (BOOL)addThreads:(id)arg1;
 - (BOOL)beginMigratingThreadScope:(id)arg1;
 - (id)changeForThreadWithObjectID:(id)arg1 changedKeyPaths:(id)arg2;
@@ -160,12 +162,13 @@
 - (id)resetThreadScopesForDeactivatedAccount:(id)arg1;
 - (void)resetThreadScopesForMailboxScope:(id)arg1;
 - (void)setNeedsUpdateForThreadScope:(id)arg1;
+- (id)statisticsForThreadScopesWithDatabaseIDs:(id)arg1;
 - (id)threadForObjectID:(id)arg1 originatingQuery:(id)arg2 error:(id *)arg3;
 - (id)threadObjectIDBeforeThreadObjectID:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;
 - (id)threadObjectIDsByNextExistingForThreadObjectIDs:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;
 - (void)threadObjectIDsForThreadScope:(id)arg1 sortDescriptors:(id)arg2 initialBatchSize:(unsigned long long)arg3 journaledObjectIDs:(id)arg4 batchBlock:(CDUnknownBlockType)arg5;
 - (BOOL)threadScopeManager:(id)arg1 evictThreadScopesWithDatabaseIDs:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)threadScopeManager:(id)arg1 gatherStatisticsForThreadScopes:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)threadScopeManager:(id)arg1 gatherStatisticsForThreadScopesWithDatabaseIDs:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)threadScopeManager:(id)arg1 isValidMailboxObjectID:(id)arg2;
 - (BOOL)threadScopeManager:(id)arg1 mailboxScopeExists:(id)arg2;
 - (void)threadScopeManager:(id)arg1 populateThreadScopesWithBlock:(CDUnknownBlockType)arg2;

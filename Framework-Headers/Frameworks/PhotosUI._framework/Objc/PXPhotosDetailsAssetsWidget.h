@@ -106,6 +106,7 @@
 @property (readonly, nonatomic) NSObject<PXAnonymousView> *contentView;
 @property (readonly, nonatomic) long long contentViewAnchoringType;
 @property (strong, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
@@ -160,12 +161,13 @@
 - (void)_updateShowSelectionButton;
 - (void)_updateTilingLayoutIfNeeded;
 - (void)_userDidSelectCurationButton;
-- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)assetsScene:(id)arg1 didTransitionToDataSource:(id)arg2;
 - (id)assetsScene:(id)arg1 layoutForDataSource:(id)arg2;
 - (id)assetsScene:(id)arg1 tileIdentifierConverterForChange:(id)arg2;
 - (void)assetsScene:(id)arg1 willTransitionToDataSource:(id)arg2;
+- (id)bestCursorTileForLiftingAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)checkInTile:(void *)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
 - (void)commitPreviewViewController:(id)arg1;
@@ -211,7 +213,7 @@
 - (id)oneUpPresentationPhotosDetailsContext:(id)arg1;
 - (BOOL)oneUpPresentationShouldAutoPlay:(id)arg1;
 - (void)playButtonTileWasTapped:(id)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (void)scrollViewControllerContentBoundsDidChange:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;

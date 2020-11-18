@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (id)_attributedStringForStringArray:(id)arg1 useGrey:(BOOL)arg2 account:(id)arg3 shouldUppercase:(BOOL)arg4;
 + (long long)_confirmationTitleForString:(id)arg1;
 + (id)_createRequestFromDictionary:(id)arg1 confirmationOnly:(BOOL)arg2 authenticateResponse:(id)arg3 taskInfo:(id)arg4;
++ (id)_flexListDictionaryForValues:(id)arg1 account:(id)arg2 shouldUppercaseText:(BOOL)arg3;
 + (id)_greyAttributedStringForAttributedString:(id)arg1 range:(struct _NSRange)arg2;
 + (long long)_payeeForRequestorValue:(id)arg1;
 + (long long)_payeeInferredFromEnumeratedTitle:(id)arg1;

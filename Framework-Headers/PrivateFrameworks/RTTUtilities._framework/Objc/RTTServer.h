@@ -45,6 +45,7 @@
 - (void)setShouldSuppressIncomingNotification:(BOOL)arg1;
 - (void)setSystemOutputAudioMuted:(BOOL)arg1 withCallID:(id)arg2;
 - (void)setTTYDictionaryAvailability:(BOOL)arg1;
+- (void)terminateConnectionAndNotify:(BOOL)arg1;
 - (id)valueForTTYSetting:(id)arg1;
 
 @end

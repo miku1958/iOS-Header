@@ -40,10 +40,12 @@
 - (BOOL)isAccountCredential;
 - (BOOL)isContactlessProductCredential;
 - (BOOL)isDigitalIssuanceProductCredential;
+- (BOOL)isLocalAppletSubcredentialPassCredential;
 - (BOOL)isLocalPassCredential;
 - (BOOL)isPeerPaymentCredential;
 - (BOOL)isPurchasedProductCredential;
 - (BOOL)isRemoteCredential;
+- (id)localAppletSubcredentialPassCredential;
 - (id)localPassCredential;
 - (id)peerPaymentCredential;
 - (id)purchasedProductCredential;

@@ -69,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)moveToPoint:(const struct CollectionPoint *)arg1 withHeading:(Unit_3d259e8a)arg2 withPitch:(Unit_3d259e8a)arg3 animated:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (double)pitch;
 - (BOOL)restoreViewportFromInfo:(id)arg1;
-- (void)runBumpAnimation:(const Geocentric_d8fde6f2 *)arg1 targetPoint:(const Geocentric_d8fde6f2 *)arg2;
+- (void)runBumpAnimation:(const Geocentric_d8fde6f2 *)arg1 targetPoint:(const Geocentric_d8fde6f2 *)arg2 rigType:(unsigned char)arg3;
 - (Matrix_8746f91e)screenPointWithOffset:(struct CGPoint)arg1;
 - (void)selectLabelMarker:(const shared_ptr_2d33c5e4 *)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setCamera:(id)arg1;

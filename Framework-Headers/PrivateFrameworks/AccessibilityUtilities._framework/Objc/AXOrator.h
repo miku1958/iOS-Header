@@ -24,7 +24,6 @@
     long long _speakingContext;
     AXLanguageTaggedContent *_selectedContent;
     double _audioSessionInactiveTimeout;
-    NSString *_voiceIdentifier;
     AXLanguageTaggedContent *_speakingContent;
     NSArray *_speakingContentTokenRanges;
     unsigned long long _numberOfTokensToSkip;
@@ -43,6 +42,7 @@
 @property (nonatomic) double audioSessionInactiveTimeout; // @synthesize audioSessionInactiveTimeout=_audioSessionInactiveTimeout;
 @property (copy, nonatomic) NSString *content;
 @property (strong, nonatomic) NSString *currentLanguageCode; // @synthesize currentLanguageCode=_currentLanguageCode;
+@property (readonly, nonatomic) NSString *currentVoiceIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AXOratorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -64,7 +64,6 @@
 @property (strong, nonatomic) AVSpeechSynthesizer *speechSynthesizer; // @synthesize speechSynthesizer=_speechSynthesizer;
 @property (nonatomic) BOOL spellOutContent; // @synthesize spellOutContent=_spellOutContent;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
 
 - (void).cxx_destruct;
 - (BOOL)_canSpeakTaggedContent:(id)arg1;

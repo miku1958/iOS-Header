@@ -8,12 +8,12 @@
 
 #import <RemoteManagement/RMExtensionStatusPublisherRequestHandling-Protocol.h>
 
-@class NSLock, NSString;
+@class NSConditionLock, NSString;
 @protocol RMExtensionStatusPublisherRequestHandling;
 
 @interface RMExtensionStatusPublisher : NSObject <RMExtensionStatusPublisherRequestHandling>
 {
-    NSLock *_requestHandlerLock;
+    NSConditionLock *_requestHandlerLock;
     id<RMExtensionStatusPublisherRequestHandling> _requestHandler;
 }
 
@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithRequestHandler:(id)arg1;
-- (void)queryStatusesOfTypes:(id)arg1 onBehalfOfAccount:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)queryForStatusWithKeyPaths:(id)arg1 onBehalfOfManagementChannel:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -13,6 +13,7 @@
 {
     BOOL _filterInbound;
     BOOL _filterOutbound;
+    long long _statisticsReportFrequency;
     unsigned long long _peekInboundBytes;
     unsigned long long _peekOutboundBytes;
 }
@@ -21,6 +22,7 @@
 @property BOOL filterOutbound; // @synthesize filterOutbound=_filterOutbound;
 @property unsigned long long peekInboundBytes; // @synthesize peekInboundBytes=_peekInboundBytes;
 @property unsigned long long peekOutboundBytes; // @synthesize peekOutboundBytes=_peekOutboundBytes;
+@property long long statisticsReportFrequency; // @synthesize statisticsReportFrequency=_statisticsReportFrequency;
 
 + (id)URLAppendStringVerdictWithMapKey:(id)arg1;
 + (id)allowVerdict;
@@ -31,7 +33,9 @@
 + (id)remediateVerdictWithRemediationURLMapKey:(id)arg1 remediationButtonTextMapKey:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)filterAction;
 - (id)initWithCoder:(id)arg1;
 
 @end

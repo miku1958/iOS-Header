@@ -98,6 +98,7 @@
 - (BOOL)wantsAsynchronousSurfaceRetentionAssertion;
 - (BOOL)wantsDockBehaviorAssertion;
 - (BOOL)wantsDockWindowLevelAssertion;
+- (BOOL)wantsHomeScreenCursorInteractions;
 - (BOOL)wantsMinificationFilter;
 - (BOOL)wantsResignActiveAssertion;
 

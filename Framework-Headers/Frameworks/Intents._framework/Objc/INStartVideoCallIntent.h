@@ -28,7 +28,7 @@
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (void)_setMetadata:(id)arg1;
 - (id)_spotlightContentType;
-- (id)_titleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (id)_titleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 - (id)_typedBackingStore;
 - (BOOL)configureAttributeSet:(id)arg1 includingData:(BOOL)arg2;
 - (id)domain;

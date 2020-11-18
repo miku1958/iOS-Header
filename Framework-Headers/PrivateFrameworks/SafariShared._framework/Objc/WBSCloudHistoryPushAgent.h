@@ -6,29 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariShared/APSConnectionDelegate-Protocol.h>
 #import <SafariShared/NSXPCListenerDelegate-Protocol.h>
 #import <SafariShared/WBSCloudHistoryPushAgent-Protocol.h>
 
 @class APSConnection, NSString, NSXPCListener;
 @protocol OS_dispatch_queue;
 
-@interface WBSCloudHistoryPushAgent : NSObject <APSConnectionDelegate, NSXPCListenerDelegate, WBSCloudHistoryPushAgent>
+@interface WBSCloudHistoryPushAgent : NSObject <NSXPCListenerDelegate, WBSCloudHistoryPushAgent>
 {
     NSXPCListener *_xpcListener;
     APSConnection *_pushConnection;
     NSObject<OS_dispatch_queue> *_pushNotificationStateQueue;
 }
 
-@property (nonatomic, setter=_setHasAcknowlegedPushNotifications:) BOOL _hasAcknowledgedPushNotifications;
-@property (nonatomic, setter=_setHasUnacknowledgedPushNotifications:) BOOL _hasUnacknowledgedPushNotifications;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_hasAcknowledgedPushNotifications;
+- (BOOL)_hasUnacknowledgedPushNotifications;
 - (id)_pushTopic;
+- (void)_setHasAcknowlegedPushNotifications:(BOOL)arg1;
+- (void)_setHasUnacknowledgedPushNotifications:(BOOL)arg1;
+- (id)_userDefaults;
 - (void)acknowledgePendingPushNotifications;
 - (void)clearAcknowledgedPushNotifications;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;

@@ -14,12 +14,10 @@
 + (id)pk_FilteredBillingErrorsForContactFields:(id)arg1 errors:(id)arg2;
 + (id)pk_FilteredCardErrors:(id)arg1;
 + (id)pk_FilteredShippingErrorsForContactFields:(id)arg1 errors:(id)arg2;
-- (void)_pk_enumerateObjectsFromIndex:(unsigned long long)arg1 onQueue:(id)arg2 usingAsynchronousBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)pk_arrayByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_arrayByRemovingObject:(id)arg1;
 - (id)pk_arrayByRemovingObjectsInArray:(id)arg1;
 - (BOOL)pk_containsObjectPassingTest:(CDUnknownBlockType)arg1;
-- (void)pk_enumerateObjectsOnQueue:(id)arg1 usingAsynchronousBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)pk_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_shuffledArray;
 @end

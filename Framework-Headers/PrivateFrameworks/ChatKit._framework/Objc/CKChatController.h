@@ -63,6 +63,7 @@
     BOOL _suppressEntryViewKeyboardNotifications;
     BOOL _entryViewWasActiveBeforePresentingDataDetector;
     BOOL _primeTranscriptWithInitialScrollGeometries;
+    BOOL _shouldDisableEntryView;
     BOOL _showingVideoMessageRecordingView;
     BOOL _isShowingPreview;
     BOOL _entryViewWasActiveOnPreview;
@@ -200,6 +201,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *revealAnimationGroup; // @synthesize revealAnimationGroup=_revealAnimationGroup;
 @property (copy, nonatomic) CDUnknownBlockType scrollBlock; // @synthesize scrollBlock=_scrollBlock;
 @property (nonatomic) BOOL scrollDownIsValid; // @synthesize scrollDownIsValid=_scrollDownIsValid;
+@property (nonatomic) BOOL shouldDisableEntryView; // @synthesize shouldDisableEntryView=_shouldDisableEntryView;
 @property (nonatomic) BOOL shouldShowDoneButton; // @synthesize shouldShowDoneButton=_shouldShowDoneButton;
 @property (nonatomic, getter=isShowingVideoMessageRecordingView) BOOL showingVideoMessageRecordingView; // @synthesize showingVideoMessageRecordingView=_showingVideoMessageRecordingView;
 @property (nonatomic) double stickerTranscriptScrollDelta; // @synthesize stickerTranscriptScrollDelta=_stickerTranscriptScrollDelta;
@@ -647,7 +649,7 @@
 - (BOOL)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitSticker:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(BOOL)arg4 error:(id *)arg5;
 - (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestPresentationStyle:(unsigned long long)arg2 forChatItem:(id)arg3 allowAllStyles:(BOOL)arg4;
 - (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestStartEditingPayload:(id)arg2 forPlugin:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)transcriptCollectionViewController:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
+- (id)transcriptCollectionViewController:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3 interaction:(id)arg4;
 - (void)transcriptCollectionViewController:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didEndImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

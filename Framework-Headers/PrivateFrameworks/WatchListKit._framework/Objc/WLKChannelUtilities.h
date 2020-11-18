@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, WLKChannelsResponse;
+@class NSArray, NSDictionary, NSError, WLKChannelsResponse;
 @protocol OS_dispatch_queue;
 
 @interface WLKChannelUtilities : NSObject
@@ -14,11 +14,14 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _filtered;
     WLKChannelsResponse *_cachedResponse;
+    NSError *_error;
     NSDictionary *_channelsByBundleID;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *channelsByBundleID; // @synthesize channelsByBundleID=_channelsByBundleID;
 @property (readonly, copy, nonatomic) NSDictionary *channelsByID;
+@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) BOOL loaded;
 @property (readonly, copy, nonatomic) NSArray *orderedChannels;
 
 + (id)_validiTunesBundles;
@@ -27,12 +30,14 @@
 + (id)sharedInstanceFiltered;
 - (void).cxx_destruct;
 - (id)_configuration;
+- (void)_loadConfigIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (id)channelForBundleID:(id)arg1;
 - (id)channelForID:(id)arg1;
 - (id)channelIDForBundleID:(id)arg1;
 - (id)init;
 - (id)initFiltered:(BOOL)arg1;
 - (BOOL)isItunesOrFirstPartyBundleID:(id)arg1;
+- (void)loadIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

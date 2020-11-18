@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_triggerIngestOfDataBatch:(id)arg1 accountIdentifier:(id)arg2 error:(id *)arg3;
 - (id)initWithProfile:(id)arg1;
 - (void)loadFirstSampleAccountDataBatchForGatewayWithExternalID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)providerForSearchResultWithExternalID:(id)arg1 error:(id *)arg2;
+- (id)providerForSampleDataSearchResultWithExternalID:(id)arg1 error:(id *)arg2;
 - (id)sampleAccountsAsSearchResults;
 
 @end

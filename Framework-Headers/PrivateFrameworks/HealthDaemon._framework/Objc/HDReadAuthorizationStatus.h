@@ -36,7 +36,9 @@
 - (id)description;
 - (void)disableReading;
 - (void)disableSharing;
+- (unsigned long long)hash;
 - (id)initWithReadAuthorizationStatus:(long long)arg1 authorizationRequest:(long long)arg2 authorizationMode:(long long)arg3 restrictedBundleIdentifier:(id)arg4 restrictedSourceEntities:(id)arg5 deletedObjectBaselineAnchor:(id)arg6 objectLimitAnchor:(id)arg7 objectLimitModifiedDate:(id)arg8;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

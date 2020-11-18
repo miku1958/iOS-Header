@@ -64,6 +64,7 @@
 - (BOOL)canSetDockIconActivationMode;
 - (void)cancelReachabilityDetection;
 - (void)cleanupAlertHandler;
+- (BOOL)connectedDevicesRequireAssistiveTouch;
 - (void)copyStringToPasteboard:(id)arg1;
 - (void)didPotentiallyDismissNonExclusiveSystemUI;
 - (void)dismissAppSwitcher;
@@ -93,11 +94,12 @@
 - (BOOL)isMediaPlayingForApp:(id)arg1;
 - (void)isMediaPlayingForApp:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)isMultiTaskingActive;
-- (BOOL)isNonExclusiveSystemUIFocusable;
+- (BOOL)isNonExclusiveSystemUIFocusableIncludingPIPWindow:(BOOL)arg1;
 - (BOOL)isNotificationCenterVisible;
 - (BOOL)isNotificationVisible;
 - (BOOL)isNowPlayingUIVisible;
 - (BOOL)isOrientationLocked;
+- (BOOL)isPIPWindowVisible;
 - (BOOL)isPasscodeLockVisible;
 - (BOOL)isPointInsideAccessibilityInspector:(id)arg1;
 - (BOOL)isPurpleBuddyAppFrontmost;
@@ -163,7 +165,6 @@
 - (void)setCaptionPanelContextId:(unsigned int)arg1;
 - (void)setDockIconActivationMode:(unsigned long long)arg1;
 - (void)setHearingAidControlVisible:(BOOL)arg1;
-- (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setOrientationLocked:(BOOL)arg1;
 - (void)setReachabilityActive:(BOOL)arg1;
 - (void)setReachabilityEnabled:(BOOL)arg1;
@@ -188,7 +189,6 @@
 - (void)toggleSpotlight;
 - (int)topEventPidOverride;
 - (void)unlockDevice;
-- (void)userEventOccurred;
 - (double)volumeLevel;
 - (void)wakeUpDeviceIfNecessary;
 

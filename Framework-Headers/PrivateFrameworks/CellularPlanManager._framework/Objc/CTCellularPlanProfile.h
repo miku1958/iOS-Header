@@ -31,8 +31,8 @@
 @property (nonatomic) BOOL requiresUserConsent; // @synthesize requiresUserConsent=_requiresUserConsent;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

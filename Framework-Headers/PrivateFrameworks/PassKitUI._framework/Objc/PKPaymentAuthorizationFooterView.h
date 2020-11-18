@@ -40,6 +40,7 @@
     BOOL _hasPearl;
     double _minimumHeight;
     unsigned int _emphasizedEdge;
+    BOOL _occludesBodyView;
     long long _state;
     PKPaymentAuthorizationLayout *_layout;
     unsigned long long _requestType;
@@ -57,6 +58,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
+@property (nonatomic) BOOL occludesBodyView; // @synthesize occludesBodyView=_occludesBodyView;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;

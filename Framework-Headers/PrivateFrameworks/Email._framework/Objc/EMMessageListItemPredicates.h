@@ -50,6 +50,7 @@
 + (id)predicateForMessagesNewerThanDate:(id)arg1;
 + (id)predicateForMessagesWithAttachments;
 + (id)predicateForMessagesWithMailboxScope:(id)arg1;
++ (id)predicateForMessagesWithSender:(id)arg1;
 + (id)predicateForMessagesWithThreadScope:(id)arg1;
 + (id)predicateForMuteMessages;
 + (id)predicateForNotifyMessages;

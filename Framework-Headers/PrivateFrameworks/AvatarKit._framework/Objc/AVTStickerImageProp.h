@@ -10,7 +10,7 @@
 
 @interface AVTStickerImageProp : AVTStickerProp
 {
-    struct UIImage *_image;
+    UIImage *_image;
 }
 
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (void)buildNodeForAvatar:(id)arg1 withCamera:(id)arg2 forExport:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithImage:(struct UIImage *)arg1 size:(struct CGSize)arg2 scale:(struct SCNVector3)arg3 position:(struct SCNVector3)arg4 renderLast:(BOOL)arg5 orientToCamera:(BOOL)arg6 rotation:(struct SCNVector3)arg7 palettesDescriptions:(id)arg8 modifiers:(id)arg9;
+- (id)initWithImage:(id)arg1 size:(struct CGSize)arg2 scale:(struct SCNVector3)arg3 position:(struct SCNVector3)arg4 renderLast:(BOOL)arg5 orientToCamera:(BOOL)arg6 rotation:(struct SCNVector3)arg7 palettesDescriptions:(id)arg8 modifiers:(id)arg9 adjustments:(id)arg10;
 
 @end
 

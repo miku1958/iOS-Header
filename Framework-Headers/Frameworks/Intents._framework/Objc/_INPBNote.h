@@ -16,6 +16,7 @@
 {
     struct _has;
     BOOL __encodeLegacyGloryData;
+    NSString *_accountIdentifier;
     NSArray *_contents;
     _INPBDateTime *_createdDateTime;
     _INPBDataString *_groupName;
@@ -25,12 +26,14 @@
 }
 
 @property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (copy, nonatomic) NSArray *contents; // @synthesize contents=_contents;
 @property (readonly, nonatomic) unsigned long long contentsCount;
 @property (strong, nonatomic) _INPBDateTime *createdDateTime; // @synthesize createdDateTime=_createdDateTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;
+@property (readonly, nonatomic) BOOL hasAccountIdentifier;
 @property (readonly, nonatomic) BOOL hasCreatedDateTime;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIdentifier;

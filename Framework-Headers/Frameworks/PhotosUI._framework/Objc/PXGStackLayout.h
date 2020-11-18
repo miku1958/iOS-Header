@@ -36,7 +36,7 @@
 - (void)_updateInterlayoutSpacing;
 - (void)_updateSublayouts;
 - (void)dealloc;
-- (void)didAddSublayout:(id)arg1;
+- (void)didAddSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 - (id)init;
 - (void)insertSublayoutProvider:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)referenceSizeDidChange;
@@ -47,7 +47,7 @@
 - (void)update;
 - (void)viewEnvironmentDidChange;
 - (void)visibleRectDidChange;
-- (void)willRemoveSublayout:(id)arg1;
+- (void)willRemoveSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 
 @end
 

@@ -11,7 +11,7 @@
 #import <ClassKit/NSLocking-Protocol.h>
 #import <ClassKit/NSSecureCoding-Protocol.h>
 
-@class CLSDataStore, NSDate, NSString;
+@class CLSDataStore, NSDate, NSMutableDictionary, NSString;
 
 @interface CLSObject : NSObject <CLSRelationable, CLSGraphVertex, NSLocking, NSSecureCoding>
 {
@@ -21,7 +21,7 @@
     CLSDataStore *_dataStore;
     NSString *_parentObjectID;
     NSString *_appIdentifier;
-    struct NSMutableDictionary *_childrenByID;
+    NSMutableDictionary *_childrenByID;
     CLSObject *_parent;
     struct os_unfair_recursive_lock_s _lock;
     BOOL _temporary;

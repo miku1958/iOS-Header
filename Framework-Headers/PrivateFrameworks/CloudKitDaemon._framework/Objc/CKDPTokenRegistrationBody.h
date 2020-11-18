@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     int _apnsEnv;
     NSString *_bundleIdentifier;
     NSData *_token;
+    BOOL _skipBundleIDCheck;
     struct {
         unsigned int apnsEnv:1;
+        unsigned int skipBundleIDCheck:1;
     } _has;
 }
 
@@ -25,7 +27,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (nonatomic) BOOL hasApnsEnv;
 @property (readonly, nonatomic) BOOL hasBundleIdentifier;
+@property (nonatomic) BOOL hasSkipBundleIDCheck;
 @property (readonly, nonatomic) BOOL hasToken;
+@property (nonatomic) BOOL skipBundleIDCheck; // @synthesize skipBundleIDCheck=_skipBundleIDCheck;
 @property (strong, nonatomic) NSData *token; // @synthesize token=_token;
 
 - (void).cxx_destruct;

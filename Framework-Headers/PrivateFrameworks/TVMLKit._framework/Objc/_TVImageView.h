@@ -26,6 +26,7 @@
     BOOL __enableEdgeAntialiasingOnSelected;
     UIImage *_placeholderImage;
     TVImageProxy *_imageProxy;
+    CDUnknownBlockType _dynamicProxyProvider;
     CDUnknownBlockType _completion;
     UIColor *__tintColor;
     UIColor *__darkTintColor;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic, setter=_setTintColor:) UIColor *_tintColor; // @synthesize _tintColor=__tintColor;
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (nonatomic) double cornerRadius;
+@property (copy, nonatomic) CDUnknownBlockType dynamicProxyProvider; // @synthesize dynamicProxyProvider=_dynamicProxyProvider;
 @property (strong, nonatomic) UIImage *image;
 @property (nonatomic) BOOL imageContainsCornerRadius; // @synthesize imageContainsCornerRadius=_imageContainsCornerRadius;
 @property (nonatomic, getter=isImageLoaded) BOOL imageLoaded; // @synthesize imageLoaded=_imageLoaded;
@@ -48,6 +50,7 @@
 - (void).cxx_destruct;
 - (double)_continuousCornerRadius;
 - (double)_cornerRadius;
+- (id)_imageProxyWithSize:(struct CGSize)arg1;
 - (id)_imageView;
 - (void)_loadImage;
 - (void)_reloadImageForLayoutDirectionChange;

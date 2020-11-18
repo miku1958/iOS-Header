@@ -31,6 +31,7 @@
 - (void)runWorkflowWithInput:(id)arg1;
 - (void)setHandoffWorkflowControllerState:(id)arg1;
 - (void)stop;
+- (id)targetDataInfo;
 - (void)wasAddedToWorkflowByUser:(id)arg1;
 - (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(BOOL)arg3;
 - (BOOL)workflowController:(id)arg1 handleUnsupportedEnvironmentForAction:(id)arg2 currentState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

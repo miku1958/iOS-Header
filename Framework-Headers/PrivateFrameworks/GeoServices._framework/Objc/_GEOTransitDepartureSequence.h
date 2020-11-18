@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_enumerateDeparturesValidForDate:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (BOOL)areOperatingHours:(id)arg1 activeForDate:(id)arg2;
 - (id)departuresValidForDate:(id)arg1;
 - (id)firstDepartureAfterDate:(id)arg1;
 - (id)firstDepartureFrequencyOnOrAfterDate:(id)arg1;

@@ -24,9 +24,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_basicAnimationForView:(struct UIView *)arg1 withKeyPath:(id)arg2;
-- (id)_springAnimationForView:(struct UIView *)arg1 withKeyPath:(id)arg2;
-- (id)springAnimationForView:(struct UIView *)arg1 withKeyPath:(id)arg2;
+- (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (id)_springAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (id)springAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 
 @end
 

@@ -6,13 +6,21 @@
 
 #import <UIKit/UIView.h>
 
+#import <WebKit/WKContentControlled-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface WKEmbeddedView : UIView
+@interface WKEmbeddedView : UIView <WKContentControlled>
 {
     unsigned long long _embeddedViewID;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long embeddedViewID; // @synthesize embeddedViewID=_embeddedViewID;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (id)initWithEmbeddedViewID:(unsigned long long)arg1;
 

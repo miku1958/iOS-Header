@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUIRoomBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL disableGradientBelowNavBar;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isUberLayoutActive;
 @property (readonly, nonatomic) struct CGSize size;

@@ -180,6 +180,7 @@
 - (id)_IDWithTrimmedServer;
 - (id)__imcnContactWithKeys:(id)arg1;
 - (id)_abPersonCreateIfNeeded;
+- (BOOL)_allowedByScreenTime;
 - (id)_bestChatSibling;
 - (id)_cachedPerson;
 - (id)_chatSiblings;

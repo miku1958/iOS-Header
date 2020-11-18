@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)_releaseAssertion;
 - (void)_takeAssertion;
+- (void)dealloc;
 - (id)initWithCreateAndTakeBlock:(CDUnknownBlockType)arg1;
 
 @end

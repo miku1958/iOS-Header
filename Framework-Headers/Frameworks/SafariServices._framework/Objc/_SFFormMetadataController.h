@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSFormMetadataController.h>
+#import <SafariSharedUI/WBSFormMetadataController.h>
 
 #import <SafariServices/WKWebProcessPlugInFormDelegatePrivate-Protocol.h>
 

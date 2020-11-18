@@ -8,15 +8,15 @@
 
 #import <MapsSuggestions/MapsSuggestionsStrategy-Protocol.h>
 
-@class MapsSuggestionsManager, NSString;
+@class MapsSuggestionsManager, NSMutableArray, NSMutableSet, NSString;
 
 @interface MapsSuggestionsSimpleStrategy : NSObject <MapsSuggestionsStrategy>
 {
-    struct NSMutableSet *_preFilters;
-    struct NSMutableArray *_improvers;
-    struct NSMutableArray *_dedupers;
-    struct NSMutableSet *_postFilters;
-    struct NSMutableArray *_previousResults;
+    NSMutableSet *_preFilters;
+    NSMutableArray *_improvers;
+    NSMutableArray *_dedupers;
+    NSMutableSet *_postFilters;
+    NSMutableArray *_previousResults;
     MapsSuggestionsManager *_manager;
 }
 
@@ -29,10 +29,10 @@
 
 - (void).cxx_destruct;
 - (void)_addFilter:(id)arg1 processingType:(long long)arg2;
-- (BOOL)_dedupeByEnrichingEntries:(struct NSMutableArray *)arg1 withEntry:(id)arg2;
-- (BOOL)_entry:(id)arg1 existsInStorage:(struct NSDictionary *)arg2;
-- (struct NSMutableArray *)_filteredPreviousResultsCrosscheckingStorage:(struct NSDictionary *)arg1;
-- (struct NSMutableSet *)_filtersForprocessingType:(long long)arg1;
+- (BOOL)_dedupeByEnrichingEntries:(id)arg1 withEntry:(id)arg2;
+- (BOOL)_entry:(id)arg1 existsInStorage:(id)arg2;
+- (id)_filteredPreviousResultsCrosscheckingStorage:(id)arg1;
+- (id)_filtersForprocessingType:(long long)arg1;
 - (BOOL)_improveEntry:(id)arg1;
 - (void)addDeduper:(id)arg1;
 - (void)addImprover:(id)arg1;
@@ -46,7 +46,7 @@
 - (void)removeAllFilters;
 - (void)removeAllImprovers;
 - (void)removeFilter:(id)arg1;
-- (struct NSArray *)topSuggestionsWithSourceEntries:(struct NSDictionary *)arg1 error:(id *)arg2;
+- (id)topSuggestionsWithSourceEntries:(id)arg1 error:(id *)arg2;
 
 @end
 

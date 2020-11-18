@@ -41,8 +41,9 @@
 - (void)findString:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)focusOnSearchResultAtIndex:(unsigned long long)arg1;
 - (void)goToPageIndex:(long long)arg1;
-- (void)handleGesture:(unsigned long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4;
+- (void)handleGesture:(unsigned long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4 isIndirectTouch:(BOOL)arg5;
 - (id)init;
+- (void)pointerRegionForLocation:(struct CGPoint)arg1;
 - (void)selectAll;
 - (void)setDocumentData:(id)arg1;
 - (void)setMaximumZoomScale:(double)arg1;

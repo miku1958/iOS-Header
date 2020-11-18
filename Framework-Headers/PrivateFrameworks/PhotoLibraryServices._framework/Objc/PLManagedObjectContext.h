@@ -96,6 +96,7 @@
 - (void)_simulateCrashIfNotAssetsd;
 - (BOOL)_tooManyAssetChangesToHandle:(unsigned long long)arg1;
 - (void)appendDelayedDeletionsToXPCMessage:(id)arg1;
+- (void)breakRetainCycles;
 - (void)connectToChangeHandling;
 - (unsigned long long)countForFetchRequest:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
@@ -118,9 +119,6 @@
 - (id)libraryBundle;
 - (BOOL)obtainPermanentIDsForObjects:(id)arg1 error:(id *)arg2;
 - (id)pathManager;
-- (void)performBlock:(CDUnknownBlockType)arg1;
-- (void)performBlockAndWait:(CDUnknownBlockType)arg1;
-- (void)performWithOptions:(unsigned long long)arg1 andBlock:(CDUnknownBlockType)arg2;
 - (id)pl_fetchObjectsWithIDs:(id)arg1;
 - (id)pl_fetchObjectsWithIDs:(id)arg1 rootEntity:(id)arg2;
 - (BOOL)pl_performWithOptions:(unsigned long long)arg1 andBlock:(CDUnknownBlockType)arg2;
@@ -134,6 +132,7 @@
 - (void)resetAllFetchingAlbums;
 - (BOOL)save:(id *)arg1;
 - (void)setGlobalValue:(id)arg1 forKey:(id)arg2;
+- (void)setName:(id)arg1;
 - (void)setupLocalChangeNotifications;
 - (void)tearDownLocalChangeNotifications;
 - (void)updateTransactionAuthor;

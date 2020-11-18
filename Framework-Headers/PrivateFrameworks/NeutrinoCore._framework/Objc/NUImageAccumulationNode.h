@@ -30,7 +30,7 @@
 - (id)_newImage;
 - (id)debugQuickLookObject;
 - (id)initWithImageSize:(CDStruct_912cb5d2)arg1 tileSize:(CDStruct_912cb5d2)arg2 borderSize:(CDStruct_912cb5d2)arg3 pixelFormat:(id)arg4 colorSpace:(id)arg5 input:(id)arg6;
-- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
+- (id)initWithSettings:(id)arg1 inputs:(id)arg2;
 
 @end
 

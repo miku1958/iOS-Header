@@ -9,7 +9,7 @@
 #import <SpringBoard/SBHomeGestureDockSwitcherModifierDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureFinalDestinationSwitcherModifierDelegate-Protocol.h>
 
-@class NSString, SBAppLayout, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier, SBStackedFloatingSwitcherModifier;
+@class NSString, SBAppLayout, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier, SBStackedFloatingSwitcherModifier, UIViewFloatAnimatableProperty;
 
 @interface SBHomeGestureFloatingSwitcherModifier : SBGestureSwitcherModifier <SBHomeGestureDockSwitcherModifierDelegate, SBHomeGestureFinalDestinationSwitcherModifierDelegate>
 {
@@ -24,6 +24,7 @@
     double _rubberbandedYTranslation;
     double _scaleProgress;
     double _multitaskingHintProgress;
+    UIViewFloatAnimatableProperty *_rampingProperty;
     BOOL _gestureHasBegun;
     BOOL _gestureHasEnded;
 }
@@ -35,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (id)_actionForActivatingFinalDestination:(long long)arg1;
+- (void)_beginAnimatingRampingPropertyWithSettings:(id)arg1;
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;
 - (id)_updateForGestureDidEndWithEvent:(id)arg1;
@@ -51,6 +53,7 @@
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (long long)keyboardSuppressionMode;
+- (id)layoutSettingsForIndex:(unsigned long long)arg1;
 - (long long)liveContentRasterizationStyle;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;

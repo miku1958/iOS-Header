@@ -31,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType; // @synthesize gadgetType=_gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -43,16 +44,13 @@
 @property (copy, nonatomic) NSString *possibleName; // @synthesize possibleName=_possibleName;
 @property (nonatomic) long long priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) UIButton *undoButton; // @synthesize undoButton=_undoButton;
 @property (nonatomic) struct CGRect visibleContentRect;
 @property (strong, nonatomic) UIButton *yesButton; // @synthesize yesButton=_yesButton;
 
 - (void).cxx_destruct;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 - (id)initWithPerson:(id)arg1 possibleName:(id)arg2;
 - (void)noButtonTapped:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

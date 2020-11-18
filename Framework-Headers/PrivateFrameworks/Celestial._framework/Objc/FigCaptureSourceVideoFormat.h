@@ -27,6 +27,7 @@
 @property (readonly) int autoFocusSystem;
 @property (readonly) int baseSensorPowerConsumption;
 @property (readonly, getter=isBinned) BOOL binned;
+@property (readonly, getter=isCameraCalibrationDataDeliverySupported) BOOL cameraCalibrationDataDeliverySupported;
 @property (readonly) BOOL configureForSpatialOverCaptureSupport;
 @property (readonly) BOOL configureForStillImageStabilizationSupport;
 @property (readonly, getter=isDeepFusionSupported) BOOL deepFusionSupported;
@@ -71,6 +72,7 @@
 @property (readonly) BOOL needsPreviewDPCC;
 @property (readonly, getter=isNonDestructiveCropSupported) BOOL nonDestructiveCropSupported;
 @property (readonly, getter=isPhotoFormat) BOOL photoFormat;
+@property (readonly, getter=isPointCloudDataDeliverySupported) BOOL pointCloudDataDeliverySupported;
 @property (readonly) BOOL prefersSensorHDREnabled;
 @property (readonly) CDStruct_79c71658 previewDimensions;
 @property (readonly, getter=isQuadraHighResStillImageSupported) BOOL quadraHighResStillImageSupported;
@@ -79,6 +81,7 @@
 @property (readonly, getter=isSecondaryScalerUnavailable) BOOL secondaryScalerUnavailable;
 @property (readonly) CDStruct_79c71658 sensorDimensions;
 @property (readonly) int sensorPowerConsumption;
+@property (readonly, getter=isSIFRStillImageCaptureWithDepthDataDisabled) BOOL sifrStillImageCaptureWithDepthDataDisabled;
 @property (readonly) CDStruct_79c71658 spatialOverCaptureHighResStillImageDimensions;
 @property (readonly) float spatialOverCapturePercentage;
 @property (readonly, getter=isSpatialOverCaptureSupported) BOOL spatialOverCaptureSupported;
@@ -150,6 +153,7 @@
 - (CDStruct_79c71658)sourceCropAspectRatio;
 - (struct CGSize)stabilizationOverscanPercentageFromSensorForFESCropDimensions:(CDStruct_79c71658)arg1;
 - (float)stabilizationOverscanPercentageOverrideForCinematic;
+- (float)stabilizationOverscanPercentageOverrideForStandard;
 - (int)stabilizationTypeOverrideForCinematic;
 - (int)stabilizationTypeOverrideForStandard;
 - (int)stillImageNoiseReductionAndStabilizationScheme;

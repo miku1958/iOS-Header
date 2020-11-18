@@ -47,6 +47,7 @@
 - (BOOL)_accessibilityUpdatesSwitchMenu;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)_axIsIconEditing;
+- (id)_focusGroupDescriptor;
 - (void)_updateCloseBoxAnimated:(BOOL)arg1;
 - (id)_viewToAddFocusLayer;
 - (BOOL)accessibilityActivate;

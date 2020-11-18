@@ -14,7 +14,7 @@
 
 @interface PLSortedAlbumList : NSObject <PLAlbumContainer, PLIndexMappingCache>
 {
-    struct NSObject *_backingAlbumList;
+    NSObject<PLAlbumContainer> *_backingAlbumList;
     struct __CFArray *_toBackingMap;
     struct __CFArray *_fromBackingMap;
     CDUnknownBlockType _sortComparator;
@@ -39,7 +39,7 @@
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
 
 - (void).cxx_destruct;
-- (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
+- (BOOL)albumHasFixedOrder:(id)arg1;
 - (short)albumListType;
 - (id)albums;
 - (BOOL)canEditAlbums;
@@ -53,7 +53,7 @@
 - (BOOL)hasAtLeastOneAlbum;
 - (id)identifier;
 - (unsigned long long)indexInSortedAlbumsOfObject:(id)arg1;
-- (id)initWithAlbumList:(struct NSObject *)arg1 sortComparator:(CDUnknownBlockType)arg2;
+- (id)initWithAlbumList:(id)arg1 sortComparator:(CDUnknownBlockType)arg2;
 - (void)insertObject:(id)arg1 inSortedAlbumsAtIndex:(unsigned long long)arg2;
 - (BOOL)isEmpty;
 - (id)managedObjectContext;

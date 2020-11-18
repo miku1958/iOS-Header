@@ -29,8 +29,8 @@
 - (id)combinedInferredMapItemFromInferredMapItems:(id)arg1 error:(id *)arg2;
 - (BOOL)enumerateDedupedUUIDToMapItemMapUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)finalizeState:(id *)arg1;
-- (id)inferredMapItemFromInferredMapItemWithIntermediateUUID:(struct RTPair *)arg1 error:(id *)arg2;
-- (BOOL)ingestInferredMapItemWithIntermediateUUID:(struct RTPair *)arg1 error:(id *)arg2;
+- (id)inferredMapItemFromInferredMapItemWithIntermediateUUID:(id)arg1 error:(id *)arg2;
+- (BOOL)ingestInferredMapItemWithIntermediateUUID:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)mapItemForDedupedUUID:(id)arg1 error:(id *)arg2;
 - (id)mapItemForIntermediateUUID:(id)arg1 error:(id *)arg2;

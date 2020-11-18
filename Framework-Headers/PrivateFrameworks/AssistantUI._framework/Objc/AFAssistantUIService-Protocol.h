@@ -6,7 +6,7 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFAudioPlaybackRequest, AFConnection, AceObject, INImage, INIntent, NSDictionary, NSError, NSString, NSURL;
+@class AFAudioPlaybackRequest, AFConnection, AFRequestInfo, AceObject, INImage, INIntent, NSDictionary, NSError, NSString, NSURL;
 @protocol SAAceCommand;
 
 @protocol AFAssistantUIService <NSObject>
@@ -28,6 +28,7 @@
 - (void)assistantConnection:(AFConnection *)arg1 setUserActivtiyInfoAndMakeCurrent:(NSDictionary *)arg2 webpageURL:(NSURL *)arg3;
 - (void)assistantConnection:(AFConnection *)arg1 shouldSpeak:(BOOL)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 startPlaybackDidFail:(long long)arg2;
+- (void)assistantConnection:(AFConnection *)arg1 startUIRequestWithInfo:(AFRequestInfo *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)assistantConnection:(AFConnection *)arg1 startUIRequestWithText:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)assistantConnection:(AFConnection *)arg1 wantsToCacheImage:(INImage *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 willProcessStartPlayback:(long long)arg2;

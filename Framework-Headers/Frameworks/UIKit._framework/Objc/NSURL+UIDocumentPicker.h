@@ -21,6 +21,8 @@
 @property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
 + (id)URLWithDisplayIdentifier:(id)arg1 forSearchResultDomain:(int)arg2 andIdentifier:(unsigned long long)arg3;
++ (BOOL)_allowsCreationOfFileURLFromItemProvider;
++ (void)_setAllowsCreationOfFileURLFromItemProvider:(BOOL)arg1;
 + (id)mapsURLWithQuery:(id)arg1;
 + (id)mapsURLWithSourceAddress:(id)arg1 destinationAddress:(id)arg2;
 + (id)ui_URLFromExportBookmark:(id)arg1;

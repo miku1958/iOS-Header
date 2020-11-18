@@ -10,20 +10,24 @@
 {
 }
 
+@property (readonly, nonatomic) id axFirstLabelElement;
+@property (readonly, nonatomic) BOOL axIsFocusedOnRectangle;
+
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_axIsFocusedOnRectangle;
+- (void)_axAnnounceReticleState;
+- (void)_axAnnounceReticleStateAfterDelay;
+- (struct CGRect)_axFrameForReticleElement;
+- (id)_axHintForReticleElement;
+- (id)_axLastAnnouncementForReticleState;
+- (id)_axReticleElement;
 - (long long)_axReticleState;
-- (id)_axShapeLayer;
+- (void)_axSetLastAnnouncementForReticleState:(id)arg1;
+- (void)_axSetReticleElement:(id)arg1;
 - (id)_axStringForReticleState;
-- (struct CGRect)accessibilityFrame;
-- (id)accessibilityHint;
-- (id)accessibilityLabel;
-- (id)accessibilityPath;
-- (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
-- (BOOL)isAccessibilityElement;
+- (unsigned long long)_axTraitsForReticleElement;
+- (id)accessibilityElements;
 - (void)setAlpha:(double)arg1;
 - (void)setState:(long long)arg1;
 

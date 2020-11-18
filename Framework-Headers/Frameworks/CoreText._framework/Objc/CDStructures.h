@@ -182,63 +182,93 @@ struct array<std::__1::unordered_map<unsigned int, OTL::Lookup, std::__1::hash<u
 };
 
 struct atomic<CGFont *> {
-    _Atomic struct CGFont *_field1;
+    struct __cxx_atomic_impl<CGFont *, std::__1::__cxx_atomic_base_impl<CGFont *>> {
+        _Atomic struct CGFont *_field1;
+    } _field1;
 };
 
 struct atomic<CTFontFormat> {
-    _Atomic unsigned int _field1;
+    struct __cxx_atomic_impl<CTFontFormat, std::__1::__cxx_atomic_base_impl<CTFontFormat>> {
+        _Atomic unsigned int _field1;
+    } _field1;
 };
 
 struct atomic<TTraitsValues *> {
-    _Atomic struct TTraitsValues *_field1;
+    struct __cxx_atomic_impl<TTraitsValues *, std::__1::__cxx_atomic_base_impl<TTraitsValues *>> {
+        _Atomic struct TTraitsValues *_field1;
+    } _field1;
 };
 
 struct atomic<__CFDictionary *> {
-    _Atomic struct __CFDictionary *_field1;
+    struct __cxx_atomic_impl<__CFDictionary *, std::__1::__cxx_atomic_base_impl<__CFDictionary *>> {
+        _Atomic struct __CFDictionary *_field1;
+    } _field1;
 };
 
 struct atomic<const TBMPDataCache *> {
-    _Atomic struct TBMPDataCache *_field1;
+    struct __cxx_atomic_impl<const TBMPDataCache *, std::__1::__cxx_atomic_base_impl<const TBMPDataCache *>> {
+        _Atomic struct TBMPDataCache *_field1;
+    } _field1;
 };
 
 struct atomic<const __CFArray *> {
-    _Atomic struct __CFArray *__a_;
+    struct __cxx_atomic_impl<const __CFArray *, std::__1::__cxx_atomic_base_impl<const __CFArray *>> {
+        _Atomic struct __CFArray *__a_value;
+    } __a_;
 };
 
 struct atomic<const __CFCharacterSet *> {
-    _Atomic struct __CFCharacterSet *_field1;
+    struct __cxx_atomic_impl<const __CFCharacterSet *, std::__1::__cxx_atomic_base_impl<const __CFCharacterSet *>> {
+        _Atomic struct __CFCharacterSet *_field1;
+    } _field1;
 };
 
 struct atomic<const __CFData *> {
-    _Atomic struct __CFData *_field1;
+    struct __cxx_atomic_impl<const __CFData *, std::__1::__cxx_atomic_base_impl<const __CFData *>> {
+        _Atomic struct __CFData *_field1;
+    } _field1;
 };
 
 struct atomic<const __CFSet *> {
-    _Atomic struct __CFSet *__a_;
+    struct __cxx_atomic_impl<const __CFSet *, std::__1::__cxx_atomic_base_impl<const __CFSet *>> {
+        _Atomic struct __CFSet *__a_value;
+    } __a_;
 };
 
 struct atomic<const __CFURL *> {
-    _Atomic struct __CFURL *_field1;
+    struct __cxx_atomic_impl<const __CFURL *, std::__1::__cxx_atomic_base_impl<const __CFURL *>> {
+        _Atomic struct __CFURL *_field1;
+    } _field1;
 };
 
 struct atomic<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> {
-    _Atomic struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>> *_field1;
+    struct __cxx_atomic_impl<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*, std::__1::__cxx_atomic_base_impl<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*>> {
+        _Atomic struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>> *_field1;
+    } _field1;
 };
 
 struct atomic<int> {
-    _Atomic int _field1;
+    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+        _Atomic int _field1;
+    } _field1;
 };
 
 struct atomic<long> {
-    _Atomic long long _field1;
+    struct __cxx_atomic_impl<long, std::__1::__cxx_atomic_base_impl<long>> {
+        _Atomic long long _field1;
+    } _field1;
 };
 
 struct atomic<unsigned int> {
-    _Atomic unsigned int _field1;
+    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+        _Atomic unsigned int _field1;
+    } _field1;
 };
 
 struct atomic<unsigned short> {
-    _Atomic unsigned short _field1;
+    struct __cxx_atomic_impl<unsigned short, std::__1::__cxx_atomic_base_impl<unsigned short>> {
+        _Atomic unsigned short _field1;
+    } _field1;
 };
 
 struct os_unfair_lock_s {

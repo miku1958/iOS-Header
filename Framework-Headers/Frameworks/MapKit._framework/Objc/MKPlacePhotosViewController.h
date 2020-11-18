@@ -9,18 +9,21 @@
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKMuninContainerViewDelegate-Protocol.h>
 #import <MapKit/MKMuninViewProvider-Protocol.h>
+#import <MapKit/MKPhotoGalleryTransitionAnimator-Protocol.h>
 #import <MapKit/MKPlaceAttributionCellDelegate-Protocol.h>
-#import <MapKit/MKPlacePhotosViewDelegate-Protocol.h>
+#import <MapKit/MKPlacePhotoGalleryViewControllerDelegate-Protocol.h>
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
+#import <MapKit/UIViewControllerTransitioningDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKMuninContainerView, MKMuninView, MKPhotoSmallAttributionView, MKPlaceAttributionCell, MKPlacePhotosView, NSArray, NSLayoutConstraint, NSString, UIScrollView, UIView, _MKPlaceViewController;
+@class MKMapItem, MKMuninContainerView, MKMuninView, MKPhotoBigAttributionView, MKPhotoSmallAttributionView, MKPlaceAttributionCell, NSArray, NSLayoutConstraint, NSString, UIImageView, UIScrollView, UIView, _MKPlaceViewController;
 @protocol MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate;
 
-@interface MKPlacePhotosViewController : UIViewController <MKPlaceAttributionCellDelegate, MKPlacePhotosViewDelegate, UIScrollViewDelegate, MKMuninContainerViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKMuninViewProvider>
+@interface MKPlacePhotosViewController : UIViewController <MKPlaceAttributionCellDelegate, UIScrollViewDelegate, MKPlacePhotoGalleryViewControllerDelegate, UIViewControllerTransitioningDelegate, MKPhotoGalleryTransitionAnimator, MKMuninContainerViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKMuninViewProvider>
 {
-    MKPlacePhotosView *_currentPhotoViewer;
     UIView *_bottomHairline;
+    UIImageView *_imageViewForTransition;
+    MKPhotoBigAttributionView *_attributionView;
     NSArray *_photoViews;
     UIScrollView *_photosContainerScrollView;
     UIView *_photosContainer;
@@ -29,7 +32,6 @@
     BOOL _photoScrollViewScrollingLeft;
     BOOL _photoScrollViewScrollingRight;
     BOOL _canUseFullscreenViewer;
-    BOOL _canUseGallery;
     BOOL _photoLoaded;
     BOOL _loadAppImageCanceledOrFailed;
     BOOL _isRTL;
@@ -61,7 +63,6 @@
 
 - (void).cxx_destruct;
 - (void)_applyCornerRadius;
-- (void)_callPhotoDelegateForPhotoAt:(unsigned long long)arg1;
 - (BOOL)_canShowWhileLocked;
 - (void)_cancelLoadPhotos;
 - (void)_catchScrollNotification:(id)arg1;
@@ -74,19 +75,33 @@
 - (void)_updatePhotoBackgroundColor:(id)arg1;
 - (void)_willResignActive:(id)arg1;
 - (void)addAttributionCell;
+- (id)animationControllerForDismissedController:(id)arg1;
+- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)attributionString;
 - (void)dealloc;
+- (void)didTapAttributionViewWithPresentingViewController:(id)arg1;
+- (BOOL)dismissPhotoGalleryIfNecessary:(id)arg1;
 - (id)formattedAttributionString;
 - (id)infoCardChildPossibleActions;
 - (id)infoCardChildUnactionableUIElements;
 - (void)infoCardThemeChanged;
 - (id)initWithMapItem:(id)arg1 mode:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (BOOL)isParsecProcess;
+- (BOOL)isSafariProcess;
+- (BOOL)isSiriProcess;
 - (void)layoutImages;
 - (void)muninContainerView:(id)arg1 didAddMuninView:(id)arg2;
 - (void)openURL;
-- (void)placePhotoViewerAttributionTappedForPhotoAtIndex:(unsigned long long)arg1 photo:(id)arg2;
-- (id)placePhotoViewerViewForPhotoAtIndex:(unsigned long long)arg1;
-- (void)placePhotoViewerWillClose:(id)arg1 photo:(id)arg2 onIndex:(unsigned long long)arg3;
+- (void)photoGalleryTransitionAnimatorDidFinishAnimation;
+- (void)placePhotoGallery:(id)arg1 attributionViewTappedAtIndex:(unsigned long long)arg2;
+- (void)placePhotoGallery:(id)arg1 openButtonTappedAtIndex:(unsigned long long)arg2;
+- (void)placePhotoGallery:(id)arg1 willCloseAtIndex:(unsigned long long)arg2;
+- (void)placePhotoGalleryAdditionalViewTapped:(id)arg1;
+- (void)placePhotoGalleryDidCloseAtIndex:(unsigned long long)arg1;
+- (void)placePhotoGalleryDidScrollLeftToIndex:(unsigned long long)arg1;
+- (void)placePhotoGalleryDidScrollRightToIndex:(unsigned long long)arg1;
+- (void)placePhotoGalleryDidScrollToIndex:(unsigned long long)arg1;
+- (id)placePhotoGalleryImageViewForPhotoAtIndex:(unsigned long long)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setContentVisibility:(long long)arg1;

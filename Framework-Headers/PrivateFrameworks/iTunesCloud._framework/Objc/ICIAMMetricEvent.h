@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class ICIAMImpressionNode, NSMutableArray, NSString;
 
 @interface ICIAMMetricEvent : PBCodable <NSCopying>
 {
@@ -16,6 +16,8 @@
     int _actionType;
     NSString *_actionURL;
     NSString *_eventType;
+    ICIAMImpressionNode *_impression;
+    NSString *_impressionType;
     NSMutableArray *_pageDetails;
     NSString *_pageId;
     int _pageType;
@@ -36,11 +38,15 @@
 @property (nonatomic) BOOL hasActionType;
 @property (readonly, nonatomic) BOOL hasActionURL;
 @property (readonly, nonatomic) BOOL hasEventType;
+@property (readonly, nonatomic) BOOL hasImpression;
+@property (readonly, nonatomic) BOOL hasImpressionType;
 @property (readonly, nonatomic) BOOL hasPageId;
 @property (nonatomic) BOOL hasPageType;
 @property (readonly, nonatomic) BOOL hasPageUrl;
 @property (readonly, nonatomic) BOOL hasTargetId;
 @property (nonatomic) BOOL hasTargetType;
+@property (strong, nonatomic) ICIAMImpressionNode *impression; // @synthesize impression=_impression;
+@property (strong, nonatomic) NSString *impressionType; // @synthesize impressionType=_impressionType;
 @property (strong, nonatomic) NSMutableArray *pageDetails; // @synthesize pageDetails=_pageDetails;
 @property (strong, nonatomic) NSString *pageId; // @synthesize pageId=_pageId;
 @property (nonatomic) int pageType; // @synthesize pageType=_pageType;

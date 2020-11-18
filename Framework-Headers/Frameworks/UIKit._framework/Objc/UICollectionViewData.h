@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct CGRect)_TEST_validLayoutRect;
 - (id)_layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (void)_loadEverything;
 - (void)_prepareToLoadData;

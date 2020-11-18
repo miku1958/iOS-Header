@@ -68,8 +68,8 @@
 + (double)scaledTitleBaselineDistance;
 + (double)scaledTitleWithSuggestionBaselineDistance;
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 withSuggestion:(id)arg2 title:(id)arg3 subtitle:(id)arg4;
-+ (struct UIFont *)suggestionLabelFont;
-+ (struct UIFont *)titleLabelFont;
++ (id)suggestionLabelFont;
++ (id)titleLabelFont;
 - (void).cxx_destruct;
 - (struct CGRect)_assetFrameInBounds:(struct CGRect)arg1;
 - (struct CGSize)_calculateLayoutWithInputSize:(struct CGSize)arg1 apply:(BOOL)arg2;

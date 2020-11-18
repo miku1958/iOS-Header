@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface ISCacheImage : ISConcreteImage
 {
     NSUUID *_uuid;
-    struct NSData *_validationToken;
+    NSData *_validationToken;
 }
 
 @property BOOL placeholder; // @dynamic placeholder;

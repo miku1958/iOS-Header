@@ -19,7 +19,7 @@
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSCache *_fallbackArtworkRepresentationCache;
     NSMapTable *_catalogTaskMap;
-    NSMutableDictionary *_pendingRequestToCompletionHandlers;
+    NSMutableDictionary *_pendingRequestURLToCompletionHandlers;
     NSURLSession *_URLSession;
 }
 
@@ -32,7 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSCache *fallbackArtworkRepresentationCache; // @synthesize fallbackArtworkRepresentationCache=_fallbackArtworkRepresentationCache;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableDictionary *pendingRequestToCompletionHandlers; // @synthesize pendingRequestToCompletionHandlers=_pendingRequestToCompletionHandlers;
+@property (strong, nonatomic) NSMutableDictionary *pendingRequestURLToCompletionHandlers; // @synthesize pendingRequestURLToCompletionHandlers=_pendingRequestURLToCompletionHandlers;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesFallbackCache; // @synthesize usesFallbackCache=_usesFallbackCache;
 

@@ -53,6 +53,8 @@
 
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
++ (id)mediaPropertyMessageKeys;
++ (Class)mediaPropertyValueTypeWithMessageKey:(id)arg1;
 + (id)sessionForCurrentAccessory:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -66,8 +68,8 @@
 - (id)_initWithMediaProfiles:(id)arg1 state:(id)arg2;
 - (void)_invokePendingSetPlaybackStateBlocksOfError:(id)arg1;
 - (void)_notifyClientsOfUpdatedVolume:(id)arg1 muted:(id)arg2 inResponseToMessage:(id)arg3;
-- (void)_postNotificationOfPlaybackStateUpdateWithError:(id)arg1 inResponseToMessage:(id)arg2;
-- (void)_postNotificationOfPlaybackStateUpdateWithPayload:(id)arg1;
+- (void)_postNotificationOfMediaStateUpdateWithError:(id)arg1 inResponseToMessage:(id)arg2;
+- (void)_postNotificationOfMediaStateUpdateWithPayload:(id)arg1;
 - (void)_queueSetPlaybackStateCompletion:(CDUnknownBlockType)arg1;
 - (void)_registerForSessionUpdates:(BOOL)arg1;
 - (void)_setPlaybackState:(long long)arg1 completion:(CDUnknownBlockType)arg2;

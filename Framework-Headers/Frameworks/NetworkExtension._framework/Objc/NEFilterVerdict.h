@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NetworkExtension/NEPrettyDescription-Protocol.h>
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface NEFilterVerdict : NSObject <NSSecureCoding, NSCopying>
+@interface NEFilterVerdict : NSObject <NEPrettyDescription, NSSecureCoding, NSCopying>
 {
     BOOL _shouldReport;
     BOOL _needRules;
@@ -25,6 +26,7 @@
 }
 
 @property BOOL drop; // @synthesize drop=_drop;
+@property (readonly) long long filterAction;
 @property BOOL needRules; // @synthesize needRules=_needRules;
 @property BOOL pause; // @synthesize pause=_pause;
 @property BOOL remediate; // @synthesize remediate=_remediate;
@@ -34,9 +36,13 @@
 @property BOOL urlAppendString; // @synthesize urlAppendString=_urlAppendString;
 @property (strong) NSString *urlAppendStringMapKey; // @synthesize urlAppendStringMapKey=_urlAppendStringMapKey;
 
++ (unsigned int)statisticsReportFrequencyToMilliseconds:(long long)arg1;
++ (id)statisticsReportFrequencyToString:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDrop:(BOOL)arg1 remediate:(BOOL)arg2;

@@ -47,6 +47,7 @@
 - (void)setWebkitdropzone:(id)arg1;
 - (BOOL)spellcheck;
 - (int)structuralComplexityContribution;
+- (int)structuralComplexityContribution;
 - (BOOL)translate;
 - (id)webkitdropzone;
 

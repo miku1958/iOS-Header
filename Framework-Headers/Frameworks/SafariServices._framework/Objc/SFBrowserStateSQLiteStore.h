@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_tabUUIDStrings;
     NSMutableDictionary *_browserWindowDatabaseIDs;
     WBSSQLiteStatement *_cachedTabDeleteStatement;
+    BOOL _generateUUIDFunctionAttached;
 }
 
 @property (readonly, copy, nonatomic) NSArray *browserWindows;
@@ -42,10 +43,12 @@ __attribute__((visibility("hidden")))
 - (int)_migrateToSchemaVersion_2;
 - (int)_migrateToSchemaVersion_3;
 - (int)_migrateToSchemaVersion_4;
+- (int)_migrateToSchemaVersion_5;
 - (void)_openDatabaseAndCheckIntegrity:(BOOL)arg1;
 - (id)_readSavedSessionStateDataForTabWithUUIDString:(id)arg1;
 - (void)_readTabStatesWithBrowserWindowUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (int)_recoverFromDatabaseInconsistencyFromSchemaVersion3Migration;
+- (void)_regenerateTabUUIDsForDeviceRestoration;
 - (void)_removeSavedSessionStateDataForTabsWithUUIDStrings:(id)arg1;
 - (long long)_saveBrowserWindowStateWithData:(id)arg1;
 - (long long)_saveBrowserWindowStateWithDictionary:(id)arg1;
@@ -71,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeAllWindows;
 - (id)readSavedSessionStateDataForTabWithUUIDString:(id)arg1;
 - (void)readTabStatesWithBrowserWindowUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)regenerateTabUUIDsForDeviceRestoration;
 - (void)removeSavedSessionStateDataForTabsWithUUIDStrings:(id)arg1;
 - (void)removeTabWithTabData:(id)arg1;
 - (void)saveTabStateWithDictionary:(id)arg1;

@@ -43,7 +43,6 @@
 @property (readonly, nonatomic) UIView *sourceViewForPopover;
 @property (readonly) Class superclass;
 
-+ (void)_geocodeEventIfNeeded:(id)arg1;
 + (void)_invalidateCachedFonts;
 + (id)_largeTitleFont;
 + (id)_locationFont;

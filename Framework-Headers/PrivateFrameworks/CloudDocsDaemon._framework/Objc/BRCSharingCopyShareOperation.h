@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)fetchRootURLIfNecessaryAndFinishWithShare:(id)arg1;
 - (id)initWithItem:(id)arg1;
 - (void)main;
-- (BOOL)shouldRetryForError:(id)arg1;
 
 @end
 

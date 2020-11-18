@@ -67,6 +67,7 @@
 - (id)init;
 - (id)initForTesting;
 - (id)initWithProxyCreator:(id)arg1;
+- (void)launchDaemon;
 - (void)resetProtocolConnections;
 - (void)test_tearDown;
 

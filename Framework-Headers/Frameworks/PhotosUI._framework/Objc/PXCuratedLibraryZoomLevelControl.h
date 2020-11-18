@@ -8,24 +8,18 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSArray, NSString, PXCuratedLibraryStyleGuide, PXCuratedLibraryViewModel, PXUpdater, UIColor, UIVisualEffectView;
+@class NSArray, NSString, PXCuratedLibraryStyleGuide, PXCuratedLibraryViewModel, PXUpdater, UIVisualEffectView, _PXCuratedLibraryZoomLevelSegmentedControl;
 @protocol PXCuratedLibraryZoomLevelControlDelegate;
 
 @interface PXCuratedLibraryZoomLevelControl : UIView <PXChangeObserver>
 {
     PXUpdater *_updater;
     struct UIEdgeInsets _padding;
-    struct CGSize *_segmentSizes;
-    double _minimumInterSegmentSpacing;
+    struct CGSize *_textSizes;
+    double _minimumInterTextSpacing;
     struct CGSize _intrinsicSize;
     UIVisualEffectView *_backgroundEffectView;
-    UIView *_contentView;
-    UIView *_selectionView;
-    UIColor *_selectedButtonTextColor;
-    UIColor *_unselectedButtonTextColor;
-    NSArray *_selectedButtons;
-    NSArray *_unselectedButtons;
-    double _selectionPillMargin;
+    _PXCuratedLibraryZoomLevelSegmentedControl *_segmentedControl;
     PXCuratedLibraryViewModel *_viewModel;
     PXCuratedLibraryStyleGuide *_styleGuide;
     id<PXCuratedLibraryZoomLevelControlDelegate> _delegate;
@@ -49,15 +43,11 @@
 
 + (id)_allZoomLevelIdentifiers;
 + (id)_enabledZoomLevelIdentifiersForViewModel:(id)arg1;
-+ (id)_localizedTitleForZoomLevel:(long long)arg1 usingShortVariant:(BOOL)arg2;
 - (void).cxx_destruct;
-- (void)_handleButton:(id)arg1;
 - (void)_handleContentSizeCategoryDidChange:(id)arg1;
-- (void)_invalidateButtonsStyle;
-- (void)_invalidateSubviews;
-- (void)_updateButtonsStyle;
-- (void)_updateSelection;
-- (void)_updateSubviews;
+- (void)_handleSegmentedControlAction:(id)arg1;
+- (void)_invalidateSegmentedControl;
+- (void)_updateSegmentedControl;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

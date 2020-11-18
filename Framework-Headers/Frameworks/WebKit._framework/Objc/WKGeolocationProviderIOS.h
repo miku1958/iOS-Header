@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<id<_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
     BOOL _isWebCoreGeolocationActive;
     struct RefPtr<WebKit::WebGeolocationPosition, WTF::DumbPtrTraits<WebKit::WebGeolocationPosition>> _lastActivePosition;
-    struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16> _requestsWaitingForCoreLocationAuthorization;
+    struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _requestsWaitingForCoreLocationAuthorization;
 }
 
 - (id).cxx_construct;

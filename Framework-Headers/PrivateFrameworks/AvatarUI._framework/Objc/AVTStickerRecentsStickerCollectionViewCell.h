@@ -6,17 +6,21 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSString, NSUUID, UIImageView;
+@class NSString, NSUUID, UIImageView, UILabel;
 
 @interface AVTStickerRecentsStickerCollectionViewCell : UICollectionViewCell
 {
+    BOOL _showPrereleaseSticker;
     UIImageView *_imageView;
     NSString *_title;
     NSUUID *_displaySessionUUID;
+    UILabel *_prereleaseLabel;
 }
 
 @property (strong, nonatomic) NSUUID *displaySessionUUID; // @synthesize displaySessionUUID=_displaySessionUUID;
 @property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (readonly, nonatomic) UILabel *prereleaseLabel; // @synthesize prereleaseLabel=_prereleaseLabel;
+@property (nonatomic) BOOL showPrereleaseSticker; // @synthesize showPrereleaseSticker=_showPrereleaseSticker;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)identifier;
@@ -25,6 +29,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setupPrereleaseLabelIfNeeded;
 - (void)updateWithDefaultImage;
 - (void)updateWithImage:(id)arg1;
 

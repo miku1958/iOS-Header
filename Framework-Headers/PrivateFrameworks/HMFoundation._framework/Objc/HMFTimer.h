@@ -28,7 +28,7 @@
 @property (readonly, copy) NSDate *fireDate; // @synthesize fireDate=_fireDate;
 @property (readonly, nonatomic) unsigned long long leeway;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
-@property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
+@property (readonly, getter=isRunning) BOOL running;
 @property (readonly, nonatomic) double timeInterval; // @synthesize timeInterval=_timeInterval;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
 

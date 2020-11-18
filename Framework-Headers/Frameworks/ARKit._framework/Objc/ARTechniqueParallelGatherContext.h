@@ -6,8 +6,7 @@
 
 #import <ARKit/ARTechniqueGatherContext.h>
 
-@class NSIndexSet, NSMapTable, NSMutableDictionary, NSMutableIndexSet, NSObject;
-@protocol OS_dispatch_semaphore;
+@class NSIndexSet, NSMapTable, NSMutableDictionary, NSMutableIndexSet;
 
 @interface ARTechniqueParallelGatherContext : ARTechniqueGatherContext
 {
@@ -16,7 +15,7 @@
     NSIndexSet *_deterministicTechniqueIndices;
     unsigned long long _techniqueCount;
     NSMutableDictionary *_gatheredDataByTechniqueIndex;
-    NSObject<OS_dispatch_semaphore> *_gatherSemaphore;
+    struct os_unfair_lock_s _gatherLock;
     NSMutableIndexSet *_lateResultTechniqueIndices;
     NSMapTable *_techniquesByIndex;
     BOOL _resultsCaptured;

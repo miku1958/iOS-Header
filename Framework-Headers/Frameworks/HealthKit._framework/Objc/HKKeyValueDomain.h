@@ -29,6 +29,7 @@
 
 + (id)clientInterface;
 + (id)healthAppDefaultsDomainWithHealthStore:(id)arg1;
++ (id)heartRhythmDefaultsDomainWithhealthStore:(id)arg1;
 + (id)serverInterface;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;

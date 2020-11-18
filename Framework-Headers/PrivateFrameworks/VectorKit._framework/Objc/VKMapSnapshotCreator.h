@@ -78,6 +78,7 @@
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3;
 - (void)softDealloc;
+- (void)venueCreated:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
 - (BOOL)wantsTimerTick;
 - (void)willBecomeFullyDrawn;
 - (void)willLayoutWithTimestamp:(double)arg1;

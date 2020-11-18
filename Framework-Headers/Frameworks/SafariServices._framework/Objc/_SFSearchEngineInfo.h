@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBSSearchProvider.h>
+#import <SafariSharedUI/WBSSearchProvider.h>
 
 @class NSString;
 
@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (Class)classForCoder;
 - (id)description;
-- (id)initWithName:(id)arg1 scriptName:(id)arg2 searchID:(int)arg3 searchTemplate:(id)arg4 hostSuffixes:(id)arg5 pathPrefixes:(id)arg6 usesSearchTermsFromFragment:(BOOL)arg7 suggestionsTemplate:(id)arg8 topLevelDomains:(id)arg9 safeSearchSuffix:(id)arg10 safeSearchURLQueryParameters:(id)arg11 carrierInfo:(id)arg12 controller:(id)arg13;
+- (id)initWithName:(id)arg1 scriptName:(id)arg2 searchID:(int)arg3 searchTemplate:(id)arg4 hostSuffixes:(id)arg5 pathPrefixes:(id)arg6 usesSearchTermsFromFragment:(BOOL)arg7 groupIdentifierQueryStringKey:(id)arg8 suggestionsTemplate:(id)arg9 topLevelDomains:(id)arg10 safeSearchSuffix:(id)arg11 safeSearchURLQueryParameters:(id)arg12 carrierInfo:(id)arg13 controller:(id)arg14;
 - (BOOL)searchShouldUseSafeSearchTemplate;
 
 @end

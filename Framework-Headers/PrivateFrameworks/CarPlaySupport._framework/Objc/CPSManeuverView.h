@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlaySupport/CPSInheritedBackgroundColorView.h>
+#import <UIKit/UIView.h>
 
 @class CPManeuver, CPTravelEstimates;
 
-@interface CPSManeuverView : CPSInheritedBackgroundColorView
+@interface CPSManeuverView : UIView
 {
-    CPManeuver *_representedManeuver;
+    BOOL _usesDefaultGuidanceBackgroundColor;
+    CPManeuver *_maneuver;
     long long _style;
     CPTravelEstimates *_currentTravelEstimates;
     unsigned long long _guidanceStyle;
@@ -18,12 +19,13 @@
 
 @property (strong, nonatomic) CPTravelEstimates *currentTravelEstimates; // @synthesize currentTravelEstimates=_currentTravelEstimates;
 @property (nonatomic) unsigned long long guidanceStyle; // @synthesize guidanceStyle=_guidanceStyle;
-@property (readonly, nonatomic) CPManeuver *representedManeuver; // @synthesize representedManeuver=_representedManeuver;
+@property (readonly, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (nonatomic) BOOL usesDefaultGuidanceBackgroundColor; // @synthesize usesDefaultGuidanceBackgroundColor=_usesDefaultGuidanceBackgroundColor;
 
 - (void).cxx_destruct;
 - (id)accessibilityName:(id)arg1;
-- (id)initWithManeuver:(id)arg1 style:(long long)arg2;
+- (id)initWithManeuver:(id)arg1;
 
 @end
 

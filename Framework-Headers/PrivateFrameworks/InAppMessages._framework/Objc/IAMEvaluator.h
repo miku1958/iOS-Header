@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICInAppMessageMetadataEntry, NSArray, NSDictionary;
+@class ICInAppMessageMetadataEntry, NSArray, NSDate, NSDictionary;
 @protocol IAMApplicationContextProvider;
 
 @interface IAMEvaluator : NSObject
@@ -15,6 +15,8 @@
     ICInAppMessageMetadataEntry *_currentProximityMetadata;
     NSArray *_messageEntries;
     NSDictionary *_metadataEntries;
+    NSDate *_lastDisplayTimeForRestrictedPresentationPolicyGroup;
+    NSDate *_lastDisplayTimeForNormalPresentationPolicyGroup;
     id<IAMApplicationContextProvider> _applicationContext;
     NSArray *_passingMessageEntries;
     NSArray *_messagesCloseToPassing;
@@ -25,18 +27,20 @@
 
 + (long long)_compareCurrentTimeWithMessageTime:(double)arg1;
 + (BOOL)_isMessageWithinDateRange:(id)arg1;
-+ (BOOL)applicationContext:(id)arg1 allowsPresentationForPolicyGroup:(long long)arg2;
++ (BOOL)applicationContext:(id)arg1 allowsPresentationForPolicyGroup:(long long)arg2 withLastDisplayTime:(id)arg3;
 - (void).cxx_destruct;
 - (unsigned long long)_calculateCompoundRuleProximity:(id)arg1;
 - (unsigned long long)_calculateConditionProximity:(id)arg1;
 - (unsigned long long)_calculateRuleProximity:(id)arg1;
+- (BOOL)_didCacheResourcesForMessageIfRequired:(id)arg1;
+- (BOOL)_doesPresentationPolicyAllowPresentationOfMessage:(id)arg1;
 - (BOOL)_evaluateCompoundRule:(id)arg1;
 - (BOOL)_evaluateCondition:(id)arg1;
 - (BOOL)_evaluateRule:(id)arg1;
 - (unsigned long long)_messageEntryProximity:(id)arg1;
 - (id)computeMessagesCloseToPassingWithProximityThreshold:(unsigned long long)arg1;
 - (id)computePassingMessageEntries;
-- (id)initWithMessageEntries:(id)arg1 metadataEntries:(id)arg2 applicationContext:(id)arg3;
+- (id)initWithMessageEntries:(id)arg1 metadataEntries:(id)arg2 applicationContext:(id)arg3 lastDisplayTimeForRestrictedPresentationPolicyGroup:(id)arg4 lastDisplayTimeForNormalPresentationPolicyGroup:(id)arg5;
 
 @end
 

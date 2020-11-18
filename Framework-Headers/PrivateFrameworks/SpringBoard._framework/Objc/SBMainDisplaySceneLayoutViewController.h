@@ -10,12 +10,13 @@
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver-Protocol.h>
 #import <SpringBoard/SBMainDisplaySceneLayoutStatusBarViewDataSource-Protocol.h>
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
+#import <SpringBoard/SBSystemCursorInteractionDelegate-Protocol.h>
 #import <SpringBoard/TFBetaLaunchHandleActivationDelegate-Protocol.h>
 
-@class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, UIApplicationSceneClientSettingsDiffInspector, UIView;
+@class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBMedusaSettings, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, UIApplicationSceneClientSettingsDiffInspector, UIView;
 @protocol BSInvalidatable, OS_dispatch_queue;
 
-@interface SBMainDisplaySceneLayoutViewController : SBSceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver>
+@interface SBMainDisplaySceneLayoutViewController : SBSceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver, SBSystemCursorInteractionDelegate>
 {
     SBMainDisplaySceneLayoutGestureManager *_gestureManager;
     NSMutableSet *_pushPopTransformReasons;
@@ -39,6 +40,7 @@
     NSLayoutConstraint *_homeGrabberBottomConstraint;
     NSLayoutConstraint *_homeGrabberLeftConstraint;
     NSLayoutConstraint *_homeGrabberRightConstraint;
+    SBMedusaSettings *_medusaSettings;
     BOOL __preventsCornerRadiusUpdate;
     double _separatorViewAlpha;
     unsigned long long _nubStyle;
@@ -174,6 +176,7 @@
 - (id)animationWrapperViewForLayoutState:(id)arg1 roleMask:(unsigned long long)arg2 interfaceOrientation:(long long)arg3 maskDisplayCorners:(BOOL)arg4;
 - (void)betaLaunchHandle:(id)arg1 activateIfNeededEndedWithResult:(BOOL)arg2;
 - (id)currentlyValidStatusBarPartIdentifiers;
+- (struct UIEdgeInsets)cursorInteractionHitTestInsetsForView:(id)arg1;
 - (void)dealloc;
 - (struct CGRect)frameForSceneIdentifier:(id)arg1 inView:(id)arg2;
 - (id)initWithSceneManager:(id)arg1;
@@ -190,6 +193,7 @@
 - (void)sceneHandle:(id)arg1 didUpdateSettingsWithDiff:(id)arg2 previousSettings:(id)arg3;
 - (void)setUserResizing:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (BOOL)shouldBeginCursorInteractionAtLocation:(struct CGPoint)arg1 forView:(id)arg2;
 - (struct CGRect)statusBarAvoidanceFrame;
 - (void)statusBarBreadcrumbProviderDidUpdateDisplayProperties:(id)arg1;
 - (id)statusBarDescriberAtPoint:(struct CGPoint)arg1 inView:(id)arg2 pointInSceneLayoutSpace:(struct CGPoint *)arg3;
@@ -197,6 +201,7 @@
 - (id)statusBarDescribers;
 - (long long)statusBarOrientation;
 - (id)statusBarPartsForSceneWithIdentifier:(id)arg1;
+- (id)styleForRegion:(id)arg1 forView:(id)arg2;
 - (void)viewDidLoad;
 
 @end

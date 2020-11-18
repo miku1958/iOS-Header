@@ -9,7 +9,7 @@
 #import <ShareSheet/LSOpenResourceOperationDelegate-Protocol.h>
 #import <ShareSheet/UIManagedConfigurationRestrictableActivity-Protocol.h>
 
-@class LSApplicationProxy, NSOperation, NSString, NSURL;
+@class LSApplicationProxy, NSOperation, NSString, NSURL, UIPrintInteractionController;
 
 @interface UIOpenInIBooksActivity : UIActivity <LSOpenResourceOperationDelegate, UIManagedConfigurationRestrictableActivity>
 {
@@ -20,6 +20,7 @@
     NSString *_applicationIdentifier;
     LSApplicationProxy *_applicationProxy;
     NSOperation *_operation;
+    UIPrintInteractionController *_printInteractionController;
 }
 
 @property (strong, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
@@ -29,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property (strong, nonatomic) NSOperation *operation; // @synthesize operation=_operation;
+@property (strong, nonatomic) UIPrintInteractionController *printInteractionController; // @synthesize printInteractionController=_printInteractionController;
 @property (nonatomic) BOOL shouldUnlinkFile; // @synthesize shouldUnlinkFile=_shouldUnlinkFile;
 @property (copy, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property (readonly) Class superclass;
@@ -56,7 +58,6 @@
 - (void)openResourceOperationDidComplete:(id)arg1;
 - (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;
-- (id)printInteractionController;
 
 @end
 

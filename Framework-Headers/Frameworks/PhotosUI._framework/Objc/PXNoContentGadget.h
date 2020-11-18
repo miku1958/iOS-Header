@@ -30,6 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -41,9 +42,6 @@
 @property (strong, nonatomic) PXNoContentGadgetView *noContentView; // @synthesize noContentView=_noContentView;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) struct CGRect visibleContentRect;
 
@@ -53,8 +51,8 @@
 - (id)init;
 - (id)initWithLocalizedTitle:(id)arg1 localizedMessage:(id)arg2;
 - (id)initWithLocalizedTitle:(id)arg1 localizedMessage:(id)arg2 minimumContentHeight:(double)arg3;
-- (double)preferredHeightForViewController:(struct NSObject *)arg1;
-- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
+- (double)preferredHeightForViewController:(id)arg1;
+- (void)prepareCollectionViewItem:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

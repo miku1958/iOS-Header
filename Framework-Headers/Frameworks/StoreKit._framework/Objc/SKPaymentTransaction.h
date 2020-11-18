@@ -41,6 +41,7 @@
 - (id)initWithPayment:(id)arg1;
 - (id)initWithServerTransaction:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)mergeWithServerTransaction:(id)arg1;
 - (BOOL)mergeWithTransaction:(id)arg1;
 

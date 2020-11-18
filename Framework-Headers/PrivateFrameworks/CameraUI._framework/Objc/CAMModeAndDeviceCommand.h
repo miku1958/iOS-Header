@@ -32,7 +32,7 @@
 - (void)_performPostConfigurationSanityCheckForGraphConfiguration:(id)arg1 withContext:(id)arg2;
 - (void)_performPostConfigurationSetupForGraphConfiguration:(id)arg1 withContext:(id)arg2;
 - (void)_sanitizeDeviceUsingContext:(id)arg1;
-- (BOOL)_shouldEnableCTMVideoCaptureForMode:(long long)arg1 device:(long long)arg2;
+- (BOOL)_shouldEnableDeferredProcessingForMode:(long long)arg1;
 - (BOOL)_shouldEnableLivePhotoCaptureForMode:(long long)arg1 device:(long long)arg2;
 - (id)_specificEncodingBehaviorCommandForGraphConfiguration:(id)arg1;
 - (id)_specificFramerateCommandForGraphConfiguration:(id)arg1 withContext:(id)arg2;

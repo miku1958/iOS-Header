@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (id)newActionSeparatorViewForGroupViewState:(id)arg1;
 - (id)newGroupBackgroundViewWithGroupViewState:(id)arg1;
 - (id)newSectionSeparatorViewForGroupViewState:(id)arg1;
+- (BOOL)selectByIndirectPointerTouchRequired;
 - (BOOL)selectByPressGestureRequired;
 - (BOOL)selectionFeedbackEnabled;
 - (double)verticalImageContentSpacing;

@@ -8,19 +8,20 @@
 
 #import <AccessibilityUtilities/AXDeviceMonitorDelegate-Protocol.h>
 
-@class AXDeviceMonitor, AXEventProcessor, NSArray, NSString;
-@protocol AXMouseEventListenerDelegate;
+@class AXDeviceMonitor, AXEventProcessor, NSHashTable, NSSet, NSString;
 
 @interface AXMouseEventListener : NSObject <AXDeviceMonitorDelegate>
 {
     AXDeviceMonitor *_deviceMonitor;
     AXEventProcessor *_eventProcessor;
-    NSArray *_cachedMouseDevices;
-    id<AXMouseEventListenerDelegate> _delegate;
+    struct os_unfair_lock_s _cachedMouseDevicesLock;
+    NSSet *_cachedMouseDevices;
+    struct os_unfair_lock_s _observerLock;
+    NSHashTable *_observers;
 }
 
+@property (readonly, nonatomic) BOOL currentDevicesHaveAssistiveTouchCustomActions;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<AXMouseEventListenerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -29,12 +30,15 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_handleMouseButtonEvent:(id)arg1;
+- (id)_init;
+- (void)addObserver:(id)arg1;
 - (void)beginFilteringEvents;
 - (void)dealloc;
 - (void)deviceMonitorDidDetectDeviceEvent:(id)arg1;
 - (id)discoveredMouseDevices;
 - (void)endFilteringEvents;
-- (id)init;
+- (void)mouseSettingsDidChange;
+- (void)removeObserver:(id)arg1;
 
 @end
 

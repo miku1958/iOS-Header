@@ -20,6 +20,7 @@
 
 @property (readonly, nonatomic) BOOL containsModifier;
 @property (readonly, nonatomic) NSString *displayValue;
+@property (readonly, nonatomic) BOOL isArrowKeyChord;
 @property (readonly, nonatomic) BOOL isFunctionKeyChord;
 @property (readonly, nonatomic) BOOL isNull;
 @property (readonly, nonatomic) BOOL isTextInputChord;
@@ -34,6 +35,7 @@
 - (void).cxx_destruct;
 - (id)_displayValueWithSortedModifiers:(id)arg1 isUSKeyboard:(BOOL)arg2;
 - (id)_initWithKeys:(id)arg1;
+- (id)_normalizeKeys:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)displayValueWithStyle:(long long)arg1;

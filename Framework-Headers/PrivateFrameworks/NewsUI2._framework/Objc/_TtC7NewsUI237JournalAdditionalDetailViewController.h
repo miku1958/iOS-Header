@@ -14,9 +14,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *tableView;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *headline;
-    MISSING_TYPE *scoreProfile;
-    MISSING_TYPE *topics;
-    MISSING_TYPE *personalizationFeatures;
 }
 
 - (void).cxx_destruct;

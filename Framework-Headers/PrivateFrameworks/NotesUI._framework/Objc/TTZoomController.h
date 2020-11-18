@@ -21,11 +21,11 @@
 - (id)reallyZoomFontInAttributes:(id)arg1 zoomDirection:(BOOL)arg2;
 - (id)unzoomAttributedString:(id)arg1;
 - (id)unzoomAttributes:(id)arg1;
-- (struct UIFont *)unzoomFont:(struct UIFont *)arg1;
+- (id)unzoomFont:(id)arg1;
 - (id)unzoomFontInAttributes:(id)arg1;
 - (id)zoomAttributedString:(id)arg1;
 - (id)zoomAttributes:(id)arg1;
-- (struct UIFont *)zoomFont:(struct UIFont *)arg1;
+- (id)zoomFont:(id)arg1;
 - (id)zoomFontInAttributes:(id)arg1;
 
 @end

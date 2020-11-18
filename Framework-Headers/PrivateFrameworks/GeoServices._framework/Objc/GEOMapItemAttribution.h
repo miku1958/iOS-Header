@@ -16,6 +16,7 @@
     NSString *_poiID;
 }
 
+@property (readonly, nonatomic) NSString *appAdamID;
 @property (readonly, nonatomic) NSArray *attributionApps;
 @property (readonly, nonatomic) NSArray *attributionURLs; // @synthesize attributionURLs=_attributionURLs;
 @property (readonly, nonatomic) NSString *providerID;

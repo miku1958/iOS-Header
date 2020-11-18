@@ -29,6 +29,7 @@
 - (void)logoutToLoginSessionWithPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)personaLoginWithPid:(int)arg1 WithUserODuuid:(NSString *)arg2 withUid:(unsigned int)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)personaLogoutWithPid:(int)arg1 WithUserODuuid:(NSString *)arg2 withUid:(unsigned int)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)provisionDevice:(NSDictionary *)arg1 forPid:(int)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)reengageUserQuotaForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registerCriticalUserSwitchStakeholderForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registerUserPersonaObserverForPID:(int)arg1 withMachServiceName:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;

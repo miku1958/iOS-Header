@@ -14,8 +14,8 @@
     PXWidgetCompositionSpec *_compositionSpec;
     PXWidgetSpec *_widgetSpec;
     PXPhotosDetailsBarSpec *_barSpec;
-    struct UIColor *_backgroundColor;
-    struct UIColor *_dimmingColor;
+    UIColor *_backgroundColor;
+    UIColor *_dimmingColor;
     double _dimmingAlpha;
 }
 

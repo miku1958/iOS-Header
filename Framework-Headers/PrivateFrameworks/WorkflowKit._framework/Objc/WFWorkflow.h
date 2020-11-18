@@ -25,8 +25,8 @@
     WFWorkflowRecord *_record;
     long long _environment;
     WFWorkflowQuarantine *_quarantine;
-    WFWorkflowReference *_overridenReference;
     id<WFRecordStorageProvider> _storageProvider;
+    WFWorkflowReference *_overridenReference;
 }
 
 @property (readonly, copy, nonatomic) NSArray *actions;
@@ -54,7 +54,7 @@
 @property (readonly, nonatomic, getter=isResidentCompatible) BOOL residentCompatible;
 @property (nonatomic) BOOL saveDisabled; // @synthesize saveDisabled=_saveDisabled;
 @property (readonly, nonatomic) NSString *source;
-@property (readonly, nonatomic) id<WFRecordStorageProvider> storageProvider; // @synthesize storageProvider=_storageProvider;
+@property (strong, nonatomic) id<WFRecordStorageProvider> storageProvider; // @synthesize storageProvider=_storageProvider;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) WFVariableAvailability *variableAvailability; // @synthesize variableAvailability=_variableAvailability;
 @property (readonly, copy, nonatomic) NSString *wfName;

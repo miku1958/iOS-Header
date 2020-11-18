@@ -47,6 +47,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (readonly, nonatomic) BOOL hasContentToDisplay;
@@ -59,9 +60,6 @@
 @property (copy, nonatomic) NSSet *oneUpHiddenAssetReferences; // @synthesize oneUpHiddenAssetReferences=_oneUpHiddenAssetReferences;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
 @property (nonatomic) BOOL wasAskedToLoadContentData; // @synthesize wasAskedToLoadContentData=_wasAskedToLoadContentData;
 
@@ -75,6 +73,7 @@
 - (void)_loadAssets;
 - (void)_loadCaption;
 - (void)_loadContentFromSectionInfo;
+- (void)_navigateToAssetView:(id)arg1;
 - (unsigned long long)_numberOfLinesForCaption;
 - (struct CGSize)_performLayoutInRect:(struct CGRect)arg1 updateSubviewFrames:(BOOL)arg2;
 - (void)_updateCollageView;
@@ -95,6 +94,7 @@
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)uniqueGadgetIdentifier;
+- (void)userDidSelectGadget;
 
 @end
 

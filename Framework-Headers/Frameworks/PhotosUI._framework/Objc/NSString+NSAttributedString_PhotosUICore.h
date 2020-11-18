@@ -21,6 +21,8 @@
 - (long long)digits;
 - (BOOL)px_hasPrefixIgnoringCaseAndDiacritics:(id)arg1;
 - (BOOL)px_hasStringIgnoringCaseAndDiacritics:(id)arg1;
+- (id)px_stringByAppendingDescriptionDetails:(id)arg1;
+- (id)px_stringByAppendingDescriptionDetailsWithFormat:(id)arg1;
 - (id)px_stringByApplyingCapitalization:(long long)arg1;
 - (id)px_stringByDeletingCharactersInSet:(id)arg1;
 - (struct _NSRange)rangeOfDigits;

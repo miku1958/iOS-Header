@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSString, TKTokenConfigurationProxy, TKTokenID;
+@class NSArray, NSData, NSString, TKTokenConfigurationConnection, TKTokenID;
 
 @interface TKTokenConfiguration : NSObject
 {
-    TKTokenConfigurationProxy *_proxy;
+    TKTokenConfigurationConnection *_configurationConnection;
     NSArray *_keychainItems;
     TKTokenID *_tokenID;
 }
@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 - (id)beginTransaction;
 - (id)certificateForObjectID:(id)arg1 error:(id *)arg2;
-- (id)initWithTokenID:(id)arg1 proxy:(id)arg2;
+- (id)initWithTokenID:(id)arg1 configurationConnection:(id)arg2;
 - (id)keyForObjectID:(id)arg1 error:(id *)arg2;
 
 @end

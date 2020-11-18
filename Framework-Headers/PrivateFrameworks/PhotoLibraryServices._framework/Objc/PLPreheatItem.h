@@ -44,8 +44,8 @@
 
 - (void).cxx_destruct;
 - (BOOL)addImageHandler:(CDUnknownBlockType)arg1;
-- (struct NSObject *)cachedImage:(BOOL *)arg1;
-- (struct NSObject *)cachedImageIfAvailable:(BOOL *)arg1;
+- (id)cachedImage:(BOOL *)arg1;
+- (id)cachedImageIfAvailable:(BOOL *)arg1;
 - (void)cancelPreheatRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)decrementRequestCount;
 - (id)description;

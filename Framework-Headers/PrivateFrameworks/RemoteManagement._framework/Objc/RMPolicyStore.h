@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock;
-
 @interface RMPolicyStore : NSObject
 {
-    NSLock *_policyChangeLock;
+    id _policyChangeLock;
 }
 
 - (void).cxx_destruct;
-- (void)_setCurrentPolicyByKey:(struct NSDictionary *)arg1;
+- (void)_setCurrentPolicyByKey:(id)arg1;
 - (void)addOrUpdatePolicy:(id)arg1;
-- (struct NSDictionary *)currentPolicyByKey;
+- (id)currentPolicyByKey;
 - (id)init;
 - (id)policyWithKey:(id)arg1;
 - (void)removePolicyWithKey:(id)arg1;

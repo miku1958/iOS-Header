@@ -15,6 +15,7 @@
 - (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityHasNativeFocus;
 - (id)_accessibilityNativeFocusPreferredElement;
+- (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (long long)accessibilityContainerType;
 - (id)accessibilityElements;

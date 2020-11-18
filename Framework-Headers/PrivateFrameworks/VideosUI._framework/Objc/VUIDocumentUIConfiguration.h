@@ -13,14 +13,18 @@
     BOOL _animated;
     BOOL _navigationBarHidden;
     BOOL _navigationBarAdjustedToSizeClass;
+    BOOL _isInteractivePopGestureAllowed;
     long long _type;
     NSString *_viewControllerIdentifier;
+    NSString *_viewControllerDocumentIdentifier;
 }
 
 @property (nonatomic, getter=isAnimated) BOOL animated; // @synthesize animated=_animated;
+@property (nonatomic, getter=isInteractivePopGestureAllowed) BOOL isInteractivePopGestureAllowed; // @synthesize isInteractivePopGestureAllowed=_isInteractivePopGestureAllowed;
 @property (nonatomic, getter=isNavigationBarAdjustedToSizeClass) BOOL navigationBarAdjustedToSizeClass; // @synthesize navigationBarAdjustedToSizeClass=_navigationBarAdjustedToSizeClass;
 @property (nonatomic, getter=isNavigationBarHidden) BOOL navigationBarHidden; // @synthesize navigationBarHidden=_navigationBarHidden;
 @property (nonatomic) long long type; // @synthesize type=_type;
+@property (copy, nonatomic) NSString *viewControllerDocumentIdentifier; // @synthesize viewControllerDocumentIdentifier=_viewControllerDocumentIdentifier;
 @property (copy, nonatomic) NSString *viewControllerIdentifier; // @synthesize viewControllerIdentifier=_viewControllerIdentifier;
 
 + (struct CGSize)_preferredSizeFromConfig:(id)arg1;

@@ -42,7 +42,7 @@
 - (void)moveElement:(id)arg1 fromPath:(id)arg2 toPath:(id)arg3;
 - (unsigned long long)numberOfElementsInSection:(id)arg1;
 - (id)pathForElement:(id)arg1;
-- (void)performBatchUpdateBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performBatchUpdateBlock:(CDUnknownBlockType)arg1;
 - (void)refreshElement:(id)arg1 atPath:(id)arg2;
 - (void)reloadElement:(id)arg1 atPath:(id)arg2;
 - (void)removeElement:(id)arg1 atPath:(id)arg2;

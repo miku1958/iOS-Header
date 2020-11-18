@@ -10,7 +10,7 @@
 @class NSDictionary;
 
 @protocol MCUserMDMXPCProtocol <NSObject, MCMDMClientProtocol>
-- (void)processUserRequest:(NSDictionary *)arg1 completion:(void (^)(NSError *, NSDictionary *))arg2;
+- (void)processUserRequest:(NSDictionary *)arg1 encodeResponse:(BOOL)arg2 completion:(void (^)(NSError *, NSDictionary *, NSData *))arg3;
 - (void)scheduleTokenUpdateWithCompletion:(void (^)(NSError *))arg1;
 - (void)simulatePushWithCompletion:(void (^)(NSError *))arg1;
 - (void)userPushTokenWithCompletion:(void (^)(NSData *, NSError *))arg1;

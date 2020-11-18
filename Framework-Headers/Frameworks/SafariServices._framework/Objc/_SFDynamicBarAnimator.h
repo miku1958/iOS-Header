@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink;
+@class CADisplayLink, NSPointerArray;
 @protocol _SFDynamicBarAnimatorDelegate;
 
 @interface _SFDynamicBarAnimator : NSObject
@@ -23,6 +23,7 @@
     double _lastOffset;
     BOOL _inSteadyState;
     BOOL _performingBatchUpdates;
+    NSPointerArray *_stateObservers;
     BOOL _sendingOutputsDidChange;
     long long _state;
     double _topBarHeight;
@@ -52,6 +53,7 @@
 - (void)_transitionToSteadyState;
 - (void)_updateDisplayLink;
 - (void)_updateOutputs;
+- (void)addObserver:(id)arg1;
 - (void)attemptTransitionToState:(long long)arg1 animated:(BOOL)arg2;
 - (void)beginDraggingWithOffset:(double)arg1;
 - (BOOL)canTransitionToState:(long long)arg1;
@@ -60,6 +62,7 @@
 - (void)endScrolling;
 - (id)init;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+- (void)removeObserver:(id)arg1;
 - (void)setBottomBarOffset:(double)arg1 forState:(long long)arg2;
 - (void)setTopBarHeight:(double)arg1 forState:(long long)arg2;
 - (void)updateDraggingWithOffset:(double)arg1;

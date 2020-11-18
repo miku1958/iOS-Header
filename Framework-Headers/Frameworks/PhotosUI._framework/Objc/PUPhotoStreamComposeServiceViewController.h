@@ -11,8 +11,8 @@
 #import <PhotosUI/PUPhotoStreamsAlbumsTableViewControllerDelegate-Protocol.h>
 #import <PhotosUI/SLSheetViewHostProtocol-Protocol.h>
 
-@class NSArray, NSString;
-@protocol PUPhotoStreamComposeServiceDelegate;
+@class NSArray, NSObject, NSString;
+@protocol PLAlbumContainer, PLAlbumProtocol, PUPhotoStreamComposeServiceDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoStreamComposeServiceViewController : SLComposeServiceViewController <PUPhotoStreamsAlbumsTableViewControllerDelegate, PUPhotoStreamCreateTitleDelegate, PUCloudSharedCreateAlbumViewControllerDelegate, SLSheetViewHostProtocol>
@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
         unsigned int hasDidPost:1;
         unsigned int hasDidCancel:1;
     } _delegateFlags;
-    struct NSObject *_selectedAlbum;
+    NSObject<PLAlbumProtocol> *_selectedAlbum;
     NSArray *_actions;
-    struct NSObject *_albumList;
+    NSObject<PLAlbumContainer> *_albumList;
     BOOL _inCreateNewAlbum;
     NSArray *_recipients;
     BOOL _shouldShowPost;
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)albumListAction;
 - (void)albumStreamingCreateViewController:(id)arg1 didSucceed:(BOOL)arg2;
 - (void)cancel;
-- (void)controller:(id)arg1 didSelectAlbum:(struct NSObject *)arg2;
+- (void)controller:(id)arg1 didSelectAlbum:(id)arg2;
 - (void)controllerWillCreateNewAlbum:(id)arg1;
 - (void)failWithError:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

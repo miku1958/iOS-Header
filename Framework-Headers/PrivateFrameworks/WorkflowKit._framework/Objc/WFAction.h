@@ -11,7 +11,7 @@
 #import <WorkflowKit/WFUUIDProvider-Protocol.h>
 #import <WorkflowKit/WFVariableProvider-Protocol.h>
 
-@class ICApp, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, WFActionParameterSummary, WFContentCollection, WFImage, WFParameter, WFResourceManager, WFWorkflow;
+@class ICApp, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, WFActionParameterSummary, WFContentCollection, WFContentSourceTracker, WFDataInfo, WFImage, WFParameter, WFResourceManager, WFWorkflow;
 @protocol WFActionParameterInputProvider, WFUserInterface, WFVariableDataSource;
 
 @interface WFAction : NSObject <WFUUIDProvider, WFParameterEventObserver, NSCopying, WFVariableProvider>
@@ -24,6 +24,7 @@
     NSArray *_inputContentClasses;
     NSArray *_outputContentClasses;
     NSProgress *_progress;
+    WFContentSourceTracker *_contentSourceTracker;
     NSString *_identifier;
     NSDictionary *_definition;
     WFContentCollection *_input;
@@ -58,6 +59,7 @@
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, nonatomic) Class configurationViewClass;
 @property (readonly, nonatomic, getter=isConstructorAction) BOOL constructorAction;
+@property (strong, nonatomic) WFContentSourceTracker *contentSourceTracker; // @synthesize contentSourceTracker=_contentSourceTracker;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic, getter=isDebugAction) BOOL debugAction;
 @property (readonly, copy) NSString *debugDescription;
@@ -121,6 +123,7 @@
 @property (readonly, nonatomic) BOOL neverSuggested;
 @property (strong, nonatomic) WFContentCollection *output; // @synthesize output=_output;
 @property (readonly, nonatomic) NSArray *outputContentClasses; // @synthesize outputContentClasses=_outputContentClasses;
+@property (readonly, nonatomic) unsigned long long outputDisclosureLevel;
 @property (readonly, nonatomic) WFImage *outputIcon;
 @property (readonly, nonatomic) NSString *outputMeasurementUnitType;
 @property (copy, nonatomic) NSString *outputName;
@@ -155,6 +158,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *supplementalSerializedParameters; // @synthesize supplementalSerializedParameters=_supplementalSerializedParameters;
 @property (readonly, nonatomic) NSArray *supportedAppIdentifiers;
+@property (readonly, nonatomic) WFDataInfo *targetDataInfo;
 @property (readonly, nonatomic) NSArray *unsupportedEnvironments;
 @property (strong, nonatomic) NSMutableDictionary *userDefinedParameterStates; // @synthesize userDefinedParameterStates=_userDefinedParameterStates;
 @property (strong, nonatomic) id<WFUserInterface> userInterface; // @synthesize userInterface=_userInterface;
@@ -166,6 +170,7 @@
 
 + (id)iconCache;
 + (id)indentationLevelsForActions:(id)arg1;
++ (BOOL)outputIsExemptFromTaintTrackingInheritance;
 + (void)showImplicitChooseFromListWithInput:(id)arg1 userInterface:(id)arg2 cancelHandler:(CDUnknownBlockType)arg3 selectionHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)_processParameterStates:(id)arg1 withInput:(id)arg2 skippingHiddenParameters:(BOOL)arg3 askForValuesIfNecessary:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -199,7 +204,7 @@
 - (void)finishRunningWithError:(id)arg1;
 - (id)generateOutputUUIDForAction:(id)arg1;
 - (id)generateUUIDIfNecessaryWithUUIDProvider:(id)arg1;
-- (BOOL)getInputContentFromVariablesInParameterState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)getInputContentFromVariablesInParameterState:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)hasAvailableActionOutputVariables;
 - (BOOL)hasAvailableVariables;
 - (BOOL)hasChildren;

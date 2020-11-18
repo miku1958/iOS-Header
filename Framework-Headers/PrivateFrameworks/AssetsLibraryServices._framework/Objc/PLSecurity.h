@@ -19,6 +19,7 @@
 + (BOOL)connectionIsEntitledForPhotoKit:(id)arg1;
 + (BOOL)containsPhotoKitEntitlement:(id)arg1;
 + (BOOL)isEntitledForPhotoKit;
++ (BOOL)isEntitledForPhotoKitOrPrivatePhotosTCCForToken:(CDStruct_6ad76789)arg1;
 + (BOOL)secTask:(struct __SecTask *)arg1 hasEntitlement:(id)arg2;
 
 @end

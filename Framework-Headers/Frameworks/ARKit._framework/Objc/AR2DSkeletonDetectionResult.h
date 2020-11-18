@@ -15,22 +15,28 @@
 {
     struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _rawJoints;
     struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _rotatedJoints;
+    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _rawJointsLocalSpace;
     struct vector<unsigned char, std::__1::allocator<unsigned char>> _jointTrackingStates;
-    long long _rotationNeeded;
     AR2D3DSkeletonLiftingData *_liftingData;
+    long long _rotation;
 }
 
 @property (readonly, nonatomic) unsigned long long jointCount;
 @property (readonly, nonatomic) const char *jointTrackingStates;
 @property (readonly, nonatomic) const MISSING_TYPE **joints;
+@property (readonly, nonatomic) const MISSING_TYPE **jointsLocalSpace;
 @property (readonly, nonatomic) AR2D3DSkeletonLiftingData *liftingData; // @synthesize liftingData=_liftingData;
 @property (readonly, nonatomic) const float *liftingData3D;
 @property (readonly, nonatomic) unsigned long long liftingJointCount;
 @property (readonly, nonatomic) const MISSING_TYPE **rawJointsOutput;
+@property (readonly, nonatomic) long long rotation; // @synthesize rotation=_rotation;
+@property (readonly, nonatomic) unsigned long long trackedJointCount;
 
++ (id)childrenIndices;
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)alignSkeleton:(id)arg1 rotationNeeded:(long long)arg2;
 - (float)computeDistanceBetweenSkeletonDetectionResult:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

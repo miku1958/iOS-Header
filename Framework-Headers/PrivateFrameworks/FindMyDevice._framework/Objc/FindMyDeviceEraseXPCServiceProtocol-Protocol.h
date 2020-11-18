@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class FMDEraseOptions;
+
 @protocol FindMyDeviceEraseXPCServiceProtocol
-- (void)eraseDeviceWithCompletion:(void (^)(NSError *))arg1;
+- (void)eraseDeviceWithOptions:(FMDEraseOptions *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

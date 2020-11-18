@@ -11,7 +11,7 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDateComponents, NSSet, NSString, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMObjectID, REMResolutionTokenMap, REMUserActivity;
+@class NSArray, NSData, NSDate, NSDateComponents, NSSet, NSString, NSURL, REMCRMergeableStringDocument, REMContactRepresentation, REMDisplayDate, REMObjectID, REMResolutionTokenMap, REMUserActivity;
 
 @interface REMReminderStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
 {
@@ -47,6 +47,7 @@
     NSArray *_alarms;
     REMContactRepresentation *_contactHandles;
     unsigned long long _icsDisplayOrder;
+    NSURL *_icsUrl;
     NSData *_importedICSData;
     NSString *_daCalendarItemUniqueIdentifier;
     REMUserActivity *_userActivity;
@@ -74,6 +75,7 @@
 @property (copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
 @property (nonatomic) long long flagged; // @synthesize flagged=_flagged;
 @property (nonatomic) unsigned long long icsDisplayOrder; // @synthesize icsDisplayOrder=_icsDisplayOrder;
+@property (copy, nonatomic) NSURL *icsUrl; // @synthesize icsUrl=_icsUrl;
 @property (strong, nonatomic) NSData *importedICSData; // @synthesize importedICSData=_importedICSData;
 @property (readonly, nonatomic) BOOL isOverdue;
 @property (readonly, nonatomic) BOOL isRecurrent;

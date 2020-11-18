@@ -18,10 +18,10 @@
 
 + (id)contentCategories;
 + (id)countDescription;
-+ (id)itemsWithJSONFileRepresentation:(id)arg1;
-+ (id)itemsWithPlistFileRepresentation:(id)arg1;
-+ (id)itemsWithPropertyListObject:(id)arg1 preferredDictionaryType:(id)arg2;
-+ (id)itemsWithPropertyListObject:(id)arg1 preferredDictionaryType:(id)arg2 topLevelName:(id)arg3;
++ (id)itemsWithJSONFileRepresentation:(id)arg1 contentSource:(id)arg2;
++ (id)itemsWithPlistFileRepresentation:(id)arg1 contentSource:(id)arg2;
++ (id)itemsWithPropertyListObject:(id)arg1 preferredDictionaryType:(id)arg2 contentSource:(id)arg3;
++ (id)itemsWithPropertyListObject:(id)arg1 preferredDictionaryType:(id)arg2 topLevelName:(id)arg3 contentSource:(id)arg4;
 + (id)outputTypes;
 + (id)ownedTypes;
 + (id)pluralTypeDescription;

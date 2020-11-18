@@ -11,12 +11,21 @@
 @interface PIExportImageMetadataBuilder : PIExportMetadataBuilder
 {
     NSMutableDictionary *_iptcMutableDictionary;
+    NSMutableDictionary *_exifMutableDictionary;
+    NSMutableDictionary *_tiffMutableDictionary;
 }
 
+@property (readonly, copy, nonatomic) NSDictionary *exifDictionary;
+@property (strong, nonatomic) NSMutableDictionary *exifMutableDictionary; // @synthesize exifMutableDictionary=_exifMutableDictionary;
 @property (readonly, copy, nonatomic) NSDictionary *iptcDictionary;
 @property (strong, nonatomic) NSMutableDictionary *iptcMutableDictionary; // @synthesize iptcMutableDictionary=_iptcMutableDictionary;
+@property (readonly, copy, nonatomic) NSDictionary *tiffDictionary;
+@property (strong, nonatomic) NSMutableDictionary *tiffMutableDictionary; // @synthesize tiffMutableDictionary=_tiffMutableDictionary;
 
 + (id)_dateFormatterTemplate;
++ (id)_exifDateTimeFormatter;
++ (id)_exifSubsecTimeFormatter;
++ (id)_exifTimeZoneOffsetFormatter;
 + (id)_gpsDateFormatter;
 + (id)_gpsTimeFormatter;
 + (id)gpsDictionaryForLocation:(id)arg1;

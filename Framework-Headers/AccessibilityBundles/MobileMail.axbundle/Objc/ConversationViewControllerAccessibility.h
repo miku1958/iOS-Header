@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFirstElementForFocus;
+- (id)_accessibilityFirstElementForReadFromTop;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityPerformLeadingActionWithCell:(id)arg1;
 - (id)_accessibilityTitleForLeadingActionWithCell:(id)arg1;
@@ -21,10 +22,9 @@
 - (void)_axCancelMarkAsReadTimer;
 - (id)_axElementForFocusInCell:(id)arg1 shouldAllowCollapsedCell:(BOOL)arg2;
 - (id)_axFirstVisibleCell;
-- (BOOL)_axFocusOnReferenceMessage;
+- (id)_axFirstVisibleExpandedCell;
 - (id)_axMessageSubjectView;
 - (void)_axSetAutomaticallyMarkReadTimer:(id)arg1;
-- (void)_axSetFocusOnReferenceOnMessage:(BOOL)arg1;
 - (void)_axSetSkipNextFocusOnMessage:(BOOL)arg1;
 - (void)_axSimulateTapArrowButtonWithDirection:(int)arg1;
 - (BOOL)_axSkipNextFocusOnMessage;
@@ -39,7 +39,6 @@
 - (void)invalidateAutomaticMarkAsReadForAllMessages;
 - (void)messageViewController:(id)arg1 didTapRevealActionsButton:(id)arg2;
 - (void)scheduleAutomaticMarkAsReadForMessage:(id)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

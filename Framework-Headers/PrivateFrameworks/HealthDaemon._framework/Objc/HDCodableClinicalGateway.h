@@ -8,14 +8,17 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSData;
+@class HDCodableMessageVersion, NSData;
 
 @interface HDCodableClinicalGateway : PBCodable <NSCopying>
 {
+    HDCodableMessageVersion *_messageVersion;
     NSData *_rawContent;
 }
 
+@property (readonly, nonatomic) BOOL hasMessageVersion;
 @property (readonly, nonatomic) BOOL hasRawContent;
+@property (strong, nonatomic) HDCodableMessageVersion *messageVersion; // @synthesize messageVersion=_messageVersion;
 @property (strong, nonatomic) NSData *rawContent; // @synthesize rawContent=_rawContent;
 
 - (void).cxx_destruct;

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleReply:(id)arg1;
+- (void)_requestCompletedWithError:(id)arg1;
 - (void)_start;
 - (BOOL)_wantsExpired;
 - (BOOL)_wantsRevoked;

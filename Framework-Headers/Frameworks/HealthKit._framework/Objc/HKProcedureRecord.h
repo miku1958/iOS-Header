@@ -45,6 +45,7 @@
 @property (readonly, copy) NSArray *categoryCodings;
 @property (readonly, copy) NSArray *complications;
 @property (readonly, copy) NSArray *complicationsCodings;
+@property (readonly, copy, nonatomic) NSString *country;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) HKMedicalDate *executionEndDate;
@@ -69,21 +70,12 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)_newProcedureRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 procedureCodings:(id)arg11 performers:(id)arg12 executionStartDate:(id)arg13 executionEndDate:(id)arg14 notPerformed:(BOOL)arg15 statusCoding:(id)arg16 categoryCodings:(id)arg17 reasonCodings:(id)arg18 reasonsNotPerformedCodings:(id)arg19 outcomeCodings:(id)arg20 complicationsCodings:(id)arg21 followUpsCodings:(id)arg22 bodySitesCodings:(id)arg23 config:(CDUnknownBlockType)arg24;
-+ (id)bodySitesCodingsPreferredSystems;
++ (id)_newProcedureRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 procedureCodings:(id)arg13 performers:(id)arg14 executionStartDate:(id)arg15 executionEndDate:(id)arg16 notPerformed:(BOOL)arg17 statusCoding:(id)arg18 categoryCodings:(id)arg19 reasonCodings:(id)arg20 reasonsNotPerformedCodings:(id)arg21 outcomeCodings:(id)arg22 complicationsCodings:(id)arg23 followUpsCodings:(id)arg24 bodySitesCodings:(id)arg25 config:(CDUnknownBlockType)arg26;
 + (id)cachedConceptRelationshipKeyPaths;
-+ (id)categoryCodingsPreferredSystems;
-+ (id)complicationsCodingsPreferredSystems;
 + (id)defaultDisplayString;
-+ (id)followUpsCodingsPreferredSystems;
 + (id)indexableConceptKeyPaths;
-+ (id)outcomeCodingsPreferredSystems;
-+ (id)procedureCodingsPreferredSystems;
-+ (id)procedureRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 procedureCodings:(id)arg10 performers:(id)arg11 executionStartDate:(id)arg12 executionEndDate:(id)arg13 notPerformed:(BOOL)arg14 statusCoding:(id)arg15 categoryCodings:(id)arg16 reasonCodings:(id)arg17 reasonsNotPerformedCodings:(id)arg18 outcomeCodings:(id)arg19 complicationsCodings:(id)arg20 followUpsCodings:(id)arg21 bodySitesCodings:(id)arg22;
-+ (id)procedureRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 procedureCodings:(id)arg11 performers:(id)arg12 executionStartDate:(id)arg13 executionEndDate:(id)arg14 notPerformed:(BOOL)arg15 statusCoding:(id)arg16 categoryCodings:(id)arg17 reasonCodings:(id)arg18 reasonsNotPerformedCodings:(id)arg19 outcomeCodings:(id)arg20 complicationsCodings:(id)arg21 followUpsCodings:(id)arg22 bodySitesCodings:(id)arg23;
-+ (id)reasonCodingsPreferredSystems;
-+ (id)reasonsNotPerformedCodingsPreferredSystems;
-+ (id)statusCodingPreferredSystems;
++ (id)procedureRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 procedureCodings:(id)arg12 performers:(id)arg13 executionStartDate:(id)arg14 executionEndDate:(id)arg15 notPerformed:(BOOL)arg16 statusCoding:(id)arg17 categoryCodings:(id)arg18 reasonCodings:(id)arg19 reasonsNotPerformedCodings:(id)arg20 outcomeCodings:(id)arg21 complicationsCodings:(id)arg22 followUpsCodings:(id)arg23 bodySitesCodings:(id)arg24;
++ (id)procedureRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 procedureCodings:(id)arg13 performers:(id)arg14 executionStartDate:(id)arg15 executionEndDate:(id)arg16 notPerformed:(BOOL)arg17 statusCoding:(id)arg18 categoryCodings:(id)arg19 reasonCodings:(id)arg20 reasonsNotPerformedCodings:(id)arg21 outcomeCodings:(id)arg22 complicationsCodings:(id)arg23 followUpsCodings:(id)arg24 bodySitesCodings:(id)arg25;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -113,40 +105,29 @@
 - (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)bodySitesCodingsCollection;
 - (id)bodySitesCodingsContexts;
-- (id)bodySitesCodingsTasks;
 - (id)categoryCodingsCollection;
 - (id)categoryCodingsContext;
-- (id)categoryCodingsTasks;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)complicationsCodingsCollection;
 - (id)complicationsCodingsContexts;
-- (id)complicationsCodingsTasks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)followUpsCodingsCollection;
 - (id)followUpsCodingsContexts;
-- (id)followUpsCodingsTasks;
-- (id)indexKeywords;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
-- (id)medicalRecordPreferredSystems;
 - (id)outcomeCodingsCollection;
 - (id)outcomeCodingsContext;
-- (id)outcomeCodingsTasks;
 - (id)procedureCodingsCollection;
 - (id)procedureCodingsContext;
-- (id)procedureCodingsTasks;
 - (id)reasonCodingsCollection;
 - (id)reasonCodingsContext;
-- (id)reasonCodingsTasks;
 - (id)reasonsNotPerformedCodingsCollection;
 - (id)reasonsNotPerformedCodingsContexts;
-- (id)reasonsNotPerformedCodingsTasks;
 - (id)statusCodingCollection;
 - (id)statusCodingContext;
-- (id)statusCodingTasks;
 
 @end
 

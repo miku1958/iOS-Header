@@ -22,6 +22,7 @@
 @property (copy, nonatomic) NSString *enrollmentName;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAHomeMemberSettings *homeMemberSettings;
+@property (copy, nonatomic) NSString *lastVisitedAceHost;
 @property (copy, nonatomic) NSString *loggableCompanionAssistantId;
 @property (copy, nonatomic) NSString *loggableMultiUserSharedUserId;
 @property (copy, nonatomic) NSString *loggableSharedUserId;

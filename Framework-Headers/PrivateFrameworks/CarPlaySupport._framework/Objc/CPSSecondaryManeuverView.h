@@ -6,23 +6,29 @@
 
 #import <CarPlaySupport/CPSManeuverView.h>
 
-@class CPManeuver, CPSAbridgableLabel, UIImageView;
+@class CPSAbridgableLabel, UIImageView;
 
 @interface CPSSecondaryManeuverView : CPSManeuverView
 {
+    double _generatedHeight;
     UIImageView *_symbolView;
-    CPManeuver *_maneuver;
     CPSAbridgableLabel *_instructionLabel;
+    double _generatedWidth;
 }
 
+@property (nonatomic) double generatedHeight; // @synthesize generatedHeight=_generatedHeight;
+@property (nonatomic) double generatedWidth; // @synthesize generatedWidth=_generatedWidth;
 @property (strong, nonatomic) CPSAbridgableLabel *instructionLabel; // @synthesize instructionLabel=_instructionLabel;
-@property (strong, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
 @property (strong, nonatomic) UIImageView *symbolView; // @synthesize symbolView=_symbolView;
 
 - (void).cxx_destruct;
-- (void)backgroundColorDidChange;
-- (id)initWithManeuver:(id)arg1 style:(long long)arg2;
-- (struct CGSize)intrinsicContentSize;
+- (void)_updateBackgroundColor;
+- (void)generateLayoutConfigurationsForSizeIfNecessary:(struct CGSize)arg1 force:(BOOL)arg2;
+- (double)horizontalInset;
+- (id)initWithManeuver:(id)arg1;
+- (double)intrinsicHeightForWidth:(double)arg1;
+- (void)setUsesDefaultGuidanceBackgroundColor:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

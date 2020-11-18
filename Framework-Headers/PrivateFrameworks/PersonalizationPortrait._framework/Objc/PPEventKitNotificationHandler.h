@@ -14,7 +14,8 @@
     struct atomic_flag _isFiring;
     struct atomic_flag _hasWaiter;
     NSMutableSet *_events;
-    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_eventsQueue;
+    NSObject<OS_dispatch_queue> *_waiterQueue;
 }
 
 - (void).cxx_destruct;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSURL;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface PKRemoteAssetManager : NSObject
@@ -16,7 +16,10 @@
     NSMutableDictionary *_manifestItemsByRelativeURL;
     NSMutableDictionary *_sha1HexFromRelativeManifest;
     NSMutableArray *_completionHandlers;
+    NSArray *_seids;
 }
+
+@property (copy, nonatomic) NSArray *seids; // @synthesize seids=_seids;
 
 - (void).cxx_destruct;
 - (void)_callCompletionHandlersWithFinishState:(BOOL)arg1 progress:(float)arg2 error:(id)arg3;

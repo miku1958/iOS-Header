@@ -27,7 +27,6 @@
 
 - (void).cxx_destruct;
 - (void)_handleActionPerformerComplete:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
-- (void)_handleActionType:(id)arg1;
 - (void)_handleBarButtonItem:(id)arg1;
 - (void)_handlePreviewAction:(id)arg1 actionType:(id)arg2;
 - (id)actionPerformerForActionType:(id)arg1;
@@ -35,6 +34,7 @@
 - (id)barButtonItemForActionType:(id)arg1;
 - (BOOL)canPerformActionType:(id)arg1;
 - (BOOL)canPerformAssetVariationActions;
+- (void)executeActionForActionType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithSelectionManager:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)previewActionForActionType:(id)arg1 image:(id)arg2;

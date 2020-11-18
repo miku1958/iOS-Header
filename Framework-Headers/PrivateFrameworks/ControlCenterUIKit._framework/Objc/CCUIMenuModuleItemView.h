@@ -6,9 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-@class BSUIEmojiLabelView, CCUIMenuModuleItem, MTVisualStylingProvider, UIView;
+#import <ControlCenterUIKit/_UICursorInteractionDelegate-Protocol.h>
 
-@interface CCUIMenuModuleItemView : UIControl
+@class BSUIEmojiLabelView, CCUIMenuModuleItem, MTVisualStylingProvider, NSString, UIView;
+
+@interface CCUIMenuModuleItemView : UIControl <_UICursorInteractionDelegate>
 {
     BSUIEmojiLabelView *_titleLabel;
     BSUIEmojiLabelView *_subtitleLabel;
@@ -26,11 +28,15 @@
     unsigned long long _indentation;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long indentation; // @synthesize indentation=_indentation;
 @property (strong, nonatomic) UIView *leadingView; // @synthesize leadingView=_leadingView;
 @property (strong, nonatomic) CCUIMenuModuleItem *menuItem; // @synthesize menuItem=_menuItem;
 @property (nonatomic) double preferredMaxLayoutWidth; // @synthesize preferredMaxLayoutWidth=_preferredMaxLayoutWidth;
 @property (nonatomic) BOOL separatorVisible; // @synthesize separatorVisible=_separatorVisible;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *trailingView; // @synthesize trailingView=_trailingView;
 @property (nonatomic) BOOL useTallLayout; // @synthesize useTallLayout=_useTallLayout;
 @property (nonatomic) BOOL useTrailingCheckmarkLayout; // @synthesize useTrailingCheckmarkLayout=_useTrailingCheckmarkLayout;
@@ -64,8 +70,9 @@
 - (void)_updateForStateChange;
 - (void)_updateVisualStyleOfView:(id)arg1 withStyle:(long long)arg2 recursivelyIfNeeded:(BOOL)arg3;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)didMoveToWindow;
-- (unsigned long long)hash;
 - (id)initWithMenuItem:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isEqual:(id)arg1;

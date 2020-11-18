@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCountedSet, NSDictionary, NSMutableDictionary, PLClientServerTransaction, PLPhotoLibrary, PLPhotoLibraryPathManager, PLSearchIndexDateFormatter, PLSearchMetadataStore, PLThrottleTimer, PLZeroKeywordStore, PSIDatabase;
+@class NSCountedSet, NSDictionary, NSHashTable, NSMutableDictionary, PLClientServerTransaction, PLPhotoLibrary, PLPhotoLibraryPathManager, PLSearchIndexDateFormatter, PLSearchMetadataStore, PLThrottleTimer, PLZeroKeywordStore, PSIDatabase;
 @protocol OS_dispatch_queue, PLSearchIndexManagerSceneTaxonomyProxy;
 
 @interface PLSearchIndexManager : NSObject
@@ -37,6 +37,9 @@
     long long _updateState;
     double _lastIndexingStartTime;
     BOOL _startedIndexing;
+    struct os_unfair_lock_s _stateLock;
+    BOOL _searchIndexInvalidated;
+    NSHashTable *_blocksOnQueueAfterDelay;
     BOOL __indexing;
     CDUnknownBlockType __inqAfterIndexingDidIterate;
     NSCountedSet *__pauseReasons;
@@ -108,9 +111,9 @@
 - (BOOL)_inqUpdateWordEmbeddingVersion:(id)arg1;
 - (void)_inqValidateSearchIndex;
 - (id)_oldDbPath;
-- (void)_onQueueAsync:(CDUnknownBlockType)arg1;
-- (void)_onQueueAsyncWithDelay:(double)arg1 perform:(CDUnknownBlockType)arg2;
-- (void)_onQueueSync:(CDUnknownBlockType)arg1;
+- (BOOL)_onQueueAsync:(CDUnknownBlockType)arg1;
+- (BOOL)_onQueueAsyncWithDelay:(double)arg1 perform:(CDUnknownBlockType)arg2;
+- (BOOL)_onQueueSync:(CDUnknownBlockType)arg1;
 - (BOOL)_removeFileAtPath:(id)arg1 description:(id)arg2;
 - (id)_searchMetadataStorePath;
 - (void)_setIndexingPaused:(BOOL)arg1 synchronously:(BOOL)arg2 reason:(id)arg3;
@@ -121,7 +124,6 @@
 - (id)_updatesEnsuringMutableArraysFromUpdates:(id)arg1;
 - (void)applyGraphUpdates:(id)arg1 supportingData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applyUpdates:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)closeSearchIndexWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)defaultDatabasePath;
 - (id)defaultSearchMetadataStorePath;
@@ -129,6 +131,7 @@
 - (void)enqueuedUUIDsCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ensureSearchIndexExistsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithPathManager:(id)arg1;
+- (void)invalidate;
 - (void)pauseIndexingWithReason:(id)arg1;
 - (void)resetSearchIndexWithReason:(long long)arg1 dropCompletion:(CDUnknownBlockType)arg2;
 - (id)searchIndexManagerLog;

@@ -6,19 +6,23 @@
 
 #import <UIKit/AXFKAFocusRingShapeLayer.h>
 
-@class CAShapeLayer;
+@class AXFKAFocusRingBorderShapeLayer;
 
 @interface AXFKAFocusDoubleRingShapeLayer : AXFKAFocusRingShapeLayer
 {
-    CAShapeLayer *_topBorderLayer;
+    AXFKAFocusRingBorderShapeLayer *_topBorderLayer;
 }
 
-@property (strong, nonatomic) CAShapeLayer *topBorderLayer; // @synthesize topBorderLayer=_topBorderLayer;
+@property (strong, nonatomic) AXFKAFocusRingBorderShapeLayer *topBorderLayer; // @synthesize topBorderLayer=_topBorderLayer;
 
 - (void).cxx_destruct;
 - (void)_updateTopLayerPath;
 - (id)init;
+- (double)lineWidthForTopLayer;
 - (void)setPath:(struct CGPath *)arg1;
+- (struct CGColor *)strokeColorForTopLayer;
+- (id)topLayerFocusRingColorForTintColor:(id)arg1;
+- (void)updateAppearance;
 
 @end
 

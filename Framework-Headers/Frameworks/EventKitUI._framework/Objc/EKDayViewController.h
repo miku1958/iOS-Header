@@ -98,6 +98,7 @@
 @property (nonatomic) BOOL disableGestureDayChange; // @synthesize disableGestureDayChange=_disableGestureDayChange;
 @property (nonatomic) BOOL disableNotifyDateChangeDuringTracking; // @synthesize disableNotifyDateChangeDuringTracking=_disableNotifyDateChangeDuringTracking;
 @property (copy, nonatomic) NSDateComponents *displayDate; // @synthesize displayDate=_displayDate;
+@property (readonly, nonatomic) UIView *effectiveEventGestureSuperview;
 @property (strong, nonatomic) UIView *gestureOccurrenceSuperview; // @synthesize gestureOccurrenceSuperview=_gestureOccurrenceSuperview;
 @property (nonatomic) double gutterWidth; // @synthesize gutterWidth=_gutterWidth;
 @property (readonly) unsigned long long hash;
@@ -171,6 +172,7 @@
 - (void)cleanUpAfterGestureFailureForEventGestureController:(id)arg1;
 - (id)createEventForEventGestureController:(id)arg1;
 - (id)createOccurrenceViewForEventGestureController:(id)arg1;
+- (id)createOccurrenceViewForEventGestures;
 - (id)currentPresentationController;
 - (void)dayView:(id)arg1 didCreateOccurrenceViews:(id)arg2;
 - (void)dayView:(id)arg1 didScaleDayViewWithScale:(double)arg2;
@@ -180,6 +182,7 @@
 - (void)dayView:(id)arg1 firstVisibleSecondChanged:(unsigned long long)arg2;
 - (void)dayView:(id)arg1 isPinchingDayViewWithScale:(double)arg2;
 - (void)dayView:(id)arg1 scrollViewWillBeginDragging:(id)arg2;
+- (id)dayView:(id)arg1 selectedCopyViewForOccurrence:(id)arg2;
 - (void)dayViewDidCompleteAsyncLoadAndLayout:(id)arg1;
 - (void)dayViewDidTapEmptySpace:(id)arg1;
 - (void)dealloc;
@@ -211,6 +214,7 @@
 - (void)externallyEndedGestureDragging;
 - (unsigned long long)firstVisibleSecond;
 - (id)gestureController;
+- (void)hideTimelineHighlight;
 - (double)horizontalOffsetForPagingForEventGestureController:(id)arg1;
 - (id)horizontalScrollView;
 - (id)init;
@@ -223,6 +227,7 @@
 - (id)occurrenceViewForEvent:(id)arg1;
 - (id)occurrenceViewForEvent:(id)arg1 includeNextAndPreviousDays:(BOOL)arg2;
 - (id)occurrenceViewSuperviewForEventGestureController:(id)arg1;
+- (struct CGPoint)pointAtDate:(double)arg1 isAllDay:(BOOL)arg2;
 - (id)preferredEventToSelectOnDate:(id)arg1;
 - (void)reloadData;
 - (void)reloadDataIfNeeded;
@@ -239,6 +244,7 @@
 - (void)setFrame:(struct CGRect)arg1 gutterWidth:(double)arg2;
 - (void)setNeedsReload;
 - (void)setTimeZone:(id)arg1;
+- (void)showTimelineHighlightForTime:(id)arg1;
 - (void)significantTimeChangeOccurred;
 - (double)timedRegionOriginForEventGestureController:(id)arg1;
 - (id)touchTrackingViewForEventGestureController:(id)arg1;

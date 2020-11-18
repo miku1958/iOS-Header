@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSMutableSet, SBAppStatusBarSettingsAssertion, SBFloatingDockBehaviorAssertion, SBFloatingDockWindowLevelAssertion, SBHIconManager, SBIconController, SBUIController, UIView, _UILegibilitySettings;
+@class NSMapTable, NSMutableSet, SBAppStatusBarSettingsAssertion, SBFloatingDockBehaviorAssertion, SBHIconManager, SBIconController, SBUIController, UIView, _UILegibilitySettings;
 @protocol BSInvalidatable;
 
 @interface SBHomeScreenViewController : UIViewController
@@ -16,8 +16,8 @@
     SBFloatingDockBehaviorAssertion *_homeScreenFloatingDockAssertion;
     SBAppStatusBarSettingsAssertion *_childOrPresentedStatusBarAssertion;
     UIView *_contentView;
-    id<BSInvalidatable> _appIconForceTouchControllerOrientationUpdateDeferralAssertion;
-    SBFloatingDockWindowLevelAssertion *_appIconForceTouchControllerWindowLevelAssertion;
+    NSMapTable *_appIconForceTouchControllerOrientationUpdateDeferralAssertions;
+    NSMapTable *_appIconForceTouchControllerWindowLevelAssertions;
     BOOL _iconControllerHidden;
     BOOL _homeScreenAutorotatesEvenWhenIconIsDragging;
     SBIconController *_iconController;
@@ -36,7 +36,7 @@
 @property (strong, nonatomic) id<BSInvalidatable> widgetEditViewControllerOrientationUpdateDeferralAssertion; // @synthesize widgetEditViewControllerOrientationUpdateDeferralAssertion=_widgetEditViewControllerOrientationUpdateDeferralAssertion;
 
 - (void).cxx_destruct;
-- (void)_acquireForceTouchOrientationUpdateDeferralAssertion;
+- (void)_acquireForceTouchOrientationUpdateDeferralAssertionForIconView:(id)arg1;
 - (void)_acquireForceTouchWindowLevelAssertionForIconView:(id)arg1;
 - (void)_animateTransitionToSize:(struct CGSize)arg1 andInterfaceOrientation:(long long)arg2 withTransitionContext:(id)arg3;
 - (void)_appIconForceTouchControllerDidDismissNotification:(id)arg1;
@@ -44,8 +44,8 @@
 - (id)_autorotationPreventionReasons;
 - (void)_cleanupAfterTransitionToSize:(struct CGSize)arg1 fromInterfaceOrientation:(long long)arg2 withTransitionContext:(id)arg3;
 - (void)_prepareForTransitionToSize:(struct CGSize)arg1 andInterfaceOrientation:(long long)arg2 withTransitionCoordinator:(id)arg3;
-- (void)_relinquishForceTouchOrientationUpdateDeferralAssertion;
-- (void)_relinquishForceTouchWindowLevelAssertion;
+- (void)_relinquishForceTouchOrientationUpdateDeferralAssertionForIconView:(id)arg1;
+- (void)_relinquishForceTouchWindowLevelAssertionForIconView:(id)arg1;
 - (void)_widgetEditViewDidDisappear:(id)arg1;
 - (void)_widgetEditViewDidDisappearImplementation;
 - (void)_widgetEditViewWillAppear:(id)arg1;

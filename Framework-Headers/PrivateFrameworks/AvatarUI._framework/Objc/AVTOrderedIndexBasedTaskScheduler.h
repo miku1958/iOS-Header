@@ -13,9 +13,9 @@
 
 @interface AVTOrderedIndexBasedTaskScheduler : NSObject <AVTIndexBasedTaskScheduler>
 {
-    struct NSMutableDictionary *_scheduledTasks;
-    struct NSMutableArray *_scheduledTasksOrder;
-    struct NSMutableDictionary *_readyTasks;
+    NSMutableDictionary *_scheduledTasks;
+    NSMutableArray *_scheduledTasksOrder;
+    NSMutableDictionary *_readyTasks;
     NSObject<OS_dispatch_queue> *_stateLock;
 }
 
@@ -28,7 +28,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateLock; // @synthesize stateLock=_stateLock;
 @property (readonly) Class superclass;
 
-+ (id)indexesForReadyTasksToRunGivenScheduledTasks:(struct NSMutableDictionary *)arg1 order:(struct NSMutableArray *)arg2 readyTasks:(struct NSMutableDictionary *)arg3 readyRowIndex:(id)arg4;
++ (id)indexesForReadyTasksToRunGivenScheduledTasks:(id)arg1 order:(id)arg2 readyTasks:(id)arg3 readyRowIndex:(id)arg4;
 + (id)rowBaseIndexForIndex:(id)arg1;
 - (void).cxx_destruct;
 - (void)cancelAllTasks;

@@ -52,14 +52,12 @@
 + (id)_sharedRuntimeAssetMapKeyForAssetName:(id)arg1 fromFilesInBundle:(id)arg2;
 + (id)_sharedRuntimeAssetMapKeyForAssetName:(id)arg1 inAssetManager:(id)arg2;
 + (long long)_userInterfaceIdiomForDeviceClass:(unsigned long long)arg1;
-+ (BOOL)_validStackImageData:(id)arg1;
 + (double)_watchScreenScale;
 + (id)assetManagerForBundle:(id)arg1;
 + (void)clearSharedRuntimeAssetMapForUnitTests;
 + (id)newAssetNamed:(id)arg1 fromBundle:(id)arg2;
 + (id)sharedRuntimeAssetMap;
 + (id)sharedRuntimeCatalog;
-+ (BOOL)validStackImageFile:(id)arg1;
 - (id)_allImageNames;
 - (id)_appearanceNames;
 - (id)_assetForName:(id)arg1;
@@ -99,8 +97,6 @@
 - (id)initWithName:(id)arg1 inBundle:(id)arg2 idiom:(long long)arg3;
 - (id)initWithURL:(id)arg1 idiom:(long long)arg2 error:(id *)arg3;
 - (id)resolvedColorNamed:(id)arg1 withTraitCollection:(id)arg2;
-- (id)stackImageWithContentsOfFile:(id)arg1 forTraitCollection:(id)arg2;
-- (id)stackImageWithData:(id)arg1 forTraitCollection:(id)arg2;
 
 @end
 

@@ -63,7 +63,7 @@
 - (id)_scrollView;
 - (void)_setPreferredCustomContentSize:(struct CGSize)arg1;
 - (BOOL)_shouldPadScrollViewContentSizeHeight;
-- (void)_updateLookView:(struct UIView *)arg1 withTitleFromProvidedStaticContent:(id)arg2;
+- (void)_updateLookView:(id)arg1 withTitleFromProvidedStaticContent:(id)arg2;
 - (void)_updateTitleWithProvidedCustomContent;
 - (void)_updateWithProvidedAuxiliaryOptionsContent;
 - (void)_updateWithProvidedCustomContent;

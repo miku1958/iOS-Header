@@ -58,9 +58,11 @@
 
 + (id)activityIdentifierWithName:(id)arg1 database:(id)arg2 ignoringSystemConditions:(BOOL)arg3 uniquenessPointer:(id)arg4;
 + (id)earliestStartDateAfterError:(id)arg1;
++ (BOOL)fastErrorRetry;
 + (id)fetchChangesActivityIdentifierInDatabase:(id)arg1 ignoringSystemConditions:(BOOL)arg2;
 + (id)modifyPendingChangesActivityIdentifierInDatabase:(id)arg1 ignoringSystemConditions:(BOOL)arg2;
 + (id)saveSubscriptionActivityIdentifierInDatabase:(id)arg1 ignoringSystemConditions:(BOOL)arg2;
++ (void)setFastErrorRetry:(BOOL)arg1;
 + (BOOL)shouldDeferAfterError:(id)arg1;
 + (id)supportedDatabaseScopes;
 + (void)unregisterActivitiesWithDatabase:(id)arg1 ignoringSystemConditions:(BOOL)arg2;

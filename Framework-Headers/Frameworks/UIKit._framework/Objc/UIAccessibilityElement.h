@@ -10,11 +10,12 @@
 #import <UIKitCore/UIFocusItem-Protocol.h>
 #import <UIKitCore/UIFocusItemContainer-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
+#import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 
 @class NSArray, NSString, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
-@interface UIAccessibilityElement : UIResponder <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, UIAccessibilityIdentification>
+@interface UIAccessibilityElement : UIResponder <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer, UIAccessibilityIdentification>
 {
     BOOL _areChildrenFocused;
     struct CGRect _accessibilityFrameInContainerSpace;
@@ -47,6 +48,9 @@
 
 - (void)_destroyFocusLayer;
 - (id)_firstViewAncestor;
+- (id)_preferredFocusRegionCoordinateSpace;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
 - (void)_updateFocusLayerFrame;
 - (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;

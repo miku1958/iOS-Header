@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) CDStruct_4c969caf clientAuditToken;
 @property (readonly, nonatomic) int clientProcessIdentifier;
+@property (readonly, nonatomic) BOOL directDatabaseAccessAuthorized;
 @property (readonly, nonatomic) BOOL directDatabaseWriteAuthorized;
 @property (readonly, nonatomic) BOOL photoKitEntitled;
 @property (readonly, nonatomic) NSString *trustedCallerBundleID;

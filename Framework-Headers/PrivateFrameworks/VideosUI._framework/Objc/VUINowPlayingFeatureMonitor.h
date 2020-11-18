@@ -9,7 +9,7 @@
 #import <VideosUI/TVMediaPlaybackManagerDelegate-Protocol.h>
 
 @class NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TVMediaPlaybackManager;
-@protocol OS_dispatch_queue, TVPAVFPlayback, VUINowPlayingFeature, VUINowPlayingFeatureMonitorDelegate;
+@protocol TVPAVFPlayback, VUINowPlayingFeature, VUINowPlayingFeatureMonitorDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUINowPlayingFeatureMonitor : NSObject <TVMediaPlaybackManagerDelegate>
@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
     double _lastProcessedElapsedTime;
     NSMutableDictionary *_boundaryTimeObserverInfos;
     id _elapsedTimeObserverToken;
-    NSObject<OS_dispatch_queue> *_elapsedTimeProcessingQueue;
     NSMutableArray *_elapsedTimes;
 }
 
@@ -42,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<VUINowPlayingFeatureMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id elapsedTimeObserverToken; // @synthesize elapsedTimeObserverToken=_elapsedTimeObserverToken;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *elapsedTimeProcessingQueue; // @synthesize elapsedTimeProcessingQueue=_elapsedTimeProcessingQueue;
 @property (strong, nonatomic) NSMutableArray *elapsedTimes; // @synthesize elapsedTimes=_elapsedTimes;
 @property (strong, nonatomic) NSMutableArray *enabledUIModes; // @synthesize enabledUIModes=_enabledUIModes;
 @property (strong, nonatomic) NSMapTable *featureBoundaryInfos; // @synthesize featureBoundaryInfos=_featureBoundaryInfos;
@@ -85,7 +83,6 @@ __attribute__((visibility("hidden")))
 - (void)_playbackStateChangedNottificaiton:(id)arg1;
 - (void)_processAnyTimeBoundFeatures;
 - (void)_processElapsedTime:(double)arg1;
-- (void)_processElapsedTimeOnInternalQueue:(double)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_processFeature:(id)arg1;
 - (void)_processLastElapsedTime;
 - (void)_processTimeBoundFeature:(id)arg1;

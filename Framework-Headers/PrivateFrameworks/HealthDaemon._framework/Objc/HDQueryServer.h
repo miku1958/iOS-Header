@@ -11,7 +11,7 @@
 #import <HealthDaemon/HDTaskServer-Protocol.h>
 #import <HealthDaemon/HKQueryServerInterface-Protocol.h>
 
-@class HDDaemonTransaction, HDDataCollectionAssertion, HDHealthStoreClient, HDProfile, HDQueryServerClientState, HKObjectType, HKQuantityType, HKQueryServerConfiguration, HKSampleType, NSArray, NSDictionary, NSSet, NSString, NSUUID, _HKFilter;
+@class HDDaemonTransaction, HDDataCollectionAssertion, HDDatabaseTransactionContextStatistics, HDHealthStoreClient, HDProfile, HDQueryServerClientState, HKObjectType, HKQuantityType, HKQueryServerConfiguration, HKSampleType, NSArray, NSDictionary, NSSet, NSString, NSUUID, _HKFilter;
 @protocol HDQueryServerDelegate, HKQueryClientInterface><NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface HDQueryServer : NSObject <HDDatabaseProtectedDataObserver, HKQueryServerInterface, HDDataObserver, HDTaskServer>
@@ -30,6 +30,7 @@
     _Atomic BOOL _shouldFinish;
     _Atomic BOOL _shouldPause;
     NSObject<OS_dispatch_queue> *_unitTestQueryQueue;
+    HDDatabaseTransactionContextStatistics *_transactionStatistics;
     id<HDQueryServerDelegate> _delegate;
     NSUUID *_queryUUID;
     HDHealthStoreClient *_client;
@@ -85,7 +86,7 @@
 - (void)_queue_didChangeStateFromPreviousState:(long long)arg1 state:(long long)arg2;
 - (void)_queue_didDeactivate;
 - (void)_queue_endObservingDataTypes;
-- (void)_queue_logQueryWithDuration:(double)arg1;
+- (void)_queue_logQueryWithDuration:(double)arg1 statistics:(id)arg2;
 - (double)_queue_logThresholdHardwareFactor;
 - (void)_queue_notifyIfQueryingForHealthRecords;
 - (double)_queue_queryLogThreshold;

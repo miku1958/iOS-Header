@@ -12,17 +12,16 @@
 
 @interface AXCustomizableMouse : NSObject <NSSecureCoding>
 {
-    NSMutableDictionary *_buttonMap;
     NSString *_name;
     NSString *_identifier;
     long long _vendorId;
     long long _productId;
-    unsigned long long _connectionType;
+    NSMutableDictionary *_buttonMap;
 }
 
-@property (readonly, nonatomic) NSMutableDictionary *buttonMap; // @synthesize buttonMap=_buttonMap;
+@property (strong, nonatomic) NSMutableDictionary *buttonMap; // @synthesize buttonMap=_buttonMap;
 @property (readonly, nonatomic) NSArray *buttonsWithCustomActions;
-@property (readonly, nonatomic) unsigned long long connectionType; // @synthesize connectionType=_connectionType;
+@property (readonly, nonatomic) BOOL customActionsRequireAssistiveTouch;
 @property (readonly, nonatomic) BOOL hasCustomActions;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
@@ -30,7 +29,7 @@
 @property (readonly, nonatomic) long long vendorId; // @synthesize vendorId=_vendorId;
 
 + (id)_existingMouseForIdentifier:(id)arg1 vendorId:(long long)arg2 productId:(long long)arg3;
-+ (id)_newOrExistingMouseForIdentifier:(id)arg1 name:(id)arg2 vendorId:(id)arg3 productId:(id)arg4 connectionType:(unsigned long long)arg5;
++ (id)_newOrExistingMouseForIdentifier:(id)arg1 name:(id)arg2 vendorId:(id)arg3 productId:(id)arg4;
 + (id)deserialize:(id)arg1;
 + (id)mouseForHIDDevice:(struct __IOHIDDevice *)arg1;
 + (id)mouseForHIDServiceClient:(struct __IOHIDServiceClient *)arg1;
@@ -39,6 +38,7 @@
 - (void).cxx_destruct;
 - (id)customActionForButtonNumber:(long long)arg1;
 - (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
@@ -48,7 +48,6 @@
 - (BOOL)isEqualToMouse:(id)arg1;
 - (void)setCustomAction:(id)arg1 forButtonNumber:(long long)arg2;
 - (void)setDefaultActionForButtonNumber:(long long)arg1;
-- (void)updateConnectionType:(unsigned long long)arg1;
 
 @end
 

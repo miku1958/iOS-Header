@@ -9,15 +9,17 @@
 #import <NewsCore/FCCurrentIssuesChecker-Protocol.h>
 
 @class FCIssueReadingHistory, FCSubscriptionController, NSString;
-@protocol FCContentContext;
+@protocol FCBundleSubscriptionProviderType, FCContentContext;
 
 @interface FCCurrentIssuesChecker : NSObject <FCCurrentIssuesChecker>
 {
     id<FCContentContext> _context;
     FCSubscriptionController *_subscriptionController;
     FCIssueReadingHistory *_issueReadingHistory;
+    id<FCBundleSubscriptionProviderType> _bundleSubscriptionProvider;
 }
 
+@property (strong, nonatomic) id<FCBundleSubscriptionProviderType> bundleSubscriptionProvider; // @synthesize bundleSubscriptionProvider=_bundleSubscriptionProvider;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -27,14 +29,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_promiseCurrentIssuesFromChannelIDs:(id)arg1 withChainingdata:(id)arg2;
+- (id)_promiseBundleChannelIDs;
+- (id)_promiseCurrentIssuesFromChannelIDs:(id)arg1 withChainingData:(id)arg2;
 - (id)_promiseFilterUnreadIssuesWithFromIssues:(id)arg1 withChainingdata:(id)arg2;
-- (id)_promiseFollowedChannelIDs;
+- (id)_promiseFollowedAndAutofavoriteChannelIDsWithChainingData:(id)arg1;
 - (id)demoFollowedChannelIDs;
 - (void)fetchCurrentIssuesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchUsersCurrentIssuesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithContext:(id)arg1 subscriptionController:(id)arg2 issueReadingHistory:(id)arg3;
+- (id)initWithContext:(id)arg1 subscriptionController:(id)arg2 issueReadingHistory:(id)arg3 bundleSubscriptionProvider:(id)arg4;
 - (id)sortIssues:(id)arg1 basedOnTagIDs:(id)arg2;
 
 @end

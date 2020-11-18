@@ -49,10 +49,11 @@
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)dealloc;
+- (void)handleKeyWebEvent:(id)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)paste:(id)arg1;
 - (void)selectAll:(id)arg1;
-- (void)setSelectedDOMRange:(id)arg1 affinity:(int)arg2;
+- (void)setSelectedDOMRange:(id)arg1 affinity:(unsigned long long)arg2;
 - (void)setSelectedTextRange:(id)arg1;
 - (BOOL)shouldGroupAccessibilityChildren;
 - (void)stopLoading:(id)arg1;

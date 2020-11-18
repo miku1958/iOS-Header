@@ -6,25 +6,31 @@
 
 #import <ControlCenterUIKit/CCUIContinuousSliderView.h>
 
-@class UIImpactFeedbackGenerator, UIView;
+@class NSObject, UIImpactFeedbackGenerator, UIView;
+@protocol OS_dispatch_queue;
 
 @interface MediaControlsVolumeSliderView : CCUIContinuousSliderView
 {
-    BOOL _euDevice;
-    float _euVolumeLimit;
-    BOOL _euVolumeLimitEnforced;
     UIView *_orangeValueView;
     BOOL _didAcknowledgeThreshold;
     BOOL _didHitThreshold;
     BOOL _didTakeActionToAcknowledge;
     UIImpactFeedbackGenerator *_impactFeedbackGenerator;
     UIView *_materialView;
+    NSObject<OS_dispatch_queue> *_avSystemControllerQueue;
+    BOOL _euDevice;
+    BOOL _euVolumeLimitEnforced;
+    float _euVolumeLimit;
 }
+
+@property (getter=isEUDevice) BOOL euDevice; // @synthesize euDevice=_euDevice;
+@property float euVolumeLimit; // @synthesize euVolumeLimit=_euVolumeLimit;
+@property (getter=isEUVolumeLimitEnforced) BOOL euVolumeLimitEnforced; // @synthesize euVolumeLimitEnforced=_euVolumeLimitEnforced;
 
 - (void).cxx_destruct;
 - (void)_EUVolumeEnforcementChanged:(id)arg1;
 - (void)_EUVolumeLimitChanged:(id)arg1;
-- (void)_initializeEUVolumeLimits;
+- (void)_avSystemControllerQueue_initializeEUVolumeLimits;
 - (void)_registerForAVSystemControllerNotifications;
 - (void)_serverConnectionDied:(id)arg1;
 - (void)_unregisterForAVSystemControllerNotifications;
@@ -34,6 +40,7 @@
 - (void)layoutSubviews;
 - (void)resetThresholdAcknowledgment;
 - (void)setContinuousSliderCornerRadius:(double)arg1;
+- (void)setupEUDevice;
 
 @end
 

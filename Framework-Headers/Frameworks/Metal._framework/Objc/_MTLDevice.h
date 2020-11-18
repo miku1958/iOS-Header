@@ -236,7 +236,7 @@
 - (void)compilerPropagatesThreadPriority:(BOOL)arg1;
 - (void *)computeFunctionKeyWithComputePipelineDescriptor:(id)arg1 keySize:(unsigned long long *)arg2;
 - (void *)computeFunctionKeyWithComputePipelineDescriptor:(id)arg1 options:(unsigned long long)arg2 keySize:(unsigned long long *)arg3;
-- (struct NSObject *)computeVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
+- (id)computeVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
 - (void)convertSparsePixelRegions:(const CDStruct_caaed6bc *)arg1 toTileRegions:(CDStruct_caaed6bc *)arg2 withTileSize:(CDStruct_da2e99ad)arg3 alignmentMode:(unsigned long long)arg4 numRegions:(unsigned long long)arg5;
 - (void)convertSparseTileRegions:(const CDStruct_caaed6bc *)arg1 toPixelRegions:(CDStruct_caaed6bc *)arg2 withTileSize:(CDStruct_da2e99ad)arg3 numRegions:(unsigned long long)arg4;
 - (BOOL)copyShaderCacheToPath:(id)arg1;
@@ -256,7 +256,7 @@
 - (void)freeComputeFunctionKey:(void *)arg1 keySize:(unsigned long long)arg2;
 - (void)freeFragmentFunctionKey:(void *)arg1 fragmentKeySize:(unsigned long long)arg2;
 - (void)freeVertexFunctionKey:(void *)arg1 vertexKeySize:(unsigned long long)arg2;
-- (void)getConstantSamplersBitmasks:(unsigned long long **)arg1 uniqueIdentifiers:(unsigned long long **)arg2 constantSamplerCount:(unsigned long long *)arg3 forComputeVariant:(struct NSObject *)arg4;
+- (void)getConstantSamplersBitmasks:(unsigned long long **)arg1 uniqueIdentifiers:(unsigned long long **)arg2 constantSamplerCount:(unsigned long long *)arg3 forComputeVariant:(id)arg4;
 - (void)getConstantSamplersBitmasks:(unsigned long long **)arg1 uniqueIdentifiers:(unsigned long long **)arg2 constantSamplerCount:(unsigned long long *)arg3 forVertexVariant:(id)arg4 fragmentVariant:(id)arg5;
 - (void)getDefaultSamplePositions:(CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;
 - (void *)getShaderCacheKeys;
@@ -291,9 +291,9 @@
 - (void)newComputePipelineStateWithFunction:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newComputePipelineStateWithFunction:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)newComputePipelineStateWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
-- (id)newComputePipelineWithDescriptor:(id)arg1 variant:(struct NSObject *)arg2;
-- (id)newComputePipelineWithDescriptor:(id)arg1 variant:(struct NSObject *)arg2 errorMessage:(id *)arg3;
-- (struct NSObject *)newComputeVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
+- (id)newComputePipelineWithDescriptor:(id)arg1 variant:(id)arg2;
+- (id)newComputePipelineWithDescriptor:(id)arg1 variant:(id)arg2 errorMessage:(id *)arg3;
+- (id)newComputeVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
 - (id)newDefaultLibrary;
 - (id)newDefaultLibraryWithBundle:(id)arg1 error:(id *)arg2;
 - (id)newEvent;
@@ -323,10 +323,10 @@
 - (id)newVertexVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
 - (unsigned long long)offsetFromIndirectBufferAddress:(unsigned long long)arg1;
 - (CDStruct_c0454aff)pipelineCacheStats;
-- (CDStruct_596dc0d1)pipelineFlagsWithComputeVariant:(struct NSObject *)arg1;
+- (CDStruct_596dc0d1)pipelineFlagsWithComputeVariant:(id)arg1;
 - (CDStruct_7ce1aa5b)pipelineFlagsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
-- (id)pipelinePerformanceStatisticsWithComputeVariant:(struct NSObject *)arg1;
-- (id)pipelinePerformanceStatisticsWithComputeVariant:(struct NSObject *)arg1 compileTimeOutput:(id)arg2;
+- (id)pipelinePerformanceStatisticsWithComputeVariant:(id)arg1;
+- (id)pipelinePerformanceStatisticsWithComputeVariant:(id)arg1 compileTimeOutput:(id)arg2;
 - (id)pipelinePerformanceStatisticsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
 - (id)pipelinePerformanceStatisticsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2 vertexCompileTimeOutput:(id)arg3 fragmentCompileTimeOutput:(id)arg4;
 - (id)productName;

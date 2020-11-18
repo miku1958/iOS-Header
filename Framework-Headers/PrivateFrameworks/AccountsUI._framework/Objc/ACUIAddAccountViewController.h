@@ -17,17 +17,20 @@
     unsigned char _originalWifiFlag;
     unsigned char _originalCellFlag;
     PSSpecifier *_gmailSpecifier;
-    NSString *_filteredDataclass;
     ACAccountStore *_accountStore;
+    NSString *_filteredDataclass;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong) NSString *filteredDataclass; // @synthesize filteredDataclass=_filteredDataclass;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) ACUIAccountViewProvidersManager *viewProvidersManager;
 
 - (void).cxx_destruct;
+- (void)_addAccountSpecifierWasTapped:(id)arg1;
+- (void)_alertIfAccountTypePreventsMultiples:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_createCustomControlledAccountTapped:(id)arg1;
 - (void)_dismissAndBecomeFirstResponder;
 - (void)_presentPrimaryAppleIDSignInController:(id)arg1;

@@ -6,10 +6,11 @@
 
 #import <MapsSuggestions/NSObject-Protocol.h>
 
+@class NSArray, NSString;
 @protocol MapsSuggestionsSource;
 
 @protocol MapsSuggestionsSourceDelegate <NSObject>
-- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
+- (unsigned long long)addOrUpdateSuggestionEntries:(NSArray *)arg1 source:(NSString *)arg2;
 - (BOOL)attachSource:(id<MapsSuggestionsSource>)arg1;
 - (BOOL)detachSource:(id<MapsSuggestionsSource>)arg1;
 @end

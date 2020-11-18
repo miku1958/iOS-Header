@@ -24,6 +24,7 @@
 
 @optional
 - (NSDictionary *)customPlaceholderValuesForTemplate:(ACHTemplate *)arg1;
+- (long long)mobileAssetVersionForTemplate:(ACHTemplate *)arg1;
 - (void)templatesForDate:(NSDate *)arg1 databaseContext:(HDDatabaseTransactionContext *)arg2 completion:(void (^)(NSSet *, NSSet *, NSError *))arg3;
 - (NSString *)textureFilenameForTemplate:(ACHTemplate *)arg1;
 @end

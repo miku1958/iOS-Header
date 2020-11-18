@@ -44,7 +44,6 @@
 - (void).cxx_destruct;
 - (void)_deauthenticateAndDisableActiveLockerAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_enableCloudLibraryWithPolicy:(long long)arg1 startinitialImport:(BOOL)arg2 isExplicitUserAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_sendConfigurationToDaemon;
 - (void)_serverDidLaunch;
 - (void)_serverJaliscoUpdateInProgressDidChange;
 - (void)_serverSagaUpdateInProgressDidChange;
@@ -160,6 +159,7 @@
 - (void)updateJaliscoGeniusDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateJaliscoLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateJaliscoLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updatePinnedSubscribedPlaylistsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateSagaLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateSagaLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateSubscribedPlaylistsWithSagaIDs:(id)arg1 ignoreMinRefreshInterval:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

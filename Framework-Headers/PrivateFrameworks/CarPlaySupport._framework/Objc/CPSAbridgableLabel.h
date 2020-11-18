@@ -27,6 +27,7 @@
 - (id)_variantsList;
 - (id)init;
 - (id)sanitizedAttributedStringForString:(id)arg1;
+- (void)setAttributedText:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 

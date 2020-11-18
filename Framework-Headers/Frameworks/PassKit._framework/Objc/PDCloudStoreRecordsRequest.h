@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKQuery, CKRecordZone, NSArray, NSMutableArray, NSString;
+@class CKQuery, NSArray, NSMutableArray, NSString;
 
 @interface PDCloudStoreRecordsRequest : NSObject
 {
@@ -18,7 +18,7 @@
     NSString *_groupNameSuffix;
     long long _qualityOfService;
     unsigned long long _requestType;
-    CKRecordZone *_zone;
+    NSString *_zoneName;
     CKQuery *_ckQuery;
     NSArray *_recordsToSave;
     NSArray *_recordIDs;
@@ -37,7 +37,7 @@
 @property (nonatomic) BOOL shouldSaveToken; // @synthesize shouldSaveToken=_shouldSaveToken;
 @property (nonatomic) BOOL storeChangesInDatabase; // @synthesize storeChangesInDatabase=_storeChangesInDatabase;
 @property (nonatomic) BOOL useLastChangeToken; // @synthesize useLastChangeToken=_useLastChangeToken;
-@property (strong, nonatomic) CKRecordZone *zone; // @synthesize zone=_zone;
+@property (strong, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
 
 - (void).cxx_destruct;
 - (id)description;

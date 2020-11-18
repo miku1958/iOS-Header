@@ -28,7 +28,7 @@
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_hitTestPointFromOrigin:(float)arg1 withDirection:maximumAngle: /* Error: Ran out of types for this method. */;
+- (id)_hitTestPointFromOrigin:(float)arg1 withDirection:(CDStruct_14d5dc5e)arg2 maximumAngle:cameraToWorldTransform: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)centroid;
 - (CDStruct_183601bc)computeBounds;
 - (id)description;

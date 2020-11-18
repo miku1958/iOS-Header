@@ -11,7 +11,7 @@
 @interface PXCMMSpec : PXFeatureSpec
 {
     unsigned long long _activityType;
-    struct UIColor *_reviewBackgroundColor;
+    UIColor *_reviewBackgroundColor;
     long long _reviewGridContentMode;
     double _reviewHeaderTopInset;
     double _reviewHeaderCornerRadius;

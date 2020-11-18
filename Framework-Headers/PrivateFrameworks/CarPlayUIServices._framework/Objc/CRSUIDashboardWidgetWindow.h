@@ -6,12 +6,14 @@
 
 #import <UIKit/UIWindow.h>
 
+#import <CarPlayUIServices/BSInvalidatable-Protocol.h>
 #import <CarPlayUIServices/CRSUIDashboardWidgetWindowClient-Protocol.h>
 
 @class NSArray, NSString, NSXPCConnection;
 
-@interface CRSUIDashboardWidgetWindow : UIWindow <CRSUIDashboardWidgetWindowClient>
+@interface CRSUIDashboardWidgetWindow : UIWindow <CRSUIDashboardWidgetWindowClient, BSInvalidatable>
 {
+    NSArray *_widgetSizes;
     NSXPCConnection *_dashboardWindowServiceConnection;
     NSArray *_focusableItems;
 }
@@ -22,6 +24,7 @@
 @property (strong, nonatomic) NSArray *focusableItems; // @synthesize focusableItems=_focusableItems;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *widgetSizes; // @synthesize widgetSizes=_widgetSizes;
 
 - (void).cxx_destruct;
 - (id)_clientFocusableItemForItem:(id)arg1;
@@ -33,9 +36,12 @@
 - (void)hostFocusableItem:(id)arg1 focused:(BOOL)arg2;
 - (void)hostFocusableItem:(id)arg1 pressed:(BOOL)arg2;
 - (void)hostSelectedFocusableItem:(id)arg1;
+- (void)hostSetWidgetSizes:(id)arg1;
 - (id)initWithWindowScene:(id)arg1;
+- (void)invalidate;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setFocusableViews:(id)arg1;
+- (void)setNeedsLargeSize:(BOOL)arg1 animationSettings:(id)arg2;
 
 @end
 

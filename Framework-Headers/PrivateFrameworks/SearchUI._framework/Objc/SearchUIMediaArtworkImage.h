@@ -11,6 +11,7 @@
 @interface SearchUIMediaArtworkImage : SearchUIImage
 {
     NSString *_persistentID;
+    NSString *_universalLibraryID;
     NSString *_spotlightIdentifier;
     long long _mediaEntityType;
 }
@@ -18,6 +19,7 @@
 @property long long mediaEntityType; // @synthesize mediaEntityType=_mediaEntityType;
 @property (strong) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property (strong) NSString *spotlightIdentifier; // @synthesize spotlightIdentifier=_spotlightIdentifier;
+@property (strong) NSString *universalLibraryID; // @synthesize universalLibraryID=_universalLibraryID;
 
 - (void).cxx_destruct;
 - (Class)classForCoder;

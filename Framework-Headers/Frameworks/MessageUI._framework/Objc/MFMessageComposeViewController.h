@@ -69,6 +69,7 @@
 - (BOOL)_isImageMIMEType:(id)arg1;
 - (BOOL)_isVideoMIMEType:(id)arg1;
 - (void)_setCanEditRecipients:(BOOL)arg1;
+- (void)_setShouldDisableEntryField:(BOOL)arg1;
 - (void)_updateAttachmentCountForAttachmentURL:(id)arg1;
 - (BOOL)addAttachmentData:(id)arg1 typeIdentifier:(id)arg2 filename:(id)arg3;
 - (BOOL)addAttachmentData:(id)arg1 withAlternateFilename:(id)arg2;

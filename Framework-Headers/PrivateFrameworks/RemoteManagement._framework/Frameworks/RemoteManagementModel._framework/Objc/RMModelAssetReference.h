@@ -6,21 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface RMModelAssetReference : NSObject
 {
-    int _assettype;
     NSString *_identifier;
+    NSArray *_assetTypes;
 }
 
-@property (readonly, nonatomic) int assettype; // @synthesize assettype=_assettype;
+@property (readonly, copy, nonatomic) NSArray *assetTypes; // @synthesize assetTypes=_assetTypes;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
-+ (id)referenceForIdentifier:(id)arg1 assetschematype:(id)arg2;
-+ (id)referenceForIdentifier:(id)arg1 assettype:(int)arg2;
 - (void).cxx_destruct;
-- (id)initWithIdentifier:(id)arg1 assettype:(int)arg2;
+- (id)initWithIdentifier:(id)arg1 assetTypes:(id)arg2;
 
 @end
 

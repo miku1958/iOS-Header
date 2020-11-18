@@ -11,9 +11,11 @@
 #import <PhotosUICore/PXCuratedLibraryActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryFooterControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXCuratedLibrarySkimmingControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXCuratedLibraryUIKeyCommandDelegate-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryZoomLevelControlDelegate-Protocol.h>
 #import <PhotosUICore/PXMovieProviderDelegate-Protocol.h>
 #import <PhotosUICore/PXOneUpPresentationDelegate-Protocol.h>
+#import <PhotosUICore/PXPhotosCursorControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXPhotosGlobalFooterViewDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUICore/PXSwipeSelectionManagerDelegate-Protocol.h>
@@ -24,10 +26,10 @@
 #import <PhotosUICore/UIDropInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, PHPhotoLibrary, PXAssetReference, PXCPLServiceUI, PXChangeDirectionNumberFilter, PXContentUnavailableView, PXCuratedLibraryBarsController, PXCuratedLibrarySecondaryToolbarController, PXCuratedLibrarySkimmingController, PXCuratedLibraryViewProvider, PXCuratedLibraryZoomLevelControl, PXCuratedLibraryZoomLevelPinchFilter, PXGTransition, PXGView, PXMovieProvider, PXProgrammaticNavigationRequest, PXRelaxedScreenEdgePanGestureRecognizer, PXSwipeSelectionManager, PXTouchingUIGestureRecognizer, UIContextMenuInteraction, UIPanGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer, UITargetedPreview;
+@class NSString, PHPhotoLibrary, PXAssetReference, PXCPLServiceUI, PXChangeDirectionNumberFilter, PXContentUnavailableView, PXCuratedLibraryBarsController, PXCuratedLibrarySecondaryToolbarController, PXCuratedLibrarySkimmingController, PXCuratedLibraryViewProvider, PXCuratedLibraryZoomLevelControl, PXCuratedLibraryZoomLevelPinchFilter, PXGTransition, PXGView, PXMovieProvider, PXPhotosCursorController, PXProgrammaticNavigationRequest, PXRelaxedScreenEdgePanGestureRecognizer, PXSwipeSelectionManager, PXTouchingUIGestureRecognizer, UIContextMenuInteraction, UIPanGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer, UITargetedPreview;
 @protocol UIDragSession;
 
-@interface PXCuratedLibraryUIViewController : UIViewController <UIDragInteractionDelegate, UIDropInteractionDelegate, PXUserInterfaceFeatureViewController, PXScrollViewControllerObserver, PXOneUpPresentationDelegate, UIGestureRecognizerDelegate, PXSwipeSelectionManagerDelegate, PXCuratedLibrarySkimmingControllerDelegate, PXTouchingUIGestureRecognizerDelegate, PXCuratedLibraryZoomLevelControlDelegate, PXChangeObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterControllerDelegate, PXCuratedLibraryActionPerformerDelegate, PXMovieProviderDelegate, PXCPLServiceUIDelegate, UIContextMenuInteractionDelegate>
+@interface PXCuratedLibraryUIViewController : UIViewController <PXPhotosCursorControllerDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, PXUserInterfaceFeatureViewController, PXScrollViewControllerObserver, PXOneUpPresentationDelegate, UIGestureRecognizerDelegate, PXSwipeSelectionManagerDelegate, PXCuratedLibrarySkimmingControllerDelegate, PXTouchingUIGestureRecognizerDelegate, PXCuratedLibraryZoomLevelControlDelegate, PXChangeObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterControllerDelegate, PXCuratedLibraryActionPerformerDelegate, PXMovieProviderDelegate, PXCPLServiceUIDelegate, PXCuratedLibraryUIKeyCommandDelegate, UIContextMenuInteractionDelegate>
 {
     BOOL _isGridViewReady;
     BOOL __previewCommitting;
@@ -49,6 +51,7 @@
     PXSwipeSelectionManager *_swipeSelectionManager;
     PXAssetReference *_navigatedAssetReference;
     PXMovieProvider *_movieProvider;
+    PXPhotosCursorController *_cursorController;
     PXCuratedLibraryZoomLevelPinchFilter *_zoomLevelPinchFilter;
     PXProgrammaticNavigationRequest *_initialNavigationRequest;
     PXCPLServiceUI *_cplServiceUI;
@@ -71,6 +74,7 @@
 @property (readonly, nonatomic) BOOL canDragIn;
 @property (readonly, nonatomic) BOOL canDragOut;
 @property (strong, nonatomic) PXCPLServiceUI *cplServiceUI; // @synthesize cplServiceUI=_cplServiceUI;
+@property (readonly, nonatomic) PXPhotosCursorController *cursorController; // @synthesize cursorController=_cursorController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
@@ -103,10 +107,13 @@
 - (void).cxx_destruct;
 - (BOOL)_addDraggedAssetReferences:(id)arg1;
 - (id)_assetReferenceForDragItem:(id)arg1;
+- (id)_bestHitTestResultForCursorAtLocation:(struct CGPoint)arg1;
 - (id)_buttonHitTestResultAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)_conditionallyUpdateEmptyPlaceholder;
 - (void)_createAnimationForSkimmingWithDuration:(double)arg1 indicatorsDidChangeVisibility:(BOOL)arg2;
 - (id)_createDragItemForAssetReference:(id)arg1;
+- (id)_createPreviewViewForAssetReference:(id)arg1;
+- (id)_createPreviewViewForHitTestResult:(id)arg1;
 - (id)_dominantAssetCollectionReferenceForSkimming;
 - (id)_draggableAssetReferenceAtLocation:(struct CGPoint)arg1;
 - (void)_handleNavigationRequestConditionCompletionForNavigationRequest:(id)arg1 withAssetReference:(id)arg2;
@@ -139,16 +146,18 @@
 - (BOOL)_scrollToNextSectionInDirection:(long long)arg1 animated:(BOOL)arg2;
 - (id)_scrollView;
 - (void)_setHiddenAssetReferences:(id)arg1;
+- (BOOL)_shouldExposeCursorAnimations;
 - (void)_stopLibraryViewScrolling;
 - (void)_updateEmptyPlaceholder;
 - (void)_updateSecondaryToolbarContent;
 - (void)_updateSkimmingSlideshowEnabled;
 - (void)_updateStatusBarStyle;
 - (void)_updateTrackedScrollLevelIfNeeded;
-- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
 - (void)assetCollectionActionPerformer:(id)arg1 playMovieForAssetCollection:(id)arg2;
 - (id)assetCollectionReferenceForSkimmingSlideshow:(id)arg1;
 - (id)assetCollectionReferenceToShowSkimmingHints:(id)arg1;
+- (BOOL)canBecomeFirstResponder;
 - (BOOL)canRouteToDestination:(id)arg1;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
@@ -156,6 +165,12 @@
 - (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
 - (void)contextMenuInteractionDidEnd:(id)arg1;
 - (void)curatedLibraryActionPerformer:(id)arg1 presentShareSheetWithSharingContext:(id)arg2;
+- (void)cursorController:(id)arg1 didExitRegionWithRect:(struct CGRect)arg2 inCoordinateSpace:(id)arg3;
+- (id)cursorController:(id)arg1 identifierForRegionAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (long long)cursorController:(id)arg1 interactionOptionsForRegionAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (id)cursorController:(id)arg1 regionOfInterestForCursorAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (id)cursorController:(id)arg1 viewForCursorInteractionAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (void)cursorController:(id)arg1 willEnterRegionWithRect:(struct CGRect)arg2 inCoordinateSpace:(id)arg3;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
@@ -175,6 +190,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPhotoLibrary:(id)arg1;
+- (void)keyCommandDidRequestToBePerformed:(id)arg1;
+- (void)keyCommandDidRequestToNavigateToOneUp:(id)arg1;
+- (id)keyCommands;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)oneUpPresentation:(id)arg1 currentImageForAssetReference:(id)arg2;
@@ -189,8 +207,9 @@
 - (long long)oneUpPresentationOrigin:(id)arg1;
 - (BOOL)oneUpPresentationShouldPreventShowInAllPhotosAction:(id)arg1;
 - (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
+- (id)preferredFocusEnvironments;
 - (long long)preferredStatusBarStyle;
-- (struct NSObject *)presentingViewControllerForFooterController:(id)arg1;
+- (id)presentingViewControllerForFooterController:(id)arg1;
 - (id)presentingViewControllerForMovieProvider:(id)arg1;
 - (BOOL)pu_handleSecondTabTap;
 - (BOOL)pu_scrollToInitialPositionAnimated:(BOOL)arg1;

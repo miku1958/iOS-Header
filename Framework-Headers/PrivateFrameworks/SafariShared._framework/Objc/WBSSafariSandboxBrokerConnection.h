@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 - (void)_connectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ensureConnected:(CDUnknownBlockType)arg1;
-- (void)loadLinkPresentationMetdataForMessageWithGUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

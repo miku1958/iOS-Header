@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)outputIsExemptFromTaintTrackingInheritance;
 - (id)base64EncodedStringItemFromFile:(id)arg1 lineBreakMode:(id)arg2;
 - (id)inputContentClasses;
 - (id)itemFromBase64EncodedString:(id)arg1 nameIfKnown:(id)arg2;

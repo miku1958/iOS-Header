@@ -89,6 +89,7 @@
 - (id)labelforDegasLabelId:(unsigned long long)arg1;
 - (void)leaveBatch;
 - (void)leaveTransaction;
+- (void)leaveTransactionWithRollback;
 - (void)loadLabelsAndDomains;
 - (void)loadPropertyNames;
 - (id)localLabelNameForDegasLabel:(unsigned long long)arg1;

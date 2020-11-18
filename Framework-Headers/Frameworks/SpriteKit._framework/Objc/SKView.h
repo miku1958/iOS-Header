@@ -155,6 +155,7 @@
 - (shared_ptr_2ce53ef7)nextFramebuffer;
 - (void)notifyWillRenderContent;
 - (void)onInit;
+- (void)overrideMetalCommandQueue:(id)arg1;
 - (void)presentScene:(id)arg1;
 - (void)presentScene:(id)arg1 transition:(id)arg2;
 - (void)remakeFramebuffer;

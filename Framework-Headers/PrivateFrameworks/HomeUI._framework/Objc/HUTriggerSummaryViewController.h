@@ -54,7 +54,6 @@
 - (void)_deleteTrigger:(id)arg1 indexPath:(id)arg2;
 - (void)_done:(id)arg1;
 - (id)_durationEventBuilder;
-- (void)_preloadShortcutHomeManager;
 - (void)_presentMediaSelection;
 - (void)_removeActionsInServiceActionItem:(id)arg1;
 - (void)_setTriggerEnabled:(BOOL)arg1;

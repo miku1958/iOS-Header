@@ -13,6 +13,7 @@
 @interface VSSAMLAuthenticationToken : NSObject <VSAuthenticationToken>
 {
     NSData *_serializedData;
+    NSDate *_simulatedExpirationDate;
 }
 
 @property (copy, nonatomic) NSString *body;
@@ -21,6 +22,7 @@
 @property (readonly, copy, nonatomic) NSDate *expirationDate;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSData *serializedData; // @synthesize serializedData=_serializedData;
+@property (strong, nonatomic) NSDate *simulatedExpirationDate; // @synthesize simulatedExpirationDate=_simulatedExpirationDate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -29,6 +31,7 @@
 - (BOOL)isFromUnsupportedProvider;
 - (BOOL)isOpaque;
 - (BOOL)isValid;
+- (void)setExpirationDate:(id)arg1;
 
 @end
 

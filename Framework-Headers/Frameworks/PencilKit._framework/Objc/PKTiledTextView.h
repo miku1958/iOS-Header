@@ -6,15 +6,21 @@
 
 #import <PencilKit/PKTiledView.h>
 
-@class PKAttachmentView, UIButton;
+#import <PencilKit/_UICursorInteractionDelegate-Protocol.h>
 
-@interface PKTiledTextView : PKTiledView
+@class NSString, PKAttachmentView, UIButton;
+
+@interface PKTiledTextView : PKTiledView <_UICursorInteractionDelegate>
 {
     PKAttachmentView *_standInEndAttachmentView;
     UIButton *_tapToRadarButton;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKAttachmentView *standInEndAttachmentView; // @synthesize standInEndAttachmentView=_standInEndAttachmentView;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIButton *tapToRadarButton; // @synthesize tapToRadarButton=_tapToRadarButton;
 
 - (void).cxx_destruct;
@@ -26,6 +32,7 @@
 - (BOOL)canAddStroke;
 - (void)canvasViewDidEndDrawing:(id)arg1;
 - (void)canvasViewWillBeginNewStroke:(id)arg1 withTouch:(id)arg2;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (struct CGRect)frameOfEndAttachment;
 - (BOOL)hasEndAttachment;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

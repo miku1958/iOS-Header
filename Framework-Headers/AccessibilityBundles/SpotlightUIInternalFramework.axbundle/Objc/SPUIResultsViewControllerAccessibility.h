@@ -15,8 +15,10 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axFirstResultInModel:(id)arg1;
 - (long long)_axNumberOfResultsInModel:(id)arg1;
+- (BOOL)_axResultsFirstAppeared;
 - (id)_axResultsInSection:(id)arg1;
 - (id)_axSectionsInModel:(id)arg1;
+- (void)_axSetResultsFirstAppeared:(BOOL)arg1;
 - (void)searchAgentUpdatedResults:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 

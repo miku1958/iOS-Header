@@ -22,6 +22,7 @@
     SPHandle *_handle;
     NSString *_lostModeMessage;
     NSString *_lostModePhoneNumber;
+    NSString *_obfuscatedIdentifier;
 }
 
 @property (copy, nonatomic) NSUUID *beaconIdentifier; // @synthesize beaconIdentifier=_beaconIdentifier;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *lostModeMessage; // @synthesize lostModeMessage=_lostModeMessage;
 @property (copy, nonatomic) NSString *lostModePhoneNumber; // @synthesize lostModePhoneNumber=_lostModePhoneNumber;
+@property (copy, nonatomic) NSString *obfuscatedIdentifier; // @synthesize obfuscatedIdentifier=_obfuscatedIdentifier;
 @property (readonly, copy, nonatomic) NSString *taskName;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
@@ -44,8 +46,8 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBeaconUUID:(id)arg1 type:(long long)arg2 expiration:(id)arg3 duration:(id)arg4 handle:(id)arg5 lostModeMessage:(id)arg6 lostModePhoneNumber:(id)arg7;
-- (id)initWithBeaconUUID:(id)arg1 type:(long long)arg2 expiration:(id)arg3 duration:(id)arg4 handle:(id)arg5 lostModeMessage:(id)arg6 lostModePhoneNumber:(id)arg7 identifier:(id)arg8;
+- (id)initWithBeaconUUID:(id)arg1 type:(long long)arg2 expiration:(id)arg3 duration:(id)arg4 handle:(id)arg5 lostModeMessage:(id)arg6 lostModePhoneNumber:(id)arg7 obfuscatedIdentifier:(id)arg8;
+- (id)initWithBeaconUUID:(id)arg1 type:(long long)arg2 expiration:(id)arg3 duration:(id)arg4 handle:(id)arg5 lostModeMessage:(id)arg6 lostModePhoneNumber:(id)arg7 obfuscatedIdentifier:(id)arg8 identifier:(id)arg9;
 - (id)initWithCoder:(id)arg1;
 
 @end

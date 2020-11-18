@@ -57,7 +57,6 @@
 - (void)setUseHorizontalContraints:(BOOL)arg1;
 - (BOOL)shortcutNameIsEmpty;
 - (void)textFieldDidChange;
-- (void)textFieldDidEndEditing:(id)arg1 reason:(long long)arg2;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)updateButtonVisibility;
 - (void)updateViewForDoneButton;

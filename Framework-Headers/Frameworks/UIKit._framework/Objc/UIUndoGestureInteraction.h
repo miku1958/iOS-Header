@@ -11,7 +11,7 @@
 #import <UIKitCore/UIInteraction-Protocol.h>
 #import <UIKitCore/UIInteractiveUndoHUDActionDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, UIDelayedAction, UIKBTextEditingTraits, UIKBUndoInteractionHUD, UIKBUndoStateHUD, UILayoutGuide, UITapGestureRecognizer, UIUndoGestureObserver, UIUndoGestureRecognizer, UIUndoLongPressGestureRecognizer, UIUndoPinchGestureRecognizer, UIView;
+@class NSLayoutConstraint, NSString, UIDelayedAction, UIKBProductibityDoubleTapGesture, UIKBProductibitySingleTapGesture, UIKBProductivityLongPressGestureRecognizer, UIKBProductivityPanGestureRecognizer, UIKBProductivityPinchGestureRecognizer, UIKBTextEditingTraits, UIKBUndoInteractionHUD, UIKBUndoStateHUD, UILayoutGuide, UIUndoGestureObserver, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIUndoGestureInteraction : NSObject <UIInteractiveUndoHUDActionDelegate, UIGestureRecognizerDelegate, UIEditingOverlayInteractionWithView, UIInteraction>
@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
     BOOL _multiPinchTimerOn;
     UIView *_view;
     UIUndoGestureObserver *_observerGesture;
-    UITapGestureRecognizer *_threeFingerSingleTap;
-    UITapGestureRecognizer *_threeFingerDoubleTap;
-    UIUndoGestureRecognizer *_threeFingerSlide;
-    UIUndoLongPressGestureRecognizer *_threeFingerLongPress;
-    UIUndoPinchGestureRecognizer *_threeFingerPinch;
+    UIKBProductibitySingleTapGesture *_threeFingerSingleTap;
+    UIKBProductibityDoubleTapGesture *_threeFingerDoubleTap;
+    UIKBProductivityPanGestureRecognizer *_threeFingerSlide;
+    UIKBProductivityLongPressGestureRecognizer *_threeFingerLongPress;
+    UIKBProductivityPinchGestureRecognizer *_threeFingerPinch;
     UIKBUndoInteractionHUD *_undoInteractiveHUD;
     UIKBUndoStateHUD *_undoStateHUD;
     NSLayoutConstraint *_undoStateHUDTopConstraint;
@@ -72,11 +72,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long previousRecognizedPanDirection; // @synthesize previousRecognizedPanDirection=_previousRecognizedPanDirection;
 @property (nonatomic) double remainingDistanceToTravel; // @synthesize remainingDistanceToTravel=_remainingDistanceToTravel;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITapGestureRecognizer *threeFingerDoubleTap; // @synthesize threeFingerDoubleTap=_threeFingerDoubleTap;
-@property (strong, nonatomic) UIUndoLongPressGestureRecognizer *threeFingerLongPress; // @synthesize threeFingerLongPress=_threeFingerLongPress;
-@property (strong, nonatomic) UIUndoPinchGestureRecognizer *threeFingerPinch; // @synthesize threeFingerPinch=_threeFingerPinch;
-@property (strong, nonatomic) UITapGestureRecognizer *threeFingerSingleTap; // @synthesize threeFingerSingleTap=_threeFingerSingleTap;
-@property (strong, nonatomic) UIUndoGestureRecognizer *threeFingerSlide; // @synthesize threeFingerSlide=_threeFingerSlide;
+@property (strong, nonatomic) UIKBProductibityDoubleTapGesture *threeFingerDoubleTap; // @synthesize threeFingerDoubleTap=_threeFingerDoubleTap;
+@property (strong, nonatomic) UIKBProductivityLongPressGestureRecognizer *threeFingerLongPress; // @synthesize threeFingerLongPress=_threeFingerLongPress;
+@property (strong, nonatomic) UIKBProductivityPinchGestureRecognizer *threeFingerPinch; // @synthesize threeFingerPinch=_threeFingerPinch;
+@property (strong, nonatomic) UIKBProductibitySingleTapGesture *threeFingerSingleTap; // @synthesize threeFingerSingleTap=_threeFingerSingleTap;
+@property (strong, nonatomic) UIKBProductivityPanGestureRecognizer *threeFingerSlide; // @synthesize threeFingerSlide=_threeFingerSlide;
 @property (strong, nonatomic) NSLayoutConstraint *undoHUDContainerHeightConstraint; // @synthesize undoHUDContainerHeightConstraint=_undoHUDContainerHeightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *undoHUDContainerWidthConstraint; // @synthesize undoHUDContainerWidthConstraint=_undoHUDContainerWidthConstraint;
 @property (strong, nonatomic) UIKBUndoInteractionHUD *undoInteractiveHUD; // @synthesize undoInteractiveHUD=_undoInteractiveHUD;

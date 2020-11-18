@@ -58,13 +58,14 @@
 - (void)_fetchAssetContextForMessage:(id)arg1 propertyName:(id)arg2;
 - (id)_fetchAssetContextForProperty:(id)arg1 forClipModel:(id)arg2;
 - (BOOL)_fetchClipsAfterDate:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-- (void)_handleChangedClipModel:(id)arg1;
+- (void)_handleChangedClipModel:(id)arg1 wasCreated:(BOOL)arg2;
 - (void)_handleNewSignificantEventNotificationModel:(id)arg1;
-- (void)_handleNewSignificantEventNotificationModel:(id)arg1 withHeroFrameURL:(id)arg2 forClipModel:(id)arg3;
 - (void)_notifyTransport:(id)arg1 ofFetchedClips:(id)arg2 forFetchUUID:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)_notifyTransportsOfUpdatedClips:(id)arg1 removedClipUUIDs:(id)arg2;
 - (void)_performCloudPull;
-- (id)_significantEventsForClipModel:(id)arg1;
+- (void)_postNotificationForSignificantEventNotificationModel:(id)arg1 clipModel:(id)arg2;
+- (void)_postNotificationForSignificantEventNotificationModel:(id)arg1 clipModel:(id)arg2 heroFrameURL:(id)arg3;
+- (id)_significantEventModelsForClipModel:(id)arg1;
 - (void)_updateCloudFetchTimer;
 - (BOOL)areShareModificationsEnabledForManager:(id)arg1;
 - (void)configureWithHome:(id)arg1;

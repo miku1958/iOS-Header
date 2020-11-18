@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) UIWebClip *webClip;
 
 - (void).cxx_destruct;
+- (BOOL)_isSaneURL;
 - (id)applicationToLaunch;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)folderFallbackTitle;

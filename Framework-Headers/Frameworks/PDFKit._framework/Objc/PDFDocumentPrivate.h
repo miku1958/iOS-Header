@@ -68,7 +68,11 @@ __attribute__((visibility("hidden")))
     id<PDFDocumentPageChangeDelegate> pageChangeDelegate;
     BOOL documentChanged;
     BOOL documentHasBurnInAnnotations;
-    BOOL pagesChanged;
+    struct {
+        BOOL pagesAdded;
+        BOOL pagesRemoved;
+        BOOL pagesExchanged;
+    } pagesChanged;
     NSIndexSet *initialBookmarkedPageIndices;
     NSMutableIndexSet *bookmarkedPages;
     PDFAKDocumentAdaptor *akDocumentAdaptor;

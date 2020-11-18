@@ -6,50 +6,55 @@
 
 #import <HomeKitDaemon/HMDAccessoryProfile.h>
 
-@class HMDAccessorySettingContainer, HMDAppleMediaAccessory, HMDMediaSession, HMDMediaSystem, NSObject;
-@protocol OS_dispatch_queue;
+#import <HomeKitDaemon/HMFLocking-Protocol.h>
 
-@interface HMDMediaProfile : HMDAccessoryProfile
+@class HMDMediaSession, HMFUnfairLock;
+
+@interface HMDMediaProfile : HMDAccessoryProfile <HMFLocking>
 {
+    HMFUnfairLock *_lock;
     HMDMediaSession *_mediaSession;
-    HMDMediaSystem *_mediaSystem;
-    HMDAccessorySettingContainer *_container;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property (strong, nonatomic) HMDAccessorySettingContainer *container; // @synthesize container=_container;
-@property (readonly, weak) HMDAppleMediaAccessory *mediaAccessory;
+@property (readonly, nonatomic) unsigned long long capability;
 @property (strong) HMDMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
-@property (weak, nonatomic) HMDMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
-@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)namespace;
 + (id)sessionNamespace;
 + (BOOL)supportsSecureCoding;
++ (id)uniqueIdentifierFromAccessory:(id)arg1;
 - (void).cxx_destruct;
+- (void)_handleMediaResponses:(id)arg1 message:(id)arg2;
 - (void)_handleMediaSessionSetAudioControl:(id)arg1;
 - (void)_handleRefreshPlayback:(id)arg1;
 - (void)_handleSetPlayback:(id)arg1;
 - (void)_handleSetPower:(id)arg1;
 - (void)_handleSetValue:(id)arg1 withRequestProperty:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_sessionPlaybackStateUpdated:(id)arg1 notifyXPCClients:(BOOL)arg2;
+- (BOOL)_updateAudioControl:(id)arg1;
+- (BOOL)_updatePlayback:(id)arg1;
+- (BOOL)_updateRefreshPlayback:(id)arg1;
 - (id)assistantObject;
 - (void)configureWithMessageDispatcher:(id)arg1 configurationTracker:(id)arg2;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleMediaResponses:(id)arg1 message:(id)arg2;
 - (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
 - (void)handleSessionUpdatedNotification:(id)arg1;
 - (void)handleSessionVolumeUpdatedNotification:(id)arg1;
 - (void)handleSetValue:(id)arg1 withRequestProperty:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithAccessory:(id)arg1;
-- (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3;
+- (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3 workQueue:(id)arg4;
+- (void)lock;
 - (id)messageReceiverChildren;
+- (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)registerForMessages;
+- (void)registerForNotifications;
 - (void)sessionAudioControlUpdated:(id)arg1;
+- (void)unlock;
 - (void)updateWithResponses:(id)arg1 message:(id)arg2;
-- (id)url;
+- (id)urlString;
 
 @end
 

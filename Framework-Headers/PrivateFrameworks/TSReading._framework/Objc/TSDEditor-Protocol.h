@@ -28,6 +28,8 @@
 
 @optional
 - (void)addContextualMenuItemsToArray:(NSMutableArray *)arg1;
+- (BOOL)allowAutomaticTextEditingToBeginWithDifferentEditor;
+- (void)beginAutomaticTextEditingIfNeededForPoint:(struct CGPoint)arg1;
 - (BOOL)canAddOrShowComment;
 - (BOOL)canBeginEditingRepOnDoubleTap:(TSDRep *)arg1;
 - (BOOL)canBeginPathEditing;

@@ -41,6 +41,7 @@
 - (void)dealloc;
 - (id)identifiersOfProfilesWithFilterFlags:(int)arg1;
 - (id)init;
+- (id)installedMDMProfile;
 - (id)installedProfileDataWithIdentifier:(id)arg1;
 - (id)installedProfileWithIdentifier:(id)arg1;
 - (id)installedSystemProfileWithIdentifier:(id)arg1;

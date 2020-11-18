@@ -6,15 +6,17 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIColor, UIImage, UIImageView, UIView;
+@class SFToggleBackgroundView, UIColor, UIImage, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SFNavigationBarToggleButton : UIButton
 {
+    BOOL _liftedForCursor;
     UIImageView *_defaultStateImageView;
     UIImageView *_selectedStateImageView;
-    UIView *_selectedStateView;
-    BOOL _useStandaloneAppearance;
+    SFToggleBackgroundView *_selectedStateMaskView;
+    UIView *_selectedStateFillView;
+    unsigned long long _inputMode;
     BOOL _drawsLightGlyph;
     BOOL _usesInsetFromBackground;
     BOOL _highlightsBackground;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double resizableBackgroundCornerRadius; // @synthesize resizableBackgroundCornerRadius=_resizableBackgroundCornerRadius;
 @property (nonatomic) BOOL usesInsetFromBackground; // @synthesize usesInsetFromBackground=_usesInsetFromBackground;
 
++ (BOOL)_cursorInteractionEnabled;
 + (id)formatMenuImage;
 + (struct CGSize)glyphSize;
 + (id)readerImage;
@@ -38,6 +41,9 @@ __attribute__((visibility("hidden")))
 - (void)_updateDefaultStateImageView;
 - (void)_updateImageViews;
 - (void)_updateSelectedStateView;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
 - (id)initWithImage:(id)arg1 forInputMode:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;

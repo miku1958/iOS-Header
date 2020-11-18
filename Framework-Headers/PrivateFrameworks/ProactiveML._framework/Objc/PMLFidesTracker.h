@@ -14,7 +14,7 @@
 
 @interface PMLFidesTracker : NSObject <PMLLogRegTrackerProtocol, PMLEvaluationTrackerProtocol, PMLMultiLabelEvaluationTrackerProtocol>
 {
-    struct NSString *_planId;
+    NSString *_planId;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithPlanId:(struct NSString *)arg1;
+- (id)initWithPlanId:(id)arg1;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;
 - (id)trackEvaluationMetrics:(id)arg1 minibatchStats:(id)arg2;

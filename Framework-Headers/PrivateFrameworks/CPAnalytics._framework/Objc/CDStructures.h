@@ -4,9 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Named Structures
-
-struct NSObject {
-    Class _field1;
-};
-

@@ -22,7 +22,7 @@
 - (id)initWithSize:(CDStruct_912cb5d2)arg1 orientation:(long long)arg2 scale:(CDStruct_912cb5d2)arg3;
 - (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
 - (id)preparedNodeWithSourceContainer:(id)arg1 pipelineState:(id)arg2 pipelineSettings:(id)arg3 sourceSettings:(id)arg4 error:(out id *)arg5;
-- (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (BOOL)shouldCacheNodeForPipelineState:(id)arg1;
 - (long long)sourceOrientation;
 - (BOOL)supportsPipelineState:(id)arg1 error:(out id *)arg2;

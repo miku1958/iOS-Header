@@ -24,8 +24,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_localizedDialogTokensForLanguage:(id)arg1;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)_localizedDialogTokensWithLocalizer:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;

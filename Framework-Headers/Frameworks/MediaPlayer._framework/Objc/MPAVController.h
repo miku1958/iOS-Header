@@ -10,7 +10,7 @@
 #import <MediaPlayer/MPAVQueueControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
 
-@class AVAudioSessionMediaPlayerOnly, AVPictureInPictureController, AVPlayerLayer, MPAVItem, MPAVPolicyEnforcer, MPAVRoute, MPAVRoutingController, MPQueueFeeder, MPQueuePlayer, MPVideoView, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSNotification, NSString;
+@class AVPictureInPictureController, AVPlayerLayer, MPAVItem, MPAVPolicyEnforcer, MPAVRoute, MPAVRoutingController, MPQueueFeeder, MPQueuePlayer, MPVideoView, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSNotification, NSString;
 @protocol MPAVQueueController, MPAVQueueCoordinating, OS_dispatch_source;
 
 @interface MPAVController : NSObject <MPAVRoutingControllerDelegate, MPAVQueueControllerDelegate, AVAudioSessionDelegateMediaPlayerOnly>
@@ -132,7 +132,6 @@
 }
 
 @property (readonly, nonatomic) long long _displayPlaybackState;
-@property (readonly, nonatomic) AVAudioSessionMediaPlayerOnly *_playerAVAudioSession;
 @property (nonatomic) long long actionAfterQueueLoadOverride; // @synthesize actionAfterQueueLoadOverride=_actionAfterQueueLoadOverride;
 @property (nonatomic) BOOL alwaysPlayWheneverPossible;
 @property (nonatomic) BOOL autoPlayWhenLikelyToKeepUp;
@@ -241,6 +240,7 @@
 - (void)_itemAssetIsLoadedNotification:(id)arg1;
 - (void)_itemBookmarkTimeDidChangeNotification:(id)arg1;
 - (void)_itemDidChange:(id)arg1;
+- (void)_itemDidSignificantlyChangeElapsedTime:(double)arg1 rate:(float)arg2;
 - (void)_itemFailedToPlayToEnd:(id)arg1;
 - (void)_itemFailedToPlayToEndNotification:(id)arg1;
 - (void)_itemHasFinishedDownloadingDidChangeNotification:(id)arg1;
@@ -260,6 +260,7 @@
 - (id)_pickedRoute;
 - (void)_playWithOptions:(unsigned long long)arg1 allowsEnablingAutoPlay:(BOOL)arg2;
 - (void)_playbackFailedWithError:(id)arg1 canResolve:(BOOL)arg2;
+- (id)_playerAVAudioSession;
 - (id)_playerFailedToQueueNotification:(id)arg1;
 - (void)_postMPAVControllerItemReadyToPlayNotificationWithItem:(id)arg1;
 - (void)_postMPAVControllerSizeDidChangeNotificationWithItem:(id)arg1;
@@ -283,8 +284,7 @@
 - (void)_setAutoPlayBackgroundTaskAssertionEnabled:(BOOL)arg1;
 - (void)_setBufferingState:(unsigned long long)arg1;
 - (void)_setLastSetTime:(double)arg1;
-- (BOOL)_setRate:(float)arg1 forScanning:(BOOL)arg2;
-- (BOOL)_setRate:(float)arg1 forScanning:(BOOL)arg2 withItem:(id)arg3;
+- (BOOL)_setRate:(float)arg1 forScanning:(BOOL)arg2 withItem:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setState:(long long)arg1;
 - (void)_setValid:(BOOL)arg1;
 - (void)_setVideoLayerAttachedToPlayer:(BOOL)arg1 force:(BOOL)arg2 pauseIfNecessary:(BOOL)arg3;
@@ -332,6 +332,7 @@
 - (BOOL)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2;
 - (BOOL)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(BOOL)arg3;
 - (BOOL)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(BOOL)arg3 force:(BOOL)arg4 error:(id *)arg5;
 - (double)currentTimeForBookmarking;
 - (void)dealloc;
 - (void)disableAutoplayForCurrentItem;
@@ -374,9 +375,11 @@
 - (void)setClient:(id)arg1 wantsToAllowExternalPlayback:(BOOL)arg2;
 - (void)setClient:(id)arg1 wantsToAllowExternalPlayback:(BOOL)arg2 shouldIgnorePlaybackQueueTransactions:(BOOL)arg3;
 - (void)setCurrentTime:(double)arg1 options:(long long)arg2;
+- (void)setCurrentTime:(double)arg1 options:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDisableAirPlayMirroringDuringPlayback:(BOOL)arg1 shouldIgnorePlaybackQueueTransactions:(BOOL)arg2;
 - (void)setPlaylistManager:(id)arg1;
 - (BOOL)setRate:(float)arg1;
+- (BOOL)setRate:(float)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setRateForScanning:(float)arg1;
 - (void)setUsesAudioOnlyModeForExternalPlayback:(BOOL)arg1;
 - (void)setUsesAudioOnlyModeForExternalPlayback:(BOOL)arg1 shouldIgnorePlaybackQueueTransactions:(BOOL)arg2;

@@ -10,7 +10,7 @@
 
 @interface NEIKEv2EAP : NSObject
 {
-    struct NSMutableData *_sessionKey;
+    NSMutableData *_sessionKey;
 }
 
 @property (readonly) NSMutableData *sessionKey; // @synthesize sessionKey=_sessionKey;

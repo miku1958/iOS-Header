@@ -6,13 +6,15 @@
 
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDate, NSError, NSString, NSURL, NSUUID, PKCommutePlan, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKVerificationChannel;
+@class NSData, NSDate, NSError, NSString, NSURL, NSUUID, PKAccessPassProvisioningConfiguration, PKAddSecureElementPassConfiguration, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitCommutePlan, PKVerificationChannel;
 
 @protocol NPKCompanionServerProtocol <PDXPCServiceExportedInterface>
 - (void)balanceReminderForBalance:(PKPaymentBalance *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentBalanceReminder *))arg3;
 - (void)balancesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
-- (void)commutePlanReminderIntervalForCommutePlan:(PKCommutePlan *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(double))arg3;
+- (BOOL)canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg1;
+- (BOOL)canProvisionAccessPassWithConfiguration:(PKAccessPassProvisioningConfiguration *)arg1;
+- (void)commutePlanReminderForCommutePlan:(PKTransitCommutePlan *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentCommutePlanReminder *))arg3;
 - (void)connect;
 - (void)defaultCard:(void (^)(NSString *))arg1;
 - (void)defaultPaymentApplicationForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKPaymentApplication *))arg2;
@@ -38,7 +40,7 @@
 - (void)removePaymentPassWithUniqueID:(NSString *)arg1 forPairingID:(NSUUID *)arg2 waitForConfirmation:(BOOL)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)savePaymentPassAtURL:(NSURL *)arg1 withUniqueID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(BOOL))arg4;
 - (void)setBalanceReminder:(PKPaymentBalanceReminder *)arg1 forBalance:(PKPaymentBalance *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(BOOL))arg4;
-- (void)setCommutePlanReminderInterval:(double)arg1 forCommutePlan:(PKCommutePlan *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(BOOL))arg4;
+- (void)setCommutePlanReminder:(PKPaymentCommutePlanReminder *)arg1 forCommutePlan:(PKTransitCommutePlan *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(BOOL))arg4;
 - (void)setDefaultCard:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)setDefaultPaymentApplication:(PKPaymentApplication *)arg1 forPassWithUniqueID:(NSString *)arg2 completion:(void (^)(PKPaymentPass *))arg3;
 - (void)setPeerPaymentAccount:(PKPeerPaymentAccount *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(void))arg3;

@@ -17,6 +17,7 @@
 + (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
 + (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1 routingContextFactory:(id)arg2;
 + (id)sharedLocalDevice;
+- (long long)HAPConformance;
 - (id)ID;
 - (id)airPlayProperties;
 - (BOOL)automaticallyAllowsConnectionsFromPeersInHomeGroup;

@@ -6,12 +6,13 @@
 
 #import <HomeKitDaemon/HMDBackingStoreModelObject.h>
 
-@class HMDHomeKitVersion, NSData, NSNumber, NSString;
+@class HMDHomeKitVersion, NSData, NSDate, NSNumber, NSString;
 
 @interface HMDHomeModel : HMDBackingStoreModelObject
 {
 }
 
+@property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (strong, nonatomic) NSString *defaultRoomUUID; // @dynamic defaultRoomUUID;
 @property (strong, nonatomic) NSNumber *hasAnyUserAcknowledgedCameraRecordingOnboarding; // @dynamic hasAnyUserAcknowledgedCameraRecordingOnboarding;
 @property (strong, nonatomic) NSData *homeLocationData; // @dynamic homeLocationData;

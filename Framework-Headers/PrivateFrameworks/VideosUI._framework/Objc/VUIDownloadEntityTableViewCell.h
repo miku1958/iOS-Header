@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @interface VUIDownloadEntityTableViewCell : UITableViewCell <VUIRentalExpirationLabelDelegate, VUIDownloadEntityDelegate>
 {
     id<VUIDownloadEntityTableViewCellDelegate> _delegate;
+    VUIDownloadButton *_downloadButton;
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
     VUILabel *_titleLabel;
@@ -24,7 +25,6 @@ __attribute__((visibility("hidden")))
     VUILabel *_metaDataHeaderSecondLabel;
     VUILabel *_dotSeparatorLabel;
     VUIImageView *_rightImageView;
-    VUIDownloadButton *_downloadButton;
     _TVImageView *_episodeImageView;
     VUIDownloadEntity *_downloadEntity;
 }

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
 - (void).cxx_destruct;
-- (void)_handlePickedAlbum:(struct NSObject *)arg1 assets:(id)arg2;
+- (void)_handlePickedAlbum:(id)arg1 assets:(id)arg2;
 - (void)_handleUserInteractionTaskResult:(BOOL)arg1 error:(id)arg2;
 - (void)performUserInteractionTask;
 

@@ -84,10 +84,12 @@
 @property (nonatomic, setter=_setAttachmentFileWrapperClass:) Class _attachmentFileWrapperClass;
 @property (nonatomic, setter=_setCanShowWhileLocked:) BOOL _canShowWhileLocked;
 @property (nonatomic, setter=_setClickInteractionDriverForTesting:) id<_UIClickInteractionDriving> _clickInteractionDriverForTesting;
+@property (nonatomic, setter=_setClientNavigationsRunAtForegroundPriority:) BOOL _clientNavigationsRunAtForegroundPriority;
 @property (nonatomic, setter=_setColorFilterEnabled:) BOOL _colorFilterEnabled;
 @property (nonatomic, setter=_setContentProviderRegistry:) WKWebViewContentProviderRegistry *_contentProviderRegistry;
 @property (nonatomic, getter=_isControlledByAutomation, setter=_setControlledByAutomation:) BOOL _controlledByAutomation;
 @property (nonatomic, setter=_setConvertsPositionStyleOnCopy:) BOOL _convertsPositionStyleOnCopy;
+@property (copy, nonatomic, setter=_setCORSDisablingPatterns:) NSArray *_corsDisablingPatterns;
 @property (nonatomic, setter=_setDragLiftDelay:) unsigned long long _dragLiftDelay;
 @property (nonatomic, setter=_setDrawsBackground:) BOOL _drawsBackground;
 @property (nonatomic, setter=_setEditableImagesEnabled:) BOOL _editableImagesEnabled;
@@ -118,6 +120,7 @@
 @property (strong, nonatomic, setter=_setVisitedLinkStore:) _WKVisitedLinkStore *_visitedLinkStore;
 @property (nonatomic, setter=_setWaitsForPaintAfterViewDidMoveToWindow:) BOOL _waitsForPaintAfterViewDidMoveToWindow;
 @property (strong, nonatomic, setter=_setWebsiteDataStore:) _WKWebsiteDataStore *_websiteDataStore;
+@property (readonly, nonatomic) WKWebsiteDataStore *_websiteDataStoreIfExists;
 @property (nonatomic) BOOL allowsAirPlayForMediaPlayback; // @synthesize allowsAirPlayForMediaPlayback=_allowsAirPlayForMediaPlayback;
 @property (nonatomic) BOOL allowsInlineMediaPlayback; // @synthesize allowsInlineMediaPlayback=_allowsInlineMediaPlayback;
 @property (nonatomic) BOOL allowsPictureInPictureMediaPlayback; // @synthesize allowsPictureInPictureMediaPlayback=_allowsPictureInPictureMediaPlayback;

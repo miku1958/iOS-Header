@@ -295,8 +295,10 @@
  struct __C.CGSize {
 
 	// Properties
-	var width : CGFloat // +0x0
-	var height : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : aò // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : aò // +0x0
  }
 
  struct __C.Key {
@@ -308,8 +310,10 @@
  struct __C.CGPoint {
 
 	// Properties
-	var x : CGFloat
-	var y : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : aò
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : aò
  }
 
  enum __C.Code { }
@@ -321,7 +325,7 @@
 	// Properties
 	case article : (articleID: String)
 	case issue : (issueID: String)
-	case feed : (feedType: FCFeedType, sectionID: String?)
+	case feed : FCFeedType
 	case ad : (qToken: String, fromSubscriptionAd: Bool)
 	case referral : (campaignID: String, campaignType: String?, creativeID: String?)
  }
@@ -421,7 +425,7 @@
 	let purchaseStarter : PurchaseStarterType // +0x10 (0x28)
 	let familySharingLandingPageLauncher : FamilySharingLandingPageLauncherType // +0x38 (0x28)
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x60 (0x28)
-	var $__lazy_storage_$_spinnerViewController : PurchasingSpinnerViewController? // +0x88 (0x8)
+	var $__lazy_storage_$_spinnerViewController : PurchasingSpinnerViewController // +0x88 (0x8)
 
 	// Swift methods
  }
@@ -432,32 +436,32 @@
 
 	// Properties
 	let paywallType : PaywallType // +0x8 (0x8)
-	let softPaywallHeightProvider : BridgedSoftPaywallHeightProvider? // +0x10 (0x8)
-	let deferredHardPaywallHeightProvider : BridgedDeferredHardPaywallHeightProvider? // +0x18 (0x8)
-	let softPaywallViewController : SoftPaywallViewController? // +0x20 (0x8)
-	let hardPaywallViewController : HardPaywallViewController? // +0x28 (0x8)
-	let deferredHardPaywallViewController : DeferredHardPaywallViewController? // +0x30 (0x8)
+	let softPaywallHeightProvider : BridgedSoftPaywallHeightProvider // +0x10 (0x8)
+	let deferredHardPaywallHeightProvider : BridgedDeferredHardPaywallHeightProvider // +0x18 (0x8)
+	let softPaywallViewController : SoftPaywallViewController // +0x20 (0x8)
+	let hardPaywallViewController : HardPaywallViewController // +0x28 (0x8)
+	let deferredHardPaywallViewController : DeferredHardPaywallViewController // +0x30 (0x8)
 	var delegate : weak NPPaywallDelegate? // +0x38 (0x8)
-	var internalDelegate : PaywallDelegate? // +0x40 (0x10)
+	var internalDelegate : PaywallDelegate // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xb550  @objc BridgedPaywall.paywallType <stripped>
-	0xb590  @objc BridgedPaywall.softPaywallHeightProvider <stripped>
-	0xb5f0  @objc BridgedPaywall.deferredHardPaywallHeightProvider <stripped>
-	0xb650  @objc BridgedPaywall.paywallViewController <stripped>
-	0xb730  @objc BridgedPaywall.delegate <stripped>
-	0xb7b0  @objc BridgedPaywall.setDelegate: <stripped>
-	0xbad0  @objc BridgedPaywall.init <stripped>
-	0xbee0  @objc BridgedPaywall..cxx_destruct <stripped>
+	0xba10  @objc BridgedPaywall.paywallType <stripped>
+	0xba50  @objc BridgedPaywall.softPaywallHeightProvider <stripped>
+	0xbab0  @objc BridgedPaywall.deferredHardPaywallHeightProvider <stripped>
+	0xbb10  @objc BridgedPaywall.paywallViewController <stripped>
+	0xbbf0  @objc BridgedPaywall.delegate <stripped>
+	0xbc70  @objc BridgedPaywall.setDelegate: <stripped>
+	0xbf70  @objc BridgedPaywall.init <stripped>
+	0xc150  @objc BridgedPaywall..cxx_destruct <stripped>
 
 	// Swift methods
-	0xb690  func <stripped> // getter 
-	0xb770  func <stripped> // getter 
-	0xb7f0  func <stripped> // setter 
-	0xb8c0  func <stripped> // modifyCoroutine 
-	0xbaf0  class func BridgedPaywall.__allocating_init(softPaywallViewController:softPaywallHeightProvider:) // init 
-	0xbc50  class func BridgedPaywall.__allocating_init(hardPaywallViewController:) // init 
-	0xbce0  class func BridgedPaywall.__allocating_init(deferredHardPaywallViewController:deferredHardPaywallHeightProvider:) // init 
+	0xbb50  func <stripped> // getter 
+	0xbc30  func <stripped> // getter 
+	0xbcb0  func <stripped> // setter 
+	0xbd80  func <stripped> // modifyCoroutine 
+	0xbf90  class func BridgedPaywall.__allocating_init(softPaywallViewController:softPaywallHeightProvider:) // init 
+	0xbff0  class func BridgedPaywall.__allocating_init(hardPaywallViewController:) // init 
+	0xc060  class func BridgedPaywall.__allocating_init(deferredHardPaywallViewController:deferredHardPaywallHeightProvider:) // init 
  }
 
  class NewsSubscription.PurchasingSpinnerViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchasingSpinnerViewStylerType {
@@ -478,18 +482,20 @@
 
 	// Properties
 	var delegate : FamilySharingStatusManagerDelegate // +0x10 (0x10)
-	let cachedFamilyStatus : SyncValue<FamilyStatus?> // +0x20 (0x8)
-	let lazyStore : StoreDescriptor // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let cachedFamilyStatus : ùí // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let lazyStore : Ñí // +0x28 (0x8)
 	let familyStatusStoreKey : String // +0x30 (0x10)
 	let familyEigibilityProvider : NPFamilyEligibilityProviderType // +0x40 (0x8)
 
 	// Swift methods
-	0xd1b0  func <stripped> // getter 
-	0xd1e0  func <stripped> // setter 
-	0xd250  func <stripped> // modifyCoroutine 
-	0xd5d0  func <stripped> // method 
-	0xd6b0  func <stripped> // method 
-	0xe530  func <stripped> // method 
+	0xd4f0  func <stripped> // getter 
+	0xd520  func <stripped> // setter 
+	0xd590  func <stripped> // modifyCoroutine 
+	0xd880  func <stripped> // method 
+	0xd910  func <stripped> // method 
+	0xe470  func <stripped> // method 
  }
 
  struct NewsSubscription.StoreDescriptor { }
@@ -517,7 +523,7 @@
  class NewsSubscription.DisposableTransactionObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var observer : weak PurchaseTransactionObserver?
+	var observer : PurchaseTransactionObserver
 	var keepAliveObject : weak Swift.AnyObject?
 
 	// Swift methods
@@ -526,7 +532,7 @@
  class NewsSubscription.DisposablePurchaseObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var observer : weak PurchaseObserver?
+	var observer : PurchaseObserver
 	var keepAliveObject : weak Swift.AnyObject?
 
 	// Swift methods
@@ -541,10 +547,10 @@
 	let purchasingScrim : UIImageView // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x16450  @objc PurchasingSpinnerView.init <stripped>
-	0x16500  @objc PurchasingSpinnerView.initWithCoder: <stripped>
-	0x16600  @objc PurchasingSpinnerView.initWithFrame: <stripped>
-	0x166b0  @objc PurchasingSpinnerView..cxx_destruct <stripped>
+	0x15c50  @objc PurchasingSpinnerView.init <stripped>
+	0x15d00  @objc PurchasingSpinnerView.initWithCoder: <stripped>
+	0x15e80  @objc PurchasingSpinnerView.initWithFrame: <stripped>
+	0x15d80  @objc PurchasingSpinnerView..cxx_destruct <stripped>
  }
 
  enum NewsSubscription.SubscribeButtonLocation {
@@ -560,7 +566,7 @@
 
  class NewsSubscription.UtilityAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x185e0  @objc UtilityAssembly.init <stripped>
+	0x17ae0  @objc UtilityAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -589,8 +595,9 @@
 	let configurationManager : FCCoreConfigurationManager // +0x10 (0x8)
 	let purchaseManager : PurchaseManagerType // +0x18 (0x10)
 	let bundlePurchasePrewarmer : BundlePurchasePrewarmerType // +0x28 (0x10)
-	var deferredPromise : DeferredPromise<()>? // +0x0 (0x0)
-	var purchaseContext : PurchaseContext? // +0x0 (0x40)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var deferredPromise : Åè // +0x0 (0x0)
+	var purchaseContext : PurchaseContext // +0x0 (0x40)
 
 	// Swift methods
  }
@@ -598,9 +605,11 @@
  class NewsSubscription.PurchaseContextEntriesManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchaseContextEntriesManagerType {
 
 	// Properties
-	let store : StoreDescriptor // +0x10 (0x8)
-	var purchaseContexts : [String : PurchaseContext] // +0x18 (0x8)
-	var accessLock : UnfairLock // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let store : ì // +0x10 (0x8)
+	var purchaseContexts : PurchaseContext // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var accessLock : óç // +0x20 (0x8)
 
 	// Swift methods
  }
@@ -609,34 +618,45 @@
 
  class NewsSubscription.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x20310  @objc Images.init <stripped>
-	0x203b0  @objc Images..cxx_destruct <stripped>
+	0x1e9b0  @objc Images.init <stripped>
+	0x1e950  @objc Images..cxx_destruct <stripped>
  }
 
  class NewsSubscription.SoftPaywallLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SoftPaywallLayoutAttributesFactoryType {
 
 	// Properties
 	let styler : SoftPaywallStylerType // +0x10 (0x28)
-	let smallMarginWidth : CGFloat // +0x38 (0x8)
-	let largeMarginWidth : CGFloat // +0x40 (0x8)
-	let smallHeaderImageHeight : CGFloat // +0x48 (0x8)
-	let largeHeaderImageHeight : CGFloat // +0x50 (0x8)
-	let maxHeaderImageViewWidth : CGFloat // +0x58 (0x8)
-	let compactBadgeImageWidth : CGFloat // +0x60 (0x8)
-	let regularBadgeImageWidth : CGFloat // +0x68 (0x8)
-	let compactBadgeImageHeight : CGFloat // +0x70 (0x8)
-	let regularBadgeImageHeight : CGFloat // +0x78 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let smallMarginWidth : aò // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let largeMarginWidth : aò // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let smallHeaderImageHeight : aò // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let largeHeaderImageHeight : aò // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxHeaderImageViewWidth : aò // +0x58 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let compactBadgeImageWidth : aò // +0x60 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let regularBadgeImageWidth : aò // +0x68 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let compactBadgeImageHeight : aò // +0x70 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let regularBadgeImageHeight : aò // +0x78 (0x8)
 	let smallSubscribeButtonSize : CGSize // +0x80 (0x10)
 	let largeSubscribeButtonSize : CGSize // +0x90 (0x10)
-	let smallButtonCapMarginWidth : CGFloat // +0xa0 (0x8)
-	let largeButtonCapMarginWidth : CGFloat // +0xa8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let smallButtonCapMarginWidth : aò // +0xa0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let largeButtonCapMarginWidth : aò // +0xa8 (0x8)
 
 	// Swift methods
  }
 
  class NewsSubscription.StylerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x21b10  @objc StylerAssembly.init <stripped>
+	0x20280  @objc StylerAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -658,7 +678,7 @@
 	let router : SubscriptionsRouterType // +0x20 (0x28)
 
 	// Swift methods
-	0x22280  class func FamilySharingLandingPageLauncher.__allocating_init(configurationManager:familyEligibilityProvider:router:) // init 
+	0x208f0  class func FamilySharingLandingPageLauncher.__allocating_init(configurationManager:familyEligibilityProvider:router:) // init 
  }
 
  class NewsSubscription.SoftPaywallRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SoftPaywallRendererType {
@@ -677,7 +697,7 @@
 	let accountPageViewControllerFactory : BridgedAccountPageViewControllerFactory // +0x10 (0x8)
 
 	// Swift methods
-	0x23940  class func AccountPageViewControllerFactory.__allocating_init(accountPageViewControllerFactory:) // init 
+	0x22000  class func AccountPageViewControllerFactory.__allocating_init(accountPageViewControllerFactory:) // init 
  }
 
  class NewsSubscription.BridgedPurchaseManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -688,18 +708,18 @@
 	var purchaseObservers : ContainerPurchaseObserver
 
 	// ObjC -> Swift bridged methods
-	0x24010  @objc BridgedPurchaseManager.addPurchaseObserver: <stripped>
-	0x24400  @objc BridgedPurchaseManager.removePurchaseObserver: <stripped>
-	0x246c0  @objc BridgedPurchaseManager.addTransactionObserver: <stripped>
-	0x24ab0  @objc BridgedPurchaseManager.removeTransactionObserver: <stripped>
-	0x24e40  @objc BridgedPurchaseManager.purchaseMetadataWithPurchaseID:restorePurchase: <stripped>
-	0x25010  @objc BridgedPurchaseManager.startPurchaseWithPurchaseModel:purchaseContext:error: <stripped>
-	0x25190  @objc BridgedPurchaseManager.startBundlePurchaseWithPurchaseModel:purchaseContext:error: <stripped>
-	0x252f0  @objc BridgedPurchaseManager.init <stripped>
-	0x25370  @objc BridgedPurchaseManager..cxx_destruct <stripped>
+	0x22610  @objc BridgedPurchaseManager.addPurchaseObserver: <stripped>
+	0x22940  @objc BridgedPurchaseManager.removePurchaseObserver: <stripped>
+	0x22b90  @objc BridgedPurchaseManager.addTransactionObserver: <stripped>
+	0x22ec0  @objc BridgedPurchaseManager.removeTransactionObserver: <stripped>
+	0x23330  @objc BridgedPurchaseManager.purchaseMetadataWithPurchaseID:restorePurchase: <stripped>
+	0x235c0  @objc BridgedPurchaseManager.startPurchaseWithPurchaseModel:purchaseContext:error: <stripped>
+	0x238f0  @objc BridgedPurchaseManager.startBundlePurchaseWithPurchaseModel:purchaseContext:error: <stripped>
+	0x23ba0  @objc BridgedPurchaseManager.init <stripped>
+	0x23b10  @objc BridgedPurchaseManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x23b80  class func BridgedPurchaseManager.__allocating_init(purchaseManager:) // init 
+	0x22230  class func BridgedPurchaseManager.__allocating_init(purchaseManager:) // init 
  }
 
  class NewsSubscription.ContainerPurchaseTransactionObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -721,13 +741,15 @@
  class NewsSubscription.HardPaywallModule : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let resolver : ResolverType // +0x8 (0x28)
-	let tracker : Tracker // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : Ëã // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : sã // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x27030  @objc HardPaywallModule.createViewController <stripped>
-	0x27140  @objc HardPaywallModule.init <stripped>
-	0x271f0  @objc HardPaywallModule..cxx_destruct <stripped>
+	0x257c0  @objc HardPaywallModule.createViewController <stripped>
+	0x258b0  @objc HardPaywallModule.init <stripped>
+	0x25830  @objc HardPaywallModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -763,7 +785,7 @@
 
 	// Properties
 	let purchaseController : FCPurchaseController // +0x10 (0x8)
-	let paywallCoordinator : PaywallCoordinatorType? // +0x18 (0x28)
+	let paywallCoordinator : PaywallCoordinatorType // +0x18 (0x28)
 
 	// Swift methods
  }
@@ -774,37 +796,37 @@
 	let heightProvider : SoftPaywallHeightProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x2c1a0  class func SoftPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
+	0x2a260  class func SoftPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  class NewsSubscription.SoftPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2d8d0  @objc SoftPaywallAssembly.init <stripped>
+	0x2b7a0  @objc SoftPaywallAssembly.init <stripped>
  }
 
  class NewsSubscription.PaywallInteractor : NSObject /usr/lib/libobjc.A.dylib, PaywallInteractorType {
 
 	// Properties
 	var delegate : PaywallInteractorTypeDelegate // +0x8 (0x10)
-	var coordinator : PaywallCoordinatorType? // +0x18 (0x28)
+	var coordinator : PaywallCoordinatorType // +0x18 (0x28)
 	let paywallModel : PaywallModel // +0x40 (0x1a)
 	var purchaseSessionID : String // +0x60 (0x10)
 	let dataManager : PaywallDataManagerType // +0x70 (0x10)
 	let webAccessAuthenticatorFactory : WebAccessAuthenticatorFactoryType // +0x80 (0x28)
-	var webAccessAuthenticator : WebAccessAuthenticatorType? // +0xa8 (0x28)
+	var webAccessAuthenticator : WebAccessAuthenticatorType // +0xa8 (0x28)
 	var purchaseConversionLocation : PurchaseConversionLocation // +0xd0 (0x1)
 	let paywallType : PaywallType // +0xd8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2e070  @objc PaywallInteractor.init <stripped>
-	0x2e0f0  @objc PaywallInteractor..cxx_destruct <stripped>
+	0x2bc50  @objc PaywallInteractor.init <stripped>
+	0x2bcb0  @objc PaywallInteractor..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsSubscription.PurchasingSpinnerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2f870  @objc PurchasingSpinnerAssembly.init <stripped>
+	0x2d1a0  @objc PurchasingSpinnerAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -821,14 +843,14 @@
 
 	// Properties
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x10 (0x28)
-	var $__lazy_storage_$_verificationSpinner : PurchasingSpinnerViewController? // +0x38 (0x8)
+	var $__lazy_storage_$_verificationSpinner : PurchasingSpinnerViewController // +0x38 (0x8)
 	let tag : FCTagProviding? // +0x40 (0x8)
-	var delegate : weak PaywallDelegate? // +0x48 (0x10)
+	var delegate : PaywallDelegate // +0x48 (0x10)
 	var presentationViewController : weak UIViewController? // +0x58 (0x8)
 	let purchasePresenter : PurchasePresenterType // +0x60 (0x28)
 
 	// Swift methods
-	0x30650  func <stripped> // getter 
+	0x2de50  func <stripped> // getter 
  }
 
  class NewsSubscription.BridgedPurchaseContext : NSObject /usr/lib/libobjc.A.dylib {
@@ -851,42 +873,42 @@
 	var campaignType : String? // +0xc8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x31760  @objc BridgedPurchaseContext.conversionLocation <stripped>
-	0x317a0  @objc BridgedPurchaseContext.setConversionLocation: <stripped>
-	0x31820  @objc BridgedPurchaseContext.sourceChannelID <stripped>
-	0x31860  @objc BridgedPurchaseContext.setSourceChannelID: <stripped>
-	0x318e0  @objc BridgedPurchaseContext.productID <stripped>
-	0x31920  @objc BridgedPurchaseContext.setProductID: <stripped>
-	0x319a0  @objc BridgedPurchaseContext.purchaseID <stripped>
-	0x319e0  @objc BridgedPurchaseContext.setPurchaseID: <stripped>
-	0x31a60  @objc BridgedPurchaseContext.articleID <stripped>
-	0x31aa0  @objc BridgedPurchaseContext.setArticleID: <stripped>
-	0x31b20  @objc BridgedPurchaseContext.issueID <stripped>
-	0x31b60  @objc BridgedPurchaseContext.setIssueID: <stripped>
-	0x31be0  @objc BridgedPurchaseContext.sectionID <stripped>
-	0x31c20  @objc BridgedPurchaseContext.setSectionID: <stripped>
-	0x31ca0  @objc BridgedPurchaseContext.qToken <stripped>
-	0x31ce0  @objc BridgedPurchaseContext.setQToken: <stripped>
-	0x31d60  @objc BridgedPurchaseContext.purchaseSessionID <stripped>
-	0x31e50  @objc BridgedPurchaseContext.setPurchaseSessionID: <stripped>
-	0x31f80  @objc BridgedPurchaseContext.parentFeedType <stripped>
-	0x31ff0  @objc BridgedPurchaseContext.setParentFeedType: <stripped>
-	0x320b0  @objc BridgedPurchaseContext.arrivedFromAd <stripped>
-	0x320f0  @objc BridgedPurchaseContext.setArrivedFromAd: <stripped>
-	0x32170  @objc BridgedPurchaseContext.webAccessOptIn <stripped>
-	0x32220  @objc BridgedPurchaseContext.setWebAccessOptIn: <stripped>
-	0x32340  @objc BridgedPurchaseContext.creativeID <stripped>
-	0x32380  @objc BridgedPurchaseContext.setCreativeID: <stripped>
-	0x32400  @objc BridgedPurchaseContext.campaignID <stripped>
-	0x32440  @objc BridgedPurchaseContext.setCampaignID: <stripped>
-	0x324d0  @objc BridgedPurchaseContext.campaignType <stripped>
-	0x325d0  @objc BridgedPurchaseContext.setCampaignType: <stripped>
-	0x32da0  @objc BridgedPurchaseContext.initWithProductID:purchaseID:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:parentFeedType:sectionID:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType: <stripped>
-	0x33160  @objc BridgedPurchaseContext.init <stripped>
-	0x331e0  @objc BridgedPurchaseContext..cxx_destruct <stripped>
+	0x2eed0  @objc BridgedPurchaseContext.conversionLocation <stripped>
+	0x2ef10  @objc BridgedPurchaseContext.setConversionLocation: <stripped>
+	0x2ef90  @objc BridgedPurchaseContext.sourceChannelID <stripped>
+	0x2efd0  @objc BridgedPurchaseContext.setSourceChannelID: <stripped>
+	0x2f050  @objc BridgedPurchaseContext.productID <stripped>
+	0x2f090  @objc BridgedPurchaseContext.setProductID: <stripped>
+	0x2f110  @objc BridgedPurchaseContext.purchaseID <stripped>
+	0x2f150  @objc BridgedPurchaseContext.setPurchaseID: <stripped>
+	0x2f1d0  @objc BridgedPurchaseContext.articleID <stripped>
+	0x2f210  @objc BridgedPurchaseContext.setArticleID: <stripped>
+	0x2f290  @objc BridgedPurchaseContext.issueID <stripped>
+	0x2f2d0  @objc BridgedPurchaseContext.setIssueID: <stripped>
+	0x2f350  @objc BridgedPurchaseContext.sectionID <stripped>
+	0x2f390  @objc BridgedPurchaseContext.setSectionID: <stripped>
+	0x2f410  @objc BridgedPurchaseContext.qToken <stripped>
+	0x2f450  @objc BridgedPurchaseContext.setQToken: <stripped>
+	0x2f4d0  @objc BridgedPurchaseContext.purchaseSessionID <stripped>
+	0x2f5c0  @objc BridgedPurchaseContext.setPurchaseSessionID: <stripped>
+	0x2f6f0  @objc BridgedPurchaseContext.parentFeedType <stripped>
+	0x2f760  @objc BridgedPurchaseContext.setParentFeedType: <stripped>
+	0x2f820  @objc BridgedPurchaseContext.arrivedFromAd <stripped>
+	0x2f860  @objc BridgedPurchaseContext.setArrivedFromAd: <stripped>
+	0x2f8e0  @objc BridgedPurchaseContext.webAccessOptIn <stripped>
+	0x2f980  @objc BridgedPurchaseContext.setWebAccessOptIn: <stripped>
+	0x2fa80  @objc BridgedPurchaseContext.creativeID <stripped>
+	0x2fac0  @objc BridgedPurchaseContext.setCreativeID: <stripped>
+	0x2fb40  @objc BridgedPurchaseContext.campaignID <stripped>
+	0x2fb80  @objc BridgedPurchaseContext.setCampaignID: <stripped>
+	0x2fc10  @objc BridgedPurchaseContext.campaignType <stripped>
+	0x2fd10  @objc BridgedPurchaseContext.setCampaignType: <stripped>
+	0x30120  @objc BridgedPurchaseContext.initWithProductID:purchaseID:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:parentFeedType:sectionID:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType: <stripped>
+	0x306d0  @objc BridgedPurchaseContext.init <stripped>
+	0x30580  @objc BridgedPurchaseContext..cxx_destruct <stripped>
 
 	// Swift methods
-	0x32720  class func BridgedPurchaseContext.__allocating_init(productID:purchaseID:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:parentFeedType:sectionID:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType:) // init 
+	0x2fe60  class func BridgedPurchaseContext.__allocating_init(productID:purchaseID:sourceChannelID:purchaseSessionID:conversionLocation:articleID:issueID:parentFeedType:sectionID:webAccessOptIn:arrivedFromAd:qToken:creativeID:campaignID:campaignType:) // init 
  }
 
  enum NewsSubscription.WebAuthenticationResult {
@@ -898,15 +920,15 @@
 
  class NewsSubscription.PaywallImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x34100  @objc PaywallImageProcessor.process: <stripped>
+	0x31880  @objc PaywallImageProcessor.process: <stripped>
 
 	// Swift methods
-	0x34070  class func PaywallImageProcessor.__allocating_init() // init 
+	0x31840  class func PaywallImageProcessor.__allocating_init() // init 
  }
 
  class NewsSubscription.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x34a40  @objc FactoryAssembly.init <stripped>
+	0x320e0  @objc FactoryAssembly.init <stripped>
  }
 
  enum NewsSubscription.PaywallType { }
@@ -915,21 +937,25 @@
 
 	// Properties
 	let scrollView : UIScrollView // +0x8 (0x8)
-	let gradientView : GradientView // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let gradientView : Yä // +0x10 (0x8)
 	let contentView : UIView // +0x18 (0x8)
 	let contentBackgroundView : UIView // +0x20 (0x8)
-	let badgeImageView : ImageView // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let badgeImageView : }ê // +0x28 (0x8)
 	let titleTextView : UITextView // +0x30 (0x8)
 	let descriptionTextView : UnselectableLinkEnabledTextView // +0x38 (0x8)
-	let subscribeButton : PillButton // +0x40 (0x8)
-	let webAuthButton : PillButton // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let subscribeButton : 5ä // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webAuthButton : 5ä // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x35320  @objc HardPaywallView.initWithFrame: <stripped>
-	0x35350  @objc HardPaywallView.initWithCoder: <stripped>
-	0x35370  @objc HardPaywallView.accessibilityFrame <stripped>
-	0x353b0  @objc HardPaywallView.setAccessibilityFrame: <stripped>
-	0x35410  @objc HardPaywallView..cxx_destruct <stripped>
+	0x32c30  @objc HardPaywallView.initWithFrame: <stripped>
+	0x32c60  @objc HardPaywallView.initWithCoder: <stripped>
+	0x32c80  @objc HardPaywallView.accessibilityFrame <stripped>
+	0x32cc0  @objc HardPaywallView.setAccessibilityFrame: <stripped>
+	0x32d00  @objc HardPaywallView..cxx_destruct <stripped>
  }
 
  class NewsSubscription.PaywallDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PaywallDataManagerType {
@@ -946,14 +972,14 @@
 	let spinnerView : PurchasingSpinnerView // +0x88 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x35bc0  @objc PurchasingSpinnerViewController.initWithCoder: <stripped>
-	0x35f20  @objc PurchasingSpinnerViewController.viewDidAppear: <stripped>
-	0x361a0  @objc PurchasingSpinnerViewController.viewWillLayoutSubviews <stripped>
-	0x36270  @objc PurchasingSpinnerViewController.initWithNibName:bundle: <stripped>
-	0x362f0  @objc PurchasingSpinnerViewController..cxx_destruct <stripped>
+	0x33730  @objc PurchasingSpinnerViewController.initWithCoder: <stripped>
+	0x33a30  @objc PurchasingSpinnerViewController.viewDidAppear: <stripped>
+	0x33da0  @objc PurchasingSpinnerViewController.viewWillLayoutSubviews <stripped>
+	0x33fa0  @objc PurchasingSpinnerViewController.initWithNibName:bundle: <stripped>
+	0x33eb0  @objc PurchasingSpinnerViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0x35c60  class func PurchasingSpinnerViewController.__allocating_init(spinner:viewStyler:viewLayoutAttributesFactory:viewRenderer:) // init 
+	0x337e0  class func PurchasingSpinnerViewController.__allocating_init(spinner:viewStyler:viewLayoutAttributesFactory:viewRenderer:) // init 
  }
 
  enum NewsSubscription.FamilyStatus {
@@ -990,7 +1016,7 @@
 
  class NewsSubscription.DeferredHardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x38ba0  @objc DeferredHardPaywallAssembly.init <stripped>
+	0x369a0  @objc DeferredHardPaywallAssembly.init <stripped>
  }
 
  class NewsSubscription.SoftPaywallStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SoftPaywallStylerType {
@@ -1007,10 +1033,11 @@
 
 	// Properties
 	var defaultManageSubscriptionsUrl : String // +0x10 (0x10)
-	var subscriptionsURL : URL? // +0x0 (0x0)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var subscriptionsURL : qÝ // +0x0 (0x0)
 
 	// Swift methods
-	0x3a920  class func ManageSubscriptionsURLProvider.__allocating_init(defaultUrl:) // init 
+	0x38860  class func ManageSubscriptionsURLProvider.__allocating_init(defaultUrl:) // init 
  }
 
  class NewsSubscription.PurchasingSpinnerViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PurchasingSpinnerViewLayoutAttributesFactoryType {
@@ -1031,22 +1058,26 @@
 
 	// Properties
 	let contentView : UIView // +0x8 (0x8)
-	let headerImageView : ImageView // +0x10 (0x8)
-	let badgeImageView : ImageView // +0x18 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headerImageView : }ê // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let badgeImageView : }ê // +0x18 (0x8)
 	let titleTextView : UITextView // +0x20 (0x8)
 	let descriptionTextView : UnselectableLinkEnabledTextView // +0x28 (0x8)
-	let subscribeButton : PillButton // +0x30 (0x8)
-	let webAuthButton : PillButton // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let subscribeButton : 5ä // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webAuthButton : 5ä // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3bd50  @objc SoftPaywallView.initWithFrame: <stripped>
-	0x3bd80  @objc SoftPaywallView.initWithCoder: <stripped>
-	0x3bdf0  @objc SoftPaywallView..cxx_destruct <stripped>
+	0x39eb0  @objc SoftPaywallView.initWithFrame: <stripped>
+	0x39ee0  @objc SoftPaywallView.initWithCoder: <stripped>
+	0x39f30  @objc SoftPaywallView..cxx_destruct <stripped>
  }
 
  class NewsSubscription.HardPaywallAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3d220  @objc HardPaywallAssembly.init <stripped>
+	0x3b360  @objc HardPaywallAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1089,14 +1120,14 @@
 	let renderer : HardPaywallRendererType // +0x0 (0x28)
 	let layoutAttributesFactory : HardPaywallLayoutAttributesFactory // +0x0 (0x8)
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x0 (0x28)
-	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
+	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController // +0x0 (0x8)
 	let paywallApplicationStateMonitor : PaywallApplicationStateMonitor // +0x0 (0x8)
 	let eventHandlerDelegate : PaywallEventHandlerDelegate // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x40510  @objc HardPaywallViewController.initWithCoder: <stripped>
-	0x40680  @objc HardPaywallViewController.initWithNibName:bundle: <stripped>
-	0x40720  @objc HardPaywallViewController..cxx_destruct <stripped>
+	0x3e490  @objc HardPaywallViewController.initWithCoder: <stripped>
+	0x3e550  @objc HardPaywallViewController.initWithNibName:bundle: <stripped>
+	0x3e5b0  @objc HardPaywallViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1105,27 +1136,46 @@
 
 	// Properties
 	let styler : DeferredHardPaywallStylerType // +0x10 (0x28)
-	let maxTopOffset : CGFloat // +0x38 (0x8)
-	let minContentViewHeight : CGFloat // +0x40 (0x8)
-	let maxContentViewWidth : CGFloat // +0x48 (0x8)
-	let smallMarginWidth : CGFloat // +0x50 (0x8)
-	let largeMarginWidth : CGFloat // +0x58 (0x8)
-	let compactBadgeImageWidth : CGFloat // +0x60 (0x8)
-	let regularBadgeImageWidth : CGFloat // +0x68 (0x8)
-	let compactBadgeImageHeight : CGFloat // +0x70 (0x8)
-	let regularBadgeImageHeight : CGFloat // +0x78 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxTopOffset : aò // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minContentViewHeight : aò // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxContentViewWidth : aò // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let smallMarginWidth : aò // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let largeMarginWidth : aò // +0x58 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let compactBadgeImageWidth : aò // +0x60 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let regularBadgeImageWidth : aò // +0x68 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let compactBadgeImageHeight : aò // +0x70 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let regularBadgeImageHeight : aò // +0x78 (0x8)
 	let smallSubscribeButtonSize : CGSize // +0x80 (0x10)
 	let largeSubscribeButtonSize : CGSize // +0x90 (0x10)
-	let smallButtonCapMarginWidth : CGFloat // +0xa0 (0x8)
-	let largeButtonCapMarginWidth : CGFloat // +0xa8 (0x8)
-	let viewableAreaMaxHeight : CGFloat // +0xb0 (0x8)
-	let contentViewRegularWidthHeightFactor : CGFloat // +0xb8 (0x8)
-	let contentViewCompactWidthHeightFactor : CGFloat // +0xc0 (0x8)
-	let largeGradientHeight : CGFloat // +0xc8 (0x8)
-	let mediumGradientHeight : CGFloat // +0xd0 (0x8)
-	let smallGradientHeight : CGFloat // +0xd8 (0x8)
-	let footerImageExtraHeight : CGFloat // +0xe0 (0x8)
-	let minimumBaseFooterImageHeight : CGFloat // +0xe8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let smallButtonCapMarginWidth : aò // +0xa0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let largeButtonCapMarginWidth : aò // +0xa8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewableAreaMaxHeight : aò // +0xb0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let contentViewRegularWidthHeightFactor : aò // +0xb8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let contentViewCompactWidthHeightFactor : aò // +0xc0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let largeGradientHeight : aò // +0xc8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediumGradientHeight : aò // +0xd0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let smallGradientHeight : aò // +0xd8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let footerImageExtraHeight : aò // +0xe0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumBaseFooterImageHeight : aò // +0xe8 (0x8)
 
 	// Swift methods
  }
@@ -1181,13 +1231,15 @@
  class NewsSubscription.SoftPaywallModule : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let resolver : ResolverType // +0x8 (0x28)
-	let tracker : Tracker // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : Ëã // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : sã // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x47c40  @objc SoftPaywallModule.createViewController <stripped>
-	0x47d50  @objc SoftPaywallModule.init <stripped>
-	0x47e00  @objc SoftPaywallModule..cxx_destruct <stripped>
+	0x45de0  @objc SoftPaywallModule.createViewController <stripped>
+	0x45e70  @objc SoftPaywallModule.init <stripped>
+	0x45ed0  @objc SoftPaywallModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1200,11 +1252,12 @@
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x18 (0x8)
 	let purchaseManager : PurchaseManagerType // +0x20 (0x10)
 	var cachedPurchaseModel : FCPurchase? // +0x30 (0x8)
-	var accessLock : UnfairLock // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var accessLock : óç // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x480d0  @objc BundlePurchasePrewarmer.init <stripped>
-	0x48150  @objc BundlePurchasePrewarmer..cxx_destruct <stripped>
+	0x46010  @objc BundlePurchasePrewarmer.init <stripped>
+	0x46070  @objc BundlePurchasePrewarmer..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1238,8 +1291,8 @@
 	var bundleSubscriptionMeteredCountMaxLimit : Int // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4c4d0  @objc SubscriptionAccessMeter.canAccessArticleWithHeadline:articleAccess: <stripped>
-	0x4cf60  @objc SubscriptionAccessMeter.incrementCountForHeadline: <stripped>
+	0x49d10  @objc SubscriptionAccessMeter.canAccessArticleWithHeadline:articleAccess: <stripped>
+	0x4a460  @objc SubscriptionAccessMeter.incrementCountForHeadline: <stripped>
 
 	// Swift methods
  }
@@ -1247,13 +1300,15 @@
  class NewsSubscription.DeferredHardPaywallModule : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let resolver : ResolverType // +0x8 (0x28)
-	let tracker : Tracker // +0x30 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : Ëã // +0x8 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : sã // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4d700  @objc DeferredHardPaywallModule.createViewController <stripped>
-	0x4d810  @objc DeferredHardPaywallModule.init <stripped>
-	0x4d8c0  @objc DeferredHardPaywallModule..cxx_destruct <stripped>
+	0x4abc0  @objc DeferredHardPaywallModule.createViewController <stripped>
+	0x4ac50  @objc DeferredHardPaywallModule.init <stripped>
+	0x4acb0  @objc DeferredHardPaywallModule..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1261,12 +1316,13 @@
  class NewsSubscription.FinanceURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let patterns : [URLHandlerPattern]
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list 
 	let router : SubscriptionsRouterType
 	var baseHostName : String
 
 	// Swift methods
-	0x4db60  class func FinanceURLHandler.__allocating_init(patterns:router:) // init 
+	0x4af80  class func FinanceURLHandler.__allocating_init(patterns:router:) // init 
  }
 
  class NewsSubscription.Contract : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1279,15 +1335,15 @@
 
  class NewsSubscription.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4ec60  @objc RendererAssembly.init <stripped>
+	0x4be70  @objc RendererAssembly.init <stripped>
  }
 
  enum NewsSubscription.Paywall {
 
 	// Properties
 	case hard : (module: NPHardPaywallModuleType)
-	case deferredHard : (module: NUDeferredHardPaywallModuleType, heightProvider: DeferredHardPaywallHeightProvider)
-	case soft : (module: NPSoftPaywallModuleType, heightProvider: SoftPaywallHeightProvider)
+	case deferredHard : DeferredHardPaywallHeightProvider
+	case soft : SoftPaywallHeightProvider
 	case none  
  }
 
@@ -1310,7 +1366,8 @@
  class NewsSubscription.PaywallFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PaywallFactoryType {
 
 	// Properties
-	let resolver : ResolverType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : Ëã // +0x10 (0x28)
 	let purchaseProvider : FCPurchaseProviderType // +0x38 (0x8)
 	let paywallTypeProvider : ArticlePaywallTypeProviderType // +0x40 (0x28)
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType // +0x68 (0x8)
@@ -1318,7 +1375,8 @@
 	let deferredHardPaywallLayoutAttributesFactory : DeferredHardPaywallLayoutAttributesFactoryType // +0x78 (0x28)
 	let softPaywallLayoutAttributesFactory : SoftPaywallLayoutAttributesFactoryType // +0xa0 (0x28)
 	let bundlePurchasePrewarmer : BundlePurchasePrewarmerType // +0xc8 (0x10)
-	let tracker : Tracker // +0xd8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : sã // +0xd8 (0x8)
 
 	// Swift methods
  }
@@ -1359,31 +1417,42 @@
 	let size : CGSize // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x524e0  @objc PaywallImageProcessorRequest.assetHandles <stripped>
-	0x525b0  @objc PaywallImageProcessorRequest.setAssetHandles: <stripped>
-	0x526c0  @objc PaywallImageProcessorRequest.cacheIdentifier <stripped>
+	0x4f910  @objc PaywallImageProcessorRequest.assetHandles <stripped>
+	0x4f9b0  @objc PaywallImageProcessorRequest.setAssetHandles: <stripped>
+	0x4faa0  @objc PaywallImageProcessorRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x52330  class func PaywallImageProcessorRequest.__allocating_init(assetHandle:size:) // init 
+	0x4f8f0  class func PaywallImageProcessorRequest.__allocating_init(assetHandle:size:) // init 
  }
 
  class NewsSubscription.HardPaywallLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HardPaywallLayoutAttributesFactoryType {
 
 	// Properties
 	let styler : HardPaywallStylerType // +0x10 (0x28)
-	let maxContentViewWidth : CGFloat // +0x38 (0x8)
-	let smallMarginWidth : CGFloat // +0x40 (0x8)
-	let largeMarginWidth : CGFloat // +0x48 (0x8)
-	let compactBadgeImageWidth : CGFloat // +0x50 (0x8)
-	let regularBadgeImageWidth : CGFloat // +0x58 (0x8)
-	let compactBadgeImageHeight : CGFloat // +0x60 (0x8)
-	let regularBadgeImageHeight : CGFloat // +0x68 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let maxContentViewWidth : aò // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let smallMarginWidth : aò // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let largeMarginWidth : aò // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let compactBadgeImageWidth : aò // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let regularBadgeImageWidth : aò // +0x58 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let compactBadgeImageHeight : aò // +0x60 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let regularBadgeImageHeight : aò // +0x68 (0x8)
 	let smallSubscribeButtonSize : CGSize // +0x70 (0x10)
 	let largeSubscribeButtonSize : CGSize // +0x80 (0x10)
-	let smallButtonCapMarginWidth : CGFloat // +0x90 (0x8)
-	let largeButtonCapMarginWidth : CGFloat // +0x98 (0x8)
-	let viewableAreaMinHeightFactor : CGFloat // +0xa0 (0x8)
-	let viewableAreaMaxHeight : CGFloat // +0xa8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let smallButtonCapMarginWidth : aò // +0x90 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let largeButtonCapMarginWidth : aò // +0x98 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewableAreaMinHeightFactor : aò // +0xa0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewableAreaMaxHeight : aò // +0xa8 (0x8)
 
 	// Swift methods
  }
@@ -1411,25 +1480,28 @@
  struct NewsSubscription.PaywallViewModel {
 
 	// Properties
-	let imageURL : URL?
-	let darkStyleImageURL : URL?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let imageURL : qÝ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let darkStyleImageURL : qÝ
 	let backgroundColor : UIColor?
 	let darkStyleBackgroundColor : UIColor?
 	let title : String
 	let description : String
 	let learnMore : String
-	let learnMoreURL : URL?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let learnMoreURL : qÝ
 	let subscribeButtonTitle : String
 	let subscribeButtonDestination : SubscribeButtonDestination
 	let webAuthButtonTitle : String
-	let topOffsetConfiguration : PaywallTopOffsetConfiguration?
+	let topOffsetConfiguration : PaywallTopOffsetConfiguration
  }
 
  enum NewsSubscription.SubscribeButtonDestination {
 
 	// Properties
-	case osloSheet : (paywallSource: PaywallSource)
-	case campaignLandingPage : (articleID: String, paywallSource: PaywallSource)
+	case osloSheet : PaywallSource
+	case campaignLandingPage : PaywallSource
  }
 
  class NewsSubscription.DeferredHardPaywallDocumentSectionItemHeightProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1438,7 +1510,7 @@
 	let heightProvider : DeferredHardPaywallHeightProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x565c0  class func DeferredHardPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
+	0x53570  class func DeferredHardPaywallDocumentSectionItemHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  class NewsSubscription.DeferredHardPaywallViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1456,9 +1528,9 @@
 	let eventHandlerDelegate : PaywallEventHandlerDelegate // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x56d40  @objc DeferredHardPaywallViewController.initWithCoder: <stripped>
-	0x56ea0  @objc DeferredHardPaywallViewController.initWithNibName:bundle: <stripped>
-	0x56f40  @objc DeferredHardPaywallViewController..cxx_destruct <stripped>
+	0x53a70  @objc DeferredHardPaywallViewController.initWithCoder: <stripped>
+	0x53b30  @objc DeferredHardPaywallViewController.initWithNibName:bundle: <stripped>
+	0x53b90  @objc DeferredHardPaywallViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1474,8 +1546,9 @@
 
 	// Properties
 	let purchaseController : FCPurchaseController // +0x10 (0x8)
-	let paywallCoordinator : PaywallCoordinatorType? // +0x18 (0x28)
-	let authenticationURL : URL? // +0x0 (0x0)
+	let paywallCoordinator : PaywallCoordinatorType // +0x18 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let authenticationURL : qÝ // +0x0 (0x0)
 	let tagID : String // +0x0 (0x10)
 	var session : BridgedWebAuthenticationSession? // +0x0 (0x8)
 
@@ -1493,14 +1566,14 @@
 	let renderer : SoftPaywallRendererType // +0x0 (0x28)
 	let layoutAttributesFactory : SoftPaywallLayoutAttributesFactoryType // +0x0 (0x28)
 	let purchasingSpinnerViewControllerFactory : PurchasingSpinnerViewControllerFactoryType // +0x0 (0x28)
-	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController? // +0x0 (0x8)
+	var $__lazy_storage_$_verifyingSpinnerViewController : PurchasingSpinnerViewController // +0x0 (0x8)
 	let paywallApplicationStateMonitor : PaywallApplicationStateMonitor // +0x0 (0x8)
 	let eventHandlerDelegate : PaywallEventHandlerDelegate // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x59fd0  @objc SoftPaywallViewController.initWithCoder: <stripped>
-	0x5a140  @objc SoftPaywallViewController.initWithNibName:bundle: <stripped>
-	0x5a1e0  @objc SoftPaywallViewController..cxx_destruct <stripped>
+	0x56920  @objc SoftPaywallViewController.initWithCoder: <stripped>
+	0x569e0  @objc SoftPaywallViewController.initWithNibName:bundle: <stripped>
+	0x56a40  @objc SoftPaywallViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1524,20 +1597,25 @@
  class NewsSubscription.DeferredHardPaywallView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let gradientView : GradientView // +0x8 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let gradientView : Yä // +0x8 (0x8)
 	let backgroundCoverView : UIView // +0x10 (0x8)
 	let contentView : UIView // +0x18 (0x8)
-	let badgeImageView : ImageView // +0x20 (0x8)
-	let footerImageView : ImageView // +0x28 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let badgeImageView : }ê // +0x20 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let footerImageView : }ê // +0x28 (0x8)
 	let titleLabel : UILabel // +0x30 (0x8)
 	let descriptionTextView : UITextView // +0x38 (0x8)
-	let subscribeButton : PillButton // +0x40 (0x8)
-	let webAuthButton : PillButton // +0x48 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let subscribeButton : 5ä // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let webAuthButton : 5ä // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5be10  @objc DeferredHardPaywallView.initWithFrame: <stripped>
-	0x5be40  @objc DeferredHardPaywallView.initWithCoder: <stripped>
-	0x5beb0  @objc DeferredHardPaywallView..cxx_destruct <stripped>
+	0x58bf0  @objc DeferredHardPaywallView.initWithFrame: <stripped>
+	0x58c20  @objc DeferredHardPaywallView.initWithCoder: <stripped>
+	0x58c70  @objc DeferredHardPaywallView..cxx_destruct <stripped>
  }
 
  struct NewsSubscription.BundleSubscriptions { }
@@ -1548,13 +1626,13 @@
 	let familyStatusManager : FamilySharingStatusManagerType // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x5ca80  @objc BridgedFamilyStatusManager.refreshFamilyStatus <stripped>
-	0x5cd90  @objc BridgedFamilyStatusManager.syncFamilyStatus <stripped>
-	0x5cf00  @objc BridgedFamilyStatusManager.init <stripped>
-	0x5cf80  @objc BridgedFamilyStatusManager..cxx_destruct <stripped>
+	0x59920  @objc BridgedFamilyStatusManager.refreshFamilyStatus <stripped>
+	0x59bd0  @objc BridgedFamilyStatusManager.syncFamilyStatus <stripped>
+	0x59d90  @objc BridgedFamilyStatusManager.init <stripped>
+	0x59d20  @objc BridgedFamilyStatusManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5c630  class func BridgedFamilyStatusManager.__allocating_init(familyStatusManager:) // init 
+	0x595f0  class func BridgedFamilyStatusManager.__allocating_init(familyStatusManager:) // init 
  }
 
  class NewsSubscription.BridgedSoftPaywallHeightProvider : NSObject /usr/lib/libobjc.A.dylib {
@@ -1563,11 +1641,11 @@
 	let heightProvider : SoftPaywallHeightProvider // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5d430  @objc BridgedSoftPaywallHeightProvider.init <stripped>
-	0x5d4b0  @objc BridgedSoftPaywallHeightProvider..cxx_destruct <stripped>
+	0x5a160  @objc BridgedSoftPaywallHeightProvider.init <stripped>
+	0x5a1c0  @objc BridgedSoftPaywallHeightProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5d2e0  class func BridgedSoftPaywallHeightProvider.__allocating_init(heightProvider:) // init 
+	0x5a060  class func BridgedSoftPaywallHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  struct NewsSubscription.FamilyMember {
@@ -1605,10 +1683,14 @@
  struct NewsSubscription.PaywallTopOffsetConfiguration {
 
 	// Properties
-	let compactPortraitTopOffsetRatio : CGFloat // +0x0
-	let compactLandscapeTopOffsetRatio : CGFloat // +0x8
-	let regularPortraitTopOffsetRatio : CGFloat // +0x10
-	let regularLandscapeTopOffsetRatio : CGFloat // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let compactPortraitTopOffsetRatio : aò // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let compactLandscapeTopOffsetRatio : aò // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let regularPortraitTopOffsetRatio : aò // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let regularLandscapeTopOffsetRatio : aò // +0x18
  }
 
  class NewsSubscription.Assembly : NSObject /usr/lib/libobjc.A.dylib {
@@ -1617,9 +1699,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x602c0  @objc Assembly.assemblies <stripped>
-	0x605d0  @objc Assembly.init <stripped>
-	0x60640  @objc Assembly..cxx_destruct <stripped>
+	0x5cb40  @objc Assembly.assemblies <stripped>
+	0x5ce30  @objc Assembly.init <stripped>
+	0x5cc10  @objc Assembly..cxx_destruct <stripped>
  }
 
  enum NewsSubscription.ArticleAccess { }
@@ -1627,11 +1709,12 @@
  class NewsSubscription.CampaignClickRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let patterns : [URLHandlerPattern] // +0x10 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let patterns :  empty-list  // +0x10 (0x8)
 	let bridgedCampaignClickRecorder : BridgedCampaignClickRecorder // +0x18 (0x8)
 
 	// Swift methods
-	0x60970  class func CampaignClickRecorder.__allocating_init(patterns:) // init 
+	0x5d160  class func CampaignClickRecorder.__allocating_init(patterns:) // init 
  }
 
  struct NewsSubscription.ProcessRedirectValue {
@@ -1655,7 +1738,7 @@
 
  class NewsSubscription.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x65410  @objc ManagerAssembly.init <stripped>
+	0x61400  @objc ManagerAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1674,11 +1757,11 @@
 	let heightProvider : DeferredHardPaywallHeightProvider // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x65c90  @objc BridgedDeferredHardPaywallHeightProvider.init <stripped>
-	0x65d10  @objc BridgedDeferredHardPaywallHeightProvider..cxx_destruct <stripped>
+	0x61be0  @objc BridgedDeferredHardPaywallHeightProvider.init <stripped>
+	0x61c40  @objc BridgedDeferredHardPaywallHeightProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x65b40  class func BridgedDeferredHardPaywallHeightProvider.__allocating_init(heightProvider:) // init 
+	0x61ae0  class func BridgedDeferredHardPaywallHeightProvider.__allocating_init(heightProvider:) // init 
  }
 
  enum NewsSubscription.PurchaseConversionLocation {
@@ -1710,12 +1793,12 @@
  struct NewsSubscription.ArticleAccessMap {
 
 	// Properties
-	var map : [String : ArticleAccess] // +0x0
+	var map : ArticleAccess // +0x0
  }
 
  class NewsSubscription.DatabaseAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x67890  @objc DatabaseAssembly.init <stripped>
+	0x63b90  @objc DatabaseAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -1729,7 +1812,7 @@
 	var webAccessOptIn : Bool // +0x30
 	var conversionLocation : PurchaseConversionLocation // +0x31
 	var userAction : PurchaseUserAction // +0x32
-	var traits : [PurchaseTraits] // +0x38
+	var traits : PurchaseTraits // +0x38
  }
 
  enum NewsSubscription.CodingKeys {
@@ -1746,8 +1829,8 @@
 
  class NewsSubscription.UnselectableLinkEnabledTextView : UITextView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x69ab0  @objc UnselectableLinkEnabledTextView.initWithFrame:textContainer: <stripped>
-	0x69b40  @objc UnselectableLinkEnabledTextView.initWithCoder: <stripped>
+	0x65c20  @objc UnselectableLinkEnabledTextView.initWithFrame:textContainer: <stripped>
+	0x65c90  @objc UnselectableLinkEnabledTextView.initWithCoder: <stripped>
  }
 
  enum NewsSubscription.PurchaseErrorAlert {

@@ -18,9 +18,9 @@
 @property (nonatomic, getter=isTitleQueryEnabled) BOOL titleQueryEnabled;
 
 + (unsigned short)drawingPreviewVersion;
-+ (struct UIImage *)generateImageForAttachment:(id)arg1 fromDrawing:(id)arg2 fullResolution:(BOOL)arg3 appearanceInfo:(id)arg4;
++ (id)generateImageForAttachment:(id)arg1 fromDrawing:(id)arg2 fullResolution:(BOOL)arg3 appearanceInfo:(id)arg4;
 + (void)generatePreviewsForAttachment:(id)arg1 fromDrawing:(id)arg2;
-+ (struct UIImage *)previewImageFromDrawing:(id)arg1 fullImage:(struct CGImage *)arg2 scale:(double)arg3;
++ (id)previewImageFromDrawing:(id)arg1 fullImage:(struct CGImage *)arg2 scale:(double)arg3;
 - (id)activityItem;
 - (id)activityItems;
 - (BOOL)actuallyMergeWithDrawing:(id)arg1;

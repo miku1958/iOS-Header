@@ -38,6 +38,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
 @property (nonatomic) BOOL hasAppeared; // @synthesize hasAppeared=_hasAppeared;
@@ -48,9 +49,6 @@
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsAssetsDrop;
-@property (readonly, nonatomic) BOOL supportsHighlighting;
-@property (readonly, nonatomic) BOOL supportsSelection;
 @property (strong, nonatomic) NSMutableDictionary *viewControllerEntries; // @synthesize viewControllerEntries=_viewControllerEntries;
 @property (nonatomic) struct CGRect visibleContentRect;
 
@@ -74,7 +72,7 @@
 - (void)_updateScrollingBehaviorForRowType:(unsigned long long)arg1;
 - (void)_updateScrollingBehaviorIfNeeded;
 - (void)_updateVisibilityIfNeeded;
-- (struct NSObject *)contentViewController;
+- (id)contentViewController;
 - (void)forYouMemoriesViewController:(id)arg1 configureMetrics:(id)arg2;
 - (void)forYouMemoriesViewController:(id)arg1 transitionToViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)gadgetControllerHasAppeared;
@@ -86,7 +84,7 @@
 - (id)px_endPointForTransition:(id)arg1;
 - (id)showAllMemoriesFeedAnimated:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
+- (void)userDidSelectAccessoryButton:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

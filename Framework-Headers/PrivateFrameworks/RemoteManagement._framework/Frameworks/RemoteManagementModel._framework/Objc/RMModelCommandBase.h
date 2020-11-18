@@ -25,8 +25,10 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)executionLevel;
-- (BOOL)loadCommandFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (BOOL)loadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
+- (BOOL)loadPayloadFromDictionary:(id)arg1 serializationType:(short)arg2 error:(id *)arg3;
 - (BOOL)mustBeSupervised;
+- (id)serializePayloadWithType:(short)arg1;
 - (id)serializeWithType:(short)arg1;
 
 @end

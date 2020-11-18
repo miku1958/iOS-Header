@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 
 - (void).cxx_destruct;
+- (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityBackingElementIsValid;
 - (BOOL)_accessibilityCanBecomeNativeFocused;
 - (id)_accessibilityCollectionViewCellContentSubviews;

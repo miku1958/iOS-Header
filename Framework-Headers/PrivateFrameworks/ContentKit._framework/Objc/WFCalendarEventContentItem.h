@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) EKEvent *event;
 
 + (id)countDescription;
++ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)filterDescription;
 + (BOOL)hasLibrary;
 + (id)itemWithEKEvent:(id)arg1 fromEventStore:(id)arg2;

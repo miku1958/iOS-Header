@@ -35,9 +35,9 @@
 - (id)initWithStringsAndVariables:(id)arg1;
 - (id)initWithVariable:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)processIntoContentItemsWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)processIntoStringsAndAttachmentsWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)processWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)processIntoContentItemsWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)processIntoStringsAndAttachmentsWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)processWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeVariableDelegate:(id)arg1;
 - (BOOL)representsSingleContentVariable;
 - (id)serializedRepresentation;

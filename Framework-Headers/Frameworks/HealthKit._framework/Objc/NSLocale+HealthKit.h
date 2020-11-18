@@ -12,7 +12,10 @@
 
 + (BOOL)hk_isUSLocale;
 + (void)hk_setTestLocale:(id)arg1;
++ (void)hk_setTestPreferredLanguages:(id)arg1;
 + (id)hk_testableAutoupdatingCurrentLocale;
++ (id)hk_testableCurrentLocale;
++ (id)hk_testablePreferredLanguages;
 - (BOOL)hk_isEquivalent:(id)arg1;
 @end
 

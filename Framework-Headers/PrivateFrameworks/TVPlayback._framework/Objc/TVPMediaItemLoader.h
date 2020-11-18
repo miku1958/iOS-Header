@@ -14,6 +14,8 @@
 __attribute__((visibility("hidden")))
 @interface TVPMediaItemLoader : NSObject <AVAssetResourceLoaderDelegate>
 {
+    BOOL _allowsCellularUsage;
+    BOOL _allowsConstrainedNetworkUsage;
     BOOL _cleanedUp;
     BOOL _AVAudioSessionConfiguredAfterMediaServicesReset;
     NSObject<TVPMediaItem> *_mediaItem;
@@ -38,6 +40,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AVURLAsset *AVAsset; // @synthesize AVAsset=_AVAsset;
 @property (strong, nonatomic) AVURLAsset *AVAssetInternal; // @synthesize AVAssetInternal=_AVAssetInternal;
 @property (nonatomic) BOOL AVAudioSessionConfiguredAfterMediaServicesReset; // @synthesize AVAudioSessionConfiguredAfterMediaServicesReset=_AVAudioSessionConfiguredAfterMediaServicesReset;
+@property (nonatomic) BOOL allowsCellularUsage; // @synthesize allowsCellularUsage=_allowsCellularUsage;
+@property (nonatomic) BOOL allowsConstrainedNetworkUsage; // @synthesize allowsConstrainedNetworkUsage=_allowsConstrainedNetworkUsage;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *assetInternalAccessQueue; // @synthesize assetInternalAccessQueue=_assetInternalAccessQueue;
 @property (nonatomic) unsigned long long assetLoadContext; // @synthesize assetLoadContext=_assetLoadContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *assetLoadContextAccessQueue; // @synthesize assetLoadContextAccessQueue=_assetLoadContextAccessQueue;
@@ -71,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (id)_avAssetOptions;
 - (void)_avAudioSessionConfiguredAfterMediaServicesReset;
 - (void)_avAudioSessionMediaServicesReset:(id)arg1;
-- (void)_cellularSettingsDidChange:(id)arg1;
 - (void)_cleanUp;
 - (id)_contentKeyRequestParamsFromBase64String:(id)arg1;
 - (void)_loadMediaItemMetadataAsynchronously;
@@ -79,7 +82,6 @@ __attribute__((visibility("hidden")))
 - (void)_mediaItemStopPlayback:(id)arg1;
 - (id)_metadataKeysToLoad;
 - (BOOL)_needToLoadBlockingMetadataKeys;
-- (void)_networkTypeDidChange:(id)arg1;
 - (id)_numberValueForKey:(id)arg1 fromMetadata:(id)arg2 andKeyIdentifierMap:(id)arg3;
 - (void)_postMediaServicesResetFailureWithNotification:(id)arg1;
 - (void)_registerStateMachineHandlers;

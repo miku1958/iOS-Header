@@ -10,13 +10,13 @@
 
 @interface DOCManagedPermission : NSObject
 {
-    BOOL _isEphemeralMultiUser;
     BOOL _mayOpenFromManagedToUnmanaged;
     BOOL _mayOpenFromUnmanagedToManaged;
     BOOL _isManagedAppsCloudSyncDisallowed;
     BOOL _hasOpenInRestrictions;
     BOOL _isUSBAccessAllowed;
     BOOL _isNetworkDriveAccessInFilesAllowed;
+    BOOL _isLocalStorageAllowed;
     BOOL _didLoadSharedConnectionValues;
     NSString *_hostIdentifier;
     unsigned long long _hostAccountDataOwnerState;
@@ -31,7 +31,6 @@
 @property (readonly, nonatomic) BOOL hasOpenInRestrictions;
 @property (nonatomic) unsigned long long hostAccountDataOwnerState; // @synthesize hostAccountDataOwnerState=_hostAccountDataOwnerState;
 @property (strong, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
-@property (readonly, nonatomic) BOOL isInEducationMode;
 @property (readonly, nonatomic) BOOL isNetworkDriveAllowed;
 @property (readonly, nonatomic) BOOL isUSBAccessAllowed;
 
@@ -61,7 +60,7 @@
 - (id)defaultFileProviderForAppBundle:(id)arg1;
 - (BOOL)hasAnyEffectiveRestrictions;
 - (id)init;
-- (BOOL)isEphemeralMultiUser;
+- (BOOL)isLocalStorageAllowed;
 - (BOOL)isManagedAppsCloudSyncAllowed;
 - (BOOL)isManagedAppsCloudSyncDisallowed;
 - (BOOL)mayOpenFromManagedToUnmanaged;

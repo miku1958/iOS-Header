@@ -23,6 +23,7 @@
     BOOL _supportsMMS;
     BOOL _mmsConfigured;
     long long _supportsApplePayState;
+    long long _supportsKeySharingState;
     BOOL _supportsHandoff;
     BOOL _supportsTethering;
     BOOL _supportsFT;
@@ -103,6 +104,7 @@
 @property (readonly, nonatomic) BOOL supportsFrontFacingCamera; // @synthesize supportsFrontFacingCamera=_supportsFrontCamera;
 @property (readonly, nonatomic) BOOL supportsFunCam;
 @property (readonly, nonatomic) BOOL supportsHandoff; // @synthesize supportsHandoff=_supportsHandoff;
+@property (readonly, nonatomic) BOOL supportsKeySharing;
 @property (readonly, nonatomic) BOOL supportsMMS; // @synthesize supportsMMS=_supportsMMS;
 @property (readonly, nonatomic) BOOL supportsNonWiFiCalling;
 @property (readonly, nonatomic) BOOL supportsNonWiFiFaceTime; // @synthesize supportsNonWiFiFaceTime=_supportsNonWiFiFaceTime;

@@ -30,6 +30,7 @@
 - (void)deleteAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)deleteEventWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)deleteEventsWithAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)deleteEventsWithAccountIdentifier:(NSString *)arg1 excludingTypes:(NSSet *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteLocalAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)eventsForAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)eventsForAccountIdentifier:(NSString *)arg1 types:(NSArray *)arg2 startDate:(NSDate *)arg3 endDate:(NSDate *)arg4 orderedByDate:(long long)arg5 limit:(unsigned long long)arg6 completion:(void (^)(NSArray *, NSError *))arg7;

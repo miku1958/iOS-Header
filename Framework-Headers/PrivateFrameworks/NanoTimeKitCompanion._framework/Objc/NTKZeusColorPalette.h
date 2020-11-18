@@ -37,6 +37,8 @@
 @property (readonly, nonatomic) UIColor *splitColor; // @synthesize splitColor=_splitColor;
 
 + (id)ambreColor;
++ (id)blancDialTextColor;
++ (id)blancSecondHandColor;
 + (id)bleuDarkColor;
 + (id)bleuLightColor;
 + (id)bleuMediumColor;
@@ -50,6 +52,9 @@
 + (id)feuColor;
 + (id)indigoColor;
 + (id)noirColor;
++ (id)noirDualToneBackgroundColor;
++ (id)noirDualToneHandInlayTextColor;
++ (id)noirDualToneSplitColor;
 + (id)noirHandStrokeColor;
 + (id)noirSecondHandColor;
 + (id)offWhiteColor;
@@ -61,6 +66,7 @@
 + (id)sakuraMediumColor;
 + (id)swatchColorForColor:(unsigned long long)arg1;
 + (id)swatchImageForColor:(unsigned long long)arg1;
++ (id)zeusBlancColor;
 + (id)zeusOrangeColor;
 + (id)zeusSilverColor;
 - (void).cxx_destruct;

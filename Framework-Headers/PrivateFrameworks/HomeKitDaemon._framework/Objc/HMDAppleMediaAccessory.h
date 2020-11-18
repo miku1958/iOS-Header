@@ -57,12 +57,14 @@
 + (BOOL)shouldAcceptMessage:(id)arg1 home:(id)arg2 privilege:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_createMediaProfile;
 - (void)_fetchAvailableUpdate:(id)arg1;
 - (void)_fetchMultiUserLanguages;
 - (void)_fixCloudKeyIfNeeded;
 - (void)_handleUpdatedName:(id)arg1;
 - (void)_registerForMessages;
 - (void)_relayRequestMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_shouldFilterAccessoryProfile:(id)arg1;
 - (void)_startUpdate:(id)arg1;
 - (void)_updateSoftwareVersion:(id)arg1;
 - (void)addRootSettings;

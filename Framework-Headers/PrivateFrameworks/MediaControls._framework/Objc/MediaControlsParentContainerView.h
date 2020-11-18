@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateRoutingPickerVisibilityAnimated:(BOOL)arg1;
 - (void)_updateTimeControlVisibility:(id)arg1;
 - (void)didMoveToWindow;
+- (void)handleHoverGestureRecognizer:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setSelectedMode:(long long)arg1 animated:(BOOL)arg2;

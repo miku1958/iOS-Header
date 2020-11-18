@@ -22,12 +22,13 @@
 @property (readonly, nonatomic) NSDictionary *fields; // @synthesize fields=_fields;
 @property (readonly, nonatomic) PKOSVersionRequirement *minimumOSVersion; // @synthesize minimumOSVersion=_minimumOSVersion;
 @property (readonly, nonatomic) NSArray *paymentApplicationIdentifiers; // @synthesize paymentApplicationIdentifiers=_paymentApplicationIdentifiers;
-@property (readonly, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
+@property (copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 + (id)passUpgradeRequestFromDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)asDictionary;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

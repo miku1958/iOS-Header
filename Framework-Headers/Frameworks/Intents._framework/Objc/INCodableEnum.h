@@ -50,12 +50,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 displayName:(id)arg2 displayNameID:(id)arg3 enumNamespace:(id)arg4 type:(long long)arg5 values:(id)arg6 localizationTable:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
-- (id)localizedDisplayNameForLanguage:(id)arg1;
+- (id)localizedDisplayNameWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 
 @end

@@ -15,18 +15,22 @@
     BOOL _autoFocusEnabled;
     BOOL _mirrorVideoOutput;
     BOOL _visionDataOutputEnabled;
+    BOOL _calibrationDataOutputEnabled;
     BOOL _geometricDistortionCorrectionEnabled;
     BOOL _enabled;
     float _maxGainOverride;
     ARVideoFormat *_videoFormat;
     NSString *_metaData;
     NSDictionary *_visionDataOutputParameters;
+    unsigned long long _maximumNumberOfTrackedFaces;
 }
 
 @property (nonatomic) BOOL autoFocusEnabled; // @synthesize autoFocusEnabled=_autoFocusEnabled;
+@property (nonatomic) BOOL calibrationDataOutputEnabled; // @synthesize calibrationDataOutputEnabled=_calibrationDataOutputEnabled;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL geometricDistortionCorrectionEnabled; // @synthesize geometricDistortionCorrectionEnabled=_geometricDistortionCorrectionEnabled;
 @property (nonatomic) float maxGainOverride; // @synthesize maxGainOverride=_maxGainOverride;
+@property (nonatomic) unsigned long long maximumNumberOfTrackedFaces; // @synthesize maximumNumberOfTrackedFaces=_maximumNumberOfTrackedFaces;
 @property (copy, nonatomic) NSString *metaData; // @synthesize metaData=_metaData;
 @property (nonatomic) BOOL mirrorVideoOutput; // @synthesize mirrorVideoOutput=_mirrorVideoOutput;
 @property (strong, nonatomic) ARVideoFormat *videoFormat; // @synthesize videoFormat=_videoFormat;
@@ -35,6 +39,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (id)initWithVideoFormat:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

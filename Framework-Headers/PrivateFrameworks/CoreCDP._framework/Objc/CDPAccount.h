@@ -20,6 +20,7 @@
 - (id)primaryAccountAltDSID;
 - (id)primaryAccountDSID;
 - (unsigned long long)primaryAccountSecurityLevel;
+- (id)primaryAccountStashedPRK;
 - (id)primaryAccountUsername;
 - (id)primaryAppleAccount;
 - (id)sharedAccountStore;

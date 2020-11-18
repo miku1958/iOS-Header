@@ -22,8 +22,10 @@
 @property (weak, nonatomic) ICTrackedParagraph *trackedParagraph; // @synthesize trackedParagraph=_trackedParagraph;
 
 - (void).cxx_destruct;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (id)debugDescription;
-- (struct UIImage *)imageForChecked:(BOOL)arg1 withHighlight:(BOOL)arg2;
+- (id)imageForChecked:(BOOL)arg1 withHighlight:(BOOL)arg2;
 - (struct CGRect)imageFrame;
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (id)init;

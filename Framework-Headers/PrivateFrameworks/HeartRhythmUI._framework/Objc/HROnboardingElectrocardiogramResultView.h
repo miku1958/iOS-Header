@@ -46,7 +46,7 @@
 @property (strong, nonatomic) UILabel *visibleBodyLabel; // @synthesize visibleBodyLabel=_visibleBodyLabel;
 
 + (id)atrialFibrillationResultView;
-+ (id)highOrLowHeartRateResultView;
++ (id)highOrLowAbove120Below50HeartRateResultView;
 + (id)inconclusiveResultViewWithDelegate:(id)arg1;
 + (id)sinusRhythmResultView;
 - (void).cxx_destruct;

@@ -14,6 +14,7 @@
 @property (nonatomic, getter=isProximityDetectionEnabled) BOOL proximityDetectionEnabled;
 
 - (void)resetProximityCalibration;
+- (SBHIDUILockAssertion *)suspendMultitouchForSource:(long long)arg1 reason:(NSString *)arg2;
 - (SBHIDUILockAssertion *)suspendProximityDetectionAndMultitouchForSource:(long long)arg1 disableTapToWake:(BOOL)arg2 reason:(NSString *)arg3;
 - (SBHIDUILockAssertion *)suspendProximityDetectionForSource:(long long)arg1 reason:(NSString *)arg2;
 @end

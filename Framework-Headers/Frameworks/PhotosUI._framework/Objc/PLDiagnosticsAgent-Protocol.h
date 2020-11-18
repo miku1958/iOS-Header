@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSURL;
+
 @protocol PLDiagnosticsAgent
-- (void)captureAndDumpLayerHierarchyWithResultHandler:(void (^)(NSArray *))arg1;
-- (void)captureCurrentAssetResourcesWithResultHandler:(void (^)(NSArray *))arg1;
 - (void)captureDescriptionOfCloudPhotoLibraryWithResultHandler:(void (^)(NSString *))arg1;
 - (void)captureDescriptionOfPhotoAnalysisWithResultHandler:(void (^)(NSString *))arg1;
 - (void)captureDescriptionOfUIState:(long long)arg1 resultHandler:(void (^)(NSString *))arg2;
+- (void)dumpState:(long long)arg1 toDirectoryURL:(NSURL *)arg2 resultHandler:(void (^)(NSString *))arg3;
 @end
 

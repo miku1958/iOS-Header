@@ -32,7 +32,6 @@
 @property (strong, nonatomic) NSNumber *engagementScore;
 @property (strong, nonatomic) NSData *entityData;
 @property (copy, nonatomic) NSString *fbr;
-@property (copy, nonatomic) NSDictionary *featureScaling;
 @property (copy, nonatomic) NSString *fileProviderDomainIdentifier;
 @property (copy, nonatomic) NSString *fileProviderIdentifier;
 @property (copy, nonatomic) NSString *footnote;
@@ -60,7 +59,6 @@
 @property (strong, nonatomic) SFMoreResults *moreResults;
 @property (strong, nonatomic) SFPunchout *moreResultsPunchout;
 @property (copy, nonatomic) NSString *nearbyBusinessesString;
-@property (nonatomic) unsigned long long origRank;
 @property (nonatomic) double personalizationScore;
 @property (nonatomic) int placement;
 @property (nonatomic) BOOL preventThumbnailImageScaling;
@@ -80,6 +78,7 @@
 @property (copy, nonatomic) NSString *sectionHeader;
 @property (copy, nonatomic) NSString *sectionHeaderMore;
 @property (copy, nonatomic) NSURL *sectionHeaderMoreURL;
+@property (copy, nonatomic) NSDictionary *serverFeatures;
 @property (nonatomic) double serverScore;
 @property (copy, nonatomic) NSString *sourceName;
 @property (copy, nonatomic) NSString *srf;
@@ -89,7 +88,6 @@
 @property (copy, nonatomic) NSString *titleNote;
 @property (strong, nonatomic) NSNumber *titleNoteSize;
 @property (nonatomic) int topHit;
-@property (copy, nonatomic) NSDictionary *topicDistribution;
 @property (nonatomic) int type;
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic) NSString *userActivityRequiredString;

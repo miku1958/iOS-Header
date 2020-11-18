@@ -13,7 +13,7 @@
     BOOL _scaleImageToIconSize;
     NSURL *_url;
     double _scale;
-    struct UIImage *_image;
+    UIImage *_image;
     struct CGSize _size;
 }
 

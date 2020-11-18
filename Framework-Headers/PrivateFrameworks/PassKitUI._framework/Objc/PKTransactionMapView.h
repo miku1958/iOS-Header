@@ -8,12 +8,16 @@
 
 #import <PassKitUI/MKMapViewDelegate-Protocol.h>
 
-@class MKMapView, NSString, PKPaymentTransaction;
+@class CLLocation, MKMapView, NSString, PKPaymentTransaction, _MKLocationShifter;
 
 @interface PKTransactionMapView : UIView <MKMapViewDelegate>
 {
     MKMapView *_internalMapView;
     struct CGRect _lastLaidBounds;
+    _MKLocationShifter *_locationShifter;
+    CLLocation *_preferredLocation;
+    CLLocation *_startStationLocation;
+    CLLocation *_endStationLocation;
     BOOL _showsMerchantName;
     BOOL _usesDarkAppearance;
     PKPaymentTransaction *_transaction;
@@ -30,7 +34,11 @@
 - (void).cxx_destruct;
 - (id)_annotationsForTransaction:(id)arg1;
 - (void)_centerOnTransactionAnimated:(BOOL)arg1;
+- (void)_createAnnotationsForTransaction:(id)arg1;
+- (id)_locationShifter;
 - (CDStruct_90e2a262)_mapRectForTransaction:(id)arg1;
+- (void)_shiftLocationIfNeeded:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateLocations;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;

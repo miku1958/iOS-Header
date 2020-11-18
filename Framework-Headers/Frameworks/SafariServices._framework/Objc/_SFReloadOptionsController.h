@@ -41,6 +41,8 @@
 - (void)customUserAgentSettingForMainFrameURL:(id)arg1 withTimeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)didMarkURLAsNeedingDesktopUserAgent:(id)arg1;
 - (void)didMarkURLAsNeedingStandardUserAgent:(id)arg1;
+- (void)didSetRequestDesktopSiteDefaultValue:(long long)arg1;
+- (void)didSetRequestDesktopSitePerSitePreferencesValues:(id)arg1;
 - (void)didUpdateRequestDesktopSiteDefaultValue:(long long)arg1;
 - (void)didUpdateRequestDesktopSitePerSitePreference:(id)arg1;
 - (id)init;

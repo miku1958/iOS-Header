@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SiriActivation/AFClockAlarmListening-Protocol.h>
-#import <SiriActivation/AFClockTimerListening-Protocol.h>
+#import <SiriActivation/SASLockStateMonitorDelegate-Protocol.h>
 
-@class AFClockAlarmObserver, AFClockTimerObserver, CMMotionActivityManager, FBSDisplayLayoutMonitor, NSString, SASLockStateMonitor;
+@class CMMotionActivityManager, FBSDisplayLayoutMonitor, NSString, SASLockStateMonitor;
 @protocol OS_dispatch_semaphore;
 
-@interface SASMyriadController : NSObject <AFClockAlarmListening, AFClockTimerListening>
+@interface SASMyriadController : NSObject <SASLockStateMonitorDelegate>
 {
     NSObject<OS_dispatch_semaphore> *_myriadFinishedSemaphore;
     CMMotionActivityManager *_activityManager;
@@ -22,12 +21,6 @@
     SASLockStateMonitor *_lockStateMonitor;
     FBSDisplayLayoutMonitor *_displayMonitor;
     double _raiseToWakeTime;
-    struct {
-        AFClockAlarmObserver *alarmObserver;
-        AFClockTimerObserver *timerObserver;
-        BOOL isAlarmFiring;
-        BOOL isTimerFiring;
-    } _mobileClockObserver;
     BOOL _canceledByMyriad;
 }
 
@@ -44,13 +37,8 @@
 - (void)_updateRaiseToWakeTimeForTransition:(id)arg1;
 - (void)activateForInTaskRequest:(BOOL)arg1 isVisible:(BOOL)arg2;
 - (BOOL)activateForRequest:(id)arg1 visible:(BOOL)arg2;
-- (void)clockAlarmObserver:(id)arg1 alarmDidDismiss:(id)arg2;
-- (void)clockAlarmObserver:(id)arg1 alarmDidFire:(id)arg2;
-- (void)clockAlarmObserver:(id)arg1 snapshotDidUpdateFrom:(id)arg2 to:(id)arg3;
-- (void)clockTimerObserver:(id)arg1 snapshotDidUpdateFrom:(id)arg2 to:(id)arg3;
-- (void)clockTimerObserver:(id)arg1 timerDidDismiss:(id)arg2;
-- (void)clockTimerObserver:(id)arg1 timerDidFire:(id)arg2;
 - (void)dealloc;
+- (void)didChangeLockState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 
 @end
 

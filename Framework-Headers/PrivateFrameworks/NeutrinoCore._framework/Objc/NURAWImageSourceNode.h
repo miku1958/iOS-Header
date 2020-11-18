@@ -32,7 +32,7 @@
 - (id)initWithURL:(id)arg1 UTI:(id)arg2 settings:(id)arg3;
 - (BOOL)load:(out id *)arg1;
 - (id)preparedNodeWithSourceContainer:(id)arg1 pipelineState:(id)arg2 pipelineSettings:(id)arg3 sourceSettings:(id)arg4 error:(out id *)arg5;
-- (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (id)sourceOptionsForSettings:(id)arg1 error:(out id *)arg2;
 
 @end

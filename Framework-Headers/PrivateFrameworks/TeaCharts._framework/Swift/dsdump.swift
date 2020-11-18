@@ -249,13 +249,6 @@
 	let rawValue : UInt
  }
 
- struct __C.CGPoint {
-
-	// Properties
-	var x : CGFloat
-	var y : CGFloat
- }
-
  struct __C.CGRect {
 
 	// Properties
@@ -266,17 +259,32 @@
  struct __C.UIEdgeInsets {
 
 	// Properties
-	var top : CGFloat
-	var left : CGFloat
-	var bottom : CGFloat
-	var right : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var top : ‡w
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var left : ‡w
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bottom : ‡w
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var right : ‡w
  }
 
  struct __C.CGSize {
 
 	// Properties
-	var width : CGFloat
-	var height : CGFloat
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : ‡w
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : ‡w
+ }
+
+ struct __C.CGPoint {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var x : ‡w
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var y : ‡w
  }
 
  struct __C.Key {
@@ -289,7 +297,7 @@
  enum TeaCharts.GridLabel {
 
 	// Properties
-	case formatter : GridLabelFormatter<A>
+	case formatter : GridLabelFormatter
 	case none  
  }
 
@@ -297,7 +305,7 @@
 
 	// Properties
 	let orientation : Orientation // +0x0
-	let locations : [GridLine] // +0x8
+	let locations : GridLine // +0x8
 	let style : GridStyle // +0x10
  }
 
@@ -326,7 +334,7 @@
 	// Properties
 	let renderer : LineChartRendererType // +0x10 (0x28)
 	let styler : LineChartStylerType // +0x38 (0x28)
-	let zoneManager : ZoneManager<CategoryZone> // +0x60 (0x8)
+	let zoneManager : ZoneManager // +0x60 (0x8)
 
 	// Swift methods
  }
@@ -367,8 +375,10 @@
 	// Properties
 	let attributedString : NSAttributedString // +0x0
 	let size : CGSize // +0x8
-	let baseline : CGFloat // +0x18
-	let location : CGFloat // +0x20
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let baseline : ‡w // +0x18
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let location : ‡w // +0x20
 	let orientation : Orientation // +0x28
 	let padding : UIEdgeInsets // +0x30
  }
@@ -376,14 +386,14 @@
  struct TeaCharts.InteractionCursor {
 
 	// Properties
-	let series : Series<A>
+	let series : Series
 	let point : A
  }
 
  class TeaCharts.InteractionManager {
  class TeaCharts.SparklineAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xdbd0  @objc SparklineAssembly.init <stripped>
+	0xd8d0  @objc SparklineAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -391,14 +401,15 @@
  struct TeaCharts.GridLine {
 
 	// Properties
-	let location : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let location : ‡w // +0x0
 	let label : NSAttributedString? // +0x8
  }
 
  class TeaCharts.ColumnChartStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColumnChartStylerType {
 
 	// Properties
-	let styleManager : StyleManager<ColumnChartStyle> // +0x10 (0x8)
+	let styleManager : StyleManager // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -407,13 +418,13 @@
 
 	// Properties
 	let defaultLineView : LineView // +0x8 (0x8)
-	var zoneLineViews : [String : LineView] // +0x10 (0x8)
+	var zoneLineViews : LineView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xe310  @objc LineSeriesView.initWithCoder: <stripped>
-	0xea80  @objc LineSeriesView.layoutSubviews <stripped>
-	0xeb60  @objc LineSeriesView.initWithFrame: <stripped>
-	0xebe0  @objc LineSeriesView..cxx_destruct <stripped>
+	0xde10  @objc LineSeriesView.initWithCoder: <stripped>
+	0xe180  @objc LineSeriesView.layoutSubviews <stripped>
+	0xe260  @objc LineSeriesView.initWithFrame: <stripped>
+	0xe2c0  @objc LineSeriesView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -433,7 +444,7 @@
 	let valueCoordinateCalculator : ValueCoordinateCalculatorType // +0x38 (0x28)
 
 	// Swift methods
-	0x114d0  class func LineChartInteractor.__allocating_init(categoryCoordinateCalculator:valueCoordinateCalculator:) // init 
+	0x110a0  class func LineChartInteractor.__allocating_init(categoryCoordinateCalculator:valueCoordinateCalculator:) // init 
  }
 
  class TeaCharts.Assembly : NSObject /usr/lib/libobjc.A.dylib {
@@ -442,16 +453,17 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x12b40  @objc Assembly.assemblies <stripped>
-	0x12db0  @objc Assembly.init <stripped>
-	0x12e20  @objc Assembly..cxx_destruct <stripped>
+	0x11f00  @objc Assembly.assemblies <stripped>
+	0x12120  @objc Assembly.init <stripped>
+	0x11fa0  @objc Assembly..cxx_destruct <stripped>
  }
 
  struct TeaCharts.LayoutOptions {
 
 	// Properties
 	let size : CGSize // +0x0
-	let screenScale : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let screenScale : ‡w // +0x10
  }
 
  struct TeaCharts.ChartLayoutOptions {
@@ -477,11 +489,11 @@
 	let maskLayer : CAShapeLayer // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x13120  @objc LineView.initWithCoder: <stripped>
-	0x13200  @objc LineView.init <stripped>
-	0x13470  @objc LineView.layoutSubviews <stripped>
-	0x136b0  @objc LineView.initWithFrame: <stripped>
-	0x13730  @objc LineView..cxx_destruct <stripped>
+	0x12460  @objc LineView.initWithCoder: <stripped>
+	0x12630  @objc LineView.init <stripped>
+	0x12650  @objc LineView.layoutSubviews <stripped>
+	0x12900  @objc LineView.initWithFrame: <stripped>
+	0x12960  @objc LineView..cxx_destruct <stripped>
  }
 
  class TeaCharts.CategoryAxisGridViewModelGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -498,8 +510,10 @@
 	let imageLoader : LineChartImageLoaderType // +0x10 (0x28)
 	let styler : LineChartStylerType // +0x38 (0x28)
 	let zoneMaskProvider : LineZoneMaskProviderType // +0x60 (0x28)
-	let animationSynchronizer : SynchronizerType // +0x88 (0x28)
-	let reuseProtector : ObjectReuseProtector<UIView, [LineChartImages]> // +0xb0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let animationSynchronizer : p // +0x88 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let reuseProtector : +p // +0xb0 (0x8)
 	let accessibilityElementProvider : LineSeriesAccessibilityElementProvider // +0xb8 (0x8)
 
 	// Swift methods
@@ -509,7 +523,7 @@
 
 	// Properties
 	let attributedString : NSAttributedString? // +0x0
-	let frame : CGRect? // +0x8
+	let frame : CGRect // +0x8
  }
 
  class TeaCharts.ChartModelFactory {
@@ -584,7 +598,7 @@
 
  class TeaCharts.GridAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x230f0  @objc GridAssembly.init <stripped>
+	0x21530  @objc GridAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -593,11 +607,13 @@
 
 	// Properties
 	let imageLoader : SparklineLoaderType // +0x10 (0x28)
-	let reuseProtector : ObjectReuseProtector<UIView, UIImage> // +0x38 (0x8)
-	var cache : LRUCacheKey // +0x40 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let reuseProtector : ­r // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cache : Ÿr // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x23b70  @objc SparklineViewRenderer.didReceiveMemoryWarning <stripped>
+	0x22080  @objc SparklineViewRenderer.didReceiveMemoryWarning <stripped>
 
 	// Swift methods
  }
@@ -606,13 +622,13 @@
 
 	// Properties
 	let size : CGSize // +0x0
-	let series : Series<CategoryDataPoint> // +0x10
+	let series : Series // +0x10
 	let style : SparklineStyle // +0x28
  }
 
  class TeaCharts.ColumnChartAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x25380  @objc ColumnChartAssembly.init <stripped>
+	0x23320  @objc ColumnChartAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -620,16 +636,16 @@
  class TeaCharts.LineChartView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var seriesViews : [LineSeriesView] // +0x8 (0x8)
+	var seriesViews : LineSeriesView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x25b50  @objc LineChartView.initWithCoder: <stripped>
-	0x25fa0  @objc LineChartView.layoutSubviews <stripped>
-	0x26080  @objc LineChartView.initWithFrame: <stripped>
-	0x26100  @objc LineChartView..cxx_destruct <stripped>
+	0x23a80  @objc LineChartView.initWithCoder: <stripped>
+	0x23d30  @objc LineChartView.layoutSubviews <stripped>
+	0x23e10  @objc LineChartView.initWithFrame: <stripped>
+	0x23e70  @objc LineChartView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x25a40  class func LineChartView.__allocating_init(seriesViews:) // init 
+	0x237f0  class func LineChartView.__allocating_init(seriesViews:) // init 
  }
 
  class TeaCharts.ColumnChartImageGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColumnChartImageGeneratorType {
@@ -643,15 +659,17 @@
  struct TeaCharts.CategoryAxis {
 
 	// Properties
-	let categories : UniqueCollection<String>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let categories : Wv
 	let mappedCategories : [String : Int]
-	let grids : [Grid<String>]
+	let grids : Grid
  }
 
  class TeaCharts.GridViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, GridViewRendererType {
 
 	// Properties
-	let animationSynchronizer : SynchronizerType // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let animationSynchronizer : p // +0x10 (0x28)
 
 	// Swift methods
  }
@@ -674,8 +692,8 @@
  struct TeaCharts.ColumnChartModel {
 
 	// Properties
-	let coordinateSpace : CoordinateSpace<CategoryAxis, ValueAxis>
-	let series : [Series<CategoryDataPoint>]
+	let coordinateSpace : CoordinateSpace
+	let series : Series
 	let options : ColumnChartOptions
  }
 
@@ -711,14 +729,14 @@
  struct TeaCharts.LineChartModel {
 
 	// Properties
-	let coordinateSpace : CoordinateSpace<CategoryAxis, ValueAxis>
-	let series : [Series<CategoryDataPoint>]
+	let coordinateSpace : CoordinateSpace
+	let series : Series
  }
 
  class TeaCharts.LineChartAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2dfb0  @objc LineChartAssembly.init <stripped>
-	0x2e050  @objc LineChartAssembly..cxx_destruct <stripped>
+	0x2aed0  @objc LineChartAssembly.init <stripped>
+	0x2af30  @objc LineChartAssembly..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -729,17 +747,17 @@
 	let imageView : UIImageView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2ea20  @objc ColumnChartView.initWithCoder: <stripped>
-	0x2eae0  @objc ColumnChartView.init <stripped>
-	0x2ecd0  @objc ColumnChartView.layoutSubviews <stripped>
-	0x2ee70  @objc ColumnChartView.initWithFrame: <stripped>
-	0x2eef0  @objc ColumnChartView..cxx_destruct <stripped>
+	0x2b5e0  @objc ColumnChartView.initWithCoder: <stripped>
+	0x2b780  @objc ColumnChartView.init <stripped>
+	0x2b830  @objc ColumnChartView.layoutSubviews <stripped>
+	0x2b9e0  @objc ColumnChartView.initWithFrame: <stripped>
+	0x2b910  @objc ColumnChartView..cxx_destruct <stripped>
  }
 
  class TeaCharts.LineChartStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LineChartStylerType {
 
 	// Properties
-	let styleManager : StyleManager<LineChartStyle> // +0x10 (0x8)
+	let styleManager : StyleManager // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -764,15 +782,15 @@
 	// Properties
 	let frame : CGRect // +0x0
 	let insets : UIEdgeInsets // +0x20
-	let gridLayoutAttributes : [GridLayoutAttributes] // +0x40
-	let labelLayoutAttributes : [GridLabelLayoutAttributes] // +0x48
+	let gridLayoutAttributes : GridLayoutAttributes // +0x40
+	let labelLayoutAttributes : GridLabelLayoutAttributes // +0x48
  }
 
  struct TeaCharts.SparklineModel {
 
 	// Properties
-	let coordinateSpace : CoordinateSpace<CategoryAxis, ValueAxis>
-	let series : Series<CategoryDataPoint>
+	let coordinateSpace : CoordinateSpace
+	let series : Series
  }
 
  class TeaCharts.SparklineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -781,18 +799,18 @@
 	let imageView : UIImageView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x31260  @objc SparklineView.initWithCoder: <stripped>
-	0x314a0  @objc SparklineView.initWithFrame: <stripped>
-	0x315d0  @objc SparklineView.layoutSubviews <stripped>
-	0x31710  @objc SparklineView..cxx_destruct <stripped>
+	0x2d910  @objc SparklineView.initWithCoder: <stripped>
+	0x2db70  @objc SparklineView.initWithFrame: <stripped>
+	0x2dcc0  @objc SparklineView.layoutSubviews <stripped>
+	0x2dda0  @objc SparklineView..cxx_destruct <stripped>
  }
 
  class TeaCharts.LineSeriesAccessibilityElementProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let interactor : LineChartInteractor // +0x10 (0x8)
-	var seriesElements : [Int : LineSeriesAccessibilityElement] // +0x18 (0x8)
-	var currentZone : CategoryZone? // +0x20 (0x30)
+	var seriesElements : LineSeriesAccessibilityElement // +0x18 (0x8)
+	var currentZone : CategoryZone // +0x20 (0x30)
 
 	// Swift methods
  }
@@ -821,13 +839,13 @@
 	var timer : NSTimer? // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x32d70  @objc TapDragGestureRecognizer.initWithCoder: <stripped>
-	0x33ac0  @objc TapDragGestureRecognizer.touchesBegan:withEvent: <stripped>
-	0x33c30  @objc TapDragGestureRecognizer.touchesMoved:withEvent: <stripped>
-	0x33db0  @objc TapDragGestureRecognizer.touchesEnded:withEvent: <stripped>
-	0x33f80  @objc TapDragGestureRecognizer.reset <stripped>
-	0x34060  @objc TapDragGestureRecognizer.initWithTarget:action: <stripped>
-	0x34110  @objc TapDragGestureRecognizer..cxx_destruct <stripped>
+	0x2f330  @objc TapDragGestureRecognizer.initWithCoder: <stripped>
+	0x2ff00  @objc TapDragGestureRecognizer.touchesBegan:withEvent: <stripped>
+	0x30010  @objc TapDragGestureRecognizer.touchesMoved:withEvent: <stripped>
+	0x30110  @objc TapDragGestureRecognizer.touchesEnded:withEvent: <stripped>
+	0x30280  @objc TapDragGestureRecognizer.reset <stripped>
+	0x30360  @objc TapDragGestureRecognizer.initWithTarget:action: <stripped>
+	0x303f0  @objc TapDragGestureRecognizer..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -836,14 +854,15 @@
 
 	// Properties
 	case single : CGPoint
-	case double : (CGPoint, CGPoint)
+	case double : CGPoint
  }
 
  struct TeaCharts.Stroke {
 
 	// Properties
 	let style : StrokeStyle // +0x0
-	let width : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let width : ‡w // +0x8
 	let color : UIColor // +0x10
 	let lineCap : LineCap // +0x18
  }
@@ -870,35 +889,35 @@
  class TeaCharts.LineSeriesAccessibilityElement : UIAccessibilityElement /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	let series : Series<CategoryDataPoint> // +0x8 (0x18)
+	let series : Series // +0x8 (0x18)
 	let chartModel : LineChartModel // +0x0 (0x0)
-	var interactor : weak LineChartInteractor? // +0x0 (0x8)
+	var interactor : LineChartInteractor // +0x0 (0x8)
 	var dataElements : [UIAccessibilityElement]? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3a3e0  @objc LineSeriesAccessibilityElement.accessibilityFrame <stripped>
-	0x3a5a0  @objc LineSeriesAccessibilityElement.setAccessibilityFrame: <stripped>
-	0x3a5b0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesName <stripped>
-	0x3a910  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesValuesForAxis: <stripped>
-	0x3a930  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesType <stripped>
-	0x3a940  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesTitleForAxis: <stripped>
-	0x3a990  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesMinimumValueForAxis: <stripped>
-	0x3aa70  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesMaximumValueForAxis: <stripped>
-	0x3ab60  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSupportsSonification <stripped>
-	0x3ab60  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSupportsSummarization <stripped>
-	0x3ab80  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesIncludesTrendlineInSonification <stripped>
-	0x3ab90  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSonificationDuration <stripped>
-	0x3af40  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesValueDescriptionForPosition:axis: <stripped>
-	0x3bae0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesGridlinePositionsForAxis: <stripped>
-	0x3cd10  @objc LineSeriesAccessibilityElement.initWithAccessibilityContainer: <stripped>
-	0x3cdb0  @objc LineSeriesAccessibilityElement.init <stripped>
-	0x3ce20  @objc LineSeriesAccessibilityElement..cxx_destruct <stripped>
+	0x35fd0  @objc LineSeriesAccessibilityElement.accessibilityFrame <stripped>
+	0x36190  @objc LineSeriesAccessibilityElement.setAccessibilityFrame: <stripped>
+	0x361a0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesName <stripped>
+	0x364c0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesValuesForAxis: <stripped>
+	0x364e0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesType <stripped>
+	0x364f0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesTitleForAxis: <stripped>
+	0x36540  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesMinimumValueForAxis: <stripped>
+	0x365b0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesMaximumValueForAxis: <stripped>
+	0x36650  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSupportsSonification <stripped>
+	0x36660  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSupportsSummarization <stripped>
+	0x36670  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesIncludesTrendlineInSonification <stripped>
+	0x36680  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSonificationDuration <stripped>
+	0x36a10  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesValueDescriptionForPosition:axis: <stripped>
+	0x37490  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesGridlinePositionsForAxis: <stripped>
+	0x38550  @objc LineSeriesAccessibilityElement.initWithAccessibilityContainer: <stripped>
+	0x385f0  @objc LineSeriesAccessibilityElement.init <stripped>
+	0x38650  @objc LineSeriesAccessibilityElement..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3bb90  func <stripped> // method 
-	0x3bd60  func <stripped> // method 
-	0x3be80  func <stripped> // method 
-	0x3c8b0  func <stripped> // method 
+	0x37530  func <stripped> // method 
+	0x37700  func <stripped> // method 
+	0x377f0  func <stripped> // method 
+	0x38110  func <stripped> // method 
  }
 
  struct TeaCharts.ValueAxis {
@@ -906,13 +925,13 @@
 	// Properties
 	let range : ClosedRange<Double> // +0x0
 	let calculationModel : ValueAxisCalculationModelType // +0x10
-	let grids : [Grid<Double>] // +0x38
+	let grids : Grid // +0x38
  }
 
  struct TeaCharts.LineChartStyle {
 
 	// Properties
-	let lineStyles : [LineStyle] // +0x0
+	let lineStyles : LineStyle // +0x0
  }
 
  class TeaCharts.GridView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -922,13 +941,13 @@
 	var labels : [UILabel] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x40410  @objc GridView.initWithCoder: <stripped>
-	0x40f00  @objc GridView.layoutSubviews <stripped>
-	0x40fe0  @objc GridView.initWithFrame: <stripped>
-	0x41060  @objc GridView..cxx_destruct <stripped>
+	0x3b750  @objc GridView.initWithCoder: <stripped>
+	0x3c3e0  @objc GridView.layoutSubviews <stripped>
+	0x3c4c0  @objc GridView.initWithFrame: <stripped>
+	0x3c520  @objc GridView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x402b0  class func GridView.__allocating_init(numberOfGrids:numberOfLabels:) // init 
+	0x3b630  class func GridView.__allocating_init(numberOfGrids:numberOfLabels:) // init 
  }
 
  struct TeaCharts.LineChartImages {
@@ -944,7 +963,7 @@
 	let coordinateProvider : LineChartCoordinateProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x41c00  class func LinePathGenerator.__allocating_init(coordinateProvider:) // init 
+	0x3cff0  class func LinePathGenerator.__allocating_init(coordinateProvider:) // init 
  }
 
  class TeaCharts.LineStyle : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -952,16 +971,17 @@
 	// Properties
 	let stroke : Stroke // +0x10 (0x19)
 	let fill : Fill // +0x30 (0x9)
-	let zoneStyles : LineStyle // +0x40 (0x8)
+	let zoneStyles : ZoneStyle // +0x40 (0x8)
 
 	// Swift methods
-	0x42ca0  class func LineStyle.__allocating_init(stroke:fill:zoneStyles:) // init 
+	0x3ded0  class func LineStyle.__allocating_init(stroke:fill:zoneStyles:) // init 
  }
 
  struct TeaCharts.AxisGridViewModelGeneratorOptions {
 
 	// Properties
-	let size : CGFloat // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let size : ‡w // +0x0
 	let traitCollection : UITraitCollection // +0x8
  }
 
@@ -972,7 +992,7 @@
 	let categoryCoordinateCalculator : CategoryCoordinateCalculatorType // +0x38 (0x28)
 
 	// Swift methods
-	0x43030  func <stripped> // method 
+	0x3e210  func <stripped> // method 
  }
 
  class TeaCharts.StyleManager {
@@ -994,7 +1014,7 @@
 
  class TeaCharts.ChartsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x45460  @objc ChartsAssembly.init <stripped>
+	0x40210  @objc ChartsAssembly.init <stripped>
  }
 
  class TeaCharts.ChartLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChartLayoutAttributesFactoryType {
@@ -1011,7 +1031,7 @@
 
  class TeaCharts.LinearAxisCalculationModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x45bb0  class func LinearAxisCalculationModel.__allocating_init() // init 
+	0x407b0  class func LinearAxisCalculationModel.__allocating_init() // init 
  }
 
  struct TeaCharts.CategoryDataPoint {
@@ -1046,9 +1066,12 @@
  struct TeaCharts.ColumnChartOptions {
 
 	// Properties
-	let preferredWidthPerBar : CGFloat // +0x0
-	let spacingBetweenSeries : CGFloat // +0x8
-	let minimumSpacingBetweenCategories : CGFloat // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let preferredWidthPerBar : ‡w // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let spacingBetweenSeries : ‡w // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let minimumSpacingBetweenCategories : ‡w // +0x10
 	let cornerRadius : CornerRadius // +0x18
  }
 
@@ -1063,22 +1086,25 @@
  struct TeaCharts.ColumnChartStyle {
 
 	// Properties
-	let columnStyles : [ColumnStyle] // +0x0
+	let columnStyles : ColumnStyle // +0x0
  }
 
  struct TeaCharts.CornerRadius {
 
 	// Properties
 	let corners : UIRectCorner // +0x0
-	let radius : CGFloat // +0x8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let radius : ‡w // +0x8
  }
 
  class TeaCharts.ColumnChartRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColumnChartRendererType {
 
 	// Properties
 	let imageLoader : ColumnChartImageLoaderType // +0x10 (0x28)
-	let animationSynchronizer : SynchronizerType // +0x38 (0x28)
-	let reuseProtector : ObjectReuseProtector<UIView, UIImage> // +0x60 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let animationSynchronizer : p // +0x38 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let reuseProtector : ­r // +0x60 (0x8)
 
 	// Swift methods
  }
@@ -1092,7 +1118,7 @@
  enum TeaCharts.InteractionType {
 
 	// Properties
-	case highlight : HighlightInteraction<A>
+	case highlight : HighlightInteraction
  }
 
  enum TeaCharts.StrokeStyle {
@@ -1107,8 +1133,8 @@
 	// Properties
 	let valueCoordinateCalculator : ValueCoordinateCalculatorType // +0x10 (0x28)
 	let categoryCoordinateCalculator : CategoryCoordinateCalculatorType // +0x38 (0x28)
-	var coordinateSpace : CoordinateSpace<CategoryAxis, ValueAxis>? // +0x0 (0x0)
-	var size : CGSize? // +0x0 (0x11)
+	var coordinateSpace : CoordinateSpace // +0x0 (0x0)
+	var size : CGSize // +0x0 (0x11)
 
 	// Swift methods
  }
@@ -1125,9 +1151,9 @@
  struct TeaCharts.Grid {
 
 	// Properties
-	let type : GridType<A>
+	let type : GridType
 	let style : GridStyle
-	let label : GridLabel<A>
+	let label : GridLabel
  }
 
  struct TeaCharts.ChartLayoutAttributes {

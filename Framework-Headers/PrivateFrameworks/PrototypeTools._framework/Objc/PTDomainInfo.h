@@ -16,13 +16,13 @@
     NSString *_domainGroupName;
     NSString *_domainName;
     NSString *_settingsClassName;
-    NSString *_settingsBundlePath;
+    NSString *_settingsFrameworkBundlePath;
 }
 
 @property (readonly, nonatomic) NSString *domainGroupName; // @synthesize domainGroupName=_domainGroupName;
 @property (readonly, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
-@property (readonly, nonatomic) NSString *settingsBundlePath; // @synthesize settingsBundlePath=_settingsBundlePath;
 @property (readonly, nonatomic) NSString *settingsClassName; // @synthesize settingsClassName=_settingsClassName;
+@property (readonly, nonatomic) NSString *settingsFrameworkBundlePath; // @synthesize settingsFrameworkBundlePath=_settingsFrameworkBundlePath;
 @property (readonly, nonatomic) NSString *uniqueIdentifier;
 
 + (BOOL)supportsSecureCoding;

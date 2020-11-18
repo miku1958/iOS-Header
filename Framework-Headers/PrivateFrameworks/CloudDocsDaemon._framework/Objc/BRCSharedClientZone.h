@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)rootItemID;
 - (void)setServerZone:(id)arg1;
 - (id)shareAcceptOperationForItemID:(id)arg1;
-- (struct PQLResultSet *)shareAcceptationSidefaultEnumerator;
+- (id)shareAcceptationSidefaultEnumerator;
 
 @end
 

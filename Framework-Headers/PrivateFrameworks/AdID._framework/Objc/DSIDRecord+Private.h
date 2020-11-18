@@ -31,6 +31,7 @@
 - (BOOL)isActiveRecord;
 - (BOOL)isEqual:(id)arg1;
 - (void)reconcileIDFAandLAT;
+- (void)reconcileIDFAandLATSkippingEnabledCheck:(BOOL)arg1;
 - (void)removeIDForClientType:(long long)arg1;
 - (void)resetiAdIDs;
 - (void)resetiAdIDsAndDPID:(CDUnknownBlockType)arg1;

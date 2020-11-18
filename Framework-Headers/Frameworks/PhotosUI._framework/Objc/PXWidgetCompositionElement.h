@@ -71,7 +71,7 @@
 - (void)unregisterObserver:(id)arg1;
 - (void)widget:(id)arg1 animateChanges:(CDUnknownBlockType)arg2 withAnimationOptions:(id)arg3;
 - (BOOL)widget:(id)arg1 requestViewControllerDismissalAnimated:(BOOL)arg2;
-- (BOOL)widget:(id)arg1 transitionToViewController:(struct NSObject *)arg2 withTransitionType:(long long)arg3;
+- (BOOL)widget:(id)arg1 transitionToViewController:(id)arg2 withTransitionType:(long long)arg3;
 - (void)widgetBarDidSelectDisclosureAffordance:(id)arg1;
 - (void)widgetBarDidSelectSubtitle:(id)arg1;
 - (long long)widgetDefaultContentViewAnchoringTypeForDisclosureHeightChange:(id)arg1;
@@ -86,8 +86,8 @@
 - (void)widgetPreferredContentHeightForWidthDidChange:(id)arg1;
 - (void)widgetRequestFocus:(id)arg1;
 - (id)widgetScrollViewControllerHostingWidget:(id)arg1;
-- (struct NSObject *)widgetViewControllerHostingWidget:(id)arg1;
-- (struct NSObject *)widgetViewHostingGestureRecognizers:(id)arg1;
+- (id)widgetViewControllerHostingWidget:(id)arg1;
+- (id)widgetViewHostingGestureRecognizers:(id)arg1;
 
 @end
 

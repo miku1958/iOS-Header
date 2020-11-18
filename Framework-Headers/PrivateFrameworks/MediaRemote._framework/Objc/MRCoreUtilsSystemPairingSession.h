@@ -16,7 +16,7 @@
 - (void *)_createPeerDeviceFromPairedPeer:(id)arg1;
 - (id)addPeer;
 - (id)initializePairingSession:(struct PairingSessionPrivate *)arg1;
-- (struct NSMutableDictionary *)mediaRemotePairedDevices;
+- (id)mediaRemotePairedDevices;
 - (id)pairedPeerDevice;
 - (id)pairedPeerDevices;
 - (id)pairedPeerFromPeerDevice:(void *)arg1;

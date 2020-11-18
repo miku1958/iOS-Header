@@ -41,8 +41,8 @@
 - (void)_beginGeneratingWithResourceInfo:(id)arg1 error:(id)arg2 finalizer:(id)arg3;
 - (void)_callCompletionWithResult:(CDUnknownBlockType)arg1;
 - (void)_commonAEPhotosAssetPackageGeneratorInitWithAsset:(id)arg1 assetReference:(id)arg2;
-- (void)_downloadBeforeBeforeGeneratingWithFinalizer:(id)arg1;
 - (void)_downloadIfNeededBeforeGeneratingWithFinalizer:(id)arg1;
+- (void)_ensureLocalAvailabilityBeforeBeforeGeneratingWithFinalizer:(id)arg1;
 - (void)beginGeneratingWithFinalizer:(id)arg1;
 - (void)cancelReviewAssetRequest;
 - (id)initWithAsset:(id)arg1;

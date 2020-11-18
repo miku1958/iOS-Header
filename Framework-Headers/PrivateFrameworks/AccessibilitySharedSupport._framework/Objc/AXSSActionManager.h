@@ -15,6 +15,7 @@
 - (void)activateSiri;
 - (void)activateTypeahead;
 - (void)armApplePay;
+- (void)begin3DTouch;
 - (void)beginPinchIn;
 - (void)beginPinchOut;
 - (void)beginRotateLeft;
@@ -28,6 +29,8 @@
 - (void)beginTwoFingerSwipeRight;
 - (void)beginTwoFingerSwipeUp;
 - (void)didPerformStandardCommandWithIdentifier:(id)arg1;
+- (void)didSuppressCommand:(id)arg1;
+- (void)end3DTouch;
 - (void)endPinch;
 - (void)endRotate;
 - (void)endSwipe;
@@ -46,6 +49,8 @@
 - (void)lift;
 - (void)lockScreen;
 - (void)moveDown;
+- (void)moveInsideNext;
+- (void)moveInsidePrevious;
 - (void)moveLeft;
 - (void)moveRight;
 - (void)moveUp;
@@ -57,13 +62,13 @@
 - (void)rebootDevice;
 - (void)rotateDevice;
 - (void)showAccessibilityActions;
-- (void)switchToNextProcess;
-- (void)switchToPreviousProcess;
 - (void)toggleAppSwitcher;
 - (void)toggleControlCenter;
+- (void)toggleDock;
 - (void)toggleGesturesMode;
 - (void)toggleHelp;
 - (void)toggleNotificationCenter;
+- (void)togglePassthroughMode;
 - (void)twoFingerLift;
 - (void)twoFingerPress;
 - (void)willPerformStandardCommandWithIdentifier:(id)arg1;

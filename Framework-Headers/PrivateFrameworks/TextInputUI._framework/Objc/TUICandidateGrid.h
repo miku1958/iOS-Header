@@ -72,6 +72,9 @@
 - (void)addAppCandidatesRenderSignposts;
 - (unsigned long long)autofillExtraCandidatesCount;
 - (id)candidateAtIndexPath:(id)arg1;
+- (unsigned long long)candidateNumberForIndexPath:(id)arg1;
+- (unsigned long long)candidateNumberInHorizontalLayoutForIndexPath:(id)arg1;
+- (unsigned long long)candidateNumberInVerticalLayoutForIndexPath:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -92,6 +95,7 @@
 - (BOOL)hasCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (id)indexPathForCandidate:(id)arg1;
 - (id)indexPathForCandidateNumber:(unsigned long long)arg1;
+- (id)indexPathForVerticalCandidateNumber:(unsigned long long)arg1;
 - (id)indexPathInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (BOOL)indexPathIsFullyVisible:(id)arg1;
 - (BOOL)indexPathIsValid:(id)arg1;
@@ -101,7 +105,9 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)lastIndexPath;
 - (void)layoutSubviews;
+- (long long)numberOfNonPartialCandidatesInSection:(long long)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (long long)numberOfTransliterationCandidatesInSection:(long long)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (long long)rowForCandidate:(id)arg1;
 - (struct UIEdgeInsets)safeAreaInsets;
@@ -122,10 +128,12 @@
 - (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (BOOL)showingSlottedCandidates;
 - (unsigned long long)slottedCandidatesCount;
+- (void)updateBounce;
 - (void)updateContentInset;
 - (void)updateIndex;
 - (void)updateSelectedRowHighlightView;
 - (long long)viewOffsetForCandidate:(id)arg1;
+- (id)visibleAttributesInVerticalLayout;
 
 @end
 

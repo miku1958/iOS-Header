@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSCalendar, NSData, NSDate, NSSet, NSString, PKCommutePlan, PKExpressPassInformation, PKMerchant, PKOSVersionRequirement, PKPass, PKPassUpgradeRequest, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentPass, PKPaymentWebService;
+@class NSCalendar, NSData, NSDate, NSSet, NSString, PKExpressPassInformation, PKMerchant, PKOSVersionRequirement, PKPass, PKPassUpgradeRequest, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentWebService, PKTransitCommutePlan;
 @protocol PKPaymentDataProviderDelegate;
 
 @protocol PKPaymentDataProvider <NSObject>
@@ -34,8 +34,9 @@
 - (void)balanceReminderThresholdForBalance:(PKPaymentBalance *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentBalanceReminder *))arg3;
 - (void)balancesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)cashbackByPeriodFromPassUniqueIdentifier:(NSString *)arg1 withStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3 calendar:(NSCalendar *)arg4 calendarUnit:(unsigned long long)arg5 type:(long long)arg6 completion:(void (^)(NSArray *))arg7;
-- (void)commutePlanReminderIntervalForCommutePlan:(PKCommutePlan *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(double))arg3;
+- (void)commutePlanReminderForCommutePlan:(PKTransitCommutePlan *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentCommutePlanReminder *))arg3;
 - (void)conflictingExpressPassIdentifiersForPassInformation:(PKExpressPassInformation *)arg1 withCompletion:(void (^)(NSSet *))arg2;
+- (void)credentialWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAppletSubcredential *))arg2;
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 forPassWithUniqueIdentifier:(NSString *)arg2;
 - (PKExpressPassInformation *)expressPassInformationForMode:(NSString *)arg1;
 - (NSSet *)expressPassesInformation;
@@ -55,7 +56,7 @@
 - (void)removeExpressPassesWithCardType:(long long)arg1 completion:(void (^)(BOOL, NSSet *))arg2;
 - (void)removeExpressPassesWithCardType:(long long)arg1 visibleViewController:(id)arg2 completion:(void (^)(BOOL, NSSet *))arg3;
 - (void)setBalanceReminder:(PKPaymentBalanceReminder *)arg1 forBalance:(PKPaymentBalance *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(BOOL))arg4;
-- (void)setCommutePlanReminderInterval:(double)arg1 forCommutePlan:(PKCommutePlan *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(BOOL))arg4;
+- (void)setCommutePlanReminder:(PKPaymentCommutePlanReminder *)arg1 forCommutePlan:(PKTransitCommutePlan *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(BOOL))arg4;
 - (void)setExpressWithPassInformation:(PKExpressPassInformation *)arg1 credential:(NSData *)arg2 completion:(void (^)(BOOL, NSSet *))arg3;
 - (void)setExpressWithPassInformation:(PKExpressPassInformation *)arg1 visibleViewController:(id)arg2 completion:(void (^)(BOOL, PKExpressPassInformation *))arg3;
 - (void)setExpressWithPassInformation:(PKExpressPassInformation *)arg1 visibleViewController:(id)arg2 requiresAuth:(BOOL)arg3 completion:(void (^)(BOOL, NSSet *))arg4;
@@ -70,6 +71,8 @@
 - (BOOL)supportsNotificationsForPass:(PKPass *)arg1;
 - (BOOL)supportsTransactionsForPass:(PKPass *)arg1;
 - (void)transactionCountByPeriodForPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 calendar:(NSCalendar *)arg4 calendarUnit:(unsigned long long)arg5 includePurchaseTotal:(BOOL)arg6 completion:(void (^)(NSArray *))arg7;
+- (void)transactionReceiptForTransactionWithIdentifier:(NSString *)arg1 updateIfNecessary:(BOOL)arg2 completion:(void (^)(PKTransactionReceipt *))arg3;
+- (void)transactionReceiptWithUniqueID:(NSString *)arg1 completion:(void (^)(PKTransactionReceipt *))arg2;
 - (void)transactionWithReferenceIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentTransaction *))arg2;
 - (void)transactionWithServiceIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentTransaction *))arg2;
 - (NSString *)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(NSString *)arg1;

@@ -46,7 +46,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_handleBulletinBoardNotificationCommitRequest:(id)arg1;
-- (void)_registerNotificationHandlers;
 - (void)configureBulletinNotification;
 - (void)configureMsgDispatcher:(id)arg1;
 - (void)dealloc;
@@ -56,6 +55,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (id)logIdentifier;
+- (void)registerForCharacteristicNotifications;
+- (void)registerNotificationHandlers;
 
 @end
 

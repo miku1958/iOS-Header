@@ -10,6 +10,7 @@
 
 @protocol PKPaymentAuthorizationHostProtocol <NSObject>
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(PKApplePayTrustSignature *)arg1;
+- (void)authorizationDidAuthorizeContext;
 - (void)authorizationDidAuthorizeDisbursement:(PKDisbursementVoucher *)arg1;
 - (void)authorizationDidAuthorizePayment:(PKPayment *)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(PKAuthorizedPeerPaymentQuote *)arg1;

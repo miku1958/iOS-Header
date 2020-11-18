@@ -8,7 +8,7 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNLocation, MNStartNavigationDetails, NSArray, NSMapTable, NSMutableDictionary, NSString;
+@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEONavigationGuidanceState, MNActiveRouteInfo, MNLocation, MNStartNavigationDetails, NSArray, NSMapTable, NSMutableDictionary, NSString, geo_isolater;
 
 __attribute__((visibility("hidden")))
 @interface MNNavigationDetails : NSObject <NSSecureCoding>
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_routeIDLookup;
     NSMutableDictionary *_routeLookup;
     NSMutableDictionary *_trafficIncidentAlerts;
+    geo_isolater *_routeLookupLock;
     BOOL _guidancePromptsEnabled;
     BOOL _isInPreArrivalState;
     BOOL _traceIsPlaying;
@@ -87,7 +88,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
 @property (readonly, nonatomic) NSMapTable *routeIDLookup;
 @property (readonly, nonatomic) unsigned long long routeIndex; // @synthesize routeIndex=_routeIndex;
-@property (readonly, nonatomic) NSMutableDictionary *routeLookup;
+@property (readonly, nonatomic) NSMutableDictionary *routeLookup; // @synthesize routeLookup=_routeLookup;
 @property (readonly, nonatomic) unsigned long long selectedPreviewRouteIndex; // @synthesize selectedPreviewRouteIndex=_selectedPreviewRouteIndex;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) unsigned long long stepIndex;

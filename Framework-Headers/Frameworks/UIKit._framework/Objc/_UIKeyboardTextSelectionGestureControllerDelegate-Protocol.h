@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIKeyboardTaskQueue, _UIKeyboardTextSelectionController;
+@class UIKeyboardTaskQueue, UIView, _UIKeyboardTextSelectionController;
 
 @protocol _UIKeyboardTextSelectionGestureControllerDelegate <NSObject>
 
@@ -20,7 +20,7 @@
 - (BOOL)hasMarkedText;
 - (void)setTwoFingerTapTimestamp:(double)arg1;
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
-- (BOOL)shouldAllowTwoFingerSelectionGesture;
+- (BOOL)shouldAllowTwoFingerSelectionGestureOnView:(UIView *)arg1;
 - (BOOL)transitionInProgress;
 - (void)willBeginGesture;
 @end

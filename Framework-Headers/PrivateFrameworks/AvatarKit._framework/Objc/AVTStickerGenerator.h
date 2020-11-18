@@ -61,7 +61,7 @@
 - (void)rendererWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setupAvatar:(id)arg1;
 - (void)setupRendererWithAvatar:(id)arg1;
-- (struct UIImage *)snapshotAtTime:(double)arg1 withRenderer:(id)arg2 configuration:(id)arg3 correctClipping:(BOOL)arg4;
+- (id)snapshotAtTime:(double)arg1 withRenderer:(id)arg2 configuration:(id)arg3 correctClipping:(BOOL)arg4;
 - (void)stickerImageWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stickerImageWithConfiguration:(id)arg1 correctClipping:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

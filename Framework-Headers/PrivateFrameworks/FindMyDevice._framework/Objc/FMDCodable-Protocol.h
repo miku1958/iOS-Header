@@ -7,6 +7,7 @@
 #import <FindMyDevice/NSCopying-Protocol.h>
 #import <FindMyDevice/NSObject-Protocol.h>
 
+@class NSString;
 @protocol FMDDecoder, FMDEncoder;
 
 @protocol FMDCodable <NSObject, NSCopying>
@@ -14,7 +15,7 @@
 - (id)initWithFMDCoder:(id<FMDDecoder>)arg1 error:(id *)arg2;
 
 @optional
-+ (struct NSString *)objectType;
-+ (struct NSString *)objectTypeKey;
++ (NSString *)objectType;
++ (NSString *)objectTypeKey;
 @end
 

@@ -16,6 +16,7 @@
 @interface RERelevanceEngineConfiguration : NSObject <REAutomaticExportedInterface, NSCopying, NSMutableCopying>
 {
     NSMutableDictionary *_values;
+    NSArray *_whitelistedDataSourceClassNames;
 }
 
 @property (readonly, nonatomic) BOOL allowsDiagnosticExtension;
@@ -40,6 +41,7 @@
 @property (readonly, nonatomic) unsigned long long trainingBehavior;
 @property (readonly, nonatomic) BOOL wantsBackup;
 @property (readonly, nonatomic) BOOL wantsImmutableContent;
+@property (readonly, nonatomic) NSArray *whitelistedDataSourceClassNames; // @synthesize whitelistedDataSourceClassNames=_whitelistedDataSourceClassNames;
 
 + (id)_defaultModelFileURL;
 + (id)defaultConfiguration;

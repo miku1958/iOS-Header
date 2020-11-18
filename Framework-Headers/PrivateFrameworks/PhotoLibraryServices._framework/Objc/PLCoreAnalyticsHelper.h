@@ -10,18 +10,9 @@
 {
 }
 
-+ (void)_sendCTMFinishProcessingEvent:(id)arg1;
-+ (void)_sendCTMScheduleProcessingEvent:(id)arg1;
-+ (void)sendAnalysisStateEvent:(id)arg1;
-+ (void)sendCMMSharingSuggestionsEvent:(id)arg1;
-+ (void)sendCMMSummaryEvent:(id)arg1;
 + (void)sendCTMFinishProcessingEventForAsset:(id)arg1 startDate:(id)arg2 isAutoReframe:(BOOL)arg3 isOnDemand:(BOOL)arg4;
-+ (void)sendCTMLibrarySummaryEvent:(id)arg1;
 + (void)sendCTMScheduleAnalyticsForAsset:(id)arg1 isAutoReframe:(BOOL)arg2 isOnDemand:(BOOL)arg3;
-+ (void)sendHyperionLocalResourcesEvent:(id)arg1;
-+ (void)sendLibrarySummaryEvent:(id)arg1;
-+ (void)sendMomentStatisticsEvent:(id)arg1;
-+ (void)sendPersistentHistorySummaryEvent:(id)arg1;
++ (void)sendEventWithName:(id)arg1 eventData:(id)arg2;
 
 @end
 

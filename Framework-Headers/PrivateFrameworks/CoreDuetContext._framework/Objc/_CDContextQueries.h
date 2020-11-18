@@ -175,6 +175,7 @@
 + (id)nextSunsetKey;
 + (id)nowPlayingBundleIdKey;
 + (id)nowPlayingCreationDateKey;
++ (id)nowPlayingMediaTypeKey;
 + (id)nowPlayingOutputDeviceIDsKey;
 + (id)nowPlayingStatusKey;
 + (id)nowPlayingTrackKey;

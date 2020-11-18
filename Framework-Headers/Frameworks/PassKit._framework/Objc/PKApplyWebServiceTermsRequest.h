@@ -17,6 +17,8 @@
     NSString *_applicationIdentifier;
     NSString *_applicationTermsIdentifier;
     NSString *_offerTermsIdentifier;
+    NSString *_pathTermsIdentifier;
+    NSString *_pathIdentifier;
     NSURL *_baseURL;
     PKPaymentDeviceMetadata *_deviceMetadata;
     NSDecimalNumber *_installmentAmount;
@@ -31,6 +33,8 @@
 @property (copy, nonatomic) NSString *installmentCurrencyCode; // @synthesize installmentCurrencyCode=_installmentCurrencyCode;
 @property (nonatomic) BOOL isInstallment; // @synthesize isInstallment=_isInstallment;
 @property (copy, nonatomic) NSString *offerTermsIdentifier; // @synthesize offerTermsIdentifier=_offerTermsIdentifier;
+@property (copy, nonatomic) NSString *pathIdentifier; // @synthesize pathIdentifier=_pathIdentifier;
+@property (copy, nonatomic) NSString *pathTermsIdentifier; // @synthesize pathTermsIdentifier=_pathTermsIdentifier;
 @property (nonatomic) BOOL termsAccepted; // @synthesize termsAccepted=_termsAccepted;
 
 + (BOOL)supportsSecureCoding;

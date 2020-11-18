@@ -30,12 +30,14 @@
     NSURL *_termsURL;
     NSString *_associatedPassSerialNumber;
     NSString *_associatedPassTypeIdentifier;
+    NSArray *_cloudStoreZoneNames;
 }
 
 @property (nonatomic, getter=isAccountStateDirty) BOOL accountStateDirty; // @synthesize accountStateDirty=_accountStateDirty;
 @property (copy, nonatomic) NSString *associatedPassSerialNumber; // @synthesize associatedPassSerialNumber=_associatedPassSerialNumber;
 @property (copy, nonatomic) NSString *associatedPassTypeIdentifier; // @synthesize associatedPassTypeIdentifier=_associatedPassTypeIdentifier;
 @property (copy, nonatomic) NSURL *associatedPassURL; // @synthesize associatedPassURL=_associatedPassURL;
+@property (copy, nonatomic) NSArray *cloudStoreZoneNames; // @synthesize cloudStoreZoneNames=_cloudStoreZoneNames;
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (copy, nonatomic) PKCurrencyAmount *currentBalance; // @synthesize currentBalance=_currentBalance;
 @property (readonly, copy, nonatomic) NSArray *defaultSuggestions;
@@ -69,11 +71,13 @@
 - (BOOL)isAccountOutOfDate;
 - (BOOL)isEqual:(id)arg1;
 - (id)loadFromCardFeatureDescriptor;
+- (id)preserveCurrentBalanceFeatureDescriptor;
 - (id)requestFromUserFeatureDescriptor;
 - (id)sendToUserFeatureDescriptor;
 - (BOOL)supportsCardBalancePromotion;
 - (BOOL)supportsInstantWithdrawal;
 - (BOOL)supportsLoadFromCard;
+- (BOOL)supportsPreserveCurrentBalance;
 - (BOOL)supportsRequestFromUser;
 - (BOOL)supportsSendToUser;
 - (BOOL)supportsTransferToBank;

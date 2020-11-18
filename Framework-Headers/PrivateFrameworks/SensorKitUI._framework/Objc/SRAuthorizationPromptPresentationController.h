@@ -18,6 +18,7 @@
     UIViewController<SRRemoteAuthorizationPromptViewController> *_viewController;
     CDUnknownBlockType _completionHandler;
     NSError *_error;
+    long long _reason;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
@@ -27,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hostNavigationBarHidden; // @synthesize hostNavigationBarHidden=_hostNavigationBarHidden;
 @property (nonatomic, getter=isPresenting) BOOL presenting; // @synthesize presenting=_presenting;
+@property (nonatomic) long long reason; // @synthesize reason=_reason;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewController<SRRemoteAuthorizationPromptViewController> *viewController; // @synthesize viewController=_viewController;
 
@@ -43,7 +45,7 @@
 - (void)dealloc;
 - (BOOL)isViewControllerPresentedModally;
 - (id)navigationControllerFromRoot:(id)arg1;
-- (BOOL)presentAnyViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)presentAnyViewController:(id)arg1 reason:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentAppsAndStudiesPromptViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentPendingAuthorizationPromptViewController:(id)arg1 withDesiredServices:(id)arg2 bundlePath:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)presentPromptViewController:(id)arg1 withDesiredServices:(id)arg2 bundleIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

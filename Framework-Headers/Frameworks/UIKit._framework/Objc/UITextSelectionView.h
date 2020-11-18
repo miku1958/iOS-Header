@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     BOOL m_activeCaret;
     BOOL m_isSuspended;
     int m_showingCommandsCounterForRotate;
+    unsigned long long _activeGrabberSuppressionAssertions;
     BOOL m_forceRangeView;
     BOOL m_isInstalledInSelectionContainerView;
     BOOL _isIndirectFloatingCaret;
@@ -56,6 +57,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL visible; // @synthesize visible=m_visible;
 
 - (void).cxx_destruct;
+- (id)_actingParentViewForGestureRecognizers;
+- (id)_customSelectionContainerView;
 - (void)_hideCaret:(int)arg1;
 - (BOOL)_shouldUseIndirectFloatingCaret;
 - (void)_showCaret:(int)arg1;
@@ -114,8 +117,10 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (BOOL)isValid;
 - (void)layoutChangedByScrolling:(BOOL)arg1;
+- (id)obtainGrabberSuppressionAssertion;
 - (BOOL)point:(struct CGPoint)arg1 isNearCursorRect:(struct CGRect)arg2;
 - (void)prepareForMagnification;
+- (void)releaseGrabberHandleSuppressionAssertion:(id)arg1;
 - (void)removeFromSuperview;
 - (void)scaleDidChange:(id)arg1;
 - (void)scaleWillChange:(id)arg1;
@@ -128,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (void)selectionWillTranslateForReachability:(id)arg1;
 - (void)setEmphasisOnNextSelectionRects;
 - (BOOL)shouldBeVisible;
+- (BOOL)shouldSuppressSelectionHandles;
 - (void)showCalloutBarAfterDelay:(double)arg1;
 - (void)showCaret:(int)arg1;
 - (void)showCommandsWithReplacements:(id)arg1;
@@ -144,6 +150,7 @@ __attribute__((visibility("hidden")))
 - (void)updateDocumentHasContent:(BOOL)arg1;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
+- (void)updateRangeViewForSelectionMode;
 - (void)updateSelectionCommands;
 - (void)updateSelectionDots;
 - (void)updateSelectionRects;
