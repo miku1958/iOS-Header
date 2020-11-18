@@ -14,7 +14,7 @@
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
 @protocol OS_dispatch_queue;
 
-@interface UIKeyboardLayout : UIView <_UIScreenEdgePanRecognizerDelegate, _UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout>
+@interface UIKeyboardLayout : UIView <_UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout, _UIScreenEdgePanRecognizerDelegate>
 {
     UITextInputTraits *_inputTraits;
     UIKBScreenTraits *_screenTraits;
@@ -85,6 +85,7 @@
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 - (void)_addTouchToScreenEdgePanRecognizer:(id)arg1;
 - (BOOL)_canAddTouchesToScreenGestureRecognizer:(id)arg1;
+- (void)_clearDeferredTouchTasks;
 - (void)_enumerateDeferredTouchUUIDs:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_executeDeferredTouchTasks;
 - (BOOL)_handRestRecognizerCancelShouldBeEnd;
@@ -92,7 +93,6 @@
 - (void)_ignoreTouchState:(id)arg1;
 - (id)_keyboardLayoutView;
 - (id)_keyboardLongPressInteractionRegions;
-- (void)_notifyLayoutOfGesturePosition:(struct CGPoint)arg1 relativeToEdge:(unsigned long long)arg2;
 - (void)_removeTouchesFromProcessing:(id)arg1;
 - (void)_resetFingerDetectionFromLayout;
 - (void)_setRequiresExclusiveTouch:(BOOL)arg1;
@@ -133,8 +133,7 @@
 - (void)didClearInput;
 - (void)didCommitTouchState:(id)arg1;
 - (void)didEndIndirectSelectionGesture;
-- (void)didFinishScreenGestureRecognition;
-- (void)didRecognizeGestureOnEdge:(unsigned long long)arg1 withDistance:(double)arg2;
+- (void)didMoveToWindow;
 - (struct CGRect)dragGestureRectInView:(id)arg1;
 - (void)fadeWithInvocation:(id)arg1;
 - (unsigned long long)fingerIDForTouchUUID:(id)arg1;

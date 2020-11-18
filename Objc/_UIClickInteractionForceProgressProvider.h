@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIClickInteractionProgressProviding-Protocol.h>
 
 @class NSString, UITouchForceGestureRecognizer, UIView;
 @protocol _UIClickInteractionProgressProvidingDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIClickInteractionForceProgressProvider : NSObject <_UIClickInteractionProgressProviding>
+@interface _UIClickInteractionForceProgressProvider : NSObject <UIGestureRecognizerDelegate, _UIClickInteractionProgressProviding>
 {
     id<_UIClickInteractionProgressProvidingDelegate> _delegate;
     UIView *_view;
@@ -34,7 +35,9 @@ __attribute__((visibility("hidden")))
 - (void)_handleGestureRecognizer:(id)arg1;
 - (void)_updateInteractionFromGestureRecognizer;
 - (void)cancelInteraction;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)init;
+- (struct CGPoint)locationInCoordinateSpace:(id)arg1;
 - (BOOL)shouldInvokeActionWhenTransitioningFromState:(long long)arg1 toState:(long long)arg2;
 
 @end

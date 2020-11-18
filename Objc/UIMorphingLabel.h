@@ -51,6 +51,7 @@
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 
+- (BOOL)_isRTL;
 - (double)_rippleDurationForEndInsertion:(BOOL)arg1;
 - (double)alphaForFrame:(struct CGRect)arg1;
 - (void)animateAlignmentHunkAtIndex:(unsigned long long)arg1;

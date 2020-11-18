@@ -16,7 +16,7 @@
 @class NSArray, NSString, NSUndoManager, NSUserActivity, UIInputViewController, UITextInputAssistantItem, UITextInputMode, UIView;
 @protocol UITextInput, UITextInputPrivate;
 
-@interface UIResponder : NSObject <UIUserActivityRestoring, _UIStateRestorationContinuation, UITextInput_Internal, UITextInputAdditions, _UITouchable, UIResponderStandardEditActions>
+@interface UIResponder : NSObject <UITextInput_Internal, UITextInputAdditions, UIUserActivityRestoring, _UIStateRestorationContinuation, _UITouchable, UIResponderStandardEditActions>
 {
     unsigned int _hasOverrideClient:1;
     unsigned int _hasOverrideHost:1;

@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct NSDirectionalEdgeInsets)leadingEdgeInsets;
++ (double)baselineBottomInset;
++ (double)leadingCenteringEdgeInset;
 + (double)referenceScale;
 
 @end

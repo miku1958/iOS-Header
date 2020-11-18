@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
 - (BOOL)iPadFudgeLayout;
+- (BOOL)iPadSansHomeButtonLayout;
 - (struct CGRect)insetFrame:(struct CGRect)arg1 forKey:(id)arg2;
 - (double)internationalKeyFontSize;
 - (struct CGPoint)internationalKeyOffset;

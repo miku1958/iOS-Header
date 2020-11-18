@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIApplicationSceneSettings-Protocol.h>
 
-@class NSNumber, NSString;
+@class BSCornerRadiusConfiguration, NSNumber, NSString;
 
 @interface UIMutableApplicationSceneSettings : FBSMutableSceneSettings <UIApplicationSceneSettings>
 {
@@ -16,6 +16,7 @@
 
 @property (nonatomic) unsigned long long artworkSubtype;
 @property (nonatomic) BOOL canShowAlerts;
+@property (strong, nonatomic) BSCornerRadiusConfiguration *cornerRadiusConfiguration;
 @property (nonatomic) unsigned long long deactivationReasons;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

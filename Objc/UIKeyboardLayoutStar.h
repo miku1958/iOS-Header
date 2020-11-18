@@ -183,6 +183,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldAttemptToAddSupplementaryControlKeys;
 - (BOOL)_shouldInheritScreenScaleAsContentScaleFactor;
 - (BOOL)_stringContainsCurrencyCharacters:(id)arg1;
+- (void)_swapGlobeAndMoreKeysIfNecessary;
 - (void)_updateSupplementaryKeys;
 - (id)_variantsByAppendingDualStringKey:(id)arg1 toVariants:(id)arg2;
 - (void)accessibilitySensitivityChanged;
@@ -316,6 +317,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAlphabeticPlane;
 - (BOOL)isDeadkeyInput:(id)arg1;
 - (BOOL)isEmojiKeyplane;
+- (BOOL)isKeyScriptSwitchKey:(id)arg1;
 - (BOOL)isLongPressedKey:(id)arg1;
 - (BOOL)isMultitapKey:(id)arg1;
 - (BOOL)isShiftKeyBeingHeld;
@@ -451,6 +453,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsEmoji;
 - (void)swipeDetected:(id)arg1;
 - (id)synthesizeTouchUpEventForKey:(id)arg1;
+- (unsigned long long)targetEdgesForScreenGestureRecognition;
 - (void)tearDownSplitTransitionView;
 - (unsigned long long)textEditingKeyMask;
 - (void)touchCancelled:(id)arg1 executionContext:(id)arg2;

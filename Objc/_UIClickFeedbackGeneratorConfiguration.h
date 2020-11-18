@@ -14,11 +14,14 @@ __attribute__((visibility("hidden")))
 {
     _UIFeedback<_UIFeedbackDiscretePlayable> *_pressedDownFeedback;
     _UIFeedback<_UIFeedbackDiscretePlayable> *_pressedUpFeedback;
+    _UIFeedback<_UIFeedbackDiscretePlayable> *_clickAudioFeedback;
 }
 
+@property (strong, nonatomic) _UIFeedback<_UIFeedbackDiscretePlayable> *clickAudioFeedback; // @synthesize clickAudioFeedback=_clickAudioFeedback;
 @property (strong, nonatomic) _UIFeedback<_UIFeedbackDiscretePlayable> *pressedDownFeedback; // @synthesize pressedDownFeedback=_pressedDownFeedback;
 @property (strong, nonatomic) _UIFeedback<_UIFeedbackDiscretePlayable> *pressedUpFeedback; // @synthesize pressedUpFeedback=_pressedUpFeedback;
 
++ (id)_clickAudio;
 + (id)defaultConfiguration;
 + (id)latchingOffConfiguration;
 + (id)latchingOnConfiguration;
