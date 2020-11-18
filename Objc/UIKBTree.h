@@ -58,6 +58,7 @@
 - (void)cacheKey:(id)arg1;
 - (id)cacheSecondaryDisplayString;
 - (id)cachedKeysByKeyName:(id)arg1;
+- (void)centerKeys:(id)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
 - (void)clearTransientCaches;
 - (int)clipCorners;
 - (id)componentName;
@@ -65,6 +66,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (BOOL)diacriticForwardCompose;
 - (BOOL)disabled;
 - (BOOL)disablesEdgeSwipe;
 - (int)displayRowHint;

@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
 

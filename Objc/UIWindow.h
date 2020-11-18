@@ -284,6 +284,7 @@
 - (BOOL)_isConstrainedByScreenJail;
 - (BOOL)_isHostedInAnotherProcess;
 - (BOOL)_isInAWindow;
+- (BOOL)_isKeyWindowForDeferral;
 - (BOOL)_isLoweringAnchoringConstraints;
 - (BOOL)_isScrollingEnabledForView:(id)arg1;
 - (BOOL)_isSecure;
@@ -516,6 +517,7 @@
 - (void)setRestorationIdentifier:(id)arg1;
 - (void)setupForOrientation:(long long)arg1;
 - (id)traitCollection;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)undo:(id)arg1;
 - (id)undoManager;
 - (void)updateConstraints;

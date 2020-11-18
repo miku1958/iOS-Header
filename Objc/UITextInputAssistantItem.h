@@ -6,21 +6,29 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, UIKeyboardAssistantBar;
+@class NSArray, UIColor, UIKeyboardAssistantBar;
 
 @interface UITextInputAssistantItem : NSObject
 {
     UIKeyboardAssistantBar *_owner;
     BOOL _allowsHidingShortcuts;
+    BOOL _independentGroupSizes;
     NSArray *_leadingBarButtonGroups;
     NSArray *_trailingBarButtonGroups;
     NSArray *_centerBarButtonGroups;
+    double _marginOverride;
+    UIColor *_detachedBackgroundColor;
+    UIColor *_detachedTintColor;
 }
 
 @property (nonatomic) BOOL allowsHidingShortcuts; // @synthesize allowsHidingShortcuts=_allowsHidingShortcuts;
 @property (copy, nonatomic, getter=_centerBarButtonGroups, setter=_setCenterBarButtonGroups:) NSArray *centerBarButtonGroups; // @synthesize centerBarButtonGroups=_centerBarButtonGroups;
+@property (strong, nonatomic, getter=_detachedBackgroundColor, setter=_setDetachedBackgroundColor:) UIColor *detachedBackgroundColor; // @synthesize detachedBackgroundColor=_detachedBackgroundColor;
+@property (strong, nonatomic, getter=_detachedTintColor, setter=_setDetachedTintColor:) UIColor *detachedTintColor; // @synthesize detachedTintColor=_detachedTintColor;
 @property (readonly, nonatomic, getter=_hasItemsToDisplay) BOOL hasItemsToDisplay;
+@property (nonatomic, getter=_independentGroupSizes, setter=_setIndependentGroupSizes:) BOOL independentGroupSizes; // @synthesize independentGroupSizes=_independentGroupSizes;
 @property (copy, nonatomic) NSArray *leadingBarButtonGroups; // @synthesize leadingBarButtonGroups=_leadingBarButtonGroups;
+@property (nonatomic, getter=_marginOverride, setter=_setMarginOverride:) double marginOverride; // @synthesize marginOverride=_marginOverride;
 @property (weak, nonatomic, getter=_owner, setter=_setOwner:) UIKeyboardAssistantBar *owner;
 @property (readonly, nonatomic, getter=_requiresPredictionDisabled) BOOL requiresPredictionDisabled;
 @property (copy, nonatomic) NSArray *trailingBarButtonGroups; // @synthesize trailingBarButtonGroups=_trailingBarButtonGroups;

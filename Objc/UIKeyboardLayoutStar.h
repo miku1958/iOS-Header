@@ -191,6 +191,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultNameForKeyplaneName:(id)arg1;
 - (long long)defaultSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2;
 - (void)deleteHandwritingStrokesAtIndexes:(id)arg1;
+- (BOOL)diacriticForwardCompose;
 - (void)didClearInput;
 - (void)didEndIndirectSelectionGesture;
 - (void)didEndIndirectSelectionGesture:(BOOL)arg1;
@@ -248,6 +249,7 @@ __attribute__((visibility("hidden")))
 - (double)interpretPinchSeparationValues;
 - (void)interpretTouchesForSplit;
 - (BOOL)isAlphabeticPlane;
+- (BOOL)isDeadkeyInput:(id)arg1;
 - (BOOL)isEmojiKeyplane;
 - (BOOL)isLongPressedKey:(id)arg1;
 - (BOOL)isShiftKeyBeingHeld;
@@ -262,6 +264,7 @@ __attribute__((visibility("hidden")))
 - (id)keyWithRepresentedString:(id)arg1;
 - (id)keyboardLayoutWithBias:(long long)arg1;
 - (int)keycodeForKey:(id)arg1;
+- (id)keylistContainingKey:(id)arg1;
 - (BOOL)keyplaneContainsEmojiKey;
 - (id)keyplaneForKey:(id)arg1;
 - (id)keyplaneNameForRevertAfterTouch;
@@ -389,6 +392,7 @@ __attribute__((visibility("hidden")))
 - (void)updateLocalizedKeysOnKeyplane:(id)arg1;
 - (void)updateMoreAndInternationalKeys;
 - (void)updatePanAlternativesForTouchInfo:(id)arg1;
+- (void)updatePhysicalKeyboardEvent:(id)arg1 withMarkedInput:(id)arg2;
 - (void)updateReturnKeysIfNeeded;
 - (void)updateSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2 withPoint:(struct CGPoint)arg3;
 - (void)updateShiftKeyState;

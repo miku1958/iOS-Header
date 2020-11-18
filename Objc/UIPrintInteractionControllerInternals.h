@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     UIPrintPaper *_paper;
 }
 
+@property long long pageCount; // @synthesize pageCount=_pageCount;
 @property long long pageCountWithRanges; // @synthesize pageCountWithRanges=_pageCountWithRanges;
 @property (strong) NSArray *pageRanges; // @synthesize pageRanges=_pageRanges;
 @property (strong) UIPrintPaper *paper; // @synthesize paper=_paper;

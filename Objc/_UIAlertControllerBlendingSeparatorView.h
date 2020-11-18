@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)_newBlendingHighlightView;
 - (void)applyLayoutAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 
 @end
 

@@ -144,7 +144,8 @@
         unsigned int firstResponderKeyboardAvoidanceDisabled:1;
         unsigned int hasGradientMaskView:1;
         unsigned int interruptingDeceleration:1;
-        unsigned int delegateScrollViewAdjustedCentroid:1;
+        unsigned int delegateScrollViewAdjustedOffset:1;
+        unsigned int disableUpdateOffsetOnCancelTracking:1;
     } _scrollViewFlags;
     BOOL _useContentDimensionVariablesForConstraintLowering;
     id _scrollTestParameters;
@@ -158,6 +159,7 @@
 @property (copy, nonatomic, setter=_setAutomaticContentConstraints:) NSArray *_automaticContentConstraints; // @synthesize _automaticContentConstraints;
 @property (readonly, strong, nonatomic) NSISVariable *_contentHeightVariable; // @synthesize _contentHeightVariable;
 @property (readonly, strong, nonatomic) NSISVariable *_contentWidthVariable; // @synthesize _contentWidthVariable;
+@property (nonatomic, setter=_setDisableUpdateOffsetOnCancelTracking:) BOOL _disableUpdateOffsetOnCancelTracking;
 @property (readonly, nonatomic) _UIStaticScrollBar *_staticScrollBar;
 @property (nonatomic, setter=_setUseContentDimensionVariablesForConstraintLowering:) BOOL _useContentDimensionVariablesForConstraintLowering; // @synthesize _useContentDimensionVariablesForConstraintLowering;
 @property (nonatomic, setter=_setWantsConstrainedContentSize:) BOOL _wantsConstrainedContentSize;
@@ -223,12 +225,12 @@
 - (void)_adjustContentOffsetIfNecessary;
 - (void)_adjustContentSizeForView:(id)arg1 atScale:(double)arg2;
 - (void)_adjustCrossingConstraintsIfNecessaryForOldContentInset:(struct UIEdgeInsets)arg1;
+- (struct CGPoint)_adjustFocusContentOffset:(struct CGPoint)arg1 forView:(id)arg2;
 - (void)_adjustForAutomaticKeyboardInfo:(id)arg1 animated:(BOOL)arg2 lastAdjustment:(double *)arg3;
 - (void)_adjustScrollerIndicators:(BOOL)arg1 alwaysShowingThem:(BOOL)arg2;
 - (void)_adjustShadowsIfNecessary;
 - (void)_adjustShadowsIfNecessaryForOffset:(double)arg1;
 - (void)_adjustStartOffsetForGrabbedBouncingScrollView;
-- (struct CGPoint)_adjustedCentroidForCentroid:(struct CGPoint)arg1;
 - (struct CGPoint)_adjustedContentOffsetForContentOffset:(struct CGPoint)arg1;
 - (double)_adjustedHorizontalOffsetPinnedToScrollableBounds:(double)arg1;
 - (double)_adjustedVerticalOffsetPinnedToScrollableBounds:(double)arg1;

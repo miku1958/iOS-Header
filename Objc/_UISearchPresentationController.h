@@ -27,10 +27,11 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;
+@property (readonly, nonatomic) BOOL animatorShouldSizeResultsContainerView;
 @property (readonly, nonatomic) UIView *backgroundObscuringView;
-@property (readonly, nonatomic) BOOL backgroundObscuringViewShouldObeyPresentationContextBounds;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long edgeForHidingNavigationBar;
 @property (readonly, nonatomic) struct CGRect finalFrameForContainerView; // @synthesize finalFrameForContainerView=_finalFrameForContainerView;
 @property (readonly, nonatomic) BOOL forceObeyNavigationBarInsets;
 @property (readonly) unsigned long long hash;

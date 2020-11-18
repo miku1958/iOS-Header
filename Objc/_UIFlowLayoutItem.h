@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIFlowLayoutItem : NSObject
 {
     struct {
+        unsigned int sizeEstimated:1;
         unsigned int positionEstimated:1;
     } _itemFlags;
     _UIFlowLayoutSection *_section;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isPositionEstimated) BOOL positionEstimated;
 @property (weak, nonatomic) _UIFlowLayoutRow *rowObject; // @synthesize rowObject=_rowObject;
 @property (weak, nonatomic) _UIFlowLayoutSection *section; // @synthesize section=_section;
+@property (nonatomic, getter=isSizeEstimated) BOOL sizeEstimated;
 
 - (void).cxx_destruct;
 - (id)copy;

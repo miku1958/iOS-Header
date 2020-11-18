@@ -8,7 +8,6 @@
 
 @class UISearchController;
 
-__attribute__((visibility("hidden")))
 @interface UISearchContainerViewController : UIViewController
 {
     UISearchController *_searchController;

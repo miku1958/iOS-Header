@@ -64,11 +64,12 @@ __attribute__((visibility("hidden")))
 - (void)rangedMagnifierWithState:(long long)arg1 atPoint:(struct CGPoint)arg2;
 - (void)resignedFirstResponder;
 - (void)scaleChanged;
-- (void)scrollSelectionToVisible;
+- (void)scrollSelectionToVisible:(BOOL)arg1;
 - (id)scrollView;
 - (void)selectionChanged;
 - (void)setGestureRecognizers;
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
+- (void)showSelectionCommands;
 - (void)tap:(id)arg1;
 - (void)updateSelectionRects:(BOOL)arg1;
 - (void)willRotate:(id)arg1;

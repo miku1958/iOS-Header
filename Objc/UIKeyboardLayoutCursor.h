@@ -6,10 +6,12 @@
 
 #import <UIKit/UIKeyboardLayoutStar.h>
 
-@class NSArray, UIAlertController, UIKBTree, UILexicon, UIView;
+#import <UIKit/UIKBAlertControllerDelegate-Protocol.h>
+
+@class NSArray, NSString, UIAlertController, UIKBTree, UILexicon, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardLayoutCursor : UIKeyboardLayoutStar
+@interface UIKeyboardLayoutCursor : UIKeyboardLayoutStar <UIKBAlertControllerDelegate>
 {
     UIKBTree *_indirectKeyboard;
     UIView *_selectionView;
@@ -27,7 +29,11 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) UIKBTree *currentKey;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIAlertController *recentInputsAlert; // @synthesize recentInputsAlert=_recentInputsAlert;
+@property (readonly) Class superclass;
 
 + (id)carKeyboardNameForKeyboard:(id)arg1 screenTraits:(id)arg2;
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
@@ -43,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)_wheelChangedWithEvent:(id)arg1;
 - (void)acceptRecentInputIfNecessary;
 - (int)activeStateForKey:(id)arg1;
+- (void)alertDidDismiss;
 - (id)cacheTokenForKeyplane:(id)arg1;
 - (BOOL)canHandleEvent:(id)arg1;
 - (BOOL)canMultitap;
@@ -52,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)deactivateKey:(id)arg1;
 - (void)dealloc;
 - (long long)defaultSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2;
+- (BOOL)diacriticForwardCompose;
 - (void)didSelectRecentInputString:(id)arg1;
 - (unsigned long long)downActionFlagsForKey:(id)arg1;
 - (int)enabledStateForKey:(id)arg1;

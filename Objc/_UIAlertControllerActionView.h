@@ -9,7 +9,7 @@
 #import <UIKit/UIAlertActionViewRepresentation_Internal-Protocol.h>
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSMutableArray, NSString, UIAlertAction, UIAlertController, UIAlertControllerVisualStyle, UIImageView, UILabel;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIAlertAction, UIAlertController, UIAlertControllerVisualStyle, UIImageView, UILabel;
 @protocol UIAlertControllerBackgroundView;
 
 __attribute__((visibility("hidden")))
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_imageViewBottomConstraint;
     NSMutableArray *_contentViewControllerConstraints;
     UIView *_contentViewControllerContainerView;
+    NSArray *_motionEffectsFromStyle;
     UIAlertAction *_action;
     UIAlertControllerVisualStyle *_visualStyle;
     id highlightTarget;
@@ -82,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)_contentSizeChanged;
 - (id)_descriptiveFont;
 - (long long)_effectiveTitleTextAlignment;
+- (void)_installMotionEffects;
 - (double)_minimumLabelScaleFactor;
 - (void)_prepareConstraintsForDescriptiveText:(BOOL)arg1;
 - (long long)_pressTypeForBackGesture;
@@ -89,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)_recomputeTextColor;
 - (id)_titleFont;
 - (id)_touchForEvent:(id)arg1;
+- (void)_uninstallMotionEffects;
 - (void)_updateBackgroundView;
 - (void)_updateContentViewControllerContainerViewConstraints;
 - (void)_updateFontSize;
@@ -102,7 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)applyMetrics:(id)arg1;
 - (BOOL)canBecomeFocused;
 - (void)dealloc;
-- (void)focusedViewDidChange;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

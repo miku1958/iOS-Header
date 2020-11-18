@@ -167,6 +167,7 @@
 - (void)scheduleReplacementsForRange:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleReplacementsWithOptions:(unsigned long long)arg1;
 - (void)scrollSelectionToVisible;
+- (void)scrollSelectionToVisible:(BOOL)arg1;
 - (void)selectAll:(id)arg1;
 - (void)selectWord;
 - (void)selectWordWithoutShowingCommands;

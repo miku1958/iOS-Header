@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)_blendingSeparatorView;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1 colorBurnColor:(id)arg2 plusDColor:(id)arg3;
+- (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
 

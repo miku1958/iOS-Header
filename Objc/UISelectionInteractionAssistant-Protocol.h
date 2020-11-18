@@ -8,7 +8,7 @@
 - (void)configureForHighlightMode;
 - (void)configureForSelectionMode;
 - (void)rangedMagnifierWithState:(long long)arg1 atPoint:(struct CGPoint)arg2;
-- (void)scrollSelectionToVisible;
+- (void)scrollSelectionToVisible:(BOOL)arg1;
 - (void)showSelectionCommands;
 - (void)updateSelectionRects:(BOOL)arg1;
 @end

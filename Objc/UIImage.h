@@ -129,6 +129,7 @@
 - (id)_imageThatSuppressesAccessibilityHairlineThickening;
 - (id)_imageWithBrightnessModifiedForLegibilityStyle:(long long)arg1;
 - (id)_imageWithStylePresets:(id)arg1 withTintColor:(id)arg2;
+- (id)_initWithContentsOfLCRFile:(id)arg1;
 - (id)_initWithData:(id)arg1 immediateLoadWithMaxSize:(struct CGSize)arg2 scale:(double)arg3 renderingIntent:(int)arg4;
 - (id)_initWithData:(id)arg1 preserveScale:(BOOL)arg2;
 - (id)_initWithData:(id)arg1 preserveScale:(BOOL)arg2 cache:(BOOL)arg3;

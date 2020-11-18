@@ -26,6 +26,7 @@
     double _velocities[3];
     double _accelerations[3];
     BOOL _shouldReverseTranslation;
+    BOOL __shouldReverseLayoutDirection;
     BOOL _springAnimationIsPending;
     BOOL _inSpringAnimation;
     _UINavigationParallaxTransition *_animationController;
@@ -44,6 +45,7 @@
 @property (nonatomic, setter=_setCompletesTransitionOnEnd:) BOOL _completesTransitionOnEnd; // @synthesize _completesTransitionOnEnd=__completesTransitionOnEnd;
 @property (nonatomic, setter=_setInteractionState:) long long _interactionState; // @synthesize _interactionState=__interactionState;
 @property (weak, nonatomic, setter=_setParent:) UIViewController *_parent; // @synthesize _parent=__parent;
+@property (nonatomic, setter=_setShouldReverseLayoutDirection:) BOOL _shouldReverseLayoutDirection; // @synthesize _shouldReverseLayoutDirection=__shouldReverseLayoutDirection;
 @property (nonatomic, setter=_setStoppedTransitionWasCancelled:) BOOL _stoppedTransitionWasCancelled; // @synthesize _stoppedTransitionWasCancelled=__stoppedTransitionWasCancelled;
 @property (nonatomic, setter=_setTransitionWasStopped:) BOOL _transitionWasStopped; // @synthesize _transitionWasStopped=__transitionWasStopped;
 @property (nonatomic, setter=_setUseAugmentedShouldPopDecisionProcedure:) BOOL _useAugmentedShouldPopDecisionProcedure; // @synthesize _useAugmentedShouldPopDecisionProcedure=__useAugmentedShouldPopDecisionProcedure;

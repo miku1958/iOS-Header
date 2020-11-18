@@ -63,10 +63,11 @@
 
 + (Class)invalidationContextClass;
 - (void).cxx_destruct;
+- (BOOL)_boundsAndInsetsAreValidForReferenceDimension;
 - (void)_calculateAttributesForRect:(struct CGRect)arg1;
 - (struct CGSize)_estimatedItemSize;
 - (id)_existingLayoutAttributesForItemAtIndexPath:(id)arg1;
-- (id)_fetchAndCacheNewLayoutAttributesForCellWithIndexPath:(id)arg1 frame:(struct CGRect)arg2;
+- (id)_fetchAndCache:(BOOL)arg1 newLayoutAttributesForCellWithIndexPath:(id)arg2 frame:(struct CGRect)arg3;
 - (void)_fetchItemsInfoForRect:(struct CGRect)arg1;
 - (struct CGRect)_frameForFooterInSection:(long long)arg1 usingData:(id)arg2;
 - (struct CGRect)_frameForHeaderInSection:(long long)arg1 usingData:(id)arg2;

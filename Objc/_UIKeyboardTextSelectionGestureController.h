@@ -98,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)endTwoFingerLongPressWithExecutionContext:(id)arg1;
 - (void)endTwoFingerPanWithExecutionContext:(id)arg1;
 - (void)finishTwoFingerLongPressWithExecutionContext:(id)arg1;
+- (BOOL)forceTouchGestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -113,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (double)oneFingerForcePressAllowableMovement;
 - (double)oneFingerForcePressMinimumDuration;
 - (id)oneFingerForcePressRecognizer;
+- (BOOL)oneFingerForcePressShouldCancelTouchesInView;
 - (BOOL)oneFingerForcePressShouldFailWithoutForce;
 - (void)redisableEnclosingScrollViewNestedPinching;
 - (void)twoFingerLongPressGestureWithState:(long long)arg1 withTranslation:(struct CGPoint)arg2;

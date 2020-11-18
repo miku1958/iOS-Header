@@ -95,7 +95,8 @@
     BOOL _hidesBarsWhenVerticallyCompact;
     BOOL _hidesBarsOnTap;
     BOOL __usingBuiltinAnimator;
-    BOOL __barAnimationWasCancelled;
+    BOOL __toolbarAnimationWasCancelled;
+    BOOL __navigationBarAnimationWasCancelled;
     Class _toolbarClass;
     double _customNavigationTransitionDuration;
     id<UIViewControllerAnimatedTransitioning> __transitionController;
@@ -116,7 +117,6 @@
 }
 
 @property (strong, nonatomic, getter=_backdropGroupName, setter=_setBackdropGroupName:) NSString *_backdropGroupName; // @synthesize _backdropGroupName=__backdropGroupName;
-@property (nonatomic, setter=_setBarAnimationWasCancelled:) BOOL _barAnimationWasCancelled; // @synthesize _barAnimationWasCancelled=__barAnimationWasCancelled;
 @property (strong, nonatomic, setter=_setInteractiveAnimationCoordinator:) _UIAnimationCoordinator *_barInteractiveAnimationCoordinator; // @synthesize _barInteractiveAnimationCoordinator=__barInteractiveAnimationCoordinator;
 @property (strong, nonatomic, setter=_setBarSwipeHideGesture:) _UIBarPanGestureRecognizer *_barSwipeHideGesture; // @synthesize _barSwipeHideGesture=__barSwipeHideGesture;
 @property (strong, nonatomic, setter=_setBarTapHideGesture:) _UIBarTapGestureRecognizer *_barTapHideGesture; // @synthesize _barTapHideGesture=__barTapHideGesture;
@@ -125,7 +125,9 @@
 @property (strong, nonatomic, setter=_setInteractionController:) id<UIViewControllerInteractiveTransitioning> _interactionController; // @synthesize _interactionController=__interactionController;
 @property (strong, nonatomic, setter=_setKeyboardAppearedNotificationToken:) id _keyboardAppearedNotificationToken; // @synthesize _keyboardAppearedNotificationToken=__keyboardAppearedNotificationToken;
 @property (strong, nonatomic, setter=_setNavbarAnimationId:) NSUUID *_navbarAnimationId; // @synthesize _navbarAnimationId=__navbarAnimationId;
+@property (nonatomic, setter=_setNavigationBarAnimationWasCancelled:) BOOL _navigationBarAnimationWasCancelled; // @synthesize _navigationBarAnimationWasCancelled=__navigationBarAnimationWasCancelled;
 @property (strong, nonatomic, setter=_setToolbarAnimationId:) NSUUID *_toolbarAnimationId; // @synthesize _toolbarAnimationId=__toolbarAnimationId;
+@property (nonatomic, setter=_setToolbarAnimationWasCancelled:) BOOL _toolbarAnimationWasCancelled; // @synthesize _toolbarAnimationWasCancelled=__toolbarAnimationWasCancelled;
 @property (nonatomic, setter=_setToolbarClass:) Class _toolbarClass; // @synthesize _toolbarClass;
 @property (strong, nonatomic, setter=_setTransitionController:) id<UIViewControllerAnimatedTransitioning> _transitionController; // @synthesize _transitionController=__transitionController;
 @property (copy, nonatomic, setter=_setUpdateNavigationBarHandler:) CDUnknownBlockType _updateNavigationBarHandler; // @synthesize _updateNavigationBarHandler=__updateNavigationBarHandler;
@@ -245,6 +247,7 @@
 - (id)_keyboardAnimationStyle;
 - (int)_keyboardDirectionForTransition:(long long)arg1;
 - (id)_lastNavigationItems;
+- (void)_layoutContainerViewSemanticContentAttributeChanged:(id)arg1;
 - (void)_layoutTopViewController;
 - (void)_layoutTopViewControllerInSheet;
 - (void)_layoutTopViewControllerInSheetWithPopoverView:(id)arg1;
@@ -258,6 +261,7 @@
 - (id)_navigationBarForNestedNavigationController;
 - (id)_navigationBarHiddenByDefault:(BOOL)arg1;
 - (id)_navigationItems;
+- (id)_navigationItemsCallingPublicAccessor:(BOOL)arg1;
 - (BOOL)_navigationSoundsEnabled;
 - (long long)_navigationTransitionForUITransition:(int)arg1;
 - (void)_navigationTransitionView:(id)arg1 didCancelTransition:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4 wrapperView:(id)arg5;
@@ -296,6 +300,7 @@
 - (id)_recallRememberedFocusedViewForViewController:(id)arg1;
 - (void)_releaseContainerViews;
 - (void)_rememberFocusedView:(id)arg1 forViewController:(id)arg2;
+- (void)_rememberPresentingFocusedView:(id)arg1;
 - (void)_repositionPaletteWithNavigationBarHidden:(BOOL)arg1 duration:(double)arg2 shouldUpdateNavigationItems:(BOOL)arg3;
 - (void)_resetBottomBarHiddenState;
 - (id)_screenEdgePanGestureRecognizer;

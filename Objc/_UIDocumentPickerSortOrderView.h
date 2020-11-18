@@ -33,9 +33,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_toggleListMode:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)layoutSubviews;
+- (void)setNeedsLayout;
 - (void)updateForListMode;
-- (void)updateLayout;
 - (void)valueChanged:(id)arg1;
 
 @end

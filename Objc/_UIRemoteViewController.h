@@ -10,7 +10,7 @@
 #import <UIKit/_UIRemoteViewController_TextEffectsOperatorInterface-Protocol.h>
 #import <UIKit/_UIRemoteViewController_ViewControllerOperatorInterface-Protocol.h>
 
-@class BKSTouchDeliveryPolicyAssertion, NSArray, NSError, NSString, UIActionSheet, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
+@class BKSTouchDeliveryPolicyAssertion, NSArray, NSError, NSString, UIActionSheet, UIAlertView, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
 
 @interface _UIRemoteViewController : UIViewController <_UIRemoteViewController_ViewControllerOperatorInterface, _UIRemoteViewController_TextEffectsOperatorInterface, UIActionSheetDelegate>
 {
@@ -57,6 +57,10 @@
     struct CGSize _serviceScreenSize;
     BOOL _alreadySentFence;
     UIView *_viewServiceTouchInterdictionView;
+    UIAlertView *_proxiedEditAlertView;
+    long long _undoButtonIndex;
+    long long _redoButtonIndex;
+    long long _proxiedEditAlertToken;
     BOOL _isUpdatingSize;
     BOOL _serviceViewShouldShareTouchesWithHost;
     BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion;
@@ -97,8 +101,10 @@
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
+- (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(BOOL)arg2 canRedo:(BOOL)arg3;
 - (void)__showServiceForText:(id)arg1 type:(long long)arg2 fromRectValue:(id)arg3 replyHandler:(CDUnknownBlockType)arg4;
 - (void)__trampolineButtonPressData:(id)arg1 canceled:(BOOL)arg2;
+- (void)__updateDeferralPropertiesForScreen:(id)arg1;
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidUnregisterScrollToTopView;
@@ -137,6 +143,7 @@
 - (void)_restoreTextEffectsRemoteView;
 - (void)_screenDidConnect:(id)arg1;
 - (void)_screenDidDisconnect:(id)arg1;
+- (void)_screenIDChanged:(id)arg1;
 - (void)_scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_serviceHasScrollToTopView;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
@@ -156,6 +163,9 @@
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
 - (void)_willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 forwardToChildControllers:(BOOL)arg3 skipSelf:(BOOL)arg4;
 - (void)actionSheet:(id)arg1 clickedButtonAtIndex:(long long)arg2;
+- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
+- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
+- (void)alertViewCancel:(id)arg1;
 - (id)allowedNotifications;
 - (id)autorelease;
 - (BOOL)canBecomeFirstResponder;

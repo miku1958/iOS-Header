@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_pageLabelBadgeVerticalPositionConstraint;
     UIDocumentInteractionController *_documentInteractionController;
     id previousNavigationControllerDelegate;
+    NSURL *_sharePDFFileURL;
     BOOL _scaleUpOnDestinationPaper;
     NSMutableArray *_arrayOfPageImages;
     NSURL *_quickLookPDFURL;

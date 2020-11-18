@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)isBackdropVisible;
+- (BOOL)requiresBackdropLayer;
 - (void)setDefaultValues;
 
 @end

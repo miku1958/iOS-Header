@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (Class)keyViewClassForKey:(id)arg1 traits:(id)arg2;
 - (void)reset;
 - (BOOL)shouldAssertCurrentKeyState:(id)arg1;
+- (BOOL)shouldPurgeKeyViews;
 - (BOOL)shouldTransitionKeyView:(id)arg1 fromState:(int)arg2 toState:(int)arg3;
 - (void)transitionFloatingKeyView:(id)arg1 toState:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)transitionKeyView:(id)arg1 fromState:(int)arg2 toState:(int)arg3 completion:(CDUnknownBlockType)arg4;

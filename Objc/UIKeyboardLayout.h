@@ -93,6 +93,7 @@
 - (void)deactivateActiveKeys;
 - (void)deactivateActiveKeysClearingTouchInfo:(BOOL)arg1 clearingDimming:(BOOL)arg2;
 - (void)dealloc;
+- (BOOL)diacriticForwardCompose;
 - (void)didClearInput;
 - (void)didCommitTouch:(id)arg1;
 - (void)didEndIndirectSelectionGesture;

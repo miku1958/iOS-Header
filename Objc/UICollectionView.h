@@ -33,6 +33,7 @@
     NSMutableDictionary *_clonedCellsDict;
     NSMutableDictionary *_clonedSupplementaryViewsDict;
     NSMutableDictionary *_clonedDecorationViewsDict;
+    NSMutableDictionary *_templateLayoutCells;
     NSIndexPath *_pendingSelectionIndexPath;
     NSMutableSet *_pendingDeselectionIndexPaths;
     UICollectionViewData *_collectionViewData;
@@ -112,6 +113,8 @@
         unsigned int delegateIndexPathForPreferredFocusedView:1;
         unsigned int delegateShouldUpdateFocusInContext:1;
         unsigned int delegateDidUpdateFocusInContext:1;
+        unsigned int delegateTemplateLayoutCell:1;
+        unsigned int delegateWillLayoutCellUsingTemplateLayoutCell:1;
         unsigned int delegateWasNonNil:1;
         unsigned int dataSourceNumberOfSections:1;
         unsigned int dataSourceViewForSupplementaryElement:1;
@@ -141,6 +144,7 @@
         unsigned int updateFocusAfterLoadingCells:1;
         unsigned int performingLayout:1;
         unsigned int keepsFirstResponderVisibleOnBoundsChange:1;
+        unsigned int inCreateTemplateCell:1;
     } _collectionViewFlags;
     struct CGPoint _lastLayoutOffset;
     CDUnknownBlockType _navigationCompletion;
@@ -148,6 +152,7 @@
     UICollectionViewCell *_currentPromiseFulfillmentCell;
     NSIndexPath *_focusedCellIndexPath;
     UICollectionReusableView *_focusedCell;
+    NSString *_focusedCellElementKind;
 }
 
 @property (nonatomic) BOOL allowsMultipleSelection;
@@ -165,6 +170,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_endOfContentFocusContainerGuide) UIFocusContainerGuide *endOfContentFocusContainerGuide; // @synthesize endOfContentFocusContainerGuide=_endOfContentFocusContainerGuide;
 @property (strong, nonatomic, getter=_focusedCell, setter=_setFocusedCell:) UICollectionReusableView *focusedCell; // @synthesize focusedCell=_focusedCell;
+@property (copy, nonatomic, getter=_focusedCellElementKind, setter=_setFocusedCellElementKind:) NSString *focusedCellElementKind; // @synthesize focusedCellElementKind=_focusedCellElementKind;
 @property (copy, nonatomic, getter=_focusedCellIndexPath, setter=_setFocusedCellIndexPath:) NSIndexPath *focusedCellIndexPath; // @synthesize focusedCellIndexPath=_focusedCellIndexPath;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_keepsFirstResponderVisibleOnBoundsChange, setter=_setKeepsFirstResponderVisibleOnBoundsChange:) BOOL keepsFirstResponderVisibleOnBoundsChange;
@@ -203,6 +209,7 @@
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(BOOL)arg3;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(BOOL)arg3 isFocused:(BOOL)arg4;
 - (id)_createPreparedSupplementaryViewForElementOfKind:(id)arg1 atIndexPath:(id)arg2 withLayoutAttributes:(id)arg3 applyAttributes:(BOOL)arg4;
+- (id)_createTemplateLayoutCellForCellsWithIdentifier:(id)arg1;
 - (BOOL)_dataSourceImplementsNumberOfSections;
 - (struct CGPoint)_delegateTargetOffsetForProposedContentOffset:(struct CGPoint)arg1;
 - (id)_dequeueReusableViewOfKind:(id)arg1 withIdentifier:(id)arg2 forIndexPath:(id)arg3 viewCategory:(unsigned long long)arg4;
@@ -235,6 +242,7 @@
 - (void)_invalidateWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_itemIndexPathIsReordered:(id)arg1;
 - (id)_keysForObject:(id)arg1 inDictionary:(id)arg2;
+- (id)_managedSubviewForView:(id)arg1;
 - (id)_objectInDictionary:(id)arg1 forKind:(id)arg2 indexPath:(id)arg3;
 - (void)_performAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 invalidationContext:(id)arg3;
@@ -249,6 +257,8 @@
 - (id)_reorderedItemForView:(id)arg1;
 - (void)_resumeReloads;
 - (void)_reuseCell:(id)arg1;
+- (void)_reusePreviouslyFocusedManagedSubviewIfNeeded:(id)arg1;
+- (id)_reuseQueueForViewWithElementCategory:(unsigned long long)arg1 elementKind:(id)arg2 reuseIdentifier:(id)arg3;
 - (void)_reuseSupplementaryView:(id)arg1;
 - (void)_scrollFirstResponderCellToVisible:(BOOL)arg1;
 - (void)_scrollViewDidEndDraggingWithDeceleration:(BOOL)arg1;
@@ -271,6 +281,7 @@
 - (BOOL)_shouldUpdateFocusInContext:(id)arg1;
 - (void)_stopAutoscrollTimer;
 - (void)_suspendReloads;
+- (id)_templateLayoutCellForCellsWithReuseIdentifier:(id)arg1;
 - (void)_trackLayoutValue:(double)arg1 forKey:(id)arg2;
 - (double)_trackedLayoutValueForKey:(id)arg1;
 - (void)_unhighlightAllItems;

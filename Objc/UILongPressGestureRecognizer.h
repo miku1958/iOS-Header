@@ -60,6 +60,7 @@
 - (BOOL)_allowsDynamicTouchesList;
 - (struct CGPoint)_centroidInView:(id)arg1;
 - (void)_changeTouchesListTo:(id)arg1;
+- (long long)_finalStateForRecognition;
 - (BOOL)_impulseQuietEnough;
 - (void)_incorporateTouchForceMessageIntoImpulseQuietness:(id)arg1;
 - (void)_interactionsEndedWithValidTouches:(BOOL)arg1;

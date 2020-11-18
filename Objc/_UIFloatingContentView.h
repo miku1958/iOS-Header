@@ -14,6 +14,7 @@
     id<_UIFloatingContentViewDelegate> _floatingContentViewDelegate;
     UIView *_shadowView;
     _UIFloatingContentSpecialAnimatingView *_containerView;
+    _UIFloatingContentSpecialAnimatingView *_visualEffectContainerView;
     _UIFloatingContentSpecialAnimatingView *_highlightView;
     UIView *_contentView;
     struct __CFDictionary *_backgroundColorsByState;
@@ -81,6 +82,7 @@
 @property (nonatomic) double unfocusedShadowRadius; // @synthesize unfocusedShadowRadius=_unfocusedShadowRadius;
 @property (nonatomic) double unfocusedShadowVerticalOffset; // @synthesize unfocusedShadowVerticalOffset=_unfocusedShadowVerticalOffset;
 @property (nonatomic) BOOL useShadowImage; // @synthesize useShadowImage=_useShadowImage;
+@property (readonly, nonatomic) UIView *visualEffectContainerView;
 
 + (id)_defaultFocusAnimationConfiguration;
 + (Class)layerClass;

@@ -16,6 +16,7 @@
 {
     BOOL _interactionAborted;
     BOOL _clipUnderlapWhileTransitioning;
+    BOOL __shouldReverseLayoutDirection;
     long long _operation;
     id<UIViewControllerContextTransitioning> _transitionContext;
     _UINavigationInteractiveTransitionBase *_interactionController;
@@ -28,6 +29,7 @@
     double _transitionGap;
 }
 
+@property (nonatomic, setter=_setShouldReverseLayoutDirection:) BOOL _shouldReverseLayoutDirection; // @synthesize _shouldReverseLayoutDirection=__shouldReverseLayoutDirection;
 @property (strong, nonatomic) _UIParallaxDimmingView *borderDimmingView; // @synthesize borderDimmingView=_borderDimmingView;
 @property (strong, nonatomic) UIView *clipUnderView; // @synthesize clipUnderView=_clipUnderView;
 @property (nonatomic) BOOL clipUnderlapWhileTransitioning; // @synthesize clipUnderlapWhileTransitioning=_clipUnderlapWhileTransitioning;

@@ -28,6 +28,8 @@
     struct CGRect _visibleBounds;
     struct _NSRange _visibleRows;
     NSMutableArray *_visibleCells;
+    NSMutableDictionary *_templateLayoutCells;
+    NSIndexPath *_indexPathBeingCreated;
     NSIndexPath *_firstResponderIndexPath;
     UIView *_firstResponderView;
     int _firstResponderViewType;
@@ -213,6 +215,8 @@
         unsigned int delegateIndexPathForPreferredFocusedView:1;
         unsigned int delegateShouldUpdateFocusInContext:1;
         unsigned int delegateDidUpdateFocusInContext:1;
+        unsigned int delegateTemplateLayoutCell:1;
+        unsigned int delegateWillLayoutCellUsingTemplateLayoutCell:1;
         unsigned int delegateWasNonNil:1;
         unsigned int style:1;
         unsigned int separatorStyle:3;
@@ -261,6 +265,7 @@
         unsigned int adjustsRowHeightsForSectionLocation:1;
         unsigned int inInit:1;
         unsigned int inSetBackgroundColor:1;
+        unsigned int inCreateTemplateCell:1;
         unsigned int usingCustomBackgroundView:1;
         unsigned int rowDataIndexPathsAreValidForCurrentCells:1;
         unsigned int committingDelete:1;
@@ -364,6 +369,7 @@
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (void)_adjustCountLabel;
 - (void)_adjustExtraSeparators;
+- (struct CGPoint)_adjustFocusContentOffset:(struct CGPoint)arg1 forView:(id)arg2;
 - (void)_adjustForAutomaticKeyboardInfo:(id)arg1 animated:(BOOL)arg2 lastAdjustment:(double *)arg3;
 - (void)_adjustReusableTableCells;
 - (void)_adjustTableHeaderAndFooterViews;
@@ -429,6 +435,7 @@
 - (id)_createPreparedCellForGlobalRow:(long long)arg1 willDisplay:(BOOL)arg2;
 - (id)_createPreparedCellForGlobalRow:(long long)arg1 withIndexPath:(id)arg2 willDisplay:(BOOL)arg3;
 - (id)_createPreparedCellForRowAtIndexPath:(id)arg1 willDisplay:(BOOL)arg2;
+- (id)_createTemplateLayoutCellForCellsWithIdentifier:(id)arg1;
 - (long long)_currentSectionIndexTitleIndex;
 - (BOOL)_dataSourceImplementsCanUpdateRowAtIndexPath;
 - (BOOL)_dataSourceImplementsDetailTextForHeaderInSection;
@@ -509,6 +516,7 @@
 - (void)_handleNudgeInDirection:(long long)arg1;
 - (void)_handleSwipeDelete:(id)arg1;
 - (void)_handleSwipeDeleteGobbler:(id)arg1;
+- (BOOL)_hasFocusedCellForIndexPath:(id)arg1;
 - (BOOL)_hasHeaderFooterBelowRowAtIndexPath:(id)arg1;
 - (BOOL)_hasSwipeToDeleteRow;
 - (BOOL)_headerAndFooterViewsFloat;
@@ -545,6 +553,7 @@
 - (void)_languageChanged;
 - (long long)_lastGlobalRowIndex;
 - (void)_longPressNudgeScrollToRow:(long long)arg1 position:(long long)arg2;
+- (id)_managedSubviewForView:(id)arg1 viewType:(int *)arg2 indexPath:(out id *)arg3;
 - (double)_marginWidth;
 - (void)_moveSectionIndexTitleIndexToIndex:(long long)arg1;
 - (void)_moveWithEvent:(id)arg1;
@@ -591,6 +600,7 @@
 - (void)_resetDragSwipeAndTouchSelectFlags;
 - (void)_resumeReloads;
 - (void)_reuseHeaderFooterView:(id)arg1 isHeader:(BOOL)arg2 forSection:(long long)arg3;
+- (void)_reusePreviouslyFocusedTableViewSubviewIfNeeded:(id)arg1 viewType:(int)arg2 indexPath:(id)arg3;
 - (void)_reuseTableViewCell:(id)arg1 withIndexPath:(id)arg2 didEndDisplaying:(BOOL)arg3;
 - (void)_reuseTableViewSubview:(id)arg1 viewType:(int)arg2;
 - (id)_rowData;
@@ -720,6 +730,7 @@
 - (id)_tableViewCellForContentView:(id)arg1;
 - (id)_targetIndexPathAtPoint:(struct CGPoint)arg1;
 - (void)_tearDownIndexOverlayViews;
+- (id)_templateLayoutCellForCellsWithReuseIdentifier:(id)arg1;
 - (double)_timeToIgnoreWheelEventsOnIndexOverlayIndicator;
 - (id)_titleForDeleteConfirmationButton;
 - (id)_titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg1;

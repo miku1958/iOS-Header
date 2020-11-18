@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (long long)_minAttributeForCanvasConnections;
 - (BOOL)_monitorsSystemLayoutFittingSizeForItem:(id)arg1;
 - (void)_registerAnimationRequest;
+- (void)_removeSpanningLayoutGuide;
 - (void)_respondToChangesWithIncomingItem:(id)arg1 outgoingItem:(id)arg2 newlyHiddenItem:(id)arg3 newlyUnhiddenItem:(id)arg4;
 - (BOOL)_spanningGuideConstraintsNeedUpdate;
 - (id)_spanningLayoutGuideCreateIfNecessary;

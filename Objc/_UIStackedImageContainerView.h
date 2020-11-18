@@ -34,6 +34,7 @@
 - (void)_setStackFocused:(BOOL)arg1 animated:(BOOL)arg2 focusAnimationCoordinator:(id)arg3;
 - (void)_uninstallMotionEffects;
 - (void)_updateContainerLayerImages;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setStackFocused:(BOOL)arg1 withFocusAnimationCoordinator:(id)arg2;
 

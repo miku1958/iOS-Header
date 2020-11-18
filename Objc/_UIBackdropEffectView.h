@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (id)valueForUndefinedKey:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

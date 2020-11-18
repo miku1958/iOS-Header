@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDesiredForTraits:(id)arg1;
 - (BOOL)isExtensionInputMode;
 - (id)normalizedIdentifierLevels;
+- (void)setPrimaryLanguage:(id)arg1;
 
 @end
 

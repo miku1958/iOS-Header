@@ -12,7 +12,7 @@
 #import <UIKit/_UIViewServiceDummyPopoverControllerDelegate-Protocol.h>
 #import <UIKit/_UIViewServiceViewControllerOperator_RemoteViewControllerInterface-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIActionSheet, UIPopoverController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
+@class NSArray, NSMutableArray, NSString, NSUndoManager, UIActionSheet, UIPopoverController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
 @protocol _UIViewServiceViewControllerOperatorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
     BOOL _canShowTextServices;
     struct UIEdgeInsets _localViewControllerRequestedInsets;
     _UIViewControllerOneToOneTransitionContext *_viewControllerTransitioningContext;
+    long long _editAlertToken;
+    NSUndoManager *_editAlertUndoManager;
     id<_UIViewServiceViewControllerOperatorDelegate> _delegate;
     CDUnknownBlockType __traitsWillChangeHandler;
     CDUnknownBlockType __traitsDidChangeHandler;
@@ -63,6 +65,7 @@ __attribute__((visibility("hidden")))
 + (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2 hostBundleID:(id)arg3 hostAuditToken:(CDStruct_4c969caf)arg4;
 - (void).cxx_destruct;
 - (int)__automatic_invalidation_logic;
+- (void)__cancelAlertActionWithToken:(long long)arg1;
 - (void)__createViewController:(id)arg1 withAppearanceSerializedRepresentations:(id)arg2 legacyAppearance:(BOOL)arg3 hostAccessibilityServerPort:(id)arg4 canShowTextServices:(BOOL)arg5 replyHandler:(CDUnknownBlockType)arg6;
 - (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 legacyAppearance:(BOOL)arg5 traitCollection:(id)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(id)arg8 canShowTextServices:(BOOL)arg9 replyHandler:(CDUnknownBlockType)arg10;
 - (void)__dimmingViewWasTapped;
@@ -94,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)__hostedActionSheetDidPresent;
 - (BOOL)__knownPresentationWithoutPresentationControllerInstance;
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)__redoActionWithToken:(long long)arg1;
 - (void)__restoreStateForSession:(id)arg1 restorationAnchor:(id)arg2;
 - (void)__saveStateForSession:(id)arg1 restorationAnchor:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)__scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
@@ -102,7 +106,9 @@ __attribute__((visibility("hidden")))
 - (void)__setHostTraitCollection:(id)arg1 deferIfAnimated:(BOOL)arg2;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;
 - (void)__setServiceInPopover:(BOOL)arg1;
+- (void)__showEditAlertView;
 - (void)__textServiceDidDismiss;
+- (void)__undoActionWithToken:(long long)arg1;
 - (id)_appearanceSource;
 - (BOOL)_canShowTextServices;
 - (id)_dataFromPressesEvent:(id)arg1;
@@ -155,6 +161,7 @@ __attribute__((visibility("hidden")))
 - (void)establishViewControllerDeputyWithProxy:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)invalidate;
 - (void)loadView;
+- (void)motionEnded:(long long)arg1 withEvent:(id)arg2;
 - (struct CGSize)preferredContentSize;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (id)preferredFocusedItem;
