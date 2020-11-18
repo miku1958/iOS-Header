@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *children;
     MISSING_TYPE *parent;
-    MISSING_TYPE *displayLinkHost;
+    MISSING_TYPE *viewRendererHost;
     MISSING_TYPE *oldAttachmentForNotification;
     MISSING_TYPE *skipNotifyForAttachmentChanged;
     MISSING_TYPE *attachmentsStorage;

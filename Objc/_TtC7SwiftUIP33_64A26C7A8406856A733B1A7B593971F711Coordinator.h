@@ -8,7 +8,7 @@
 
 @class MISSING_TYPE;
 
-@interface _TtC7SwiftUIP33_EAF46EB2224E5094AC09660027F14E7C11Coordinator : _TtC7SwiftUI23PlatformViewCoordinator
+@interface _TtC7SwiftUIP33_64A26C7A8406856A733B1A7B593971F711Coordinator : _TtC7SwiftUI23PlatformViewCoordinator
 {
     MISSING_TYPE *onTrigger;
 }

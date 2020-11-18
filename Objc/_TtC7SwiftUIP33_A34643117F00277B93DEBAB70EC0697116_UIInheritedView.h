@@ -6,15 +6,10 @@
 
 #import <SwiftUI/_TtC7SwiftUI15_UIGraphicsView.h>
 
-@class MISSING_TYPE;
-
-__attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI22_UIShapeHitTestingView : _TtC7SwiftUI15_UIGraphicsView
+@interface _TtC7SwiftUIP33_A34643117F00277B93DEBAB70EC0697116_UIInheritedView : _TtC7SwiftUI15_UIGraphicsView
 {
-    MISSING_TYPE *path;
 }
 
-- (void).cxx_destruct;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

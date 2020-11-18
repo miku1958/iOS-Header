@@ -6,11 +6,8 @@
 
 #import <SwiftUI/_TtCV7SwiftUI14LayoutComputer8Delegate.h>
 
-@class MISSING_TYPE;
-
-@interface _TtC7SwiftUI24StyledTextLayoutDelegate : _TtCV7SwiftUI14LayoutComputer8Delegate
+@interface _TtCV7SwiftUI14LayoutComputer15DefaultDelegate : _TtCV7SwiftUI14LayoutComputer8Delegate
 {
-    MISSING_TYPE *text;
 }
 
 @end

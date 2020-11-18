@@ -14,6 +14,7 @@
     MISSING_TYPE *before;
     MISSING_TYPE *after;
     MISSING_TYPE *length;
+    MISSING_TYPE *keyFilter;
 }
 
 @end

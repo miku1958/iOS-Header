@@ -15,7 +15,7 @@
     MISSING_TYPE *rootSubgraph;
     MISSING_TYPE *rootViewType;
     MISSING_TYPE *makeRootView;
-    MISSING_TYPE *viewRendererHost;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *inputs;
     MISSING_TYPE *rootView;
     MISSING_TYPE *time;
@@ -39,7 +39,7 @@
     MISSING_TYPE *rootPhase;
     MISSING_TYPE *eventSubgraph;
     MISSING_TYPE *isInstantiated;
-    MISSING_TYPE *defaultLayoutTraits;
+    MISSING_TYPE *defaultIdealSize;
     MISSING_TYPE *defaultLayoutComputer;
     MISSING_TYPE *defaultViewListTraits;
     MISSING_TYPE *rootResponders;
@@ -49,14 +49,14 @@
     MISSING_TYPE *rootPlatformItemList;
     MISSING_TYPE *hostPreferenceValues;
     MISSING_TYPE *viewDebugValues;
-    MISSING_TYPE *cachedLayoutTraits;
+    MISSING_TYPE *cachedIdealSize;
     MISSING_TYPE *cachedSizeThatFits;
     MISSING_TYPE *sizeThatFitsObserver;
     MISSING_TYPE *outputs;
     MISSING_TYPE *disabledOutputs;
     MISSING_TYPE *needsFocusUpdate;
-    MISSING_TYPE *nextUpdate;
     MISSING_TYPE *pendingTransactions;
+    MISSING_TYPE *nextUpdate;
     MISSING_TYPE *preferenceBridge;
     MISSING_TYPE *observedPreferenceKeys;
     MISSING_TYPE *observedPreferenceValues;

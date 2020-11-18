@@ -13,12 +13,10 @@
     MISSING_TYPE *string;
     MISSING_TYPE *truncationMode;
     MISSING_TYPE *lineLimit;
-    MISSING_TYPE *minimumScaleFactor;
+    MISSING_TYPE *minScaleFactor;
     MISSING_TYPE *lineSpacing;
-    MISSING_TYPE *maxLineHeight;
     MISSING_TYPE *pixelLength;
     MISSING_TYPE *cache;
-    MISSING_TYPE *contentInsetsCache;
     MISSING_TYPE *scaleFactorOverride;
 }
 
